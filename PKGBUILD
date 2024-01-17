@@ -2,13 +2,13 @@
 
 _pkgbasename=datatable
 pkgname=python-${_pkgbasename}
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="A Python package for manipulating 2-dimensional tabular data structures"
 arch=('x86_64')
 url="https://github.com/h2oai/${_pkgbasename}/"
-license=('MPL2')
-depends=('python>=3.10')
+license=('MPL-2.0')
+depends=('python>=3.8')
 makedepends=('python-build' 'python-installer' 'git')
 optdepends=(
     'python-numpy'
@@ -24,15 +24,8 @@ provides=('python-datatable')
 # git hash to generate build info
 source=(
     "git+https://github.com/h2oai/${_pkgbasename}.git#tag=v${pkgver}"
-    "0001-fix_support_for_python310_and_python311.patch"
 )
-sha256sums=('SKIP'
-            '9d88a50f259b5886081ace99bc335b1b514824b11921e032ae9f6a9fce227830')
-
-prepare() {
-    cd "${srcdir}/${_pkgbasename}"
-    patch -p1 -i "${srcdir}/0001-fix_support_for_python310_and_python311.patch"
-}
+sha256sums=('SKIP')
 
 build() {
     # There are issue installing through `pip install datatable==1.0.0`
