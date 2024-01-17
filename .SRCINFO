@@ -1,7 +1,7 @@
 pkgbase = thermald-git
 	pkgdesc = The Linux Thermal Daemon program from 01.org
-	pkgver = 2.4.4.r0.gd6f89c9
-	pkgrel = 3
+	pkgver = 2.5.4.r0.g63b290f
+	pkgrel = 1
 	url = https://github.com/intel/thermal_daemon
 	arch = i686
 	arch = x86_64
@@ -16,10 +16,9 @@ pkgbase = thermald-git
 	provides = thermald
 	conflicts = thermald
 	backup = etc/thermald/thermal-conf.xml
-	source = thermald::git://github.com/intel/thermal_daemon.git
+	source = thermald::git+https://github.com/intel/thermal_daemon.git
 	source = modules-load-msr.conf
 	md5sums = SKIP
 	md5sums = 3f8abd21c1be92e631fd9f557c61355b
 
 pkgname = thermald-git
-
