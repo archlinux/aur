@@ -1,10 +1,11 @@
 pkgbase = libminpack
 	pkgdesc = Software for solving nonlinear equations and nonlinear least squares problems
 	pkgver = 19961126+dfsg1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://salsa.debian.org/science-team/minpack
 	arch = x86_64
-	license = custom:BSD-4-clause-modified
+	license = LicenseRef-BSD-4-Clause-Modified
+	makedepends = bash
 	makedepends = gcc-fortran
 	depends = gcc-libs
 	depends = glibc
