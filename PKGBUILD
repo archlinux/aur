@@ -8,7 +8,8 @@ pkgdesc="nchat is a console-based chat client for Linux and macOS with support f
 arch=('any')
 url="https://github.com/d99kris/nchat"
 license=('MIT')
-depends=('ncurses' 'ccache' 'cmake' 'gperf' 'help2man' 'readline' 'openssl' 'zlib'  'sqlite' 'go' 'file')
+depends=('ncurses' 'gperf' 'help2man' 'readline' 'openssl' 'zlib'  'sqlite' 'go' 'file')
+makedepends=('ccache' 'cmake')
 
 provides=('nchat')
 conflicts=('nchat' 'nchat-git')
