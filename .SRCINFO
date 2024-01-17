@@ -1,0 +1,22 @@
+pkgbase = docker-image-extract-git
+	pkgdesc = Minimal-dependency shell script to pull and extract all files from an image in Docker Hub.
+	pkgver = 20230808.224523
+	pkgrel = 1
+	url = https://github.com/jjlin/docker-image-extract
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = coreutils
+	depends = curl
+	depends = findutils
+	depends = grep
+	depends = gzip
+	depends = sed
+	depends = tar
+	provides = docker-image-extract
+	conflicts = docker-image-extract
+	source = git+https://github.com/jjlin/docker-image-extract
+	sha256sums = SKIP
+
+pkgname = docker-image-extract-git
