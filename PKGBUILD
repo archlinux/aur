@@ -4,11 +4,11 @@
 
 pkgname=nncp
 pkgver=8.10.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Node-to-Node Copy Protocol utilities for secure store-and-forward"
 url="http://www.nncpgo.org/"
 arch=('aarch64' 'x86_64')
-license=('GPL3')
+license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
 depends=('glibc')
 makedepends=('go')
 options=('lto')
