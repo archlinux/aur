@@ -5,19 +5,58 @@
 _pkgname=gwenview
 pkgname=gwenview-no-purpose
 pkgver=23.08.4
-pkgrel=1
+pkgrel=3
 pkgdesc='A fast and easy to use image viewer, without the dependency on purpose. This disables the share menu'
 url='https://apps.kde.org/gwenview/'
 arch=(x86_64)
 license=(GPL LGPL FDL)
 groups=(kde-applications kde-graphics)
-depends=(kactivities5 baloo5 libkdcraw5 kparts5 kitemmodels5 cfitsio phonon-qt5 kimageannotator wayland-protocols)
-optdepends=('qt5-imageformats: support for tiff, webp, and more image formats'
+depends=(baloo5
+         cfitsio
+         exiv2
+         gcc-libs
+         glibc
+         kactivities5
+         kcompletion5
+         kconfig5
+         kconfigwidgets5
+         kcoreaddons5
+         kfilemetadata5
+         kguiaddons5
+         ki18n5
+         kiconthemes5
+         kimageannotator-qt5
+         kio5
+         kitemmodels5
+         kitemviews5
+         kjobwidgets5
+         knotifications5
+         kparts5
+         kservice5
+         kwidgetsaddons5
+         kxmlgui5
+         lcms2
+         libjpeg-turbo
+         libkdcraw5
+         libpng
+         libtiff
+         libx11
+         perl
+         phonon-qt5
+         qt5-base
+         qt5-svg
+         qt5-wayland
+         qt5-x11extras
+         solid5
+         wayland)
+optdepends=('kamera: import pictures from gphoto2 cameras'
             'kimageformats5: support for dds, xcf, exr, psd, and more image formats'
-            'kamera: import pictures from gphoto2 cameras')
+            'qt5-imageformats: support for tiff, webp, and more image formats')
 conflicts=('gwenview')
 replaces=('gwenview')
-makedepends=(extra-cmake-modules kdoctools5)
+makedepends=(extra-cmake-modules
+             kdoctools5
+             wayland-protocols)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz{,.sig})
 sha256sums=('48549ba76c74d7079d935bece2d3d43186384ae5d14ffde59d55b12c9bcaad05'
             'SKIP')
