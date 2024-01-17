@@ -6,11 +6,11 @@
 
 pkgname='libcs50'
 pkgver=11.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc="CS50 Library for C"
 arch=('i686' 'x86_64')
 url='https://github.com/cs50/libcs50'
-license=('GPL3')
+license=('GPL-3.0-only')
 optdepends=('clang: compiler currently used in CS50x course (2023)')
 groups=('cs50')
 conflicts=('libcs50-git')
