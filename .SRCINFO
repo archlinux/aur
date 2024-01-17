@@ -11,6 +11,6 @@ pkgbase = 3fa-bin
 	source = 3fa-1.0.1.deb::https://github.com/Computing-Collective/3FA/releases/download/v1.0.1/3fa_1.0.1_amd64.deb
 	source = 3fa.sh
 	sha256sums = c28eb31e5fd5f8f16d212be35b98888f7424005d59f7743b1c074057f9e709b6
-	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
 
 pkgname = 3fa-bin
