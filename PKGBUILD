@@ -31,10 +31,9 @@ package() {
   find "$pkgdir/opt/Pulsar/resources/app/ppm" -type d -name "spec" -exec rm -rf {} +
   find "$pkgdir/opt/Pulsar/resources/app.asar.unpacked" -type d -name "spec" -exec rm -rf {} +
 
-  mkdir -p "$pkgdir/usr/share/icons/hicolor/scalable/apps"
-  cp "$pkgdir/opt/Pulsar/resources/pulsar.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/pulsar.svg"
+  install -Dm644 "$pkgdir/opt/Pulsar/resources/pulsar.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
 
-  mkdir -p "$pkgdir/usr/bin"
+  install -Dm755 -d "$pkgdir/usr/bin"
   chmod +x "$pkgdir/opt/Pulsar/resources/pulsar.sh"
 
   ln -sf "/opt/Pulsar/resources/pulsar.sh" "$pkgdir/usr/bin/pulsar"
