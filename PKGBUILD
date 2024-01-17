@@ -4,7 +4,7 @@
 
 pkgname=python-pylxd
 _name="${pkgname#python-}"
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="A library for interacting with the LXD REST API"
 arch=('any')
@@ -23,8 +23,8 @@ depends=(
 )
 optdepends=('lxd: to use a local LXD server')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('665981e2a0f225a6457447783ef40c98309430f8e1ed95679637735b45a9e52f0eb0b0ddceb113ee6393885c34c904b3719ed1fe705bdf13f2ffd63b7712b129')
-b2sums=('ecee70c9e051d19068f856d88b46a6d2612d0db81d6b9a4853968c9f699840019cd540bdea2386c7be460e8a8e7406656364247066468c41aba299a4d024a543')
+sha512sums=('078321d80597a538cfda16de4090a7950c6fe9adba936570b165f214539cfaad9075ebece4779355c59c64d6260da76ce98a0dc4e16b161cbe54a8fcad1dedaf')
+b2sums=('0578d03bc19f1bb001e379be6eb8bb12db2d0beb47c1ba4e03db73f473556445a5c6989fef09851df2b26e20337776f4cec8cb4ea00cfa31d8fa5b18efb09b8e')
 
 build() {
   cd "$_name-$pkgver"
