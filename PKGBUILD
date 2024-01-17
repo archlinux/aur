@@ -1,6 +1,6 @@
 # Contributor: ordoban <dirk.langer@vvovgonik.de>
 pkgname='perl-crypt-ecb'
-pkgver='2.22'
+pkgver='2.23'
 pkgrel='1'
 pkgdesc="Use block ciphers using ECB mode within perl scripts"
 arch=('any')
@@ -11,8 +11,8 @@ checkdepens=()
 makedepends=()
 url='https://metacpan.org/pod/Crypt::ECB'
 source=("https://cpan.metacpan.org/authors/id/A/AP/APPEL/Crypt-ECB-$pkgver.tar.gz")
-md5sums=('1930bfc9afefd65f50499e53781cb767')
-sha512sums=('1d186001674ed4a0ee6933e441cd20e177e63a5809abcf865d48041712f31db312f0206883601369f031451ab702f6f9ef8be5c3f1cec6088ad200f541c04459')
+md5sums=('0bc63fea36ce864469ee8bf6c410ade4')
+sha512sums=('a48277362dd30586ac4b5ba91f1e4e02990b51b49bc073bd06110baa9bd6a3aec1faac508120642f43762ee8f92aa16b46292f4e2c81704c31778dcc72edf1d8')
 _distdir="Crypt-ECB-$pkgver"
 
 build() {
