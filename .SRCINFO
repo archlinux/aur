@@ -1,12 +1,13 @@
 pkgbase = python-envisage
 	pkgdesc = Extensible Application Framework
 	pkgver = 7.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/enthought/envisage
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	checkdepends = python-configobj
 	checkdepends = python-pytest
+	checkdepends = qt5-svg
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel

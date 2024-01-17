@@ -4,11 +4,11 @@
 pkgname=python-envisage
 _name=${pkgname#python-}
 pkgver=7.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Extensible Application Framework"
 arch=(any)
 url="https://github.com/enthought/envisage"
-license=(BSD)
+license=(BSD-3-Clause)
 depends=(
   python
   python-apptools
@@ -27,6 +27,7 @@ makedepends=(
 checkdepends=(
   python-configobj
   python-pytest
+  qt5-svg
 )
 optdepends=('ipython: for IPython shell plugin')
 
