@@ -1,0 +1,18 @@
+pkgbase = aw-watcher-steam-git
+	pkgdesc = ActivityWatch watcher to watch your currently playing Steam game
+	pkgver = r5.13c4b65
+	pkgrel = 1
+	url = https://github.com/Edwardsoen/aw-watcher-steam
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = git
+	depends = python
+	depends = python-requests
+	depends = activitywatch-bin
+	provides = aw-watcher-steam
+	conflicts = aw-watcher-steam
+	source = aw-watcher-steam::git+https://github.com/Edwardsoen/aw-watcher-steam.git
+	md5sums = SKIP
+
+pkgname = aw-watcher-steam-git

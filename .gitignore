@@ -1,0 +1,7 @@
+aw-watcher-steam
+aw-watcher-steam-git
+*.tar.xz
+*.tar.zst
+*.swp
+pkg/
+src/
