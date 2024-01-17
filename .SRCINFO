@@ -1,7 +1,7 @@
 pkgbase = webmin
 	pkgdesc = A web-based administration interface for Unix systems
 	pkgver = 2.105
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.webmin.com/
 	install = webmin.install
 	arch = any
@@ -120,7 +120,7 @@ pkgbase = webmin
 	backup = etc/webmin/xterm/config
 	backup = etc/logrotate.d/webmin
 	backup = etc/pam.d/webmin
-	source = http://downloads.sourceforge.net/sourceforge/webadmin/webmin-2.105.tar.gz
+	source = https://github.com/webmin/webmin/releases/download/2.105/webmin-2.105.tar.gz
 	source = setup-pre.sh
 	source = setup-post.sh
 	source = webmin-config.tar.bz2

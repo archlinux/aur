@@ -4,7 +4,7 @@
 
 pkgname=webmin
 pkgver=2.105
-pkgrel=1
+pkgrel=2
 pkgdesc="A web-based administration interface for Unix systems"
 arch=(any)
 license=('custom:webmin')
@@ -114,7 +114,7 @@ backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' \
 'etc/webmin/xterm/config' \
 'etc/logrotate.d/webmin' \
 'etc/pam.d/webmin' )
-source=("http://downloads.sourceforge.net/sourceforge/webadmin/$pkgname-$pkgver.tar.gz"
+source=("https://github.com/webmin/webmin/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"
         setup-pre.sh
         setup-post.sh
         webmin-config.tar.bz2
@@ -161,6 +161,14 @@ package() {
     # so is_installed() check fails, so we avoid it in setup.sh
     mv firewall/install_check{,.tmp}.pl
     mv firewall6/install_check{,.tmp}.pl
+
+    # Disable background collection setup script due to UNKNOWN bug introduced in webmin-2.104
+    # which made /etc/webmin/system-status/config as a directory instead of regular file.
+    # This DOES NOT FIX THE BUG but its just a (temporary) workaround.
+    # Starting point to DEBUG this can be enable-collection.pl script
+    sed -i -e "/^# Enable background collection/,/^fi/ s/^/#/" "$srcdir"/$pkgname-$pkgver/setup.sh
+
+    # Run webmin setup script
     "$srcdir"/$pkgname-$pkgver/setup.sh "$pkgdir"/opt/webmin
 
     # move the files back in place
