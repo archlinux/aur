@@ -11,13 +11,13 @@ pkgrel=1
 pkgdesc="pf-kernel"
 arch=(x86_64)
 url="https://pfkernel.natalenko.name"
-license=(GPL2)
+license=(GPL-2.0-only)
 makedepends=(bc cpio gettext libelf pahole perl python tar xz)
 options=('!strip')
 source=(https://codeberg.org/pf-kernel/linux/archive/${_rev}.tar.gz
 		config)
 b2sums=(SKIP
-		'38fc68a9ff640bf17033184eaa03fcc1041d1a86db570d8853d298a30d12b0286c671a39549d1af1d119b0ee6e979d2a158295119bff626aef0c99759b57f808')
+		'005012838d4ba79388fee0c396f25a93a45192341d0a1cf37d36440b3446aaf34e85fdfc1f6eccf54967b3b59548a0073ca132806cdc1ae021586ccc4adfc04f')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=${pkgbase}
