@@ -4,7 +4,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-lame
 pkgver=3.100
-pkgrel=6
+pkgrel=7
 pkgdesc="A high quality MPEG Audio Layer III (MP3) encoder (android)"
 arch=('any')
 url="http://lame.sourceforge.net/"
@@ -18,6 +18,8 @@ md5sums=('83e260acbe4389b54fe08e0bdbf7cddb')
 prepare() {
     source android-env ${_android_arch}
     check_ndk_version_ge_than 18.0
+
+    sed -i "s/define DEPRECATED_OR_OBSOLETE_CODE_REMOVED 1/define DEPRECATED_OR_OBSOLETE_CODE_REMOVED 0/g" "${srcdir}"/lame-${pkgver}/include/lame.h
 }
 
 build() {
