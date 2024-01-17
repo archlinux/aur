@@ -1,10 +1,10 @@
 pkgbase = lsyncd
 	pkgdesc = Live Syncing (Mirror) Daemon
 	pkgver = 2.3.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/lsyncd/lsyncd
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	checkdepends = lua53-posix
 	checkdepends = openssh
 	makedepends = asciidoc

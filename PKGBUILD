@@ -4,11 +4,11 @@
 
 pkgname=lsyncd
 pkgver=2.3.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Live Syncing (Mirror) Daemon"
 arch=(x86_64)
 url="https://github.com/lsyncd/lsyncd"
-license=(GPL2)
+license=(GPL-2.0-or-later)
 depends=(
   glibc
   lua53
@@ -73,13 +73,13 @@ package() {
 
   DESTDIR="$pkgdir" cmake --install build
 
-  install -Dm664 "$pkgdir/man1/lsyncd.1" "$pkgdir/usr/share/man/man1/lsyncd.1"
+  install -Dm664 -t "$pkgdir/usr/share/man/man1" "$pkgdir/man1/lsyncd.1"
   rm -rf "$pkgdir/man1"
 
-  install -Dm644 "$srcdir/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-  install -Dm644 "$srcdir/$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+  install -Dm644 -t "$pkgdir/usr/lib/systemd/system" "$srcdir/lsyncd.service"
+  install -Dm644 -t "$pkgdir/usr/lib/sysusers.d" "$srcdir/lsyncd.sysusers"
 
-  mkdir -p "$pkgdir/usr/share/doc/$pkgname"
-  cp -r "$pkgdir/usr/doc/examples" "$pkgdir/usr/share/doc/$pkgname/examples"
+  install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+  cp --archive --no-preserve=ownership "$pkgdir/usr/doc/examples" "$pkgdir/usr/share/doc/$pkgname/examples"
   rm -rf "$pkgdir/usr/doc"
 }
