@@ -1,0 +1,19 @@
+pkgbase = lib32-polkit
+	pkgdesc = Application development toolkit for controlling system-wide privileges
+	pkgver = 124
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/polkit/polkit
+	arch = x86_64
+	license = LGPL-2.0-or-later
+	makedepends = git
+	makedepends = lib32-expat
+	makedepends = lib32-pam
+	makedepends = meson
+	depends = lib32-glib2
+	depends = lib32-systemd
+	depends = polkit
+	provides = libpolkit-gobject-1.so
+	source = git+https://gitlab.freedesktop.org/polkit/polkit.git#commit=82f0924dc0eb23b9df68e88dbaf9e07c81940a5a
+	b2sums = SKIP
+
+pkgname = lib32-polkit
