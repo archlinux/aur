@@ -93,12 +93,13 @@ build () {
         -D rust_std=2021 \
         -D shared-glapi=enabled \
         -D valgrind=enabled \
-        -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc,av1dec,av1enc,vp9dec \
+        -D video-codecs=all \
         -D vulkan-drivers=all \
         -D vulkan-layers=device-select,overlay \
         -D buildtype=release \
         -D prefix=/usr \
-        -D sysconfdir=/etc
+        -D sysconfdir=/etc \
+        -D zstd=enabled
 
     meson configure --no-pager _build
     
