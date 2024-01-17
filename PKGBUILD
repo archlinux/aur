@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=houdoku-appimage
-pkgver=2.13.1
-pkgrel=2
+pkgver=2.14.0
+pkgrel=1
 pkgdesc="Manga reader and library manager for the desktop"
 arch=('x86_64')
 url="https://houdoku.org/"
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-appimage}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/Houdoku-${pkgver}.AppImage"
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/xgi/houdoku/v${pkgver}/LICENSE.txt"
 )
-sha256sums=('1eeb55755b6d8b14f812d47e78639065c20fc5fc592fd6aaa387693ba349e978'
+sha256sums=('3820e41cb30d9ba0f48259cf2ff47ec07f1dc17f676214af16b7ba4b21c2e4f5'
             'aaa8944d0b38e6aed006c07f2c43e16332f5700f93dc7a00a3490a6d27450a18')
 build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
