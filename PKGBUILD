@@ -1,7 +1,7 @@
 #Maintainer: d.r.vanrossum at gmx dot de
 
 pkgname=minidsp-rs
-pkgver=0.1.7
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Alternative control software for certain MiniDSP products"
 arch=(x86_64)
@@ -10,7 +10,8 @@ license=('APACHE')
 depends=('gcc-libs' 'libusb')
 makedepends=('git' 'clang' 'cmake' 'rust')
 source=("minidsp.tar.gz"::"https://github.com/mrene/$pkgname/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1fff602f05d4881acce40e240e8572acc1d4294cb3b195282bdb68ece9ebc30d')
+options=('!lto')
+sha256sums=('caf9db7418bf9e7fccaeb7664af56a70dc67eb7eb31073ace34406c71b6d246f')
 
 build() {
   cd "$pkgname-$pkgver"
