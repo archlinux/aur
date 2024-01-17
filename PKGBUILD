@@ -2,7 +2,7 @@
 
 _gemname=mechanize
 pkgname=ruby-$_gemname
-pkgver=2.9.1
+pkgver=2.9.2
 pkgrel=1
 pkgdesc="The Mechanize library is used for automating interaction with websites"
 arch=(any)
@@ -29,26 +29,55 @@ sha256sums=('SKIP')
 
 build() {
   cd $_gemname
-  gem build ${_gemname}.gemspec
+
+  gem build "${_gemname}.gemspec"
+
+  gem install \
+    --local \
+    --verbose \
+    --ignore-dependencies \
+    --no-user-install \
+    --install-dir "tmp_install/${_gemdir}" \
+    --bindir "tmp_install/usr/bin" \
+    "${_gemname}-${pkgver}.gem"
+
+  # remove unrepreducible files
+  rm --force --recursive --verbose \
+    "tmp_install/${_gemdir}/cache/" \
+    "tmp_install/${_gemdir}/gems/${_gemname}-${pkgver}/vendor/" \
+    "tmp_install/${_gemdir}/doc/${_gemname}-${pkgver}/ri/ext/"
+
+  find "tmp_install/${_gemdir}/gems/" \
+    -type f \
+    \( \
+      -iname "*.o" -o \
+      -iname "*.c" -o \
+      -iname "*.so" -o \
+      -iname "*.time" -o \
+      -iname "gem.build_complete" -o \
+      -iname "Makefile" \
+    \) \
+    -delete
+
+  find "tmp_install/${_gemdir}/extensions/" \
+    -type f \
+    \( \
+      -iname "mkmf.log" -o \
+      -iname "gem_make.out" \
+    \) \
+    -delete
 }
 
 check() {
   cd $_gemname
-  rake test
+  local _gemdir="$(gem env gemdir)"
+  GEM_HOME="tmp_install/${_gemdir}" rake test
 }
 
 package() {
   cd $_gemname
-  local _gemdir="$(gem env gemdir)"
 
-  gem install \
-    --ignore-dependencies \
-    --no-user-install \
-    -i "$pkgdir/$_gemdir" \
-    -n "$pkgdir/usr/bin" \
-    $_gemname-$pkgver.gem
-
-  rm -rf "$pkgdir/$_gemdir/cache"
+  cp --archive --verbose tmp_install/* "${pkgdir}"
 
   install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
