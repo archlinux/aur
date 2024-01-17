@@ -1,13 +1,13 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=estimatr
-_pkgver=1.0.0
+_pkgver=1.0.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Fast Estimators for Design-Based Inference"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
+url="https://cran.r-project.org/package=$_pkgname"
 license=(MIT)
 depends=(
   r-formula
@@ -47,12 +47,12 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c8e716d7894d9febfca19b2e8fdfea36')
-sha256sums=('a9c8ce7a7f77d4e030052cced599e41376a91de8179e12dd79a5bf4eed91a9df')
+md5sums=('0dadaa803a54e5c38c52eb478633e89f')
+b2sums=('0e20bd3f756bb56f8acac859c5c1b9e31b5cbe74ac9ad801ac062e887514a1107038e6f8d53cb53a4e4e45e82a109acdea7d31cc5d676a47240f25c491694ad6')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
