@@ -1,0 +1,17 @@
+pkgbase = android-armv7a-eabi-libtasn1
+	pkgdesc = The ASN.1 library used in GNUTLS (android)
+	pkgver = 4.19.0
+	pkgrel = 1
+	url = http://www.gnu.org/software/libtasn1
+	arch = any
+	license = GPL3, LGPL
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = http://ftp.gnu.org/gnu/libtasn1/libtasn1-4.19.0.tar.gz
+	sha256sums = 1613f0ac1cf484d6ec0ce3b8c06d56263cc7242f1c23b30d82d23de345a63f7a
+
+pkgname = android-armv7a-eabi-libtasn1
