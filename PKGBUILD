@@ -9,7 +9,7 @@ set -u
 pkgname='libreswan'
 #pkgname+='-git'
 pkgver='4.12'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='IPsec implementation with IKEv1 and IKEv2 keying protocols'
 arch=('i686' 'x86_64')
 arch+=('aarch64') # yjun naumovitch
@@ -92,6 +92,7 @@ build() {
     #-Wno-error=pointer-compare
     #-Wno-error=format-truncation
     #-DNSS_PKCS11_2_0_COMPAT=1 # nss 3.52 https://github.com/libreswan/libreswan/issues/342
+    -Wno-error=unused-result
   )
 
   CFLAGS="${CFLAGS} ${_cf[*]}" \
