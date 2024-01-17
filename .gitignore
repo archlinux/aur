@@ -1,0 +1,9 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!poi.desktop
+!poi.sh
