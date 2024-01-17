@@ -12,11 +12,11 @@ depends=(ffmpeg boost-libs libgl freeimage glew tbb openal sfml libxcomposite li
 makedepends=(git cmake ninja boost dos2unix)
 source=("casparcg-server::git+https://github.com/CasparCG/server.git"
         "https://patch-diff.githubusercontent.com/raw/CasparCG/server/pull/1308.patch"
-        "ffmpeg-cmake.patch"
+        "https://github.com/CasparCG/server/commit/1eccd7572be9131c6017c476379e5e86d2f347cc.patch"
         casparcg)
 sha256sums=('SKIP'
             '5c6f2a3007e3a8739bc1f3eaec3c694af9836aed1943217843a92acff80950c1'
-            'e7f0e0dd123b1cccac21611f4e32ba7d27ce24a9a0587ef6f2180fb3c63894c0'
+            '079f8717a3f4d4eee6e593b0eb138d17805ec7076cd5547006c9e13fb446199a'
             'ce9dd83ae2ef9289e551f0a3ecbe246537195049c15f69bbfdc6c3ddd23291c2')
 
 pkgver() {
