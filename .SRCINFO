@@ -1,6 +1,6 @@
 pkgbase = music-lounge
 	pkgdesc = Yet another music player
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://gitlab.com/aercloud-systems/music-lounge
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = music-lounge
 	depends = xz
 	depends = zstd
 	depends = libgpg-error
-	source = https://gitlab.com/aercloud-systems/music-lounge/-/archive/0.7.1/music-lounge-0.7.1.zip
+	source = https://gitlab.com/aercloud-systems/music-lounge/-/archive/0.7.2/music-lounge-0.7.2.zip
 	md5sums = SKIP
 
 pkgname = music-lounge
