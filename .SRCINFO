@@ -1,7 +1,7 @@
 pkgbase = issie
 	pkgdesc = An intuitive cross-platform hardware design application.
 	pkgver = 4.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://tomcl.github.io/issie
 	arch = any
 	license = GPL3
@@ -30,7 +30,7 @@ pkgbase = issie
 	depends = alsa-lib
 	depends = gtk3
 	conflicts = issie
-	source = issie-4.1.0::git+https://github.com/tomcl/issie.git#tag=v4.1.0
+	source = issie.git::git+https://github.com/tomcl/issie.git#tag=v4.1.0
 	sha256sums = SKIP
 
 pkgname = issie
