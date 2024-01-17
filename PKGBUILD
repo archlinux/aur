@@ -3,7 +3,7 @@ pkgname=spacemesh-bin
 _pkgname=Spacemesh
 pkgver=1.3.3
 _electronversion=25
-pkgrel=1
+pkgrel=2
 pkgdesc="Spacemesh App (Smesher + Wallet)"
 arch=(
     'aarch64'
@@ -25,7 +25,7 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_downurl}/v${pkgver}/${p
 source=(
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+sha256sums=('edee1eb616edac84029cec7a628579ca670ef2838db90117da35e0499861be48')
 sha256sums_aarch64=('bb786ded58df69c6a52546b86688ab29d3ea93eefa496cdecf3524c813dda7ea')
 sha256sums_x86_64=('11610fcd45f997bbc1019d447e616c94feb55fd16f7953782921f86e82e617e7')
 build() {
@@ -39,8 +39,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/opt/${_pkgname}/resources/resources" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}/resources"
+    cp -r "${srcdir}/opt/${_pkgname}/resources/resources" "${pkgdir}/usr/lib/${pkgname%-bin}/resources"
     cp -r "${srcdir}/opt/${_pkgname}/node" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}_app.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
