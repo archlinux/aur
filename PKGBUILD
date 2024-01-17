@@ -1,7 +1,8 @@
 # Maintainer: Ildus Kurbangaliev <i.kurbangaliev@gmail.com>
+# Contributor: Steffen Jaeckel <jaeckel-floss@eyet-services.de>
 
 pkgname=verible-bin
-pkgver=0.0.3424
+pkgver=0.0.3483
 pkgrel=1
 pkgdesc='SystemVerilog parser, linter, formatter and etc from Google'
 arch=('x86_64' 'aarch64')
@@ -14,12 +15,7 @@ source=("https://api.github.com/repos/chipsalliance/verible/releases/latest")
 sha512sums=('SKIP')
 
 prepare() {
-  cat latest \
-	| jq '.assets' \
-	| grep -i --color=never browser_download_url \
-	| grep -i --color=never centos \
-	| grep -i --color=never "${CARCH}" \
-	| awk '{print $2}' \
+  jq ".assets[].browser_download_url | select(contains(\"${CARCH}\"))" latest \
 	| xargs wget -O - \
 	| tar -xz
 }
@@ -34,5 +30,4 @@ package() {
   mkdir -p $pkgdir/usr/
 
   cp -R bin $pkgdir/usr/
-  cp -R share $pkgdir/usr/
 }
