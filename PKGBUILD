@@ -5,22 +5,38 @@
 pkgname=python-rarfile
 _name=${pkgname#python-}
 pkgver=4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module for RAR archive reading"
 arch=('any')
 url="https://github.com/markokr/rarfile"
 license=('ISC')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-optdepends=('unarchiver: alternative decompression backend'
-            'libarchive: alternative decompression backend'
-            'python-pycryptodome: process archives with password-protected headers')
+optdepends=('unrar: decompression backend'
+            'unarchiver: alternative decompression backend (unar)'
+            'libarchive: alternative decompression backend (bsdtar)'
+            'p7zip: alternative decompression backend (7z)'
+            '7-zip: alternative decompression backend (7zz)'
+            'python-cryptography: process archives with password-protected headers'
+            'python-pycryptodome: alternative crypto backend')
+checkdepends=('python-pytest'
+              'unarchiver'
+              'libarchive'
+              'unrar'
+              'p7zip'
+              'python-cryptography'
+              'python-pycryptodome')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('50cd9e283263e2b3b2762e3027f29989e0f641e8df7eb74bcba974df2f805860')
 
 build() {
   cd "$_name-$pkgver"
   python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$_name-$pkgver"
+  pytest -v
 }
 
 package() {
