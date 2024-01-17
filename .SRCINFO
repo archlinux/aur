@@ -1,0 +1,17 @@
+pkgbase = android-aarch64-gmp
+	pkgdesc = A free library for arbitrary precision arithmetic (android)
+	pkgver = 6.3.0
+	pkgrel = 1
+	url = http://gmplib.org
+	arch = any
+	license = LGPL3
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://gmplib.org/download/gmp/gmp-6.3.0.tar.lz
+	sha256sums = be5c908a7a836c3a9bd9d62aa58563c5e9e7fef94c43a7f42dbc35bb6d02733c
+
+pkgname = android-aarch64-gmp
