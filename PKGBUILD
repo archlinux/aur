@@ -5,11 +5,11 @@
 pkgname=python-pypresence
 _name=${pkgname#python-}
 pkgver=4.3.0
-pkgrel=1
-pkgdesc='Discord RPC and Rich Presence wrapper library'
-url='https://github.com/qwertyquerty/pypresence'
+pkgrel=2
+pkgdesc="Discord RPC and Rich Presence wrapper library"
+url="https://github.com/qwertyquerty/pypresence"
 arch=(any)
-license=(BSD)
+license=(MIT)
 depends=(python)
 makedepends=(
   python-build
@@ -36,7 +36,7 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 "man/$_name.1" -t "$pkgdir/usr/share/man/man1/"
+  install -Dm644 -t "$pkgdir/usr/share/man/man1" man/pypresence.1
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }

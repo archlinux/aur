@@ -1,10 +1,10 @@
 pkgbase = python-pypresence
 	pkgdesc = Discord RPC and Rich Presence wrapper library
 	pkgver = 4.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qwertyquerty/pypresence
 	arch = any
-	license = BSD
+	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
