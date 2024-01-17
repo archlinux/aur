@@ -48,7 +48,7 @@ Co-authored-by: Björn Bidar <bjorn.bidar@thaodan.de>
  create mode 100644 uriloader/exthandler/unix/nsKDERegistry.h
 
 diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
-index 0dc2a121245350fbc57d976a04f199c53065f8b8..969bdb4f6dba260e903df85bee8d3c7c2df32a1c 100644
+index 7860eaa60179d6e5e0952ad0ec75e38b37d8d1b7..a8358199720719f2d5aaff91e30307b752ca0d85 100644
 --- a/modules/libpref/Preferences.cpp
 +++ b/modules/libpref/Preferences.cpp
 @@ -96,6 +96,7 @@
@@ -270,7 +270,7 @@ index 9a76d1f580c08fafe6b3ab53669cb2ee6c289d12..80416ff1b4edeba2d90c934f2e8a5a51
      CXXFLAGS += CONFIG["MOZ_X11_SM_CFLAGS"]
 diff --git a/toolkit/xre/nsKDEUtils.cpp b/toolkit/xre/nsKDEUtils.cpp
 new file mode 100644
-index 0000000000000000000000000000000000000000..e282de40618e0be06a4247891d9ab1a26cba2126
+index 0000000000000000000000000000000000000000..ca0266b4868811e4afe2db4a1d9e7663ffd2a1ce
 --- /dev/null
 +++ b/toolkit/xre/nsKDEUtils.cpp
 @@ -0,0 +1,286 @@
@@ -296,9 +296,9 @@ index 0000000000000000000000000000000000000000..e282de40618e0be06a4247891d9ab1a2
 +#include <X11/Xlib.h>
 +// copied from X11/X.h as a hack since for an unknown
 +// reason it's not picked up from X11/X.h
-+#ifndef None
-+#  define None 0L /* universal null resource or null atom */
-+#endif
++//#ifndef None
++//#  define None 0L /* universal null resource or null atom */
++//#endif
 +
 +// #define DEBUG_KDE
 +#ifdef DEBUG_KDE
@@ -1374,7 +1374,7 @@ index 4a58f46da3f610e9b2f55053939235c7350fedc5..7fb012af861f20932778c59da631f663
  
  if CONFIG["MOZ_WIDGET_TOOLKIT"] == "gtk":
 diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
-index 0b539854a7c617a6c45392de9d67a2a25ec2bff1..59f432741ff31b02888b27b158528c433293cbaa 100644
+index ae501f40415468c5422c02257e85dd8710a5d01a..190c527916e56ac7aa64233add1d7bc58e8b8ad7 100644
 --- a/xpcom/io/nsLocalFileUnix.cpp
 +++ b/xpcom/io/nsLocalFileUnix.cpp
 @@ -51,6 +51,7 @@
@@ -1385,7 +1385,7 @@ index 0b539854a7c617a6c45392de9d67a2a25ec2bff1..59f432741ff31b02888b27b158528c43
  #endif
  
  #ifdef MOZ_WIDGET_COCOA
-@@ -2188,10 +2189,18 @@ nsLocalFile::Reveal() {
+@@ -2210,10 +2211,18 @@ nsLocalFile::Reveal() {
    }
  
  #ifdef MOZ_WIDGET_GTK
@@ -1406,7 +1406,7 @@ index 0b539854a7c617a6c45392de9d67a2a25ec2bff1..59f432741ff31b02888b27b158528c43
    return giovfs->RevealFile(this);
  #elif defined(MOZ_WIDGET_COCOA)
    CFURLRef url;
-@@ -2213,6 +2222,13 @@ nsLocalFile::Launch() {
+@@ -2235,6 +2244,13 @@ nsLocalFile::Launch() {
    }
  
  #ifdef MOZ_WIDGET_GTK

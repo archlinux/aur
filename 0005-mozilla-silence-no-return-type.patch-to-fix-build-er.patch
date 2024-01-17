@@ -439,7 +439,7 @@ index 5a970fb2ef1af8069b7dd0c52a993ea7d7e6e896..0feec89ab185ab214e1f24b05efab02f
  
  VideoStreamAdapter::RestrictionsOrState
 diff --git a/third_party/libwebrtc/call/rtp_payload_params.cc b/third_party/libwebrtc/call/rtp_payload_params.cc
-index f0347bc74ea215a80f28e8aaf929b6781403c0ad..d1feb979c93c4add23fafa1186f58335de1db565 100644
+index e9bfb30ae3770d2e99f3d9c991ce5b859b865617..45126fb5102d86741b2fb0752575a0d4c4a261cd 100644
 --- a/third_party/libwebrtc/call/rtp_payload_params.cc
 +++ b/third_party/libwebrtc/call/rtp_payload_params.cc
 @@ -405,7 +405,7 @@ absl::optional<FrameDependencyStructure> RtpPayloadParams::GenericStructure(
@@ -464,10 +464,10 @@ index e8532a7a2669e717e79c49a1fd45020ca07dbced..c251629073b4c555c57d79d7fa7578a2
  
  }  // namespace
 diff --git a/third_party/libwebrtc/media/base/codec.cc b/third_party/libwebrtc/media/base/codec.cc
-index 7a238cfae4ae4e6e499052361376b2a13428de6c..93ec783252473adbfb5a5703d9e2ca98d4e3f457 100644
+index 70a8d90e25a3ece112d0628a7bbefda26b60b36e..3226aa95ec3bb764d0f498a34d6d7f97527e6075 100644
 --- a/third_party/libwebrtc/media/base/codec.cc
 +++ b/third_party/libwebrtc/media/base/codec.cc
-@@ -200,6 +200,7 @@ bool Codec::Matches(const Codec& codec,
+@@ -206,6 +206,7 @@ bool Codec::Matches(const Codec& codec,
        case Type::kVideo:
          return IsSameCodecSpecific(name, params, codec.name, codec.params);
      }
@@ -611,7 +611,7 @@ index f1e4eddb4b9d8855f6accf24ef980cbc11d0077d..b3fde3cda3c7c636b8f37f3778fb3b73
  
  }  // namespace webrtc
 diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
-index 13cb30ee7f543435c4c6f58edc0ee1b402385596..dc4eae363eba9196d07c752c7bf851efe400430d 100644
+index bdb79fe8ccc9c8c1dd58b5216030cd78aa13fe2a..bfb6754b4bc0947a9df185904f8fed66ea716c52 100644
 --- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
 +++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
 @@ -138,6 +138,7 @@ bool IsNonVolatile(RTPExtensionType type) {
@@ -623,7 +623,7 @@ index 13cb30ee7f543435c4c6f58edc0ee1b402385596..dc4eae363eba9196d07c752c7bf851ef
  
  bool HasBweExtension(const RtpHeaderExtensionMap& extensions_map) {
 diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
-index 47b7b7910bd6a26748394c30cc0c932f6e1e0327..49326d2bee9c3d8df42e219b8e75c5ce34b63ed0 100644
+index a0f1af5243a7f73f414d4401f27e1945235d3278..83ba1e5f60fe55db5fa8b953522ae7a9757e81df 100644
 --- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
 +++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
 @@ -45,6 +45,7 @@ namespace {

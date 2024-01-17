@@ -214,7 +214,7 @@ index fc576f30bc6a47db5c8bfbaa77bb117f1bd68011..903d6b29f62528b6ecd762ef69fb5f20
  sqlite3_complete16
  sqlite3_config
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index 74073e7e33f587ad8bf6a42f06fce156fcd33382..f599c82d749e5efda576a5122de7d4b88ea22831 100644
+index c15d4dba75c3151fc44145bf5f114e16ca4c147f..527925bd8784e0dd33a79e0b7d80a53f424fcf48 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
 @@ -380,6 +380,20 @@ sndio = pkg_check_modules("MOZ_SNDIO", "sndio", when="--enable-sndio")

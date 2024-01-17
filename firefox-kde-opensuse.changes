@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Dec 20 12:59:57 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 121.0
+  https://www.mozilla.org/en-US/firefox/121.0/releasenotes
+  MFSA 2023-56 (bsc#1217974)
+  * CVE-2023-6856 (bmo#1843782)
+    Heap-buffer-overflow affecting WebGL DrawElementsInstanced
+    method with Mesa VM driver
+  * CVE-2023-6135 (bmo#1853908)
+    NSS susceptible to "Minerva" attack
+  * CVE-2023-6865 (bmo#1864123)
+    Potential exposure of uninitialized data in EncryptingOutputStream
+  * CVE-2023-6857 (bmo#1796023)
+    Symlinks may resolve to smaller than expected buffers
+  * CVE-2023-6858 (bmo#1826791)
+    Heap buffer overflow in nsTextFragment
+  * CVE-2023-6859 (bmo#1840144)
+    Use-after-free in PR_GetIdentitiesLayer
+  * CVE-2023-6866 (bmo#1849037)
+    TypedArrays lack sufficient exception handling
+  * CVE-2023-6860 (bmo#1854669)
+    Potential sandbox escape due to VideoBridge lack of texture
+    validation
+  * CVE-2023-6867 (bmo#1863863)
+    Clickjacking permission prompts using the popup transition
+  * CVE-2023-6861 (bmo#1864118)
+    Heap buffer overflow affected nsWindow::PickerOpen(void) in
+    headless mode
+  * CVE-2023-6868 (bmo#1865488)
+    WebPush requests on Firefox for Android did not require VAPID key
+  * CVE-2023-6869 (bmo#1799036)
+    Content can paint outside of sandboxed iframe
+  * CVE-2023-6870 (bmo#1823316)
+    Android Toast notifications may obscure fullscreen event
+    notifications
+  * CVE-2023-6871 (bmo#1828334)
+    Lack of protocol handler warning in some instances
+  * CVE-2023-6872 (bmo#1849186)
+    Browsing history leaked to syslogs via GNOME
+  * CVE-2023-6863 (bmo#1868901)
+    Undefined behavior in ShutdownObserver()
+  * CVE-2023-6864 (bmo#1736385, bmo#1810805, bmo#1846328, bmo#1856090,
+    bmo#1858033, bmo#1858509, bmo#1862777, bmo#1864015)
+    Memory safety bugs fixed in Firefox 121, Firefox ESR 115.6,
+    and Thunderbird 115.6
+  * CVE-2023-6873 (bmo#1855327, bmo#1862089, bmo#1862723)
+    Memory safety bugs fixed in Firefox 121
+- requires NSS 3.95
+
+-------------------------------------------------------------------
 Fri Dec  8 15:55:00 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 120.0.1 (boo#1217910)

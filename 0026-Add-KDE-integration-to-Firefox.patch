@@ -27,10 +27,10 @@ How to apply this patch:
  create mode 100644 browser/components/shell/nsUnixShellService.h
 
 diff --git a/browser/components/preferences/main.js b/browser/components/preferences/main.js
-index ac661e93cab338a133d3e70a41a380e437f32d33..c9a657a85a071e9cafb2ed50ee8f9be63f390549 100644
+index 201d3c32da2ddb8356ff549c83cdcc608b959222..fd5cdeef683053c6888acd78b197c689b6c65b2f 100644
 --- a/browser/components/preferences/main.js
 +++ b/browser/components/preferences/main.js
-@@ -296,6 +296,13 @@ var gMainPane = {
+@@ -297,6 +297,13 @@ var gMainPane = {
        }, backoffTimes[this._backoffIndex]);
      }
  
@@ -44,7 +44,7 @@ index ac661e93cab338a133d3e70a41a380e437f32d33..c9a657a85a071e9cafb2ed50ee8f9be6
      this.initBrowserContainers();
      this.buildContentProcessCountMenuList();
  
-@@ -1749,6 +1756,17 @@ var gMainPane = {
+@@ -1750,6 +1757,17 @@ var gMainPane = {
        }
        try {
          shellSvc.setDefaultBrowser(false);

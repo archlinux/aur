@@ -90,10 +90,10 @@ index 845d0030229cc2a81eaa1a0ca341d0175af3d976..3b5d5153fc9f49ed729eb5685e8d6779
          LOCAL_INCLUDES += ['/media/mozva']
          SOURCES += [
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index 9d5ee0ca9100d4206e8e0ef43f6ce5193acfa078..28d3ffdc390b9273e6dd1adbe07d964150ab5a19 100644
+index 8b462ecde463fc4ac31278d94daaad5e513d7c00..eb7ae84b5d65df80e23b8ab503ffe0576c2a30a0 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
-@@ -747,14 +747,29 @@ def av1(value):
+@@ -749,14 +749,29 @@ def av1(value):
      if value:
          return True
  
@@ -125,7 +125,7 @@ index 9d5ee0ca9100d4206e8e0ef43f6ce5193acfa078..28d3ffdc390b9273e6dd1adbe07d9641
  def dav1d_nasm(target):
      if target.cpu in ("x86", "x86_64"):
          return namespace(version="2.14", what="AV1")
-@@ -764,6 +779,7 @@ set_config("MOZ_DAV1D_ASM", dav1d_asm)
+@@ -766,6 +781,7 @@ set_config("MOZ_DAV1D_ASM", dav1d_asm)
  set_define("MOZ_DAV1D_ASM", dav1d_asm)
  set_config("MOZ_AV1", av1)
  set_define("MOZ_AV1", av1)

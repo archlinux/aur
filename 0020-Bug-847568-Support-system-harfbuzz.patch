@@ -39,10 +39,10 @@ index 4b61063cf92a2adabb7b552328420aefbfc93242..f35c684e9ef6693804d8e026d8ff3fa8
      system_headers += [
          'jack/jack.h',
 diff --git a/dom/base/moz.build b/dom/base/moz.build
-index 9210804b890a26b625d4df182de31331dcc46f97..5050bf1c087b22d95ce569e5263f462dd19f129c 100644
+index f5dfc1b1ae258491c635a0f7f767d67ec6574826..d158b81012bc5fabd5f2668d7674b3a2d1c60d88 100644
 --- a/dom/base/moz.build
 +++ b/dom/base/moz.build
-@@ -604,6 +604,9 @@ FINAL_LIBRARY = "xul"
+@@ -608,6 +608,9 @@ FINAL_LIBRARY = "xul"
  if CONFIG["MOZ_WIDGET_TOOLKIT"] == "gtk":
      CXXFLAGS += CONFIG["MOZ_GTK3_CFLAGS"]
  
@@ -157,7 +157,7 @@ index da1d8c47f83e2f23cd802615ab8fff822f6e05c8..7ee842def285a9a7fc805758e9f73494
      OS_LIBS += CONFIG["MOZ_JPEG_LIBS"]
  
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index 28d3ffdc390b9273e6dd1adbe07d964150ab5a19..3b1ce8d63069384c9afca009fe19d2b3740241aa 100644
+index eb7ae84b5d65df80e23b8ab503ffe0576c2a30a0..5c461d746a7718befe988d48364ea5d74c0b6d48 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
 @@ -678,6 +678,14 @@ def freetype2_combined_info(fontconfig_info, freetype2_info):
