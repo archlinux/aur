@@ -1,0 +1,14 @@
+pkgbase = hyprwatch-git
+	pkgdesc = A CLI abstraction tool over Hyperland's event socket with some extra data.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/VirtCode/hyprwatch
+	arch = x86_64
+	license = MIT
+	makedepends = cargo-nightly
+	makedepends = git
+	provides = hyprwatch
+	source = git+https://github.com/VirtCode/hyprwatch.git
+	b2sums = SKIP
+
+pkgname = hyprwatch-git
