@@ -2,11 +2,11 @@
 
 pkgname=netfilter-fullconenat-dkms-git
 pkgver=r88.74c5e6f
-pkgrel=3
+pkgrel=5
 pkgdesc="A kernel module that turns MASQUERADE into full cone SNAT"
 arch=('any')
 url="https://github.com/llccd/netfilter-full-cone-nat"
-license=('GPL2')
+license=('GPL-2.0-only')
 depends=('dkms')
 makedepends=('git')
 optdepends=('iptables-fullconenat: iptables with FULLCONENAT')
@@ -21,11 +21,6 @@ sha256sums=('a17dfdf1fd046219daeacc60065e3a81c80c2eb2cfdf6d8068278c509577f571'
             'd6823506b2c9e99b282d29270b0001de946dfe48462056b80aa9b564d67f7642'
             '7ff12ad066a68c65f23fc7e01654ca459ce3458172e3dce30f42553fa44dd7c2'
             'SKIP')
-
-prepare(){
-  cd "$srcdir/${pkgname}"
-  printf "MODULE_VERSION(\"%s\");\n" $pkgver >> xt_FULLCONENAT.c
-}
 
 pkgver() {
   cd "$srcdir/${pkgname}"
