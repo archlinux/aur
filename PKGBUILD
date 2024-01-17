@@ -3,18 +3,18 @@
 # Co-maintainer: Gabriel Brown <gabriel.h.brown@gmail.com>
 
 pkgname=chapel
-pkgver=1.32.0
+pkgver=1.33.0
 pkgrel=1
 pkgdesc="Programming language designed for productive parallel computing at scale"
 url="https://chapel-lang.org/"
 arch=('x86_64' 'arm')
 license=('Apache')
-# depends=('python' 'perl' 'llvm' 'clang')
-depends=('python' 'perl' 'llvm15' 'llvm15-libs' 'clang15') # if using old versions
+depends=('python' 'perl' 'llvm' 'clang')
+# depends=('python' 'perl' 'llvm15' 'llvm15-libs' 'clang15') # if using old versions
 makedepends=('git' 'cmake')
 source=("https://github.com/chapel-lang/chapel/releases/download/${pkgver}/chapel-${pkgver}.tar.gz")
-sha256sums=('9fb139756ebb63ab722856273457673fc7368b26d9a9483333650510506c0a96')
-            
+sha256sums=('9dfd9bbab3eb1acf10242db909ccf17c1b07634452ca6ba8b238e69788d82883')
+
 
 build() {
         cd "${srcdir}/${pkgname}-${pkgver}"
