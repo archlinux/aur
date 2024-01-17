@@ -1,10 +1,10 @@
 pkgbase = studio-controls-git
 	pkgdesc = An JACK audio setup utility with USB device and PulseAudio bridges.
-	pkgver = 2.1.1.r0.g1b1e7ce
+	pkgver = 2.2.3.r0.g99a71a0
 	pkgrel = 1
 	url = https://github.com/ovenwerks/studio-controls
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
 	makedepends = git
 	depends = jack2
 	depends = jack2-dbus
@@ -35,4 +35,3 @@ pkgbase = studio-controls-git
 	md5sums = SKIP
 
 pkgname = studio-controls-git
-
