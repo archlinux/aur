@@ -1,6 +1,6 @@
 pkgbase = plover
 	pkgdesc = Free and open source real-time stenography engine
-	pkgver = 4.0.0.dev12
+	pkgver = 4.0.0.rc2
 	pkgrel = 1
 	url = https://www.openstenoproject.org/plover/
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = plover
 	depends = python-wcwidth
 	depends = python-xlib
 	depends = qt5-svg
-	source = plover-4.0.0.dev12.tar.gz::https://github.com/openstenoproject/plover/archive/refs/tags/v4.0.0.dev12.tar.gz
-	b2sums = 36b1bf4c30623e5ccb76fe3c2afbac43ba1407b1dcf1b654383c660aaf4f9d73d7ee9be2fae5616bd38f9746abc13bb2d8f66f553684fcf2b3fd91b489ee2503
+	source = plover-4.0.0.rc2.tar.gz::https://github.com/openstenoproject/plover/archive/refs/tags/v4.0.0rc2.tar.gz
+	b2sums = b83bf5bd831115e91da55ba8e4530d7ff0194ca5c02c46e0915da9dd3909b5bc4d112d9161a89cdb3268b28f005595479f1731dcfc381762a5553d41edb7bc05
 
 pkgname = plover
