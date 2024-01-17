@@ -23,15 +23,16 @@ makedepends=(
     'yarn'
     'npm'
     'nvm'
+    'curl'
 )
 source=(
-    "${pkgname%-git}::git+${_giteeurl}.git"
+    "${pkgname//-/.}::git+${_giteeurl}.git"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 pkgver() {
-    cd "${srcdir}/${pkgname%-git}"
+    cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 _ensure_local_nvm() {
@@ -45,15 +46,17 @@ build() {
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
-    _ensure_local_nvm
-    gendesk -q -f -n --categories "Network" --name "${_pkgname}" --exec "${pkgname%-git}"
-    cd "${srcdir}/${pkgname%-git}"
+    #_ensure_local_nvm
+    gendesk -q -f -n --categories "Network" --name "${_pkgname}" --exec "${pkgname%-git} %U"
+    cd "${srcdir}/${pkgname//-/.}"
+    export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    sed '157,178d' -i electron-builder.json
-    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn lint:fix
-    yarn build
-    yarn pack
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
+    sed '161,180d' -i electron-builder.json
+    #yarn install --cache-folder "${srcdir}/.yarn_cache"
+    #yarn lint:fix
+    yarn run build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
@@ -68,10 +71,10 @@ package() {
             _architecture="linux-armv7l-unpacked"
         ;;
     esac
-    install -Dm644 "${srcdir}/${pkgname%-git}/release/${_architecture}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    install -Dm755 "${srcdir}/${pkgname%-git}/release/${_architecture}/resources/engine/aria2c" -t "${pkgdir}/usr/lib/${pkgname%-git}/engine"
-    install -Dm644 "${srcdir}/${pkgname%-git}/release/${_architecture}/resources/engine/aria2.conf" -t "${pkgdir}/usr/lib/${pkgname%-git}/engine"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/release/${_architecture}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm755 "${srcdir}/${pkgname//-/.}/release/${_architecture}/resources/engine/aria2c" -t "${pkgdir}/usr/lib/${pkgname%-git}/engine"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/release/${_architecture}/resources/engine/aria2.conf" -t "${pkgdir}/usr/lib/${pkgname%-git}/engine"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname%-git}/static/512x512.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm644 "${srcdir}/${pkgname%-git}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/static/512x512.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
