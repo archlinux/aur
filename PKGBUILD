@@ -3,7 +3,7 @@
 
 _gemname=image_size
 pkgname=ruby-${_gemname}
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="measure image size using pure Ruby"
 arch=(any)
@@ -15,7 +15,7 @@ checkdepends=(ruby-rspec ruby-webrick)
 makedepends=(rubygems ruby-rdoc)
 source=(${url}/archive/v$pkgver/$_gemname-$pkgver.tar.gz
         fix-gemspec-for-tarball.patch)
-sha256sums=('c3f249a7c4246e7bd6f615bcc964f015c57d0ad13ef850c661c5edd584136cdc'
+sha256sums=('fd02e296bd9d1cde3ec1b999362e60225238fa126f9d2f0898423fb8aafe04e3'
             'a0a5d5f87a0993a3e24273a1a2ab948f6f5babbcfd53dbfda230d68af1859d03')
 
 prepare() {
