@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A CLI tool to interface with Jenkins"
 arch=('any')
 url="https://www.yojenkins.com/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 makedepends=('python-setuptools')  # unless it only requires distutils
 depends=(
     'bash'
