@@ -1,7 +1,7 @@
 # Maintainer: Vlad Pirlog <(firstname) at (lastname) dot com>
 
 pkgname='extract-otp-secrets'
-pkgver='2.6.0'
+pkgver='2.6.1'
 pkgrel=1
 pkgdesc='Extract one time password secrets from QR codes exported by two-factor authentication apps'
 arch=('x86_64')
