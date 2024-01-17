@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tcsh-git
-pkgver=6.24.10.r0.gca05dea
+pkgver=6.24.10.r9.g360a97d
 pkgrel=1
 pkgdesc="C shell with file name completion and command line editing"
 arch=('i686' 'x86_64')
 url="https://www.tcsh.org/"
-license=('BSD')
-depends=('glibc' 'ncurses')
+license=('BSD-3-Clause')
+depends=('glibc' 'libxcrypt' 'ncurses')
 makedepends=('git')
 provides=("tcsh=$pkgver")
 conflicts=('tcsh')
