@@ -1,7 +1,7 @@
 pkgbase = sumo
 	pkgdesc = Traffic simulation modelling road vehicles, public transport and pedestrians.
 	pkgver = 1.19.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sumo.dlr.de
 	arch = i686
 	arch = x86_64
@@ -24,9 +24,9 @@ pkgbase = sumo
 	depends = python-pyproj
 	depends = python-pandas
 	depends = python-scipy
-	source = https://github.com/eclipse/sumo/archive/v1_19_0.tar.gz
+	source = https://sumo.dlr.de/releases/1.19.0/sumo-src-1.19.0.tar.gz
 	source = sumo.desktop
-	sha256sums = 4dc56e66f994b4f1378e357e2c40df55035eac29851252da2f5399b86370f249
+	sha256sums = 7643b1f8a3d7144f181542c9c7b8c72f3e8e45ba9c627912665083db0fe106cd
 	sha256sums = cc0ed7ad1cce228cd8c634e031c966e1795a16623f0e139ebdcc7ecd06d0bf4d
 
 pkgname = sumo
