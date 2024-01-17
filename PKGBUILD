@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc='Eclipse XML language server'
 arch=('any')
 url='https://github.com/eclipse/lemminx'
-license=('EPL')
+license=('EPL-2.0')
 depends=('java-runtime')
 makedepends=()
 # https://download.eclipse.org/lemminx/releases/
