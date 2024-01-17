@@ -1,12 +1,10 @@
 # Maintainer: xiota / aur.chaotic.cx
 
 # options
-if [ "${_srcinfo::1}" = "t" ] ; then
+if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ] ; then
   : ${_autoupdate:=false}
-elif [ -z "$_pkgver" ] ; then
-  : ${_autoupdate:=true}
 else
-  : ${_autoupdate:=false}
+  : ${_autoupdate:=true}
 fi
 
 : ${_build_latest:=true}
@@ -18,7 +16,7 @@ fi
 # basic info
 _pkgname='pcsx2'
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.7.5345
+pkgver=1.7.5474
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
@@ -34,10 +32,8 @@ _main_package() {
 
   options=(!strip !debug)
 
-  _url="https://github.com/PCSX2/pcsx2"
   _appimage="pcsx2-v$_pkgver-linux-appimage-x64-Qt.AppImage"
-
-  source+=("$_url/releases/download/v$_pkgver/$_appimage")
+  source+=("$url/releases/download/v$_pkgver/$_appimage")
   sha256sums+=('SKIP')
 }
 
@@ -81,15 +77,15 @@ package() {
 
 # update version
 _update_version() {
-  : ${_pkgver:=$pkgver}
+  : ${_pkgver:=${pkgver%%.r*}}
 
   if [[ "${_autoupdate::1}" != "t" ]] ; then
     return
   fi
 
-  _response=$(curl -Ssf "$url/releases.atom")
+  local _response=$(curl -Ssf "$url/releases.atom")
 
-  _pkgver_new=$(
+  local _pkgver_new=$(
     printf '%s' "$_response" \
       | grep '/releases/tag/' \
       | sed -E 's@^.*/releases/tag/(.*)".*$@\1@; s@^v@@' \
