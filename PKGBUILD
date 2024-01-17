@@ -1,12 +1,12 @@
 # Maintainer: Edward Pacman <edward@edward-p.xyz>
 
 pkgname=go-stun-git
-pkgver=r136.0f417a9
-pkgrel=1
+pkgver=r137.d32c135
+pkgrel=2
 pkgdesc="A go implementation of the STUN client (RFC 3489 and RFC 5389)"
 arch=('x86_64')
 url="https://github.com/ccding/go-stun"
-license=('Apache')
+license=('Apache-2.0')
 source=(
   "git+https://github.com/ccding/go-stun.git"
   "00-default-stun-server.patch"
