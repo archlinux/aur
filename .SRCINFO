@@ -1,0 +1,25 @@
+pkgbase = vgmtrans-bin
+	pkgdesc = A tool to convert proprietary, sequenced videogame music to industry-standard formats
+	pkgver = 1.1_preview
+	pkgrel = 1
+	url = https://github.com/vgmtrans/vgmtrans
+	arch = x86_64
+	license = libpng
+	makedepends = squashfuse
+	depends = libice
+	depends = libglvnd
+	depends = libx11
+	depends = harfbuzz
+	depends = libsm
+	depends = fontconfig
+	provides = vgmtrans=1.1_preview
+	conflicts = vgmtrans
+	options = !strip
+	source = vgmtrans-1.1_preview.AppImage::https://github.com/vgmtrans/vgmtrans/releases/download/v1.1/vgmtrans-preview-v1.1.AppImage
+	source = LICENSE-1.1_preview.txt::https://raw.githubusercontent.com/vgmtrans/vgmtrans/v1.1/LICENSE.txt
+	source = vgmtrans.sh
+	sha256sums = a9d94aedde9992602fb1b93093783d236a8310a71227b2dd0597914deb4a89bc
+	sha256sums = 3204441b667402c3720e32139a48fcb32d4c5dc7c2e464de415b24b9185adb7c
+	sha256sums = ebbda89f7ae9af354c4e54f363321d288f991e64b2659c28a6ab69a348ea47e4
+
+pkgname = vgmtrans-bin
