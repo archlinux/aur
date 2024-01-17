@@ -5,7 +5,7 @@ pkgname='simplex-chat-bin'
 _pkgname="${pkgname%%-bin}"
 epoch=1
 pkgver=5.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A 100% private-by-design chat platform for the command-line (pre-compiled)'
 arch=('x86_64')
 _platform='ubuntu-22_04-x86-64'
@@ -21,7 +21,7 @@ source=(
   'logo-symbol-light.svg'
   'simplex-chat.desktop'
 )
-license=('AGPL3')
+license=('AGPL-3.0-or-later')  # SPDX-License-Identifier: AGPL-3.0-or-later
 depends=(
   'glibc'
   'gmp'
