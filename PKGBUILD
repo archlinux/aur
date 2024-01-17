@@ -9,7 +9,7 @@ provides=('barracudavpn')
 
 url="https://campus.barracuda.com/product/networkaccessclient"
 _download_url="http://dlportal.barracudanetworks.com/"
-license=("custom:FortiClientSSLVPN")
+license=("LicenseRef-FortiClientSSLVPN")
 
 _pkg_file_name="VPNClient_${pkgver}_Linux.tar.gz"
 
