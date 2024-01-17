@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=octa-electron
-pkgver=2.0.0
+pkgver=2.0.1
 _electronversion=24
 _nodeversion=18
 pkgrel=1
