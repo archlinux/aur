@@ -8,7 +8,7 @@ pkgdesc="An in-development indie sandbox game about innovation and exploration--
 license=('custom')
 #  Versioning
 _release=stable # the name of the version's release type ("stable", "unstable", "pre")
-_pkgver=1.18.7
+_pkgver=1.18.15
 pkgver=${_pkgver//-/_} # allows usage of versions with hyphens in _pkgver
 pkgrel=1
 #  Requirements
@@ -18,13 +18,9 @@ arch=('x86' 'x86_64')
 #  Source
 url='https://www.vintagestory.at/'
 license=('custom')
-source=("https://cdn.vintagestory.at/gamefiles/$_release/vs_server_$_pkgver.tar.gz")
-#       "https://account.vintagestory.at/files/$_release/vs_server_$_pkgver.tar.gz" (alternative source)
-_ignored=("vs_server_$_pkgver.tar.gz"
-          "ModMaker.exe"
-          "icons.icns"
-          "MonoMac.dll" "launchmac")
-md5sums=('4ceb8d90929e50f89db160acfa38f8be')
+source=("https://cdn.vintagestory.at/gamefiles/$_release/vs_server_linux-x64_$_pkgver.tar.gz")
+#       "https://account.vintagestory.at/files/$_release/vs_server_linux-x64_$_pkgver.tar.gz" (alternative source)
+md5sums=('ad6be6ccd9a521f36fd39c447c31738d')
 
 # Installation
 prepare() {
@@ -38,8 +34,5 @@ prepare() {
 package() {
     mkdir -p "$pkgdir"/usr/share/"$pkgname"/
     mv * "$pkgdir"/usr/share/"$pkgname"/
-    for f in "${_ignored[@]}"; do
-        [[ -f "$pkgdir"/usr/share/"$pkgname"/"$f" ]] && 
-            rm -f "$pkgdir"/usr/share/"$pkgname"/"$f"
-    done
+    unlink "$pkgdir"/usr/share/"$pkgname"/vs_server_linux-x64_"$_pkgver".tar.gz
 }
