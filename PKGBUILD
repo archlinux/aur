@@ -1,7 +1,7 @@
-# Maintainer: Kirill Gagarski <gagarski@kspt.icc.spbstu.ru>
+# Maintainer: Duan <duan@d-jy.net>
 pkgname=antlr3
 _shortname=${pkgname:0:-1}
-pkgver=3.5.2
+pkgver=3.5.3
 pkgrel=1
 pkgdesc='Parser generator for reading, processing, executing, or translating structured text or binary files.'
 arch=('any')
@@ -12,7 +12,7 @@ provides=("antlr=${pkgver}")
 source=("https://www.antlr3.org/download/${_shortname}-${pkgver}-complete.jar"
         'antlr3')
 noextract=("${_shortname}-${pkgver}-complete.jar")
-sha256sums=('26ca659f47d77384f518cf2b6463892fcd4f0b0d4d8c0de2addf697e63e7326b'
+sha256sums=('e781de9b3e2cc1297dfdaf656da946a1fd22f449bd9e0ce1e12d488976887f83'
             '3053499ceaa2c155a0c5e0ee456e5745e1d9f534d0f12ae76e3af0190a094dcf')
 
 package() {
