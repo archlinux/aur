@@ -6,7 +6,7 @@
 pkgname='libcs50-git'
 _gitname='libcs50'
 pkgver=11.0.2.r0.g6d916ef
-pkgrel=3
+pkgrel=4
 pkgdesc="CS50 Library for C (development version)"
 arch=('x86_64' 'i686')
 url="https://github.com/cs50/libcs50"
@@ -42,18 +42,12 @@ prepare() {
 
 build() {
   cd "${_gitname}"
-  # TODO: Get this fixed upstream. We should not have to unset our $CFLAGS and
-  #       $MAKEFLAGS.
-#  CFLAGS= MAKEFLAGS= make
   make
 }
 
 package() {
   cd "${_gitname}"
 
-  # TODO: Get this fixed upstream. We should not have to unset our $CFLAGS and
-  #       $MAKEFLAGS.
-#  CCFLAGS= MAKEFLAGS= DESTDIR="${pkgdir}/usr" make install
   DESTDIR="${pkgdir}/usr" make install
 
   rm "${pkgdir}/usr/src/cs50.c"
