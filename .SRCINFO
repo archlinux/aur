@@ -1,12 +1,11 @@
 pkgbase = lsp-dsp-lib
 	pkgdesc = DSP library for signal processing
-	pkgver = 1.0.7
+	pkgver = 1.0.20
 	pkgrel = 1
 	url = https://github.com/sadko4u/lsp-dsp-lib
-	arch = any
+	arch = x86_64
 	license = LGPL3
-	makedepends = pkg-config
-	source = https://github.com/sadko4u/lsp-dsp-lib/releases/download/1.0.7/lsp-dsp-lib-src-1.0.7.tar.gz
-	sha512sums = be6337ba450683bcfdb708785f26eb7476940da1c5b48c86746d694a07cbe1a30fdbe09ed6aa4b28b0c866ad336a1232d83e2ba6a20e068b2442292c661507a4
+	source = https://github.com/sadko4u/lsp-dsp-lib/releases/download/1.0.20/lsp-dsp-lib-src-1.0.20.tar.gz
+	sha512sums = beaf252dd9deeb02183287394c27cb089d17edba73e94c723256db39be050109cf769535ada6ca87e942af97464ca614f4cd813f03ab894e39f658e553ca0681
 
 pkgname = lsp-dsp-lib
