@@ -2,17 +2,17 @@
 
 pkgname=graywolf-git
 pkgver=0.1.6.r185.f47937b
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='An opensource placement tool'
 arch=('i686' 'x86_64')
 url='https://github.com/rubund/graywolf/'
-license=('GPL')
+license=('GPL-2.0-or-later')
 provides=('graywolf')
 conflicts=('graywolf')
-depends=('bash' 'libx11')
-makedepends=('cmake' 'gsl' 'git')
-source=("git://github.com/rubund/graywolf")
+depends=('bash' 'glibc' 'gsl' 'libx11')
+makedepends=('cmake' 'git')
+source=("git+https://github.com/rubund/graywolf")
 sha512sums=('SKIP')
 
 pkgver() {
