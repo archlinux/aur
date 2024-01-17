@@ -3,7 +3,7 @@
 # Contributor: fkxxyz <fkxxyz@163.com>
 pkgname=youdao-dict
 pkgver=6.0.0
-pkgrel=6
+pkgrel=7
 pkgdesc="YouDao Dictionary"
 arch=('x86_64')
 license=('GPL3')
@@ -30,23 +30,33 @@ depends=(
 	'qt5-webkit'
 	'qt5-quickcontrols'
 	'qt5-graphicaleffects'
+	'tesseract'
+	'tesseract-data-chi_sim'
+	'tesseract-data-eng'
+	'tesseract-data-chi_tra'
+	'tesseract-data-osd'
+	'wqy-microhei'
+	'python-pillow'
+	'dbus-python'
+	'gst-plugins-base'
+	'qt6-declarative'
+	'qt6-multimedia'
 )
 source=(
 	"${pkgname}-${pkgver}.deb::http://codown.youdao.com/cidian/linux/${pkgname}_${pkgver}-ubuntu-amd64.deb"
 	"${pkgname}.sh"
 )
 sha256sums=('e56f248c3caf7d0bff9f4f18780d9b258612b490c1c0f332335b8d15471e0dd2'
-            '58d0c47ec3f5262e1a9d88478e90a66c10d573f6296ba9f179fc45e77df67f25')
+            '8b6050deff3fd8a966ec3e67021decf2dd68735dc8ffdd0286baa88eeba60854')
 build() {
 	sed -e "s|@appname@|${pkgname}|g" \
-        -e "s|@runappname@|main.py|g" \
+        -e "s|@runname@|main.py|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.zst"
     sed -i '290s|self.setX(x)|self.setX(int(x))|g;291s|self.setY(y)|self.setY(int(y))|g' "${srcdir}/usr/share/${pkgname}/app/plugins/youdao/window.py"
     sed -i '644s|self.move(x, y)|self.move(int(x), int(y))|g' "${srcdir}/usr/share/${pkgname}/dae/window.py"
     sed 's|getargspec|getfullargspec|g' -i "${srcdir}/usr/share/${pkgname}/app/plugins/${pkgname%-dict}/pyquery/pyquery.py"
     sed 's|usr/share|opt|g' -i "${srcdir}/usr/share/dbus-1/services/com.youdao.backend.service"
-	sed "s|%f||g" -i "${srcdir}/usr/share/applications/${pkgname}.desktop"
 }
 package(){
 	install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"

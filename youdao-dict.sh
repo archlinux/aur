@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 _APPDIR=/opt/@appname@
-_APPNAME=@runappname@
+_RUNNAME="${_APPDIR}/@runname@"
 export PATH="${_APPDIR}:${PATH}"
 cd "${_APPDIR}"
-exec python "${_APPDIR}/${_APPNAME}" %f
+exec python "${_RUNNAME}" "$@" || exit $?
