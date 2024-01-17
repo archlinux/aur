@@ -3,7 +3,7 @@ _pkgname=pocket-casts
 pkgname="${_pkgname}-desktop-bin"
 pkgver=0.7.0
 _electronversion=27
-pkgrel=2
+pkgrel=3
 pkgdesc="The Pocket Casts webapp, packaged for the Linux Desktop."
 arch=('aarch64' 'x86_64')
 url="https://github.com/felicianotech/pocket-casts-desktop-app"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('5478e5a98666c41de828fb7f50c3ea53b05755b7bda7d11211c6b1406d3046ba'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 sha256sums_aarch64=('fc8248c7503e195a85029db63e7ed9befbe2aa361cbc628589116df129f56f7b')
 sha256sums_x86_64=('979c2ce0a73188eb5218942949af538de97dc0a6e71581c927858399b1b82d37')
 build() {
@@ -29,7 +29,7 @@ build() {
         -e "s|@appasar@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.zst"
-    sed "s|${_pkgname} %U|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
+    sed "s|${_pkgname} %U|${pkgname%-bin} %U|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
