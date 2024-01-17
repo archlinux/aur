@@ -21,13 +21,13 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/fcitx5-ipa-sil"
   cmake -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/fcitx5-ipa-sil"
   make PREFIX=/usr DESTDIR="$pkgdir" install
   install -m 644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
