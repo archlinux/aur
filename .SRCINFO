@@ -1,7 +1,7 @@
 pkgbase = casparcg-server-git
 	pkgdesc = Software used to play out professional graphics, audio and video to multiple outputs
-	pkgver = 2.3.3.r186.gfb253fd
-	pkgrel = 2
+	pkgver = 2.3.3.r187.g3c1d1f9
+	pkgrel = 1
 	url = https://github.com/CasparCG/server
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -29,10 +29,8 @@ pkgbase = casparcg-server-git
 	provides = casparcg-server
 	conflicts = casparcg-server
 	source = casparcg-server::git+https://github.com/CasparCG/server.git
-	source = https://github.com/CasparCG/server/commit/9ee50d528de054a105bea9b0de692ce99e322573.patch
 	source = casparcg
 	sha256sums = SKIP
-	sha256sums = 59fa9c8f653c1aa787feb611eae4440c602416e52645ea4ff048518424d4aa82
 	sha256sums = ce9dd83ae2ef9289e551f0a3ecbe246537195049c15f69bbfdc6c3ddd23291c2
 
 pkgname = casparcg-server-git
