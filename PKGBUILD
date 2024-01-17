@@ -2,9 +2,9 @@
 _pkgname=swc_mclauncher
 pkgname="${_pkgname//_/-}-bin"
 _appname="SWC Minecraft Launcher"
-pkgver=1.1.11
-_electronversion=24
-pkgrel=4
+pkgver=1.1.12
+_electronversion=28
+pkgrel=1
 pkgdesc="Quickly and easily launch Software City's Minecraft-Modpacks through this beautiful and custom Minecraft Launcher!"
 arch=('x86_64')
 url="https://projects.software-city.org/p/mc-launcher"
@@ -20,7 +20,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Davis-Software/swc_mclauncher/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7e2c8aa6fe7756e8d764eca5d5fde077b88a77ef641692c75b316e0d9910fdbc'
+sha256sums=('de1ec724f3d00717d3354232399602b68eaec067deb9a842c12d7a35e50d6d23'
             '2fc239445e58117449b5049215f6540a4f37dd25e4ed79a7325b57e1406c1437'
             'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
