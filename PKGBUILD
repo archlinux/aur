@@ -2,20 +2,18 @@
 
 pkgname=qatlib
 pkgver=23.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="User space library for Intel(R) QuickAssist Technology"
 url="https://github.com/intel/qatlib"
-license=(BSD)
+license=(BSD-3-Clause)
 arch=(x86_64)
+depends=(
+  glibc
+  libcrypto.so
+)
 makedepends=(
   nasm
   systemd
-  glibc
-)
-depends=(
-  bash
-  glibc
-  libcrypto.so
 )
 
 source=(
@@ -48,5 +46,5 @@ package() {
     systemd_scriptsdir="$pkgdir/usr/bin" \
     install
   install -Dm644 "$srcdir/qatlib.sysusers" "$pkgdir/usr/lib/sysusers.d/qatlib.conf"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
