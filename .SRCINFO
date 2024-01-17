@@ -1,10 +1,10 @@
 pkgbase = pg_activity
 	pkgdesc = Top-like application for PostgreSQL server activity monitoring
 	pkgver = 3.4.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/dalibo/pg_activity
 	arch = any
-	license = LicenseRef-PostgreSQL
+	license = PostgreSQL
 	checkdepends = postgresql
 	checkdepends = python-pytest
 	checkdepends = python-pytest-postgresql

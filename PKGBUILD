@@ -4,11 +4,11 @@
 
 pkgname=pg_activity
 pkgver=3.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Top-like application for PostgreSQL server activity monitoring"
 arch=(any)
 url="https://github.com/dalibo/pg_activity"
-license=(LicenseRef-PostgreSQL)
+license=(PostgreSQL)
 depends=(
   python
   python-attrs
