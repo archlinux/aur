@@ -1,10 +1,10 @@
 pkgbase = liboakleaf
 	pkgdesc = Library which implements robust statistical estimates
 	pkgver = 0.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://integral.physics.muni.cz/oakleaf
 	arch = x86_64
-	license = LGPL3
+	license = LGPL-3.0-only
 	makedepends = gcc-fortran
 	depends = gcc-libs
 	depends = glibc

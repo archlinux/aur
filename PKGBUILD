@@ -2,11 +2,11 @@
 
 pkgname=liboakleaf
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Library which implements robust statistical estimates"
 arch=(x86_64)
 url="http://integral.physics.muni.cz/oakleaf"
-license=(LGPL3)
+license=(LGPL-3.0-only)
 depends=(
   gcc-libs
   glibc
