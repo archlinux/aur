@@ -5,9 +5,9 @@
 
 pkgname=stargate
 pkgver=24.01.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Innovation-first digital audio workstation (DAW), instrument and effect plugins, wave editor"
-license=(GPL)
+license=(GPL-3.0-only)
 arch=(
   x86_64
   aarch64

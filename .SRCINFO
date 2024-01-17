@@ -1,11 +1,11 @@
 pkgbase = stargate
 	pkgdesc = Innovation-first digital audio workstation (DAW), instrument and effect plugins, wave editor
 	pkgver = 24.01.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stargatedaw/stargate
 	arch = x86_64
 	arch = aarch64
-	license = GPL
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = jq
 	makedepends = libsbsms
