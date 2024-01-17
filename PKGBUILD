@@ -4,11 +4,12 @@
 
 pkgname=calls
 pkgver=45.0
-pkgrel=1
+_commit=936d36287324163b958c6ea0c4297c7a607ee18c
+pkgrel=2
 pkgdesc="Phone dialer and call handler"
 arch=(x86_64 aarch64)
 url="https://gitlab.gnome.org/GNOME/calls"
-license=(GPL3)
+license=(GPL-3.0-or-later)
 depends=(
   callaudiod
   dconf
@@ -30,6 +31,7 @@ depends=(
   sofia-sip
 )
 makedepends=(
+  git
   meson
   python-docutils
   vala
@@ -41,27 +43,33 @@ checkdepends=(
   gst-plugins-ugly
 )
 
-_libcall_version=0.1.0
-
 source=(
-  "$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/calls-v$pkgver.tar.gz"
-  "libcall-ui-$_libcall_version::https://gitlab.gnome.org/World/Phosh/libcall-ui/-/archive/v$_libcall_version/libcall-ui-v$_libcall_version.tar.gz"
+  "git+$url.git#commit=$_commit"
+  "git+https://gitlab.gnome.org/World/Phosh/libcall-ui.git"
   "remove-failing-tests.patch"
 )
 sha256sums=(
-  '60822ecd41a997c93966765648d7d3412a7350613da1310cccee6e27ab3c1035'
-  'a3dec58c622fb418c69085c4a20c2804058864d8b74f4af751e9c96b3ecafede'
+  'SKIP'
+  'SKIP'
   'd4411f7eed3ac49ce78eb04e139ecc213ed02559ed8a8fb2337dca06969aab86'
 )
 
-_archive="$pkgname-v$pkgver"
+_archive="$pkgname"
+
+pkgver() {
+  cd "$_archive"
+
+  git describe --tags | sed 's/^v//'
+}
 
 prepare() {
-  rm -r "$_archive/subprojects/libcall-ui"
-  cp -r libcall-ui-v$_libcall_version "$_archive/subprojects/libcall-ui"
-
   cd "$_archive"
-  patch -Np1 -i "$srcdir/remove-failing-tests.patch"
+
+  git submodule init
+  git config submodule.subprojects/libcall-ui.url "$srcdir/libcall-ui"
+  git -c protocol.file.allow=always submodule update
+
+  patch --forward --strip=1 --input="$srcdir/remove-failing-tests.patch"
 }
 
 build() {
