@@ -1,7 +1,7 @@
 # Maintainer: Vardan Tarayan <tarayanvardan@gmail.com>
 pkgname='solarbg'
 pkgrel=1
-pkgver=1.3.1
+pkgver=1.4.0
 pkgdesc="Sun altitude based wallpapers "
 arch=('x86_64')
 url="https://github.com/VardanHeroic/solarbg"
