@@ -1,7 +1,7 @@
 pkgbase = serioussam-addons-meta
 	pkgdesc = Meta package for Serious Sam addons
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tx00100xt
 	arch = i686
 	arch = x86_64
@@ -19,5 +19,6 @@ pkgbase = serioussam-addons-meta
 	depends = serioussam-st8vi
 	depends = serioussam-st8vipe
 	depends = serioussam-tower
+	depends = serioussam-sequel
 
 pkgname = serioussam-addons-meta

@@ -1,9 +1,9 @@
-# Maintainer:  Alexander <tx00100xt@yandex.ru>
-# Contributer: Alexander <tx00100xt@yandex.ru>>
+# Maintainer:  Alexander <t.x00100x.t@yandex.ru>
+# Contributer: Alexander <t.x00100x.t@yandex.ru>>
 
 pkgname=serioussam-addons-meta
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Meta package for Serious Sam addons'
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -22,4 +22,5 @@ depends=(
  'serioussam-st8vi'
  'serioussam-st8vipe'
  'serioussam-tower'
+ 'serioussam-sequel'
 )
