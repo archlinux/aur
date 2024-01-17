@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A cross-platform, modern, and asynchronous library that enables developers to access and author connected applications"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/Microsoft/cpprestsdk/"
-license=('Apache')
+license=('MIT')
 depends=('openssl>=1.0.0' 'zlib' 'gcc-libs' 'boost' 'glibc')
 makedepends=('cmake>=2.6.0' 'websocketpp')
 conflicts=('casablanca' 'casablanca-git' 'cpprestsdk-git')

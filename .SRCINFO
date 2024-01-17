@@ -6,7 +6,7 @@ pkgbase = cpprestsdk
 	arch = i686
 	arch = x86_64
 	arch = armv7h
-	license = Apache
+	license = MIT
 	makedepends = cmake>=2.6.0
 	makedepends = websocketpp
 	depends = openssl>=1.0.0
