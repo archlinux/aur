@@ -8,19 +8,18 @@
 # Contributor: Lucas H. Gabrielli <heitzmann@gmail.com>
 pkgname=slepc
 pkgver=3.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Scalable library for Eigenvalue problem computations"
-arch=('x86_64')
+arch=(x86_64)
 url="https://${pkgname}.upv.es"
-license=('custom')
+license=('custom:BSD-2-clause')
+options=(staticlibs)
 depends=("petsc>=${pkgver::4}")
 makedepends=(gcc-fortran cython)
 provides=('slepc4py')
-install=slepc.install
+install=${pkgname}.install
 source=(${url}/download/distrib/${pkgname}-${pkgver/_/-}.tar.gz)
 md5sums=('f052a9a1f7f1378952846bf6375be5bd')
-
-# export MAKEFLAGS="-j1"
 
 build() {
   # get SLEPC_DIR
@@ -34,10 +33,22 @@ build() {
   unset PETSC_ARCH
   export SLEPC_DIR=${_build_dir}
 
-  python ./configure --prefix=${pkgdir}${_install_dir} \
-    --with-clean \
-    --with-slepc4py=1
-  make
+  CONFOPTS="--with-clean \
+            --with-slepc4py=1"
+
+  echo ${CONFOPTS}
+
+  python ./configure --prefix=${pkgdir}${_install_dir} ${CONFOPTS}
+  make ${MAKEFLAGS} all
+  make DESTDIR=${srcdir}/tmp install
+}
+
+check() {
+  cd ${srcdir}/${pkgname}-${pkgver}
+  if [ -z "$(ldconfig -p | grep libcuda.so.1)" ]; then
+    export OMPI_MCA_opal_warn_on_missing_libcuda=0
+  fi
+  PYTHONPATH=${srcdir}/tmp/${_install_dir}/lib:${PYTHONPATH} make check
 }
 
 package() {
