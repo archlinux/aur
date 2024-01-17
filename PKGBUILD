@@ -3,24 +3,26 @@
 
 pkgname=rarian
 pkgver=0.8.5
-pkgrel=5
+pkgrel=6
 pkgdesc="Documentation meta-data library, designed as a replacement for Scrollkeeper"
 arch=(
   x86_64
   i686
 )
 url="https://gitlab.freedesktop.org/rarian/rarian"
-license=(GPL)
+license=(LGPL-2.1-or-later)
 depends=(
+  bash
   gcc-libs
   glibc
-  sh
   tinyxml
 )
 makedepends=(
   check # Here instead of checkdepends since configure fails without it
   libxslt
 )
+options=(!emptydirs)
+
 source=(
   "$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
   "remove-failing-tests.patch"
@@ -36,7 +38,7 @@ prepare() {
   cd "$_archive"
 
   # The man tests seem to be flaky
-  sed '/srunner_add_suite(sr, rarian_man_suite());/d' -i tests/check-main.c
+  sed -i '/srunner_add_suite(sr, rarian_man_suite());/d' tests/check-main.c
 
   # Some tests fail for some users due to locale issues that I've not been able
   # to work around - disable these tests for now.
