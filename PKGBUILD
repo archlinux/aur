@@ -3,7 +3,7 @@ pkgname=rendertune-bin
 _pkgname=RenderTune
 pkgver=1.1.4
 _electronversion=11
-pkgrel=2
+pkgrel=3
 pkgdesc="A free electron app that uses ffmpeg to combine audio.+image file(s) into video files."
 arch=('x86_64')
 url="https://www.martinbarker.me/RenderTune"
@@ -13,12 +13,9 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
-    'libx11'
-    'gdk-pixbuf2'
-    'libxext'
+    'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
-    'dbus-glib'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
@@ -27,7 +24,7 @@ source=(
 )
 sha256sums=('ae8b05956400735952af42beea18b2cf71a0607071e079365237731f0d3b8425'
             '11a272e7544439f19cffcd33c12ea39777fa581122babf7fe5e9b94712660af8'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -35,7 +32,7 @@ build() {
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -e "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" \
+    sed -e "s|AppRun --no-sandbox|${pkgname%-bin}|g" \
         -e "s|public.app-category.productivity;|AudioVideo;Utility;|g" \
         -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
