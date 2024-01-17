@@ -4,11 +4,11 @@
 pkgname=single-file
 _name=single-file-cli
 pkgver=1.1.47
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool for saving a faithful copy of a complete web page in a single HTML file"
 arch=(any)
 url="https://github.com/gildas-lormeau/single-file-cli"
-license=(AGPL3)
+license=(AGPL-3.0-or-later)
 depends=(nodejs)
 makedepends=(npm)
 optdepends=(
