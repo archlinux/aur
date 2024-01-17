@@ -1,16 +1,13 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=jdownloader2-svn
-pkgver=r48571
+pkgver=r48622
 pkgrel=1
 pkgdesc="Download manager for one-click hosting sites like Rapidshare and Megaupload"
 arch=(x86_64)
 url="https://jdownloader.org/"
-license=(GPL)
-depends=(
-  java-runtime
-  sh
-)
+license=(GPL-3.0-or-later)
+depends=(java-runtime)
 makedepends=(
   ant
   java-environment
