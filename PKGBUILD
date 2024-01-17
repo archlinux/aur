@@ -10,12 +10,12 @@ pkgname=(
   protonmail-bridge-core
   protonmail-bridge
 )
-pkgver=3.7.1
-pkgrel=2
+pkgver=3.8.1
+pkgrel=1
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=(x86_64)
 url="https://github.com/ProtonMail/proton-bridge"
-license=(GPL3)
+license=(GPL-3.0-only)
 makedepends=(
   abseil-cpp
   cmake
@@ -39,7 +39,7 @@ source=(
   "remove-vcpkg-dependency.patch"
 )
 sha256sums=(
-  '15ecc82a8390a826ca945bfd8d8973483461af48a4eaffe01699a391dd44977d'
+  'ff49b43fb796a7fe129bdd1c5334165d63af3220d7c2448d0d381e62dd6658db'
   '404db600803b9be875365d84e0726c3f7aedceaf122a795ca2248ee9f005753b'
   'd51fb6efde22354d84b894b979a685d06fcc9cf3040d999d1cd6ebf5242a5043'
   '436a9a293424fb7d48a8fd61fff7d63985dec56d6170cd2fbae24fe03ef98136'
@@ -146,10 +146,10 @@ package_protonmail-bridge-core() {
 
   cd "$_archive"
 
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
-  install -Dm644 -t "$pkgdir/usr/share/doc/protonmail/bridge/" ./*.md
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/doc/protonmail/bridge" ./*.md
 
-  install -Dm644 -t "$pkgdir/usr/lib/systemd/user/" "$srcdir/protonmail-bridge.service"
+  install -Dm644 -t "$pkgdir/usr/lib/systemd/user" "$srcdir/protonmail-bridge.service"
 
   install -Dm755 bridge "$pkgdir/usr/lib/protonmail/bridge/bridge"
 
@@ -179,8 +179,8 @@ package_protonmail-bridge() {
 
   cd "$_archive"
 
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
-  install -Dm644 -t "$pkgdir/usr/share/applications/" "$srcdir/protonmail-bridge.desktop"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/applications" "$srcdir/protonmail-bridge.desktop"
   install -Dm644 dist/bridge.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/protonmail-bridge.svg"
 
   install -Dm755 build/bridge-gui "$pkgdir/usr/lib/protonmail/bridge/bridge-gui"
