@@ -2,7 +2,7 @@
 
 pkgname=python-django-admin-logs
 _pypi_pkgname=django-admin-logs
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=0
 pkgdesc="Allows you to either view the django admin log entries from within the admin interface, or to disable them entirely"
 arch=(any)
@@ -12,14 +12,15 @@ makedepends=('python-setuptools')
 depends=('python-django')
 optdepends=()
 source=("https://pypi.io/packages/source/d/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('aedb5df940d32c10423d65136343bc009727df8a5a49ed0196e65241d823a890')
+sha256sums=('bb87cd944cfa14b6d90c93584fbcdc3ffde9410fd999c65a0b524b94518a5c64')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
-    python setup.py build || return 1
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
-    python setup.py install --root=${pkgdir} --optimize=1 || return 1
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -vDm644 -t "$pkgdir/usr/share/license/$pkgname" LICENSE
 }
