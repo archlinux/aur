@@ -1,0 +1,12 @@
+pkgbase = callisto-git
+	pkgdesc = standalone scripting platform for Lua 5.4
+	pkgver = v0.1.0.r97.g019fea4
+	pkgrel = 1
+	url = https://github.com/jtbx/callisto
+	arch = x86_64
+	license = GPL
+	options = !emptydirs
+	source = callisto-git::git+https://github.com/jtbx/callisto.git
+	sha256sums = SKIP
+
+pkgname = callisto-git
