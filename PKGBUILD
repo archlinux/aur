@@ -4,15 +4,20 @@
 
 pkgname=uim
 pkgver=1.8.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Multilingual input method library"
 url="https://github.com/uim/uim"
-license=(custom:BSD)
+license=(BSD-3-Clause)
 arch=(x86_64)
 depends=(
+  gcc-libs
+  glibc
   libedit
+  libxext
   libxft
   m17n-lib
+  ncurses
+  sqlite
 )
 makedepends=(
   anthy
@@ -50,12 +55,20 @@ build() {
     --with-anthy-utf8 \
     --with-skk
 
-  make
+  # Silence very noisy compiler warning
+  make CFLAGS+="-Wno-deprecated-declarations"
+}
+
+check() {
+  cd "$_archive"
+
+  make check
 }
 
 package() {
   cd "$_archive"
 
   make DESTDIR="$pkgdir" install -j1
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" COPYING
+
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" COPYING
 }
