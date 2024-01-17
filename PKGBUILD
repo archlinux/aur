@@ -2,7 +2,7 @@
 # Contributor: David Baum <david.baum@naraesk.eu>
 pkgname=eclipse-installer
 pkgver=2023.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Automates the installation and update of Eclipse development environments"
 arch=('aarch64' 'x86_64')
 url="https://wiki.eclipse.org/Eclipse_Installer"
@@ -22,7 +22,7 @@ sha256sums=(
 	'c7d6a0bd5dad627dd15ac9d7e6e04c8c8a4b811ce4b0744212a487bc4f6c0cdf'
 )
 sha256sums_x86_64=(
-    'c26faafd1947c7e054bf36420416805813ea6bbb67ffb4a09c6025bb938c39c8'
+    '8a9e34d9e5a72b665f23add070c01e602da4d3ff37ce777c9c8f7dbb40cbdb21'
 )
 sha256sums_aarch64=(
     'fbdf4c3aa89f97831f8617ce82262596cfac1bf82484170b0a2096dddf4cddd3'
