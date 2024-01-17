@@ -3,7 +3,7 @@ pkgname=r3playx-git
 _pkgname=R3PLAYX
 pkgver=2.7.3.r0.gc3aa540
 _electronversion=28
-_nodeversion=16
+_nodeversion=18
 pkgrel=1
 pkgdesc="A music player forked from YesPlayMusic。高颜值的第三方网易云播放器，支持 Windows / macOS / Linux"
 arch=('any')
@@ -21,7 +21,7 @@ makedepends=(
     'git'
     'nvm'
     'npm'
-    'pnpm>=8.6.12'
+    'pnpm'
     'make'
     'gcc'
 )
@@ -30,7 +30,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0ae01b89f61471ea878a5580ee675699488e5164025b767d372834664c5b1c8b')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -43,7 +43,7 @@ _ensure_local_nvm() {
 }
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
@@ -57,10 +57,13 @@ build() {
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
     pnpm config set link-workspace-packages true
     cp .env.example .env
-    cd "${srcdir}/${pkgname//-/.}/packages/desktop"
-    sed '87d;78,84d' -i .electron-builder.config.js
+    cd "${srcdir}/${pkgname//-/.}"
+    sed '87d;78,84d' -i packages/desktop/.electron-builder.config.js
+    #sed -e '106,120d' \
+    #    -e '92,94d' \
+    #    -e '91i\    this.sqlite = new SQLite3(this.dbFilePath)' \
+    #    -i packages/desktop/main/db.ts
     pnpm install
-    pnpm run build
     pnpm run package
 }
 package() {

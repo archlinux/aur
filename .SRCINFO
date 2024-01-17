@@ -9,7 +9,7 @@ pkgbase = r3playx-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = npm
-	makedepends = pnpm>=8.6.12
+	makedepends = pnpm
 	makedepends = make
 	makedepends = gcc
 	depends = electron28
@@ -22,6 +22,6 @@ pkgbase = r3playx-git
 	source = r3playx.git::git+https://github.com/Sherlockouo/music.git
 	source = r3playx.sh
 	sha256sums = SKIP
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 0ae01b89f61471ea878a5580ee675699488e5164025b767d372834664c5b1c8b
 
 pkgname = r3playx-git
