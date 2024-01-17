@@ -3,11 +3,11 @@
 
 pkgname=munipack
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A general astronomical image processing software"
 arch=(x86_64)
 url="http://munipack.physics.muni.cz"
-license=(GPL3)
+license=(GPL-3.0-or-later)
 depends=(
   cfitsio
   gcc-libs

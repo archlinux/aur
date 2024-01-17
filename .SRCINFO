@@ -1,10 +1,10 @@
 pkgbase = munipack
 	pkgdesc = A general astronomical image processing software
 	pkgver = 0.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://munipack.physics.muni.cz
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = gcc-fortran
 	depends = cfitsio
 	depends = gcc-libs
