@@ -3,11 +3,11 @@
 
 pkgname=naps2-bin
 pkgver=7.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="NAPS2 - Not Another PDF Scanner. Scan documents to PDF and more, as simply as possible."
 arch=(x86_64)
 url="https://www.naps2.com"
-license=(GPL2)
+license=("GPL-2.0")
 depends=(sane)
 optdepends=(
   "sane-airscan: airscan support"
