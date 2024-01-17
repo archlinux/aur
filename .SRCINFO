@@ -1,9 +1,9 @@
 pkgbase = peershare
 	pkgdesc = A peer-to-peer file sharing app,enables you to share files to your friends, family, colleagues etc, using peer-to-peer technology.
 	pkgver = 0.0.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/connor-davis/peershare
-	arch = x86_64
+	arch = any
 	license = custom:unknown
 	makedepends = gendesk
 	makedepends = npm
@@ -11,9 +11,9 @@ pkgbase = peershare
 	makedepends = git
 	depends = electron27
 	conflicts = peershare
-	source = peershare-0.0.9::git+https://github.com/connor-davis/peershare.git#tag=v0.0.9
+	source = peershare.git::git+https://github.com/connor-davis/peershare.git#tag=v0.0.9
 	source = peershare.sh
 	sha256sums = SKIP
-	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
 
 pkgname = peershare
