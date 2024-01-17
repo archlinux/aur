@@ -2,7 +2,7 @@
 pkgname=reqnotes-bin
 _pkgname=ReqNotes
 pkgver=1.8
-pkgrel=4
+pkgrel=5
 pkgdesc="Personal Notes Application, Cross platform desktop application, developed with .NET 6 and Avalonia UI"
 arch=('x86_64')
 url="https://github.com/ReqBaa/ReqNotes"
@@ -18,10 +18,10 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('08c7edd178beb43194eca99bf06ce9a788949b70e917458e9832272ac0db209c'
-            'cd87dcfa438cbda7cee315933d5c260629bbe09ac6201b8bf37993c8ab1610cc')
+            '46c44290e51c6b3f146c244fab112aaa1ff6f5ce4f26415f85820e5eee6a2d11')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runappname@|${_pkgname}|g" \
+        -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.zst"
     sed -e "s|/usr/share/reqbaa/${pkgname%-bin}/${_pkgname}|${pkgname%-bin}|g" \
