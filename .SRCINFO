@@ -1,6 +1,6 @@
 pkgbase = liboqs
 	pkgdesc = C library for prototyping and experimenting with quantum-resistant cryptography
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	epoch = 1
 	url = https://openquantumsafe.org/liboqs/
@@ -14,7 +14,7 @@ pkgbase = liboqs
 	makedepends = ninja
 	depends = gcc-libs
 	depends = openssl
-	source = liboqs-0.9.1.tar.gz::https://github.com/open-quantum-safe/liboqs/archive/refs/tags/0.9.1.tar.gz
-	b2sums = 9036a1b1794a27036941abfa6bfcd8242686ce983e78e559cabf2e82d4c6a281d455981317a6b46de05c131f6497c385c5ac018c5afc927afc3b7470c51bb511
+	source = liboqs-0.9.2.tar.gz::https://github.com/open-quantum-safe/liboqs/archive/refs/tags/0.9.2.tar.gz
+	b2sums = 2a2252532a1fe9ff84152f862195284df7d7f498eae105be91b86f1237ba2f355a9d2d0df6107c9e84f420c314953d5ce16b06b30ca0024e3f7396966dbd0765
 
 pkgname = liboqs
