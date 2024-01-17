@@ -1,5 +1,5 @@
-carapace-bin
 pkg
 src
+*.tar.gz
 *.log
 *.pkg.tar.*
