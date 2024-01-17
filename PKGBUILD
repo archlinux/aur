@@ -2,11 +2,11 @@
 
 _pkgname=cleanerml
 pkgname=cleanerml-git
-pkgver=r698.5bc2961
+pkgver=r735.2b8c706
 pkgrel=1
 pkgdesc='System cleaners written in CleanerML used by BleachBit.'
 url='https://github.com/az0/cleanerml'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 source=('git+https://github.com/az0/cleanerml.git')
 sha256sums=('SKIP')
 arch=('any')
