@@ -1,10 +1,11 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname='gamut-git'
 pkgdesc='Toolkit of (hopefully) suckless filters for the farbfeld image format'
-pkgver=r20.f446d83
+pkgver=r25.a926de3
 pkgrel=1
 license=('Custom')
 depends=('glibc')
+makedepends=('git')
 arch=('i686' 'x86_64')
 url='https://github.com/erik/gamut'
 source=("${pkgname}::git+${url}")
