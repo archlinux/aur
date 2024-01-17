@@ -83,6 +83,7 @@ build () {
         -D gles2=enabled \
         -D glvnd=true \
         -D glx=dri \
+        -D intel-clc=enabled \
         -D libunwind=enabled \
         -D llvm=enabled \
         -D lmsensors=enabled \
