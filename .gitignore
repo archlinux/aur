@@ -1,4 +1,5 @@
-*.jar
-pkg/
-src/
-*.tar*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.pre-commit-config.yaml
