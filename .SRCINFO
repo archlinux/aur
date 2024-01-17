@@ -1,7 +1,7 @@
 pkgbase = casparcg-server-git
 	pkgdesc = Software used to play out professional graphics, audio and video to multiple outputs
 	pkgver = 2.3.3.r186.gfb253fd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CasparCG/server
 	arch = x86_64
 	license = GPL3
