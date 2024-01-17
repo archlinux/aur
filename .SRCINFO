@@ -1,10 +1,10 @@
 pkgbase = rdiff-backup
 	pkgdesc = Reverse differential backup tool, over a network or locally
 	pkgver = 2.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rdiff-backup/rdiff-backup
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
 	checkdepends = python-pylibacl
 	checkdepends = python-pyxattr
 	makedepends = asciidoctor

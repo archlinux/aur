@@ -2,5 +2,3 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!0001-Fix-action-list-increments-regex-893.patch
-!0002-Fix-timezone-for-Russia-Co-905.patch

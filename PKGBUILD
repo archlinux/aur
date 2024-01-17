@@ -5,11 +5,11 @@
 
 pkgname=rdiff-backup
 pkgver=2.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Reverse differential backup tool, over a network or locally"
 arch=(x86_64)
 url="https://github.com/rdiff-backup/rdiff-backup"
-license=(GPL)
+license=(GPL-2.0-only)
 depends=(
   glibc
   librsync
@@ -48,6 +48,14 @@ sha256sums=(
 
 _archive="$pkgname-$pkgver"
 
+prepare() {
+  cd "$_archive"
+
+  fakeroot tar --extract \
+    --file "$srcdir/rdiff-backup-filesrepo-$_rdiff_backup_filesrepo_hash/rdiff-backup_testfiles.tar" \
+    --directory "$srcdir"
+}
+
 build() {
   cd "$_archive"
 
@@ -58,15 +66,12 @@ build() {
 check() {
   cd "$_archive"
 
-  fakeroot tar --extract \
-    --file "$srcdir/rdiff-backup-filesrepo-$_rdiff_backup_filesrepo_hash/rdiff-backup_testfiles.tar" \
-    --directory "$srcdir"
+  rm -rf tmp_install
+  python -m installer --destdir=tmp_install dist/*.whl
 
-  python_version=$(python -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
-
-  python -m installer --destdir=test-install dist/*.whl
-  export PATH="$PWD/test-install/usr/bin:$PATH"
-  export PYTHONPATH="$PWD/test-install/usr/lib/python$python_version/site-packages"
+  _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  export PYTHONPATH="$PWD/tmp_install/$_site_packages"
+  export PATH="$PWD/tmp_install/usr/bin:$PATH"
 
   # Must be the first command to setup the test environment
   python testing/commontest.py
