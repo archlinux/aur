@@ -32,10 +32,7 @@ build() {
 }
 
 package() {
-    # install -d $pkgdir/usr/bin
-    # cp $srcdir/$_pkgname/build/src/$_pkgname $pkgdir/usr/bin/$_pkgname
-    cd $srcdir/$_pkgname
-
-    DESTDIR="$pkgdir" cmake --install build
+    install -d $pkgdir/usr/bin
+    cp $srcdir/$_pkgname/build/src/$_pkgname $pkgdir/usr/bin/$_pkgname
     echo "Build complete, please create link to game directory from /usr/bin/$_pkgname"
 }
