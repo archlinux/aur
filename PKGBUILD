@@ -8,8 +8,8 @@
 ## basic info
 _pkgname="xwayland-run"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=0.0.2.r2.g0f30bf5
-pkgrel=5
+pkgver=0.0.2.r3.gc5846be
+pkgrel=1
 pkgdesc="Utilities to run headless X/Wayland clients"
 url="https://gitlab.freedesktop.org/ofourdan/xwayland-run"
 license=('GPL-2.0-or-later')

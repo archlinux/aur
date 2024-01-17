@@ -1,7 +1,7 @@
 pkgbase = xwayland-run-git
 	pkgdesc = Utilities to run headless X/Wayland clients
-	pkgver = 0.0.2.r2.g0f30bf5
-	pkgrel = 5
+	pkgver = 0.0.2.r3.gc5846be
+	pkgrel = 1
 	url = https://gitlab.freedesktop.org/ofourdan/xwayland-run
 	arch = x86_64
 	license = GPL-2.0-or-later
