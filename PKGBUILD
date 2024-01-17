@@ -5,11 +5,11 @@
 
 pkgname=mit-scheme
 pkgver=12.1
-pkgrel=8
+pkgrel=9
 pkgdesc="MIT/GNU Scheme"
 url="https://www.gnu.org/software/mit-scheme/"
 arch=(x86_64)
-license=(GPL)
+license=(GPL-2.0-or-later)
 depends=(
   glibc
   libx11
@@ -17,13 +17,11 @@ depends=(
 )
 makedepends=(
   ghostscript
-  texlive-latex
   texlive-bin
+  texlive-latex
   texlive-plaingeneric
 )
-checkdepends=(
-  bash
-)
+checkdepends=(bash)
 optdepends=('openssl: support for openssl')
 
 source=(
@@ -52,64 +50,55 @@ prepare() {
 }
 
 build() {
-  cd "$_archive"
+  cd "$srcdir/$_archive/src"
+  ./configure \
+    --prefix=/usr \
+    --with-x \
+    --enable-x11 \
+    --enable-native-code
+  make -j1
 
-  (
-    cd src
-    ./configure \
-      --prefix=/usr \
-      --with-x \
-      --enable-x11 \
-      --enable-native-code
-    make -j1
-  )
-
-  (
-    cd doc
-    ./configure \
-      --prefix=/usr \
-      --enable-pdf \
-      --disable-html
-    make
-  )
+  cd "$srcdir/$_archive/doc"
+  ./configure \
+    --prefix=/usr \
+    --enable-pdf \
+    --disable-html
+  make
 }
 
 check() {
-  cd "$_archive-test"
+  cd "$srcdir/$_archive-test"
 
   # Run tests with a temporary installation
-  local tmp_install_prefix=$PWD/tmp_install/usr
-  mkdir -p "$tmp_install_prefix"
+  _tmp_install_prefix=$PWD/tmp_install/usr
+  mkdir -p "$_tmp_install_prefix"
 
-  (
-    cd src
-    ./configure \
-      --prefix="$tmp_install_prefix" \
-      --with-x \
-      --enable-x11 \
-      --enable-native-code
-    make -j1
-    make DESTDIR=/ install
-  )
+  cd "$srcdir/$_archive-test/src"
+  ./configure \
+    --prefix="$_tmp_install_prefix" \
+    --with-x \
+    --enable-x11 \
+    --enable-native-code
+  make -j1
+  make DESTDIR=/ install
+
+  cd "$srcdir/$_archive-test"
 
   # Tests confirmed to fail when using fish as shell, use bash explicitly
-  SHELL=/bin/bash "$tmp_install_prefix/bin/mit-scheme" --eval '(load "tests/check.scm")'
+  SHELL=/bin/bash "$_tmp_install_prefix/bin/mit-scheme" --eval '(load "tests/check.scm")'
 }
 
 package() {
-  cd "$_archive"
-
+  cd "$srcdir/$_archive"
   install -Dm644 "etc/xscheme.el" "$pkgdir/usr/share/emacs/site-lisp/xscheme.el"
 
-  (
-    cd src
-    make DESTDIR="$pkgdir" install
-  )
-  (
-    cd doc
-    make DESTDIR="$pkgdir" install
-  )
+  cd "$srcdir/$_archive/src"
+  make DESTDIR="$pkgdir" install
 
+  cd "$srcdir/$_archive/doc"
+  make DESTDIR="$pkgdir" install
+
+  cd "$srcdir/$_archive"
   # Remove to avoid namcap warning about empty directory
   rm -r "$pkgdir/usr/lib/mit-scheme-x86-64-12.1/lib/"
 }
