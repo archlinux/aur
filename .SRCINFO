@@ -1,6 +1,6 @@
 pkgbase = upscayl-git
 	pkgdesc = Free and Open Source AI Image Upscaler for Linux, MacOS and Windows built with Linux-First philosophy.
-	pkgver = 2.9.7.r1.gb8f0b6f
+	pkgver = 2.9.8.r0.g3c19a6c
 	pkgrel = 1
 	url = https://upscayl.org/
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = upscayl-git
 	makedepends = npm
 	makedepends = nvm
 	makedepends = elfutils
-	makedepends = electron27
 	depends = electron27
 	depends = libvips
 	depends = nodejs

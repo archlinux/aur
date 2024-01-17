@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=upscayl-git
 _pkgname=Upscayl
-pkgver=2.9.7.r1.gb8f0b6f
+pkgver=2.9.8.r0.g3c19a6c
 pkgrel=1
 _electronversion=27
 _nodeversion=18
@@ -22,7 +22,6 @@ makedepends=(
     'npm'
     'nvm'
     'elfutils'
-    "electron${_electronversion}"
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -58,7 +57,7 @@ build() {
     npm install
     npm run dist:linux
     sed "s|${pkgname%-git}-run|${pkgname%-git} --no-sandbox|g;s|org.${pkgname%-git}.${_pkgname}|${pkgname%-git}|g" \
-        -i "${srcdir}/${pkgname//-/.}/dist/linux-unpacked/resources/org.${pkgname%-git}.${_pkgname}.desktop"
+        -i "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/org.${pkgname%-git}.${_pkgname}.desktop
 }
 package(){
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
