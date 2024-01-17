@@ -1,0 +1,8 @@
+*
+
+!.gitignore
+!*.patch
+!freetype2.install
+!freetype2.sh
+!PKGBUILD
+!.SRCINFO
