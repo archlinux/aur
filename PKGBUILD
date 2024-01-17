@@ -4,11 +4,11 @@
 
 pkgname=rpmlint
 pkgver=2.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for checking common errors in rpm packages"
 arch=(any)
 url="https://github.com/rpm-software-management/rpmlint"
-license=(GPL2)
+license=(GPL-2.0-only)
 depends=(
   binutils
   cpio
@@ -29,7 +29,14 @@ makedepends=(
   python-setuptools
   python-wheel
 )
-checkdepends=(python-pytest)
+checkdepends=(
+  appstream-glib
+  checkbashisms
+  dash
+  desktop-file-utils
+  python-pyenchant
+  python-pytest
+)
 optdepends=(
   'appstream-glib: for AppData file validation'
   'checkbashisms: for checking bashisms'
@@ -52,7 +59,7 @@ build() {
 check() {
   cd "$_archive"
 
-  script --command 'pytest --override-ini="addopts="'
+  script --return --command 'pytest --override-ini="addopts="'
 }
 
 package() {
