@@ -1,0 +1,25 @@
+pkgbase = serial-studio-bin
+	pkgdesc = Multi-purpose serial data visualization & processing program
+	pkgver = 1.1.7
+	pkgrel = 1
+	url = https://serial-studio.github.io/
+	arch = x86_64
+	license = custom
+	makedepends = squashfuse
+	depends = e2fsprogs
+	depends = libp11-kit
+	depends = gmp
+	depends = libglvnd
+	depends = qt6-declarative
+	depends = libgpg-error
+	provides = serial-studio=1.1.7
+	conflicts = serial-studio
+	options = !strip
+	source = serial-studio-1.1.7.AppImage::https://github.com/Serial-Studio/Serial-Studio/releases/download/v1.1.7/SerialStudio-1.1.7-Linux.AppImage
+	source = LICENSE-1.1.7.md::https://raw.githubusercontent.com/Serial-Studio/Serial-Studio/v1.1.7/LICENSE.md
+	source = serial-studio.sh
+	sha256sums = 22b6a9465b9b56bb321956991f6746117f7f084d56082b28000bed0908919be8
+	sha256sums = 2bd1d916e395ee261da269285a9cb803e6f594b0cb97b50e01b43e0911004d17
+	sha256sums = 78493db2188c4006572b1eb66f73533fa4e4d7ed1aba282aa1f5fa7f6175c74c
+
+pkgname = serial-studio-bin
