@@ -6,13 +6,12 @@
 # https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/
 
 _pkgnamefmt=LibreOffice
-_LOver=24.2.0.1
+_LOver=24.2.0.2
 
 # basic info
 _pkgname=libreoffice
 pkgname="${_pkgname}-dev-bin"
-pkgver=24.2.0.1
-#_basever=$( cut -f1-2 -d'.' <<< ${_LOver} )
+pkgver=24.2.0.2
 pkgrel=1
 pkgdesc="LibreOffice development branch"
 url="https://www.libreoffice.org/"
