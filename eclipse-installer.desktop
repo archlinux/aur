@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=2020-03
+Name=Eclipse Installer
+Comment=Automates the installation and update of Eclipse development environments
+Exec=/usr/bin/eclipse-installer
+Icon=eclipse-installer
+Terminal=false
+Type=Application
+Categories=Development
+Keywords=Eclipse;Oomph
