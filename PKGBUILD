@@ -5,11 +5,11 @@
 pkgname=espanso-wayland
 _name=espanso
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform Text Expander written in Rust (built for Wayland)"
 arch=(x86_64)
 url="https://github.com/espanso/espanso"
-license=(GPL3)
+license=(GPL-3.0-only)
 depends=(
   bzip2
   dbus
