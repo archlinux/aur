@@ -1,7 +1,7 @@
 pkgbase = python-pyvips
 	pkgdesc = Python binding for libvips using cffi
-	pkgver = 2.2.1
-	pkgrel = 0
+	pkgver = 2.2.2
+	pkgrel = 1
 	url = https://github.com/libvips/pyvips
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = python-pyvips
 	depends = libvips
 	depends = python-cffi
 	depends = python-numpy
-	source = pyvips-2.2.1.tar.gz::https://github.com/libvips/pyvips/archive/refs/tags/v2.2.1.tar.gz
-	sha512sums = 1656f13bf3f8a3f0975367c40c5478ffaf3f23712a46f1c8a293cfac8e4ce20afe2b967c9ffd00fb37a648410eaa5186ef2f48d922bd8eac8a6abbe77ace82fa
+	source = pyvips-2.2.2.tar.gz::https://github.com/libvips/pyvips/archive/refs/tags/v2.2.2.tar.gz
+	sha256sums = 89f5b0cae73720f0a52d872c4ee0a43a1bc40f02565c07b2d7558aaeead23bf8
 
 pkgname = python-pyvips
