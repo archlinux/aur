@@ -1,20 +1,17 @@
 pkgbase = parse-torrent
 	pkgdesc = Parse a torrent identifier (magnet uri, .torrent file, info hash)
-	pkgver = 11.0.14
-	pkgrel = 2
+	pkgver = 11.0.16
+	pkgrel = 1
 	url = https://github.com/webtorrent/parse-torrent
 	arch = any
 	license = MIT
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	noextract = parse-torrent-11.0.14.tgz
-	options = strip
-	options = emptydirs
-	options = zipman
-	source = https://registry.npmjs.org/parse-torrent/-/parse-torrent-11.0.14.tgz
+	noextract = parse-torrent-11.0.16.tgz
+	source = https://registry.npmjs.org/parse-torrent/-/parse-torrent-11.0.16.tgz
 	source = https://raw.githubusercontent.com/webtorrent/parse-torrent/master/LICENSE
-	b2sums = 331f8badf861fadc6b9729b9a8000f11ede542cffd3ce0b11f13d1191f92d64dfee677717fd3c9114f812d8322e8534f39d081195679d7d304128fd587fdb03e
+	b2sums = c751ab740885e652eeb1f9b5ebab403a121f5afb69be902ed580409e488148db29856725e342878e04f230426f3ff5773cfa934d83aa81301586107356e2caa2
 	b2sums = 3890a8cd095787f6ab383fe3ca0a0bf0999d80a7ea65627bb1a50f1c2690987f53e0619df5745ba47d6ef46d32e03573b5a52330a7c857220e4db96a33203019
 
 pkgname = parse-torrent
