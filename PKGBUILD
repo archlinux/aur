@@ -1,6 +1,6 @@
 # Maintainer: oscarcl <oscar.cowderylack@gmail.com>
 pkgname=casparcg-server-git
-pkgver=2.3.3.r151.g9212c29
+pkgver=2.3.3.r186.gfb253fd
 pkgrel=1
 pkgdesc="Software used to play out professional graphics, audio and video to multiple outputs"
 arch=('x86_64')
@@ -38,7 +38,7 @@ build() {
     cmake -B build -S "casparcg-server/src" \
         -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DUSE_SYSTEM_BOOST=ON \
+        -DUSE_SYSTEM_FFMPEG=ON \
         -DDIAG_FONT_PATH="/usr/share/fonts/liberation/LiberationSans-Regular.ttf" \
         -G Ninja
 
