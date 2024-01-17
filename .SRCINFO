@@ -1,10 +1,10 @@
 pkgbase = holehe
-	pkgdesc = Check if the mail is used on different sites
+	pkgdesc = Check if an email address is used on different sites
 	pkgver = 1.61
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/megadose/holehe
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
