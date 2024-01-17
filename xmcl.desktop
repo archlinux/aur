@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=X Minecraft Launcher
-Exec=/usr/bin/electron /usr/lib/xmcl/xmcl.asar
+Name=XMCL
+Exec=/usr/bin/electron27 /usr/lib/xmcl/xmcl.asar
 Terminal=false
 Type=Application
 Icon=xmcl

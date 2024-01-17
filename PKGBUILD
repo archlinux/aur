@@ -1,13 +1,13 @@
 # Maintainer: Zhaose <zhaose233@outlook.com>
 pkgname=xmcl-launcher-bin
 _pkgname=xmcl-launcher
-pkgver=0.39.5
+pkgver=0.39.14
 pkgrel=1
 pkgdesc="X Minecraft Launcher - Modern Minecraft Launcher"
 arch=('x86_64')
 url="https://xmcl.app/"
 license=('MIT')
-depends=('electron')
+depends=('electron27')
 optdepends=(
     'jre8-openjdk: For old versions of minecraft'
     'jre11-openjdk: Recommended for Minecraft 1.12(17w13a)-1.17(21w18a)'
@@ -18,12 +18,12 @@ source=(
     "xmcl.png"
     "xmcl.desktop"
 )
-
-
-
-sha256sums=('74e1367b0a1d10afac2a6cadee841cd0ae4d7f279d9b469f729fa7dee46fb59c'
+sha256sums=('c516910aa788dc01b59e42d9ec1890e9df93e39e5220de116677a4514e52c6dd'
             '7292bbcf951bba1e34d265925c1ca5f786198a3b289a081e134e0e59b743e742'
-            'e253e7e922f496ff6800b639ebc8cdbdc1c984b25d0598a0d175d07f0aa1dc67')
+            '7504507abe2efdd4e103c12efa028a093852d7c17e85377e1f07efe93fd52de2')
+
+
+
 
 package(){
   cd ${pkgdir}
