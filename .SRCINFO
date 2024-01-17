@@ -1,7 +1,7 @@
 pkgbase = vcmi
 	pkgdesc = Open-source engine for Heroes of Might and Magic III
 	pkgver = 1.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://vcmi.eu
 	install = vcmi.install
 	arch = i686
@@ -26,7 +26,7 @@ pkgbase = vcmi
 	depends = desktop-file-utils
 	depends = gtk-update-icon-cache
 	depends = hicolor-icon-theme
-	depends = tbb
+	depends = onetbb
 	depends = fuzzylite
 	depends = luajit
 	optdepends = innoextract: required by vcmibuilder
