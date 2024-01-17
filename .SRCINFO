@@ -1,10 +1,10 @@
 pkgbase = gcstar
 	pkgdesc = Collection manager written in Perl and based on GTK
 	pkgver = 1.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/GCstar/GCstar
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = hicolor-icon-theme
 	depends = perl
 	depends = perl-archive-zip

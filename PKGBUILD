@@ -6,11 +6,11 @@
 pkgname=gcstar
 _name=GCstar
 pkgver=1.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Collection manager written in Perl and based on GTK"
 arch=(any)
 url="https://gitlab.com/GCstar/GCstar"
-license=(GPL)
+license=(GPL-2.0-or-later)
 depends=(
   hicolor-icon-theme
   perl
