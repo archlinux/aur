@@ -1,12 +1,12 @@
 # Maintainer: Kimiblock
 pkgname=qcm
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
-_tag=36854ca244bdccccaa3bfe9c6bb16b79dae4418a
+_tag=07a05e2c2950b6dbbc226aefb7cf9980a2941fa4
 pkgdesc="Qt client for netease cloud music"
 arch=('x86_64')
 url="https://github.com/hypengw/Qcm"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=(
     'qt6-base'
     'qt6-shadertools'
@@ -45,6 +45,10 @@ conflicts=()
 source=("git+https://github.com/hypengw/Qcm.git#tag=${_tag}")
 sha256sums=('SKIP')
 
+function prepare() {
+	cd Qcm
+	git submodule update --init
+}
 
 function build() {
     if [ -d "${srcdir}"/Qcm/build ]; then
