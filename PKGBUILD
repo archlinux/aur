@@ -3,7 +3,7 @@
 pkgname=python-adafruit-blinka
 _pypi_pkgname=Adafruit-Blinka
 pkgver=8.30.0
-pkgrel=0
+pkgrel=1
 pkgdesc="CircuitPython APIs for non-CircuitPython versions of Python such as CPython on Linux and MicroPython"
 arch=('armv6h' 'armv7h' 'aarch64')
 url="https://github.com/adafruit/Adafruit_Blinka"
@@ -15,10 +15,10 @@ makedepends=(
 'python-setuptools-scm'
 )
 depends=(
-'libgpiod'
 'python'
 'python-sysv_ipc'
 'python-adafruit-platformdetect'
+'python-gpiod'
 'python-adafruit-pureio'
 )
 optdepends=()
