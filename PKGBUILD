@@ -3,7 +3,7 @@ pkgname=winggifeditor-bin
 _pkgname=WingGifEditor
 _appname="com.wingsummer.${pkgname%-bin}"
 pkgver=1.1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="基于 QT 编写的 GIF 编辑器，采用 C++ 进行开发"
 arch=('x86_64')
 url="https://github.com/Wing-summer/WingGifEditor"
@@ -20,9 +20,14 @@ depends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/V${pkgver}/${_appname}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}.sh"
 )
-sha256sums=('c2e56a4478a7540afa7d52819d37e9d6b30d7afb577002dd3825b928d83125b2')
+sha256sums=('c2e56a4478a7540afa7d52819d37e9d6b30d7afb577002dd3825b928d83125b2'
+            '0d6a89f6285fc5e87e5af0dec3697e221c6730130c0eab33826240270735e3bc')
 build() {
+    sed -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|${_pkgname}|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed -e "s|\"/opt/${_pkgname}/${_pkgname}\"|${pkgname%-bin}|g" \
         -e "s|/opt/${_pkgname}/images/icon.png|${pkgname%-bin}|g" \
@@ -30,11 +35,10 @@ build() {
         -i "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/opt/${_pkgname}/${_pkgname}" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"    
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/opt/${_pkgname}/${_pkgname}" -t "${pkgdir}/opt/${pkgname%-bin}"    
     install -Dm644 "${srcdir}/opt/${_pkgname}/lang/default.qm" -t "${pkgdir}/opt/${pkgname%-bin}/lang"
     install -Dm644 "${srcdir}/opt/${_pkgname}/images/icon.png" -t "${pkgdir}/opt/${pkgname%-bin}/images"
-    install -Dm755 -d "${pkgdir}/usr/bin"
-    ln -sf "/opt/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/images/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/opt/${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
