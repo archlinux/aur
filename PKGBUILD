@@ -42,6 +42,9 @@ sha256sums=('53027cd57be24ed6b41c870830a3a10b5a8558c0064f3f20caff5fc03d5b2d2d'
             '025373ba75679076a9a681b69057b632b17195cc9c3ece1192104efabbcae324'
             '5fe369d67a6b40ce632b84abe7a947fb53db557dc813273c8beb0a19984c7cf9')
 build() {
+    sed -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|${pkgname%-bin}|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories "AudioVideo" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
     install -Dm755 -d "${srcdir}/opt"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/opt"
