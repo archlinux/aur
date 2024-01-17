@@ -3,13 +3,15 @@
 # Acknowledgment: @pychuang (logseq-desktop-git) 
 
 # avoid cluttering user home, while allowing data to be cached
-export XDG_CONFIG_HOME="${SRCDEST:-$startdir}/node-home"
-export HOME="$XDG_CONFIG_HOME"
+export HOME="${SRCDEST:-$startdir}/node-home"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HoME/.local/share"
 
 # basic info
 _pkgname="logseq-desktop"
 pkgname="$_pkgname"
-pkgver=0.10.3
+pkgver=0.10.4
 pkgrel=1
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 arch=("x86_64")
@@ -32,7 +34,7 @@ source=(
     "$_pkgname-${pkgver}.zip::https://github.com/logseq/logseq/archive/refs/tags/${pkgver}.zip"
 )
 sha256sums=(
-    '5894e163f0aa486a7d6c90b762bd19eb9c304a1c8affec20a1150d01ef8f6deb'
+    '4c4b3b3a7070d8e64fe4ac2d670affbdebe18a2b74cd4b98ae332241377bcf35'
 )
 
 prepare() {
