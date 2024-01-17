@@ -1,12 +1,10 @@
 # Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
 
 # options
-if [ "${_srcinfo::1}" == "t" ] ; then
+if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ] ; then
   : ${_autoupdate:=false}
-elif [ -z "$_pkgver" ] ; then
-  : ${_autoupdate:=true}
 else
-  : ${_autoupdate:=false}
+  : ${_autoupdate:=true}
 fi
 
 : ${_pkgtype:=-bin}
@@ -14,7 +12,7 @@ fi
 # basic info
 _pkgname="logseq-desktop"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=0.10.3
+pkgver=0.10.4
 pkgrel=1
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
@@ -27,20 +25,17 @@ _main_package() {
     'gendesk'
   )
 
-  provides=("$_pkgname")
+  provides=("$_pkgname=$pkgver")
   conflicts=("$_pkgname")
 
+  options=(!debug !strip)
   install="$_pkgname.install"
 
   _pkgsrc="Logseq-linux-x64"
   _pkgext="zip"
+  _install_path="opt"
   source+=("$url/releases/download/$_pkgver/$_pkgsrc-$_pkgver.$_pkgext")
-
-  if [[ "${_autoupdate::1}" == "t" ]] ; then
-    sha256sums+=('SKIP')
-  else
-    sha256sums+=('f72703a080773873c6106587e30e91506dac114ad0f6b33383171f0cc2a6d5e5')
-  fi
+  sha256sums+=('SKIP')
 
   # appimage - missing icon
   if [[ "${_pkgext::1}" == "A" ]] ; then
@@ -102,8 +97,8 @@ package() {
   install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/logseq"
 
   # package files
-  install -dm755 "$pkgdir/opt/$_pkgname"
-  cp --reflink=auto -r "$srcdir/$_pkgsrc"/* "$pkgdir/opt/$_pkgname/"
+  install -dm755 "$pkgdir/$_install_path/$_pkgname"
+  cp --reflink=auto -r "$_pkgsrc"/* "$pkgdir/$_install_path/$_pkgname/"
 
   # fix permissions
   chmod -R u=rwX,go=rX "$pkgdir"
@@ -114,10 +109,14 @@ _gen_script() {
   cat <<'EOF' > "$_pkgname.sh"
 #!/usr/bin/env sh
 set -e
+EOF
 
-APPDIR="/opt/logseq-desktop"
+  cat <<EOF >> "$_pkgname.sh"
+APPDIR="/$_install_path/logseq-desktop"
+EOF
+
+  cat <<'EOF' >> "$_pkgname.sh"
 _ELECTRON="${APPDIR}/Logseq"
-
 _FLAGS_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/logseq-flags.conf"
 if [ -r "$_FLAGS_FILE" ]; then
   _USER_FLAGS="$(cat "$_FLAGS_FILE")"
