@@ -6,18 +6,18 @@ pkgname=(
   boost174-libs
 )
 pkgver=1.74.0
-pkgrel=5
+pkgrel=6
 _srcname=boost_${pkgver//./_}
 pkgdesc="Free peer-reviewed portable C++ source libraries (version 1.74)"
 arch=(x86_64)
 url="https://www.boost.org/"
-license=(Boost)
+license=(BSL-1.0)
 makedepends=(
+  bzip2
   icu
+  openmpi
   python
   python-numpy
-  bzip2
-  openmpi
   zstd
 )
 source=(
