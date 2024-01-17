@@ -4,7 +4,7 @@ pkgbase=postgresql16
 pkgver=16.1
 _majorver=${pkgver%.*}
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
-pkgrel=8
+pkgrel=9
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
@@ -27,7 +27,7 @@ sha256sums=('ce3c4d85d19b0121fe0d3f8ef1fa601f71989e86f8a66f7dc3ad546dd5564fec'
             '7d2e8243a2c024a57489276bbf8945eb8a1b8762448732d432c56911577f8756'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
             'fddc68565151077b4f514345087c38ca069d049b8a17dbf7eef2826f49ccbc7b'
-            'c8b2797bbbcf7cfd7fe23863101df7d895a38aa77aab5eae9ab4f43b9c22aeee')
+            'c98c512eec350d8b87495e2f3ec024304655842f75f004c115ae049825adbaa7')
 
 prepare() {
   cd postgresql-${pkgver}
@@ -69,7 +69,7 @@ build() {
 
   # build
   # see bug 17943, which requires llvm15/clang15 instead of current version 16: https://www.postgresql.org/message-id/17943-56bb8c6bd4409b9f%40postgresql.org
-  LLVM_CONFIG=llvm-config-15 CLANG=/usr/lib/llvm15/bin/clang \
+  # LLVM_CONFIG=llvm-config-15 CLANG=/usr/lib/llvm15/bin/clang \
   ./configure "${options[@]}"
   make world
 }
