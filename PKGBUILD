@@ -4,19 +4,21 @@ pkgname=ruby-pdf-inspector
 _name=${pkgname#ruby-}
 pkgver=1.3.0
 _commit_hash=1f6e59cb7d56b956783d2cbb0b67db8cd2a4d006
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of PDF::Reader based analysis classes for inspecting PDF output"
 arch=(any)
 url="https://github.com/prawnpdf/pdf-inspector"
-license=(GPL3)
+license=(
+  GPL-2.0-only
+  GPL-3.0-only
+  Ruby
+)
 depends=(
   ruby
   ruby-pdf-reader
 )
 makedepends=(rubygems)
-checkdepends=(
-  ruby-rspec
-)
+checkdepends=(ruby-rspec)
 options=(!emptydirs)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit_hash.tar.gz")
@@ -37,7 +39,6 @@ prepare() {
 build() {
   cd "$_archive"
 
-  local _gemdir
   _gemdir="$(gem env gemdir)"
 
   gem build "$_name.gemspec"
@@ -81,9 +82,7 @@ build() {
 check() {
   cd "$_archive"
 
-  local _gemdir
   _gemdir="$(gem env gemdir)"
-
   GEM_HOME="tmp_install/$_gemdir" rspec
 }
 
@@ -92,5 +91,5 @@ package() {
 
   cp --archive --verbose tmp_install/* "$pkgdir"
 
-  install --verbose -D --mode=0644 ./*.md --target-directory "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
 }
