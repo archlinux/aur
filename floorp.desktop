@@ -42,7 +42,7 @@ Comment[pt]=Navegue na Internet
 Comment[pt_BR]=Navegue na Internet
 Comment[sk]=Prehliadanie internetu
 Comment[sv]=Surfa på webben
-Exec=/usr/lib/floorp/floorp --class="floorp" %u
+Exec=floorp --class="floorp" %u
 Icon=floorp
 Terminal=false
 Type=Application
@@ -157,7 +157,7 @@ Name[wo]=Palanteer bu bees
 Name[xh]=Ifestile entsha
 Name[zh-CN]=新建窗口
 Name[zh-TW]=開新視窗
-Exec=/usr/lib/floorp/floorp --class="floorp" --new-window %u
+Exec=floorp --class="floorp" --new-window %u
 
 [Desktop Action new-private-window]
 Name=Open a New Private Window
@@ -265,9 +265,9 @@ Name[wo]=Panlanteeru biir bu bees
 Name[xh]=Ifestile yangasese entsha
 Name[zh-CN]=新建隐私浏览窗口
 Name[zh-TW]=新增隱私視窗
-Exec=/usr/lib/floorp/floorp --class="floorp" --private-window %u
+Exec=floorp --class="floorp" --private-window %u
 
 [Desktop Action profile-manager-window]
 Name=Open the Profile Manager
 Name[cs]=Správa profilů
-Exec=/usr/lib/floorp/floorp --class="floorp" --ProfileManager %u
+Exec=floorp --class="floorp" --ProfileManager %u
