@@ -1,6 +1,6 @@
 pkgname=unofficial-wine-xiv-wayland
 pkgver=9.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('LGPL')
 pkgdesc="unofficial-wine-xiv-wayland is a custom built wine for Final Fantasy XIV by Rankynbass (With wayland drivers)."
@@ -14,10 +14,8 @@ package() {
   cd "$srcdir/unofficial-wine-xiv-wayland-${pkgver}"
   mkdir -p "$pkgdir/opt/unofficial-wine-xiv-wayland"
 
-  for x in bin include share; do
+  for x in bin include lib64 share; do
     cp -ar $x "$pkgdir/opt/unofficial-wine-xiv-wayland/"
   done
-
-  cp -ar lib64 "$pkgdir/opt/unofficial-wine-xiv-wayland/lib"
 }
 

@@ -1,7 +1,7 @@
 pkgbase = unofficial-wine-xiv-wayland
 	pkgdesc = unofficial-wine-xiv-wayland is a custom built wine for Final Fantasy XIV by Rankynbass (With wayland drivers).
 	pkgver = 9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rankynbass/unofficial-wine-xiv-git
 	arch = x86_64
 	license = LGPL
