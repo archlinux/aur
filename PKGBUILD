@@ -2,11 +2,11 @@
 
 pkgname=texttest
 pkgver=4.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for text-based functional testing"
 arch=(any)
 url="https://github.com/texttest/texttest"
-license=(LGPL)
+license=(LGPL-2.1-or-later)
 depends=(
   gdk-pixbuf2
   gobject-introspection-runtime

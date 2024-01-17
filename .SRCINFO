@@ -1,10 +1,10 @@
 pkgbase = texttest
 	pkgdesc = A tool for text-based functional testing
 	pkgver = 4.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/texttest/texttest
 	arch = any
-	license = LGPL
+	license = LGPL-2.1-or-later
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
