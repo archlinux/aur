@@ -64,7 +64,6 @@ _main_package() {
     zip
   )
   optdepends=(
-    'chaotic-interfere: chaotic-aur interference tracker'
     'hunspell-dictionary: Spell checking'
     'libnotify: Notification integration'
     'networkmanager: Location detection via available WiFi networks'
