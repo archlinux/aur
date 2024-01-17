@@ -1,18 +1,18 @@
-# Maintainer: Zhanibek Adilbekov <zhnaibek.adilbekov@pm.me>
+# Maintainer: Zhanibek Adilbekov <zhnaibek.adilbekov@proton.me>
 # Original Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 # shellcheck disable=2034,2154,2164
 pkgname=gibo
-pkgver=3.0.6
+pkgver=3.0.11
 pkgrel=1
-pkgdesc="A shell script for easily accessing gitignore boilerplates"
+pkgdesc='Command-line tool to help you easily access .gitignore boilerplates'
 arch=('x86_64')
 url="https://github.com/simonwhitaker/gibo"
-license=('custom:UNLICENSE')
+license=('Unlicense')
 makedepends=('go')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
     "$pkgname.install")
-b2sums=('16df666323968468b09dc66752d79553547319653d15fb299346384d263a6df19af7c83f0db01112f8399162726f54e6c28c93fb60b0ca6d4cb3fad1dcc27b71'
+b2sums=('c92d262c4dd3a4801a9e6d00936be23476aff837b8827a40ae682e0e37b8a32f174e23e01d1c01659c58b0dc69654d79a09c8c8dc5d79d204954966bb0406efd'
         'a8516b43198e9353eaf0fe49d50cb50ea2ac096b0366deabd33795b2c6d52ede6264d5615acdf78117550dbd2dc13999bca66fc9d1b10a090e7cee344c487f97')
 
 prepare() {
