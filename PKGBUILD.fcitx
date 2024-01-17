@@ -11,7 +11,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=d1e1e9f4f7deab5c97be85def6138877d960dd70
+_mozc_commit=fee387df123ecd89414e551c8f5d43b99dc02f32
 _branch=fcitx
 # Ut Dictionary
 _utdicdate=20230115
@@ -25,12 +25,12 @@ _dict=(
 #       skk-jisyo
 #       sudachidict
        )
-_sudachidict_date=20230927
+_sudachidict_date=20240109
 
 pkgbase=mozc-with-jp-dict
 pkgname=("fcitx-$pkgbase")
 pkgver=2.29.5291.102
-pkgrel=7
+pkgrel=9
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
@@ -60,9 +60,9 @@ for dict in "${_dict[@]}"; do
 done
 sha512sums=('SKIP'
             'SKIP'
-            '66ad5357b722ba4f54a3861c993cd047424ec210ba2931f38b90bc27758984ac29369baa511451b3e656196173fe0b049d3dfd1ade24a4dc389b86b9e0b9cd7e'
-            '1edbceb3d08226d487d4baa199a5936f521c97363abdbc15592cfb50e7672f797fbb90ecf2b5ddbd0cbb54f482d073629fcf47afa298b9be6254649aad71cce9'
-            '2d065fbfbfdf8294e053625a891043ca640aa39c8fc5959d7b6544c12a1ad321f19b8f5c8c6beb49b2d4e694a73f66ff32f7c6ec6989c9d73addcf461c49b6af'
+            'cb7d135af2eb7f759126071c042dda89f094710ed7228f129e0b2350d11903768c4f5c4b2c0ca7748fb6e2c9e442c3cc353687c1c6dbe98ee21056ef83751d3f'
+            '8b51b783c60987d74d896ba4668987b69a4f83b7b294f2630b25a0adf2ca665b89ebf4e000ce5de9a343aa9929d0b120478f7820a31ab1718d1fcafd58460286'
+            '8efaeeb103cfd14abbc8e27ca4c6313d68e800421f452701ff1771b09f32944cd14bfc4bd2fe75ebb3b851b4baba15ebd70b7b2cceae68a621eadbaa9d351bf5'
             '1a5b62c83a08781b44bd73f978a4024d93667df47b1a3f4c179096cbc32f28e803c50dca6b5b7ad20fb788d46797551c36ec1efb7782f4361b695e2e0a6060ca'
             '77a8c1d76a53627f8680f761f9c996b04e6b609bdb813cb5aedc7f8214d9b5f13aea53788814029f6f1e263c50ecb58feb5999e95d51fe7e4707b6a913d4bbe4'
             '4dc9fc2d95e23729381bfe12fe6544ec3ea5729114e6d0539af93f5cd1e5a0a4d3196bfcf07c67aec0b19a25b92bf3c65c5e3805415bf81b5d13f537fa4f2c0d'
