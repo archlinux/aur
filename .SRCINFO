@@ -1,10 +1,10 @@
 pkgbase = neo4j-community
 	pkgdesc = A fully transactional graph database implemented in Java
-	pkgver = 5.10.0
+	pkgver = 5.15.0
 	pkgrel = 1
 	url = https://github.com/neo4j/neo4j
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = java-environment=17
 	makedepends = maven
 	depends = java-runtime=17
@@ -14,13 +14,13 @@ pkgbase = neo4j-community
 	backup = etc/neo4j/neo4j.conf
 	backup = etc/neo4j/server-logs.xml
 	backup = etc/neo4j/user-logs.xml
-	source = neo4j-community-5.10.0.tar.gz::https://github.com/neo4j/neo4j/archive/refs/tags/5.10.0.tar.gz
+	source = neo4j-community-5.15.0.tar.gz::https://github.com/neo4j/neo4j/archive/refs/tags/5.15.0.tar.gz
 	source = neo4j.executable-template
 	source = neo4j.service
 	source = neo4j.sysusers
 	source = neo4j.tmpfiles
 	source = use-system-scala.patch
-	sha256sums = 35c4d828a1a6007947fddde73f06f46e5d1dc6d1fe832bdca969374754d72d2a
+	sha256sums = 9a8dc7557d4ba5912addcc37943e815fad32c93ef58a8c8e63d3383c9a906047
 	sha256sums = 152e35d949fe9090c890e7a213da917c09bc087a060119a1c32541821f91781f
 	sha256sums = 090e9ced1708e22592f775490360762d973e81061a0170b4150b087b1751e142
 	sha256sums = a1d3dd94aecf80289e8d9b6381d4393ed60b7a5dec3cae436e721be676c15f3a

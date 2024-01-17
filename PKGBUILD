@@ -5,13 +5,13 @@
 
 pkgname=neo4j-community
 _name=neo4j
-pkgver=5.10.0
+pkgver=5.15.0
 pkgrel=1
 _java=17
 pkgdesc="A fully transactional graph database implemented in Java"
 arch=(any)
 url="https://github.com/neo4j/neo4j"
-license=(GPL3)
+license=(GPL-3.0-only)
 depends=(
   "java-runtime=$_java"
   "scala"
@@ -37,7 +37,7 @@ source=(
   "use-system-scala.patch"
 )
 sha256sums=(
-  '35c4d828a1a6007947fddde73f06f46e5d1dc6d1fe832bdca969374754d72d2a'
+  '9a8dc7557d4ba5912addcc37943e815fad32c93ef58a8c8e63d3383c9a906047'
   '152e35d949fe9090c890e7a213da917c09bc087a060119a1c32541821f91781f'
   '090e9ced1708e22592f775490360762d973e81061a0170b4150b087b1751e142'
   'a1d3dd94aecf80289e8d9b6381d4393ed60b7a5dec3cae436e721be676c15f3a'
@@ -96,49 +96,51 @@ package() {
   cd "$_archive"
 
   tar -xf "packaging/standalone/target/neo4j-community-$pkgver-unix.tar.gz"
-  local bin_archive="neo4j-community-$pkgver"
+  _bin_archive="neo4j-community-$pkgver"
 
   # Config files
-  install -Dm644 "$bin_archive/conf/neo4j-admin.conf" "$pkgdir/etc/neo4j/neo4j-admin.conf"
-  install -Dm644 "$bin_archive/conf/neo4j.conf" "$pkgdir/etc/neo4j/neo4j.conf"
-  install -Dm644 "$bin_archive/conf/server-logs.xml" "$pkgdir/etc/neo4j/server-logs.xml"
-  install -Dm644 "$bin_archive/conf/user-logs.xml" "$pkgdir/etc/neo4j/user-logs.xml"
+  install -Dm644 -t "$pkgdir/etc/neo4j" \
+    "$_bin_archive/conf/neo4j-admin.conf" \
+    "$_bin_archive/conf/neo4j.conf" \
+    "$_bin_archive/conf/server-logs.xml" \
+    "$_bin_archive/conf/user-logs.xml"
 
   sed -i 's:=/usr/share/neo4j/lib:=/usr/share/java/neo4j:' "$pkgdir/etc/neo4j/neo4j.conf"
 
   # Bash completion
-  install -Dm644 "$bin_archive/bin/completion/neo4j-admin_completion" "$pkgdir/usr/share/bash-completion/completions/neo4j-admin"
-  install -Dm644 "$bin_archive/bin/completion/neo4j_completion" "$pkgdir/usr/share/bash-completion/completions/neo4j"
+  install -Dm644 "$_bin_archive/bin/completion/neo4j-admin_completion" "$pkgdir/usr/share/bash-completion/completions/neo4j-admin"
+  install -Dm644 "$_bin_archive/bin/completion/neo4j_completion" "$pkgdir/usr/share/bash-completion/completions/neo4j"
 
-  # JARs
+  # Remove Scala JARs
+  rm "$_bin_archive/lib/"scala-library-*.jar
+  rm "$_bin_archive/lib/"scala-reflect-*.jar
 
-  ## Remove Scala JARs
-  rm "$bin_archive/lib/"scala-library-*.jar
-  rm "$bin_archive/lib/"scala-reflect-*.jar
-
-  ## Install JARs
-  install -dm755 "$pkgdir/usr/share/java/neo4j"
-  install -Dm644 "$bin_archive/lib/"*.jar "$pkgdir/usr/share/java/neo4j/"
+  # Install JARs
+  install -Dm644 -t "$pkgdir/usr/share/java/neo4j" "$_bin_archive/lib/"*.jar
 
   # Man pages
-  install -Dm644 community/cypher-shell/packaging/src/common/manpages/cypher-shell.1 "$pkgdir/usr/share/man/man1/cypher-shell.1"
+  install -Dm644 -t "$pkgdir/usr/share/man/man1" \
+    community/cypher-shell/packaging/src/common/manpages/cypher-shell.1
 
   # Documentation
-  install -Dm644 "$bin_archive/README.txt" "$pkgdir/usr/share/doc/neo4j/README.txt"
-  install -Dm644 "$bin_archive/UPGRADE.txt" "$pkgdir/usr/share/doc/neo4j/UPGRADE.txt"
+  install -Dm644 -t "$pkgdir/usr/share/doc/neo4j" \
+    "$_bin_archive/README.txt" \
+    "$_bin_archive/UPGRADE.txt"
 
   # License files
-  install -Dm644 "$bin_archive/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
-  install -Dm644 "$bin_archive/LICENSES.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSES.txt"
-  install -Dm644 "$bin_archive/NOTICE.txt" "$pkgdir/usr/share/licenses/$pkgname/NOTICE.txt"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+    "$_bin_archive/LICENSE.txt" \
+    "$_bin_archive/LICENSES.txt" \
+    "$_bin_archive/NOTICE.txt"
 
   # Executable files
-  install -Dm755 "bin/cypher-shell" "$pkgdir/usr/bin/cypher-shell"
-  install -Dm755 "bin/neo4j" "$pkgdir/usr/bin/neo4j"
-  install -Dm755 "bin/neo4j-admin" "$pkgdir/usr/bin/neo4j-admin"
+  install -Dm755 -t "$pkgdir/usr/bin" \
+    bin/cypher-shell \
+    bin/neo4j \
+    bin/neo4j-admin
 
   # Systemd files
-  install -Dm644 "$srcdir/$_name.service" "$pkgdir/usr/lib/systemd/system/$_name.service"
-  install -Dm644 "$srcdir/$_name.sysusers" "$pkgdir/usr/lib/sysusers.d/$_name.conf"
-  install -Dm644 "$srcdir/$_name.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$_name.conf"
+  install -Dm644 -t "$pkgdir/usr/lib/systemd/system" "$srcdir/neo4j.service"
+  install -Dm644 -t "$pkgdir/usr/lib/sysusers.d" "$srcdir/neo4j.sysusers"
+  install -Dm644 -t "$pkgdir/usr/lib/tmpfiles.d" "$srcdir/neo4j.tmpfiles"
 }
