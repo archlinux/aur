@@ -1,0 +1,40 @@
+pkgbase = ocrs-git
+	pkgdesc = A modern OCR engine (extracts text from images), written in Rust
+	pkgver = 0.3.1.r11.g4686460
+	pkgrel = 1
+	url = https://github.com/robertknight/ocrs
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	license = Apache
+	license = BSD
+	makedepends = git
+	makedepends = binaryen
+	makedepends = cargo
+	makedepends = rust-wasm
+	makedepends = wasm-bindgen
+	makedepends = npm
+	depends = glibc
+	options = !lto
+	source = ocrs-git::git+https://github.com/robertknight/ocrs.git
+	source = chrome-extension-ocrs-git.install
+	sha256sums = SKIP
+	sha256sums = c0de42c2aa99bda9824e956273db85c77d6b420ee5225a52a64c70564bc81816
+
+pkgname = ocrs-git
+	pkgdesc = A modern OCR engine (extracts text from images), written in Rust
+	provides = ocrs
+	conflicts = ocrs
+
+pkgname = libocrs-git
+	pkgdesc = A modern OCR engine (extracts text from images), written in Rust - Lib
+	provides = libocrs
+	conflicts = libocrs
+
+pkgname = chrome-extension-ocrs-git
+	pkgdesc = Ocrs browser extension for Chrome
+	install = chrome-extension-ocrs-git.install
+	depends = google-chrome
+	provides = chrome-extension-ocrs
+	conflicts = chrome-extension-ocrs
