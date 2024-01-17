@@ -1,0 +1,14 @@
+pkgbase = java17-openjdk-hsdis
+	pkgdesc = Disassembler for HotSpot
+	pkgver = 17.0.10.u7
+	pkgrel = 1
+	url = http://openjdk.java.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = https://github.com/openjdk/jdk17u/archive/jdk-17.0.10+7.tar.gz
+	source = http://ftp.gnu.org/gnu/binutils/binutils-2.34.tar.bz2
+	sha256sums = a310a8666d2d7770a7b29fe4750c275b9b33a07bfcc925348040a8bca745c874
+	sha256sums = 89f010078b6cf69c23c27897d686055ab89b198dddf819efb0a4f2c38a0b36e6
+
+pkgname = java17-openjdk-hsdis
