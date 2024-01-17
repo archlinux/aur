@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-fullscreen-to-new-workspace-git
 pkgver=r44.8237de3
-pkgrel=1
+pkgrel=2
 
 source=("git+https://github.com/onsah/fullscreen-to-new-workspace.git")
 
@@ -13,6 +13,8 @@ arch=('any')
 url="https://github.com/onsah/fullscreen-to-new-workspace"
 license=('GPL3')
 depends=('gnome-shell>=3.38')
+provides=('gnome-shell-extension-fullscreen-to-new-workspace')
+conflicts=('gnome-shell-extension-fullscreen-to-new-workspace')
 
 _pkgname=fullscreen-to-new-workspace
 

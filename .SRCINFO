@@ -1,11 +1,13 @@
 pkgbase = gnome-shell-extension-fullscreen-to-new-workspace-git
 	pkgdesc = New, maximized and fullscreen windows will be moved to empty workspaces
 	pkgver = r44.8237de3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/onsah/fullscreen-to-new-workspace
 	arch = any
 	license = GPL3
 	depends = gnome-shell>=3.38
+	provides = gnome-shell-extension-fullscreen-to-new-workspace
+	conflicts = gnome-shell-extension-fullscreen-to-new-workspace
 	source = git+https://github.com/onsah/fullscreen-to-new-workspace.git
 	sha256sums = SKIP
 
