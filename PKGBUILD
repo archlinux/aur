@@ -2,7 +2,7 @@
 
 pkgbase=libjxl
 pkgname=('libjxl' 'libjxl-doc')
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation'
 arch=('x86_64')
@@ -78,7 +78,7 @@ package_libjxl() {
     optdepends=('gdk-pixbuf2: for gdk-pixbuf loader'
                 'gimp: for gimp plugin'
                 'java-runtime: for JNI bindings')
-    provides=('libjxl.so' 'libjxl_threads.so')
+    provides=('libjxl.so' 'libjxl_cms.so' 'libjxl_threads.so')
     
     DESTDIR="$pkgdir" cmake --install build
     install -D -m644 libjxl/{LICENSE,PATENTS} -t "${pkgdir}/usr/share/licenses/${pkgname}"
