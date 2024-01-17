@@ -2,7 +2,7 @@
 # Contributor: David Baum <david.baum@naraesk.eu>
 pkgname=eclipse-installer
 pkgver=2020.03
-pkgrel=1
+pkgrel=2
 pkgdesc="Automates the installation and update of Eclipse development environments"
 arch=('i686' 'x86_64')
 url="https://wiki.eclipse.org/Eclipse_Installer"
@@ -20,14 +20,14 @@ sha1sums=(
 
 package() {
     install -d ${pkgdir}/opt/${pkgname}
-    cp -a ./eclipse-installer/* ${pkgdir}/opt/${pkgname}
+    cp -a "${srcdir}"/eclipse-installer/* "${pkgdir}"/opt/${pkgname}
 
-    install -d ${pkgdir}/usr/bin/
-    ln -s /opt/${pkgname}/eclipse-inst ${pkgdir}/usr/bin/${pkgname}
+    install -d "${pkgdir}"/usr/bin/
+    ln -s /opt/${pkgname}/eclipse-inst "${pkgdir}"/usr/bin/${pkgname}
 
-    install -d ${pkgdir}/usr/share/icons/hicolor/256x256/apps
-    cp ./eclipse-installer/icon.xpm ${pkgdir}/usr/share/icons/hicolor/256x256/apps/eclipse-installer.xpm
+    install -d "${pkgdir}"/usr/share/icons/hicolor/256x256/apps
+    cp "${srcdir}"/eclipse-installer/icon.xpm "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/eclipse-installer.xpm
 
-    install -d ${pkgdir}/usr/share/applications
-    cp ./eclipse-installer.desktop ${pkgdir}/usr/share/applications/.
+    install -d "${pkgdir}"/usr/share/applications
+    cp "${srcdir}"/eclipse-installer.desktop "${pkgdir}"/usr/share/applications/.
 }
