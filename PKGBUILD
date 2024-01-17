@@ -7,20 +7,33 @@ pkgdesc="Utilities and helpers for writing Pylint plugins"
 arch=('any')
 url="https://github.com/landscapeio/pylint-plugin-utils"
 license=('GPL2')
-depends=('python')
-makedepends=('python-setuptools' 'python-pylint')
+depends=('python' 'python-pylint')
+makedepends=('python-setuptools' 'python-poetry-core')
 #source=("https://pypi.io/packages/source/p/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
 source=("https://github.com/landscapeio/pylint-plugin-utils/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('e8ff1e1777fee53b0214fb766a6dd15f9c10eb9183a652c888d0e1f453023323')
 
 build() {
   cd "${_pypi_pkgname}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
+  #python setup.py build
 }
 
 package() {
     cd "${_pypi_pkgname}-${pkgver}"
-    python setup.py install --prefix="/usr" --root="${pkgdir}" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    #python setup.py install --prefix="/usr" --root="${pkgdir}" --optimize=1
     install -Dm755 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"/LICENSE
 }
+
+check(){
+    cd "${_pypi_pkgname}-${pkgver}"
+
+    # For nosetests
+    #nosetests
+
+    # For pytest
+    pytest
+}
+
 # vim:set ts=2 sw=2 et:

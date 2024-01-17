@@ -6,8 +6,9 @@ pkgbase = python-pylint-plugin-utils
 	arch = any
 	license = GPL2
 	makedepends = python-setuptools
-	makedepends = python-pylint
+	makedepends = python-poetry-core
 	depends = python
+	depends = python-pylint
 	source = https://github.com/landscapeio/pylint-plugin-utils/archive/refs/tags/0.8.2.tar.gz
 	sha256sums = e8ff1e1777fee53b0214fb766a6dd15f9c10eb9183a652c888d0e1f453023323
 
