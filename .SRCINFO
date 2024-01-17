@@ -1,0 +1,14 @@
+pkgbase = nixpkgs-fmt-git
+	pkgdesc = Nix code formatter for nixpkgs
+	pkgver = v0.8.0.r130.g7301bc9
+	pkgrel = 1
+	url = https://nix-community.github.io/nixpkgs-fmt/
+	arch = x86_64
+	license = APACHE-2.0
+	makedepends = cargo
+	makedepends = nix
+	makedepends = git
+	source = git+https://github.com/nix-community/nixpkgs-fmt
+	sha256sums = SKIP
+
+pkgname = nixpkgs-fmt-git

@@ -1,0 +1,7 @@
+nixpkgs-fmt
+nixpkgs-fmt-git
+*.tar.xz
+*.tar.zst
+*.swp
+pkg/
+src/
