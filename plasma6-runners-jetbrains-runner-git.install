@@ -1,0 +1,11 @@
+post_install() {
+    kquitapp6 krunner 2> /dev/null
+}
+
+post_upgrade() {
+    post_install
+} 
+
+post_remove() {
+    post_install
+}
