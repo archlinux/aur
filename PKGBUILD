@@ -1,7 +1,7 @@
 # Maintainer: taotieren <cadmin@taotieren.com>
 
 pkgname=monobit-git
-pkgver=0.35.0.r0.gd4d2519
+pkgver=0.42.2.r0.g3d19d930
 pkgrel=1
 pkgdesc='Tools for working with monochrome bitmap fonts'
 url='https://github.com/robhagemans/monobit'
@@ -9,7 +9,7 @@ license=('MIT')
 arch=(any)
 _pydeps=(reportlab
         pillow
-        python-bidi
+        bidi
         arabic-reshaper
         hatchling
         uniseg
