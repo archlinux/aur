@@ -1,7 +1,7 @@
 pkgbase = bc-gh
 	pkgdesc = Implementation of dc and POSIX bc with GNU extensions
 	pkgver = 6.7.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/gavinhoward/bc
 	arch = aarch64
 	arch = arm
@@ -9,7 +9,7 @@ pkgbase = bc-gh
 	arch = armv7h
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD-2-Clause
 	depends = glibc
 	depends = libedit
 	provides = bc
