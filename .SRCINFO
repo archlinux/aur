@@ -1,7 +1,7 @@
 pkgbase = r-harmonicmeanp
 	pkgdesc = Harmonic Mean p-Values and Model Averaging by Mean Maximum Likelihood
-	pkgver = 3.0
-	pkgrel = 4
+	pkgver = 3.0.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=harmonicmeanp
 	arch = any
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = r-harmonicmeanp
 	optdepends = r-ape
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/harmonicmeanp_3.0.tar.gz
-	sha256sums = cdb22f4803e7b537f4a236baef838d8c9ba538e2e9a264cc80d023741077399e
+	source = https://cran.r-project.org/src/contrib/harmonicmeanp_3.0.1.tar.gz
+	sha256sums = 2f5c58b2171955d79074ca15b2d3eee1eb41c26a19eb6b64220b46ca9c8a9d86
 
 pkgname = r-harmonicmeanp
