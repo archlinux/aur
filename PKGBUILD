@@ -1,10 +1,11 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname='farbfeld-resize-git'
 pkgdesc='Farbfeld image resizing filter'
-pkgver=r6.ac511a5
-pkgrel=2
+pkgver=r7.599494b
+pkgrel=1
 license=('Custom')
 depends=('glibc')
+makedepends=('git')
 arch=('i686' 'x86_64')
 url='https://github.com/ender672/farbfeld-resize'
 source=("${pkgname}::git+${url}")
