@@ -2,9 +2,9 @@
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: aspen <aspen@aspenuwu.me>
 pkgname=zulip-desktop-electron
-pkgver=5.10.0
+pkgver=5.10.4
 pkgrel=1
-_electronversion=22
+_electronversion=28
 pkgdesc="Real-time team chat based on the email threading model"
 arch=('x86_64')
 url="https://zulip.com"
@@ -16,7 +16,7 @@ conflicts=("${pkgname%-*}")
 source=("${pkgname%-*}-$pkgver.tar.gz::https://github.com/zulip/zulip-desktop/archive/v$pkgver.tar.gz"
         "${pkgname%-*}.desktop"
         "${pkgname%-*}.sh.in")
-sha256sums=('03dde91bc8f8e8d750dcc0a240f0efda65578fb7d99ced0a04a47ec88bbc1f2e'
+sha256sums=('d0d526ce56b8822908e920e620ddb7f2a6d50b9817dd7f52455facf499e5a019'
             '8f3440dc9195c6763de16f8b13409a5c130bdf417015e7e27bb64fdb227f4f10'
             '70ed0f08158c6ea8ef99dbbe360861e2c63911c2fadc74c0154bd6567abc8979')
 
