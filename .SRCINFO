@@ -1,4 +1,4 @@
-pkgbase = fcitx5-ipa-sil-git
+pkgbase = fcitx5-ipa-sil
 	pkgdesc = An fcitx5 table layout replicating the SIL IPA keyman layout
 	pkgver = r13.0df3c9f
 	pkgrel = 1
@@ -16,4 +16,4 @@ pkgbase = fcitx5-ipa-sil-git
 	source = git+https://github.com/ashprice/fcitx5-ipa-sil.git
 	sha512sums = SKIP
 
-pkgname = fcitx5-ipa-sil-git
+pkgname = fcitx5-ipa-sil

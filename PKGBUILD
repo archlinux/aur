@@ -1,7 +1,7 @@
 # Maintainer: Ash Price <eisleggje@gmail.com>
 
-pkgname=fcitx5-ipa-sil-git
-_pkgname=fcitx5-ipa-sil
+pkgname=fcitx5-ipa-sil
+_pkgname=fcitx5-ipa-sil-git
 pkgver=r13.0df3c9f
 pkgrel=1
 pkgdesc="An fcitx5 table layout replicating the SIL IPA keyman layout"
