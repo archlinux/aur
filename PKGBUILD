@@ -5,10 +5,10 @@ _fontname=spleen
 
 pkgname=spleen-font
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Monospaced bitmap fonts for user interface including console (OTB, OTF, PSFU)"
 arch=('any')
-license=('BSD')
+license=('BSD-2-Clause')
 url="https://www.cambus.net/spleen-monospaced-bitmap-fonts/"
 conflicts=('bdf-spleen')
 source=(
