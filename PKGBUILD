@@ -33,9 +33,4 @@ package() {
   # Create a symlink
   ln -s /usr/lib/chipmunk/chipmunk "${pkgdir}/usr/bin/chipmunk"
 }
-<<<<<<< HEAD
-
 sha256sums=('44aa87935c69d2cd16339385fb846fe518e9c8f3ddb70dd61eba10268dff58eb')
-=======
-sha256sums=('44aa87935c69d2cd16339385fb846fe518e9c8f3ddb70dd61eba10268dff58eb')
->>>>>>> 614da5b (Chipmunk release 3.10.3)
