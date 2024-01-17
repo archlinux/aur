@@ -6,7 +6,7 @@
 
 pkgname=butt
 pkgver=0.1.40
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy to use, multi OS streaming tool"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('GPL2')
@@ -17,7 +17,7 @@ b2sums=('920680b90dc4a0936e2fac4cb155ed11f041b440bff3e6ca696b4bf633395550c7bbcf1
 
 build() {
   cd "${pkgname}-${pkgver}"
-  ./configure --prefix=/usr LDFLAGS="-L$(dirname $(fltk-config --libs))"
+  ./configure --with-client --prefix=/usr LDFLAGS="-L$(dirname $(fltk-config --libs))"
   make
 }
 
