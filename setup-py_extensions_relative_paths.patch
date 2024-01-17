@@ -12,7 +12,7 @@ index 357073a..f49daa8 100755
      source_cuda = glob.glob(os.path.join(extensions_dir, "**", "*.cu"), recursive=True)
      extension = CppExtension
  
-     extra_compile_args = {"cxx": ["-std=c++14"]}
+     extra_compile_args = {"cxx": ["-std=c++17"]}
      define_macros = []
 -    include_dirs = [extensions_dir]
 +    include_dirs = [os.path.join(this_dir, extensions_dir)]

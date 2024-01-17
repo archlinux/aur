@@ -1,8 +1,8 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=python-pytorch3d
-pkgver=0.7.3
-pkgrel=3
+pkgver=0.7.5
+pkgrel=1
 pkgdesc="Provides efficient, reusable components for 3D Computer Vision research with PyTorch."
 arch=('x86_64')
 url="https://pytorch3d.org/"
@@ -11,16 +11,16 @@ depends=('python-fvcore' 'python-iopath')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/facebookresearch/pytorch3d/archive/v$pkgver.tar.gz"
 	'setup-py_extensions_relative_paths.patch'
-	'b921efae3e52dcd93e553db3d02378951e894769.patch')
-md5sums=('42eacb71e2c1b69cab7749851a619982'
-         '17c874f9f01e9a3ab87544eb3435a779'
-         'fe2ed98fa9469301bfb7931c4863bd8b')
+  '6b8766080d2c331a05abbddbf3c7332dbb9df791.patch')
+md5sums=('ad0e7a15dc263cc40ac522e3acbe002b'
+         '506f83849dd3afab00501fc2442473fb'
+         'aafcfe22e3d825f980df67fe06734c61')
 
 build() {
   cd "$srcdir"/pytorch3d-$pkgver
 
-  # Fix build with CUDA 12.1.1
-  patch -p1 < "${srcdir}/b921efae3e52dcd93e553db3d02378951e894769.patch"
+  # Fix build with CUDA 12.3
+  patch -p1 < "${srcdir}/6b8766080d2c331a05abbddbf3c7332dbb9df791.patch"
 
   # Avoid references to $srcdir in SOURCES.txt and native Python extension
   patch -p1 < "${srcdir}/setup-py_extensions_relative_paths.patch"
