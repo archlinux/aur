@@ -1,7 +1,7 @@
 # Maintainer: martiuk <me at martinke dot mp>
 
 pkgname=xorg-xwayland-explicit-sync-git
-pkgver=23.1.2.r199.gf59871587
+pkgver=23.2.4.r159.g2ef0f1116
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -32,7 +32,7 @@ conflicts=('xorg-xwayland' 'xorg-server-xwayland' 'xorg-server-xwayland-git')
 
 pkgver() {
   cd xserver
-  local branch=origin/xwayland-23.1
+  local branch=origin/xwayland-23.2
   local head=$(git rev-parse --short HEAD)
   local tag=$(git describe --abbrev=0 "$branch")
   local revisions=$(git rev-list "${tag}..HEAD" --count)
