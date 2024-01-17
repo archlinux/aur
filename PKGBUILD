@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=less-player-bin
 _appname="Less Player"
-pkgver=0.1.19
+pkgver=0.1.20
 _electronversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="Less is More~ All for One, One for All ! Less Player, 基于Electron + Vue3开发、插件化的播放器"
 arch=('x86_64')
 url="https://github.com/GeekLee2012/Less-Player-Desktop"
@@ -21,15 +21,15 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/GeekLee2012/Less-Player-Desktop/v${pkgver}/public/icon%402x.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('86ff76a1d6b986fdf63b00616e346c02c4752f19690d9fde8ddae120a705ef33'
+sha256sums=('bec09b6d1dfbe71ae8c42f90589aafda5e73379ad121834c0a6ae92c90d75d92'
             'fb0c18a25174bf87a2fd5b445b8c2b78a0a90e1cc040b7f0b289e08e05c882af'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories "AudioVideo" --name "${_appname}" --exec "${pkgname%-bin}"
+    gendesk -q -f -n --categories "AudioVideo" --name "${_appname}" --exec "${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
