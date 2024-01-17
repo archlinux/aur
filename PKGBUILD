@@ -3,11 +3,14 @@
 pkgname=python-pytest-postgresql
 _name=${pkgname#python-}
 pkgver=5.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Test your code that relies on a running PostgreSQL Database"
 arch=(any)
 url="https://github.com/ClearcodeHQ/pytest-postgresql"
-license=(GPL3)
+license=(
+  GPL-3.0-or-later
+  LGPL-3.0-or-later
+)
 depends=(
   python
   python-mirakuru
@@ -23,7 +26,7 @@ makedepends=(
 )
 checkdepends=(postgresql)
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('dcf4963205d0c81919c59be64b170a3aa707954484dc0dc7aa18b34d3e5b724b')
 
 _archive="$_name-$pkgver"
