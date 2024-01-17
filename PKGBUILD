@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=laradumps-bin
 _pkgname=LaraDumps
-pkgver=2.4.1
-_electronversion=26
-pkgrel=2
+pkgver=2.4.2
+_electronversion=28
+pkgrel=1
 pkgdesc="A friendly app designed to boost your Laravel PHP coding and debugging experience."
 arch=('x86_64')
 url="https://laradumps.dev/"
@@ -14,12 +14,9 @@ conflicts=("${pkgname%-bin}")
 depends=(
     'hicolor-icon-theme'
     "electron${_electronversion}"
-    'gtk2'
-    'libdbusmenu-glib'
-    'libxext'
-    'libx11'
-    'gdk-pixbuf2'
     'dbus-glib'
+    'libdbusmenu-glib'
+    'gtk2'
 )
 makedepends=(
     'squashfuse'
@@ -29,9 +26,9 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/laradumps/app/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('576d7d3777735ce625646365c5f89bfcd240f2db4faf9e1835936cd5e48f532b'
+sha256sums=('b3a4e361faf50453dc6d46c30cec2a8c82471153dbaf3656f149b682bd59fd68'
             'f8bf03b56eb053128b56fffec88e14404cafd4a63bf1fcc39f90c672f5318650'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -39,7 +36,7 @@ build() {
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g;s|icon|#icon|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g;s|icon|#icon|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
