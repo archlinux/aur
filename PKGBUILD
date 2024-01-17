@@ -11,12 +11,10 @@ provides=(casparcg-server)
 depends=(ffmpeg boost-libs libgl freeimage glew tbb openal sfml libxcomposite libxkbcommon libxss libcups pango nss at-spi2-atk ttf-liberation)
 makedepends=(git cmake ninja boost dos2unix)
 source=("casparcg-server::git+https://github.com/CasparCG/server.git"
-        "https://patch-diff.githubusercontent.com/raw/CasparCG/server/pull/1308.patch"
-        "https://github.com/CasparCG/server/commit/1eccd7572be9131c6017c476379e5e86d2f347cc.patch"
+        "https://github.com/CasparCG/server/commit/9ee50d528de054a105bea9b0de692ce99e322573.patch"
         casparcg)
 sha256sums=('SKIP'
-            '5c6f2a3007e3a8739bc1f3eaec3c694af9836aed1943217843a92acff80950c1'
-            '079f8717a3f4d4eee6e593b0eb138d17805ec7076cd5547006c9e13fb446199a'
+            '59fa9c8f653c1aa787feb611eae4440c602416e52645ea4ff048518424d4aa82'
             'ce9dd83ae2ef9289e551f0a3ecbe246537195049c15f69bbfdc6c3ddd23291c2')
 
 pkgver() {
@@ -41,6 +39,7 @@ build() {
         -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DUSE_SYSTEM_BOOST=ON \
+        -DDIAG_FONT_PATH="/usr/share/fonts/liberation/LiberationSans-Regular.ttf" \
         -G Ninja
 
     ninja -C build
@@ -51,6 +50,4 @@ package() {
     cp -r "$srcdir/build/staging"/{bin,lib,casparcg.config} "$pkgdir/opt/casparcg/"
 
     install -Dm755 "$srcdir/casparcg" "$pkgdir/usr/bin/casparcg"
-
-    ln -sf "/usr/share/fonts/liberation/LiberationMono-Regular.ttf" "$pkgdir/opt/casparcg/"
 }
