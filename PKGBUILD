@@ -1,9 +1,9 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=simple64
-pkgver=2023.11.02
+pkgver=2024.01.1
 pkgrel=1
-_cheat_parser_commit='9ae289c157030486f0b924f4b7080a375c2d684e'
+_cheat_parser_commit='0de7c5c0af4508887ff996d56eb2a6a7fc827528'
 pkgdesc='Nintendo64 emulator based on Mupen64Plus'
 arch=('x86_64')
 url='https://simple64.github.io/'
@@ -26,7 +26,7 @@ sha256sums=('SKIP'
             'SKIP'
             '6bc5bc2123ea4a69acebe18d2d33676f35b850d2011fc3f9e83078567ef2d9c9'
             '8bab53ec62f144cc9c93fa7a30c7ac37e410ce562c72ade6afa9ba1afe406694'
-            'acd624abe80b3399ef76c9f6ff45c5194ade6640a0fb18e43fd646c60345a883')
+            'd7fa60ef8bfa7c8aff996a6a984c4d9fd5d8779681b6fb462e55919877558c98')
 
 prepare() {
     icotool -x simple64/simple64-gui/icons/simple64.ico -o simple64/simple64-gui/icons
@@ -43,19 +43,20 @@ build() {
 }
 
 package() {
-    # gui
-    local _file
-    local _res
     install -D -m755 simple64/simple64/simple64-gui -t "${pkgdir}/usr/bin"
     install -D -m644 simple64.desktop -t "${pkgdir}/usr/share/applications"
     install -D -m644 simple64/simple64-gui/icons/simple64.svg -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-    while read -r -d '' _file
+    ln -s simple64.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/simple64-gui.svg"
+    
+    local _icon
+    local _res
+    while read -r -d '' _icon
     do
-        _res="$(sed 's/\.png$//;s/^.*_//;s/x.*$//' <<< "$_file")"
-        install -D -m644 "$_file" "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/simple64.png"
+        _res="$(sed 's/\.png$//;s/^.*_//;s/x.*$//' <<< "$_icon")"
+        install -D -m644 "$_icon" "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/simple64.png"
+        ln -s simple64.png "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/simple64-gui.png"
     done < <(find simple64/simple64-gui/icons -maxdepth 1 -type f -name 'simple64_*_*x*x*.png' -print0)
     
-    # mupen64plus
     install -D -m644 simple64/simple64/libmupen64plus.so -t "${pkgdir}/usr/lib"
     install -D -m644 simple64/simple64/simple64-{audio-sdl2,input-{qt,raphnetraw},{rsp,video}-parallel}.so -t "${pkgdir}/usr/lib/mupen64plus"
     install -D -m644 simple64/simple64/{cheats.json,mupen64plus.ini} -t "${pkgdir}/usr/share/mupen64plus"
