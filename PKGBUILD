@@ -2,14 +2,12 @@
 
 _pkgname="xfs_undelete"
 pkgname="$_pkgname-git"
+pkgver=13.1.r0.gc01b5fa
+pkgrel=1
 pkgdesc='Undelete tool for the XFS filesystem'
-
-pkgver=12.1.r0.g9e2f7ab
-pkgrel=2
-
-arch=('any')
-license=('GPL3')
 url="https://github.com/ianka/xfs_undelete"
+license=('GPL-3.0-only')
+arch=('any')
 
 depends=()
 makedepends=('git')
@@ -23,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' 2>/dev/null \
+  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' \
     | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
