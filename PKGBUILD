@@ -64,7 +64,7 @@ prepare() {
   cd "$_pkgname"
 
   # Remove vendorized polib.py
-  patch -Np1 -i ../0001-Unvendorize-polib.py.patch
+  git apply -3 ../0001-Unvendorize-polib.py.patch
   rm cola/polib.py
 }
 
