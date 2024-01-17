@@ -2,12 +2,13 @@
 pkgname=python-stanio-git
 _name=stanio
 pkgver=r28.00dd7f4
-pkgrel=2
+pkgrel=3
 pkgdesc="A package to prepare inputs to Stan and reading its outputs"
 arch=('any')
 url="https://github.com/WardBrian/stanio"
 license=('BSD-3-Clause')
 provides=('python-stanio')
+conflicts=('python-stanio')
 depends=('python-numpy')
 makedepends=(
     'git'
