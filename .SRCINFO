@@ -12,6 +12,6 @@ pkgbase = serina-bin
 	source = serina-0.4.0.zip::https://github.com/ORN-Fox/serina-1/releases/download/R0.4.0/serina-0-4-0-linux-x64.zip
 	source = serina.sh
 	sha256sums = 69d3988f02868299b31f974d1d3774431998a14a18e6469be0675211d290b524
-	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
 
 pkgname = serina-bin
