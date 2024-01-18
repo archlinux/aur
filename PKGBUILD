@@ -13,7 +13,7 @@ depends=('tbb' 'hwloc')
 provides=('opencl-intel' 'opencl-driver')
 source=(
   "https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-runtime-tbb-${_pkgver}-${_pkgrel}_amd64.deb"
-  "https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-runtime-opencl-${pkgver}-${pkgrel}_amd64.deb"
+  "https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-runtime-opencl-${pkgver:0:4}-${pkgver}-${pkgrel}_amd64.deb"
 )
 sha256sums=(
   'SKIP'
@@ -27,11 +27,11 @@ package() {
   ar x "intel-oneapi-runtime-tbb-${_pkgver}-${_pkgrel}_amd64.deb"
   tar -xf data.tar.xz -C "$pkgdir/"
 
-  ar x "intel-oneapi-runtime-opencl-${pkgver}-${pkgrel}_amd64.deb"
+  ar x "intel-oneapi-runtime-opencl-${pkgver:0:4}-${pkgver}-${pkgrel}_amd64.deb"
   tar -xf data.tar.xz -C "$pkgdir/"
 
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-  cp "$pkgdir/opt/intel/oneapi/lib/licensing/opencl/"* "$pkgdir/usr/share/licenses/$pkgname/"
+  cp "$pkgdir/opt/intel/oneapi/redist/share/doc/opencl/licensing/"* "$pkgdir/usr/share/licenses/$pkgname/"
 
   install -dm755 "$pkgdir/etc/OpenCL/vendors"
   echo '/opt/intel/oneapi/lib/intel64/libintelocl.so' > "$pkgdir/etc/OpenCL/vendors/intel64.icd"
