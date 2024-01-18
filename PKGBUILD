@@ -2,7 +2,7 @@ pkgname=python-wyoming-piper
 _pkgname=wyoming-piper
 pkgdesc="Wyoming Server for Piper"
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/rhasspy/wyoming-piper"
 license=('MIT')
@@ -27,4 +27,6 @@ package() {
 
   install -Dm644 ../wyoming-piper.service -t "$pkgdir/usr/lib/systemd/system"
   install -Dm644 ../wyoming-piper.conf "$pkgdir/etc/conf.d/wyoming-piper"
+
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

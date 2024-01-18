@@ -1,7 +1,7 @@
 pkgbase = python-wyoming-piper
 	pkgdesc = Wyoming Server for Piper
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rhasspy/wyoming-piper
 	arch = any
 	license = MIT
