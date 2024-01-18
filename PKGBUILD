@@ -32,7 +32,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
   _mvn package -DskipTests
-  convert "target/classes/com/tagtraum/perf/gcviewer/gcviewericon.gif" "$srcdir/gcviewericon.png"
+  convert "target/classes/images/gcviewericon.gif" "$srcdir/gcviewericon.png"
 }
 
 check() {
