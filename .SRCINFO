@@ -1,12 +1,12 @@
 pkgbase = easyeda-pro-electron
 	pkgdesc = EasyEDA Professional Edition. Run with system electron.
 	pkgver = 2.1.42
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pro.easyeda.com/
 	install = easyeda-pro-electron.install
 	arch = x86_64
 	arch = aarch64
-	license = custom
+	license = LicenseRef-EasyEDA-Proprietary
 	depends = electron
 	depends = libnotify
 	depends = libappindicator-gtk3

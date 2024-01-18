@@ -3,11 +3,11 @@
 pkgname=easyeda-pro-electron
 _pkgname=${pkgname%-electron}
 pkgver=2.1.42
-pkgrel=1
+pkgrel=2
 pkgdesc="EasyEDA Professional Edition. Run with system electron."
 arch=('x86_64' 'aarch64')
 url="https://pro.easyeda.com/"
-license=('custom')
+license=('LicenseRef-EasyEDA-Proprietary')
 depends=('electron' 'libnotify' 'libappindicator-gtk3')
 makedepends=()
 provides=($_pkgname)
