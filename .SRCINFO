@@ -1,13 +1,18 @@
 pkgbase = piper-voices
 	pkgdesc = Voices for Piper text to speech system
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://huggingface.co/rhasspy/piper-voices
 	install = piper-voices.install
 	arch = any
 	license = MIT
 	makedepends = git-lfs
 	optdepends = piper-tts: tts program
+	optdepends = speech-dispatcher: tts support for third party apps
 	options = !strip
+	source = piper-generic.conf
+	source = piped-piper
+	b2sums = 44bf24b920778747fe90e9c3b11098774e4b1bcc51edb6a1a4e1b9787775c54d5e87d4c95943dcf402045b19ff3570abe9383fa0bdc9f7acc654be7d9285c6ea
+	b2sums = 2b5129e2e2fd4cb48602bf5d18052b124b31886cf02268de83d7b687f7e681ab83dc8baeb683c905664d26f4ddab6f86d95fbe3849113c26e5be5c557642810f
 
 pkgname = piper-voices

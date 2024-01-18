@@ -2,16 +2,24 @@
 
 pkgname="piper-voices"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Voices for Piper text to speech system"
 url="https://huggingface.co/rhasspy/piper-voices"
 license=("MIT")
 arch=("any")
-optdepends=("piper-tts: tts program")
+optdepends=(
+ "piper-tts: tts program"
+ "speech-dispatcher: tts support for third party apps"
+)
 makedepends=("git-lfs")
-# error is thrown if the repo is being cloned here (and it tries to convert all models), so it is downloaded in prepare()
-#source=("git+https://huggingface.co/rhasspy/piper-voices.git")
-#b2sums=("SKIP")
+source=(
+ # error is thrown if the repo is being cloned here (and it tries to convert all models), so it is downloaded in prepare()
+ #"git+https://huggingface.co/rhasspy/piper-voices.git"
+ "piper-generic.conf"
+ "piped-piper"
+)
+b2sums=('44bf24b920778747fe90e9c3b11098774e4b1bcc51edb6a1a4e1b9787775c54d5e87d4c95943dcf402045b19ff3570abe9383fa0bdc9f7acc654be7d9285c6ea'
+        '2b5129e2e2fd4cb48602bf5d18052b124b31886cf02268de83d7b687f7e681ab83dc8baeb683c905664d26f4ddab6f86d95fbe3849113c26e5be5c557642810f')
 options=("!strip")
 install="$pkgname.install"
 
@@ -36,7 +44,7 @@ prepare(){
  # else uncomment to download only specific lfs objects (~60MB medium/low, ~120MB high)
  _models=(
   "/en/en_US/ryan/high/en_US-ryan-high.onnx"
-  "/de/de_DE/thorsten/high/de_DE-thorsten-high.onnx"
+  "/en/en_US/ryan/high/en_US-ryan-low.onnx"
  )
  echo "Downloading the following models: ${_models[*]}"
  git lfs pull --include "$(IFS=,; echo "${_models[*]}")"
@@ -56,4 +64,6 @@ package(){
  cd "piper-voices"
  install -d "$pkgdir/usr/share/$pkgname"
  cp -r * "$pkgdir/usr/share/$pkgname"
+ install -D -m 664 "$srcdir/piper-generic.conf" -t "$pkgdir/etc/speech-dispatcher/modules"
+ install -D -m 775 "$srcdir/piped-piper" -t "$pkgdir/usr/bin"
 }

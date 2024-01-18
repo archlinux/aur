@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# https://aur.archlinux.org/packages/piper-tts-bin#comment-939482
+
+VOICES_PATH="/usr/share/piper-voices"
+
+if [[ ${VOICE: -3} = low ]]; then
+ RATE=16000
+else
+ RATE=22050
+fi
+
+printf %s "$DATA" | piper-tts --model "$VOICES_PATH/$VOICE.onnx" --output-raw | aplay -r "$RATE" -f S16_LE -t raw -
+
+wait
