@@ -5,16 +5,16 @@
 # Contributor:: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=auctex
-pkgver=13.2
+pkgver=13.3
 pkgrel=1
 pkgdesc="An extensible package for writing and formatting TeX files in Emacs"
 arch=('any')
 url="https://www.gnu.org/software/auctex/"
-license=(GPL3)
+license=(GPL-3.0-only)
 depends=(emacs ghostscript texlive-latexextra)
 install=auctex.install
 source=("https://ftp.gnu.org/pub/gnu/auctex/$pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('1e7e402abcf846694eba7719925bf095c23ef33a5e6602201c74b6ca60944035'
+sha256sums=('4f7e57e1241a499f34861d59f3c4652fb47e3896c7a2768edbbbec1e54c91252'
             'SKIP')
 validpgpkeys=('70CDE487C45540307F86972BE2FD58BF20485F50') # Mosè Giordano <mose@gnu.org>
 
