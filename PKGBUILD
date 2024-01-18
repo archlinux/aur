@@ -3,7 +3,7 @@
 pkgname=kaiteki-bin
 _pkgname=Kaiteki
 pkgver=2024_02
-pkgrel=1
+pkgrel=2
 pkgdesc="A comfy Fediverse client for microblogging instances, made with Flutter and Dart. Currently with simple Mastodon, Pleroma, Misskey and Calckey support"
 arch=('x86_64')
 url='https://kaiteki.app'
@@ -30,12 +30,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1d58a8439b0f535ae9b37ffd460bdd391c38f9c74a80d361cd215301c9879b49'
-            '07c295fbb74a50ae5c27e5d0ee1a55f8ef4f3be793dcb7490d8d7df20be9d90a')
+            '1e338ff128b2be2b0d484ea2d00814db6709a5e2cc455a373428d21f8ed690d5')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories "Network" --name "${_pkgname}" --exec "${pkgname%-bin} --no-sandbox %U"
+    gendesk -q -f -n --categories "Network" --name "${_pkgname}" --exec "${pkgname%-bin} --no-sandbox %U" "${startdir}/PKGBUILD"
     chmod 755 "${srcdir}/linux/${pkgname%-bin}"
 }
 package() {
