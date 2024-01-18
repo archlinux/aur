@@ -1,25 +1,34 @@
 # Maintainer:
 # Contributor: Nick Lay <layns(at)mail(dot)uc(dot)edu>
 
-##
+## useful links
+# https://dolphin-emu.org
+# https://github.com/dolphin-emu/dolphin
+# https://github.com/shiiion/dolphin
+
+## options
+: ${_debugfast:=false}
 
 : ${_build_clang:=true}
+: ${_build_mold:=false}
 
+: ${_build_debugfast:=false}
 : ${_build_avx:=false}
 : ${_build_git:=true}
 
+[[ "${_build_debugfast::1}" == "t" ]] && _pkgtype+="-debugfast"
 [[ "${_build_avx::1}" == "t" ]] && _pkgtype+="-avx"
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
 # basic info
 _pkgname="dolphin-emu-primehack"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.0.7.r0.gbd2591a28a
+pkgver=1.0.7a.r0.g03117e2947
 pkgrel=1
 pkgdesc='A Gamecube and Wii emulator with mouselook controls'
 url="https://github.com/shiiion/dolphin"
 license=('GPL-2.0-or-later')
-arch=('x86_64')
+arch=(x86_64)
 
 # main package
 _main_package() {
@@ -54,7 +63,6 @@ _main_package() {
     lzo
     mbedtls2
     miniupnpc
-    minizip-ng
     pugixml
     sdl2
     sfml
@@ -63,6 +71,7 @@ _main_package() {
     ## broken
     #enet
     #libmgba
+    #minizip-ng
     #xxhash
     #zlib-ng
   )
@@ -77,11 +86,16 @@ _main_package() {
   if [[ "${_build_clang::1}" == "t" ]] ; then
     makedepends+=(
       clang
-      lld
       llvm
     )
   else
     options+=(!lto)
+  fi
+
+  if [[ "${_build_mold::1}" == "t" ]] ; then
+    makedepends+=(mold)
+  elif [[ "${_build_clang::1}" == "t" ]] ; then
+    makedepends+=(lld)
   fi
 
   if [[ "${_build_git::1}" != "t" ]] ; then
@@ -191,7 +205,7 @@ _main_git() {
   pkgver() {
     cd "$_pkgsrc"
 
-    local _regex='^.* scm_rev_str = ".*\[v([0-9\.]+)\].*$'
+    local _regex='^.* scm_rev_str = ".*\[v([0-9\.]+[^\]]*)\]".*$'
     local _file='Source/Core/Common/Version.cpp'
 
     local _line=$(grep -Esm1 "$_regex" "$_file")
@@ -199,7 +213,7 @@ _main_git() {
 
     local _version=$(sed -E "s@$_regex@\1@" <<< "$_line")
 
-    local _commit=$(git blame -L $_line_num,$_line_num -- "$_file" | awk '{print $1;}')
+    local _commit=$(git blame -L $_line_num,+1 -- "$_file" | awk '{print $1;}')
 
     local _revision=$(git rev-list --count --cherry-pick $_commit...HEAD)
     local _hash=$(git rev-parse --short HEAD)
@@ -242,26 +256,21 @@ prepare() {
   popd
 
   # Fix minizip-ng name for Arch
-  sed -E -e 's@(pkgconfig\(MINIZIP minizip)([^a-z]+)@\1-ng\2@' \
-    -i "${srcdir:?}/$_pkgsrc/CMakeLists.txt"
+  #sed -E -e 's@(pkgconfig\(MINIZIP minizip)([^a-z]+)@\1-ng\2@' \
+  #  -i "$srcdir/$_pkgsrc/CMakeLists.txt"
 
   # Delete gcc specific options
-  sed '/_ARCHIVE_/d' -i "${srcdir:?}/$_pkgsrc/CMakeLists.txt"
+  sed '/_ARCHIVE_/d' -i "$srcdir/$_pkgsrc/CMakeLists.txt"
 }
 
 build() {
-  if [[ "${_build_avx::1}" == "t" ]] ; then
-    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
-    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
-  fi
-
   local _cmake_options=(
     -B build
     -S "$_pkgname"
 
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
-    -DDISTRIBUTOR='aur.chaotic.cx'
+    -DDISTRIBUTOR='aur.archlinux.org'
 
     -DENABLE_AUTOUPDATE=OFF
     -DENABLE_ANALYTICS=OFF # default:Opt-in
@@ -269,6 +278,7 @@ build() {
 
     -DUSE_SYSTEM_ENET=OFF
     -DUSE_SYSTEM_LIBMGBA=OFF
+    -DUSE_SYSTEM_MINIZIP=OFF
     -DUSE_SYSTEM_XXHASH=OFF
     -DUSE_SYSTEM_ZLIB=OFF
 
@@ -279,22 +289,33 @@ build() {
     -Wno-dev
   )
 
+  if [ "${_debugfast::1}" == "t" ] ; then
+    _cmake_options+=(-DFASTLOG=ON)
+  fi
+
   if [[ "${_build_clang::1}" == "t" ]] ; then
     export AR=llvm-ar
     export NM=llvm-nm
+    export CC=clang
+    export CXX=clang++
 
     _cmake_options+=(
-      -DCMAKE_C_COMPILER=clang
-      -DCMAKE_CXX_COMPILER=clang++
       -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
       -DENABLE_LTO=ON
-
-      -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld"
-      -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld"
-      -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld"
     )
   else
     _cmake_options+=(-DENABLE_LTO=OFF)
+  fi
+
+  if [[ "${_build_mold::1}" == "t" ]] ; then
+    export LDFLAGS+=" -fuse-ld=mold"
+  elif [[ "${_build_clang::1}" == "t" ]] ; then
+    export LDFLAGS+=" -fuse-ld=lld"
+  fi
+
+  if [[ "${_build_avx::1}" == "t" ]] ; then
+    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
   fi
 
   cmake "${_cmake_options[@]}"
@@ -302,11 +323,11 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir:?}" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 
   # To use, symlink to /usr/lib/udev/rules.d/
-  install -Dm644 "${srcdir:?}/$_pkgsrc/Data/51-usb-device.rules" \
-    -t "${pkgdir:?}/usr/share/primehack/"
+  install -Dm644 "$srcdir/$_pkgsrc/Data/51-usb-device.rules" \
+    -t "$pkgdir/usr/share/primehack/"
 }
 
 # execute
