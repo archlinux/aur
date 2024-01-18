@@ -14,6 +14,7 @@ pkgdesc="Linux D-Bus Message Broker with SELinux support"
 url="https://github.com/bus1/dbus-broker/wiki"
 arch=(x86_64)
 license=("Apache-2.0")
+groups=(selinux)
 depends=(
   audit
   libcap-ng

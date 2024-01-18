@@ -4,6 +4,7 @@ pkgbase = dbus-broker-selinux
 	pkgrel = 2
 	url = https://github.com/bus1/dbus-broker/wiki
 	arch = x86_64
+	groups = selinux
 	license = Apache-2.0
 	makedepends = meson
 	makedepends = python-docutils
