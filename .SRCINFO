@@ -1,6 +1,6 @@
 pkgbase = datagrip
 	pkgdesc = Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity
-	pkgver = 2023.3.2
+	pkgver = 2023.3.3
 	pkgrel = 1
 	url = https://www.jetbrains.com/datagrip/
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = datagrip
 	conflicts = 0xdbe
 	conflicts = 0xdbe-eap
 	options = !strip
-	source = https://download.jetbrains.com/datagrip/datagrip-2023.3.2.tar.gz
+	source = https://download.jetbrains.com/datagrip/datagrip-2023.3.3.tar.gz
 	source = jetbrains-datagrip.desktop
 	source = LICENSE
-	b2sums = c41b8cf3ecc84be1f2e8aa0d3172f0747dc8eef0ec33e1d9afaa8865d5c2423627210beaaab9454f5abd0e1a1b66479b27da80220c9f323897997a38bc6b9172
+	b2sums = d0e1c9b73e853c618783fa13bc72db9f24a84dae9facaa15df1808245b09e21f909cd57976767b0227ab0f9010617717624b6af80d68e32ebeeff6068b272428
 	b2sums = 780f396da1c57c872b17e10576f2671346ad7c0442efec77369428b465befe772b5fd2c9c81a46ffe458472c2550082fb12adaf9d39b51fb41499bfb1bbca441
 	b2sums = dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77
 
