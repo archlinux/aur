@@ -5,6 +5,7 @@ pkgbase = piper-tts-bin
 	url = https://github.com/rhasspy/piper
 	arch = x86_64
 	arch = aarch64
+	arch = armv7h
 	license = MIT
 	depends = gcc-libs
 	depends = glibc
@@ -13,5 +14,7 @@ pkgbase = piper-tts-bin
 	sha256sums_x86_64 = 467c17935d2a22dcce9dc9e08ba07485e29be813097e7cf08c5627aa09d32e42
 	source_aarch64 = https://github.com/rhasspy/piper/releases/download/v1.2.0/piper_arm64.tar.gz
 	sha256sums_aarch64 = 34b298f6b3e55b55e81f05c6157310f9ec4df3fdd3d73e4c85eb80e218c54d2c
+	source_armv7h = https://github.com/rhasspy/piper/releases/download/v1.2.0/piper_armv7.tar.gz
+	sha256sums_armv7h = deddb5066a2d2c361bfd5e03a2939bec9e72088a123aa3a1dcf85fa163a42508
 
 pkgname = piper-tts-bin
