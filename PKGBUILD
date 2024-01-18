@@ -1,20 +1,18 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tRNAdbImport
-_pkgver=1.20.0
+_pkgver=1.20.1
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Importing from tRNAdb and mitotRNAdb as GRanges objects'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgdesc="Importing from tRNAdb and mitotRNAdb as GRanges objects"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
-  r-biocgenerics
   r-biostrings
   r-genomicranges
-  r-httr
+  r-httr2
   r-iranges
   r-modstrings
   r-s4vectors
@@ -24,6 +22,7 @@ depends=(
   r-xml2
 )
 optdepends=(
+  r-biocgenerics
   r-biocstyle
   r-httptest
   r-knitr
@@ -32,14 +31,15 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5c6c4b541581526a5972db810977706285d15294ced27474b7b32758a8aa3615')
+md5sums=('800f0115cf3ffcfb1fd2dd45b3574f30')
+b2sums=('d15c9797083b5c749a4accbf55659f5eb46c91ad05ee10dbf4ddf5ea4bf377d51b314ad2815297b750c2619ff45305d5ff25a6ff82d123238ae06032e3b3eb36')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
