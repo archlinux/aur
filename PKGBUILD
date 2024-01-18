@@ -6,8 +6,8 @@ _Pkgname=Linuxqq
 _disname=qq
 
 pkgname="${_pkgname}"-appimage
-pkgver=3.2.5_20811
-_pkgnum=d0154345
+pkgver=3.2.5_20979
+_pkgnum=c64ca459
 pkgrel=1
 pkgdesc="New Linux QQ based on Electron"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ conflicts=('linuxqq' 'linuxqq-nt-bwrap')
 
 source_x86_64=("${_Pkgname}-${pkgver}-x86_64.AppImage::https://dldir1.qq.com/qqfile/qq/QQNT/${_pkgnum}/${_pkgname}_${pkgver//_/-}_x86_64.AppImage")
 source_aarch64=("${_Pkgname}-${pkgver}-aarch64.AppImage::https://dldir1.qq.com/qqfile/qq/QQNT/${_pkgnum}/${_pkgname}_${pkgver//_/-}_arm64.AppImage")
-sha256sums_x86_64=('62082ed4d8199c8ac7cd7dd3a15019ad6ecd83b6e0b116d8ad20a290c2f7abb1')
-sha256sums_aarch64=('ea3be30097c7d0f78f8b921c4bd9fb374dec27b2cdc9d47dd28b7dcd5e9b83fa')
+sha256sums_x86_64=('b88f506a7a228391dcb52e2347876a6fcf12365e86653153db95abaffee4f41e')
+sha256sums_aarch64=('44c752b6cf1d3a219363c0b7f1fabcdc91c968b7b85c2ab8a2d61d1e0668a86a')
 
 _appimage="${_Pkgname}-${pkgver}-${arch}.AppImage"
 noextract=("${_appimage}")
