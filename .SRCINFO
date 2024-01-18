@@ -1,10 +1,10 @@
 pkgbase = whitesur-icon-theme
 	pkgdesc = MacOS Big Sur like icon theme for linux desktops
 	pkgver = 2023.07.03
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vinceliuice/WhiteSur-icon-theme
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = gtk-update-icon-cache
 	optdepends = whitesur-gtk-theme: Recommended GTK theme
 	optdepends = whitesur-kde-theme: Recommended KDE theme
