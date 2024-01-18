@@ -4,7 +4,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=bob-bin
-pkgver=2.7.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="A version manager for neovim"
 arch=('x86_64')
@@ -16,9 +16,9 @@ provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver.zip::https://github.com/MordechaiHadad/bob/releases/download/v${pkgver}/bob-linux-x86_64.zip"
 	           "$pkgname-$pkgver-LICENSE::$url/raw/v$pkgver/LICENSE"
 	           "$pkgname-$pkgver-README.md::$url/raw/v$pkgver/README.md")
-sha512sums_x86_64=('177dd0a98d51dabbefe691f10128aaf4d49720652fee79eec5a6e74a18f73e38aca9e7d0bfacff6860a753c811192c4b66d7b3b80cb89cce8de2a1ced6dea4bb'
-                   '099e559e80e9938156f327a923302b469e01162a7be8281386f1a323e97786fbd7d2718904de012b22396dc788976bce006113d56eaa809fe9b5987cb68c155d'
-                   '23b0411879a161184454f8e7a7aba472dfe3a1316aec1bf79f0dad0cb668ff4022f0888cc7e5105c1fb0b0ed835682efa08a8c39fae1f10a529f689a8d256554')
+sha512sums_x86_64=('0179e18ca008e173be1c1c681718b9f31a7d3f36f48c4fd34f5ec6d1967a6f399361d3639276ebbc3bdef09c44e21d61b2bef70bea83ca180c82558fbf9d2d6d'
+                   '88b112def47f8b8e9fe085c362061faf7284860bb88f7666a94e5bb2b63c41ad8b0fb1921f99ba1b1bd3e28b88f4dc585327e88a992f2dc345cb2771784bead3'
+                   '5fa693424fb78e8ccc02fda9caf745dbc51b3feb62d4a0e9e38f8a78acfdf0a45fbd36aa50eb1e8d66b64ef6601397aa70408225ea7a997b498ac5206511844c')
 
 package() {
 	install -Dm 755 "${pkgname%-bin}-linux-x86_64/${pkgname%-bin}" -t "$pkgdir/usr/bin"
