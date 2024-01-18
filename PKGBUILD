@@ -1,5 +1,5 @@
 pkgname=python-mariadb-connector-git
-pkgver=r180.f66e185
+pkgver=r525.7fe141e
 pkgrel=1
 pkgdesc="A Python DB API 2.0 compliant API for access to MariaDB and MySQL databases"
 provides=('python-mariadb-connector')
@@ -8,7 +8,7 @@ url="https://mariadb.com/kb/en/mariadb-connector-python/"
 license=('LGPL')
 depends=('python' 'mariadb-connector-c')
 makedepends=('git' 'python-setuptools')
-source=('git://github.com/mariadb-corporation/mariadb-connector-python.git')
+source=('git+https://github.com/mariadb-corporation/mariadb-connector-python.git')
 sha512sums=('SKIP')
 
 pkgver() {
