@@ -2,11 +2,11 @@
 pkgname=python-wallbreaker
 _name=Wallbreaker
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A useful tool to live analyzing Java heap, powered by frida."
 arch=('any')
 url="https://github.com/hluwa/Wallbreaker"
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=(
     'python'
     'python-frida'
