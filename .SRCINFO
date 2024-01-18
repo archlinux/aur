@@ -23,6 +23,7 @@ pkgbase = photoqt
 	depends = pugixml
 	depends = mpv
 	depends = resvg
+	depends = python-pychromecast
 	optdepends = libqpsd-git: PSB/PSD support
 	optdepends = xcftools: XCF support
 	optdepends = poppler-qt6: PDF support
