@@ -1,7 +1,8 @@
 pkgbase = python-beancount-china-importers
 	pkgdesc = Beancount importers for services frequently used in China
-	pkgver = r86.e698dea
+	pkgver = r92.bf37b97
 	pkgrel = 1
+	url = https://github.com/jiegec/china_bean_importers
 	arch = x86_64
 	makedepends = git
 	makedepends = python-build
@@ -10,7 +11,7 @@ pkgbase = python-beancount-china-importers
 	depends = beancount
 	depends = python-pymupdf
 	depends = python-beautifulsoup4
-	source = git+https://github.com/jiegec/china_bean_importers.git#commit=e698dea2d93c65301997bc0c4cded78bbcab6fa3
+	source = git+https://github.com/jiegec/china_bean_importers.git#commit=bf37b973a2d770a62e8254c20b534b01d97bc853
 	sha256sums = SKIP
 
 pkgname = python-beancount-china-importers
