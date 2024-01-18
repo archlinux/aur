@@ -41,7 +41,7 @@ fi
 
 if [ -e "${PLPBT_EFI_IMAGE}" ] && is_path_readable_by_grub "${PLPBT_EFI_IMAGE}" ; then
     ## EFI image exists, create menu entry
-    echo "Found Plop Boot Manager 6 EFI image: ${PLPBT_LINUX_IMAGE}" >&2
+    echo "Found Plop Boot Manager 6 EFI image: ${PLPBT_EFI_IMAGE}" >&2
     _GRUB_PLOP_HINTS_STRING="$(${grub_probe} --target=hints_string ${PLPBT_EFI_IMAGE})"
     _GRUB_PLOP_FS_UUID="$(${grub_probe} --target=fs_uuid ${PLPBT_EFI_IMAGE})"
     _GRUB_PLOP_REL_PATH="$(make_system_path_relative_to_its_root ${PLPBT_EFI_IMAGE})"

@@ -14,7 +14,7 @@ _pkgname="${_pkgbasename}-${_pkgmajorver}"
 pkgname="${_pkgname}-bin"
 epoch=0
 pkgver="${_pkgmajorver}.${_pkgreleasedate}"
-pkgrel=2
+pkgrel=3
 pkgdesc="EFI and BIOS Bootloaders that can also boot CDROM images and others."
 arch=(
   'i686'
@@ -61,8 +61,8 @@ sha256sums=(
   '211be9374482bc82aa5b2c50df3f00460f36f2e6b54ca9c260faf908d4423a49'  # EFI bootloader ZIP
   'ec763979889d0ac8965e540ef1f78ac16e044c758e5e838d84148d770409e697'  # bios.html
   '79872af6bd4ec11843a39520f305ac69ab1db807096d18745cdd95e739efeefb'  # efi.html
-  'SKIP' # blog.html
-  '277edd78c19b082e73fe4e22902851fdca19fb1aa524176aecc0173a4585b823' # Grub config file
+  'SKIP'                                                              # blog.html
+  '1d69a6eb72d761848de1e8e953590a2765657f20e9ca0c5215342c7a35e81412'  # Grub config file
 )
 noextract=()
 validpgpkeys=()
