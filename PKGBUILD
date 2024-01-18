@@ -4,13 +4,12 @@
 _hkgname=cab
 pkgname=cab
 pkgver=0.2.21
-pkgrel=1
+pkgrel=2
 pkgdesc="MacPorts-like maintenance command of Haskell cabal packages"
 url="http://www.mew.org/~kazu/proj/cab"
 license=('custom:BSD3')
 arch=('i686' 'x86_64')
-depends=('ghc-libs' 'haskell-attoparsec' 'haskell-conduit' 'haskell-conduit-extra'
-         'haskell-resourcet')
+depends=('haskell-attoparsec' 'haskell-conduit' 'haskell-conduit-extra' 'haskell-resourcet')
 makedepends=('ghc')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
 sha512sums=('2f05e1e0fad999cbbf99805c2b3609d53bae8492fd1deed17a721aa2ead13a1f4acfe6c95522097dd1dd01d89468e34856d4cf89e540c1d01ab9cc569f060541')

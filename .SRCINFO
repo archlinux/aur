@@ -1,13 +1,12 @@
 pkgbase = cab
 	pkgdesc = MacPorts-like maintenance command of Haskell cabal packages
 	pkgver = 0.2.21
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mew.org/~kazu/proj/cab
 	arch = i686
 	arch = x86_64
 	license = custom:BSD3
 	makedepends = ghc
-	depends = ghc-libs
 	depends = haskell-attoparsec
 	depends = haskell-conduit
 	depends = haskell-conduit-extra
