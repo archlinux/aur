@@ -19,6 +19,7 @@ pkgbase = actiona
 	depends = hdf5
 	depends = glew
 	depends = vtk
+	depends = fmt
 	options = !buildflags
 	source = actiona-3.10.2.tar.gz::https://github.com/Jmgr/actiona/archive/v3.10.2.tar.gz
 	sha256sums = f24196960302dd961ee7d97264669fc569812ecfceda5f80ddf22235d1dd486e
