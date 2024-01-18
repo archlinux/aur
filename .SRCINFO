@@ -1,6 +1,6 @@
 pkgbase = ogre-legacy
 	pkgdesc = Scene-oriented, flexible 3D engine written in C++ (Latest version with legacy features enabled for older games)
-	pkgver = 13.6.4
+	pkgver = 14.1.2
 	pkgrel = 1
 	url = http://www.ogre3d.org
 	install = ogre.install
@@ -27,7 +27,7 @@ pkgbase = ogre-legacy
 	optdepends = python: python bindings
 	provides = ogre
 	conflicts = ogre
-	source = ogre-legacy-13.6.4.tar.gz::https://github.com/OGRECave/ogre/archive/v13.6.4.tar.gz
-	sha512sums = ceadf2541f9a0a15f4b2b3ce1da59db6f81ef31e587b31ba8d7957beb610c860ffa549cefb1632404963b564775932be68306565877719f5a23605f4327b6a05
+	source = ogre-legacy-14.1.2.tar.gz::https://github.com/OGRECave/ogre/archive/v14.1.2.tar.gz
+	sha512sums = bd83d2de11e7587b34fabe776ea42ea63fef0dfd3b31f00ee38b1a707c2862ca1a30f8e6c4990039816d6013df6469aa3f7da2f15023391c2cd347b556bed36e
 
 pkgname = ogre-legacy
