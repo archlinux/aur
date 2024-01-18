@@ -1,6 +1,6 @@
 pkgbase = dt
 	pkgdesc = It's duct tape for your unix pipes
-	pkgver = 1.2.3
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/so-dang-cool/dt
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = dt
 	license = BSD-3-Clause
 	makedepends = zig-bin
 	makedepends = git
-	source = dt-1.2.3.tar.gz::https://github.com/so-dang-cool/dt/archive/refs/tags/v1.2.3.tar.gz
-	sha256sums = 5b0fc09eca856d7558ff08315d6ef344a58ab8fac4a27c9e0b7e77989c6a8325
+	source = dt-1.3.1.tar.gz::https://github.com/so-dang-cool/dt/archive/refs/tags/v1.3.1.tar.gz
+	sha256sums = 2849ea530b9de91525c604b609197bf04989fa53c4678b9c6332a5c5796505ee
 
 pkgname = dt
