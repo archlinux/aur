@@ -1,7 +1,7 @@
 pkgbase = charles-bin
 	pkgdesc = Web debugging proxy application (Standalone version using bundled Java)
 	pkgver = 4.6.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.charlesproxy.com
 	arch = x86_64
 	license = custom

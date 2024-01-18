@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=charles-bin
 pkgver=4.6.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Web debugging proxy application (Standalone version using bundled Java)"
 arch=('x86_64')
 url="https://www.charlesproxy.com"
@@ -17,4 +17,6 @@ package() {
     cd "${pkgdir}"
     # this extracts all into the pkgdir
     tar xf "${srcdir}/data.tar.zst"
+    # stop ^- from appearing in home directory
+    sed -i 's/\^-/\/dev\/null/' ${pkgdir}/usr/bin/charles
 }
