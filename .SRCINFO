@@ -1,13 +1,12 @@
 pkgbase = stardict-en-ru-bars
 	pkgdesc = Large english-russian dictionary for Stardict
 	pkgver = 2.4.2
-	pkgrel = 4
+	pkgrel = 5
 	url = http://stardict.sourceforge.net
 	arch = any
 	license = unknown
 	optdepends = stardict: for viewing this dictionary
-	source = http://getfr.no-ip.org/pub/dc/software/stardict-ru/stardict-en-ru-bars-2.4.2.tar.bz2
+	source = https://ftp.tw.freebsd.org/distfiles/stardict/stardict-en-ru-bars-2.4.2.tar.bz2
 	md5sums = 9ef8466511414320d1fa6413b7c12f2f
 
 pkgname = stardict-en-ru-bars
-
