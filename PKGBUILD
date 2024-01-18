@@ -2,7 +2,7 @@
 # Contributor: Carsten Feuls <archlinux at carstenfeuls dot de>
 
 pkgname=fllog
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="An Amateur Radio Logbook"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://www.w1hkj.com"
 license=('GPL')
 depends=('fltk')
 source=("https://downloads.sourceforge.net/project/fldigi/fllog/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('a53b6a11a9516c18e3620c5a6ea6403f546496397c325940e86a1e456312473ce6dcd6fed7fd07f133f1240a19d3022675831205770f1972523bb7c587b0a8dc')
+sha512sums=('b6a6bde5964c3e59fa6c5ad88c9965db76c8e8ef9464de7dc260d483a94467260f244b47ca89e17b3015558a3564662a96530817eafc615a2895d84032d9695a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
