@@ -10,23 +10,31 @@
 PKGEXT='.pkg.tar'
 _pkgname=android-studio
 pkgname="${_pkgname}-beta"
-pkgver=2023.2.1.19
-pkgrel=2
+pkgver=2023.2.1.20
+pkgrel=1
 pkgdesc='The Official Android IDE (Beta branch)'
 arch=('i686' 'x86_64')
 url='https://developer.android.com/studio/preview'
 license=('APACHE')
 makedepends=('zip')
 depends=(
+  'alsa-lib'
   'fontconfig'
   'freetype2'
+  'gcc-libs'
+  'bzip2'
+  'libedit'
+  'libxcrypt-compat'
   'libxml2'
   'libxrender'
   'libxtst'
+  'ncurses5-compat-libs'
+  'python'
   'which'
 )
 optdepends=(
   'android-emulator'
+  'android-ndk: to implement parts of your android app in native code'
   'android-platform'
   'android-sdk'
   'android-sdk-build-tools: aapt, aapt2, aidl, apksigner, bcc_compat, d8, dexdump, dx, lld, llvm-rs-cc, mainDexClases, split-select, zipalign'
@@ -48,7 +56,7 @@ options=('!strip')
 source=("https://redirector.gvt1.com/edgedl/android/studio/ide-zips/${pkgver}/${_pkgname}-${pkgver}-linux.tar.gz"
         "${pkgname}.desktop"
         "license.html")
-sha256sums=('95f2415fb44b2338a2baff34e7e81db7cc5f264163cb46d287beff6e390d147e'
+sha256sums=('70510f80500a905c7477b3c2e1f4c4953415ac164c42cd112f7c11fa1a938762'
             'c4a15624eb258acbe119567b044f4a54be4ebb41f05e6f6cb4d941d130dc714f'
             '6c4ae36e7e336f833de7d6151a4e1bb1d0133affeba9cef86f1190e0637128d1')
 
