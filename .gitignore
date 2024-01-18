@@ -1,7 +1,9 @@
-# packages
-chromium-*.deb
-chromium-*.pkg.tar.zst
+# Ignore everything
+*
 
-# build dirs
-pkg/
-src/
+# Exclude these
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!chromium-unstable.install
+!allow-user-flags.patch
