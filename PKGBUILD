@@ -4,7 +4,7 @@ pkgname="photosir-${_appname}-bin"
 _pkgname="cn.photosir.${_appname}"
 pkgver=2.0.4.30721
 _armver=2.0.6.30904
-pkgrel=2
+pkgrel=3
 pkgdesc="A multifunctional image processing software.悟空图像是一款多功能图像处理软件"
 arch=('aarch64' 'x86_64')
 license=('GPL2')
@@ -77,21 +77,31 @@ depends=(
     'qt5-svg'
     'qt5-sensors'
     'libxrandr'
+    'qt6-declarative'
+    'qt5-tools'
+    'qt5-remoteobjects'
+    'qt5-speech'
+    'qt5-quickcontrols2'
+    'kcoreaddons5'
+    'qt6-multimedia'
+    'kwidgetsaddons5'
+    'ki18n5'
+    'kconfig5'
+    'kitemviews5'
 )
+options=('!strip')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::https://cdn.photosir.cn/package/uos/30721/signed_${_pkgname}_${_armver}-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::https://cdn.photosir.cn/package/uos/30721/signed_${_pkgname}_${pkgver}-amd64.deb")
-source=(
-    "${pkgname%-bin}.sh"
-)
-sha256sums=('11a3ddab6c227e0375cafbde852e060e203cdac5dc7e7db0047a3c38e2766633')
+source=("${pkgname%-bin}.sh")
+sha256sums=('dabae1a0a47fbe5734322c68d6cafa9249fca3911464a2a388ac98b3413b8f27')
 sha256sums_aarch64=('4065c14cf71f775f09685043a93384c911b3294b078f1a6bac75f7f6434c9553')
 sha256sums_x86_64=('101a9adc01fecdb6b6496fe76cc334c5776de1467543fbd27a93f171cba48ce2')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runappname@|${_appname}|g" \
+        -e "s|@runname@|${_appname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed -e "s|/opt/apps/${_pkgname}/files/himirage.sh %F|${pkgname%-bin}|g" \
+    sed -e "s|/opt/apps/${_pkgname}/files/himirage.sh|${pkgname%-bin}|g" \
         -e "s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
         -e "s|Name=${_pkgname}|Name=${pkgname%-bin}|g" \
         -i "${srcdir}/opt/apps/${_pkgname}/entries/applications/${_pkgname}.desktop"
