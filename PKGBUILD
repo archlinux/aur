@@ -4,14 +4,15 @@
 _pkgname=jwcrypto
 pkgname=python-$_pkgname
 # https://github.com/latchset/jwcrypto/releases
-pkgver=1.5.0
+pkgver=1.5.1
 # curl https://api.github.com/repos/latchset/jwcrypto/git/ref/tags/v$pkgver | jq -r .object.sha
-_tag=2b03e450701f5990f3c9e49c9bfa4da71dc8c921
+_tag=88d63086ea90de194e22791b231684b496543355
 pkgrel=1
 pkgdesc='Python implementation of JWK, JWS, JWE specifications'
 arch=(any)
 url='https://github.com/latchset/jwcrypto'
-license=(LGPL3)
+# setup.py says LGPLv3+ https://github.com/latchset/jwcrypto/blob/v1.5.1/setup.py#L20
+license=('LGPL-3.0-or-later')
 depends=(python python-cryptography python-deprecated)
 makedepends=(git python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
