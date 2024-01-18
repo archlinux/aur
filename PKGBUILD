@@ -1,14 +1,32 @@
-# Maintainer:
+# Maintainer: Bronya <kotone[dot]olin1010[at]gmail[dot]com>
+# Maintainer: xiota / aur.chaotic.cx
+
+## useful links
+# http://floorp.app/
+# https://github.com/Floorp-Projects/Floorp
 
 _pkgname="floorp"
 pkgname="$_pkgname-bin"
 pkgver=11.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="http://floorp.app/"
 arch=('x86_64' 'aarch64')
 license=('MPL-2.0')
 
+depends=(
+  'alsa-lib'
+  'dbus-glib'
+  'gtk3'
+
+  ## implicit
+  #'at-spi2-core'
+  #'hicolor-icon-theme'
+  #'libxcomposite'
+  #'libxi'
+  #'libxrandr'
+  #'libxtst'
+)
 makedepends=(
   'imagemagick'
   'optipng'
@@ -40,20 +58,6 @@ sha256sums_x86_64=('c5cfd141f46522548595acff266118a1e4dc366a546f2f93c3150027862a
 sha256sums_aarch64=('d9cdcd5878233b499d0f6c6a26a86af2c5f1458e60dd04afe48ab2c2541ea4bd')
 
 package() {
-  depends+=(
-    'alsa-lib'
-    'dbus-glib'
-    'gtk3'
-
-    ## implicit
-    #'at-spi2-core'
-    #'hicolor-icon-theme'
-    #'libxcomposite'
-    #'libxi'
-    #'libxrandr'
-    #'libxtst'
-  )
-
   local _install_path="opt/$_pkgname"
 
   # app
