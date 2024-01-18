@@ -2,12 +2,12 @@
 
 pkgname=duckstation-git
 _pkgname=duckstation
-pkgver=r6121.39e62ae9
+pkgver=r6799.572ea80e
 pkgdesc='A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (git version)'
 pkgrel=1
 arch=(x86_64 aarch64)
 url=https://github.com/stenzek/duckstation
-license=(GPL3)
+license=(GPL-3.0-only)
 depends=(
     sh
     glibc
@@ -49,7 +49,7 @@ source=(git+"$url".git
     duckstation-qt.sh)
 sha256sums=('SKIP'
             'ec2d7358f81598390a8ceca2d1974be3e5f7c45602b550c89a1e9323ab45474b'
-            'fdfc77b028faa8be25ea66c8f47c41750ba6eb98f41a4802b44398fc5994b86a')
+            '221a8fc0d1f0cebdf281acc26484e98ebbb59f876e12fdef3f03cf91380e31f5')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -75,10 +75,21 @@ build() {
 }
 
 package() {
-    install -m755 -d "$pkgdir/opt"
-    cp -drv --no-preserve='ownership' build/bin "$pkgdir/opt/$_pkgname"
+    # Initially install everything into /usr/lib/duckstation
+    install -m 755 -d "${pkgdir}/usr/lib"
+    cp -drv --no-preserve='ownership' build/bin "${pkgdir}/usr/lib/${_pkgname}"
+
+    # Move shared data to /usr/share/duckstation
+    pushd "${pkgdir}/usr/lib/${_pkgname}"
+    install -m 755 -d "${pkgdir}/usr/share/${_pkgname}"
+    for _dir in resources translations
+    do
+        mv "${_dir}" "${pkgdir}/usr/share/${_pkgname}"
+        ln -s "/usr/share/${_pkgname}/${_dir}" .
+    done
+    popd
 
     install -Dvm755 "$srcdir/duckstation-qt.sh" "$pkgdir/usr/bin/duckstation-qt"
-    install -Dvm644 "$srcdir/duckstation-qt.desktop" "$pkgdir/usr/share/applications/duckstation-qt.desktop" 
-    install -Dm644 "$_pkgname/data/resources/images/duck.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/duckstation-qt.png"
+    install -Dvm644 "$srcdir/duckstation-qt.desktop" "$pkgdir/usr/share/applications/duckstation-qt.desktop"
+    install -Dvm644 "$_pkgname/data/resources/images/duck.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/duckstation-qt.png"
 }
