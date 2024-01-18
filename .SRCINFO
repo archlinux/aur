@@ -1,6 +1,6 @@
 pkgbase = chromium-unstable-znver2-bin
 	pkgdesc = The Chromium web browser for Linux built with the open source Clang compiler and LLD linker. (znver2 build)
-	pkgver = 122.0.6224.0
+	pkgver = 122.0.6256.0
 	pkgrel = 1
 	url = https://www.chromium.org/Home
 	install = chromium-unstable.install
@@ -43,9 +43,9 @@ pkgbase = chromium-unstable-znver2-bin
 	conflicts = chromium-browser-unstable
 	options = !emptydirs
 	options = !strip
-	source = chromium-unstable_v122.0.6224.0-r1242047-linux64-deb-znver2.deb::https://github.com/RobRich999/Chromium_Clang/releases/download/v122.0.6224.0-r1242047-linux64-deb-znver2/chromium-browser-unstable_122.0.6224.0-1_amd64.deb
+	source = chromium-unstable_v122.0.6256.0-r1248736-linux64-deb-znver2.deb::https://github.com/RobRich999/Chromium_Clang/releases/download/v122.0.6256.0-r1248736-linux64-deb-znver2/chromium-browser-unstable_122.0.6256.0-1_amd64.deb
 	source = allow-user-flags.patch
-	sha1sums = a6a55340fd254f860d31957be142c513007245ea
+	sha1sums = c21df8d95888b3e9d2561ac22bc5c72a0bbd44e8
 	sha1sums = dd5c9032644b703aba5cf7c9e6766decb66989f7
 
 pkgname = chromium-unstable-znver2-bin
