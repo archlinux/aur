@@ -1,7 +1,7 @@
 pkgbase = plop-bootmanager-6-bin
 	pkgdesc = EFI and BIOS Bootloaders that can also boot CDROM images and others.
 	pkgver = 6.20230818
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://www.plop.at/en/pbm6/index.html
 	arch = i686
@@ -29,6 +29,6 @@ pkgbase = plop-bootmanager-6-bin
 	sha256sums = ec763979889d0ac8965e540ef1f78ac16e044c758e5e838d84148d770409e697
 	sha256sums = 79872af6bd4ec11843a39520f305ac69ab1db807096d18745cdd95e739efeefb
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 277edd78c19b082e73fe4e22902851fdca19fb1aa524176aecc0173a4585b823
 
 pkgname = plop-bootmanager-6-bin

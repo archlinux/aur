@@ -17,20 +17,41 @@ else
   exit 1
 fi
 
-PLPBT_IMAGE="/boot/plop/linux/pbm6"
+PLPBT_LINUX_IMAGE="/boot/plop/linux/pbm6"
+PLPBT_EFI_IMAGE="/boot/EFI/plop/pbm6-x64.efi"
 CLASS="--class plop --class pbm6 --class tool"
 
-if [ -e "${PLPBT_IMAGE}" ] && is_path_readable_by_grub "${PLPBT_IMAGE}" ; then
-    ## image exists, create menu entry
-    echo "Found Plop Boot Manager 6 image: ${PLPBT_IMAGE}" >&2
-    _GRUB_PLOP_HINTS_STRING="$(${grub_probe} --target=hints_string ${PLPBT_IMAGE})"
-    _GRUB_PLOP_FS_UUID="$(${grub_probe} --target=fs_uuid ${PLPBT_IMAGE})"
-    _GRUB_PLOP_REL_PATH="$(make_system_path_relative_to_its_root ${PLPBT_IMAGE})"
+if [ -e "${PLPBT_LINUX_IMAGE}" ] && is_path_readable_by_grub "${PLPBT_LINUX_IMAGE}" ; then
+    ## Linux image exists, create menu entry
+    echo "Found Plop Boot Manager 6 Linux image: ${PLPBT_LINUX_IMAGE}" >&2
+    _GRUB_PLOP_HINTS_STRING="$(${grub_probe} --target=hints_string ${PLPBT_LINUX_IMAGE})"
+    _GRUB_PLOP_FS_UUID="$(${grub_probe} --target=fs_uuid ${PLPBT_LINUX_IMAGE})"
+    _GRUB_PLOP_REL_PATH="$(make_system_path_relative_to_its_root ${PLPBT_LINUX_IMAGE})"
     cat << EOF
 if [ "\${grub_platform}" == "pc" ]; then
+  menuentry "Plop Boot Manager 6" ${CLASS} {
+      insmod part_gpt
+      insmod fat
+      search --fs-uuid --no-floppy --set=root ${_GRUB_PLOP_HINTS_STRING} ${_GRUB_PLOP_FS_UUID}
+      linux ${_GRUB_PLOP_REL_PATH} ${GRUB_CMDLINE_PLPBT}
+  }
+fi
+EOF
+fi
+
+if [ -e "${PLPBT_EFI_IMAGE}" ] && is_path_readable_by_grub "${PLPBT_EFI_IMAGE}" ; then
+    ## EFI image exists, create menu entry
+    echo "Found Plop Boot Manager 6 EFI image: ${PLPBT_LINUX_IMAGE}" >&2
+    _GRUB_PLOP_HINTS_STRING="$(${grub_probe} --target=hints_string ${PLPBT_EFI_IMAGE})"
+    _GRUB_PLOP_FS_UUID="$(${grub_probe} --target=fs_uuid ${PLPBT_EFI_IMAGE})"
+    _GRUB_PLOP_REL_PATH="$(make_system_path_relative_to_its_root ${PLPBT_EFI_IMAGE})"
+    cat << EOF
+if [ "\${grub_platform}" == "efi" ]; then
     menuentry "Plop Boot Manager 6" ${CLASS} {
+        insmod part_gpt
+        insmod fat
         search --fs-uuid --no-floppy --set=root ${_GRUB_PLOP_HINTS_STRING} ${_GRUB_PLOP_FS_UUID}
-        linux ${_GRUB_PLOP_REL_PATH} ${GRUB_CMDLINE_PLPBT}
+        chainloader ${_GRUB_PLOP_REL_PATH} ${GRUB_CMDLINE_PLPBT}
     }
 fi
 EOF
