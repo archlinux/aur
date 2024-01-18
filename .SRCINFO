@@ -1,0 +1,11 @@
+pkgbase = breeze-snow-cursor
+	pkgdesc = KDE Plasma's 'Breeze Snow' cursor theme.
+	pkgver = 5.27.10
+	pkgrel = 1
+	arch = any
+	license = GPL
+	conflicts = breeze-snow-cursor-theme
+	source = https://download.kde.org/stable/plasma/5.27.10/breeze-5.27.10.tar.xz
+	sha256sums = bebc960752da9d53a9895ffc05d824cba702735428aa61347b703fea074700a2
+
+pkgname = breeze-snow-cursor
