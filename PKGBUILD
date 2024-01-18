@@ -4,12 +4,12 @@ _extname=HTMLets
 _extname_lowercase="${_extname,,}"
 _pkgname_base="mediawiki-extension-${_extname_lowercase}"
 
-_mediawiki_mainver=1.40
+_mediawiki_mainver=1.41
 _mediawiki_mainver_succ=${_mediawiki_mainver%.*}.$((${_mediawiki_mainver##*.}+1))
 _branch="REL${_mediawiki_mainver/./_}"
 
 pkgname="${_pkgname_base}-git"
-pkgver=r208.76e25ef
+pkgver=r211.d044d11
 pkgrel=1
 pkgdesc="MediaWiki extension allowing inline HTML snippets from files"
 arch=('any')

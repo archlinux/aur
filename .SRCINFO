@@ -1,16 +1,16 @@
 pkgbase = mediawiki-extension-htmlets-git
 	pkgdesc = MediaWiki extension allowing inline HTML snippets from files
-	pkgver = r208.76e25ef
+	pkgver = r211.d044d11
 	pkgrel = 1
 	url = https://www.mediawiki.org/wiki/Extension:HTMLets
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = mediawiki>=1.40
-	depends = mediawiki<1.41
+	depends = mediawiki>=1.41
+	depends = mediawiki<1.42
 	provides = mediawiki-extension-htmlets
 	conflicts = mediawiki-extension-htmlets
-	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/HTMLets#branch=REL1_40
+	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/HTMLets#branch=REL1_41
 	sha512sums = SKIP
 
 pkgname = mediawiki-extension-htmlets-git
