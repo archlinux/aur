@@ -9,7 +9,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=pam-selinux
-pkgver=1.5.3
+pkgver=1.6.0
 pkgrel=3
 pkgdesc="SELinux aware PAM (Pluggable Authentication Modules) library"
 arch=('x86_64' 'aarch64')
@@ -30,9 +30,9 @@ validpgpkeys=(
         '296D6F29A020808E8717A8842DB5BD89A340AEB7' #Dimitry V. Levin <ldv@altlinux.org>
 )
 
-sha256sums=('7ac4b50feee004a9fa88f1dfd2d2fa738a82896763050cd773b3c54b0a818283'
+sha256sums=('fff4a34e5bbee77e2e8f1992f27631e2329bcbf8a0563ddeb5c3389b4e3169ad'
             'SKIP'
-            'fe7493aa0a281f8cfe81814768329f953098d0fd8073da1dc0bd64494d022d4d'
+            '3e82730d3350795c42f3708f6609a92c1df841d518aa17c28fd702fe5ec23a32'
             'SKIP'
             '5631f224e90c4f0459361c2a5b250112e3a91ba849754bb6f67d69d683a2e5ac')
 
@@ -40,16 +40,12 @@ options=('!emptydirs')
 
 build() {
   cd Linux-PAM-$pkgver
-  # Enable building deprecated pam_tally2.so module (--enable-tally2) in order
-  # to smooth the transition to pam_faillock.so
-  # https://github.com/archlinuxhardened/selinux/issues/41#issuecomment-668202328
   ./configure \
     --libdir=/usr/lib \
     --sbindir=/usr/bin \
     --enable-logind \
     --disable-db \
-    --enable-selinux \
-    --enable-tally2
+    --enable-selinux
   make
 }
 
