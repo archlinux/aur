@@ -1,0 +1,16 @@
+pkgbase = python-datalad-next
+	pkgdesc = extension for new and improved functionality and user experience in datalad
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/datalad/datalad-next
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-datalad
+	source = https://github.com/datalad/datalad-next/archive/1.0.2/datalad-next-1.0.2.tar.gz
+	sha256sums = d58ccb1746bea46ca3d71c0d9acf775a3a5013516fe6a8f5adbe9df7ba35a16c
+
+pkgname = python-datalad-next
