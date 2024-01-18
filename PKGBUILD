@@ -5,11 +5,11 @@
 pkgname=dump1090-git
 _pkgname=${pkgname%-git}
 pkgver=r386.bff92c4
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple Mode S decoder for RTLSDR devices. MalcolmRobb fork."
 arch=('x86_64' 'aarch64')
 url="https://github.com/MalcolmRobb/dump1090"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('rtl-sdr')
 provides=($_pkgname)
 conflicts=($_pkgname)

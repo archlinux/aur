@@ -1,11 +1,11 @@
 pkgbase = dump1090-git
 	pkgdesc = A simple Mode S decoder for RTLSDR devices. MalcolmRobb fork.
 	pkgver = r386.bff92c4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/MalcolmRobb/dump1090
 	arch = x86_64
 	arch = aarch64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = git
 	depends = rtl-sdr
 	provides = dump1090
