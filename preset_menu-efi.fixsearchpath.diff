@@ -1,0 +1,13 @@
+diff -rU1 grub4dos-efi.orig/preset_menu.lst grub4dos-efi/preset_menu.lst
+--- grub4dos-efi.orig/preset_menu.lst	2024-01-18 21:50:18.963707931 +0100
++++ grub4dos-efi/preset_menu.lst	2024-01-18 21:52:48.103712984 +0100
+@@ -3,6 +3,6 @@
+ 
+-title find /efi/grub/menu.lst
++title find /EFI/GRUB4DOS/menu.lst
+ 	errorcheck off
+-	find --set-root /efi/grub/menu.lst
+-	configfile /efi/grub/menu.lst
++	find --set-root /EFI/GRUB4DOS/menu.lst
++	configfile /EFI/GRUB4DOS/menu.lst
+ 	errorcheck on

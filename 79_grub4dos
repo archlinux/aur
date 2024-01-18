@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+########################################################
+# This script generates a GRUB4DOS entry on grub.cfg.  #
+# Based on the 80_plop6boot grub script.               #
+########################################################
+
+prefix="/usr"
+exec_prefix="${prefix}"
+
+datarootdir="/usr/share"
+datadir="${datarootdir}"
+
+if [ -r "${datadir}/grub/grub-mkconfig_lib" ]; then
+. "${datadir}/grub/grub-mkconfig_lib"
+else
+  printf '%s\n' "ERROR: Cannot source file '${datadir}/grub/grub-mkconfig_lib'." > /dev/stderr
+  exit 1
+fi
+
+GRUB4DOS_x86EFI_IMAGE="/boot/efi/grub4dos/gr4dos32.efi"
+GRUB4DOS_x64EFI_IMAGE="/boot/efi/grub4dos/gr4dos64.efi"
+CLASS="--class grub4dos --class tool"
+
+if [ -e "${GRUB4DOS_x86EFI_IMAGE}" ] && is_path_readable_by_grub "${GRUB4DOS_x86EFI_IMAGE}" ; then
+    ## EFI image exists, create menu entry
+    echo "Found GRUB4DOS i386 EFI image: ${GRUB4DOS_x86EFI_IMAGE}" >&2
+    _GRUB_PLOP_HINTS_STRING="$(${grub_probe} --target=hints_string ${GRUB4DOS_x86EFI_IMAGE})"
+    _GRUB_PLOP_FS_UUID="$(${grub_probe} --target=fs_uuid ${GRUB4DOS_x86EFI_IMAGE})"
+    _GRUB_PLOP_REL_PATH="$(make_system_path_relative_to_its_root ${GRUB4DOS_x86EFI_IMAGE})"
+    cat << EOF
+if [ "\${grub_platform}" == "efi" ]; then
+    menuentry "GRUB4DOS (i386 EFI image)" ${CLASS} {
+        insmod part_gpt
+        insmod fat
+        search --fs-uuid --no-floppy --set=root ${_GRUB_PLOP_HINTS_STRING} ${_GRUB_PLOP_FS_UUID}
+        chainloader ${_GRUB_PLOP_REL_PATH} ${GRUB_CMDLINE_PLPBT}
+    }
+fi
+EOF
+fi
+
+if [ -e "${GRUB4DOS_x64EFI_IMAGE}" ] && is_path_readable_by_grub "${GRUB4DOS_x64EFI_IMAGE}" ; then
+    ## EFI image exists, create menu entry
+    echo "Found GRUB4DOS x86_64 EFI image: ${GRUB4DOS_x64EFI_IMAGE}" >&2
+    _GRUB_PLOP_HINTS_STRING="$(${grub_probe} --target=hints_string ${GRUB4DOS_x64EFI_IMAGE})"
+    _GRUB_PLOP_FS_UUID="$(${grub_probe} --target=fs_uuid ${GRUB4DOS_x64EFI_IMAGE})"
+    _GRUB_PLOP_REL_PATH="$(make_system_path_relative_to_its_root ${GRUB4DOS_x64EFI_IMAGE})"
+    cat << EOF
+if [ "\${grub_platform}" == "efi" ]; then
+    menuentry "GRUB4DOS (x86_64 EFI image)" ${CLASS} {
+        insmod part_gpt
+        insmod fat
+        search --fs-uuid --no-floppy --set=root ${_GRUB_PLOP_HINTS_STRING} ${_GRUB_PLOP_FS_UUID}
+        chainloader ${_GRUB_PLOP_REL_PATH} ${GRUB_CMDLINE_PLPBT}
+    }
+fi
+EOF
+fi

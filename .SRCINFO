@@ -1,0 +1,36 @@
+pkgbase = grub4dos-efi-git
+	pkgdesc = GRUB4DOS EFI binaries.
+	pkgver = r762.20231129.b6c8c30
+	pkgrel = 1
+	url = http://grub4dos.chenall.net/
+	arch = i386
+	arch = i486
+	arch = i586
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = nasm
+	makedepends = upx
+	makedepends = gcc-multilib
+	makedepends = gcc-libs-multilib
+	optdepends = grub: For adding GRUB4DOS to the GRUB menu.
+	provides = grub4dos-efi=r762.20231129.b6c8c30
+	conflicts = grub4dos-efi
+	options = !strip
+	options = !buildflags
+	options = !makeflags
+	options = !lto
+	backup = boot/efi/grub4dos/menu.lst
+	source = grub4dos-efi-efi::git+https://github.com/chenall/grub4dos.git#branch=efi
+	source = preset_menu-efi.fixsearchpath.diff
+	source = menu.list-efi.customisations.diff
+	source = 79_grub4dos
+	source = menu_arch.lst
+	sha256sums = SKIP
+	sha256sums = 0fe8292c02e28ee181c43a694d156ccc6a16e34962d774dd745350a77eb42f09
+	sha256sums = ebb7d52bcda3e3a6c5ec9fcbeba9b93381c78601e463a191edef7ce5290422df
+	sha256sums = SKIP
+	sha256sums = 457c17d8660aadeb7c6ef844319fa24ae77183b428c9ce5d438423ba75728052
+
+pkgname = grub4dos-efi-git

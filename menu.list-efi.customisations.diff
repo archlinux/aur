@@ -1,0 +1,253 @@
+diff -rU1 grub4dos-efi.orig/menu.lst grub4dos-efi/menu.lst
+--- grub4dos-efi.orig/menu.lst	2024-01-18 21:50:18.963707931 +0100
++++ grub4dos-efi/menu.lst	2024-01-18 22:23:02.483774418 +0100
+@@ -1,4 +1,4 @@
+-﻿# 这是一个样品 menu.lst 文件。你应该对它做些改动。
+-# 它必须是 UTF-8 编码，以支持多种语言。
+-# 字体应该是 unifont.hex 格式。
++﻿# Here's a sample "menu.lst" file. You should make some changes to it.
++# It must be UTF-8 encoded to support multiple languages.
++# The font should be in unifont.hex format.
+ 
+@@ -6,20 +6,23 @@
+ 
+-#设置倒计时(秒)
+-timeout 30
++# Setting the countdown time (seconds)
++timeout 0
+ 
+-#设置第一项为默认值
++# Set the default boot item.
+ default 1
+ 
+-#设置字符颜色(高32位是背景色，低32位是前景色。在命令行执行：echo -rrggbb，可查看对应的颜色。)
++# Set the character color (the high 32 bits are the background color, the low 32 bits are the foreground color. Execute: echo -rrggbb at the command line to see the corresponding color).
+ #color normal=0xff9933 highlight=0xffff00 helptext=0xff00ff heading=0x66ff00
++color blue/green yellow/red white/magenta white/magenta
++# menu border color
++color border=0xEEFFEE
+ 
+-#设置图形模式(可使用 graphicsmode 探测系统支持的图形模式)
+-#graphicsmode -1 800(水平像素)
++# Set the graphics mode (you can use "graphicsmode" to detect the graphics modes supported by the system)
++graphicsmode -1 640:800 480:600 24:32 || graphicsmode -1 -1 -1 24:32
+ 
+-#加载背景图
++# Load background image
+ #splashimage /efi/grub/splashimage.jpg || splashimage /boot/grub/splashimage.bmp
+-#加载unifont字体(如果不是 16*16 字体，需增加参数，如 --font-high=24)
++# Load unifont fonts (if not 16*16 fonts, need to add parameter, e.g. --font-high=24)
+ #font /efi/grub/unifont.hex.gz
+ 
+-#获取水平像素，加载不同尺寸的字体及背景图
++# Get horizontal pixels, load different sizes of fonts and background images
+ #calc *0x834c > nul ;; set a=%@retval%
+@@ -28,25 +31,48 @@
+ 
+-#判断启动环境：if %@uefi%==64    0/32/64=bios/uefi_x86/uefi_x64
++# Determine the startup environment: if %@uefi%==64    0/32/64=bios/uefi_x86/uefi_x64
+ 
+-#设置菜单框
++# Setting up the menu box
+ #setmenu --box x=4 w=60 y=6 h=9 l=2
+-#设置中文菜单按键帮助
++# Setting up Chinese menu button help
+ #setmenu --lang=zh
+-#设置自动菜单编号
++# Setting the Auto Menu Number
+ #setmenu --auto-num-on 
+-#设置字符串信息
++# Setting string information
+ #setmenu --string=x=y=颜色="字符串"
+-#设置日期时间
++# Setting the date and time
+ #setmenu --string=x=y=颜色="date&time=yyyy-MM-dd  HH:mm:ss"
+-#设置倒计时
++# Setting the countdown
+ #setmenu --timeout=x=y=颜色
+-#更多菜单编辑功能、动画、图像菜单等等，可参考http://bbs.wuyou.net/forum.php?mod=viewthread&tid=369720&extra=page%3D3
++# For more menu editing features, animations, image menus, and more, see the http://bbs.wuyou.net/forum.php?mod=viewthread&tid=369720&extra=page%3D3
+ 
+-title 启动 efi 文件
+-chainloader /efi/boot/grub2x64.efi
++title default EFI boot image "/efi/boot/bootx64.efi"
++chainloader /efi/boot/bootx64.efi
+ 
+-title 启动 windows
++title windows "/efi/microsoft/boot/bootmgfw.efi"
+ chainloader /efi/microsoft/boot/bootmgfw.efi
+ 
+-title 启动虚拟光盘
++#iftitle only show when command in [] returns true
++# set a variable named bootmgr where /bootmgr is found.
++iftitle [find --set-root --devices=h /bootmgr && call set bootmgr=%@root^%] load BOOTMGR of Windows VISTA/WIN7/WIN2008 on %bootmgr%
++chainloader %bootmgr%/bootmgr
++
++title find and load NTLDR of Windows NT/2K/XP
++find --set-root --ignore-floppies --ignore-cd /ntldr
++map () (hd0)
++map (hd0) ()
++map --rehook
++find --set-root --ignore-floppies --ignore-cd /ntldr
++chainloader /ntldr
++
++title find and load CMLDR, the Recovery Console of Windows NT/2K/XP
++fallback +1
++find --set-root --ignore-floppies --ignore-cd /cmldr
++map () (hd0)
++map (hd0) ()
++map --rehook
++find --set-root --ignore-floppies --ignore-cd /cmldr
++chainloader /cmldr
++
++
++title CD-image "/cdrom.iso"
+ find --set-root /cdrom.iso
+@@ -55,3 +81,3 @@
+ 
+-title 启动虚拟光盘(加载到内存)
++title CD-image "/cdrom.iso" (loaded into memory)
+ find --set-root /cdrom.iso
+@@ -60,6 +86,6 @@
+ 
+-title 启动存在的光盘(cd0)
++title chainloading "(cd0)"
+ chainloader (cd0)
+ 
+-title 启动虚拟硬盘
++title HDD image "/boot/hdd.img"
+ find --set-root /boot/hdd.img
+@@ -68,3 +94,3 @@
+ 
+-title 启动虚拟硬盘(加载到内存)
++title HDD image "/boot/hdd.img" (loaded into memory)
+ find --set-root /boot/hdd.img
+@@ -73,72 +99,68 @@
+ 
+-title 启动存在的硬盘(hd0)
++title chainloading "(hd0)"
+ chainloader (hd0)
+ 
+-title 启动其他菜单
+-configfile /efi/grub/menu2.lst
++title read config file "/efi/grub4dos/menu2.lst"
++configfile /efi/grub4dos/menu2.lst
+ 
+-title 启动 Linux Porteus 5.0 x86_64 openbox
+-kernel /porteus/vmlinuz copy2ram
+-initrd /porteus/initrd.xz
+-
+-#假设外部命令位于 /efi/grub/ext/
+-#假设 WIM/VHD(或者启动文件夹) 位于 (hdx,y)/boot/imgs/
+-#假设 windows 的 winload.efi 位于 (hdx,y)
+-
+-title 使用外部命令 ntloader 启动 WIM/VHD (kernel方案1)
+-uuid (hdx,y)
+-kernel /efi/grub/ext/ntloader uuid=%?% file=/boot/imgs/winpe.wim
+-initrd /efi/grub/ext/initrd.lz1
+-
+-title 使用外部命令 ntloader 启动 WIM/VHD (kernel 方案2)
+-find --set-root /boot/imgs/winpe.wim
+-uuid ()
+-find --set-root /efi/grub/ext/ntloader
+-kernel /efi/grub/ext/ntloader uuid=%?% file=/boot/imgs/winpe.wim
+-initrd /efi/grub/ext/initrd.lz1
+-
+-title 使用外部命令 ntloader 启动 WIM/VHD (chainloader 方案1)
+-uuid (hdx,y)
+-chainloader /efi/grub/ext/ntloader initrd=/efi/grub/ext/initrd.lz1 uuid=%?% file=/boot/imgs/winpe.wim
+-
+-title 使用外部命令 ntloader 启动 WIM/VHD (chainloader 方案2)
+-find --set-root /boot/imgs/winpe.wim
+-uuid ()
+-find --set-root /efi/grub/ext/ntloader
+-chainloader /efi/grub/ext/ntloader initrd=/efi/grub/ext/initrd.lz1 uuid=%?% file=/boot/imgs/winpe.wim
+-
+-title 使用外部命令 ntloader 启动 Windows 系统 (kernel 方案)
+-uuid (hdx,y)
+-kernel /efi/grub/ext/ntloader uuid=%?%
+-initrd /efi/grub/ext/initrd.lz1
+-
+-title 使用外部命令 ntloader 启动 Windows 系统 (chainloader 方案)
+-uuid (hdx,y)
+-chainloader /efi/grub/ext/ntloader initrd=/efi/grub/ext/initrd.lz1 uuid=%?%
+-
+-title 使用外部命令 NTBOOT 启动 WIM/VHD (方案1)
+-find /efi/grub/ext/ntboot | set bd=
+-find --set-root /boot/imgs/winpe.wim
+-%bd%/efi/grub/ext/ntboot  /boot/imgs/winpe.wim
+-boot
+-
+-title 使用外部命令 NTBOOT 启动 WIM/VHD (方案2)
+-find /boot/imgs/winpe.vhd | set bd=
+-/efi/grub/ext/ntboot  %bd%/boot/imgs/winpe.vhd winload=/Windows/System32/boot/winload.efi minint=1
+-boot
+-
+-title 使用外部命令 NTBOOT 启动 Windows 系统
+-/efi/grub/ext/ntboot  (hdx,y)/win
+-boot
++#Assume external commands are located in /efi/grub/ext/
++#Assume that WIM/VHD (or the boot folder) is located in (hdx,y)/boot/imgs/
++#Assuming that winload.efi for windows is located at (hdx,y)
++
++#title Booting WIM/VHD with external command ntloader (kernel scheme 1
++#uuid (hdx,y)
++#kernel /efi/grub/ext/ntloader uuid=%?% file=/boot/imgs/winpe.wim
++#initrd /efi/grub/ext/initrd.lz1
++
++#title Boot WIM/VHD with external command ntloader (kernel scheme 2)
++#find --set-root /boot/imgs/winpe.wim
++#uuid ()
++#find --set-root /efi/grub/ext/ntloader
++#kernel /efi/grub/ext/ntloader uuid=%?% file=/boot/imgs/winpe.wim
++#initrd /efi/grub/ext/initrd.lz1
++
++#title Booting WIM/VHD with the external command ntloader (chainloader scenario 1)
++#uuid (hdx,y)
++#chainloader /efi/grub/ext/ntloader initrd=/efi/grub/ext/initrd.lz1 uuid=%?% file=/boot/imgs/winpe.wim
++
++#title Booting WIM/VHD with the external command ntloader (chainloader scenario 2)
++#find --set-root /boot/imgs/winpe.wim
++#uuid ()
++#find --set-root /efi/grub/ext/ntloader
++#chainloader /efi/grub/ext/ntloader initrd=/efi/grub/ext/initrd.lz1 uuid=%?% file=/boot/imgs/winpe.wim
++
++#title Booting a Windows system using the external command ntloader (kernel scheme)
++#uuid (hdx,y)
++#kernel /efi/grub/ext/ntloader uuid=%?%
++#initrd /efi/grub/ext/initrd.lz1
++
++#title Booting a Windows system with the external command ntloader (chainloader solution)
++#uuid (hdx,y)
++#chainloader /efi/grub/ext/ntloader initrd=/efi/grub/ext/initrd.lz1 uuid=%?%
++
++#title Use the external command NTBOOT to start WIM/VHD (Option 1)
++#find /efi/grub/ext/ntboot | set bd=
++#find --set-root /boot/imgs/winpe.wim
++#%bd%/efi/grub/ext/ntboot  /boot/imgs/winpe.wim
++#boot
++
++#title Use the external command NTBOOT to start WIM/VHD (Option 2)
++#find /boot/imgs/winpe.vhd | set bd=
++#/efi/grub/ext/ntboot  %bd%/boot/imgs/winpe.vhd winload=/Windows/System32/boot/winload.efi minint=1
++#boot
++
++#title Booting a Windows System Using the External Command NTBOOT
++#/efi/grub/ext/ntboot  (hdx,y)/win
++#boot
+ 
+-title 命令行
++title GRUB command line
+ commandline
+ 
+-title 退出grub4dos
++title Exit grub4dos
+ exit_g4d
+ 
+-title 重启
++title reboot
+ reboot
+ 
+-title 关机
++title halt
+ halt
