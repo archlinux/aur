@@ -2,11 +2,11 @@
 
 pkgname=wimboot-bin
 pkgver=2.7.6
-pkgrel=1
+pkgrel=2
 pkgdesc="iPXE kernel to boot wim images from network for both UEFI and BIOS system"
 arch=(any)
 url="https://github.com/ipxe/wimboot"
-license=('GPL')
+license=('GPL-2.0-or-later')
 makedepends=()
 conflicts=(wimboot-git)
 optdepends=("ipxe-git: iPXE network boot program")
