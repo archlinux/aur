@@ -14,7 +14,7 @@ diff -rU1 grub4dos-efi.orig/menu.lst grub4dos-efi/menu.lst
 -#设置倒计时(秒)
 -timeout 30
 +# Setting the countdown time (seconds)
-+timeout 0
++timeout 3600
  
 -#设置第一项为默认值
 +# Set the default boot item.
