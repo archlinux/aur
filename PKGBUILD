@@ -19,8 +19,11 @@ optdepends=(
 provides=("${pkgname%-git}" "cairo-dock")
 conflicts=("${pkgname%-git}" "cairo-dock")
 options=(debug)
-source=("${pkgname}::git+https://github.com/dkondor/cairo-dock-core.git#branch=wayland_new" "01-cairo-dock-dock-facility.patch")
-sha256sums=('SKIP' '9685d038d97e0b5edf882ef675504b6088b4495859c79bb80967dfbb743394ab')
+source=("${pkgname}::git+https://github.com/dkondor/cairo-dock-core.git#branch=wayland_new" "01-fix-egl-popup-freeze.patch")
+sha256sums=(
+    'SKIP'
+    'dbe476513329cc08552a47dc15f80ef102dbc103b3bf6a01f5eb1f2b057b8b51'
+)
 
 _builddir="build"
 

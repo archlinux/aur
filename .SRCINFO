@@ -23,8 +23,8 @@ pkgbase = cairo-dock-core-wayland-git
 	conflicts = cairo-dock
 	options = debug
 	source = cairo-dock-core-wayland-git::git+https://github.com/dkondor/cairo-dock-core.git#branch=wayland_new
-	source = 01-cairo-dock-dock-facility.patch
+	source = 01-fix-egl-popup-freeze.patch
 	sha256sums = SKIP
-	sha256sums = 9685d038d97e0b5edf882ef675504b6088b4495859c79bb80967dfbb743394ab
+	sha256sums = dbe476513329cc08552a47dc15f80ef102dbc103b3bf6a01f5eb1f2b057b8b51
 
 pkgname = cairo-dock-core-wayland-git
