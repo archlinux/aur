@@ -1,0 +1,15 @@
+pkgbase = dae-bin-x64-v2
+	pkgdesc = A Linux lightweight and high-performance transparent proxy solution based on eBPF.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/daeuniverse/dae
+	arch = x86_64
+	license = AGPL
+	depends = glibc
+	provides = dae
+	conflicts = dae
+	backup = etc/dae/config.dae
+	source = https://github.com/daeuniverse/dae/releases/download/v0.5.0/dae-linux-x86_64_v2_sse.zip
+	sha256sums = e0f3e1e9a0814f689a425d730f9a02e178685210b8064741bc3f253896a57122
+
+pkgname = dae-bin-x64-v2
