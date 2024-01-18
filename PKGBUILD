@@ -2,7 +2,7 @@
 
 pkgname=google-location-history-converter
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='google-location-history-converter takes downloaded Google Location Takeout data and converts it to KML'
 arch=(x86_64)
 url="https://github.com/rickprice/${pkgname}"
@@ -10,7 +10,7 @@ license=("BSD")
 makedepends=(stack)  
 conflicts=("${pkgname}")
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('a7a4504f000d3648947294135118411af2b7f0a8f261dd244bbf834af4e8f7d3')
+sha256sums=('b173d1f839d914e74fba004dc2bb56d22adafbff0093e4e9795527905ab357ab')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
