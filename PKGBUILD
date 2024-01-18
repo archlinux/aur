@@ -16,7 +16,7 @@
 # basic info
 _pkgname="wine"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=8.21.r438.g7a8c039a
+pkgver=9.0.r0.gfd115355
 pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://gitlab.winehq.org/wine/wine"
@@ -26,8 +26,6 @@ arch=(x86_64)
 # main package
 _main_package() {
   depends=(
-    desktop-file-utils
-
     alsa-lib              #lib32-alsa-lib
     fontconfig            #lib32-fontconfig
     freetype2             #lib32-freetype2
@@ -43,34 +41,34 @@ _main_package() {
     pcsclite              #lib32-pcsclite
     sdl2                  #lib32-sdl2
     v4l-utils             #lib32-v4l-utils
-  )
-  makedepends=(
-    autoconf
-    bison
-    flex
-    git
+    desktop-file-utils
     libgphoto2
-    mingw-w64-gcc
-    opencl-headers
-    perl
     samba
     sane
-    vulkan-headers
 
+    # with-wayland
+    libxkbcommon
+    wayland
+  )
+  makedepends=(
     libcups               #lib32-libcups
     libxxf86vm            #lib32-libxxf86vm
     mesa                  #lib32-mesa
     mesa-libgl            #lib32-mesa-libgl
     vulkan-icd-loader     #lib32-vulkan-icd-loader
+    autoconf
+    bison
+    flex
+    git
+    mingw-w64-gcc
+    opencl-headers
+    perl
+    vulkan-headers
   )
   optdepends=(
+    alsa-plugins          #lib32-alsa-plugins
     cups
     dosbox
-    libgphoto2
-    samba
-    sane
-
-    alsa-plugins          #lib32-alsa-plugins
   )
 
   options=(staticlibs !lto)
@@ -195,6 +193,7 @@ build() {
     --prefix=/usr
     --libdir=/usr/lib
     --enable-archs=x86_64,i386
+    --with-wayland
   )
 
   cd "$_pkgsrc"
