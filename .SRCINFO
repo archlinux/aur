@@ -1,0 +1,15 @@
+pkgbase = rsearch-git
+	pkgdesc = Simple tool to search a directory recursively.
+	pkgver = r3.8069a79
+	pkgrel = 1
+	url = https://github.com/Kimiblock/rsearch
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = go
+	makedepends = git
+	provides = rsearch
+	conflicts = rsearch
+	source = git+https://github.com/Kimiblock/rsearch.git
+	sha256sums = SKIP
+
+pkgname = rsearch-git
