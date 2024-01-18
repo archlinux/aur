@@ -1,0 +1,14 @@
+pkgbase = cmd-wrapped
+	pkgdesc = Find out what the past year looks like in command line!
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/YiNNx/cmd-wrapped
+	arch = any
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	source = cmd-wrapped-0.2.0.tar.gz::https://github.com/YiNNx/cmd-wrapped/archive/refs/tags/0.2.0.tar.gz
+	sha256sums = 06f21be755a0a0b362472bbe565391c26056d27aeed6ca81457a9b7977f553e6
+
+pkgname = cmd-wrapped
