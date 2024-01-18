@@ -1,11 +1,11 @@
 pkgbase = nixpkgs-fmt
 	pkgdesc = Nix code formatter for nixpkgs
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nix-community/nixpkgs-fmt
 	arch = x86_64
 	arch = aarch64
-	license = Apache
+	license = Apache-2.0
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs

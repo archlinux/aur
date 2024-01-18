@@ -2,11 +2,11 @@
 
 pkgname=nixpkgs-fmt
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Nix code formatter for nixpkgs"
 arch=('x86_64' 'aarch64')
 url="https://github.com/nix-community/nixpkgs-fmt"
-license=('Apache')
+license=('Apache-2.0')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 checkdepends=()
