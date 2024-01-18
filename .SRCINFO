@@ -1,10 +1,10 @@
 pkgbase = meanalyzer
 	pkgdesc = Intel Engine & Graphics Firmware Analysis Tool
 	pkgver = 1.304.4.r340
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/platomav/MEAnalyzer
 	arch = any
-	license = custom
+	license = BSD-2-Clause-Patent
 	makedepends = dos2unix
 	depends = python
 	depends = python-colorama
