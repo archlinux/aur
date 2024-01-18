@@ -1,7 +1,7 @@
 # Maintainer: Michał Walenciak <kicer86@gmail.com>
 pkgname=photobroom
-pkgver=1.6.0
-pkgrel=3
+pkgver=1.6.1
+pkgrel=1
 pkgdesc="Photos managing tool"
 arch=('i686' 'x86_64')
 url="https://github.com/Kicer86/photobroom"
@@ -23,10 +23,10 @@ source=(https://codeload.github.com/Kicer86/$pkgname/tar.gz/v$pkgver
         face_recognition_models::git+https://github.com/ageitgey/face_recognition_models.git#commit=e67de717267507d1e9246de95692eb8be736ab61
 )
 noextract=()
-md5sums=('19c042f359b47ef954b11bc67f967577'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+sha256sums=('632d1a4d403ec0a78ec9b6cd5ade0f9daf82b9e695c7a57f3e65debc84f82311'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 prepare()
 {
