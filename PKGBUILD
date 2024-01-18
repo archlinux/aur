@@ -10,7 +10,7 @@ arch=(
   i686
 )
 url="https://gitlab.freedesktop.org/rarian/rarian"
-license=(LGPL-2.1-or-later)
+license=(GPL-2.0-or-later)
 depends=(
   bash
   gcc-libs
