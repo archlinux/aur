@@ -6,7 +6,7 @@
 # Contributor: ssfdust@gmail.com <ssfdust@gmail.com>
 
 pkgname=cairo-dock-plug-ins-wayland-git
-pkgver=3.4.99.alpha1.20240113.5f62d1470
+pkgver=3.4.99.alpha1.20240117.113e6dd4b
 pkgrel=1
 pkgdesc='Plugins for Cairo-Dock with wayland support'
 arch=('x86_64')
@@ -38,8 +38,8 @@ replaces=('cairo-dock-plugins')
 provides=("${pkgname%-git}" 'cairo-dock-plug-ins')
 conflicts=("${pkgname%-git}" 'cairo-dock-plug-ins')
 options=(debug)
-source=("${pkgname}::git+https://github.com/dkondor/cairo-dock-plug-ins#branch=egl_scale" "01-patch-applet-bookmarks.patch")
-sha256sums=('SKIP' '104e43463a75fd19da3f3cf882516dd4dcffc08df0d361cc1bace585c951b31b')
+source=("${pkgname}::git+https://github.com/dkondor/cairo-dock-plug-ins#branch=fix_shortcuts")
+sha256sums=('SKIP')
 
 _builddir="build"
 
@@ -53,11 +53,6 @@ prepare() {
     cd "${srcdir}/${pkgname}"
 
     sed 's/gmcs/mcs/' -i CMakeLists.txt
-
-    for patch in "${srcdir}"/*.patch; do
-        msg2 "Applying $(basename "$patch")"
-        patch -Np1 -i "$patch"
-    done
 
     if [[ -d "${srcdir}/${pkgname}/${_builddir}" ]];
     then
