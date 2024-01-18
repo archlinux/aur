@@ -1,16 +1,16 @@
 pkgbase = kraftkit-bin
 	pkgdesc = Build and use highly customized and ultra-lightweight unikernels
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://kraftkit.sh
 	license = BSD-3-Clause
 	conflicts = kraftkit
 	provides = kraftkit
 	arch = aarch64
-	source_aarch64 = https://github.com/unikraft/kraftkit/releases/download/v0.7.1/kraft_0.7.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = e575333d51456193e3ff9b7c87618cbf658bbd762ed24e8be88232a10748ee53
+	source_aarch64 = https://github.com/unikraft/kraftkit/releases/download/v0.7.2/kraft_0.7.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6995eaf1886e6215c28e0fdff6ec261a9e65bfdfd1d425f144907ac1e0a5ec84
 	arch = x86_64
-	source_x86_64 = https://github.com/unikraft/kraftkit/releases/download/v0.7.1/kraft_0.7.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 297af299ca72f706ffa05d08131defbadf4d07ed0abcd6df4bbcd54981b32893
+	source_x86_64 = https://github.com/unikraft/kraftkit/releases/download/v0.7.2/kraft_0.7.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = f7d3c83fcb688a10c267f2f04ebb83c1d9b8f4587741007fb3e4fc94566714df
 	
 pkgname = kraftkit-bin
