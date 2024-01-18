@@ -5,7 +5,7 @@ pkgbase = python-scikit-image
 	url = http://scikit-image.org
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	checkdepends = python-pytest>=5.2.0
 	checkdepends = python-astropy>=5.0
 	checkdepends = python-pytest-cov>=2.11.0

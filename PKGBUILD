@@ -11,7 +11,7 @@ pkgrel=1
 pkgdesc="Image processing routines for SciPy"
 arch=('i686' 'x86_64')
 url="http://scikit-image.org"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('cython>=0.29.32'
              'python-setuptools'
              'python-numpy'
