@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=R3CPET
-_pkgver=1.34.0
+_pkgver=1.34.1
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.34.1
 pkgrel=1
 pkgdesc='3CPET: Finding Co-factor Complexes in Chia-PET experiment using a Hierarchical Dirichlet Process'
 arch=('x86_64')
@@ -39,7 +39,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('655a4af4130e8b585f1a9f8e12ce42660f1ffcef4a2642f394da55c92b67e7df')
+sha256sums=('4861a3e236229212150e1b17bc75239783250986cef4759ae64e7b63b4d9192c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
