@@ -1,7 +1,7 @@
 # Maintainer: Ns2Kracy <2220496937@qq.com>
 # Maintainer: CorrectRoadH <correctroadh@gmail.com>
 pkgname=casaos-cli
-pkgver=0.4.2
+pkgver=0.4.4
 pkgrel=1
 pkgdesc='A command-line tool to interact with CasaOS for testing and diagnosing purpose'
 arch=('x86_64' 'aarch64' 'armv7h')
