@@ -1,10 +1,10 @@
 pkgbase = freerouting
 	pkgdesc = Advanced PCB autorouter
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/freerouting/freerouting
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = java-environment-openjdk=17
 	depends = java-runtime=17
 	optdepends = kicad: for use with PCB editor
