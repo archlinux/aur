@@ -2,7 +2,7 @@
 _base=skimpy
 pkgname=python-${_base}
 pkgdesc="A light weight tool for creating summary statistics from dataframes"
-pkgver=0.0.11
+pkgver=0.0.12
 pkgrel=1
 arch=(any)
 url="https://github.com/aeturrell/${_base}"
@@ -13,7 +13,7 @@ checkdepends=(python-pytest python-typeguard python-polars python-pyarrow)
 optdepends=('python-polars: for polars data frame support'
   'python-pyarrow: for columnar memory support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('421925f175dd7bccd253228dc4334c0d03f109bdc7fbbef73d443be9a4ab5ea953686224f27209c74311ddfdb5ad2454ab500353fc312fbf6a01fc106e5d45f0')
+sha512sums=('d01bab9242a4035bc932db8afe374b728bd3ec7e78de7eccc298dba8a2c61efc236da47e8acb710280101c748c7023352d28d1dc4c2763bf9b0b4d9278d1cc6f')
 
 build() {
   cd ${_base}-${pkgver}
