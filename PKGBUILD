@@ -1,11 +1,12 @@
 # Maintainer: Ryan Barillos < ryan dot barillos at proton dot me >
 # Contributor: Karuna Murti <karuna dot murti at gmail dot com>
+# Contributor: Massimiliano Torromeo <massimiliano dot torromeo at gmail dot com>
 _rhelver=9.0
 pkgname=mssql-tools
 pkgver=18.2.1.1
 pkgrel=1
 pkgdesc="Microsoft® SQL Server® Tools for Linux"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://www.microsoft.com/en-us/sql-server/sql-server-vnext-including-Linux"
 license=('custom')
 depends=('msodbcsql' 'mssql-server')
