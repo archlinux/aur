@@ -4,7 +4,7 @@ pkgname="${_appname// /-}-bin"
 _pkgname=YouTube-Music-for-Desktop
 pkgver=0.10.11
 _electronversion=20
-pkgrel=2
+pkgrel=3
 pkgdesc="Unofficial Youtube Music Desktop App, with LastFM support."
 arch=('x86_64')
 url="https://youtube-music.app/"
@@ -25,7 +25,7 @@ source=(
 )
 sha256sums=('f4fc00d90653779e763534d3a5007ba119f246f9c96a21636db2f31cf08c96dd'
             '33c4de6d76721945c9346b3b1024fe56f2fbb6bebbb0e761656232520a6defa6'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -34,7 +34,7 @@ build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
-    sed -e "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" \
+    sed -e "s|AppRun --no-sandbox|${pkgname%-bin}|g" \
         -e "s|Icon=${_appname}|Icon=${pkgname%-bin}|g" \
         -e "s|Categories=Music|Categories=AudioVideo|g" \
         -i "${srcdir}/squashfs-root/${_appname}.desktop"
