@@ -14,10 +14,10 @@
 pkgname=gnome-control-center-x11-scaling
 _pkgname=gnome-control-center
 pkgver=45.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME's main interface to configure various aspects of the desktop with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
-license=(GPL3)
+license=(GPL-2.0-or-later)
 arch=(x86_64)
 depends=(
   accountsservice
@@ -152,5 +152,4 @@ check() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
-  install -d -o root -g 102 -m 750 "$pkgdir/usr/share/polkit-1/rules.d"
 }

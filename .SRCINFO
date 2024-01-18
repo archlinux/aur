@@ -1,11 +1,11 @@
 pkgbase = gnome-control-center-x11-scaling
 	pkgdesc = GNOME's main interface to configure various aspects of the desktop with X11 fractional scaling patch
 	pkgver = 45.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/gnome-control-center
 	arch = x86_64
 	groups = gnome
-	license = GPL3
+	license = GPL-2.0-or-later
 	checkdepends = python-dbusmock
 	checkdepends = python-gobject
 	checkdepends = xorg-server-xvfb
