@@ -15,7 +15,7 @@ pkgname=('systemd-selinux'
 _tag='be88ad03366b8aa059bb72b39a270128ba62b428' # git rev-parse v${_tag_name}
 _tag_name=255.2
 pkgver="${_tag_name/-/}"
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64')
 url='https://www.github.com/systemd/systemd'
 groups=('selinux')
@@ -274,7 +274,7 @@ package_systemd-selinux() {
   install -d -o root -g root -m 2755 "$pkgdir"/var/log/journal
 
   # match directory owner/group and mode from [extra]/polkit
-  install -d -o root -g 102 -m 0750 "$pkgdir"/usr/share/polkit-1/rules.d
+  install -d -o root -g root -m 0755 "$pkgdir"/usr/share/polkit-1/rules.d
 
   # add example bootctl configuration
   install -D -m0644 arch.conf "$pkgdir"/usr/share/systemd/bootctl/arch.conf
