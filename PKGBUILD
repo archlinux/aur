@@ -2,8 +2,8 @@
 
 pkgbase=virtualbox6.1-bin
 pkgname=('virtualbox6.1-bin' 'virtualbox6.1-bin-guest-iso' 'virtualbox6.1-bin-sdk' 'virtualbox6.1-ext-oracle')
-pkgver=6.1.48
-_build=159471
+pkgver=6.1.50
+_build=161033
 _rev=96547
 _rdeskver=1.8.4
 pkgrel=1
@@ -27,9 +27,9 @@ source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver
         '013-Makefile.patch')
 noextract=("VirtualBoxSDK-${pkgver}-${_build}.zip"
            "Oracle_VM_VirtualBox_Extension_Pack-${pkgver}.vbox-extpack")
-sha256sums=('709abb77eefaf116d37243a268dae405a1a04b34b82538d84852ad3503895add'
-            'a7bc434e9978d9940258a4b4fec7588d5e58c3b43dcc5432f111416933a80813'
-            'fee01ebd812b80db1391e87148b252cf1b0ab18d2720bcf61ff2701352a78e92'
+sha256sums=('9272e3b771d02197c511a425a2305396715df4db38d9727381f55e2f03f9f8f9'
+            'fb4ed0430f044016711e9727440fcc22c75e1d3b95f2f4d3f144832627553997'
+            '07515348efb4f574007888afbf58bf60290530e52506ed8142b10e1745828e85'
             '1d1a828b8411d08dc886463628589716151a514639d606d99e3578e9894fd5bd'
             'b762b1d19647bd0d116f62fc683f061b7a80667fc0377e0a6b00691797a5fa3c'
             '7c7e19388158418762529805c19fab80ba329eb287dadc152bb226dfedb9d7ed'
