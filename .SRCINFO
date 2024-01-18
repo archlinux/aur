@@ -1,13 +1,16 @@
 pkgbase = floorp-bin
 	pkgdesc = Firefox-based web browser focused on performance and customizability
 	pkgver = 11.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://floorp.app/
 	arch = x86_64
 	arch = aarch64
 	license = MPL-2.0
 	makedepends = imagemagick
 	makedepends = optipng
+	depends = alsa-lib
+	depends = dbus-glib
+	depends = gtk3
 	optdepends = ffmpeg: h.264 video
 	optdepends = hunspell-dictionary: spell checking
 	optdepends = hyphen: hyphenation
@@ -26,6 +29,3 @@ pkgbase = floorp-bin
 	sha256sums_aarch64 = d9cdcd5878233b499d0f6c6a26a86af2c5f1458e60dd04afe48ab2c2541ea4bd
 
 pkgname = floorp-bin
-	depends = alsa-lib
-	depends = dbus-glib
-	depends = gtk3
