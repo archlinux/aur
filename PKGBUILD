@@ -10,7 +10,7 @@
 pkgname=scrt
 pkgver=9.5.0
 incrver=3241
-pkgrel=2
+pkgrel=3
 pkgdesc="Vandyke SecureCRT SSH Client"
 arch=('x86_64')
 url="http://www.vandyke.com/products/securecrt/"
@@ -30,20 +30,20 @@ package() {
        
        install -Dm 755 ./usr/bin/SecureCRT ${pkgdir}/usr/bin/SecureCRT
 
+       install -Dm 755 ./usr/lib/scrt/libQt6Core5Compat.so.6 ${pkgdir}/usr/lib/scrt/libQt6Core5Compat.so.6
+       install -Dm 755 ./usr/lib/scrt/libQt6Multimedia.so.6 ${pkgdir}/usr/lib/scrt/libQt6Multimedia.so.6
        install -Dm 755 ./usr/lib/scrt/libClientConfigUiQt.so ${pkgdir}/usr/lib/scrt/libClientConfigUiQt.so
-       install -Dm 755 ./usr/lib/scrt/libQt5Multimedia.so.5 ${pkgdir}/usr/lib/scrt/libQt5Multimedia.so.5
+       install -Dm 755 ./usr/lib/scrt/libQt6Core.so.6 ${pkgdir}/usr/lib/scrt/libQt6Core.so.6
+       install -Dm 755 ./usr/lib/scrt/libQt6Network.so.6 ${pkgdir}/usr/lib/scrt/libQt6Network.so.6
+       install -Dm 755 ./usr/lib/scrt/libCommonUiQt.so ${pkgdir}/usr/lib/scrt/libCommonUiQt.so
+       install -Dm 755 ./usr/lib/scrt/libQt6PrintSupport.so.6 ${pkgdir}/usr/lib/scrt/libQt6PrintSupport.so.6
        install -Dm 755 ./usr/lib/scrt/libpython310Qt.so ${pkgdir}/usr/lib/scrt/libpython310Qt.so
+       install -Dm 755 ./usr/lib/scrt/libQt6Gui.so.6 ${pkgdir}/usr/lib/scrt/libQt6Gui.so.6
+       install -Dm 755 ./usr/lib/scrt/libQt6Widgets.so.6 ${pkgdir}/usr/lib/scrt/libQt6Widgets.so.6
+       install -Dm 755 ./usr/lib/scrt/libQt6DBus.so.6 ${pkgdir}/usr/lib/scrt/libQt6DBus.so.6
        install -Dm 755 ./usr/lib/scrt/plugins/platforminputcontexts/libibusplatforminputcontextplugin.so ${pkgdir}/usr/lib/scrt/plugins/platforminputcontexts/libibusplatforminputcontextplugin.so
        install -Dm 755 ./usr/lib/scrt/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so ${pkgdir}/usr/lib/scrt/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so
        install -Dm 755 ./usr/lib/scrt/plugins/platforms/libqxcb.so ${pkgdir}/usr/lib/scrt/plugins/platforms/libqxcb.so
-       install -Dm 755 ./usr/lib/scrt/libCommonUiQt.so ${pkgdir}/usr/lib/scrt/libCommonUiQt.so
-       install -Dm 755 ./usr/lib/scrt/libQt5Gui.so.5 ${pkgdir}/usr/lib/scrt/libQt5Gui.so.5
-       install -Dm 755 ./usr/lib/scrt/libQt5PrintSupport.so.5 ${pkgdir}/usr/lib/scrt/libQt5PrintSupport.so.5
-       install -Dm 755 ./usr/lib/scrt/libQt5Core.so.5 ${pkgdir}/usr/lib/scrt/libQt5Core.so.5
-       install -Dm 755 ./usr/lib/scrt/libQt5Widgets.so.5 ${pkgdir}/usr/lib/scrt/libQt5Widgets.so.5
-       install -Dm 755 ./usr/lib/scrt/libQt5Network.so.5 ${pkgdir}/usr/lib/scrt/libQt5Network.so.5
-       install -Dm 755 ./usr/lib/scrt/lib/libQt5XcbQpa.so.5 ${pkgdir}/usr/lib/scrt/lib/libQt5XcbQpa.so.5
-       install -Dm 755 ./usr/lib/scrt/lib/libQt5DBus.so.5 ${pkgdir}/usr/lib/scrt/lib/libQt5DBus.so.5
 
        install -Dm 644 ./usr/share/vandyke/data/SecureCRT_fr.qm ${pkgdir}/usr/share/vandyke/data/SecureCRT_fr.qm
        install -Dm 644 ./usr/share/doc/scrt/SecureCRT_README.txt ${pkgdir}/usr/share/doc/scrt/SecureCRT_README.txt
