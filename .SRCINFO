@@ -1,6 +1,6 @@
 pkgbase = sql-formatter
 	pkgdesc = A whitespace formatter for different query languages
-	pkgver = 12.2.4
+	pkgver = 15.0.2
 	pkgrel = 1
 	url = https://github.com/sql-formatter-org/sql-formatter
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = sql-formatter
 	depends = nodejs
 	provides = sql-formatter
 	conflicts = sql-formatter
-	noextract = sql-formatter-12.2.4.tar.gz
+	noextract = sql-formatter-15.0.2.tar.gz
 	options = !emptydirs
-	source = sql-formatter-12.2.4.tar.gz::https://github.com/sql-formatter-org/sql-formatter/archive/refs/tags/v12.2.4.tar.gz
-	sha256sums = 744e22ecd0b92443f8e124e7f0348e7266608bcf357fdf909edea5aeb80292e9
+	source = sql-formatter-15.0.2.tar.gz::https://github.com/sql-formatter-org/sql-formatter/archive/refs/tags/v15.0.2.tar.gz
+	sha256sums = 8ae0f0587d8bf3f8affa247f853cbb0e71b5d04ff12d0ff1d2600aee4df7fcfa
 
 pkgname = sql-formatter
