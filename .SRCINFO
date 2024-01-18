@@ -1,0 +1,15 @@
+pkgbase = klog-time-tracker
+	pkgdesc = A plain-text file format and a command line tool for time tracking
+	pkgver = 6.2
+	pkgrel = 1
+	url = https://github.com/jotaen/klog
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	conflicts = klog
+	source = https://github.com/jotaen/klog/archive/v6.2/klog-6.2.tar.gz
+	sha256sums = 1aed50f58253fd11a16b2617dd85c64aeb1200e8a39404f93e94b94d92e40636
+
+pkgname = klog-time-tracker
