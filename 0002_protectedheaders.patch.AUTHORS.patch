@@ -1,0 +1,19 @@
+--- 0002_protectedheaders.patch.orig	2024-01-18 23:25:38.953342794 +0100
++++ 0002_protectedheaders.patch	2024-01-18 23:25:59.603343088 +0100
+@@ -1,6 +1,5 @@
+-diff --git a/AUTHORS b/AUTHORS
+-index 5a7f0fed7..b32019aa5 100644
+---- a/AUTHORS
+-+++ b/AUTHORS
+-@@ -346,3 +346,4 @@ contributors (in addition to the above; based on Changelog)
++diff -ru claws-mail.orig/AUTHORS claws-mail.protectedheaders/AUTHORS
++--- claws-mail.orig/AUTHORS	2024-01-18 23:22:18.923340132 +0100
+++++ claws-mail.protectedheaders/AUTHORS	2024-01-18 23:24:32.633341919 +0100
++@@ -346,6 +346,7 @@
+  	Viatrix
+@@ -9,2 +8,5 @@
+ +	Holger Smolinski
++ 	Charles Huber
++ 	nycex
++ 	Gianni Ceccarelli
+ diff --git a/src/mimeview.c b/src/mimeview.c
