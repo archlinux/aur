@@ -1,7 +1,7 @@
 # Maintainer: Steven Allen <steven@stebalien.com>
 pkgname=localtime-git
-pkgver=r44.541590b
-pkgrel=2
+pkgver=r52.87c2f27
+pkgrel=1
 pkgdesc="Automatic Timezone Updater"
 arch=('any')
 url="http://stebalien.com/projects/localtime/"
