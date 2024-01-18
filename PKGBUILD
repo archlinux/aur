@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=charles-beta-bin
 pkgver='5.0b12'
-pkgrel=1
+pkgrel=2
 pkgdesc="Web debugging proxy application (Version 5 Beta)"
 arch=('x86_64')
 url="https://www.charlesproxy.com"
@@ -20,4 +20,6 @@ package() {
     # included jdk does not work
     # Exception in thread "main" java.lang.UnsatisfiedLinkError: /usr/lib/charles-proxy/jdk/lib/libfontmanager.so: /usr/lib/charles-proxy/jdk/lib/libfontmanager.so: undefined symbol: FcPatternDestroy
     rm -rf usr/lib/charles-proxy/jdk
+    # stop ^- from appearing in home directory
+    sed -i 's/\^-/\/dev\/null/' "${pkgdir}/usr/bin/charles5"
 }
