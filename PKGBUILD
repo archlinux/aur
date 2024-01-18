@@ -2,29 +2,34 @@
 # Contributor: Ezekiel Bethel <mctinfoilball@gmail.com>
 
 pkgname=unrpyc
-pkgver=1.1.8
+pkgver=1.1.5.r63.g105b6f6
 pkgrel=1
-epoch=1
-pkgdesc="A ren'py script decompiler"
+epoch=2
+pkgdesc="A ren'py script decompiler (madeddy fork)"
 arch=("any")
-url="https://github.com/CensoredUsername/unrpyc"
+url="https://github.com/madeddy/unrpyc/tree/py3_v1.2.0_dev"
 license=('MIT')
-depends=("python2")
-makedepends=("python2-setuptools")
-source=("https://github.com/CensoredUsername/unrpyc/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ab2e2fb2a38ee5ad465dd7a7f7dd749cef52a3a24ee5a8b4a27c54754921bb4a')
+depends=("python")
+makedepends=("python-setuptools")
+source=("git+https://github.com/madeddy/unrpyc.git#branch=py3_v1.2.0_dev")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/unrpyc"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare () {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    sed -i "/scripts=/s/]/, 'deobfuscate.py']/" setup.py
+    cd "${srcdir}/${pkgname}"
+    sed -i "/scripts=/s/]/, 'deobfuscate.py', '_unrpyc_ver.py']/" setup.py
 }
 
 package() {
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
   
-  install -m644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -m644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  python2 setup.py install --root="${pkgdir}"
+  cd "${srcdir}/${pkgname}"
+  python setup.py install --root="${pkgdir}"
   mv "${pkgdir}/usr/bin/unrpyc.py" "${pkgdir}/usr/bin/unrpyc"
 }
