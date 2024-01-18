@@ -1,0 +1,12 @@
+pkgbase = gnome-shell-extension-wireless-hid
+	pkgdesc = Shows the battery of the wireless keyboards, mice, and game controllers
+	pkgver = 15
+	pkgrel = 1
+	url = https://github.com/vchlum/wireless-hid
+	arch = any
+	license = GPL3
+	depends = gnome-shell>=3.38
+	source = https://github.com/vchlum/wireless-hid/archive/refs/tags/15.tar.gz
+	sha256sums = e746778e1c8196fffef15d6878929fc07cf973d673b6adc65cc2d2a8b79f1c96
+
+pkgname = gnome-shell-extension-wireless-hid
