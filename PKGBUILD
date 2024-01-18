@@ -2,7 +2,7 @@
 pkgname=better-osu-skills-bin
 pkgver=1.0.6
 _electronversion=11
-pkgrel=2
+pkgrel=3
 pkgdesc="Gets results from the osu!Skills training page and PMs them on osu! using your own IRC credentials"
 arch=('x86_64')
 url="https://github.com/straightcurve/better-osuskills"
@@ -11,9 +11,6 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
-    'libx11'
-    'gdk-pixbuf2'
-    'libxext'
     'libdbusmenu-glib'
     'gtk2'
     'dbus-glib'
@@ -26,7 +23,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('8fe449e2e93f061a3446aa2fd346eaeb0982b83529ed381834b059c7bb1f7d28'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -34,7 +31,7 @@ build() {
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed "s|AppRun|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
