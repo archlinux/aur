@@ -1,10 +1,10 @@
 pkgbase = corefreq-git
 	pkgdesc = A CPU monitoring software with BIOS like functionalities
-	pkgver = 1.95.5.r0.g34efe5d
+	pkgver = 1.97.0.r0.g93db569
 	pkgrel = 1
 	url = https://github.com/cyring/CoreFreq
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = git
 	depends = dkms
 	source = git+https://github.com/cyring/CoreFreq.git#branch=master
@@ -12,7 +12,7 @@ pkgbase = corefreq-git
 	source = honor-archlinux-compiler-flags.patch
 	b2sums = SKIP
 	b2sums = c6d8849944f99195038ac252d010d3e3001cd1dcaee57218c4a7f58fa313aa38842e4ea991d4d9ff7d04063ebaa9900c06ff1eacfa6270341cf37fb752adc00c
-	b2sums = 3f5f9a27863412d620864e8c19e2683e3ef2103c4b95c126438330a9b532e2434664ce4860b6191552298131e434c09f5531428696dde7d70a1cb171b4f13edf
+	b2sums = 0b409cbc017b5b8d30cf2f291fe288172a8f8a1d773f17e5c860f2a9a929e758731993a2e56a4d0f03364b40481577765a714d8daf7261f2832c02921b347c93
 
 pkgname = corefreq-client-git
 	pkgdesc = CoreFreq client

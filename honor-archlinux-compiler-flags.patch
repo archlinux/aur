@@ -1,62 +1,67 @@
 diff --git a/Makefile b/Makefile
-index 0601f48..0dc3922 100644
+index 8cdc9ed..b37f051 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -91,48 +91,48 @@ clean:
- 	$(MAKE) -j1 -C $(KERNELDIR) M=$(PWD) clean
+@@ -193,17 +193,17 @@ clean:
+ 	fi
  
- corefreqm.o: corefreqm.c
--	$(CC) $(OPTIM_FLG) $(WARNING) -c corefreqm.c \
-+	$(CC)  $(CFLAGS) $(LDFLAGS) -c corefreqm.c \
+ $(BUILD)/corefreqm.o: $(HW)/corefreqm.c
+-	$(CC) $(OPTIM_FLG) $(WARNING) -c $(HW)/corefreqm.c \
++	$(CC) $(CFLAGS) $(LDFLAGS) -c $(HW)/corefreqm.c \
  	  $(DEFINITIONS) \
- 	  -o corefreqm.o
+ 	  -o $(BUILD)/corefreqm.o
  
- corefreqd.o: corefreqd.c
--	$(CC) $(OPTIM_FLG) $(WARNING) -pthread -c corefreqd.c \
-+	$(CC) $(CFLAGS) $(LDFLAGS) -pthread -c corefreqd.c \
+ $(BUILD)/corefreqd.o: $(HW)/corefreqd.c
+-	$(CC) $(OPTIM_FLG) $(WARNING) -pthread -c $(HW)/corefreqd.c \
++	$(CC) $(CFLAGS) $(LDFLAGS) -pthread -c $(HW)/corefreqd.c \
  	  $(DEFINITIONS) \
- 	  -o corefreqd.o
+ 	  -o $(BUILD)/corefreqd.o
  
- corefreqd: corefreqd.o corefreqm.o
--	$(CC) $(OPTIM_FLG) $(WARNING) corefreqd.c corefreqm.c \
-+	$(CC) $(CFLAGS) $(LDFLAGS) corefreqd.c corefreqm.c \
+ $(BUILD)/corefreqd: $(BUILD)/corefreqd.o $(BUILD)/corefreqm.o
+-	$(CC) $(OPTIM_FLG) $(WARNING) $(HW)/corefreqd.c $(HW)/corefreqm.c \
++	$(CC) $(CFLAGS) $(LDFLAGS) $(HW)/corefreqd.c $(HW)/corefreqm.c \
  	  $(DEFINITIONS) \
- 	  -o corefreqd -lpthread -lm -lrt
+ 	  -o $(BUILD)/corefreqd -lpthread -lm -lrt
  
- corefreq-ui.o: corefreq-ui.c
--	$(CC) $(OPTIM_FLG) $(WARNING) -c corefreq-ui.c \
-+	$(CC) $(CFLAGS) $(LDFLAGS) -c corefreq-ui.c \
+@@ -211,27 +211,27 @@ $(BUILD)/corefreqd: $(BUILD)/corefreqd.o $(BUILD)/corefreqm.o
+ corefreqd: $(BUILD)/corefreqd
+ 
+ $(BUILD)/corefreq-ui.o: $(HW)/corefreq-ui.c
+-	$(CC) $(OPTIM_FLG) $(WARNING) -c $(HW)/corefreq-ui.c \
++	$(CC) $(CFLAGS) $(LDFLAGS) -c $(HW)/corefreq-ui.c \
  	  $(DEFINITIONS) \
- 	  -o corefreq-ui.o
+ 	  -o $(BUILD)/corefreq-ui.o
  
- corefreq-cli.o: corefreq-cli.c
--	$(CC) $(OPTIM_FLG) $(WARNING) -c corefreq-cli.c \
-+	$(CC) $(CFLAGS) $(LDFLAGS) -c corefreq-cli.c \
+ $(BUILD)/corefreq-cli.o: $(HW)/corefreq-cli.c
+-	$(CC) $(OPTIM_FLG) $(WARNING) -c $(HW)/corefreq-cli.c \
++	$(CC) $(CFLAGS) $(LDFLAGS) -c $(HW)/corefreq-cli.c \
  	  $(DEFINITIONS) $(LAYOUT) \
- 	  -o corefreq-cli.o
+ 	  -o $(BUILD)/corefreq-cli.o
  
- corefreq-cli-rsc.o: corefreq-cli-rsc.c
--	$(CC) $(OPTIM_FLG) $(WARNING) -c corefreq-cli-rsc.c \
-+	$(CC) $(CFLAGS) $(LDFLAGS) -c corefreq-cli-rsc.c \
+ $(BUILD)/corefreq-cli-rsc.o: $(HW)/corefreq-cli-rsc.c
+-	$(CC) $(OPTIM_FLG) $(WARNING) -c $(HW)/corefreq-cli-rsc.c \
++	$(CC) $(CFLAGS) $(LDFLAGS) -c $(HW)/corefreq-cli-rsc.c \
  	  $(DEFINITIONS) $(LAYOUT) \
- 	  -o corefreq-cli-rsc.o
+ 	  -o $(BUILD)/corefreq-cli-rsc.o
  
- corefreq-cli-json.o: corefreq-cli-json.c
--	$(CC) $(OPTIM_FLG) $(WARNING) -c corefreq-cli-json.c \
-+	$(CC) $(CFLAGS) $(LDFLAGS) -c corefreq-cli-json.c \
+ $(BUILD)/corefreq-cli-json.o: $(HW)/corefreq-cli-json.c
+-	$(CC) $(OPTIM_FLG) $(WARNING) -c $(HW)/corefreq-cli-json.c \
++	$(CC) $(CFLAGS) $(LDFLAGS) -c $(HW)/corefreq-cli-json.c \
  	  $(DEFINITIONS) \
- 	  -o corefreq-cli-json.o
+ 	  -o $(BUILD)/corefreq-cli-json.o
  
- corefreq-cli-extra.o: corefreq-cli-extra.c
--	$(CC) $(OPTIM_FLG) $(WARNING) -c corefreq-cli-extra.c \
-+	$(CC) $(CFLAGS) $(LDFLAGS) -c corefreq-cli-extra.c \
+ $(BUILD)/corefreq-cli-extra.o: $(HW)/corefreq-cli-extra.c
+-	$(CC) $(OPTIM_FLG) $(WARNING) -c $(HW)/corefreq-cli-extra.c \
++	$(CC) $(CFLAGS) $(LDFLAGS) -c $(HW)/corefreq-cli-extra.c \
  	  $(DEFINITIONS) \
- 	  -o corefreq-cli-extra.o
+ 	  -o $(BUILD)/corefreq-cli-extra.o
  
- corefreq-cli: corefreq-cli.o corefreq-ui.o corefreq-cli-rsc.o \
- 		corefreq-cli-json.o corefreq-cli-extra.o
+@@ -240,7 +240,7 @@ $(BUILD)/corefreq-cli:	$(BUILD)/corefreq-cli.o \
+ 			$(BUILD)/corefreq-cli-rsc.o \
+ 			$(BUILD)/corefreq-cli-json.o \
+ 			$(BUILD)/corefreq-cli-extra.o
 -	$(CC) $(OPTIM_FLG) $(WARNING) \
 +	$(CC) $(CFLAGS) $(LDFLAGS) \
- 	  corefreq-cli.c corefreq-ui.c corefreq-cli-rsc.c \
- 	  corefreq-cli-json.c corefreq-cli-extra.c \
+ 	  $(HW)/corefreq-cli.c $(HW)/corefreq-ui.c $(HW)/corefreq-cli-rsc.c \
+ 	  $(HW)/corefreq-cli-json.c $(HW)/corefreq-cli-extra.c \
  	  $(DEFINITIONS) $(LAYOUT) \

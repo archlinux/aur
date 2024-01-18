@@ -13,12 +13,12 @@ pkgbase=corefreq-git
 pkgname=(corefreq-client-git corefreq-server-git corefreq-dkms-git)
 _gitname=CoreFreq
 _pkgbase=${pkgbase%-*}
-pkgver=1.95.5.r0.g34efe5d
+pkgver=1.97.0.r0.g93db569
 pkgrel=1
 pkgdesc="A CPU monitoring software with BIOS like functionalities"
 arch=('x86_64')
 url='https://github.com/cyring/CoreFreq'
-license=('GPL2')
+license=('GPL-2.0-only')
 depends=('dkms')
 makedepends=('git')
 source=(git+"${url}.git#branch=master"
@@ -26,7 +26,7 @@ source=(git+"${url}.git#branch=master"
         'honor-archlinux-compiler-flags.patch')
 b2sums=('SKIP'
         'c6d8849944f99195038ac252d010d3e3001cd1dcaee57218c4a7f58fa313aa38842e4ea991d4d9ff7d04063ebaa9900c06ff1eacfa6270341cf37fb752adc00c'
-        '3f5f9a27863412d620864e8c19e2683e3ef2103c4b95c126438330a9b532e2434664ce4860b6191552298131e434c09f5531428696dde7d70a1cb171b4f13edf')
+        '0b409cbc017b5b8d30cf2f291fe288172a8f8a1d773f17e5c860f2a9a929e758731993a2e56a4d0f03364b40481577765a714d8daf7261f2832c02921b347c93')
 
 pkgver() {
   cd "${_gitname}"
@@ -41,9 +41,9 @@ prepare(){
 build() {
   cd "${_gitname}"
   if [ -n "${_transparency}" ]; then
-    make corefreqd corefreq-cli UI_TRANSPARENCY=1
+    make prepare corefreqd corefreq-cli -j UI_TRANSPARENCY=1
   else
-    make corefreqd corefreq-cli
+    make prepare corefreqd corefreq-cli -j
   fi
 }
 
@@ -63,7 +63,8 @@ package_corefreq-dkms-git() {
       -i "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
 
   # Copy sources (including Makefile)
-  cp -r "${_gitname}"/{*.c,*.h,Makefile} "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/"
+  cp -r "${_gitname}"/Makefile "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/"
+  cp -r "${_gitname}"/${CARCH}/{*.c,*.h} "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/"
 }
 
 package_corefreq-server-git() {
@@ -73,7 +74,7 @@ package_corefreq-server-git() {
   conflicts=('corefreq-server')
 
   cd "${_gitname}"
-  install -Dm755 corefreqd "${pkgdir}/usr/bin/corefreqd"
+  install -Dm755 build/corefreqd "${pkgdir}/usr/bin/corefreqd"
   install -Dm 0644 corefreqd.service "${pkgdir}/usr/lib/systemd/system/corefreqd.service"
 }
 
@@ -84,5 +85,5 @@ package_corefreq-client-git() {
   conflicts=('corefreq-client')
 
   cd "${_gitname}"
-  install -Dm755 corefreq-cli "${pkgdir}/usr/bin/corefreq-cli"
+  install -Dm755 build/corefreq-cli "${pkgdir}/usr/bin/corefreq-cli"
 }
