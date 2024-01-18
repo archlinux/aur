@@ -50,24 +50,29 @@ provides=(
 	'ttf-syne' # OFL-1.1-no-RFN
 	'ttf-work-sans' # OFL-1.1-no-RFN
 	# Aliases
+	'lora-cyrillic-font'
+	'lora-font'
+	'montserrat-ttf'
 	'ttf-fraunces-variable'
 	'ttf-librebaskerville'
+	'ttf-opensans'
 	'ttf-raleway-variable'
 	'ttf-rubik-vf'
 	'ttf-spacemono'
 )
 conflicts=(
 	"${provides[@]}"
+	 # We only provide some fonts from these packages, so no provide
 	'adobe-source-sans-fonts'
 	'adobe-source-serif-fonts'
-	'lora-font-git'
 	'ttf-adobe-source-sans-fonts'
 	'ttf-adobe-source-serif-fonts'
 	'ttf-dm-fonts'
 	'ttf-google-fonts-git'
 	'ttf-ibm-plex-git'
 	'ttf-ibm-plex'
-	'ttf-opensans'
+	# These packages don't use correct provides, so we have to conflict
+	'lora-font-git'
 )
 _ignore=(
 	'Inconsolata[wdth,wght].ttf'
