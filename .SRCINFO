@@ -1,0 +1,14 @@
+pkgbase = rust-motd
+	pkgdesc = Beautiful, useful, configurable MOTD generation with zero runtime dependencies
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/rust-motd/rust-motd
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	provides = rust-motd
+	conflicts = rust-motd-bin
+	source = rust-motd-1.0.1.tar.gz::https://github.com/rust-motd/rust-motd/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = f72516241a7b9649c70f905bfae5fb40fc2c900d895a7fcaec66c8a5187da8ee
+
+pkgname = rust-motd
