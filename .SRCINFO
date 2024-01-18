@@ -1,13 +1,13 @@
 pkgbase = lceda-pro-bin
 	pkgdesc = 免费、专业、强大的国产PCB设计工具
 	pkgver = 2.1.44.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pro.lceda.cn/
 	install = lceda-pro-bin.install
 	arch = x86_64
 	arch = aarch64
 	arch = loong64
-	license = custom
+	license = LicenseRef-LCEDA-Proprietary
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
