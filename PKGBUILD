@@ -3,8 +3,8 @@ _pkgname=kubo
 _plgname=go-ds-s3
 _pkgplgname=$_pkgname-s3
 pkgname=$_pkgplgname-git
-pkgver=0.24.0.r0.ge70db65
-pkgrel=2
+pkgver=0.25.0.r0.g413a52d
+pkgrel=1
 pkgdesc="IPFS Kubo with S3 Datastore Implementation"
 arch=('x86_64')
 url="https://github.com/chixodo-xyz/kubo-s3"
@@ -67,7 +67,7 @@ prepare() {
 
 	cd "$srcdir/$_plgname"
 	if [ -z "$S3Version" ] || [ "$S3Version" == "*" ]; then
-		S3Version=$(git describe --tags --abbrev=0 --match="go-ds-s3-plugin/v*")
+		S3Version=$(git describe --tags --abbrev=0 --match="go-ds-s3-plugin/${KuboVersion}")
 	fi
 	S3VersionHash=$(git rev-list -n 1 ${S3Version})
 	printf "\033[34;1mPrepare go-ds-s3 plugin %s (%s)\n\033[0m" ${S3Version} $(git describe --long --tags --abbrev=7 ${S3Version} |
