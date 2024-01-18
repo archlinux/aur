@@ -2,4 +2,4 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!.INSTALL
+!radicle-cli-bin.install

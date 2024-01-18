@@ -19,7 +19,7 @@ source_x86_64=(
 	$_prefix-rad-patch.1::$_srcurl/rad-patch.1
 	$_prefix-git-remote-rad.1::$_srcurl/git-remote-rad.1
 )
-_srcurl4=(
+source_aarch64=(
 	$_prefix-rad::$_srcurl/rad
 	$_prefix-rad-web::$_srcurl/rad-web
 	$_prefix-git-remote-rad::$_srcurl/git-remote-rad
@@ -43,7 +43,7 @@ sha256sums_aarch64=(
 	'6bbef3bd834ad370da0157023ff7fb0801121f75e84f61f89399808f5abb57d7'
 	'a1ad55e801d4ce4fcb350ce6a824a0e6cbcc38cbbac191cfd2d00abd748f2cb4'
 )
-install=".INSTALL"
+install="radicle-cli-bin.install"
 provides=('radicle-cli')
 conflicts=('radicle-cli')
 license=('MIT' 'Apache')
