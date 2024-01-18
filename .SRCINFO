@@ -1,6 +1,6 @@
 pkgbase = parted-git
 	pkgdesc = A program for creating, destroying, resizing, checking and copying partitions
-	pkgver = 3.6.r4.g60b3300
+	pkgver = 3.6.r6.gc5bd6fa
 	pkgrel = 1
 	url = https://www.gnu.org/software/parted/parted.html
 	arch = x86_64
