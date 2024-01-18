@@ -1,8 +1,9 @@
 # Maintainer: agilob <archlinux@agilob.net>
 _pkgname=jmc-adoptium
 pkgname="${_pkgname}"
-pkgver=8.3.0
-pkgrel=3
+pkgver=9.0.0_SNAPSHOT
+pkg_ver=9.0.0-SNAPSHOT
+pkgrel=1
 pkgdesc='Java Mission Control from Adoptium'
 arch=('x86_64')
 url='https://github.com/adoptium/jmc-build'
@@ -10,11 +11,11 @@ url='https://github.com/adoptium/jmc-build'
 provides=("$pkgname")
 options=(!strip)
 noextract=()
-source=("https://github.com/adoptium/jmc-build/releases/download/${pkgver}/org.openjdk.jmc-${pkgver}-linux.gtk.x86_64.tar.gz")
-sha512sums=('3af1a31dd2e916c57c300ec8ed5a91105cdec7eadd1ecee7c39f256f4ebb4f5e5aaa79e3d14d4da5994875551ba8968412a004ec9831b1b1d8c0aaac3bc30809')
+source=("https://github.com/adoptium/jmc-build/releases/download/${pkg_ver}/org.openjdk.jmc-${pkg_ver}-linux.gtk.x86_64.tar.gz")
+sha512sums=('5751ac4ce1c76f6795e6bf7e8e34c31ad0e6fa1649a0598cac49c09a23e558034c2672369a9d561939239fccfd861e6ab70e69c15f66db21764be6c395da0fa7')
 
 prepare() {
-    tar -zxf "org.openjdk.jmc-${pkgver}-linux.gtk.x86_64.tar.gz"
+    tar -zxf "org.openjdk.jmc-${pkg_ver}-linux.gtk.x86_64.tar.gz"
 }
 
 build() {
