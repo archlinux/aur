@@ -1,11 +1,11 @@
 pkgbase = mfoc-hardnested-git
 	pkgdesc = A fork of mfoc integrating hardnested code from the proxmark
 	pkgver = 0.10.9.r171.a600743
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nfc-tools/mfoc-hardnested
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = git
 	depends = libnfc>=1.7.0
 	depends = xz
