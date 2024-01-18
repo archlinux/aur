@@ -3,11 +3,11 @@
 pkgname=python-ite8291r3-ctl-git
 _pkgname=${pkgname%-git}
 pkgver=r22.d2c490a
-pkgrel=1
+pkgrel=2
 pkgdesc="ITE 8291 (rev 0.03) userspace driver"
 arch=('any')
 url="https://github.com/pobrn/ite8291r3-ctl"
-license=('GPL2')
+license=('GPL-2.0-only')
 depends=(
     'python>=3.6'
     'python-pyusb'
