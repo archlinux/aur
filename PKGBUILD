@@ -49,6 +49,12 @@ provides=(
 	'ttf-spectral' # OFL-1.1-no-RFN
 	'ttf-syne' # OFL-1.1-no-RFN
 	'ttf-work-sans' # OFL-1.1-no-RFN
+	# Aliases
+	'ttf-fraunces-variable'
+	'ttf-librebaskerville'
+	'ttf-raleway-variable'
+	'ttf-rubik-vf'
+	'ttf-spacemono'
 )
 conflicts=(
 	"${provides[@]}"
@@ -58,16 +64,10 @@ conflicts=(
 	'ttf-adobe-source-sans-fonts'
 	'ttf-adobe-source-serif-fonts'
 	'ttf-dm-fonts'
-	'ttf-fraunces-variable'
 	'ttf-google-fonts-git'
 	'ttf-ibm-plex-git'
 	'ttf-ibm-plex'
-	'ttf-librebaskerville'
 	'ttf-opensans'
-	'ttf-raleway-variable'
-	'ttf-rubik-vf'
-	'ttf-sourcesanspro'
-	'ttf-spacemono'
 )
 _ignore=(
 	'Inconsolata[wdth,wght].ttf'
