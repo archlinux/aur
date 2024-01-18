@@ -1,14 +1,14 @@
 # Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 pkgname=easierconnect
-pkgver=TestBuild15.r3.ce01fd4
-pkgrel=1
+pkgver=TestBuild15.r4.e01671c
+pkgrel=2
 pkgdesc="Sangfor EasyConnect protocol reimplementation in Go"
 arch=('x86_64' 'aarch64')
 url="https://github.com/lyc8503/EasierConnect"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 depends=('glibc')
 makedepends=('git' 'go')
-_tag="ce01fd449c35c7b6462a66187c803d48034b1962"
+_tag="e01671c6067a14178de5196e3385c415f224c152"
 source=($pkgname::git+$url.git#tag=$_tag)
 sha256sums=('SKIP')
 
