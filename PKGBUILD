@@ -1,10 +1,11 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-compute-runtime-bin
-pkgver=23.22.26516.18
-_gmmver=22.3.0
+pkgver=23.39.27427.23
+_gmmver=22.3.11
+_gmmci=17757293
 _gmmsover=12
-_igcver=1.0.14062.11
+_igcver=1.0.15136.22
 _lzver="1.3.$(sed -E 's/([0-9]+\.){2}//' <<< "$pkgver")"
 pkgrel=1
 pkgdesc='Intel Graphics Compute Runtime for oneAPI Level Zero and OpenCL Driver (pre-compiled binaries)'
@@ -19,17 +20,17 @@ conflicts=('intel-compute-runtime' 'intel-gmmlib')
 options=('!strip' '!emptydirs')
 source=("https://github.com/intel/compute-runtime/releases/download/${pkgver}/intel-opencl-icd_${pkgver}_amd64.deb"
         "https://github.com/intel/compute-runtime/releases/download/${pkgver}/intel-level-zero-gpu_${_lzver}_amd64.deb"
-        "${pkgname}-${pkgver}-gmmlib-dev-${_gmmver}_amd64.deb"::"https://github.com/intel/compute-runtime/releases/download/${pkgver}/libigdgmm-dev_${_gmmver}_amd64.deb"
-        "${pkgname}-${pkgver}-gmmlib-${_gmmver}_amd64.deb"::"https://github.com/intel/compute-runtime/releases/download/${pkgver}/libigdgmm${_gmmsover}_${_gmmver}_amd64.deb"
+        "${pkgname}-${pkgver}-gmmlib-dev-${_gmmver}_amd64.deb"::"https://github.com/intel/compute-runtime/releases/download/${pkgver}/libigdgmm-dev_${_gmmver}.ci${_gmmci}_amd64.deb"
+        "${pkgname}-${pkgver}-gmmlib-${_gmmver}_amd64.deb"::"https://github.com/intel/compute-runtime/releases/download/${pkgver}/libigdgmm${_gmmsover}_${_gmmver}.ci${_gmmci}_amd64.deb"
         'LICENSE')
 noextract=("intel-opencl-icd_${pkgver}_amd64.deb"
            "intel-level-zero-gpu_${_lzver}_amd64.deb"
            "${pkgname}-${pkgver}-gmmlib-dev-${_gmmver}_amd64.deb"
            "${pkgname}-${pkgver}-gmmlib-${_gmmver}_amd64.deb")
-sha256sums=('934959f815a2692a65a16cfe126b466749d03f14d0184afdf84a6453dba06b04'
-            '3505f1dad479aaeea1f2460cc9288edc031bead47ac924a9f78b3c01fdcf5d3a'
-            'caef1cac10cb8d0cbf8a050dcbeb4337e437b96b8dbec2bf5a64768c499e6dbc'
-            'de6ed9333a74506de43993eb14c8e0e0eb23314c42b03af66fe9c3df24a8973d'
+sha256sums=('930a66ac751df38a2fcda0b73841aa8cfc452a246153be97e735cf799e10cede'
+            '3ca5cd6c52bb4471eb9b96e5e0eb43cf8f064b5442925b0f77cc5693fe62f224'
+            '78b4a1eab0e133c2917a8b7889ef1eae9f32aa07df2795acc5510ddee857bfdc'
+            'aba2ab44cc7a150c819768a0373c24306fb785ddf626ac6c29bcc90fcbc9bdfd'
             '987a002c6c9eb75290d9937735641ef4f4b670591ee79e1ac8edebe16a81872e')
 
 prepare() {
