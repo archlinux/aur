@@ -2,13 +2,13 @@
 
 pkgname=pyshv-git
 _gitname=pyshv
-pkgver=r159.55379a9
+pkgver=r187.71d5af3
 pkgrel=2
 pkgdesc='Python implementation of CPON, Chainpack and SHV RPC'
 url='https://gitlab.com/elektroline-predator/pyshv'
 arch=('any')
 license=('MIT')
-depends=('python-pyserial-asyncio' 'python-aioserial' 'python-dateutil')
+depends=('python-pyserial-asyncio' 'python-aioserial' 'python-dateutil' 'python-asyncinotify')
 makedepends=('git' 'python-build' 'python-setuptools' 'python-installer' 'python-wheel' 'python-pytest' 'python-pytest-asyncio' 'libshv')
 conflicts=('pyshv' 'pyshv-git')
 provides=('pyshv')
