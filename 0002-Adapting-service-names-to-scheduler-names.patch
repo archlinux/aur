@@ -1,7 +1,7 @@
-From c7678eb0e97f764222c2f6f41b796560d174c4f1 Mon Sep 17 00:00:00 2001
+From e74b8e776a65dbef1397132ff970ae2ce383e3d6 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Tue, 16 Jan 2024 10:26:25 +0100
-Subject: [PATCH 2/2] Adapting service names to scheduler names
+Subject: [PATCH 2/5] Adapting service names to scheduler names
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
