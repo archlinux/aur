@@ -8,8 +8,8 @@ arch=('x86_64')
 url='https://wiki.actiona.tools'
 license=('GPL3')
 options=('!buildflags')
-depends=('qt5-script' 'qt5-xmlpatterns' 'qt5-x11extras' 'qt5-multimedia' 'libnotify' 'qt5-speech' 'opencv' 'qt6-base' 'hdf5' 'glew' 'vtk' 'fmt')
-makedepends=('qt5-tools' 'boost' 'cpp-mini')
+depends=('qt5-script' 'qt5-xmlpatterns' 'qt5-x11extras' 'qt5-multimedia' 'libnotify' 'qt5-speech' 'opencv' 'qt6-base' 'hdf5' 'glew' 'vtk' 'fmt' 'jsoncpp')
+makedepends=('qt5-tools' 'boost' 'cpp-mini' 'cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Jmgr/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('f24196960302dd961ee7d97264669fc569812ecfceda5f80ddf22235d1dd486e')
 
