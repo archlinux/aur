@@ -2,7 +2,7 @@ pkgbase = mingw-w64-libev
 	pkgdesc = A full-featured and high-performance event loop (mingw-w64)
 	pkgver = 4.33
 	pkgrel = 1
-	url = http://software.schmorp.de/pkg/libev.html
+	url = https://github.com/enki/libev
 	arch = any
 	license = BSD
 	makedepends = mingw-w64-configure
@@ -16,4 +16,3 @@ pkgbase = mingw-w64-libev
 	sha1sums = 600ca8fe4c6503f592db7560301923f4ade5c224
 
 pkgname = mingw-w64-libev
-
