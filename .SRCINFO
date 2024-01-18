@@ -1,10 +1,10 @@
 pkgbase = python-largestinteriorrectangle
 	pkgdesc = Largest Interior/Inscribed Rectangle implementation in Python
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenStitching/lir
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer

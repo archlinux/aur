@@ -3,11 +3,11 @@
 pkgname=python-largestinteriorrectangle
 _name=${pkgname#python-}
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Largest Interior/Inscribed Rectangle implementation in Python"
 arch=('any')
 url="https://github.com/OpenStitching/lir"
-license=('Apache')
+license=('Apache-2.0')
 depends=('python-opencv' 'python-numba' 'python-numpy')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=()
