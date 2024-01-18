@@ -1,0 +1,25 @@
+pkgbase = xiaomi-hyperos-bootloader-bypass-git
+	pkgdesc = A PoC that exploits a vulnerability to bypass the Xiaomi HyperOS community restrictions of BootLoader unlocked account bindings.
+	pkgver = 1.0.fix.r6.gb932fa7
+	pkgrel = 1
+	url = https://github.com/MlgmXyysd/Xiaomi-HyperOS-BootLoader-Bypass
+	install = xiaomi-hyperos-bootloader-bypass-git.install
+	arch = any
+	license = unkown
+	makedepends = git
+	depends = android-tools
+	depends = curl
+	depends = php
+	depends = openssl
+	provides = xiaomi-hyperos-bootloader-bypass
+	provides = php-adb
+	conflicts = xiaomi-hyperos-bootloader-bypass
+	conflicts = php-adb
+	source = xiaomi-hyperos-bootloader-bypass-git::git+https://github.com/MlgmXyysd/Xiaomi-HyperOS-BootLoader-Bypass.git
+	source = php-adb::git+https://github.com/MlgmXyysd/php-adb.git
+	source = xiaomi-hyperos-bootloader-bypass-git.install
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 34b832d219c551fd01c6980eed6e0ca9b981ed07c52b920df712171eba27b359
+
+pkgname = xiaomi-hyperos-bootloader-bypass-git

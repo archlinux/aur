@@ -1,0 +1,21 @@
+post_install() {
+	echo "---------------------------------------------------------------"
+	sed -i -e 's/;extension=curl/extension=curl/' \
+		-e 's/;extension=openssl/extension=openssl/'	/etc/php/php.ini
+	echo "Enable the curl openssl extension"
+	echo "If adb fails to connect to the phone, add the current user to the adbusers group"
+	echo "sudo gpasswd -aG \$USER adbusers"
+	echo "---------------------------------------------------------------"
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	echo "---------------------------------------------------------------"
+	sed -i -e 's/extension=curl/;extension=curl/' \
+		-e 's/extension=openssl/;extension=openssl/'	/etc/php/php.ini
+	echo "Disable the curl openssl extension"
+	echo "---------------------------------------------------------------"
+}
