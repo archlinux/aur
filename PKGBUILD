@@ -35,7 +35,7 @@ sha256sums=('a3c3fa5ae7c8a1130d1ed71c809e6c445af9eec850537552f50aaca3c8b3b210'
             '62b4d10cc7cbb022b8a29cfba88158809b49ebcd5d161a1965dc26365258cbc1')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runappname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
     install -Dm755 -d "${srcdir}/opt/${pkgname%-bin}"
