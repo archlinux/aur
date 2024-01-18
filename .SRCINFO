@@ -1,10 +1,10 @@
 pkgbase = plasma5-themes-colloid-git
 	pkgdesc = colloid theme for KDE Plasma
 	pkgver = r42.0b79bef
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vinceliuice/Colloid-kde
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	optdepends = plasma-desktop: for included plasma theme
 	optdepends = kvantum-qt5: for included kvantum theme
