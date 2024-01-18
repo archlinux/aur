@@ -10,7 +10,7 @@
 pkgname=scrt
 pkgver=9.5.0
 incrver=3241
-pkgrel=3
+pkgrel=5
 pkgdesc="Vandyke SecureCRT SSH Client"
 arch=('x86_64')
 url="http://www.vandyke.com/products/securecrt/"
@@ -44,6 +44,8 @@ package() {
        install -Dm 755 ./usr/lib/scrt/plugins/platforminputcontexts/libibusplatforminputcontextplugin.so ${pkgdir}/usr/lib/scrt/plugins/platforminputcontexts/libibusplatforminputcontextplugin.so
        install -Dm 755 ./usr/lib/scrt/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so ${pkgdir}/usr/lib/scrt/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so
        install -Dm 755 ./usr/lib/scrt/plugins/platforms/libqxcb.so ${pkgdir}/usr/lib/scrt/plugins/platforms/libqxcb.so
+       install -Dm 755 ./usr/lib/scrt/lib/libQt6XcbQpa.so.6 ${pkgdir}/usr/lib/scrt/lib/libQt6XcbQpa.so.6
+
 
        install -Dm 644 ./usr/share/vandyke/data/SecureCRT_fr.qm ${pkgdir}/usr/share/vandyke/data/SecureCRT_fr.qm
        install -Dm 644 ./usr/share/doc/scrt/SecureCRT_README.txt ${pkgdir}/usr/share/doc/scrt/SecureCRT_README.txt
