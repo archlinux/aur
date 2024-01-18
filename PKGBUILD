@@ -4,12 +4,12 @@
 pkgname='hawkeye-quicklook-git'
 _gitname='hawkeye'
 pkgver=20180921.cec717e
-pkgrel=2
+pkgrel=3
 pkgdesc='A command line GTK Application that allow to quickly open PDFs, Markkown Files, Images and Websites in a "small" window'
 arch=('any')
 url='https://github.com/brpaz/hawkeye'
 license=('MIT')
-depends=('gtk3' 'evince' 'python-markdown')
+depends=('gtk3' 'evince' 'python-markdown' 'webkit2gtk')
 makedepends=('git' 'python-setuptools')
 source=('git+https://github.com/brpaz/hawkeye.git')
 md5sums=('SKIP')
