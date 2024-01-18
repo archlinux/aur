@@ -23,7 +23,7 @@ CLASS="--class clover --class tool"
 
 if [ -e "${CLOVER_EFI_IMAGE}" ] && is_path_readable_by_grub "${CLOVER_EFI_IMAGE}" ; then
     ## EFI image exists, create menu entry
-    echo "Found Clover EFI image: ${PLPBT_LINUX_IMAGE}" >&2
+    echo "Found Clover EFI image: ${CLOVER_EFI_IMAGE}" >&2
     _GRUB_PLOP_HINTS_STRING="$(${grub_probe} --target=hints_string ${CLOVER_EFI_IMAGE})"
     _GRUB_PLOP_FS_UUID="$(${grub_probe} --target=fs_uuid ${CLOVER_EFI_IMAGE})"
     _GRUB_PLOP_REL_PATH="$(make_system_path_relative_to_its_root ${CLOVER_EFI_IMAGE})"
