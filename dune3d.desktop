@@ -1,9 +1,7 @@
 [Desktop Entry]
-Version=1.0
-Type=Application
-Name=SIGNUS
-Comment=turn-based strategy war game
-Exec=signus
-Icon=signus
+Name=Dune 3D
+GenericName=3D CAD application
+Exec=dune3d
 Terminal=false
-StartupNotify=false
+Type=Application
+Categories=Graphics;3DGraphics;Engineering

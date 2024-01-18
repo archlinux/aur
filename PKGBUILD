@@ -2,7 +2,7 @@
 
 _pkgname='dune3d'
 pkgname="${_pkgname}-git"
-pkgver=r249.4eb5ca4
+pkgver=r319.507cf4b
 pkgrel=1
 pkgdesc='3D CAD application'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("git+${url}.git"
         "dune3d.desktop"
 )
 sha256sums=('SKIP'
-            'cbc2b74b15e345d0e61275998d438bf8d226050719f1b928fecaa6dca88ded10')
+            'cf69defe0c737a34c2b45ff9f449e22d47a2d4b45b1ada16f3cd180287939909')
 
 pkgver() {
   cd "${_pkgname}"
