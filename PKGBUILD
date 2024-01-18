@@ -2,7 +2,7 @@
 # Contributor: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=cutlass-headers
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="CUDA Templates for Linear Algebra Subroutines (headers only)"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(cuda)
 makedepends=(cmake ninja)
 conflicts=(cutlass)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('99876de94a04d0b9cdee81d4f29659bde1426b416926aef4d9a3a3a7869511a3')
+sha256sums=('49f4b854acc2a520126ceefe4f701cfe8c2b039045873e311b1f10a8ca5d5de1')
 
 prepare() {
     cd cutlass-$pkgver
