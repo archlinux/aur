@@ -31,7 +31,7 @@ sha256sums_aarch64=(
 	'c03a5af5d3aaeaf9cad9590208087c95cfbbe1b74d67c456e91860d0cfa4308c'
 	'SKIP'
 )
-install=".INSTALL"
+install="radicle-node-bin.install"
 provides=('radicle-node')
 conflicts=('radicle-node')
 
