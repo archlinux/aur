@@ -18,7 +18,6 @@ else
 fi
 
 CLOVER_EFI_IMAGE="/boot/EFI/CLOVER/CLOVERX64.efi"
-CLOVERv2_EFI_IMAGE="/boot/EFI/CloverV2/CLOVERX64.efi"
 CLASS="--class clover --class tool"
 
 
@@ -31,24 +30,6 @@ if [ -e "${CLOVER_EFI_IMAGE}" ] && is_path_readable_by_grub "${CLOVER_EFI_IMAGE}
     cat << EOF
 if [ "\${grub_platform}" == "efi" ]; then
     menuentry "Clover boot loader" ${CLASS} {
-        insmod part_gpt
-        insmod fat
-        search --fs-uuid --no-floppy --set=root ${_GRUB_PLOP_HINTS_STRING} ${_GRUB_PLOP_FS_UUID}
-        chainloader ${_GRUB_PLOP_REL_PATH} ${GRUB_CMDLINE_PLPBT}
-    }
-fi
-EOF
-fi
-
-if [ -e "${CLOVERv2_EFI_IMAGE}" ] && is_path_readable_by_grub "${CLOVERv2_EFI_IMAGE}" ; then
-    ## EFI image exists, create menu entry
-    echo "Found CloverV2 EFI image: ${PLPBT_LINUX_IMAGE}" >&2
-    _GRUB_PLOP_HINTS_STRING="$(${grub_probe} --target=hints_string ${CLOVERv2_EFI_IMAGE})"
-    _GRUB_PLOP_FS_UUID="$(${grub_probe} --target=fs_uuid ${CLOVERv2_EFI_IMAGE})"
-    _GRUB_PLOP_REL_PATH="$(make_system_path_relative_to_its_root ${CLOVERv2_EFI_IMAGE})"
-    cat << EOF
-if [ "\${grub_platform}" == "efi" ]; then
-    menuentry "CloverV2 boot loader" ${CLASS} {
         insmod part_gpt
         insmod fat
         search --fs-uuid --no-floppy --set=root ${_GRUB_PLOP_HINTS_STRING} ${_GRUB_PLOP_FS_UUID}

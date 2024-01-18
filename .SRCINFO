@@ -1,19 +1,17 @@
 pkgbase = clover-efi
 	pkgdesc = Bootloader for macOS, Windows and Linux in UEFI and in legacy mode
 	pkgver = 5157
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CloverHackyColor/CloverBootloader
 	arch = x86_64
 	license = BSD
 	noextract = Clover-5157-X64.iso.7z
 	backup = boot/EFI/CloverV2/config.plist
 	source = Clover-5157-X64.iso.7z::https://github.com/CloverHackyColor/CloverBootloader/releases/download/5157/Clover-5157-X64.iso.7z
-	source = CloverV2-5157.zip::https://github.com/CloverHackyColor/CloverBootloader/releases/download/5157/CloverV2-5157.zip
 	source = Clover-LICENSE.txt::https://raw.githubusercontent.com/CloverHackyColor/CloverBootloader/master/LICENSE
 	source = 80_cloverboot
 	sha256sums = a13904da4a33fae39e5e1061df939904169db4fb29e7bc5d188caeae2fd9f50f
-	sha256sums = 30244157274ec4d4a1a49b670c8ae05c7ea0d56ba8b21c3303ac7f96f86111ac
 	sha256sums = 9ad38268029f8604cdadb30d598d42f67697cddb738a962250bc966bda2edcd2
-	sha256sums = SKIP
+	sha256sums = 9b10f8b156f01cdf0788f8839635e3e336ea072fc7d4e08b6bdb1abfe9074aab
 
 pkgname = clover-efi
