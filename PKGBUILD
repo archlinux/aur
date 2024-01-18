@@ -1,7 +1,7 @@
 # Maintainer: Davide Gerhard <rainbow@irh.it>
 
 pkgname=freedv-gui
-pkgver=1.9.7
+pkgver=1.9.7.1
 pkgrel=1
 pkgdesc="Digital Voice for Radio Amateurs"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ url="https://freedv.org/"
 depends=('libpulse' 'hamlib' 'sox' 'wxwidgets-gtk3' 'codec2-lpcnet' 'speex' 'libao' 'libsamplerate' 'gsm' 'libsndfile' 'lpcnetfreedv')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/drowe67/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('79f0161c615ec88fa94a784e2c3e224bd4bebd93f53a47328a2bdbf42a0f0226a78cb942610c0d0d619f06506c06541c8ca43c9d64129a797b5159f9265ef67b')
+sha512sums=('ba9d3c5f22c1323d4ee79cfa8d66d0834b4e8f01d2b06f5d6c640b5d6d4f90e945ceab8f185eae32da25f7c62f8336d1b19c74b3b1512148685aa86aaf8dba79')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" \
