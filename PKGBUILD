@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-media-stack-bin
-pkgver=23.3.4
+pkgver=23.4.3
 pkgrel=1
 epoch=1
 pkgdesc='Tools and libraries for developing media solutions on Intel products (pre-compiled binaries)'
@@ -20,7 +20,7 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/oneapi-src/oneVPL-int
         '010-intel-media-stack-bin-fix-install.patch'
         '020-intel-media-stack-bin-fix-profile.patch')
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('bceda8223e21d1d91927c784fa5d1f18c9e4ab508e610b03519f74c745de2642'
+sha256sums=('25ad250a0dc6a887a2c093bdbc205b2bdfe6124f42b0ab15580d34f4d7315f51'
             '769757c058e750a7c4e00382719f34aa27d4d804423af0e55984b719c9332cb3'
             'b6c8e3d9db6195b3d0d2299774b1f57ef09c2f80eda8c7f1d0507d769dcfb62f')
 
