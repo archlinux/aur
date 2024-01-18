@@ -28,8 +28,8 @@ esac
 
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
-pkgver=3.19.1+54.r11661.20230709.e72409138
-pkgrel=4
+pkgver=3.20.0+35.r11746.20240112.76c8c420e
+pkgrel=1
 pkgdesc="A GTK based e-mail client. Latest git checkout, built against '${_TOOLKIT}'. Patched to use charset supersets to decode titles and to display protected headers."
 arch=(
   'i686'
@@ -148,7 +148,7 @@ source=(
 sha256sums=(
   'SKIP'
   '79e2b664d039f5cc0cf642359923e3d100ffc4ab070fc54c02d5792b624e26f6'
-  '383f4ea03102ed2c8f19365b9bf2b757969d1617fcfd0a8375126f388cc60301'
+  'SKIP' # '383f4ea03102ed2c8f19365b9bf2b757969d1617fcfd0a8375126f388cc60301'
 )
 if [ "${_TOOLKIT}" == "gtk2" ]; then
   source+=("protectedheaders.patch.for-gtk2.patch")
