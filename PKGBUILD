@@ -1,15 +1,15 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=oqsprovider
 _pkgname=oqs-provider
-_pkgverliboqs=0.9.0
-pkgver=0.5.2
-pkgrel=3
+pkgver=0.5.3
+_pkgverliboqs=0.9.2
+pkgrel=1
 pkgdesc="OpenSSL 3 provider containing post-quantum algorithms"
 arch=('x86_64')
 url="https://openquantumsafe.org/applications/tls.html#oqs-openssl-provider"
 license=('MIT')
 depends=(
-    'liboqs=1:0.9.0'
+    'liboqs=1:0.9.2'
     'openssl'
 )
 makedepends=(
@@ -23,8 +23,8 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/open-quantum-safe/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz"
     "liboqs-${_pkgverliboqs}.tar.gz::https://github.com/open-quantum-safe/liboqs/archive/refs/tags/${_pkgverliboqs}.tar.gz"
 )
-b2sums=('537b8dbdddc21c4516d1a27ea61b210714871c494afacc7c66b7becf6e8269bdbf5272e0c210683f13ef4e885a4d0de9be5e590a8528d3bbe585f8584b811759'
-        '5a8c3ccf570ded1dd66e420a22400f1c3320ba385e09a2edb41323e994597dcd812e1742986d34300c76bed54c2a0baf24587d2eaef00e7f03265f3dc632ddda')
+b2sums=('b8fb24297ccfa7331911ae4de797fd9d1ae4003f2421cbe630f572bea4fb6b8636cbdb7c92288fa641c87783d5a64d981335e291f09edd5f51ad653add2302cf'
+        '2a2252532a1fe9ff84152f862195284df7d7f498eae105be91b86f1237ba2f355a9d2d0df6107c9e84f420c314953d5ce16b06b30ca0024e3f7396966dbd0765')
 
 prepare() {
     # Enable additional algorithms supported by liboqs
