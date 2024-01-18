@@ -1,0 +1,27 @@
+pkgbase = grub2-filemanager-git
+	pkgdesc = A GRUB-based directory navigation and boot tool that also allows to boot EFI and ISO images.
+	pkgver = 2.11.r462.20220309.918524d
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/a1ive/grub2-filemanager
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gettext
+	makedepends = grub
+	makedepends = mtools
+	makedepends = xorriso
+	provides = grub2-filemanager=2.11.r462.20220309.918524d
+	provides = grubfm=2.11.r462.20220309.918524d
+	conflicts = grub2-filemanager
+	options = !strip
+	source = grub2-filemanager::git+https://github.com/a1ive/grub2-filemanager.git
+	source = grub2-latest.tar.gz::https://github.com/a1ive/grub/releases/download/latest/grub2-latest.tar.gz
+	source = 79_grubfm
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 7de4281fc8171826ea63805c15e2b31b00d359eeb7256bd6ecc0606ceab5b14d
+
+pkgname = grub2-filemanager-git

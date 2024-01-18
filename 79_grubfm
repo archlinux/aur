@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+########################################################
+# This script generates a grubfm entry on grub.cfg     #
+# Based on the 80_plop6boot grub script.               #
+########################################################
+
+prefix="/usr"
+exec_prefix="${prefix}"
+
+datarootdir="/usr/share"
+datadir="${datarootdir}"
+
+if [ -r "${datadir}/grub/grub-mkconfig_lib" ]; then
+. "${datadir}/grub/grub-mkconfig_lib"
+else
+  printf '%s\n' "ERROR: Cannot source file '${datadir}/grub/grub-mkconfig_lib'." > /dev/stderr
+  exit 1
+fi
+
+GRUBFM_LINUX_IMAGE="/boot/grubfm/loadfm"
+GRUBFM_aa64EFI_IMAGE="/boot/EFI/grubfm/grubfmaa64.efi"
+GRUBFM_x86EFI_IMAGE="/boot/EFI/grubfm/grubfmia32.efi"
+GRUBFM_x64EFI_IMAGE="/boot/EFI/grubfm/grubfmx64.efi"
+CLASS="--class grubfm --class tool"
+
+if [ -e "${GRUBFM_LINUX_IMAGE}" ] && is_path_readable_by_grub "${GRUBFM_LINUX_IMAGE}" ; then
+    ## Linux image exists, create menu entry
+    echo "Found GRUB-FM Linux image: ${GRUBFM_LINUX_IMAGE}" >&2
+    _GRUB_PLOP_HINTS_STRING="$(${grub_probe} --target=hints_string ${GRUBFM_LINUX_IMAGE})"
+    _GRUB_PLOP_FS_UUID="$(${grub_probe} --target=fs_uuid ${GRUBFM_LINUX_IMAGE})"
+    _GRUB_PLOP_REL_PATH="$(make_system_path_relative_to_its_root ${GRUBFM_LINUX_IMAGE})"
+    cat << EOF
+if [ "\${grub_platform}" == "pc" ]; then
+  menuentry "GRUB File Manager" ${CLASS} {
+      insmod part_gpt
+      insmod fat
+      search --fs-uuid --no-floppy --set=root ${_GRUB_PLOP_HINTS_STRING} ${_GRUB_PLOP_FS_UUID}
+      linux ${_GRUB_PLOP_REL_PATH} ${GRUB_CMDLINE_PLPBT}
+  }
+fi
+EOF
+fi
+
+if [ -e "${GRUBFM_aa64EFI_IMAGE}" ] && is_path_readable_by_grub "${GRUBFM_aa64EFI_IMAGE}" ; then
+    ## EFI image exists, create menu entry
+    echo "Found GRUB-FM x86_64 EFI image: ${GRUBFM_aa64EFI_IMAGE}" >&2
+    _GRUB_PLOP_HINTS_STRING="$(${grub_probe} --target=hints_string ${GRUBFM_aa64EFI_IMAGE})"
+    _GRUB_PLOP_FS_UUID="$(${grub_probe} --target=fs_uuid ${GRUBFM_aa64EFI_IMAGE})"
+    _GRUB_PLOP_REL_PATH="$(make_system_path_relative_to_its_root ${GRUBFM_aa64EFI_IMAGE})"
+    cat << EOF
+if [ "\${grub_platform}" == "efi" ]; then
+    menuentry "GRUB File Manager" ${CLASS} {
+        insmod part_gpt
+        insmod fat
+        search --fs-uuid --no-floppy --set=root ${_GRUB_PLOP_HINTS_STRING} ${_GRUB_PLOP_FS_UUID}
+        chainloader ${_GRUB_PLOP_REL_PATH} ${GRUB_CMDLINE_PLPBT}
+    }
+fi
+EOF
+fi
+
+if [ -e "${GRUBFM_x86EFI_IMAGE}" ] && is_path_readable_by_grub "${GRUBFM_x86EFI_IMAGE}" ; then
+    ## EFI image exists, create menu entry
+    echo "Found GRUB-FM x86_64 EFI image: ${GRUBFM_x86EFI_IMAGE}" >&2
+    _GRUB_PLOP_HINTS_STRING="$(${grub_probe} --target=hints_string ${GRUBFM_x86EFI_IMAGE})"
+    _GRUB_PLOP_FS_UUID="$(${grub_probe} --target=fs_uuid ${GRUBFM_x86EFI_IMAGE})"
+    _GRUB_PLOP_REL_PATH="$(make_system_path_relative_to_its_root ${GRUBFM_x86EFI_IMAGE})"
+    cat << EOF
+if [ "\${grub_platform}" == "efi" ]; then
+    menuentry "GRUB File Manager" ${CLASS} {
+        insmod part_gpt
+        insmod fat
+        search --fs-uuid --no-floppy --set=root ${_GRUB_PLOP_HINTS_STRING} ${_GRUB_PLOP_FS_UUID}
+        chainloader ${_GRUB_PLOP_REL_PATH} ${GRUB_CMDLINE_PLPBT}
+    }
+fi
+EOF
+fi
+
+if [ -e "${GRUBFM_x64EFI_IMAGE}" ] && is_path_readable_by_grub "${GRUBFM_x64EFI_IMAGE}" ; then
+    ## EFI image exists, create menu entry
+    echo "Found GRUB-FM x86_64 EFI image: ${GRUBFM_x64EFI_IMAGE}" >&2
+    _GRUB_PLOP_HINTS_STRING="$(${grub_probe} --target=hints_string ${GRUBFM_x64EFI_IMAGE})"
+    _GRUB_PLOP_FS_UUID="$(${grub_probe} --target=fs_uuid ${GRUBFM_x64EFI_IMAGE})"
+    _GRUB_PLOP_REL_PATH="$(make_system_path_relative_to_its_root ${GRUBFM_x64EFI_IMAGE})"
+    cat << EOF
+if [ "\${grub_platform}" == "efi" ]; then
+    menuentry "GRUB File Manager" ${CLASS} {
+        insmod part_gpt
+        insmod fat
+        search --fs-uuid --no-floppy --set=root ${_GRUB_PLOP_HINTS_STRING} ${_GRUB_PLOP_FS_UUID}
+        chainloader ${_GRUB_PLOP_REL_PATH} ${GRUB_CMDLINE_PLPBT}
+    }
+fi
+EOF
+fi
