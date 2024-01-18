@@ -2,8 +2,8 @@
 
 pkgname=radicle-httpd-bin
 # there are no versions attached to the binaries, just upload dates.
-pkgver=20240105
-_srchash="6bc7d297a5e7e3feecec3f61327a9adbdf532f61"
+pkgver=20240118
+_srchash="ebdaf0edd9734cab5015aa70a0496429d6a5affd"
 pkgrel=1
 pkgdesc="http daemon for radicle, a peer-to-peer GitHub alternative"
 arch=('x86_64' 'aarch64')
@@ -22,13 +22,13 @@ source_aarch64=(
 	radicle-httpd.service
 )
 sha256sums_x86_64=(
-	'901c3d72b14ca574e9131d6f7e565bab49d6331e3a1ef12fc1adea61dc1b09c0'
-	'01b821925fa0ba60afd6601f3637bc1ea33e2ab616146f5a2e089648edc5fe8a'
+	'ae84537a386aa634d3b0de6aec665f1ff60b447629e28cb092070863a92b68c9'
+	'af2c810eeb84261c54ac51eeebf5dbff8367d50c5a193be911b8afddcfd6bd65'
 	'SKIP'
 )
 sha256sums_aarch64=(
-	'0645029520b2a5d6b1a5814e5bb9885e285a93d94c9cc767437dc18ca7a19545'
-	'21613346f20d054cced5ce34c907471a5c5455f7f25db9110dcd46280678c6b0'
+	'1b67d6217b37d5bf2b80d3562bbcf001306d9f3f8d7c06aeb280fa138cef3db8'
+	'5c3c7edaabc5a20d0c9f162716444f303e68c229e7e246989ea5e55b5e38e5b2'
 	'SKIP'
 )
 install=".INSTALL"
