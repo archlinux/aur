@@ -1,7 +1,7 @@
 pkgbase = cmdstan
 	pkgdesc = The command line interface to Stan, a C++ library for statistical modeling and high-performance statistical computation
 	pkgver = 2.34.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mc-stan.org/
 	arch = x86_64
 	license = BSD-3-Clause
