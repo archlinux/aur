@@ -1,14 +1,14 @@
 # Maintainer:  Alexander Bocken <alexander@bocken.org>
 
-_name=Mesa
+_name=mesa
 pkgname=python-${_name,,}
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
-pkgdesc="Agent-based modeling (ABM) in Python 3+"
+pkgdesc="Agent-based modeling (ABM) in Python"
 arch=('any')
 url="https://github.com/projectmesa/mesa"
 license=(Apache)
-depends=('python>=3.8'
+depends=('python>=3.9'
 	python-click
 	python-cookiecutter
 	python-matplotlib
@@ -21,8 +21,9 @@ depends=('python>=3.8'
 makedepends=('python-installer' 'python-wheel')
 
 _whl="${_name//-/_}-$pkgver-py3-none-any.whl"
+
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/$_whl")
-sha256sums=('3eadf6a5d55530c5482309b6f8262af35dc9be4f8d52de1e5a464e3a50047b91')
+sha256sums=('59cf308cec6ff74eaa822345fcadec4076b75cef7cf11733aaa149a490027fb8')
 
 noextract=("$_whl")
 package() {
