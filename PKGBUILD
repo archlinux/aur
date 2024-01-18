@@ -2,10 +2,9 @@
 
 pkgname=python-argdispatch
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Drop-in replacement for python package argparse, dispatching subcommand calls to functions, modules or binaries."
-depends=('python')
-makedepends=('python-setuptools')
+depends=('python-setuptools')
 url="https://framagit.org/spalax/argdispatch"
 license=('GPLv3')
 arch=('any')
