@@ -37,7 +37,8 @@ build() {
 
 check() {
   cd "$srcdir/$_pkgname"
-  _mvn test
+  # use fr locale to avoid test failure (see https://github.com/chewiebug/GCViewer/blob/af97692884ac918ccbdf7a123fa698460a1d397e/src/test/java/com/tagtraum/perf/gcviewer/exp/SummaryDataWriterTest.java#L173-L178)
+  _mvn -DargLine=-Duser.language=fr test
 }
 
 package() {
