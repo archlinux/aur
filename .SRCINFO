@@ -1,0 +1,13 @@
+pkgbase = chicken-multipart-form-data
+	pkgdesc = Reads & decodes HTTP multipart/form-data requests for Chicken Scheme
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/multipart-form-data
+	arch = x86_64
+	license = BSD
+	depends = chicken
+	depends = chicken-intarweb
+	depends = chicken-comparse
+	depends = chicken-records
+
+pkgname = chicken-multipart-form-data
