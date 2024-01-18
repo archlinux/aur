@@ -1,85 +1,85 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Dustin Falgout <dustin@falgout.us>
 pkgname='ttf-google-fonts-typewolf'
-pkgver='20230110'
-_commit='9aba8ae2d286384be87dbd12a8a5a0e16db14408'
+pkgver='20240105'
+_commit='e10dd01507a2a015ddbe8140aae06354dce94889'
 pkgrel='1'
 pkgdesc="Typewolf's curated collection of the 40 best fonts from the Google Fonts project"
 arch=('any')
 url='https://www.typewolf.com/google-fonts'
-license=('custom:SIL Open Font License v1.1' 'Apache')
+license=('OFL-1.1-no-RFN' 'OFL-1.1-RFN')
 provides=(
-	# OFL v1.1 if not specified
-	'ttf-alegreya'
-	'ttf-alegreya-sans'
-	'ttf-archivo-narrow'
-	'ttf-bio-rhyme'
-	'ttf-cardo'
-	'ttf-chivo'
-	'ttf-cormorant'
-	'ttf-dm-sans'
-	'ttf-eczar'
-	'ttf-fira-sans'
-	'ttf-ibm-plex-sans'
-	'ttf-inconsolata'
-	'ttf-inknut-antiqua'
-	'ttf-inter'
-	'ttf-karla'
-	'ttf-lato'
-	'ttf-libre-baskerville'
-	'ttf-libre-franklin'
-	'ttf-lora'
-	'ttf-manrope'
-	'ttf-merriweather'
-	'ttf-montserrat'
-	'ttf-neuton'
-	'ttf-open-sans'
-	'ttf-playfair-display'
-	'ttf-poppins'
-	'ttf-proza-libre'
-	'ttf-pt-sans'
-	'ttf-pt-serif'
-	'ttf-raleway'
-	'ttf-roboto' # Apache 2.0
-	'ttf-roboto-slab' # Apache 2.0
-	'ttf-rubik'
-	'ttf-source-sans-pro'
-	'ttf-source-serif-pro'
-	'ttf-space-grotesk'
-	'ttf-space-mono'
-	'ttf-spectral'
-	'ttf-syne'
-	'ttf-work-sans'
-	# Aliases
-	'adobe-source-sans-pro-fonts'
-	'adobe-source-serif-pro-fonts'
-	'montserrat-ttf'
-	'ttf-librebaskerville'
-	'ttf-opensans'
-	'ttf-sourcesanspro'
-	'ttf-spacemono'
+	'ttf-alegreya' # OFL-1.1-no-RFN
+	'ttf-alegreya-sans' # OFL-1.1-no-RFN
+	'ttf-archivo-narrow' # OFL-1.1-no-RFN
+	'ttf-bio-rhyme' # OFL-1.1-no-RFN
+	'ttf-cardo' # OFL-1.1-no-RFN
+	'ttf-chivo' # OFL-1.1-no-RFN
+	'ttf-cormorant' # OFL-1.1-no-RFN
+	'ttf-dm-sans' # OFL-1.1-no-RFN
+	'ttf-eczar' # OFL-1.1-no-RFN
+	'ttf-fira-sans' # OFL-1.1-no-RFN
+	'ttf-fraunces' # OFL-1.1-no-RFN
+	'ttf-ibm-plex-sans' # OFL-1.1-RFN
+	'ttf-inconsolata' # OFL-1.1-no-RFN
+	'ttf-inknut-antiqua' # OFL-1.1-no-RFN
+	'ttf-inter' # OFL-1.1-no-RFN
+	'ttf-karla' # OFL-1.1-no-RFN
+	'ttf-lato' # OFL-1.1-RFN
+	'ttf-libre-baskerville' # OFL-1.1-RFN
+	'ttf-libre-franklin' # OFL-1.1-no-RFN
+	'ttf-lora' # OFL-1.1-RFN
+	'ttf-manrope' # OFL-1.1-no-RFN
+	'ttf-merriweather' # OFL-1.1-RFN
+	'ttf-montserrat' # OFL-1.1-no-RFN
+	'ttf-neuton' # OFL-1.1-RFN
+	'ttf-open-sans' # OFL-1.1-no-RFN
+	'ttf-playfair-display' # OFL-1.1-RFN
+	'ttf-poppins' # OFL-1.1-no-RFN
+	'ttf-proza-libre' # OFL-1.1-no-RFN
+	'ttf-pt-sans' # OFL-1.1-RFN
+	'ttf-pt-serif' # OFL-1.1-RFN
+	'ttf-raleway' # OFL-1.1-RFN
+	'ttf-roboto' # OFL-1.1-no-RFN
+	'ttf-rubik' # OFL-1.1-no-RFN
+	'ttf-source-sans3' # OFL-1.1-RFN
+	'ttf-source-serif4' # OFL-1.1-RFN
+	'ttf-space-grotesk' # OFL-1.1-no-RFN
+	'ttf-space-mono' # OFL-1.1-no-RFN
+	'ttf-spectral' # OFL-1.1-no-RFN
+	'ttf-syne' # OFL-1.1-no-RFN
+	'ttf-work-sans' # OFL-1.1-no-RFN
 )
 conflicts=(
 	"${provides[@]}"
 	'adobe-source-sans-fonts'
 	'adobe-source-serif-fonts'
-	'ttf-adobe-fonts'
+	'lora-font-git'
+	'ttf-adobe-source-sans-fonts'
+	'ttf-adobe-source-serif-fonts'
+	'ttf-dm-fonts'
+	'ttf-fraunces-variable'
 	'ttf-google-fonts-git'
-	'ttf-google-fonts-opinionated-git'
+	'ttf-ibm-plex-git'
 	'ttf-ibm-plex'
+	'ttf-librebaskerville'
+	'ttf-opensans'
+	'ttf-raleway-variable'
+	'ttf-rubik-vf'
+	'ttf-sourcesanspro'
+	'ttf-spacemono'
 )
 _ignore=(
 	'Inconsolata[wdth,wght].ttf'
-	'Roboto[wdth,wght].ttf'
-	'Roboto-Italic[wdth,wght].ttf'
 )
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/google/fonts/archive/$_commit.tar.gz")
-sha512sums=('186db42ead74af1706a01317ef907774af7de90a7a557b58e8f6677565739e919839836c6c9c57af625c5e7a1e93e1a46ea2253da4fe6aa15654d8a54e25b25b')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/google/fonts/archive/$_commit.tar.gz")
+sha512sums=('df2467e8a863c5132f73f3233290c0ed1d00c037e36dc10bbafbd97836860705ad7138b473287d44d1cc3e39821ace7a4ebc416a7e8afe93ab792ef84ae66049')
 
 package() {
 	cd "$srcdir/fonts-$_commit/"
 
-	install -Dm644 'ofl/alegreya/OFL.txt' "$pkgdir/usr/share/licenses/$pkgname/OFL.txt"
+	install -Dm644 'ofl/alegreya/OFL.txt' "$pkgdir/usr/share/licenses/$pkgname/OFL-1.1-no-RFN"
+	install -Dm644 'ofl/ibmplexsans/OFL.txt' "$pkgdir/usr/share/licenses/$pkgname/OFL-1.1-RFN"
 
 	# Remove hyphens from each element in array
 	_fonts="${provides[@]//-/}"
