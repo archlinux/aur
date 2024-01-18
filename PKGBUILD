@@ -5,10 +5,10 @@
 _pkgname=datalad
 pkgname=python-$_pkgname
 pkgver=0.19.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Keep code, data, containers under control with git and git-annex'
 arch=(any)
-url='https://github.com/datalad/datalad'
+url="https://github.com/datalad/$_pkgname"
 license=(MIT)
 depends=(git-annex
          patool
@@ -27,8 +27,8 @@ depends=(git-annex
          python-msgpack
          python-packaging
          python-platformdirs
-         python-setuptools # used at runtime
          python-requests
+         python-setuptools # used at runtime
          python-tqdm)
 makedepends=(python-{build,installer,wheel})
 checkdepends=(mypy
@@ -38,10 +38,11 @@ checkdepends=(mypy
               python-types-python-dateutil
               python-types-requests
               python-vcrpy)
-optdepends=('python-requests-ftp: extra downloaders'
-            'python-argcomplete: optional CLI completion'
-            'python-pyperclip: clipboard manipulations'
-            'python-dateutil: support for more date formats')
+optdepends=('python-argcomplete: optional CLI completion'
+            'python-datalad-next: extension for new and improved functionality and user experience'
+            'python-dateutil: support for more date formats'
+            'python-requests-ftp: extra downloaders'
+            'python-pyperclip: clipboard manipulations')
 _archive="$_pkgname-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
 sha256sums=('bb5cd9b520e7e7de5c42a6895cbafcd6f28b10fc7bbedcbc004546b6c75cc834')
