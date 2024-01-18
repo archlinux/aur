@@ -1,16 +1,16 @@
-# Maintainer: Mark Vainomaa <mikroskeem@mikroskeem.eu>
 pkgname=gwsocket-git
-pkgver=r67.85aaad3
+pkgver=r178.728dd5b
 pkgrel=1
 pkgdesc="gwsocket is a simple, standalone, language-agnostic, RFC6455 compliant WebSocket Server, written in C."
 arch=("x86_64" "i686")
 url="http://gwsocket.io/"
-license=('MIT')
+license=("MIT")
 provides=("gwsocket")
 conflicts=("gwsocket")
 replaces=("gwsocket")
-source=('gwsocket-git::git+https://github.com/allinurl/gwsocket')
-md5sums=('SKIP')
+source=("gwsocket-git::git+https://github.com/allinurl/gwsocket")
+md5sums=("SKIP")
+makedepends=("git" "make")
 
 
 pkgver() {
