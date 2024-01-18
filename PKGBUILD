@@ -12,7 +12,7 @@
 _pkgname="floorp"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=11.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
 arch=('x86_64')
@@ -163,6 +163,17 @@ ac_add_options --allow-addon-sideload
 export MOZILLA_OFFICIAL=1
 export NIGHTLY_BUILD=1
 export MOZ_APP_REMOTINGNAME=$_pkgname
+
+# Floorp Upstream
+ac_add_options --enable-proxy-bypass-protection
+ac_add_options --enable-unverified-updates
+ac_add_options --with-l10n-base="$PWD/floorp/browser/locales/l10n-central"
+MOZ_REQUIRE_SIGNING=
+
+# Keys
+ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/api-mozilla-key
+ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/api-google-location-service-key
+ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/api-google-safe-browsing-key
 
 # System Libraries
 ac_add_options --with-system-jpeg
