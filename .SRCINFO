@@ -1,7 +1,7 @@
 pkgbase = patacrep-git
 	pkgdesc = Engine for LaTeX songbooks
 	pkgver = 5.2.0.r0.g7c19c636
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.patacrep.com
 	arch = any
 	license = GPL
@@ -15,6 +15,7 @@ pkgbase = patacrep-git
 	depends = texlive-fontsextra
 	depends = texlive-latexextra
 	depends = lilypond
+	depends = python-argdispatch
 	source = patacrep-git::git+https://github.com/patacrep/patacrep.git#branch=master
 	sha256sums = SKIP
 
