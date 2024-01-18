@@ -2,11 +2,11 @@
 
 pkgname=k5prog-git
 pkgver=r31.241ab18
-pkgrel=1
+pkgrel=2
 pkgdesc="Quansheng UV-K5 EEPROM programmer"
 arch=("x86_64")
 url="https://github.com/sq5bpf/k5prog"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=()
 makedepends=(git)
 source=("${pkgname}::git+https://github.com/sq5bpf/k5prog.git")
