@@ -1,7 +1,7 @@
 pkgbase = k5prog-git
 	pkgdesc = Quansheng UV-K5 EEPROM programmer
 	pkgver = r31.241ab18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sq5bpf/k5prog
 	arch = x86_64
 	license = GPL-3.0-or-later
