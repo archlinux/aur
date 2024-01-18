@@ -17,7 +17,7 @@
 _pkgname=wine
 pkgname="${_pkgname}${_pkgtype:-}"
 pkgver=9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://www.winehq.org"
 license=(LGPL)
@@ -43,6 +43,10 @@ depends=(
   libgphoto2
   samba
   sane
+
+  # with-wayland
+  libxkbcommon
+  wayland
 )
 makedepends=(
   libcups               #lib32-libcups
@@ -113,6 +117,7 @@ build() {
     --disable-tests \
     --prefix=/usr \
     --libdir=/usr/lib \
+    --with-wayland \
     --enable-archs=x86_64,i386
   make
 }
