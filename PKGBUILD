@@ -1,6 +1,6 @@
 # Maintainer: Look <notkool@protonmail.com>
 pkgname=miru-bin
-pkgver=4.5.8
+pkgver=4.5.9
 pkgrel=1
 pkgdesc="Bittorrent streaming software for cats"
 arch=('x86_64')
@@ -9,8 +9,15 @@ license=('GPL-3.0')
 depends=('xdg-utils')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://github.com/ThaUnknown/miru/releases/download/v${pkgver}/linux-Miru-${pkgver}.deb")
-sha512sums_x86_64=('cc82982982455088d517e0aeb10b64524738058f0938f2adec4115ca1f11d19de6b068da174e487e860099207660e585d7b4c645bd5972bb592b028fec212713')
+_pkgname="miru"
+source_x86_64=(
+	"https://github.com/ThaUnknown/miru/releases/download/v${pkgver}/linux-Miru-${pkgver}.deb"
+	"${_pkgname}.desktop"
+)
+sha512sums_x86_64=(
+	'ebe5fb603508efe2b93e5f509ebf205965cbc24f3c9b09b3426fb39846bbe94ae017b1c7c7dc32836a6638b3148cec06547737686a20bb99238eea011c054841'
+	'10ffce928a1f1785c78b23bd928e718a49f2243418aadd6e4537d83151c920ab270d7345e54646ae65351f855bdd41e41a9d3f0a94a128d618d85d9cc59e1e06'
+)
 
 package() {
 
@@ -18,5 +25,5 @@ package() {
 	tar -xJ -f data.tar.xz -C "${pkgdir}"
 
 	install -D -m644 "${pkgdir}/opt/Miru/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
+	install -D -m644 ${srcdir}/${_pkgname}.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }

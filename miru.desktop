@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Miru
+Exec=env DISABLE_AUTO_UPDATE=1 /opt/Miru/miru %U
+Terminal=false
+Type=Application
+Icon=miru
+StartupWMClass=Miru
+Comment=Bittorrent streaming software for cats
+Keywords=anime
+MimeType=x-scheme-handler/miru;
+Categories=AudioVideo;Video;
