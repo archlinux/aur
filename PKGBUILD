@@ -31,7 +31,7 @@ sha256sums_aarch64=(
 	'5c3c7edaabc5a20d0c9f162716444f303e68c229e7e246989ea5e55b5e38e5b2'
 	'SKIP'
 )
-install=".INSTALL"
+install="radicle-httpd-bin.install"
 provides=('radicle-httpd')
 conflicts=('radicle-httpd')
 
