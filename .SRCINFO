@@ -1,0 +1,34 @@
+pkgbase = plop-bootmanager-6-bin
+	pkgdesc = EFI and BIOS Bootloaders that can also boot CDROM images and others.
+	pkgver = 6.20230818
+	pkgrel = 1
+	epoch = 0
+	url = https://www.plop.at/en/pbm6/index.html
+	arch = i686
+	arch = x86_64
+	license = custom:freeware noncommercial
+	license = custom:GNU-EFI-BSD
+	license = custom:Boost Software License 1.0
+	optdepends = grub: To add plop-bootmanager-6 to the GRUB boot menu.
+	provides = plop-bootmanager-6=6.20230818
+	provides = plop-bootmanager-6-doc=6.20230818
+	provides = plop-bootmanager-6-mbr=6.20230818
+	provides = plop-bootmanager-6-efi=6.20230818
+	conflicts = plop-bootmanager-6
+	conflicts = plop-bootmanager-6-doc
+	conflicts = plop-bootmanager-6-mbr
+	conflicts = plop-bootmanager-6-efi
+	source = pbm6-mbr-20230818.zip::https://download.plop.at/pbm6/pbm6-20230818.zip
+	source = pbm6-efi-20230818.zip::https://download.plop.at/pbm6/pbm6-efi-20230206.zip
+	source = pbm6-mbr-20230818.html::https://www.plop.at/en/pbm6/bios.html
+	source = pbm6-efi-20230818.html::https://www.plop.at/en/pbm6/efi.html
+	source = pbm6-blog-20230818.html::https://www.plop.at/en/pbm6/blog.html
+	source = 80_plop6boot
+	sha256sums = 110fb842ab746d6528b53a56d41387441dd77d9f75e9ad8c5d43deb485ec0324
+	sha256sums = 211be9374482bc82aa5b2c50df3f00460f36f2e6b54ca9c260faf908d4423a49
+	sha256sums = ec763979889d0ac8965e540ef1f78ac16e044c758e5e838d84148d770409e697
+	sha256sums = 79872af6bd4ec11843a39520f305ac69ab1db807096d18745cdd95e739efeefb
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = plop-bootmanager-6-bin
