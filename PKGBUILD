@@ -6,7 +6,7 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=lib32-pam
-pkgver=1.5.3
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Pluggable Authentication Modules'
 arch=(x86_64)
@@ -15,6 +15,7 @@ license=(GPL2)
 depends=(
   lib32-libtirpc
   lib32-libxcrypt
+  lib32-systemd
   pam
 )
 makedepends=(
