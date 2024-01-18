@@ -1,11 +1,13 @@
 pkgbase = gwsocket-git
 	pkgdesc = gwsocket is a simple, standalone, language-agnostic, RFC6455 compliant WebSocket Server, written in C.
-	pkgver = r67.85aaad3
+	pkgver = r178.728dd5b
 	pkgrel = 1
 	url = http://gwsocket.io/
 	arch = x86_64
 	arch = i686
 	license = MIT
+	makedepends = git
+	makedepends = make
 	provides = gwsocket
 	conflicts = gwsocket
 	replaces = gwsocket
@@ -13,4 +15,3 @@ pkgbase = gwsocket-git
 	md5sums = SKIP
 
 pkgname = gwsocket-git
-
