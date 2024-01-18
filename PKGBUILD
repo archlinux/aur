@@ -4,9 +4,10 @@
 pkgbase=linux-usermode
 pkgname=('linux-usermode' 'linux-usermode-modules')
 _kernelname=-usermodelinux
-_major=6.6
-_minor=12
-pkgver=${_major}.${_minor}
+_major=6.7
+_minor=0
+#pkgver=${_major}.${_minor}
+pkgver=${_major}
 _srcname=linux-${pkgver}
 pkgrel=1
 pkgdesc="User mode Linux kernel and modules"
@@ -24,9 +25,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v6.x/linux-${pkgver}.tar.xz"
         'config'
         '70-uml.hook')
 
-sha256sums=('1fd7ec8c3d9c4e4b3a41d11e2c6d151e5fbf875dd08b3577f73afd6ee6674605'
+sha256sums=('ef31144a2576d080d8c31698e83ec9f66bf97c677fa2aaf0d5bbb9f3345b1069'
             'SKIP'
-            '4b9ab5a8bf50885c7e83759d41f087f126896fa11c1e93ef9f2aa734c04c2f16'
+            'a4dc92a8112ceb1659cfcb283bb3bd91ae246a13fcd6e9409dc112080aebe191'
             '05ea4e00d1e99bf8140a21c94e3c42acf17b9debad9c6f5decbe1dd1fe04332c')
 
 validpgpkeys=(
