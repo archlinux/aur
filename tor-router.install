@@ -12,7 +12,7 @@ post_install() {
     echo -e "Making a backup of your torrc file, if you have problems with the new configuration, delete $torconfig and move $torconfigbackup to $torconfig"
     cp "$torconfig" "$torconfigbackup"
     echo -e "Configuring the torrc file to use TOR as a transparent proxy..."
-    echo -e "\n# Seting up TOR transparent proxy for tor-router\nVirtualAddrNetwork 10.192.0.0/10\nAutomapHostsOnResolve 1\nTransPort 9040\nDNSPort 5353" >> "$torconfig"
+    echo -e "\n# Seting up TOR transparent proxy for tor-router\nVirtualAddrNetwork 10.192.0.0/10\nAutomapHostsOnResolve 1\nTransPort 9040\nDNSPort 6669" >> "$torconfig"
   fi
 }
 
