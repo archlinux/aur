@@ -4,7 +4,7 @@
 
 pkgname=rust-motd
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Beautiful, useful, configurable MOTD generation with zero runtime dependencies'
 arch=(x86_64)
 url=https://github.com/rust-motd/rust-motd
@@ -39,4 +39,5 @@ package() {
     cd "$srcdir"/$pkgname-$pkgver
     install -Dm755 -t "$pkgdir"/usr/bin target/release/$pkgname
     install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
+    install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname example_config.toml
 }
