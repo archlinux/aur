@@ -4,13 +4,13 @@
 _pkgname=kernel-modules-hook
 pkgname=${_pkgname}-bindmount
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Keeps your system fully functional after a kernel upgrade"
 arch=('any')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "${_pkgname}-hardlinks")
 url="https://github.com/archlinux-jerry/pkgbuilds/tree/master/kernel-modules-hook-bindmount"
-license=('GPL3')
+license=('GPL-3-or-later')
 source=("linux-modules-cleanup.conf"
         "10-linux-modules-pre.hook"
         "61-linux-modules-post.hook"
