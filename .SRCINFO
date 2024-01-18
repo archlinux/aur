@@ -1,7 +1,7 @@
 pkgbase = nbxplorer
 	pkgdesc = A minimalist UTXO tracker for HD wallets.
-	pkgver = 2.4.5
-	pkgrel = 2
+	pkgver = 2.5.0
+	pkgrel = 1
 	url = https://github.com/dgarage/NBXplorer
 	arch = x86_64
 	license = MIT
@@ -10,9 +10,9 @@ pkgbase = nbxplorer
 	depends = bitcoin-daemon
 	depends = dotnet-sdk
 	depends = postgresql
-	source = nbxplorer-v2.4.5.tar.gz::https://github.com/dgarage/NBXplorer/archive/refs/tags/v2.4.5.tar.gz
+	source = nbxplorer-v2.5.0.tar.gz::https://github.com/dgarage/NBXplorer/archive/refs/tags/v2.5.0.tar.gz
 	source = nbxplorer.sh
-	sha512sums = b3ce4a48ead235ed66f96fe87c7f9593f46a4398280ef9939ad377e7420f2b7b8409bd3b1de7e86d223ca9c1b207a0487277a075180800b8cff748bb7577bf0a
+	sha512sums = 092e1d290d2d067350deec396ca8409d6494e786cc9caf7508df678e1a81dc45dc0459537dc0e34f44ffbbacc3cd33a01f3d7104ca248b6ecc89562d514101b9
 	sha512sums = ce7e68b099de73f0a09d231e6c3ada98c5440b58c57d229fcc20fd4e3b18e2bd445c810960e828893be1a3bb8f6c954ba7c4b40f82caa84a9115bb5e752a1453
 
 pkgname = nbxplorer
