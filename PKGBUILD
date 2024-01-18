@@ -1,7 +1,7 @@
 # Maintainer: Ns2Kracy <2220496937@qq.com>
 # Maintainer: CorrectRoadH <correctroadh@gmail.com>
 pkgname=casaos-gateway
-pkgver=0.4.2
+pkgver=0.4.5
 pkgrel=1
 pkgdesc='CasaOS Gateway is a dynamic API gateway service that can be used to expose APIs from different other HTTP based services.'
 arch=('x86_64' 'aarch64' 'armv7h')
