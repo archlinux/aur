@@ -1,7 +1,7 @@
 # Contributer: abcfy2 <abcfy2@163.com>
 
 pkgname='deepin-wine8-stable'
-_pkgver=8.16-deepin10
+_pkgver=8.16-deepin11
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc="Deepin wine8 stable"
@@ -15,7 +15,7 @@ source=(
 noextract=(
     "deepin-wine8-stable_${_pkgver}_amd64.deb"
 )
-sha256sums=('d1beb49325cb3686135b523314efa8589b7ccc381e19596c6ba3bba1cb7f6efc')
+sha256sums=('e40a9d79ac2dfe8952521f8557d9575d518c9d7a265bbc7cf4e5c0ba619a24c6')
 depends=(
     alsa-lib                   # libasound2 (>= 1.0.16)
     glibc                       # libc6 (>= 2.26)
