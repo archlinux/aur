@@ -1,0 +1,12 @@
+pkgbase = cpp-mini
+	pkgdesc = Tiny, header only C++ library for manipulating INI files.
+	pkgver = 0.9.15
+	pkgrel = 1
+	url = https://github.com/metayeti/mINI
+	arch = any
+	license = MIT
+	conflicts = mini-git
+	source = mini-0.9.15.tar.gz::https://github.com/metayeti/mINI/archive/0.9.15.tar.gz
+	sha256sums = 241e105ab074827ab8b40582aa7b04c6191f84b244603969965c0874ad4f942c
+
+pkgname = cpp-mini
