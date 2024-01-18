@@ -1,12 +1,12 @@
 pkgbase = easyeda-pro-bin
 	pkgdesc = EasyEDA Professional Edition
 	pkgver = 2.1.42
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pro.easyeda.com/
 	install = easyeda-pro-bin.install
 	arch = x86_64
 	arch = aarch64
-	license = custom
+	license = LicenseRef-EasyEDA-Proprietary
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib

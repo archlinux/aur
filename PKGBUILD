@@ -4,11 +4,11 @@
 pkgname=easyeda-pro-bin
 _pkgname=${pkgname%-bin}
 pkgver=2.1.42
-pkgrel=1
+pkgrel=2
 pkgdesc="EasyEDA Professional Edition"
 arch=('x86_64' 'aarch64')
 url="https://pro.easyeda.com/"
-license=('custom')
+license=('LicenseRef-EasyEDA-Proprietary')
 depends=('gtk3' 'nss' 'alsa-lib')
 makedepends=()
 provides=($_pkgname)
