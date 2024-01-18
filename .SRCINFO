@@ -1,13 +1,13 @@
 pkgbase = terrapin-scanner
 	pkgdesc = A simple vulnerability scanner for the Terrapin attack
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.1.3
+	pkgrel = 1
 	url = https://github.com/RUB-NDS/Terrapin-Scanner
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	depends = glibc
-	source = terrapin-scanner-1.1.0.tar.gz::https://github.com/RUB-NDS/Terrapin-Scanner/archive/refs/tags/v1.1.0.tar.gz
-	b2sums = 9f7803e6f4941514480e57f358fd0c0e64b89d165d20d5bfe8d90c34be0e38e7a3162ad5a173f50e94cfac78c63959d19c90dc79dc55b8b98cb5fd96aa4a7cd0
+	source = terrapin-scanner-1.1.3.tar.gz::https://github.com/RUB-NDS/Terrapin-Scanner/archive/refs/tags/v1.1.3.tar.gz
+	b2sums = 4c86d076a9e449404dc3b8281c5896998f74fbdddc2f2a9f4491db72dccb9897482faf60ab2299fc8a7960c177734e20b040fb14ecc240b949b305f9ae0f8309
 
 pkgname = terrapin-scanner
