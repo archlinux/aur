@@ -2,12 +2,12 @@
 # Contributor: Zion Nimchuk <zionnimchuk@gmail.com>
 _pkgname=cubeb
 pkgname=$_pkgname-git
-pkgver=0.2.r1448.g1ba9237
+pkgver=0.2.r1506.gdd8a91f
 pkgrel=1
 pkgdesc="Cross platform audio library"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/mozilla/cubeb"
-license=('custom:ISC')
+license=('ISC')
 depends=('gcc-libs' 'glibc')
 makedepends=(
 	'alsa-lib'
