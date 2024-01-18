@@ -1,7 +1,7 @@
 pkgbase = cronie-selinux
 	pkgdesc = Daemon that runs specified programs at scheduled times and related tools with SELinux support
-	pkgver = 1.7.0
-	pkgrel = 4
+	pkgver = 1.7.1
+	pkgrel = 1
 	url = https://github.com/cronie-crond/cronie/
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = cronie-selinux
 	optdepends = smtp-server: send job output via email
 	optdepends = smtp-forwarder: forward job output to email server
 	provides = cron
-	provides = cronie=1.7.0-4
-	provides = selinux-cronie=1.7.0-4
+	provides = cronie=1.7.1-1
+	provides = selinux-cronie=1.7.1-1
 	conflicts = cron
 	conflicts = cronie
 	conflicts = selinux-cronie
@@ -27,12 +27,12 @@ pkgbase = cronie-selinux
 	backup = etc/default/anacron
 	backup = etc/pam.d/crond
 	backup = etc/sysconfig/crond
-	source = https://github.com/cronie-crond/cronie/releases/download/cronie-1.7.0/cronie-1.7.0.tar.gz
+	source = https://github.com/cronie-crond/cronie/releases/download/cronie-1.7.1/cronie-1.7.1.tar.gz
 	source = 80-cronie.hook
 	source = cron-deny
 	source = crontab
 	source = default-anacron
-	sha256sums = 6827f5a47760cc64afeef0a60d3cb5376f52569109fc9a73957dd5e9fdae7619
+	sha256sums = 78033100c24413f0c40f93e6138774d6a4f55bc31050567b90db45a2f9f1b954
 	sha256sums = f85e9a68bf3bf446f8a6167f068371c06afffe11ca71935d8ee5487b38b2c9db
 	sha256sums = ae6e533ecdfc1bd2dd80a9e25acb0260cbe9f00c4e4abee93d552b3660f263fc
 	sha256sums = 64d517a8d011b5cfa6b2433d528498e80fa8d0748c91f1b73e6ded70e776dc35
