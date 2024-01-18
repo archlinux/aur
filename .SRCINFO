@@ -1,0 +1,24 @@
+pkgbase = wiliwili-wayland
+	pkgdesc = 专为手柄控制设计的第三方跨平台B站客户端, 使用 Wayland 运行并阻止唤醒独显
+	pkgver = 1.3.0
+	pkgrel = 3
+	url = https://github.com/xfangfang/wiliwili
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = git
+	makedepends = libxi
+	makedepends = ninja
+	makedepends = python
+	makedepends = wayland-protocols
+	depends = mpv
+	depends = opencc
+	depends = pystring
+	conflicts = wiliwili
+	source = wiliwili::git+https://github.com/xfangfang/wiliwili.git#tag=v1.3.0
+	source = wiliwili.sh
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = wiliwili-wayland
