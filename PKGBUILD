@@ -3,11 +3,11 @@
 pkgname=python-lzf
 _name=${pkgname}
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="C Extension for liblzf"
 arch=('x86_64')
 url="https://github.com/teepark/python-lzf"
-license=('custom')
+license=('BSD-3-Clause')
 depends=('glibc')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")

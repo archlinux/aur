@@ -1,10 +1,10 @@
 pkgbase = python-lzf
 	pkgdesc = C Extension for liblzf
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/teepark/python-lzf
 	arch = x86_64
-	license = custom
+	license = BSD-3-Clause
 	makedepends = python-setuptools
 	depends = glibc
 	source = python-lzf-0.2.4.tar.gz::https://files.pythonhosted.org/packages/source/p/python-lzf/python-lzf-0.2.4.tar.gz
