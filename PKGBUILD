@@ -80,16 +80,20 @@ package() {
     cp -drv --no-preserve='ownership' build/bin "${pkgdir}/usr/lib/${_pkgname}"
 
     # Move shared data to /usr/share/duckstation
-    pushd "${pkgdir}/usr/lib/${_pkgname}"
+    cd "${pkgdir}/usr/lib/${_pkgname}"
     install -m 755 -d "${pkgdir}/usr/share/${_pkgname}"
     for _dir in resources translations
     do
         mv "${_dir}" "${pkgdir}/usr/share/${_pkgname}"
         ln -s "/usr/share/${_pkgname}/${_dir}" .
     done
-    popd
 
-    install -Dvm755 "$srcdir/duckstation-qt.sh" "$pkgdir/usr/bin/duckstation-qt"
-    install -Dvm644 "$srcdir/duckstation-qt.desktop" "$pkgdir/usr/share/applications/duckstation-qt.desktop"
-    install -Dvm644 "$_pkgname/data/resources/images/duck.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/duckstation-qt.png"
+    # Install additional license
+    install -m 755 -d "${pkgdir}/usr/share/licenses/${pkgname}/"
+    mv "${pkgdir}/usr/share/${_pkgname}/resources/thirdparty.html" "${pkgdir}/usr/share/licenses/${pkgname}/"
+    ln -s "/usr/share/licenses/${pkgname}/thirdparty.html" "${pkgdir}/usr/share/${_pkgname}/resources/"
+
+    install -Dvm755 "${srcdir}/duckstation-qt.sh" "${pkgdir}/usr/bin/duckstation-qt"
+    install -Dvm644 "${srcdir}/duckstation-qt.desktop" "${pkgdir}/usr/share/applications/duckstation-qt.desktop"
+    install -Dvm644 "${pkgdir}/usr/share/${_pkgname}/resources/images/duck.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/duckstation-qt.png"
 }
