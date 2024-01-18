@@ -1,13 +1,11 @@
 # Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
 
-
-
 _pkgname='grub2-filemanager'
 _vcssuffix='-git'
 pkgname="${_pkgname}${_vcssuffix}"
 epoch=0
 pkgver=2.11.r462.20220309.918524d
-pkgrel=1
+pkgrel=2
 pkgdesc="A GRUB-based directory navigation and boot tool that also allows to boot EFI and ISO images."
 arch=(
   'aarch64'
@@ -42,7 +40,7 @@ source=(
 sha256sums=(
   'SKIP'                                                              # Official upstream git repository.
   'SKIP'                                                              # grub2-latest.tar.gz
-  '7de4281fc8171826ea63805c15e2b31b00d359eeb7256bd6ecc0606ceab5b14d'  # 79_grubfm
+  '16887e65d8ac0af672713f8410d9e30eb02cf150f7419d8c0ce65d3bf21c84eb'  # 79_grubfm
 )
 options+=('!strip')
 

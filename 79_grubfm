@@ -43,7 +43,7 @@ fi
 
 if [ -e "${GRUBFM_aa64EFI_IMAGE}" ] && is_path_readable_by_grub "${GRUBFM_aa64EFI_IMAGE}" ; then
     ## EFI image exists, create menu entry
-    echo "Found GRUB-FM x86_64 EFI image: ${GRUBFM_aa64EFI_IMAGE}" >&2
+    echo "Found GRUB-FM aarch64 EFI image: ${GRUBFM_aa64EFI_IMAGE}" >&2
     _GRUB_PLOP_HINTS_STRING="$(${grub_probe} --target=hints_string ${GRUBFM_aa64EFI_IMAGE})"
     _GRUB_PLOP_FS_UUID="$(${grub_probe} --target=fs_uuid ${GRUBFM_aa64EFI_IMAGE})"
     _GRUB_PLOP_REL_PATH="$(make_system_path_relative_to_its_root ${GRUBFM_aa64EFI_IMAGE})"
@@ -61,7 +61,7 @@ fi
 
 if [ -e "${GRUBFM_x86EFI_IMAGE}" ] && is_path_readable_by_grub "${GRUBFM_x86EFI_IMAGE}" ; then
     ## EFI image exists, create menu entry
-    echo "Found GRUB-FM x86_64 EFI image: ${GRUBFM_x86EFI_IMAGE}" >&2
+    echo "Found GRUB-FM i386 EFI image: ${GRUBFM_x86EFI_IMAGE}" >&2
     _GRUB_PLOP_HINTS_STRING="$(${grub_probe} --target=hints_string ${GRUBFM_x86EFI_IMAGE})"
     _GRUB_PLOP_FS_UUID="$(${grub_probe} --target=fs_uuid ${GRUBFM_x86EFI_IMAGE})"
     _GRUB_PLOP_REL_PATH="$(make_system_path_relative_to_its_root ${GRUBFM_x86EFI_IMAGE})"
