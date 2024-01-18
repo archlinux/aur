@@ -1,7 +1,7 @@
 # Maintainer: Frederick Price <fprice at pricemail dot ca >
 
 pkgname=google-location-history-converter
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='google-location-history-converter takes downloaded Google Location Takeout data and converts it to KML'
 arch=(x86_64)
