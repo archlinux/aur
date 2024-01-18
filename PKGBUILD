@@ -2,7 +2,7 @@
 # Contributor: Willy Micieli <micieli at vivaldi.net>
 
 pkgname=zuu
-pkgver=7.1.2
+pkgver=7.2.0
 pkgrel=1
 pkgdesc="A program to check your code quality before all commit" 
 provides=("zuu")
@@ -10,9 +10,9 @@ arch=('any')
 url="https://github.com/taishingi/zuu"
 license=('GPL3')
 makedepends=('cargo')
-depends=('rustup' 'rsbadges' 'wget' 'git' 'docker-compose' 'cargo-audit')
+depends=('rustup' 'rsbadges' 'wget' 'git' 'docker-compose' 'ncurses' 'cargo-audit')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('48b5236ec18b3f4770701285e88408e49e7729b3f4f1704704edf0099c1cceaa')
+sha256sums=('cbfd41adfa67602a8417e1e6275e98c226e3f950cf3e97cfe118e27c2aca8fd1')
 
 build() {
     cd $pkgname-$pkgver
