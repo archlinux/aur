@@ -14,6 +14,7 @@ arch=('x86_64' 'aarch64')
 license=('custom')
 url="https://linux.wps.cn"
 options=('!emptydirs')
+DLAGENTS=("https::/usr/bin/curl -e https://www.wps.cn/product/wpslinux -o %o %u")
 source_x86_64=("https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2019/${pkgver##*.}/wps-office_${pkgver}_amd64.deb")
 source_aarch64=("https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2019/${pkgver##*.}/wps-office_${pkgver}_arm64.deb")
 source=('fix-wps-python-parse.patch')
