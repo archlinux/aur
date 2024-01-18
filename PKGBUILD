@@ -7,7 +7,7 @@ url="https://github.com/mineo/mplayer-autocmd"
 license=('unknown')
 source=('git+https://github.com/mineo/mplayer-autocmd.git')
 md5sums=('SKIP')
-depends=('python' 'mplayer')
+depends=('python' 'mpv')
 makedepends=('git')
 
 pkgver(){

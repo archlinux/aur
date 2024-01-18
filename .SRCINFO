@@ -7,9 +7,8 @@ pkgbase = mplayer-autocmd-git
 	license = unknown
 	makedepends = git
 	depends = python
-	depends = mplayer
+	depends = mpv
 	source = git+https://github.com/mineo/mplayer-autocmd.git
 	md5sums = SKIP
 
 pkgname = mplayer-autocmd-git
-
