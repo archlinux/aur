@@ -2,7 +2,7 @@
 
 pkgname="piper-voices"
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Voices for Piper text to speech system"
 url="https://huggingface.co/rhasspy/piper-voices"
 license=("MIT")
@@ -18,7 +18,7 @@ source=(
  "piper-generic.conf"
  "piped-piper"
 )
-b2sums=('44bf24b920778747fe90e9c3b11098774e4b1bcc51edb6a1a4e1b9787775c54d5e87d4c95943dcf402045b19ff3570abe9383fa0bdc9f7acc654be7d9285c6ea'
+b2sums=('09c589578fcb883b6e7c44f96df84c241c3a2e04b09eeeef973baa6955e702342165a82476c219a6cd8f297a96634035cdeee8e51eecc13636cf9349bd9e40d4'
         '2b5129e2e2fd4cb48602bf5d18052b124b31886cf02268de83d7b687f7e681ab83dc8baeb683c905664d26f4ddab6f86d95fbe3849113c26e5be5c557642810f')
 options=("!strip")
 install="$pkgname.install"
@@ -44,7 +44,7 @@ prepare(){
  # else uncomment to download only specific lfs objects (~60MB medium/low, ~120MB high)
  _models=(
   "/en/en_US/ryan/high/en_US-ryan-high.onnx"
-  "/en/en_US/ryan/high/en_US-ryan-low.onnx"
+  "/en/en_US/ryan/low/en_US-ryan-low.onnx"
  )
  echo "Downloading the following models: ${_models[*]}"
  git lfs pull --include "$(IFS=,; echo "${_models[*]}")"
