@@ -1,6 +1,6 @@
 pkgname=dae-bin-x64-v2
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux lightweight and high-performance transparent proxy solution based on eBPF."
 arch=('x86_64')
 url="https://github.com/daeuniverse/dae"
@@ -25,7 +25,7 @@ prepare() {
 }
 
 package() {
-	install -Dm755 "dae-linux-x86_64_v2_sse" -t "${pkgdir}/usr/bin/dae"
+	install -Dm755 "dae-linux-x86_64_v2_sse" "${pkgdir}/usr/bin/dae"
 	install -Dm644 "dae.service" -t "${pkgdir}/usr/lib/systemd/system/"
 	# install -Dm640 "example.dae" "${pkgdir}/etc/dae/config.dae"
 	install -Dm644 "example.dae" "${pkgdir}/etc/dae/config.dea.example"
