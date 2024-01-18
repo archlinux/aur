@@ -3,11 +3,11 @@
 pkgname=canokey-usbip-git
 _pkgname=${pkgname%-git}
 pkgver=r2.e9db44f
-pkgrel=1
+pkgrel=2
 pkgdesc="A virtual canokey based on USB/IP"
 arch=('x86_64')
 url="https://www.canokeys.org"
-license=('Apache')
+license=('Apache-2.0')
 depends=('usbip')
 makedepends=('cmake' 'git')
 source=('git+https://github.com/canokeys/canokey-usbip.git')

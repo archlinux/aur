@@ -1,10 +1,10 @@
 pkgbase = canokey-usbip-git
 	pkgdesc = A virtual canokey based on USB/IP
 	pkgver = r2.e9db44f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.canokeys.org
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = cmake
 	makedepends = git
 	depends = usbip
