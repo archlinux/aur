@@ -34,10 +34,10 @@ optdepends=(
 # the build chroot), uncomment the lines defining `checkdepends`, below,
 # as well as the `check()` function further down
 
-checkdepends=(
-    "${optdepends[@]}"
-    "r-testthat"
-)
+# checkdepends=(
+#     "${optdepends[@]}"
+#     "r-testthat"
+# )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 b2sums=("a8d0e94f1b6bf4ce9957f3dfce39e2c3c4c862886c659a11e315fd2ba8b6fbde35df3b5ab2fbde25e303d762d9860921f553fe5b0aa8f1187ea66d9a59fbb5ad")
@@ -47,10 +47,10 @@ build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
 }
 
-check() {
-    export R_LIBS="build/"
-    R CMD check --no-manual "${_cranname}"
-}
+# check() {
+#     export R_LIBS="build/"
+#     R CMD check --no-manual "${_cranname}"
+# }
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
