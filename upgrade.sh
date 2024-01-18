@@ -18,7 +18,7 @@ rm -f sqlite-autoconf-*.tar.gz
 # get download url
 url_version="${version/\./}"
 url_version="${url_version/\./0}00"
-url="https://www.sqlite.org/2023/sqlite-autoconf-${url_version}.tar.gz"
+url="https://www.sqlite.org/2024/sqlite-autoconf-${url_version}.tar.gz"
 echo "$url"
 
 # download source
