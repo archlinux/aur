@@ -1,7 +1,7 @@
 pkgbase = wine-staging-wow64
 	pkgdesc = A compatibility layer for running Windows programs
 	pkgver = 9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.winehq.org
 	install = wine.install
 	arch = x86_64
@@ -38,6 +38,8 @@ pkgbase = wine-staging-wow64
 	depends = libgphoto2
 	depends = samba
 	depends = sane
+	depends = libxkbcommon
+	depends = wayland
 	optdepends = alsa-lib
 	optdepends = cups
 	optdepends = dosbox
