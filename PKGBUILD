@@ -31,8 +31,4 @@ build() {
 package() {
   cd "$srcdir/${pkgname%-git}"
   make PREFIX=/usr DESTDIR="$pkgdir" install
-
-  # Fix permissions
-  chmod -R u=rwX,g=rX,o=- "$pkgdir/usr/share/polkit-1/rules.d/"
-  chgrp -R polkitd "$pkgdir/usr/share/polkit-1/rules.d/"
 }
