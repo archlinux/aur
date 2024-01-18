@@ -1,10 +1,10 @@
 pkgbase = easyeda-bin
 	pkgdesc = A Simple and Powerful Electronic Circuit Design Tool
 	pkgver = 6.5.39
-	pkgrel = 1
+	pkgrel = 2
 	url = https://easyeda.com/
 	arch = x86_64
-	license = custom
+	license = LicenseRef-EasyEDA-Proprietary
 	depends = gtk3
 	depends = nss
 	depends = libxss

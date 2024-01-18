@@ -4,11 +4,11 @@
 pkgname=easyeda-bin
 _pkgname=${pkgname%-bin}
 pkgver=6.5.39
-pkgrel=1
+pkgrel=2
 pkgdesc="A Simple and Powerful Electronic Circuit Design Tool"
 arch=('x86_64')
 url="https://easyeda.com/"
-license=('custom')
+license=('LicenseRef-EasyEDA-Proprietary')
 depends=('gtk3' 'nss' 'libxss' 'alsa-lib')
 makedepends=()
 provides=("${_pkgname}")
