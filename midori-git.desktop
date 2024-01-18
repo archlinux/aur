@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Midori Browser
-Comment=Lightweight Electron- and React-based browser
-Exec=/usr/bin/midori-git %u
-Terminal=false
-Type=Application
-Icon=midori-git
-Categories=Network;WebBrowser;
-MimeType=application/xhtml+xml;application/xhtml_xml;application/xml;text/html;text/xml;x-scheme-handler/http;x-scheme-handler/https;

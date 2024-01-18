@@ -1,0 +1,26 @@
+[Desktop Entry]
+Name=Midori
+Comment=Web browser based on Firefox ESR
+GenericName=Web Browser
+Keywords=Internet;WWW;Browser;Web;Explorer
+Exec=midori %u
+Icon=midori
+Terminal=false
+Type=Application
+MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;application/x-xpinstall;application/pdf;application/json;
+StartupNotify=true
+Categories=Network;WebBrowser;
+Actions=new-window;new-private-window;profile-manager-window;
+StartupWMClass=firefoxnightly
+
+[Desktop Action new-window]
+Name=Open a New Window
+Exec=midori --new-window %u
+
+[Desktop Action new-private-window]
+Name=Open a New Private Window
+Exec=midori --private-window %u
+
+[Desktop Action profile-manager-window]
+Name=Open the Profile Manager
+Exec=midori --ProfileManager

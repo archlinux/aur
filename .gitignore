@@ -1,6 +1,4 @@
 *
-!.gitignore
-!.SRCINFO
-!midori-git.desktop
-!midori-git.sh
 !PKGBUILD
+!.SRCINFO
+!.gitignore
