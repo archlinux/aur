@@ -19,7 +19,7 @@ pkgbase = flowinity-flameshot
 	optdepends = xdg-desktop-portal-kde: For KDE Plasma
 	provides = flameshot
 	conflicts = flameshot
-	source = git+https://github.com/PrivateUploader/flameshot.git#commit=5875eb5e395cef4820656e10847eb3343d451d8d
+	source = git+https://github.com/PrivateUploader/flameshot.git#commit=b61b0472a0e3650f8aad68020d5484ff2fcd8c79
 	md5sums = SKIP
 
 pkgname = flowinity-flameshot
