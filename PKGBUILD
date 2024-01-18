@@ -1,9 +1,10 @@
-# Maintainer: Tianrui Wei <archlinux_aur at mail dot tianrui-wei dot com>
+# Maintainer: Diego Dorn <diego plus archlinux at lama-corp dot space>
+# Contributor: Tianrui Wei <archlinux_aur at mail dot tianrui-wei dot com>
 # Contributor: Marcio Silva <marcionps at gmail dot com>
 _pkgname=amazingmarvin
 
 pkgname="${_pkgname}"-appimage
-pkgver=1.63.0
+pkgver=1.64.0
 pkgrel=1
 pkgdesc="Personal productivity app that incorporates principles from behavioral psychology to help you beat procrastination, feel in control and finish your to-do list"
 arch=('x86_64')
@@ -14,7 +15,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://amazingmarvin.s3.amazonaws.com/Marvin-${pkgver}.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('f8d8f344c1f38541a9a53f69633faf25804674b571971cc54350c474f2a56365')
+sha256sums_x86_64=('6149f3f97a93ae8416e1e7ff4ada7e37c2a1cd92354d708ed0a39f01429083cc')
 
 prepare() {
     chmod +x "${_appimage}"
