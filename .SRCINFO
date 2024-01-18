@@ -1,6 +1,6 @@
 pkgbase = intel-graphics-compiler-bin
 	pkgdesc = Intel Graphics Compiler for OpenCL (pre-compiled binaries)
-	pkgver = 1.0.14062.11
+	pkgver = 1.0.15136.22
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/intel/intel-graphics-compiler/
@@ -14,22 +14,22 @@ pkgbase = intel-graphics-compiler-bin
 	provides = intel-opencl-clang
 	conflicts = intel-graphics-compiler
 	conflicts = intel-opencl-clang
-	noextract = intel-igc-core_1.0.14062.11_amd64.deb
-	noextract = intel-igc-media_1.0.14062.11_amd64.deb
-	noextract = intel-igc-opencl-devel_1.0.14062.11_amd64.deb
-	noextract = intel-igc-opencl_1.0.14062.11_amd64.deb
+	noextract = intel-igc-core_1.0.15136.22_amd64.deb
+	noextract = intel-igc-media_1.0.15136.22_amd64.deb
+	noextract = intel-igc-opencl-devel_1.0.15136.22_amd64.deb
+	noextract = intel-igc-opencl_1.0.15136.22_amd64.deb
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.14062.11/intel-igc-core_1.0.14062.11_amd64.deb
-	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.14062.11/intel-igc-media_1.0.14062.11_amd64.deb
-	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.14062.11/intel-igc-opencl-devel_1.0.14062.11_amd64.deb
-	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.14062.11/intel-igc-opencl_1.0.14062.11_amd64.deb
-	source = git+https://github.com/intel/opencl-clang.git#commit=78c5e3f59e49f337c6a9af7818f0c8b918bee4bf
+	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.15136.22/intel-igc-core_1.0.15136.22_amd64.deb
+	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.15136.22/intel-igc-media_1.0.15136.22_amd64.deb
+	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.15136.22/intel-igc-opencl-devel_1.0.15136.22_amd64.deb
+	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.15136.22/intel-igc-opencl_1.0.15136.22_amd64.deb
+	source = git+https://github.com/intel/opencl-clang.git#commit=cf95b338d14685e4f3402ab1828bef31d48f1fd6
 	source = LICENSE
-	sha256sums = c75dc93b168246f0ac08aea6aef551312f54545771b4637a268de205617d2ab0
-	sha256sums = 1e0c6a6c0e2936eca616d54c678be0a10c4777bb27e34a01c57db5938e6619e2
-	sha256sums = 4c25f362cbd0b49c3b93677de8573ec6d4479aa9336179c1cd2934211916c187
-	sha256sums = cf76d943dbe44d3da2b7bad2a1049b8834030ec03f7cea6270528f5e67251095
+	sha256sums = a1a8b9ef6fa5e06335da284874f229ffb9ab467cca2c1c292ee8030490e6cb75
+	sha256sums = 199f3c02bd735249aa8d1ce89f19090ed8b3ca20aa9ba40c5e452b6b90f0961e
+	sha256sums = e6eac47485008df077eb85e828d3e4e7671e1013407c172fb8fa0015f034ca3c
+	sha256sums = 5b70b2131d2b76c125e78f21ec0e53590e15ecbbe59c7321bd3db3285f39a8eb
 	sha256sums = SKIP
 	sha256sums = 72d9ed65b0068110b0dcef7e2b52cd32d90ceaeb743b7b6fb8ad07265f230716
 
