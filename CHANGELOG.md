@@ -5,6 +5,40 @@
 [1]: https://pypi.org/project/google-cloud-bigquery/#history
 
 
+## [3.16.0](https://github.com/googleapis/python-bigquery/compare/v3.15.0...v3.16.0) (2024-01-12)
+
+
+### Features
+
+* Add `table_constraints` field to Table model ([#1755](https://github.com/googleapis/python-bigquery/issues/1755)) ([a167f9a](https://github.com/googleapis/python-bigquery/commit/a167f9a95f0a8fbf0bdb4943d06f07c03768c132))
+* Support jsonExtension in LoadJobConfig ([#1751](https://github.com/googleapis/python-bigquery/issues/1751)) ([0fd7347](https://github.com/googleapis/python-bigquery/commit/0fd7347ddb4ae1993f02b3bc109f64297437b3e2))
+
+
+### Bug Fixes
+
+* Add detailed message in job error ([#1762](https://github.com/googleapis/python-bigquery/issues/1762)) ([08483fb](https://github.com/googleapis/python-bigquery/commit/08483fba675f3b87571787e1e4420134a8fc8177))
+
+## [3.15.0](https://github.com/googleapis/python-bigquery/compare/v3.14.1...v3.15.0) (2024-01-09)
+
+
+### Features
+
+* Support JSON type in `insert_rows` and as a scalar query parameter ([#1757](https://github.com/googleapis/python-bigquery/issues/1757)) ([02a7d12](https://github.com/googleapis/python-bigquery/commit/02a7d129776b7da7da844ffa9c5cdf21811cd3af))
+* Support RANGE in schema ([#1746](https://github.com/googleapis/python-bigquery/issues/1746)) ([8585747](https://github.com/googleapis/python-bigquery/commit/8585747058e6db49a8078ae44d8e10735cdc27f9))
+
+
+### Bug Fixes
+
+* Deserializing JSON subfields within structs fails ([#1742](https://github.com/googleapis/python-bigquery/issues/1742)) ([0d93073](https://github.com/googleapis/python-bigquery/commit/0d930739c78b557db6cd48b38fe16eba93719c40))
+* Due to upstream change in dataset, updates expected results ([#1761](https://github.com/googleapis/python-bigquery/issues/1761)) ([132c14b](https://github.com/googleapis/python-bigquery/commit/132c14bbddfb61ea8bc408bef5e958e21b5b819c))
+* Load_table_from_dataframe for higher scale decimal ([#1703](https://github.com/googleapis/python-bigquery/issues/1703)) ([b9c8be0](https://github.com/googleapis/python-bigquery/commit/b9c8be0982c76187444300c414e0dda8b0ad105b))
+* Updates types-protobuf version for mypy-samples nox session ([#1764](https://github.com/googleapis/python-bigquery/issues/1764)) ([c0de695](https://github.com/googleapis/python-bigquery/commit/c0de6958e5761ad6ff532dd933b0f4387e18f1b9))
+
+
+### Performance Improvements
+
+* DB-API uses more efficient `query_and_wait` when no job ID is provided ([#1747](https://github.com/googleapis/python-bigquery/issues/1747)) ([d225a94](https://github.com/googleapis/python-bigquery/commit/d225a94e718a85877c495fbd32eca607b8919ac6))
+
 ## [3.14.1](https://github.com/googleapis/python-bigquery/compare/v3.14.0...v3.14.1) (2023-12-13)
 
 
