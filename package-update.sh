@@ -80,11 +80,12 @@ build_number=$(echo "${build_info}" | jq -r '.[0].number')
 if [[ "${build_version}" == "null" || "${build_number}" == "null" ]]; then
   die "${RED}Could not find a build for version ${version}. Exiting.${NOFORMAT}"
 fi
+build_md5=$(curl --silent --get https://code.onedev.io/~downloads/projects/160/builds/${build_number}/artifacts/onedev-${build_version}.tar.gz.sha256 | awk '{print $1}')
 msg "${BLUE}Identified release ID ${build_number} for version ${build_version}${NOFORMAT}"
+msg "${BLUE}Updating PKGBUILD and .SRCINFO...${NOFORMAT}"
 sed -i "s/pkgver=.*/pkgver=${build_version}/" PKGBUILD
 sed -i "s/_buildid=.*/_buildid=${build_number}/" PKGBUILD
-msg "${BLUE}Downloading version ${build_version} and updating PKGBUILD and .SRCINFO...${NOFORMAT}"
-updpkgsums
+sed -i "s/sha256sums=.*/sha256sums=('${build_md5}'/" PKGBUILD
 makepkg --printsrcinfo > .SRCINFO
 if ! git diff --exit-code PKGBUILD; then
   msg "${BLUE}Creating git commit...${NOFORMAT}"
