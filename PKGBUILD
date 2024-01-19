@@ -2,7 +2,7 @@
 
 pkgname=proxmark3gui-git
 pkgver=0.2.8.r0.ge2fb189
-pkgrel=10
+pkgrel=15
 pkgdesc="A cross-platform GUI for Proxmark3 client | 为 PM3 设计的图形界面"
 arch=('x86_64')
 url="https://github.com/wh201906/Proxmark3GUI"
@@ -12,7 +12,7 @@ conflicts=(${pkgname%-git})
 depends=(qt5-serialport)
 makedepends=(git
             qt5-tools)
-optdepends=("proxmark3: Software for the the Proxmark3, an RFID swiss-army tool")
+optdepends=("proxmark3-iceman: RRG / Iceman repo - Proxmark3 RDV4.0 and other Proxmark3 platforms.")
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
@@ -73,7 +73,7 @@ Type=Application
 
 Name=${pkgname%-git}
 Comment=${pkgname%-git}
-Categories=Network;Qt;
+Categories=Network;Qt;NFC;
 
 Icon=${pkgname%-git}
 Exec=${pkgname%-git}
