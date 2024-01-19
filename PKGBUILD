@@ -1,11 +1,11 @@
 # Maintainer: Jeremy Cantrell <jmcantrell at gmail dot com>
 
 pkgname=btrfs-snapshots-git
-pkgver=0.8.2.r6.63920b2
+pkgver=0.8.3.r0.2b0d420
 pkgrel=1
 pkgdesc="Manage timestamped collections of btrfs snapshots"
 arch=('any')
-url="https://github.com/jmcantrell/${pkgname%-git}"
+url="https://git.sr.ht/~jmcantrell/${pkgname%-git}"
 license=('MIT')
 depends=('btrfs-progs')
 makedepends=('git' 'scdoc')
