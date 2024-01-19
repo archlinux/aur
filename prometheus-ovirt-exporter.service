@@ -1,0 +1,18 @@
+[Unit]
+Description=Prometheus oVirt exporter
+After=network.target network-online.target basic.target
+Wants=network-online.target
+StartLimitIntervalSec=30
+StartLimitBurst=3
+
+[Service]
+EnvironmentFile=-/etc/conf.d/prometheus-ovirt-exporter
+ExecStart=/usr/bin/prometheus-ovirt-exporter $OPTIONS
+Type=simple
+Restart=on-failure
+RestartSec=30
+User=prometheus-ovirt-exporter
+Group=prometheus-ovirt-exporter
+
+[Install]
+WantedBy=multi-user.target
