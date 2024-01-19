@@ -1,6 +1,6 @@
 # Maintainer: wilke
 pkgname=harsh
-pkgver=0.8.30
+pkgver=0.8.31
 pkgrel=0
 pkgdesc="CLI habit tracking for geeks"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 
 makedepends=('go>=1.14')
 
-sha256sums=('a37cb152527bfae86e6f2aab38706725eeea2158dd51dce3e91bbf41acc1130c')
+sha256sums=('4815fbfcf8080120500a80e915d61c82d86698b3901686e2db4e5b87e42fa514')
 
 source=("$pkgname-$pkgver.tgz::https://github.com/wakatara/harsh/archive/refs/tags/v$pkgver.tar.gz")
 

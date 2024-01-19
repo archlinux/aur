@@ -1,12 +1,12 @@
 pkgbase = harsh
 	pkgdesc = CLI habit tracking for geeks
-	pkgver = 0.8.30
+	pkgver = 0.8.31
 	pkgrel = 0
 	url = https://github.com/wakatara/harsh
 	arch = any
 	license = MIT
 	makedepends = go>=1.14
-	source = harsh-0.8.30.tgz::https://github.com/wakatara/harsh/archive/refs/tags/v0.8.30.tar.gz
-	sha256sums = a37cb152527bfae86e6f2aab38706725eeea2158dd51dce3e91bbf41acc1130c
+	source = harsh-0.8.31.tgz::https://github.com/wakatara/harsh/archive/refs/tags/v0.8.31.tar.gz
+	sha256sums = 4815fbfcf8080120500a80e915d61c82d86698b3901686e2db4e5b87e42fa514
 
 pkgname = harsh
