@@ -1,0 +1,3 @@
+# WeeWX System User Definition
+#Type Name       ID       GECOS                         Home directory      Shell
+u     weewx      -        "WeeWX weather system"        /var/lib/weewx      -

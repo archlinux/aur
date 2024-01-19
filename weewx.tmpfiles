@@ -1,0 +1,4 @@
+# WeeWX directory permissions
+#Type Path               Mode User  Group Age Argument…
+d     /var/lib/weewx     750  weewx weewx -
+d     /var/lib/weewx/www 755  weewx weewx -

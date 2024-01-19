@@ -1,6 +1,0 @@
-#!/bin/sh
-app=wee_config
-
-WEEWX_BINDIR=/usr/lib/weewx
-WEEWX_PYTHON=python
-$WEEWX_PYTHON $WEEWX_BINDIR/$app $*

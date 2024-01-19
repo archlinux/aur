@@ -4,72 +4,50 @@
 # Supports automatic update checking
 
 pkgname=weewx
-_MAJOR=4
-_MINOR=10
-_PATCH=2
+_MAJOR=5
+_MINOR=0
+_PATCH=0
 pkgver=$_MAJOR.$_MINOR.$_PATCH
 
 function _dl_url {
   echo "https://github.com/weewx/weewx/archive/refs/tags/v$1.$2.$3.tar.gz"
 }
 
-pkgrel=7
+pkgrel=1
 pkgdesc="Software for logging data from weather stations"
 arch=("any")
 url="http://www.weewx.com/"
-license=("GPL3")
+license=("GPL-3.0-or-later")
 depends=("python"
-         "python-daemon"
-         "python-six"
+         "python-cheetah3"
          "python-configobj"
-         "python-pyserial"
-         "python-pillow"
-         "python-pyusb"
-         "python-cheetah3")
-optdepends=("python-pyephem: extended almanac information"
-            "mariadb-clients: MariaDB support"
-            "python-mysqlclient: MariaDB support")
+         "python-pillow")
+optdepends=("python-pyserial: serial port support"
+            "python-pyusb: USB port support"
+            "python-pyephem: extended celestial information"
+            "python-pymysql: MySQL or MariaDB support")
+makedepends=("mkdocs"
+             "mkdocs-material"
+             "mkdocs-material-extensions")
 backup=("etc/weewx/weewx.conf")
 source=("$pkgname-$pkgver.tar.xz::$(_dl_url $_MAJOR $_MINOR $_PATCH)"
-        "wee_config"
-        "wee_database"
-        "wee_debug"
-        "wee_device"
-        "wee_extension"
-        "wee_import"
-        "wee_reports"
-        "weewxd"
-        "wunderfixer"
-        "weewx.service"
-        "genplot.py"
-        "weewx-version.patch"
-        "pillow-rect.patch")
-sha512sums=('8fca9cd7720a29687a0d900e4d89ec2ce5ca5d2aa36bc5b5909ea14ecb849cdbdb6e699cf1c3a0d5505c89ad8c309517db32fd8dc4a0ae4704dfd5ed0cc5747f'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+        "weewx.sysusers"
+        "weewx.tmpfiles"
+        "weewx.service")
+sha512sums=('c3eb23048012f2bab7eac0a25f6dfad4da4ff1591601f7242cf7fec91343e88f3014b7281c021c75cfdbb5b4e73285ab8605325a3c7771e90a5016e3d574dc3b'
+            '6015b870143f6b8ae094b3f94ad53323be8a083f11c177dc508315fb3bbc20dd318124e6ccd41ba9d0388828e18c4b4ae6ce7c4a35ac0cab442eca9e8bbbca2d'
+            '9875bf209439f62fc2e6773b1283a6ed0a2adbe33e7b6461678a5f036679570a98393814eeadcb20b9d9160b79aca0b1a1769eab39be2d1913b64439abd76f62'
+            '4744fec4faf63b36f9c82a7404e4ecc749eb07e8d90640465ff7a2ae20cdb2560348b0a125467fad215d0e51d88d27a991dc0196899e53d19479dec942d6e52d')
 _watch="http://www.weewx.com/downloads/"
-
-prepare() {
-  cd "$srcdir/${pkgname}-${pkgver}"
-  patch --strip=1 --input="$srcdir/weewx-version.patch"
-  patch --strip=1 --input="$srcdir/pillow-rect.patch"
-  cp -v "$srcdir/genplot.py" bin/weeplot
-}
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
-  python setup.py build
+
+  echo "Compiling Python bytecode"
+  python -m compileall -q "src"
+
+  echo "Building documentation"
+  make --quiet build-docs
 }
 
 _install() {
@@ -88,79 +66,78 @@ _install() {
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
 
-  echo "Renning install using setup.py script"
-  local setup_base="$pkgdir/${pkgname}"
-  python setup.py install --root="$setup_base" --optimize=1 --skip-build --no-prompt
+  local PYTHON='python'
+  local weewx_bindir='/usr/lib/weewx'
+  local weewx_sharedir="/usr/share/weewx"
+  local weewx_etcdir="/etc/weewx"
+  local weewx_vardir="/var/lib/weewx"
+  local entrypoints=('weewxd' 'weectl')
 
-  local target_bin_dir="$pkgdir/usr/bin"
-  local target_doc_dir="$pkgdir/usr/share/doc/$pkgname"
-  local target_etc_dir="$pkgdir/etc/$pkgname"
-  local target_lib_dir="$pkgdir/usr/lib/$pkgname"
-  local target_share_dir="$pkgdir/usr/share/$pkgname"
+  local bindir="$pkgdir/usr/bin"
+  local libdir="${pkgdir}${weewx_bindir}"
+  local sharedir="${pkgdir}${weewx_sharedir}"
+  local licensedir="$pkgdir/usr/share/licenses/weewx"
+  local docdir="$pkgdir/usr/share/doc/weewx"
+  local etcdir="${pkgdir}${weewx_etcdir}"
+  local unitdir="$pkgdir/usr/lib/systemd/system"
+  local sysusersdir="$pkgdir/usr/lib/sysusers.d"
+  local tmpfilesdir="$pkgdir/usr/lib/tmpfiles.d"
+  local udevdir="$pkgdir/usr/lib/udev/rules.d"
 
-  local target_license_file="$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  local target_unit="${pkgname}.service"
-  local target_unit_file="$pkgdir/usr/lib/systemd/system/${target_unit}"
-  local target_conf_file="$target_etc_dir/weewx.conf"
+  echo "Copying source files"
+  [[ -d "$libdir" ]] || mkdir -p "$libdir"
+  _install "$libdir" 644 "src"/*
+  _install "$libdir" 755 "src/weewx_data/bin"
 
-  local source_bin=("${srcdir}/wee_config"
-                    "${srcdir}/wee_database"
-                    "${srcdir}/wee_debug"
-                    "${srcdir}/wee_device"
-                    "${srcdir}/wee_extension"
-                    "${srcdir}/wee_import"
-                    "${srcdir}/wee_reports"
-                    "${srcdir}/weewxd"
-                    "${srcdir}/wunderfixer")
-  local source_unit_file=("${srcdir}/${target_unit}")
-  local source_doc=("${setup_base}/home/weewx/docs"/*)
-  local source_conf_file="${setup_base}/home/weewx/weewx.conf"
-  local source_etc=("${setup_base}/home/weewx/skins" "$source_conf_file")
-  local source_lib=("${setup_base}/home/weewx/bin"/*)
-  local source_license_file=("${setup_base}/home/weewx/LICENSE.txt")
-  local source_share=("${setup_base}/home/weewx/examples"
-                      "${setup_base}/home/weewx/util/apache"
-                      "${setup_base}/home/weewx/util/import"
-                      "${setup_base}/home/weewx/util/logrotate.d"
-                      "${setup_base}/home/weewx/util/logwatch"
-                      "${setup_base}/home/weewx/util/newsyslog.d"
-                      "${setup_base}/home/weewx/util/rsyslog.d"
-                      "${setup_base}/home/weewx/util/udev")
+  echo "Creating entrypoints"
+  [[ -d "$bindir" ]] || mkdir -p "$bindir"
+  for f in ${entrypoints[@]}; do
+    echo "Creating entrypoint $f"
+    sed \
+      -e "s%WEEWX_BINDIR=.*%WEEWX_BINDIR=\"${weewx_bindir}\"%" \
+      -e "s%WEEWX_PYTHON=.*%WEEWX_PYTHON=\"${PYTHON}\"%" \
+      "bin/$f" > "$bindir/$f"
+    chmod 755 "$bindir/$f"
+  done
 
-  echo "Installing binaries"
-  _install "$target_bin_dir" 755 "${source_bin[@]}"
+  echo "Copying license and copyright"
+  install -Dm644 "docs_src/copyright.md" "$licensedir/copyright.md"
+  install -Dm644 "LICENSE.txt" "$licensedir/LICENSE.txt"
 
-  echo "Installing library files"
-  _install "$target_lib_dir" 644 "${source_lib[@]}"
+  echo "Copying documentation"
+  [[ -d "$docdir" ]] || mkdir -p "$docdir"
+  _install "$docdir" 644 "build/docs"/*
 
-  echo "Installing configuration"
-  _install "$target_etc_dir" 644 "${source_etc[@]}"
+  echo "Copying skins"
+  [[ -d "$sharedir" ]] || mkdir -p "$sharedir"
+  _install "$sharedir" 644 "src/weewx_data/skins"
 
-  echo "Installing documentation"
-  _install "$target_doc_dir" 644 "${source_doc[@]}"
+  echo "Copying ancillary files"
+  _install "$sharedir" 644 "src/weewx_data/examples"
+  _install "$sharedir" 644 "src/weewx_data/util/import"
+  _install "$sharedir" 644 "src/weewx_data/util/logwatch"
+  _install "$sharedir" 644 "src/weewx_data/util/systemd"
+  _install "$sharedir" 644 "src/weewx_data/util/udev"
 
-  echo "Installing shared files"
-  _install "$target_share_dir" 644 "${source_share[@]}"
+  echo "Creating configuration file"
+  [[ -d "$etcdir" ]] || mkdir -p "$etcdir"
+  sed \
+    -e "/log_failure =.*/aWEEWX_ROOT = $weewx_bindir" \
+    -e "s%SKIN_ROOT =.*%SKIN_ROOT = $weewx_sharedir/skins%" \
+    -e "s%HTML_ROOT = public_html%HTML_ROOT = $weewx_vardir/www%" \
+    -e "s%SQLITE_ROOT = .*%SQLITE_ROOT = $weewx_vardir%" \
+    "src/weewx_data/weewx.conf" > "$etcdir/weewx.conf"
+  chmod 640 "$etcdir/weewx.conf"
 
-  echo "Installing license"
-  install -Dm644 "$source_license_file" "$target_license_file"
+ echo "Creating systemd unit"
+ install -Dm640 "$srcdir/weewx.service" "$unitdir/weewx.service"
 
-  echo "Installing unit file"
-  install -Dm644 "$source_unit_file" "$target_unit_file"
+ echo "Creating system user definition"
+ install -Dm640 "$srcdir/weewx.sysusers" "$sysusersdir/weewx.conf"
 
-  echo "Removing temp setup"
-  rm -r "$setup_base"
+ echo "Creating tmpfiles definition"
+ install -Dm640 "$srcdir/weewx.tmpfiles" "$tmpfilesdir/weewx.conf"
 
-  echo "Removing unnecessary files"
-  find "$pkgdir" -name "*.egg-info" -type f -delete
-
-  echo "Fixing ownership"
-  chown -R root:root "$pkgdir"
-
-  echo "Adapting configuration file"
-  sed -i "$target_conf_file" \
-   -r -e "s@(.*WEEWX_ROOT).*@\1 = /@g" \
-   -r -e "s@(.*SKIN_ROOT).*@\1 = /etc/$pkgname/skins@g" \
-   -r -e "s@(.*HTML_ROOT).*@\1 = /srv/http/html/$pkgname@g" \
-   -r -e "s@(.*SQLITE_ROOT).*@\1 = /var/lib/$pkgname@g"
+ echo "Creating udev ruleset"
+ install -Dm640 "src/weewx_data/util/udev/rules.d/weewx.rules" "$udevdir/weewx.rules"
 }

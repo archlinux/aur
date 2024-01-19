@@ -1,14 +1,15 @@
 [Unit]
-Description=weewx weather system
+Description=WeeWX weather system
 Requires=time-sync.target
 After=time-sync.target
-RequiresMountsFor=/etc /var/lib
+RequiresMountsFor=/etc/weewx /var/lib/weewx /var/lib/weewx/www
 
 [Service]
 ExecStart=/usr/bin/weewxd /etc/weewx/weewx.conf
 StandardOutput=null
-#User=weewx
-#Group=weewx
+StandardError=journal
+User=weewx
+Group=weewx
 
 [Install]
 WantedBy=multi-user.target
