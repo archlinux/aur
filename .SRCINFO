@@ -1,0 +1,18 @@
+pkgname             = rage-bin
+pkgbase             = rage-bin
+pkgdesc             = A simple, secure and modern file encryption tool (and Rust library) with small explicit keys, no config options, and UNIX-style composability. 
+pkgver              = 0.9.2
+url                 = https://github.com/str4d/rage
+arch                = x86_64
+arch                = aarch64
+arch                = armv7h
+license             = Apache-2.0 OR MIT
+optdepends          = pinentry: GPG password prompt
+
+source_x86_64       = https://github.com/str4d/rage/releases/download/v$pkgver/rage-v$pkgver-x86_64-linux.tar.gz
+source_aarch64      =  https://github.com/str4d/rage/releases/download/v$pkgver/rage-v$pkgver-arm64-linux.tar.gz
+source_armv7h       =  https://github.com/str4d/rage/releases/download/v$pkgver/rage-v$pkgver-armv7-linux.tar.gz
+
+sha256sums_x86_64   = 405b9b65397bad43ee481250472a8b0dfa8d62aaedbb7355590ca68077570e27
+sha256sums_aarch64  = 50ed9f2acc88dfc437498c3d9acadabda6c1ffce22cae7879a07c24ae563e857
+sha256sums_armv7h   = 5be8b2bdb94ec9345b8d32b410c9dd3afa59b2148f6d16d4794fe7895e3e7c15
