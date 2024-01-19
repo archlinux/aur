@@ -2,7 +2,7 @@
 
 pkgbase=lightway-core
 pkgname=('lightway-core' 'lightway-core-doc')
-pkgver=1.16.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc='A VPN protocol by ExpressVPN'
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("https://github.com/expressvpn/lightway-core/archive/v${pkgver}/${pkgnam
         'git+https://github.com/open-quantum-safe/liboqs.git'
         'git+https://github.com/wolfSSL/wolfssl.git'
         '010-lightway-core-disable-werror-on-wolfssl.patch')
-sha256sums=('b9a93dea88d4653dea63b90b30337a2e9a0929b6067031c5c76f8e3e0eb12fd1'
+sha256sums=('849afd68f2a49a9f0f58d9c68bb83c8696c20405ca924256d42ad8b869fdfc33'
             'SKIP'
             'SKIP'
             'fd82affc9e605a7963e5b4908d8decc877980ac007f9ba5aabeccf9019cf5727')
