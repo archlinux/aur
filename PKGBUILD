@@ -1,14 +1,14 @@
 # Maintainer: Zoron <zoronlivingston at gmail>
 
 pkgname=eldiron-bin
-pkgver=0.8.6
+pkgver=0.8.7
 pkgrel=1
 pkgdesc="A cross platform classic RPG game creator written in Rust."
 arch=('x86_64')
 url="https://github.com/markusmoenig/Eldiron"
 license=('MIT')
 source=("https://github.com/markusmoenig/Eldiron/releases/download/v$pkgver/Eldiron.deb")
-md5sums=('2fe44a755cd48faf31c56a31921941dc')
+md5sums=('11e0cb11f307869d3f81d4c53ddf4b99')
 
 package() {
   tar xvf control.tar.gz
