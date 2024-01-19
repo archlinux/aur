@@ -2,7 +2,7 @@
 pkgname=sabaki-bin
 pkgver=0.52.2
 _electronversion=13
-pkgrel=4
+pkgrel=5
 pkgdesc="An elegant Go board and SGF editor for a more civilized age."
 arch=(
     'i686'
@@ -16,9 +16,7 @@ conflicts=("${pkgname%-bin}" "${pkgname%-bin}-electron")
 depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
-    'libx11'
-    'gdk-pixbuf2'
-    'libxext'
+    'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
 )
@@ -32,7 +30,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('a5c065dbac7a3076b8ac3437280ac8d721cb52c6c6ff8d0e5509fa9111c81349'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 sha256sums_i686=('51344817aaf2b92578a57c0914e681abaa07834041da54252473a781387c8644')
 sha256sums_x86_64=('c2e0a3e47bcd65cd8a39d7393b8f6ea4d4e81432a230c59ec7291cb478b9d446')
 build() {
@@ -42,7 +40,7 @@ build() {
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
