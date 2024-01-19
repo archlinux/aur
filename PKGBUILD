@@ -1,23 +1,24 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # based on aur electron21-bin: Yurii Kolesnykov <root@yurikoles.com>
-_pkgname=electron2
-pkgname="${_pkgname}-bin"
+pkgname=electron2-bin
 _major=2
-_subver="0.18"
+_subver=0.18
 _pkgver="${_major}.${_subver}"
 pkgver="${_pkgver/-/.}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Build cross platform desktop apps with web technologies - Binary version ${_major}"
 arch=(
 	'x86_64'
 	'aarch64'
 )
-url="https://electronjs.org/"
-_releaseurl="https://github.com/${_projectname}/${_projectname}/releases/download/v${_pkgver}"
+url="https://electronjs.org"
+_releaseurl="https://github.com/${pkgname%2-bin}/${pkgname%2-bin}/releases/download/v${_pkgver}"
 license=(
 	'MIT'
-	'custom'
+	'LicenseRef-custom'
 )
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=(
 	'alsa-lib'
 	'gtk3'
@@ -50,21 +51,19 @@ optdepends=(
 	'pipewire: WebRTC desktop sharing under Wayland'
 	'qt5-base: enable Qt5 with --enable-features=AllowQt'
 	'trash-cli: file deletion support (trash-put)'
-	'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)'
+	"xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)"
 )
-provides=("${pkgname%-bin}=${pkgver}")
-conflicts=("${pkgname%-bin}")
 noextract=(
 	"${pkgname}-chromedriver-${pkgver}-${CARCH}.zip"
 	"${pkgname}-${pkgver}-${CARCH}.zip"
 )
 source_x86_64=(
 	"${pkgname}-chromedriver-${pkgver}-x86_64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-x64.zip"
-	"${pkgname}-${pkgver}-x86_64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-x64.zip"
+	"${pkgname}-${pkgver}-x86_64.zip::${_releaseurl}/${pkgname%2-bin}-v${_pkgver}-linux-x64.zip"
 )
 source_aarch64=(
 	"${pkgname}-chromedriver-${pkgver}-aarch64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-arm64.zip"
-	"${pkgname}-${pkgver}-aarch64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-arm64.zip"
+	"${pkgname}-${pkgver}-aarch64.zip::${_releaseurl}/${pkgname%2-bin}-v${_pkgver}-linux-arm64.zip"
 )
 sha256sums_x86_64=('37140f6ec7d333dcd559c85815d547ef7a0046272f37fce0f78c308032779edc'
                    'f196e06b6ecfa33bffb02b3d6c4a64bd5a076014e2f21c4a67356474ee014000')
