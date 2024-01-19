@@ -1,12 +1,12 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-agent
-pkgver=4.7.0
+pkgver=4.7.1
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
 pkgrel=1
 pkgdesc="Wazuh Agent for Arch Linux"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://wazuh.com/"
 license=('gpl2')
 depends=(
@@ -37,9 +37,11 @@ optdepends=(
 );
 validpgpkeys=('9E646BB0630C8FD18ACD15541B93E6A766CD229D')
 
-source=("https://packages.wazuh.com/4.x/yum/${pkgname}-${_prodver}.x86_64.rpm")
+source_aarch64=("https://packages.wazuh.com/4.x/yum/${pkgname}-${pkgver}-${pkgrel}.aarch64.rpm")
+source_x86_64=("https://packages.wazuh.com/4.x/yum/${pkgname}-${pkgver}-${pkgrel}.x86_64.rpm")
 
-sha256sums=('cbf286a034ca77ba758f5705ab7d68062e6490a1d5f689456339f830ef0089b7')
+sha256sums_x86_64=('1fa7cd5565450a5ded88ee180d46cfa0d8ea186400b54b56d95bfd78089ceab7')
+sha256sums_aarch64=('2ec810e2c08712392f3692053c9bb0d9ade2e4ff6802f2d71eff08de2c6059cc')
 
 install=$pkgname.install
 

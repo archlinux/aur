@@ -1,10 +1,11 @@
 pkgbase = wazuh-agent
 	pkgdesc = Wazuh Agent for Arch Linux
-	pkgver = 4.7.0
+	pkgver = 4.7.1
 	pkgrel = 1
 	url = https://wazuh.com/
 	install = wazuh-agent.install
 	arch = x86_64
+	arch = aarch64
 	license = gpl2
 	depends = curl
 	depends = gcc
@@ -28,8 +29,10 @@ pkgbase = wazuh-agent
 	depends = inetutils
 	depends = cmake
 	optdepends = lsb-release
-	source = https://packages.wazuh.com/4.x/yum/wazuh-agent-4.7.0-1.x86_64.rpm
 	validpgpkeys = 9E646BB0630C8FD18ACD15541B93E6A766CD229D
-	sha256sums = cbf286a034ca77ba758f5705ab7d68062e6490a1d5f689456339f830ef0089b7
+	source_x86_64 = https://packages.wazuh.com/4.x/yum/wazuh-agent-4.7.1-1.x86_64.rpm
+	sha256sums_x86_64 = 1fa7cd5565450a5ded88ee180d46cfa0d8ea186400b54b56d95bfd78089ceab7
+	source_aarch64 = https://packages.wazuh.com/4.x/yum/wazuh-agent-4.7.1-1.aarch64.rpm
+	sha256sums_aarch64 = 2ec810e2c08712392f3692053c9bb0d9ade2e4ff6802f2d71eff08de2c6059cc
 
 pkgname = wazuh-agent
