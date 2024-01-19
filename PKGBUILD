@@ -14,12 +14,9 @@ conflicts=("${pkgname%-bin}")
 depends=(
     'hicolor-icon-theme'
     "electron${_electronversion}"
-    'libx11'
-    'gdk-pixbuf2'
-    'libxext'
+    'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
-    'dbus-glib'
 )
 makedepends=(
     'squashfuse'
@@ -31,7 +28,7 @@ source=(
 )
 sha256sums=('5264acfd9d4e3ca0ce7332acaeb74431c49b48e9f50f01bd9f45074ea323577b'
             '096d751c3b4fea8ec7f2c8600137020ac6d1ab74b27a6353d1a3dca4271bc9f0'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -40,7 +37,7 @@ build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
-    sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g;s|${pkgname%-bin}-3|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}-3.desktop"
+    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g;s|${pkgname%-bin}-3|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}-3.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
