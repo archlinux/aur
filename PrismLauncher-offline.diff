@@ -1,0 +1,93 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index faeb1c44e..fe86eca9b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -216,6 +216,7 @@ set(Launcher_DISCORD_URL "https://prismlauncher.org/discord" CACHE STRING "URL f
+ set(Launcher_SUBREDDIT_URL "https://prismlauncher.org/reddit" CACHE STRING "URL for the subreddit.")
+ 
+ # Builds
++set(Launcher_DRM ON CACHE BOOL "Offline mode requires a premium account if enabled")
+ set(Launcher_FORCE_BUNDLED_LIBS OFF CACHE BOOL "Prevent using system libraries, if they are available as submodules")
+ set(Launcher_QT_VERSION_MAJOR "6" CACHE STRING "Major Qt version to build against")
+ 
+diff --git a/buildconfig/BuildConfig.cpp.in b/buildconfig/BuildConfig.cpp.in
+index b40cacb0f..9e676d809 100644
+--- a/buildconfig/BuildConfig.cpp.in
++++ b/buildconfig/BuildConfig.cpp.in
+@@ -126,6 +126,8 @@ Config::Config()
+     MATRIX_URL = "@Launcher_MATRIX_URL@";
+     DISCORD_URL = "@Launcher_DISCORD_URL@";
+     SUBREDDIT_URL = "@Launcher_SUBREDDIT_URL@";
++
++    DRM = @Launcher_DRM@;
+ }
+ 
+ QString Config::versionString() const
+diff --git a/buildconfig/BuildConfig.h b/buildconfig/BuildConfig.h
+index 77b6eef54..519c7c916 100644
+--- a/buildconfig/BuildConfig.h
++++ b/buildconfig/BuildConfig.h
+@@ -35,6 +35,9 @@
+  *      limitations under the License.
+  */
+ 
++#define ON true
++#define OFF false
++
+ #pragma once
+ #include <QList>
+ #include <QString>
+@@ -161,6 +164,8 @@ class Config {
+     QString DISCORD_URL;
+     QString SUBREDDIT_URL;
+ 
++    bool DRM;
++
+     QString RESOURCE_BASE = "https://resources.download.minecraft.net/";
+     QString LIBRARY_BASE = "https://libraries.minecraft.net/";
+     QString AUTH_BASE = "https://authserver.mojang.com/";
+diff --git a/launcher/ui/pages/global/AccountListPage.cpp b/launcher/ui/pages/global/AccountListPage.cpp
+index 3a21cdd9b..cee8c3247 100644
+--- a/launcher/ui/pages/global/AccountListPage.cpp
++++ b/launcher/ui/pages/global/AccountListPage.cpp
+@@ -53,6 +53,8 @@
+ 
+ #include "Application.h"
+ 
++#include "BuildConfig.h"
++
+ AccountListPage::AccountListPage(QWidget* parent) : QMainWindow(parent), ui(new Ui::AccountListPage)
+ {
+     ui->setupUi(this);
+@@ -146,7 +148,7 @@ void AccountListPage::on_actionAddMicrosoft_triggered()
+ 
+ void AccountListPage::on_actionAddOffline_triggered()
+ {
+-    if (!m_accounts->anyAccountIsValid()) {
++    if (BuildConfig.DRM && !m_accounts->anyAccountIsValid()) {
+         QMessageBox::warning(this, tr("Error"),
+                              tr("You must add a Microsoft account that owns Minecraft before you can add an offline account."
+                                 "<br><br>"
+diff --git a/launcher/ui/pages/instance/VersionPage.cpp b/launcher/ui/pages/instance/VersionPage.cpp
+index 2918261d2..226fe69e2 100644
+--- a/launcher/ui/pages/instance/VersionPage.cpp
++++ b/launcher/ui/pages/instance/VersionPage.cpp
+@@ -40,6 +40,8 @@
+ 
+ #include "Application.h"
+ 
++#include "BuildConfig.h"
++
+ #include <QAbstractItemModel>
+ #include <QEvent>
+ #include <QKeyEvent>
+@@ -408,7 +410,8 @@ void VersionPage::on_actionChange_version_triggered()
+ 
+ void VersionPage::on_actionDownload_All_triggered()
+ {
+-    if (!APPLICATION->accounts()->anyAccountIsValid()) {
++    if (BuildConfig.DRM && !APPLICATION->accounts()->anyAccountIsValid())
++    {
+         CustomMessageBox::selectable(this, tr("Error"),
+                                      tr("Cannot download Minecraft or update instances unless you have at least "
+                                         "one account added.\nPlease add a Microsoft account."),

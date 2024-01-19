@@ -1,15 +1,16 @@
-# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
-# Maintainer: txtsd <aur.archlinux@ihavea.quest>
-# Maintainer: seth <getchoo at tuta dot io>
+# Maintainer: Dawid Rejowski <rejowski.xyz>
+# Contributor: Sefa Eyeoglu <contact@scrumplex.net>
+# Contributor: txtsd <aur.archlinux@ihavea.quest>
+# Contributor: seth <getchoo at tuta dot io>
 # Contributor: Elijah Gregg <lovetocode999 at tilde dot team>
 # Contributor: Lenny McLennington <lennymclennington@protonmail.com>
 # Contributor: Miko <mikoxyzzz@gmail.com>
 # Contributor: Cheru Berhanu <aur attt cheru doot dev>
 
 _pkgname=prismlauncher
-pkgname=${_pkgname}-git
-pkgver=6.0.r238.gdeed4957
-pkgrel=4
+pkgname=${_pkgname}-offline-git
+pkgver=8.0.r222.g4cda04271
+pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://prismlauncher.org"
@@ -26,8 +27,10 @@ optdepends=('glfw: to use system GLFW libraries'
 )
 options=(debug)
 source=("git+https://github.com/PrismLauncher/PrismLauncher.git"
-        "git+https://github.com/PrismLauncher/libnbtplusplus.git")
+        "git+https://github.com/PrismLauncher/libnbtplusplus.git"
+        "PrismLauncher-offline.diff")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP')
 
 pkgver() {
@@ -47,6 +50,8 @@ prepare() {
   git config submodule.libraries/tomlplusplus.active false
   git config submodule.libraries/zlib.active false
   git submodule--helper update
+
+  patch --forward --strip=1 --input="${srcdir}/PrismLauncher-offline.diff"
 }
 
 build() {
@@ -56,7 +61,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DLauncher_APP_BINARY_NAME="${_pkgname}" \
     -DLauncher_QT_VERSION_MAJOR="6" \
-    -Bbuild -SPrismLauncher
+    -Bbuild -SPrismLauncher \
+    -DLauncher_DRM="OFF"
   cmake --build build
 }
 
