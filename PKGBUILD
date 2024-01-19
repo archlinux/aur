@@ -1,12 +1,12 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=notepad---git
-pkgver=2.12.r0.g1045cfe
-pkgrel=1
+pkgver=2.12.r5.ga89e9c6
+pkgrel=3
 pkgdesc="Notepad-- 是使用C++编写的轻量级文本编辑器, 简称ndd, 可以支持Window/Mac/Linux操作系统平台。"
 arch=('x86_64')
 url="https://gitee.com/cxasm/notepad--"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 provides=(${pkgname%-git} notepadplugin)
 conflicts=(${pkgname%-git})
 _qt=qt5
