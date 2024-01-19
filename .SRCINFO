@@ -1,10 +1,10 @@
 pkgbase = webkit2gtk-4.1-imgpaste
 	pkgdesc = Web content engine for GTK (with patches for pasting images from clipboard)
 	pkgver = 2.42.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://webkitgtk.org
 	arch = x86_64
-	license = custom
+	license = LicenseRef-custom
 	makedepends = clang
 	makedepends = cmake
 	makedepends = gi-docgen
