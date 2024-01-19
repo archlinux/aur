@@ -1,13 +1,11 @@
 pkgbase = firefly-shimmer-desktop-appimage
 	pkgdesc = Try out new features introduced with Shimmer, such as minting native tokens, setting transaction expiry times, and sending microtransactions.
 	pkgver = 2.1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://firefly.iota.org/
 	arch = x86_64
-	license = Apache
+	license = LicenseRef-Apache
 	makedepends = squashfuse
-	depends = zlib
-	depends = glibc
 	provides = firefly-shimmer-desktop=2.1.10
 	conflicts = firefly-shimmer-desktop
 	conflicts = shimmer-firefly-wallet
