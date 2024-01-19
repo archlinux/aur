@@ -1,14 +1,14 @@
 pkgbase = k9s-sbanka-bin
         pkgdesc = Kubernetes CLI To Manage Your Clusters In Style!
-        pkgver = 0.31.5
+        pkgver = 0.31.7
         pkgrel = 1
         url = https://k9scli.io/
         arch = x86_64
         arch = aarch64
         license = APACHE
-        source_x86_64 = k9s-sbanka-bin-0.31.5_linux_amd64.tar.gz::https://github.com/derailed/k9s/releases/download/v0.31.2/k9s_Linux_amd64.tar.gz
-        sha256sums_x86_64 = 3904f39c9ff4eaedfa35c81e2fa9e42817505375fbbce9932d01bfbc4c2673d8
-        source_aarch64 = k9s-sbanka-bin-0.31.5_linux_arm64.tar.gz::https://github.com/derailed/k9s/releases/download/v0.31.2/k9s_Linux_arm64.tar.gz
-        sha256sums_aarch64 = d304a6022bce4f0016bebaa102e5834b14b7395d9224d31f729584f8f7f17c3d
+        source_x86_64 = k9s-sbanka-bin-0.31.7_linux_amd64.tar.gz::https://github.com/derailed/k9s/releases/download/v0.31.2/k9s_Linux_amd64.tar.gz
+        sha256sums_x86_64 = 10a01834fca8a1c6613ae3ed17ce22575e1d2f4ffb1dd344866df533ed2d2539
+        source_aarch64 = k9s-sbanka-bin-0.31.7_linux_arm64.tar.gz::https://github.com/derailed/k9s/releases/download/v0.31.2/k9s_Linux_arm64.tar.gz
+        sha256sums_aarch64 = 7310ca3d6d8f359457baeda2b0bc62571b7a0e068fe07275a774e7b2a9b54243
 
 pkgname = k9s-sbanka-bin
