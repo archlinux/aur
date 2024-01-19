@@ -1,0 +1,27 @@
+pkgbase = ansible-creator-git
+	pkgdesc = A CLI tool for scaffolding all your Ansible Content.
+	pkgver = 0.1.0.r5.g1e27549
+	pkgrel = 1
+	url = https://github.com/ansible/ansible-creator
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	makedepends = python-setuptools-scm-git-archive
+	depends = python
+	depends = python-jsonschema
+	depends = python-onigurumacffi
+	depends = ansible-core
+	depends = ansible-runner
+	depends = git
+	optdepends = ansible: check official ansible collections
+	provides = ansible-creator
+	conflicts = ansible-creator
+	source = git+https://github.com/ansible/ansible-creator.git
+	sha256sums = SKIP
+
+pkgname = ansible-creator-git
