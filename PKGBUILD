@@ -15,8 +15,8 @@ pkgname=(
   java-openjfx-doc
   java-openjfx-src
 )
-pkgver=21.0.1.u6
-pkgrel=2
+pkgver=21.0.2.u5
+pkgrel=1
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version"
 arch=(x86_64)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
@@ -53,7 +53,7 @@ source=(
   java-openjfx-flags.patch
   java-openjfx-no-xlocale.patch
 )
-b2sums=('70d231f1277393798a4478c34bb6d876459c1316b101d67ec9d2ee62e4131049367217d5a4ee8387d759e35154830f503f7e228ad2d2ea4c479eac4a261257e3'
+b2sums=('ed5870478bacf5d2d6289118e764a316f2ed44c5abe799dfef97290477824060a7af15bde915aaf86186111eee49df5e3614ecd8aceccfca005aa79bb2663cc8'
         'a77fd8814a5978827de01a652f7b945f3439df04606434ced8998c8d77a82985292490e6965299aeb52f9da3d8069b4091d75519bd4ec8a15f70bc6d28b13498'
         '609ffbc0938922f00ccebab6d1e9ab0d54b84f088f75c10c0eb4211ff1b33438481d76092eae8811a5e9f53dfc3ff422f7aa4e98abd8fc27fb73f1c3d4661c41'
         '13216615c01b8d48d17889ffa22668c38568870d83ab30c542eb5b5620db305f02efb1acb99d9b5e89eb0a73a134bb336cb301f4de4e8855cae50efb099e384e')
