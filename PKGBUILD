@@ -2,8 +2,8 @@
 
 _pkgname=fuzzylite
 pkgname=$_pkgname-git
-pkgver=r1021.4cd9d59f
-pkgrel=2
+pkgver=r1042.9e47f8ac
+pkgrel=1
 pkgdesc="C++ fuzzy logic control library"
 arch=('x86_64')
 url="https://github.com/$_pkgname/$_pkgname"
@@ -23,7 +23,6 @@ build() {
   cd $srcdir/$_pkgname
   cmake \
     -B build \
-    -S "$_pkgname" \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DFL_BUILD_STATIC=OFF \
@@ -44,5 +43,5 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
 
   install -Dm644 "$srcdir/$_pkgname/README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
-  install -Dm644 "$srcdir/$_pkgname/$_pkgname/$_pkgname.1" "$pkgdir/usr/share/man/man1/$_pkgname.1"
+  install -Dm644 "$srcdir/$_pkgname/$_pkgname.1" "$pkgdir/usr/share/man/man1/$_pkgname.1"
 }
