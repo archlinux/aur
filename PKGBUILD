@@ -1,14 +1,15 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname=clvk
 pkgname=clvk-git
-pkgver=r627.5b43ca3
+pkgver=r633.7bbda74
 pkgrel=1
 pkgdesc="Experimental implementation of OpenCL 3.0 on Vulkan"
 arch=("x86_64")
 url="https://github.com/kpet/clvk"
 license=('Apache')
 depends=("vulkan-icd-loader" "ocl-icd" "ncurses" "gcc-libs" "zstd" "zlib")
-makedepends=("gcc" "git" "cmake" "python" "opencl-headers" "spirv-headers" "spirv-tools" "spirv-llvm-translator" "mold" "vulkan-headers")
+makedepends=("gcc" "git" "cmake" "python" "opencl-headers" "spirv-headers" 
+"spirv-tools" "spirv-llvm-translator" "vulkan-headers" "ninja")
 provides=("clvk")
 conflicts=("clvk")
 options=("!lto")
@@ -48,9 +49,10 @@ prepare() {
 build() {
 	cd "$srcdir"
 	cmake -B build -S "$_pkgname" \
-	-DCMAKE_C_FLAGS="$CFLAGS -fuse-ld=mold" \
-	-DCMAKE_CXX_FLAGS="$CXXFLAGS -fuse-ld=mold" \
-	-DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -fuse-ld=mold" \
+	-GNinja \
+	-DCMAKE_C_FLAGS="$CFLAGS" \
+	-DCMAKE_CXX_FLAGS="$CXXFLAGS" \
+	-DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
 	-DCLVK_BUILD_SPIRV_TOOLS=O \
 	-DSKIP_SPIRV_TOOLS_INSTALL=1 \
 	-DCLSPV_BUILD_TESTS=0 \
