@@ -3,14 +3,13 @@
 _pkgname="youtube-tui"
 pkgname="${_pkgname}-full-bin"
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An aesthetically pleasing TUI frontend to browsing YouTube written in Rust. (Binary)"
 arch=('x86_64')
 url="https://github.com/Siriusmart/youtube-tui"
 license=('GPL3')
-depends=('libsixel' 'libxcb' 'openssl')
+depends=('libsixel' 'libxcb' 'openssl' 'mpv')
 optdepends=(
-  'mpv: default video player'
   'konsole: default terminal emulator'
   'yt-dlp: default youtube downloader'
 )
