@@ -1,10 +1,10 @@
 pkgbase = ziipoo-bin
 	pkgdesc = Makes music more reliable!壹谱,让音乐更靠谱!
 	pkgver = 2603
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.ziipoo.cn
 	arch = x86_64
-	license = custom
+	license = LicenseRef-custom
 	depends = qt5-base
 	depends = libglvnd
 	depends = fontconfig
@@ -28,11 +28,11 @@ pkgbase = ziipoo-bin
 	depends = lib32-glibc
 	conflicts = ziipoo
 	options = !strip
-	source = ziipoo-2603.deb::http://qdl.ziipoo.cn/soft/linuxZiipoo2603v1.deb
+	source = ziipoo-2603.deb::https://www.ziipoo.cn/zpocore/download.php?os=linux_deb
 	source = LICENSE-2603.html::https://www.ziipoo.cn/buy/
 	source = ziipoo.sh
 	sha256sums = e11d8dd01a19d048fbf93d39fdb9831ff68149db92872ca27cf1b75150bc68bf
-	sha256sums = 7c3d286e4eef4ff6a2f2ed19ebf12eda332e821274455a79638a7635e72a8858
-	sha256sums = d5d1884aaad4506b6fbb41862a5ae1592dfdd9b7090dc2dffcef9981cf86d877
+	sha256sums = 1853f4c818a223e29d3a7031c42b9f3fedca5bb80586714bed913b9a5f5109ec
+	sha256sums = 58a1c8e5f9d2226dd890cf765bcec263cbb47a3de464b8490e3b5b7c9c7636cb
 
 pkgname = ziipoo-bin
