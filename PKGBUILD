@@ -26,24 +26,26 @@ sha256sums=('089a4949e22e14d89db82a624a86b9daf6089dc5a7e7fb4c120315b25242732d'
             'aef27b34d181f0f31a023e4b31c10347c711d0e45b89b9702e501709bd07689e'
             '56c318ce307726ffd667ec6024e1488266e70d0a1ed3802a2257e4edbbb0e61c'
             '425d9c157753129e7d003652ecbb746feb5591ba1a9abf0b4a8428c91b1511da'
-            '66d8e095afc479484b9ee54d0cb48b1ad04236d487e59881622dbaf29f14f560')
+            '3458ab5158f32be90a24c4b005af354403272ad043ab79842b8879f0a7aa57c5')
 validpgpkeys=('5989BAF76217B843D66BE55B2D0E1FB8FE4B68B4') # Joakim Erdfelt <joakim.erdfelt@gmail.com>
 
 
 package() {
     cd "$srcdir/$_distname"
 
-    install -dm755 "$pkgdir/etc/$pkgname"
+    install -dm2750 "$pkgdir/etc/$pkgname"
     install -dm755 "$pkgdir/usr/bin"
-    install -dm755 "$pkgdir/var/log/$pkgname"
-    install -dm755 "$pkgdir/var/lib/$pkgname/webapps"
+    install -dm2750 "$pkgdir/var/log/$pkgname"
+    install -dm2750 "$pkgdir/var/lib/$pkgname/webapps"
 
     install -Dm755 bin/jetty.sh "$pkgdir/usr/share/$pkgname/bin/jetty.sh"
     cp -r etc/* "$pkgdir/etc/$pkgname"
+    find "$pkgdir/etc/$pkgname" -type f -exec chmod 640 {} + -o -type d -exec chmod 2750 {} +
+
     cp -r {lib,modules,start.jar,README.adoc} "$pkgdir/usr/share/$pkgname/"
-    install -dm755 "$pkgdir/etc/$pkgname/start.d"
-    install -dm755 "$pkgdir/etc/$pkgname/resources"
-    install -dm755 "$pkgdir/var/lib/$pkgname/webapps"
+    install -dm2750 "$pkgdir/etc/$pkgname/start.d"
+    install -dm2750 "$pkgdir/etc/$pkgname/resources"
+    install -dm2750 "$pkgdir/var/lib/$pkgname/webapps"
 
     ln -s /etc/$pkgname "$pkgdir/usr/share/$pkgname/etc"
     ln -s etc/start.d "$pkgdir/usr/share/$pkgname/start.d"

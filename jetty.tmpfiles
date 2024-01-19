@@ -1,4 +1,5 @@
+Z /etc/jetty11            ~2750 root   jetty11
 d /usr/share/jetty11       0755 jetty11 jetty11
-d /var/log/jetty11         0755 jetty11 jetty11
-d /var/lib/jetty11/webapps 0755 jetty11 jetty11
+d /var/log/jetty11         2750 jetty11 jetty11
+d /var/lib/jetty11/webapps 2750 jetty11 jetty11
 
