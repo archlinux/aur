@@ -1,6 +1,6 @@
 pkgname=simplelogin
 _pkgname=SimpleLogin
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Unofficial Simple Login desktop application."
 arch=('x86_64' 'aarch64')
