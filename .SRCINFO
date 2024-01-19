@@ -1,0 +1,11 @@
+pkgbase = chicken-byte-blob
+	pkgdesc = Chicken Scheme Byte array utility procedures for blobs
+	pkgver = 2.3
+	pkgrel = 1
+	url = http://wiki.call-cc.org/eggref/5/byte-blob
+	arch = x86_64
+	license = LGPL-3
+	depends = chicken
+	depends = chicken-srfi-1
+
+pkgname = chicken-byte-blob
