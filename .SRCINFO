@@ -6,6 +6,7 @@ pkgbase = supersonic-desktop-wayland-git
 	arch = x86_64
 	license = GPL3
 	makedepends = go>=1.17
+	makedepends = git
 	depends = glibc
 	depends = libglvnd
 	depends = libx11

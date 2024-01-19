@@ -22,7 +22,7 @@ optdepends=(
     "libappindicator-gtk3: Systray indicator support"
     "org.freedesktop.secrets: Keyring password store support"
 )
-makedepends=('go>=1.17')
+makedepends=('go>=1.17' 'git')
 provides=('supersonic-desktop')
 conflicts=('supersonic-desktop')
 source=(
