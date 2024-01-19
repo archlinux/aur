@@ -1,10 +1,10 @@
 pkgbase = java-openjfx
 	pkgdesc = Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version
 	pkgver = 21.0.1.u6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.openjdk.java.net/display/OpenJFX/Main
 	arch = x86_64
-	license = custom
+	license = GPL-2.0-only WITH Classpath-exception-2.0
 	makedepends = alsa-lib
 	makedepends = ant
 	makedepends = cairo

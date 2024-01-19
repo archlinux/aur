@@ -16,11 +16,11 @@ pkgname=(
   java-openjfx-src
 )
 pkgver=21.0.1.u6
-pkgrel=1
+pkgrel=2
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version"
 arch=(x86_64)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
-license=(custom)
+license=('GPL-2.0-only WITH Classpath-exception-2.0')
 makedepends=(
   alsa-lib
   ant
