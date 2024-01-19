@@ -2,11 +2,11 @@
 
 pkgname=gnome-shell-extension-disable-extension-updates
 pkgver=45.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Extension for GNOME shell to disable the automatic update check'
 arch=('any')
 url="https://github.com/swsnr/${pkgname}"
-license=('MPL2')
+license=('GPL-2.0-or-later OR MPL-2.0')
 makedepends=('npm')
 depends=('gnome-shell')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
