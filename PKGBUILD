@@ -4,12 +4,12 @@
 # Contributer: Arnaud
 
 pkgname=edgetx-companion
-pkgver=2.9.2
+pkgver=2.9.3
 pkgrel=1
 pkgdesc="EEPROM Editor and Simulator for EdgeTX RC radio transmitter firmwares"
 arch=('x86_64')
 url='https://edgetx.org/'
-license=('GPL2')
+license=('GPL-2.0-only')
 depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'qt5-base' 'qt5-multimedia' 'sdl2')
 optdepends=('dfu-util: tool for flashing stm32 based radios')
 makedepends=('arm-none-eabi-binutils' 'arm-none-eabi-gcc' 'arm-none-eabi-newlib'
@@ -28,8 +28,7 @@ source=("git+https://github.com/EdgeTX/edgetx.git#tag=v$pkgver"
         "git+https://github.com/FreeRTOS/FreeRTOS-Kernel-Partner-Supported-Ports.git"
         "git+https://github.com/EdgeTX/lvgl.git"
         "git+https://github.com/nothings/stb.git"
-        install.patch
-        remove-ssl-check.patch)
+        install.patch)
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
@@ -39,18 +38,19 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        '2f2d110ba03c3d852bec93a0705570df93e72f5e3757bd64494083c5a1ae59c5228024fca563043c05014b1962ccde88e029a6bac2fe36be6e852a53b35a43fb'
-        '6ad8cfff9f623c1d0182713839419b633f421e762d01cd46b2ce817c1552929d9ffadcb38f112d6ac9d3d196346b781d842ad0d9c34d4dbe0d5709a3edbc6026')
+        '2f2d110ba03c3d852bec93a0705570df93e72f5e3757bd64494083c5a1ae59c5228024fca563043c05014b1962ccde88e029a6bac2fe36be6e852a53b35a43fb')
 
 prepare() {
-  _pkgbase=$srcdir/${pkgname%%-*}
-  
   export EDGETX_VERSION_TAG=$pkgver
-  
+  _pkgbase=$srcdir/${pkgname%%-*}
   cd $_pkgbase
    
   patch ./tools/build-companion.sh < $srcdir/install.patch
-  patch ./companion/src/CMakeLists.txt < $srcdir/remove-ssl-check.patch
+
+  # Deactivate these functions; they bundle the libs for AppImage.
+  for pattern in "LIBSSL1" "LIBUSB1" "DFU_UTIL"; do
+      sed -i "s/if(${pattern}_FOUND)/if(false)/g" ./companion/src/CMakeLists.txt
+  done
   
   declare -A submodules=(
     ["$_pkgbase/companion/src/thirdparty/"]="yaml-cpp"
