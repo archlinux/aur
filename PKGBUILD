@@ -3,7 +3,7 @@ pkgname=translationcore-bin
 _pkgname=translationCore
 pkgver=3.6.2
 _electronversion=25
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source platform for checking and managing Bible translation projects"
 arch=('aarch64' 'x86_64')
 url="https://www.translationcore.com/"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('a756bd73c46e3e9b85ff0222658f4c63851ebc5af63811adc4333ff618688417'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 sha256sums_aarch64=('4bd8a2ed2a6e669be107f64137bf085292659672d3e688f65801e747979a9fc3')
 sha256sums_x86_64=('aa7ddffd5769f02270dc55f332bfd606823395176a3de63bb4d6c83dc952f39b')
 build() {
