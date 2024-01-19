@@ -1,13 +1,13 @@
 pkgbase = cockpit-docker
 	pkgdesc = Cockpit UI for docker containers
-	pkgver = 13
+	pkgver = 14
 	pkgrel = 1
 	url = https://github.com/chabad360/cockpit-docker
 	arch = any
 	license = LGPL
 	depends = cockpit
 	depends = docker
-	source = https://github.com/chabad360/cockpit-docker/releases/download/13/cockpit-docker-13.tar.xz
-	sha256sums = 45f265d3d81eea39bec2c0aa68bafcf3c7af764b140993a21be8188285a48f24
+	source = https://github.com/chabad360/cockpit-docker/releases/download/14/cockpit-docker-14.tar.xz
+	sha256sums = 3fdf5818270223fe95883255867d1d3e3552c1a5cd3d2ab3feab5db55e363e18
 
 pkgname = cockpit-docker
