@@ -1,7 +1,7 @@
 # Maintainer: Refutationalist <archlinux@sammulvey.com>
 pkgname=xen-qemu
 _srcname=qemu
-pkgver=8.1.1
+pkgver=8.2.0
 pkgrel=1
 pkgdesc="A xen-specific QEMU, built to qemu-builtin standards"
 arch=("x86_64")
@@ -15,8 +15,8 @@ replaces=(xen-qemu-builtin)
 source=(
 	https://download.qemu.org/qemu-${pkgver}.tar.xz{,.sig}
 )
-sha512sums=('199db58f9a413cbe4449ff557bc362e666c6c0291f9963cb74e5542e8abd1edcd65001fa1fd453b850a376de455f93258707ce6feee5a44bf40753b12a2e956c'
-            'SKIP')
+sha512sums=('92ec41196ff145cdbb98948f6b6e43214fa4b4419554a8a1927fb4527080c8212ccb703e184baf8ee0bdfa50ad7a84689e8f5a69eba1bd7bbbdfd69e3b91256c' 'SKIP') 
+
 
 validpgpkeys=('CEACC9E15534EBABB82D3FA03353C9CEF108B584') # Michael Roth <flukshun@gmail.com>
 
