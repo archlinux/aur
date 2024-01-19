@@ -1,6 +1,6 @@
 pkgbase = yakit-appimage
 	pkgdesc = Cyber Security ALL-IN-ONE Platform
-	pkgver = 1.2.8_sp7
+	pkgver = 1.2.9
 	pkgrel = 1
 	url = https://github.com/yaklang/yakit
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = yakit-appimage
 	depends = hicolor-icon-theme
 	depends = fuse2
 	provides = yakit
-	noextract = Yakit-1.2.8-sp7-linux-amd64.AppImage
+	noextract = Yakit-1.2.9-linux-amd64.AppImage
 	options = !strip
-	source_x86_64 = Yakit-1.2.8-sp7-linux-amd64.AppImage::https://github.com/yaklang/yakit/releases/download/v1.2.8-sp7/Yakit-1.2.8-sp7-linux-amd64.AppImage
-	sha256sums_x86_64 = 670deb6b0985b5c76672fd17f22a5732e7551e00c39ae56d2f6753c83b7d30bd
+	source_x86_64 = Yakit-1.2.9-linux-amd64.AppImage::https://github.com/yaklang/yakit/releases/download/v1.2.9/Yakit-1.2.9-linux-amd64.AppImage
+	sha256sums_x86_64 = 251960b284574a771379b735ea91ede961f85ba5196b3e5d5e532cd563f0a739
 
 pkgname = yakit-appimage
