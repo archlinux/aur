@@ -1,19 +1,18 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
-_pkgname=kitch
 pkgname=kitch-bin
+pkgver=26.1.3
+pkgrel=1
 pkgdesc="The development branch of the itchio app (binary release)"
-pkgver=26.1.2
-pkgrel=4
-arch=('x86_64')
 url="https://itchio.itch.io/kitch"
 license=('MIT')
+arch=('x86_64')
 provides=("kitch")
-conflicts=("kitch" "kitch-setup" "itch" "itch-setup")
-optdepends=('firejail: itch.io sandbox preference')
-source=("kitch-$pkgver-linux-amd64.zip::https://broth.itch.ovh/kitch/linux-amd64/$pkgver/archive/default"
+conflicts=("kitch" "kitch-setup")
+optdepends=('firejail: sandbox preference')
+source=("kitch-linux-amd64$pkgver.zip::https://broth.itch.ovh/kitch/linux-amd64/$pkgver/archive/default"
         "LICENSE::https://github.com/itchio/itch/raw/master/LICENSE")
-sha256sums=('e962fb202d4dbf4c287e634bef6c5c191b884544cf24e025675df450d9dc2bda'
+sha256sums=('5a4079ddce5770dcddc947e64fe28e01de253d45b7a7ba24d4dc2aa48fb59a10'
             'SKIP')
 
 prepare() {
@@ -31,7 +30,7 @@ Categories=Game;" > desktop
 }
 
 package() {
-# Create folders
+# Create directories
   mkdir -p "$pkgdir/opt/kitch" "$pkgdir/usr/bin"
 # Install
   install -Dm644 kitch.desktop -t "$pkgdir/usr/share/applications"
