@@ -2,7 +2,7 @@
 pkgname=yuvviewer-bin
 _pkgname=YUVviewer
 pkgver=0.5.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A small tool for developers to view and preview various original image formats. It is based on Qt and opencv frameworks and supports windows/linux/macos."
 arch=("x86_64")
 url="https://github.com/QQxiaoming/YUVviewer"
@@ -24,10 +24,10 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('b2153150a236dd25d38409f3deb2f9365b529ba147e7bd3ca3029519c7fad998'
-            '75e728e50129743b076c46a90ff66eca45b3a354a4fcbe342b0b0986f75b0bbe')
+            'aff07ee64a8c2860758f7cbc8c4fd6c58ff03e48bf8ceca690645fdd792b049c')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runappname@|${_pkgname}|g" \
+        -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/usr/bin/${_pkgname}|${pkgname%-bin}|g;s|/opt/${_pkgname}/${_pkgname}.png|${pkgname%-bin}|g;s|Commen|Comment|g" \
