@@ -2,7 +2,7 @@
 _pkgname=openplc-editor
 pkgname="${_pkgname}-git"
 pkgver=r184.f772039
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenPLC editor"
 arch=("x86_64")
 url="https://github.com/thiagoralves/OpenPLC_Editor"
@@ -10,6 +10,7 @@ source=("git+${url}.git")
 license=("GPL3")
 md5sums=("SKIP")
 makedepends=("git")
+depends=("python38")
 
 pkgver() {
   cd "${srcdir}/OpenPLC_Editor"
