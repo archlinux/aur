@@ -1,5 +1,5 @@
 pkgbase = xfwm4-windowcenter
-	pkgdesc = Xfce's window manager, with a patch to allow titles to be centered relatively to the full window title.
+	pkgdesc = Xfce's window manager, with a patch to allow titles to be centered relatively to the full window width.
 	pkgver = 4.18.0
 	pkgrel = 1
 	url = https://gitlab.xfce.org/xfce/xfwm4/-/merge_requests/27
