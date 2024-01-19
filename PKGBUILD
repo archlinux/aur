@@ -3,17 +3,17 @@ pkgname=winghexexplorer-bin
 _pkgname=WingHexExplorer
 _appname="com.wingsummer.${pkgname%-bin}"
 pkgver=1.5.5
-pkgrel=4
+pkgrel=5
 pkgdesc="基于 QT 编写的十六进制编辑器，采用 C++ 进行开发，目的是让 Deepin 上具有强大而免费的十六进制编辑器。"
 arch=('x86_64')
 url="https://github.com/Wing-summer/WingHexExplorer"
-license=('AGPL3')
+license=('LicenseRef-AGPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'qt5-base'
     'qt5-x11extras'
-    'libglvnd' 'glibc'
+    'libglvnd'
     'hicolor-icon-theme'
     'dtkgui'
     'dtkcore'
@@ -25,10 +25,10 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('6d4d3ec3f90e91d3590758597c01eddc1eb1e1dba5e310bbd485f588ffbe9625'
-            '6a209d8664e8ae1c776017f53f942717df82a7b80f2e5068b4f7aa68bc3500a1')
+            'fc77069579e35870d0532f750fbbd1a59244fd3f56ba3dd0e959d09b19317acf')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runappname@|${_pkgname}|g" \
+        -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     mv "${srcdir}/opt/${_pkgname}/更新日志.log" "${srcdir}/opt/${_pkgname}/ChangeLog.log"
