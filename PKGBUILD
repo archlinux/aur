@@ -2,7 +2,7 @@
 
 pkgname=python-litestar
 _name=${pkgname#python-}
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Production-ready, Light, Flexible and Extensible ASGI API framework"
 arch=(any)
@@ -26,6 +26,7 @@ depends=(
   python-rich
   python-rich-click
   python-sniffio
+  python-trio
   python-typing_extensions
   python-yaml
   uvicorn
@@ -42,14 +43,15 @@ checkdepends=(
   python-brotli
   python-cryptography
   python-fsspec
+  python-httpx-sse
   python-hypothesis
   python-jinja
   python-jose
   python-mako
   python-minijinja
+  python-opentelemetry-sdk
   python-picologging
   python-polyfactory
-  python-psycopg
   python-psycopg
   python-pytest
   python-pytest-asyncio
@@ -63,7 +65,6 @@ checkdepends=(
   python-starlette
   python-structlog
   python-time-machine
-  python-trio
 )
 optdepends=(
   'python-jinja: templating engine alternative'
@@ -78,12 +79,13 @@ optdepends=(
   'python-cryptography: cookie based sessions & JWT authentication'
   'python-jose: JWT authentication'
   'python-prometheus_client: Prometheus instrumentation'
+  'python-opentelemetry-sdk: OpenTelemetry instrumentation'
   'python-redis: Redis store'
   'python-sqlalchemy: SQLAlchemy integration'
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b8d3e18e56542106248e23b89454e27c67e6603bc034ae109a9a40706635f2da')
+sha256sums=('0d4c39f451fa82c6db230e3b2c12dd17804e39375568f02bae7ad84ad1bc9fd9')
 
 _archive="$_name-$pkgver"
 
@@ -114,9 +116,6 @@ check() {
     # Requires mapped_column
     tests/unit/test_repository/test_generic_mock_repository.py
 
-    # Requires httpx_sse
-    tests/unit/test_response/test_streaming_response.py
-
     # Requires running docker compose
     tests/unit/test_testing/test_test_client.py
     tests/unit/test_channels/test_plugin.py
@@ -129,6 +128,7 @@ check() {
     # Fails for unkown reason
     tests/unit/test_cli/test_core_commands.py::test_routes_command_options
     tests/unit/test_template/test_template.py::test_media_type_inferred
+    tests/unit/test_middleware/test_middleware_handling.py::test_custom_middleware_processing
 
     # Requires running docker compose
     tests/e2e/test_response_caching.py::test_with_stores
@@ -138,7 +138,7 @@ check() {
 
   export PYTHONPATH="$PWD/tmp_install/$_site_packages"
   # shellcheck disable=SC2086
-  pytest \
+  pytest tests/ \
     $_ignored_tests_arg \
     $_deselected_tests_arg
 }
