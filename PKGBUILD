@@ -30,8 +30,8 @@ _common_make_flags=(
 
 pkgbase=xen
 pkgname=("xen" "xen-docs")
-pkgver=4.17.3pre
-_branch="stable-4.17"
+pkgver=4.18.1pre
+_branch="stable-4.18"
 pkgrel=1
 pkgdesc='Open-source type-1 or baremetal hypervisor - stable branch'
 arch=('x86_64')
@@ -172,7 +172,6 @@ prepare() {
 
 	# Fix Install Paths.
 	sed 's,/var/run,/run,g' -i tools/hotplug/Linux/locking.sh
-	sed 's,/var/run,/run,g' -i tools/misc/xenpvnetboot
 	sed 's,/var/run,/run,g' -i tools/xenmon/xenbaked.c
 	sed 's,/var/run,/run,g' -i tools/xenmon/xenmon.py
 	sed 's,/var/run,/run,g' -i tools/pygrub/src/pygrub
