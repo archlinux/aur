@@ -1,13 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chain-desktop-wallet-bin
-pkgver=1.4.6
+_appname="Crypto.com-DeFi-Desktop-Wallet"
+pkgver=1.4.7
 _electronversion=19
-pkgrel=2
+pkgrel=1
 pkgdesc="Crypto.com DeFi Desktop Wallet"
 arch=('x86_64')
 url="https://crypto.com/defi-wallet"
 _ghurl="https://github.com/crypto-com/chain-desktop-wallet"
-license=("Apache")
+license=("LicenseRef-Apache")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -15,15 +16,16 @@ depends=(
     'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
+    'python'
 )
 makedepends=(
     'squashfuse'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/Crypto.com-DeFi-Desktop-Wallet-${pkgver}.AppImage"
+    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4e02ffb9e4322438b414b6040455b1a43a674a910437abdc274806f0d2d47e82'
+sha256sums=('2278aab0a581d76af0ce7947ce80de0329e3b736e82e7cfe7a2ecaaceabd0ee3'
             'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
