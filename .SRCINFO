@@ -1,0 +1,18 @@
+pkgbase = cobra-git
+	pkgdesc = An interactive (fast) static source code analyzer
+	pkgver = 4.6.r5.g19f463c
+	pkgrel = 1
+	url = https://spinroot.com/cobra/
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	depends = glibc
+	depends = bash
+	optdepends = tk: For the interactive graphical interfaces
+	optdepends = graphviz: To view graphs of finite automata
+	provides = cobra
+	conflicts = cobra
+	source = cobra-git::git+https://github.com/nimble-code/Cobra
+	sha256sums = SKIP
+
+pkgname = cobra-git
