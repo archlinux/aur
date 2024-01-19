@@ -3,7 +3,7 @@ pkgname=pikatorrent-bin
 _pkgname=PikaTorrent
 pkgver=0.9.0
 _electronversion=26
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern, open source and electric BitTorrent app for mobile, desktop & server."
 arch=(
     'aarch64'
@@ -17,6 +17,7 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'curl'
+    'nodejs'
 )
 makedepends=(
     'gendesk'
@@ -26,7 +27,7 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/downloa
 source=(
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+sha256sums=('d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 sha256sums_aarch64=('dc77842c011acbad94507521ad3df825a431e0ae07dff9c11a011ed774b478b8')
 sha256sums_x86_64=('c739f3f7a9cf68443450f16f7c370abbe2606e828f255a1e69b112a90f7f5a3e')
 build() {
@@ -34,7 +35,7 @@ build() {
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@appasar@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories "Network" --name "${_pkgname}" --exec "${pkgname%-bin}"
+    gendesk -q -f -n --categories "Network" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
