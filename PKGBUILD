@@ -72,6 +72,11 @@ prepare() {
 build() {
   cd $_jfxdir
 
+  # Workaround for users without set $CFLAGS and $LDFLAGS causing
+  # build to fail because of included java-openjfx-flags.patch
+  export CFLAGS=${CFLAGS:=}
+  export LDFLAGS=${LDFLAGS:=}
+
   # Build with openjdk-17
   export PATH="/usr/lib/jvm/java-17-openjdk/bin/:$PATH"
 
