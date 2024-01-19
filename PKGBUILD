@@ -3,8 +3,8 @@
 # Contributor: TrialnError <autumn-wind@web.de>
 pkgname=coolterm-bin
 _pkgname=CoolTerm
-pkgver=2.0.1
-pkgrel=5
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Simple GUI serial port terminal application (no terminal emulation)"
 arch=(
 	"aarch64"
@@ -13,7 +13,7 @@ arch=(
 	"x86_64"
 )
 url="https://freeware.the-meiers.org"
-license=("custom")
+license=("LicenseRef-Freeware")
 conflicts=("${pkgname%-bin}")
 depends=(
 	'gtk3'
@@ -25,10 +25,6 @@ depends=(
 	'cairo'
 	'pango'
 	'libx11'
-	'libunwind'
-)
-makedepends=(
-	'gendesk'
 )
 source=(
 	"${pkgname%-bin}.sh"
@@ -37,16 +33,19 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/${_pkgname}Raspbe
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.zip::${url}/${_pkgname}RaspberryPi.zip")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.zip::${url}/${_pkgname}Linux32Bit.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/${_pkgname}Linux64Bit.zip")
-sha256sums=('d3a6af518a2ce92bb90c615d53aa8c27fde266697fb6fd6c1ac1ca89febfe2ee')
-sha256sums_aarch64=('c10c0b9b8432c49a9e6ae77e68941036ea5e35a3dde6713b0fc3b74ba18c93ea')
-sha256sums_armv7h=('258ab48d00698536585a2fcc1a0b3d5fb2ebb704776bf60d82d8c46ed4311c59')
-sha256sums_i686=('fb4072c5a37744bd685e19d1fd63f649ac9824512cb1e860f24128dfc2172ab4')
-sha256sums_x86_64=('5b5c2d620d20e19f8e9aeef463ee2dcc23f7c843b6da2e36da05f045d6d668ce')
+sha256sums=('d913a1332a260a98b11207a5be85055497357cdb69f6669f208b0591bd95fc6b')
+sha256sums_aarch64=('2c10c148cdbbe8fa839439510ebf949505734c431efe07efe25698bb5a31ea5e')
+sha256sums_armv7h=('941a2f7bad2dc646512e2bbcfa1ea689e0691411d0b9e0480eda6c9c73ec2d5f')
+sha256sums_i686=('f0473ee72315d720de5629a71896af5c75c60bf74f1264473aa83fd9aa34835c')
+sha256sums_x86_64=('b850b71e48686008b1c5706d23edf9957bc3db6960e6f55142fb64b74aeacae2')
 build() {
 	sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runappname@|${_pkgname}|g" \
+        -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-	gendesk -q -f -n --categories "System;Utility" --name "${_pkgname}" --exec "${pkgname%-bin}"
+	sed -e "s|Exec=./${_pkgname} |Exec=${pkgname%-bin} %U|g" \
+		-e "s|Icon=./${_pkgname} Resources/appicon_128.png|Icon=${pkgname%-bin}|g" \
+		-e "6i\Categories=System;Utility" \
+		-i "${srcdir}/${_pkgname}"*/"${_pkgname}.desktop"
 	find "${srcdir}/${_pkgname}"*/Scripting/Python/Examples -name "*.py" -exec chmod 755 {} \;
 }
 package() {
@@ -55,5 +54,5 @@ package() {
 	cp -r "${srcdir}/${_pkgname}"*/* "${pkgdir}/opt/${pkgname%-bin}"
 	install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/${_pkgname} Resources/Help/app_icon_256.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 	install -Dm644 "${srcdir}/${_pkgname}"*/ReadMe.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${_pkgname}"*/"${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
