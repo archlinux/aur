@@ -14,7 +14,7 @@ pkgbase = sunbible
 	depends = hicolor-icon-theme
 	provides = sunbible
 	conflicts = sunbible
-	source = sunbible-2.0.001_beta::git+https://github.com/SunBible-dev/SunBible.git#tag=2.0.001-beta
+	source = sunbible.git::git+https://github.com/SunBible-dev/SunBible.git#tag=2.0.001-beta
 	source = sunbible.sh
 	sha256sums = SKIP
 	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
