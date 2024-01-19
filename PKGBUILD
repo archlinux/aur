@@ -3,7 +3,7 @@ pkgname=texturelab-bin
 _pkgname=TextureLab
 pkgver=0.3.3
 _electronversion=13
-pkgrel=5
+pkgrel=6
 pkgdesc="Free, Cross-Platform, GPU-Accelerated Procedural Texture Generator"
 arch=('x86_64')
 url="https://github.com/njbrown/texturelab"
@@ -23,13 +23,13 @@ source=(
 )
 sha256sums=('eafb5ae20d3df5497c1a5f680ee2438bd2bf0b43bbc4047deb06bd0ab3e68803'
             '627375f6ac09cce1a332e5e28920d074a62f17349f32f16f17f0de3e0239aced'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories "Development;Utility" --name "${_pkgname}" --exec "${pkgname%-bin}"
+    gendesk -q -f -n --categories "Development;Utility" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
