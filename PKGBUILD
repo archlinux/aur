@@ -1,7 +1,7 @@
 # Maintainer: lisuke <1657787678@qq.com>
 pkgname=xx-net
-pkgver=5.7.7
-pkgrel=2
+pkgver=5.9.0
+pkgrel=1
 
 pkgdesc="XX-Net, a web proxy tool."
 arch=('any')
