@@ -4,7 +4,7 @@
 # Maintainer: Miguel Revilla Rodríguez <yo at miguelrevilla.com>
 
 pkgname=scribus-svn
-pkgver=25993
+pkgver=25998
 pkgrel=1
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
@@ -72,7 +72,8 @@ build() {
 	-DWANT_SVNVERSION:BOOL=YES \
 	-DWANT_CPP17:BOOL=YES \
 	-DWANT_CPP17=ON \
-	-DWITH_PODOFO=ON \
+	-DWITH_PODOFO=ON
+
   make
 }
 
