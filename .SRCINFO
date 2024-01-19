@@ -1,7 +1,7 @@
 pkgbase = continuous-testing
 	pkgdesc = A continuous integration testing project
-	pkgver = 1.1.2
-	pkgrel = 3
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/taishingi/continuous-testing
 	arch = any
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = continuous-testing
 	depends = fd
 	depends = git
 	provides = again
-	source = 1.1.2.tar.gz::https://github.com/taishingi/continuous-testing/archive/refs/tags/1.1.2.tar.gz
-	sha256sums = 797d1c07fa0b1d5ab2e48a32c83ead15f80ceeabb1b2f3e52ffe1711037b3166
+	source = continuous-testing-2.0.0.tar.gz::https://static.crates.io/crates/continuous-testing/continuous-testing-2.0.0.crate
+	sha256sums = d545f57571c48d09ff62cfea8ecd78626f90c62e6237431277e499798535d435
 
 pkgname = continuous-testing

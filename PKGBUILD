@@ -1,16 +1,17 @@
-# Maintainer: Willy Micieli <micieli@vivaldi.net>
+# Maintainer  : Willy Micieli <micieli@vivaldi.net>
+# Contributor : Willy Micieli <micieli@vivaldi.net>
 
 pkgname=continuous-testing
-pkgver=1.1.2
-pkgrel=3
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="A continuous integration testing project"
 provides=("again")
 arch=('any')
 url="https://github.com/taishingi/continuous-testing"
 license=('GPL3')
 depends=('packer' 'libnotify' 'curl' 'fuse-overlayfs' 'less' 'rustup' 'fd' 'git')
-source=("${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('797d1c07fa0b1d5ab2e48a32c83ead15f80ceeabb1b2f3e52ffe1711037b3166')
+source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
+sha256sums=('d545f57571c48d09ff62cfea8ecd78626f90c62e6237431277e499798535d435')
 
 build() {
     cd $pkgname-$pkgver
