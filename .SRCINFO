@@ -1,11 +1,12 @@
 pkgbase = po4a-bulk-git
 	pkgdesc = Automation wrappers for po4a
-	pkgver = LATEST
-	pkgrel = 2
+	pkgver = r1.dd13075
+	pkgrel = 1
 	url = https://github.com/vorot93/po4a-bulk
 	arch = i686
 	arch = x86_64
 	license = GPL-3.0-only
+	makedepends = git
 	depends = po4a
 	provides = po4a-bulk
 	source = git+https://github.com/vorot93/po4a-bulk.git
