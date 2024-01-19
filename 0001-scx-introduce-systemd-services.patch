@@ -1,6 +1,6 @@
-From 71f11673faec380e58db5b6c477f183ff07b3890 Mon Sep 17 00:00:00 2001
+From 653e2b72e19336cb112196f7f644ba12343fa125 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Fri, 19 Jan 2024 20:54:37 +0100
+Date: Fri, 19 Jan 2024 21:32:11 +0100
 Subject: [PATCH] scx: introduce systemd services
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
@@ -61,12 +61,12 @@ index a8752df..6cd9260 100644
 +)
 diff --git a/services/journald@sched-ext.conf b/services/journald@sched-ext.conf
 new file mode 100644
-index 0000000..bf2b809
+index 0000000..7f26560
 --- /dev/null
 +++ b/services/journald@sched-ext.conf
 @@ -0,0 +1,9 @@
 +[Journal]
-+# Sets the maximum journal size to 10M for each namespace.
++# Sets the maximum journal size to 25M for each namespace.
 +SystemMaxUse=25M
 +# Sets the maximum log age to 7 days.
 +MaxRetentionSec=7day
