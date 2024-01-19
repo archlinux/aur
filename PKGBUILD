@@ -6,7 +6,7 @@
 _pkgname=grub4dos-efi
 pkgname="${_pkgname}-git"
 pkgver=r762.20231129.b6c8c30
-pkgrel=2
+pkgrel=3
 pkgdesc="GRUB4DOS EFI binaries."
 arch=(
   'i386'
@@ -149,11 +149,11 @@ _build_i386-efi() {
   mkdir -p i386-efi
   cp -v stage2/pre_stage2.exec i386-efi/kernel.img
   case "$CARCH" in
-    'x86_64')
-      ./mkimage      -v -d i386-efi -p /efi/grub4dos -o 'gr4dos32.efi' -O i386-efi -c preset_menu.lst
-    ;;
     'i386'|'i486'|'i586'|'i686')
       ./mkimage.i386 -v -d i386-efi -p /efi/grub4dos -o 'gr4dos32.efi' -O i386-efi -c preset_menu.lst
+    ;;
+    'x86_64')
+      ./mkimage      -v -d i386-efi -p /efi/grub4dos -o 'gr4dos32.efi' -O i386-efi -c preset_menu.lst
     ;;
   esac
 }
@@ -168,11 +168,11 @@ _build_x86_64-efi() {
   mkdir -p x86_64-efi
   cp -v stage2/pre_stage2.exec x86_64-efi/kernel.img
   case "$CARCH" in
-    'x86_64')
-      ./mkimage      -v -d x86_64-efi -p /efi/grub4dos -o 'gr4dos64.efi' -O x86_64-efi -c preset_menu.lst
-    ;;
     'i386'|'i486'|'i586'|'i686')
       ./mkimage.i386 -v -d x86_64-efi -p /efi/grub4dos -o 'gr4dos64.efi' -O x86_64-efi -c preset_menu.lst
+    ;;
+    'x86_64')
+      ./mkimage      -v -d x86_64-efi -p /efi/grub4dos -o 'gr4dos64.efi' -O x86_64-efi -c preset_menu.lst
     ;;
   esac
 }
@@ -189,10 +189,16 @@ build() {
   LDFLAGS=("`grep -E '^LDFLAGS=.+' /etc/makepkg.conf | cut -d '"' -f 2`")
   CPPFLAGS=("`grep -E '^CPPFLAGS=.+' /etc/makepkg.conf | cut -d '"' -f 2`")
 
-  msg2 "Building i386-efi ..."
-  _build_i386-efi
-  msg2 "Building x86_64-efi ..."
-  _build_x86_64-efi
+  case "$CARCH" in
+    'i386'|'i486'|'i586'|'i686')
+      msg2 "Building i386-efi ..."
+      _build_i386-efi
+    ;;
+    'x86_64')
+      msg2 "Building x86_64-efi ..."
+      _build_x86_64-efi
+    ;;
+  esac
 }
 
 _package_i386-efi() {
@@ -219,10 +225,16 @@ _package_common() {
 }
 
 package() {
-  msg2 "Packaging i386-efi ..."
-  _package_i386-efi
-  msg2 "Packaging x86_64-efi ..."
-  _package_x86_64-efi
+  case "$CARCH" in
+    'i386'|'i486'|'i586'|'i686')
+      msg2 "Packaging i386-efi ..."
+      _package_i386-efi
+    ;;
+    'x86_64')
+      msg2 "Packaging x86_64-efi ..."
+      _package_x86_64-efi
+    ;;
+  esac
   msg2 "Packaging common files ..."
   _package_common
 }

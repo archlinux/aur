@@ -1,7 +1,7 @@
 pkgbase = grub4dos-efi-git
 	pkgdesc = GRUB4DOS EFI binaries.
 	pkgver = r762.20231129.b6c8c30
-	pkgrel = 2
+	pkgrel = 3
 	url = http://grub4dos.chenall.net/
 	arch = i386
 	arch = i486
