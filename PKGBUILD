@@ -1,18 +1,23 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='wd5741'
 pkgver='20131220'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Firmware update utility for WD Red drives'
 arch=('x86_64' 'i686' 'pentium4')
-url='https://support.wdc.com/downloads.aspx?p=201&lang=en'
-license=('unknown')
-source_x86_64=("$pkgname-$pkgver-$pkgrel-x86_64::https://fichiers.touslesdrivers.com/40252/${pkgname}x64")
-source_i686=("$pkgname-$pkgver-$pkgrel-i686::https://fichiers.touslesdrivers.com/40253/${pkgname}x32")
-source_pentium4=("$pkgname-$pkgver-$pkgrel-pentium4::https://fichiers.touslesdrivers.com/40253/${pkgname}x32")
-sha512sums_x86_64=('9ce4159937f7b46dba16ffb0799a363d4519430c482fe3792382eccecc62dcab4f800fd2d6acc08359c692cc548924b3f8729a195cb056ac486037b8ed487f12')
-sha512sums_i686=('2ef634b7cbf99ceb692c249e052fdae39df5cb49431810b6c2a302a9a82dc567853a136e618dfcc605099df0019acd28b06f2e7f39f55dcc48a1cc8ca593ba50')
-sha512sums_pentium4=('2ef634b7cbf99ceb692c249e052fdae39df5cb49431810b6c2a302a9a82dc567853a136e618dfcc605099df0019acd28b06f2e7f39f55dcc48a1cc8ca593ba50')
+url='https://support-cz.wd.com/app/products/product-detailweb/p/288'
+license=('LicenseRef-WDDisclaimerofLiability')
+source=("$pkgname-$pkgver.zip::https://downloads.wdc.com/sata/${pkgname^^}v4.zip")
+sha512sums=('cc81b0f1ea0e92042b870d8484449d30a89b4d55230d24944f560a0cfb8fbd34cb754bd719cf5593ba79d022ef50718b8c4d9c37381d752e141d6e3c90b1f3f9')
 
 package() {
-	install -Dm755 "$srcdir/$pkgname-$pkgver-$pkgrel-$CARCH" "$pkgdir/usr/bin/$pkgname"
+	case "$CARCH" in
+		i686|pentium4)
+			install -Dm755 "$srcdir/${pkgname}x32" "$pkgdir/usr/bin/$pkgname"
+		;;
+		*)
+			install -Dm755 "$srcdir/${pkgname}x64" "$pkgdir/usr/bin/$pkgname"
+		;;
+	esac
+
+	install -Dm644 'Disclaimer of Liability - As-Is.txt' "$pkgdir/usr/share/licenses/$pkgname/WDDisclaimerofLiability"
 }
