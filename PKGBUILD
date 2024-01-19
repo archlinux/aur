@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=kdash
-pkgver=0.4.7
+pkgver=0.4.8
 pkgrel=1
 pkgdesc='A simple and fast dashboard for Kubernetes'
 arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'libxcb')
 makedepends=('python' 'rust')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kdash-rs/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('d8c1b7c2df300c65bd6e67a9fef1edb4e6815cdc9ce9af85ac28ea270aab76ade727c7d9ad94922574149971372d57e43d58e61c44d2a0bd2015b4666f33d218')
+b2sums=('1aa6c247c98bad18258708f665bc38497ce8edad85266bbadc1d3dda3b4d48c1267d24fcba88655c70730fc5c2a1629ff52b66d948fcafd377ee596a0f394edc')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
