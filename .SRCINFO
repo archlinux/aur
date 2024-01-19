@@ -15,7 +15,7 @@ pkgbase = keks-meet-server
 	source = https://codeberg.org/metamuffin/keks-meet/archive/v1.0.0.tar.gz
 	source = keks-meet-server.service
 	source = sysusers.conf
-	sha256sums = 2a15f2037a166fa0a674a63ce20bce0215930b14c398610723b8b4113757ca75
+	sha256sums = bd7b31da4dbdab650422c6ed2db09cb9f4022e734d4372ecb822d8968d154086
 	sha256sums = SKIP
 	sha256sums = SKIP
 
