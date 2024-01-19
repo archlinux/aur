@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bluestone-bin
 _pkgname=Bluestone
-pkgver=0.12.10
+pkgver=0.13.0
 _electronversion=22
 pkgrel=1
 pkgdesc="A WYSIWYG Markdown editor, improve reading and editing experience."
@@ -10,7 +10,7 @@ arch=(
     'x86_64'
 )
 url="https://github.com/1943time/bluestone"
-license=('AGPL3')
+license=('LicenseRef-AGPL3')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
@@ -36,8 +36,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64.deb")
-sha256sums_aarch64=('0d12501cb4d10ca23acd51c012a76f907f1de53c4df243cbbd03b5fe45483173')
-sha256sums_x86_64=('287ea844a4a6546932a9df9ea5a33ebdb0f93e2927df4bec56cef9a761a5f062')
+sha256sums_aarch64=('f706afebd390e70cee28c2e5f82f2eb5bfac0c20699419bb21dffb17881ba593')
+sha256sums_x86_64=('915e75ca1c9252999e9de947138dd462db09f7e597f6722f8ff4c613c4883868')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${_pkgname}|${pkgname%-bin} --no-sandbox|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g;s|Markdown|Utility|g" \
