@@ -2,14 +2,14 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggfun
-_pkgver=0.1.3
+_pkgver=0.1.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Miscellaneous Functions for 'ggplot2'"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(Artistic2.0)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-cli
   r-ggplot2
@@ -24,12 +24,12 @@ optdepends=(
   r-tidyr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e4f9b170524457f12082835281af2990')
-sha256sums=('89232ea73b7bcf3262ce4f66c7f6d05b00c5c79927c9c16d3ba8f816332669ca')
+md5sums=('a27e5e2c026eba828b588bb230db3ea3')
+b2sums=('ca4cd76bcb9bc640984bd258d199f045e88d0b79cc1c083d7d2c777f58f005381a78851ef35f83c3f3d64c590253a19cf9668df0d1c0e1b98a0a5e51abe9abf4')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
