@@ -1,0 +1,15 @@
+pkgbase = automatamp
+	pkgdesc = NieR: Automata Multiplayer Mod (Server)
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/praydog/AutomataMP
+	arch = any
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = enet
+	provides = automatamp
+	source = git+https://github.com/praydog/AutomataMP.git#tag=513422a17cf6f88d4d9133f8d3fad1c2cb2c1cf0
+	sha256sums = SKIP
+
+pkgname = automatamp
