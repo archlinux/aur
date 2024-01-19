@@ -2,17 +2,17 @@
 
 pkgname=opengnb-git
 pkgver=1.4.5.b
-pkgrel=1
+pkgrel=4
 pkgdesc="GNB is open source de-centralized VPN to achieve layer3 network via p2p with the ultimate capability of NAT Traversal."
 arch=(x86_64
     aarch64
     riscv64)
 url="https://github.com/gnbdev/opengnb"
-license=('GPLv3')
+license=('GPL-3.0-or-later')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
-depends=()
+depends=(glibc)
 optdepends=()
 makedepends=(git
     sed
@@ -34,10 +34,11 @@ prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
 
     cd "${srcdir}/${pkgname}"
-    sed -i 's|-I./libs|-I./libs -I/usr/include|g'  Makefile.linux
-    sed -i 's|-I./libs/miniupnpc/|-I/usr/include/miniupnpc|g'  Makefile.linux
-    sed -i 's|-I./libs/libnatpmp | |g'  Makefile.linux
-    sed -i 's|-I./libs/zlib | |g'  Makefile.linux
+    sed -i  -e 's|-I./libs|-I./libs -I/usr/include|g' \
+        -e 's|-I./libs/miniupnpc/|-I/usr/include/miniupnpc|g' \
+        -e 's|-I./libs/libnatpmp | |g' \
+        -e 's|-I./libs/zlib | |g'  Makefile.linux
+    sed -i -e 's|sbin|bin|g' scripts/opengnb\@.service
 }
 
 build() {
@@ -49,10 +50,10 @@ package() {
     cd "${srcdir}/${pkgname}"
     make -f Makefile.linux install
 
+    install -dm0755 "${pkgdir}/etc/opengnb"
     install -Dm0755  bin/* -t "${pkgdir}/usr/bin/"
     install -Dm0644  scripts/${pkgname%-git}@.service -t "${pkgdir}/usr/lib/systemd/system/"
-    install -Dm0644  examples/node_config_example/*.conf -t "${pkgdir}/usr/share/${pkgname%-git}/node_config_example/"
-    install -Dm0644  examples/node_config_example/scripts/* -t "${pkgdir}/usr/share/${pkgname%-git}/node_config_example/scripts/"
-    install -Dm0644 docs/* -t "${pkgdir}/usr/share/doc/${pkgname%-git}/docs/"
-    install -Dm0644 "${srcdir}/${pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname%-git}/"
+    install -Dm0644  examples/node_config_example/*.conf -t "${pkgdir}/usr/share/${pkgname}/node_config_example/"
+    install -Dm0644  examples/node_config_example/scripts/* -t "${pkgdir}/usr/share/${pkgname}/node_config_example/scripts/"
+    install -Dm0644 docs/* -t "${pkgdir}/usr/share/doc/${pkgname}/docs/"
 }
