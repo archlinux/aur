@@ -1,0 +1,15 @@
+pkgbase = mpris-notifier-git
+	pkgdesc = Dependency-light, highly-customizable, XDG desktop notification generator for 🎶🎵 MPRIS status changes 🎹
+	pkgver = r41.a4ea1ca
+	pkgrel = 1
+	url = https://github.com/l1na-forever/mpris-notifier
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = cargo
+	provides = mpris-notifier
+	conflicts = mpris-notifier
+	source = mpris-notifier::git+https://github.com/l1na-forever/mpris-notifier
+	sha512sums = SKIP
+
+pkgname = mpris-notifier-git
