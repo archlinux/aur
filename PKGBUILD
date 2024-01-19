@@ -3,11 +3,10 @@ pkgname=google-docs-bin
 _appname="Google Docs"
 pkgver=2022.12.1
 _electronversion=25
-pkgrel=8
+pkgrel=9
 pkgdesc="Google Docs Desktop App made with electron. Includes Google Docs, Sheets, Slides, Forms, and Drive."
 arch=("x86_64")
-url="https://complabs.in/apps/google-docs"
-_ghurl="https://github.com/Comp-Labs/Google-Docs"
+url="https://github.com/Comp-Labs/Google-Docs"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -15,13 +14,13 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_appname// /-}-linux-amd64-${pkgver}.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_appname// /-}-linux-amd64-${pkgver}.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Comp-Labs/Google-Docs/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('ec35d80b9189ddfa095b108fc939490e0d2ef682036a82e7807679ae0b3a49d4'
             '22d8c1bb0c91f6cb8fa332a53a40d5223f7caa4b12af0029f4b0c2b65b6a1596'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
