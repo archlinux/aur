@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Check reproducible status of packages after installation"
 url="https://github.com/swsnr/pacman-hook-reproducible-status"
 arch=('any')
-license=('MPL2')
+license=('MPL-2.0')
 depends=('python')
 source=(
     "99-check-reproducible-status.hook"
