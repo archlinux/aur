@@ -2,22 +2,22 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=zps-bin
-pkgver=1.2.8
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A small utility for listing and cleaning up zombie processes"
 arch=('x86_64')
 url="https://github.com/orhun/zps"
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('glibc')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$url/releases/download/$pkgver/${pkgname%-bin}-$pkgver.tar.gz"{,.sig}
                "$pkgname-$pkgver-LICENSE::$url/raw/$pkgver/LICENSE"
                "$pkgname-$pkgver-README.md::$url/raw/$pkgver/README.md")
-sha512sums_x86_64=('2c5040b6313c19858ef5591c9f211212a2111ab6b71340902acc28f1018da0bffb1a4369130ac7cd0a9252aefa3f6559116668c998213e8f4dce38469af66162'
+sha512sums_x86_64=('fde670bb449b3532d53065260102c79e8f5dc1a783d0f1d83bc5553016a27f63a9616d686a7d52b2a509624a8c9f27e43c27cb887f72d59509be1e11a2905417'
                    'SKIP'
                    'd361e5e8201481c6346ee6a886592c51265112be550d5224f1a7a6e116255c2f1ab8788df579d9b8372ed7bfd19bac4b6e70e00b472642966ab5b319b99a2686'
-                   '6cc703881f73c09fe5f767a44ea2a24564887d0c424f361975b4c72429a06c3a2ba58f8ea052bf01a2e9759d4572720468352cdee18274f919aa90f15c9730ac')
+                   'edbac4de6855202404bac28381f4f86f10f565dad7b2e559474efb488ddf1fcbd268665225598f5183bd9de4fdaca5442032f9902eb8e2f3e7eaa4822c1ef0ac')
 validpgpkeys=('39E678DF63BE20EA5A175156B928720AEC532117') # orhun <orhunparmaksiz@gmail.com>
 
 package() {
