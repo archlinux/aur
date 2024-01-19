@@ -1,6 +1,6 @@
 pkgbase = qbs-git
 	pkgdesc = Qt Build Suite: Build tool that helps simplify the build process for developing projects across multiple platforms.
-	pkgver = v1.7.2.r297.g512704a5
+	pkgver = v2.2.1.r36.ge769597e5
 	pkgrel = 1
 	url = https://wiki.qt.io/Qt_Build_Suite
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = qbs-git
 	license = LGPL
 	makedepends = gcc
 	makedepends = git
-	depends = qt5-base
-	depends = qt5-script
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-base
+	depends = qt6-5compat
 	provides = qbs
-	conflicts = qtcreator
 	conflicts = qbs
-	source = git://code.qt.io/qbs/qbs.git
+	source = git+https://github.com/qbs/qbs.git
 	sha256sums = SKIP
 
 pkgname = qbs-git
-
