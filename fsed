@@ -1,0 +1,48 @@
+# Prerequisites:
+#   Have any Unix/Linux environment with bash installed
+# Install:
+#   Copy this file to one of your $PATH directories, then `chmod a+x <path_to_this_file>`
+# Usage:
+#   fsed 's/.js/.min.js/g' *.js
+
+if [ $# = 0 ]; then
+  echo "Usage: fsed <PATTERN> [FILE]..."
+  echo "'fsed --help' for more information."
+  exit 0
+fi
+
+PATTERN=
+MV_ARGS=
+IN_PLACE=
+
+for arg in "$@"; do
+  if [ "$arg" = "--help" ] || [ "$arg" = "-h" ]; then
+    echo "Usage: fsed [-iv] <PATTERN> [FILE]..."
+    echo "Rename files in batch using sed syntax."
+    echo ""
+    echo "Example:"
+    echo "  Dry run: fsed 's/.tgz/.tar.gz/' *.tgz"
+    echo "  Replace: fsed -i 's/.tgz/.tar.gz/' *.tgz"
+    echo ""
+    echo "Arguments:"
+    echo "  PATTERN is in sed syntax, will be applied on file names."
+    echo "  -h, --help          print this help page"
+    echo "  -i, --in-place      change the file names"
+    echo "  -v, --verbose       rename files and print"
+    exit 0
+    exit 0
+  elif [ "$arg" = "--verbose" ] || [ "$arg" = "-v" ]; then
+    MV_ARGS="$MV_ARGS -v"
+  elif [ "$arg" = "--in-place" ] || [ "$arg" = "-i" ]; then
+    IN_PLACE=true
+  elif [ "$PATTERN" = "" ]; then
+    PATTERN=$arg
+  else
+    TO=$(echo $arg | sed "$PATTERN")
+    if [ "$IN_PLACE" = "true" ]; then
+      [ "$arg" != "$TO" ] && mv $MV_ARGS "$arg" "$TO"
+    else
+      echo $TO
+    fi
+  fi
+done

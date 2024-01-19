@@ -1,0 +1,12 @@
+pkgbase = fsed
+	pkgdesc = Rename files in batch using sed syntax
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/harttle/fsed
+	arch = x86_64
+	license = MIT
+	provides = fsed
+	conflicts = fsed
+	sha256sums = SKIP
+
+pkgname = fsed
