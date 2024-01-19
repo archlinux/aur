@@ -1,20 +1,20 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CMplot
-_pkgver=4.5.0
+_pkgver=4.5.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Circle Manhattan Plot"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL)
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9cf96efd3bf4a1c061d13b5b55188b0d')
-b2sums=('405f35d6376b71076ffd7deb50c3bfe4599f6810e58bf993f42d0c2e1cb90157f2db3d99fb9c86db27ff2653d5b741a1f48f5abb933305227a9600b0d1875aa4')
+md5sums=('f32790ba773b4aca62c301d2d7045d3c')
+b2sums=('c938c8fe1dda4935b899653d33b472e613ed894768013c52dcd2fac374cc3c94f39dfca434e80a99995746c3a1a753dff71b67040231c84ea9bfa1a98c5d1978')
 
 build() {
   mkdir build
