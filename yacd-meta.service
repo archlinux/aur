@@ -1,0 +1,11 @@
+[Unit]
+Description=Yet another Clash dashboard (meta)
+After=network.target NetworkManager.service systemd-networkd.service iwd.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/miniserve /usr/share/yacd-meta/ --port 3030 --index index.html
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
