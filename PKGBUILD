@@ -1,10 +1,11 @@
 # Maintainer: Borhaneddine GUEMIDI <guemidi borhane at aina dot dz>
+# Contributor: Eli <solaceiix at gmail dot com> 
 # Based on the template from https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
 
 _pkgname=aptakube
 
 pkgname="${_pkgname}"-appimage
-pkgver=1.4.4
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="A modern and lightweight Kubernetes desktop client to help you operate workloads on multiple clusters. (free to use during the public preview)"
 arch=('x86_64')
@@ -15,7 +16,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://releases.aptakube.com/${_pkgname}_${pkgver}_amd64.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('38be155c6e0fc080cadee3043bd795c3b8040eeb80df60c61dbec8aaf7f5d5fc')
+sha256sums_x86_64=('2c3ca18d18a3f1b48465085b4ecbda7d2f68d949d480a2634cf84e3f90127f59')
 
 prepare() {
     chmod +x "${_appimage}"
