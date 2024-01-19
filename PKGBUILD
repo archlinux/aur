@@ -1,7 +1,7 @@
 # Maintainer: Caleb Fontenot <foley2431 at gmail dot com>
 # Co-Maintainer: Lance G. <gero3977 at gmail dot com>
 pkgname=mmsd-tng-git
-pkgver=1.10.r0.gac0dbc3
+pkgver=2.5.0.r0.g6529119
 pkgrel=1
 pkgdesc="Multimedia Messaging Service Daemon - The Next Generation"
 url="https://gitlab.com/kop316/mmsd"
@@ -9,7 +9,8 @@ arch=('x86_64' 'armv7h' 'aarch64')
 license=("GPL2")
 provides=("mmsd" "mmsd-tng")
 conflicts=("mmsd" "mmsd-tng")
-depends=("c-ares" "mobile-broadband-provider-info" "libmm-glib" "libsoup" "libphonenumber")
+depends=("c-ares" "mobile-broadband-provider-info" "libmm-glib" "libsoup3" "libphonenumber"
+         "glib2" "glibc" "gcc-libs")
 makedepends=("git" "meson")
 source=("$pkgname::git+https://gitlab.com/kop316/mmsd.git"
         "https://salsa.debian.org/DebianOnMobile-team/mmsd-tng/-/raw/debian/latest/debian/mmsd-tng.user.service")
@@ -31,6 +32,7 @@ build() {
 	arch-meson $srcdir/$pkgname build
 	meson compile -C _build
 }
+
 check() {
 	cd "$srcdir/$pkgname"
 	meson test -C _build
