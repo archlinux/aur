@@ -1,10 +1,10 @@
 pkgbase = edgetx-companion
 	pkgdesc = EEPROM Editor and Simulator for EdgeTX RC radio transmitter firmwares
-	pkgver = 2.9.2
+	pkgver = 2.9.3
 	pkgrel = 1
 	url = https://edgetx.org/
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = arm-none-eabi-binutils
 	makedepends = arm-none-eabi-gcc
 	makedepends = arm-none-eabi-newlib
@@ -36,7 +36,7 @@ pkgbase = edgetx-companion
 	provides = companion
 	conflicts = companion
 	options = !debug
-	source = git+https://github.com/EdgeTX/edgetx.git#tag=v2.9.2
+	source = git+https://github.com/EdgeTX/edgetx.git#tag=v2.9.3
 	source = git+https://github.com/jbeder/yaml-cpp.git
 	source = git+https://github.com/raphaelcoeffic/AccessDenied.git
 	source = git+https://github.com/FreeRTOS/FreeRTOS-Kernel.git
@@ -46,7 +46,6 @@ pkgbase = edgetx-companion
 	source = git+https://github.com/EdgeTX/lvgl.git
 	source = git+https://github.com/nothings/stb.git
 	source = install.patch
-	source = remove-ssl-check.patch
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -57,6 +56,5 @@ pkgbase = edgetx-companion
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = 2f2d110ba03c3d852bec93a0705570df93e72f5e3757bd64494083c5a1ae59c5228024fca563043c05014b1962ccde88e029a6bac2fe36be6e852a53b35a43fb
-	b2sums = 6ad8cfff9f623c1d0182713839419b633f421e762d01cd46b2ce817c1552929d9ffadcb38f112d6ac9d3d196346b781d842ad0d9c34d4dbe0d5709a3edbc6026
 
 pkgname = edgetx-companion
