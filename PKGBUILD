@@ -10,7 +10,7 @@ _java_ver=11
 pkgver=11.0.22+12
 pkgrel=1
 pkgdesc='BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads.'
-arch=(aarch64 armv7h armv8h i686 x86_641e82b1755cc61a6af083e67c42101d78ab56d575)
+arch=(aarch64 armv7h armv8h i686 x86_64)
 url='https://bell-sw.com/'
 license=('custom')
 depends=('java-environment-common=3' 'java-runtime-common>=3' 'ca-certificates-utils')
