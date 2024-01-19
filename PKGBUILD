@@ -4,16 +4,16 @@
 
 pkgname=python-types-requests
 _name=${pkgname#python-}
-pkgver=2.31.0.20231231
+pkgver=2.31.0.20240106
 pkgrel=1
 pkgdesc="Typing stubs for requests"
 arch=('any')
 url="https://pypi.org/project/types-requests/"
-license=('Apache')
+license=('Apache-2.0')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('0f8c0c9764773384122813548d9eea92a5c4e1f33ed54556b508968ec5065cee')
+sha256sums=('0e1c731c17f33618ec58e022b614a1a2ecc25f7dc86800b36ef341380402c612')
 
 build() {
   cd "$_name-$pkgver"
