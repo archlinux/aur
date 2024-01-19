@@ -1,0 +1,15 @@
+pkgbase = python-pyflame
+	pkgdesc = Generate flamegraphs for Python code, using Brendan Gregg’s excellent FlameGraph project to perform the heavy lifting
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://pypi.org/project/pyflame
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = pyflame
+	conflicts = pyflame
+	source = https://files.pythonhosted.org/packages/0f/78/04a296a7488dddf81476d997d0c24f4872943501a26d02cee418b9fc53e0/pyflame-0.3.1.tar.gz
+	sha256sums = d4d710a917bf12754675e058fb6d07c376ca52831a11f8f8d38b3426c5f06348
+
+pkgname = python-pyflame
