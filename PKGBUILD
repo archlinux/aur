@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=0.37.0.51.gc7d8e155d2
+pkgver=0.37.0.176.g92d1e9cd8a
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -34,7 +34,6 @@ depends=(
   'libssh' 'libssh.so'
   'libva' 'libva.so' 'libva-drm.so' 'libva-wayland.so' 'libva-x11.so'
   'libvdpau'
-  'libxinerama'
   'libxkbcommon' 'libxkbcommon.so'
   'libx11'
   'libxcb'
