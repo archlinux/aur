@@ -1,0 +1,13 @@
+[Unit]
+Description=Multimedia Messaging Service Daemon
+After=ModemManager.service
+ConditionUser=!@system
+
+[Service]
+ExecStart=/usr/bin/mmsdtng
+
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=default.target

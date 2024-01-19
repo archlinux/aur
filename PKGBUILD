@@ -13,9 +13,9 @@ depends=("c-ares" "mobile-broadband-provider-info" "libmm-glib" "libsoup3" "libp
          "glib2" "glibc" "gcc-libs")
 makedepends=("git" "meson")
 source=("$pkgname::git+https://gitlab.com/kop316/mmsd.git"
-        "https://salsa.debian.org/DebianOnMobile-team/mmsd-tng/-/raw/debian/latest/debian/mmsd-tng.user.service")
+        "mmsd-tng.service")
 sha256sums=("SKIP"
-            "SKIP")
+            "493f7ec8193b3a7ce2fc49dff497a03e683d0feb547b9814ae76b032a1145417")
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -41,5 +41,5 @@ check() {
 package() {
 	cd "$srcdir/$pkgname"
 	DESTDIR="$pkgdir" meson install -C build
-        install -Dm644 "$srcdir/mmsd-tng.user.service" "$pkgdir/usr/lib/systemd/user/mmsd-tng.service"
+        install -Dm644 "$srcdir/mmsd-tng.service" "$pkgdir/usr/lib/systemd/user/mmsd-tng.service"
 }

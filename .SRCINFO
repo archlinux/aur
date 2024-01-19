@@ -22,8 +22,8 @@ pkgbase = mmsd-tng-git
 	conflicts = mmsd
 	conflicts = mmsd-tng
 	source = mmsd-tng-git::git+https://gitlab.com/kop316/mmsd.git
-	source = https://salsa.debian.org/DebianOnMobile-team/mmsd-tng/-/raw/debian/latest/debian/mmsd-tng.user.service
+	source = mmsd-tng.service
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 493f7ec8193b3a7ce2fc49dff497a03e683d0feb547b9814ae76b032a1145417
 
 pkgname = mmsd-tng-git
