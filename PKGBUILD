@@ -1,25 +1,27 @@
+# Maintainer: Sebastian Muxel <sebastian@muxel.dev>
 # Contributor: Bernhard Walle <bernhard@bwalle.de>
 # AUR Category: devel
 
 pkgname=ptxdist
-pkgver=2020.12.0
+pkgver=2024.01.0
 pkgrel=1
 pkgdesc="Embedded Linux build system"
 arch=('i686' 'x86_64')
 url="http://www.ptxdist.org"
 license=('GPL')
-depends=('dialog' 'flex' 'bison' 'patch' 'python2' 'wget')
-source=("http://www.pengutronix.de/software/ptxdist/download/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('d260f6ca365ff1d00272a80c9d7801e8')
-sha512sums=('c87e3c390d69c363f1d0cc2d4c1befb2827512aa5e3e54bb9f5093ef97b4cdbfec191b5b82a6113113678dceb87bb6e374cff4b8b968c64fd14ea0fc04ab1c26')
+depends=('dialog' 'flex' 'bison' 'patch' 'python' 'wget')
+source=("https://public.pengutronix.de/software/ptxdist/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('d44d0877d666bfe573905b64f0b85ab8')
+sha256sums=('00dc11a32175220aaa7a6d7780e001b6a4ac327b6d780962f95089aa6f7880f0')
+sha512sums=('028aef74ce825c4afb8eaeb223944901873e3855f6c5eb827ebc9d5e008614bf1864b5207c77b1fa96ca026e9bf69cee1096cd09a1e262104cd45b7d93395643')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr --with-python=/usr/bin/python2
-  make
+  cd "${pkgname}-${pkgver}"
+  ./configure --prefix=/usr
+  make -j
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
