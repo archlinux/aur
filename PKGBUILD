@@ -2,8 +2,8 @@
 
 pkgname=swaysome
 pkgdesc="AwesomeWM-like workspaces for sway."
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="https://gitlab.com/hyask/swaysome"
 license=('MIT')
@@ -16,7 +16,7 @@ source=(
 )
 
 sha256sums=(
-  "5c0a0a8210a1455555c6eed5b36b4c1a539e78a01bcaa0402a32d7b03f26b0ab"
+  "4598cab2690223be0279cd0842b74286e7e1ce3d700fb6cb52036e1061efeab5"
 )
 
 prepare() {

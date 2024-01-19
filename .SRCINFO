@@ -1,7 +1,7 @@
 pkgbase = swaysome
 	pkgdesc = AwesomeWM-like workspaces for sway.
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://gitlab.com/hyask/swaysome
 	arch = x86_64
 	arch = armv7l
@@ -9,7 +9,7 @@ pkgbase = swaysome
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
-	source = swaysome-2.0.0.tar.gz::https://static.crates.io/crates/swaysome/swaysome-2.0.0.crate
-	sha256sums = 5c0a0a8210a1455555c6eed5b36b4c1a539e78a01bcaa0402a32d7b03f26b0ab
+	source = swaysome-2.1.0.tar.gz::https://static.crates.io/crates/swaysome/swaysome-2.1.0.crate
+	sha256sums = 4598cab2690223be0279cd0842b74286e7e1ce3d700fb6cb52036e1061efeab5
 
 pkgname = swaysome
