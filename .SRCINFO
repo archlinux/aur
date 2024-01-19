@@ -1,0 +1,19 @@
+pkgbase = python-ssort-git
+	pkgdesc = Tool for automatically sorting python statements within a module (built from latest commit)
+	pkgver = 0.12.1.r0.g3d87560
+	pkgrel = 1
+	url = https://github.com/bwhmather/ssort
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-pathspec
+	provides = python-ssort
+	conflicts = python-ssort
+	source = git+https://github.com/bwhmather/ssort.git
+	sha256sums = SKIP
+
+pkgname = python-ssort-git
