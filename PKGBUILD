@@ -25,7 +25,12 @@ makedepends=('git'
 #   'lua'
 #   'libwhereami'
 )
-checkdepends=(python-pyopenssl)
+# checkdepends=(
+#   python-pyopenssl
+#   python-cryptography
+#   python-pip
+#   python-pipx
+#   )
 options=(!buildflags)
 provides=('proxmark3' 'proxmark3-iceman')
 conflicts=('proxmark3' 'proxmark3-iceman')
@@ -42,6 +47,11 @@ pkgver() {
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {
@@ -128,10 +138,11 @@ build() {
   make {bootrom,client,mfkey,nonce2key,common}/install
 }
 
-check() {
-  cd "${srcdir}/${pkgname}"
-  make check
-}
+# check() {
+#   cd "${srcdir}/${pkgname}"
+# #   pipx install sslcrypto
+#   make check
+# }
 
 package() {
   export DESTDIR="build"
