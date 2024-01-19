@@ -2,12 +2,12 @@
 # shellcheck shell=bash disable=SC2034
 
 pkgname=vinegar
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="A transparent wrapper for Roblox Player and Roblox Studio"
 arch=("x86_64")
 url="https://github.com/vinegarhq/vinegar"
-license=("GPL3")
+license=("GPL-3.0-only")
 depends=("glibc" "hicolor-icon-theme" "libgles" "libxcursor" "libxfixes"
          "libxkbcommon" "libxkbcommon-x11" "libx11" "wayland")
 makedepends=("git" "go" "vulkan-headers" "wayland-protocols")
@@ -16,7 +16,7 @@ optdepends=("gamemode: Gamemode integration"
             "wine: A required dependency (made optional for flexbility)")
 conflicts=("vinegar-git")
 source=("${url}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.xz")
-sha256sums=("78b4f0b5fcb49cd0804e1382160c055fb3a87369d332b8246063141ccbb5a0f5")
+sha256sums=("dbef5a918171607633080ebb2d9fa499ace72138e784c0e2dd18c10d91911221")
 
 build() {
   cd "${pkgname}-v${pkgver}"
