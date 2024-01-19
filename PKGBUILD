@@ -2,7 +2,7 @@
 # Contributor: neeshy <neeshy@tfwno.gf>
 
 pkgname=ripme
-pkgver=2.1.7
+pkgver=2.1.8
 pkgrel=1
 pkgdesc="Downloads albums in bulk"
 arch=('any')
@@ -12,8 +12,8 @@ depends=('java-runtime>=17' 'bash')
 makedepends=('java-environment>=17' 'gradle')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ripmeapp2/ripme/archive/${pkgver}.tar.gz"
         "ripme-${pkgver}-gradle.patch")
-sha256sums=('191cafb660a611cabe104c494853d27ee501b52bde204b8b38ab37a8d2340e30'
-            '361495b47ab85fbfde959513435f6c1b0f0054eaf263343c8d38b6593e828e9b')
+sha256sums=('cae03b2c6318b1b1980042156b66be7950a4026127a314ba82fdb3832c0e4d0c'
+            'd8b2a8fd3f6e40e685bd2eff771a583b06f17a6eaad789b779ab59ebccc6ce16')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -32,7 +32,7 @@ EOF
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  install -Dm644 "build/libs/ripme-2.1.7-29-b080faae.jar" "${pkgdir}/usr/share/java/ripme.jar"
+  install -Dm644 "build/libs/ripme-2.1.8.jar" "${pkgdir}/usr/share/java/ripme.jar"
   install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/ripme/LICENSE"
   install -Dm755 ripme.sh "${pkgdir}/usr/bin/ripme"
 }

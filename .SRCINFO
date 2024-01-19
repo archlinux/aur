@@ -1,6 +1,6 @@
 pkgbase = ripme
 	pkgdesc = Downloads albums in bulk
-	pkgver = 2.1.7
+	pkgver = 2.1.8
 	pkgrel = 1
 	url = https://github.com/ripmeapp2/ripme
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = ripme
 	makedepends = gradle
 	depends = java-runtime>=17
 	depends = bash
-	source = ripme-2.1.7.tar.gz::https://github.com/ripmeapp2/ripme/archive/2.1.7.tar.gz
-	source = ripme-2.1.7-gradle.patch
-	sha256sums = 191cafb660a611cabe104c494853d27ee501b52bde204b8b38ab37a8d2340e30
-	sha256sums = 361495b47ab85fbfde959513435f6c1b0f0054eaf263343c8d38b6593e828e9b
+	source = ripme-2.1.8.tar.gz::https://github.com/ripmeapp2/ripme/archive/2.1.8.tar.gz
+	source = ripme-2.1.8-gradle.patch
+	sha256sums = cae03b2c6318b1b1980042156b66be7950a4026127a314ba82fdb3832c0e4d0c
+	sha256sums = d8b2a8fd3f6e40e685bd2eff771a583b06f17a6eaad789b779ab59ebccc6ce16
 
 pkgname = ripme
