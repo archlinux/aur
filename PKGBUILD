@@ -3,8 +3,8 @@
 # Contributor : Axel Navarro <navarroaxel at gmail>
 
 pkgname=pycharm-community-eap
-pkgver=233.13763.5
-_pkgver=2023.3.3
+pkgver=241.8102.133
+_pkgver=2024.1
 _eap=y
 pkgrel=1
 
@@ -24,8 +24,8 @@ options=('!strip')
 _filever="$([ $_eap = y ] && echo -n $pkgver || echo -n $_pkgver)"
 source=("pycharm-community-eap.desktop")
 sha256sums=('f76a04261fb91a8ede8859f6b46352bdeb92f79210a9fc87b5ac959063cb1715')
-sha256sums_x86_64=('755062f2e070119530633de9c69cfddee0c9291e16477bff28cc30faca92f423')
-sha256sums_aarch64=('7d33169a191795c2fb10eb5c52445573cea486989c165481b7e8d6ca3d093a62')
+sha256sums_x86_64=('142abc8ab79dede56292cb013e1ee364ad9940506a320b9517bc84f04cef003d')
+sha256sums_aarch64=('8f06281bfb3feea12f1ef97b1e6ea87755ab21c9ab931d603848ba15aa01a177')
 
 source_x86_64=("https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz")
 
