@@ -2,19 +2,18 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fmedia-bin
 pkgver=1.31
-pkgrel=4
+pkgrel=5
 pkgdesc='Fast media player/recorder/converter'
 arch=('x86_64')
 url='https://stsaz.github.io/fmedia'
 _ghurl="https://github.com/stsaz/fmedia"
-license=('GPL3')
+license=('LicenseRef-GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'gtk3'
     'jack'
     'libpulse'
-    'dbus'
     'gdk-pixbuf2'
     'alsa-lib'
     'pango'
@@ -24,16 +23,18 @@ depends=(
 makedepends=(
     'imagemagick'
 )
-options=('!strip')
+options=(
+    '!strip'
+)
 source=(
     "${pkgname}-${pkgver}.tar.xz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-amd64.tar.xz"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('9f2347b0316275b081e98feaaed8b17c4750c2855f85606b79b26f6e62ba8ab0'
-            '6e07f73612198323cad08fea41f1a1a22c89a64e39ce816bd551c7f9353fb26e')
+            'ce359b7d74019b4879be96313613f94889d7b8e73e5b6e8bce3bf377dabf9567')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runappname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     sed "s|~/bin/${pkgname%-bin}-1/${pkgname%-bin}.ico|${pkgname%-bin}|g;s|=Audio|=AudioVideo;|g" \
         -i "${srcdir}/${pkgname%-bin}-1/${pkgname%-bin}.desktop"
