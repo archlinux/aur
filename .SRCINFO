@@ -1,6 +1,7 @@
 pkgbase             = rage-bin
 	pkgdesc             = A simple, secure and modern file encryption tool (and Rust library) with small explicit keys, no config options, and UNIX-style composability. 
 	pkgver              = 0.9.2
+	pkgrel              = 1
 	url                 = https://github.com/str4d/rage
 	arch                = x86_64
 	arch                = aarch64
