@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname='snac'
-pkgver='2.44'
+pkgver='2.45'
 pkgrel='1'
 pkgdesc="A simple, minimalistic ActivityPub instance"
 url="https://codeberg.org/grunfink/${pkgname}2"
@@ -13,7 +13,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/grunfink/${pkgname}2/
         "${pkgname}.install"
         "${pkgname}-system.service"
         "${pkgname}-user.service")
-b2sums=('f6452e3883635812f71a28c536012a8743ac14e6e324d119081d17872c14d7d814ca258b8c45df3950d74b7e912311e01ee7f78bc8e769449a77df4e20427946'
+b2sums=('65e611fc8c40587afad2f38442c9f7ae7abbeda3ddc09e8a4387d367b218f90a1f88f0c26c145220bc973fe13c198b43941a93e27e31d21b77c457fda8155ebd'
         'f2ca53f40c9ea2e82a63c0437272dfbb9636a27b23752253832ed67b2cc7f806a289851339f6505eb265a4b84a02b5fe16c031d40e0aa62446dafe183a61f20d'
         '5378f76bd65ca03b7edc9d3e61156ef027dbf9e1ce7612bed129d37d63fd0a95203db96e246714512a4ed0c363cc60f3d29302c8ef4a7970fd88e05039858da8'
         '7a34944bb8f001a194123a0fee5ce3077c29e15059e1e558465641dad57dcbf685c6a1a8c913d372b2af2fbddd7d6dbc48cbafdfac3b24aa038ecbbf1e513465')
