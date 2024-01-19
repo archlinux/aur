@@ -22,13 +22,6 @@ source=(
 )
 sha256sums=(SKIP{,,})
 
-# Workaround #661: "Build with `--enable-compositor` fails due to missing headers"
-#                  <https://gitlab.xfce.org/xfce/xfwm4/-/issues/661>
-_workaround_661() {
-	make
-	make clean
-}
-
 prepare(){
   cd $pkgname
   # Original patch by Ryan Bester (see $url for the reference)
@@ -39,9 +32,6 @@ prepare(){
 
 build() {
   cd $pkgname
-
-  _workaround_661
-
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -49,6 +39,7 @@ build() {
     --enable-startup-notification \
     --enable-randr \
     --enable-compositor \
+    --enable-maintainer-mode \
     --enable-xsync \
     --disable-debug
   make
