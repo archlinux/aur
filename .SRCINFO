@@ -1,19 +1,16 @@
 pkgbase = xilinota-bin
 	pkgdesc = A free and open source (FOSS) note-taking and to-do project delivering applications,capable of handling large number of notes organised in notebooks, and syncing notes across the platforms in various ways.
 	pkgver = 2.13.5_beta4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/XilinJia/Xilinota
 	arch = x86_64
 	license = AGPL3
 	makedepends = squashfuse
 	depends = electron25
 	depends = hicolor-icon-theme
-	depends = libx11
-	depends = gdk-pixbuf2
-	depends = libxext
+	depends = dbus-glib
 	depends = libdbusmenu-glib
 	depends = gtk2
-	depends = dbus-glib
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
 	provides = xilinota=2.13.5_beta4
@@ -21,6 +18,6 @@ pkgbase = xilinota-bin
 	source = xilinota-2.13.5_beta4.AppImage::https://github.com/XilinJia/Xilinota/releases/download/v2.13.5.beta4/Xilinota-2.13.6.AppImage
 	source = xilinota.sh
 	sha256sums = 1cccb8f2698cfef138e673e16993ff88acc93b352672c3e7ba9beb6422f8f6b6
-	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
 
 pkgname = xilinota-bin

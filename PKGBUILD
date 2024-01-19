@@ -3,7 +3,7 @@ pkgname=xilinota-bin
 _pkgname=Xilinota
 pkgver=2.13.5_beta4
 _electronversion=25
-pkgrel=1
+pkgrel=2
 pkgdesc="A free and open source (FOSS) note-taking and to-do project delivering applications,capable of handling large number of notes organised in notebooks, and syncing notes across the platforms in various ways."
 arch=("x86_64")
 url="https://github.com/XilinJia/Xilinota"
@@ -13,12 +13,9 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
-    'libx11'
-    'gdk-pixbuf2'
-    'libxext'
+    'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
-    'dbus-glib'
     'lib32-gcc-libs'
     'lib32-glibc'
 )
@@ -30,7 +27,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1cccb8f2698cfef138e673e16993ff88acc93b352672c3e7ba9beb6422f8f6b6'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -38,7 +35,7 @@ build() {
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/@${pkgname%-bin}app-desktop.desktop"
+    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/@${pkgname%-bin}app-desktop.desktop"
     find "${srcdir}/squashfs-root" -type d -exec chmod 755 {} \;
 } 
 package() {
