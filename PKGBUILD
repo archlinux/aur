@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=httpx
-pkgver=1.3.7
+pkgver=1.3.8
 pkgrel=1
 pkgdesc="A fast and multi-purpose HTTP toolkit allow to run multiple probers using retryablehttp library"
 arch=("x86_64" "i686")
@@ -12,7 +12,7 @@ conflicts=('httpx' 'python-httpx')
 depends=("glibc")
 makedepends=("go")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('246bdef7b4173e830d8bbf779045ab5048a56aa6f979c77c34487869938563b367e801473647be6c7251197e73cee331d5fbb88bf4a7856202d624b97d81fe52')
+b2sums=('4596c1384925be7d23f1b3b5b6224522d51d16e8b079ceb677c3fcd7ee5f438217d0040b3cd0fcd818ac43bf0570df15ef40efb7251daafe58b340a6bde87c31')
 
 build() {
   cd ${pkgname}-${pkgver}/cmd/${pkgname}
@@ -29,4 +29,3 @@ package() {
   install -Dm755 cmd/${pkgname}/${pkgname} ${pkgdir}/usr/bin/httpx-toolkit
   install -Dm644 LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
 }
-
