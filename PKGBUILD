@@ -5,7 +5,7 @@
 
 pkgname="discord-chat-exporter-cli"
 _apkgname="DiscordChatExporter"
-pkgver=2.42.6
+pkgver=2.42.7
 pkgrel=1
 
 pkgdesc="Exports Discord chat logs to a file"
@@ -18,7 +18,7 @@ source=(
   "$pkgname"
 )
 b2sums=(
-  60f55db525fda28745322e4923e811e1423a1731a7eb71a1eaab79b47f0ba7f9940914c7fbe543e37e830c5926df0b470deb3718315cc9defbdd814945a1db32
+  fdf6549cda9d9fe0daccc9a139ba698118d4a8ab70bed7f68b5bb28fc3ceda848f25e99cf76d9b5911575c7532165320f981ae2600861c3db0d86ec89c4c5035
   7540fb95f81c1041c87778c590a9438ffb64bf417c3d4d3f1363da5a25898c98f9dcd1209b9237bd595374a33326b7f23043bd6156cc7e14f0bff230ee0f6de6
 )
 
