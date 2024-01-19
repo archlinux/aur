@@ -1,6 +1,6 @@
 pkgbase = r-cbioportaldata
 	pkgdesc = Exposes and makes available data from the cBioPortal web resources
-	pkgver = 2.14.0
+	pkgver = 2.14.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cBioPortalData
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-cbioportaldata
 	optdepends = r-survival
 	optdepends = r-survminer
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cBioPortalData_2.14.0.tar.gz
-	sha256sums = 0e66410f9e2c1d4f206ce45963f617a2ed67fb406f0a1182341fcfa18afd05d0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cBioPortalData_2.14.1.tar.gz
+	sha256sums = 82168ac83e8243a77ab691f4dd57f0211d5f153c9ee33f29f610b15bf4000201
 
 pkgname = r-cbioportaldata
