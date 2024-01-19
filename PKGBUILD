@@ -11,9 +11,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'gdk-pixbuf2'
-    'libx11'
-    'libxext'
+    'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
 )
@@ -27,7 +25,7 @@ source=(
 )
 sha256sums=('a6867340661adc15b95b569c5bd0a82fb3dd61c9e76677d368f06367ce7d97ef'
             'ac76bfd52440815cb3e8ec5ea00f1f9b82c9b404219814f2f05c3fe44a9446c5'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -35,7 +33,7 @@ build() {
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
 }
 package() {
