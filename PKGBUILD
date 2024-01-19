@@ -3,15 +3,15 @@
 _name=moderngl
 pkgname=python-$_name
 pkgver=5.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='ModernGL: High performance rendering for Python 3'
 arch=(x86_64)
 url='https://github.com/moderngl/moderngl'
 license=('MIT')
 depends=(python python-glcontext)
 makedepends=(python-build python-installer python-setuptools python-wheel)
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('570c933a008614be01542ba9765ffb6110e77f66dc669d272700dbde005caa869c182b1b2c9d48662c60c937a6480db0c5497b513040dfb3272d8fd8e9da4e18')
+source=("$url/archive/$pkgver.tar.gz")
+b2sums=('3a10982fcefeed79f70bcdb313798853766eb60f0893948bca4a45fb8a8fe18f1b385729d06976ae2bce0e83704dacadfaaa30b0b93528f38231967710e5ad7d')
 
 build() {
     cd $_name-$pkgver
