@@ -5,7 +5,7 @@
 pkgbase=greetd-qtgreet
 pkgname=('greetd-qtgreet' 'greetd-qtgreet-qt6')
 _pkgname=QtGreet
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Qt based greeter for greetd'
 arch=('aarch64' 'x86_64')
@@ -13,7 +13,7 @@ url="https://gitlab.com/marcusbritanicus/$_pkgname"
 license=('GPL3')
 makedepends=('meson' 'ninja' 'qt5-base' 'dfl-wayqt' 'dfl-login1' 'dfl-applications' 'dfl-utils' 'qt6-base' 'dfl-wayqt-qt6' 'dfl-login1-qt6' 'dfl-applications-qt6' 'dfl-utils-qt6' 'mpv' 'wlroots')
 source=("$pkgbase-$pkgver.tar.gz::$url/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz")
-sha256sums=('b177e1f63c9df7b725b46c82fc057d28731def5a16ebb215b7bfa2de8aa1ce71')
+sha256sums=('29071a5398f1c97af82eab60496fcee71c2b2c3f2c25a33b82083f1640869cf1')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
