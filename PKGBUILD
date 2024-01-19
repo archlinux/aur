@@ -2,7 +2,7 @@
 
 pkgname=gtkcord4
 _fqpn=so.libdb.${pkgname}
-pkgver=0.0.16
+pkgver=0.0.17
 pkgrel=1
 pkgdesc='Discord client written in go and gtk4'
 arch=('x86_64' 'aarch64')
