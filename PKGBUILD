@@ -5,7 +5,7 @@
 
 # Maintainer: Leo <i@setuid0.dev>
 pkgname=qbittorrent-enhanced-qt5
-pkgver=4.6.2.10
+pkgver=4.6.3.10
 pkgrel=1
 epoch=
 pkgdesc="A bittorrent client powered by C++, Qt and the good libtorrent library (Enhanced Edition), Built against Qt5"
@@ -26,7 +26,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/c0re100/qBittorrent-Enhanced-Edition/archive/release-$pkgver.tar.gz")
 noextract=()
-sha256sums=('22ad828e4addecabae208ffb29e79da43bbda8c51294fda3da400bbf04ed81db')
+sha256sums=('10d8b0bddcaf33e3288fa5dded8194e7a904ac41b074d1817118f678cddfedca')
 
 build() {
 	cd qBittorrent-Enhanced-Edition-release-$pkgver
