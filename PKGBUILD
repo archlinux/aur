@@ -3,7 +3,7 @@ pkgname=redisfish-bin
 _pkgname=RedisFish
 pkgver=1.0.2
 _electronversion=13
-pkgrel=4
+pkgrel=5
 pkgdesc="A convenient, cross-platform, data-focused Redis GUI client"
 arch=('x86_64')
 url="https://github.com/Kuari/RedisFish"
@@ -12,7 +12,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'gdk-pixbuf2'
     'gtk2'
     'libdbusmenu-glib'
 )
@@ -24,7 +23,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('29024ae89b860ef8832e4219ce9fda1f339621e2b13c28306e32f9edd50dfb35'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -32,7 +31,7 @@ build() {
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -e "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" \
+    sed -e "s|AppRun --no-sandbox|${pkgname%-bin}|g" \
         -e "3i Comment=${pkgdesc}" \
         -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
