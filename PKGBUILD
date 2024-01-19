@@ -1,7 +1,7 @@
 # Maintainer: Tom Zander
 
 pkgname=flowee
-pkgver=2024.01.1
+pkgver=2024.01.2
 pkgrel=1
 pkgdesc="Flowee provides the shortest path to Bitcoin Cash"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ source=("https://codeberg.org/Flowee/thehub/archive/$pkgver.tar.gz"
     "flowee.logrotate"
     "flowee.conf")
 
-sha256sums=("ef1e6254535eea7c18de4c809f87056d01eb30bc9d0d045e7bf0f40f0f6ef780"
+sha256sums=("79f1e9c6b4b705d6c8b9a0e782fcf535d963f18099c129385f7a586337b5e212"
     "0438e1a44523aeb3bbecd60fd920ca7b2aacd267b5cf988ab77a44eb7c03929e"
     "59c1928ddb33fed1d4bf35df8fecd1dbdda0b308eac943503a2e3afb8c64bc89")
 
