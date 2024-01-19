@@ -3,7 +3,7 @@ pkgname=ppet3-bin
 _pkgname=PPet3
 pkgver=3.3.0
 _electronversion=16
-pkgrel=7
+pkgrel=8
 pkgdesc="Put a cute girl on your desk for more fun.在你的桌面放一个萌妹子，多一点乐趣"
 arch=('x86_64')
 url="https://github.com/zenghongtu/PPet"
@@ -11,26 +11,10 @@ license=('MIT')
 provides=("${pkgname%-bin}-${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'gtk3'
-    'at-spi2-core'
-    'nss'
     'alsa-lib'
-    'libxcomposite'
-    'libx11'
-    'libxdamage'
-    'gdk-pixbuf2'
-    'libdrm'
-    'libxfixes'
-    'libxkbcommon'
+    'gtk3'
     'nspr'
-    'pango'
-    'libxext'
-    'cairo'
-    'expat'
-    'libxcb'
-    'mesa'
-    'libcups'
-    'libxrandr'
+    'nss'
     'hicolor-icon-theme'
 )
 source=(
