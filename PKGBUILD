@@ -4,7 +4,7 @@ _pkgname=Manyi-transformer
 pkgver=1.2.0
 _electronversion=23
 _nodeversion=16
-pkgrel=4
+pkgrel=5
 pkgdesc="A tool for gltf/glb models compression."
 arch=('any')
 url="https://github.com/MarshallChang/Manyi-transformer"
@@ -43,7 +43,7 @@ makedepends=(
     'git'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
+    "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
 )
 sha256sums=('SKIP')
 _ensure_local_nvm() {
@@ -55,7 +55,7 @@ _ensure_local_nvm() {
 build() {
     _ensure_local_nvm
     gendesk -f -n -q --categories "Development" --name "${_pkgname}" --exec "${pkgname} --no-sandbox %U"
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -66,12 +66,12 @@ build() {
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/"${pkgname}",usr/bin}
-    cp -r "${srcdir}/${pkgname}-${pkgver}/release/build/linux-unpacked/"* "${pkgdir}/opt/${pkgname}"
+    cp -r "${srcdir}/${pkgname}.git/release/build/linux-"*/* "${pkgdir}/opt/${pkgname}"
     ln -sf "/opt/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     for _icons in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024;do
-        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/assets/icons/${_icons}.png" \
+        install -Dm644 "${srcdir}/${pkgname}.git/assets/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/app/${pkgname}.png"
     done
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

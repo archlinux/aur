@@ -1,7 +1,7 @@
 pkgbase = manyi-transformer
 	pkgdesc = A tool for gltf/glb models compression.
 	pkgver = 1.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/MarshallChang/Manyi-transformer
 	arch = any
 	license = MIT
@@ -34,7 +34,7 @@ pkgbase = manyi-transformer
 	depends = mesa
 	provides = manyi-transformer
 	conflicts = manyi-transformer
-	source = manyi-transformer-1.2.0::git+https://github.com/MarshallChang/Manyi-transformer.git#tag=v1.2.0
+	source = manyi-transformer.git::git+https://github.com/MarshallChang/Manyi-transformer.git#tag=v1.2.0
 	sha256sums = SKIP
 
 pkgname = manyi-transformer
