@@ -2,11 +2,11 @@
 
 pkgname=gnome-shell-extension-picture-of-the-day
 pkgver=45.12
-pkgrel=2
+pkgrel=3
 pkgdesc='Use a picture of the day from various sources as GNOME desktop background'
 arch=('any')
 url="https://github.com/swsnr/${pkgname}"
-license=('MPL2')
+license=('GPL-2.0-or-later OR MPL-2.0')
 makedepends=('nodejs')
 depends=('gnome-shell')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
