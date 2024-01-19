@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cobang
-pkgver=0.10.4
+pkgver=0.10.5
 pkgrel=1
 pkgdesc="A QR code scanner desktop app for Linux"
 arch=('any')
@@ -26,9 +26,9 @@ depends=(
   'zbar'
 )
 makedepends=('gobject-introspection' 'meson')
-checkdepends=('appstream-glib')
+checkdepends=('appstream')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7529a6bb97ca042cf0caf25378df61a4ae478548fddd48319e3ec545a2e7f930')
+sha256sums=('ed162fbc26a61086d63f2a5068e2a27cd896ddd24066b9bfdf9301cd2129714c')
 
 build() {
   arch-meson "CoBang-$pkgver" build
