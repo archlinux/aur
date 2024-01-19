@@ -1,7 +1,7 @@
 pkgbase = intel-oneapi-hpckit
 	pkgdesc = Intel oneAPI Base and HPC Toolkit for Linux
 	pkgver = 2024.0.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
 	install = intel-oneapi-hpckit.install
 	arch = x86_64

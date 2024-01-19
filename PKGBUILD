@@ -10,7 +10,7 @@ pkgver_base=$pkgver.46
 pkgver_hpc=$pkgver.38
 _urlver_base=163da6e4-56eb-4948-aba3-debcec61c064
 _urlver_hpc=67c08c98-f311-4068-8b85-15d79c4f277a
-pkgrel=0
+pkgrel=1
 pkgdesc="Intel oneAPI Base and HPC Toolkit for Linux"
 arch=('x86_64')
 url='https://software.intel.com/content/www/us/en/develop/tools/oneapi.html'
@@ -42,47 +42,35 @@ provides=('intel-oneapi-mkl' 'intel-oneapi-dnnl' 'intel-oneapi-tbb' 'intel-oneap
           'intel-oneapi-vtune' 'intel-oneapi-fpga-group')
 conflicts=('intel-oneapi-basekit')
 
-# build() {
-#   cd "${srcdir}"
-#   sh "l_BaseKit_p_${pkgver_base}_offline.sh" \
-#     --extract-folder "${srcdir}" --extract-only \
-#     --remove-extracted-files no --log "${srcdir}"/extract_base.log
-#   sh "l_HPCKit_p_${pkgver_hpc}_offline.sh" \
-#     --extract-folder "${srcdir}" --extract-only \
-#     --remove-extracted-files no --log "${srcdir}"/extract_hpc.log
-# }
-
 package() {
-  # cd "${srcdir}"
 
-  # We have to run as a user different from root
-  # otherwise the installer wants to write to /opt, /var
-  # which is not possible in fakeroot.
+  ## We have to run as a user different from root
+  ## otherwise the installer wants to write to /opt, /var
+  ## which is not possible in fakeroot.
 
-  # The directory has to be removed first, otherwise the installer
-  # will complain that some components are already installed.
+  ## The directory has to be removed first, otherwise the installer
+  ## will complain that some components are already installed.
   runuser -u $USER -- rm -rf /home/$USER/intel
   runuser -u $USER -- sh "l_BaseKit_p_${pkgver_base}_offline.sh" -a \
     --silent --eula accept \
     --components all \
     --install-dir "${pkgdir}"/opt/intel/oneapi \
     --log-dir "${srcdir}"/ --ignore-errors
-  # Delete the directory again, Sometimes HPCKit installer may not 
-  # be able to install new components in same directory as BaseKit.
-  # I only saw this happen once in wsl, removing the directory will
-  # be safe but slow.
-  
+  ## Delete the directory again, Sometimes HPCKit installer may not 
+  ## be able to install new components in same directory as BaseKit.
+  ## I only saw this happen once in wsl, removing the directory will
+  ## be safe but slow.
   # runuser -u $USER -- rm -rf /home/$USER/intel
+
   runuser -u $USER -- sh "l_HPCKit_p_${pkgver_hpc}_offline.sh" -a \
     --silent --eula accept \
     --components all \
     --install-dir "${pkgdir}"/opt/intel/oneapi \
     --log-dir "${srcdir}"/ --ignore-errors
-
   # Clean up
   runuser -u $USER -- rm -rf /home/$USER/intel
 
-  # allow low level compiler libs to be found
+  ## allow low level compiler libs to be found
   local _lib_path='/opt/intel/oneapi/compiler'
   local _ldso_conf="${pkgdir}"/etc/ld.so.conf.d
   install -d "${_ldso_conf}"
@@ -90,12 +78,13 @@ package() {
   echo "${_lib_path}/latest/linux/lib/x64" >> "${_ldso_conf}/${pkgname}.conf"
   echo "${_lib_path}/latest/linux/compiler/lib/intel64" >> "${_ldso_conf}/${pkgname}.conf"
 
-  # Collection of licenses used in OneAPI with pointers for all toolkits
+  ## Collection of licenses used in OneAPI with pointers for all toolkits
   install -Dm644 "${pkgdir}/opt/intel/oneapi/licensing/latest/licensing/${_major_ver}.${_minor_ver}/license.htm" \
                  "${pkgdir}/usr/share/licenses/${pkgname}/license.htm"
 
-## This will create a script in /etc/profile.d/ that sets the environment variables  
-## /etc/profile.d/intel-oneapi-hpckit.sh
+## This will create a script in /etc/profile.d/intel-oneapi-hpckit.sh that sets the 
+## environment variables for the current shell. If you want to create it automatically,
+## uncomment the following lines. 
 
 #   install -dm755 "$pkgdir/etc/profile.d/"
 #   cat > "$pkgdir/etc/profile.d/$pkgname.sh" << EOF
