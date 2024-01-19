@@ -3,17 +3,17 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 _base=elasticsearch-dsl
 pkgname=python-${_base}
-pkgver=8.11.0
+pkgver=8.12.0
 pkgrel=1
 pkgdesc="Python client for Elasticsearch"
 arch=(any)
 url="https://github.com/elastic/${_base}-py"
-license=(Apache2)
+license=(Apache)
 depends=(python-elasticsearch python-dateparser)
 makedepends=(python-build python-installer python-setuptools python-wheel python-sphinx_rtd_theme)
 # checkdepends=(python-pytest-mock python-mock)
 source=(${_base}-py-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('19e6444b365b6e0922a494881708c6a32211111bd75919659f7677b341acef43d1a6edceb163e44559111709e4f86bd91d320065859a0e269532d4e08abf189c')
+sha512sums=('5e3b51a1ea21521e7b7005dc95945479b3634dc77af293775d6c1bc82b52589057f8be9749b696795bda7c0ac57739240a1699acc773f4bddd64de3cec4704c2')
 
 build() {
   cd ${_base}-py-${pkgver}
