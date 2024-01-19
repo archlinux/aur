@@ -27,7 +27,7 @@ prepare() {
   cd ${pkgname%-VCS}
   git submodule init
   git config submodule.json.url $srcdir/ljsoncppp
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 # Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
