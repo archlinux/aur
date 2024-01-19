@@ -3,7 +3,7 @@ pkgname=vagrant-manager-bin
 _pkgname="Vagrant Manager"
 pkgver=2.3.2
 _electronversion=5
-pkgrel=2
+pkgrel=3
 pkgdesc="An electron, status bar menu app that lets you manage all of your vagrant machines from one central location."
 arch=(
     "i686"
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('aab8e4332f27b8c96aad7427a304e40a612f62af9bef709505452bd04d136c03'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 sha256sums_i686=('0878a5fa6482888db12d3ead7fa83f695079808871be2fd5105dd06bc8faacd9')
 sha256sums_x86_64=('251e8bc77dd84f9aaf38529afa948b6a576856715f8990059a3104f0d10ab90b')
 build() {
@@ -33,7 +33,7 @@ build() {
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\" %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\"|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
