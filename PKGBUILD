@@ -2,7 +2,7 @@
 pkgname=ttfviewer-bin
 _pkgname=TTFviewer
 pkgver=0.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A small tool for developers to view and preview various ttf font/icon image formats. It is based on Qt and opencv frameworks and supports windows/linux/macos."
 arch=("x86_64")
 url="https://github.com/QQxiaoming/TTFviewer"
@@ -24,10 +24,10 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('2e14c74524641516c3208dfbcc80d379ba8579f80864c13225c1289b0c8b7b00'
-            '75e728e50129743b076c46a90ff66eca45b3a354a4fcbe342b0b0986f75b0bbe')
+            'aff07ee64a8c2860758f7cbc8c4fd6c58ff03e48bf8ceca690645fdd792b049c')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runappname@|${_pkgname}|g" \
+        -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${_pkgname}.png|${pkgname%-bin}|g;s|/usr/bin/${_pkgname}|${pkgname%-bin}|g;s|Commen|Comment|g" \
