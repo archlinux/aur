@@ -2,7 +2,7 @@
 
 pkgname=platypush-git
 pkgver=0.50.3.r726.g2e9cb44c
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
 license=('MIT')
@@ -111,7 +111,7 @@ sha256sums=('SKIP')
 
 package() {
     cd "${srcdir}/platypush"
-    python3 setup.py install --root="${pkgdir}/" --optimize=1
+    PYTHONDONTWRITEBYTECODE=1 python3 setup.py install --root="${pkgdir}/" --optimize=1
 
     install -m755 -d "${pkgdir}/usr/lib/systemd/user"
     install -m644 "${srcdir}/platypush/examples/systemd/platypush.service" "${pkgdir}/usr/lib/systemd/user"
