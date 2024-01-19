@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=android-knot-bin
 _pkgname=Knot
-pkgver=1.1.34
+pkgver=1.1.37
 pkgrel=1
 pkgdesc="An Android gadget that integrates common modules such as Todo, Notes and Reader and supports various clients (Win, Mac, Linux) for editing Todo and Notes."
 arch=("x86_64")
@@ -23,6 +23,7 @@ depends=(
     'fontconfig'
     'sqlite'
     'libx11'
+    'qt6-declarative'
 )
 makedepends=(
     'squashfuse'
@@ -36,9 +37,9 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/ic005k/Knot/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('92913f284e078c325ef344fc6ba1431081ff24e467bf930cd2ec02c0fb5a0639'
+sha256sums=('1d15ddc06f4a3efb1aedd77da65dd135902bc565f5b41b1482dd28cf62954503'
             'e81172c8f0c194e8fb34edd30b153e60407a094bbf2492abe4e012e6a1ad854a'
-            '41f3c41ed5bdf475a41093e145f279f79d10ecb28f536ec27c46a2ff509f183f')
+            'fe490dfe8c24f2c685b516d2366d86a64f7882b3f488d529b614f71972d85a2d')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
