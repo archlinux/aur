@@ -6,13 +6,13 @@
 pkgbase=nvidia-340xx-lts
 pkgname=(nvidia-340xx-lts nvidia-340xx-lts-dkms)
 pkgver=340.108
-pkgrel=6
+pkgrel=7
 pkgdesc="NVIDIA drivers for linux-lts, 340xx legacy branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
 makedepends=("nvidia-340xx-utils=${pkgver}" 'linux-lts>=6.1.14' 'linux-lts-headers>=6.1.14')
 conflicts=('nvidia-lts')
-license=('custom')
+license=('custom:nvidia')
 options=(!strip)
 # seems manjaro is keeping this current
 # https://gitlab.manjaro.org/packages?utf8=%E2%9C%93&filter=nvidia-340xx
@@ -29,6 +29,10 @@ source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Li
   0009-kernel-5.17.patch
   0010-kernel-5.18.patch
   0011-kernel-6.0.patch
+  0012-kernel-6.2.patch
+  0013-kernel-6.3.patch
+  0014-kernel-6.5.patch
+  0015-kernel-6.6.patch
 )
 sha256sums=('995d44fef587ff5284497a47a95d71adbee0c13020d615e940ac928f180f5b77'
             '5b4cb7620abc1729a13c78a2fb33ccaeb7d92f42936d929885324c81f2b7c985'
@@ -42,7 +46,11 @@ sha256sums=('995d44fef587ff5284497a47a95d71adbee0c13020d615e940ac928f180f5b77'
             'ad663464d7f57f0f7136bd727ed088d733b087be10cd944ba7d089c421536717'
             'e9970b3ab78f34bdfa29f5dc4f6772aa35026d14d14a0e35bd9744187583edc9'
             'ebb3c5f9b41d0d5081b27a6335ffa6114d65dbcb98f935158167877c394ccb89'
-            'b741790983e2bfba1c7d1842af73a353fbe0de987bec3ee05385d20f244226b9')
+            'b741790983e2bfba1c7d1842af73a353fbe0de987bec3ee05385d20f244226b9'
+            '84373dd6280ae2358017a23a1ee30a570990a7d5087ab67037dd1a5076a176b1'
+            '20a60e305c3228ace56ba0e1846aa6000fefbf0a07b7b18007e10cc2f183ea29'
+            'b2687197a42b02f4886f43284a8c45fc6610f5e0ed515a5c132f8803165ebebf'
+            'e6269d4ffd22ddfb3dd436e02d4b6b3cac8c7779795ab4f30917673152e862fd')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
 # default is 'linux' substitute custom name here
