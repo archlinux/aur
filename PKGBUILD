@@ -3,7 +3,7 @@ pkgname=postbird-bin
 _pkgname=Postbird
 pkgver=0.8.4
 _electronversion=6
-pkgrel=4
+pkgrel=5
 pkgdesc="Open source PostgreSQL GUI client for macOS, Linux and Windows"
 arch=('x86_64')
 url="https://github.com/Paxa/postbird"
@@ -20,13 +20,13 @@ source=(
 )
 sha256sums=('e3cc9eb893a35ddd0cc93ca10e526957c9c04896044a3b7c0f445daad45adfea'
             'd93e84fa24bbea7e92d6cd171968d8da1f4a28047cc704f0700d17b57c7a9a9c'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    sed "s|/opt/${pkgname%-bin}/${pkgname%-bin} %U|${pkgname%-bin}|g;s|Programming|Development|g" \
+    sed "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g;s|Programming|Development|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
