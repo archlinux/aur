@@ -1,13 +1,13 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='beekeeper-studio'
-pkgver='4.0.3'
+pkgver='4.1.13'
 pkgrel='1'
 epoch='1'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
 # If you're running on pentium4, you have to add it to the arch and source arrays of the electron18-bin AUR dependency
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/$pkgname/$pkgname"
-license=('GPL3')
+license=('GPL-3.0-only')
 _electronpkg='electron18'
 depends=("$_electronpkg")
 makedepends=('git' 'libxcrypt-compat' 'nodejs' 'npm' 'python' 'yarn')
@@ -17,10 +17,10 @@ source=(
 	'electron-builder-config.diff'
 	'fix-argv.diff'
 )
-sha512sums=('e2cee16a884b905c22e17e7eb0114c72ad601116dd7b80f9e45e9b6a50e9fa9dd1214a1bef45b3ccd08fb0f665f0d2680a08110f8579cda26e372dbc9d45b037'
-            '7550a585f23262f12aa997007f3ccb47272baf9bdeec7789a033775c6683fc9d1b4a29eee02d132c3d441b6abd2d96b9018469990b1638633d24ea90abea9371'
+sha512sums=('230d81fd980461c5decdb6acd2266257997a218d11a1d37c8df469660a048f3dbe6e431ae481f2ee08390d4fa226e2961494d1a0dc00d206372db24fe78208e8'
+            'e6b9a9ac3c62cc2b040c4ece48ab27a29e1ba8fbf2c3d45f299aeb7c2b0a967acb8e84171f5d71f63ebedba52a8f376beab40e8889bda668341aa1d9da50bd47'
             'e8d3a8d41bc15082096430e7fbfbd1deb15a82f7f1af6238f50cf2dc002e191913b21329123831522c7d4b9ea77dc441fa8b3a59c32c21f0ffa4c93256331cee'
-            '855227e70e6b7c6e8800ac417533126341f8ecf07a9e0d79d34adb7c3e746062afc4ceedd195e6b32e8cfedd1d9d7c9a2646906fb495d023bec4ee260f26e053')
+            '467d1ef0fc106db9cc878b11e197137f66648bd00e6e49de08ac596f06ee76369134707b0927d89ed001d43d4290b13388e48bdeb96dff1a5b339b03c8a22ff2')
 
 _sourcedirectory="$pkgname-$pkgver"
 
@@ -33,8 +33,8 @@ prepare() {
 	sed -i "s|%%ELECTRON_DIST%%|/usr/lib/$_electronpkg|g" 'apps/studio/vue.config.js'
 	sed -i "s|%%ELECTRON_VERSION%%|$(cat "/usr/lib/$_electronpkg/version")|g" 'apps/studio/vue.config.js'
 
-	# Replace package name and electron version in launcher script
-	sed -i -e "s/%%PKGNAME%%/$pkgname/g" -e "s/%%ELECTRON%%/$_electronpkg/g" "$srcdir/electron-launcher.sh"
+	# Replace package name, flag file name and electron version in launcher script
+	sed -i -e "s/%%PKGNAME%%/$pkgname/g" -e "s/%%ELECTRON%%/$_electronpkg/g" -e "s/%%FLAGFILENAME%%/bks/g" "$srcdir/electron-launcher.sh"
 
 	# Update node-sass and sass-loader to be compatible with current node and Linux version
 	cd "$srcdir/$_sourcedirectory/apps/studio/"
