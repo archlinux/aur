@@ -1,7 +1,8 @@
 [Desktop Entry]
 Name=Lameta
-Comment=Metadata Editor for Transparent Archiving of language document materials
-Exec=/opt/lameta/lameta
+Comment=Metadata editor for transparent archiving of language document materials
+Path=/var/log/lameta/
+Exec=/usr/bin/lameta
 Terminal=false
 Type=Application
-Icon=/opt/lameta/assets/Icon.svg
+Icon=/usr/share/icons/lameta/lameta.png
