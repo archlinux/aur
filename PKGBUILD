@@ -14,7 +14,7 @@ options=(!strip)
 _appimage="${_pkgname}_${pkgver}_amd64.AppImage"
 noextract=("${_appimage}")
 source=("https://github.com/CCBlueX/LiquidLauncher/releases/download/${pkgver}/${_pkgname}_${pkgver}_amd64.AppImage.tar.gz")
-sha256sums=('9faa70cb668d8512ef3192873f41fdfc14de45d2bc0851d1edf3086ea8a6240ad5b2b10a71a59b2ad0ee73f15e6bd6be2e195ce56283a461a0f30685a607d937')
+sha256sums=('3bd1e9fec8ba187f71c800a3850ebc610037f2a34b29c4d6691fd4ff18361b9a')
 
 prepare() {
     tar -xzf "${_appimage}.tar.gz"
