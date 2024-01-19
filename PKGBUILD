@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pear-rec
-pkgver=1.3.9
+pkgver=1.3.10
 _electronversion=26
 pkgrel=1
 pkgdesc="An open-source, cross-platform terminal for seamless workflows"
@@ -32,11 +32,9 @@ build() {
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
-    gendesk -f -n -q --categories "Utility" --exec "${pkgname}"
+    gendesk -f -n -q --categories "Utility" --exec "${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     sed "s|release/\${version}|release|g" -i packages/desktop/electron-builder.json5
-    sed "s|favicon.ico|logo.png|g" -i packages/desktop/electron/main/contract.ts
-    sed "s|favicon.ico|logo.png|g" -i packages/desktop/index.html
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
