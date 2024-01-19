@@ -1,0 +1,18 @@
+[Unit]
+Description=Prometheus S3 exporter
+After=network.target network-online.target basic.target
+Wants=network-online.target
+StartLimitIntervalSec=30
+StartLimitBurst=3
+
+[Service]
+EnvironmentFile=-/etc/conf.d/prometheus-s3-exporter
+ExecStart=/usr/bin/prometheus-s3-exporter $OPTIONS
+Type=simple
+Restart=on-failure
+RestartSec=30
+User=prometheus-s3-exporter
+Group=prometheus-s3-exporter
+
+[Install]
+WantedBy=multi-user.target
