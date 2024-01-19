@@ -38,7 +38,7 @@ replaces=('cairo-dock-plugins')
 provides=("${pkgname%-git}" 'cairo-dock-plug-ins')
 conflicts=("${pkgname%-git}" 'cairo-dock-plug-ins')
 options=(debug)
-source=("${pkgname}::git+https://github.com/dkondor/cairo-dock-plug-ins#branch=fix_shortcuts")
+source=("${pkgname}::git+https://github.com/dkondor/cairo-dock-plug-ins#branch=egl_scale")
 sha256sums=('SKIP')
 
 _builddir="build"

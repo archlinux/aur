@@ -49,7 +49,7 @@ pkgbase = cairo-dock-plug-ins-wayland-git
 	conflicts = cairo-dock-plug-ins
 	replaces = cairo-dock-plugins
 	options = debug
-	source = cairo-dock-plug-ins-wayland-git::git+https://github.com/dkondor/cairo-dock-plug-ins#branch=fix_shortcuts
+	source = cairo-dock-plug-ins-wayland-git::git+https://github.com/dkondor/cairo-dock-plug-ins#branch=egl_scale
 	sha256sums = SKIP
 
 pkgname = cairo-dock-plug-ins-wayland-git
