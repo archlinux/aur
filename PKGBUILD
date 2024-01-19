@@ -2,7 +2,7 @@
 
 pkgname='kakaotalk'
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A mobile messaging app for smartphones operated by Kakao Corporation in South Korea'
 arch=(
     'i686'
@@ -27,6 +27,7 @@ depends=(
     'bash'
     'curl'
     'desktop-file-utils'
+    'lib32-gst-plugins-good'
     'wine'
     'xdg-utils'
 )
