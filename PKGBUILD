@@ -15,18 +15,18 @@
 #
 
 pkgname=mcuxpresso-ide
-pkgver=11.8.1_1197
+pkgver=11.9.0_2144
 pkgrel=1
 epoch=
 pkgdesc="An easy-to-use integrated development environment (IDE) for creating, building, debugging, and optimizing your application. From BIN package distributed by NXP."
 arch=('x86_64')
-url="http://www.nxp.com/MCUXPresso"
+url="https://www.nxp.com/design/design-center/software/development-software/mcuxpresso-software-and-tools-/mcuxpresso-integrated-development-environment-ide:MCUXpresso-IDE"
 license=('custom:"NXP"')
 depends=('ncurses' 'glibc' 'lib32-glibc' 'jlink-software-and-documentation' 'dfu-util' 'libusb')
 
 source=("file://mcuxpressoide-${pkgver}.${arch}.deb.bin")
 noextract=("mcuxpressoide-${pkgver}.${arch}.deb.bin")
-sha256sums=('b0d245e934c06aee5cfc727d16132b9292621e8ffc6c917d109700e3ff336849')
+sha256sums=('94ec18b4da4d0f6bc7d6347731c8f1ba61af78410c9abf2e80743865e9ab72a0')
 options=('!strip')
 
 prepare() {
@@ -60,5 +60,5 @@ package() {
     # Copy udev rules from /lib to /usr/lib folder
     cp -ar ${srcdir}/mcuxpressoide/lib/udev ${pkgdir}/usr/lib/;
     # Add Product LICENSE file to licenses folder
-    install -D -m644 ${srcdir}/ProductLicense.txt ${pkgdir}/usr/share/licenses/${pkgname}/ProductLicense.txt;
+    install -D -m644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/ProductLicense.txt;
 }
