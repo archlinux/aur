@@ -8,6 +8,7 @@ arch=('x86_64')
 license=(MIT)
 makedepends=(git)
 depends=(glibc gcc-libs readline)
+conflicts=(pluto)
 source=("pluto-git::git+https://github.com/PlutoLang/Pluto#tag=$pkgver")
 sha256sums=('SKIP')
 
