@@ -18,5 +18,5 @@ package() {
     # this extracts all into the pkgdir
     tar xf "${srcdir}/data.tar.zst"
     # stop ^- from appearing in home directory
-    sed -i 's/\^-/\/dev\/null/' ${pkgdir}/usr/bin/charles
+    sed -i 's/\^-/\/dev\/null/' ${pkgdir}/usr/bin/charles4
 }
