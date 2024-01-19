@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=music-you-bin
 pkgver=3.0.0_alpha.4
-pkgrel=1
+pkgrel=2
 pkgdesc="一个美观简约的Material Design 3 (Material You) 风格网易云音乐播放器pc客户端"
 arch=('x86_64')
-url="https://v-player-git-dev-gumengyu.vercel.app/"
+url="https://music-you-next.vercel.app"
 _ghurl="https://github.com/GuMengYu/music-you"
 license=('AGPL3')
 provides=("${pkgname%-bin}=${pkgver}")
