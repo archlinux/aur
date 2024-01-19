@@ -1,13 +1,11 @@
 pkgbase = firefly-iota-desktop-appimage
 	pkgdesc = Manage your IOTA assets directly from your computer with both software and hardware wallet support. Earn staking rewards and participate in governance votes.
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://firefly.iota.org/
 	arch = x86_64
-	license = Apache
+	license = LicenseRef-Apache
 	makedepends = squashfuse
-	depends = zlib
-	depends = glibc
 	provides = firefly-iota-desktop=2.0.4
 	conflicts = firefly-iota-desktop
 	conflicts = iota-firefly-wallet
