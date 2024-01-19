@@ -2,8 +2,8 @@
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mingw-w64-libjxl
-pkgver=0.8.2
-pkgrel=2
+pkgver=0.9.1
+pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (mingw-w64)'
 arch=('any')
 url='https://jpeg.org/jpegxl/'
@@ -24,8 +24,10 @@ source=("git+https://github.com/libjxl/libjxl.git#tag=v${pkgver}"
         'git+https://github.com/google/highway.git'
         'git+https://github.com/glennrp/libpng.git'
         'git+https://github.com/madler/zlib.git'
-        'libjxl-testdata'::'git+https://github.com/libjxl/testdata.git')
+        'libjxl-testdata'::'git+https://github.com/libjxl/testdata.git'
+        'git+https://github.com/libjpeg-turbo/libjpeg-turbo.git')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -40,7 +42,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare() {
     git -C libjxl submodule init
     local _submodule
-    for _submodule in brotli googletest sjpeg skcms highway libpng zlib
+    for _submodule in brotli googletest sjpeg skcms highway libpng zlib libjpeg-turbo
     do
         git -C libjxl config --local "submodule.third_party/${_submodule}.url" "${srcdir}/${_submodule}"
     done
