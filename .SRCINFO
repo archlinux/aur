@@ -5,9 +5,9 @@ pkgbase = python-keyboard
 	url = https://github.com/boppreh/keyboard
 	arch = any
 	license = MIT
-	depends = python-setuptools
+	makedepends = python-setuptools
+	depends = python3
 	source = https://github.com/boppreh/keyboard/archive/v0.13.5.tar.gz
 	sha512sums = cea0945671a83a0be411801c6bf90c94eb37036dd232e9cf46700aff49f3e23800b93292bcf1b108c558c9c3179dd01d73796b21916e0bed7e5a2407f9c8f094
 
 pkgname = python-keyboard
-
