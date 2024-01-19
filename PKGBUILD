@@ -2,7 +2,7 @@
 
 pkgname=platypush
 pkgver=0.50.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
 license=('MIT')
@@ -108,7 +108,7 @@ sha512sums=('700b585367386cdb1043140ffffed576836d2327aec40db983ee46246e319328670
 
 package() {
     cd "${srcdir}/${pkgname}"
-    python3 setup.py build install --root="${pkgdir}/" --optimize=1
+    PYTHONDONTWRITEBYTECODE=1 python3 setup.py build install --root="${pkgdir}/" --optimize=1
 
     install -m755 -d "${pkgdir}/usr/lib/systemd/user"
     install -m644 "${srcdir}/${pkgname}/examples/systemd/platypush.service" "${pkgdir}/usr/lib/systemd/user"
