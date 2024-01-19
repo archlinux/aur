@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-flags_file="${XDG_CONFIG_HOME:-$HOME/.config}/%%PKGNAME%%-flags.conf"
+flags_file="${XDG_CONFIG_HOME:-$HOME/.config}/%%FLAGFILENAME%%-flags.conf"
 
 declare -a flags
 
