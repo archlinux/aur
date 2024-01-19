@@ -4,7 +4,7 @@
 pkgname=ripme-bin
 pkgver=2.1.8
 _pkgver=${pkgver}-29-b080faae
-pkgrel=1
+pkgrel=2
 pkgdesc="Downloads albums in bulk"
 arch=('any')
 url="https://github.com/ripmeapp2/ripme"
