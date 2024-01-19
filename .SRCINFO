@@ -1,7 +1,7 @@
 pkgbase = buckets-bin
 	pkgdesc = Private budgeting with the envelope budgeting method
 	pkgver = 0.72.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.budgetwithbuckets.com/
 	arch = x86_64
 	license = custom: commercial

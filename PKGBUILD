@@ -2,7 +2,7 @@
 
 pkgname=buckets-bin
 pkgver=0.72.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Private budgeting with the envelope budgeting method"
 arch=('x86_64')
 _arch="amd64"
@@ -24,5 +24,5 @@ package() {
   # Remove unnecessary stuff
   rm -rf "${pkgdir}/usr/share/doc"
 
-  ln -s /opt/${_pkgname}/buckets "${pkgdir}"/usr/bin/buckets
+  ln -s /opt/Buckets/buckets "${pkgdir}"/usr/bin/buckets
 }
