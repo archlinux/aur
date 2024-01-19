@@ -2,13 +2,13 @@
 _pkgname='mongodb-compass-readonly-beta'
 _edition=' Readonly Beta'
 pkgname="$_pkgname-bin"
-_pkgver='1.40.5-beta.17'
+_pkgver='1.42.0-beta.5'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - beta version - binary version'
 arch=('x86_64')
 url='https://www.mongodb.com/products/compass'
-license=('custom:SSPL')
+license=('SSPL-1.0')
 depends=(
 	# electron
 	'c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libxslt' 'minizip' 'nss' 're2' 'snappy'
@@ -20,7 +20,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 _betaprefix="$([[ "$_pkgname" =~ -beta$ ]] && printf 'beta/' || printf '')"
 source=("$pkgname-$pkgver.rpm::https://downloads.mongodb.com/compass/$_betaprefix$_pkgname-$_pkgver.x86_64.rpm")
-sha512sums=('99de818d6f48176d48f2ba7ca02bedcf253cdd21f85be788f39797add6aa406cf9a9895600661c018d7598127cfa24b347af7780fbc1211f9f5ef7066891dc0b')
+sha512sums=('e68c3a407de9b790b87bec4154cb217d493557e1a50f2eace427a3b6e29135737c154d9f1255cc1c0e50e046a31f63217bb1ac04170834ac9fb8295afb22a687')
 
 package() {
 	cd "$srcdir/"
@@ -37,7 +37,7 @@ package() {
 	install -Dm644 "usr/share/pixmaps/$_pkgname.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
-	for _license in 'LICENSE' 'LICENSES.chromium.html'; do
-		ln -sf "/opt/$_pkgname/$_license" "$pkgdir/usr/share/licenses/$pkgname/$_license"
-	done
+
+	ln -sf "/opt/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/SSPL-1.0"
+	ln -sf "/opt/$_pkgname/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
 }
