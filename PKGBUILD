@@ -8,7 +8,7 @@ pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - binary version'
 arch=('x86_64')
 url='https://www.mongodb.com/products/compass'
-license=('custom:SSPL')
+license=('SSPL-1.0')
 depends=(
 	# electron
 	'c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libxslt' 'minizip' 'nss' 're2' 'snappy'
@@ -37,7 +37,7 @@ package() {
 	install -Dm644 "usr/share/pixmaps/$_pkgname.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
-	for _license in 'LICENSE' 'LICENSES.chromium.html'; do
-		ln -sf "/opt/$_pkgname/$_license" "$pkgdir/usr/share/licenses/$pkgname/$_license"
-	done
+
+	ln -sf "/opt/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/SSPL-1.0"
+	ln -sf "/opt/$_pkgname/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
 }
