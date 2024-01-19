@@ -1,7 +1,7 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-agent
-pkgver=4.7.1
+pkgver=4.7.2
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
 pkgrel=1
@@ -40,8 +40,8 @@ validpgpkeys=('9E646BB0630C8FD18ACD15541B93E6A766CD229D')
 source_aarch64=("https://packages.wazuh.com/4.x/yum/${pkgname}-${pkgver}-${pkgrel}.aarch64.rpm")
 source_x86_64=("https://packages.wazuh.com/4.x/yum/${pkgname}-${pkgver}-${pkgrel}.x86_64.rpm")
 
-sha256sums_x86_64=('1fa7cd5565450a5ded88ee180d46cfa0d8ea186400b54b56d95bfd78089ceab7')
-sha256sums_aarch64=('2ec810e2c08712392f3692053c9bb0d9ade2e4ff6802f2d71eff08de2c6059cc')
+sha256sums_x86_64=('af3ef12d1105f4191b68497d9d0dbfe7c35279ed6162c99c757b8bf3f85d7a31')
+sha256sums_aarch64=('cfc27b8b0daa3a46898928f4ee19d58bd0c1cb56d561b5f7d8b56d4615ed0e71')
 
 install=$pkgname.install
 
