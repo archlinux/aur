@@ -4,7 +4,7 @@
 # Contributor: Sergey Shatunov <me@prok.pw>
 
 pkgname=jetty11
-pkgver=11.0.18
+pkgver=11.0.19
 pkgrel=1
 pkgdesc="Jetty is a pure Java-based HTTP server and Java Servlet container"
 arch=('any')
@@ -20,7 +20,7 @@ source=(https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-home/$pkgver/$_di
         jetty.sysusers
         jetty.tmpfiles)
 
-sha256sums=('1f1b4edabe985a8ebe300614824edd3523c3a90668c8ef6dffc35d239a4f90be'
+sha256sums=('089a4949e22e14d89db82a624a86b9daf6089dc5a7e7fb4c120315b25242732d'
             'SKIP'
             '4517310a4ed94248403e68b96b1e984d39e7073c6cd1dd9e312d00b9f4d2ca0f'
             'aef27b34d181f0f31a023e4b31c10347c711d0e45b89b9702e501709bd07689e'
