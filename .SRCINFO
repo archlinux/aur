@@ -1,12 +1,12 @@
 pkgbase = ip2location-io-cli
-	pkgdesc = Official Command Line Interface for IP2Loaction.io Geolocation API service
+	pkgdesc = Official Command Line Interface for IP2Location.io Geolocation API service
 	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://www.ip2location.io
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
-	license = Apache
+	license = MIT
 	makedepends = go
 	depends = glibc
 	source = ip2location-io-cli-1.1.0.tar.gz::https://github.com/ip2location/ip2location-io-cli/archive/refs/tags/v1.1.0.tar.gz
