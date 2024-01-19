@@ -1,12 +1,12 @@
 pkgname=openbor-bin
 pkgrlname=openbor
-pkgver=3.0.0
+pkgver=3.0.6391
 pkgrel=3
 pkgdesc="OpenBOR, a royalty free sprite-based side scrolling gaming engine."
 arch=('x86_64')
 url=""
 license=('GPL')
-depends=('unzip' 'sdl2' 'sdl2_gfx' 'libpng' 'libvorbis' 'libvpx')
+depends=('unzip' 'sdl2' 'sdl2_gfx' 'libpng' 'libpng12' 'libvorbis' 'libvpx')
 makedepends=('unzip')
 sha256sums=(SKIP)
 source=(https://github.com/DCurrent/openbor/releases/download/v6391/OpenBOR.v3.0.Build.6391.7z)
