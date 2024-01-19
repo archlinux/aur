@@ -5,12 +5,12 @@ _appname=Thorium
 _fullname="${_appname}Reader"
 pkgver=2.3.0
 _electronversion=25
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit"
 arch=('x86_64')
 url="https://www.edrlab.org/software/thorium-reader/"
 _ghurl="https://github.com/edrlab/thorium-reader"
-license=('BSD')
+license=('LicenseRef-BSD')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
@@ -24,7 +24,7 @@ source=(
 )
 sha256sums=('1007cd9083715d32427e4d39f8a4cac69cf428cfc4521950571dc2290a308f23'
             'e95e504f42685015445b4a0a80dfdaa86e5b2b2c0e317bca2bcbb51330ec61e5'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -32,14 +32,14 @@ build() {
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed -e "s|Name=${_appname}|Name=${_fullname}|g" \
-        -e "s|/opt/${_appname}/${_pkgname} %U|${pkgname%-bin}|g" \
+        -e "s|/opt/${_appname}/${_pkgname}|${pkgname%-bin}|g" \
         -e "s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 "${srcdir}/opt/${_appname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/${_appname}/resources/app.asar.unpacked/external-assets/lcp.node" \
+    install -Dm644 "${srcdir}/opt/${_appname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/opt/${_appname}/resources/app.asar.unpacked/external-assets/lcp.node" \
         -t "${pkgdir}/usr/lib/${pkgname%-bin}app.asar.unpacked/external-assets"
     for _icons in 256x256 512x512 1024x1024;do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
