@@ -1,6 +1,6 @@
 # Maintainer: Alexandru Frincu <alexandru.frincu@accenture.com>
 pkgname=cmonk
-pkgver=3.10.3
+pkgver=3.10.5
 pkgrel=1
 pkgdesc="fast logfile viewer for Analyzing Large Logfiles
  Chipmunk is a fast logfile viewer designed for analyzing 
@@ -33,4 +33,4 @@ package() {
   # Create a symlink
   ln -s /usr/lib/chipmunk/chipmunk "${pkgdir}/usr/bin/chipmunk"
 }
-sha256sums=('44aa87935c69d2cd16339385fb846fe518e9c8f3ddb70dd61eba10268dff58eb')
+sha256sums=('bbb9db026e0885abcf0ac1b506fa9a68bf26dc32298e27f9bfbb9ef48e04ebe8')
