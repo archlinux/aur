@@ -8,6 +8,7 @@ pkgbase = plutolang
 	makedepends = git
 	depends = glibc
 	depends = gcc-libs
+	depends = readline
 	source = pluto-git::git+https://github.com/PlutoLang/Pluto#tag=0.8.1
 	sha256sums = SKIP
 
