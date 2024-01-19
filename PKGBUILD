@@ -5,8 +5,8 @@
 # https://github.com/michaellass/AUR
 
 pkgname=openafs
-pkgver=1.8.10
-pkgrel=2
+pkgver=1.8.11pre1
+pkgrel=1
 pkgdesc="Open source implementation of the AFS distributed file system"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -21,14 +21,14 @@ backup=(etc/conf.d/openafs
         etc/openafs/CellServDB)
 options=(!emptydirs)
 install=openafs.install
-source=(http://openafs.org/dl/openafs/${pkgver}/${pkgname}-${pkgver}-src.tar.bz2
-        http://openafs.org/dl/openafs/${pkgver}/${pkgname}-${pkgver}-doc.tar.bz2
+source=(http://openafs.org/dl/openafs/candidate/${pkgver}/${pkgname}-${pkgver}-src.tar.bz2
+        http://openafs.org/dl/openafs/candidate/${pkgver}/${pkgname}-${pkgver}-doc.tar.bz2
         tmpfiles.d-openafs.conf
         0001-Adjust-RedHat-config-and-service-files.patch)
-sha256sums=('9fec11364623549e8db7374072f5c8f01b841f6bfe7e85673cbce35ff43ffb07'
-            '9c3809e8afea017d8af2528f60cf0e0f9fa8454fac86533a3e67221f2eb5fb5d'
+sha256sums=('dfdb4bcd79e060180ebfd127d0447eceb716be0fbe07712ee7f9ac1904b42c82'
+            'db72ffc092f562d3c3d500b0d9f8541df5c3f83a4d80b32a242773cbfda5b040'
             '18d7b0173bbffbdc212f4e58c5b3ce369adf868452aabc3485f2a6a2ddb35d68'
-            'c67d55cf9899610d3c43389861c61ebb88d196ba8503547911dfa821b54ccd29')
+            '41c9fae174063f9d3e952ec1948e779a61769ec07c0b6ff37e051a21a0fac93d')
 
 # If you need the kauth tools set this to 1. But be aware that these tools
 # are considered insecure since 2003! This also affects the PAM libs.
