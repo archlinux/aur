@@ -2,23 +2,23 @@
 pkgname=intel-oneapi-hpckit
 _major_ver=2024
 _minor_ver=0
-_patch_ver=0
+_patch_ver=1
 pkgver=$_major_ver.$_minor_ver.$_patch_ver
-# https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit-download.html?operatingsystem=linux&distributions=offline&version=2024.0.0
-# https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit-download.html?operatingsystem=linux&distributions=offline&version=2024.0.0
-pkgver_base=$pkgver.49564
-pkgver_hpc=$pkgver.49589
-_urlver_base=20f4e6a1-6b0b-4752-b8c1-e5eacba10e01
-_urlver_hpc=1b2baedd-a757-4a79-8abb-a5bf15adae9a
-pkgrel=1
+# https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit-download.html?operatingsystem=linux&distributions=offline&version=2024.0.1
+# https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit-download.html?operatingsystem=linux&distributions=offline&version=2024.0.1
+pkgver_base=$pkgver.46
+pkgver_hpc=$pkgver.38
+_urlver_base=163da6e4-56eb-4948-aba3-debcec61c064
+_urlver_hpc=67c08c98-f311-4068-8b85-15d79c4f277a
+pkgrel=0
 pkgdesc="Intel oneAPI Base and HPC Toolkit for Linux"
 arch=('x86_64')
 url='https://software.intel.com/content/www/us/en/develop/tools/oneapi.html'
 license=('custom:EULA')
 source=("https://registrationcenter-download.intel.com/akdlm/IRC_NAS/${_urlver_base}/l_BaseKit_p_${pkgver_base}_offline.sh"
         "https://registrationcenter-download.intel.com/akdlm/IRC_NAS/${_urlver_hpc}/l_HPCKit_p_${pkgver_hpc}_offline.sh")
-sha256sums=('f6613cb9c79fbf61c2e541144b8d5c70be845e071f29feb5686b64481528276d'
-            '027b5e8a6ba514e3240852564437e796b16231ef1954589e076682500b455505')
+sha384sums=('7b9d71a0b412c65efe0b6083c6a48a64ffeeb9070f4e2af125333314e8e897490ec566e1d0c2c3cdb3c4aa0820ea44b4'
+            'df6509544dfc38cd0f58862545c98853b9a254c52eba105d988b98740cf987412872f9695584ba6985429d1a0b50a9e4')
 depends=(level-zero-loader)
 options=(!strip staticlibs)
 install="$pkgname.install"
