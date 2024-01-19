@@ -2,8 +2,8 @@
 
 pkgname=python-polyfactory
 _name=${pkgname#python-}
-pkgver=2.13.0
-pkgrel=2
+pkgver=2.14.0
+pkgrel=1
 pkgdesc="Simple and powerful factories for mock data generation"
 arch=(any)
 url="https://github.com/litestar-org/polyfactory"
@@ -34,7 +34,7 @@ checkdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('28f26ae4fe205cfde4ac08b220ad8c689063b654c29b7d301210c594fbf003dc')
+sha256sums=('3aaea8bf4ced64a006d4450b43281a6e252f8ef85d7fbd31451401883c922e68')
 
 _archive="$_name-$pkgver"
 
@@ -47,7 +47,7 @@ build() {
 check() {
   cd "$_archive"
 
-  pytest tests
+  pytest tests/
 }
 
 package() {
