@@ -1,6 +1,4 @@
 # Maintainer: Meowkate
-# Contributor: Felix Yan <felixonmars@archlinux.org>
-# Contributor: Bruce Zhang <zttt183525594@gmail.com>
 
 pkgname=yacd-meta-service
 pkgver=0.1.0
