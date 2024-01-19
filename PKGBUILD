@@ -4,7 +4,7 @@
 
 pkgname=lsyncd
 pkgver=2.3.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Live Syncing (Mirror) Daemon"
 arch=(x86_64)
 url="https://github.com/lsyncd/lsyncd"
@@ -65,7 +65,7 @@ check() {
   sed --in-place '/exclude-rsyncssh.lua/d' CMakeLists.txt
   sed --in-place '/churn-rsyncssh.lua/d' CMakeLists.txt
 
-  make -C build run-tests
+  cmake --build build --target run-tests
 }
 
 package() {

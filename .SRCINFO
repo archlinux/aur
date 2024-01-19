@@ -1,7 +1,7 @@
 pkgbase = lsyncd
 	pkgdesc = Live Syncing (Mirror) Daemon
 	pkgver = 2.3.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/lsyncd/lsyncd
 	arch = x86_64
 	license = GPL-2.0-or-later
