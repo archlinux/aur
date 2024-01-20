@@ -2,7 +2,7 @@
 
 pkgname=kittyfetch
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Kittyfetch is a cute little and fast tool for fetching info about your system'
 arch=('any')
 url='https://github.com/rifsxd/kittyfetch'
@@ -14,7 +14,7 @@ makedepends=('make' 'gcc')
 source=("git+$url.git")
 sha256sums=('SKIP')
 validpgpkeys=(
-	'CBBF9D68F47D02341D96BCC66B5BBC16B3AB9113' # Rifat Azad <33044977+rifsxd@users.noreply.github.com>
+	'SKIP'
 )
 
 build() {
