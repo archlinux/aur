@@ -1,7 +1,7 @@
 # Maintainer: Hikari Hayashi <rev.hikari@gmail.com>
 
 pkgname=figma-agent-linux
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Figma Agent for Linux (a.k.a. Font Helper)"
 url="https://github.com/neetly/figma-agent-linux"
