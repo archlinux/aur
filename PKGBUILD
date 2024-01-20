@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutantota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Federico Di Pierro <nierro92@gmail.com>
 pkgname=clight
 pkgver=4.10
