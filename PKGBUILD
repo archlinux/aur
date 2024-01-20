@@ -2,11 +2,11 @@
 pkgname=chezmoi_modify_manager
 _pkgver=3.0.0
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for chezmoi to handle mixed settings and state"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/VorpalBlade/chezmoi_modify_manager"
-license=('GPL3')
+license=('GPL-3.0-only')
 makedepends=('cargo')
 source=("$pkgname-$_pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-${_pkgver}.crate")
 sha256sums=('3edbfc7e9e5a27c856aba01cd545d399d58e94f83d65675724f50af3280c75d7')
@@ -40,6 +40,7 @@ package() {
     "$_cmd_name" --bpaf-complete-style-zsh > "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
     "$_cmd_name" --bpaf-complete-style-bash > "$pkgdir/usr/share/bash-completion/completions/$pkgname"
     "$_cmd_name" --bpaf-complete-style-fish > "$pkgdir/usr/share/fish/vendor_completions.d/${pkgname}.fish"
-    # TODO: Where do completions for elvish go?
+    # No support to install distro completions in elvish.
+    # See https://github.com/elves/elvish/issues/1739
     #"$_cmd_name" --bpaf-complete-style-elvish
 }
