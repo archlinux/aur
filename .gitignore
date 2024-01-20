@@ -1,0 +1,7 @@
+# discard all (i.e. build files etc.)
+*
+
+# only allow the needed files for AUR
+!.gitignore
+!PKGBUILD
+!.SRCINFO
