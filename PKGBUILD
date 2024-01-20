@@ -8,7 +8,7 @@ pkgrel=3
 pkgdesc="A distraction free Markdown editor for GNU/Linux made with GTK+"
 arch=('any')
 url="https://world.pages.gitlab.gnome.org/apostrophe"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
   'libadwaita'
   'python-cairo'
