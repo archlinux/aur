@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="Activity Indicators for Modern C++"
 arch=("any")
 url="https://github.com/p-ranav/indicators"
-license=("MIT" "BSD")
+license=("MIT AND LicenseRef-Custom-BSD-3-Clause")
 makedepends=("cmake" "python")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/p-ranav/indicators/archive/v${pkgver}.tar.gz"
         "undeclared_uint8_t.patch")
