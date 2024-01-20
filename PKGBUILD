@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Tiling and Window Manager for Gnome-Shell"
 arch=('any')
 url="https://github.com/forge-ext/forge"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gnome-shell')
 makedepends=('git' 'less')
 provides=("${pkgname%-git}")
@@ -15,24 +15,24 @@ source=('git+https://github.com/forge-ext/forge.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/forge"
+  cd forge
   git describe --long --tags | sed 's/^v44-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/forge"
+  cd forge
 
   # Causing build failure
   git revert -n cbe78c739fa7efc11e70d8c26f5738d61b8047f3
 }
 
 build() {
-  cd "$srcdir/forge"
+  cd forge
   make build
 }
 
 package() {
-  cd "$srcdir/forge"
+  cd forge
   make INSTALL_PATH="$pkgdir/usr/share/gnome-shell/extensions/${_uuid}" install
 
   mv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share/"
