@@ -1,7 +1,7 @@
 # Maintainer:
 # Contributor: QiE2035 <qie2035@qq.com>
 
-## options
+# options
 if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ] ; then
   : ${_autoupdate:=false}
 else
@@ -10,10 +10,10 @@ fi
 
 : ${_pkgtype:=-non-opt}
 
-## basic info
+# basic info
 _pkgname="logseq-desktop"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=0.10.3
+pkgver=0.10.5
 pkgrel=1
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
