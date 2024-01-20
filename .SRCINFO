@@ -1,6 +1,6 @@
 pkgbase = yarn-pnpm-corepack
 	pkgdesc = Using corepack shim to provide yarn and pnpm, while preserving npm.
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/nodejs/corepack/
 	install = yarn-pnpm-corepack.install
