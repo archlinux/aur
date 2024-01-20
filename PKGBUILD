@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="A Gtk utility to set different backgrounds for each monitor on GNOME"
 arch=('any')
 url="https://hydrapaper.gabmus.org"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('libadwaita' 'dbus-python' 'python-gobject' 'python-pillow')
 makedepends=('blueprint-compiler' 'git' 'gobject-introspection' 'meson' 'pandoc')
 checkdepends=('appstream')
@@ -14,7 +14,7 @@ source=("git+https://gitlab.gnome.org/GabMus/HydraPaper.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/HydraPaper"
+  cd HydraPaper
   git describe --tags | sed 's/-/+/g'
 }
 
