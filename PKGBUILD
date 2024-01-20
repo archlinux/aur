@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=whisper.cpp
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="Port of OpenAI's Whisper model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -38,4 +38,4 @@ package() {
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
-sha256sums=('84437802792e12af354e9e33a0a2bc102c93cc01a344303872c497b3084c12af')
+sha256sums=('06eed84de310fdf5408527e41e863ac3b80b8603576ba0521177464b1b341a3a')
