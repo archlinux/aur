@@ -1,6 +1,6 @@
-volta-*.tar.gz
-LICENSE
-*.pkg.tar
-*.pkg.tar.*
-pkg/
-src/
+# Ignore everything
+*
+
+# But not these files...
+!PKGBUILD
+!.SRCINFO
