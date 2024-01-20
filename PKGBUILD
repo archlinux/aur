@@ -1,6 +1,6 @@
 # Maintainer: thynkon <thynkon at protonmail dot com>
 pkgname=poac
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Package manager for C++ like Cargo for Rust"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ depends=('git' 'tar' 'python-cpplint' 'clang')
 makedepends=('make' 'curl' 'libgit2' 'nlohmann-json' 'pkg-config')
 conflicts=('poac-devel-git' 'poac-git')
 source=("$pkgname"-"$pkgver".tar.gz::https://github.com/poac-dev/poac/archive/"$pkgver".tar.gz)
-sha256sums=('f2e14d1e13b4a036081d7d33c283a6ffc2a8382a541ba0e9553232ccc31f507b')
+sha256sums=('ac96de35709bd37b6ec55d9068fcfc637b7a6a47ad64e66df5696b18de8b5fc1')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
