@@ -2,14 +2,14 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cytolib
-_pkgver=2.14.0
+_pkgver=2.14.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="C++ infrastructure for representing and interacting with the gated cytometry data"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(AGPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('AGPL-3.0-only')
 depends=(
   boost-libs
   hdf5
@@ -28,10 +28,10 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "shared-cytolib.patch")
-md5sums=('f06a976c84ae2adf3c08d07cd90af7f4'
-         '0447368b51efaea7ab68b056b4c2b602')
-sha256sums=('f155729d40d24620c05df94b2f7a06f77cb9877cd8ce576621ee8d9b3fa45ae4'
-            '3fd80ac3109153df3619d0b481aa5797b9393300b6f82babb721dea8a2c55b45')
+md5sums=('32b6560c381660e2ed9aa1e7b6ab84f9'
+         '9bd107e22883f8ae7c72f8fc3fca9c96')
+b2sums=('235b5c3c883a7d8cb57c3a24e0fa5a8c15141c6ed6d40c8e22796a5c007140d0593d79540a007eae8c3a26a3369959077a3c428d90436746d1415b89c499b99b'
+        '1d838f25582856c2a7ba811999ae92808265720e8bd6079b4396d3722bab3f445ec7e70722badac2d5617439784a279abacda788f66e49906b35120f12037bcb')
 
 prepare() {
   # build cytolib as a shared library
@@ -39,8 +39,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {

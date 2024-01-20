@@ -15,10 +15,10 @@ index 779fb83..6e42d7a 100644
  
  
 diff --git a/cytolib/src/Makevars.in b/cytolib/src/Makevars.in
-index 6d806e4..5888f8c 100644
+index 0019570..0a7b232 100644
 --- a/cytolib/src/Makevars.in
 +++ b/cytolib/src/Makevars.in
-@@ -8,40 +8,25 @@ ifneq (,)
+@@ -8,12 +8,7 @@ ifneq (,)
  This makefile requires GNU Make.
  endif
  
@@ -30,8 +30,9 @@ index 6d806e4..5888f8c 100644
 -boost_fs_objs=${boost_fs_src:.cpp=.o}
 +CXX_STD = CXX17
  
- PKG_CPPFLAGS =-DROUT -I../inst/include -DBOOST_NO_AUTO_PTR -DBOOST_FILESYSTEM_NO_CXX20_ATOMIC_REF -DBOOST_FILESYSTEM_SINGLE_THREADED #the last to flagsare needed to compile bundled boost file system library 1.78
  
+ PKG_CPPFLAGS =-DROUT -I../inst/include -w -Wfatal-errors -DBOOST_NO_AUTO_PTR -DBOOST_FILESYSTEM_NO_CXX20_ATOMIC_REF -DBOOST_FILESYSTEM_SINGLE_THREADED #the last to flagsare needed to compile bundled boost file system library 1.78
+@@ -21,28 +16,18 @@ PKG_CPPFLAGS =-DROUT -I../inst/include -w -Wfatal-errors -DBOOST_NO_AUTO_PTR -DB
  cytolib_src=${wildcard *.cpp}
  cytolib_objs=${cytolib_src:.cpp=.o}
  
