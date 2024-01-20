@@ -1,31 +1,37 @@
 # SPDX-License-Identifier: AGPL-3.0
 #
-# Maintainer: Pellegrino Prevete <pellegrinoprevete at gmail.com>
-# Maintainer: Truocolo <truocolo at gmail.com>
+# Maintainer:  Pellegrino Prevete <pellegrinoprevete at gmail.com>
+# Maintainer:  Truocolo <truocolo at gmail.com>
 # Contributor: mehalter <micah at mehalter.com>
 # Contributor: xsmile <>
 # Contributor: Pieter Frenssen <pieter@frenssen.be>
+# Contributor: Will Drengwitz (ghtor) <ghthor@gmail.com>
 
 pkgname="myetherwallet"
 _pkg="MyEtherWallet"
-pkgver=6.7.11
+pkgver=6.8.1
 pkgrel=1
 _pkgdesc=(
   'Client-side interface for interacting'
   'with the Ethereum blockchain')
 pkgdesc="${_pkgdesc[*]}"
-arch=(any)
+arch=(
+  any
+)
 depends=(
-  xdg-utils)
+  xdg-utils
+)
 url="https://github.com/${_pkg}/${_pkg}"
-license=(MIT)
+license=(
+  MIT
+)
 source=(
   "${url}/releases/download/v${pkgver}/${_pkg}-v${pkgver}.zip"{,.sig}
   "${pkgname}.desktop"
   "${pkgname}"
   "${pkgname}.license")
 sha256sums=(
-  '700bda5819a953eba948a7695cdb4538ebbf1829b1e52044cd5de4ca64624101'
+  '921af12de08b6f787bc815275034bacee59734851047b5a9d361cf8add2fc131'
   'SKIP'
   'b49e3bb0cded23c40820281a110d2baed5d1f7aa036635108323d0133e0e30e9'
   '814f489e4e6e0ce172513febf58d6821e7b77cd2e644152aec4888228fe41da5'
