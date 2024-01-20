@@ -4,7 +4,7 @@ pkgbase=python-griffe
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.39.0
+pkgver=0.39.1
 pkgrel=1
 pkgdesc="Signatures for entire Python programs"
 arch=('any')
@@ -20,7 +20,7 @@ checkdepends=('python-pytest'
 #source=("https://github.com/oprypin/markdown-callouts/archive/refs/tags/v${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "${pkgver}-schema.json::https://github.com/mkdocstrings/griffe/raw/${pkgver}/docs/schema.json")
-md5sums=('6135327713728f9e898587c00aba7a1e'
+md5sums=('d0c07effb7226e0194a527ce28b18b3b'
          '6acbeecb6bb1bb93f0e874da4bd172f0')
 
 prepare() {
