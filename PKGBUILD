@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A translation app for GNOME."
 arch=('any')
 url="https://apps.gnome.org/Dialect"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('dbus-python' 'gst-python' 'libadwaita' 'libsoup3' 'python-gobject' 'python-gtts')
 makedepends=('blueprint-compiler' 'git' 'gobject-introspection' 'meson')
 checkdepends=('appstream-glib')
@@ -18,14 +18,14 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   git submodule init
-  git config submodule.po.url $srcdir/po
+  git config submodule.po.url "$srcdir/po"
   git -c protocol.file.allow=always submodule update
 }
 
