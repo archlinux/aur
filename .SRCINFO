@@ -9,5 +9,7 @@ pkgbase = fsed
 	depends = coreutils
 	provides = fsed
 	conflicts = fsed
+	source = fsed
+	sha256sums = 9f1a81b1bfdef4566612639866157468b1fc4faffb3507deb90aeca1cd65d7c0
 
 pkgname = fsed
