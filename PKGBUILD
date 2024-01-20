@@ -1,4 +1,5 @@
-# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Maintanier: DexterHaxxor <fox@dexterhaxxor.dev>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Bruno Pagani <archange@archlinux.org>
 
@@ -8,7 +9,7 @@ pkgver=r1957.10b0aab
 pkgrel=1
 pkgdesc="Tool and a library for bi-directional translation between SPIR-V and LLVM IR (32-bit)"
 arch=(x86_64)
-url="https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
+url="https://github.com/KhronosGroup/${_srcname}"
 license=(custom)
 depends=(lib32-llvm-libs lib32-spirv-tools)
 makedepends=(git cmake llvm lib32-llvm spirv-headers)
