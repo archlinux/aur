@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Simon Cruanes <simon.cruanes.2007@m4x.org>
 pkgname=kristall
 pkgver=0.4
