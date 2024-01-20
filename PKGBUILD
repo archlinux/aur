@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=punktf
-pkgver=3.0.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc='A cross-platform multi-target dotfiles manager'
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=('gcc-libs')
 # Version required for `strip`: '1.45.0-nightly' (https://github.com/rust-lang/rust/issues/72110)
 makedepends=(cargo)
 source=("${pkgname}-${pkgver//_/-}.tar.gz::${url}/archive/v${pkgver//_/-}.tar.gz")
-sha512sums=('a926f34f87e1089c4968cb2feec0adfe238ac6d0d6123ed1d20a2e17ebff56483f954bc46a067a8ec3eae542e79469b5b432236d8baafa8dbaaff9200cf16abf')
+sha512sums=('f7c3be759a24983f20dd7b61c8ab016fb4667b77b664b868ce952f69d7130d116b5a783dd3009a687aa69fb4b84cfb4fc9e33a69f7b0e2260269235f583133ab')
 provides=('punktf')
 conflicts=('punktf')
 
