@@ -1,12 +1,12 @@
 # Maintainer: Andrey Rodionov <roand at inbox dot ru>
-# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hotshots-git
 pkgver=r19.e3712ae
 pkgrel=4
 pkgdesc="Screenshot and annotation software"
 arch=('x86_64')
 url="https://github.com/obiwankennedy/HotShots"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('qt5-x11extras' 'qt5-multimedia')
 makedepends=('git' 'qt5-tools')
 provides=("${pkgname%-git}")
