@@ -1,0 +1,14 @@
+pkgbase = hypertimer-git
+	pkgdesc = A productivity tool to defeat time blindness
+	pkgver = 0.2.3.r6.gdabb7db
+	pkgrel = 1
+	url = https://codeberg.org/unfa/HyperTimer
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = godot
+	provides = hypertimer
+	source = hypertimer::git+https://codeberg.org/unfa/HyperTimer.git
+	sha256sums = SKIP
+
+pkgname = hypertimer-git
