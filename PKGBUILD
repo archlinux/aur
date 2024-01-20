@@ -34,7 +34,7 @@ makedepends=(
 )
 conflicts=("$_pkgname")
 provides=("$_pkgname")
-sha256sums=('01ae2066a6865f0f861c5e159f192eb120c1b36b04d032cd0bfcf2ffcbd990e0')
+sha256sums=('b9d0982617fec495565ac9c09fb788a0be207d6fdf2324edc390e5cac8b1523b')
 
 build() {
     cmake -B build -S "${_pkgname}-${pkgver}" \
