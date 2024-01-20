@@ -1,14 +1,13 @@
 pkgbase = fstabfmt
 	pkgdesc = Format /etc/fstab files
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/xyproto/fstabfmt
 	arch = x86_64
 	license = BSD3
 	makedepends = git
 	makedepends = go
-	source = git+https://github.com/xyproto/fstabfmt#commit=ffd615ad1915f65f37113d77d795deee5970c026
+	source = git+https://github.com/xyproto/fstabfmt#commit=0049f00bbb344d0a9df3ee07b04a090014b67eac
 	sha256sums = SKIP
 
 pkgname = fstabfmt
-
