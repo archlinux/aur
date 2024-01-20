@@ -1,10 +1,10 @@
 pkgbase = hardcode-tray-git
 	pkgdesc = Fixes hardcoded tray icons
 	pkgver = 4.3.r246.g1d52b2c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bil-elmoussaoui/Hardcode-Tray
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = gobject-introspection
 	makedepends = meson

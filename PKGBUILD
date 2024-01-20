@@ -3,11 +3,11 @@
 # Contributor: Bilal Elmoussaoui <bil.elmoussaoui@gmail.com>
 pkgname=hardcode-tray-git
 pkgver=4.3.r246.g1d52b2c
-pkgrel=1
+pkgrel=2
 pkgdesc="Fixes hardcoded tray icons"
 arch=('x86_64')
 url="https://github.com/bil-elmoussaoui/Hardcode-Tray"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gtk3' 'librsvg' 'python-cairosvg' 'python-gobject')
 makedepends=('git' 'gobject-introspection' 'meson')
 optdepends=('nodejs-svgexport: option to convert svg to png'
@@ -30,9 +30,13 @@ pkgver() {
 prepare() {
   cd Hardcode-Tray
 
-  # Correct app.asar path for community bitwarden package
+  # Correct app.asar path for bitwarden
   sed -i 's|/usr/lib/bitwarden/resources/|/usr/lib/bitwarden/|g' \
     data/database/bitwarden.electron.json
+
+  # Rename and correct path for motrix
+  mv data/database/motrix-git.json data/database/motrix.json
+  sed -i 's|/usr/lib/motrix/app/electron/static/|/usr/lib/motrix/|g' data/database/motrix.json
 }
 
 build() {
