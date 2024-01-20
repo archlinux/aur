@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-bluetooth-battery-meter-git
 _uuid=Bluetooth-Battery-Meter@maniacx.github.com
-pkgver=002.GNOME45.r0.gd357746
+pkgver=005.r9.g9304351
 pkgrel=1
 pkgdesc="An extension featuring indicator icons in the system tray, serving as a meter for Bluetooth device battery levels."
 arch=('any')
 url="https://github.com/maniacx/Bluetooth-Battery-Meter"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('bluez' 'gnome-shell')
 makedepends=('git')
 provides=("${pkgname%-git}")
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd Bluetooth-Battery-Meter
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/-GNOME45//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -38,6 +38,7 @@ package() {
 
   # Does not detect icons in system
 #  mv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"/{icons,locale} "$pkgdir/usr/share/"
+
   mv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share/"
 
   install -Dm644 schemas/org.gnome.shell.extensions.Bluetooth-Battery-Meter.gschema.xml -t \
