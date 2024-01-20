@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="User-space file system for Dropbox"
 arch=('x86_64')
 url="https://thelig.ht/code/dbxfs"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
   'fuse2'
   'python-block_tracing'
