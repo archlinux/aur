@@ -1,7 +1,7 @@
 pkgbase = brightness
 	pkgdesc = Adjust monitor brightness using ddcutil
-	pkgver = 23.9.5
-	pkgrel = 1
+	pkgver = 24.1.0
+	pkgrel = 2
 	url = https://gitlab.com/Devorlon/brightness
 	arch = x86_64
 	license = AGPLv3
