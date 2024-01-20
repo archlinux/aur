@@ -1,6 +1,6 @@
 pkgbase = python-sphinxemoji
 	pkgdesc = An extension to use emoji codes in your Sphinx documentation
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://sphinxemojicodes.readthedocs.io
 	arch = any
@@ -8,10 +8,11 @@ pkgbase = python-sphinxemoji
 	checkdepends = python-pytest
 	checkdepends = python-sphinx
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/s/sphinxemoji/sphinxemoji-0.3.0.tar.gz
-	md5sums = 70b289f004e6c24efe574130013841d2
+	source = https://files.pythonhosted.org/packages/source/s/sphinxemoji/sphinxemoji-0.3.1.tar.gz
+	md5sums = 9528e0aa916506c8d28ee5f5ff5eeb0f
 
 pkgname = python-sphinxemoji
-	depends = python-sphinx>=4.0
+	depends = python-sphinx>=5.0
