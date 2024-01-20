@@ -15,5 +15,3 @@ pkgbase=fsed
 package() {
   mv "fsed" "${pkgdir}/usr/bin"
 }
-
-sha256sums=('SKIP') 
