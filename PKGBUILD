@@ -1,13 +1,13 @@
 # Maintainer: tocic <tocic at protonmail dot ch>
 
 pkgname=duma-git
-pkgver=2.5.24b1.r25.g2aab759
+pkgver=2.5.24b1.r55.gdf9201d
 pkgrel=1
 pkgdesc="Detect Unintended Memory Access (D.U.M.A.) -
          A Red-Zone memory allocator"
 arch=("x86_64")
 url="https://github.com/johnsonjh/duma"
-license=("GPL2" "LGPL2.1")
+license=("GPL-2.0-only AND LGPL-2.1-only")
 depends=("bash")
 makedepends=("cmake" "git")
 provides=("${pkgname%-git}")
