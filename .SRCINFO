@@ -4,7 +4,7 @@ pkgbase = gnome-shell-extension-mpris-indicator-button-git
 	pkgrel = 2
 	url = https://github.com/JasonLG1979/gnome-shell-extension-mpris-indicator-button
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = gnome-shell<=1:44.6
 	provides = gnome-shell-extension-mpris-indicator-button

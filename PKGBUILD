@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc="A full featured MPRIS indicator button extension for GNOME Shell 3.38+"
 arch=('any')
 url="https://github.com/JasonLG1979/gnome-shell-extension-mpris-indicator-button"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gnome-shell<=1:44.6')
 makedepends=('git')
 provides=("${pkgname%-git}")
@@ -16,12 +16,12 @@ source=('git+https://github.com/JasonLG1979/gnome-shell-extension-mpris-indicato
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   install -d "$pkgdir/usr/share/gnome-shell/extensions"
   cp -r "$_uuid" "$pkgdir/usr/share/gnome-shell/extensions"
 }
