@@ -11,8 +11,7 @@ pkgbase = ack-git
 	makedepends = bison
 	makedepends = ed
 	depends = glibc
-	source = git://github.com/davidgiven/ack
+	source = git+https://github.com/davidgiven/ack
 	md5sums = SKIP
 
 pkgname = ack-git
-
