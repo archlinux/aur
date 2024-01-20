@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Luca Popesco
 pkgname=gl-gsync-demo
 pkgver=1.0+3+g4fd963a
@@ -15,17 +15,17 @@ source=("git+https://github.com/dahenry/gl-gsync-demo.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   install -Dm755 "$pkgname" -t "$pkgdir/usr/bin/"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
