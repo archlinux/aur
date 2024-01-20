@@ -5,11 +5,11 @@
 pkgname=netatalk2
 _pkgname=netatalk
 pkgver=2.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source implementation of the Apple Filing Protocol (for old Macs)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://netatalk.sourceforge.io"
-license=('GPL')
+license=('GPL-2.0')
 depends=(
     'acl'
     # Avahi and SLP seem to be mutually exclusive due to bugs currently
