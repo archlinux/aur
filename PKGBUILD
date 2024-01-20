@@ -1,10 +1,10 @@
 # Maintainer: honjow
 pkgname=sk-chos-tool
-pkgver=r229.06b2b00
+pkgver=r231.37e12da
 pkgrel=1
 pkgdesc="A custom configs tool for sk-chimeros"
 arch=('any')
-url="https://gitee.com/honjow/sk-holoiso-config.git"
+url="https://github.com/honjow/sk-holoiso-config.git"
 license=('MIT')
 makedepends=('git')
 depends=('python-gobject' 'gtk3' 'openssl' 'expect' 'efibootmgr')
