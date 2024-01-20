@@ -2,14 +2,14 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flowWorkspace
-_pkgver=4.14.1
+_pkgver=4.14.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc="Infrastructure for representing and interacting with gated and ungated cytometry data sets."
+pkgdesc="Infrastructure for representing and interacting with gated and ungated cytometry data sets"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(AGPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('AGPL-3.0-only')
 depends=(
   boost-libs
   hdf5
@@ -52,10 +52,10 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "system-hdf5.patch")
-md5sums=('18806d7e492759e40983bb3b08f54597'
-         '6074f63c3e946d2bdb0688a866a6271d')
-sha256sums=('52879df9bb231ee3cbf9ed96aa9f59dd97b32086a1c5762f80b0ce94f0ea7169'
-            '5bd4f81d4c8e4596a6f16d3d8040228228f5235bb5fb3a1baf363aee44251cee')
+md5sums=('8c13b6aa80732d54f36bb544adba5a6c'
+         'd83db00432ba74621da54d24fce960fc')
+b2sums=('b80abde83d95398c4f149576b6e9d4836cabc281dffc57e806eb6f223a0af355888b4caed0d517c60809136ffd8d73e181f3d73ead5e0160c6873fa6b25b3024'
+        '5f693100c9198981f8ff28aca945499054570fb5957ae22c908f2e4c19cf79704e5961589632e6568a5e62229b678ab748c02333919a18193b773c1ed602bbaf')
 
 prepare() {
   # use system hdf5 and skip failing tests
@@ -63,8 +63,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

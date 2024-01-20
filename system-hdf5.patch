@@ -1,14 +1,10 @@
 diff --git a/flowWorkspace/src/Makevars b/flowWorkspace/src/Makevars
-index da74ddb..f2187ef 100644
+index 404ba20..82351a7 100644
 --- a/flowWorkspace/src/Makevars
 +++ b/flowWorkspace/src/Makevars
-@@ -6,13 +6,11 @@ ifneq (,)
- This makefile requires GNU Make.
- endif
- 	
--CXX_STD = CXX11
-+CXX_STD = CXX17
- PKG_CPPFLAGS =-DROUT -I../inst/include -DBOOST_NO_AUTO_PTR -Wno-pedantic
+@@ -10,10 +10,8 @@ CXX_STD = CXX17
+ PKG_CPPFLAGS =-DROUT -I../inst/include -DBOOST_NO_AUTO_PTR -Wno-pedantic  -w -Wfatal-errors
+ 
  
 +CLINK_CPPFLAGS := -I/usr/lib/R/library/cpp11/include -I/usr/lib/R/library/RProtoBufLib/include -I/usr/lib/R/library/cytolib/include
  
