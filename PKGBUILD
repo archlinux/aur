@@ -8,7 +8,7 @@ pkgrel=6
 pkgdesc="A retro gaming application for the GNOME desktop"
 arch=('x86_64' 'aarch64')
 url="https://wiki.gnome.org/Apps/Games"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('cairo' 'dconf' 'gdk-pixbuf2' 'glib2' 'glibc' 'grilo' 'gtk3' 'hicolor-icon-theme'
          'libarchive' 'libhandy' 'libmanette' 'librsvg' 'libsoup3' 'libxml2' 'retro-gtk' 'sqlite'
          'tracker3')
