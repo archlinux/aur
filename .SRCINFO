@@ -1,0 +1,22 @@
+pkgbase = deepin-wloutput-daemon-git
+	pkgdesc = Daemon for display settings in the DDE KWayland desktop environment
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/dde-wloutput-daemon
+	arch = x86_64
+	groups = deepin-git
+	license = GPL3
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = extra-cmake-modules
+	depends = qt5-base
+	depends = dwayland
+	depends = dtkcore
+	depends = glibc
+	depends = gcc-libs
+	provides = deepin-wloutput-daemon
+	conflicts = deepin-wloutput-daemon
+	source = git+https://github.com/linuxdeepin/dde-wloutput-daemon
+	sha512sums = SKIP
+
+pkgname = deepin-wloutput-daemon-git
