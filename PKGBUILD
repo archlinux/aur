@@ -1,13 +1,13 @@
 # Maintainer : Karl-Felix Glatzer <karl[dot]glatzer[at]gmx[dot]de>
 
 pkgname=mingw-w64-ffmpeg
-pkgver=6.1
+pkgver=6.1.1
 pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
 arch=('any')
-url="https://ffmpeg.org/"
-license=('GPL3')
+url="https://ffmpeg.org"
+license=('GPL-3.0-only')
 depends=(
   'mingw-w64-aom'
   'mingw-w64-crt'
@@ -17,11 +17,13 @@ depends=(
   'mingw-w64-gmp'
   'mingw-w64-gnutls'
   'mingw-w64-gsm'
+  'mingw-w64-harfbuzz'
   'mingw-w64-libjxl'
   'mingw-w64-lame'
   'mingw-w64-libass'
   'mingw-w64-libbluray'
   'mingw-w64-libbs2b'
+  'mingw-w64-cairo'
   'mingw-w64-dav1d'
   'mingw-w64-libmodplug'
   'mingw-w64-libopenmpt'
@@ -30,15 +32,18 @@ depends=(
   'mingw-w64-vid.stab'
   'mingw-w64-libwebp'
   'mingw-w64-libxml2'
+  'mingw-w64-vmaf'
   'mingw-w64-libvorbis'
   'mingw-w64-libvpx'
   'mingw-w64-opencore-amr'
   'mingw-w64-openjpeg2'
   'mingw-w64-opus'
+  'mingw-w64-libplacebo'
   'mingw-w64-rav1e'
   'mingw-w64-librsvg'
   'mingw-w64-libssh'
   'mingw-w64-sdl2'
+  'mingw-w64-snappy'
   'mingw-w64-speex'
   'mingw-w64-srt'
   'mingw-w64-vulkan-icd-loader'
@@ -48,13 +53,14 @@ depends=(
   'mingw-w64-zlib'
   'mingw-w64-x265'
 )
+# 'mingw-w64-rubberband'
+# 'mingw-w64-vapoursynth'
 # 'mingw-w64-opencl-icd'
-# 'mingw-w64-vmaf' (see comment below)
 #'mingw-w64-svt-av1' (only 64 bit support)
 options=(!strip !buildflags staticlibs)
-makedepends=('mingw-w64-amf-headers' 'mingw-w64-avisynthplus' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-vulkan-headers' 'git' 'yasm')
+makedepends=('mingw-w64-amf-headers' 'mingw-w64-avisynthplus' 'mingw-w64-frei0r-plugins' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-vulkan-headers' 'git' 'yasm')
 # 'mingw-w64-opencl-headers'
-_tag=3cdfac27d3ea06f8719faed48b4ae2e75e94a463
+_tag=6f4048827982a8f48f71f551a6e1ed2362816eec
 #source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}"
 source=(git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}
         add-av_stream_get_first_dts-for-chromium.patch
@@ -71,7 +77,19 @@ prepare() {
 
   patch -Np1 -i "${srcdir}/configure.patch"
 
+  # FS#79281: fix assembling with binutil as >= 2.41
+  git cherry-pick -n effadce6c756247ea8bae32dc13bb3e6f464f0eb
+  # FS#77813: fix playing ogg files with mplayer
+  git cherry-pick -n cbcc817353a019da4332ad43deb7bbc4e695d02a
   patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch # https://crbug.com/1251779
+  # use non-deprecated nvenc GUID for conftest
+  git cherry-pick -n 03823ac0c6a38bd6ba972539e3203a592579792f
+  git cherry-pick -n d2b46c1ef768bc31ba9180f6d469d5b8be677500
+  # Fix VDPAU vo
+  git cherry-pick -n e9c93009fc34ca9dfcf0c6f2ed90ef1df298abf7
+  # Fix bug in av_fft_end
+  git cherry-pick -n a562cfee2e214252f8b3f516527272ae32ef9532
+  git cherry-pick -n 250471ea1745fc703eb346a2a662304536a311b1
 }
 
 pkgver() {
@@ -109,8 +127,10 @@ build() {
       --enable-libbs2b \
       --enable-libdav1d \
       --enable-libfreetype \
+      --enable-frei0r \
       --enable-libfribidi \
       --enable-libgsm \
+      --enable-libharfbuzz \
       --enable-libjxl \
       --enable-libmodplug \
       --enable-libmp3lame \
@@ -119,14 +139,17 @@ build() {
       --enable-libopenjpeg \
       --enable-libopenmpt \
       --enable-libopus \
+      --enable-libplacebo \
       --enable-librav1e \
       --enable-librsvg \
+      --enable-libsnappy \
       --enable-libsoxr \
       --enable-libspeex \
       --enable-libsrt \
       --enable-libssh \
       --enable-libtheora \
       --enable-libvidstab \
+      --enable-libvmaf \
       --enable-libvorbis \
       --enable-libvpx \
       --enable-libwebp \
@@ -143,15 +166,10 @@ build() {
       --disable-doc \
       --x86asmexe=yasm
 
+# Requires vsscript (which depends on cross compiling vapoursynth python modules)
+#      --enable-vapoursynth \
 # Enable opencl if mingw-w64-opencl-icd works
 #      --enable-opencl \
-# VMAF disabled again due to 64 bit binary crashing with
-#
-# Mingw-w64 runtime failure:
-# 32 bit pseudo relocation at ... out of range, targeting ..., yielding the value ... .
-#
-#      --enable-libvmaf \
-
 # (only  64 bit support)
 #      --enable-libsvtav1 \
 
