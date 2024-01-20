@@ -1,11 +1,12 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=adbmanager
 pkgver=3.1
 pkgrel=1
 pkgdesc="ADB manager for Android devices"
 arch=('x86_64')
 url="https://github.com/AKotov-dev/adbmanager"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('android-tools' 'gtk2' 'iproute2' 'nmap' 'sakura')
 makedepends=('lazarus')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
