@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A Nautilus, Nemo, and Caja extension to overlay icons on files in git repositories"
 arch=('any')
 url="https://github.com/chrisjbillington/git-nautilus-icons"
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('python-gobject')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
 optdepends=('python-nautilus: Nautilus support'
@@ -21,17 +21,17 @@ source=("git+https://github.com/chrisjbillington/git-nautilus-icons.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
   # Install license:
