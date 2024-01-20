@@ -1,0 +1,239 @@
+From ca4812e7106750efc4a29e31a7246085005abdaa Mon Sep 17 00:00:00 2001
+From: Faith Ekstrand <faith.ekstrand@collabora.com>
+Date: Thu, 18 Jan 2024 16:34:48 -0600
+Subject: [PATCH 1/3] nak: Implement nir_op_iadd3 on SM70+
+
+---
+ src/nouveau/compiler/nak/api.rs      |  1 +
+ src/nouveau/compiler/nak/builder.rs  | 51 ++++++++++++++++++++--------
+ src/nouveau/compiler/nak/from_nir.rs |  9 +++--
+ 3 files changed, 44 insertions(+), 17 deletions(-)
+
+diff --git a/src/nouveau/compiler/nak/api.rs b/src/nouveau/compiler/nak/api.rs
+index ba74a61b7cdd..133e937e49b9 100644
+--- a/src/nouveau/compiler/nak/api.rs
++++ b/src/nouveau/compiler/nak/api.rs
+@@ -133,6 +133,7 @@ fn nir_options(dev: &nv_device_info) -> nir_shader_compiler_options {
+     op.lower_scmp = true;
+     op.lower_uadd_carry = true;
+     op.lower_usub_borrow = true;
++    op.has_iadd3 = dev.sm >= 70;
+     op.has_sdot_4x8 = dev.sm >= 70;
+     op.has_udot_4x8 = dev.sm >= 70;
+     op.has_sudot_4x8 = dev.sm >= 70;
+diff --git a/src/nouveau/compiler/nak/builder.rs b/src/nouveau/compiler/nak/builder.rs
+index 67463ba4ee1d..3a5bfb6781d0 100644
+--- a/src/nouveau/compiler/nak/builder.rs
++++ b/src/nouveau/compiler/nak/builder.rs
+@@ -250,15 +250,16 @@ pub trait SSABuilder: Builder {
+         dst
+     }
+ 
+-    fn iadd(&mut self, x: Src, y: Src) -> SSARef {
++    fn iadd(&mut self, x: Src, y: Src, z: Src) -> SSARef {
+         let dst = self.alloc_ssa(RegFile::GPR, 1);
+         if self.sm() >= 70 {
+             self.push_op(OpIAdd3 {
+                 dst: dst.into(),
+-                srcs: [Src::new_zero(), x, y],
++                srcs: [x, y, z],
+                 overflow: [Dst::None; 2],
+             });
+         } else {
++            assert!(z.is_zero());
+             self.push_op(OpIAdd2 {
+                 dst: dst.into(),
+                 srcs: [x, y],
+@@ -269,24 +270,44 @@ pub trait SSABuilder: Builder {
+         dst
+     }
+ 
+-    fn iadd64(&mut self, x: Src, y: Src) -> SSARef {
++    fn iadd64(&mut self, x: Src, y: Src, z: Src) -> SSARef {
+         let x = x.as_ssa().unwrap();
+         let y = y.as_ssa().unwrap();
+         let dst = self.alloc_ssa(RegFile::GPR, 2);
+         if self.sm() >= 70 {
+-            let carry = self.alloc_ssa(RegFile::Pred, 1);
+-            self.push_op(OpIAdd3 {
+-                dst: dst[0].into(),
+-                overflow: [carry.into(), Dst::None],
+-                srcs: [x[0].into(), y[0].into(), 0.into()],
+-            });
+-            self.push_op(OpIAdd3X {
+-                dst: dst[1].into(),
+-                overflow: [Dst::None, Dst::None],
+-                srcs: [x[1].into(), y[1].into(), 0.into()],
+-                carry: [carry.into(), false.into()],
+-            });
++            if let Some(z) = z.as_ssa() {
++                let carry = [
++                    self.alloc_ssa(RegFile::Pred, 1),
++                    self.alloc_ssa(RegFile::Pred, 1),
++                ];
++                self.push_op(OpIAdd3 {
++                    dst: dst[0].into(),
++                    overflow: [carry[0].into(), carry[1].into()],
++                    srcs: [x[0].into(), y[0].into(), z[0].into()],
++                });
++                self.push_op(OpIAdd3X {
++                    dst: dst[1].into(),
++                    overflow: [Dst::None, Dst::None],
++                    srcs: [x[1].into(), y[1].into(), z[1].into()],
++                    carry: [carry[0].into(), carry[1].into()],
++                });
++            } else {
++                assert!(z.is_zero());
++                let carry = self.alloc_ssa(RegFile::Pred, 1);
++                self.push_op(OpIAdd3 {
++                    dst: dst[0].into(),
++                    overflow: [carry.into(), Dst::None],
++                    srcs: [x[0].into(), y[0].into(), 0.into()],
++                });
++                self.push_op(OpIAdd3X {
++                    dst: dst[1].into(),
++                    overflow: [Dst::None, Dst::None],
++                    srcs: [x[1].into(), y[1].into(), 0.into()],
++                    carry: [carry.into(), false.into()],
++                });
++            }
+         } else {
++            assert!(z.is_zero());
+             let carry = self.alloc_ssa(RegFile::Carry, 1);
+             self.push_op(OpIAdd2 {
+                 dst: dst[0].into(),
+diff --git a/src/nouveau/compiler/nak/from_nir.rs b/src/nouveau/compiler/nak/from_nir.rs
+index e1846806ef0b..3da9209b834b 100644
+--- a/src/nouveau/compiler/nak/from_nir.rs
++++ b/src/nouveau/compiler/nak/from_nir.rs
+@@ -1010,10 +1010,15 @@ impl<'a> ShaderFromNir<'a> {
+             }
+             nir_op_iabs => b.iabs(srcs[0]),
+             nir_op_iadd => match alu.def.bit_size {
+-                32 => b.iadd(srcs[0], srcs[1]),
+-                64 => b.iadd64(srcs[0], srcs[1]),
++                32 => b.iadd(srcs[0], srcs[1], 0.into()),
++                64 => b.iadd64(srcs[0], srcs[1], 0.into()),
+                 x => panic!("unsupported bit size for nir_op_iadd: {x}"),
+             },
++            nir_op_iadd3 => match alu.def.bit_size {
++                32 => b.iadd(srcs[0], srcs[1], srcs[2]),
++                64 => b.iadd64(srcs[0], srcs[1], srcs[2]),
++                x => panic!("unsupported bit size for nir_op_iadd3: {x}"),
++            }
+             nir_op_iand => b.lop2(LogicOp2::And, srcs[0], srcs[1]),
+             nir_op_ieq => {
+                 if alu.get_src(0).bit_size() == 1 {
+-- 
+GitLab
+
+
+From 27d5e61da25d7e021441b45e70d8ce1d2ee47b8b Mon Sep 17 00:00:00 2001
+From: Faith Ekstrand <faith.ekstrand@collabora.com>
+Date: Thu, 18 Jan 2024 16:48:41 -0600
+Subject: [PATCH 2/3] nir: Add an imad opcode
+
+---
+ src/compiler/nir/nir.h          | 3 +++
+ src/compiler/nir/nir_opcodes.py | 3 +++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/src/compiler/nir/nir.h b/src/compiler/nir/nir.h
+index 4c29e35c12f8..8cf935b92f92 100644
+--- a/src/compiler/nir/nir.h
++++ b/src/compiler/nir/nir.h
+@@ -3856,6 +3856,9 @@ typedef struct nir_shader_compiler_options {
+     * to imul with masked inputs */
+    bool has_umul24;
+ 
++   /** Backend supports 32-bit imad */
++   bool has_imad32;
++
+    /** Backend supports umad24, if not set  umad24 will automatically be lowered
+     * to imul with masked inputs and iadd */
+    bool has_umad24;
+diff --git a/src/compiler/nir/nir_opcodes.py b/src/compiler/nir/nir_opcodes.py
+index 0770351c9882..ef8c8fe28fee 100644
+--- a/src/compiler/nir/nir_opcodes.py
++++ b/src/compiler/nir/nir_opcodes.py
+@@ -1029,6 +1029,9 @@ triop("flrp", tfloat, "", "src0 * (1 - src2) + src1 * src2")
+ triop("iadd3", tint, _2src_commutative + associative, "src0 + src1 + src2",
+       description = "Ternary addition")
+ 
++triop("imad", tint, _2src_commutative + associative, "src0 * src1 + src2",
++      description = "Integer multiply-add")
++
+ csel_description = """
+ A vector conditional select instruction (like ?:, but operating per-
+ component on vectors). The condition is {} bool ({}).
+-- 
+GitLab
+
+
+From 518b8b848a504ece30c3e3f44549772e0541be5c Mon Sep 17 00:00:00 2001
+From: Faith Ekstrand <faith.ekstrand@collabora.com>
+Date: Thu, 18 Jan 2024 16:49:01 -0600
+Subject: [PATCH 3/3] nak: Add support for imad on Volta+ and enable it in
+ simple cases
+
+---
+ src/nouveau/compiler/nak/from_nir.rs      | 10 ++++++++++
+ src/nouveau/compiler/nak_nir_algebraic.py |  7 ++++++-
+ 2 files changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/src/nouveau/compiler/nak/from_nir.rs b/src/nouveau/compiler/nak/from_nir.rs
+index 3da9209b834b..f32979e70248 100644
+--- a/src/nouveau/compiler/nak/from_nir.rs
++++ b/src/nouveau/compiler/nak/from_nir.rs
+@@ -1066,6 +1066,16 @@ impl<'a> ShaderFromNir<'a> {
+                     b.isetp(cmp_type, cmp_op, x.into(), y.into())
+                 }
+             }
++            nir_op_imad => {
++                assert!(alu.def.bit_size() == 32);
++                let dst = b.alloc_ssa(RegFile::GPR, 1);
++                b.push_op(OpIMad {
++                    dst: dst.into(),
++                    srcs: [srcs[0], srcs[1], srcs[2]],
++                    signed: false,
++                });
++                dst
++            }
+             nir_op_imax | nir_op_imin | nir_op_umax | nir_op_umin => {
+                 let (tp, min) = match alu.op {
+                     nir_op_imax => (IntCmpType::I32, SrcRef::False),
+diff --git a/src/nouveau/compiler/nak_nir_algebraic.py b/src/nouveau/compiler/nak_nir_algebraic.py
+index 87a2225b0383..f522f6ee8185 100644
+--- a/src/nouveau/compiler/nak_nir_algebraic.py
++++ b/src/nouveau/compiler/nak_nir_algebraic.py
+@@ -26,6 +26,7 @@ import sys
+ 
+ a = 'a'
+ b = 'b'
++c = 'c'
+ 
+ # common conditions to improve readability
+ volta = 'nak->sm >= 70 && nak->sm < 75'
+@@ -38,6 +39,10 @@ algebraic_lowering = [
+     (('umax', 'a', 'b'), ('bcsel', ('ult', a, b), b, a), volta),
+ ]
+ 
++late_optimizations = [
++    (('iadd@32', ('imul', a, b), c), ('imad', a, b, c), 'nak->sm >= 70'),
++]
++
+ def main():
+     parser = argparse.ArgumentParser()
+     parser.add_argument('--out', required=True, help='Output file.')
+@@ -52,7 +57,7 @@ def main():
+             f.write('#include "nak_private.h"')
+             f.write(nir_algebraic.AlgebraicPass(
+                 "nak_nir_lower_algebraic_late",
+-                algebraic_lowering,
++                algebraic_lowering + late_optimizations,
+                 [
+                     ("const struct nak_compiler *", "nak"),
+                 ]).render())
+-- 
+GitLab
+
