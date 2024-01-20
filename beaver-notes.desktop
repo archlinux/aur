@@ -1,0 +1,9 @@
+[Desktop Entry]
+
+Type=Application
+Version=1.0
+Name=Beaver Notes
+Comment=Privacy focused not taking app
+Exec=beaver-notes
+Icon=beaver-notes
+Terminal=false
