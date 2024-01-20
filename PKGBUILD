@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-api-git
-pkgver=5.5.32.r1.g6013c6d
+pkgver=6.0.9.r0.g2925d69
 pkgrel=1
 pkgdesc='Golang bindings for dde-daemon'
 arch=('x86_64' 'aarch64')
@@ -12,12 +12,12 @@ license=('GPL3')
 # fontconfig: fc-match used in adjust-grub-theme
 # librsvg: rsvg-convert used in adjust-grub-theme
 # util-linux: rfkill used in device
-depends=('alsa-utils' 'bc' 'fontconfig' 'glib2' 'gdk-pixbuf2' 'gtk3' 'libcanberra-pulse' 'librsvg'
-         'libxi' 'libxfixes' 'poppler-glib' 'util-linux' 'xcur2png' 'blur-effect')
-makedepends=('git' 'deepin-gettext-tools-git' 'golang-deepin-gir-git' 'golang-deepin-lib-git'
-             'golang-github-linuxdeepin-go-dbus-factory-git' 'golang-github-linuxdeepin-go-x11-client-git'
-             'golang-gopkg-yaml.v3'
-             'golang-github-nfnt-resize' 'bzr' 'go-pie')
+# deepin-application-manager: org.desktopspec.ApplicationManager1
+depends=('alsa-utils' 'bc' 'fontconfig' 'glib2' 'gdk-pixbuf-xlib' 'gtk3' 'libcanberra-pulse'
+         'librsvg' 'libxi' 'libxfixes' 'poppler-glib' 'util-linux' 'xcur2png' 'blur-effect'
+         'libpulse' 'libxcursor' 'cairo' 'gdk-pixbuf2' 'freetype2' 'alsa-lib' 'libgudev'
+         'deepin-application-manager')
+makedepends=('git' 'deepin-gettext-tools' 'go')
 provides=('deepin-api')
 conflicts=('deepin-api')
 groups=('deepin-git')
@@ -28,36 +28,16 @@ sha512sums=('SKIP'
             'e894eb3928af9e244fa78010fdf16c8abb6ce18df114cf05327d02b18774d6ba5b023e4dfa0d07042f4e44a5c6e2ddb55b07f3e0db466a0e6169b52465fdefd6')
 
 pkgver() {
-    cd $pkgname
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd $srcdir
-  export GOPATH="$srcdir/build:/usr/share/gocode"
-  export GO111MODULE=off
-  mkdir -p build/src/github.com/linuxdeepin/dde-api
-  cp -a $pkgname/* build/src/github.com/linuxdeepin/dde-api/
-
-  # golang-deepin-lib's dependency, remove when go packaging resumes
-  go get -v github.com/cryptix/wav
-  go get -v github.com/youpy/go-wav
-  go get -v github.com/disintegration/imaging
-  go get -v github.com/fogleman/gg
-  go get -v github.com/mattn/go-sqlite3
-  go get -v github.com/gosexy/gettext
-  go get -v github.com/rickb777/date
-  go get -v github.com/fsnotify/fsnotify
-  go get -v github.com/godbus/dbus/
-  go get -v github.com/godbus/dbus/introspect
-  go get -v github.com/godbus/dbus/prop
-  go get -v github.com/disintegration/imaging
+  cd $pkgname
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build(){
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  export GO111MODULE=off
-  export GOPATH="$srcdir/build:/usr/share/gocode"
 
   cd $pkgname
   make
@@ -69,3 +49,4 @@ package() {
 
   install -Dm644 ../deepin-api.sysusers "$pkgdir"/usr/lib/sysusers.d/deepin-api.conf
 }
+
