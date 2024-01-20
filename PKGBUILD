@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Getting Things GNOME! is a personal tasks and TODO-list items organizer for GNOME"
 arch=('x86_64')
 url="https://wiki.gnome.org/Apps/GTG"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=(
   'gtk3'
   'gtksourceview4'
@@ -39,7 +39,7 @@ source=('git+https://github.com/getting-things-gnome/gtg.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -49,7 +49,7 @@ build() {
 }
 
 check() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   python run-tests
 }
 
