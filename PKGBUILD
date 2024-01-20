@@ -3,12 +3,12 @@
 
 _pkgname=vinegar
 pkgname=vinegar-git
-pkgver=1.6.0.r1.gc3160de
+pkgver=1.6.1.r0.g6545e22
 pkgrel=1
 pkgdesc="A transparent wrapper for Roblox Player and Roblox Studio (Git version)"
 arch=("x86_64")
 url="https://github.com/vinegarhq/vinegar"
-license=("GPL3")
+license=("GPL-3.0-only")
 depends=("glibc" "hicolor-icon-theme" "libgles" "libxcursor" "libxfixes"
          "libxkbcommon" "libxkbcommon-x11" "libx11" "wayland")
 makedepends=("git" "go" "vulkan-headers" "wayland-protocols")
