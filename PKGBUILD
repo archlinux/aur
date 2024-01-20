@@ -1,6 +1,6 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 pkgname=dtk6gui-git
-pkgver=6.0.2.r6.g2f0d0d4
+pkgver=6.0.4.r0.g740cea5
 pkgrel=1
 sourcename=dtk6gui
 sourcetars=("$sourcename"_"$pkgver".tar.xz)
@@ -9,7 +9,7 @@ pkgdesc='Deepin Toolkit, gui module for DDE look and feel'
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dtk6gui"
 license=('LGPL3')
-depends=('dtk6core-git' 'dtkcommon-git' 'gcc-libs' 'qt6-base' 'qt6-svg' 'freeimage' 'librsvg')
+depends=('dtk6core' 'dtkcommon' 'gcc-libs' 'qt6-base' 'qt6-svg' 'freeimage' 'librsvg')
 # INFO: you can disable freeimage not to support RAW images
 # Then set DTK_DISABLE_EX_IMAGE_FORMAT=OFF
 makedepends=('git' 'qt6-tools' 'gtest' 'gmock' 'ninja' 'cmake' 'doxygen' 'pkg-config' 'gcc')
