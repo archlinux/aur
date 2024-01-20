@@ -1,6 +1,6 @@
 # Maintainer: Arvid Norlander <VorpalBlade (at) users DOT noreply DOT github DOT com>
 pkgname=fluxengine-git
-pkgver=r1823.567b074
+pkgver=r2565.45e796f1
 pkgrel=1
 pkgdesc="PSOC5 floppy disk imaging interface"
 arch=('x86_64')
@@ -21,7 +21,7 @@ pkgver() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	# Make all depends on tests, but we want to run them in check() instead.
-	make binaries
+	make
 }
 
 check() {
