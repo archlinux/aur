@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="Touchpad gesture improvements for GNOME on Wayland/X11"
 arch=('any')
 url="https://github.com/harshadgavali/gnome-gesture-improvements"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gnome-shell<=1:44.6')
 makedepends=('git' 'npm' 'zip')
 optdepends=('gnome-x11-gesture-daemon: Required for Xorg session')
@@ -15,19 +15,19 @@ source=("git+https://github.com/harshadgavali/gnome-gesture-improvements.git#com
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   export npm_config_cache="$srcdir/npm_cache"
   npm install
   npm run pack
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   _uuid='gestureImprovements@gestures'
   _schema='org.gnome.shell.extensions.gestureImprovements.gschema.xml'
 
