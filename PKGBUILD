@@ -2,14 +2,14 @@
 
 pkgname=dtkgui-git
 _pkgname=dtkgui
-pkgver=5.6.21.r3.g2299e31
+pkgver=5.6.22.r0.g01af1cb
 pkgrel=1
 pkgdesc='Deepin Toolkit, gui module for DDE look and feel'
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dtkgui"
 license=('LGPL3')
-depends=('dtkcore-git' 'librsvg' 'qt5-x11extras' 'libqtxdg' 'freeimage')
-makedepends=('git' 'qt5-tools' 'dtkcommon-git' 'dtkcore-git' 'librsvg' 'qt5-x11extras' 'gtest' 'gmock' 'cmake' 'ninja' 'doxygen' 'libqtxdg' 'freeimage')
+depends=('dtkcore' 'librsvg' 'qt5-x11extras' 'libqtxdg' 'freeimage')
+makedepends=('git' 'qt5-tools' 'dtkcommon' 'dtkcore' 'librsvg' 'qt5-x11extras' 'gtest' 'gmock' 'cmake' 'ninja' 'doxygen' 'libqtxdg' 'freeimage')
 conflicts=('dtkgui')
 provides=('dtkgui')
 groups=('deepin-git')
