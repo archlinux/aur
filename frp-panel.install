@@ -1,0 +1,33 @@
+#/usr/bin/env bash
+
+_pkgname="frp-panel"
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+post_install() {
+    if [[ $LANG == "zh_CN.UTF-8" ]]; then
+        note "master 节点的环境变量文件为 '/etc/ftp-panel/master.env' ...
+          master 节点的启动命令为 'systemctl enable --now $_pkgname@master.service' ...
+          server 节点的环境变量文件为 '/etc/ftp-panel/server.env' ...
+          server 节点的启动命令为 'systemctl enable --now $_pkgname@server.service' ...
+          client 节点的环境变量文件为 '/etc/ftp-panel/vlient.env' ...
+          client 节点的启动命令为 'systemctl enable --now $_pkgname@client.service' ..."
+    else
+        note "master node environment file is '/etc/ftp-panel/master.env' ...
+          master node start with 'systemctl enable --now $_pkgname@master.service' ...
+          server node environment file is '/etc/ftp-panel/server.env' ...
+          server node start with 'systemctl enable --now $_pkgname@server.service' ...
+          client node environment file is '/etc/ftp-panel/client.env' ...
+          client node start with 'systemctl enable --now $_pkgname@client.service' ..."
+    fi
+}
+
+post_upgrade() {
+    post_install
+}

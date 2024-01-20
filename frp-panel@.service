@@ -1,0 +1,16 @@
+[Unit]
+Description=frp-panel
+Documentation=https://github.com/VaalaCat/frp-panel
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5
+StartLimitInterval=0
+EnvironmentFile=-/etc/frp-panel/%i.env
+WorkingDirectory=/var/lib/frp-panel
+ExecStart=/usr/bin/frp-panel %i $START_PARAMS
+
+[Install]
+WantedBy=multi-user.target
