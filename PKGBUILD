@@ -29,10 +29,6 @@ build() {
   sh translations.sh
 }
 
-prepare() {
-  cd "${pkgname%-git}"
-}
-
 package() {
   cd "$srcdir/${pkgname%-git}"
   install -Dm644 org.gnome.gedit.plugins.markdown_preview.gschema.xml -t \
