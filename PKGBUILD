@@ -3,15 +3,15 @@
 
 pkgname=ollama-cuda
 pkgdesc='Create, run and share large language models (LLMs) with CUDA'
-pkgver=0.1.20
-pkgrel=2
+pkgver=0.1.21
+pkgrel=1
 arch=(x86_64)
 url='https://github.com/jmorganca/ollama'
 license=(MIT)
-_ollamacommit=ab6be852c77064d7abeffb0b03c096aab90e95fe # tag: v0.1.20
+_ollamacommit=4c54f0ddeb997cfefe4716e5631b270112975aab # tag: v0.1.21
 # The llama.cpp git submodule commit hash can be found here:
-# https://github.com/jmorganca/ollama/tree/v0.1.20/llm
-_llama_cpp_commit=328b83de23b33240e28f4e74900d1d06726f5eb1
+# https://github.com/jmorganca/ollama/tree/v0.1.21/llm
+_llama_cpp_commit=584d674be622fbf1578694ada6e62eebedbfd377
 makedepends=(cmake cuda git go)
 provides=(ollama)
 conflicts=(ollama)
@@ -36,12 +36,6 @@ prepare() {
 
   # Turn LTO on and set the build type to Release
   sed -i 's,T_CODE=on,T_CODE=on -D LLAMA_LTO=on -D CMAKE_BUILD_TYPE=Release,g' llm/generate/gen_linux.sh
-
-  # Let gen_linux.sh find libcudart.so
-  sed -i 's,/usr/local/cuda/lib64,/opt/cuda/targets/x86_64-linux/lib,g' llm/generate/gen_linux.sh
-
-  # Let gpu.go find libnvidia-ml.so from the cuda package
-  sed -i 's,/opt/cuda/lib64/libnvidia-ml.so*,/opt/cuda/targets/x86_64-linux/lib/stubs/libnvidia-ml.so*,g' gpu/gpu.go
 }
 
 build() {
