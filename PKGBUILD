@@ -3,7 +3,7 @@
 pkgname=easyeda-pro-electron
 _pkgname=${pkgname%-electron}
 pkgver=2.1.42
-pkgrel=2
+pkgrel=3
 pkgdesc="EasyEDA Professional Edition. Run with system electron."
 arch=('x86_64' 'aarch64')
 url="https://pro.easyeda.com/"
@@ -19,7 +19,7 @@ source=("LICENSE-$pkgver.html::https://easyeda.com/page/legal"
 source_x86_64=("$_pkgname-x86_64-$pkgver.zip::https://image.easyeda.com/files/easyeda-pro-linux-x64-$pkgver.zip")
 source_aarch64=("$_pkgname-aarch64-$pkgver.zip::https://image.easyeda.com/files/easyeda-pro-linux-arm64-$pkgver.zip")
 sha256sums=('SKIP'
-            'cc1661c75c9366d2fe43c4b864cf81acb9aae7cab505ce21e7de2db3c68cde76'
+            'ab64abe7821e4ea37a0e4d1f77c94f37d6a51c7df2038ba7b609c640adf8e51d'
             '89289056ed4b5d051280e3a69dfb550b6914f470f201be1ca3b165ddd4f3e435')
 sha256sums_x86_64=('03e85bc4517f055a329e374a3f1dc2886504a46bd31c7e85683ead6995f75316')
 sha256sums_aarch64=('d0da5c8956f7ff09611b680442ba2691e4196101543da19b3efce40e759d3a23')

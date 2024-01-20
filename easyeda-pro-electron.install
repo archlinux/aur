@@ -1,8 +1,3 @@
 post_install() {
-	# Note to download activation file
-	echo "You may want to download activation file at https://easyeda.com/page/desktop-client-activation"
-}
-
-post_upgrade() {
-	post_install
+    echo "You may want to download activation file at https://easyeda.com/page/desktop-client-activation"
 }
