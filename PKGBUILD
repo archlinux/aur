@@ -1,10 +1,10 @@
 # Maintainer:
 # Contributor: Gryffyn
 
-_pkgname="glew"
-pkgname=glew1.13
+_pkgname="glew1.13"
+pkgname="$_pkgname"
 pkgver=1.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A cross-platform C/C++ extension loading library'
 url='http://glew.sourceforge.net'
 license=('BSD' 'MIT' 'GPL')
@@ -20,9 +20,9 @@ depends=(
 
 provides=('glew-1.13.0=1.13.0')
 
-_pkgsrc="$_pkgname-$pkgver"
+_pkgsrc="glew-$pkgver"
 _pkgext="tar.gz"
-source=("$_pkgsrc.$_pkgext"::"https://downloads.sourceforge.net/$_pkgname/$_pkgsrc.tgz")
+source=("$_pkgsrc.$_pkgext"::"https://downloads.sourceforge.net/glew/$_pkgsrc.tgz")
 sha256sums=('aa25dc48ed84b0b64b8d41cdd42c8f40f149c37fa2ffa39cd97f42c78d128bc7')
 
 prepare() {
@@ -37,13 +37,18 @@ build() {
 
 package() {
   cd "$_pkgsrc"
-  make GLEW_DEST="${pkgdir}/usr" install.all
+  local _make_options=(
+    GLEW_DEST="$pkgdir/usr/lib/$_pkgname"
+    BINDIR="$pkgdir/usr/lib/$_pkgname"
+    LIBDIR="$pkgdir/usr/lib/$_pkgname"
+    INCDIR="$pkgdir/usr/include/$_pkgname"
+  )
 
-  # unneeded files
-  rm -rf "$pkgdir/usr"/{bin,include,share}
-  rm -rf "$pkgdir/usr/lib/pkgconfig"
-  rm -f "$pkgdir/usr/lib"/*.a
-  rm -f "$pkgdir/usr/lib"/*.so
+  make "${_make_options[@]}" install.all
+
+  for i in "$pkgdir/usr/lib/glew1.13"/*.so.1* ; do
+    ln -rs "$i" "$pkgdir/usr/lib/"
+  done
 
   # license
   install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
