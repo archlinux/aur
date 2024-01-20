@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Dmitry Kharitonov <darksab0r@gmail.com>
 # Contributor: Dave Blair <mail@dave-blair.de>
 pkgname=('autokey-common' 'autokey-gtk' 'autokey-qt')
