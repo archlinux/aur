@@ -10,7 +10,7 @@ url="http://tack.sourceforge.net/"
 license=('BSD')
 depends=('glibc')
 makedepends=('git' 'flex' 'bison' 'ed')
-source=("git://github.com/davidgiven/ack")
+source=("git+https://github.com/davidgiven/ack")
 md5sums=('SKIP')
 
 _gitrepo=${pkgname%-git}
