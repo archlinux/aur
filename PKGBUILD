@@ -13,12 +13,12 @@ makedepends=()
 provides=($_pkgname)
 conflicts=($_pkgname $_pkgname-git $_pkgname-bin)
 install=$pkgname.install
-source=("LICENSE"
+source=("LICENSE-$pkgver.html::https://easyeda.com/page/legal"
         "$pkgname.install"
         "$_pkgname.sh")
 source_x86_64=("$_pkgname-x86_64-$pkgver.zip::https://image.easyeda.com/files/easyeda-pro-linux-x64-$pkgver.zip")
 source_aarch64=("$_pkgname-aarch64-$pkgver.zip::https://image.easyeda.com/files/easyeda-pro-linux-arm64-$pkgver.zip")
-sha256sums=('fdf0f0fe693cb085c92f20e9cf931b9d4b0bafbb895678a6993a41e23a43fab1'
+sha256sums=('SKIP'
             'cc1661c75c9366d2fe43c4b864cf81acb9aae7cab505ce21e7de2db3c68cde76'
             '89289056ed4b5d051280e3a69dfb550b6914f470f201be1ca3b165ddd4f3e435')
 sha256sums_x86_64=('03e85bc4517f055a329e374a3f1dc2886504a46bd31c7e85683ead6995f75316')
@@ -27,7 +27,7 @@ sha256sums_aarch64=('d0da5c8956f7ff09611b680442ba2691e4196101543da19b3efce40e759
 package() {
     cd $srcdir
     install -Dm755 $_pkgname.sh $pkgdir/usr/bin/$_pkgname
-    install -Dm644 LICENSE      $pkgdir/usr/share/licenses/$pkgname/LICENSE
+    install -Dm644 LICENSE-$pkgver.html $pkgdir/usr/share/licenses/$pkgname/LICENSE.html
 
     cd $srcdir/$_pkgname
     install -Dm644 EasyEDA-Distribution-License.txt \
