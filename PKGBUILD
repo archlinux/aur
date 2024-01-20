@@ -7,17 +7,32 @@ pkgrel=1
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
 url="https://git-cola.github.io"
-license=('GPL2')
-depends=('git' 'hicolor-icon-theme' 'python-numpy' 'python-polib' 'python-pyqt5'
-         'python-qtpy')
-makedepends=('python-build' 'python-installer' 'python-jaraco.packaging'
-             'python-rst.linker' 'python-setuptools-scm' 'python-sphinx'
-             'python-wheel' 'rsync')
+license=('GPL-2.0-or-later')
+depends=(
+  'git'
+  'hicolor-icon-theme'
+  'python-numpy'
+  'python-polib'
+  'python-pyqt5'
+  'python-qtpy'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-jaraco.packaging'
+  'python-rst.linker'
+  'python-setuptools-scm'
+  'python-sphinx'
+  'python-wheel'
+  'rsync'
+)
 checkdepends=('appstream-glib' 'desktop-file-utils')
-optdepends=('python-pygments: syntax highlighting'
-            'python-pyinotify: file system change monitoring'
-            'python-send2trash: enables "Send to Trash" functionality.'
-            'tk: to use the built-in ssh-askpass handler')
+optdepends=(
+  'python-pygments: syntax highlighting'
+  'python-pyinotify: file system change monitoring'
+  'python-send2trash: enables "Send to Trash" functionality.'
+  'tk: to use the built-in ssh-askpass handler'
+)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/git-cola/git-cola/archive/v$pkgver.tar.gz"
         '0001-Unvendorize-polib.py.patch')
 sha256sums=('231786deef4a384b904ea4bc0856386448e91161cfed1aadf17494f28a5cbfd0'
