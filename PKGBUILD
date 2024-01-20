@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutantota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Federico Di Pierro <nierro92@gmail.com>
 pkgname=clightd
 pkgver=5.8
@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Bus interface to change screen brightness and capture frames from webcam."
 arch=('x86_64' 'aarch64')
 url="https://github.com/FedeDP/Clightd"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('systemd-libs' 'linux-api-headers' 'libx11' 'libxrandr' 'libxext' 'polkit'
          'ddcutil' 'libmodule' 'libjpeg-turbo' 'libusb' 'libdrm' 'wayland')
 makedepends=('git' 'cmake')
