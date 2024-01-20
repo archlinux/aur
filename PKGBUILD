@@ -13,7 +13,7 @@ backup=(
 )
 license=("unkown")
 depends=("glibc" "systemd")
-makedepends=("npm" "go")
+makedepends=("awk" "go" "grep" "npm" "sed")
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.tmpfiles"
