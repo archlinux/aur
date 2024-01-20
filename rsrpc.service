@@ -1,0 +1,11 @@
+[Unit]
+Description=rsRPC Discord RPC daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/rsrpc -d /opt/rsrpc/detectable.json
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

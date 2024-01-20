@@ -1,0 +1,4 @@
+post_install() {
+  echo "The systemd user service for rsRPC can be enabled with:"
+  echo "systemctl enable --user --now rsrpc.service"
+}
