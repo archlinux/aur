@@ -1,0 +1,12 @@
+pkgbase = ttf-blobmoji
+	pkgdesc = Noto Emoji with extended Blob support
+	pkgver = 15.1beta1
+	pkgrel = 1
+	url = https://github.com/C1710/blobmoji
+	arch = any
+	license = OFL-1.1
+	provides = emoji-font
+	source = https://github.com/C1710/blobmoji/releases/download/v15.1-beta1/Blobmoji.ttf
+	sha256sums = 61b588efe9960443a89de442feeab863744dea9dd169cba08c66762eb4d6952b
+
+pkgname = ttf-blobmoji
