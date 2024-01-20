@@ -1,0 +1,8 @@
+post_install() {
+  echo "Please run this command manually to enable the socket:"
+  echo "$ systemctl --user enable --now figma-agent.socket"
+}
+
+post_upgrade() {
+  post_install
+}
