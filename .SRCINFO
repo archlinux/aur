@@ -1,18 +1,18 @@
 pkgbase = icon
 	pkgdesc = The Icon programming language
-	pkgver = 9.5.23a
+	pkgver = 9.5.24a
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/gtownsend/icon
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = custom:publicdomain
 	makedepends = libxt
 	depends = sh
 	depends = libx11
-	source = icon-9.5.23a.tar.gz::https://github.com/gtownsend/icon/archive/refs/tags/v9.5.23a.tar.gz
+	source = icon-9.5.24a.tar.gz::https://github.com/gtownsend/icon/archive/refs/tags/v9.5.24a.tar.gz
 	source = LICENSE
-	sha256sums = 0c2e8b70a19e476c7a5a4aaaa46160f2f6197d14d6f8e01e164b6a3fff8c210a
+	sha256sums = 73eaf9b1bd0d0bb21c252110e7e9e5d146ef37bef2cd72c46e023d71305fa801
 	sha256sums = 57b2b71129aa652ca63b07d3c23564bc7a45444a274d12e50856b46e4d088e35
 
 pkgname = icon
