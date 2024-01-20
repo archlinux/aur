@@ -2,11 +2,11 @@
 
 pkgbase=linux-amd-raven
 _srcname=linux
-gitver=v6.7
+gitver=v6.7.1
 patchver=20230105
 patchname=more-uarches-for-kernel-5.17+.patch
-pkgver=6.7.v.0
-pkgrel=2
+pkgver=6.7.v.1
+pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -23,7 +23,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '3a579a915d040a4cf2b672f8282ae597350437790a434f15e7c01421c1c1706b'
+            'c65adc48579453794ee1a5cc33a76a1915e4612e102e2a65e24b37689c9bdd0f'
             #.preset file
             'fd220b9f47a86162247b042f06311848678f9acb64b92f716572972f3aeb3d18'
             #grayskypatch file
@@ -51,6 +51,9 @@ prepare() {
    echo "Applying $patch"
    git apply $patch || echo "ERROR: something went wrong with $patch. Advancing anyway."
   done <<< $(ls ../*.patch)
+
+  # git revert faulty commit for 5G Modules
+  git revert c09c4f31998bac -n
 
   # get kernel version
   msg2 "Preparing kernel"
