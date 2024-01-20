@@ -12,6 +12,6 @@ pkgbase = lunion-git
 	optdepends = wine
 	optdepends = wine-staging
 	source = git+https://framagit.org/IroAlexis/lunion.git
-	cksums = SKIP
+	sha256sums = SKIP
 
 pkgname = lunion-git

@@ -27,7 +27,7 @@ options=()
 install=
 changelog=
 source=(git+${url}.git)
-cksums=('SKIP')
+sha256sums=('SKIP')
 noextract=()
 
 
@@ -36,7 +36,7 @@ pkgver() {
 }
 
 build() {
-	meson setup --prefix "/usr" "${pkgname%-git}" ./build
+	arch-meson "${pkgname%-git}" ./build
 	meson compile -C ./build
 }
 
