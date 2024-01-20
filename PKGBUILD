@@ -4,7 +4,7 @@
 
 _pkgname="geeqie"
 pkgname="$_pkgname-git"
-pkgver=2.1.r249.g214be330
+pkgver=2.1.r260.gf1c1ccb9
 pkgrel=1
 pkgdesc='Lightweight image viewer'
 url="https://github.com/BestImageViewer/geeqie"
@@ -22,12 +22,12 @@ depends=(
   hicolor-icon-theme
   libarchive
   libchamplain
-  libjxl
+  libjxl.so
   libraw
   lua
   openjpeg2
   poppler-glib
-  webp-pixbuf-loader
+  #webp-pixbuf-loader
 
   ## implicit
   #bash
@@ -74,8 +74,8 @@ provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
-source=("$_pkgname"::"git+$url.git")
-sha256sums=('SKIP')
+source+=("$_pkgname"::"git+$url.git")
+sha256sums+=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
@@ -87,17 +87,19 @@ pkgver() {
 
 build() {
   local _meson_options=(
+    ## not working
+    #-Dgtk4=enabled
+    #-Dwebp-pixbuf-loader=enabled
+
     -Dcms=enabled
     -Ddjvu=enabled
     -Dexiv2=enabled
-    #-Dgtk4=enabled
     -Dheif=enabled
     -Dj2k=enabled
     -Djpeg=enabled
     -Djpegxl=enabled
     -Dlibraw=enabled
     -Dtiff=enabled
-    -Dwebp-pixbuf-loader=enabled
   )
 
   arch-meson "$_pkgsrc" build "${_meson_options[@]}"
