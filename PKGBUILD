@@ -1,11 +1,11 @@
 # Maintainer: Arvid Norlander <VorpalBlade@users.noreply.github.com>
 pkgname=aurutilsutils-git
 pkgver=r23.96dae82
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities extending aurutils"
 arch=("any")
 url="https://github.com/VorpalBlade/aurutilsutils"
-license=('custom:ISC')
+license=('ISC')
 depends=(
 	'aurutils'
 	'python-appdirs'

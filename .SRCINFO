@@ -1,10 +1,10 @@
 pkgbase = aurutilsutils-git
 	pkgdesc = Utilities extending aurutils
 	pkgver = r23.96dae82
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VorpalBlade/aurutilsutils
 	arch = any
-	license = custom:ISC
+	license = ISC
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
