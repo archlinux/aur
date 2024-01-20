@@ -1,0 +1,5 @@
+amdfand/
+src/
+pkg/
+*.pkg.*
+*.tar.*
