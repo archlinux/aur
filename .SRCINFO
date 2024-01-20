@@ -1,6 +1,6 @@
 pkgbase = emacs29-git
 	pkgdesc = GNU Emacs. Development emacs29 release branch.
-	pkgver = 29.1.50.165469
+	pkgver = 29.2.50.165993
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	install = emacs-git.install
