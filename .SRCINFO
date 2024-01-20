@@ -1,11 +1,10 @@
 pkgbase = python-ssort-git
 	pkgdesc = Tool for automatically sorting python statements within a module (built from latest commit)
 	pkgver = 0.12.1.r0.g3d87560
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/bwhmather/ssort
 	arch = any
 	license = MIT
-	makedepends = awk
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
