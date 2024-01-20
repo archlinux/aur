@@ -7,7 +7,7 @@ pkgdesc="SFML Extension with various game programming features,
          like particles, animations, vector operations"
 arch=("x86_64")
 url="https://bromeon.ch/libraries/thor"
-license=("ZLIB")
+license=("Zlib")
 depends=("sfml")
 makedepends=("cmake" "git")
 provides=("${pkgname%-git}")
