@@ -3,7 +3,7 @@
 _name=FotoKilof
 
 pkgname=${_name,,}
-pkgver=4.4.3
+pkgver=4.4.4
 pkgrel=1
 pkgdesc="GUI for ImageMagick"
 url="https://github.com/TeaM-TL/FotoKilof"
@@ -14,7 +14,7 @@ arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
         0001-fix-character-in-setup.py-entrypoint-gui_script.patch
         $pkgname.desktop)
-sha256sums=('173338473925028e50e5557650be8289e33a0c6b9c6734b37ef734830835049d'
+sha256sums=('de98a4fd7f0e43a3681a186c365fad4a0170b0523c8318de3ef604b7324bdc4a'
             'fff5a43a08c5c5ef2483dafff22c749527c4f392645cf9517621a9dbc6ec00b3'
             '8f6610e5b14c7ecc3d099b6c03ee2ea638b6080d625d4d7ed2e6baa95daaf1c2')
 
