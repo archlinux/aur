@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Frederic Bezies <fredbezies at gmail.com>
 # Contributor: goetzc
 # Contributor: thetotalchaos
