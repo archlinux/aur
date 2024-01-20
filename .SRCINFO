@@ -1,0 +1,10 @@
+pkgbase = gcc-11-gnueabihf-compat
+	pkgdesc = Symlink androideabi GCC 11 to gnueabihf
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://gnu.org/gcc
+	arch = arm
+	license = AGPL3
+	depends = gcc-11
+
+pkgname = gcc-11-gnueabihf-compat
