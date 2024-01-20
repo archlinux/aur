@@ -7,8 +7,21 @@ pkgdesc="Bus interface to change screen brightness and capture frames from webca
 arch=('x86_64' 'aarch64')
 url="https://github.com/FedeDP/Clightd"
 license=('GPL-3.0-or-later')
-depends=('systemd-libs' 'linux-api-headers' 'libx11' 'libxrandr' 'libxext' 'polkit'
-         'ddcutil' 'libmodule' 'libjpeg-turbo' 'libusb' 'libdrm' 'wayland')
+depends=(
+  'ddcutil'
+  'libdrm'
+  'libiio'
+  'libjpeg-turbo'
+  'libmodule'
+  'libusb'
+  'libx11'
+  'libxext'
+  'linux-api-headers'
+  'libxrandr'
+  'polkit'
+  'systemd-libs'
+  'wayland'
+)
 makedepends=('git' 'cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('89f0906bc2c1dd4f9bd62194499fd156197c211760c4bb1adcb149650f852684')
