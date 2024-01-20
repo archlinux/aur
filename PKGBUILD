@@ -4,15 +4,15 @@
 #
 # shellcheck disable=SC2034,SC2154
 pkgname=imgpkg
-pkgver=0.39.0
-pkgrel=3
+pkgver=0.40.0
+pkgrel=1
 pkgdesc='Store application configuration files in Docker/OCI registries'
 url='https://carvel.dev/imgpkg'
 arch=(any)
 license=(apache-2.0)
 makedepends=(bash go)
 provides=(imgpkg)
-source=(imgpkg-0.39.0::https://github.com/carvel-dev/imgpkg/archive/v0.39.0.tar.gz)
+source=(imgpkg-0.40.0::https://github.com/carvel-dev/imgpkg/archive/v0.40.0.tar.gz)
 build () 
 { 
     set -eo pipefail;
@@ -38,4 +38,4 @@ package ()
     "$BIN_DST" completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish";
     "$BIN_DST" completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
-sha256sums=('1e2525757bd5429547de2eb0adef27f0fe186a55bda47fa8000163f2fcfe3850')
+sha256sums=('c0aeaac61f8a9637421d7403c504a443d127f60a662c095575b38986d0bb8cd0')
