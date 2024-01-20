@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Change your folder color in Caja"
 arch=('any')
 url="https://github.com/costales/folder-color"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('python-caja')
 makedepends=('git' 'dpkg' 'python-build' 'python-distutils-extra' 'python-installer'
              'python-setuptools' 'python-wheel')
@@ -17,12 +17,12 @@ source=("git+https://github.com/costales/folder-color.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgname"
   dpkg-parsechangelog --show-field Version
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgname"
 
   pushd install-scripts
   ./caja.sh GTK3
@@ -32,7 +32,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgname"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
