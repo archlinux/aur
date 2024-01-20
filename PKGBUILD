@@ -49,7 +49,8 @@ build() {
         -DCMAKE_SKIP_INSTALL_RPATH=YES \
         -DCMAKE_SKIP_RPATH=YES \
         -DENABLE_FCITX=YES \
-        -DENABLE_IBUS=YES
+        -DENABLE_IBUS=YES \
+        -DCMAKE_INSTALL_PREFIX="/usr"
     make -C build
 }
 package_openbangla-keyboard-git() {
