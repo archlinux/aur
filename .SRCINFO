@@ -1,6 +1,6 @@
 pkgbase = xubuntu-artwork
 	pkgdesc = Xubuntu themes and artwork
-	pkgver = 23.10.1
+	pkgver = 24.04
 	pkgrel = 1
 	url = https://launchpad.net/xubuntu-artwork
 	arch = any
@@ -14,9 +14,9 @@ pkgbase = xubuntu-artwork
 	optdepends = xfce-theme-bluebird: Official theming, git or stable version
 	optdepends = xfce-theme-greybird: Official theming, git or stable version
 	optdepends = elementary-xfce-icons: For matching icon theme, or the git version
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/xubuntu-artwork_23.10.1.tar.xz
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/xubuntu-artwork_24.04.tar.xz
 	source = CC-BY-SA-3.0.txt
-	sha256sums = 1d334a0c73b405a542a88432045c15719c1cff68dec0246acd2602fae26fb1f2
+	sha256sums = 5492793da8218f9f6c7a41231da8d325d5ce662a2a8c7d50de6c5d3c8ed6b72d
 	sha256sums = 129f20089a0c2fe1ac3607fc1761ef177effbf354aeed1fd9def9bcaf4d024ee
 
 pkgname = xubuntu-artwork
