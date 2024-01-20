@@ -25,7 +25,7 @@ sha256sums=('SKIP'
 package() {
 	mkdir -p "$pkgdir"/usr/lib/datcord "$pkgdir"/usr/bin
 	cd "$srcdir/datcord"
-	chmod +x launch-datcord
+	chmod +x launch-app
         cp -R  * "$pkgdir"/usr/lib/datcord
 	ln -s /usr/lib/datcord/launch-app "$pkgdir"/usr/bin/datcord
 	install -Dvm 775 "$srcdir"/datcord.desktop "$pkgdir"/usr/share/applications/datcord.desktop
