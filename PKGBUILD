@@ -1,7 +1,7 @@
 # Maintainer: lolilolicon <lolilolicon@gmail.com>
 
 _name=FFcast
-_ver=2.5.0
+_ver=2.5.1
 pkgname=ffcast
 epoch=1
 pkgver=${_ver//-/}
@@ -11,10 +11,10 @@ arch=(any)
 url="https://github.com/ropery/FFcast"
 license=(GPL3)
 depends=('bash>=4.3' xorg-xdpyinfo xorg-xprop xorg-xwininfo xrectsel)
-optdepends=('ffmpeg: for png rec' 'imagemagick: for trim')
+optdepends=('ffmpeg: for png rec' 'imagemagick: for trim' 'graphicsmagick: for trim')
 makedepends=(autoconf automake perl)
 source=("https://github.com/ropery/$_name/archive/$_ver.tar.gz")
-sha256sums=('09ebf44f76a1813eb8db78df0256f7a1cd259562cf87908b6d683f7fd1ec6b30')
+sha256sums=('80b747576492439fcd528eee1bc93bfe2b32b73f6bf9adae73d74666576c9089')
 
 prepare() {
   cd "$_name-$_ver"

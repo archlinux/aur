@@ -1,6 +1,6 @@
 pkgbase = ffcast
 	pkgdesc = run command on rectangular screen regions, e.g. screenshot, screencast
-	pkgver = 2.5.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/ropery/FFcast
@@ -16,7 +16,8 @@ pkgbase = ffcast
 	depends = xrectsel
 	optdepends = ffmpeg: for png rec
 	optdepends = imagemagick: for trim
-	source = https://github.com/ropery/FFcast/archive/2.5.0.tar.gz
-	sha256sums = 09ebf44f76a1813eb8db78df0256f7a1cd259562cf87908b6d683f7fd1ec6b30
+	optdepends = graphicsmagick: for trim
+	source = https://github.com/ropery/FFcast/archive/2.5.1.tar.gz
+	sha256sums = 80b747576492439fcd528eee1bc93bfe2b32b73f6bf9adae73d74666576c9089
 
 pkgname = ffcast
