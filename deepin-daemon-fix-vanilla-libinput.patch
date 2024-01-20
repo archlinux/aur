@@ -1,0 +1,60 @@
+diff --git a/system/gesture/core.c b/system/gesture/core.c
+index 85902af6..f9a02551 100644
+--- a/system/gesture/core.c
++++ b/system/gesture/core.c
+@@ -358,9 +358,7 @@ handle_gesture_events(struct libinput_event *ev, int type)
+     if (raw->dblclick
+     && type != LIBINPUT_EVENT_GESTURE_SWIPE_BEGIN
+     && type != LIBINPUT_EVENT_GESTURE_SWIPE_UPDATE
+-    && type != LIBINPUT_EVENT_GESTURE_SWIPE_END
+-    && type != LIBINPUT_EVENT_GESTURE_TAP_UPDATE
+-    && type != LIBINPUT_EVENT_GESTURE_TAP_END) {
++    && type != LIBINPUT_EVENT_GESTURE_SWIPE_END) {
+         raw->fingers = libinput_event_gesture_get_finger_count(gesture);
+         handleSwipeStop(raw->fingers);
+         raw->dblclick = false;
+@@ -438,31 +436,6 @@ handle_gesture_events(struct libinput_event *ev, int type)
+ 
+         raw_event_reset(raw, true);
+         break;
+-    case LIBINPUT_EVENT_GESTURE_TAP_BEGIN:
+-        g_debug("[Tap begin] time: %u duration: %d fingers: %d \n", raw->t_start_tap, (libinput_event_gesture_get_time_usec(gesture) - raw->t_start_tap) / 1000, raw->fingers);
+-        if (raw->t_start_tap > 0
+-        &&  (libinput_event_gesture_get_time_usec(gesture) - raw->t_start_tap) / 1000 <= dblclick_duration
+-        && raw->fingers == libinput_event_gesture_get_finger_count(gesture)) {
+-            handleDbclickDown(raw->fingers);
+-            handle_tap_stop();
+-            raw_event_reset(raw, true);
+-            raw->dblclick = true;
+-        }
+-        break;
+-    case LIBINPUT_EVENT_GESTURE_TAP_END:
+-        if (libinput_event_gesture_get_cancelled(gesture)) {
+-            raw_event_reset(raw, true);
+-            break;
+-        }
+-
+-        if (!raw->dblclick) {
+-            raw->fingers = libinput_event_gesture_get_finger_count(gesture);
+-            raw->t_start_tap = libinput_event_gesture_get_time_usec(gesture);
+-            handle_tap_delay();
+-        } else {
+-            raw_event_reset(raw, true);
+-        }
+-        break;
+     }
+ }
+ 
+@@ -591,10 +564,7 @@ handle_events(struct libinput *li, struct movement *m)
+         case LIBINPUT_EVENT_GESTURE_PINCH_END:
+         case LIBINPUT_EVENT_GESTURE_SWIPE_BEGIN:
+         case LIBINPUT_EVENT_GESTURE_SWIPE_UPDATE:
+-        case LIBINPUT_EVENT_GESTURE_SWIPE_END:
+-        case LIBINPUT_EVENT_GESTURE_TAP_BEGIN:
+-        case LIBINPUT_EVENT_GESTURE_TAP_UPDATE:
+-        case LIBINPUT_EVENT_GESTURE_TAP_END:{
++        case LIBINPUT_EVENT_GESTURE_SWIPE_END:{
+             handle_gesture_events(ev, type);
+             break;
+         }
+
