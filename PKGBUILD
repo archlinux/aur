@@ -1,11 +1,11 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=fluent-gtk-theme-git
 pkgver=2023.06.20.r14.g9fdf52e
 pkgrel=1
 pkgdesc="Fluent design gtk theme for linux desktops"
 arch=('any')
 url="https://github.com/vinceliuice/Fluent-gtk-theme"
-license=('GP3')
+license=('GPL-3.0-or-later')
 makedepends=('git' 'sassc' 'setconf')
 optdepends=('gtk-engine-murrine: GTK2 theme support'
             'fluent-icon-theme: Matching icon theme'
@@ -20,19 +20,19 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/wallpaper"
+  cd wallpaper
   setconf install-gnome-backgrounds.sh BACKGROUND_DIR "$pkgdir/usr/share/backgrounds"
   setconf install-gnome-backgrounds.sh PROPERTIES_DIR "$pkgdir/usr/share/gnome-background-properties"
   setconf install-wallpapers.sh WALLPAPER_DIR "$pkgdir/usr/share/backgrounds"
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   install -d "$pkgdir/usr/share/themes"
   ./install.sh -t all -d "$pkgdir/usr/share/themes"
 
