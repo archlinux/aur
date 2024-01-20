@@ -1,6 +1,6 @@
 # Maintainer: Ilya Zlobintsev <ilya.zl@protonmail.com>
 pkgname=lact-git
-pkgver=r419.e9229ad
+pkgver=r444.a8c2c60
 pkgrel=1
 license=("MIT")
 pkgdesc="AMDGPU Controller application (git version)"
@@ -19,12 +19,24 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd "LACT"
+  export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
-    cd LACT
-    make
+  cd "LACT"
+  export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build -p lact --frozen --release
 }
 
 package() {
-    cd LACT
-    DESTDIR=${pkgdir} PREFIX=/usr make install
+  cd "LACT"
+  make PREFIX=/usr DESTDIR="$pkgdir/" install
+
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
