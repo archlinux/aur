@@ -27,7 +27,7 @@ package() {
 	cd "$srcdir/datcord"
 	chmod +x launch-datcord
         cp -R  * "$pkgdir"/usr/lib/datcord
-	ln -s /usr/lib/datcord/launch-datcord "$pkgdir"/usr/bin/datcord
+	ln -s /usr/lib/datcord/launch-app "$pkgdir"/usr/bin/datcord
 	install -Dvm 775 "$srcdir"/datcord.desktop "$pkgdir"/usr/share/applications/datcord.desktop
 	install -Dvm 775 "$srcdir"/datcord.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/datcord.png
 }
