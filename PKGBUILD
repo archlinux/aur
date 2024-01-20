@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=huekeys
 pkgver=0.5.10
 pkgrel=1
@@ -8,7 +8,7 @@ url="https://github.com/BitPonyLLC/huekeys"
 license=('MIT')
 depends=('gtk3' 'libayatana-appindicator' 'system76-dkms')
 makedepends=('git' 'go')
-_commit=e75c681f54ee7cfc0fc1839b6fdf48a7963f8ac4
+_commit=e75c681f54ee7cfc0fc1839b6fdf48a7963f8ac4  # tags/v0.5.10^0
 source=("git+https://github.com/BitPonyLLC/huekeys.git#commit=${_commit}?signed"
         "$pkgname.desktop"
         "$pkgname.png")
@@ -23,13 +23,13 @@ pkgver() {
 }
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   export GOPATH="$srcdir/gopath"
   go mod tidy
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   export GOPATH="$srcdir/gopath"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -48,7 +48,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   install -Dm755 "$pkgname" -t "$pkgdir/usr/bin/"
   install -Dm644 "$pkgname.bash" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
   install -Dm644 "$pkgname.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
