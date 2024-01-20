@@ -1,0 +1,20 @@
+pkgbase = rewards-theater-obs
+	pkgdesc = An OBS plugin that lets your viewers redeem videos or sounds on stream via channel points.
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/gottagofaster236/RewardsTheater
+	arch = x86_64
+	license = GPL3
+	makedepends = ccache
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = libx11
+	makedepends = boost
+	makedepends = qt6-base
+	makedepends = qt6-svg
+	depends = obs-studio
+	conflicts = rewards-theater-obs-git
+	source = RewardsTheater-1.0.5.tar.gz::https://github.com/gottagofaster236/RewardsTheater/archive/refs/tags/1.0.5.tar.gz
+	sha256sums = 0c606036c289b07334c87170736e94cda0b7ca121a4fd032888e0f3a010daa27
+
+pkgname = rewards-theater-obs
