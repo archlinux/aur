@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Development tools at your fingertips"
 arch=('any')
 url="https://github.com/aleiepure/devtoolbox"
-license=('CC0-1.0 AND GPL-3.0-or-later AND MIT AND Unlicense')
+license=('CC0-1.0 AND GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT AND Unlicense')
 depends=(
   'gcr-4'
   'gtksourceview5'
