@@ -4,7 +4,7 @@ pkgbase = gnome-shell-extension-dynamic-panel-transparency-git
 	pkgrel = 2
 	url = https://ewlsh.github.io/dynamic-panel-transparency
 	arch = any
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = git
 	depends = gnome-shell<=1:44.6
 	provides = gnome-shell-extension-dynamic-panel-transparency
