@@ -8,10 +8,26 @@ pkgrel=1
 pkgdesc="A retro gaming application for the GNOME desktop"
 arch=('x86_64' 'aarch64')
 url="https://wiki.gnome.org/Apps/Games"
-license=('GPL3')
-depends=('cairo' 'dconf' 'gdk-pixbuf2' 'glib2' 'glibc' 'grilo' 'gtk4' 'hicolor-icon-theme'
-         'libadwaita' 'libarchive' 'libmanette' 'librsvg' 'libsoup3' 'libxml2' 'retro-gtk-git'
-         'sqlite' 'tracker3')
+license=('GPL-3.0-or-later')
+depends=(
+  'cairo'
+  'dconf'
+  'gdk-pixbuf2'
+  'glib2'
+  'glibc'
+  'grilo'
+  'gtk4'
+  'hicolor-icon-theme'
+  'libadwaita'
+  'libarchive'
+  'libmanette'
+  'librsvg'
+  'libsoup3'
+  'libxml2'
+  'retro-gtk-git'
+  'sqlite'
+  'tracker3'
+)
 makedepends=('git' 'meson' 'vala')
 checkdepends=('appstream-glib')
 optdepends=(
@@ -60,7 +76,8 @@ optdepends=(
   'libretro-snes9x: Super Nintendo Entertainment System core'
   'libretro-stella2014: Support for Atari 2600 games'
   'libretro-yabause: Sega Saturn core'
-  'retroarch: Reference frontend for the libretro API')
+  'retroarch: Reference frontend for the libretro API'
+)
 provides=("${pkgname%-git}" 'gnome-games')
 conflicts=("${pkgname%-git}" 'gnome-games')
 replaces=('gnome-games-git')
@@ -68,7 +85,7 @@ source=('git+https://gitlab.gnome.org/World/highscore.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
