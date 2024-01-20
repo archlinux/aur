@@ -1,5 +1,5 @@
 pkgname=nordvpn
-pkgver=3.16.9
+pkgver=3.17.0
 pkgrel=1
 pkgdesc="NordVPN client for Linux"
 arch=('x86_64' 'arm64')
@@ -10,7 +10,7 @@ depends=('iptables' 'iproute2' 'wireguard-tools')
 provides=('nordvpn')
 conflicts=('openvpn-nordvpn' 'nordvpn-bin' 'nordvpn-cli-bin' 'nordvpn-git')
 source=("https://github.com/NordSecurity/nordvpn-linux/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c32be14f6ece9ff710f6495d5d1cff8eaa81a3d545ab517fd1b1cc1bd50c0ba5')
+sha256sums=('27e547b46767696afcb9b5e0a91c92977a1380bd29972e3d4315de896682c43b')
 install=nordvpn.install
 
 prepare() {
