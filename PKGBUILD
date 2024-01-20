@@ -23,8 +23,8 @@
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.7
-pkgrel=2
+pkgver=6.7.1
+pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
 arch=(x86_64)
@@ -53,7 +53,7 @@ source+=(
   config  # the main kernel config file
 )
 sha256sums+=(
-  'ef31144a2576d080d8c31698e83ec9f66bf97c677fa2aaf0d5bbb9f3345b1069'
+  '1ecffa568e86a2202ba5533ad9034bc263a9aa14e189597a94f09b3854ad68c3'
   'SKIP'
   '45a44ff0e957cd562d2ceb60c1c90fc19c19e808209cebb46bfacfccfb56ad96'
 )
@@ -86,7 +86,7 @@ if [[ ${_build_arch_patch::1} == "t" ]] ; then
       '2f23be91455e529d16aa2bbf5f2c7fe3d10812749828fc752240c21b2b845849'
     )
   else
-    _srctag=v$pkgver-arch1
+    _srctag=v${pkgver::3}-arch3
     _dl_url_arch='https://github.com/archlinux/linux'
     source+=(
       $_dl_url_arch/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
@@ -102,17 +102,29 @@ if [[ ${_build_clang::1} == "t" ]] ; then
   makedepends+=(clang llvm lld)
 
   export CC=clang
-  export CXX=clang++
-  export LDFLAGS+=" -fuse-ld=lld"
-
+  export LD=ld.lld
+  export AR=llvm-ar
+  export NM=llvm-nm
+  export STRIP=llvm-strip
+  export OBJCOPY=llvm-objcopy
+  export OBJDUMP=llvm-objdump
+  export READELF=llvm-readelf
   export HOSTCC=clang
+  export HOSTCXX=clang++
+  export HOSTAR=llvm-ar
+  export HOSTLD=ld.lld
   export LLVM=1
   export LLVM_IAS=1
+
+  export CXX=clang++
+  export LDFLAGS+=" -fuse-ld=lld"
 fi
 
 if [[ "${_build_v3::1}" == "t" ]] ; then
   export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
   export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"}
+
+  export RUSTFLAGS+=" -Ctarget-cpu=x86-64-v3"
 fi
 
 export KBUILD_BUILD_HOST=archlinux
