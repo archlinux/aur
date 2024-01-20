@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="GNOME Shell extension for Feral Interactive's GameMode"
 arch=('any')
 url="https://github.com/gicmo/gamemode-extension"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('gamemode' 'gnome-shell')
 makedepends=('meson' 'git')
 provides=("${pkgname%-git}")
@@ -16,7 +16,7 @@ source=('git+https://github.com/fjsevilla-dev/gamemode-extension.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/gamemode-extension"
+  cd gamemode-extension
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
