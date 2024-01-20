@@ -2,7 +2,7 @@
 
 _pkgname="tinyMediaManager"
 pkgname="${_pkgname,,}-bin"
-pkgver=5.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="A media management tool written in Java/Swing."
 provides=("${_pkgname,,}")
@@ -16,8 +16,8 @@ source_x86_64=("https://release.${_pkgname,,}.org/v5/dist/${_pkgname}-${pkgver}-
 source_aarch64=("https://release.${_pkgname,,}.org/v5/dist/${_pkgname}-${pkgver}-linux-arm64.tar.xz")
 sha256sums=('08499a10730b6af6113c4a56e4ed7bed068d7fed282080dfd550b66d6a8ac9f5'
             '79b50c260b1c1c1f695c0ea1d743742d11d9a1337a2bc73985e4428752492f0f')
-sha256sums_x86_64=('1c827e592313a1e41c763b4d782483d35c8a3406a8ddaf3eb2d6508ee020ff49')
-sha256sums_aarch64=('31ab459db6a3e6d90b40f3773c86d4afd5bdb0949e6283a35c8a446763f86342')
+sha256sums_x86_64=('621009533ef53268698129e0435147cc305a5928ef8f0c4c0245fb2ace010fe9')
+sha256sums_aarch64=('1971928567095177ae000c60dfe8b4ecd06b31998c9a0dfdac27cd41488cf72d')
 options=(!strip)
 
 package() {
