@@ -6,19 +6,20 @@ pkgrel=1
 pkgdesc='An easy to use, but flexible, composited Window Manager'
 arch=(x86_64)
 license=(LGPL)
-depends=(kscreenlocker xcb-util-cursor plasma-framework kcmutils breeze
+depends=(kscreenlocker xcb-util-cursor plasma-framework5 kcmutils5 breeze
          pipewire-session-manager libqaccessibilityclient lcms2 libxcvt)
 makedepends=(extra-cmake-modules
 	     wayland-protocols
 	     qt5-tools
-	     kdoctools
-	     dwayland-git
-	     deepin-wayland-protocols-git
-	     dde-kwin-git
+	     kdoctools5
+	     dwayland
+	     deepin-wayland-protocols
 	     python
 	     ninja)
+optdepends=(dde-kwin)
 provides=('deepin-kwin-reborn' 'deepin-kwin')
 conflicts=('deepin-kwin-reborn' 'deepin-kwin')
+groups=('deepin-git')
 source=("$pkgname::git+https://github.com/linuxdeepin/deepin-kwin")
 install=deepin-kwin.install
 sha256sums=('SKIP')
