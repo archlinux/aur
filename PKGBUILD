@@ -2,10 +2,10 @@
 
 _pkgname=waylock
 pkgname=${_pkgname}-git
-pkgver=0.4.0.r9.g7262210
+pkgver=0.6.0.r13.g7957561
 pkgrel=1
 arch=('x86_64')
-url="https://github.com/ifreund/waylock"
+url="https://codeberg.org/ifreund/waylock"
 pkgdesc="A simple screenlocker for Wayland compositors"
 license=('ISC')
 depends=('wayland' 'wayland-protocols' 'libxkbcommon' 'pam' 'pkgconf')
@@ -13,9 +13,9 @@ makedepends=('git' 'zig' 'scdoc')
 provides=('waylock')
 conflicts=('waylock')
 source=(
-    "git+$url"
-    "git+https://github.com/ifreund/zig-wayland.git"
-    "git+https://github.com/ifreund/zig-xkbcommon.git"
+    "git+${url}.git"
+    "git+https://codeberg.org/ifreund/zig-wayland.git"
+    "git+https://codeberg.org/ifreund/zig-xkbcommon.git"
 )
 sha256sums=(
     'SKIP'
@@ -39,7 +39,7 @@ prepare() {
 
 package() {
     cd "$_pkgname"
-    DESTDIR="$pkgdir" zig build -Drelease-safe --prefix "/usr" install
+    DESTDIR="$pkgdir" zig build -Doptimize=ReleaseSafe --prefix "/usr" install
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
     install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
 }
