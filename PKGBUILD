@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=scFeatures
-_pkgver=1.2.0
+_pkgver=1.3.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Multi-view representations of single-cell and spatial data for disease outcome prediction"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(GPL3)
+license=('GPL-3.0-only')
 depends=(
   r-ape
   r-aucell
@@ -31,10 +31,8 @@ depends=(
   r-rmarkdown
   r-seurat
   r-singlecellsignalr
-  r-spatialexperiment
   r-spatstat.explore
   r-spatstat.geom
-  r-summarizedexperiment
   r-tidyr
 )
 optdepends=(
@@ -47,8 +45,8 @@ optdepends=(
   r-survminer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('00b3e1296507cdf60879fd6d112c1e53')
-b2sums=('41b0d7169a050221f0eb1d1b95c20b2d27b8148e24697c6ad42b9cad947c128ec96203e5284cf6ba029b187b27faabe538531fc1e36481f15c63d07efaff9dbf')
+md5sums=('58b6496d5f812ef271a1cd47932b903c')
+b2sums=('abf3e4360cdd4f6d61fe71b5bb8830fbc0fa09d763cb1333c8976a855edea7ba2577b4e4ed1c67c5542d396526498f5db8d6d9a55b46504d4dfacb8092b33928')
 
 build() {
   mkdir build
