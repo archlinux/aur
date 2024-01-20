@@ -1,6 +1,6 @@
 pkgbase = swami
 	pkgdesc = A SoundFont editor
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = http://www.swamiproject.org
 	arch = x86_64
@@ -13,10 +13,7 @@ pkgbase = swami
 	depends = libinstpatch
 	depends = libgnomecanvas
 	optdepends = libpng
-	source = https://github.com/swami/swami/archive/v2.2.1.tar.gz
-	source = fix-2.2.x-for-gobject-property-system.patch
-	sha1sums = 8c5444c16f2837f1e89bf2ff717171e0d9ebb13d
-	sha1sums = d10ade9c2db31a7b771af1cd2178f2479615ddf4
+	source = swami-2.2.2.tar.gz::https://github.com/swami/swami/archive/v2.2.2.tar.gz
+	sha1sums = e7ac70719d55f66630677a2907e23389ddb5b5bf
 
 pkgname = swami
-
