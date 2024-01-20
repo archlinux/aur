@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Set a custom accent color for GTK4/GTK3 apps and GNOME Shell"
 arch=('any')
 url="https://github.com/demiskp/custom-accent-colors"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('adw-gtk3' 'gnome-shell')
 makedepends=('git')
 provides=("${pkgname%-git}")
@@ -15,12 +15,12 @@ source=('git+https://github.com/demiskp/custom-accent-colors.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/custom-accent-colors"
+  cd custom-accent-colors
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "$srcdir/custom-accent-colors"
+  cd custom-accent-colors
   install -d "$pkgdir/usr/share/gnome-shell/extensions"
   cp -r "${_uuid}" "$pkgdir/usr/share/gnome-shell/extensions/"
 
