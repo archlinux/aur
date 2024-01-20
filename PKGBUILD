@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 pkgname=brightness-controller-git
 pkgver=2.4.r10.gd154da9
@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Control Brightness of your Primary and Secondary Display in Linux"
 arch=('x86_64')
 url="https://github.com/LordAmit/Brightness"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('ddcutil' 'python-pyqt5' 'python-qtpy' 'xorg-xrandr')
 makedepends=('git' 'python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
 provides=("${pkgname%-git}")
