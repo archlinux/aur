@@ -1,6 +1,6 @@
 pkgbase = qtile-extras
 	pkgdesc = Unofficial mods for qtile. Tagged release to match stable qtile releases.
-	pkgver = 0.23.0
+	pkgver = 0.24.0
 	pkgrel = 1
 	url = https://github.com/elparaguayo/qtile-extras.git
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = qtile-extras
 	optdepends = python-dbus-next: various widgets
 	provides = qtile-extras
 	conflicts = qtile-extras
-	source = git+https://github.com/elparaguayo/qtile-extras#tag=v0.23.0?signed
+	source = git+https://github.com/elparaguayo/qtile-extras#tag=v0.24.0?signed
 	validpgpkeys = A6BAA1E17D2664ADB97B2C6F58A9AA7C86727DF7
 	md5sums = SKIP
 
