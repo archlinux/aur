@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=vkd3d-proton-mingw
-pkgver=2.11
+pkgver=2.11.1
 pkgrel=1
 pkgdesc='Fork of VKD3D. Development branches for Protons Direct3D 12 implementation'
 arch=('x86_64')
