@@ -2,14 +2,14 @@
 
 pkgname=dtkcore-git
 _pkgname=dtkcore
-pkgver=5.6.21.r1.g8c4f436
+pkgver=5.6.22.r0.g9c96f05
 pkgrel=1
 pkgdesc='DTK core modules'
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dtkcore"
 license=('LGPL3')
-depends=('dconf' 'deepin-desktop-base-git' 'python' 'gsettings-qt' 'lshw')
-makedepends=('git' 'qt5-tools' 'uchardet' 'gtest' 'dtkcommon-git' 'cmake' 'ninja' 'doxygen')
+depends=('dconf' 'deepin-desktop-base' 'python' 'gsettings-qt' 'lshw')
+makedepends=('git' 'qt5-tools' 'uchardet' 'gtest' 'dtkcommon' 'cmake' 'ninja' 'doxygen')
 conflicts=('dtkcore')
 provides=('dtkcore')
 groups=('deepin-git')
