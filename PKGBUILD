@@ -3,14 +3,14 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=elisa-git
-pkgver=20.08.1.r81.g5192facb
+pkgver=24.01.90.r14.g82824891
 pkgrel=1
-arch=(i686 x86_64)
-pkgdesc="A simple music player for KDE aiming to provide a nice experience for its users"
+arch=(x86_64)
+pkgdesc="Simple music player aiming to provide a nice experience for its users"
 url="https://community.kde.org/Elisa"
-license=(LGPL3)
-depends=(kirigami2 kdeclarative baloo)
-makedepends=(git python extra-cmake-modules kdoctools)
+license=(LGPL-3.0-or-later)
+depends=(kcolorscheme kconfig kconfigwidgets kcoreaddons kcrash kdbusaddons kfilemetadata ki18n kiconthemes kio kirigami kitemviews kxmlgui qqc2-desktop-style qt6-base qt6-declarative qt6-multimedia)
+makedepends=(extra-cmake-modules git kdoctools python)
 provides=(elisa)
 conflicts=(elisa)
 source=("git+https://invent.kde.org/multimedia/elisa.git")
@@ -21,20 +21,15 @@ pkgver() {
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../elisa \
+  cmake -B build -S elisa \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package(){
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
