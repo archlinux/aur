@@ -1,6 +1,6 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 pkgname=dtk6widget-git
-pkgver=6.0.2.r2.g53e1c44d
+pkgver=6.0.4.r0.g45fc32d7
 pkgrel=1
 sourcename=dtk6widget
 sourcetars=("$sourcename"_"$pkgver".tar.xz)
@@ -9,7 +9,7 @@ pkgdesc='DTK6 widgets library for graphical user interface development'
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dtk6widget"
 license=('LGPL3')
-depends=('dtk6core-git' 'dtk6gui-git' 'gcc-libs' 'qt6-base' 'qt6-svg' 'dtkcommon-git' 'startup-notification')
+depends=('dtk6core' 'dtk6gui' 'gcc-libs' 'qt6-base' 'qt6-svg' 'dtkcommon' 'startup-notification')
 makedepends=('git' 'qt6-tools' 'gtest' 'ninja' 'cmake' 'doxygen' 'pkg-config' 'gcc')
 provides=('dtk6widget')
 conflicts=('dtk6widget')
