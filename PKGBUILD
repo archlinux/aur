@@ -3,10 +3,10 @@
 
 pkgname=hunspell-lt
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Lithuanian dictionary for Hunspell"
 arch=('any')
-license=('BSD')
+license=('BSD-3-Clause')
 url="https://github.com/ispell-lt/ispell-lt"
 optdepends=('hunspell: Hunspell spell checking library and program')
 makedepends=('unzip')

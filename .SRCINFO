@@ -1,10 +1,10 @@
 pkgbase = hunspell-lt
 	pkgdesc = Lithuanian dictionary for Hunspell
 	pkgver = 1.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ispell-lt/ispell-lt
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = unzip
 	optdepends = hunspell: Hunspell spell checking library and program
 	source = https://github.com/ispell-lt/ispell-lt/releases/download/rel-1.3.2/myspell-lt-1.3.2.zip
