@@ -1,6 +1,6 @@
 pkgbase = libdatachannel
 	pkgdesc = C/C++ WebRTC network library featuring Data Channels, Media Transport, and WebSockets
-	pkgver = 0.19.5
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/paullouisageneau/libdatachannel
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = libdatachannel
 	depends = libjuice
 	depends = libsrtp
 	provides = libdatachannel.so
-	source = git+https://github.com/paullouisageneau/libdatachannel.git#tag=v0.19.5
+	source = git+https://github.com/paullouisageneau/libdatachannel.git#tag=v0.20.0
 	md5sums = SKIP
 
 pkgname = libdatachannel
