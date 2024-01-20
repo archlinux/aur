@@ -10,7 +10,7 @@ pkgrel=5
 pkgdesc="Ambient Noise Player. Relax or concentrate with a noise"
 arch=('any')
 url="https://costales.github.io/projects/anoise"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gst-python' 'webkit2gtk' 'anoise-media')
 makedepends=('python-build' 'python-distutils-extra' 'python-installer'
              'python-setuptools' 'python-wheel')
