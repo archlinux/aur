@@ -5,7 +5,7 @@
 
 pkgname=gtk3-patched-filechooser-icon-view
 pkgver=3.24.40
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch."
 arch=(x86_64)
@@ -73,10 +73,12 @@ source=(
   "git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
   gtk-query-immodules-3.0.hook
   gtk3-filechooser-icon-view.patch
+  6786.patch
 )
 b2sums=('SKIP'
         '8e6a3906126749c6d853f582e3802254cdbba099c6af7190ad576eff6ea5425404a72b1b36950a87e3afdac82295cfe246003172c3e0341a73bd931a36f3b407'
-        'a19fce8e87f2789d0bca3a62d2858d89e4db4a14cf76930228b01d94aefb8b58867df9c63a194fd3a2542382e3968bef2eda37e1a33847cbbe77838932d9f6c3')
+        'a19fce8e87f2789d0bca3a62d2858d89e4db4a14cf76930228b01d94aefb8b58867df9c63a194fd3a2542382e3968bef2eda37e1a33847cbbe77838932d9f6c3'
+        '137f4c03dd88c02f6171ab40e0c040d9c08aa5c2ee76260742ded966962b64ef4988ccb46a8261178ca1c88e0a5c2815e319d9f8e3af5c6b0a7d22eb3243b322')
 
 pkgver() {
   cd gtk
@@ -85,6 +87,10 @@ pkgver() {
 
 prepare() {
   cd gtk
+
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/issues/5
+  # https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/6786
+  git apply -3 ../6786.patch
 
   # apply icon-view patch
   patch -Np1 -i ../gtk3-filechooser-icon-view.patch
