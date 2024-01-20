@@ -1,28 +1,23 @@
-## Changes
+## SSH Timeouts and connection time
 
-- Add support to create customized SSH connections using arbitrary options.
-  This can be done using the SSH config format but without having to create an actual file.
-- Unify all SSH connection types to support the same functionality.
-  I.e. they all now support host key and identity file fixes plus can be used with SSH tunnels.
-- Make it possible to specify any identity to be used for SSH config connections
-- Properly detect when an active connection has unexpectedly reset during a file browser session.
-  It will now be automatically restarted when any action is performed and fails.
-- Rework connection creation menu layout to give a better overview
-- Make the connection timeout value in the settings properly apply to ssh connections as well.
-  This should help with SSH connections that take a long time to connect.
-- Include pre-rasterized images for various sizes to reduce the render load at runtime
-- Implement various performance improvements
-- Rework some UI elements to better work with keyboard navigation and screen readers
-- Add unsupported shell notice when restricted bash is detected
-- The daemon now properly reports any startup failure causes when started from the CLI via `xpipe open`
-- Regularly clean logs directory to free up older log files
-- Improve file browser handling in smaller window sizes
-- Add support for WezTerm and Windows Terminal Preview
+Over time, there have always been a few complaints about SSH connection timeout errors and slow SSH connection startup. These especially popped up in the latest release even though no obvious code was changed.
+
+As it turns out, increasing the value for `ConnectTimeout` in SSH does not actually only change the timeout after which an error is thrown, it is also used by some servers as a guideline for their response time. E.g. if you specify a 10s timeout, some servers will always take 10s to respond. This is of course not mentioned in any of the spec but is more of an implementation choice.
+
+In the latest release this caused more errors as the timeout was set higher. It should also have affected many SSH connections basically since the release of XPipe. I don't know how many people have been affected by this, it heavily depends on which ssh server and configuration your server runs. It happens for example on my proxmox instances and my AWS EC2 instances. If your connections now start up much faster than before, then you are probably affected by it.
+
+This release should fix all of these issues simply by not specifying a connect timeout at all. Great work there. If you are using `ConnectTimeout` in your SSH configs, just remove it as it makes everything slower without having the effect of a timeout.
+
+I would like to exchange a few words with whoever thought: *A newly connected SSH client specified a 10s connect timeout? That means we can sit around idle for 9 seconds. That is a great idea.*
 
 ## Fixes
 
-- Fix application windows on Linux not initializing with the correct size
-- Fix connections to pfSense systems not working (This time properly)
-- Fix NullPointerException when a Linux system did not provide any release name
-- Fix startup errors when operating system reported invalid window sizes
-- Fix various Exceptions caused by race conditions
+- Fix annoying log directory errors that occurred on first startup
+- Fix SSH connections failing on Windows systems where the username contained non-ASCII characters due to an OpenSSH client bug by working around it
+- Fix SSH connection failing when another RemoteCommand was set in a config file
+- Fix child connection validity not updating when parent is changed from invalid to valid
+- Fix some applications launched on Windows, e.g. some terminals and editors, starting in minimized mode
+- Fix SSH config importer not handling file wildcards correctly when they also contained a file extension
+- Fix actions that shut down XPipe, e.g. automatic updates and debug mode, not correctly executing if it exited too fast
+- Fix error about nonexistent logs directory on first startup
+- Fix possible NullPointers when checking whether current SSH session has died
