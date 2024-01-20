@@ -1,16 +1,17 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=dde-kwin-git
-pkgver=5.5.11.r25.gff663502d
+pkgver=5.5.11.r27.gb5c00527b
 pkgrel=1
 pkgdesc='KWin configures on DDE'
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dde-kwin"
 license=('GPL3')
-depends=('deepin-qt5integration-git' 'deepin-wallpapers-git' 'kwin')
+depends=('deepin-qt5integration' 'deepin-wallpapers' 'deepin-kwin')
 makedepends=('extra-cmake-modules' 'expac' 'ninja' 'qt5-tools')
-provides=('dde-kwin-reborn')
-conflicts=('dde-kwin-reborn')
+provides=('dde-kwin-reborn' 'dde-kwin')
+conflicts=('dde-kwin-reborn' 'dde-kwin')
+groups=('deepin-git')
 source=("$pkgname::git+https://github.com/linuxdeepin/dde-kwin/")
 sha512sums=('SKIP')
 
