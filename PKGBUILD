@@ -14,6 +14,6 @@ conflicts=("${pkgname}")
 pkgbase=fsed
 
 package() {
-  mv "fsed" "${pkgdir}/usr/bin"
+  install -Dm755 "fsed" "$pkgdir/usr/bin/fsed"
 }
 sha256sums=('9f1a81b1bfdef4566612639866157468b1fc4faffb3507deb90aeca1cd65d7c0')
