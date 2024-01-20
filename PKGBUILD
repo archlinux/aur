@@ -6,11 +6,11 @@ _pkgname=flowCore
 _pkgver=2.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=5
 pkgdesc="Basic structures for flow cytometry data"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(Artistic2.0)
+license=('Artistic-2.0')
 depends=(
   r-biobase
   r-biocgenerics

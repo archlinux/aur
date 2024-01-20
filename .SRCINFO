@@ -1,10 +1,10 @@
 pkgbase = r-flowcore
 	pkgdesc = Basic structures for flow cytometry data
 	pkgver = 2.14.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://bioconductor.org/packages/flowCore
 	arch = x86_64
-	license = Artistic2.0
+	license = Artistic-2.0
 	checkdepends = r-flowworkspacedata
 	checkdepends = r-testthat
 	makedepends = r-bh
