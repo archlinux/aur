@@ -3,6 +3,7 @@ pkgbase = dwayland-git
 	pkgver = 5.25.0.r4.g76b3f08
 	pkgrel = 1
 	arch = x86_64
+	groups = deepin-git
 	license = LGPL
 	makedepends = extra-cmake-modules
 	makedepends = doxygen

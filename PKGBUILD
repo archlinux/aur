@@ -10,6 +10,7 @@ depends=(qt5-wayland)
 makedepends=(extra-cmake-modules doxygen qt5-tools qt5-doc wayland-protocols deepin-wayland-protocols-git ninja)
 provides=('dwayland-reborn' 'dwayland')
 conflicts=('dwayland-reborn' 'dwayland')
+groups=('deepin-git')
 source=("$pkgname::git+https://github.com/linuxdeepin/dwayland.git")
 sha256sums=('SKIP')
 
