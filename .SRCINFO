@@ -1,9 +1,10 @@
 pkgbase = lswt
 	pkgdesc = List Wayland toplevels
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sr.ht/~leon_plickat/lswt
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	depends = wayland
 	conflicts = lswt-git

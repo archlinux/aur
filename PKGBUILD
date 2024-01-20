@@ -1,9 +1,9 @@
 # Maintainer: Peter Kaplan <peter@pkap.de>
 pkgname=lswt
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="List Wayland toplevels"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://sr.ht/~leon_plickat/lswt"
 license=('GPL3')
 depends=("wayland")
