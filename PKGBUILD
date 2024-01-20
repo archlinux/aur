@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Michael Lass <bevan@bi-co.net>
 pkgname=macintosh.js-bin
 pkgver=1.2.0
@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A virtual Apple Macintosh with System 8, running in Electron"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/felixrieseberg/macintosh.js"
-license=('custom')
+license=('GPL-2.0-or-later')
 depends=('gtk3' 'nss')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}" 'macintosh-js-bin')
