@@ -13,5 +13,5 @@ source=("https://github.com/C1710/blobmoji/releases/download/v${_tagname}/Blobmo
 sha256sums=('61b588efe9960443a89de442feeab863744dea9dd169cba08c66762eb4d6952b')
 
 package() {
-  install -Dm644 Blobmoji.ttf "$pkgdir"/usr/share/fonts/TTF
+  install -Dm644 Blobmoji.ttf "$pkgdir"/usr/share/fonts/TTF/Blobmoji.ttf
 }
