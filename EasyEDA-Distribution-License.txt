@@ -1,0 +1,37 @@
+Please read the following terms carefully, You are authorized to distribute The Software in GNU/Linux software repositories, if the following terms are complied with.
+For The Software, unless other terms accompany those items. If so, those terms apply.
+
+EasyEDA Software License Terms
+1.   Authorized Software
+EasyEDA authorizes you to distribute the following licensed software in GNU/Linux software repositories:
+Category: EasyEDA client, including any EasyEDA updates and supplements (“The Software”).
+
+2.   Scope of License
+2.1   Right to Use and Distribute
+(a)  The Software is licensed, not sold. This agreement only gives you some rights to use and distribute The Software. EasyEDA reserves all other rights. Unless applicable law gives you more rights despite this limitation, you may use The Software only as expressly permitted in this agreement. 
+
+2.2   Copy and Distribute the Object Code form of The Software
+You may distribute the Licensed Software to third parties in GNU/Linux software repositories in the form of object code. However, you must provide the third party with a copy of the “License” and retain the copyright, trademark, patent and disclaimer in EasyEDA client. You can repackage the EasyEDA client, including resource file path adjustment, icon sizing, and start file adjustment, under the GNU / linux operating system packaging specifications.
+
+2.3   Third Party Distribution
+You may allow your distributors or users to copy and distribute The Software in your repositories, but any other form of distribution is prohibited.
+
+3.  Distribution Requirements
+For any Distributable Code you distribute, you must
+(a)  require distributors and external end users to agree to these terms or terms that protect it at least as much as this agreement;
+(b)  indemnify, defend, and hold harmless EasyEDA from any claims, including attorneys’ fees, related to the distribution.
+
+4.  Restrictions
+4.1   You must comply with any technical limitations in The Software that only allow you to use it in certain ways. You may not: 
+-  disclose the results of any benchmark tests of The Software to any third party without EasyEDA’s prior written approval;
+-  work around any technical limitations in The Software;
+-  modify the code of The Software, except and only to the extent of Software License Terms, despite this limitation;
+-  reverse engineer, decompile or disassemble The Software, except and only to the extent that applicable law expressly permits, despite this limitation;
+-  make more copies of The Software than specified in this agreement or allowed by applicable law, despite this limitation;
+-  rent, lease or lend The Software; or
+-  use The Software for commercial purposes other than those specified in this License.  
+
+4.2   Distribution Restrictions
+You may not 
+(a)  alter any copyright, trademark or patent notice in the Distributable Code; 
+(b)  include The Software in malicious, deceptive or unlawful programs.
