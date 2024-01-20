@@ -1,0 +1,19 @@
+pkgbase = python-pipewire-git
+	pkgdesc = Python controller, player and recorder via pipewire's commands
+	pkgver = r147.147cb93
+	pkgrel = 1
+	url = https://github.com/pablodz/pipewire_python
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-flit-core
+	depends = python
+	provides = python-pipewire
+	conflicts = python-pipewire
+	source = python-pipewire::git+https://github.com/pablodz/pipewire_python
+	md5sums = SKIP
+
+pkgname = python-pipewire-git
