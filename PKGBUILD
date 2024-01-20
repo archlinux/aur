@@ -3,9 +3,9 @@
 
 pkgname='python-ssort-git'
 _pkgname="${pkgname/-git/}"
-_srcname="${_pkgname/python-}"
+_srcname="${_pkgname/python-/}"
 pkgver=0.12.1.r0.g3d87560
-pkgrel=2
+pkgrel=3
 pkgdesc='Tool for automatically sorting python statements within a module (built from latest commit)'
 arch=('any')
 url="https://github.com/bwhmather/$_srcname"
