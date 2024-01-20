@@ -7,7 +7,7 @@ pkgbase = backpack
 	arch = x86_64
 	license = MIT
 	makedepends = dub
-	makedepends = dmd
+	makedepends = ldc
 	source = backpack-1.0.1.tar.gz::https://github.com/al1-ce/backpack/archive/v1.0.1.tar.gz
 	md5sums = SKIP
 
