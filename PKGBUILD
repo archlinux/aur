@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A Plex GTK client for playing movies, TV shows and music from your Plex library."
 arch=('any')
 url="https://gitlab.gnome.org/tijder/girens"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
   'ffmpeg'
   'fribidi'
