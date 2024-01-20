@@ -2,12 +2,12 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=jumpy-git
-pkgver=0.9.4.r0.gb4e319d64
+pkgver=0.10.0.r0.g6882ca967
 pkgrel=1
 pkgdesc="Tactical 2D shooter in fishy pixels style"
 arch=('x86_64')
 url="https://github.com/fishfolks/jumpy"
-license=('MIT' 'Apache')
+license=('MIT' 'Apache-2.0')
 depends=('pkg-config' 'mesa-libgl' 'alsa-lib' 'systemd-libs' 'libudev.so')
 makedepends=('cargo' 'git' 'systemd')
 conflicts=("${pkgname%-git}")
@@ -26,7 +26,7 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {

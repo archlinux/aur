@@ -1,11 +1,11 @@
 pkgbase = jumpy-git
 	pkgdesc = Tactical 2D shooter in fishy pixels style
-	pkgver = 0.9.4.r0.gb4e319d64
+	pkgver = 0.10.0.r0.g6882ca967
 	pkgrel = 1
 	url = https://github.com/fishfolks/jumpy
 	arch = x86_64
 	license = MIT
-	license = Apache
+	license = Apache-2.0
 	makedepends = cargo
 	makedepends = git
 	makedepends = systemd
