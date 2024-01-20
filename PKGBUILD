@@ -7,7 +7,7 @@ pkgdesc="An implementation of Actor, Publish-Subscribe, and CSP models
          in one rather small C++ framework"
 arch=("x86_64")
 url="https://stiffstream.com/en/products/sobjectizer.html"
-license=("custom:BSD")
+license=("LicenseRef-Custom-BSD-3-Clause")
 depends=("gcc-libs")
 makedepends=("cmake")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Stiffstream/sobjectizer/archive/v.${pkgver}.tar.gz")
