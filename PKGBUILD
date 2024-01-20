@@ -8,6 +8,8 @@ makedepends=("jq" "curl")
 pkgdesc="Violentmonkey provides userscripts support for browsers. It works on browsers with WebExtensions support."
 arch=('any')
 license=('MIT')
+provides=("firefox-extension-violentmonkey")
+conflicts=("firefox-extension-violentmonkey")
 
 function package(){
 	curl "https://github.com/violentmonkey/violentmonkey/releases/download/v${pkgver}/violentmonkey-${pkgver}.xpi" -o "${srcdir}/ext.xpi" -L

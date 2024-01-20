@@ -7,5 +7,7 @@ pkgbase = firefox-extension-violentmonkey-bin
 	license = MIT
 	makedepends = jq
 	makedepends = curl
+	provides = firefox-extension-violentmonkey
+	conflicts = firefox-extension-violentmonkey
 
 pkgname = firefox-extension-violentmonkey-bin
