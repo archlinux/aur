@@ -1,0 +1,14 @@
+pkgbase = hypertimer-bin
+	pkgdesc = A productivity tool to defeat time blindness
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://codeberg.org/unfa/HyperTimer/
+	arch = x86_64
+	license = GPL3
+	provides = hypertimer
+	conflicts = hypertimer-git
+	options = !strip
+	source = https://codeberg.org/unfa/HyperTimer/releases/download/0.2.3/HyperTimer_0.2.3_Linux.zip
+	sha256sums = 0b317b7dbf5e90d71ada4f6d1ecd543b955c485483e0a457f1ff55d4b58137a5
+
+pkgname = hypertimer-bin
