@@ -6,9 +6,19 @@ pkgdesc="Intuitive text extraction tool (OCR) for GNOME."
 arch=('any')
 url="https://tenderowl.com/work/frog"
 license=('MIT')
-depends=('leptonica' 'libadwaita' 'libnotify' 'libportal' 'python-dateutil'
-         'python-gobject' 'python-gtts' 'python-pillow' 'python-pydbus'
-         'python-pytesseract' 'pyzbar')
+depends=(
+  'leptonica'
+  'libadwaita'
+  'libnotify'
+  'libportal'
+  'python-dateutil'
+  'python-gobject'
+  'python-gtts'
+  'python-pillow'
+  'python-pydbus'
+  'python-pytesseract'
+  'pyzbar'
+)
 makedepends=('git' 'blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
 install="$pkgname.install"
