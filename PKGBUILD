@@ -1,9 +1,9 @@
 # Maintainer: valoq <valoq@mailbox.org>
 
 pkgname=zypak
-pkgver=v2022.04
+pkgver=v2024.01.17
 pkgrel=1
-_commit='55a60d110301e8dd37b631503c3524ab7baaf7aa'
+_commit='ded79a2f8a509adc21834b95a9892073d4a91fdc'
 pkgdesc="Redirect natively sandboxed applications to use a custom sandbox environment"
 arch=('x86_64')
 url="https://github.com/refi64/zypak"
