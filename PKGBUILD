@@ -1,14 +1,14 @@
 # Maintainer: Arvid Norlander <VorpalBlade (at) users DOT noreply DOT github DOT com>
 pkgname=isolyzer
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Verify size of ISO image for consistency with file system (ISO 9660, UDF, HFS, HFS+) header fields"
 arch=('any')
 url="https://github.com/KBNLresearch/isolyzer"
-license=('Apache')
+license=('Apache-2.0')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
-checkdepends=('python-pytest')
+checkdepends=('python-lxml' 'python-pytest')
 depends=('python')
 _name=${pkgname#python-}
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")

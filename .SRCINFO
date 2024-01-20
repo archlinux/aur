@@ -1,10 +1,11 @@
 pkgbase = isolyzer
 	pkgdesc = Verify size of ISO image for consistency with file system (ISO 9660, UDF, HFS, HFS+) header fields
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KBNLresearch/isolyzer
 	arch = any
-	license = Apache
+	license = Apache-2.0
+	checkdepends = python-lxml
 	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
