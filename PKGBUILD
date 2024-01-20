@@ -6,9 +6,22 @@ pkgrel=1
 pkgdesc="Bus interface to change screen brightness and capture frames from webcam."
 arch=('x86_64' 'aarch64')
 url="https://github.com/FedeDP/Clightd"
-license=('GPL')
-depends=('ddcutil' 'libdrm' 'libiio' 'libjpeg-turbo' 'libmodule' 'libusb' 'libx11'
-         'libxext' 'linux-api-headers' 'libxrandr' 'polkit' 'systemd-libs' 'wayland')
+license=('GPL-3.0-or-later')
+depends=(
+  'ddcutil'
+  'libdrm'
+  'libiio'
+  'libjpeg-turbo'
+  'libmodule'
+  'libusb'
+  'libx11'
+  'libxext'
+  'linux-api-headers'
+  'libxrandr'
+  'polkit'
+  'systemd-libs'
+  'wayland'
+)
 makedepends=('cmake' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
