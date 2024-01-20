@@ -4,7 +4,7 @@
 # Helpful URL: http://services.sonarr.tv/v1/releases
 
 pkgname='sonarr'
-pkgver=4.0.0.748
+pkgver=4.0.1.929
 pkgrel=1
 pkgdesc='TV download automation for usenet and torrents.'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -29,9 +29,9 @@ optdepends=(
   'prowlarr: torrent and usenet indexer proxy'
 )
 
-source_x86_64=("https://download.sonarr.tv/v4/main/${pkgver}/Sonarr.main.${pkgver}.linux-x64.tar.gz")
-source_aarch64=("https://download.sonarr.tv/v4/main/${pkgver}/Sonarr.main.${pkgver}.linux-arm64.tar.gz")
-source_armv7h=("https://download.sonarr.tv/v4/main/${pkgver}/Sonarr.main.${pkgver}.linux-arm.tar.gz")
+source_x86_64=("http://github.com/Sonarr/Sonarr/releases/download/v${pkgver}/Sonarr.main.${pkgver}.linux-x64.tar.gz")
+source_aarch64=("http://github.com/Sonarr/Sonarr/releases/download/v${pkgver}/Sonarr.main.${pkgver}.linux-arm64.tar.gz")
+source_armv7h=("http://github.com/Sonarr/Sonarr/releases/download/v${pkgver}/Sonarr.main.${pkgver}.linux-arm.tar.gz")
 
 source=(
   'sonarr.service'
@@ -45,9 +45,9 @@ sha256sums=('ea1190896fb444e74ce16546ddec851575d083906964c63d4794d47186bdd587'
             'cc3c69f719fa64335f4c5b41b2588f1ec56865fb2202f5919d3668b50b8f398e'
             '7bf87304383b7d58ecab59b3686d00a8f1b6fbe4af3a86da35a887e4cebee411'
             '19112dc0051224b4de66f28077c93b6ee06e163b5194e6aecf62dedf66ff45a9')
-sha256sums_x86_64=('5c20aa00cc5a3a4f6f1a54c31efecc07a5614f1d0e0c34ee3f191fbd305e2439')
-sha256sums_aarch64=('e2343382389c3e1e0098eda363787c61795396f21b938bb20f1329390b66f872')
-sha256sums_armv7h=('849629aa9747153287aba1ea1d9ab2de5d026f054757df82a4322a32620439b5')
+sha256sums_x86_64=('f58361ca1c679e7d827ac5cb247e42b3bc81f70db76140193eb93dbc41ef7af9')
+sha256sums_aarch64=('4410b27e8ce60695ab9ac7cc71d6f506a7015e3eb808c0eb8293194f38fce594')
+sha256sums_armv7h=('8cea527a1d3414c9ee0ddcde76b3fd009c4d087b3a82d701f32e50797019cb93')
 
 package() {
   rm -rf "${srcdir}/Sonarr/Sonarr.Update"
