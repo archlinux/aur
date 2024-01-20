@@ -2,7 +2,7 @@
 
 pkgname=apk-editor-studio
 pkgver=1.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Powerful yet easy to use APK editor"
 arch=('x86_64')
 url='https://qwertycube.com/apk-editor-studio'
@@ -35,5 +35,6 @@ package() {
    cd "${pkgname}-${pkgver}"
    cmake --install ./build --prefix="${pkgdir}/usr"
    ln -s /usr/share/android-apktool/apktool.jar "${pkgdir}/usr/share/apk-editor-studio/tools/"
+   ln -s /opt/android-sdk/build-tools/*/lib/apksigner.jar "${pkgdir}/usr/share/apk-editor-studio/tools/"
 }
 # vim:set ts=2 sw=2 et:
