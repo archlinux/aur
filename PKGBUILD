@@ -10,7 +10,7 @@ url="https://virtualenvwrapper.readthedocs.io/"
 license=('MIT')
 depends=('python-virtualenv' 'python-virtualenv-clone' 'python-stevedore'
          'which')
-makedepends=('python-pbr' 'python-setuptools')
+makedepends=('python-pbr' 'python-setuptools' 'python-setuptools-scm')
 source=(https://pypi.org/packages/source/v/virtualenvwrapper/virtualenvwrapper-$pkgver.tar.gz)
 sha256sums=('d467beac5a44be00fb5cd1bcf332398c3dab5fb3bd3af7815ea86b4d6bb3d3a4')
 
