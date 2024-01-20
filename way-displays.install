@@ -39,6 +39,10 @@ post_install() {
     blue  "Bug Fixes:"
     plain "  ${magenta}#147${all_off} retry after cancellations up to 3 times by @alex-courtis in ${green}#149${all_off}"
     plain ""
+    yello "1.10.1"
+    blue  "Bug Fixes:"
+    plain "  ${magenta}#147${all_off} retry up to 25 cancellations, complete resolution incoming in ${green}#154${all_off}"
+    plain ""
 }
 
 post_upgrade() {
