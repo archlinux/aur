@@ -10,7 +10,8 @@ pkgname='cnrdrvcups-lb'
 # https://gdlp01.c-wss.com/gds/8/0100007658/30/linux-UFRII-drv-v560-m17n-08.tar.gz
 #https://gdlp01.c-wss.com/gds/8/0100007658/33/linux-UFRII-drv-v570-m17n-11.tar.gz
 # https://gdlp01.c-wss.com/gds/8/0100007658/35/linux-UFRII-drv-v570-m17n-18.tar.gz
-_pkgver='5.70';  _dl='8/0100007658/35';_suffix1='m17n';_suffix2='18'
+# https://gdlp01.c-wss.com/gds/8/0100007658/38/linux-UFRII-drv-v580-m17n-04.tar.gz
+_pkgver='5.80';  _dl='8/0100007658/38';_suffix1='m17n';_suffix2='04'
 
 pkgver="${_pkgver}.1.${_suffix2}"
 
@@ -19,7 +20,7 @@ pkgdesc='CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS
 arch=('x86_64' 'aarch64')
 # Direct links to the download reference go bad on the next version. We want something that will persist for a while.
 url='https://www.canon-europe.com/support/products/imagerunner/imagerunner-1730i.aspx'
-license=('GPL2' 'MIT' 'custom')
+license=('GPL-2.0-only' 'MIT' 'custom')
 # parts of the code are GPL or MIT licensed, some parts have a custom license
 makedepends=('jbigkit' 'gzip' 'gtk3')
 depends=('libcups' 'glibc' 'gcc-libs' 'libxml2')
@@ -38,8 +39,8 @@ conflicts=('cndrvcups-lb' 'cndrvcups-common-lb')
 options=('!emptydirs' '!strip' '!libtool')
 
 source=(  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-${_suffix1}-${_suffix2}.tar.gz")
-md5sums=('4af9fe0c968460f4f7a0ebd4b85349ac')
-sha512sums=('e48f970d26454b912cf7aa6df030d423b4562ea299cd1eff46c3fc5b37287c9f5e8ee9eae49f2ad59ee479f8e7c2bbda3d859d2d37a3274f15986ff2326ee048')
+md5sums=('f21fc68223967a5897ba52fd7942ced7')
+sha512sums=('c040a636223da374d342c915ecee8de5d3689786430ada9da6b2660f6467290cb23ededc02d1509cafbec86fbfe19a5631a68cfb0b4f2cfd8fff6c2a50ea4724')
 
 
 # Canon provides the sourcecode in a tarball within the dowload and we need to extract the code manually
@@ -206,14 +207,14 @@ package() {
     # documentation
     pushd "$srcdir/linux-UFRII-drv-v${_pkgver//\./}-m17n/Documents"
     
-    install -Dpm644 deutsch/"README-ufr2-5.7xDE.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.7xDE.html"
-    install -Dpm644 espanol/"README-ufr2-5.7xSP.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.7xSP.html"
-    install -Dpm644 francais/"README-ufr2-5.7xFR.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.7xFR.html"
-    install -Dpm644 italiano/"README-ufr2-5.7xIT.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.7xIT.html"
-    install -Dpm644 korean/"README-ufr2-5.7xKR.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.7xKR.html"
-    install -Dpm644 simplified_chinese/"README-ufr2-5.7xSC.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.7xSC.html"
-    install -Dpm644 traditional_chinese/"README-ufr2-5.7xTC.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.7xTC.html"
-    install -Dpm644 uk_eng/"README-ufr2-5.7xUK.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.7xUK.html"
+    install -Dpm644 deutsch/"README-ufr2-5.8xDE.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.8xDE.html"
+    install -Dpm644 espanol/"README-ufr2-5.8xSP.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.8xSP.html"
+    install -Dpm644 francais/"README-ufr2-5.8xFR.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.8xFR.html"
+    install -Dpm644 italiano/"README-ufr2-5.8xIT.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.8xIT.html"
+    install -Dpm644 korean/"README-ufr2-5.8xKR.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.8xKR.html"
+    install -Dpm644 simplified_chinese/"README-ufr2-5.8xSC.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.8xSC.html"
+    install -Dpm644 traditional_chinese/"README-ufr2-5.8xTC.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.8xTC.html"
+    install -Dpm644 uk_eng/"README-ufr2-5.8xUK.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.8xUK.html"
     
     install -Dpm644 deutsch/"UsersGuide-ufr2-DE.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-DE.html"
     install -Dpm644 espanol/"UsersGuide-ufr2-SP.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-SP.html"
