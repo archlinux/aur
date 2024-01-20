@@ -4,13 +4,14 @@
 # Contributor: Oscar Carlsson <oscar.carlsson (at) gmail.com>
 
 pkgname=hyphen-sv
-pkgver=20130107
+pkgver=1.11
 _pkgver=1.11
-pkgrel=4
+pkgrel=1
+epoch=1
 pkgdesc="Swedish hyphenation"
 arch=('any')
 url="https://extensions.libreoffice.org/en/extensions/show/swedish-hyphenation"
-license=('MPL' 'LGPL3')
+license=('MPL-2.0' 'LGPL-3.0-or-later')
 depends=('hyphen')
 source=("https://extensions.libreoffice.org/assets/downloads/z/hyph-sv.oxt")
 sha256sums=('3542045cc924a21d8b690a569e397b5d3108895e21eae6b09c7c0683d3867a6a')
