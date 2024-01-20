@@ -2,7 +2,7 @@
 
 pkgname="frp-panel"
 pkgver=0.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi node frp webui and for frp server and client management"
 arch=("any")
 url="https://github.com/VaalaCat/${pkgname}"
@@ -26,22 +26,20 @@ prepare() {
     cd "${pkgname}-${pkgver}"
 
     local file_setting="conf/settings.go"
-    local n1 n2
+    local n1 n2 element
     for element in App Master Server DB; do
         n1=$(grep -nP "^\s${element} struct \{" "$file_setting" | awk -F: '{print $1}')
         n2=$(grep -nP "env-prefix:\"${element^^}_\"" "$file_setting" | awk -F: '{print $1}')
         awk -v n1="${n1}" -v n2="${n2}" -F '"' '{if(NR>n1 && NR<n2){print "##"$3" "$4","$5" "$6"\n#""'${element^^}_'"$2"=\"\"\n"}}' "$file_setting" >> master.env
     done
 
-    grep -A1 -B1 -P "#APP_SECRET=|#MASTER_RPC_HOST=|#MASTER_RPC_PORT=|#MASTER_API_PORT=" master.env > client.env
-    echo "## For client nodes, need append clientSecret and clientID after start command, such as: " >> server.env
-    echo "START_PARAMS=\"-s 'b16379b1-349c-421f-83b2-78c45b5c6de2' -i 'node.c.1'\"" >> client.env
-    echo "START_PARAMS=\"\"" >> client.env
-
-    grep -A1 -B1 -P "#APP_SECRET=|#MASTER_RPC_HOST=|#MASTER_RPC_PORT=|#MASTER_API_PORT=" master.env > server.env
-    echo "## For server nodes, need append clientSecret and clientID after start command, such as: " >> server.env
-    echo "#START_PARAMS=\"-s 'b16379b1-349c-421f-83b2-78c45b5c6de2' -i default\"" >> server.env
-    echo "START_PARAMS=\"\"" >> server.env
+    for element in client server; do
+        grep -C1 -P "#APP_SECRET=|#MASTER_RPC_HOST=|#MASTER_RPC_PORT=|#MASTER_API_PORT=" master.env > "${element}.env"
+        echo "## For ${element} nodes, need append clientSecret and clientID after start command, such as: " >> "${element}.env"
+        echo "#START_PARAMS=\"-s 'b16379b1-349c-421f-83b2-78c45b5c6de2' -i '${element}'\"" >> "${element}.env"
+        echo "START_PARAMS=\"\"" >> "${element}.env"
+        sed -i '/--/d' "${element}.env"
+    done
 }
 
 build() {
