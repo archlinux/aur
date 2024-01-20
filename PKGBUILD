@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Easily manage Linux Chroot(s) and Containers"
 arch=('any')
 url="https://github.com/AtomsDevs/Atoms"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('adobe-source-code-pro-fonts' 'libadwaita' 'podman' 'proot-termux'
          'python-certifi' 'python-chardet' 'python-gobject' 'python-idna'
          'python-orjson' 'python-requests' 'python-tabulate' 'python-uproot'
