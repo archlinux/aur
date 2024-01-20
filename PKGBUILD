@@ -4,9 +4,10 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=120.0.6099.224
+pkgver=121.0.6167.71
 pkgrel=1
 _manual_clone=0
+_system_clang=0
 pkgdesc="The networking stack of Chromium put into a library"
 arch=('x86_64')
 url="https://chromium.googlesource.com/chromium/src/+/refs/heads/main/components/cronet"
@@ -19,11 +20,15 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         drop-flags-unsupported-by-clang16.patch
         abseil-remove-unused-targets.patch
         disable-logging.patch
+        fix-missing-vector.patch
+        fix-no-matching-strcat.patch
         fix-numeric_limits.patch
         fix-undeclared-isnan.patch)
-sha256sums=('850a85c8d8a01041a07dfaaea8289fa5f8294b4e375e6b77997b61434e0a2f1a'
-            'ffee1082fbe3d0c9e79dacb8405d5a0e1aa94d6745089a30b093f647354894d2'
+sha256sums=('fbf49711de4c3c4991ad2f844aa357f2cbaa119c8a091f13bff84b31fa5007c5'
+            'e9113c1ed2900b84b488e608774ce25212d3c60094abdae005d8a943df9b505e'
             '8d1cdf3ddd8ff98f302c90c13953f39cd804b3479b13b69b8ef138ac57c83556'
+            SKIP
+            SKIP
             SKIP
             SKIP
             SKIP
@@ -147,11 +152,14 @@ prepare() {
   # Upstream fixes
 
   # Drop compiler flags that need newer clang
-  patch -Np1 -i ../drop-flags-unsupported-by-clang16.patch
+  if (( _system_clang )); then
+    patch -Np1 -i ../drop-flags-unsupported-by-clang16.patch
+  fi
 
   # Fixes for building with libstdc++ instead of libc++
-  patch -Np1 -i ../chromium-patches-*/chromium-119-at-spi-variable-consumption.patch
-  patch -Np1 -i ../chromium-patches-*/chromium-120-std-nullptr_t.patch
+  if (( _system_clang )); then
+    patch -Np1 -i ../chromium-patches-*/chromium-119-clang16.patch
+  fi
 
   # Fixes the build crashing with the following error:
   # ../../components/cronet/native/engine.cc:155:8: error: use of undeclared identifier 'isnan'
@@ -166,9 +174,23 @@ prepare() {
   # Fixes `implicit instantiation of undefined template 'std::numeric_limits<unsigned long>'` error
   patch -p0 -i ../fix-numeric_limits.patch
 
+  # Fixes `no template named 'vector' in namespace 'std'`
+  patch -p0 -i ../fix-missing-vector.patch
+
+  # Fixes the following error:
+  # ../../net/third_party/quiche/src/quiche/web_transport/encapsulated/encapsulated_web_transport.cc:351:16: error: no matching function for call to 'StrCat'
+  patch -p0 -i ../fix-no-matching-strcat.patch
+
   # Make building with system zstd possible
   rm -f build/linux/unbundle/zstd.gn
   patch -Np1 -i ../chromium-patches-*/chromium-117-system-zstd.patch
+
+  # Use prebuilt rust as system rust cannot be used due to the error:
+  #   error: the option `Z` is only accepted on the nightly compiler
+  ./tools/rust/update_rust.py
+
+  # To link to rust libraries we need to compile with prebuilt clang
+  ./tools/clang/scripts/update.py
 
   # Remove bundled libraries for which we will use the system copies; this
   # *should* do what the remove_bundled_libraries.py script does, with the
@@ -187,29 +209,45 @@ prepare() {
 }
 
 build() {
-  cd chromium-$pkgver/components/cronet
+  cd chromium-$pkgver
 
-  export CC=clang
-  export CXX=clang++
-  export AR=ar
-  export NM=nm
+  if (( _system_clang )); then
+    export CC=clang
+    export CXX=clang++
+    export AR=ar
+    export NM=nm
+  else
+    local _clang_path="$PWD/third_party/llvm-build/Release+Asserts/bin"
+    export CC=$_clang_path/clang
+    export CXX=$_clang_path/clang++
+    export AR=$_clang_path/llvm-ar
+    export NM=$_clang_path/llvm-nm
+  fi
 
   local _flags=(
     'custom_toolchain="//build/toolchain/linux/unbundle:default"'
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
-    'clang_base_path="/usr"'
-    'clang_use_chrome_plugins=false'
     'is_official_build=true' # implies is_cfi=true on x86_64
     'symbol_level=0' # sufficient for backtraces on x86(_64)
-    'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
     'treat_warnings_as_errors=false'
     'disable_fieldtrial_testing_config=true'
     'use_custom_libcxx=false'
     'use_sysroot=false'
     'use_system_libffi=true'
     'enable_nacl=false'
-    'enable_rust=false'
   )
+
+  if (( _system_clang )); then
+     local _clang_version=$(
+       clang --version | grep -m1 version | sed 's/.* \([0-9]\+\).*/\1/')
+
+    _flags+=(
+      'clang_base_path="/usr"'
+      'clang_use_chrome_plugins=false'
+      "clang_version=\"$_clang_version\""
+      #'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
+    )
+  fi
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
   CFLAGS+='   -Wno-builtin-macro-redefined'
@@ -238,8 +276,8 @@ build() {
   # https://crbug.com/957519#c122
   CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
 
-  gn gen ../../out/Release --args="${_flags[*]}"
-  ninja -C ../../out/Release cronet_package
+  gn gen out/Release --args="${_flags[*]}"
+  ninja -C out/Release cronet_package
 }
 
 package() {

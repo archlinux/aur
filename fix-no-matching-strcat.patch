@@ -1,0 +1,11 @@
+--- net/third_party/quiche/src/quiche/web_transport/encapsulated/encapsulated_web_transport.cc	2024-01-21 16:43:10.448445830 +0100
++++ net/third_party/quiche/src/quiche/web_transport/encapsulated/encapsulated_web_transport.cc	2024-01-21 16:47:04.352546131 +0100
+@@ -349,7 +349,7 @@
+
+ void EncapsulatedSession::OnWriteError(absl::Status error) {
+   OnFatalError(absl::StrCat(
+-      error, " while trying to write encapsulated WebTransport data"));
++      error.ToString(), " while trying to write encapsulated WebTransport data"));
+ }
+
+ }  // namespace webtransport

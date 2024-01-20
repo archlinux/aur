@@ -1,0 +1,54 @@
+#!/bin/bash
+#
+# Produces Abseil patch from build log passed on stdin.
+
+set -e
+
+source PKGBUILD
+
+build_files=()
+src_dir="src/chromium-${pkgver:?}"
+tmp_dir="$(mktemp -d)"
+
+while IFS= read -r line; do
+	lib_path="$(grep -oP '(?<=^//).+?(?=:)' <<<"${line}" || true)"
+
+	if [ ! "${lib_path}" ]; then
+		continue
+	fi
+
+	build_file="${lib_path}/BUILD.gn"
+
+	if [ ! -f "${tmp_dir}/${build_file}" ]; then
+		build_files+=("${build_file}")
+
+		install -Dm644 "${src_dir}/${build_file}" "${tmp_dir}/${build_file}"
+	fi
+
+	IFS= read -r line
+
+	dependency="$(grep -oP '(?<=  needs ).+?(?=\()' <<<"${line}" || true)"
+
+	if [ ! "${dependency}" ]; then
+		continue
+	fi
+
+	base_name=${dependency#"//${lib_path}/"}
+
+	sed -i -e "\|^\s*\"\(//${lib_path}/\)\{0,1\}${base_name}\",\$|d" \
+		"${tmp_dir}/${build_file}"
+done
+
+cat > abseil-remove-unused-targets.patch <<EOF
+These targets are dead code and they aren't available with system Abseil. Based on:
+https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electron
+
+EOF
+
+for build_file in "${build_files[@]}"; do
+	diff -u "${src_dir}/${build_file}" "${tmp_dir}/${build_file}" \
+		| sed "s, \(${src_dir}\|${tmp_dir}\)/, ,g" \
+		>> abseil-remove-unused-targets.patch
+done
+
+rm -r "${tmp_dir}"
