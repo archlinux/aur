@@ -1,7 +1,7 @@
 pkgbase = libreoffice-extension-h2orestart
-	pkgdesc = LibreOffice extension that import hwp and hwpx file and present in OpenDocumentText format
+	pkgdesc = LibreOffice extension that import hwp and hwpx file and present in odt format
 	pkgver = 0.5.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ebandal/H2Orestart
 	arch = any
 	groups = libreoffice-extensions
