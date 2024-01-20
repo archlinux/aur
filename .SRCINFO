@@ -9,6 +9,5 @@ pkgbase = fsed
 	depends = coreutils
 	provides = fsed
 	conflicts = fsed
-	sha256sums = SKIP
 
 pkgname = fsed
