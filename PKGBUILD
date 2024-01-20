@@ -6,7 +6,7 @@ pkgrel=7
 pkgdesc="Helper for enabling better Steam integration on Linux"
 url="https://github.com/getsolus/linux-steam-integration"
 arch=('x86_64')
-license=('LGPL2.1')
+license=('LGPL-2.1-or-later')
 depends=('gtk3' 'lib32-gcc-libs' 'lib32-libvpx' 'steam')
 makedepends=('git' 'meson')
 optdepends=('steam-native-runtime: A package for installing all required deps for the native runtime.')
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
             '31fa5343372a98e294278daf913dc2d02c47f0fece482f759793372e4195efb2')
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   git submodule init
   git config submodule.src/libnica.url "$srcdir/libnica"
   git -c protocol.file.allow=always submodule update
