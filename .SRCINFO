@@ -1,10 +1,10 @@
 pkgbase = gedit-plugin-markdown_preview-git
 	pkgdesc = A gedit plugin previewing markdown (.md) documents
-	pkgver = r173.8559dd5
+	pkgver = r181.721d896
 	pkgrel = 1
 	url = https://github.com/maoschanz/gedit-plugin-markdown_preview
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = gedit
 	depends = python-markdown

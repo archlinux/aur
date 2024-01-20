@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=gedit-plugin-markdown_preview-git
-pkgver=r173.8559dd5
+pkgver=r181.721d896
 pkgrel=1
 pkgdesc="A gedit plugin previewing markdown (.md) documents"
 arch=('any')
 url="https://github.com/maoschanz/gedit-plugin-markdown_preview"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gedit' 'python-markdown' 'webkit2gtk')
 makedepends=('git')
 optdepends=('pymdown-extensions: extra Python Markdown extensions'
@@ -20,22 +20,31 @@ source=('git+https://github.com/maoschanz/gedit-plugin-markdown_preview.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+  cd "${pkgname%-git}"
+  sh translations.sh
+}
+
 prepare() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}"
   install -Dm644 org.gnome.gedit.plugins.markdown_preview.gschema.xml -t \
     "$pkgdir/usr/share/glib-2.0/schemas"
-  install -Dm644 markdown_preview.plugin -t "$pkgdir/usr/lib/gedit/plugins"
+  install -Dm644 markdown_preview.plugin -t "$pkgdir/usr/lib/gedit/plugins/"
   cp -r markdown_preview "$pkgdir/usr/lib/gedit/plugins"
-  install -Dm644 example.css -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+  install -Dm644 example.css -t "$pkgdir/usr/share/doc/${pkgname%-git}/"
 
-  rm "$pkgdir/usr/lib/gedit/plugins/markdown_preview/locale/gedit-plugin-markdown-preview.pot"
-  rm "$pkgdir"/usr/lib/gedit/plugins/markdown_preview/locale/{fr,nl}/LC_MESSAGES/*.po
+  for lang in de fr nl pt_BR; do
+    install -Dm644 "markdown_preview/locale/${lang}/LC_MESSAGES/gedit-plugin-markdown-preview.mo" -t \
+      "$pkgdir/usr/share/locale/${lang}/LC_MESSAGES/"
+  done
+
+  rm -rf "$pkgdir/usr/lib/gedit/plugins/markdown_preview/locale"
 }
