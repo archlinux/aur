@@ -1,20 +1,18 @@
 pkgbase = uresourced
 	pkgdesc = Dynamically allocate resources to the active user
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/benzea/uresourced
 	install = uresourced.install
 	arch = x86_64
-	arch = aarch64
-	arch = armv7h
-	license = GPL
+	license = LGPL-2.1-or-later
 	makedepends = meson
-	makedepends = pipewire
+	makedepends = libpipewire
+	makedepends = systemd
 	depends = glib2
 	depends = systemd-libs
-	optdepends = pipewire
 	backup = etc/uresourced.conf
-	source = https://gitlab.freedesktop.org/benzea/uresourced/-/archive/v0.5.3/uresourced-v0.5.3.tar.gz
-	sha256sums = a765c295e4fca2309178f56519c20b164b49bd2583c727fbf9d4e6f61b5212a5
+	source = https://gitlab.freedesktop.org/benzea/uresourced/-/archive/v0.5.4/uresourced-v0.5.4.tar.gz
+	sha256sums = c14b5dadde4e5a24fbf41c66b03bc759ce68cb1cf372c231841b0f52104d4f46
 
 pkgname = uresourced
