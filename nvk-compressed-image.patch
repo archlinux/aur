@@ -1,0 +1,29 @@
+From e51c4ab630aa4ff8782e80a4f367167c2df2d300 Mon Sep 17 00:00:00 2001
+From: Dave Airlie <airlied@redhat.com>
+Date: Fri, 8 Dec 2023 13:42:35 +1000
+Subject: [PATCH] nvk: allow 3d compressed textures
+
+Fixes KHR-GL45.packed_pixels.varied_rectangle.compressed_*
+---
+ src/nouveau/vulkan/nvk_image.c | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/src/nouveau/vulkan/nvk_image.c b/src/nouveau/vulkan/nvk_image.c
+index 0d3f77e61a412..91d5c898ae703 100644
+--- a/src/nouveau/vulkan/nvk_image.c
++++ b/src/nouveau/vulkan/nvk_image.c
+@@ -224,11 +224,6 @@ nvk_GetPhysicalDeviceImageFormatProperties2(
+        pImageFormatInfo->type != VK_IMAGE_TYPE_2D)
+       return VK_ERROR_FORMAT_NOT_SUPPORTED;
+    
+-
+-   if (vk_format_is_compressed(pImageFormatInfo->format) &&
+-       pImageFormatInfo->type != VK_IMAGE_TYPE_2D)
+-      return VK_ERROR_FORMAT_NOT_SUPPORTED;
+-
+    if (ycbcr_info && pImageFormatInfo->type != VK_IMAGE_TYPE_2D)
+       return VK_ERROR_FORMAT_NOT_SUPPORTED;
+ 
+-- 
+GitLab
+
