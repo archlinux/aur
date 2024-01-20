@@ -1,18 +1,18 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
-# Warning: If you are downgrading from the development branch (Wine ≥ 8.1,
+# Warning: If you are downgrading from the development branch (Wine ≥ 9.1,
 # for example), your WINEPREFIX may break and experience unusual bugs.
 # Try to make a clean WINEPREFIX, such as by doing “rm -rf ~/.wine”
 
-pkgname=wine-stable-next
-_pkgver=9.0-rc3
+pkgname=wine-stable
+_pkgver=9.0
 pkgver=${_pkgver/-/}  # Useful for wine-stable-next
 pkgrel=1
 
 source=(https://dl.winehq.org/wine/source/9.0/wine-$_pkgver.tar.xz{,.sign}
         30-win32-aliases.conf
         wine-binfmt.conf)
-b2sums=('383161672da80e41bc1004fbcaa5318fe2b2b601bcc58861608ca0735e70836572be25e2a805753c80f9f88106947eadf136b9b8252bfb1b505c82103bf1f345'
+b2sums=('cf53177201a2f7eeb35d0d8ce220f80808d979099a928ad60652d1dee92620c433cc105dffab4e9309f41766087ad1544ef49d2922538bb420d62f6dd64117a1'
         'SKIP'
         '45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b'
         'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588')
@@ -44,7 +44,7 @@ makedepends=(
   gnutls                 lib32-gnutls
   gst-plugins-base-libs  lib32-gst-plugins-base-libs
   libcups                lib32-libcups
-  libgphoto2             lib32-libgphoto2
+  libgphoto2
   libpulse               lib32-libpulse
   libxcomposite          lib32-libxcomposite
   libxinerama            lib32-libxinerama
@@ -75,7 +75,7 @@ optdepends=(
   gst-plugins-base-libs  lib32-gst-plugins-base-libs
   gst-plugins-good       lib32-gst-plugins-good
   gst-plugins-ugly       lib32-gst-plugins-ugly
-  libgphoto2             lib32-libgphoto2
+  libgphoto2
   libpulse               lib32-libpulse
   libxcomposite          lib32-libxcomposite
   libxinerama            lib32-libxinerama
