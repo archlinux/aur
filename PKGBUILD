@@ -1,7 +1,7 @@
 # Maintainer: Matija Šuklje <matija@suklje.email>
 pkgname=activity-aware-firefox
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="wrapper to make Firefox aware of Plasma Desktop activities"
 arch=(any)
 url="https://gitlab.com/hook/activity-aware-firefox"
