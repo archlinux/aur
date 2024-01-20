@@ -1,9 +1,9 @@
 # Maintainer: Jake Stanger <mail@jstanger.dev>
 
 pkgname=ironbar-git
-pkgver=v0.13.0.r0.e5281e9
+pkgver=v0.14.0.r0.82896d9
 pkgrel=1
-makedepends=('rust' 'cargo')
+makedepends=('rust' 'cargo' 'git')
 depends=('gtk3' 'gtk-layer-shell')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Customisable wlroots/sway bar written in rust"
