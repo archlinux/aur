@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Improve focus and increase your productivity by listening to different sounds."
 arch=('any')
 url="https://apps.gnome.org/Blanket"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gst-plugins-bad-libs' 'gst-plugins-base' 'gst-plugins-good' 'gst-python'
          'libadwaita' 'python-gobject')
 makedepends=('blueprint-compiler' 'meson' 'git')
