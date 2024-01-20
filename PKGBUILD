@@ -4,12 +4,12 @@
 # Contributor: Chocobo1 <chocobo1@archlinux.net>
 
 pkgname=mingw-w64-rav1e
-pkgver=0.6.6
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='An AV1 encoder focused on speed and safety (mingw-w64)'
 arch=(any)
 url=https://github.com/xiph/rav1e/
-license=(BSD)
+license=(custom:BSD)
 depends=(
   mingw-w64-crt
 )
@@ -22,13 +22,13 @@ makedepends=(
   mingw-w64-rust
   mingw-w64-wine
 )
-_tag=7c9db10494c2fffa98a572027d756e55bf754036
+_tag=a8d05d0c43826a465b60dbadd0ab7f1327d75371
 source=(
   git+https://github.com/xiph/rav1e.git#tag=${_tag}
   Cargo-rav1e-${pkgver}.lock::https://github.com/xiph/rav1e/releases/download/v${pkgver}/Cargo.lock
 )
 b2sums=('SKIP'
-        'c7d1f548e9cd194c98685827b178f923d7cb1b4e4c20c4cab4779bc1e56a59b84655731cd0e8e60dfb9d3a3dad6f9bd25aee903601f7a2c5214285584b1a3977')
+        '7cbeaff87ca4e9db469be06cbead0c5b05af2064d6d5f12f97f5999992017b66a24bc19ed4eaf69f7d6579732f843f3e93f30d9581b8c8344728d3e3773a0f79')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgver() {
