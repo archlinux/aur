@@ -1,7 +1,7 @@
 pkgbase = activity-aware-firefox
 	pkgdesc = wrapper to make Firefox aware of Plasma Desktop activities
-	pkgver = 0.4.1
-	pkgrel = 2
+	pkgver = 0.4.2
+	pkgrel = 1
 	url = https://gitlab.com/hook/activity-aware-firefox
 	arch = any
 	license = CC0-1.0
@@ -9,7 +9,7 @@ pkgbase = activity-aware-firefox
 	depends = kdialog
 	depends = gawk
 	conflicts = activityfox-git
-	source = https://gitlab.com/hook/activity-aware-firefox/-/archive/v0.4.1/activity-aware-firefox-v0.4.1.tar.gz
-	sha256sums = f3e75ce957565b614c1f642bf4c7f413f1931de83fb6b26f7f39e764206e9c2d
+	source = https://gitlab.com/hook/activity-aware-firefox/-/archive/v0.4.2/activity-aware-firefox-v0.4.2.tar.gz
+	sha256sums = ccc7e72d8bcf0325b20c0e2b8827abe16aedc0483b1a1580891814da2af3d90e
 
 pkgname = activity-aware-firefox
