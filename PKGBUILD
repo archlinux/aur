@@ -5,7 +5,7 @@ pkgrel=4
 pkgdesc="Utility library for GNOME apps."
 arch=('x86_64')
 url="https://gitlab.gnome.org/raggesilver/marble"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gtk4')
 makedepends=('git' 'gobject-introspection' 'meson' 'vala')
 provides=('libpqmarble.so=2')
