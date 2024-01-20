@@ -1,11 +1,11 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gabtag
 pkgver=13
 pkgrel=1
 pkgdesc="A Gtk Linux application to handle audio tags"
 arch=('any')
 url="https://github.com/lachhebo/GabTag"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('libadwaita' 'python-cairo' 'python-gobject' 'python-musicbrainzngs'
          'python-mutagen' 'python-pillow')
 makedepends=('meson')
