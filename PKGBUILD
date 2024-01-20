@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=('palenight-gtk-theme'
          'amarena-gtk-theme'
          'gruvterial-gtk-theme'
@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc="GTK themes built with the GTK Theme Framework"
 arch=('any')
 url="https://github.com/jaxwilko/gtk-theme-framework"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gtk3')
 makedepends=('git')
 optdepends=('gtk-engine-murrine: GTK2 theme support'
