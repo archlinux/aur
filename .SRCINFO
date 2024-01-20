@@ -1,6 +1,6 @@
 pkgbase = zypak
 	pkgdesc = Redirect natively sandboxed applications to use a custom sandbox environment
-	pkgver = v2022.04
+	pkgver = v2024.01.17
 	pkgrel = 1
 	url = https://github.com/refi64/zypak
 	arch = x86_64
