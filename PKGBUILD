@@ -1,7 +1,7 @@
 # Maintainer: Evine Deng <evinedeng@hotmail.com>
 
 pkgname="frp-panel"
-pkgver=0.0.10
+pkgver=0.0.11
 pkgrel=1
 pkgdesc="A multi node frp webui and for frp server and client management"
 arch=("any")
@@ -17,16 +17,32 @@ makedepends=("npm" "go")
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.tmpfiles"
-        "${pkgname}@.service"
-        "client.env"
-        "master.env"
-        "server.env")
-sha256sums=('2aa83c1d3236cb891d10aa551e223568b116924a8102e3c17946bd2b6daeaaa6'
+        "${pkgname}@.service")
+sha256sums=('33bca8c3134299c59863f9a8901e7fffdad9abe89f10e3d394f1f716d79879b3'
             'd909eac5b51218404824363ce35886fcd2a8065773ffecde8f64855a107369a0'
-            'a82a0d6fb9498a283137a90862a4bf65486368cfe88c25f7b901d4d914da7ca4'
-            'f2fc53b07bf23f1f4a75c6df2c4823129ed25540f9bee6984241bfa682613667'
-            '2badfc944453e83520f4f65a74dd013127c50fcf9b47d32dd924fc0924604551'
-            '51d40f4cf57cddea09fd888790dc16682057fc5583235e55134673bcc60915f8')
+            'a82a0d6fb9498a283137a90862a4bf65486368cfe88c25f7b901d4d914da7ca4')
+
+prepare() {
+    cd "${pkgname}-${pkgver}"
+
+    local file_setting="conf/settings.go"
+    local n1 n2
+    for element in App Master Server DB; do
+        n1=$(grep -nP "^\s${element} struct \{" "$file_setting" | awk -F: '{print $1}')
+        n2=$(grep -nP "env-prefix:\"${element^^}_\"" "$file_setting" | awk -F: '{print $1}')
+        awk -v n1="${n1}" -v n2="${n2}" -F '"' '{if(NR>n1 && NR<n2){print "##"$3" "$4","$5" "$6"\n#""'${element^^}_'"$2"=\"\"\n"}}' "$file_setting" >> master.env
+    done
+
+    grep -A1 -B1 -P "#APP_SECRET=|#MASTER_RPC_HOST=|#MASTER_RPC_PORT=|#MASTER_API_PORT=" master.env > client.env
+    echo "## For client nodes, need append clientSecret and clientID after start command, such as: " >> server.env
+    echo "START_PARAMS=\"-s 'b16379b1-349c-421f-83b2-78c45b5c6de2' -i 'node.c.1'\"" >> client.env
+    echo "START_PARAMS=\"\"" >> client.env
+
+    grep -A1 -B1 -P "#APP_SECRET=|#MASTER_RPC_HOST=|#MASTER_RPC_PORT=|#MASTER_API_PORT=" master.env > server.env
+    echo "## For server nodes, need append clientSecret and clientID after start command, such as: " >> server.env
+    echo "#START_PARAMS=\"-s 'b16379b1-349c-421f-83b2-78c45b5c6de2' -i default\"" >> server.env
+    echo "START_PARAMS=\"\"" >> server.env
+}
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -59,5 +75,5 @@ package() {
 
     install -Dm644 "../${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
     install -Dm644 "../${pkgname}@.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}@.service"
-    install -Dm644 -t "${pkgdir}/etc/${pkgname}" ../*.env
+    install -Dm644 -t "${pkgdir}/etc/${pkgname}" {master,server,client}.env
 }
