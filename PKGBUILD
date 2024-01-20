@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="A QR code scanner desktop app for Linux"
 arch=('any')
 url="https://github.com/hongquan/CoBang"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
   'gst-plugin-gtk'
   'gst-plugins-good'
