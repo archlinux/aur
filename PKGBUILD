@@ -7,6 +7,7 @@ arch=(x86_64)
 url="https://github.com/dblock/${pkgname}"
 license=(MIT)
 depends=(ruby)
+optdepends=('ruby-i18n: for translation support')
 source=(https://rubygems.org/downloads/${pkgname}-${pkgver}.gem)
 noextract=(${pkgname}-${pkgver}.gem)
 sha256sums=('e767ef5ae8debc1d2d4a6aefee9db64f0eefbf0633f5e18b5c5816459282c6e7')
