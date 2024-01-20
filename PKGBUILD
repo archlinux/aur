@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Fuzzy application search results for Gnome Search"
 arch=('any')
 url="https://gitlab.com/Czarlie/gnome-fuzzy-app-search"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gnome-shell')
 makedepends=('git')
 provides=("${pkgname%-git}")
@@ -16,16 +16,16 @@ source=('git+https://gitlab.com/Czarlie/gnome-fuzzy-app-search.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/gnome-fuzzy-app-search"
+  cd gnome-fuzzy-app-search
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/gnome-fuzzy-app-search"
+  cd gnome-fuzzy-app-search
   make build
 }
 
 package() {
-  cd "$srcdir/gnome-fuzzy-app-search"
+  cd gnome-fuzzy-app-search
   make INSTALL_PATH="$pkgdir/usr/share/gnome-shell/extensions" install
 }
