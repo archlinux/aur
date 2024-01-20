@@ -1,7 +1,7 @@
 pkgbase = xx-net
 	pkgdesc = XX-Net, a web proxy tool.
 	pkgver = 5.9.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/XX-net/XX-Net
 	install = xx-net.install
 	arch = any
