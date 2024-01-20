@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=('atoms' 'atoms-cli' 'atoms-core' 'servicectl-atoms')
 pkgbase=atoms
 pkgver=1.1.2
