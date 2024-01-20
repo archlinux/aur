@@ -23,6 +23,7 @@ sha256sums=('f3e75ce957565b614c1f642bf4c7f413f1931de83fb6b26f7f39e764206e9c2d')
 
 package() {
   cd "$pkgname-v$pkgver"
-  install --directory ${pkgdir}/usr/bin/ activityfirefox
-  install --directory ${pkgdir}/usr/share/applications/ activityfirefox.desktop
+  pwd
+  install -D --target-directory ${pkgdir}/usr/bin activityfirefox
+  install -D --target-directory ${pkgdir}/usr/share/applications activityfirefox.desktop
 }
