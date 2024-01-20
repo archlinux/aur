@@ -4,7 +4,7 @@
 pkgname=easyeda-bin
 _pkgname=${pkgname%-bin}
 pkgver=6.5.39
-pkgrel=2
+pkgrel=3
 pkgdesc="A Simple and Powerful Electronic Circuit Design Tool"
 arch=('x86_64')
 url="https://easyeda.com/"
@@ -14,9 +14,9 @@ makedepends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}.zip::https://image.easyeda.com/files/${_pkgname}-linux-x64-${pkgver}.zip"
-        "LICENSE")
+        "LICENSE-$pkgver.html::https://easyeda.com/page/legal")
 sha256sums=('26e0b64ee12fc8504a4ae604105f297cbdb2f07f879c7445acb227b515db1437'
-            'fdf0f0fe693cb085c92f20e9cf931b9d4b0bafbb895678a6993a41e23a43fab1')
+            'SKIP')
 
 package() {
     install -dm755 ${pkgdir}/opt/${_pkgname}
@@ -46,5 +46,5 @@ package() {
     chmod 755 ${pkgdir}/opt/${_pkgname}/${_pkgname}
 
     # LICENSE
-    install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    install -Dm644 LICENSE-$pkgver.html ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html
 }
