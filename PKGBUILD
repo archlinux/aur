@@ -2,7 +2,7 @@
 
 _pkgname=hiddify-next
 pkgname=${_pkgname}-bin
-pkgver=0.14.1.dev
+pkgver=0.14.11
 pkgrel=1
 pkgdesc="A multi-platform proxy app. Auto, SSH, VLESS, Vmess, Trojan, Reality, Sing-Box, Clash, Xray, Shadowsocks"
 arch=(x86_64)
@@ -19,7 +19,7 @@ source=(
     "$_pkgname-$pkgver.zip::https://github.com/hiddify/hiddify-next/releases/download/v${pkgver}/hiddify-linux-x64.zip"
 )
 sha256sums=(
-    "353a82bc1bcd6e4d6a96661dc66a8d172d44909399dadf9059502a131e726b70"
+    "b5553f9c61875f90bb4a3888117ef0f3084da225659a89aa3a7e2a41fedf6cea"
 )
 _install_path="/opt/$_pkgname"
 
