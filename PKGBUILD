@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Modern and clean Gtk theme for linux"
 arch=('any')
 url="https://github.com/vinceliuice/Colloid-gtk-theme"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 makedepends=('git' 'sassc')
 optdepends=('gtk-engine-murrine: GTK2 theme support'
             'colloid-icon-theme: Matching icon theme'
@@ -18,12 +18,12 @@ source=('git+https://github.com/vinceliuice/Colloid-gtk-theme.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/Colloid-gtk-theme"
+  cd Colloid-gtk-theme
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "$srcdir/Colloid-gtk-theme"
+  cd Colloid-gtk-theme
   install -d "$pkgdir/usr/share/themes"
   ./install.sh -t all -d "$pkgdir/usr/share/themes"
   ./install.sh -t all -s compact --tweaks normal -d "$pkgdir/usr/share/themes"
