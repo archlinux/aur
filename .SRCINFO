@@ -1,14 +1,13 @@
 pkgbase = infernal
 	pkgdesc = Search DNA sequence databases for RNA structure and sequence similarities using covariance models (CMs)
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = http://eddylab.org/infernal/
 	arch = x86_64
 	arch = i686
 	license = GPL3
 	depends = glibc
-	source = http://eddylab.org/infernal/infernal-1.1.4.tar.gz
-	md5sums = 225e811cc66637e7fe220ed68c2b2dd1
+	source = http://eddylab.org/infernal/infernal-1.1.5.tar.gz
+	md5sums = 780bab55b34cfa6f090f4a4badfd1ed8
 
 pkgname = infernal
-
