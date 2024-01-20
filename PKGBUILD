@@ -1,11 +1,11 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=googledot-cursor-theme
 pkgver=2.0.0
 pkgrel=1
 pkgdesc="Cursor theme inspired on Google"
 arch=('any')
 url="https://github.com/ful1e5/Google_Cursor"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 makedepends=('python-clickgen>2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
