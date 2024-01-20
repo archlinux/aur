@@ -1,0 +1,20 @@
+pkgbase = lib32-spirv-llvm-translator-git
+	pkgdesc = Tool and a library for bi-directional translation between SPIR-V and LLVM IR (32-bit)
+	pkgver = r1957.10b0aab
+	pkgrel = 1
+	url = https://github.com/KhronosGroup/SPIRV-LLVM-Translator
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	makedepends = llvm
+	makedepends = lib32-llvm
+	makedepends = spirv-headers
+	depends = lib32-llvm-libs
+	depends = lib32-spirv-tools
+	provides = lib32-spirv-llvm-translator
+	conflicts = lib32-spirv-llvm-translator
+	source = git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git
+	sha256sums = SKIP
+
+pkgname = lib32-spirv-llvm-translator-git
