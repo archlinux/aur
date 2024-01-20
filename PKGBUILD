@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname="linux-xanmod-bin"
-pkgver='6.6.11'
+pkgver='6.6.11'        # example for rt branch: pkgver='6.1.73.rt22'
 branch='main'
 pkgrel="1"
 
@@ -21,6 +21,9 @@ check_psabi() {
 psabi="$(check_psabi)"
 [ "$branch" != 'main' ] && \
 pkgname="${pkgname/bin/${branch}-bin}"
+[ "$branch" == 'rt' ] && \
+pkgverdl="${pkgver/.rt/-rt}"||\
+pkgverdl="${pkgver}"
 pkgdesc='The Linux kernel, modules and headers with Xanmod patches - Prebuilt version'
 url="http://www.xanmod.org/"
 arch=('x86_64')
@@ -35,7 +38,7 @@ provides=('VIRTUALBOX-GUEST-MODULES'
           'WIREGUARD-MODULE'
           'KSMBD-MODULE'
           'NTFS3-MODULE')
-_url="https://sourceforge.net/projects/xanmod/files/releases/$branch/${pkgver}-xanmod1/${pkgver}-${psabi}-xanmod1"
+_url="https://sourceforge.net/projects/xanmod/files/releases/$branch/${pkgverdl}-xanmod1/${pkgverdl}-${psabi}-xanmod1"
 _url_info="$(curl -sL "$_url"|grep "net.sf.files"|sed 's|net.sf.files = ||g;s|;$||'|jq -r '.[].download_url'|grep -v '\-dbg_')"
 _url_image="$(echo "$_url_info"|grep -o "https:.*/linux-image.*deb")"
 _url_headers="$(echo "$_url_info"|grep -o "https:.*/linux-headers.*deb")"
@@ -54,7 +57,7 @@ prepare() {
 }
 
 package() {
-    local kernver="${pkgver}-$psabi-xanmod1"
+    local kernver="${pkgverdl}-$psabi-xanmod1"
     local modulesdir="$pkgdir/usr/lib/modules/${kernver}"
     mkdir -p "${modulesdir}"
     msg2 "Installing modules..."
