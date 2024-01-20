@@ -1,0 +1,81 @@
+diff --git a/src/main/PSFFile.h b/src/main/PSFFile.h
+index 1028780d..0e14d876 100644
+--- a/src/main/PSFFile.h
++++ b/src/main/PSFFile.h
+@@ -36,7 +36,7 @@ class PSFFile {
+   DataSeg *reservedData;
+   uint32_t exeCRC;
+   bool decompressed;
+-  wchar_t *errorstr;
++  const wchar_t *errorstr;
+   uint8_t *stripBuf;
+   size_t stripBufSize;
+ 
+diff --git a/src/main/ScaleConversion.cpp b/src/main/ScaleConversion.cpp
+index 1bf53204..6e1b8034 100644
+--- a/src/main/ScaleConversion.cpp
++++ b/src/main/ScaleConversion.cpp
+@@ -3,7 +3,7 @@
+ #include "common.h"
+ #include "ScaleConversion.h"
+ 
+-#define M_PI_2      1.57079632679489661923132169163975144   /* pi/2           */
++#define VGM_PI_2 1.57079632679489661923132169163975144  /* pi/2 */
+ 
+ // A lot of games use a simple linear amplitude decay/release for their envelope.
+ // In other words, the envelope level drops at a constant rate (say from
+@@ -171,7 +171,7 @@ uint8_t ConvertLinearPercentPanValToStdMidiVal(double percent, double *ptrVolume
+   }
+   else {
+     double percentArcPan = atan2(percent, 1.0 - percent);
+-    midiPan = ConvertPercentPanValToStdMidiVal(percentArcPan / M_PI_2);
++    midiPan = ConvertPercentPanValToStdMidiVal(percentArcPan / VGM_PI_2);
+ 
+     double percentLeft;
+     double percentRight;
+@@ -215,8 +215,8 @@ void ConvertStdMidiPanToVolumeBalance(uint8_t midiPan, double &percentLeft, doub
+   }
+ 
+   double percentPan = (midiPan - 1) / 126.0;
+-  percentLeft = cos(M_PI_2 * percentPan);
+-  percentRight = sin(M_PI_2 * percentPan);
++  percentLeft = cos(VGM_PI_2 * percentPan);
++  percentRight = sin(VGM_PI_2 * percentPan);
+   return;
+ }
+ 
+diff --git a/src/main/formats/CapcomSnesSeq.cpp b/src/main/formats/CapcomSnesSeq.cpp
+index 330536b2..0778133c 100644
+--- a/src/main/formats/CapcomSnesSeq.cpp
++++ b/src/main/formats/CapcomSnesSeq.cpp
+@@ -506,7 +506,7 @@ bool CapcomSnesTrack::ReadEvent(void) {
+         curOffset += 2;
+ 
+         uint8_t repeatSlot;
+-        wchar_t *repeatEventName;
++        const wchar_t *repeatEventName;
+         switch (eventType) {
+ 			case EVENT_REPEAT_UNTIL_1: repeatSlot = 0; repeatEventName = L"Repeat Until #1"; break;
+ 			case EVENT_REPEAT_UNTIL_2: repeatSlot = 1; repeatEventName = L"Repeat Until #2"; break;
+@@ -559,7 +559,7 @@ bool CapcomSnesTrack::ReadEvent(void) {
+         curOffset += 2;
+ 
+         uint8_t repeatSlot;
+-        wchar_t *repeatEventName;
++        const wchar_t *repeatEventName;
+         switch (eventType) {
+ 			case EVENT_REPEAT_BREAK_1: repeatSlot = 0; repeatEventName = L"Repeat Break #1"; break;
+ 			case EVENT_REPEAT_BREAK_2: repeatSlot = 1; repeatEventName = L"Repeat Break #2"; break;
+diff --git a/src/main/formats/MoriSnesSeq.cpp b/src/main/formats/MoriSnesSeq.cpp
+index 865f4c77..109e4f22 100644
+--- a/src/main/formats/MoriSnesSeq.cpp
++++ b/src/main/formats/MoriSnesSeq.cpp
+@@ -300,7 +300,7 @@ bool MoriSnesTrack::ReadEvent(void) {
+     case EVENT_NOTE_WITH_PARAM: {
+       uint8_t keyOffset = statusByte & 0x1f;
+ 
+-      wchar_t *eventName;
++      const wchar_t *eventName;
+       if (eventType == EVENT_NOTE_WITH_PARAM) {
+         uint8_t noteParam = GetByte(curOffset++);
+         if (noteParam <= 0x7f) {

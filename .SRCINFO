@@ -1,10 +1,10 @@
 pkgbase = vgmtrans-git
 	pkgdesc = Converter for sequenced videogame music
-	pkgver = r1162.01a2915
+	pkgver = r1230.f638d0f
 	pkgrel = 1
 	url = https://github.com/vgmtrans/vgmtrans
 	arch = x86_64
-	license = ZLIB
+	license = Zlib
 	makedepends = cmake
 	makedepends = git
 	makedepends = qt6-tools

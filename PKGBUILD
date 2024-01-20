@@ -3,12 +3,12 @@
 
 _pkgname=vgmtrans
 pkgname=${_pkgname}-git
-pkgver=r1162.01a2915
+pkgver=r1230.f638d0f
 pkgrel=1
 pkgdesc="Converter for sequenced videogame music"
 arch=("x86_64")
 url="https://github.com/vgmtrans/vgmtrans"
-license=("ZLIB")
+license=("Zlib")
 depends=("hicolor-icon-theme" "minizip" "qt6-base" "qt6-svg")
 makedepends=("cmake" "git" "qt6-tools")
 source=("${_pkgname}::git+${url}")
