@@ -20,7 +20,7 @@
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.6.12
+pkgver=6.6.13
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
@@ -50,7 +50,7 @@ source+=(
   config  # the main kernel config file
 )
 sha256sums+=(
-  '1fd7ec8c3d9c4e4b3a41d11e2c6d151e5fbf875dd08b3577f73afd6ee6674605'
+  '88b89e7dd41ead4e3ab1e411c8bb8d592575acf815cf1df3c0dc57e2e882c0bc'
   'SKIP'
   '18fcff9fa723cef2feb654dae966a149f0ef0fea9dda1780d3de0ff07d4f8ab7'
 )
