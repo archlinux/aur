@@ -6,11 +6,11 @@
 _pkgname=meson
 pkgname=meson-rust
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="High productivity build system (version with improved Rust support)"
 url="https://mesonbuild.com/"
 arch=(any)
-license=(Apache)
+license=(Apache-2.0)
 depends=(
   ninja
   python-tqdm
