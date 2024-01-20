@@ -3,10 +3,10 @@
 # Package info
 _pkgname=firefox
 pkgname=$_pkgname-opensuse-bin
-pkgver=121.0
+pkgver=121.0.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with openSUSE patches"
-arch=(x86_64)
+arch=(x86_64 pentium4 i686 aarch64)
 url="https://en.opensuse.org/Firefox"
 license=(
   GPL
@@ -37,10 +37,28 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 
 # RPM
-_opensuse="Tumbleweed"
-_rpmver="$pkgver-2.1"
-source=("https://download.opensuse.org/repositories/mozilla/openSUSE_$_opensuse/x86_64/MozillaFirefox-$_rpmver.x86_64.rpm")
-sha256sums=("da75800470b179b6b081341f486d2e91589a953a1f8d7f29aa128437c5fa46d0")
+case $CARCH in
+  pentium4) _arch=i686 ;;
+  *) _arch=$CARCH ;;
+esac
+case $_arch in
+  x86_64 | i686) # Use mozilla repo
+    _opensuse="Tumbleweed"
+    _rpmrel="1.3"
+    source=("https://download.opensuse.org/repositories/mozilla/openSUSE_$_opensuse/$_arch/MozillaFirefox-$pkgver-$_rpmrel.$_arch.rpm")
+    ;;
+  *) # Use official repo
+    _opensuse="tumbleweed"
+    _rpmrel="1.1"
+    source=("https://download.opensuse.org/ports/$_arch/$_opensuse/repo/oss/$_arch/MozillaFirefox-$pkgver-$_rpmrel.$_arch.rpm")
+    ;;
+esac
+case $_arch in
+  x86_64) sha256sums=("65837e4a79e88dcff4479b5dabab52c2f2303bacbaadcb8fec609ff221c48e7c") ;;
+  i686) sha256sums=("d3444fd683a6c7ea663c9f62f255929c9fcfac6ac177b2ce562c7285c55c346f") ;;
+  aarch64) sha256sums=("a7b9bd5ccba5f66058b987c11c07d3c65cf7667a4b5a5760c5187fe2678d68d9") ;;
+  *) sha256sums=(SKIP) ;;
+esac
 
 # Build package
 package() {
