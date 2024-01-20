@@ -2,8 +2,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=proxmark3-iceman-git
-pkgver=4.17768.r170.gf48d495
-pkgrel=0
+pkgver=4.17768.r178.g3f1e0f4
+pkgrel=1
 pkgdesc='RRG / Iceman repo - Proxmark3 RDV4.0 and other Proxmark3 platforms.'
 arch=('x86_64')
 url='https://github.com/RfidResearchGroup/proxmark3'
@@ -38,7 +38,7 @@ replaces=($pkgname'-generic' $pkgname'-rdv4')
 source=("$pkgname::git+${url}.git"
   "${pkgname}.install")
 sha512sums=('SKIP'
-            'ae447b36cdaf7e7985a4e193d2dc1b7458e04c33503ee417d6f46aa816956ab8b1a4e301d296eb8656bfbea1234da94593297e67c4762e2035faabfcc569a14c')
+            'dd9b4a37918fcd2a646090b1805de159ec05fec337f14aac09ff476c164551d94c16085bae19be8a1f8f3eb66c0470f98b728f3bf1b48a7ab5b94f99e753afe7')
 install=${pkgname}.install
 
 pkgver() {
