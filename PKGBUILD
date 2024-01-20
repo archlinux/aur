@@ -1,11 +1,11 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=drill-search
 pkgver=571+100+g04683dbf
 pkgrel=3
 pkgdesc="Search files without indexing, but clever crawling"
 arch=('x86_64')
 url="https://drill.software"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('bash' 'gtk3' 'xdg-utils')
 makedepends=('dmd' 'dub' 'git')
 _commit=04683dbf0d40510543db748c0a3c1a88524c5f8d
