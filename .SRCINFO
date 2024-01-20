@@ -1,15 +1,17 @@
 pkgbase = volta
-	pkgdesc = JavaScript Launcher
-	pkgver = 1.0.4
+	pkgdesc = The Hassle-Free JavaScript Tool Manager
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://volta.sh/
 	arch = x86_64
-	license = BSD
-	depends = openssl
-	source = volta-1.0.4.tar.gz::https://github.com/volta-cli/volta/releases/download/v1.0.4/volta-1.0.4-linux-openssl-1.1.tar.gz
-	source = https://raw.githubusercontent.com/volta-cli/volta/v1.0.4/LICENSE
-	md5sums = e3c312bd6e2943eb398a5744062dad80
-	md5sums = a8a025d12adc6bd305a7402166baefef
+	license = BSD-2-Clause
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	provides = volta
+	conflicts = volta-bin
+	options = !lto
+	source = volta-1.1.1::https://github.com/volta-cli/volta/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = f2289274538124984bebb09b0968c2821368d8a80d60b9615e4f999f6751366d
 
 pkgname = volta
-
