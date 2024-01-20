@@ -1,16 +1,14 @@
 pkgbase = faudio
 	pkgdesc = XAudio2 reimplementation
-	pkgver = 23.12
+	pkgver = 24.01
 	pkgrel = 1
 	url = https://github.com/FNA-XNA/FAudio/
 	arch = x86_64
 	license = custom:zlib
-	makedepends = git
 	makedepends = cmake
-	makedepends = ninja
 	depends = sdl2
 	depends = gst-libav
-	source = git+https://github.com/FNA-XNA/FAudio.git#commit=758c90af12c2869ba1e93736faa5e909fcd8a44c
-	sha512sums = SKIP
+	source = https://github.com/FNA-XNA/FAudio/archive/24.01/faudio-24.01.tar.gz
+	sha512sums = e54d83716789252b8086ef7cd4a5501eadc9819f434b5dad267621db72606e1fd6302ffcb7cfadbcced10e4d8c817aa1dd46ea14755eca0ec4c0dce67fe32bd2
 
 pkgname = faudio
