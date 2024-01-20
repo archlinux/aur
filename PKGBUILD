@@ -6,18 +6,11 @@
 # https://gitlab.winehq.org/wine/wine-staging
 # https://github.com/wine-staging/wine-staging
 
-## options
-: ${_build_staging:=true}
-: ${_build_wow64:=true}
-
-[[ "${_build_staging::1}" == "t" ]] && _pkgtype+="-staging"
-[[ "${_build_wow64::1}" == "t" ]] && _pkgtype+="-wow64"
-
 ## basic info
-_pkgname=wine
-pkgname="${_pkgname}${_pkgtype:-}"
+pkgname="wine-staging-wow64"
 pkgver=9.0
-pkgrel=2
+_pkgver="${pkgver/rc/-rc}"
+pkgrel=3
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://www.winehq.org"
 license=(LGPL)
@@ -49,6 +42,9 @@ depends=(
   wayland
 )
 makedepends=(
+  # staging
+  git
+
   libcups               #lib32-libcups
   libxxf86vm            #lib32-libxxf86vm
   mesa                  #lib32-mesa
@@ -68,7 +64,11 @@ optdepends=(
   dosbox
 )
 
-provides=("wine=$pkgver")
+provides=(
+  "wine=$pkgver"
+  "wine-staging=$pkgver"
+  "wine-wow64=$pkgver"
+)
 conflicts=("wine")
 
 install="wine.install"
@@ -76,54 +76,37 @@ backup=("usr/lib/binfmt.d/wine.conf")
 
 options=(staticlibs !lto)
 
-_pkgver="${pkgver/rc/-rc}"
-_pkgsrc="$_pkgname-$_pkgver"
-_pkgext="tar.xz"
 source=(
-  "https://dl.winehq.org/wine/source/${pkgver::1}.0/$_pkgsrc.$_pkgext"
+  "https://dl.winehq.org/wine/source/${pkgver::1}.0/wine-$_pkgver.tar.xz"
   "30-win32-aliases.conf"
   "wine-binfmt.conf"
+  "wine-staging-$pkgver.tar.gz"::"https://github.com/wine-staging/wine-staging/archive/refs/tags/v$_pkgver.tar.gz"
 )
 b2sums=(
   'cf53177201a2f7eeb35d0d8ce220f80808d979099a928ad60652d1dee92620c433cc105dffab4e9309f41766087ad1544ef49d2922538bb420d62f6dd64117a1'
   '45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b'
   'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588'
+  '0012978f54c618e73d407dd49dccff02853912d0c015098889802518e8c51b280f5d60e11291335dafc68944ee01cbcb7fd6c5825ef10ae1520c7b82d9846718'
 )
 
-if [[ "${_build_staging::1}" == "t" ]] ; then
-  makedepends+=('git')
-
-  provides+=(
-    "wine-staging=$pkgver"
-    "wine-wow64=$pkgver"
-  )
-
-  _pkgsrc_staging="wine-staging-${pkgver/rc/-rc}"
-  _pkgext="tar.gz"
-  _dl_url="https://github.com/wine-staging/wine-staging"
-  source+=("$_pkgsrc_staging.$_pkgext"::"$_dl_url/archive/refs/tags/v${pkgver/rc/-rc}.$_pkgext")
-  b2sums+=('SKIP')
-
-  prepare() {
-    # apply wine-staging patchset
-    cd "$_pkgsrc"
-    "../$_pkgsrc_staging/staging/patchinstall.py" --all
-  }
-fi
+prepare() {
+  # apply wine-staging patchset
+  cd "wine-$_pkgver"
+  "../wine-staging-$_pkgver/staging/patchinstall.py" --all
+}
 
 build() {
-  cd "$_pkgsrc"
+  cd "wine-$_pkgver"
   ./configure \
     --disable-tests \
     --prefix=/usr \
     --libdir=/usr/lib \
-    --with-wayland \
-    --enable-archs=x86_64,i386
+    --enable-archs=x86_64,i386 # --with-wayland used by default, see https://gitlab.winehq.org/wine/wine/-/blob/wine-9.0/configure.ac?ref_type=tags#L1397
   make
 }
 
 package() {
-  cd "$_pkgsrc"
+  cd "wine-$_pkgver"
   make prefix="$pkgdir"/usr \
     libdir="$pkgdir"/usr/lib \
     dlldir="$pkgdir"/usr/lib/wine install
