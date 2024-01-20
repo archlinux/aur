@@ -2,8 +2,8 @@
 
 _pkgname='ttrack'
 pkgname="$_pkgname-git"
-pkgver=r16.b8213c7
-pkgrel=3
+pkgver=r25.2290c19
+pkgrel=1
 pkgdesc='simple CLI time tracker'
 arch=('x86_64')
 url='https://github.com/just1602/ttrack'
@@ -31,6 +31,10 @@ check() {
 package() {
   cd "$srcdir/$_pkgname"
   install -Dm755 target/release/ttrack "${pkgdir}/usr/bin/ttrack"
+  install -Dm644 dist/_ttrack "${pkgdir}/usr/share/zsh/site-functions/_ttrack"
+  install -Dm644 dist/ttrack.bash "${pkgdir}/usr/share/bash-completion/completions/ttrack.bash"
+  install -Dm644 dist/ttrack.fish "${pkgdir}/usr/share/fish/vendor_completions.d/ttrack.fish"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/ttrack/license"
 }
 
 pkgver() {
