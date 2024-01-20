@@ -2,10 +2,10 @@
 
 _githubuser=aarnt
 _githubrepo=octopi
-_gitcommit=f79da34b3e77264cd3b0b08b343cc474713a1462
+_gitcommit=59c785f364ec68d794b0166438b31fdcf82507f3
 
 pkgname=octopi-notifier-frameworks-dev
-pkgver=0.16.0.r1.f79da34
+pkgver=0.16.0.r2.59c785f
 pkgrel=1
 pkgdesc='Notifier for Octopi with Knotifications support'
 arch=('any')
