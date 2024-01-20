@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Tunes GNOME Overview UI to make it more usable."
 arch=('any')
 url="https://github.com/axxapy/gnome-ui-tune"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gnome-shell')
 makedepends=('git' 'jq')
 provides=("${pkgname%-git}")
@@ -15,18 +15,18 @@ source=('git+https://github.com/axxapy/gnome-ui-tune.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/gnome-ui-tune
+  cd gnome-ui-tune
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $srcdir/gnome-ui-tune
+  cd gnome-ui-tune
   make gettext
   make dist
 }
 
 package() {
-  cd $srcdir/gnome-ui-tune
+  cd gnome-ui-tune
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
   bsdtar xvf "${_uuid}.shell-extension.zip" -C \
     "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
