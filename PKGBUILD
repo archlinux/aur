@@ -1,11 +1,11 @@
 # Maintainer: Arvid Norlander <VorpalBlade@users.noreply.github.com>
 pkgname=chezmoi_modify_manager-git
-pkgver=2.2.3.r41.1c9844b
+pkgver=3.0.0.r2.a623964
 pkgrel=1
 pkgdesc="Tools for chezmoi to handle mixed settings and state"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/VorpalBlade/chezmoi_modify_manager"
-license=('GPL3')
+license=('GPL-3.0-only')
 makedepends=('cargo' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
