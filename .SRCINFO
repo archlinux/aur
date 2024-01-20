@@ -1,6 +1,6 @@
 pkgbase = python-pydata-sphinx-theme
 	pkgdesc = Bootstrap-based Sphinx theme from the PyData community
-	pkgver = 0.15.1
+	pkgver = 0.15.2
 	pkgrel = 1
 	url = https://pydata-sphinx-theme.readthedocs.io
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-pydata-sphinx-theme
 	checkdepends = python-beautifulsoup4
 	checkdepends = python-sphinx
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/py3/p/pydata_sphinx_theme/pydata_sphinx_theme-0.15.1-py3-none-any.whl
-	md5sums = a176ff832f3f5bd0f7e156d5719b7caa
+	source = https://files.pythonhosted.org/packages/py3/p/pydata_sphinx_theme/pydata_sphinx_theme-0.15.2-py3-none-any.whl
+	md5sums = e0df8d61d96b717b2536c44aac53fb44
 
 pkgname = python-pydata-sphinx-theme
 	depends = python-sphinx>=5.0
