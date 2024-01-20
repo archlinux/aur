@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Magically transform your images."
 arch=('any')
 url="https://github.com/nate-xyz/conjure"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('libadwaita' 'python-gobject' 'python-loguru' 'python-wand')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
@@ -15,12 +15,12 @@ source=("git+https://github.com/nate-xyz/conjure.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   sed -i "s/Exec=$pkgname/Exec=$_app_id/g" "data/$_app_id.desktop.in"
 }
 
