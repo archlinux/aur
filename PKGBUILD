@@ -5,7 +5,7 @@ pkgrel=12
 pkgdesc="Effortless, super fast and flexible notes taking app and clipboard manager."
 arch=('x86_64')
 url="https://clipto.pro"
-license=('custom')
+license=('unknown')
 depends=('alsa-lib' 'gtk3' 'nss')
 optdepends=('libnotify: for desktop notifications'
             'libappindicator-gtk3: for tray icon')
