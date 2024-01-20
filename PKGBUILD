@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=apostrophe
 pkgver=2.6.3
 pkgrel=6
