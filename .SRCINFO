@@ -1,6 +1,6 @@
 pkgbase = qgis-ltr
 	pkgdesc = Geographic Information System (GIS); Long Term Release
-	pkgver = 3.28.14
+	pkgver = 3.28.15
 	pkgrel = 1
 	url = https://qgis.org/
 	arch = x86_64
@@ -42,12 +42,12 @@ pkgbase = qgis-ltr
 	depends = libxml2
 	optdepends = fcgi: Map server
 	optdepends = gpsbabel: GPS Tools plugin
-	provides = qgis=3.28.14
+	provides = qgis=3.28.15
 	conflicts = qgis
-	source = https://download.qgis.org/downloads/qgis-3.28.14.tar.bz2
+	source = https://download.qgis.org/downloads/qgis-3.28.15.tar.bz2
 	source = protobuf-23.patch
 	source = exiv2-0.28.patch
-	sha256sums = 6b79f84de5e0e0a718cc67bbdf05de338d08999ad45279cb27e11aa6fb8d41dd
+	sha256sums = 217342ba2232cc8fe5bf8f3671c2b3d6daf5504c33006b67424373e70d568dfa
 	sha256sums = ac6c96e88346c1cec739b1e628afb02aef1895c0d09213269bad75b1a8cee617
 	sha256sums = b8f7181211263866829531d239e07ab7400d18b9afde70a8ced23f602dfb5c2f
 
