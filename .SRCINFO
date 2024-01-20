@@ -1,6 +1,6 @@
 pkgbase = python-sexpdata
 	pkgdesc = S-expression parser for Python
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/tkf/sexpdata
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-sexpdata
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://pypi.python.org/packages/source/s/sexpdata/sexpdata-1.0.1.tar.gz
-	sha256sums = 6f65f115291890cbce5cd269c13bdf1f82a4cd23bc61b6e150a27511ee6a7d5e
+	source = https://pypi.python.org/packages/source/s/sexpdata/sexpdata-1.0.2.tar.gz
+	sha256sums = 92b67b0361f6766f8f9e44b9519cf3fbcfafa755db85bbf893c3e1cf4ddac109
 
 pkgname = python-sexpdata
