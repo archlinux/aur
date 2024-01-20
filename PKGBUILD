@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at proto dot me>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=boca
 _pkgname=BoCA
 pkgver=1.0.7
