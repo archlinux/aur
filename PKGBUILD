@@ -7,7 +7,7 @@ pkgdesc="A C daemon that turns your webcam into a light sensor. It can also chan
          gamma temperature, dim your screen and set your dpms."
 arch=('x86_64' 'aarch64')
 url="https://github.com/FedeDP/Clight"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('clightd-git' 'gsl' 'hicolor-icon-theme' 'libconfig' 'popt')
 makedepends=('cmake' 'git')
 optdepends=('clight-gui-git: Clight GUI written in Qt.'
