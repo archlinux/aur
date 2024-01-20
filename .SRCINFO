@@ -4,7 +4,7 @@ pkgbase = gnome-shell-extension-weather-in-the-clock-git
 	pkgrel = 1
 	url = https://github.com/JasonLG1979/gnome-shell-extension-weather-in-the-clock
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = gnome-shell<=1:44.6
 	depends = gnome-weather
