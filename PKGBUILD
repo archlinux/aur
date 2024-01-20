@@ -6,18 +6,10 @@
 # https://gitlab.winehq.org/wine/wine-staging
 # https://github.com/wine-staging/wine-staging
 
-## options
-: ${_build_staging:=false}
-: ${_build_wow64:=true}
-
-[[ "${_build_staging::1}" == "t" ]] && _pkgtype+="-staging"
-[[ "${_build_wow64::1}" == "t" ]] && _pkgtype+="-wow64"
-
-## basic info
-_pkgname=wine
-pkgname="${_pkgname}${_pkgtype:-}"
+pkgname="wine-wow64"
 pkgver=9.0
-pkgrel=2
+_pkgver="${pkgver/rc/-rc}"
+pkgrel=3
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://www.winehq.org"
 license=(LGPL)
@@ -76,11 +68,8 @@ backup=("usr/lib/binfmt.d/wine.conf")
 
 options=(staticlibs !lto)
 
-_pkgver="${pkgver/rc/-rc}"
-_pkgsrc="$_pkgname-$_pkgver"
-_pkgext="tar.xz"
 source=(
-  "https://dl.winehq.org/wine/source/${pkgver::1}.0/$_pkgsrc.$_pkgext"
+  "https://dl.winehq.org/wine/source/${pkgver::1}.0/wine-$_pkgver.tar.xz"
   "30-win32-aliases.conf"
   "wine-binfmt.conf"
 )
@@ -90,29 +79,8 @@ b2sums=(
   'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588'
 )
 
-if [[ "${_build_staging::1}" == "t" ]] ; then
-  makedepends+=('git')
-
-  provides+=(
-    "wine-staging=$pkgver"
-    "wine-wow64=$pkgver"
-  )
-
-  _pkgsrc_staging="wine-staging-${pkgver/rc/-rc}"
-  _pkgext="tar.gz"
-  _dl_url="https://github.com/wine-staging/wine-staging"
-  source+=("$_pkgsrc_staging.$_pkgext"::"$_dl_url/archive/refs/tags/v${pkgver/rc/-rc}.$_pkgext")
-  b2sums+=('SKIP')
-
-  prepare() {
-    # apply wine-staging patchset
-    cd "$_pkgsrc"
-    "../$_pkgsrc_staging/staging/patchinstall.py" --all
-  }
-fi
-
 build() {
-  cd "$_pkgsrc"
+  cd "wine-$_pkgver"
   ./configure \
     --disable-tests \
     --prefix=/usr \
@@ -123,7 +91,7 @@ build() {
 }
 
 package() {
-  cd "$_pkgsrc"
+  cd "wine-$_pkgver"
   make prefix="$pkgdir"/usr \
     libdir="$pkgdir"/usr/lib \
     dlldir="$pkgdir"/usr/lib/wine install

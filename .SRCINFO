@@ -1,7 +1,7 @@
 pkgbase = wine-wow64
 	pkgdesc = A compatibility layer for running Windows programs
 	pkgver = 9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.winehq.org
 	install = wine.install
 	arch = x86_64
