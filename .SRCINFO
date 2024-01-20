@@ -4,6 +4,7 @@ pkgbase = deepin-wayland-protocols-git
 	pkgrel = 1
 	url = https://github.com/justforlxz/deepin-wayland-protocols
 	arch = any
+	groups = deepin-git
 	license = LGPL
 	makedepends = qt5-base
 	makedepends = extra-cmake-modules

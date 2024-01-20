@@ -11,6 +11,7 @@ makedepends=(qt5-base extra-cmake-modules)
 provides=('deepin-wayland-protocols-reborn' 'deepin-wayland-protocols')
 conflicts=('deepin-wayland-protocols-reborn' 'deepin-wayland-protocols')
 source=("${pkgname}::git+https://github.com/linuxdeepin/deepin-wayland-protocols")
+groups=('deepin-git')
 sha256sums=('SKIP')
 
 pkgver() {
