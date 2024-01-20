@@ -1,6 +1,6 @@
 pkgbase = osmo-trx-git
 	pkgdesc = GSM Radio Modem based on a fork of the OpenBTS Transceiver program
-	pkgver = 1.0.0.r5.g158ea5b
+	pkgver = 1.6.0.r9.ga118d98e
 	pkgrel = 1
 	url = https://osmocom.org/projects/osmotrx
 	arch = i686
@@ -11,18 +11,16 @@ pkgbase = osmo-trx-git
 	makedepends = git
 	makedepends = boost
 	depends = libosmocore
-	depends = talloc
 	depends = libusb
-	depends = fftw
 	depends = libuhd
 	depends = limesuite
-	optdepends = gnuradio: legacy support for USRP1
-	provides = osmo-trx
+	depends = talloc
+	depends = fftw
 	conflicts = osmo-trx
-	backup = etc/osmocom/osmo-trx-lms.cfg
 	backup = etc/osmocom/osmo-trx-uhd.cfg
-	source = git+https://git.osmocom.org/osmo-trx
+	backup = etc/osmocom/osmo-trx-lms.cfg
+	backup = etc/osmocom/osmo-trx-ipc.cfg
+	source = git+https://gitea.osmocom.org/cellular-infrastructure/osmo-trx.git
 	sha256sums = SKIP
 
 pkgname = osmo-trx-git
-

@@ -1,19 +1,25 @@
-# Maintainer: Josef Miegl <josef@miegl.cz>
+# Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
+# Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-trx-git
-pkgver=1.0.0.r5.g158ea5b
+pkgver=1.6.0.r9.ga118d98e
 pkgrel=1
 pkgdesc="GSM Radio Modem based on a fork of the OpenBTS Transceiver program"
 url="https://osmocom.org/projects/osmotrx"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
-depends=('libosmocore' 'talloc' 'libusb' 'fftw' 'libuhd' 'limesuite')
+depends=('libosmocore'
+         'libusb'
+         'libuhd' # --with-uhd
+         'limesuite' # --with-lms
+         'talloc'
+         'fftw')
 makedepends=('git' 'boost')
-optdepends=('gnuradio: legacy support for USRP1')
-provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-backup=('etc/osmocom/osmo-trx-lms.cfg' 'etc/osmocom/osmo-trx-uhd.cfg')
-source=("git+https://git.osmocom.org/${pkgname%-git}")
+backup=('etc/osmocom/osmo-trx-uhd.cfg'
+        'etc/osmocom/osmo-trx-lms.cfg'
+        'etc/osmocom/osmo-trx-ipc.cfg')
+source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -28,7 +34,14 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --with-uhd --with-lms
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc \
+              --localstatedir=/var \
+              --with-uhd \
+              --with-lms \
+              --with-ipc
+              # --enable-mstrx
+              # --with-bladerf
   make
 }
 
