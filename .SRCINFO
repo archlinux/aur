@@ -1,6 +1,6 @@
 pkgbase = r-trna
 	pkgdesc = Analyzing tRNA sequences and structures
-	pkgver = 1.20.0
+	pkgver = 1.20.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/tRNA
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-trna
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-trnascanimport
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/tRNA_1.20.0.tar.gz
-	sha256sums = 090466dd6ee1dddc86221be1042c532465fc0e6cf546a6577069bb01757aa2e8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/tRNA_1.20.1.tar.gz
+	sha256sums = 09d9bbfa3c6af3a191fe38b58702022052c498671e7bf7cc14fc05f707c59755
 
 pkgname = r-trna
