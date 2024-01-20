@@ -5,11 +5,11 @@ _pkgname=CytoML
 _pkgver=2.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="A GatingML Interface for Cross Platform Cytometry Data Sharing"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(AGPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('AGPL-3.0-only')
 depends=(
   boost-libs
   libxml2
@@ -50,8 +50,8 @@ source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_
         "system-hdf5.patch")
 md5sums=('4b0060416cdeef7876cb9aaeb81dbaf7'
          'c830342f553f0cfc7ac954ec93b429c2')
-sha256sums=('c93916697fcea60331518c8afdeef4b38c48f93e592abb1097821aadac7a0973'
-            'f97522aab6e311702e9606c370d4e2eed01169a83d7fc01bf6bb5ad90b115a05')
+b2sums=('60eaf5dd32f6c2305b85c90c98100ec4d372a60fd5d3ed8d5d91c34c5cee76c4eccef11ce090dabb6c17243bcce3350ab0985889c0e940c4e58c0f636b8d190d'
+        '841b451423480c8a53debd7b63f5d83e27ffb064e2eff8051f284560f658cac1826fbf0172fad09aa3810f78e7a4cfd3ad41bdaf3fc28ec4c8d76ed2f418e666')
 
 prepare() {
   # use system hdf5
@@ -59,8 +59,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
