@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=crankshaft
 _app_id="space.$pkgname.Crankshaft"
 pkgver=0.2.5
@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="A Steam client plugin manager and framework."
 arch=('x86_64')
 url="https://crankshaft.space"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('libappindicator-gtk3' 'python-jsbeautifier' 'xdg-utils')
 makedepends=('git' 'go' 'setconf' 'yarn')
 checkdepends=('appstream-glib' 'desktop-file-utils')
@@ -15,12 +15,12 @@ source=("git+https://git.sr.ht/~avery/crankshaft#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   export GOPATH="$srcdir/gopath"
   export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
 
@@ -41,7 +41,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -56,13 +56,13 @@ build() {
 }
 
 check() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   desktop-file-validate "desktop/${_app_id}.desktop"
   appstream-util validate-relax --nonet "desktop/${_app_id}.metainfo.xml"
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   install -Dm755 "build/$pkgname" -t "$pkgdir/usr/bin/"
   install -Dm644 "desktop/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "desktop/${_app_id}.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
