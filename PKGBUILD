@@ -2,7 +2,7 @@
 
 pkgname=blazefetch
 pkgver=2.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A lite & blazing fast system info fetch utility'
 arch=('any')
 url='https://github.com/rifsxd/blazefetch'
@@ -14,7 +14,7 @@ makedepends=('make' 'gcc')
 source=("git+$url.git")
 sha256sums=('SKIP')
 validpgpkeys=(
-	'CBBF9D68F47D02341D96BCC66B5BBC16B3AB9113' # Rifat Azad <33044977+rifsxd@users.noreply.github.com>
+	'SKIP'
 )
 
 build() {
