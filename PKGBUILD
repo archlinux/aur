@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=kwt-bin
 pkgver=0.0.8
-pkgrel=7
+pkgrel=8
 pkgdesc='Kubernetes Workstation Tools CLI'
 url='https://github.com/carvel-dev/kwt'
 arch=(x86_64 aarch64)
@@ -14,7 +14,7 @@ provides=(kwt)
 source_x86_64=(kwt-v0.0.8::https://github.com/carvel-dev/kwt/releases/download/v0.0.8/kwt-linux-amd64)
 source_aarch64=(kwt-v0.0.8::https://github.com/carvel-dev/kwt/releases/download/v0.0.8/kwt-linux-arm64)
 sha256sums_x86_64=(1022483a8b59fe238e782a9138f1fee6ca61ecf7ccd1e5f0d98e95c56df94d87)
-sha256sums_aarch64=(1022483a8b59fe238e782a9138f1fee6ca61ecf7ccd1e5f0d98e95c56df94d87)
+sha256sums_aarch64=(7b94a134cbde5ff2e245d102f54b9ac9f81b3fcc5e54a5cefecc1e5845b8a65f)
 package () 
 { 
     set -eo pipefail;
