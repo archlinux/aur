@@ -6,7 +6,7 @@
 
 pkgname=tlpui
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="A GTK user interface for TLP written in Python"
 arch=('any')
@@ -33,4 +33,7 @@ package() {
 
   install -Dm644 "$pkgname/icons/themeable/hicolor/scalable/apps/$pkgname.svg" -t \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
+
+  install -Dm644 "$pkgname.desktop" \
+  "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
