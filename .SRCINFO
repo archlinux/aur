@@ -1,4 +1,4 @@
-pkgbase = xfetch-git
+pkgbase = xfetch-rs-git
 	pkgdesc = The world's fastest & simplest fetch written in Rust.
 	pkgver = r28.d113589
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = xfetch-git
 	source = git+https://github.com/XandrCopyrighted/xFetch.git
 	sha256sums = SKIP
 
-pkgname = xfetch-git
+pkgname = xfetch-rs-git

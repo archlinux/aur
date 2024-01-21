@@ -1,6 +1,6 @@
-# Maintainer: XandrCopyrighted <xxandrr@proton.me>
+# Maintainer: XandrCopyrighted <xxandrr at proton dot me>
 
-pkgname=xfetch-git
+pkgname=xfetch-rs-git
 pkgver=r28.d113589
 pkgrel=1
 pkgdesc="The world's fastest & simplest fetch written in Rust."
