@@ -5,8 +5,8 @@
 # does not play well with Dune.
 
 pkgname=spatial-shell
-pkgver=6
-pkgrel=4
+pkgver=7
+pkgrel=1
 pkgdesc='Implementing a spatial model inspired by Material Shell, for i3 and sway.'
 url=https://github.com/lthms/spatial-shell
 license=('MPL2')
@@ -19,32 +19,24 @@ optdepends=(
 makedepends=(
   'opam'
   'scdoc'
+  'ocaml-ezjsonm-encoding'
+  'ocaml-poll'
+  'ocaml-cmdliner'
 )
 source=(
   "$pkgname-$pkgver.tbz::https://github.com/lthms/spatial-shell/releases/download/$pkgver/spatial-shell-$pkgver.tbz"
 )
 sha512sums=(
-  '113bd94b25e1d19ae6b727c9f846fda11d28a50380801a590de77290741e3e0d465ed8211b5e0aebb4c3a5fa4676e99d8f47abbfee0d96be5a91ed3449e34abf'
+  '4e433ee1c1d8a7ec6bb548e356452d04e5add32a8ecad0f15c221f48337d0136adebdd983266260a5626542220cb7ef1c5f1991199a79c7ada03a44f15f39199'
 )
 
-prepare() {
-  export OPAMROOT="${srcdir}/opam"
-  rm -rf "${OPAMROOT}"
-  opam init -n --bare
-}
-
 build() {
-  export OPAMROOT="${srcdir}/opam"
-  eval $(opam env)
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make build-deps -j1
-  eval $(opam env)
-  make -j1
-  rm -rf "${OPAMROOT}"
+  cd "${srcdir}/$pkgname-${pkgver}"
+  make
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   mkdir -p "$pkgdir/usr/bin"
-  make DESTDIR="$pkgdir/usr" install -j1
+  make DESTDIR="$pkgdir/usr" install
 }
