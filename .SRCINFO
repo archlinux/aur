@@ -1,0 +1,21 @@
+pkgbase = matcha-gtk-theme-maximize
+	pkgdesc = A flat design theme for GTK 3, GTK 2 and GNOME Shell. Replaces the restore button with the maximize button.
+	pkgver = 2023.10.30
+	pkgrel = 1
+	url = https://vinceliuice.github.io/theme-matcha.html
+	install = matcha-gtk-theme.install
+	arch = any
+	license = GPL3
+	makedepends = setconf
+	optdepends = gtk-engine-murrine: GTK2 theme support
+	optdepends = gtk-engines: GTK2 theme support
+	optdepends = qogir-icon-theme: Recommended icon theme
+	conflicts = matcha-gtk-theme
+	conflicts = matcha-gtk-theme-git
+	options = !strip
+	source = matcha-gtk-theme-2023-10-30.tar.gz::https://github.com/vinceliuice/Matcha-gtk-theme/archive/2023-10-30.tar.gz
+	source = mate-button-fix.patch::https://github.com/vinceliuice/Matcha-gtk-theme/commit/819ccff3e9cd85de5216b5001f353d4f97112818.patch
+	sha256sums = 9e7c1b7055bd996eaa01e8cd30e098dc1873f98690d2ace6ecad0e945307d470
+	sha256sums = 79460f0e51d2949577e56f08537d2ac6b5cdd3708f23f52ca30c619662a860c1
+
+pkgname = matcha-gtk-theme-maximize

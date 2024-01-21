@@ -1,0 +1,40 @@
+From 819ccff3e9cd85de5216b5001f353d4f97112818 Mon Sep 17 00:00:00 2001
+From: vinceliuice <vinceliuice@hotmail.com>
+Date: Sat, 11 Nov 2023 09:59:47 +0800
+Subject: [PATCH] Fixed #225
+
+---
+ src/metacity-1/metacity-theme-3.xml | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/src/metacity-1/metacity-theme-3.xml b/src/metacity-1/metacity-theme-3.xml
+index 60981726..64017eeb 100644
+--- a/src/metacity-1/metacity-theme-3.xml
++++ b/src/metacity-1/metacity-theme-3.xml
+@@ -61,10 +61,7 @@
+ 	<distance name="right_width" value="0" />
+ 	<distance name="left_titlebar_edge" value="0"/>
+ 	<distance name="right_titlebar_edge" value="0"/>
+-	<distance name="title_vertical_pad" value="2"/> <!--
+-							This needs to be 1 less then the
+-							title_vertical_pad on normal state
+-							or you'll have bigger buttons		-->
++	<distance name="title_vertical_pad" value="2"/>
+ 	<distance name="bottom_height" value="0" />
+ </frame_geometry>
+ 
+@@ -104,12 +101,12 @@
+     <distance name="button_height" value="0"/>
+ </frame_geometry>
+ 
+-<frame_geometry name="modal" title_scale="small" hide_buttons="true" rounded_top_left="1" rounded_top_right="1" parent="small">
++<frame_geometry name="modal" title_scale="small" hide_buttons="false" rounded_top_left="1" rounded_top_right="1" parent="small">
+ 	<distance name="title_vertical_pad" value="5"/>
+ </frame_geometry>
+ 
+ <!--chromium save dialog-->
+-<frame_geometry name="attached" title_scale="small" has_title="false"  hide_buttons="true" rounded_top_left="1" rounded_top_right="1" rounded_bottom_left="0" rounded_bottom_right="0" parent="normal">
++<frame_geometry name="attached" title_scale="small" has_title="false"  hide_buttons="false" rounded_top_left="1" rounded_top_right="1" rounded_bottom_left="0" rounded_bottom_right="0" parent="normal">
+ 	<distance name="title_vertical_pad" value="0"/>
+ 	<distance name="bottom_height" value="1"/>
+ 	<distance name="left_width" value="1"/>
