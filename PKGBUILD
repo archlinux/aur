@@ -2,11 +2,11 @@
 
 pkgname=pacdb
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Pacman Database to SQLite Converter'
 url='https://github.com/ryanpetris/pacdb'
 arch=('any')
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=(
     'pacman'
     'python3'
