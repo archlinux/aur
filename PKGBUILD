@@ -10,7 +10,7 @@
 pkgname="wine-staging-wow64"
 pkgver=9.0
 _pkgver="${pkgver/rc/-rc}"
-pkgrel=3
+pkgrel=4
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://www.winehq.org"
 license=(LGPL)
@@ -77,36 +77,35 @@ backup=("usr/lib/binfmt.d/wine.conf")
 options=(staticlibs !lto)
 
 source=(
-  "https://dl.winehq.org/wine/source/${pkgver::1}.0/wine-$_pkgver.tar.xz"
+  "git+https://gitlab.winehq.org/wine/wine.git#tag=wine-$pkgver"
   "30-win32-aliases.conf"
   "wine-binfmt.conf"
-  "wine-staging-$pkgver.tar.gz"::"https://github.com/wine-staging/wine-staging/archive/refs/tags/v$_pkgver.tar.gz"
+  "git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v$pkgver"
 )
-b2sums=(
-  'cf53177201a2f7eeb35d0d8ce220f80808d979099a928ad60652d1dee92620c433cc105dffab4e9309f41766087ad1544ef49d2922538bb420d62f6dd64117a1'
-  '45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b'
-  'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588'
-  '0012978f54c618e73d407dd49dccff02853912d0c015098889802518e8c51b280f5d60e11291335dafc68944ee01cbcb7fd6c5825ef10ae1520c7b82d9846718'
-)
+b2sums=('SKIP'
+        '45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b'
+        'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588'
+        'SKIP')
 
 prepare() {
   # apply wine-staging patchset
-  cd "wine-$_pkgver"
-  "../wine-staging-$_pkgver/staging/patchinstall.py" --all
+  cd "wine"
+  "../wine-staging/staging/patchinstall.py" --all
 }
 
 build() {
-  cd "wine-$_pkgver"
+  cd "wine"
   ./configure \
     --disable-tests \
     --prefix=/usr \
     --libdir=/usr/lib \
-    --enable-archs=x86_64,i386 # --with-wayland used by default, see https://gitlab.winehq.org/wine/wine/-/blob/wine-9.0/configure.ac?ref_type=tags#L1397
+    --enable-archs=x86_64,i386 \
+    --with-wayland
   make
 }
 
 package() {
-  cd "wine-$_pkgver"
+  cd "wine"
   make prefix="$pkgdir"/usr \
     libdir="$pkgdir"/usr/lib \
     dlldir="$pkgdir"/usr/lib/wine install
