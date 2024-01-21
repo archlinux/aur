@@ -5,11 +5,12 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=kbld
 pkgver=0.38.2
-pkgrel=1
+pkgrel=2
 pkgdesc='kbld seamlessly incorporates image building and image pushing into your development and deployment workflows'
 url='https://carvel.dev/kbld'
 arch=(any)
 license=(apache-2.0)
+install=''
 makedepends=(bash go)
 provides=(kbld)
 source=(kbld-0.38.2::https://github.com/carvel-dev/kbld/archive/v0.38.2.tar.gz)

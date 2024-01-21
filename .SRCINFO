@@ -1,7 +1,7 @@
 pkgbase = kbld
 	pkgdesc = kbld seamlessly incorporates image building and image pushing into your development and deployment workflows
 	pkgver = 0.38.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://carvel.dev/kbld
 	arch = any
 	license = apache-2.0
