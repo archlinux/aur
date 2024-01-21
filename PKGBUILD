@@ -38,7 +38,7 @@ package() {
   install -Dm644 resources/app/src/static/images/tray/kitch.png -t "$pkgdir/usr/share/icons/hicolor/256x256/apps"
   install -Dm644 resources/app/src/static/images/window/kitch/icon.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/kitch.png"
   install -Dm644 resources/app/src/static/images/window/kitch/icon-32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/kitch.png"
-  rm LICENSE kitch.desktop kitch-$pkgver-linux-amd64.zip
+  rm LICENSE kitch.desktop kitch-linux-amd64$pkgver.zip
   mv * "$pkgdir/opt/kitch"
   ln -s /opt/kitch/kitch "$pkgdir/usr/bin"
 }
