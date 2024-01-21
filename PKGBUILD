@@ -1,14 +1,14 @@
 # Maintainer: XandrCopyrighted <xxandrr at proton dot me>
 
 pkgname=xfetch-rs-git
-pkgver=r28.d113589
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="The world's fastest & simplest fetch written in Rust."
 arch=('any')
 url="https://github.com/XandrCopyrighted/xFetch/"
 license=('MIT')
 
-source=(xfetch::git+https://github.com/XandrCopyrighted/xFetch.git)
+source=(xfetch-rs-git::git+https://github.com/XandrCopyrighted/xFetch.git)
 sha256sums=('SKIP')
 
 depends=()
@@ -17,7 +17,7 @@ provides=("xfetch-rs")
 conflicts=("xfetch-rs")
 pkgver() {
   cd $srcdir/xFetch
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
@@ -26,8 +26,6 @@ build() {
   rustup component add rust-src --toolchain nightly-2024-01-20-x86_64-unknown-linux-gnu
   RUSTFLAGS="-Zlocation-detail=none" cargo build --target x86_64-unknown-linux-gnu --profile optimized-build -Z build-std=std,panic_abort -Z build-std-features=panic_immediate_abort
 }
-
-install=xfetch-rs-git.install
 
 package() {
 	cd $srcdir/xFetch
