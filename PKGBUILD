@@ -2,7 +2,7 @@
 
 pkgname=pulumi-language-dotnet
 _reponame=pulumi-dotnet
-pkgver=3.58.0
+pkgver=3.59.0
 pkgrel=1
 pkgdesc='Modern Infrastructure as Code (Dotnet provider)'
 arch=('x86_64')
@@ -11,6 +11,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("$_reponame-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('eb813182a7f0ca1e2e869716802228c97dbcb8fd6ebb22fb5b85ec2424485ad2')
 options=('!lto') # disable as soon as LTO problems are resolved
 
 build() {
@@ -37,4 +38,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('6747e3a77d01479ecf40cb61d275dded456acac7cf621f12a13085d7bb203c48')
