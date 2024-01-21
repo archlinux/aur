@@ -38,16 +38,3 @@ package(){
     msg2 "Users might need to be added to the the usbtmc group to avoid permissions issues"
 }
 
-#package() {
-#  cd "$srcdir/python-usbtmc-$pkgver"
-#  python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
-#
-#  install -m 0644 -D usbtmc.rules $pkgdir/etc/udev/rules.d/40-usbtmc.rules
-#}
-
-#package_python2-usbtmc() {
-#  depends=('python2' 'python2-pyusb')
-#
-#  cd "$srcdir/python-usbtmc-$pkgver"
-#  python2 setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
-#}
