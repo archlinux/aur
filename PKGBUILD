@@ -1,4 +1,4 @@
-# # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-markdown-del-ins
 _name=${pkgname#python-}
 pkgver=1.0.0
