@@ -22,7 +22,7 @@ source=('git+https://github.com/ceres-c/OWON-VDS1022.git'
 		'owon-vds-tiny.appdata.xml')
 sha256sums=('SKIP'
 			'9f2135f9aa746a99ea02afb04551075c9b94869c700eaa7d79f091c7b271d3c6'
-			'9ccda99bdeeb8c5f1406f57d16e7c20acc4649acce9abf09a9028319172e6fef'
+			'9257c765a925d7a4efaed63659264c23d40eca76fdcc1bfb30fc183620f7401b'
 			'c4636ba5a29afdea5b414f13ad96159d58a1a9c1b21a349107832b3c04260579'
 			'13643b2d958e27de8cb635784cdf9bc83629b086474b780617c7726bb11f2843')
 package() {
