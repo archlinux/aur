@@ -1,6 +1,6 @@
 pkg
 src
 *.pkg.tar.*
-csharp-language-server
+*.tar.gz
 *.log
 
