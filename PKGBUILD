@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Protesilaos Stavrou <info at protesilaos dot com>
 pkgname=tempus-themes-vim-git
 pkgver=r48.b720ee2
@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Tempus Themes for Vim"
 arch=('any')
 url="https://protesilaos.com/tempus-themes"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('vim')
 makedepends=('git')
 provides=("${pkgname%-git}")
