@@ -20,9 +20,11 @@ makedepends=('cmake' 'git' 'ninja' 'qt5-svg' 'qt5-tools')
 provides=('olive')
 conflicts=('olive')
 source=('git+https://github.com/olive-editor/olive.git'
-	'git+https://github.com/olive-editor/KDDockWidgets.git'
+        'git+https://github.com/olive-editor/KDDockWidgets.git'
+        'git+https://github.com/olive-editor/core.git'
         'support_ocio_2_3.patch')
 b2sums=('SKIP'
+        'SKIP'
         'SKIP'
         '05d81f99409d78ae51a1200a14d07d29a830b53343d92d988e7ad8a2994b86d46f42ed0ec2c430829f8282e1284f067cc24ce78e8bd4233a40e09b5c179941df')
 
@@ -34,9 +36,11 @@ pkgver() {
 prepare(){
   cd $_pkgname
   git submodule init
+  git config submodule.ext/core.url "$srcdir"/core
   git config submodule.ext/KDDockWidgets.url "$srcdir"/KDDockWidgets
   git -c protocol.file.allow=always submodule update
 
+  # Add support for OpenColorIO version 2.3
   patch --forward --strip=1 --input="$srcdir"/support_ocio_2_3.patch
 }
 
