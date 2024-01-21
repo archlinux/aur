@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/orbcode/orbuculum"
 license=('BSD-3-Clause')
 groups=()
-depends=('ncurses' 'sdl2' 'zeromq' 'capstone')
+depends=('ncurses' 'sdl2' 'zeromq' 'capstone' 'libdwarf')
 makedepends=('git' 'meson')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -19,6 +19,10 @@ install=
 source=("git+${url}")
 noextract=()
 sha256sums=('SKIP')
+
+prepare () {
+    sed -i "s/subproject('libdwarf').*/dependency('libdwarf')/" "$srcdir/orbuculum/meson.build"
+}
 
 pkgver() {
     cd "$srcdir/orbuculum"

@@ -1,7 +1,7 @@
 FROM archlinux:latest
 RUN pacman -Sqy
 RUN pacman -Sq --noconfirm base-devel
-RUN pacman -Sq --noconfirm git meson zeromq sdl2 capstone
+RUN pacman -Sq --noconfirm git meson zeromq sdl2 capstone libdwarf
 RUN useradd --create-home builduser
 WORKDIR /home/builduser
 USER builduser
