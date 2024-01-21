@@ -11,7 +11,7 @@ pkgrel=1
 pkgdesc="The GTK Libretro frontend framework"
 arch=('x86_64' 'aarch64')
 url="https://wiki.gnome.org/Apps/Games"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('libepoxy' 'glib2' 'gtk4' 'libpulse' 'libsamplerate')
 makedepends=('git' 'gobject-introspection' 'meson' 'vala')
 provides=("${pkgname%-git}" 'libretro-gtk-2.so')
@@ -31,14 +31,13 @@ build() {
   meson compile -C build
 }
 
-check() {
+#check() {
   # Tests try to run the installed /usr/lib/retro-runner
 
 #  dbus-run-session xvfb-run \
 #    -s '-screen 0 1920x1080x24 -nolisten local' \
 #    meson test -C build --print-errorlogs
-  :
-}
+#}
 
 package() {
   meson install -C build --destdir "$pkgdir"
