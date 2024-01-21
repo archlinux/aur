@@ -1,8 +1,8 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 # Contributor: Alex Dewar <alex.dewar@gmx.co.uk>
 pkgname=pwclient
-pkgver=2.7.0
-pkgrel=2
+pkgver=2.8.0
+pkgrel=1
 pkgdesc='The command-line client for the patchwork patch tracking tool'
 arch=('any')
 url="https://github.com/getpatchwork/$pkgname"
@@ -17,7 +17,7 @@ makedepends=(
 )
 checkdepends=('python-mock' 'python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('44e06a1d6996e452afba613d379c23b75bfed74f1ac335d4bdb3f7f6e7c41db8')
+sha256sums=('bf843466ede37268fa830c7d272f6fddadad69a924e3a49e05250829c25873c7')
 
 build() {
     cd "$pkgname-$pkgver"
