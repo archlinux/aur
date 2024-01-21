@@ -5,9 +5,9 @@ pkgbase=minizip-git
 pkgname=(minizip-git minizip-static-git)
 pkgdesc="Fork of the popular zip manipulation library found in the zlib distribution."
 pkgver=4.0.0.r14.g57be074
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
-license=('zlib')
+license=('Zlib')
 url="https://github.com/zlib-ng/minizip-ng"
 depends=('zstd' 'bzip2' 'openssl>=3.0.7' 'libbsd')
 makedepends=('git' 'cmake')
