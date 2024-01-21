@@ -1,0 +1,4 @@
+ocaml-jsonm-*.pkg.tar.zst
+ocaml-jsonm-*.tbz
+pkg/
+src/
