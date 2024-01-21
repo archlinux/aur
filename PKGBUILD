@@ -3,7 +3,7 @@
 # Contributor: moyiz <8603313+moyiz@users.noreply.github.com>
 
 pkgname='na-bin'
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc='CLI tool to effortlessly manage context aware nested shortcuts for shell commands.'
 url='https://github.com/moyiz/na'
@@ -13,14 +13,14 @@ provides=('na')
 conflicts=('na')
 depends=('glibc')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/moyiz/na/releases/download/v0.0.8/na_linux_arm64.tar.gz")
-sha256sums_aarch64=('079657e60c9013dd4594874d417cb93158eb0f28f931172820defa77f8ad3b24')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/moyiz/na/releases/download/v0.0.9/na_linux_arm64.tar.gz")
+sha256sums_aarch64=('e2a8d7c7da2b7fa869c3452ade17c7e029e73a2747f87977aebfbd3da2bf1397')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/moyiz/na/releases/download/v0.0.8/na_linux_i386.tar.gz")
-sha256sums_i686=('9e7e1294e9bc73cd6f22107d9e595b8e831be0ea21ed746a5b4fd781c4298981')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/moyiz/na/releases/download/v0.0.9/na_linux_i386.tar.gz")
+sha256sums_i686=('18c33c98f763bf15f48c664e1fcb7ae9776c24420eb3fe551de03f7fa948539a')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/moyiz/na/releases/download/v0.0.8/na_linux_x86_64.tar.gz")
-sha256sums_x86_64=('1778bfae180e0ca35fa072ce0d540d6a6db625b059093626a3d343fbebaf6ae3')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/moyiz/na/releases/download/v0.0.9/na_linux_x86_64.tar.gz")
+sha256sums_x86_64=('b5a70c42c885c9ce85753f153e122f48d5e104f7da02d35a3c591cf3c99cf3e3')
 
 package() {
   cd ${srcdir}
