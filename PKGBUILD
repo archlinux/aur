@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Extract the dominant colors from any image."
 arch=('x86_64')
 url="https://github.com/nate-xyz/paleta"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('libadwaita')
 makedepends=('cargo' 'git' 'meson')
 checkdepends=('appstream-glib')
@@ -15,12 +15,12 @@ source=("git+https://github.com/nate-xyz/paleta.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
