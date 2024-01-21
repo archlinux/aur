@@ -2,7 +2,7 @@
 
 _pkgname='dune3d'
 pkgname="${_pkgname}-git"
-pkgver=r324.048eff7
+pkgver=r325.1d45ed4
 pkgrel=1
 pkgdesc='3D CAD application'
 arch=('x86_64')
@@ -25,13 +25,12 @@ build() {
   cd "${_pkgname}"
   arch-meson build
 
-  cd build
-  ninja
+  meson compile -C build
 }
 
 package() {
-  cd "${_pkgname}/build"
-  DESTDIR="$pkgdir" ninja install
+  cd "${_pkgname}"
+  meson install -C build --destdir "$pkgdir"
 }
 
 # vim: ts=2 sw=2 et:
