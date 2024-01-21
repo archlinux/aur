@@ -1,9 +1,9 @@
-# Maintainer: Kasimir Wansing <kasimir at wansing dot org>
+# Maintainer: wansing <mail at wansing dot org>
 pkgname=goscanpdf
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Scans pages from a (document) scanner and uploads the compressed multipage PDF file via SSH. Works on a Raspberry Pi."
-arch=('x86_64')
+arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/wansing/$pkgname"
 license=('GPL')
 makedepends=('go')

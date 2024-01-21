@@ -1,8 +1,10 @@
 pkgbase = goscanpdf
 	pkgdesc = Scans pages from a (document) scanner and uploads the compressed multipage PDF file via SSH. Works on a Raspberry Pi.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wansing/goscanpdf
+	arch = armv7h
+	arch = aarch64
 	arch = x86_64
 	license = GPL
 	makedepends = go
@@ -18,4 +20,3 @@ pkgname = goscanpdf
 	depends = poppler
 	depends = rsync
 	depends = sane
-
