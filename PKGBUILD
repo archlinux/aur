@@ -2,16 +2,20 @@
 _target='compass-isolated-beta'
 _edition=' Isolated Edition Beta'
 pkgname="mongodb-$_target"
-_pkgver='1.40.5-beta.17'
+_pkgver='1.42.0-beta.5'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='2'
+pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Isolated Edition - beta version'
 # If you're running on armv7h or aarch64, use the electron25-bin package from the AUR for the electron25 dependency
 # If you're running on armv7h, you have to add it to the arch and source arrays of the electron25-bin AUR dependency
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
-license=('custom:SSPL')
-_electronpkg='electron25'
+license=('SSPL-1.0')
+if [[ "$_target" =~ -beta$ ]]; then
+	_electronpkg='electron28'
+else
+	_electronpkg='electron25'
+fi
 depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release' 'nodejs>=16.15.1')
 makedepends=('git' 'npm>=8.19.4' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
@@ -21,7 +25,7 @@ source=(
 	'hadron-build-os-dns-native.diff'
 	'fix-argv.diff'
 )
-sha512sums=('391ccd132b50c6165970a41ca7d6573f4ea23d9f09439e36dfd81bad779b695cf6c5cfade1db7e4b1fbe7a36ffa1837ce5ee57449ec7053651b2e6ea9190fdc7'
+sha512sums=('fe8e751fe4827f5d6d1b97d2b21be94c998491bddd1eeec730fadfa9274d16a35f72d129a5769b9b5598473d53e72f7bcf7368b443207a060c547921b4b815db'
             '6338626b9c957c79cd761f19a3d17d856ff88ce96d38c5507269b8dbaf3f20bef00012d035e5e1bde6493db495e2cfce172bcd021a5a8ae1c37dcb5f7a46a875'
             '084dfe4feae0ac1997a141ac92294b4d132301bd493162abfe0a5acdff2f997928e5b24f21c27bcbce6c74b6b1d1014738d43a387074d7a3b5296279bbb15f6c'
             '375142120fd97a3fd9e24d19c864ee3b24e50a5e6b0b224b7ce74742dc5bde185056a9b6f1add63d5ce66e3f0a9309e03873096540e5697547d60a2bc9e769ae')
@@ -34,13 +38,20 @@ prepare() {
 	# Disable husky command
 	sed -i '/husky install/d' 'package.json'
 
+	# Working around https://gitlab.archlinux.org/archlinux/packaging/packages/electron28/-/issues/1
+	_installedelectronver="$(cat "/usr/lib/$_electronpkg/version")"
+
+	if [ "$_installedelectronver" = '28.1.5' ]; then
+		_installedelectronver='28.1.4'
+	fi
+
 	# Set system Electron version for ABI compatibility
-	sed -E -i 's|("electron": ").*"|\1'"$(cat "/usr/lib/$_electronpkg/version")"'"|' {'configs','packages'}'/'*'/package.json'
+	sed -E -i 's|("electron": ").*"|\1'"$_installedelectronver"'"|' {'configs','packages'}'/'*'/package.json'
 
 	# Force the newest version of electron-to-chromium
 	sed -E -i 's|(.*)("electron": ")|\1"electron-to-chromium": "'"$(npm view 'electron-to-chromium@latest' version)"'",\n\1\2|' 'packages/compass/package.json'
 
-	# Use a fork of os-dns-native (as there are issues with the path not being in the main node_modules directory, a local copy is not used)
+	# Use a new version of os-dns-native
 	sed -E -i "s|(.*)\"os-dns-native\": \".*\",|\1\"os-dns-native\": \"1\.2\.1\",|" 'packages/compass/package.json'
 	patch --forward -p1 < "$srcdir/hadron-build-os-dns-native.diff"
 
@@ -108,7 +119,6 @@ EOF
 	install -Dm644 "$srcdir/$_sourcedirectory/packages/compass/app-icons/linux/mongodb-compass.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
-	for _license in 'LICENSE' 'LICENSES.chromium.html'; do
-		install -Dm644 "$_license" "$pkgdir/usr/share/licenses/$pkgname/$_license"
-	done
+	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/SSPL-1.0"
+	install -Dm644 'LICENSES.chromium.html' "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
 }
