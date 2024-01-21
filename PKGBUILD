@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: Slimbook <dev at slimbook dot es>
 pkgname=slimbookintelcontroller
 pkgver=1.0beta
@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Application for the performance management of Intel processors"
 arch=('any')
 url="https://github.com/slimbook/slimbookintelcontroller"
-license=('GPL2')
+license=('GPL-3.0-or-later')
 depends=('dbus-python' 'gtk3' 'intel-undervolt' 'libayatana-appindicator' 'libnotify'
          'mokutil' 'pciutils' 'python-gobject' 'python-pillow' 'systemd-libs')
 install="$pkgname.install"
