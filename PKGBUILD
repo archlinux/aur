@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A simple GOG client for Linux"
 arch=('any')
 url="https://sharkwouter.github.io/minigalaxy"
-license=('GPL-3.0-or-later' 'CC-BY-3.0')
+license=('GPL-3.0-or-later AND CC-BY-3.0')
 depends=(
   'gtk3'
   'libnotify'
