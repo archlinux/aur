@@ -5,11 +5,12 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=rustotpony-bin
 pkgver=0.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc='RusTOTPony — CLI manager of one-time password generators like Google Authenticator'
 url='https://github.com/zebradil/rustotpony'
 arch=(x86_64)
 license=(MIT)
+install=''
 conflicts=(rustotpony)
 provides=(totp)
 source=(rustotpony-bin-0.4.4::https://github.com/zebradil/rustotpony/releases/download/0.4.4/totp-linux)
