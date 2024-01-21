@@ -9,11 +9,12 @@
 
 pkgname=ytt
 pkgver=0.47.0
-pkgrel=1
+pkgrel=2
 pkgdesc='YAML templating tool that works on YAML structure instead of text'
 url='https://carvel.dev/ytt'
 arch=(any)
 license=(apache-2.0)
+install=''
 makedepends=(bash go zip)
 provides=(ytt)
 source=(ytt-0.47.0::https://github.com/carvel-dev/ytt/archive/v0.47.0.tar.gz)
