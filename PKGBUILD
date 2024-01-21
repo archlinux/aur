@@ -1,7 +1,7 @@
 # Maintainer: wansing <mail at wansing dot org>
 pkgname=traggo-bin
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="self-hosted tag-based time tracking"
 arch=('x86_64')
 url="https://github.com/traggo/server"
@@ -24,8 +24,8 @@ sha256sums=('bde681e8aa60327799c2078649d8646e1d3c1c9d35d34430fd52ce04e419106c'
 
 package() {
   install -Dm755 traggo-server-${pkgver}-linux-amd64 "$pkgdir"/usr/bin/traggo-server
-  install -Dm644 "../server.ini"      "${pkgdir}/etc/traggo/server.ini"
-  install -Dm644 "../traggo.service"  "${pkgdir}/usr/lib/systemd/system/traggo.service"
-  install -Dm644 "../traggo.sysusers" "${pkgdir}/usr/lib/sysusers.d/traggo.conf"
-  install -Dm644 "../traggo.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/traggo.conf"
+  install -Dm644 "server.ini"      "${pkgdir}/etc/traggo/server.ini"
+  install -Dm644 "traggo.service"  "${pkgdir}/usr/lib/systemd/system/traggo.service"
+  install -Dm644 "traggo.sysusers" "${pkgdir}/usr/lib/sysusers.d/traggo.conf"
+  install -Dm644 "traggo.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/traggo.conf"
 }

@@ -1,7 +1,7 @@
 pkgbase = traggo-bin
 	pkgdesc = self-hosted tag-based time tracking
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/traggo/server
 	arch = x86_64
 	license = GPL
