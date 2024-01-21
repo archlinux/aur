@@ -1,12 +1,12 @@
 pkgbase = reallymakepkg-git
 	pkgdesc = System-independent makepkg
-	pkgver = 1.1.r1.g0adf69d
+	pkgver = 1.1.r9.g7cd1761
 	pkgrel = 1
 	url = https://github.com/themartiancompany/reallymakepkg
 	arch = any
 	license = AGPL3
 	makedepends = git
-	provides = reallymakepkg=1.1.r1.g0adf69d
+	provides = reallymakepkg=1.1.r9.g7cd1761
 	conflicts = reallymakepkg
 	source = git+https://github.com/themartiancompany/reallymakepkg
 	sha256sums = SKIP
