@@ -29,6 +29,10 @@ prepare() {
   # https://github.com/hashicorp/vault/issues/10048
   mkdir -p vault-unprivileged
   cp -v /usr/bin/vault vault-unprivileged/
+
+  cd $_pkgname-$pkgver
+  # Disabling parallel tests. Somehow a test in test_identity.py fails
+  sed -i '/addopts/d' pyproject.toml
 }
 
 build() {
