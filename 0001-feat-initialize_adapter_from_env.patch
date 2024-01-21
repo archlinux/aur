@@ -1,0 +1,29 @@
+From 11d172522f7e6497c68c8fab1d752cfd737ea806 Mon Sep 17 00:00:00 2001
+From: meowkatee <78525839+MeowKatee@users.noreply.github.com>
+Date: Sun, 21 Jan 2024 16:07:03 +0800
+Subject: [PATCH] feat: initialize_adapter_from_env
+
+---
+ render/wgpu/src/backend.rs | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/render/wgpu/src/backend.rs b/render/wgpu/src/backend.rs
+index 220f676dc..c9f5ba2a9 100644
+--- a/render/wgpu/src/backend.rs
++++ b/render/wgpu/src/backend.rs
+@@ -1067,6 +1067,12 @@ pub async fn request_adapter_and_device(
+     power_preference: wgpu::PowerPreference,
+     trace_path: Option<&Path>,
+ ) -> Result<(wgpu::Adapter, wgpu::Device, wgpu::Queue), Error> {
++    let adapter_from_env = wgpu::util::initialize_adapter_from_env(instance, surface);
++    if let Some(adapter) = adapter_from_env {
++        let (device, queue) = request_device(&adapter, trace_path).await?;
++        return Ok((adapter, device, queue));
++    }
++
+     let adapter = instance.request_adapter(&wgpu::RequestAdapterOptions {
+         power_preference,
+         compatible_surface: surface,
+-- 
+2.43.0
+
