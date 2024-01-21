@@ -4,7 +4,7 @@ pkgname="tenacity-bin"
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity"
 
 pkgver=1.3.3
-pkgrel=3
+pkgrel=4
 
 arch=(i686 x86_64)
 
@@ -43,6 +43,10 @@ package() {
 
     # copy the bundled `share` directory to `/usr/share`
     cp -r squashfs-root/share "${pkgdir}/usr/"
+    
+    # rename the file conflicting with audacity
+    mv "${pkgdir}/usr/share/pixmaps/gnome-mime-application-x-audacity-project.xpm" \
+      "${pkgdir}/usr/share/pixmaps/gnome-mime-application-x-tenacity-project.xpm"
 
     # make a symlink to the AppImage launcher
     ln -s /opt/tenacity/tenacity.AppImage "${pkgdir}/usr/bin/tenacity"
