@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0.4
+Name=Ki-nTree
+Comment=Fast part creation for KiCad and InvenTree
+Exec=/usr/bin/kintree
+Icon=kintree.png
+Terminal=false
