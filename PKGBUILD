@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 # Check for new version (currently not working):
 # curl -s https://flavio.tordini.org/sofa-server-ws/release.xml | tr -dc 0-9.
