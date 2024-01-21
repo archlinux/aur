@@ -2,7 +2,7 @@
 
 pkgname=bare-server-go
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A TOMPHTTP compliant server written in Go"
 url="https://github.com/ruby-network/bare-server-go"
 arch=('x86_64')

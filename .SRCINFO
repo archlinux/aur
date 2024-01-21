@@ -1,7 +1,7 @@
 pkgbase = bare-server-go
 	pkgdesc = A TOMPHTTP compliant server written in Go
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ruby-network/bare-server-go
 	arch = x86_64
 	license = AGPL3
