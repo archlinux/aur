@@ -5,7 +5,7 @@ pkgbase = tagger
 	url = https://github.com/NickvisionApps/Tagger
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-or-later
 	checkdepends = appstream-glib
 	makedepends = blueprint-compiler
 	makedepends = dotnet-sdk>=8

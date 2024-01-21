@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="An easy-to-use music tag (metadata) editor"
 arch=('x86_64' 'aarch64')
 url="https://github.com/NickvisionApps/Tagger"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('chromaprint' 'dotnet-runtime>=8' 'ffmpeg' 'libadwaita' 'webp-pixbuf-loader')
 makedepends=('blueprint-compiler' 'dotnet-sdk>=8' 'git')
 checkdepends=('appstream-glib')
