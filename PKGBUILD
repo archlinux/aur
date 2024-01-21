@@ -4,8 +4,8 @@
 pkgname='simplex-chat-bin'
 _pkgname="${pkgname%%-bin}"
 epoch=1
-pkgver=5.4.3
-pkgrel=3
+pkgver=5.4.4
+pkgrel=1
 pkgdesc='A 100% private-by-design chat platform for the command-line (pre-compiled)'
 arch=('x86_64')
 _platform='ubuntu-22_04-x86-64'
@@ -65,7 +65,7 @@ package() {
 }
 
 sha512sums=(
-  'b3c26402baf3a4ff36017f3a2e13a22d48d1dfa1279d9bfb775c1a44ae3835e15a2a74af9997f963432c7fbea4ba6f9c020279842749f26c7296334d9bc4759a'
+  'fe8beac4cf8e4b771f9a152844e60db698647a5544d7d0632bac1564dcb3595aca949f6ed2388e217997b790021252d331b31b59cf25763ae0587148d4613abe'
   'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 )
 
