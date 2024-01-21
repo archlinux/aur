@@ -6,6 +6,7 @@ arch=('x86_64' 'aarch64')
 url='https://github.com/orangepi-xunlong/wiringOP'
 license=('LGPL-3.0')
 makedepends=('git' 'make' 'gcc' 'wiringop-orangepi-5-plus-base-git')
+depends=('wiringop-orangepi-5-plus-base-git')
 _commit="ce520ea17701445eb2e8e3cc1b6e157d29b63713"
 
 source=(

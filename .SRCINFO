@@ -10,6 +10,7 @@ pkgbase = wiringop-orangepi-5-plus-git
 	makedepends = make
 	makedepends = gcc
 	makedepends = wiringop-orangepi-5-plus-base-git
+	depends = wiringop-orangepi-5-plus-base-git
 	source = git+https://github.com/orangepi-xunlong/wiringOP#commit=ce520ea17701445eb2e8e3cc1b6e157d29b63713
 	md5sums = SKIP
 
