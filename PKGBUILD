@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: Slimbook <dev at slimbook dot es>
 # Contributor: tioguda <guda.flavio@gmail.com>
 pkgname=slimbookbattery
@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Battery optimization application for portable devices."
 arch=('x86_64')
 url="https://github.com/slimbook/slimbookbattery"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('cron' 'dbus-python' 'dmidecode' 'gtk3' 'libayatana-appindicator'
          'libnotify' 'polkit' 'python-gobject' 'python-pillow' 'python-setuptools'
          'tlp' 'tlp-rdw' 'vte3' 'xorg-xdpyinfo')
