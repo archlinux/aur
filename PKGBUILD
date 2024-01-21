@@ -3,7 +3,7 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=setzer
-pkgver=63
+pkgver=65
 pkgrel=1
 pkgdesc='LaTeX editor written in Python with Gtk'
 arch=('any')
@@ -19,10 +19,12 @@ depends=(
 	'python-cairo'
 	'python-bibtexparser'
 	'python-gobject'
+	'python-numpy'
 	'python-pdfminer'
 	'python-pexpect'
 	'python-pyxdg'
 	'texlive-core'
+	'texlive-xetex'
 	'webkit2gtk'
 	'webkitgtk-6.0'
 	'xdg-utils')
@@ -41,4 +43,4 @@ check() {
 package() {
   DESTDIR="$pkgdir" meson install -C build
 }
-sha256sums=('628b4c1ca35edaf3ac4a5cbe73640be38328482138fbc86e54771811e24629cf')
+sha256sums=('68fda13b921afa7d4e45d97c36d6c1ffa7cf9f4c19717f3499341795e195d9a9')
