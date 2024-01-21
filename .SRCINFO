@@ -1,7 +1,7 @@
 pkgbase = rust-parallel
 	pkgdesc = Fast parallel command runner, written in Rust
-	pkgver = 1.13.0
-	pkgrel = 2
+	pkgver = 1.13.1
+	pkgrel = 1
 	url = https://github.com/aaronriekenberg/rust-parallel
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = rust-parallel
 	depends = gcc-libs
 	conflicts = rust-parallel-bin
 	conflicts = rust-parallel-git
-	source = rust-parallel-1.13.0.tar.gz::https://github.com/aaronriekenberg/rust-parallel/archive/v1.13.0.tar.gz
-	sha256sums = 6d3ff3db8f895505774a0de0020e0809ffd30ab45fcb64d60dc83523fcace827
+	source = rust-parallel-1.13.1.tar.gz::https://github.com/aaronriekenberg/rust-parallel/archive/v1.13.1.tar.gz
+	sha256sums = 6bc1d6c69cca64a6ff9aed251337de01bbacdc17e2d21ed799ea30eae4bd24af
 
 pkgname = rust-parallel
