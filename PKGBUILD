@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: Kevin Morris <kevr at 0cost dot org>
 pkgname=system76-kbd-led-git
 pkgver=0.1.r14.gba5bbd7
@@ -16,7 +16,7 @@ source=('git+https://github.com/kevr/system76-kbd-led.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -32,7 +32,7 @@ build() {
 package() {
   make -C build DESTDIR="$pkgdir/" install
 
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
 }
