@@ -1,2 +1,4 @@
+src
+pkg
 arbie/
-arbie-git*
+*.tar.*
