@@ -1,13 +1,13 @@
 pkgbase = micronaut
 	pkgdesc = Application Framework
-	pkgver = 1.3.5
+	pkgver = 4.2.3
 	pkgrel = 1
-	url = https://github.com/micronaut-projects/micronaut-core
+	url = https://github.com/micronaut-projects/micronaut-starter
 	arch = x86_64
 	license = Apache
+	makedepends = unzip
 	depends = java-environment>=8
-	source = https://github.com/micronaut-projects/micronaut-core/archive/v1.2.9.tar.gz
-	sha512sums = e3d84e36157eb6b9156d0037a415f6c748b63bcf94ad610b58a1384b977feee728bd94ef520a59fcc3096350c6cef1702bdcc4a6beb0053bd5f701f231c9c43b
+	source = https://github.com/micronaut-projects/micronaut-starter/archive/v4.2.3.tar.gz
+	sha512sums = f64b75fb559f8bd29a54cfdd2fd7b0e47c389dff750f88711f6f31e6e3152f0a7d8702afd6f584ce9af2902df308daff26c85fb0c33b2088d077d66bed1ec75e
 
 pkgname = micronaut
-
