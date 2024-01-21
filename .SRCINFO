@@ -1,7 +1,7 @@
 pkgbase = xkb-switch-i3
 	pkgdesc = Program that allows to query and change the XKB layout state (with i3wm auto-switch mode)
 	pkgver = 2.0.1+i3_5
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/zebradil/xkb-switch-i3
 	arch = i686
 	arch = x86_64
