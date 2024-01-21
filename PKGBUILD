@@ -14,13 +14,13 @@ conflicts=('na')
 depends=('glibc')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/moyiz/na/releases/download/v0.0.9/na_linux_arm64.tar.gz")
-sha256sums_aarch64=('e2a8d7c7da2b7fa869c3452ade17c7e029e73a2747f87977aebfbd3da2bf1397')
+sha256sums_aarch64=('fa7e7d6a985420dd6d5e6ea40c8e2e269806e182910ea5f3ac25de1569e1694c')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/moyiz/na/releases/download/v0.0.9/na_linux_i386.tar.gz")
-sha256sums_i686=('18c33c98f763bf15f48c664e1fcb7ae9776c24420eb3fe551de03f7fa948539a')
+sha256sums_i686=('2cd990731bc4307dfe07b4539b28d59da44590a9b334b71e6fab6e124a15387f')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/moyiz/na/releases/download/v0.0.9/na_linux_x86_64.tar.gz")
-sha256sums_x86_64=('b5a70c42c885c9ce85753f153e122f48d5e104f7da02d35a3c591cf3c99cf3e3')
+sha256sums_x86_64=('62c0d644ab16f06609410b7e9b15c63d789389490a980011fc8f10d148ed876d')
 
 package() {
   cd ${srcdir}
