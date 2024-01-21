@@ -1,7 +1,7 @@
 pkgbase = python-rectangle-packer
 	pkgdesc = Pack a set of rectangles into a bounding box with minimum area
-	pkgver = 2.0.1
-	pkgrel = 1
+	pkgver = 2.0.2
+	pkgrel = 2
 	url = https://github.com/Penlect/rectangle-packer
 	arch = i686
 	arch = pentium4
@@ -10,7 +10,7 @@ pkgbase = python-rectangle-packer
 	makedepends = cython
 	makedepends = python-setuptools
 	depends = python
-	source = rectangle-packer-2.0.1.tar.gz::https://github.com/Penlect/rectangle-packer/archive/refs/tags/2.0.1.tar.gz
+	source = rectangle-packer-2.0.2.tar.gz::https://github.com/Penlect/rectangle-packer/archive/refs/tags/2.0.2.tar.gz
 	sha512sums = SKIP
 
 pkgname = python-rectangle-packer
