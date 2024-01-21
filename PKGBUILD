@@ -1,7 +1,7 @@
 # Maintainer: kotontrion <kotontrion@tutanota.de>
 pkgname=aylurs-gtk-shell-git
 _pkgname=ags
-pkgver=1.6.3.beta.r27.gf8a3ec9
+pkgver=1.6.3.beta.r50.g524bad0
 pkgrel=1
 pkgdesc="Aylurs's Gtk Shell (AGS), An eww inspired gtk widget system."
 arch=('x86_64')
@@ -37,11 +37,12 @@ prepare() {
 build() {
   cd $srcdir/$_pkgname
   npm install
-  arch-meson build --libdir "lib/$pkgname"
+  arch-meson build --libdir "lib/$pkgname" -Dbuild_types=true
   meson compile -C build
 }
 
 package() {
   cd $srcdir/$_pkgname
   meson install -C build --destdir "$pkgdir"
+  ln -sf /usr/share/com.github.Aylur.ags/com.github.Aylur.ags ${pkgdir}/usr/bin/ags
 }
