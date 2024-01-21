@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="A forecast application using OpenWeatherMap API"
 arch=('x86_64')
 url="https://gitlab.com/bitseater/meteo"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gtk3' 'libayatana-appindicator' 'webkit2gtk')
 makedepends=('git' 'meson' 'vala')
 checkdepends=('appstream')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 validpgpkeys=('900E41F44EFF4B6D696EB80AE6BDC743AED36483') # Carlos Suárez <bitseater@gmail.com>
 
 pkgver() {
-  cd "$srcdir/${pkgname%-gtk}"
+  cd "${pkgname%-gtk}"
   git describe --tags | sed 's/-/+/g'
 }
 
