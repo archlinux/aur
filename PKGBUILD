@@ -1,11 +1,11 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=oryx-kb-leds
 pkgver=1.1
 pkgrel=4
 pkgdesc="Control your Oryx Pro's Keyboard LEDs"
 arch=('x86_64')
 url="https://github.com/davemcphee/oryx-kb-leds"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('python-colour' 'python-psutil' 'python-pyaml' 'system76-dkms')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 install="$pkgname.install"
@@ -21,6 +21,6 @@ package() {
   cd "$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 systemd/oryxkbleds.service -t "$pkgdir/usr/lib/systemd/system"
-  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 systemd/oryxkbleds.service -t "$pkgdir/usr/lib/systemd/system/"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
