@@ -1,4 +1,5 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
+# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=opencl-caps-viewer
 pkgver=1.20
 pkgrel=2
@@ -7,7 +8,7 @@ arch=("x86_64")
 depends=("opencl-icd-loader" "qt5-x11extras")
 url="https://opencl.gpuinfo.org/"
 makedepends=('git')
-license=("GPL2")
+license=("GPL-2.0-or-later")
 
 source=("git+https://github.com/SaschaWillems/OpenCLCapsViewer.git#tag=${pkgver}"
         "git+https://github.com/KhronosGroup/OpenCL-Headers.git")
