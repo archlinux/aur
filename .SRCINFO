@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod-edge
 	pkgdesc = Linux Xanmod - Rolling Release [EDGE]
-	pkgver = 6.7.0
+	pkgver = 6.7.1
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -17,13 +17,13 @@ pkgbase = linux-xanmod-edge
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.7.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.7.tar.sign
-	source = patch-6.7.0-xanmod1.xz::https://sourceforge.net/projects/xanmod/files/releases/edge/6.7.0-xanmod1/patch-6.7.0-xanmod1.xz/download
+	source = patch-6.7.1-xanmod1.xz::https://sourceforge.net/projects/xanmod/files/releases/edge/6.7.1-xanmod1/patch-6.7.1-xanmod1.xz/download
 	source = choose-gcc-optimization.sh
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = ef31144a2576d080d8c31698e83ec9f66bf97c677fa2aaf0d5bbb9f3345b1069
 	sha256sums = SKIP
-	sha256sums = c2603413fa9c6eb3f393e1adbe72e13185598b25936879588ed32a41e71ef9f8
+	sha256sums = e364af5692a620d203e1a4605b5a43f81b3f2b5eb77d2a54dbb0e132ab21e28c
 	sha256sums = a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f
 
 pkgname = linux-xanmod-edge
