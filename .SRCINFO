@@ -1,4 +1,4 @@
-pkgbase = wiringOP-orangepi-5-plus-git
+pkgbase = wiringop-orangepi-5-plus-git
 	pkgdesc = wiringPi for Orange Pi 5 Plus
 	pkgver = 2.52
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = wiringOP-orangepi-5-plus-git
 	source = git+https://github.com/orangepi-xunlong/wiringOP#commit=ce520ea17701445eb2e8e3cc1b6e157d29b63713
 	md5sums = SKIP
 
-pkgname = wiringOP-orangepi-5-plus-git
+pkgname = wiringop-orangepi-5-plus-git
