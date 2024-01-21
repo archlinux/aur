@@ -1,7 +1,7 @@
 pkgbase = 1password-cli
 	pkgdesc = 1Password command line tool
 	pkgver = 2.24.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://app-updates.agilebits.com/product_history/CLI2
 	install = 1password-cli.install
 	arch = x86_64

@@ -3,7 +3,7 @@
 
 pkgname=1password-cli
 pkgver=2.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc="1Password command line tool"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'aarch64')
 url="https://app-updates.agilebits.com/product_history/CLI2"
@@ -31,9 +31,6 @@ check() {
 
 package() {
   install -Dm755 op "${pkgdir}"/usr/bin/op
-
-  install -dm755 "${pkgdir}"/usr/share/zsh/site-functions
-  "${pkgdir}"/usr/bin/op completion zsh > "${pkgdir}"/usr/share/zsh/site-functions/_op
 }
 
 # vim:set ts=2 sw=2 et:
