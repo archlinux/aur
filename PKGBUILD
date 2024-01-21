@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=papirus-nord
 pkgver=3.2.0
 pkgrel=1
@@ -6,7 +6,7 @@ epoch=1
 pkgdesc="Custom colors for folder icons for Papirus Icon Theme!"
 arch=('any')
 url="https://github.com/Adapta-Projects/Papirus-Nord"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('papirus-icon-theme')
 optdepends=('papirus-linux-universe: change folder colors')
 options=('!strip')
