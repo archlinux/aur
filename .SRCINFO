@@ -1,6 +1,6 @@
 pkgbase = r-modeldata
 	pkgdesc = Data Sets Useful for Modeling Examples
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=modeldata
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = r-modeldata
 	optdepends = r-covr
 	optdepends = r-ggplot2
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/modeldata_1.2.0.tar.gz
-	md5sums = 0661010070805ff99c74b395c81dbdd0
-	sha256sums = 4c0901a8c1e1612374494198c7c08edb310d092a8face8f15859ad751249a295
+	source = https://cran.r-project.org/src/contrib/modeldata_1.3.0.tar.gz
+	md5sums = 3a8fe77fd64aff48602fa25f049ba330
+	b2sums = 7f5551db900355746563c2bc6b02bc342410488ee042f539f1b436c4af4239b58f44d6db320e18a7183a7537525343f31fd32bba40092d3185f02cf2aa63bbec
 
 pkgname = r-modeldata
