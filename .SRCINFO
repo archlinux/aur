@@ -1,7 +1,7 @@
 pkgbase = alacritty-colorscheme-git
 	pkgdesc = Change colorscheme of alacritty with ease
 	pkgver = r51.257e466
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zebradil/alacritty-colorscheme/
 	arch = any
 	license = Apache

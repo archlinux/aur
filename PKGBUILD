@@ -5,11 +5,12 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=alacritty-colorscheme-git
 pkgver=r51.257e466
-pkgrel=1
+pkgrel=2
 pkgdesc='Change colorscheme of alacritty with ease'
 url='https://github.com/zebradil/alacritty-colorscheme/'
 arch=(any)
 license=(Apache)
+install=''
 depends=(python-ruamel-yaml python-typed-argument-parser python-pynvim)
 makedepends=(python-build python-installer python-poetry-core python-wheel)
 conflicts=(alacritty-colorscheme)
