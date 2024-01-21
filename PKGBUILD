@@ -2,7 +2,7 @@
 
 pkgname="webhookd"
 pkgver=1.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A very simple webhook server launching scripts."
 arch=("any")
 url="https://github.com/ncarlier/${pkgname}"
@@ -10,9 +10,11 @@ license=("MIT")
 makedepends=("git" "go")
 backup=("etc/default/${pkgname}")
 source=("${pkgname}::git+${url}"
-        "${pkgname}.service")
+        "${pkgname}.service"
+        "${pkgname}.user.service")
 sha256sums=('SKIP'
-            '90749f97fdb02592f9d4599732607f32544b04d8618c17b59ec7b773d2cd5338')
+            'b24d5dfc84bf7b1cceea963b96de3085b6ed079c8f99c56225d8125c791d3543'
+            '714e9e219b51af192208500b6936f748ad86a5ec79d5e5683cab1e81fbeae09c')
 
 prepare() {
     cd "${pkgname}"
@@ -48,6 +50,7 @@ package() {
     install -Dm755 "${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    install -Dm644 "${pkgname}.user.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
     install -Dm644 "${pkgname}/etc/default/${pkgname}.env" "${pkgdir}/etc/default/${pkgname}"
     install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" "${pkgname}"/{README.md,scripts/*.sh,scripts/examples/*}
 }

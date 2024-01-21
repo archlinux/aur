@@ -1,7 +1,7 @@
 pkgbase = webhookd
 	pkgdesc = A very simple webhook server launching scripts.
 	pkgver = 1.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ncarlier/webhookd
 	arch = any
 	license = MIT
@@ -10,7 +10,9 @@ pkgbase = webhookd
 	backup = etc/default/webhookd
 	source = webhookd::git+https://github.com/ncarlier/webhookd
 	source = webhookd.service
+	source = webhookd.user.service
 	sha256sums = SKIP
-	sha256sums = 90749f97fdb02592f9d4599732607f32544b04d8618c17b59ec7b773d2cd5338
+	sha256sums = b24d5dfc84bf7b1cceea963b96de3085b6ed079c8f99c56225d8125c791d3543
+	sha256sums = 714e9e219b51af192208500b6936f748ad86a5ec79d5e5683cab1e81fbeae09c
 
 pkgname = webhookd
