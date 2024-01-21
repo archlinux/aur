@@ -1,9 +1,9 @@
 pkgbase = carvel-tools
 	pkgdesc = Deprecated: install carvel tools separately
 	pkgver = 20240121
-	pkgrel = 3
+	pkgrel = 4
 	url = https://carvel.dev
-	install = 0.install
+	install = 1.install
 	arch = x86_64
 	arch = aarch64
 	license = Apache

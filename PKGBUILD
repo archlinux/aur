@@ -5,12 +5,12 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=carvel-tools
 pkgver=20240121
-pkgrel=3
+pkgrel=4
 pkgdesc='Deprecated: install carvel tools separately'
 url='https://carvel.dev'
 arch=(x86_64 aarch64)
 license=(Apache)
-install='0.install'
+install='1.install'
 conflicts=(imgpkg kapp kbld kctrl kwt vendir ytt)
 provides=(imgpkg kapp kbld kctrl kwt vendir ytt)
 source_x86_64=(imgpkg-v0.40.0::https://github.com/carvel-dev/imgpkg/releases/download/v0.40.0/imgpkg-linux-amd64 kapp-v0.60.0::https://github.com/carvel-dev/kapp/releases/download/v0.60.0/kapp-linux-amd64 kbld-v0.38.2::https://github.com/carvel-dev/kbld/releases/download/v0.38.2/kbld-linux-amd64 kctrl-v0.49.0::https://github.com/carvel-dev/kapp-controller/releases/download/v0.49.0/kctrl-linux-amd64 kwt-v0.0.8::https://github.com/carvel-dev/kwt/releases/download/v0.0.8/kwt-linux-amd64 vendir-v0.38.0::https://github.com/carvel-dev/vendir/releases/download/v0.38.0/vendir-linux-amd64 ytt-v0.47.0::https://github.com/carvel-dev/ytt/releases/download/v0.47.0/ytt-linux-amd64)
@@ -50,4 +50,4 @@ package ()
 
 # Custom variables
 
-_z_assets=([0]="0.install")
+_z_assets=([0]="1.install")
