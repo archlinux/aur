@@ -5,11 +5,12 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=kbld-bin
 pkgver=0.38.2
-pkgrel=4
+pkgrel=5
 pkgdesc='kbld seamlessly incorporates image building and image pushing into your development and deployment workflows'
 url='https://carvel.dev/kbld'
 arch=(x86_64 aarch64)
 license=(apache-2.0)
+install=''
 provides=(kbld)
 source_x86_64=(kbld-v0.38.2::https://github.com/carvel-dev/kbld/releases/download/v0.38.2/kbld-linux-amd64)
 source_aarch64=(kbld-v0.38.2::https://github.com/carvel-dev/kbld/releases/download/v0.38.2/kbld-linux-arm64)
