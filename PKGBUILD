@@ -2,7 +2,7 @@
 
 pkgname=pulumi-language-java
 _reponame=pulumi-java
-pkgver=0.9.8
+pkgver=0.9.9
 pkgrel=1
 pkgdesc='Modern Infrastructure as Code (YAML provider)'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("$_reponame-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('0fb0f9beed326f94e712c756993b3b8faea2cdc08d754451a2287deccd4951707afa3484b7027093e6fc0ef7525b0e5f24501e4a28c628fd451d5eed20adafce')
+sha256sums=('e49c5f5bc0446ad6be5eee7d5de88c9319efbf3c88e338bd1c117a5e65b8d95a')
 options=('!lto') # disable as soon as LTO problems are resolved
 
 build() {
