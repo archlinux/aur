@@ -5,11 +5,12 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=python-powerline-taskwarrior
 pkgver=2.0.0
-pkgrel=17
+pkgrel=18
 pkgdesc='Powerline segment for showing information from Taskwarrior task manager'
 url='https://github.com/Zebradil/powerline-taskwarrior'
 arch=(any)
 license=(MIT)
+install=''
 depends=(python-powerline python3 task)
 makedepends=(python-build python-installer python-poetry-core python-wheel)
 source=(https://files.pythonhosted.org/packages/source/p/powerline-taskwarrior/powerline-taskwarrior-2.0.0.tar.gz)
