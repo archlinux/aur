@@ -1,7 +1,7 @@
 pkgbase = orbuculum-git
 	pkgdesc = Orbuculum is a set of tools for decoding and presenting output flows from the debug pins of a CORTEX-M CPU.
 	pkgver = 2.1.0.r95.ge312aa1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/orbcode/orbuculum
 	arch = x86_64
 	license = BSD-3-Clause
@@ -11,6 +11,7 @@ pkgbase = orbuculum-git
 	depends = sdl2
 	depends = zeromq
 	depends = capstone
+	depends = libdwarf
 	provides = orbuculum
 	conflicts = orbuculum
 	source = git+https://github.com/orbcode/orbuculum
