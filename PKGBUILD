@@ -5,11 +5,12 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=kubectl-gke-rapid-bin
 pkgver=v1.28.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Kubernetes.io client binary, compatible with the GKE version from the rapid channel'
 url='https://github.com/kubernetes/kubectl'
 arch=(i686 x86_64 armv5 armv6h armv7h aarch64)
 license=(Apache-2.0)
+install=''
 conflicts=(kubectl-gke-rapid-bin kubectl-gke-rapid-bin-bin)
 provides=(kubectl-gke-rapid-bin=v1.28.6)
 source_i686=(kubectl-gke-rapid-bin-v1.28.6::https://storage.googleapis.com/kubernetes-release/release/v1.28.6/bin/linux/386/kubectl)
