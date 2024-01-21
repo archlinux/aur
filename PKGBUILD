@@ -8,11 +8,12 @@
 
 pkgname=kapp
 pkgver=0.60.0
-pkgrel=1
+pkgrel=2
 pkgdesc='kapp is a simple deployment tool focused on the concept of "Kubernetes application" — a set of resources with the same label'
 url='https://carvel.dev/kapp'
 arch=(any)
 license=(apache-2.0)
+install=''
 makedepends=(bash go)
 provides=(kapp)
 source=(kapp-0.60.0::https://github.com/carvel-dev/kapp/archive/v0.60.0.tar.gz)

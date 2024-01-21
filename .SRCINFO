@@ -1,7 +1,7 @@
 pkgbase = kapp
 	pkgdesc = kapp is a simple deployment tool focused on the concept of "Kubernetes application" — a set of resources with the same label
 	pkgver = 0.60.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://carvel.dev/kapp
 	arch = any
 	license = apache-2.0
