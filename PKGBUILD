@@ -1,7 +1,7 @@
 # Maintainer: Ryan Petris <ryan@petris.net>
 
 pkgname=pacdb
-pkgver=1.0.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Pacman Database to SQLite Converter'
 url='https://github.com/ryanpetris/pacdb'
@@ -21,7 +21,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/ryanpetris/${pkgname}/archive/v${pkgver}.tar.gz"
 )
 b2sums=(
-    'c74ab54c595d9a49274b60b4c6226dd41dc6df45b50a6beaefbcac95272d5d030ed7a188c298d9110c098b49cc414c9f5d64f9d475cdebe2665531f626d30d63'
+    'b7895d8f5e5920365fdb3709f21831ddfd45d13610a293dac1003dce095461f51a9bf0605e53f107693ea52be76ee552037ff719a49a8cb394a8dde99d88ac58'
 )
 
 build() {
