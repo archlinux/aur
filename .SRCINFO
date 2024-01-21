@@ -1,7 +1,7 @@
 pkgbase = abseil-cpp11
 	pkgdesc = Common C++ libraries (legacy for C++11)
 	pkgver = 20220623.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://abseil.io
 	arch = aarch64
 	arch = x86_64

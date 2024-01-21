@@ -5,7 +5,7 @@
 _name=abseil-cpp
 pkgname=abseil-cpp11
 pkgver=20220623.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Common C++ libraries (legacy for C++11)'
 arch=(aarch64 x86_64)
 url='https://abseil.io'
@@ -23,6 +23,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_INCLUDEDIR=/usr/include/$pkgname \
     -DCMAKE_INSTALL_LIBDIR=lib/$pkgname \
+    -DCMAKE_SKIP_INSTALL_RPATH=OFF \
+    -DCMAKE_INSTALL_RPATH=/usr/lib/$pkgname \
     -DCMAKE_CXX_STANDARD=11 \
     -DBUILD_SHARED_LIBS=ON \
     -DABSL_USE_EXTERNAL_GOOGLETEST=ON \
