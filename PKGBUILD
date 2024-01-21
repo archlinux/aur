@@ -6,7 +6,7 @@ _gitbranch="main"
 
 pkgname="${_pkgname}-git"
 pkgver=v1.1.2.r45.gd7136a9
-pkgrel=2
+pkgrel=3
 pkgdesc="Note-taking and tasks management tool"
 arch=('any')
 url="https://github.com/${_gitauthor}/${_pkgname}"
@@ -35,6 +35,10 @@ pkgver() {
   )
 }
 
+prepare() {
+  cd "$srcdir/${_pkgname}"
+}
+
 # build() {
 # }
 
@@ -44,4 +48,3 @@ package() {
   install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
   install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
 }
-
