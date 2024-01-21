@@ -1,11 +1,11 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=passbook-git
 pkgver=0.8.r36.g750825d
 pkgrel=1
 pkgdesc="Password manager for GNOME"
 arch=('any')
 url="https://wiki.gnome.org/Apps/Passbook"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gtk3' 'python-cairo' 'python-gobject')
 makedepends=('git' 'gobject-introspection' 'meson')
 checkdepends=('appstream-glib')
@@ -16,7 +16,7 @@ source=('git+https://gitlab.gnome.org/gnumdk/passbook.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/passbook"
+  cd passbook
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
