@@ -4,14 +4,14 @@
 pkgname=ruby-prawn-icon
 _name=${pkgname#ruby-}
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy icons for Prawn"
 arch=(any)
 url="https://github.com/jessedoyle/prawn-icon"
 license=(
-  GPL2
-  GPL3
-  RUBY
+  GPL-2.0-only
+  GPL-3.0-only
+  Ruby
 )
 depends=(
   ruby
@@ -26,8 +26,9 @@ checkdepends=(
   ruby-rspec
 )
 options=(!emptydirs)
+
 source=(
-  "$url/archive/refs/tags/v$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   "remove-redundant-dev-dependencies.patch"
 )
 sha256sums=(
@@ -49,7 +50,6 @@ prepare() {
 build() {
   cd "$_archive"
 
-  local _gemdir
   _gemdir="$(gem env gemdir)"
 
   gem build "$_name.gemspec"
@@ -93,18 +93,16 @@ build() {
 check() {
   cd "$_archive"
 
-  local _gemdir
   _gemdir="$(gem env gemdir)"
-
   GEM_HOME="tmp_install/$_gemdir" rspec
 }
 
 package() {
   cd "$_archive"
 
-  cp --archive --verbose tmp_install/* "$pkgdir"
+  cp --archive tmp_install/* "$pkgdir"
 
-  install --verbose -D --mode=0644 COPYING --target-directory "$pkgdir/usr/share/licenses/$pkgname"
-  install --verbose -D --mode=0644 LICENSE --target-directory "$pkgdir/usr/share/licenses/$pkgname"
-  install --verbose -D --mode=0644 ./*.md --target-directory "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+    COPYING LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
 }
