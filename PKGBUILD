@@ -1,13 +1,13 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-session-shell-git
-pkgver=5.6.3.r9.g36589226
+pkgver=6.0.15.r0.g84449390
 pkgrel=1
 pkgdesc='Deepin desktop-environment - session-shell module'
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dde-session-shell"
 license=('GPL3')
-depends=('deepin-daemon-git' 'deepin-wallpapers-git' 'gsettings-qt' 'liblightdm-qt5' 'startdde-git')
+depends=('deepin-daemon' 'deepin-wallpapers' 'gsettings-qt' 'liblightdm-qt5' 'startdde')
 makedepends=('git' 'cmake' 'ninja' 'qt5-tools' 'gtest' 'gmock')
 conflicts=('deepin-session-ui<5' 'deepin-session-shell')
 provides=('lightdm-deepin-greeter' 'deepin-session-shell')
