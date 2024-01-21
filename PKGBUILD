@@ -1,7 +1,7 @@
 # Maintainer: Magnus Groß, for email contact see AUR commit author email
 _pkgname=vtm
 pkgname="$_pkgname"-git
-pkgver=0.9.9u.r0.g0ff593e9
+pkgver=0.9.55.r0.g7cf5e3e2
 pkgrel=1
 pkgdesc="Terminal multiplexer with window manager and session sharing"
 arch=('i686' 'x86_64')
