@@ -1,4 +1,4 @@
-pkgbase = wiringOP-orangepi-5-plus-base-git
+pkgbase = wiringop-orangepi-5-plus-base-git
 	pkgdesc = wiringPi for Orange Pi 5 Plus
 	pkgver = 2.52
 	pkgrel = 1
@@ -16,4 +16,4 @@ pkgbase = wiringOP-orangepi-5-plus-base-git
 	md5sums = 9b18f834de9315011047171db92bd9bc
 	md5sums = 6ac566d1f01ae1b032a0c91f2a451e4b
 
-pkgname = wiringOP-orangepi-5-plus-base-git
+pkgname = wiringop-orangepi-5-plus-base-git
