@@ -3,10 +3,10 @@
 _projectname=kqueue
 pkgname=ocaml-$_projectname
 pkgver=0.3.0
-pkgrel=1
-license=('MPL2')
+pkgrel=2
+license=('BSD-3-Clause')
 arch=('x86_64')
-pkgdesc="Encoding combinators a la Data_encoding for Ezjsonm"
+pkgdesc="OCaml bindings to kqueue"
 url="https://github.com/anuragsoni/$_projectname-ml"
 depends=('ocaml' 'ocaml-ppx_optcomp')
 makedepends=('dune')

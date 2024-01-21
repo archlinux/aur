@@ -1,10 +1,10 @@
 pkgbase = ocaml-kqueue
-	pkgdesc = Encoding combinators a la Data_encoding for Ezjsonm
+	pkgdesc = OCaml bindings to kqueue
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anuragsoni/kqueue-ml
 	arch = x86_64
-	license = MPL2
+	license = BSD-3-Clause
 	makedepends = dune
 	depends = ocaml
 	depends = ocaml-ppx_optcomp
