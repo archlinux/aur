@@ -1,0 +1,14 @@
+pkgbase = ocaml-cstruct
+	pkgdesc = Map OCaml arrays onto C-like structs
+	pkgver = 6.2.0
+	pkgrel = 1
+	url = https://github.com/mirage/ocaml-cstruct
+	arch = x86_64
+	license = custom:ISC
+	makedepends = dune
+	depends = ocaml
+	options = !strip
+	source = ocaml-cstruct-6.2.0.tbz::https://github.com/mirage/ocaml-cstruct/releases/download/v6.2.0/cstruct-6.2.0.tbz
+	sha512sums = 8d33fe6b3707a3994d0225cd33cadde0bb2ca834ef01096e3df33a08e4a8c6d02ebccddf558a73988b8a5595b65fdc10de61efbf872c6c9e55c719c7e19c463d
+
+pkgname = ocaml-cstruct

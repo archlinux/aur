@@ -1,0 +1,4 @@
+ocaml-cstruct-*.pkg.tar.zst
+ocaml-cstruct-*.tbz
+pkg/
+src/
