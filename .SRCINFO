@@ -1,6 +1,6 @@
 pkgbase = xfetch-rs-git
 	pkgdesc = The world's fastest & simplest fetch written in Rust.
-	pkgver = r28.d113589
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/XandrCopyrighted/xFetch/
 	arch = any
