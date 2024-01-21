@@ -1,0 +1,16 @@
+pkgbase = wiringOP-orangepi-5-plus-git
+	pkgdesc = wiringPi for Orange Pi 5 Plus
+	pkgver = 2.52
+	pkgrel = 1
+	url = https://github.com/orangepi-xunlong/wiringOP
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-3.0
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = wiringOP-orangepi-5-plus-base-git
+	source = git+https://github.com/orangepi-xunlong/wiringOP#commit=ce520ea17701445eb2e8e3cc1b6e157d29b63713
+	md5sums = SKIP
+
+pkgname = wiringOP-orangepi-5-plus-git
