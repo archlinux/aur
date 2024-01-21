@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Baba Is You
+Comment=Puzzle game where the rules are physical objects
+Exec=baba-is-you
+Icon=baba-is-you
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8
