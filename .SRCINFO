@@ -1,0 +1,18 @@
+pkgbase = ocaml-ezjsonm
+	pkgdesc = Hexadecimal converter
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/mirage/ocaml-ezjsonm
+	arch = x86_64
+	license = custom:ISC
+	makedepends = dune
+	depends = ocaml
+	depends = ocaml-hex
+	depends = ocaml-uutf
+	depends = ocaml-sexplib0
+	depends = ocaml-jsonm
+	options = !strip
+	source = ocaml-ezjsonm-1.3.0.tbz::https://github.com/mirage/ezjsonm/releases/download/v1.3.0/ezjsonm-1.3.0.tbz
+	sha512sums = b731036384115603af9187464695418d27b7cf6f763c8dbc0812db62a7657cac1b6019d3b205b1c95ae81b7dab0bd4037390d977ee8c122bef29a9ddef771e18
+
+pkgname = ocaml-ezjsonm
