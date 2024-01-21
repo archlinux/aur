@@ -1,7 +1,7 @@
-# Maintainer: Maxime Arthaud <maxime@arthaud.me>
+# Contributor: Maxime Arthaud <maxime@arthaud.me>
 
 pkgname=ikos
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 pkgdesc='Static analyzer for C and C++ developed by NASA'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -16,20 +16,19 @@ depends=('gmp'
          'llvm14'
          'llvm14-libs'
          'clang14'
-         'apron')
+	 'ppl'
+	 'apron')
 makedepends=('cmake'
              'boost'
 	     'llvm14')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/NASA-SW-VnV/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e2a9ff32d02aeff92abbb8f69f1a6730ad96b6f59a10e18c30522d033f950844')
+sha256sums=('11ab520043523a048f8756d68bd3f6a761870d4ec1a9f240eda8f3b1a11f7aa1')
 
-prepare() {
+build() {
   cd "$srcdir/ikos-$pkgver"
   [[ -d build ]] && rm -rf build
   mkdir build && cd build
-}
 
-build() {
   cd "$srcdir/ikos-$pkgver/build"
   cmake \
     -DCMAKE_BUILD_TYPE="Release" \
@@ -39,13 +38,13 @@ build() {
   make
 }
 
+check() {
+  cd "$srcdir/ikos-$pkgver/build"
+  make check
+}
+
 package() {
   cd "$srcdir/ikos-$pkgver/build"
   make DESTDIR="$pkgdir" install
   install -Dm644 "$srcdir/ikos-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/ikos/LICENSE"
-}
-
-check() {
-  cd "$srcdir/ikos-$pkgver/build"
-  make check
 }
