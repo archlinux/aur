@@ -3,7 +3,7 @@
 
 pkgname=clipcat
 pkgver=0.16.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A clipboard manager written in Rust Programming Language"
 arch=(x86_64)
 url="https://github.com/xrelkd/clipcat"
@@ -36,6 +36,12 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
+
+  for cmd in clipcatd clipcatctl clipcat-menu clipcat-notify; do
+    "target/release/$cmd" completions bash > "$cmd.bash"
+    "target/release/$cmd" completions zsh > "$cmd.zsh"
+    "target/release/$cmd" completions fish > "$cmd.fish"
+  done
 }
 
 check() {
@@ -57,9 +63,6 @@ package() {
     target/release/clipcatd
 
   for cmd in clipcatd clipcatctl clipcat-menu clipcat-notify; do
-    "$pkgdir/usr/bin/$cmd" completions bash > "$cmd.bash"
-    "$pkgdir/usr/bin/$cmd" completions zsh > "$cmd.zsh"
-    "$pkgdir/usr/bin/$cmd" completions fish > "$cmd.fish"
     install -Dm644 "$cmd.bash" "$pkgdir/usr/share/bash-completion/completions/$cmd"
     install -Dm644 "$cmd.zsh" "$pkgdir/usr/share/zsh/site-functions/_$cmd"
     install -Dm644 "$cmd.fish" "$pkgdir/usr/share/fish/completions/$cmd.fish"
