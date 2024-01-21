@@ -1,15 +1,25 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-file-manager-git
-pkgver=5.8.3.r5.g1ec4c5734
+pkgver=6.0.40.r7.g1319bb076
 pkgrel=1
 pkgdesc='Deepin File Manager'
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dde-file-manager"
 license=('GPL3')
-depends=('deepin-anything-git' 'disomaster-git' 'file' 'gio-qt' 'libmediainfo' 'avfs' 'polkit-qt5' 'poppler'
-         'ffmpegthumbnailer' 'startdde-git' 'taglib' 'jemalloc' 'htmlcxx' 'mimetic' 'lucene++')
-makedepends=('git' 'deepin-movie-git' 'lucene++' 'jemalloc' 'kcodecs' 'htmlcxx' 'libgsf' 'mimetic' 'boost' 'boost-libs' 'qt5-tools' 'deepin-dock-git' 'deepin-gettext-tools-git' 'gtest' 'docparser')
+# deepin-appearance: org.deepin.dde.Appearance1
+depends=('dtkcore' 'dtkgui' 'dtkwidget' 'deepin-anything' 'deepin-util-dfm' 'qt5-base' 'qt5-svg'
+         'qt5-x11extras' 'deepin-pdfium' 'docparser' 'libsecret' 'zlib' 'dconf' 'openssl' 'glib2'
+         'libxcb' 'libx11' 'qt5-multimedia' 'cryptsetup' 'lucene++' 'avfs' 'gsettings-qt'
+         'polkit-qt5' 'poppler' 'kcodecs5' 'taglib' 'util-linux-libs' 'icu' 'pcre' 'glibc' 'gcc-libs'
+         'deepin-appearance' 'deepin-qt-dbus-factory' 'cryfs' 'socat')
+makedepends=('boost' 'cmake' 'ninja' 'qt5-tools' 'deepin-dock' 'deepin-movie' 'deepin-gettext-tools')
+optdepends=('deepin-manual: for help menual'
+            'deepin-shortcut-viewer: for shortcut display'
+            'deepin-screensaver: for screensaver chooser'
+            'deepin-movie: for video preview'
+            'deepin-terminal: for opening in terminal'
+            'deepin-compressor: for compress/decompress')
 optdepends=('deepin-manual: for help menual'
             'deepin-shortcut-viewer: for shortcut display'
             'deepin-screensaver: for screensaver chooser'
@@ -27,25 +37,13 @@ pkgver() {
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-    cd $pkgname
-    if [[ ! -z ${sha} ]];then
-      git checkout -b $sha
-    fi
-
-    sed -i '/#include <QException>/a #include <QPainterPath>' src/dialogs/dfmtaskwidget.cpp
-    sed -i '/#include <QTimer>/a #include <QPainterPath>' src/dde-file-manager-lib/interfaces/dfmglobal.cpp
-    sed -i '/#include <QPainter>/a #include <QPainterPath>' src/dde-file-manager-lib/interfaces/{dlistitemdelegate,dfmstyleditemdelegate,diconitemdelegate}.cpp src/dde-file-manager-lib/dialogs/openwithdialog.cpp
-    sed -i 's|systembusconf.path = /etc/dbus-1/system.d|systembusconf.path = /usr/share/dbus-1/system.d|' src/dde-file-manager-daemon/dde-file-manager-daemon.pro
-}
-
 build() {
-  cd ${pkgname}
-  qmake-qt5 PREFIX=/usr filemanager.pro
-  make
+  # cmake confused with glob files, see https://github.com/linuxdeepin/developer-center/issues/5158
+  cmake -GNinja -B build -S $pkgname -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_SYSCONFDIR=/etc
+  cmake --build build
 }
 
 package() {
-  cd ${pkgname}
-  make INSTALL_ROOT="$pkgdir" install
+  cd build
+  DESTDIR="$pkgdir" ninja install
 }
