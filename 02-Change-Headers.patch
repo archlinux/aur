@@ -1,0 +1,123 @@
+diff --git a/devLib/ds1302.c b/devLib/ds1302.c
+index cf64de7..8c02dc2 100644
+--- a/devLib/ds1302.c
++++ b/devLib/ds1302.c
+@@ -27,7 +27,7 @@
+ #include <stdint.h>
+ #include <stdarg.h>
+ 
+-#include <wiringPi.h>
++#include "../wiringPi/wiringPi.h"
+ 
+ #include "ds1302.h"
+ 
+diff --git a/devLib/gertboard.c b/devLib/gertboard.c
+index 6a84415..f40bed2 100644
+--- a/devLib/gertboard.c
++++ b/devLib/gertboard.c
+@@ -38,8 +38,8 @@
+ #include <sys/ioctl.h>
+ #include <linux/spi/spidev.h>
+ 
+-#include <wiringPi.h>
+-#include <wiringPiSPI.h>
++#include "../wiringPi/wiringPi.h"
++#include "../wiringPi/wiringPiSPI.h"
+ 
+ #include "gertboard.h"
+ 
+diff --git a/devLib/lcd.c b/devLib/lcd.c
+index 6c0e474..aa67afc 100644
+--- a/devLib/lcd.c
++++ b/devLib/lcd.c
+@@ -28,7 +28,7 @@
+ #include <stdlib.h>
+ #include <stdarg.h>
+ 
+-#include <wiringPi.h>
++#include "../wiringPi/wiringPi.h"
+ 
+ #include "lcd.h"
+ 
+diff --git a/devLib/lcd128x64.c b/devLib/lcd128x64.c
+index accd5c3..802d3cf 100644
+--- a/devLib/lcd128x64.c
++++ b/devLib/lcd128x64.c
+@@ -33,7 +33,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ 
+-#include <wiringPi.h>
++#include "../wiringPi/wiringPi.h"
+ 
+ #include "font.h"
+ #include "lcd128x64.h"
+diff --git a/devLib/maxdetect.c b/devLib/maxdetect.c
+index 74ff70e..e0847fc 100755
+--- a/devLib/maxdetect.c
++++ b/devLib/maxdetect.c
+@@ -27,7 +27,7 @@
+ //#include <stdlib.h>
+ //#include <unistd.h>
+ 
+-#include <wiringPi.h>
++#include "../wiringPi/wiringPi.h"
+ 
+ #include "maxdetect.h"
+ 
+diff --git a/devLib/piFace.c b/devLib/piFace.c
+index 4475c7f..7b97f85 100644
+--- a/devLib/piFace.c
++++ b/devLib/piFace.c
+@@ -28,8 +28,8 @@
+ #include <stdio.h>
+ #include <stdint.h>
+ 
+-#include <wiringPi.h>
+-#include <mcp23s17.h>
++#include "../wiringPi/wiringPi.h"
++#include "../wiringPi/mcp23s17.h"
+ 
+ #include "piFace.h"
+ 
+diff --git a/devLib/piGlow.c b/devLib/piGlow.c
+index 44e3db8..539a6e3 100644
+--- a/devLib/piGlow.c
++++ b/devLib/piGlow.c
+@@ -22,8 +22,8 @@
+  ***********************************************************************
+  */
+ 
+-#include <wiringPi.h>
+-#include <sn3218.h>
++#include "../wiringPi/wiringPi.h"
++#include "../wiringPi/sn3218.h"
+ 
+ #include "piGlow.h"
+ 
+diff --git a/devLib/piNes.c b/devLib/piNes.c
+index a115050..36c56eb 100644
+--- a/devLib/piNes.c
++++ b/devLib/piNes.c
+@@ -22,7 +22,7 @@
+  ***********************************************************************
+  */
+ 
+-#include <wiringPi.h>
++#include "../wiringPi/wiringPi.h"
+ 
+ #include "piNes.h"
+ 
+diff --git a/devLib/scrollPhat.c b/devLib/scrollPhat.c
+index c1a6f11..95010a6 100644
+--- a/devLib/scrollPhat.c
++++ b/devLib/scrollPhat.c
+@@ -28,7 +28,7 @@
+ #include <string.h>
+ #include <time.h>
+ 
+-#include <wiringPiI2C.h>
++#include "../wiringPi/wiringPiI2C.h"
+ 
+ #include "scrollPhatFont.h"
+ #include "scrollPhat.h"
