@@ -6,7 +6,7 @@ pkgbase = mongodb-compass-readonly
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
-	license = custom:SSPL
+	license = SSPL-1.0
 	makedepends = git
 	makedepends = npm>=8.19.4
 	makedepends = python
