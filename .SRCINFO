@@ -1,18 +1,18 @@
 pkgbase = mongodb-compass-isolated-git
 	pkgdesc = The official GUI for MongoDB - Isolated Edition - git version
-	pkgver = r16664.g4a719aa32
+	pkgver = r16716.gfd2aab99c
 	pkgrel = 1
 	epoch = 1
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
-	license = custom:SSPL
+	license = SSPL-1.0
 	makedepends = git
 	makedepends = npm>=8.19.4
 	makedepends = python
 	makedepends = unzip
-	depends = electron25
+	depends = electron28
 	depends = krb5
 	depends = libsecret
 	depends = lsb-release
