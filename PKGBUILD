@@ -1,11 +1,11 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=papirus-linux-universe
 pkgver=1.1.0
 pkgrel=2
 pkgdesc="Papirus folder icon set based on distros and the most famous icon themes in the Linux world!"
 arch=('any')
 url="https://github.com/Adapta-Projects/Papirus-Linux-Universe"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('bash' 'papirus-icon-theme')
 optdepends=('papirus-nord: additional icon themes')
 provides=('papirus-folders')
