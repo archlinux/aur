@@ -5,11 +5,12 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=vendir
 pkgver=0.38.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Easy way to vendor portions of git repos, github releases, helm charts, docker image contents, etc. declaratively'
 url='https://carvel.dev/vendir'
 arch=(any)
 license=(apache-2.0)
+install=''
 makedepends=(bash go)
 provides=(vendir)
 source=(vendir-0.38.0::https://github.com/carvel-dev/vendir/archive/v0.38.0.tar.gz)
