@@ -1,0 +1,29 @@
+# Print deprecation notice after installation or upgrade
+
+post_install() {
+    echo "\e[1;31m"
+    echo "carvel-tools is deprecated and will be removed in the future."
+    echo "\e[0m"
+    echo "Please install the following packages instead:"
+    echo "  - imgpkg (imgpkg-bin)"
+    echo "  - kapp   (kapp-bin)"
+    echo "  - kbld   (kbld-bin)"
+    echo "  - kctrl  (kctrl-bin)"
+    echo "  - kwt    (kwt-bin)"
+    echo "  - vendir (vendir-bin)"
+    echo "  - ytt    (ytt-bin)"
+}
+
+post_upgrade() {
+    echo "\e[1;31m"
+    echo "carvel-tools is deprecated and will be removed in the future."
+    echo "\e[0m"
+    echo "Please install the following packages instead:"
+    echo "  - imgpkg (imgpkg-bin)"
+    echo "  - kapp   (kapp-bin)"
+    echo "  - kbld   (kbld-bin)"
+    echo "  - kctrl  (kctrl-bin)"
+    echo "  - kwt    (kwt-bin)"
+    echo "  - vendir (vendir-bin)"
+    echo "  - ytt    (ytt-bin)"
+}
