@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-unpackable
 _name=${pkgname#python-}
 pkgver=0.0.4
@@ -6,7 +6,7 @@ pkgrel=3
 pkgdesc="Destructure Python objects"
 arch=('any')
 url="https://github.com/alexdelorenzo/unpackable"
-license=('LGPL3')
+license=('LGPL-3.0-or-later')
 depends=('python-typing_extensions')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
