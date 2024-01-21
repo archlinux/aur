@@ -1,0 +1,19 @@
+pkgbase = rnsh
+	pkgdesc = Shell over Reticulum
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/acehoss/rnsh
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry
+	depends = python
+	depends = python-rns
+	depends = python-docopt
+	depends = python-tomli
+	source = rnsh-0.1.3::https://github.com/acehoss/rnsh/archive/refs/tags/release/v0.1.3.tar.gz
+	sha256sums = b835a0afc7f11f208e74b91c9e792f7d01ea4c0ff30cd458ccf517a5a4c3a2ce
+
+pkgname = rnsh
