@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=moonlander-git
 pkgver=r229.abfb9cd
 pkgrel=1
@@ -15,19 +15,19 @@ source=('git+https://git.sr.ht/~admicos/moonlander')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
@@ -35,14 +35,14 @@ build() {
 }
 
 check() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --all-features
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   install -Dm755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin/"
   install -Dm644 "misc/${pkgname%-git}.desktop" -t \
     "$pkgdir/usr/share/applications/"
