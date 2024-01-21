@@ -3,7 +3,7 @@
 # Contributor: Paul Davis <paul@dangersalad.com>
 pkgname=openrgb
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source RGB lighting control that doesn't depend on manufacturer software"
 arch=("x86_64")
 url="https://gitlab.com/CalcProgrammer1/OpenRGB"
@@ -23,18 +23,22 @@ sha256sums=('2e62799339b72b6d3afc4792e6ff39487583210bb5ddde93e2daa38ae35381c2'
             '9a0210061e2a55ec0c7ea07bc7860f8fc216f72f84444493964e90457a4c0a00')
 
 build() {
-   export CXXFLAGS=${CXXFLAGS/-pipe}
-   export LDFLAGS="$LDFLAGS -L/usr/lib/mbedtls2" # props to AndyRTR for linking to mbedtls2 fix
+  # Remove -pipe because their weird build process needs -save-temps.
+  export CXXFLAGS=${CXXFLAGS/-pipe}
 
-   cd "$srcdir/OpenRGB-release_$pkgver"
-   sed -i 's|rules.path=/lib|rules.path=/usr/lib|g' OpenRGB.pro
-   qmake INCLUDEPATH+="/usr/include/mbedtls2" OpenRGB.pro
-   make
+  # Fix crashes
+  export CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
+  export LDFLAGS="$LDFLAGS -L/usr/lib/mbedtls2" # props to AndyRTR for linking to mbedtls2 fix
+
+  cd "$srcdir/OpenRGB-release_$pkgver"
+  sed -i 's|rules.path=/lib|rules.path=/usr/lib|g' OpenRGB.pro
+  qmake INCLUDEPATH+="/usr/include/mbedtls2" OpenRGB.pro
+  make
 }
 
 package() {
-   cd "$srcdir/OpenRGB-release_$pkgver"
-   make INSTALL_ROOT="$pkgdir" install
-   install -Dm644 "$srcdir"/openrgb-modules-load.conf "$pkgdir"/usr/lib/modules-load.d/openrgb.conf
-   install -Dm644 "$srcdir"/openrgb.service "$pkgdir"/usr/lib/systemd/system/openrgb.service
+  cd "$srcdir/OpenRGB-release_$pkgver"
+  make INSTALL_ROOT="$pkgdir" install
+  install -Dm644 "$srcdir"/openrgb-modules-load.conf "$pkgdir"/usr/lib/modules-load.d/openrgb.conf
+  install -Dm644 "$srcdir"/openrgb.service "$pkgdir"/usr/lib/systemd/system/openrgb.service
 }
