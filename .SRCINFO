@@ -1,10 +1,10 @@
 pkgbase = clash-nyanpasu
 	pkgdesc = A Clash GUI based on tauri.
-	pkgver = 1.4.2
-	pkgrel = 2
+	pkgver = 1.4.3
+	pkgrel = 1
 	url = https://github.com/keiko233/clash-nyanpasu
 	arch = any
-	license = GPL-3.0
+	license = GPL-3.0-or-later
 	makedepends = yarn
 	makedepends = cargo-tauri
 	makedepends = jq
@@ -21,7 +21,7 @@ pkgbase = clash-nyanpasu
 	optdepends = clash-rs
 	provides = clash-nyanpasu
 	options = !lto
-	source = git+https://github.com/keiko233/clash-nyanpasu.git#tag=517e16645abdf3f969d682522693342a883265ad
+	source = git+https://github.com/keiko233/clash-nyanpasu.git#tag=20bc7335c6e162b165010df3830ef5f15d8eb258
 	source = clash-nyanpasu.desktop
 	sha512sums = SKIP
 	sha512sums = SKIP
