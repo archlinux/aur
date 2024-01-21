@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Install and manage Proton-GE and Luxtorpeda for Steam and Wine-GE for Lutris"
 arch=('any')
 url="https://davidotek.github.io/protonup-qt"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
   'pyside6'
   'python-inputs'
