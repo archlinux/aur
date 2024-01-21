@@ -6,7 +6,7 @@ epoch=1
 pkgdesc="Keep your data safe"
 arch=('x86_64' 'aarch64')
 url="https://apps.gnome.org/PikaBackup"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('borg' 'fuse3' 'libadwaita' 'libsecret' 'python-pyfuse3')
 makedepends=('cargo' 'git' 'itstool' 'meson')
 checkdepends=('appstream-glib')
@@ -16,12 +16,12 @@ source=("git+https://gitlab.gnome.org/World/pika-backup.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
@@ -31,7 +31,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   arch-meson . build
@@ -39,7 +39,7 @@ build() {
 }
 
 check() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
 
   # test failed_ssh_connection
 #  export CARGO_HOME="$srcdir/cargo-home"
@@ -53,6 +53,6 @@ check() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   meson install -C build --destdir "$pkgdir"
 }
