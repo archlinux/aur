@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh < morealaz at gmail dot com >
 # Contributer: Alexander Mezin <mezin.alexander at gmail dot com>
 pkgname=gnome-shell-extension-ddterm-git
-pkgver=49.r1.g6bf1ef9
+pkgver=50.r13.g03d9ff0
 pkgrel=1
 pkgdesc="Another Drop Down Terminal Extension for GNOME Shell (Github version)."
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 depends=('gnome-shell' 'gtk3' 'vte3')
-makedepends=('git' 'gtk4' 'libxslt' 'xorg-server-xvfb')
+makedepends=('meson' 'git' 'gtk4' 'libxslt' 'xorg-server-xvfb')
 install="${pkgname%-git}.install"
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
@@ -21,14 +21,14 @@ pkgver() {
 }
 
 build() {
-    cd "${srcdir}/${pkgname%-git}"
+    arch-meson "${pkgname%-git}" build
 
     # gtk-builder-tool needs X or Wayland
-    LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -- make build
+    LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -- meson compile -C build
 }
 
 package() {
-    cd "${srcdir}/${pkgname%-git}"
-    make DESTDIR="${pkgdir}/" install
+    meson install -C build --destdir "$pkgdir"
 }
+
 # vim:set ts=4 sw=4 et:
