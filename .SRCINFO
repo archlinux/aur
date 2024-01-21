@@ -1,7 +1,7 @@
 pkgbase = thunderbird-extension-xnote-git
 	pkgdesc = Persistent sticky notes for Thunderbird associated to mails. You can email them/print/copy to clipboard.
-	pkgver = 3.2.1.8bb777c
-	pkgrel = 2
+	pkgver = 4.0.1.8bb777c
+	pkgrel = 1
 	url = https://github.com/xnotepp/xnote
 	arch = any
 	license = GPL2
