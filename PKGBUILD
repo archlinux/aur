@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Corey Hinshaw <coreyhinshaw(at)gmail(dot)com>
 pkgname=system76-dkms
 pkgver=1.0.13+2+g78ede46
@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="On newer System76 laptops, this driver controls some of the hotkeys and allows for custom fan control."
 arch=('x86_64')
 url="https://github.com/pop-os/system76-dkms"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('dkms')
 makedepends=('git')
 _commit=78ede46c30f3bdb38d6acec5bc3fe982703ade17
@@ -14,12 +14,12 @@ source=("git+https://github.com/pop-os/system76-dkms.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   git describe --tags | sed 's/-/+/g'
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   local install_dir="$pkgdir/usr/src/system76-${pkgver//+*/}"
 
   # Install source files

@@ -4,7 +4,7 @@ pkgbase = system76-dkms
 	pkgrel = 1
 	url = https://github.com/pop-os/system76-dkms
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = git
 	depends = dkms
 	source = git+https://github.com/pop-os/system76-dkms.git#commit=78ede46c30f3bdb38d6acec5bc3fe982703ade17
