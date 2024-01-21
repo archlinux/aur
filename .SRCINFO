@@ -1,11 +1,12 @@
 pkgbase = musicpod-git
 	pkgdesc = Music, radio, television and podcast player
-	pkgver = r741.cbe57c7
+	pkgver = r802.e051973
 	pkgrel = 1
 	url = https://github.com/ubuntu-flutter-community/musicpod
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	checkdepends = appstream-glib
+	makedepends = chrpath
 	makedepends = clang
 	makedepends = cmake
 	makedepends = git
@@ -16,8 +17,8 @@ pkgbase = musicpod-git
 	provides = musicpod
 	conflicts = musicpod
 	source = git+https://github.com/ubuntu-flutter-community/musicpod.git
-	source = flutter-3.16.5.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.16.5-stable.tar.xz
+	source = flutter-3.16.8.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.16.8-stable.tar.xz
 	sha256sums = SKIP
-	sha256sums = 57e59fa3a31be7e87b3847cdf782f1323578bbf70a0cd35f3615f01ab429ac29
+	sha256sums = 7cb12032cf615a92a7bc9042100f3f2af62df7df3ca3bee27f4b153fe218b239
 
 pkgname = musicpod-git
