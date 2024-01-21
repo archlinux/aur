@@ -1,28 +1,43 @@
-# Maintainer: Andrej Radović <r.andrej@gmail.com>
+#  Maintainer: Blair Bonnett <blair.bonnett@gmail.com>
+# Contributor: Andrej Radović <r.andrej@gmail.com>
+
 pkgname=python-iteration-utilities
-_name=${pkgname#python-}
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Utilities based on Pythons iterators and generators."
 url="https://github.com/MSeifert04/iteration_utilities"
+license=('Apache-2.0')
+arch=('x86_64')
+
 depends=('python')
-makedepends=('python-setuptools')
-optdepends=(
-    'python-pytest'
-    'python-sphinx'
-    'python-numpydoc'
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+checkdepends=('python-pytest')
+
+_pypi=iteration_utilities
+source=(
+  "$_pypi-$pkgver.tar.gz::https://github.com/MSeifert04/iteration_utilities/archive/refs/tags/v$pkgver.tar.gz"
 )
-license=('MIT')
-arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('f91f41a2549e9a7e40ff5460fdf9033b6ee5b305d9be77943b63a554534c2a77')
+sha256sums=(
+  '38245a7f48588ee21329438d094f207a41a15c5960f7cfac3b1ec0a08a55bcf9'
+)
 
 build() {
-	cd "$srcdir/${_name//-/_}-$pkgver"
-	python setup.py build
+  cd "$_pypi-$pkgver"
+  python -m build --no-isolation --wheel
+}
+
+check() {
+  cd "$_pypi-$pkgver"
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer "dist/$_pypi-$pkgver-"*.whl
+  test-env/bin/python -m pytest
 }
 
 package() {
-	cd "$srcdir/${_name//-/_}-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1
+  cd "$_pypi-$pkgver"
+  python -m installer --destdir="$pkgdir" "dist/$_pypi-$pkgver-"*.whl
+
+  # Remove source code from the final package.
+  find "$pkgdir" -type f -name "*.[ch]" -delete
+  find "$pkgdir" -type d -name "_iteration_utilities" -delete
 }
