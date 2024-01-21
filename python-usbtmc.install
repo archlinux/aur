@@ -1,0 +1,4 @@
+post_install() {
+  echo "NOTE: To use python-usbtmc as normal user you have to add yourself to the usbtmc group"
+}
+
