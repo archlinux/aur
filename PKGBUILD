@@ -6,7 +6,7 @@ _gitbranch="main"
 
 pkgname="${_pkgname}-git"
 pkgver=v1.3.0.r3.g369fe50
-pkgrel=3
+pkgrel=4
 pkgdesc="Encrypted backup and synchronization tool"
 arch=('any')
 url="https://github.com/${_gitauthor}/${_pkgname}"
@@ -36,11 +36,14 @@ pkgver() {
   )
 }
 
+prepare() {
+  cd "${_pkgname}"
+}
+
 # build() {
 # }
 
 package() {
-  cd "${_pkgname}"
   make DESTDIR="${pkgdir}/" install
   install -vDm 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
