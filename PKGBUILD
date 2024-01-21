@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Multi-featured system monitor."
 arch=('any')
 url="https://github.com/hakandundar34coding/system-monitoring-center"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('dmidecode' 'iproute2' 'libadwaita' 'polkit' 'procps-ng' 'python-cairo'
          'python-gobject' 'util-linux')
 makedepends=('meson')
@@ -15,10 +15,6 @@ optdepends=('amdgpu_top: for video engine load on GPU tab and per-process GPU us
             'xorg-xrandr: for more accurate screen resolution and refresh rate detection')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('31d2426bfc731bf0181618449988b29b08ff27ce2ac1c577fa7231aa96301c47')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-}
 
 build() {
   arch-meson "$pkgname-$pkgver" build
