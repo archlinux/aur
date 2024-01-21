@@ -3,8 +3,8 @@
 
 pkgname=('jed-git')
 _pkgname="${pkgname/-git/}"
-pkgver='0.99.20.r180.g68f0c75'
-pkgrel='5'
+pkgver=0.99.20.r180.g68f0c75
+pkgrel=6
 pkgdesc='Powerful scriptable editor designed for use by programmers (built from latest git commit)'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url='https://www.jedsoft.org/jed/'
@@ -12,7 +12,7 @@ source=(
   'git://git.jedsoft.org/git/jed.git'
   "$pkgname.install"
 )
-license=('GPL')
+license=('GPL-2.0-or-later')  # SPDX-License-Identifier: GPL-2.0-or-later
 provides=('jed' 'xjed' 'rgrep')
 conflicts=('jed' 'xjed' 'rgrep')
 options=('lto' '!makeflags')
