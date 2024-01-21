@@ -1,0 +1,5 @@
+pytest_gitconfig-*.tar.gz
+src/
+pkg/
+python-pytest-gitconfig-*.pkg*
+*.log
