@@ -5,8 +5,8 @@ _gitauthor="danisztls"
 _gitbranch="main"
 
 pkgname="${_pkgname}-git"
-pkgver=v1.1.2.r45.gd7136a9
-pkgrel=3
+pkgver=r29.2784d0f
+pkgrel=1
 pkgdesc="Note-taking and tasks management tool"
 arch=('any')
 url="https://github.com/${_gitauthor}/${_pkgname}"
@@ -27,20 +27,12 @@ noextract=()
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
   # Use tags but fallback to revision
   ( set -o pipefail
     git describe --tags --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
 }
-
-prepare() {
-  cd "$srcdir/${_pkgname}"
-}
-
-# build() {
-# }
 
 package() {
   cd "$srcdir/${_pkgname}"
