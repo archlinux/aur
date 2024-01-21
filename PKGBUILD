@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A simple wrapper that does winetricks things for Proton enabled games."
 arch=('any')
 url="https://github.com/Matoking/protontricks"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('python-pillow' 'python-setuptools' 'python-vdf' 'winetricks')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools-scm'
              'python-wheel')
@@ -18,17 +18,17 @@ source=('git+https://github.com/Matoking/protontricks.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   # Remove protontricks-desktop-install, since we already install
