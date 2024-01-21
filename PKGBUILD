@@ -16,12 +16,12 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd "$srcdir/sticky"
+  cd sticky
   git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
 prepare() {
-  cd "$srcdir/sticky"
+  cd sticky
   git submodule init
   git config submodule.gi-types.url "$srcdir/gi-typescript-definitions"
   git -c protocol.file.allow=always submodule update
@@ -45,8 +45,7 @@ check() {
 package() {
   meson install -C build --no-rebuild --destdir "$pkgdir"
 
-  cd "$srcdir/sticky"
-  install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 sticky/COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   ln -s /usr/bin/com.vixalien.sticky "$pkgdir/usr/bin/$pkgname"
 }
