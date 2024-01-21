@@ -1,6 +1,6 @@
 pkgbase = owon-vds-tiny
 	pkgdesc = OWON VDS1022(I)/VDS2052 oscilloscope application
-	pkgver = 1.1.5.cf19
+	pkgver = 1.1.5.cf19.1
 	pkgrel = 1
 	url = https://github.com/ceres-c/OWON-VDS1022
 	install = owon-vds-tiny.install
@@ -8,6 +8,7 @@ pkgbase = owon-vds-tiny
 	arch = i386
 	arch = aarch64
 	license = unknown
+	depends = git
 	depends = libusb-compat
 	depends = java-runtime>=8
 	optdepends = python-bokeh: python apis
