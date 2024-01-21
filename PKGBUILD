@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="A Material Design theme for GNOME/GTK based desktop environments."
 arch=('any')
 url="https://github.com/vinceliuice/Orchis-theme"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 makedepends=('git' 'sassc')
 optdepends=('gnome-themes-extra: GTK2 theme support'
             'gtk-engine-murrine: GTK2 theme support'
