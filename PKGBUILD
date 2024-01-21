@@ -4,7 +4,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: hexchain <i@hexchain.org>
 pkgname=telegram-desktop-userfonts-altscroll
-pkgver=4.14.4
+pkgver=4.14.9
 pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
@@ -22,7 +22,7 @@ makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz" 'mediaview-altscroll.patch')
-sha512sums=('863e22e5d0809736a6f05e64ae7ceb5e93a1135c26f8e00d45a45cbb6bb90da3dafe43f9249aa07b6183e6e06aa0801613b72b033b7a05323c27556a25ca5854'
+sha512sums=('802ec7eeef75ac97934cb0437c24dab62670f7029a1a5e44866cd77d39d7b572b79106c0b73bd742786548db938c49ba2e559123963ef0201adaa279b4cf9fa4'
             '38ff8627090ac9766a8d409fa26cbd4381640e08abcb677f4524a5305d011aa0f6ce81d69313a01f0db5c1a3794805bff2a059095258f5e8d9bd1133550cca2e')
 
 prepare() {
