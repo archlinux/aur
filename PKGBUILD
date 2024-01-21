@@ -2,7 +2,7 @@
 
 _name="pyhidra"
 pkgname="python-$_name"
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='Pyhidra is a Python library that provides direct access to the Ghidra API within a native CPython interpreter using jpype.'
 arch=(any)
@@ -11,7 +11,7 @@ license=(DC3-Pyhidra-Open-Source-License)
 depends=(python python-jpype1)
 makedepends=(python-setuptools python-build python-installer python-wheel)
 source=($pkgname-$pkgver.tar.gz::"$url/archive/$pkgver.tar.gz")
-sha256sums=('c8c5c563e5f60391e7194ca7ce1e4bfdf76d84bec8fe783b9db6d5ef1eb38550')
+sha256sums=('b3ac58a3219d2bbe7a49f88f02ab6bf83eea5376a19b6f894f9178ef9be2945a')
 
 build() {
   cd $_name-$pkgver
