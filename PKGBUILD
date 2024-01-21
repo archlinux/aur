@@ -1,8 +1,7 @@
 # Maintainer: Ewout van Mansom <ewout@vanmansom.name>
 
-pkgbase=amdfand
 pkgname=amdfand
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=1
 pkgdesc="AMDGPU fan speed management tool"
 url="https://github.com/Eraden/amdgpud"
@@ -10,10 +9,10 @@ license=('MIT' 'Apache-2.0')
 source=("amdfand::git+https://github.com/Eraden/amdgpud.git#tag=v${pkgver}")
 arch=('x86_64')
 conflicts=('amdfand-bin')
-provides=('amdfand' 'amdfand-bin')
+provides=('amdfand')
 sha512sums=('SKIP')
 makedepends=('git' 'cargo')
-#optdepends=('amdmond' 'amdguid-glow' 'amdguid-wayland' 'amdvold')
+optdepends=('amdmond' 'amdguid-glow' 'amdguid-wayland' 'amdvold')
 
 prepare() {
   cd "$pkgname"
