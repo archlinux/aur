@@ -1,6 +1,6 @@
 pkgbase = waylib
 	pkgdesc = A wrapper for wlroots based on Qt.
-	pkgver = 0.0.0.r275.ge458865
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/vioken/waylib
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = waylib
 	makedepends = qwlroots
 	makedepends = ninja
 	provides = waylib
-	source = waylib.tar.gz::https://github.com/vioken/waylib/archive/e458865.tar.gz
-	sha256sums = 552ffb101a33f7671d5caa3f2d2f45d3890f4ab2e1953fc5f03173dcb04e1b7c
+	source = https://github.com/vioken/waylib/archive/0.1.1/waylib-0.1.1.tar.gz
+	sha256sums = 54c81cb2c4302ac18cbb107ad1b066793efde4846922827159cc0926d7dfb9ad
 
 pkgname = waylib
