@@ -1,20 +1,15 @@
 pkgbase = trdsql-bin
 	pkgdesc = CLI tool that can execute SQL queries on CSV, LTSV, JSON and TBLN. Can output to various formats.
-	pkgver = 0.11.1
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/noborus/trdsql
 	arch = x86_64
-	arch = i686
 	license = MIT
 	depends = glibc
 	conflicts = trdsql
-	source_x86_64 = trdsql-bin-0.11.1.zip::https://github.com/noborus/trdsql/releases/download/v0.11.1/trdsql_v0.11.1_linux_amd64.zip
+	source_x86_64 = trdsql-bin-0.20.0.zip::https://github.com/noborus/trdsql/releases/download/v0.20.0/trdsql_v0.20.0_linux_amd64.zip
 	source_x86_64 = trdsql-completion.zsh
-	md5sums_x86_64 = 2397870d7840d9c7b3e21aaa5e82ee92
-	md5sums_x86_64 = 9c1a02ea5fce190b3e829f1ee430dac4
-	source_i686 = trdsql-bin-0.11.1.zip::https://github.com/noborus/trdsql/releases/download/v0.11.1/trdsql_v0.11.1_linux_386.zip
-	source_i686 = trdsql-completion.zsh
-	md5sums_i686 = 2397870d7840d9c7b3e21aaa5e82ee92
-	md5sums_i686 = 9c1a02ea5fce190b3e829f1ee430dac4
+	b2sums_x86_64 = 78a2461aa565a083eaeb7696fae137ef7aa46f66c08e33e5c3cbd1a6b1f5fb12c7115a66b81a794194328286327b2125e079edb0bed93dc2ee5195fe12c80ea8
+	b2sums_x86_64 = fceaf4fa9dea5347e2dadf1360a53ad1a047467350cec6cccce066ece7a46d50aa867cefe58e89af9bec81471f9304999afbba26e730fb5bbb75cd1f2280beff
 
 pkgname = trdsql-bin
