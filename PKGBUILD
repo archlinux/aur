@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=('qtscrcpy' 'qtscrcpy-docs')
 pkgbase=qtscrcpy
 pkgver=2.1.2
@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Android real-time screencast control tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/barry-ran/QtScrcpy"
-license=('Apache')
+license=('Apache-2.0')
 depends=('android-tools' 'qt5-multimedia' 'qt5-x11extras')
 makedepends=('chrpath' 'cmake' 'git' 'qt5-tools')
 conflicts=('qt-scrcpy')
