@@ -2,21 +2,25 @@
 
 pkgname=deepin-control-center-git
 _pkgname=deepin-control-center
-pkgver=5.6.2.r17.g584fe1c3b
+sourcename=dde-control-center
+pkgver=6.0.40.r1.gf8b4814d0
 pkgrel=1
 pkgdesc='New control center for linux deepin'
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dde-control-center"
 license=('GPL3')
 depends=(
-    'dtkwidget-git'
-    'deepin-account-faces-git'
+    'dtkwidget'
+    'deepin-account-faces'
     'libpwquality'
-    'startdde-git'
-    'deepin-daemon-git'
-    'startdde-git'
-    'deepin-qt-dbus-factory-git'
-    'deepin-pw-check-git'
+    'startdde'
+    'deepin-daemon'
+    'deepin-qt-dbus-factory'
+    'deepin-pw-check'
+    'qt5-wayland'
+    'dtkcore'
+    'dtkwidget'
+    'dtkgui'
 )
 makedepends=(
     'git'
@@ -27,17 +31,9 @@ makedepends=(
     'qt5-x11extras'
     'qt5-multimedia'
     'qt5-svg'
-    'dtkcommon-git'
-    'dtkcore-git'
-    'dtkwidget-git'
-    'dtkgui-git'
-    'deepin-qt-dbus-factory-git'
+    'dtkcommon'
     'gtest'
     'gmock'
-    'polkit-qt5'
-    'deepin-pw-check-git'
-    'qt5-wayland'
-    'kwayland'
 )
 optdepends=('redshift: automatic color temperature support'
             'networkmanager-openconnect: for OpenConnect support'
@@ -46,22 +42,22 @@ optdepends=('redshift: automatic color temperature support'
             'networkmanager-strongswan: for StrongSwan support'
             'networkmanager-vpnc: for VPNC support'
             'network-manager-sstp: for SSTP support'
-            'deepin-network-core-git'
+            'deepin-network-core'
 )
 # Not packaged: network-manager-l2tp
 conflicts=('deepin-control-center')
 provides=('deepin-control-center')
 groups=('deepin-git')
-source=("$pkgname::git+https://github.com/linuxdeepin/dde-control-center/")
-sha512sums=('74fd63391e923ca37f4559f30da967ba7f33d4426b60d58d1ece8cd9a154578e8184b1a376a8d7ff3ef81ffce530915f79d0845a2612ae4e06522b96855ab3dd')
+source=("git+https://github.com/linuxdeepin/dde-control-center/")
+sha512sums=('SKIP')
 
 pkgver() {
-    cd $pkgname
+    cd $sourcename
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $pkgname
+  cd $sourcename
   cmake -B build -GNinja -DDISABLE_SYS_UPDATE=YES \
                 -DDISABLE_RECOVERY=YES \
                 -DDISABLE_ACTIVATOR=YES \
@@ -72,6 +68,6 @@ build() {
 }
 
 package() {
-  cd $pkgname/build
+  cd $sourcename/build
   DESTDIR="$pkgdir" ninja install
 }
