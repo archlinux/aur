@@ -5,7 +5,7 @@ _gitauthor="danisztls"
 _gitbranch="main"
 
 pkgname="${_pkgname}-git"
-pkgver=r29.2784d0f
+pkgver=r31.a521775
 pkgrel=1
 pkgdesc="Note-taking and tasks management tool"
 arch=('any')
@@ -27,6 +27,7 @@ noextract=()
 sha512sums=('SKIP')
 
 pkgver() {
+  cd "$srcdir/${_pkgname}"
   # Use tags but fallback to revision
   ( set -o pipefail
     git describe --tags --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||

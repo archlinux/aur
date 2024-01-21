@@ -1,6 +1,6 @@
 pkgbase = journal-git
 	pkgdesc = Note-taking and tasks management tool
-	pkgver = r29.2784d0f
+	pkgver = r31.a521775
 	pkgrel = 1
 	url = https://github.com/danisztls/journal
 	arch = any
