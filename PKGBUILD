@@ -1,43 +1,68 @@
-# Maintainer: Andrej Radović <r.andrej@gmail.com>
+#  Maintainer: Blair Bonnett <blair.bonnett@gmail.com>
+# Contributor: Andrej Radović <r.andrej@gmail.com>
 
 pkgname=python-copier
 _name=${pkgname#python-}
-pkgver=8.1.0
+pkgver=9.1.1
 pkgrel=1
 pkgdesc='Library and command-line utility for rendering projects templates'
 arch=('any')
-url='https://github.com/pykong/copier'
+url='https://github.com/copier-org/copier'
 license=('MIT')
+
 depends=(
-  'python-backports.cached_property'
   'python-colorama'
+  'python-decorator'
   'python-dunamai'
-  'python-importlib-metadata'
-  'python-iteration-utilities'
+  'python-funcy'
   'python-jinja'
   'python-jinja2-ansible-filters'
   'python-packaging'
   'python-pathspec'
   'python-plumbum'
+  'python-prompt_toolkit'
   'python-pydantic'
   'python-pygments'
   'python-pyyaml-include'
   'python-questionary'
-  'python-typing_extensions'
   'python-yaml'
 )
-makedepends=(python-build python-installer python-wheel python-poetry-dynamic-versioning)
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('902b4eb65fafe7a1621991234d2ebf3bc3fc9323e64e3a2560a00c05c73f6229')
+makedepends=(
+  'git' 'python-build' 'python-installer' 'python-wheel'
+  'python-poetry-dynamic-versioning'
+)
+checkdepends=(
+  'python-poethepoet' 'python-pytest' 'python-pytest-cov'
+  'python-pytest-gitconfig' 'python-pytest-xdist'
+)
+optdepends=(
+  'git: VCS support'
+)
+
+# PyPI tarball does not include tests; GitHub tarball fails to build
+# as poetry-dynamic-versioning fails to find metadata.
+source=(
+  "git+https://github.com/copier-org/copier.git#tag=v$pkgver"
+)
+sha256sums=(
+  'SKIP'
+)
 
 build() {
-  cd "$srcdir/$_name-$pkgver"
+  cd copier
   python -m build --wheel --no-isolation
 }
 
+check() {
+  cd copier
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer "dist/$_name-$pkgver-"*.whl
+  test-env/bin/python -m pytest -k 'not test_types and not test_commit_hooks_respected'
+}
+
 package() {
-  cd "$srcdir/$_name-$pkgver"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  cd copier
+  python -m installer --destdir="$pkgdir" "dist/$_name-$pkgver-"*.whl
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }

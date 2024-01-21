@@ -1,0 +1,5 @@
+copier/
+src/
+pkg/
+python-copier-*.pkg*
+*.log
