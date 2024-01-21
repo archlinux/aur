@@ -43,6 +43,10 @@ post_install() {
     blue  "Bug Fixes:"
     plain "  ${magenta}#147${all_off} retry up to 25 cancellations, complete resolution incoming in ${green}#154${all_off}"
     plain ""
+    yello "1.10.2"
+    blue  "Bug Fixes:"
+    plain "  ${magenta}#153${all_off} revert cancellation behaviour to 1.9.0, awaiting comprehensive fix"
+    plain ""
 }
 
 post_upgrade() {
