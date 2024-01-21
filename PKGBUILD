@@ -5,7 +5,7 @@
 
 pkgname=cronet
 pkgver=121.0.6167.71
-pkgrel=1
+pkgrel=2
 _manual_clone=0
 _system_clang=0
 pkgdesc="The networking stack of Chromium put into a library"
