@@ -20,7 +20,7 @@ options=(!emptydirs)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/downloads/${pkgname}-${pkgver}.tar.gz
   pkg-config.patch::${url}/issues/attachments/1120/fenics-project/${pkgname}/1618190046.28/1120/0001-cmake-PETSc-SLEPc-match-lowercase-.pc-pkg-config-fil.patch
   endian.patch::${url}/issues/attachments/1116/fenics-project/dolfin/1602778118.04/1116/0001-Use-__BYTE_ORDER__-instead-of-removed-Boost-endian.h.patch
-  catch.patch::https://salsa.debian.org/science-team/fenics/${pkgname}/-/raw/master/debian/patches/catch_SIGSTKSZ_libc6_2.34.patch)
+  catch.patch::https://salsa.debian.org/science-team/fenics/${pkgname}/-/raw/d132af60fe71343ad280966f8629132bc27899f2/debian/patches/catch_SIGSTKSZ_libc6_2.34.patch)
 sha512sums=('0677245d2537d6e3b25bc8c47700a4d10690f35a49a544456456601505703e0b21ddec510f456146edef3d0beea366092a54a23ac29bd165c9c97cede6d6ca10'
   'cc0892fe899361e855ace1d831ca9f56761bc3b60d015107faa3f459dfc9c19ba7eaf9a7bdacd890763d66b7151b1be848704b8bdf82a0964239e0079548c182'
   '87013c1eb1770432d98f0934d3607d428d68f68e0ed1196c1c98070cdf764a930482b95a6996042b3b2e90a336d7404bb8c91a7d4ee6e940873ef4591482a772'
