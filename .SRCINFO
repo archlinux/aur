@@ -1,10 +1,10 @@
 pkgbase = nemo-deja-dup-git
 	pkgdesc = Déjà Dup Actions for Nemo File Manager
 	pkgver = r2.f99427f
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/erickj/nemo-actions
 	arch = any
-	license = GPL
+	license = unknown
 	makedepends = git
 	depends = nemo
 	depends = deja-dup
