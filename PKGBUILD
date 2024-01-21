@@ -2,11 +2,11 @@
 
 pkgname=ocaml-ezjsonm
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 license=('custom:ISC')
 arch=('x86_64')
-pkgdesc="Hexadecimal converter"
-url="https://github.com/mirage/ocaml-ezjsonm"
+pkgdesc="An easy interface on top of the Jsonm library."
+url="https://github.com/mirage/ezjsonm"
 depends=(
   'ocaml'
   'ocaml-hex'
