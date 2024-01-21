@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="OCR powered screen-capture tool to capture information instead of images"
 arch=('any')
 url="https://dynobo.github.io/normcap"
-license=('LicenseRef-noassertion')
+license=('GPL-3.0-or-later')
 depends=(
   'hicolor-icon-theme'
   'leptonica'
