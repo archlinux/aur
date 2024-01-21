@@ -1,6 +1,6 @@
 pkgbase = pulumi-language-yaml
 	pkgdesc = Modern Infrastructure as Code (YAML provider)
-	pkgver = 1.4.0
+	pkgver = 1.4.5
 	pkgrel = 1
 	url = https://github.com/pulumi/pulumi-yaml
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = pulumi-language-yaml
 	makedepends = go
 	depends = glibc
 	options = !lto
-	source = pulumi-yaml-1.4.0.tar.gz::https://github.com/pulumi/pulumi-yaml/archive/v1.4.0.tar.gz
-	b2sums = 204ca8ffdf2dbb63e38766770a747632365e1b218339ecbfbe6b77081fd3d0590d054eaba3939134b65dd6dd718c8e71bc7a961d5107ff876c5c4ed73eeb6def
+	source = pulumi-yaml-1.4.5.tar.gz::https://github.com/pulumi/pulumi-yaml/archive/v1.4.5.tar.gz
+	b2sums = d09decad924f896aad7606ca59f7c02fc2016c69e3df42702ba2495a9d8a6ab54efdd9c10f4a6a49cb6822ec23f639b70779b794be148f248e6389ac371d9676
 
 pkgname = pulumi-language-yaml
