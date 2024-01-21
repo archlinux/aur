@@ -1,0 +1,15 @@
+pkgbase = ocaml-kqueue
+	pkgdesc = Encoding combinators a la Data_encoding for Ezjsonm
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/anuragsoni/kqueue-ml
+	arch = x86_64
+	license = MPL2
+	makedepends = dune
+	depends = ocaml
+	depends = ocaml-ppx_optcomp
+	options = !strip
+	source = ocaml-kqueue-0.3.0.tbz::https://github.com/anuragsoni/kqueue-ml/releases/download/0.3.0/kqueue-0.3.0.tbz
+	sha512sums = 0e88e62c411b803e80955547a6c3a7035104a59d0dff9b105d278a13480fd8b0eab64901d6f648656b2849b078dcbd3dd6726782f18b7f1fea85d30caa28096a
+
+pkgname = ocaml-kqueue

@@ -1,0 +1,4 @@
+ocaml-*.pkg.tar.zst
+ocaml-*.tbz
+pkg/
+src/
