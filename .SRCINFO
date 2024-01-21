@@ -1,7 +1,7 @@
 pkgbase = doxide
 	pkgdesc = Modern documentation for modern C++
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://doxide.org
 	arch = x86_64
 	license = Apache-2.0
