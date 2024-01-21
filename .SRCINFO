@@ -1,7 +1,7 @@
 pkgbase = cloudflare-dynamic-dns
 	pkgdesc = Updates AAAA records at Cloudflare according to the current IPv6 address
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zebradil/cloudflare-dynamic-dns
 	arch = any
 	license = MIT
