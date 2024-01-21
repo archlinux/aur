@@ -1,0 +1,15 @@
+pkgbase = ocaml-ezjsonm-encoding
+	pkgdesc = Encoding combinators a la Data_encoding for Ezjsonm
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/lthms/ezjsonm-encoding
+	arch = x86_64
+	license = MPL2
+	makedepends = dune
+	depends = ocaml
+	depends = ocaml-ezjsonm
+	options = !strip
+	source = ocaml-ezjsonm-encoding-2.0.0.tbz::https://github.com/lthms/ezjsonm-encoding/releases/download/2.0.0/ezjsonm-encoding-2.0.0.tbz
+	sha512sums = 6ed40eabfc335e4619873dae832c5ce0e35acd425014adc13f47e39d980c5972a2490c3781d4edfb4e4ed829f64a7831890a296ae13c8d0c208f5972e44a48d5
+
+pkgname = ocaml-ezjsonm-encoding
