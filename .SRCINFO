@@ -1,17 +1,14 @@
 pkgbase = python-msal-extensions
 	pkgdesc = Microsoft Authentication Extensions for Python
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/AzureAD/microsoft-authentication-extensions-for-python
 	arch = any
 	license = MIT
-	makedepends = python-installer
 	makedepends = python-setuptools
-	depends = python-msal>=0.4.1)
-	depends = python-msal<2.0.0
-	depends = python-portalocker>=1.0
-	depends = python-portalocker<3
-	source = https://files.pythonhosted.org/packages/py2.py3/m/msal_extensions/msal_extensions-1.0.0-py2.py3-none-any.whl
-	sha256sums = 91e3db9620b822d0ed2b4d1850056a0f133cba04455e62f11612e40f5502f2ee
+	depends = python-msal
+	depends = python-portalocker
+	source = python-msal-extensions-1.1.0.tar.gz::https://github.com/AzureAD/microsoft-authentication-extensions-for-python/archive/1.1.0.tar.gz
+	sha256sums = e49fcc7f16228f9645aab2b1033479b6ee8b93655c70326392d19c4affb99a7b
 
 pkgname = python-msal-extensions
