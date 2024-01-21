@@ -2,7 +2,7 @@
 
 pkgname=dune3d
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Parametric 3D CAD"
 arch=('x86_64' 'i686')
 url="https://dune3d.org"
@@ -20,11 +20,10 @@ build() {
   cd dune3d-$pkgver
   arch-meson build
 
-  cd build
-  ninja
+  meson compile -C build
 }
 
 package() {
-    cd dune3d-$pkgver/build
-    DESTDIR="$pkgdir" ninja install
+    cd dune3d-$pkgver
+    meson install -C build --destdir "$pkgdir"
 }
