@@ -1,6 +1,6 @@
 pkgbase = yam-formatter-git
 	pkgdesc = A sweet little formatter for YAML
-	pkgver = r64.1088a8c
+	pkgver = r65.1a24164
 	pkgrel = 1
 	url = https://github.com/chainguard-dev/yam
 	arch = x86_64
