@@ -5,8 +5,8 @@ _gitauthor="danisztls"
 _gitbranch="main"
 
 pkgname="${_pkgname}-git"
-pkgver=v1.3.0.r3.g369fe50
-pkgrel=4
+pkgver=v1.3.1.r7.g57fd068
+pkgrel=1
 pkgdesc="Encrypted backup and synchronization tool"
 arch=('any')
 url="https://github.com/${_gitauthor}/${_pkgname}"
@@ -17,7 +17,7 @@ makedepends=('git' 'make')
 optdepends=('pass: standard password manager'
             'gopass: improved password manager')
 provides=("${_pkgname}")
-conflicts=()
+conflicts=("${_pkgname}")
 replaces=()
 backup=()
 options=()
@@ -36,14 +36,8 @@ pkgver() {
   )
 }
 
-prepare() {
-  cd "${_pkgname}"
-}
-
-# build() {
-# }
-
 package() {
+  cd "$srcdir/${_pkgname}" 
   make DESTDIR="${pkgdir}/" install
   install -vDm 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
