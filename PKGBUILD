@@ -1,8 +1,8 @@
 # Maintainer: Viacheslav Chimishuk <vchimishuk@yandex.ru>
 
 pkgname=arduino-mk-git
-pkgrel=1
-pkgver=1.5.2.r6.g08b4f44
+pkgrel=2
+pkgver=1.6.0.r140.ga1fbda0
 provides=('arduino-mk')
 conflicts=('arduino-mk')
 pkgdesc='A Makefile for Arduino Sketches'
@@ -12,7 +12,7 @@ license=('LGPL2.1')
 depends=('arduino' 'make' 'python-pyserial')
 optdepends=('screen: monitor support'
             'picocom: monitor support')
-source=("git://github.com/sudar/Arduino-Makefile")
+source=("git+https://github.com/sudar/Arduino-Makefile.git")
 md5sums=('SKIP')
 
 prepare() {
