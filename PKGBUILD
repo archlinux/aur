@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Simple application for identifying songs"
 arch=('x86_64')
 url="https://apps.gnome.org/Mousai"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gst-plugins-bad-libs' 'gst-plugins-good' 'gstreamer' 'libadwaita'
          'libpulse' 'libsoup3')
 makedepends=('cargo' 'meson')
