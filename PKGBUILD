@@ -7,12 +7,33 @@ pkgdesc="Can add links and perform other custom replacements to rst"
 arch=('any')
 url="https://github.com/jaraco/rst.linker"
 license=('MIT')
-depends=('python' 'python-dateutil' 'python-six')
-makedepends=('python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
-#makedepends+=('python-jaraco.packaging' 'python-sphinx') # for building docs
-#checkdepends=('python-path' 'python-pip' 'python-pytest-black' 'python-pytest-checkdocs'
-#              'python-pytest-cov' 'python-pytest-enabler' 'python-pytest-flake8'
-#              'python-pytest-mypy' 'python-types-python-dateutil')
+depends=(
+  'python-dateutil'
+  'python-six'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools-scm'
+  'python-wheel'
+)
+# for building docs
+#makedepends+=(
+#  'python-domdf-python-tools'
+#  'python-jaraco.packaging'
+#  'python-sphinx'
+#  'python-sphinx-furo'
+#)
+#checkdepends=(
+#  'python-path'
+#  'python-pytest-black'
+##  'python-pytest-checkdocs' ## TODO
+#  'python-pytest-cov'
+#  'python-pytest-enabler'
+#  'python-pytest-flake8'
+#  'python-pytest-mypy'
+#  'python-types-python-dateutil'
+#)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('b41018765f1f65e3e6dfae6ea23cd699e0a26d8ce34cd3bcfd6f779af2944f01')
 
@@ -28,11 +49,13 @@ build() {
 #  rm -rf html/.{doctrees,buildinfo}
 }
 
-# Tests fail: AttributeError: module 'flake8.options.config' has no attribute 'ConfigFileFinder'
+# flake-8::FLAKE8 - AttributeError: 'Application' object has no attribute 'parse_preliminary_options'
 
 #check() {
 #  cd "$_name-$pkgver"
-#  pytest
+#  python -m venv --clear --without-pip --system-site-packages .testenv
+#  .testenv/bin/python -m installer dist/*.whl
+#  .testenv/bin/python -m pytest || :
 #}
 
 package() {
