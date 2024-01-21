@@ -3,8 +3,8 @@ _pkgname="reminders"
 _gitauthor="danisztls"
 _gitbranch="main"
 
-pkgname=${_pkgname}-git
-pkgver=latest
+pkgname="${_pkgname}-git"
+pkgver=v0.2.0.r1.ge5db213
 pkgrel=1
 pkgdesc="Reminds about events stored in YAML."
 arch=('any')
