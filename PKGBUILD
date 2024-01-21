@@ -6,7 +6,7 @@ _gitbranch="main"
 
 pkgname="${_pkgname}-git"
 pkgver=v1.3.r3.g66b87aa
-pkgrel=1
+pkgrel=2
 pkgdesc="Opinionated wrapper that extends FZF."
 arch=('any')
 url="https://github.com/${_gitauthor}/${_pkgname}"
@@ -41,12 +41,14 @@ pkgver() {
   )
 }
 
+prepare() {
+  cd "$srcdir/${_pkgname}"
+}
+
 # build() {
 # }
 
 package() {
-  cd "$srcdir/${_pkgname}"
-  
   install -Dm755 fzfx "${pkgdir}/usr/bin/fzfx"
   install -vDm 644 ignore "${pkgdir}/usr/share/${_pkgname}/ignore"
   install -vDm 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
