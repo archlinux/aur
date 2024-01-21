@@ -1,6 +1,6 @@
 pkgbase = python-flask-session
 	pkgdesc = Server side session extension for Flask
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://pypi.org/project/Flask-Session/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-flask-session
 	makedepends = python-installer
 	depends = python-flask
 	depends = python-cachelib
-	source = https://pypi.io/packages/source/f/flask-session/Flask-Session-0.5.0.tar.gz
-	sha256sums = 190875e6aebf2953c6803d42379ef3b934bc209ef8ef006f97aecb08f5aaeb86
+	source = https://pypi.io/packages/source/f/flask-session/flask_session-0.6.0.tar.gz
+	sha256sums = b1ed06cf4c5a211305579a132e81307d242cec6fe2714a276405730ffd22a034
 
 pkgname = python-flask-session
