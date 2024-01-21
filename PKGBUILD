@@ -1,15 +1,20 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 # Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 
-pkgname=espanso
+pkgbase=espanso
+pkgname=(
+  espanso-x11
+  espanso-wayland
+)
 pkgver=2.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
 url="https://github.com/espanso/espanso"
 license=(GPL-3.0-only)
-depends=(
+makedepends=(
   bzip2
+  cargo
   dbus
   gcc-libs
   glibc
@@ -18,18 +23,18 @@ depends=(
   libxkbcommon
   libxtst
   openssl
+  wl-clipboard
   wxwidgets-common
   wxwidgets-gtk3
   xclip
   xdotool
 )
-makedepends=(cargo)
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('795663cb64c28322b667998f95910134b042be2baaace5506790f7e44ae3be91')
 options=(!lto)
 
-_archive="$pkgname-$pkgver"
+_archive="$pkgbase-$pkgver"
 
 prepare() {
   cd "$_archive"
@@ -51,8 +56,15 @@ build() {
   cd "$_archive"
 
   export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
+
+  export CARGO_TARGET_DIR=target-x11
   cargo build --frozen --release \
+    --manifest-path espanso/Cargo.toml \
+    --package espanso
+
+  export CARGO_TARGET_DIR=target-wayland
+  cargo build --frozen --release \
+    --features wayland \
     --manifest-path espanso/Cargo.toml \
     --package espanso
 }
@@ -67,10 +79,57 @@ check() {
     --skip tests::test_migration
 }
 
-package() {
+package_espanso-x11() {
+  pkgdesc+=" (built for X11)"
+  depends=(
+    bzip2
+    dbus
+    gcc-libs
+    glibc
+    libx11
+    libxcb
+    libxkbcommon
+    libxtst
+    openssl
+    wxwidgets-common
+    wxwidgets-gtk3
+    xclip
+    xdotool
+  )
+  provides=(espanso)
+  conflicts=(espanso)
+  replaces=(espanso)
+
   cd "$_archive"
 
-  install -Dm755 -t "$pkgdir/usr/bin" target/release/espanso
+  install -Dm755 -t "$pkgdir/usr/bin" target-x11/release/espanso
+  install -Dm644 -t "$pkgdir/usr/lib/systemd/user" espanso.service
+  install -Dm644 -t "$pkgdir/usr/share/applications" espanso.desktop
+  install -Dm644 -t "$pkgdir/usr/share/doc/espanso" ./*.md
+  install -Dm644 espanso/src/res/linux/icon.png \
+    "$pkgdir/usr/share/pixmaps/espanso.png"
+}
+
+package_espanso-wayland() {
+  pkgdesc="$pkgdesc (built for Wayland)"
+  depends=(
+    bzip2
+    dbus
+    gcc-libs
+    glibc
+    libxkbcommon
+    openssl
+    wl-clipboard
+    wxwidgets-common
+    wxwidgets-gtk3
+  )
+  provides=(espanso)
+  conflicts=(espanso)
+  install=espanso-wayland.install
+
+  cd "$_archive"
+
+  install -Dm755 -t "$pkgdir/usr/bin" target-wayland/release/espanso
   install -Dm644 -t "$pkgdir/usr/lib/systemd/user" espanso.service
   install -Dm644 -t "$pkgdir/usr/share/applications" espanso.desktop
   install -Dm644 -t "$pkgdir/usr/share/doc/espanso" ./*.md
