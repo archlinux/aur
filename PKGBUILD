@@ -30,7 +30,7 @@ package() {
   cd "$srcdir/$_pkgname"
   install -Dm755 reminders.py "${pkgdir}/usr/bin/${_pkgname}"
   install -vDm 644 reminders.service "${pkgdir}/usr/lib/systemd/user/${_pkgname}.service"
-  install -vDm 644 reminders.target "${pkgdir}/usr/lib/systemd/user/${_pkgname}.target"
+  install -vDm 644 reminders.timer "${pkgdir}/usr/lib/systemd/user/${_pkgname}.timer"
   install -vDm 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
 }
