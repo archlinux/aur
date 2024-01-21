@@ -1,19 +1,36 @@
-# Maintainer: Alexander Keller <git@nycroth.com>
 pkgname=tag
-pkgver=0.2
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="Console tag based file manager"
-arch=(any)
-url="https://gitlab.com/Nycroth/tag"
-license=('custom:unlicense')
-depends=('coreutils' 'sed' 'bash')
-source=("https://gitlab.com/Nycroth/tag/repository/archive.tar.gz?ref=v0.2")
-md5sums=('e5128cae78d004f7d73c059bfa101a24')
+source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
+pkgdesc="Search for local text files with a simple tagging system."
+arch=('x86_64')
+url='https://github.com/miampf/tag'
+license=('MIT')
+provides=('tag')
+makedepends=(cargo)
+sha1sums=('SKIP')
+
+prepare() {
+    cd $pkgname-$pkgver
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+    cd $pkgname-$pkgver
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --all-features --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+
+check() {
+    cd $pkgname-$pkgver
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen --all-features --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
 package() {
-    cd "${srcdir}/tag-v0.2-88bd2961339eab4f223ec1271fe7d879b65b60da/"
-
-    make DESTDIR="${pkgdir}" install
-    install -m 755  -d "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -m 644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd $pkgname-$pkgver
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/$(rustc -vV | sed -n 's/host: //p')/release/$pkgname"
 }
