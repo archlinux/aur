@@ -12,11 +12,11 @@ pkgname=aseprite
 pkgver=1.3.2
 _skiaver=m102
 _skiahash=861e4743af
-pkgrel=1
+pkgrel=2
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
-license=('custom')
+license=('LicenseRef-Aseprite-EULA')
 depends=(# ~ Aseprite's direct dependencies ~
          # pixman is not linked to because we use Skia instead
          # harfbuzz is linked statically because Aseprite expects an older version
