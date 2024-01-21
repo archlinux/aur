@@ -5,7 +5,7 @@
 pkgname=standardnotes-bin
 _realname="Standard Notes"
 pkgver=3.184.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Free, open-source encrypted notes app.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/standardnotes/app'
@@ -30,15 +30,15 @@ prepare() {
 
 package() {
 	install -dv "$pkgdir/opt/$pkgname"
-    cp -rv $srcdir/opt/Standard\ Notes/* "$pkgdir/opt/$pkgname/"
-	cp -rv $srcdir/usr/* "$pkgdir/opt/$pkgname"
+	cp -r $srcdir/opt/Standard\ Notes/* "$pkgdir/opt/$pkgname/"
+	cp -r $srcdir/usr "$pkgdir/opt/$pkgname"
 
-	install -Dv "$srcdir/usr/share/applications/standard-notes.desktop" "$pkgdir/opt/$pkgname"
-	install -Dv "standard-notes.sh" "$pkgdir/usr/bin/standard-notes"
-	install -dv "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
-	install -dv "$pkgdir/usr/share/applications/"
+	install -D "$srcdir/usr/share/applications/standard-notes.desktop" "$pkgdir/opt/$pkgname"
+	install -D "standard-notes.sh" "$pkgdir/usr/bin/standard-notes"
+	install -d "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
+	install -d "$pkgdir/usr/share/applications/"
 
 	sed -i -E '/Exec/c\Exec=env DESKTOPINTEGRATION=false /usr/bin/standard-notes' "$pkgdir/opt/$pkgname/standard-notes.desktop"
-	ln -sv "/opt/$pkgname/standard-notes.desktop" "$pkgdir/usr/share/applications/"
-	ln -sv "/opt/$pkgname/standard-notes.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
+	ln -s "/opt/$pkgname/standard-notes.desktop" "$pkgdir/usr/share/applications/"
+	ln -s "/opt/$pkgname/usr/share/icons/hicolor/512x512/apps/standard-notes.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
 }
