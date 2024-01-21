@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Lex Black <autumn-wind@web.de>
 # Contributor: hobi82 <hobi82@gmx.net>
 # Contributor: Marius Nestor <marius softpedia com>
