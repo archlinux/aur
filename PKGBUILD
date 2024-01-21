@@ -1,4 +1,4 @@
-# # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-markdown-del-ins
 _name=${pkgname#python-}
 pkgver=1.0.0
@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Markdown extension to support the <del> and <ins> tags"
 arch=('any')
 url="https://github.com/honzajavorek/markdown-del-ins"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('python' 'python-markdown')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
