@@ -1,4 +1,4 @@
-pkgbase = tufw-bin
+pkgbase = tufw-git
 	pkgdesc = Terminal UI for ufw
 	pkgver = 0.2.2
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = tufw-bin
 	source_x86_64 = https://github.com/peltho/tufw/releases/download/v0.2.2/tufw_0.2.2_linux_amd64.tar.gz
 	sha256sums_x86_64 = 03c5a5a32b98ec38c1d973862271ed084e3dd93b68538e832b71912eb9109e21
 	
-pkgname = tufw-bin
+pkgname = tufw-git
