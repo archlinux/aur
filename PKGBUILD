@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Sonny Piers <sonny at fastmail dot net>
 pkgname=tangram
 pkgver=3.0
@@ -6,7 +6,7 @@ pkgrel=3
 pkgdesc="Browser for your pinned tabs"
 arch=('any')
 url="https://apps.gnome.org/Tangram"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gjs' 'libadwaita' 'webkitgtk-6.0')
 makedepends=('git' 'blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
@@ -18,12 +18,12 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd "$srcdir/Tangram"
+  cd Tangram
   git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
 prepare() {
-  cd "$srcdir/Tangram"
+  cd Tangram
   git submodule init
   git config submodule.src/troll.url "$srcdir/troll"
   git -c protocol.file.allow=always submodule update
