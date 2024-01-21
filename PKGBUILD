@@ -1,12 +1,12 @@
-# Maintainer: Rustmilian <#####[at]#####[dot]org>
+# Maintainer: Rustmilian Rustmilian@proton.me
 
 pkgname=(
 	'calamares'
 	'calamares-qt5'
 	)
 
-pkgver=3.3.0
-pkgrel=4
+pkgver=3.3.1
+pkgrel=1
 pkgdesc='Distribution-independent installer framework'
 arch=($CARCH)
 url="https://github.com/calamares/calamares"
@@ -56,7 +56,7 @@ source=(
 	)
 
 sha256sums=(
-	'252f0097e3191ffc557b022f34ef23d24b939f1141efd483db0ab1ee9dc0fb76'
+	'af95c65d78236f67ea7181bce16483a863e304d53a2fab8403a3a9cb7544f86c'
 	'b9e65ab87f69b2d3f8f8eaea60c78625aef57dd336314ab75389f31a447445be'
 	'c176b28007bd1c1f23d8dbb2c936fa54d0c01bacfb67290ddad597606c129df3'
 	'56d85ff6bf860b9559b8c9f997ad9b1002f3fccc782073760eca505e3bddd176'
