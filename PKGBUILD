@@ -9,12 +9,12 @@
 # Contributor: Steven Nance <steven@devtrw.com>
 
 pkgname=vagrant
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
 url="https://vagrantup.com"
-license=('MIT')
+license=('BUSL-1.1')
 options=('!emptydirs')
 depends=('curl' 'libarchive' 'libssh2' 'libxml2' 'libxslt' 'rsync'
          'ruby' 'xz' 'perl')
@@ -23,8 +23,8 @@ optdepends=('dnsmasq: if using libvirt')
 conflicts=('vagrant-substrate')
 replaces=('vagrant-substrate')
 source=($pkgname-$pkgver.tar.gz::https://github.com/hashicorp/$pkgname/archive/v$pkgver.tar.gz
-        "git+https://github.com/hashicorp/vagrant-installers.git#commit=32c899e")
-sha256sums=('b3b27cec956b864ad3ab333a819e3d5b5d769ecc159ea8af98c466aef2c069c5'
+        "git+https://github.com/hashicorp/vagrant-installers.git#commit=7bcf4d4")
+sha256sums=('19cfa306e3ffae5ddbf30504f61a1a3124aa9a87721b130a14098d4ea1febf89'
             'SKIP')
 
 prepare() {

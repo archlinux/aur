@@ -1,10 +1,10 @@
 pkgbase = vagrant
 	pkgdesc = Build and distribute virtualized development environments
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://vagrantup.com
 	arch = x86_64
-	license = MIT
+	license = BUSL-1.1
 	makedepends = git
 	makedepends = go
 	depends = curl
@@ -20,9 +20,9 @@ pkgbase = vagrant
 	conflicts = vagrant-substrate
 	replaces = vagrant-substrate
 	options = !emptydirs
-	source = vagrant-2.4.0.tar.gz::https://github.com/hashicorp/vagrant/archive/v2.4.0.tar.gz
-	source = git+https://github.com/hashicorp/vagrant-installers.git#commit=32c899e
-	sha256sums = b3b27cec956b864ad3ab333a819e3d5b5d769ecc159ea8af98c466aef2c069c5
+	source = vagrant-2.4.1.tar.gz::https://github.com/hashicorp/vagrant/archive/v2.4.1.tar.gz
+	source = git+https://github.com/hashicorp/vagrant-installers.git#commit=7bcf4d4
+	sha256sums = 19cfa306e3ffae5ddbf30504f61a1a3124aa9a87721b130a14098d4ea1febf89
 	sha256sums = SKIP
 
 pkgname = vagrant
