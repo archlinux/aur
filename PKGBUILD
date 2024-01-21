@@ -5,10 +5,20 @@ pkgrel=1
 pkgdesc="Lightweight pip dependency resolver with deptree preview functionality based on the PubGrub algorithm"
 arch=('any')
 url="https://github.com/ddelange/pipgrip"
-license=('BSD')
-depends=('python-anytree' 'python-click' 'python-packaging' 'python-pip'
-         'python-setuptools' 'python-wheel')
-makedepends=('python-build' 'python-installer' 'python-setuptools-scm')
+license=('BSD 3-Clause')
+depends=(
+  'python-anytree'
+  'python-click'
+  'python-packaging'
+  'python-pip'
+  'python-setuptools'
+  'python-wheel'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools-scm'
+)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('4ff9bee6158eed27fe5b609c3504eaaea57709401592057e88656663457fc9d7')
 
