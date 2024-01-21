@@ -1,0 +1,15 @@
+pkgbase = unsf-git
+	pkgdesc = Convert SoundFont .sf2 files into GUS-type instrument patches
+	pkgver = 1.0.r119.gc5e5a8c
+	pkgrel = 1
+	url = https://github.com/psi29a/unsf
+	arch = x86_64
+	license = CC0
+	makedepends = git
+	depends = glibc
+	provides = unsf
+	conflicts = unsf
+	source = git+https://github.com/psi29a/unsf.git
+	sha256sums = SKIP
+
+pkgname = unsf-git
