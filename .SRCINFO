@@ -1,7 +1,7 @@
 pkgbase = kwt-bin
 	pkgdesc = Kubernetes Workstation Tools CLI
 	pkgver = 0.0.8
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/carvel-dev/kwt
 	arch = x86_64
 	arch = aarch64
