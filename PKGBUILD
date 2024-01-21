@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-gevent-eventemitter
 _name=${pkgname#python-}
 pkgver=2.1
@@ -6,7 +6,7 @@ pkgrel=3
 pkgdesc="EventEmitter using gevent"
 arch=('any')
 url="https://github.com/rossengeorgiev/gevent-eventemitter"
-license=('unknown')
+license=('MIT')
 depends=('python' 'python-gevent')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest-cov')
