@@ -1,24 +1,21 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=python-pip-audit
-pkgver=2.6.2
+pkgver=2.7.0
 pkgrel=1
 pkgdesc='A tool for scanning Python environments for known vulnerabilities'
 arch=('any')
 url='https://github.com/pypa/pip-audit'
-license=('Apache')
+license=('Apache-2.0')
 depends=(
   'python-cachecontrol'
   'python-cyclonedx-lib'
   'python-html5lib'
-  'python-lockfile'
   'python-pip-api'
   'python-pip-requirements-parser'
-  'python-progress'
   'python-requests'
   'python-rich'
   'python-toml'
-  'python-urllib3'
 )
 checkdepends=('git' 'python-pretend' 'python-pytest')
 makedepends=(
@@ -29,7 +26,7 @@ makedepends=(
 )
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pypa/pip-audit/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('197a5159425cb891c8e6e5c3e0d662d03b3949b04a5c5b71665ba61c983a02db01dc6a51186fbf4b70fc4013d8cfaab0a2b6d08a9d2c6dc68e8b1b7df8936c22')
+sha512sums=('6895cc4c774fceca6c32678f9abf940f630a3afbab8e07bbd2a09607674ac5424a201f6917c01dcdfcb931c4fb77d45aca5e2d2dd287c7986c2a587e99ac3acf')
 
 build() {
   cd "${srcdir}/${pkgname#python-}-${pkgver}"
