@@ -16,7 +16,7 @@ makedepends=('git' 'rustup')
 provides=("xfetch-rs")
 conflicts=("xfetch-rs")
 pkgver() {
-  cd $srcdir/xFetch
+  cd $srcdir
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
