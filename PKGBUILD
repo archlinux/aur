@@ -2,7 +2,7 @@
 pkgname=ax-usb-nic-dkms
 _pkgname="${pkgname%-*}"
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Kernel module for ASIX USB Ethernet Controller"
 url="https://www.asix.com.tw/en/support/download"
@@ -20,5 +20,5 @@ package() {
     sed -e "s/@PKGVER@/${pkgver}/" -i "${pkgdir}/usr/src/${_pkgname}-${pkgver}/dkms.conf"
     mkdir -p "${pkgdir}/usr/lib/modprobe.d"
     echo "blacklist ax88179_178a" > "${pkgdir}/usr/lib/modprobe.d/ax-usb-nic.conf"
-    echo "blacklist cdc_ncm" > "${pkgdir}/usr/lib/modprobe.d/ax-usb-nic.conf"
+    echo "blacklist cdc_ncm" >> "${pkgdir}/usr/lib/modprobe.d/ax-usb-nic.conf"
 }
