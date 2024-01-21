@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A flat colorful design icon theme."
 arch=('any')
 url="https://github.com/vinceliuice/Tela-icon-theme"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('hicolor-icon-theme' 'gtk-update-icon-cache')
 makedepends=('git')
 provides=("${pkgname%-git}")
@@ -16,19 +16,19 @@ source=('git+https://github.com/vinceliuice/Tela-icon-theme.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/Tela-icon-theme"
+  cd Tela-icon-theme
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-   cd "$srcdir/Tela-icon-theme"
+  cd Tela-icon-theme
 
   # Disable running gtk-update-icon-cache
   sed -i '/gtk-update-icon-cache/d' install.sh
 }
 
 package() {
-  cd "$srcdir/Tela-icon-theme"
+  cd Tela-icon-theme
   install -d "$pkgdir/usr/share/icons"
   ./install.sh -a -d "$pkgdir/usr/share/icons"
 }
