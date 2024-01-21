@@ -1,0 +1,6 @@
+src
+pkg
+*.tar.xz
+*.tar.gz
+*.patch
+dune3d

@@ -2,21 +2,19 @@
 
 _pkgname='dune3d'
 pkgname="${_pkgname}-git"
-pkgver=r319.507cf4b
+pkgver=r324.048eff7
 pkgrel=1
 pkgdesc='3D CAD application'
 arch=('x86_64')
-url='https://github.com/dune3d/dune3d'
+url="https://dune3d.org"
 license=('GPL3')
-depends=('gtkmm-4.0' 'libepoxy' 'eigen' 'opencascade' 'mimalloc' 'glm' 'range-v3' 'python-gobject' 'python-cairo' 'cairo')
-makedepends=('git' 'meson' 'cmake' 'ninja')
+depends=('gtkmm-4.0' 'cairomm' 'opencascade' 'eigen' 'libspnav')
+makedepends=('glm' 'python3' 'librsvg' 'meson' 'cmake' 'python-gobject' 'python-cairo' 'git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+${url}.git"
-        "dune3d.desktop"
+source=("git+https://github.com/dune3d/dune3d.git"
 )
-sha256sums=('SKIP'
-            'cf69defe0c737a34c2b45ff9f449e22d47a2d4b45b1ada16f3cd180287939909')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
@@ -25,14 +23,15 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
-  meson setup build
-  meson compile -C build
+  arch-meson build
+
+  cd build
+  ninja
 }
 
 package() {
-  cd "${_pkgname}"
-  install -Dm755 "build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "$srcdir/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  cd "${_pkgname}/build"
+  DESTDIR="$pkgdir" ninja install
 }
 
 # vim: ts=2 sw=2 et:
