@@ -2,7 +2,7 @@
 # Maintainer: Federico Cerutti <aur $at$ ceres-c $dot-Italy-tld$>
 pkgname=owon-vds-tiny
 _gitname='OWON-VDS1022'
-pkgver=1.1.5.cf19.1
+pkgver=1.1.5.cf19.2
 pkgrel=1
 pkgdesc="OWON VDS1022(I)/VDS2052 oscilloscope application"
 arch=(x86_64 i386 aarch64)
