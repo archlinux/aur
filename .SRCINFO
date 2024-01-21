@@ -4,7 +4,7 @@ pkgbase = system76-acpi-dkms
 	pkgrel = 1
 	url = https://github.com/pop-os/system76-acpi-dkms
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = git
 	depends = dkms
 	source = git+https://github.com/pop-os/system76-acpi-dkms.git#commit=03a5804847a64fd977989316ea25082e2766723e

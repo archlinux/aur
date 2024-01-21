@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="This provides the system76_acpi in-tree driver for systems missing it."
 arch=('x86_64')
 url="https://github.com/pop-os/system76-acpi-dkms"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('dkms')
 makedepends=('git')
 _commit=03a5804847a64fd977989316ea25082e2766723e  # branch/master
@@ -16,12 +16,12 @@ sha256sums=('SKIP'
             'ae5fe704761f5ff7d7a4e161044a27c6346854f17e3bd5476e863ad4e1ec8d6b')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   git describe --tags | sed 's/-/+/g'
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
 
   # Installation directory
   local install_dir="$pkgdir/usr/src/system76-acpi-${pkgver//+*/}"
@@ -37,7 +37,7 @@ package() {
 
   # Edit and install dkms configuration
   sed "s/#MODULE_VERSION#/${pkgver//+*/}/" \
-    "$srcdir/system76-acpi-dkms.conf" > "$install_dir/dkms.conf"
+    "$srcdir/$pkgname.conf" > "$install_dir/dkms.conf"
 
   # Load the module at boot
   install -Dm644 "usr/share/initramfs-tools/modules.d/$pkgname.conf" \
