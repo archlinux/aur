@@ -1,7 +1,7 @@
 # Maintainer: wansing <mail at wansing dot org>
 pkgname=traggo-bin
 pkgver=0.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="self-hosted tag-based time tracking"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/traggo/server"
@@ -27,7 +27,13 @@ sha256sums_aarch64=('7430f4540d4f4428be71fc6bde1a7665f652b503f40c47b781fda920ed8
 sha256sums_armv7h=('420a1c7e091fcdea86c9c3ff5aebc294875b9a4db7199739caf85339ba655052')
 
 package() {
-  install -Dm755 traggo-server-${pkgver}-linux-amd64 "$pkgdir"/usr/bin/traggo-server
+  case "$CARCH" in
+   "x86_64") _binary="amd64";;
+   "aarch64") _binary="arm64";;
+   "armv7h") _binary="arm-7";;
+   *) echo "Unsupported architecture" && exit 1;;
+  esac
+  install -Dm755 traggo-server-${pkgver}-linux-${_binary} "$pkgdir"/usr/bin/traggo-server
   install -Dm644 "server.ini"      "${pkgdir}/etc/traggo/server.ini"
   install -Dm644 "traggo.service"  "${pkgdir}/usr/lib/systemd/system/traggo.service"
   install -Dm644 "traggo.sysusers" "${pkgdir}/usr/lib/sysusers.d/traggo.conf"
