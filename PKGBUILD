@@ -1,10 +1,10 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=6.6.10
-_archver=arch1
+_kernver=6.7
+_archver=arch3
 _pkgrel=1
 _pkgver="${_kernver}.${_archver}"
-_KERNNAME=6.6.10-arch1-1
+_KERNNAME=6.7.0-arch3-1
 pkgbase="${_pkgname}-versioned-bin"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}"
 pkgname=("${_pkgname}-versioned-bin"
@@ -44,9 +44,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('37909ae5044e242651d230fb1db0e614e3d0245f1300f14cdb7dbc9e482748c0'
-            'adb66a80422fe99d5868f3d053cc03153a883fc2ed3dfe5e6c59f20bf56cd3ff'
-            'eec66c6dbdb2be5dc83fccd5ef1ecf131e4ead67bd08afeb0ac720f6102eb48d')
+sha256sums=('538a1998407bdf8b2436ae0b2aa3a07b5ed6e011d089c012d010b370b1b293b4'
+            '4711cb14b5f89e946a6532ba0ce1afdb8c303afc8c046c1d1205ad4a2ac77ab3'
+            '4ddcf4dce8935048542318b4722be2315c93d58f9caa6a64f3429adecd8ea9ff')
 
 package_linux-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -64,7 +64,7 @@ package_linux-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux6.6.10.arch1-1-bin() {
+package_linux6.7.arch3-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -82,7 +82,7 @@ package_linux6.6.10.arch1-1-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux6.6.10.arch1-1-headers-bin() {
+package_linux6.7.arch3-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -91,7 +91,7 @@ package_linux6.6.10.arch1-1-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux6.6.10.arch1-1-docs-bin() {
+package_linux6.7.arch3-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
