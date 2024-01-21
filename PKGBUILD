@@ -5,33 +5,34 @@
 # Contributor: Xu Fasheng <fasheng.xu[AT]gmail.com>
 
 pkgname=deepin-wallpapers-git
-pkgver=1.8.3.r10.g548f259
+sourcename=deepin-wallpapers
+pkgver=1.7.16.r2.ga1bdfad
 pkgrel=1
 pkgdesc='Deepin Wallpapers'
 arch=('any')
 license=('GPL')
 url="https://github.com/linuxdeepin/deepin-wallpapers"
-makedepends=('git' 'deepin-api-git')
+makedepends=('git' 'deepin-api')
 groups=('deepin-git')
-source=("$pkgname::git+https://github.com/linuxdeepin/deepin-wallpapers/")
+source=("git+https://github.com/linuxdeepin/deepin-wallpapers/")
 provides=('deepin-wallpapers')
 conflicts=('deepin-wallpapers')
 sha512sums=('SKIP')
 
 pkgver() {
-    cd $pkgname
+    cd $sourcename
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $pkgname
+  cd $sourcename
   for _pic in deepin/*; do
     make PICS=$_pic
   done
 }
 
 package() {
-  cd $pkgname
+  cd $sourcename
   install -dm755 "$pkgdir"/usr/share/wallpapers
   cp -r deepin "$pkgdir"/usr/share/wallpapers/
   install -dm755 "$pkgdir"/var/cache

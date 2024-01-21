@@ -1,16 +1,16 @@
 pkgbase = deepin-wallpapers-git
 	pkgdesc = Deepin Wallpapers
-	pkgver = 1.8.3.r10.g548f259
+	pkgver = 1.7.16.r2.ga1bdfad
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/deepin-wallpapers
 	arch = any
 	groups = deepin-git
 	license = GPL
 	makedepends = git
-	makedepends = deepin-api-git
+	makedepends = deepin-api
 	provides = deepin-wallpapers
 	conflicts = deepin-wallpapers
-	source = deepin-wallpapers-git::git+https://github.com/linuxdeepin/deepin-wallpapers/
+	source = git+https://github.com/linuxdeepin/deepin-wallpapers/
 	sha512sums = SKIP
 
 pkgname = deepin-wallpapers-git
