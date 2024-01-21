@@ -13,7 +13,7 @@ pkgbase=corefreq-git
 pkgname=(corefreq-client-git corefreq-server-git corefreq-dkms-git)
 _gitname=CoreFreq
 _pkgbase=${pkgbase%-*}
-pkgver=1.97.0.r0.g93db569
+pkgver=1.97.0.r7.g103f9ad
 pkgrel=1
 pkgdesc="A CPU monitoring software with BIOS like functionalities"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(git+"${url}.git#branch=master"
         'dkms.conf'
         'honor-archlinux-compiler-flags.patch')
 b2sums=('SKIP'
-        'c6d8849944f99195038ac252d010d3e3001cd1dcaee57218c4a7f58fa313aa38842e4ea991d4d9ff7d04063ebaa9900c06ff1eacfa6270341cf37fb752adc00c'
+        'a47306b69244b2c7cfe34a5a19aabc7d22ef8982402da038bfb65a357bed9aa0d9f30b034afa7c6dbc23969448142a0027bd14364a14da92b1c666881e15420c'
         '0b409cbc017b5b8d30cf2f291fe288172a8f8a1d773f17e5c860f2a9a929e758731993a2e56a4d0f03364b40481577765a714d8daf7261f2832c02921b347c93')
 
 pkgver() {
@@ -63,8 +63,8 @@ package_corefreq-dkms-git() {
       -i "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
 
   # Copy sources (including Makefile)
-  cp -r "${_gitname}"/Makefile "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/"
-  cp -r "${_gitname}"/${CARCH}/{*.c,*.h} "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/"
+  cp -r "${_gitname}"/{Makefile,scripter.sh} "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/"
+  cp -r "${_gitname}"/${CARCH} "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/"
 }
 
 package_corefreq-server-git() {
