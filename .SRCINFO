@@ -1,6 +1,6 @@
 pkgbase = thunderbird-extension-send-later-git
 	pkgdesc = Schedule messages to be sent at a specific time
-	pkgver = 9.2.9.0430643
+	pkgver = 10.3.6.948cf1b1
 	pkgrel = 1
 	url = https://github.com/Extended-Thunder/send-later
 	arch = any
