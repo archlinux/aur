@@ -1,15 +1,15 @@
 pkgbase = aur-builder
 	pkgdesc = AUR Build Helper
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/ryanpetris/aur-builder
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = go
 	depends = pacman
 	depends = git
 	depends = pacdb
-	source = aur-builder-1.1.0.tar.gz::https://github.com/ryanpetris/aur-builder/archive/v1.1.0.tar.gz
-	b2sums = 4b86f8a32f1bb7a5c90e236b80db4137314bd2cd9b91e72adf4b3600c4949188d33445737cdd929fd45300f2eb65b018a3de691675c7d498fc85011924637e99
+	source = aur-builder-1.1.1.tar.gz::https://github.com/ryanpetris/aur-builder/archive/v1.1.1.tar.gz
+	b2sums = da60409f7421eda41f767f1184899a737865a9239f32b373f630376d6aa2ecf5fb3be4cfee0e920621d9a504f009feed533f93be5509dc40821d67d505d965db
 
 pkgname = aur-builder
