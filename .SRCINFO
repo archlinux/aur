@@ -1,7 +1,7 @@
 pkgbase = fzfx-git
 	pkgdesc = Opinionated wrapper that extends FZF.
-	pkgver = v1.3.r3.g66b87aa
-	pkgrel = 2
+	pkgver = v1.3.2.r6.gc5b5787
+	pkgrel = 1
 	url = https://github.com/danisztls/fzfx
 	arch = any
 	license = MIT
@@ -19,6 +19,7 @@ pkgbase = fzfx-git
 	optdepends = tree: improved dir preview
 	optdepends = ripgrep-all: fulltext search blobs
 	provides = fzfx
+	conflicts = fzfx
 	source = git+https://github.com/danisztls/fzfx.git#branch=main
 	sha512sums = SKIP
 

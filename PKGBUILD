@@ -5,8 +5,8 @@ _gitauthor="danisztls"
 _gitbranch="main"
 
 pkgname="${_pkgname}-git"
-pkgver=v1.3.r3.g66b87aa
-pkgrel=2
+pkgver=v1.3.2.r6.gc5b5787
+pkgrel=1
 pkgdesc="Opinionated wrapper that extends FZF."
 arch=('any')
 url="https://github.com/${_gitauthor}/${_pkgname}"
@@ -22,7 +22,7 @@ optdepends=('bat: improved text preview'
             'tree: improved dir preview'
             'ripgrep-all: fulltext search blobs')
 provides=("${_pkgname}")
-conflicts=()
+conflicts=("${_pkgname}")
 replaces=()
 backup=()
 options=()
@@ -41,14 +41,8 @@ pkgver() {
   )
 }
 
-prepare() {
-  cd "$srcdir/${_pkgname}"
-}
-
-# build() {
-# }
-
 package() {
+  cd "$srcdir/$_pkgname"
   install -Dm755 fzfx "${pkgdir}/usr/bin/fzfx"
   install -vDm 644 ignore "${pkgdir}/usr/share/${_pkgname}/ignore"
   install -vDm 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
