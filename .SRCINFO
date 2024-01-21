@@ -1,13 +1,12 @@
 pkgbase = nile-git
 	pkgdesc = Unofficial Amazon Games client
-	pkgver = r55.99a6140
+	pkgver = r73.8f7ab26
 	pkgrel = 1
 	url = https://github.com/imLinguin/nile
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = pyinstaller
-	depends = bash
 	depends = python-json5
 	depends = python-platformdirs
 	depends = python-protobuf
