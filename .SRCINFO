@@ -1,0 +1,16 @@
+pkgbase = ocaml-poll
+	pkgdesc = Portable OCaml interface to macOS/Linux/Windows native IO event notification mechanisms
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/anuragsoni/poll
+	arch = x86_64
+	license = MIT
+	makedepends = dune
+	depends = ocaml
+	depends = ocaml-kqueue
+	depends = ocaml-ppx_optcomp
+	options = !strip
+	source = ocaml-poll-0.3.1.tbz::https://github.com/anuragsoni/poll/releases/download/0.3.1/poll-0.3.1.tbz
+	sha512sums = 5c47ac2cb4fb52c116a190b323c4e537c8cc1d4d4689653fc1a863cfb19e215468c8c2d93180402fccf83a5e23def540f1f52f2975b7e391155afa593ae5e127
+
+pkgname = ocaml-poll
