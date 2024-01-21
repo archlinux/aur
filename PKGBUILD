@@ -3,7 +3,7 @@
 # Contributor: hexchain <i@hexchain.org>
 # Based on official PKGBUILD from Arch Linux with an annoying bug reverted
 pkgname=telegram-desktop-kdefix
-pkgver=4.14.7
+pkgver=4.14.9
 pkgrel=1
 pkgdesc='Telegram Desktop client with KDE unread counter bug reverted'
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver
         "0003-qt5-lib-base-wayland-desktop-entry-fix.patch"
         "0004-qt5-disable-webview-linux-compositor.patch"
         "0005-qt5-lib-base-include-variant.patch")
-sha512sums=('d187e2e8d73daeca3ff753267e4872feb56f00cf14f5b564288852877b330536956f75a415aeae6459e0ad919df04329d33d3d253b19311de4db6bdc0f697dde'
+sha512sums=('802ec7eeef75ac97934cb0437c24dab62670f7029a1a5e44866cd77d39d7b572b79106c0b73bd742786548db938c49ba2e559123963ef0201adaa279b4cf9fa4'
             'e78f6c769c026214efaf988dc3a2aac632909f553c348fd357fe8dc353646866238c5e30bbb0f420a4352be6b4efa32e582f3e3d8390772889f8933f54db491c'
             '13eb112ea6adb4d73cbc2b8f91c751e4e64ab87b686867f1d0edaff43d92633d383f20171bb4f279fa7cbbb16a92e1c4d87657116791950122bd88df61097e48'
             '2a5d2bf1b18f00c886e59df189df532648d899c2bb9a6cca7a801269aa3f4528c41e4a6a1a7219880ed68815ea821b8de64ce0ad4de90baa07d5b4a9b92006a2'
