@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=folder-color-nautilus
 _pkgname=${pkgname%-nautilus}
-pkgver=0.3.2
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Change your folder color in Nautilus"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('git' 'dpkg' 'python-build' 'python-distutils-extra' 'python-instal
              'python-setuptools' 'python-wheel')
 conflicts=("$_pkgname-bzr" 'folder-color-common')
 replaces=('folder-color-common')
-_commit=b52534562cc4a69eb56982bc9c14e0efc61fd0ee  # 0.3.2
+_commit=67428606aa802e624b5b783f9f06f8bd724ae56c  # 0.4.1
 source=("git+https://github.com/costales/folder-color.git#commit=$_commit")
 sha256sums=('SKIP')
 
