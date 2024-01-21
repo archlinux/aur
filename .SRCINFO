@@ -4,7 +4,7 @@ pkgbase = nvidia-container-toolkit
 	pkgrel = 9
 	url = https://github.com/NVIDIA/nvidia-container-toolkit
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = git
 	makedepends = go
 	depends = libnvidia-container-tools=1.14.3

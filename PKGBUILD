@@ -7,7 +7,7 @@ pkgrel=9
 pkgdesc="NVIDIA container runtime toolkit"
 arch=('x86_64')
 url="https://github.com/NVIDIA/nvidia-container-toolkit"
-license=('Apache')
+license=('Apache-2.0')
 depends=("libnvidia-container-tools=$pkgver")
 makedepends=('git' 'go')
 provides=('nvidia-container-runtime')
