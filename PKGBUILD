@@ -1,4 +1,4 @@
-# Maintainer: Jarno Malmari <aur@srv.jmalmari.fi>
+# Maintainer: Jarno Malmari <jmalmari@ftml.net>
 
 pkgname=orbuculum-git
 pkgver=2.1.0.r95.ge312aa1
