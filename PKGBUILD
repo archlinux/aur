@@ -12,5 +12,5 @@ source=("https://github.com/Ruby-Network/bare-server-go/raw/main/bin/bare-server
 sha256sums=('SKIP')
 package() {
     install -d "${pkgdir}/usr/bin"
-    install -Dm755 "${srcdir}/bare-server" "${pkgdir}/usr/bin/bare-server-go"
+    install -Dm755 "${srcdir}/bare-server-go" "${pkgdir}/usr/bin/bare-server-go"
 }
