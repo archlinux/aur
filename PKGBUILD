@@ -14,7 +14,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools'
              'python-wheel' 'qt5-tools')
 checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('ef14f679e4352888618c24c88e1c354b17c519013c1c1b6603a32e3ac70bb042')
+sha256sums=('34f9fdb00df9dc54e2edfab308ebb3e1fc1d0cca5e7156fe821d80c624fd5639')
 
 prepare() {
   rm -rf "$pkgname-$pkgver"
