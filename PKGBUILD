@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Timo Schwichtenberg <therealbassx at yahoo dot de>
 # Contributor: Link Dupont <link@fastmail.com>
 pkgname=system76-wallpapers
@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc="A collection of System76 Wallpapers"
 arch=('any')
 url="https://github.com/pop-os/system76-wallpapers"
-license=('GPL')
+license=('LGPL-2.0-or-later')
 source=("https://launchpad.net/~system76-dev/+archive/ubuntu/stable/+sourcefiles/$pkgname/$pkgver/${pkgname}_${pkgver}"{.tar.xz,.dsc})
 sha256sums=('11087fc9f1728f5a269eabecd3321a2761d95488fbed7a2aeabc64f0350483ed'
             'f16709261e150413468532228b44ccb3b4435adb4733fe74e88577bf2cae16d7')
