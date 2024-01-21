@@ -1,11 +1,12 @@
 pkgbase = stargate
 	pkgdesc = Innovation-first digital audio workstation (DAW), instrument and effect plugins, wave editor
-	pkgver = 24.01.1
-	pkgrel = 2
+	pkgver = 24.02.1
+	pkgrel = 1
 	url = https://github.com/stargatedaw/stargate
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
+	checkdepends = python-pytest
 	makedepends = git
 	makedepends = jq
 	makedepends = libsbsms
@@ -17,6 +18,7 @@ pkgbase = stargate
 	depends = portaudio
 	depends = portmidi
 	depends = python
+	depends = python-distro
 	depends = python-jinja
 	depends = python-mido
 	depends = python-numpy
@@ -30,7 +32,7 @@ pkgbase = stargate
 	optdepends = ffmpeg
 	optdepends = lame
 	optdepends = vorbis-tools
-	source = git+https://github.com/stargatedaw/stargate.git#commit=835ef6f081a5d72035e1c9767eaaf74e59783df0
+	source = git+https://github.com/stargatedaw/stargate.git#commit=c7680dbb194e31ac9025a3127db521a277c1fc41
 	source = git+https://github.com/spatialaudio/portaudio-binaries.git
 	source = git+https://github.com/stargatedaw/stargate-soundtouch.git
 	source = git+https://github.com/stargatedaw/stargate-sbsms.git
