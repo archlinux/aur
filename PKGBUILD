@@ -4,14 +4,14 @@
 pkgname=ruby-pdf-core
 _name=${pkgname#ruby-}
 pkgver=0.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Implements low level PDF features for Prawn (experimental)"
 arch=(any)
 url="https://github.com/prawnpdf/pdf-core"
 license=(
-  GPL2
-  GPL3
-  custom:PRAWN
+  GPL-2.0-only
+  GPL-3.0-only
+  Ruby
 )
 depends=(ruby)
 makedepends=(rubygems)
@@ -21,7 +21,8 @@ checkdepends=(
   ruby-rspec
 )
 options=(!emptydirs)
-source=("$url/archive/refs/tags/$pkgver.tar.gz")
+
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('f7d21d2c9717a0a4b0d42941e37d9c24940b9657efbd0ae31e95bc11fb5f5413')
 
 _archive="$_name-$pkgver"
@@ -39,7 +40,6 @@ prepare() {
 build() {
   cd "$_archive"
 
-  local _gemdir
   _gemdir="$(gem env gemdir)"
 
   gem build "$_name.gemspec"
@@ -83,18 +83,16 @@ build() {
 check() {
   cd "$_archive"
 
-  local _gemdir
   _gemdir="$(gem env gemdir)"
-
   GEM_HOME="tmp_install/$_gemdir" rspec
 }
 
 package() {
   cd "$_archive"
 
-  cp --archive --verbose tmp_install/* "$pkgdir"
+  cp --archive tmp_install/* "$pkgdir"
 
-  install --verbose -D --mode=0644 COPYING --target-directory "$pkgdir/usr/share/licenses/$pkgname"
-  install --verbose -D --mode=0644 LICENSE --target-directory "$pkgdir/usr/share/licenses/$pkgname"
-  install --verbose -D --mode=0644 ./*.md --target-directory "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+    COPYING LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
 }
