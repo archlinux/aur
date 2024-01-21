@@ -1,9 +1,9 @@
 [Desktop Entry]
 Name=Leather Wallet
-Exec="/opt/Leather/leather-wallet %U"
+Exec="/opt/Leather/leather-wallet" %U
 Terminal=false
 Type=Application
 Icon=leather-wallet
 StartupWMClass=Leather
-Comment=Leather Wallet v4 — Participate in Stacking to earn bitcoin rewards
-Categories=Finance;
+Comment=Leather Wallet is everything you need to manage your tokens and collectibles and will protect your tokens when you use apps.
+Categories=Finance;Utility;
