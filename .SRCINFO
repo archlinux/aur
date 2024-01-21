@@ -9,6 +9,7 @@ pkgbase = yewtube
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = python-pip
 	depends = python-pylast
 	depends = python-pyperclip
 	depends = python-requests
