@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Stanford NLP Python library for tokenization, sentence segmentation, NER, and parsing of many human languages"
 arch=('any')
 url="https://stanfordnlp.github.io/stanza"
-license=('Apache')
+license=('Apache-2.0')
 depends=(
   'python-emoji'
   'python-networkx'
