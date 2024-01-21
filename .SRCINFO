@@ -8,6 +8,7 @@ pkgbase = osm-gps-map-git
 	makedepends = git
 	makedepends = gtk-doc
 	makedepends = gobject-introspection
+	makedepends = autoconf-archive
 	depends = gtk3
 	depends = libsoup
 	provides = osm-gps-map
