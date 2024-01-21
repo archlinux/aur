@@ -1,7 +1,7 @@
 pkgbase = imgpkg-bin
 	pkgdesc = Store application configuration files in Docker/OCI registries
 	pkgver = 0.40.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://carvel.dev/imgpkg
 	arch = x86_64
 	arch = aarch64
