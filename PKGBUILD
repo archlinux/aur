@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 pkgname=office-runner
 pkgver=1.0.3
@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior"
 arch=('x86_64')
 url="https://gitlab.gnome.org/GNOME/office-runner"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gtk3')
 makedepends=('gnome-common')
 source=("https://gitlab.gnome.org/GNOME/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
