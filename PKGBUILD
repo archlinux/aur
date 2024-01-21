@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/XandrCopyrighted/xFetch/"
 license=('MIT')
 
-source=(git+https://github.com/XandrCopyrighted/xFetch.git)
+source=(xfetch::git+https://github.com/XandrCopyrighted/xFetch.git)
 sha256sums=('SKIP')
 
 depends=()
@@ -26,6 +26,8 @@ build() {
   rustup component add rust-src --toolchain nightly-2024-01-20-x86_64-unknown-linux-gnu
   RUSTFLAGS="-Zlocation-detail=none" cargo build --target x86_64-unknown-linux-gnu --profile optimized-build -Z build-std=std,panic_abort -Z build-std-features=panic_immediate_abort
 }
+
+install=xfetch-rs-git.install
 
 package() {
 	cd $srcdir/xFetch
