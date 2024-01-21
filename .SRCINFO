@@ -1,10 +1,10 @@
 pkgbase = nemo-meld-compare
 	pkgdesc = Compare Actions using Meld for Nemo File Manager
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.archlinux.org/index.php/Nemo#Nemo_Actions
 	arch = any
-	license = GPL
+	license = none
 	depends = nemo
 	depends = meld
 	source = compare-save-for-later.nemo_action
