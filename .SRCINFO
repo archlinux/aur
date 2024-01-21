@@ -11,8 +11,7 @@ pkgbase = lltdscan-git
 	depends = libnet
 	provides = lltdscan
 	conflicts = lltdscan
-	source = git://github.com/zed-0xff/lltdscan.git
+	source = git+https://github.com/zed-0xff/lltdscan.git
 	sha256sums = SKIP
 
 pkgname = lltdscan-git
-

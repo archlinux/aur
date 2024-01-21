@@ -15,7 +15,7 @@ makedepends=('git')
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
 #_verwatch=("${url}/releases" "${url#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
-source=("${url//https:/git:}.git")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
