@@ -10,8 +10,12 @@ pkgdesc='The official GUI for MongoDB - Isolated Edition'
 # If you're running on armv7h, you have to add it to the arch and source arrays of the electron25-bin AUR dependency
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
-license=('custom:SSPL')
-_electronpkg='electron25'
+license=('SSPL-1.0')
+if [[ "$_target" =~ -beta$ ]]; then
+	_electronpkg='electron28'
+else
+	_electronpkg='electron25'
+fi
 depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release' 'nodejs>=16.15.1')
 makedepends=('git' 'npm>=8.19.4' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
@@ -34,13 +38,20 @@ prepare() {
 	# Disable husky command
 	sed -i '/husky install/d' 'package.json'
 
+	# Working around https://gitlab.archlinux.org/archlinux/packaging/packages/electron28/-/issues/1
+	_installedelectronver="$(cat "/usr/lib/$_electronpkg/version")"
+
+	if [ "$_installedelectronver" = '28.1.5' ]; then
+		_installedelectronver='28.1.4'
+	fi
+
 	# Set system Electron version for ABI compatibility
-	sed -E -i 's|("electron": ").*"|\1'"$(cat "/usr/lib/$_electronpkg/version")"'"|' {'configs','packages'}'/'*'/package.json'
+	sed -E -i 's|("electron": ").*"|\1'"$_installedelectronver"'"|' {'configs','packages'}'/'*'/package.json'
 
 	# Force the newest version of electron-to-chromium
 	sed -E -i 's|(.*)("electron": ")|\1"electron-to-chromium": "'"$(npm view 'electron-to-chromium@latest' version)"'",\n\1\2|' 'packages/compass/package.json'
 
-	# Use a fork of os-dns-native (as there are issues with the path not being in the main node_modules directory, a local copy is not used)
+	# Use a new version of os-dns-native
 	sed -E -i "s|(.*)\"os-dns-native\": \".*\",|\1\"os-dns-native\": \"1\.2\.1\",|" 'packages/compass/package.json'
 	patch --forward -p1 < "$srcdir/hadron-build-os-dns-native.diff"
 
@@ -108,7 +119,6 @@ EOF
 	install -Dm644 "$srcdir/$_sourcedirectory/packages/compass/app-icons/linux/mongodb-compass.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
-	for _license in 'LICENSE' 'LICENSES.chromium.html'; do
-		install -Dm644 "$_license" "$pkgdir/usr/share/licenses/$pkgname/$_license"
-	done
+	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/SSPL-1.0"
+	install -Dm644 'LICENSES.chromium.html' "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
 }
