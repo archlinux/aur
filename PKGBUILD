@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Tempus themes for Alacritty"
 arch=('any')
 url="https://protesilaos.com/tempus-themes"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('alacritty')
 makedepends=('git')
 provides=("${pkgname%-git}")
@@ -15,12 +15,11 @@ source=("git+https://gitlab.com/protesilaos/tempus-themes-alacritty.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
-  install -d "$pkgdir/usr/share/alacritty"
+  cd "${pkgname%-git}"
   install -Dm644 alacritty/*.yml "$pkgdir/usr/share/alacritty/"
 }
