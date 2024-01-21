@@ -1,8 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "assignees": [ "volker.raschek" ],
-  "automergeStrategy": "merge-commit",
-  "automergeType": "pr",
   "labels": [ "renovate" ],
   "packageRules": [
     {
