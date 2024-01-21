@@ -1,11 +1,11 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=textsnatcher
 pkgver=2.0.0
 pkgrel=1
 pkgdesc="Snatch Text with just a Drag"
 arch=('x86_64')
 url="https://textsnatcher.rf.gd"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('granite' 'libhandy' 'libportal' 'tesseract')
 makedepends=('meson' 'vala')
 optdepends=('scrot: screenshot access on Xorg'
