@@ -2,6 +2,3 @@
 !PKGBUILD
 !.SRCINFO
 !.gitignore
-!blueprint_version_0.94.0.patch
-!max_value_0.94.0.patch
-!max_size_tightending_thresh_0.94.0.patch
