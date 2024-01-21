@@ -14,6 +14,7 @@ depends=('python' 'python-yaml' 'python-dateutil')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
+install="reminders.install"
 source=("git+https://github.com/danisztls/reminders")
 sha512sums=('SKIP') 
 
