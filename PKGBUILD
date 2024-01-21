@@ -4,15 +4,17 @@ _gitrel=a973c36ed296
 _pkgrel=3
 pkgname=omnikey_ifdokccid
 pkgver=4.3.3
-pkgrel=5
+pkgrel=6
 pkgdesc="PCSC driver for OMNIKEY 1021, 3x21, 6121,512x, 532x"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="http://www.hidglobal.com/"
 license=('custom:HID_OK_Drivers_EULA')
 depends=('libusb' 'pcsclite')
 conflicts=('omnikey_ifdokccid-git')
-source=("https://www3.hidglobal.com/sites/default/files/drivers/omnikey_ccid_driver_for_8051_controller_based_readers_v.${pkgver}.zip")
+source=("https://www.hidglobal.com/sites/default/files/drivers/omnikey_ccid_driver_for_8051_controller_based_readers_v.${pkgver}.zip")
 sha256sums=('093c4a6ea3265c812cc6b876c6277aeb662bb60d59dadfd697ff3dc99049775e')
+# Workaround to allow the package being downloaded
+DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 
 prepare() {
     _ARCH=""
@@ -50,10 +52,9 @@ package() {
     cp -r ${pkgname}.bundle $pkgdir/usr/lib/pcsc/drivers
     mkdir -p $pkgdir/etc
     install -m0600 omnikey.ini $pkgdir/etc/omnikey.ini
-    mkdir -p $pkgdir/etc/udev/rules.d
-    install -m0644 z98_omnikey.rules $pkgdir/etc/udev/rules.d/z98_omnikey.rules
-    mkdir -p $pkgdir/usr/lib/udev
+    mkdir -p $pkgdir/usr/lib/udev/rules.d
     install -m0744 ok_pcscd_hotplug.sh $pkgdir/usr/lib/udev/ok_pcscd_hotplug.sh
+    install -m0644 z98_omnikey.rules $pkgdir/usr/lib/udev/rules.d/z98_omnikey.rules
     mkdir -p $pkgdir/usr/share/licenses/$pkgname
     install -Dm644 HID_OK_Drivers_EULA "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
