@@ -1,0 +1,13 @@
+pkgbase = syncany-plugin-gui-git
+	pkgdesc = Graphical User Interface for Syncany
+	pkgver = 0.4.9.alpha.g2273832c
+	pkgrel = 1
+	url = http://www.syncany.org/
+	arch = any
+	license = GPL3
+	depends = java-environment>=8
+	depends = syncany
+	source = syncany-plugin-gui-git::git+https://github.com/syncany/syncany-plugin-gui.git
+	sha256sums = SKIP
+
+pkgname = syncany-plugin-gui-git
