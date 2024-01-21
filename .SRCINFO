@@ -1,13 +1,12 @@
 pkgbase = vlc-luajit
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility
 	pkgver = 3.0.20
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.videolan.org/vlc/
-	arch = i686
 	arch = x86_64
 	arch = aarch64
-	license = LGPL2.1
-	license = GPL2
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
 	makedepends = gst-plugins-base-libs
 	makedepends = live-media>=2023.01.19
 	makedepends = libnotify
@@ -69,6 +68,7 @@ pkgbase = vlc-luajit
 	makedepends = x265>=3.5
 	makedepends = protobuf>=25
 	makedepends = srt>=1.5
+	makedepends = fluidsynth
 	depends = a52dec
 	depends = aribb24
 	depends = libdvbpsi
@@ -114,6 +114,7 @@ pkgbase = vlc-luajit
 	optdepends = systemd-libs: udev services discovery
 	optdepends = smbclient: SMB access plugin
 	optdepends = libcdio: audio CD playback
+	optdepends = fluidsynth: FluidSynth based MIDI playback plugin
 	optdepends = gnu-free-fonts: subtitle font
 	optdepends = ttf-dejavu: subtitle font
 	optdepends = libssh2: sftp access

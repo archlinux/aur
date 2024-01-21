@@ -5,11 +5,14 @@ _vlcver=3.0.20
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=4
+pkgrel=5
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
-arch=('i686' 'x86_64' 'aarch64')
-license=('LGPL2.1' 'GPL2')
+arch=('x86_64' 'aarch64')
+license=(
+  'GPL-2.0-or-later'
+  'LGPL-2.1-or-later'
+)
 # To manage dependency rebuild easily, this will prevent you to rebuild VLC on non-updated system
 _aomver=3
 _dav1dver=1.3.0
@@ -49,7 +52,7 @@ makedepends=(
   "libdc1394>=$_libdc1394ver"
   "libmicrodns>=$_libmicrodnsver" "libvpx>=$_libvpxver"
   "x264>=$_x264ver" "x265>=$_x265ver" "protobuf>=$_protobufver"
-  "srt>=$_srtver"
+  "srt>=$_srtver" fluidsynth
 )
 optdepends=(
   'avahi: service discovery using bonjour protocol'
@@ -67,7 +70,8 @@ optdepends=(
   'systemd-libs: udev services discovery'
   'smbclient: SMB access plugin'
   'libcdio: audio CD playback'
-  'gnu-free-fonts: subtitle font '
+  'fluidsynth: FluidSynth based MIDI playback plugin'
+  'gnu-free-fonts: subtitle font'
   'ttf-dejavu: subtitle font'
   'libssh2: sftp access'
   'libnfs: NFS access'
@@ -210,6 +214,7 @@ build() {
     --enable-a52 \
     --enable-dca \
     --enable-flac \
+    --enable-fluidsynth \
     --enable-libmpeg2 \
     --enable-vorbis \
     --enable-speex \
