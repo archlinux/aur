@@ -1,15 +1,16 @@
 pkgbase = toc
 	pkgdesc = Generate a table of contents from the comments of a file
-	pkgver = 1.0.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/AlphaJack/toc
 	arch = any
 	license = GPL3
-	depends = awk
-	depends = bash
-	depends = perl
-	depends = sed
-	source = toc-1.0.0.tar.gz::https://github.com/AlphaJack/toc/archive/refs/tags/v1.0.0.tar.gz
-	b2sums = ed77f1fdb44041a1323b43726fc66f87907a9e8fdb5f411203f0297260e9c5ca2de74a0bd4b5eb951dfca909321353af668910927169fbd532c5cd783fd3ddf7
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/t/tableofcontents/tableofcontents-2.0.0.tar.gz
+	b2sums = 81d39213e4544e93b03c0d25058c724a73fcacf6c1a51c9537a5be96ba0e136748c741b78cdb63d0adb86dc142a18efc1998097bf2e8d388d2f334b5147e0da7
 
 pkgname = toc
