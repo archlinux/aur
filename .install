@@ -1,5 +1,5 @@
 post_install(){
-   printf "The code on github is currently out of date, and I can't find a way to bypass the dev checks, so I can't use system electron to reduce the size.\n"
+   printf "The code on github is currently out of date, and I bypass the check by cp && rename electron"
 }
 post_upgrade(){
    post_install
