@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Have always at a glance the usage of system resources"
 arch=('any')
 url="https://github.com/jorchube/monitorets"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('libadwaita' 'python-cairo' 'python-gobject' 'python-psutil'
          'python-xdg-base-dirs')
 makedepends=('meson')
