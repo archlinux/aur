@@ -9,12 +9,12 @@ pkgbase = na-bin
 	provides = na
 	arch = aarch64
 	source_aarch64 = https://github.com/moyiz/na/releases/download/v0.0.9/na_linux_arm64.tar.gz
-	sha256sums_aarch64 = a291a068ea2a17734f9b851715cffd780b3392b31d34b7ccdaf88ef1609dd249
+	sha256sums_aarch64 = 1e11d3ab267ac6e1ba6465225cdfd1de660411cf762cfcf10df14e5b21c5a426
 	arch = i686
 	source_i686 = https://github.com/moyiz/na/releases/download/v0.0.9/na_linux_i386.tar.gz
-	sha256sums_i686 = 3900b1efd2fbeb55ac5aad2a766658e003162a975f3d1a1e57d04e76ca19cc52
+	sha256sums_i686 = a89e45ade6d5f2c5dbfbc1ee2f83c7f759653363a98114390c06d7db75624057
 	arch = x86_64
 	source_x86_64 = https://github.com/moyiz/na/releases/download/v0.0.9/na_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 582e2c5f8e5f33b2527dd62f559a0b23dec78076a21448346be7b92e4556231b
+	sha256sums_x86_64 = 0bd5601d74cf2e4912a244c80a6cf86b68dde549f2d0adce91ef38f866eb96a7
 	
 pkgname = na-bin
