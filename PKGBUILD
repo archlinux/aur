@@ -4,14 +4,14 @@
 pkgname=ruby-prawn
 _name=${pkgname#ruby-}
 pkgver=2.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast and nimble PDF generator for Ruby"
 arch=(any)
 url="https://github.com/prawnpdf/prawn"
 license=(
-  GPL2
-  GPL3
-  custom:PRAWN
+  GPL-2.0-only
+  GPL-3.0-only
+  Ruby
 )
 depends=(
   ruby
@@ -25,7 +25,8 @@ checkdepends=(
   ruby-rspec
 )
 options=(!emptydirs)
-source=("$url/archive/refs/tags/$pkgver.tar.gz")
+
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('ca6a2e7663a15d5f1a336625202fe63241ed9c9eb6538cd9bc5a78e02267f644')
 
 _archive="$_name-$pkgver"
@@ -43,7 +44,6 @@ prepare() {
 build() {
   cd "$_archive"
 
-  local _gemdir
   _gemdir="$(gem env gemdir)"
 
   gem build "$_name.gemspec"
@@ -91,18 +91,16 @@ check() {
   # https://github.com/prawnpdf/prawn-manual_builder
   rm spec/prawn_manual_spec.rb
 
-  local _gemdir
   _gemdir="$(gem env gemdir)"
-
   GEM_HOME="tmp_install/$_gemdir" rspec
 }
 
 package() {
   cd "$_archive"
 
-  cp --archive --verbose tmp_install/* "$pkgdir"
+  cp --archive tmp_install/* "$pkgdir"
 
-  install --verbose -D --mode=0644 COPYING --target-directory "$pkgdir/usr/share/licenses/$pkgname"
-  install --verbose -D --mode=0644 LICENSE --target-directory "$pkgdir/usr/share/licenses/$pkgname"
-  install --verbose -D --mode=0644 ./*.md --target-directory "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+    COPYING LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
 }
