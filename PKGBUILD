@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: A Frederick Christensen <aur@nosocomia.com>
 # Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 pkgname=python-caldav
@@ -8,7 +8,7 @@ pkgrel=2
 pkgdesc="A CalDAV (RFC4791) client library for Python"
 arch=('any')
 url="https://github.com/python-caldav/caldav"
-license=('Apache' 'GPL3')
+license=('Apache-2.0 AND GPL-3.0-or-later')
 depends=(
   'python-icalendar'
   'python-lxml'
@@ -24,11 +24,11 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
-checkdepends=(
-  'python-pytest-cov'
-  'radicale'
-  'xandikos'
-)
+#checkdepends=(
+#  'python-pytest-cov'
+#  'radicale'
+#  'xandikos'
+#)
 source=("${_name}-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('b733fb9e038e1addf725ad3bb8ec8725d6f4f401cc7203ef01936faa618f5409')
 
