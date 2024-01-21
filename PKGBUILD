@@ -1,11 +1,11 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=oreo-cursors-git
 pkgver=20220830.r66.6b6d9410
 pkgrel=1
 pkgdesc="Color material cursors with cute animations."
 arch=('any')
 url="https://github.com/varlesh/oreo-cursors"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 makedepends=('git' 'ruby' 'gtk-engine-murrine' 'inkscape' 'libcanberra'
              'xorg-xcursorgen')
 provides=("${pkgname%-git}")
