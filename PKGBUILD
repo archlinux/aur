@@ -2,14 +2,14 @@
 
 pkgname=dtkdeclarative-git
 _pkgname=dtkdeclarative
-pkgver=5.6.3.r11.g01dac45
+pkgver=5.6.22.r9.gb5ce5a5
 pkgrel=1
 pkgdesc='DTK declarative modules'
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dtkdeclarative"
 license=('LGPL3')
-depends=('dtkgui-git' 'qt5-declarative' 'qt5-quickcontrols2' 'dtkcore-git' 'dtkgui-git')
-makedepends=('git' 'qt5-tools' 'cmake' 'ninja' 'gtest' 'gmock' 'doxygen' 'dtkcommon-git' 'qt5-quickcontrols2')
+depends=('dtkgui' 'qt5-declarative' 'qt5-quickcontrols2' 'dtkcore')
+makedepends=('git' 'qt5-tools' 'cmake' 'ninja' 'gtest' 'gmock' 'doxygen' 'dtkcommon')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
 groups=('deepin-git')
