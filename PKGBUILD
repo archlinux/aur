@@ -1,7 +1,7 @@
-# Maintainer: XandrCopyrighted <xxandrr at proton dot me>
+# Maintainer: XandrCopyrighted <xxandrr@proton.me>
 
 pkgname=xfetch-rs-git
-pkgver=1.0
+pkgver=r30.7e0bcfc
 pkgrel=1
 pkgdesc="The world's fastest & simplest fetch written in Rust."
 arch=('any')
@@ -16,13 +16,13 @@ makedepends=('git' 'rustup')
 provides=("xfetch-rs")
 conflicts=("xfetch-rs")
 pkgver() {
-	cd "$srcdir/xFetch"
+	cd "xFetch"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
 	cd $srcdir/xFetch
-	rustup default nightly-2024-01-20
+	rustup override set nightly-2024-01-20
 	rustup component add rust-src --toolchain nightly-2024-01-20-x86_64-unknown-linux-gnu
 	RUSTFLAGS="-Zlocation-detail=none" cargo build --target x86_64-unknown-linux-gnu --profile optimized-build -Z build-std=std,panic_abort -Z build-std-features=panic_immediate_abort
 }
