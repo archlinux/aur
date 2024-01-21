@@ -3,7 +3,6 @@ pkgname=python-daltonlens
 _name=${pkgname#python-}
 pkgver=0.1.5
 pkgrel=1
-epoch=
 pkgdesc="R&D companion package for the desktop application DaltonLens"
 arch=('any')
 url="https://github.com/DaltonLens/DaltonLens-Python"
