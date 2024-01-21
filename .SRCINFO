@@ -1,10 +1,10 @@
 pkgbase = cavalcade-git
 	pkgdesc = GUI wrapper for C.A.V.A. utility
-	pkgver = 0.8.r15.gbdca381
+	pkgver = 0.8.r17.g68ba5a2
 	pkgrel = 1
 	url = https://github.com/worron/cavalcade
 	arch = any
-	license = GPL
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = python-setuptools
 	depends = cava>=0.6

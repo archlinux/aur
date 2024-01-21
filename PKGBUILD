@@ -1,12 +1,12 @@
 # Maintainer: tocic <tocic at protonmail dot ch>
 
 pkgname=cavalcade-git
-pkgver=0.8.r15.gbdca381
+pkgver=0.8.r17.g68ba5a2
 pkgrel=1
 pkgdesc="GUI wrapper for C.A.V.A. utility"
 arch=("any")
 url="https://github.com/worron/cavalcade"
-license=("GPL")
+license=("GPL-3.0-or-later")
 depends=("cava>=0.6"
          "gtk3>=3.18"
          "python>=3.5"
