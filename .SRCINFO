@@ -1,18 +1,16 @@
 pkgbase = clipcat
-	pkgdesc = Clipcat is a clipboard manager written in Rust Programming Language.
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgdesc = A clipboard manager written in Rust Programming Language
+	pkgver = 0.16.2
+	pkgrel = 1
 	url = https://github.com/xrelkd/clipcat
-	arch = any
-	license = GPL3
-	depends = libxcb
-	depends = python
-	depends = rust
-	depends = protobuf
-	depends = llvm
-	depends = clang
-	source = clipcat.tgz::https://github.com/xrelkd/clipcat/archive/v0.5.0.tar.gz
-	sha256sums = 6fb974784485f475082e7ba19a4ddcf25d55f4555011e11205c9862d1c5253bb
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = libgit2
+	makedepends = protobuf
+	depends = gcc-libs
+	depends = glibc
+	source = clipcat-0.16.2.tar.gz::https://github.com/xrelkd/clipcat/archive/refs/tags/v0.16.2.tar.gz
+	sha256sums = e784ec4a3799fa003e2d298477d8a627d1e02fdb147136fb245fdf87d34b96d3
 
 pkgname = clipcat
-
