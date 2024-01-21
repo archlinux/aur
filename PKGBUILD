@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Sibren Vasse <arch@sibrenvasse.nl>
 pkgname=python-casttube
 _name=${pkgname#python-}
