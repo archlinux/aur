@@ -2,7 +2,7 @@
 
 _pkgname=datalad-next
 pkgname=python-$_pkgname
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='extension for new and improved functionality and user experience in datalad'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(python
 makedepends=(python-{build,installer,wheel})
 _archive="$_pkgname-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('d58ccb1746bea46ca3d71c0d9acf775a3a5013516fe6a8f5adbe9df7ba35a16c')
+sha256sums=('0cb07c1c97eb46fcaa646d616ea4623a68ea30331cfb924fa70fd3f21b63e823')
 
 build() {
 	cd "$_archive"
