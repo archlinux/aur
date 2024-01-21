@@ -1,4 +1,4 @@
-# Maintainer: Yacob Zitouni <yacob.zitouni@gmail.com>
+# Maintainer: Matt M <numbernine dot archlinux at complexnumber dot net>
 pkgname=('projectctr-makerom-bin')
 pkgver=0.18.3
 pkgrel=1
