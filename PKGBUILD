@@ -2,13 +2,13 @@
 # Maintainer: Federico Cerutti <aur $at$ ceres-c $dot-Italy-tld$>
 pkgname=owon-vds-tiny
 _gitname='OWON-VDS1022'
-pkgver=1.1.5.cf19
+pkgver=1.1.5.cf19.1
 pkgrel=1
 pkgdesc="OWON VDS1022(I)/VDS2052 oscilloscope application"
 arch=(x86_64 i386 aarch64)
 url="https://github.com/ceres-c/OWON-VDS1022"
 license=('unknown')
-depends=('libusb-compat' 'java-runtime>=8')
+depends=('git' 'libusb-compat' 'java-runtime>=8')
 optdepends=('python-bokeh: python apis'
 			'python-pandas: python apis'
 			'python-matplotlib: python apis'
