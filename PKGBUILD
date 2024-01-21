@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Task manager with Todoist support"
 arch=('x86_64')
 url="https://github.com/alainm23/planify"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('evolution-data-server' 'granite7' 'gtksourceview5' 'libadwaita'
          'libportal-gtk4' 'webkitgtk-6.0')
 makedepends=('git' 'gobject-introspection' 'meson' 'vala')
