@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: Slimbook <dev at slimbook dot es>
 pkgname=slimbookamdcontroller
 pkgver=0.3.9beta
