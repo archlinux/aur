@@ -1,0 +1,26 @@
+--- a/master/buildbot/test/integration/test_try_client.py	2024-01-21 17:56:18.558527267 +0800
++++ b/master/buildbot/test/integration/test_try_client.py	2024-01-21 17:56:21.748444495 +0800
+@@ -26,6 +26,7 @@
+ from buildbot.clients import tryclient
+ from buildbot.schedulers import trysched
+ from buildbot.test.util import www
++from buildbot.test.util.decorators import flaky
+ from buildbot.test.util.integration import RunMasterBase
+ 
+ 
+@@ -167,6 +168,7 @@
+         buildsets = yield self.master.db.buildsets.getBuildsets()
+         self.assertEqual(len(buildsets), 1)
+ 
++    @flaky(bugNumber=6776)
+     @defer.inlineCallbacks
+     def test_userpass_wait(self):
+         yield self.startMaster(
+@@ -189,6 +191,7 @@
+         buildsets = yield self.master.db.buildsets.getBuildsets()
+         self.assertEqual(len(buildsets), 1)
+ 
++    @flaky(bugNumber=6776)
+     @defer.inlineCallbacks
+     def test_userpass_wait_bytes(self):
+         self.sourcestamp = tryclient.SourceStamp(branch=b'br', revision=b'rr', patch=(0, b'++--'))

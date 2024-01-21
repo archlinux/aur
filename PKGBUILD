@@ -17,7 +17,8 @@ _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
 pkgrel=1
 arch=(any)
 url='https://buildbot.net'
-license=(GPL2)
+# https://github.com/buildbot/buildbot/blob/v3.10.1/master/setup.py says GPLv2, and does not mention "any later version"
+license=('GPL-2.0-only')
 checkdepends=(python-boto3 python-ldap3 python-lz4 python-treq python-txrequests
               python-moto python-docker python-parameterized python-subunit
               python-psutil python-ruamel-yaml python-markdown
@@ -34,11 +35,13 @@ makedepends=(python-twisted python-jinja python-msgpack python-zope-interface py
              git yarn)
 source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.asc}
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
-        "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch")
+        "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch"
+        "disable-flaky-tests.diff")
 sha256sums=('c3836c2ced9b729722f0e99ace0fed638a81f189aadf3a03174f5bc9fa95401b'
             'SKIP'
             'SKIP'
-            '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9')
+            '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9'
+            '175cb41a707a278b0a7c0864304a00459d6e2dee16cd5ddbc28a6dc90abfd3fc')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com> (@tardyp on GitHub)
   'FD0004A26EADFE43A4C3F249C6F7AE200374452D'  # Povilas Kanapickas <povilas@radix.lt> (@p12tic on GitHub)
@@ -69,6 +72,9 @@ prepare() {
   # Don't treat warnings as errors. Arch often ships newer Python libraries than ones
   # in upstream CI and introduces extra deprecation warnings
   sed -r -i "s#warnings\\.filterwarnings\\('error'\\)##" master/buildbot/test/__init__.py
+
+  # See https://github.com/buildbot/buildbot/issues/6776 for an earlier report about those flaky tests
+  patch -Np1 -i ../disable-flaky-tests.diff
 
   cd "$srcdir"/buildbot-contrib
   patch -Np1 -i ../buildbot-contrib-systemd-common.patch
