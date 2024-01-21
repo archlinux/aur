@@ -1,10 +1,10 @@
 pkgbase = waydroid-script-git
 	pkgdesc = Python Script to add OpenGapps, Magisk, libhoudini translation library and libndk translation library to waydroid
 	pkgver = r142.59547e7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/casualsnek/waydroid_script
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = git
 	depends = python-requests
 	depends = python-tqdm
