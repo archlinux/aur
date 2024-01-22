@@ -1,6 +1,6 @@
 # Maintainer: Asuka Minato <i at asukaminato dot eu dot org>
 pkgname=flomo-electron
-pkgver=3.23.111
+pkgver=4.24.11
 pkgrel=1
 pkgdesc="浮墨笔记,像发微博一样记笔记,记录你想法的川流.全平台覆盖,还支持微信服务号输入."
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=(p7zip)
 provides=(flomo)
 conflicts=(flomo-pake)
 source=("local://flomo-${pkgver}-x64.exe" $pkgname.desktop)
-sha256sums=('da41994cc06fd9c1b7f4458fee588ef4ba9fce570731ef762bd6e49bc2a6d29b'
+sha256sums=('b4ec448009bbe669168d38caf24844fd25908883da9ad8b24fdfeea3eb9d8c70'
             'ad1d9d71bd7f6765f1caef32532e233def9e09632262b3cfbc909e042b6961ef')
 
 prepare() {
