@@ -38,15 +38,8 @@ prepare() {
 	# Disable husky command
 	sed -i '/husky install/d' 'package.json'
 
-	# Working around https://gitlab.archlinux.org/archlinux/packaging/packages/electron28/-/issues/1
-	_installedelectronver="$(cat "/usr/lib/$_electronpkg/version")"
-
-	if [ "$_installedelectronver" = '28.1.5' ]; then
-		_installedelectronver='28.1.4'
-	fi
-
 	# Set system Electron version for ABI compatibility
-	sed -E -i 's|("electron": ").*"|\1'"$_installedelectronver"'"|' {'configs','packages'}'/'*'/package.json'
+	sed -E -i 's|("electron": ").*"|\1'"$(cat "/usr/lib/$_electronpkg/version")"'"|' {'configs','packages'}'/'*'/package.json'
 
 	# Force the newest version of electron-to-chromium
 	sed -E -i 's|(.*)("electron": ")|\1"electron-to-chromium": "'"$(npm view 'electron-to-chromium@latest' version)"'",\n\1\2|' 'packages/compass/package.json'
