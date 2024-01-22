@@ -1,6 +1,6 @@
 pkgbase = dedao-dl-bin
 	pkgdesc = 得到APP课程下载工具,可在终端查看文章内容,可生成PDF,音频文件,markdown文稿,可下载电子书。
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/yann0917/dedao-dl
 	arch = x86_64
@@ -8,11 +8,12 @@ pkgbase = dedao-dl-bin
 	optdepends = wkhtmltopdf: Convert to PDF
 	optdepends = ffmpeg: Audio synthesis
 	optdepends = google-chrome: Generate PDF
-	provides = dedao-dl=1.2.3
+	provides = dedao-dl=1.2.4
 	conflicts = dedao-dl
-	source = dedao-dl-1.2.3::https://github.com/yann0917/dedao-dl/releases/download/v1.2.3/dedao-linux-amd64
-	source = LICENSE-1.2.3::https://raw.githubusercontent.com/yann0917/dedao-dl/v1.2.3/LICENSE
-	sha256sums = 7ad2e14635a76195543acbea341471cbb11ffefb3ad12852e8a44a30de4448b9
+	options = !strip
+	source = dedao-dl-1.2.4::https://github.com/yann0917/dedao-dl/releases/download/v1.2.4/dedao-linux-amd64
+	source = LICENSE-1.2.4::https://raw.githubusercontent.com/yann0917/dedao-dl/v1.2.4/LICENSE
+	sha256sums = 99fb2a43ae1cd0ac7f06dca255f217559180c3a336244fdeb92d550cc66a74c3
 	sha256sums = 1ba8379d33340e518c32fe24046f7cb0530250ec193e7e3d0ea72fd558a1e926
 
 pkgname = dedao-dl-bin
