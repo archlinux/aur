@@ -1,10 +1,10 @@
 pkgbase = python-py-serializable
 	pkgdesc = Serialize and deserialize Python objects to and from JSON and XML
-	pkgver = 0.17.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/madpah/serializable
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	checkdepends = python-lxml
 	checkdepends = xmldiff
 	makedepends = python-build
@@ -13,7 +13,7 @@ pkgbase = python-py-serializable
 	makedepends = python-wheel
 	depends = python-defusedxml
 	options = !strip
-	source = python-py-serializable-0.17.1.tar.gz::https://github.com/madpah/serializable/archive/v0.17.1.tar.gz
-	sha512sums = 0ceba8effc99cbd5ecb41388f0ccc3dfb3dd4b08fc9d9237a620deee92a636d56c98715c1d85352ea08652adffacad1bfca37a7ba6d833b1fe5d41187fc07875
+	source = python-py-serializable-1.0.0.tar.gz::https://github.com/madpah/serializable/archive/v1.0.0.tar.gz
+	sha512sums = 7f8793b6f4bbd9407fd3926040435e86f488923634871de1f7efdfef2916de8af5f1d7342157ede388cf3dc5bc6af37818c86b3811b905d5243dbb55e04fe169
 
 pkgname = python-py-serializable
