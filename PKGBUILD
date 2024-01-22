@@ -1,20 +1,33 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
+# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
-pkgname='python-backoff'
+pkgname=python-backoff
 _name=${pkgname#python-}
 pkgver=2.2.1
-pkgrel=1
-pkgdesc="Function decoration for backoff and retry."
+pkgrel=2
+pkgdesc="Python library providing function decorators for configurable backoff and retry"
 arch=('any')
 url="https://github.com/litl/backoff"
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
+checkdepends=('python-pytest-asyncio' 'python-pytest-cov' 'python-responses')
+source=("$_name-$pkgver.tar.gz::https://github.com/litl/backoff/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('7b92e74aac38ec49e97ac899c96c882496c7b09cf4235e8da205e62b2c6c001d')
 
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('051baabb07714a8a2248899546a5eb6322157d7c61ff4cd94037fa497081ac01927e49713319cb78be504171c06e920462e1ed740e8bbe086bfba952cb74145b')
+build() {
+  cd "$_name-$pkgver"
+  GIT_DIR='.' python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$_name-$pkgver"
+  PYTHONPATH=. pytest --cov-report term-missing --cov backoff tests
+}
 
 package() {
-  cd backoff-${pkgver}
-  python setup.py install --root="$pkgdir" --optimize=1
+  cd "$_name-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
