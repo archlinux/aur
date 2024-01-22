@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='beekeeper-studio'
 pkgver='4.1.13'
-pkgrel='1'
+pkgrel='2'
 epoch='1'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
 # If you're running on pentium4, you have to add it to the arch and source arrays of the electron18-bin AUR dependency
@@ -10,7 +10,7 @@ url="https://github.com/$pkgname/$pkgname"
 license=('GPL-3.0-only')
 _electronpkg='electron18'
 depends=("$_electronpkg")
-makedepends=('git' 'libxcrypt-compat' 'nodejs' 'npm' 'python' 'yarn')
+makedepends=('git' 'libxcrypt-compat' 'nodejs-lts-iron' 'npm' 'python' 'yarn')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	'electron-launcher.sh'
@@ -38,7 +38,7 @@ prepare() {
 
 	# Update node-sass and sass-loader to be compatible with current node and Linux version
 	cd "$srcdir/$_sourcedirectory/apps/studio/"
-	yarn add 'node-sass@8.0.0' 'sass-loader@10.4.1' --ignore-engines
+	yarn add 'node-sass@9.0.0' 'sass-loader@10.5.2' --ignore-engines
 
 	# Install dependencies
 	cd "$srcdir/$_sourcedirectory/"

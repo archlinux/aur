@@ -1,7 +1,7 @@
 pkgbase = beekeeper-studio
 	pkgdesc = Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more
 	pkgver = 4.1.13
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/beekeeper-studio/beekeeper-studio
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = beekeeper-studio
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = libxcrypt-compat
-	makedepends = nodejs
+	makedepends = nodejs-lts-iron
 	makedepends = npm
 	makedepends = python
 	makedepends = yarn
