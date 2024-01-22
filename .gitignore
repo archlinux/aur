@@ -1,6 +1,7 @@
 pkg
 src
 akvcam-*.tar.xz
+akvcam-*.tar.zst
 *.tar.gz
 akvcam
 *.kate-swp
