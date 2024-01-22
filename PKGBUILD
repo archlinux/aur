@@ -6,36 +6,33 @@
 
 pkgbase=vte3-notification
 pkgname=(
-  ${pkgbase}
-  vte-notification-common
+  'vte-notification-common'
+  'vte3-notification'
+  'vte4-notification'
+  'vte-notification-docs'
 )
 pkgver=0.74.2
-pkgrel=2
-pkgdesc='Virtual Terminal Emulator widget for use with GTK3 with Fedora patches'
+pkgrel=3
+pkgdesc='Virtual Terminal Emulator widget'
 url='https://wiki.gnome.org/Apps/Terminal/VTE'
-license=(LGPL)
-arch=(
-  'i686'
-  'x86_64'
-)
-depends=(
+arch=('x86_64')
+license=('LGPL')
+makedepends=(
+  'cairo'
+  'fribidi'
+  'gi-docgen'
+  'git'
+  'gnutls'
+  'gobject-introspection'
+  'gperf'
   'gtk3'
   'gtk4'
-  'pcre2'
-  'gnutls'
-  'fribidi'
-  'systemd-libs'
-)
-makedepends=(
-  'gobject-introspection'
-  'vala'
-  'git'
-  'gtk-doc'
-  'gperf'
   'meson'
-  'gi-docgen'
+  'pcre2'
+  'systemd'
+  'vala'
 )
-options=('!emptydirs')
+options=('!emptydirs' '!lto')
 
 # Fedora patches: https://pkgs.fedoraproject.org/cgit/rpms/vte291.git/tree/
 _frepourl='https://src.fedoraproject.org/rpms/vte291'
@@ -52,7 +49,7 @@ sha256sums=(
   '4e0dc098681f78241178f8aa33b6a59adf78bb13686540f0664285e080301b5b'
 )
 
-prepare () {
+prepare() {
   cd vte
 
   # Apply patches
@@ -63,7 +60,6 @@ build() {
   local meson_options=(
     -D b_lto=false
     -D docs=true
-    -D gtk4=true
   )
 
   arch-meson vte build "${meson_options[@]}"
@@ -80,30 +76,80 @@ _pick() {
   done
 }
 
-package_vte3-notification(){
-  depends+=(vte-notification-common)
-  provides+=(
-    "vte3=${pkgver}"
-    "vte4=${pkgver}"
-    'libvte-2.91.so'
-  )
-  conflicts=(
-    'vte3'
-    'vte4'
-  )
-
-  meson install -C build --destdir "${pkgdir}"
-
-  _pick vte-common "${pkgdir}"/etc/profile.d
-  _pick vte-common "${pkgdir}"/usr/lib/{systemd,vte-urlencode-cwd}
-}
-
 package_vte-notification-common() {
-  pkgdesc='Common files used by vte and vte3'
+  pkgdesc='Common files used by vte and vte3/vte4'
   depends=('sh')
-  arch=('any')
   provides=("vte-common=${pkgver}")
   conflicts=('vte-common')
 
-  mv vte-common/* "${pkgdir}"
+  meson install -C build --destdir "${pkgdir}"
+
+  cd "${pkgdir}"
+
+  _pick vte3 usr/bin/vte-2.91
+  _pick vte3 usr/include/vte-2.91
+  _pick vte3 usr/lib/libvte-2.91.so*
+  _pick vte3 usr/lib/pkgconfig/vte-2.91.pc
+  _pick vte3 usr/lib/girepository-1.0/Vte-2.91.typelib
+  _pick vte3 usr/share/gir-1.0/Vte-2.91.gir
+  _pick vte3 usr/share/glade
+  _pick vte3 usr/share/vala/vapi/vte-2.91.{deps,vapi}
+
+  _pick vte4 usr/bin/vte-2.91-gtk4
+  _pick vte4 usr/include/vte-2.91-gtk4
+  _pick vte4 usr/lib/libvte-2.91-gtk4.so*
+  _pick vte4 usr/lib/pkgconfig/vte-2.91-gtk4.pc
+  _pick vte4 usr/lib/girepository-1.0/Vte-3.91.typelib
+  _pick vte4 usr/share/gir-1.0/Vte-3.91.gir
+  _pick vte4 usr/share/vala/vapi/vte-2.91-gtk4.{deps,vapi}
+
+  _pick docs usr/share/doc
+}
+
+package_vte3-notification() {
+  pkgdesc+=" for use with GTK3 with Fedora patches"
+  depends=(
+    'cairo'
+    'fribidi'
+    'gnutls'
+    'gtk3'
+    'pcre2'
+    'systemd'
+    'vte-notification-common'
+  )
+  provides+=(
+    "vte3=${pkgver}"
+    'libvte-2.91.so'
+  )
+  conflicts=('vte3')
+
+  mv vte3/* "${pkgdir}"
+}
+
+package_vte4-notification() {
+  pkgdesc+=" for use with GTK4 with Fedora patches"
+  depends=(
+    'cairo'
+    'fribidi'
+    'gnutls'
+    'gtk4'
+    'pcre2'
+    'systemd'
+    'vte-notification-common'
+  )
+  provides+=(
+    "vte4=${pkgver}"
+    'libvte-2.91-gtk4.so'
+  )
+  conflicts=('vte4')
+
+  mv vte4/* "${pkgdir}"
+}
+
+package_vte-notification-docs() {
+  pkgdesc+=" documentation"
+  provides+=("vte-docs=${pkgver}")
+  conflicts=('vte-docs')
+
+  mv docs/* "${pkgdir}"
 }

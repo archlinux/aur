@@ -1,47 +1,63 @@
 pkgbase = vte3-notification
-	pkgdesc = Virtual Terminal Emulator widget for use with GTK3 with Fedora patches
+	pkgdesc = Virtual Terminal Emulator widget
 	pkgver = 0.74.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.gnome.org/Apps/Terminal/VTE
-	arch = i686
 	arch = x86_64
 	license = LGPL
-	makedepends = gobject-introspection
-	makedepends = vala
-	makedepends = git
-	makedepends = gtk-doc
-	makedepends = gperf
-	makedepends = meson
+	makedepends = cairo
+	makedepends = fribidi
 	makedepends = gi-docgen
-	depends = gtk3
-	depends = gtk4
-	depends = pcre2
-	depends = gnutls
-	depends = fribidi
-	depends = systemd-libs
+	makedepends = git
+	makedepends = gnutls
+	makedepends = gobject-introspection
+	makedepends = gperf
+	makedepends = gtk3
+	makedepends = gtk4
+	makedepends = meson
+	makedepends = pcre2
+	makedepends = systemd
+	makedepends = vala
 	options = !emptydirs
+	options = !lto
 	source = git+https://gitlab.gnome.org/GNOME/vte#tag=0.74.2
 	source = vte291-cntnr-precmd-preexec-scroll.patch-effdc88925f27e048c767ea2ca951ef453d4c4b2::https://src.fedoraproject.org/rpms/vte291/raw/effdc88925f27e048c767ea2ca951ef453d4c4b2/f/vte291-cntnr-precmd-preexec-scroll.patch
 	sha256sums = SKIP
 	sha256sums = 4e0dc098681f78241178f8aa33b6a59adf78bb13686540f0664285e080301b5b
 
-pkgname = vte3-notification
-	depends = gtk3
-	depends = gtk4
-	depends = pcre2
-	depends = gnutls
-	depends = fribidi
-	depends = systemd-libs
-	depends = vte-notification-common
-	provides = vte3=0.74.2
-	provides = vte4=0.74.2
-	provides = libvte-2.91.so
-	conflicts = vte3
-	conflicts = vte4
-
 pkgname = vte-notification-common
-	pkgdesc = Common files used by vte and vte3
-	arch = any
+	pkgdesc = Common files used by vte and vte3/vte4
 	depends = sh
 	provides = vte-common=0.74.2
 	conflicts = vte-common
+
+pkgname = vte3-notification
+	pkgdesc = Virtual Terminal Emulator widget for use with GTK3 with Fedora patches
+	depends = cairo
+	depends = fribidi
+	depends = gnutls
+	depends = gtk3
+	depends = pcre2
+	depends = systemd
+	depends = vte-notification-common
+	provides = vte3=0.74.2
+	provides = libvte-2.91.so
+	conflicts = vte3
+
+pkgname = vte4-notification
+	pkgdesc = Virtual Terminal Emulator widget for use with GTK4 with Fedora patches
+	depends = cairo
+	depends = fribidi
+	depends = gnutls
+	depends = gtk4
+	depends = pcre2
+	depends = systemd
+	depends = vte-notification-common
+	provides = vte4=0.74.2
+	provides = libvte-2.91-gtk4.so
+	conflicts = vte4
+
+pkgname = vte-notification-docs
+	pkgdesc = Virtual Terminal Emulator widget documentation
+	provides = vte-docs=0.74.2
+	conflicts = vte-docs
