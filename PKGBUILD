@@ -1,14 +1,21 @@
-# Maintainer: lrustand <rustand dot lars at gmail dot com>
+# Maintainer: Adrien Smith <adrien at panissupraomnia dot dev>
+# Contributor: lrustand <rustand dot lars at gmail dot com>
+
 pkgname=pacman-updatedb-hook
 pkgver=1.0.0
-pkgrel=2
-pkgdesc='Pacman hook to update the mlocate database.'
+pkgrel=3
+pkgdesc='Pacman hook to update the mlocate database'
 arch=('any')
+url="https://aur.archlinux.org/packages/pacman-updatedb-hook"
+license=('LicenseRef-None')
 depends=('mlocate')
-source=('updatedb.hook')
-md5sums=('843295b2d289a547e466edf06df570d5')
+source=(updatedb.hook{,.sig})
+validpgpkeys=('9B9F19015CDA693BB3130A5094D4F1ECB125FB78')
+sha256sums=('f95ca12dc898fb35d2bb67f6e6d87de3eafcf8a065872747e18510883b7becba'
+            'SKIP')
+b2sums=('8fd4b9011c39045f1656da1039a6e95ffea86f5f00a9e39df975f089b42851afce6788bc2ba6e495b034d27cd675756ec3f218fe9b497eda610ca0bb46525745'
+        'SKIP')
 
 package() {
   install -D -m0644 "${srcdir}/updatedb.hook" "${pkgdir}/usr/share/libalpm/hooks/updatedb.hook"
 }
-
