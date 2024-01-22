@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Juan Tascon <juan at horlux dot org>
 pkgname=wtfutil-bin
 pkgver=0.43.0
@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Personal information dashboard for your terminal"
 arch=('x86_64' 'aarch64' 'armv6h')
 url="https://wtfutil.com"
-license=('MPL2')
+license=('MPL-2.0')
 depends=('glibc')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
