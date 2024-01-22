@@ -3,12 +3,12 @@
 _version=v0.60-alpha2
 pkgname='hunspell-be-tarask'
 pkgver=0.60.alpha2
-pkgrel=1
+pkgrel=2
 pkgdesc="Belarusian hunspell dictionary (classic orthography)"
 arch=('any')
 url="https://github.com/375gnu/spell-be-tarask"
-license=('CC-BY-SA 3.0')
-makedepends=('git' 'qt6-webengine' 'zip')
+license=('CC-BY-SA-3.0')
+makedepends=('git' 'qt6-webengine')
 optdepends=('hunspell: the spell checking libraries and apps')
 provides=('hunspell-dictionary')
 source=("$pkgname::git+$url.git#commit=$_version")
