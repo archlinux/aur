@@ -1,11 +1,11 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=xcursor-pro-cursor-theme
 pkgver=2.0.1
 pkgrel=1
 pkgdesc="Modern X11 Cursor Theme"
 arch=('any')
 url="https://github.com/ful1e5/XCursor-pro"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 makedepends=('python-clickgen>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")

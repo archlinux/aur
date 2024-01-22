@@ -4,7 +4,7 @@ pkgbase = xcursor-pro-cursor-theme
 	pkgrel = 1
 	url = https://github.com/ful1e5/XCursor-pro
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = python-clickgen>=2.0.0
 	options = !strip
 	source = xcursor-pro-cursor-theme-2.0.1.tar.gz::https://github.com/ful1e5/XCursor-pro/archive/v2.0.1.tar.gz
