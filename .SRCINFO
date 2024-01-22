@@ -1,6 +1,6 @@
 pkgbase = sleek
 	pkgdesc = Todo manager based on the todo.txt syntax for Linux, free and open-source (FOSS)
-	pkgver = 2.0.7
+	pkgver = 2.0.8
 	pkgrel = 1
 	url = https://github.com/ransome1/sleek/
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = sleek
 	depends = electron
 	depends = nodejs
 	options = !strip
-	source = https://github.com/ransome1/sleek/archive/refs/tags/v2.0.7.zip
+	source = https://github.com/ransome1/sleek/archive/refs/tags/v2.0.8.zip
 	source = sleek.desktop
 	source = sleek
-	sha512sums = 4beacae98573145fe7829be6c3e3e91e028ecc951073716f8f517ede3bc69c65df5efc124c7479c32622234e8d502ce1c66d1cb14f1a72d9df9fd72ecf2d53d9
+	sha512sums = 43b5240f345dbdd08682d797f00d35edfcd39b249e8104f9cab2d3e4eccd7db9f91e7d61120caed3f577b833c34f5e1b3a92cb6a4ad4d6404deb71bd8e89fc69
 	sha512sums = c3ebfc99947ba484d8ba8a3cd9b4c4d5a984a95e7cb24faac1ac59506f7f144d4e9c92ea9fcfa585f4d9fee779366d4eb9db0795c910fb221bb266e3c9d5be24
 	sha512sums = ea1d322bd56c7944a9eae97f4968a6a2e937b510eb3c1c21266428450c5b2ddcd8576718d0b66b69fbce5694ba94e80a692d04bda1e8c2b24a8d814a5ed50963
 
