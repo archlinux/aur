@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: iboyperson <tjquillan at gmail dot com>
 pkgname=tldr++
 _pkgver=1.0.0-alpha
