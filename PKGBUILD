@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mootool-bin
 _pkgname=MooTool
-pkgver=1.5.9
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Handy tool set for developers. 开发者常备小工具"
 arch=("x86_64")
@@ -23,9 +23,9 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/rememberber/MooTool/v${pkgver}/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2bead138c02c156da143f89e4e04f822974be5f8c1ad70e9fd83b348d00d61d3'
+sha256sums=('a1069b31b806bc9535389f42f3bd976158a648e269708ad47f0395ae536cc1da'
             '91930d61ff6e2bd3ceaf0ac0de4431d4ede9a9a940ca327367820df54762e333'
-            '64344f5d37bce6aea0581d2028d592335f0203c96bd9b0c52ac7f00c8267e2dd')
+            'a22f8c5d978468a4ed34e64ea23fa38493c7a51d9191a640037c2aa31b118af3')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
@@ -33,7 +33,7 @@ build() {
     bsdtar -xf "${srcdir}/data.tar.gz"
     sed -e "s|/opt/${_pkgname}/${_pkgname} %U|${pkgname%-bin} %U|g" \
         -e "s|/opt/${_pkgname}/${_pkgname}.png|${pkgname%-bin}|g" \
-        -e "s|Categories=Utility|Categories=Utility;|g" \
+        -e "s|Categories=Utility|Categories=Development;|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
