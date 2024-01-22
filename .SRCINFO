@@ -1,0 +1,24 @@
+pkgbase = lanzouyun-pan
+	pkgdesc = 蓝奏云网盘、客户端,实现了蓝奏云大部分功能并添加了许多增强型功能,可作为网盘的日常管理工具使用,项目用 electron 构建.
+	pkgver = 3.4.7
+	pkgrel = 1
+	url = https://github.com/chenhb23/lanzouyun-disk
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = nvm
+	makedepends = npm
+	makedepends = yarn
+	makedepends = git
+	makedepends = node-gyp
+	makedepends = make
+	makedepends = gcc
+	depends = electron18
+	conflicts = lanzouyun-pan
+	options = !strip
+	source = lanzouyun-pan.git::git+https://github.com/chenhb23/lanzouyun-disk.git#tag=v3.4.7
+	source = lanzouyun-pan.sh
+	sha256sums = SKIP
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+
+pkgname = lanzouyun-pan
