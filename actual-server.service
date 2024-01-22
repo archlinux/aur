@@ -6,3 +6,6 @@ Type=simple
 WorkingDirectory=/usr/share/webapps/actual-server
 User=actual
 ExecStart=/usr/bin/yarn start
+
+[Install]
+WantedBy=multi-user.target
