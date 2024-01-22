@@ -4,12 +4,12 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname='mozc'
-pkgver=2.29.5268.102
+pkgver=2.29.5346.102
 pkgrel=1
 pkgdesc='The Open Source edition of Google Japanese Input'
 arch=('x86_64')
 url='https://github.com/google/mozc'
-license=('Apache' 'GPL' 'LGPL' 'MIT' 'custom')
+license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND MS-PL AND NAIST-2003 AND Unicode-3.0')
 depends=('qt6-base')
 makedepends=('bazel' 'git' 'python')
 optdepends=('fcitx5-mozc-ut: Fcitx5 integration'
@@ -18,7 +18,7 @@ optdepends=('fcitx5-mozc-ut: Fcitx5 integration'
             'emacs-mozc: Emacs integration')
 conflicts=('mozc-ut')
 options=(!distcc !ccache)
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=d3151bb4e5d3a18bc2c8419c338401102a37928e")
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=034b61000d2af24438f09c08abea42ef35689944")
 sha256sums=('SKIP')
 
 prepare() {
@@ -38,8 +38,8 @@ build() {
 package() {
     cd ${pkgname}-git/src
 
-    install -Dm644 ../LICENSE                                   "${pkgdir}"/usr/share/licenses/mozc/LICENSE
-    install -Dm644 data/installer/credits_en.html               "${pkgdir}"/usr/share/licenses/mozc/Submodules
+    install -Dm644 ../LICENSE                                   "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+    install -Dm644 data/installer/credits_en.html               "${pkgdir}"/usr/share/licenses/${pkgname}/Submodules
 
     install -Dm755 bazel-bin/server/mozc_server                 "${pkgdir}"/usr/lib/mozc/mozc_server
     install -Dm755 bazel-bin/gui/tool/mozc_tool                 "${pkgdir}"/usr/lib/mozc/mozc_tool
