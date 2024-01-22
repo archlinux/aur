@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Desktop Suite for Xfce"
 arch=('any')
 url="https://shimmerproject.org"
-license=('CC-BY-SA-3.0' 'GPL')
+license=('CC-BY-SA-3.0 AND GPL-2.0-or-later')
 makedepends=('librsvg' 'meson' 'sassc')
 optdepends=('elementary-xfce-icons: matching icon set; use the dark icon theme'
             'gtk3: required for CSS/GTK3 theme'
