@@ -6,13 +6,13 @@ _pkgname_sub=sysclk-lwla
 
 pkgname=${_pkgname_main}-${_pkgname_sub}
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Firmware for SysClk LWLA-1016/1034 logic analysers"
 arch=(any)
 url="http://sigrok.org/wiki/Sysclk_LWLA1034"
-license=(custom)
+license=(LicenseRef-custom)
 depends=()
-makedepends=()
+makedepends=(git)
 
 source=("git://sigrok.org/${_pkgname_main}.git")
 sha512sums=(SKIP)
