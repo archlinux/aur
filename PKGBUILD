@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simple-icons
-pkgver=11.1.0
+pkgver=11.2.0
 pkgrel=1
 pkgdesc="Free SVG icons for popular brands"
 arch=('any')
 url="https://simpleicons.org/"
 _ghurl="https://github.com/simple-icons/simple-icons"
-license=('custom:CCO-1.0')
+license=('LicenseRef-CCO-1.0')
 conflicts=("${pkgname}")
 makedepends=(
     'git'
