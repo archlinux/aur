@@ -10,6 +10,7 @@ pkgbase = wofi-emoji-git
 	makedepends = curl
 	depends = wofi
 	depends = wtype
+	depends = wl-clipboard
 	provides = wofi-emoji-git
 	conflicts = wofi-emoji
 	source = wofi-emoji-git::git+https://github.com/Zeioth/wofi-emoji
