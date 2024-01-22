@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor <f2404@yandex.ru>
 # Contributor: Davi da Silva Böger <dsboger at gmail dot com>
 pkgname=tilix-git
@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A tiling terminal emulator for Linux using GTK+ 3"
 arch=('x86_64')
 url="https://gnunn1.github.io/tilix-web"
-license=('MPL2')
+license=('MPL-2.0')
 depends=('libx11' 'gtkd' 'vte3' 'dconf' 'gsettings-desktop-schemas')
 makedepends=('appstream' 'git' 'ldc' 'po4a' 'meson')
 checkdepends=('appstream-glib')
