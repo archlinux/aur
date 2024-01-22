@@ -1,9 +1,9 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgname=jellyfin-media-player-git
-pkgver=r1729.ee0717e
+pkgver=r1731.411032f
 _webver=10.8.13
-pkgrel=2
+pkgrel=1
 pkgdesc='Jellyfin Desktop Client'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -31,6 +31,7 @@ build() {
     -DCMAKE_BUILD_TYPE='Debug' \
     -DCMAKE_INSTALL_PREFIX='/usr/' \
     -DCMAKE_SKIP_RPATH=1 \
+    -DLINUX_X11POWER=ON \
     -DQTROOT=./qt \
     ..
   cmake build .
