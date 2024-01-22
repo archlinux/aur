@@ -2,7 +2,7 @@
 # Upstream URL: https://github.com/qmk/qmk_firmware
 
 pkgname=qmk-udev-rules-git
-pkgver=0.18.17.r38.g06a3801a278
+pkgver=0.23.5.r15.g1522695cefa
 pkgrel=1
 pkgdesc="Udev rules to own qmk supported keyboards in bootloader mode"
 arch=('any')
@@ -20,6 +20,6 @@ pkgver() {
 }
 
 package() {
-    mkdir -p "${pkgdir}/etc/udev/rules.d"
-    install -m 644 "${srcdir}/qmk-firmware/util/udev/50-qmk.rules" "${pkgdir}/etc/udev/rules.d/50-qmk.rules"
+    mkdir -p "${pkgdir}/usr/lib/udev/rules.d"
+    install -m 644 "${srcdir}/qmk-firmware/util/udev/50-qmk.rules" "${pkgdir}/usr/lib/udev/rules.d/50-qmk.rules"
 }
