@@ -1,14 +1,14 @@
 pkgbase = atlantic-dkms
 	pkgdesc = aquantia multigigabit nic driver
-	pkgver = 2.5.5
+	pkgver = 2.5.6
 	pkgrel = 1
-	url = https://github.com/Aquantia/AQtion
+	url = https://www.marvell.com
 	arch = x86_64
 	license = GPLv2
 	makedepends = linux-headers
 	depends = dkms
 	conflicts = atlantic
-	source = https://github.com/Aquantia/AQtion/archive/340d608726cbfa04b6046d74a362e788e1e17d45.tar.gz
-	sha512sums = d180b4d432e845fff5f78da9c5fad5166fd5baa07841a5d3acde9667b8805585c9d6530eacb8854d1f60b8547318ffda132030b83cc7d0b0ebbcb2a47ddbe0a7
+	source = https://www.marvell.com/content/dam/marvell/en/drivers/marvell_linux_2.5.6.zip
+	sha512sums = efae75a72faca5b313ac7882721ea96d12aeeba48da4ab735d60eafbbad779de7ed7c27211317658526960a9abd1f7192325ed5b0635e5a03ae0d77964b0cd55
 
 pkgname = atlantic-dkms
