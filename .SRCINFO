@@ -1,0 +1,15 @@
+pkgbase = nitrile-bin
+	pkgdesc = A package manager and build tool for Clean programming language
+	pkgver = 0.4.19
+	pkgrel = 1
+	url = https://clean-and-itasks.gitlab.io/nitrile
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = jq
+	makedepends = patchelf
+	depends = z3
+	depends = glibc
+	source = nitrile.tgz::https://gitlab.com/clean-and-itasks/nitrile/-/package_files/109594025/download
+	md5sums = SKIP
+
+pkgname = nitrile-bin
