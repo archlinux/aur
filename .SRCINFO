@@ -6,6 +6,7 @@ pkgbase = testlib
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = unzip
 	source = https://github.com/MikeMirzayanov/testlib/archive/refs/tags/0.9.41.zip
 	sha256sums = SKIP
 

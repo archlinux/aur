@@ -9,6 +9,7 @@ url="http://codeforces.com/testlib"
 license=('MIT')
 makedepends=(
   'git'
+  'unzip'
 )
 
 source=(
