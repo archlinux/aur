@@ -2,17 +2,17 @@
 
 _pkgname=BeeRef
 pkgname=${_pkgname,,}
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.3.2
+pkgrel=1
 pkgdesc="Reference Image Viewer"
 arch=('any')
 url="https://beeref.org/"
 _url_github="https://github.com/rbreu/${pkgname}"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('hicolor-icon-theme' 'python-exif' 'python-pyqt6' 'python-rectangle-packer')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('aa19c90894408f5e7da00d310ef11bd5cca51631acbb8a7295d5cad0f7c13aae5716b45470823da78d0c26e8e4192a442459e737b58685c38c6b3f310b22db33')
+b2sums=('4a4a5c3c824937be846e6eb5fd885f70c6f7f839794b6307ef075c708d3b568625b638a71b7ab257f04b0f4cce1ff43b94c55cb236170b4c79b67bf271157964')
 
 _xdg_desktop_name=org.${pkgname}.${_pkgname}
 
