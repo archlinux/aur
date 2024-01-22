@@ -1,6 +1,6 @@
 PACKAGE_NAME="igb"
 PACKAGE_VERSION="#MODULE_VERSION#"
-MAKE[0]="make KVERSION=$kernelver BUILD_KERNEL=$kernelver"
+MAKE[0]="make -C ${kernel_source_dir} KVERSION=$kernelver BUILD_KERNEL=$kernelver M=/var/lib/dkms/igb/${PACKAGE_VERSION}/build modules"
 CLEAN="make clean"
 BUILT_MODULE_NAME[0]="igb"
 DEST_MODULE_LOCATION[0]="/updates"
