@@ -7,9 +7,9 @@ pkgbase = getax
 	license = unknown
 	depends = java-runtime=11
 	depends = webkitgtk2
-	source = getax-2023-1.tar.gz::https://www.getax.ch/getaxpp/2023/getax2023.tar.gz
+	source = getax-2023-2.tar.gz::https://www.getax.ch/getaxpp/2023/getax2023.tar.gz
 	source = getax
-	sha256sums = ffc12613a3ec1b2d4ca18ca7539ed0b33675fbb919b8b734ce3b5d73c8c4e32f
+	sha256sums = 635b7ea5701d2b677638fba8cad77291320164b14cfafda951a3d924762b0a05
 	sha256sums = 3181ec6cbeee183de2279e75265c464e7b17f9f7e447cdbebbfbdd9af1ad2599
 
 pkgname = getax
