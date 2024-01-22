@@ -1,6 +1,6 @@
 pkgname=hostapd-wifi6
 pkgdesc='hostapd than enabled AC/AX and ACS support and applied intel lar patch, provide useful service unit hostapd@.service and hostapd-ACS@.service'
-pkgver=2.10
+pkgver=2.11
 pkgrel=10
 arch=('x86_64' 'aarch64')
 url=https://w1.fi/hostapd
@@ -32,7 +32,7 @@ sha512sums=(
   'c1b9688b8e7f6ab984a5b528061aa2221773a5e3d24f4a43c84a28c318212eadd823c30a4a0e8316760ba2622329fc7edf89d1af744999db5c17e1d157d716a0'
   '21d890ea4f29728bfce4b7dcd9a456be54ea4db863b7c0cd861fd4fc46a93a12fc91329e6200b9156a1e97250da7bad21f33469e4984b1bf02faa794f584edab'
   '3132c58b9eccead25cc399a9761c03863a8a601e71a4e3cec495422c5f09afcbb8c922a4ec98ac0dbccf2633af6f6e41abd4e94cb2723118faa5046f12a3e375'
-  'd958a3bbbd7b45861f3077908a61994361bcd72f30019d4b7f8f90561ae64b05154a4d30965396e2c0f69a4f6df6b25eb9b3d7a8b95ab3b8ac8b552fc7c09b80'
+  '647460d47cf960b88836c8913fb154daf4745dc194ed991c8b61ec0c08757c26c2399ccb10da76d6dfa14d3a75b5fa54ed10f37f7fc373ef63c94dd5b840019e'
   'f39d06516c27de58cc9c3ca98f7b367ec41b8fddd9c568876c93c5f505445980495aaf13b0ea07460fc55e0093ff61014a9b48548b264067515a341b8e82e3ac'
   'cbc9c01bc264142a270af3d1cbacc53a01211cb14cb38d9a5907c3e18049dbfdad0b3048724c97fce3f2c4faf49754cc693467d19aec7c5220c959b0d13a424e'
   '6b3c3abff34a26081ec9cf8ebf1e69b99f8bb13b94b70797e764a912e294f1c8e9df6600eef629a6fe4f3f1a8b1eb1feefeb7eaa96105d4372f26a32a06bef99'
@@ -70,7 +70,7 @@ package() {
   install -vdm 750 "${pkgdir}/var/lib/hostapd"
 
   install -vDm 644 "../hostapd"{@,-ACS@,-preferred}".service" -t "$pkgdir/usr/lib/systemd/system/"
-  install -vDm 750 "../hostapd-preferred.sh" -t "$pkgdir/usr/bin/hostapd-preferred.sh"
+  install -vDm 750 "../hostapd-preferred.sh" -t "$pkgdir/usr/lib/systemd/scripts"
   install -vDm 600 "../hostapd_"{2.4Ghz,5Ghz}".conf" -t "${pkgdir}/etc/hostapd"
   install -vDm 640 "../preferred_config" -t "${pkgdir}/etc/hostapd"
 }

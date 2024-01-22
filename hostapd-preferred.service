@@ -5,7 +5,7 @@ Wants=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/share/bin/hostapd_preferred.sh
+ExecStart=/usr/lib/systemd/scripts/hostapd_preferred.sh
 RemainAfterExit=true
 
 [Install]
