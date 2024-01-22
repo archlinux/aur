@@ -59,8 +59,10 @@ make docker-compose-up
 
 ## Todo 
 
+- [ ] V4 implementation with [quic-go](https://github.com/quic-go/quic-go)
+- [ ] Websocket Support (V4)
 - [ ] V3 implementation
-- [ ] Websocket Support - Partial support
+- [ ] Websocket Support (V3) - Partial support
 - [x] CLI
 - [ ] Other ways of installing (AUR, Bash, etc.)
 - [ ] Other Ways of Handling Routes (net/http, gorilla/mux, etc.) CURRENTLY ONLY SUPPORTS: [chi](https://github.com/go-chi/chi)
