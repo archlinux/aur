@@ -3,7 +3,7 @@
 _appname=min
 pkgname="${_appname}-browser-bin"
 _pkgname=Min
-pkgver=1.31.0
+pkgver=1.31.1
 _electronversion=29
 pkgrel=1
 pkgdesc="A fast, minimal browser that protects your privacy"
@@ -14,7 +14,7 @@ arch=(
 )
 url="https://minbrowser.org/"
 _ghurl="https://github.com/minbrowser/min"
-license=('Apache')
+license=('LicenseRef-Apache')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -28,9 +28,9 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
-sha256sums_aarch64=('71eed4f5c6121a7fc99719c978b1954d5006cd067c008a962da0cc3ac16366bd')
-sha256sums_armv7h=('723625eedaa529eaba2d7d0ba1d32ce154a639060075a0238c8083eaef378944')
-sha256sums_x86_64=('5d1848420cdad7d670fbda93466a212a11eedbf4769dc2f107b3c1f2dd41df3b')
+sha256sums_aarch64=('c02d99f6d672ac2d1eb033b9cee36ff2ce3f674f9515b030e7c2e7f0566c1998')
+sha256sums_armv7h=('f749a99ce8af4c22e2c96cbe9be3a3ec30f0291dd0dce47655d0703580dfba52')
+sha256sums_x86_64=('d7c54860ad9cc6cb3bdc98eea23a8d56aac0cc6fdd8f05ffd9a8de283dc55978')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \

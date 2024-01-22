@@ -1,23 +1,23 @@
 pkgbase = min-browser-bin
 	pkgdesc = A fast, minimal browser that protects your privacy
-	pkgver = 1.31.0
+	pkgver = 1.31.1
 	pkgrel = 1
 	url = https://minbrowser.org/
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
-	license = Apache
+	license = LicenseRef-Apache
 	depends = electron29
 	depends = nodejs
-	provides = min-browser=1.31.0
+	provides = min-browser=1.31.1
 	conflicts = min-browser
 	source = min-browser.sh
 	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
-	source_aarch64 = min-browser-1.31.0-aarch64.deb::https://github.com/minbrowser/min/releases/download/v1.31.0/min-1.31.0-arm64.deb
-	sha256sums_aarch64 = 71eed4f5c6121a7fc99719c978b1954d5006cd067c008a962da0cc3ac16366bd
-	source_armv7h = min-browser-1.31.0-armv7h.deb::https://github.com/minbrowser/min/releases/download/v1.31.0/min-1.31.0-armv7l.deb
-	sha256sums_armv7h = 723625eedaa529eaba2d7d0ba1d32ce154a639060075a0238c8083eaef378944
-	source_x86_64 = min-browser-1.31.0-x86_64.deb::https://github.com/minbrowser/min/releases/download/v1.31.0/min-1.31.0-amd64.deb
-	sha256sums_x86_64 = 5d1848420cdad7d670fbda93466a212a11eedbf4769dc2f107b3c1f2dd41df3b
+	source_aarch64 = min-browser-1.31.1-aarch64.deb::https://github.com/minbrowser/min/releases/download/v1.31.1/min-1.31.1-arm64.deb
+	sha256sums_aarch64 = c02d99f6d672ac2d1eb033b9cee36ff2ce3f674f9515b030e7c2e7f0566c1998
+	source_armv7h = min-browser-1.31.1-armv7h.deb::https://github.com/minbrowser/min/releases/download/v1.31.1/min-1.31.1-armv7l.deb
+	sha256sums_armv7h = f749a99ce8af4c22e2c96cbe9be3a3ec30f0291dd0dce47655d0703580dfba52
+	source_x86_64 = min-browser-1.31.1-x86_64.deb::https://github.com/minbrowser/min/releases/download/v1.31.1/min-1.31.1-amd64.deb
+	sha256sums_x86_64 = d7c54860ad9cc6cb3bdc98eea23a8d56aac0cc6fdd8f05ffd9a8de283dc55978
 
 pkgname = min-browser-bin
