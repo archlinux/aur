@@ -3,7 +3,7 @@
 
 pkgname=xdg-desktop-portal-gtk-git
 _pkgname=xdg-desktop-portal-gtk
-pkgver=1.15.1+1+g25198ba
+pkgver=1.15.1+3+g25e828d
 pkgrel=1
 pkgdesc="A GTK backend for xdg-desktop-portal"
 url="https://github.com/flatpak/xdg-desktop-portal-gtk"
@@ -25,7 +25,7 @@ pkgver() {
 build() {
   cd $_pkgname
 
-  arch-meson build -Dsettings=enabled -Dappchooser=enabled -Dlockdown=enabled
+  arch-meson build -Dwallpaper=disabled -Dsettings=enabled -Dappchooser=enabled -Dlockdown=enabled
 
   meson compile -C build
 }
