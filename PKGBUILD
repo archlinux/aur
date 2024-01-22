@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-chat
 _pkgname=GhostChat
-pkgver=2.4.1
-_electronversion=27
+pkgver=2.5.1
+_electronversion=28
 pkgrel=1
 pkgdesc="A standalone, multiplatform Twitch.tv chat as overlay on windowed/windowed fullscreen applications."
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=(
     'pnpm'
     'gendesk'
     'npm'
-    'nodejs>=20'
+    'nodejs'
     'git'
 )
 source=(
@@ -25,13 +25,13 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
-    gendesk -f -n -q --categories "Utility" --name "${_pkgname}" --exec "${pkgname}"
+    gendesk -f -n -q --categories "Utility" --name "${_pkgname}" --exec "${pkgname} %U"
     cd "${srcdir}/${pkgname}"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -47,7 +47,7 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}/release/${pkgver}/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname}/release/${pkgver}/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     for _icons in 16x16 32x32 64x64 128x128 256x256 512x512;do
         install -Dm644 "${srcdir}/${pkgname}/dist/icons/icon-${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
