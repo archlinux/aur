@@ -16,7 +16,8 @@ md5sums=(
 	a7cd29fced93db056a84486f166f1ecc)
 pkgver(){
 	cd re3
-	echo 1.0_r`git rev-list --count HEAD`.`git rev-parse --short HEAD`
+	git tag --force 1.0 e604be65d9b7845ee7ca975545fc9277c662bc11
+	git describe --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 build(){
 	cd re3
