@@ -1,6 +1,6 @@
 pkgbase = animestream-git
 	pkgdesc = A simple project designed for streaming and downloading your favorite anime!
-	pkgver = r57.f63867f
+	pkgver = r71.8b3c985
 	pkgrel = 1
 	url = https://github.com/frostnova721/AnimeStream
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = animestream-git
 	depends = electron27
 	provides = animestream
 	conflicts = animestream
-	source = animestream::git+https://github.com/frostnova721/AnimeStream.git
+	source = animestream.git::git+https://github.com/frostnova721/AnimeStream.git
 	source = animestream.sh
 	sha256sums = SKIP
-	sha256sums = ba4ed4aaf2c44af5118b06a3099a92ef3bdc969ed964ad508a857d37ae56fd3d
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
 
 pkgname = animestream-git
