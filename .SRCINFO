@@ -1,8 +1,8 @@
 pkgbase = pipelight
 	pkgdesc = A Rust based quick automation tool
-	pkgver = 0.7.11
+	pkgver = 0.7.20
 	pkgrel = 1
-	url = https://packages.pipelight.dev/pipelight-0.7.11-1-any.pkg.tar.zst
+	url = https://packages.pipelight.dev/pipelight-0.7.20-1-any.pkg.tar.zst
 	arch = any
 	license = GPL2
 	makedepends = git
@@ -12,7 +12,7 @@ pkgbase = pipelight
 	depends = watchexec
 	provides = pipelight
 	conflicts = pipelight-git
-	source = https://packages.pipelight.dev/pipelight-0.7.11-1-any.pkg.tar.zst
+	source = https://packages.pipelight.dev/pipelight-0.7.20-1-any.pkg.tar.zst
 	md5sums = SKIP
 
 pkgname = pipelight

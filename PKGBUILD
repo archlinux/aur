@@ -1,7 +1,7 @@
 # Maintainer: Areskul <areskul@areskul.com>
 pkgname="pipelight"
 pkgrel=1
-pkgver=0.7.11
+pkgver=0.7.20
 pkgdesc="A Rust based quick automation tool"
 arch=("any")
 url=https://packages.pipelight.dev/$pkgname-$pkgver-$pkgrel-any.pkg.tar.zst
@@ -23,3 +23,6 @@ pre-install() {
 url() {
   https://packages.pipelight.dev/$pkgname-$pkgver-$pkgrel-any.pkg.tar.zst
 }
+# Update with
+# makepkg --printsrcinfo > .SRCINFO
+# gitu
