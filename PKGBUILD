@@ -2,7 +2,7 @@
 
 pkgname=niri
 pkgver=0.1.0_beta.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A scrollable-tiling Wayland compositor"
 arch=(x86_64)
 url="https://github.com/YaLTeR/${pkgname}"
@@ -13,8 +13,14 @@ source=(${pkgname}-${pkgver//_/-}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/
         001.patch::${url}/commit/df48337d83f78bbd2a923863e73941b6bd236a28.patch # tty: Delay output config update until resume
         002.patch::${url}/commit/f5e9b40140e64cf907520aa0d8adf43f7141e1d2.patch # tty: Check changes against pending connectors and mode
         003.patch::${url}/commit/5cacd03e859d35e71ff17f0897cdee8a44a8935c.patch # Return error instead of broken screenshot for portal
+        004.patch::${url}/commit/18566e336699fbf933dbd5584e9228b04196e893.patch # Watch for canonical filename, not just mtime
+        005.patch::${url}/commit/cbbb7a26fc0bff426d67bb2804167f01ade5fbe4.patch # Update Smithay, use device changed session resume code
+        006.patch::${url}/commit/743173ef643441f5e58cb078a53a6cf3c93179fa.patch # config: Bump precision on the default widths
         )
 sha256sums=('a56fea7d92a5e0b6e108676f6d4ae1f95e02c7805b60d04c7552377bd45de8ad'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -23,7 +29,7 @@ optdepends=('mako: notification daemon for Wayland'
             'swaybg: wallpaper tool for Wayland compositors'
             'xdg-desktop-portal-gnome: screencasting support'
             'gnome-keyring: implements the secret portal, for certain apps to work'
-            'plasma-polkit-agent: when apps need to ask for root permissions')
+            'polkit-gnome: when apps need to ask for root permissions')
 conflicts=(${pkgname}-git)
 
 
