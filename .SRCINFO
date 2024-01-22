@@ -8,6 +8,8 @@ pkgbase = qmk-udev-rules-git
 	makedepends = git
 	depends = systemd
 	conflicts = qmk-udev-rules
+	conflicts = qmk
+	conflicts = qmk-git
 	source = qmk-firmware::git+https://github.com/qmk/qmk_firmware
 	sha256sums = SKIP
 

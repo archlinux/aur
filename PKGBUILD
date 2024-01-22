@@ -2,7 +2,7 @@
 # Upstream URL: https://github.com/qmk/qmk_firmware
 
 pkgname=qmk-udev-rules-git
-pkgver=0.23.5.r15.g1522695cefa
+pkgver=0.23.6.r0.g3495cbc6382
 pkgrel=1
 pkgdesc="Udev rules to own qmk supported keyboards in bootloader mode"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/qmk/qmk_firmware"
 license=('GPL-2.0')
 depends=('systemd')
 makedepends=('git')
-conflicts=('qmk-udev-rules')
+conflicts=('qmk-udev-rules' 'qmk' 'qmk-git')
 source=("qmk-firmware::git+https://github.com/qmk/qmk_firmware")
 sha256sums=('SKIP')
 
