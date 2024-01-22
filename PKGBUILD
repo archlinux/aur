@@ -1,7 +1,7 @@
 pkgname=hostapd-wifi6
 pkgdesc='hostapd than enabled AC/AX and ACS support and applied intel lar patch, provide useful service unit hostapd@.service and hostapd-ACS@.service'
 pkgver=2.10
-pkgrel=11
+pkgrel=12
 arch=('x86_64' 'aarch64')
 url=https://w1.fi/hostapd
 license=('BSD')
@@ -22,7 +22,7 @@ source=(
   'hostapd_5Ghz.conf'
   'hostapd-ACS@.service'
   'hostapd-preferred.service'
-  'hostapd-preferred.sh'
+  'hostapd_preferred.sh'
   'hostapd@.service'
   'preferred_config'
 )
@@ -70,7 +70,7 @@ package() {
   install -vdm 750 "${pkgdir}/var/lib/hostapd"
 
   install -vDm 644 "../hostapd"{@,-ACS@,-preferred}".service" -t "$pkgdir/usr/lib/systemd/system/"
-  install -vDm 750 "../hostapd-preferred.sh" -t "$pkgdir/usr/lib/systemd/scripts"
+  install -vDm 750 "../hostapd_preferred.sh" -t "$pkgdir/usr/lib/systemd/scripts"
   install -vDm 600 "../hostapd_"{2.4Ghz,5Ghz}".conf" -t "${pkgdir}/etc/hostapd"
   install -vDm 640 "../preferred_config" -t "${pkgdir}/etc/hostapd"
 }

@@ -1,7 +1,7 @@
 pkgbase = hostapd-wifi6
 	pkgdesc = hostapd than enabled AC/AX and ACS support and applied intel lar patch, provide useful service unit hostapd@.service and hostapd-ACS@.service
 	pkgver = 2.10
-	pkgrel = 11
+	pkgrel = 12
 	url = https://w1.fi/hostapd
 	arch = x86_64
 	arch = aarch64
@@ -30,7 +30,7 @@ pkgbase = hostapd-wifi6
 	source = hostapd_5Ghz.conf
 	source = hostapd-ACS@.service
 	source = hostapd-preferred.service
-	source = hostapd-preferred.sh
+	source = hostapd_preferred.sh
 	source = hostapd@.service
 	source = preferred_config
 	sha512sums = 243baa82d621f859d2507d8d5beb0ebda15a75548a62451dc9bca42717dcc8607adac49b354919a41d8257d16d07ac7268203a79750db0cfb34b51f80ff1ce8f
