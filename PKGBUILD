@@ -2,12 +2,12 @@
 
 pkgname=librewolf-extension-sponsorblock-bin
 url="https://github.com/ajayyy/SponsorBlock"
-pkgver=5.4.29
+pkgver=5.5.2
 pkgrel=1
 makedepends=("jq" "curl")
 pkgdesc="Skip YouTube video sponsors."
 arch=('any')
-license=('LGPL3')
+license=('LGPL-3.0-or-later')
 _fileName='sponsorBlockerBETA@ajay.app.xpi'
 
 function pkgver(){

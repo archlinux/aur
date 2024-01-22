@@ -1,10 +1,10 @@
 pkgbase = librewolf-extension-sponsorblock-bin
 	pkgdesc = Skip YouTube video sponsors.
-	pkgver = 5.4.29
+	pkgver = 5.5.2
 	pkgrel = 1
 	url = https://github.com/ajayyy/SponsorBlock
 	arch = any
-	license = LGPL3
+	license = LGPL-3.0-or-later
 	makedepends = jq
 	makedepends = curl
 
