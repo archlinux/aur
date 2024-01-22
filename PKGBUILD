@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=spacemesh-bin
 _pkgname=Spacemesh
-pkgver=1.3.5
+pkgver=1.3.6
 _electronversion=25
 pkgrel=1
 pkgdesc="Spacemesh App (Smesher + Wallet)"
@@ -12,7 +12,7 @@ arch=(
 url="https://spacemesh.io/"
 _ghurl="https://github.com/spacemeshos/smapp"
 _downurl="https://storage.googleapis.com/smapp"
-license=('Apache')
+license=('LicenseRef-Apache')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -26,8 +26,8 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('edee1eb616edac84029cec7a628579ca670ef2838db90117da35e0499861be48')
-sha256sums_aarch64=('0e2fb63d38650cdf5ac29e6f554b4a3d691629fde832808e8ad2b2b41a567fc0')
-sha256sums_x86_64=('5c447237758ef496bce39ebd4cb5d25820e26a90ed6f4ffa4f7ef9c5e2d5aa46')
+sha256sums_aarch64=('65bee63475f6249956aad25e748808391143b81fcc34f011b13f5c556067d159')
+sha256sums_x86_64=('ab1fc803921cb829699641e0e69c2fb8a509da65aff43e62b3452fd2bb5d1a8c')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
