@@ -9,16 +9,13 @@ pkgdesc='Deepin desktop-environment - Launchpad module'
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dde-launchpad"
 license=('GPL3')
-depends=('qt5-svg'
-         'qt5-quickcontrols'
+depends=('qt6-svg'
+         'qt6-declarative'
          'appstream-qt'
-         'dtkdeclarative'
-         'dtkgui'
-         'qt5-base'
-         'qt5-x11extras'
-         'qt5-svg'
+         'dtk6declarative'
+         'dtk6gui'
 )
-makedepends=('git' 'cmake' 'ninja' 'qt5-tools')
+makedepends=('git' 'cmake' 'ninja' 'qt6-tools')
 conflicts=('deepin-launcher')
 provides=('deepin-launchpad')
 groups=('deepin-git')
@@ -32,7 +29,7 @@ pkgver() {
 
 build() {
   cd $sourcedir
-  cmake . -GNinja -DCMAKE_INSTALL_PREFIX=/usr
+  cmake . -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DPREFER_QT_5=OFF
   ninja
 }
 
