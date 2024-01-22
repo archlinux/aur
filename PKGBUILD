@@ -2,7 +2,7 @@
 _base=geotiler
 pkgname=python-${_base}
 pkgdesc="Library to create map using tiles from a map provider"
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
 arch=(any)
 url="https://github.com/wrobell/${_base}"
@@ -11,7 +11,7 @@ depends=(python-pillow python-cytoolz python-aiohttp)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest-cov python-numpy)
 source=(${url}/archive/${_base}-${pkgver}.tar.gz)
-sha512sums=('f6d037f56c955a32de738ccdbe46cd9d3a0bd530cda7ec605e1696cece58eb88cc67c3f49eb66f4832dfd5eef97733afa63476bb251b13fc3fe94e5b6c92085c')
+sha512sums=('336ae1d9711599fdc151fd44a2913fb109b7d7bcd33e6b36eb6c26727327631a8ea9786d059639faac563f19af7cdc2bcda8b243e5fb1c96f6949f673ff9d227')
 
 build() {
   cd ${_base}-${_base}-${pkgver}
