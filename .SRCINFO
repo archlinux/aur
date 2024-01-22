@@ -1,0 +1,18 @@
+pkgbase = linpac-git
+	pkgdesc = Amateur Radio AX.25 chat and PBBS program using Linux's AX.25 stack
+	pkgver = 0.28
+	pkgrel = 1
+	url = https://sourceforge.net/projects/linpac/
+	arch = x86_64
+	license = GPLv2
+	makedepends = git
+	depends = libax25
+	depends = ax25-apps
+	depends = ncurses5-compat-libs
+	depends = perl
+	provides = linpac
+	replaces = linpac
+	source = git+https://git.code.sf.net/p/linpac/linpac
+	sha256sums = SKIP
+
+pkgname = linpac-git
