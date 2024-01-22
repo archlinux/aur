@@ -1,7 +1,7 @@
 pkgbase = home-assistant-service-pip
 	pkgdesc = Self installing package of Home Assistant using pip
 	pkgver = 9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://home-assistant.io/
 	install = hass.install
 	arch = any
@@ -24,7 +24,6 @@ pkgbase = home-assistant-service-pip
 	depends = python-dateutil
 	depends = python-defusedxml
 	depends = python-fnvhash
-	depends = python-home-assistant-bluetooth
 	depends = python-httpx
 	depends = python-ifaddr
 	depends = python-installer

@@ -2,7 +2,7 @@ pkgname=home-assistant-service-pip
 _serviceName=hass
 pkgdesc='Self installing package of Home Assistant using pip'
 pkgver=9
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://home-assistant.io/'
 license=(APACHE)
@@ -25,7 +25,6 @@ depends=(
 	python-dateutil
 	python-defusedxml
 	python-fnvhash
-	python-home-assistant-bluetooth
 	python-httpx
 	python-ifaddr
 	python-installer
