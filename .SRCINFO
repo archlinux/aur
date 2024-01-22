@@ -1,22 +1,22 @@
 pkgbase = obs-studio-tytan652
 	pkgdesc = Free and open source software for video recording and live streaming. With everything except service integrations. Plus V4L2 devices by paths, my bind interface PR, and sometimes backported fixes
 	pkgver = 30.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = GPL-2.0-or-later
 	makedepends = asio
 	makedepends = cmake
 	makedepends = jack
 	makedepends = git
 	makedepends = uthash
 	makedepends = libajantv2
-	makedepends = libdatachannel-nice>=0.19.2
+	makedepends = libdatachannel-nice>=0.20
 	makedepends = libfdk-aac
-	makedepends = libvpl
 	makedepends = luajit
 	makedepends = nlohmann-json
+	makedepends = libvpl
 	makedepends = python>=3.11
 	makedepends = sndio
 	makedepends = swig
@@ -84,7 +84,7 @@ pkgbase = obs-studio-tytan652
 	optdepends = v4l-utils: V4L2 support
 	optdepends = systemd-libs: V4L2 support
 	optdepends = v4l2loopback-dkms: V4L2 virtual camera output
-	optdepends = libdatachannel>=0.19.2: WHIP Support
+	optdepends = libdatachannel>=0.20: WHIP Support
 	optdepends = decklink: Blackmagic Design DeckLink support
 	provides = obs-studio=30.0.2
 	provides = obs-vst
