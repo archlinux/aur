@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=before-dawn
-pkgver=0.26.0
-_electronversion=26
+pkgver=0.28.0
+_electronversion=28
 _nodeversion=18
-pkgrel=4
+pkgrel=1
 pkgdesc="A desktop screensaver app using web technologies"
 arch=('any')
 url="https://github.com/muffinista/before-dawn"
@@ -18,13 +18,14 @@ makedepends=(
     'gendesk'
     'nvm'
     'git'
+    'ruby'
 )
 source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '68febdc70b32bbf657eb6a771da5c97722ac5a4b93fe3be4f56eb6d1ec019485')
+            'a0cc6826161c9d7f95d984bc8a6af91611cd42fc11d8af339a4362f2911848c6')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -57,7 +58,6 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.git/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}.git/dist/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}/"{output,data/savers}
     cp -r "${srcdir}/${pkgname}.git/output/system-savers" "${pkgdir}/usr/lib/${pkgname}/output"
     cp -r "${srcdir}/${pkgname}.git/output/system-savers" "${pkgdir}/usr/lib/${pkgname}/data/savers"
