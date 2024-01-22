@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Share files across the LAN"
 arch=('any')
 url="https://github.com/linuxmint/warpinator"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
   'gtk3'
   'libnm'
