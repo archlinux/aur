@@ -4,8 +4,9 @@
 pkgname=xcursor-breeze-neutral-git
 _pkgname=xcursor-breeze-neutral
 pkgver=r12.f1f9624
-pkgrel=1
+pkgrel=2
 pkgdesc="Neutral fork of KDEs Breeze Cursor"
+license=(LicenseRef-None)
 arch=(any)
 url="https://github.com/TheScrawl/xcursor-breeze-neutral"
 makedepends=('git')
