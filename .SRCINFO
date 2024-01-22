@@ -1,7 +1,7 @@
 pkgbase = actual-server
 	pkgdesc = Actual Budget Server
 	pkgver = 24.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/actualbudget/actual-server
 	arch = any
 	license = MIT
@@ -17,7 +17,7 @@ pkgbase = actual-server
 	source = tmpfiles
 	source = load-config.js.patch
 	sha256sums = c996935ff6748fe990c4e586944ce1299bb0e36b1708b8735314706fe1d1cdb5
-	sha256sums = b2d7e042688726b5ad374fbb08ae5ef736b31702f611595d337226981394c082
+	sha256sums = e52bafdd21264b7e809712f70731245326168a2e9f8fb7d1a3104703ab5821bc
 	sha256sums = 4dfa4502df8d72212ccfb96cfc2509c9a1461f542adb38304af54097b30ca0d5
 	sha256sums = cba6a5df66a42ced857822e1099be00f2e37ec800f29cbbfca7210020140291b
 	sha256sums = b84aeaddd9c03907d8addb2dd7e494e3d9cb2fbe8a50dac1db2ddf2fe1c0eeac
