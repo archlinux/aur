@@ -1,0 +1,53 @@
+diff --git c/ffmpeg/doc/filters.texi i/ffmpeg/doc/filters.texi
+index 40f21fb34c..41c3f512be 100644
+--- c/ffmpeg/doc/filters.texi
++++ i/ffmpeg/doc/filters.texi
+@@ -15736,9 +15736,6 @@ Disable linear light scaling.
+ @item disable_builtin
+ Disable built-in GPU sampling (forces LUT).
+ 
+-@item force_icc_lut
+-Force the use of a full ICC 3DLUT for gamut mapping.
+-
+ @item disable_fbos
+ Forcibly disable FBOs, resulting in loss of almost all functionality, but
+ offering the maximum possible speed.
+diff --git c/ffmpeg/libavfilter/vf_libplacebo.c i/ffmpeg/libavfilter/vf_libplacebo.c
+index cfee1117e8..ec1bafbbde 100644
+--- c/ffmpeg/libavfilter/vf_libplacebo.c
++++ i/ffmpeg/libavfilter/vf_libplacebo.c
+@@ -90,7 +90,6 @@ typedef struct LibplaceboContext {
+     float polar_cutoff;
+     int disable_linear;
+     int disable_builtin;
+-    int force_icc_lut;
+     int force_dither;
+     int disable_fbos;
+ 
+@@ -130,6 +129,7 @@ typedef struct LibplaceboContext {
+     float desat_exp;
+     int gamut_warning;
+     int gamut_clipping;
++    int force_icc_lut;
+ 
+      /* pl_dither_params */
+     int dithering;
+@@ -416,7 +416,6 @@ static int process_frames(AVFilterContext *avctx, AVFrame *out, AVFrame *in)
+         .polar_cutoff = s->polar_cutoff,
+         .disable_linear_scaling = s->disable_linear,
+         .disable_builtin_scalers = s->disable_builtin,
+-        .force_icc_lut = s->force_icc_lut,
+         .force_dither = s->force_dither,
+         .disable_fbos = s->disable_fbos,
+     };
+@@ -721,7 +720,9 @@ static const AVOption libplacebo_options[] = {
+     { "polar_cutoff", "Polar LUT cutoff", OFFSET(polar_cutoff), AV_OPT_TYPE_FLOAT, {.dbl = 0}, 0.0, 1.0, DYNAMIC },
+     { "disable_linear", "Disable linear scaling", OFFSET(disable_linear), AV_OPT_TYPE_BOOL, {.i64 = 0}, 0, 1, DYNAMIC },
+     { "disable_builtin", "Disable built-in scalers", OFFSET(disable_builtin), AV_OPT_TYPE_BOOL, {.i64 = 0}, 0, 1, DYNAMIC },
+-    { "force_icc_lut", "Force the use of a full ICC 3DLUT for color mapping", OFFSET(force_icc_lut), AV_OPT_TYPE_BOOL, {.i64 = 0}, 0, 1, DYNAMIC },
++#if FF_API_LIBPLACEBO_OPTS
++    { "force_icc_lut", "Deprecated, does nothing", OFFSET(force_icc_lut), AV_OPT_TYPE_BOOL, {.i64 = 0}, 0, 1, DYNAMIC | AV_OPT_FLAG_DEPRECATED },
++#endif
+     { "force_dither", "Force dithering", OFFSET(force_dither), AV_OPT_TYPE_BOOL, {.i64 = 0}, 0, 1, DYNAMIC },
+     { "disable_fbos", "Force-disable FBOs", OFFSET(disable_fbos), AV_OPT_TYPE_BOOL, {.i64 = 0}, 0, 1, DYNAMIC },
+     { NULL },

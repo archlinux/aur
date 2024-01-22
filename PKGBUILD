@@ -11,7 +11,7 @@
 _pkgname=ffmpeg
 pkgname="${_pkgname}5.1"
 pkgver=5.1.4
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (legacy v5.1 branch, with libavcodec v59)'
 arch=(
@@ -20,7 +20,7 @@ arch=(
   x86_64
 )
 url="https://${_pkgname}.org"
-license=(GPL3)
+license=('GPL-3.0-or-later')
 depends=(
   alsa-lib
   aom
@@ -103,8 +103,10 @@ optdepends_x86_64=(
 )
 provides=(ffmpeg-compat-59)
 conflicts=(ffmpeg-compat-59)
-source=("git+https://git.${_pkgname}.org/${_pkgname}.git?signed#tag=n${pkgver}")
-b2sums=('SKIP')
+source=("git+https://git.${_pkgname}.org/${_pkgname}.git?signed#tag=n${pkgver}"
+        ffmpeg5.1-commit_1231003-fix_libplacebo_v6_compatibility.patch)
+b2sums=('SKIP'
+        'e44b4415a4071bbc9c56be5683fc9636a4d999366b8df8cb661f90a82e71a38161ce91da9e1fde7966dbf4940ec68eb3993ec9e903ff8792b945bf4ce9062c19')
 validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
 
 prepare() {
@@ -115,6 +117,12 @@ prepare() {
   
   echo "Applying patch to check for vulkan-headers 1.3+ instead of 1.2+..."
   git cherry-pick -n 59707cc485c7fcc1c06b96648ce605ed558da4ac
+
+  for _patchfile in ../*.patch
+  do
+    echo "Applying patch file ${_patchfile}..."
+    patch --force --forward --strip=2 --input="../${_patchfile}"
+  done
 }
 
 build() {

@@ -1,13 +1,13 @@
 pkgbase = ffmpeg5.1
 	pkgdesc = Complete solution to record, convert and stream audio and video (legacy v5.1 branch, with libavcodec v59)
 	pkgver = 5.1.4
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://ffmpeg.org
 	arch = aarch64
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = amf-headers
 	makedepends = avisynthplus
 	makedepends = clang
@@ -81,8 +81,10 @@ pkgbase = ffmpeg5.1
 	provides = ffmpeg-compat-59
 	conflicts = ffmpeg-compat-59
 	source = git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=n5.1.4
+	source = ffmpeg5.1-commit_1231003-fix_libplacebo_v6_compatibility.patch
 	validpgpkeys = DD1EC9E8DE085C629B3E1846B18E8928B3948D64
 	b2sums = SKIP
+	b2sums = e44b4415a4071bbc9c56be5683fc9636a4d999366b8df8cb661f90a82e71a38161ce91da9e1fde7966dbf4940ec68eb3993ec9e903ff8792b945bf4ce9062c19
 	depends_x86_64 = libmfx
 	optdepends_x86_64 = nvidia-utils: Nvidia NVDEC/NVENC support
 
