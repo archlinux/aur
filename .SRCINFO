@@ -1,6 +1,6 @@
 pkgbase = lux-dl
 	pkgdesc = Fast and simple video download library and CLI tool written in Go
-	pkgver = 0.20.0
+	pkgver = 0.22.0
 	pkgrel = 1
 	url = https://github.com/iawia002/lux
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = lux-dl
 	depends = ffmpeg
 	conflicts = annie
 	replaces = annie
-	source = lux-dl-0.20.0.tar.gz::https://github.com/iawia002/lux/archive/v0.20.0.tar.gz
-	sha256sums = 29988118bf57d8925ab15ec5bf039d4ed23bb6f11e90b65b9e599ccbb3e649e0
+	source = lux-dl-0.22.0.tar.gz::https://github.com/iawia002/lux/archive/v0.22.0.tar.gz
+	sha256sums = 34352ad29006e443b41bad04c24f89783efd063755e71cb98484b165953d4b59
 
 pkgname = lux-dl
