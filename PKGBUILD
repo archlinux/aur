@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Rafael Silva <silvagracarafael@gmail.com>
 pkgname=vizex
 pkgver=2.1.1c
