@@ -1,15 +1,17 @@
 pkgbase = librtlsdr-git
 	pkgdesc = Software to turn the RTL2832U into an SDR
-	pkgver = r646.710d578
+	pkgver = r647.gfe22586
 	pkgrel = 1
 	url = https://github.com/librtlsdr/librtlsdr
 	arch = x86_64
 	license = GPLv2
+	makedepends = cmake
 	makedepends = git
-	makedepends = libusb
+	depends = glibc
 	depends = libusb
 	provides = librtlsdr
 	conflicts = librtlsdr
+	conflicts = rtl-sdr
 	source = librtlsdr::git+https://github.com/librtlsdr/librtlsdr
 	sha512sums = SKIP
 

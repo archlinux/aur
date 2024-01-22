@@ -1,16 +1,17 @@
-# Maintainer: Armin Preiml <apreiml@strohwolke.at>
+# Contributor: Armin Preiml <apreiml@strohwolke.at>
 pkgname=librtlsdr-git
 _pkgname=librtlsdr
-pkgver=r646.710d578
+pkgver=r647.gfe22586
 pkgrel=1
 license=("GPLv2")
 pkgdesc=" Software to turn the RTL2832U into an SDR"
 makedepends=(
+	"cmake"
 	"git"
-	"libusb"
 )
 
 depends=(
+	"glibc"
 	"libusb"
 )
 
@@ -20,11 +21,11 @@ source=("${pkgname%-*}::git+https://github.com/librtlsdr/librtlsdr")
 sha512sums=('SKIP')
 
 provides=("librtlsdr")
-conflicts=("librtlsdr")
+conflicts=("librtlsdr" "rtl-sdr")
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
