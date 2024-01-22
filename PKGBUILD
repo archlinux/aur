@@ -5,9 +5,18 @@ pkgrel=1
 pkgdesc="The markdown editor worth stealing. Inspired by Ulysses, based on code from Quilter"
 arch=('x86_64' 'aarch64')
 url="https://thiefmd.com"
-license=('GPL3')
-depends=('clutter' 'discount' 'gtksourceview4' 'gtkspell3' 'libarchive' 'libgee'
-         'link-grammar' 'libhandy' 'webkit2gtk-4.1')
+license=('GPL-3.0-or-later')
+depends=(
+  'clutter'
+  'discount'
+  'gtksourceview4'
+  'gtkspell3'
+  'libarchive'
+  'libgee'
+  'link-grammar'
+  'libhandy'
+  'webkit2gtk-4.1'
+)
 makedepends=('git' 'meson' 'vala')
 _commit=e654b302ce3d0945455bc923caac55967a9fda4e  # tags/0.2.7^0
 source=("git+https://github.com/kmwallio/ThiefMD.git#commit=${_commit}"
@@ -36,12 +45,12 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd "$srcdir/ThiefMD"
+  cd ThiefMD
   git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
 prepare() {
-  cd "$srcdir/ThiefMD"
+  cd ThiefMD
   git submodule init
   git config submodule.flatpak/shared-modules.url "$srcdir/shared-modules"
   git config submodule.src/writegood.url "$srcdir/libwritegood-vala"
