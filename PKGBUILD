@@ -2,8 +2,8 @@
 # Maintainer: deneb <deneb@screee.ee>
 
 pkgname=imgcat-git
-pkgver=2.5.1.r260.e0277fa
-pkgrel=2
+pkgver=2.6.0.r281.2ff5475
+pkgrel=1
 pkgdesc="It's like cat, but for images"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/eddieantonio/imgcat"

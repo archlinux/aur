@@ -1,7 +1,7 @@
 pkgbase = imgcat-git
 	pkgdesc = It's like cat, but for images
-	pkgver = 2.5.1.r260.e0277fa
-	pkgrel = 2
+	pkgver = 2.6.0.r281.2ff5475
+	pkgrel = 1
 	url = https://github.com/eddieantonio/imgcat
 	arch = x86_64
 	arch = i686
