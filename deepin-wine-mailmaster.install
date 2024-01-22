@@ -7,10 +7,10 @@ post_install() {
     info
 }
 post_upgrade() {
-    find /home -maxdepth 2 -name ".deepinwine" -exec rm -f \{\}/@bottlename@/reinstalled \;
+    find /home -maxdepth 2 -name ".deepinwine" -exec rm -f \{\}/Deepin-@bottlename@/reinstalled \;
     info
 }
 pre_remove() {
-    echo "deleting the @bottlename@ bottle..."
-    find /home -maxdepth 2 -name ".deepinwine" -exec rm -rf \{\}/@bottlename@/ \;
+    echo "deleting the Deepin-@bottlename@ bottle..."
+    find /home -maxdepth 2 -name ".deepinwine" -exec rm -rf \{\}/Deepin-@bottlename@/ \;
 }

@@ -2,7 +2,7 @@
 _appname=MasterMaster
 _officalname=mailmaster
 pkgname="deepin-wine-${_officalname}"
-pkgver=5.0.7.1008
+pkgver=5.0.8.1017
 _sparkname="com.163.dashi.${_officalname}.spark"
 _sparkver=4.18.1.1006
 pkgrel=1
@@ -14,7 +14,6 @@ depends=(
     'deepin-wine6-stable'
     'spark-dwine-helper'
     'xdg-utils'
-    'libx11'
 )
 makedepends=(
     'p7zip'
@@ -34,14 +33,14 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('65e8ba5f2e958382e38a8cf8b04de466fe329eb563254f5bd176afc8105966ed'
-            'fb749eb9ab041062a146c583a7087cbbe3a58f7c734054658090ce6b01b0bf12'
+            'fafcc5d4c1a765295f41b6d131e4332d9039416efc627527d0be1dc57d9bff2c'
             '8ec2318da6f512f89dbee747fcbd233f552134da98c204c4ac682400341732fc'
             '3e2ed9203a5ce3b2f00b6c942d8fac6b24e7a6e7b1ebc863cee2e27d3ff487db'
-            '9fc08b3f39ab99a3335449f6ea69aff4bb67d8b4dd2b243009738369af544201'
-            'b57f9810e3c62d7ea1f47e878a73eba19c423495daa5008ffc89494f2726681a')
+            '48e7a80b45d16321f794020aaa9be9c46ba76d2da8c52d86f6e2bbfe6abdf13b'
+            'ffdd16329beb4e69d20988b15f963ef0fa4f274757aae4c5c3d69b4312e27b66')
 build() {
-    sed "s|@bottlename@|Deepin-${_appname}|g" -i "${srcdir}/${pkgname}.install"
-    sed -e "s|@bottlename@|Deepin-${_appname}|g" \
+    sed "s|@bottlename@|${_appname}|g" -i "${srcdir}/${pkgname}.install"
+    sed -e "s|@bottlename@|${_appname}|g" \
         -e "s|@appver@|${pkgver}|g" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@dirname@|${_appname}|g" \
