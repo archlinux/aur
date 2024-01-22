@@ -1,6 +1,6 @@
 pkgbase = leocad-git
 	pkgdesc = A CAD program for creating virtual LEGO models.
-	pkgver = 21.06.r92.37dd02ee
+	pkgver = 23.03.r120.a42d8639
 	pkgrel = 1
 	url = https://www.leocad.org/
 	arch = i686
