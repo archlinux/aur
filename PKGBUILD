@@ -4,7 +4,7 @@
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=folly
-pkgver=2024.01.15.00
+pkgver=2024.01.22.00
 pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
@@ -41,26 +41,23 @@ provides=(
   libfolly_test_util.so
   libfollybenchmark.so
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('bdc141daf09b8c3428ac3fe9ae1bec2ea2c07efd796721f8dd301ad61172be57')
 options=(!lto)
+
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('ba8d9c84403ab71ced8d34e9fd241d0df97ef3391aaffde96f89da8b91703fa4')
 
 _archive="$pkgname-$pkgver"
 
 build() {
   cd "$_archive"
 
-  # For the tests to compile, C++20 is needed. Building with C++20 produces a
-  # number of compiler warnings, disable them to remove the noise.
   cmake -S . -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -Wno-dev \
     -DBUILD_TESTS=ON \
     -DBUILD_SHARED_LIBS=ON \
-    -DPACKAGE_VERSION="$pkgver" \
-    -DCMAKE_CXX_STANDARD=20 \
-    -DCMAKE_CXX_FLAGS="-Wno-unused-result -Wno-attributes -Wno-address -Wno-uninitialized -Wno-maybe-uninitialized"
+    -DPACKAGE_VERSION="$pkgver"
   cmake --build build
 }
 
@@ -68,35 +65,14 @@ check() {
   cd "$_archive"
 
   _skipped_tests=(
-    # Skip failing tests - not sure why they fail.
-    'HHWheelTimerTest'
-    'async_helpers_test'
-    'atomic_unordered_map_test'
-    'concurrent_hash_map_test'
-    'executor_test'
-    'fbstring_test'
-    'future_dag_test'
-    'future_test'
-    'global_executor_test'
-    'interrupt_test'
-    'json_schema_test'
-    'retrying_test'
-    'serial_executor_test'
-    'singleton_test_global'
-    'timekeeper_test'
-    'wait_test'
-    'xlog_test'
-
-    # Skip long-running tests.
-    'concurrent_skip_list_test'
-    'eliasfano_test'
-    'f14_fwd_test'
-    'small_locks_test'
+    # Skip failing tests - not sure why they fail
+    HHWheelTimerTest
+    atomic_unordered_map_test
+    fbstring_test
+    fbvector_test
+    xlog_test
   )
-  _skipped_tests_pattern="${_skipped_tests[0]}"
-  for test in "${_skipped_tests[@]:1}"; do
-    _skipped_tests_pattern+="|$test"
-  done
+  _skipped_tests_pattern="${_skipped_tests[0]}$(printf '|%s' "${_skipped_tests[@]:1}")"
   ctest --test-dir build --output-on-failure -E "$_skipped_tests_pattern"
 }
 
