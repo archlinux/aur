@@ -1,6 +1,6 @@
 pkgbase = fedistar-bin
 	pkgdesc = Multi-column Fediverse client for desktop
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/h3poteto/fedistar
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = fedistar-bin
 	depends = libvips
 	provides = fedistar
 	conflicts = fedistar
-	source = https://github.com/h3poteto/fedistar/releases/download/v1.8.1/fedistar_1.8.1_amd64.deb
-	md5sums = 4f739e0cff7a1e8b85d232434e08e4a9
+	source = https://github.com/h3poteto/fedistar/releases/download/v1.8.2/fedistar_1.8.2_amd64.deb
+	md5sums = e7837621c9ff704c3d27ed64217477be
 
 pkgname = fedistar-bin
