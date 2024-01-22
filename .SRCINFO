@@ -1,7 +1,7 @@
 pkgbase = hostapd-wifi6
 	pkgdesc = hostapd than enabled AC/AX and ACS support and applied intel lar patch, provide useful service unit hostapd@.service and hostapd-ACS@.service
 	pkgver = 2.10
-	pkgrel = 10
+	pkgrel = 11
 	url = https://w1.fi/hostapd
 	arch = x86_64
 	arch = aarch64
