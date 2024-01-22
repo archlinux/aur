@@ -3,7 +3,7 @@ pkgname=animestream-bin
 pkgver=1.0.0
 _subver=alpha_3
 _electronversion=27
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple project designed for streaming and downloading your favorite anime!"
 arch=('x86_64')
 url="https://github.com/frostnova721/AnimeStream"
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('01c928a44d8574b448800ddecb460cfcc63e1409e0e5528070677dfa8382705d'
-            'ba4ed4aaf2c44af5118b06a3099a92ef3bdc969ed964ad508a857d37ae56fd3d')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
