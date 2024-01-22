@@ -1,13 +1,22 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=video-downloader-git
 pkgver=0.10.2.r10.g6976439
 pkgrel=1
 pkgdesc="Download videos from websites like YouTube and many others (based on yt-dlp)"
 arch=('any')
 url="https://github.com/Unrud/video-downloader"
-license=('GPL3')
-depends=('ffmpeg' 'libadwaita' 'python-brotli' 'python-gobject' 'python-mutagen'
-         'python-pycryptodomex' 'python-pyxattr' 'python-websockets' 'yt-dlp')
+license=('GPL-3.0-or-later')
+depends=(
+  'ffmpeg'
+  'libadwaita'
+  'python-brotli'
+  'python-gobject'
+  'python-mutagen'
+  'python-pycryptodomex'
+  'python-pyxattr'
+  'python-websockets'
+  'yt-dlp'
+)
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
