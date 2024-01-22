@@ -3,12 +3,12 @@
 
 pkgname='treegrep-bin'
 _pkgname="${pkgname%%-bin}"
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.3
+pkgrel=1
 pkgdesc='Frontend for ripgrep that presents results in a tree format (pre-compiled)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/4imothy/treegrep'
-license=('CC-BY-4.0')
+license=('CC-BY-4.0')  # SPDX-License-Identifier: CC-BY-4.0
 provides=('tgrep' 'treegrep')
 conflicts=('tgrep' 'treegrep')
 _rawurl='https://raw.githubusercontent.com/4imothy/treegrep/main'
@@ -55,12 +55,12 @@ package() {
 }
 
 sha256sums_aarch64=(
-  'bdcdffd35a807d7c1b14f1f39f9aebd3b96a7e56e87caba018cf7d9a8f1ae45c'
-  'SKIP' 'SKIP' # Skip to my Lou!
+  '78ddf5ac87565dc3e48f53c1fdc01dac7d47cc4a360d9c7e65f6b64f90b40746'
+  'SKIP' 'SKIP'  # Skip to my Lou!
 )
 sha256sums_x86_64=(
-  '8e34c37eb0b66f5a6bdde28f2915f3db0b88e07e6237e23e77362286200b8396'
-  'SKIP' 'SKIP' # Skip to my Lou!
+  '740e7ecc4017c4cdd1b0bc3b0dfb3b0c999daaf758aca7cf186cb95ce580bc0c'
+  'SKIP' 'SKIP'  # Skip to my Lou!
 )
 
 # eof
