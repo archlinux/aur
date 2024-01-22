@@ -3,8 +3,8 @@
 # Contributor: Thiago Almeida <thiagoalmeidasa@gmail.com>
 
 pkgname=commitlint
-pkgver=18.4.4
-pkgrel=2
+pkgver=18.5.0
+pkgrel=1
 pkgdesc="Lint commit messages"
 arch=(any)
 url="https://github.com/conventional-changelog/commitlint"
@@ -23,8 +23,8 @@ noextract=(
   "config-conventional-$pkgver.tgz"
 )
 sha256sums=(
-  'eef2f1bb00bb8e342c2bb37fb09e2d7251bd3a01e9e9d7cb33ad4d2e90f5d7ae'
-  '7067d84963461d3c642120653e7edafd1f7c3071898b2b295d82a61a237a450f'
+  '317e6840583b931ff4452c104a93349d48d8039b30c4d9008e860be2c75d7534'
+  'e62678090d6a375c905a1f355c13a67b15bc4b96a44ccb26e160f0799cf727fc'
 )
 
 package() {
