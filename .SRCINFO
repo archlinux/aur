@@ -1,11 +1,11 @@
 pkgbase = r3playx-bin
 	pkgdesc = A music player forked from YesPlayMusic。高颜值的第三方网易云播放器，支持 Windows / macOS / Linux
-	pkgver = 2.7.3
+	pkgver = 2.7.4
 	pkgrel = 1
 	url = https://github.com/Sherlockouo/music
 	arch = aarch64
 	arch = x86_64
-	license = AGPL3
+	license = LicenseRef-AGPL3
 	makedepends = squashfuse
 	depends = electron28
 	depends = hicolor-icon-theme
@@ -15,9 +15,9 @@ pkgbase = r3playx-bin
 	conflicts = yesplaymusic
 	source = r3playx.sh
 	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
-	source_aarch64 = r3playx-2.7.3-aarch64.deb::https://github.com/Sherlockouo/music/releases/download/2.7.3/R3PLAYX-2.7.3-linux-arm64.deb
-	sha256sums_aarch64 = 8079cbde2578a5f755b12f1d5f852650ca9ab692ccfecf4e9909c09f6fdac0a7
-	source_x86_64 = r3playx-2.7.3-x86_64.deb::https://github.com/Sherlockouo/music/releases/download/2.7.3/R3PLAYX-2.7.3-linux-amd64.deb
-	sha256sums_x86_64 = 16805de015c8164a7a12d72ded6fdd42976b28d7f13f1215bf694082ae3113ac
+	source_aarch64 = r3playx-2.7.4-aarch64.deb::https://github.com/Sherlockouo/music/releases/download/2.7.4/R3PLAYX-2.7.4-linux-arm64.deb
+	sha256sums_aarch64 = 81c2eef335fa1441078f28c407ea075577a03118e70a65a24fe565edcf78c292
+	source_x86_64 = r3playx-2.7.4-x86_64.deb::https://github.com/Sherlockouo/music/releases/download/2.7.4/R3PLAYX-2.7.4-linux-amd64.deb
+	sha256sums_x86_64 = 2d038f16ca6ef927dbcf52caa3c230d7ce830a87a62ba80ed405aa682d9f09d1
 
 pkgname = r3playx-bin
