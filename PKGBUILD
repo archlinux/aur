@@ -3,40 +3,22 @@ pkgname=ohmymd-bin
 _pkgname="Oh Mymd"
 pkgver=0.6.1
 _electronversion=13
-pkgrel=3
+pkgrel=4
 pkgdesc="A markdown editor,support cloud sync"
 arch=('x86_64')
 url="https://www.ohmymd.app/"
 _ghurl="https://github.com/1oopstudio/support.ohmymd.app"
-license=("custom")
+license=("LicenseRef-custom")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'libxrandr'
     'hicolor-icon-theme'
-    'dbus'
-    'libxcomposite'
-    'nss'
-    'libxkbcommon'
-    'libxdamage'
     'alsa-lib'
-    'expat'
-    'libdrm'
-    'at-spi2-core'
-    'mesa'
-    'cairo'
-    'libxext'
-    'libxfixes'
-    'pango'
     'gtk3'
-    'gcc-libs'
-    'nspr'
-    'libxcb'
-    'libx11'
-    'libcups'
+    'at-spi2-core'
     'make'
-    'python'
-    'python-setuptools'
+    'nspr'
+    'nss'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::https://oss.ohmymd.milchstrabe.com/patch/linux/deb/${pkgname%-bin}_${pkgver}_amd64.deb"
