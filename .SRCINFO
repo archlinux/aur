@@ -1,7 +1,7 @@
 pkgbase = git-notifier
 	pkgdesc = Email change notifications for git (and GitHub)
 	pkgver = 0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.icir.org/robin/git-notifier/
 	arch = any
 	license = LicenseRef-BSD

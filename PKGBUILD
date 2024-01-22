@@ -2,10 +2,11 @@
 
 pkgname=git-notifier
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Email change notifications for git (and GitHub)"
 arch=(any)
 url="http://www.icir.org/robin/git-notifier/"
+#url="https://github.com/rsmmr/git-notifier/"
 license=('LicenseRef-BSD')
 makedepends=('python-docutils')
 depends=('python' 'git')
