@@ -1,13 +1,13 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: slact
 pkgname=tlpui-git
-pkgver=1.5.0.r0.g83e4129
-pkgrel=3
+pkgver=1.6.3.r0.g51c04f8
+pkgrel=1
 epoch=2
 pkgdesc="A GTK user interface for TLP written in Python"
 arch=('any')
 url="https://github.com/d4nj1/TLPUI"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('tlp' 'python-gobject')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 provides=("${pkgname%-git}")
@@ -18,32 +18,26 @@ sha256sums=('SKIP'
             'c07939b2e8c08e649579b9f3b3144b927834229f09a8f77f7f627f789c875b99')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/^tlpui.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-    rm -rf "${pkgdir}${site_packages}/usr"
+  install -Dm644 "${pkgname%-git}.desktop" "$pkgdir/usr/share/applications/${_app_id}.desktop"
+  install -Dm644 "AppImage/${_app_id}.appdata.xml" -t "$pkgdir/usr/share/metainfo/"
+  install -Dm644 "${pkgname%-git}/icons/themeable/hicolor/scalable/apps/${pkgname%-git}.svg" \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/${_app_id}.svg"
 
-  install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t \
-    "$pkgdir/usr/share/applications"
-
-  for icon_size in 16 32 48 64 128 96 128 256; do
-    icons_dir=usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
-    install -d "$pkgdir/$icons_dir"
-    install -m644 "${pkgname%-git}/icons/themeable/hicolor/${icon_size}x${icon_size}/apps/${pkgname%-git}.png" -t \
-      "$pkgdir/$icons_dir"
+  for i in 16 32 48 64 128 96 128 256; do
+    install -Dm644 "${pkgname%-git}/icons/themeable/hicolor/${i}x${i}/apps/${pkgname%-git}.png" \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/${_app_id}.png"
   done
-
-  install -Dm644 "${pkgname%-git}/icons/themeable/hicolor/scalable/apps/${pkgname%-git}.svg" -t \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps"
 }
