@@ -4,16 +4,16 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname='ibus-mozc'
-pkgver=2.29.5268.102
+pkgver=2.29.5346.102
 pkgrel=1
 pkgdesc='Mozc module for IBus'
 arch=('x86_64')
 url='https://github.com/google/mozc'
-license=('Apache' 'GPL' 'LGPL' 'MIT' 'custom')
-depends=('ibus>=1.4.1' 'mozc>=2.29.5268.102')
+license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND MS-PL AND NAIST-2003 AND Unicode-3.0')
+depends=('ibus>=1.4.1' 'mozc>=2.29.5346.102')
 makedepends=('bazel' 'git' 'python' 'qt6-base')
 options=(!distcc !ccache)
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=d3151bb4e5d3a18bc2c8419c338401102a37928e")
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=034b61000d2af24438f09c08abea42ef35689944")
 sha256sums=('SKIP')
 
 prepare() {
@@ -33,26 +33,26 @@ build() {
 package() {
     cd ${pkgname}-git/src
 
-    install -Dm644 ../LICENSE                                   "${pkgdir}"/usr/share/licenses/ibus-mozc/LICENSE
-    install -Dm644 data/installer/credits_en.html               "${pkgdir}"/usr/share/licenses/ibus-mozc/Submodules
+    install -Dm644 ../LICENSE                                   "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+    install -Dm644 data/installer/credits_en.html               "${pkgdir}"/usr/share/licenses/${pkgname}/Submodules
 
     install -Dm755 bazel-bin/renderer/qt/mozc_renderer          "${pkgdir}"/usr/lib/mozc/mozc_renderer
 
-    install -Dm755 bazel-bin/unix/ibus/ibus_mozc                "${pkgdir}"/usr/lib/ibus-mozc/ibus-engine-mozc
+    install -Dm755 bazel-bin/unix/ibus/ibus_mozc                "${pkgdir}"/usr/lib/${pkgname}/ibus-engine-mozc
     install -Dm644 bazel-bin/unix/ibus/mozc.xml                 "${pkgdir}"/usr/share/ibus/component/mozc.xml
 
     cd bazel-bin/unix
 
     unzip -o icons.zip
 
-    install -Dm644 mozc.png                                     "${pkgdir}"/usr/share/ibus-mozc/product_icon.png
-    install -Dm644 alpha_full.svg                               "${pkgdir}"/usr/share/ibus-mozc/alpha_full.svg
-    install -Dm644 alpha_half.svg                               "${pkgdir}"/usr/share/ibus-mozc/alpha_half.svg
-    install -Dm644 direct.svg                                   "${pkgdir}"/usr/share/ibus-mozc/direct.svg
-    install -Dm644 hiragana.svg                                 "${pkgdir}"/usr/share/ibus-mozc/hiragana.svg
-    install -Dm644 katakana_full.svg                            "${pkgdir}"/usr/share/ibus-mozc/katakana_full.svg
-    install -Dm644 katakana_half.svg                            "${pkgdir}"/usr/share/ibus-mozc/katakana_half.svg
-    install -Dm644 outlined/dictionary.svg                      "${pkgdir}"/usr/share/ibus-mozc/dictionary.svg
-    install -Dm644 outlined/properties.svg                      "${pkgdir}"/usr/share/ibus-mozc/properties.svg
-    install -Dm644 outlined/tool.svg                            "${pkgdir}"/usr/share/ibus-mozc/tool.svg
+    install -Dm644 mozc.png                                     "${pkgdir}"/usr/share/${pkgname}/product_icon.png
+    install -Dm644 alpha_full.svg                               "${pkgdir}"/usr/share/${pkgname}/alpha_full.svg
+    install -Dm644 alpha_half.svg                               "${pkgdir}"/usr/share/${pkgname}/alpha_half.svg
+    install -Dm644 direct.svg                                   "${pkgdir}"/usr/share/${pkgname}/direct.svg
+    install -Dm644 hiragana.svg                                 "${pkgdir}"/usr/share/${pkgname}/hiragana.svg
+    install -Dm644 katakana_full.svg                            "${pkgdir}"/usr/share/${pkgname}/katakana_full.svg
+    install -Dm644 katakana_half.svg                            "${pkgdir}"/usr/share/${pkgname}/katakana_half.svg
+    install -Dm644 outlined/dictionary.svg                      "${pkgdir}"/usr/share/${pkgname}/dictionary.svg
+    install -Dm644 outlined/properties.svg                      "${pkgdir}"/usr/share/${pkgname}/properties.svg
+    install -Dm644 outlined/tool.svg                            "${pkgdir}"/usr/share/${pkgname}/tool.svg
 }

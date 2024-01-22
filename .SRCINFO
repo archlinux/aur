@@ -1,23 +1,19 @@
 pkgbase = ibus-mozc
 	pkgdesc = Mozc module for IBus
-	pkgver = 2.29.5268.102
+	pkgver = 2.29.5346.102
 	pkgrel = 1
 	url = https://github.com/google/mozc
 	arch = x86_64
-	license = Apache
-	license = GPL
-	license = LGPL
-	license = MIT
-	license = custom
+	license = Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND MS-PL AND NAIST-2003 AND Unicode-3.0
 	makedepends = bazel
 	makedepends = git
 	makedepends = python
 	makedepends = qt6-base
 	depends = ibus>=1.4.1
-	depends = mozc>=2.29.5268.102
+	depends = mozc>=2.29.5346.102
 	options = !distcc
 	options = !ccache
-	source = ibus-mozc-git::git+https://github.com/google/mozc.git#commit=d3151bb4e5d3a18bc2c8419c338401102a37928e
+	source = ibus-mozc-git::git+https://github.com/google/mozc.git#commit=034b61000d2af24438f09c08abea42ef35689944
 	sha256sums = SKIP
 
 pkgname = ibus-mozc
