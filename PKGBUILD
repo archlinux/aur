@@ -1,5 +1,5 @@
 pkgname=plymouth-theme-arch-os
-pkgver=1.0.r0.g$(git rev-parse --short HEAD)
+pkgver=1.0.r24.e96b64
 pkgrel=1
 pkgdesc="Arch OS Theme for Plymouth"
 arch=('any')
@@ -10,8 +10,14 @@ makedepends=('git')
 source=($pkgname::git+https://github.com/murkl/plymouth-theme-arch-os.git)
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
 package() {
 	cd "${srcdir}/${pkgname}/src"
 	mkdir -p "${pkgdir}/usr/share/plymouth/themes/arch-os"
 	install -Dvm644 ./* "${pkgdir}/usr/share/plymouth/themes/arch-os"
 }
+

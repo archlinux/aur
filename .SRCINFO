@@ -1,6 +1,6 @@
 pkgbase = plymouth-theme-arch-os
 	pkgdesc = Arch OS Theme for Plymouth
-	pkgver = 1.0.r0.g13a6934
+	pkgver = 1.0.r24.e96b64
 	pkgrel = 1
 	url = https://github.com/murkl/plymouth-theme-arch-os
 	arch = any
