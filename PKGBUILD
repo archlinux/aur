@@ -6,9 +6,17 @@ pkgrel=1
 pkgdesc="Run websites as if they were apps"
 arch=('any')
 url="https://github.com/linuxmint/webapp-manager"
-license=('GPL')
-depends=('dconf' 'python-beautifulsoup4' 'python-configobj' 'python-gobject'
-         'python-pillow' 'python-setproctitle' 'python-tldextract' 'xapp')
+license=('GPL-3.0-or-later')
+depends=(
+  'dconf'
+  'python-beautifulsoup4'
+  'python-configobj'
+  'python-gobject'
+  'python-pillow'
+  'python-setproctitle'
+  'python-tldextract'
+  'xapp'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('818ec1186e028d538b0e7a9237b9fc8c68e804356d322a0a7ba5451c909fcbad')
 
