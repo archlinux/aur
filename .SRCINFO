@@ -1,18 +1,22 @@
 pkgbase = pomodoro-bin
 	pkgdesc = Pomodoro timer base on Electron.
-	pkgver = 1.8.2
-	pkgrel = 4
+	pkgver = 1.9.6
+	pkgrel = 1
 	url = https://github.com/AndrewMaksimchuk/pomodoro
 	arch = x86_64
 	license = MIT
 	depends = electron25
-	provides = pomodoro=1.8.2
+	depends = python
+	depends = python-setuptools
+	depends = nodejs
+	provides = pomodoro=1.9.6
 	conflicts = pomodoro
-	source = pomodoro-1.8.2.deb::https://github.com/AndrewMaksimchuk/pomodoro/releases/download/v1.8.2/pomodoro_1.8.1_amd64.deb
-	source = LICENSE-1.8.2::https://raw.githubusercontent.com/AndrewMaksimchuk/pomodoro/v1.8.2/LICENSE
+	options = !strip
+	source = pomodoro-1.9.6.deb::https://github.com/AndrewMaksimchuk/pomodoro/releases/download/v1.9.6/pomodoro_1.8.2_amd64.deb
+	source = LICENSE-1.9.6::https://raw.githubusercontent.com/AndrewMaksimchuk/pomodoro/v1.9.6/LICENSE
 	source = pomodoro.sh
-	sha256sums = 5a4cea8654d45cc371f79f7d4ccf52da86dd309b79285fd470999624968cd74a
+	sha256sums = a6ef5c724b0f419e36455bf8b27978603222fd5bb3a17f449459037d44fd05cb
 	sha256sums = 6c3be11c505c08a5a1a041f62fff718177de780c85e4e49609aa5ca22c2148a9
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
 
 pkgname = pomodoro-bin
