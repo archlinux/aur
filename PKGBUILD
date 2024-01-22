@@ -1,11 +1,11 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=viper4linux-gui-git
 pkgver=2.2.r24.g2d0c84d
 pkgrel=1
 pkgdesc="Official UI for Viper4Linux"
 arch=('x86_64')
 url="https://github.com/Audio4Linux/Viper4Linux-GUI"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gst-plugins-bad-libs' 'mesa' 'qt5-multimedia' 'qt5-svg' 'viper4linux-git')
 makedepends=('git')
 optdepends=('libappindicator-gtk3: tray icon support')
