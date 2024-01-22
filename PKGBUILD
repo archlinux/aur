@@ -2,12 +2,12 @@
 
 pkgname=lampray
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Application Modding Platform. A native Linux mod manager.'
 arch=('x86_64')
 url='https://github.com/CHollingworth/Lampray'
 license=('Unlicense')
-depends=('curl' 'p7zip' 'pkgconf' 'sdl2' 'zenity')
+depends=('curl' 'p7zip' 'sdl2' 'zenity')
 makedepends=('cmake' 'ninja')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('2e15a016cd332aec7acbec34fddee405f7a3d591a09f5eec9f40c8f0e4df437d')
