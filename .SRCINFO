@@ -1,6 +1,6 @@
 pkgbase = revc-git
 	pkgdesc = Grand Theft Auto: Vice City reverse engineered
-	pkgver = 1.0_r5087.a16fcd8d
+	pkgver = 1.0.r870.ga16fcd8d
 	pkgrel = 1
 	url = https://github.com/halpz/re3/tree/miami
 	install = revc.install

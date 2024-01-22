@@ -1,5 +1,5 @@
 pkgname=revc-git
-pkgver=1.0_r5087.a16fcd8d
+pkgver=1.0.r870.ga16fcd8d
 pkgrel=1
 pkgdesc="Grand Theft Auto: Vice City reverse engineered"
 arch=(x86_64 aarch64)
