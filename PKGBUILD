@@ -2,7 +2,7 @@
 pkgname=cellframe-node-debug
 _pkgname=cellframe-node
 pkgver=5.2.419
-pkgrel=1
+pkgrel=2
 pkgdesc="Cellframe blockchain node with a powerful SDK"
 arch=('x86_64' 'aarch64')
 url="https://cellframe.net"
@@ -28,6 +28,7 @@ md5sums=('SKIP'
          '72472d529b38f06a78f37ac659b18d65')
 install=$_pkgname.install
 conflicts=(cellframe-dashboard cellframe-wallet cellframe-node)
+options=(!strip)
 
 prepare() {
 	rm -rf "$srcdir/$_pkgname/cellframe-sdk"
