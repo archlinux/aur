@@ -1,7 +1,7 @@
 pkgbase = s3_exporter
 	pkgdesc = Exports Prometheus metrics about S3 buckets and objects
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qaoru/s3_exporter
 	arch = x86_64
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = s3_exporter
 	source = prometheus-s3-exporter.service
 	source = prometheus-s3-exporter.sysusers
 	sha256sums = af6ea5aaa50834e5895f680f4964f92c20e4b0c8944205bb1b49373f85488215
-	sha256sums = 708ade278b27219b8f9f1112ca4f9ee139d8b19b8e823a97492210107c8cb38e
+	sha256sums = 843215c4f5035d1a168ec418743661d5f7763deda5b52316531e50bdc8f1f48c
 	sha256sums = 953587ceeebe37042ad6f88ffcaf7bcf2adfe5397e02ca6ec7ee79543c0f5050
 	sha256sums = f0ce7020311240c6ee1ca7cf3168944c5883b3bd6f86f8fe39089ff3d9ed2dba
 

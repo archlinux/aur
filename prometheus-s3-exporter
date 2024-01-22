@@ -1,1 +1,4 @@
-OPTIONS="--s3.endpoint-url=objects-us-east-1.dream.io --s3.force-path-style --log.level=info --log.format=logger:stdout"
+AWS_ACCESS_KEY_ID=""
+AWS_SECRET_ACCESS_KEY=""
+AWS_REGION="us-east-1"
+OPTIONS="--s3.endpoint-url=objects-us-east-1.dream.io --s3.force-path-style"

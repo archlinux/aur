@@ -4,7 +4,7 @@
 pkgbase='s3_exporter'
 pkgname='prometheus-s3-exporter'
 pkgver='0.6.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Exports Prometheus metrics about S3 buckets and objects'
 arch=('x86_64' 'aarch64')
 _uri='github.com/qaoru'
@@ -16,7 +16,7 @@ source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgname}.service"
 	"${pkgname}.sysusers")
 sha256sums=('af6ea5aaa50834e5895f680f4964f92c20e4b0c8944205bb1b49373f85488215'
-            '708ade278b27219b8f9f1112ca4f9ee139d8b19b8e823a97492210107c8cb38e'
+            '843215c4f5035d1a168ec418743661d5f7763deda5b52316531e50bdc8f1f48c'
             '953587ceeebe37042ad6f88ffcaf7bcf2adfe5397e02ca6ec7ee79543c0f5050'
             'f0ce7020311240c6ee1ca7cf3168944c5883b3bd6f86f8fe39089ff3d9ed2dba')
 backup=("etc/conf.d/${pkgname}")
@@ -40,7 +40,7 @@ build() {
     -ldflags "-linkmode external -extldflags ${LDFLAGS} \
     -X github.com/prometheus/common/version.Version=${pkgver} \
     -X github.com/prometheus/common/version.Revision=${pkgrel} \
-    -X github.com/prometheus/common/version.Branch=master \
+    -X github.com/prometheus/common/version.Branch=tarball \
     -X github.com/prometheus/common/version.BuildUser=$(whoami)@$(hostnamectl hostname) \
     -X github.com/prometheus/common/version.BuildDate=$(date -d@"$SOURCE_DATE_EPOCH" +%Y%m%d-%H:%M:%S)"
 }
