@@ -1,10 +1,10 @@
 pkgbase = kwin-effects-cube
 	pkgdesc = Desktop cube effect for KWin
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 5
 	url = https://github.com/zzag/kwin-effects-cube
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = extra-cmake-modules
 	depends = kwin>=5.25.0
 	depends = qt5-quick3d
