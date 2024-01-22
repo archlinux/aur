@@ -4,7 +4,7 @@ pkgname="${_pkgname}-player-bin"
 _appname=Amethyst
 pkgver=1.9.16
 _electronversion=24
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform music player made with Typescript"
 arch=(
     "aarch64"
@@ -25,7 +25,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('80d12b7c086562e81c66238a2b7c596c335a4da2a047f9880c39ee03b85c28bb'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 sha256sums_aarch64=('01927aaf04d31e5249e06933e1c78fc624112f034add2f0a3e7767e908dfc52a')
 sha256sums_x86_64=('2d90947460494f3ba346109d5101b1fbb3c12010fbfd098526f31ba81bc1f1e1')
 build() {
@@ -34,7 +34,7 @@ build() {
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|/opt/${_appname}/${_pkgname} %U|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g;s|Music;|AudioVideo;|g" \
+    sed "s|/opt/${_appname}/${_pkgname}|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g;s|Music;|AudioVideo;|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 } 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = amethyst-player-bin
 	pkgdesc = A cross-platform music player made with Typescript
 	pkgver = 1.9.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://amethyst.pages.dev/
 	arch = aarch64
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = amethyst-player-bin
 	source = LICENSE-1.9.16::https://raw.githubusercontent.com/Geoxor/Amethyst/v1.9.16/LICENSE
 	source = amethyst-player.sh
 	sha256sums = 80d12b7c086562e81c66238a2b7c596c335a4da2a047f9880c39ee03b85c28bb
-	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
 	source_aarch64 = amethyst-player-1.9.16-aarch64.deb::https://github.com/Geoxor/Amethyst/releases/download/v1.9.16/amethyst_1.9.16_arm64.deb
 	sha256sums_aarch64 = 01927aaf04d31e5249e06933e1c78fc624112f034add2f0a3e7767e908dfc52a
 	source_x86_64 = amethyst-player-1.9.16-x86_64.deb::https://github.com/Geoxor/Amethyst/releases/download/v1.9.16/amethyst_1.9.16_amd64.deb
