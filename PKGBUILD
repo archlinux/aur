@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=frappe-books-bin
 _pkgname="Frappe Books"
-pkgver=0.20.0
+pkgver=0.20.1
 _electronversion=18
 pkgrel=1
 pkgdesc="Modern desktop accounting for freelancers and small-businesses."
 arch=('x86_64')
 url="https://frappebooks.com/"
 _ghurl="https://github.com/frappe/books"
-license=('AGPL3')
+license=('LicenseRef-AGPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=(
     "${pkgname%-bin}"
@@ -18,11 +18,12 @@ depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
 )
+options=('!strip')
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c2616bc79480d7a09b503f560f33dbdbffc94dd2efa0cd79d0d7a252fac2ec5c'
+sha256sums=('9251fa99ab84aef4df4475ab733df5b1f96fe664e447832c659638fdbf9b7286'
             'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
