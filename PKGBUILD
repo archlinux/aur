@@ -1,7 +1,7 @@
 # Maintainer: XandrCopyrighted <xxandrr@proton.me>
 
 pkgname=xfetch-rs-git
-pkgver=r30.7e0bcfc
+pkgver=r39.2f664ce
 pkgrel=1
 pkgdesc="The world's fastest & simplest fetch written in Rust."
 arch=('any')
