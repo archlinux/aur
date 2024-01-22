@@ -1,5 +1,5 @@
 pkgname=plymouth-theme-arch-os
-pkgver=1.0.r24.e96b64
+pkgver=r25.f24df47
 pkgrel=1
 pkgdesc="Arch OS Theme for Plymouth"
 arch=('any')
