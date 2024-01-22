@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.7.arch3
+pkgver=6.7.1.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -37,9 +37,10 @@ source=(
 
   0001-acpi-proc-idle-skip-dummy-wait.patch
 
-  0001-platform-x86-asus-wmi-Add-safety-checks-to-dgpu-egpu.patch
+#  0001-platform-x86-asus-wmi-Add-safety-checks-to-dgpu-egpu.patch
+  0027-mt76_-mt7921_-Disable-powersave-features-by-default.patch
   
-  0001-linux6.6.y-bore3.3.0.patch
+  0001-linux6.7.y-bore4.0.0.patch
   
   0032-Bluetooth-btusb-Add-a-new-PID-VID-0489-e0f6-for-MT7922.patch
   0035-Add_quirk_for_polling_the_KBD_port.patch
@@ -48,13 +49,13 @@ source=(
   0002-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
 
   v2-0005-platform-x86-asus-wmi-don-t-allow-eGPU-switching-.patch
-  v2-0006-platform-x86-asus-wmi-add-safety-checks-to-gpu-sw.patch
+#  v2-0006-platform-x86-asus-wmi-add-safety-checks-to-gpu-sw.patch
 
   0038-mediatek-pci-reset.patch
   0040-workaround_hardware_decoding_amdgpu.patch
 
-  0005-platform-x86-asus-wmi-don-t-allow-eGPU-switching-if-.patch
-  0006-platform-x86-asus-wmi-add-safety-checks-to-gpu-switc.patch
+#  0005-platform-x86-asus-wmi-don-t-allow-eGPU-switching-if-.patch
+#  0006-platform-x86-asus-wmi-add-safety-checks-to-gpu-switc.patch
 
   0001-platform-x86-asus-wmi-Support-2023-ROG-X16-tablet-mo.patch
   amd-tablet-sfh.patch
@@ -68,26 +69,23 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('ef31144a2576d080d8c31698e83ec9f66bf97c677fa2aaf0d5bbb9f3345b1069'
+sha256sums=('1ecffa568e86a2202ba5533ad9034bc263a9aa14e189597a94f09b3854ad68c3'
             'SKIP'
-            '1a2162ec671c508f9891cdb20e2a483238e2cce023e849fdedb8ae3dd58c114c'
+            '3ba2b1c7b113f47f48c051f86b0fe0011170e0a3d2e2f2fee799857b88864639'
             'SKIP'
-            'faaa3867e72bb7755844585dc26773c34ce5a0f3f0bdbe89fa20943d2bf7bedc'
+            'aa47193f89794412776f36c970cabbf19e9abaccf01e3c33f4f891dd4661e5af'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             'cd3b097d35fbc448f10acb6fb91e1bb475c8d925053b1bb9640a8862ea3c2d3d'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
-            '172dbc88d0a3cda78387f3c907fa4953c71cb1cb162f0b34f78b8b78924bc3d4'
-            '7b99ac3c4aea644829a9e40b6393628402aad84f35a9be8a56a54ef1916651b3'
+            'ed242f4be3f8eaade2a1d42157c5c6c86281917a08ae43221b088fafdc775ee7'
+            '6e0b648637a0925df4bb43f5eb5144838415e02c43ff8fddbf82f6813b0f132c'
             'a8e1e11a4ab1995cc4975c9b134a43ddfe7054ef0c965e52a7d8f9223e15c3e0'
             '315d1839630b37894a626bbc2aea012618b2e1ccb6f9d8aa27c0a3ce5e90e99c'
             'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
             '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
             '9f98765b43f5f31b33ed05f3611508113b02518e680ee82b251de80dae2e141d'
-            '5e58aa605c2ae00c0925e1fbb838a8041e7cf2eb78c0d6167e59dbe27b536565'
             'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
             'e41198b29cee4de7a5132d8df606f48c2d0f9c9076fe4230b00a33c7e0b22c71'
-            '5d1180a60bf9cc1d11d77455580f1d7522e232b7ba235b43f09ede45d37e8a10'
-            '2480528e81377b27a4558f989bf810537b820f9f7696b52538fa01c0b81bf899'
             '1edb362a762c8858374027e30ff58ae0014e117fdc05cc7db6da50f80e7aab87'
             '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04'
             '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
