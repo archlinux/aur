@@ -5,13 +5,23 @@
 
 _pkgname=gnuplot
 pkgname=$_pkgname-nogui
-pkgver=5.4.9
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="Plotting package which outputs to X11, files and others. Without wxgtk/qt."
 arch=("x86_64")
 url="http://www.gnuplot.info"
 license=("custom")
-depends=('cairo' 'libcerf' 'libjpeg' 'lua' 'gd' 'gnutls' 'pango' 'readline')
+depends=(cairo
+    gcc-libs
+    gd
+    glib2
+    glibc
+    libcerf
+    libwebp
+    libx11
+    lua
+    pango
+    readline)
 makedepends=('emacs')
 optdepends=('texlive-core')
 provides=("gnuplot")
@@ -19,19 +29,11 @@ conflicts=("gnuplot" "gnuplot-nox")
 replaces=("gnuplot-notk")
 source=("http://downloads.sourceforge.net/sourceforge/$_pkgname/$_pkgname-$pkgver.tar.gz"
 	"lua53_compat.patch")
-sha256sums=('a328a021f53dc05459be6066020e9a71e8eab6255d3381e22696120d465c6a97'
+sha256sums=('635a28f0993f6ab0d1179e072ad39b8139d07f51237f841d93c6c2ff4b1758ec'
             'bfd8a61abbf4491c74225cb9fd252619d4fc29751838bcb4c0639ffe05a00695')
 
 prepare() {
 	cd "$srcdir/$_pkgname-$pkgver"
-
-	# Fix default source location; use the GDFONTPATH variable to modify at runtime.
-	sed -i 's|/usr/X11R6/lib/X11/fonts/truetype|/usr/share/fonts/TTF|' src/variable.c
-
-	sed -i -e 's|/usr/X11R6/lib/X11/fonts/Type1|/usr/share/fonts/Type1|' \
-		-e 's|$(X11ROOT)/X11R6/lib/X11/fonts/Type1|$(X11ROOT)/usr/share/fonts/Type1|' \
-		src/variable.c
-
 	patch -p1 < "$srcdir/lua53_compat.patch"
 }
 
