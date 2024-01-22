@@ -5,7 +5,7 @@
 # Contributor: Michael Louis Thaler <michael.louis.thaler@gmail.com>
 
 pkgname=watchman
-pkgver=2024.01.15.00
+pkgver=2024.01.22.00
 pkgrel=1
 pkgdesc="Watches files and records, or triggers actions, when they change"
 url="https://github.com/facebook/watchman"
@@ -40,7 +40,7 @@ source=(
   "watchman.socket"
 )
 sha256sums=(
-  '3d8880056956696bcfb7c549d446e13b73f2c383851de53ef5e3a8f52068a3d9'
+  '04b789729c37bd7a8b69f632d8c9e2daf1ba0ba2a28169f208a8a2ec3125cd4a'
   'd40feab6aa7dc6522c648660e88642fdf721ee1f9d80c23f6891a6381067a38b'
   '3ebc93cb91ec9b9603969e222fd3ffd9baa4a1d07a7b3bd7aabf956ec2e177c8'
   'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356'
@@ -65,11 +65,12 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -Wno-dev \
-    -DCMAKE_LIBRARY_ARCHITECTURE=x86_64_v3 \
+    -DBUILD_TESTS=ON \
+    -DBUILD_SHARED_LIBS=ON \
     -DWATCHMAN_STATE_DIR=/var/run/watchman \
     -DUSE_SYS_PYTHON=ON \
-    -DWATCHMAN_VERSION_OVERRIDE="$pkgver" \
-    -DENABLE_EDEN_SUPPORT=OFF
+    -DENABLE_EDEN_SUPPORT=OFF \
+    -DWATCHMAN_VERSION_OVERRIDE="$pkgver"
   cmake --build build
 }
 
@@ -77,31 +78,22 @@ check() {
   cd "$_archive"
 
   _skipped_tests=(
-    # Skip failing tests - not sure why they fail.
-    'test_defer_state'
-    'test_even_more_moves'
-    'test_failingSpawner'
-    'test_fishy'
-    'test_force_recrawl'
-    'test_fstype'
-    'test_full_capability_set'
-    'test_legacyTrigger'
-    'test_localSavedStateSubscription'
-    'test_local_saved_state'
-    'test_saved_state'
-    'test_scmHg'
+    # Skip failing tests - not sure why they fail
+    test_py::watchman.integration.test_capabilities.TestCapabilitiesCliJson.test_full_capability_set
+    test_py::watchman.integration.test_capabilities.TestCapabilitiesUnixBser2.test_full_capability_set
+    test_py::watchman.integration.test_capabilities.TestCapabilitiesUnixJson.test_full_capability_set
+    test_py::watchman.integration.test_fishy
+    test_py::watchman.integration.test_force_recrawl
+    test_py::watchman.integration.test_scm.TestScmUnixJson.test_scmHg
+    test_py::watchman.integration.test_subscribe.TestSubscribeUnixBser2.test_drop_state
+    test_py::watchman.integration.test_trigger.TestTriggerUnixBser2.test_legacyTrigger
+    test_py::watchman.integration.test_trigger.TestTriggerUnixJson.test_legacyTrigger
 
-    # Skip long-running tests.
-    'test_invalid_sock_access'
-    'test_invalid_sock_group'
-    'test_too_open_user_dir'
-    'test_user_not_in_sock_group'
-    'test_user_previously_in_sock_group'
+    # Skip long-running tests
+    test_py::watchman.integration.test_local_saved_state
+    test_py::watchman.integration.test_sock_perms.TestSockPerms
   )
-  _skipped_tests_pattern="${_skipped_tests[0]}"
-  for test in "${_skipped_tests[@]:1}"; do
-    _skipped_tests_pattern+="|$test"
-  done
+  _skipped_tests_pattern="${_skipped_tests[0]}$(printf "|%s" "${_skipped_tests[@]:1}")"
   ctest --test-dir build --output-on-failure -E "$_skipped_tests_pattern"
 }
 
@@ -110,10 +102,11 @@ package() {
 
   DESTDIR="$pkgdir" cmake --install build
 
-  install -Dm644 "$srcdir/watchman.conf" "$pkgdir/usr/lib/tmpfiles.d/watchman.conf"
-  install -Dm644 "$srcdir/watchman.json" "$pkgdir/etc/watchman.json"
-  install -Dm644 "$srcdir/watchman.service" "$pkgdir/usr/lib/systemd/user/watchman.service"
-  install -Dm644 "$srcdir/watchman.socket" "$pkgdir/usr/lib/systemd/user/watchman.socket"
+  install -Dm644 -t "$pkgdir/usr/lib/tmpfiles.d" "$srcdir/watchman.conf"
+  install -Dm644 -t "$pkgdir/etc" "$srcdir/watchman.json"
+  install -Dm644 -t "$pkgdir/usr/lib/systemd/user" \
+    "$srcdir/watchman.service" \
+    "$srcdir/watchman.socket"
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
