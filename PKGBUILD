@@ -1,15 +1,15 @@
 # Maintainer: Tobias Boesch <tobias.boesch at googlemail.com>
 
 pkgname=('fs2-knossos-dotnet')
-pkgver=v0.2.0_RC8
+pkgver=v0.2.0_RC9
 _extpkgname='Knossos.NET'
 pkgrel=1
 pkgdesc="A multi platform launcher for Freespace 2 Open using .NET 6.0 and AvaloniaUI"
 arch=('x86_64')
 url='https://github.com/KnossosNET/Knossos.NET'
-_commit='f233381f9752283cad79123d0ebe0dd0ba904c01'  # Upstream only signs commits, not tags. Using commit to be able to verify the source.
-                                                    # https://github.com/KnossosNET/Knossos.NET/commit/f233381f9752283cad79123d0ebe0dd0ba904c01
-license=('GPL3')
+_commit='58994717e1d4242700741e6b34ca490278c0138d'  # Upstream only signs commits, not tags. Using commit to be able to verify the source.
+                                                    # https://github.com/KnossosNET/Knossos.NET/commit/58994717e1d4242700741e6b34ca490278c0138d
+license=('GPL-3.0-only')
 makedepends=(
   'dotnet-sdk-6.0'
   'git'
@@ -23,8 +23,13 @@ depends=(
 conflicts=(
   'fs2-knossos-dotnet-bin'
 )
+validpgpkeys=(
+  968479A1AFF927E37D1A566BB5690EEEBB952194  # Fingerprint from gpg
+                                            # Key from
+                                            #   https://github.com/web-flow.gpg
+)
 source=(
-  "git+$url.git#commit=${_commit}"
+  "git+$url.git#commit=${_commit}?signed"
   'Knossos.NET.desktop'
 )
 sha512sums=('SKIP'
