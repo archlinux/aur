@@ -2,8 +2,8 @@
 pkgname=podman-desktop-companion-bin
 _pkgname="Podman Desktop Companion"
 pkgver=4.1.0_rc.28
-_electronversion=19
-pkgrel=5
+_electronversion=18
+pkgrel=6
 pkgdesc="Cross-platform desktop integrated application with consistent UI,Learning tool for the powerful podman command line interface"
 arch=(
     "aarch64"
@@ -16,27 +16,13 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}=${pkgver}")
 depends=(
     'hicolor-icon-theme'
-    'libcups'
     'at-spi2-core'
-    'libxext'
-    'libx11'
-    'libxrandr'
-    'nspr'
-    'pango'
-    'mesa'
-    'gdk-pixbuf2'
-    'libxdamage'
-    'libdrm'
     'gtk3'
     'alsa-lib'
     'nss'
-    'libxfixes'
-    'libxcb'
-    'libxcomposite'
-    'cairo'
-    'libxkbcommon'
-    'expat'
+    'nspr'
     'podman'
+    'docker'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/${pkgver//_/-}/${pkgname%-bin}-arm64-${pkgver//_/-}.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/${pkgver//_/-}/${pkgname%-bin}-amd64-${pkgver//_/-}.deb")
