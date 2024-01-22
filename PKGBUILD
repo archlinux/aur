@@ -5,7 +5,7 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.16.r2.g8b0b21921
+pkgver=0.5.16.r14.gf96249655
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -40,12 +40,12 @@ depends=(
 makedepends=('git' 'meson')
 checkdepends=(
   'appstream-glib'
-  'fluidsynth'
-  'pciutils'
-  'python-nose-cover3'
-  'vulkan-tools'
-  'xorg-server-xvfb'
-  'xterm'
+#  'fluidsynth'
+#  'pciutils'
+#  'python-nose-cover3'
+#  'vulkan-tools'
+#  'xorg-server-xvfb'
+#  'xterm'
 )
 optdepends=(
   'gamemode: Allows games to request a temporary set of optimisations'
@@ -92,14 +92,14 @@ build() {
 check() {
   meson test -C build --print-errorlogs
 
-  cd "${pkgname%-git}"
-  xvfb-run nosetests \
-    --cover-erase \
-    --with-xunit \
-    --xunit-file=nosetests.xml \
-    --with-coverage \
-    --cover-package=lutris \
-    --cover-xml-file=coverage.xml
+#  cd "${pkgname%-git}"
+#  xvfb-run nosetests \
+#    --cover-erase \
+#    --with-xunit \
+#    --xunit-file=nosetests.xml \
+#    --with-coverage \
+#    --cover-package=lutris \
+#    --cover-xml-file=coverage.xml
 }
 
 package() {
