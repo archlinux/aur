@@ -1,6 +1,6 @@
 pkgbase = akvcam-dkms-git
 	pkgdesc = Virtual camera for Linux
-	pkgver = 1.2.4.r0.ge0535ff
+	pkgver = 1.2.5.r0.g8ddafe1
 	pkgrel = 1
 	url = https://github.com/webcamoid/akvcam
 	arch = any
