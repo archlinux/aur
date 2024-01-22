@@ -1,0 +1,27 @@
+pkgbase = telepathy-logger
+	pkgdesc = Telepathy framework logging daemon
+	pkgver = 0.8.2
+	pkgrel = 6
+	url = https://telepathy.freedesktop.org/
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = gobject-introspection
+	makedepends = intltool
+	makedepends = libxslt
+	makedepends = python
+	depends = dconf
+	depends = dbus-glib
+	depends = glib2
+	depends = glibc
+	depends = libxml2
+	depends = sqlite
+	depends = telepathy-glib
+	source = https://telepathy.freedesktop.org/releases/telepathy-logger/telepathy-logger-0.8.2.tar.bz2
+	source = https://telepathy.freedesktop.org/releases/telepathy-logger/telepathy-logger-0.8.2.tar.bz2.asc
+	source = 0001-tools-Fix-the-build-with-Python-3.patch
+	validpgpkeys = 5113B855236702158C41C366432705FACDD40325
+	sha256sums = 8fcad534d653b1b365132c5b158adae947810ffbae9843f72dd1797966415dae
+	sha256sums = SKIP
+	sha256sums = d94899bed85a4ac90158838524d16c761956eec2cd0d223b6a18bffa09ec008b
+
+pkgname = telepathy-logger
