@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="A free, fast-paced cross-platform first person shooter"
 arch=('x86_64' 'aarch64')
 url="http://xonotic.org"
-license=('GPL')
+license=('GPL-3.0-only')
 depends=('alsa-lib' 'curl' 'libmodplug' 'libvorbis' 'libxpm'
          'sdl2' 'gtk-update-icon-cache' 'desktop-file-utils')
 makedepends=('mesa' 'rsync')
