@@ -1,7 +1,7 @@
 pkgbase = ovirt_exporter
 	pkgdesc = Exporter for oVirt engine metrics
 	pkgver = 0.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/czerwonk/ovirt_exporter
 	arch = x86_64
 	arch = aarch64

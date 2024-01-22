@@ -4,7 +4,7 @@
 pkgbase='ovirt_exporter'
 pkgname='prometheus-ovirt-exporter'
 pkgver='0.10.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Exporter for oVirt engine metrics'
 arch=('x86_64' 'aarch64')
 _uri='github.com/czerwonk'
@@ -42,6 +42,7 @@ build() {
 
 package() {
   install -Dm0755 "${GOPATH}/src/${_uri}/${pkgbase}/${pkgbase}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm0644 "${GOPATH}/src/${_uri}/${pkgbase}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm0644 "${pkgname}" -t "${pkgdir}/etc/conf.d"
   install -Dm0644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dm0644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
