@@ -6,7 +6,7 @@ _pkgname=com.ixigua.xigua-video.spark
 _zhsname="西瓜视频"
 pkgver=1.0.7
 _deepinver=1.0.6spark1
-pkgrel=2
+pkgrel=3
 pkgdesc="XiGua Video on Deepin Wine 6"
 arch=('x86_64')
 url="https://www.ixigua.com"
@@ -31,7 +31,7 @@ optdepends=(
 noextract=("${_appname}-${pkgver}.exe")
 install="${pkgname}.install"
 source=(
-    "${_appname}-${_deepinver}_amd64.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/video/${_pkgname}/${_pkgname}_${_deepinver}_amd64.deb"
+    "${pkgname}-${_deepinver}.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/video/${_pkgname}/${_pkgname}_${_deepinver}_amd64.deb"
     "${_appname}-${pkgver}.exe::https://lf-xigua-pc.ixigua.com/obj/xigua-video-electron/6922326164589517070/releases/11210180/${pkgver}/win32/xigua-video-${pkgver}-default.exe"
     "LICENSE.html"
     "${pkgname}.sh"
@@ -66,9 +66,9 @@ build() {
         -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop"
 }
 package() {
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     cp -r "${srcdir}/opt" "${pkgdir}"
     install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/icons/hicolor/scalable/apps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
