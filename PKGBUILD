@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="A new bootable USB solution"
 arch=('aarch64' 'i686' 'x86_64')
 url="http://www.ventoy.net"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('bash' 'util-linux' 'xz' 'dosfstools')
 optdepends=('gtk3: GTK3 GUI'
             'qt5-base: Qt5 GUI'
