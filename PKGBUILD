@@ -3,9 +3,9 @@
 
 pkgname=python-msgspec
 _pkgname=${pkgname#python-}
-pkgver=0.18.5
-pkgrel=3
-pkgdesc='A fast and friendly JSON/MessagePack library, with optional schema validation'
+pkgver=0.18.6
+pkgrel=1
+pkgdesc="A fast and friendly JSON/MessagePack library, with optional schema validation"
 arch=(x86_64)
 url="https://github.com/jcrist/msgspec"
 license=("BSD-3-Clause")
@@ -31,7 +31,7 @@ optdepends=(
     "python-yaml: for YAML support"
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('e10b758ab3b063c1674119da5105e4ee69353481b95f1d0538ff29c117de3a04')
+sha256sums=('893eab9c485331e90d137d0353afd39e5646656dabb7dc09bc1fecc134ffc3da')
 
 build() {
     cd "$_pkgname-$pkgver"
