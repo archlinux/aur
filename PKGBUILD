@@ -10,18 +10,9 @@
 # Contributor: Arkham <arkham at archlinux dot us>
 # Contributor: MacWolf <macwolf at archlinux dot de>
 
-: ${_wayland:=false}
-
-_pkgname="vlc"
-_pkgdesc="Multi-platform MPEG, VCD/DVD, and DivX player"
-if [[ x"${_wayland::1}" == "xt" ]] ; then
-  pkgname="$_pkgname-wayland-git"
-  pkgdesc="$_pkgdesc (GIT Version with patch for embedded video on Wayland based on blocked merge request 2419)"
-else
-  pkgname="$_pkgname-git"
-  pkgdesc="$_pkgdesc"
-fi
-pkgver=4.0.0.r27342.g66ca609d2b
+pkgname="vlc-git"
+pkgdesc="Multi-platform MPEG, VCD/DVD, and DivX player"
+pkgver=4.0.0.r27448.g6e8611d613
 pkgrel=1
 url='https://code.videolan.org/videolan/vlc'
 arch=('i686' 'x86_64')
@@ -112,36 +103,14 @@ provides=("${_name}=${pkgver}")
 options=(!emptydirs)
 source=('git+https://code.videolan.org/videolan/vlc.git'
         'vlc-live-media-2021.patch'
-        'libplacebo.patch'
         'update-vlc-plugin-cache.hook')
 b2sums=('SKIP'
         '76103422a1eaad40d33bfb7897bf25c1b5748729270974bec13f642f2861c4458f0dc07b5fb68d9ba4fae6e44d4a6c8e4d67af7ec10e0c117f1b804dd06868e3'
-        '1947cc7720915e2312bbd6202b517f0b1fd0628530462e8ff13f4b8fad2e1f6dfb73de855644a3ee6a64f378cfd88256ffd342e2af00345519ef06b74ef0b1b2'
         'fe3849f45fb91d3697573a9c23b90b78ff0bef5f94c42bc6e7c14427637f45f2fc86786803fb9b36c657ac2c50f6bf3c860cd763248711308ceab2bfcf7be49a')
-if [[ x"${_wayland::1}" == "xt" ]] ; then
-  source+=(
-	'2419.patch'
-	'2419a.patch'
-	'2419b.patch'
-  )
-  b2sums+=(
-	'124f67d29c72446e380f26f43f961e9c6a44420eb3a4bff286c3770ac3f32e253f3ac186c3a6cfd40296dda2d7e22192a4a1859909b3cf1d499f4d076039babb'
-	'e92e9cefd4adc84fcb45b398fd62e6d9ff770b0719835772e8add7edc13dee717e34effba8395d3437bb43c995f2fd3a5cf69765198cce2881730938b6bd04bb'
-	'c5fb28c47811a0f4bd91563e95d5ce45248a9a566e65daeaf870ff7ddf12b5edf6d37cf604b04fbde78934df0bb9d733c8f900fbb97795835b3a7061de377bf9'
-  )
-fi
 
 pkgver() {
   cd "${srcdir}/${_name}"
   printf "%s.r%s.g%s" "$(grep 'AC_INIT' configure.ac | sed 's/[^0-9\.]*//g')" "$(git describe --tags --long | cut -d '-' -f 3)" "$(git rev-parse --short HEAD)"
-}
-
-_prepare_wayland() {
-  if [[ x"${_wayland::1}" == "xt" ]] ; then
-    patch -Np1 < "${srcdir}"/2419.patch
-    patch -Np1 < "${srcdir}"/2419a.patch
-    patch -Np1 < "${srcdir}"/2419b.patch
-  fi
 }
 
 prepare() {
@@ -152,8 +121,6 @@ prepare() {
   sed -e 's:truetype/ttf-dejavu:TTF:g' -i modules/visualization/projectm.cpp
   sed -e 's|-Werror-implicit-function-declaration||g' -i configure
   patch -Np1 < "${srcdir}"/vlc-live-media-2021.patch
-  patch -Np1 < "${srcdir}"/libplacebo.patch
-  _prepare_wayland
   sed 's|whoami|echo builduser|g' -i configure
   sed 's|hostname -f|echo arch|g' -i configure
   autoreconf -vf
