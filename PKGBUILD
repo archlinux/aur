@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=r3playx-git
 _pkgname=R3PLAYX
-pkgver=2.7.3.r0.gc3aa540
+pkgver=2.7.4.r2.gfcaedd4
 _electronversion=28
 _nodeversion=18
 pkgrel=1
@@ -30,7 +30,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '0ae01b89f61471ea878a5580ee675699488e5164025b767d372834664c5b1c8b')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
