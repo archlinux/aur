@@ -1,0 +1,13 @@
+pkgbase = choreo-bin
+	pkgdesc = Time-optimized trajectory planner for FRC
+	pkgver = v2024.1.2
+	pkgrel = 1
+	url = https://github.com/SleipnirGroup/Choreo
+	arch = x86_64
+	license = BSD
+	depends = webkit2gtk
+	provides = choreo
+	source = choreo-bin-v2024.1.2.deb::https://github.com/SleipnirGroup/Choreo/releases/download/v2024.1.2-b/Choreo-v2024.1.2-Linux-x86_64.deb
+	sha256sums = e430d33e2f718673434d8b1db0495bb8ede365b660f1e7d574fd7a5f4783148c
+
+pkgname = choreo-bin
