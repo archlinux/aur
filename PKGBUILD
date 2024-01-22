@@ -2,28 +2,19 @@
 pkgname=deepin-wine-mcloud
 _pkgname=com.139.yun.deepin
 _officalname=mCloud
-pkgver=7.6.3
+pkgver=7.7.1
 _deepinver=7.2.0deepin2
 _deepinurl=https://com-store-packages.uniontech.com
-pkgrel=5
+pkgrel=1
 pkgdesc="CMCC 139 client on Deepin Wine 6.中国移动云盘 on Deepin Wine 6"
 arch=("x86_64")
 url="https://yun.139.com/"
-license=('custom')
+license=('LicenseRef-custom')
 conflicts=("mcloud")
 depends=(
     'deepin-wine6-stable'
     'xdg-utils'
     'hicolor-icon-theme'
-    'lib32-at-spi2-core'
-    'lib32-pango'
-    'lib32-gtk3'
-    'lib32-cairo'
-    'lib32-gdk-pixbuf2'
-    'lib32-libxext'
-    'lib32-glibc'
-    'lib32-libx11'
-    'lib32-glib2'
     'deepin-wine-helper'
 )
 makedepends=(
@@ -35,14 +26,17 @@ source=(
     "${_officalname}-${pkgver}.exe::https://img.zone139.com/m2012/controlupdate/v6/${_officalname}_Setup-001.exe"
     "fake_simsun.ttc::https://images.xuthus.cc/images/fake_simsun.ttc"
     "LICENSE.html::https://caiyun.feixin.10086.cn:7071/portal/templateView/initve.html?id=145&marketName=hcy_yhxy"
+    "${pkgname}.install"
     "${pkgname}.sh"
 )
 sha256sums=('ecc41143f5c0a96f17236e2f7a4c1e79eb601d1129674d89ea360999a93c6dcb'
-            'dab0fa69aee95f5c6ac71e2e0b042db11e46f01d374766fca29ae09398b15e3e'
+            'cbe7b194f8b8ca9241aa5fadf168771a855523e177b5c85230d2e239097cbacf'
             '3e2ed9203a5ce3b2f00b6c942d8fac6b24e7a6e7b1ebc863cee2e27d3ff487db'
-            '7e525eb7a1a61e2ae01255ed59f8e5bc850a0725ea389744a93d4e74a2b00258'
+            '5997490663bddd20190aed804aadbc064c05cd6ac9c30ff2fdfaf217226141c6'
+            '6d0f2ff2ebe71e2890966c58decea4b9f4f8a7b957949c70e9d2e0e8c264a7f4'
             'e60c39abfbe1430b6967eedf6b9de074bceba11163265648461dcd27b6484e1f')
 build() {
+    sed "s|@bottomname@|${_officalname}|g" -i "${srcdir}/${pkgname}.install"
     sed -e "s|@bottomname@|${_officalname}|g" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@appver@|${pkgver}|g" \
