@@ -1,8 +1,8 @@
 pkgbase = frog-ocr
 	pkgdesc = Intuitive text extraction tool (OCR) for GNOME.
-	pkgver = 1.4.2+37+gf3490b6
+	pkgver = 1.5.0
 	pkgrel = 1
-	url = https://tenderowl.com/work/frog
+	url = https://getfrog.app
 	install = frog-ocr.install
 	arch = any
 	license = MIT
@@ -18,10 +18,11 @@ pkgbase = frog-ocr
 	depends = python-gobject
 	depends = python-gtts
 	depends = python-pillow
+	depends = python-posthog
 	depends = python-pydbus
 	depends = python-pytesseract
 	depends = pyzbar
-	source = git+https://github.com/TenderOwl/Frog.git#commit=f3490b63f1769968652131f59bda49caa947abb2
+	source = git+https://github.com/TenderOwl/Frog.git#commit=429026f0bf94e4c151f1a6262f68c3e32a1e53a3
 	sha256sums = SKIP
 
 pkgname = frog-ocr
