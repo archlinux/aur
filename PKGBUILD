@@ -8,17 +8,17 @@ _noguipkgname="$_projectname-emu-nogui"
 _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
-pkgver='5.0.r20840.g57327be7f3'
+pkgver='5.0.r20967.g713572e874'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
 arch=('x86_64' 'aarch64')
 url="https://$_mainpkgname.org"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=(
 	'alsa-lib' 'bluez-libs' 'bzip2' 'hidapi' 'libevdev' 'libgl' 'libpulse' 'libx11'
-	'libxi' 'libxrandr' 'lzo' 'mbedtls2' 'minizip-ng' 'pugixml' 'sfml' 'speexdsp'
-	'xz' 'zstd' 'cubeb' 'zlib-ng'
+	'libxi' 'libxrandr' 'lzo' 'mbedtls2' 'pugixml' 'sfml' 'speexdsp' 'xz' 'zstd'
+	'cubeb' 'zlib-ng'
 	'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so' 'libfmt.so'
 	'libsfml-network.so' 'libsfml-system.so' 'libspng.so' 'libswscale.so'
 	'libudev.so' 'libusb-1.0.so' 'libxxhash.so'
@@ -33,15 +33,13 @@ source=(
 	"$pkgname-mgba::git+https://github.com/mgba-emu/mgba.git"
 	"$pkgname-rcheevos::git+https://github.com/RetroAchievements/rcheevos.git"
 	"$pkgname-vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
-	'minizip-ng.diff'
 )
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '568ca7db64149e9ac9409947689a8390783b891e6cff7b096690771512db3e19f9d8551a8739921d8a9f6ec4a9de747811a2efc8cdd4791d715677772db7fa8e')
+            'SKIP')
 
 _sourcedirectory="$pkgname"
 
@@ -49,9 +47,6 @@ prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 	if [ -d 'build/' ]; then rm -rf 'build/'; fi
 	mkdir 'build/'
-
-	# Fix minizip-ng name for Arch
-	patch --forward -p1 < "$srcdir/minizip-ng.diff"
 
 	# Provide submodules
 	declare -A _submodules=(
@@ -85,6 +80,7 @@ build() {
 	# USE_SYSTEM_LIBS - we want to use system libs where possible
 	# USE_SYSTEM_LIBMGBA - the current version of mgba in the repos is not compatible with Dolphin
 	# USE_SYSTEM_ENET - the current version of enet in the repos is not compatible with Dolphin
+	# USE_SYSTEM_MINIZIP - the current version of minizip-ng in the repos is not compatible with Dolphin
 	cmake -S '.' -B 'build/' -G Ninja \
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
@@ -94,6 +90,7 @@ build() {
 		-DUSE_SYSTEM_LIBS=ON \
 		-DUSE_SYSTEM_LIBMGBA=OFF \
 		-DUSE_SYSTEM_ENET=OFF \
+		-DUSE_SYSTEM_MINIZIP=OFF \
 		-Wno-dev
 	cmake --build 'build/'
 }
