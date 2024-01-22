@@ -3,7 +3,7 @@
 pkgname=grinplusplus-bin
 _pkgname=GrinPlusPlus
 pkgver=1.2.8
-pkgrel=5
+pkgrel=6
 pkgdesc='A C++ Grin Node & Wallet For Linux'
 arch=('x86_64')
 url="https://grinplusplus.github.io"
@@ -13,40 +13,29 @@ provides=("${pkgname%-bin}-${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'gtk3'
-    'libxdamage'
     'nss'
-    'libx11'
     'openssl-1.1'
     'alsa-lib'
-    'libevent'
-    'cairo'
-    'nspr'
-    'pango'
-    'libxext'
-    'libxfixes'
-    'expat'
-    'libcups'
-    'util-linux-libs'
-    'gdk-pixbuf2'
-    'libxcomposite'
-    'libdrm'
-    'libxkbcommon'
-    'libxrandr'
     'at-spi2-core'
     'libxcb'
     'mesa'
+    'nodejs'
+    'perl'
+    'python'
+    'python-setuptools'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}.${pkgver}.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/GrinPlusPlus/GrinPlusPlus/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
+options=('!strip')
 sha256sums=('9d331477bec4bf78a54e0169ca862d5a269ca5e62ec27fc2897a0e6916d5621a'
             'a5e9383c3cb97aa3034e5e4bf1c94a71db0c59b3a7ec1fbf198232fb9dcc5e53'
-            'c89a7afb7a57ef9c1c12107a84354881274e8562aaa368ebee7a3dad345db7bf')
+            '5ec6bd606a11c0359793c48b790ccdc50604142d67ba0004d1a8ee71a9dd11de')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runappname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|\"/opt/${_pkgname//Plus/+}/${pkgname%-bin}\" %U|${pkgname%-bin} --no-sandbox %U|g;s|Finance|Utility|g" \
