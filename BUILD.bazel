@@ -53,6 +53,7 @@ mozc_cc_library(
     deps = [
         ":uim_header",
         "//base:port",
+        "//base:vlog",
         "//base:util",
         "//client",
         "//protocol:commands_cc_proto",

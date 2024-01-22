@@ -3,21 +3,21 @@
 
 ## NOTE: This doens't support kill_line feature of uim.
 
-# renovate: aur-sync depName=mozc ace7769d2f35739230124ea67e8c65a3ad38ad9a
+# renovate: aur-sync depName=mozc 5dd767247388d99376b39b31b1188190b4ce3d7d
 
 _uimmozcrev="7beac7ba000e0459a4dc933f3873b521664d2665"
-_mozcrev="d3151bb4e5d3a18bc2c8419c338401102a37928e"
+_mozcrev="034b61000d2af24438f09c08abea42ef35689944"
 
 pkgname=uim-mozc
 _pkgname=mozc
-pkgver=2.29.5268.102
+pkgver=2.29.5346.102
 pkgrel=1
 pkgdesc="uim plugin module for Mozc"
 arch=('i686' 'x86_64')
 url="https://github.com/e-kato/macuim"
 license=('BSD')
 groups=('mozc-im')
-depends=('mozc>=2.29.5268.102' 'uim')
+depends=('mozc>=2.29.5346.102' 'uim')
 install=${pkgname}.install
 makedepends=('bazel' 'git' 'python')
 source=(
@@ -30,8 +30,8 @@ source=(
 sha1sums=('SKIP'
           'SKIP'
           '7547e5cae4df8b516580c882bc975d8a70251db1'
-          'b65c45338b3d0b86d32c78cd26b50e916f5187d2'
-          'decb1a27894cf52c8a562dbf731e1654ef2f9b5e')
+          '44fe1eac88f560b63b09f46f9bf556582c12a2ef'
+          'ec966e854038f3175266370d6b1fbd2a78b4f5a7')
 
 prepare() {
   cd "${srcdir}/${_pkgname}/"

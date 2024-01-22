@@ -1,7 +1,10 @@
 --- src.orig/unix/uim/key_translator.h
 +++ src/unix/uim/key_translator.h
-@@ -40,6 +40,10 @@
+@@ -38,8 +38,13 @@
+ using __gnu_cxx::hash_map;
+ 
  #include "base/port.h"
++#include "base/vlog.h"
  #include "protocol/commands.pb.h"
  
 +using std::string;
@@ -11,7 +14,7 @@
  namespace mozc {
  namespace uim {
  
-@@ -49,6 +51,8 @@
+@@ -49,6 +54,8 @@
  class KeyTranslator {
   public:
    KeyTranslator();
@@ -20,7 +23,7 @@
    virtual ~KeyTranslator();
  
    // Converts ibus keycode to Mozc key code and stores them on |out_event|.
-@@ -101,8 +103,6 @@
+@@ -101,8 +108,6 @@
    // 'Hiragana Letter Small U' (with Shift modifier).
    KanaMap kana_map_jp_;  // mapping for JP keyboard.
    KanaMap kana_map_us_;  // mapping for US keyboard.
@@ -31,6 +34,15 @@
  }  // namespace uim
 --- src.orig/unix/uim/key_translator.cc
 +++ src/unix/uim/key_translator.cc
+@@ -344,7 +344,7 @@
+     /* regards yen key as backslash */
+     out_event->set_key_code('\\');
+   } else {
+-    VLOG(1) << "Unknown keyval: " << keyval;
++    MOZC_VLOG(1) << "Unknown keyval: " << keyval;
+     return false;
+   }
+ 
 @@ -367,28 +367,28 @@
  }
  
