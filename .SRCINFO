@@ -1,7 +1,7 @@
 pkgbase = refi-app-bin
 	pkgdesc = A tool to make interacting with Firestore less painful
 	pkgver = 0.0.19
-	pkgrel = 5
+	pkgrel = 6
 	url = https://refiapp.io/
 	arch = x86_64
 	license = MIT
@@ -13,6 +13,6 @@ pkgbase = refi-app-bin
 	source = refi-app.sh
 	sha256sums = 01918b95b8109d2c02b0a2b517a5f59f8f795b02a02557cfd420f80fbd345dc4
 	sha256sums = b2eb77a849db152dcb5ed71c597000a5dc3638559aefae0b5aa3454e8d7abe71
-	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
 
 pkgname = refi-app-bin
