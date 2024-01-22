@@ -1,6 +1,6 @@
 pkgbase = curlyq
 	pkgdesc = A command line helper for curl and web scraping
-	pkgver = 0.0.10
+	pkgver = 0.0.11
 	pkgrel = 1
 	url = https://github.com/ttscoff/curlyq
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = curlyq
 	depends = ruby-tty-which
 	depends = ruby-websocket
 	options = !emptydirs
-	source = curlyq-0.0.10.tar.gz::https://github.com/ttscoff/curlyq/archive/refs/tags/0.0.10.tar.gz
-	sha256sums = 72339a40645f584f2f3a9586cafb149abcbe62cd3bd54c886f881531d382cd2a
+	source = curlyq-0.0.11.tar.gz::https://github.com/ttscoff/curlyq/archive/refs/tags/0.0.11.tar.gz
+	sha256sums = 43a98b5f924980c01a0dd1666a4cd6132141b92942a5a1f0023ef653719a9e91
 
 pkgname = curlyq
