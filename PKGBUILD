@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-shell')
 pkgver=0.5.28
-pkgrel=1
+pkgrel=2
 pkgdesc="nwg-shell meta-package"
 arch=('any')
 url="https://github.com/nwg-piotr/nwg-shell"
@@ -12,7 +12,7 @@ depends=('foot' 'gnome-themes-extra' 'grim' 'imagemagick' 'jq'
          'python-geopy' 'python-yaml' 'slurp' 'swappy' 'sway' 'swayidle'
          'swaylock' 'swaybg' 'wl-clipboard' 'xorg-xwayland' 'wlsunset' 
          'azote' 'gopsuinfo' 'nwg-bar-bin' 'nwg-dock-bin' 'nwg-dock-hyprland-bin' 
-         'nwg-drawer-bin' 'nwg-menu-bin' 'nwg-look-bin' 'nwg-panel' 'nwg-shell-config' 
+         'nwg-drawer-bin' 'nwg-menu-bin' 'nwg-look' 'nwg-panel' 'nwg-shell-config' 
          'nwg-shell-wallpapers' 'nwg-displays' 'nwg-clipman' 'python-dasbus' 'swaync' 
          'gtklock' 'gtklock-userinfo-module' 'gtklock-powerbar-module' 
          'gtklock-playerctl-module')

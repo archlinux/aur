@@ -1,7 +1,7 @@
 pkgbase = nwg-shell
 	pkgdesc = nwg-shell meta-package
 	pkgver = 0.5.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nwg-piotr/nwg-shell
 	arch = any
 	license = MIT
@@ -37,7 +37,7 @@ pkgbase = nwg-shell
 	depends = nwg-dock-hyprland-bin
 	depends = nwg-drawer-bin
 	depends = nwg-menu-bin
-	depends = nwg-look-bin
+	depends = nwg-look
 	depends = nwg-panel
 	depends = nwg-shell-config
 	depends = nwg-shell-wallpapers
