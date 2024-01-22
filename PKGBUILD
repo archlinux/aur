@@ -5,7 +5,7 @@ _appname="Fireblocks Recovery Utility"
 pkgver=0.4.1
 _fileversion="${pkgver}"
 _electronversion=21
-pkgrel=1
+pkgrel=2
 pkgdesc="Recover Fireblocks assets and keys in a disaster, verify a Recovery Kit, or generate keys to set up a new Recovery Kit."
 arch=('x86_64')
 url="https://www.fireblocks.com/"
@@ -16,12 +16,9 @@ provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
-    'libx11'
-    'gdk-pixbuf2'
-    'libxext'
+    'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
-    'dbus-glib'
 )
 makedepends=(
     'squashfuse'
@@ -31,7 +28,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('b9829b24391a674403451c6c2c79cd536047325b77e303439cd0a69e00b754da'
-            'd4632fd7fa2c2e156023ebc6927069ba7a8451f6ea591ed7dd6a5bb05ba9ddc8')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -40,7 +37,7 @@ build() {
     chmod a+x "${srcdir}/${_appname}-${_fileversion}.AppImage"
     "${srcdir}/${_appname}-${_fileversion}.AppImage" --appimage-extract > /dev/null
     find "${srcdir}/squashfs-root" -type d -perm 700 -exec chmod 755 {} \;
-    sed -e "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -e "s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    sed -e "s|AppRun --no-sandbox|${pkgname%-bin}|g" -e "s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
