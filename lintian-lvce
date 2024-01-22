@@ -1,0 +1,44 @@
+# electron executables
+@appname@: shared-library-is-executable 0755 [usr/lib/@electronversion@/libEGL.so]
+@appname@: shared-library-is-executable 0755 [usr/lib/@electronversion@/libGLESv2.so]
+@appname@: shared-library-is-executable 0755 [usr/lib/@electronversion@/libffmpeg.so]
+@appname@: shared-library-is-executable 0755 [usr/lib/@electronversion@/libvk_swiftshader.so]
+@appname@: shared-library-is-executable 0755 [usr/lib/@electronversion@/libvulkan.so.1]
+
+# electron/chrome binaries
+@appname@: unstripped-binary-or-object [usr/lib/@electronversion@/chrome-sandbox]
+@appname@: unstripped-binary-or-object [usr/lib/@electronversion@/libEGL.so]
+@appname@: unstripped-binary-or-object [usr/lib/@electronversion@/libGLESv2.so]
+@appname@: unstripped-binary-or-object [usr/lib/@electronversion@/libffmpeg.so]
+@appname@: unstripped-binary-or-object [usr/lib/@electronversion@/libvk_swiftshader.so]
+@appname@: unstripped-binary-or-object [usr/lib/@electronversion@/libvulkan.so.1]
+
+# electron missing dependencies
+@appname@: missing-dependency-on-libc needed by usr/lib/@electronversion@/chrome-sandbox and 7 others
+
+# ripgrep - how to resolve this error?
+@appname@: statically-linked-binary usr/lib/@appname@/app/packages/shared-process/node_modules/@@appname@-editor/ripgrep/bin/rg
+
+# binary is symlinked in postinstall script
+@appname@: desktop-command-not-in-package @appname@ [usr/share/applications/@appname@.desktop]
+# node modules
+@appname@: executable-not-elf-or-script [usr/lib/@appname@/app/packages/extension-host-helper-process/node_modules/@types/http-cache-semantics/package.json]
+@appname@: missing-dep-for-interpreter node (does not satisfy nodejs:any) [usr/lib/@appname@/app/packages/extension-host-helper-process/node_modules/which/bin/node-which]
+@appname@: missing-dep-for-interpreter node (does not satisfy nodejs:any) [usr/lib/@appname@/app/packages/shared-process/node_modules/extract-zip/cli.js]
+@appname@: missing-dep-for-interpreter node (does not satisfy nodejs:any) [usr/lib/@appname@/app/packages/shared-process/node_modules/symlink-dir/dist/cli.js]
+@appname@: non-standard-executable-perm 0775 != 0755 [usr/lib/@appname@/app/packages/extension-host-helper-process/node_modules/which/bin/node-which]
+@appname@: non-standard-executable-perm 0775 != 0755 [usr/lib/@appname@/app/packages/pty-host/node_modules/node-pty/build/Release/pty.node]
+@appname@: non-standard-executable-perm 0775 != 0755 [usr/lib/@appname@/app/packages/shared-process/node_modules/extract-zip/cli.js]
+@appname@: non-standard-executable-perm 0775 != 0755 [usr/lib/@appname@/app/packages/shared-process/node_modules/symlink-dir/dist/cli.js]
+@appname@: script-not-executable [usr/lib/@appname@/app/packages/shared-process/node_modules/node-addon-api/tools/clang-format.js]
+@appname@: script-not-executable [usr/lib/@appname@/app/packages/shared-process/node_modules/node-addon-api/tools/eslint-format.js]
+@appname@: script-not-executable [usr/lib/@appname@/app/packages/shared-process/node_modules/symlink-dir/dist/cli.d.ts]
+@appname@: shared-library-is-executable 0775 [usr/lib/@appname@/app/packages/pty-host/node_modules/node-pty/build/Release/pty.node]
+@appname@: unstripped-binary-or-object [usr/lib/@appname@/app/packages/pty-host/node_modules/node-pty/build/Release/pty.node]
+
+# extensions
+@appname@: package-contains-vcs-control-file [usr/lib/@appname@/app/extensions/builtin.language-features-typescript/node_modules/extsprintf/.gitmodules]
+
+# other
+@appname@: extended-description-is-empty
+@appname@: no-manual-page [usr/bin/@appname@]
