@@ -2,13 +2,13 @@
 # Contributor: slact
 pkgname=tlpui-git
 pkgver=1.6.3.r0.g51c04f8
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="A GTK user interface for TLP written in Python"
 arch=('any')
 url="https://github.com/d4nj1/TLPUI"
 license=('GPL-2.0-or-later')
-depends=('tlp' 'python-gobject')
+depends=('gtk3' 'python-gobject' 'python-toml' 'python-yaml' 'tlp')
 makedepends=('git' 'python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
