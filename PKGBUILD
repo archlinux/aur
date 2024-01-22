@@ -1,5 +1,6 @@
-# Maintainer: Sigvald Marholm <marholm@marebakken.com>
-# Maintainer: Georg S. Voelker <voelker@maibox.org>
+# Maintainer: entshuld [edgar (not at) openmail dot cc]
+# Contributor: Sigvald Marholm <marholm@marebakken.com>
+# Contributor: Georg S. Voelker <voelker@maibox.org>
 # Based on python-fiat-git, maintained by Lucas H. Gabrielli <heitzmann@gmail.com>
 
 _base=fiat
@@ -8,7 +9,7 @@ pkgdesc="Supports generation of arbitrary order instances of the Lagrange elemen
 pkgver=2019.1.0
 pkgrel=1
 arch=('any')
-url="https://bitbucket.org/fenics-project/${_base}"
+url="https://github.com/FEniCS/${_base}"
 license=('LGPL3')
 groups=('fenics')
 conflicts=('python-fiat-git')
