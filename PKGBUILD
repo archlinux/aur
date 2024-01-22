@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aihub
 _pkgname=AIHub
-pkgver=1.2.0
+pkgver=1.2.1
 _electronversion=28
 pkgrel=1
 pkgdesc="A collection of large model capabilities, AI capabilities Electron client, with a minimalist interface, will support more AI capabilities in the future.一款集合众多大模型能力、AI能力的Electron客户端，具有极简的界面，将在未来支持更多AI能力."
 arch=('any')
 url="https://github.com/classfang/AIHub"
-license=('Apache')
+license=('LicenseRef-Apache')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 depends=(
