@@ -7,12 +7,21 @@ pkgbase = lact
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = rust
-	makedepends = clang
 	makedepends = blueprint-compiler
-	depends = gtk4
+	makedepends = cargo
+	makedepends = clang
+	makedepends = libadwaita
 	depends = hwdata
+	depends = gtk4
 	source = lact-0.5.2.tar.gz::https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v0.5.2.tar.gz
 	sha256sums = 12daa4d3e8181f16839a1f58bde6efec857d5760a6546de1b6592d1d5bd1bf63
 
 pkgname = lact
+
+pkgname = lact-libadwaita
+	pkgdesc = AMDGPU Controller application (libadwaita edition)
+	depends = hwdata
+	depends = gtk4
+	depends = libadwaita
+	provides = lact
+	conflicts = lact
