@@ -2,7 +2,7 @@ pkgbase=kodi-eggz
 pkgname=kodi-eggz
 pkgver=21.0b2
 gittag=21.0b2-Omega
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -16,7 +16,7 @@ makedepends=(
   'python-pycryptodomex' 'python-pillow' 'python-pybluez' 'python-simplejson'
   'shairplay' 'smbclient' 'taglib' 'tinyxml' 'swig'
   'upower' 'giflib' 'rapidjson' 'ghostscript' 'git' 'meson' 'gtest'
-  'fstrcmp' 'flatbuffers' 'ffmpeg'
+  'fstrcmp' 'flatbuffers' 'ffmpeg' 'jre8-openjdk'
 )
 
 source=(
