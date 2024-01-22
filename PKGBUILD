@@ -1,42 +1,42 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=bug-git
-pkgver=r237.e5ba186
+pkgver=r246.d7f4e7f
 pkgrel=1
-epoch=
-pkgdesc="Distributed bug tracking with the filesystem and hg or git"
+pkgdesc='Distributed bug tracking with the filesystem and hg or git'
 arch=('i686' 'x86_64')
-url="https://github.com/driusan/bug"
+url='https://github.com/driusan/bug'
 license=('GPL3')
-categories=()
-groups=()
-depends=('')
-makedepends=('git' 'go')
-optdepends=()
-checkdepends=()
-provides=()
-conflicts=('')
-replaces=()
-backup=()
-options=()
-changelog=
-install=
-noextract=()
-_gourl=github.com/driusan/bug
+makedepends=('git' 'go>=1.9')
+conflicts=("${pkgname%-*}")
+source=("$pkgname::git+$url")
+md5sums=('SKIP')
+
+prepare() {
+	cd "$srcdir/$pkgname"
+	go mod init "${url#https://}"
+	go mod tidy
+}
 
 pkgver() {
-  GOPATH="$srcdir" go get -d ${_gourl}
-  cd "$srcdir/src/${_gourl}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  GOPATH="$srcdir" go get -fix -v ${_gourl}
+	cd "$srcdir/$pkgname"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+	mkdir -p build/
+	go build -v -o build .
 }
 
 package() {
-  cd "$srcdir"
-  install -Dm755 bin/bug "$pkgdir/usr/bin/bug"
-  install -Dm644 src/${_gourl}/README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
-  install -Dm644 src/${_gourl}/LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
+	cd "$srcdir/$pkgname"
+	install -D -m755 build/bug "$pkgdir/usr/bin/bug"
+	install -D -m644 README.md $pkgdir/usr/share/licenses/$pkgname/README.md
+	install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
-
