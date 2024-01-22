@@ -3,9 +3,8 @@ _officalname=quarkclouddrive
 pkgname="deepin-wine-${_officalname}"
 _downname=QuarkCloudDrive
 _installpkgpath=quark-cloud-drive
-pkgver=3.0.5
+pkgver=3.0.5spark3
 _sparkpkgname="cn.${_officalname}.spark"
-_sparkver=3.0.5spark3
 pkgrel=1
 pkgdesc="夸克网盘是夸克推出的一款云服务产品，可轻松进行照片、视频、文档、音频等文件的在线备份、同步和分享，并支持电脑/手机/iPad端等多个端。"
 arch=("x86_64")
@@ -21,16 +20,13 @@ depends=(
     'spark-dwine-helper'
     'xdg-utils'
     'hicolor-icon-theme'
-    #'p7zip'
 )
 optdepends=(
     'wqy-microhei'
     'wqy-zenhei'
 )
-
 source=(
-    "${pkgname}_${_sparkver}_amd64.deb::${_sparkdown}/store/network/${_sparkpkgname}/${_sparkpkgname}_${_sparkver}_all.deb"
-    #"${_installpkgpath}-${pkgver}.exe::https://webcdn.m.qq.com/spcmgr/download/${_downname}-v${pkgver}-release-pckk@tencent_promote_costore-20231127172256.exe"
+    "${pkgname}_${pkgver}_amd64.deb::${_sparkdown}/store/network/${_sparkpkgname}/${_sparkpkgname}_${pkgver}_all.deb"
     "LICENSE.html"
     "${pkgname}.install"
     "${pkgname}.sh"
@@ -38,9 +34,10 @@ source=(
 install="${pkgname}.install"
 sha256sums=('a90bd9bdb07c0a77d399ef8e7ad645971824ce9114221f4a1490a883ea46ccc4'
             'b8252eb8c22ea41cc43c9436f341a78cac19cbc71c3593fa1b042fc9136f6767'
-            'd7f46cae43addb386fd3dddf469530b6942143c2a4ce00e1b92d7f256ed90b70'
+            '48e7a80b45d16321f794020aaa9be9c46ba76d2da8c52d86f6e2bbfe6abdf13b'
             '1be688a7a5c9196bfb6657911b96235671fbe10062c437e08b5e3eccc5b561b9')
 build() {
+    sed "s|@bottlename@|${_downname}|g" -i "${srcdir}/${pkgname}.install" 
     sed -e "s|@appname@|${pkgname}|g" \
         -e "s|@sparkver@|${_sparkver}|g" \
         -e "s|@appver@|${pkgver}|g" \
@@ -49,16 +46,6 @@ build() {
         -i "${srcdir}/${pkgname}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     mv "${srcdir}/opt/apps/${_sparkpkgname}" "${srcdir}/opt/apps/${pkgname}"
-    #mkdir -p "${srcdir}/tmp"
-    #msg "Extracting Deepin Wine ${_officalname} archive ..."
-    #7za x -aoa "${srcdir}/opt/apps/${pkgname}/files/files.7z" -o"${srcdir}/tmp"
-    #msg "Copying latest ${_officalname} installer to ${srcdir}/tmp/drive_c/Program Files (x86)/${_installpkgpath} ..."
-    #rm -r "${srcdir}/tmp/drive_c/Program Files (x86)/${_installpkgpath}"
-    #mkdir -p "${srcdir}/tmp/drive_c/Program Files (x86)/${_installpkgpath}"
-    #install -m644 "${_installpkgpath}-${pkgver}.exe" -t "${srcdir}/tmp/drive_c/Program Files (x86)/${_installpkgpath}"
-    #msg "Repackaging app archive ..."
-    #rm -r "${srcdir}/opt/apps/${pkgname}/files/files.7z"
-    #7za a -t7z -r "${srcdir}/opt/apps/${pkgname}/files/files.7z" "${srcdir}/tmp/*"
     sed "s|${_sparkpkgname}|${pkgname}|g;s|\"/opt/apps/${pkgname}/files/run.sh\"|${pkgname}|g" \
         -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${_sparkpkgname}.desktop"
     rm -rf "${srcdir}/opt/apps/${pkgname}/info"

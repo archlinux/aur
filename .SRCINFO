@@ -1,6 +1,6 @@
 pkgbase = deepin-wine-quarkclouddrive
 	pkgdesc = 夸克网盘是夸克推出的一款云服务产品，可轻松进行照片、视频、文档、音频等文件的在线备份、同步和分享，并支持电脑/手机/iPad端等多个端。
-	pkgver = 3.0.5
+	pkgver = 3.0.5spark3
 	pkgrel = 1
 	url = https://pan.quark.cn/
 	install = deepin-wine-quarkclouddrive.install
@@ -20,7 +20,7 @@ pkgbase = deepin-wine-quarkclouddrive
 	source = deepin-wine-quarkclouddrive.sh
 	sha256sums = a90bd9bdb07c0a77d399ef8e7ad645971824ce9114221f4a1490a883ea46ccc4
 	sha256sums = b8252eb8c22ea41cc43c9436f341a78cac19cbc71c3593fa1b042fc9136f6767
-	sha256sums = d7f46cae43addb386fd3dddf469530b6942143c2a4ce00e1b92d7f256ed90b70
+	sha256sums = 48e7a80b45d16321f794020aaa9be9c46ba76d2da8c52d86f6e2bbfe6abdf13b
 	sha256sums = 1be688a7a5c9196bfb6657911b96235671fbe10062c437e08b5e3eccc5b561b9
 
 pkgname = deepin-wine-quarkclouddrive
