@@ -1,42 +1,42 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=mk-git
 pkgver=r49.73d1b31
-pkgrel=1
-epoch=
-pkgdesc="A reboot of the Plan 9 mk command."
+pkgrel=2
+pkgdesc='A reboot of the Plan 9 mk command.'
 arch=('i686' 'x86_64')
-url="https://github.com/dcjones/mk"
-license=('')
-categories=()
-groups=()
-depends=('')
+url='https://github.com/dcjones/mk'
+license=('BSD')
 makedepends=('git' 'go')
-optdepends=()
-checkdepends=()
-provides=()
-conflicts=('')
-replaces=()
-backup=()
-options=()
-changelog=
-install=
-noextract=()
-_gourl=github.com/dcjones/mk
+conflicts=("${pkgname%-*}")
+provides=("${pkgname%-*}")
+source=("$pkgname::git+$url")
+md5sums=('SKIP')
+
+prepare() {
+	cd "$srcdir/$pkgname"
+	go mod init "${url#https://}"
+	go mod tidy
+}
 
 pkgver() {
-  GOPATH="$srcdir" go get -d ${_gourl}
-  cd "$srcdir/src/${_gourl}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  GOPATH="$srcdir" go get -fix -v ${_gourl}
+	cd "$srcdir/$pkgname"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	mkdir -p build/
+	go build -v -o build .
 }
 
 package() {
-  cd "$srcdir"
-  install -Dm755 bin/mk "$pkgdir/usr/bin/mk"
-  install -Dm644 src/${_gourl}/README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
-  install -Dm644 src/${_gourl}/LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
+	cd "$srcdir/$pkgname"
+	install -D -m755 build/mk "$pkgdir/usr/bin/mk"
+	install -D -m644 README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
+	install -D -m644 LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
 }
-
