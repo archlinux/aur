@@ -9,13 +9,12 @@ pkgbase = imgcat-git
 	arch = armv7h
 	arch = aarch64
 	license = ISC
-	makedepends = gmic
+	makedepends = cimg
 	makedepends = git
-	makedepends = pandoc
 	makedepends = termcap
 	depends = ncurses
 	depends = libjpeg
-	depends = libpng
+	depends = libpng>=1.0.0
 	source = git+https://github.com/eddieantonio/imgcat.git
 	md5sums = SKIP
 
