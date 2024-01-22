@@ -1,13 +1,21 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=webapp-manager-git
 pkgver=1.2.8.r4.g4895615
 pkgrel=1
 pkgdesc="Run websites as if they were apps."
 arch=('any')
 url="https://github.com/linuxmint/webapp-manager"
-license=('GPL')
-depends=('python-beautifulsoup4' 'python-configobj' 'python-gobject' 'python-pillow'
-         'python-setproctitle' 'python-tldextract' 'dconf' 'xapp')
+license=('GPL-3.0-or-later')
+depends=(
+  'dconf'
+  'python-beautifulsoup4'
+  'python-configobj'
+  'python-gobject'
+  'python-pillow'
+  'python-setproctitle'
+  'python-tldextract'
+  'xapp'
+)
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
