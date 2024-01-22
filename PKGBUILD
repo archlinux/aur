@@ -2,13 +2,13 @@
 pkgname=deepin-wine-cntv-cbox
 _pkgname=com.cctv.deepin
 _officalname=CBox
-pkgver=6.0.0.1
+pkgver=6.0.0.2
 _deepinver=1.0.0deepin9
-pkgrel=4
+pkgrel=1
 pkgdesc="CGTN CBox on Deepin Wine 6"
 arch=("x86_64")
 url="https://app.cctv.com/"
-license=('custom:freeware')
+license=('LicenseRef-freeware')
 depends=(
     'deepin-wine6-stable'
     'deepin-wine-helper'
@@ -21,16 +21,20 @@ makedepends=(
 install="${pkgname}.install"
 source=(
     "${pkgname}-${_deepinver}.deb::https://com-store-packages.uniontech.com/appstore/pool/appstore/c/${_pkgname}/${_pkgname}_${_deepinver}_i386.deb"
-    "${pkgname}-${pkgver}.exe::https://download.cntv.cn/cbox/v6/ysyy_v${pkgver}_1001_setup_x32.exe"
+    "${pkgname}-${pkgver}.exe::https://download.cntv.cn/cbox/v6/ysyy_v${pkgver}_1001_setup_x86.exe"
     "${pkgname}.install"
     "${pkgname}.sh"
 )
 sha256sums=('6e6ca3250a3a82dd46b29df450f508eff74f22cebcead9890677210b0610a4bd'
-            '669174dc392af7686906da61867cc0d259764c4a7479cb9de3367703f6d35842'
-            '935c1e022bb2c524b50dce1c5d4e0a3985e80d1eaf59d7073d2ae425c07fb162'
-            '42cb4cdfce4cf10374b61d5201ab6411e2e945f27f22fce56826da6abf286f31')
+            '519b04ac61a4b3e9422de238ce5e76d2fafefe58f93776f99494f3eb59005264'
+            '2a9e70d0bc04f291d2d7d774ace08edb83c5f5d299ebd66920457c9d8fb336b7'
+            'd12dfd865b8143a9c610fbaa966aed4b6c56557a2b1039469e9f637364cc16b5')
 build() {
-    sed "s|@appname@|${pkgname}|g;s|@appver@|${pkgver}|g" -i "${srcdir}/${pkgname}.sh"
+    sed "s|@appname@|${_officalname}|g" -i "${srcdir}/${pkgname}.install"
+    sed -e "s|@appname@|${_officalname}|g" \
+        -e "s|@pkgname@|${pkgname}|g" \
+        -e "s|@appver@|${pkgver}|g" \
+        -i "${srcdir}/${pkgname}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz" -C "${srcdir}"
     mv "${srcdir}/opt/apps/${_pkgname}" "${srcdir}/opt/apps/${pkgname}"
     sed -e "s|Icon=${_pkgname}|Icon=${pkgname}|g" \
