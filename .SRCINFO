@@ -1,6 +1,6 @@
 pkgbase = not1mm
 	pkgdesc = Ham Radio Contest Logger - Blatant ripoff of N1MM - Numbered Release
-	pkgver = 23.12.24
+	pkgver = 24.1.22
 	pkgrel = 1
 	url = https://pypi.org/project/not1mm/
 	arch = any
@@ -27,8 +27,8 @@ pkgbase = not1mm
 	provides = not1mm
 	conflicts = not1mm-git
 	conflicts = python-not1mm
-	source = https://files.pythonhosted.org/packages/source/n/not1mm/not1mm-23.12.24.tar.gz
-	md5sums = 1e6c9f7b95b51bcc9a47c2cbaff34d04
-	sha256sums = 2299cf7cc2f6da47043e0dc4097262012d3ae29924fc2c4bab31807a28bc60a0
+	source = https://files.pythonhosted.org/packages/source/n/not1mm/not1mm-24.1.22.tar.gz
+	md5sums = ac00290005d317d89383a1921c867de0
+	sha256sums = b5de40b35c0121a8ba6ff102000842d8cd347b3b74e0b9c5aac6268070f78e7b
 
 pkgname = not1mm
