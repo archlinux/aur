@@ -1,26 +1,22 @@
 pkgbase = fcitx5-mozc-ut
 	pkgdesc = Mozc module for Fcitx5
-	pkgver = 2.29.5268.102
+	pkgver = 2.29.5346.102
 	pkgrel = 1
 	url = https://github.com/fcitx/mozc
 	arch = x86_64
-	license = Apache
-	license = GPL
-	license = LGPL
-	license = MIT
-	license = custom
+	license = Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND MS-PL AND NAIST-2003 AND Unicode-3.0
 	makedepends = bazel
 	makedepends = git
 	makedepends = python
 	makedepends = qt6-base
 	depends = fcitx5
-	depends = mozc>=2.29.5268.102
+	depends = mozc>=2.29.5346.102
 	optdepends = fcitx5-configtool
-	provides = fcitx5-mozc=2.29.5268.102
+	provides = fcitx5-mozc=2.29.5346.102
 	conflicts = fcitx5-mozc
 	options = !distcc
 	options = !ccache
-	source = fcitx5-mozc-ut-git::git+https://github.com/fcitx/mozc.git#commit=fdf255839144638b9759b5ad98b5151fd28bb3ca
+	source = fcitx5-mozc-ut-git::git+https://github.com/fcitx/mozc.git#commit=4b1510bddfcb572ef72c5ac21a51a4881a5859b3
 	sha256sums = SKIP
 
 pkgname = fcitx5-mozc-ut
