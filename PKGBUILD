@@ -1,5 +1,5 @@
 pkgname=ruffle-bin
-pkgver=2023.11.08
+pkgver=2024.01.22
 pkgrel=1
 _pkgrel_x86_64=1
 _pkgrel_i386=1
@@ -28,7 +28,7 @@ package() {
     for dir in ruffle-*/ ; do mv "${dir}" "$pkgname" ;done   
 
     # Link to binary
-    cp "$srcdir/ruffle_desktop" "$pkgdir/usr/bin/ruffle"
+    cp "$srcdir/ruffle" "$pkgdir/usr/bin"
     
     # Desktop Entry
     cp -r "$srcdir/$pkgname/ruffle.svg" "$pkgdir/usr/share/pixmaps"
