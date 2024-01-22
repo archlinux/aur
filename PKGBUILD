@@ -7,13 +7,13 @@
 
 pkgname=obs-studio-browser
 pkgver=30.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
-license=("GPL3")
+license=('GPL-2.0-or-later')
 # To manage dependency rebuild easily, this will prevent you to rebuild OBS on non-updated system
-_libdatachannelver=0.19.2
+_libdatachannelver=0.20
 _mbedtlsver=3.4
 _pythonver=3.11
 depends=(
