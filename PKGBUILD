@@ -1,12 +1,12 @@
 # Maintainer: Kyuzial <kyuzial@protonmail.com>
 pkgname=cosmic-term-git
-pkgver=r100.679e7ee
+pkgver=r138.d6946d4
 pkgrel=1
 pkgdesc="WIP COSMIC Terminal Emulator"
 arch=('x86_64')
 url="https://github.com/pop-os/cosmic-term"
 license=('GPL3')
-depends=('gtk3' 'libxkbcommon' 'wayland')
+depends=('libxkbcommon' 'wayland')
 makedepends=('cargo' 'git' 'just')
 provides=("${pkgname%-git}")
 options=('!lto')
