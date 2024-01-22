@@ -4,13 +4,13 @@ _pkgname=com.baidu.wenku.spark
 _officalname=BaiduWenku
 _bottlename="Deepin-${BaiduWenku}"
 _installname=wenku-pc
-pkgver=2.0.1
+pkgver=2.0.2
 sparkver=1.2.8spark2
-pkgrel=2
+pkgrel=1
 pkgdesc="Baidu wenku Client on Deepin Wine6.一款由百度发布的供网友在线分享文档的平台"
 arch=('x86_64')
 url="https://wenku.baidu.com"
-license=('custom')
+license=('LicenseRef-custom')
 depends=(
     'deepin-wine6-stable'
     'spark-dwine-helper'
@@ -29,11 +29,13 @@ source=(
     "${pkgname}-${sparkver}.deb::https://d.store.deepinos.org.cn/store/office/${_pkgname}/${_pkgname}_${sparkver}_all.deb"
     "${pkgname}-${pkgver}.exe::https://edu-wenku.bdimg.com/v1/na/0807/PC%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%89%88%E6%9C%AC%E5%8C%85/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%20Setup%20${pkgver}.exe"
     "LICENSE.html::https://edu-wenku.bdimg.com/v1/pc/protocols/help24-new.htm"
+    "${pkgname}.install"
     "${pkgname}.sh"
 )
 sha256sums=('06262e7ba445d996cc4cef8c555474ca8b6eef4ac676e2bb86b00df6103d45b4'
-            '799859521b320d41513f3950bb178507ebdd84fe058ad284637d5a209b777ee0'
+            '866d5192cd751d39c41d3a26464ae217954d4cef7c83a68aa194267c6a78ee30'
             'e93a1b4112398eefd1d0688d126af3403226c4827a0e4f5f5ee40a97999cf222'
+            '9fc08b3f39ab99a3335449f6ea69aff4bb67d8b4dd2b243009738369af544201'
             '07249f82aac06fcb7a60b13e544b6bfef7282b74a962aa90c8f847f070b92e74')
 build() {
     sed "s|@bottlename@|${_bottlename}|g" -i "${srcdir}/${pkgname}.install"
