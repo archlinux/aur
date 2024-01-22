@@ -8,8 +8,17 @@ pkgdesc="Download videos from websites like YouTube and many others (based on yt
 arch=('any')
 url="https://github.com/Unrud/video-downloader"
 license=('GPL-3.0-or-later')
-depends=('ffmpeg' 'libadwaita' 'python-brotli' 'python-gobject' 'python-mutagen'
-         'python-pycryptodomex' 'python-pyxattr' 'python-websockets' 'yt-dlp')
+depends=(
+  'ffmpeg'
+  'libadwaita'
+  'python-brotli'
+  'python-gobject'
+  'python-mutagen'
+  'python-pycryptodomex'
+  'python-pyxattr'
+  'python-websockets'
+  'yt-dlp'
+)
 makedepends=('meson')
 checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
