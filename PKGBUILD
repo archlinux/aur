@@ -2,17 +2,17 @@
 # Original author: dln
 _pkgname=wofi-emoji
 pkgname=wofi-emoji
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=3
 pkgdesc="Emoji picker for Wayland using wofi and wtype"
 arch=("any")
 url="https://github.com/Zeioth/wofi-emoji"
 license=("MIT")
-depends=("wofi" "wtype") # thanks to gilbs https://aur.archlinux.org/account/gilbs
+depends=("wofi" "wtype" "wl-clipboard" ) # thanks to gilbs https://aur.archlinux.org/account/gilbs
 makedepends=("git" "jq"  "curl")
 provides=(wofi-emoji)
 conflicts=(wofi-emoji-git)
-source=("git+$url#commit=03ceac06de814c78e8a26bade359c201b303df65")
+source=("git+$url#commit=524fd0db66f8a96a2365f5af85b5b08032680359")
 sha256sums=('SKIP')
 
 build() {
