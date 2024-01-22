@@ -2,7 +2,7 @@
 # Contributor: slact
 pkgname=tlpui-git
 pkgver=1.6.3.r0.g51c04f8
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc="A GTK user interface for TLP written in Python"
 arch=('any')
