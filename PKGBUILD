@@ -1,8 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=maa-x-bin
+_pkgname=Maa-X
 pkgver=2.0.0_beta.14
 _electronversion=25
-pkgrel=3
+pkgrel=4
 pkgdesc="MAA GUI with Electron & Vue3"
 arch=(
     'aarch64'
@@ -25,7 +26,7 @@ makedepends=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-linux-arm64-${pkgver//_/-}.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-linux-x64-${pkgver//_/-}.zip")
 source=("${pkgname%-bin}.sh")
-sha256sums=('8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+sha256sums=('d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 sha256sums_aarch64=('d0a59e9b51e9087fe5ed4a26255bb55cf8a7c373bbfba0b22b76b2249e50f171')
 sha256sums_x86_64=('fd314076dab798f9121002d1f06fc514253c39614b4bbe3a5844cab8182d2953')
 build() {
@@ -33,7 +34,7 @@ build() {
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@appasar@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -f -n -q --categories "Game" --name "Maa-X" --exec "${pkgname%-bin} --no-sandbox %U"
+    gendesk -f -n -q --categories "Game" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

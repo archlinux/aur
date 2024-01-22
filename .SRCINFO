@@ -1,7 +1,7 @@
 pkgbase = maa-x-bin
 	pkgdesc = MAA GUI with Electron & Vue3
 	pkgver = 2.0.0_beta.14
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.maa.plus/
 	arch = aarch64
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = maa-x-bin
 	provides = maa-x=2.0.0_beta.14
 	conflicts = maa-x
 	source = maa-x.sh
-	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
 	source_aarch64 = maa-x-2.0.0_beta.14-aarch64.zip::https://github.com/MaaAssistantArknights/MaaX/releases/download/v2.0.0-beta.14/maa-x-linux-arm64-2.0.0-beta.14.zip
 	sha256sums_aarch64 = d0a59e9b51e9087fe5ed4a26255bb55cf8a7c373bbfba0b22b76b2249e50f171
 	source_x86_64 = maa-x-2.0.0_beta.14-x86_64.zip::https://github.com/MaaAssistantArknights/MaaX/releases/download/v2.0.0-beta.14/maa-x-linux-x64-2.0.0-beta.14.zip
