@@ -6,4 +6,4 @@ Exec=/usr/bin/tinymediamanager
 Icon=/usr/share/tinyMediaManager/tmm.png
 Comment=A multi-OS media managment tool
 Categories=AudioVideo;Video;Database;Java;
-Version=5.0
+Version=5.0.1
