@@ -7,13 +7,13 @@ _microarchitecture=0
 ## Major kernel version
 _major=6.7
 ## Minor kernel version
-_minor=0
+_minor=1
 
 ## PKGBUILD ##
 
 pkgbase=linux-multimedia
-pkgver=${_major}
-#pkgver=${_major}.${_minor}
+#pkgver=${_major}
+pkgver=${_major}.${_minor}
 pkgrel=1
 pkgdesc='Linux Multimedia Optimized'
 url="https://www.kernel.org/"
@@ -33,7 +33,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('ef31144a2576d080d8c31698e83ec9f66bf97c677fa2aaf0d5bbb9f3345b1069'
+sha256sums=('1ecffa568e86a2202ba5533ad9034bc263a9aa14e189597a94f09b3854ad68c3'
             'SKIP'
             'SKIP'
             'SKIP'
