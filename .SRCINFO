@@ -1,7 +1,7 @@
-pkgbase = nerdfetch
+pkgbase = nerdfetch-git
 	pkgdesc = A POSIX fetch using NerdFonts
 	pkgver = r322.bff2f70
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ThatOneCalculator/NerdFetch
 	arch = any
 	license = MIT
@@ -10,4 +10,4 @@ pkgbase = nerdfetch
 	source = git+https://github.com/ThatOneCalculator/NerdFetch.git
 	md5sums = SKIP
 
-pkgname = nerdfetch
+pkgname = nerdfetch-git
