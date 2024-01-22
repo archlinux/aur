@@ -1,12 +1,12 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=dwarfs
-pkgver=0.7.5
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A fast high compression read-only file system"
 url='https://github.com/mhx/dwarfs'
 arch=('x86_64' 'aarch64')
-license=('GPL-3.0')
+license=('GPL-3.0-only')
 depends=(
   'fuse3' 'openssl' 'boost-libs' 'jemalloc' 'xxhash' 'fmt'
   'lz4' 'xz' 'zstd' 'brotli' 'libarchive'
@@ -14,12 +14,13 @@ depends=(
 )
 makedepends=(
   'cmake' 'ruby-ronn'
-  'boost' 'libevent' 'libdwarf'
+  'python' 'python-mistletoe'
+  'boost' 'libevent' 'libdwarf' 'chrono-date'
   'utf8cpp'
 )
 source=("$pkgname-$pkgver.tar.xz::https://github.com/mhx/dwarfs/releases/download/v$pkgver/dwarfs-$pkgver.tar.xz")
-sha256sums=('31fabc3a3a8233e247f77149a7c702b79c4105dc814459fef85d4c4747a2b4f0')
-b2sums=('c40d3fd74d750a3da2073ac75a9ddc6c0bf11e9aeb1c7718f0181b33820e6d5ca09ba25be7d6b7224036e02665115f4d43378b5dfe0975a4eea83eb866cfab01')
+sha256sums=('d5026453cd4ed11be5323f564d59cd9a155dfdcea3ddb81359f33e1c28824cf3')
+b2sums=('17a0be32cc6e77a90fd391274a12492ab57fdf7f36bb1f9815e3ea09d952e13ec64cfb09a1e4cee3169a5276fd9be250c1e01c5d3af2160924ea3f900aed0a32')
 
 prepare() {
   cd "$pkgname-$pkgver"
