@@ -1,6 +1,6 @@
 pkgbase = git-mirrorer
 	pkgdesc = To mirror git repos, and archive and checkout them with submodules included implicitly.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/7Ji/git-mirrorer
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = git-mirrorer
 	depends = libgit2
 	depends = libyaml
 	depends = xxhash
-	source = git-mirrorer-1.0.1.tar.gz::https://github.com/7Ji/git-mirrorer/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 58b29ee087c21abce67b861ffd9d3daa8c92c2ae3b229bb96a9130107f529280
+	source = git-mirrorer-1.0.2.tar.gz::https://github.com/7Ji/git-mirrorer/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 79ccd131d88df50664c7d3dee1a061343020dad038e94c174ac45cdf87ce4b0c
 
 pkgname = git-mirrorer

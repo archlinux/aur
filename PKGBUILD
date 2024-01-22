@@ -1,7 +1,7 @@
 # Maintainer: 7Ji <pugokushin@gmail.com>
 
 pkgname=git-mirrorer
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="To mirror git repos, and archive and checkout them with submodules included implicitly."
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ source=(
   "${_srcname}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  '58b29ee087c21abce67b861ffd9d3daa8c92c2ae3b229bb96a9130107f529280'
+  '79ccd131d88df50664c7d3dee1a061343020dad038e94c174ac45cdf87ce4b0c'
 )
 
 build() {
