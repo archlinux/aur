@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=paletteer
-_pkgver=1.5.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Comprehensive Collection of Color Palettes"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-prismatic
   r-rematch2
@@ -43,8 +43,8 @@ optdepends=(
   r-viridislite
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b4814df17b6c67809d2f3cfd9333ee08')
-sha256sums=('7446242011583763f675aa937b794533548138d32bf2b3b592cc94118a99a0d6')
+md5sums=('2149379a13391b97581b43dd87aa6fd0')
+b2sums=('aa265005b33047bb26c085ded2212bbd60d13bb5a4c9590c1e756226a23315e0e625564af420dc5606408bd0a585ecbf75f732f873a935ac34384f9d6d576f1d')
 
 prepare() {
   # skip failing test
@@ -53,8 +53,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

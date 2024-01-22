@@ -1,10 +1,10 @@
 pkgbase = r-paletteer
 	pkgdesc = Comprehensive Collection of Color Palettes
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=paletteer
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-ggplot2
 	checkdepends = r-ggthemes
 	checkdepends = r-harrypotter
@@ -32,8 +32,8 @@ pkgbase = r-paletteer
 	optdepends = r-testthat
 	optdepends = r-vdiffr
 	optdepends = r-viridislite
-	source = https://cran.r-project.org/src/contrib/paletteer_1.5.0.tar.gz
-	md5sums = b4814df17b6c67809d2f3cfd9333ee08
-	sha256sums = 7446242011583763f675aa937b794533548138d32bf2b3b592cc94118a99a0d6
+	source = https://cran.r-project.org/src/contrib/paletteer_1.6.0.tar.gz
+	md5sums = 2149379a13391b97581b43dd87aa6fd0
+	b2sums = aa265005b33047bb26c085ded2212bbd60d13bb5a4c9590c1e756226a23315e0e625564af420dc5606408bd0a585ecbf75f732f873a935ac34384f9d6d576f1d
 
 pkgname = r-paletteer
