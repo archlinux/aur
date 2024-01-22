@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-bin
-pkgver=0.22.3
+pkgver=0.22.5
 _electronversion=28
 pkgrel=1
 pkgdesc="VS Code inspired text editor that mostly runs in a webworker"
@@ -22,12 +22,19 @@ options=('!strip')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}_arm64.deb")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}_armhf.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}_amd64.deb")
-source=("${pkgname%-bin}.sh")
-sha256sums=('d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
-sha256sums_aarch64=('080f2895879edc4f75780672a012d468937cc815736e886fa05b42afbcdcb9b3')
-sha256sums_armv7h=('fc722807281fb4feb8e1a5fe77a0590464ea45c758569ef5cfdfccacd2f28ed5')
-sha256sums_x86_64=('7de12b5dd5370a4ed3417068bce68d85c8373d8d220a5fc54db28d94825271c0')
+source=(
+    "lintian-${pkgname%-bin}"
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('ada1a0303abece27be80372538645da5c5b4e9d60fcacc87b97da1c26b8931bc'
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+sha256sums_aarch64=('0b7464bb11b9cc7fc95f24cca0b01b925fcbdd5d5c777defd9efd9a1935c6de4')
+sha256sums_armv7h=('ba305b586462ae8e5640060af97073d9910c51a777f50938ba315afd6edee7ac')
+sha256sums_x86_64=('e7e2f4ef399a928294c991d8a7be3c7104cc5b39eb7ae1bc1a5eb905135673c8')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -i "${srcdir}/lintian-${pkgname%-bin}"
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@appasar@|app|g" \
@@ -42,4 +49,5 @@ package() {
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/usr/share/bash-completion/completions/${pkgname%-bin}" -t "${pkgdir}/usr/share/bash-completion/completions"
+    install -Dm644 "${srcdir}/lintian-${pkgname%-bin}" "${pkgdir}/usr/share/lintian/overrides/${pkgname%-bin}"
 }
