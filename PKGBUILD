@@ -3,7 +3,7 @@
 
 pkgname=python-colored
 _name=${pkgname#python-}
-pkgver=2.2.3
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="Very simple Python library for color and formatting in terminal"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python')
 makedepends=(python-build python-flit python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
         "LICENSE")
-sha256sums=('1905ae45fa2b7fd63a8b4776586e63aeaba4df8db225b72b78fd167408558983'
+sha256sums=('595e1dd7f3b472ea5f12af21d2fec8a2ea2cf8f9d93e67180197330b26df9b61'
             '6e38bc085fb26b5aa0db7b77be9893a805cce0badb2c2950d2fd36626b9a8dd1')
 
 build() {
