@@ -4,38 +4,24 @@ _pkgname=Revealed
 _appname="@${pkgname%-bin}desktop"
 pkgver=2.0.0_alpha.15
 _electronversion=23
-pkgrel=5
+pkgrel=6
 pkgdesc="A platform and store for apps, games, and more!"
 arch=('x86_64')
 url="https://www.appsrevealed.com/"
 _ghurl="https://github.com/BunnyStrike/revealed"
-license=('GPL3')
+license=('LicenseRef-GPL3')
 provides=("${pkgname%-bin}-${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'hicolor-icon-theme'
-    'libxext'
-    'libxkbcommon'
-    'libxfixes'
-    'alsa-lib'
-    'pango'
-    'libcups'
-    'nspr'
-    'libxrandr'
-    'libx11'
-    'gtk3'
-    'libdrm'
-    'at-spi2-core'
-    'cairo'
-    'java-runtime'
-    'mesa'
-    'libxcomposite'
     'python'
-    'libxcb'
+    'gtk3'
+    'alsa-lib'
+    'libxext'
+    'nspr'
     'nss'
-    'expat'
-    'libxdamage'
 )
+options=('!strip')
 source=(
     "${pkgname%-bin}-${pkgver}.pacman::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}.pacman"
 )
