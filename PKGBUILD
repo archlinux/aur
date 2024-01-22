@@ -1,63 +1,47 @@
-# Maintainer: taotieren <admin@taotieren.com>
+# Contributor: taotieren <admin@taotieren.com>
 
 pkgname=opengnb-git
-pkgver=1.4.5.b.1.gb668a52
+pkgver=1.3.0.c.35.gb668a52
 pkgrel=1
 pkgdesc="GNB is open source de-centralized VPN to achieve layer3 network via p2p with the ultimate capability of NAT Traversal."
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=('x86_64')
 url="https://github.com/gnbdev/opengnb"
-license=('GPL-3.0-or-later')
+license=('GPLv3')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
-depends=(
-    bash
-    glibc)
+depends=(miniupnpc)
 optdepends=()
-makedepends=(git
-    sed
-    libnatpmp
-    miniupnpc
-    zlib)
+makedepends=(git sed)
 backup=()
-options=('!makeflags')
+options=('!strip')
 install=
-source=("${pkgname}::git+${url}.git")
+source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${pkgname}"
-    git describe --tags --always | sed 's/^v\{0,1\}ver\{0,1\}//' | sed 's|-|.|g'
+    cd "${srcdir}/${pkgname%-git}"
+    git describe --always | sed 's/^v//' | sed 's|-|.|g'
 }
 
 prepare() {
-    git -C "${srcdir}/${pkgname}" clean -dfx
-
-    cd "${srcdir}/${pkgname}"
-    sed -i  -e 's|-I./libs|-I./libs -I/usr/include|g' \
-        -e 's|-I./libs/miniupnpc/|-I/usr/include/miniupnpc|g' \
-        -e 's|-I./libs/libnatpmp | |g' \
-        -e 's|-I./libs/zlib | |g' \
-        -e 's| -pthread| -pthread -z relro -z now -z shstk|g' Makefile.linux
-
-    sed -i -e 's|sbin|bin|g' scripts/opengnb\@.service
+    cd "${srcdir}/${pkgname%-git}"
+    sed -i 's|-I./libs/miniupnpc|-I/usr/include/miniupnpc/|g'  Makefile.linux
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname%-git}"
     make -f Makefile.linux
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname%-git}"
     make -f Makefile.linux install
-
-    install -dm0755 "${pkgdir}/etc/opengnb"
-    install -Dm0755  bin/* -t "${pkgdir}/usr/bin/"
-    install -Dm0644  scripts/${pkgname%-git}@.service -t "${pkgdir}/usr/lib/systemd/system/"
-    install -Dm0644  examples/node_config_example/*.conf -t "${pkgdir}/usr/share/${pkgname}/node_config_example/"
-    install -Dm0644  examples/node_config_example/scripts/* -t "${pkgdir}/usr/share/${pkgname}/node_config_example/scripts/"
-    install -Dm0644 docs/* -t "${pkgdir}/usr/share/doc/${pkgname}/docs/"
+    install -dm0755 "${pkgdir}/usr" \
+                    "${pkgdir}/usr/lib/systemd/system/" \
+                    "${pkgdir}/usr/share/${pkgname%-git}/"
+    cp -rv bin "${pkgdir}/usr"
+    cp -rv scripts/${pkgname%-git}@.service "${pkgdir}/usr/lib/systemd/system/"
+    cp -rv examples/* "${pkgdir}/usr/share/${pkgname%-git}/"
+    install -Dm0644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
