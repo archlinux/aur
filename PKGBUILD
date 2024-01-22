@@ -12,10 +12,8 @@ depends=('gtk3' 'python-gobject' 'python-toml' 'python-yaml' 'tlp')
 makedepends=('git' 'python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+https://github.com/d4nj1/TLPUI.git"
-        "${pkgname%-git}.desktop")
-sha256sums=('SKIP'
-            'c07939b2e8c08e649579b9f3b3144b927834229f09a8f77f7f627f789c875b99')
+source=("${pkgname%-git}::git+https://github.com/d4nj1/TLPUI.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"

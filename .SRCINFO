@@ -19,8 +19,6 @@ pkgbase = tlpui-git
 	provides = tlpui
 	conflicts = tlpui
 	source = tlpui::git+https://github.com/d4nj1/TLPUI.git
-	source = tlpui.desktop
 	sha256sums = SKIP
-	sha256sums = c07939b2e8c08e649579b9f3b3144b927834229f09a8f77f7f627f789c875b99
 
 pkgname = tlpui-git
