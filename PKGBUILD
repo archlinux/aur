@@ -2,8 +2,8 @@
 
 _pkgname=brightness
 pkgname=${_pkgname}-git
-pkgver=20230924.r18.30d3269
-pkgrel=2
+pkgver=20240120.r19.24be7d4
+pkgrel=1
 pkgdesc="A small Rust program that uses ddcutil to control your monitor's brightness"
 url='https://gitlab.com/Devorlon/brightness'
 license=('AGPL3')
