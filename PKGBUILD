@@ -3,7 +3,7 @@ _pkgname=buttercup
 pkgname="${_pkgname}-desktop-bin"
 pkgver=2.24.4
 _electronversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-Platform Passwords & Secrets Vault"
 arch=(
     'aarch64'
@@ -18,12 +18,9 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
-    'libx11'
-    'gdk-pixbuf2'
-    'libxext'
+    'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
-    'dbus-glib'
 )
 makedepends=(
     'squashfuse'
@@ -32,7 +29,7 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname//b/B}-linux-armv7l.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname//b/B}-linux-x86_64.AppImage")
 source=("${pkgname%-bin}.sh")
-sha256sums=('68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6')
+sha256sums=('d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 sha256sums_aarch64=('ba9c950c3bd48da59d39a71bed5d020ae5ceb821968dc9e2d4f7da4a97140442')
 sha256sums_armv7h=('ad8f31dfd6353ce0d061d8dfd58af02b1cbd626dea93e96929d6bd376388bab0')
 sha256sums_x86_64=('73930b8ffd4e4a31acc9208435e26a121b9bc65db2eee0e19ce040b4b1b2f762')
@@ -43,7 +40,7 @@ build() {
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
+    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
 }
 package() {
