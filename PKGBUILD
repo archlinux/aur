@@ -1,9 +1,10 @@
 # Maintainer: Groctel <aur@taxorubio.com>
+# shellcheck disable=SC2034,SC2154,SC2164
 
 _name=moderngl
 
 pkgname=python-moderngl-git
-pkgver=5.8.2.r168.g4c6c4885
+pkgver=5.9.0.r41.g021f47f1
 pkgrel=1
 pkgdesc="Modern OpenGL binding for python."
 
@@ -28,21 +29,18 @@ makedepends=(
     "python-wheel"
 )
 
-pkgver ()
-{
-    cd "$srcdir/$_name" || exit
+pkgver () {
+    cd "$srcdir/$_name"
     git describe --long --tags | sed 's/^networkx-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build ()
-{
-    cd "$srcdir/$_name" || exit
+build () {
+    cd "$srcdir/$_name"
     python -m build --wheel --no-isolation
 }
 
-package ()
-{
-    cd "$srcdir/$_name" || exit
+package () {
+    cd "$srcdir/$_name"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

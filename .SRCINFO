@@ -1,6 +1,6 @@
 pkgbase = python-moderngl-git
 	pkgdesc = Modern OpenGL binding for python.
-	pkgver = 5.8.2.r168.g4c6c4885
+	pkgver = 5.9.0
 	pkgrel = 1
 	url = https://github.com/moderngl/moderngl
 	arch = any
