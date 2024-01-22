@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=requestly-bin
 _pkgname=Requestly
-pkgver=1.5.16
+pkgver=1.6.0
 _electronversion=23
 pkgrel=1
 pkgdesc="Debug your network request across all platforms and browsers using a single app"
 arch=('x86_64')
 url="https://requestly.io/"
 _ghurl="https://github.com/requestly/requestly-desktop-app"
-license=('AGPL3')
+license=('LicenseRef-AGPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -18,9 +18,7 @@ depends=(
     'libdbusmenu-glib'
     'gtk2'
     'python'
-    'nspr'
     'java-runtime'
-    'nss'
     'nodejs'
 )
 makedepends=(
@@ -32,7 +30,7 @@ source=(
     "index.html-${pkgver}::https://raw.githubusercontent.com/requestly/requestly-desktop-app/v${pkgver}/src/loadingScreen/index.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('73e4e2ee3fb7af4852c36baf68391abf291441076f8343a00f55dd0d341b26e0'
+sha256sums=('6948609fa41e08772cdf28b528acf0fb2394b9c6d339e36a39b4d865390aaabb'
             '458836a4541233742fec5da1bf75b151cc0b1f879b0574f362ae793d055a233d'
             'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
