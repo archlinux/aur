@@ -27,10 +27,9 @@ pkgname = wordnet-common
 
 pkgname = wordnet-tk
 	pkgdesc = A TK frontend for the WordNet Database
+	depends = tk
 	depends = wordnet-common
-	conflicts = wordnet
 
 pkgname = wordnet-cli
 	pkgdesc = A CLI fontend for the WordNet Database
 	depends = wordnet-common
-	conflicts = wordnet

@@ -72,9 +72,7 @@ package_wordnet-common() {
 
 package_wordnet-tk() {
   pkgdesc="A TK frontend for the WordNet Database"
-  depends=('tk')
-  conflicts=('wordnet')
-  depends=('wordnet-common')
+  depends=('tk' 'wordnet-common')
 
   cd "${srcdir}/WordNet-${_srcver}"
 
@@ -91,7 +89,6 @@ package_wordnet-tk() {
 
 package_wordnet-cli() {
   pkgdesc="A CLI fontend for the WordNet Database"
-  conflicts=('wordnet')
   depends=('wordnet-common')
 
   cd "${srcdir}/WordNet-${_srcver}"
