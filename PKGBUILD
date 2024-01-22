@@ -38,7 +38,8 @@ build() {
     cmake -B build -S "$pkgname" \
         -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_SKIP_INSTALL_RPATH=YES \
-        -DCMAKE_SKIP_RPATH=YES
+        -DCMAKE_SKIP_RPATH=YES \
+        -DCMAKE_INSTALL_PREFIX=/usr
     #	-DBIN_DIR:PATH=/usr/bin \
     #	-DLIBEXECDIR:PATH="/usr/lib/$pkgname"
     make -C build
