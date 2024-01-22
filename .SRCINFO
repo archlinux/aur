@@ -1,0 +1,21 @@
+pkgbase = fzdwx-launcher-bin
+	pkgdesc = An extensible linux application launcher
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/fzdwx/launcher
+	arch = x86_64
+	license = MIT
+	makedepends = squashfuse
+	depends = electron28
+	depends = mesa-demos
+	depends = dbus-glib
+	depends = libdbusmenu-glib
+	depends = gtk2
+	provides = fzdwx-launcher=0.1.0
+	conflicts = fzdwx-launcher
+	source = fzdwx-launcher-0.1.0.AppImage::https://github.com/fzdwx/launcher/releases/download/0.1.0/launcher-0.1.0.AppImage
+	source = fzdwx-launcher.sh
+	sha256sums = 0abf3108c7f1af5ffb9e5cbf256e73229615605dc0687e9662dc201121f8ef00
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+
+pkgname = fzdwx-launcher-bin
