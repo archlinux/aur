@@ -27,7 +27,12 @@ build() {
   mkdir -p build
   cd build
   cp -r "${srcdir}/jellyfin-web_${_webver}" dist
-  cmake -DCMAKE_INSTALL_PREFIX='/usr/' -DCMAKE_BUILD_TYPE='Debug' -DQTROOT=./qt -DCMAKE_SKIP_RPATH=1 ..
+  cmake \
+    -DCMAKE_BUILD_TYPE='Debug' \
+    -DCMAKE_INSTALL_PREFIX='/usr/' \
+    -DCMAKE_SKIP_RPATH=1 \
+    -DQTROOT=./qt \
+    ..
   cmake build .
 }
 
