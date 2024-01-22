@@ -11,11 +11,11 @@ pkgbase = libfm-directory_thumbnails
 	makedepends = vala
 	depends = gtk2
 	depends = libexif
-	depends = libfm-extra=1.3.1
+	depends = libfm-extra=1.3.2
 	depends = menu-cache
 	provides = libfm=1.3.2
 	conflicts = libfm=1.3.2
-	source = https://github.com/lxde/libfm/archive/refs/tags/1.3.1.tar.gz
+	source = https://github.com/lxde/libfm/archive/refs/tags/1.3.2.tar.gz
 	source = https://sourceforge.net/p/pcmanfm/bugs/1020/attachment/directory_thumbnails.patch
 	source = https://gist.githubusercontent.com/gcavallo/8367304d725c6da03277500d4edb57ff/raw/8487492b4f6a30c924e5d77627bd49998e7da22d/fm-file-info.patch
 	sha256sums = e65aa86650879fcd6c06983164b95409b92724482191f06472c567cbd8cf5ddd
