@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=station-appimage
 _pkgname=Station
-pkgver=2.7.0
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="The first open-source smart browser for busy people. A single place for all of your web applications."
 arch=('x86_64')
@@ -21,7 +21,7 @@ options=(
 )
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${CARCH}.AppImage")
-sha256sums=('c4ed342da21dce86ec57e81d4c78a0b2d8b9e7106419cda27c7b0c3cf363907a')
+sha256sums=('853e1bef74b3d7f8f3ac1ce9acffd6b892dce28c4e04f4c5e79471cfbe6c9334')
 build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
