@@ -1,6 +1,6 @@
 pkgbase = windowmaker
 	pkgdesc = An X11 window manager with a NEXTSTEP look and feel
-	pkgver = 0.95.9
+	pkgver = 0.96.0
 	pkgrel = 1
 	url = http://www.windowmaker.org/
 	arch = i686
@@ -17,10 +17,9 @@ pkgbase = windowmaker
 	depends = giflib
 	depends = libmagick
 	depends = libbsd
-	source = http://windowmaker.org/pub/source/release/WindowMaker-0.95.9.tar.gz
+	source = http://windowmaker.org/pub/source/release/WindowMaker-0.96.0.tar.gz
 	source = wmaker.desktop
-	sha256sums = f22358ff60301670e1e2b502faad0f2da7ff8976632d538f95fe4638e9c6b714
+	sha256sums = 4fe130ba23cf4aa21c156ec8f01f748df537d0604ec06c6bbcec896df1926f6d
 	sha256sums = 126da08ac9cffc4354bb4f246ec5ed5abd3cd29ed665d05d190c5bf842c84bef
 
 pkgname = windowmaker
-
