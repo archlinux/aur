@@ -1,16 +1,17 @@
 pkgbase = python-ansi
 	pkgdesc = ANSI cursor movement and graphics
-	pkgver = 0.3.6
-	pkgrel = 3
+	pkgver = 0.3.7
+	pkgrel = 1
 	url = https://github.com/tehmaze/ansi
 	arch = any
 	license = MIT
 	makedepends = python-installer
 	makedepends = python-wheel
+	depends = python
 	depends = python-typing_extensions
-	noextract = ansi-0.3.6-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/a/ansi/ansi-0.3.6-py3-none-any.whl
-	md5sums = 89e3f5726409b791f790bc7d124f8608
-	sha256sums = a83f7e6e7a9a84f4cc2904e28e575516cf42cf862777649e57615d85ac76e11d
+	noextract = ansi-0.3.7-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/a/ansi/ansi-0.3.7-py3-none-any.whl
+	md5sums = aa4830b46aae034f2a1db25b1239beef
+	sha256sums = bdd9e3c2dc3e4c8df8c2b745ca6f07f715aa4edee5ed4a5bcb29065da06a3f71
 
 pkgname = python-ansi
