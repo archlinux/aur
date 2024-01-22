@@ -1,8 +1,8 @@
 diff --git a/pyproject.toml b/pyproject.toml
-index 7c34da1..72f843a 100644
+index e7b6fd6..ae398bd 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
-@@ -25,9 +25,9 @@ packages = [
+@@ -24,9 +24,9 @@ packages = [
  ]
  include = [
    # all is an object -> prevent parse issue like https://github.com/CycloneDX/cyclonedx-python-lib/network/updates/740004978
