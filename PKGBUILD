@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=opengnb-git
-pkgver=1.4.5.b
-pkgrel=4
+pkgver=1.4.5.b.1.gb668a52
+pkgrel=1
 pkgdesc="GNB is open source de-centralized VPN to achieve layer3 network via p2p with the ultimate capability of NAT Traversal."
 arch=(x86_64
     aarch64
@@ -12,7 +12,9 @@ license=('GPL-3.0-or-later')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
-depends=(glibc)
+depends=(
+    bash
+    glibc)
 optdepends=()
 makedepends=(git
     sed
@@ -20,7 +22,7 @@ makedepends=(git
     miniupnpc
     zlib)
 backup=()
-options=('!strip')
+options=('!makeflags')
 install=
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
@@ -37,7 +39,9 @@ prepare() {
     sed -i  -e 's|-I./libs|-I./libs -I/usr/include|g' \
         -e 's|-I./libs/miniupnpc/|-I/usr/include/miniupnpc|g' \
         -e 's|-I./libs/libnatpmp | |g' \
-        -e 's|-I./libs/zlib | |g'  Makefile.linux
+        -e 's|-I./libs/zlib | |g' \
+        -e 's| -pthread| -pthread -z relro -z now -z shstk|g' Makefile.linux
+
     sed -i -e 's|sbin|bin|g' scripts/opengnb\@.service
 }
 
