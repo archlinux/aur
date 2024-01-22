@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=webgal-terre-bin
 _appname=WebGAL_Terre
-pkgver=4.4.9
+pkgver=4.4.10
 pkgrel=1
 pkgdesc="Galgame Editing. Redefined | 视觉小说编辑，再进化"
 arch=(
@@ -10,7 +10,7 @@ arch=(
 )
 url="https://docs.openwebgal.com/guide/"
 _ghurl="https://github.com/MakinoharaShoko/WebGAL_Terre"
-license=('MPL2')
+license=('LicenseRef-MPL2')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -48,14 +48,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5'
-            '329b059310e0f79fda5049929e09451f8f3de987219e601c0226046cc9159ab3')
-sha256sums_aarch64=('d8eb7274c813708bd171f10c8a71e33acead7c1ed0782773d48c059e055cd852')
-sha256sums_x86_64=('47a2b9da29ce23f7adb7d4284e2807cf02c9927029015999cbed133902df8720')
+            '948f743080bc397035152011f1a9fa4987aebe44b848d764f001539ff9c39058')
+sha256sums_aarch64=('47b343eddfa329195c94c2e8a6924a0894ab09e010386006678b5b6a6517c0d9')
+sha256sums_x86_64=('c484270b804a635feedad9bcf27ea4e8fcc91c09233a261a47e261035d48a456')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_appname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories "Game;Utility" --name "${_appname//_/ }" --exec "${pkgname%-bin} %U"
+    gendesk -q -f -n --categories "Game" --name "${_appname//_/ }" --exec "${pkgname%-bin} --no-sandbox %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
