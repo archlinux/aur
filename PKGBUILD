@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 pkgname=vulkan-caps-viewer-x11-bin
 pkgver=3.32
@@ -7,7 +7,7 @@ epoch=1
 pkgdesc="Vulkan Hardware Capability Viewer"
 arch=('x86_64')
 url="https://vulkan.gpuinfo.org/"
-license=('LGPL3')
+license=('LGPL-3.0-or-later')
 depends=('vulkan-icd-loader' 'qt5-x11extras')
 provides=("${pkgname%-*-*}")
 conflicts=("${pkgname%-*-*}")
