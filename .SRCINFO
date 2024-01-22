@@ -1,6 +1,6 @@
 pkgbase = craftos-pc-bin
 	pkgdesc = Advanced ComputerCraft emulator written in C++ (AppImage binary)
-	pkgver = 2.7.5
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = https://www.craftos-pc.cc/
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = craftos-pc-bin
 	conflicts = craftos-pc
 	noextract = CraftOS-PC.x86_64.AppImage
 	options = !strip
-	source = craftos2-2.7.5.tar.gz::https://github.com/MCJack123/craftos2/archive/v2.7.5.tar.gz
-	source = CraftOS-PC_2.7.5.AppImage::https://github.com/MCJack123/craftos2/releases/download/v2.7.5/CraftOS-PC.x86_64.AppImage	sha256sums = 98b1e896143e5e8ed096469f1a0d58a2a869bd2032fb120a611c696cfb65555f
-
+	source = craftos2-2.8.1.tar.gz::https://github.com/MCJack123/craftos2/archive/v2.8.1.tar.gz
+	source = CraftOS-PC_2.8.1.AppImage::https://github.com/MCJack123/craftos2/releases/download/v2.8.1/CraftOS-PC.x86_64.AppImage
 pkgname = craftos-pc-bin
