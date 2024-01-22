@@ -1,0 +1,18 @@
+pkgbase = neovim-nvim-treesitter
+	pkgdesc = Nvim Treesitter configurations and abstraction layer
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/nvim-treesitter/nvim-treesitter
+	install = neovim-nvim-treesitter.install
+	arch = any
+	groups = neovim-plugins
+	license = Apache-2.0
+	depends = curl
+	depends = gcc
+	depends = neovim
+	depends = tar
+	source = https://github.com/nvim-treesitter/nvim-treesitter/archive/v0.9.2/neovim-nvim-treesitter-v0.9.2.tar.gz
+	sha512sums = f772c62d12e2b8299e33e6f8f4977b742e3e425585013bdc31a61d5e619fc697b4aba8b304e84124f59a5762ce4c416129328433aaf689ee1fc0f7f2d8a75a1d
+	b2sums = 4b74a8832898047c5de7b8f580fcca33f36ad95866825f2ba7fd1e06c4127ac6e235dc862952ed0a791e986337b79ac4f9ce41d9a0bbb4d2f52c07b849838306
+
+pkgname = neovim-nvim-treesitter
