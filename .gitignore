@@ -1,0 +1,6 @@
+amie-nativefier-*.pkg.tar.zst
+amie-nativefier-*.pkg.tar.xz
+amie-nativefier-*.log
+PKGBUILD-namcap.log
+pkg/
+src/

@@ -1,0 +1,22 @@
+pkgbase = amie-nativefier
+	pkgdesc = Amie desktop app built with nativefier (electron)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://calendar.amie.so
+	arch = armv7l
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	makedepends = unzip
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = amie-nativefier.png
+	source = amie-nativefier.desktop
+	sha256sums = 3a4d92741697ace152059d4d035c0b2ae9e3715612bbaa58cf509e9a8a2bfb86
+	sha256sums = efa67f60d02a6f6e7dcc5f3dfb63520099a0801ebb9d9594184754a3178c4481
+
+pkgname = amie-nativefier

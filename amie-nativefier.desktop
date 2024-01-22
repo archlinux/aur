@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Amie
+Comment=Amie desktop app built with nativefier (electron)
+Exec=amie-nativefier
+Icon=amie
+Encoding=UTF-8
+StartupWMClass=amie-nativefier-90094f
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Network;Chat;InstantMessaging;Application;
