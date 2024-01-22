@@ -33,5 +33,4 @@ pkgname = wordnet-tk
 pkgname = wordnet-cli
 	pkgdesc = A CLI fontend for the WordNet Database
 	depends = wordnet-common
-	provides = wordnet
 	conflicts = wordnet
