@@ -7,17 +7,17 @@
  
 #               Vufa <countstarlight@gmail.com>
  
-BOTTLENAME="Deepin-WeLink"
+BOTTLENAME="Deepin-@appname@"
 APPVER=@sparkver@
-WELINK_INSTALLER="WeLink"
+WELINK_INSTALLER="@appname@"
 WELINK_VER=@appver@
-WELINK_INSTALLER_PATH="c:/Program Files/WeLink/${WELINK_INSTALLER}-${WELINK_VER}.exe"
+WELINK_INSTALLER_PATH="c:/Program Files/@appname@/${WELINK_INSTALLER}-${WELINK_VER}.exe"
 WINEPREFIX="$HOME/.deepinwine/${BOTTLENAME}"
 EXEC_PATH="c:/Program Files/${WELINK_INSTALLER}/${WELINK_INSTALLER}.exe"
 EXEC_FILE="${WINEPREFIX}/drive_c/Program Files/${WELINK_INSTALLER}/${WELINK_INSTALLER}.exe"
 START_SHELL_PATH="/opt/deepinwine/tools/run_v4.sh"
 export MIME_TYPE=""
-export DEB_PACKAGE_NAME=@appname@
+export DEB_PACKAGE_NAME=@pkgname@
 export APPRUN_CMD="deepin-wine6-stable"
 DISABLE_ATTACH_FILE_DIALOG=""
 EXPORT_ENVS=""
