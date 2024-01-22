@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=before-dawn-bin
 _pkgname="Before Dawn"
-pkgver=0.26.0
-_electronversion=26
-pkgrel=4
+pkgver=0.28.0
+_electronversion=28
+pkgrel=1
 pkgdesc="A desktop screensaver app using web technologies"
 arch=('x86_64')
 url="https://github.com/muffinista/before-dawn"
@@ -20,9 +20,9 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/muffinista/before-dawn/v${pkgver}/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e1114355ac1a522628daf4ff5637694f3880918e6e4520d04c411f0fea6b2d28'
+sha256sums=('b3c0f1797002a3a92d99b61d8a3fdff1a4d47d91fe66e67ab36def078b6194e8'
             '2f9c033e00d3ac09f44d4819c7701eae9c37ca21ca1da29f3488eadc1b3c3c51'
-            '68febdc70b32bbf657eb6a771da5c97722ac5a4b93fe3be4f56eb6d1ec019485')
+            'a0cc6826161c9d7f95d984bc8a6af91611cd42fc11d8af339a4362f2911848c6')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -35,7 +35,6 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}/data"
     cp -r "${srcdir}/opt/${_pkgname}/resources/savers" "${pkgdir}/usr/lib/${pkgname%-bin}/data"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
