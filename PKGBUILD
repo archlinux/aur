@@ -1,17 +1,20 @@
 # Maintainer:  m0ar < edvard [at] hubinette dot me>
+# Co-Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 
 pkgname=cloudflare-wrangler2
 pkgver=3.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line tool for working with Cloudflare Workers'
 arch=('x86_64')
 url="https://www.npmjs.com/package/wrangler"
-license=('Apache' 'MIT')
+license=('MIT OR Apache-2.0')
+depends=('nodejs' 'glibc')
 makedepends=('npm')
-depends=('nodejs')
-source=("$pkgname-$pkgver.tar.gz::https://registry.npmjs.org/wrangler/-/wrangler-$pkgver.tgz")
+source=("$pkgname-$pkgver.tar.gz::https://registry.npmjs.org/wrangler/-/wrangler-$pkgver.tgz"
+        "LICENSE-MIT::https://raw.githubusercontent.com/cloudflare/workers-sdk/main/LICENSE-MIT")
 noextract=("$pkgname-$pkgver.tar.gz")
-md5sums=('65d49a389fde561b75d9abe29b3ebe3e')
+md5sums=('65d49a389fde561b75d9abe29b3ebe3e'
+         'a02f91b8dd3b6abe453990b6e5bd19f7')
 
 package() {
   npm install \
@@ -26,5 +29,7 @@ package() {
   # npm gives ownership of ALL FILES to build user
   # https://bugs.archlinux.org/task/63396
   chown -R root:root "${pkgdir}"
+
+  install -Dm644 'LICENSE-MIT' -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
