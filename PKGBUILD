@@ -1,17 +1,17 @@
-# Maintainer: Thomas "Ventto" Venriès <thomas.venries@gmail.com>
+# Maintainer: ThePuzzlemaker <tpzker@thepuzzlemaker.info>
 
 pkgname=lux
-pkgver=1.2
+pkgver=1.21
 pkgrel=1
 pkgdesc='POSIX Shell script to easily control brightness on backlight controllers.'
 arch=('any')
 url="https://github.com/Ventto/${pkgname}.git"
-license=('GPL3')
+license=('MIT')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 makedepends=('help2man')
 source=("https://github.com/Ventto/lux/archive/v${pkgver}.tar.gz")
-sha256sums=('d9f52ad31aa90bf94b120c62d06fbcfe68070b4869b59745095f663d09ad1395')
+sha256sums=('73fe3cb3b3e54b36812e1fb0da1b0f9c9b67a8339ef1468acf335b8fa0e52402')
 
 package() {
   cd ${srcdir}/${pkgname}-${pkgver}
