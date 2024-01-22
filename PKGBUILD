@@ -1,8 +1,8 @@
 pkgname=hostapd-wifi6
 pkgdesc='hostapd than enabled AC/AX and ACS support and applied intel lar patch, provide useful service unit hostapd@.service and hostapd-ACS@.service'
 pkgver=2.10
-pkgrel=9
-arch=('x86_64')
+pkgrel=10
+arch=('x86_64' 'aarch64')
 url=https://w1.fi/hostapd
 license=('BSD')
 depends=('glibc' 'libnl' 'openssl' 'sqlite'
@@ -10,6 +10,11 @@ depends=('glibc' 'libnl' 'openssl' 'sqlite'
 )
 conflicts=('hostapd')
 provides=('hostapd')
+backup=(
+  'etc/hostapd/hostapd.'{accept,conf,deny,eap_user,radius_clients,vlan,wpa_psk}
+  'etc/hostapd/hostapd_'{2.4Ghz,5Ghz}'.conf'
+  'etc/hostapd/preferred_config'
+)
 source=(
   "https://w1.fi/releases/hostapd-$pkgver.tar.gz"
   'https://tildearrow.org/storage/hostapd-2.10-lar.patch'
