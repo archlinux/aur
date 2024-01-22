@@ -1,7 +1,8 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgname=jellyfin-media-player-git
-pkgver=r1568.15d2475
+pkgver=r1729.ee0717e
+_webver=10.8.13
 pkgrel=2
 pkgdesc='Jellyfin Desktop Client'
 arch=('i686' 'x86_64')
@@ -12,9 +13,9 @@ conflicts=('jellyfin-media-player')
 depends=('mpv' 'libcec' 'sdl2' 'p8-platform' 'protobuf' 'qt5-webengine' 'qt5-x11extras' 'qt5-quickcontrols')
 makedepends=('cmake' 'git' 'python')
 source=('git+https://github.com/jellyfin/jellyfin-media-player.git'
-        'jwc-10.8.0.tar.gz::https://github.com/iwalton3/jellyfin-web-jmp/releases/download/jwc-10.8.0/dist.zip')
+        "jellyfin-web_${_webver}.tar.gz::https://repo.jellyfin.org/releases/server/portable/versions/stable/web/${_webver}/jellyfin-web_${_webver}_portable.tar.gz")
 sha256sums=('SKIP'
-            '3fb94bd9ae827a3391c4d89efea9ada1e646d279b265b2e3abc9787560c954b5')
+            'cbd00c3c3a56d7d17d63dc6060b5cbc011820a83cde64b7f9c93690fbac174d6')
 
 pkgver() {
   cd jellyfin-media-player
@@ -25,7 +26,7 @@ build() {
   cd "${srcdir}/jellyfin-media-player"
   mkdir -p build
   cd build
-  cp -r "${srcdir}/dist" .
+  cp -r "${srcdir}/jellyfin-web_${_webver}" dist
   cmake -DCMAKE_INSTALL_PREFIX='/usr/' -DCMAKE_BUILD_TYPE='Debug' -DQTROOT=./qt -DCMAKE_SKIP_RPATH=1 ..
   cmake build .
 }
