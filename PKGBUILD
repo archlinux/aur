@@ -3,13 +3,13 @@ _appname=adrive
 pkgname="deepin-wine-${_appname}"
 _pkgname="com.${_appname}.deepin"
 _officalname=aDrive
-pkgver=4.9.16
+pkgver=4.11.0
 _deepinver=2.2.6deepin8
 pkgrel=1
 pkgdesc="Aliyun aDrive on Deepin Wine 6"
 arch=("x86_64")
 url="https://www.aliyundrive.com"
-license=('custom')
+license=('LicenseRef-custom')
 conflicts=("${_appname}")
 provides=("${_appname}")
 depends=(
@@ -33,10 +33,10 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('9db53833b86b3ad941f23bdefa354170ec432c3b15980621e8011261d5617843'
-            'bb36e6204d6be7073ca9b13f273b55f788cd48dc9a849251a26b3239438b08d4'
+            '507bf86e5dffe75fc9cdd8caea0e1b284dd10dfeba435e331040c305958df7a6'
             '9fc08b3f39ab99a3335449f6ea69aff4bb67d8b4dd2b243009738369af544201'
-            '44ca9db05446acc42bd3c1d7dfe2d68b286b23203ab2105b9f77a9b8110205d2'
-            '797f5242f1d12ce443903193b4ab7f95d013cd55d9a9610749f6b4602f4308b2')
+            '5267ed2dad4ff68930aa39f03484678644ff59952cdb10ad338bcbd32857d8d7'
+            'f6a28a3d04d9793ecc8944d460bf051af80528fb0a56a4d2f0f1295d809ddbec')
 build() {
     sed "s|@bottlename@|Deepin-${_officalname}|g" -i "${srcdir}/${pkgname}.install"
     sed -e "s|@bottlename@|Deepin-${_officalname}|g" \
