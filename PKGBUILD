@@ -1,6 +1,6 @@
 # Maintainer: <agustinballesteros04@gmail.com>
 pkgname=kew-git
-pkgver=v2.0.4.r0.gbf4685d
+pkgver=v2.0.4.r1.g8d2c62e
 pkgrel=1
 pkgdesc="A command-line music player"
 arch=('x86_64')
