@@ -1,0 +1,34 @@
+# configuration for hostpad-preferred.service behavior.
+# loaded via 'source' command so this file actual is a shell file.
+
+# bridge for wireless
+# also present in '/etc/hostapd/hostapd_[2.4Ghz/5Ghz].conf'
+# default is 'br-wl'
+#br='br-wl'
+
+# physical wireless interface name
+# default is '$(get_wireless_interface)'
+# 'get_wireless_interface' is defined in /usr/share/bin/hostapd-preferred.sh
+#phys_wl0=$(get_wireless_interface)
+
+# found physical wireless interface will set to this name
+# also present in '/etc/hostapd/hostapd_2.4Ghz.conf'
+# default is 'wlan0'
+#wl0='wlan0'
+
+# virtual wireless interface name
+# wireless card must support 'add_interface' and 'set_interface' command
+# usually use for dual-band hotspot
+# also present in '/etc/hostapd/hostapd_5Ghz.conf'
+# default is 'wlan1'
+#wl1='wlan1'
+
+# '$wl0' and '$wl1' used hostapd config file, located in /etc/hostapd
+# default is '2.4Ghz' and '5Ghz'
+#wl0_conf='2.4Ghz'
+#wl1_conf='5Ghz'
+
+# the address of bridge '$br'
+# default is '192.168.1.1/24'
+#addr='192.168.1.1/24'
+

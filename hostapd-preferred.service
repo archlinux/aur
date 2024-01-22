@@ -1,0 +1,13 @@
+[Unit]
+Description=Setup hotspot configuration and broadcast WiFi
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/share/bin/hostapd_preferred.sh
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
+
