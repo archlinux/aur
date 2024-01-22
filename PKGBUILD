@@ -4,12 +4,16 @@
 
 pkgname=ttfautohint
 pkgver=1.8.4
-pkgrel=1
+pkgrel=3
 pkgdesc="Provides automated hinting process for web fonts"
 arch=(i686 x86_64)
 url="http://www.freetype.org/$pkgname"
-license=(GPL custom)
-depends=(freetype2 harfbuzz qt5-base)
+license=(FTL GPL-2.0-only)
+depends=(freetype2
+         gcc-libs
+         glibc
+         harfbuzz
+         qt5-base)
 source=(https://download.savannah.gnu.org/releases/freetype/$pkgname-$pkgver.tar.gz{,.sig})
 sha256sums=('8a876117fa6ebfd2ffe1b3682a9a98c802c0f47189f57d3db4b99774206832e1'
             'SKIP')
@@ -20,8 +24,7 @@ build() {
   ./configure \
     --prefix=/usr \
     --without-doc \
-    --with-qt=/usr/lib/qt \
-    --with-freetype-config="pkg-config freetype2"
+    --with-qt=/usr/lib/qt
   make
 }
 
