@@ -5,14 +5,14 @@
 # Contributor: Nick B <Shirakawasuna at gmail _dot_com>
 
 _pkgname=XML
-_pkgver=3.99-0.16
+_pkgver=3.99-0.16.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Tools for Parsing and Generating XML Within R and S-Plus"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(BSD)
+license=('BSD-3-Clause')
 depends=(
   libxml2
   r
@@ -22,8 +22,8 @@ optdepends=(
   r-rcurl
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('afa1fd1496595b5aa4f6cb758bad0122')
-b2sums=('90a917aa23ce6c617e9136af62f699703a59d2732a86c81c12e77456b046c93efebebf790618de6fb2b6ae807bb6cc4fdc31a60d63120e99f45444a46c8fbb7a')
+md5sums=('dcb2530275a8002c3746617398e5d83c')
+b2sums=('f8925fede3d83d5bd33328714da724816fbc70be5002ea3bf6adf4471410caf669c212fc06ffdef35a54d5f398d03a02162167d69a424a4188b030f0b25931ff')
 
 build() {
   mkdir build
