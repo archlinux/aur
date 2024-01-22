@@ -91,7 +91,7 @@ package_wordnet-tk() {
 
 package_wordnet-cli() {
   pkgdesc="A CLI fontend for the WordNet Database"
-  replaces=('wordnet')
+  provides=('wordnet')
   conflicts=('wordnet')
   depends=('wordnet-common')
 
