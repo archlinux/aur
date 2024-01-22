@@ -12,7 +12,6 @@ _cachy_config=${_cachy_config-y}
 ### Selecting the CPU scheduler
 # ATTENTION - only one of the following values can be selected:
 # 'bore' - select 'Burst-Oriented Response Enhancer'
-# 'tt' - select 'Task Type Scheduler by Hamad Marri'
 # 'hardened' - select 'BORE Scheduler hardened' ## kernel with hardened config and hardening patches with the bore scheduler
 # 'cachyos' - select 'EEVDF-BORE Variant Scheduler'
 # 'eevdf' - select 'EEVDF Scheduler'
@@ -20,7 +19,6 @@ _cachy_config=${_cachy_config-y}
 # 'rt-bore' - select Burst-Oriented Response Enhancer, but includes a series of realtime patches
 # 'sched-ext' - select 'sched-ext' Scheduler, based on EEVDF
 _cpusched=${_cpusched-cachyos}
-
 
 ### Tweak kernel options prior to a build via nconfig
 _makenconfig=${_makenconfig-}
@@ -37,6 +35,7 @@ _makegconfig=${_makegconfig-}
 # NUMA is optimized for multi-socket motherboards.
 # A single multi-core CPU actually runs slower with NUMA enabled.
 # See, https://bugs.archlinux.org/task/31187
+# It seems that in 2023 this is not really a huge regression anymore
 _NUMAdisable=${_NUMAdisable-}
 
 # Compile ONLY used modules to VASTLYreduce the number of modules built
@@ -111,7 +110,7 @@ _damon=${_damon-}
 _lrng_enable=${_lrng_enable-}
 
 # CPU compiler optimizations - Defaults to prompt at kernel config if left empty
-# AMD CPUs : "k8" "k8sse3" "k10" "barcelona" "bobcat" "jaguar" "bulldozer" "piledriver" "steamroller" "excavator" "zen" "zen2" "zen3"
+# AMD CPUs : "k8" "k8sse3" "k10" "barcelona" "bobcat" "jaguar" "bulldozer" "piledriver" "steamroller" "excavator" "zen" "zen2" "zen3" "zen4"
 # Intel CPUs : "mpsc"(P4 & older Netburst based Xeon) "atom" "core2" "nehalem" "westmere" "silvermont" "sandybridge" "ivybridge" "haswell" "broadwell" "skylake" "skylakex" "cannonlake" "icelake" "goldmont" "goldmontplus" "cascadelake" "cooperlake" "tigerlake" "sapphirerapids" "rocketlake" "alderlake"
 # Other options :
 # - "native_amd" (use compiler autodetection - Selecting your arch manually in the list above is recommended instead of this option)
@@ -164,10 +163,10 @@ else
     pkgsuffix=cachyos-rc
     pkgbase=linux-$pkgsuffix
 fi
-_major=6.7
-_minor=0
+_major=6.8
+_minor=1
 #_minorc=$((_minor+1))
-_rcver=rc8
+_rcver=rc1
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 #_stable=${_major}
@@ -175,7 +174,7 @@ _stable=${_major}-${_rcver}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux EEVDF-BORE scheduler Kernel by CachyOS and with some other patches and other improvements'
-pkgrel=2
+pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -193,7 +192,7 @@ if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_k
     )
 fi
 
-if [ "$_cpusched" = "sched-ext" ]; then
+if [[ "$_cpusched" = "sched-ext" || "$_cpusched" = "cachyos" ]]; then
     depends+=(scx-scheds)
 fi
 
@@ -214,7 +213,7 @@ fi
 # ZFS support
 if [ -n "$_build_zfs" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=2d940c7c29a0ba5f84f50ea9773dea237e27bb08")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=d9cb42da999e77a2ea3ee5488a5ca0f4c27db2fe")
 fi
 
 # NVIDIA pre-build module support
@@ -223,14 +222,12 @@ if [ -n "$_build_nvidia" ]; then
              "$_patchsource/misc/nvidia/nvidia-drm-hotplug-workqueue.patch")
 fi
 
-## ToDo: Adjust for new Scheduler Changes
+## List of CachyOS schedulers
 case "$_cpusched" in
-    cachyos) # CachyOS Scheduler (EEVDF + BORE)
+    cachyos|sched-ext) ## SCHED-EXT
         source+=("${_patchsource}/sched/0001-bore-cachy.patch");;
-    tt) ## TT Scheduler
-        source+=("${_patchsource}/sched/0001-tt-cachy.patch");;
     bore) ## BORE Scheduler
-        source+=("${_patchsource}/sched/0001-bore.patch");;
+        source+=("${_patchsource}/sched/0001-bore-cachy.patch");;
     rt) ## EEVDF with RT patches
         source+=("${_patchsource}/misc/0001-rt.patch"
                  linux-cachyos-rt.install);;
@@ -241,10 +238,12 @@ case "$_cpusched" in
     hardened) ## Hardened Patches with BORE Scheduler
         source+=("${_patchsource}/sched/0001-bore-cachy.patch"
                  "${_patchsource}/misc/0001-hardened.patch");;
-    sched-ext) ## Sched-ext with BORE
-        source+=("${_patchsource}/sched/0001-sched-ext.patch"
-                 "${_patchsource}/sched/0001-bore-cachy.patch");;
 esac
+
+# BORE Tuning Sysctl
+if [ -n "$_bore_tuning_sysctl" ]; then
+    source+=("${_patchsource}/misc/bore-tuning-sysctl.patch")
+fi
 
 ## lrng patchset
 if [ -n "$_lrng_enable" ]; then
@@ -302,12 +301,11 @@ prepare() {
     [ -z "$_cpusched" ] && _die "The value is empty. Choose the correct one again."
 
     case "$_cpusched" in
-        tt)  scripts/config -e TT_SCHED -e TT_ACCOUNTING_STATS;;
-        bore|hardened|cachyos) scripts/config -e SCHED_BORE;;
+        cachyos|sched-ext) scripts/config -e SCHED_CLASS_EXT -e SCHED_BORE;;
+        bore|hardened) scripts/config -e SCHED_BORE;;
         eevdf) ;;
         rt) scripts/config -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -e PREEMPT_RT -d PREEMPT_DYNAMIC -d PREEMPT_BUILD;;
         rt-bore) scripts/config -e SCHED_BORE -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -e PREEMPT_RT -d PREEMPT_DYNAMIC -d PREEMPT_BUILD;;
-        sched-ext) scripts/config -e SCHED_BORE -e SCHED_CLASS_EXT;;
         *) _die "The value $_cpusched is invalid. Choose the correct one again.";;
     esac
 
@@ -558,7 +556,7 @@ prepare() {
     ### Disable DEBUG
     # Doesn't work with sched-ext
     # More infos here: https://github.com/CachyOS/linux-cachyos/issues/187
-    if [[ "$_cpusched" != "sched-ext" &&  -n "$_disable_debug" ]]; then
+    if [[ "$_cpusched" != "sched-ext" || "$_cpusched" != "cachyos" ]] && [ -n "$_disable_debug" ]; then
         scripts/config -d DEBUG_INFO \
             -d DEBUG_INFO_BTF \
             -d DEBUG_INFO_DWARF4 \
@@ -826,8 +824,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('99d12bd62dd46076ac5fb1412e367480834cc104571588dd764ba96525b713a84f3938ef13eabec26ae8ef800fbf112af00f624c84edbfc057b1300d213077f4'
-        'c7c3eef86b0aefc7ce7c8cc48b4efbb0bfecffc675c63a9e684ed152adf8370e7cfcd9d7b7899d73a6a76c643cf9138472e73fbdd2ac0b453733fcad139a5954'
+b2sums=('e8759c81842639eff78d7938f302a73b4eb0b3e29baa959ec3e2c730a003f9e73608285f1dfc4d47c7ec88f5aa13b3aace4fb973ef3455f2d7b683be66676f52'
+        'c0f9e4b8caac7607da9c299f3e49e811df50ec869ada08e4e5dffad820077e77de79f11de3febb358ae7eee18d1ded4dfc4f07358e0723409ba32a532a163e0b'
         '43ef7a347878592740d9eb23b40a56083fa747f7700fa1e2c6d039d660c0b876d99bf1a3160e15d041fb13d45906cdb5defef034d4d0ae429911864239c94d8d'
-        'ca3e14dd0ab192e4b45408dd473902f76f53bf56ad87ebcd3d6d6127084fc7f2d951674eec31a0faea2a566312c030965edab417947e310aafce4ad77c0f7802'
-        'ef93ad1ca9beddc2412340b0c799ad67a94e34204c925f1bf5816be759d544d1f95a0fd31ce7309fcc87836755d434b74241ce89feba312ad605eb53254ea1a1')
+        'b3e912d8c50a36782206f0857f4c642ab31231efdf15e09f0a6a28df4de6bcc7b4e6710b4708bed23498c86f92f76f2533d01f132c0efc2a4c3957d16ba23824'
+        '9e698e17d3ac975250f47589fb1757705fb813b7c17c387014fecf96d0a875228de1a77bbe0772687e11557daee528d52cc2000433bcc66cab13ec0268e420a0')
