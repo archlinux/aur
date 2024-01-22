@@ -1,0 +1,29 @@
+From a6739cf2b3880795a45f4b5c861d7d3c2376188e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Kondor=20D=C3=A1niel?= <kondor.dani@gmail.com>
+Date: Sat, 20 Jan 2024 00:16:11 +0100
+Subject: [PATCH] egl: set a zero swap interval on Wayland
+
+---
+ src/implementations/cairo-dock-egl.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/implementations/cairo-dock-egl.c b/src/implementations/cairo-dock-egl.c
+index 137faa26..0583cd17 100644
+--- a/src/implementations/cairo-dock-egl.c
++++ b/src/implementations/cairo-dock-egl.c
+@@ -200,7 +200,11 @@ static void _init_surface (G_GNUC_UNUSED GtkWidget *pWidget, GldiContainer *pCon
+ 	// create an EGL surface for this window
+ 	EGLDisplay *dpy = s_eglDisplay;
+ 	if (s_eglX11) egl_init_surface_X11 (pContainer, dpy, s_eglConfig);
+-	if (s_eglWayland) egl_init_surface_wayland (pContainer, dpy, s_eglConfig);
++	if (s_eglWayland) {
++		egl_init_surface_wayland (pContainer, dpy, s_eglConfig);
++		_container_make_current (pContainer);
++		eglSwapInterval (dpy, 0);
++	}
+ }
+ 
+ static void _destroy_surface (G_GNUC_UNUSED GtkWidget* pWidget, GldiContainer *pContainer) {
+-- 
+2.43.0
+
