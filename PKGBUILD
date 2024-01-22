@@ -2,21 +2,17 @@
 _appname=eCloud
 _officalname=ecloud
 pkgname="deepin-wine-${_officalname}"
-pkgver=6.6.0
+pkgver=6.6.0spark7
 _sparkname=cn.189.cloud.spark
-_sparkver="6.5.8spark6"
-pkgrel=2
+pkgrel=1
 pkgdesc="China Telecom eCloud Client on Deepin Wine6.天翼云盘客户端,文件云端存储,从此抛弃U盘,文件自动同步,便捷上传下载."
 arch=("x86_64")
 url="https://cloud.189.cn/"
-license=('custom:freeware')
+license=('LicenseRef-freeware')
 depends=(
-    'deepin-wine6-stable'
+    'deepin-wine8-stable'
     'spark-dwine-helper'
     'xdg-utils'
-    'lib32-libx11'
-    'lib32-libxext'
-    'lib32-glibc'
 )
 optdepends=(
     'wqy-microhei'
@@ -29,20 +25,18 @@ conflicts=()
 provides=("${_officalname}")
 install="${pkgname}.install"
 source=(
-    "${pkgname}-${_sparkver}.deb::https://mirrors.sdu.edu.cn/spark-store/store/network/${_sparkname}/${_sparkname}_${_sparkver}_i386.deb"
-    "${_officalname}-${pkgver}.exe::https://github.com/zxp19821005/My_AUR_Files/releases/download/${_officalname}-v${pkgver}/${_officalname}_${pkgver}.exe"
+    "${pkgname}-${pkgver}.deb::https://mirrors.sdu.edu.cn/spark-store/store/network/${_sparkname}/${_sparkname}_${pkgver}_all.deb"
     "LICENSE.html"
     "${pkgname}.install"
     "${pkgname}.sh"
 )
-sha256sums=('ad85da24a5244be02f9049cc34d1de8dbf0bc813e6192ff93b7e4c044d0cb627'
-            '0eef06eca3ec9f268db716c921967d48fb887ae4fe63fae1a3c15c03cfdd7597'
+sha256sums=('ece91916014866f04f760ef42206c905c0608c18e0a325b2ba07fcf23a6a4f2a'
             '1ed45cc3d1362c9a00f995dc22ad452203fc9e786f703e8d73eed4ecc3b97d35'
-            '9fc08b3f39ab99a3335449f6ea69aff4bb67d8b4dd2b243009738369af544201'
-            'b0a8caceab06e983c658113f35f8a969fa9be60691e1104000c7f4b6534edb8e')
+            '48e7a80b45d16321f794020aaa9be9c46ba76d2da8c52d86f6e2bbfe6abdf13b'
+            'b32b70af974ed22c7a63bb4d655ddc2f1059374b6b2553637a365272a01da54d')
 build() {
-    sed "s|@bottlename@|Deepin-${_appname}|g" -i "${srcdir}/${pkgname}.install"
-    sed -e "s|@bottlename@|Deepin-${_appname}|g" \
+    sed "s|@bottlename@|${_appname}|g" -i "${srcdir}/${pkgname}.install"
+    sed -e "s|@bottlename@|${_appname}|g" \
         -e "s|@appver@|${pkgver}|g" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@pathname@|${_officalname}|g" \
@@ -54,17 +48,6 @@ build() {
     sed -e "s|\"/opt/apps/${_sparkname}/files/run.sh\"|${pkgname}|g" \
         -e "s|Icon=${_sparkname}|Icon=${pkgname}|g" \
         -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${_sparkname}.desktop"
-    mkdir -p "${srcdir}/tmp"
-    msg "Extracting Deepin Wine ${_officalname} archive ..."
-    7za x -aoa "${srcdir}/opt/apps/${pkgname}/files/files.7z" -o"${srcdir}/tmp"
-      
-    msg "Extracting latest ${_officalname} installer to ${srcdir}/tmp/drive_c/Program Files/${_officalname} ..."
-    7z x -aoa "${srcdir}/${_officalname}-${pkgver}.exe" -o"${srcdir}/tmp/drive_c/Program Files/${_officalname}"
-    rm -rf "${srcdir}/tmp/drive_c/Program Files/${_officalname}/\$PLUGINSDIR" "${srcdir}/tmp/drive_c/Program Files/${_officalname}/\$TEMP"
-      
-    msg "Repackaging app archive ..."
-    rm -rf "${srcdir}/opt/apps/${pkgname}/files/files.7z"
-    7za a -t7z -r "${srcdir}/opt/apps/${pkgname}/files/files.7z" "${srcdir}/tmp/*"
 }
 package() {
     mkdir -p "${pkgdir}/opt/apps"
