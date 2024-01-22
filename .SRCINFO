@@ -1,6 +1,6 @@
 pkgbase = mintstick-git
 	pkgdesc = Format or write images to USB sticks (Linux Mint tool)
-	pkgver = r272.6511182
+	pkgver = r287.4e9b0ab
 	pkgrel = 1
 	url = https://github.com/linuxmint/mintstick
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = mintstick-git
 	depends = python-dbus
 	depends = python-gobject
 	depends = python-pyparted
+	depends = python-unidecode
 	depends = python-xapp
 	depends = udisks2
 	depends = xapps
