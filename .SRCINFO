@@ -1,7 +1,7 @@
 pkgbase = netsend-bin
 	pkgdesc = An intranet file transfer tool based on umijs + electron + javascript.一个基于 umijs + electron + javascript 构建的内网文件传输工具
 	pkgver = 2.0.5
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/williamnie/netSend
 	arch = x86_64
 	license = GPL2
@@ -12,6 +12,6 @@ pkgbase = netsend-bin
 	source = netsend-2.0.5.deb::https://github.com/williamnie/netSend/releases/download/v2.0.5.5/NetSend_2.0.5_amd64.deb
 	source = netsend.sh
 	sha256sums = 88f7f7cfc21efbe66ab34b1283763c10b37bde802d2d53a329eed62d49779f0b
-	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
 
 pkgname = netsend-bin
