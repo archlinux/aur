@@ -1,10 +1,10 @@
 pkgbase = koodo-reader-bin
 	pkgdesc = A modern ebook manager and reader with sync and backup capacities
 	pkgver = 1.6.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/troyeguo/koodo-reader
 	arch = x86_64
-	license = AGPL3
+	license = AGPL-3.0-only
 	depends = gtk3
 	depends = libnotify
 	depends = nss
