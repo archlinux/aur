@@ -5,6 +5,7 @@ pkgbase = git-notifier
 	url = http://www.icir.org/robin/git-notifier/
 	arch = any
 	license = LicenseRef-BSD
+	makedepends = python-docutils
 	depends = python
 	depends = git
 	source = https://github.com/rsmmr/git-notifier/archive/v0.8.tar.gz

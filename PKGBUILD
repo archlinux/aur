@@ -7,6 +7,7 @@ pkgdesc="Email change notifications for git (and GitHub)"
 arch=(any)
 url="http://www.icir.org/robin/git-notifier/"
 license=('LicenseRef-BSD')
+makedepends=('python-docutils')
 depends=('python' 'git')
 source=("https://github.com/rsmmr/git-notifier/archive/v$pkgver.tar.gz")
 sha256sums=('f040fe132297a21c17bcc16fda2b47232fc795b1a4e26c5d718572f55f83a1a2')
