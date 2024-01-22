@@ -1,11 +1,11 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=whatip
 pkgver=1.2
 pkgrel=1
 pkgdesc="Info on your IP"
 arch=('any')
 url="https://gabmus.gitlab.io/whatip"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('iproute2' 'libadwaita' 'python-requests' 'python-netaddr' 'python-gobject')
 makedepends=('blueprint-compiler' 'gobject-introspection' 'meson')
 checkdepends=('appstream')
