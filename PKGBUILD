@@ -6,8 +6,8 @@
 
 pkgbase=linux-mainline               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_tag=v6.7
-pkgver=6.7
+_tag=v6.8-rc1
+pkgver=6.8rc1
 pkgrel=1
 pkgdesc="Linux Mainline"
 arch=(x86_64)
@@ -29,6 +29,7 @@ makedepends=(
   graphviz
   imagemagick
   python-sphinx
+  python-yaml
   texlive-latexextra
 )
 options=('!strip')
