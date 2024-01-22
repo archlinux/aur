@@ -1,16 +1,17 @@
 pkgbase = dynamic-dns-netcup-api
 	pkgdesc = A simple dynamic DNS client written in PHP for use with the netcup DNS API.
 	pkgver = 4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/stecklars/dynamic-dns-netcup-api
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = php-interpreter
 	backup = etc/dynamic-dns-netcup-api/config.php
-	source = https://github.com/stecklars/dynamic-dns-netcup-api/archive/refs/tags/v4.0.tar.gz
+	source = git+https://github.com/stecklars/dynamic-dns-netcup-api.git#commit=c065cb62a5966ec3b829835ac42f0b5d6fa107df
 	source = dynamic-dns-netcup-api.service
 	source = dynamic-dns-netcup-api.timer
-	sha256sums = 2c6d94e6b3fe863878dda9071aadf4cae4153367639c0e48f85b632e765c356a
+	sha256sums = SKIP
 	sha256sums = 359db333e91a49c9a9413dc52f524ef47c2192186cb7edfbf5277cd54bb5cb7d
 	sha256sums = e47b47ba368cbaf09cb63fdbeaef632f6fd358e6994440d8d3a682ee4510e648
 
