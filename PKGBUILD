@@ -2,7 +2,7 @@
 # Contributor: pinks <aur at papepati dot page>
 
 pkgname=biome
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc='Formatter, linter, and more for Javascript, Typescript, JSON, and CSS'
 arch=(x86_64)
@@ -15,7 +15,7 @@ makedepends=(cargo)
 replaces=(rome)
 _archive="$pkgname-cli-v$pkgver"
 source=("$_url/archive/cli/v$pkgver/$_archive.tar.gz")
-sha256sums=('0fcadbf7454285a2f6380d33dddc04f86b5756431570c15d9292989037bf4910')
+sha256sums=('07c2bff4075a33d3891f640d466f0263bd57a77e76012e2df571e56ca8387a05')
 
 prepare() {
 	cd "$_archive/crates/${pkgname}_cli"
