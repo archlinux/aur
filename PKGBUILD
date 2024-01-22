@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=requestly-git
 _pkgname=Requestly
-pkgver=1.5.15.r0.gd7389cc
+pkgver=1.6.0.r0.gc5dfd15
 _electronversion=23
 _nodeversion=16
 pkgrel=1
@@ -31,7 +31,7 @@ source=(
 )
 sha256sums=('SKIP'
             'SKIP'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -48,7 +48,7 @@ build() {
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -f -n -q --categories "Development" --name "${_pkgname}" --exec "${pkgname%-git}"
+    gendesk -f -n -q --categories "Development" --name "${_pkgname}" --exec "${pkgname%-git} %U"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
