@@ -3,7 +3,7 @@
 
 pkgname=python-asciimatics
 _name=${pkgname//python-}
-pkgver=1.14.0
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="A cross platform package to do curses-like operations, plus higher level APIs and widgets to
 create text UIs and ASCII art animations"
@@ -13,7 +13,7 @@ license=('Apache')
 depends=('python-wcwidth' 'python-pyfiglet' 'python-future' 'python-pillow')
 makedepends=('python-setuptools-scm')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('16d20ce42210b434eb05ba469ecdb8293ac7ed3c0ce0dd4f70e30d72d7602227')
+sha256sums=('cfdd398042727519d8b73e62b8ef82c0becfed4eb420899c3b96c98d0b96821a')
 
 build() {
     cd $_name-$pkgver
