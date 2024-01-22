@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Connect, control and sync devices"
 arch=('x86_64')
 url="https://valent.andyholmes.ca"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('evolution-data-server' 'gnutls' 'gstreamer' 'json-glib' 'libadwaita'
          'libpeas-2' 'libportal-gtk4' 'libpulse' 'libsysprof-capture' 'sqlite')
 makedepends=('git' 'meson' 'gobject-introspection' 'vala')
