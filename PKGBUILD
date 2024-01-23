@@ -1,5 +1,5 @@
 pkgname=mingw-w64-minizip
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Mini zip and unzip based on zlib (mingw-w64)'
 url='https://www.zlib.net/'
@@ -10,7 +10,7 @@ options=('!buildflags' 'staticlibs' '!strip')
 depends=('mingw-w64-zlib')
 source=("https://zlib.net/zlib-${pkgver}.tar.gz"{,.asc})
 validpgpkeys=('5ED46A6721D365587791E2AA783FCD8E58BCAFBA') # Mark Adler <madler@alumni.caltech.edu>
-sha256sums=('ff0ba4c292013dbc27530b3a81e1f9a813cd39de01ca5e0f8bf355702efa593e'
+sha256sums=('9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23'
             'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
