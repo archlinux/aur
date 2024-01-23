@@ -1,0 +1,12 @@
+[Unit]
+Description=Streaming server using the NVIDIA GameStream / Moonlight protocol.
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Environment=RUST_LOG=moonshine=info
+ExecStart=/usr/bin/moonshine /etc/moonshine/config.toml
+WorkingDirectory=/etc/moonshine
+
+[Install]
+WantedBy=graphical.target

@@ -1,0 +1,13 @@
+pkgbase = moonshine-git
+	pkgdesc = Server for streaming the desktop using the NVIDIA GameStream / Moonlight protocol.
+	pkgver = r128.35225f9
+	pkgrel = 1
+	url = https://github.com/hgaiser/moonshine
+	arch = x86_64
+	license = custom
+	source = moonshine::git+https://github.com/hgaiser/moonshine
+	source = moonshine.service
+	sha256sums = SKIP
+	sha256sums = b49624ca9e42748e09764d9a03b5baafe3ff078f22c238023ebe7ad1cb1265d1
+
+pkgname = moonshine-git
