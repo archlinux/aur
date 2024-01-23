@@ -3,7 +3,7 @@
 
 pkgbase=can-utils-git
 pkgname=can-utils-git
-pkgver=2023.03.r90.g31432ae
+pkgver=2023.03.r111.g186bd96
 pkgrel=2
 groups=()
 pkgdesc="Linux-CAN / SocketCAN user space applications"
@@ -11,10 +11,11 @@ arch=(x86_64
     aarch64
     riscv64)
 url="https://github.com/linux-can/can-utils"
-license=('GPLv2')
+license=('GPL-2.0-only' 'BSD-3-Clause')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
-depends=(glibc)
+depends=(glibc
+    bash)
 makedepends=(git
     cmake
     ninja)
