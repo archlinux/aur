@@ -1,6 +1,6 @@
 pkgbase = refinery_cli
 	pkgdesc = Provides the CLI for the Refinery crate
-	pkgver = 0.8.11
+	pkgver = 0.8.12
 	pkgrel = 1
 	url = https://crates.io/crates/refinery_cli
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = refinery_cli
 	depends = gcc-libs
 	depends = openssl
 	depends = sqlite
-	source = refinery_cli-0.8.11.tar.gz::https://crates.io/api/v1/crates/refinery_cli/0.8.11/download
-	sha512sums = 55aa5562b294ef595329edb214c99f43096aa36bce6dc13a410cec3e790a2094dd2b19938c1233dbc2d5c936cfa3b240cfdc4be32a4c84b60064b11ea9b5bf6e
+	source = refinery_cli-0.8.12.tar.gz::https://crates.io/api/v1/crates/refinery_cli/0.8.12/download
+	sha512sums = b30427f5265a8074afff3af5711eb1f536c8f2ddb97e5af16ea5b13f2ce6b5cb9743b6b351c4ba1cea1dc7d29cbb6ffef4eb539b46f098a2b47132a1f5231a96
 
 pkgname = refinery_cli
