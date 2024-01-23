@@ -1,6 +1,6 @@
 pkgbase = hterm
 	pkgdesc = HTerm serial terminal
-	pkgver = 0.8.8
+	pkgver = 0.8.9
 	pkgrel = 1
 	url = http://www.der-hammer.info/terminal
 	arch = x86_64
