@@ -3,7 +3,7 @@
 BUILDENV+=(!check)
 
 pkgname=nixpacks
-pkgver=1.20.0
+pkgver=1.21.0
 pkgrel=1
 pkgdesc='App source + Nix packages + Docker = Image'
 arch=(x86_64)
@@ -18,23 +18,26 @@ optdepends=('go: support go projects'
 options=('!lto')
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('0f2cdd80879dc97d07ffb36a84aaf56f524b1466f88276afd210cdcc9f07e462')
+sha256sums=('559cfb9c73da174ea4999d5ac93cb19408244db15b4fc773e31a10d24489d772')
 
 prepare() {
 	cd "$_archive"
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+_srcenv() {
+	cd "$_archive"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
 }
 
 build() {
-	cd "$_archive"
-	local RUSTUP_TOOLCHAIN=stable
-	local CARGO_TARGET_DIR=target
+	_srcenv
 	cargo build --frozen --release --all-features
 }
 
 check() {
-	cd "$_archive"
-	local RUSTUP_TOOLCHAIN=stable
+	_srcenv
 	cargo test --frozen --all-features -- \
 		--skip "test_get_default_cache_key" \
 		--skip "docker_run_tests"
