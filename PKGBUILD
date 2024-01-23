@@ -132,8 +132,8 @@ build() {
   msg '3. Run the rust program(mozcdict-ext): SudachiDict , it may take some time...'
   cat ${srcdir}/small_lex.csv ${srcdir}/core_lex.csv ${srcdir}/notcore_lex.csv > all.csv
   cp ${srcdir}/mozc/src/data/dictionary_oss/id.def ./
-  ./target/$TARGET/release/dict-to-mozc sudachi all.csv > ../all-dict.txt
-  #ruby sudachi.rb -E -f ${srcdir}/small_lex.csv -f ${srcdir}/core_lex.csv -f ${srcdir}/notcore_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def > ../all-dict.txt
+  ./target/$TARGET/release/dict-to-mozc -s -i ./id.def -f all.csv > ../all-dict.txt
+  #ruby sudachi.rb -E -f ${srcdir}/small_lex.csv -f ${srcdir}/core_lex.csv -f ${srcdir}/notcore_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def > ../all-dict2.txt
   cd ..
 
   # added dicts.txt
@@ -147,9 +147,9 @@ build() {
   # ut-dictionarys
   msg '4. Run the rust program(mozcdict-ext): utdict , it may take some time...'
   cd sudachi || exit
-  ./target/$TARGET/release/dict-to-mozc utdict ../mozcdic-ut.txt >> ../all-dict.txt
-  #ruby utdict/utdict.rb -E -f mozcdic-ut.txt -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> all-dict.txt
+  ./target/$TARGET/release/dict-to-mozc -u -i ./id.def -f ../mozcdic-ut.txt >> ../all-dict.txt
   cd ..
+  #ruby utdict/utdict.rb -E -f mozcdic-ut.txt -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> all-dict2.txt
 
   msg '5. Run the awk scripts as dup.awk, it may take some time...'
   awk -f sudachi/dup.awk all-dict.txt > finish-dict.txt
