@@ -1,0 +1,13 @@
+pkgbase = oapi-cli-git
+	pkgdesc = New Outscale CLI
+	pkgver = nightly.linux.r0.gc6a9503
+	pkgrel = 1
+	url = https://github.com/outscale/oapi-cli
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = curl
+	source = git+https://github.com/outscale/oapi-cli.git
+	sha256sums = SKIP
+
+pkgname = oapi-cli-git
