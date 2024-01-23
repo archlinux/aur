@@ -2,7 +2,7 @@
 
 pkgname=whdd-git
 _pkgname=whdd
-pkgver=2.2.r16.g5da4969
+pkgver=3.0.1.r
 pkgrel=1
 pkgdesc='HDD diagnostic and recovery tool for Linux'
 url='https://github.com/whdd/whdd'
