@@ -1,10 +1,9 @@
 pkgbase = proxsuite
 	pkgdesc = The Advanced Proximal Optimization Toolbox
 	pkgver = 0.6.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Simple-Robotics/proxsuite
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = BSD-2-Clause
 	checkdepends = libmatio
 	makedepends = cmake
