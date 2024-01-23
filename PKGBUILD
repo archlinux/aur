@@ -1,6 +1,6 @@
 # Maintainer: Clemens D. <aur [at] cdaut [dot] de>
 pkgname='artemis-grading-bin'
-pkgver=4.8.5
+pkgver=4.8.6
 pkgrel=1
 pkgdesc="Grading tool for Artemis based exercises"
 arch=('x86_64' 'aarch64')
@@ -26,7 +26,7 @@ package() {
 }
 
 
-sha256sums_x86_64=('cc099f8148e28b936c9a09245c38564dc5302f8f3c97eb3a227488f098031b73'
+sha256sums_x86_64=('2617978a85ae753ee4b81d3391da0b63cc8b652ed2516b1c5a0aa1f06042c066'
                    '4047495c70f39905c6145bf66d352236d9a9de5c734a5f0f5335046c860588b0')
-sha256sums_aarch64=('cc099f8148e28b936c9a09245c38564dc5302f8f3c97eb3a227488f098031b73'
+sha256sums_aarch64=('2617978a85ae753ee4b81d3391da0b63cc8b652ed2516b1c5a0aa1f06042c066'
                     '4047495c70f39905c6145bf66d352236d9a9de5c734a5f0f5335046c860588b0')
