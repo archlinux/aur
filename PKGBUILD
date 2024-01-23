@@ -2,12 +2,12 @@
 
 pkgname=openocdcfg-generator
 pkgver=20.08.00.00
-pkgrel=3
+pkgrel=14
 epoch=
 pkgdesc="This is a python tool based on pydevicetree (GitHub/PyPI) which generates OpenOCD Configuration Files for Freedom Metal applications."
 arch=('any')
 url="https://github.com/sifive/openocdcfg-generator"
-license=('Apache')
+license=('Apache-2.0')
 groups=()
 depends=(python
     openocd 
@@ -22,7 +22,7 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=('!strip')
+options=()
 install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
