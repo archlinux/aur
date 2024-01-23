@@ -3,36 +3,36 @@ pkgname=tockler-bin
 _pkgname=Tockler
 pkgver=3.21.18
 _electronversion=16
-pkgrel=1
+pkgrel=2
 pkgdesc="An application that tracks your time by monitoring your active window title and idle time."
 arch=('x86_64')
 url="https://tockler.io/"
 _ghurl="https://github.com/MayGo/tockler"
-license=('GPL2')
+license=('GPL-2.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
-    'libx11'
-    'libxext'
-    'python-setuptools'
-    'libdbusmenu-glib'
-    'java-runtime'
-    'gtk2'
     'dbus-glib'
+    'libdbusmenu-glib'
+    'gtk2'
+    'nodejs'
     'python'
+    'python-setuptools'
+    'java-runtime'
     'perl'
 )
 makedepends=(
     'squashfuse'
 )
+options=('!strip')
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('0f9702f1ca0e390825171d3bdbbdf495e1dcc787c50531f39969ece1f3e656df'
-            '68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -40,7 +40,7 @@ build() {
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
 } 
 package() {
