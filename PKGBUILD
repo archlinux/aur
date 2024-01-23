@@ -2,17 +2,18 @@
 
 pkgbase=un-lock-git
 pkgname=un-lock-git
-pkgver=1.4.7.r1.gae060b7
+pkgver=1.4.7.r0.ge4bd8ff
 pkgrel=1
 pkgdesc="un-lock developed to retrieve encryptData(token) for Xiaomi devices for unlocking bootloader"
 arch=(any)
 url="https://github.com/offici5l/un-lock"
-license=('Apache')
+license=('Apache-2.0')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
 _pydeps=(requests
 #     pyshorteners
+    urllib3
     pycryptodomex
     termcolor)
 depends=(
