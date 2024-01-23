@@ -1,9 +1,9 @@
 # Maintainer: Martin Diehl <martin.diehl@kuleuven.be>
 pkgbase=damask
 pkgname=('damask' 'damask-grid' 'damask-mesh' 'python-damask')
-pkgver=3.0.0~alpha8
-pkgver_=3.0.0-alpha8
-pkgrel=4
+pkgver=3.0.0~beta
+pkgver_=3.0.0-beta
+pkgrel=1
 pkgdesc='DAMASK - The Duesseldorf Advanced Material Simulation Kit'
 arch=('x86_64')
 url='https://damask.mpie.de'
@@ -14,7 +14,7 @@ makedepends=('cmake' 'python-setuptools'
 optdepends=('paraview: post-processing')
 source=(https://damask.mpie.de/download/damask-${pkgver_}.tar.xz)
 
-sha512sums=('142aca21c51a23f8eb3cc0284ac8d837bedc6e6c20ec0c9ddb239842497239ebc3584d43c2b0e7919de4a4ecc4e180b810bfd46146058fafa3544ca0a5af2da2')
+sha512sums=('5ecf85c9e51f55275eec27a3ef369a71970d3ad9b4daaab5890861b769bee2f985d86d075eea5bdd9664e45107e427ee127d1857a5f38eb4edeb9974b842eef4')
 
 
 build() {
@@ -53,12 +53,12 @@ check() {
          -m ${example_dir}/material.yaml \
          -w $(mktemp -d)
 
-  #example_dir=$(pwd)/${pkgbase}-${pkgver_}/examples/mesh
-  #mpirun -np 2 build-mesh/src/DAMASK_mesh \
-  #       -l ${example_dir}/tensionX_mono.yaml \
-  #       -g ${example_dir}/monocrystal.vti
-  #       -m ${example_dir}/material.yaml \
-  #       -w $(mktemp -d)
+  example_dir=$(pwd)/${pkgbase}-${pkgver_}/examples/mesh
+  mpirun -np 2 build-mesh/src/DAMASK_mesh \
+         -l ${example_dir}/tensionY_mono.yaml \
+         -g ${example_dir}/monocrystal.msh \
+         -m ${example_dir}/material.yaml \
+         -w $(mktemp -d)
 
   PYTHONPATH=${pkgbase}-${pkgver_}/python:${PYTHONPATH}
   python -c "import damask;print(damask.__version__)"
