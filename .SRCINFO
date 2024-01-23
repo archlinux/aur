@@ -1,0 +1,22 @@
+pkgbase = servicer-bin
+	pkgdesc = Simplify Service Management on systemd
+	pkgver = 0.1.13
+	pkgrel = 1
+	url = https://github.com/servicer-labs/servicer
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = servicer
+	conflicts = servicer
+	source_x86_64 = servicer-bin-0.1.13-1-servicer::https://github.com/servicer-labs/servicer/releases/download/v0.1.13/servicer-x86_64-unknown-linux-gnu
+	source_x86_64 = servicer-bin-0.1.13-1-LICENSE::https://raw.githubusercontent.com/servicer-labs/servicer/master/LICENSE
+	sha256sums_x86_64 = 4a3fb1d9c04e7bb705c7ce68a89dd625647d5da6937d4ae450321b5acaa62946
+	sha256sums_x86_64 = 2ef4d276242ac95eb4005255e73fce401e38ed70354b15aa53b516195db47151
+	source_aarch64 = servicer-bin-0.1.13-1-servicer::https://github.com/servicer-labs/servicer/releases/download/v0.1.13/servicer-x86_64-unknown-linux-gnu
+	source_aarch64 = servicer-bin-0.1.13-1-LICENSE::https://raw.githubusercontent.com/servicer-labs/servicer/master/LICENSE
+	sha256sums_aarch64 = bdb626724589d71308a73b09dd07357710ff1e9a12659ec3b02f31617cdb54e0
+	sha256sums_aarch64 = 2ef4d276242ac95eb4005255e73fce401e38ed70354b15aa53b516195db47151
+
+pkgname = servicer-bin
