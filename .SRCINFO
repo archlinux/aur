@@ -1,7 +1,7 @@
 pkgbase = tomato-radio-automation-git
 	pkgdesc = Tomato Radio Automation desktop client. Dead simple radio ads. Preview version.
 	pkgver = 0.4.0.r69.gd0ab5336
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dtcooper.github.io/tomato/
 	arch = x86_64
 	arch = aarch64
