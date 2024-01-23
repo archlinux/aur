@@ -1,11 +1,11 @@
 # Maintainer: noodle <silentnoodle@cock.li>
 pkgname=dwarfs-bin
-pkgver=0.7.5
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='A fast high compression read-only file system (pre-compiled binaries)'
 url='https://github.com/mhx/dwarfs'
-source_x86_64=("dwarfs-${pkgver}-Linux-x86_64.tar.xz::https://github.com/mhx/dwarfs/releases/download/v${pkgver}/dwarfs-${pkgver}-Linux-x86_64.tar.xz")
-source_aarch64=("dwarfs-${pkgver}-Linux-aarch64.tar.xz::https://github.com/mhx/dwarfs/releases/download/v${pkgver}/dwarfs-${pkgver}-Linux-aarch64.tar.xz")
+source_x86_64=("dwarfs-${pkgver}-Linux-x86_64.tar.xz::https://github.com/mhx/dwarfs/releases/download/v${pkgver}/dwarfs-${pkgver}-Linux-x86_64-clang.tar.xz")
+source_aarch64=("dwarfs-${pkgver}-Linux-aarch64.tar.xz::https://github.com/mhx/dwarfs/releases/download/v${pkgver}/dwarfs-${pkgver}-Linux-aarch64-clang.tar.xz")
 arch=('x86_64' 'aarch64')
 license=('GPL3')
 depends=(
@@ -15,11 +15,11 @@ depends=(
 )
 conflicts=('dwarfs')
 provides=('dwarfs')
-sha256sums_x86_64=('f9b59e0b699cf1c87c0687b49f2cf813928c1f7c1b5efa32e7512f5baf1e112f')
-sha256sums_aarch64=('47ea53f1e9f8855c4c29fb359838d0a4783ce7e972b79f3d5dd1f2f839b310c2')
+sha256sums_x86_64=('b32a381081a05439bf72b6d77f1ef61ec28c16bed0ec9cacc009ccc2aba28dc3')
+sha256sums_aarch64=('d381ae50d4202e182a6df451b2b57e2eac5ac7f76f557adebb06105faf374b3c')
 
 package() {
-  cd "${srcdir}/dwarfs-${pkgver}-Linux-$arch"
+  cd "${srcdir}/dwarfs-${pkgver}-Linux-$arch-clang"
 
   install -Dm755 bin/dwarfsbench "${pkgdir}/usr/bin/dwarfsbench"
   install -Dm755 bin/dwarfsck "${pkgdir}/usr/bin/dwarfsck"
