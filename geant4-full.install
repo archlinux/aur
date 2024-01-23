@@ -10,7 +10,9 @@ post_upgrade(){
   G4LIBRARY_PATH=/opt/Geant4/Libraries
   G4LIBRARY_BACKUP=/opt/Geant4/Lib-backup
   file_check=/tmp/.G4_Library.tmp
-  [ "$(ls $file_check)" ] && mkdir $G4LIBRARY_PATH && mv $G4LIBRARY_BACKUP/* $G4LIBRARY_PATH && rmdir $G4LIBRARY_BACKUP && rm $file_check
+  [ "$(ls $file_check)" ] && mkdir -p $G4LIBRARY_PATH && mv $G4LIBRARY_BACKUP/* $G4LIBRARY_PATH && rmdir $G4LIBRARY_BACKUP && rm $file_check
+
+  #TODO: need to automatically cleanup old libraries from the Library folder
 }
 
 post_install(){
