@@ -1,7 +1,7 @@
 pkgbase = nixpacks
 	pkgdesc = App source + Nix packages + Docker = Image
 	pkgver = 1.21.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nixpacks.com
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = nixpacks
 	makedepends = nix
 	makedepends = systemd
 	depends = gcc-libs
+	depends = glibc
 	depends = docker
 	optdepends = go: support go projects
 	optdepends = zig: support zig projects

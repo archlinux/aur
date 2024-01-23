@@ -4,15 +4,20 @@ BUILDENV+=(!check)
 
 pkgname=nixpacks
 pkgver=1.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc='App source + Nix packages + Docker = Image'
 arch=(x86_64)
 url="https://$pkgname.com"
 _url="https://github.com/railwayapp/$pkgname"
 license=(MIT)
-depends=(gcc-libs docker)
-makedepends=(cargo nix systemd)
-checkdepends=(go zig)
+depends=(gcc-libs
+         glibc
+         docker)
+makedepends=(cargo
+             nix
+             systemd)
+checkdepends=(go
+              zig)
 optdepends=('go: support go projects'
             'zig: support zig projects')
 options=('!lto')
@@ -39,11 +44,12 @@ build() {
 check() {
 	_srcenv
 	cargo test --frozen --all-features -- \
-		--skip "test_get_default_cache_key" \
-		--skip "docker_run_tests"
+		--skip 'test_get_default_cache_key' \
+		--skip 'docker_run_tests'
 }
 
 package() {
 	cd "$_archive"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
