@@ -7,7 +7,6 @@ pkgdesc="A TUI to-do list that uses and extends calcurse format to have tree-lik
 url="https://github.com/nimaaskarian/${_gitname}"
 
 provides=(c3)
-makedepends=(ncurses cargo)
 arch=('x86_64')
 license=('GPL3')
 optdepends=('potato-c: pomodoro timer module')
