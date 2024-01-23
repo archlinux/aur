@@ -1,15 +1,14 @@
 pkgbase = logicanalyzer-git
 	pkgdesc = 24 channel, 100Msps logic analyzer hardware and software
-	pkgver = 5.0.0.0.r1.g5f95102
-	pkgrel = 2
+	pkgver = 5.0.0.0.r8.g6ab103e
+	pkgrel = 4
 	url = https://github.com/gusmanb/logicanalyzer
 	arch = x86_64
 	arch = aarch64
-	license = GLP-3.0
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = dotnet-sdk
 	makedepends = ttf-dejavu
-	options = !strip
 	source = logicanalyzer-git::git+https://github.com/gusmanb/logicanalyzer.git
 	sha256sums = SKIP
 
