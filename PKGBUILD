@@ -14,7 +14,7 @@ license=('custom:jetbrains')
 url='https://www.jetbrains.com/phpstorm/'
 depends=('glib2' 'python')
 options=('!strip')
-source=("https://download.jetbrains.com/webide/PhpStorm-${pkgver%b*}.tar.gz"
+source=("https://download-cf.jetbrains.com/webide/PhpStorm-${pkgver%b*}.tar.gz"
         jetbrains-phpstorm.desktop
         LICENSE)
 b2sums=('aac17a59590ec1a0631c5af6096f8adc9cca87308e58bd4286a9b2c3b231fb65e4c982bc24ada086fd5bfa5738e8a41724e53089fe885367b78b74e90c22ce88'
