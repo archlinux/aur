@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=edgeR
-_pkgver=4.0.11
+_pkgver=4.0.12
 pkgname=r-${_pkgname,,}
-pkgver=4.0.11
+pkgver=4.0.12
 pkgrel=1
 pkgdesc='Empirical Analysis of Digital Gene Expression Data in R'
 arch=('x86_64')
@@ -32,7 +32,7 @@ optdepends=(
   r-summarizedexperiment
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('17c85a39542a5233c703b3d5256f82b702f322ec03a799dc63290fdf76cfa496')
+sha256sums=('9289d2183e33ffa7897875a9be2713c96cc9ba821e38f461fddce11d03730607')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
