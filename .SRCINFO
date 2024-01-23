@@ -6,7 +6,7 @@ pkgbase = vencord-installer-cli-bin
 	arch = x86_64
 	license = GPL3
 	provides = vencord-installer-cli
-	source = https://github.com/Vencord/Installer/releases/download/v1.3.1/VencordInstallerCli-linux
+	source = https://github.com/Vencord/Installer/releases/download/v1.4.0/VencordInstallerCli-linux
 	sha256sums = eb96d07a2072eb805351de11a26bb78e83f30122321e76ffed26466bd2d61a59
 
 pkgname = vencord-installer-cli-bin
