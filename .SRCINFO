@@ -1,0 +1,19 @@
+pkgbase = lyrically-bin
+	pkgdesc = Music player inspired by Lyric Speaker
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/CyanSalt/lyrically
+	arch = x86_64
+	license = ISC
+	makedepends = gendesk
+	depends = electron28
+	source = lyrically-0.1.0.zip::https://github.com/CyanSalt/lyrically/releases/download/v0.1.0/Lyrically-linux-x64.zip
+	source = lyrically-0.1.0.png::https://raw.githubusercontent.com/CyanSalt/lyrically/v0.1.0/resources/images/icon.png
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/CyanSalt/lyrically/v0.1.0/LICENSE
+	source = lyrically.sh
+	sha256sums = 423c5e3763a68294fec232086f024ef5450df8880ac9cf01352d760bba78a214
+	sha256sums = ab219244090109bd4c111ee2f8d574337bc668860f9e9678190f4591df4dec1a
+	sha256sums = 9950b2ef9948d119f67c09e78478be5c96db2028bebf735ee60a9e3c5afe0bc0
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+
+pkgname = lyrically-bin
