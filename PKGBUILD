@@ -6,9 +6,9 @@
 : ${_system_cflags:=false}
 
 pkgname=proton
-_srctag=8.0-5
+_srctag=8.0-5c
 _commit=
-pkgver=8.0.5  # pkgver=${_srctag//-/.}
+pkgver=8.0.5.3  # pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=8.1.0
 pkgrel=1
