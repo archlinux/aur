@@ -1,0 +1,18 @@
+pkgbase = unisec
+	pkgdesc = Unicode Security Toolkit.
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://acceis.github.io/unisec
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ctf-party
+	depends = ruby-dry-cli
+	depends = ruby-paint
+	depends = ruby-twitter_cldr
+	depends = ruby-unicode-confusable
+	noextract = unisec-0.0.4.gem
+	source = https://rubygems.org/downloads/unisec-0.0.4.gem
+	sha512sums = 0af55315aaf6997ab971e4cf1b8467ecb8a9f33e8d11ff76764d08137ef740aba0b166eba964e9443fd9ad1c1f2424990eaaff342f5fb983e213d1c121c83175
+
+pkgname = unisec
