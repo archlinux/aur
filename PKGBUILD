@@ -2,7 +2,7 @@
 
 _name=mesa
 pkgname=python-${_name,,}
-pkgver=2.2.1
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="Agent-based modeling (ABM) in Python"
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=('python-installer' 'python-wheel')
 _whl="${_name//-/_}-$pkgver-py3-none-any.whl"
 
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/$_whl")
-sha256sums=('59cf308cec6ff74eaa822345fcadec4076b75cef7cf11733aaa149a490027fb8')
+sha256sums=('3d094539bda9de9c94fd1028f9f021c9f6c3db5af26caa65890efc124cee0c43')
 
 noextract=("$_whl")
 package() {
