@@ -1,7 +1,7 @@
 pkgbase = mullvad-browser-bin
 	pkgdesc = Privacy-focused web browser developed by Mullvad VPN and the Tor Project
-	pkgver = 13.0.7
-	pkgrel = 2
+	pkgver = 13.0.9
+	pkgrel = 1
 	url = https://mullvad.net/en/browser
 	changelog = mullvad-browser.changelog
 	arch = x86_64
@@ -22,15 +22,15 @@ pkgbase = mullvad-browser-bin
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	provides = mullvad-browser=13.0.7
+	provides = mullvad-browser=13.0.9
 	provides = mullvad-browser
 	conflicts = mullvad-browser
-	source = https://cdn.mullvad.net/browser/13.0.7/mullvad-browser-linux-x86_64-13.0.7.tar.xz
-	source = https://cdn.mullvad.net/browser/13.0.7/mullvad-browser-linux-x86_64-13.0.7.tar.xz.asc
+	source = https://cdn.mullvad.net/browser/13.0.9/mullvad-browser-linux-x86_64-13.0.9.tar.xz
+	source = https://cdn.mullvad.net/browser/13.0.9/mullvad-browser-linux-x86_64-13.0.9.tar.xz.asc
 	source = mullvad-browser.sh
 	source = mullvad-browser.desktop
 	validpgpkeys = EF6E286DDA85EA2A4BA7DE684E2C6E8793298290
-	sha256sums = f31d106be35ab0cab525dad59c25a50b23dbfb95292572b554b16863d971fbc4
+	sha256sums = 4c0b4195291fa6ab113aaddb57d9300d82094005d2564c314308f7c0860423b9
 	sha256sums = SKIP
 	sha256sums = 0fbfcc63591c661fd73de462a123e6daeae01d7ebc5981c8793227369d77b565
 	sha256sums = 9bb24b8e210112b1222d028285c6d68ab599f8382b2b108ab69284948bb4ac70

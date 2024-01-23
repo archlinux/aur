@@ -1,3 +1,57 @@
+Mullvad Browser 13.0.9 - January 23 2024
+ * All Platforms
+   * Updated Firefox to 115.7.0esr
+   * Updated uBlock Origin to 1.55.0
+   * Bug 249: BrowserHost has null mRoot when applying initial window size in debug [mullvad-browser]
+   * Bug 260: Rebase Mullvad Browser Stable onto Firefox 115.7.0esr [mullvad-browser]
+   * Bug 42189: Assertion failure: the value of mPrivateBrowsingId in the loadContext and in the loadInfo are not the same! [tor-browser]
+   * Bug 41044: Add tbb_version.json-like file for Mullvad Browser [tor-browser-build]
+ * Linux
+   * Bug 41050: Improve the disk leak sanitization on start-$browser [tor-browser-build]
+ * Build System
+   * All Platforms
+     * Bug 41042: Add options to include updates in the changelog scripts [tor-browser-build]
+     * Bug 41043: Create script to push build requests to Mullvad build servers [tor-browser-build]
+     * Bug 41056: Make it possible to use templates in var/torbrowser_incremental_from [tor-browser-build]
+     * Bug 41059: Update keyring/torbrowser.gpg with updated key [tor-browser-build]
+   * Windows + macOS
+     * Bug 41016: Switch from bullseye to bookworm for desktop platforms [tor-browser-build]
+   * Windows
+     * Bug 41015: Enable std::filesystem on libc++ on Windows [tor-browser-build]
+
+Mullvad Browser 13.5a3 - December 20 2023
+ * All Platforms
+   * Updated Firefox to 115.6.0esr
+   * Updated NoScript to 11.4.29
+   * Bug 249: BrowserHost has null mRoot when applying initial window size in debug [mullvad-browser]
+   * Bug 256: Update nightly mar signing key [mullvad-browser]
+   * Bug 258: Rebase Mullvad Browser alpha onto 115.6.0esr [mullvad-browser]
+   * Bug 42042: view-source:http://ip-address does not work because of HTTPS Only [tor-browser]
+   * Bug 42189: Assertion failure: the value of mPrivateBrowsingId in the loadContext and in the loadInfo are not the same! [tor-browser]
+   * Bug 42335: Do not localize the order of locales for app lang [tor-browser]
+   * Bug 41044: Add tbb_version.json-like file for Mullvad Browser [tor-browser-build]
+ * Windows
+   * Bug 42163: Make the 3rd party DLL blocklist obey portable mode [tor-browser]
+ * Linux
+   * Bug 41050: Improve disk leak sanitization on startup [tor-browser]
+ * Build System
+   * All Platforms
+     * Bug 40995: Use cdn.stagemole.eu instead of cdn.devmole.eu in download-unsigned-sha256sums-gpg-signatures-from-people-tpo [tor-browser-build]
+     * Bug 41026: Do not use ~ when uploading the signed hashes [tor-browser-build]
+     * Bug 41027: Remove tb-build-04 and tb-build-05 from tools/signing/download-unsigned-sha256sums-gpg-signatures-from-people-tpo [tor-browser-build]
+     * Bug 41031: Add command to unsign .mar files and compare with sha256sums-unsigned-build.txt [tor-browser-build]
+     * Bug 41039: Update tools/signing/upload-update_responses-to-staticiforme to keep download-*json files from previous release when new release does not include them [tor-browser-build]
+     * Bug 41041: Sign mullvad-browser nightly updates [tor-browser-build]
+     * Bug 41042: Add options to include updates in the changelog scripts [tor-browser-build]
+     * Bug 41043: Create script to push build requests to Mullvad build servers [tor-browser-build]
+   * Windows + macOS
+     * Bug 41016: Switch from bullseye to bookworm for desktop platforms [tor-browser-build]
+   * Windows
+     * Bug 41015: Enable std::filesystem on libc++ on Windows [tor-browser-build]
+     * Bug 41030: Add command to unsign .exe files and compare with sha256sums-unsigned-build.txt [tor-browser-build]
+   * macOS
+     * Bug 40990: Remove old macos signing scripts [tor-browser-build]
+
 Mullvad Browser 13.0.7 - December 19 2023
  * All Platforms
    * Updated Firefox to 115.6.0esr
