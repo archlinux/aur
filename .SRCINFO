@@ -1,20 +1,21 @@
 pkgbase = derper
 	pkgdesc = Tailscale runs DERP relay servers to help connect your nodes.
-	pkgver = 1.46.1
+	pkgver = 1.58.0
 	pkgrel = 1
 	url = https://github.com/tailscale/tailscale
 	arch = x86_64
-	license = BSD
+	arch = aarch64
+	license = BSD-3-Clause
 	makedepends = go
 	makedepends = git
 	depends = glibc
 	options = !lto
 	backup = etc/conf.d/derper
-	source = derper-v1.46.1.tar.gz::https://github.com/tailscale/tailscale/archive/v1.46.1.tar.gz
+	source = derper-v1.58.0.tar.gz::https://github.com/tailscale/tailscale/archive/v1.58.0.tar.gz
 	source = derper.service
 	source = derper.conf
-	sha256sums = a567bafec720869faa25eb1886dac1b519679c8dbe5762d1e9cdb653898df076
-	sha256sums = 0b745c4985cb2768ad8db035f4c057e811a32cbd3cb45f0def3a8163ca404980
+	sha256sums = 01d801dbb2df03a4e0c1563786300e8b26bb570b3aba15063943f78f2c26c316
+	sha256sums = 2547fa9f0bfb250507d5edfef3bb6304835c9de2c061386a89543eebf16a8bc8
 	sha256sums = ecaebd5f1fb0853464afeece438269303e8590aec8689554516036575deabcfc
 
 pkgname = derper
