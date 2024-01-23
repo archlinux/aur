@@ -1,7 +1,8 @@
 _pkgname=lmstudio
 
 pkgname="${_pkgname}"-appimage
-pkgver="0.2.10.beta.v2"
+_basever="0.2.10"
+pkgver="${_basever}.beta.v6"
 pkgrel=1
 pkgdesc="Discover, download, and run local LLMs"
 arch=('x86_64')
@@ -10,9 +11,9 @@ license=('custom')
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
-source_x86_64=("${_appimage}::https://s3.amazonaws.com/releases.lmstudio.ai/prerelease/LM_Studio-${pkgver/\.beta\./-beta-}.AppImage")
+source_x86_64=("${_appimage}::https://releases.lmstudio.ai/linux/${_basever}/beta/LM_Studio-${pkgver/\.beta\./-beta-}.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('87119ddb4e3322ac7b5cfdd3853118ceaf2ca2de066c9b81f1ed2e822677508d')
+sha256sums_x86_64=('1d478e8fbce18dbf801e3bab308bcfd05a1f7c7936ee0174e8f562ae9d3ac791')
 appname="lm-studio"
 
 prepare() {
