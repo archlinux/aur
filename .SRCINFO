@@ -1,0 +1,16 @@
+pkgbase = servicer
+	pkgdesc = Simplify service management on systemd
+	pkgver = 0.1.13
+	pkgrel = 1
+	url = https://github.com/servicer-labs/servicer
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	provides = servicer
+	conflicts = servicer
+	source = servicer::git+https://github.com/servicer-labs/servicer#tag=5cf82e8ff6947278b46887b09161bc72b05b04d5
+	sha256sums = SKIP
+
+pkgname = servicer
