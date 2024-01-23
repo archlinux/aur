@@ -2,7 +2,7 @@
 
 pkgname=go-aliddns-git
 pkgver=r25.1109de0
-pkgrel=6
+pkgrel=11
 pkgdesc="用 golang 实现 aliddns，同时对 certbot 进行 txt 信息更新提交"
 arch=(x86_64
     aarch64
@@ -17,7 +17,7 @@ optdepends=()
 makedepends=(git
     go)
 backup=(etc/go-aliddns/config.yaml)
-options=('!strip')
+options=()
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
