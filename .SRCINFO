@@ -1,7 +1,7 @@
 pkgbase = r3playx-bin
 	pkgdesc = A music player forked from YesPlayMusic。高颜值的第三方网易云播放器，支持 Windows / macOS / Linux
 	pkgver = 2.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Sherlockouo/music
 	arch = aarch64
 	arch = x86_64

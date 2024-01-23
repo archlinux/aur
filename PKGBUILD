@@ -3,7 +3,7 @@ pkgname=r3playx-bin
 _pkgname=R3PLAYX
 pkgver=2.7.4
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="A music player forked from YesPlayMusic。高颜值的第三方网易云播放器，支持 Windows / macOS / Linux"
 arch=(
     'aarch64'
@@ -45,7 +45,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm755 "${srcdir}/opt/${_pkgname}/resources/bin/better_sqlite3.node" -t "${pkgdir}/usr/lib/electron${_electronversion}/bin"
+    install -Dm755 "${srcdir}/opt/${_pkgname}/resources/bin/better_sqlite3.node" -t "${pkgdir}/usr/lib/electron${_electronversion}/resources/bin"
     cp -r "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
     for _icons in 16x16 24x24 32x32 64x64 88x88 256x256 1024x1024;do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/desktop.png" \
