@@ -6,7 +6,6 @@ pkgbase = osc-sdk-python
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	depends = python-pip
 	depends = python-ruamel-yaml
 	depends = python-requests
 	source = https://files.pythonhosted.org/packages/source/o/osc_sdk_python/osc_sdk_python-0.27.0.tar.gz

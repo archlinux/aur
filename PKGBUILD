@@ -11,7 +11,7 @@ url='https://github.com/outscale/osc-sdk-python'
 license=(BSD)
 
 makedepends=('python-setuptools')
-depends=(python-pip python-ruamel-yaml python-requests)
+depends=(python-ruamel-yaml python-requests)
 
 _project=osc_sdk_python
 source=("https://files.pythonhosted.org/packages/source/${_project::1}/$_project/$_project-$pkgver.tar.gz")
