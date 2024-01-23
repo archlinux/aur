@@ -4,7 +4,7 @@
 _pkgname=statix
 pkgname=$_pkgname-git
 pkgver=0.5.4.r22.gd324490
-pkgrel=1
+pkgrel=2
 pkgdesc='Lints and suggestions for the nix programming language '
 arch=(x86_64)
 url=https://github.com/nerdypepper/statix
