@@ -7,7 +7,7 @@ pkgrel=1
 
 pkgdesc='Tailscale runs DERP relay servers to help connect your nodes.'
 url='https://github.com/tailscale/tailscale'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('BSD')
 
 depends=('glibc')
