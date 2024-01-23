@@ -2,17 +2,17 @@
 # Contributor: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 
 pkgname=boatswain
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Control Elgato Stream Deck devices'
 arch=(x86_64)
 url='https://gitlab.gnome.org/World/boatswain'
-license=(GPL3)
+license=(GPL-3.0-or-later)
 depends=(
   hidapi
   libadwaita
   libgusb
-  libpeas
+  libpeas-2
   libportal-gtk4
   libsecret
 )
@@ -21,7 +21,7 @@ makedepends=(
   meson
   gobject-introspection
 )
-_commit=e176cfd4 # tags/0.3.0
+_commit=c7049d3d # tags/0.4.0
 source=("git+${url}.git#commit=$_commit")
 sha1sums=('SKIP')
 
@@ -32,7 +32,7 @@ pkgver() {
 
 build() {
   arch-meson $pkgname build
-  ninja -C build
+  meson compile -C build
 }
 
 check() {
