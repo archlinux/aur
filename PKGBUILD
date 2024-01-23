@@ -2,23 +2,19 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=adbmanager-bin
 pkgver=3.1
-pkgrel=9
+pkgrel=10
 pkgdesc="ADB manager for Android devices"
 arch=('x86_64')
 url="https://github.com/AKotov-dev/adbmanager"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'android-tools'
     'iproute2'
     'nmap'
-    'sakura'
     'cairo'
     'at-spi2-core'
-    'gdk-pixbuf2'
-    'libx11'
-    'pango'
     'gtk2'
 )
 source=(
@@ -26,7 +22,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('9f72d0df060a7877088bee9cb81761fefa59ab8f11f01c7ab4d11855749d8725'
-            '30cfb99c0e7e0535080a140123c6dba934b6f4ad4174574dd40230d8eb1cc517')
+            '11873edcbca4ba6ad3ff5950c5849bd0a387f4f0a6ccbca9208491ec8c95fc32')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
