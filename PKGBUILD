@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RcppAnnoy
-_pkgver=0.0.21
+_pkgver=0.0.22
 pkgname=r-${_pkgname,,}
-pkgver=0.0.21
+pkgver=0.0.22
 pkgrel=1
 pkgdesc="'Rcpp' Bindings for 'Annoy', a Library for Approximate Nearest Neighbors"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5804a233db847ddf622ef64823f1bfad16e515cd369e5fa781e9d80a4b57f0f7')
+sha256sums=('9f2121d787c4d3e7beccdd65f5d1de81f31c99d57d5d61ca3cc5af7169dd8f65')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
