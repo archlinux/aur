@@ -2,16 +2,16 @@
 
 _org='humanoid-path-planner'
 _pkgname='hpp-fcl'
-_pkgver=2.4.0
+_pkgver=2.4.1
 pkgname=("${_pkgname}-git" "${_pkgname}-git-docs")
-pkgver=2.4.0.r2282.8bdad148
+pkgver=2.4.1.r2293.b401853c
 pkgrel=1
 pkgdesc="An extension of the Flexible Collision Library"
 arch=('i686' 'x86_64')
 url="https://github.com/$_org/$_pkgname"
-license=('BSD')
-depends=('assimp' 'eigenpy' 'octomap' 'qhull' 'python-numpy' 'boost-libs' 'gcc-libs' 'glibc' 'python')
-makedepends=('cmake' 'eigen' 'boost' 'git' 'doxygen')
+license=('BSD-2-Clause')
+depends=('assimp' 'eigen' 'eigenpy' 'octomap' 'qhull' 'python-numpy' 'boost-libs' 'python' 'glibc' 'gcc-libs')
+makedepends=('cmake' 'boost' 'git' 'doxygen')
 source=("git+${url}")
 sha256sums=('SKIP')
 
