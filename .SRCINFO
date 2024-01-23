@@ -1,7 +1,7 @@
 pkgbase = getax
 	pkgdesc = Application for the tax reporting of physical people in the canton of Geneva, Switzerland.
 	pkgver = 2023
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.getax.ch/support/
 	arch = x86_64
 	license = unknown

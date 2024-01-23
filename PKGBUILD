@@ -2,7 +2,7 @@
 pkgname=getax
 pkgver=2023
 _update=2
-pkgrel=1
+pkgrel=2
 pkgdesc="Application for the tax reporting of physical people in the canton of Geneva, Switzerland."
 url="http://www.getax.ch/support/"
 depends=(
