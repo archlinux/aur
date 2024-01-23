@@ -1,7 +1,7 @@
 pkgbase = webull-desktop
 	pkgdesc = Invest in stocks, ETFs, and options with Webull Financial, all commission-free, $0 minimum deposit.
 	pkgver = 6.12.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://webull.com
 	arch = x86_64
 	license = custom

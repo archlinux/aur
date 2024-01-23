@@ -1,7 +1,7 @@
 # Maintainer: cacoro2  <marcos707@gmail.com>
 pkgname=(webull-desktop)
 pkgver=6.12.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Invest in stocks, ETFs, and options with Webull Financial, all commission-free, \$0 minimum deposit."
 arch=('x86_64')
 url="https://webull.com"
@@ -22,5 +22,5 @@ package(){
   sed -i 's|Name=WebullDesktop   |Name=Webull Desktop|' "${pkgdir}"/usr/share/applications/WebullDesktop.desktop
   sed -i 's|Icon=WebullDesktop.png|Icon=WebullDesktop|' "${pkgdir}"/usr/share/applications/WebullDesktop.desktop
   sed -i 's|Version=6.5.0|Version=1.5|' "${pkgdir}"/usr/share/applications/WebullDesktop.desktop
-  sed -i 's|Categories=Utility;|Categories=Finance;|Categories=Internet;' "${pkgdir}"/usr/share/applications/WebullDesktop.desktop
+  sed -i 's|Categories=Utility;|Categories=Finance;|' "${pkgdir}"/usr/share/applications/WebullDesktop.desktop
 }
