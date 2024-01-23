@@ -3,11 +3,11 @@ _pkgname=air_controller
 pkgname="${_pkgname//_/-}-desktop-bin"
 _appname=AirController
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A new handy and powerful Android phone assistant,powered by Flutter."
 arch=('x86_64')
 url="http://ac.yhdm360.cn/"
-_githuburl="https://github.com/air-controller/air-controller-desktop"
+_ghurl="https://github.com/air-controller/air-controller-desktop"
 license=('MIT')
 provides=("${_pkgname//_/-}=${pkgver}")
 conflits=(
@@ -15,27 +15,21 @@ conflits=(
     "${pkgname%-bin}"
 )
 depends=(
-    'harfbuzz'
     'gtk3'
-    'gdk-pixbuf2'
-    'gstreamer'
-    'cairo'
-    'at-spi2-core'
-    'pango'
     'gst-plugins-base-libs'
-    'libepoxy'
+    'gstreamer'
 )
 makedepends=(
     'squashfuse'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/${pkgver}/${_appname}_${pkgver}.AppImage"
+    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/${pkgver}/${_appname}_${pkgver}.AppImage"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/air-controller/air-controller-desktop/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('9c81fa659acffa74b7576e5dfbc62486d8131157b9d4bfc2a34bdc567bc080c8'
             '72bf32e1daa153b870aff8200c06521b4d15d7aedba46d4c37570c49cacc1ace'
-            '3f8d7dd57e8b4580dbf9ff246c4b8cd3a9738ec3baf469ade8d328e8da4a2f65')
+            '1e338ff128b2be2b0d484ea2d00814db6709a5e2cc455a373428d21f8ed690d5')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
