@@ -1,55 +1,39 @@
 # Maintainer: Eric Engestrom <aur@engestrom.ch>
 
-_TARBALL_PKGVER=1.2.1-11
-_UPLOAD_DATE=20220527
+_TARBALL_PKGVER=1.3.0-12
+_UPLOAD_DATE=20231214
 
-pkgname=xencelabs
-pkgver=${_TARBALL_PKGVER/-/.}
-pkgrel=1
-pkgdesc='Driver for the Xencelabs Pen Tablets'
-arch=(x86_64)
-url='https://www.xencelabs.com'
-license=(LGPL3)
-install=$pkgname.install
-source_x86_64=("https://download01.xencelabs.com/file/$_UPLOAD_DATE/XencelabsLinux_$_TARBALL_PKGVER.zip")
-sha256sums_x86_64=('0ee73309d9c2f6681c47542ae1c0efaea8c49f273c835046968d9271b7c7ed03')
+ pkgname=xencelabs
+ pkgver=${_TARBALL_PKGVER/-/.}
+ pkgrel=1
+ pkgdesc='Drivers for the Xencelabs Pen Tablets and Pen Display'
+ arch=(x86_64)
+ url='https://www.xencelabs.com'
+ license=(LGPL3)
+ install=$pkgname$_TARBALL_PKGVER.install
+ source_x86_64=("https://www.xencelabs.com/support/file/id/46/type/1")
+ sha256sums_x86_64=('870d16df231e983c1e2a1745d662bc47f3e60027dd2b0f30f17fbcfc6c425b48')
 
-prepare() {
-  rm -rf $pkgname-$_TARBALL_PKGVER.$CARCH
-  tar xf XencelabsLinux_$_TARBALL_PKGVER/$pkgname-$_TARBALL_PKGVER.$CARCH.tar.gz
+
+
+
+ prepare() {
+  rm -rf $pkgname$_TARBALL_PKGVER.$CARCH
+  tar -xf linux/$pkgname-$_TARBALL_PKGVER.tar.gz
+  tar -xf linux/xencelabs-1.3.0-12.tar.gz
 }
 
 build() {
-  cd $pkgname-$_TARBALL_PKGVER.$CARCH/App
+  cd $pkgname-$_TARBALL_PKGVER
 
-  # provided by the `licenses` package
-  rm usr/lib/xencelabs/lib/LGPL
-
-  # fix FSH to match Arch's
-  mv lib/*/ usr/lib/
-  rmdir lib
-
-  # Replace xencelabs.desktop copy with symlink
-  ln -sf ../../../usr/share/applications/xencelabs.desktop \
-    etc/xdg/autostart/xencelabs.desktop
-
-  # Replace the wrapper script
-  mkdir usr/bin
-  rm usr/lib/xencelabs/xencelabs.sh
-  cat > usr/bin/xencelabs <<'EOF'
-#!/bin/sh
-LD_LIBRARY_PATH=/usr/lib/xencelabs/lib
-export LD_LIBRARY_PATH
-cd /usr/lib/xencelabs/
-./xencelabs "$@"
-EOF
-
-  sed s,/usr/lib/xencelabs/xencelabs.sh,xencelabs,g -i \
-    usr/share/applications/xencelabs.desktop
 }
+ package(){
 
-package() {
-  cp -r --no-preserve=ownership,mode $pkgname-$_TARBALL_PKGVER.$CARCH/App/* "$pkgdir"
-  chmod +x "$pkgdir"/usr/bin/xencelabs
-  chmod +x "$pkgdir"/usr/lib/xencelabs/xencelabs
+ mkdir ~/.local/share/xencelabs/
+ mkdir /usr/lib/xencelabs/config
+
+ mv ~/.local/share/xencelabs/* /usr/lib/xencelabs/config/
+
+ cd ..
+
 }

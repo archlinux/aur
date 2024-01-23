@@ -1,0 +1,233 @@
+pre_install() {
+
+
+	AppName=xencelabs
+	AppDir=xencelabs
+
+	#some operator before deb install
+	echo "try to close driver if it is running"
+	if [ -f "/var/lib/dpkg/lock" ]; then
+		sudo rm /var/lib/dpkg/lock
+	fi
+	if [ -f "/var/lib/dpkg/lock-frontend" ]; then
+		sudo rm /var/lib/dpkg/lock-frontend
+	fi
+
+	pid=`ps -e|grep $AppName`
+	AppName=xencelabs
+	appScript=$AppName".sh"
+	if [ -n "$pid" ]; then
+		echo $pid
+		arr=()
+		while read -r line; do
+		   arr+=("$line")
+		done <<< "$pid"
+		for val in "${arr[@]}";
+		do
+			appid=`echo $val | awk '{print $1}'`
+		   	name=`echo $val | awk '{print $4}'`
+		   	echo "ID:"$appid 
+			echo "Name:"$name
+			if [ "$name" = "$appRunScript" ]; then
+				echo "close $appRunScript"
+				kill -15 $appid
+			elif [ "$name" = "$AppName" ]; then
+				echo "close $AppName"
+				kill -15 $appid
+			fi
+		done
+	fi
+
+	# try to close driver if it exist
+	pid=`ps -e|grep $AppName|awk '{print $1}'`
+	if [ -n "$pid" ]; then
+		echo "close xencelabs"
+		kill -15 $pid
+	fi
+
+}
+
+post_install() {
+
+	#some operator after deb installed
+
+	userinfo=`who`
+	user=`who | awk  '{print $1}'|head -1`
+	echo $user
+
+	AppName=xencelabs
+	appPath=/usr/lib/$AppName
+	# change permission
+	if [ -f /usr/lib/$AppName/start.sh ]; then
+		echo "add shell permission"
+		chmod +x $appPath/start.sh
+	fi
+
+	if [ -f /usr/lib/$AppName/$AppName ]; then
+		echo "add exe permission"
+		chmod +x $appPath/$AppName
+	fi
+
+
+	# Copy file to app's data path
+	langDirName=language
+	picDirName=picture
+	appDir=/home/$user/.local/share
+	dataPath=$appDir/$AppName
+	languageDir=$dataPath/$langDirName
+	picDir=$dataPath/$picDirName
+	echo "create user data dir"
+	if [ ! -d $appDir ];then
+		echo `mkdir $appDir`
+	fi
+	if [ ! -d $dataPath ];then
+		echo `mkdir $dataPath`
+	fi
+
+	chmod +0777 $appDir
+	chmod +0777 $dataPath
+
+	confDir=config
+	confName=config.xml
+	templateName=Template.xml
+
+
+	echo "copy config"
+	if [ -f $appPath/$confDir/$confName ];then
+		echo `cp $appPath/$confDir/$confName $dataPath/$confName`
+		chmod 0666 $dataPath/$confName
+	fi
+	chmod +0666 /usr/lib/xencelabs/config/linuxConfig
+
+	echo "copy template config"
+	if [ -f $appPath/$confDir/$templateName ];then
+		echo `cp $appPath/$confDir/$templateName $dataPath/$templateName`
+		chmod 0666 $dataPath/$templateName
+	fi
+
+	echo "copy banner"
+	echo `cp -rf $appPath/$confDir/$picDirName $dataPath`
+	chmod +0777 $picDir
+	chmod +0666 $picDir/banner.png
+	chmod +0666 $picDir/banner2.png
+
+	if [ -d $appPath/$confDir ];then
+		echo "copy lang"
+		echo `cp -rf $appPath/$confDir/$langDirName $dataPath`
+		chmod +0777 $languageDir
+		chmod +0666 $languageDir/ChineseSimplified.ini
+		chmod +0666 $languageDir/ChineseTraditional.ini
+		chmod +0666 $languageDir/English.ini
+		chmod +0666 $languageDir/French.ini
+		chmod +0666 $languageDir/German.ini
+		chmod +0666 $languageDir/Italian.ini
+		chmod +0666 $languageDir/Japanese.ini
+		chmod +0666 $languageDir/Korean.ini
+		chmod +0666 $languageDir/Polish.ini
+		chmod +0666 $languageDir/Russian.ini
+		chmod +0666 $languageDir/Spanish.ini
+	fi
+
+	#change temp file permition
+	echo "change tmp file permition"
+	localfile="/tmp/qtsingleapp-Xencel-fb8d-lockfile"
+	touch $localfile
+	sudo chmod +0777 /tmp/qtsingleapp-Xencel-fb8d-lockfile
+
+	echo "The installation is successful. If this is your first installation, restart your computer please"
+
+}
+
+pre_upgrade() {
+	pre_install
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	echo "==========================================================="
+	AppName=xencelabs
+	appRunScript=start.sh
+
+	#some operator before uninstall
+	pid=`ps -e|grep $AppName`
+
+	if [ -n "$pid" ]; then
+		echo $pid
+		arr=()
+		while read -r line; do
+		   arr+=("$line")
+		done <<< "$pid"
+		for val in "${arr[@]}";
+		do
+			appid=`echo $val | awk '{print $1}'`
+		   	name=`echo $val | awk '{print $4}'`
+		   	echo "ID:"$appid 
+			echo "Name:"$name
+
+			if [ "$name" = "$appRunScript" ]; then
+				echo "close $appRunScript"
+				kill -15 $appid
+			elif [ "$name" = "$AppName" ]; then
+				echo "close $AppName"
+				kill -15 $appid
+			fi
+		done
+	fi
+
+	pid=`ps -e|grep $AppName|awk '{print $1}'`
+	if [ -n "$pid" ]; then
+		echo "close xencelabs"
+		kill -15 $pid
+	fi
+
+	AppName=xencelabs
+	AppDir=xencelabs
+
+	#some operator after deb uninstalled
+	if [ -f "/usr/share/applications/$AppName.desktop" ]; then
+		rm "/usr/share/applications/$AppName.desktop"
+	fi
+
+	if [ -f "/usr/share/icons/$AppName.png" ]; then
+		rm "/usr/share/icons/$AppName.png"
+	fi
+
+	if [ -d "/usr/lib/$AppDir" ];then
+		rm -rf "/usr/lib/$AppDir"
+	fi
+
+	userinfo=`who`
+	user=`who | awk  '{print $1}'|head -1`
+	echo $user
+
+	dataPath=/home/$user/.local/share/$AppDir
+	if [ -d $dataPath ];then
+		echo `rm -rf $dataPath`
+	fi
+
+	echo "The uninstallation is successful."
+
+
+}
+
+post_remove() {
+	echo "remove lockfile"
+	sudo rm /tmp/qtsingleapp-Xencel-fb8d-lockfile
+
+
+}
+
+post_install() {
+  echo "--------------------------------------------------------------------------------"
+  echo "WARNING: Make sure you create the folder ~/.local/share/xencelabs/"
+  echo "WARNING: and copy the contents of /usr/lib/xencelabs/config/ into it."
+  echo "WARNING: xencelabs will not work unless you do this."
+  echo "--------------------------------------------------------------------------------"
+}
+
+post_upgrade() {
+  post_install
+}
