@@ -14,24 +14,26 @@ depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
     'python'
-    'lib32-gcc-libs'
+    'nodejs'
     'lib32-glibc'
+    'lib32-gcc-libs'
 )
 makedepends=(
     'gendesk'
 )
+options=('!strip')
 source=(
     "${pkgname%-bin}-${pkgver}.bin::${url}/releases/download/v${pkgver}/${_appname// /-}-linux-x64-v${pkgver}.tar.gz"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('f77cbb049b831a89be19ddc4b7334d3d5ad7779649d4f8410ba00c70a740f912'
-            '68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@appasar@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories "Utility" --name "${_appname}" --exec "${pkgname%-bin}"
+    gendesk -q -f -n --categories "Utility" --name "${_appname}" --exec "${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

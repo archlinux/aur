@@ -9,13 +9,15 @@ pkgbase = alpaca-electron-bin
 	depends = electron13
 	depends = hicolor-icon-theme
 	depends = python
-	depends = lib32-gcc-libs
+	depends = nodejs
 	depends = lib32-glibc
+	depends = lib32-gcc-libs
 	provides = alpaca-electron=1.0.5
 	conflicts = alpaca-electron
+	options = !strip
 	source = alpaca-electron-1.0.5.bin::https://github.com/ItsPi3141/alpaca-electron/releases/download/v1.0.5/Alpaca-Electron-linux-x64-v1.0.5.tar.gz
 	source = alpaca-electron.sh
 	sha256sums = f77cbb049b831a89be19ddc4b7334d3d5ad7779649d4f8410ba00c70a740f912
-	sha256sums = 68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
 
 pkgname = alpaca-electron-bin
