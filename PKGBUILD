@@ -3,7 +3,7 @@ pkgname=jimud-bin
 _pkgname=jiMUD
 pkgver=1.2.0
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="MUD client for ShadowMUD.com, based on webclient"
 arch=("x86_64")
 url="http://www.shadowmud.com/"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('a35fa5dc28503a17148759fbec4e72d788a13f1e21f4f4ce9eb70d256250cd7d'
-            '68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \

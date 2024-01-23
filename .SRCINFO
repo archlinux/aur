@@ -1,7 +1,7 @@
 pkgbase = jimud-bin
 	pkgdesc = MUD client for ShadowMUD.com, based on webclient
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.shadowmud.com/
 	arch = x86_64
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = jimud-bin
 	source = jimud-1.2.0.deb::https://github.com/icewolfz/jiMUD/releases/download/v1.2.0/jimud_1.2.0_amd64.deb
 	source = jimud.sh
 	sha256sums = a35fa5dc28503a17148759fbec4e72d788a13f1e21f4f4ce9eb70d256250cd7d
-	sha256sums = 68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
 
 pkgname = jimud-bin
