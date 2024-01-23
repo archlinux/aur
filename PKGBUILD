@@ -3,13 +3,13 @@
 pkgbase=pcanflash-git
 pkgname=pcanflash-git
 pkgver=r94.ff6be26
-pkgrel=1
+pkgrel=7
 pkgdesc="Linux Tool to flash PCAN Routers"
 arch=(x86_64
     aarch64
     riscv64)
 url="https://github.com/peak-system/pcanflash"
-license=('GPLv2')
+license=('GPL-2.0-only')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 depends=(glibc
