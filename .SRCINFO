@@ -1,0 +1,13 @@
+pkgbase = ruby-camertron-eprun
+	pkgdesc = Efficient Pure Ruby Unicode Normalization.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/camertron/camertron-eprun
+	arch = any
+	license = custom:Ruby
+	depends = ruby
+	noextract = camertron-eprun-1.1.1.gem
+	source = https://rubygems.org/downloads/camertron-eprun-1.1.1.gem
+	sha512sums = f04798097d516f6f409b71737f5045b5f208016e261ba09dde04a9b6620daa76b6f35d5268e8e4acbd5f468175defbe0a127255bb2d86bb7b6a7065c9f94ee52
+
+pkgname = ruby-camertron-eprun
