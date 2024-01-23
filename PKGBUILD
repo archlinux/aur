@@ -1,8 +1,8 @@
 # Maintainer: Bao Trinh <qubidt@gmail.com>
 
 pkgname=qbittorrent-cli
-pkgver=1.7.23016.1
-pkgrel=3
+pkgver=1.8.24012.1
+pkgrel=1
 pkgdesc='Command line interface for qBittorrent'
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://github.com/fedarovich/qbittorrent-cli"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('dotnet-runtime-6.0')
 makedepends=('dotnet-sdk-6.0')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ff5c53b50383c0eb478d485981556ed350645f8e8bf380630b1b0c7d3794cf32')
+sha256sums=('395277f785bdc6773b57112cf3060151123728539cbf29445530d1d34671a031')
 options=('!strip')
 
 prepare() {
