@@ -1,4 +1,4 @@
-pkgbase = fotoluks-manager-git3
+pkgbase = fotoluks-manager-git
 	pkgdesc = Application for managing orders, setting tasks and mini-applications for working with MoySklad.
 	pkgver = 2.0.0.r0.g2723374
 	pkgrel = 1
@@ -12,9 +12,9 @@ pkgbase = fotoluks-manager-git3
 	makedepends = gcc
 	makedepends = make
 	depends = electron22
-	provides = fotoluks-manager-git3
-	conflicts = fotoluks-manager-git3
-	source = fotoluks-manager-git3.git::git+https://github.com/Evernayt/fotoluks-manager.git
+	provides = fotoluks-manager
+	conflicts = fotoluks-manager
+	source = fotoluks-manager.git::git+https://github.com/Evernayt/fotoluks-manager.git
 	sha256sums = SKIP
 
-pkgname = fotoluks-manager-git3
+pkgname = fotoluks-manager-git

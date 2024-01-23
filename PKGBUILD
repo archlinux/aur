@@ -1,5 +1,5 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=fotoluks-manager-git3
+pkgname=fotoluks-manager-git
 _pkgname="Fotoluks Manager"
 pkgver=2.0.0.r0.g2723374
 _electronversion=22
