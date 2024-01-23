@@ -39,18 +39,6 @@ index adaf843c..964998e5 100644
  build-backend = "setuptools.build_meta"
  
  [tool.black]
-diff --git a/setup.cfg b/setup.cfg
-index c9da4f56..ac3cdc4d 100644
---- a/setup.cfg
-+++ b/setup.cfg
-@@ -35,6 +35,7 @@ packages =
- include_package_data = true
- install_requires =
- 	importlib_metadata; python_version<"3.8"
-+	polib >= 1.1.1
- 	PyQt5 >= 5.6.0; python_version>="3.0"
- 	qtpy >= 1.1.0
- zip_safe = false
 -- 
 2.40.0
 

@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola
-pkgver=4.4.1
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
@@ -19,7 +19,6 @@ depends=(
 makedepends=(
   'python-build'
   'python-installer'
-  'python-jaraco.packaging'
   'python-rst.linker'
   'python-setuptools-scm'
   'python-sphinx'
@@ -35,8 +34,8 @@ optdepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/git-cola/git-cola/archive/v$pkgver.tar.gz"
         '0001-Unvendorize-polib.py.patch')
-sha256sums=('231786deef4a384b904ea4bc0856386448e91161cfed1aadf17494f28a5cbfd0'
-            '00db8356a4bc6f1d9dade64ab04b6f8bada2df22b246e21551ce925de9f95625')
+sha256sums=('f8baaf6e168d605bf087e6ef77137089d9f01ea13f7947bb31cc7ac58e5aa248'
+            'ffeaafbf1495931d3ab5cee439a82bef340d9cb15d4d555a57e93aed47695fc9')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -50,15 +49,14 @@ build() {
   cd "$pkgname-$pkgver"
   python -m build --wheel --no-isolation
 
-  make prefix=/usr doc
+#  make prefix=/usr doc
+  make prefix=/usr man
 }
 
 check() {
   cd "$pkgname-$pkgver"
   desktop-file-validate share/applications/*.desktop
   appstream-util validate-relax --nonet share/metainfo/*.appdata.xml
-
-  # Not running the unit tests because users don't know how to build in a chroot
 
   # Run the unit tests
 #  GIT_CONFIG_NOSYSTEM=true LC_ALL="C.UTF-8" make test V=2
@@ -68,7 +66,8 @@ package() {
   cd "$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  make prefix=/usr DESTDIR="$pkgdir" install-doc
+#  make prefix=/usr DESTDIR="$pkgdir" install-doc
+  make prefix=/usr DESTDIR="$pkgdir" install-man
 
   install -Dm644 "contrib/_${pkgname}" -t "$pkgdir/usr/share/zsh/site-functions/"
   install -Dm644 "contrib/$pkgname-completion.bash" \
