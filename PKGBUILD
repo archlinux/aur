@@ -2,12 +2,12 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=proxmark3-iceman-git
-pkgver=4.17768.r178.g3f1e0f4
+pkgver=4.17768.r201.gab0c46a
 pkgrel=1
 pkgdesc='RRG / Iceman repo - Proxmark3 RDV4.0 and other Proxmark3 platforms.'
 arch=('x86_64')
 url='https://github.com/RfidResearchGroup/proxmark3'
-license=('GPL2')
+license=('GPL-2.0-only')
 depends=('perl'
   'python'
   'libsndfile'
