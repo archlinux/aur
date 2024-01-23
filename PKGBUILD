@@ -9,9 +9,9 @@ pkgdesc='JetBrains IDE for Rust Developers'
 arch=('any')
 url='https://www.jetbrains.com/rust/'
 license=('custom:jetbrains')
-depends=('glib2' 'rust-src')
+depends=('glib2')
 options=('!strip')
-source=("https://download.jetbrains.com/${pkgbase}/RustRover-${pkgver}.tar.gz"
+source=("https://download-cf.jetbrains.com/${pkgbase}/RustRover-${pkgver}.tar.gz"
         jetbrains-rustrover.desktop
         LICENSE)
 b2sums=('e3597b7e90a8a0cc9891d7df4a053d86cd925545c65ac64f266bda098bd5849e6e16d2ba8c5746e9ee409f49991af272522ca9cab8dffc5c690d8a3c38813707'
