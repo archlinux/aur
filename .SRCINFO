@@ -1,0 +1,14 @@
+pkgbase = nodejs-gamedig
+	pkgdesc = A CLI tool for querying the status of nearly any game or voice server
+	pkgver = 4.3.1
+	pkgrel = 1
+	url = https://github.com/gamedig/node-gamedig
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = gamedig-4.3.1.tgz
+	source = https://registry.npmjs.org/gamedig/-/gamedig-4.3.1.tgz
+	sha512sums = 7adf40ab8c250f4704c5710edebdcb5a21048cecec9c6e65ff4612ab36bb1592e826aba7353e8379d9005c075e3aa02a4ad91141a85088f163c7658283848eb6
+
+pkgname = nodejs-gamedig
