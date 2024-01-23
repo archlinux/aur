@@ -1,0 +1,23 @@
+From 8a163c49bf65908c29b4da6aad315eeacabdeda8 Mon Sep 17 00:00:00 2001
+From: Daniel Albers <daniel@lbe.rs>
+Date: Wed, 24 Jan 2024 00:02:22 +0100
+Subject: [PATCH] Unpin setuptools
+
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index bae70ba..0d4feb6 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["setuptools~=62.3"]
++requires = ["setuptools>=62.3"]
+ build-backend = "setuptools.build_meta"
+ 
+ [project]
+-- 
+2.43.0
+

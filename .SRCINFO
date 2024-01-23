@@ -1,0 +1,17 @@
+pkgbase = python-xknx
+	pkgdesc = XKNX is the underlying library for the KNX integration in Home Assistant.
+	pkgver = 2.11.2
+	pkgrel = 1
+	url = https://github.com/XKNX/xknx
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	source = https://github.com/XKNX/xknx/archive/refs/tags/2.11.2.tar.gz
+	source = 0001-Unpin-setuptools.patch
+	sha256sums = d090b4540d5021d0783b3276b50560956ab1d3c59aabc1d7261b829b18cb42d7
+	sha256sums = 07bcfd9a0e4852b0d539a1a7dd8e50ab4908536bd8024f8ea9795f361a170325
+
+pkgname = python-xknx
