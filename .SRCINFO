@@ -1,6 +1,6 @@
 pkgbase = octopi-notifier-frameworks-dev
 	pkgdesc = Notifier for Octopi with Knotifications support
-	pkgver = 0.16.0.r2.59c785f
+	pkgver = 0.16.0.r3.9037688
 	pkgrel = 1
 	url = https://github.com/aarnt/octopi
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = octopi-notifier-frameworks-dev
 	depends = octopi-dev
 	depends = knotifications5
 	provides = octopi-notifier
-	source = git+https://github.com/aarnt/octopi.git#commit=59c785f364ec68d794b0166438b31fdcf82507f3
+	source = git+https://github.com/aarnt/octopi.git#commit=9037688da57909db9ce23757785d880fbbce3791
 	sha256sums = SKIP
 
 pkgname = octopi-notifier-frameworks-dev
