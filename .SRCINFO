@@ -1,11 +1,12 @@
 pkgbase = inputmodule-control
 	pkgdesc = Command line utility to control Framework Laptop 16 input modules
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FrameworkComputer/inputmodule-rs
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	depends = inputmodule-udev
 	depends = libasound.so
 	depends = libudev.so
 	source = inputmodule-control-0.2.0.tar.gz::https://github.com/FrameworkComputer/inputmodule-rs/archive/v0.2.0.tar.gz
