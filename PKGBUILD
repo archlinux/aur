@@ -1,8 +1,9 @@
+# Maintainer: Aseem Athale <athaleaseem@gmail.com>
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 _pkgname=srsly
 pkgname=python-${_pkgname}
-pkgver=2.4.6
+pkgver=2.4.8
 pkgrel=1
 pkgdesc='Modern high-performance serialization utilities for Python'
 arch=(x86_64 aarch64)
@@ -19,7 +20,7 @@ depends=(
 )
 makedepends=(python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('b02e4d7e1fdab87968d47653c29d4d5794c8ebfe8698f7447e33338a2706769e8383aec8e92d4df614ad9d17ada6edbaef8c619bbbc02e37251b36c0825b8bdf')
+b2sums=('9f3cb9f06169c2a8513d1f2e4fe1ef53b108b63fe69d526c3a41217c0617a8563d6ab580cc03806472730e4b3ce028829d02125181fec9a82cb171eb5c0936cc')
 
 build() {
 	cd "srsly-${pkgver}"
