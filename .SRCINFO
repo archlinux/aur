@@ -1,0 +1,16 @@
+pkgbase = clc-intercal
+	pkgdesc = New INTERCAL compiler (bundle)
+	pkgver = 1.pre94.pre2.4
+	pkgrel = 1
+	url = https://uilebheist.srht.site/
+	arch = any
+	license = custom
+	depends = perl
+	optdepends = perl-net-interface: for INET package
+	optdepends = ncurses: UI-Curses
+	optdepends = perl-term-readline-gnu: UI-Line
+	optdepends = perl-gtk3: UI-X
+	source = https://uilebheist.srht.site/dist/CLC-INTERCAL-1.-94.-2.4/CLC-INTERCAL-1.-94.-2.4.tar.gz
+	sha256sums = 4cbfa1c084fb53f66908b457668bb9ba086d826212d41a663f646bb65b95d1e8
+
+pkgname = clc-intercal
