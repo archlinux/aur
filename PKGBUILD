@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=bkmr
-pkgver=1.0.0
+pkgver=1.1.0
 # _pkgrev=982145d8ea36d9a78d7c7f828ca5a68f7aa9b524
 # _pkgref=$_pkgrev
 _pkgrev=$pkgver
@@ -14,8 +14,8 @@ arch=('x86_64' 'i686' 'arm' 'aarch64')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sysid/bkmr/archive/$_pkgref.tar.gz")
-sha256sums=('b48017fd6049bf6f4e3556405863bbf44d5764600b0f76bdd5bbcd4017fbbfac')
-b2sums=('d6fe2f4e671591fc118bc67b58dbec91001a88c85c0a6fec03ef7596d0d5117ee625457ee259b88f45c651805f4f2ca8c808eab49be4c12e55ea5dfc01c3b171')
+sha256sums=('673888e1f01c0a1f0d2ccb404f437ac242f964234eeb1484c1ed7780100cff41')
+b2sums=('9ddc490d75904494be9ea02d2b88678e1e2e7a4ed0070defce81db98317094f7477ab5395620fbe8e28169f4cc43507641a654c373a05a3dca5372ce65fd304d')
 
 case $CARCH in
   x86_64|i686|aarch64)
