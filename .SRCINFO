@@ -1,0 +1,13 @@
+pkgbase = ruby-cldr-plurals-runtime-rb
+	pkgdesc = Ruby runtime methods for CLDR plural rules (see camertron/cldr-plurals).
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/camertron/cldr-plurals-runtime-rb
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = cldr-plurals-runtime-rb-1.1.0.gem
+	source = https://rubygems.org/downloads/cldr-plurals-runtime-rb-1.1.0.gem
+	sha512sums = 2113e93c0a3b7a62095a3c7ded87663cbe8994df26cccb7a13633a9daf4bc593ef608f58b3bc00683ea58b5972e00a2f90b11f1781c65831fe0b91d7ceda0f3d
+
+pkgname = ruby-cldr-plurals-runtime-rb
