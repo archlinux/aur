@@ -29,8 +29,8 @@ _sudachidict_date=20240109
 
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=2.29.5291.102
-pkgrel=11
+pkgver=2.29.5346.102
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
@@ -124,11 +124,12 @@ build() {
 
   cd "${srcdir}/mozcdict-ext/" || exit
   # すだちを優先
-  msg '2. Run the rust program(mozdcict-ext), it may take some time...'
+  msg '2. Build the rust program(mozdcict-ext), it may take some time...'
   cd sudachi || exit
   source <(cargo +nightly -Z unstable-options rustc --print cfg|grep -E "target_(arch|vendor|os|env)")
   TARGET="${target_arch}-${target_vendor}-${target_os}-${target_env}"
   cargo build --release --target $TARGET
+  msg '3. Run the rust program(mozcdict-ext): SudachiDict , it may take some time...'
   cat ${srcdir}/small_lex.csv ${srcdir}/core_lex.csv ${srcdir}/notcore_lex.csv > all.csv
   cp ${srcdir}/mozc/src/data/dictionary_oss/id.def ./
   ./target/$TARGET/release/dict-to-mozc sudachi all.csv > ../all-dict.txt
@@ -144,18 +145,18 @@ build() {
   #cd ..
 
   # ut-dictionarys
-  msg '3. Run the rust program(mozcdict-ext) , it may take some time...'
+  msg '4. Run the rust program(mozcdict-ext): utdict , it may take some time...'
   cd sudachi || exit
   ./target/$TARGET/release/dict-to-mozc utdict ../mozcdic-ut.txt >> ../all-dict.txt
   #ruby utdict/utdict.rb -E -f mozcdic-ut.txt -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> all-dict.txt
   cd ..
 
-  msg '4. Run the awk scripts as dup.awk, it may take some time...'
+  msg '5. Run the awk scripts as dup.awk, it may take some time...'
   awk -f sudachi/dup.awk all-dict.txt > finish-dict.txt
   #ruby .dev.utils/uniqword.rb all-dict.txt > finish-dict.txt  2> duplicated.txt
   #cat ut-dict.txt >> finish-dict.txt
 
-  msg '5. Finally add UT dictionary to mozc source'
+  msg '6. Finally add UT dictionary to mozc source'
   cat finish-dict.txt >> "$srcdir/mozc/src/data/dictionary_oss/dictionary00.txt"
   sync
 
