@@ -1,0 +1,24 @@
+pkgbase = python-inputmodule
+	pkgdesc = Python-based command line utility and library to control Framework Laptop 16 input modules
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/FrameworkComputer/inputmodule-rs
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	makedepends = python-wheel
+	depends = inputmodule-udev
+	depends = python>=3.7.0
+	depends = python-getkey
+	depends = python-pillow
+	depends = python-pyserial
+	depends = python-pysimplegui
+	provides = ledmatrixctl
+	provides = ledmatrixgui
+	source = python-inputmodule-0.2.0.tar.gz::https://github.com/FrameworkComputer/inputmodule-rs/archive/v0.2.0.tar.gz
+	sha512sums = 068f26d83ee68e6e1b71954add4a9df740426596f3f6301cb5f24b898e17d41f70f1d3245afe6e2b601e09a72c8dfb868fae65f8a9e9c439cde40eddbd8a47a9
+
+pkgname = python-inputmodule
