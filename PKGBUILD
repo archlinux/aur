@@ -2,7 +2,7 @@
 
 pkgname=pragtical-git
 _pkgname=pragtical
-pkgver=rolling.r0.g4352305
+pkgver=3.2.1.1705974943
 pkgrel=1
 pkgdesc='The practical and pragmatic code editor.'
 arch=('x86_64')
@@ -22,7 +22,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  git describe --tags --long | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
+  echo "$(git tag -l | grep ^v | tail -n 1 | sed 's/^v//g').$(git show -s --format=%ct)"
 }
 
 build() {
