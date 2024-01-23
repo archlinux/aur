@@ -4,8 +4,8 @@
 # Based on [extra]'s thunderbird
 
 pkgname=(thunderbird-nightly-bin thunderbird-nightly-bin-noupdate)
-pkgver=123.0a1.20231221
-_version=123.0a1
+pkgver=124.0a1.20240123
+_version=124.0a1
 pkgrel=1
 arch=('x86_64')
 url="https://www.mozilla.org/thunderbird"
