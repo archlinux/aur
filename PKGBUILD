@@ -16,7 +16,7 @@ conflicts=('hedgewars' 'hedgewars-hg')
 source=("$pkgname::hg+https://hg.hedgewars.org/hedgewars/"
         "sdl2-mixer.patch")
 sha512sums=('SKIP'
-            '2403faa65e89959105c32651ca426b9e01ad8c1d6cb748c7e2bcf577faf995ee3f042aa9f994f161987bee14ce0749c26620656b17007deb18303a320d495f7f')
+            'bfb318a7f084cf65d470a4306f014f0adec677b1215519a246b54f3e40865972253721447604b7651a4b1b90aae2f8a4470e59e2b7dd6f3035bb4a42a89c1faa')
 
 pkgver() {
   cd "$pkgname"
