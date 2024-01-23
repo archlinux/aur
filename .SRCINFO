@@ -1,0 +1,16 @@
+pkgbase = fontastic-bin
+	pkgdesc = A stunning font management and cataloging application.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/tomshaw/fontastic
+	arch = x86_64
+	license = MIT
+	depends = electron25
+	source = fontastic-0.2.0.deb::https://github.com/tomshaw/fontastic/releases/download/v0.2.0/Fontastic-0.2.0-amd64.deb
+	source = LICENSE-0.2.0::https://raw.githubusercontent.com/tomshaw/fontastic/v0.2.0/LICENSE
+	source = fontastic.sh
+	sha256sums = 3b34a974d7da78f9621b02e11a35c00d9f81a19ec42ed1dddfc4f4d59d67d962
+	sha256sums = d461d5796257402081b89cae64365068a66d193696f7c64cb7e6fd307b4a48d9
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+
+pkgname = fontastic-bin
