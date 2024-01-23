@@ -2,8 +2,8 @@
 # Contributor:  Po-An,Yang(Antonio) <yanganto gmail.com>
 
 pkgname=clipcat
-pkgver=0.16.2
-pkgrel=2
+pkgver=0.16.4
+pkgrel=1
 pkgdesc="A clipboard manager written in Rust Programming Language"
 arch=(x86_64)
 url="https://github.com/xrelkd/clipcat"
@@ -19,7 +19,7 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e784ec4a3799fa003e2d298477d8a627d1e02fdb147136fb245fdf87d34b96d3')
+sha256sums=('b8dee629c489066be8a15b8f4e9a4c1619a0fe1802b1abd07e4525b5f4038f4a')
 
 _archive="$pkgname-$pkgver"
 
