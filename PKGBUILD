@@ -2,7 +2,7 @@
 # Maintainer: Toby Padilla <toby@charm.sh>
 
 pkgname='mods-bin'
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='AI on the command line'
 url='https://charm.sh/'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('mods')
 conflicts=('mods')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.1.0/mods_1.1.0_Linux_arm64.tar.gz")
-sha256sums_aarch64=('e9c21011d282b778355024dc2434a37aaf705bae52f1cca84a82f98806ae01ef')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.2.0/mods_1.2.0_Linux_arm64.tar.gz")
+sha256sums_aarch64=('83f3f27c6096f4f1b5f3cb758f01c9c7b46e7f8a37ea3bed703876df98a3b84c')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.1.0/mods_1.1.0_Linux_arm.tar.gz")
-sha256sums_armv7h=('4fbfdda1c770c5f1eb06fe63c5ef29e6ce0717d9feb38aa7ce0436d0535ab896')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.2.0/mods_1.2.0_Linux_arm.tar.gz")
+sha256sums_armv7h=('14ee3e83aa36dd1ecbd6c0b1a3c4d511401052f1ab012ca91faa22dbf83c1cf0')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.1.0/mods_1.1.0_Linux_i386.tar.gz")
-sha256sums_i686=('5a656331d5e442a2b9584498a04c4d2ab86360a6956930a7a0f439190e0a7a5a')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.2.0/mods_1.2.0_Linux_i386.tar.gz")
+sha256sums_i686=('0f3cc48094850839439b18f0978b233f1c4b2112a611eba612cedea612ff9b0c')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.1.0/mods_1.1.0_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('4f5577134d9645f50ebe2c06c2eae5ad689492163074773f361da3383d291420')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/mods/releases/download/v1.2.0/mods_1.2.0_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('92040a52f831ad25380c6091fa4ba5574cb7cb5ec4947ffae0e075565a447916')
 
 package() {
   # bin
