@@ -3,7 +3,7 @@
 pkgname=moonshine-git
 pkgver=r128.35225f9
 pkgrel=1
-pkgdesc="Server for streaming the desktop using the NVIDIA GameStream / Moonlight protocol."
+pkgdesc="Streaming server for Moonlight clients, written in Rust."
 arch=('x86_64')
 url="https://github.com/hgaiser/moonshine"
 license=('custom')
