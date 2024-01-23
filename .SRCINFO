@@ -11,9 +11,9 @@ pkgbase = hterm
 	conflicts = hterm-32
 	source = hterm.png
 	source = hterm.desktop
-	source = http://www.der-hammer.info/terminal/hterm088-linux-64.tgz
+	source = https://www.der-hammer.info/terminal/hterm089-linux-64.tgz
 	sha256sums = 358862a79e6a88ca07dc86faa5e29d862bbf2aa2ca16e7f43e2f00a8c444e683
 	sha256sums = fba0a7159c9187bfe8d2c7f63611bf4c2193a69566566bca79f2ce3ff46073f7
-	sha256sums = ee1c5c188f54c309f56cc3583ce09f26fbbf9471da88f9f87309e7f888520218
+	sha256sums = 0d8f97ec5694d5405b35ffca832e13cc1662a1c438fd3a495b728b5b58aed0cd
 
 pkgname = hterm
