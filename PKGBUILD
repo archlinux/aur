@@ -2,8 +2,8 @@
 
 _pkgname=browser-corporate
 pkgname=yandex-browser-corporate
-pkgver=23.7.4.985
-_pkgver=23.7.4.985-1
+pkgver=23.11.1.922
+_pkgver=23.11.1.922-1
 pkgrel=1
 
 pkgdesc="The web browser from Yandex.
@@ -17,7 +17,7 @@ conflicts=('yandex-browser' 'yandex-browser-beta')
 options=(!strip)
 
 depends=( "binutils" "ttf-liberation" "jq" "alsa-lib" "at-spi2-atk" "libcups" "curl" "dbus" "libdrm" "gdbm" "gtk4" "nspr" "nss" "pango"
-"wayland" "libxcomposite" "libxdamage" "libxkbcommon" "libxkbfile" "libxrandr" "wget" "xdg-utils" "harfbuzz-icu")
+"wayland" "libxcomposite" "libxdamage" "libxkbcommon" "libxkbfile" "libxrandr" "squashfs-tools" "wget" "xdg-utils" "harfbuzz-icu" )
 optdepends=(
     "speech-dispatcher"
     "vulkan-driver"
@@ -28,7 +28,7 @@ optdepends=(
 )
 
 source=("${pkgname}-${_pkgver}.deb::https://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-${_pkgname}/yandex-${_pkgname}_${_pkgver}_amd64.deb")
-sha256sums=("7c5546cfad5f2709d5bb28523bdcff468fbd73e2df38ee6d8389d18d5824ecab")
+sha256sums=("38e733d9d41e55e6b4bc18c5d45cab0ac9d147e5ab0b37cb4ddf985e92c90ac2")
 install=yandex-browser-corporate.install
 
 prepare() {
