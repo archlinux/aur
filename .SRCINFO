@@ -1,19 +1,20 @@
 pkgbase = python-diffcp
 	pkgdesc = Differentiating through a cone program
-	pkgver = 1.0.21
+	pkgver = 1.0.23
 	pkgrel = 1
 	url = http://github.com/cvxgrp/diffcp/
 	arch = x86_64
 	license = Apache
 	checkdepends = python-pytest
 	makedepends = pybind11
+	depends = python-cvxpy
 	depends = python-ecos
 	depends = python-multiprocess
 	depends = python-numpy
 	depends = python-scs
 	depends = python-scipy
 	depends = python-threadpoolctl
-	source = python-diffcp-1.0.21.tar.gz::https://github.com/cvxgrp/diffcp/archive/v1.0.21.tar.gz
-	sha256sums = 9451634ffd2f796a17a707c20b176f05678e4a7c362965c23ddec3a815258ceb
+	source = python-diffcp-1.0.23.tar.gz::https://github.com/cvxgrp/diffcp/archive/v1.0.23.tar.gz
+	sha256sums = 8f6d62cc42d4bd487a77514a13f45642bd2ab154f2fefca9a7bd7cf846241a38
 
 pkgname = python-diffcp
