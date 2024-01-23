@@ -1,13 +1,13 @@
 pkgbase = open-tv-bin
 	pkgdesc = Fast & Simple IPTV app
-	pkgver = 0.9.4
+	pkgver = 0.9.8
 	pkgrel = 1
 	url = https://github.com/fredolx/open-tv
 	arch = x86_64
 	license = GPL2
 	depends = mpv
 	depends = electron
-	source = https://github.com/Fredolx/open-tv/releases/download/v0.9.4/linux-generic.tar.gz
-	sha512sums = c02d88d95498140e4154dc3e56c3ae47ce7039d4ef7391318351b2e12a38a12f6bc3a10ebb1197e89286ec2f9cdb0ccf7c77b28e5ff7de07d603914d913c879b
+	source = https://github.com/Fredolx/open-tv/releases/download/v0.9.8/linux-generic.tar.gz
+	sha512sums = 80b658dcae7d9a6fc6c09522e8bc9abeb19862a600eb366022f31ce7ea9ea9095476d1d3c4863a157d65159ce2e90f9f3ca19dee6a9e98324c7b787c2a44502d
 
 pkgname = open-tv-bin
