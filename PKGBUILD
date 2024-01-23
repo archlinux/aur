@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=netscripts-atzlinux-git
-pkgver=1.0.8.r5.g1070db6
-pkgrel=1
+pkgver=1.0.9.r0.ga802eb5
+pkgrel=6
 pkgdesc="some simple network scripts no need any parameter"
 arch=("any")
 groups=()
@@ -11,8 +11,8 @@ makedepends=()
 optdepends=()
 conflicts=()
 url="https://www.atzlinux.com"
-license=('GPLv3')
-options=(!strip)
+license=('GPL-3.0-only')
+options=()
 install=${pkgname}.install
 source=("git+https://gitee.com/atzlinux/netscripts-atzlinux.git"
     "${pkgname}.install")
