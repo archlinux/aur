@@ -1,6 +1,6 @@
 pkgbase = curl-http3-ngtcp2
 	pkgdesc = command line tool and library for transferring data with URLs - compiled with HTTP/3 support (using ngtcp2 and nghttp3)
-	pkgver = 8.4.0
+	pkgver = 8.5.0
 	pkgrel = 1
 	url = https://curl.se/
 	arch = x86_64
@@ -28,10 +28,10 @@ pkgbase = curl-http3-ngtcp2
 	depends = ngtcp2
 	depends = libngtcp2.so
 	depends = quictls-openssl
-	provides = curl=8.4.0
+	provides = curl=8.5.0
 	provides = libcurl.so
 	conflicts = curl
-	source = git+https://github.com/curl/curl.git?signed#tag=817204c6e41f66dafbaa704d67f828a4288b3577
+	source = git+https://github.com/curl/curl.git#tag=55b5fafb094ebe07ca8a5d4f79813c8b40670795?signed
 	validpgpkeys = 27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2
 	sha512sums = SKIP
 
@@ -41,7 +41,7 @@ pkgname = libcurl-http3-ngtcp2-compat
 	pkgdesc = command line tool and library for transferring data with URLs (no versioned symbols)
 	depends = curl-http3-ngtcp2
 	depends = openssl
-	provides = libcurl-compat=8.4.0
+	provides = libcurl-compat=8.5.0
 	provides = libcurl-compat.so
 	conflicts = libcurl-compat
 
@@ -49,6 +49,6 @@ pkgname = libcurl-http3-ngtcp2-gnutls
 	pkgdesc = command line tool and library for transferring data with URLs (no versioned symbols, linked against gnutls)
 	depends = curl-http3-ngtcp2
 	depends = gnutls
-	provides = libcurl-gnutls=8.4.0
+	provides = libcurl-gnutls=8.5.0
 	provides = libcurl-gnutls.so
 	conflicts = libcurl-gnutls

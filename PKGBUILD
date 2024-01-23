@@ -7,8 +7,8 @@
 
 pkgbase=curl-http3-ngtcp2
 pkgname=(curl-http3-ngtcp2 libcurl-http3-ngtcp2-compat libcurl-http3-ngtcp2-gnutls)
-_tag='817204c6e41f66dafbaa704d67f828a4288b3577' # git rev-parse v${_tag_name}
-pkgver=8.4.0
+_tag='55b5fafb094ebe07ca8a5d4f79813c8b40670795' # git rev-parse v${_tag_name}
+pkgver=8.5.0
 pkgrel=1
 pkgdesc="command line tool and library for transferring data with URLs - compiled with HTTP/3 support (using ngtcp2 and nghttp3)"
 arch=('x86_64')
@@ -21,11 +21,10 @@ makedepends=('git' 'patchelf')
 conflicts=('curl')
 provides=("curl=${pkgver}" 'libcurl.so')
 validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
-source=("git+https://github.com/curl/curl.git?signed#tag=${_tag}")
+source=("git+https://github.com/curl/curl.git#tag=${_tag}?signed")
 sha512sums=('SKIP')
 
 _backports=(
-  "1f7d8cd478f024bc16cad204a9b62feb6e92a0c5" # make package reproducible
 )
 
 _reverts=(
