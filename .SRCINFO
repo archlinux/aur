@@ -1,7 +1,7 @@
 pkgbase = crm-git
 	pkgdesc = crm (Cargo registry manager)
 	pkgver = 0.2.1.r3.g10e818c
-	pkgrel = 6
+	pkgrel = 16
 	url = https://github.com/wtklbm/crm
 	arch = x86_64
 	arch = aarch64
@@ -13,7 +13,6 @@ pkgbase = crm-git
 	depends = cargo
 	provides = crm
 	conflicts = crm
-	options = !strip
 	options = !lto
 	source = crm::git+https://github.com/wtklbm/crm.git
 	sha256sums = SKIP

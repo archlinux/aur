@@ -2,7 +2,7 @@
 
 pkgname=crm-git
 pkgver=0.2.1.r3.g10e818c
-pkgrel=6
+pkgrel=16
 pkgdesc="crm (Cargo registry manager)"
 arch=(x86_64
     aarch64
@@ -15,7 +15,7 @@ replaces=()
 depends=('cargo')
 makedepends=('git' 'rust')
 backup=()
-options=('!strip' '!lto')
+options=('!lto')
 install=
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
