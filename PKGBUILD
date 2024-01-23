@@ -1,7 +1,7 @@
 # Maintainer: Dino Morelli <dino@ui3.info>
 
 pkgname=epub-tools
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 pkgdesc="Command line utilities for working with epub files"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=(epub-tools)
 depends=(glibc gmp zlib)
 makedepends=(stack)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dino-/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('0c448ef7df752dce48e79aecc0300d6cca365a0f224b4db597388837d53c49d0')
+sha256sums=('4a7c055d447c4e86b16f3d6ab916d89fbfcd04be52a3bb4e9c6aca768c56486a')
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   PREFIX="../dist" ./util/install.sh
