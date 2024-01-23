@@ -6,9 +6,9 @@ pkgbase = python-inputmodule
 	arch = any
 	license = MIT
 	makedepends = python-build
-	makedepends = python-installer
 	makedepends = python-hatchling
 	makedepends = python-hatch-vcs
+	makedepends = python-installer
 	makedepends = python-wheel
 	depends = inputmodule-udev
 	depends = python>=3.7.0
