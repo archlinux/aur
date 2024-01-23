@@ -2,11 +2,11 @@
 
 pkgname=mesaflash-git
 pkgver=3.4.9.r9.gaef5246
-pkgrel=2
+pkgrel=7
 pkgdesc="Configuration and diagnostic tool for Mesa Electronics PCI(E)/ETH/EPP/USB/SPI boards"
 arch=('i686' 'x86_64')
 url="https://github.com/LinuxCNC/mesaflash"
-license=('GPL')
+license=('GPL-2.0-only')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 depends=(libmd
