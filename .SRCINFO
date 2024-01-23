@@ -1,0 +1,19 @@
+pkgbase = windterm-bin-Prerelease
+	pkgdesc = A Quicker and better SSH/Telnet/Serial/Shell/Sftp client for DevOps.
+	pkgver = 2.6.0
+	pkgrel = 2
+	url = https://github.com/kingToolbox/WindTerm/
+	arch = x86_64
+	license = Apache-2.0
+	provides = windterm
+	conflicts = windterm-bin
+	source = windterm-bin-Prerelease-7-2.6.0-x86_64.tar.gz::https://github.com/kingToolbox/WindTerm/releases/download/2.6-prerelease/WindTerm_2.6.0_Prerelease_7_Linux_Portable_x86_64.tar.gz
+	source = windterm.png::https://raw.githubusercontent.com/kingToolbox/WindTerm/master/images/WindTerm_icon_1024x1024.png
+	source = windterm
+	source = windterm.desktop
+	sha512sums = adbd6cccac7c99b99371060f16d7d300b7da140933702bcc9c6569cab39d43d33f350a6c6e4b1cbc3d8012c2d01df076e622fa1716a1f0afa1ad742a94d1e62f
+	sha512sums = bfdcb9064eca32b06e6c493a48e8b38240cf9133a2d14a8ab45a4c0280bcfbef45f671dc1b86b64d7e6429cfaa6a95a9db7bb8c9c605b3b9aa852998a5abc17e
+	sha512sums = ef48e2a9c62af858cf172f4b2beb56ad495e1a5f1fdb0ee479cf28759ac63e6a1ef53a56fd85723e03f33bf2af9891f25a9d33b07f8fe8840394faf15a9562ef
+	sha512sums = af804a688ed45953ce089425981cce70c131481c44db78eb11bd8b105a122ff39621bf0d642f45278e02083600dfe51f30206e934e1805fe6d52c6d046c140e6
+
+pkgname = windterm-bin-Prerelease

@@ -1,0 +1,6 @@
+#!/bin/bash
+export _PATH="/opt/WindTerm"
+export XDG_RUNTIME_DIR="/opt/WindTerm/lib"
+export RUNLEVEL=3
+cd ${_PATH}
+./WindTerm &
