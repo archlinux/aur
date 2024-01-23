@@ -4,7 +4,7 @@
 
 pkgname=python-srsly-git
 _origpkgname=srsly
-pkgver=2.4.8.r307.559f776
+pkgver=2.4.8.r1.g4aba49f
 pkgrel=1
 pkgdesc="Modern high-performance serialization utilities for Python"
 arch=("x86_64")
@@ -19,24 +19,32 @@ depends=('python'
          'python-catalogue'
          'python-pytest-timeout'
 )
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 provides=('python-srsly')
 conflicts=('python-srsly')
 source=("git+https://github.com/explosion/$_origpkgname.git")
 md5sums=('SKIP')
 
-prepare() {
-  cd "$_origpkgname"
-  git checkout $(curl https://api.github.com/repos/explosion/$_origpkgname/releases | grep tag_name | cut -d '"' -f4 | head -n 1)
-}
-
 pkgver() {
   cd "$_origpkgname"
-  printf "%s.r%s.%s" "$(cat srsly/about.py | grep -i version | grep -v '#' | cut -d '"' -f2 | head -n 1)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$_origpkgname"
+  sed -i 's/ctypedef unsigned long long uint64_t/from libc.stdint cimport uint64_t/' srsly/msgpack/_unpacker.pyx
+  sed -i 's/,<0.30.0//' setup.cfg
+  sed -i 's/,<0.30.0//' pyproject.toml
+  sed -i 's/,<0.30.0//' requirements.txt
+}
+
+build() {
+  cd "${_origpkgname}"
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$_origpkgname"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
