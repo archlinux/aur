@@ -2,7 +2,7 @@
 # Reference: PKGBUILD(5)
 
 pkgname=python-diagrams-git
-pkgver=v0.23.3.r9.gb19b0976
+pkgver=v0.23.4.r3.gf517463e
 pkgrel=1
 pkgdesc='Diagram as Code'
 
@@ -10,7 +10,7 @@ arch=('any')
 url='https://github.com/mingrammer/diagrams'
 license=(MIT)
 
-makedepends=('python-pip' 'python-poetry')
+makedepends=('python-poetry')
 depends=("python-graphviz")
 
 pkgver() {
@@ -28,6 +28,6 @@ build() {
 
 package() {
 	cd "${srcdir}/diagrams"
-	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}" --ignore-installed --no-deps dist/*.whl
+	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -D "${srcdir}/diagrams/LICENSE" "$pkgdir/usr/share/licenses/python-diagram/LICENSE"
 }
