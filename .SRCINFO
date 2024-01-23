@@ -1,14 +1,13 @@
 pkgbase = crfsuite
 	pkgdesc = An implementation of Conditional Random Fields (CRFs) for labeling sequential data.
 	pkgver = 0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.chokkan.org/software/crfsuite/
 	arch = i686
 	arch = x86_64
 	license = custom:BSD
 	depends = liblbfgs
-	source = https://github.com/downloads/chokkan/crfsuite/crfsuite-0.12.tar.gz
-	md5sums = 3fb2033066996921e7979e35ab1a570f
+	source = https://github.com/mistersmee/crfsuite/archive/refs/tags/0.12-1.tar.gz
+	md5sums = 4a8ca0f18c768bdb8e65c2bf039ccc8e
 
 pkgname = crfsuite
-
