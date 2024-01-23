@@ -1,6 +1,6 @@
 pkgbase = fend
 	pkgdesc = Arbitrary-precision unit-aware calculator
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/printfn/fend
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = fend
 	depends = gcc-libs
 	depends = glibc
 	depends = openssl
-	source = fend-1.4.1.tar.gz::https://github.com/printfn/fend/archive/refs/tags/v1.4.1.tar.gz
-	sha256sums = eb40e376e1da00055112edc583e86ac3913536b35f2f7265de55dca52319a4e4
+	source = fend-1.4.2.tar.gz::https://github.com/printfn/fend/archive/refs/tags/v1.4.2.tar.gz
+	sha256sums = 79fd768cb1e28cd691c7da7fc84eeb0b41f43f5bfca92fff4137c7596cea4bff
 
 pkgname = fend
