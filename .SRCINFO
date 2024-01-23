@@ -1,6 +1,6 @@
 pkgbase = fleng
 	pkgdesc = A low level concurrent logic programming language descended from Prolog
-	pkgver = 16
+	pkgver = 19
 	pkgrel = 1
 	url = http://www.call-with-current-continuation.org/fleng/fleng.html
 	arch = x86_64
@@ -11,9 +11,7 @@ pkgbase = fleng
 	depends = sdl2_image
 	depends = sdl2_mixer
 	depends = sdl2_ttf
-	source = http://www.call-with-current-continuation.org/fleng/fleng-16.tgz
-	source = fix-build.patch
-	sha256sums = 4f31ced9b467bb2b148405906d4f991b41cebcb5b232c1c00709b741bd99ff70
-	sha256sums = 1029d18b00430b6f39667f79bec7f898fd4dd29e17121b7e5f35f8d2510ab0fe
+	source = http://www.call-with-current-continuation.org/fleng/fleng-19.tgz
+	sha256sums = c5830d192ddabd9f49b11f24265487cfe0b65ec2e686c0cefca4ebe49aae44af
 
 pkgname = fleng
