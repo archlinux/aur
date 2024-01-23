@@ -1,4 +1,5 @@
-# Maintainer: Jun Ouyang <ouyangjun1999@gmail.com>
+# Maintainer:    Jun Ouyang <ouyangjun1999@gmail.com>
+# Co-Maintainer: Takase <takase1121@proton.me>
 
 pkgname=derper
 pkgver=1.46.1
