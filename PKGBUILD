@@ -1,6 +1,6 @@
 # Maintainer: Nicholas Novak <34256932+NickyBoy89@users.noreply.github.com>
 pkgname=cobra-git
-pkgver=4.6.r5.g19f463c
+pkgver=4.6.r6.g5c1eeef
 pkgrel=1
 pkgdesc='An interactive (fast) static source code analyzer '
 depends=('glibc' 'bash')
@@ -42,6 +42,10 @@ package() {
     # The TCL gui files are executable scripts
     install -Dm 755 gui/window.tcl "${pkgdir}/usr/bin/cobra-window"
     install -Dm 755 gui/icobra.tcl "${pkgdir}/usr/bin/icobra"
+
+    # Rules files
+    install -d "${pkgdir}/usr/share/${pkgname}/"
+    cp -r rules/ "${pkgdir}/usr/share/${pkgname}/"
     
     # License
     install -Dm  644 doc/License "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
