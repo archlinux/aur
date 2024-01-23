@@ -1,6 +1,6 @@
 pkgbase = ddns-go
 	pkgdesc = A simple, easy-to-use ddns service | 简单好用的DDNS
-	pkgver = 6.0.3
+	pkgver = 6.1.0
 	pkgrel = 1
 	url = https://github.com/jeessy2/ddns-go
 	install = ddns-go.install
