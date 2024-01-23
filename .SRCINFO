@@ -1,11 +1,10 @@
 pkgbase = python-diagrams-git
 	pkgdesc = Diagram as Code
-	pkgver = v0.23.3.r9.gb19b0976
+	pkgver = v0.23.4.r3.gf517463e
 	pkgrel = 1
 	url = https://github.com/mingrammer/diagrams
 	arch = any
 	license = MIT
-	makedepends = python-pip
 	makedepends = python-poetry
 	depends = python-graphviz
 	source = git+https://github.com/mingrammer/diagrams.git
