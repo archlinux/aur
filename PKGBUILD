@@ -1,14 +1,14 @@
 # Contributor: taotieren <admin@taotieren.com>
 
 pkgname=cloudflarespeedtest-git
-pkgver=2.2.5.5.g216d0f5
-pkgrel=2
+pkgver=2.2.5.6.g176271d
+pkgrel=1
 pkgdesc="「自选优选 IP / 过滤假墙」测试 Cloudflare CDN 延迟和速度，获取最快 IP (IPv4+IPv6)！ "
 arch=(aarch64
     riscv64
     x86_64)
 url="https://github.com/XIU2/CloudflareSpeedTest"
-license=('GPLv3')
+license=('GPL-3.0-only')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
@@ -16,7 +16,7 @@ depends=(go)
 optdepends=()
 makedepends=('git')
 backup=()
-options=('!strip')
+options=()
 #install=${pkgname}.install
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')

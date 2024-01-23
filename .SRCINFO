@@ -1,17 +1,16 @@
 pkgbase = cloudflarespeedtest-git
 	pkgdesc = 「自选优选 IP / 过滤假墙」测试 Cloudflare CDN 延迟和速度，获取最快 IP (IPv4+IPv6)！
-	pkgver = 2.2.5.5.g216d0f5
-	pkgrel = 2
+	pkgver = 2.2.5.6.g176271d
+	pkgrel = 1
 	url = https://github.com/XIU2/CloudflareSpeedTest
 	arch = aarch64
 	arch = riscv64
 	arch = x86_64
-	license = GPLv3
+	license = GPL-3.0-only
 	makedepends = git
 	depends = go
 	provides = cloudflarespeedtest
 	conflicts = cloudflarespeedtest
-	options = !strip
 	source = cloudflarespeedtest::git+https://github.com/XIU2/CloudflareSpeedTest.git
 	sha256sums = SKIP
 
