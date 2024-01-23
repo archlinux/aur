@@ -2,7 +2,7 @@
 
 pkgname=n-m3u8dl-re-git
 pkgver=0.2.0.beta.r24.g8fdb6bc
-pkgrel=13
+pkgrel=20
 epoch=
 pkgdesc="Cross-Platform, beautiful and powerful stream downloader for DASH/HLS."
 arch=("x86_64" "aarch64")
@@ -20,7 +20,7 @@ makedepends=(
     dotnet-host
     dotnet-sdk)
 backup=()
-options=('!strip')
+options=()
 install=
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
