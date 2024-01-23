@@ -14,7 +14,7 @@ ExecStart=hath-rust $HATH_EXTRA_ARGS \
     --log-dir=/var/log/hath-rust \
     --temp-dir=/tmp/hath-rust
 # Isolation
-WorkingDirectory=/var/lib/hath
+WorkingDirectory=/var/lib/hath-rust
 User=hath-rust
 CapabilityBoundingSet=CAP_NET_BIND_SERVICE
 NoNewPrivileges=yes
