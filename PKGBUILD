@@ -3,7 +3,7 @@
 # Contributor: Achilleas Pipinellis <axilleas at archlinux dot gr>
 
 pkgname=vale
-pkgver=2.30.0
+pkgver=3.0.5
 pkgrel=1
 pkgdesc="A customizable, syntax-aware linter for prose"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/errata-ai/vale"
 license=('MIT')
 makedepends=('go' 'go-bindata' 'rsync')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('5a355957a3b5da88a1b785d19dd9232a64a2c649ef9c95939cbce4b3f871e11b')
+sha256sums=('1628a218f9b20d5073bd264ba77c8b2c20deb436bc9d014e321fe68ff6435f23')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
