@@ -3,7 +3,7 @@ pkgname=astrofox-bin
 _pkgname=Astrofox
 pkgver=1.4.0
 _electronversion=16
-pkgrel=5
+pkgrel=6
 pkgdesc="A motion graphics program that lets you turn audio into amazing videos."
 arch=('x86_64')
 url="https://astrofox.io"
@@ -13,12 +13,9 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'libx11'
-    'gdk-pixbuf2'
-    'libxext'
+    'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
-    'dbus-glib'
 )
 makedepends=(
     'squashfuse'
@@ -30,7 +27,7 @@ source=(
 )
 sha256sums=('05327ea2944741d8bab8ef5f8bfd33530fbbb72ad85b6e4c411714c6fd295b65'
             '2366e943e400fbf8d55651d8f29257f7a680ce6fcb428d0215e75362f8728e43'
-            '68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -43,7 +40,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm755  "${srcdir}/squashfs-root/resources/bin/ffmpeg" "${pkgdir}/usr/lib/${pkgname%-bin}/bin"
+    install -Dm755  "${srcdir}/squashfs-root/resources/bin/ffmpeg" -t "${pkgdir}/usr/lib/${pkgname%-bin}/bin"
     install -Dm644 "${srcdir}/squashfs-root/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/swiftshader"
     install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
