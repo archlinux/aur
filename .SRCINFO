@@ -1,13 +1,14 @@
 pkgbase = liblbfgs
 	pkgdesc = A C port of the implementation of Limited-memory Broyden-Fletcher-Goldfarb-Shanno (L-BFGS) method written by Jorge Nocedal.
 	pkgver = 1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.chokkan.org/software/liblbfgs/
 	arch = i686
 	arch = x86_64
 	license = custom:MIT
-	source = https://github.com/downloads/chokkan/liblbfgs/liblbfgs-1.10.tar.gz
-	md5sums = 2a46da6c4014d6b1e8a8790a93edffbb
+	makedepends = autoconf-archive
+	makedepends = libtool
+	source = https://github.com/chokkan/liblbfgs/archive/refs/tags/v1.10.tar.gz
+	sha512sums = 2b08dc5d4fdd737575f58983fa7b6c143bc12edaca47b7aeadf221afe6e573fa4a53423f323f569aa93c9dbeafb9b80a6d2f755fec6da04e6b7221f0a67816f8
 
 pkgname = liblbfgs
-
