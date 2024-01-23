@@ -1,6 +1,6 @@
 pkgbase = stanc
 	pkgdesc = A package for obtaining Bayesian inference using the No-U-Turn sampler, a variant of Hamiltonian Monte Carlo.
-	pkgver = 2.34.0
+	pkgver = 2.34.1
 	pkgrel = 1
 	url = https://mc-stan.org/
 	arch = i686
@@ -23,12 +23,12 @@ pkgbase = stanc
 	makedepends = inetutils
 	depends = gcc-libs
 	provides = cmdstan
-	source = stanc-2.34.0.tar.gz::https://github.com/stan-dev/cmdstan/archive/refs/tags/v2.34.0.tar.gz
-	source = stan-2.34.0.tar.gz::https://github.com/stan-dev/stan/archive/refs/tags/v2.34.0.tar.gz
+	source = stanc-2.34.1.tar.gz::https://github.com/stan-dev/cmdstan/archive/refs/tags/v2.34.1.tar.gz
+	source = stan-2.34.1.tar.gz::https://github.com/stan-dev/stan/archive/refs/tags/v2.34.1.tar.gz
 	source = local
 	source = cli11.patch
-	sha512sums = 77177081edeff0733e89a3a5fcff7fc9cfe849e331704ba1fa22aa7dd81ffec3c452079bf4636b3610ff0333703a398955de45bfa1cc31737b8ed520fe249346
-	sha512sums = 81ffcc4af073a26337191fe2a9aca85ae4de9b453218d5228aefac52703191c88fbf1d729aa7edbaab160db4c5a28fdabd9baea163818fbdd8772393f0fe792e
+	sha512sums = b18ae976eb4dfc8ed1bf00396bb32cc9f2cae56f7409e6517dccf1acb621c5613463426bb85547031cd7c4d092e82a0c53674ba3fa665991ef46949608d39a37
+	sha512sums = c78e0ae4b2a47cfcee6816c3b1fd147cec8f67ae06015e65200b9eb1082229b8f2433e3218b71423391f47feb149d94c355503f7dc4b9ab84c512382560037e6
 	sha512sums = 83d164dc8ac6f53980874ee2654dc5a88610ec58763624534cdd169cec0e1639875a2eb470bbf00c4ad5073dc37aea070f87c137c8f080d817fd0983f262acd6
 	sha512sums = fff32eedf0f2044c3ffdd0e6e83927d1b6b535f7d2f960ff20a2f6e84b5b825ec90ea3db5c7bd5cf67f6b2079fe1a7fac2529d5379af931175cefac44681700b
 
