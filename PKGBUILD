@@ -10,7 +10,7 @@ license=('custom:jetbrains')
 depends=('fuse' 'glib2' 'libxslt' 'libxss' 'xcb-util-keysyms' 'xdg-utils' 'nss')
 optdepends=('xdg-utils: open URLs')
 options=('!strip')
-source=("https://download.jetbrains.com/toolbox/${pkgname}-${pkgver}.tar.gz"
+source=("https://download-cf.jetbrains.com/toolbox/${pkgname}-${pkgver}.tar.gz"
         jetbrains-toolbox.desktop
         icon.svg
         LICENSE)
