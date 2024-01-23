@@ -1,0 +1,13 @@
+pkgbase = ruby-unicode-confusable
+	pkgdesc = Unicode confusables helper in Ruby.
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://github.com/janlelis/unicode-confusable
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = unicode-confusable-1.10.0.gem
+	source = https://rubygems.org/downloads/unicode-confusable-1.10.0.gem
+	sha512sums = d499c89464e3360e916d7273b53f8343592b9455b5f3290cbabe3b522d7164325b6e8d59c6c4e861701ae52398a6c111b54893d43ea8d950337ad3a728238790
+
+pkgname = ruby-unicode-confusable
