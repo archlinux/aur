@@ -22,6 +22,7 @@ makedepends=(
   'python-rst.linker'
   'python-setuptools-scm'
   'python-sphinx'
+  'python-sphinx_rtd_theme'
   'python-wheel'
   'rsync'
 )
