@@ -1,0 +1,24 @@
+--- a/settings.py	2024-01-22 07:10:06.000000000 +0100
++++ b/settings.py	2024-01-24 00:12:41.938682475 +0100
+@@ -400,16 +400,11 @@
+ 
+ 
+ 
+-if os.path.isfile("settings.txt"):
+-    print("Running in portable mode")
+-    settings_dir = os.path.normpath('./')
+-    data_dir = os.path.normpath('./data')
+-else:
+-    print("Running in non-portable mode")
+-    settings_dir = os.path.expanduser(os.path.normpath("~/.youtube-local"))
+-    data_dir = os.path.expanduser(os.path.normpath("~/.youtube-local/data"))
+-    if not os.path.exists(settings_dir):
+-        os.makedirs(settings_dir)
++print("Running in non-portable mode")
++settings_dir = os.path.expanduser(os.path.normpath("~/.youtube-local"))
++data_dir = os.path.expanduser(os.path.normpath("~/.youtube-local/data"))
++if not os.path.exists(settings_dir):
++    os.makedirs(settings_dir)
+ 
+ settings_file_path = os.path.join(settings_dir, 'settings.txt')
+ 
