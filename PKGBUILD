@@ -1,7 +1,7 @@
 # Maintainer: Vadim Tsesko <incubos at yandex dot com>
 
 pkgname=async-profiler
-pkgver=2.9
+pkgver=3.0
 pkgrel=1
 pkgdesc='Sampling CPU and HEAP profiler for Java featuring AsyncGetCallTrace + perf_events'
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('async-profiler')
 groups=('jvm-profiling-tools' 'odnoklassniki')
 depends=('java-environment')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jvm-profiling-tools/async-profiler/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c940eb0926e02fa82cf8e52984077a30e6020292c525d086c633b4720f4095d3')
+sha256sums=('ea03592e98989cce3bf06de9309ae88c8122668bf1a036a3e27a700879c88c13')
 install=async-profiler.install
 
 build() {
@@ -21,8 +21,9 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -d "$pkgdir/opt/async-profiler/build"
-  install -m 644 build/async-profiler.jar build/converter.jar "$pkgdir/opt/async-profiler/build"
-  install build/libasyncProfiler.so build/jattach build/fdtransfer "$pkgdir/opt/async-profiler/build"
-  install profiler.sh "$pkgdir/opt/async-profiler/profiler.sh"
+  install -d "$pkgdir/opt/async-profiler/lib"
+  install -m 644 build/lib/async-profiler.jar build/lib/converter.jar "$pkgdir/opt/async-profiler/lib"
+  install build/lib/libasyncProfiler.so "$pkgdir/opt/async-profiler/lib"
+  install -d "$pkgdir/opt/async-profiler/bin"
+  install build/bin/asprof "$pkgdir/opt/async-profiler/bin"
 }
