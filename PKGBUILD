@@ -3,7 +3,7 @@
 
 pkgname=("wezterm-git")
 pkgdesc="A terminal emulator implemented in Rust, using OpenGL ES 2 for rendering."
-pkgver=20230421.075330.e0a92c73
+pkgver=20240121.180215.76028ca1
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://github.com/wez/wezterm"
@@ -20,8 +20,8 @@ depends=(
   "xcb-util-wm"
 )
 makedepends=("cargo" "cmake" "git" "pkgconf" "python")
-provides=("wezterm" "wezterm-gui" "wezterm-mux-server")
-conflicts=("wezterm" "wezterm-bin" "wezterm-nightly-bin")
+provides=("wezterm" "wezterm-gui" "wezterm-mux-server" "wezterm-shell-integration" "wezterm-terminfo")
+conflicts=("wezterm" "wezterm-bin" "wezterm-nightly-bin" "wezterm-shell-integration" "wezterm-terminfo")
 source=(
   "wezterm::git+https://github.com/wez/wezterm.git"
   "harfbuzz::git+https://github.com/harfbuzz/harfbuzz.git"
