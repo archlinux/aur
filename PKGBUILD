@@ -1,10 +1,10 @@
 pkgname=seqlib
 pkgver=1.2.0
-pkgrel=9
+pkgrel=12
 pkgdesc="C++ htslib/bwa-mem/fermi interface for interrogating sequence data"
 arch=('i686' 'x86_64')
 url="https://github.com/walaj/SeqLib"
-license=('Apache')
+license=('Apache-2.0')
 depends=('htslib' 'bwa' 'fermi-lite' 'jsoncpp')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('6892bdb5cae88d8d8acbbfadd351cfa00004bc7c0fd1ae912dc1ff1ccfd61a70')

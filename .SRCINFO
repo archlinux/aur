@@ -1,11 +1,11 @@
 pkgbase = seqlib
 	pkgdesc = C++ htslib/bwa-mem/fermi interface for interrogating sequence data
 	pkgver = 1.2.0
-	pkgrel = 9
+	pkgrel = 12
 	url = https://github.com/walaj/SeqLib
 	arch = i686
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	depends = htslib
 	depends = bwa
 	depends = fermi-lite
