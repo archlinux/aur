@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rainbow
-_pkgver=3.7
+_pkgver=3.8
 pkgname=r-${_pkgname,,}
-pkgver=3.7
+pkgver=3.8
 pkgrel=1
 pkgdesc='Bagplots, Boxplots and Rainbow Plots for Functional Data'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-forecast
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('159dd90555eee237397f042d811f773aaee779f5036c4e0669a52c36e28d8db2')
+sha256sums=('eca456288b70fe4b6c74a587d8624d3b36d67f8f9ffc13320eefb17a952d823d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

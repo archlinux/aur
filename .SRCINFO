@@ -1,6 +1,6 @@
 pkgbase = r-rainbow
 	pkgdesc = Bagplots, Boxplots and Rainbow Plots for Functional Data
-	pkgver = 3.7
+	pkgver = 3.8
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rainbow
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-rainbow
 	depends = r-ks
 	depends = r-pcapp
 	optdepends = r-forecast
-	source = https://cran.r-project.org/src/contrib/rainbow_3.7.tar.gz
-	sha256sums = 159dd90555eee237397f042d811f773aaee779f5036c4e0669a52c36e28d8db2
+	source = https://cran.r-project.org/src/contrib/rainbow_3.8.tar.gz
+	sha256sums = eca456288b70fe4b6c74a587d8624d3b36d67f8f9ffc13320eefb17a952d823d
 
 pkgname = r-rainbow
