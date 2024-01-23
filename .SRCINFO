@@ -1,6 +1,6 @@
 pkgbase = r-maldiquant
 	pkgdesc = Quantitative Analysis of Mass Spectrometry Data
-	pkgver = 1.22.1
+	pkgver = 1.22.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=MALDIquant
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-maldiquant
 	depends = r
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/MALDIquant_1.22.1.tar.gz
-	sha256sums = 0a52a55dbe76a7e7ca50c5555fea4381eeda0c215c66e420d8dc9bfd2992411c
+	source = https://cran.r-project.org/src/contrib/MALDIquant_1.22.2.tar.gz
+	sha256sums = 6051b07019003c698ae016d79f13945bfe2edec26f8a688126b978cb90adcfff
 
 pkgname = r-maldiquant
