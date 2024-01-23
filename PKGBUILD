@@ -2,7 +2,7 @@
 # Reference: PKGBUILD(5)
 
 pkgname=osc-sdk-python
-pkgver=0.26.0
+pkgver=0.27.0
 pkgrel=1
 pkgdesc='Outscale Python 3 SDK'
 
@@ -10,9 +10,19 @@ arch=('any')
 url='https://github.com/outscale/osc-sdk-python'
 license=(BSD)
 
-makedepends=('python-pip')
+makedepends=('python-setuptools')
 depends=(python-pip python-ruamel-yaml python-requests)
 
+_project=osc_sdk_python
+source=("https://files.pythonhosted.org/packages/source/${_project::1}/$_project/$_project-$pkgver.tar.gz")
+sha256sums=("bce91af8d334ce5550442114b6950bbf528d9f4a3de50c844a4a430d5780f3aa")
+
+build() {
+    cd $_project-$pkgver
+    python setup.py build
+}
+
 package() {
-	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps https://files.pythonhosted.org/packages/27/75/428b2a881bb48ed82e39ea68326a93af5e4a87bef00105ff8931b51e3b27/osc_sdk_python-0.26.0-py3-none-any.whl
+    cd $_project-$pkgver
+    python setup.py install --root="$pkgdir" --skip-build --optimize=1
 }

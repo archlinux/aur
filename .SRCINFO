@@ -1,13 +1,15 @@
 pkgbase = osc-sdk-python
 	pkgdesc = Outscale Python 3 SDK
-	pkgver = 0.26.0
+	pkgver = 0.27.0
 	pkgrel = 1
 	url = https://github.com/outscale/osc-sdk-python
 	arch = any
 	license = BSD
-	makedepends = python-pip
+	makedepends = python-setuptools
 	depends = python-pip
 	depends = python-ruamel-yaml
 	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/o/osc_sdk_python/osc_sdk_python-0.27.0.tar.gz
+	sha256sums = bce91af8d334ce5550442114b6950bbf528d9f4a3de50c844a4a430d5780f3aa
 
 pkgname = osc-sdk-python
