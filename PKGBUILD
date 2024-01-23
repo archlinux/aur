@@ -13,7 +13,7 @@ conflicts=('fig')
 makedepends=('jq' 'xz')
 source=("${pkgname}-${pkgver//_/-}.tar.xz::https://repo.fig.io/generic/nightly/asset/${pkgver//_/-}/x86_64/fig.tar.xz")
 
-sha256sums=('7476bbfeb2d52f6b1bef14ddd35121449e427c6ac76603a5fd5c1497a94ddb9f')
+sha256sums=('f52d7655370524f5d5cb6216974da1bffabda0be523ddfa86bd82b5d25ab627b')
 
 package() {
   cp -r "${srcdir}/usr" "${pkgdir}/usr"
