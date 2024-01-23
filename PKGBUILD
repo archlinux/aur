@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mdview-appimage
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone Markdown viewer "
 arch=('x86_64')
 url="https://github.com/c3er/mdview"
@@ -13,7 +13,7 @@ options=('!strip')
 _install_path="/opt/appimages"
 source=(
     "${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage"
-    "LICENSE::https://raw.githubusercontent.com/c3er/mdview/v${pkgver}/LICENSE"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/c3er/mdview/v${pkgver}/LICENSE"
 )
 sha256sums=('957bf7543e0133910b4766404130ab3980a7cb22403ddd355264cde3515d1870'
             '4014420ba4b48c5f19ac8645ebeec93b9a0ccd41359700efc8b4d83738d16eeb')
@@ -31,5 +31,5 @@ package() {
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
