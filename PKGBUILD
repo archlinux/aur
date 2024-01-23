@@ -56,10 +56,11 @@ package() {
   #install -Dm644 "$modulesdir/vmlinuz" "boot/vmlinuz-${pkgver}-fsync-nobara"
 
   # Used by dmks
-  mv "${pkgdir}"/usr/src/kernels/* "${pkgdir}"/usr/src/
-  rmdir "${pkgdir}"/usr/src/kernels
+  rm -fv "${pkgdir}"/usr/lib/modules/${pkgver}-${extras}.x86_64/build
+  mv -v "${pkgdir}"/usr/src/kernels/${pkgver}-${extras}.x86_64 "${pkgdir}"/usr/lib/modules/${pkgver}-${extras}.x86_64/build
+  rmdir -v "${pkgdir}"/usr/src/kernels
   cd "${pkgdir}"/usr/lib/modules/${pkgver}-${extras}.x86_64
-  ln -sf /usr/src/${pkgver}-${extras}.x86_64 build
+  ln -sr "${pkgdir}"/usr/lib/modules/${pkgver}-${extras}.x86_64/build "$pkgdir/usr/src/$pkgbase"
 
   # Perms
   chmod 644 "${pkgdir}"/usr/lib/modules/${pkgver}-${extras}.x86_64/vmlinuz
