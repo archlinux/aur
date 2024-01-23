@@ -8,7 +8,7 @@ pkgname=cnijfilter-common
 _pkgname=cnijfilter
 
 pkgver=4.10
-pkgrel=4
+pkgrel=5
 _pkgreview=1
 
 pkgdesc="Canon IJ Printer Driver (Common Package)"
@@ -74,6 +74,6 @@ package() {
     ln -s /usr/lib32/cups/filter/pstocanonij ${pkgdir}/usr/lib/cups/filter/
   fi
 
-  install -d ${pkgdir}/etc/udev/rules.d
-  install -m 644 etc/*.rules ${pkgdir}/etc/udev/rules.d
+  install -d ${pkgdir}/usr/lib/udev/rules.d
+  install -m 644 etc/*.rules ${pkgdir}/usr/lib/udev/rules.d
 }
