@@ -1,7 +1,7 @@
 pkgbase = sliding-sync-git
 	pkgdesc = Run a sliding sync proxy. An implementation of MSC3575.
 	pkgver = r1783.bbb886e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/matrix-org/sliding-sync
 	install = sliding-sync-git.install
 	arch = x86_64
