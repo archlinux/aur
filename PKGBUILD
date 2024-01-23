@@ -3,17 +3,16 @@
 
 _pkgname=statix
 pkgname=$_pkgname-git
-pkgver=v0.5.4.r22.gd324490
+pkgver=0.5.4.r22.gd324490
 pkgrel=1
 pkgdesc='Lints and suggestions for the nix programming language '
 arch=(x86_64)
 url=https://github.com/nerdypepper/statix
 license=(MIT)
-
-provides=($pkgname)
-conflicts=()
+provides=($_pkgname)
+conflicts=($_pkgname)
 depends=()
-makedepends=(cargo)
+makedepends=(cargo git)
 source=($pkgname::git+https://github.com/nerdypepper/statix.git)
 sha256sums=('SKIP')
 options=()
@@ -37,7 +36,7 @@ check() {
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
