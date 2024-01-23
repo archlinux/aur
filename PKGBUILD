@@ -7,6 +7,16 @@ pkgdesc="Streaming server for Moonlight clients, written in Rust."
 arch=('x86_64')
 url="https://github.com/hgaiser/moonshine"
 license=('custom')
+depends=(
+	alsa-lib
+	avahi
+	ffmpeg
+	gcc-libs
+	glibc
+	nvidia-utils
+	openssl
+	opus
+)
 
 source=(
 	"${pkgname%-git}::git+https://github.com/hgaiser/moonshine"
