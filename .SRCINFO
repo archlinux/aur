@@ -1,12 +1,12 @@
 pkgbase = vencord-installer-cli-bin
 	pkgdesc = A CLI Installer for Vencord, the cutest Discord client mod
-	pkgver = 1.3.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/Vencord/Installer
 	arch = x86_64
 	license = GPL3
 	provides = vencord-installer-cli
 	source = https://github.com/Vencord/Installer/releases/download/v1.3.1/VencordInstallerCli-linux
-	sha256sums = dfdc9e9fa0cfdefec3c030146e9433098728de83f6922bf97f7c96e9ec78c472
+	sha256sums = eb96d07a2072eb805351de11a26bb78e83f30122321e76ffed26466bd2d61a59
 
 pkgname = vencord-installer-cli-bin
