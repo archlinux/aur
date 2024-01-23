@@ -1,13 +1,13 @@
 pkgbase = cargo-license
 	pkgdesc = Cargo subcommand to see license of dependencies
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/onur/cargo-license
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = cargo-license-0.5.1.tar.gz::https://github.com/onur/cargo-license/archive/v0.5.1.tar.gz
-	sha256sums = 934359118e69dfdf75c0e3b25a1bd154c3568a73e767bd35cb2fa91320016569
+	source = cargo-license-0.6.0.tar.gz::https://github.com/onur/cargo-license/archive/v0.6.0.tar.gz
+	sha256sums = 3aa8bf5482aaf83c979ce4f9b5a9f2bd5cf8f71f99ab83c4ce52ed12f804009f
 
 pkgname = cargo-license

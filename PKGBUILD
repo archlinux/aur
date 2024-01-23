@@ -1,6 +1,6 @@
 # Maintainer: Bert Peters <bert@bertptrs.nl>
 pkgname=cargo-license
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Cargo subcommand to see license of dependencies"
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=('MIT')
 depends=(gcc-libs)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/onur/cargo-license/archive/v$pkgver.tar.gz")
-sha256sums=('934359118e69dfdf75c0e3b25a1bd154c3568a73e767bd35cb2fa91320016569')
+sha256sums=('3aa8bf5482aaf83c979ce4f9b5a9f2bd5cf8f71f99ab83c4ce52ed12f804009f')
 
 build() {
 	cd "$pkgname-$pkgver"
