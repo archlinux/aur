@@ -2,12 +2,12 @@
 # Contributor: Edgar Luque <git@edgarluque.com>
 
 pkgname=ddnet
-pkgver=17.4.2
+pkgver=18.0
 pkgrel=1
 pkgdesc="A Teeworlds modification with a unique cooperative gameplay."
 arch=('x86_64')
 url="https://ddnet.org"
-license=('custom:BSD' 'CCPL:by-nc-sa')
+license=('CC-BY-SA-3.0' 'Zlib' 'OFL-1.1' 'Bitstream-Vera' 'LicenseRef-Arev')
 depends=('freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'ffmpeg' 'libnotify' 'miniupnpc' 'sqlite' 'mariadb-libs' 'vulkan-icd-loader')
 makedepends=('cargo' 'cmake' 'ninja' 'python' 'vulkan-headers' 'glslang' 'spirv-tools' 'discord-game-sdk')
 checkdepends=('gmock')
@@ -15,11 +15,17 @@ optdepends=('ddnet-maps-git: All the maps used on the official DDNet Servers.'
             'discord-game-sdk: Enable rich presence in Discord desktop client.')
 backup=('usr/share/ddnet/data/autoexec_server.cfg')
 source=("https://ddnet.org/downloads/DDNet-$pkgver.tar.xz"
-        "ddnet-server.service" "ddnet-sysusers.conf" "ddnet-tmpfiles.conf")
-sha256sums=('afd766e858d34c8191b18eddbbc0ba94cdd9091c85eb96065fc36f0ec427496f'
+        "ddnet-server.service" "ddnet-sysusers.conf" "ddnet-tmpfiles.conf"
+        # Licenses extracted from license.txt
+        "Zlib.txt" "OFL-1.1.txt" "Bitstream-Vera.txt" "Arev.txt")
+sha256sums=('24c4d6a9b21f4f65be2498b5ededd8f2f04fa23599f02a22492a49e150b96215'
             '9377a9d7c87abae166c8fa98cd79a61c74482f80f80bc930ae043349e9a84965'
             '70034f237270b38bf312238a26cfd322e212ca5714bfea4ae91e80c639ce8738'
-            '043452f4de3c86d903973009bb3e59b3492a6669b86d0b1410e59a1476a87369')
+            '043452f4de3c86d903973009bb3e59b3492a6669b86d0b1410e59a1476a87369'
+            '813b73656256b588f955256cf3379d8a775b4a9c72783510982af04ff5d5796e'
+            'cc97348511b4e9bf6e2f0ee6fbc329fb001e6f1049401026cf212d091390d900'
+            'da8e7278deea5296b56374fd048f8bc975be069a526d0119c9d32aa555558b4c'
+            '8acb2a0b769d9e0b3ae9f35c12110189c82790af3254419f86c46105bca70075')
 
 build() {
     mkdir -p build
@@ -46,7 +52,7 @@ check() {
 
 package() {
     DESTDIR="$pkgdir" ninja install -C build
-    install -vDm644 DDNet-$pkgver/license.txt      "$pkgdir/usr/share/licenses/$pkgname/license.txt"
+    install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname/" 'Zlib.txt' 'OFL-1.1.txt' 'Bitstream-Vera.txt' 'Arev.txt'
     install -vDm644 "$srcdir/ddnet-server.service" "$pkgdir/usr/lib/systemd/system/ddnet-server.service"
     install -vDm644 "$srcdir/ddnet-sysusers.conf"  "$pkgdir/usr/lib/sysusers.d/ddnet.conf"
     install -vDm644 "$srcdir/ddnet-tmpfiles.conf"  "$pkgdir/usr/lib/tmpfiles.d/ddnet.conf"
