@@ -1,6 +1,6 @@
 # Maintainer wang <sk8_yy@outlook.com>
 # Maintainer sakura1943 <1436700265@qq.com>
-pkgname='windterm-bin-Prerelease'
+pkgname='windterm-bin-prerelease'
 _pkgname='WindTerm'
 pkgver='2.6.0'
 _pkgver='2.6-prerelease'
