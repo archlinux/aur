@@ -3,7 +3,7 @@ pkgname=anubias-bin
 _pkgname=Anubias
 pkgver=1.0.0_beta1
 _electronversion=13
-pkgrel=5
+pkgrel=6
 pkgdesc="Develope mobile apps so easy and native with GUI"
 arch=('x86_64')
 url="https://anubias.app"
@@ -15,12 +15,9 @@ depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
     'java-runtime'
-    'libx11'
-    'gdk-pixbuf2'
-    'libxext'
+    'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
-    'dbus-glib'
 )
 makedepends=(
     'squashfuse'
@@ -30,7 +27,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('ce38818ef998e4b8b04f2b55afbc8d4aa7510b1a720f795579a7a856a3894307'
-            '68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -38,7 +35,7 @@ build() {
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root" -type d -exec chmod 755 {} \;
 }
 package() {
