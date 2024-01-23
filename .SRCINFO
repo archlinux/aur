@@ -1,0 +1,23 @@
+pkgbase = docfd-bin
+	pkgdesc = TUI multiline fuzzy document finder (pre-compiled)
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/darrenldl/docfd
+	arch = x86_64
+	license = MIT
+	provides = docfd
+	conflicts = docfd
+	source = https://github.com/darrenldl/docfd/releases/download/2.0.0/docfd-2.0.0-ubuntu-latest.tar.gz
+	source = https://raw.githubusercontent.com/darrenldl/docfd/main/CHANGELOG.md
+	source = https://raw.githubusercontent.com/darrenldl/docfd/main/LICENSE
+	source = https://raw.githubusercontent.com/darrenldl/docfd/main/README.md
+	sha256sums = a67aafb0222b0057af74ce417be41711aaa2a32620bac36decdb2482a105af76
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	b2sums = 2a570fdb38428e9ff577a5894e6fc2857e2b5b2b27eeb3483543157368732499355a2a44b60550ed4f149276bccd6879f46c9031ea4aaac89beb8fadc17db471
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = docfd-bin
