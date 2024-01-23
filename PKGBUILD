@@ -4,13 +4,13 @@ _pkgname='IMSProg'
 depends=('libusb>=1.0.20' 'qt5-base' 'wget' 'zenity') 
 makedepends=('cmake>=3.10.0')
 url="https://github.com/bigbigmdm/$pkgname"
-pkgver='1.1.2'
-pkgrel='1'
+pkgver='1.1.4'
+pkgrel='2'
 arch=('x86_64')
 license=('GPL3')
 provides=("$pkgname")
 pkgdesc='I2C, SPI and MicroWire EEPROM/flash chip programmer for CH341a devices.'
-b2sums=('da90a7b806e86cff521ecb95eca7b7cb7c2f584b5b6d77631edba9685051a85ba8005d9ed159226be29aaa8cddeb71c93e60d5bc6bce5d95b183fbf47b2954de')
+b2sums=('07e441bd8d933755471bc3dd30b3c5f2e3811fe347f7dea40ab20fcef9c92a56fafb65487ee3983285cee479d3bf23998166935806403df57686ff443ed72dc7')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/refs/tags/v$pkgver-$pkgrel.tar.gz")
 
 _srcprefix="$_pkgname-$pkgver-$pkgrel/${_pkgname}"
@@ -20,16 +20,18 @@ build() {
 	for _srcdir in "${_srcdirs[@]}"; do
 		local _bindir="$_srcdir/build"
 		mkdir "$_bindir"
-		cmake -S "$_srcdir" -B "$_bindir"
+		cmake -S "$_srcdir"                   \
+		      -B "$_bindir"                   \
+		      -DCMAKE_INSTALL_PREFIX=/usr     \
+		      -DCMAKE_INSTALL_SYSCONFDIR=/etc
 		make  -C "$_bindir" -j`nproc`
 	done
 }
 
 package() {
 	for _bindir in "${_srcdirs[@]}"; do
-		make CMAKE_INSTALL_PREFIX="/usr" \
-		     DESTDIR="$pkgdir"           \
-		     -C "$_bindir/build"         \
+		make DESTDIR="$pkgdir"   \
+		     -C "$_bindir/build" \
 		     install
 	done
 }

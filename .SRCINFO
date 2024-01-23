@@ -1,7 +1,7 @@
 pkgbase = imsprog
 	pkgdesc = I2C, SPI and MicroWire EEPROM/flash chip programmer for CH341a devices.
-	pkgver = 1.1.2
-	pkgrel = 1
+	pkgver = 1.1.4
+	pkgrel = 2
 	url = https://github.com/bigbigmdm/imsprog
 	arch = x86_64
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = imsprog
 	depends = wget
 	depends = zenity
 	provides = imsprog
-	source = imsprog-1.1.2-1.tar.gz::https://github.com/bigbigmdm/imsprog/archive/refs/tags/v1.1.2-1.tar.gz
-	b2sums = da90a7b806e86cff521ecb95eca7b7cb7c2f584b5b6d77631edba9685051a85ba8005d9ed159226be29aaa8cddeb71c93e60d5bc6bce5d95b183fbf47b2954de
+	source = imsprog-1.1.4-2.tar.gz::https://github.com/bigbigmdm/imsprog/archive/refs/tags/v1.1.4-2.tar.gz
+	b2sums = 07e441bd8d933755471bc3dd30b3c5f2e3811fe347f7dea40ab20fcef9c92a56fafb65487ee3983285cee479d3bf23998166935806403df57686ff443ed72dc7
 
 pkgname = imsprog
