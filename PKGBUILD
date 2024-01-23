@@ -111,6 +111,8 @@ setenv G4PARTICLEHPDATA /opt/Geant4/Libraries/G4TENDL1.4" > Geant4.csh
     -DGEANT4_USE_G3TOG4=ON \
     -DGEANT4_USE_GDML=ON \
     -DGEANT4_USE_FREETYPE=ON \
+    -DGEANT4_USE_INVENTOR_QT=ON \
+    -DGEANT4_USE_QT_QT6=ON \
     -DGEANT4_USE_OPENGL_X11=ON \
     -DGEANT4_USE_QT=ON \
     -DGEANT4_USE_RAYTRACER_X11=ON \
@@ -123,7 +125,6 @@ setenv G4PARTICLEHPDATA /opt/Geant4/Libraries/G4TENDL1.4" > Geant4.csh
     -DGEANT4_INSTALL_DATADIR=/opt/Geant4/Libraries \
     ../geant4-v${pkgver}
 
-#    -DGEANT4_USE_INVENTOR_QT=ON \
 
   #set GEANT4_BUILD_TLS_MODEL=global-dynamic and GEANT4_USE_PYTHON=ON for compatibility with g4python
   make #VERBOSE=1
