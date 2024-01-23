@@ -1,6 +1,6 @@
 # Maintainer: hendrikcech <hendrik.cech@gmail.com>
+# Co-Maintainer: Marek Küthe <m.k@mk16.de>
 # Contributor: Spider.007 <archPackage@spider007.net>
-# Contributor: Marek Küthe <m.k@mk16.de>
 
 pkgname=scamper
 pkgver=20230614d
