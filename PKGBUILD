@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=selenium-ide-bin
 _pkgname=Selenium.IDE
-pkgver=4.0.1_alpha.79
+pkgver=4.0.1_alpha.80
 _electronversion=28
-pkgrel=2
+pkgrel=1
 pkgdesc="Open Source record and playback test automation for the web."
 arch=('x86_64')
 url="https://selenium.dev/selenium-ide/"
@@ -26,7 +26,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/${pkgver//_/-}-linux/${_pkgname}-${pkgver//_/-}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7f319bd4e565c5b5681db982c70d2b7e3c8a068020070615bd4475e0a1c69312'
+sha256sums=('97d0047aa45fb6aee0150bacf1c4ede35216b0d2fb722276c945cdd3384a5742'
             'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
