@@ -1,6 +1,6 @@
 pkgbase = flexget
 	pkgdesc = Multipurpose automation tool for downloading media content from different sources
-	pkgver = 3.11.10
+	pkgver = 3.11.11
 	pkgrel = 1
 	url = https://github.com/flexget/flexget
 	arch = any
@@ -60,10 +60,10 @@ pkgbase = flexget
 	optdepends = python-plexapi: Plex support
 	optdepends = python-rarfile: decompress plugin
 	optdepends = python-transmissionrpc: Transmission support
-	source = flexget-3.11.10.tar.gz::https://github.com/flexget/flexget/archive/refs/tags/v3.11.10.tar.gz
+	source = flexget-3.11.11.tar.gz::https://github.com/flexget/flexget/archive/refs/tags/v3.11.11.tar.gz
 	source = flexget.service
 	source = flexget@.service
-	sha256sums = 7867023b532af64edd3cee22215701ba89e90274904a2ed5b8ae377346431470
+	sha256sums = ec717718212041dee23604e92190050f506a7217d979ba4d04a12021287523a5
 	sha256sums = 117de8d5cbe0ac53ecd3be3e579f2cfa62ef186ab36e382f857059380447c5aa
 	sha256sums = aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a
 
