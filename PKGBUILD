@@ -1,7 +1,7 @@
 # Maintainer: Filippo Falezza <filippo dot falezza at outlook dot it>
 
 pkgname='geant4-full'
-pkgver=11.1.3
+pkgver=11.2.0
 pkgrel=1
 pkgdesc="A simulation toolkit for particle physics interactions - includes all the optional libraries"
 depends=(
@@ -48,12 +48,21 @@ options=('!emptydirs')
 source=(
   "http://geant4-data.web.cern.ch/releases/geant4-v${pkgver}.tar.gz"
   'geant4-full.install'
+  'SoQt.patch'
 )
 sha256sums=(
-  "4c5fbea6789d8d619edacca0631d6b5211a60e1bf9974c3d3fab9ef9e22692f5"
-  "b03e886435addd44eea965c7a4a59deddc34c55381af2584042b2737c89b698e"
+  "46ad7fab3c5cb4bd0bdd77dd6d3e2283184819235bcbc01b2d117d81b35596a6"
+  "d61d5e2d6699e7b189ba8e6a80e27e357a9231d8690a56b3cae3e23b29beddf6"
+  "3b5a899436e0f0a614a17604166a0946bf2e206ef66e1161522337a5be7a8d08"
 )
 install="geant4-full.install"
+
+prepare()
+{
+  cd ${srcdir}
+  patch -Np0 -i ${srcdir}/SoQt.patch
+
+}
 
 build() {
 
@@ -101,7 +110,6 @@ setenv G4PARTICLEHPDATA /opt/Geant4/Libraries/G4TENDL1.4" > Geant4.csh
     -DGEANT4_INSTALL_DATASETS_TENDL=ON \
     -DGEANT4_USE_G3TOG4=ON \
     -DGEANT4_USE_GDML=ON \
-    -DGEANT4_USE_INVENTOR_QT=ON \
     -DGEANT4_USE_FREETYPE=ON \
     -DGEANT4_USE_OPENGL_X11=ON \
     -DGEANT4_USE_QT=ON \
@@ -114,6 +122,8 @@ setenv G4PARTICLEHPDATA /opt/Geant4/Libraries/G4TENDL1.4" > Geant4.csh
     -DGEANT4_BUILD_TLS_MODEL=global-dynamic \
     -DGEANT4_INSTALL_DATADIR=/opt/Geant4/Libraries \
     ../geant4-v${pkgver}
+
+#    -DGEANT4_USE_INVENTOR_QT=ON \
 
   #set GEANT4_BUILD_TLS_MODEL=global-dynamic and GEANT4_USE_PYTHON=ON for compatibility with g4python
   make #VERBOSE=1
