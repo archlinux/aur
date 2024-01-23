@@ -1,7 +1,7 @@
 pkgbase = xmachoviewer-bin
 	pkgdesc = Mach-O viewer for Windows, Linux and MacOS
 	pkgver = 0.04
-	pkgrel = 6
+	pkgrel = 7
 	url = https://horsicq.github.io/#xmachoviewer
 	arch = x86_64
 	license = MIT
@@ -14,6 +14,6 @@ pkgbase = xmachoviewer-bin
 	source = xmachoviewer.sh
 	sha256sums = b39f9470d3b85e84b5123349a25e35ad414371c96d2980ac035780b6f69d2a8b
 	sha256sums = d0dfc6996d90bc96474a32b5656eec06bf988cdbcfd226f24fcb7a062208e4ee
-	sha256sums = 06a41f24ffb21e368fcbaf77adf39ac1748ab44e8e8fc5cc54fa5063490dacab
+	sha256sums = a9783526d93e6c72c7e1551cc5cc513fd6056dcc4593abe8fac815721d32dd5a
 
 pkgname = xmachoviewer-bin
