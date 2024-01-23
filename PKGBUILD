@@ -2,7 +2,7 @@
 
 pkgname=epub-tools-bin
 _pkgname=epub-tools
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 pkgdesc="Command line utilities for working with epub files. Packaged upstream binaries."
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=(epub-tools)
 conflicts=(epub-tools)
 depends=(glibc gmp zlib)
 source=("https://github.com/dino-/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux.tar.gz")
-sha256sums=('6c872d0b8455692e27a440ad422c350e60729bb0d80b0e1f2be2268d2ff9ee72')
+sha256sums=('a8836280c84e60d0c23f9607be58799fcb9be30765b3420b30c65b34ebeab7eb')
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   install -Dm755 "usr/bin/epubzip" "${pkgdir}/usr/bin/epubzip"
