@@ -3,7 +3,7 @@
 pkgname=sliding-sync-git
 arch=('x86_64')
 backup=("etc/default/sliding-sync")
-pkgver=r1754.62d3798
+pkgver=r1783.bbb886e
 pkgrel=1
 pkgdesc="Run a sliding sync proxy. An implementation of MSC3575."
 url=https://github.com/matrix-org/sliding-sync
@@ -12,7 +12,7 @@ depends=("postgresql>13")
 source=("git+https://github.com/matrix-org/sliding-sync.git" "sliding-sync-git.service")
 makedepends=("go" "git")
 sha256sums=('SKIP'
-            'b3b669052508077f16107b0de662699669a47dfb0519701119d5548110869f1c')
+            '732a62fa9edd235022a8fc9ede32d7c4a0fb5235a9e49097f3a9df46cacca289')
 provides=("sliding-sync")
 install="sliding-sync-git.install"
 
@@ -32,8 +32,7 @@ function package(){
 	install -Dm644 "${srcdir}/sliding-sync-git.service" "${pkgdir}/usr/lib/systemd/system/sliding-sync.service"
 	mkdir -p "${pkgdir}/etc/default"
 	touch "${pkgdir}/etc/default/sliding-sync"
-	mkdir -p "${pkgdir}/usr/lib/sysusers.d/"
-	echo 'u	sliding-sync	-	"Sliding Sync Proxy User"	-	-' >"${pkgdir}/usr/lib/sysusers.d/sliding-sync.conf"
+	chmod 0600 -R "${pkgdir}/etc/default/sliding-sync"
 	mkdir -p "${pkgdir}/usr/lib/tmpfiles.d"
-	echo 'f	/etc/default/sliding-sync	0660	sliding-sync	root' >"${pkgdir}/usr/lib/tmpfiles.d/sliding-sync.conf"
+	echo 'f	/etc/default/sliding-sync	0600	root	root' >"${pkgdir}/usr/lib/tmpfiles.d/sliding-sync.conf"
 }

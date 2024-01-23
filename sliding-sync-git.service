@@ -1,14 +1,30 @@
 [Unit]
 After=network-online.target
-Wants=network-online.target
 
 [Service]
 Type=simple
-User=sliding-sync
+DynamicUser=yes
+RuntimeDirectory=sliding-sync
 EnvironmentFile=/etc/default/sliding-sync
 Restart=always
 RestartSec=3
 ExecStart=/usr/bin/syncv3
+
+SyslogIdentifier=sliding-sync
+
+NoNewPrivileges=true
+ProtectKernelTunables=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+MemoryDenyWriteExecute=true
+ProtectClock=true
+RestrictRealtime=true
+PrivateDevices=true
+PrivateTmp=true
+ProtectHostname=true
+
+OOMPolicy=stop
+OOMScoreAdjust=20
 
 [Install]
 WantedBy=multi-user.target
