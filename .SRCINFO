@@ -1,10 +1,10 @@
 pkgbase = aeon-bin
 	pkgdesc = Scan the internet for your personal information and modify or remove it
 	pkgver = 0.2.22
-	pkgrel = 7
+	pkgrel = 8
 	url = https://aeon.technology/
 	arch = x86_64
-	license = custom:EUPL
+	license = EUPL-1.2
 	depends = electron23
 	depends = krb5
 	depends = openssl-1.1
@@ -14,6 +14,6 @@ pkgbase = aeon-bin
 	source = aeon-0.2.22.deb::https://github.com/leinelissen/aeon/releases/download/v0.2.22/aeon_0.2.22_amd64.deb
 	source = aeon.sh
 	sha256sums = 3a3c1112a6a750d503f08ccb2a7481dead7e4e58fc057d99f04f364dcf3c916a
-	sha256sums = 68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
 
 pkgname = aeon-bin

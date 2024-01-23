@@ -2,12 +2,12 @@
 pkgname=aeon-bin
 pkgver=0.2.22
 _electronversion=23
-pkgrel=7
+pkgrel=8
 pkgdesc="Scan the internet for your personal information and modify or remove it"
 arch=("x86_64")
 url="https://aeon.technology/"
 _ghurl="https://github.com/leinelissen/aeon"
-license=('custom:EUPL')
+license=('EUPL-1.2')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('3a3c1112a6a750d503f08ccb2a7481dead7e4e58fc057d99f04f364dcf3c916a'
-            '68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
