@@ -1,0 +1,15 @@
+pkgbase = python-git-dummy
+	pkgdesc = Generate dummy Git repositories populated with the desired number of commits, branches, and structure.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://pypi.org/project/git-dummy/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-typer
+	depends = python-gitpython
+	depends = python-pydantic-settings
+	source = https://pypi.io/packages/source/g/git-dummy/git-dummy-0.1.2.tar.gz
+	sha256sums = 1948ccc8725f11689a3eefddfd1917df1ed6f199290906bf1d1246cd38c03765
+
+pkgname = python-git-dummy
