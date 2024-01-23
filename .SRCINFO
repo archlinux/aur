@@ -1,0 +1,16 @@
+pkgbase = silabs-usbxpresshostsdk
+	pkgdesc = Flashing tool for CP210X UART bridges.
+	pkgver = 6.7.7
+	pkgrel = 1
+	url = https://www.silabs.com/search#q=usbxpresshostsdk&t=Documentation&sort=relevancy
+	arch = x86_64
+	license = custom
+	makedepends = patchelf
+	depends = util-linux-libs
+	depends = libusb
+	depends = glibc
+	depends = gcc-libs
+	source = https://www.silabs.com/documents/public/software/USBXpressHostSDK-Linux.tar
+	sha256sums = 4d9e21b143515bfdcdb9c325ea2ac12051125bf02051554ae4ddbacb51c97360
+
+pkgname = silabs-usbxpresshostsdk
