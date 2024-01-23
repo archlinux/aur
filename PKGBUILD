@@ -4,7 +4,7 @@
 pkgbase=open3d
 pkgname=( {,python-}open3d python-py3d )
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A Modern Library for 3D Data Processing"
 arch=('x86_64')
@@ -37,15 +37,14 @@ makedepends=(
     python-setuptools
 )
 source=(
-    "${pkgbase}::git+https://github.com/isl-org/Open3D.git#commit=0f06a149c4fb9406fd3e432a5cb0c024f38e2f0e"
+    "${pkgbase}::git+https://github.com/isl-org/Open3D.git#commit=b9e049cf3f2e147b6c8fb08aacf053597bfd64f8"
 )
 sha256sums=('SKIP')
 
 function prepare() {
     cd "${srcdir}/${pkgbase}"
     git submodule update --init --recursive
-    # patch -p1 -i "${srcdir}/v0.17.0-1fix6008.patch"
-    mkdir build
+    mkdir -p build
 }
 
 function build() {

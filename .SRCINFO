@@ -1,7 +1,7 @@
 pkgbase = open3d
 	pkgdesc = A Modern Library for 3D Data Processing
 	pkgver = 0.18.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://www.open3d.org
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = open3d
 	depends = gcc12
 	optdepends = openmp: Multiprocess support
 	optdepends = jupyter-notebook: Jupyter notebook support
-	source = open3d::git+https://github.com/isl-org/Open3D.git#commit=0f06a149c4fb9406fd3e432a5cb0c024f38e2f0e
+	source = open3d::git+https://github.com/isl-org/Open3D.git#commit=b9e049cf3f2e147b6c8fb08aacf053597bfd64f8
 	sha256sums = SKIP
 
 pkgname = open3d
