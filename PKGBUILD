@@ -35,11 +35,11 @@ validpgpkeys=('7C7BD146943B206BB645B64594EAD67E004B65AB')
 #  cd $pkgname
 #  git describe --tags | sed "s/^v//; s/-/.r/; s/-/./"
 #}
-
-prepare() {
-  cd $pkgname-$pkgver
-  autoreconf -fi
-}
+#
+#prepare() {
+#  cd $pkgname
+#  autoreconf -fi
+#}
 
 build() {
   cd $pkgname-$pkgver
