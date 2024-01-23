@@ -103,6 +103,7 @@ prepare() {
   # mozc date and version
   #_date=$(git log -1 --pretty=format:'%as' $_mozc_commit)
   #sed -i -e "/2.25.4150.102.1/d"  -e "s/2.26.4220.106.1/${pkgver}.${pkgrel}/" -e "s/2021-01-16/${_date}/" src/unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in
+  rustup update nightly stable
 }
 
 build() {
