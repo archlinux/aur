@@ -1,0 +1,13 @@
+pkgbase = mpv-kscreen-doctor
+	pkgdesc = A plugin for mpv to automatically switch the display refresh rate in a KDE session.
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://gitlab.com/smaniottonicola/mpv-kscreen-doctor
+	arch = any
+	license = Unlicense
+	depends = libkscreen
+	depends = mpv
+	source = https://gitlab.com/smaniottonicola/mpv-kscreen-doctor/-/archive/v0.2.2/mpv-kscreen-doctor-v0.2.2.tar.gz
+	sha256sums = 44eccffdff239fe10bb06bd83e4e0e94151eefe2491030ce7bfb962066db0279
+
+pkgname = mpv-kscreen-doctor
