@@ -2,34 +2,31 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bigrquery
-_pkgver=1.4.2
+_pkgver=1.5.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=5
+pkgrel=1
 pkgdesc="An Interface to Google's 'BigQuery' 'API'"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL3)
+license=('MIT')
 depends=(
-  r-assertthat
   r-bit64
   r-brio
   r-cli
+  r-clock
   r-curl
   r-dbi
   r-gargle
-  r-glue
   r-httr
   r-jsonlite
   r-lifecycle
   r-prettyunits
-  r-progress
-  r-rcpp
   r-rlang
   r-tibble
-  r-withr
 )
 makedepends=(
+  r-cpp11
   r-rapidjsonr
 )
 checkdepends=(
@@ -42,18 +39,18 @@ checkdepends=(
 optdepends=(
   r-blob
   r-covr
-  r-dbitest
   r-dbplyr
   r-dplyr
   r-hms
   r-readr
   r-sodium
   r-testthat
+  r-withr
   r-wk
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('82e0f0e163cd2716a4c0996a2c4e0321')
-b2sums=('7426985c0e4cbd3c2f6daf9a76f0f87650209bf9d70b62629a763760fe6243226b2026ab28e8854cfdbc7d15d11a27d54f6587958ba448ee539accb6ec08d7f1')
+md5sums=('3e011bbd218921b16f42c1147d66b118')
+b2sums=('e808a229740407a387ee2384bc30b944394d8cc85511fe2ebbe187c7a6368a554415fda7beb3ac3b3e889ec18f128f593c6177ebba461dcf2ab9a52b467e959a')
 
 build() {
   mkdir build
@@ -68,4 +65,7 @@ check() {
 package() {
   install -d "$pkgdir/usr/lib/R/library"
   cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
