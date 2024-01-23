@@ -10,10 +10,9 @@ pkgbase = openbox-menu
 	depends = menu-cache
 	optdepends = lxmenu-data: LXDE menus
 	optdepends = gnome-menus: GNOME menus
-	source = https://sourceforge.net/projects/archbangretro/files//openbox-menu-0.8.0.tar.xz
+	source = git+https://github.com/fabriceT/openbox-menu
 	source = with-svg.patch
-	md5sums = 633e2a3d1780e8420ddf0e1d1494d165
+	md5sums = SKIP
 	md5sums = 484bd49f619e57f9fb2be42931d57dd5
 
 pkgname = openbox-menu
-
