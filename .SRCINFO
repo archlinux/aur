@@ -1,49 +1,85 @@
 pkgbase = moonray
 	pkgdesc = DreamWorks’ production MCRT renderer
-	pkgver = 1.3.0.0
-	pkgrel = 0
+	pkgver = 1.4.0.0
+	pkgrel = 1
 	url = https://openmoonray.org
+	install = moonray.install
 	arch = x86_64
-	license = Apache2
+	license = Apache
 	makedepends = boost
+	makedepends = curl
 	makedepends = cmake
+	makedepends = clang
 	makedepends = cppunit
-	makedepends = cuda
+	makedepends = ispc
 	makedepends = libmicrohttpd
 	makedepends = openimageio
 	makedepends = openssl
 	makedepends = git
 	makedepends = qt5-base
 	makedepends = qt5-script
-	makedepends = usd
+	depends = optix>=7.6.0
+	depends = bash
+	depends = gcc-libs
+	depends = libglvnd
+	depends = libsm
 	depends = curl
-	depends = clang
-	depends = lua53
-	depends = optix
+	depends = imath
 	depends = python
-	source = openmoonray::git+https://github.com/dreamworksanimation/openmoonray#tag=openmoonray-1.3.0.0
-	source = openmoonray+arras+arras4_core::git+https://github.com/dreamworksanimation/arras4_core.git#commit=8e22420076dfb6e75429379196c874bd342611aa
-	source = openmoonray+arras+arras_render::git+https://github.com/dreamworksanimation/arras_render.git#commit=b706280daf059d39677f57a490362d9699c1100d
-	source = openmoonray+arras+distributed+arras4_node::git+https://github.com/dreamworksanimation/arras4_node.git#commit=bf57bb1f34b338eaf4bcacc49b714b1a5321ba0b
-	source = openmoonray+arras+distributed+minicoord::git+https://github.com/dreamworksanimation/minicoord.git#commit=2fe91917f731073cdfc91a8bb4935b87fafcf246
+	depends = cuda
+	depends = glibc
+	depends = materialx
+	depends = python-pyqt5
+	depends = libmicrohttpd
+	depends = openimageio
+	depends = libcgroup
+	depends = opencolorio
+	depends = openimagedenoise
+	depends = boost-libs
+	depends = opensubdiv
+	depends = jemalloc
+	depends = jsoncpp
+	depends = libice
+	depends = libxext
+	depends = libx11
+	depends = libjpeg-turbo
+	depends = python-setuptools
+	depends = cppunit
+	depends = openvdb
+	depends = openexr
+	depends = random123
+	depends = embree
+	depends = python-requests
+	depends = log4cplus
+	depends = openssl
+	depends = lua
+	depends = usd>=23.11-7
+	depends = usd-extras
+	depends = util-linux-libs
+	depends = onetbb
+	optdepends = intel-oneapi-mkl: Intel Math Kernel Library
+	source = openmoonray::git+https://github.com/dreamworksanimation/openmoonray#tag=openmoonray-1.4.0.0
+	source = openmoonray+arras+arras4_core::git+https://github.com/dreamworksanimation/arras4_core.git#commit=90cbe6b30c114c63072d6b8cfd80f38131361885
+	source = openmoonray+arras+arras_render::git+https://github.com/dreamworksanimation/arras_render.git#commit=e313b812ccb47c6576eb2a0235e974de1a260d26
+	source = openmoonray+arras+distributed+arras4_node::git+https://github.com/dreamworksanimation/arras4_node.git#commit=b8d8ae006471a99942e4c0b1fc676f52bb125dbb
+	source = openmoonray+arras+distributed+minicoord::git+https://github.com/dreamworksanimation/minicoord.git#commit=5645d99de6f70efba6d1306a12a4e40ae03c19fd
 	source = openmoonray+cmake_modules::git+https://github.com/dreamworksanimation/cmake_modules.git#commit=f50b73d1a4365479444c17cba530a897b54aeeb8
-	source = openmoonray+moonray+hydra+hdMoonray::git+https://github.com/dreamworksanimation/hdMoonray.git#commit=6de7142ecfbb54dede2606176307a3d26d6cd310
+	source = openmoonray+moonray+hydra+hdMoonray::git+https://github.com/dreamworksanimation/hdMoonray.git#commit=0cbd7f7ab8db76a352e45696a727cdf9973f9740
 	source = openmoonray+moonray+hydra+moonray_sdr_plugins::git+https://github.com/dreamworksanimation/moonray_sdr_plugins.git#commit=eabdcd2bddc529085e410192889f6b9080fad4f1
-	source = openmoonray+moonray+mcrt_denoise::git+https://github.com/dreamworksanimation/mcrt_denoise.git#commit=a27c59f398fdae1856e4de9718efdd1d8a958332
-	source = openmoonray+moonray+moonray::git+https://github.com/dreamworksanimation/moonray.git#commit=a84653d0622baa575542be642d80d968f97f2c6c
-	source = openmoonray+moonray+moonray_arras+mcrt_computation::git+https://github.com/dreamworksanimation/mcrt_computation.git#commit=b3190ce32008445b08b1e09a691a1b7540147ef5
-	source = openmoonray+moonray+moonray_arras+mcrt_dataio::git+https://github.com/dreamworksanimation/mcrt_dataio.git#commit=29411cc02786e2626c9afa34cac201aa5fda28ea
-	source = openmoonray+moonray+moonray_arras+mcrt_messages::git+https://github.com/dreamworksanimation/mcrt_messages.git#commit=41ec28cc7f0de6675fc57ab20ed65fec5457bfe5
+	source = openmoonray+moonray+mcrt_denoise::git+https://github.com/dreamworksanimation/mcrt_denoise.git#commit=70a73f677d644c583413c16aacd9b67e2474de21
+	source = openmoonray+moonray+moonray::git+https://github.com/dreamworksanimation/moonray.git#commit=4663ce1b5b493460fe67128ba5ca4859eeaffa39
+	source = openmoonray+moonray+moonray_arras+mcrt_computation::git+https://github.com/dreamworksanimation/mcrt_computation.git#commit=eda4831b4ff28c6d83c220e8d90d0fd5aa473b99
+	source = openmoonray+moonray+moonray_arras+mcrt_dataio::git+https://github.com/dreamworksanimation/mcrt_dataio.git#commit=59841215ffa9aaf9ee8a80d7bdb969ad42de8456
+	source = openmoonray+moonray+moonray_arras+mcrt_messages::git+https://github.com/dreamworksanimation/mcrt_messages.git#commit=11a4b29b8ecad85ef5869b4e1b928c284cb21578
 	source = openmoonray+moonray+moonray_dcc_plugins::git+https://github.com/dreamworksanimation/moonray_dcc_plugins.git#commit=e90ad4cdc4086c9e952e211d1570e0416af467c6
-	source = openmoonray+moonray+moonray_gui::git+https://github.com/dreamworksanimation/moonray_gui.git#commit=1f00f0bcdae8ca9b40d8923fdc3c17c1b787836e
-	source = openmoonray+moonray+moonshine::git+https://github.com/dreamworksanimation/moonshine.git#commit=963c933892f8d1dbb6a794834c72de06df88dd7e
-	source = openmoonray+moonray+moonshine_usd::git+https://github.com/dreamworksanimation/moonshine_usd.git#commit=1d850a4cdd40220e7ccd62157f360f2c36977b75
-	source = openmoonray+moonray+render_profile_viewer::git+https://github.com/dreamworksanimation/render_profile_viewer.git#commit=4c35f67ed99fbfb13f523de39278cb2e45d4bb61
-	source = openmoonray+moonray+scene_rdl2::git+https://github.com/dreamworksanimation/scene_rdl2.git#commit=69412c549b8d3c7d992a8471d7973b774e5cda89
-	source = jsoncpp.patch
+	source = openmoonray+moonray+moonray_gui::git+https://github.com/dreamworksanimation/moonray_gui.git#commit=399de3db99be0258eae6dda4bd077d51d571dbba
+	source = openmoonray+moonray+moonshine::git+https://github.com/dreamworksanimation/moonshine.git#commit=69fad0143ffff03c73a347f1a7e41a580a2dff7f
+	source = openmoonray+moonray+moonshine_usd::git+https://github.com/dreamworksanimation/moonshine_usd.git#commit=5c4fff2d7f840fce1677d746b5b02b9dcc64599c
+	source = openmoonray+moonray+render_profile_viewer::git+https://github.com/dreamworksanimation/render_profile_viewer.git#commit=cd6959e7cd6a4d37bdafdfc3489d39156023edee
+	source = openmoonray+moonray+scene_rdl2::git+https://github.com/dreamworksanimation/scene_rdl2.git#commit=217f7779bc6dd07b5fba0100c9b2c9ab801c1e22
 	source = moonray.patch
 	source = optix.patch
-	source = tbb.patch
+	source = moonray.sh
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -63,18 +99,52 @@ pkgbase = moonray
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 87472adf9bbb20c254d2e615a1eb3df30fcc11b8ce784d3877b8e009a68ea6fc
-	sha256sums = 9ceeb88e20a377adbf2ab3f686f90131a7fef8b426acd2cd7ed6b57e7a8572e9
-	sha256sums = 31826f021bf78da6560aebe2b1427de9eb11fafbb983ec0def94dce1718dd8c6
-	sha256sums = 1b3a201caf3db095574d4bc3800fc6ee111c5050587a1ff58bfdff57352d2c85
+	sha256sums = fa7e6b6b58ac274ebffb42c3c40fd6279effaf9625775deff4b843ff98c2f329
+	sha256sums = 4f125a12cb5031ba7c5d3488bd9b6cb6a7075a5d0ba0e6aed62b746eb0bf734f
+	sha256sums = 602354f937f73c3d61d5bfd38316bcaf8e502d2c0e2c18c04d303eac1cec7008
 
 pkgname = moonray
 
 pkgname = moonray-gui
+	depends = optix>=7.6.0
+	depends = bash
+	depends = gcc-libs
+	depends = libglvnd
+	depends = libsm
 	depends = curl
-	depends = clang
-	depends = lua53
-	depends = optix
+	depends = imath
 	depends = python
+	depends = cuda
+	depends = glibc
+	depends = materialx
+	depends = python-pyqt5
+	depends = libmicrohttpd
+	depends = openimageio
+	depends = libcgroup
+	depends = opencolorio
+	depends = openimagedenoise
+	depends = boost-libs
+	depends = opensubdiv
+	depends = jemalloc
+	depends = jsoncpp
+	depends = libice
+	depends = libxext
+	depends = libx11
+	depends = libjpeg-turbo
+	depends = python-setuptools
+	depends = cppunit
+	depends = openvdb
+	depends = openexr
+	depends = random123
+	depends = embree
+	depends = python-requests
+	depends = log4cplus
+	depends = openssl
+	depends = lua
+	depends = usd>=23.11-7
+	depends = usd-extras
+	depends = util-linux-libs
+	depends = onetbb
 	depends = moonray
 	depends = qt6-base
+	depends = qt5-script

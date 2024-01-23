@@ -5,7 +5,7 @@ export MOONRAY_ROOT=/opt/moonray
 export PATH=$MOONRAY_ROOT/bin:${PATH}
 
 # tells MoonRay where to find shader dsos
-export RDL2_DSO_PATH=$MOONRAY_ROOT/rdl2dso.proxy:$MOONRAY_ROOT/rdl2dso
+export RDL2_DSO_PATH=$MOONRAY_ROOT/rdl2dso
 # tells the Sdr plugins where to find the shader descriptions
 export MOONRAY_ROOT_CLASS_PATH=$MOONRAY_ROOT/shader_json
 # tells Arras where to find the session definition files
