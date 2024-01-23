@@ -4,8 +4,7 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
-Environment=RUST_LOG=moonshine=info
-ExecStart=/usr/bin/moonshine /etc/moonshine/config.toml
+ExecStart=/usr/bin/moonshine /etc/moonshine/config.toml -v
 WorkingDirectory=/etc/moonshine
 
 [Install]
