@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-zlib
 	pkgdesc = Compression library implementing the deflate compression method found in gzip and PKZIP (mingw-w64)
-	pkgver = 1.3
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = http://www.zlib.net/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = mingw-w64-zlib
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://zlib.net/fossils/zlib-1.3.tar.gz
-	sha256sums = ff0ba4c292013dbc27530b3a81e1f9a813cd39de01ca5e0f8bf355702efa593e
+	source = http://zlib.net/fossils/zlib-1.3.1.tar.gz
+	sha256sums = 9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23
 
 pkgname = mingw-w64-zlib
