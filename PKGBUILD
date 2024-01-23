@@ -3,7 +3,7 @@
 # Contributor: Myles English <myles at rockhead dot biz>
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgver=3.20.3
-pkgrel=3
+pkgrel=4
 pkgname=petsc
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
@@ -14,11 +14,10 @@ arch=('i686' 'x86_64')
 url="https://petsc.org"
 license=('BSD')
 options=(staticlibs)
-depends=('python-numpy' 'openmpi' 'boost' 'lapack' 'hdf5-openmpi' 'superlu' 'suitesparse')
+depends=('python-numpy' 'openmpi' 'boost' 'lapack' 'hdf5-openmpi' 'fftw' 'superlu' 'suitesparse')
 makedepends=('gcc' 'gcc-fortran' 'cmake' 'cython')
 provides=('petsc4py')
 optdepends=('trilinos: support for trilinos'
-  'fftw: support for FFTW'
   'hypre: support for HYPRE'
   'metis: support for METIS'
   'mumps: support for MUMPS'
@@ -51,6 +50,7 @@ build() {
             --with-petsc4py=1 \
             --with-mpi-f90module-visibility=0 \
             --with-mpi-dir=/usr \
+            --with-fftw=1 \
             --with-superlu-lib=-lsuperlu --with-superlu-include=/usr/include/superlu \
             --with-suitesparse-include=/usr/include/suitesparse \
             --with-suitesparse-lib=[libamd.so,libbtf.so,libcamd.so,libccolamd.so,libcholmod.so,libcolamd.so,libcxsparse.so,libgraphblas.so,libklu.so,libklu_cholmod.so,liblagraph.so,liblagraphx.so,libldl.so,libparu.so,librbio.so,libspex.so,libspqr.so,libsuitesparse_mongoose.so,libsuitesparseconfig.so,libumfpack.so] \
