@@ -11,7 +11,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=900c096a5ee05c28e9fd51954ea7303575562f5b
+_mozc_commit=71854249677bfe895c33440347ab90ce0c5b16dd
 _branch=fcitx
 # Ut Dictionary
 _utdicdate=20230115
@@ -30,11 +30,11 @@ _sudachidict_date=20240109
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.29.5291.102
-pkgrel=10
+pkgrel=11
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
-makedepends=('qt6-base' 'fcitx5' 'fcitx5-qt' 'bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'mesa' 'subversion' 'clang' 'ibus' 'ruby' 'ruby-parallel')
+makedepends=('qt6-base' 'fcitx5' 'fcitx5-qt' 'bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'mesa' 'subversion' 'clang' 'ibus' 'rustup')
 options=(!lto)
 source=("git+$url.git#commit=${_mozc_commit}"
         git+https://github.com/phoepsilonix/mozcdict-ext.git
@@ -125,17 +125,23 @@ build() {
   done
 
   # gem parallel
-  [[ "$GEM_HOME"=="" ]] && GEM_HOME="/usr/lib/ruby/gems/3.0.0/"
+  #[[ "$GEM_HOME"=="" ]] && GEM_HOME="/usr/lib/ruby/gems/3.0.0/"
 
   cd "${srcdir}/mozcdict-ext/" || exit
   # すだちを優先
-  msg '2. Run the ruby scripts as in original sudachi.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
+  msg '2. Run the rust program(mozdcict-ext), it may take some time...'
   cd sudachi || exit
-  ruby sudachi.rb -E -f ${srcdir}/small_lex.csv -f ${srcdir}/core_lex.csv -f ${srcdir}/notcore_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def > ../all-dict.txt
+  source <(cargo +nightly -Z unstable-options rustc --print cfg|grep -E "target_(arch|vendor|os|env)")
+  TARGET="${target_arch}-${target_vendor}-${target_os}-${target_env}"
+  cargo build --release --target $TARGET
+  cat ${srcdir}/small_lex.csv ${srcdir}/core_lex.csv ${srcdir}/notcore_lex.csv > all.csv
+  cp ${srcdir}/mozc/src/data/dictionary_oss/id.def ./
+  ./target/$TARGET/release/dict-to-mozc sudachi all.csv > ../all-dict.txt
+  #ruby sudachi.rb -E -f ${srcdir}/small_lex.csv -f ${srcdir}/core_lex.csv -f ${srcdir}/notcore_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def > ../all-dict.txt
   cd ..
 
   # added dicts.txt
-  cat ${srcdir}/dicts.txt >> all-dict.txt
+  #cat ${srcdir}/dicts.txt >> all-dict.txt
   #cd neologd || exit
   #msg '3. Run the ruby scripts as in original neologd.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
   #xz -k -d -c ${srcdir}/mecab-ipadit-neologd/upstream/seed/mecab-*.xz > user-dict-seed.csv
@@ -143,11 +149,15 @@ build() {
   #cd ..
 
   # ut-dictionarys
-  msg '3. Run the ruby scripts as in original utdict.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
-  ruby utdict/utdict.rb -E -f mozcdic-ut.txt -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> all-dict.txt
+  msg '3. Run the rust program(mozcdict-ext) , it may take some time...'
+  cd sudachi || exit
+  ./target/$TARGET/release/dict-to-mozc utdict ../mozcdic-ut.txt >> ../all-dict.txt
+  #ruby utdict/utdict.rb -E -f mozcdic-ut.txt -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> all-dict.txt
+  cd ..
 
-  msg '4. Run the ruby scripts as uniqword.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
-  ruby .dev.utils/uniqword.rb all-dict.txt > finish-dict.txt  2> duplicated.txt
+  msg '4. Run the awk scripts as dup.awk, it may take some time...'
+  awk -f sudachi/dup.awk all-dict.txt > finish-dict.txt
+  #ruby .dev.utils/uniqword.rb all-dict.txt > finish-dict.txt  2> duplicated.txt
   #cat ut-dict.txt >> finish-dict.txt
 
   msg '5. Finally add UT dictionary to mozc source'

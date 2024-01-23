@@ -1,6 +1,6 @@
 pkgbase = mozc-with-jp-dict
 	pkgver = 2.29.5291.102
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/fcitx/mozc
 	arch = x86_64
 	license = custom
@@ -17,10 +17,9 @@ pkgbase = mozc-with-jp-dict
 	makedepends = subversion
 	makedepends = clang
 	makedepends = ibus
-	makedepends = ruby
-	makedepends = ruby-parallel
+	makedepends = rustup
 	options = !lto
-	source = git+https://github.com/fcitx/mozc.git#commit=900c096a5ee05c28e9fd51954ea7303575562f5b
+	source = git+https://github.com/fcitx/mozc.git#commit=71854249677bfe895c33440347ab90ce0c5b16dd
 	source = git+https://github.com/phoepsilonix/mozcdict-ext.git
 	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20240109/small_lex.zip
 	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20240109/core_lex.zip
