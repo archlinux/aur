@@ -1,7 +1,7 @@
 pkgbase = zing-8-bin
 	pkgdesc = Azul Platform Prime is a modern, TCK-compliant Java platform based on OpenJDK.
 	pkgver = 8.0.392
-	pkgrel = 3
+	pkgrel = 4
 	url = https://docs.azul.com/prime/prime-quick-start-tar
 	install = zing-8-bin.install
 	arch = aarch64
