@@ -1,7 +1,7 @@
 pkgbase = python-srsly-git
 	pkgdesc = Modern high-performance serialization utilities for Python
-	pkgver = 0.0.5.r116.2b04f37
-	pkgrel = 2
+	pkgver = 2.4.8.r307.559f776
+	pkgrel = 1
 	url = https://github.com/explosion/srsly
 	arch = x86_64
 	license = MIT
@@ -13,10 +13,11 @@ pkgbase = python-srsly-git
 	depends = python-pytest
 	depends = python-mock
 	depends = python-pytz
+	depends = python-catalogue
+	depends = python-pytest-timeout
 	provides = python-srsly
 	conflicts = python-srsly
 	source = git+https://github.com/explosion/srsly.git
 	md5sums = SKIP
 
 pkgname = python-srsly-git
-

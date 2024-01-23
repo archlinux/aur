@@ -1,9 +1,11 @@
-# Maintainer: DanManN <dnahimov@gmail.com>
+# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+# Contributor: DanManN <dnahimov@gmail.com>
 # Python package author: Matthew Honnibal <matt@explosion.ai>
+
 pkgname=python-srsly-git
 _origpkgname=srsly
-pkgver=0.0.5.r116.2b04f37
-pkgrel=2
+pkgver=2.4.8.r307.559f776
+pkgrel=1
 pkgdesc="Modern high-performance serialization utilities for Python"
 arch=("x86_64")
 url="https://github.com/explosion/srsly"
@@ -14,6 +16,8 @@ depends=('python'
          'python-pytest'
          'python-mock'
          'python-pytz'
+         'python-catalogue'
+         'python-pytest-timeout'
 )
 makedepends=('git' 'python-setuptools')
 provides=('python-srsly')
