@@ -99,7 +99,6 @@ prepare() {
   # zombie process prevention for mozc_tool
   cd "$srcdir/mozc" || exit
   patch -p1 -i ${srcdir}/0001-Zombie-Process-Prevention.patch
-  patch -p1 -i ${srcdir}/0002-fcitx5-MOZC_VLOG.patch
 
   # mozc date and version
   #_date=$(git log -1 --pretty=format:'%as' $_mozc_commit)
