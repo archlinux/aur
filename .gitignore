@@ -1,0 +1,3 @@
+*.rpm
+*.zst
+Makefile
