@@ -4,8 +4,8 @@
 # -*- sh -*-
 
 pkgname=nb
-pkgver=7.9.1
-pkgrel=2
+pkgver=7.10.1
+pkgrel=1
 pkgdesc="A command-line note-taking, bookmarking, archiving, and knowledge base application"
 arch=('any')
 url="https://github.com/xwmx/${pkgname}"
@@ -62,16 +62,16 @@ package() {
   install -${_v}Dm0644 -t "${pkgdir}/usr/share/nb/plugins/" plugins/*
 
   # Extras (prefixed with "nb-")
-  for extra in bookmark notes; do
-    install -${_v}Dm0755 "bin/$extra" "${pkgdir}/usr/bin/${pkgname}-${extra}"
+  for _extra in bookmark notes; do
+    install -${_v}Dm0755 "bin/$_extra" "${pkgdir}/usr/bin/${pkgname}-${_extra}"
   done
 }
 
 sha256sums=(
-  '9d16d886feac16a99aaa6b3c2a7d327e6f3b3c96b4d4213c17b03350e579630a'
+  '0d37414563fdb743a6ae5052940b9dcbfc60420807f3888b7f089afea2e8e962'
 )
 b2sums=(
-  '589cacaac7759b97061bd0c2d51b1833626639810099b2056f99b49579a27c59a88c2868719090fce9e02af318d1908898a240aed8bdddbf3b3065701b2aebf7'
+  'f703f03e9b1fadbe88cbc16c29a2db61ce9351c43179e371fcdae78c240d167b8091193b2bd1cc59b02563c4d5abded063319d847397f4b9f5f009265cc861f7'
 )
 
 # eof
