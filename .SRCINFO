@@ -1,0 +1,23 @@
+pkgbase = vscodius-bin
+	pkgdesc = Binary releases of Visual Studio Code without MS branding/telemetry/licensing and various personal workflow improvements.
+	pkgver = 1.85.2
+	pkgrel = 1
+	url = https://code.visualstudio.com/
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	depends = electron25
+	depends = libxkbfile
+	provides = vscodius=1.85.2
+	provides = code
+	conflicts = vscodius
+	conflicts = code
+	options = !strip
+	source = vscodius-1.85.2.zip::https://github.com/RubisetCie/vscodius/releases/download/v1.85.2/VSCodius-Linux-x64-1.85.2.zip
+	source = LICENSE-1.85.2.txt::https://raw.githubusercontent.com/RubisetCie/vscodius/v1.85.2/LICENSE.txt
+	source = vscodius.sh
+	sha256sums = 65c0d3e82f08ff0caea8e9a560dddb48d8f78f696b6bcea92e67efd5a2794fb9
+	sha256sums = 9480271317925265e806a9a196aaa33410a962fa9d4d1e248a4a5187bc8c9df9
+	sha256sums = 08f4674b451d8aed830ed3a04b1071b214ea442ee4e56b6f673549fbcd38dc57
+
+pkgname = vscodius-bin
