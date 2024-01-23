@@ -1,0 +1,13 @@
+pkgbase = hii
+	pkgdesc = A file-based IRC client inspired by ii
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/nmeum/hii
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	makedepends = go
+	source = hii-1.1.4.tar.gz::https://github.com/nmeum/hii/archive/refs/tags/1.1.4.tar.gz
+	sha256sums = ea11ac36fb7d05f3ce453528d0680c7ea29e173d1b8d927b4949725c67a0a135
+
+pkgname = hii
