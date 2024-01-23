@@ -1,0 +1,3 @@
+. ./PKGBUILD
+_commit=$(git -C ~/src/security/pkcs11-provider rev-parse HEAD)
+source=("git+https://github.com/latchset/pkcs11-provider#commit=$_commit")
