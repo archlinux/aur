@@ -6,7 +6,7 @@ _jdkname="zing-${_java_ver}"
 _zing_build="23.12.0.0"
 pkgname="${_jdkname}-bin"
 pkgver="${_java_ver}.0.392"
-pkgrel=2
+pkgrel=3
 pkgdesc='Azul Platform Prime is a modern, TCK-compliant Java platform based on OpenJDK.'
 arch=('aarch64' 'x86_64')
 url='https://docs.azul.com/prime/prime-quick-start-tar'
@@ -28,8 +28,8 @@ provides=(
   "java-runtime-openjdk=$_java_ver"
 )
 install="$pkgname.install"
-source_aarch64=("https://cdn.azul.com/zing-zvm/ZVM${_zing_build}/zing${_zing_build}-3-jdk${pkgver}-linux_aarch64.tar.gz")
-source_x86_64=("https://cdn.azul.com/zing-zvm/ZVM${_zing_build}/zing${_zing_build}-3-jdk${pkgver}-linux_x64.tar.gz")
+source_aarch64=("https://cdn.azul.com/zing-zvm/ZVM${_zing_build}/zing${_zing_build}-4-jdk${pkgver}-linux_aarch64.tar.gz")
+source_x86_64=("https://cdn.azul.com/zing-zvm/ZVM${_zing_build}/zing${_zing_build}-4-jdk${pkgver}-linux_x64.tar.gz")
 source=("${pkgname}.install")
 #https://cdn.azul.com/zing-zvm/${_zulu_build}/zing${_zulu_build}-3-jdk${pkgver}-linux_x64.tar.gz
 #https://cdn.azul.com/zing-zvm/ZVM23.12.0.0/zing23.12.0.0-4-jdk8.0.392-linux_x64.tar.gz
