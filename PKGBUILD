@@ -1,7 +1,7 @@
 # Maintainer: Games_Crack aur@gamescrack.net
 pkgname=teleport-connect
 pkgver=14.3.3
-pkgrel=2
+pkgrel=1
 pkgdesc="Teleport Connect"
 arch=('x86_64')
 url="https://goteleport.com"
