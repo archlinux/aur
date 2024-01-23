@@ -3,30 +3,20 @@ _pkgname=transmart
 pkgname="tencent-${_pkgname}-bin"
 _appname=TranSmart
 pkgver=Alpha0.10.1
-pkgrel=5
+pkgrel=6
 pkgdesc="腾讯交互翻译融合了腾讯人工智能实验室自研的交互式机器翻译、神经网络机器翻译、 统计机器翻译、语义理解、信息检索等技术，帮助用户更快、更好地完成翻译任务。"
 arch=("x86_64")
 url="https://transmart.qq.com/"
-license=('custom')
+license=('LicenseRef-custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'qt5-base'
-    'nspr'
-    'libxcb'
-    'gmp'
-    'fontconfig'
-    'libglvnd'
-    'freetype2'
     'alsa-lib'
-    'libx11'
-    'libgpg-error'
-    'e2fsprogs'
-    'libp11-kit'
+    'qt6-declarative'
     'openssl-1.1'
+    'nspr'
     'nss'
-    'expat'
-    'libxkbcommon'
 )
 makedepends=(
     'gendesk'
@@ -40,12 +30,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('acef0abb8fc0af1fa11514ceb5ea3f615c132e2c7770c58cfb9ca29f571ad3d7'
-            '0457da21fc8ef72f5793a69bbdf8d8846a6d39fed639c518e3043c2d211a75bd')
+            '2fb5396d0a129dff11deeb9662ca2ba7f7fbca815d140ab965a59a9864cd93ac')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|" \
         -e "s|@runname@|${_appname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --pkgname "tencent-${_pkgname}-bin" --name "腾讯交互翻译TranSmart" --categories "Utility" --exec "${pkgname%-bin}"
+    gendesk -q -f -n --pkgname "tencent-${_pkgname}-bin" --name "腾讯交互翻译TranSmart" --categories "Utility" --exec "${pkgname%-bin} --no-sandbox %U"
     mv "${srcdir}/${_pkgname}_${pkgver}_linux/使用说明" "${srcdir}/${_pkgname}_${pkgver}_linux/README"
 }
 package() {
