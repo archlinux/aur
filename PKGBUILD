@@ -3,9 +3,9 @@
 
 pkgbase=open3d
 pkgname=( {,python-}open3d python-py3d )
-pkgver=0.17.0
-pkgrel=2
-epoch=4
+pkgver=0.18.0
+pkgrel=1
+epoch=1
 pkgdesc="A Modern Library for 3D Data Processing"
 arch=('x86_64')
 url="http://www.open3d.org"
@@ -37,7 +37,7 @@ makedepends=(
     python-setuptools
 )
 source=(
-    "${pkgbase}::git+https://github.com/isl-org/Open3D.git#commit=7c0acac0a50293c52d2adb70967e729f98fa5018"
+    "${pkgbase}::git+https://github.com/isl-org/Open3D.git#commit=0f06a149c4fb9406fd3e432a5cb0c024f38e2f0e"
 )
 sha256sums=('SKIP')
 
