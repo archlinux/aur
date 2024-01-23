@@ -2,7 +2,7 @@
 pkgname=owa-desktop-bin
 pkgver=1.0.1
 _electronversion=25
-pkgrel=4
+pkgrel=5
 pkgdesc="A simple Outlook Web (Office 365) Desktop application, built using Electron.js"
 arch=('x86_64')
 url="https://github.com/mikepruett3/owa-desktop"
@@ -19,7 +19,7 @@ source=(
 )
 sha256sums=('caa33aa8dab46de479837d3218598c30789a676dd5857ddd20ea22966a1adf32'
             '82f04c17c97a90cb676f7eec2bdeca09cfff8a6779b310226d8e750a70abad79'
-            '68521cf799a902fb3c86aa1ebdcfa92566ee49621b0e1db5873a0501d893b2e6')
+            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
