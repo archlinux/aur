@@ -1,7 +1,7 @@
 pkgbase = qtalarm
 	pkgdesc = Cross-platform Alarm Clock written with QT5
 	pkgver = 4700238.2.5.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://random-hackery.net/page/qtalarm/
 	arch = i686
 	arch = x86_64

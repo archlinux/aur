@@ -1,7 +1,7 @@
 # Contributor: CountMurphy <spartan1086@gmail.com>
 pkgname=qtalarm
 pkgver=4700238.2.5.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Cross-platform Alarm Clock written with QT5"
 arch=('i686' 'x86_64')
 url="https://random-hackery.net/page/qtalarm/"
@@ -28,17 +28,17 @@ build() {
 }
 
 package() {
-mkdir -p $pkgdir/usr/share/icons/hicolor/48x48/apps/
-mkdir -p $pkgdir/usr/share/icons/hicolor/16x16/apps/
-mkdir -p $pkgdir/usr/share/icons/hicolor/24x24/apps/
+mkdir -p "$pkgdir"/usr/share/icons/hicolor/48x48/apps/
+mkdir -p "$pkgdir"/usr/share/icons/hicolor/16x16/apps/
+mkdir -p "$pkgdir"/usr/share/icons/hicolor/24x24/apps/
 
-mkdir $pkgdir/usr/bin/
-mkdir $pkgdir/usr/share/applications/
-install -Dm555 Icons/1349069370_Alarm_Clock.png $pkgdir/usr/share/icons/hicolor/48x48/apps/
-install -Dm555 Icons/1349069370_Alarm_Clock24.png $pkgdir/usr/share/icons/hicolor/24x24/apps/1349069370_Alarm_Clock.png
-install -Dm555 Icons/1349069370_Alarm_Clock16.png $pkgdir/usr/share/icons/hicolor/16x16/apps/1349069370_Alarm_Clock.png
-install -Dm555 qtalarm  "$pkgdir/usr/bin/$pkgname"
-install -Dm555 "${BUILDDIR}/${pkgname}".desktop "$pkgdir/usr/share/applications/${pkgname}.desktop"
+mkdir "$pkgdir"/usr/bin/
+mkdir "$pkgdir"/usr/share/applications/
+install -Dm555 Icons/1349069370_Alarm_Clock.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/
+install -Dm555 Icons/1349069370_Alarm_Clock24.png "$pkgdir"/usr/share/icons/hicolor/24x24/apps/1349069370_Alarm_Clock.png
+install -Dm555 Icons/1349069370_Alarm_Clock16.png "$pkgdir"/usr/share/icons/hicolor/16x16/apps/1349069370_Alarm_Clock.png
+install -Dm555 qtalarm  ""$pkgdir"/usr/bin/$pkgname"
+install -Dm555 "${BUILDDIR}/${pkgname}".desktop ""$pkgdir"/usr/share/applications/${pkgname}.desktop"
 
 }
 
