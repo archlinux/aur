@@ -1,23 +1,19 @@
 pkgbase = timecop-bin
 	pkgdesc = A time tracking app that respects your privacy and the gets the job done without being fancy.
 	pkgver = 1.8.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://timecop.app/
 	arch = aarch64
 	arch = x86_64
-	license = Apache
-	depends = harfbuzz
+	license = Apache-2.0
 	depends = gdk-pixbuf2
-	depends = cairo
-	depends = pango
 	depends = hicolor-icon-theme
-	depends = libepoxy
 	depends = at-spi2-core
 	depends = gtk3
 	provides = timecop=1.8.0
 	conflicts = timecop
 	source = timecop.sh
-	sha256sums = 088686f54a6f4b05e34220f46f719786b48173234e14ed0fece3597e7484e72e
+	sha256sums = 87aad073913a72e5fa1c7f4e0f6f695dafc5ba8ea675a62be03c532c701c243a
 	source_aarch64 = timecop-1.8.0-aarch64.zip::https://github.com/hamaluik/timecop/releases/download/v1.8.0/timecop-linux-aarch64.tar.xz
 	sha256sums_aarch64 = cf376f25cde81d5299c4f543eee15380450470512630ae28697557ddea77bd47
 	source_x86_64 = timecop-1.8.0-x86_64.zip::https://github.com/hamaluik/timecop/releases/download/v1.8.0/timecop-linux-x86_64.tar.xz
