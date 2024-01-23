@@ -1,7 +1,7 @@
 pkgbase = chordnova-git
 	pkgdesc = ChordNova is a powerful open-source chord progression analysis plus generation software for multiple operating systems.
 	pkgver = 3.0.2021.r13.ga858152
-	pkgrel = 0
+	pkgrel = 2
 	url = https://github.com/Chen-and-Sim/ChordNova
 	arch = aarch64
 	arch = riscv64
@@ -15,7 +15,6 @@ pkgbase = chordnova-git
 	depends = qt5-base
 	provides = chordnova
 	conflicts = chordnova
-	options = !strip
 	source = chordnova-git::git+https://github.com/Chen-and-Sim/ChordNova.git
 	sha256sums = SKIP
 

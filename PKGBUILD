@@ -2,7 +2,7 @@
 
 pkgname=chordnova-git
 pkgver=3.0.2021.r13.ga858152
-pkgrel=0
+pkgrel=2
 pkgdesc="ChordNova is a powerful open-source chord progression analysis plus generation software for multiple operating systems."
 arch=(
     aarch64
@@ -22,7 +22,7 @@ makedepends=(git
     cmake
     ninja)
 backup=()
-options=('!strip')
+options=()
 install=
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
