@@ -1,18 +1,20 @@
-#!/hint/bash -e
 # Maintainer: Adrien Smith <adrien at panissupraomnia dot dev>
 # Contributor: William J. Bowman <aur@williamjbowman.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=ect-git
 _pkgname=Efficient-Compression-Tool
-pkgver=0.9.4.r8.g380a1df
+pkgver=0.9.5.r0.g9aabc23
 pkgrel=1
 pkgdesc='File compressor supporting postcompression of PNG, JPEG, GZIP and ZIP files'
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/fhanau/${_pkgname}"
-license=('Apache')
-depends=('gcc-libs')
-makedepends=('nasm' 'git' 'cmake')
+license=('Apache-2.0')
+depends=('gcc-libs'
+         'glibc')
+makedepends=('cmake'
+             'git'
+             'nasm')
 provides=("${pkgname%-git}=${pkgver}")
 conflicts=("${pkgname%-git}")
 source=("git+$url.git")
