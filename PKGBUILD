@@ -2,7 +2,7 @@
 
 pkgname='geant4-full'
 pkgver=11.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simulation toolkit for particle physics interactions - includes all the optional libraries"
 depends=(
   'cmake>=3.16'
@@ -52,7 +52,7 @@ source=(
 )
 sha256sums=(
   "46ad7fab3c5cb4bd0bdd77dd6d3e2283184819235bcbc01b2d117d81b35596a6"
-  "f679f4d7b3a58aad3f3f6b6915041219fcfe568e2e6aea263a991cb93ca394d0"
+  "8e1485871e05ef4194d43a1c58fb973820e19288963ff3536f6e8032a746a0fe"
   "3b5a899436e0f0a614a17604166a0946bf2e206ef66e1161522337a5be7a8d08"
 )
 install="geant4-full.install"

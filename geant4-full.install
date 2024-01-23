@@ -13,14 +13,36 @@ post_upgrade(){
   [ "$(ls $file_check)" ] && mkdir -p $G4LIBRARY_PATH && mv $G4LIBRARY_BACKUP/* $G4LIBRARY_PATH && rmdir $G4LIBRARY_BACKUP && rm $file_check
 
   #TODO: need to automatically cleanup old libraries from the Library folder
+
+  PREVFILE=NONE
+  PREVFILEBASE=NONE
+
+  for file in $(ls /opt/Geant4/Libraries)
+  do
+      CURRFILEBASE=$(echo $file | sed -e "s/[0-9]*.[0-9]$//")
+      CURRFILE=$file
+      if [[ $CURRFILEBASE == $PREVFILEBASE ]]
+      then
+          sudo rm -Rf /opt/Geant4/Libraries/$PREVFILE && echo "removing old $PREVFILE"
+      fi
+      PREVFILE=$CURRFILE
+      PREVFILEBASE=$CURRFILEBASE
+      #echo "$CURRFILE $CURRFILEBASE $PREVFILE $PREVFILEBASE"
+  done
+
 }
 
 post_install(){
   ln -s /usr/include/Geant4/CLHEP /usr/include/CLHEP
   ln -s /usr/include/Geant4/PTL /usr/include/PTL
 }
+
+pre_remove(){
+  echo "Backing up Geant4 Libraries. To remove them, please run\n $ sudo rm -Rf /opt/Geant4/Libraries/G4ABLA3.3"
+  mv /opt/Geant4/Libraries /opt/Geant4/Lib-backup
+}
+
 post_remove(){
   rm /usr/include/CLHEP
   rm /usr/include/PTL
-  rm /opt/Geant4 -Rf
 }
