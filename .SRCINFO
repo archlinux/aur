@@ -7,7 +7,7 @@ pkgbase = libsphinx
 	arch = x86_64
 	license = GPL3
 	depends = libsodium
-	source = https://github.com/stef/libsphinx/archive/refs/tags/v1.1.1.tar.gz
+	source = libsphinx-1.1.1.tar.gz::https://github.com/stef/libsphinx/archive/refs/tags/v1.1.1.tar.gz
 	md5sums = 443476899a9a1d1377a9b99598a7bedd
 
 pkgname = libsphinx
