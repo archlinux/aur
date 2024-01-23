@@ -5,7 +5,7 @@ pkgbase = jarmemu
 	url = https://dwightstudio.fr/jarmemu
 	arch = any
 	license = GPL-3
-	source = https://github.com/Dwight-Studio/JArmEmu/releases/download/v0.1.10/JArmEmu-0.1.10-RELEASE.flatpak-arch-source.zip
+	source = https://github.com/Dwight-Studio/JArmEmu/releases/download/v0.1.10/JArmEmu-0.1.10-1.flatpak-arch-source.zip
 	sha256sums = 314e77ff0237615f3e24ddc1a84198c196a74d6f44636d94b9185b0bef9a8985
 
 pkgname = jarmemu
