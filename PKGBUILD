@@ -1,27 +1,33 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
-pkgorg='Simple-Robotics'
+_org='Simple-Robotics'
 _pkgname='proxsuite'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=0.6.1
-pkgrel=1
+pkgver=0.6.3
+pkgrel=2
 pkgdesc="The Advanced Proximal Optimization Toolbox"
 arch=('i686' 'x86_64')
-url="https://github.com/$pkgorg/$pkgname"
-license=('BSD')
-depends=()
+url="https://github.com/$_org/$_pkgname"
+license=('BSD-2-Clause')
+depends=('eigen' 'simde')
 optdepends=()
-makedepends=('cmake' 'eigen' 'simde')
+makedepends=('cmake')
 checkdepends=('libmatio')
-source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig})
-sha256sums=('41b2bc12e30524e53777a4849dcfbbeb9a260aba885c3ff79ef75c4e647c71ab'
+source=($url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz{,.sig})
+sha256sums=('378d1e8a52ffb8a213ec62c01f8ef1c56bc7e7deb0b7588b91e554504d9e63fb'
             'SKIP')
-validpgpkeys=('A031AD35058955293D54DECEC45D22EF408328AD')
+validpgpkeys=(
+        'A031AD35058955293D54DECEC45D22EF408328AD'  # https://github.com/jcarpent.gpg
+        '1462AF00C9CF3C9E7AFC905E63380359F089A579'  # https://github.com/jorisv.gpg
+        )
 
 build() {
     cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
+        -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib
+        -DINSTALL_DOCUMENTATION=ON \
+        -DBUILD_DOCUMENTATION=ON \
+        -Wno-dev
     cmake --build "build-$pkgver"
 }
 
@@ -31,7 +37,7 @@ check() {
 
 package_proxsuite() {
     DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
-    rm -rf $pkgdir/usr/share/doc
+    rm -rf "$pkgdir/usr/share/doc"
     install -Dm644 "$pkgbase-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
