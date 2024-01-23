@@ -4,8 +4,8 @@
 # -*- sh -*-
 
 pkgname='littlefs-fuse'
-pkgver=2.7.4
-pkgrel=2
+pkgver=2.7.5
+pkgrel=1
 pkgdesc='A FUSE wrapper that puts the littlefs in user-space'
 url='https://github.com/littlefs-project/littlefs-fuse'
 arch=('aarch64' 'x86_64')
@@ -47,10 +47,10 @@ package() {
 }
 
 sha256sums=(
-  '84eae9b6c3841baf7772d3a9157d58060db9e3a41ae1c563122ccbc067d9d875'
+  '8f5c80b72c7a87ef49e16c9d3f93007ad8cb87e8c5e2ce69f13c15f5e33531c5'
 )
 b2sums=(
-  '5f75dbc5e0ceb57a02fd197309c03bd8c2b5302cd806133e0d396d1e42542a4ca4257bc26d57181e7a1928457e9d3714c89d6ed3036325ea806f258059b9031d'
+  'bc25ded1a943fda84ae7f6f473a5973999f6ec6a8db017a9327d8ff07778fca895b077883f1ed822591ba0f61e851940a4175fdd63f1a1492c4d1453edb79f5f'
 )
 
 # eof
