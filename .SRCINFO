@@ -1,7 +1,7 @@
 pkgbase = ps3-disc-dumper-bin
 	pkgdesc = A handy utility to make decrypted PS3 disc dumps
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/13xforever/ps3-disc-dumper
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,8 @@ pkgbase = ps3-disc-dumper-bin
 	options = !strip
 	source = https://github.com/13xforever/ps3-disc-dumper/releases/download/v4.1.0/ps3-disc-dumper_linux_v4.1.0.zip
 	source = https://github.com/13xforever/ps3-disc-dumper/archive/refs/tags/v4.1.0.zip
+	source = ps3-disc-dumper.desktop
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 

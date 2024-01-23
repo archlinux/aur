@@ -1,0 +1,8 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Exec=ps3-disc-dumper
+Name=PS3 Disc Dumper
+Icon=media-optical
+Comment=A handy utility to make decrypted PS3 disc dumps
+Categories=Game;Utility
