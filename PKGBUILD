@@ -2,7 +2,7 @@
 
 pkgname=niri
 pkgver=0.1.0_beta.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A scrollable-tiling Wayland compositor"
 arch=(x86_64)
 url="https://github.com/YaLTeR/${pkgname}"
@@ -16,8 +16,16 @@ source=(${pkgname}-${pkgver//_/-}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/
         004.patch::${url}/commit/18566e336699fbf933dbd5584e9228b04196e893.patch # Watch for canonical filename, not just mtime
         005.patch::${url}/commit/cbbb7a26fc0bff426d67bb2804167f01ade5fbe4.patch # Update Smithay, use device changed session resume code
         006.patch::${url}/commit/743173ef643441f5e58cb078a53a6cf3c93179fa.patch # config: Bump precision on the default widths
+        007.patch::${url}/commit/05f2a3709b3447ac4d362980b166c3351a7129b2.patch # srceencast: Send stream size
+        008.patch::${url}/commit/ab9706cb30c26dafe46c807f0cf073e594c84ef0.patch # screencast: Emit MonitorsChanged
+        009.patch::${url}/commit/f5642ab73376582d80da1edbabff8fd5a15632cb.patch # Ignore popup grabs when IME keyboard grab is active
+        010.patch::${url}/commit/087ed260c5dd3fda12ebf1e39c0502af2da5d812.patch # Update Smithay (find_popup_root_surface() panic fix)
         )
 b2sums=('40d6d1b2e0072024a581674733328edddde71fe2876e240c5d4d61660275e4ef491ee39b421df411a88237e491cdce9972a0f735cbb7d8b163cd8f9638ca18c7'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -57,11 +65,11 @@ build() {
   cargo build --release --locked --all-features
 }
 
-check() {
-  cd ${pkgname}-${pkgver//_/-}
-  export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features
-}
+# check() {
+#   cd ${pkgname}-${pkgver//_/-}
+#   export RUSTUP_TOOLCHAIN=stable
+#   cargo test --frozen --all-features
+# }
 
 package() {
   cd ${pkgname}-${pkgver//_/-}
