@@ -6,6 +6,7 @@ pkgbase = scannerextract
 	arch = any
 	license = GPL3
 	makedepends = qt5-tools
+	makedepends = cmake
 	depends = liblbfgs
 	depends = opencv
 	source = scannerextract-0.2.601::https://master.dl.sourceforge.net/project/scannedimageextractor/Version-0.2.601/SIE-0.2.601.tar.bz2
