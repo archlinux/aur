@@ -15,7 +15,7 @@ validpgpkeys=(0CA58C10434DAB2EA5CBE63261C513806A6AE3EA)
 build() {
   cd "$pkgname-$pkgver"
 
-  make -j "$(nproc)"
+  make
 }
 
 package() {
