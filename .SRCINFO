@@ -1,7 +1,7 @@
 pkgbase = crm
 	pkgdesc = crm (Cargo registry manager)
 	pkgver = 0.2.1
-	pkgrel = 2
+	pkgrel = 7
 	url = https://github.com/wtklbm/crm
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,6 @@ pkgbase = crm
 	depends = cargo
 	provides = crm
 	conflicts = crm
-	options = !strip
 	options = !lto
 	source = crm-0.2.1.tar.gz::https://github.com/wtklbm/crm/archive/refs/tags/v0.2.1.tar.gz
 	sha256sums = ae0dab817482e28451b3e9e0b73cc46226001117dc21362c718e21d40c3efcd2

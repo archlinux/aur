@@ -2,7 +2,7 @@
 
 pkgname=crm
 pkgver=0.2.1
-pkgrel=2
+pkgrel=7
 pkgdesc="crm (Cargo registry manager)"
 arch=(x86_64
     aarch64
@@ -15,7 +15,7 @@ replaces=()
 depends=('cargo')
 makedepends=('rust')
 backup=()
-options=('!strip' '!lto')
+options=('!lto')
 install=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('ae0dab817482e28451b3e9e0b73cc46226001117dc21362c718e21d40c3efcd2')
