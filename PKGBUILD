@@ -6,7 +6,7 @@
 
 pkgname=mullvad-browser-bin
 pkgver=13.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Privacy-focused web browser developed by Mullvad VPN and the Tor Project'
 arch=(x86_64)
 url=https://mullvad.net/en/browser
@@ -22,8 +22,16 @@ optdepends=(
 provides=(mullvad-browser=$pkgver mullvad-browser)
 conflicts=(mullvad-browser)
 
+# This package used cdn.mullvad.net for the first 10 months or so and was then
+# switched to GitHub because the former is very slow or completely inaccessible
+# in some parts of the world:
+#   1. areas geographically furthest from Europe
+#   2. countries that block access to VPN providers
+# If you don't want to download from Microsoft, please replace the line below
+# with a sibling commented out line and rebuild.
 source=(
-  https://cdn.mullvad.net/browser/$pkgver/mullvad-browser-linux-x86_64-$pkgver.tar.xz{,.asc}
+  https://github.com/mullvad/mullvad-browser/releases/download/$pkgver/mullvad-browser-linux-x86_64-$pkgver.tar.xz{,.asc}
+  #https://cdn.mullvad.net/browser/$pkgver/mullvad-browser-linux-x86_64-$pkgver.tar.xz{,.asc}
   mullvad-browser.sh
   mullvad-browser.desktop
 )

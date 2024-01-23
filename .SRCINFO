@@ -1,7 +1,7 @@
 pkgbase = mullvad-browser-bin
 	pkgdesc = Privacy-focused web browser developed by Mullvad VPN and the Tor Project
 	pkgver = 13.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mullvad.net/en/browser
 	changelog = mullvad-browser.changelog
 	arch = x86_64
@@ -25,8 +25,8 @@ pkgbase = mullvad-browser-bin
 	provides = mullvad-browser=13.0.9
 	provides = mullvad-browser
 	conflicts = mullvad-browser
-	source = https://cdn.mullvad.net/browser/13.0.9/mullvad-browser-linux-x86_64-13.0.9.tar.xz
-	source = https://cdn.mullvad.net/browser/13.0.9/mullvad-browser-linux-x86_64-13.0.9.tar.xz.asc
+	source = https://github.com/mullvad/mullvad-browser/releases/download/13.0.9/mullvad-browser-linux-x86_64-13.0.9.tar.xz
+	source = https://github.com/mullvad/mullvad-browser/releases/download/13.0.9/mullvad-browser-linux-x86_64-13.0.9.tar.xz.asc
 	source = mullvad-browser.sh
 	source = mullvad-browser.desktop
 	validpgpkeys = EF6E286DDA85EA2A4BA7DE684E2C6E8793298290
