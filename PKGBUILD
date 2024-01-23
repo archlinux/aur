@@ -2,7 +2,7 @@
 
 _base=pdf2docx
 pkgname=python-${_base}
-pkgver=0.5.7
+pkgver=0.5.8
 pkgrel=1
 pkgdesc="A Python library for converting pdf to docx"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python')
 depends=('python' 'python-pymupdf' 'python-docx' 'python-fonttools' 'python-numpy' 'python-opencv' 'python-fire')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-pip')
 source=("$pkgname-$pkgver.tar.gz"::${url}/archive/refs/tags/v${pkgver}.tar.gz)
-sha512sums=('4ece3ca005b3edc44f2282ff85bf36673e191e0bc95b2f3d20a47593cfc1d6c24cc9f40f2354f61c6324a1836d8daa51ddadf68240c6a0fd77dbe8b2875a2111')
+sha512sums=('40b95aafb7f2117d2eb275c6a3d89c4c2f02693f9545c8524af3ae25f3602ec180dc4a60fd62755ad728556bf61df7a9eaaae55c29ae4953885d6e86b6d32dc4')
 
 build() {
   cd "${_base}-${pkgver}"
