@@ -3,17 +3,18 @@
 pkgbase=can-tests-git
 pkgname=can-tests-git
 pkgver=2023.05.0.r5.g3258274
-pkgrel=2
+pkgrel=6
 groups=()
 pkgdesc="Linux-CAN / SocketCAN testing applications"
 arch=(x86_64
     aarch64
     riscv64)
 url="https://github.com/linux-can/can-tests"
-license=('GPLv2')
+license=('GPL-2.0-only' 'BSD-3-Clause')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
-depends=(glibc)
+depends=(glibc
+    bash)
 makedepends=(git)
 optdepends=(
     "can-utils: Linux-CAN / SocketCAN user space applications"
@@ -33,6 +34,7 @@ prepare()
 }
 
 build() {
+    export LDFLAGS="-z relro -z now -z shstk"
     make -C $pkgname PREFIX=/usr
 }
 
