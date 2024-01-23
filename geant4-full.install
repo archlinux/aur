@@ -17,3 +17,8 @@ post_install(){
   ln -s /usr/include/Geant4/CLHEP /usr/include/CLHEP
   ln -s /usr/include/Geant4/PTL /usr/include/PTL
 }
+post_remove(){
+  rm /usr/include/CLHEP
+  rm /usr/include/PTL
+  rm /opt/Geant4 -Rf
+}
