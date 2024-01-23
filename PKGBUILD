@@ -1,21 +1,21 @@
 # Maintainer: Horror Proton <https://github.com/horror-proton>
 
 pkgname=maa-assistant-arknights
-_pkgver=v5.0.0-beta.1
+_pkgver=v5.0.0-beta.2
 pkgver=${_pkgver//-/}
 pkgver=${pkgver#v}
 pkgrel=1
 pkgdesc="An Arknights assistant"
 arch=(x86_64)
 url="https://github.com/MaaAssistantArknights/MaaAssistantArknights"
-license=('AGPL')
+license=('AGPL-3.0-only')
 depends=(opencv onnxruntime cpr)
 makedepends=(asio eigen git cmake)
 _fastdeploy_ref=d0b018ac6c3daa22c7b55b555dc927a5c734d430
 source=("$url/archive/refs/tags/$_pkgver.tar.gz"
         "https://github.com/MaaAssistantArknights/FastDeploy/archive/$_fastdeploy_ref.tar.gz")
 install="${pkgname}.install"
-md5sums=('681af83f2048f9fdb4be19a33ad4f191'
+md5sums=('abb4d71f80e964030975a4c7834e699c'
          '93190bbc6785e35e231af5cd4931f16a')
 
 if ((WITH_GPU)); then
