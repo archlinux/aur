@@ -3,7 +3,7 @@
 
 _pkgname=ipfs-desktop
 pkgname="${_pkgname}"-appimage
-pkgver=0.32.0
+pkgver=0.33.0
 pkgrel=1
 pkgdesc="An unobtrusive and user-friendly desktop application for IPFS on Linux."
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
         )
 
 b2sums=(
-        '016ffc81bd12470454516730f277a48817bf711cbbcf0be82ddf849566d96c668d1ef53bd34aee1aca730f560b34dcc24222d0b872a18f558dfa2f104152698a'
+        '28092581b479c7d3098cb75c121d2b45fe6a6bee9c52f968a808794a97023f2d8c04a95cee604fad08bda6021636bcd097641174ec040307d0273f5fd34ef157'
         '2c3fb2af6c8e92bcacb15b3878b1125fd4f8b4d48e37b2b3ce818517b7a7a94f68ef3c155e8d8cb5b2d39727fe916e293b892c48ee59167b4ee564bbedc70d9d'
         )
 
