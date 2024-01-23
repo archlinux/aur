@@ -1,0 +1,24 @@
+pkgbase = yakuza-bin
+	pkgdesc = An extensible linux application launcher
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/fzdwx/yakuza
+	arch = x86_64
+	license = MIT
+	makedepends = squashfuse
+	depends = electron28
+	depends = dbus-glib
+	depends = libdbusmenu-glib
+	depends = gtk2
+	provides = yakuza=0.2.0
+	conflicts = yakuza
+	source = yakuza-0.2.0.AppImage::https://github.com/fzdwx/yakuza/releases/download/0.2.0/yakuza-0.1.0.AppImage
+	source = yactrl-0.2.0::https://github.com/fzdwx/yakuza/releases/download/0.2.0/yactrl
+	source = LICENSE-0.2.0::https://raw.githubusercontent.com/fzdwx/yakuza/0.2.0/LICENSE
+	source = yakuza.sh
+	sha256sums = 4e9bd59589238f8c9ed8bf8c75fdf95599d174d8c13774b9112e29437bd63f2a
+	sha256sums = 73a98b2807dc83371d34d9e46191cee747f26093c509087f672cf8ae239f345b
+	sha256sums = 9e05d771f47c0447e9147319523e1a2de79538b9e85f7ad1f4d657ac56648b38
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+
+pkgname = yakuza-bin
