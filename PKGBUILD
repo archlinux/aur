@@ -1,6 +1,6 @@
 # Maintainer: sukulent
 pkgname='namefix'
-pkgver="1.0.1"
+pkgver="1.1.0"
 pkgrel="1"
 # epoch=
 pkgdesc="Fix bad filenames"
@@ -21,7 +21,7 @@ makedepends=('make' 'binutils' 'gcc')
 # changelog=
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/sukulent/namefix/tar.gz/refs/tags/v$pkgver")
 # noextract=()
-sha256sums=(bbcf0d5046e25e15696b49a62e59d453816e981a8fe3bf194061d87d2f56e945)
+sha256sums=(36158febe2125598cc54b48caeaa1016e7fb92c4ef34bbe12b8e41da5d3374c8)
 # validpgpkeys=()
 
 
