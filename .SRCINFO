@@ -1,0 +1,23 @@
+pkgbase = command-circle-git
+	pkgdesc = Circle UI Desktop Application Launcher
+	pkgver = 0.0.5.r0.g7d0e19e
+	pkgrel = 1
+	url = https://github.com/nekobato/CommandCircle
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = pnpm
+	depends = electron28
+	depends = java-runtime
+	depends = hicolor-icon-theme
+	provides = command-circle
+	conflicts = command-circle
+	source = command-circle.git::git+https://github.com/nekobato/CommandCircle.git
+	source = command-circle.sh
+	sha256sums = SKIP
+	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+
+pkgname = command-circle-git
