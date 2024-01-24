@@ -1,6 +1,6 @@
 pkgbase = neovim-nightfox
 	pkgdesc = Highly customizable Neovim theme with support for a variety of plugins
-	pkgver = 3.8.0
+	pkgver = 3.9.0
 	pkgrel = 1
 	url = https://github.com/EdenEast/nightfox.nvim
 	install = neovim-nightfox.install
@@ -8,7 +8,7 @@ pkgbase = neovim-nightfox
 	groups = neovim-plugins
 	license = MIT
 	depends = neovim
-	source = neovim-nightfox-3.8.0.tar.gz::https://github.com/EdenEast/nightfox.nvim/archive/v3.8.0.tar.gz
-	md5sums = edd268d432292587f3d1691f26a52c58
+	source = neovim-nightfox-3.9.0.tar.gz::https://github.com/EdenEast/nightfox.nvim/archive/v3.9.0.tar.gz
+	sha256sums = 1aa2ab772c3a1f5a086c7699e393115dece446389eb71f28973d27a5ec3fb6f1
 
 pkgname = neovim-nightfox
