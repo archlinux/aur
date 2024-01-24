@@ -1,14 +1,14 @@
 pkgbase = rtrtr
 	pkgdesc = An RPKI data proxy
-	pkgver = 0.1.2
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://nlnetlabs.nl/projects/rpki/rtrtr/
 	arch = i686
 	arch = x86_64
-	license = BSD
-	makedepends = rust
+	license = BSD-3-Clause
+	makedepends = cargo
 	depends = gcc-libs
-	source = rtrtr-0.1.2-src.tar.gz::https://github.com/NLnetLabs/rtrtr/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = ef86611b9cb8e5c69f5f7694bc2b8c0359f290ca1a8263c7c3f7c8a15a54aa75
+	source = rtrtr-0.2.0-src.tar.gz::https://github.com/NLnetLabs/rtrtr/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 7fc3e24af459f056961dfe421b2f952a0c9008d63481950f1882e9f37f6ccbd8
 
 pkgname = rtrtr
