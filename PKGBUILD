@@ -4,8 +4,8 @@
 
 pkgname=standardnotes-bin
 _realname="Standard Notes"
-pkgver=3.184.0
-pkgrel=2
+pkgver=3.186.0
+pkgrel=1
 pkgdesc='Free, open-source encrypted notes app.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/standardnotes/app'
@@ -20,8 +20,8 @@ source_x86_64=("$pkgname-$pkgver-amd64.deb::$url/releases/download/%40standardno
 source_aarch64=("$pkgname-$pkgver-aarch64.deb::$url/releases/download/%40standardnotes%2Fdesktop%40$pkgver/standard-notes-$pkgver-linux-arm64.deb")
 
 sha256sums=('71f0811526d428b541ef39ee804b257ed60b1b9b5d620436c79ed77e17eb4d16')
-sha256sums_x86_64=('7fa2d046b3a3df8a517e5bb974b826673ca5ee7cd21ccca48be26738269d912a')
-sha256sums_aarch64=('7c72664b9735663f70f5aaab2179183c4ccd9992fa0b457e47ad27f9a7df0273')
+sha256sums_x86_64=('c321edc8ef8d9a6d6d761c64e296287914c1f7a32456efed74e68d0c9daa2fee')
+sha256sums_aarch64=('e53ed712d8558e786ab280f256ab236dc91c919763b3323d75078d90b10147d9')
 
 prepare() {
 	ar x "$pkgname-$pkgver-amd64.deb"
