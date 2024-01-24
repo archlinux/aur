@@ -1,0 +1,16 @@
+pkgbase = devtunnel-cli-git
+	pkgdesc = Microsoft's Dev tunnel - CLI
+	pkgver = e5b20b7
+	pkgrel = 1
+	url = https://github.com/EnityBlackHawk/devtunnel-cli.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libsecret
+	depends = glibc
+	depends = zlib
+	depends = gcc-libs
+	source = git+https://github.com/EnityBlackHawk/devtunnel-cli.git
+	md5sums = SKIP
+
+pkgname = devtunnel-cli-git
