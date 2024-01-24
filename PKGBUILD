@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=kableExtra
-_pkgver=1.3.4
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.3.4
-pkgrel=4
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="Construct Complex Table with 'kable' and Pipe Syntax"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -33,7 +33,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('091ffac282cf9257edcec1a06da38b5e6516f111296bedb934e32f5692ffbbb0')
+sha256sums=('8fe2cc9fc2e8991685c4dc9e4904459e6f572c945319befde36d76f3ab527409')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
