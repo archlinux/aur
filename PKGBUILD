@@ -3,7 +3,7 @@ pkgname=chatpad-ai-bin
 _appname=Chatpad-AI
 pkgver=1.4.0
 _electronversion=25
-pkgrel=5
+pkgrel=6
 pkgdesc="Not just another ChatGPT user-interface!"
 arch=("x86_64")
 url="https://chatpad.ai/"
@@ -14,12 +14,9 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
-    'libx11'
-    'gdk-pixbuf2'
-    'libxext'
+    'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
-    'dbus-glib'
 )
 makedepends=(
     'squashfuse'
@@ -29,7 +26,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('05593b7575fe119cb08aa6049cb93d76dc2cfe0cc86fc0db2d22601f453d9c93'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
