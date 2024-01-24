@@ -1,8 +1,8 @@
 # Maintainer: Luca Carlon <carlon.luca@gmail.com>
 
 pkgname=cgrc
-pkgver=2.0.3
-pkgrel=2
+pkgver=2.0.4
+pkgrel=0
 pkgdesc='Generic log formatter'
 arch=(any)
 url='https://github.com/carlonluca/cgrc'
