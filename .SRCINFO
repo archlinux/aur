@@ -1,6 +1,6 @@
 pkgbase = libretro-flycast-git
 	pkgdesc = Sega Dreamcast, NAOMI, NAOMI 2, Atomiswave and System SP core (fork of reicast)
-	pkgver = 2.1.r415.g2a364dee6
+	pkgver = 2.2.r40.g07d6ca6c8
 	pkgrel = 1
 	url = https://github.com/flyinghead/flycast
 	arch = aarch64
@@ -10,11 +10,10 @@ pkgbase = libretro-flycast-git
 	arch = pentium4
 	arch = x86_64
 	groups = libretro
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = cmake
 	makedepends = git
 	makedepends = glm
-	makedepends = glslang>=12.3.1
 	makedepends = libchdr
 	makedepends = libgl
 	makedepends = libzip
@@ -29,11 +28,13 @@ pkgbase = libretro-flycast-git
 	provides = libretro-flycast
 	conflicts = libretro-flycast
 	source = git+https://github.com/flyinghead/flycast.git
+	source = git+https://github.com/KhronosGroup/glslang.git
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	source = use-system-libs.patch
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = 596d28372f9b398604fae1a136839711d2f754ade4aa12f71d16016bf63e5b9b5e9b50c1d524aafbd1e75bbfc1a82a19e45901e22a76845eb960eb241c2518b6
+	b2sums = SKIP
+	b2sums = acce0c526e615d7f2663b19f85fb93930fdcbf5c989ec4f002c8541e8937fea118db4aba8a53ae5a3937e4c2ae60c2691fbd9209b47539745266d27cb7399ed1
 
 pkgname = libretro-flycast-git
 	depends = gcc-libs

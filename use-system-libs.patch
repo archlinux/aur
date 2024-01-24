@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index d78b82e2c..80ef2ffad 100644
+index 20ff4b628..466a951b5 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -366,12 +366,13 @@ endif()
+@@ -371,11 +371,13 @@ endif()
  
  option(BUILD_SHARED_LIBS "Build shared library" OFF)
  set(XXHASH_BUILD_XXHSUM OFF CACHE BOOL "Build the xxhsum binary")
@@ -14,24 +14,12 @@ index d78b82e2c..80ef2ffad 100644
  
  option(BUILD_SHARED_LIBS "Build shared library" OFF)
 -add_subdirectory(core/deps/glm)
--target_link_libraries(${PROJECT_NAME} PRIVATE glm::glm)
 +find_package(glm)
-+target_link_libraries(${PROJECT_NAME} PRIVATE glm)
++target_compile_definitions(glm::glm INTERFACE GLM_ENABLE_EXPERIMENTAL)
+ target_link_libraries(${PROJECT_NAME} PRIVATE glm::glm)
  
  if(USE_VULKAN)
- 	option(BUILD_EXTERNAL "Build external dependencies in /External" OFF)
-@@ -380,8 +381,8 @@ if(USE_VULKAN)
- 	option(ENABLE_GLSLANG_BINARIES "Builds glslang and spirv-remap" OFF)
- 	option(ENABLE_HLSL "Enables HLSL input support" OFF)
- 	option(ENABLE_PCH "Enables Precompiled header" OFF)
--	add_subdirectory(core/deps/glslang EXCLUDE_FROM_ALL)
--	target_link_libraries(${PROJECT_NAME} PRIVATE glslang-default-resource-limits SPIRV)
-+	find_package(glslang)
-+	target_link_libraries(${PROJECT_NAME} PRIVATE glslang::glslang-default-resource-limits glslang::SPIRV)
- endif()
- 
- if(NOT LIBRETRO)
-@@ -428,13 +429,13 @@ if(NOT LIBRETRO)
+@@ -433,13 +435,13 @@ if(NOT LIBRETRO)
  			target_link_libraries(${PROJECT_NAME} PRIVATE CURL::libcurl)
  		endif()
  	endif()
@@ -47,7 +35,7 @@ index d78b82e2c..80ef2ffad 100644
  	find_package(Lua 5.2)
  	if(NOT APPLE AND LUA_FOUND)
  		target_compile_definitions(${PROJECT_NAME} PRIVATE USE_LUA)
-@@ -444,9 +445,9 @@ if(NOT LIBRETRO)
+@@ -449,9 +451,9 @@ if(NOT LIBRETRO)
  	endif()
  endif()
  
@@ -60,7 +48,7 @@ index d78b82e2c..80ef2ffad 100644
  
  if(NOT WITH_SYSTEM_ZLIB)
  	target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/core/deps/libchdr/deps/zlib-1.2.11")
-@@ -485,25 +486,24 @@ if(PKG_CONFIG_FOUND AND NOT ANDROID AND NOT APPLE AND NOT LIBRETRO)
+@@ -490,25 +492,24 @@ if(PKG_CONFIG_FOUND AND NOT ANDROID AND NOT APPLE AND NOT LIBRETRO)
  		target_compile_definitions(${PROJECT_NAME} PRIVATE USE_PULSEAUDIO)
  		target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::LIBPULSE)
  	endif()
@@ -89,7 +77,7 @@ index d78b82e2c..80ef2ffad 100644
  
  if(NINTENDO_SWITCH AND USE_GLES)
  	pkg_check_modules(GLESV2 IMPORTED_TARGET glesv2)
-@@ -1267,9 +1267,9 @@ if(USE_VULKAN)
+@@ -1273,9 +1274,9 @@ if(USE_VULKAN)
  	add_subdirectory(core/deps/Vulkan-Headers)
  	target_link_libraries(${PROJECT_NAME} PRIVATE Vulkan::Headers)
  
@@ -102,7 +90,7 @@ index d78b82e2c..80ef2ffad 100644
  	target_link_libraries(${PROJECT_NAME} PRIVATE GPUOpen::VulkanMemoryAllocator)
  
  	target_compile_definitions(${PROJECT_NAME} PRIVATE USE_VULKAN HAVE_VULKAN)
-@@ -1474,7 +1474,7 @@ if("arm64" IN_LIST ARCHITECTURE)
+@@ -1480,7 +1481,7 @@ if("arm64" IN_LIST ARCHITECTURE)
  	target_sources(${PROJECT_NAME} PRIVATE core/rec-ARM64/rec_arm64.cpp core/rec-ARM64/arm64_regalloc.h)
  endif()
  if("x86" IN_LIST ARCHITECTURE OR "x86_64" IN_LIST ARCHITECTURE)
@@ -111,29 +99,3 @@ index d78b82e2c..80ef2ffad 100644
  	target_link_libraries(${PROJECT_NAME} PRIVATE xbyak::xbyak)
  	if(CMAKE_SIZEOF_VOID_P EQUAL 4)
  		target_sources(${PROJECT_NAME} PRIVATE
-diff --git a/core/rend/vulkan/compiler.cpp b/core/rend/vulkan/compiler.cpp
-index a1619f310..de4ee10de 100644
---- a/core/rend/vulkan/compiler.cpp
-+++ b/core/rend/vulkan/compiler.cpp
-@@ -22,7 +22,7 @@
- #include "vulkan_context.h"
- 
- #include <glslang/Public/ResourceLimits.h>
--#include <SPIRV/GlslangToSpv.h>
-+#include <glslang/SPIRV/GlslangToSpv.h>
- 
- int ShaderCompiler::initCount;
- 
-diff --git a/core/rend/vulkan/shaders.h b/core/rend/vulkan/shaders.h
-index e53311b18..8c5439a22 100644
---- a/core/rend/vulkan/shaders.h
-+++ b/core/rend/vulkan/shaders.h
-@@ -20,7 +20,7 @@
- */
- #pragma once
- #include "vulkan.h"
--#include "SPIRV/GlslangToSpv.h"
-+#include <glslang/SPIRV/GlslangToSpv.h>
- 
- #include <glm/glm.hpp>
- #include <map>
