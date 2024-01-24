@@ -4,7 +4,7 @@
 
 pkgname='neovim-nightfox'
 _projname='nightfox.nvim'
-pkgver='3.9.0'
+pkgver='3.9.1'
 pkgrel=1
 pkgdesc='Highly customizable Neovim theme with support for a variety of plugins'
 arch=('any')
@@ -14,7 +14,7 @@ groups=('neovim-plugins')
 depends=('neovim')
 install='neovim-nightfox.install'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1aa2ab772c3a1f5a086c7699e393115dece446389eb71f28973d27a5ec3fb6f1')
+sha256sums=('716e87ddd2a52d741bd562967ee3c25716b2f08ef6a23a0a0d54f6b4cdab7676')
 
 package() {
   pkgdir=${pkgdir:?}
