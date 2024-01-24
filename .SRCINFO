@@ -1,5 +1,5 @@
 pkgbase = pd-tools
-	pkgdesc = pdtm is a simple and easy-to-use golang based tool for managing open source projects from ProjectDiscovery
+	pkgdesc = Provides all open source tools available in one package from ProjectDiscovery by installing the precompiled binaries using pdtm
 	pkgver = 20240124
 	pkgrel = 1
 	url = https://github.com/projectdiscovery/pdtm
