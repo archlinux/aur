@@ -2,7 +2,7 @@
 pkgname=board4you-bin
 pkgver=1.0.6
 _electronversion=23
-pkgrel=6
+pkgrel=7
 pkgdesc="A whiteboard app built with Electron, React, react-icons, konva and bootstrap."
 arch=("x86_64")
 url="https://github.com/GachiLord/board4you"
@@ -11,12 +11,9 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'libx11'
-    'gdk-pixbuf2'
-    'libxext'
+    'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
-    'dbus-glib'
 )
 makedepends=(
     'squashfuse'
@@ -26,7 +23,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1aef780b30d0e45e460046c0c91119be5243918d027b98553a64a384604c9829'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -34,7 +31,7 @@ build() {
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root" -type d -exec chmod 755 {} \;
 }
 package() {
