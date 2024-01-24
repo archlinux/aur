@@ -10,7 +10,7 @@ license=('GPL3')
 depends=(gtk-layer-shell gtk3 pango cairo gdk-pixbuf2 glib2)
 makedepends=(git cargo)
 backup=("etc/anyrun/config.ron" "etc/anyrun/style.css")
-source=("${_pkgname}::git+https://$url.git")
+source=("${_pkgname}::git+$url.git")
 sha256sums=('SKIP')
 options=(!lto)
 pkgver() {

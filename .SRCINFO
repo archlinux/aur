@@ -16,7 +16,7 @@ pkgbase = anyrun-git
 	options = !lto
 	backup = etc/anyrun/config.ron
 	backup = etc/anyrun/style.css
-	source = anyrun::git+https://https://github.com/Kirottu/anyrun.git
+	source = anyrun::git+https://github.com/Kirottu/anyrun.git
 	sha256sums = SKIP
 
 pkgname = anyrun-git
