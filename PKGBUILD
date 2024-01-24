@@ -5,18 +5,22 @@ pkgname=(
 	superconductor
 	tsr-bridge
 )
-pkgver=0.11.1
-pkgrel=4
+pkgver=0.11.2
+pkgrel=1
 _appname="SuperConductor-$pkgver"
 arch=('x86_64')
 url="https://github.com/SuperFlyTV/SuperConductor"
 license=('AGPL3')
-makedepends=('yarn' 'nodejs>=16.16.0' 'nodejs<20')
+makedepends=(
+	'yarn' 
+	'nodejs>=16.16.0'
+	'nodejs<=20'
+)
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	'superconductor.desktop'
 	'tsr-bridge.desktop')
-sha256sums=('de0e256d3fbc5a07a6dd4f23aea8f691ebbb057e893c9c58f493419b615dc8da'
+sha256sums=('5e8dc4f1b2fc86886b8394a4d2d33ca7863b1b6e9ac1ca5e6cd48a8ce69f0802'
             'e11ebb8fab5d344b103cccb1b4547f66e742d55f59d8add32476f947beb23069'
             '7e3f99900f3feb6f4d9bae385adaa42a6aae46a8ac8ebcd2bd69b9dfac5e93ea')
 
@@ -25,7 +29,7 @@ prepare() {
 	# Workaround for 'husky - .git can't be found'
 	mkdir -p .git
 	# Installs all dependencies, including Lerna.
-	yarn install
+	yarn install --cache-folder ../yarn-cache
 }
 
 build() {
@@ -46,7 +50,7 @@ package_superconductor() {
 	provides=('superconductor')
 	conflicts=('superconductor')
 
-	mkdir -p "$pkgdir"/usr/bin "$pkgdir"/usr/share
+	install -d "$pkgdir"/usr/bin "$pkgdir"/usr/share
 	# Install SuperConductor
 	cp -av --no-preserve=ownership $_appname/apps/app/dist/linux-unpacked "$pkgdir"/usr/share/$pkgname
 	ln -sf /usr/share/$pkgname/$pkgname "$pkgdir"/usr/bin/$pkgname
@@ -68,7 +72,7 @@ package_tsr-bridge() {
 	provides=('tsr-bridge')
 	conflicts=('tsr-bridge')
 
-	mkdir -p "$pkgdir"/usr/bin "$pkgdir"/usr/share
+	install -d "$pkgdir"/usr/bin "$pkgdir"/usr/share
 	# Install TSR-Bridge
 	cp -av --no-preserve=ownership $_appname/apps/tsr-bridge/dist/linux-unpacked "$pkgdir"/usr/share/tsr-bridge
 	ln -sf /usr/share/tsr-bridge/tsr-bridge "$pkgdir"/usr/bin/tsr-bridge
