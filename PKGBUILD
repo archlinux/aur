@@ -3,17 +3,18 @@
 _pkgname=libretro-flycast
 pkgname=$_pkgname-git
 pkgver=2.2.r40.g07d6ca6c8
-pkgrel=1
+pkgrel=2
 pkgdesc="Sega Dreamcast, NAOMI, NAOMI 2, Atomiswave and System SP core (fork of reicast)"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/flyinghead/flycast"
 license=('GPL-2.0-only')
 groups=('libretro')
-depends=('gcc-libs' 'glibc' 'libretro-core-info')
+depends=('gcc-libs' 'glibc' 'libretro-core-info' 'spirv-tools')
 makedepends=(
 	'cmake'
 	'git'
 	'glm'
+	'glslang'
 	'libchdr'
 	'libgl'
 	'libzip'
@@ -27,15 +28,13 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
 	"git+$url.git"
-	'git+https://github.com/KhronosGroup/glslang.git'
 	'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
 	'use-system-libs.patch'
 )
 b2sums=(
 	'SKIP'
 	'SKIP'
-	'SKIP'
-	'acce0c526e615d7f2663b19f85fb93930fdcbf5c989ec4f002c8541e8937fea118db4aba8a53ae5a3937e4c2ae60c2691fbd9209b47539745266d27cb7399ed1'
+	'e8b3e8e08edcce3203e23aa632e4e3e0f4841eaac2580f0449cde9b40e5557ad3c17b215bbd4f6779be0c40e1bba6b8ab2c73096e4bb97611c850912e12f9e64'
 )
 
 pkgver() {
@@ -45,11 +44,12 @@ pkgver() {
 
 prepare() {
 	cd flycast
-	git config submodule.core/deps/glslang.url ../glslang
 	git config submodule.core/deps/Vulkan-Headers.url ../Vulkan-Headers
 	git -c protocol.file.allow=always submodule update
 	patch -Np1 < ../use-system-libs.patch
 	rm -r core/deps/libretro-common/include/libchdr
+	# https://github.com/KhronosGroup/glslang/pull/3487
+	sed -i '/glslang REQUIRED/i find_package(SPIRV-Tools-opt)' CMakeLists.txt
 }
 
 build() {

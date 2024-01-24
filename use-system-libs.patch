@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 20ff4b628..466a951b5 100644
+index 20ff4b628..b8d3c62d6 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -371,11 +371,13 @@ endif()
@@ -9,16 +9,27 @@ index 20ff4b628..466a951b5 100644
 -add_subdirectory(core/deps/xxHash/cmake_unofficial)
 -target_link_libraries(${PROJECT_NAME} PRIVATE xxHash::xxhash)
 +find_package(PkgConfig)
-+pkg_search_module(xxhash IMPORTED_TARGET libxxhash)
++pkg_search_module(xxhash REQUIRED IMPORTED_TARGET libxxhash)
 +target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::xxhash)
  
  option(BUILD_SHARED_LIBS "Build shared library" OFF)
 -add_subdirectory(core/deps/glm)
-+find_package(glm)
++find_package(glm REQUIRED)
 +target_compile_definitions(glm::glm INTERFACE GLM_ENABLE_EXPERIMENTAL)
  target_link_libraries(${PROJECT_NAME} PRIVATE glm::glm)
  
  if(USE_VULKAN)
+@@ -385,8 +387,8 @@ if(USE_VULKAN)
+ 	option(ENABLE_GLSLANG_BINARIES "Builds glslang and spirv-remap" OFF)
+ 	option(ENABLE_HLSL "Enables HLSL input support" OFF)
+ 	option(ENABLE_PCH "Enables Precompiled header" OFF)
+-	add_subdirectory(core/deps/glslang EXCLUDE_FROM_ALL)
+-	target_link_libraries(${PROJECT_NAME} PRIVATE glslang-default-resource-limits SPIRV)
++	find_package(glslang REQUIRED)
++	target_link_libraries(${PROJECT_NAME} PRIVATE glslang::glslang-default-resource-limits glslang::SPIRV)
+ endif()
+ 
+ if(NOT LIBRETRO)
 @@ -433,13 +435,13 @@ if(NOT LIBRETRO)
  			target_link_libraries(${PROJECT_NAME} PRIVATE CURL::libcurl)
  		endif()
@@ -43,7 +54,7 @@ index 20ff4b628..466a951b5 100644
 -target_link_libraries(${PROJECT_NAME} PRIVATE chdr-static)
 -target_include_directories(${PROJECT_NAME} PRIVATE core/deps/libchdr/include)
 +find_package(PkgConfig)
-+pkg_search_module(chdr IMPORTED_TARGET libchdr)
++pkg_search_module(chdr REQUIRED IMPORTED_TARGET libchdr)
 +target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::chdr)
  
  if(NOT WITH_SYSTEM_ZLIB)
@@ -84,7 +95,7 @@ index 20ff4b628..466a951b5 100644
 -	add_subdirectory(core/deps/VulkanMemoryAllocator)
 -	target_compile_definitions(VulkanMemoryAllocator INTERFACE $<$<BOOL:${APPLE}>:VMA_USE_STL_SHARED_MUTEX=0>) # Only available on macOS 10.12+
 -	target_compile_options(VulkanMemoryAllocator INTERFACE $<$<AND:$<COMPILE_LANGUAGE:CXX>,$<CXX_COMPILER_ID:AppleClang,Clang>>:-Wno-nullability-completeness>)
-+	find_package(VulkanMemoryAllocator)
++	find_package(VulkanMemoryAllocator REQUIRED)
 +	target_compile_definitions(GPUOpen::VulkanMemoryAllocator INTERFACE $<$<BOOL:${APPLE}>:VMA_USE_STL_SHARED_MUTEX=0>) # Only available on macOS 10.12+
 +	target_compile_options(GPUOpen::VulkanMemoryAllocator INTERFACE $<$<AND:$<COMPILE_LANGUAGE:CXX>,$<CXX_COMPILER_ID:AppleClang,Clang>>:-Wno-nullability-completeness>)
  	target_link_libraries(${PROJECT_NAME} PRIVATE GPUOpen::VulkanMemoryAllocator)
@@ -95,7 +106,33 @@ index 20ff4b628..466a951b5 100644
  endif()
  if("x86" IN_LIST ARCHITECTURE OR "x86_64" IN_LIST ARCHITECTURE)
 -	add_subdirectory(core/deps/xbyak EXCLUDE_FROM_ALL)
-+	find_package(xbyak)
++	find_package(xbyak REQUIRED)
  	target_link_libraries(${PROJECT_NAME} PRIVATE xbyak::xbyak)
  	if(CMAKE_SIZEOF_VOID_P EQUAL 4)
  		target_sources(${PROJECT_NAME} PRIVATE
+diff --git a/core/rend/vulkan/compiler.cpp b/core/rend/vulkan/compiler.cpp
+index a1619f310..de4ee10de 100644
+--- a/core/rend/vulkan/compiler.cpp
++++ b/core/rend/vulkan/compiler.cpp
+@@ -22,7 +22,7 @@
+ #include "vulkan_context.h"
+ 
+ #include <glslang/Public/ResourceLimits.h>
+-#include <SPIRV/GlslangToSpv.h>
++#include <glslang/SPIRV/GlslangToSpv.h>
+ 
+ int ShaderCompiler::initCount;
+ 
+diff --git a/core/rend/vulkan/shaders.h b/core/rend/vulkan/shaders.h
+index e53311b18..8c5439a22 100644
+--- a/core/rend/vulkan/shaders.h
++++ b/core/rend/vulkan/shaders.h
+@@ -20,7 +20,7 @@
+ */
+ #pragma once
+ #include "vulkan.h"
+-#include "SPIRV/GlslangToSpv.h"
++#include <glslang/SPIRV/GlslangToSpv.h>
+ 
+ #include <glm/glm.hpp>
+ #include <map>
