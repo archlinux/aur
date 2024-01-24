@@ -1,0 +1,63 @@
+pkgbase = lazarus-git
+	pkgdesc = Delphi-like IDE for FreePascal
+	pkgver = 3.0.r1133.g371d85a6
+	pkgrel = 1
+	url = https://gitlab.com/freepascal.org/lazarus/lazarus
+	arch = x86_64
+	license = GPL2
+	license = MPL
+	license = custom:modifiedLGPL
+	makedepends = git
+	makedepends = fpc
+	makedepends = fpc-src
+	makedepends = gtk2
+	makedepends = gtk3
+	makedepends = qt5pas
+	makedepends = qt6pas
+	makedepends = rsync
+	source = lazarus::git+https://gitlab.com/freepascal.org/lazarus/lazarus.git
+	sha256sums = SKIP
+
+pkgname = lazarus-git
+	pkgdesc = Delphi-like IDE for FreePascal common files
+	depends = fpc
+	depends = fpc-src
+	depends = gdb
+	optdepends = perl: to run some scirpts in the tools directory
+	optdepends = gtk3: to compile gtk3 apps
+	optdepends = qt5pas: to compile Qt5 apps
+	optdepends = qt6pas: to compile Qt6 apps
+
+pkgname = lazarus-git-gtk2
+	pkgdesc = Delphi-like IDE for FreePascal gtk2 version
+	depends = lazarus
+	depends = desktop-file-utils
+	depends = gtk2
+	conflicts = lazarus-gtk3
+	conflicts = lazarus-qt5
+	conflicts = lazarus-qt6
+
+pkgname = lazarus-git-gtk3
+	pkgdesc = Delphi-like IDE for FreePascal gtk3 version
+	depends = lazarus
+	depends = desktop-file-utils
+	depends = gtk3
+	conflicts = lazarus-gtk2
+	conflicts = lazarus-qt5
+	conflicts = lazarus-qt6
+
+pkgname = lazarus-git-qt5
+	pkgdesc = Delphi-like IDE for FreePascal Qt5 version
+	depends = lazarus
+	depends = qt5pas
+	conflicts = lazarus-gtk2
+	conflicts = lazarus-gtk3
+	conflicts = lazarus-qt6
+
+pkgname = lazarus-git-qt6
+	pkgdesc = Delphi-like IDE for FreePascal Qt6 version
+	depends = lazarus
+	depends = qt6pas
+	conflicts = lazarus-gtk2
+	conflicts = lazarus-gtk3
+	conflicts = lazarus-qt5
