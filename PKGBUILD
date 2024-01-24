@@ -4,9 +4,12 @@
 _pkgname=SerialTest
 pkgname=serialtest-git
 pkgver=0.3.3.r1.g10fc7a8
-pkgrel=12
+pkgrel=20
 pkgdesc="A cross-platform test tool for serial port, Bluetooth, TCP and UDP."
-arch=('any')
+arch=(
+    'aarch64'
+    'riscv64'
+    'x86_64')
 url="https://github.com/wh201906/SerialTest"
 license=('GPL-3.0-only')
 provides=(${_pkgname})
@@ -15,7 +18,7 @@ conflicts=(${pkgname%-git})
 depends=('qcustomplot' 'qt5-serialport' 'qt5-connectivity')
 makedepends=('qt5-tools' 'git')
 backup=()
-options=('!strip')
+options=()
 install=${pkgname}.install
 source=("${_pkgname}::git+${url}.git#branch=dev"
         "${pkgname}.install")

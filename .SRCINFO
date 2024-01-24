@@ -1,10 +1,12 @@
 pkgbase = serialtest-git
 	pkgdesc = A cross-platform test tool for serial port, Bluetooth, TCP and UDP.
 	pkgver = 0.3.3.r1.g10fc7a8
-	pkgrel = 12
+	pkgrel = 20
 	url = https://github.com/wh201906/SerialTest
 	install = serialtest-git.install
-	arch = any
+	arch = aarch64
+	arch = riscv64
+	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = qt5-tools
 	makedepends = git
@@ -13,7 +15,6 @@ pkgbase = serialtest-git
 	depends = qt5-connectivity
 	provides = SerialTest
 	conflicts = serialtest
-	options = !strip
 	source = SerialTest::git+https://github.com/wh201906/SerialTest.git#branch=dev
 	source = serialtest-git.install
 	sha256sums = SKIP
