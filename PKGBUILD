@@ -2,14 +2,14 @@
 
 pkgname=dwarfs
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast high compression read-only file system"
 url='https://github.com/mhx/dwarfs'
 arch=('x86_64' 'aarch64')
 license=('GPL-3.0-only')
 depends=(
   'fuse3' 'openssl' 'boost-libs' 'jemalloc' 'xxhash' 'fmt'
-  'lz4' 'xz' 'zstd' 'brotli' 'libarchive'
+  'lz4' 'xz' 'zstd' 'brotli' 'libarchive' 'flac'
   'libunwind' 'google-glog' 'fmt' 'gflags' 'double-conversion'
 )
 makedepends=(

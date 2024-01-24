@@ -1,7 +1,7 @@
 pkgbase = dwarfs
 	pkgdesc = A fast high compression read-only file system
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mhx/dwarfs
 	arch = x86_64
 	arch = aarch64
@@ -26,6 +26,7 @@ pkgbase = dwarfs
 	depends = zstd
 	depends = brotli
 	depends = libarchive
+	depends = flac
 	depends = libunwind
 	depends = google-glog
 	depends = fmt
