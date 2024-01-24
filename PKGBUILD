@@ -7,7 +7,7 @@ pkgdesc="browser-based client for watching Youtube anonymously and with greater 
 url="https://github.com/user234683/youtube-local"
 license=("AGPL-3.0-or-later")
 source=(
-	"$pkgname-$pkgver.tar.gz::https://github.com/user234683/youtube-local/archive/refs/tags/v2.8.6.tar.gz"
+	"$pkgname-$pkgver.tar.gz::https://github.com/user234683/youtube-local/archive/refs/tags/v$pkgver.tar.gz"
 	"remove-portable-mode.patch"
 )
 sha256sums=(
