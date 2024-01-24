@@ -1,22 +1,19 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xm-video-player-bin
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A high-quality client that supports playing multiple streaming formats such as MP4, M3U8, FLV, mpeg flash, etc.一款高颜值的支持播放mp4, m3u8,flv,mpeg-dash等多种流媒体格式的客户端"
 arch=("x86_64")
 url="https://tauri-update-server-chi.vercel.app/"
 _ghurl="https://github.com/singcl/XmVideoPlayer"
-license=('BSD')
+license=('BSD-3-Clause')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'cairo'
-    'openssl-1.1'
-    'pango'
-    'webkit2gtk'
-    'gtk3'
-    'gdk-pixbuf2'
     'hicolor-icon-theme'
+    'gtk3'
+    'openssl-1.1'
+    'webkit2gtk'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
