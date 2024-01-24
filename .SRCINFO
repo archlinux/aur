@@ -1,7 +1,7 @@
 pkgbase = vocechat-desktop-bin
 	pkgdesc = VoceChat desktop version
 	pkgver = 0.7.14
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Privoce/vocechat-desktop
 	arch = x86_64
 	license = custom
@@ -15,6 +15,6 @@ pkgbase = vocechat-desktop-bin
 	source = vocechat-desktop-0.7.14.AppImage::https://github.com/Privoce/vocechat-desktop/releases/download/v0.7.14/vocechat-desktop-0.7.14.AppImage
 	source = vocechat-desktop.sh
 	sha256sums = e5a4082d118d971446e4715600ff3a04f73ff67b352fdb6845d08a8192a888b4
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
 
 pkgname = vocechat-desktop-bin
