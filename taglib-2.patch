@@ -1,0 +1,24 @@
+diff --git a/src/extractors/taglibextractor.cpp b/src/extractors/taglibextractor.cpp
+index 21388f1..9c87aa9 100644
+--- a/src/extractors/taglibextractor.cpp
++++ b/src/extractors/taglibextractor.cpp
+@@ -35,6 +35,7 @@
+ #include <id3v2tag.h>
+ #include <mp4tag.h>
+ #include <popularimeterframe.h>
++#include <attachedpictureframe.h>
+ 
+ using namespace KFileMetaData;
+ 
+diff --git a/src/writers/taglibwriter.cpp b/src/writers/taglibwriter.cpp
+index 602c52c..e7b398e 100644
+--- a/src/writers/taglibwriter.cpp
++++ b/src/writers/taglibwriter.cpp
+@@ -33,6 +33,7 @@
+ #include <wavpackfile.h>
+ #include <wavfile.h>
+ #include <popularimeterframe.h>
++#include <attachedpictureframe.h>
+ 
+ namespace {
+ 
