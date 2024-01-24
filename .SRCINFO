@@ -8,6 +8,7 @@ pkgbase = env-modules
 	arch = x86_64
 	license = GPL2
 	checkdepends = dejagnu
+	makedepends = less
 	depends = tcl>=7.4
 	depends = procps
 	conflicts = env-modules

@@ -9,7 +9,7 @@ url="https://sourceforge.net/projects/modules/"
 license=('GPL2')
 groups=()
 depends=('tcl>=7.4' 'procps')
-makedepends=()
+makedepends=('less')
 checkdepends=('dejagnu')
 optdepends=()
 provides=()
