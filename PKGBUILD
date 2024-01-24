@@ -39,6 +39,7 @@ _main_package() {
   )
 
   if [ "${_build_git::1}" != "t" ] ; then
+    _update_version
     _main_stable
   else
     _main_git
@@ -51,25 +52,8 @@ _main_stable() {
 
   _pkgsrc="$_name"
   _path="subprojects/registrar"
-  source+=("$_pkgsrc"::"git+$url.git#tag=${pkgver%%.r*}")
+  source+=("$_pkgsrc"::"git+$url.git#tag=$_pkgver")
   sha256sums+=('SKIP')
-
-  prepare() {
-    : ${_pkgver:=${pkgver%%.r*}}
-    if [[ "${_autoupdate::1}" != "t" ]] ; then
-      return
-    fi
-
-    cd "$_pkgsrc"
-
-    local _tag=$(git tag | grep -Ev '^.*[A-Za-z]{2}.*$' | sort -V | tail -1)
-    _pkgver="${_tag:?}"
-
-    if [[ "${_pkgver:?}" != "${pkgver%%.r*}" ]] ; then
-      git checkout -f "$_tag"
-      git describe --long --tags
-    fi
-  }
 
   pkgver() {
     echo "${_pkgver:?}"
@@ -102,6 +86,29 @@ build() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
+}
+
+# update version
+_update_version() {
+  : ${_pkgver:=${pkgver%%.r*}}
+
+  if [[ "${_autoupdate::1}" != "t" ]] ; then
+    return
+  fi
+
+  local _response=$(curl -Ssf "$url/-/tags?format=atom")
+  local _tag=$(
+    printf '%s' "$_response" \
+      | grep '"https://.*/tags/.*"' \
+      | sed -E 's@^.*/tags/(.*)".*$@\1@' \
+      | grep -Ev '[a-z]{2}' | sort -rV | head -1
+  )
+  local _pkgver_new="${_tag#v}"
+
+  # update _pkgver
+  if [ "$_pkgver" != "${_pkgver_new:?}" ] ; then
+    _pkgver="${_pkgver_new:?}"
+  fi
 }
 
 # execute
