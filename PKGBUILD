@@ -2,15 +2,13 @@
 
 pkgbase=lckfb-meta
 pkgname=(lckfb-meta lckfb-taishanpi-meta)
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=0
 epoch=
 pkgdesc="立创开发板元包 / LCKFB Development Board meta package"
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=(any)
 url="https://lckfb.com/"
-license=('unkown')
+license=('Apache-2.0')
 # groups=()
 # depends=()
 # makedepends=()
@@ -20,12 +18,12 @@ license=('unkown')
 # conflicts=()
 # replaces=()
 # backup=()
-options=('!strip')
+options=()
 # install=
 # changelog=
-# source=()
+source=(lckfb-taishanpi-meta.install)
+sha256sums=('f514379d913b7fc3619a36dc119adc91db1f6d3066fa398afc34d08589461f22')
 # noextract=()
-# sha256sums=()
 #validpgpkeys=()
 
 
@@ -38,6 +36,7 @@ package_lckfb-taishanpi-meta() {
     pkgdesc="立创开发板泰山派元包 / LCKFB Development Board TaishanPi meta package"
     provides=("lckfb-taishanpi")
     conflicts=("lckfb-taishanpi")
+    install=$pkgname.install
     depends=(
         # pcb
         lceda-pro
@@ -87,7 +86,9 @@ package_lckfb-taishanpi-meta() {
         xrock
 
         # Android debug
-        android-sdk-platform-tools
+        android-file-transfer
+        android-tools
+        android-udev
         balena-etcher
         scrcpy
         windterm
@@ -107,3 +108,4 @@ package_lckfb-taishanpi-meta() {
         escrcpy
         )
 }
+

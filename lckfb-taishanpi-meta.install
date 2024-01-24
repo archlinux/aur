@@ -1,0 +1,10 @@
+post_install() {
+	echo "---------------------------------------------------------------"
+	echo "If adb fails to connect to the phone, add the current user to the adbusers group"
+	echo "  sudo gpasswd -aG \$USER adbusers"
+	echo "---------------------------------------------------------------"
+}
+
+post_upgrade() {
+	post_install
+}

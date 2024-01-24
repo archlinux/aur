@@ -1,13 +1,12 @@
 pkgbase = lckfb-meta
 	pkgdesc = 立创开发板元包 / LCKFB Development Board meta package
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 0
 	url = https://lckfb.com/
-	arch = x86_64
-	arch = aarch64
-	arch = riscv64
-	license = unkown
-	options = !strip
+	arch = any
+	license = Apache-2.0
+	source = lckfb-taishanpi-meta.install
+	sha256sums = f514379d913b7fc3619a36dc119adc91db1f6d3066fa398afc34d08589461f22
 
 pkgname = lckfb-meta
 	pkgdesc = 立创开发板元包 / LCKFB Development Board meta package
@@ -15,6 +14,7 @@ pkgname = lckfb-meta
 
 pkgname = lckfb-taishanpi-meta
 	pkgdesc = 立创开发板泰山派元包 / LCKFB Development Board TaishanPi meta package
+	install = lckfb-taishanpi-meta.install
 	depends = lceda-pro
 	depends = repo
 	depends = git
@@ -50,7 +50,9 @@ pkgname = lckfb-taishanpi-meta
 	depends = rkdeveloptool
 	depends = rkflashtool
 	depends = xrock
-	depends = android-sdk-platform-tools
+	depends = android-file-transfer
+	depends = android-tools
+	depends = android-udev
 	depends = balena-etcher
 	depends = scrcpy
 	depends = windterm
