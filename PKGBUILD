@@ -5,7 +5,7 @@
 
 pkgbase=rustrover-eap
 pkgname=("${pkgbase}" "${pkgbase}-jre")
-pkgver=233.13135.116
+pkgver=233.13135.127
 pkgrel=1
 pkgdesc="Rust IDE by JetBrains (EAP)"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source_x86_64=("${pkgbase}-${pkgver}-${arch[0]}.tar.gz::https://download-cdn.jet
 source_aarch64=("${pkgbase}-${pkgver}-${arch[1]}.tar.gz::https://download-cdn.jetbrains.com/rustrover/RustRover-${pkgver}-${arch[1]}.tar.gz")
 sha256sums=('87a122544f85c7334a23e0b5051b09d03d975f93f151e735cd65bdeef5093bc1'
             'db26ca1fd026fbacfeb87f4bad42d78b3512bb733ce1c566bdd5b751e77d7bb3')
-sha256sums_x86_64=('b2e6f76b9eb1d7d68a0ac874954aa394be1426e07a767bdebf1a421021764c0a')
-sha256sums_aarch64=('d55266527a2c0222cd504f70ca50b5f8a6745752155ae83109511c4583759278')
+sha256sums_x86_64=('8d3e95f563641c20109ddd7572382663202c048a49b3ee0880cf4f69457d7f29')
+sha256sums_aarch64=('f99755d11d410ba453e1ef70a22aed15a02da292933222de64067b4f2d3cdcef')
 
 package_rustrover-eap() {
   depends=('glib2')
