@@ -1,6 +1,6 @@
 pkgbase = zfs-dkms-staging-git
 	pkgdesc = Kernel modules for the Zettabyte File System (release staging branch).
-	pkgver = 2.2.2.r41.gc1161e2851
+	pkgver = 2.2.2.r42.g9e0304c363
 	pkgrel = 1
 	url = https://zfsonlinux.org/
 	arch = any
