@@ -1,7 +1,7 @@
 # Maintainer: bretello <bretello@distruzione.org>
 pkgname=bretellofier
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line telegram notifier"
 arch=(any)
 url="https://git.decapod.one/brethil/bretellofier"
