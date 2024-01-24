@@ -1,7 +1,7 @@
 pkgbase = docker-cli-bin
 	pkgdesc = Docker - CLI utility only, installed from static binary on docker.com
 	pkgver = 25.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.docker.com/engine/install/binaries/#install-static-binarie
 	arch = x86_64
 	license = Apache
@@ -10,6 +10,6 @@ pkgbase = docker-cli-bin
 	conflicts = docker
 	conflicts = podman-docker
 	source = docker-cli-bin-25.0.0.tar.gz::https://download.docker.com/linux/static/stable/x86_64/docker-25.0.0.tgz
-	sha512sums = 61db87acac517fa8739589aebb9a11817066de3cfac665e04f9c430f3ea4c48c0479e9990d0c47840d991206dfa8b0f131f7341759d4b6905488f26b1b8d990c
+	sha512sums = 076be2476507783dd96bf451b1cab2c11429c49820b1d0e00bcf6661f8c7fb76e95e1c4fb7c754621a02608b22998d2b84474ea0181858448090a614c6bd0a25
 
 pkgname = docker-cli-bin
