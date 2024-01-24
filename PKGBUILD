@@ -23,6 +23,6 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
   install -Dm644 $pkgname/COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
 }
