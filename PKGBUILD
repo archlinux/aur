@@ -7,8 +7,8 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=120.0.1
-pkgrel=2
+pkgver=122.0
+pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
 license=(
@@ -37,7 +37,6 @@ makedepends=(
   cbindgen
   clang
   diffutils
-  dump_syms
   imake
   inetutils
   jack
@@ -56,6 +55,7 @@ makedepends=(
   xorg-server-xvfb
   yasm
   zip
+  pciutils
 )
 optdepends=(
   'hunspell-en_US: Spell checking, American English'
@@ -67,11 +67,9 @@ optdepends=(
 )
 groups=('cachyos')
 options=(
-  !debug
   !emptydirs
   !lto
   !makeflags
-  !strip
 )
 install=cachy-browser.install
 backup=('usr/lib/cachy-browser/cachyos.cfg'
@@ -81,7 +79,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "git+https://github.com/cachyos/cachyos-browser-settings.git"
         "git+https://github.com/cachyos/cachyos-browser-common.git"
         "match.patch")
-sha256sums=('76e7bb2a144880158444d8e9014f4d080d219bd150c3db405b27e4c7e3959ae2'
+sha256sums=('b84815a90e147965e4c0b50599c85b1022ab0fce42105e5ef45c630dcca5dec3'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
@@ -106,7 +104,9 @@ ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
+ac_add_options --enable-wasm-simd
 ac_add_options --enable-linker=lld
+ac_add_options --disable-install-strip
 ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
@@ -202,14 +202,14 @@ END
 build() {
     cd firefox-$pkgver
 
-    export MOZ_NOSPAM=1
+    export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
     export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
-    export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
-    export PIP_NETWORK_INSTALL_RESTRICTED_VIRTUALENVS=mach
+    export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
+    export MOZ_NOSPAM=1
 
-   # malloc_usable_size is used in various parts of the codebase
-   CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
-   CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+    # malloc_usable_size is used in various parts of the codebase
+    CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+    CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 
     # LTO needs more open files
     ulimit -n 4096
@@ -249,9 +249,6 @@ ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
 
     ./mach build
-
-    echo "Building symbol archive..."
-    ./mach buildsymbols
 }
 
 package() {
