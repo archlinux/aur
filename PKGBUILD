@@ -2,6 +2,10 @@
 # Contributor: JPratama7 <josepratama080@gmail.com>
 # Contributor: Dominik Adrian Grzywak <starterx4 at gmail dot com>
 
+## useful links:
+# https://github.com/Alex313031/Thorium
+# https://github.com/Alex313031/Thorium-SSE3
+
 # options
 if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ] ; then
   : ${_autoupdate:=false}
@@ -12,10 +16,10 @@ fi
 # basic info
 _pkgname="thorium-browser-sse3"
 pkgname="$_pkgname-bin"
-pkgver=119.0.6045.214
-pkgrel=2
+pkgver=120.0.6099.235
+pkgrel=1
 pkgdesc="Chromium fork focused on high performance and security"
-url="https://github.com/Alex313031/Thorium-SSE3"
+url="https://github.com/Alex313031/Thorium"
 license=('BSD')
 arch=('x86_64')
 
@@ -35,7 +39,7 @@ _main_package() {
   options=('!emptydirs' '!strip')
   install="$_pkgname.install"
 
-  _dl_url="https://github.com/Alex313031/Thorium-SSE3/releases/download/M${_pkgver:?}"
+  _dl_url="$url/releases/download/M${_pkgver:?}"
   _dl_filename="${_pkgname%-sse3}_${_pkgver:?}_SSE3.deb"
   noextract+=("$_dl_filename")
 
@@ -174,7 +178,6 @@ _update_version() {
   local _blacklist _response _tags _tag _pkgver_new
 
   _blacklist=(
-    "M120.0.6099.235" # windows only
   )
   _response=$(curl -Ssf "$url/releases.atom")
   _tags=$(
