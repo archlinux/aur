@@ -1,0 +1,99 @@
+pkgbase = java21-jetbrains
+	pkgver = 21.0.2.b341.4
+	pkgrel = 1
+	url = https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime
+	arch = x86_64
+	license = custom
+	makedepends = java-environment>=20
+	makedepends = java-environment<=21
+	makedepends = cpio
+	makedepends = unzip
+	makedepends = zip
+	makedepends = libelf
+	makedepends = libcups
+	makedepends = libx11
+	makedepends = libxrender
+	makedepends = libxtst
+	makedepends = libxt
+	makedepends = libxext
+	makedepends = libxrandr
+	makedepends = alsa-lib
+	makedepends = pandoc
+	makedepends = graphviz
+	makedepends = freetype2
+	makedepends = libjpeg-turbo
+	makedepends = giflib
+	makedepends = libpng
+	makedepends = lcms2
+	makedepends = libnet
+	makedepends = bash
+	makedepends = harfbuzz
+	makedepends = gcc-libs
+	makedepends = glibc
+	makedepends = jcef-jetbrains
+	makedepends = git
+	options = !lto
+	source = git+https://github.com/JetBrains/JetBrainsRuntime.git#tag=jb21.0.2-b341.4
+	source = freedesktop-java.desktop
+	source = freedesktop-jconsole.desktop
+	source = freedesktop-jshell.desktop
+	sha256sums = SKIP
+	sha256sums = b1007ce4c8cbe6b1cc3e6ce78b3c7bc1a26d76145c7c759baf7a04d8bc1bbfe3
+	sha256sums = 113abd0cbb73a34cc7268a97056453f3394632d5fe05d9d1e9f1d8895f8d279d
+	sha256sums = 51dbaaa20b382c5220d560f4068896ba4a5643d3b7ce63c72cb42ba142689475
+
+pkgname = jre21-jetbrains
+	pkgdesc = JetBrains Java 21 full runtime environment
+	install = install_jre-jetbrains.sh
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	depends = nss
+	depends = libjpeg-turbo
+	depends = libjpeg.so
+	depends = lcms2
+	depends = liblcms2.so
+	depends = libnet
+	depends = freetype2
+	depends = libfreetype.so
+	depends = harfbuzz
+	depends = libharfbuzz.so
+	depends = glibc
+	depends = gcc-libs
+	depends = giflib
+	depends = libgif.so
+	depends = libpng
+	depends = jcef-jetbrains
+	optdepends = java-rhino: for some JavaScript support
+	optdepends = alsa-lib: for basic sound support
+	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
+	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
+	provides = java-runtime=21
+	provides = java-runtime-jetbrains=21
+	conflicts = jre21-jetbrains
+	backup = etc/java21-jetbrains/logging.properties
+	backup = etc/java21-jetbrains/management/jmxremote.access
+	backup = etc/java21-jetbrains/management/jmxremote.password.template
+	backup = etc/java21-jetbrains/management/management.properties
+	backup = etc/java21-jetbrains/net.properties
+	backup = etc/java21-jetbrains/security/java.policy
+	backup = etc/java21-jetbrains/security/java.security
+	backup = etc/java21-jetbrains/security/policy/README.txt
+	backup = etc/java21-jetbrains/security/policy/limited/default_US_export.policy
+	backup = etc/java21-jetbrains/security/policy/limited/default_local.policy
+	backup = etc/java21-jetbrains/security/policy/limited/exempt_local.policy
+	backup = etc/java21-jetbrains/security/policy/unlimited/default_US_export.policy
+	backup = etc/java21-jetbrains/security/policy/unlimited/default_local.policy
+	backup = etc/java21-jetbrains/sound.properties
+
+pkgname = jdk21-jetbrains
+	pkgdesc = JetBrains Java 21 development kit
+	install = install_jdk-jetbrains.sh
+	depends = jre21-jetbrains=21.0.2.b341.4-1
+	depends = java-environment-common=3
+	depends = hicolor-icon-theme
+	depends = libelf
+	depends = glibc
+	depends = gcc-libs
+	provides = java-environment=21
+	provides = java-environment-jetbrains=21
+	conflicts = jdk21-jetbrains
