@@ -1,39 +1,38 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=logitnorm
-_pkgver=0.8.38
+_pkgver=0.8.39
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Functions for the Logitnormal Distribution"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL2)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r
 )
 checkdepends=(
-  r-runit
+  r-testthat
 )
 optdepends=(
   r-ggplot2
   r-knitr
   r-markdown
-  r-reshape2
-  r-runit
+  r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4a1f49249dcd7a212287a1ac6b4e1921')
-sha256sums=('38f55427955625d17ea5e92267d2549f3f2a21f3c3ee228d81c181dc80d05b07')
+md5sums=('1d08b2f259ce83e21ab7542212518eb9')
+b2sums=('e6cea7549d18d26b0afeaa0cf6e3bc23ac8bf515e73aca03e41f2bc4e79f128f591e13855c223edb48340eb65b5bac15c344c516ac8564721fb18a103ce5022e')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
   cd "$_pkgname/tests"
-  R_LIBS="$srcdir/build" Rscript --vanilla doRUnit.R
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
