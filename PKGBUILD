@@ -12,12 +12,6 @@ options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/pspdev/pspsdk/archive/master.zip")
 md5sums=('SKIP')
 
-prepare()
-{
-  cd "$srcdir/pspsdk-master"
-  #sed -i "/Could not allocate the section data buffer/d" tools/unpack-pbp.c
-}
-
 build()
 {
   cd "$srcdir/pspsdk-master"
