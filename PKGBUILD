@@ -5,7 +5,7 @@
 
 pkgname='ibus-mozc'
 pkgver=2.29.5346.102
-pkgrel=1
+pkgrel=2
 pkgdesc='Mozc module for IBus'
 arch=('x86_64')
 url='https://github.com/google/mozc'
@@ -26,6 +26,7 @@ build() {
     cd ${pkgname}-git/src
 
     unset ANDROID_NDK_HOME
+    unset ANDROID_HOME
     export JAVA_HOME='/usr/lib/jvm/java-11-openjdk/'
     bazel build renderer/qt:mozc_renderer unix/ibus:ibus_mozc unix/icons --config oss_linux --compilation_mode opt
 }
