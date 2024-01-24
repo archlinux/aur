@@ -1,9 +1,9 @@
 pkgname=psp-gcc-base
-pkgver=11.2.0
+pkgver=13.2.0
 pkgrel=1
-pkgdesc="The GNU Compiler Collection - C and C++ frontends (bootstrap) (psp)"
+pkgdesc="A port of gcc to the PSP (bootstrap) (psp)"
 arch=('x86_64')
-url="https://github.com/pspdev/psptoolchain"
+url="https://github.com/pspdev/gcc"
 license=('GPL' 'LGPL' 'FDL' 'custom')
 depends=('mpfr')
 makedepends=('psp-binutils' 'git')
@@ -16,7 +16,7 @@ build()
 {
   cd "$srcdir/gcc-$pkgver"
   mkdir -p build-psp && pushd build-psp
-  ../configure --prefix=/usr --target=psp --enable-languages="c" --with-float=hard \
+  ../configure --quiet --prefix=/usr --target=psp --enable-languages="c" --with-float=hard \
     --with-headers=no --without-newlib --disable-libatomic --disable-libssp --disable-multilib
   make
 }
@@ -30,4 +30,3 @@ package()
   rm -r "$pkgdir"/usr/share
   rm "$pkgdir"/usr/lib/libcc1.*
 }
-

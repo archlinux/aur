@@ -1,8 +1,8 @@
 pkgbase = psp-gcc-base
-	pkgdesc = The GNU Compiler Collection - C and C++ frontends (bootstrap) (psp)
-	pkgver = 11.2.0
+	pkgdesc = A port of gcc to the PSP (bootstrap) (psp)
+	pkgver = 13.2.0
 	pkgrel = 1
-	url = https://github.com/pspdev/psptoolchain
+	url = https://github.com/pspdev/gcc
 	arch = x86_64
 	license = GPL
 	license = LGPL
@@ -15,7 +15,7 @@ pkgbase = psp-gcc-base
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = gcc-11.2.0::git+https://github.com/pspdev/gcc.git#branch=allegrex-v11.2.0
+	source = gcc-13.2.0::git+https://github.com/pspdev/gcc.git#branch=allegrex-v13.2.0
 	sha256sums = SKIP
 
 pkgname = psp-gcc-base
