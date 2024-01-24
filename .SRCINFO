@@ -1,0 +1,13 @@
+pkgbase = alloydb-auth-proxy
+	pkgdesc = AlloyDB Auth Proxy
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://github.com/GoogleCloudPlatform/alloydb-auth-proxy
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	depends = fuse3
+	source = alloydb-auth-proxy-1.6.2.tar.gz::https://github.com/GoogleCloudPlatform/alloydb-auth-proxy/archive/v1.6.2.tar.gz
+	b2sums = 93acbed293c6b5e91dd4c4b1a49ea7bc2f92b5b86d449a17f385243177c3194027cdc90f441a0a3fd42335bfa7ca18983f8edc8554b4419dcb1f99792bb18581
+
+pkgname = alloydb-auth-proxy
