@@ -1,16 +1,16 @@
 pkgbase = snazy-bin
 	pkgdesc = snazy - a snazzy json log viewer
-	pkgver = 0.52.15
+	pkgver = 0.52.17
 	pkgrel = 1
 	url = https://github.com/chmouel/snazy
 	license = Apache 2.0
 	conflicts = snazy
 	provides = snazy
 	arch = aarch64
-	source_aarch64 = https://github.com/chmouel/snazy/releases/download/0.52.15/snazy-v0.52.15-linux-arm64.tar.gz
-	sha256sums_aarch64 = 610ada38b0e6ab3794cab1a0feeb8551d7bb425660b93b7cae43d11a8418473d
+	source_aarch64 = https://github.com/chmouel/snazy/releases/download/0.52.17/snazy-v0.52.17-linux-arm64.tar.gz
+	sha256sums_aarch64 = cb313e19b11f3383db3b8ff9600d2fc80c32143c116f06c811d57bde4725b64b
 	arch = x86_64
-	source_x86_64 = https://github.com/chmouel/snazy/releases/download/0.52.15/snazy-v0.52.15-linux-amd64.tar.gz
-  sha256sums_x86_64 = bd589fe14687f9ac4092e23c0a9031a5f3249aee8e6eab1ea0e56e04230bbd10
+	source_x86_64 = https://github.com/chmouel/snazy/releases/download/0.52.17/snazy-v0.52.17-linux-amd64.tar.gz
+  sha256sums_x86_64 = 0b1ae22a07e0576a4e3dbe5123b6cca62de8c96b7aeca7bfbe95ad5ed5d7eab8
 	
 pkgname = snazy-bin
