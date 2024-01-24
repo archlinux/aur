@@ -1,5 +1,5 @@
 pkgname=vgmstream-git
-pkgver=r1831.53.g59ba5706
+pkgver=r1896.60.g4e89ab38
 pkgrel=1
 pkgdesc='Library for playback of various streamed audio formats used in video games'
 arch=(x86_64)
@@ -14,10 +14,12 @@ replaces=(vgmstream-kode54-git)
 source=(${pkgname}::git+https://github.com/vgmstream/vgmstream.git
         https://downloads.xiph.org/releases/celt/celt-0.6.1.tar.gz
         https://downloads.xiph.org/releases/celt/celt-0.11.0.tar.gz
+        fix-bootstrap.patch
         install-headers.patch)
 sha256sums=('SKIP'
             'a991dff4a9e0772ede0881d81cdc7ac559148c2194885cbdd534fe4af43779da'
             'c94d4d34f5a2caa1574b1a94869202cacd959b55f643a8bafe0660008acad9c3'
+            '052a85ebe623ef9bee9920999e2d3979cf78044fc5c7770f9a42939618b6c389'
             '927d61ab752c2bc10a15185a52a0a004cf7149a90a3b195034f4956b5af8d124')
 
 pkgver() {
@@ -27,6 +29,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
+  patch -p0 < "$srcdir"/fix-bootstrap.patch
   patch -p0 < "$srcdir"/install-headers.patch
 }
 

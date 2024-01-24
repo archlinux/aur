@@ -1,6 +1,6 @@
 pkgbase = vgmstream-git
 	pkgdesc = Library for playback of various streamed audio formats used in video games
-	pkgver = r1831.53.g59ba5706
+	pkgver = r1896.60.g4e89ab38
 	pkgrel = 1
 	url = https://github.com/vgmstream/vgmstream
 	arch = x86_64
@@ -23,10 +23,12 @@ pkgbase = vgmstream-git
 	source = vgmstream-git::git+https://github.com/vgmstream/vgmstream.git
 	source = https://downloads.xiph.org/releases/celt/celt-0.6.1.tar.gz
 	source = https://downloads.xiph.org/releases/celt/celt-0.11.0.tar.gz
+	source = fix-bootstrap.patch
 	source = install-headers.patch
 	sha256sums = SKIP
 	sha256sums = a991dff4a9e0772ede0881d81cdc7ac559148c2194885cbdd534fe4af43779da
 	sha256sums = c94d4d34f5a2caa1574b1a94869202cacd959b55f643a8bafe0660008acad9c3
+	sha256sums = 052a85ebe623ef9bee9920999e2d3979cf78044fc5c7770f9a42939618b6c389
 	sha256sums = 927d61ab752c2bc10a15185a52a0a004cf7149a90a3b195034f4956b5af8d124
 
 pkgname = vgmstream-git
