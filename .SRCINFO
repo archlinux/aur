@@ -1,14 +1,13 @@
 pkgbase = sunxi-livesuite-git
 	pkgver = r5.20140913.1a0b52a
-	pkgrel = 5
+	pkgrel = 9
 	epoch = 1
 	url = https://github.com/linux-sunxi/sunxi-livesuite
 	arch = x86_64
 	arch = i686
 	groups = sunxi-livesuite-git
-	license = GPLv2
+	license = GPL-2.0-only
 	makedepends = git
-	options = !strip
 	source = sunxi-livesuite::git+https://github.com/linux-sunxi/sunxi-livesuite.git
 	source = git+https://github.com/M0Rf30/sunxi-awusb.git
 	sha256sums = SKIP
