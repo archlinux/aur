@@ -6,7 +6,7 @@ pkgbase = amdgpu-vulkan-switcher-git
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = bash
+	depends = amdgpu-opengl-switcher-git
 	source = git+https://github.com/CosmicFusion/amdgpu-vulkan-switcher.git
 	sha256sums = SKIP
 
