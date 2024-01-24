@@ -5,7 +5,7 @@ _pkgname="com.${_appname}.spark"
 _providername=ByteDance
 pkgver=3.3.1
 _sparkver=2.9.2spark7
-pkgrel=1
+pkgrel=2
 pkgdesc="douyin,record beautify life;抖音，记录美好生活"
 arch=('x86_64')
 url="https://www.douyin.com"
@@ -27,7 +27,7 @@ conflicts=("${_appname}")
 install="${pkgname}.install"
 source=(
     "${_pkgname}_${_sparkver}_i386.deb::https://mirrors.sdu.edu.cn/spark-store//store/video/${_pkgname}/${_pkgname}_${_sparkver}_all.deb"
-	"${_appname}-${pkgver}.exe::https://sw.pcmgr.qq.com/ed3a076392d2482e1ba71ecca450f833/65ae2a86/spcmgr/download/${_appname}-v${pkgver}-win32-ia32-tencent.exe"
+	"${_appname}-${pkgver}.exe::https://sw.pcmgr.qq.com/006edab104388088dbcaf2ee1450f513/65b07dbd/spcmgr/download/${_appname}-v${pkgver}-win32-ia32-tencent.exe"
     "LICENSE.html::${url}/draft/douyin_agreement/douyin_agreement_user.html"
     "${pkgname}.install"
     "${pkgname}.sh"
