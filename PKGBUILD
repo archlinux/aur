@@ -1,18 +1,19 @@
-# Maintainer: Pinghigh Dai <pinghigh24678@outlook.com>
-# Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Contributor: Pinghigh Dai <pinghigh24678@outlook.com>
+
 pkgname=jdk17-openj9-bin
 _jdkver=17
 _jdkminor=0
-_jdkpatch=8
+_jdkpatch=9
 #_jdksubpatch=0
-_jdkfixpack=1
-_jdkfullver=${_jdkver}.${_jdkminor}.${_jdkpatch}.${_jdkfixpack}
-_openj9ver=0.40.0
-_patchver=1
+#_jdkfixpack=1
+_jdkfullver=${_jdkver}.${_jdkminor}.${_jdkpatch} #.${_jdkfixpack}
+_openj9ver=0.41.0
+_patchver=9
 _buildver=${_patchver}_openj9-${_openj9ver}
 pkgrel=1
-pkgdesc="IBM® Semeru Runtime Certified Edition, Version ${_jdkver}"
-pkgver=${_jdkfullver}b${_buildver//-/_}
+pkgdesc="IBM Semeru OpenJ9 with openjdk${_jdkver}"
+pkgver="${_jdkfullver}b${_buildver//-/_}"
 arch=('x86_64')
 url="https://developer.ibm.com/languages/java/semeru-runtimes/downloads"
 license=('custom')
@@ -27,9 +28,9 @@ provides=(
 )
 conflicts=("jdk${_jdkver}-openj9-bin" "jdk${_jdkver}-openj9")
 options=(!strip)
-source=("https://github.com/ibmruntimes/semeru${_jdkver}-certified-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}/ibm-semeru-certified-jdk_x64_linux_${_jdkfullver}.tar.gz")
+source=("https://github.com/ibmruntimes/semeru${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}/ibm-semeru-open-jdk_x64_linux_${_jdkfullver}_${_buildver}.tar.gz")
 
-b2sums=('0683343236cf317afa5b7945ad303d9bacad90984a9a50c192cf5738a33de2f42f12f7e43117aaf5916c552138a1836fb1ef6b208b26d9138c54ff7e7bd1fcb5')
+b2sums=('9365197d4b970219855e3c8b509df25d2db37afc4d066864e69c795c22a920d2d80f43281e0245dab7dc683be3bf7b8b8785b14a985357d5592894428ba0c3b3')
 
 _jvmdir=usr/lib/jvm/java-${_jdkver}-j9
 

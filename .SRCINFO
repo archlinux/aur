@@ -1,6 +1,6 @@
 pkgbase = jdk17-openj9-bin
-	pkgdesc = IBM® Semeru Runtime Certified Edition, Version 17
-	pkgver = 17.0.8.1b1_openj9_0.40.0
+	pkgdesc = IBM Semeru OpenJ9 with openjdk17
+	pkgver = 17.0.9b9_openj9_0.41.0
 	pkgrel = 1
 	url = https://developer.ibm.com/languages/java/semeru-runtimes/downloads
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = jdk17-openj9-bin
 	conflicts = jdk17-openj9-bin
 	conflicts = jdk17-openj9
 	options = !strip
-	source = https://github.com/ibmruntimes/semeru17-certified-binaries/releases/download/jdk-17.0.8.1%2B1_openj9-0.40.0/ibm-semeru-certified-jdk_x64_linux_17.0.8.1.tar.gz
-	b2sums = 0683343236cf317afa5b7945ad303d9bacad90984a9a50c192cf5738a33de2f42f12f7e43117aaf5916c552138a1836fb1ef6b208b26d9138c54ff7e7bd1fcb5
+	source = https://github.com/ibmruntimes/semeru17-binaries/releases/download/jdk-17.0.9%2B9_openj9-0.41.0/ibm-semeru-open-jdk_x64_linux_17.0.9_9_openj9-0.41.0.tar.gz
+	b2sums = 9365197d4b970219855e3c8b509df25d2db37afc4d066864e69c795c22a920d2d80f43281e0245dab7dc683be3bf7b8b8785b14a985357d5592894428ba0c3b3
 
 pkgname = jdk17-openj9-bin
