@@ -1,7 +1,7 @@
 pkgbase = jdflatpaksnapshot
 	pkgdesc = A Program to create Snapshots of Flatpak Apps
 	pkgver = 2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jakobdev.codeberg.page/work/app/jdFlatpakSnapshot
 	arch = any
 	license = GPL3
@@ -14,6 +14,6 @@ pkgbase = jdflatpaksnapshot
 	depends = python-pyqt6
 	depends = python-desktop-entry-lib
 	source = jdflatpaksnapshot-2.2.tar.gz::https://codeberg.org/JakobDev/jdFlatpakSnapshot/archive/2.2.tar.gz
-	sha256sums = 2e80284d0ac7dbfe8b3d379b77580def5cdab00e849bc2eab5a0f3f56f43d0c2
+	sha256sums = 849d4d14249982a69ac690ac7ca5e18caaeda95678783c91482607d4b18e6da8
 
 pkgname = jdflatpaksnapshot
