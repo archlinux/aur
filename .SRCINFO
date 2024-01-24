@@ -1,6 +1,6 @@
 pkgbase = xcp
 	pkgdesc = An extended 'cp'
-	pkgver = 0.17.0
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/tarka/xcp
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = xcp
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	source = xcp-0.17.0.tar.gz::https://github.com/tarka/xcp/archive/v0.17.0.tar.gz
-	sha512sums = 2b05507216ce58199c5897a32321c7d30a3b77a131ad4f709121cf5fd5d4eda20e4d471d45478a1252d2a299f664a1460a110113e38ffaa83170ee59fda40adf
+	source = xcp-0.18.0.tar.gz::https://github.com/tarka/xcp/archive/v0.18.0.tar.gz
+	sha512sums = bfc10543347403a1fd409d4db57101ded56ace3ed4bb23f2df1125b6419f98af54f414bdabc3e8dadc5f9e804780cc8c1d2a91211ddb967425020e6288d51253
 
 pkgname = xcp
