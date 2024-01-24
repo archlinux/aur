@@ -1,6 +1,6 @@
 pkgbase = mandrel-bin
 	pkgdesc = Downstream distribution of the GraalVM CE for the Quarkus web framework
-	pkgver = 23.1.1.0
+	pkgver = 23.1.2.0
 	pkgrel = 1
 	url = https://github.com/graalvm/mandrel
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = mandrel-bin
 	provides = java-runtime=21
 	provides = java-environment=21
 	options = staticlibs
-	source_x86_64 = https://github.com/graalvm/mandrel/releases/download/mandrel-23.1.1.0-Final/mandrel-java21-linux-amd64-23.1.1.0-Final.tar.gz
-	sha256sums_x86_64 = d0233157fed52ee41e1008a9b4da76e241528015d237c98e308c16d7b86cec5a
-	source_aarch64 = https://github.com/graalvm/mandrel/releases/download/mandrel-23.1.1.0-Final/mandrel-java21-linux-aarch64-23.1.1.0-Final.tar.gz
-	sha256sums_aarch64 = 01b6b0888cbaaacf04d70daa8d6538e514dbab228c602815adc6b40e7a31b88a
+	source_x86_64 = https://github.com/graalvm/mandrel/releases/download/mandrel-23.1.2.0-Final/mandrel-java21-linux-amd64-23.1.2.0-Final.tar.gz
+	sha256sums_x86_64 = 614efc682c07eaff204976cabc3704f5300e033b61bdeb04f17054b7f3f54d2c
+	source_aarch64 = https://github.com/graalvm/mandrel/releases/download/mandrel-23.1.2.0-Final/mandrel-java21-linux-aarch64-23.1.2.0-Final.tar.gz
+	sha256sums_aarch64 = 4f8dbba1bab7ba92bd44cc716aee419c2aa06d96686134f940377b7fad8b3d89
 
 pkgname = mandrel-bin
