@@ -4,14 +4,14 @@ pkgname="tenacity-bin"
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity"
 
 pkgver=1.3.3
-pkgrel=4
+pkgrel=5
 
 arch=(i686 x86_64)
 
 url="https://tenacityaudio.org"
 license=("GPL2" "CCPL")
 
-depends=(fuse2 jack)
+depends=(fuse2 jack2)
 makedepends=()
 
 provides=(tenacity)
