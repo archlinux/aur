@@ -3,7 +3,7 @@ pkgname=deskaide-bin
 _appname=Deskaide
 pkgver=1.0.0_alpha.16
 _electronversion=22
-pkgrel=5
+pkgrel=6
 pkgdesc="An aide to your desk life!"
 arch=('x86_64')
 url="https://github.com/deskaide/deskaide"
@@ -23,7 +23,7 @@ source=(
 )
 sha256sums=('4abe8efb3fb909daf2f9034bc164155f77a9033a3699802c6ceb5ea3b32610b5'
             '60fcc2fb41c30d5afc1767a98ddec84656bdd10e2f563c0fb11cba23c5cbc271'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
