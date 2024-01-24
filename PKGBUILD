@@ -3,11 +3,11 @@
 pkgbase=vim-pangu-git
 pkgname=vim-pangu-git
 pkgver=1.2.0.r11.gb721011
-pkgrel=12
+pkgrel=17
 pkgdesc="『盘古之白』中文排版自动规范化的 Vim 插件"
 arch=(any)
 url="https://github.com/hotoo/pangu.vim"
-license=('unknow')
+license=('Vim')
 groups=()
 provides=(${pkgbase%-git})
 conflicts=(${pkgbase%-git})
@@ -17,7 +17,7 @@ makedepends=(git)
 optdepends=()
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
-options=('!strip')
+options=()
 
 pkgver() {
     cd "${srcdir}/${pkgname}/"
