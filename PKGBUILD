@@ -2,8 +2,8 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-epoch-git
-pkgver=r108.79c472c
-pkgrel=2
+pkgver=r111.3e9b5db
+pkgrel=1
 pkgdesc="Cosmic desktop environment from System76's Pop!_OS written in Rust utilizing Iced inspired by GNOME"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-epoch"
@@ -36,6 +36,7 @@ makedepends=(
   'mold'
 )
 checkdepends=('desktop-file-utils' 'appstream-glib')
+optdepends=('flatpak: Flatpak support for Cosmic Store')
 
 _submodules=(
   cosmic-applets
@@ -54,13 +55,14 @@ _submodules=(
   cosmic-session
   cosmic-settings
   cosmic-settings-daemon
+  cosmic-store
   cosmic-term
   cosmic-workspaces-epoch
   xdg-desktop-portal-cosmic
 )
 
-provides=('cosmic-epoch' "${_submodules[@]}")
-conflicts=('cosmic-epoch' "${_submodules[@]}")
+provides=('cosmic-epoch' 'cosmic-icons' "${_submodules[@]}")
+conflicts=('cosmic-epoch' 'cosmic-icons' "${_submodules[@]}")
 backup=('etc/cosmic-comp/config.ron')
 options=('!lto')
 source=(
@@ -82,11 +84,13 @@ source=(
   'git+https://github.com/pop-os/cosmic-session.git'
   'git+https://github.com/pop-os/cosmic-settings.git'
   'git+https://github.com/pop-os/cosmic-settings-daemon.git'
+  'git+https://github.com/pop-os/cosmic-store.git'
   'git+https://github.com/pop-os/cosmic-term.git'
   'git+https://github.com/pop-os/cosmic-workspaces-epoch.git'
   'git+https://github.com/pop-os/xdg-desktop-portal-cosmic.git'
 )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -174,6 +178,7 @@ check() {
 #    cosmic-randr
 #    cosmic-screenshot
 #    cosmic-settings
+#    cosmic-store
 #    cosmic-term
 #  )
 
