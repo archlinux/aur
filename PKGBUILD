@@ -2,7 +2,7 @@
 _pkgname=swc_ytdownloader
 pkgname="${_pkgname//_/-}-bin"
 _appname="YT Downloader"
-pkgver=0.1.34
+pkgver=0.1.35
 _electronversion=28
 pkgrel=1
 pkgdesc="Download and convert Videos from YouTube and other sites with thumbnail and metadata support"
@@ -20,7 +20,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Davis-Software/YTDownloader/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2885015996edbe7d3d40a6a0055ffcc8e5f2f0d4061ac10e4a15484b43a74f81'
+sha256sums=('1f953b115ff947dc13df8bcc61be85ef1e274b7f0554b951653f67edf8069ec4'
             '6c05069775fad84e1ae33b25f8dee3ec183ea8bf2270df24485de616237443bd'
             'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
 build() {
