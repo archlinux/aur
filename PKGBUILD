@@ -171,15 +171,23 @@ _update_version() {
   if [[ "${_autoupdate::1}" != "t" ]] ; then
     return
   fi
+  local _blacklist _response _tags _tag _pkgver_new
 
-  local _response=$(curl -Ssf "$url/releases.atom")
-  local _tag=$(
-    printf '%s' "$_response" \
-      | grep -E '"https://.*/releases/tag/.*"' \
-      | sed -E 's@^.*/releases/tag/(.*)".*$@\1@' \
-      | grep -Ev '[a-z]{2}' | sort -rV | head -1
+  _blacklist=(
+    "M120.0.6099.235" # windows only
   )
-  local _pkgver_new="${_tag#M}"
+  _response=$(curl -Ssf "$url/releases.atom")
+  _tags=$(
+    printf '%s' "$_response" \
+      | grep '/releases/tag/' \
+      | sed -E 's@^.*/releases/tag/(.*)".*$@\1@' \
+      | grep -Ev '[a-z]{2}'
+  )
+  for i in "${_blacklist[@]}" ; do
+    _tags=${_tags/$i}
+  done
+  _tag=$(printf '%s' "$_tags" | sort -rV | head -1)
+  _pkgver_new="${_tag#M}"
 
   # update _pkgver
   if [ "$_pkgver" != "${_pkgver_new:?}" ] ; then
