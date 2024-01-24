@@ -1,10 +1,10 @@
 pkgbase = python-playwright
 	pkgdesc = a Python library to automate Chromium, Firefox and WebKit browsers with a single API
-	pkgver = 1.40.0
-	pkgrel = 2
+	pkgver = 1.41.0
+	pkgrel = 1
 	url = https://github.com/microsoft/playwright-python
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = git
 	makedepends = python-auditwheel
 	makedepends = python-build
@@ -15,7 +15,7 @@ pkgbase = python-playwright
 	depends = python-greenlet
 	depends = python-pyee
 	depends = python-typing_extensions
-	source = git+https://github.com/microsoft/playwright-python#tag=v1.40.0
+	source = git+https://github.com/microsoft/playwright-python#tag=v1.41.0
 	sha256sums = SKIP
 
 pkgname = python-playwright
