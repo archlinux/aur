@@ -1,8 +1,9 @@
 # Maintainer: André Kugland <kugland at gmail dot com>
 
 pkgname=otf-tiro-indigo-git
-pkgdesc="Tiro Indigo Indic Typefaces, based on the series of fonts for Harvard's Murty Classical Library of India"
+pkgdesc="Tiro Indigo Indic Typefaces, based on the series of fonts for Harvard's Murty Classical Library of India. Includes Bangla (Bengali), Devanagiri (Hindi, Sanskrit and Marathi varients), Gurmukhi (Punjabi), Kannada, Tamil and Telugu"
 _fonttype=${pkgname/-*/} # otf/ttf
+r46.c5f23cb
 pkgver=r46.c5f23cb
 pkgrel=2
 arch=(any)
