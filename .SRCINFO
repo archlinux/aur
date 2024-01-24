@@ -1,0 +1,16 @@
+pkgbase = insomnia-irc
+	pkgdesc = A frontend for the hii IRC client
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/nmeum/insomnia
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	depends = hii
+	depends = tmux
+	depends = input-prompt
+	depends = gawk>=4.0.0
+	source = insomnia-1.0.4.tar.gz::https://github.com/nmeum/insomnia/archive/refs/tags/1.0.4.tar.gz
+	sha256sums = 7c0d585c61581f2477551b5d8bdc148528fd77a384b6333fe1e7acb1a5b3897a
+
+pkgname = insomnia-irc
