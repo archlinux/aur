@@ -1,19 +1,20 @@
 productName: "Whalebird"
-appId: "org.whalebird.desktop"
+appId: social.whalebird.app
+copyright: Copyright © 2018 Akira Fukushima
 artifactName: "${productName}-${version}-${os}-${arch}.${ext}"
 directories:
-  output: "build"
-extraResources:
-  - "build/sounds/*"
-  - "build/icons/*"
+  output: dist
+  buildResources: resources
 files:
-  - "dist/electron/**/*"
-  - "build/icons/*"
-
+  - from: .
+    filter:
+      - package.json
+      - app
 linux:
-  icon: "build/icons"
+  icon: resources/icons
   target:
-    - target: "dir"
+    - target: dir
       arch:
-        - "x64"
-  category: "Network"
+        - x64
+  category: Network
+
