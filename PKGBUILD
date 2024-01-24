@@ -4,7 +4,7 @@ _pkgname=BotFramework-Emulator
 _appname="@bfemulatormain"
 pkgver=4.14.1
 _electronversion=13
-pkgrel=5
+pkgrel=6
 pkgdesc="A desktop application that allows users to locally test and debug chat bots built with the Bot Framework SDK."
 arch=('x86_64')
 url="https://aka.ms/botemulator"
@@ -15,12 +15,9 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
-    'libx11'
-    'gdk-pixbuf2'
-    'libxext'
+    'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
-    'dbus-glib'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${CARCH}.AppImage"
@@ -29,7 +26,7 @@ source=(
 )
 sha256sums=('5f2e79494dd8e326c1dea2e45ced0005d16a9e534a85eb6cd3bf0a5ecb3c849f'
             '31bec773a6a3d56327cdc6149027250e6730014ba46a0ad432e8e11914baae52'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -37,7 +34,7 @@ build() {
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun|${pkgname%-bin}|g;s|${_appname}|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${_appname}.desktop"
+    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g;s|${_appname}|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${_appname}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
 }
 package() {

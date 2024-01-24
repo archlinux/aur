@@ -1,18 +1,15 @@
 pkgbase = botframework-emulator-bin
 	pkgdesc = A desktop application that allows users to locally test and debug chat bots built with the Bot Framework SDK.
 	pkgver = 4.14.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://aka.ms/botemulator
 	arch = x86_64
 	license = MIT
 	depends = electron13
 	depends = hicolor-icon-theme
-	depends = libx11
-	depends = gdk-pixbuf2
-	depends = libxext
+	depends = dbus-glib
 	depends = libdbusmenu-glib
 	depends = gtk2
-	depends = dbus-glib
 	provides = botframework-emulator=4.14.1
 	conflicts = botframework-emulator
 	source = botframework-emulator-4.14.1.AppImage::https://github.com/microsoft/BotFramework-Emulator/releases/download/v4.14.1/BotFramework-Emulator-4.14.1-linux-x86_64.AppImage
@@ -20,6 +17,6 @@ pkgbase = botframework-emulator-bin
 	source = botframework-emulator.sh
 	sha256sums = 5f2e79494dd8e326c1dea2e45ced0005d16a9e534a85eb6cd3bf0a5ecb3c849f
 	sha256sums = 31bec773a6a3d56327cdc6149027250e6730014ba46a0ad432e8e11914baae52
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
 
 pkgname = botframework-emulator-bin
