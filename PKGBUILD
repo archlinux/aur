@@ -41,7 +41,6 @@ prepare () {
 
 package () {
 	cd "$pkgname-$pkgver"
-	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 	install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 	install -Dm0644 -t "$pkgdir/opt/$pkgname/" settings.py server.py
 	rm -rf "youtube/__pycache__" "youtube/static/modules/plyr/build-instructions.md"
