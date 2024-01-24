@@ -1,5 +1,4 @@
-# Maintainer: 
-# Contributor: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 _rockname=discount
