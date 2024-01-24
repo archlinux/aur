@@ -1,9 +1,9 @@
 pkgname=psp-binutils
 pkgver=2.37.0
 pkgrel=2
-pkgdesc="A set of programs to assemble and manipulate binary and object files (psp)"
+pkgdesc="binutils with PSP patch applied (psp)"
 arch=(x86_64)
-url="https://www.gnu.org/software/binutils/"
+url="https://github.com/pspdev/binutils-gdb"
 license=('GPL')
 depends=('glibc' 'libelf' 'zlib' 'python')
 makedepends=('git')
