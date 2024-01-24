@@ -1,7 +1,7 @@
 # Maintainer: koyu <me@koyu.space>
 
 pkgname=amie-nativefier
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Amie desktop app built with nativefier (electron)"
 arch=("armv7l" "i686" "x86_64")
@@ -15,7 +15,7 @@ source=(
   "${pkgname}.desktop"
 )
 sha256sums=(
-  "3a4d92741697ace152059d4d035c0b2ae9e3715612bbaa58cf509e9a8a2bfb86"
+  "7ac04e015ba0efa3c884900fba02734ffe22ddd72cec87758ea61c0581eb7d9a"
   "efa67f60d02a6f6e7dcc5f3dfb63520099a0801ebb9d9594184754a3178c4481"
 )
 
