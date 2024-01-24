@@ -1,6 +1,6 @@
 pkgbase = oterm
 	pkgdesc = A text-based terminal client for Ollama
-	pkgver = 0.1.20
+	pkgver = 0.1.21
 	pkgrel = 1
 	url = https://github.com/ggozad/oterm
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = oterm
 	depends = python-linkify-it-py
 	depends = python-rich-pixels
 	depends = python-pillow
-	source = oterm-0.1.20.tar.gz::https://github.com/ggozad/oterm/archive/refs/tags/0.1.20.tar.gz
-	b2sums = 5a2a7dd1ba14b9ce085fa100e1a54812dec07d2fab19224b3a2dd882054194cb57bcf7784b5bc29604553904a4877e3aebe709ac95793e1f6226bd2212e6bb0d
+	source = oterm-0.1.21.tar.gz::https://github.com/ggozad/oterm/archive/refs/tags/0.1.21.tar.gz
+	b2sums = b4fe0979842d4714cdedafce84d4ce039abd2eaa9e83f0cc2fe372a834770f8c095baf7f26adfb29a72b7ba571282955f0daf609514da2cb6f8396451978316a
 
 pkgname = oterm
