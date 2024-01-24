@@ -3,11 +3,11 @@ pkgname=chinesechesscontrol-bin
 _pkgname=ChineseChessControl
 _appname="org.Rabbit.${_pkgname%Control}"
 pkgver=2.0.11
-pkgrel=4
+pkgrel=5
 pkgdesc="中国象棋控件,包括中国象棋 MFC 扩展库，中国象棋 activex 控件,中国象棋Qt插件,人工智能引擎等"
 arch=("x86_64")
 url="https://github.com/KangLin/ChineseChessControl"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('af81a3bc853c3d5a26ba1ef6b23a25f0c65ce7fca5affe66ee8619b66c796bf6'
-            'cbd162f25a20f7137901901ebee7d90cb7d587ca46e10f5f23a9302adb85bee0')
+            '2d6271c4c4b0d253f37859ce68bf536bf1ce1a807e114ef69257b6082a8785bd')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|ChineseChessApp-v${pkgver}|g" \
