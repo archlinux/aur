@@ -1,8 +1,9 @@
 pkgbase = sway-git
 	pkgdesc = Tiling Wayland compositor and replacement for the i3 window manager (git development version)
-	pkgver = 1.9.r7237.c5fd8c0
+	pkgver = 1.9.r7273.a4e8533
 	pkgrel = 1
 	url = https://github.com/swaywm/sway
+	install = sway-git.install
 	arch = x86_64
 	license = MIT
 	makedepends = git

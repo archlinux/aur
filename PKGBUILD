@@ -1,7 +1,7 @@
 # Maintainer: GreyXor <greyxor@protonmail.com>
 # Contributor: Drew DeVault <sir@cmpwn.com>
 pkgname=sway-git
-pkgver=1.9.r7237.c5fd8c0
+pkgver=1.9.r7273.a4e8533
 pkgrel=1
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager (git development version)'
 arch=('x86_64')
@@ -46,6 +46,7 @@ optdepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+install="${pkgname}.install"
 source=("${pkgname}::git+${url}.git"
 "50-systemd-user.conf"
 "sway-portals.conf")
