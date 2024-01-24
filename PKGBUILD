@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-melondsds
 pkgname=$_pkgname-git
-pkgver=1.0.1.r0.g949bb4d
+pkgver=1.0.2.r0.g8626ecf
 pkgrel=1
 pkgdesc="Nintendo DS core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -71,5 +71,5 @@ package() {
 	depends+=('libOpenGL.so')
 	# shellcheck disable=SC2154
 	install -D -t "$pkgdir"/usr/lib/libretro build/src/libretro/melondsds_libretro.so
-	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname build/melondsds-LICENSE.txt
+	install -Dm644 build/melondsds-LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
