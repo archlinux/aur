@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=akuse
 _pkgname=Akuse
-pkgver=0.3.2
+pkgver=0.3.3
 _electronversion=25
-pkgrel=2
+pkgrel=1
 pkgdesc="Simple and easy to use anime streaming desktop app without ads."
 arch=('any')
 url="https://github.com/akuse-app/Akuse"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
@@ -38,7 +38,7 @@ build() {
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export ELECTRONVERSION="${_electronversion}"
-    sed -e '79,81d' -e '/"AppImage"/d' -e 's|"deb"|"AppImage"|g' -i package.json
+    sed '84,87d;82d' -i package.json
     install -Dm644 "${srcdir}/clientData.js" -t "${srcdir}/${pkgname}.git/src/modules"
     npm install --force
     npm run dist:linux
