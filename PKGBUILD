@@ -10,7 +10,7 @@ pkgname="${_pkgname}-bin"
 pkgdesc='Maintain your Ledger devices'
 license=('MIT')
 url='https://www.ledger.com/ledger-live'
-pkgver=2.73.1
+pkgver=2.75.0
 pkgrel=1
 arch=('x86_64')
 depends=('gtk3' 'nss' 'alsa-lib' 'ledger-udev')
@@ -20,7 +20,7 @@ conflicts=("${_pkgname}")
 _appimg="ledger-live-desktop-${pkgver}-linux-${arch[0]}.AppImage"
 source=("${_appimg}::https://download.live.ledger.com/${_appimg}"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/LedgerHQ/ledger-live/%40ledgerhq/live-desktop%40${pkgver}/apps/ledger-live-desktop/LICENSE")
-sha512sums=('849649f9f104d1a66e4705d0b83ab0c6edee553aad19b7ac8f10afecaf93b0f64e360abdad0ce2771c3cf290575ad266a63f2109cb998d3378ef6114abe6d153'
+sha512sums=('2a4e77a8de337e8d5e7bd77888da963f9de3305be7d0c9ef384724445a173e800ef87d8fb6cca02352c280f30f79c9ba8e305cb47544e5bfdf692c092e1e7628'
             '915edd51fe7732af57f5a4ca8f4c61c4f435de6357e34ed0733cac8d950d80b3a9e513deac0a3672a07f38ff871a57032a221b3aa27edae8e42cc00586fe3318')
 
 prepare() {
