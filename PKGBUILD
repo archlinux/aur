@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='barman'
-pkgver='3.8.0'
+pkgver='3.10.0'
 pkgrel='1'
 pkgdesc="Backup and recovery manager for PostgreSQL"
 arch=('x86_64' 'aarch64')
@@ -12,13 +12,13 @@ depends=('rsync' 'python' 'python-argh' 'python-psycopg2'
 	 'python-dateutil' 'python-argcomplete')
 makedepends=('python-distribute' 'python-sphinx' 'python-mock' 'python-pytest')
 optdepends=('python-boto3' 'python-botocore')
-source=("https://github.com/EnterpriseDB/${pkgname}/releases/download/release/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+source=("https://github.com/EnterpriseDB/${pkgname}/archive/refs/tags/release/${pkgver}.tar.gz"
 	"${pkgname}.crond"
 	"${pkgname}.logrotate"
 	"passive-server.conf-template"
 	"ssh-server.conf-template"
 	"streaming-server.conf-template")
-sha256sums=('2c9a1571047d90d885b962b8167630c7cda6a2b892d09c2779baa6bd49f484ac'
+sha256sums=('171c61f24d0ffa0c96427043d91c218afff893a34bfd4ca1cd0c10b768943c8e'
             '43e90f39b167b682aa98e753c1803cf6244ba6c1eeb5738270fcb47837c25147'
             '723ba6c8ddce9284d48243787e6d24c40db98933f28bf6a79ce53a2c15bb261c'
             '631afa66223a705db3c1d5a4749b8f60368f86b72a3c0fc7eef9ca48af312c50'
@@ -26,7 +26,7 @@ sha256sums=('2c9a1571047d90d885b962b8167630c7cda6a2b892d09c2779baa6bd49f484ac'
             '28895cd3a857d98d14ac4b86fb1f968c49834fd22310c4de676fdda2ea75c855')
 
 package() {
-  pushd "${pkgname}-${pkgver}"
+  pushd "${pkgname}-release-${pkgver}"
   python setup.py install -O1 --root="${pkgdir}"
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
   mkdir -p "${pkgdir}/usr/share/doc/${pkgname}/etc/"{cron.d,${pkgname}.d,logrotate.d}
