@@ -4,7 +4,7 @@
 
 pkgname=helix-ext
 _pkgname=helix
-pkgver=23.10.1
+pkgver=23.10.2
 pkgrel=1
 pkgdesc="The Helix editor, with various rejected patches applied."
 arch=('x86_64')
@@ -38,7 +38,7 @@ optdepends=(
 )
 install="$_pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/omentic/helix-ext/archive/$pkgver.tar.gz")
-sha256sums=('5fff2dfb359f9bdb7b2950b2ee09867b2b1d83f4008392a4b508bbd3e522ca05')
+sha256sums=('26a8476dadfce2bd7427c1e0ad91c915c922a27c463b6049ece0edfcff8f2d1b')
 options=('!lto')
 
 prepare() {

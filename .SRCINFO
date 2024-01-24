@@ -1,6 +1,6 @@
 pkgbase = helix-ext
 	pkgdesc = The Helix editor, with various rejected patches applied.
-	pkgver = 23.10.1
+	pkgver = 23.10.2
 	pkgrel = 1
 	url = https://helix-editor.com
 	install = helix.install
@@ -34,7 +34,7 @@ pkgbase = helix-ext
 	optdepends = zls: for Zig language support
 	conflicts = helix
 	options = !lto
-	source = helix-ext-23.10.1.tar.gz::https://github.com/omentic/helix-ext/archive/23.10.1.tar.gz
-	sha256sums = 5fff2dfb359f9bdb7b2950b2ee09867b2b1d83f4008392a4b508bbd3e522ca05
+	source = helix-ext-23.10.2.tar.gz::https://github.com/omentic/helix-ext/archive/23.10.2.tar.gz
+	sha256sums = 26a8476dadfce2bd7427c1e0ad91c915c922a27c463b6049ece0edfcff8f2d1b
 
 pkgname = helix-ext
