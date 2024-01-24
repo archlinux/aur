@@ -1,22 +1,22 @@
 pkgbase = passwordsafe-bin
 	pkgdesc = Popular secure and convenient password manager
-	pkgver = 1.18.0
-	pkgrel = 2
+	pkgver = 1.18.2
+	pkgrel = 1
 	url = https://pwsafe.org/
 	arch = x86_64
-	license = custom:Artistic2.0
+	license = Artistic-2.0
 	depends = file
 	depends = curl
-	depends = libx11
-	depends = hicolor-icon-theme
-	depends = libxtst
 	depends = qrencode
+	depends = hicolor-icon-theme
 	depends = util-linux-libs
-	provides = passwordsafe=1.18.0
+	depends = wxwidgets-gtk3
+	depends = wxwidgets-common
+	provides = passwordsafe=1.18.2
 	conflicts = passwordsafe
-	source = passwordsafe-1.18.0.deb::https://github.com/pwsafe/pwsafe/releases/download/1.18.0/passwordsafe-linuxmint21-1.18-amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/pwsafe/pwsafe/1.18.0/LICENSE
-	sha256sums = 787e1eb425363ecc7b95a65f2f1255bc1205dc6116cc29ffd2f0c9736db00c81
-	sha256sums = c423e5a75b647f900aca691a7f48ddc131f2f8c3d3daaa597093cf576c92ba79
+	source = passwordsafe-1.18.2.deb::https://github.com/pwsafe/pwsafe/releases/download/1.18.2/passwordsafe-ubuntu23-1.18.2-amd64.deb
+	source = LICENSE-1.18.2::https://raw.githubusercontent.com/pwsafe/pwsafe/1.18.2/LICENSE
+	sha256sums = a18bb859eb14536a47f072effb3ac8860088e2a120177315abcb6ccb798b2bfe
+	sha256sums = 2d471d94ca72c38aeee8544cbceaa239e7cfd13fa766f8bee7a1dd8fa82c11c8
 
 pkgname = passwordsafe-bin
