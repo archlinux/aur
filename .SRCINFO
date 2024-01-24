@@ -1,6 +1,6 @@
 pkgbase = ps7_libps2000
 	pkgdesc = Library for PicoScope 2000 series in PicoScope 7
-	pkgver = 3.0.124_3r5349
+	pkgver = 3.0.129_3r5632
 	pkgrel = 1
 	url = https://labs.picotech.com/picoscope7/debian/pool/main/libp/libps2000/
 	install = ps7_libps2000.install
@@ -9,7 +9,7 @@ pkgbase = ps7_libps2000
 	depends = libusb
 	conflicts = ps7b_libps2000
 	options = !strip
-	source = https://labs.picotech.com/picoscope7/debian/pool/main/libp/libps2000/libps2000_3.0.124-3r5349_amd64.deb
-	md5sums = da8406479d067f33c29d0ade5c64b5f7
+	source = https://labs.picotech.com/picoscope7/debian/pool/main/libp/libps2000/libps2000_3.0.129-3r5632_amd64.deb
+	md5sums = ab5d0b47e28b5a8c3f0e8e5949c281ea
 
 pkgname = ps7_libps2000
