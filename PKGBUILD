@@ -12,14 +12,15 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=120.0.6099.216
+pkgver=121.0.6167.85
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
+_system_clang=0
 pkgdesc="A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory"
 arch=('x86_64')
 url="https://github.com/ungoogled-software/ungoogled-chromium"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
          'libffi' 'desktop-file-utils' 'hicolor-icon-theme')
@@ -36,17 +37,15 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
         drop-flags-unsupported-by-clang16.patch
-        libxml2-2.12.patch
         icu-74.patch
         use-oauth2-client-switches-as-default.patch
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch
         index.html)
-sha256sums=('7e7bea15bf56f3cc920bb015fed1a1b1368267299e132e795935c5cc604adfc0'
+sha256sums=('a2f46c5266681126ea9e15c1c3067560d84f3e5d902e1ace934a3813c84e7152'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            'ffee1082fbe3d0c9e79dacb8405d5a0e1aa94d6745089a30b093f647354894d2'
+            'e9113c1ed2900b84b488e608774ce25212d3c60094abdae005d8a943df9b505e'
             '8d1cdf3ddd8ff98f302c90c13953f39cd804b3479b13b69b8ef138ac57c83556'
-            '1808df5ba4d1e2f9efa07ac6b510bec866fa6d60e44505d82aea3f6072105a71'
             'ff9ebd86b0010e1c604d47303ab209b1d76c3e888c423166779cefbc22de297f'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
             'f97e6cd3c4d2e04f5d9a0ea234fe768d6ba0fa9f4ecd5c7b2ca91030a1249078'
@@ -62,20 +61,20 @@ provides=("chromium=${pkgver}" "chromedriver=${pkgver}")
 conflicts=('chromium' 'chromedriver')
 _uc_usr=ungoogled-software
 _uc_rel=1
-# _uc_ver="$pkgver-$_uc_rel"
-_uc_ver="120.0.6099.216-$_uc_rel"
+_uc_ver="$pkgver-$_uc_rel"
+# _uc_ver="120.0.6099.216-$_uc_rel"
 optdepends=("${optdepends[@]}"
             'chromium-extension-web-store: Web Store Functionality')
 source=(${source[@]}
-        ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz
+        ${pkgname%-*}-$_uc_ver.zip::https://github.com/noahvogt/${pkgname%-*}/archive/refs/heads/update.zip
+        # ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz
         0001-vaapi-flag-ozone-wayland.patch
         0001-adjust-buffer-format-order.patch
         0001-enable-linux-unstable-deb-target.patch
         0001-ozone-wayland-implement-text_input_manager_v3.patch
         0001-ozone-wayland-implement-text_input_manager-fixes.patch)
-        # ${pkgname%-*}-$_uc_ver.zip::https://github.com/noahvogt/${pkgname%-*}/archive/refs/heads/update.zip
 sha256sums=(${sha256sums[@]}
-            '131b6fec2bca4435b2542d46df716af79a62bf80fc00c48898de640dd852aa8e'
+            '1ad45eb10c08616c331f6cec0562062feb4694e31829459e24cefe8f09bdeaba'
             '9a5594293616e1390462af1f50276ee29fd6075ffab0e3f944f6346cb2eb8aec'
             '8ba5c67b7eb6cacd2dbbc29e6766169f0fca3bbb07779b1a0a76c913f17d343f'
             '2a44756404e13c97d000cc0d859604d6848163998ea2f838b3b9bb2c840967e3'
@@ -107,7 +106,7 @@ declare -gA _system_libs=(
   #[re2]=re2          # needs libstdc++
   #[snappy]=snappy    # needs libstdc++
   #[woff2]=woff2      # needs libstdc++
-  [zlib]=minizip
+  #[zlib]=minizip
 )
 _unwanted_bundled_libs=(
   $(printf "%s\n" ${!_system_libs[@]} | sed 's/^libjpeg$/&_turbo/')
@@ -145,20 +144,17 @@ prepare() {
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
   # Upstream fixes
-  patch -Np1 -i ../libxml2-2.12.patch
 
   # Fix build with ICU 74
   patch -Np1 -i ../icu-74.patch
 
   # Drop compiler flags that need newer clang
-  patch -Np1 -i ../drop-flags-unsupported-by-clang16.patch
+  #patch -Np1 -i ../drop-flags-unsupported-by-clang16.patch
 
   # Fixes for building with libstdc++ instead of libc++
   #patch -Np1 -i ../chromium-patches-*/chromium-114-ruy-include.patch
   #patch -Np1 -i ../chromium-patches-*/chromium-117-material-color-include.patch
-  patch -Np1 -i ../chromium-patches-*/chromium-119-at-spi-variable-consumption.patch
-  patch -Np1 -i ../chromium-patches-*/chromium-119-clang16.patch
-  #patch -Np1 -i ../chromium-patches-*/chromium-120-std-nullptr_t.patch
+  #patch -Np1 -i ../chromium-patches-*/chromium-119-clang16.patch
 
 
 
@@ -203,6 +199,14 @@ prepare() {
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
   ln -s /usr/bin/java third_party/jdk/current/bin/
 
+  # Use prebuilt rust as system rust cannot be used due to the error:
+  #   error: the option `Z` is only accepted on the nightly compiler
+  ./tools/rust/update_rust.py
+
+  # To link to rust libraries we need to compile with prebuilt clang
+  ./tools/clang/scripts/update.py
+
+
   # Remove bundled libraries for which we will use the system copies; this
   # *should* do what the remove_bundled_libraries.py script does, with the
   # added benefit of not having to list all the remaining libraries
@@ -225,19 +229,25 @@ build() {
 
   cd chromium-$pkgver
 
-  export CC=clang
-  export CXX=clang++
-  export AR=ar
-  export NM=nm
+  if (( _system_clang )); then
+    export CC=clang
+    export CXX=clang++
+    export AR=ar
+    export NM=nm
+  else
+    local _clang_path="$PWD/third_party/llvm-build/Release+Asserts/bin"
+    export CC=$_clang_path/clang
+    export CXX=$_clang_path/clang++
+    export AR=$_clang_path/llvm-ar
+    export NM=$_clang_path/llvm-nm
+  fi
+
 
   local _flags=(
     'custom_toolchain="//build/toolchain/linux/unbundle:default"'
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
-    'clang_base_path="/usr"'
-    'clang_use_chrome_plugins=false'
     'is_official_build=true' # implies is_cfi=true on x86_64
     'symbol_level=0' # sufficient for backtraces on x86(_64)
-    'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
     'treat_warnings_as_errors=false'
     'disable_fieldtrial_testing_config=true'
     'blink_enable_generated_code_formatting=false'
@@ -251,12 +261,23 @@ build() {
     'enable_hangout_services_extension=true'
     'enable_widevine=true'
     'enable_nacl=false'
-    'enable_rust=false'
     "google_api_key=\"$_google_api_key\""
   )
 
   if [[ -n ${_system_libs[icu]+set} ]]; then
     _flags+=('icu_use_data_file=false')
+  fi
+
+  if (( _system_clang )); then
+     local _clang_version=$(
+       clang --version | grep -m1 version | sed 's/.* \([0-9]\+\).*/\1/')
+
+    _flags+=(
+      'clang_base_path="/usr"'
+      'clang_use_chrome_plugins=false'
+      "clang_version=\"$_clang_version\""
+      #'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
+    )
   fi
 
   # Append ungoogled chromium flags to _flags array
