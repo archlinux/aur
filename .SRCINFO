@@ -1,6 +1,6 @@
 pkgbase = python-telegram-text
 	pkgdesc = Python markup module for Telegram messenger
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://telegram-text.alinsky.tech/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-telegram-text
 	makedepends = python-wheel
 	makedepends = python-poetry
 	depends = python
-	source = python-telegram-text-0.1.2.tar.gz::https://github.com/SKY-ALIN/telegram-text/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = 41c12d71fbb78caf50af271ba5fc3372cf25177fa4ba9c8eee20960bbc1c5260
+	source = python-telegram-text-0.2.0.tar.gz::https://github.com/SKY-ALIN/telegram-text/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 1af4e5487858dcc2576946524193f97e0638335c0b307ef3f2adfc6bebde0192
 
 pkgname = python-telegram-text
