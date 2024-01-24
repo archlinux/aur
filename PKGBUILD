@@ -8,7 +8,7 @@ _pkgname=XML
 _pkgver=3.99-0.16.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for Parsing and Generating XML Within R and S-Plus"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -22,8 +22,8 @@ optdepends=(
   r-rcurl
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('dcb2530275a8002c3746617398e5d83c')
-b2sums=('f8925fede3d83d5bd33328714da724816fbc70be5002ea3bf6adf4471410caf669c212fc06ffdef35a54d5f398d03a02162167d69a424a4188b030f0b25931ff')
+md5sums=('82344cf1059c2fd4f766ede4021836b2')
+b2sums=('e61404d91fc9d1e503f9dd159efb7dde3db7799626a698fbab21c1d6a6a026e5cb222a0c531018ec9b49bd78ce6163cba0a36c0f73e9c02ce9316a874df91899')
 
 build() {
   mkdir build
