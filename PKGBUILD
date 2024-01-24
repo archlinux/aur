@@ -20,7 +20,7 @@ _dict=(
 #       alt-cannadic
 #       edict2
 #       jawiki
-       neologd
+#       neologd
 #       personal-names
 #       skk-jisyo
 #       sudachidict
@@ -30,7 +30,7 @@ _sudachidict_date=20240109
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.29.5346.102
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
@@ -46,6 +46,7 @@ source=("git+$url.git#commit=${_mozc_commit}"
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/small_lex.zip"
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/core_lex.zip"
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/notcore_lex.zip"
+        "https://github.com/neologd/mecab-ipadic-neologd/raw/master/seed/mecab-user-dict-seed.20200910.csv.xz"
         "LICENSE-SudachiDict::https://github.com/WorksApplications/SudachiDict/raw/develop/LEGAL"
         "LICENSE-ipadic-neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/master/COPYING"
         "0001-Zombie-Process-Prevention.patch"
@@ -53,20 +54,19 @@ source=("git+$url.git#commit=${_mozc_commit}"
 #        https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz)
 #noextract=(jawiki-latest-all-titles-in-ns0.gz)
 
-for dict in "${_dict[@]}"; do
-  source+=( "https://github.com/phoepsilonix/mozcdic-ut-${dict}/releases/download/latest/mozcdic-ut-${dict}.txt.tar.bz2")
-  source+=( "LICENSE-${dict}::https://github.com/phoepsilonix/mozcdic-ut-${dict}/raw/main/LICENSE" )
-done
+#for dict in "${_dict[@]}"; do
+#  source+=( "https://github.com/phoepsilonix/mozcdic-ut-${dict}/releases/download/latest/mozcdic-ut-${dict}.txt.tar.bz2")
+#  source+=( "LICENSE-${dict}::https://github.com/phoepsilonix/mozcdic-ut-${dict}/raw/main/LICENSE" )
+#done
 sha512sums=('SKIP'
             'SKIP'
             'cb7d135af2eb7f759126071c042dda89f094710ed7228f129e0b2350d11903768c4f5c4b2c0ca7748fb6e2c9e442c3cc353687c1c6dbe98ee21056ef83751d3f'
             '8b51b783c60987d74d896ba4668987b69a4f83b7b294f2630b25a0adf2ca665b89ebf4e000ce5de9a343aa9929d0b120478f7820a31ab1718d1fcafd58460286'
             '8efaeeb103cfd14abbc8e27ca4c6313d68e800421f452701ff1771b09f32944cd14bfc4bd2fe75ebb3b851b4baba15ebd70b7b2cceae68a621eadbaa9d351bf5'
+            '391bf23f4163f5d40abef49ac7ee3e856a0f06f83adde13c5709e86480be93d4087ca72d244dd57a8bf45e881958a96f59b55c695671aa59a3eb15532ecb9ce1'
             '1a5b62c83a08781b44bd73f978a4024d93667df47b1a3f4c179096cbc32f28e803c50dca6b5b7ad20fb788d46797551c36ec1efb7782f4361b695e2e0a6060ca'
             '77a8c1d76a53627f8680f761f9c996b04e6b609bdb813cb5aedc7f8214d9b5f13aea53788814029f6f1e263c50ecb58feb5999e95d51fe7e4707b6a913d4bbe4'
-            '4dc9fc2d95e23729381bfe12fe6544ec3ea5729114e6d0539af93f5cd1e5a0a4d3196bfcf07c67aec0b19a25b92bf3c65c5e3805415bf81b5d13f537fa4f2c0d'
-            '3b1354b8e6b25ea8024bb91098828855b558c0ee9086800b2d44ef6dac023949432418c47d943d59c6ce315c0d292ef784423cd6046dfb906d4afc4c14d11dd3'
-            'ef2dd0a27b09ca3a68aa7a3ad45b3720d57efd0505e631fa643e7aea98455c1114760f9aa5e91701bb5c118ae3074719709eeed55010b305d861464ad1b51c3a')
+            '4dc9fc2d95e23729381bfe12fe6544ec3ea5729114e6d0539af93f5cd1e5a0a4d3196bfcf07c67aec0b19a25b92bf3c65c5e3805415bf81b5d13f537fa4f2c0d')
 
 pkgver() {
   cd "${srcdir}/mozc" || exit
@@ -115,22 +115,22 @@ build() {
   #echo 'Done.'
   # UT Dictionary steps, rewrite of "sh make.sh"
   # UT辞書を結合
-  msg '1. Append dictionaries'
-  for dict in "${_dict[@]}"; do
-    cat "$srcdir/mozcdic-ut-${dict}.txt" >> ${srcdir}/mozcdict-ext/mozcdic-ut.txt
-  done
+  #msg '1. Append dictionaries'
+  #for dict in "${_dict[@]}"; do
+  #  cat "$srcdir/mozcdic-ut-${dict}.txt" >> ${srcdir}/mozcdict-ext/mozcdic-ut.txt
+  #done
 
   # gem parallel
   #[[ "$GEM_HOME"=="" ]] && GEM_HOME="/usr/lib/ruby/gems/3.0.0/"
 
   cd "${srcdir}/mozcdict-ext/" || exit
   # すだちを優先
-  msg '2. Build the rust program(mozdcict-ext), it may take some time...'
+  msg '1. Build the rust program(mozcdict-ext), it may take some time...'
   cd sudachi || exit
   source <(cargo +nightly -Z unstable-options rustc --print cfg|grep -E "target_(arch|vendor|os|env)")
   TARGET="${target_arch}-${target_vendor}-${target_os}-${target_env}"
   cargo build --release --target $TARGET
-  msg '3. Run the rust program(mozcdict-ext): SudachiDict , it may take some time...'
+  msg '2. Run the rust program(mozcdict-ext): SudachiDict , it may take some time...'
   cat ${srcdir}/small_lex.csv ${srcdir}/core_lex.csv ${srcdir}/notcore_lex.csv > all.csv
   cp ${srcdir}/mozc/src/data/dictionary_oss/id.def ./
   ./target/$TARGET/release/dict-to-mozc -s -i ./id.def -f all.csv > ../all-dict.txt
@@ -146,9 +146,9 @@ build() {
   #cd ..
 
   # ut-dictionarys
-  msg '4. Run the rust program(mozcdict-ext): utdict , it may take some time...'
+  msg '3. Run the rust program(mozcdict-ext): mecab-ipadic-neologd , it may take some time...'
   cd sudachi || exit
-  ./target/$TARGET/release/dict-to-mozc -u -i ./id.def -f ../mozcdic-ut.txt >> ../all-dict.txt
+  ./target/$TARGET/release/dict-to-mozc -n -i ./id.def -f ../../mecab-user-dict-seed.20200910.csv >> ../all-dict.txt
   cd ..
   #ruby utdict/utdict.rb -E -f mozcdic-ut.txt -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> all-dict2.txt
 
@@ -209,9 +209,9 @@ install_mozc-with-jp-dict-common() {
   install -D -m 644 third_party/protobuf/third_party/jsoncpp/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/jsoncpp/LICENSE"
   install -D -m 644 third_party/protobuf/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/prptobuf/LICENSE"
   install -D -m 644 third_party/wtl/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/wtl/LICENSE"
-  for dict in "${_dict[@]}"; do
-    install -D -m 644 "$srcdir/LICENSE-${dict}" "$pkgdir/usr/share/licenses/$pkgname/data/dictionary_oss/"
-  done
+  #for dict in "${_dict[@]}"; do
+  #  install -D -m 644 "$srcdir/LICENSE-${dict}" "$pkgdir/usr/share/licenses/$pkgname/data/dictionary_oss/"
+  #done
   install -D -m 644 "$srcdir/LICENSE-SudachiDict" "$pkgdir/usr/share/licenses/$pkgname/data/dictionary_oss/"
   ../scripts/install_server_bazel
 }
