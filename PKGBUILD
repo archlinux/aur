@@ -1,22 +1,21 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=superconductor-appimage
-pkgver=0.11.1
-pkgrel=2
+pkgver=0.11.2
+pkgrel=1
 pkgdesc="A playout client for Windows/Linux/macOS that will let you control CasparCG Server, BMD ATEM, OBS Studio, vMix, OSC-compatible devices, HTTP (REST)-compatible devices, and more"
-arch=('x86_64')
+arch=(x86_64)
 url="https://github.com/SuperFlyTV/SuperConductor"
-license=('AGPL3')
-depends=('fuse2')
+license=(AGPL3)
+depends=(fuse2)
 optdepends=('tsr-bridge: External application which handles the actual playout and control of the connected devices')
-provides=('superconductor')
-conflicts=('superconductor')
+provides=(superconductor)
+conflicts=(superconductor)
 options=(!strip)
 source=("${url}/releases/download/v${pkgver}/SuperConductor-${pkgver}-Linux-Executable.AppImage")
-sha256sums=('0bd521bbaecc623f1a1721ee416a66c2f13cc971e217e87188e8835d8c5436ec')
+sha256sums=('a2dc75701c4f4733a1aea4a6a14ec58551cd4d4fc529c44c8092943100c70863')
 _file="SuperConductor-Linux-Executable.AppImage"
 _install_path="/opt/appimages/${_file}"
-
 
 package() {
 	mv "SuperConductor-${pkgver}-Linux-Executable.AppImage" "$_file"
@@ -36,7 +35,6 @@ package() {
 	# Disable appimage desktop integration: https://github.com/AppImage/AppImageSpec/blob/master/draft.md#desktop-integration
 	# Disable AppimageLauncher integration prompt
 	# https://github.com/TheAssassin/AppImageLauncher/issues/78#issuecomment-466390939
-	# SuperConductor
 	sed -i -E "s|Exec=${_install_path}|Exec=env DESKTOPINTEGRATION=0 APPIMAGELAUNCHER_DISABLE=1 /usr/bin/superconductor|" "squashfs-root/superconductor.desktop"
 	install -vDm644 squashfs-root/superconductor.desktop "$pkgdir"/usr/share/applications/superconductor.desktop
 	install -vDm755 ${_file} "$pkgdir"/${_install_path}
