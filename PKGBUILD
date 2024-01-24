@@ -2,12 +2,12 @@
 
 pkgname=unshc
 pkgver=0.8
-pkgrel=2
+pkgrel=19
 epoch=
 pkgdesc="UnSHc is a tool to reverse the encryption of any SHc encrypted *.sh.x script. (shc < 4.0.3)"
 arch=('x86_64')
 url="https://github.com/yanncam/UnSHc"
-license=('GPL3')
+license=('GPL-3.0-only')
 groups=()
 depends=('bash')
 makedepends=('git')
@@ -17,7 +17,7 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=('!strip')
+options=()
 install=
 changelog=
 source=("${pkgname}::git+${url}.git")

@@ -1,13 +1,12 @@
 pkgbase = unshc
 	pkgdesc = UnSHc is a tool to reverse the encryption of any SHc encrypted *.sh.x script. (shc < 4.0.3)
 	pkgver = 0.8
-	pkgrel = 2
+	pkgrel = 19
 	url = https://github.com/yanncam/UnSHc
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = git
 	depends = bash
-	options = !strip
 	source = unshc::git+https://github.com/yanncam/UnSHc.git
 	sha256sums = SKIP
 
