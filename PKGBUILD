@@ -7,7 +7,7 @@
 
 pkgname=signal-desktop-beta
 _pkgname=Signal-Desktop
-pkgver=6.45.0beta2
+pkgver=6.46.0beta1
 pkgrel=1
 pkgdesc='Signal Private Messenger for Linux - Beta version.'
 license=('GPL3')
@@ -25,7 +25,7 @@ source=(
   "${pkgname}.desktop"
   "signal-desktop-wrapper.sh"
   )
-sha512sums=('7d31e861e8477b3ef45f4f0c099cc2c3bd21d427230aa8d877942ba72d27d2d18c89c4d7a95f015f120d238604f3512f4ddbfb08eafa6851b1a3e2aaa7b2496f'
+sha512sums=('7441aa92907c401335af13d65fc1df24470748a0adfa81a2fdb0d343a66564fc1ab463333ad104956b0e0abe362b33235becb233cb09089c7bf7109c1b7043a0'
             '7b25b98de8db36af1a9da49cd214d6ced45f123f098e5665b563e462b979e67d9d570fce8fbee89776a95dc5108696da64bfbe0bd1eaf748360dfcb333483dbb'
             '457c1bd044f4e17810a7f1b284ca38809a0c1f8fed4bdb52184a169e2996e683c4c96c1cc86a013feb7b8833557245397decdcec01dbc82bb2b12b0d80424e25')
 
