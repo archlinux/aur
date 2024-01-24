@@ -1,6 +1,7 @@
 [Unit]
 Description=Run a sliding sync proxy for the matrix protocol
-After=network.target
+Wants=network-online.target
+After=network-online.target
 
 [Service]
 EnvironmentFile=/etc/matrix-sliding-sync.conf
