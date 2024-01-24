@@ -3,20 +3,20 @@
 # Contributor: Guillaume ALAUX <guillaume@archlinux.org>
 
 pkgname=swt
-pkgver=4.29
+pkgver=4.30
 pkgrel=1
-_date=202309031000
+_date=202312010110
 pkgdesc='An open source widget toolkit for Java'
 arch=('x86_64')
 url='https://www.eclipse.org/swt/'
-license=('EPL')
-depends=('java-runtime>=11' 'libxtst')
+license=('EPL-2.0')
+depends=('java-runtime>=17' 'libxtst')
 makedepends=(
   'ant'
   'glu'
   'gtk3'
   'gtk4'
-  'java-runtime>=11'
+  'java-runtime>=17'
   'pkgconfig'
   'unzip'
   'webkit2gtk'
@@ -29,8 +29,8 @@ source=(
   "build-swt.xml"
 )
 noextract=("$_archive")
-sha256sums=('13b8d31153cf199e1aaa6f7dbff4f97ab61a256e78b8090fbcc55a363f02a697'
-            'a5e60b4d1b23a728f62f0b46d32717e7c4a8ea773c3539ca2091a19bed898fad')
+sha256sums=('a1219d1b4302aaea9af1de2c586069006249156d81e9bd76edc97426142da2e5'
+            'e382ae40d3a437b10a960bab81800a5e372769011ab591de2ce11426d52e6b37')
 
 prepare() {
   unzip -oq "$_archive" -d "$pkgname-$pkgver"
