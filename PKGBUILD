@@ -1,6 +1,6 @@
 # Maintainer: iamawacko <iamawacko@protonmail.com>
 pkgname=lok
-pkgver=0.2.2
+pkgver=0.2.4
 pkgrel=1
 url="https://github.com/wyhaya/lok"
 license=('MIT')
@@ -8,7 +8,7 @@ pkgdesc="Count the number of codes"
 arch=('any')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 makedepends=(cargo)
-sha256sums=('99fbc74c762cbe0de82d0705303ea55517a62d63ab3c725b1004d164a1ac1c38')
+sha256sums=('b74bd87a447aa2de9a2e05591df8c61f695374c14d1c8a41bedaeafe45167612')
 
 prepare() {
 	cd "$pkgname-$pkgver"
