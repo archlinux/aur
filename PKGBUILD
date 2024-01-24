@@ -2,13 +2,13 @@
 
 pkgname=sunxi-fw-git
 pkgver=r21.a768b73
-pkgrel=1
+pkgrel=5
 pkgdesc="Allwinner firmware images decoding and extraction tool"
 arch=(aarch64
     x86_64
     riscv64)
 url="https://github.com/apritzel/sunxi-fw"
-license=(GPL2)
+license=(GPL-2.0-only)
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
@@ -16,7 +16,7 @@ depends=(dtc
   glibc)
 makedepends=(git)
 backup=()
-options=('!strip')
+options=()
 install=
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
