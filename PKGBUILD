@@ -9,7 +9,7 @@ url="https://www.ip2location.io"
 license=('MIT')
 depends=('glibc')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ip2location/ip2location-io-cli/archive/refs/tags/$v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ip2location/ip2location-io-cli/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('86caf3202b8daea3a58aa3be3caa8514312116fba659d8e9e212e37b651b9f0d')
 
 prepare() {
