@@ -2,7 +2,7 @@
 # Contributor: "Darren Ng <$(base64 --decode <<<VW4xR2ZuQGdtYWlsLmNvbQo=)>"
 
 pkgname=genimage
-pkgver=16
+pkgver=17
 pkgrel=1
 pkgdesc="Tool to generate multiple filesystem and flash images from a tree"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -21,7 +21,7 @@ optdepends=(
 )
 
 source=($pkgname-$pkgver.tar.gz::https://github.com/pengutronix/$pkgname/archive/v$pkgver.tar.gz)
-sha256sums=('5b5ff31e58afdcf71bd7b61f7d81ee43c4c0751276bc03d51f40475e1c66e51a')
+sha256sums=('466a243cd104720f956e5ea305a64322ba2722b239a1520a7481f8ea904c0d13')
 
 build() {
   cd $pkgname-$pkgver
