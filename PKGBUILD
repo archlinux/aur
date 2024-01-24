@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=rtrtr
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="An RPKI data proxy"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('BSD-3-Clause')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/NLnetLabs/rtrtr/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3f7b2bd2728bb2056a93d098d4e6182a71283d36d116a3d7bded8d818da2efb0')
+sha256sums=('6b049803b2e73cfb45e29c0af59d35b21b833bfe5327479502b700563c6a94d6')
 
 
 prepare() {
