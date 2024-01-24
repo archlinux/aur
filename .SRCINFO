@@ -1,0 +1,14 @@
+pkgbase = image-scraper-suite-git
+	pkgdesc = ImageScraperSuite (ISS) is a Node.js script collection for automated image downloading and management.
+	pkgver = ae73bc8.20240123.11
+	pkgrel = 1
+	url = https://github.com/raven2cz/ImageScraperSuite
+	arch = any
+	license = LGPL2.1
+	makedepends = git
+	depends = nodejs
+	depends = npm
+	source = git+https://github.com/raven2cz/ImageScraperSuite.git
+	sha256sums = SKIP
+
+pkgname = image-scraper-suite-git
