@@ -4,7 +4,7 @@
 
 pkgbase=linux-kelvie-fw-git
 _tag=v6.7.1
-pkgver=6.7.r11.19030ea736b5
+pkgver=6.7.1.r11.61791a288975
 pkgrel=1
 pkgdesc="Linux kernel for Kelvie's AMD Framework 13 laptop"
 url="https://www.kernel.org"

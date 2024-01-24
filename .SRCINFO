@@ -16,7 +16,7 @@ pkgbase = linux-kelvie-fw-git
 	makedepends = tar
 	makedepends = xz
 	options = !strip
-	source = linux-torvalds::git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux#tag=v6.7
+	source = linux-stable::git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/stable/linux#tag=v6.7.1
 	source = config
 	source = modprobed.db
 	source = v12_20231205_li_meng_amd_pstate_preferred_core.mbx
