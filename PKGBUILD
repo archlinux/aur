@@ -2,7 +2,7 @@
 # Contributor: Rich Li <rich@dranek.com>
 _base=cmocean
 pkgname=python-${_base}
-pkgver=3.0.3
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="Colormap setup for standardizing commonly-plotting oceanographic variables"
 url="https://github.com/matplotlib/${_base}"
@@ -12,7 +12,7 @@ checkdepends=(python-pytest)
 license=(MIT)
 arch=(any)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('3afb6baf6741621ca11a365cd2ce2383cb24be0e86d6af40636e2bd9efd06433af6f851648ad19fd8b5be6333031832ea7248a1aad54a3bce95492406c7d473b')
+sha512sums=('73b781f13b60a8a4bb8bd5eea6dfcc4ca07c5f65786ced1d343e721d047b37760ea32f413a1f41a0651e6fc20a30656b1c1566e59bc31ed09b98789f1dc8e01f')
 
 build() {
   cd ${_base}-${pkgver}
