@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=siyuan-git
-pkgver=2.12.3.r0.gf6651fbc0
+pkgver=2.12.4.r0.g382cc92d9
 _electronversion=28
 _nodeversion=18
 pkgrel=1
@@ -8,7 +8,7 @@ pkgdesc="A privacy-first, self-hosted, fully open source personal knowledge mana
 arch=('any')
 url="https://b3log.org/siyuan"
 _ghurl="https://github.com/siyuan-note/siyuan"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 conflicts=(
     "${pkgname%-git}"
     "${pkgname%-git}-note"
