@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=tags
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='A simple text tagger'
 url="https://github.com/phastmike/tags"
