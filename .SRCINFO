@@ -1,0 +1,16 @@
+pkgbase = anteater
+	pkgdesc = Tool for tracing program output and creating structured logs using plain text or html.
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/Student-Team-Projects/Debugger.git
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = make
+	makedepends = clang
+	depends = libbpf
+	depends = bpf
+	depends = boost
+	source = debugger-0.0.0.zip::https://github.com/Student-Team-Projects/debugger/archive/refs/tags/v0.0.0.zip
+	md5sums = SKIP
+
+pkgname = anteater
