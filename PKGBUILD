@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-kelvie-fw-git
-_tag=v6.7
+_tag=v6.7.1
 pkgver=6.7.r11.19030ea736b5
 pkgrel=1
 pkgdesc="Linux kernel for Kelvie's AMD Framework 13 laptop"
@@ -23,9 +23,9 @@ makedepends=(
   xz
 )
 options=('!strip')
-_srcname=linux-torvalds
+_srcname=linux-stable
 source=(
-  "$_srcname::git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux#tag=$_tag"
+  "$_srcname::git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/stable/linux#tag=$_tag"
   config         # the main kernel config file
   modprobed.db   # modprobed.db file from modprobed-db on my laptop
   v12_20231205_li_meng_amd_pstate_preferred_core.mbx # in theory, a more efficient scheduler that prefers more efficient AMD cores
@@ -69,7 +69,7 @@ prepare() {
   echo "Setting version..."
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
-  # make defconfig
+  make defconfig
 
   local src
 
