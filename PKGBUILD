@@ -6,7 +6,7 @@
 
 _pkgname="debhelper"
 pkgname="$_pkgname"
-pkgver=13.11.9
+pkgver=13.11.10
 pkgrel=1
 pkgdesc="A collection of programs that can be used in a debian/rules file to automate common tasks"
 url="https://salsa.debian.org/debian/debhelper"
@@ -53,7 +53,7 @@ fi
 provides+=("dh-strip-nondeterminism")
 conflicts+=("dh-strip-nondeterminism")
 
-source+=("dh_strip_nondeterminism"::"$_url_dh_strip_nondeterminism/-/raw/master/bin/dh_strip_nondeterminism?inline=false")
+source+=("dh_strip_nondeterminism"::"$_url_dh_strip_nondeterminism/-/raw/master/bin/dh_strip_nondeterminism")
 sha256sums+=('SKIP')
 
 build() {
