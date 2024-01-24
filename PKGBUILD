@@ -2,7 +2,7 @@
 _pkgname="anyrun"
 pkgname="${_pkgname}-git"
 pkgver=r136.e14da6c
-pkgrel=4
+pkgrel=5
 pkgdesc="A rust-based wayland native krunner-like runner, made with customizability in mind."
 arch=("x86_64")
 url="https://github.com/Kirottu/anyrun"
