@@ -2,7 +2,7 @@
 
 pkgname=pizauth-git
 _pkgname="${pkgname%-git}"
-pkgver=1.0.3.r17.g194f75e
+pkgver=1.0.3.r19.gf32cb2f
 pkgrel=1
 pkgdesc="OAuth2 token requester daemon"
 arch=('i686' 'x86_64')
@@ -46,8 +46,4 @@ package() {
         EXAMPLESDIR='/usr/share/' \
         DESTDIR="$pkgdir/" \
         install
-    install -Dm644 "$pkgdir"/usr/share/pizauth/bash/completion.bash \
-        "$pkgdir"/usr/share/bash-completion/completions/pizauth
-    rm "$pkgdir"/usr/share/pizauth/bash/completion.bash
-    rmdir "$pkgdir"/usr/share/pizauth/bash/
 }
