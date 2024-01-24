@@ -5,6 +5,7 @@ pkgrel=1
 _gitname=c3
 pkgdesc="A TUI to-do list that uses and extends calcurse format to have tree-like dependencies."
 url="https://github.com/nimaaskarian/${_gitname}"
+conflicts=(c3)
 
 provides=(c3)
 arch=('x86_64')
