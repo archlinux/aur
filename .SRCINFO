@@ -4,7 +4,7 @@ pkgbase = chrolog-bin
 	pkgrel = 2
 	url = https://github.com/Lukylix/Chrolog
 	arch = x86_64
-	license = custom
+	license = LicenseRef-FOSS
 	makedepends = gendesk
 	depends = electron27
 	depends = hicolor-icon-theme
@@ -13,6 +13,6 @@ pkgbase = chrolog-bin
 	source = chrolog-1.7.2.zip::https://github.com/Lukylix/Chrolog/releases/download/v1.7.2/chrolog-1.7.2-linux.zip
 	source = chrolog.sh
 	sha256sums = 22836edb420c9be81348961d3d744e65464965faa20032964c8447e82fe81a3a
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
 
 pkgname = chrolog-bin

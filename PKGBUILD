@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc="An automated time tracking tool"
 arch=("x86_64")
 url="https://github.com/Lukylix/Chrolog"
-license=('custom')
+license=('LicenseRef-FOSS')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -22,13 +22,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('22836edb420c9be81348961d3d744e65464965faa20032964c8447e82fe81a3a'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-bin}"
+    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
