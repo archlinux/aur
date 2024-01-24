@@ -1,0 +1,14 @@
+pkgbase = nodejs-timezones-cli
+	pkgdesc = A cli tool to convert a date or timestamp into different timezones.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/alexishevia/timezones-cli
+	arch = any
+	license = ISC
+	depends = nodejs
+	depends = npm
+	noextract = timezones-cli-1.1.0.tgz
+	source = https://registry.npmjs.org/timezones-cli/-/timezones-cli-1.1.0.tgz
+	sha512sums = 1f9dcac031e2368c3161bee0928f4713516e4ba19377df09a8c31e812202adc9a5887c26067be99664a8eb58d4deead1eca98395b6ff8d6e42e83e532647ea34
+
+pkgname = nodejs-timezones-cli
