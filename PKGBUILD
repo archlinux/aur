@@ -5,15 +5,15 @@
 # Contributor: dalto <dalto at fastmail dot com>
 pkgname=slimjet
 _pkgname="flashpeak-${pkgname}"
-pkgver=42.0.1.0
-pkgrel=2
+pkgver=42.0.3.0
+pkgrel=1
 _libffmpegverurl="https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt"
 _libffmpegver=0.83.0
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('x86_64')
 url="https://www.slimjet.com"
 _downurl="https://www.slimjetbrowser.com"
-license=('custom:freeware')
+license=('LicenseRef-freeware')
 depends=(
     'libxcb'
     'at-spi2-core'
@@ -54,9 +54,9 @@ source=(
     "libffmpeg-${_libffmpegver}.zip::${_libffmpegverurl}/releases/download/${_libffmpegver}/${_libffmpegver}-linux-x64.zip"
     "LICENSE-${pkgver}.html::${url}/en/webhelp/index.htm"
 )
-sha256sums=('9aee390395ac6483b1f9b782fc99174c39f99f353d102d74f891c0a1a0ed20f4'
+sha256sums=('a83b5922db4fc6d1037ce5122b4b3198a78e1d3f9f65882088886d8825fb1989'
             '17d330079d91920e75521e9255a68b2a1bcc7d8aa84090bdce518b7160ea65e2'
-            '2c9dac1462b349e7c077ea33cdc91ff46563b2ca0457617958772a689b4c8d43')
+            '489c5c87b68886265b8ece54cbb58f1754062d90f1546d25aa8e26e759addf62')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/usr/bin/${_pkgname}|${_pkgname}|g;s|Icon=${_pkgname}|Icon=${pkgname}|g" \
