@@ -1,5 +1,14 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
+# I saw upstream "closed" the Linux support issue and made the code repository
+# public and open sourced it, so I thought "Yay"!. It turns out that was
+# premature. The issue actually just got migrated and the source is open but
+# still macOS only (builds with Xcode and targets Metal for the UI). So this
+# package isn't going to work yet. That being said now that the source is
+# public I kind of expect it won't take the community *so very long* to help
+# port it to other platforms. As such I'll leave this up and keep working on it
+# for when that actually happens. PKGREL=0 because not-yet-functional.
+
 pkgname=zed-editor
 pkgver=0.119.17
 pkgrel=0
