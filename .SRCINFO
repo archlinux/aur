@@ -7,9 +7,7 @@ pkgbase = zed-editor
 	license = GPL-3.0-only
 	license = Apache
 	makedepends = cargo
-	depends = glibc
-	depends = gcc-libs
-	options = !lto
+	makedepends = clang
 	source = https://github.com/zed-industries/zed/archive/v0.119.17/zed-0.119.17.tar.gz
 	sha256sums = 754f19868f35bffe86edd2c4fa9a39fff33d72c2f47eb5ade445e3fc8f060251
 
