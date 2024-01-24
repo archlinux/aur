@@ -9,8 +9,6 @@ pkgbase = psp-sdk
 	makedepends = psp-gcc
 	makedepends = git
 	depends = zlib
-	provides = psp-sdk-base
-	conflicts = psp-sdk-base
 	options = !buildflags
 	options = !strip
 	options = staticlibs
@@ -18,4 +16,3 @@ pkgbase = psp-sdk
 	md5sums = SKIP
 
 pkgname = psp-sdk
-
