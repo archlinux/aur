@@ -1,6 +1,6 @@
 pkgbase = qbittorrent-enhanced-nox-bin
 	pkgdesc = A bittorrent client powered by C++, Qt and the good libtorrent library (Enhanced Edition)
-	pkgver = 4.6.2.10
+	pkgver = 4.6.3.10
 	pkgrel = 1
 	url = https://github.com/c0re100/qBittorrent-Enhanced-Edition
 	arch = x86_64
