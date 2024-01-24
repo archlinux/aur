@@ -1,0 +1,4 @@
+[Palworld]
+title=Palworld
+description=Palworld Dedicated Server
+ports=8211/udp

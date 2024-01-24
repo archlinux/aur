@@ -1,0 +1,25 @@
+pkgbase = palworld-server
+	pkgdesc = Dedicated server for the Palworld PC game
+	pkgver = 22004492
+	pkgrel = 1
+	url = https://www.pocketpair.jp/palworld
+	arch = x86_64
+	license = custom:PocketPairLicense
+	makedepends = steamcmd
+	depends = zlib
+	depends = gcc-libs
+	depends = lib32-glibc
+	backup = etc/palworld/server.conf
+	backup = etc/ufw/applications.d/ufw-palworld
+	source = palworld-server.service
+	source = palworld.sysusers
+	source = palworld.tmpfiles
+	source = server.conf
+	source = ufw-palworld
+	sha512sums = 7c95490f209996c6140498803be478733362c2b7489013ced489ef8058e845fa3881fde3a2a892ff2ef76cb831e9908b12750d5b77a4f87341ba9f702845efe9
+	sha512sums = 2aa98d49fd5ed2683ab3f1aeac7dc3cc643ac7fd8b34bdcb84c6e5046f6dc92a15cef99ecb917fdb894107b5ad73d0148ec1e23d5365a9941140abc15c031022
+	sha512sums = 0fd7795b80a5a9f48abc6f9e6915bf0f8ecf1287154cb4e218ae662c0b5af3335e009ee59b7e9664ae5b20e6363c65f76f52a1625c1998b881187170870d71f1
+	sha512sums = f40b836b8faf395f6453c3bdc2bf94566172b5acbc46dcdd6af06f32acd858846bcab0b218b824398ecafc66a0ad6f8b647f1e06e771c893a6bbe5a059acbc1a
+	sha512sums = e31c49d353b188377e29aaffac4dea8bb16c18fc5fe15e74b7438968e7ed87345340896b285ff40a53801a4ad7eb0a777d2e53ead0303ab7eaadfa332c76dc33
+
+pkgname = palworld-server

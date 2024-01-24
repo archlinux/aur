@@ -1,0 +1,35 @@
+[Unit]
+Description=Palworld Dedicated Server
+Wants=network-online.target
+After=syslog.target network.target nss-lookup.target network-online.target
+
+[Service]
+Type=simple
+User=palworld
+Group=palworld
+StandardOutput=journal
+Restart=on-failure
+Environment="LD_LIBRARY_PATH=./linux64:$LD_LIBRARY_PATH"
+EnvironmentFile=/etc/palworld/server.conf
+ExecStart=/opt/palworld-server/PalServer.sh -port=${PORT} -players ${PLAYERS} -useperfthreads -NoAsyncLoadingThread -UseMultithreadForDS
+WorkingDirectory=/opt/palworld-server
+KillSignal=SIGINT
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+LockPersonality=true
+MemoryDenyWriteExecute=false
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RemoveIPC=true
+SystemCallFilter=@system-service
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target
