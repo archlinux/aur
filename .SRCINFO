@@ -1,7 +1,7 @@
 pkgbase = archub
 	pkgdesc = Command-line tool designed for managing packages in AUR
 	pkgver = 0.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nbebaw/Archub
 	arch = x86_64
 	license = MIT
