@@ -205,7 +205,7 @@ package_kodi-git() {
     'upower: Display battery level'
   )
   provides=("kodi-common=${pkgver}" 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
-  conflicts=('kodi' 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
+  conflicts=('kodi' 'kodi-gles' 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
 
   _components=(
     'kodi'

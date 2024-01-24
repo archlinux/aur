@@ -144,6 +144,7 @@ pkgname = kodi-git
 	provides = kodi-wayland
 	provides = kodi-gbm
 	conflicts = kodi
+	conflicts = kodi-gles
 	conflicts = kodi-x11
 	conflicts = kodi-wayland
 	conflicts = kodi-gbm
