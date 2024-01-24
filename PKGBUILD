@@ -35,10 +35,10 @@ fi
 ###################################################################################
 
 pkgbase=linux-rc
-pkgver=6.7rc8
-_pkgver=6.7-rc8
+pkgver=6.8rc1
+_pkgver=6.8-rc1
 pkgrel=1
-commit=79425d7496066714f38535eb4f37df529668e83a
+commit=7d2b6771ff6939d0ca6e8c9a7185d902a37b4eea
 arch=(x86_64)
 url='https://www.kernel.org/'
 license=(GPL2)
@@ -306,8 +306,8 @@ _package-headers(){
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('4306cbb1b33b2fd67a86d9a3e4faba9a95413398c3d9cf57991ee97800a0640a'
-            '45a44ff0e957cd562d2ceb60c1c90fc19c19e808209cebb46bfacfccfb56ad96'
+sha256sums=('327c0c2dcbe348ab9902dc30511f5cfb239cfff8a8d285b29779c4b5bd7c8e42'
+            'aa47193f89794412776f36c970cabbf19e9abaccf01e3c33f4f891dd4661e5af'
             'f936aae4d832ac87db8fbb9effb066dd368d092f71dd7135d1548babdb7d10c8')
 
 pkgname=($pkgbase $pkgbase-headers)
