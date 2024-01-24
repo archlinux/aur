@@ -1,10 +1,10 @@
 pkgbase = r-despace
 	pkgdesc = a framework to discover spatially variable genes
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = https://bioconductor.org/packages/DESpace
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-statmod
 	checkdepends = r-testthat
 	depends = r-assertthat
@@ -33,8 +33,8 @@ pkgbase = r-despace
 	optdepends = r-scuttle
 	optdepends = r-spatiallibd
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DESpace_1.2.0.tar.gz
-	md5sums = 436915bded5ec94da6e412ccdff80e8e
-	b2sums = a351a2973c8b752c97d79f4a131a5b28e92d7f9a2c7e4574a2febe393626bfeff6ead00645be11f7fc5a5645ea594534edac0058106e8751053149b30df4f38e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DESpace_1.2.1.tar.gz
+	md5sums = 98a7395caa0d843520f62f06386483b9
+	b2sums = 7ed828ea39b99237160ba30dbce0e9125b48aa41802d0e8ebada24ca395e97662dc84af6802b99ec18dfb991a9e28b4e0cdb9ae15bf2643a5419a0890fd2df31
 
 pkgname = r-despace

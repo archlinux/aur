@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=DESpace
-_pkgver=1.2.0
+_pkgver=1.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="a framework to discover spatially variable genes"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(GPL3)
+license=('GPL-3.0-only')
 depends=(
   r-assertthat
   r-biocgenerics
@@ -44,8 +44,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('436915bded5ec94da6e412ccdff80e8e')
-b2sums=('a351a2973c8b752c97d79f4a131a5b28e92d7f9a2c7e4574a2febe393626bfeff6ead00645be11f7fc5a5645ea594534edac0058106e8751053149b30df4f38e')
+md5sums=('98a7395caa0d843520f62f06386483b9')
+b2sums=('7ed828ea39b99237160ba30dbce0e9125b48aa41802d0e8ebada24ca395e97662dc84af6802b99ec18dfb991a9e28b4e0cdb9ae15bf2643a5419a0890fd2df31')
 
 build() {
   mkdir build
