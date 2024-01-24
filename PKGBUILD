@@ -2,7 +2,7 @@
 
 pkgname=jdmrpackinstaller
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Install Modrinth modpacks"
 arch=("any")
 url="https://codeberg.org/JakobDev/jdMrpackInstaller"
@@ -10,7 +10,7 @@ license=("GPL3")
 depends=("python" "python-pyqt6" "python-minecraft-launcher-lib")
 makedepends=("qt5-tools" "python-build" "python-setuptools" "python-installer" "python-wheel")
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/JakobDev/jdMrpackInstaller/archive/${pkgver}.tar.gz")
-sha256sums=("8efa998975b654ce8abc77346709be5e3daefb7b7f7022ff33e2f9449086d68c")
+sha256sums=("bfeb29bf70ea1ada091f6d6f5db5c938d7f4590d5c8370132e49bc566fa529a1")
 
 build() {
       cd "jdmrpackinstaller"
