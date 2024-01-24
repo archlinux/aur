@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark.wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark.wagie at proton dot me>
 # Contributor: toluschr <toluschr at protonmail dot com>
 pkgname=yaru-colors-gtk-theme-git
 pkgver=21.10.3ubuntu5.r1.gcb79ae7c
@@ -27,7 +28,7 @@ source=('git+https://github.com/Jannomag/Yaru-Colors.git#branch=what-if-21.10')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/Yaru-Colors"
+  cd Yaru-Colors
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/snap//'
 }
 
