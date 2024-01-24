@@ -4,7 +4,7 @@
 
 _pkgname=sdrpp
 pkgname="$_pkgname-git"
-pkgver=1.0.4.r537.ead2ac6
+pkgver=1.0.4.r561.eab4264
 pkgrel=1
 pkgdesc="The bloat-free SDR receiver"
 arch=(x86_64)
@@ -16,15 +16,8 @@ makedepends=(cmake git "${_plugindeps[@]}")
 optdepends=("${_plugindeps[@]}")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://github.com/AlexandreRouma/SDRPlusPlus.git"
-        "rtaudio.patch")
-b2sums=('SKIP'
-        '1a08a82edd076b292f1c420c33bc1ba4e038a0b05f32d71927c4f4c0be4f713c3265c11f765eb16721405a5e3abbc443ad57fa0566e36a14b4cb4ec95cd901f1')
-
-prepare() {
-    cd $_pkgname
-    patch --forward --strip=1 --input="$srcdir/rtaudio.patch"
-}
+source=("$_pkgname::git+https://github.com/AlexandreRouma/SDRPlusPlus.git")
+b2sums=('SKIP')
 
 pkgver() {
 	git -C $_pkgname describe --long --tags --exclude nightly | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
