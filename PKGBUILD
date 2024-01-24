@@ -1,11 +1,11 @@
 # Maintainer: Edvin Bryntesson <aur@edvinbryntesson.se>
 _pkgname="anyrun"
 pkgname="${_pkgname}-git"
-pkgver=r49.ca8255c
-pkgrel=3
+pkgver=r136.e14da6c
+pkgrel=4
 pkgdesc="A rust-based wayland native krunner-like runner, made with customizability in mind."
 arch=("x86_64")
-url="github.com/Kirottu/anyrun"
+url="https://github.com/Kirottu/anyrun"
 license=('GPL3')
 depends=(gtk-layer-shell gtk3 pango cairo gdk-pixbuf2 glib2)
 makedepends=(git cargo)
