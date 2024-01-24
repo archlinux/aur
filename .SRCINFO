@@ -1,6 +1,6 @@
 pkgbase = zeppplayer
 	pkgdesc = Unofficial ZeppOS emulator
-	pkgver = 1.7
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://melianmiko.ru/en/zeppplayer
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = zeppplayer
 	depends = python-pillow
 	depends = python-requests
 	depends = python-six
-	source = zeppplayer-1.7::git+https://github.com/melianmiko/ZeppPlayer.git
+	source = zeppplayer-1.7.2::git+https://github.com/melianmiko/ZeppPlayer.git
 	md5sums = SKIP
 
 pkgname = zeppplayer
