@@ -7,7 +7,7 @@ pkgver="0.14.0"
 pkgrel=1
 pkgdesc="A standalone Wayland session manager"
 url="https://github.com/Vladimir-csp/uwsm"
-arch=("x86_64")
+arch=("any")
 license=("MIT")
 depends=(
   "python"
