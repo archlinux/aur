@@ -1,0 +1,154 @@
+Release history
+
+  Version 3.11 (2024-01-22)
+
+     * Added Read Device Identification for FC 43 subfunction 14 (-t id)
+     * Added Read File Record FC 20 (-t file)
+     * Added Write File Record FC 21 (-t file)
+     * Added Lufkin ELAM protocol variant (-x)
+     * Modbus UDP: Fix length detection when transaction ID is set to 0
+     * Modbus/TCP: Fix wrong invalid MBAP ID/invalid frame indication for
+       the  following  frame  if extranous characters are sent in the TCP
+       stream
+     * Added Linux ARMv6 RPI (32-bit) platform for Pi Zero
+
+  Version 3.10 (2021-03-26)
+
+     * Added Linux ARMv8 AArch64 (64-bit) platform
+
+  Version 3.9 (2020-07-14)
+
+     * Added support for single register and single coil writes
+     * Display function code used in protocol configuration
+     * Removed automatic fallback to FC6 added in 3.7.
+
+  Version 3.8 (2020-03-24)
+
+     * Writing negative values was causing Unrecognized option or missing
+       option parameter error under Linux
+
+  Version 3.7 (2019-07-21)
+
+     * Write  functions  with  a count of 1 use now the following scheme:
+       Registers  use FC16 first, and if an illegal function exception is
+       received  will  try  FC6  as  fallback. Coils always use FC5 for a
+       count  of  1. This helps with slave devices which do not implement
+       mandatory FC16.
+
+  Version 3.6 (2018-04-05)
+
+     * MODBUS UDP protocol added (-m udp)
+
+  Version 3.5 (2017-03-24)
+
+     * Fixed  argument validation bug which prevented using PDU mode with
+       a start register of 0 (-r0 -0)
+
+  Version 3.4 (2013-01-30)
+
+     * Increased reference count to 2000 for discretes/coils
+
+  Version 3.3 (2012-10-25)
+
+     * Fixed  error  message  when  passing  negative float values on the
+       command line
+
+  Version 3.2 (2012-03-28)
+
+     * COMn syntax can now also be used for COM port number >= 10
+
+  Version 3.1 (2011-05-27)
+
+     * Slave ID of 0 is supported for Modbus/TCP
+
+  Version 3.0 (2011-03-05)
+
+     * Write function added
+     * protocol  is now auto-detected as RTU or TCP depending on value of
+       first parameter
+     * -l pollDelay parameter added -- Added "--" separator before values
+       are printed to make parsing of result easier
+
+  Version 2.10 (2010-08-26)
+
+     * -c parameter now accepts a value of 125.
+     * Changed default start reference (-r) to 1
+
+  Version 2.9 (2010-01-29)
+
+     * Fixed  lock-up  issue on some Linux platforms which was introduced
+       in 2.7.
+
+  Version 2.8 (2009-11-16)
+
+     * Default baudrate is now 19200 as per Modbus standard.
+
+  Version 2.7 (2009-06-04)
+
+     * Corrected help and range check for -a parameter
+
+  Version 2.6 (2008-10-30)
+
+     * Added  option -0 for PDU addressing and option -e for Enron/Daniel
+       32-bit mode.
+
+  Version 2.5 (2008-04-03)
+
+     * A  return  code  of  1 is returned if operation was not successful
+       otherwise 0
+     * -c parameter now accepts a value of 100.
+     * Added time-out command line parameter.
+     * Retry count is now 0 for serial protocols (was 2 before).
+
+  Version 2.4.0 (2006-10-20)
+
+     * Default parity changed to even as per Modbus standard.
+
+  Revision 1.17 (2005-06-07)
+
+     * Using  the -i command line parameters returned an error message in
+       ealier releases.
+
+  Version 2.2.1 / Revision 1.16 (2004-09-22)
+
+     * Using  the  -d  and  -s  command line parameters returned an error
+       message in earlier releases.
+
+  Version 2.2 / Revision 1.15 (2004-04-25)
+
+     * RTU  over  TCP protocol added, which is also known as encapsulated
+       RTU.
+     * Recompiled against 2.2 release of libmbusmaster.
+
+  Version 2003-05-20
+
+     * Recompiled against 2.0 release of libmbusmaster.
+     * RTU/ASCII: Added RS-485 mode for Win32, QNX and Linux platforms.
+     * ASCII:   Fixed  casting  bug  which  caused  protocol  error  when
+       transmitting FF.
+     * MODBUS/TCP: Time-out applies now also when connecting to a server,
+       tolerate  a  zero  address  field  in  an  exception  reply, fixed
+       auto-retry.
+
+  Version 1.2 (2002-11-19)
+
+     * Terminates in case of a closed TCP/IP connection.
+     * Some error messages changed.
+     * Changed  command line options for holding and input registers. -t4
+       is now holding register, -t3 input register.
+     * Retry option is now working.
+     * --version paremeter introduced.
+     * Retries fixed.
+     * -p parameter for MODBUS/TCP introduced.
+     * Default parity changed to NONE.
+     * Based on FieldTalk v1.3.
+
+  Version 1.1 (2002-07-15)
+
+     * Reference index print-out for 32-bit values corrected.
+     * Based on updated FieldTalk library which fixed issue with time-out
+       monitoring
+
+  Version 1.0 (2002-03-03)
+
+     * First release

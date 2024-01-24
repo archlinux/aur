@@ -10,6 +10,7 @@ arch=("x86_64")
 url="https://www.modbusdriver.com/$_pkgname.html"
 license=('custom')
 provides=("$_pkgname")
+changelog="CHANGELOG"
 source=("https://www.modbusdriver.com/downloads/$_pkgname.$pkgver.tgz")
 sha256sums=('3c97066638b581b0a85bd164ffd4f283e4a97287d4ee5f3a5c2614d76130e880')
 
