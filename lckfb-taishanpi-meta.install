@@ -1,5 +1,7 @@
 post_install() {
 	echo "---------------------------------------------------------------"
+	echo ":: tspi-linux-sdk"
+	echo "   https://github.com/CmST0us/tspi-linux-sdk"
 	echo ":: Add yourself to the uucp group to access the serial ports:"
     echo "   sudo gpasswd -aG \$USER uucp"
     echo "   sudo udevadm control --reload-rules"
