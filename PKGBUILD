@@ -4,14 +4,14 @@
 # Contributor: frichtlm <frichtlm@gmail.com>
 
 _pkgname=tidyr
-_pkgver=1.3.0
+_pkgver=1.3.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="Tidy Messy Data"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   r-cli
   r-dplyr
@@ -42,8 +42,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6721234466ed4b48bab20286131d4a06')
-sha256sums=('8d532b9366fdd3ec9827b51830e559a49d073425007c766025f0e603964e0a9d')
+md5sums=('0491d9d3359af7baf8ad9003ce44aa1d')
+b2sums=('43ec7fca79d137205847ae837a20f6ed2be8d4440cde29f6ff11cac0df35a1fbdb6d55d1365303819d25f5333819c9541a4e0a006e39e22cfa665c0f9d8fbf76')
 
 prepare() {
   cd "$_pkgname/tests/testthat"
@@ -56,8 +56,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
