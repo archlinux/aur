@@ -1,19 +1,19 @@
-# Maintainer: Guilhem "Nim65s" Saurel <guilhem.saurel@laas.fr>
+# Maintainer: Guilhem Saurel <guilhem.saurel@laas.fr>
 
-pkgorg='stack-of-tasks'
+_org='stack-of-tasks'
 _pkgname='pinocchio'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=2.6.21
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="Dynamic computations using Spatial Algebra"
 arch=('i686' 'x86_64')
-url="https://github.com/$pkgorg/$pkgname"
-license=('BSD')
-depends=('hpp-fcl' 'eigenpy' 'urdfdom')
-optdepends=('doxygen' 'lua52' 'cppad' 'cppadcodegen')
-makedepends=('cmake' 'eigen')
-source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig})
-sha256sums=('11131e2a694388f7364f9d8d91615507ad2e13faf58a27a898b930f36f5e3db3'
+url="https://github.com/$_org/$_pkgname"
+license=('BSD-2-Clause')
+depends=('hpp-fcl' 'eigenpy' 'urdfdom' 'python' 'boost-libs' 'gcc-libs' 'glibc' 'eigen' 'python-numpy')
+optdepends=('lua52' 'cppad' 'cppadcodegen')
+makedepends=('cmake' 'boost' 'doxygen')
+source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz"{,.sig})
+sha256sums=('fbc8de46b3296c8bf7d4d9b03392c04809a1bca52930fab243749eeef39db406'
             'SKIP')
 validpgpkeys=(
         'A031AD35058955293D54DECEC45D22EF408328AD'  # https://github.com/jcarpent.gpg
@@ -27,9 +27,10 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DBUILD_WITH_AUTODIFF_SUPPORT="$(pacman -Qs cppad > /dev/null && echo -n ON || echo -n OFF)" \
         -DBUILD_WITH_CODEGEN_SUPPORT="$(pacman -Qs cppadcodegen > /dev/null && echo -n ON || echo -n OFF)" \
-        -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
-        -DGENERATE_PYTHON_STUBS=ON
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DGENERATE_PYTHON_STUBS=ON \
+        -Wno-dev
     # TODO: stubs require -j1, ref https://github.com/jrl-umi3218/jrl-cmakemodules/issues/600
     cmake --build "build-$pkgver" -j 1
 }
