@@ -1,6 +1,6 @@
 pkgbase = r-r.huge
 	pkgdesc = Methods for Accessing Huge Amounts of Data [deprecated]
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=R.huge
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-r.huge
 	depends = r-r.methodss3
 	depends = r-r.oo
 	depends = r-r.utils
-	source = https://cran.r-project.org/src/contrib/R.huge_0.10.0.tar.gz
-	sha256sums = 4b1c577852ad22cb016553e323e77afe22c0196f574dbee3a5cb9963b7d64cf2
+	source = https://cran.r-project.org/src/contrib/R.huge_0.10.1.tar.gz
+	sha256sums = 05cb1edaaa0ad120c2946a80405c8c8da6a778873f08ff203391452527786ce8
 
 pkgname = r-r.huge
