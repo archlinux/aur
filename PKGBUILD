@@ -1,23 +1,23 @@
-# Maintainer: David Wu <xdavidwuph@gmail.com>
+# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Contributor: David Wu <xdavidwuph@gmail.com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: M A <morealaz at gmail dot com>
 # Contributor: Mariell Hoversholm <proximyst at proximyst dot com>
 # Contributor: Schrodinger Zhu <i at zhuyi dot fan>
 # Contributor: Davide Depau <davide at depau dot eu>
-# Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=jdk-openj9-bin
-_jdkver=18
+_jdkver=21
 _jdkminor=0
-_jdkpatch=2
+_jdkpatch=1
 _jdksubpatch=1
 _jdkfullver=${_jdkver}.${_jdkminor}.${_jdkpatch} #.${_jdksubpatch}
-_openj9ver=0.33.1
-_buildvershort=9
+_openj9ver=0.42.0
+_buildvershort=12
 _buildver=${_buildvershort}_openj9-${_openj9ver}
 pkgver=${_jdkfullver}b${_buildver//-/_}
 pkgrel=1
-pkgdesc="Eclipse (former IBM) OpenJ9 with openjdk${_jdkver}"
+pkgdesc="IBM Semeru OpenJ9 with openjdk${_jdkver}"
 arch=('x86_64')
 url="https://developer.ibm.com/languages/java/semeru-runtimes/downloads"
 license=('custom')
@@ -34,7 +34,7 @@ conflicts=("jdk${_jdkver}-openj9-bin" "jdk${_jdkver}-openj9")
 options=(!strip)
 source=("https://github.com/ibmruntimes/semeru${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}/ibm-semeru-open-jdk_x64_linux_${_jdkfullver}_${_buildver}.tar.gz")
 
-sha256sums=('b694d47666035b1f7870bc3749aa7c1903d50976eab3772fd81c32dab2aa8e64')
+sha256sums=('ad575bc4b1fa9e9fa56661444b6153abfa147ec155845afa054472fa6357f026')
 
 _jvmdir=usr/lib/jvm/java-${_jdkver}-j9
 

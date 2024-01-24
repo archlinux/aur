@@ -1,6 +1,6 @@
 pkgbase = jdk-openj9-bin
-	pkgdesc = Eclipse (former IBM) OpenJ9 with openjdk18
-	pkgver = 18.0.2b9_openj9_0.33.1
+	pkgdesc = IBM Semeru OpenJ9 with openjdk21
+	pkgver = 21.0.1b12_openj9_0.42.0
 	pkgrel = 1
 	url = https://developer.ibm.com/languages/java/semeru-runtimes/downloads
 	arch = x86_64
@@ -8,16 +8,16 @@ pkgbase = jdk-openj9-bin
 	depends = java-environment-common
 	depends = ca-certificates-utils
 	depends = nss
-	provides = java-environment=18
-	provides = java-environment-openjdk=18
-	provides = java-runtime=18
-	provides = java-runtime-openjdk=18
-	provides = java-runtime-headless=18
-	provides = java-runtime-headless-openjdk=18
-	conflicts = jdk18-openj9-bin
-	conflicts = jdk18-openj9
+	provides = java-environment=21
+	provides = java-environment-openjdk=21
+	provides = java-runtime=21
+	provides = java-runtime-openjdk=21
+	provides = java-runtime-headless=21
+	provides = java-runtime-headless-openjdk=21
+	conflicts = jdk21-openj9-bin
+	conflicts = jdk21-openj9
 	options = !strip
-	source = https://github.com/ibmruntimes/semeru18-binaries/releases/download/jdk-18.0.2%2B9_openj9-0.33.1/ibm-semeru-open-jdk_x64_linux_18.0.2_9_openj9-0.33.1.tar.gz
-	sha256sums = b694d47666035b1f7870bc3749aa7c1903d50976eab3772fd81c32dab2aa8e64
+	source = https://github.com/ibmruntimes/semeru21-binaries/releases/download/jdk-21.0.1%2B12_openj9-0.42.0/ibm-semeru-open-jdk_x64_linux_21.0.1_12_openj9-0.42.0.tar.gz
+	sha256sums = ad575bc4b1fa9e9fa56661444b6153abfa147ec155845afa054472fa6357f026
 
 pkgname = jdk-openj9-bin
