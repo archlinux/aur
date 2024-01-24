@@ -1,9 +1,9 @@
 # Maintainer: Eugene 'Vindex' Stulin <tech.vindex@gmail.com>
 PROJECT=amalthea
 DESCR="Small general library for the D programming language"
-makedepends=("bash" "chrpath" "glib2" "ldc")
-depends=("glib2" "ldc")
-pkgver=1.5.0
+makedepends=("bash" "chrpath" "findutils" "glib2" "ldc")
+depends=("dialog" "glib2" "ldc")
+pkgver=1.6.0
 pkgrel=1
 license=("BSL-1.0 or LGPL-3+")
 
@@ -16,7 +16,7 @@ arch=("x86_64")
 url="https://gitlab.com/os-18/${PROJECT}"
 TARBALL=$pkgname-$pkgver.tar.gz
 source=("$TARBALL::$url/-/archive/v$pkgver/${PROJECT}-v$pkgver.tar.gz")
-sha256sums=("08461529dfd1df16049a2af928d188e331c2841b0ed6abea9f01729adba7ba71")
+sha256sums=("a66b89423d4ad272a32e7add467f5707e1faefad15022950af9b321936b45e13")
 
 build() {
     cd "${PROJECT}-v$pkgver"
