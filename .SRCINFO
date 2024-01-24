@@ -1,7 +1,7 @@
 pkgbase = kbsrv
 	pkgdesc = kbsrv is a tool to host a 'keyboard server' by wrapping ydotool in a TCP server
-	pkgver = 0.1.2
-	pkgrel = 1
+	pkgver = 0.1.1
+	pkgrel = 2
 	url = https://gitlab.com/neilsimp1/kbsrv
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = kbsrv
 	license = GPL-3-or-later
 	makedepends = rust
 	depends = ydotool
-	source = https://gitlab.com/neilsimp1/kbsrv/-/archive/0.1.2/kbsrv-0.1.2.tar.gz
+	source = https://gitlab.com/neilsimp1/kbsrv/-/archive/0.1.1/kbsrv-0.1.1.tar.gz
 	sha256sums = 0aee8edf9a1bf10254d91abe4f14b8cc050b540af59d61951111c130d8adfbe0
 
 pkgname = kbsrv

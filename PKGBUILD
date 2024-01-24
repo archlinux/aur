@@ -1,8 +1,8 @@
 # Maintainer: Neil Simpson <neilsimp1@gmail.com>
 
 pkgname=kbsrv
-pkgver=0.1.2
-pkgrel=1
+pkgver=0.1.1
+pkgrel=2
 pkgdesc="kbsrv is a tool to host a 'keyboard server' by wrapping ydotool in a TCP server"
 arch=("x86_64" "aarch64" "armv7h")
 url="https://gitlab.com/neilsimp1/kbsrv"
