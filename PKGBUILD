@@ -4,16 +4,19 @@
 : ${_build_clang:=true}
 : ${_build_mold:=false}
 
+: ${_build_instrumented:=false}
+
 : ${_build_avx:=true}
 : ${_build_git:=true}
 
+[[ "${_build_instrumented::1}" == "t" ]] && _pkgtype+="-instrumented"
 [[ "${_build_avx::1}" == "t" ]] && _pkgtype+="-avx"
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
 # basic info
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.7.5497.r0.g49922ebe3
+pkgver=1.7.5500.r0.g5087fcea
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
@@ -213,14 +216,14 @@ EOF
   _prepare_biojppm_c4core
 
   # prevent march=native
-  sed -E -i "$_pkgsrc/cmake/BuildParameters.cmake" \
-    -e 's&^(\s*)(add_compile_options\(.*-march=native.*\))&\1message("skip: march=native")&'
+  sed -E -e 's@^(\s*)(add_compile_options\(.*march=native.*\))@\1message("skip: march=native")@' \
+    -i "$_pkgsrc/cmake/BuildParameters.cmake"
 }
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' \
-    | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
@@ -232,7 +235,6 @@ build() {
     -DCMAKE_BUILD_TYPE="Release"
     -DUSE_ASAN=OFF
 
-    -DDISABLE_BUILD_DATE=ON # default:unset
     -DENABLE_TESTS=OFF # default:ON
     -Wno-dev
   )
@@ -263,6 +265,22 @@ build() {
     _cmake_options+=(-DDISABLE_ADVANCE_SIMD=ON)
   fi
 
+  local _pgo_profile_old="${SRCDEST-$startdir}/$pkgname.prof"
+  local _pgo_profile="$srcdir/$pkgname.prof"
+  if [[ "${_build_instrumented::1}" == "t" ]] ; then
+    echo "Compiling with instrumentation."
+    export CFLAGS+=" -fprofile-generate"
+    export CXXFLAGS+=" -fprofile-generate"
+  elif [ -e "$_pgo_profile_old" ] ; then
+    # LLVM_PROFILE_FILE="default_%9m.profraw" pcsx2-qt
+    # llvm-profdata merge -output=pcsx2-avx-git.prof *.profraw
+    echo "Compiling with profile-guided optimization."
+    cp --reflink=auto "$_pgo_profile_old" "$_pgo_profile"
+
+    export CFLAGS+=" -fprofile-use='$_pgo_profile'"
+    export CXXFLAGS+=" -fprofile-use='$_pgo_profile'"
+  fi
+
   cmake "${_cmake_options[@]}"
   cmake --build build
 
@@ -274,12 +292,12 @@ package() {
   install -Dm644 patches.zip -t "$pkgdir/opt/$_pkgname/resources/"
   cp --reflink=auto -r build/bin/* "$pkgdir/opt/$_pkgname/"
 
-  install -Dm755 "$_pkgname.sh" "${pkgdir:?}/usr/bin/pcsx2-qt"
+  install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/pcsx2-qt"
 
-  install -Dm644 "$_pkgname.desktop" "${pkgdir:?}/usr/share/applications/pcsx2-qt.desktop"
+  install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/pcsx2-qt.desktop"
 
   install -Dm644 "$_pkgsrc/bin/resources/icons/AppIconLarge.png" \
-    "${pkgdir:?}/usr/share/pixmaps/$_pkgname.png"
+    "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 }
 
 # execute
