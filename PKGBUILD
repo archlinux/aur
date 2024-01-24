@@ -1,6 +1,6 @@
 # Maintainer: magodo <wztdyl@sina.com>
 pkgname=aztfy-bin
-pkgver=0.10.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="A tool to bring existing Azure resources under Terraform's management"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -14,10 +14,10 @@ source_x86_64=(https://github.com/Azure/aztfy/releases/download/v${pkgver}/aztfy
 source_armv7h=(https://github.com/Azure/aztfy/releases/download/v${pkgver}/aztfy_v${pkgver}_linux_arm.zip)
 source_aarch64=(https://github.com/Azure/aztfy/releases/download/v${pkgver}/aztfy_v${pkgver}_linux_arm64.zip)
 
-sha256sums_i686=(608b2a24bbf9c6d678209eef2c65e6d3a2f8b799a1665773a1dd37af49eb8680)
-sha256sums_x86_64=(2f2b5d4f0951596289949f47c9e5a4058d75c4d8bcb6463f79f4b2dc45de2868)
-sha256sums_armv7h=(a1d2cb792b2d74be7983966a98bee2070853539077a9e655521e057440b287d1)
-sha256sums_aarch64=(26ebf049ba63005642de49c7d46f8f0c67114c226c462815463e948351c93132)
+sha256sums_i686=(87e2d85c208ad86ff694ed0becc662450c94e3a90462e582dacdf9e6784fbb1f)
+sha256sums_x86_64=(024dc90a6bd89cc1b4888373b5819d10b727c73d20c70be1ff160bf15a74ce80)
+sha256sums_armv7h=(26354acb9d430c9f5f4e18fda8c53a4f4ab9689aa058cdd2fcd9b0cb8832c780)
+sha256sums_aarch64=(8ce70004e9aacb034aa7a0cced5440ff52037286bcd7a74cca881a898ac839e6)
 
 package() {
     install -d "${pkgdir}/usr/bin"
