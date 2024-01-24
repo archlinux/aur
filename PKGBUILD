@@ -1,11 +1,10 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-compute-runtime-bin
-pkgver=23.43.27642.18
+pkgver=23.48.27912.11
 _gmmver=22.3.11
-_gmmci=17757293
 _gmmsover=12
-_igcver=1.0.15468.11
+_igcver=1.0.15610.11
 _lzver="1.3.$(sed -E 's/([0-9]+\.){2}//' <<< "$pkgver")"
 pkgrel=1
 pkgdesc='Intel Graphics Compute Runtime for oneAPI Level Zero and OpenCL Driver (pre-compiled binaries)'
@@ -20,15 +19,15 @@ conflicts=('intel-compute-runtime' 'intel-gmmlib')
 options=('!strip' '!emptydirs')
 source=("https://github.com/intel/compute-runtime/releases/download/${pkgver}/intel-opencl-icd_${pkgver}_amd64.deb"
         "https://github.com/intel/compute-runtime/releases/download/${pkgver}/intel-level-zero-gpu_${_lzver}_amd64.deb"
-        "${pkgname}-${pkgver}-gmmlib-dev-${_gmmver}_amd64.deb"::"https://github.com/intel/compute-runtime/releases/download/${pkgver}/libigdgmm-dev_${_gmmver}.ci${_gmmci}_amd64.deb"
+        "${pkgname}-${pkgver}-gmmlib-dev-${_gmmver}_amd64.deb"::"https://github.com/intel/compute-runtime/releases/download/${pkgver}/libigdgmm-dev_${_gmmver}_amd64.deb"
         "${pkgname}-${pkgver}-gmmlib-${_gmmver}_amd64.deb"::"https://github.com/intel/compute-runtime/releases/download/${pkgver}/libigdgmm${_gmmsover}_${_gmmver}_amd64.deb"
         'LICENSE')
 noextract=("intel-opencl-icd_${pkgver}_amd64.deb"
            "intel-level-zero-gpu_${_lzver}_amd64.deb"
            "${pkgname}-${pkgver}-gmmlib-dev-${_gmmver}_amd64.deb"
            "${pkgname}-${pkgver}-gmmlib-${_gmmver}_amd64.deb")
-sha256sums=('8ba085712144459d288e734e7f82cadd8241234741db8167d6c7e16e95ccc120'
-            '6a4ed4db6f367400454a1b25d5eb997612a946cc6255d33029c5992a9d50cbf0'
+sha256sums=('dc2884bd025c32c5f63b9d197b3faab9c2f712938892a1d69487f0155cd0d5b1'
+            '448e42df90396bc25c0affcbfc549ed5eb1c5cc6a21a6383ef0a35acc1f15ed3'
             '78b4a1eab0e133c2917a8b7889ef1eae9f32aa07df2795acc5510ddee857bfdc'
             'aba2ab44cc7a150c819768a0373c24306fb785ddf626ac6c29bcc90fcbc9bdfd'
             '987a002c6c9eb75290d9937735641ef4f4b670591ee79e1ac8edebe16a81872e')
