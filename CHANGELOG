@@ -1,3 +1,20 @@
+# Changes in version 1.1.1
+
+Added:
+
+- A work in progress implementation for experimental NTS pools was added
+
+Changed:
+
+- Updated dependencies
+
+Fixed:
+
+- Fixed missing newline at the end of the prometheus metrics export
+- Fixed error handling on NTS key exchange sessions
+- Small fixes to the experimental NTPv5 draft support
+
+
 # Changes in version 1.1.0
 
 Added:
