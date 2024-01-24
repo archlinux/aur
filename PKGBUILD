@@ -1,6 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fsolauncher
-pkgver=1.9.2_prod.2
+_pkgname="FreeSO Launcher"
+pkgver=1.9.2_prod.3
 _electronversion=22
 _nodeversion=16
 pkgrel=1
@@ -20,11 +21,11 @@ makedepends=(
     'git'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${_ghurl}.git#tag=${pkgver//_/-}"
+    "${pkgname}.git::git+${_ghurl}.git#tag=${pkgver//_/-}"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('SKIP'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -37,8 +38,8 @@ build() {
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -f -n -q --categories "Game" --name "${pkgname}" --exec "${pkgname}"
-    cd "${srcdir}/${pkgname}-${pkgver}/src"
+    gendesk -f -n -q --categories "Game" --name "${_pkgname}" --exec "${pkgname} %U"
+    cd "${srcdir}/${pkgname}.git/src"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -49,7 +50,7 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/beta.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}.git/src/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/src/beta.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
