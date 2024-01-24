@@ -1,6 +1,6 @@
 pkgbase = psp-newlib
-	pkgdesc = Newlib is a C library intended for use on embedded systems (psp)
-	pkgver = 4.1.0
+	pkgdesc = A fork of newlib for the PSP (psp)
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = https://github.com/pspdev/newlib
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = psp-newlib
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = newlib-4.1.0::git+https://github.com/pspdev/newlib.git#branch=allegrex-v4.1.0
+	source = newlib-4.4.0::git+https://github.com/pspdev/newlib.git#branch=allegrex-v4.4.0
 	sha256sums = SKIP
 
 pkgname = psp-newlib
