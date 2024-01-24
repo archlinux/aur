@@ -1,7 +1,7 @@
 pkgbase = mozc-ut
 	pkgdesc = The Open Source edition of Google Japanese Input bundled with the UT dictionary
 	pkgver = 2.29.5346.102.20240122
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/mozc
 	arch = x86_64
 	license = Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-3.0-only AND MIT AND MS-PL AND NAIST-2003 AND Unicode-3.0
