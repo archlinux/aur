@@ -55,7 +55,7 @@ _url="https://github.com/storaged-project/${_pkg}"
 source=(
   "${pkgname}-${pkgver}.tar.gz::${_url}/archive/${_pkg}-${pkgver}.tar.gz")
 sha512sums=(
-  '12580e5c718c109613d5c9ab2474c23820417abb421e59433f77d187169a4ce3f495a8e36fcb01290c86e461b51f1b829c5a84601e9f7e75b253aa961bb02619'
+  '0e29d774e855000fefcaa33c91cb08d6fbc64d8674da2cf4a842a72bec748b499e086a829a172777279d822f635fc547750da0c40090b4e7aed0a079c615e4e2'
 )
 
 # shellcheck disable=SC2154
