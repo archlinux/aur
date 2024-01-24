@@ -1,7 +1,7 @@
 pkgbase = borg-explorer-bin
 	pkgdesc = An electron-based UI for exploring Borg Backup repositories
 	pkgver = 0.0.8
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/Netruk44/borg-repository-explorer
 	arch = x86_64
 	license = MIT
@@ -14,6 +14,6 @@ pkgbase = borg-explorer-bin
 	source = borg-explorer.sh
 	sha256sums = af6cc3b6689ffafe8a3a8abebabe5d04d351a23aa9fb3bb6567f2f12b65f1353
 	sha256sums = 71d8ae0fab83a418158860542b02d9df28ef74b599b75e57ac2057bdf478aaaa
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
 
 pkgname = borg-explorer-bin
