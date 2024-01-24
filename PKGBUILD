@@ -2,11 +2,11 @@
 pkgname=chinesechess-bin
 _pkgname=ChineseChess
 pkgver=6.1
-pkgrel=7
+pkgrel=8
 pkgdesc='Cross-platform and online battle platform game based on Qt: Chinese Chess. Also known as:"Xiangqi" "中国象棋"'
 arch=('x86_64')
 url="https://github.com/XMuli/ChineseChess"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -24,7 +24,7 @@ source=(
 sha256sums=('9ace9190fdac8f9d0f8571b7079e37a9c60babf7ecfe3cc7fc3d5b7fcddbb3e2'
             '416d818b788cdd93fc33d50aa796d1e092ec8fda1fc3ff8c42e50d945627fb97')
 build() {
-    gendesk -q -f -n --name="${_pkgname}" --categories="Game"  --exec="${pkgname%-bin}"
+    gendesk -q -f -n --name="${_pkgname}" --categories "Game"  --exec "${pkgname%-bin} %U"
     bsdtar -xf "${srcdir}/data.tar.xz"
 }
 package() {
