@@ -24,3 +24,18 @@ index e7a2cc5..2e1ebac 100644
          ? "silly"
          : "warn"),
        (external_electron_log_default().transports.sentry = function (msg) {
+diff --git a/build/preload.js b/build/preload.js
+index a8bb8d6..73dc8b4 100644
+--- a/build/preload.js
++++ b/build/preload.js
+@@ -490,7 +490,7 @@
+         }
+         getSentryTags() {
+           return {
+-            environment: isDev ? "development" : "production",
++            environment: isDev() ? "development" : "production",
+             os: `${external_os_default().type()} ${external_os_default().release()}`,
+             "os.name": external_os_default().type(),
+             arch: process.arch,
+-- 
+2.34.1
