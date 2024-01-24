@@ -1,5 +1,6 @@
 pkgname=piper-tts-bin
-pkgver=1.2.0
+pkgver=2023.11.14
+_pkgver=2023.11.14-2
 pkgrel=1
 pkgdesc="A fast, local neural text to speech system"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -7,12 +8,12 @@ url="https://github.com/rhasspy/piper"
 license=('MIT')
 provides=('piper-tts')
 depends=(gcc-libs glibc)
-source_x86_64=("https://github.com/rhasspy/piper/releases/download/v${pkgver}/piper_amd64.tar.gz")
-source_aarch64=("https://github.com/rhasspy/piper/releases/download/v${pkgver}/piper_arm64.tar.gz")
-source_armv7h=("https://github.com/rhasspy/piper/releases/download/v${pkgver}/piper_armv7.tar.gz")
-sha256sums_x86_64=('467c17935d2a22dcce9dc9e08ba07485e29be813097e7cf08c5627aa09d32e42')
-sha256sums_aarch64=('34b298f6b3e55b55e81f05c6157310f9ec4df3fdd3d73e4c85eb80e218c54d2c')
-sha256sums_armv7h=('deddb5066a2d2c361bfd5e03a2939bec9e72088a123aa3a1dcf85fa163a42508')
+source_x86_64=("$url/releases/download/${_pkgver}/piper_linux_x86_64.tar.gz")
+source_aarch64=("$url/releases/download/${_pkgver}/piper_linux_aarch64.tar.gz")
+source_armv7h=("$url/releases/download/${_pkgver}/piper_linux_armv7l.tar.gz")
+sha256sums_x86_64=('a50cb45f355b7af1f6d758c1b360717877ba0a398cc8cbe6d2a7a3a26e225992')
+sha256sums_aarch64=('fea0fd2d87c54dbc7078d0f878289f404bd4d6eea6e7444a77835d1537ab88eb')
+sha256sums_armv7h=('c6946fcd57c705ed1d4666ea880f80ba0bbbd14de62ecbdd13460baf3bac8e37')
 
 package() {
   install -d -m755 "$pkgdir"/opt "$pkgdir"/usr/bin
