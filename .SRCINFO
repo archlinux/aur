@@ -1,10 +1,10 @@
 pkgbase = r-differentialregulation
 	pkgdesc = Differentially regulated genes from scRNA-seq data
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DifferentialRegulation
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-testthat
 	makedepends = r-rcpparmadillo
 	depends = blas
@@ -24,8 +24,8 @@ pkgbase = r-differentialregulation
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DifferentialRegulation_2.0.2.tar.gz
-	md5sums = 875793d502c3e521b4faa3eba0d1c2e7
-	sha256sums = 087b222c3418d45082991a93f3fe3ec2f0794de2d79376f923b6864dd531c849
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DifferentialRegulation_2.0.3.tar.gz
+	md5sums = 4000b013914ea14b52fb9c4be18f809d
+	b2sums = c6457ad5fa2e1bba7bf97a8ce5e9f6284484373ddc4e723d5e4b18dc42457c780ca3de8c7e8469d28d6b1502b6d4cee197a4714a5c0268615ed18c6894e2cafa
 
 pkgname = r-differentialregulation
