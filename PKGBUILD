@@ -1,23 +1,22 @@
-# Maintainer: Leonardo Costa <leo95.uqhi2 at aleeas dot com>
+# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Contributor: Leonardo Costa <leo95.uqhi2 at aleeas dot com>
 # Contributor: Davide Depau <davide@depau.eu>
 # Contributor: Felix Golatofski <contact@xdfr.de>
-# Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
-
 
 pkgname=jdk11-openj9-bin
 _jdkver=11
 _jdkminor=0
-_jdkpatch=16
+_jdkpatch=21
 _jdkpatchminor=1
-_jdkfullver=${_jdkver}.${_jdkminor}.${_jdkpatch}.${_jdkpatchminor}
-_openj9ver=0.33.1
-_buildvershort=1
+_jdkfullver=${_jdkver}.${_jdkminor}.${_jdkpatch} #.${_jdkpatchminor}
+_openj9ver=0.41.0
+_buildvershort=9
 _buildver=${_buildvershort}_openj9-${_openj9ver}
 _baseurl=https://github.com/ibmruntimes/semeru${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}
-pkgver=${_jdkfullver}b${_buildver//-/_}
+pkgver="${_jdkfullver}b${_buildver//-/_}"
 pkgrel=1
-pkgdesc="Eclipse (former IBM) OpenJ9 with openjdk${_jdkver}"
-arch=('x86_64' 's390x' 'ppc64le' 'aarch64')
+pkgdesc="IBM Semeru OpenJ9 with openjdk${_jdkver}"
+arch=('x86_64')
 url="https://developer.ibm.com/languages/java/semeru-runtimes/downloads"
 license=('custom')
 depends=('java-environment-common' 'ca-certificates-utils' 'nss')
@@ -31,15 +30,9 @@ provides=(
 )
 conflicts=("jdk${_jdkver}-openj9")
 options=(!strip)
-source_x86_64=("${_baseurl}/ibm-semeru-open-jdk_x64_linux_${_jdkfullver}_${_buildver}.tar.gz")
-source_s390x=("${_baseurl}/ibm-semeru-open-jdk_s390x_linux_${_jdkfullver}_${_buildver}.tar.gz")
-source_ppc64le=("${_baseurl}/ibm-semeru-open-jdk_ppc64le_linux_${_jdkfullver}_${_buildver}.tar.gz")
-source_aarch64=("${_baseurl}/ibm-semeru-open-jdk_aarch64_linux_${_jdkfullver}_${_buildver}.tar.gz")
+source=("${_baseurl}/ibm-semeru-open-jdk_x64_linux_${_jdkfullver}_${_buildver}.tar.gz")
 
-sha256sums_x86_64=('4eb9dc86bf92e144d7a2c8d6c2a6beac28c17b7348f2f0524e715548f52fd8f1')
-sha256sums_s390x=('df4b746a0fc51bbab38aa86822a5f8e5587ed2b997cdd764de1c349d8caaa784')
-sha256sums_ppc64le=('d71e5d26b7240d0e8a80499221ab79e5eed30ab1d985a5316bcfd240148435f8')
-sha256sums_aarch64=('fad70f5bd615d08d9b3e6222ce738be713050eedc8dce4b57bdccc85747d9ff6')
+sha256sums=('d11ec92737b9f97bdd9bb553c3e476981f4ac38039963a15c2e1ca9ec163a304')
 
 _jvmdir=usr/lib/jvm/java-${_jdkver}-j9
 
