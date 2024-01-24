@@ -1,7 +1,7 @@
 # Maintainer: Loewetiger <loewetiger at tuta dot io>
 
 pkgname=obs-pipewire-audio-capture-bin
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='PipeWire audio capturing for OBS Studio'
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('pipewire-pulse: record PulseAudio applications'
 provides=('obs-pipewire-audio-capture')
 conflicts=('obs-pipewire-audio-capture')
 source=($pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/linux-pipewire-audio-$pkgver.tar.gz)
-md5sums=('4693398ca1c4960bc9cd2c7fda53e88a')
+md5sums=('851cafb118f56cefd704f1a994a6ac60')
 
 package() {
   install -Dm 755 "${srcdir}"/linux-pipewire-audio/bin/64bit/linux-pipewire-audio.so "${pkgdir}"/usr/lib/obs-plugins/linux-pipewire-audio.so
