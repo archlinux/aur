@@ -2,7 +2,7 @@
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
 
 pkgname=webui
-pkgver=2a5f0c9
+pkgver=2.4.2+25+g2a5f0c98
 pkgrel=1
 pkgdesc="Use any web browser as GUI, with your preferred language in the backend and HTML5 in the frontend, all in a lightweight portable lib."
 arch=('x86_64')
@@ -10,9 +10,14 @@ url="https://webui.me/"
 license=('MIT')
 depends=("openssl" "glibc")
 makedepends=("git" "zig")
-_commit=2a5f0c9
+_commit=2a5f0c98fbb267a5aed921a8678f3f108bb12a6e
 source=("git+https://github.com/webui-dev/webui.git#commit=${_commit}")
 md5sums=('SKIP')
+
+pkgver() {
+    cd "$pkgname"
+    git describe --tags --exclude nightly | sed 's/^v//;s/-/+/g'
+}
 
 build() {
     cd "$srcdir/$pkgname"
