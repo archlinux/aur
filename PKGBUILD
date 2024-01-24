@@ -1,11 +1,11 @@
-# Maintainer: Kimiblock Moe <pn3535 at icloud dot com>
+# Maintainer: Kimiblock Moe
 pkgname=rime-minecraft-dict-git
-pkgver=r4.b294e27
+pkgver=r24.13107bd
 pkgrel=1
-pkgdesc="Minecraft dict for Rime (WIP)"
+pkgdesc="Minecraft dict for RIME"
 arch=('any')
 url="https://github.com/Kimiblock/rime-minecraft-dict"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=()
 provides=('rime-minecraft-dict')
 source=("git+https://github.com/Kimiblock/rime-minecraft-dict.git")
@@ -18,17 +18,7 @@ function pkgver(){
 }
 
 function package(){
-	install -Dm644 "${srcdir}/rime-minecraft-dict/minecraft_pinyin.dict.yaml" "${pkgdir}/usr/share/rime-data/minecraft_pinyin.dict.yaml"
+	install -Dm644 "${srcdir}/rime-minecraft-dict/minecraft_en.dict.yaml" "${pkgdir}/usr/share/rime-data/minecraft_pinyin.dict.yaml"
+	install -Dm644 "${srcdir}/rime-minecraft-dict/minecraft_cn.dict.yaml" "${pkgdir}/usr/share/rime-data/minecraft_pinyin.dict.yaml"
 }
 
-function _info() {
-	if [ -f /usr/bin/pamac ]; then
-		echo "  ==> [Info]: $@"
-	else
-		all_off="$(tput sgr0)"
-		bold="${all_off}$(tput bold)"
-		blue="${bold}$(tput setaf 4)"
-		yellow="${bold}$(tput setaf 3)"
-		printf "${blue}==>${yellow} [Info]:${bold} $1${all_off}\n"
-    fi
-}

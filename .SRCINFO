@@ -1,11 +1,11 @@
 pkgbase = rime-minecraft-dict-git
-	pkgdesc = Minecraft dict for Rime (WIP)
-	pkgver = r4.b294e27
+	pkgdesc = Minecraft dict for RIME
+	pkgver = r24.13107bd
 	pkgrel = 1
 	url = https://github.com/Kimiblock/rime-minecraft-dict
 	install = rime-minecraft-dict-git.install
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	provides = rime-minecraft-dict
 	source = git+https://github.com/Kimiblock/rime-minecraft-dict.git
 	sha256sums = SKIP
