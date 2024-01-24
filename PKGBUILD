@@ -103,7 +103,7 @@ prepare() {
   # mozc date and version
   #_date=$(git log -1 --pretty=format:'%as' $_mozc_commit)
   #sed -i -e "/2.25.4150.102.1/d"  -e "s/2.26.4220.106.1/${pkgver}.${pkgrel}/" -e "s/2021-01-16/${_date}/" src/unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in
-  rustup update nightly stable
+  rustup update stable
 }
 
 build() {
@@ -128,7 +128,8 @@ build() {
   msg '1. Build the rust program(mozcdict-ext), it may take some time...'
   cd sudachi || exit
   source <(cargo +nightly -Z unstable-options rustc --print cfg|grep -E "target_(arch|vendor|os|env)")
-  TARGET="${target_arch}-${target_vendor}-${target_os}-${target_env}"
+  #TARGET="${target_arch}-${target_vendor}-${target_os}-${target_env}"
+  TARGET="$(rustc -vV | sed -n 's|host: ||p')"
   cargo build --release --target $TARGET
   msg '2. Run the rust program(mozcdict-ext): SudachiDict , it may take some time...'
   cat ${srcdir}/small_lex.csv ${srcdir}/core_lex.csv ${srcdir}/notcore_lex.csv > all.csv
