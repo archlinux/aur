@@ -1,6 +1,6 @@
 pkgbase = donglify
 	pkgdesc = The ultimate Archlinux encryption USB dongiled setup.
-	pkgver = 20240107b
+	pkgver = 20240124
 	pkgrel = 1
 	url = https://github.com/ayham-1/donglify
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = donglify
 	makedepends = python-hatchling
 	depends = python-termcolor
 	depends = python-prompt_toolkit
-	source = https://github.com/ayham-1/donglify/archive/refs/tags/20240107b.tar.gz
+	source = https://github.com/ayham-1/donglify/archive/refs/tags/20240124.tar.gz
 	validpgpkeys = 8C38DD3A3030F8AEB8A9A2BC783F6DE277DA7BFF
-	sha256sums = 904e5bee08c5de59c29c9537fe8b77c83b95aa450a588c28d0bdc3eaf61ec2c9
+	sha256sums = ef75ed019c86ee5a1702739c0ad0c410906410e5d9585d13d7ccb9913d6323f1
 
 pkgname = donglify
