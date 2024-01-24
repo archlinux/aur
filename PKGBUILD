@@ -2,7 +2,7 @@
 
 pkgbase=lckfb-meta
 pkgname=(lckfb-meta lckfb-taishanpi-meta)
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=0
 epoch=
 pkgdesc="立创开发板元包 / LCKFB Development Board meta package"
@@ -22,7 +22,7 @@ options=()
 # install=
 # changelog=
 source=(lckfb-taishanpi-meta.install)
-sha256sums=('f514379d913b7fc3619a36dc119adc91db1f6d3066fa398afc34d08589461f22')
+sha256sums=('adbf8fca040626890a13708f6fa8a2126dca08358e428c056047f159a0720295')
 # noextract=()
 #validpgpkeys=()
 
