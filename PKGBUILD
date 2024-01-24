@@ -7,26 +7,13 @@
 
 _pkgname="floorp"
 pkgname="$_pkgname-bin"
-pkgver=11.8.1
-pkgrel=2
+pkgver=11.8.2
+pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="http://floorp.app/"
 arch=('x86_64' 'aarch64')
 license=('MPL-2.0')
 
-depends=(
-  'alsa-lib'
-  'dbus-glib'
-  'gtk3'
-
-  ## implicit
-  #'at-spi2-core'
-  #'hicolor-icon-theme'
-  #'libxcomposite'
-  #'libxi'
-  #'libxrandr'
-  #'libxtst'
-)
 makedepends=(
   'imagemagick'
   'optipng'
@@ -54,10 +41,24 @@ sha256sums=(
 
 source_x86_64=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/floorp-${pkgver}.linux-${arch}.tar.bz2")
 source_aarch64=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/floorp-${pkgver}.linux-${arch}.tar.bz2")
-sha256sums_x86_64=('c5cfd141f46522548595acff266118a1e4dc366a546f2f93c3150027862a27d6')
-sha256sums_aarch64=('d9cdcd5878233b499d0f6c6a26a86af2c5f1458e60dd04afe48ab2c2541ea4bd')
+sha256sums_x86_64=('408653fa59cbfcc0e11c4efcb57ea74084b87b618b0e1fa65562afd11b869042')
+sha256sums_aarch64=('77e4b0fbe2b02ec562df2a3da7f80142d26d0b9a09c0a1c98fa8d6b1aaad3d3b')
 
 package() {
+  depends=(
+    'alsa-lib'
+    'dbus-glib'
+    'gtk3'
+
+    ## implicit
+    #'at-spi2-core'
+    #'hicolor-icon-theme'
+    #'libxcomposite'
+    #'libxi'
+    #'libxrandr'
+    #'libxtst'
+  )
+
   local _install_path="opt/$_pkgname"
 
   # app
