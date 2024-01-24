@@ -20,8 +20,8 @@ pkgname = gtk-theme-bubble-darker-git
 	provides = gtk-theme-bubble
 	conflicts = gtk-theme-bubble-darker
 
-pkgname = gtk-theme-bubble-light-git
-	provides = gtk-theme-bubble-light
+pkgname = gtk-theme-bubble-lighter-git
+	provides = gtk-theme-bubble-lighter
 	provides = gtk-theme-bubble
-	conflicts = gtk-theme-bubble-light
+	conflicts = gtk-theme-bubble-lighter
 
