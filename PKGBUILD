@@ -1,8 +1,8 @@
-# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgbase=nvidia-open-beta
 pkgname=('nvidia-open-beta' 'nvidia-open-beta-dkms')
-pkgver=545.29.06
+pkgver=550.40.07
 pkgrel=1
 pkgdesc='NVIDIA open GPU kernel modules (beta version)'
 arch=('x86_64')
@@ -15,11 +15,11 @@ source=("https://github.com/NVIDIA/open-gpu-kernel-modules/archive/${pkgver}/nvi
         '120-nvidia-open-linux-rt-gift.patch'
         '130-nvidia-open-reproducible-build.patch'
         '140-nvidia-open-gcc-sls.patch')
-sha256sums=('e00c615215d885813c36fafc1473d6429e95f2ab2a3059a893d404ed906113c0'
-            '61a23cf5840ba19388b1dbcb00c8c59e6bddf7f2e48c4b07b6db2686ed9de650'
+sha256sums=('a7eb6b257e2ab2b537f857933bf8dfb79a7a576039273767ebd16051483c2f35'
+            '249690e61ad3e9f29cc5acfba33cdd989cd48bb98a10aafc8df52b002c30cc63'
             'b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45'
-            '5916c0250a45a216f407f79fb2f44323eae0895804812c428baa98113afc1339'
-            '0973baa478f2d5cccc54dad99e0a4bee068b9d1b012a2e29ab7c09063ca6bc4c')
+            '15421d72aabc569c69762c77c7a37ad7be617f08e3c833318cecdeb5500e8ef4'
+            '71158935db9494bf8a18c34b29e2be19424ba09ce3017b9d9d7b6509f6090118')
 
 prepare() {
     patch -d "open-gpu-kernel-modules-${pkgver}" -Np1 -i "${srcdir}/110-nvidia-open-change-dkms-conf.patch"
