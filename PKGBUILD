@@ -88,9 +88,9 @@ _package() {
 
   # Used by mkinitcpio to name the kernel
   echo "${pkgbase}" | install -Dm644 /dev/stdin "${modulesdir}/pkgbase"
-  # echo "${kernver}" | install -Dm644 /dev/stdin "${modulesdir}/kernelbase"
-  echo "${pkgbase}" | install -Dm644 /dev/stdin "${modulesdir}/kernelbase"
+  echo "${kernver}" | install -Dm644 /dev/stdin "${modulesdir}/kernelbase"
 
+  # write kernel version for Grub
   echo "${kernver}${_xanmodrev}" | install -Dm644 /dev/stdin "${pkgdir}/boot/${pkgbase}.kver"
 
   local _extramodules="extramodules-${kernver}"
@@ -99,17 +99,20 @@ _package() {
   # add real version for building modules and running depmod from hook
   echo "${kernver}" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${_extramodules}/version"
 
-  # now we call depmod...
-  # depmod -b "${pkgdir}/usr" -F "${srcdir}/boot/System.map-${kernver}"
+  # Remove builddir because is a symbolic link and it belongs to headers
+  rm -f "${modulesdir}/build"
 }
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the Linux Xanmod - Current Stable (MAIN) - Prebuilt version - ${_arch}"
   depends=(pahole)
 
-  mkdir -p "${pkgdir}"/usr/share/doc
+  local kernver="${pkgver}-${_arch}-xanmod${_xanmodrel}"
+  local builddir="${pkgdir}/usr/lib/modules/${kernver}/build"
+  mkdir -p "${pkgdir}"/usr/share/doc "${pkgdir}"/usr/src "${pkgdir}/usr/lib/modules/${kernver}"
   cp -r usr/share/doc/linux-headers-* "${pkgdir}/usr/share/doc/"
-  cp -r usr/src "${pkgdir}/usr/"
+  cp -r usr/src/linux-headers-${kernver} "${builddir}"
+  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
 eval "package_${pkgname[0]}() { _package \"\$@\"; }"
