@@ -1,7 +1,7 @@
 pkgbase = rwpspread
 	pkgdesc = Multi-Monitor Wallpaper Utility
 	pkgver = 0.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/0xk1f0/rwpspread
 	arch = x86_64
 	license = GPL3
@@ -11,6 +11,6 @@ pkgbase = rwpspread
 	provides = rwpspread
 	conflicts = rwpspread-git
 	source = rwpspread-0.1.8::https://github.com/0xk1f0/rwpspread/archive/refs/tags/v0.1.8.tar.gz
-	b2sums = 3d66edbe39dbbf382739b46aca431bb152142d4023a1bbb3f5f27d7a3aa1c684f14746eced2a7821abaeb697ccd0226b05d50e52624c7d205cbac3cb9c0f0c3f
+	b2sums = 9d6980a182668a499485c3586b90ce7b037342c625c0f9f53ba4af6c8564af8bcf82090feb09d537003e38718f73d9a965a8a0b87dec2647bfc29a39deddfb4f
 
 pkgname = rwpspread
