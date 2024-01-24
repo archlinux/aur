@@ -1,7 +1,7 @@
 pkgbase = sunxi-blobs-git
 	pkgdesc = The goal of this project is to understand the various blobs provided by Allwinner for their sunxi series of ARM SoCs.
 	pkgver = r146.fa44656
-	pkgrel = 5
+	pkgrel = 12
 	url = https://github.com/smaeul/sunxi-blobs
 	arch = any
 	license = Custom
@@ -9,7 +9,6 @@ pkgbase = sunxi-blobs-git
 	depends = bash
 	provides = sunxi-blobs
 	conflicts = sunxi-blobs
-	options = !strip
 	source = sunxi-blobs::git+https://github.com/smaeul/sunxi-blobs.git
 	sha256sums = SKIP
 

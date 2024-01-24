@@ -2,7 +2,7 @@
 
 pkgname=sunxi-blobs-git
 pkgver=r146.fa44656
-pkgrel=5
+pkgrel=12
 pkgdesc="The goal of this project is to understand the various blobs provided by Allwinner for their sunxi series of ARM SoCs."
 arch=('any')
 url="https://github.com/smaeul/sunxi-blobs"
@@ -13,7 +13,7 @@ conflicts=(${pkgname%-git})
 depends=('bash')
 makedepends=('git')
 backup=()
-options=('!strip')
+options=()
 #install=${pkgname}.install
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
