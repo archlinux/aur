@@ -1,15 +1,17 @@
 pkgbase = linux-api-headers-git
-	pkgdesc = Kernel headers sanitized for use in userspace
-	pkgver = 5.10
+	pkgdesc = Kernel headers sanitized for use in userspace (git version)
+	pkgver = 6.7.r0.g0dd3ee3
 	pkgrel = 1
 	url = https://www.gnu.org/software/libc
 	arch = any
 	license = GPL2
 	makedepends = rsync
+	makedepends = git
+	makedepends = make
+	provides = linux-api-headers=$pkgver
 	provides = linux-api-headers
 	conflicts = linux-api-headers
-	source = git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux
-	md5sums = SKIP
+	source = git+https://github.com/torvalds/linux.git#commit=0dd3ee31125508cd67f7e7172247f05b7fd1753a
+	sha256sums = SKIP
 
 pkgname = linux-api-headers-git
-
