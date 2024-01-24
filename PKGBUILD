@@ -2,26 +2,32 @@
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
 
 pkgname=webui
-pkgver=1.0.20
+pkgver=2a5f0c9
 pkgrel=1
-pkgdesc="Open source project to use web browsers as UI."
+pkgdesc="Use any web browser as GUI, with your preferred language in the backend and HTML5 in the frontend, all in a lightweight portable lib."
 arch=('x86_64')
-url="https://github.com/alifcommunity/webui/"
-license=('LGPL3')
-depends=('boost-libs')
-makedepends=(git cmake boost)
-_commit=db0a6b62de77913a9bb1e1137c557d46a1850a43
-source=("git+https://github.com/alifcommunity/webui.git#commit=${_commit}")
-#source=("git+https://github.com/alifcommunity/webui.git#tag=${pkgver}")
+url="https://webui.me/"
+license=('MIT')
+depends=("openssl" "glibc")
+makedepends=("git" "zig")
+_commit=2a5f0c9
+source=("git+https://github.com/webui-dev/webui.git#commit=${_commit}")
 md5sums=('SKIP')
 
 build() {
     cd "$srcdir/$pkgname"
-    cmake . -DCMAKE_INSTALL_PREFIX=/usr
-    make
+    zig build -Dis_static=false -Denable_tls=true
+    zig build -Dis_static=true -Denable_tls=true
 }
 
 package() {
     cd "$srcdir/$pkgname"
-    make DESTDIR="${pkgdir}" install
+    # install header file
+    install -Dm644 "include/webui.h" "$pkgdir/usr/include/webui.h"
+    install -Dm644 "include/webui.hpp" "$pkgdir/usr/include/webui.hpp"
+    # install library
+    install -Dm644 "zig-out/lib/libwebui.a" "$pkgdir/usr/lib/libwebui.a"
+    install -Dm755 "zig-out/lib/libwebui.so" "$pkgdir/usr/lib/libwebui.so"
+    # install license file
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

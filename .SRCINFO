@@ -1,15 +1,15 @@
 pkgbase = webui
-	pkgdesc = Open source project to use web browsers as UI.
-	pkgver = 1.0.20
+	pkgdesc = Use any web browser as GUI, with your preferred language in the backend and HTML5 in the frontend, all in a lightweight portable lib.
+	pkgver = 2a5f0c9
 	pkgrel = 1
-	url = https://github.com/alifcommunity/webui/
+	url = https://webui.me/
 	arch = x86_64
-	license = LGPL3
+	license = MIT
 	makedepends = git
-	makedepends = cmake
-	makedepends = boost
-	depends = boost-libs
-	source = git+https://github.com/alifcommunity/webui.git#commit=db0a6b62de77913a9bb1e1137c557d46a1850a43
+	makedepends = zig
+	depends = openssl
+	depends = glibc
+	source = git+https://github.com/webui-dev/webui.git#commit=2a5f0c9
 	md5sums = SKIP
 
 pkgname = webui
