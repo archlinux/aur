@@ -1,7 +1,7 @@
 pkgbase = bulkurlopener-bin
 	pkgdesc = An application that provides the user with multiple utilities to help with managing and using large amounts of urls
 	pkgver = 1.12.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://bulkurlopener.com/
 	arch = x86_64
 	license = MIT
@@ -16,6 +16,6 @@ pkgbase = bulkurlopener-bin
 	sha256sums = 793be180c3a33e952b64aed41c6f8dff8023987ac620f39d0877df4cb7e27ced
 	sha256sums = 02fee1b93a53fbf997a300a147ea7efb5fe2deee2f0d0c6d2f66862a7b7079c7
 	sha256sums = bd7825f6ae86c0d580b50ca9e7885e15af5ad2a81689a8e2d41decb70231fad5
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
 
 pkgname = bulkurlopener-bin
