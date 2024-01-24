@@ -22,7 +22,7 @@ options=()
 # install=
 # changelog=
 source=(lckfb-taishanpi-meta.install)
-sha256sums=('a2d83ddc3fc55621ff801f87041687ca1787eca914adba2df6ce6950e5d22bd8')
+sha256sums=('5173de61766b994e3f4dabb707aff92e54c44a6cd8c961b602519f14822c6cce')
 # noextract=()
 #validpgpkeys=()
 
