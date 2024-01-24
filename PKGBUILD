@@ -25,7 +25,7 @@ _renderer=gles
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r65149.811c25b3cc3
+pkgver=r65168.a4b164c00cb
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -131,6 +131,9 @@ build() {
     -DENABLE_SSE3=ON
     -DENABLE_SSSE3=ON
     -DENABLE_SSE4_1=ON
+    -DENABLE_SSE4_2=ON
+    -DENABLE_AVX=ON
+    -DENABLE_AVX2=ON
     -DUSE_LTO=$(nproc)
     -DVERBOSE=ON
     -DENABLE_LDGOLD=OFF
