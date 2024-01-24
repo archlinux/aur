@@ -1,17 +1,16 @@
 pkgbase = obextool
 	pkgdesc = A front-end of obexftp
 	pkgver = 0.35
-	pkgrel = 4
-	url = http://obextool.sf.net
+	pkgrel = 5
+	url = https://www.tech-edv.co.at/00_Home/20_Software/50_Freie~20Software/10_ObexTool
 	arch = any
 	license = GPL
 	depends = perl
 	depends = obexftp
 	depends = bwidget
-	depends = tablelist
+	depends = tklib
 	depends = tk
-	source = http://www.tech-edv.co.at/TCMS/downloads/obextool-0.35.tar.gz
-	md5sums = 4d225b365613fe88f49b3713d5c35136
+	source = https://www.tech-edv.co.at/TCMS/downloads/obextool-0.35.tar.gz
+	sha256sums = 59592800fdcc1f789b86e48bea409cc38eeaa8ec2b5590d507a2f819a9b8555f
 
 pkgname = obextool
-
