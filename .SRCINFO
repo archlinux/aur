@@ -1,0 +1,13 @@
+pkgbase = amdgpu-vulkan-switcher-git
+	pkgdesc = Select needed vulkan implementation with vk_radv, vk_amdvlk or vk_pro prefix
+	pkgver = r1.fadfff5
+	pkgrel = 1
+	url = https://github.com/CosmicFusion/amdgpu-vulkan-switcher
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	source = git+https://github.com/CosmicFusion/amdgpu-vulkan-switcher.git
+	sha256sums = SKIP
+
+pkgname = amdgpu-vulkan-switcher-git
