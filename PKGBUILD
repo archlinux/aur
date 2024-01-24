@@ -4,7 +4,7 @@
 
 pkgname="nzbhydra2"
 pkgver=5.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Search aggregator for newznab and torznab indexers."
 arch=('any')
 url="https://github.com/theotherp/nzbhydra2"
@@ -41,12 +41,14 @@ build() {
     mvn -Dmaven.test.skip -pl core -am clean package
 }
 
-check() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-
-    export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
-    mvn -pl core -am test
-}
+# Disabled until 5.3.8+
+# https://github.com/theotherp/nzbhydra2/commit/f9b705faf7ae6b0fe2fcd835b985dcb6ef2ea9d4
+#check() {
+#    cd "${srcdir}/${pkgname}-${pkgver}"
+#
+#    export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+#    mvn -pl core -am test
+#}
 
 package() {
     install -D -m 755 "${srcdir}/nzbhydra2.sh" "${pkgdir}/usr/bin/nzbhydra2"
