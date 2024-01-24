@@ -1,7 +1,7 @@
 # Maintainer: Gökçe Aydos <aur2024@aydos.de>
 _name=xrt
 pkgbase=$_name-git
-pkgver=r7453.862642c6e
+pkgver=r7456.50f17b1d5
 pkgrel=1
 pkgdesc="Xilinx runtime for Ultrascale, Versal and MPSoC-based FPGAs"
 arch=(x86_64)
@@ -129,6 +129,7 @@ package_xrt-git() {
 
 	# Moving appdebug
 	mv $pkgdir/opt/xilinx/xrt/share/appdebug $pkgdir/usr/local/xrt/python
+	rmdir -p $pkgdir/opt/xilinx
 }
 package_xrt-xocl-dkms-git() {
 	pkgdesc="Drivers for Xilinx runtime (XRT)"
