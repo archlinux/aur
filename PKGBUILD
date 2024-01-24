@@ -1,6 +1,6 @@
 pkgname=psp-binutils
 pkgver=2.37.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of programs to assemble and manipulate binary and object files (psp)"
 arch=(x86_64)
 url="https://www.gnu.org/software/binutils/"
@@ -15,7 +15,7 @@ build()
 {
   cd "$srcdir/binutils-$pkgver"
   mkdir -p build-psp && pushd build-psp
-  ../configure --prefix=/usr --target=psp --enable-plugins --disable-werror --with-system-zlib --enable-deterministic-archives
+  ../configure --quiet --prefix=/usr --target=psp --enable-plugins --disable-initfini-array --disable-werror --with-system-zlib --enable-deterministic-archives
   make 
 }
 

@@ -1,7 +1,7 @@
 pkgbase = psp-binutils
 	pkgdesc = A set of programs to assemble and manipulate binary and object files (psp)
 	pkgver = 2.37.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/binutils/
 	arch = x86_64
 	license = GPL
