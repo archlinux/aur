@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SpatialDecon
-_pkgver=1.12.0
+_pkgver=1.12.3
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.12.3
 pkgrel=1
 pkgdesc='Deconvolution of mixed cells from spatial and/or bulk gene expression data'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7baf1760f15f663bf2a5bb4ada48cda5f3e76428380f772f6054158dbde990d3')
+sha256sums=('760bd0a4dc5d7ac43bbbb0984bb5fd41a42d44982519fbe54c5d047c4b72ca57')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
