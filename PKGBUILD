@@ -1,6 +1,6 @@
 # Maintainer: nbebaw <nader.bebawy@gmx.de>
 pkgname=archub
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Command-line tool designed for managing packages in AUR"
 arch=(x86_64)
