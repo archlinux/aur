@@ -127,9 +127,7 @@ build() {
   # すだちを優先
   msg '1. Build the rust program(mozcdict-ext), it may take some time...'
   cd sudachi || exit
-  source <(cargo +nightly -Z unstable-options rustc --print cfg|grep -E "target_(arch|vendor|os|env)")
-  #TARGET="${target_arch}-${target_vendor}-${target_os}-${target_env}"
-  TARGET="$(rustc -vV | sed -n 's|host: ||p')"
+  rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n) | grep musl && TARGET=$(rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n)|grep musl|head -n1) || TARGET=$(rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n)|grep -v musl|head -n1)
   cargo build --release --target $TARGET
   msg '2. Run the rust program(mozcdict-ext): SudachiDict , it may take some time...'
   cat ${srcdir}/small_lex.csv ${srcdir}/core_lex.csv ${srcdir}/notcore_lex.csv > all.csv
