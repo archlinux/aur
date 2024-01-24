@@ -1,7 +1,7 @@
 pkgbase = eigen2
 	pkgdesc = A lightweight C++ template library for vector and matrix math, a.k.a. linear algebra
 	pkgver = 2.0.17
-	pkgrel = 5
+	pkgrel = 6
 	url = http://eigen.tuxfamily.org/index.php?title=Main_Page
 	arch = any
 	license = GPL
@@ -9,6 +9,6 @@ pkgbase = eigen2
 	makedepends = cmake
 	makedepends = pkg-config
 	source = https://gitlab.com/libeigen/eigen/-/archive/2.0.17/eigen-2.0.17.tar.gz
-	sha1sums = b7cda8f943d0d11d9d289249f055692c617c516c
+	sha1sums = fb18d990d142ee77cb3f2166219246f7e70103fc
 
 pkgname = eigen2
