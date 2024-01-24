@@ -1,6 +1,6 @@
 pkgbase = freecad-linkstage3-bin
 	pkgdesc = A general purpose 3D CAD modeler - Daily build of LinkDaily branch
-	pkgver = 20240113stable.r6.g2eaff09293
+	pkgver = 20240123stable.r0.g0c0f69ad48
 	pkgrel = 1
 	url = http://www.freecadweb.org/
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = freecad-linkstage3-bin
 	depends = pyside2-tools
 	depends = shiboken2
 	conflicts = freecad
-	source = freecad-linkstage3-bin-20240113stable.r6.g2eaff09293.tar.zst::https://github.com/Bonnee/freecad-build-arch/releases/download/20240113stable.r6.g2eaff09293/freecad-linkstage3-git-20240113stable.r6.g2eaff09293-1-x86_64.pkg.tar.zst
-	sha1sums = 81aa543161eeff9b9296ba8cbf5d56684b561f7c
+	source = freecad-linkstage3-bin-20240123stable.r0.g0c0f69ad48.tar.zst::https://github.com/Bonnee/freecad-build-arch/releases/download/20240123stable.r0.g0c0f69ad48/freecad-linkstage3-git-20240123stable.r0.g0c0f69ad48-1-x86_64.pkg.tar.zst
+	sha1sums = ca721bf3d521983be7599400f26685f05665141f
 
 pkgname = freecad-linkstage3-bin
