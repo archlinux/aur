@@ -1,6 +1,6 @@
 # Maintainer: Xinkai Chen <xinkai.chen@qq.com>
 pkgname=printenv2
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A printenv2 rewrite in Rust"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('cargo')
 conflicts=('printenv2-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e80044ae123f84d51230dfd0ec0070ad7be4046cce45ac5b2cee9a37700b1bc0')
+sha256sums=('8aadc0de0f56407c3d20d0b52b5b57f639a84ab50f4355a33b114e012e980351')
 
 build() {
   cd "$pkgname-$pkgver"
