@@ -3,13 +3,17 @@
 pkgname=com.qq.weixin.deepin
 _appname=WeChat
 _pkgname="Deepin-${_appname}"
-pkgver=3.9.7deepin8
+pkgver=3.9.7deepin9
 pkgrel=1
 pkgdesc="Deepin Wine WeChat"
 arch=('x86_64')
 url="http://pc.weixin.qq.com/"
 _imdevurl="https://deepin-wine.i-m.dev/"
 license=('LicenseRef-Proprietary')
+conflicts=(
+  'deepin-wine-wechat'
+  'com.qq.weixin.spark'
+)
 depends=(
   'deepin-wine8-stable'
   'deepin-wine-helper'
@@ -19,9 +23,8 @@ depends=(
   'lib32-gnutls'
   'wqy-microhei'
 )
-conflicts=(
-  'deepin-wine-wechat'
-  'com.qq.weixin.spark'
+makedepends=(
+  'p7zip'
 )
 install="${pkgname}.install"
 source=(
@@ -29,19 +32,26 @@ source=(
   "${pkgname}.install"
   "${pkgname}.sh"
 )
-sha256sums=('d348e13d4cf0ca01f80eded4853e9e4ce0b1c4c1f0a20d5cfac03d87f854256a'
+sha256sums=('ca3ea9f9e78e74dc09104f629a4215323e83226145dc8c3a1a75dd967bccf8db'
             '9fc08b3f39ab99a3335449f6ea69aff4bb67d8b4dd2b243009738369af544201'
-            'f82382fc63eb5e100c75bb49dc1041ca873f38236a045e98288c91d8dd29279a')
-package() {
+            'c52d5eaae06ac64a1adbf28997cb1c03845c26fc7344755440fa1443b127fcd9')
+build() {
   sed "s|@bottlename@|${_pkgname}|g" -i "${srcdir}/${pkgname}.install"
   sed -e "s|@bottlename@|${_pkgname}|g" \
       -e "s|@appver@|${pkgver}|g" \
       -e "s|@appname@|${_appname}|g" \
       -e "s|@pkgname@|${pkgname}|g" \
       -i "${srcdir}/${pkgname}.sh"
-  bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
-  sed "s|\"/opt/apps/${pkgname}/files/run.sh\"|${pkgname}|g;s|=chat;|=Network;|g" -i "${pkgdir}/opt/apps/${pkgname}/entries/applications/${pkgname}.desktop"
+  bsdtar -xf "${srcdir}/data.tar.xz"
+  install -Dm755 -d "${srcdir}/tmp"
+  7z x -aoa "${srcdir}/opt/apps/${pkgname}/files/files.7z" -o"${srcdir}/tmp"
+  sed '753,756d' -i "${srcdir}/tmp/user.reg"
+  7z u "${srcdir}/opt/apps/${pkgname}/files/files.7z" "${srcdir}/tmp/user.reg"
+  sed "s|\"/opt/apps/${pkgname}/files/run.sh\"|${pkgname}|g;s|=chat;|=Network;|g" -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${pkgname}.desktop"
+}
+package() {
   install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+  cp -r "${srcdir}/opt" "${pkgdir}"
   install -Dm644 "${pkgdir}/opt/apps/${pkgname}/entries/applications/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
   install -Dm644 "${pkgdir}/opt/apps/${pkgname}/entries/icons/hicolor/48x48/apps/${pkgname}.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
 }

@@ -1,10 +1,8 @@
-#!/bin/bash
-
-#   Copyright (C) 2016 Deepin, Inc.
-#
-#   Author:     Li LongYu <lilongyu@linuxdeepin.com>
-#               Peng Hao <penghao@linuxdeepin.com>
-version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; }
+#!/bin/sh
+set -e
+version_gt() { 
+    test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; 
+}
 ACTIVEX_NAME=""
 BOTTLENAME="@bottlename@"
 APPVER="@appver@"
@@ -25,12 +23,12 @@ export WINESERVICESNODELAY=""
 export WINESERVICESDISABLE=""
 export WINE_WMCLASS="@pkgname@"
 export LC_ALL=zh_CN.UTF-8
-
 ARCHIVE_FILE_DIR="/opt/apps/${DEB_PACKAGE_NAME}/files"
 
 if [ -z "${APPRUN_CMD}" ];then
     export APPRUN_CMD="/opt/deepin-wine8-stable/bin/wine"
 fi
+
 if [ -f "${APPRUN_CMD}" ];then
     wine_path=$(dirname ${APPRUN_CMD})
     wine_path=$(realpath "${wine_path}/../")
@@ -74,14 +72,14 @@ fi
 
 if [ -n "${EXEC_PATH}" ];then
     if [ -z "${EXEC_PATH##*.lnk*}" ];then
-        "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "C:/windows/command/start.exe" "/Unix" "${EXEC_PATH}" "$@"
+        exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "C:/windows/command/start.exe" "/Unix" "${EXEC_PATH}" "$@" || exit $?
     elif [ -z "${EXEC_PATH##*.bat}" ];then
-        "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "cmd" -f /c "${EXEC_PATH}" "${@:2}"
+        exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "cmd" -f /c "${EXEC_PATH}" "${@:2}" || exit $?
     else
-        "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "${EXEC_PATH}" "$@"
+        exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "${EXEC_PATH}" "$@" || exit $?
     fi
 elif [ -n "${ACTIVEX_NAME}" ] && [ $# -gt 1 ];then
-    "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "$1" -f "${@:2}"
+    exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "$1" -f "${@:2}" || exit $?
 else
-    "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "uninstaller.exe" "$@"
+    exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "uninstaller.exe" "$@" || exit $?
 fi
