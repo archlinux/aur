@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wubi-dict-editor
 _zhname="五笔码表助手"
-pkgver=1.22
+pkgver=1.24
 _electronversion=24
 _nodeversion=18
-pkgrel=2
+pkgrel=1
 pkgdesc="五笔码表助手 for Rime ( Windows、macOS、Ubuntu ) 基于 electron 开发."
 arch=("x86_64")
 url="https://github.com/KyleBing/wubi-dict-editor"
@@ -28,7 +28,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
