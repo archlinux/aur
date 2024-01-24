@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-opencascade
 	pkgdesc = Open CASCADE Technology, 3D modeling & numerical simulation (mingw-w64)
-	pkgver = 7.5.1
+	pkgver = 7.8.0
 	pkgrel = 1
 	url = https://www.opencascade.org
 	arch = any
@@ -14,9 +14,9 @@ pkgbase = mingw-w64-opencascade
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = opencascade-7.5.1.tgz::https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/V7_5_1;sf=tgz
+	source = opencascade-7.8.0.tgz::https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/V7_8_0;sf=tgz
 	source = fix-install-dir-references.patch
-	sha256sums = 3a43d8b50df78ade72786fa63bc8808deac6380189333663e7b4ef8558ae7739
+	sha256sums = b9c8f0a9d523ac1a606697f95fc39d8acf1140d3728561b8010a604431b4e9cf
 	sha256sums = afb584aa453993ae8d9e2b983594558531ede735a5892754b812be30650c9fb5
 
 pkgname = mingw-w64-opencascade
