@@ -1,13 +1,13 @@
 pkgbase = cgrc
 	pkgdesc = Generic log formatter
-	pkgver = 2.0.3
-	pkgrel = 2
+	pkgver = 2.0.4
+	pkgrel = 0
 	url = https://github.com/carlonluca/cgrc
 	arch = any
 	license = GPL
 	makedepends = git
 	makedepends = cargo
-	source = git+https://github.com/carlonluca/cgrc.git#tag=v2.0.3
+	source = git+https://github.com/carlonluca/cgrc.git#tag=v2.0.4
 	md5sums = SKIP
 
 pkgname = cgrc
