@@ -1,0 +1,13 @@
+pkgbase = input-prompt
+	pkgdesc = Prompt for input with readline-like key bindings
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/nmeum/input
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	depends = readline
+	source = input-prompt-0.7.2.tar.gz::https://github.com/nmeum/input/releases/download/0.7.2/input-0.7.2.tar.gz
+	sha256sums = 47b1ad0603ede5ae3dd1f014b2eca7cb57b0da3a96857d53d5cf7e2688b8562a
+
+pkgname = input-prompt
