@@ -1,6 +1,6 @@
 pkgbase = citra-nightly-bin
 	pkgdesc = Nintendo 3DS emulator
-	pkgver = 2062.20231226.602f4f6
+	pkgver = 2082.20240122.eddc4a0
 	pkgrel = 1
 	url = https://github.com/citra-emu/citra-nightly
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = citra-nightly-bin
 	conflicts = citra-qt-git
 	options = !strip
 	options = !debug
-	source = citra-linux-appimage-20231226-602f4f6.tar.gz::https://github.com/citra-emu/citra-nightly/releases/download/nightly-2062/citra-linux-appimage-20231226-602f4f6.tar.gz
+	source = citra-linux-appimage-20240122-eddc4a0.tar.gz::https://github.com/citra-emu/citra-nightly/releases/download/nightly-2082/citra-linux-appimage-20240122-eddc4a0.tar.gz
 	sha256sums = SKIP
 
 pkgname = citra-nightly-bin

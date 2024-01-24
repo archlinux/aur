@@ -12,7 +12,7 @@ fi
 _pkgname='citra-nightly'
 pkgname="$_pkgname-bin"
 pkgrel=1
-pkgver=2062.20231226.602f4f6
+pkgver=2082.20240122.eddc4a0
 pkgdesc="Nintendo 3DS emulator"
 url="https://github.com/citra-emu/citra-nightly"
 license=('GPL-2.0-or-later')
@@ -81,6 +81,9 @@ package() {
   # move main files
   install -dm755 "$pkgdir/opt"
   mv "$srcdir/squashfs-root/usr" "$pkgdir/opt/citra"
+
+  # fix permissions
+  chmod -R u=rwX,go=rX "$pkgdir"
 }
 
 # update version
