@@ -16,7 +16,7 @@ fi
 # basic info
 _pkgname='pcsx2'
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.7.5474
+pkgver=1.7.5500
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
