@@ -1,7 +1,7 @@
 pkgbase = python-cef
 	pkgdesc = CEF python bindings (with bundled spotify-built CEF)
 	pkgver = 66.1.r3.g5679f28
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cztomczak/cefpython
 	arch = x86_64
 	license = BSD

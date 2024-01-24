@@ -4,7 +4,7 @@
 pkgname='python-cef'
 _vermajor="66"
 pkgver=66.1.r3.g5679f28
-pkgrel=2
+pkgrel=3
 pkgdesc="CEF python bindings (with bundled spotify-built CEF)"
 arch=('x86_64')
 url='https://github.com/cztomczak/cefpython'
@@ -37,6 +37,7 @@ prepare() {
 
 	sed -i 's/command = sudo_command/#command = sudo_command/' 'tools/build.py'
 	sed -i 's/open(header_file, "rU")/open(header_file, "r", newline=None)/' 'tools/common.py'
+	sed -i 's/cpdef list headerMultimap = \[\]/cdef list headerMultimap = \[\]/' 'src/request.pyx' 'src/response.pyx'
 
 	mkdir -p 'build'
 	cd 'build'
