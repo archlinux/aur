@@ -1,0 +1,16 @@
+pkgbase = zed-editor
+	pkgdesc = high-performance, multiplayer code editor from the creators of Atom and Tree-sitter
+	pkgver = 0.119.17
+	pkgrel = 0
+	url = https://zed.dev
+	arch = x86_64
+	license = GPL-3.0-only
+	license = Apache
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	options = !lto
+	source = https://github.com/zed-industries/zed/archive/v0.119.17/zed-0.119.17.tar.gz
+	sha256sums = 754f19868f35bffe86edd2c4fa9a39fff33d72c2f47eb5ade445e3fc8f060251
+
+pkgname = zed-editor
