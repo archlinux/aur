@@ -1,8 +1,8 @@
 pkgbase = vscodius-bin
 	pkgdesc = Binary releases of Visual Studio Code without MS branding/telemetry/licensing and various personal workflow improvements.
 	pkgver = 1.85.2
-	pkgrel = 1
-	url = https://code.visualstudio.com/
+	pkgrel = 2
+	url = https://github.com/RubisetCie/vscodius
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk

@@ -4,11 +4,10 @@ pkgname="vs${_appname}-bin"
 _pkgname=VSCodius
 pkgver=1.85.2
 _electronversion=25
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary releases of Visual Studio Code without MS branding/telemetry/licensing and various personal workflow improvements."
 arch=('x86_64')
-url="https://code.visualstudio.com/"
-_ghurl="https://github.com/RubisetCie/vscodius"
+url="https://github.com/RubisetCie/vscodius"
 license=('MIT')
 provides=(
     "${pkgname%-bin}=${pkgver}"
@@ -27,7 +26,7 @@ makedepends=(
 )
 options=('!strip')
 source=(
-    "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-Linux-x64-${pkgver}.zip"
+    "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_pkgname}-Linux-x64-${pkgver}.zip"
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/RubisetCie/vscodius/v${pkgver}/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
