@@ -2,7 +2,7 @@
 
 _gemname=google-protobuf
 pkgname=ruby-$_gemname
-pkgver=3.24.3
+pkgver=3.25.2
 pkgrel=1
 pkgdesc="Protocol Buffers are Google's data interchange format."
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby)
 makedepends=(rubygems)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('63f3cceb398b5f3258760da95037d26ef65405aa3425fd7ba1560fce4827945d')
+sha256sums=('9c2e6121d768f812f50b78cb6f26056f2af6bab92af793d376b772126e26500b')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
