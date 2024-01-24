@@ -1,6 +1,6 @@
 pkgbase = zinit
 	pkgdesc = A flexible and fast Zsh plugin manager.
-	pkgver = 3.12.0
+	pkgver = 3.13.1
 	pkgrel = 1
 	url = https://github.com/zdharma-continuum/zinit
 	install = zinit.install
@@ -11,7 +11,7 @@ pkgbase = zinit
 	depends = zsh
 	provides = zinit
 	conflicts = zinit-git
-	source = zinit-3.12.0.zip::https://github.com/zdharma-continuum/zinit/archive/refs/tags/v3.12.0.zip
-	sha256sums = 6c2675b2c90b2054f77545b83c4f4dfd4dd761443ebffdfbc361a92b0a2039e0
+	source = zinit-3.13.1.zip::https://github.com/zdharma-continuum/zinit/archive/refs/tags/v3.13.1.zip
+	sha256sums = 1890ac5b83c6b1ed53368f4485b7587f69851c422426df01dec70a396b2fc526
 
 pkgname = zinit
