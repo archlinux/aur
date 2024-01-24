@@ -7,73 +7,39 @@
 
 pkgname=thunderbird-beta
 _pkgname=thunderbird
-pkgver=122.0b4
+pkgver=123.0b1
 pkgrel=1
 pkgdesc='Beta version of standalone mail and news reader from mozilla.org'
 arch=(x86_64)
-license=(MPL GPL LGPL)
-url='https://www.thunderbird.net/channel/#beta'
+license=(
+  GPL
+  LGPL
+  MPL
+)
 depends=(
-  glibc
-  gtk3 libgdk-3.so libgtk-3.so
-  mime-types
-  dbus libdbus-1.so
-  dbus-glib
-  alsa-lib
-  nss
-  hunspell
-  sqlite
-  ttf-font
-  libvpx libvpx.so
-  zlib
-  bzip2 libbz2.so
-  botan2
-  libwebp libwebp.so libwebpdemux.so
-  libevent
-  libjpeg-turbo
-  libffi libffi.so
-  nspr
-  gcc-libs
-  libpulse
-  libx11
-  libxrender
-  libxfixes
-  libxext
-  libxcomposite
-  libxdamage
-  libxt
-  pango libpango-1.0.so
-  cairo
-  gdk-pixbuf2
-  freetype2 libfreetype.so
-  fontconfig libfontconfig.so
-  glib2 libglib-2.0.so
-  pixman libpixman-1.so
-  gnupg
-  json-c
-  libcanberra
+  dbus
   ffmpeg
-  icu libicui18n.so libicuuc.so
+  gtk3
+  libpulse
+  libxss
+  libxt
+  mime-types
+  nss
+  ttf-font
 )
 makedepends=(
   cbindgen
   clang
   diffutils
-  dump_syms
-  findutils
-  gawk
   imake
   inetutils
   jack
-  libice
   libotr
-  libsm
   lld
   llvm
   mesa
   nasm
   nodejs
-  perl
   python
   rust
   unzip
@@ -84,30 +50,36 @@ makedepends=(
   yasm
   zip
 )
-optdepends=('networkmanager: Location detection via available WiFi networks'
-            'libnotify: Notification integration'
-            'pulseaudio: Audio support'
-            'speech-dispatcher: Text-to-Speech'
-            'hunspell-en_US: Spell checking, American English'
-            'xdg-desktop-portal: Screensharing with Wayland')
-optdepends+=('libotr: OTR support for active one-to-one chats')
-options=(!emptydirs !makeflags !strip !lto !debug)
-provides=("thunderbird=$pkgver")
-source=(https://archive.mozilla.org/pub/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz{,.asc}
-        install-dir.patch
-        metainfo.patch
-        "$pkgname".desktop
-        thunderbird-system-icu-74.patch # https://bugzilla.mozilla.org/show_bug.cgi?id=1862601
+optdepends=(
+  'hunspell-en_US: Spell checking, American English'
+  'libnotify: Notification integration'
+  'libotr: OTR support for active one-to-one chats'
+  'networkmanager: Location detection via available WiFi networks'
+  'pulseaudio: Audio support'
+  'speech-dispatcher: Text-to-Speech'
+  'xdg-desktop-portal: Screensharing with Wayland'
 )
-b2sums=('7621104e4ac7c032dcea4d36f6e388484369c43af77ee8296f3388b546e88993f049e9a42dbd46ef3d5f3ee9e7a3425f7d32d324d4276482e10184a898702866'
+options=(
+  !emptydirs
+  !lto
+  !makeflags
+)
+provides=("thunderbird=$pkgver")
+source=(
+  https://archive.mozilla.org/pub/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz{,.asc}
+  $pkgname.desktop
+  install-dir.patch
+  metainfo.patch
+)
+b2sums=('12b2d75888ce1a3b09ce2c1b56901468af673f303f0c83bb8ffb2cef2455f9341d12db08a516569e7eed357564025774574f53dc0e4d319e8f174377d7083211'
         'SKIP'
-        'ba188a0c1359f49390a789621b2c0bec67f4152f62c0dced26b31ec291abccfb5636dba0f8ed1f879e1a2a237e183b96b092d760e04e148a64da18660b87dcfb'
-        '2b31b26f49229f96a645f06892d576f49662de2e5c294a1c164569402f608f267762b1f4448ebea0b77030939952274cb2dfe524bf97f4fb2cdd5f7689b95bcd'
         'c0a500055dc2c5e25b538b010e54e79bea2fb91b9b5927063f429b8931d84f28ecb4c37aaa8895c4a84dafa5066985dd2d99b8294d87c7b311d88109ca036845'
-        'a472abae3909c7100fe2367eeaac98f608ccf60385c930175701dcc96289af963a4aa91552ad84e1ffc157c8eeb166330887faff2504993519b0c46a162db470')
+        'ba188a0c1359f49390a789621b2c0bec67f4152f62c0dced26b31ec291abccfb5636dba0f8ed1f879e1a2a237e183b96b092d760e04e148a64da18660b87dcfb'
+        '2b31b26f49229f96a645f06892d576f49662de2e5c294a1c164569402f608f267762b1f4448ebea0b77030939952274cb2dfe524bf97f4fb2cdd5f7689b95bcd')
 validpgpkeys=(
-  14F26682D0916CDD81E37B6D61B7B526D98F0353 # Mozilla Software Releases <release@mozilla.com>
-  4360FE2109C49763186F8E21EBE41E90F6F12F6D # Mozilla Software Releases <release@mozilla.com>
+  # Mozilla Software Releases <release@mozilla.com>
+  # https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
+  14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -130,15 +102,15 @@ prepare() {
     src="${src%%::*}"
     src="${src##*/}"
     [[ $src = *.patch ]] || continue
-    msg2 "Applying patch $src..."
+    echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
 
   # Make icon transparent
   sed -i '/^<rect/d' comm/mail/branding/thunderbird/TB-symbolic.svg
 
-  echo -n "$_google_api_key" > google-api-key
-  echo -n "$_mozilla_api_key" > mozilla-api-key
+  echo -n "$_google_api_key" >google-api-key
+  echo -n "$_mozilla_api_key" >mozilla-api-key
   cat > .mozconfig << END
 ac_add_options --enable-application=comm/mail
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
@@ -149,6 +121,7 @@ ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
 ac_add_options --enable-linker=lld
+ac_add_options --disable-install-strip
 ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
@@ -157,6 +130,8 @@ ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 ac_add_options --enable-official-branding
 ac_add_options --enable-update-channel=aurora
 ac_add_options --with-distribution-id=org.archlinux
+ac_add_options --with-unsigned-addon-scopes=app,system
+ac_add_options --allow-addon-sideload
 export MOZILLA_OFFICIAL=1
 export MOZ_APP_REMOTINGNAME=${pkgname//-/}
 export MOZ_REQUIRE_SIGNING=
@@ -167,21 +142,8 @@ ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/google-api-key
 ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 
 # System libraries
-ac_add_options --with-system-zlib
-ac_add_options --with-system-bz2
-ac_add_options --with-system-icu
-ac_add_options --with-system-jpeg
-ac_add_options --with-system-jsonc
-# does not have APNG support
-# ac_add_options --with-system-png
-ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
-ac_add_options --with-system-botan
-ac_add_options --with-system-webp
-ac_add_options --with-system-libevent
-ac_add_options --with-system-ffi
-ac_add_options --with-system-pixman
 
 # Features
 ac_add_options --enable-alsa
@@ -189,20 +151,16 @@ ac_add_options --enable-jack
 ac_add_options --enable-crashreporter
 ac_add_options --disable-updater
 ac_add_options --disable-tests
-
-# System addons
-ac_add_options --with-unsigned-addon-scopes=app,system
-ac_add_options --allow-addon-sideload
 END
 }
 
 build() {
   cd "${_pkgname}-${pkgver%b*}"
 
-  export MOZ_NOSPAM=1
+  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
-  export MOZ_ENABLE_FULL_SYMBOLS=1
-  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE="pip"
+  export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
+  export MOZ_NOSPAM=1
 
   # malloc_usable_size is used in various parts of the codebase
   CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
@@ -210,9 +168,6 @@ build() {
 
   echo "Building thunderbird..."
   ./mach build
-
-  echo "Building symbol archive..."
-  ./mach buildsymbols
 }
 
 package() {
@@ -220,28 +175,22 @@ package() {
   DESTDIR="$pkgdir" ./mach install
 
   local vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
-  install -Dvm644 /dev/stdin "$vendorjs" << END
-// Use LANG environment variable to choose locale.
+  install -Dvm644 /dev/stdin "$vendorjs" <<END
+// Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
 
-// Use system-provided dictionaries.
+// Use system-provided dictionaries
 pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 
-// Disable default mailer checking.
+// Disable default mailer checking
 pref("mail.shell.checkDefaultMail", false);
 
-// Don't disable our bundled extensions in the application directory.
+// Don't disable extensions in the application directory
 pref("extensions.autoDisableScopes", 11);
-pref("extensions.shownSelectionUI", true);
-
-// Disable telemetry.
-pref("datareporting.healthreport.uploadEnabled", false);
-pref("datareporting.policy.dataSubmissionEnabled", false);
-pref("toolkit.telemetry.archive.enabled", false);
 END
 
   local distini="$pkgdir/usr/lib/$pkgname/distribution/distribution.ini"
-  install -Dvm644 /dev/stdin "$distini" << END
+  install -Dvm644 /dev/stdin "$distini" <<END
 [Global]
 id=archlinux
 version=1.0
@@ -271,7 +220,7 @@ END
   ln -Ts /usr/share/hyphen "$pkgdir/usr/lib/$pkgname/hyphenation"
 
   # Install a wrapper to avoid confusion about binary path
-  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" << END
+  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
 #!/bin/sh
 exec /usr/lib/$pkgname/$_pkgname "\$@"
 END
@@ -284,12 +233,5 @@ END
   local nssckbi="$pkgdir/usr/lib/$pkgname/libnssckbi.so"
   if [[ -e $nssckbi ]]; then
     ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
-  fi
-
-  export SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE="$startdir/.crash-stats-api.token"
-  if [[ -f $SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE ]]; then
-    make -C obj uploadsymbols
-  else
-    cp -fvt "$startdir" obj/dist/*crashreporter-symbols-full.tar.zst
   fi
 }
