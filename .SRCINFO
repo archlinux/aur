@@ -1,18 +1,15 @@
 pkgbase = bilibilivideodownload-bin
 	pkgdesc = Cross-platform download bilibili video desktop software.
 	pkgver = 3.3.3
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/blogwy/BilibiliVideoDownload
 	arch = x86_64
 	license = MIT
 	makedepends = squashfuse
 	depends = electron16
-	depends = libx11
-	depends = gdk-pixbuf2
-	depends = libxext
+	depends = dbus-glib
 	depends = libdbusmenu-glib
 	depends = gtk2
-	depends = dbus-glib
 	provides = bilibilivideodownload=3.3.3
 	conflicts = bilibilivideodownload
 	source = bilibilivideodownload-3.3.3.AppImage::https://github.com/blogwy/BilibiliVideoDownload/releases/download/v3.3.3/BilibiliVideoDownload-3.3.3.AppImage
@@ -20,6 +17,6 @@ pkgbase = bilibilivideodownload-bin
 	source = bilibilivideodownload.sh
 	sha256sums = e623be15d2779963943d4290cdfa89aa5d685fb0d78eee0a252cf908d60f6ba2
 	sha256sums = e4d41ebef13a799b7ae9dceebe3a39a6c3e7c18c7a91728c0a73a8ae4baabcc3
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
 
 pkgname = bilibilivideodownload-bin
