@@ -1,10 +1,10 @@
 pkgbase = imhex
 	pkgdesc = A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM
 	pkgver = 1.32.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://imhex.werwolv.net
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = cmake
 	makedepends = llvm
@@ -29,31 +29,16 @@ pkgbase = imhex
 	conflicts = imhex-patterns-git
 	options = !lto
 	options = !strip
-	source = imhex::git+https://github.com/WerWolv/ImHex.git#tag=v1.32.2
-	source = nativefiledialog::git+https://github.com/btzy/nativefiledialog-extended.git#commit=5786fabceeaee4d892f3c7a16b243796244cdddc
-	source = xdgpp::git+https://git.sr.ht/~danyspin97/xdgpp#commit=f01f810714443d0f10c333d4d1d9c0383be41375
-	source = libromfs::git+https://github.com/WerWolv/libromfs#commit=0a72f7bb33d87c4fb2709b6b94bf83518ab0022d
-	source = libwolv::git+https://github.com/WerWolv/libwolv#commit=d25459dfa8e706af938427e979e454a8326c5984
-	source = pattern_language::git+https://github.com/WerWolv/PatternLanguage#tag=ImHex-v1.32.2
-	source = imhex-patterns::git+https://github.com/WerWolv/ImHex-Patterns#tag=ImHex-v1.32.2
+	source = imhex-1.32.2.tar.gz::https://github.com/WerWolv/ImHex/releases/download/v1.32.2/Full.Sources.tar.gz
+	source = imhex-patterns-1.32.2.tar.gz::https://github.com/WerWolv/ImHex-Patterns/archive/refs/tags/ImHex-v1.32.2.tar.gz
 	source = 0001-fix-cmake-Fix-when-multiple-.NET-packages-are-instal.patch
 	source = 0002-fix-main-Handle-different-LLVM-version.patch
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 44564e7326e056f9ee698ae972bb0fb624716052466f0f504404e3f366c4c9ed
+	sha256sums = c2bf92cf468498ccc8a27ff6c3284f59946b0cc064fe41c37885a31018360ad0
 	sha256sums = 3b27f99abc4040630f53cb098b67d4a8086d87c9c2c6e0a6a29afd83dcd6ec3a
 	sha256sums = 6cd6297b2269a7299f81781e9f4bcaa4b78bc69d757d2eafab10433daee6ed48
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = SKIP
+	b2sums = 75d595e5acb05429b114f4d4c61981080797f7b88d41a219c93f6512c4b204dd164a8886c00af4ee539cb7d6f7baaa49084b349806357fb872a1ebb30e82cfba
+	b2sums = b171669c17c0a7aef0ba65b66c2f68f7581a8e11d61365363fd28cfedfa2658c8833181d5e8a4c789ff011c5afadafec8149b43852319cae161c9bb5c26be2ec
 	b2sums = 4c1c0451e3c4033ed331f6339342926f1ee25b6097cc9bf540f6944f089a3db2eaa42237a673522dbcfe37540b9be9563a12b5aa146d5c5e873cce36ca637b99
 	b2sums = 0e6fdf7cb14df8c2983822c5bc52c080d68fbc57d995cc9e24c6a84589e2dd904e48e4657a27155dcab9048a720f5d60e8fc2d70ab5d8d42b3186703a878a960
 
