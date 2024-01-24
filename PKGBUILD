@@ -19,7 +19,9 @@ _url="https://github.com/zed-industries/zed"
 license=(GPL-3.0-or-later)
 depends=()
 makedepends=(cargo
-             clang)
+             clang
+             gcc-objc
+             libdispatch)
 _archive="zed-$pkgver"
 source=("$_url/archive/v$pkgver/$_archive.tar.gz")
 sha256sums=('f39e4874eb5c6d18a5c75b5d8cfe37ff62f480635009aac1e7a4957c29069c8e')

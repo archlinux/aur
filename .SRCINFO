@@ -7,6 +7,8 @@ pkgbase = zed-editor
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	makedepends = clang
+	makedepends = gcc-objc
+	makedepends = libdispatch
 	source = https://github.com/zed-industries/zed/archive/v0.119.18/zed-0.119.18.tar.gz
 	sha256sums = f39e4874eb5c6d18a5c75b5d8cfe37ff62f480635009aac1e7a4957c29069c8e
 
