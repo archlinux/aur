@@ -2,7 +2,7 @@
 
 pkgname=xboot-git
 pkgver=2.0.1.r2631
-pkgrel=7
+pkgrel=15
 pkgdesc="The extensible bootloader for embedded system with application engine, write once, run everywhere. (Linux Sandbox for x86_64)"
 arch=('x86_64')
 url="https://github.com/xboot/xboot"
@@ -16,7 +16,7 @@ depends=(sdl2
     libdrm)
 makedepends=(git)
 backup=()
-options=('!strip')
+options=()
 #install=${pkgname}.install
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
