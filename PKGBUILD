@@ -1,15 +1,15 @@
 # Maintainer: Antonio Prates <hello@aprates.dev>
 
 pkgname=fatscript-fry
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="fry - FatScript Interpreter"
 arch=('any')
 url="https://fatscript.org/"
 license=('GPL3')
 groups=('fatscript')
-depends=('libcurl-compat')
-makedepends=('git' 'gcc' 'bash' 'libcurl-compat')
+depends=('libcurl-compat' 'openssl')
+makedepends=('git' 'gcc' 'bash' 'libcurl-compat' 'openssl')
 source=("git+https://gitlab.com/fatscript/fry.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
