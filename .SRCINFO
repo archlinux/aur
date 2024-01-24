@@ -1,11 +1,11 @@
 pkgbase = prog-express-beta
 	pkgdesc = Prog-Express is a control software for the Batronix USB programming devices to program FLASH/PROM/EPROM/EEPROM chips. Playground for upcoming betas.
-	pkgver = 3.8.8
+	pkgver = 3.8.9
 	pkgrel = 1
-	url = http://www.batronix.com/
+	url = https://www.batronix.com/
 	arch = i686
 	arch = x86_64
-	license = custom:Freeware
+	license = LicenseRef-Freeware
 	depends = xz
 	depends = libarchive
 	depends = mono
@@ -15,10 +15,9 @@ pkgbase = prog-express-beta
 	depends = libgdiplus
 	depends = gtk-sharp-2
 	conflicts = prog-express
-	source_i686 = http://www.batronix.com//exe/Batronix/Prog-Express/deb/prog-express-3.8.8-1.i386.deb
-	sha256sums_i686 = 4d5ef0f740999ed9704177fb4ca830da7c172f96682506cb659ea191e37d0cb4
-	source_x86_64 = http://www.batronix.com//exe/Batronix/Prog-Express/deb/prog-express-3.8.8-1.amd64.deb
-	sha256sums_x86_64 = 745aa73ee51fbd7ceda91e32cdfe95c9f51b8d852e91dd695ee34a55c70ab645
+	source_i686 = https://www.batronix.com//exe/Batronix/Prog-Express/deb/prog-express-3.8.9-1.i386.deb
+	sha256sums_i686 = 72bb235845d828a48f1cc62054b8b18269cf5e012b724335862d2604f69ec2e2
+	source_x86_64 = https://www.batronix.com//exe/Batronix/Prog-Express/deb/prog-express-3.8.9-1.amd64.deb
+	sha256sums_x86_64 = 65eb70c96df77ab0e01b484572bdb204df6e2c471760f883e9073064bb87aa72
 
 pkgname = prog-express-beta
-
