@@ -4,7 +4,7 @@
 # https://github.com/openvinotoolkit/openvino/issues/452#issuecomment-722941119
 
 pkgname=openvino
-pkgver=2023.2.0
+pkgver=2023.3.0
 pkgrel=1
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications'
 arch=('x86_64')
