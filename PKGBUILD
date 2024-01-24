@@ -1,34 +1,35 @@
-# Contributor: kusakata <shohei atmark kusakata period com>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=peco-git
-pkgver=0.4.3.r5.ge40c0ac
+pkgver=0.5.11.r18.g51f38bf
 pkgrel=1
-pkgdesc="Simplistic interactive filtering tool."
+pkgdesc='Simplistic interactive filtering tool.'
 arch=('i686' 'x86_64')
-url="https://github.com/peco/peco"
-license=('MIT')
+url='https://github.com/peco/peco'
+license=(MIT)
 makedepends=('git' 'go')
-provides=('peco')
-conflicts=('peco')
-_gourl="github.com/peco/peco/cmd/peco"
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}")
+source=("$pkgname::git+$url")
+md5sums=('SKIP')
 
 pkgver() {
-  GOPATH="$srcdir" go get -d ${_gourl}
-  cd "$srcdir/src/${_gourl}/"
-  git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//'
+	cd "$srcdir/$pkgname"
+	git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-  GOPATH=$srcdir go get -v -d -x $_gourl
-  cd $srcdir/src/$_gourl
-  GOPATH=$srcdir go build -o ../../../../../../peco
+	cd "$srcdir/$pkgname"
+	make
+}
+
+check() {
+	cd "$srcdir/$pkgname"
+	make test
 }
 
 package() {
-  cd "$srcdir"
-  install -Dm755 peco "$pkgdir/usr/bin/peco"
-  cd "$srcdir/src/github.com/peco/peco"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname%-*}/README.md"
+	cd "$srcdir/$pkgname"
+	install -D -m755 releases/peco_linux_amd64/peco $pkgdir/usr/bin/peco
+	install -D -m644 README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
+	install -D -m644 LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
 }
-
