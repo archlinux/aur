@@ -20,16 +20,19 @@
 # set this to anything to build with clang rather than with gcc
 _clangbuild=
 
+# define the applicaton render system, valid values are either 'gl' or 'gles'
+_renderer=gles
+
 pkgbase=kodi-nexus-git
-pkgname=("$pkgbase" "$pkgbase-gles" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r62252.b8fafb0a41d
+pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
+pkgver=r62306.d527c92cc39
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
 makedepends=(
   'afpfs-ng' 'bluez-libs' 'cmake' 'curl' 'dav1d' 'doxygen' 'git' 'glew'
-  'gperf' 'hicolor-icon-theme' 'java-environment<21' 'fmt' 'libaacs' 'libass'
+  'gperf' 'hicolor-icon-theme' 'java-runtime<21' 'fmt' 'libaacs' 'libass'
   'libbluray' 'libcdio' 'libcec' 'libgl' 'mariadb-libs' 'libmicrohttpd'
   'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libpulse' 'libva'
   'libva-vdpau-driver' 'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'nasm'
@@ -48,7 +51,6 @@ options=(!lto)
 
 _gitname=xbmc
 _codename=Nexus
-_sse_workaround=1
 
 # Found on their respective github release pages. One can check them against
 # what is pulled down when not specifying them in the cmake step.
@@ -77,7 +79,6 @@ source=(
   "https://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
-  cheat-sse-build.patch
   kodi-fmt-10.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/23571.patch
   flatb23.patch::https://github.com/xbmc/xbmc/commit/35be40daa39965a9ea5b3569eb7d515e6a14da5d.patch
   0001-ffmpeg-fix-build-with-binutils-update.patch
@@ -101,7 +102,6 @@ b2sums=('SKIP'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
         'be5e3c8ea81ce4b6f2e2c1b2f22e1172434c435f096fa7dade060578c506cff0310e3e2ef0627e26ce2be44f740652eb9a8e1b63578c18f430f7925820f04e66'
         '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61'
-        '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0'
         '45e4a4fc3ddd3bc2329b42a3f72c3e4fae1adb93e9d4b945a5aba3a70bee3ddce416fcb19061ad2263d1f247da5fc7143944408fb5294b762e45ac2f0981c06a'
         'bdc249920685a3738f872d9ea19a5c46b244d437d30b7dad958dcf33b5bfb88782c1a73bd15dcb1c26f0b643f1e4711775621a2753a1b5668efacc2144fd06e6'
         '7e15afcc0cc7f529e6c491c985968bc53be413424b890e4eab2ce8e3d0f21b08347698e660e0f4f0cc50c5279f052be7a2d84d5351509d34193066d797a44130')
@@ -112,14 +112,12 @@ pkgver() {
 }
 
 prepare() {
-  [[ -d "$srcdir/kodi-build" ]] && rm -rf "$srcdir/kodi-build"
+  [[ -d kodi-build ]] && rm -rf kodi-build
   mkdir "$srcdir/kodi-build"
-  [[ -d "$srcdir/kodi-build-gles" ]] && rm -rf "$srcdir/kodi-build-gles"
-  mkdir "$srcdir/kodi-build-gles"
 
   cd "$_gitname"
 
-  [[ "$_sse_workaround" -eq 1 ]] && patch -p1 -i "$srcdir/cheat-sse-build.patch"
+  rm -rf system/certs # remove not needed cacert
 
   patch -p1 -i ../0001-ffmpeg-fix-build-with-binutils-update.patch
   patch -p1 -i ../flatb23.patch
@@ -131,13 +129,21 @@ prepare() {
 }
 
 build() {
+  cd "$srcdir/kodi-build"
 
   _args=(
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
+    -DENABLE_SSE=ON
+    -DENABLE_SSE2=ON
+    -DENABLE_SSE3=ON
+    -DENABLE_SSSE3=ON
+    -DENABLE_SSE4_1=ON
+    -DENABLE_SSE4_2=ON
+    -DENABLE_AVX=ON
+    -DENABLE_AVX2=ON
     -DUSE_LTO=$(nproc)
-    -DVERBOSE=ON
     -DENABLE_LDGOLD=OFF
     -DENABLE_AIRTUNES=ON
     -DENABLE_AVAHI=ON
@@ -172,26 +178,21 @@ build() {
     -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz"
     -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz"
     -DUDFREAD_URL="$srcdir/libudfread-$_libudfread_version.tar.gz"
+    -DAPP_RENDER_SYSTEM=$_renderer
   )
 
   # https://github.com/google/flatbuffers/issues/7404
   CXXFLAGS+=' -Wno-error=restrict'
 
   echo "building kodi"
-  cd "$srcdir/kodi-build"
-  cmake "${_args[@]}" -DAPP_RENDER_SYSTEM=gl ../"$_gitname"
-  make
-
-  echo "building kodi-gles"
-  cd "$srcdir/kodi-build-gles"
-  cmake "${_args[@]}" -DAPP_RENDER_SYSTEM=gles ../"$_gitname"
+  cmake "${_args[@]}" ../"$_gitname"
   make
 }
 
 # kodi
 # components: kodi
 package_kodi-nexus-git() {
-  pkgdesc="A software media player and entertainment hub for digital media (gl renderer, Nexus branch)"
+  pkgdesc="A software media player and entertainment hub for digital media (Nexus branch, $_renderer renderer)"
   depends=(
     'bluez-libs' 'curl' 'dav1d' 'desktop-file-utils' 'hicolor-icon-theme' 'fmt'
     'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec' 'libmicrohttpd' 'libnfs'
@@ -212,7 +213,7 @@ package_kodi-nexus-git() {
     'upower: Display battery level'
   )
   provides=("kodi-common=${pkgver}" 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
-  conflicts=('kodi-gles' 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
+  conflicts=('kodi' 'kodi-gles' 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
 
   _components=(
     'kodi'
@@ -229,48 +230,11 @@ package_kodi-nexus-git() {
   # avoid error <general>: GetDirectory - Error getting /usr/lib/kodi/addons
   # https://bugs.archlinux.org/task/77366
   mkdir -p "$pkgdir"/usr/lib/kodi/addons
-}
-# kodi
-# components: kodi
-package_kodi-nexus-git-gles() {
-  pkgdesc="A software media player and entertainment hub for digital media (gles renderer, Nexus branch)"
-  depends=(
-    'bluez-libs' 'curl' 'dav1d' 'desktop-file-utils' 'hicolor-icon-theme' 'fmt'
-    'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec' 'libmicrohttpd' 'libnfs'
-    'libplist' 'libpulse' 'libva' 'libvdpau' 'libxslt' 'lirc' 'lzo'
-    'mariadb-libs' 'mesa' 'libpipewire' 'python-pillow' 'python-pycryptodomex'
-    'python-simplejson' 'shairplay' 'smbclient' 'sndio' 'spdlog' 'sqlite'
-    'taglib' 'tinyxml' 'libxrandr' 'libxkbcommon' 'waylandpp' 'libinput'
-    'pcre'
-  )
-  [[ -n "$_clangbuild" ]] && depends+=('glu')
 
-  optdepends=(
-    'afpfs-ng: Apple shares support'
-    'bluez: Blutooth support'
-    'python-pybluez: Bluetooth support'
-    'pulseaudio: PulseAudio support'
-    'pipewire: PipeWire support'
-    'upower: Display battery level'
-  )
-  provides=("kodi-common=${pkgver}" "kodi=${pkgver}" 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
-  conflicts=('kodi' 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
+  # https://archlinux.org/todo/use-system-ca-store/
+  mkdir -p "$pkgdir"/usr/share/kodi/system/certs
+  ln -s /etc/ssl/cert.pem "$pkgdir"/usr/share/kodi/system/certs/cacert.pem
 
-  _components=(
-    'kodi'
-    'kodi-bin'
-  )
-
-  cd kodi-build-gles
-  for _cmp in ${_components[@]}; do
-  DESTDIR="$pkgdir" /usr/bin/cmake \
-    -DCMAKE_INSTALL_COMPONENT="$_cmp" \
-     -P cmake_install.cmake
-  done
-
-  # avoid error <general>: GetDirectory - Error getting /usr/lib/kodi/addons
-  # https://bugs.archlinux.org/task/77366
-  mkdir -p "$pkgdir"/usr/lib/kodi/addons
 }
 
 # kodi-eventclients
