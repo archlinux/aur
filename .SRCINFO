@@ -1,23 +1,20 @@
 pkgbase = crankshaft-client-bin
 	pkgdesc = A fast, feature-rich krunker client written in typescript
 	pkgver = 1.8.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/KraXen72/crankshaft
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = squashfuse
 	depends = electron10
-	depends = libx11
-	depends = gdk-pixbuf2
-	depends = libxext
+	depends = dbus-glib
 	depends = libdbusmenu-glib
 	depends = gtk2
-	depends = dbus-glib
 	provides = crankshaft-client=1.8.0
 	conflicts = crankshaft-client
 	source = crankshaft-client.sh
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
 	source_i686 = crankshaft-client-1.8.0-i686.AppImage::https://github.com/KraXen72/crankshaft/releases/download/1.8.0/crankshaft-portable-linux-i386.AppImage
 	sha256sums_i686 = e2de6a1520e5385cace8828cc1dba0cb9c301e6c89c3d08f6f0e9dfb914f6c0b
 	source_x86_64 = crankshaft-client-1.8.0-x86_64.AppImage::https://github.com/KraXen72/crankshaft/releases/download/1.8.0/crankshaft-portable-linux-x86_64.AppImage

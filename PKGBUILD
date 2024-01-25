@@ -3,24 +3,21 @@ _pkgname=crankshaft
 pkgname="${_pkgname}-client-bin"
 pkgver=1.8.0
 _electronversion=10
-pkgrel=6
+pkgrel=7
 pkgdesc="A fast, feature-rich krunker client written in typescript"
 arch=(
     'i686'
     'x86_64'
 )
 url="https://github.com/KraXen72/crankshaft"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'electron10'
-    'libx11'
-    'gdk-pixbuf2'
-    'libxext'
+    'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
-    'dbus-glib'
 )
 makedepends=(
     'squashfuse'
@@ -30,7 +27,7 @@ source=(
 )
 source_i686=("${pkgname%-bin}-${pkgver}-i686.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-portable-linux-i386.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-portable-linux-x86_64.AppImage")
-sha256sums=('5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+sha256sums=('1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 sha256sums_i686=('e2de6a1520e5385cace8828cc1dba0cb9c301e6c89c3d08f6f0e9dfb914f6c0b')
 sha256sums_x86_64=('f6012189d8c76bb08fb6a54a03e2fde6d0c089900f83bc9e661ef015cf5713e7')
 build() {
