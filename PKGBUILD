@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=laeken
-_pkgver=0.5.2
+_pkgver=0.5.3
 pkgname=r-${_pkgname,,}
-pkgver=0.5.2
-pkgrel=4
+pkgver=0.5.3
+pkgrel=1
 pkgdesc='Estimation of Indicators on Social Exclusion and Poverty'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('22790f7157f23eb0b7b0b89e2ea53478fb3c0d15b5be8ad11525d3e6d5626cdc')
+sha256sums=('60495f494f2a41b2ca94e11e3d0224843b7282cf8b2a859dbf6077a3bc97e80b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
