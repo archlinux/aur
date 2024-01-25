@@ -1,14 +1,14 @@
 # Maintainer: nycex <nycex / cccp.org>
 _pkgbasename=lookupunicode
 pkgname=${_pkgbasename}-git
-pkgrel=1
-pkgver=r2.05db01b
+pkgrel=2
+pkgver=r13.c3add01
 pkgdesc="swizz army knife for unicode - a utility to search in the unicode database"
 arch=('any')
 url="https://codeberg.org/nycex/${_pkgbasename}"
 license=('GPL3')
-depends=('cargo' 'unicode-character-database')
-makedepends=('git')
+depends=('unicode-character-database')
+makedepends=('git' 'cargo')
 source=(git+${url})
 sha256sums=('SKIP')
 

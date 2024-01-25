@@ -1,15 +1,14 @@
 pkgbase = lookupunicode-git
 	pkgdesc = swizz army knife for unicode - a utility to search in the unicode database
-	pkgver = r2.05db01b
-	pkgrel = 1
+	pkgver = r13.c3add01
+	pkgrel = 2
 	url = https://codeberg.org/nycex/lookupunicode
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = cargo
+	makedepends = cargo
 	depends = unicode-character-database
 	source = git+https://codeberg.org/nycex/lookupunicode
 	sha256sums = SKIP
 
 pkgname = lookupunicode-git
-
