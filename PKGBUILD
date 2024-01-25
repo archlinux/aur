@@ -2,7 +2,7 @@
 
 pkgname='note-manager'
 pkgver=1.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple CLI notes manager"
 arch=('any')
 url='https://github.com/thek4n/note'
@@ -11,9 +11,8 @@ depends=(
   'git'
 )
 optdepends=(
-  'python-grip: render tips in browser'
   'fzf: find notes'
-  'bat: render tips in terminal'
+  'bat: render notes in terminal'
   'tree: tree of notes'
 )
 conflicts=('note-manager')

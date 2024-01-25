@@ -1,14 +1,13 @@
 pkgbase = note-manager
 	pkgdesc = Simple CLI notes manager
 	pkgver = 1.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thek4n/note
 	arch = any
 	license = MIT
 	depends = git
-	optdepends = python-grip: render tips in browser
 	optdepends = fzf: find notes
-	optdepends = bat: render tips in terminal
+	optdepends = bat: render notes in terminal
 	optdepends = tree: tree of notes
 	conflicts = note-manager
 	source = note-manager::git+https://github.com/thek4n/note.git#branch=master
