@@ -1,7 +1,7 @@
 pkgbase = vkd3d-proton-mingw
 	pkgdesc = Fork of VKD3D. Development branches for Protons Direct3D 12 implementation
 	pkgver = 2.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HansKristian-Work/vkd3d-proton
 	arch = x86_64
 	license = LGPL-2.1
@@ -19,11 +19,13 @@ pkgbase = vkd3d-proton-mingw
 	options = !lto
 	options = !staticlibs
 	source = git+https://github.com/HansKristian-Work/vkd3d-proton.git#tag=v2.11.1
-	source = setup_vkd3d_proton
 	source = vkd3d-proton-extraopts.patch
+	source = setup_vkd3d_proton.sh
+	source = setup_vkd3d_proton
 	sha256sums = SKIP
-	sha256sums = 67815eed9d47bbf610e23c6a1e4954c11371886c2ca73555dd9f1d6fbebb1323
 	sha256sums = bcc15521e4c7f966a0192a1dabb7fb4935b33db39344ab5b861f9d81486f1362
+	sha256sums = 7bc99b83df3fe9a57372a34961935384db6a99ddccff093461450c8cf451adf3
+	sha256sums = 67815eed9d47bbf610e23c6a1e4954c11371886c2ca73555dd9f1d6fbebb1323
 
 pkgname = vkd3d-proton-mingw
 	depends = vulkan-icd-loader

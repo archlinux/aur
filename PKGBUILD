@@ -2,7 +2,7 @@
 
 pkgname=vkd3d-proton-mingw
 pkgver=2.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Fork of VKD3D. Development branches for Protons Direct3D 12 implementation'
 arch=('x86_64')
 url="https://github.com/HansKristian-Work/vkd3d-proton"
@@ -13,8 +13,9 @@ conflicts=('vkd3d-proton' 'd3d12.dll')
 options=(!lto !staticlibs)
 source=(
     "git+https://github.com/HansKristian-Work/vkd3d-proton.git#tag=v$pkgver"
-    "setup_vkd3d_proton"
     "vkd3d-proton-extraopts.patch"
+    "setup_vkd3d_proton.sh"
+    "setup_vkd3d_proton"
 )
 
 prepare() {
@@ -98,12 +99,13 @@ package() {
 
     DESTDIR="$pkgdir" ninja -C "build/x86" install
     DESTDIR="$pkgdir" ninja -C "build/x64" install
-    install -Dm 755 -t "$pkgdir/usr/share/vkd3d-proton" vkd3d-proton/setup_vkd3d_proton.sh
+    install -Dm 755 -t "$pkgdir/usr/share/vkd3d-proton" setup_vkd3d_proton.sh
     install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" vkd3d-proton/README.md
     install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname" vkd3d-proton/LICENSE
     install -Dm 755 -t "$pkgdir/usr/bin" setup_vkd3d_proton
 }
 
 sha256sums=('SKIP'
-            '67815eed9d47bbf610e23c6a1e4954c11371886c2ca73555dd9f1d6fbebb1323'
-            'bcc15521e4c7f966a0192a1dabb7fb4935b33db39344ab5b861f9d81486f1362')
+            'bcc15521e4c7f966a0192a1dabb7fb4935b33db39344ab5b861f9d81486f1362'
+            '7bc99b83df3fe9a57372a34961935384db6a99ddccff093461450c8cf451adf3'
+            '67815eed9d47bbf610e23c6a1e4954c11371886c2ca73555dd9f1d6fbebb1323')
