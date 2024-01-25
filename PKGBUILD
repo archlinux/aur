@@ -52,7 +52,7 @@ fi
 
 pkgname=ffmpeg-obs
 pkgver=6.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -65,7 +65,8 @@ _ffnvcodecver=12.0.16.0
 _libjxlver=0.9.0
 _libplacebover=6
 _libristver=0.2.7
-_libvpxver=1.13
+_libvpxver=1.14
+_rav1ever=0.7.1
 _srtver=1.5
 _svtav1ver=1.7
 _vidstabver=1.1.1
@@ -125,7 +126,7 @@ depends=(
   opencore-amr
   openjpeg2
   opus
-  rav1e
+  "rav1e>=$_rav1ever"
   sdl2
   snappy
   speex
