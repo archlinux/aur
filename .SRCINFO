@@ -1,6 +1,6 @@
 pkgbase = yarc-launcher
 	pkgdesc = The official launcher for YARG (a.k.a. Yet Another Launcher or YAL)
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/YARC-Official/YARC-Launcher
 	arch = x86_64
@@ -20,9 +20,10 @@ pkgbase = yarc-launcher
 	optdepends = hidapi: support for HID devices in-game
 	optdepends = systemd-libs: udev services in-game
 	conflicts = yarc-launcher-bin
-	source = yarc-launcher-0.3.0.tar.gz::https://github.com/YARC-Official/YARC-Launcher/archive/refs/tags/v0.3.0.tar.gz
+	options = !lto
+	source = yarc-launcher-0.3.1.tar.gz::https://github.com/YARC-Official/YARC-Launcher/archive/refs/tags/v0.3.1.tar.gz
 	source = yarc-launcher.desktop
-	sha256sums = 25b4f848cb56353e74507760abbdcc3a1f1ef120cd17c50d8b2d51e0b09ed762
+	sha256sums = ecf2dc2956bf3232165bd3783c57a1b80b2be685f7a85e655b9bea8621508b33
 	sha256sums = d6cff5551389bbd5744179f169336c165ce1e9de65b34897c4ab5d40527a780e
 
 pkgname = yarc-launcher

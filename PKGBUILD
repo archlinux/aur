@@ -1,6 +1,6 @@
 # Maintainer: GANPI <some.kind@of.mail>
 pkgname=yarc-launcher
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="The official launcher for YARG (a.k.a. Yet Another Launcher or YAL)"
 arch=(x86_64)
@@ -23,12 +23,13 @@ optdepends=(
 	"systemd-libs: udev services in-game"
 )
 conflicts=($pkgname-bin)
+options=(!lto)
 source=(
 	$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz
 	$pkgname.desktop
 )
 sha256sums=(
-	25b4f848cb56353e74507760abbdcc3a1f1ef120cd17c50d8b2d51e0b09ed762
+	ecf2dc2956bf3232165bd3783c57a1b80b2be685f7a85e655b9bea8621508b33
 	d6cff5551389bbd5744179f169336c165ce1e9de65b34897c4ab5d40527a780e
 )
 
