@@ -1,24 +1,37 @@
+# Maintainer: Hans Gaiser <hansg91@email.com>
+
 pkgname=moonshine
-pkgver=0.2.1
+pkgver=0.1.0
 pkgrel=1
+pkgdesc="Streaming server for Moonlight clients, written in Rust."
+arch=('x86_64')
+url="https://github.com/hgaiser/moonshine"
+license=('BSD-2')
+depends=(
+	alsa-lib
+	avahi
+	ffmpeg
+	gcc-libs
+	glibc
+	nvidia-utils
+	openssl
+	opus
+)
 
-pkgdesc="A lightweight Lua VM for the browser"
-url="http://moonshinejs.org"
-arch=('any')
-license=('GPL3')
+source=(
+	"https://github.com/hgaiser/moonshine/archive/refs/tags/v$pkgver.tar.gz"
+	"moonshine.service"
+)
+sha256sums=('SKIP'
+            '564b02490e50d9d4fe2cf03e911dc5783e5d311e12155907a724361e56dfedf7')
 
-depends=('lua' 'nodejs')
-makedepends=('npm')
-
-source=(moonshine-"$pkgver".tar.gz::https://github.com/gamesys/moonshine/archive/"$pkgver".tar.gz)
-
-noextract=("$pkgver.tgz")
-
-sha1sums=('4ea6a621bdc6778b165e91571293c990617371b2')
+build() {
+	cd "$srcdir/moonshine-$pkgver"
+	cargo build --release
+}
 
 package() {
-	npm install -g --prefix "$pkgdir"/usr moonshine-"$pkgver".tar.gz
-	install -D "$pkgdir"/usr/lib/node_modules/moonshine/bin/man/*.1 \
-	           "$pkgdir"/usr/share/man/man1/
-	chown -R root:root "$pkgdir"/usr
+	cd "$srcdir/moonshine-$pkgver"
+	install -Dm755 target/release/moonshine "$pkgdir/usr/bin/moonshine"
+	install -Dm755 "$srcdir/moonshine.service" "$pkgdir/usr/lib/systemd/user/moonshine.service"
 }
