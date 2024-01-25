@@ -3,7 +3,7 @@
 
 pkgname=litellm
 pkgver=1.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Call all LLM APIs using the OpenAI format'
 arch=(any)
 url='https://pypi.org/project/litellm/'
@@ -27,8 +27,8 @@ makedepends=(
     'python-wheel'
 )
 optdepends=(
-    'python-uvicorn: ASGI server for asyncio'
-    'python-gunicorn: WSGI HTTP Server'
+    'uvicorn: ASGI server for asyncio'
+    'gunicorn: WSGI HTTP Server'
     'python-fastapi: Framework for building APIs'
     'python-backoff: Backoff strategies for retrying operations'
     'python-yaml: YAML parser and emitter'
