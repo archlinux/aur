@@ -1,0 +1,16 @@
+pkgbase = beepalsa
+	pkgdesc = Just like beep, except that it plays via ALSA
+	pkgver = r9.8339517
+	pkgrel = 1
+	url = https://github.com/Sound-Linux-More/beepalsa
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	depends = alsa-lib
+	depends = glibc
+	provides = beepalsa
+	conflicts = beep
+	source = beepalsa::git+https://github.com/Sound-Linux-More/beepalsa.git
+	sha512sums = SKIP
+
+pkgname = beepalsa
