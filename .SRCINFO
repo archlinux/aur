@@ -1,7 +1,7 @@
 pkgbase = mod_tile
-	pkgdesc = Mod tile is a daemon and apache module for rendering and serving Mapnik raster tiles
+	pkgdesc = A daemon and apache module for rendering and serving Mapnik raster tiles
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openstreetmap/mod_tile
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,6 @@ pkgbase = mod_tile
 	makedepends = mapnik
 	optdepends = ceph-libs: RADOS tile storage support
 	optdepends = libmemcached: Memcached tile storage support
-	noextract = mod_tile-0.7.0.tar.gz
 	source = https://github.com/openstreetmap/mod_tile/archive/v0.7.0/mod_tile-0.7.0.tar.gz
 	source = renderd.service
 	source = renderd-postgresql.service

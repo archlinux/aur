@@ -2,8 +2,8 @@
 
 pkgname=('mod_tile' 'renderd')
 pkgver=0.7.0
-pkgrel=1
-pkgdesc='Mod tile is a daemon and apache module for rendering and serving Mapnik raster tiles'
+pkgrel=2
+pkgdesc='A daemon and apache module for rendering and serving Mapnik raster tiles'
 arch=('i686' 'x86_64')
 url='https://github.com/openstreetmap/mod_tile'
 license=('GPL2')
@@ -21,29 +21,28 @@ sha256sums=('32860e5c1b67c6666a11f0c2524da77d95393d607c8fbfd18849bbd8322c5b0f'
             'd6c009e95380d8a9be41f0bd077638cb6adbebb74fff238a2bfc9fbbb3ed49fa'
             'cd6871cdb3e640912c95499e97fe1a2496ba95f102ec65f112bcd546ba736514'
             'cc450b47539d8a3e0d3d78634c78b0019a15097d2fb4e86fa3332957abd82d89')
-noextract=("mod_tile-${pkgver}.tar.gz")
 
 prepare() {
   if [ -d mod_tile ]
   then
     rm -rf mod_tile
   fi
-  mkdir mod_tile
-  bsdtar \
-    --directory mod_tile \
-    --extract \
-    --file mod_tile-${pkgver}.tar.gz \
-    --gzip \
-    --strip-components 1
+  mv mod_tile-${pkgver} mod_tile
 }
 
 build() {
-  cmake -B mod_tile_build -S mod_tile -DCMAKE_BUILD_TYPE:STRING=Release -DENABLE_TESTS:BOOL=ON
-  cmake --build mod_tile_build
+  export CMAKE_BUILD_PARALLEL_LEVEL=${CMAKE_BUILD_PARALLEL_LEVEL:-$(nproc)}
+  cmake -B build -S mod_tile \
+    -DCMAKE_BUILD_TYPE:STRING=Release \
+    -DENABLE_TESTS:BOOL=ON
+  cmake --build build
 }
 
 check() {
-  ctest --output-on-failure --test-dir mod_tile_build
+  export CTEST_PARALLEL_LEVEL=${CTEST_PARALLEL_LEVEL:-$(nproc)}
+  ctest \
+    --output-on-failure \
+    --test-dir build
 }
 
 package_mod_tile() {
@@ -52,7 +51,7 @@ package_mod_tile() {
   pkgdesc='An Apache 2 module to deliver map tiles'
   provides=('mod_tile')
 
-  DESTDIR="$pkgdir" cmake --install mod_tile_build --prefix /usr --strip
+  DESTDIR="$pkgdir" cmake --install build --prefix /usr --strip
 
   # License
   install -Dm644 "$srcdir"/mod_tile/COPYING "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
@@ -72,7 +71,7 @@ package_renderd() {
   pkgdesc='A daemon that renders map tiles using mapnik'
   provides=('renderd')
 
-  DESTDIR="$pkgdir" cmake --install mod_tile_build --prefix /usr --strip
+  DESTDIR="$pkgdir" cmake --install build --prefix /usr --strip
 
   # Systemd service units, sysusers.d & tmpfiles.d configuration files
   install -Dm644 -t "$pkgdir"/usr/lib/systemd/system/ "$srcdir"/renderd-postgresql.service "$srcdir"/renderd.service
