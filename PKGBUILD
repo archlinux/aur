@@ -1,7 +1,7 @@
 # Maintainer: Akira Fukushima <h3.poteto@gmail.com>
 pkgname=whalebird
 pkgver=6.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Single-column Fediverse client for desktop "
 arch=('x86_64')
 url="https://whalebird.social"
@@ -20,6 +20,7 @@ md5sums=('bf31494f589e08341f55568fbcedf29a'
 prepare() {
   cd "whalebird-desktop-${pkgver}"
   rm -f electron-builder.yml
+  rm .tool-versions
   _electronVersion="$(</usr/lib/electron26/version)"
   yarn up "electron@$_electronVersion"
 }

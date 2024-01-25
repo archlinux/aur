@@ -1,7 +1,7 @@
 pkgbase = whalebird
 	pkgdesc = Single-column Fediverse client for desktop
 	pkgver = 6.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://whalebird.social
 	arch = x86_64
 	license = GPL3
