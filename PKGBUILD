@@ -1,7 +1,7 @@
 # Maintainer: honjow
 
 pkgname=ryujinx-ava-bin
-pkgver=1.1.1122
+pkgver=1.1.1125
 pkgrel=1
 pkgdesc='Experimental Nintendo Switch Emulator written in C# (master build channel release, test ava build)'
 arch=(x86_64)
