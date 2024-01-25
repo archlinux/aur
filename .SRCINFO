@@ -1,7 +1,7 @@
 pkgbase = ecency-surfer-bin
 	pkgdesc = Immutable, decentralized, uncensored, rewarding communities built, owned and operated by its users
 	pkgver = 3.0.35
-	pkgrel = 4
+	pkgrel = 5
 	url = https://ecency.com/
 	arch = x86_64
 	license = MIT
@@ -13,6 +13,6 @@ pkgbase = ecency-surfer-bin
 	source = ecency-surfer.sh
 	sha256sums = 95d6ef6078caef72715ce3e248d2e0be8dfbef9d996c3016f1f99902f7159879
 	sha256sums = 4f2d94ac09ba20ec3861cf9fbb2b52ee17592b64b6fb812f04d7b71417da494d
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
 
 pkgname = ecency-surfer-bin
