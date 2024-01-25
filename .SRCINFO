@@ -1,8 +1,8 @@
 pkgbase = livi
 	pkgdesc = A simple GTK4 based video player for mobile phones
-	pkgver = 0.0.2
+	pkgver = 0.0.6
 	pkgrel = 1
-	url = https://source.puri.sm/guido.gunther/livi
+	url = https://gitlab.gnome.org/guidog/livi
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
@@ -15,7 +15,7 @@ pkgbase = livi
 	depends = gst-plugins-good
 	depends = x264
 	depends = libgudev
-	source = https://source.puri.sm/guido.gunther/livi/-/archive/v0.0.2/livi-v0.0.2.tar.gz
-	b2sums = a70d5191c472b84d7db784003fb33fbc414fd59353407fc21d74a4157efd2c27010eee96555189931f4f48c271bb9cd34997806c151334fc98d3be47f5a06ee3
+	source = https://gitlab.gnome.org/guidog/livi/-/archive/v0.0.6/livi-v0.0.6.tar.gz
+	b2sums = a36b50fe446f95db9120ac6e39e5202d7e8fa8b4d164414cf1a6c4b1dec412d36675098fe1d5cb5b40bfa650105f4e3048184ddb6be4167dd26ec0590757247e
 
 pkgname = livi
