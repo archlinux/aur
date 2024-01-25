@@ -2,7 +2,7 @@
 # Contributor: Árni Dagur <arnidg@protonmail.ch>
 
 pkgname='xcp'
-pkgver='0.18.0'
+pkgver='0.18.1'
 pkgrel=1
 pkgdesc="An extended 'cp'"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('bfc10543347403a1fd409d4db57101ded56ace3ed4bb23f2df1125b6419f98af54f414bdabc3e8dadc5f9e804780cc8c1d2a91211ddb967425020e6288d51253')
+sha512sums=('c24a27f1c3b7217bd25f1e21fe1fc8d7bd8478f7e295f2cfc106c4623ad2502df60f58ec39f247e56e3fcc9e730261cfdcb1ac47da4179ad8f4a2866bf6d13f3')
 
 build() {
   cd $pkgname-$pkgver
