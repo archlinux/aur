@@ -27,13 +27,13 @@ set -u
 _pkgname='rustdesk'
 pkgname="${_pkgname}"
 pkgname+="-git"
-pkgver=1.2.4.r399.g03d28005
+pkgver=1.2.4.r878.g0d8e3dc24
 pkgrel=1
 pkgdesc='Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!'
 arch=('x86_64')
 url='https://rustdesk.com/'
 _giturl='https://github.com/rustdesk/rustdesk'
-license=('GPL3')
+license=('AGPL-3.0-only')
 _dpr=('gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'libva' 'libvdpau' 'libappindicator-gtk3' 'pam' 'gst-plugins-base' 'gst-plugin-pipewire') # from res/PKGBUILD/depends
 depends=("${_dpr[@]}" 'pulseaudio' 'gst-plugins-base-libs')
 depends+=('hicolor-icon-theme' 'xdg-utils')
@@ -43,7 +43,7 @@ makedepends=("${_mdp[@]}" 'rust' 'python' 'python-yaml' 'python-toml')
 makedepends+=('ninja') # vcpkg build can use the latest ninja
 provides=("${_pkgname}=${pkgver%.r*}")
 conflicts=("${_pkgname}")
-options=('!strip' '!makeflags' '!lto')
+options=('!makeflags' '!lto')
 install="${pkgname}.install"
 _srcdir="${_pkgname}"
 source=(
