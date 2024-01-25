@@ -9,6 +9,6 @@ export NODE_ENV=production
 cd "${_APPDIR}"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
     exec "${_RUNNAME}" "$@" || exit $?
-else    
+else   
     exec "${_RUNNAME}" --no-sandbox "$@" || exit $?
 fi
