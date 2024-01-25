@@ -1,7 +1,7 @@
 pkgbase = supalive-bin
 	pkgdesc = Aplicativo para alertas interativos em streaming, integrado com YouTube, Twitch e LivePix.
 	pkgver = 0.0.35
-	pkgrel = 2
+	pkgrel = 3
 	url = https://supalive.app/
 	arch = x86_64
 	license = MIT
@@ -14,6 +14,6 @@ pkgbase = supalive-bin
 	source = supalive.sh
 	sha256sums = bea7e2dc17fe742e896006d8dd1fe24e7c7d4d1d95df21d28454f2f818ad4c40
 	sha256sums = ce9191ae1267b0c88407a86c56917e6d9776ea5b5a7590addc65063faa9e9df9
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
 
 pkgname = supalive-bin
