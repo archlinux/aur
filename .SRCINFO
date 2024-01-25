@@ -9,9 +9,10 @@ pkgbase = artery-jlink-pack
 	license = Commercial
 	makedepends = libarchive
 	depends = jlink-software-and-documentation>=7.62
+	provides = artery-jlink-pack
 	provides = AT32_JLINK_pack
+	conflicts = artery-jlink-pack
 	noextract = artery-jlink-pack-2.0.0.zip
-	options = !strip
 	source = artery-jlink-pack-2.0.0.zip::https://www.arterytek.com/download/FAQ/FAQ0132_JLink%E6%89%8B%E5%8A%A8%E6%B7%BB%E5%8A%A0Artery%20MCU_V2.0.0.zip
 	source = artery-jlink-pack.install
 	sha256sums = 58530387ae7c4c70fd291ff3dde9fc134284dfeccbb3869957327df63eb95fad

@@ -13,11 +13,11 @@ depends=("jlink-software-and-documentation>=7.62")
 makedepends=('libarchive')
 checkdepends=()
 optdepends=()
-provides=('AT32_JLINK_pack')
-conflicts=()
+provides=(${pkgname} 'AT32_JLINK_pack')
+conflicts=(${pkgname} )
 replaces=()
 backup=()
-options=('!strip')
+options=()
 install=${pkgname}.install
 changelog=
 source=("${pkgname}-${pkgver}.zip::https://www.arterytek.com/download/FAQ/FAQ0132_JLink%E6%89%8B%E5%8A%A8%E6%B7%BB%E5%8A%A0Artery%20MCU_V${pkgver}.zip"
