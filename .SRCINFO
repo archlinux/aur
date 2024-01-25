@@ -1,16 +1,16 @@
 pkgbase = graycrown-bin
 	pkgdesc = A simple game launcher for games.Old Coal. Now revived with a new name!
-	pkgver = 1.2.1
-	pkgrel = 7
+	pkgver = 1.2.2
+	pkgrel = 1
 	url = https://zeankundev.github.io/graycrown
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	depends = electron20
-	provides = graycrown=1.2.1
+	provides = graycrown=1.2.2
 	conflicts = graycrown
-	source = graycrown-1.2.1.deb::https://github.com/zeankundev/graycrown/releases/download/v1.2.1/graycrown_1.2.1_amd64.deb
+	source = graycrown-1.2.2.deb::https://github.com/zeankundev/graycrown/releases/download/v1.2.2/graycrown_1.2.2_amd64.deb
 	source = graycrown.sh
-	sha256sums = 8b752cf3803eceb1bdd8f09ab3f8c49801e3f169d0720b67ef0b5be628960c1a
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 30a6862aa9a96b5f803c0cfc42d46a289cb09d2365503b6d86fc4c26abbd693c
+	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
 
 pkgname = graycrown-bin

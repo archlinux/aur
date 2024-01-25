@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=graycrown-bin
 _appname=Graycrown
-pkgver=1.2.1
+pkgver=1.2.2
 _electronversion=20
-pkgrel=7
+pkgrel=1
 pkgdesc="A simple game launcher for games.Old Coal. Now revived with a new name!"
 arch=('x86_64')
 url="https://zeankundev.github.io/graycrown"
 _ghurl="https://github.com/zeankundev/graycrown"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -18,8 +18,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8b752cf3803eceb1bdd8f09ab3f8c49801e3f169d0720b67ef0b5be628960c1a'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+sha256sums=('30a6862aa9a96b5f803c0cfc42d46a289cb09d2365503b6d86fc4c26abbd693c'
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
