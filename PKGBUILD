@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="10.2.0.384"
+pkgver="10.2.1.385"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -20,7 +20,7 @@ _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
 source=("$pkgname-$pkgver.msi::$_downloadsource/$_x64file")
-sha256sums=('a5036facce0af83eed6de75ba51abf1ff0ce020788aaabcaef78d85b9ce4a318')
+sha256sums=('acf1306e841b4890c7522d978c2d9cdb381256d42417711e3463732c53adc1f8')
 
 prepare()
 {
@@ -42,9 +42,6 @@ package()
 
  mkdir -p "$pkgdir${_installdir}/$pkgname"
 
- install -Dm644 "$srcdir/FID_MSIOMS" "$pkgdir${_installdir}/$pkgname/${_programname}/Microsoft.IO.RecyclableMemoryStream.dll"
- install -Dm644 "$srcdir/FID_MsgReader" "$pkgdir${_installdir}/$pkgname/${_programname}/MsgReader.dll"
- install -Dm644 "$srcdir/FID_OpenMcdf" "$pkgdir${_installdir}/$pkgname/${_programname}/OpenMcdf.dll"
  install -Dm644 "$srcdir/FID_ViewerDLL64" "$pkgdir${_installdir}/$pkgname/${_programname}/PDFXEditCore.x64.dll"
  install -Dm755 "$srcdir/FID_EditorEXE" "$pkgdir${_installdir}/$pkgname/${_programname}/PDFXEdit.exe"
  install -Dm644 "$srcdir/FID_LiteDrvHelpLicense" "$pkgdir/usr/share/licenses/$pkgname/PDFXLicense.pdf"
@@ -76,11 +73,8 @@ package()
  install -Dm644 "$srcdir/FID_SpellChecker64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/SpellChecker.pvp"
  install -Dm644 "$srcdir/FID_U3D64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/U3DPlugin.pvp"
  install -Dm644 "$srcdir/FID_Resource" "$pkgdir${_installdir}/$pkgname/${_programname}/Resources.dat"
- install -Dm644 "$srcdir/FID_RtfPipe" "$pkgdir${_installdir}/$pkgname/${_programname}/RtfPipe.dll"
  install -Dm644 "$srcdir/FID_Stamps_DynamicDate" "$pkgdir${_installdir}/$pkgname/${_programname}/Stamps/ENU/DynamicDate.pdf"
  install -Dm644 "$srcdir/FID_Stamps_Templates" "$pkgdir${_installdir}/$pkgname/${_programname}/Stamps/Templates.dat"
- install -Dm644 "$srcdir/FID_MSSysMem" "$pkgdir${_installdir}/$pkgname/${_programname}/System.Memory.dll"
- install -Dm644 "$srcdir/FID_UtfUnknown" "$pkgdir${_installdir}/$pkgname/${_programname}/UtfUnknown.dll"
  install -Dm644 "$srcdir/FID_SD_OXT_cs" "$pkgdir${_installdir}/$pkgname/${_dictionaries}/dict-cs.oxt"
  install -Dm644 "$srcdir/FID_SD_OXT_de" "$pkgdir${_installdir}/$pkgname/${_dictionaries}/dict-de.oxt"
  install -Dm644 "$srcdir/FID_SD_OXT_en" "$pkgdir${_installdir}/$pkgname/${_dictionaries}/dict-en.oxt"
@@ -715,7 +709,7 @@ package()
  install -Dm644 "$srcdir/FID_U3D_uk_UA" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.uk-UA.xcl"
  install -Dm644 "$srcdir/FID_U3D_zh_CN" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.zh-CN.xcl"
  install -Dm644 "$srcdir/FID_U3D_zh_TW" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.zh-TW.xcl"
- install -Dm644 "$srcdir/FID_ImageProcessDLL" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/PXC/OCV/x64/ImageProcess.dll"
+ install -Dm644 "$srcdir/FID_ImageProcessDLL" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/PXC/OCV/x64/ImageProcess.dll"
  install -Dm644 "$srcdir/FID_REDACT_PAT_cs_CZ" "$pkgdir${_installdir}/$pkgname/${_redactpatterns}/cs_CZ.json"
  install -Dm644 "$srcdir/FID_REDACT_PAT_en_CA" "$pkgdir${_installdir}/$pkgname/${_redactpatterns}/en_CA.json"
  install -Dm644 "$srcdir/FID_REDACT_PAT_en_GB" "$pkgdir${_installdir}/$pkgname/${_redactpatterns}/en_GB.json"
