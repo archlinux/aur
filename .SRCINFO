@@ -27,8 +27,6 @@ pkgbase = hedgewars-client-hg
 	conflicts = hedgewars
 	conflicts = hedgewars-hg
 	source = hedgewars-client-hg::hg+https://hg.hedgewars.org/hedgewars/
-	source = sdl2-mixer.patch::https://hg.hedgewars.org/hedgewars/raw-rev/bb847fe6d51c
 	sha512sums = SKIP
-	sha512sums = 8dcb8a73d03f331c52d8d8ddbe8f867fcbe803a2e4fdee876deda13473ebd2bf8ba01927d5775ffaed96ef94772f8cdabf1891e7693f1a28d96c4224389daef9
 
 pkgname = hedgewars-client-hg

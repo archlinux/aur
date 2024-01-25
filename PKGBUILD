@@ -13,19 +13,12 @@ makedepends=('mercurial' 'fpc' 'cmake' 'qt5-tools' 'imagemagick' 'mesa')
 optdepends=('hedgewars-server')
 provides=('hedgewars-client')
 conflicts=('hedgewars' 'hedgewars-hg')
-source=("$pkgname::hg+https://hg.hedgewars.org/hedgewars/"
-        "sdl2-mixer.patch::https://hg.hedgewars.org/hedgewars/raw-rev/bb847fe6d51c")
-sha512sums=('SKIP'
-            '8dcb8a73d03f331c52d8d8ddbe8f867fcbe803a2e4fdee876deda13473ebd2bf8ba01927d5775ffaed96ef94772f8cdabf1891e7693f1a28d96c4224389daef9')
+source=("$pkgname::hg+https://hg.hedgewars.org/hedgewars/")
+sha512sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
   printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
-}
-
-prepare() {
-  cd "$pkgname"
-  patch -p1 < ../sdl2-mixer.patch
 }
 
 build() {
