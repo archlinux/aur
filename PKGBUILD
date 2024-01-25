@@ -10,7 +10,7 @@ pkgname=(
 )
 epoch=0
 pkgver=r173.20240122.ae205b2
-pkgrel=1
+pkgrel=2
 pkgdesc="Test scripts for open source AMD graphics driver."
 arch=(
   'any'
@@ -82,7 +82,7 @@ _package_amd-s2idle-analysis-script() {
   url="https://gitlab.freedesktop.org/drm/amd/-/blob/master/scripts/amd_s2idle.py"
   depends=(
     "amdgpu-test-scripts-common${_vcssuffix}=${pkgver}"
-    'acpipa'
+    'acpica'
     'dbus-python'
     'python>=3'
     'python-distro'
