@@ -1,13 +1,13 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=qucs-s-git
-pkgver=2.1.0.r41.g38b8df69
-pkgrel=2
+pkgver=2.1.0.r148.gb135929d
+pkgrel=1
 epoch=
 pkgdesc="Qucs-S provides GUI for different circuit simulation kernels. "
 arch=('x86_64')
 url="https://github.com/ra3xdh/qucs_s"
-license=('GPL-2.0')
+license=('GPL-2.0-only')
 _qt=qt6
 groups=()
 depends=($_qt-tools)
@@ -33,7 +33,7 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
 backup=()
-options=('!makeflags' '!strip')
+options=('!makeflags')
 install=
 changelog=
 source=("${pkgname%-git}::git+${url}.git")
