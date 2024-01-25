@@ -1,6 +1,6 @@
 pkgname=wiringop-orangepi-5-plus-git
 pkgver=2.52
-pkgrel=1
+pkgrel=2
 pkgdesc='wiringPi for Orange Pi 5 Plus'
 arch=('x86_64' 'aarch64')
 url='https://github.com/orangepi-xunlong/wiringOP'
@@ -26,13 +26,13 @@ package() {
 	cd "${srcdir}/wiringOP"
 	# gpio
         cd gpio
-	mkdir -p "${pkgdir}/usr/local/bin"
-	cp gpio "${pkgdir}/usr/local/bin"
-	chown root:root "${pkgdir}/usr/local/bin/gpio"
-	chmod 4755 "${pkgdir}/usr/local/bin/gpio"
+	mkdir -p "${pkgdir}/usr/bin"
+	cp gpio "${pkgdir}/usr/bin"
+	chown root:root "${pkgdir}/usr/bin/gpio"
+	chmod 4755 "${pkgdir}/usr/bin/gpio"
 	# /usr/local/share/man exists in filesystem (owned by filesystem)
-	#mkdir -p "${pkgdir}/usr/local/share/man/man1"
-	#cp gpio.1 "${pkgdir}/usr/local/share/man/man1/"
+	mkdir -p "${pkgdir}/usr/share/man/man1"
+	cp gpio.1 "${pkgdir}/usr/share/man/man1/"
 	#install -m 0755 -d "${pkgdir}/usr/local/share/man/man1/"
 	#install -m 0644 gpio.1 "${pkgdir}/usr/local/share/man/man1/"
 }

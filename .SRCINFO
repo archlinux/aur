@@ -1,7 +1,7 @@
 pkgbase = wiringop-orangepi-5-plus-git
 	pkgdesc = wiringPi for Orange Pi 5 Plus
 	pkgver = 2.52
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/orangepi-xunlong/wiringOP
 	arch = x86_64
 	arch = aarch64
