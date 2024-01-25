@@ -2,7 +2,7 @@
 pkgname=autographa-bin
 pkgver=2.4.0
 _electronversion=21
-pkgrel=5
+pkgrel=6
 pkgdesc="A Bible translation editor for everyone."
 arch=("x86_64")
 url="https://github.com/friendsofagape/autographa"
@@ -20,7 +20,7 @@ source=(
 )
 sha256sums=('f069d16802fa9962d76aecf180d754b72e0170c166f944e873cc09ecc3aa89b8'
             '3312af32f10019d4eeca9f021124b04711a870c77e73aea8cec0cba728e1dde8'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
