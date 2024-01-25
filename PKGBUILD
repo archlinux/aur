@@ -6,7 +6,7 @@ _commit=989b502c4aed6efd8b210b785c163e9c6c6e233e
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=8.1.0
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -30,8 +30,8 @@ depends=(
   'sdl2>=2.0.16'   'lib32-sdl2>=2.0.16'
   libsoup          lib32-libsoup
   libgudev         lib32-libgudev
-  blas             lib32-blas
-  lapack           lib32-lapack
+#  blas             lib32-blas
+#  lapack           lib32-lapack
   speex            lib32-speex
   desktop-file-utils
   python
@@ -188,8 +188,8 @@ build() {
 
     CFLAGS="-O2 -march=$march -mtune=$mtune -pipe -fno-semantic-interposition"
     CXXFLAGS="-O2 -march=$march -mtune=$mtune -pipe -fno-semantic-interposition"
-    RUSTFLAGS:="-C opt-level=2 -C target-cpu=$march"
-    LDFLAGS:="-Wl,-O1,--sort-common,--as-needed"
+    RUSTFLAGS="-C opt-level=2 -C target-cpu=$march"
+    LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
     # If using -march=native and the CPU supports AVX, launching a d3d9
     # game can cause an Unhandled exception. The cause seems to be the
@@ -273,7 +273,4 @@ sha256sums=('SKIP'
             'f6bfaed85713e330299e06baf2f928caf526503cc9c3eb1139fd037e0c08247a'
             'ea2113d76b3a2fd1ded63fba46623419606506331be4edda65f59e8197ec3aef'
             '0e80941a381f91a7d5813b8885a06c30f66a86cf133d89c46f7e05f5f624a804')
-# Optional patches
-sha256sums+=(
-)
 
