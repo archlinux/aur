@@ -1,21 +1,61 @@
 # Maintainer: Zacharias Knudsen <zachasme@gmail.com>
 pkgname=gog-unreal-tournament-goty
-pkgver=469c
-pkgrel=4
+pkgver=469d
+pkgrel=1
 pkgdesc="Unreal Tournament (99): Game of the Year Edition. GOG Version."
 arch=('x86_64')
 url="https://www.gog.com/forum/general/delisting_unreal_games_unreal_tournament_2004_ut_goty_unreal_2_the_awakening_special_edition/post1"
-# https://github.com/OldUnreal/UnrealTournamentPatches/blob/master/LICENSE.md
-license=('MIT' 'BSD' 'ZLIB' 'GPL2' 'LGPL2.1' 'ZLIB' 'OFL' 'Apache' 'custom')
+
+# The patch has a lot of licenses: (see https://github.com/OldUnreal/UnrealTournamentPatches/blob/master/LICENSE.md)
+license=()
+# - The Linux and Mac versions include code from musl libc by Rich Felker
+license+=('MIT')
+# - ALAudio includes code from libogg by the Xiph.org Foundation:
+license+=('BSD-3-Clause')
+# - The Linux and Mac clients include the Simple DirectMedia Layer (SDL2) and SDL2_ttf libraries by Sam Lantinga and others. Both are distributed as shared libraries:
+license+=('Zlib')
+# - ALAudio ships with OpenAL-Soft by kcat, distributed as a shared library:
+license+=('LGPL-2.0-only')
+# - ALAudio ships with the LGPL portion of libmpg, distributed as a shared library:
+license+=('LGPL-2.1-only')
+# - ALAudio ships with libalure 1.2 by Chris Robinson, distributed as a shared library:
+#license+=('MIT')
+# - ALAudio ships with libxmp by Claudio Matsuoka and Hipolito Carraro Jr, distributed as a shared library:
+#license+=('LGPL-2.1-only')
+# - ALAudio ships with libsndfile:
+#license+=('LGPL-2.1-only')
+# - The libsndfile we ship with ALAudio includes statically linked code from libopus:
+#license+=('BSD-3-Clause')
+# - ALAudio includes code from libvorbis by the Xiph.org Foundation:
+#license+=('BSD-3-Clause')
+# - The new texture compression/decompression code is based on KTexComp by Sebastian Kaufel. KTexComp itself is based on Intel's ispc_texcomp:
+#license+=('MIT')
+# - The screenshot code uses libpng and zlib:
+#license+=('Zlib')
+# - The UTGLR OpenGL and Direct3D 9 renderers were contributed by Chris Dohnal (smpdev@cwdohnal.com). Chris granted his written permission to include them in our patches.
+# - The Mac and Linux versions of the patch use the OpenSans, Tinos, and Courier Prime fonts, distributed in TTF format:
+license+=('OFL-1.1' 'Apache-2.0')
+# - ALAudio contains code of Mark Borgerding's Kiss FFT:
+#license+=('BSD-3-Clause')
+# - ALAudio contains code of libFLAC:
+#license+=('BSD-3-Clause')
+# - The UZ compression code uses libdivsufsort-lite by Yuta Mori:
+#license+=('MIT')
+# - XOpenGLDrv contains code of the OpenGL Mathematics (GLM) library by G-Truc Creation:
+license+=('LicenseRef-Happy-Bunny')
+# - Our version of Unreal Editor uses AkelEdit, distributed as a shared library:
+#license+=('BSD-3-Clause')
+
 depends=('mpg123' 'openal' 'sdl2' 'libxmp')
+optdepends=('wxwidgets-gtk3: wxWidgets-based launcher')
 makedepends=('innoextract' 'imagemagick')
 source=("setup_ut_goty.exe::gogdownloader://unreal_tournament_goty/en1installer0"
-        "patch-${pkgver}.tar.bz2::https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v469c/OldUnreal-UTPatch469c-Linux-amd64.tar.bz2"
+        "patch-${pkgver}.tar.bz2::https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v${pkgver}/OldUnreal-UTPatch${pkgver}-Linux-amd64.tar.bz2"
         "gog-unreal-tournament-goty.desktop"
         "fallback_dlagent.sh")
 noextract=("patch-${pkgver}.tar.bz2")
 sha256sums=("4cc257d54d97659c5062f2bf186d0a8c6959561d11e42d8fcf2eac07f1926803"
-            "4c99bde06d26b724f14471d374d4d6105dbdc98c56ec2a40af3fa541956eeed9"
+            "6a81b35ae6a4c0dfce2f8fb152af16129776735aeb34dfc391f7c8daf0d51a3b"
             "2d40b8b7ea8434e11e27db9c07c0c8fb3aab28013fd3d80a6425e506ef2433ed"
             "518a904603b3971eb516d0c5198031345dd2d3b5e6d87d12e02dccfe169a9505")
 
@@ -23,8 +63,7 @@ sha256sums=("4cc257d54d97659c5062f2bf186d0a8c6959561d11e42d8fcf2eac07f1926803"
 # DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 DLAGENTS+=("gogdownloader::./fallback_dlagent.sh")
 
-# see
-# https://github.com/OldUnreal/UnrealTournamentPatches#linux-installation
+# see https://github.com/OldUnreal/UnrealTournamentPatches#linux-installation
 prepare() {
   # Unpack [the] patch into an empty directory, which we will refer to as the game directory.
   tar --extract --file "patch-${pkgver}.tar.bz2" --one-top-level=unreal
@@ -66,13 +105,13 @@ package() {
   # copy game files
   cp --archive "unreal" "${pkgdir}/opt/gog/${pkgname#gog-}"
 
-  # fix permissions (too extreme? what files actually need this?)
-  chmod 777 -R "${pkgdir}/opt/gog/${pkgname#gog-}"
-
   # symlink game binary which is located in /opt
   ln --symbolic \
     "/opt/gog/${pkgname#gog-}/System64/ut-bin-amd64" \
     "${pkgdir}/usr/bin/${pkgname}"
+  ln --symbolic \
+    "/opt/gog/${pkgname#gog-}/System64/wx-ut-bin-amd64" \
+    "${pkgdir}/usr/bin/wx-${pkgname}"
 
   # install desktop entry, icon and license document
   install -D --mode 644 \
@@ -84,4 +123,7 @@ package() {
   install -D --mode 644 \
     "unreal/LICENSE.md" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # Remove duplicates
+  rm "${pkgdir}/opt/gog/${pkgname#gog-}/LICENSE.md"
 }
