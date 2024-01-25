@@ -1,15 +1,13 @@
-# Maintainer: Boris Momčilović <boris.momcilovic@gmail.com>
-
 pkgname=php-decimal-git
-pkgver=v1.3.0.r65.g91b2b21
+pkgver=v1.3.0.r80.gf6d5028
 pkgrel=1
 pkgdesc="Correctly-rounded, arbitrary precision decimal floating-point arithmetic in PHP 7"
 arch=('i686' 'x86_64')
-url="http://php-decimal.io"
+url="https://php-decimal.github.io"
 license=('PHP')
 depends=('php' 'mpdecimal')
 makedepends=('git')
-source=("$pkgname"::'git://github.com/php-decimal/ext-decimal.git')
+source=("$pkgname"::'git+https://github.com/php-decimal/ext-decimal.git')
 md5sums=('SKIP')
 _ininame="decimal.ini"
 _inifile="etc/php/conf.d/$_ininame"
