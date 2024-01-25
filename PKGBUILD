@@ -151,7 +151,7 @@ build() {
   cd ..
   #ruby utdict/utdict.rb -E -f mozcdic-ut.txt -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> all-dict2.txt
 
-  msg '5. Run the awk scripts as dup.awk, it may take some time...'
+  msg '5. Run the awk scripts in dup.awk, it may take some time...'
   awk -f sudachi/dup.awk all-dict.txt > finish-dict.txt
   #ruby .dev.utils/uniqword.rb all-dict.txt > finish-dict.txt  2> duplicated.txt
   #cat ut-dict.txt >> finish-dict.txt
@@ -175,8 +175,10 @@ build() {
 #  python build_mozc.py build ${TARGETS} -c ${_bldtype}
 
   # ibus emacs_helper mozc_server fcitx5
-  BAZEL_COPTS=$(echo $CFLAGS | xargs -n1 echo "--copt")
-  BAZEL_CXXOPTS=$(echo $CXXFLAGS | xargs -n1 echo "--cxxopt")
+  a=0;for f in $CFLAGS;do ([[ ($f =~ _FORTIFY_SOURCE) && $a != 1 ]] || [[ ! $f =~ _FORTIFY_SOURCE ]]) && BAZEL_COPTS+="--copt $f "; [[ $f =~ _FORTIFY_SOURCE ]] && a=1  ;done
+  a=0;for f in $CXXFLAGS;do ([[ ($f =~ _FORTIFY_SOURCE) && $a != 1 ]] || [[ ! $f =~ _FORTIFY_SOURCE ]]) && BAZEL_CXXOPTS+="--cxxopt $f "; [[ $f =~ _FORTIFY_SOURCE ]] && a=1  ;done
+  #BAZEL_COPTS=$(echo $CFLAGS | xargs -n1 echo "--copt")
+  #BAZEL_CXXOPTS=$(echo $CXXFLAGS | xargs -n1 echo "--cxxopt")
   bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so --linkopt "$LDFLAGS" $BAZEL_COPTS $BAZEL_CXXOPTS
   bazel shutdown
 
