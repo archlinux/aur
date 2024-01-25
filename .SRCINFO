@@ -1,7 +1,7 @@
 pkgbase = vlc-luajit
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility
 	pkgver = 3.0.20
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.videolan.org/vlc/
 	arch = x86_64
 	arch = aarch64
@@ -63,7 +63,7 @@ pkgbase = vlc-luajit
 	makedepends = flac>=1.4.0
 	makedepends = libdc1394>=2.2.7
 	makedepends = libmicrodns>=0.2
-	makedepends = libvpx>=1.13
+	makedepends = libvpx>=1.14
 	makedepends = x264>=0.164
 	makedepends = x265>=3.5
 	makedepends = protobuf>=25
@@ -160,7 +160,7 @@ pkgbase = vlc-luajit
 	optdepends = flac>=1.4.0: Free Lossless Audio Codec plugin
 	optdepends = protobuf>=25: chromecast streaming
 	optdepends = libmicrodns>=0.2: mDNS services discovery (chromecast etc)
-	optdepends = libvpx>=1.13: VP8 and VP9 codec
+	optdepends = libvpx>=1.14: VP8 and VP9 codec
 	optdepends = x264>=0.164: H264 encoding
 	optdepends = x265>=3.5: HEVC/H.265 encoder
 	optdepends = srt>=1.5: SRT input/output plugin

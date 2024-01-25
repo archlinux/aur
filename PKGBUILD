@@ -5,7 +5,7 @@ _vlcver=3.0.20
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=5
+pkgrel=6
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ _flacver=1.4.0
 _libdc1394ver=2.2.7
 _libmicrodnsver=0.2
 _libupnpver=1.14
-_libvpxver=1.13
+_libvpxver=1.14
 _livemedia=2023.01.19
 _mpg123ver=1.32.2
 _protobufver=25
