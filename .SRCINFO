@@ -1,0 +1,14 @@
+pkgbase = cherryctl
+	pkgdesc = Cherry Servers CLI.
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/cherryservers/cherryctl
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = git+https://github.com/cherryservers/cherryctl#commit=b3494ce755951a0639ec35f4df73406b2b7b706c
+	sha256sums = SKIP
+
+pkgname = cherryctl
