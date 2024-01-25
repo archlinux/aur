@@ -58,7 +58,7 @@ pkgbase = gtk3-patched-filechooser-icon-view
 	conflicts = gtk3
 	conflicts = gtk3-print-backends
 	replaces = gtk3-print-backends<=3.22.26-1
-	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=f926323d04db220ba2ba9a9026a5bf54e81fbb39
+	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=77ebdd85091833a7869ece48c3114fa6d9966321
 	source = gtk-query-immodules-3.0.hook
 	source = gtk3-filechooser-icon-view.patch
 	b2sums = SKIP

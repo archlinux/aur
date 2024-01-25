@@ -68,7 +68,7 @@ conflicts=(gtk3 gtk3-print-backends)
 replaces=('gtk3-print-backends<=3.22.26-1')
 license=(LGPL-2.0-only)
 install=gtk3.install
-_commit=f926323d04db220ba2ba9a9026a5bf54e81fbb39  # tags/3.24.40^0
+_commit=77ebdd85091833a7869ece48c3114fa6d9966321  # tags/3.24.41^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
   gtk-query-immodules-3.0.hook
