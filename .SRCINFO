@@ -5,6 +5,7 @@ pkgbase = callisto-git
 	url = https://github.com/jtbx/callisto
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	options = !emptydirs
 	source = callisto-git::git+https://github.com/jtbx/callisto.git
 	sha256sums = SKIP
