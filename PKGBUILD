@@ -7,9 +7,8 @@ pkgdesc="AppImage install tool."
 arch=('x86_64')
 url="https://gitee.com/deepin-opensource/appimage-installer"
 license=('GPL-3.0-only')
-_pkgname=${pkgname}-bin
-provides=(${pkgname} ${_pkgname} ${pkgname}-git)
-conflicts=(${pkgname} ${_pkgname} ${pkgname}-git)
+provides=(${pkgname})
+conflicts=(${pkgname})
 #replaces=(${pkgname})
 depends=(
     dtkcore
@@ -21,9 +20,12 @@ depends=(
     qt5-base
     qt5-svg
     python)
-makedepends=('qconf' 'git' 'qt5-tools')
+makedepends=(
+    git
+    qconf
+    qt5-tools)
 backup=()
-options=('!strip')
+options=()
 # install=${pkgname}.install
 source=("${pkgname}::git+${url}.git#commit=259510fdeee02e97f71b51c51e9cacb8f1750171")
 sha256sums=('SKIP')

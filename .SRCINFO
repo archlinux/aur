@@ -5,8 +5,8 @@ pkgbase = appimage-installer
 	url = https://gitee.com/deepin-opensource/appimage-installer
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = qconf
 	makedepends = git
+	makedepends = qconf
 	makedepends = qt5-tools
 	depends = dtkcore
 	depends = dtkwidget
@@ -18,12 +18,7 @@ pkgbase = appimage-installer
 	depends = qt5-svg
 	depends = python
 	provides = appimage-installer
-	provides = appimage-installer-bin
-	provides = appimage-installer-git
 	conflicts = appimage-installer
-	conflicts = appimage-installer-bin
-	conflicts = appimage-installer-git
-	options = !strip
 	source = appimage-installer::git+https://gitee.com/deepin-opensource/appimage-installer.git#commit=259510fdeee02e97f71b51c51e9cacb8f1750171
 	sha256sums = SKIP
 
