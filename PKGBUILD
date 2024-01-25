@@ -1,6 +1,6 @@
 pkgname=python-usbtmc
 pkgver=0.8
-pkgrel=3
+pkgrel=4
 pkgdesc="A Python USBTMC driver for controlling instruments over USB."
 arch=('x86_64')
 url="https://github.com/python-ivi/python-usbtmc"
@@ -13,6 +13,7 @@ python-build
 python-installer
 python-wheel
 git
+python-setuptools
 )
 install=python-usbtmc.install
 
