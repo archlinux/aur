@@ -2,7 +2,7 @@
 pkgname=gpu-stress-test-git
 _pkgname=GPUStressTest
 pkgver=r57.1d275b9
-pkgrel=1
+pkgrel=2
 pkgdesc="GPU Stress Test is a tool to stress the compute engine of NVIDIA Tesla GPU’s by running a BLAS matrix multiply using different data types"
 arch=(x86_64)
 url="https://github.com/NVIDIA/GPUStressTest"
@@ -38,6 +38,5 @@ build() {
 }
 
 package() {
-    cd "$_pkgname"
-    install -dm755 build/gst "$pkgdir/usr/bin/gst"
+    install -Dm755 build/gst "$pkgdir/usr/bin/gst"
 }
