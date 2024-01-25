@@ -3,7 +3,7 @@
 _pkgname=cyberether
 pkgname="$_pkgname"-git
 pkgdesc="Multi-platform GPU-accelerated interface for compute-intensive pipelines"
-pkgver=r345.6906da2
+pkgver=r387.1bb1bbb
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'cmake' 'pkg-config' 'ninja' 'meson' 'zenity')
@@ -27,7 +27,7 @@ conflicts=("$_pkgname")
 url="https://github.com/luigifcruz/CyberEther"
 license=('MIT')
 source=(
-	'CyberEther::git+'"$url"'.git#branch=development'
+	'CyberEther::git+'"$url"'.git'
 	'LICENSE'
 )
 sha256sums=(
