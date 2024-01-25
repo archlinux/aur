@@ -10,4 +10,4 @@ Target=linuxqq-nt-bwrap
 [Action]
 Description=Repatch QQ for LiteLoaderQQNT
 When=PostTransaction
-Exec=/bin/sh -c 'TargetLine=$(awk "/main/{print NR}" /opt/QQ/resources/app/package.json); sed -i "${TargetLine}s/.\/app_launcher\/index.js/LiteLoader/g" /opt/QQ/resources/app/package.json'
+Exec=/bin/sh -c 'grep -q /opt/LiteLoader /opt/QQ/resources/app/app_launcher/index.js || sed -i "1 i require(\"/opt/LiteLoader\");" /opt/QQ/resources/app/app_launcher/index.js'

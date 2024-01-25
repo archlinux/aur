@@ -7,4 +7,4 @@ Target=liteloader-qqnt-bin
 [Action]
 Description=Depatch QQ for LiteLoaderQQNT
 When=PreTransaction
-Exec=/bin/sh -c 'TargetLine=$(awk "/main/{print NR}" /opt/QQ/resources/app/package.json); sed -i "${TargetLine}s/LiteLoader/.\/app_launcher\/index.js/g" /opt/QQ/resources/app/package.json; echo "Uninstall LLQQNT done."'
+Exec=sh -c "grep -q /opt/LiteLoader /opt/QQ/resources/app/app_launcher/index.js && sed -i '1d' /opt/QQ/resources/app/app_launcher/index.js"
