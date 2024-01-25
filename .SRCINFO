@@ -1,15 +1,15 @@
 pkgbase = gawk-errno
 	pkgdesc = GAWK extension - convert errno values to strings and vice versa
-	pkgver = 1.1.0
-	pkgrel = 3
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://sourceforge.net/projects/gawkextlib/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = gawkextlib
 	depends = glibc
-	source = https://downloads.sourceforge.net/gawkextlib/gawk-errno-1.1.0.tar.gz
-	md5sums = 126188cedf0c8756e4bf5cda94fed1b3
-	sha256sums = 973b0174836fe9d39bc2f87b42e0076f6cf522d2fc4725a9adf95b85976cb37c
+	source = https://downloads.sourceforge.net/gawkextlib/gawk-errno-1.1.1.tar.gz
+	md5sums = 503ade34970a4d687b6cc00ea79ac045
+	sha256sums = 95851395247868ebd8d2f934f160b57753ef28fdd4a547b4665166f4325675c4
 
 pkgname = gawk-errno
