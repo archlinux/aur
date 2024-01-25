@@ -14,9 +14,9 @@ optdepends=('hedgewars-server')
 provides=('hedgewars-client')
 conflicts=('hedgewars' 'hedgewars-hg')
 source=("$pkgname::hg+https://hg.hedgewars.org/hedgewars/"
-        "sdl2-mixer.patch")
+        "sdl2-mixer.patch::https://hg.hedgewars.org/hedgewars/raw-rev/bb847fe6d51c")
 sha512sums=('SKIP'
-            'bfb318a7f084cf65d470a4306f014f0adec677b1215519a246b54f3e40865972253721447604b7651a4b1b90aae2f8a4470e59e2b7dd6f3035bb4a42a89c1faa')
+            '8dcb8a73d03f331c52d8d8ddbe8f867fcbe803a2e4fdee876deda13473ebd2bf8ba01927d5775ffaed96ef94772f8cdabf1891e7693f1a28d96c4224389daef9')
 
 pkgver() {
   cd "$pkgname"
