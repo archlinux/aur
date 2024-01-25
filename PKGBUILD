@@ -3,12 +3,12 @@ pkgname=droppoint-bin
 _pkgname=DropPoint
 pkgver=1.2.1
 _electronversion=13
-pkgrel=7
+pkgrel=8
 pkgdesc="Make drag-and-drop easier using DropPoint. Drag content without having to open side-by-side windows"
 arch=('x86_64')
 url="https://droppoint.netlify.app/"
 _ghurl="https://github.com/GameGodS3/DropPoint"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -20,14 +20,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('b272d4415363eb33c54a6bec11aff870c51a1af4cf736ee76190bd4bd71ca5f4'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
