@@ -5,6 +5,7 @@ pkgbase = nxshell-bin
 	url = https://nxshell.github.io/
 	arch = x86_64
 	license = MIT
+	makedepends = asar
 	depends = electron17
 	depends = python
 	depends = nodejs

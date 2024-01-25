@@ -17,6 +17,9 @@ depends=(
     'python'
     'nodejs'
 )
+makedepends=(
+    'asar'
+)
 options=('!strip')
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_downurl}/${_pkgname}-amd64-linux-${pkgver}-202306300440.deb"
