@@ -1,13 +1,14 @@
 pkgbase = perl-filehandle-unget
 	pkgdesc = FileHandle which supports multi-byte unget
 	pkgver = 0.1634
-	pkgrel = 2
+	pkgrel = 3
 	url = http://search.cpan.org/dist/FileHandle-Unget
 	arch = any
 	license = GPL
 	license = PerlArtistic
 	checkdepends = perl-test-compile
 	checkdepends = perl-file-slurper
+	checkdepends = perl-universal-require
 	depends = perl
 	options = !emptydirs
 	source = http://cpan.perl.org/modules/by-module/FileHandle/FileHandle-Unget-0.1634.tar.gz
