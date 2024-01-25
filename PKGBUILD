@@ -1,8 +1,9 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: iamawacko <iamawacko@protonmail.com>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=starlark-rust
 _pkgname=starlark
-pkgver=0.8.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Rust implementation of the Starlark language'
 arch=('x86_64')
@@ -12,33 +13,26 @@ depends=('gcc-libs')
 makedepends=('git' 'rustup')
 provides=('starlark')
 options=('!lto')
-_commit='18031c2c209af7127e6769aa2b583c0c5f140d14'
-source=("$pkgname::git+$url.git#commit=$_commit")
-b2sums=('SKIP')
-
-pkgver() {
-  cd "$pkgname"
-
-  git describe --tags | sed 's/^v//'
-}
+source=("https://github.com/facebookexperimental/starlark-rust/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('f36c2b120cfee00d1fe2842adfdaafad8871c84d47617d26205b67fd22921d06')
 
 prepare() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   cargo build --frozen --release --workspace
 }
 
 check() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   cargo test --frozen --workspace
 }
 
 package() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
 
   # binary
   install -vDm755 -t "$pkgdir/usr/bin" target/release/starlark
