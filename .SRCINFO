@@ -1,0 +1,12 @@
+pkgbase = ruget
+	pkgdesc = Alternative to wget written in Rust
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/ksk001100/ruget
+	arch = any
+	license = MIT
+	makedepends = cargo
+	source = https://github.com/ksk001100/ruget/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 548c8f268646cd0101e977c6bfb02a668b9f10881033f4aceb4a05a2b5484590
+
+pkgname = ruget
