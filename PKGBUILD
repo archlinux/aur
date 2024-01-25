@@ -1,17 +1,17 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=vvdec
-pkgver=2.1.3
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Fraunhofer versatile video decoder"
 arch=('i686' 'x86_64')
 url="https://www.hhi.fraunhofer.de/en/departments/vca/technologies-and-solutions/h266-vvc/fraunhofer-versatile-video-decoder-vvdec.html"
-license=('BSD')
+license=('BSD-3-Clause-Clear')
 depends=('gcc-libs')
 makedepends=('cmake')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/fraunhoferhhi/vvdec/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ffdbc137204ca0dd4794c0e90602ce59ab00476f191906a6d110c6ea6655935d')
+sha256sums=('7a839f9d8c32abb3f0c33c5242d8b2ac7ff0842b160421332cc8c291b32547bc')
 
 
 build() {
