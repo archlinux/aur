@@ -1,7 +1,7 @@
 pkgbase = gawk-pgsql
 	pkgdesc = GAWK extension - interface to libpq from PostgreSQL
-	pkgver = 1.1.1
-	pkgrel = 3
+	pkgver = 1.1.2
+	pkgrel = 1
 	url = https://sourceforge.net/projects/gawkextlib/
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = gawk-pgsql
 	depends = gawkextlib
 	depends = glibc
 	depends = postgresql-libs
-	source = https://downloads.sourceforge.net/gawkextlib/gawk-pgsql-1.1.1.tar.gz
-	md5sums = b5aaade8048b5d60887a553dad893d57
-	sha256sums = 5f7763d9064e36edcdb7aa0e8e0505499bd10e31a5d9fb9614319ba67959fc83
+	source = https://downloads.sourceforge.net/gawkextlib/gawk-pgsql-1.1.2.tar.gz
+	md5sums = df8890672e9eab11f90e2c6046972b3c
+	sha256sums = a258385265ce254c967cf47ad9288a65f5b5d40c626911dfab78fac3e344f170
 
 pkgname = gawk-pgsql
