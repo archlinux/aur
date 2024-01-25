@@ -2,7 +2,7 @@
 pkgname=xplist-bin
 _pkgname=Xplist
 pkgver=1.2.47
-pkgrel=3
+pkgrel=4
 pkgdesc="Cross-platform Plist Editor"
 arch=("x86_64")
 url="https://github.com/ic005k/Xplist"
@@ -26,7 +26,7 @@ source=(
 )
 sha256sums=('9319fd1f4ccda8abe34ab18390f3cd81d69c442c5030f7583e59c8bc4c1395eb'
             '3515a1c9e2ce8df51e80f0a03a0ffca92430c7dca6989ff20b16031d676a652b'
-            '12e9126d4957037d74b22293a0afd683a88e6fd72f82626128291bc5cedf50ee')
+            '0e6306f7441484b79d75e949fb7ac69418a49face3f038deda3407c3e26c0ebc')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
