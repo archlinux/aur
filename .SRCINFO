@@ -1,12 +1,12 @@
 pkgbase = cargo-ramdisk
 	pkgdesc = A cargo subcommand to create the target folder as a RAM disk for faster Rust compilation
-	pkgver = 0.1.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/PauMAVA/cargo-ramdisk
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = cargo-ramdisk-0.1.1.tar.gz::https://static.crates.io/crates/cargo-ramdisk/cargo-ramdisk-0.1.1.crate
-	sha256sums = 7285dbc44b29ca24dfc1fa3040f7bd5dd3d784ddc38d3e4e061adba2a8f5df6a
+	source = cargo-ramdisk-0.2.2.tar.gz::https://static.crates.io/crates/cargo-ramdisk/cargo-ramdisk-0.2.2.crate
+	sha256sums = 7919e995c4836c069f1684e6b4eb21b35ba326531040a541a8744fb7f58e6bc3
 
 pkgname = cargo-ramdisk
