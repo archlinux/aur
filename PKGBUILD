@@ -2,30 +2,28 @@
 pkgname=stackzy-bin
 _pkgname=Stackzy
 pkgver=1.2.6
-pkgrel=4
+pkgrel=5
 pkgdesc="A cross-platform desktop application to identify libraries used inside an android application. Made possible by Compose Desktop"
 arch=('x86_64')
 url="https://github.com/theapache64/stackzy"
-license=("Apache")
+license=("Apache-2.0")
 provides=("${pkgname%-bin}=${pkgver}")
 confilcts=("${pkgname%-bin}")
 depends=(
-    'libxtst'
-    'libglvnd'
-    'fontconfig'
     'java-runtime'
     'libxrender'
     'alsa-lib'
     'libxi'
-    'libxext'
-    'libx11'
+    'libxtst'
+    'libglvnd'
+    'fontconfig'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}-1_amd64.deb"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('be46f24ab891c1c3007715ceb539b006f281d445743ab77195c7c6f47cafbdeb'
-            '33fcb3bd63d952033644afe53eaf5c94d877743d6fe848b23136c9fa0fbf8a19')
+            '1c7af4eb5a50f4e51c506b62b6600af8bdb5574e3e16fba5be2fdad958ec0e05')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
@@ -41,5 +39,4 @@ package() {
     cp -r "${srcdir}/opt" "${pkgdir}"
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/lib/${pkgname%-bin}-${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/lib/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    install -Dm644 "${srcdir}/opt/${pkgname%-bin}/share/doc/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
