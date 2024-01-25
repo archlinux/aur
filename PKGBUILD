@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=affine-canary-bin
 _pkgname=AFFiNE-canary
-pkgver=0.11.3_canary.6
+pkgver=0.11.3_canary.7
 _electronversion=28
 pkgrel=1
 pkgdesc="There can be more than Notion and Miro. AFFiNE is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use.Beta Version."
@@ -26,7 +26,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/toeverything/AFFiNE/v${pkgver//_/-}/packages/frontend/core/public/favicon-192.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('34e7e1d7396d86d2e400f97406d6d77496452cffa50bf8c132567b863333bb0d'
+sha256sums=('343ba34b79fad491d4e65754020fa8f0ce3977257a0f80dd1cbdc74fd1515348'
             'b54bb7aa14dd5725bc268921eeea9dee973dacbc13e0cea30e7d2adb5cd5a53f'
             'b266795bb7f2dd32b76ef8f05788bbd63da556629265cca13217167cfc4d9cde'
             '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
