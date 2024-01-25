@@ -3,7 +3,7 @@ pkgname=yarc-launcher-bin
 _binname=${pkgname%-bin}
 pkgver=0.3.1
 _appimage=$_binname\_$pkgver\_amd64.AppImage
-pkgrel=1
+pkgrel=2
 pkgdesc="The official launcher for YARG (a.k.a. Yet Another Launcher or YAL)"
 arch=(x86_64)
 url=https://github.com/YARC-Official/YARC-Launcher
@@ -21,7 +21,8 @@ depends=(
 )
 optdepends=(
 	"hidapi: support for HID devices in-game"
-	"systemd-libs: udev services in-game"
+	"pulseaudio-alsa: audio support in-game"
+	"systemd-libs: libudev required in-game"
 )
 provides=($_binname)
 conflicts=($_binname)
