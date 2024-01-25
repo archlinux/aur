@@ -1,7 +1,7 @@
 pkgbase = electron-pdf-viewer-bin
 	pkgdesc = PDF viewer created using Electron framework and PDF.js
 	pkgver = 1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/praharshjain/Electron-PDF-Viewer
 	arch = armv7h
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = electron-pdf-viewer-bin
 	source = LICENSE-1.0::https://raw.githubusercontent.com/praharshjain/Electron-PDF-Viewer/v1.0/LICENSE
 	source = electron-pdf-viewer.sh
 	sha256sums = 70fbb7828155cceb6b104bad95d085832731eec32b74683ff34740e2161e2e42
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
 	source_armv7h = electron-pdf-viewer-1.0-armv7h.deb::https://github.com/praharshjain/Electron-PDF-Viewer/releases/download/v1.0/Electron-PDF-Viewer_1.0.0_armv7l.deb
 	sha256sums_armv7h = 47ee8289ac564315538e97c8abf7e4907323f0a54120e3aa5dfdaa5af0adef59
 	source_i686 = electron-pdf-viewer-1.0-i686.deb::https://github.com/praharshjain/Electron-PDF-Viewer/releases/download/v1.0/Electron-PDF-Viewer_1.0.0_ia32.deb
