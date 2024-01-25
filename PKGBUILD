@@ -1,7 +1,7 @@
 # Maintainer: GANPI <some.kind@of.mail>
 pkgname=yarc-launcher
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The official launcher for YARG (a.k.a. Yet Another Launcher or YAL)"
 arch=(x86_64)
 url=https://github.com/YARC-Official/YARC-Launcher
@@ -20,7 +20,8 @@ depends=(
 makedepends=(cargo nodejs npm)
 optdepends=(
 	"hidapi: support for HID devices in-game"
-	"systemd-libs: udev services in-game"
+	"pulseaudio-alsa: audio support in-game"
+	"systemd-libs: libudev required in-game"
 )
 conflicts=($pkgname-bin)
 options=(!lto)
