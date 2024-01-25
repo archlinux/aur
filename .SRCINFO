@@ -1,16 +1,18 @@
 pkgbase = tmfs
 	pkgdesc = Apple's Time Machine fuse read only file system
 	pkgver = r7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/abique/tmfs
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
 	depends = fuse2
-	source = tmfs::git://github.com/abique/tmfs#tag=r7
+	source = tmfs::git+https://github.com/abique/tmfs#tag=r7
 	md5sums = SKIP
 
 pkgname = tmfs
-
