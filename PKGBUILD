@@ -1,23 +1,20 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=orature-bin
 _pkgname=Orature
-pkgver=3.1.2_beta
-_subver=7959
+pkgver=3.1.3_beta
+_subver=8247
 pkgrel=1
 pkgdesc="An application for creating Narrations and Translations of Audio Bibles, Books, Resources, Commentaries, etc."
 arch=("x86_64")
 url="https://github.com/Bible-Translation-Tools/Orature"
-license=("GPL3")
+license=("GPL-3.0-only")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'libx11'
     'alsa-lib'
-    'libxrender'
-    'libxext'
-    'libxtst'
-    'libxi'
     'java-runtime'
+    'libxtst'
+    'libxrender'
 )
 makedepends=(
     'gendesk'
@@ -26,13 +23,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-linux-${pkgver//_/-}+${_subver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a828a2311cd699a2ac659f493e571a591463a7db86cbbb64cba04193341bfaf9'
-            '8cdc9f8047e13d0968452bbb8a64d071a119b8235278e6db14da6eb8890714c8')
+sha256sums=('ea183b6bcdcb575e7f03673e1018954b6c8287063f02f282c2b3d22365621255'
+            '231754c2d14734679c40adcc321ea5413c6406f9ce2cf883a2c53c951dc1e491')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories "Development" --name "${_pkgname}" --exec "${pkgname%-bin}"
+    gendesk -q -f -n --categories "Development" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
     bsdtar -xf "${srcdir}/data.tar.gz"
     find "${srcdir}/opt/${pkgname%-bin}/jre" -type f -exec chmod a-w {} \;
     find "${srcdir}/opt/${pkgname%-bin}/jre" -type d -exec chmod 755 {} \;

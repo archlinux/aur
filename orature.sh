@@ -5,4 +5,4 @@ _RUNNAME="${_APPDIR}/@runname@"
 export PATH="${_APPDIR}:${_APPDIR}/jre/bin:${PATH}"
 export LD_LIBRARY_PATH="${_APPDIR}/jre/lib:${LD_LIBRARY_PATH}"
 cd "${_APPDIR}"
-exec "${_RUNNAME}" "$@"
+exec "${_RUNNAME}" "$@" || exit $?
