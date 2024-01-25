@@ -3,7 +3,7 @@
 pkgname=azuredatastudio-bin
 _pkgname=azuredatastudio
 pkgver=1.47.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A data management tool that enables you to work with SQL Server, Azure SQL DB and SQL DW. (official prebuilt version)"
 arch=('x86_64')
 url="https://github.com/Microsoft/azuredatastudio"
@@ -12,8 +12,7 @@ depends=('gtk3'
          'libsecret'
          'libxkbfile'
          'nss'
-         'openssl'
-         'xsel')
+         'openssl')
 makedepends=('sed')
 optdepends=('krb5: Windows authentication support'
             'xdg-utils: Desktop integration')

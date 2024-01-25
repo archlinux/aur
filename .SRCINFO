@@ -1,7 +1,7 @@
 pkgbase = azuredatastudio-bin
 	pkgdesc = A data management tool that enables you to work with SQL Server, Azure SQL DB and SQL DW. (official prebuilt version)
 	pkgver = 1.47.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Microsoft/azuredatastudio
 	arch = x86_64
 	license = custom: microsoft
@@ -11,7 +11,6 @@ pkgbase = azuredatastudio-bin
 	depends = libxkbfile
 	depends = nss
 	depends = openssl
-	depends = xsel
 	optdepends = krb5: Windows authentication support
 	optdepends = xdg-utils: Desktop integration
 	conflicts = azuredatastudio
