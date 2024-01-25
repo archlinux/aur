@@ -1,6 +1,6 @@
 # Maintainer: Jener Rasmussen <aur@jener.me>
 pkgname=opentofu-bin
-pkgver=v1.6.0
+pkgver=v1.6.1
 pkgrel=1
 pkgdesc="OpenTofu lets you declaratively manage your cloud infrastructure. "
 arch=('x86_64'
@@ -13,14 +13,14 @@ provides=('opentofu'
     'terraform')
 conflicts=('opentofu'
     'opentofu-git')
-source_x86_64=("https://github.com/opentofu/opentofu/releases/download/v1.6.0/tofu_1.6.0_linux_amd64.zip")
-sha256sums_x86_64=("b96c3d1235bc4fd53b199175818a35642e50cbc6b82b8422dcab59240d06d885")
-source_i686=("https://github.com/opentofu/opentofu/releases/download/v1.6.0/tofu_1.6.0_linux_386.zip")
-sha256sums_i686=("1d5518e4328fa94631d3b8b8e6b10ffdb4a885387bf45961bf5e8de7e48b4992")
-source_aarch64=("https://github.com/opentofu/opentofu/releases/download/v1.6.0/tofu_1.6.0_linux_arm64.zip")
-sha256sums_aarch64=("c2058c1e2f2222d81de0ad291eace3e34330cc7b74315eaacb60a5b6402527b1")
-source_armv7h=("https://github.com/opentofu/opentofu/releases/download/v1.6.0/tofu_1.6.0_linux_arm.zip")
-sha256sums_armv7h=("96ea9c8af248a3b05e11f986151e3eb6d37fa7334c8f9414e3aa906f9e30ac9e")
+source_x86_64=("https://github.com/opentofu/opentofu/releases/download/v1.6.1/tofu_1.6.1_linux_amd64.zip")
+sha256sums_x86_64=("2ffd88719beb6d7e30e605b20efbf9ed75547cb13e9db279fa7f5f21fcd37403")
+source_i686=("https://github.com/opentofu/opentofu/releases/download/v1.6.1/tofu_1.6.1_linux_386.zip")
+sha256sums_i686=("cdc71835437f5156659ec32237727c1273be238e7cb93ec6d0a0cc27387565c3")
+source_aarch64=("https://github.com/opentofu/opentofu/releases/download/v1.6.1/tofu_1.6.1_linux_arm64.zip")
+sha256sums_aarch64=("e6753e93f520debd93c5562b8f1b3a300fde755b912f15ef75994e3c3c178069")
+source_armv7h=("https://github.com/opentofu/opentofu/releases/download/v1.6.1/tofu_1.6.1_linux_arm.zip")
+sha256sums_armv7h=("140fe92bd520de0e276409fc96a2232b21456841332db10109bf8d660fa52338")
 
 package() {
     install -o root -g root -m 755 -D tofu $pkgdir/usr/bin/tofu
