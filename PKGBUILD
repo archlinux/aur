@@ -1,5 +1,5 @@
 pkgname=lib32-rav1e
-pkgver=0.6.6
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='An AV1 encoder focused on speed and safety. (32-bits)'
 arch=('x86_64')
@@ -9,6 +9,7 @@ depends=(
   'lib32-gcc-libs'
   'lib32-glibc'
   "rav1e=${pkgver}"
+  'lib32-libgit2' 'libgit2.so'
 )
 makedepends=(
   'cargo-c'
@@ -19,14 +20,14 @@ makedepends=(
   'lib32-libgit2'
 )
 provides=('librav1e.so')
-_tag=7c9db10494c2fffa98a572027d756e55bf754036
+_tag=a8d05d0c43826a465b60dbadd0ab7f1327d75371
 source=(
   "git+https://github.com/xiph/rav1e.git#tag=${_tag}"
   "Cargo-rav1e-${pkgver}.lock::https://github.com/xiph/rav1e/releases/download/v${pkgver}/Cargo.lock"
 )
 b2sums=(
   'SKIP'
-  'c7d1f548e9cd194c98685827b178f923d7cb1b4e4c20c4cab4779bc1e56a59b84655731cd0e8e60dfb9d3a3dad6f9bd25aee903601f7a2c5214285584b1a3977'
+  '7cbeaff87ca4e9db469be06cbead0c5b05af2064d6d5f12f97f5999992017b66a24bc19ed4eaf69f7d6579732f843f3e93f30d9581b8c8344728d3e3773a0f79'
 )
 
 pkgver() {
@@ -36,6 +37,8 @@ pkgver() {
 
 prepare() {
 
+  export CARGO_HOME="${srcdir}/fakehome/cargo"
+
   cp -f "Cargo-rav1e-${pkgver}.lock" rav1e/Cargo.lock
   cargo fetch \
     --locked \
@@ -43,6 +46,8 @@ prepare() {
 }
 
 build() {
+  export CARGO_HOME="${srcdir}/fakehome/cargo"
+
   export LDFLAGS+=' -lgit2'
   cargo build --target i686-unknown-linux-gnu \
     --release \
@@ -61,6 +66,8 @@ build() {
 }
 
 check() {
+  export CARGO_HOME="${srcdir}/fakehome/cargo"
+
   cargo test --target i686-unknown-linux-gnu \
     --release \
     --frozen \
@@ -68,7 +75,8 @@ check() {
 }
 
 package() {
-  depends+=('lib32-libgit2' 'libgit2.so')
+  export CARGO_HOME="${srcdir}/fakehome/cargo"
+
   cd rav1e
   cargo install --target i686-unknown-linux-gnu \
     --frozen \
@@ -77,7 +85,7 @@ package() {
     --features binaries,asm,threading,signal_support \
     --no-track \
     --path . \
-    --root "${pkgdir}"/usr
+    --root "${pkgdir}/usr"
   cargo cinstall --target i686-unknown-linux-gnu \
     --release \
     --frozen \

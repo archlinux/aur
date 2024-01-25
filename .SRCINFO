@@ -1,6 +1,6 @@
 pkgbase = lib32-rav1e
 	pkgdesc = An AV1 encoder focused on speed and safety. (32-bits)
-	pkgver = 0.6.6
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/xiph/rav1e
 	arch = x86_64
@@ -13,16 +13,13 @@ pkgbase = lib32-rav1e
 	makedepends = lib32-libgit2
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
-	depends = rav1e=0.6.6
-	provides = librav1e.so
-	source = git+https://github.com/xiph/rav1e.git#tag=7c9db10494c2fffa98a572027d756e55bf754036
-	source = Cargo-rav1e-0.6.6.lock::https://github.com/xiph/rav1e/releases/download/v0.6.6/Cargo.lock
-	b2sums = SKIP
-	b2sums = c7d1f548e9cd194c98685827b178f923d7cb1b4e4c20c4cab4779bc1e56a59b84655731cd0e8e60dfb9d3a3dad6f9bd25aee903601f7a2c5214285584b1a3977
-
-pkgname = lib32-rav1e
-	depends = lib32-gcc-libs
-	depends = lib32-glibc
-	depends = rav1e=0.6.6
+	depends = rav1e=0.7.1
 	depends = lib32-libgit2
 	depends = libgit2.so
+	provides = librav1e.so
+	source = git+https://github.com/xiph/rav1e.git#tag=a8d05d0c43826a465b60dbadd0ab7f1327d75371
+	source = Cargo-rav1e-0.7.1.lock::https://github.com/xiph/rav1e/releases/download/v0.7.1/Cargo.lock
+	b2sums = SKIP
+	b2sums = 7cbeaff87ca4e9db469be06cbead0c5b05af2064d6d5f12f97f5999992017b66a24bc19ed4eaf69f7d6579732f843f3e93f30d9581b8c8344728d3e3773a0f79
+
+pkgname = lib32-rav1e
