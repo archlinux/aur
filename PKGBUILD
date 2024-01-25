@@ -1,8 +1,9 @@
-# Maintainer: MCOfficer <MCOfficer@gmx.de>
+# Maintainer: iamawacko <iamawacko@protonmail.com>
+# Contributor: MCOfficer <MCOfficer@gmx.de>
 
 pkgname=ruget-bin
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 pkgdesc="Alternative to wget written in Rust"
 url="https://github.com/ksk001100/ruget"
@@ -11,6 +12,8 @@ depends=("openssl-1.0")
 _archivename="ruget-v${pkgver}-${arch}-unknown-linux-gnu"
 source=("https://github.com/ksk001100/ruget/releases/download/v${pkgver}/${_archivename}.zip")
 sha256sums=('fba869d379e10bc8bcc3808a9f16708396ffa2a3def6a874708b2d92b44c256d')
+provides=(ruget)
+conflicts=(ruget)
 
 package() {
   cd "$srcdir/$_archivename"
