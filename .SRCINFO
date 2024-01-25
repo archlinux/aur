@@ -1,0 +1,19 @@
+pkgbase = alchemist
+	pkgdesc = An extensible simulator for pervasive computing
+	pkgver = 30.0.2
+	pkgrel = 1
+	url = https://github.com/AlchemistSimulator/Alchemist
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	depends = libxrender
+	depends = libxtst
+	depends = libxi
+	depends = libx11
+	depends = freetype2
+	depends = alsa-lib
+	depends = libxext
+	source = https://github.com/AlchemistSimulator/Alchemist/releases/download/30.0.2/alchemist-30.0.2-1.x86_64.rpm
+	md5sums = 6036b625440996993bfbe2a5de26eea6
+
+pkgname = alchemist
