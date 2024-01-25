@@ -9,14 +9,12 @@ pkgbase = at32-ide-bin
 	makedepends = libarchive
 	makedepends = sed
 	depends = java-runtime
-	depends = desktop-file-utils
-	depends = gcc
 	depends = hidapi
-	depends = ncurses
 	optdepends = artery-isp-console-bin: Artery ISP Console 是一款基于 MCU Bootloader 的命令行应用程序。使用该应用程序,用户可以通过 UART 端口或者 USB 端口配置操作 Artery 的 MCU 设备。
 	optdepends = jlink-software-and-documentation: Segger JLink software & documentation pack for Linux
 	provides = at32-ide
 	provides = AT32IDE
+	options = !strip
 	source = AT32_IDE_V1.0.08_Linux-x86_64.zip::https://www.arterytek.com/download/TOOL/AT32_IDE_V1.0.08_Linux-x86_64.zip
 	sha256sums = 38fe8e199efc2109a449821d63d94a90ee3dc86242c62d898965d021eaff15ee
 

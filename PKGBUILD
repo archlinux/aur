@@ -12,12 +12,12 @@ license=('Commercial')
 provides=(at32-ide AT32IDE)
 conflicts=()
 replaces=()
-depends=(java-runtime  desktop-file-utils gcc hidapi ncurses)
+depends=(java-runtime hidapi)
 makedepends=(libarchive sed)
 optdepends=('artery-isp-console-bin: Artery ISP Console 是一款基于 MCU Bootloader 的命令行应用程序。使用该应用程序,用户可以通过 UART 端口或者 USB 端口配置操作 Artery 的 MCU 设备。'
             'jlink-software-and-documentation: Segger JLink software & documentation pack for Linux')
 backup=()
-options=()
+options=(!strip)
 install=${pkgname}.install
 _pkg_file_name=AT32_IDE_V${pkgver}_Linux-${arch}
 source=("${_pkg_file_name}.zip::https://www.arterytek.com/download/TOOL/${_pkg_file_name}.zip")
