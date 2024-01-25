@@ -1,14 +1,15 @@
-# Maintainer: Funami
-pkgname=cargo-ramdisk
-pkgver=0.1.1
-pkgrel=1
+# Maintainer: iamawacko <iamawacko@protonmail.com>
+# Contributor: Funami
+pkgname="cargo-ramdisk"
+pkgver=0.2.2
+pkgrel="1"
 pkgdesc="A cargo subcommand to create the target folder as a RAM disk for faster Rust compilation"
 arch=('x86_64')
 url="https://github.com/PauMAVA/cargo-ramdisk"
 license=('MIT')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('7285dbc44b29ca24dfc1fa3040f7bd5dd3d784ddc38d3e4e061adba2a8f5df6a')
+sha256sums=('7919e995c4836c069f1684e6b4eb21b35ba326531040a541a8744fb7f58e6bc3')
 
 prepare() {
   cd "$pkgname-$pkgver"
