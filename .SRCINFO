@@ -1,0 +1,20 @@
+pkgbase = ondsel-es-appimage
+	pkgdesc = A general purpose 3D CAD modeler based on FreeCAD (AppImage version)
+	pkgver = 2024.1.0
+	pkgrel = 1
+	url = https://ondsel.com/
+	arch = x86_64
+	license = LGPL
+	depends = fuse2
+	provides = ondsel-es
+	conflicts = ondsel-es
+	noextract = ondsel-es-2024.1.0.AppImage
+	options = !strip
+	source = ondsel-es-2024.1.0.AppImage::https://github.com/Ondsel-Development/FreeCAD/releases/download/2024.1.0/Ondsel_ES_2024.1.0.35694-Linux-x86_64.AppImage
+	source = ondsel-es.sh
+	source = ondsel-es-desktop.patch
+	sha256sums = 55c7d07e17eee11bbb580fdcfc17069f3b84244e4d8a5801d6710d66dae0bd72
+	sha256sums = bef63d2f4298c27f755664d124f61c29df34263253ad1f92241f54cbc96ae005
+	sha256sums = 5374bf95dcc9bd3b9ea3087b66937e03d77d8ea3af90522247ac6eeb5a1b9d2c
+
+pkgname = ondsel-es-appimage

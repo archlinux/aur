@@ -1,0 +1,15 @@
+--- squashfs-root/com.ondsel.ES.desktop
++++ squashfs-root/com.ondsel.ES.desktop
+@@ -9,10 +9,10 @@
+ GenericName[de]=CAD-Anwendung
+ GenericName[ko]=CAD 응용프로그램
+ GenericName[pl]=Aplikacja CAD
+-Exec=AppRun --single-instance %F
++Exec=/usr/bin/ondsel-es %F
+ Terminal=false
+ Type=Application
+-Icon=Ondsel
++Icon=ondsel-es
+ Categories=Graphics;Science;Education;Engineering;X-CNC;
+ StartupNotify=true
+ StartupWMClass=Ondsel ES
