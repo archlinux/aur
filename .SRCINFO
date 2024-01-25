@@ -1,7 +1,7 @@
 pkgbase = envkey-bin
 	pkgdesc = Secure, human-friendly, cross-platform secrets and config.
 	pkgver = 1.5.10
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.envkey.com/
 	arch = i686
 	arch = x86_64
@@ -9,16 +9,13 @@ pkgbase = envkey-bin
 	makedepends = squashfuse
 	depends = electron24
 	depends = hicolor-icon-theme
-	depends = libx11
-	depends = gdk-pixbuf2
-	depends = libxext
+	depends = dbus-glib
 	depends = libdbusmenu-glib
 	depends = gtk2
-	depends = dbus-glib
 	provides = envkey=1.5.10
 	conflicts = envkey
 	source = envkey.sh
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
 	source_i686 = envkey-1.5.10-i686.AppImage::https://github.com/envkey/envkey-app/releases/download/linux-ia32-prod-v1.5.10/EnvKey-1.5.10-i386.AppImage
 	source_i686 = LICENSE-i686-1.5.10::https://raw.githubusercontent.com/envkey/envkey-app/linux-ia32-prod-v1.5.10/LICENSE
 	sha256sums_i686 = 906006984188184a967a81474dd03d29e0bff2559a32396c66a2d4f3ee476745

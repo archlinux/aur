@@ -3,7 +3,7 @@ pkgname=envkey-bin
 _appname=EnvKey
 pkgver=1.5.10
 _electronversion=24
-pkgrel=5
+pkgrel=6
 pkgdesc="Secure, human-friendly, cross-platform secrets and config."
 arch=(
     'i686'
@@ -17,12 +17,9 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
-    'libx11'
-    'gdk-pixbuf2'
-    'libxext'
+    'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
-    'dbus-glib'
 )
 makedepends=(
     'squashfuse'
@@ -38,7 +35,7 @@ source_x86_64=(
 source=(
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+sha256sums=('1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 sha256sums_i686=('906006984188184a967a81474dd03d29e0bff2559a32396c66a2d4f3ee476745'
                  '09b057e89473140a66ebb115d2c45af606ae7a7a3f1a8debad96f49bbea74ddd')
 sha256sums_x86_64=('6d05c4672560e2785a1dc6141cabfcb4fdfe0025c58096ab471bf4ad48b65cc9'
