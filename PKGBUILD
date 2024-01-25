@@ -2,8 +2,8 @@
 
 pkgname=proton-vpn-gtk-app
 _gitpkgname=proton-vpn-gtk-app
-pkgver=4.1.3
-pkgrel=2
+pkgver=4.1.8
+pkgrel=1
 pkgdesc="ProtonVPN GTK app, Maintained by Community"
 arch=("any")
 url="https://github.com/ProtonVPN/proton-vpn-gtk-app"
@@ -37,7 +37,7 @@ depends=("python-proton-core"
 optdepends=("libappindicator-gtk3")
 makedepends=("python-setuptools")
 #source=("git+https://github.com/ProtonVPN/proton-vpn-gtk-app.git#tag=${pkgver}")
-source=("git+https://github.com/ProtonVPN/proton-vpn-gtk-app.git#commit=1177067f7162e8e529942489fe7714d7b28ce295"
+source=("git+https://github.com/ProtonVPN/proton-vpn-gtk-app.git#commit=043ee088f3c48d4f9ca89be157b9ea05db51130a"
 				"fix-startup-wm-class.patch")
 sha256sums=('SKIP'
 						"c483129a66171bd6b13a54193c8373173bb0bfbc556c4aa1fbae0c2ef0063f4e")
