@@ -4,7 +4,7 @@
 _pkgname='empathy'
 pkgname="${_pkgname}-git"
 pkgver=3.25.90.93+r13046.20210512.19a4dd3a4
-pkgrel=2
+pkgrel=3
 pkgdesc="A GNOME instant messaging client using the Telepathy framework. Latest git checkout."
 url="https://wiki.gnome.org/Apps/Empathy"
 arch=(
@@ -29,6 +29,7 @@ depends=(
   webkit2gtk
 )
 makedepends=(
+  'clutter-gst>=3.0'
   'docbook-xsl'
   'gnome-common'
   'git'
