@@ -1,4 +1,5 @@
-# Maintainer: Sukanka <su975853527 [AT] gmail.com>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Sukanka <su975853527 [AT] gmail.com>
 pkgname=yank-note-bin
 _pkgname=Yank-Note
 pkgver=3.66.1
