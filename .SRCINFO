@@ -1,7 +1,7 @@
 pkgbase = r-directlabels
 	pkgdesc = Direct Labels for Multicolor Plots
-	pkgver = 2023.8.25
-	pkgrel = 1
+	pkgver = 2024.1.21
+	pkgrel = 3
 	url = https://cran.r-project.org/package=directlabels
 	arch = any
 	license = GPL
@@ -22,7 +22,7 @@ pkgbase = r-directlabels
 	optdepends = r-rcolorbrewer
 	optdepends = r-rlang
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/directlabels_2023.8.25.tar.gz
-	sha256sums = 12dd1d50f73876cc1919652f4c98facc77e063d3e03c7b256e8bfbbd3dd0ea5c
+	source = https://cran.r-project.org/src/contrib/directlabels_2024.1.21.tar.gz
+	sha256sums = bb3ba484ff9486fd8e9ce65073b69ce38e42f1fab2f42822eecfec7823f6b6fe
 
 pkgname = r-directlabels
