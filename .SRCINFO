@@ -1,16 +1,16 @@
 pkgbase = pascalabcnet-gui
 	pkgdesc = PascalABC.NET with GUI interface.
-	pkgver = 3.8.3
-	pkgrel = 3255
+	pkgver = 3.9.0.3408
+	pkgrel = 1
 	url = https://pascalabc.net/
 	arch = x86_64
 	license = LGPL3
-	makedepends = unzip-natspec
 	depends = mono>=4.5
+	options = !strip
 	source = http://pascalabc.net/downloads/PascalABCNETLinux.zip
 	source = pascalabcnet.desktop
 	source = pascalabcnet.png
-	sha256sums = 435ba310f9cde618bf228dae14220f6072a77fb62dc16b9c7c30e70f5ccc44e8
+	sha256sums = 55714b9c937e4b7a55b0f4058033d813a3020429525afc1d8716f6b4f4601958
 	sha256sums = bb92749af748f600344ed3e77978ca09b356f5ac7c0a7773944e2f608a7f65c8
 	sha256sums = d41bf68034c2e4cd4c7d8a81624b176a9716f5507154c24a95aeeedd6eaa2942
 
