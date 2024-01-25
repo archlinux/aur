@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mrfDepth
-_pkgver=1.0.15
+_pkgver=1.0.16
 pkgname=r-${_pkgname,,}
-pkgver=1.0.15
+pkgver=1.0.16
 pkgrel=1
 pkgdesc='Depth Measures in Multivariate, Regression and Functional Settings'
 arch=('x86_64')
@@ -27,7 +27,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('54e330ba6624127e1566c0ceeb6cc0d4e9c363a3bc62e7cbfa615f3d702fac21')
+sha256sums=('120e5d6b6dbc32b3ce6e78d5e7f61307025fcc2d40c14f2c01f39f926c44b8f7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
