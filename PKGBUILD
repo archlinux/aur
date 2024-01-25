@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc='standalone scripting platform for Lua 5.4'
 arch=('x86_64')
 url='https://github.com/jtbx/callisto'
+makedepends=('git')
 license=('GPL')
 options=('!emptydirs')
 source=("$pkgname::git+https://github.com/jtbx/callisto.git")
