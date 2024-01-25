@@ -178,13 +178,15 @@ build() {
 
   BAZEL_COPTS=""
   BAZEL_CXXOPTS=""
-  if [[ $CC != "gcc" ]];then
-    a=0;for f in $CFLAGS;do ([[ ($f =~ _FORTIFY_SOURCE) && $a != 1 ]] || [[ ! $f =~ _FORTIFY_SOURCE ]]) && BAZEL_COPTS+="--copt $f "; [[ $f =~ _FORTIFY_SOURCE ]] && a=1  ;done
-    a=0;for f in $CXXFLAGS;do ([[ ($f =~ _FORTIFY_SOURCE) && $a != 1 ]] || [[ ! $f =~ _FORTIFY_SOURCE ]]) && BAZEL_CXXOPTS+="--cxxopt $f "; [[ $f =~ _FORTIFY_SOURCE ]] && a=1  ;done
-  fi
+  a=0;for f in $CFLAGS;do ([[ ($f =~ _FORTIFY_SOURCE) && $a != 1 ]] || [[ ! $f =~ _FORTIFY_SOURCE ]]) && BAZEL_COPTS+="--copt $f "; [[ $f =~ _FORTIFY_SOURCE ]] && a=1  ;done
+  a=0;for f in $CXXFLAGS;do ([[ ($f =~ _FORTIFY_SOURCE) && $a != 1 ]] || [[ ! $f =~ _FORTIFY_SOURCE ]]) && BAZEL_CXXOPTS+="--cxxopt $f "; [[ $f =~ _FORTIFY_SOURCE ]] && a=1  ;done
   #BAZEL_COPTS=$(echo $CFLAGS | xargs -n1 echo "--copt")
   #BAZEL_CXXOPTS=$(echo $CXXFLAGS | xargs -n1 echo "--cxxopt")
-  bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so --linkopt "$LDFLAGS" $BAZEL_COPTS $BAZEL_CXXOPTS
+  if [[ $CC =~ gcc ]];then
+    bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so
+  else
+    bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so --linkopt "$LDFLAGS" $BAZEL_COPTS $BAZEL_CXXOPTS
+  fi
   bazel shutdown
 
   # mozc fcitx5 version
