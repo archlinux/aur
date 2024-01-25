@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=botclient-bin
 _appname=BotClient
-pkgver=0.12.0_alpha
+pkgver=0.12.1_alpha
 _electronversion=28
 pkgrel=1
 pkgdesc="A discord botclient built with Electron, React and discord.js."
@@ -12,7 +12,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'hicolor-icon-theme'
     'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
@@ -25,9 +24,9 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/DarkGuy10/BotClient/v${pkgver//_/-}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1e8cfbb534d0a9f1044ca333d18b61b0502cf8324e42407228a99b2676d59428'
+sha256sums=('74abee38ac63d3cc104807b21506e775af7c3bb70221e90ce73873529566a533'
             '56d602455f4872c78a5af3df024c6a8aab858b2e79ed53e417aaa90720b186b0'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
