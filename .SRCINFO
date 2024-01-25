@@ -1,11 +1,12 @@
 pkgbase = highfive
 	pkgdesc = Header-only C++ HDF5 interface
 	pkgver = 2.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BlueBrain/HighFive
 	arch = any
 	license = Boost
 	makedepends = cmake
+	makedepends = catch2
 	depends = boost
 	depends = hdf5
 	depends = eigen
