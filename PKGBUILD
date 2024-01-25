@@ -1,46 +1,49 @@
 # Maintainer: Ordoban <dirk.langer@vvovgonik.de>
 _author=OCBNET
-_perlmod=CSS-Sass
-pkgname=perl-css-sass
-pkgver=3.6.0
-pkgrel=1
+
+pkgname='perl-css-sass'
+pkgver='3.6.4'
+pkgrel='1'
 pkgdesc="Compile .scss files using libsass"
-arch=('i686'
-      'x86_64')
-url="http://search.cpan.org/~$_author/$_perlmod-$pkgver/"
-license=('GPL' 'PerlArtistic')
-depends=('perl>=5.10.0'
-         'perl-linux-inotify2')
-makedepends=('perl-extutils-cppguess')
-options=(!emptydirs)
-source=(https://cpan.metacpan.org/authors/id/O/OC/OCBNET/${_perlmod}-${pkgver}.tar.gz)
-md5sums=('379eecb0bcf3d370185f4c25a7d3cbe2')
-sha512sums=('fe2b53f1636a104c7b618b5adff4a844430df9394cbd843a2196e65a2a440973a2cfeaf1ffc2c492e08a78f498e1f3d261e78c2517a499057dd2b7ea3a684caa')
+arch=('i686' 'x86_64')
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('perl-encode-locale>=0.01' 'perl-extutils-cppguess>=0.14' 'perl-file-chdir>=0.01' 'perl-filesys-notify-simple>=0.01' 'perl-yaml-libyaml>=0')
+makedepends=()
+checkdepends=('perl-test-differences>=0.01')
+url='https://metacpan.org/release/CSS-Sass'
+source=("http://search.cpan.org/CPAN/authors/id/O/OC/OCBNET/CSS-Sass-$pkgver.tar.gz")
+md5sums=('f7384aae1757468224c125a5b38d5ba9')
+sha512sums=('cfffd49717779ea99a1346e1c1ad55a0ccdf6b6a64bf77fdcc4581646ac964b3665a5ff4762578e0c9baabe40e341d10740dbdd46117acd3160cd443edb0c228')
+_distdir="CSS-Sass-$pkgver"
 
 build() {
-  cd "$srcdir/$_perlmod-$pkgver"
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                      \
+         PERL_AUTOINSTALL=--skipdeps                            \
+         PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+         PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+         MODULEBUILDRC=/dev/null
 
-  # Install module in vendor directories.
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
-     PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
-     PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-     PERL5LIB="." PERL_LOCAL_LIB_ROOT="" \
-     MODULEBUILDRC=/dev/null
-  perl Makefile.PL
+  cd "$srcdir/$_distdir"
+  /usr/bin/perl Makefile.PL
   make
 }
 
 check() {
-  cd "$srcdir/$_perlmod-$pkgver"
+  cd "$srcdir/$_distdir"
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB="."
   make test
 }
 
 package() {
-  cd "$srcdir/$_perlmod-$pkgver"
-  make install DESTDIR="$pkgdir/"
+  cd "$srcdir/$_distdir"
+  make install
 
-  # remove perllocal.pod and .packlist
-  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete 
+  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
 
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
 # vim:set ts=2 sw=2 et:
