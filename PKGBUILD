@@ -10,6 +10,7 @@ url="https://github.com/pop-os/cosmic-epoch"
 license=('GPL-3.0-or-later AND MPL-2.0 AND CC-BY-SA-4.0')
 depends=(
   'cage'
+  'flatpak'
   'fontconfig'
   'greetd'
   'gtk3'
