@@ -1,4 +1,4 @@
-# Maintainer: xiota / aur.chaotic.cx
+# Maintainer:
 
 # set source - chaotic-aur or bitbucket
 : ${_pkg:=bitbucket}
@@ -6,11 +6,11 @@
 # basic info
 _pkgname="art-rawconverter"
 pkgname="$_pkgname-bin"
-pkgver=1.21
+pkgver=1.21.1
 pkgrel=1
-pkgdesc="Raw image Converter forked from RawTherapee with ease of use in mind"
+pkgdesc="Raw image converter forked from RawTherapee with ease of use in mind"
 url="https://bitbucket.org/agriggio/art"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 arch=('x86_64')
 
 # main package
@@ -42,15 +42,9 @@ _main_chaotic() {
 
   pkgrel="${pkgrel}.1"
 
-  _url="https://cdn-mirror.chaotic.cx/chaotic-aur/$CARCH"
-  _dl_url="$_url/$_filename"
-
-  source=(
-    "$_dl_url"
-  )
-  sha256sums+=(
-    'SKIP'
-  )
+  _dl_url="https://cdn-mirror.chaotic.cx/chaotic-aur/$CARCH"
+  source=("$_dl_url/$_filename")
+  sha256sums+=('SKIP')
 
   package() {
     depends+=(
@@ -75,58 +69,59 @@ _main_chaotic() {
       'perl-image-exiftool: metadata support for CR3 images'
     )
 
-    mv "${srcdir:?}/usr" "${pkgdir:?}"
+    mv "$srcdir/usr" "$pkgdir/"
 
-    ln -s "ART" "${pkgdir:?}/usr/bin/art"
-    ln -s "ART-cli" "${pkgdir:?}/usr/bin/art-cli"
+    ln -s "ART" "$pkgdir/usr/bin/art"
+    ln -s "ART-cli" "$pkgdir/usr/bin/art-cli"
   }
 }
 
 # bitbucket
 _main_bitbucket() {
-  _dl_url="$url/downloads/ART-$pkgver-linux64.tar.xz"
   source=(
-    "$_pkgname-$pkgver.tar.xz"::"$_dl_url"
+    "$_pkgname-$pkgver.tar.xz"::"$url/downloads/ART-$pkgver-linux64.tar.xz"
   )
   sha256sums+=(
-    '77784d52c321b51269cb1d583c68030e605734f1163ac659da23c2513e591aee'
+    'e3d07a4685aee2558ad620bcd1c23b2371a4b4fa444211d8d32175c7b5f0b0aa'
   )
 
   prepare() {
-    cp -rl "${srcdir:?}/ART-$pkgver-linux64" "${srcdir:?}/$_pkgname-$pkgver"
+    cp -rl "ART-$pkgver-linux64" "$_pkgname-$pkgver"
 
-    cat "${srcdir:?}/$_pkgname-$pkgver/share/applications/ART.desktop" \
+    cat "$_pkgname-$pkgver/share/applications/ART.desktop" \
       | sed 's/Name=ART/Name=ART Raw Converter/' \
       | sed 's/Exec=ART/Exec=art/' \
       | sed "s/Icon=ART/Icon=$_pkgname/" \
-      > "${srcdir:?}/$_pkgname.desktop"
+      > "$_pkgname.desktop"
   }
 
   package() {
-    OPT_PATH="opt/$_pkgname"
+    local OPT_PATH="opt/$_pkgname"
 
     # Install the package files
-    install -d "${pkgdir:?}/opt"
-    cp -r --reflink=auto "$_pkgname-$pkgver" "${pkgdir:?}/$OPT_PATH"
+    install -dm755 "$pkgdir/opt"
+    cp --reflink=auto -r "$_pkgname-$pkgver" "$pkgdir/$OPT_PATH"
 
     # symlinks
-    install -d "${pkgdir:?}/usr/bin"
-    ln -s "/$OPT_PATH/ART" "${pkgdir:?}/usr/bin/art"
-    ln -s "/$OPT_PATH/ART-cli" "${pkgdir:?}/usr/bin/art-cli"
+    install -dm755 "$pkgdir/usr/bin"
+    ln -s "/$OPT_PATH/ART" "$pkgdir/usr/bin/art"
+    ln -s "/$OPT_PATH/ART-cli" "$pkgdir/usr/bin/art-cli"
 
-    install -d "${pkgdir:?}/usr/share/man/man1"
-    ln -s "/$OPT_PATH/share/man/man1/ART.1" "${pkgdir:?}/usr/share/man/man1/art.1"
+    install -dm755 "$pkgdir/usr/share/man/man1"
+    ln -s "/$OPT_PATH/share/man/man1/ART.1" "$pkgdir/usr/share/man/man1/art.1"
 
-    # .desktop files
-    install -Dm644 "${srcdir:?}/$_pkgname.desktop" -t "${pkgdir:?}/usr/share/applications"
+    # .desktop
+    install -Dm644 "$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
 
     # icons
-    SRC_LOC="${srcdir:?}/$_pkgname-$pkgver/share/icons/hicolor"
-    DEST_LOC="${pkgdir:?}/usr/share/icons/hicolor"
-    for i in 16 24 48 128 256
-    do
+    local SRC_LOC="$srcdir/$_pkgname-$pkgver/share/icons/hicolor"
+    local DEST_LOC="$pkgdir/usr/share/icons/hicolor"
+    for i in 16 24 48 128 256 ; do
       install -Dm644 "$SRC_LOC/${i}x${i}/apps/ART.png" "$DEST_LOC/${i}x${i}/apps/$_pkgname.png"
     done
+
+    # fix permissions
+    chmod -R u+rwX,go+rX,go-w "$pkgdir"
   }
 }
 

@@ -1,15 +1,15 @@
 pkgbase = art-rawconverter-bin
-	pkgdesc = Raw image Converter forked from RawTherapee with ease of use in mind
-	pkgver = 1.21
+	pkgdesc = Raw image converter forked from RawTherapee with ease of use in mind
+	pkgver = 1.21.1
 	pkgrel = 1
 	url = https://bitbucket.org/agriggio/art
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	provides = art-rawconverter
 	conflicts = art-rawconverter
 	options = !strip
 	options = !debug
-	source = art-rawconverter-1.21.tar.xz::https://bitbucket.org/agriggio/art/downloads/ART-1.21-linux64.tar.xz
-	sha256sums = 77784d52c321b51269cb1d583c68030e605734f1163ac659da23c2513e591aee
+	source = art-rawconverter-1.21.1.tar.xz::https://bitbucket.org/agriggio/art/downloads/ART-1.21.1-linux64.tar.xz
+	sha256sums = e3d07a4685aee2558ad620bcd1c23b2371a4b4fa444211d8d32175c7b5f0b0aa
 
 pkgname = art-rawconverter-bin
