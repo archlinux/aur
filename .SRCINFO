@@ -1,0 +1,18 @@
+pkgbase = liri-files
+	pkgdesc = The file manager for Liri
+	pkgver = 0.2.0.20200620
+	pkgrel = 2
+	url = https://github.com/lirios/files
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = liri-cmake-shared
+	makedepends = ninja
+	makedepends = qt5-tools
+	depends = fluid
+	depends = taglib
+	replaces = papyros-files
+	source = https://github.com/lirios/files/archive/7582252b229d71f896936deee9165a38ad468461/liri-files-7582252b229d71f896936deee9165a38ad468461.tar.gz
+	sha256sums = 6dfa6f4ce85863cb764d5ea251623700dd797db61ebfa09e81eda22eee1deee8
+
+pkgname = liri-files
