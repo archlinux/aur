@@ -1,6 +1,6 @@
 pkgbase = cyberether-git
 	pkgdesc = Multi-platform GPU-accelerated interface for compute-intensive pipelines
-	pkgver = r345.6906da2
+	pkgver = r387.1bb1bbb
 	pkgrel = 1
 	url = https://github.com/luigifcruz/CyberEther
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = cyberether-git
 	optdepends = cuda: CUDA compute backend support
 	provides = cyberether
 	conflicts = cyberether
-	source = CyberEther::git+https://github.com/luigifcruz/CyberEther.git#branch=development
+	source = CyberEther::git+https://github.com/luigifcruz/CyberEther.git
 	source = LICENSE
 	sha256sums = SKIP
 	sha256sums = ba3742d029fe929a9f840583f6a84c8c93c0b6955e5eb379f05724dbbf9e167e
