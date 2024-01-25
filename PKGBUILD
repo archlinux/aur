@@ -3,7 +3,7 @@ pkgname=vikunja-desktop-bin
 _pkgname="Vikunja Desktop"
 pkgver=0.22.0
 _electronversion=25
-pkgrel=3
+pkgrel=4
 pkgdesc="The open-source, self-hostable to-do app.Organize everything, on all platforms."
 arch=('x86_64')
 url="https://vikunja.io/"
@@ -20,9 +20,9 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('23dfd62801f4d10295c0276787d58985569be125725068cb3e2d01e1efa78fe3'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
-    sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\" %U|${pkgname%-bin}|g;s|Productivity|Utility|g" \
+    sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\"|${pkgname%-bin}|g;s|Productivity|Utility|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
