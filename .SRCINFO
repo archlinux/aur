@@ -22,7 +22,7 @@ pkgname = ntsync-dkms
 	optdepends = ntsync-header
 	optdepends = ntsync-udev-rule
 	provides = NTSYNC-MODULE
-	conflicts = ntsync-module
+	conflicts = ntsync
 
 pkgname = ntsync-header
 	pkgdesc = NT synchronization primitive driver - header file

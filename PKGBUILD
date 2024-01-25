@@ -31,7 +31,7 @@ package_ntsync-dkms() {
     depends=(dkms)
     optdepends=(ntsync-header ntsync-udev-rule)
     provides=(NTSYNC-MODULE)
-    conflicts=(ntsync-module)
+    conflicts=(ntsync)
 
     install -Dm644 "$srcdir/Makefile" "$pkgdir/usr/src/$pkgbase-$pkgver/Makefile"
     install -Dm644 "$srcdir/ntsync.h-$_commit" "$pkgdir/usr/src/$pkgbase-$pkgver/include/uapi/linux/ntsync.h"
