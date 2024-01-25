@@ -9,7 +9,6 @@ pkgbase = wiringop-orangepi-5-plus-base-git
 	makedepends = git
 	makedepends = make
 	makedepends = gcc
-	makedepends = wiringop-orangepi-5-plus-git
 	source = git+https://github.com/orangepi-xunlong/wiringOP#commit=ce520ea17701445eb2e8e3cc1b6e157d29b63713
 	source = 01-Arch-Support.patch
 	source = 02-Change-Headers.patch
