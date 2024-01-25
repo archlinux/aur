@@ -1,0 +1,23 @@
+pkgbase = sm64ex-bin
+	pkgdesc = A reverse engineered implementation engine for Super Mario 64.
+	pkgver = 951389c
+	pkgrel = 1
+	url = https://gitlab.com/supermario64pkg
+	arch = pentium4
+	arch = i386
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = sdl2
+	source_i386 = https://gitlab.com/supermario64pkg/binaries/951389c/-/raw/main/sm64ex-linux-i686.tar.xz
+	sha256sums_i386 = SKIP
+	source_i686 = https://gitlab.com/supermario64pkg/binaries/951389c/-/raw/main/sm64ex-linux-i686.tar.xz
+	sha256sums_i686 = SKIP
+	source_x86_64 = https://gitlab.com/supermario64pkg/binaries/951389c/-/raw/main/sm64ex-linux-x64.tar.xz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://gitlab.com/supermario64pkg/binaries/951389c/-/raw/main/sm64ex-linux-arm64.tar.xz
+	sha256sums_aarch64 = SKIP
+
+pkgname = sm64ex-bin
