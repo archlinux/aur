@@ -1,7 +1,7 @@
 # maintainer : fenugrec
 #todo: change to git:// url
 pkgname=freediag-git
-pkgver=20230206.703.7ae2512
+pkgver=20240125.725.ee452b0
 pkgrel=1
 pkgdesc="OBD-II vehicle diagnostic software and (mostly) J1978 compliant scan tool."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://freediag.sourceforge.net/"
 license=('GPL')
 makedepends=('cmake' 'git')
 depends=('glibc')
-#optdepends=('')
+optdepends=('readline: better builtin CLI completions and editing')
 provides=('freediag')
 conflicts=('freediag')
 source=('git+https://github.com/fenugrec/freediag')
