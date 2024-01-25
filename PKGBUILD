@@ -2,13 +2,19 @@
 
 pkgname=litellm-ollama
 pkgver=3
-pkgrel=2
+pkgrel=3
 pkgdesc='Metapackage to setup ollama models with OpenAI API locally'
 arch=(any)
 license=(MIT)
 depends=(
-	litellm
-	ollama
+    'gunicorn'
+    'litellm'
+    'ollama'
+    'python-apscheduler'
+    'python-backoff'
+    'python-fastapi'
+    'python-orjson'
+    'uvicorn'
 )
 backup=(
 	etc/litellm-ollama/litellm-ollama.env
