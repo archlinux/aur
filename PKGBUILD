@@ -6,7 +6,7 @@ _commit=
 pkgver=8.0.5.3  # pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=8.1.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 url="https://github.com/ValveSoftware/Proton"
@@ -178,8 +178,8 @@ build() {
 
     CFLAGS="-O2 -march=$march -mtune=$mtune -pipe -fno-semantic-interposition"
     CXXFLAGS="-O2 -march=$march -mtune=$mtune -pipe -fno-semantic-interposition"
-    RUSTFLAGS:="-C opt-level=2 -C target-cpu=$march"
-    LDFLAGS:="-Wl,-O1,--sort-common,--as-needed"
+    RUSTFLAGS="-C opt-level=2 -C target-cpu=$march"
+    LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
     # If using -march=native and the CPU supports AVX, launching a d3d9
     # game can cause an Unhandled exception. The cause seems to be the
