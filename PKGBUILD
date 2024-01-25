@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electron-gpt-git
-pkgver=r839.c435b62
+pkgver=r861.2d34a2c
 _electronversion=28
 pkgrel=1
 pkgdesc="Simplified chat using OpenAI's GPT"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/Bubuclem/electron-gpt"
 license=('custom:CC0-1.0')
 depends=(
@@ -16,18 +16,18 @@ depends=(
 makedepends=(
     'npm'
     'git'
-    'nodejs>=20'
+    'nodejs'
     'gendesk'
     'gcc'
 )
 source=(
-    "${pkgname%-git}::git+${url}.git"
+    "${pkgname%-git}.git::git+${url}.git"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 pkgver() {
-    cd "${srcdir}/${pkgname%-git}"
+    cd "${srcdir}/${pkgname%-git}.git"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 build() {
@@ -35,8 +35,8 @@ build() {
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@appasar@|app|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
-    gendesk -q -f -n --pkgname "${pkgname%-git}" --categories "Utility" --name "${pkgname%-git}" --exec "${pkgname%-git}"
-    cd "${srcdir}/${pkgname%-git}"
+    gendesk -q -f -n --pkgname "${pkgname%-git}" --categories "Utility" --exec "${pkgname%-git} %U"
+    cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -49,8 +49,8 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -r "${srcdir}/${pkgname%-git}/out/chatgpt-linux-x64/resources/app" "${pkgdir}/usr/lib/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname%-git}/assets/favicon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    cp -r "${srcdir}/${pkgname%-git}.git/out/chatgpt-linux-"*/resources/app "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/assets/favicon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
 }
