@@ -1,7 +1,7 @@
 # Maintainer: Grzegorz Koperwas <admin@grzegorzkoperwas.site>
 pkgname=swww
 pkgver=0.8.2
-pkgrel=0
+pkgrel=1
 pkgdesc="Efficient animated wallpaper daemon for wayland, controlled at runtime."
 arch=('x86_64' 'aarch64')
 url="https://github.com/LGFae/swww"
@@ -12,7 +12,7 @@ options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LGFae/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 
 prepare() {
-    export RUSTUP_TOOLCHAIN=nightly
+    export RUSTUP_TOOLCHAIN=stable
     cd "$pkgname-$pkgver"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
@@ -24,10 +24,6 @@ build() {
   cargo build --release --target-dir ./target
   # manpages
   ./doc/gen.sh
-  for page in $(ls ./doc/generated/*.1)
-  do 
-    gzip -f "$page"
-  done
 }
 
 package() {
@@ -42,10 +38,6 @@ package() {
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 
   # manpages
-  cd ./doc/generated 
-  for page in $(ls *.1.gz)
-  do 
-    install -Dm644 "$page" "$pkgdir/usr/share/man/man1/$page"
-  done
+  install -Dm644 ./doc/generated/*.1 -t "$pkgdir/usr/share/man/man1"
 }
 sha256sums=('6733cda771a0e635dbd00f7aef78ed60f1ccdf640647ecfe02d0cdfdef996b68')
