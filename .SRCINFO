@@ -1,0 +1,42 @@
+pkgbase = gpd-winmax2_2023-fix-sleep-wakeuptriggers
+	pkgdesc = Switches off wakeup triggers that prevent the GPD Win Max 2 (2023) laptops from sleeping reliably.
+	pkgver = 20240125.01
+	pkgrel = 1
+	epoch = 1
+	url = https://gitlab.freedesktop.org/drm/amd/-/issues/3073#note_2237586
+	arch = any
+	license = GPL-3.0-only
+	options = emptydirs
+	source = gpd-winmax2_2023-fix-sleep-wakeuptriggers.sh
+	source = gpd-winmax2_2023-sleep-wakeuptriggers.conf
+	source = initscript_openrc
+	source = initscript_systemd
+	source = initscript_sysvinit
+	sha256sums = 6eae6cae796f6c147dca509d2f31d00bb91fc7447291a17659e81e528b1a08f7
+	sha256sums = 458107c1dd557543d0181ce0945bce5776761a1ccaf8da8bf4039c7a7cf95787
+	sha256sums = 7cb27de003f90204b9c67dee7310c56ae55c64363b0f4d95c256f169ade841fd
+	sha256sums = 938442e03980e5e872263ce986f8c21de93aaa55c68945f54d18b5e8735a7ae0
+	sha256sums = 80bd5a4734de44220fc588c3f317dd1c45d5deed911111b867544908b91d9e8c
+
+pkgname = gpd-winmax2_2023-fix-sleep-wakeuptriggers
+	pkgdesc = Script and configuration file to switch off wakeup triggers that prevent the GPD Win Max 2 (2023) laptops from sleeping reliably.
+	depends = bash
+	optdepends = gpd-winmax2_2023-fix-sleep-wakeuptriggers-openrc: For openrc iniscript.
+	optdepends = gpd-winmax2_2023-fix-sleep-wakeuptriggers-systemd: For systemd service file.
+	optdepends = gpd-winmax2_2023-fix-sleep-wakeuptriggers-sysvinit: For system-V-style initscript.
+	backup = etc/gpd-winmax2_2023-sleep-wakeuptriggers.conf
+
+pkgname = gpd-winmax2_2023-fix-sleep-wakeuptriggers-openrc
+	pkgdesc = OpenRC init script for 'gpd-winmax2_2023-fix-sleep-wakeuptriggers'.
+	depends = gpd-winmax2_2023-fix-sleep-wakeuptriggers
+	optdepends = openrc: To run the OpenRC initscript.
+
+pkgname = gpd-winmax2_2023-fix-sleep-wakeuptriggers-systemd
+	pkgdesc = Systemd service file 'gpd-winmax2_2023-fix-sleep-wakeuptriggers'.
+	depends = gpd-winmax2_2023-fix-sleep-wakeuptriggers
+	optdepends = systemd: To run the Systems init'script'.
+
+pkgname = gpd-winmax2_2023-fix-sleep-wakeuptriggers-sysvinit
+	pkgdesc = System V style init script for 'gpd-winmax2_2023-fix-sleep-wakeuptriggers'.
+	depends = gpd-winmax2_2023-fix-sleep-wakeuptriggers
+	optdepends = sysvinit: To run the System V style initscript.

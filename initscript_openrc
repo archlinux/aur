@@ -1,0 +1,23 @@
+#!/usr/bin/openrc-run
+# fix wakeup triggers to stay asleep on GPD Win Max 2 OpenRC init script.
+
+## The options should be set in /etc/conf.d/gpd-winmax2-fix-sleep-wakeuptriggers!
+
+depend() {
+  need sysfs
+  after modules sysctl udev
+}
+
+_actionscript='/usr/bin/gpd-winmax2_2023-fix-sleep-wakeuptriggers'
+
+start() {
+  ebegin "Switching off GPD Win Max 2 (2023) sleep inhibiting wakeup triggers"
+  "${_actionscript}" start
+  eend "$?"
+}
+
+stop() {
+  ebegin "Switching on GPD Win Max 2 (2023) sleep inhibiting wakeup triggers"
+  "${_actionscript}" stop
+  eend "$?"
+}

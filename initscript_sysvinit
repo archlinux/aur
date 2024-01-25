@@ -1,0 +1,41 @@
+#!/bin/bash
+# fix wakeup triggers to stay asleep on GPD Win Max 2 sysvinit init script.
+
+_servicename='gpd-winmax2_2023-fix-sleep-wakeuptriggers'
+_actionscript='/usr/bin/gpd-winmax2_2023-fix-sleep-wakeuptriggers'
+
+case "$1" in
+  start)
+    stat_busy "Switching off GPD Win Max 2 (2023) sleep inhibiting wakeup triggers"
+    "${_actionscript}" start
+    if [ $? -gt 0 ]; then
+      stat_fail
+    else
+      add_daemon "${_servicename}"
+      stat_done
+    fi
+  ;;
+  stop)
+    stat_busy "Switching on GPD Win Max 2 (2023) sleep inhibiting wakeup triggers"
+    "${_actionscript}" stop
+    if [ $? -gt 0 ]; then
+      stat_fail
+    else
+      rm_daemon "${_servicename}"
+      stat_done
+    fi
+  ;;
+  restart)
+    $0 stop
+    $0 start
+  ;;
+  reload)
+    $0 restart
+  ;;
+  status)
+    $0 status
+  ;;
+  *)
+    echo "usage: $0 {start|stop|restart|reload|status}"
+  ;;
+esac
