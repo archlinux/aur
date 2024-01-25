@@ -2,13 +2,13 @@
 
 pkgname=niri
 pkgver=0.1.0_beta.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A scrollable-tiling Wayland compositor"
 arch=(x86_64)
 url="https://github.com/YaLTeR/${pkgname}"
 license=(GPL-3.0-or-later)
-makedepends=(cargo clang)
-depends=(cairo dbus gcc-libs glib2 glibc libinput libpipewire libxkbcommon mesa pango seatd systemd-libs)
+makedepends=(clang rust)
+depends=(cairo gcc-libs glib2 glibc libinput libpipewire libxkbcommon mesa pango pixman seatd systemd-libs)
 source=(${pkgname}-${pkgver//_/-}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz
         001.patch::${url}/commit/df48337d83f78bbd2a923863e73941b6bd236a28.patch # tty: Delay output config update until resume
         002.patch::${url}/commit/f5e9b40140e64cf907520aa0d8adf43f7141e1d2.patch # tty: Check changes against pending connectors and mode
@@ -20,6 +20,10 @@ source=(${pkgname}-${pkgver//_/-}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/
         008.patch::${url}/commit/ab9706cb30c26dafe46c807f0cf073e594c84ef0.patch # screencast: Emit MonitorsChanged
         009.patch::${url}/commit/f5642ab73376582d80da1edbabff8fd5a15632cb.patch # Ignore popup grabs when IME keyboard grab is active
         010.patch::${url}/commit/087ed260c5dd3fda12ebf1e39c0502af2da5d812.patch # Update Smithay (find_popup_root_surface() panic fix)
+        011.patch::${url}/commit/20326b093c57bed7a3e423a16c202a69d3ad8c09.patch # Update smithay
+        012.patch::${url}/commit/5f99eb13ab3e26f860a858b52129ce6227441e35.patch # Remove hack for fixed EGLDisplay issue
+        013.patch::${url}/commit/73f3c160b299e956402c7b5856701cc812bd250f.patch # use pixman for cursor plane rendering
+        014.patch::${url}/commit/ecdf756b5559e6b4b2a2dae42e702cfff185765b.patch # Name output render element better
         )
 b2sums=('40d6d1b2e0072024a581674733328edddde71fe2876e240c5d4d61660275e4ef491ee39b421df411a88237e491cdce9972a0f735cbb7d8b163cd8f9638ca18c7'
         'SKIP'
@@ -31,16 +35,21 @@ b2sums=('40d6d1b2e0072024a581674733328edddde71fe2876e240c5d4d61660275e4ef491ee39
         'SKIP'
         'SKIP'
         'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
         'SKIP')
-optdepends=('mako: notification daemon for Wayland'
+optdepends=('fuzzel: application launcher similar to rofi drun mode'
             'waybar: highly customizable Wayland bar'
+            'alacritty: a cross-platform OpenGL terminal emulator'
+            'mako: notification daemon for Wayland'
             'swaybg: wallpaper tool for Wayland compositors'
             'xdg-desktop-portal-gtk: implements most of the basic functionality'
             'xdg-desktop-portal-gnome: screencasting support'
             'gnome-keyring: implements the secret portal, for certain apps to work'
             'polkit-gnome: when apps need to ask for root permissions')
 conflicts=(${pkgname}-git)
-
 
 prepare() {
   cd ${pkgname}-${pkgver//_/-}
