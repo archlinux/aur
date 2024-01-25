@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Correctly-rounded, arbitrary precision decimal floating-point arithmetic in PHP 7"
 arch=("i686" "x86_64")
 url="https://php-decimal.github.io"
-license=("PHP")
+license=("MIT")
 depends=("php" "mpdecimal")
 makedepends=("git")
 source=("$pkgname"::"git+https://github.com/php-decimal/ext-decimal.git#branch=1.x")
