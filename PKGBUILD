@@ -1,22 +1,22 @@
-# Maintainer: Robert Hamblin <hamblingreen@hotmail.com>
+# Maintainer: Bobby Hamblin <hamblingreen@hotmail.com>
 # Contributor: Sebastian J. Bronner <waschtl@sbronner.com>
 
 pkgname=netsurf-fb
-pkgver=3.10
+pkgver=3.11
 pkgrel=1
 pkgdesc='Lightweight and fast web browser (framebuffer front end)'
 arch=(x86_64 i686 aarch64)
 url=https://www.netsurf-browser.org/
 license=(MIT GPL2)
-depends=('curl' 'glibc' 'gperf' 'libdom' 'libjpeg' 'libnsfb' 'libnsutils' 'libpng' 'libsvgtiny' 'libutf8proc' 'libwebp' 'openssl' 'perl-html-parser')
-makedepends=('check' 'libcss' 'libnsbmp' 'libnsgif' 'nsgenbind' 'words' 'xxd')
+depends=('curl' 'glibc' 'gperf' 'libdom>=0.4.2' 'libhubbub>=0.3.8' 'libjpeg' 'libnsfb' 'libnsutils>=0.1.1' 'libpng' 'libsvgtiny>=0.1.8' 'libutf8proc>=2.9.0' 'libwebp' 'openssl' 'perl-html-parser')
+makedepends=('check' 'libcss>=0.9.2' 'libnsbmp>=0.1.7' 'libnsgif>=1.0.0' 'nsgenbind' 'words' 'xxd')
 _download_uri=https://download.netsurf-browser.org/netsurf/releases/source
 source=(
 	$_download_uri/netsurf-$pkgver-src.tar.gz
 	utils-idna.patch
 )
-sha256sums=('36484429e193614685c2ff246f55bd0a6dddf31a018bee45e0d1f7c28851995e'
-            '44b019b2484237b1edae8589254250d8fbf8515d883df659c3621cfe0e6d13b4')
+sha256sums=('c28a626aefee428d053b13f88b5c440922245976522d12eaf137cfd32d201cb2'
+            '9b61a26cf2f36d9fd8dbd792624c3aead5a8ebd87e5af367c7ae35993203d316')
 _makedir=netsurf-$pkgver
 _makeopts="-C $_makedir PREFIX=/usr TARGET=framebuffer"
 

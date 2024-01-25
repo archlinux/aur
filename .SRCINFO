@@ -1,6 +1,6 @@
 pkgbase = netsurf-fb
 	pkgdesc = Lightweight and fast web browser (framebuffer front end)
-	pkgver = 3.10
+	pkgver = 3.11
 	pkgrel = 1
 	url = https://www.netsurf-browser.org/
 	arch = x86_64
@@ -9,28 +9,29 @@ pkgbase = netsurf-fb
 	license = MIT
 	license = GPL2
 	makedepends = check
-	makedepends = libcss
-	makedepends = libnsbmp
-	makedepends = libnsgif
+	makedepends = libcss>=0.9.2
+	makedepends = libnsbmp>=0.1.7
+	makedepends = libnsgif>=1.0.0
 	makedepends = nsgenbind
 	makedepends = words
 	makedepends = xxd
 	depends = curl
 	depends = glibc
 	depends = gperf
-	depends = libdom
+	depends = libdom>=0.4.2
+	depends = libhubbub>=0.3.8
 	depends = libjpeg
 	depends = libnsfb
-	depends = libnsutils
+	depends = libnsutils>=0.1.1
 	depends = libpng
-	depends = libsvgtiny
-	depends = libutf8proc
+	depends = libsvgtiny>=0.1.8
+	depends = libutf8proc>=2.9.0
 	depends = libwebp
 	depends = openssl
 	depends = perl-html-parser
-	source = https://download.netsurf-browser.org/netsurf/releases/source/netsurf-3.10-src.tar.gz
+	source = https://download.netsurf-browser.org/netsurf/releases/source/netsurf-3.11-src.tar.gz
 	source = utils-idna.patch
-	sha256sums = 36484429e193614685c2ff246f55bd0a6dddf31a018bee45e0d1f7c28851995e
-	sha256sums = 44b019b2484237b1edae8589254250d8fbf8515d883df659c3621cfe0e6d13b4
+	sha256sums = c28a626aefee428d053b13f88b5c440922245976522d12eaf137cfd32d201cb2
+	sha256sums = 9b61a26cf2f36d9fd8dbd792624c3aead5a8ebd87e5af367c7ae35993203d316
 
 pkgname = netsurf-fb
