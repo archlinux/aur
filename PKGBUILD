@@ -44,4 +44,8 @@ package() {
   cd "$srcdir/cherryctl"
   install -Dm755 build/cherryctl -t "$pkgdir"/usr/bin/
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/cherryctl/LICENSE"
+  file_path="$HOME/.config/cherry/default.yaml"
+  if [ ! -f "$file_path" ]; then
+    mkdir -p "$(dirname "$file_path")" && touch "$file_path"
+  fi
 }
