@@ -4,14 +4,14 @@
 # Contributor : Mélanie Chauvel (ariasuni) <perso@hack-libre.org>
 pkgname=whalebird-bin
 _pkgname=Whalebird
-pkgver=5.1.1
-_electronversion=22
-pkgrel=3
+pkgver=6.0.0
+_electronversion=26
+pkgrel=1
 pkgdesc="An Electron based Mastodon, Pleroma, and Misskey client"
 arch=('x86_64')
 url="https://whalebird.social/"
 _ghurl="https://github.com/h3poteto/whalebird-desktop"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -21,8 +21,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('556acfb66a0f37d7be1b838c37aa371228efd3655c6d212ac2ecd5749c9ec57a'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+sha256sums=('9cbed53a0a063593f5dec47ee748b9faf0575864cbd6d5e5bd45f4c936c83286'
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -34,8 +34,6 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/build/icons/"*.* -t "${pkgdir}/usr/lib/${pkgname%-bin}/build/icons"
-    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/build/sounds/"*.wav -t "${pkgdir}/usr/lib/${pkgname%-bin}/build/sounds"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-bin}.png" -t"${pkgdir}/usr/share/pixmaps"
 }
