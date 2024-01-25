@@ -2,7 +2,7 @@
 # Contributor: Juliette Cordor 
 
 pkgname=("podman-desktop")
-pkgver=1.6.4
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Manage Podman and other container engines from a single UI and tray."
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ url=https://github.com/containers/podman-desktop
 license=('Apache-2.0')
 depends=()
 makedepends=(
-    'yarn' 'git' 'node-gyp' 'npm' 'nodejs-lts-hydrogen' 'libvips' 'lcms2'
+    'yarn' 'node-gyp' 'npm' 'nodejs-lts-hydrogen' 'libvips' 'lcms2'
     'openjpeg2' 'glib2'
 )
 optdepends=(
@@ -19,11 +19,11 @@ optdepends=(
     "lima: lima plugin"
     "docker: docker plugin"
 )
-source=("git+${url}#tag=v${pkgver}")
-sha256sums=('SKIP')
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('a1e5b1f0fe07dea254bd3e7826e8206c20004f30287398d7794a4b0ebedbef5f')
 
 build(){
-    cd "${srcdir}/podman-desktop"
+    cd "${srcdir}/podman-desktop-$pkgver"
     yarn --frozen-lockfile --network-timeout 180000
     yarn run compile
 }
@@ -54,7 +54,7 @@ package_podman-desktop(){
             _arch=-${CARCH}-
             ;;
     esac
-    cd "${srcdir}/podman-desktop"
+    cd "${srcdir}/podman-desktop-$pkgver"
     mkdir -p "${pkgdir}/opt" "${pkgdir}/usr/bin"
     cp -r "dist/linux${_arch}unpacked" "${pkgdir}/opt/podman-desktop"
     install -Dm644 ./.flatpak-appdata.xml \

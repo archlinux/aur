@@ -1,6 +1,5 @@
 pkg
 src
-podman-desktop
 *.pkg.tar.*
 *.log
-
+*.tar.gz
