@@ -7,10 +7,14 @@ pkgbase = revc-git
 	arch = x86_64
 	arch = aarch64
 	license = custom:none
+	makedepends = git
 	makedepends = cmake
+	depends = glibc
+	depends = gcc-libs
 	depends = librw-git
 	depends = openal
 	depends = mpg123
+	depends = glfw
 	source = git+https://github.com/halpz/re3.git#branch=miami
 	source = reVC.desktop
 	md5sums = SKIP
