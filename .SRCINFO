@@ -1,0 +1,31 @@
+pkgbase = ntsync
+	pkgdesc = NT synchronization primitive driver
+	pkgver = 6.8
+	pkgrel = 1
+	url = https://repo.or.cz/linux/zf.git/shortlog/refs/heads/ntsync4
+	arch = x86_64
+	license = GPL2
+	source = ntsync.c-c273d658c56e2f66dda75b990b31a3e909bf3147::https://repo.or.cz/linux/zf.git/blob_plain/c273d658c56e2f66dda75b990b31a3e909bf3147:/drivers/misc/ntsync.c
+	source = ntsync.h-c273d658c56e2f66dda75b990b31a3e909bf3147::https://repo.or.cz/linux/zf.git/blob_plain/c273d658c56e2f66dda75b990b31a3e909bf3147:/include/uapi/linux/ntsync.h
+	source = 99-ntsync.rules
+	source = Makefile
+	source = dkms.conf
+	sha256sums = 03386cca8fbd6b0eae00b306cb235380b666fc62d0b116addd4ab5bd57237959
+	sha256sums = a6e5116ad5fd090d0c767738927257188da2b112452e67cbd165d8b780b2b156
+	sha256sums = ce5221146a19206ba043211db8f27143a82f9224c0aff24a0b584b7268fcb994
+	sha256sums = dc35852676cf71afa2350a075bc1209ab7e3aa9c71a450e94969d411c1f5073c
+	sha256sums = e81694fa952711f1b74f02b6a64ac1e90c229f93c740e4f97df5692f3af99609
+
+pkgname = ntsync-dkms
+	pkgdesc = NT synchronization primitive driver - out-of-tree module (dkms)
+	depends = dkms
+	optdepends = ntsync-header
+	optdepends = ntsync-udev-rule
+	provides = NTSYNC-MODULE
+	conflicts = ntsync-module
+
+pkgname = ntsync-header
+	pkgdesc = NT synchronization primitive driver - header file
+
+pkgname = ntsync-udev-rule
+	pkgdesc = NT synchronization primitive driver - udev rule
