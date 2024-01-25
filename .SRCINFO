@@ -1,6 +1,6 @@
 pkgbase = surrealist-bin
 	pkgdesc = Powerful graphical SurrealDB query playground and database explorer
-	pkgver = 1.11.2
+	pkgver = 1.11.3
 	pkgrel = 1
 	url = https://surrealist.starlane.studio
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = surrealist-bin
 	depends = gtk3
 	provides = surrealist
 	conflicts = surrealist
-	source = https://github.com/StarlaneStudios/Surrealist/releases/download/v1.11.2/surrealist-v1.11.2-linux.deb
+	source = https://github.com/StarlaneStudios/Surrealist/releases/download/v1.11.3/surrealist-v1.11.3-linux.deb
 	md5sums = SKIP
 
 pkgname = surrealist-bin
