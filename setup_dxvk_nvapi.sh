@@ -5,7 +5,7 @@ dxvk_nvapi_lib32=${dxvk_nvapi_lib32:-"x32"}
 dxvk_nvapi_lib64=${dxvk_nvapi_lib64:-"x64"}
 
 # figure out where we are
-basedir=$(dirname "$(readlink -f "$0")")
+basedir="$(dirname "$(readlink -f "$0")")"
 
 # figure out which action to perform
 action="$1"
@@ -24,7 +24,7 @@ esac
 # process arguments
 shift
 
-file_cmd="cp -v"
+file_cmd="cp -v --reflink=auto"
 
 while (($# > 0)); do
   case "$1" in
@@ -64,21 +64,24 @@ if ! [ -f "$wine_path/$wine" ]; then
 fi
 
 # resolve 32-bit and 64-bit system32 path
-winever=$($wine --version | grep wine)
+winever="$($wine --version | grep wine)"
 if [ -z "$winever" ]; then
-    echo "$wine: Not a wine executable. Check your $wine." >&2
-    exit 1
+  echo "$wine:"' Not a wine executable. Check your $wine.' >&2
+  exit 1
 fi
 
 # ensure wine placeholder dlls are recreated
 # if they are missing
 $wineboot -u
 
-win64_sys_path=$($wine64 winepath -u 'C:\windows\system32' 2> /dev/null)
+win64_sys_path=$($wine winepath -u 'C:\windows\system32' 2> /dev/null)
 win64_sys_path="${win64_sys_path/$'\r'/}"
-if $wow64; then
-  win32_sys_path=$($wine winepath -u 'C:\windows\system32' 2> /dev/null)
-  win32_sys_path="${win32_sys_path/$'\r'/}"
+win32_sys_path=$($wine winepath -u 'C:\windows\syswow64' 2> /dev/null)
+win32_sys_path="${win32_sys_path/$'\r'/}"
+
+# if syswow64 for the prefix doesn't exist, treat it as a win32 prefix
+if ! [ -d "$win32_sys_path" ]; then
+  win32_sys_path="$win64_sys_path"
 fi
 
 if [ -z "$win32_sys_path" ] && [ -z "$win64_sys_path" ]; then
@@ -88,8 +91,8 @@ fi
 
 # create native dll override
 overrideDll() {
-  if ! $wine reg add 'HKEY_CURRENT_USER\Software\Wine\DllOverrides' /v "$1" /d native /f >/dev/null 2>&1
-  then
+  $wine reg add 'HKEY_CURRENT_USER\Software\Wine\DllOverrides' /v "$1" /d native /f >/dev/null 2>&1
+  if [ $? -ne 0 ]; then
     echo -e "Failed to add override for $1"
     exit 1
   fi
@@ -97,8 +100,8 @@ overrideDll() {
 
 # remove dll override
 restoreDll() {
-  if ! $wine reg delete 'HKEY_CURRENT_USER\Software\Wine\DllOverrides' /v "$1" /f > /dev/null 2>&1
-  then
+  $wine reg delete 'HKEY_CURRENT_USER\Software\Wine\DllOverrides' /v "$1" /f > /dev/null 2>&1
+  if [ $? -ne 0 ]; then
     echo "Failed to remove override for $1"
   fi
 }
@@ -179,7 +182,7 @@ uninstall() {
   if (( (uninst64_ret == 0) )); then
     restoreDll "${1}64"
   fi
-  
+
   uninst32_ret=-1
   if $wow64; then
     uninstallFile "$win32_sys_path" "$dxvk_nvapi_lib32" "$1"
