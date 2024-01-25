@@ -1,7 +1,7 @@
 pkgbase = leonmw-hyperland-dot
 	pkgver = 0.2
 	pkgrel = 1
-	url = https://github.com/leonlolly/HyperlandBeautyPackage.git
+	url = https://github.com/leonlolly/leonmw-hyperland-dot.git
 	install = leonmw-hyperland-dot.install
 	arch = any
 	license = MIT
@@ -28,7 +28,7 @@ pkgbase = leonmw-hyperland-dot
 	depends = wireplumber
 	depends = gst-plugin-pipewire
 	options = !emptydirs
-	source = leonmw-hyperland-dot-0.2.tar.gz::https://github.com/leonlolly/HyperlandBeautyPackage/archive/refs/tags/0.2.tar.gz
-	sha512sums = 8d1ebc9a091febf393b5b5714b0f68ca1d21940018b8ce88fa7a6e78ad036a69c865d089faa2fdba71a70c8c45af455b3ff6a21877aad2d4e51d76651bb480c4
+	source = leonmw-hyperland-dot-0.2.tar.gz::https://github.com/leonlolly/leonmw-hyperland-dot/archive/refs/tags/0.2.tar.gz
+	sha512sums = f86b3b62d2ce07278ff980102dee747bf4e01facf50f99446c4aef56ca326b2fc2e7d74265231eb234435b6bc9b7d0a94267326d4b15a0c7b8ab03d8d987619c
 
 pkgname = leonmw-hyperland-dot

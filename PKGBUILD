@@ -5,7 +5,7 @@ pkgver=0.2
 pkgrel=1
 pkgdesc=""
 arch=('any')
-url="https://github.com/leonlolly/HyperlandBeautyPackage.git"
+url="https://github.com/leonlolly/${pkgname}.git"
 license=('MIT')
 groups=()
 depends=('hyprland' 'hyprpicker' 'waybar' 'wlogout' 'wlsunset' 'xdg-desktop-portal-hyprland' 'xwaylandvideobridge' 
@@ -18,8 +18,8 @@ depends=('hyprland' 'hyprpicker' 'waybar' 'wlogout' 'wlsunset' 'xdg-desktop-port
 #makedepends=('')
 install="${pkgname}.install"
 options=('!emptydirs')
-source=($pkgname-$pkgver.tar.gz::https://github.com/leonlolly/HyperlandBeautyPackage/archive/refs/tags/$pkgver.tar.gz)
-sha512sums=('8d1ebc9a091febf393b5b5714b0f68ca1d21940018b8ce88fa7a6e78ad036a69c865d089faa2fdba71a70c8c45af455b3ff6a21877aad2d4e51d76651bb480c4')
+source=($pkgname-$pkgver.tar.gz::https://github.com/leonlolly/${pkgname}/archive/refs/tags/$pkgver.tar.gz)
+sha512sums=('f86b3b62d2ce07278ff980102dee747bf4e01facf50f99446c4aef56ca326b2fc2e7d74265231eb234435b6bc9b7d0a94267326d4b15a0c7b8ab03d8d987619c')
 
 
 package() {
@@ -27,7 +27,7 @@ package() {
   install -d "${pkgdir}/usr/share/themes/${pkgname}"
   cp -R .* ${pkgdir}/usr/share/themes/${pkgname}
   
-  install -Dm644 install.sh "${pkgdir}/usr/share/themes/${pkgname}/install.sh"
+  install -Dm755 install.sh "${pkgdir}/usr/share/themes/${pkgname}/install.sh"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
 
