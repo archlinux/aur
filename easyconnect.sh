@@ -6,12 +6,9 @@ export PATH="${_APPDIR}:${PATH}"
 export LD_LIBRARY_PATH="${_APPDIR}/lib:${_APPDIR}/resources/lib64:${LD_LIBRARY_PATH}"
 export ELECTRON_IS_DEV=0
 export NODE_ENV=production
+cd "${_APPDIR}"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    cd "${_APPDIR}"
-    exec "${_RUNNAME}" "$@"
-    exit
-else
-    cd "${_APPDIR}"
-    exec "${_RUNNAME}" --no-sandbox "$@"
-    exit
+    exec "${_RUNNAME}" "$@" || exit $?
+else    
+    exec "${_RUNNAME}" --no-sandbox "$@" || exit $?
 fi
