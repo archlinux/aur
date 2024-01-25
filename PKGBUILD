@@ -1,7 +1,7 @@
 # Maintainer: Zacharias Knudsen <zachasme@gmail.com>
 pkgname=gog-unreal-tournament-goty
 pkgver=469d
-pkgrel=1
+pkgrel=2
 pkgdesc="Unreal Tournament (99): Game of the Year Edition. GOG Version."
 arch=('x86_64')
 url="https://www.gog.com/forum/general/delisting_unreal_games_unreal_tournament_2004_ut_goty_unreal_2_the_awakening_special_edition/post1"
@@ -80,6 +80,9 @@ prepare() {
   # Create a Maps directory within the game directory and copy over the unpacked Maps (i.e., map files with a .unr extension) from the distribution directory.
   cp --recursive "app/Maps" "unreal/"
 
+  # Copy the .u and .int files to the game's System directory.
+  cp --no-clobber app/System/*.{u,int} "unreal/System/" || true # existing files will give exit code 1
+
   # Remove prebuilt libraries in favor of arch/AUR packages
   rm \
     "unreal/System64/libmpg123.so" \
@@ -105,10 +108,13 @@ package() {
   # copy game files
   cp --archive "unreal" "${pkgdir}/opt/gog/${pkgname#gog-}"
 
-  # symlink game binary which is located in /opt
+  # symlink binaries which are located in /opt
   ln --symbolic \
     "/opt/gog/${pkgname#gog-}/System64/ut-bin-amd64" \
     "${pkgdir}/usr/bin/${pkgname}"
+  ln --symbolic \
+    "/opt/gog/${pkgname#gog-}/System64/ucc-bin-amd64" \
+    "${pkgdir}/usr/bin/${pkgname}-ucc"
   ln --symbolic \
     "/opt/gog/${pkgname#gog-}/System64/wx-ut-bin-amd64" \
     "${pkgdir}/usr/bin/wx-${pkgname}"
