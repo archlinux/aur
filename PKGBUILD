@@ -2,16 +2,16 @@
 
 pkgname=gawk-lmdb
 _project=gawkextlib
-pkgver=1.1.1
-pkgrel=3
+pkgver=1.1.3
+pkgrel=1
 pkgdesc="GAWK extension - interface to the LMDB API"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/gawkextlib/"
 license=('GPL')
 depends=('gawkextlib' 'glibc' 'lmdb')
 source=("https://downloads.sourceforge.net/$_project/$pkgname-$pkgver.tar.gz")
-md5sums=('6a0a0ca6433f7353297edfd765615f46')
-sha256sums=('e4993efafa9924928d21b4eee77d5e3d9233ec5c3867685f598ca0bbb9c30cf2')
+md5sums=('c26a97402460d8ae94ec0886d45c4180')
+sha256sums=('e3d0b899f2f56c0158404d105f1812fa8886bccd45adc3b9dd7da851005aa422')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -21,9 +21,7 @@ build() {
 
 check() {
 	cd "$pkgname-$pkgver"
-	# Sometimes the test suite fails due to a race condition when running
-	# multiple tests in parallel. Force a single job for now.
-	make -j1 -k check
+	make -k check
 }
 
 package() {
