@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=siyuan-git
-pkgver=2.12.4.r0.g382cc92d9
+pkgver=2.12.5.r0.g98455e3b6
 _electronversion=28
 _nodeversion=18
 pkgrel=1
@@ -66,10 +66,10 @@ build() {
     pnpm run build
     cd "${srcdir}/${pkgname//-/.}/kernel"
     export CGO_ENABLED=1
+    export GO111MODULE=on
+    export GOOS=linux
     export GOCACHE="${srcdir}/go-build"
     export GOMODCACHE="${srcdir}/go/pkg/mod"
-    #For Chinese Only
-    #export GOPROXY=https://goproxy.cn,direct
     go build --tags fts5 -o "../app/kernel-linux/SiYuan-Kernel" -v -ldflags "-s -w -X github.com/siyuan-note/siyuan/kernel/util.Mode=prod"
     cd "${srcdir}/${pkgname//-/.}/app"
     pnpm run dist-linux
