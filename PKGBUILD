@@ -4,7 +4,7 @@
 _pkgname='empathy'
 pkgname="${_pkgname}-git"
 pkgver=3.25.90.93+r13046.20210512.19a4dd3a4
-pkgrel=1
+pkgrel=2
 pkgdesc="A GNOME instant messaging client using the Telepathy framework. Latest git checkout."
 url="https://wiki.gnome.org/Apps/Empathy"
 arch=(
@@ -75,7 +75,7 @@ prepare() {
 
   git submodule init
   git config --local submodule.telepathy-account-widgets.url "$srcdir/telepathy-account-widgets"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   patch -Np1 -i ../enchant-2.patch
 
