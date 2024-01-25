@@ -51,7 +51,7 @@ build() {
     install -Dm644 "${srcdir}/GithubDesktop汉化工具/Linux/"* -t "${srcdir}/usr/lib/${_pkgname}/resources/app"
     sed -e "5i\Name[zh_CN]=Github桌面版" \
         -e "6i\Comment[zh_CN]=从桌面对Github进行简单协作" \
-        -e "s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
+        -e "s|Exec=${_pkgname}|Exec=${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
