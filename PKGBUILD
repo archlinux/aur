@@ -3,8 +3,8 @@
 # Contributor: Kimiblock
 # Contributor: Philip Goto <philip.goto@gmail.com>
 pkgname=apostrophe-git
-pkgver=2.6.3.r202.gcc6bef4
-pkgrel=3
+pkgver=2.6.3.r236.ga408df6
+pkgrel=1
 pkgdesc="A distraction free Markdown editor for GNU/Linux made with GTK+"
 arch=('any')
 url="https://world.pages.gitlab.gnome.org/apostrophe"
@@ -26,7 +26,7 @@ makedepends=(
   'meson'
   'gobject-introspection'
 )
-checkdepends=('appstream-glib')
+checkdepends=('appstream')
 optdepends=(
   'mathjax: for formula preview'
   'texlive-bin: for the pdftex module'
