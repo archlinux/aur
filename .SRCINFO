@@ -1,0 +1,13 @@
+pkgbase = spurt
+	pkgdesc = HTTP stress testing tool that can overload web servers
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/zer-far/spurt
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = go
+	conflicts = spurt-git
+	source = spurt-1.0.0.tar.gz::https://github.com/zer-far/spurt/archive/v1.0.0.tar.gz
+	sha256sums = 9e6fd5cc6a83027df07f12177921710de3729fb55068a7d20ecd08d1fece558c
+
+pkgname = spurt
