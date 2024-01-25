@@ -3,9 +3,9 @@
 # Maintainer: David Hummel <david dot hummel at gmail point com>
 
 pkgname=('mod_tile-git' 'renderd-git')
-pkgver=0.7.0.r5.gc7ffa83
+pkgver=0.7.0.r14.g9408604
 pkgrel=1
-pkgdesc='Mod tile is a daemon and apache module for rendering and serving Mapnik raster tiles'
+pkgdesc='A daemon and apache module for rendering and serving Mapnik raster tiles'
 arch=('i686' 'x86_64')
 url='https://github.com/openstreetmap/mod_tile'
 license=('GPL2')
@@ -29,15 +29,24 @@ pkgver() {
   git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
-build() {
+prepare() {
   # Override VERSION with ${pkgver}
   sed -i 's/@VERSION@/'${pkgver}'/g' mod_tile/includes/config.h.in
-  cmake -B mod_tile_build -S mod_tile -DCMAKE_BUILD_TYPE:STRING=Release -DENABLE_TESTS:BOOL=ON
-  cmake --build mod_tile_build
+}
+
+build() {
+  export CMAKE_BUILD_PARALLEL_LEVEL=${CMAKE_BUILD_PARALLEL_LEVEL:-$(nproc)}
+  cmake -B build -S mod_tile \
+    -DCMAKE_BUILD_TYPE:STRING=Release \
+    -DENABLE_TESTS:BOOL=ON
+  cmake --build build
 }
 
 check() {
-  ctest --output-on-failure --test-dir mod_tile_build
+  export CTEST_PARALLEL_LEVEL=${CTEST_PARALLEL_LEVEL:-$(nproc)}
+  ctest \
+    --output-on-failure \
+    --test-dir build
 }
 
 package_mod_tile-git() {
@@ -47,7 +56,7 @@ package_mod_tile-git() {
   pkgdesc='An Apache 2 module to deliver map tiles'
   provides=('mod_tile')
 
-  DESTDIR="$pkgdir" cmake --install mod_tile_build --prefix /usr --strip
+  DESTDIR="$pkgdir" cmake --install build --prefix /usr --strip
 
   # License
   install -Dm644 "$srcdir"/mod_tile/COPYING "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
@@ -68,7 +77,7 @@ package_renderd-git() {
   pkgdesc='A daemon that renders map tiles using mapnik'
   provides=('renderd')
 
-  DESTDIR="$pkgdir" cmake --install mod_tile_build --prefix /usr --strip
+  DESTDIR="$pkgdir" cmake --install build --prefix /usr --strip
 
   # Systemd service units, sysusers.d & tmpfiles.d configuration files
   install -Dm644 -t "$pkgdir"/usr/lib/systemd/system/ "$srcdir"/renderd-postgresql.service "$srcdir"/renderd.service
