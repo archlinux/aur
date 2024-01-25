@@ -8,8 +8,8 @@ pkgdesc="Artery ISP Console 是一款基于 MCU Bootloader 的命令行应用程
 arch=('x86_64')
 url="https://www.arterytek.com/cn/support/index.jsp"
 license=('Commercial')
-provides=(Artery_ISP_Console)
-conflicts=()
+provides=(${pkgname%-bin} Artery_ISP_Console)
+conflicts=(${pkgname%-bin})
 replaces=()
 depends=(
 #     icu

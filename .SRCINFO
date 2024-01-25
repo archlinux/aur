@@ -12,7 +12,9 @@ pkgbase = artery-isp-console-bin
 	depends = gcc-libs
 	depends = glibc
 	depends = libusb
+	provides = artery-isp-console
 	provides = Artery_ISP_Console
+	conflicts = artery-isp-console
 	source = Artery_ISP_Console_Linux-x86_64_V3.0.09.zip::https://www.arterytek.com/download/TOOL/Artery_ISP_Console_Linux-x86_64_V3.0.09.zip
 	sha256sums = b634f872ca00145163c4d4c3fb9e9967f60b3ab35487f3ee0dadefab53ff2ba6
 
