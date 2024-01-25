@@ -1,4 +1,0 @@
-post_install() {
-  printf $(tput bold)'Enable v2ray-rules-dat-updater.timer to update rules automatically everyday.\n'
-  printf 'The most up-to-date geoip.dat and geosite.dat can be found under /var/lib/v2ray-rules-dat'$(tput sgr0)'\n'
-}
