@@ -4,7 +4,7 @@ pkgname="electron-${_appname}-bin"
 _pkgname="Youtube Music"
 pkgver=1.0.0
 _electronversion=23
-pkgrel=5
+pkgrel=6
 pkgdesc="A minimal electron app for Youtube Music"
 arch=('x86_64')
 url="https://github.com/pauchiner/electron-youtube-music"
@@ -14,22 +14,19 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
 )
-makedepends=(
-    'gendesk'
-)
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Linux.deb"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('7f12ca29771515ff0735af72b639d7c1bb609e14b7dd69d506e65a11a03c1cc3'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|\"/opt/${_pkgname}/${_appname}\" %U|${pkgname%-bin}|g;s|=${_appname}|=${pkgname%-bin}|g;s|Music;|AudioVideo;|g" \
+    sed "s|\"/opt/${_pkgname}/${_appname}\"|${pkgname%-bin}|g;s|=${_appname}|=${pkgname%-bin}|g;s|Music;|AudioVideo;|g" \
         -i "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
