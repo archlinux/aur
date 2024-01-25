@@ -1,0 +1,13 @@
+post_install() {
+  echo "Installing mimetypes"
+  xdg-mime install --mode system --novendor /usr/share/java/efisc2023/efisc2023.xml
+  xdg-icon-resource install --novendor --context mimetypes --size 48 --mode system /usr/share/icons/hicolor/64x64/apps/efisc.png application-efisc2023
+  update-mime-database /usr/share/mime
+}
+
+pre_remove() {
+  echo "Uninstalling mimetypes"
+  xdg-mime uninstall --mode system --novendor /usr/share/java/efisc2023/efisc2023.xml
+  xdg-icon-resource uninstall --novendor --context mimetypes --size 48 --mode system application-efisc2023
+  update-mime-database /usr/share/mime
+}

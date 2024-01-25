@@ -1,0 +1,20 @@
+pkgbase = efisc-bin
+	pkgdesc = Steuererklärungssoftware des Kantons Thurgau
+	pkgver = 2023_1.0.2_33
+	pkgrel = 1
+	url = https://steuerverwaltung.tg.ch/hilfsmittel/efisc-steuererklaerungssoftware.html/2958
+	install = efisc.install
+	arch = x86_64
+	license = unknown
+	depends = hicolor-icon-theme
+	depends = sh
+	source = https://efisc.kttg.ch/update/eFisc/2023/efisc2023-1.0.2-33.x86_64.rpm
+	source = efisc2023.sh.patch
+	source = efisc_desktop.patch
+	source = sanitycheck.patch
+	sha256sums = 07232d36c1e31c13ffed22218293f67195e77d92673b81a135c2a40f83463c77
+	sha256sums = 64f77136e77a8b211d597ceb2d67276b489139db201395fb60020e30a6b10bb5
+	sha256sums = 6453b8b8ac94e90951a63b72aec0a519ba260b510a11c703cf5f678fece8edd9
+	sha256sums = e0d70d13f21ca2b3cc2bb83b1510b1cbf6a7040477d74b913a0a3e67d4fb305c
+
+pkgname = efisc-bin
