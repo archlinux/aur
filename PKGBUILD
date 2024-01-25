@@ -2,7 +2,7 @@
 
 _pkgname=phantomsocks
 pkgname=phantomsocks-ipv6-git
-pkgver=r301.b1b13c5
+pkgver=r304.2576269
 pkgrel=1
 pkgdesc="A cross-platform proxy client/server for Linux/Windows/macOS (resolve both ipv4 and ipv6 dns record)"
 arch=(i686 x86_64)
@@ -23,13 +23,11 @@ source=(
     "git+${url}.git"
     "$_pkgname-init.sh"
     "$_pkgname.service"
-    '0001-SOCKS-SOCKS5.patch'
     '0001-resolve-both-v4-and-v6-dns-record-default.patch'
     '0002-just-keep-random.patch')
 sha256sums=('SKIP'
             '22d5545c6bb8430cd8efd1452e0647ee0d3feab0c8e775167ec291e4fba24927'
             '4602cf1421b16780aea3eef1d69ed44197efa6cbfe5e64193a127852ba71750c'
-            '98159d9432cb13937f8c4d743cd3ee87d663404825de89268345029cf319062d'
             '92c398376e015b069544a2d64d1ff898961089f1d7595f074eda34c7f1594977'
             '31925baa7ab583f724188bd99323182dc9aef273991874028ffc3bf773dfe8d4')
 
@@ -43,9 +41,6 @@ pkgver() {
 
 prepare() {
     cd "$_pkgname"
-    
-    # Fix pac service when no profile
-    patch -p1 -i '../0001-SOCKS-SOCKS5.patch'
 
     # For ipv6 dns record resolve
     patch -p1 -i '../0001-resolve-both-v4-and-v6-dns-record-default.patch'
