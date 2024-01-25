@@ -1,7 +1,7 @@
 # Maintainer: Bobby Hamblin <hamblingreen@hotmail.com>
 pkgname=dotool
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Command to simulate input anywhere"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://git.sr.ht/~geb/dotool"
@@ -25,7 +25,7 @@ package() {
   mkdir -p "$pkgdir/usr/lib/systemd/user/"
   install -Dm755 dotool dotoolc dotoold "$pkgdir/usr/bin/"
   install -Dm644 "80-dotool.rules" "$pkgdir/etc/udev/rules.d/80-dotool.rules"
-  install "$srcdir/dotoold.service" "$pkgdir/usr/lib/systemd/user/dotoold.service"
+  install -Dm644 "$srcdir/dotoold.service" "$pkgdir/usr/lib/systemd/user/dotoold.service"
 
   mkdir -p "$pkgdir/usr/share/man/man1"
   scdoc < doc/dotool.1.scd > "$pkgdir/usr/share/man/man1/dotool.1"
