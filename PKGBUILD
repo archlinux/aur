@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xchat-bin
-pkgver=1.0.1
+pkgver=1.0.0
 _electronversion=27
-pkgrel=1
+pkgrel=2
 pkgdesc="使用 React+Vite、MobX 和 Electron 构建的非官方WeChat微信客户端。"
 arch=("x86_64")
 url="https://github.com/xYx-c/xchat"
@@ -18,9 +18,9 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/xYx-c/xchat/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('cea38eb0032ae4f0ef2c4dfa02309677f76fb516bdfa0251c553d59e84ae16ff'
+sha256sums=('9667f8e99a0e548b84795ccba05f65ed1d8d74fc2cd84cb20f4ca44df38ee9db'
             '29eee3e9d9c5dd67213ec3ab4a7eef57a1224750e2e9aab3a278177a9444a355'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
