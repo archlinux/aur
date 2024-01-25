@@ -1,7 +1,7 @@
 pkgbase = swww
 	pkgdesc = Efficient animated wallpaper daemon for wayland, controlled at runtime.
 	pkgver = 0.8.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/LGFae/swww
 	arch = x86_64
 	arch = aarch64
