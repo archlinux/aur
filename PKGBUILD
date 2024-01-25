@@ -38,8 +38,8 @@ prepare() {
     local march="${flags["-march"]:-nocona}"
     local mtune="${flags["-mtune"]:-core-avx2}"
 
-    export CFLAGS="-O2 -march="$_march" -mtune="$_mtune" -pipe"
-    export CXXFLAGS="-O2 -march="$_march" -mtune="$_mtune" -pipe"
+    export CFLAGS="-O2 -march="$march" -mtune="$mtune" -pipe"
+    export CXXFLAGS="-O2 -march="$march" -mtune="$mtune" -pipe"
     export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
     # These flags are taken from Proton
