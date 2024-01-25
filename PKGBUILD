@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=icalingua++-bin
-pkgver=2.11.0
+pkgver=2.11.1
 _electronversion=22
-pkgrel=3
+pkgrel=1
 pkgdesc="A branch of deleted Icalingua, with limited support"
 arch=("aarch64" "armv7h" "x86_64")
 url="https://github.com/Icalingua-plus-plus/Icalingua-plus-plus"
-license=("AGPL3")
+license=("AGPL-3.0-only")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=(
     "${pkgname%-bin}"
@@ -25,10 +25,10 @@ source=(
 )
 sha256sums=('5743ef3d19be5e41e83c3a1171a807cd0505d7f5d5f9c5abdff8926dccadc6de'
             'b088d20934708c53e50492694efefbf9a9dcb62fefb8d1d4976f36f32f84af86'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
-sha256sums_aarch64=('a2f8c2cae5819f2c41cba3d0d11041c48d2dcc21d9ee2c6bcddff57ae1a6fd47')
-sha256sums_armv7h=('f0d71ec7ace0d8631978b5214cd5dbc6b86d7f7bc6ef959c3b1c4550e5b1e659')
-sha256sums_x86_64=('ba129cadde6b1c4375817558ea161ba66b5e404e72496edb64a9ec65fc77cbfe')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+sha256sums_aarch64=('5246762666e163cea99949768e609c40b93adc468c44c5cf94ad5ce09093fa4e')
+sha256sums_armv7h=('10a5ecfa5d2a9fded85316c2c10d4c835a8d9a159179961b29ce1e4cb7f667ef')
+sha256sums_x86_64=('7ad43df048471b1eb39982ca065eb0df15c04d7d40a12b78d6c2198c0dc90547')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
