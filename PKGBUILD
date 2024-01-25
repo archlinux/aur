@@ -4,7 +4,7 @@
 _pkgname='empathy'
 pkgname="${_pkgname}-git"
 pkgver=3.25.90.93+r13046.20210512.19a4dd3a4
-pkgrel=4
+pkgrel=5
 pkgdesc="A GNOME instant messaging client using the Telepathy framework. Latest git checkout."
 url="https://wiki.gnome.org/Apps/Empathy"
 arch=(
@@ -45,6 +45,8 @@ optdepends=(
   'telepathy-salut: Link-local XMPP support'
   'telepathy-tank: Matrix support'
 )
+provides=("empathy=${pkgver}")
+conflicts=("empathy")
 source=(
   "${_pkgname}::git+https://git.gnome.org/browse/empathy.git"
   "telepathy-account-widgets::git+https://git.gnome.org/browse/telepathy-account-widgets.git"
@@ -55,6 +57,7 @@ sha256sums=(
   'SKIP'
   'f177f0dfc242018dd52e312637f513fd08f64aa991b45930cc3ea9a2576f795e'
 )
+# options+=('debug' '!lto')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"

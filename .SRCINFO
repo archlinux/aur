@@ -1,7 +1,7 @@
 pkgbase = empathy-git
 	pkgdesc = A GNOME instant messaging client using the Telepathy framework. Latest git checkout.
 	pkgver = 3.25.90.93+r13046.20210512.19a4dd3a4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://wiki.gnome.org/Apps/Empathy
 	arch = x86_64
 	arch = i686
@@ -33,6 +33,8 @@ pkgbase = empathy-git
 	optdepends = telepathy-idle: IRC support
 	optdepends = telepathy-salut: Link-local XMPP support
 	optdepends = telepathy-tank: Matrix support
+	provides = empathy=3.25.90.93+r13046.20210512.19a4dd3a4
+	conflicts = empathy
 	source = empathy::git+https://git.gnome.org/browse/empathy.git
 	source = telepathy-account-widgets::git+https://git.gnome.org/browse/telepathy-account-widgets.git
 	source = enchant-2.patch
