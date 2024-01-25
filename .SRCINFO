@@ -1,6 +1,6 @@
 pkgbase = gdb-multiarch
 	pkgdesc = The GNU Debugger for all gdb supported architectures (i386/arm/mips...)
-	pkgver = 13.2
+	pkgver = 14.1
 	pkgrel = 1
 	url = http://www.gnu.org/software/gdb/
 	arch = i686
@@ -26,17 +26,17 @@ pkgbase = gdb-multiarch
 	depends = xz
 	depends = mpfr
 	depends = source-highlight
-	depends = gdb-common=13.2
+	depends = gdb-common=14.1
 	depends = readline
 	depends = libreadline.so
 	depends = guile
 	depends = python
 	depends = libelf
 	options = !emptydirs
-	source = https://ftp.gnu.org/gnu/gdb/gdb-13.2.tar.xz
-	source = https://ftp.gnu.org/gnu/gdb/gdb-13.2.tar.xz.sig
+	source = https://ftp.gnu.org/gnu/gdb/gdb-14.1.tar.xz
+	source = https://ftp.gnu.org/gnu/gdb/gdb-14.1.tar.xz.sig
 	validpgpkeys = F40ADB902B24264AA42E50BF92EDB04BFF325CF3
-	sha256sums = fd5bebb7be1833abdb6e023c2f498a354498281df9d05523d8915babeb893f0a
+	sha256sums = d66df51276143451fcbff464cc8723d68f1e9df45a6a2d5635a54e71643edb80
 	sha256sums = SKIP
 
 pkgname = gdb-multiarch
