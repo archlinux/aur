@@ -1,24 +1,17 @@
 pkgbase = mdsilo-bin
-	pkgdesc = Local-first, lightweight personal wiki, RSS and podcast client (pre-compiled)
+	pkgdesc = Lightweight Knowledge Base and Feed Reader.
 	pkgver = 0.5.7
-	pkgrel = 2
-	url = https://github.com/mdSilo/mdSilo-app
+	pkgrel = 3
+	url = https://mdsilo.com/
 	arch = x86_64
 	license = AGPL-3.0-or-later
-	depends = cairo
-	depends = gcc-libs
-	depends = gdk-pixbuf2
-	depends = glib2
-	depends = glibc
 	depends = gtk3
 	depends = hicolor-icon-theme
-	depends = libsoup
-	depends = openssl
 	depends = webkit2gtk
-	provides = mdsilo
+	depends = libsoup
+	provides = mdsilo=0.5.7
 	conflicts = mdsilo
-	source = https://github.com/mdSilo/mdSilo-app/releases/download/app-v0.5.7/mdsilo_0.5.7_amd64.deb
+	source = mdsilo-0.5.7.deb::https://github.com/mdSilo/mdSilo-app/releases/download/app-v0.5.7/mdsilo_0.5.7_amd64.deb
 	sha256sums = a70d0fa49072da91a2ddbee28f824620cd9d80d4a267502e7724f4c02175b194
-	b2sums = 63eaaf828f2f5befad5dab87238725d92c015b82f37d28f9048f15bac5aa3c0989bf04cf6e9100bb1fd510272fd15af9df580bc21601cc1b159d7a652c6d0ed5
 
 pkgname = mdsilo-bin
