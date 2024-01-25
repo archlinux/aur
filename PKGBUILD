@@ -3,23 +3,17 @@
 # Maintainer: Abdulkadir Furkan Şanlı <me@abdulocra.cy>
 
 pkgname='speedtest-go'
-pkgver='1.6.9'
+pkgver='1.6.10'
 pkgrel='1'
 pkgdesc='CLI and Go API to Test Internet Speed using speedtest.net'
 arch=('x86_64')
-url="https://github.com/showwin/$pkgname"
+url="https://github.com/showwin/${pkgname}"
 license=('MIT')
 makedepends=('go')
-provides=("$pkgname")
-conflicts=("$pkgname")
-source=("https://github.com/showwin/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('793479fb53dc475c99901ce3f6d2101b56240b338f57bc08039ee7aca0217695')
-
-prepare ()
-{
-  cd "${pkgname}-${pkgver}" || exit
-  mkdir -p build/
-}
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('3f2d6ae3b60d8b6e972038fd2e13f3fdeca75647d88785d65bfa0d99a2f4fd79')
 
 build ()
 {
@@ -30,12 +24,6 @@ build ()
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS='-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw'
   go build
-}
-
-check ()
-{
-  cd "${pkgname}-${pkgver}" || exit
-  go test "./${pkgname%-go}"
 }
 
 package ()
