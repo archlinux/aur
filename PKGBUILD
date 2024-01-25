@@ -1,17 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
-# By default use the same optimizations used by Valve and ignore makepkg,
-# to avoid build failures due to options incompatible with MingW cross-compilation.
-# If you set this switch to 'true', you are on your own.
-: ${_system_cflags:=false}
-
 pkgname=proton-experimental
 _srctag=8.0-20231219
 _commit=
 pkgver=8.0.20231219 #${_srctag//-/.}
 _geckover=2.47.4
 _monover=8.1.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, experimental branch"
 url="https://github.com/ValveSoftware/Proton"
@@ -98,9 +93,6 @@ source=(
     0005-AUR-Strip-binaries-early.patch
     0006-AUR-Fix-hwnd-redefinition.patch
 )
-# Optional patches
-source+=(
-)
 noextract=(
     wine-gecko-${_geckover}-{x86,x86_64}.tar.xz
     wine-mono-${_monover}-x86.tar.xz
@@ -183,14 +175,16 @@ build() {
         --proton-sdk-image="" \
         --build-name="${pkgname}"
 
-    if [[ x"${_system_cflags::1}" != "xt" ]] ; then
-      unset CFLAGS CXXFLAGS RUSTFLAGS LDFLAGS
-    fi
-    : ${CFLAGS:="-O2 -march=nocona -mtune=core-avx2 -pipe"}
-    : ${CXXFLAGS:="-O2 -march=nocona -mtune=core-avx2 -pipe"}
-    : ${RUSTFLAGS:="-C opt-level=2 -C target-cpu=nocona"}
-    : ${LDFLAGS:="-Wl,-O1,--sort-common,--as-needed"}
-    export CFLAGS CXXFLAGS RUSTFLAGS LDFLAGS
+    local -a split=($CFLAGS)
+    local -A flags
+    for opt in "${split[@]}"; do flags["${opt%%=*}"]="${opt##*=}"; done
+    local march="${flags["-march"]:-nocona}"
+    local mtune="${flags["-mtune"]:-core-avx2}"
+
+    CFLAGS="-O2 -march=$march -mtune=$mtune -pipe -fno-semantic-interposition"
+    CXXFLAGS="-O2 -march=$march -mtune=$mtune -pipe -fno-semantic-interposition"
+    RUSTFLAGS:="-C opt-level=2 -C target-cpu=$march"
+    LDFLAGS:="-Wl,-O1,--sort-common,--as-needed"
 
     # If using -march=native and the CPU supports AVX, launching a d3d9
     # game can cause an Unhandled exception. The cause seems to be the
@@ -203,8 +197,10 @@ build() {
     # https://bugs.winehq.org/show_bug.cgi?id=43516
     # AVX is "hard" disabled for 32bit in any case.
     # AVX2 for both 32bit and 64bit is disabled below.
-    export CFLAGS+=" -mno-avx2"
-    export CXXFLAGS+=" -mno-avx2"
+    CFLAGS+=" -mno-avx2"
+    CXXFLAGS+=" -mno-avx2"
+
+    export CFLAGS CXXFLAGS RUSTFLAGS LDFLAGS
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_HOME="${SRCDEST}"/proton-cargo
@@ -272,7 +268,4 @@ sha256sums=('SKIP'
             '0892daec01d88ae497d1389673931f5aa1a93de56b24eeee6a6beaefcee8943c'
             'c589f9bf60c27033680036a048374632001eddf8a9ca2277c7ed5893263c2ac9'
             'eefb327133ee164db6d8002a851b8fad72f9fc2e669f1d58901ebdadbc240823')
-# Optional patches
-sha256sums+=(
-)
 
