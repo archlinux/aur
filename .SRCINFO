@@ -1,7 +1,7 @@
 pkgbase = opera
 	pkgdesc = A fast and secure web browser
 	pkgver = 106.0.4998.66
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.opera.com/
 	arch = x86_64
 	license = custom:opera
