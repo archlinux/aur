@@ -1,6 +1,7 @@
-# Maintainer: Rodolphe Bréard <packages@what.tf>
+# Maintainer: iamawacko <iamawacko@protonmail.com>
+# Contributor: Rodolphe Bréard <packages@what.tf>
 pkgname=mlar
-pkgver=1.1.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A pure rust encrypted and compressed archive file utility"
 arch=('x86_64')
@@ -9,7 +10,7 @@ license=('LGPL3')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ANSSI-FR/MLA/archive/mlar-v$pkgver.tar.gz")
-sha256sums=('4a9cb7b6de86ddc23e8e0d483c06360c34aee32af4ae64883565a53b40164bb9')
+sha256sums=('0160c893651bd322e84bfe06f53f7edda8de3a5757a6155c6e960f73d9caa89c')
 
 build() {
   cd "MLA-mlar-v$pkgver"

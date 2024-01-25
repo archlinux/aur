@@ -1,6 +1,6 @@
 pkgbase = mlar
 	pkgdesc = A pure rust encrypted and compressed archive file utility
-	pkgver = 1.1.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/ANSSI-FR/MLA
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = mlar
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
-	source = mlar-1.1.1.tar.gz::https://github.com/ANSSI-FR/MLA/archive/mlar-v1.1.1.tar.gz
-	sha256sums = 4a9cb7b6de86ddc23e8e0d483c06360c34aee32af4ae64883565a53b40164bb9
+	source = mlar-1.3.0.tar.gz::https://github.com/ANSSI-FR/MLA/archive/mlar-v1.3.0.tar.gz
+	sha256sums = 0160c893651bd322e84bfe06f53f7edda8de3a5757a6155c6e960f73d9caa89c
 
 pkgname = mlar
-
