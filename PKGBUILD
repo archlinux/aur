@@ -1,15 +1,16 @@
-# Maintainer: Gyara <laxect39@gmail.com>
+# Maintainer: iamawacko <iamawacko@protonmail.com>
+# Contributor: Gyara <laxect39@gmail.com>
 
 pkgname=cargo-docset
-pkgver=0.2.1
-pkgrel=3
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="Cargo subcommand to generate a Dash/Zeal docset for your Rust packages"
 url="https://github.com/Robzz/${pkgname}"
 arch=("x86_64")
 license=("MIT")
 depends=("cargo" "sqlite")
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('2ee59098d4635b9a6e348312874f1f04e26d3b3b8425aad491a4053c6f49b5cb22e94d9f2d6fce334d238e006f558a3d13e94ceac9e7ab8dd4925ca9fb960df2')
+b2sums=('931828ce74bd8e6a1ce057c33a6d049e82b7b8728b17a1f38f598f4f4f10ef77578f3d4f4309e9a63568b837abfdb1c7a35347f56b2994681186d97ff0bbb258')
 
 build() {
   cd "$pkgname-$pkgver"
