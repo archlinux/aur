@@ -1,8 +1,9 @@
 pkgbase = cyberether-git
 	pkgdesc = Multi-platform GPU-accelerated interface for compute-intensive pipelines
 	pkgver = r387.1bb1bbb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/luigifcruz/CyberEther
+	install = cyberether.install
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -25,11 +26,12 @@ pkgbase = cyberether-git
 	optdepends = gst-plugins-good: Remote capabilities
 	optdepends = gst-libav: Remote capabilities
 	optdepends = cuda: CUDA compute backend support
+	optdepends = python-yaml: Preloaded examples metadata
 	provides = cyberether
 	conflicts = cyberether
 	source = CyberEther::git+https://github.com/luigifcruz/CyberEther.git
-	source = LICENSE
+	source = cyberether.desktop
 	sha256sums = SKIP
-	sha256sums = ba3742d029fe929a9f840583f6a84c8c93c0b6955e5eb379f05724dbbf9e167e
+	sha256sums = 1d8aca0a76e8c963ed372136eb1d0fc08624b21a4800b1af950f71187160efe3
 
 pkgname = cyberether-git

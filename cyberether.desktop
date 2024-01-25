@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+NoDisplay=false
+Terminal=false
+Exec=/usr/bin/cyberether
+Icon=cyberether
+Name=CyberEther
+Comment=Multi-platform GPU-accelerated interface for compute-intensive pipelines
+Categories=HamRadio;Network;Audio;AudioVideo;
+StartupWMClass=CyberEther

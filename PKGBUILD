@@ -4,7 +4,8 @@ _pkgname=cyberether
 pkgname="$_pkgname"-git
 pkgdesc="Multi-platform GPU-accelerated interface for compute-intensive pipelines"
 pkgver=r387.1bb1bbb
-pkgrel=1
+pkgrel=2
+install="$_pkgname".install
 arch=('x86_64')
 makedepends=('git' 'cmake' 'pkg-config' 'ninja' 'meson' 'zenity')
 depends=(
@@ -21,6 +22,7 @@ optdepends=(
 	'gst-plugins-good: Remote capabilities'
 	'gst-libav: Remote capabilities'
 	'cuda: CUDA compute backend support'
+	'python-yaml: Preloaded examples metadata'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -28,11 +30,11 @@ url="https://github.com/luigifcruz/CyberEther"
 license=('MIT')
 source=(
 	'CyberEther::git+'"$url"'.git'
-	'LICENSE'
+	'cyberether.desktop'
 )
 sha256sums=(
 	'SKIP'
-	'ba3742d029fe929a9f840583f6a84c8c93c0b6955e5eb379f05724dbbf9e167e'
+	'1d8aca0a76e8c963ed372136eb1d0fc08624b21a4800b1af950f71187160efe3'
 )
 
 pkgver() {
@@ -55,17 +57,20 @@ build() {
 	cd "$srcdir/CyberEther"
 
 	meson setup --reconfigure -Dprefix=/usr -Dbuildtype=release build
-	ninja -C build
+	ninja $NINJAFLAGS -C build
 }
 
 package() {
 	cd "$srcdir/CyberEther"
 
-	DESTDIR="$pkgdir" ninja $NINJAFLAGS -C build install
+	DESTDIR="$pkgdir" ninja -C build install
 	# remove fmt files
 	cd "$pkgdir"
 	rm -rf usr/include/fmt
 	rm -rf usr/lib/pkgconfig/fmt.pc
 
-	install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/LICENSE"
+	install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/CyberEther/LICENSE"
+
+	install -m644 -Dt "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps" "${srcdir}/CyberEther/resources/cyberether.png"
+	install -m644 -Dt "${pkgdir}/usr/share/applications" "${srcdir}/cyberether.desktop"
 }

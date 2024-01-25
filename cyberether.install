@@ -1,0 +1,5 @@
+## arg 1:  the new package version
+post_install() {
+	echo "If you install some optional dependencies, including CUDA and soapy(rtl)sdr AFTER installing CyberEther, you will need to rebuild CyberEther."
+	echo "These features are automatically enabled at build time if they are detected."
+}
