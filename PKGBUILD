@@ -2,8 +2,8 @@
 
 pkgname=onedev
 pkgver=10.0.0
-pkgrel=1
-_buildid=4574
+pkgrel=2
+_buildid=4588
 pkgdesc="A self-hosted Git server with CI/CD and Kanban"
 arch=('x86_64')
 depends=('java-runtime-headless=17' 'git>2.11.1' 'fontconfig' 'ttf-dejavu')
