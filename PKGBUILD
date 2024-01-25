@@ -1,45 +1,30 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xterminal-bin
 _pkgname=XTerminal
-pkgver=1.6.0
+pkgver=1.8.0
 #update:https://txc.qq.com/products/598955/change-log
 #_electronversion=28
 pkgrel=1
 pkgdesc="不仅是强大的SSH工具，更提供本地控制台，以及更多即将推出的开发相关功能，让您专注于创造卓越的代码"
 arch=("x86_64")
-url="https://www.terminal.icu/"
+url="https://www.xterminal.cn/"
 license=('custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     #"electron${_electronversion}"
-    'libcups'
     'alsa-lib'
-    'libxdamage'
-    'libxfixes'
     'at-spi2-core'
-    'pango'
     'python'
     'nss'
-    'libxkbcommon'
-    'libx11'
-    'libxrandr'
-    'cairo'
     'gtk3'
     'java-runtime'
-    'libxext'
-    'libdrm'
-    'libxcb'
-    'libxcomposite'
-    'mesa'
-    'nspr'
-    'expat'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::https://cdn-cn.xterminal.cn/xterminal/${_pkgname}-${pkgver}-linux-amd64.deb"
     "LICENSE.html"
 )
-sha256sums=('c9b2ccdf4703593f4ea5ce89e7be866974b45a79fb9416d5bfdb03344a6d3ae2'
+sha256sums=('b1394d9aabbfe5bd4c493525915fcf3a0ba75800468b3066614a3e343a262ab6'
             '8d08a959e0086a206ef3454cc0fc323454c73609cd764f102d8d2d076dafa0af')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
