@@ -3,7 +3,7 @@
 
 pkgname=python-sse-starlette
 _name=${pkgname#python-}
-pkgver=1.8.3
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Server Sent Events (SSE) for Starlette and FastAPI"
 arch=(any)
@@ -23,6 +23,7 @@ makedepends=(
 )
 checkdepends=(
   python-asgi-lifespan
+  python-fastapi
   python-httpx
   python-psutil
   python-pytest
@@ -30,7 +31,7 @@ checkdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d4ab7a8893c32dd9c4547adcee0a6f82e960f7659a04cdea7a214b81d902bcb8')
+sha256sums=('b349c9561f01a6c6efaaa982d2fd52d1a743f765217eb2da60eaa608897be509')
 
 _archive="$_name-$pkgver"
 
@@ -48,10 +49,7 @@ check() {
 
   _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   export PYTHONPATH="$PWD/tmp_install/$_site_packages"
-  # Deselected test fails, likely due to the following exception:
-  #   asyncio.exceptions.CancelledError: Cancelled by cancel scope 778244b68250
-  pytest tests/ \
-    --deselect tests/test_event_source_response.py::test_ping_concurrenc
+  pytest
 }
 
 package() {
