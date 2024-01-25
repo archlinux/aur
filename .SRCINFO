@@ -1,0 +1,19 @@
+pkgbase = supermario64
+	pkgdesc = Super Mario 64 powered by the sm64ex engine.
+	pkgver = 1.0.1
+	pkgrel = 1
+	arch = pentium4
+	arch = i386
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = zelda3-bin
+	depends = wget
+	depends = unzip
+	depends = yad
+	source = https://gitlab.com/supermario64pkg/supermario64/-/archive/1.0.1-1/supermario64-1.0.1-1.tar.bz2
+	sha256sums = SKIP
+
+pkgname = supermario64
