@@ -1,0 +1,22 @@
+pkgbase = mubu-bin
+	pkgdesc = 一款结合了大纲笔记和思维导图的头脑管理工具(packed from origin exe, use system electron)
+	pkgver = 3.7.3
+	pkgrel = 1
+	url = https://mubu.com
+	arch = x86_64
+	license = LicenseRef-custom
+	makedepends = p7zip
+	makedepends = gendesk
+	makedepends = imagemagick
+	makedepends = asar
+	depends = electron11
+	provides = mubu=3.7.3
+	conflicts = mubu
+	source = mubu-3.7.3.exe::https://assets.mubu.com/client/Mubu-3.7.3.exe
+	source = LICENSE-3.7.3.html::https://mubu.com/agreement
+	source = mubu.sh
+	sha256sums = dac7470975ed11fa529cbeed979da3741a180a1c7379ef0c0320263035085e7c
+	sha256sums = 82b6eb156214fd5c549a15dde79b720302662a08c4d01775f8670090655f7abd
+	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
+
+pkgname = mubu-bin
