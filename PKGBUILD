@@ -1,11 +1,12 @@
-# Maintainer: dreieck
+# Maintainer:  [none]
+# Contributor: dreieck
 # Controbutor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 _pkgname='folks'
 _pkgfeature='telepathy'
 pkgname="${_pkgname}-${_pkgfeature}-git"
-pkgver=0.15.3.7+r2985.20211116.69285b88
+pkgver=0.15.7.2+r3025.20240112.9c3212cd
 pkgrel=2
 pkgdesc="Library to aggregates people into metacontacts. Variant of 'folks' with telepathy backend compiled in. Latest git checkout."
 arch=(
@@ -15,9 +16,14 @@ arch=(
 url="https://wiki.gnome.org/Projects/Folks"
 license=(LGPL2.1)
 depends=(
+  'dconf'
+  'gcc-libs'
+  'glib2'
+  'glibc'
   'evolution-data-server'
   'libgee'
   'libxml2'
+  'readline'
   'telepathy-glib'
 )
 makedepends=(
@@ -32,10 +38,10 @@ provides=(
   "${_pkgname}=${pkgver}"
   "${_pkgname}-${_pkgfeature}=${pkgver}"
   "${_pkgname}-git=${pkgver}"
-  "libfolks.so=${pkgver}"
-  "libfolks-dummy.so=${pkgver}"
-  "libfolks-eds.so=${pkgver}"
-  "libfolks-telepathy.so=${pkgver}"
+  "libfolks.so"
+  "libfolks-dummy.so"
+  "libfolks-eds.so"
+  "libfolks-telepathy.so"
 )
 conflicts=(
   "${_pkgname}"
