@@ -3,7 +3,7 @@
 pkgname=obs-studio-rc
 _pkgver=30.0.2
 pkgver=${_pkgver//-/_}
-pkgrel=3
+pkgrel=4
 epoch=7
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -11,7 +11,7 @@ url="https://github.com/obsproject/obs-studio"
 license=('GPL-2.0-or-later')
 # To manage dependency rebuild easily, this will prevent you to rebuild OBS on non-updated system
 _libdatachannelver=0.20
-_mbedtlsver=3.4
+_mbedtlsver=3.5.1
 _pythonver=3.11
 depends=(
   "alsa-lib" # Deps of ALSA plugin and CEF
