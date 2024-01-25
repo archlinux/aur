@@ -1,12 +1,12 @@
 pkgbase = ntsync
 	pkgdesc = NT synchronization primitive driver
 	pkgver = 6.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://repo.or.cz/linux/zf.git/shortlog/refs/heads/ntsync4
 	arch = x86_64
 	license = GPL2
-	source = ntsync.c-c273d658c56e2f66dda75b990b31a3e909bf3147::https://repo.or.cz/linux/zf.git/blob_plain/c273d658c56e2f66dda75b990b31a3e909bf3147:/drivers/misc/ntsync.c
-	source = ntsync.h-c273d658c56e2f66dda75b990b31a3e909bf3147::https://repo.or.cz/linux/zf.git/blob_plain/c273d658c56e2f66dda75b990b31a3e909bf3147:/include/uapi/linux/ntsync.h
+	source = ntsync.c-61d4a98b79a685392845f494f6cb51ef06f3733a::https://repo.or.cz/linux/zf.git/blob_plain/61d4a98b79a685392845f494f6cb51ef06f3733a:/drivers/misc/ntsync.c
+	source = ntsync.h-61d4a98b79a685392845f494f6cb51ef06f3733a::https://repo.or.cz/linux/zf.git/blob_plain/61d4a98b79a685392845f494f6cb51ef06f3733a:/include/uapi/linux/ntsync.h
 	source = 99-ntsync.rules
 	source = Makefile
 	source = dkms.conf

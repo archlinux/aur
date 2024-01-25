@@ -5,12 +5,12 @@
 pkgbase=ntsync
 pkgname=(ntsync-dkms ntsync-header ntsync-udev-rule)
 pkgver=6.8
-pkgrel=1
+pkgrel=2
 pkgdesc="NT synchronization primitive driver"
 arch=(x86_64)
 url='https://repo.or.cz/linux/zf.git/shortlog/refs/heads/ntsync4'
 license=('GPL2')
-_commit=c273d658c56e2f66dda75b990b31a3e909bf3147
+_commit=61d4a98b79a685392845f494f6cb51ef06f3733a
 source=("ntsync.c-$_commit::https://repo.or.cz/linux/zf.git/blob_plain/$_commit:/drivers/misc/ntsync.c"
         "ntsync.h-$_commit::https://repo.or.cz/linux/zf.git/blob_plain/$_commit:/include/uapi/linux/ntsync.h"
         '99-ntsync.rules'
