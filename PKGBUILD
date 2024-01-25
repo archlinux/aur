@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fsolauncher
 _pkgname="FreeSO Launcher"
-pkgver=1.9.2_prod.3
+pkgver=1.9.3_prod.2
 _electronversion=22
 _nodeversion=16
 pkgrel=1
