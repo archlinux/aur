@@ -1,18 +1,29 @@
 # Maintainer: Severin Leonhardt <serviushack at gmx dot de>
 pkgname=hypernate
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Get more out of hibernation'
 url='https://gitlab.com/serviushack/hypernate'
 license=('ISC')
-makedepends=('rust' 'cargo')
+makedepends=(cargo)
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("git+https://gitlab.com/serviushack/hypernate.git#tag=$pkgver")
 md5sums=('SKIP')
 
-package() {
-  cargo install --root="$pkgdir/usr" --path=hypernate hypernate
+prepare() {
+  export RUSTUP_TOOLCHAIN=stable
+  cd $pkgname
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
-  # cargo install creates .crates.toml, see https://github.com/rust-lang/cargo/issues/3316
-  rm $pkgdir/usr/.crates.toml
+build() {
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cd $pkgname
+  cargo build --frozen --release --all-features
+}
+
+package() {
+  cd $pkgname
+  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
