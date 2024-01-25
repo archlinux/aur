@@ -1,7 +1,9 @@
-# Maintainer: Basso Daniele <daniele05 dot bass at gmail dot com>
+# Maintainer:  [none]
+# Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: Basso Daniele <daniele05 dot bass at gmail dot com>
 pkgname=xiasl
-pkgver=1.1.65
-pkgrel=2
+pkgver=1.1.67
+pkgrel=1
 pkgdesc="Cross-platform DSDT&SSDT IDE"
 arch=(x86_64)
 url="https://github.com/ic005k/$pkgname"
@@ -10,14 +12,14 @@ depends=(qt5-base acpica python-qscintilla-qt5)
 makedepends=(glew glfw libxcb)
 provides=()
 conflicts=()
-source=("$url/archive/refs/tags/$pkgver.tar.gz" "$pkgname.desktop")
-sha256sums=('b3dcce7f00927cd43764fef7f21091e1c2f431032475733c97a723dafa2730f6'
+source=("xiasl-${pkgver}.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz" "$pkgname.desktop")
+sha256sums=('7968b3bb06fc949ce04785a28ed2f4f57906fa54eae1c3bd35f5b4c34a8e7fce'
             'b22c9061b8e51333318374202eba41f0fe1d65267b6fa200c185d298b9e042cd')
 
 build() {
   cd "$srcdir/Xiasl-$pkgver"
   qmake
-  make
+  make -j`nproc`
 }
 
 package() {
