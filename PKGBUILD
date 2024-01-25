@@ -1,13 +1,12 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
 pkgver="10.2.1.385"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
 arch=('x86_64')
 depends=('wine' 'hicolor-icon-theme')
 makedepends=('p7zip' 'icoutils' 'gendesk')
-optdepends=($(pacman -Ssq tesseract-data))
 url="https://www.tracker-software.com/product/pdf-xchange-editor"
 _downloadsource="https://www.tracker-software.com/downloads"
 _x64file="EditorV10.x64.msi"
@@ -738,17 +737,7 @@ package()
 
  install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 
- pacman -Ssq tesseract-data > tesseract-data
- mkdir -p "$pkgdir${_installdir}/$pkgname/${_tesseract}"
- while read -r _line; do
- 	_name=$(basename "$_line")
-	_lang=$(echo "$_name" | cut -d "-" -f 3)
-
-	ln -sf "/usr/share/tessdata/$_lang.traineddata" "$pkgdir${_installdir}/$pkgname/${_tesseract}/$_lang.dat"
-	echo '<?xml version="1.0" encoding="utf-8"?>' > "$pkgdir${_installdir}/$pkgname/${_tesseract}/$_lang.lng"
-	echo "<language localname="\"$_lang\"" name="\"$_lang\"" prefix="\"$_lang\"" version=\"1.00\"/>" >> "$pkgdir${_installdir}/$pkgname/${_tesseract}/$_lang.lng"
- done < tesseract-data
- 
+ ln -sf /tmp/pdf-xchange "$pkgdir${_installdir}/$pkgname/${_tesseract}" 
  mkdir -p "$pkgdir/usr/bin"
 
  echo '#!/bin/bash' > "$pkgdir/usr/bin/$pkgname"
@@ -790,9 +779,14 @@ if ! grep -q '"Decorated"="N"' "$prefix/user.reg"; then
    echo '"Decorated"="N"' >> "$prefix/user.reg"
 fi
 
+mkdir "/tmp/pdf-xchange" "$prefix/Tesseract" &>/dev/null
+cp "$prefix"/Tesseract/* "/tmp/pdf-xchange" &>/dev/null
+
 EOF
 
  echo 'WINEPREFIX="$prefix" /usr/bin/wine "'"$_installdir"'/$program/PDFXEdit.exe" "$document"' >> "$pkgdir/usr/bin/$pkgname"
  chmod 0755 "$pkgdir/usr/bin/$pkgname"
+
+ echo 'cp /tmp/pdf-xchange/* "$prefix/Tesseract"' >> "$pkgdir/usr/bin/$pkgname"
 
 }
