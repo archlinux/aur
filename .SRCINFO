@@ -1,6 +1,6 @@
 pkgbase = gtk3-classic-xfce
 	pkgdesc = Patched GTK+3 that provides a more classic experience, with patches for xfce
-	pkgver = 3.24.40
+	pkgver = 3.24.41
 	pkgrel = 1
 	url = https://github.com/lah7/gtk3-classic
 	install = gtk3.install
@@ -60,10 +60,10 @@ pkgbase = gtk3-classic-xfce
 	optdepends = colord: color management support
 	optdepends = dconf: default GSettings backend
 	optdepends = libcups: printer support in print dialog
-	provides = gtk3-classic=3.24.40
-	provides = gtk3=3.24.40
-	provides = gtk3-typeahead=3.24.40
-	provides = gtk3-mushrooms=3.24.40
+	provides = gtk3-classic=3.24.41
+	provides = gtk3=3.24.41
+	provides = gtk3-typeahead=3.24.41
+	provides = gtk3-mushrooms=3.24.41
 	provides = gtk3-print-backends
 	provides = libgtk-3.so
 	provides = libgdk-3.so
@@ -75,13 +75,13 @@ pkgbase = gtk3-classic-xfce
 	conflicts = gtk3-nocsd-git
 	conflicts = gtk3-nocsd-legacy-git
 	conflicts = gtk3-classic
-	source = git+https://github.com/lah7/gtk3-classic.git#commit=e99850255cfd7f2d08f08a375f958f9c43215329
-	source = https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.40.tar.xz
-	source = gtk-query-immodules-3.0.hook::https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/raw/4c7924fe02a3b3590c57f3a020cdf1f71adfedfb/gtk-query-immodules-3.0.hook
+	source = git+https://github.com/lah7/gtk3-classic.git#commit=c0af0886c1e9d3c66e03e57c8084fb2c2259f3e2
+	source = https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.41.tar.xz
+	source = gtk-query-immodules-3.0.hook::https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/raw/e0b04924de3fb69bdc60fc1f7f322b0bc5ce1802/gtk-query-immodules-3.0.hook
 	source = settings.ini
 	source = appearance__file-chooser-xfce.patch
 	sha256sums = SKIP
-	sha256sums = 444dbb11f4fd5d592d74422441671854d1b744d0a7f3a3fbf9d4f936eb0552d3
+	sha256sums = 47da61487af3087a94bc49296fd025ca0bc02f96ef06c556e7c8988bd651b6fa
 	sha256sums = a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229
 	sha256sums = 01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202
 	sha256sums = c443bfa1f70ac5ce2102c83b38b193e78f614b606cb0dae807ecd25d591f1e99
