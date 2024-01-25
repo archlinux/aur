@@ -1,21 +1,22 @@
-# Maintainer: ArcanusNEO <admin@transcliff.top>
+# Maintainer: ArcanusNEO <admin@transcliff.eu.org>
+
 _repo=lukas-blecher/LaTeX-OCR
 _pkgname=pix2tex
 
 pkgname=${_pkgname}-desktop
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 pkgdesc='Using a ViT to convert images of equations into LaTeX code (desktop icon).'
 arch=(any)
 url=https://github.com/$_repo
 license=(MIT)
-depends=(python-pix2tex)
+depends=(pix2tex)
 source=(
   "${_pkgname}".desktop
   "${_pkgname}".svg::"https://raw.githubusercontent.com/${_repo}/main/pix2tex/resources/icon.svg"
 )
-sha512sums=(
-  'a7f9b51fc41fb2a908b7979ad116c792ad56b1f6b7587dd5b7d6101d1ea5a8754c428c5234f52f335b692b38ccb509865ab12a667606951e3879a7d0fdd61adf' 
+b2sums=(
+  '7e3a7828d3d8541a265219d4667db3a278d341c9efc02cfeff6877a60fb223ead970cb04b0ac817e226bccb93e801fd0ea97492a66bd15e5adb1e95f2f52fa2b' 
   'SKIP'
 )
 
