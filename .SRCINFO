@@ -1,24 +1,21 @@
 pkgbase = distributionz-bin
 	pkgdesc = A simple tool to distribute Employees
 	pkgver = 1.1.4
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/TheDome/DistributionZ
 	arch = x86_64
 	license = Apache
 	makedepends = squashfuse
 	depends = electron22
 	depends = hicolor-icon-theme
-	depends = libx11
-	depends = gdk-pixbuf2
-	depends = libxext
+	depends = dbus-glib
 	depends = libdbusmenu-glib
 	depends = gtk2
-	depends = dbus-glib
 	provides = distributionz=1.1.4
 	conflicts = distributionz
 	source = distributionz-1.1.4.AppImage::https://github.com/TheDome/DistributionZ/releases/download/1.1.4/DistributionZ-1.1.4.AppImage
 	source = distributionz.sh
 	sha256sums = 657fc8ffdd9ed3e828a09e5498a7e01468e4e6bea36f3cde7525b53d5ea483a9
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
 
 pkgname = distributionz-bin
