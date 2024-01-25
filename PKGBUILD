@@ -7,7 +7,7 @@ pkgname=(
   'avidemux-qt6-git'
   'avidemux-cli-git'
 )
-pkgver=2.8.2.230910.dd023f161
+pkgver=2.8.2.240125.cdbfa6956
 pkgrel=1
 pkgdesc="A graphical/cli tool to edit video (filter/re-encode/split). (GIT version)"
 arch=('x86_64')
@@ -61,7 +61,6 @@ source=(
   'opus_check.patch'
   'fix_mpeg-ts_typo.patch'
   'fix_ugly_slider.patch'
-  'https://github.com/FFmpeg/FFmpeg/commit/effadce6c756247ea8bae32dc13bb3e6f464f0eb.patch'
 )
 sha256sums=(
   'SKIP'
@@ -71,7 +70,6 @@ sha256sums=(
   'ae6d2c93163b7b760591688c7811dfdd4a952ed9074d8cbdf4953b701f0fa7db'
   'a11452a93c993bdf71f0c29d686badec1c50231bc9d3c6f02f280e06cd8add7a'
   '3c91ddefadfad5f43d514941ddfa1942ea2c618525aaae36bde5a5d18f8e2067'
-  '206f4d8437b21f6197ffc444c86d0504892a5c2137cb227b4af1c1e8bf2c426c'
 )
 
 options=('debug')
@@ -88,9 +86,6 @@ prepare() {
   git config submodule.i18n.url "${srcdir}/avidemux2_i18n"
   git -c protocol.file.allow=always submodule update --init \
     avidemux/qt4/i18n
-
-  # fix build ffmpeg about ASM encode
-  cp "${srcdir}/effadce6c756247ea8bae32dc13bb3e6f464f0eb.patch" avidemux_core/ffmpeg_package/patches/upstream/effadce6c756247ea8bae32dc13bb3e6f464f0eb.patch
 
   # http://avidemux.org/smif/index.php/topic,16301.0.html
   patch -p1 -i "${srcdir}/fix_verbose.patch"

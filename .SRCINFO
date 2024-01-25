@@ -1,6 +1,6 @@
 pkgbase = avidemux-git
 	pkgdesc = A graphical/cli tool to edit video (filter/re-encode/split). (GIT version)
-	pkgver = 2.8.2.230910.dd023f161
+	pkgver = 2.8.2.240125.cdbfa6956
 	pkgrel = 1
 	url = http://www.avidemux.org
 	arch = x86_64
@@ -51,7 +51,6 @@ pkgbase = avidemux-git
 	source = opus_check.patch
 	source = fix_mpeg-ts_typo.patch
 	source = fix_ugly_slider.patch
-	source = https://github.com/FFmpeg/FFmpeg/commit/effadce6c756247ea8bae32dc13bb3e6f464f0eb.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 4f751cbb3a65f904f7c0ad68473880e2a9edcda332a293e20ad238280ec52884
@@ -59,7 +58,6 @@ pkgbase = avidemux-git
 	sha256sums = ae6d2c93163b7b760591688c7811dfdd4a952ed9074d8cbdf4953b701f0fa7db
 	sha256sums = a11452a93c993bdf71f0c29d686badec1c50231bc9d3c6f02f280e06cd8add7a
 	sha256sums = 3c91ddefadfad5f43d514941ddfa1942ea2c618525aaae36bde5a5d18f8e2067
-	sha256sums = 206f4d8437b21f6197ffc444c86d0504892a5c2137cb227b4af1c1e8bf2c426c
 
 pkgname = avidemux-core-git
 	pkgdesc = Core libs for Avidemux. (GIT version)
@@ -132,7 +130,7 @@ pkgname = avidemux-core-git
 
 pkgname = avidemux-qt5-git
 	pkgdesc = Qt5 GUI for Avidemux. (GIT version)
-	depends = avidemux-core-git=2.8.2.230910.dd023f161
+	depends = avidemux-core-git=2.8.2.240125.cdbfa6956
 	depends = gcc-libs
 	depends = glibc
 	depends = glu
@@ -154,7 +152,7 @@ pkgname = avidemux-qt5-git
 
 pkgname = avidemux-qt6-git
 	pkgdesc = Qt6 GUI for Avidemux. (GIT version)
-	depends = avidemux-core-git=2.8.2.230910.dd023f161
+	depends = avidemux-core-git=2.8.2.240125.cdbfa6956
 	depends = gcc-libs
 	depends = glibc
 	depends = glu
@@ -175,7 +173,7 @@ pkgname = avidemux-qt6-git
 
 pkgname = avidemux-cli-git
 	pkgdesc = CLI frontend for Avidemux. (GIT version)
-	depends = avidemux-core-git=2.8.2.230910.dd023f161
+	depends = avidemux-core-git=2.8.2.240125.cdbfa6956
 	depends = gcc-libs
 	depends = glibc
 	provides = avidemux-cli
