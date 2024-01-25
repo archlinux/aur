@@ -3,7 +3,7 @@
 # Contributor: Thiago Almeida <thiagoalmeidasa@gmail.com>
 
 pkgname=commitlint
-pkgver=18.5.0
+pkgver=18.6.0
 pkgrel=1
 pkgdesc="Lint commit messages"
 arch=(any)
@@ -23,8 +23,8 @@ noextract=(
   "config-conventional-$pkgver.tgz"
 )
 sha256sums=(
-  '317e6840583b931ff4452c104a93349d48d8039b30c4d9008e860be2c75d7534'
-  'e62678090d6a375c905a1f355c13a67b15bc4b96a44ccb26e160f0799cf727fc'
+  '0b0b780739539423de54a0d1ac46a3f7e079a01314812fda8705b0a927018ee3'
+  'cba5907b7d68a0f077e1c8fb2a66e42ede711679b8a673ef6a7350265e877879'
 )
 
 package() {
