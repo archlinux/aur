@@ -1,7 +1,7 @@
 pkgbase = whalebird
-	pkgdesc = An Electron based Fediverse client
+	pkgdesc = Single-column Fediverse client for desktop
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://whalebird.social
 	arch = x86_64
 	license = GPL3
@@ -19,7 +19,7 @@ pkgbase = whalebird
 	source = whalebird.desktop
 	source = electron-builder.yml
 	md5sums = bf31494f589e08341f55568fbcedf29a
-	md5sums = 2cf7ef689d208d2fa41ce3622dce3545
-	md5sums = 68af72623ba3763c9a1ea440b72a253d
+	md5sums = 6ab525c54c6e91871d0d6f05a76f5289
+	md5sums = 480286196dc0614fd14b0d906c00b228
 
 pkgname = whalebird

@@ -1,13 +1,13 @@
 # Maintainer: Akira Fukushima <h3.poteto@gmail.com>
 pkgname=whalebird
 pkgver=6.0.0
-pkgrel=1
-pkgdesc="An Electron based Fediverse client"
+pkgrel=2
+pkgdesc="Single-column Fediverse client for desktop "
 arch=('x86_64')
 url="https://whalebird.social"
 license=('GPL3')
 depends=('electron26>=26.0.0' 'electron26<27.0.0')
-makedepends=('yarn' 'tar' 'nodejs-lts-hydrogen' 'node-gyp' 'git')
+makedepends=('yarn' 'tar' 'nodejs>=20.0.0' 'node-gyp' 'git')
 provides=('whalebird')
 conflicts=('whalebird-bin' 'whalebird-desktop-git')
 source=("https://github.com/h3poteto/whalebird-desktop/archive/refs/tags/v$pkgver.tar.gz"
