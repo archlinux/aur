@@ -1,7 +1,7 @@
 # Maintainer: OGrigorios <aur@giotas.io>
 
 pkgname=lazysql
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="A cross-platform TUI database management tool written in Go"
 arch=('x86_64' 'i386' 'aarch64')
@@ -12,9 +12,9 @@ source_x86_64=(${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/jorgerojas
 source_aarch64=(${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/jorgerojas26/lazysql/releases/download/v${pkgver}/lazysql_Linux_arm64.tar.gz)
 source_i386=(${pkgname}-${pkgver}-i3866.tar.gz::https://github.com/jorgerojas26/lazysql/releases/download/v${pkgver}/lazysql_Linux_i386.tar.gz)
 
-sha256sums_x86_64=('6da32058ad7249c82244006f0a4b61ed23bae637e2cb839587a46000357c53f3')
-sha256sums_i386=('3775bff04c7a1e829569d3148ede64fea55b17d8c21d5c8f0dcaa82e6253619a')
-sha256sums_aarch64=('da2a9d2497f964821b915ef1c60628308b2f2b547803fde8684261259fae164f')
+sha256sums_x86_64=('55b7c0dbffa94fd6e7dfad46043db86bf44d0390f6735c11203fcdb45e4917fe')
+sha256sums_i386=('c4cc6edcf493cf0fab5e67878946b24a223ecaf574ad12b262fd1940ee3947a5')
+sha256sums_aarch64=('a15a9de459e8ed02db1bbb4c64a2c8cef0ab6f2433d4bfdc95a969d9bd3be282')
 
 package() {
   cd "$srcdir"
