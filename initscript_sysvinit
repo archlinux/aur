@@ -90,6 +90,6 @@ case "$1" in
     fi
   ;;
   *)
-    echo "usage: $0 {start|stop|restart}"  
+    echo "usage: $0 {start|stop|restart|reload|status}"
   ;;
 esac

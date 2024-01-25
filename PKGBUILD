@@ -10,7 +10,7 @@ pkgname="${_pkgname}-svn"
 epoch=1
 # _pkgver=2.9j
 pkgver=2.9j+svn2256.d20210530
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple caching proxy server with special features (request, recursive fetch, subscription, modify HTML, ...) for use with dial-up internet links. Includes startup scripts for OpenRC, System V init, systemd."
 arch=(
   'arm'
@@ -85,7 +85,7 @@ sha256sums=(
             '5491ffc23ae113db4b46167883594b5bcb6f1bbd0ce11432bc45047efbd635d2' # conf_d_wwwoffle
             'd9451db92f979a6573cecbab23c26b6ca8ea026ef61b22ec4b61c0c9051142e9' # initscript_openrc
             '03bebce87a0da1b383666ab7a95b9810e15f2a024c0954f09c959d342c5d9c87' # initscript_systemd
-            '62139f2b77139cf9c1ce9761e27f6b427c12cadd7a3739f28d854b8328e7c511' # initscript_sysvinit
+            '0c43f92f81504838ad0c6ede968afe222b1d30312569676bf6952892d48724b3' # initscript_sysvinit
             '106f4ce3de6d6ea020e8dcd8a4fd4f78ed2ae855e8a953a8783134e4d2cfba12' # ${install}
 )
 
