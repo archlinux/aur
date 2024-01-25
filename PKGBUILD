@@ -1,6 +1,6 @@
 pkgname=wiringop-orangepi-5-plus-base-git
 pkgver=2.52
-pkgrel=1
+pkgrel=2
 pkgdesc='wiringPi for Orange Pi 5 Plus'
 arch=('x86_64' 'aarch64')
 url='https://github.com/orangepi-xunlong/wiringOP'
@@ -36,17 +36,17 @@ package() {
 	cd "${srcdir}/wiringOP"
 	# wiringPi
 	cd wiringPi
-	install -m 0755 -d "${pkgdir}/usr/local/include"
-	install -m 0644 *.h "${pkgdir}/usr/local/include"
-	install -m 0755 -d "${pkgdir}/usr/local/lib"
-	install -m 0755 libwiringPi.so.${pkgver} "${pkgdir}/usr/local/lib/libwiringPi.so.${pkgver}"
-	ln -sf  "${pkgdir}/usr/local/lib/libwiringPi.so.${pkgver}"  "${pkgdir}/usr/local/lib/libwiringPi.so"
+	install -m 0755 -d "${pkgdir}/usr/include"
+	install -m 0644 *.h "${pkgdir}/usr/include"
+	install -m 0755 -d "${pkgdir}/usr/lib"
+	install -m 0755 libwiringPi.so.${pkgver} "${pkgdir}/usr/lib/libwiringPi.so.${pkgver}"
+	ln -sf  "${pkgdir}/usr/lib/libwiringPi.so.${pkgver}"  "${pkgdir}/usr/lib/libwiringPi.so"
 	
 	# devLib
         cd ../devLib
-	install -m 0755 -d "${pkgdir}/usr/local/include"
-        install -m 0644 *.h "${pkgdir}/usr/local/include"
-	install -m 0755 -d "${pkgdir}/usr/local/lib"
-        install -m 0755 libwiringPiDev.so.${pkgver} "${pkgdir}/usr/local/lib/libwiringPiDev.so.${pkgver}"
-        ln -sf  "${pkgdir}/usr/local/lib/libwiringPiDev.so.${pkgver}"  "${pkgdir}/usr/local/lib/libwiringPiDev.so"
+	install -m 0755 -d "${pkgdir}/usr/include"
+        install -m 0644 *.h "${pkgdir}/usr/include"
+	install -m 0755 -d "${pkgdir}/usr/lib"
+        install -m 0755 libwiringPiDev.so.${pkgver} "${pkgdir}/usr/lib/libwiringPiDev.so.${pkgver}"
+        ln -sf  "${pkgdir}/usr/lib/libwiringPiDev.so.${pkgver}"  "${pkgdir}/usr/lib/libwiringPiDev.so"
 }
