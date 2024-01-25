@@ -1,10 +1,10 @@
 pkgbase = inethi-bin
 	pkgdesc = A GUI installer that can set up the iNethi Docker environment.
 	pkgver = 1.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.inethi.org.za/software/
 	arch = x86_64
-	license = custom
+	license = GPL-3.0-only
 	depends = electron23
 	depends = python>=3
 	depends = python-lxml
@@ -22,11 +22,19 @@ pkgbase = inethi-bin
 	depends = python-typing_extensions
 	depends = python-platformdirs
 	depends = python-packaging
+	depends = python-pip
+	depends = python-setuptools
+	depends = python-pygments
+	depends = python-lockfile
+	depends = python-keyring
+	depends = python-zipp
+	depends = nodejs
 	provides = inethi=1.0.1
 	conflicts = inethi
+	options = !strip
 	source = inethi-1.0.1.deb::https://github.com/iNethi/inethi-network-builder/releases/download/1.0.1/inethi_1.0.1_amd64.deb
 	source = inethi.sh
 	sha256sums = 9e56a8eefe66574e99d04d198da338fc0577b2714450b1a61763d87b536e39dc
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
 
 pkgname = inethi-bin
