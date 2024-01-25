@@ -1,6 +1,6 @@
 pkgbase = lazycat-cloud-client
 	pkgdesc = 懒猫微服
-	pkgver = v1.0.47
+	pkgver = v1.0.49
 	pkgrel = 1
 	url = https://lazycat.cloud
 	install = lazycat-cloud-client.install
@@ -10,8 +10,8 @@ pkgbase = lazycat-cloud-client
 	makedepends = zstd
 	depends = gtk3
 	depends = zenity
-	noextract = lzc-client-desktop_v1.0.47.tar.zst
-	source = https://dl.lazycat.cloud/client/desktop/stable/lzc-client-desktop_v1.0.47.tar.zst
-	sha256sums = 42b8d0266501f0f7f2f9f80fcd0fc43bbc0b529835eb8c3f7870f566736822c6
+	noextract = lzc-client-desktop_v1.0.49.tar.zst
+	source = https://dl.lazycat.cloud/client/desktop/stable/lzc-client-desktop_v1.0.49.tar.zst
+	sha256sums = 01d55a18bc08f90bbd4aa4058a068e4ec2ca06fbddd8cb3244f4486303b9caeb
 
 pkgname = lazycat-cloud-client
