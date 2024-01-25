@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-music
 	pkgdesc = Music app for Nextcloud and ownCloud
-	pkgver = 1.9.1
+	pkgver = 1.10.0_PR1
 	pkgrel = 1
 	url = https://github.com/owncloud/music
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = nextcloud-app-music
 	makedepends = zip
 	makedepends = yq
 	options = !strip
-	source = nextcloud-app-music-1.9.1.tar.gz::https://github.com/owncloud/music/archive/v1.9.1.tar.gz
-	sha512sums = db66c21a67b391920bca630aa0e9cc4910b6dddfe99e0f95191553b3828f0b968f816c196411239fbd2e0008ef31a969bd2b214e2fd5219918261560ca1df90a
+	source = nextcloud-app-music-1.10.0-PR1.tar.gz::https://github.com/owncloud/music/archive/v1.10.0-PR1.tar.gz
+	sha512sums = 2dda3879acdc06ac6db15b90cc2e7aba05caa91f30ac46f4f028bd6d78a8a54fd9505e61941ac0ad82f44e52eb3f484dba5524b98a757040d2a56f20ae9a83a0
 
 pkgname = nextcloud-app-music
 	depends = nextcloud>=
-	depends = nextcloud<
+	depends = nextcloud<29
