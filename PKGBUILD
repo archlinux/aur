@@ -5,11 +5,11 @@
 # and uses xfce patches from:
 # https://github.com/simplejack-src/gtk3-classic-xfce (repository no longer available)
 
-__arch_pkg_commit="fd2d2dbbb1d22e97b79f308d6252523833a909d3"
-_gtkver=3.24.39
+__arch_pkg_commit="4c7924fe02a3b3590c57f3a020cdf1f71adfedfb"
+_gtkver=3.24.40
 
 _gtk3_classic_url=https://github.com/lah7/gtk3-classic
-_gtk3_classic_commit="7d7cfa3e8bf316a6e2d8400941b0dba39c2f82a9"
+_gtk3_classic_commit="e99850255cfd7f2d08f08a375f958f9c43215329"
 
 _gtk3_classic=gtk3-classic
 
@@ -93,7 +93,7 @@ source=(git+$_gtk3_classic_url.git#commit=$_gtk3_classic_commit
         appearance__file-chooser-xfce.patch
 )
 sha256sums=('SKIP'
-            '1cac3e566b9b2f3653a458c08c2dcdfdca9f908037ac03c9d8564b4295778d79'
+            '444dbb11f4fd5d592d74422441671854d1b744d0a7f3a3fbf9d4f936eb0552d3'
             'a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
             'c443bfa1f70ac5ce2102c83b38b193e78f614b606cb0dae807ecd25d591f1e99')
