@@ -2,14 +2,14 @@
 
 pkgname=obs-studio-tytan652
 pkgver=30.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus V4L2 devices by paths, my bind interface PR, and sometimes backported fixes"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
 license=('GPL-2.0-or-later')
 # To manage dependency rebuild easily, this will prevent you to rebuild OBS on non-updated system
 _libdatachannelver=0.20
-_mbedtlsver=3.4
+_mbedtlsver=3.5.1
 _pythonver=3.11
 depends=(
   "alsa-lib" # Deps of ALSA plugin and CEF
