@@ -1,7 +1,8 @@
-# Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
+# Maintainer: iamawacko <iamawacko@protonmail.com>
+# Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=cargo-benchcmp
-pkgver=0.4.2
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="A small utility to compare Rust micro-benchmarks"
 url="https://github.com/BurntSushi/cargo-benchcmp"
@@ -9,7 +10,7 @@ makedepends=('cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('MIT' 'UNLICENSE')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BurntSushi/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('4eaff04ac9bd468381a24b86e6fc118a6fff6865c37ddc4b0c8ce86ffad0878c4fe493edd82055165f83e62b1d8bd93e8482da31ab243ad80a7cf0108e86cd05')
+sha512sums=('9bb99e5838ad694a9182a22e2f568dbe88e4de6e530d23dabfa3b9d813a5361d1db095c3d5a713d9319527880fc17b6e2b16806b263f22cf79cf3bac846e463e')
 
 build() {
   cd "${pkgname}-${pkgver}"
