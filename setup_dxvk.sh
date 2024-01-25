@@ -68,21 +68,24 @@ if ! [ -f "$wine_path/$wine" ]; then
 fi
 
 # resolve 32-bit and 64-bit system32 path
-winever=$($wine --version | grep wine)
+winever="$($wine --version | grep wine)"
 if [ -z "$winever" ]; then
-    echo "$wine:"' Not a wine executable. Check your $wine.' >&2
-    exit 1
+  echo "$wine:"' Not a wine executable. Check your $wine.' >&2
+  exit 1
 fi
 
 # ensure wine placeholder dlls are recreated
 # if they are missing
 $wineboot -u
 
-win64_sys_path=$($wine64 winepath -u 'C:\windows\system32' 2> /dev/null)
+win64_sys_path=$($wine winepath -u 'C:\windows\system32' 2> /dev/null)
 win64_sys_path="${win64_sys_path/$'\r'/}"
-if $wow64; then
-  win32_sys_path=$($wine winepath -u 'C:\windows\system32' 2> /dev/null)
-  win32_sys_path="${win32_sys_path/$'\r'/}"
+win32_sys_path=$($wine winepath -u 'C:\windows\syswow64' 2> /dev/null)
+win32_sys_path="${win32_sys_path/$'\r'/}"
+
+# if syswow64 for the prefix doesn't exist, treat it as a win32 prefix
+if ! [ -d "$win32_sys_path" ]; then
+  win32_sys_path="$win64_sys_path"
 fi
 
 if [ -z "$win32_sys_path" ] && [ -z "$win64_sys_path" ]; then
@@ -92,7 +95,7 @@ fi
 
 # create native dll override
 overrideDll() {
-  $wine reg add 'HKEY_CURRENT_USER\Software\Wine\DllOverrides' /v $1 /d native /f >/dev/null 2>&1
+  $wine reg add 'HKEY_CURRENT_USER\Software\Wine\DllOverrides' /v "$1" /d native /f >/dev/null 2>&1
   if [ $? -ne 0 ]; then
     echo -e "Failed to add override for $1"
     exit 1
@@ -101,7 +104,7 @@ overrideDll() {
 
 # remove dll override
 restoreDll() {
-  $wine reg delete 'HKEY_CURRENT_USER\Software\Wine\DllOverrides' /v $1 /f > /dev/null 2>&1
+  $wine reg delete 'HKEY_CURRENT_USER\Software\Wine\DllOverrides' /v "$1" /f > /dev/null 2>&1
   if [ $? -ne 0 ]; then
     echo "Failed to remove override for $1"
   fi
@@ -111,10 +114,6 @@ restoreDll() {
 installFile() {
   dstfile="${1}/${3}.dll"
   srcfile="${basedir}/${2}/${3}.dll"
-
-  if [ -f "${srcfile}.so" ]; then
-    srcfile="${srcfile}.so"
-  fi
 
   if ! [ -f "${srcfile}" ]; then
     echo "${srcfile}: File not found. Skipping." >&2
@@ -128,11 +127,10 @@ installFile() {
       else
         rm -v "${dstfile}"
       fi
-      $file_cmd "${srcfile}" "${dstfile}"
     else
-      echo "${dstfile}: File not found in wine prefix" >&2
-      return 1
+      touch "${dstfile}.old_none"
     fi
+    $file_cmd "${srcfile}" "${dstfile}"
   fi
   return 0
 }
@@ -141,10 +139,6 @@ installFile() {
 uninstallFile() {
   dstfile="${1}/${3}.dll"
   srcfile="${basedir}/${2}/${3}.dll"
-
-  if [ -f "${srcfile}.so" ]; then
-    srcfile="${srcfile}.so"
-  fi
 
   if ! [ -f "${srcfile}" ]; then
     echo "${srcfile}: File not found. Skipping." >&2
@@ -159,6 +153,10 @@ uninstallFile() {
   if [ -f "${dstfile}.old" ]; then
     rm -v "${dstfile}"
     mv -v "${dstfile}.old" "${dstfile}"
+    return 0
+  elif [ -f "${dstfile}.old_none" ]; then
+    rm -v "${dstfile}.old_none"
+    rm -v "${dstfile}"
     return 0
   else
     return 1
