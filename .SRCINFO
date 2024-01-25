@@ -1,16 +1,12 @@
 pkgbase = diffuse-player-bin
 	pkgdesc = A music player that connects to your cloud/distributed storage.
 	pkgver = 3.3.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://diffuse.sh/
 	arch = x86_64
-	license = custom:PPL2
+	license = LicenseRef-PPL-2.0
 	depends = webkit2gtk
-	depends = openssl
 	depends = gtk3
-	depends = gdk-pixbuf2
-	depends = pango
-	depends = cairo
 	provides = diffuse-player=3.3.0
 	conflicts = diffuse-player
 	source = diffuse-player-3.3.0.deb::https://github.com/icidasset/diffuse/releases/download/3.3.0/diffuse-linux-amd64.deb
