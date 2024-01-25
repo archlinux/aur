@@ -2,7 +2,7 @@
 # Submitter: not_anonymous <nmlibertarian@gmail.com>
 
 pkgname=winkeyerserial
-pkgver=23.5.28
+pkgver=24.1.23
 pkgrel=1
 pkgdesc="Ham Radio - Talk to K1EL winkeyer"
 url="https://pypi.org/project/winkeyerserial/"
@@ -27,5 +27,5 @@ package() {
 	install -Dm755 $pkgname/k6gte-$pkgname.desktop $pkgdir/usr/share/applications/k6gte-$pkgname.desktop
 	install -Dm755 $pkgname/k6gte-$pkgname-128.png $pkgdir/usr/share/pixmaps/k6gte-$pkgname.png
 }
-md5sums=('a48f3b1166cda9af16e6b736acb521e6')
-sha256sums=('c8901929314a94603a63b74aef1d9e5a94a8edebff1bf1f161d63b9481596d03')
+md5sums=('3f4f920b975c3aaaa3bbb3a16d4a8620')
+sha256sums=('9374c5bfe8ed945742a1d75ce66f09a40f2b0f5aa3b433b142de168a8c6f277a')
