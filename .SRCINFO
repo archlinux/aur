@@ -1,6 +1,6 @@
 pkgbase = fluffychat-localflutter
 	pkgdesc = Chat with your friends, be careful about your flutter environment
-	pkgver = 1.17.1
+	pkgver = 1.17.2
 	pkgrel = 1
 	url = https://fluffychat.im/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = fluffychat-localflutter
 	depends = libolm
 	provides = fluffychat
 	conflicts = fluffychat
-	source = fluffychat-v1.17.1.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/v1.17.1.zip
-	sha256sums = bf677e7b4c986ea5629d28f444f046334515f627c18c5dab6d6feb02d458ee0b
+	source = fluffychat-v1.17.2.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/v1.17.2.zip
+	sha256sums = 8aad3209cff0effb0b25d1439cccdfda24299447c9a24c96df54784bea10424f
 
 pkgname = fluffychat-localflutter
