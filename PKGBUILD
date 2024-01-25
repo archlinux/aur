@@ -3,8 +3,8 @@
 
 pkgname=quran-companion
 _pkgname=quran-companion
-pkgver=1.2.2
-pkgrel=2
+pkgver=1.2.3
+pkgrel=1
 pkgdesc="Cross-platform desktop offline Quran reader and player (binary release)"
 arch=('x86_64')
 url="https://github.com/0xzer0x/quran-companion"
@@ -14,7 +14,7 @@ makedepends=()
 provides=(quran-companion)
 conflicts=(quran-companion-git)
 source=("https://github.com/0xzer0x/quran-companion/releases/download/v${pkgver}/Quran_Companion-${pkgver}-x86_64.AppImage")
-md5sums=("fe1532ee175e41d3b3c886cbd7298960")
+md5sums=("eb55fee39a8f6c2fe4b9f412e43eac5a")
 options=(!strip)
 
 prepare() {
