@@ -1,7 +1,7 @@
 # Maintainer: Severin Leonhardt <serviushack at gmx dot de>
 pkgname=hypernate
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='Get more out of hibernation'
 url='https://gitlab.com/serviushack/hypernate'
 license=('ISC')
