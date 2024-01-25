@@ -11,8 +11,8 @@
 # Maintainer: Scott Warner <Tortel1210-at-gmail-dot-com>
 
 pkgname=android-studio-for-platform
-pkgver=2023.1.1.19
-pkgrel=2
+pkgver=2023.2.1.20
+pkgrel=1
 pkgdesc="The official Android IDE for Platform Development"
 arch=('x86_64')
 url="https://developer.android.com/studio/platform"
@@ -28,7 +28,7 @@ options=('!strip')
 source=("https://dl.google.com/android/asfp/asfp-$pkgver-linux.deb"
         "$pkgname.desktop"
         "license.html")
-sha256sums=('e4fa09fa5df9cbae249d69a3d92ef0d121b7b5c6628baff9558c66e3ae0ca0a4'
+sha256sums=('70cfe9912821a8b514bc9545fce54b0cec550499492c7f207b56df66d0d47a06'
             '7d8615a69925b0685775546873997bdb967426e24b4fc265d120a04dc8367dda'
             '9a7563f7fb88c9a83df6cee9731660dc73a039ab594747e9e774916275b2e23e')
 
