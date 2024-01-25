@@ -3,12 +3,12 @@ pkgname=epherome-bin
 _pkgname=Epherome
 pkgver=0.7.1
 _electronversion=22
-pkgrel=7
+pkgrel=8
 pkgdesc="Powerful Minecraft Launcher"
 url="https://epherome.com/"
 _ghurl="https://github.com/ResetPower/Epherome"
 arch=('x86_64')
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('7dc740a18e73eb11aaa1ef7dad8342857ab043fb81112dac36129a1f895e49a5'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
