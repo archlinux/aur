@@ -192,6 +192,10 @@ check() {
 
 package() {
   cd cosmic-epoch
+
+  # Fix cosmic-screenshot desktop file
+  cp -f cosmic-screenshot/resources/com.system76.CosmicScreenshot.desktop cosmic-sysext/usr/share/applications/
+
   cp -r cosmic-sysext/* "$pkgdir/"
 
   # Keybinding config

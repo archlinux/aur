@@ -15,6 +15,7 @@ pkgbase = cosmic-epoch-git
 	makedepends = just
 	makedepends = mold
 	depends = cage
+	depends = flatpak
 	depends = fontconfig
 	depends = greetd
 	depends = gtk3
