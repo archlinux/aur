@@ -7,7 +7,7 @@ _pkgname=tidyr
 _pkgver=1.3.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Tidy Messy Data"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -44,16 +44,6 @@ optdepends=(
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('0491d9d3359af7baf8ad9003ce44aa1d')
 b2sums=('43ec7fca79d137205847ae837a20f6ed2be8d4440cde29f6ff11cac0df35a1fbdb6d55d1365303819d25f5333819c9541a4e0a006e39e22cfa665c0f9d8fbf76')
-
-prepare() {
-  cd "$_pkgname/tests/testthat"
-  # skip broken snapshot tests
-  sed -i '/"after must be integer or character"/a\ \ skip("broken snapshot")' test-append.R
-  sed -i '/"input validation catches problems"/a\ \ skip("broken snapshot")' test-hoist.R
-  sed -i '/"`pivot_longer()` catches unused input passed through the dots"/a\ \ skip("broken snapshot")' test-pivot-long.R
-  sed -i '/"separate_wider_position() validates its inputs"/a\ \ skip("broken snapshot")' test-separate-wider.R
-  sed -i '/"`transform` is validated"/a\ \ skip("broken snapshot")' test-unnest-helper.R
-}
 
 build() {
   mkdir build
