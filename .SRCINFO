@@ -1,12 +1,13 @@
 pkgbase = wiredtiger
 	pkgdesc = High performance, scalable, NoSQL, extensible platform for data management
 	pkgver = 11.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wiredtiger/wiredtiger
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
 	makedepends = swig
+	makedepends = python
 	depends = lz4
 	depends = snappy
 	depends = zlib

@@ -7,13 +7,13 @@
 
 pkgname=wiredtiger
 pkgver=11.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High performance, scalable, NoSQL, extensible platform for data management"
 arch=("x86_64")
 url="https://github.com/wiredtiger/wiredtiger"
 license=("GPL")
 depends=("lz4" "snappy" "zlib" "zstd")
-makedepends=("cmake" "swig")
+makedepends=("cmake" "swig" "python")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wiredtiger/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=("90d1392a9b10dae5bda02d476cb3204331dcf94b3e47ce5e2ab4d4d9b4dd198c")
 
