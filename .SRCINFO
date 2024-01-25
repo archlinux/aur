@@ -1,7 +1,7 @@
 pkgbase = r-catdata
 	pkgdesc = Categorical Data
-	pkgver = 1.2.3
-	pkgrel = 3
+	pkgver = 1.2.4
+	pkgrel = 1
 	url = https://cran.r-project.org/package=catdata
 	arch = any
 	license = GPL
@@ -29,7 +29,7 @@ pkgbase = r-catdata
 	optdepends = r-rpart
 	optdepends = r-vcdextra
 	optdepends = r-vgam
-	source = https://cran.r-project.org/src/contrib/catdata_1.2.3.tar.gz
-	sha256sums = 9dce26fee1a3260c31e2ee0d43af30a2bbd6088addb4f43084f2598169b39fb4
+	source = https://cran.r-project.org/src/contrib/catdata_1.2.4.tar.gz
+	sha256sums = 1c586c2cc9dd1ec3d12d8d2fdbed1055bb36268449e82949efbac9eca45d71bf
 
 pkgname = r-catdata
