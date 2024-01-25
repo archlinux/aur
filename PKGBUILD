@@ -1,7 +1,7 @@
 pkgname=wolf3d
 _pkgname=Wolf3D
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Wolfenstein3D game powered by the wolf4sdl."
 arch=('pentium4' 'i386' 'i686' 'x86_64' 'aarch64')
 url="https://gitlab.com/wolfenstein3d"
