@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=python-pytorch-tensorrt
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="PyTorch/TorchScript/FX compiler for NVIDIA GPUs using TensorRT"
 arch=('x86_64')
@@ -35,12 +35,15 @@ prepare() {
   sed '2i#include <fstream>' -i TensorRT/core/runtime/TRTEngine.cpp
   sed '5i#include <cstdint>' -i TensorRT/core/util/Exception.h
   sed '4i#include <cstdint>' -i TensorRT/core/util/Exception.cpp
+
+  # CXX 17
+  sed 's|CMAKE_CXX_STANDARD 14|CMAKE_CXX_STANDARD 17|g' -i TensorRT/CMakeLists.txt
 }
 
 build() {
   export CC=/opt/cuda/bin/gcc
   export CXX=/opt/cuda/bin/g++
-  export CXXFLAGS+=" -std=c++14"
+  export CXXFLAGS+=" -std=c++17"
   export PATH="${srcdir}/path:${PATH}"
 
   cmake -S TensorRT -B build \
