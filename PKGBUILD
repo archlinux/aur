@@ -3,7 +3,7 @@ pkgname=coal-launcher-bin
 _pkgname="Coal Launcher"
 pkgver=1.3.2
 _electronversion=22
-pkgrel=5
+pkgrel=6
 pkgdesc="A client to view and play games from the AB Coal website"
 arch=('x86_64')
 url="https://bobuxstation.github.io/Coal-Web/launcher.html"
@@ -21,14 +21,14 @@ source=(
 )
 sha256sums=('9f87d39019ac25819fb971016f28905110610ca42b12428b77fdbf79955c93d3'
             '0133c8e5890f9f848adde48b40a9c61dcff249ea3c0f5bcf6567901e7a697c49'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\" %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\"|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
