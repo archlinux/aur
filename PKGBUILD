@@ -2,7 +2,7 @@
 
 pkgname=cgrc
 pkgver=2.0.4
-pkgrel=0
+pkgrel=1
 pkgdesc='Generic log formatter'
 arch=(any)
 url='https://github.com/carlonluca/cgrc'
