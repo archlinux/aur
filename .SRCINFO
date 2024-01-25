@@ -1,6 +1,6 @@
 pkgbase = httpie-desktop-bin
 	pkgdesc = HTTPie for Desktop
-	pkgver = 2024.1.1
+	pkgver = 2024.1.2
 	pkgrel = 1
 	url = https://httpie.io/product
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = httpie-desktop-bin
 	depends = nss
 	provides = httpie-desktop
 	conflicts = httpie-desktop-appimage
-	source_x86_64 = https://github.com/httpie/desktop/releases/download/v2024.1.1/HTTPie-2024.1.1.AppImage
-	sha256sums_x86_64 = 85fb09dae5fc455b2e6ca13b822debee7f54ed9f33cd12381f81841d418f76d5
-	source_aarch64 = https://github.com/httpie/desktop/releases/download/v2024.1.1/HTTPie-2024.1.1-arm64.AppImage
-	sha256sums_aarch64 = dde492c110b667c32cbbe4f55c96b7d181c2d2a198df6f973f652136981443da
+	source_x86_64 = https://github.com/httpie/desktop/releases/download/v2024.1.2/HTTPie-2024.1.2.AppImage
+	sha256sums_x86_64 = 38e3f597b2760603b79ce3d28a9c5fc1f37f94e52c97cd14cd8301a2cc811eb3
+	source_aarch64 = https://github.com/httpie/desktop/releases/download/v2024.1.2/HTTPie-2024.1.2-arm64.AppImage
+	sha256sums_aarch64 = 4612322da90290c51c5efbb4b2097932d5786175e4aaa1f55144bb6e9b54cf0c
 
 pkgname = httpie-desktop-bin

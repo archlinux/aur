@@ -1,8 +1,9 @@
-# Maintainer: Maarten de Boer <info@maartendeboer.net>
+# Maintainer: iamawacko <iamawacko@protonmail.com>
+# Contributor: Maarten de Boer <info@maartendeboer.net>
 
 pkgname=httpie-desktop-bin
 _pkgname=httpie-desktop
-pkgver=2024.1.1
+pkgver=2024.1.2
 pkgrel=1
 pkgdesc="HTTPie for Desktop"
 arch=(x86_64 aarch64)
@@ -16,8 +17,8 @@ conflicts=('httpie-desktop-appimage')
 source_x86_64=("https://github.com/httpie/desktop/releases/download/v$pkgver/HTTPie-$pkgver.AppImage")
 source_aarch64=("https://github.com/httpie/desktop/releases/download/v$pkgver/HTTPie-$pkgver-arm64.AppImage")
 
-sha256sums_x86_64=('85fb09dae5fc455b2e6ca13b822debee7f54ed9f33cd12381f81841d418f76d5')
-sha256sums_aarch64=('dde492c110b667c32cbbe4f55c96b7d181c2d2a198df6f973f652136981443da')
+sha256sums_x86_64=('38e3f597b2760603b79ce3d28a9c5fc1f37f94e52c97cd14cd8301a2cc811eb3')
+sha256sums_aarch64=('4612322da90290c51c5efbb4b2097932d5786175e4aaa1f55144bb6e9b54cf0c')
 
 [ $CARCH = "x86_64" ] && _filename=HTTPie-$pkgver.AppImage
 [ $CARCH = "aarch64" ] && _filename=HTTPie-$pkgver-arm64.AppImage
