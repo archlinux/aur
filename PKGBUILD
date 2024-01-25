@@ -7,7 +7,7 @@
 pkgname=('0ad-git' '0ad-data-git')
 _pkgname=0ad
 epoch=1
-pkgver=A26.r920.gc4a0ae4ff
+pkgver=A26.r1234.g1dfaca89e6
 pkgrel=1
 pkgdesc="Cross-platform, 3D and historically-based real-time strategy game - built from git development version."
 arch=('i686' 'x86_64')
@@ -36,6 +36,10 @@ prepare() {
 
 build() {
   cd "$srcdir/${_pkgname}/build/workspaces"
+
+  # this uses malloc_usable_size, which is incompatible with fortification level 3
+  export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+  export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 
   ./update-workspaces.sh \
       --without-pch \
