@@ -2,41 +2,47 @@
 # Contributor: Sir-Photch <sir-photch@posteo.me>
 
 pkgname=litellm
-pkgver=1.18.8
+pkgver=1.19.0
 pkgrel=1
 pkgdesc='Call all LLM APIs using the OpenAI format'
 arch=(any)
 url='https://pypi.org/project/litellm/'
 license=(MIT)
 depends=(
-	'gunicorn'
-	'python'
-	'python-appdirs'
-	'python-backoff'
-	'python-click'
-	'python-dotenv'
-	'python-fastapi'
-	'python-importlib-metadata'
-	'python-jinja'
-	'python-openai'
-	'python-tiktoken'
-	'python-tomli-w'
-	'python-tokenizers'
+    'python'
+    'python-openai'
+    'python-dotenv'
+    'python-tiktoken'
+    'python-importlib-metadata'
+    'python-tokenizers'
+    'python-click'
+    'python-jinja'
+    'python-aiohttp'
+    'python-requests'
 )
 makedepends=(
-	'python-build'
-	'python-installer'
-	'python-poetry-core'
-	'python-wheel'
+    'python-build'
+    'python-installer'
+    'python-poetry-core'
+    'python-wheel'
 )
 optdepends=(
-	'ollama: serve local ollama models'
+    'python-uvicorn: ASGI server for asyncio'
+    'python-gunicorn: WSGI HTTP Server'
+    'python-fastapi: Framework for building APIs'
+    'python-backoff: Backoff strategies for retrying operations'
+    'python-yaml: YAML parser and emitter'
+    'python-rq: Simple job queues for Python'
+    'python-orjson: Fast JSON parser and serializer'
+    'python-apscheduler: Task scheduler'
+    'python-streamlit: App framework for Machine Learning and Data Science'
+    'ollama: Serve local ollama models'
 )
 
 source=(
 	"https://files.pythonhosted.org/packages/source/l/$pkgname/$pkgname-$pkgver.tar.gz"
 )
-sha256sums=('d84cf6b5d7eb50c3f9db7d534c05e659d6be5d0cf17441fb700c14ecd9a370b8')
+sha256sums=('23aae38c71747ad114782994ee91aae85e7f558456b80fe736d9098984205df7')
 
 prepare() {
 	cd "$pkgname-$pkgver"
