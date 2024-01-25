@@ -1,6 +1,6 @@
 pkgbase = keydb
 	pkgdesc = A Multithreaded fork of Redis.
-	pkgver = 6.3.3
+	pkgver = 6.3.4
 	pkgrel = 1
 	url = https://keydb.dev
 	install = keydb.install
@@ -24,14 +24,14 @@ pkgbase = keydb
 	provides = redis=6.2.6
 	backup = etc/keydb/keydb.conf
 	backup = etc/keydb/sentinel.conf
-	source = https://github.com/JohnSully/KeyDB/archive/v6.3.3.tar.gz
+	source = https://github.com/JohnSully/KeyDB/archive/v6.3.4.tar.gz
 	source = keydb-5.0-use-system-jemalloc.patch
 	source = keydb.conf-sane-defaults.patch
 	source = keydb-sentinel.service
 	source = keydb.service
 	source = keydb.sysusers
 	source = keydb.tmpfiles
-	b2sums = SKIP
+	b2sums = 57a616469c552425899e1e33bfcab720262e9bdb0a00edf7470721cbb107b6e51649767098f83e60d297cab8c18dd9ca67fb4f8d7138d3138784847bbd433345
 	b2sums = 3a17d2f6fd3d393a171723abacd95613343dd98a80154a89c54d2591fecf66ec1e0615b8bff8bf9471abf09335e17c9a9b8cafd1b924bc969cfb21ba6b37db28
 	b2sums = 94f3e2e44eb29f2454a080a46be38529a70acb8a23ba35266bf4a2dcc4d015c622366586568f1eb6fbcd3cd99b7c95fec4601712265b32e12abda7ba2748e74a
 	b2sums = 87aa7478470fa2c3beee1ad68e9e7de9df26d3c4d0cf5ec2e3724a2cdabd6b767cf88d449e0fbd1598930d68412271ea4df82ae77803c43ff9a0fbfef1e511c3
