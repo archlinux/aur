@@ -1,7 +1,8 @@
-# Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
+# Maintainer: iamawacko <iamawacko@protonmail.com>
+# Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 
 pkgname=doitlive
-pkgver=4.3.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc='Because sometimes you need to do it live'
 arch=(any)
@@ -10,7 +11,7 @@ license=(MIT)
 depends=(python python-click-didyoumean python-click-completion python-shellingham)
 makedepends=(python-setuptools)
 source=(https://github.com/sloria/doitlive/archive/$pkgver.tar.gz)
-sha512sums=('9151c642b231eb627729c7b46015578d45a5788ab0449377ee136754f6ea6e5db226d3b45b33b863b94bab4865a84ad4396e9cc779c39887cbd9cd353742b03a')
+sha512sums=('0da997fcd9ba1d784ebe61b8a7753cf3cb0e951933d0358728943576c65665a5968c0f4bb2f7853df95bdca3558e3baff1e742920cef44ae36f1c51ff506408f')
 
 build() {
   cd $pkgname-$pkgver
