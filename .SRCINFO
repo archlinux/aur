@@ -1,6 +1,6 @@
 pkgbase = xnine-git
 	pkgdesc = Native Direct3D9 driver for DXVK-Native games.
-	pkgver = r44.9481273
+	pkgver = r45.4f38fd5
 	pkgrel = 2
 	url = https://github.com/zmike/Xnine
 	arch = x86_64
@@ -11,8 +11,19 @@ pkgbase = xnine-git
 	depends = mesa
 	depends = lib32-mesa
 	depends = sdl2
+	depends = lib32-sdl2
 	depends = libx11
+	depends = lib32-libx11
 	depends = libxcb
+	depends = lib32-libxcb
+	depends = libxext
+	depends = lib32-libxext
+	depends = glibc
+	depends = lib32-glibc
+	depends = libxau
+	depends = lib32-libxau
+	depends = libxdmcp
+	depends = lib32-libxdmcp
 	provides = xnine
 	conflicts = xnine
 	source = Xnine::git+https://github.com/zmike/Xnine#branch=master

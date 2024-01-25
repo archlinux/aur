@@ -1,13 +1,30 @@
 # Maintainer: Ícar N. S. <icar.nin@protonmail.com>
 pkgname=xnine-git
-pkgver=r44.9481273
+pkgver=r45.4f38fd5
 pkgrel=2
 pkgdesc="Native Direct3D9 driver for DXVK-Native games."
 arch=(x86_64)
 url="https://github.com/zmike/Xnine"
 license=('MIT')
 makedepends=('git' 'make' 'gcc')
-depends=('mesa' 'lib32-mesa' 'sdl2' 'libx11' 'libxcb')
+depends=(
+    'mesa'
+	'lib32-mesa'
+	'sdl2'
+	'lib32-sdl2'
+	'libx11'
+	'lib32-libx11'
+	'libxcb'
+	'lib32-libxcb'
+	'libxext'
+	'lib32-libxext'
+	'glibc'
+	'lib32-glibc'
+	'libxau'
+	'lib32-libxau'
+	'libxdmcp'
+	'lib32-libxdmcp'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("Xnine::git+$url#branch=master")
@@ -32,5 +49,5 @@ package() {
 }
 
 post_install() {
-    msg "In Steam properties, make sure to 'LD_PRELOAD=\"/usr/share/Xnine/nine_sdl.so /usr/share/Xnine/nine_sdl64.so\" %command%'"
+    msg "In Steam properties, make sure to 'LD_PRELOAD=\"/usr/share/Xnine/nine_sdl.so /usr/share/Xnine/nine_sdl64.so\" %command%' -vulkan"
 }
