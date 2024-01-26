@@ -1,6 +1,6 @@
 pkgbase = zuu
 	pkgdesc = A program to check your code quality before all commit
-	pkgver = 8.0.0
+	pkgver = 8.0.1
 	pkgrel = 1
 	url = https://github.com/taishingi/zuu
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = zuu
 	optdepends = docker-compose: docker-compose support
 	provides = zuu
 	provides = pre-commit
-	source = zuu-8.0.0.tar.gz::https://static.crates.io/crates/zuu/zuu-8.0.0.crate
-	sha256sums = cbfd41adfa67602a8417e1e6275e98c226e3f950cf3e97cfe118e27c2aca8fd1
+	source = zuu-8.0.1.tar.gz::https://static.crates.io/crates/zuu/zuu-8.0.1.crate
+	sha256sums = 3000e9e2b949e7e0023d6690a13939f258707facb731f86a3f4b37a361b4c81c
 
 pkgname = zuu
