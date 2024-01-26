@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libusb
 	pkgdesc = Library that provides generic access to USB devices (mingw-w64)
-	pkgver = 1.0.24
+	pkgver = 1.0.26
 	pkgrel = 1
 	url = http://libusb.info
 	arch = any
@@ -12,8 +12,7 @@ pkgbase = mingw-w64-libusb
 	options = !strip
 	options = staticlibs
 	options = !buildflags
-	source = https://github.com/libusb/libusb/releases/download/v1.0.24/libusb-1.0.24.tar.bz2
-	sha256sums = 7efd2685f7b327326dcfb85cee426d9b871fd70e22caa15bb68d595ce2a2b12a
+	source = https://github.com/libusb/libusb/releases/download/v1.0.26/libusb-1.0.26.tar.bz2
+	sha256sums = 12ce7a61fc9854d1d2a1ffe095f7b5fac19ddba095c259e6067a46500381b5a5
 
 pkgname = mingw-w64-libusb
-
