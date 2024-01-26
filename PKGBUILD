@@ -1,15 +1,15 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-browser-transition
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Plugin for OBS Studio to show a browser source during scene transition"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/browser-transition.1653/"
-license=("GPL2")
-depends=("obs-studio>=28" "obs-browser")
+license=("GPL-2.0-or-later")
+depends=("obs-studio>=28" "obs-browser" "glibc")
 makedepends=("cmake" "git")
-source=("$pkgname::git+https://github.com/exeldro/$pkgname#commit=2d708bd8f09e3faed562bf2164c863af32aa7259")
+source=("$pkgname::git+https://github.com/exeldro/$pkgname#commit=42bec5f094c8361c44a8ce53386abbf3647ceb2d")
 sha256sums=("SKIP")
 
 build() {
