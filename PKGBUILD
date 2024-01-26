@@ -34,13 +34,6 @@ makedepends=(
     'libarchive'
     'libicns'
 )
-_electron_file_list=(
-	chrome-sandbox
-	chrome_{1,2}00_percent.pak
-	chrome_crashpad_handler
-	libvk_swiftshader.so
-	libvulkan.so.1
-)
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
 )
@@ -64,19 +57,15 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export npm_config_disturl=https://electronjs.org/headers
-    export HOME="${srcdir}/.electron-gyp"
+    HOME="${srcdir}/.electron-gyp"
     sed 's/\ \&\& husky install//g' -i package.json
     sed -e '/"deb",/d' -e '/"rpm",/d' -e '/"snap",/d' -e '/"pacman"/d' -e 's|"AppImage",|"AppImage"|g' -i electron-builder.json
     install -Dm755 -d "${srcdir}/${pkgname//-/.}/node_modules/electron/dist"
     yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn run build
     yarn run dist
     cd "${srcdir}/${pkgname//-/.}/dist/.icon-set"
     cp icon_16x16.png icon_16.png
     cp icon_48x48.png icon_48.png
-    for _files in "${_electron_file_list[@]}"; do
-		rm -rf "${srcdir}/${pkgname//-/.}/dist/linux-"*/"${_files}"
-	done
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-git}",usr/bin}
