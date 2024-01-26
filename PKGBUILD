@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=tbls
-pkgver=1.72.1
+pkgver=1.73.2
 pkgrel=1
 pkgdesc="CI-Friendly tool for documenting a database"
 arch=(x86_64)
@@ -11,7 +11,7 @@ makedepends=(go)
 depends=(glibc)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('16456bcf14f48ea174126322b171a8c7e6e9fcd2340ab4b0edcce16212516aa7')
+sha256sums=('d916ec86ad41d437465d8dca352c3db809c64d14ce78077558a0ab61a11260d1')
 
 _archive="$pkgname-$pkgver"
 
