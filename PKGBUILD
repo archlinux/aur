@@ -38,7 +38,10 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest
+  # https://github.com/pyFFTW/pyFFTW/pull/370
+  test-env/bin/python -m pytest \
+    --ignore=tests/test_pyfftw_scipy_fft.py \
+    --ignore=tests/test_pyfftw_scipy_interface.py
 }
 
 package() {
