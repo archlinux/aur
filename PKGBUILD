@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=kde1d
-_pkgver=1.0.5
+_pkgver=1.0.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Univariate Kernel Density Estimation"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   r-randtoolbox
   r-rcpp
@@ -24,12 +24,12 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('72ac5e9cd260b9f2792ec2ae9186dfe8')
-sha256sums=('b5fab76a394a7819deee10afdff39ac64fccdb844735adfe51c92043016f2468')
+md5sums=('e8b33f9c810c0c2c66ce1a2be853e302')
+b2sums=('8fff149ce1496f294ebde7689ea6747ac917b22eda95b2a3e0211e61ac23f86dd98e76eab63d2ddcaf08c01ee7044563c69158e0ba7a2449684c6ee901e54070')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
