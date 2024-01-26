@@ -1,13 +1,13 @@
 pkgbase = r-scam
 	pkgdesc = Shape Constrained Additive Models
-	pkgver = 1.2.14
+	pkgver = 1.2.15
 	pkgrel = 1
 	url = https://cran.r-project.org/package=scam
 	arch = x86_64
 	license = GPL
 	depends = r
 	optdepends = r-nlme
-	source = https://cran.r-project.org/src/contrib/scam_1.2-14.tar.gz
-	sha256sums = cc5086aaab35d0e1969760af191ed7e76f97b65a26a9be623ac8cf0c45a93771
+	source = https://cran.r-project.org/src/contrib/scam_1.2-15.tar.gz
+	sha256sums = 6fb30a448127409f80682660559bea182b5f7d27530bc695cee90c7ef8105d13
 
 pkgname = r-scam
