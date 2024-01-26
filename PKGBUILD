@@ -3,24 +3,24 @@
 
 pkgname=maptool
 _pkgname=MapTool
-pkgver=1.13.2
-pkgrel=3
+pkgver=1.14.3
+pkgrel=1
 pkgdesc="An open source virtual tabletop program"
 arch=('x86_64')
 url='https://rptools.net/tools/maptool'
 license=('AGPL3')
-depends=('java-runtime=17' 'java-openjfx=17')
-makedepends=('git' 'dpkg' 'jdk17-openjdk' 'gradle7' 'xdg-utils' 'rpm-tools')
+depends=('java-runtime=21' 'java-openjfx=21')
+makedepends=('git' 'dpkg' 'java-environment=21' 'gradle' 'xdg-utils' 'rpm-tools')
 optdepends=()
 source=(
 	"git+https://github.com/RPTools/${pkgname}.git#tag=${pkgver}"
 	"${pkgname}.sh")
 sha256sums=('SKIP'
-            '7b66ff895bf3e51bf297b8e5dc82c19ce91cbf1d0ddaab1af63317ab9ad800f1')
+            '746ab40aa2226355f33135eb748bdc4c5653c8239574683b508510e0a0becf0a')
 install="${pkgname}.install"
 
 _prefix="opt/$pkgname"
-_java_home='/usr/lib/jvm/java-17-openjdk'
+_java_home='/usr/lib/jvm/java-21-openjdk'
 
 prepare() {
 	cd "${pkgname}"
