@@ -3,8 +3,8 @@
 
 pkgname=mautrix-linkedin-git
 _pkgname=mautrix-linkedin
-pkgver=0.5.4.r68.gdc66fd2
-pkgrel=1
+pkgver=0.5.4.r94.g169f1ab
+pkgrel=2
 pkgdesc="A LinkedIn Messaging Matrix Bridge"
 url="https://github.com/beeper/linkedin"
 depends=(
@@ -15,8 +15,10 @@ depends=(
 	'python-commonmark' 
 	'python-aiohttp' 
 	'python-yarl'
-	'python-linkedin-messaging'
-	'python-mautrix>=0.20.1' 'python-mautrix<0.21'
+	'python-mautrix'
+	'python-beautifulsoup4'
+	'python-dataclasses-json'
+	'python-pycryptodome'
 )
 makedepends=(
 	'git'
@@ -34,7 +36,7 @@ optdepends=(
 	'python-aiosqlite: sqlite database support'
 )
 provides=('mautrix-linkedin')
-license=(Apache)
+license=(APLv2)
 arch=('any')
 _dirname="${_pkgname#mautrix-}"
 source=(
