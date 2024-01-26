@@ -1,12 +1,12 @@
 pkgbase = ruby-prawn-table
 	pkgdesc = Provides support for tables in Prawn
 	pkgver = 0.2.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/prawnpdf/prawn-table
 	arch = any
-	license = GPL2
-	license = GPL3
-	license = custom:RUBY
+	license = GPL-2.0-only
+	license = GPL-3.0-only
+	license = Ruby
 	checkdepends = ruby-mocha
 	checkdepends = ruby-pdf-inspector
 	checkdepends = ruby-rspec
