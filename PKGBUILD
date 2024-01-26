@@ -39,9 +39,9 @@ prepare() {
     # If you want the "best" possible optimizations for your system you can use
     # `-march=native` and remove the `-mtune=core-avx2` option.
 
-    local -a split=($CFLAGS)
-    local -A flags
-    for opt in "${split[@]}"; do flags["${opt%%=*}"]="${opt##*=}"; done
+#    local -a split=($CFLAGS)
+#    local -A flags
+#    for opt in "${split[@]}"; do flags["${opt%%=*}"]="${opt##*=}"; done
     local march="${flags["-march"]:-nocona}"
     local mtune="${flags["-mtune"]:-core-avx2}"
 
