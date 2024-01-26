@@ -1,6 +1,6 @@
 pkgbase = diff-pdf
 	pkgdesc = A simple tool for visually comparing two PDF files
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = http://vslavik.github.io/diff-pdf
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = diff-pdf
 	makedepends = wxwidgets-common
 	depends = poppler-glib
 	depends = wxwidgets-gtk3
-	source = https://github.com/vslavik/diff-pdf/releases/download/v0.5.1/diff-pdf-0.5.1.tar.gz
-	sha256sums = 017d52cb7ddabdbf63c6a47f39b2e5a1790022b95295b0d047817904e093245c
+	source = https://github.com/vslavik/diff-pdf/releases/download/v0.5.2/diff-pdf-0.5.2.tar.gz
+	sha256sums = 7d018f05e30050a2b49dee137f084584b43aec87c7f5ee9c3bbd14c333cbfd54
 
 pkgname = diff-pdf
