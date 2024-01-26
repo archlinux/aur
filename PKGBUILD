@@ -55,17 +55,15 @@ build() {
              -DOPENMC_USE_MPI=ON \
              -DHDF5_PREFER_PARALLEL=ON \
 	     -DCMAKE_INSTALL_PREFIX=/opt/openmc	 
-    _ccores=`cat /proc/cpuinfo |grep CPU|wc -l`
-  	if [ "x$1" != "x" ]; then
-		_ccores=$1
-  	fi
-	make -j ${_ccores}
+    _ccores=$(nproc)
+    if [ -z "${_ccores}" ]; then
+       make
+    else
+       make -j ${_ccores}
+    fi
 
-	# build python layer
-	python \
-      -m build \
-      --wheel \
-      --no-isolation ../
+    # build python layer
+    python -m build --wheel --no-isolation ../
 }
 
 package() {
