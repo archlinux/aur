@@ -1,15 +1,14 @@
 pkgbase = twik-git
 	pkgdesc = A commandline hash-based password generator
-	pkgver = r42.d3403e7
+	pkgver = r52.004a764
 	pkgrel = 1
-	url = http://gustavomondron.github.io/twik/
+	url = https://github.com/coxande/Twik
 	arch = any
 	license = GPL
 	makedepends = git
-	makedepends = python2-setuptools
-	depends = python2
+	makedepends = python-setuptools
+	depends = python
 	source = git+https://github.com/coxande/Twik
 	sha512sums = SKIP
 
 pkgname = twik-git
-

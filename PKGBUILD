@@ -1,14 +1,14 @@
-# Maintainer: Michele Bovo <mbovo@gmx.com>
+# Maintainer: Mike Cuche <cuche@mailbox.org>
 
 pkgname='twik-git'
-pkgver=r42.d3403e7
+pkgver=r52.004a764
 pkgrel=1
 pkgdesc="A commandline hash-based password generator"
-url="http://gustavomondron.github.io/twik/"
+url="https://github.com/coxande/Twik"
 arch=('any')
 license=('GPL')
-depends=('python2')
-makedepends=('git' 'python2-setuptools')
+depends=('python')
+makedepends=('git' 'python-setuptools')
 source=('git+https://github.com/coxande/Twik')
 sha512sums=('SKIP')
 
@@ -17,15 +17,8 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare () {
-  cd Twik/twik
-  sed -i 's#usr/bin/python#usr/bin/python2#' twik.py
-  sed -i 's#usr/bin/python#usr/bin/python2#' run.py
-  sed -i 's#usr/bin/python#usr/bin/python2#' util.py
-  
-}
 
 package() {
   cd Twik
-  python2 setup.py install --optimize=1 --root="$pkgdir/"
+  python setup.py install --optimize=1 --root="$pkgdir/"
 }
