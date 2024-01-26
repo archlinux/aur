@@ -2,7 +2,7 @@
 
 pkgbase=xet
 pkgname=(git-xet xetcmd xetmnt)
-pkgver=0.12.8
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='CLI tools for working with XetHub'
 arch=(x86_64)
@@ -19,37 +19,37 @@ makedepends=(cargo
 _archive="xet-core-$pkgver"
 options=(!lto)
 source=("$_url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('4a132ce3b9b7775a560c88f4781b735d51239668cbe436f1850f74b2a3791d4a')
+sha256sums=('20def903f481c68e789931cb523874e1d3b27d5ef33fdb9bd472292d448ca40d')
 
 prepare() {
 	cd "$_archive/rust"
 	cargo update
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-	sed -r -i -e '107s/mut //' gitxetcore/src/xetmnt/watch/metadata/filesystem.rs
 }
 
 build() {
 	cd "$_archive/rust"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	CFLAGS+=' -ffat-lto-objects'
 	cargo build --frozen --release --all-features
 }
 
-_package_bin() {
+_package() {
 	cd "$_archive/rust"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" ../LICENSE
 }
 
 package_git-xet() {
-	_package_bin
+	_package
 }
 
 package_xetcmd() {
-	_package_bin
+	_package
 }
 
 package_xetmnt() {
 	depends+=(git-xet)
-	_package_bin
+	_package
 }
