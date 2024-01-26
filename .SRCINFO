@@ -1,7 +1,7 @@
 pkgbase = linux-air-combat
 	pkgdesc = Free open source combat flight simulator
-	pkgver = 09p37
-	pkgrel = 2
+	pkgver = 09p55
+	pkgrel = 1
 	url = https://askmisterwizard.com/2019/LinuxAirCombat/LinuxAirCombat.htm
 	arch = x86_64
 	arch = aarch64
@@ -16,7 +16,7 @@ pkgbase = linux-air-combat
 	depends = mesa
 	optdepends = espeak: adds voice effects in-game
 	optdepends = mumble: team voice integration
-	source = https://sourceforge.net/projects/linuxaircombat/files/Choose%20Your%20Platform/Most%20LINUX%20Desktops%20%28in%20the%20global%20usr%20filesystem%20for%20all%20users%29/Lac09p37.tar.gz
+	source = https://sourceforge.net/projects/linuxaircombat/files/Choose%20Your%20Platform/Most%20LINUX%20Desktops%20%28in%20the%20global%20usr%20filesystem%20for%20all%20users%29/Lac09p55.tar.gz
 	md5sums = SKIP
 
 pkgname = linux-air-combat
