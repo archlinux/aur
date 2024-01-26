@@ -6,7 +6,7 @@ _commit=989b502c4aed6efd8b210b785c163e9c6c6e233e
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=8.1.0
-pkgrel=3
+pkgrel=4
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -180,9 +180,9 @@ build() {
         --proton-sdk-image="" \
         --build-name="${pkgname}"
 
-#    local -a split=($CFLAGS)
-#    local -A flags
-#    for opt in "${split[@]}"; do flags["${opt%%=*}"]="${opt##*=}"; done
+    local -a split=($CFLAGS)
+    local -A flags
+    for opt in "${split[@]}"; do flags["${opt%%=*}"]="${opt##*=}"; done
     local march="${flags["-march"]:-nocona}"
     local mtune="${flags["-mtune"]:-core-avx2}"
 
@@ -202,8 +202,8 @@ build() {
     # https://bugs.winehq.org/show_bug.cgi?id=43516
     # AVX is "hard" disabled for 32bit in any case.
     # AVX2 for both 32bit and 64bit is disabled below.
-    CFLAGS+=" -mno-avx2"
-    CXXFLAGS+=" -mno-avx2"
+    CFLAGS+=" -mno-avx2 -mno-avx"
+    CXXFLAGS+=" -mno-avx2 -mno-avx"
 
     export CFLAGS CXXFLAGS RUSTFLAGS LDFLAGS
 
