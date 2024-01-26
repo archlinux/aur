@@ -1,0 +1,17 @@
+pkgbase = hycov-git
+	pkgdesc = Hyprland overview mode plugin, a new tile window workflow
+	pkgver = 0.34.0.1.r95.84b9f00
+	pkgrel = 1
+	url = https://github.com/DreamMaoMao/hycov
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = hyprland
+	provides = hycov
+	conflicts = hycov
+	source = git+https://github.com/DreamMaoMao/hycov.git
+	b2sums = SKIP
+
+pkgname = hycov-git
