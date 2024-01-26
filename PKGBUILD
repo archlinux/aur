@@ -1,12 +1,13 @@
-# Maintainer: Jack Rubacha <rubacha.jack03@gmail.com>
+# Maintainer: Ian Lansdowne <idlansdowneatgmailcom>
+# Contributor: Jack Rubacha <rubacha.jack03@gmail.com>
 # Contributor: Edward Wawrzynek <edward@wawrzynek.com>
 
 pkgname=xrcsimulator
-pkgver=13.1a
+pkgver=13.1c
 pkgdesc="FIRST Tech Challenge, FIRST Robotics Competition, and VEX Simulator"
 pkgrel=1
 arch=('x86_64')
-url="http://xrcsimulator.org"
+url="https://xrcsimulator.org"
 license=('unknown')
 depends=("zlib" 
 	 "bash")
@@ -17,11 +18,11 @@ replaces=('ftcfrcsimulator')
 _files_name="xRC Simulator"
 
 source=(
-	"${pkgname}-${pkgver}.zip::http://xrcsimulator.org/?smd_process_download=1&download_id=2271"
+	"${pkgname}-${pkgver}.zip::https://xrcsimulator.org/?sdm_process_download=1&download_id=2279"
 	"xrcsimulator.desktop"
 )
 
-sha1sums=('d69a385c50184a2bada1a8500c38b5439e142377'
+sha1sums=('c99c4af06c2e200788552bca0dc31e10fc2b950a'
           '07ee699a267425f01c7e28c2369ba6521bd515ec')
 
 package() {

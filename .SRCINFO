@@ -1,17 +1,17 @@
 pkgbase = xrcsimulator
 	pkgdesc = FIRST Tech Challenge, FIRST Robotics Competition, and VEX Simulator
-	pkgver = 13.1a
+	pkgver = 13.1c
 	pkgrel = 1
-	url = http://xrcsimulator.org
+	url = https://xrcsimulator.org
 	arch = x86_64
 	license = unknown
 	depends = zlib
 	depends = bash
 	optdepends = openvr: For VR support
 	replaces = ftcfrcsimulator
-	source = xrcsimulator-13.1a.zip::http://xrcsimulator.org/?smd_process_download=1&download_id=2271
+	source = xrcsimulator-13.1c.zip::https://xrcsimulator.org/?sdm_process_download=1&download_id=2279
 	source = xrcsimulator.desktop
-	sha1sums = d69a385c50184a2bada1a8500c38b5439e142377
+	sha1sums = c99c4af06c2e200788552bca0dc31e10fc2b950a
 	sha1sums = 07ee699a267425f01c7e28c2369ba6521bd515ec
 
 pkgname = xrcsimulator
