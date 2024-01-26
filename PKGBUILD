@@ -13,6 +13,7 @@ conflicts=()
 _commit="b3494ce755951a0639ec35f4df73406b2b7b706c" # v0.1.3
 source=("git+$url#commit=$_commit")
 sha256sums=('SKIP')
+install=cherryctl.install
 
 pkgver() {
   cd "$srcdir/cherryctl"
@@ -45,15 +46,3 @@ package() {
   install -Dm755 build/cherryctl -t "$pkgdir"/usr/bin/
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/cherryctl/LICENSE"
 }
-
-post_install() {
-  dir_path="$HOME/.config/cherry"
-  echo "checking ${dir_path} exists..."
-  if [ ! -d "$dir_path" ] || [ -z "$(find "$dir_path" -maxdepth 1 -name '*.yaml' -print -quit)" ]; then
-    echo "creating ${dir_path}..."
-    mkdir -p "$dir_path"
-    echo "creating ${dir_path}/default.yaml..."
-    touch "$dir_path/default.yaml"
-  fi
-}
-

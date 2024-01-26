@@ -3,6 +3,7 @@ pkgbase = cherryctl
 	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/cherryservers/cherryctl
+	install = cherryctl.install
 	arch = x86_64
 	license = MPL-2.0
 	makedepends = git
