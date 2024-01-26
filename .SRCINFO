@@ -1,0 +1,13 @@
+pkgbase = sharp-mx-c55-9-ps
+	pkgdesc = PPD files for Sharp PostScript Printers(BP-40C26 to BP-70C45)
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://www.sharp.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = cups
+	source = https://docs.aws.sharp.eu/Service_Information/Drivers/sharp-1.5-mx-c55-9-ps.tar
+	sha512sums = 8a6fa9552eae58967af51f2537a3b14eb3681d64826454d98f1a3df9211bb2bc93bfbe19d9190721b57eaffb560d89d9f9d642debbc3def8b909a379ee752e94
+
+pkgname = sharp-mx-c55-9-ps
