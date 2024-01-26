@@ -8,7 +8,7 @@ pkgbase = wiki2book
 	makedepends = go>=1.20
 	depends = pandoc
 	depends = imagemagick
-	optdepends = ttf-dejavu: Font use in the default style
+	optdepends = ttf-dejavu: Font used in the default style
 	provides = wiki2book=0.1.1
 	source = git+https://github.com/hauke96/wiki2book#tag=v0.1.1
 	sha256sums = SKIP

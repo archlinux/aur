@@ -8,7 +8,7 @@ arch=("any")
 url="https://github.com/hauke96/wiki2book"
 license=("GPL-3.0")
 depends=("pandoc" "imagemagick")
-optdepends=("ttf-dejavu: Font use in the default style")
+optdepends=("ttf-dejavu: Font used in the default style")
 makedepends=("go>=1.20")
 backup=()
 conflicts=()
