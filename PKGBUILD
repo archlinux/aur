@@ -6,7 +6,7 @@ gitver=v6.7.2
 patchver=20230105
 patchname=more-uarches-for-kernel-5.17+.patch
 pkgver=6.7.v.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -56,9 +56,6 @@ prepare() {
    echo "Applying $patch"
    git apply $patch || exit 2
   done <<< $(ls ../*.patch)
-
-  #Fix AMDGPU backlight faulty commit (hang bug)
-  git revert f90fb3a482d1d4705603ab6c320de0ccd611055c -n
 
   # get kernel version
   msg2 "Preparing kernel"
