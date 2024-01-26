@@ -8,7 +8,7 @@
 # Maintainer: Dominik Matuszek <dominik.matuszek@student.uj.edu.pl>
 # Maintainer: Kacper Topolski <kacper.topolski@student.uj.edu.pl>
 pkgname=anteater
-pkgver=0.0.0
+pkgver=0.0.1
 pkgrel=1
 pkgdesc="Tool for tracing program output and creating structured logs using plain text or html."
 arch=('x86_64')
@@ -16,17 +16,17 @@ url="https://github.com/Student-Team-Projects/Debugger.git"
 license=('GPL-3.0-or-later')
 depends=('libbpf' 'bpf' 'boost')
 makedepends=('make' 'clang')
-source=("debugger-2.0.0.zip::https://github.com/Student-Team-Projects/debugger/archive/refs/tags/v2.0.0.zip")
+source=("debugger-2.0.1.zip::https://github.com/Student-Team-Projects/debugger/archive/refs/tags/v2.0.1.zip")
 md5sums=("SKIP")
 noextract=()
 
 build() {
-    cd "debugger-2.0.0"
+    cd "debugger-2.0.1"
     make build
 }
 
 package() {
-    cd "debugger-2.0.0"
+    cd "debugger-2.0.1"
     mkdir -p $pkgdir/usr/bin
     cp bin/main $pkgdir/usr/bin/anteater
     chown root $pkgdir/usr/bin/anteater
