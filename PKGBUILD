@@ -1,12 +1,12 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=ktailctl
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 arch=(x86_64 aarch64)
 url='https://github.com/f-koehler/KTailctl'
 pkgdesc='GUI to monitor and manage Tailscale'
-license=(GPL3)
+license=(GPL-3.0-only)
 depends=(
   gcc-libs
   glibc
