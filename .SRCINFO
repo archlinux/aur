@@ -1,7 +1,7 @@
 pkgbase = qadwaitadecorations
 	pkgdesc = Qt decoration plugin implementing Adwaita-like client-side decorations
 	pkgver = 0.1.4
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/FedoraQt/QAdwaitaDecorations
 	arch = x86_64
 	license = LGPL2.1
