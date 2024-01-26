@@ -46,12 +46,3 @@ package() {
   install -Dm755 build/cherryctl -t "$pkgdir"/usr/bin/
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/cherryctl/LICENSE"
 }
-
-post_install() {
-  dir_path="$HOME/.config/cherry"
-  if [ ! -d "$dir_path" ] || [ -z "$(find "$dir_path" -maxdepth 1 -name '*.yaml' -print -quit)" ]; then
-    mkdir -p "$dir_path"
-    touch "$dir_path/default.yaml"
-  fi
-}
-
