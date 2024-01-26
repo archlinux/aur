@@ -5,15 +5,17 @@ pkgbase = panther-launcher-git
 	url = https://gitlab.com/rastersoft/panther_launcher
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = vala
 	makedepends = cmake
 	depends = gnome-menus
 	depends = libgee
+	depends = gtk3
+	depends = libsoup
 	depends = gnome-icon-theme
+	depends = mate-panel
 	source = panther-launcher-git::git+https://gitlab.com/rastersoft/panther_launcher
 	sha512sums = SKIP
 
 pkgname = panther-launcher-git
-
