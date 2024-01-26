@@ -2,18 +2,18 @@
 DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 
 pkgname=pulse-secure
-pkgver=22.3r1.0_b18209
+pkgver=22.6r1.0_b26825
 pkgrel=1
 pkgdesc='Ivanti Secure Access Client'
 arch=(x86_64)
 license=(custom)
 url='https://www.pulsesecure.net/'
-depends=(gcc-libs libgnome-keyring openssl curl dbus libbsd)
+depends=(gcc-libs libgnome-keyring openssl curl dbus libbsd dmidecode)
 install=${pkgname}.install
 source=(EULA.txt)
-source_x86_64=("https://gml.noaa.gov/aftp/pub/cornwall/VPN%20Client/old/ps-pulse-linux-22.3r1.0-b18209-64bit-installer.rpm")
+source_x86_64=("https://www.rz.uni-osnabrueck.de/fileadmin/user_upload/VPN/Software/ps-pulse-linux-22.6r1.0-b26825-64bit-installer.rpm")
 md5sums=('261848a28201e5386ec4bf587473a48b')
-md5sums_x86_64=('d9560c398dd1e7f2cf2d304a1e9d04f8')
+md5sums_x86_64=('30f3f1e3c60823afebc7a42faba1b5ef')
 optdepends=('psmisc: for pulsesvc -K', 'gtkmm3: for pulseUi', 'webkit2gtk: for pulseUi')
 conflicts=(pulse-connect-secure)
 
