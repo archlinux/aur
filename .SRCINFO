@@ -1,6 +1,6 @@
 pkgbase = mbpfan-git
 	pkgdesc = A simple daemon to control fan speed on all MacBook/MacBook Pros
-	pkgver = 2.3.0.r4.gd4473d4
+	pkgver = 2.4.0.r3.g0cb3c5a6
 	pkgrel = 1
 	url = https://github.com/linux-on-mac/mbpfan
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = mbpfan-git
 	makedepends = git
 	depends = glibc
 	provides = mbpfan
+	conflicts = mbpfan
 	backup = etc/mbpfan.conf
 	source = mbpfan-git::git+https://github.com/linux-on-mac/mbpfan.git
 	md5sums = SKIP
