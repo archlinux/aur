@@ -1,7 +1,8 @@
-# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Maintainer: Darius Niminenn <root@dnim.dev>
+# Contributor: Chih-Hsuan Yen <yan12125@gmail.com>
 
 pkgname=python-onnxoptimizer
-pkgver=0.3.6
+pkgver=0.3.18
 pkgdesc='ONNX model optimizer'
 pkgrel=1
 arch=(x86_64)
