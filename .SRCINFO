@@ -1,10 +1,10 @@
 pkgbase = r-exact2x2
 	pkgdesc = Exact Tests and Confidence Intervals for 2x2 Tables
-	pkgver = 1.6.8
-	pkgrel = 2
+	pkgver = 1.6.9
+	pkgrel = 1
 	url = https://cran.r-project.org/package=exact2x2
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-exact
 	checkdepends = r-testthat
 	depends = r-exactci
@@ -13,8 +13,8 @@ pkgbase = r-exact2x2
 	optdepends = r-ggplot2
 	optdepends = r-gridextra
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/exact2x2_1.6.8.tar.gz
-	md5sums = 8ad7aa8674eb114e77d9c3c811cf238c
-	sha256sums = 9717933a5baa86b242e1a611860f984f660c089c7b3f765fe14ca582a07b98f1
+	source = https://cran.r-project.org/src/contrib/exact2x2_1.6.9.tar.gz
+	md5sums = 8eb9778300f5710afacf556861b07ebc
+	b2sums = 183d46c95fc139fcb29c5737c4e40642854eb4a630dd63550de227b9b4be9a5ade87fe2be64337ee6bcb676535489cea885c3c92a542cac84a7ae0d3bad70f3a
 
 pkgname = r-exact2x2

@@ -2,14 +2,14 @@
 # Contributor: Kiri <kiri@vern.cc>
 
 _pkgname=exact2x2
-_pkgver=1.6.8
+_pkgver=1.6.9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Exact Tests and Confidence Intervals for 2x2 Tables"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-exactci
   r-ssanv
@@ -25,12 +25,12 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8ad7aa8674eb114e77d9c3c811cf238c')
-sha256sums=('9717933a5baa86b242e1a611860f984f660c089c7b3f765fe14ca582a07b98f1')
+md5sums=('8eb9778300f5710afacf556861b07ebc')
+b2sums=('183d46c95fc139fcb29c5737c4e40642854eb4a630dd63550de227b9b4be9a5ade87fe2be64337ee6bcb676535489cea885c3c92a542cac84a7ae0d3bad70f3a')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
