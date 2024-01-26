@@ -1,7 +1,8 @@
-# Maintainer: mosh5382 <arch@moshermail.com>
+# Contributor: mosh5382 <arch@moshermail.com>
+
 _name=aiohttp_retry
 pkgname=python-aiohttp-retry
-pkgver=2.4.5
+pkgver=2.8.3
 pkgrel=1
 pkgdesc="Simple aiohttp retry client"
 arch=('any')
@@ -11,9 +12,15 @@ depends=('python>=3.5' 'python-aiohttp')
 makedepends=('python-setuptools')
 options=('!emptydirs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/inyutin/aiohttp_retry/archive/v${pkgver}.tar.gz")
-md5sums=('2a99115b8728170d084376f80d326367')
+md5sums=('80f0687048306842dbf9c807124b26fd')
+
+
+build() {
+	cd "$_name-$pkgver"
+	python setup.py build
+}
 
 package() {
-	cd "$srcdir/$_name-${pkgver}"
+	cd "$_name-$pkgver"
 	python setup.py install --root="${pkgdir}/" --optimize=1
 }

@@ -1,6 +1,6 @@
 pkgbase = python-aiohttp-retry
 	pkgdesc = Simple aiohttp retry client
-	pkgver = 2.4.5
+	pkgver = 2.8.3
 	pkgrel = 1
 	url = https://github.com/inyutin/aiohttp_retry
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-aiohttp-retry
 	depends = python>=3.5
 	depends = python-aiohttp
 	options = !emptydirs
-	source = python-aiohttp-retry-2.4.5.tar.gz::https://github.com/inyutin/aiohttp_retry/archive/v2.4.5.tar.gz
-	md5sums = 2a99115b8728170d084376f80d326367
+	source = python-aiohttp-retry-2.8.3.tar.gz::https://github.com/inyutin/aiohttp_retry/archive/v2.8.3.tar.gz
+	md5sums = 80f0687048306842dbf9c807124b26fd
 
 pkgname = python-aiohttp-retry
