@@ -1,0 +1,11 @@
+pkgbase = leetgo
+	pkgdesc = Best LeetCode friend for geek.
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/j178/leetgo
+	arch = x86_64
+	license = MIT
+	source = https://github.com/j178/leetgo/releases/download/v1.4/leetgo_linux_x86_64.tar.gz
+	sha256sums = 4c533252dbae45eeb1b540617011931bb2bfe0b958be0839d9b5a71a60c2fd00
+
+pkgname = leetgo
