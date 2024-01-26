@@ -1,7 +1,7 @@
 # Maintainer: Lucas Werkmeister <mail@lucaswerkmeister.de>
 
 pkgname=python-imblearn
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='A Python Package to Tackle the Curse of Imbalanced Datasets in Machine Learning'
 arch=(any)
@@ -11,13 +11,16 @@ depends=(
     'python-numpy'
     'python-scipy'
     'python-scikit-learn'
+    'python-joblib'
+    'python-threadpoolctl'
 )
 optdepends=(
+    'python-pandas'
     'python-keras-applications'
     'python-tensorflow'
 )
 source=("https://github.com/scikit-learn-contrib/imbalanced-learn/archive/${pkgver}.tar.gz")
-sha256sums=('042ff87a7dba628d28f2dc78512cf17aa1a26d11aeba44f3ce8ee931edc1343b')
+sha256sums=('7b198c2606c9ab3eb8231ac14e4ce858bf4ffc0b465bf3f7fabba606de7f89e9')
 
 package() {
   cd "${srcdir}/imbalanced-learn-${pkgver}"

@@ -1,6 +1,6 @@
 pkgbase = python-imblearn
 	pkgdesc = A Python Package to Tackle the Curse of Imbalanced Datasets in Machine Learning
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://imbalanced-learn.org/
 	arch = any
@@ -8,9 +8,12 @@ pkgbase = python-imblearn
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-scikit-learn
+	depends = python-joblib
+	depends = python-threadpoolctl
+	optdepends = python-pandas
 	optdepends = python-keras-applications
 	optdepends = python-tensorflow
-	source = https://github.com/scikit-learn-contrib/imbalanced-learn/archive/0.11.0.tar.gz
-	sha256sums = 042ff87a7dba628d28f2dc78512cf17aa1a26d11aeba44f3ce8ee931edc1343b
+	source = https://github.com/scikit-learn-contrib/imbalanced-learn/archive/0.12.0.tar.gz
+	sha256sums = 7b198c2606c9ab3eb8231ac14e4ce858bf4ffc0b465bf3f7fabba606de7f89e9
 
 pkgname = python-imblearn
