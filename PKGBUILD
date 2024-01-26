@@ -3,13 +3,13 @@
 
 _pkgname="xdg-desktop-portal-hyprland"
 pkgname="${_pkgname}-git"
-pkgver=r349.1c80212
+pkgver=r359.5a59264
 pkgrel=1
 epoch=1
 pkgdesc="xdg-desktop-portal backend for hyprland"
 url="https://github.com/hyprwm/xdg-desktop-portal-hyprland"
 arch=(x86_64)
-license=(custom:MIT)
+license=(BSD)
 provides=("${pkgname%-git}" "xdg-desktop-portal-impl" "xdg-desktop-portal-wlr")
 conflicts=("${pkgname%-git}" "xdg-desktop-portal-wlr")
 depends=(pipewire libinih qt6-base qt6-wayland sdbus-cpp hyprlang)
@@ -33,11 +33,15 @@ pkgver() {
   )
 }
 
-build() {
+prepare() {
 	cd "${srcdir}/${_pkgname}"
 	git submodule update --init
-	cmake --no-warn-unused-cli -DCMAKE_INSTALL_LIBEXECDIR:STRING=/usr/lib -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH="${pkgdir}/usr" -S . -B ./build
-	cmake --build ./build --config Release --target all -j`nproc 2>/dev/null || getconf NPROCESSORS_CONF`
+}
+
+build() {
+	cd "${srcdir}/${_pkgname}"
+	cmake --no-warn-unused-cli -DCMAKE_INSTALL_LIBEXECDIR:STRING=${pkgdir}/usr/lib -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH="${pkgdir}/usr" -S . -B ./build
+	cmake --build ./build --config Release --target all
 }
 
 package() {
