@@ -5,7 +5,7 @@
 # Contributor: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=elasticdump
-pkgver=6.108.1
+pkgver=6.110.0
 pkgrel=1
 pkgdesc="Import and export tools for Elasticsearch"
 arch=(any)
@@ -14,7 +14,7 @@ license=("Apache")
 depends=('nodejs>=8.0')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('f8659c525909168cbd8776340fe4e1a3d5ef798bfe341a69825c1637dd58d7b4')
+sha256sums=('6a6a9d7cec07f68347af38419b8343cc3590e685ed352e9d78c5410fbfd6d6ed')
 noextract=("$pkgname-$pkgver.tgz")
 
 package() {
