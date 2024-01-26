@@ -4,7 +4,7 @@ pkgbase = jdtls
 	pkgrel = 1
 	url = https://github.com/eclipse/eclipse.jdt.ls
 	arch = any
-	license = EPL
+	license = EPL-2.0
 	depends = java-runtime>=17
 	optdepends = python: for the official launcher script
 	source = https://download.eclipse.org/jdtls/milestones/1.31.0/jdt-language-server-1.31.0-202401111522.tar.gz

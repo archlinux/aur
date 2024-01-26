@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Eclipse Java language server"
 arch=(any)
 url="https://github.com/eclipse/eclipse.jdt.ls"
-license=('EPL')
+license=('EPL-2.0')
 depends=('java-runtime>=17')
 optdepends=('python: for the official launcher script')
 makedepends=()
