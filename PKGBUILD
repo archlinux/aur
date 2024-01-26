@@ -3,17 +3,17 @@
 #
 pkgname=go4
 _Pkgname=Go4
-pkgver=6.2.0
+pkgver=6.3.0
 pkgrel=1
 pkgdesc='Object-oriented system (GSI Object Oriented On-line Off-line system) based on ROOT'
 arch=('x86_64')
 makedepends=('cmake')
-depends=('root' 'qt5-webengine' 'hdf5')
+depends=('root' 'qt6-webengine' 'hdf5' 'cern-vdt')
 conflicts=('mbseventapi')
 url="https://www.gsi.de/en/work/research/experiment_electronics/data_processing/data_analysis/the_go4_home_page.htm"
 license=('GPL')
 source=("http://web-docs.gsi.de/~go4/download/go4-${pkgver}.tar.gz")
-sha256sums=('5742ae0eec0fee7e61763b8fe940b568d4983be2abbff1b99b6937cccfcddd09')
+sha256sums=('93cf8fe4ddcb9e2e494ebe8c8cf1df2ddf25cbc1bc64f3cc7dc09348c26e3841')
 
 prepare() {
 
@@ -44,6 +44,13 @@ prepare() {
 
 build() {
 
+# took from /etc/makepkg.conf but -Werror=format-security removed
+
+CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions \
+        -Wp,-D_FORTIFY_SOURCE=2 -Wformat \
+        -fstack-clash-protection -fcf-protection"
+CXXFLAGS="$CFLAGS -Wp,-D_GLIBCXX_ASSERTIONS"
+
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
@@ -51,9 +58,11 @@ build() {
          cmake \
          -DCMAKE_INSTALL_PREFIX=/usr \
          -DGO4_PLATFORM=Linux \
-         -DGO4_QTVERSION=Qt5 \
+         -DGO4_QTVERSION=Qt6 \
          -Ddabc=ON \
          -Dhdf5=ON \
+         -Droot7=ON \
+         -Dqt6web=ON \
          ../go4-${pkgver}
 
   make
