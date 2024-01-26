@@ -1,16 +1,17 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=doubletrouble
-_pkgver=1.2.1
+_pkgver=1.2.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Identification and classification of duplicated genes"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-annotationdbi
+  r-biocparallel
   r-biostrings
   r-genomicfeatures
   r-genomicranges
@@ -30,12 +31,12 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e494ee8650e6c8a13c7149c68683bea8')
-sha256sums=('907a504886fc6f1b6c1a33dec6326a9f118296f66db969d0fbec6a76888c0376')
+md5sums=('254b85e757da32c48112ef3bbd05c605')
+b2sums=('cebe284c80e86f1899656f4373d7faedc79d1ddfba92da0ce8215d07556a67a8668b13883d69e7aff5caf3b9e2709d8219af06b3143cf3ab3c9e224f0f91243d')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
