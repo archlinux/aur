@@ -32,7 +32,23 @@ package() {
   cd $pkgname
 
   # static files for cockpit to serve
-  install -dDm644 "public" "${pkgdir}/usr/share/cockpit/composer"
+  install -Dm644 public/main.css "${pkgdir}/usr/share/cockpit/composer/main.css"
+  install -Dm644 public/index.html "${pkgdir}/usr/share/cockpit/composer/index.html"
+  install -Dm644 public/main.js "${pkgdir}/usr/share/cockpit/composer/index.html"
+  install -Dm644 public/translations_compiled_cs_json.main.js "${pkgdir}/usr/share/cockpit/composer/index.html"
+  install -Dm644 public/translations_compiled_de_json.main.js "${pkgdir}/usr/share/cockpit/composer/translations_compiled_de_json.main.js"
+  install -Dm644 public/translations_compiled_en_json.main.js "${pkgdir}/usr/share/cockpit/composer/translations_compiled_en_json.main.js"
+  install -Dm644 public/translations_compiled_fr_json.main.js "${pkgdir}/usr/share/cockpit/composer/translations_compiled_fr_json.main.js"
+  install -Dm644 public/translations_compiled_ja_json.main.js "${pkgdir}/usr/share/cockpit/composer/translations_compiled_ja_json.main.js"
+  install -Dm644 public/translations_compiled_ka_json.main.js "${pkgdir}/usr/share/cockpit/composer/translations_compiled_ka_json.main.js"
+  install -Dm644 public/translations_compiled_ko_json.main.js "${pkgdir}/usr/share/cockpit/composer/translations_compiled_ko_json.main.js"
+  install -Dm644 public/translations_compiled_tr_json.main.js "${pkgdir}/usr/share/cockpit/composer/translations_compiled_tr_json.main.js"
+  install -Dm644 public/translations_compiled_uk_json.main.js "${pkgdir}/usr/share/cockpit/composer/translations_compiled_uk_json.main.js"
+  install -Dm644 public/translations_compiled_zh_CN_json.main.js "${pkgdir}/usr/share/cockpit/composer/translations_compiled_zh_CN_json.main.js"
+  install -Dm644 public/manifest.json "${pkgdir}/usr/share/cockpit/composer/manifest.json"
+  install -Dm644 public/io.weldr.cockpit-composer.metainfo.xml "${pkgdir}/usr/share/cockpit/composer/io.weldr.cockpit-composer.metainfo.xml"
+  
+  # metainfo
   mkdir -p "${pkgdir}/usr/share/metainfo/"
   appstream-util validate-relax --nonet public/io.weldr.cockpit-composer.metainfo.xml
   install -Dm644 "public/io.weldr.cockpit-composer.metainfo.xml" "${pkgdir}/usr/share/metainfo/" 
