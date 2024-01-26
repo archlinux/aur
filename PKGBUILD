@@ -4,7 +4,7 @@
 
 _pkgname='ksh93'
 pkgname="${_pkgname}-git"
-pkgver=r1496.4dacec27
+pkgver=r1546.e63febac
 pkgrel=1
 pkgdesc="KornShell 93u+m, fork based on ksh 93u+"
 arch=('x86_64')
@@ -27,7 +27,13 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	test -n "${CFLAGS}" || CFLAGS=-Os      # Fallback to default ksh flags if necessary
+	test -n "${CFLAGS}" || CFLAGS=-O2  # Generic fallback is used only when necessary
+
+	# Build with SHOPT_ALL_LIBCMD (aka enable all ksh builtins) if
+	# ${_all_libcmd} is set to '1' or 'yes'.
+	if [[ ${_all_libcmd} == 1 || ${_all_libcmd} == yes ]]; then
+		sed -i 's/ALL_LIBCMD=0/ALL_LIBCMD=1/g' src/cmd/ksh93/SHOPT.sh
+	fi
 	./bin/package make CCFLAGS="${CFLAGS}"
 }
 
