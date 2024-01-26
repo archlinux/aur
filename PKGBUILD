@@ -36,11 +36,12 @@ build() {
 	mkdir build && cd build
 	cmake .. -DMOAB_DIR=/opt/MOAB \
 		 -DCMAKE_INSTALL_PREFIX=/opt/double-down
-	_ccores=`cat /proc/cpuinfo |grep CPU|wc -l`
-  	if [ "x$1" != "x" ]; then
-		_ccores=$1
-  	fi
-	make -j ${_ccores}
+	_ccores=$(nproc)
+        if [ -z "${_ccores}" ]; then
+           make
+        else
+           make -j ${_ccores}
+        fi
 }
 
 package() {
