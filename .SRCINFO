@@ -1,6 +1,6 @@
 pkgbase = irssi-scripts-git
 	pkgdesc = Scripts for Irssi "http://scripts.irssi.org"
-	pkgver = r2195.02fd85b5
+	pkgver = r2225.b6e5be94
 	pkgrel = 1
 	url = https://github.com/irssi/scripts.irssi.org
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = irssi-scripts-git
 	depends = irssi
 	depends = perl
 	conflicts = irssi-scripts
-	source = irssi-scripts-git::git+https://github.com/irssi/scripts.irssi.org.git
+	source = irssi-scripts-git::git+https://github.com/irssi/scripts.irssi.org
 	md5sums = SKIP
 
 pkgname = irssi-scripts-git

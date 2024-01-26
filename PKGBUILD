@@ -1,15 +1,15 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=irssi-scripts-git
-pkgver=r2195.02fd85b5
+pkgver=r2225.b6e5be94
 pkgrel=1
-pkgdesc="Scripts for Irssi \"http://scripts.irssi.org\""
+pkgdesc='Scripts for Irssi "http://scripts.irssi.org"'
 arch=('i686' 'x86_64')
-url="https://github.com/irssi/scripts.irssi.org"
+url='https://github.com/irssi/scripts.irssi.org'
 license=('various')
 depends=('irssi' 'perl')
 makedepends=('git')
-conflicts=('irssi-scripts')
-source=("$pkgname::git+https://github.com/irssi/scripts.irssi.org.git")
+conflicts=("${pkgname%-*}")
+source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
 pkgver() {
