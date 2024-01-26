@@ -1,6 +1,6 @@
 pkgbase = vintagestory
 	pkgdesc = Uncompromising wilderness survival sandbox game (requires paid account)
-	pkgver = 1.19.1
+	pkgver = 1.19.3
 	pkgrel = 1
 	url = https://www.vintagestory.at/
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = vintagestory
 	depends = opengl-driver
 	depends = openal
 	depends = glibc>=2.34
-	source = https://cdn.vintagestory.at/gamefiles/stable/vs_client_linux-x64_1.19.1.tar.gz
+	source = https://cdn.vintagestory.at/gamefiles/stable/vs_client_linux-x64_1.19.3.tar.gz
 	source = vintagestory.desktop
 	source = vsmodinstall-handler.desktop
-	md5sums = fef6c423ca718a2438c5b80c3204e795
+	md5sums = b5fe2789d088ca6bd6de9e88a0f8adcc
 	md5sums = 26ff9ca4fb0a583589f26f2c274d4ec6
 	md5sums = e77871150115253e0d8c31b77a274182
 
