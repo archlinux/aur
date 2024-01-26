@@ -8,7 +8,7 @@
 pkgname=hyper-git
 _pkgname=Hyper
 pkgver=4.0.0.canary.5.r298.g2207fa95
-_electronversion=24
+_electronversion=22
 pkgrel=1
 pkgdesc="A terminal built on web technologies"
 arch=('any')
