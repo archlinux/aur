@@ -1,6 +1,6 @@
 pkgbase = systemd-chromiumos
-	pkgver = 255.2
-	pkgrel = 2
+	pkgver = 255.3
+	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
 	checkdepends = python-pefile
@@ -51,7 +51,7 @@ pkgbase = systemd-chromiumos
 	makedepends = qrencode
 	makedepends = lib32-gcc-libs
 	options = strip
-	source = git+https://github.com/systemd/systemd-stable#tag=be88ad03366b8aa059bb72b39a270128ba62b428?signed
+	source = git+https://github.com/systemd/systemd-stable#tag=8cf1da1e9172ba04d90a483a63118873343ea656?signed
 	source = git+https://github.com/systemd/systemd#tag=v255?signed
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
 	source = 0002-Disable-mount_nofollow-for-ChromiumOS-kernels.patch
@@ -153,9 +153,9 @@ pkgname = systemd-chromiumos
 	optdepends = libp11-kit: support PKCS#11
 	optdepends = tpm2-tss: unlocking LUKS2 volumes with TPM2
 	provides = nss-myhostname
-	provides = systemd-tools=255.2
-	provides = udev=255.2
-	provides = systemd=255.2
+	provides = systemd-tools=255.3
+	provides = udev=255.3
+	provides = systemd=255.3
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -194,7 +194,7 @@ pkgname = systemd-chromiumos-libs
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
-	provides = systemd-libs=255.2
+	provides = systemd-libs=255.3
 	conflicts = libsystemd
 	conflicts = systemd-libs
 	replaces = libsystemd
@@ -205,7 +205,7 @@ pkgname = systemd-chromiumos-resolvconf
 	depends = systemd-chromiumos
 	provides = openresolv
 	provides = resolvconf
-	provides = systemd-resolvconf=255.2
+	provides = systemd-resolvconf=255.3
 	conflicts = resolvconf
 	conflicts = systemd-resolvconf
 
@@ -213,7 +213,7 @@ pkgname = systemd-chromiumos-sysvcompat
 	pkgdesc = sysvinit compat for systemd - chromiumos patches
 	license = GPL2
 	depends = systemd-chromiumos
-	provides = systemd-sysvcompat=255.2
+	provides = systemd-sysvcompat=255.3
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 
@@ -227,5 +227,5 @@ pkgname = systemd-chromiumos-ukify
 	optdepends = python-pillow: Show the size of splash image
 	optdepends = sbsigntools: Sign the embedded kernel
 	provides = ukify
-	provides = systemd-ukify=255.2
+	provides = systemd-ukify=255.3
 	conflicts = systemd-ukify
