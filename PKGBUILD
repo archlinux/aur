@@ -3,7 +3,7 @@
 
 pkgname='leetgo-bin'
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='leetgo is a command line tool for leetcode.com. It can help you to login, submit, test, and view your submissions.'
 url='https://github.com/j178/leetgo'
 arch=('aarch64' 'x86_64')
