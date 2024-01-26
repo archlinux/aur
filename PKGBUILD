@@ -7,7 +7,7 @@
 
 pkgname=qaac-wine
 _pkgname=qaac
-pkgver=2.80
+pkgver=2.81
 pkgrel=1
 pkgdesc="QuickTime AAC/ALAC encoder (wine version)"
 arch=('x86_64')
@@ -15,16 +15,16 @@ url="https://github.com/nu774/qaac"
 license=('custom')
 depends=('wine')
 makedepends=('p7zip' 'wine' 'winetricks' 'binutils')
-source=("https://github.com/nu774/qaac/releases/download/v${pkgver}/qaac_${pkgver}.zip"
+source=("https://github.com/nu774/qaac/releases/download/${pkgver}/qaac_${pkgver}.zip"
         "iTunes64Setup.exe::https://www.apple.com/itunes/download/win64"
         "https://raw.githubusercontent.com/nu774/qaac/master/COPYING"
         "https://www.apple.com/legal/sla/docs/iTunesWindows.pdf"
         "wrapper.sh")
-sha256sums=('1a746d7d68fe8429c99ee172ac4e8640d11e80909be47567ae24b6ad99bddae9'
+sha256sums=('94de510c8b8dd47f752d53a976bd3ba8691fd6f821075e6fa170ce1f1bc8dc5e'
             'SKIP'
             'SKIP'
             'SKIP'
-            'b56ba8ca4a9f0fef6e0c636a4ee26a9c6a17f1e7ba301aef56fc7ddc0854be42')
+            '6591c998319680a4474ee93ffc3a50c9be143e53f2e636d8fe66538cde6aa1e3')
 
 extract_filename() {
     if [ "$(head -c 2 "$1" | tr -d '\0')" == "MZ" ]; then
@@ -49,6 +49,15 @@ build() {
             mv "$f" "$filename"
         fi
     done
+}
+
+check() {
+    export WINEDEBUG=-all
+    export WINEPATH="${srcdir}"
+    export WINEPREFIX="${srcdir}/wineprefix"
+
+    wine "${srcdir}/qaac_${pkgver}/x64/qaac64.exe" --check && \
+    wine "${srcdir}/qaac_${pkgver}/x64/refalac64.exe" --check
 }
 
 package() {
