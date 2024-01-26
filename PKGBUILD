@@ -180,9 +180,9 @@ build() {
         --proton-sdk-image="" \
         --build-name="${pkgname}"
 
-    local -a split=($CFLAGS)
-    local -A flags
-    for opt in "${split[@]}"; do flags["${opt%%=*}"]="${opt##*=}"; done
+#    local -a split=($CFLAGS)
+#    local -A flags
+#    for opt in "${split[@]}"; do flags["${opt%%=*}"]="${opt##*=}"; done
     local march="${flags["-march"]:-nocona}"
     local mtune="${flags["-mtune"]:-core-avx2}"
 
