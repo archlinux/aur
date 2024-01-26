@@ -12,7 +12,7 @@
 _pkgname="floorp"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=11.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
 arch=('x86_64')
@@ -27,8 +27,8 @@ _main_package() {
     libevent
     libjpeg
     libpulse
-    libvpx
-    libwebp
+    libvpx.so
+    libwebp.so
     libxss
     libxt
     mime-types
@@ -167,7 +167,7 @@ export MOZ_APP_REMOTINGNAME=$_pkgname
 # Floorp Upstream
 ac_add_options --enable-proxy-bypass-protection
 ac_add_options --enable-unverified-updates
-ac_add_options --with-l10n-base="$PWD/floorp/browser/locales/l10n-central"
+ac_add_options --with-l10n-base=${PWD@Q}/floorp/browser/locales/l10n-central
 MOZ_REQUIRE_SIGNING=
 
 # Keys
@@ -269,7 +269,7 @@ build() {
       echo "Profiling instrumented browser..."
       ./mach package
 
-      LLVM_PROFDATA=llvm-profdata JARLOG_FILE="$PWD/jarlog" \
+      LLVM_PROFDATA=llvm-profdata JARLOG_FILE=${PWD@Q}/jarlog \
         wlheadless-run -c weston --width=1920 --height=1080 \
         -- ./mach python build/pgo/profileserver.py
 
@@ -283,7 +283,7 @@ build() {
     if [[ -s merged.profdata ]] ; then
       stat -c "Profile data found (%s bytes)" merged.profdata
       echo >>.mozconfig "ac_add_options --enable-profile-use=cross"
-      echo >>.mozconfig "ac_add_options --with-pgo-profile-path='${PWD@Q}/merged.profdata'"
+      echo >>.mozconfig "ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata"
 
       # save profdata for reuse
       cp --reflink=auto -f merged.profdata "$_old_profdata"
@@ -293,7 +293,7 @@ build() {
 
     if [[ -s jarlog ]] ; then
       stat -c "Jar log found (%s bytes)" jarlog
-      echo >>.mozconfig "ac_add_options --with-pgo-jarlog='${PWD@Q}/jarlog'"
+      echo >>.mozconfig "ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog"
 
       # save jarlog for reuse
       cp --reflink=auto -f jarlog "$_old_jarlog"
