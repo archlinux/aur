@@ -1,7 +1,7 @@
 # Maintainer: Thomas Girod <tgirod@altu.fr>
 pkgname=overwitch
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 epoch=
 pkgdesc="JACK client for Overbridge devices"
 arch=('x86_64')
@@ -47,4 +47,4 @@ package() {
 	cp udev/*.hwdb $pkgdir/usr/lib/udev/hwdb.d/
 }
 
-sha256sums=('7b2c7a873640bfa2fbbd5fe76d72d00438615cd474f08a8b5ba990c37d1a2ba0')
+sha256sums=('e137da0a1150fc227481e1adf05306733e8313c3c8adf205ad3e1cf77afb3b0e')
