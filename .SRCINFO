@@ -1,0 +1,19 @@
+pkgbase = pqrs-bin
+	pkgdesc = Command line tool for inspecting Parquet files
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/manojkarthick/pqrs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	depends = glibc
+	depends = gcc-libs
+	provides = pqrs
+	conflicts = pqrs
+	source_x86_64 = https://github.com/manojkarthick/pqrs/releases/download/v0.3.1/pqrs-0.3.1-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = 329ed189fecb7e2919f8013db7b746905d0c735abc42048dec3f7695a84f732c
+	source_aarch64 = https://github.com/manojkarthick/pqrs/releases/download/v0.3.1/pqrs-0.3.1-aarch64-unknown-linux-gnu.zip
+	sha256sums_aarch64 = d1c5c74ebde7b24178de780e00e6d155a599f1fae928f59b19f8c3b158adb7d9
+
+pkgname = pqrs-bin
