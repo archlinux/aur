@@ -3,6 +3,7 @@ pkgbase = ne
 	pkgver = 3.3.3
 	pkgrel = 1
 	url = http://ne.di.unimi.it
+	arch = aarch64
 	arch = i686
 	arch = x86_64
 	license = GPL3
