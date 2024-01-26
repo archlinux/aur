@@ -1,6 +1,6 @@
 # Maintainer: Oliver Gasser <oliver@flowriver.net>
 pkgname=silk
-pkgver=3.22.1
+pkgver=3.22.2
 pkgrel=1
 pkgdesc="The System for Internet Level Knowledge (SiLK) is an efficient network flow collection and storage infrastructure that will accept flow data from a variety of sensors. SiLK also provides a suite of efficient command-line tools for analysis."
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://tools.netsa.cert.org/silk/index.html"
 license=('GPL')
 source=("https://tools.netsa.cert.org/releases/$pkgname-$pkgver.tar.gz")
 noextract=()
-sha256sums=('e10096e9fa4ef4980cfff300b8f7a0aed6a8e8f172b444e43dd79ed7e05a7e02')
+sha256sums=('81b38f3e648bcc9125124df69516d9c157e28e1efe693bd2ff57212e9ca10af3')
 
 build() {
   cd "$pkgname-$pkgver"
