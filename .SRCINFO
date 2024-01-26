@@ -1,14 +1,15 @@
 pkgbase = r-ggm
 	pkgdesc = Graphical Markov Models with Mixed Graphs
-	pkgver = 2.5
-	pkgrel = 4
+	pkgver = 2.5.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=ggm
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-2.0-only
+	depends = r-biocmanager
 	depends = r-graph
 	depends = r-igraph
-	source = https://cran.r-project.org/src/contrib/ggm_2.5.tar.gz
-	sha256sums = b1a153c9f6c036f364a0561dd4e22039d40ed75eb5e8e91bf0cd0b39c5348c87
+	source = https://cran.r-project.org/src/contrib/ggm_2.5.1.tar.gz
+	md5sums = db8c249f2c58705be639f0757e9dfaad
+	b2sums = a10949cc802c3948d463f19d62c6342ce72daaccd8bf80a058574c88206c0ba1461e33a1950fde1dfbc687d65d8d83e73f0bde11fac119336d95b6deff5fd92b
 
 pkgname = r-ggm

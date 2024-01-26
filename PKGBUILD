@@ -1,28 +1,29 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggm
-_pkgver=2.5
+_pkgver=2.5.1
 pkgname=r-${_pkgname,,}
-pkgver=2.5
-pkgrel=4
-pkgdesc='Graphical Markov Models with Mixed Graphs'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=1
+pkgdesc="Graphical Markov Models with Mixed Graphs"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
+  r-biocmanager
   r-graph
   r-igraph
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b1a153c9f6c036f364a0561dd4e22039d40ed75eb5e8e91bf0cd0b39c5348c87')
+md5sums=('db8c249f2c58705be639f0757e9dfaad')
+b2sums=('a10949cc802c3948d463f19d62c6342ce72daaccd8bf80a058574c88206c0ba1461e33a1950fde1dfbc687d65d8d83e73f0bde11fac119336d95b6deff5fd92b')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
