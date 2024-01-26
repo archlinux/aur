@@ -1,8 +1,8 @@
 pkgbase = trycatch-c
 	pkgdesc = This module offers a straightforward macro interface that facilitates seamless exception handling in the C programming language, drawing inspiration from the paradigm employed in C++.
-	pkgver = 1.3.0
-	pkgrel = 2
-	url = https://github.com/alecksandr26/trycatch-c/archive/refs/tags/v1.3.0.tar.gz
+	pkgver = 1.3.1
+	pkgrel = 3
+	url = https://github.com/alecksandr26/trycatch-c/archive/refs/tags/v1.2.0.tar.gz
 	arch = x86_64
 	license = MIT License
 	makedepends = gcc
@@ -12,7 +12,7 @@ pkgbase = trycatch-c
 	makedepends = coreutils
 	makedepends = nasm
 	optdepends = valgrind
-	source = trycatch-c-1.3.0.tar.gz::https://github.com/alecksandr26/trycatch-c/archive/refs/tags/v1.3.0.tar.gz
+	source = trycatch-c-1.3.1.tar.gz::https://github.com/alecksandr26/trycatch-c/archive/refs/tags/v1.2.0.tar.gz
 	md5sums = SKIP
 
 pkgname = trycatch-c
