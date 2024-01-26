@@ -1,6 +1,6 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
-pkgname=qserial
+pkgname=qserial-git
 pkgver=1.2.r0.g82c1af2
 pkgrel=1
 pkgdesc="An advanced cross-platform serial port utility"

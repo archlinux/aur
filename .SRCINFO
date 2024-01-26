@@ -1,6 +1,6 @@
-pkgbase = qserial
+pkgbase = qserial-git
 	pkgdesc = An advanced cross-platform serial port utility
-	pkgver = 1.2
+	pkgver = 1.2.r0.g82c1af2
 	pkgrel = 1
 	url = https://github.com/tuna/QSerial
 	arch = aarch64
@@ -19,9 +19,9 @@ pkgbase = qserial
 	depends = qt6-serialport
 	provides = qserial
 	conflicts = qserial
-	source = qserial::git+https://github.com/tuna/QSerial.git
+	source = qserial-git::git+https://github.com/tuna/QSerial.git
 	source = qserial.desktop
 	sha256sums = SKIP
 	sha256sums = 26d2b87276ab02ba15cc5d947721bde4fab7378d139ecb308ae70a0652ed394c
 
-pkgname = qserial
+pkgname = qserial-git
