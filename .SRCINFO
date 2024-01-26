@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-brotli
 	pkgdesc = Brotli compression library (mingw-w64)
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/brotli.git
 	arch = any
 	license = MIT
