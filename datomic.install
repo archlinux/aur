@@ -4,11 +4,12 @@ pre_install() {
 
 post_install() {
     chown -R datomic /var/lib/datomic
+    chown -R datomic /var/log/datomic
 }
 
 pre_remove() {
-    systemctl stop datomic-free
-    systemctl disable datomic-free
+    systemctl stop datomic
+    systemctl disable datomic
 }
 
 post_remove() {

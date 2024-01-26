@@ -1,10 +1,10 @@
 [Unit]
-Description = Datomic (Free Edition)
+Description = Datomic Pro
 
 [Service]
 User = datomic
 Type = simple
-ExecStart = /usr/lib/datomic/bin/transactor -Xmx4G -Xms1G /usr/lib/datomic/config/transactor.properties
+ExecStart = /opt/datomic/bin/transactor -Xmx4G -Xms1G /etc/datomic/transactor.properties
 Restart = always
 
 [Install]
