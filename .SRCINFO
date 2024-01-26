@@ -1,0 +1,21 @@
+pkgbase = musicfree-desktop-git
+	pkgdesc = 插件化、定制化、无广告的免费音乐播放器
+	pkgver = 0.0.3.r2.gba906a2
+	pkgrel = 1
+	url = http://musicfree.upup.fun/
+	arch = any
+	license = GPL-1.0-only
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	depends = electron25
+	depends = libvips
+	conflicts = musicfree-desktop
+	options = !strip
+	source = musicfree-desktop.git::git+https://github.com/maotoumao/MusicFreeDesktop.git
+	source = musicfree-desktop.sh
+	sha256sums = SKIP
+	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
+
+pkgname = musicfree-desktop-git
