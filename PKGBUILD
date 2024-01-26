@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-forge-git
 _uuid=forge@jmmaranan.com
-pkgver=77.r44.g06777a7
+pkgver=77.r48.g42b5290
 pkgrel=1
 pkgdesc="Tiling and Window Manager for Gnome-Shell"
 arch=('any')
@@ -17,13 +17,6 @@ sha256sums=('SKIP')
 pkgver() {
   cd forge
   git describe --long --tags | sed 's/^v44-//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd forge
-
-  # Causing build failure
-  git revert -n cbe78c739fa7efc11e70d8c26f5738d61b8047f3
 }
 
 build() {
