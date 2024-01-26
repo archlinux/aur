@@ -1,13 +1,13 @@
 pkgbase = r-htmlutils
 	pkgdesc = Facilitates Automated HTML Report Creation
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://cran.r-project.org/package=HTMLUtils
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-r2html
-	source = https://cran.r-project.org/src/contrib/HTMLUtils_0.1.8.tar.gz
-	sha256sums = 3febe6d23c53ae0923ed0000586ae795de27a4132aa017b5490cf7bda267d0c9
+	source = https://cran.r-project.org/src/contrib/HTMLUtils_0.1.9.tar.gz
+	sha256sums = 14e92d45743a9adf21aab726be7d1aacdc901eae443da896b149a657183a8ec4
 
 pkgname = r-htmlutils
