@@ -1,6 +1,6 @@
 pkgbase = fuse-ext2
 	pkgdesc = A multi OS FUSE module to mount ext2, ext3 and ext4 file system devices and/or images with read write support
-	pkgver = 0.0.10
+	pkgver = 0.0.11
 	pkgrel = 1
 	url = https://github.com/alperakcan/fuse-ext2
 	arch = i686
@@ -8,12 +8,12 @@ pkgbase = fuse-ext2
 	arch = arm
 	arch = armv6h
 	arch = armv7h
-	license = GPL2
+	license = GPL-2.0-only
 	depends = fuse2
 	depends = e2fsprogs
+	depends = glibc
 	conflicts = fuse-ext2-git
-	source = https://github.com/alperakcan/fuse-ext2/archive/v0.0.10.tar.gz
-	sha512sums = b884c0f92b706ae3f03dd75f489990e7cea31fd68526ade48ab5a11e1c9f78ec02a4dbb82450ce2aca12742a799c334a3ab8f2443a96ad003a76f0a86567fa24
+	source = https://github.com/alperakcan/fuse-ext2/archive/v0.0.11.tar.gz
+	sha512sums = 2307eb7db8a9f52cbab3fa4b0dfac0d6804d476002661cc0a97b870bbac1e80dfc92bf8759612e5fe2919af2214d921cc43764252739f336060cc91f08179b06
 
 pkgname = fuse-ext2
-
