@@ -9,8 +9,8 @@ url="https://tataratat.github.io/${_base}"
 license=(MIT)
 arch=(any)
 depends=(python-numpy)
-makedepends=(python-build python-installer python-setuptools python-wheel git)
-checkdepends=(python-pytest python-scipy)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+checkdepends=(python-pytest-fixture-config python-napf)
 optdepends=('python-vedo: for renderer and visualization'
   'python-scipy: for create k-d tree'
   'python-meshio: for load and export numerous mesh formats'
@@ -28,11 +28,12 @@ check() {
   cd ${_base}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest
+  test-env/bin/python -m pytest tests
 }
 
 package() {
   cd ${_base}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
