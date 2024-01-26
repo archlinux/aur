@@ -8,18 +8,18 @@ pkgdesc="Smassh your Keyboard, TUI Edition"
 url="https://github.com/kraanzu/smassh"
 arch=('any')
 license=('GPL-3.0')
-depends=('python' 'git' 'xclip')
+depends=('python' 'git')
 makedepends=()
-source=("https://github.com/kraanzu/dooit/releases/download/v${pkgver}/linux-smassh")
+source=("${url}/releases/download/v${pkgver}/linux-${pkgname}")
 sha256sums=('SKIP')
 
 prepare() {
     cd "${srcdir}"
-    chmod +x linux-smassh
-    mv linux-smassh smassh
+    chmod +x "linux-${pkgname}"
+    mv "linux-${pkgname}" "${pkgname}"
 }
 
 package() {
-    install -Dm0755 "$pkgname" "$pkgdir/usr/bin/smassh"
+    install -Dm0755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
 
