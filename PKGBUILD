@@ -2,12 +2,12 @@
 # Contributor: kpcyrd <kpcyrd[at]archlinux[dot]org>
 
 pkgname=libredefender-git
-pkgver=0.7.0.r0.g4b55a76
+pkgver=0.7.0.r1.g6d9eadf
 pkgrel=1
 pkgdesc='Light-weight antivirus scanner for Linux (-git version)'
 url='https://github.com/kpcyrd/libredefender'
 arch=('x86_64')
-license=('GPL2')
+license=('GPL-2.0-only')
 provides=('libredefender')
 conflicts=('libredefender')
 depends=('libclamav.so' 'hicolor-icon-theme')
