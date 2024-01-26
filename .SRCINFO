@@ -1,6 +1,6 @@
 pkgbase = linux-vfio-lts
 	pkgdesc = LTS Linux
-	pkgver = 6.6.13
+	pkgver = 6.6.14
 	pkgrel = 1
 	url = https://www.kernel.org
 	arch = x86_64
@@ -19,19 +19,19 @@ pkgbase = linux-vfio-lts
 	makedepends = python-sphinx
 	makedepends = texlive-latexextra
 	options = !strip
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.13.tar.xz
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.13.tar.sign
-	source = config
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.14.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.14.tar.sign
+	source = config-6.6.14::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/config
 	source = 1001-add-acs-overrides.patch
 	source = 1002-i915-vga-arbiter.patch
-	source = 0001-6.6.13-disallow-unprivileged-CLONE_NEWUSER.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-	source = 0002-6.6.13-nvidia-skip-simpledrm.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/0002-skip-simpledrm-if-nvidia-drm.modeset=1-is.patch
+	source = 0001-6.6.14-disallow-unprivileged-CLONE_NEWUSER.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+	source = 0002-6.6.14-nvidia-skip-simpledrm.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/0002-skip-simpledrm-if-nvidia-drm.modeset=1-is.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 83BC8889351B5DEBBB68416EB8AC08600F108CDF
-	sha256sums = 88b89e7dd41ead4e3ab1e411c8bb8d592575acf815cf1df3c0dc57e2e882c0bc
+	sha256sums = fbe96b2db3f962cd2a96a849d554300e7a4555995160082d4f323c2a1dfa1584
 	sha256sums = SKIP
-	sha256sums = 18fcff9fa723cef2feb654dae966a149f0ef0fea9dda1780d3de0ff07d4f8ab7
+	sha256sums = SKIP
 	sha256sums = f342986bd27980c96c952b0dd8103d3e21a942d87f18df1308fab370e20010fb
 	sha256sums = 2a3c732d4d61a631c98b2a3e4afb1fa5dbf8be5c43519b2a59d0e65170c9d8db
 	sha256sums = 21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889

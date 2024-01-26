@@ -20,7 +20,7 @@
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.6.13
+pkgver=6.6.14
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
@@ -47,12 +47,12 @@ options=('!strip')
 _srcname=linux-$pkgver
 source+=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
-  config  # the main kernel config file
+  "config-$pkgver"::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/config
 )
 sha256sums+=(
-  '88b89e7dd41ead4e3ab1e411c8bb8d592575acf815cf1df3c0dc57e2e882c0bc'
+  'fbe96b2db3f962cd2a96a849d554300e7a4555995160082d4f323c2a1dfa1584'
   'SKIP'
-  '18fcff9fa723cef2feb654dae966a149f0ef0fea9dda1780d3de0ff07d4f8ab7'
+  'SKIP'
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
@@ -140,6 +140,8 @@ _prepare_extra() {
 }
 
 prepare() {
+  cp "config-$pkgver" "config"
+
   cd $_srcname
 
   echo "Setting version..."
