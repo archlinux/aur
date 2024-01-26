@@ -1,17 +1,17 @@
-# Maintainer: Jan-Erik Rediger <badboy@archlinux.us>
+# Contributor: Jan-Erik Rediger <badboy@archlinux.us>
 
+_gitname="dit"
 pkgname=dit-git
-pkgver=0.5.r15.gd08a9e8
+pkgver=0.9.r8.g9a42f7d
 pkgrel=1
-pkgdesc="A console text editor for Unix systems that you already know how to use"
+pkgdesc="console text editor for Unix systems that you already know how to use"
 arch=('i686' 'x86_64')
 url="http://hisham.hm/dit"
 license=('GPL')
-depends=('lua52')
+depends=('lua53')
 source=(git+https://github.com/hishamhm/dit)
 sha1sums=('SKIP')
 
-_gitname="dit"
 
 pkgver() {
   cd "$srcdir/$_gitname"
@@ -21,7 +21,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_gitname"
   ./autogen.sh
-  ./configure --prefix=/usr --with-lua-suffix=5.2
+  ./configure --prefix=/usr --with-lua-suffix=5.3
   make
 }
 
