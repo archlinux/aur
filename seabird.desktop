@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Seabird
+Comment=A modern, native Kubernetes desktop client
+Icon=seabird
+Exec=seabird %U
+Categories=System;
+Terminal=false
+StartupWMClass=seabird
