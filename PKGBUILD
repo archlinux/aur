@@ -1,6 +1,6 @@
 # Maintainer: jazztickets <jazztickets at gmail dot com>
 pkgname=mingw-w64-sdl2_ttf
-pkgver=2.20.2
+pkgver=2.22.0
 pkgrel=1
 pkgdesc="A library that allows you to use TrueType fonts in your SDL applications (Version 2) (mingw-w64)"
 arch=(any)
@@ -10,7 +10,7 @@ depends=(mingw-w64-sdl2)
 makedepends=(mingw-w64-configure)
 options=(staticlibs !strip !buildflags)
 source=("https://github.com/libsdl-org/SDL_ttf/releases/download/release-${pkgver}/SDL2_ttf-${pkgver}.tar.gz")
-sha256sums=('9dc71ed93487521b107a2c4a9ca6bf43fb62f6bddd5c26b055e6b91418a22053')
+sha256sums=('d48cbd1ce475b9e178206bf3b72d56b66d84d44f64ac05803328396234d67723')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
