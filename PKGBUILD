@@ -3,7 +3,7 @@
 # Contributor: Mikita Iwanowski <info@slnt-opp.xyz>
 
 pkgname='inf-bin'
-pkgver=3.0.5
+pkgver=3.1.2
 pkgrel=1
 pkgdesc='infinimesh Platform CLI'
 url='https://github.com/infinimesh/infinimesh'
@@ -12,11 +12,11 @@ license=('Apache-2.0')
 provides=('inf')
 conflicts=('inf')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/infinimesh/inf/releases/download/v3.0.5/inf_3.0.5_Linux_arm64.tar.gz")
-sha256sums_aarch64=('b6c059024f7179ab55bae6808620fb9f7a0fdbc806478e697b5158f2b523976a')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/infinimesh/inf/releases/download/v3.1.2/inf_3.1.2_Linux_arm64.tar.gz")
+sha256sums_aarch64=('e566f58865bc98fa1a9f806d12018b30b36d7f793811ffb33286231c42860374')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/infinimesh/inf/releases/download/v3.0.5/inf_3.0.5_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('f335f6445569898aaa33a96b1b2fc23698b8e8b7b3bba2a742d134ec411a158e')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/infinimesh/inf/releases/download/v3.1.2/inf_3.1.2_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('0c74bca518dade8de67ec8e10a3af14a8d5fadfa364fa2e9b666e88413b42c24')
 
 package() {
   install -Dm755 "./inf" "${pkgdir}/usr/bin/inf"
