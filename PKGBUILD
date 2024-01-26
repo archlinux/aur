@@ -16,7 +16,7 @@ pkgname=(
   'pipewire-x11-bell-git'
   'pipewire-zeroconf-git'
 )
-pkgver=1.0.0.132.g03173530d
+pkgver=1.0.0.273.ga59a55120
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -100,6 +100,7 @@ build() {
     -D bluez5-codec-lc3plus=disabled \
     -D volume=enabled \
     -D selinux=disabled \
+    -D snap=disabled \
     -D man=enabled \
     -D docs=enabled
 
@@ -280,10 +281,11 @@ package_pipewire-git() {
   _pick pulse "usr/lib/pipewire-${_api_ver}/libpipewire-module-pulse-tunnel.so"
   _pick pulse usr/lib/systemd/user/pipewire-pulse.socket
   _pick pulse usr/lib/systemd/user/pipewire-pulse.service
-  _pick pulse usr/share/man/man7/libpipewire-module-protocol-pulse.7
-  _pick pulse usr/share/man/man7/libpipewire-module-pulse-tunnel.7
+  _pick pulse usr/lib/udev
   _pick pulse usr/share/man/man1/pipewire-pulse.1
   _pick pulse usr/share/man/man5/pipewire-pulse.conf.5
+  _pick pulse usr/share/man/man7/libpipewire-module-protocol-pulse.7
+  _pick pulse usr/share/man/man7/libpipewire-module-pulse-tunnel.7
   _pick pulse usr/share/man/man7/pipewire-pulse-modules.7
   _pick pulse usr/share/man/man7/pipewire-pulse-module-alsa-sink.7
   _pick pulse usr/share/man/man7/pipewire-pulse-module-alsa-source.7
@@ -317,7 +319,6 @@ package_pipewire-git() {
   _pick pulse usr/share/man/man7/pipewire-pulse-module-zeroconf-discover.7
   _pick pulse usr/share/man/man7/pipewire-pulse-module-zeroconf-publish.7
   _pick pulse usr/share/pipewire/pipewire-pulse.conf
-  _pick pulse usr/lib/udev
   _pick pulse usr/share/alsa-card-profile
   _pick pulse usr/share/glib-2.0/schemas/org.freedesktop.pulseaudio.gschema.xml
 
