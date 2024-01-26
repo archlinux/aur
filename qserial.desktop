@@ -2,7 +2,7 @@
 Name=QSerial
 Name[en_US]=qserial
 Name[zh_CN]=qserial
-Exec=QSerial
+Exec=qserial
 Terminal=false
 Type=Application
 Icon=
