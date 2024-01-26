@@ -2,7 +2,7 @@
 # Contributor: Darvin Delgado <dnmodder@gmail.com>
 
 pkgname=oversteer
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Graphical application to configure Logitech Wheels'
 arch=(any)
@@ -23,22 +23,17 @@ depends=(
 )
 makedepends=(meson)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/berarma/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=(3e6e4362c27b1145400c536c8f79a19a8bb7ec39e3ee4ce8fa49011a25d64045)
-
-prepare() {
-	cd ${pkgname}-${pkgver}
-  sed -i "s|version: '0.7.3',|version: '0.8.0',|g" meson.build
-}
+sha256sums=(26479ef8b06da2373d67bbf803fb3e7b12bea37506ad3b9d5a3376b08d225d25)
 
 build() {
-	cd ${pkgname}-${pkgver}
-	meson build --prefix=/usr
-	ninja -C build
+  cd ${pkgname}-${pkgver}
+  meson build --prefix=/usr
+  ninja -C build
 }
 
 package() {
-	cd ${pkgname}-${pkgver}
-	DESTDIR="${pkgdir}" ninja -C build install
+  cd ${pkgname}-${pkgver}
+  DESTDIR="${pkgdir}" ninja -C build install
 }
 
 # vim: ts=2 sw=2 et:
