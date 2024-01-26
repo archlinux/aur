@@ -3,7 +3,7 @@
 _pkgname=pineflash
 pkgname="${_pkgname}-git"
 pkgver=0.5.3+19.r295.20240112.4c6996d
-pkgrel=1
+pkgrel=2
 arch=(
   i686
   x86_64
@@ -14,10 +14,15 @@ pkgdesc='A GUI tool to flash IronOS to the Pinecil V1, V2 and future other pine6
 url='https://github.com/Spagett1/PineFlash'
 license=('GPL2')
 depends=(
+  'bzip2'
+  'curl'
   'dfu-util'
   'fontconfig'
+  'gcc-libs'
   'glibc'
   'gtk3'
+  'libudev'
+  'libusb'
   'polkit'
 )
 makedepends=(
