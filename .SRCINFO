@@ -8,9 +8,9 @@ pkgbase = leetgo-bin
 	provides = leetgo
 	arch = aarch64
 	source_aarch64 = https://github.com/j178/leetgo/releases/download/v1.4/leetgo_linux_arm64.tar.gz
-	sha256sums_aarch64 = 0e69359517163b2af6c013be0e022c11ef09eb50dd1fdc47e01ef64830b3dfba
+	sha256sums_aarch64 = 9a79fbc3ec907b4e4b8b0352a14b6981c518ee4d6f536431454cead82bc9a186
 	arch = x86_64
 	source_x86_64 = https://github.com/j178/leetgo/releases/download/v1.4/leetgo_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 8c8206b3382488ce5e335b8c2d7fcdbdb6f903b41a5761d968a8701f4de607c4
+	sha256sums_x86_64 = 4c533252dbae45eeb1b540617011931bb2bfe0b958be0839d9b5a71a60c2fd00
 	
 pkgname = leetgo-bin
