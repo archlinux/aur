@@ -1,6 +1,6 @@
 pkgbase = qgis-qtwebkit
 	pkgdesc = QGIS with GRASS and QtWebkit to support some plugins and qgis' functions
-	pkgver = 3.34.2
+	pkgver = 3.34.3
 	pkgrel = 1
 	url = https://qgis.org/
 	arch = x86_64
@@ -48,19 +48,16 @@ pkgbase = qgis-qtwebkit
 	depends = grass
 	depends = python-pyqt5-webkit
 	depends = nodejs-lts-hydrogen
+	depends = yarn
 	optdepends = fcgi: Map server
 	optdepends = gpsbabel: GPS Tools plugin
-	provides = qqis=3.34.2
+	provides = qqis=3.34.3
 	conflicts = qgis
-	source = https://qgis.org/downloads/qgis-3.34.2.tar.bz2
-	source = https://src.fedoraproject.org/rpms/qgis/raw/rawhide/f/qgis-yarn-offline.patch
+	source = https://qgis.org/downloads/qgis-3.34.3.tar.bz2
 	source = https://src.fedoraproject.org/rpms/qgis/raw/rawhide/f/qgis-gcc13.patch
 	source = https://src.fedoraproject.org/rpms/qgis/raw/rawhide/f/qgis-qwt.patch
-	source = https://src.fedoraproject.org/rpms/qgis/raw/rawhide/f/qgis-serverprefix.patch
-	sha256sums = 8cf11d5f271847d654da94ee3f98a4f0e24b15ebaf3554c52fa0073ccd8f6271
-	sha256sums = dcdf4b3c97f25aaa67535f9344dadc906cec40c5d5f5145e057299bf851c89cb
+	sha256sums = 87b359154743ec93f63c9c9d189f07cc35fb476e32c79d4761ff42776a765cd5
 	sha256sums = efb66c3a8cb6bd61d3402b9400b8a3e50cd2775082a5a93fa7a8152c37e01aaa
 	sha256sums = 4dc9f6191ee497eebad2da17c93e36c3f9a88719e8c81c41531b45245f2f9446
-	sha256sums = ba2ca94cb492107005dade1ee920b8684deb2cdf11cc27992d10c1755da682b3
 
 pkgname = qgis-qtwebkit

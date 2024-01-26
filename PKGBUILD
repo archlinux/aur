@@ -12,9 +12,9 @@
 
 pkgname=qgis-qtwebkit
 _pkgname=qgis
-provides=('qqis=3.34.2')
+provides=('qqis=3.34.3')
 conflicts=('qgis')
-pkgver=3.34.2
+pkgver=3.34.3
 pkgrel=1
 pkgdesc="QGIS with GRASS and QtWebkit to support some plugins and qgis' functions"
 arch=(x86_64)
@@ -24,28 +24,23 @@ depends=(ocl-icd proj geos gdal expat spatialindex qwt libzip sqlite3 protobuf
          zlib exiv2 postgresql-libs libspatialite zstd pdal
          qt5-base qt5-svg qt5-serialport qt5-location qt5-3d qt5-declarative qt5-multimedia
          qscintilla-qt5 qtkeychain-qt5 qca-qt5 gsl python-pyqt5 python-qscintilla-qt5
-         hdf5 netcdf libxml2 draco grass python-pyqt5-webkit nodejs-lts-hydrogen)
+         hdf5 netcdf libxml2 draco grass python-pyqt5-webkit nodejs-lts-hydrogen yarn)
 makedepends=(cmake ninja opencl-clhpp fcgi qt5-tools sip pyqt-builder)
 optdepends=('fcgi: Map server'
             'gpsbabel: GPS Tools plugin')
 source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2"
-        "https://src.fedoraproject.org/rpms/qgis/raw/rawhide/f/qgis-yarn-offline.patch"
         "https://src.fedoraproject.org/rpms/qgis/raw/rawhide/f/qgis-gcc13.patch"
         "https://src.fedoraproject.org/rpms/qgis/raw/rawhide/f/qgis-qwt.patch"
-        "https://src.fedoraproject.org/rpms/qgis/raw/rawhide/f/qgis-serverprefix.patch"
 )
-sha256sums=('8cf11d5f271847d654da94ee3f98a4f0e24b15ebaf3554c52fa0073ccd8f6271'            'dcdf4b3c97f25aaa67535f9344dadc906cec40c5d5f5145e057299bf851c89cb'
+sha256sums=('87b359154743ec93f63c9c9d189f07cc35fb476e32c79d4761ff42776a765cd5'
             'efb66c3a8cb6bd61d3402b9400b8a3e50cd2775082a5a93fa7a8152c37e01aaa'
             '4dc9f6191ee497eebad2da17c93e36c3f9a88719e8c81c41531b45245f2f9446'
-            'ba2ca94cb492107005dade1ee920b8684deb2cdf11cc27992d10c1755da682b3'
 )
 
 prepare() {
   cd "$_pkgname-$pkgver"
-  patch -p1 -i ../qgis-yarn-offline.patch
   patch -p1 -i ../qgis-gcc13.patch
   patch -p1 -i ../qgis-qwt.patch
-  patch -p1 -i ../qgis-serverprefix.patch
 }
 
 build() {
