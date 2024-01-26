@@ -3,7 +3,7 @@
 
 pkgname='leetgo-bin'
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc='leetgo is a command line tool for leetcode.com. It can help you to login, submit, test, and view your submissions.'
 url='https://github.com/j178/leetgo'
 arch=('aarch64' 'x86_64')
@@ -22,7 +22,7 @@ package() {
   install -Dm755 "./leetgo" "${pkgdir}/usr/bin/leetgo"
 
   # license
-  install -Dm644 "./LICENSE.md" "${pkgdir}/usr/share/licenses/leetgo/LICENSE"
+  install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/leetgo/LICENSE"
 
   # completions
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"

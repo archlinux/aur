@@ -1,7 +1,7 @@
 pkgbase = leetgo-bin
 	pkgdesc = leetgo is a command line tool for leetcode.com. It can help you to login, submit, test, and view your submissions.
 	pkgver = 1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/j178/leetgo
 	license = MIT
 	conflicts = leetgo
