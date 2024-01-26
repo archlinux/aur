@@ -1,6 +1,6 @@
 # Maintainer: Luke Labrie-Cleary <luke dot cleary at copenhagenatomics dot com>
 pkgname=dagmc-git
-pkgver=v3.2.2.r37.gaf2a4ce0
+pkgver=stable.r0.gb001729e
 pkgrel=1
 pkgdesc="Direct Accelerated Geometry Monte Carlo (DAGMC) is a software package 
 		 that allows users to perform Monte Carlo radiation transport directly 
@@ -37,12 +37,13 @@ build() {
 	         -DBUILD_STATIC_EXE=OFF \
 	         -DBUILD_STATIC_LIBS=OFF \
 	         -DCMAKE_INSTALL_PREFIX=/opt/DAGMC \
-	         -DDOUBLE_DOWN_DIR=/opt/double-down/lib/cmake/dd 
-	_ccores=`cat /proc/cpuinfo |grep CPU|wc -l`
-  	if [ "x$1" != "x" ]; then
-		_ccores=$1
-  	fi
-	make -j ${_ccores}
+	         -DDOUBLE_DOWN_DIR=/opt/double-down/lib/cmake/dd
+        _ccores=$(nproc)
+        if [ -z "${_ccores}" ]; then
+           make
+        else
+           make -j ${_ccores}
+        fi
 }
 
 package() {
