@@ -13,7 +13,6 @@ conflicts=()
 _commit="b3494ce755951a0639ec35f4df73406b2b7b706c" # v0.1.3
 source=("git+$url#commit=$_commit")
 sha256sums=('SKIP')
-install=$pkgname.install
 
 pkgver() {
   cd "$srcdir/cherryctl"
