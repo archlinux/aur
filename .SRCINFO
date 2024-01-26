@@ -1,0 +1,19 @@
+pkgbase = python-napf
+	pkgdesc = nanoflann python bindings for kdtree
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://tataratat.github.io/napf
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = pybind11
+	depends = python-numpy
+	depends = nanoflann
+	source = https://pypi.org/packages/source/n/napf/napf-0.0.7.tar.gz
+	sha512sums = daaece5d2799c3a86260f7a9fc90310e05a078714ede30bd387f787b9e93ed9f4644f8d0063e7688c996a1a2a7f1e2296f685c57a134741a034e2f2216614032
+
+pkgname = python-napf
