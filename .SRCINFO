@@ -1,6 +1,6 @@
 pkgbase = youtty
 	pkgdesc = Search, download and watch any youtube video from the tty
-	pkgver = 0.3.4
+	pkgver = 0.3.5
 	pkgrel = 1
 	url = https://github.com/Dvd-Znf/youtty
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = youtty
 	depends = yt-dlp
 	depends = vlc
 	depends = python-requests
-	source = https://github.com/Dvd-Znf/youtty/archive/refs/tags/v0.3.4.tar.gz
-	sha256sums = 6ddf31cd805652d976675bba2a939af785a9e49224fef8b92048f35697909a7a
+	source = https://github.com/Dvd-Znf/youtty/archive/refs/tags/v0.3.5.tar.gz
+	sha256sums = 8de9fd5682366a3a1129069383c2753d6e93645280495fbfadb777e04b7abbd4
 
 pkgname = youtty
