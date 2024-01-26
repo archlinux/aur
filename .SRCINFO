@@ -1,5 +1,5 @@
 pkgbase = linux-amd-znver2
-	pkgver = 6.7.v.1
+	pkgver = 6.7.v.2
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -14,16 +14,14 @@ pkgbase = linux-amd-znver2
 	makedepends = lzop
 	makedepends = gcc>=9.1
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v6.7.1
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v6.7.2
 	source = config.x86_64
 	source = linux-amd-znver2.preset
 	source = https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/20230105/more-uarches-for-kernel-5.17+.patch
-	source = flushbyasid.patch
 	sha256sums = SKIP
-	sha256sums = 2790adf1abdd2f231d695bcda4215feab9964291ba734efc994d0d4d9711f749
+	sha256sums = c80e911a9e3ff4f5c77b0505b99aee2c86f05449a3d1b6fadcfa1891bc4580c0
 	sha256sums = a7dda487e8277bfdf0dd0a6f578b219ae97de84b00df1822330e808c378df907
 	sha256sums = 81ad663925a0aa5b5332a69bae7227393664bb81ee2e57a283e7f16e9ff75efe
-	sha256sums = 0878a970035793ca761c6f7499fb37cf04e6d9892758ca3fb9b99f846febfaf0
 
 pkgname = linux-amd-znver2
 	pkgdesc = Linux kernel aimed at the znver2 AMD Ryzen CPU based hardware
