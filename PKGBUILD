@@ -4,11 +4,11 @@ pkgdesc='Fork of Slingshot launcher without Elementary dependencies'
 pkgver=1.13.0.r5.gbdb7d63
 pkgrel=1
 url='https://gitlab.com/rastersoft/panther_launcher'
-license=('GPL3')
+license=(GPL-3.0-only)
 arch=('i686' 'x86_64')
 source=("${pkgname}::git+${url}")
 makedepends=('git' 'vala' 'cmake')
-depends=('gnome-menus' 'libgee' 'gnome-icon-theme')
+depends=('gnome-menus' 'libgee' 'gtk3' 'libsoup' 'gnome-icon-theme' 'mate-panel')
 sha512sums=('SKIP')
 
 pkgver () {
@@ -32,12 +32,13 @@ build () {
     -DGSETTINGS_COMPILE=OFF \
 		-DHAVE_ZEITGEIST=OFF \
 		-DDISABLE_FLASHBACK=ON \
-		-DDISABLE_MATE=ON
+		-DDISABLE_MATE=OFF
 	make
 }
 
 package () {
 	cd "${pkgname}/build"
 	make DESTDIR="${pkgdir}" install
+        rm -rv "${pkgdir}/usr/share/dbus-1/system.d/"
 }
 
