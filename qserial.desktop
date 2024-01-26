@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=QSerial
+Name[en_US]=qserial
+Name[zh_CN]=qserial
+Exec=qserial
+Terminal=false
+Type=Application
+Icon=
+Comment=The missing cross platform serial port utility with batteries included.
+Categories=Development;Tool;Serial;
