@@ -2,7 +2,7 @@
 
 pkgname=dxvk-mingw
 pkgver=2.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
 url="https://github.com/doitsujin/dxvk"
@@ -34,9 +34,9 @@ prepare() {
     # If you want the "best" possible optimizations for your system you can use
     # `-march=native` and remove the `-mtune=core-avx2` option.
 
-#    local -a split=($CFLAGS)
-#    local -A flags
-#    for opt in "${split[@]}"; do flags["${opt%%=*}"]="${opt##*=}"; done
+    local -a split=($CFLAGS)
+    local -A flags
+    for opt in "${split[@]}"; do flags["${opt%%=*}"]="${opt##*=}"; done
     local march="${flags["-march"]:-nocona}"
     local mtune="${flags["-mtune"]:-core-avx2}"
 
@@ -61,8 +61,8 @@ prepare() {
     # Relevant Wine issues
     # https://bugs.winehq.org/show_bug.cgi?id=45289
     # https://bugs.winehq.org/show_bug.cgi?id=43516
-    CFLAGS+=" -mno-avx2"
-    CXXFLAGS+=" -mno-avx2"
+    CFLAGS+=" -mno-avx2 -mno-avx"
+    CXXFLAGS+=" -mno-avx2 -mno-avx"
 
     local cross_ldflags="$LDFLAGS"
 
