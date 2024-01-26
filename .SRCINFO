@@ -1,6 +1,6 @@
 pkgbase = phpstorm
 	pkgdesc = Lightweight and Smart PHP IDE
-	pkgver = 2023.3.2
+	pkgver = 2023.3.3
 	pkgrel = 1
 	url = https://www.jetbrains.com/phpstorm/
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = phpstorm
 	depends = glib2
 	depends = python
 	options = !strip
-	source = https://download-cf.jetbrains.com/webide/PhpStorm-2023.3.2.tar.gz
+	source = https://download-cf.jetbrains.com/webide/PhpStorm-2023.3.3.tar.gz
 	source = jetbrains-phpstorm.desktop
 	source = LICENSE
-	b2sums = aac17a59590ec1a0631c5af6096f8adc9cca87308e58bd4286a9b2c3b231fb65e4c982bc24ada086fd5bfa5738e8a41724e53089fe885367b78b74e90c22ce88
+	b2sums = e52f24fe0df1f99d104a9b0b1a9c24cd5bc8dece7aa8ce62904747e235616c57c12ad20a8a90857138d9b8835eb590a0e8d2a9b3747e7fb53b7f2cf2be6b0124
 	b2sums = c6f86b243d1b0b9533a59bda7c9036dee0c53b1076052ed69c651f886f745ae69ef9839ab406016d2bc4acad133e4f2d54ff0855caebe05fee47c00b00041f4e
 	b2sums = dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77
 
