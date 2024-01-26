@@ -1,19 +1,14 @@
 pkgbase = python-fitparse-git
 	pkgdesc = A Python library to parse ANT/Garmin .FIT files
-	pkgver = v1.0.1.r9.3fa1fc0
+	pkgver = v1.2.0.r27.9bd14c4
 	pkgrel = 1
 	url = https://github.com/dtcooper/python-fitparse
 	arch = any
 	license = custom
 	makedepends = git
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	source = python-fitparse::git+https://github.com/dtcooper/python-fitparse
 	md5sums = SKIP
 
 pkgname = python-fitparse-git
 	depends = python
-
-pkgname = python2-fitparse-git
-	depends = python2
-
