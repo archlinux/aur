@@ -883,3 +883,84 @@ index 55cdbba5b5eb..02dd80c06062 100644
  }
 
  int
+
+
+ From 49b2dee41a483ebc187ab2b42a6250242298b71b Mon Sep 17 00:00:00 2001
+From: Rob Norris <robn@despairlabs.com>
+Date: Mon, 15 Jan 2024 09:01:39 +1100
+Subject: [PATCH 1/2] tests/ctime: ensure times change by the right amount
+
+Previously, we only checked if the times changed at all, which missed a
+bug where the atime was being set to an undefined value.
+
+Now ensure the times change by two seconds (or thereabouts), ensuring we
+catch cases where we set the time to something bonkers
+
+Signed-off-by: Rob Norris <robn@despairlabs.com>
+Sponsored-by: https://despairlabs.com/sponsor/
+---
+ tests/zfs-tests/cmd/ctime.c | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/tests/zfs-tests/cmd/ctime.c b/tests/zfs-tests/cmd/ctime.c
+index 0f5d81aea613..5ff1cea8a869 100644
+--- a/tests/zfs-tests/cmd/ctime.c
++++ b/tests/zfs-tests/cmd/ctime.c
+@@ -362,12 +362,20 @@ main(void)
+ 			return (1);
+ 		}
+
+-		if (t1 == t2) {
+-			(void) fprintf(stderr, "%s: t1(%ld) == t2(%ld)\n",
++
++		/*
++		 * Ideally, time change would be exactly two seconds, but allow
++		 * a little slack in case of scheduling delays or similar.
++		 */
++		long delta = (long)t2 - (long)t1;
++		if (delta < 2 || delta > 4) {
++			(void) fprintf(stderr,
++			    "%s: BAD time change: t1(%ld), t2(%ld)\n",
+ 			    timetest_table[i].name, (long)t1, (long)t2);
+ 			return (1);
+ 		} else {
+-			(void) fprintf(stderr, "%s: t1(%ld) != t2(%ld)\n",
++			(void) fprintf(stderr,
++			    "%s: good time change: t1(%ld), t2(%ld)\n",
+ 			    timetest_table[i].name, (long)t1, (long)t2);
+ 		}
+ 	}
+
+From 34c12f76f46ba91ff2a7cd8d2855524844e0cadc Mon Sep 17 00:00:00 2001
+From: Rob Norris <robn@despairlabs.com>
+Date: Sun, 14 Jan 2024 13:46:06 +1100
+Subject: [PATCH 2/2] zfs_setattr: fix atime update
+
+In db4fc559c I messed up and changed this bit of code to set the inode
+atime to an uninitialised value, when actually it was just supposed to
+loading the atime from the inode to be stored in the SA. This changes it
+to what it should have been.
+
+Signed-off-by: Rob Norris <robn@despairlabs.com>
+Sponsored-by: https://despairlabs.com/sponsor/
+Fixes: #15762
+---
+ module/os/linux/zfs/zfs_vnops_os.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/module/os/linux/zfs/zfs_vnops_os.c b/module/os/linux/zfs/zfs_vnops_os.c
+index 2a766a585b70..b7b89b8afc56 100644
+--- a/module/os/linux/zfs/zfs_vnops_os.c
++++ b/module/os/linux/zfs/zfs_vnops_os.c
+@@ -2439,9 +2439,8 @@ zfs_setattr(znode_t *zp, vattr_t *vap, int flags, cred_t *cr, zidmap_t *mnt_ns)
+
+ 	if ((mask & ATTR_ATIME) || zp->z_atime_dirty) {
+ 		zp->z_atime_dirty = B_FALSE;
+-		inode_timespec_t tmp_atime;
++		inode_timespec_t tmp_atime = zpl_inode_get_atime(ip);
+ 		ZFS_TIME_ENCODE(&tmp_atime, atime);
+-		zpl_inode_set_atime_to_ts(ZTOI(zp), tmp_atime);
+ 		SA_ADD_BULK_ATTR(bulk, count, SA_ZPL_ATIME(zfsvfs), NULL,
+ 		    &atime, sizeof (atime));
+ 	}
+
