@@ -1,6 +1,6 @@
 pkgbase = jdk8-temurin
 	pkgdesc = Temurin (OpenJDK 8 Java binaries by Adoptium, formerly AdoptOpenJDK)
-	pkgver = 8u392b08
+	pkgver = 8u402b06
 	pkgrel = 1
 	url = https://adoptium.net/
 	install = install_jdk8-temurin.sh
@@ -17,7 +17,7 @@ pkgbase = jdk8-temurin
 	provides = java-runtime=8
 	replaces = jdk8-adoptopenjdk
 	options = !strip
-	source = https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u392-b08/OpenJDK8U-jdk_x64_linux_hotspot_8u392b08.tar.gz
-	sha256sums = 15d091e22aa0cad12a241acff8c1634e7228b9740f8d19634250aa6fe0c19a33
+	source = https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u402-b06/OpenJDK8U-jdk_x64_linux_hotspot_8u402b06.tar.gz
+	sha256sums = fcfd08abe39f18e719e391f2fc37b8ac1053075426d10efac4cbf8969e7aa55e
 
 pkgname = jdk8-temurin
