@@ -1,4 +1,5 @@
 post_install() {
+  set -x
   dir_path="$HOME/.config/cherry"
   echo "Checking if ${dir_path} exists..."
   if [ ! -d "$dir_path" ] || [ -z "$(find "$dir_path" -maxdepth 1 -name '*.yaml' -print -quit)" ]; then
