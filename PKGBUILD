@@ -57,11 +57,8 @@ package() {
 
 post_install() {
   dir_path="$HOME/.config/cherry"
-  echo "checking ${dir_path} exists..."
   if [ ! -d "$dir_path" ] || [ -z "$(find "$dir_path" -maxdepth 1 -name '*.yaml' -print -quit)" ]; then
-    echo "creating ${dir_path}..."
     mkdir -p "$dir_path"
-    echo "creating ${dir_path}/default.yaml..."
     touch "$dir_path/default.yaml"
   fi
 }
