@@ -1,8 +1,8 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=gustaf
 pkgname=python-${_base}
-_gitcommit=2d1ec49397d534f3ff5aed28594ff550b2b7da19
-pkgver=0.0.20
+_gitcommit=38669c143858241541eaf66807fa1463ddf6929d
+pkgver=0.0.21
 pkgrel=1
 pkgdesc="Process and visualize numerical-analysis-geometries"
 url="https://tataratat.github.io/${_base}"
