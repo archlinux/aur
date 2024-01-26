@@ -1,7 +1,7 @@
 # Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=sticky
-pkgver=1.18
+pkgver=1.19
 pkgrel=1
 pkgdesc="A sticky notes app for the Linux desktop"
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=(
     'meson'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('a6044cd87aea8f9980a69c679117868418ee743c5a68518a2f14e5137a50c799')
+sha256sums=('1dc5cb5f36b756fae840f8f1a07b87ad0cbfd7b94a31679cbbbc1ef21d8d74b2')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -43,7 +43,7 @@ package() {
   # Meson only installs desktop file, dbus service & locale
   cd "$pkgname-$pkgver"
   install -Dm755 "usr/bin/$pkgname" -t "$pkgdir/usr/bin/"
-  install -Dm644 "usr/lib/$pkgname"/* -t "$pkgdir/usr/lib/$pkgname/"
+  install -Dm755 "usr/lib/$pkgname"/* -t "$pkgdir/usr/lib/$pkgname/"
   install -Dm644 "usr/share/glib-2.0/schemas/org.x.$pkgname.gschema.xml" -t \
     "$pkgdir/usr/share/glib-2.0/schemas/"
   install -Dm644 "usr/share/$pkgname"/* -t "$pkgdir/usr/share/$pkgname/"
