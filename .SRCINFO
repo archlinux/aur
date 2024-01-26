@@ -1,7 +1,7 @@
 pkgbase = cockpit-composer
 	pkgdesc = Composer generates custom images suitable for deploying systems or uploading to the cloud. It integrates into Cockpit as a frontend for osbuild.
 	pkgver = 47
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cockpit-project.org
 	arch = x86_64
 	license = Apache
