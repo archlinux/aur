@@ -1,6 +1,6 @@
 pkgbase = psource-git
 	pkgdesc = CLI tool to pretty print source code to stdout or directly to the clipboard.
-	pkgver = 0.3.1.e9b8d21
+	pkgver = 0.4.0.b85891f
 	pkgrel = 1
 	url = https://github.com/frederikstroem/psource
 	arch = x86_64
