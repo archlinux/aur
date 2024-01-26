@@ -1,6 +1,6 @@
 # Contributor: Mark Gallagher <mark@fts.scot>
 pkgname=perl-anyevent-connector
-pkgver=0.03
+pkgver=0.04
 pkgrel=1
 pkgdesc='tcp_connect with transparent proxy handling (via MetaCPAN distribution)'
 _dist=AnyEvent-Connector
@@ -11,7 +11,7 @@ depends=('perl' 'perl-anyevent' 'perl-uri')
 makedepends=('perl-module-build' 'perl-module-build-prereqs-fromcpanfile')
 options=('!emptydirs' 'purge')
 source=("https://cpan.metacpan.org/authors/id/T/TO/TOSHIOITO/$_dist-$pkgver.tar.gz")
-sha256sums=(5117179cda74b09a59c063be8b454f3c0c4e66fd08f45a9cee3fd712c8cc6aa1)
+sha256sums=(a8c4a96ca72f400b5c241b0e61cae02b4a7490eded8ef737f16f1cb7ac931d44)
 
 build() {
   cd $_dist-$pkgver

@@ -1,6 +1,6 @@
 pkgbase = perl-anyevent-connector
 	pkgdesc = tcp_connect with transparent proxy handling (via MetaCPAN distribution)
-	pkgver = 0.03
+	pkgver = 0.04
 	pkgrel = 1
 	url = https://metacpan.org/release/AnyEvent-Connector
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = perl-anyevent-connector
 	depends = perl-uri
 	options = !emptydirs
 	options = purge
-	source = https://cpan.metacpan.org/authors/id/T/TO/TOSHIOITO/AnyEvent-Connector-0.03.tar.gz
-	sha256sums = 5117179cda74b09a59c063be8b454f3c0c4e66fd08f45a9cee3fd712c8cc6aa1
+	source = https://cpan.metacpan.org/authors/id/T/TO/TOSHIOITO/AnyEvent-Connector-0.04.tar.gz
+	sha256sums = a8c4a96ca72f400b5c241b0e61cae02b4a7490eded8ef737f16f1cb7ac931d44
 
 pkgname = perl-anyevent-connector
