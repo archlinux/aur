@@ -1,28 +1,27 @@
-From 29992eab6935cc6da0ecfbef8c97dda32c7413ec Mon Sep 17 00:00:00 2001
-From: sharkautarch <128002472+sharkautarch@users.noreply.github.com>
-Date: Fri, 27 Oct 2023 17:51:27 -0400
-Subject: [PATCH 1/4] Revert "rendervulkan: Get a general graphics+compute
- queue as well as a async compute queue"
+From bf6cdd3c09a432c42b0d424d4c0123d29f2e5b82 Mon Sep 17 00:00:00 2001
+From: detiam <dehe_tian@outlook.com>
+Date: Fri, 26 Jan 2024 22:53:40 +0800
+Subject: [PATCH] reverts bd722f7
 
-This reverts commit bd722f786f5a74f8282d903bd5eb3d331c4cd920.
 ---
- src/rendervulkan.cpp | 61 +++++++++-----------------------------------
- src/rendervulkan.hpp |  6 -----
- 2 files changed, 12 insertions(+), 55 deletions(-)
+ src/rendervulkan.cpp           | 64 +++++++---------------------------
+ src/rendervulkan.hpp           |  6 ----
+ src/reshade_effect_manager.cpp |  4 +--
+ 3 files changed, 14 insertions(+), 60 deletions(-)
 
 diff --git a/src/rendervulkan.cpp b/src/rendervulkan.cpp
-index 3e179c4..139bf15 100644
+index 3570186..db49b57 100644
 --- a/src/rendervulkan.cpp
 +++ b/src/rendervulkan.cpp
-@@ -337,7 +337,6 @@ bool CVulkanDevice::selectPhysDev(VkSurfaceKHR surface)
+@@ -353,7 +353,6 @@ bool CVulkanDevice::selectPhysDev(VkSurfaceKHR surface)
  				}
  
  				m_queueFamily = computeOnlyIndex == ~0u ? generalIndex : computeOnlyIndex;
 -				m_generalQueueFamily = generalIndex;
  				m_physDev = cphysDev;
- 			}
- 		}
-@@ -351,7 +350,7 @@ bool CVulkanDevice::selectPhysDev(VkSurfaceKHR surface)
+ 
+ 				if ( env_to_bool( getenv( "GAMESCOPE_FORCE_GENERAL_QUEUE" ) ) )
+@@ -370,7 +369,7 @@ bool CVulkanDevice::selectPhysDev(VkSurfaceKHR surface)
  
  	VkPhysicalDeviceProperties props;
  	vk.GetPhysicalDeviceProperties( m_physDev, &props );
@@ -31,7 +30,7 @@ index 3e179c4..139bf15 100644
  
  	return true;
  }
-@@ -461,22 +460,12 @@ bool CVulkanDevice::createDevice()
+@@ -480,22 +479,12 @@ bool CVulkanDevice::createDevice()
  		.globalPriority = VK_QUEUE_GLOBAL_PRIORITY_REALTIME_EXT
  	};
  
@@ -60,18 +59,18 @@ index 3e179c4..139bf15 100644
  	};
  
  	std::vector< const char * > enabledExtensions;
-@@ -552,8 +541,8 @@ bool CVulkanDevice::createDevice()
+@@ -571,8 +560,8 @@ bool CVulkanDevice::createDevice()
  	VkDeviceCreateInfo deviceCreateInfo = {
  		.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO,
  		.pNext = &features2,
--		.queueCreateInfoCount = std::size(queueCreateInfos),
+-		.queueCreateInfoCount = m_queueFamily == m_generalQueueFamily ? 1u : 2u,
 -		.pQueueCreateInfos = queueCreateInfos,
 +		.queueCreateInfoCount = 1,
 +		.pQueueCreateInfos = &queueCreateInfo,
  		.enabledExtensionCount = (uint32_t)enabledExtensions.size(),
  		.ppEnabledExtensionNames = enabledExtensions.data(),
  	};
-@@ -582,17 +571,9 @@ bool CVulkanDevice::createDevice()
+@@ -601,17 +590,9 @@ bool CVulkanDevice::createDevice()
  	VkResult res = vk.CreateDevice(physDev(), &deviceCreateInfo, nullptr, &m_device);
  	if ( res == VK_ERROR_NOT_PERMITTED_KHR && g_bNiceCap )
  	{
@@ -91,15 +90,18 @@ index 3e179c4..139bf15 100644
  	}
  
  	if ( res != VK_SUCCESS )
-@@ -606,7 +587,6 @@ bool CVulkanDevice::createDevice()
+@@ -625,10 +606,6 @@ bool CVulkanDevice::createDevice()
  	#undef VK_FUNC
  
  	vk.GetDeviceQueue(device(), m_queueFamily, 0, &m_queue);
--	vk.GetDeviceQueue(device(), m_generalQueueFamily, 0, &m_generalQueue);
+-	if ( m_queueFamily == m_generalQueueFamily )
+-		m_generalQueue = m_queue;
+-	else
+-		vk.GetDeviceQueue(device(), m_generalQueueFamily, 0, &m_generalQueue);
  
  	return true;
  }
-@@ -781,24 +761,7 @@ bool CVulkanDevice::createPools()
+@@ -803,24 +780,7 @@ bool CVulkanDevice::createPools()
  		return false;
  	}
  
@@ -126,10 +128,10 @@ index 3e179c4..139bf15 100644
  			VK_DESCRIPTOR_TYPE_STORAGE_IMAGE,
  			uint32_t(m_descriptorSets.size()) * 2,
 diff --git a/src/rendervulkan.hpp b/src/rendervulkan.hpp
-index c60b796..e9a7aa7 100644
+index 98b3936..9c8aaf1 100644
 --- a/src/rendervulkan.hpp
 +++ b/src/rendervulkan.hpp
-@@ -723,11 +723,8 @@ public:
+@@ -728,11 +728,8 @@ public:
  	inline VkPhysicalDevice physDev() {return m_physDev; }
  	inline VkInstance instance() { return m_instance; }
  	inline VkQueue queue() {return m_queue;}
@@ -141,7 +143,7 @@ index c60b796..e9a7aa7 100644
  	inline VkBuffer uploadBuffer() {return m_uploadBuffer;}
  	inline VkPipelineLayout pipelineLayout() {return m_pipelineLayout;}
  	inline int drmRenderFd() {return m_drmRendererFd;}
-@@ -778,17 +775,14 @@ protected:
+@@ -783,17 +780,14 @@ protected:
  	VkPhysicalDevice m_physDev = nullptr;
  	VkInstance m_instance = nullptr;
  	VkQueue m_queue = nullptr;
@@ -159,6 +161,28 @@ index c60b796..e9a7aa7 100644
  
  	int m_drmRendererFd = -1;
  	dev_t m_drmPrimaryDevId = 0;
+diff --git a/src/reshade_effect_manager.cpp b/src/reshade_effect_manager.cpp
+index 382a016..c10bd5d 100644
+--- a/src/reshade_effect_manager.cpp
++++ b/src/reshade_effect_manager.cpp
+@@ -865,7 +865,7 @@ bool ReshadeEffectPipeline::init(CVulkanDevice *device, const ReshadeEffectKey &
+ 		VkCommandBufferAllocateInfo commandBufferAllocateInfo =
+         {
+ 			.sType              = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO,
+-			.commandPool        = device->generalCommandPool(),
++			.commandPool        = device->commandPool(),
+ 			.level              = VK_COMMAND_BUFFER_LEVEL_PRIMARY,
+ 			.commandBufferCount = 1
+ 		};
+@@ -878,7 +878,7 @@ bool ReshadeEffectPipeline::init(CVulkanDevice *device, const ReshadeEffectKey &
+ 			return false;
+ 		}
+ 
+-        m_cmdBuffer.emplace(device, cmdBuffer, device->generalQueue(), device->generalQueueFamily());
++        m_cmdBuffer.emplace(device, cmdBuffer, device->queue(), device->queueFamily());
+     }
+ 
+     // Create Uniform Buffer
 -- 
 2.43.0
 
