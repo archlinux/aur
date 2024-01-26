@@ -1,7 +1,7 @@
 pkgbase = qserial
 	pkgdesc = An advanced cross-platform serial port utility
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tuna/QSerial
 	arch = aarch64
 	arch = riscv64

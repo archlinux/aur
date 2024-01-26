@@ -2,7 +2,7 @@
 _pkgname=QSerial
 pkgname=qserial
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced cross-platform serial port utility"
 arch=('aarch64'
     'riscv64'
@@ -25,7 +25,7 @@ depends=(
 makedepends=($_qt-tools)
 backup=()
 options=()
-source=("${_pkgname}-${pkgver}.zip::https://github.com/tuna/${_pkgname}/archive/v${pkgver}.zip"
+source=("${_pkgname}-${pkgver}.zip::${url}/archive/v${pkgver}.zip"
     "${pkgname}.desktop")
 sha256sums=('a4566828c319a909852b2de8ec17be25092e26d511426e8ded90745a7f095030'
             '26d2b87276ab02ba15cc5d947721bde4fab7378d139ecb308ae70a0652ed394c')
@@ -38,6 +38,6 @@ build() {
 
 package() {
     install -Dm755 ${srcdir}/${_pkgname}-${pkgver}/${_pkgname} ${pkgdir}/usr/bin/${pkgname}
-    install -Dm644 ${srcdir}/${_pkgname}-${pkgver}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+
     install -Dm644 ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 }
