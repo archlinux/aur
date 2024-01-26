@@ -1,36 +1,49 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-# Contributor: Aleksey Barinov
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=beam-wallet-bin
-pkgver=6.1.12023.4694
+_pkgname="Beam-Wallet"
+pkgver=7.5.13840.5763
 pkgrel=1
-pkgdesc="Beam Desktop GUI Wallet"
+pkgdesc="Beam Desktop Wallet"
 arch=('x86_64')
-license=('Apache')
-url='https://beam.mw'
-source=("$pkgname-$pkgver.tar::https://github.com/BeamMW/beam-ui/releases/download/beam-$pkgver/Beam-Wallet-$pkgver.tar"
-        "$pkgname-$pkgver.tar.asc::https://github.com/BeamMW/beam-ui/releases/download/beam-$pkgver/linux-Beam-Wallet-$pkgver.tar.asc"
-        'beam-wallet.sh')
-sha256sums=('eb7a19a2169c23561e8d710e22849dcb4ae6a479b04d82102684c0b3f9dac811'
-            'SKIP'
-            'eb87b1db8013d2c6159e943d9f2420ce5a1b8b32e8a2a7c991efb717ce67faad')
-validpgpkeys=('A6C62C9F55931860AFF83BBB997EAB9F3DF7F375')
-
-PURGE_TARGETS=("opt/$pkgname/"{AppRun,BeamWallet.desktop,beam.png})
-
-prepare() {
-	"./Beam-Wallet-$pkgver.AppImage" --appimage-extract &> /dev/null
-	cd squashfs-root
-	sed -i "/Exec/s|/usr|/opt/$pkgname/usr|" BeamWallet.desktop
-	echo "Path=/opt/$pkgname/" >> BeamWallet.desktop
+url="https://beam.mw/"
+_ghurl="https://github.com/BeamMW/beam-ui"
+license=('Apache-2.0')
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
+depends=(
+	'hicolor-icon-theme'
+	'gmp'
+	'qt6-declarative'
+	'alsa-lib'
+	'nss'
+)
+makedepends=(
+    'squashfuse'
+)
+options=('!strip')
+source=(
+    "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/beam-${pkgver}/Linux-${_pkgname}-${pkgver}.zip"
+	"${pkgname%-bin}.sh"
+)
+sha256sums=('ada4ac7a89eebca55c6ed3e49dad98174d014fd942dabaf13f2759ff3e035008'
+            '2bb166f660981dbadbeb2d3cf32abbff9000778ce8e434f89db86e0359b45a49')
+build() {
+	sed -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|${_pkgname//-/}|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
+    chmod a+x "${srcdir}/${_pkgname}-${pkgver}.AppImage"
+    "${srcdir}/${_pkgname}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed "s|/usr/bin/${_pkgname//-/}|${pkgname%-bin}|g;s|Icon=${pkgname%-wallet-appimage}|Icon=${pkgname%-bin}|g" \
+        -i "${srcdir}/squashfs-root/${_pkgname//-/}.desktop"
 }
-
 package() {
-	install -D beam-wallet.sh "$pkgdir/usr/bin/beam-wallet"
-	cd squashfs-root
-	install -Dm644 beam.png -t "$pkgdir/usr/share/icons/hicolor/256x256/apps/"
-	install -Dm644 BeamWallet.desktop "$pkgdir/usr/share/applications/beam-wallet.desktop"
-	install -d "$pkgdir/opt/$pkgname/"
-	rm -rf usr/share
-	cp -a --no-preserve=ownership * "$pkgdir/opt/$pkgname/"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+	install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
+    cp -r "${srcdir}/squashfs-root/usr/"{bin,lib,libexec,plugins,qml,resources,translations} "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/256x256/apps/beam.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-bin}.png"
+	install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/256x256/mimetypes/application-x-beam-dapp.png" \
+		-t "${pkgdir}/usr/share/icons/hicolor/256x256/mimetypes/${pkgname%-bin}.png"
+	install -Dm644 "${srcdir}/squashfs-root/usr/share/mime/packages/x-beam-dapp.xml" "${pkgdir}/usr/share/mime/packages/${pkgname%-bin}.xml"
+    install -Dm644 "${srcdir}/squashfs-root/${_pkgname//-/}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/mime/packages/x-beam-dapp.xml" -t "${pkgdir}/usr/share/mime/packages"
 }
