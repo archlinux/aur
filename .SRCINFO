@@ -1,11 +1,12 @@
 pkgbase = perl-moosex-hasdefaults
 	pkgdesc = default "is" to "ro" or "rw" for all attributes (via MetaCPAN distribution)
 	pkgver = 0.03
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/MooseX-HasDefaults
 	arch = any
 	license = GPL
 	license = PerlArtistic
+	checkdepends = perl-test-exception
 	makedepends = perl-module-install
 	depends = perl
 	depends = perl-moose
