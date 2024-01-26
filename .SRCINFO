@@ -1,6 +1,6 @@
 pkgbase = zulip-desktop
 	pkgdesc = Real-time team chat based on the email threading model
-	pkgver = 5.10.4
+	pkgver = 5.10.5
 	pkgrel = 1
 	url = https://zulipchat.com
 	arch = i686
@@ -13,9 +13,9 @@ pkgbase = zulip-desktop
 	depends = libxss
 	depends = nss
 	depends = python
-	source = zulip-desktop-5.10.4.tar.gz::https://github.com/zulip/zulip-desktop/archive/v5.10.4.tar.gz
+	source = zulip-desktop-5.10.5.tar.gz::https://github.com/zulip/zulip-desktop/archive/v5.10.5.tar.gz
 	source = zulip-desktop.desktop
-	sha512sums = d07445dbad240aa90a74c400ab83e337920d706b286ffe618182bf19454812bd4de9d48c8c138c30c25a939a3e8a001fd1bfdc546b16ac83e6f8e1b2fb5c84b3
+	sha512sums = 838b33a46f1f0886461edac0597e6ac802a2ffd07e548b29eabef38931ca2b4d9e772dde81dd1333a7568cae5797c3754f9fc49001345b00bdcce565c84189d0
 	sha512sums = 4899b20aaff5f8906de1c9d0f9b54d440e9b22cd19a8b383def92b973a8c4d954f88cee623744ec42546dc2f82d4849bcc1c49917efbea9ab346d41ac0dba589
 
 pkgname = zulip-desktop
