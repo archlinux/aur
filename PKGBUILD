@@ -4,7 +4,7 @@
 
 _pkgname=lens
 pkgname=lens-bin
-pkgver=2023.12.80831
+pkgver=2024.1.170738
 pkgrel=1
 pkgdesc='The Kubernetes IDE'
 arch=('x86_64')
@@ -18,7 +18,7 @@ install="${_pkgname}.install"
 source=(${_pkgname}-${pkgver}.${arch}.AppImage::"https://api.k8slens.dev/binaries/Lens-${pkgver}-latest.${arch}.AppImage"
         "${_pkgname}.install"
         "${_pkgname}.desktop")
-b2sums=('2c9a0a021903180d06065e8c50be7755fd1fa9cc8446bc982c03c998b9ea70884a348f52b434524c7907c0d483952611c2ad8b9e5058677dc217e894533d3b68'
+b2sums=('a52fd8555dcb7a4adb132f259e14cea67d928c9626d5a58642e0421a392403f57c97cb87607ec2d5739acf8323b999e448a160caea2d54b6631fdfe2b529a6d0'
         '824c9dcfd5700335632d814c2c1edc3861e18e5f82f0866474895f7b40d0177097d308d6802944ef1c1b6eda2f58b33647a3b2221e3c482f7cf2085fb97ab6b3'
         '7c5afc77c4e921f198139efeb168a16c6208fe0df1267a224ce62bde160d22ec68467f57a560742307ff2bf4e6b5d0bcbf07062b82f1fabcd95e7368d9d02477')
 
