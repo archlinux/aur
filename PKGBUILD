@@ -1,7 +1,7 @@
 # Maintainer: Moabeat <moabeat@berlin.de>
 
 pkgname=beaver-notes
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 epoch=
 pkgdesc="A privacy-focused, cross-platform note-taking application."
@@ -14,7 +14,7 @@ makedepends=('asar' 'npm' 'yarn' 'nodejs' 'imagemagick' 'libxcrypt-compat')
 provides=('beaver-notes')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Daniele-rolli/Beaver-Notes/archive/refs/tags/$pkgver.tar.gz"
         "beaver-notes.desktop")
-sha256sums=("33c419603fe88a164660adb8a37abca66433260e98008e030615e8bc615a407f"
+sha256sums=("54abb953c84aead93501a6462f22127e4992c48aa46284e7b1f05eeee8008996"
             "88c929e920a36084f5257c6d77eee2e75e6b27938c52205c55c25e08bfe89420")
 
 prepare() {
@@ -28,13 +28,13 @@ build() {
 
 	# Build the application
 	yarn build
-	yarn run electron-builder --linux --"${!CARCH}" --dir \
+	yarn electron-builder build \
+		--config electron-builder.config.cjs \
+		--linux deb $dist \
 		-c.electronDist=/usr/lib/"$_electron" \
 		-c.electronVersion="$_ver"
-	
-	# Convert icon to standard conforming png format
-	convert buildResources/icon.ico buildResources/icon.png
 }
+	
 
 package() {
 	cd "Beaver-Notes-$pkgver"
@@ -58,8 +58,11 @@ EOD
 	# Install desktop file
 	install -Dm 644 ../beaver-notes.desktop "$pkgdir"/usr/share/applications/beaver-notes.desktop
 	
-	# Install icon
-	install -Dm 644 buildResources/icon-7.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/beaver-notes.png
+	# Install icons
+  	for i in 32 64 128 256 512 1024; do
+    		install -Dm644 "dist/.icon-set/icon-linux_${i}.png" \
+      		"$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
+  	done
 
 	# Install license
 	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
