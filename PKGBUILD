@@ -2,17 +2,17 @@
 
 pkgname=niri
 pkgver=0.1.0_beta.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A scrollable-tiling Wayland compositor"
 arch=(x86_64)
 url="https://github.com/YaLTeR/${pkgname}"
 license=(GPL-3.0-or-later)
-makedepends=(clang rust)
-depends=(cairo gcc-libs glib2 glibc libinput libpipewire libxkbcommon mesa pango pixman seatd systemd-libs)
+makedepends=(clang rust sccache)
+depends=(cairo glib2 libinput libpipewire libxkbcommon mesa pango pixman seatd)
 source=(${pkgname}-${pkgver//_/-}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz
-        001.patch::${url}/commit/df48337d83f78bbd2a923863e73941b6bd236a28.patch # tty: Delay output config update until resume
+        001.patch::${url}/commit/5cacd03e859d35e71ff17f0897cdee8a44a8935c.patch # Return error instead of broken screenshot for portal
         002.patch::${url}/commit/f5e9b40140e64cf907520aa0d8adf43f7141e1d2.patch # tty: Check changes against pending connectors and mode
-        003.patch::${url}/commit/5cacd03e859d35e71ff17f0897cdee8a44a8935c.patch # Return error instead of broken screenshot for portal
+        003.patch::${url}/commit/df48337d83f78bbd2a923863e73941b6bd236a28.patch # tty: Delay output config update until resume
         004.patch::${url}/commit/18566e336699fbf933dbd5584e9228b04196e893.patch # Watch for canonical filename, not just mtime
         005.patch::${url}/commit/cbbb7a26fc0bff426d67bb2804167f01ade5fbe4.patch # Update Smithay, use device changed session resume code
         006.patch::${url}/commit/743173ef643441f5e58cb078a53a6cf3c93179fa.patch # config: Bump precision on the default widths
@@ -39,12 +39,14 @@ b2sums=('40d6d1b2e0072024a581674733328edddde71fe2876e240c5d4d61660275e4ef491ee39
         'SKIP'
         'SKIP'
         'SKIP'
-        'SKIP')
+        'SKIP'
+        )
 optdepends=('fuzzel: application launcher similar to rofi drun mode'
             'waybar: highly customizable Wayland bar'
             'alacritty: a cross-platform OpenGL terminal emulator'
             'mako: notification daemon for Wayland'
             'swaybg: wallpaper tool for Wayland compositors'
+            'swaylock: screen locker for Wayland'
             'xdg-desktop-portal-gtk: implements most of the basic functionality'
             'xdg-desktop-portal-gnome: screencasting support'
             'gnome-keyring: implements the secret portal, for certain apps to work'
@@ -62,23 +64,17 @@ prepare() {
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
-  export RUSTUP_TOOLCHAIN=stable
-  cargo update
+  export CARGO_HOME=${srcdir}/.cargo
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd ${pkgname}-${pkgver//_/-}
-  export RUSTUP_TOOLCHAIN=stable
+  export RUSTC_WRAPPER=sccache
   export CARGO_TARGET_DIR=target
-  cargo build --release --locked --all-features
+  export CARGO_HOME=${srcdir}/.cargo
+  cargo build --frozen --release
 }
-
-# check() {
-#   cd ${pkgname}-${pkgver//_/-}
-#   export RUSTUP_TOOLCHAIN=stable
-#   cargo test --frozen --all-features
-# }
 
 package() {
   cd ${pkgname}-${pkgver//_/-}
