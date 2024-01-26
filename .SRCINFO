@@ -1,7 +1,7 @@
 pkgbase = litellm
 	pkgdesc = Call all LLM APIs using the OpenAI format
-	pkgver = 1.19.0
-	pkgrel = 2
+	pkgver = 1.19.4
+	pkgrel = 1
 	url = https://pypi.org/project/litellm/
 	arch = any
 	license = MIT
@@ -29,7 +29,7 @@ pkgbase = litellm
 	optdepends = python-apscheduler: Task scheduler
 	optdepends = python-streamlit: App framework for Machine Learning and Data Science
 	optdepends = ollama: Serve local ollama models
-	source = https://files.pythonhosted.org/packages/source/l/litellm/litellm-1.19.0.tar.gz
-	sha256sums = 23aae38c71747ad114782994ee91aae85e7f558456b80fe736d9098984205df7
+	source = https://files.pythonhosted.org/packages/source/l/litellm/litellm-1.19.4.tar.gz
+	sha256sums = 6917c60ad4706bf3e061586ce9e9c0361a5761b686135cd68ee19625ae7e92bd
 
 pkgname = litellm
