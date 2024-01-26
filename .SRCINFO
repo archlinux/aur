@@ -1,0 +1,23 @@
+pkgbase = tschuss-git
+	pkgdesc = Simple and fast highly customizable dropdown power menu
+	pkgver = r48.6ee14d8
+	pkgrel = 1
+	url = https://github.com/Lucad44/tschuss
+	install = tschuss-git.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	depends = libconfig
+	depends = glib2
+	depends = gdk-pixbuf2
+	depends = glibc
+	optdepends = gtk-layer-shell
+	provides = tschuss
+	conflicts = tschuss
+	source = git+https://github.com/Lucad44/tschuss.git
+	md5sums = SKIP
+
+pkgname = tschuss-git

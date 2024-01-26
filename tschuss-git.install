@@ -1,0 +1,4 @@
+post_install() {
+    echo "A default configuration and CSS file is placed in /etc/tschuss/."
+    echo "Copy these into ~/.config/tschuss to get tschuss starting."
+}
