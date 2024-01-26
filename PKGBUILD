@@ -11,7 +11,7 @@ url="https://metacpan.org/dist/Getopt-Long-Descriptive"
 license=('PerlArtistic' 'GPL')
 depends=('perl' 'perl-params-validate' 'perl-sub-exporter')
 checkdepends=('perl-cpan-meta-check' 'perl-test-fatal' 'perl-test-warnings')
-source=("https://www.cpan.org/modules/by-module/Getopt/Getopt-Long-Descriptive-${pkgver}.tar.gz")
+source=("https://backpan.cpan.org/modules/by-authors/id/R/RJ/RJBS/Getopt-Long-Descriptive-${pkgver}.tar.gz")
 sha512sums=('22cff8f92e51f08573e34f24028adbf1c3c1c88570a8d35361234ff13486ca5de20ee2cf8d056971777b9cb0f0c78cc183de2e74915f23eaf9b14fbcbf256531')
 
 build() {
