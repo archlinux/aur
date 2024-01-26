@@ -33,7 +33,7 @@
 # have been modified.
 
 pkgname=ventoy
-pkgver=1.0.96
+pkgver=1.0.97
 _grub_ver=2.04                  # (Jul 2019)
 #_unifont_ver=15.0.01            # FIXME see NOTE below
 _ipxe_ver=3fe683e               # (Sep 29 2019)
@@ -47,7 +47,7 @@ _lz4_ver=1.8.1.2                # (Jan 2018) old! FIXME statically linked into u
 _xz_ver=5.0.4                   # (Jun 2012) old! FIXME statically linked into unsquashfs
 _lzo_ver=2.08                   # (Jun 2014) old! FIXME statically linked into unsquashfs
 _zstd_ver=1.4.4                 # (Nov 2019) old! FIXME statically linked into unsquashfs
-_zlib_ver=1.3                   # need a static 32-bit lib for unsquashfs, build our own
+_zlib_ver=1.3.1                 # need a static 32-bit lib for unsquashfs, build our own
 _squash_ver=4.4                 # (Aug 2019) old! FIXME for unsquashfs
 _dm_ver=1.02.28                 # (Sep 2008) old! FIXME for dmsetup
 _zstd1_ver=1.0.0                # (Sep 2016) old! FIXME for standalone zstdcat
@@ -75,6 +75,7 @@ makedepends=(
   lib32-gcc-libs        # 32-bit squashfs-tools lz4 xz lzo zstd vblade
   lib32-glibc           # 32-bit dietlibc vtoytool dmsetup zstdcat xzminidec busybox lunzip
   libguestfs            # IMG/USB prep
+  linux                 # libguestfs
   musl                  # vtoycli fuse fuseiso xzminidec busybox
   nasm                  # edk2
   python                # grub2 edk2
@@ -104,7 +105,7 @@ source=(
   kernel-headers-musl-"$_kern_hdrs_musl_ver".tar.gz::https://github.com/sabotage-linux/kernel-headers/archive/v"$_kern_hdrs_musl_ver".tar.gz
   https://github.com/libfuse/libfuse/releases/download/fuse-"$_fuse_ver/fuse-$_fuse_ver".tar.gz
   exfat-"$_exfat_ver".tar.gz::https://github.com/relan/exfat/archive/refs/tags/v"$_exfat_ver".tar.gz
-  https://www.zlib.net/zlib-"$_zlib_ver".tar.gz
+  https://github.com/madler/zlib/releases/download/v"$_zlib_ver/zlib-$_zlib_ver".tar.xz
   squashfs-tools-"$_squash_ver".tar.gz::https://github.com/plougher/squashfs-tools/archive/refs/tags/"$_squash_ver".tar.gz
   http://vault.centos.org/5.3/os/SRPMS/device-mapper-"$_dm_ver"-2.el5.src.rpm
   zstd-"$_zstd1_ver".tar.gz::https://github.com/facebook/zstd/archive/refs/tags/v"$_zstd1_ver".tar.gz
@@ -118,7 +119,7 @@ noextract=(
   edk2-"$_edk2_ver".zip
   fuse-"$_fuse_ver".tar.gz
   exfat-"$_exfat_ver".tar.gz
-  zlib-"$_zlib_ver".tar.gz
+  zlib-"$_zlib_ver".tar.xz
   squashfs-tools-"$_squash_ver".tar.gz
   device-mapper-"$_dm_ver"-2.el5.src.rpm
   zstd-"$_zstd1_ver".tar.gz
@@ -127,7 +128,7 @@ noextract=(
   cryptsetup-"$_crypt_ver".tar.xz
   wimboot-"$_wimboot_ver".tar.gz
 )
-sha256sums=('054c02b4ce3d5bf97d95b6d583b7a57020f90e47d650ee87b1e855cc223c0886'
+sha256sums=('ad00cd7be3c17e1f39c53b96243e1bc249aa2125fab16e70062c247907ea21b1'
             'e5292496995ad42dabe843a0192cf2a2c502e7ffcc7479398232b10a472df77d'
             'db2a9018392a3984d1e1e649bde0ffc19c90fa4d96b9fd2d4caaf9c1ca2af68b'
             'SKIP'
@@ -140,7 +141,7 @@ sha256sums=('054c02b4ce3d5bf97d95b6d583b7a57020f90e47d650ee87b1e855cc223c0886'
             'd104397fc657ffb0f0bda46f54fd182b76a9ebc324149c183a4ff8c86a8db53d'
             'd0e69d5d608cc22ff4843791ad097f554dd32540ddc9bed7638cc6fea7c1b4b5'
             '689bcb4a639acd2d45e6fa0ff455f7f18edb2421d4f4f42909943775adc0e375'
-            'ff0ba4c292013dbc27530b3a81e1f9a813cd39de01ca5e0f8bf355702efa593e'
+            '38ef96b8dfe510d42707d9c781877914792541133e1870841463bfa73f883e32'
             'a7fa4845e9908523c38d4acf92f8a41fdfcd19def41bd5090d7ad767a6dc75c3'
             '599a630fdf020282e27c66aa2b4f3d624d731bd150749a8d7b74f544be03b2bb'
             '197e6ef74da878cbf72844f38461bb18129d144fd5221b3598e973ecda6f5963'
@@ -619,7 +620,7 @@ _build_unsquashfs() (
   )
 
   __build_zlib_static-32() (
-    tar -xf "$srcdir"/zlib-$_zlib_ver.tar.gz
+    tar -xf "$srcdir"/zlib-$_zlib_ver.tar.xz
     cd zlib-$_zlib_ver
 
     CC="gcc -m32" \
