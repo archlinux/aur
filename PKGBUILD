@@ -5,7 +5,7 @@
 # https://github.com/phnx47/pkgbuilds
 
 pkgname=solidity
-pkgver=0.8.23
+pkgver=0.8.24
 pkgrel=1
 pkgdesc='Contract-Oriented Programming Language'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('gcc-libs')
 optdepends=('z3: SMT checker' 'cvc4: SMT checker')
 makedepends=('boost' 'cmake')
 source=("${pkgname}_${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}_${pkgver}.tar.gz")
-sha512sums=('c2106ee80b90c51c7e44c8b63e0b61ebadcf74087eb343f8491e3d7093d528bf81c99d169dfba374526d8dfe4c193e60f8f45ce067647b7b34ef050556abf697')
+sha512sums=('24c3eb63b8c6ab8cae22fe26d7ce58002c34fa4e7371841833ba87363af2706826f5f86a0ef6945d7073fe52458e6f55f31b86af3469a6b039854aca36ebb869')
 
 build() {
   cmake -B build -S "${pkgname}_${pkgver}" \
