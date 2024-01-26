@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=python-pyyaml-include
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='An extending constructor of PyYAML: include YAML files into YAML document'
 arch=('any')
