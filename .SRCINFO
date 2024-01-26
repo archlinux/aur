@@ -1,0 +1,15 @@
+pkgbase = aws-ssm-tools-git
+	pkgdesc = Tools for AWS Systems Manager: ec2-session ecs-session ec2-ssh ssm-tunnel ssm-session ssm-ssh
+	pkgver = v1.6.0.r0.g8006575
+	pkgrel = 1
+	url = https://github.com/mludvig/aws-ssm-tools
+	arch = any
+	license = Apache-2.0
+	makedepends = python3
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	source = git+https://github.com/mludvig/aws-ssm-tools.git#tag=v1.6.0.r0.g8006575
+	sha512sums = SKIP
+
+pkgname = aws-ssm-tools-git
