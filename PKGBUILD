@@ -52,7 +52,6 @@ prepare() {
 build() {
   cd ${_base}-${pkgver}
   ./update_openEMS.sh ${PWD}/bin \
-    --with-hyp2mat \
     --with-CTB \
     --with-MPI \
     --python
