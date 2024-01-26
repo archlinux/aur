@@ -1,14 +1,18 @@
-# Maintainer: Brett Cornwall <ainola@archlinux.org>
+# Maintainer: fossdd <fossdd@pwned.life>
+# Contributor: Brett Cornwall <ainola@archlinux.org>
 # Contributor Maxim Baz <archlinux at maximbaz dot com>
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
-pkgname=sway
-pkgver=1.8.1
-epoch=1
-pkgrel=5
-pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
+pkgname=sway-rc
+_pkgname=${pkgname%-rc}
+_pkgver=1.9-rc1
+pkgver=${_pkgver/-/}
+pkgrel=1
+pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager (pre-release version)'
 arch=(x86_64)
 url='https://swaywm.org/'
+conflicts=('sway' 'sway-git')
+provides=('sway')
 license=(MIT)
 depends=(
   'cairo'
@@ -18,7 +22,7 @@ depends=(
   'libjson-c.so'
   'libudev.so'
   'libwayland-server.so'
-  'libwlroots.so=11'
+  'libwlroots.so'
   'libxcb'
   'libxkbcommon.so'
   'pango'
@@ -31,8 +35,7 @@ backup=(
   etc/sway/config.d/50-systemd-user.conf
 )
 optdepends=(
-  'bemenu: Wayland-native alternative to dmenu'
-  'dmenu: Application launcher used in default config'
+  'wmenu: Application launcher used in default config'
   'foot: Terminal emulator used in the default configuration'
   'i3status: Status line generation'
   'mako: Lightweight notification daemon'
@@ -41,57 +44,41 @@ optdepends=(
   'swayidle: Idle management daemon'
   'swaylock: Screen locker'
   'waybar: Highly customizable bar'
+  'sway-contrib: Collection of user-contributed scripts for sway'
   'xorg-xwayland: X11 support'
   'xdg-desktop-portal-gtk: Default xdg-desktop-portal for file picking'
   'xdg-desktop-portal-wlr: xdg-desktop-portal backend'
 )
-source=("https://github.com/swaywm/sway/releases/download/$pkgver/sway-$pkgver.tar.gz"
-        "https://github.com/swaywm/sway/releases/download/$pkgver/sway-$pkgver.tar.gz.sig"
+source=("https://github.com/swaywm/sway/releases/download/$_pkgver/sway-$_pkgver.tar.gz"
+        "https://github.com/swaywm/sway/releases/download/$_pkgver/sway-$_pkgver.tar.gz.sig"
         "50-systemd-user.conf"
-        "sys_nice_user_xkb_configs.patch"
         "sway-portals.conf")
 install=sway.install
-sha512sums=('1504312a199608532e22336c5031e8f4749f5102ab321d13d97a1f93d49c8ec435e9097af729d8f7dfa81e2e96cee7de91cf4c04b6a7b7151ea740a1e43eb086'
+sha512sums=('cc174faab51a77f1f7c97b8af7d57219422b2d117409bb622e8a7974a8629d494a1263878a3bb8ab54ed163e9586cdffd04d39bd7242d875d8a8265cf1fc490a'
             'SKIP'
             'd5f9aadbb4bbef067c31d4c8c14dad220eb6f3e559e9157e20e1e3d47faf2f77b9a15e52519c3ffc53dc8a5202cb28757b81a4b3b0cc5dd50a4ddc49e03fe06e'
-            '156719e93d0213d1b54ce6e3a9b2dcc9246da5689dd2d3281546f9c042cbc69072f99b087e112fe777dcd786d2b9d1be1e1c9200feddffb5e2d16f8dfb27515d'
             'b9e708c775825c8124d8e154e523c90b8a32715050ba06f6dbcdd08d109eed484d128ccc8dcd6a49dc9cd51a0c9035779c2706b4d7a139115e85c4f54226b775')
 validpgpkeys=('34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48'  # Simon Ser
               '9DDA3B9FA5D58DD5392C78E652CB6609B22DA89A') # Drew DeVault
 
 prepare() {
-  cd "$pkgname-$pkgver"
-
-  # Enable user xkb configs with cap_sys_nice - otherwise user xkb configs will
-  # break.
-  #
-  # This patch was originally at
-  # https://github.com/swaywm/sway/commit/2f2cdd60def006f6d3cbe318f9edd7d68fcb239a.patch
-  # but failed to apply correctly to meson.build. We don't need that part of
-  # the patch so just drop it.
-  patch -p1 < ../sys_nice_user_xkb_configs.patch
+  cd "$_pkgname-$_pkgver"
 
   # Set the version information to 'Arch Linux' instead of 'makepkg'
   sed -i "s/branch \\\'@1@\\\'/Arch Linux/g" meson.build
 }
 
 build() {
-  export PKG_CONFIG_PATH='/usr/lib/wlroots0.16/pkgconfig'
   mkdir -p build
-  arch-meson build "$pkgname-$pkgver" -D sd-bus-provider=libsystemd -D werror=false -D b_ndebug=true
+  arch-meson build "$_pkgname-$_pkgver" -D sd-bus-provider=libsystemd -D werror=false -D b_ndebug=true
   ninja -C build
 }
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
-  install -Dm644 "$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$_pkgname-$_pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 50-systemd-user.conf -t "$pkgdir/etc/sway/config.d/"
   install -Dm644 sway-portals.conf "$pkgdir/usr/share/xdg-desktop-portal/sway-portals.conf"
-
-  for util in autoname-workspaces.py inactive-windows-transparency.py grimshot; do
-    install -Dm755 "$pkgname-$pkgver/contrib/$util" -t \
-                   "$pkgdir/usr/share/$pkgname/scripts"
-  done
 }
 
 # vim: ts=2 sw=2 et
