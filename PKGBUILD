@@ -29,7 +29,7 @@ prepare() {
 }
 
 package_ntsync-dkms() {
-    pkgdesc+=" - out-of-tree module (dkms)"
+    pkgdesc+=" - out-of-tree module"
     depends=(dkms)
     optdepends=(ntsync-header ntsync-common)
     provides=(NTSYNC-MODULE)
@@ -42,14 +42,14 @@ package_ntsync-dkms() {
 }
 
 package_ntsync-header() {
-    pkgdesc+=" - header file"
+    pkgdesc+=" - linux api header file"
 
     install -Dm644 "$srcdir/ntsync.h-$_commit" "$pkgdir/usr/include/linux/ntsync.h"
 }
 
 package_ntsync-common() {
     pkgdesc+=" - common files"
-    
+
     install -Dm644 "$srcdir/ntsync.conf" "$pkgdir/usr/lib/modules-load.d/ntsync.conf"
     install -Dm644 "$srcdir/99-ntsync.rules" "$pkgdir/usr/lib/udev/rules.d/99-ntsync.rules"
 }

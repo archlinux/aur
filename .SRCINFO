@@ -19,7 +19,7 @@ pkgbase = ntsync
 	sha256sums = e81694fa952711f1b74f02b6a64ac1e90c229f93c740e4f97df5692f3af99609
 
 pkgname = ntsync-dkms
-	pkgdesc = NT synchronization primitive driver - out-of-tree module (dkms)
+	pkgdesc = NT synchronization primitive driver - out-of-tree module
 	depends = dkms
 	optdepends = ntsync-header
 	optdepends = ntsync-common
@@ -27,7 +27,7 @@ pkgname = ntsync-dkms
 	conflicts = ntsync
 
 pkgname = ntsync-header
-	pkgdesc = NT synchronization primitive driver - header file
+	pkgdesc = NT synchronization primitive driver - linux api header file
 
 pkgname = ntsync-common
 	pkgdesc = NT synchronization primitive driver - common files
