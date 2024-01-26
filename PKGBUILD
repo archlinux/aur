@@ -5,7 +5,7 @@
 pkgbase=ntsync
 pkgname=(ntsync-dkms ntsync-header ntsync-common)
 pkgver=6.8
-pkgrel=5
+pkgrel=6
 pkgdesc="NT synchronization primitive driver"
 arch=(x86_64)
 url='https://repo.or.cz/linux/zf.git/shortlog/refs/heads/ntsync4'
@@ -51,6 +51,9 @@ package_ntsync-header() {
 
 package_ntsync-common() {
     pkgdesc+=" - common files"
+    provides=(ntsync-udev-rule)
+    conflicts=(ntsync-udev-rule)
+    replaces=(ntsync-udev-rule)
 
     install -Dm644 "$srcdir/ntsync.conf" "$pkgdir/usr/lib/modules-load.d/ntsync.conf"
     install -Dm644 "$srcdir/99-ntsync.rules" "$pkgdir/usr/lib/udev/rules.d/99-ntsync.rules"

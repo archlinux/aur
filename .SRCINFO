@@ -1,7 +1,7 @@
 pkgbase = ntsync
 	pkgdesc = NT synchronization primitive driver
 	pkgver = 6.8
-	pkgrel = 5
+	pkgrel = 6
 	url = https://repo.or.cz/linux/zf.git/shortlog/refs/heads/ntsync4
 	arch = x86_64
 	license = GPL2
@@ -31,3 +31,6 @@ pkgname = ntsync-header
 
 pkgname = ntsync-common
 	pkgdesc = NT synchronization primitive driver - common files
+	provides = ntsync-udev-rule
+	conflicts = ntsync-udev-rule
+	replaces = ntsync-udev-rule
