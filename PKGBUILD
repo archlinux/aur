@@ -10,7 +10,7 @@ license=(MIT)
 arch=(any)
 depends=(python-numpy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
-checkdepends=(python-pytest-fixture-config python-napf)
+checkdepends=(python-pytest python-napf)
 optdepends=('python-vedo: for renderer and visualization'
   'python-scipy: for create k-d tree'
   'python-meshio: for load and export numerous mesh formats'
