@@ -3,7 +3,7 @@
 
 pkgname=python-playwright
 _name=playwright-python
-pkgver=1.41.0
+pkgver=1.41.1
 pkgrel=1
 pkgdesc="a Python library to automate Chromium, Firefox and WebKit browsers with a single API"
 arch=(x86_64)
