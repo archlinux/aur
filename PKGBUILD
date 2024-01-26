@@ -25,15 +25,18 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
+prepare() {
 	cd "${srcdir}/${_pkgname}"
-	test -n "${CFLAGS}" || CFLAGS=-O2  # Generic fallback is used only when necessary
-
 	# Build with SHOPT_ALL_LIBCMD (aka enable all ksh builtins) if
 	# ${_all_libcmd} is set to '1' or 'yes'.
 	if [[ ${_all_libcmd} == 1 || ${_all_libcmd} == yes ]]; then
 		sed -i 's/ALL_LIBCMD=0/ALL_LIBCMD=1/g' src/cmd/ksh93/SHOPT.sh
 	fi
+}
+
+build() {
+	cd "${srcdir}/${_pkgname}"
+	test -n "${CFLAGS}" || CFLAGS=-O2  # Generic fallback is used only when necessary
 	./bin/package make CCFLAGS="${CFLAGS}"
 }
 
