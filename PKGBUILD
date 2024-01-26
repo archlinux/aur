@@ -1,6 +1,6 @@
 # Maintainer: libjared <4498312-libjared@users.noreply.gitlab.com>
 pkgname=vrc-get
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Open Source command line client of VRChat Package Manager"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=(cargo)
 # openssl-sys has a linking problem with lto:
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a8bedd4cbdb703fc26da26b7c3f74a626acffd2b0c44d3d7c755d7d178f259d0')
+sha256sums=('53026516acf1896b99eeda81d0617371c62f79df2534c14564f1507dacbfc23c')
 
 prepare() {
   cd "$pkgname-$pkgver"
