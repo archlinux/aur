@@ -1,4 +1,4 @@
-From 230c3144ea0894e9b0e692cef5b913801b967ff7 Mon Sep 17 00:00:00 2001
+From d6561291e8168ee3c026e4206d91d4ea90ba4fc3 Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Wed, 23 Aug 2023 19:31:35 +0300
 Subject: [PATCH 5/6] AUR Strip binaries early
