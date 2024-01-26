@@ -12,7 +12,7 @@
 
 pkgname="vlc-git"
 pkgdesc="Multi-platform MPEG, VCD/DVD, and DivX player"
-pkgver=4.0.0.r27448.g6e8611d613
+pkgver=4.0.0.r27500.g1a007d1ffa
 pkgrel=1
 url='https://code.videolan.org/videolan/vlc'
 arch=('i686' 'x86_64')
@@ -131,7 +131,7 @@ build() {
 
   export CFLAGS+=" -I/usr/include/samba-4.0 -ffat-lto-objects"
   export CPPFLAGS+=" -I/usr/include/samba-4.0"
-  export CXXFLAGS+=" -std=c++11"
+  export CXXFLAGS+=" -std=c++17"
   export MPG123_CFLAGS+=" -DMPG123_NO_LARGENAME"
 
   # upstream doesn't support lua 5.4 yet: https://trac.videolan.org/vlc/ticket/25036
