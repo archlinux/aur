@@ -1,0 +1,21 @@
+pkgbase = clickercompanion
+	pkgdesc = App for the Class Clicker
+	pkgver = 1.6_expo
+	pkgrel = 1
+	url = https://github.com/ClassClick/ClickerCompanion
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = nvm
+	makedepends = npm
+	makedepends = git
+	depends = electron26
+	depends = hicolor-icon-theme
+	conflicts = clickercompanion
+	options = !strip
+	source = clickercompanion.git::git+https://github.com/ClassClick/ClickerCompanion.git#tag=v1.6-expo
+	source = clickercompanion.sh
+	sha256sums = SKIP
+	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
+
+pkgname = clickercompanion
