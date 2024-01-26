@@ -1,0 +1,22 @@
+pkgbase = headlamp-bin
+	pkgdesc = A Kubernetes web UI that is fully-featured, user-friendly and extensible
+	pkgver = 0.22.0
+	pkgrel = 1
+	url = https://headlamp.dev/
+	arch = x86_64
+	license = Apache-2.0
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	provides = headlamp
+	conflicts = headlamp
+	options = !strip
+	options = !emptydirs
+	source = headlamp-0.22.0.tar.gz::https://github.com/headlamp-k8s/headlamp/releases/download/v0.22.0/Headlamp-0.22.0-linux-x64.tar.gz
+	source = headlamp.svg::https://raw.githubusercontent.com/headlamp-k8s/headlamp/main/frontend/src/resources/icon-dark.svg
+	source = headlamp.desktop
+	b2sums = 805a54559108870946ae6841208d4b6766e9e0586029ce6004552394315dfd8cb2ab0a3791a635c804e420fe8c62f0f23ac976140b93f974e06522d95e099f2e
+	b2sums = 60dfacf0a97e0a642a25ca38e54a0c9448598ad0d9f40afe0966029536c40d502940068a1029463ce63df9e5216d4eba7fbd75538cedfdfd10f4014b8673a5bb
+	b2sums = 775b6f07693b57548517b7e2f5cbf576daac8cc4ab744289ae2d8bb986d3609f8c5330776603fbf140a264bb31d3bba2dff3db5435aef22f9ddcabddc25c2853
+
+pkgname = headlamp-bin

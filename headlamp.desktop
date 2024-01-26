@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Headlamp
+Exec=headlamp --no-sandbox %U
+Terminal=false
+Type=Application
+Icon=headlamp
+StartupWMClass=Headlamp
+X-AppImage-Version=0.22.0
+Comment=Easy-to-use and extensible Kubernetes web UI
+MimeType=x-scheme-handler/headlamp;
+Categories=System;
