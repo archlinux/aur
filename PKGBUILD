@@ -9,6 +9,8 @@
 # https://github.com/quotient-im/Quaternion
 
 ## options
+: ${_build_clang:=true}
+
 : ${_build_git:=true}
 
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
@@ -16,7 +18,7 @@
 ## basic info
 _pkgname="quaternion"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=0.0.95.1.r238.gc074213
+pkgver=0.0.96.r1.gdc0381e3
 pkgrel=1
 pkgdesc='Qt-based IM client for the Matrix protocol'
 url="https://github.com/quotient-im/Quaternion"
@@ -26,19 +28,23 @@ arch=('aarch64' 'i686' 'x86_64')
 ## main package
 _main_package() {
   depends=(
-    hicolor-icon-theme
-    qt5-multimedia
-    qt5-quickcontrols2
-    qt5-tools
-    qtkeychain-qt5
+    libolm.so
+    qt6-multimedia
+    qt6-declarative
+    qtkeychain-qt6
   )
   makedepends=(
     cmake
     git
+    qt6-tools
   )
-  optdepends=(
-    'qt5-graphicaleffects: Display the conversation history at startup'
-  )
+
+  if [[ "${_build_clang::1}" == "t" ]] ; then
+    makedepends+=(
+      clang
+      lld
+    )
+  fi
 
   if [ "${_build_git::1}" != "t" ] ; then
     _main_stable
@@ -58,7 +64,6 @@ _main_stable() {
   )
   sha256sums=(
     'SKIP'
-
     'SKIP'
   )
 
@@ -73,7 +78,7 @@ _main_stable() {
 
 ## git package
 _main_git() {
-  provides=("$_pkgname")
+  provides=("$_pkgname=${pkgver%.r**}")
   conflicts=("$_pkgname")
 
   _pkgsrc="$_pkgname"
@@ -89,16 +94,14 @@ _main_git() {
   )
   sha256sums=(
     'SKIP'
-
     'SKIP'
-
     'SKIP'
     'SKIP'
   )
 
   pkgver() {
     cd "$_pkgsrc"
-    git describe --long --tags --exclude '[a-z]*' --exclude '*[a-z][a-z]*' \
+    git describe --long --tags --abbrev=8 --exclude '[a-z]*' --exclude '*[a-z][a-z]*' \
       | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
   }
 
@@ -141,13 +144,18 @@ prepare() {
 }
 
 build() {
+  if [[ "${_build_clang::1}" == "t" ]] ; then
+    export CXX=clang++
+    export LDFLAGS+=" -fuse-ld=lld"
+  fi
+
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
     -DCMAKE_INSTALL_PREFIX="/usr"
     -DCMAKE_BUILD_TYPE=Release
     -DUSE_INTREE_LIBQMC=ON
-    -DBUILD_WITH_QT6=OFF
+    -DBUILD_WITH_QT6=ON
   )
 
   cmake "${_cmake_options[@]}"
@@ -155,7 +163,11 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir:?}" cmake --install build
+  depends+=(
+    hicolor-icon-theme
+  )
+
+  DESTDIR="$pkgdir" cmake --install build
 }
 
 ## execute
