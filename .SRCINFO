@@ -1,6 +1,6 @@
 pkgbase = redis-bloom
 	pkgdesc = Probabilistic Datatypes Module for Redis
-	pkgver = 2.6.8
+	pkgver = 2.6.11
 	pkgrel = 1
 	url = https://redis.io/docs/stack/bloom/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = redis-bloom
 	makedepends = git
 	makedepends = cmake
 	depends = redis
-	source = git+https://github.com/RedisBloom/RedisBloom.git#commit=ffd011f6fc870c21284ff939023149229ed23a71
+	source = git+https://github.com/RedisBloom/RedisBloom.git#commit=f609223d508fbb5c8185eaa915a699719f294f58
 	sha256sums = SKIP
 
 pkgname = redis-bloom

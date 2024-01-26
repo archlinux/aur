@@ -2,7 +2,7 @@
 
 pkgname=redis-bloom
 _name=RedisBloom
-pkgver=2.6.8
+pkgver=2.6.11
 pkgrel=1
 pkgdesc="Probabilistic Datatypes Module for Redis "
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://redis.io/docs/stack/bloom/"
 license=("custom:SSPL1")
 makedepends=('git' 'cmake')
 depends=('redis')
-_tag=ffd011f6fc870c21284ff939023149229ed23a71  # git rev-parse v${pkgver}
+_tag=f609223d508fbb5c8185eaa915a699719f294f58 # git rev-parse v${pkgver}
 source=(git+https://github.com/${_name}/${_name}.git#commit=${_tag})
 sha256sums=('SKIP')
 
