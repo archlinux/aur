@@ -25,7 +25,7 @@ depends=(
 makedepends=(chrpath)
 #checkdepends=()
 #optdepends=()
-source=($pkgname-$pkgver::"https://live.albiononline.com/clients/20240124100515/albion-online-setup"
+source=($pkgname-$pkgver::"https://live.albiononline.com/clients/20240126100232/albion-online-setup"
   "albion-online-launcher.desktop" "albion-online" "Albion-Online.patch")
 install=albion-online-launcher-bin.install
 options=(!strip docs libtool emptydirs !zipman staticlibs)
