@@ -47,6 +47,6 @@ package() {
 
   dir_path="$HOME/.config/cherry"
   if [ -z "$(find "$dir_path" -maxdepth 1 -name '*.yaml' -print -quit)" ]; then
-    mkdir -p "$(dirname "$file_path")" && touch "$dir_path/default.yaml"
+    mkdir -p $dir_path && touch "$dir_path/default.yaml"
   fi
 }
