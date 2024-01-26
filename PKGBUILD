@@ -3,7 +3,7 @@
 _pkgbase=fltk
 pkgbase=fltk-git
 pkgname=fltk-git
-pkgver=1.4.0.r9205.3c84894f1
+pkgver=1.4.0.r9205.f2544509c
 pkgrel=1
 pkgdesc='Graphical user interface toolkit for X (Git version)'
 arch=('x86_64')
@@ -37,7 +37,8 @@ build() {
 		-DCMAKE_INSTALL_PREFIX='/usr' \
 		-DCMAKE_INSTALL_LIBDIR='lib' \
 		-DCMAKE_BUILD_TYPE='Release' \
-		-DOPTION_BUILD_EXAMPLES=0
+		-DFLTK_BUILD_TEST=0 \
+		-DOPTION_BUILD_SHARED_LIBS=1
 
 	make
 }
