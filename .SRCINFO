@@ -1,7 +1,7 @@
 pkgbase = gemmi
 	pkgdesc = Macromolecular crystallography library and utilities
 	pkgver = 0.6.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://project-gemmi.github.io
 	arch = x86_64
 	license = MPL2

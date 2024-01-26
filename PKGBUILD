@@ -1,7 +1,7 @@
 # Maintainer: Alexander Minges <alexander.minges@gmail.com>
 pkgname=gemmi
 pkgver=0.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Macromolecular crystallography library and utilities"
 arch=('x86_64')
 url="https://project-gemmi.github.io"
@@ -24,7 +24,9 @@ build() {
 package() {
   # Prepare the directory structure.
   install -dm755 "${pkgdir}/usr"
+  install -dm755 "${pkgdir}/usr/lib"
 
   cp -r "${srcdir}/${pkgname}-${pkgver}/include"  "${pkgdir}/usr/"
+  cp -r "${srcdir}/${pkgname}-${pkgver}/libgemmi_cpp.so"  "${pkgdir}/usr/lib/"
 }
 
