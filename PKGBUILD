@@ -3,7 +3,7 @@
 _pkgname=pineflash
 pkgname="${_pkgname}-git"
 pkgver=0.5.3+19.r295.20240112.4c6996d
-pkgrel=3
+pkgrel=4
 arch=(
   'i686'
   'x86_64'
@@ -21,7 +21,7 @@ depends=(
   'gcc-libs'
   'glibc'
   'gtk3'
-  'libudev'
+  'libudev.so'
   'libusb'
   'polkit'
 )
