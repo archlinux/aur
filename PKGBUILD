@@ -44,11 +44,15 @@ build() {
 				  -DENABLE_PYMOAB=ON \
 				  -DBUILD_SHARED_LIBS=ON \
 				  -DCMAKE_INSTALL_PREFIX=/opt/MOAB
-	_ccores=`cat /proc/cpuinfo |grep CPU|wc -l`
-  	if [ "x$1" != "x" ]; then
-		_ccores=$1
-  	fi
-	make -j ${_ccores}
+
+        # parallel build if possible
+        _ccores=$(nproc)
+        if [ -z "${_ccores}" ]; then
+            make
+        else
+            make -j ${_ccores}
+fi
+
 }
 
 package() {
