@@ -2,7 +2,7 @@
 # Contributor: Philipp Schmitt (philipp<at>schmitt<dot>co)
 
 pkgname=kanboard
-pkgver=1.2.32
+pkgver=1.2.34
 pkgrel=1
 pkgdesc='Simple visual task board'
 arch=('any')
@@ -42,7 +42,7 @@ package() {
     cp ${pkgdir}/usr/share/webapps/${pkgname}/config.default.php ${pkgdir}/etc/webapps/${pkgname}/config.php
 }
 
-sha256sums=('7e31d4d4329f8ad63883664bfe4bca316307ec2bfa6ac1fe8a25567dffd77a9b'
+sha256sums=('009d715ab9ec31f7b98a4f90bbf63b5934dfec5975aed19f45947297de9a5a0a'
             '6eb379e74f744d95a930c90ae7744cb8236501bdcd24c7efb6a2eaf1a857204f'
             '62853c973e5b0718ceae5dbeb76b478bb218ce89d732e66a5eef1c7c258ea4b4'
             '5fdf81a69cda8c3c813e5d21f62d4112264645c95d376d7b31dae4573724930a'
