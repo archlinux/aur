@@ -12,6 +12,7 @@ license=('unknown')
 depends=("zlib" 
 	 "bash")
 optdepends=('openvr: For VR support')
+makedepends=('gendesk')
 replaces=('ftcfrcsimulator')
 
 # Base name of files in the zip
@@ -19,34 +20,29 @@ _files_name="xRC Simulator"
 
 source=(
 	"${pkgname}-${pkgver}.zip::https://xrcsimulator.org/?sdm_process_download=1&download_id=2279"
-	"xrcsimulator.desktop"
 )
 
-sha1sums=('c99c4af06c2e200788552bca0dc31e10fc2b950a'
-          '07ee699a267425f01c7e28c2369ba6521bd515ec')
+sha1sums=('c99c4af06c2e200788552bca0dc31e10fc2b950a')
+
+prepare() {
+	gendesk -n -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name="XRC Simulator" --categories="Education;Game"
+}
 
 package() {
-	cd "${srcdir}"
-	mkdir -p "${pkgdir}/usr/share/xrcsimulator" "${pkgdir}/usr/bin"
+	mkdir -p "$pkgdir/usr/share/xrcsimulator" "$pkgdir/usr/bin"
+
 	# Copy data to /usr/share, set directory permissions to 755, file permissions to 644
-	cp -r "${_files_name}_Data" "${pkgdir}/usr/share/xrcsimulator/"
-	chmod -R 0755 "${pkgdir}/usr/share/xrcsimulator"
-	find "${pkgdir}/usr/share/xrcsimulator/" -type f -exec chmod 644 {} \;
+	cp -r . "$pkgdir/usr/share/xrcsimulator/"
+	chmod -R u+rwX,go+rX,go-w "$pkgdir/usr/share/xrcsimulator"
+	chmod 755 "$pkgdir/usr/share/xrcsimulator/$_files_name.x86_64"
+	chmod 755 "$pkgdir/usr/share/xrcsimulator/UnityPlayer.so"
 
-	# Copy binaries over
-	install -Dm755 "${_files_name}.x86_64" "${pkgdir}/usr/share/xrcsimulator/${_files_name}.x86_64"
-	install -Dm755 "UnityPlayer.so" "${pkgdir}/usr/share/xrcsimulator/UnityPlayer.so"
+	# Create soft link to binary
+	ln -s "/usr/share/xrcsimulator/$_files_name.x86_64" "$pkgdir/usr/bin/xrcsimulator"
 
-	# Put a script in /usr/bin to run app
-	cat <<EOF > "${pkgdir}"/usr/bin/xrcsimulator
-#!/bin/bash
-"/usr/share/xrcsimulator/${_files_name}.x86_64"
-EOF
-	chmod 0755 "${pkgdir}"/usr/bin/xrcsimulator
 	# Desktop Entry
-	install -Dm644 xrcsimulator.desktop "${pkgdir}/usr/share/applications/xrcsimulator.desktop"
+	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 
 	# Logo
-	cd "${srcdir}"
-	install -Dm644 "${_files_name}_Data/Resources/UnityPlayer.png" "${pkgdir}/usr/share/pixmaps/xrcsimulator.png"
+	install -Dm644 "${_files_name}_Data/Resources/UnityPlayer.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
