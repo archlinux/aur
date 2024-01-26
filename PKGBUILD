@@ -27,10 +27,8 @@ options=(
 )
 source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
-    "${pkgname}.sh"
 )
-sha256sums=('SKIP'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+sha256sums=('SKIP')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]

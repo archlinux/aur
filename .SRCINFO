@@ -16,8 +16,6 @@ pkgbase = tiny-rdm
 	conflicts = tiny-rdm
 	options = !strip
 	source = tiny-rdm.git::git+https://github.com/tiny-craft/tiny-rdm.git#tag=v1.1.8
-	source = tiny-rdm.sh
 	sha256sums = SKIP
-	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
 
 pkgname = tiny-rdm
