@@ -3,13 +3,13 @@
 pkgname=avp
 pkgver=20170505_a1
 _dirname=20170505
-pkgrel=2
+pkgrel=3
 pkgdesc="Alien Versus Predator Gold engine"
 arch=(i686 x86_64)
 url="https://www.icculus.org/avp"
-license=('custom')
-depends=('sdl' 'libgl' 'openal')
-makedepends=('cmake' 'glu' 'mesa' 'gcc10')
+license=('LicenseRef-custom')
+depends=('sdl12-compat' 'libgl' 'openal')
+makedepends=('cmake' 'glu' 'mesa')
 optdepends=('avp-data')
 install='avp.install'
 source=("${url}/files/${pkgname}-${pkgver/_/-}.tar.gz"
@@ -28,10 +28,13 @@ prepare() {
 build() {
   cd ${pkgname}-${_dirname}/build
 
-  export CC="/usr/bin/gcc-10"
-  export CXX="/usr/bin/g++-10"
-
-  cmake -DCMAKE_BUILD_TYPE="Release" -DOpenGL_GL_PREFERENCE="GLVND" -DSDL_TYPE="SDL" ..
+  cmake \
+        -DCMAKE_BUILD_TYPE="Release" \
+        -DCMAKE_CXX_STANDARD=14 \
+        -DCMAKE_CXX_STANDARD_REQUIRED='ON' \
+        -DCMAKE_CXX_EXTENSIONS='OFF' \
+        -DOpenGL_GL_PREFERENCE="GLVND" \
+        -DSDL_TYPE="SDL" ..
   make
 }
 

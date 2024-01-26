@@ -1,17 +1,16 @@
 pkgbase = avp
 	pkgdesc = Alien Versus Predator Gold engine
 	pkgver = 20170505_a1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.icculus.org/avp
 	install = avp.install
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = LicenseRef-custom
 	makedepends = cmake
 	makedepends = glu
 	makedepends = mesa
-	makedepends = gcc10
-	depends = sdl
+	depends = sdl12-compat
 	depends = libgl
 	depends = openal
 	optdepends = avp-data
@@ -23,4 +22,3 @@ pkgbase = avp
 	sha512sums = d9093d22cc63e9c6fe57598e159fc90edd8a4e7674892b89ded5efaed909b80e8164613537cc11fec4dc60b2f0d9463329a55dc1491ab9479352c3337a8af583
 
 pkgname = avp
-
