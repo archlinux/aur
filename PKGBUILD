@@ -1,13 +1,13 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=SiPSiC
-_pkgver=1.2.1
+_pkgver=1.2.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Calculate Pathway Scores for Each Cell in scRNA-Seq Data"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/$_pkgname"
 license=(GPL3)
 depends=(
   r-singlecellexperiment
@@ -18,12 +18,12 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('84be416108d1b90a06e83acaa8d2f208')
-sha256sums=('5d1cf5b46caa3145e02904d15473352dbb0d82845878e1cb5da8e67497eea55f')
+md5sums=('b8de9b61ecec686d20b8b3a4383cb6f9')
+b2sums=('57cccba30b6234007363d8ad24959753fd18c714a32357e26fe70614645a4ddae96002af0a2c4190b5c77637bce6cfdfe46dbb58c773c20d1f2a3768fe317756')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
