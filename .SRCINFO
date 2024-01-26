@@ -1,16 +1,16 @@
 pkgbase = station-appimage
 	pkgdesc = The first open-source smart browser for busy people. A single place for all of your web applications.
-	pkgver = 2.7.2
+	pkgver = 2.7.3
 	pkgrel = 1
 	url = https://getstation.com/
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = squashfuse
 	depends = hicolor-icon-theme
-	provides = station=2.7.2
+	provides = station=2.7.3
 	conflicts = station
 	options = !strip
-	source = station-2.7.2.AppImage::https://github.com/getstation/desktop-app/releases/download/v2.7.2/Station-x86_64.AppImage
-	sha256sums = 853e1bef74b3d7f8f3ac1ce9acffd6b892dce28c4e04f4c5e79471cfbe6c9334
+	source = station-2.7.3.AppImage::https://github.com/getstation/desktop-app/releases/download/v2.7.3/Station-x86_64.AppImage
+	sha256sums = 6b420c84cfcfcf0f01729381c042202bc941a90bd5bdcf91241e9dc99fadbbdd
 
 pkgname = station-appimage
