@@ -2,16 +2,16 @@
 
 pkgname="olivetin-bin"
 pkgver=2023.12.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Safe and simple access to predefined shell commands from a web interface"
 url="https://www.olivetin.app/"
 license=("AGPL3")
 arch=("x86_64" "aarch64" "armv7h")
 provides=("olivetin")
 conflicts=("olivetin")
-source_x86_64=("https://github.com/OliveTin/OliveTin/releases/download/$pkgver/OliveTin-linux-amd64.tar.gz")
-source_aarch64=("https://github.com/OliveTin/OliveTin/releases/download/$pkgver/OliveTin-linux-arm64.tar.gz")
-source_armv7h=("https://github.com/OliveTin/OliveTin/releases/download/$pkgver/OliveTin-linux-arm7.tar.gz")
+source_x86_64=("$pkgname-$pkgver.tar.gz"::"https://github.com/OliveTin/OliveTin/releases/download/$pkgver/OliveTin-linux-amd64.tar.gz")
+source_aarch64=("$pkgname-$pkgver.tar.gz"::"https://github.com/OliveTin/OliveTin/releases/download/$pkgver/OliveTin-linux-arm64.tar.gz")
+source_armv7h=("$pkgname-$pkgver.tar.gz"::"https://github.com/OliveTin/OliveTin/releases/download/$pkgver/OliveTin-linux-arm7.tar.gz")
 source=("olivetin.service"
         "olivetin@.service")
 b2sums=('402097ad54be50688a22223b96f32a6630ec5479bcf4f99dbaf98d1b212cac4316c4adcf8dd7aeb9216d28dd815b5b80820023a4ca710ebe60f7603795931489'
