@@ -5,7 +5,7 @@
 pkgbase=ntsync
 pkgname=(ntsync-dkms ntsync-header ntsync-common)
 pkgver=6.8
-pkgrel=3
+pkgrel=5
 pkgdesc="NT synchronization primitive driver"
 arch=(x86_64)
 url='https://repo.or.cz/linux/zf.git/shortlog/refs/heads/ntsync4'
@@ -30,8 +30,10 @@ prepare() {
 
 package_ntsync-dkms() {
     pkgdesc+=" - out-of-tree module"
-    depends=(dkms)
-    optdepends=(ntsync-header ntsync-common)
+    depends=(dkms ntsync-common)
+    optdepends=(
+        'ntsync-header: Allow wine to be compiled with ntsync support'
+    )
     provides=(NTSYNC-MODULE)
     conflicts=(ntsync)
 
