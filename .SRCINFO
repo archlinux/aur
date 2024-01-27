@@ -5,7 +5,7 @@ pkgbase = ocaml-zed
 	url = https://github.com/ocaml-community/zed
 	arch = x86_64
 	arch = aarch64
-	license = BSD
+	license = BSD-3-Clause
 	checkdepends = ocaml-alcotest
 	makedepends = dune>=3.0.0
 	depends = ocaml>=4.02.3
