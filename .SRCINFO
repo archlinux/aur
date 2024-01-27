@@ -1,6 +1,6 @@
 pkgbase = dxvk-nvapi-mingw-git
 	pkgdesc = Alternative NVAPI implementation on top of DXVK
-	pkgver = 0.6.4.r16.g03cc59d
+	pkgver = 0.6.4.r48.g0951afb
 	pkgrel = 1
 	url = https://github.com/jp7677/dxvk-nvapi
 	arch = x86_64
