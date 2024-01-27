@@ -3,7 +3,7 @@
 # Contributor: Matthew Sexton <wsdmatty@gmail.com>
 # Contributor: Lorenz Wellmer
 pkgname=clockify-desktop
-pkgver=2.1.9
+pkgver=2.1.10
 pkgrel=1
 pkgdesc="Truly free time tracker for teams, Desktop App"
 arch=("x86_64")
@@ -14,7 +14,7 @@ depends=("alsa-lib" "at-spi2-core" "cairo" "dbus" "expat" "gcc-libs" "glib2"
          "libx11" "libxcb" "libxcomposite" "libxdamage" "libxext" "libxfixes"
          "libxkbcommon" "libxrandr" "mesa" "nspr" "nss" "pango")
 source=("$pkgname-$pkgver.deb::https://clockify.me/downloads/Clockify_Setup_x64.deb")
-sha512sums=("006937bc9a30f18a03981bf28d9ead4022bdd5d1f26aa12fcf6b92ee041816c6482ec931cb7d2e5658c05d93dc911e83167399d38dba6a225b6fa94c614057c8")
+sha512sums=("ea39bb601eecdd873ff94a18b51d9bbc43fec9313529e4f1a071d18382c5b43a1568075ed0208e5ac415007fc3ba9ef5d86e46affda7171fc2efd07795238784")
 
 package() {
     # Extract package data
@@ -32,12 +32,12 @@ package() {
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/icons/64x64.ico"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/icons/blue.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/icons/white.png"
-    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/\$-selected.png"
-    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/\$.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/1024x10240.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/32x32.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/64x64.ico"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/64x64.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/\$-selected.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/\$.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/approved.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/arrow-dark-mode-up.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/arrow-dark-mode.png"
@@ -87,6 +87,8 @@ package() {
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/menu-dots-vertical.svg"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/menu-hover.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/menu.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/notifications/ws-lock.svg"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/notifications/ws-shield.svg"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/out-link.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/play-hover.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/play-normal.png"
@@ -120,5 +122,4 @@ package() {
     # generate link in PATH
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/Clockify/clockify" "${pkgdir}/usr/bin/clockify"
-    
 }
