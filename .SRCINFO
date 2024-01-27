@@ -1,7 +1,7 @@
 pkgbase = ganttproject
 	pkgdesc = A project scheduling application featuring gantt chart, resource management, calendaring.
-	pkgver = 3.2.3240
-	pkgrel = 2
+	pkgver = 3.3.3300
+	pkgrel = 1
 	url = https://www.ganttproject.biz/
 	arch = i686
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = ganttproject
 	depends = jre11-openjdk
 	depends = java11-openjfx
 	depends = hicolor-icon-theme
-	source = https://dl.ganttproject.biz/ganttproject-3.2.3240/ganttproject-3.2.3240.zip
+	source = https://dl.ganttproject.biz/ganttproject-3.3.3300/ganttproject-3.3.3300.zip
 	source = ganttproject.desktop
-	sha256sums = 38dbddaf4c55ff7731e3a061dde9a8b38236789409ee3b5ab8228d96688748bd
+	sha256sums = 2938e7937ea4bad16d47cb63da21eab5e2f21f9c8e292919bbf0f8e108162bd7
 	sha256sums = 7f80539115a2ffa518516671596b7e35659d46c91ac39133cc5accda9dec3862
 
 pkgname = ganttproject
