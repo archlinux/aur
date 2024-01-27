@@ -16,7 +16,7 @@ for i in ${_pkgname[@]} ; do
   pkgname+=("$i-git")
 done
 
-pkgver=4.11.4.r25.g1f3db35271
+pkgver=4.13.6.1.r9.gee8a8007
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit"
 url="https://gitlab.gnome.org/GNOME/gtk"
@@ -71,6 +71,7 @@ makedepends=(
   python-gobject
   sassc
   shaderc
+  vulkan-headers
   wayland-protocols
 )
 checkdepends=(weston)
@@ -90,7 +91,7 @@ sha256sums=(
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

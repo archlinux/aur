@@ -1,6 +1,6 @@
 pkgbase = gtk4-git
 	pkgdesc = GObject-based multi-platform GUI toolkit
-	pkgver = 4.11.4.r25.g1f3db35271
+	pkgver = 4.13.6.1.r9.gee8a8007
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gtk
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = gtk4-git
 	makedepends = python-gobject
 	makedepends = sassc
 	makedepends = shaderc
+	makedepends = vulkan-headers
 	makedepends = wayland-protocols
 	depends = adwaita-icon-theme
 	depends = cairo
