@@ -69,7 +69,6 @@ package() {
 
 	install -Dm755 'electron-launcher.sh' "$pkgdir/usr/bin/$_pkgname"
 
-	for _license in 'LICENSE' 'LICENSES.chromium.html'; do
-		install -Dm644 "$_license" "$pkgdir/usr/share/licenses/$pkgname/$_license"
-	done
+	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/MIT"
+	install -Dm644 'LICENSES.chromium.html' "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
 }
