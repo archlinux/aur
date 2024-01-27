@@ -19,6 +19,6 @@ pkgbase = python-mesa
 	depends = python-tqdm
 	noextract = mesa-2.2.3-py3-none-any.whl
 	source = https://files.pythonhosted.org/packages/py3/m/mesa/mesa-2.2.3-py3-none-any.whl
-	sha256sums = 3d094539bda9de9c94fd1028f9f021c9f6c3db5af26caa65890efc124cee0c43
+	sha256sums = d74f658c7950197a92c8e9af34f535a2f95525edce71a2ff60f2fcf1f80b189a
 
 pkgname = python-mesa
