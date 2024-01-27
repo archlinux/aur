@@ -5,7 +5,7 @@
 
 pkgname=edgetx-companion
 pkgver=2.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="EEPROM Editor and Simulator for EdgeTX RC radio transmitter firmwares"
 arch=('x86_64')
 url='https://edgetx.org/'
@@ -70,8 +70,8 @@ prepare() {
 }
 
 build() {
-  cd $_pkgbase
-  ./tools/build-companion.sh $MAKEFLAGS $_pkgbase $srcdir/build
+  cd $srcdir/edgetx
+  ./tools/build-companion.sh $MAKEFLAGS $srcdir/edgetx $srcdir/build
 }
 
 package() {
