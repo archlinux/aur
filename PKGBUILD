@@ -1,7 +1,7 @@
 #Maintainer: Sharktheone <sharktheone@proton.me>
 
 pkgname=mojo-git
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=5
 pkgdesc="Mojo Programming Language - Repository: https://github.com/Sharktheone/arch-mojo"
 url="https://developer.modular.com/download"

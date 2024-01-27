@@ -1,6 +1,6 @@
 pkgbase = mojo-git
 	pkgdesc = Mojo Programming Language - Repository: https://github.com/Sharktheone/arch-mojo
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 5
 	url = https://developer.modular.com/download
 	install = mojo-git.install
