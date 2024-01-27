@@ -11,7 +11,7 @@ pkgbase = ocaml-ppx_fixed_literal
 	depends = ocaml-base>=0.16.0
 	depends = ocaml-ppxlib>=0.28.0
 	options = !strip
-	source = ocaml-ppx_fixed_literal-0.16.0-1.tar.gz::https://github.com/janestreet/ppx_fixed_literal/archive/v0.16.0.tar.gz
+	source = ocaml-ppx_fixed_literal-0.16.0.tar.gz::https://github.com/janestreet/ppx_fixed_literal/archive/v0.16.0.tar.gz
 	sha512sums = 9d83d578fb34b3fb2c5351c3934d5f35e509f66a72ba75126a44362b7e4de07c4d43a33b4eb8630999a7010410a8300c7740cc79bf16609ce1144ad90fc38751
 
 pkgname = ocaml-ppx_fixed_literal
