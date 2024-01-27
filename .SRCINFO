@@ -12,7 +12,7 @@ pkgbase = ocaml-ppx_compare
 	depends = ocaml-base>=0.16.0
 	depends = ocaml-ppxlib>=0.28.0
 	options = !strip
-	source = ocaml-ppx_compare-1:0.16.0-1.tar.gz::https://github.com/janestreet/ppx_compare/archive/v0.16.0.tar.gz
+	source = ocaml-ppx_compare-0.16.0.tar.gz::https://github.com/janestreet/ppx_compare/archive/v0.16.0.tar.gz
 	sha512sums = 8acbb52a841012fc81efa0f8c1df4d8f0595bddbaf723aed4702d0f7917552ac4c08f6b971c1aaf765460a512f2fca46fe8bbe14fb1b021a3fe3be4181bdb030
 
 pkgname = ocaml-ppx_compare
