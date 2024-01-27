@@ -1,4 +1,5 @@
 # Maintainer: Sébastien "Seblu" Luttringer
+# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
@@ -11,7 +12,7 @@
 
 pkgname=coreutils-selinux
 pkgver=9.4
-pkgrel=2
+pkgrel=3
 pkgdesc='The basic file, shell and text manipulation utilities of the GNU operating system with SELinux support'
 arch=('x86_64' 'aarch64')
 license=('GPL-3.0-or-later' 'GFDL-1.3-or-later')
@@ -21,10 +22,12 @@ depends=('glibc' 'acl' 'attr' 'gmp' 'libcap' 'openssl' 'libselinux')
 conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
-source=("https://ftp.gnu.org/gnu/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar.xz"{,.sig})
+source=("https://ftp.gnu.org/gnu/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar.xz"{,.sig}
+        "https://github.com/coreutils/coreutils/commit/c4c5ed8f4e9cd55a12966d4f520e3a13101637d9.patch")
 validpgpkeys=('6C37DC12121A5006BC1DB804DF6FD971306037D9') # Pádraig Brady
 sha256sums=('ea613a4cf44612326e917201bbbcdfbd301de21ffc3b59b6e5c07e040b275e52'
-            'SKIP')
+            'SKIP'
+            '92098f2522d93d46a8ddb91f28ba414b2835d32ce87f60a23a7b852228ea89fe')
 
 prepare() {
   cd ${pkgname/-selinux}-$pkgver
