@@ -182,17 +182,6 @@ prepare() {
   # called 'shoulder surfing').
   patch -p1 -i ../no-omnibox-suggestion-autocomplete.patch
 
-  # Ungoogled Chromium changes
-  _ungoogled_repo="$srcdir/${pkgname%xdg*}$_uc_ver"
-
-  _utils="${_ungoogled_repo}/utils"
-  msg2 'Pruning binaries'
-  python "$_utils/prune_binaries.py" ./ "$_ungoogled_repo/pruning.list"
-  msg2 'Applying patches'
-  python "$_utils/patches.py" apply ./ "$_ungoogled_repo/patches"
-  msg2 'Applying domain substitution'
-  python "$_utils/domain_substitution.py" apply -r "$_ungoogled_repo/domain_regex.list" \
-    -f "$_ungoogled_repo/domain_substitution.list" -c domainsubcache.tar.gz ./
 
   # Link to system tools required by the build
   mkdir -p third_party/node/linux/node-linux-x64/bin
@@ -206,6 +195,17 @@ prepare() {
   # To link to rust libraries we need to compile with prebuilt clang
   ./tools/clang/scripts/update.py
 
+  # Ungoogled Chromium changes
+  _ungoogled_repo="$srcdir/${pkgname%xdg*}$_uc_ver"
+
+  _utils="${_ungoogled_repo}/utils"
+  msg2 'Pruning binaries'
+  python "$_utils/prune_binaries.py" ./ "$_ungoogled_repo/pruning.list"
+  msg2 'Applying patches'
+  python "$_utils/patches.py" apply ./ "$_ungoogled_repo/patches"
+  msg2 'Applying domain substitution'
+  python "$_utils/domain_substitution.py" apply -r "$_ungoogled_repo/domain_regex.list" \
+    -f "$_ungoogled_repo/domain_substitution.list" -c domainsubcache.tar.gz ./
 
   # Remove bundled libraries for which we will use the system copies; this
   # *should* do what the remove_bundled_libraries.py script does, with the
