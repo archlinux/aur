@@ -14,7 +14,7 @@ pkgbase = ocaml-time_now
 	depends = ocaml-ppx_base>=0.16.0
 	depends = ocaml-ppx_optcomp>=0.16.0
 	options = !strip
-	source = ocaml-time_now-0.16.0-1.tar.gz::https://github.com/janestreet/time_now/archive/v0.16.0.tar.gz
+	source = ocaml-time_now-0.16.0.tar.gz::https://github.com/janestreet/time_now/archive/v0.16.0.tar.gz
 	sha512sums = 59c380bc89ac5185e344ef051180270bad62ccc7ad60aec4279aba5f71bae8dae6ac29136a6ca85ad7b24e204615fd84cd7db0901b6550de490e8992301c0ac2
 
 pkgname = ocaml-time_now
