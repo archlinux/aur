@@ -1,10 +1,10 @@
-# Maintainer: Asuka Minato
+# Maintainer: Asuka Minato <i at asukaminato dot eu dot org>
 # Maintainer: Kid <hi at xuann dot wang>
 # Contributor: Jaime Martínez Rincón <jaime@jamezrin.name>
 
 pkgname=notion-app-electron
-pkgver=3.1.0
-pkgrel=3
+pkgver=3.1.1
+pkgrel=1
 pkgdesc='Your connected workspace for wiki, docs & projects'
 arch=(x86_64)
 url=https://www.notion.so/desktop
@@ -28,7 +28,7 @@ source=(
 	notion-app
 	notion.desktop
 )
-sha256sums=('d8027c86503ff050c4eb988c7c12936002968a704c069b9d5932ca5e971d66f2'
+sha256sums=('b55742085cf723ea2d13dd6f97969b87329646028f540692fc8e070c16d49958'
             '9d9381dd7b53f06759916dbcfae24ede7e7e26c18ea45f00f40c35d4217ce7fb'
             '1ee5a3847a6aba3cba9b757ddc0f2364a5c24c4b63e057e03aede5c56f126642'
             '19a5f973f1e9291081aa05512e07c61447e8c30e1a43dd22d0cc1090837d1e19')
