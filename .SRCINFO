@@ -7,13 +7,14 @@ pkgbase = ocaml-sexplib
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	license = BSD-3-Clause
 	makedepends = dune>=2.0.0
 	depends = ocaml>=4.14.0
 	depends = ocaml-num
 	depends = ocaml-parsexp>=0.16.0
 	depends = ocaml-sexplib0>=0.16.0
 	options = !strip
-	source = ocaml-sexplib-1:0.16.0-1.tar.gz::https://github.com/janestreet/sexplib/archive/v0.16.0.tar.gz
+	source = ocaml-sexplib-0.16.0.tar.gz::https://github.com/janestreet/sexplib/archive/v0.16.0.tar.gz
 	sha512sums = f924d92ddf11f12be51073a3dfca45486d90b05533f29804518ee86b93386b8ff8d7e692c71d77b11347b78e9f6f6dcf7d79b71540efe54b013fa09b3bab414a
 
 pkgname = ocaml-sexplib
