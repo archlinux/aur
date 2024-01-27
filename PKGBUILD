@@ -1,14 +1,15 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
+# Contributor: Alexander Epaneshnikov <alex19ep@archlinux.org>
 
 pkgname=matrix-synapse-git
-pkgver=1.98.0.r5.ge9eba0870d
 _pkgname=matrix-synapse
+pkgver=1.99.0.r4.g2927008e48
 pkgrel=1
 pkgdesc="Matrix reference homeserver"
-url="https://github.com/matrix-org/synapse"
+url="https://github.com/element-hq/synapse"
 arch=('x86_64')
-license=('AGPL3')
+license=('AGPL-3.0-or-later')
 depends=(
 	'libwebp'
 	'python-jsonschema'
@@ -80,17 +81,9 @@ optdepends=(
 	'python-matrix-synapse-ldap3: LDAP provider'
 	'python-pyicu: Improve user search for international display names'
 )
-optdepends=('perl: sync_room_to_group.pl'
-            'python-psycopg2: PostgreSQL support'
-            'python-lxml: URL previewing'
-            'python-psutil: metrics'
-            'python-pyjwt: jwt'
-            'python-txredisapi: redis'
-            'python-hiredis'
-            'python-pyicu: Improve user search for international display names')
 
 source=(
-	"git+https://github.com/element-hq/synapse.git#branch=master"
+	"$_pkgname::git+https://github.com/element-hq/synapse.git#branch=master"
         'generic_worker.yaml.example'
         'synapse.service'
         'synapse.target'
@@ -110,18 +103,27 @@ sha256sums=('SKIP'
             'd8e6b2a43a8a7d8f09c643f32e789a7ffeeb2d20bb07ee88ddc6923e1ab3b0e6')
 backup=('etc/synapse/log_config.yaml')
 install=synapse.install
+validpgpkeys=('02450A9EDDFEE3E0C730B786A7E4A57880C3A4A9'
+              '053191DFF4670330465227F7A542E4ED1B0FAC09'
+              '283F86EA415D64E7D98E085BD5804497C6468FC1'
+              '58C4E75BC67C92169A7FDD11FBCE0ACE0732186F'
+              '9323BC4F687435CA8D0F03CB922F57ACB93AABF9'
+              '93B2970FB2FD8855AD6E0229CB2B33F7C23D44C6'
+              'D79D3CA0B61429A8A760525A903ECE108A39DEDD'
+              'F124520CEEE062448FE1C8442D2EFA2F32FBE047'
+              '177B595E4DFCB510C556750833FC58F6A7113048')
 
 provides=('matrix-synapse')
 conflicts=('matrix-synapse')
 replaces=('matrix-synapse-py3-git')
 
 pkgver() {
-	cd synapse
+	cd $_pkgname
 	git describe --long --tags | sed 's/^v//;s/-rc/rc/;s/-r/./;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-        cd synapse
+	cd $_pkgname
 	# allow any poetry-core to be used
 	sed -r 's/poetry-core>=([0-9.]+),<=([0-9.]+)/poetry-core>=\1/' -i pyproject.toml
 	# allow any setuptools_rust to be used
@@ -129,26 +131,24 @@ prepare() {
 }
 
 build() {
-	cd synapse
-	rm -f dist/*
+	cd $_pkgname
 	python -m build --wheel --no-isolation
 }
 
 check() {
-	cd synapse
+	cd $_pkgname
 	local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
-	rm -rf test-env
 	python -m venv --system-site-packages test-env
 	test-env/bin/python -m installer dist/*.whl
-	( cd build/lib.linux-$CARCH-cpython-${python_version}
-	ln -sv ../../tests -ft .
+	pushd build/lib.linux-$CARCH-cpython-${python_version}
+	ln -sv ../../tests .
 	PYTHONPATH="$PWD" PATH="../../test-env/bin:$PATH" ../../test-env/bin/python -m twisted.trial -j$(nproc) tests
 	rm -r tests _trial_temp
-	)
+	popd
 }
 
 package() {
-	cd synapse
+	cd $_pkgname
 	python -m installer --destdir="$pkgdir" dist/*.whl
 
 	install -vdm755 -o 198 -g 198 "$pkgdir"/etc/synapse
