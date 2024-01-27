@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod
 	pkgdesc = Linux Xanmod - Stable Mainline [MAIN]
-	pkgver = 6.6.13
+	pkgver = 6.6.14
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -17,13 +17,13 @@ pkgbase = linux-xanmod
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.tar.sign
-	source = patch-6.6.13-xanmod1.xz::https://sourceforge.net/projects/xanmod/files/releases/main/6.6.13-xanmod1/patch-6.6.13-xanmod1.xz/download
+	source = patch-6.6.14-xanmod1.xz::https://sourceforge.net/projects/xanmod/files/releases/main/6.6.14-xanmod1/patch-6.6.14-xanmod1.xz/download
 	source = choose-gcc-optimization.sh
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = d926a06c63dd8ac7df3f86ee1ffc2ce2a3b81a2d168484e76b5b389aba8e56d0
 	sha256sums = SKIP
-	sha256sums = 11bae6e2368a98b49918b6dcf97d7d431657126d28f97cfad26c4c36b6e2e205
+	sha256sums = e10df2949207898451b7b88b34707bb9d905c2e9f3a5c7f3439245ff9b54f57f
 	sha256sums = a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f
 
 pkgname = linux-xanmod
