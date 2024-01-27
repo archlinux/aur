@@ -2,7 +2,7 @@
 # Maintainer: GreyXor <greyxor@protonmail.com>
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-git
-pkgver=0.18.0.r6841.cca2bfbe
+pkgver=0.18.0.r6859.4688a371
 pkgrel=1
 pkgdesc='Modular Wayland compositor library (git development version)'
 arch=(x86_64)
@@ -34,8 +34,11 @@ makedepends=(
 	vulkan-headers
 	wayland-protocols
 	xorgproto)
+makedepends=(
+	xorg-xwayland
+)
 optdepends=(
-'xorg-xwayland: enable X11 support'
+	'xorg-xwayland: enable X11 support'
 )
 provides=("libwlroots.so" "${pkgname%-git}=${pkgver%%.r*}")
 conflicts=("${pkgname%-git}")
@@ -44,7 +47,7 @@ b2sums=('SKIP')
 _builddir="build"
 _builddir_pkgver="build-pkgver"
 
-_meson_setup () {
+_meson_setup() {
 	arch-meson \
 		--buildtype=debug \
 		-Dwerror=false \
@@ -52,26 +55,26 @@ _meson_setup () {
 		"${pkgname}" "$1"
 }
 
-prepare () {
+prepare() {
 	_meson_setup "${_builddir_pkgver}"
 }
 
-pkgver () {
+pkgver() {
 	(
 		set -o pipefail
-		meson introspect --projectinfo "${_builddir_pkgver}" \
-		  | awk 'match($0, /"version":\s*"([[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+)-dev"/, ret) {printf "%s",ret[1]}'
+		meson introspect --projectinfo "${_builddir_pkgver}" |
+			awk 'match($0, /"version":\s*"([[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+)-dev"/, ret) {printf "%s",ret[1]}'
 	)
 	cd "${pkgname}"
 	printf ".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build () {
+build() {
 	_meson_setup "${_builddir}"
 	meson compile -C "${_builddir}"
 }
 
-package () {
+package() {
 	meson install -C "${_builddir}" --destdir="${pkgdir}"
 	install -Dm644 "${pkgname}/"LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
