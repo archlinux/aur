@@ -4,10 +4,10 @@ pkgbase = absolutely-proprietary
 	pkgrel = 2
 	url = https://github.com/vmavromatis/absolutely-proprietary
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = python-setuptools
 	depends = python
-	source = absolutely-proprietary-20220518-2.tar.gz::https://github.com/vmavromatis/absolutely-proprietary/archive/632ebf75bff68959e48ad7db06a9350fede806d0.tar.gz
+	source = absolutely-proprietary-20220518.tar.gz::https://github.com/vmavromatis/absolutely-proprietary/archive/632ebf75bff68959e48ad7db06a9350fede806d0.tar.gz
 	sha512sums = d6b10dd6b89171e568b07a86617b0b731aa8cbd20f61968f4fd1e4bf42e73665d4746034a6181a210b1644070abfe80d91b1378ad0dab0413ffe58516b3332b2
 
 pkgname = absolutely-proprietary
