@@ -11,7 +11,7 @@ pkgbase = ocaml-ppx_tydi
 	depends = ocaml-base>=0.16.0
 	depends = ocaml-ppxlib>=0.28.0
 	options = !strip
-	source = ocaml-ppx_tydi-0.16.0-1.tar.gz::https://github.com/janestreet/ppx_tydi/archive/v0.16.0.tar.gz
+	source = ocaml-ppx_tydi-0.16.0.tar.gz::https://github.com/janestreet/ppx_tydi/archive/v0.16.0.tar.gz
 	sha512sums = 83e72699901af6dfb786f1f0a381f4a2eec6c5d51c98ec2ab76f0f107d87da7c406278a9e71c09fc7a43b8cd19cd97f87f3ba7adea2efe55fb882cd65b81d60b
 
 pkgname = ocaml-ppx_tydi
