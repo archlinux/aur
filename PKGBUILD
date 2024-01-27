@@ -196,7 +196,7 @@ prepare() {
   ./tools/clang/scripts/update.py
 
   # Ungoogled Chromium changes
-  _ungoogled_repo="$srcdir/ungoogled-chromium-update"
+_ungoogled_repo="$srcdir/ungoogled-chromium-update"
 
   _utils="${_ungoogled_repo}/utils"
   msg2 'Pruning binaries'
@@ -281,7 +281,7 @@ build() {
   fi
 
   # Append ungoogled chromium flags to _flags array
-  _ungoogled_repo="$srcdir/${pkgname%xdg*}$_uc_ver"
+  _ungoogled_repo="$srcdir/ungoogled-chromium-update"
   readarray -t -O ${#_flags[@]} _flags < "${_ungoogled_repo}/flags.gn"
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
