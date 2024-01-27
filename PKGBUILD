@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=speedtest-librespeed
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A graphical librespeed client written using gtk4 + libadwaita"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('libadwaita' 'python-aiohttp' 'python-cairo' 'python-gobject')
 makedepends=('blueprint-compiler' 'git' 'meson')
 checkdepends=('appstream-glib')
-_commit=f5696a9507b6258cb3c8eda30e97eccc233a7293  # tags/v1.2.1^0
+_commit=e02041f6b88348eaa0aa61a65eb6bfccf632a87c  # tags/v1.3.0^0
 source=("git+https://github.com/Ketok4321/speedtest.git#commit=${_commit}")
 sha256sums=('SKIP')
 
