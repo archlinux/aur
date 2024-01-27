@@ -1,13 +1,13 @@
 pkgbase = python2-decorator
-	pkgdesc = Decorators for Humans
+	pkgdesc = Decorators for Humans (Python2 version)
 	pkgver = 4.4.2
-	pkgrel = 1
-	url = https://github.com/micheles/decorator
+	pkgrel = 2
+	url = https://pypi.org/project/decorator/4.4.2
 	arch = any
+	license = BSD-2-Clause
 	makedepends = python2-setuptools
 	depends = python2
-	provides = python2-decorator
-	source = https://files.pythonhosted.org/packages/source/d/decorator/decorator-4.4.2.tar.gz
-	sha256sums = e3a62f0520172440ca0dcc823749319382e377f37f140a0b99ef45fecb84bfe7
+	source = python2-decorator-4.4.2.tar.gz::https://github.com/micheles/decorator/archive/refs/tags/4.4.2.tar.gz
+	b2sums = 97f4950d51502e5d02d3d7c818e7f47b06745ba7a05de29076c53f260c77b4f595ea33f7eaf01079df88f813a2a2081467ca2ff65d72bf7659eec6045040f544
 
 pkgname = python2-decorator
