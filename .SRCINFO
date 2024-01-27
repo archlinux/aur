@@ -6,7 +6,7 @@ pkgbase = python2-appdirs
 	arch = any
 	license = MIT
 	makedepends = python2-setuptools
-	source = https://pypi.io/packages/source/a/appdirs/appdirs-1.4.4.tar.gz
+	source = https://pypi.io/packages/source//appdirs/appdirs-1.4.4.tar.gz
 	sha512sums = 8b0cdd9fd471d45b186aa47607691cf378dabd3edc7b7026a57bd6d6f57698e86f440818a5e23ba4288b35d6bb8cb6eb0106eae8aab09d8863ee15025d300883
 
 pkgname = python2-appdirs
