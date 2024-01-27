@@ -16,8 +16,8 @@ pkgbase = ocaml-ppx_deriving
 	depends = ocaml-ppxlib>=0.20.0
 	depends = ocaml-result
 	options = !strip
-	source = ocaml-ppx_deriving-1:5.2.1-6.tar.gz::https://github.com/ocaml-ppx/ppx_deriving/archive/v5.2.1.tar.gz
-	source = ocaml-ppx_deriving-1:5.2.1-6-fix-ocaml-compat.diff::https://github.com/ocaml-ppx/ppx_deriving/commit/da4d0a0c55184b55c39fccb1d2379984770ddc04.diff
+	source = ocaml-ppx_deriving-5.2.1.tar.gz::https://github.com/ocaml-ppx/ppx_deriving/archive/v5.2.1.tar.gz
+	source = ocaml-ppx_deriving-5.2.1-fix-ocaml-compat.diff::https://github.com/ocaml-ppx/ppx_deriving/commit/da4d0a0c55184b55c39fccb1d2379984770ddc04.diff
 	sha512sums = 01d2eb920f3375960a9228138ccb5f2af49bfba1111894795c24b3c37d5a021d6bc95e9de1d867c35d03645334300ccc89f1fca0cb75007ec62e5620f328e078
 	sha512sums = 8975578340dc79ffc0004d137920f9b6f030a013209c3fbac12405107dd5c5a9de6448b16e6e78c569b16cc54ceb35870ab8db917ea16af4f4f0859359d0de13
 
