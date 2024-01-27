@@ -1,6 +1,6 @@
 pkgbase = groot
 	pkgdesc = Graphical Editor to create BehaviorTrees
-	pkgver = 1.0.0.r57.g05fe640
+	pkgver = 1.0.0.r85.gca6c8f2
 	pkgrel = 1
 	url = https://github.com/BehaviorTree/Groot
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = groot
 	makedepends = git
 	depends = qt5-base
 	depends = qt5-svg
-	depends = zeromq
+	depends = cppzmq
 	depends = libelf
 	source = groot::git+https://github.com/BehaviorTree/Groot.git#branch=master
 	sha256sums = SKIP
