@@ -1,7 +1,7 @@
 pkgbase = podman-desktop
 	pkgdesc = Manage Podman and other container engines from a single UI and tray.
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/containers/podman-desktop
 	arch = x86_64
 	arch = aarch64

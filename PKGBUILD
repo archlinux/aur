@@ -3,7 +3,7 @@
 
 pkgname=("podman-desktop")
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage Podman and other container engines from a single UI and tray."
 arch=('x86_64' 'aarch64')
 url=https://github.com/containers/podman-desktop
@@ -24,6 +24,8 @@ sha256sums=('a1e5b1f0fe07dea254bd3e7826e8206c20004f30287398d7794a4b0ebedbef5f')
 
 build(){
     cd "${srcdir}/podman-desktop-$pkgver"
+    # husky install will be failed when there is no .git folder but has command git
+    command -v git > /dev/null && sed -i 's/"husky install"/""/' package.json
     yarn --frozen-lockfile --network-timeout 180000
     yarn run compile
 }
