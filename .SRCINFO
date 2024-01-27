@@ -16,7 +16,7 @@ pkgbase = ocaml-ppx_expect
 	depends = ocaml-re>=1.8.0
 	depends = ocaml-stdio>=0.16.0
 	options = !strip
-	source = ocaml-ppx_expect-1:0.16.0-1.tar.gz::https://github.com/janestreet/ppx_expect/archive/v0.16.0.tar.gz
+	source = ocaml-ppx_expect-0.16.0.tar.gz::https://github.com/janestreet/ppx_expect/archive/v0.16.0.tar.gz
 	sha512sums = fdc8cb76afc9c9b436cbf8627b0c6543ae64fc51e92bf25db99ace10646aef3be3d1a3659dedb3e888494ab4e380e387b92557a584fa3e1eca79e19751a0b950
 
 pkgname = ocaml-ppx_expect
