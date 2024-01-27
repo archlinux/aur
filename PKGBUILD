@@ -5,7 +5,7 @@ pkgrel='1'
 pkgdesc='Primitive sample rate chooser for PipeWire'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/pkunk/$pkgname"
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('gtk4' 'pipewire')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
@@ -36,5 +36,4 @@ build() {
 package() {
 	cd "$srcdir/$_sourcedirectory/"
 	install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
