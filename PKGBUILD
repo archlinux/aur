@@ -2,7 +2,7 @@
 # Co-Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 
 pkgname=cloudflare-wrangler2
-pkgver=3.24.0
+pkgver=3.25.0
 pkgrel=1
 pkgdesc='Command-line tool for working with Cloudflare Workers'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('npm')
 source=("$pkgname-$pkgver.tar.gz::https://registry.npmjs.org/wrangler/-/wrangler-$pkgver.tgz"
         "LICENSE-MIT::https://raw.githubusercontent.com/cloudflare/workers-sdk/main/LICENSE-MIT")
 noextract=("$pkgname-$pkgver.tar.gz")
-md5sums=('10a9561413d0b1169902957f048ade66'
+md5sums=('5a0e809c2113ff1ff4aebfb78b72b044'
          'a02f91b8dd3b6abe453990b6e5bd19f7')
 
 package() {
