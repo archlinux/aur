@@ -2,7 +2,7 @@
 # Contributor: Scott Tincman <sctincman at gmail dot com>
 
 pkgname=nwchem
-pkgver=7.2.1
+pkgver=7.2.2
 pkgrel=1
 pkgdesc="Ab initio computational chemistry software package"
 arch=(x86_64 aarch64)
@@ -14,7 +14,7 @@ install=nwchem.install
 source=($pkgname-$pkgver.tar.gz::https://github.com/nwchemgit/nwchem/archive/v$pkgver-release.tar.gz
         config.sh
         nwchemrc)
-sha256sums=('e8daf7d0fd9ba3f38471c7cc0bf44c22f6b5d8fcd2c37764dc490660babd64c9'
+sha256sums=('a33491c8c55a60610ffab5f73e8ce5001941589548421275dabe58b6063179e7'
             '3d3ccde5c1058e8e22c06ba8c1753aa2024841a5ba9a7a0a97bdafb8afd18db2'
             'd63fdfc44a8f44419748e029d031c91716635ac4f062cd835014cde04677b90f')
 
