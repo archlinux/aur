@@ -1,6 +1,6 @@
 # Maintainer: Stanislaw Grams <sjg@fmdx.pl>
 pkgname=xdr-gtk-git
-pkgver=20240126
+pkgver=20240127
 pkgrel=1
 pkgdesc="User interface for the XDR-F1HD Radio Tuner with XDR-I2C modification."
 arch=('x86_64')

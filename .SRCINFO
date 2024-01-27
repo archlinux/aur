@@ -1,6 +1,6 @@
 pkgbase = xdr-gtk-git
 	pkgdesc = User interface for the XDR-F1HD Radio Tuner with XDR-I2C modification.
-	pkgver = 20240126
+	pkgver = 20240127
 	pkgrel = 1
 	url = https://github.com/kkonradpl/xdr-gtk
 	arch = x86_64
