@@ -33,8 +33,7 @@ makedepends=(
 	meson
 	vulkan-headers
 	wayland-protocols
-	xorgproto)
-makedepends=(
+	xorgproto
 	xorg-xwayland
 )
 optdepends=(
