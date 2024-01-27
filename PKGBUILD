@@ -1,4 +1,5 @@
-# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Maintainer: Pellegrino Prevete (dvorak) <pellegrinoprevete@gmail.com>
+# Maintainer: Truocolo <truocolo@aol.com>
 
 # shellcheck disable=SC2034
 _arch="mips"
@@ -10,29 +11,41 @@ _ns="${_platform}${_base}"
 _pkgbase="${_platform}${_base}-ports"
 _pkg="zlib"
 pkgname="${_platform}-${_pkg}"
-pkgver="v1.2.11"
-_ports_ver="v1.3.0"
+pkgver="1.2.11"
+_ports_ver="1.3.0"
 pkgrel=1
-_pkgdesc=("Compression library implementing the deflate compression method found in gzip and PKZIP "
-          "(Sony Playstation® 2 videogame system port).")
+_pkgdesc=(
+  "Compression library implementing the deflate"
+  "compression method found in gzip and PKZIP"
+  "(Sony Playstation® 2 videogame system port).")
 pkgdesc="${_pkgdesc[*]}"
-arch=('x86_64')
-license=('custom')
+arch=(
+  'x86_64'
+)
+license=(
+  'custom'
+)
 _ns="madler"
 _github="https://github.com/${_ns}"
 _local="ssh://git@127.0.0.1:/home/git"
 url="${_github}/${_pkg}"
 _ports_url="https://github.com/${_platform}dev/${_platform}${_base}-ports"
-makedepends=("${_platform}-sdk"
-             "cmake")
+makedepends=(
+  "${_platform}-sdk"
+  "cmake"
+)
 optdepends=()
 _commit="cacf7f1d4e3d44d871b605da3b647f07d718623f"
 _ports_commit="e3f9bfd51e3266b3c68de19b76f6d378f6ec643b"
-source=("${pkgname}::git+${url}#commit=${_commit}"
-        "${_platform}-ports::git+${_ports_url}#commit=${_ports_commit}")
-# source=("${pkgname}::git+${_local}/${pkgname}#commit=${_commit}")
-sha256sums=('SKIP'
-            'SKIP')
+source=(
+  "${pkgname}::git+${url}#commit=${_commit}"
+  # "${pkgname}::git+${_local}/${pkgname}#commit=${_commit}"
+  "${_platform}-ports::git+${_ports_url}#commit=${_ports_commit}"
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
 
 _ee_include="/usr/${_ee}/include"
 _ee_lib="/usr/${_ee}/lib"
@@ -40,8 +53,10 @@ _sdk_include="/usr/include/${_platform}${_base}"
 _pe_include="/usr/${_ee}/include/pthread-embedded"
 _pe_lib="/usr/${_ee}/lib/pthread-embedded"
 
-_ldflags=(-L"${_pe_lib}"
-          -L"${_ee_lib}")
+_ldflags=(
+  -L"${_pe_lib}"
+  -L"${_ee_lib}"
+)
 
 prepare() {
     cd "${srcdir}/${_platform}-ports"
