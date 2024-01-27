@@ -38,7 +38,7 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        '2f2d110ba03c3d852bec93a0705570df93e72f5e3757bd64494083c5a1ae59c5228024fca563043c05014b1962ccde88e029a6bac2fe36be6e852a53b35a43fb')
+        '97badff74d64db444a780f48a3003e4a7232e7c0ab1ef43f9adbf20044c988f41dd455dc5aad548e5d3501ccc7a1ad9967a69bf43cbd2bb133eb6d00d50f210c')
 
 prepare() {
   export EDGETX_VERSION_TAG=$pkgver
