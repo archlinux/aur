@@ -1,14 +1,17 @@
 pkgbase = python-toml-sort
-	pkgdesc = Command line utility to sort and format your TOML files
-	pkgver = 0.19.0
-	pkgrel = 2
-	url = https://pypi.org/project/toml-sort
+	pkgdesc = Toml sorting library
+	pkgver = 0.23.1
+	pkgrel = 1
+	url = https://github.com/pappasam/toml-sort
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
-	depends = python-click
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
 	depends = python-tomlkit
-	source = https://files.pythonhosted.org/packages/source/t/toml-sort/toml-sort-0.19.0.tar.gz
-	b2sums = 2c874a52af3f446af8fbf1a68003fce6dc7ee682ce03994a382e749d2c3a479c5461734b068407bf45a92dd00f06d78bc849426e12db86469a0d0b2c01c83872
+	depends = python-importlib-metadata
+	source = python-toml-sort-0.23.1.tar.gz::https://github.com/pappasam/toml-sort/archive/v0.23.1.tar.gz
+	sha256sums = 23d8d4681df6e76e177b81f9dc68645c19886376a961c54bd269cfb287d678c2
 
 pkgname = python-toml-sort
