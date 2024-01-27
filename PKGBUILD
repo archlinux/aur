@@ -1,4 +1,4 @@
-# Maintainer: Constantine Evans <const@costi.eu>
+# Contributor: Constantine Evans <const@costi.eu>
 
 pkgname=oxdna-cuda
 
@@ -6,28 +6,28 @@ pkgdesc="DNA/RNA/etc simulator, with CUDA support and analysis tools."
 
 url="https://github.com/lorenzo-rovigatti/oxDNA"
 
-pkgver=3.4.2
+pkgver=3.6.0
 arch=('x86_64')
 license=('GPL3')
 provides=('oxdna')
 conflicts=('oxdna')
-pkgrel=2
+pkgrel=1
 
 depends=('python3' 'python-matplotlib' 'python-scikit-learn' 'python-setuptools' 'python-biopython' 'ipython')
 
-makedepends=('git' 'cmake' 'gsl' 'cuda' 'gcc11' 'python-build' 'python-wheel' 'python-installer')
+makedepends=('git' 'cmake' 'gsl' 'cuda' 'gcc12' 'python-build' 'python-wheel' 'python-installer' 'cython' 'python-setuptools-scm')
 optdepends=('python-matplotlib: for plotting')
 
-source=("https://github.com/lorenzo-rovigatti/oxDNA/archive/refs/tags/v3.4.2.tar.gz")
+source=("https://github.com/lorenzo-rovigatti/oxDNA/archive/refs/tags/v3.6.0.tar.gz")
 
-sha256sums=('dc5ada4a1e2239e519bba0b578e530a049579d5984fbf945763d68b010929957')
+sha256sums=('61426ee9444cf6bb53078efe773f54f8fde0c7071c147655aa2136b4212c9fec')
 
 build() {
     cmake -B build -S "oxDNA-${pkgver}" \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
-        -DCMAKE_C_COMPILER='gcc-11' \
-        -DCMAKE_CXX_COMPILER='g++-11' \
+        -DCMAKE_C_COMPILER='gcc-12' \
+        -DCMAKE_CXX_COMPILER='g++-12' \
         -Wno-dev \
         -DCUDA=ON \
         -DPython=ON \
