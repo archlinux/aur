@@ -8,15 +8,15 @@ pkgrel='10'
 pkgdesc='Software to decode APT and WEFAX signals from weather satellites'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h')
 url="https://${_pkgname}restored.xyz/beta"
-license=('custom')
+license=('LicenseRef-WXtoImgLicense')
 depends=('alsa-lib' 'fontconfig' 'libx11' 'libxft')
 makedepends=('imagemagick' 'perl' 'xxd')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source_x86_64=("$pkgname-$pkgver-$pkgrel-x86_64.tar.gz::$url/$_pkgname-linux-amd64-$pkgver-beta.tar.gz")
-source_i686=("$pkgname-$pkgver-$pkgrel-i686.tar.gz::$url/$_pkgname-linux-i386-$pkgver-beta.tar.gz")
-source_pentium4=("$pkgname-$pkgver-$pkgrel-pentium4.tar.gz::$url/$_pkgname-linux-i386-$pkgver-beta.tar.gz")
-source_armv7h=("$pkgname-$pkgver-$pkgrel-armv7h.tar.gz::$url/$_pkgname-linux-armhf-$pkgver-beta.tar.gz")
+source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/$_pkgname-linux-amd64-$pkgver-beta.tar.gz")
+source_i686=("$pkgname-$pkgver-i686.tar.gz::$url/$_pkgname-linux-i386-$pkgver-beta.tar.gz")
+source_pentium4=("$pkgname-$pkgver-pentium4.tar.gz::$url/$_pkgname-linux-i386-$pkgver-beta.tar.gz")
+source_armv7h=("$pkgname-$pkgver-armv7h.tar.gz::$url/$_pkgname-linux-armhf-$pkgver-beta.tar.gz")
 source=('LICENSE')
 sha512sums=('91339b0071ab768135d2dd3823e9ea1fd56aa03bc20a441718aa01049e521f7acab4306666f112f7cce7859e4496bc8e7aa22799d0ef224759ac3901dbfe8d62')
 sha512sums_x86_64=('ef0ee0c94723e2335689ef16ae7167f18e5c5bcefca2c47c3a37528834c470f28ba7c62fa6b8253ed77ce34df8fd75b400287272dd0f2d5fc4f125148d35cc08')
@@ -160,7 +160,7 @@ package() {
 	done
 
 	# Copy LICENSE, desktop file and icon
-	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/WXtoImgLicense"
 	install -Dm644 "etc/X11/applnk/Applications/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 	install -Dm644 "usr/share/icons/$_pkgname.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 }
