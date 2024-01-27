@@ -15,7 +15,7 @@ pkgbase = ocaml-core_kernel
 	depends = ocaml-ppx_jane>=0.16.0
 	depends = ocaml-ppx_optcomp>=0.16.0
 	options = !strip
-	source = ocaml-core_kernel-1:0.16.0-1.tar.gz::https://github.com/janestreet/core_kernel/archive/v0.16.0.tar.gz
+	source = ocaml-core_kernel-0.16.0.tar.gz::https://github.com/janestreet/core_kernel/archive/v0.16.0.tar.gz
 	sha512sums = a6cf486694514ea4393aa6b2bf688b4a21fd97238d22ddfa99af30ee478be23255d67f87c16115df03ceb3a7bf4726e92d0c01be0abb2308f36c027a5ab4bc04
 
 pkgname = ocaml-core_kernel
