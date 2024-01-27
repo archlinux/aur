@@ -14,7 +14,7 @@ pkgbase = ocaml-ppx_bin_prot
 	depends = ocaml-ppx_here>=0.16.0
 	depends = ocaml-ppxlib>=0.28.0
 	options = !strip
-	source = ocaml-ppx_bin_prot-1:0.16.0-1.tar.gz::https://github.com/janestreet/ppx_bin_prot/archive/v0.16.0.tar.gz
+	source = ocaml-ppx_bin_prot-0.16.0.tar.gz::https://github.com/janestreet/ppx_bin_prot/archive/v0.16.0.tar.gz
 	sha512sums = b6e4f1a1ea1dfcfb2c23f34b0842097ad85535a22a767b2f47aa3a5812a112a60768c7b94bfce2602721f165b8ffec1e5282e83a008b2c6684bb102093467f3c
 
 pkgname = ocaml-ppx_bin_prot
