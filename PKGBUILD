@@ -6,7 +6,7 @@ pkgrel='1'
 pkgdesc='Pollinates STHs between Certificate Transparency logs and auditors'
 arch=('any')
 url="https://github.com/SSLMate/$pkgname"
-license=('custom:CC0')
+license=('CC0-1.0')
 depends=('python')
 install="$pkgname.install"
 source=(
@@ -34,7 +34,4 @@ package() {
 
 	# Man page
 	install -Dm644 "$pkgname.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
-
-	# License
-	install -Dm644 "$_sourcedirectory/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
