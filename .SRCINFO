@@ -1,6 +1,6 @@
 pkgbase = keystore-explorer-bin
 	pkgdesc = A free GUI replacement for the Java command-line utilities keytool, jarsigner and jadtool
-	pkgver = 5.5.2
+	pkgver = 5.5.3
 	pkgrel = 1
 	url = http://www.keystore-explorer.org/
 	install = keystore-explorer-bin.install
@@ -9,9 +9,9 @@ pkgbase = keystore-explorer-bin
 	license = GPL
 	depends = java-runtime
 	conflicts = keystore-explorer
-	source = https://github.com/kaikramer/keystore-explorer/releases/download/v5.5.2/kse-552.zip
+	source = https://github.com/kaikramer/keystore-explorer/releases/download/v5.5.3/kse-553.zip
 	source = keystore-explorer.desktop
-	md5sums = 25cf305528591c9a8695b6c18f837fc2
+	md5sums = 3602ed825bce56c0326e0bfaf3c1cd4c
 	md5sums = dfaa247ab726fe2e44368101399b508d
 
 pkgname = keystore-explorer-bin
