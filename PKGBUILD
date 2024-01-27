@@ -7,9 +7,9 @@ pkgrel='6'
 pkgdesc="An open source version of Edward Johnston's Timeless Typeface for London Underground of 1916"
 arch=('any')
 url="https://fontlibrary.org/en/font/$_projectname"
-license=('custom:SIL Open Font License v1.1')
+license=('OFL-1.1-RFN')
 source=(
-	"$pkgname-$pkgver-$pkgrel.zip::https://fontlibrary.org/assets/downloads/$_projectname/9f707f44ac7fca4fb8371e69b19df471/$_projectname.zip"
+	"$pkgname-$pkgver.zip::https://fontlibrary.org/assets/downloads/$_projectname/9f707f44ac7fca4fb8371e69b19df471/$_projectname.zip"
 	'LICENSE'
 )
 sha512sums=('0861032ba83dad716e0da1e3386eb4c7b54112d66aa7d08d6b0893e5b26416f9afa5063bd28ad4003e7de9578f7ad574e202c6f1bc5cb1e1433a8282c185ade2'
@@ -20,5 +20,5 @@ package() {
 	install -dm755 "$pkgdir/usr/share/fonts/"{'O','T'}'TF'
 	install -Dm644 'OTF/'*'.otf' "$pkgdir/usr/share/fonts/OTF/"
 	install -Dm644 'TTF/'*'.ttf' "$pkgdir/usr/share/fonts/TTF/"
-	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/OFL-1.1-RFN"
 }
