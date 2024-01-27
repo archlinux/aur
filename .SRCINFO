@@ -8,7 +8,7 @@ pkgbase = bitw-git
 	arch = pentium4
 	arch = armv7h
 	arch = aarch64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = git
 	makedepends = go>=1.19
 	optdepends = wl-clipboard: clipboard utility for Wayland (one of the optdepends is required for the tests to pass - build time dep)

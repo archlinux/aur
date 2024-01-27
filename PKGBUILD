@@ -6,7 +6,7 @@ pkgrel='1'
 pkgdesc='Minimalist BitWarden client with Secret Service API implementation - git version'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/mvdan/$_pkgname"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('git' 'go>=1.19')
 optdepends=(
 	'wl-clipboard: clipboard utility for Wayland (one of the optdepends is required for the tests to pass - build time dep)'
@@ -51,5 +51,5 @@ check() {
 package() {
 	cd "$srcdir/"
 	install -Dm755 "$_bindir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-	install -Dm644 "$_sourcedirectory/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$_sourcedirectory/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/BSD-3-Clause"
 }
