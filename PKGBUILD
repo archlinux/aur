@@ -1,17 +1,19 @@
-# Maintainer: Josef Miegl <josef@miegl.cz>
+# Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
+# Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=libosmo-abis-git
-pkgver=0.6.0.r2.g3a2aa09
+pkgver=1.5.0.r5.gaa3452c
 pkgrel=1
-pkgdesc="This is the A-bis interface library as used by OsmoBSC/OsmoNITB"
+pkgdesc="Osmocom library for A-bis interface"
 url="https://osmocom.org/projects/libosmo-abis"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
 depends=('libosmocore' 'ortp' 'talloc')
 makedepends=('git')
-provides=(${pkgname%-git})
-conflicts=(${pkgname%-git})
-source=("git+https://git.osmocom.org/${pkgname%-git}")
+provides=("libosmoabis.so=${pkgver}"
+          "libosmotrau.so=${pkgver}")
+conflicts=("${pkgname%-git}")
+source=("git+https://gitea.osmocom.org/osmocom/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -26,7 +28,10 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc \
+              --localstatedir=/var \
+              --disable-dahdi
   make
 }
 
