@@ -8,7 +8,7 @@ pkgrel='1'
 pkgdesc='OCaml bindings for inotify'
 arch=('x86_64' 'aarch64')
 url="https://github.com/whitequark/$pkgname"
-license=('custom:LGPL2.1 with linking exception')
+license=('LGPL-2.1-only WITH OCaml-LGPL-linking-exception')
 depends=('ocaml>=4.03.0' 'ocaml-lwt')
 makedepends=('dune>=2.9.0')
 checkdepends=('ocaml-fileutils>=0.4.4' 'ocaml-ounit>=2.0.0')
@@ -38,5 +38,5 @@ package() {
 	done
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	ln -sf "/usr/share/doc/$pkgname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

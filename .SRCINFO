@@ -5,7 +5,7 @@ pkgbase = ocaml-inotify
 	url = https://github.com/whitequark/ocaml-inotify
 	arch = x86_64
 	arch = aarch64
-	license = custom:LGPL2.1 with linking exception
+	license = LGPL-2.1-only WITH OCaml-LGPL-linking-exception
 	checkdepends = ocaml-fileutils>=0.4.4
 	checkdepends = ocaml-ounit>=2.0.0
 	makedepends = dune>=2.9.0
