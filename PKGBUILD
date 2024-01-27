@@ -3,7 +3,7 @@
 pkgname=iceshrimp.net-git
 pkgver=v2024.1.alpha+8308a74
 pkgrel=1
-pkgdesc="YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023"
+pkgdesc="The Iceshrimp .NET rewrite. Caution: This is alpha software, do not use with production database"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp.net"
 license=(AGPL3)
