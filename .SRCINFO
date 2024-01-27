@@ -6,7 +6,6 @@ pkgbase = python2-pickleshare
 	arch = any
 	makedepends = python2-setuptools
 	depends = python2
-	provides = python2-pickleshare
 	source = https://files.pythonhosted.org/packages/source/p/pickleshare/pickleshare-0.7.5.tar.gz
 	sha256sums = 87683d47965c1da65cdacaf31c8441d12b8044cdec9aca500cd78fc2c683afca
 
