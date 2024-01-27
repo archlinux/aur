@@ -9,7 +9,7 @@ pkgrel='1'
 pkgdesc='Universal toplevel for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-community/$_projectname"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('ocaml>=4.11.0' 'dune>=3.9.0' 'cppo>=1.1.2' 'ocaml-findlib>=1.7.2' 'ocaml-lambda-term>=3.1.0' 'ocaml-logs_lwt' 'ocaml-lwt' 'ocaml-react>=1.0.0' 'ocaml-zed>=3.2.0')
 checkdepends=('ocaml-alcotest')
 options=('!strip')
@@ -42,5 +42,5 @@ package() {
 	done
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/BSD-3-Clause"
 }
