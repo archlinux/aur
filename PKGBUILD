@@ -4,14 +4,14 @@
 
 pkgname=libosmo-sccp
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Osmocom library for SCCP"
 arch=('any')
 url="https://osmocom.org/projects/libosmo-sccp"
 license=(GPL)
 # TODO: libosmocore>=1.9.0 libosmo-netif>=1.4.0
 depends=('libosmocore' 'libosmo-netif')
-provides=("libosmo-sigtran.so=${pkgver}")
+provides=("libosmo-sigtran.so=9-64")
 conflicts=("${pkgname}-git")
 backup=('etc/osmocom/osmo-stp.cfg')
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
