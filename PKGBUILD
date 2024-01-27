@@ -2,7 +2,7 @@
 # Contributor: BrinkerVII <brinkervii@gmail.com>
 
 pkgname=luau
-pkgver=0.609
+pkgver=0.610
 pkgrel=1
 pkgdesc="A fast, small, safe, gradually typed embeddable scripting language derived from Lua"
 arch=(x86_64)
@@ -18,7 +18,7 @@ source=(
   "Luau.pc"
 )
 sha256sums=(
-  '849dcf7288a3ecf2b07458e98a850e453d2d37b70f808e5e01b2c6e65e3b4c21'
+  'a6ee2cab90c816a86b86113f01d9da865378074ee09dc6122dbe8bfbdf819ede'
   'f65bc28fd66aac60cc8c7a33c7e64bec7ed296a69628dce57d2dfa57ba7ebab4'
 )
 
@@ -87,7 +87,9 @@ package() {
     install -Dm644 -t "$pkgdir/usr/include/Luau" "$header"
   done
 
-  install -Dm644 "$srcdir/Luau.pc" "$pkgdir/usr/lib/pkgconfig/Luau.pc"
+  install -Dm644 -t "$pkgdir/usr/lib/pkgconfig" "$srcdir/Luau.pc"
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
-  install -Dm644 extern/isocline/LICENSE "$pkgdir/usr/share/licenses/$pkgname/isocline-LICENSE.txt"
+  install -Dm644 \
+    extern/isocline/LICENSE \
+    "$pkgdir/usr/share/licenses/$pkgname/isocline-LICENSE.txt"
 }
