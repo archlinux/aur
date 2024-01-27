@@ -132,7 +132,7 @@ check() {
     in examples/*; do
     pushd \
       "${_dir}"
-    PYTHONPATH="$PWD/../.." \
+    PYTHONPATH="${PWD}/../.." \
       "${_py}" \
         -m build \
 	-nw
@@ -156,12 +156,14 @@ check() {
 package() {
   cd "${_pkg}"
   "${_py}" \
-    -m installer \
-    -d "$pkgdir" \
+    -m \
+      installer \
+    --destdir="${pkgdir}" \
     dist/*.whl
   install \
     -Dm644 LICENSE \
-    -t "$pkgdir"/usr/share/licenses/$pkgname/
+    -t \
+      "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim:set sw=2 sts=-1 et:
