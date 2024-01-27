@@ -13,7 +13,7 @@ pkgbase = ocaml-ppx_fields_conv
 	depends = ocaml-fieldslib>=0.16.0
 	depends = ocaml-ppxlib>=0.28.0
 	options = !strip
-	source = ocaml-ppx_fields_conv-1:0.16.0-1.tar.gz::https://github.com/janestreet/ppx_fields_conv/archive/v0.16.0.tar.gz
+	source = ocaml-ppx_fields_conv-0.16.0.tar.gz::https://github.com/janestreet/ppx_fields_conv/archive/v0.16.0.tar.gz
 	sha512sums = 14bd27628f653aca239c82b528af1dea65446d56ecd2e30c4d9d2f8555854c45e7a0c5c4f6230de7abe3869fe2c8be569b26d6c217296c607c6e8b336a4af575
 
 pkgname = ocaml-ppx_fields_conv
