@@ -3,39 +3,46 @@
 # Contributor: Gao xiang<hughgao01@gmail.com>
 
 pkgname=gamess
-pkgver=2023R1
+pkgver=2023R2
 pkgrel=1
 pkgdesc="The General Atomic and Molecular Electronic Structure System"
-arch=('x86_64')
+arch=(x86_64)
 url="https://www.msg.chem.iastate.edu/gamess/gamess.html"
-license=('custom')
-depends=('tcsh' 'blas' 'lapack' 'python' 'libxc' 'perl')
-makedepends=('python-jinja' 'gcc-fortran')
-checkdepends=('inetutils')
-install=$pkgname.install
+license=(custom)
+depends=(tcsh blas lapack libxc python perl)
+makedepends=(python-jinja gcc-fortran)
+checkdepends=(inetutils)
 
 # You have to get the package from the official website
 # and put into the current directory.
-source=("local://gamess-current.tar.gz"
-        "comp.patch"
-        "make.patch")
-sha256sums=('8cb9699780de630bb6db43d7f6fc4cc5bdaab12327f1318c861b52579cfeb8a3'
-            '9b213587448042e4a0db5da9993b2d3124e1c17bb969b98b35989c2c68c31f49'
-            '59302a769de5d12821d76763f9fc03f5d90e06063492aaea57b00c2c134457ca')
+source=(local://gamess-current.tar.gz
+        comp.patch
+        make.patch)
+md5sums=('489a8516c5a597d152b38264f42db519'
+         '9b079fc23ac8d054e153bff6f77de68f'
+         'a3c47d13c969a1a86c646673128ef187')
+sha256sums=('2b7cf4af17fb2eab5bf3609bf820437728cd36d87f44857dce25bafa9e9622ad'
+            'd666753d2916107fcddbc8d9a9518f56774e8865e3b9d8e858a93f9277f67e6f'
+            '320015bbc221db06520aa842eac79f28c31b67ea434929659bffd70048ab32e5')
+install=$pkgname.install
 
 prepare() {
   cd "$srcdir/$pkgname"
 
   # You may comment out two lines below to let GAMESS choose compiler options.
-  patch -p1 < "$srcdir/comp.patch"
-  echo "Compiler flags '-O2 -march=native -mno-fma' are enabled by default."
+  patch -p0 < "$srcdir/comp.patch"
+
+  # Fixing compddi
+  sed -i "s@set ARCH='-m64'@set ARCH='-march=native'@g" ddi/compddi
 
   # Shared LIBXC
-  sed -i 's@$GMS_PATH/3rd-party/lib/libxcf03.a $GMS_PATH/3rd-party/lib/libxc.a@-lxcf03 -lxc@g' lked
+  sed -i \
+    's@$GMS_PATH/3rd-party/lib/libxcf03.a $GMS_PATH/3rd-party/lib/libxc.a@-lxcf03 -lxc@g' \
+    lked
   patch -p0 < "$srcdir/make.patch"
 
   # Blas-agnostic
-  sed -i 's/-lopenblas/-lblas/g' lked
+  sed -i 's/-lopenblas/-lblas -llapack/g' lked
 
   # Fixing rungms
   sed -i 's@/install.info@./install.info@g' rungms
