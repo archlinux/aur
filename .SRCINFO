@@ -9,7 +9,7 @@ pkgbase = lightspark
 	arch = pentium4
 	arch = armv7h
 	arch = aarch64
-	license = LGPL3
+	license = LGPL-3.0-only
 	makedepends = cmake
 	makedepends = nasm
 	makedepends = ninja
@@ -28,7 +28,7 @@ pkgbase = lightspark
 	depends = xz
 	depends = zlib
 	conflicts = pepper-flash
-	source = lightspark-0.8.7-1.tar.gz::https://github.com/lightspark/lightspark/archive/0.8.7.tar.gz
+	source = lightspark-0.8.7.tar.gz::https://github.com/lightspark/lightspark/archive/0.8.7.tar.gz
 	sha512sums = a0207629238054d669710fcb4d6b1904624d4ed8fb19cf822447e55107d6c3596f6e9fb425c14968365a1c8224b7c3a899008428fd69c9714a03a74230e64f2f
 
 pkgname = lightspark
