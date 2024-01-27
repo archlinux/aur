@@ -29,7 +29,7 @@ package() {
   cd "$srcdir/"
   install -Dm644 "$_jar"                            "$pkgdir/usr/share/java/$_pkgname/bin/$_PkgName.jar"
   cd "$srcdir/$_assets/"
-  install -Dm644 "$_pkgname.conf"                   "$pkgdir/etc/tachidesk/server.conf"
+  install -Dm644 "$_pkgname.conf"                   "$pkgdir/etc/suwayomi/server.conf"
   install -Dm644 "$_pkgname.service"                "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
   install -Dm644 "$_pkgname.sysusers"               "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
   install -Dm644 "$_pkgname.tmpfiles"               "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
@@ -37,5 +37,5 @@ package() {
   install -Dm644 "$_pkgname.png"                    "$pkgdir/usr/share/pixmaps/$_pkgname.png"
   install -Dm755 "$_pkgname.sh"                     "$pkgdir/usr/bin/$_pkgname"
   # keep backwards compatibility
-  ln -sr "$pkgdir/usr/bin/$_pkgname"                "$pkgdir/usr/bin/tachidesk"
+  ln -sr "$pkgdir/usr/bin/$_pkgname"                "$pkgdir/usr/bin/suwayomi"
 }
