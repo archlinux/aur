@@ -1,17 +1,17 @@
 # Maintainer: Stanislaw Grams <sjg@fmdx.pl>
 pkgname=antpatt
-pkgver=1.0.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Antenna pattern plotting and analysis software."
-arch=('x86_64' 'i686')
+arch=('any')
 url="https://github.com/kkonradpl/antpatt"
 license=('GPL2')
 depends=('gtk2')
 provides=('antpatt')
 conflicts=('antpatt')
 makedepends=('git' 'cmake' 'ninja' 'pkgconf' 'gtk2' 'json-c' 'zlib' 'gsl')
-source=("https://github.com/kkonradpl/antpatt/archive/refs/tags/v1.0.1.tar.gz")
-sha256sums=('8743c496bf3d97f78bbdc31048bbf657113ba25c46c25cbdebf9acc0958348eb')
+source=("https://github.com/kkonradpl/antpatt/archive/refs/tags/v1.1.1.tar.gz")
+sha256sums=('4712b792483c373873d300fc842e996212ed7cc20ccf5771cc513c10e34f2226')
 
 build() {
   cd "$srcdir/"
