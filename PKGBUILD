@@ -196,7 +196,7 @@ prepare() {
   ./tools/clang/scripts/update.py
 
   # Ungoogled Chromium changes
-  _ungoogled_repo="$srcdir/${pkgname%xdg*}$_uc_ver"
+  _ungoogled_repo="$srcdir/ungoogled-chromium-update"
 
   _utils="${_ungoogled_repo}/utils"
   msg2 'Pruning binaries'
