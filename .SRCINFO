@@ -13,7 +13,7 @@ pkgbase = ocaml-ppx_sexp_conv
 	depends = ocaml-ppxlib>=0.26.0
 	depends = ocaml-sexplib0>=0.16.0
 	options = !strip
-	source = ocaml-ppx_sexp_conv-1:0.16.0-1.tar.gz::https://github.com/janestreet/ppx_sexp_conv/archive/v0.16.0.tar.gz
+	source = ocaml-ppx_sexp_conv-0.16.0.tar.gz::https://github.com/janestreet/ppx_sexp_conv/archive/v0.16.0.tar.gz
 	sha512sums = ceacd17683c8e739d2e5eaabb585c01615a11b18c1bef7df85b48820885d344cbae94c1351a6a2522e016a1bd41fc3997928d6b2b2169aeda72ea6626eb1f7a0
 
 pkgname = ocaml-ppx_sexp_conv
