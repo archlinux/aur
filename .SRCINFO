@@ -11,7 +11,7 @@ pkgbase = ocaml-parsexp
 	depends = ocaml-base>=0.16.0
 	depends = ocaml-sexplib0>=0.16.0
 	options = !strip
-	source = ocaml-parsexp-0.16.0-1.tar.gz::https://github.com/janestreet/parsexp/archive/v0.16.0.tar.gz
+	source = ocaml-parsexp-0.16.0.tar.gz::https://github.com/janestreet/parsexp/archive/v0.16.0.tar.gz
 	sha512sums = 54a59c12ef9cafe69f5dab79d51a7115205f0becef97db1d0051cb50c3ff004a56e43e9607a3869e4928f8653df5a2b9e3366e4ac0d8d7483752fa5287352791
 
 pkgname = ocaml-parsexp
