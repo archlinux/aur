@@ -3,7 +3,7 @@
 # Contributor: krevedko <helllamer-gmail.com>
 
 pkgname=seaweedfs
-pkgver=3.57
+pkgver=3.62
 pkgrel=1
 pkgdesc="Simple and highly scalable distributed file system"
 arch=(i686 x86_64 aarch64 armv7h)
@@ -12,7 +12,7 @@ license=(Apache)
 depends=(glibc)
 makedepends=(go)
 source=($url/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('d025706b5ac9a08bc4a8d3cfbc65c797a3196882bf675da99f2aa57e6bcf022d')
+sha256sums=('d7ace6a1c8519096abe2cbf323f23baa941936bfc4723887deac32da76fa9270')
 
 prepare() {
   cd $pkgname-$pkgver
