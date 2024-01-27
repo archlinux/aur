@@ -9,7 +9,7 @@ epoch='1'
 pkgdesc='Wrapper for smartctl (smartmontools) - FreeNAS fork'
 arch=('any')
 url="https://github.com/freenas/$_reponame"
-license=('LGPL2.1')
+license=('LGPL-2.1-or-later')
 depends=('python>=3.8.0' 'python-chardet' 'python-humanfriendly' 'smartmontools')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm' 'python-wheel')
 checkdepends=('python-pytest')
