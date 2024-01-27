@@ -1,12 +1,12 @@
 post_install(){
   cd /usr/lib/node_modules/dict
-  which yarn >/dev/null 2>&1 && yarn install || npm install
+  npm install --user ./ --global
   echo -e "\n[32;1m[+] [0;1mThank you for using dict!\n"
 }
 
 post_upgrade(){
   cd /usr/lib/node_modules/dict
-  which yarn >/dev/null 2>&1 && yarn install || npm install
+  npm install --user ./ --global
 }
 
 pre_remove(){
