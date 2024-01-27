@@ -1,14 +1,14 @@
 pkgbase = libosmo-abis
 	pkgdesc = Osmocom library for A-bis interface
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osmocom.org/projects/libosmo-abis
 	arch = any
 	license = GPL
 	depends = libosmocore
 	depends = ortp
-	provides = libosmoabis.so=1.5.0
-	provides = libosmotrau.so=1.5.0
+	provides = libosmoabis.so=13-64
+	provides = libosmotrau.so=2-64
 	conflicts = libosmo-abis-git
 	source = https://downloads.osmocom.org/releases/libosmo-abis/libosmo-abis-1.5.0.tar.bz2
 	sha256sums = ddbee7b8cac95d05cb0601276609cf4bbea8f2bf2a229a250680ca759836f418
