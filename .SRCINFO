@@ -1,14 +1,16 @@
 pkgbase = python-ite8291r3-ctl-git
 	pkgdesc = ITE 8291 (rev 0.03) userspace driver
 	pkgver = r22.d2c490a
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pobrn/ite8291r3-ctl
 	arch = any
 	license = GPL-2.0-only
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python>=3.6
 	depends = python-pyusb
-	depends = python-setuptools
 	optdepends = python-xlib: Experimental screen mode support (Xorg only)
 	optdepends = python-pillow: Experimental screen mode support (Xorg only)
 	provides = python-ite8291r3-ctl

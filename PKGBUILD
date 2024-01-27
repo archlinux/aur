@@ -3,7 +3,7 @@
 pkgname=python-ite8291r3-ctl-git
 _pkgname=${pkgname%-git}
 pkgver=r22.d2c490a
-pkgrel=2
+pkgrel=3
 pkgdesc="ITE 8291 (rev 0.03) userspace driver"
 arch=('any')
 url="https://github.com/pobrn/ite8291r3-ctl"
@@ -11,10 +11,12 @@ license=('GPL-2.0-only')
 depends=(
     'python>=3.6'
     'python-pyusb'
-    'python-setuptools'
 )
 makedepends=(
     'git'
+    'python-build'
+    'python-installer'
+    'python-wheel'
 )
 optdepends=(
     'python-xlib: Experimental screen mode support (Xorg only)'
@@ -32,10 +34,10 @@ pkgver() {
 
 build() {
     cd "$srcdir/${_pkgname}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$srcdir/${_pkgname}"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
