@@ -9,7 +9,7 @@ pkgdesc='Cross platform configuration & build tool for the ExpressLRS radio link
 # If you're running on armv7h, you have to add it to the arch and source arrays of the electron20-bin AUR dependency
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/ExpressLRS/$_projectname"
-license=('GPL3')
+license=('GPL-3.0-only')
 _electronpkg='electron20'
 depends=("$_electronpkg" 'platformio-core-udev' 'python>=3.0.0')
 makedepends=('nodejs>=16.0.0' 'npm>=6.0.0' 'libxcrypt-compat' 'yarn>=1.21.3')

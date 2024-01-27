@@ -6,7 +6,7 @@ pkgbase = expresslrs-configurator
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = nodejs>=16.0.0
 	makedepends = npm>=6.0.0
 	makedepends = libxcrypt-compat
