@@ -1,0 +1,4 @@
+pkg/
+src/
+browsers-bin-*-x86_64.pkg.tar.zst
+browsers_linux.tar.xz
