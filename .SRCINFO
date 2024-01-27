@@ -1,20 +1,19 @@
 pkgbase = libosmo-gprs-git
 	pkgdesc = Osmocom GPRS libraries
-	pkgver = r67.4c624aa
+	pkgver = r353.00cd941
 	pkgrel = 1
 	url = https://osmocom.org/projects/libosmo-gprs
 	arch = x86_64
 	arch = i686
 	license = GPL
 	makedepends = git
-	makedepends = autoconf
-	makedepends = automake
-	makedepends = make
-	makedepends = gcc
-	makedepends = libtool
-	makedepends = pkg-config
 	depends = libosmocore
-	provides = libosmo-gprs
+	provides = libosmo-csn1.so=0-64
+	provides = libosmo-gprs-gmm.so=0-64
+	provides = libosmo-gprs-llc.so=0-64
+	provides = libosmo-gprs-rlcmac.so=0-64
+	provides = libosmo-gprs-sm.so=0-64
+	provides = libosmo-gprs-sndcp.so=0-64
 	conflicts = libosmo-gprs
 	source = git+https://gitea.osmocom.org/osmocom/libosmo-gprs.git
 	sha256sums = SKIP
