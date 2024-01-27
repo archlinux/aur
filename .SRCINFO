@@ -1,13 +1,12 @@
 pkgbase = datomic
 	pkgdesc = A database of flexible,time-based facts,supporting queries and joins,with elastic scalability,and ACID transactions
 	pkgver = 1.0.7075
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.datomic.com/
 	install = datomic.install
 	arch = any
 	license = APACHE
 	depends = java-environment
-	depends = clojure
 	options = !strip
 	source = datomic-1.0.7075.zip::https://datomic-pro-downloads.s3.amazonaws.com/1.0.7075/datomic-pro-1.0.7075.zip
 	source = transactor.properties

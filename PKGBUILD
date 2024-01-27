@@ -1,14 +1,15 @@
 # Maintainer: Dylon Edwards <dylon dot devo at gmail dot com>
 # Contributor: Daichi Shinozaki <dsdseg at gmail dot com>
 # Contributor: James Henderson
+
 pkgname=datomic
 pkgver=1.0.7075
-pkgrel=1
+pkgrel=2
 pkgdesc="A database of flexible,time-based facts,supporting queries and joins,with elastic scalability,and ACID transactions"
 arch=('any')
 url=https://www.datomic.com/
 license=('APACHE')
-depends=('java-environment' 'clojure')
+depends=('java-environment')
 options=(!strip)
 install="${pkgname}.install"
 source=(
@@ -28,4 +29,4 @@ package() {
     mkdir -p "${pkgdir}/var/lib/datomic" "${pkgdir}/var/log/datomic"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim:set ts=4 sw=4 et sta:
