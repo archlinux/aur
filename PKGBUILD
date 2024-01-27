@@ -11,7 +11,7 @@ depends=('ocaml>=4.02.3' 'ocaml-mew>=0.1.0' 'ocaml-react')
 makedepends=('dune>=1.1.0')
 checkdepends=('ocaml-ppx_expect')
 options=('!strip')
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha512sums=('f6ee1375ceee60ccae1799d07a8bc55684fdbffc2275147ef19cf3c7d242663764e6630b9423287a78efacba17f410971e3fc397d202effb331f94dc00797eb0')
 
 _sourcedirectory="$_projectname-$pkgver"
@@ -31,5 +31,5 @@ package() {
 	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc' --mandir '/usr/share/man' --release --verbose
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/MIT"
 }
