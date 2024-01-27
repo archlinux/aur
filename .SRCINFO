@@ -5,14 +5,14 @@ pkgbase = ocaml-visitors
 	url = https://gitlab.inria.fr/fpottier/visitors
 	arch = x86_64
 	arch = aarch64
-	license = LGPL2.1
+	license = LGPL-2.1-only
 	makedepends = dune>=2.0.0
 	depends = ocaml>=4.05.0
 	depends = ocaml-ppx_deriving>=5.0
 	depends = ocaml-ppxlib>=0.22.0
 	depends = ocaml-result
 	options = !strip
-	source = ocaml-visitors-20210608-5.tar.gz::https://gitlab.inria.fr/fpottier/visitors/-/archive/20210608/visitors-20210608.tar.gz
+	source = ocaml-visitors-20210608.tar.gz::https://gitlab.inria.fr/fpottier/visitors/-/archive/20210608/visitors-20210608.tar.gz
 	sha512sums = 3abecb822dd37511421264d98868c937b7e81f209391e70cc66b7a4663aa059848a3f0ffe9de15408cb0b2112828118ef477a8b2ebf78d6323a4775eff31c055
 
 pkgname = ocaml-visitors
