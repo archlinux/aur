@@ -9,7 +9,7 @@ pkgbase = ocaml-jane-street-headers
 	makedepends = dune>=2.0.0
 	depends = ocaml>=4.14.0
 	options = !strip
-	source = ocaml-jane-street-headers-0.16.0-1.tar.gz::https://github.com/janestreet/jane-street-headers/archive/v0.16.0.tar.gz
+	source = ocaml-jane-street-headers-0.16.0.tar.gz::https://github.com/janestreet/jane-street-headers/archive/v0.16.0.tar.gz
 	sha512sums = 05336733845b442e3594889ac6e8fe7048bb3fc23b5f8a05e48d42db6851e4aac561587a1e73b9d6fb1852b768dd66b949cd220b1a9effe83dd181707ea2ab24
 
 pkgname = ocaml-jane-street-headers
