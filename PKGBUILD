@@ -19,7 +19,7 @@
 _phpbase="56"
 _suffix=""
 pkgver="5.6.40"
-pkgrel="10"
+pkgrel="11"
 pkgbase="php56"
 pkgdesc="PHP 5.6.40 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1  -DU_DEFINE_FALSE_AND_TRUE=1 "
@@ -183,6 +183,7 @@ makedepends=(
     "systemd-libs"
     "coreutils"
     "findutils"
+    "autoconf2.70"
     "libxslt"
     "e2fsprogs"
     "openssl"
@@ -493,6 +494,8 @@ prepare() {
 
     if ((_phpbase <= 53)); then
         PHP_AUTOCONF="/usr/bin/autoconf-2.13" ./buildconf --force
+    elif ((_phpbase > 53 && _phpbase <= 56)); then
+        PHP_AUTOCONF="/usr/bin/autoconf-2.70" ./buildconf --force
     else
         ./buildconf --force
     fi
