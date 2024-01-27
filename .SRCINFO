@@ -12,7 +12,7 @@ pkgbase = ocaml-ppx_enumerate
 	depends = ocaml-base>=0.16.0
 	depends = ocaml-ppxlib>=0.28.0
 	options = !strip
-	source = ocaml-ppx_enumerate-1:0.16.0-1.tar.gz::https://github.com/janestreet/ppx_enumerate/archive/v0.16.0.tar.gz
+	source = ocaml-ppx_enumerate-0.16.0.tar.gz::https://github.com/janestreet/ppx_enumerate/archive/v0.16.0.tar.gz
 	sha512sums = 8a5b79bd7bee7b746ade8a0f9ab1397f12e911a61582df344e78630ef64184f73415041b73699668e6b06b682c5f3f4f7b894bce0cd4aa7d122157f86d4c4af8
 
 pkgname = ocaml-ppx_enumerate
