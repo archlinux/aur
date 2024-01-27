@@ -10,7 +10,7 @@ license=('unknown')
 depends=('java-runtime')
 makedepends=('java-environment' 'maven')
 source=(
-	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz"
+	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
 	"fix-lib-paths.diff"
 )
 sha512sums=('4acf1d9ec53f1af58022512b2d7e5427e9251f919709c4e010922bfdb934e1bc4eb37e9e33662eccca314f8971b594f0a603c308acf16070a284d963d13987b8'
