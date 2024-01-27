@@ -11,7 +11,7 @@ pkgbase = ocaml-int_repr
 	depends = ocaml-base>=0.16.0
 	depends = ocaml-ppx_jane>=0.16.0
 	options = !strip
-	source = ocaml-int_repr-0.16.0-1.tar.gz::https://github.com/janestreet/int_repr/archive/v0.16.0.tar.gz
+	source = ocaml-int_repr-0.16.0.tar.gz::https://github.com/janestreet/int_repr/archive/v0.16.0.tar.gz
 	sha512sums = 1b395d2c5c2322a8948f09e2b1c53382902edb1a390bc4659baf8eb87d085c90e551ede171a0d4d4b3c6fec18210ff100b02565461b42cabaedc446551c79841
 
 pkgname = ocaml-int_repr
