@@ -1,9 +1,9 @@
 # Maintainer: XandrCopyrighted <xxandrr@proton.me>
 
 pkgname=xfetch-rs-git
-pkgver=r39.2f664ce
+pkgver=r50.90f7c89
 pkgrel=1
-pkgdesc="The world's fastest & simplest fetch written in Rust."
+pkgdesc="The world's simplest fetch written in Rust."
 arch=('any')
 url="https://github.com/XandrCopyrighted/xFetch/"
 license=('MIT')
@@ -12,7 +12,7 @@ source=(git+https://github.com/XandrCopyrighted/xFetch.git)
 sha256sums=('SKIP')
 
 depends=()
-makedepends=('git' 'rustup')
+makedepends=('git' 'rustup' 'gcc')
 provides=("xfetch-rs")
 conflicts=("xfetch-rs")
 pkgver() {
