@@ -2,7 +2,7 @@
 
 _name=symbex
 pkgname=python-$_name
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc='Find the Python code for specified symbols'
 arch=(any)
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('python>=3.8')
 makedepends=(python-build python-click python-installer python-setuptools python-wheel)
 source=("$url/archive/$pkgver.tar.gz")
-b2sums=('949b2e2c9046502ab63b77393a3f1a72fcb05a55b20c2cd2dcbfffb7e286e8024e5174bff80bf547e66346c80478ce337feb4bb3ed632e54e07f08cbf12dc8ea')
+b2sums=('5a6cbd4db4b746fa659ed4099bf6225b16d972309f3f5d7d3cabb0f0a218637d6e526f3c937c316a41ae0fbb048bf4905b8b8050469be8bc26ac8888811750d3')
 
 build() {
     cd $_name-$pkgver
