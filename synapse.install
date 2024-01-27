@@ -105,4 +105,32 @@ post_upgrade() {
 		    enable_registration_without_verification is set to "true".
 		EOF
 	fi
+	if [[ "$(vercmp "$2" 1.60.0)" -lt 0 ]]; then
+		cat <<-EOF
+		==> Adding a new unique index to state_group_edges could fail if your database is corrupted
+		    see: https://github.com/matrix-org/synapse/blob/develop/docs/upgrade.md#adding-a-new-unique-index-to-state_group_edges-could-fail-if-your-database-is-corrupted
+		    for mor information.
+		EOF
+	fi
+	if [[ "$(vercmp "$2" 1.66.0)" -lt 0 ]]; then
+		cat <<-EOF
+		==> Delegation of email validation no longer supported
+		    see: https://matrix-org.github.io/synapse/v1.66/upgrade.html#delegation-of-email-validation-no-longer-supported
+		    for mor information.
+		EOF
+	fi
+	if [[ "$(vercmp "$2" 1.76.0)" -lt 0 ]]; then
+		cat <<-EOF
+		==> The upgrade from 1.75 to 1.76 changes the account data replication streams in a backwards-incompatible manner
+		    see: https://github.com/matrix-org/synapse/blob/release-v1.76/docs/upgrade.md#changes-to-the-account-data-replication-streams
+		    for mor information.
+		EOF
+	fi
+	if [[ "$(vercmp "$2" 1.88.0)" -lt 0 ]]; then
+		cat <<-EOF
+		==> The 'worker_replication_*' settings that have been deprecated since v1.84.0 were removed in v1.88.0.
+		    see: https://github.com/matrix-org/synapse/blob/release-v1.88/docs/upgrade.md#upgrading-to-v1880
+		    for mor information.
+		EOF
+	fi
 }
