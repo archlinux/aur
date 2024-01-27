@@ -10,7 +10,7 @@ pkgdesc="An automatic docking tool for hyprland."
 depends=('gtk3' 'gtk-layer-shell')
 makedepends=('rust' 'gendesk' 'git')
 source=("${pkgver}.tar.gz::https://github.com/DashieTM/Hyprdock/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('03dfadad5dbc7cb58a92f8dadd81764d71c784a99e9e726e7c4cc738a0839b02')
+sha256sums=('e6a3edf123540df896c84c921f576eae18af77c0980644b3150027371850c01f')
 
 build() {
   cd hyprdock-${pkgver}

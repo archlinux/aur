@@ -10,6 +10,6 @@ pkgbase = hyprdock
 	depends = gtk3
 	depends = gtk-layer-shell
 	source = 0.3.7.tar.gz::https://github.com/DashieTM/Hyprdock/archive/refs/tags/0.3.7.tar.gz
-	sha256sums = 03dfadad5dbc7cb58a92f8dadd81764d71c784a99e9e726e7c4cc738a0839b02
+	sha256sums = e6a3edf123540df896c84c921f576eae18af77c0980644b3150027371850c01f
 
 pkgname = hyprdock
