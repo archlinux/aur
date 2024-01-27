@@ -1,6 +1,6 @@
 pkgname=lgtv-git
-pkgver=r6.000e902
-pkgrel=2
+pkgver=r7.2d78391
+pkgrel=1
 arch=('any')
 url="https://github.com/ammgws/lgtv"
 source=("${pkgname%-*}::git+$url")
