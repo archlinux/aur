@@ -1,0 +1,21 @@
+pkgbase = libusb0-debian
+	pkgdesc = Library to enable user space application programs to communicate with USB devices. 0.x branch. With Debian's patches.
+	pkgver = 0.1.12
+	pkgrel = 1
+	url = https://libusb.info/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = automake
+	depends = glibc
+	depends = sh
+	provides = libusb-compat
+	provides = libusb0
+	conflicts = libusb-compat
+	conflicts = libusb0
+	source = http://deb.debian.org/debian/pool/main/libu/libusb/libusb_0.1.12.orig.tar.gz
+	source = http://deb.debian.org/debian/pool/main/libu/libusb/libusb_0.1.12-35.debian.tar.xz
+	sha256sums = 37f6f7d9de74196eb5fc0bbe0aea9b5c939de7f500acba3af6fd643f3b538b44
+	sha256sums = 82636fa4e49fe8a886f5dbab4756e6c6855f1cb5173fa567848e3de9f47bf2bd
+
+pkgname = libusb0-debian
