@@ -2,17 +2,17 @@
 
 pkgname=python-diagrams
 _name=${pkgname//python-}
-pkgver=0.23.3
+pkgver=0.23.4
 pkgrel=1
 pkgdesc="Diagram as Code for prototyping cloud system architectures"
 arch=('any')
 url="https://diagrams.mingrammer.com"
 license=('MIT')
 depends=('python-graphviz' 'python-jinja')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
         "resources.patch")
-sha256sums=('543c707c36a2c896dfdf8f23e993a9c7ae48bb1a667f6baf19151eb98e57a134'
+sha256sums=('b7ada0b119b5189dd021b1dc1467fad3704737452bb18b1e06d05e4d1fa48ed7'
             'a32edb9d779f786fd02632d95cdd0b22a45e3e845b3c63e8c9ab2491b6396732')
 
 prepare() {
@@ -22,12 +22,12 @@ prepare() {
 
 build() {
     cd $_name-$pkgver
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd $_name-$pkgver
-    python setup.py install --root "$pkgdir" --skip-build --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 
     local site_packages
     site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
