@@ -1,7 +1,8 @@
-# Maintainer: Josef Miegl <josef@miegl.cz>
+# Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
+# Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-ggsn-git
-pkgver=1.3.0.r0.gf5a268a
+pkgver=1.11.0.r2.g8d97644
 pkgrel=1
 pkgdesc="Open Source implementation of a GGSN (Gateway GPRS Support Node)"
 url="https://osmocom.org/projects/openggsn"
@@ -9,10 +10,10 @@ arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
 depends=('libosmocore' 'talloc')
 makedepends=('git')
-provides=("${pkgname%-git}")
+provides=('libgtp.so=6-64')
 conflicts=("${pkgname%-git}")
 backup=('etc/osmocom/osmo-ggsn.cfg')
-source=("git+https://git.osmocom.org/${pkgname%-git}")
+source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -27,7 +28,9 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc \
+              --localstatedir=/var
   make
 }
 
