@@ -3,15 +3,15 @@
 
 pkgname=libosmo-abis-git
 pkgver=1.5.0.r5.gaa3452c
-pkgrel=1
+pkgrel=2
 pkgdesc="Osmocom library for A-bis interface"
 url="https://osmocom.org/projects/libosmo-abis"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
 depends=('libosmocore' 'ortp' 'talloc')
 makedepends=('git')
-provides=("libosmoabis.so=${pkgver}"
-          "libosmotrau.so=${pkgver}")
+provides=("libosmoabis.so=13-64"
+          "libosmotrau.so=2-64")
 conflicts=("${pkgname%-git}")
 source=("git+https://gitea.osmocom.org/osmocom/${pkgname%-git}.git")
 sha256sums=('SKIP')
