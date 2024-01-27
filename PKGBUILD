@@ -1,7 +1,7 @@
 # Maintainer: Marco Rubin <marco.rubin@protonmail.com>
 
 pkgname=hpy
-pkgver=0.9.0rc2
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='A better C API for Python'
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=(python-build
              'python-setuptools-scm>=6.0'
              'python-wheel>=0.34.2')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-b2sums=('5145a60d664cbdf75e7cc5a326f677e3d19de10c28b91cc45d3d47a8ab6552e756fb37ca923330259cbfae912c6a6e4d37e9328c689fdecf2d5b04966125b859')
+b2sums=('2809d0c257419bf1ceccf41082b45a430ea1785fc182e4733c9db42509bc4e81a8993d17be9f79f9fdb74ddcd5689547e43d475ac037d8ca4a5cfd4722a368f3')
 
 build() {
     cd $pkgname-$pkgver
