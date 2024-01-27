@@ -3,3 +3,5 @@
 !/.gitignore
 !/PKGBUILD
 !/.SRCINFO
+
+!/shade-transparency.patch

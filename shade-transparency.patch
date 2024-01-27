@@ -1,0 +1,136 @@
+diff --git a/kitty/boss.py b/kitty/boss.py
+index 010468437..d57e8e606 100644
+--- a/kitty/boss.py
++++ b/kitty/boss.py
+@@ -2526,7 +2526,7 @@ def patch_colors(self, spec: Dict[str, Optional[int]], configured: bool = False)
+         patch_global_colors(spec, configured)
+
+     def apply_new_options(self, opts: Options) -> None:
+-        from .fonts.box_drawing import set_scale
++        from .fonts.box_drawing import set_scale, set_shade_transparency
+         # Update options storage
+         set_options(opts, is_wayland(), self.args.debug_rendering, self.args.debug_font_fallback)
+         apply_options_update()
+@@ -2534,6 +2534,7 @@ def apply_new_options(self, opts: Options) -> None:
+         set_default_env(opts.env.copy())
+         # Update font data
+         set_scale(opts.box_drawing_scale)
++        set_shade_transparency(opts.shade_transparency)
+         from .fonts.render import set_font_family
+         set_font_family(opts, debug_font_matching=self.args.debug_font_fallback)
+         for os_window_id, tm in self.os_window_map.items():
+diff --git a/kitty/fonts/box_drawing.py b/kitty/fonts/box_drawing.py
+index 5d760ca8c..dfdcc7f9c 100644
+--- a/kitty/fonts/box_drawing.py
++++ b/kitty/fonts/box_drawing.py
+@@ -13,6 +13,7 @@
+ from typing import Any, Callable, Dict, Iterable, Iterator, List, MutableSequence, Optional, Sequence, Tuple
+
+ scale = (0.001, 1., 1.5, 2.)
++shade_transparency = True
+ _dpi = 96.0
+ BufType = MutableSequence[int]
+
+@@ -22,6 +23,11 @@ def set_scale(new_scale: Sequence[float]) -> None:
+     scale = (new_scale[0], new_scale[1], new_scale[2], new_scale[3])
+
+
++def set_shade_transparency(new_value: bool) -> None:
++    global shade_transparency
++    shade_transparency = new_value
++
++
+ def thickness(level: int = 1, horizontal: bool = True) -> int:
+     pts = scale[level]
+     return int(math.ceil(pts * (_dpi / 72.0)))
+@@ -614,6 +620,17 @@ def inner_corner(buf: BufType, width: int, height: int, which: str = 'tl', level
+
+
+ def shade(buf: BufType, width: int, height: int, light: bool = False, invert: bool = False) -> None:
++    if shade_transparency:
++        opacity = 128
++        if light:
++            opacity -= 64
++        if invert:
++            opacity = 255 - opacity
++
++        for i in range(len(buf)):
++            buf[i] = opacity
++        return
++
+     square_sz = max(1, width // 12)
+     number_of_rows = height // square_sz
+     number_of_cols = width // square_sz
+diff --git a/kitty/main.py b/kitty/main.py
+index b8f2f60d2..a097b25f8 100644
+--- a/kitty/main.py
++++ b/kitty/main.py
+@@ -43,7 +43,7 @@
+     set_default_window_icon,
+     set_options,
+ )
+-from .fonts.box_drawing import set_scale
++from .fonts.box_drawing import set_scale, set_shade_transparency
+ from .fonts.render import set_font_family
+ from .options.types import Options
+ from .options.utils import DELETE_ENV_VAR
+@@ -287,6 +287,7 @@ def __init__(self) -> None:
+
+     def __call__(self, opts: Options, args: CLIOptions, bad_lines: Sequence[BadLine] = ()) -> None:
+         set_scale(opts.box_drawing_scale)
++        set_shade_transparency(opts.shade_transparency)
+         set_options(opts, is_wayland(), args.debug_rendering, args.debug_font_fallback)
+         try:
+             set_font_family(opts, debug_font_matching=args.debug_font_fallback)
+diff --git a/kitty/options/definition.py b/kitty/options/definition.py
+index 1594a6060..56cb6bc65 100644
+--- a/kitty/options/definition.py
++++ b/kitty/options/definition.py
+@@ -236,6 +236,13 @@
+ '''
+     )
+
++opt('shade_transparency', 'yes',
++    option_type='to_bool',
++    long_text='''
++Whether to render shade characters like :code:`░▒▓` as solid blocks with some
++transparency or using a "dither" effect.
++    ''')
++
+ opt('text_composition_strategy', 'platform',
+     ctype='!text_composition_strategy',
+     long_text='''
+diff --git a/kitty/options/parse.py b/kitty/options/parse.py
+index 752680382..c4d41cbc4 100644
+--- a/kitty/options/parse.py
++++ b/kitty/options/parse.py
+@@ -1190,6 +1190,9 @@ def selection_background(self, val: str, ans: typing.Dict[str, typing.Any]) -> N
+     def selection_foreground(self, val: str, ans: typing.Dict[str, typing.Any]) -> None:
+         ans['selection_foreground'] = to_color_or_none(val)
+
++    def shade_transparency(self, val: str, ans: typing.Dict[str, typing.Any]) -> None:
++        ans['shade_transparency'] = to_bool(val)
++
+     def shell(self, val: str, ans: typing.Dict[str, typing.Any]) -> None:
+         ans['shell'] = str(val)
+
+diff --git a/kitty/options/types.py b/kitty/options/types.py
+index 6af13d6a1..37d82b8d2 100644
+--- a/kitty/options/types.py
++++ b/kitty/options/types.py
+@@ -404,6 +404,7 @@
+  'select_by_word_characters_forward',
+  'selection_background',
+  'selection_foreground',
++ 'shade_transparency',
+  'shell',
+  'shell_integration',
+  'show_hyperlink_targets',
+@@ -562,6 +563,7 @@ class Options:
+     select_by_word_characters_forward: str = ''
+     selection_background: typing.Optional[kitty.fast_data_types.Color] = Color(255, 250, 205)
+     selection_foreground: typing.Optional[kitty.fast_data_types.Color] = Color(0, 0, 0)
++    shade_transparency: bool = True
+     shell: str = '.'
+     shell_integration: typing.FrozenSet[str] = frozenset({'enabled'})
+     show_hyperlink_targets: bool = False
