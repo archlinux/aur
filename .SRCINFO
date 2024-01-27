@@ -1,7 +1,7 @@
 pkgbase = mod-cv-plugins-git
 	pkgdesc = CV (audio-rate control) LV2 plugins from MOD Devices (git version)
 	pkgver = r259.a2feb53
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/moddevices/mod-cv-plugins
 	arch = i686
 	arch = x86_64

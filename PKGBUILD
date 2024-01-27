@@ -4,7 +4,7 @@
 _pkgname=mod-cv-plugins
 pkgname="$_pkgname-git"
 pkgver=r259.a2feb53
-pkgrel=2
+pkgrel=3
 pkgdesc='CV (audio-rate control) LV2 plugins from MOD Devices (git version)'
 arch=(i686 x86_64)
 url='https://github.com/moddevices/mod-cv-plugins'
@@ -35,6 +35,8 @@ prepare() {
   git -c protocol.file.allow=always submodule update
   # fix syntax error in .ttl file
   sed -i -e 's/html ;/html" ;/' source/mod-cv-meter/mod-cv-meter.lv2/mod-cv-meter.ttl
+  # remove reference to non-existing file in .ttl file
+  sed -i -e 's/ , <modgui\.ttl>//' source/mod-cv-transport/mod-cv-transport.lv2/manifest.ttl
 }
 
 build() {
