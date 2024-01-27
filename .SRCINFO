@@ -1,0 +1,15 @@
+pkgbase = ebnf-rr
+	pkgdesc = a railroad diagram generator for W3C-style EBNF grammars
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/GuntherRademacher/rr
+	arch = any
+	license = Apache-2.0
+	makedepends = gradle
+	makedepends = java-environment
+	depends = bash
+	depends = java-runtime
+	source = https://github.com/GuntherRademacher/rr/archive/v2.1/rr-2.1.tar.gz
+	sha256sums = a3b630bbf64aaa91247a57f3b94da63c5aeac32b94543d62d12bac6bfa353a03
+
+pkgname = ebnf-rr
