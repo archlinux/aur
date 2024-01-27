@@ -2,6 +2,7 @@
 #
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Maintainer: Truocolo <truocolo@aol.com>
+# Contributor: Marcell Meszaros (MarsSeed) <marcell.meszaros@runbox.eu>
 
 # shellcheck disable=SC2034
 _arch="mips"
@@ -13,7 +14,7 @@ _ns="${_platform}${_base}"
 _pkgbase="${_platform}${_base}-ports"
 _pkg="libzip"
 pkgname="${_platform}-${_pkg}"
-pkgver="v1.9.2"
+pkgver="1.9.2"
 _ports_ver="v1.3.0"
 pkgrel=1
 _pkgdesc=(
