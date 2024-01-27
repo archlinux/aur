@@ -11,7 +11,7 @@ pkgbase = ocaml-ppx_disable_unused_warnings
 	depends = ocaml-base>=0.16.0
 	depends = ocaml-ppxlib>=0.28.0
 	options = !strip
-	source = ocaml-ppx_disable_unused_warnings-0.16.0-1.tar.gz::https://github.com/janestreet/ppx_disable_unused_warnings/archive/v0.16.0.tar.gz
+	source = ocaml-ppx_disable_unused_warnings-0.16.0.tar.gz::https://github.com/janestreet/ppx_disable_unused_warnings/archive/v0.16.0.tar.gz
 	sha512sums = 43831260baf4d9602da6a26503ac6db50517965c1788941610c4ca5ca4f7fb6cf8381a8fe4669cc3355502a7ff9f42baf35e8ddb2e7ed71a018d9ef16a1d9d77
 
 pkgname = ocaml-ppx_disable_unused_warnings
