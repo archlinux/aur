@@ -2,7 +2,7 @@
 # Project: nwg-shell for sway, https://github.com/nwg-piotr/nwg-shell
 pkgname=('nwg-dock')
 pkgver=0.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK3-based dock for sway Wayland compositor"
 arch=('any')
 url="https://github.com/nwg-piotr/nwg-dock"
@@ -34,4 +34,7 @@ package() {
   install -Dm644 -t "$pkgdir"/usr/share/"$pkgname"/images/ "$pkgname"-"$pkgver"/images/*
   install -Dm644 -t "$pkgdir"/usr/share/"$pkgname"/ "$pkgname"-"$pkgver"/config/*
   install -Dm755 -t "$pkgdir"/usr/bin "$pkgname"-"$pkgver"/bin/"$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
+  install -D -t "$pkgdir"/usr/share/licenses/"$pkgname" LICENSE
+  install -D -t "$pkgdir"/usr/share/doc/"$pkgname" README.md
 }
