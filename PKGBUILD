@@ -5,7 +5,7 @@ pkgrel='1'
 pkgdesc='Video download tool that automatically downloads newly posted videos from channels on supported websites'
 arch=('any')
 url="https://gitlab.com/dpeukert/$pkgname"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('python>=3.8.0' 'yt-dlp')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
