@@ -1,6 +1,6 @@
-pkgbase = osmo-iuh-git
+pkgbase = osmo-iuh
 	pkgdesc = Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)
-	pkgver = 1.5.1.r1.ga2516476
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = http://osmocom.org/projects/osmohnbgw
 	arch = i686
@@ -8,7 +8,6 @@ pkgbase = osmo-iuh-git
 	arch = aarch64
 	arch = armv7h
 	license = GPL
-	makedepends = git
 	depends = libosmocore
 	depends = libosmo-netif
 	depends = libosmo-sccp
@@ -19,8 +18,8 @@ pkgbase = osmo-iuh-git
 	provides = libosmo-ranap.so=7-64
 	provides = libosmo-rua.so=0-64
 	provides = libosmo-sabp.so=1-64
-	conflicts = osmo-iuh
-	source = git+https://gitea.osmocom.org/cellular-infrastructure/osmo-iuh.git
-	sha256sums = SKIP
+	conflicts = osmo-iuh-git
+	source = https://downloads.osmocom.org/releases/osmo-iuh/osmo-iuh-1.5.1.tar.bz2
+	sha256sums = b142cec184d92410fa0e79631923a5349f68453315c7f799e3b486bb8228dd1a
 
-pkgname = osmo-iuh-git
+pkgname = osmo-iuh
