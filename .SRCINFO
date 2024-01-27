@@ -1,7 +1,7 @@
 pkgbase = python-lzf
 	pkgdesc = C Extension for liblzf
 	pkgver = 0.2.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/teepark/python-lzf
 	arch = x86_64
 	license = BSD-3-Clause
