@@ -14,7 +14,7 @@ pkgbase = ocaml-ppx_sexp_message
 	depends = ocaml-ppx_sexp_conv>=0.16.0
 	depends = ocaml-ppxlib>=0.28.0
 	options = !strip
-	source = ocaml-ppx_sexp_message-1:0.16.0-1.tar.gz::https://github.com/janestreet/ppx_sexp_message/archive/v0.16.0.tar.gz
+	source = ocaml-ppx_sexp_message-0.16.0.tar.gz::https://github.com/janestreet/ppx_sexp_message/archive/v0.16.0.tar.gz
 	sha512sums = 2442d9d2e46bcfce17e7d017865dcf52daa5fd62500981f3d97a37373799a5b9abd6c52b4e8f720cc2df419b2d2450258e0bd78fe8e12090805e1c8e37d62285
 
 pkgname = ocaml-ppx_sexp_message
