@@ -5,7 +5,7 @@ pkgbase = ocaml-oseq
 	url = https://github.com/c-cube/oseq
 	arch = x86_64
 	arch = aarch64
-	license = BSD
+	license = BSD-2-Clause
 	checkdepends = ocaml-containers
 	checkdepends = ocaml-gen
 	checkdepends = ocaml-qcheck
@@ -13,7 +13,9 @@ pkgbase = ocaml-oseq
 	depends = ocaml>=4.08.0
 	options = !strip
 	source = ocaml-oseq-0.5.1::git+https://github.com/c-cube/oseq#commit=b44a72b18210d69a894672c955828db1a4feab9c?signed
+	source = LICENSE
 	validpgpkeys = 1370978BC81E9735DFE727E1EBFFF6F283F3A2B4
 	sha512sums = SKIP
+	sha512sums = e1fc24490196adba7ac36223b7013f00322178bfdbe59133bc09c8d3b1fc8af1b2eeff8968a7b1bff8324c70e5071ee716a4e9f03c5e73dff367706561b91906
 
 pkgname = ocaml-oseq
