@@ -1,0 +1,15 @@
+pkgbase = icloudpd-bin
+	pkgdesc = A command-line tool to download photos from iCloud
+	pkgver = 1.17.3
+	pkgrel = 1
+	url = https://github.com/icloud-photos-downloader/icloud_photos_downloader
+	arch = x86_64
+	license = MIT
+	provides = icloudpd
+	conflicts = icloudpd
+	source = icloudpd-bin-1.17.3::https://github.com/icloud-photos-downloader/icloud_photos_downloader/releases/download/v1.17.3/icloudpd-1.17.3-linux-amd64
+	source = LICENSE::https://github.com/icloud-photos-downloader/icloud_photos_downloader/raw/master/LICENSE.md
+	sha256sums = 67e925fc19651364ca0c490ea1aea099f3ff1f73903af97cdf8bb3fcb4a445e8
+	sha256sums = bb04f6adb55cf312f3f5fefc559bf332bc8fb2bd680e309041449c18644ae385
+
+pkgname = icloudpd-bin
