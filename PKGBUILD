@@ -1,8 +1,8 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 
 pkgname=osmo-gapk-git
-pkgver=v0.4.r97.2d5fbe4
-pkgrel=2
+pkgver=v1.1.r0.82c4b31
+pkgrel=1
 pkgdesc="Osmocom GSM Audio Pocket Knife"
 arch=('x86_64' 'i686')
 url="https://osmocom.org/projects/gapk"
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('libosmocore' 'talloc' 'alsa-lib' 'gsm' 'opencore-amr')
 makedepends=('git')
 conflicts=("${pkgname%-git}")
-provides=("${pkgname%-git}=${pkgver}")
+provides=('libosmogapk.so=0-64')
 source=("${pkgname%-git}::git+https://gitea.osmocom.org/osmocom/gapk.git")
 sha256sums=('SKIP')
 
