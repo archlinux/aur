@@ -1,0 +1,15 @@
+post_install(){
+  cd /usr/lib/node_modules/dict
+  which yarn >/dev/null 2>&1 && yarn install || npm install
+  echo -e "\n[32;1m[+] [0;1mThank you for using dict!\n"
+}
+
+post_upgrade(){
+  cd /usr/lib/node_modules/dict
+  which yarn >/dev/null 2>&1 && yarn install || npm install
+}
+
+pre_remove(){
+  rm -rf /usr/lib/node_modules/dict
+}
+
