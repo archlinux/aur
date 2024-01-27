@@ -5,14 +5,13 @@ pkgname="ocaml-$_projectname"
 pkgver='1.1.2'
 pkgrel='2'
 pkgdesc='Lwt-friendly logger'
-# If you're running on aarch64, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"
-license=('custom:LGPL2.1 with linking exception')
+license=('LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception' 'BSD-3-Clause')
 depends=('ocaml>=4.03.0' 'ocaml-lwt>=4.0.0')
 makedepends=('dune>=1.0.0')
 options=('!strip')
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha512sums=('fb976d89c0f868b57434a9e0907ffae0842fe48fc747ddb860954d20f36722faea315ebb0b4dac202f9bf7203b0a09681614e9619f3bbd0dd59f8dd7bbd50575')
 
 _sourcedirectory="$_projectname-$pkgver"
@@ -29,5 +28,5 @@ package() {
 	install -Dm644 'COPYING' "$pkgdir/usr/share/doc/$pkgname/COPYING"
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	ln -sf "/usr/share/doc/$pkgname/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+	ln -sf "/usr/share/doc/$pkgname/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

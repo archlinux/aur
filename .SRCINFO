@@ -5,12 +5,13 @@ pkgbase = ocaml-lwt_log
 	url = https://github.com/ocsigen/lwt_log
 	arch = x86_64
 	arch = aarch64
-	license = custom:LGPL2.1 with linking exception
+	license = LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception
+	license = BSD-3-Clause
 	makedepends = dune>=1.0.0
 	depends = ocaml>=4.03.0
 	depends = ocaml-lwt>=4.0.0
 	options = !strip
-	source = ocaml-lwt_log-1.1.2-2.tar.gz::https://github.com/ocsigen/lwt_log/archive/1.1.2.tar.gz
+	source = ocaml-lwt_log-1.1.2.tar.gz::https://github.com/ocsigen/lwt_log/archive/1.1.2.tar.gz
 	sha512sums = fb976d89c0f868b57434a9e0907ffae0842fe48fc747ddb860954d20f36722faea315ebb0b4dac202f9bf7203b0a09681614e9619f3bbd0dd59f8dd7bbd50575
 
 pkgname = ocaml-lwt_log
