@@ -1,4 +1,5 @@
-# Maintainer: samarthj <dev@samarthj.com>
+# Maintainer: Claudio Nave <claudio nave nine seven at gmail dot com>
+# Contributor: samarthj <dev@samarthj.com>
 
 # shellcheck disable=2034,2148,2154
 
@@ -6,7 +7,7 @@ pkgbase=podman-git
 pkgname=(podman-git podman-docker-git)
 _pkgname=podman
 _pkgname_docker=podman-docker
-pkgver=4.5.0_dev.r18231.g519cfa81f
+pkgver=.r21415.gd7bf1385d
 pkgrel=1
 pkgdesc="Tool and library for running OCI-based containers in pods (git)"
 arch=(x86_64 aarch64)
@@ -17,10 +18,10 @@ url="https://github.com/containers/$_pkgname.git"
 license=(Apache)
 source=(
   "git+$url"
-  "$_pkgname-4.2.0-defaultinitpath.patch"
+  "$_pkgname-4.6.0-defaultinitpath.patch"
 )
 sha256sums=('SKIP'
-            '0f835642a5299d17be36ade891bb7bbbbb4dceef2a715e99fe0580d3a74fec82')
+            'eeacf654707b9b8d6a6c08453b5625d9cf31010d666f82f4851aa34433b97700')
 
 pkgver() {
   cd "$srcdir/$_pkgname" || exit 1
@@ -32,7 +33,7 @@ pkgver() {
 prepare() {
   # set default init_path to /usr/lib/podman/catatonit
   # https://bugs.archlinux.org/task/75493
-  patch -Np1 -d $_pkgname -i ../$_pkgname-4.2.0-defaultinitpath.patch
+  patch -Np1 -d $_pkgname -i ../$_pkgname-4.6.0-defaultinitpath.patch
 }
 
 build() {

@@ -1,0 +1,10 @@
+diff --git i/vendor/github.com/containers/common/pkg/config/default_common.go w/vendor/github.com/containers/common/pkg/config/default_common.go
+index f65461043..b93cdf30f 100644
+--- i/vendor/github.com/containers/common/pkg/config/default_common.go
++++ w/vendor/github.com/containers/common/pkg/config/default_common.go
+@@ -4,4 +4,4 @@
+ package config
+ 
+ // DefaultInitPath is the default path to the container-init binary.
+-var DefaultInitPath = "/usr/libexec/podman/catatonit"
++var DefaultInitPath = "/usr/lib/podman/catatonit"

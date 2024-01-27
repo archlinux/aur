@@ -1,6 +1,6 @@
 pkgbase = podman-git
 	pkgdesc = Tool and library for running OCI-based containers in pods (git)
-	pkgver = 4.5.0_dev.r18231.g519cfa81f
+	pkgver = .r21415.gd7bf1385d
 	pkgrel = 1
 	url = https://github.com/containers/podman.git
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = podman-git
 	makedepends = systemd
 	options = !lto
 	source = git+https://github.com/containers/podman.git
-	source = podman-4.2.0-defaultinitpath.patch
+	source = podman-4.6.0-defaultinitpath.patch
 	sha256sums = SKIP
-	sha256sums = 0f835642a5299d17be36ade891bb7bbbbb4dceef2a715e99fe0580d3a74fec82
+	sha256sums = eeacf654707b9b8d6a6c08453b5625d9cf31010d666f82f4851aa34433b97700
 
 pkgname = podman-git
 	depends = catatonit>=0.1.7-2
