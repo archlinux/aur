@@ -1,18 +1,21 @@
-# Maintainer: Josef Miegl <josef@miegl.cz>
+# Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
+# Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-iuh-git
-pkgver=0.4.0.r1.g04b5b66
+pkgver=1.5.1.r1.ga2516476
 pkgrel=1
-pkgdesc="Open Source implenentation of a HNB-GW (HomeNodeB-Gateway)"
+pkgdesc="Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)"
 url="http://osmocom.org/projects/osmohnbgw"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
 depends=('libosmocore' 'libosmo-netif' 'libosmo-sccp' 'talloc' 'libasn1c' 'lksctp-tools')
 makedepends=('git')
-provides=("${pkgname%-git}")
+provides=('libosmo-hnbap.so=0-64'
+          'libosmo-ranap.so=7-64'
+          'libosmo-rua.so=0-64'
+          'libosmo-sabp.so=1-64')
 conflicts=("${pkgname%-git}")
-backup=('etc/osmocom/osmo-hnbgw.cfg')
-source=("git+https://git.osmocom.org/${pkgname%-git}")
+source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -27,7 +30,9 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc \
+              --localstatedir=/var
   make
 }
 

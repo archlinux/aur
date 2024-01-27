@@ -1,6 +1,6 @@
 pkgbase = osmo-iuh-git
-	pkgdesc = Open Source implenentation of a HNB-GW (HomeNodeB-Gateway)
-	pkgver = 0.4.0.r1.g04b5b66
+	pkgdesc = Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)
+	pkgver = 1.5.1.r1.ga2516476
 	pkgrel = 1
 	url = http://osmocom.org/projects/osmohnbgw
 	arch = i686
@@ -15,11 +15,12 @@ pkgbase = osmo-iuh-git
 	depends = talloc
 	depends = libasn1c
 	depends = lksctp-tools
-	provides = osmo-iuh
+	provides = libosmo-hnbap.so=0-64
+	provides = libosmo-ranap.so=7-64
+	provides = libosmo-rua.so=0-64
+	provides = libosmo-sabp.so=1-64
 	conflicts = osmo-iuh
-	backup = etc/osmocom/osmo-hnbgw.cfg
-	source = git+https://git.osmocom.org/osmo-iuh
+	source = git+https://gitea.osmocom.org/cellular-infrastructure/osmo-iuh.git
 	sha256sums = SKIP
 
 pkgname = osmo-iuh-git
-
