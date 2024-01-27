@@ -1,6 +1,6 @@
 pkgbase = osmo-hlr-git
-	pkgdesc = Subscriber database and authentication key store of an Osmocom 2G/3G network
-	pkgver = 1.0.0.r6.gf9cf180
+	pkgdesc = Osmocom HLR for GSUP protocol towards OsmoSGSN and OsmoCSCN
+	pkgver = 1.7.0.r8.gac1365fd
 	pkgrel = 1
 	url = https://osmocom.org/projects/osmo-hlr
 	arch = i686
@@ -13,13 +13,11 @@ pkgbase = osmo-hlr-git
 	depends = libosmo-abis
 	depends = talloc
 	depends = sqlite
-	depends = libdbi
-	depends = libdbi-drivers
-	provides = osmo-hlr
+	provides = libosmo-gsup-client.so=0-64
+	provides = libosmo-mslookup.so=1-64
 	conflicts = osmo-hlr
 	backup = etc/osmocom/osmo-hlr.cfg
-	source = git+https://git.osmocom.org/osmo-hlr
+	source = git+https://gitea.osmocom.org/cellular-infrastructure/osmo-hlr.git
 	sha256sums = SKIP
 
 pkgname = osmo-hlr-git
-

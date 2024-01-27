@@ -1,18 +1,20 @@
-# Maintainer: Josef Miegl <josef@miegl.cz>
+# Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
+# Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-hlr-git
-pkgver=1.0.0.r6.gf9cf180
+pkgver=1.7.0.r8.gac1365fd
 pkgrel=1
-pkgdesc="Subscriber database and authentication key store of an Osmocom 2G/3G network"
+pkgdesc="Osmocom HLR for GSUP protocol towards OsmoSGSN and OsmoCSCN"
 url="https://osmocom.org/projects/osmo-hlr"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
-depends=('libosmocore' 'libosmo-abis' 'talloc' 'sqlite' 'libdbi' 'libdbi-drivers')
+depends=('libosmocore' 'libosmo-abis' 'talloc' 'sqlite')
 makedepends=('git')
-provides=("${pkgname%-git}")
+provides=('libosmo-gsup-client.so=0-64'
+          'libosmo-mslookup.so=1-64')
 conflicts=("${pkgname%-git}")
 backup=('etc/osmocom/osmo-hlr.cfg')
-source=("git+https://git.osmocom.org/${pkgname%-git}")
+source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -27,7 +29,9 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc \
+              --localstatedir=/var
   make
 }
 
