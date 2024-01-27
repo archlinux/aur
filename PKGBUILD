@@ -5,8 +5,7 @@ pkgdesc="Polygon Clipping and Offsetting"
 arch=('x86_64')
 url="https://github.com/AngusJohnson/Clipper2"
 license=('BSL')
-depends=('glibc')
-makedepends=('gcc-libs')
+depends=('glibc' 'gcc-libs')
 source=("https://github.com/AngusJohnson/Clipper2/archive/refs/tags/Clipper2_${pkgver}.tar.gz")
 sha256sums=('8e537ec320e140afaa8fba1f23120416693cc1d71b0f76ad801d24b88b5e0b3c')
 

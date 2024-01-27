@@ -5,8 +5,8 @@ pkgbase = clipper2
 	url = https://github.com/AngusJohnson/Clipper2
 	arch = x86_64
 	license = BSL
-	makedepends = gcc-libs
 	depends = glibc
+	depends = gcc-libs
 	source = https://github.com/AngusJohnson/Clipper2/archive/refs/tags/Clipper2_1.3.0.tar.gz
 	sha256sums = 8e537ec320e140afaa8fba1f23120416693cc1d71b0f76ad801d24b88b5e0b3c
 
