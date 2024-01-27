@@ -13,7 +13,7 @@ pkgbase = ocaml-ppx_hash
 	depends = ocaml-ppx_sexp_conv>=0.16.0
 	depends = ocaml-ppxlib>=0.28.0
 	options = !strip
-	source = ocaml-ppx_hash-0.16.0-1.tar.gz::https://github.com/janestreet/ppx_hash/archive/v0.16.0.tar.gz
+	source = ocaml-ppx_hash-0.16.0.tar.gz::https://github.com/janestreet/ppx_hash/archive/v0.16.0.tar.gz
 	sha512sums = b06f67fa0550a40a96fd02e1b65240470a014fcf6f6d4f0f21f77d2d7f2eaba3b86faef462d329b416f9e6234f287ac3a3c72875cbac53b0532d8ab82c0199e7
 
 pkgname = ocaml-ppx_hash
