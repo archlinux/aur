@@ -1,12 +1,12 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-ppsspp
 pkgname=$_pkgname-git
-pkgver=1.16.5.r34.gdea038a91b
-pkgrel=2
+pkgver=1.16.6.r999.g1a1b79606b
+pkgrel=1
 pkgdesc="Sony PlayStation Portable core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://www.ppsspp.org/"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 groups=('libretro')
 depends=(
 	'gcc-libs'
@@ -38,7 +38,7 @@ source=(
 	'cpu_features::git+https://github.com/google/cpu_features.git'
 	'glslang::git+https://github.com/KhronosGroup/glslang.git'
 	'rcheevos::git+https://github.com/RetroAchievements/rcheevos.git'
-	'spirv-cross::git+https://github.com/KhronosGroup/SPIRV-Cross.git'
+	'SPIRV-Cross::git+https://github.com/KhronosGroup/SPIRV-Cross.git'
 )
 b2sums=(
 	'SKIP'
@@ -60,7 +60,7 @@ prepare() {
 	git config submodule.ext/armips.url ../armips
 	git config submodule.ext/glslang.url ../glslang
 	git config submodule.ext/rcheevos.url ../rcheevos
-	git config submodule.ext/SPIRV-Cross.url ../spirv-cross
+	git config submodule.ext/SPIRV-Cross.url ../SPIRV-Cross
 	git -c protocol.file.allow=always submodule update
 	sed -i 's/ext\/rapidjson\/include\/\(rapidjson\/document\.h\)/\1/' Core/RetroAchievements.cpp
 	sed -i '/libchdr/d' ext/CMakeLists.txt
