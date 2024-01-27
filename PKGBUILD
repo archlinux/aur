@@ -10,7 +10,7 @@ license=('ISC')
 depends=('ocaml>=4.08.0')
 makedepends=('dune>=2.8.0')
 options=('!strip')
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('7c32adf30505fe35a1313c162731b96e283a883dbc18d530344830a1f76d3397a6dd3b76a4ac3024aa02ff917d228c953c9ebdfeeae1f48686e776007234edda')
 
 _sourcedirectory="$_projectname-$pkgver"
@@ -30,5 +30,5 @@ package() {
 	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc' --mandir '/usr/share/man' --release --verbose
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/ISC"
 }

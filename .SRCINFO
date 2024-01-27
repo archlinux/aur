@@ -9,7 +9,7 @@ pkgbase = ocaml-mirage-clock
 	makedepends = dune>=2.8.0
 	depends = ocaml>=4.08.0
 	options = !strip
-	source = ocaml-mirage-clock-4.2.0-1.tar.gz::https://github.com/mirage/mirage-clock/archive/v4.2.0.tar.gz
+	source = ocaml-mirage-clock-4.2.0.tar.gz::https://github.com/mirage/mirage-clock/archive/v4.2.0.tar.gz
 	sha512sums = 7c32adf30505fe35a1313c162731b96e283a883dbc18d530344830a1f76d3397a6dd3b76a4ac3024aa02ff917d228c953c9ebdfeeae1f48686e776007234edda
 
 pkgname = ocaml-mirage-clock
