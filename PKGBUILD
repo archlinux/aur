@@ -15,7 +15,6 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd z3-z3-${pkgver}
-  curl -L https://github.com/Z3Prover/z3/commit/99239068.patch | patch -p1
 }
 
 build() {
