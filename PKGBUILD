@@ -47,12 +47,74 @@ checkdepends=(
   "${_py}-lxml"
   "${_py}-cffi"
 )
+provides=(
+  "${_pkg}=${pkgver}"
+  "${_pkg}-git=${pkgver}"
+  "${_pkgbase}=${pkgver}"
+)
+conflicts=(
+  "${_pkg}"
+  "${_pkg}-git"
+  "${_pkgbase}"
+)
 source=(
   "git+${url}.git"
 )
 sha512sums=(
   'SKIP'
 )
+
+_parse_ver() {
+  local \
+    _pkgver="${1}" \
+    _out="" \
+    _ver \
+    _rev \
+    _commit
+  _ver="$( \
+    echo \
+      "${_pkgver}" | \
+          awk \
+            -F '+' \
+            '{print $1}')"
+  _rev="$( \
+    echo \
+      "${_pkgver}" | \
+          awk \
+            -F '+' \
+            '{print $2}')"
+  _commit="$( \
+    echo \
+      "${_pkgver}" | \
+          awk \
+            -F '+' \
+            '{print $3}')"
+  _out=${_ver}
+  if [[ "${_rev}" != "" ]]; then
+    _out+=".r${_rev}"
+  fi
+  if [[ "${_commit}" != "" ]]; then
+    _out+=".${_commit}"
+  fi
+  echo \
+    "${_out}"
+}
+
+pkgver() {
+  local \
+    _pkgver
+  cd \
+    "${_pkg}" || \
+    exit
+  _pkgver="$( \
+    git \
+      describe \
+      --tags | \
+        sed \
+          's/_/./g;s/-/+/g')"
+  _parse_ver \
+    "${_pkgver}"
+}
 
 build() {
   cd \

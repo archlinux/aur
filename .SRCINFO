@@ -18,6 +18,12 @@ pkgbase = python-setuptools-rust-git
 	depends = rust
 	depends = python-setuptools
 	depends = python-semantic-version
+	provides = setuptools-rust=1.8.1
+	provides = setuptools-rust-git=1.8.1
+	provides = python-setuptools-rust=1.8.1
+	conflicts = setuptools-rust
+	conflicts = setuptools-rust-git
+	conflicts = python-setuptools-rust
 	source = git+https://github.com/PyO3/setuptools-rust.git
 	sha512sums = SKIP
 
