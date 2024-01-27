@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=vkd3d-proton-mingw-git
-pkgver=2.10.r168.geb4b4117
+pkgver=2.11.1.r37.g730933dc
 pkgrel=1
 pkgdesc='Fork of VKD3D. Development branches for Protons Direct3D 12 implementation'
 arch=('x86_64')
@@ -39,9 +39,9 @@ prepare() {
     # If you want the "best" possible optimizations for your system you can use
     # `-march=native` and remove the `-mtune=core-avx2` option.
 
-#    local -a split=($CFLAGS)
-#    local -A flags
-#    for opt in "${split[@]}"; do flags["${opt%%=*}"]="${opt##*=}"; done
+    local -a split=($CFLAGS)
+    local -A flags
+    for opt in "${split[@]}"; do flags["${opt%%=*}"]="${opt##*=}"; done
     local march="${flags["-march"]:-nocona}"
     local mtune="${flags["-mtune"]:-core-avx2}"
 
@@ -66,8 +66,8 @@ prepare() {
     # Relevant Wine issues
     # https://bugs.winehq.org/show_bug.cgi?id=45289
     # https://bugs.winehq.org/show_bug.cgi?id=43516
-    CFLAGS+=" -mno-avx2"
-    CXXFLAGS+=" -mno-avx2"
+    CFLAGS+=" -mno-avx2 -mno-avx"
+    CXXFLAGS+=" -mno-avx2 -mno-avx"
 
     local cross_ldflags="$LDFLAGS"
 
