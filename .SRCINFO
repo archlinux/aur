@@ -4,13 +4,13 @@ pkgbase = python-py_cui
 	pkgrel = 2
 	url = https://github.com/jwlodek/py_cui
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	checkdepends = python-pytest
 	checkdepends = python-pytest-cov
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python>=3.6.0
-	source = python-py_cui-0.1.6-2.tar.gz::https://github.com/jwlodek/py_cui/archive/v0.1.6.tar.gz
+	source = python-py_cui-0.1.6.tar.gz::https://github.com/jwlodek/py_cui/archive/v0.1.6.tar.gz
 	sha512sums = 95cf3df28525d7429e2e0fb2bcdce607d3ae2f3ea24d85112e8e4f38fb7944bcab9f992c55b093c23a154f4ae4aa50bcb20ce0377f2af1830397e2effa10eb1e
 
 pkgname = python-py_cui
