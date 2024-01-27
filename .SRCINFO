@@ -1,6 +1,6 @@
 pkgbase = ps2-xz
 	pkgdesc = Free general-purpose data compression software with high compression ratio (Sony Playstation® 2 videogame system port).
-	pkgver = v5.4.0
+	pkgver = 5.4.0
 	pkgrel = 1
 	url = https://github.com/xz-mirror/xz
 	arch = x86_64

@@ -1,4 +1,8 @@
-# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# SPDX-License-Identifier: AGPL-3.0
+#
+# Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+# Maintainer: Truocolo <truocolo@aol.com>
+# Contributor: Marcell Meszaros (MarsSeed) <marcell.meszaros@runbox.eu>
 
 # shellcheck disable=SC2034
 _arch="mips"
@@ -10,29 +14,41 @@ _ns="${_platform}${_base}"
 _pkgbase="${_platform}${_base}-ports"
 _pkg="xz"
 pkgname="${_platform}-${_pkg}"
-pkgver="v5.4.0"
-_ports_ver="v1.3.0"
+pkgver="5.4.0"
+_ports_ver="1.3.0"
 pkgrel=1
-_pkgdesc=("Free general-purpose data compression software with high compression ratio "
-          "(Sony Playstation® 2 videogame system port).")
+_pkgdesc=(
+  "Free general-purpose data compression software with high compression ratio "
+  "(Sony Playstation® 2 videogame system port)."
+)
 pkgdesc="${_pkgdesc[*]}"
-arch=('x86_64')
-license=('custom')
+arch=(
+  'x86_64'
+)
+license=(
+  'custom'
+)
 _ns="${_pkg}-mirror"
 _github="https://github.com/${_ns}"
 _local="ssh://git@127.0.0.1:/home/git"
 url="${_github}/${_pkg}"
 _ports_url="https://github.com/${_platform}dev/${_platform}${_base}-ports"
-makedepends=("${_platform}-sdk"
-             "cmake")
+makedepends=(
+  "${_platform}-sdk"
+  "cmake")
+
 optdepends=()
 _commit="b69da6d4bb6bb11fc0cf066920791990d2b22a06"
 _ports_commit="e3f9bfd51e3266b3c68de19b76f6d378f6ec643b"
-source=("${pkgname}::git+${url}#commit=${_commit}"
-        "${_platform}-ports::git+${_ports_url}#commit=${_ports_commit}")
-# source=("${pkgname}::git+${_local}/${pkgname}#commit=${_commit}")
-sha256sums=('SKIP'
-            'SKIP')
+source=(
+  "${pkgname}::git+${url}#commit=${_commit}"
+  # "${pkgname}::git+${_local}/${pkgname}#commit=${_commit}"
+  "${_platform}-ports::git+${_ports_url}#commit=${_ports_commit}"
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
 
 _ee_include="/usr/${_ee}/include"
 _ee_lib="/usr/${_ee}/lib"
@@ -40,59 +56,91 @@ _sdk_include="/usr/include/${_platform}${_base}"
 _pe_include="/usr/${_ee}/include/pthread-embedded"
 _pe_lib="/usr/${_ee}/lib/pthread-embedded"
 
-_ldflags=(-L"${_pe_lib}"
-          -L"${_ee_lib}")
+_ldflags=(
+  -L"${_pe_lib}"
+  -L"${_ee_lib}"
+)
 
 prepare() {
-    cd "${srcdir}/${_platform}-ports"
-    local _rep 
-    local _reps=("s~\$ENV{PS2SDK}/ee/include~${_ee_include}~g"
-                 "s~\$ENV{PS2SDK}/common/include~${_sdk_include}~g"
-                 "s~\$ENV{PS2DEV}/ee/ee~~g"
-                 "s~\$ENV{PS2DEV}/ee~~g"
-                 "s~\$ENV{PS2DEV}/ports~${pkgdir}/usr/${_ee}~g"
-                 "s~\$ENV{PS2DEV}~~g"
-                 "s~\$ENV{PS2SDK}/ports~~g"
-                 "s~\$ENV{PS2SDK}~~g"
-                 "s~CMAKE_FIND_ROOT_PATH ~CMAKE_FIND_ROOT_PATH /usr/${_ee}~g"
-                 "s~CMAKE_C_FLAGS_INIT \"~CMAKE_C_FLAGS_INIT \"-std=gnu++11 ~g"
-                 "s~-D_EE~-D_EE -r~g")
-    for _rep in "${_reps[@]}"; do
-        sed -i "${_rep}" "${_platform}dev.cmake"
-    done
-    local _linker_flags=(-r)
+  cd \
+    "${srcdir}/${_platform}-ports"
+  local \
+    _reps=() \
+    _rep
+  _reps=(
+    "s~\$ENV{PS2SDK}/ee/include~${_ee_include}~g"
+    "s~\$ENV{PS2SDK}/common/include~${_sdk_include}~g"
+    "s~\$ENV{PS2DEV}/ee/ee~~g"
+    "s~\$ENV{PS2DEV}/ee~~g"
+    "s~\$ENV{PS2DEV}/ports~${pkgdir}/usr/${_ee}~g"
+    "s~\$ENV{PS2DEV}~~g"
+    "s~\$ENV{PS2SDK}/ports~~g"
+    "s~\$ENV{PS2SDK}~~g"
+    "s~CMAKE_FIND_ROOT_PATH ~CMAKE_FIND_ROOT_PATH /usr/${_ee}~g"
+    "s~CMAKE_C_FLAGS_INIT \"~CMAKE_C_FLAGS_INIT \"-std=gnu++11 ~g"
+    "s~-D_EE~-D_EE -r~g"
+  )
+  for _rep in "${_reps[@]}"; do
+    sed \
+      -i \
+      "${_rep}" \
+      "${_platform}dev.cmake"
+  done
+  local \
+    _linker_flags=(-r)
 }
 
 build() {
-
-  export CFLAGS=""
-  export CXXFLAGS=""
-  export CPPFLAGS=""
-  export LDFLAGS=""
-
-  local _cmake_opts=(-Wno-dev
-                     -DCMAKE_TOOLCHAIN_FILE="${srcdir}/${_platform}-ports/ps2dev.cmake"
-                     -DCMAKE_INSTALL_PREFIX="/usr/${_ee}"
-                     -DBUILD_SHARED_LIBS=OFF
-                     -DLDFLAGS="-L${_ee_lib}"
-                     -DCMAKE_BUILD_TYPE=RelWithDebInfo
-                     -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON)
-
-  local _site_opts=(-DTUKLIB_CPUCORES_FOUND=ON
-                    -DTUKLIB_PHYSMEM_FOUND=ON
-                    -DHAVE_GETOPT_LONG=OFF
-                    -DBUILD_TESTING=OFF)
-
-  local _extra_opts=(-G"Unix Makefiles")
-
-  local _build="${srcdir}/${pkgname}/build"
-  mkdir -p "${_build}"
-  cd "${_build}"
-  cmake "${_cmake_opts[@]}" "${_site_opts[@]}" "${_extra_opts[@]}" ..
+  local \
+    _cmake_opts=() \
+    _site_opts=() \
+    _extra_opts=() \
+    _build
+  export \
+    CFLAGS="" \
+    CXXFLAGS="" \
+    CPPFLAGS="" \
+    LDFLAGS=""
+  _cmake_opts=(
+    -Wno-dev
+    -DCMAKE_TOOLCHAIN_FILE="${srcdir}/${_platform}-ports/ps2dev.cmake"
+    -DCMAKE_INSTALL_PREFIX="/usr/${_ee}"
+    -DBUILD_SHARED_LIBS=OFF
+    -DLDFLAGS="-L${_ee_lib}"
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo
+    -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON
+  )
+  _site_opts=(
+    -DTUKLIB_CPUCORES_FOUND=ON
+    -DTUKLIB_PHYSMEM_FOUND=ON
+    -DHAVE_GETOPT_LONG=OFF
+    -DBUILD_TESTING=OFF
+  )
+  _extra_opts=(
+    -G"Unix Makefiles"
+  )
+  _build="${srcdir}/${pkgname}/build"
+  mkdir \
+    -p \
+    "${_build}"
+  cd \
+    "${_build}"
+  cmake \
+    "${_cmake_opts[@]}" \
+    "${_site_opts[@]}" \
+    "${_extra_opts[@]}" \
+    ..
 }
 
 # shellcheck disable=SC2154
 package() {
-  cd "${srcdir}/${pkgname}/build"
-  make DESTDIR="${pkgdir}" clean all install
+  cd \
+    "${srcdir}/${pkgname}/build"
+  make \
+    DESTDIR="${pkgdir}" \
+    clean \
+    all \
+    install
 }
+
+# vim:set sw=2 sts=-1 et:
