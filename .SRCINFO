@@ -12,7 +12,7 @@ pkgbase = hlsdl
 	license = MIT
 	depends = curl
 	depends = openssl
-	source = hlsdl-0.27-2.tar.gz::https://github.com/selsta/hlsdl/archive/cbf4301a912a3c0bbb418bd92b861f390f9c519c.tar.gz
+	source = hlsdl-0.27.tar.gz::https://github.com/selsta/hlsdl/archive/cbf4301a912a3c0bbb418bd92b861f390f9c519c.tar.gz
 	sha512sums = 54b03ea793a08d409d7764ab9c7b40b7a925c2cce95dfd5efd701d45814f9824334d285641bb355f8d00d5f710aadf976d933428dd5c23f027190f8cc59ffc5a
 
 pkgname = hlsdl

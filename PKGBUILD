@@ -8,7 +8,7 @@ arch=('x86_64' 'i486' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/selsta/$pkgname"
 license=('MIT')
 depends=('curl' 'openssl')
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$_commit.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
 sha512sums=('54b03ea793a08d409d7764ab9c7b40b7a925c2cce95dfd5efd701d45814f9824334d285641bb355f8d00d5f710aadf976d933428dd5c23f027190f8cc59ffc5a')
 
 _sourcedirectory="$pkgname-$_commit"
@@ -23,5 +23,5 @@ build() {
 package() {
 	cd "$srcdir/$_sourcedirectory/"
 	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/MIT"
 }
