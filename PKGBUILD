@@ -2,10 +2,10 @@
 mypackagename=pyNotify   # only if github repo has a different name than this pkgbase/pkgname
 pkgname=pynotify-bin
 pkgbase=pynotify-bin
-pkgver=0.6      # remember to also change the version number bellow in the pkgver() function
+pkgver=0.7      # remember to also change the version number bellow in the pkgver() function
 pkgrel=2
 epoch=
-pkgdesc="A Gnome (wayland) shell notifier for Gotify server."
+pkgdesc="A Gnome (wayland) shell notifier for Gotify and Ntfy server."
 arch=('x86_64')
 url="https://github.com/fseoane/pyNotify.git"
 license=('MIT')
