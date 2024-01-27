@@ -1,0 +1,36 @@
+pkgbase = iceshrimp.net-git
+	pkgdesc = YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023
+	pkgver = v2024.1.alpha+8308a74
+	pkgrel = 1
+	url = https://iceshrimp.dev/iceshrimp/iceshrimp.net
+	install = iceshrimp.net.install
+	arch = x86_64
+	arch = aarch64
+	license = AGPL3
+	makedepends = dotnet-sdk>=8.0
+	makedepends = aspnet-targeting-pack>=8.0
+	makedepends = aspnet-targeting-pack<9.0
+	makedepends = nodejs
+	makedepends = npm
+	depends = aspnet-runtime>=8.0
+	depends = aspnet-runtime<9.0
+	depends = redis
+	depends = postgresql
+	optdepends = ffmpeg: for video transcoding
+	provides = iceshrimp.net
+	conflicts = iceshrimp.net
+	backup = etc/iceshrimp.net/configuration.ini
+	source = iceshrimp.net::git+https://iceshrimp.dev/iceshrimp/iceshrimp.net.git#branch=dev
+	source = iceshrimp.net.service
+	source = iceshrimp.net.sysusers
+	source = iceshrimp.net.tmpfiles
+	source = iceshrimp.net.install
+	source = iceshrimp.net.hook
+	sha512sums = SKIP
+	sha512sums = 0d24bddab25fdf8b8b2f8ee6fc6162bfa60a0790ad71af52f9102eba4441da3a6a290254edb6549cb15c29b735651ebb414822bbc94b12b2948c07dd6c3b0979
+	sha512sums = 9adf1781842ae7ff2779ca561f06ab2b6fb93e206698084283986627aba69b0fd4482ccbed3daebb2517e5966c326604e1cc57618589f331a966fee2db63815d
+	sha512sums = 0f064da320419f4d6edc1b1fab26a68a89a5c29974030f787f07aa472b8c54eac7d3c83a8ba96b07ac4f22b104ee41f9ece97402454cfb435a04056eb8b13001
+	sha512sums = 0a0467df278f3bd739114725b373f5ec6c7296f609f0a9bcb4f8142b44856fc63e32f76390adf757005035dc691a4c54a662cc8a287572b61e215c29e3d3cbf2
+	sha512sums = fe5bc19c5f84e77954a023d054414f355b21918465f11ffcd09c139d1ce9de6258b12d4be5a0a6123844bc0f1458a9b45e49d2619440b3124f30d3dea3a7c6fb
+
+pkgname = iceshrimp.net-git

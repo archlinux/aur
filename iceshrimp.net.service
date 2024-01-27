@@ -1,0 +1,54 @@
+[Unit]
+Description=Iceshrimp.NET daemon
+
+Requires=postgresql.service redis.service
+After=postgresql.service redis.service
+
+[Service]
+Type=simple
+Restart=on-failure
+
+User=iceshrimp
+Group=iceshrimp
+
+Environment="ICESHRIMP_CONFIG=/etc/iceshrimp.net/configuration.ini"
+Environment="ICESHRIMP_MEDIA_DIR=/var/lib/iceshrimp.net/files"
+Environment="ICESHRIMP_CUSTOM_DIR=/usr/share/iceshrimp.net/custom"
+
+WorkingDirectory=/usr/share/iceshrimp.net
+SyslogIdentifier=iceshrimp.net
+ExecStart=/usr/share/iceshrimp.net/Iceshrimp.Backend --migrate-and-start
+
+ReadOnlyPaths=/usr/share/iceshrimp.net
+ReadOnlyPaths=/etc/iceshrimp.net/configuration.ini
+ReadWritePaths=/var/lib/iceshrimp.net/files
+ReadWritePaths=/var/lib/iceshrimp.net/cache
+NoExecPaths=/var/lib/iceshrimp.net/cache
+NoExecPaths=/var/lib/iceshrimp.net/files
+
+RestrictSUIDSGID=true
+RestrictNamespaces=true
+
+PrivateTmp=true
+PrivateDevices=true
+PrivateUsers=true
+
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectProc=invisible
+
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+
+LockPersonality=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
