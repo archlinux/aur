@@ -1,13 +1,14 @@
 pkgbase = python-toml-sort
 	pkgdesc = Toml sorting library
 	pkgver = 0.23.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pappasam/toml-sort
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-poetry
 	depends = python
 	depends = python-tomlkit
 	depends = python-importlib-metadata
