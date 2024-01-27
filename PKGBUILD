@@ -5,7 +5,6 @@ pkgname="ocaml-$_projectname"
 pkgver='1.0.3'
 pkgrel='2'
 pkgdesc='Non-blocking streaming Unicode codec for OCaml'
-# If you're running on aarch64, you have to add it to the arch array of the ocaml-cmdliner AUR dependency
 arch=('x86_64' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
 license=('ISC')
@@ -38,5 +37,5 @@ package() {
 	done
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/ISC"
 }
