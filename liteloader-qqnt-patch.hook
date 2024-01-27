@@ -1,11 +1,8 @@
 [Trigger]
-Operation=Install
-Operation=Upgrade
-Type=Package
-Target=liteloader-qqnt-git
-Target=liteloader-qqnt-bin
-Target=linuxqq
-Target=linuxqq-nt-bwrap
+Type=File
+Operation = Install
+Operation = Upgrade
+Target=opt/QQ/resources/app/app_launcher/index.js
 
 [Action]
 Description=Repatch QQ for LiteLoaderQQNT
