@@ -1,8 +1,8 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 # Contributor: Josef Miegl <josef@miegl.cz>
 
-pkgname=osmo-bsc-git
-pkgver=1.11.0.r64.g3c92391c9
+pkgname=osmo-bsc
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="Osmocom's Base Station Controller for 2G circuit-switched mobile networks"
 url="https://osmocom.org/projects/osmobsc"
@@ -17,24 +17,13 @@ depends=('libosmocore'
          'libpcap' # for osmo-meas-pcap2db
          # TODO: 'libcdk' for --enable-meas-vis
          'talloc')
-makedepends=('git')
-conflicts=("${pkgname%-git}")
+conflicts=("${pkgname}-git")
 backup=('etc/osmocom/osmo-bsc.cfg')
-source=("git+https://git.osmocom.org/${pkgname%-git}")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "${pkgname%-git}"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "${pkgname%-git}"
-  autoreconf -f -i
-}
+source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('11170f7a11246d4c7147ee8528ed060e54c743442ffbcee279c55261c9f59ad9')
 
 build() {
-  cd "${pkgname%-git}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
               --localstatedir=/var \
@@ -44,7 +33,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname%-git}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR=${pkgdir} install
 }
 
