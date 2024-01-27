@@ -29,6 +29,7 @@ arch=('aarch64' 'i686' 'x86_64')
 _main_package() {
   depends=(
     libolm.so
+    qt6-5compat
     qt6-multimedia
     qt6-declarative
     qtkeychain-qt6
