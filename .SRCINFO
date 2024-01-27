@@ -1,7 +1,7 @@
 pkgbase = slimevr-bin
 	pkgdesc = VR Full Body Tracking System
 	pkgver = 0.11.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/SlimeVR/SlimeVR-Server
 	changelog = CHANGELOG
 	arch = x86_64
