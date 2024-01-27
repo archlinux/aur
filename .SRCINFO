@@ -5,7 +5,7 @@ pkgbase = ocaml-qcheck
 	url = https://github.com/c-cube/qcheck
 	arch = x86_64
 	arch = aarch64
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = dune>=2.8.0
 	depends = ocaml>=4.08.0
 	depends = ocaml-alcotest>=0.8.1
