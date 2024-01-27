@@ -16,7 +16,7 @@ pkgbase = ocaml-ppx_base
 	depends = ocaml-ppx_sexp_conv>=0.16.0
 	depends = ocaml-ppxlib>=0.28.0
 	options = !strip
-	source = ocaml-ppx_base-0.16.0-1.tar.gz::https://github.com/janestreet/ppx_base/archive/v0.16.0.tar.gz
+	source = ocaml-ppx_base-0.16.0.tar.gz::https://github.com/janestreet/ppx_base/archive/v0.16.0.tar.gz
 	sha512sums = 110b03434f0ef7c82b8728c60ac03f56ec0bc2a292d9cc39bbca0102a976c34fb4a18311a7a1ff6755f7f61c2aa677d0413da36635f98336cc59eef962b8abb3
 
 pkgname = ocaml-ppx_base
