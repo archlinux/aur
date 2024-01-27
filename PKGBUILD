@@ -1,9 +1,10 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=python-outlines
-_name=${pkgname#python-}
-pkgver=0.0.24
-pkgrel=2
+_pkgname=${pkgname#python-}
+pkgver=0.0.25
+_commit=c2b0f4fb188648b7a4d266132cb13f9108600178
+pkgrel=1
 pkgdesc="Guided text generation"
 arch=(any)
 url="https://github.com/outlines-dev/outlines"
@@ -29,6 +30,7 @@ depends=(
   python-transformers
 )
 makedepends=(
+  git
   python-build
   python-installer
   python-setuptools-scm
@@ -36,33 +38,26 @@ makedepends=(
 )
 checkdepends=(
   python-pytest
+  python-pytest-benchmark
+  python-pytest-mock
   python-responses
 )
-optdepends=(
-  'python-llama-cpp: llama.cpp backend'
-)
+optdepends=('python-llama-cpp: llama.cpp backend')
 
-source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
-  "fix-package-discovery.patch"
-)
-sha256sums=(
-  'b50e083a86e021edb6d32800ea0334250489980577880272b8c79df15b7e203e'
-  '9140b5e8436f3f75b02f74f6dabb3862f21e93e16c87e6d9a9e6209ec53a8756'
-)
+source=("git+$url.git#commit=$_commit")
+sha256sums=('SKIP')
 
-_archive="$_name-$pkgver"
+_archive="$_pkgname"
 
-prepare() {
+pkgver() {
   cd "$_archive"
 
-  patch --forward --strip=1 --input="$srcdir/fix-package-discovery.patch"
+  git describe --tags
 }
 
 build() {
   cd "$_archive"
 
-  export SETUPTOOLS_SCM_PRETEND_VERSION="$pkgver"
   python -m build --wheel --no-isolation
 }
 
@@ -72,8 +67,11 @@ check() {
   _ignored_tests=(
     # Fails due to the following import error:
     #   ImportError: /usr/lib/python3.11/site-packages/tokenizers/tokenizers.cpython-311-x86_64-linux-gnu.so: undefined symbol: OnigDefaultSyntax
-    tests/models/test_transformers.py
+    tests/benchmark/test_benchmark_json_schema.py
+    tests/benchmark/test_benchmark_numba_compile.py
+    tests/benchmark/test_benchmark_regex_fsm.py
     tests/generate/test_integration_transfomers.py
+    tests/models/test_transformers.py
 
     # Requires python-llama-cpp which I'm currently unable to install.
     tests/models/test_llama_cpp.py
@@ -88,6 +86,11 @@ check() {
   )
   _deselected_tests_arg=$(printf " --deselect=%s" "${_deselected_tests[@]}")
 
+  rm -rf tmp_install
+  _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  python -m installer --destdir=tmp_install dist/*.whl
+
+  export PYTHONPATH="$PWD/tmp_install/$_site_packages"
   # shellcheck disable=SC2086
   pytest \
     $_ignored_tests_arg \

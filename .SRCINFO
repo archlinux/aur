@@ -1,12 +1,15 @@
 pkgbase = python-outlines
 	pkgdesc = Guided text generation
-	pkgver = 0.0.24
-	pkgrel = 2
+	pkgver = 0.0.25
+	pkgrel = 1
 	url = https://github.com/outlines-dev/outlines
 	arch = any
 	license = Apache-2.0
 	checkdepends = python-pytest
+	checkdepends = python-pytest-benchmark
+	checkdepends = python-pytest-mock
 	checkdepends = python-responses
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools-scm
@@ -30,9 +33,7 @@ pkgbase = python-outlines
 	depends = python-tiktoken
 	depends = python-transformers
 	optdepends = python-llama-cpp: llama.cpp backend
-	source = python-outlines-0.0.24.tar.gz::https://github.com/outlines-dev/outlines/archive/refs/tags/0.0.24.tar.gz
-	source = fix-package-discovery.patch
-	sha256sums = b50e083a86e021edb6d32800ea0334250489980577880272b8c79df15b7e203e
-	sha256sums = 9140b5e8436f3f75b02f74f6dabb3862f21e93e16c87e6d9a9e6209ec53a8756
+	source = git+https://github.com/outlines-dev/outlines.git#commit=c2b0f4fb188648b7a4d266132cb13f9108600178
+	sha256sums = SKIP
 
 pkgname = python-outlines
