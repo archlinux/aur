@@ -38,12 +38,13 @@ build() {
 	         -DBUILD_STATIC_LIBS=OFF \
 	         -DCMAKE_INSTALL_PREFIX=/opt/DAGMC \
 	         -DDOUBLE_DOWN_DIR=/opt/double-down/lib/cmake/dd
-        _ccores=$(nproc)
-        if [ -z "${_ccores}" ]; then
-           make
-        else
-           make -j ${_ccores}
-        fi
+	_ccores=$(nproc)
+	# check if _ccores is a positive integer, if not, serial build
+	if [[ "${_ccores}" =~ ^[1-9][0-9]*$ ]]; then
+		make -j ${_ccores}
+	else
+		make
+	fi
 }
 
 package() {
