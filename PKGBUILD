@@ -105,5 +105,9 @@ build() {
 # shellcheck disable=SC2154
 package() {
   cd "${srcdir}/${pkgname}/build"
-  make DESTDIR="${pkgdir}" clean all install
+  make \
+    DESTDIR="${pkgdir}" \
+    clean \
+    all \
+    install
 }
