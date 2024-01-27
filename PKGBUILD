@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0
+#
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Maintainer: Truocolo <truocolo@aol.com>
 # Contributor: Angel Velasquez <angvp@archlinux.org>
@@ -70,6 +72,7 @@ package() {
       --optimize=1 \
       --skip-build
   rm \
+    -f \
     "${pkgdir}/usr/bin/easy_install"
 }
 
