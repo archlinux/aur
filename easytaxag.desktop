@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
-Name=EasyTax 2022 AG
-Comment=EasyTax Applikation zur Steuererklärung 2022 für den Kanton Aargau
-Exec=EasyTax2022_AG %U
+Name=EasyTax 2023 AG
+Comment=EasyTax Applikation zur Steuererklärung 2023 für den Kanton Aargau
+Exec=EasyTax2023_AG %U
 StartupWMClass=ch-hwis-et-ag-ETApp
 Icon=easytaxag
 Categories=Office;
