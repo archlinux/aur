@@ -14,7 +14,7 @@ license=('ISC')
 depends=('ocaml>=4.05.0')
 makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-topkg>=1.0.3' 'opam')
 options=('!strip')
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/dbuenzli/$_projectname/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/dbuenzli/$_projectname/archive/v$pkgver.tar.gz")
 sha512sums=('b19be8b8895e623cf4f9a5f083402f889dfb946b11b76de0821b6eb4f9f9ccac48a5c5ef456ec096d9db32cbd71f9e20187e8a71f9e07fdd9130f9ed941252f7')
 
 _sourcedirectory="$_projectname-$pkgver"
@@ -36,5 +36,5 @@ package() {
 	opam-installer --prefix="$pkgdir/usr" --libdir='lib/ocaml' --docdir='share/doc'
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/ISC"
 }

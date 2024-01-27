@@ -12,7 +12,7 @@ pkgbase = ocaml-xmlm
 	makedepends = opam
 	depends = ocaml>=4.05.0
 	options = !strip
-	source = ocaml-xmlm-1.4.0-3.tar.gz::https://github.com/dbuenzli/xmlm/archive/v1.4.0.tar.gz
+	source = ocaml-xmlm-1.4.0.tar.gz::https://github.com/dbuenzli/xmlm/archive/v1.4.0.tar.gz
 	sha512sums = b19be8b8895e623cf4f9a5f083402f889dfb946b11b76de0821b6eb4f9f9ccac48a5c5ef456ec096d9db32cbd71f9e20187e8a71f9e07fdd9130f9ed941252f7
 
 pkgname = ocaml-xmlm
