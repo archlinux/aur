@@ -1,6 +1,6 @@
 # Only exclude files from the root of the package repo, as some AUR helpers download sources into the directory of the repo,
 # which causes the gitignore file to apply to them too, which breaks some builds
-# Based on https://github.com/github/gitignore/blob/master/ArchLinuxPackages.gitignore
+# Based on https://github.com/github/gitignore/blob/main/ArchLinuxPackages.gitignore
 /*.tar
 /*.tar.*
 /*.rpm
