@@ -2,7 +2,7 @@
 # Contributor : Marek Darocha <aur@mdarocha.pl>
 
 pkgname=elm-language-server
-pkgver=2.7.0
+pkgver=2.8.0
 pkgrel=1
 epoch=0
 pkgdesc="Language server for Elm Language, utilizing the Language Server Protocol"
@@ -14,7 +14,7 @@ optdepends=('elm-bin: required to work, if not installed with other means (like 
 makedepends=('npm' 'jq' 'git')
 source=("https://registry.npmjs.org/@elm-tooling/elm-language-server/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('70dea762b70ec109dc57015ff4b29d273777a4f194d8ce3053d1907c1da7eb65')
+sha256sums=('287eb31a035bceebf1f88dc4531124d7eaa7ff50bf14b8b624ceae4ef63d0f92')
 options=(!strip)
 
 package() {
