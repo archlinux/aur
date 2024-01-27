@@ -5,7 +5,7 @@ pkgrel='1'
 pkgdesc='A bash script that will help you maintain your AUR packages'
 arch=('any')
 url="https://gitlab.com/dpeukert/$pkgname"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('git' 'pacman-contrib' 'perl')
 optdepends=(
 	'curl: nvchecker functionality'
