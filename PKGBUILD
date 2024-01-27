@@ -1,7 +1,8 @@
-# Maintainer: Josef Miegl <josef@miegl.cz>
+# Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
+# Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=libasn1c-git
-pkgver=0.9.31.r3.g5e00d6f
+pkgver=0.9.36.r0.g7965ac7
 pkgrel=1
 pkgdesc="runtime library of Lev Walkin's asn1c split out as separate library"
 url="http://cgit.osmocom.org/libasn1c"
@@ -9,9 +10,9 @@ arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
 depends=('talloc')
 makedepends=('git')
-provides=("${pkgname%-git}")
+provides=('libasn1c.so=1-64')
 conflicts=("${pkgname%-git}")
-source=("git+https://git.osmocom.org/${pkgname%-git}")
+source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -26,7 +27,9 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc \
+              --localstatedir=/var
   make
 }
 
