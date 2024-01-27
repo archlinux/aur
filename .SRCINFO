@@ -1,0 +1,13 @@
+pkgbase = fcitx5-table-flypy
+	pkgdesc = 小鹤音形码表挂接
+	pkgver = 10.9.4.p3
+	pkgrel = 1
+	url = http://www.flypy.com
+	arch = any
+	license = custom
+	depends = fcitx5
+	depends = fcitx5-chinese-addons
+	source = https://github.com/cubercsl/rime-flypy/releases/download/v10.9.4.p3/fcitx5-table-flypy.zip
+	sha256sums = 8cd740ea7509c8506c9f5df6bba5ecfdb70d9c43ba21769c72c631f713947bef
+
+pkgname = fcitx5-table-flypy
