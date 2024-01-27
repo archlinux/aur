@@ -1,17 +1,18 @@
-# Maintainer: Josef Miegl <josef@miegl.cz>
+# Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
+# Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=libosmo-netif-git
-pkgver=0.4.0.r14.gfe3527d
+pkgver=1.4.0.r20.g96e26d5
 pkgrel=1
-pkgdesc="Osmocom network interface library"
+pkgdesc="Osmocom library for muxed audio"
 url="http://osmocom.org/projects/libosmo-netif"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
-depends=('libosmocore' 'libosmo-abis' 'lksctp-tools' 'talloc')
-makedepends=('git' 'ortp')
-provides=("${pkgname%-git}")
+depends=('lksctp-tools' 'libpcap' 'libosmocore' 'libosmo-abis')
+makedepends=('git')
+provides=("libosmonetif.so=${pkgver}")
 conflicts=("${pkgname%-git}")
-source=("git+https://git.osmocom.org/${pkgname%-git}")
+source=("git+https://gitea.osmocom.org/osmocom/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -26,7 +27,9 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc \
+              --localstatedir=/var
   make
 }
 

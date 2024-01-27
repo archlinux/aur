@@ -1,6 +1,6 @@
 pkgbase = libosmo-netif-git
-	pkgdesc = Osmocom network interface library
-	pkgver = 0.4.0.r14.gfe3527d
+	pkgdesc = Osmocom library for muxed audio
+	pkgver = 1.4.0.r20.g96e26d5
 	pkgrel = 1
 	url = http://osmocom.org/projects/libosmo-netif
 	arch = i686
@@ -9,15 +9,13 @@ pkgbase = libosmo-netif-git
 	arch = armv7h
 	license = GPL
 	makedepends = git
-	makedepends = ortp
+	depends = lksctp-tools
+	depends = libpcap
 	depends = libosmocore
 	depends = libosmo-abis
-	depends = lksctp-tools
-	depends = talloc
-	provides = libosmo-netif
+	provides = libosmonetif.so=1.4.0.r20.g96e26d5
 	conflicts = libosmo-netif
-	source = git+https://git.osmocom.org/libosmo-netif
+	source = git+https://gitea.osmocom.org/osmocom/libosmo-netif.git
 	sha256sums = SKIP
 
 pkgname = libosmo-netif-git
-
