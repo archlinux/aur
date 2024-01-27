@@ -1,15 +1,15 @@
 pkgbase = easytax-ag-2022
 	pkgdesc = Aargau tax declaration software.
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://www.ag.ch/de/dfr/steuern/natuerliche_personen/steuererklaerung__easytax/steuererklaerung_easytax1.jsp
 	arch = any
 	license = custom
 	depends = java-environment
-	source = https://msg-easytax.ch/ag/2022/EasyTax2022AG_unix_1_2.tar.gz
+	source = https://msg-easytax.ch/ag/2022/EasyTax2022AG_unix_1_3.tar.gz
 	source = https://upload.wikimedia.org/wikipedia/commons/d/d9/Wappen_Aargau.svg
 	source = easytax-ag-2022.desktop
-	sha256sums = 4fd2a2015c2ec5b573319f97790158e9d96f690f539fc155e06220fb35999651
+	sha256sums = 69a3886f12ee445d7e71f3c47b08cce8cf871981ff786453cf6331b34759b5d4
 	sha256sums = 253d315b20371cd9add777dc990f96545c60d5d07a3f34cd33720d5148e82486
 	sha256sums = f666973e4142a2be29f19e206027aa89e7e7816021dbcff5f4df022cf6e11bb4
 
