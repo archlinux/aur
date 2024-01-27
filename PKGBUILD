@@ -32,7 +32,7 @@ build() {
     "${srcdir}/${_pkg}-${pkgver}"
   "${_py}" \
     setup.py \
-     kbuild
+      build
 }
 
 package() {
