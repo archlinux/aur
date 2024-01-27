@@ -7,7 +7,7 @@ pkgrel='6'
 pkgdesc='Optimised functions to read and write int16/32/64 from strings, bytes and bigarrays'
 arch=('x86_64' 'aarch64')
 url="https://github.com/OCamlPro/$_projectname"
-license=('custom:LGPL2.1 with linking exception')
+license=('LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception')
 depends=('ocaml>=4.03.0')
 makedepends=('cppo' 'dune>=1.0.0')
 options=('!strip')
@@ -35,5 +35,5 @@ package() {
 	done
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	ln -sf "/usr/share/doc/$pkgname/COPYING.txt" "$pkgdir/usr/share/licenses/$pkgname/COPYING.txt"
+	ln -sf "/usr/share/doc/$pkgname/COPYING.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

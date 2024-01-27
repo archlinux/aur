@@ -5,7 +5,7 @@ pkgbase = ocaml-ocplib-endian
 	url = https://github.com/OCamlPro/ocplib-endian
 	arch = x86_64
 	arch = aarch64
-	license = custom:LGPL2.1 with linking exception
+	license = LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception
 	makedepends = cppo
 	makedepends = dune>=1.0.0
 	depends = ocaml>=4.03.0
