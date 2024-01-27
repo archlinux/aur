@@ -1,5 +1,5 @@
 pkgname=tag
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 pkgdesc="Search for local text files with a simple tagging system."

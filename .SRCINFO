@@ -1,13 +1,13 @@
 pkgbase = tag
 	pkgdesc = Search for local text files with a simple tagging system.
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/miampf/tag
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	provides = tag
-	source = tag-0.2.0.tar.gz::https://static.crates.io/crates/tag/tag-0.2.0.crate
+	source = tag-0.3.0.tar.gz::https://static.crates.io/crates/tag/tag-0.3.0.crate
 	sha1sums = SKIP
 
 pkgname = tag
