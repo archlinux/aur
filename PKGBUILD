@@ -1,8 +1,8 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 # Contributor: Josef Miegl <josef@miegl.cz>
 
-pkgname=osmo-msc-git
-pkgver=1.11.1.r28.g6f2749ce0
+pkgname=osmo-msc
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="Osmocom's Mobile Switching Center for 2G and 3G circuit-switched mobile networks"
 url="https://osmocom.org/projects/osmomsc"
@@ -20,24 +20,13 @@ depends=('libosmocore'
          'lksctp-tools'
          'sqlite'
          'talloc')
-makedepends=('git')
-conflicts=("${pkgname%-git}")
+conflicts=("${pkgname}-git")
 backup=('etc/osmocom/osmo-msc.cfg')
-source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}.git")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "${pkgname%-git}"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "${pkgname%-git}"
-  autoreconf -f -i
-}
+source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('bfd055c6ea9623745938a63300fb34269e8709cece09b1cdf2e7e6e3d2e75cb1')
 
 build() {
-  cd "${pkgname%-git}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
               --localstatedir=/var \
@@ -47,7 +36,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname%-git}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR=${pkgdir} install
 }
 
