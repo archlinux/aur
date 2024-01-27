@@ -1,13 +1,13 @@
 pkgbase = air-git
 	pkgdesc = A simple ChatGPT & Llama-cpp command line with ansi markdown display (written in Rust)
-	pkgver = 0.6.9
+	pkgver = 0.6.10
 	pkgrel = 1
 	url = https://github.com/alescdb/air.git
 	arch = x86_64
 	license = Apache
 	makedepends = rust
 	makedepends = clang
-	provides = air=0.6.9
+	provides = air=0.6.10
 	conflicts = aid
 	options = !strip
 	source = air-git::git+https://github.com/alescdb/air.git
