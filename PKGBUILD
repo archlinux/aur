@@ -3,13 +3,13 @@
 pkgname=python-stitching
 _name=${pkgname#python-}
 pkgver=0.5.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A Python package for fast and robust Image Stitching"
 arch=('any')
 url="https://github.com/OpenStitching/stitching"
 license=('Apache-2.0')
 depends=('python' 'python-opencv>=4.0.1' 'python-largestinteriorrectangle' 'python-numpy')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 # checkdepends=('python-requests')
 optdepends=()
 provides=('stitch')
