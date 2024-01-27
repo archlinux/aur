@@ -1,34 +1,23 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 # Contributor: Josef Miegl <josef@miegl.cz>
 
-pkgname=osmo-hlr-git
-pkgver=1.7.0.r8.gac1365fd
+pkgname=osmo-hlr
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Osmocom HLR for GSUP protocol towards OsmoSGSN and OsmoCSCN"
 url="https://osmocom.org/projects/osmo-hlr"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
 depends=('libosmocore' 'libosmo-abis' 'talloc' 'sqlite')
-makedepends=('git')
 provides=('libosmo-gsup-client.so=0-64'
           'libosmo-mslookup.so=1-64')
-conflicts=("${pkgname%-git}")
+conflicts=("${pkgname}-git")
 backup=('etc/osmocom/osmo-hlr.cfg')
-source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}.git")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "${pkgname%-git}"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "${pkgname%-git}"
-  autoreconf -f -i
-}
+source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('635577e76f1c8ee13aaa8317f14d76a7c6d3fa8d19d7493b8674d7fd7564f27b')
 
 build() {
-  cd "${pkgname%-git}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
               --localstatedir=/var
@@ -36,7 +25,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname%-git}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR=${pkgdir} install
 }
 
