@@ -1,0 +1,6 @@
+pkg
+src
+# downloaded source
+pylibssh*.tar.gz
+# generated package
+python-pylibssh*.pkg.tar.zst

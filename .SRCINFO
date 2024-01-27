@@ -1,0 +1,21 @@
+pkgbase = python-pylibssh
+	pkgdesc = Python bindings specific to Ansible use case for libssh
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/ansible/pylibssh
+	arch = x86_64
+	license = LGPL-2.1
+	makedepends = cython
+	makedepends = python-build
+	makedepends = python-expandvars
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-setuptools-scm-git-archive
+	makedepends = python-toml
+	makedepends = python-wheel
+	depends = libssh
+	source = pylibssh-1.1.0.tar.gz::https://github.com/ansible/pylibssh/archive/v1.1.0.tar.gz
+	sha512sums = 979f223bc61285ce10825aab9438c143724a912b77af3b0d3f159b5e6fb9d6d6c2f5853c42bac0fc73d36f7c476d157984713839465e57cc572bfdd48303e472
+
+pkgname = python-pylibssh
