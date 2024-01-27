@@ -5,12 +5,13 @@
 pkgname=muttprint
 pkgver=0.73_4
 _mainver=0.73
-pkgrel=6
+pkgrel=7
 arch=("i686" "x86_64")
 pkgdesc="An app to print email from CLI mail clients, mutt in particular"
 license=("GPL")
 arch=("i686" "x86_64")
-depends=('texlive-latexextra' 'perl-timedate' 'perl-file-which' 'perl-text-iconv' 'psutils' 'dialog')
+depends=('automake' 'texlive-latexextra' 'perl-timedate' 'perl-file-which' 
+         'perl-text-iconv' 'psutils' 'dialog')
 optdepends=('texlive-fontsextra:         Adds the CMBright font')
 makedepends=('imagemagick')
 url="http://muttprint.sf.net"

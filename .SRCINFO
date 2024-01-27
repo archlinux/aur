@@ -1,12 +1,13 @@
 pkgbase = muttprint
 	pkgdesc = An app to print email from CLI mail clients, mutt in particular
 	pkgver = 0.73_4
-	pkgrel = 6
+	pkgrel = 7
 	url = http://muttprint.sf.net
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = imagemagick
+	depends = automake
 	depends = texlive-latexextra
 	depends = perl-timedate
 	depends = perl-file-which
@@ -25,4 +26,3 @@ pkgbase = muttprint
 	md5sums = 11846b8ebfba2b784ae64fb32abb7cfd
 
 pkgname = muttprint
-
