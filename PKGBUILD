@@ -23,7 +23,7 @@
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.7.1
+pkgver=6.7.2
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -50,12 +50,12 @@ options=('!strip')
 _srcname=linux-$pkgver
 source+=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
-  config  # the main kernel config file
+  "config-$pkgver"::https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/main/config
 )
 sha256sums+=(
-  '1ecffa568e86a2202ba5533ad9034bc263a9aa14e189597a94f09b3854ad68c3'
+  'c34de41baa29c475c0834e88a3171e255ff86cd32d83c6bffc2b797e60bfa671'
   'SKIP'
-  '45a44ff0e957cd562d2ceb60c1c90fc19c19e808209cebb46bfacfccfb56ad96'
+  'SKIP'
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
@@ -75,27 +75,21 @@ if [[ ${_build_vfio::1} == "t" ]] ; then
 fi
 
 if [[ ${_build_arch_patch::1} == "t" ]] ; then
-  if [[ ${_build_lts::1} == "t" ]] ; then
-    _dl_url_arch='https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main'
-    source+=(
-      "$_dl_url_arch/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-      "$_dl_url_arch/0002-skip-simpledrm-if-nvidia-drm.modeset=1-is.patch"
-    )
-    sha256sums+=(
-      '21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889'
-      '2f23be91455e529d16aa2bbf5f2c7fe3d10812749828fc752240c21b2b845849'
-    )
-  else
-    _srctag=v${pkgver::3}-arch3
-    _dl_url_arch='https://github.com/archlinux/linux'
-    source+=(
-      $_dl_url_arch/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
-    )
-    sha256sums+=(
-      'SKIP'
-      'SKIP'
-    )
+  _srctag=v${pkgver}-arch1
+  _dl_url_arch='https://github.com/archlinux/linux'
+
+  # if no new patch, use previous one
+  if grep 404 <(curl -sI $_dl_url_arch/releases/download/$_srctag/linux-$_srctag.patch.zst | head -1) > /dev/null ; then
+    _srctag=v${pkgver::4}$(( ${pkgver##*.} -1 ))-arch1
   fi
+
+  source+=(
+    $_dl_url_arch/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
+  )
+  sha256sums+=(
+    'SKIP'
+    'SKIP'
+  )
 fi
 
 if [[ ${_build_clang::1} == "t" ]] ; then
@@ -155,6 +149,8 @@ _prepare_extra() {
 }
 
 prepare() {
+  cp "config-$pkgver" "config"
+
   cd $_srcname
 
   echo "Setting version..."
