@@ -6,7 +6,7 @@ pkgrel='1'
 pkgdesc='PBT testsuite and libraries for testing multicore OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-multicore/$_projectname"
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('ocaml>=4.12.0' 'ocaml-qcheck>=0.20.0')
 makedepends=('dune>=3.0.0')
 options=('!strip')
@@ -45,5 +45,5 @@ package() {
 	done
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/BSD-2-Clause"
 }
