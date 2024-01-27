@@ -7,7 +7,7 @@ pkgrel='1'
 pkgdesc='Simple iterator abstract datatype for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/c-cube/$_projectname"
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('ocaml>=4.08.0')
 makedepends=('dune>=2.0.0')
 checkdepends=('ocaml-mdx>=1.3.0' 'ocaml-ounit' 'ocaml-qcheck')
@@ -37,5 +37,5 @@ package() {
 	done
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/BSD-2-Clause"
 }

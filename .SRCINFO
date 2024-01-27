@@ -5,7 +5,7 @@ pkgbase = ocaml-iter
 	url = https://github.com/c-cube/iter
 	arch = x86_64
 	arch = aarch64
-	license = BSD
+	license = BSD-2-Clause
 	checkdepends = ocaml-mdx>=1.3.0
 	checkdepends = ocaml-ounit
 	checkdepends = ocaml-qcheck
