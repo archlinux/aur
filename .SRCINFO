@@ -1,0 +1,16 @@
+pkgbase = easytax-ag-2023
+	pkgdesc = Aargau tax declaration software.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.ag.ch/de/dfr/steuern/natuerliche_personen/steuererklaerung__easytax/steuererklaerung_easytax1.jsp
+	arch = any
+	license = custom
+	depends = java-environment
+	source = https://msg-easytax.ch/ag/2023/EasyTax2023AG_unix_1_0.tar.gz
+	source = https://upload.wikimedia.org/wikipedia/commons/d/d9/Wappen_Aargau.svg
+	source = easytax-ag-2023.desktop
+	sha256sums = 5540c7464bc716c76f62765e331bd9faedca258e0d9fbec8723619be2300ccdd
+	sha256sums = 253d315b20371cd9add777dc990f96545c60d5d07a3f34cd33720d5148e82486
+	sha256sums = f666973e4142a2be29f19e206027aa89e7e7816021dbcff5f4df022cf6e11bb4
+
+pkgname = easytax-ag-2023
