@@ -6,7 +6,7 @@ pkgrel='1'
 pkgdesc='Compiler from OCaml to Javascript'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"
-license=('custom:LGPL2.1 with linking exception')
+license=('LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception')
 depends=('ocaml>=4.08.0' 'ocaml-cmdliner>=1.1.0' 'ocaml-graphics' 'ocaml-lwt>=2.4.4' 'ocaml-lwt_log' 'ocaml-menhir' 'ocaml-ppxlib>=0.22.0' 'ocaml-react>=1.2.1' 'ocaml-reactivedata>=0.2' 'ocaml-sedlex>=2.3' 'ocaml-tyxml>=4.3' 'ocaml-yojson' 'ocaml-findlib>=1.5.1')
 makedepends=('dune>=3.7.0')
 options=('!strip')

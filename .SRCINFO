@@ -5,7 +5,7 @@ pkgbase = ocaml-js_of_ocaml
 	url = https://github.com/ocsigen/js_of_ocaml
 	arch = x86_64
 	arch = aarch64
-	license = custom:LGPL2.1 with linking exception
+	license = LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception
 	makedepends = dune>=3.7.0
 	depends = ocaml>=4.08.0
 	depends = ocaml-cmdliner>=1.1.0
