@@ -1,7 +1,7 @@
 # Maintainer: metamuffin <metamuffin@disroot.org>
 
 pkgname=keks-meet-server
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Server for keks-meet, a simple and secure conferencing application for the web."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -12,13 +12,12 @@ backup=('etc/keks-meet-server.toml')
 source=("https://codeberg.org/metamuffin/keks-meet/archive/v$pkgver.tar.gz"
         "keks-meet-server.service"
         "sysusers.conf")
-sha256sums=("bd7b31da4dbdab650422c6ed2db09cb9f4022e734d4372ecb822d8968d154086"
+sha256sums=("97e27120c7c76304f0fd7afea2f76fb451dd24ccac07461c15d413e885b3f80d"
             "SKIP"
             "SKIP")
 
 build() {
     cd "keks-meet"
-    rustup install nightly
     make client-build
     cargo +nightly build --release --bin $pkgname
     strip -s target/release/$pkgname
