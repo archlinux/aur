@@ -17,7 +17,7 @@ pkgbase = ocaml-base_quickcheck
 	depends = ocaml-splittable_random>=0.16.0
 	depends = ocaml-ppxlib>=0.28.0
 	options = !strip
-	source = ocaml-base_quickcheck-0.16.0-1.tar.gz::https://github.com/janestreet/base_quickcheck/archive/v0.16.0.tar.gz
+	source = ocaml-base_quickcheck-0.16.0.tar.gz::https://github.com/janestreet/base_quickcheck/archive/v0.16.0.tar.gz
 	sha512sums = c859f2982140ec72b3377e3f167117df43f8cb14b62d3949e92ecf479cb27b4c31bb2dfa9111da24ce42f969452582ba076aef868d304b97c08f2918759cc291
 
 pkgname = ocaml-base_quickcheck
