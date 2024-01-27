@@ -3,14 +3,14 @@
 
 pkgname=libosmo-netif-git
 pkgver=1.4.0.r20.g96e26d5
-pkgrel=1
+pkgrel=2
 pkgdesc="Osmocom library for muxed audio"
 url="http://osmocom.org/projects/libosmo-netif"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
 depends=('lksctp-tools' 'libpcap' 'libosmocore' 'libosmo-abis')
 makedepends=('git')
-provides=("libosmonetif.so=${pkgver}")
+provides=("libosmonetif.so=11-64")
 conflicts=("${pkgname%-git}")
 source=("git+https://gitea.osmocom.org/osmocom/${pkgname%-git}.git")
 sha256sums=('SKIP')
