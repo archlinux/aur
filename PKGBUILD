@@ -6,7 +6,7 @@ pkgrel='1'
 pkgdesc='A lightweight, modular standard library extension, string library, and interfaces to various libraries for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/c-cube/$pkgname"
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('ocaml>=4.08.0' 'dune>=2.9.0' 'ocaml-either')
 checkdepends=('ocaml-csexp' 'ocaml-gen' 'ocaml-iter' 'ocaml-mdx' 'ocaml-qcheck>=0.18.0' 'ocaml-uutf' 'ocaml-yojson')
 options=('!strip')
@@ -35,5 +35,5 @@ package() {
 	done
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/BSD-2-Clause"
 }
