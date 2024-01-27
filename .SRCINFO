@@ -5,14 +5,14 @@ pkgbase = ocaml-fileutils
 	url = https://github.com/gildor478/ocaml-fileutils
 	arch = x86_64
 	arch = aarch64
-	license = custom:LGPL2.1 with linking exception
+	license = LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception
 	checkdepends = ocaml-ounit>=2.0.0
 	makedepends = dune>=1.11.0
 	depends = ocaml>=4.03.0
 	depends = ocaml-seq
 	depends = ocaml-stdlib-shims
 	options = !strip
-	source = ocaml-fileutils-0.6.4-2.tar.gz::https://github.com/gildor478/ocaml-fileutils/archive/v0.6.4.tar.gz
+	source = ocaml-fileutils-0.6.4.tar.gz::https://github.com/gildor478/ocaml-fileutils/archive/v0.6.4.tar.gz
 	sha512sums = fed41c0c98bd9a2dde18335f0c7fd721b609f936001424eff200bca058146af55134f1d245b143bd211ece37bc036b3308528b193a6b578735b27891181f07e1
 
 pkgname = ocaml-fileutils
