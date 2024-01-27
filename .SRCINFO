@@ -11,7 +11,7 @@ pkgbase = ocaml-variantslib
 	depends = ocaml>=4.14.0
 	depends = ocaml-base>=0.16.0
 	options = !strip
-	source = ocaml-variantslib-1:0.16.0-1.tar.gz::https://github.com/janestreet/variantslib/archive/v0.16.0.tar.gz
+	source = ocaml-variantslib-0.16.0.tar.gz::https://github.com/janestreet/variantslib/archive/v0.16.0.tar.gz
 	sha512sums = c20cedbf6599b66028d77a5ce0d54a8fa1d2b8302344a434f9714ebd4714b159df143966bc480852e8ac54b44bd59f66646ba614419ea7cffa6710228e7a6fd6
 
 pkgname = ocaml-variantslib
