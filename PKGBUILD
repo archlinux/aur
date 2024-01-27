@@ -2,7 +2,7 @@
 
 _pkgname=dendrite
 pkgname=$_pkgname-libvips
-pkgver=0.13.5
+pkgver=0.13.6
 pkgrel=1
 pkgdesc="A second-generation Matrix homeserver written in Go"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ source=("$_pkgname-$pkgver.tar.gz::https://github.com/matrix-org/$_pkgname/archi
         "$_pkgname.sysusers"
         "$_pkgname.tmpfiles"
         "$_pkgname.service")
-sha256sums=('e2098d635a83d8ae7834b21177fc056fa3186feaed564e55a590f64eb3c656f0'
+sha256sums=('c3b822181c39b89dcc81de6f404cc8b83b10d8a984a646d4b75163641a40e176'
             'aba328d7a7244e82f866f9d0ead0a53e79e1590b9c449ad6d18ff2659cb5e035'
             '620b634419e94cb09423d39ecd7edf859bf458e9d72c35be30610b37acc1e8bf'
             '7d33160209ed11f0ed6de84b0891becf175887a679eb5a3e01b672884fdf0c1d')
