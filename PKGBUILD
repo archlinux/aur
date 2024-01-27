@@ -19,4 +19,22 @@ package() {
   mkdir -p "$pkgdir/usr/share/icons/hicolor"
 
   XDG_DATA_DIRS="$pkgdir/usr/share" "$srcdir/install.sh" --system
+
+  # It's nice that install.sh updates the mime database for us, but this should be updated in post_install
+  rm "$pkgdir/usr/share/applications/mimeinfo.cache"
+}
+
+# Thanks to https://bbs.archlinux.org/viewtopic.php?pid=1544072#p1544072
+post_install() {
+  xdg-icon-resource forceupdate --theme hicolor &>/dev/null
+  update-mime-database usr/share/mime &>/dev/null
+  update-desktop-database -q
+}
+
+post_upgrade() {
+  post_install "$1"
+}
+
+post_remove() {
+  post_install "$1"
 }
