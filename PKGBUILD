@@ -9,7 +9,7 @@ pkgrel='2'
 pkgdesc='Terminal manipulation library for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-community/$_projectname"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('ocaml>=4.08.0' 'ocaml-logs_lwt' 'ocaml-lwt>=4.2.0' 'ocaml-mew_vi>=0.5.0' 'ocaml-react' 'ocaml-zed>=3.2.0')
 makedepends=('dune>=3.0.0')
 options=('!strip')
@@ -33,5 +33,5 @@ package() {
 	done
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/BSD-3-Clause"
 }

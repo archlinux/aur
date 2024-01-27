@@ -6,7 +6,7 @@ pkgbase = ocaml-lambda-term
 	install = ocaml-lambda-term.install
 	arch = x86_64
 	arch = aarch64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = dune>=3.0.0
 	depends = ocaml>=4.08.0
 	depends = ocaml-logs_lwt
