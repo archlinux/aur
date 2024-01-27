@@ -10,7 +10,6 @@ pkgbase = bluez-tools-extra
 	provides = bluez-hciconfig
 	provides = bluez-hcitool
 	provides = bluez-rfcomm
-	conflicts = bluez-hciconfig
 	conflicts = bluez-hcitool
 	conflicts = bluez-rfcomm
 	conflicts = bluez-utils-compat

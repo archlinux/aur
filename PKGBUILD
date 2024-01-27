@@ -18,7 +18,7 @@ provides=(
   'bluez-rfcomm'
 )
 conflicts=(
-  'bluez-hciconfig'
+  #'bluez-hciconfig'
   'bluez-hcitool'
   'bluez-rfcomm'
   'bluez-utils-compat'
