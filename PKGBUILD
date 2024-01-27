@@ -5,13 +5,22 @@
 
 pkgname=libosmocore
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Osmocom core libraries"
 arch=('armv7h' 'i686' 'x86_64')
 url="https://osmocom.org/projects/libosmocore/"
 license=('GPL')
 groups=()
-provides=()
+provides=('libosmocodec.so=4-64'
+          'libosmocoding.so=0-64'
+          'libosmocore.so=21-64'
+          'libosmoctrl.so=0-64'
+          'libosmogb.so=14-64'
+          'libosmogsm.so=20-64'
+          'libosmoisdn.so=0-64'
+          'libosmosim.so=2-64'
+          'libosmousb.so=0-64'
+          'libosmovty.so=13-64')
 depends=('pcsclite' 'talloc' 'libusb' 'lksctp-tools' 'libmnl' 'gnutls' 'systemd-libs' 'liburing')
 makedepends=('python')
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")

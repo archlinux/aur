@@ -1,7 +1,7 @@
 pkgbase = libosmocore
 	pkgdesc = Osmocom core libraries
 	pkgver = 1.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osmocom.org/projects/libosmocore/
 	arch = armv7h
 	arch = i686
@@ -16,6 +16,16 @@ pkgbase = libosmocore
 	depends = gnutls
 	depends = systemd-libs
 	depends = liburing
+	provides = libosmocodec.so=4-64
+	provides = libosmocoding.so=0-64
+	provides = libosmocore.so=21-64
+	provides = libosmoctrl.so=0-64
+	provides = libosmogb.so=14-64
+	provides = libosmogsm.so=20-64
+	provides = libosmoisdn.so=0-64
+	provides = libosmosim.so=2-64
+	provides = libosmousb.so=0-64
+	provides = libosmovty.so=13-64
 	source = https://downloads.osmocom.org/releases/libosmocore/libosmocore-1.9.2.tar.bz2
 	sha256sums = 2c469e2984bbf730c7efd7c557f833de0fe189dc152004a9a6405b8db917019c
 
