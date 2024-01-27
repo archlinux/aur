@@ -1,0 +1,20 @@
+pkgbase = bluez-tools-extra
+	pkgdesc = deprecated tools from bluez (hciconfig, hcitool, rfcomm)
+	pkgver = 5.72
+	pkgrel = 1
+	url = http://www.bluez.org/
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = bluez-libs
+	provides = bluez-hciconfig
+	provides = bluez-hcitool
+	provides = bluez-rfcomm
+	conflicts = bluez-hciconfig
+	conflicts = bluez-hcitool
+	conflicts = bluez-rfcomm
+	conflicts = bluez-utils-compat
+	source = https://www.kernel.org/pub/linux/bluetooth/bluez-5.72.tar.xz
+	sha256sums = 499d7fa345a996c1bb650f5c6749e1d929111fa6ece0be0e98687fee6124536e
+
+pkgname = bluez-tools-extra
