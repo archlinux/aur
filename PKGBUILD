@@ -7,7 +7,7 @@ pkgrel='1'
 pkgdesc='OCaml graphics library'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml/$_projectname"
-license=('custom:LGPL2.1 with linking exception')
+license=('LGPL-2.1-only WITH OCaml-LGPL-linking-exception')
 depends=('ocaml>=4.09.0' 'ocaml-compiler-libs' 'dune>=2.1.0' 'libx11' 'pkgconf')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")

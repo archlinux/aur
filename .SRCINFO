@@ -5,7 +5,7 @@ pkgbase = ocaml-graphics
 	url = https://github.com/ocaml/graphics
 	arch = x86_64
 	arch = aarch64
-	license = custom:LGPL2.1 with linking exception
+	license = LGPL-2.1-only WITH OCaml-LGPL-linking-exception
 	depends = ocaml>=4.09.0
 	depends = ocaml-compiler-libs
 	depends = dune>=2.1.0
