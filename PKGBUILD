@@ -1,17 +1,17 @@
 # Maintainer: Asuka Minato <i at asukaminato dot eu dot org>
 pkgname=nodejs-inshellisense
 _pkgname=@microsoft/inshellisense
-pkgver=0.0.1_rc.6
-pkgrel=2
+pkgver=0.0.1_rc.7
+pkgrel=1
 pkgdesc="IDE style command line auto complete"
 arch=(any)
 url="https://github.com/microsoft/inshellisense"
 license=('MIT')
-depends=(nodejs glibc gcc-libs)
+depends=(nodejs glibc gcc-libs bash)
 makedepends=(npm)
 source=(https://registry.npmjs.org/$_pkgname/-/inshellisense-${pkgver//_/-}.tgz)
 noextract=(inshellisense-${pkgver//_/-}.tgz)
-sha256sums=('a13779cbf5447f72eac8247e5ea99d7e6930dd7f080a8f593ddbbac509ea58a2')
+sha256sums=('c3a2b6adb755a19b2119fff8c4179b899ddbae60b00262c0bacea5b423061987')
 
 package() {
 	npm install --omit=dev -g --prefix "${pkgdir}/usr" "${srcdir}/inshellisense-${pkgver//_/-}.tgz"
@@ -19,7 +19,7 @@ package() {
 	rm -r $pkgdir/usr/lib/node_modules/@microsoft/inshellisense/node_modules/typescript
 	rm -r $pkgdir/usr/lib/node_modules/@microsoft/inshellisense/node_modules/@types
 	rm -r $pkgdir/usr/lib/node_modules/@microsoft/inshellisense/node_modules/.bin
-	find $pkgdir \( -name "*.py" -or -name "*.sh" -or -name "*.ts" \) -delete
+	find $pkgdir \( -name "*.py" -or -name "*.ts" \) -delete
 	# fix https://github.com/xtermjs/xterm.js/issues/2749
 	find $pkgdir -name "xterm-headless.js" -print -exec sed -i 's/in window?/in this?/' {} \;
 	find $pkgdir -type d -empty -delete
