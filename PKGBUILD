@@ -11,7 +11,7 @@ pkgname=(python-ipalib
          freeipa-common
          freeipa-client-common
          freeipa-client)
-pkgver=4.11.0
+pkgver=4.11.1
 pkgrel=1
 pkgdesc='The Identity, Policy and Audit system'
 arch=('i686' 'x86_64')
@@ -40,7 +40,7 @@ source=("https://releases.pagure.org/freeipa/freeipa-${pkgver}.tar.gz"
         freeipa-client-update-sshd_config.hook
         nis-domainname.service
         ipaplatform.tar.gz)
-sha256sums=('97f7b60eafda928e35416119c89083f8f038e0fcd39f30bc07b8d8026fd3b7a4'
+sha256sums=('51bab6c40a81be3530af30f647ab41d22d56b1d0346348e724b822e29e2bf03e'
             '09894b521258983da988b6d78ed8d5370669ffb7d6a6e3cfbf0c0b8eda67f11b'
             '1e73f394d276357dcd578df7a349b1f381c9edc7b1c053ecf65f7a9255c0490d'
             '74a394af693e3677146eff18a770a4271fba961b2af93b15b8ae26157af1760a'
@@ -180,7 +180,7 @@ package_python-ipaclient() {
              "python-ipalib=$pkgver-$pkgrel"
              'python-dnspython>=1.15'
              'python-jinja')
-    optdepends=('oddjob: mkhomedir support')
+    optdepends=('oddjob-selinux: mkhomedir support')
 
     cd freeipa-${pkgver}
 
@@ -254,7 +254,7 @@ package_freeipa-client() {
              'certmonger>=0.78'
              'nss'
              'bind-tools'
-             'oddjob'
+             'oddjob-selinux'
              'python-gssapi>=1.2.0'
              'autofs'
              'nfsidmap'
