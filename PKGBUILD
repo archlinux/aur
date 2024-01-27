@@ -55,12 +55,13 @@ build() {
              -DOPENMC_USE_MPI=ON \
              -DHDF5_PREFER_PARALLEL=ON \
 	     -DCMAKE_INSTALL_PREFIX=/opt/openmc	 
-    _ccores=$(nproc)
-    if [ -z "${_ccores}" ]; then
-       make
-    else
-       make -j ${_ccores}
-    fi
+	_ccores=$(nproc)
+	# check if _ccores is a positive integer, if not, serial build
+	if [[ "${_ccores}" =~ ^[1-9][0-9]*$ ]]; then
+		make -j ${_ccores}
+	else
+		make
+	fi
 
     # build python layer
     python -m build --wheel --no-isolation ../
