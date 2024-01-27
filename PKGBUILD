@@ -2,7 +2,7 @@
 
 _name=pyfamsa
 pkgname=python-${_name}
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Cython bindings and Python interface to FAMSA, an algorithm for ultra-scale multiple sequence alignments"
 url="https://github.com/althonos/pyfamsa"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'cython' 'python-build' 'python-installer' 'pyt
 depends=('python')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=(1122a8b06bbbe1045a185d7671e87be0030e3db8e2dd0cb885ff21744c9d24a6)
+sha256sums=(c926d6fe00029d712dd277a1544e632c2b20546da322e13bd92780ea3f756dae)
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
