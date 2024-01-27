@@ -3,7 +3,7 @@
 # rename for same name package in [community]
 pkgname=git-grc
 _pkgname=gcr
-pkgver=1.2.1
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Semantic git commits tool. use rust to rewrite the main features of git-cz."
 #epoch=0
@@ -19,10 +19,11 @@ optdepends=()
 conflicts=(grc)
 install=$pkgname.install
 source=($_pkgname-$pkgver.tar.gz::https://github.com/sdttttt/$_pkgname/archive/v$pkgver.tar.gz)
-b2sums=('8855456eb2126337c660692f976f3e30d247749dfc8af6d1bea7e3be52de28d8d97a7b3d9a03cb89bf9501ace5676d653888b53cb8b82686e532371ec2d4b526')
+b2sums=('d9a88c0fca943e13f97df7e898c69bceafd62879ee8a10406bc7e9ec79a8793cac670c8a43625d77d8614c113b1f8431543632d2fecaf4542b961d1dd837bf14')
 
 prepare() {
-	return 0
+	cd "$_pkgname-$pkgver"
+  cargo update
 }
 
 build() {
