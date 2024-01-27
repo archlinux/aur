@@ -4,10 +4,10 @@ pkgbase = python-imgsize
 	pkgrel = 7
 	url = https://github.com/ojii/imgsize
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = python-setuptools
 	depends = python
-	source = python-imgsize-2.1-7.tar.gz::https://github.com/ojii/imgsize/archive/2.1.tar.gz
+	source = python-imgsize-2.1.tar.gz::https://github.com/ojii/imgsize/archive/2.1.tar.gz
 	sha512sums = d5f252aeab363a6fcc837550e742c29707b141c55d615161a540b22e805a3a4f5babce490a43208e7f2a03f79d17fb7c357039790ca3922d63e44532ca1a37f3
 
 pkgname = python-imgsize
