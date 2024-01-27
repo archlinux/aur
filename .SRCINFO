@@ -1,7 +1,7 @@
 pkgbase = nwg-readme-browser
 	pkgdesc = nwg-shell WebKitGTK-based README file browser
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nwg-piotr/nwg-readme-browser
 	arch = any
 	license = MIT
