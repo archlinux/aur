@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=fenr
-_pkgver=1.0.4
+_pkgver=1.0.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Fast functional enrichment for interactive applications"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(MIT)
+license=('MIT')
 depends=(
   r-assertthat
   r-biocfilecache
@@ -33,22 +33,13 @@ checkdepends=(
 optdepends=(
   r-biocstyle
   r-knitr
-  r-org.hs.eg.db
   r-rmarkdown
   r-testthat
   r-topgo
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
-        "skip-tests.patch")
-md5sums=('e138238616ad0ec5d87e7b1eaa5515c9'
-         '3c859e68d330dcc0861feaadaee116af')
-b2sums=('d038c68cd4036e73876e8aaef38ea9d1851b699364d362e7a99edc958c5f2dfeaf9c671fcc3ce7e2b86b8ed228e21a8153da52801f06802c99afcdb5c76dfd9d'
-        '37cb831764b635251c92a9572efa9da2c69c9cce5de5e7fd56f51a85235321c8907cb70a3e055d05f0d0a887239ada190bb9468ba59bc7dbc90b1542ed7e0d17')
-
-prepare() {
-  # skip failing test
-  patch -Np1 -i skip-tests.patch
-}
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('7452c5f9c400c3a3a3af9a0b26e7585e')
+b2sums=('3826e7f3ac0ac8e4164880310f901e983937c7cd3b16d4796f08b7856f67e30985c1067a5744c7b1ca64b04dd42cced90ff624ae1dcc43e5fba97db647cd7bf9')
 
 build() {
   mkdir build
