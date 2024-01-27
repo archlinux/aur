@@ -1,0 +1,24 @@
+pkgbase = python-setuptools-rust-git
+	pkgdesc = Compile and distribute Python extensions written in rust as easily as if they were written in C.
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://github.com/PyO3/setuptools-rust
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-benchmark
+	checkdepends = python-beautifulsoup4
+	checkdepends = python-lxml
+	checkdepends = python-cffi
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	depends = rust
+	depends = python-setuptools
+	depends = python-semantic-version
+	source = git+https://github.com/PyO3/setuptools-rust.git
+	sha512sums = SKIP
+
+pkgname = python-setuptools-rust-git
