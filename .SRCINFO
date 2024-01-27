@@ -1,7 +1,7 @@
 pkgbase = nwg-shell
 	pkgdesc = nwg-shell meta-package
-	pkgver = 0.5.28
-	pkgrel = 2
+	pkgver = 0.5.29
+	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-shell
 	arch = any
 	license = MIT
@@ -43,6 +43,7 @@ pkgbase = nwg-shell
 	depends = nwg-shell-wallpapers
 	depends = nwg-displays
 	depends = nwg-clipman
+	depends = nwg-readme-browser
 	depends = python-dasbus
 	depends = swaync
 	depends = gtklock
@@ -53,7 +54,7 @@ pkgbase = nwg-shell
 	optdepends = mousepad: suggested text editor
 	optdepends = thunar: suggested file manager
 	optdepends = nano: in case you hate vi
-	source = nwg-shell-0.5.28.tar.gz::https://github.com/nwg-piotr/nwg-shell/releases/download/v0.5.28/nwg-shell-v0.5.28.tar.gz
-	md5sums = e4011c21c8a87c5fe9930b1b7b3b7faa
+	source = nwg-shell-0.5.29.tar.gz::https://github.com/nwg-piotr/nwg-shell/releases/download/v0.5.29/nwg-shell-v0.5.29.tar.gz
+	md5sums = a1a51d794789dfd313a7a44ab0e38be3
 
 pkgname = nwg-shell
