@@ -5,7 +5,7 @@
 pkgbase=ntsync
 pkgname=(ntsync-dkms ntsync-header ntsync-common)
 pkgver=6.8
-pkgrel=6
+pkgrel=7
 pkgdesc="NT synchronization primitive driver"
 arch=(x86_64)
 url='https://repo.or.cz/linux/zf.git/shortlog/refs/heads/ntsync4'
@@ -35,7 +35,7 @@ package_ntsync-dkms() {
         'ntsync-header: Allow wine to be compiled with ntsync support'
     )
     provides=(NTSYNC-MODULE)
-    conflicts=(ntsync)
+    conflicts=(ntsync WINESYNC-MODULE)
 
     install -Dm644 "$srcdir/Makefile" "$pkgdir/usr/src/$pkgbase-$pkgver/Makefile"
     install -Dm644 "$srcdir/ntsync.h-$_commit" "$pkgdir/usr/src/$pkgbase-$pkgver/include/uapi/linux/ntsync.h"
