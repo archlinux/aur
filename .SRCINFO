@@ -1,7 +1,7 @@
 pkgbase = ucx
 	pkgdesc = UltraCompare is a powerful compare tool for files and folders.
 	pkgver = 21.00.0.18
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.ultraedit.com/products/ultracompare/
 	install = ucx.install
 	arch = x86_64

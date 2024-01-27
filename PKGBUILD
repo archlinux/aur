@@ -1,7 +1,7 @@
 # Maintainer: Tobias Bauer <archlinux@tobias-bauer.de>
 pkgname=ucx
 pkgver=21.00.0.18
-pkgrel=2
+pkgrel=3
 pkgdesc="UltraCompare is a powerful compare tool for files and folders."
 arch=(x86_64)
 url="https://www.ultraedit.com/products/ultracompare/"
