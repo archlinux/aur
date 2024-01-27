@@ -1,0 +1,21 @@
+pkgbase = autoconf2.70
+	pkgdesc = An extensible package of M4 macros that produce shell scripts to automatically configure software source code packages
+	pkgver = 2.70.r0.g97fbc5c1
+	pkgrel = 1
+	url = https://www.gnu.org/software/autoconf/autoconf.html
+	arch = any
+	license = GPL2
+	license = custom
+	makedepends = git
+	makedepends = help2man
+	depends = sh
+	depends = perl
+	depends = awk
+	depends = m4
+	depends = texinfo
+	provides = autoconf=2.70.r0.g97fbc5c1
+	conflicts = autoconf-old
+	source = git+https://git.savannah.gnu.org/git/autoconf.git#tag=v2.70
+	sha256sums = SKIP
+
+pkgname = autoconf2.70
