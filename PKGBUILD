@@ -37,11 +37,12 @@ build() {
 	cmake .. -DMOAB_DIR=/opt/MOAB \
 		 -DCMAKE_INSTALL_PREFIX=/opt/double-down
 	_ccores=$(nproc)
-        if [ -z "${_ccores}" ]; then
-           make
-        else
-           make -j ${_ccores}
-        fi
+	# check if _ccores is a positive integer, if not, serial build
+	if [[ "${_ccores}" =~ ^[1-9][0-9]*$ ]]; then
+		make -j ${_ccores}
+	else
+		make
+	fi
 }
 
 package() {
