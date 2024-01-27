@@ -3,7 +3,7 @@ _pkgname=jmc-adoptium
 pkgname="${_pkgname}"
 pkgver=9.0.0_SNAPSHOT
 pkg_ver=9.0.0-SNAPSHOT
-pkgrel=2
+pkgrel=3
 pkgdesc='Java Mission Control from Adoptium'
 arch=('x86_64')
 url='https://github.com/adoptium/jmc-build'
@@ -12,7 +12,7 @@ provides=("$pkgname")
 options=(!strip)
 noextract=()
 source=("https://github.com/adoptium/jmc-build/releases/download/${pkg_ver}/org.openjdk.jmc-${pkg_ver}-linux.gtk.x86_64.tar.gz")
-sha512sums=('ad18e3acdac2e107652522d3813d5d09f4637dcb5b07071d8ae468d01005cfc08c77728f2ce17f2ec181614617e47369e48be752a3a817bb0d228a73ccea4746')
+sha512sums=('20802fb00292e85e7383b85c9df35410efbcfcc399c0a44bb7e01eeabeeaceffb39e5d20a9c55161aadffd44e12167a8078c086e75b234db5f8a0c5316b9677d')
 
 prepare() {
     tar -zxf "org.openjdk.jmc-${pkg_ver}-linux.gtk.x86_64.tar.gz"
