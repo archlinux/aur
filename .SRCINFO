@@ -5,9 +5,11 @@ pkgbase = byteblitz
     url = https://github.com/noahra/byteblitz
     arch = x86_64
     license = GPL3
+    makedepends = cargo
     makedepends = git
-    source = https://github.com/noahra/byteblitz/releases/download/v1.0.0/byteblitz-x86_64-unknown-linux-gnu.tar.gz
-    sha256sums = 824d39db6ade9f25a1f1d044b2bc85029369a1df5cf3084e3f31672577b7c1cf
+    source = https://github.com/noahra/byteblitz/archive/v1.0.0.tar.gz
+    sha256sums = SKIP
+    depends = 
 
 pkgname = byteblitz
 
