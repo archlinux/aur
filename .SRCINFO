@@ -11,7 +11,7 @@ pkgbase = ocaml-ppx_cold
 	depends = ocaml-base>=0.16.0
 	depends = ocaml-ppxlib>=0.28.0
 	options = !strip
-	source = ocaml-ppx_cold-0.16.0-1.tar.gz::https://github.com/janestreet/ppx_cold/archive/v0.16.0.tar.gz
+	source = ocaml-ppx_cold-0.16.0.tar.gz::https://github.com/janestreet/ppx_cold/archive/v0.16.0.tar.gz
 	sha512sums = 816358747bf4e4d92b6d5fa7bc31691897f6fb88336000a5e40b86250911b2efa203f6465d77b24f0147312bfd779de49822c5ea7a2a87df49d754b8c6e30821
 
 pkgname = ocaml-ppx_cold
