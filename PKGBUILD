@@ -2,7 +2,7 @@
 
 _pyname=xgboost
 pkgname=python-$_pyname
-pkgver=2.0.0
+pkgver=2.0.3
 _dmlc_ver=0.5
 pkgrel=1
 pkgdesc="Gradient Boosting Library for Python"
@@ -19,7 +19,7 @@ conflicts=(python-$_pyname-git)
 source=($_pyname-$pkgver.tar.gz::https://github.com/dmlc/xgboost/archive/refs/tags/v$pkgver.tar.gz
         dmlc-core-$_dmlc_ver.tar.gz::https://github.com/dmlc/dmlc-core/archive/refs/tags/v$_dmlc_ver.tar.gz
         rabit_mpi.patch)
-sha256sums=('74fb0eb4b615d0fc63e87e1b066fbd6df0d5cce7c68db2e5259145c63b4ef34b'
+sha256sums=('94e5deb27133459ec4172f3fed83971383366ad2a7d646b6f0b51f63484c5138'
             'cd97475ae1ecf561a1cb1129552f9889d52b11b3beb4c56e5345d007d5020ece'
             '15ad5794d9f11fe43200a3663469bcaca7fd0a87c0d5c8ea41a665bf881c2b15')
 
