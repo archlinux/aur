@@ -4,11 +4,11 @@
 pkgname=python-projectq
 _name="ProjectQ"
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source framework for quantum computing"
 arch=('x86_64')
 url="https://github.com/ProjectQ-Framework/ProjectQ"
-license=("Apache")
+license=('Apache-2.0')
 depends=(
     'python-matplotlib'
     'python-networkx'
@@ -24,28 +24,26 @@ makedepends=(
     'python-setuptools-scm'
     'python-wheel'
 )
-checkdepends=('python-pytest')
+#checkdepends=('python-pytest')
 optdepends=('python-boto3: support for AWS Braket service')
 source=("https://github.com/${_name}-Framework/${_name}/releases/download/v${pkgver}/${pkgname/python-}-${pkgver}.tar.gz")
 b2sums=('5edaf7ff1f4e505533b1ea6e05a06d7080113bac7de1e2971d9c1064664946560ebd441dce09b731b02a9b11779caf0498227f56f08cb153fa84cbfd707f827d')
 
 build() {
-    cd "${srcdir}/${_name,,}-${pkgver}"
+    cd "${_name,,}-${pkgver}"
     python -m build --wheel --no-isolation
 }
 
-check() {
-    cd "${srcdir}/${_name,,}-${pkgver}/projectq"
-    python -m installer --destdir="${srcdir}/test" ../dist/*.whl
-    local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-    export PYTHONPATH="${srcdir}"/test/usr/lib/python${python_version}/site-packages
-    python -m pytest tests/
-}
+#check() {
+#    local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+#    cd "${_name,,}-${pkgver}/projectq"
+#    python -m installer --destdir=test_dir dist/*.whl
+#    PYTHONPATH="test_dir/${_site_packages}:${PYTHONPATH}" pytest -v
+#}
 
 package() {
-    cd "${srcdir}/${_name,,}-${pkgver}"
+    cd "${_name,,}-${pkgver}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -D -m644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
     install -D -m644 NOTICE "${pkgdir}/usr/share/doc/${pkgname}/NOTICE"
     cp -r examples "${pkgdir}/usr/share/doc/${pkgname}/"

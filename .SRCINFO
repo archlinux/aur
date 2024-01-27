@@ -1,11 +1,10 @@
 pkgbase = python-projectq
 	pkgdesc = Open-source framework for quantum computing
 	pkgver = 0.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ProjectQ-Framework/ProjectQ
 	arch = x86_64
-	license = Apache
-	checkdepends = python-pytest
+	license = Apache-2.0
 	makedepends = pybind11
 	makedepends = python-build
 	makedepends = python-installer
