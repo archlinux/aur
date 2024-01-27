@@ -1,6 +1,6 @@
 # Maintainer: Matt Pharoah <mtpharoah@gmail.com>
 pkgname=parallel-launcher
-pkgver=6.22.6
+pkgver=7.0.0
 pkgrel=0
 epoch=
 pkgdesc='Modern N64 Emulator'
@@ -15,12 +15,13 @@ depends=(
 	'qt5-svg'
 	'findutils'
 	'xdg-utils'
-	'flatpak'
+	'sdl2'
 	'polkit'
 	'sqlite'
 	'libgcrypt'
 	'dosfstools'
 	'coreutils'
+	'p7zip'
 )
 makedepends=(
 	'gcc'
@@ -40,9 +41,9 @@ backup=()
 options=()
 install='parallel-launcher.install'
 changelog=
-source=('https://gitlab.com/parallel-launcher/parallel-launcher/uploads/0ed3cda4d62d6fd2151146ad97e43c68/parallel-launcher-6.22.6.tar.gz')
+source=('https://gitlab.com/parallel-launcher/parallel-launcher/uploads/42068f12941fc945b3a4c53869f2d5d8/parallel-launcher-7.0.0.tar.gz')
 noextract=()
-sha256sums=('6e5592834a0924949485c79e0df7b77f72d2f755a62e998906ced6dfd0bb07f2')
+sha256sums=('f155f8d8ad6196afe0e348f952ed2750db23fe4a4edfb06dd9cd385779088643')
 validpgpkeys=()
 
 build() {
@@ -66,4 +67,6 @@ package() {
 	install -D lang/parallel-launcher.de.qm $pkgdir/usr/share/parallel-launcher/parallel-launcher.de.qm
 	install -D lang/parallel-launcher.ar.qm $pkgdir/usr/share/parallel-launcher/parallel-launcher.ar.qm
 	install -D lang/parallel-launcher.pt.qm $pkgdir/usr/share/parallel-launcher/parallel-launcher.pt.qm
+	install -D parallel-launcher-sdl-proxy $pkgdir/usr/share/parallel-launcher/parallel-launcher-sdl-proxy
+	install -D parallel-launcher-lsjs $pkgdir/usr/share/parallel-launcher/parallel-launcher-lsjs
 }

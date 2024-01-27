@@ -7,3 +7,7 @@ post_install() {
 pre_remove() {
 	xdg-mime uninstall /usr/share/parallel-launcher/bps-mime.xml
 }
+
+post_upgrade() {
+	rm -f /etc/flatpak/installations.d/parallel-launcher.conf
+}
