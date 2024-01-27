@@ -2,7 +2,7 @@
 
 pkgname=dxvk-nvapi-mingw
 pkgver=0.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Alternative NVAPI implementation on top of DXVK'
 arch=('x86_64')
 url="https://github.com/jp7677/dxvk-nvapi"
@@ -32,9 +32,9 @@ prepare() {
     # If you want the "best" possible optimizations for your system you can use
     # `-march=native` and remove the `-mtune=core-avx2` option.
 
-#    local -a split=($CFLAGS)
-#    local -A flags
-#    for opt in "${split[@]}"; do flags["${opt%%=*}"]="${opt##*=}"; done
+    local -a split=($CFLAGS)
+    local -A flags
+    for opt in "${split[@]}"; do flags["${opt%%=*}"]="${opt##*=}"; done
     local march="${flags["-march"]:-nocona}"
     local mtune="${flags["-mtune"]:-core-avx2}"
 
@@ -59,8 +59,8 @@ prepare() {
     # Relevant Wine issues
     # https://bugs.winehq.org/show_bug.cgi?id=45289
     # https://bugs.winehq.org/show_bug.cgi?id=43516
-    CFLAGS+=" -mno-avx2"
-    CXXFLAGS+=" -mno-avx2"
+    CFLAGS+=" -mno-avx2 -mno-avx"
+    CXXFLAGS+=" -mno-avx2 -mno-avx"
 
     local cross_ldflags="$LDFLAGS"
 
