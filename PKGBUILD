@@ -1,7 +1,7 @@
 # Maintainer: Sam A. Horvath-Hunt <hello@samhh.com>
 
 pkgname=cssmodules-language-server
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Language server for CSS modules."
 url="https://github.com/antonk52/cssmodules-language-server"
@@ -11,7 +11,7 @@ depends=("nodejs")
 makedepends=("npm")
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('a66eb8c8b95b6a23de2e21356d8506c97d6b5139788a21fa7b42974d460f1b71')
+sha256sums=('31bcd3e7769b97efa15fd5f52a77dabe62168dcc803f547f57e82ef8d3971e5c')
 
 prepare() {
   tar xf "${pkgname}-${pkgver}.tgz" package/LICENSE
