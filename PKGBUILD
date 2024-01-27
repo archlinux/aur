@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RNAdecay
-_pkgver=1.22.1
+_pkgver=1.22.2
 pkgname=r-${_pkgname,,}
-pkgver=1.22.1
+pkgver=1.22.2
 pkgrel=1
 pkgdesc='Maximum Likelihood Decay Modeling of RNA Degradation Data'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ef8684de79814e9edecd15eb9d7ceb31df2f7d43b123a1af1b30389ae4d97461')
+sha256sums=('c7ee3059b07ee28c2814ee9104e02259f5c53681cf04de9a311bc81a82c0ebdb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
