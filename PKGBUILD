@@ -29,7 +29,6 @@ arch=('aarch64' 'i686' 'x86_64')
 _main_package() {
   depends=(
     libolm.so
-    qt6-5compat
     qt6-multimedia
     qt6-declarative
     qtkeychain-qt6
@@ -40,14 +39,14 @@ _main_package() {
     qt6-tools
   )
 
-  if [[ "${_build_clang::1}" != "t" ]] ; then
+  if [[ "${_build_clang::1}" == "t" ]] ; then
     makedepends+=(
       clang
       lld
     )
   fi
 
-  if [[ "${_build_git::1}" != "t" ]] ; then
+  if [ "${_build_git::1}" != "t" ] ; then
     _main_stable
   else
     _main_git
@@ -145,7 +144,7 @@ prepare() {
 }
 
 build() {
-  if [[ "${_build_clang::1}" != "t" ]] ; then
+  if [[ "${_build_clang::1}" == "t" ]] ; then
     export CXX=clang++
     export LDFLAGS+=" -fuse-ld=lld"
   fi
