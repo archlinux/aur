@@ -3,12 +3,13 @@
 
 _pkgname='fatrat'
 pkgname="$_pkgname-git"
-pkgver=1.2.0.b2.r60.g1b0dd1f
+pkgver=1.2.0.b2.r60.g1b0dd1f6
 pkgrel=1
-pkgdesc='Qt Download/Upload Manager'
-arch=('i686' 'x86_64')
+pkgdesc='Qt download and upload manager'
 url="https://github.com/LubosD/fatrat"
-license=('GPL3')
+license=('GPL-3.0-only')
+arch=('i686' 'x86_64')
+
 depends=(
   'libtorrent-rasterbar'
   'qt5-svg'
@@ -24,6 +25,7 @@ makedepends=(
   'boost'
   'cmake'
   'git'
+  'ninja'
 )
 
 provides=("$_pkgname=${pkgver%%.r*}")
@@ -36,19 +38,24 @@ sha256sums=("SKIP")
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags | sed 's/_/./; s/beta/b/; s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=8 | sed 's/_/./; s/beta/b/; s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
+    -GNinja
     -DCMAKE_INSTALL_PREFIX='/usr'
-    -DWITH_DOCUMENTATION=ON
-    -DWITH_NLS=ON
-    -DWITH_CURL=ON
+
     -DWITH_BITTORRENT=ON
+    #-DWITH_JABBER=ON
+    -DWITH_NLS=ON
+    -DWITH_DOCUMENTATION=ON
     -DWITH_WEBINTERFACE=OFF
+    -DWITH_CURL=ON
+    #-DWITH_JPLUGINS=ON
+
     -Wno-dev
   )
 
@@ -57,5 +64,5 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir:?}" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 }
