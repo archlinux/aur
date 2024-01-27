@@ -23,8 +23,9 @@ package() {
   # It's nice that install.sh updates the mime database for us, but this should be updated in post_install
   rm "$pkgdir/usr/share/applications/mimeinfo.cache"
 
-  # Similarly, install.sh thinks that the browsers binary is located in $pkgdir, so remove this prefix from the .desktop files
+  # Since we replaced the TARGET_INSTALL_BINARY_PATH in install.sh, we should update any references to it
   sed -Ei "s|$pkgdir||" "$pkgdir/usr/share/applications/software.Browsers.desktop" "$pkgdir/usr/share/xfce4/helpers/software.Browsers.desktop"
+  ln -snf /usr/share/software.Browsers/bin/browsers "$pkgdir/usr/bin/browsers"
 }
 
 # Thanks to https://bbs.archlinux.org/viewtopic.php?pid=1544072#p1544072
