@@ -1,32 +1,34 @@
 pkgbase = perl-search-elasticsearch
 	pkgdesc = The official client for Elasticsearch
-	pkgver = 8.00
+	pkgver = 8.12
 	pkgrel = 1
 	url = https://metacpan.org/release/Search-Elasticsearch
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	checkdepends = perl-test-deep
-	checkdepends = perl-test-exception
-	checkdepends = perl-test-sharedfork
-	depends = perl-any-uri-escape
-	depends = perl-devel-globaldestruction
-	depends = perl-http-message
-	depends = perl-io-socket-ssl
+	checkdepends = perl-test-deep>=0
+	checkdepends = perl-test-exception>=0
+	checkdepends = perl-test-pod>=0
+	checkdepends = perl-test-sharedfork>=0
+	depends = perl-any-uri-escape>=0
+	depends = perl-devel-globaldestruction>=0
+	depends = perl-http-message>=0
+	depends = perl-io-socket-ssl>=0
 	depends = perl-json-maybexs>=1.002002
 	depends = perl-log-any>=1.02
 	depends = perl-log-any-adapter-callback>=0.09
-	depends = perl-module-runtime
+	depends = perl-module-runtime>=0
 	depends = perl-moo>=2.001000
+	depends = perl-net-ip>=0
 	depends = perl-package-stash>=0.34
-	depends = perl-sub-exporter
-	depends = perl-try-tiny
-	depends = perl-uri
-	depends = perl-libwww
-	depends = perl-namespace-clean
+	depends = perl-sub-exporter>=0
+	depends = perl-try-tiny>=0
+	depends = perl-uri>=0
+	depends = perl-libwww>=0
+	depends = perl-namespace-clean>=0
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/E/EZ/EZIMUEL/Search-Elasticsearch-8.00.tar.gz
-	md5sums = 9d40ff30b74dc1cecf4f391a6e908a0c
-	sha512sums = 2a62efc1434b40584dec5b5baf165ccb03e19b981883bfc313b297e03ea973f9ed85047b15294ce0742b6901b98cc4050214abbd29f02f46e175c410777ff42d
+	source = http://search.cpan.org/CPAN/authors/id/E/EZ/EZIMUEL/Search-Elasticsearch-8.12.tar.gz
+	md5sums = 90a1b8d176429653c70394a0c4e50339
+	sha512sums = ed01dc2984b5cabd6d26cf8ef9ba7704e6be5694245b93851746bbef05a3cffe7b358fa7f0826715cac0bdebdb0b75bd599a63f40372ca1e7b32fec6bb20aa6d
 
 pkgname = perl-search-elasticsearch
