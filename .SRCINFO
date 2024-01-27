@@ -1,7 +1,7 @@
 pkgbase = maa-cli
 	pkgdesc = A simple CLI for MAA by Rust.
-	pkgver = 0.4.1
-	pkgrel = 2
+	pkgver = 0.4.2
+	pkgrel = 1
 	url = https://github.com/MaaAssistantArknights/maa-cli
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = maa-cli
 	depends = libgit2
 	depends = openssl
 	optdepends = maa-assistant-arknights: for preinstalled maa core
-	source = https://github.com/MaaAssistantArknights/maa-cli/archive/refs/tags/v0.4.1.tar.gz
-	md5sums = 610ee349e90610f7b6c1f565176b5e69
+	source = https://github.com/MaaAssistantArknights/maa-cli/archive/refs/tags/v0.4.2.tar.gz
+	md5sums = 758145b908291652437ac162e3f04b8a
 
 pkgname = maa-cli
