@@ -1,6 +1,6 @@
 pkgbase = guilded
 	pkgdesc = Chat for Gaming Communities
-	pkgver = 1.0.9235285
+	pkgver = 1.0.9236953
 	pkgrel = 1
 	url = https://www.guilded.gg/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = guilded
 	depends = libxkbcommon-x11
 	depends = alsa-lib
 	depends = libxkbfile
-	source = guilded-1.0.9235285.deb::https://www.guilded.gg/downloads/Guilded-Linux.deb
-	sha256sums = d52d1f8f7bbfc1ce43d0f161a407bd68a3f8f04c08f6a5c9dd5cf273d92d29c7
+	source = guilded-1.0.9236953.deb::https://www.guilded.gg/downloads/Guilded-Linux.deb
+	sha256sums = cb604cbdc6538a7c7899fe86e5b00f0a208de712ddcf1029b2d3bb49e3d2e748
 
 pkgname = guilded
