@@ -13,7 +13,7 @@ pkgbase = ocaml-ppx_typerep_conv
 	depends = ocaml-typerep>=0.16.0
 	depends = ocaml-ppxlib>=0.28.0
 	options = !strip
-	source = ocaml-ppx_typerep_conv-1:0.16.0-1.tar.gz::https://github.com/janestreet/ppx_typerep_conv/archive/v0.16.0.tar.gz
+	source = ocaml-ppx_typerep_conv-0.16.0.tar.gz::https://github.com/janestreet/ppx_typerep_conv/archive/v0.16.0.tar.gz
 	sha512sums = 842f3caeb22b7d1feb1de9f599ffe2474365704e7ce9c05366b9714bcbf165791eda8b16d420a3a64ccc8ea44a9b2178ffddaa8e3ad005c6536c3559f2da295a
 
 pkgname = ocaml-ppx_typerep_conv
