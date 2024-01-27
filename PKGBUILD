@@ -8,11 +8,11 @@ pkgrel='2'
 pkgdesc='A virtual weather environment in ASCII'
 arch=('any')
 url="https://github.com/AnotherFoxGuy/$pkgname"
-license=('GPL2')
+license=('GPL-2.0-only')
 depends=('perl' 'perl-compass-points' 'perl-json' 'perl-term-animation')
 source=(
-	"$pkgname-$pkgver-$pkgrel::$url/raw/$pkgver/$pkgname"
-	"$pkgname-$pkgver-$pkgrel.diff::$url/commit/b7ac28234c1e93e537787d163ac80361296aaf58.diff"
+	"$pkgname-$pkgver::$url/raw/$pkgver/$pkgname"
+	"$pkgname-$pkgver-fix-w-bug.diff::$url/commit/b7ac28234c1e93e537787d163ac80361296aaf58.diff"
 	'devendor.diff'
 	"$pkgname.1"
 )
@@ -25,14 +25,14 @@ prepare() {
 	cd "$srcdir/"
 
 	# Devendor perl-compass-points
-	patch --follow-symlinks --forward -p1 "$pkgname-$pkgver-$pkgrel" < 'devendor.diff'
+	patch --follow-symlinks --forward -p1 "$pkgname-$pkgver" < 'devendor.diff'
 
 	# https://github.com/AnotherFoxGuy/weatherspect/commit/b7ac28234c1e93e537787d163ac80361296aaf58
-	patch --follow-symlinks --forward -p1 "$pkgname-$pkgver-$pkgrel" < "$pkgname-$pkgver-$pkgrel.diff"
+	patch --follow-symlinks --forward -p1 "$pkgname-$pkgver" < "$pkgname-$pkgver-fix-w-bug.diff"
 }
 
 package() {
 	cd "$srcdir/"
-	install -Dm755 "$pkgname-$pkgver-$pkgrel" "$pkgdir/usr/bin/$pkgname"
+	install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 "$pkgname.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
 }
