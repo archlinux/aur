@@ -5,13 +5,13 @@
 pkgname=python-laspy
 pkgdesc="Pythonic interface for .LAS LIDAR files"
 url="https://github.com/laspy/laspy"
-pkgver=2.5.1
+pkgver=2.5.3
 pkgrel=1
 arch=('any')
-license=('BSD')
+license=('BSD-2-Clause')
 changelog='CHANGELOG.md'
 
-depends=('python-numpy')
+depends=('python-numpy' 'python-rich' 'python-typer')
 optdepends=(
   'python-lazrs: LAZ and COPC support'
   'python-laszip: LAZ support'
@@ -30,7 +30,7 @@ makedepends=(
 checkdepends=('python-pytest')
 
 _pyname=laspy
-_commit=08c87b528
+_commit=45b9202a3
 source=(
   "git+$url#commit=$_commit?signed"
   'modify_doc_conf.patch'
