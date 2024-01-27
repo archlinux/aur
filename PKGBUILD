@@ -1,18 +1,19 @@
-# Maintainer: Josef Miegl <josef@miegl.cz>
+# Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
+# Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-bts-git
-pkgver=0.8.1.r218.g3933e93
+pkgver=1.7.0.r53.ge94553a54
 pkgrel=1
-pkgdesc="Open Source GSM BTS (Base Transceiver Station) with A-bis/IP interface"
+pkgdesc="Osmocom's GSM BTS (Base Transceiver Station) with A-bis/IP interface"
 url="https://osmocom.org/projects/osmobts"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
-depends=('libosmocore' 'talloc' 'libosmo-abis' 'ortp')
+depends=('libosmocore' 'libosmo-abis' 'libosmo-netif' 'talloc' 'ortp')
 makedepends=('git')
-provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-backup=('etc/osmocom/osmo-bts-trx.cfg' 'etc/osmocom/osmo-bts-virtual.cfg')
-source=("git+https://git.osmocom.org/${pkgname%-git}")
+backup=('etc/osmocom/osmo-bts-trx.cfg'
+        'etc/osmocom/osmo-bts-virtual.cfg')
+source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -27,7 +28,10 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --enable-trx
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc \
+              --localstatedir=/var \
+              --enable-trx
   make
 }
 
