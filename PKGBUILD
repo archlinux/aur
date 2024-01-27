@@ -11,8 +11,8 @@
 
 # Maintainer: alecksandr <sansepiol26@gmail.com>
 pkgname=trycatch-c
-pkgver=1.3.1
-pkgrel=3
+pkgver=1.4.0
+pkgrel=4
 epoch=
 pkgdesc="This module offers a straightforward macro interface that facilitates seamless exception handling in
  the C programming language, drawing inspiration from the paradigm employed in C++."
