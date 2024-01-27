@@ -4,7 +4,6 @@ pkgname="ocaml-markup"
 pkgver='1.0.3'
 pkgrel='1'
 pkgdesc='Error-recovering streaming HTML5 and XML parsers for OCaml'
-# If you're running on aarch64, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-cmdliner, ocaml-easy-format and ocaml-yojson AUR dependencies
 arch=('x86_64' 'aarch64')
 url="https://github.com/aantron/$_projectname"
 license=('MIT')
@@ -36,5 +35,5 @@ package() {
 	done
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/MIT"
 }
