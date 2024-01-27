@@ -1,7 +1,7 @@
 pkgbase = vkd3d-proton-mingw
 	pkgdesc = Fork of VKD3D. Development branches for Protons Direct3D 12 implementation
 	pkgver = 2.11.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/HansKristian-Work/vkd3d-proton
 	arch = x86_64
 	license = LGPL-2.1
