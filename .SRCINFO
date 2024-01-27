@@ -1,6 +1,6 @@
 pkgbase = pynotify-bin
-	pkgdesc = A Gnome (wayland) shell notifier for Gotify server.
-	pkgver = 0.6
+	pkgdesc = A Gnome (wayland) shell notifier for Gotify and Ntfy server.
+	pkgver = 0.7
 	pkgrel = 2
 	url = https://github.com/fseoane/pyNotify.git
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = pynotify-bin
 	replaces = pyNotify
 	backup = etc/pyNotify.conf
 	backup = opt/pyNotify/pyNotify.conf
-	source = https://github.com/fseoane/pyNotify/releases/download/v0.6/pyNotify.0.6_Arch_amd64.zip
+	source = https://github.com/fseoane/pyNotify/releases/download/v0.7/pyNotify.0.7_Arch_amd64.zip
 	md5sums = SKIP
 
 pkgname = pynotify-bin
