@@ -14,7 +14,7 @@ pkgbase = ocaml-splittable_random
 	depends = ocaml-ppx_inline_test>=0.16.0
 	depends = ocaml-ppx_sexp_message>=0.16.0
 	options = !strip
-	source = ocaml-splittable_random-0.16.0-1.tar.gz::https://github.com/janestreet/splittable_random/archive/v0.16.0.tar.gz
+	source = ocaml-splittable_random-0.16.0.tar.gz::https://github.com/janestreet/splittable_random/archive/v0.16.0.tar.gz
 	sha512sums = eeb58de6cf8ee6fda61997ad06e9a3d807eb4e296320b2fcb17bf2ce41dc9ca4dc75ff1caf257dcbb94bd6f205ea2f9b1e2d91a42cf4ee34964ba91f8a0bebd3
 
 pkgname = ocaml-splittable_random
