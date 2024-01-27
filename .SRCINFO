@@ -13,7 +13,7 @@ pkgbase = ocaml-ounit
 	depends = ocaml-seq
 	depends = ocaml-stdlib-shims
 	options = !strip
-	source = ocaml-ounit-2.2.7-2.tar.gz::https://github.com/gildor478/ounit/archive/v2.2.7.tar.gz
+	source = ocaml-ounit-2.2.7.tar.gz::https://github.com/gildor478/ounit/archive/v2.2.7.tar.gz
 	sha512sums = b2cefed53127f724c099391eefe1bce3b43cad5d6b629b5f1e9446b58892639de758f5dbcbd5efb6c409ce77ed01d06693989a3ba909cf79c36c2554c1473396
 
 pkgname = ocaml-ounit

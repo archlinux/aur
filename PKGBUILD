@@ -12,14 +12,13 @@ pkgname="ocaml-$_projectname"
 pkgver='2.2.7'
 pkgrel='2'
 pkgdesc='Unit testing framework for OCaml'
-# If you're running on aarch64, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
 arch=('x86_64' 'aarch64')
 url="https://github.com/gildor478/$_projectname"
 license=('MIT')
 depends=('ocaml>=4.04.0' 'ocaml-lwt>=2.5.2' 'ocaml-seq' 'ocaml-stdlib-shims')
 makedepends=('dune>=3.0.0' 'ocaml-findlib')
 options=('!strip')
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('b2cefed53127f724c099391eefe1bce3b43cad5d6b629b5f1e9446b58892639de758f5dbcbd5efb6c409ce77ed01d06693989a3ba909cf79c36c2554c1473396')
 
 _sourcedirectory="$_projectname-$pkgver"
@@ -39,5 +38,5 @@ package() {
 	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc' --mandir '/usr/share/man' --release --verbose
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	ln -sf "/usr/share/doc/$pkgname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/MIT"
 }
