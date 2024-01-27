@@ -16,12 +16,12 @@
 ## basic info
 _pkgname="midori"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=11.2.r48.gfb3b7133
+pkgver=11.2.r53.ge7cddb76
 pkgrel=1
 pkgdesc="Web browser forked from Floorp"
 url="https://github.com/goastian/midori-desktop"
+arch=('x86_64')
 license=('MPL-2.0')
-arch=(x86_64)
 
 # main package
 _main_package() {
@@ -32,8 +32,8 @@ _main_package() {
     libevent
     libjpeg
     libpulse
-    libvpx
-    libwebp
+    libvpx.so
+    libwebp.so
     libxss
     libxt
     mime-types
@@ -167,15 +167,9 @@ ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 ac_add_options --enable-default-toolkit=cairo-gtk3-x11-wayland
 export MOZ_ENABLE_WAYLAND=1
 
-export AR=llvm-ar
-export CC='clang'
-export CXX='clang++'
-export NM=llvm-nm
-export RANLIB=llvm-ranlib
-
 # Branding
-ac_add_options --with-app-basename=midori
-ac_add_options --with-app-name=midori
+ac_add_options --with-app-basename=$_pkgname
+ac_add_options --with-app-name=$_pkgname
 ac_add_options --with-branding=browser/branding/official
 ac_add_options --enable-update-channel=nightly
 ac_add_options --with-distribution-id=org.archlinux
@@ -183,7 +177,13 @@ ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZILLA_OFFICIAL=1
 export NIGHTLY_BUILD=1
-export MOZ_APP_REMOTINGNAME=midori
+export MOZ_APP_REMOTINGNAME=$_pkgname
+
+# Floorp Upstream
+ac_add_options --enable-proxy-bypass-protection
+ac_add_options --enable-unverified-updates
+ac_add_options --with-l10n-base=${PWD@Q}/l10n-central
+MOZ_REQUIRE_SIGNING=
 
 # Keys
 ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/api-mozilla-key
@@ -235,6 +235,11 @@ ac_add_options OPT_LEVEL="3"
 ac_add_options RUSTC_OPT_LEVEL="3"
 
 # Other
+export AR=llvm-ar
+export CC='clang'
+export CXX='clang++'
+export NM=llvm-nm
+export RANLIB=llvm-ranlib
 END
 }
 
@@ -279,7 +284,7 @@ build() {
       echo "Profiling instrumented browser..."
       ./mach package
 
-      LLVM_PROFDATA=llvm-profdata JARLOG_FILE="$PWD/jarlog" \
+      LLVM_PROFDATA=llvm-profdata JARLOG_FILE=${PWD@Q}/jarlog \
         wlheadless-run -c weston --width=1920 --height=1080 \
         -- ./mach python build/pgo/profileserver.py
 
@@ -293,7 +298,7 @@ build() {
     if [[ -s merged.profdata ]] ; then
       stat -c "Profile data found (%s bytes)" merged.profdata
       echo >>.mozconfig "ac_add_options --enable-profile-use=cross"
-      echo >>.mozconfig "ac_add_options --with-pgo-profile-path='${PWD@Q}/merged.profdata'"
+      echo >>.mozconfig "ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata"
 
       # save profdata for reuse
       cp --reflink=auto -f merged.profdata "$_old_profdata"
@@ -303,7 +308,7 @@ build() {
 
     if [[ -s jarlog ]] ; then
       stat -c "Jar log found (%s bytes)" jarlog
-      echo >>.mozconfig "ac_add_options --with-pgo-jarlog='${PWD@Q}/jarlog'"
+      echo >>.mozconfig "ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog"
 
       # save jarlog for reuse
       cp --reflink=auto -f jarlog "$_old_jarlog"
