@@ -1,0 +1,14 @@
+pkgbase = pan
+	pkgdesc = A powerful Newsgroup Article reader
+	pkgver = 0.155
+	pkgrel = 1
+	url = http://pan.rebelbase.com/
+	arch = x86_64
+	license = GPL2
+	makedepends = itstool
+	depends = gtkspell3
+	depends = gmime3
+	source = https://gitlab.gnome.org/GNOME/pan/-/archive/v0.155/pan-v0.155.tar.gz
+	sha256sums = 49acd5e18e323e16f53438ac7721cf0fb2d8c1c78846e69c8985dd3640187670
+
+pkgname = pan
