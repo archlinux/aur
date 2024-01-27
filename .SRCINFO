@@ -1,13 +1,14 @@
 pkgbase = osmo-iuh
 	pkgdesc = Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://osmocom.org/projects/osmohnbgw
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	license = GPL
+	makedepends = python
 	depends = libosmocore
 	depends = libosmo-netif
 	depends = libosmo-sccp
