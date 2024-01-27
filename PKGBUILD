@@ -7,7 +7,7 @@
 
 _pkgname="ddcutil"
 pkgname="$_pkgname-git"
-pkgver=2.0.0.r85.ga9a4ea1b
+pkgver=2.1.0.r67.g90e67d7c
 pkgrel=1
 pkgdesc='Query and change Linux monitor settings using DDC/CI and USB.'
 url='http://ddcutil.com/'
@@ -39,7 +39,7 @@ if [ "$_pkgname" != "$pkgname" ] ; then
 
   pkgver() {
     cd "$_pkgsrc"
-    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=8 --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
   }
 fi
 
