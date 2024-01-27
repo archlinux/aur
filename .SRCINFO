@@ -9,7 +9,7 @@ pkgbase = certspotter
 	arch = pentium4
 	arch = armv7h
 	arch = aarch64
-	license = MPL2
+	license = MPL-2.0
 	makedepends = go>=1.21
 	makedepends = lowdown
 	source = certspotter-0.18.0.tar.gz::https://github.com/SSLMate/certspotter/archive/v0.18.0.tar.gz

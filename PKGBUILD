@@ -5,7 +5,7 @@ pkgrel='1'
 pkgdesc='Certificate Transparency Log Monitor'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/SSLMate/$pkgname"
-license=('MPL2')
+license=('MPL-2.0')
 makedepends=('go>=1.21' 'lowdown')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
