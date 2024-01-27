@@ -7,7 +7,9 @@ pkgbase = ps2-libzip
 	license = custom
 	makedepends = ps2-sdk
 	makedepends = cmake
-	source = ps2-libzip::git+https://github.com/nih-at/libzip#commit=5ff839680134437dbf4678f3d0c7b371d84f4964
+	makedepends = git
+	depends = ps2-zlib
+	source = ps2-libzip::git+https://github.com/nih-at/libzip#commit=5532f9baa0c44cc5435ad135686a4ea009075b9a
 	source = ps2-ports::git+https://github.com/ps2dev/ps2sdk-ports#commit=e3f9bfd51e3266b3c68de19b76f6d378f6ec643b
 	sha256sums = SKIP
 	sha256sums = SKIP
