@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Powers in the Basement
+Comment=Point-and-click adventure, reminiscent of 80s and 90s classics. GOG version.
+Exec=powers-in-the-basement
+Icon=gog-powers-in-the-basement
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8

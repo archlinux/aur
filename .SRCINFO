@@ -1,0 +1,24 @@
+pkgbase = gog-powers-in-the-basement
+	pkgdesc = Point-and-click adventure, reminiscent of 80s and 90s classics. GOG version.
+	pkgver = 1.2.2.70665
+	pkgrel = 1
+	url = https://www.gog.com/en/game/powers_in_the_basement
+	arch = x86_64
+	license = LicenseRef-EULA
+	makedepends = lgogdownloader
+	depends = bash
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk2
+	depends = pango
+	options = !strip
+	source = powers-in-the-basement_latest.sh::gogdownloader://powers_in_the_basement/en3installer0
+	source = gog-powers-in-the-basement.desktop
+	source = powers-in-the-basement.bash
+	sha512sums = 2b94fff8bbe727317fed009fd312fa5ef05b0f898fe38edb21f553b934314aeb8747c15032b204c9b324ced4eca05c299b330a8ecb64d72171573ae6fdf7b9a4
+	sha512sums = 87c314fa56aca96bda633cfb469b7ee37ac30169f66b4487867fcad96993f57f66af4e709da8aad7969e8cdaac30cdf368cb66ca3e1844128b5404405d6bcc77
+	sha512sums = 3f19f5f8af4c69655fdfa8355f87263b9a96fc9b04c20575cc0ccb8e7c132e3fa28a8f3f26f47d526541e0204e181d923c82862e3bcbebe131220743feaa79d1
+
+pkgname = gog-powers-in-the-basement
