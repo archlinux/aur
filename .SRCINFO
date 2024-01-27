@@ -7,6 +7,7 @@ pkgbase = ocaml-bin_prot
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	license = BSD-3-Clause
 	makedepends = dune>=2.0.0
 	depends = ocaml>=4.14.0
 	depends = ocaml-base>=0.16.0
@@ -18,7 +19,7 @@ pkgbase = ocaml-bin_prot
 	depends = ocaml-ppx_stable_witness>=0.16.0
 	depends = ocaml-ppx_variants_conv>=0.16.0
 	options = !strip
-	source = ocaml-bin_prot-1:0.16.0-1.tar.gz::https://github.com/janestreet/bin_prot/archive/v0.16.0.tar.gz
+	source = ocaml-bin_prot-0.16.0.tar.gz::https://github.com/janestreet/bin_prot/archive/v0.16.0.tar.gz
 	sha512sums = e6e2b4c2984fc89fc7ceb57cae7b7f796e6a0441e4d37da1b6bc1f167d8900b1c4bc0174d5d9de5669b7539d9256293365242e9875ef78fccbda226635c63b5d
 
 pkgname = ocaml-bin_prot
