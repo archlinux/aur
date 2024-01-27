@@ -1,13 +1,14 @@
 pkgbase = python-rdbtools
 	pkgdesc = Utilities to convert Redis RDB files to JSON or SQL formats
 	pkgver = 0.1.15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sripathikrishnan/redis-rdb-tools
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
-	depends = python-importlib-metadata
-	depends = python-setuptools
 	optdepends = python-lzf: highly recommended to speed up parsing
 	source = python-rdbtools-0.1.15.tar.gz::https://github.com/sripathikrishnan/redis-rdb-tools/archive/rdbtools-0.1.15.tar.gz
 	sha256sums = 901c9846f74642e89b44d0fd932289fa62130d51fc6256ba4d8e208af8d23e27
