@@ -14,7 +14,6 @@ pkgbase = quaternion-git
 	makedepends = clang
 	makedepends = lld
 	depends = libolm.so
-	depends = qt6-5compat
 	depends = qt6-multimedia
 	depends = qt6-declarative
 	depends = qtkeychain-qt6
@@ -31,7 +30,6 @@ pkgbase = quaternion-git
 
 pkgname = quaternion-git
 	depends = libolm.so
-	depends = qt6-5compat
 	depends = qt6-multimedia
 	depends = qt6-declarative
 	depends = qtkeychain-qt6
