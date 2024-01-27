@@ -12,10 +12,10 @@ pkgname=('systemd-selinux'
          'systemd-resolvconf-selinux'
          'systemd-sysvcompat-selinux'
          'systemd-ukify-selinux')
-_tag='be88ad03366b8aa059bb72b39a270128ba62b428' # git rev-parse v${_tag_name}
-_tag_name=255.2
+_tag='8cf1da1e9172ba04d90a483a63118873343ea656' # git rev-parse v${_tag_name}
+_tag_name=255.3
 pkgver="${_tag_name/-/}"
-pkgrel=3
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://www.github.com/systemd/systemd'
 groups=('selinux')
@@ -26,7 +26,7 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam-selinux' '
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
              'bash-completion' 'p11-kit' 'systemd' 'libfido2' 'tpm2-tss' 'rsync'
              'bpf' 'libbpf' 'clang' 'llvm' 'curl' 'gnutls' 'python-pyelftools'
-             'libpwquality' 'qrencode' 'lib32-gcc-libs' 'libselinux')
+             'libpwquality' 'qrencode' 'lib32-gcc-libs' 'python-pefile' 'libselinux')
 checkdepends=('python-pefile')
 options=('strip')
 validpgpkeys=('63CDA1E5D3FC22B998D20DD6327F26951A015CC4'  # Lennart Poettering <lennart@poettering.net>
@@ -272,9 +272,6 @@ package_systemd-selinux() {
   # gid on different systems. Let's install with gid 0 (root), systemd-tmpfiles
   # will fix the permissions for us. (see /usr/lib/tmpfiles.d/systemd.conf)
   install -d -o root -g root -m 2755 "$pkgdir"/var/log/journal
-
-  # match directory owner/group and mode from [extra]/polkit
-  install -d -o root -g root -m 0755 "$pkgdir"/usr/share/polkit-1/rules.d
 
   # add example bootctl configuration
   install -D -m0644 arch.conf "$pkgdir"/usr/share/systemd/bootctl/arch.conf
