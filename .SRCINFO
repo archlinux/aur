@@ -1,6 +1,6 @@
 pkgbase = virtualsmartcard
 	pkgdesc = Virtual Smart Card emulates a smart card and makes it accessible through PC/SC
-	pkgver = 0.8
+	pkgver = 0.9
 	pkgrel = 1
 	url = https://github.com/frankmorgner/vsmartcard
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = virtualsmartcard
 	license = GPLv3
 	makedepends = help2man
 	depends = pcsclite
-	depends = python2
-	source = https://github.com/frankmorgner/vsmartcard/releases/download/virtualsmartcard-0.8/virtualsmartcard-0.8.tar.gz
-	sha1sums = 17f21cc4089c589312d38f0f6c5cd8f9bb2cbc02
+	depends = python3
+	source = https://github.com/frankmorgner/vsmartcard/releases/download/virtualsmartcard-0.9/virtualsmartcard-0.9.tar.gz
+	sha1sums = 9ce6117f307e28696699f87672681454ee001bf0
 
 pkgname = virtualsmartcard
