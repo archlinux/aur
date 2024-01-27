@@ -1,0 +1,8 @@
+*.zst
+pkg/
+src/
+*.deb
+LICENSE
+serviceagreement
+*.zip
+natapp_*

@@ -1,20 +1,19 @@
 pkgbase = natapp
 	pkgdesc = High speed intranet penetration tools in Chinese based on ngrok.
-	pkgver = 2_3_9
-	pkgrel = 5
+	pkgver = 2_4_0
+	pkgrel = 1
 	url = https://natapp.cn
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	license = custom
 	source = LICENSE::https://natapp.cn/article/serviceagreement
-	md5sums = SKIP
-	source_x86_64 = http://download.natapp.cn/assets/downloads/clients/2_3_9/natapp_linux_amd64_2_3_9.zip
-	md5sums_x86_64 = 71037d0cf5f038b6cbb84bdcf37d7c30
-	source_aarch64 = http://download.natapp.cn/assets/downloads/clients/2_3_9/natapp_linux_arm64_2_3_9.zip
-	md5sums_aarch64 = 33e100ca4d57834a551eafb5830c976f
-	source_armv7h = http://download.natapp.cn/assets/downloads/clients/2_3_9/natapp_linux_arm_2_3_9.zip
-	md5sums_armv7h = 116ce8024b15dc2da61786e93f925053
+	md5sums = 6ae2f443e1902be706a9d370feb6571e
+	source_x86_64 = natapp_2_4_0_x86_64::https://cdn.natapp.cn/assets/downloads/clients/2_4_0/natapp_linux_amd64/natapp
+	md5sums_x86_64 = a2dabdc2577486d250b8197499478333
+	source_aarch64 = natapp_2_4_0_aarch64::https://cdn.natapp.cn/assets/downloads/clients/2_4_0/natapp_linux_arm64/natapp
+	md5sums_aarch64 = 8b988a68216c45c97e8f184566999368
+	source_armv7h = natapp_2_4_0_armv7h::https://cdn.natapp.cn/assets/downloads/clients/2_4_0/natapp_linux_arm/natapp
+	md5sums_armv7h = 3290182ed7172db14f69f6ddad92c4ff
 
 pkgname = natapp
-
