@@ -45,14 +45,13 @@ build() {
 				  -DBUILD_SHARED_LIBS=ON \
 				  -DCMAKE_INSTALL_PREFIX=/opt/MOAB
 
-        # parallel build if possible
-        _ccores=$(nproc)
-        if [ -z "${_ccores}" ]; then
-            make
-        else
-            make -j ${_ccores}
-fi
-
+	_ccores=$(nproc)
+	# check if _ccores is a positive integer, if not, serial build
+	if [[ "${_ccores}" =~ ^[1-9][0-9]*$ ]]; then
+		make -j ${_ccores}
+	else
+		make
+	fi
 }
 
 package() {
