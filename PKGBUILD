@@ -5,19 +5,15 @@
 
 pkgname=hplip-plugin
 pkgver=3.23.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Binary plugin for HPs hplip printer driver library"
-arch=(
-  x86_64
-  aarch64
-  armv6h
-  armv7h
-  i686
-)
+arch=(x86_64 aarch64 armv6h armv7h i686)
 url="https://developers.hp.com/hp-linux-imaging-and-printing/binary_plugin.html"
 license=(LicenseRef-HPLIP-LICENSE)
 depends=(
-  "hplip=1:$pkgver"
+  # While hplip-plugin requires the version of hplip to match exactly,
+  # specifying such a requirement breaks the ability to upgrade hplip.
+  "hplip>=1:$pkgver"
   gcc-libs
   glibc
   libusb-compat
