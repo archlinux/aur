@@ -2,7 +2,7 @@
 
 pkgname='python-bonbast'
 _name=${pkgname#python-}
-pkgver='1.0.1'
+pkgver='1.0.2'
 pkgrel=1
 pkgdesc="Get currencies exchange rates for IRR from Bonbast.com"
 url="https://github.com/SamadiPour/bonbast"
@@ -17,7 +17,7 @@ makedepends=(python-build python-installer python-wheel)
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('cd675e54c9daa74f541c81e30d2acb13ecee237f938e8504ca1abfeb8aee8b6a')
+sha256sums=('dc00114c00c5c976b1144d65741c30ede003d3b0313942a33298e8d3264597a1')
 
 build() {
     cd "$_name-$pkgver"
