@@ -1,6 +1,6 @@
 pkgbase = osmo-mgw-git
-	pkgdesc = Media Gateway for handling user plane (voice) traffic in cellular networks
-	pkgver = 1.5.0.r2.ge36b775e
+	pkgdesc = Osmocom's Media Gateway for 2G and 3G circuit-switched mobile networks
+	pkgver = 1.12.1.r28.g8ee08c6b7
 	pkgrel = 1
 	url = https://osmocom.org/projects/osmo-mgw/
 	arch = i686
@@ -13,11 +13,10 @@ pkgbase = osmo-mgw-git
 	depends = libosmo-abis
 	depends = libosmo-netif
 	depends = talloc
-	provides = osmo-mgw
+	provides = libosmo-mgcp-client.so=12-64
 	conflicts = osmo-mgw
 	backup = etc/osmocom/osmo-mgw.cfg
-	source = git+https://git.osmocom.org/osmo-mgw
+	source = git+https://gitea.osmocom.org/cellular-infrastructure/osmo-mgw.git
 	sha256sums = SKIP
 
 pkgname = osmo-mgw-git
-

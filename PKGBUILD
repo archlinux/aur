@@ -1,18 +1,19 @@
-# Maintainer: Josef Miegl <josef@miegl.cz>
+# Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
+# Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-mgw-git
-pkgver=1.5.0.r2.ge36b775e
+pkgver=1.12.1.r28.g8ee08c6b7
 pkgrel=1
-pkgdesc="Media Gateway for handling user plane (voice) traffic in cellular networks"
+pkgdesc="Osmocom's Media Gateway for 2G and 3G circuit-switched mobile networks"
 url="https://osmocom.org/projects/osmo-mgw/"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
 depends=('libosmocore' 'libosmo-abis' 'libosmo-netif' 'talloc')
 makedepends=('git')
-provides=("${pkgname%-git}")
+provides=('libosmo-mgcp-client.so=12-64')
 conflicts=("${pkgname%-git}")
 backup=('etc/osmocom/osmo-mgw.cfg')
-source=("git+https://git.osmocom.org/${pkgname%-git}")
+source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -27,7 +28,9 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc \
+              --localstatedir=/var
   make
 }
 
