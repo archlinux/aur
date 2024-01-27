@@ -1,5 +1,5 @@
 diff --git a/internal/app/migration.go b/internal/app/migration.go
-index 86067b74..d8ab9ad1 100644
+index b2ed8610..5b95887f 100644
 --- a/internal/app/migration.go
 +++ b/internal/app/migration.go
 @@ -43,8 +43,6 @@ import (
@@ -30,17 +30,16 @@ index 86067b74..d8ab9ad1 100644
  		return fmt.Errorf("failed to read old prefs file: %w", err)
  	}
 diff --git a/pkg/keychain/helper_linux.go b/pkg/keychain/helper_linux.go
-index 3c31736d..b921322e 100644
+index 1ab288e9..b4c44b27 100644
 --- a/pkg/keychain/helper_linux.go
 +++ b/pkg/keychain/helper_linux.go
-@@ -18,57 +18,39 @@
+@@ -18,60 +18,41 @@
  package keychain
  
  import (
 +	"os/user"
 +	"path/filepath"
- 	"reflect"
- 
++
  	"github.com/docker/docker-credential-helpers/credentials"
 -	"github.com/docker/docker-credential-helpers/pass"
 -	"github.com/docker/docker-credential-helpers/secretservice"
@@ -55,34 +54,43 @@ index 3c31736d..b921322e 100644
 +	secrets = "~/.config/protonmail/bridge-v3/secrets"
  )
  
- func init() { //nolint:gochecknoinits
- 	Helpers = make(map[string]helperConstructor)
+ func listHelpers() (Helpers, string) {
+ 	helpers := make(Helpers)
++	var defaultHelper string
  
 -	if isUsable(newDBusHelper("")) {
--		Helpers[SecretServiceDBus] = newDBusHelper
+-		helpers[SecretServiceDBus] = newDBusHelper
+-	} else {
+-		logrus.WithField("keychain", "SecretServiceDBus").Warn("Keychain is not available.")
 -	}
 -
 -	if _, err := execabs.LookPath("gnome-keyring"); err == nil && isUsable(newSecretServiceHelper("")) {
--		Helpers[SecretService] = newSecretServiceHelper
+-		helpers[SecretService] = newSecretServiceHelper
+-	} else {
+-		logrus.WithField("keychain", "SecretService").Warn("Keychain is not available.")
 -	}
 -
 -	if _, err := execabs.LookPath("pass"); err == nil && isUsable(newPassHelper("")) {
--		Helpers[Pass] = newPassHelper
--	}
--
--	defaultHelper = SecretServiceDBus
+-		helpers[Pass] = newPassHelper
++	// Use keyFile as the only secrets handler
++	if isUsable(newKeyFileHelper("")) {
++		helpers["key-file"] = newKeyFileHelper
++		defaultHelper = "key-file"
+ 	} else {
+-		logrus.WithField("keychain", "Pass").Warn("Keychain is not available.")
++		logrus.WithField("keychain", "KeyFile").Warn("Keychain is not available.")
+ 	}
+ 
+-	defaultHelper := SecretServiceDBus
 -
 -	// If Pass is available, use it by default.
 -	// Otherwise, if SecretService is available, use it by default.
--	if _, ok := Helpers[Pass]; ok {
+-	if _, ok := helpers[Pass]; ok {
 -		defaultHelper = Pass
--	} else if _, ok := Helpers[SecretService]; ok {
+-	} else if _, ok := helpers[SecretService]; ok {
 -		defaultHelper = SecretService
-+	// Use keyFile as the only secrets handler
-+	if isUsable(newKeyFileHelper("")) {
-+		defaultHelper = "file-keychain"
-+		Helpers[defaultHelper] = newKeyFileHelper
- 	}
+-	}
+ 	return helpers, defaultHelper
  }
  
 -func newDBusHelper(string) (credentials.Helper, error) {
@@ -105,8 +113,6 @@ index 3c31736d..b921322e 100644
 +func newKeyFileHelper(string) (credentials.Helper, error) {
 +	return &keyFile{expandTilde(secrets)}, nil
  }
- 
- // isUsable returns whether the credentials helper is usable.
 diff --git a/pkg/keychain/keyfile.go b/pkg/keychain/keyfile.go
 new file mode 100644
 index 00000000..cef725b5
