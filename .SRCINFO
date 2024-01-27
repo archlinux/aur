@@ -1,7 +1,7 @@
 pkgbase = libtd
 	pkgdesc = Cross-platform library for building Telegram clients
 	pkgver = 1.8.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://core.telegram.org/tdlib
 	arch = x86_64
 	license = Boost
@@ -13,7 +13,8 @@ pkgbase = libtd
 	depends = openssl
 	depends = zlib
 	depends = gcc-libs
-	provides = libtd
+	provides = telegram-tdlib
+	provides = libtdjson.so
 	conflicts = telegram-tdlib
 	source = libtd::git+https://github.com/tdlib/td.git#commit=cde095db6c75827fe4bd237039574aad373ad96b
 	md5sums = SKIP

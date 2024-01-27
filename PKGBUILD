@@ -4,7 +4,7 @@
 
 pkgname=libtd
 pkgver=1.8.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform library for building Telegram clients "
 arch=('x86_64')
 url='https://core.telegram.org/tdlib'
@@ -21,7 +21,7 @@ makedepends=(
 	'gperf'
 	'php'
 )
-provides=('libtd')
+provides=('telegram-tdlib' 'libtdjson.so')
 conflicts=('telegram-tdlib')
 _commit=cde095db6c75827fe4bd237039574aad373ad96b
 source=("$pkgname::git+https://github.com/tdlib/td.git#commit=$_commit")
