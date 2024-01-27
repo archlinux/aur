@@ -4,8 +4,8 @@ pkgbase = tarnation
 	pkgrel = 1
 	url = https://github.com/kennyparsons/tarnation
 	arch = any
-	license = GPL3
-	source = tarnation-1.2.0-1.tar.gz::https://github.com/kennyparsons/tarnation/archive/c5d8a17650b0b26e7d52ef4b274fea8d87c5c8b8.tar.gz
+	license = GPL-3.0-only
+	source = tarnation-1.2.0.tar.gz::https://github.com/kennyparsons/tarnation/archive/c5d8a17650b0b26e7d52ef4b274fea8d87c5c8b8.tar.gz
 	sha512sums = db07ca1c535bd901c7ccb6909d1738377372349d472297cb726aff9b79baa2cf66489edb82b0cf4a068c7ca2a26c8ca992d1f1b5aa76af55344417cc8b49121f
 
 pkgname = tarnation
