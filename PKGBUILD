@@ -207,7 +207,7 @@ package_python-maturin-git() {
   )
   mv \
     -v \
-    "${_pkg}/"* \
+    "${_py}-${pkg}/"* \
     "${pkgdir}"
   install \
     -vDm 644 \
