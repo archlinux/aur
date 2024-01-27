@@ -38,5 +38,5 @@ package() {
 	mv "$pkgdir/usr/share/doc/$_projectname" "$pkgdir/usr/share/doc/$pkgname"
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/ISC"
 }
