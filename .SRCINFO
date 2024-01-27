@@ -11,7 +11,7 @@ pkgbase = ocaml-ppx_globalize
 	depends = ocaml-base>=0.16.0
 	depends = ocaml-ppxlib>=0.28.0
 	options = !strip
-	source = ocaml-ppx_globalize-0.16.0-1.tar.gz::https://github.com/janestreet/ppx_globalize/archive/v0.16.0.tar.gz
+	source = ocaml-ppx_globalize-0.16.0.tar.gz::https://github.com/janestreet/ppx_globalize/archive/v0.16.0.tar.gz
 	sha512sums = 76618dc1cc436c437e7911a2b793233f9bdd559dc37419df6f94143548bcfe09a0f29eafc3a36e97a5f8fb886aa94ca641f10f56078a8558f642a2cf564e4c75
 
 pkgname = ocaml-ppx_globalize
