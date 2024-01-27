@@ -43,7 +43,7 @@ for ((i=0;i<4;i++)); do
 	num=$(( i+1 ))
 	printf '%s %s\n' "$num.) ${_csChoices[i]}"
 done
-echo "data to download: (eg: '1 2 3', '1-3') default [1]"
+echo "data to download: (eg: '1 2 3', '1-4') default [1]"
 IFS=', ' read -a ranges_cs
 
 #depletion
@@ -52,7 +52,7 @@ for ((i=0;i<4;i++)); do
 	num=$(( i+1 ))
 	printf '%s %s\n' "$num.) ${_depChoices[i]}"
 done
-echo "data to download: (eg: '1 2 3', '1-3') default[1]"
+echo "data to download: (eg: '1 2 3', '1-4') default[1]"
 IFS=', ' read -a ranges_dep
 
 # parse choices
