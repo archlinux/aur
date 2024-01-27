@@ -1,18 +1,19 @@
-# Maintainer: Josef Miegl <josef@miegl.cz>
+# Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
+# Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=libosmo-sccp-git
-pkgver=1.0.0.r2.g8d712f0
+pkgver=1.8.0.r33.g02d664b1
 pkgrel=1
 pkgdesc="Osmocom SCCP + Sigtran (M3UA, SUA) library"
-url="http://openbsc.osmocom.org/trac/wiki/libosmo-sccp"
+url="https://osmocom.org/projects/libosmo-sccp"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
 depends=('libosmocore' 'libosmo-netif' 'lksctp-tools' 'talloc')
 makedepends=('git')
-provides=("${pkgname%-git}")
+provides=("libosmo-sigtran.so=${pkgver}")
 conflicts=("${pkgname%-git}")
 backup=('etc/osmocom/osmo-stp.cfg')
-source=("git+https://git.osmocom.org/${pkgname%-git}")
+source=("git+https://gitea.osmocom.org/osmocom/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -27,7 +28,9 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc \
+              --localstatedir=/var
   make
 }
 
