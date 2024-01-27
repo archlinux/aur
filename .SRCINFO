@@ -1,15 +1,14 @@
 pkgbase = lgtv-git
 	pkgver = r6.000e902
-	pkgrel = 1
-	url = https://github.com/SaschaWessel/lgtv
+	pkgrel = 2
+	url = https://github.com/ammgws/lgtv
 	arch = any
 	license = GPL
 	depends = websocat
 	depends = wakeonlan
 	provides = lgtv
 	conflicts = lgtv
-	source = lgtv::git+https://github.com/SaschaWessel/lgtv.git
+	source = lgtv::git+https://github.com/ammgws/lgtv
 	md5sums = SKIP
 
 pkgname = lgtv-git
-

@@ -1,9 +1,9 @@
 pkgname=lgtv-git
 pkgver=r6.000e902
-pkgrel=1
+pkgrel=2
 arch=('any')
-url="https://github.com/SaschaWessel/lgtv"
-source=("${pkgname%-*}::git+https://github.com/SaschaWessel/lgtv.git")
+url="https://github.com/ammgws/lgtv"
+source=("${pkgname%-*}::git+$url")
 depends=('websocat' 'wakeonlan')
 provides=("lgtv")
 conflicts=("lgtv")
