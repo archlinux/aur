@@ -14,4 +14,5 @@ _sourcedirectory="$_projectname-$pkgver"
 
 package() {
 	install -Dm644 "$srcdir/$_projectname-$pkgver/release/50-framework-inputmodule.rules" "$pkgdir/usr/lib/udev/rules.d/50-framework-inputmodule.rules"
+	install -Dm644 "$srcdir/$_projectname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/MIT"
 }
