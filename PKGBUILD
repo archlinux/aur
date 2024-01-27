@@ -13,10 +13,10 @@ source=(
   "https://software.concise.cc/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
 )
 sha512sums=(
-  'ca65aceedb19f874278e0769d0551efb949075d9b37f207991d3424872a9285814470f34cee8abcdf0ac84265632c64f68e17f39931fbf42ce8d1593dae00aef'
+  'de48fdd15e76602a8c04665b1053359a1e9145b15034e39606c454661b35aef68f34e032c6253582abeab3dc4d43d3f16fb6b54d1a3410ba729b666488dc7f68'
 )
 md5sums=(
-  'fd6666f731e5649102f0d218e7683c80'
+  'f8cb5cae95f2c5cf46a826b8e620c5de'
 )
 validpgpkeys=(
   '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
@@ -35,7 +35,7 @@ package() {
   cp -ar ${srcdir}/${pkgname}/usr/lib/node_modules/${pkgname}/* "${pkgdir}"/usr/lib/node_modules/${pkgname} 2>/dev/null & installed=$?;
   [ $installed -eq 0 ] || cp -ar ${srcdir}/usr/lib/node_modules/${pkgname}/* "${pkgdir}"/usr/lib/node_modules/${pkgname}
 
-  install -Dm644 ${srcdir}/${pkgname}/usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" 2>/dev/null ||
-    install -Dm644 ${srcdir}/usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 ${srcdir}/${pkgname}/usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" 2>/dev/null & installed=$?;
+  [ $installed -eq 0 ] || install -Dm644 ${srcdir}/usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 }
