@@ -6,7 +6,7 @@ pkgrel='1'
 pkgdesc='Functional reactive programming with incremental changes in data structures for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"
-license=('custom:LGPL3 with linking exception')
+license=('LGPL-3.0-or-later WITH OCaml-LGPL-linking-exception')
 depends=('ocaml>=4.08.0' 'ocaml-react>=1.2.1')
 makedepends=('dune>=1.0.0')
 options=('!strip')

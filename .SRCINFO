@@ -5,7 +5,7 @@ pkgbase = ocaml-reactivedata
 	url = https://github.com/ocsigen/reactiveData
 	arch = x86_64
 	arch = aarch64
-	license = custom:LGPL3 with linking exception
+	license = LGPL-3.0-or-later WITH OCaml-LGPL-linking-exception
 	makedepends = dune>=1.0.0
 	depends = ocaml>=4.08.0
 	depends = ocaml-react>=1.2.1
