@@ -4,11 +4,12 @@ pkgbase = perl-compass-points
 	pkgrel = 2
 	url = https://metacpan.org/dist/Compass-Points
 	arch = any
-	license = GPL
-	license = PerlArtistic
+	license = GPL-1.0-or-later OR Artistic-1.0-Perl
 	depends = perl
 	options = !emptydirs
 	source = perl-compass-points-0.02.tar.gz::https://cpan.metacpan.org/authors/id/J/JA/JANUS/Compass-Points-0.02.tar.gz
+	source = perl-compass-points--LICENSE::https://www.gnu.org/licenses/old-licenses/gpl-1.0.txt
 	sha512sums = 92fecbe5868aaae24662b0c856e0a1fed2b80d6bcf9c03fba05cee3bd4117b69c3b79933c0d3b26e145bda589cbafbb44565b0451661b0012cfbd4e38ce070d2
+	sha512sums = e239b539f2c46c1ae3da87c4983a0fda67dc8ae622d607b507b5c523af3bdf99e7bea8931e3a7c6007910bfe9e21a761e03e8203de95b5aceea425a97d0a84c9
 
 pkgname = perl-compass-points
