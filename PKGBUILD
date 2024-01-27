@@ -3,7 +3,7 @@
 
 pkgname=typora-plugin
 _pkgname=typora
-_typora_ver=1.7.6
+_typora_ver=1.8.8
 _plugin_ver=1.7.29
 pkgver=${_typora_ver}+plugin+${_plugin_ver}
 pkgrel=1
