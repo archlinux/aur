@@ -13,7 +13,7 @@ pkgbase = ocaml-ppx_optcomp
 	depends = ocaml-stdio>=0.16.0
 	depends = ocaml-ppxlib>=0.28.0
 	options = !strip
-	source = ocaml-ppx_optcomp-1:0.16.0-1.tar.gz::https://github.com/janestreet/ppx_optcomp/archive/v0.16.0.tar.gz
+	source = ocaml-ppx_optcomp-0.16.0.tar.gz::https://github.com/janestreet/ppx_optcomp/archive/v0.16.0.tar.gz
 	sha512sums = 8a10136a16423723a8cd1414ebad2c2029e8d28c563ce884eaceb85a363df7f019a08cee6194f7dbbc0290666909dbd9557d2900a8ce055ac57069364c785806
 
 pkgname = ocaml-ppx_optcomp
