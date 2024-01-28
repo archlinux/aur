@@ -1,0 +1,3 @@
+[ruby-prawn-templates]
+source = "gems"
+gems = "prawn-templates"
