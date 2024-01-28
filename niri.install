@@ -13,11 +13,11 @@ ${bold}Note${all_off}: Niri is not a complete desktop environment, please instal
 
 post_upgrade(){
   if [ -r $XDG_CONFIG_HOME/.config/niri/config.kdl ]; then
-  	current_conf=$XDG_CONFIG_HOME/.config/niri/config.kdl
+    current_conf=$XDG_CONFIG_HOME/.config/niri/config.kdl
   elif [ -r ~/.config/niri/config.kdl ]; then
     current_conf=~/.config/niri/config.kdl
-  else 
-  	return 0
+  else
+    return 0
   fi
   echo "Differences between the default configuration and the current:"
   echo
