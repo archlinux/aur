@@ -1,0 +1,19 @@
+pkgbase = calciluator
+	pkgdesc = Calculator
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Nebagibuappu/calc
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = unknown
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = git+https://github.com/Nebagibuappu/calc.git
+	md5sums = SKIP
+
+pkgname = calciluator
