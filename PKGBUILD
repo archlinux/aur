@@ -2,8 +2,8 @@
 # Project: nwg-shell for sway, https://github.com/nwg-piotr/nwg-shell
 
 pkgname=('nwg-shell-wallpapers')
-pkgver=0.1.4
-pkgrel=3
+pkgver=1.4
+pkgrel=1
 pkgdesc="nwg-shell wallpapers package"
 arch=('any')
 url="https://github.com/nwg-piotr/nwg-shell-wallpapers"
@@ -12,7 +12,7 @@ provides=('nwg-shell-wallpapers')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-shell-wallpapers/archive/v"$pkgver".tar.gz")
 
-md5sums=('7aa66923cd9656570c750e3b5975de7e')
+md5sums=('461bf47b42068d8ce3d6f55a50f7f0aa')
 
 package() {
   cd "${pkgname}-${pkgver}"

@@ -1,12 +1,12 @@
 pkgbase = nwg-shell-wallpapers
 	pkgdesc = nwg-shell wallpapers package
-	pkgver = 0.1.4
-	pkgrel = 3
+	pkgver = 1.4
+	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-shell-wallpapers
 	arch = any
 	license = CC0-1.0
 	provides = nwg-shell-wallpapers
-	source = nwg-shell-wallpapers-0.1.4.tar.gz::https://github.com/nwg-piotr/nwg-shell-wallpapers/archive/v0.1.4.tar.gz
-	md5sums = 7aa66923cd9656570c750e3b5975de7e
+	source = nwg-shell-wallpapers-1.4.tar.gz::https://github.com/nwg-piotr/nwg-shell-wallpapers/archive/v1.4.tar.gz
+	md5sums = 461bf47b42068d8ce3d6f55a50f7f0aa
 
 pkgname = nwg-shell-wallpapers
