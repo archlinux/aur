@@ -21,11 +21,6 @@ _makexconfig=
 ### Tweak kernel options prior to a build via gconfig
 _makegconfig=
 
-# NUMA is optimized for multi-socket motherboards.
-# A single multi-core CPU actually runs slower with NUMA enabled.
-# See, https://bugs.archlinux.org/task/31187
-_NUMAdisable=y
-
 # Compile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
 #
