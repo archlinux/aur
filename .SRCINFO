@@ -1,12 +1,12 @@
 pkgbase = mathematica-documentation-zh-cn
 	pkgdesc = Mathematica Documentation (zh-cn)
-	pkgver = 13.3
+	pkgver = 14.0.0
 	pkgrel = 1
 	url = http://www.wolfram.com/mathematica/
 	arch = any
 	license = proprietary
 	depends = mathematica-light
-	source = local://WLDocs_13.3_Chinese_LINUX.sh
-	md5sums = a42fc9fdb6d43986ea46c73c487441d3
+	source = local://WLDocs_14.0.0_Chinese_LINUX.sh
+	md5sums = 03c2ccf2009d4877e13f77e021e47b20
 
 pkgname = mathematica-documentation-zh-cn
