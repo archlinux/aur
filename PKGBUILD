@@ -3,10 +3,10 @@
 pkgname=sway-asan-git
 pkgver=1.10.r7275.e39b0b8
 pkgrel=1
-pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager (with address sanitizer)"
+pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager (with address sanitizer)'
 arch=('x86_64')
-url='https://github.com/swaywm/sway'
-license=('MIT')
+url="https://github.com/swaywm/sway"
+license=("MIT")
 depends=(
 "cairo"
 "gdk-pixbuf2"
