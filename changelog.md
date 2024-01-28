@@ -1,3 +1,30 @@
+## GE-Proton8-28
+
+- fixed `[S_API FAIL] SteamAPI_Init() failed; no appID found.` from being reported when running non-steam games
+- non-steam games will now run using wine inside proton rather than calling steam.exe with wine then the game inside steam -- this goes alongside the API failure fix
+- controller axis patch added from 8-27 has been removed as it is now properly upstreamed
+- added ULWGL support for non-steam games (https://github.com/Open-Wine-Components/ULWGL)
+- beamng VR patch removed per request by developers, they have stated they will fix the issue in 0.32 (https://www.beamng.com/threads/experimental-virtual-reality.94206/page-27#post-1674152)
+- black desert online now works
+
+Protonfixes:
+
+- now using ULWGL-protonfixes
+- can now call the winetricks gui using util.protontricks('gui')
+- winetricks now performs an internet check before attempting any downloads
+- fixed long standing issue with protontricks not being able to install dotnet4* using anything newer than proton 5. works now and no longer requires proton 5.
+- fixed dll overwrites in winetricks, no longer need to maintain a massive list of specific overwriteable dlls in proton
+- protonfixes added for Catherine Classic -- videos now fully working
+- protonfixes added for Ys Origin -- videos now fully working
+- protonfixes for Age of Wonders -- videos now fully working
+- protonfixes added for Model 2 emulator
+- protonfixes added for Alien Breed: Impact
+- protonfixes added for Alien Breed 2: Assault
+- protonfixes added for Alien Breed 3: Descent
+- protonfixes added for Black Desert Online NOSTEAM=1 option. Launch game like `NOSTEAM=1 %command%` to launch non-steam standalone version.
+
+Files will auto-attach to release when finished building in Actions: https://github.com/GloriousEggroll/proton-ge-custom/actions
+
 ## GE-Proton8-27
 
 - Disabled Nvidia Latency Reflex patches. After discussion with dxvk devs they are currently deemed problematic and need more work, and are known to currently cause stutters in games even when the feature is disabled. We will re-enable the patches when they are ready.
