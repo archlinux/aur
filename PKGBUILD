@@ -19,6 +19,7 @@ prepare() {
 
 build() {
     cd "$pkgname-$_pkgver"
+    export CHEZMOI_MODIFY_MANAGER_BUILDER=aur
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --no-default-features --features=keyring
@@ -26,6 +27,7 @@ build() {
 
 check() {
     cd "$pkgname-$_pkgver"
+    export CHEZMOI_MODIFY_MANAGER_BUILDER=aur
     export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --no-default-features --features=keyring
 }
