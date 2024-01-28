@@ -1,0 +1,5 @@
+[wangle]
+source = "github"
+github = "facebook/wangle"
+prefix = "v"
+use_latest_release = true
