@@ -1,12 +1,13 @@
 pkgbase = python-screeninfo
 	pkgdesc = Python library to fetch location and size of physical screens
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rr-/screeninfo
 	arch = any
 	license = MIT
-	makedepends = python-poetry
-	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-poetry-core
+	makedepends = python-installer
 	depends = python
 	optdepends = libxinerama: xinerama backend
 	optdepends = libxrandr: randr backend
