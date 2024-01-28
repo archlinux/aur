@@ -1,40 +1,44 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 
 pkgname=tree-sitter-git
-pkgver=0.20.0.r129.g67de9435
+pkgver=0.20.9.r9.g78c297e6
 pkgrel=1
-pkgdesc='An incremental parsing system for programming tools'
-arch=('x86_64')
-url='https://github.com/tree-sitter/tree-sitter'
+pkgdesc="An incremental parsing system for programming tools"
+arch=('i686' 'x86_64')
+url="https://tree-sitter.github.io/tree-sitter/"
 license=('MIT')
-provides=('tree-sitter' 'libtree-sitter.so')
+depends=('glibc')
+makedepends=('git')
+provides=("tree-sitter=$pkgver" 'libtree-sitter.so')
 conflicts=('tree-sitter')
-makedepends=('git' 'cargo')
-source=("$pkgname::git+$url")
-sha512sums=('SKIP')
+options=('staticlibs')
+source=("git+https://github.com/tree-sitter/tree-sitter.git")
+sha256sums=('SKIP')
+
 
 pkgver() {
-	git -C "$pkgname" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
-}
+  cd "tree-sitter"
 
-prepare() {
-	cd "$pkgname/cli"
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
-	cd "$pkgname"
-	make
-	cd cli
-	RUSTUP_TOOLCHAIN=stable
-	CARGO_TARGET_DIR=target
-	cargo build --release --frozen --all-features
+  cd "tree-sitter"
+
+  make
 }
 
 package() {
-	cd "$pkgname"
-	make DESTDIR="$pkgdir" PREFIX=/usr install
-	install -D target/release/tree-sitter -t "$pkgdir"/usr/bin
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  cd "tree-sitter"
+
+  make \
+    DESTDIR="$pkgdir" \
+    PREFIX="/usr" \
+    install
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/tree-sitter"
 }
