@@ -1,21 +1,21 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bnbc
-_pkgver=1.23.0
+_pkgver=1.24.2
 pkgname=r-${_pkgname,,}
-pkgver=1.23.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Bandwise normalization and batch correction of Hi-C data'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgdesc="Bandwise normalization and batch correction of Hi-C data"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
-  r
   r-biocgenerics
   r-data.table
   r-ebimage
   r-genomeinfodb
   r-genomicranges
+  r-hicbricks
   r-iranges
   r-matrixstats
   r-preprocesscore
@@ -27,19 +27,21 @@ depends=(
 )
 optdepends=(
   r-biocstyle
+  r-bsgenome.hsapiens.ucsc.hg19
   r-knitr
   r-rmarkdown
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6735fd14e4001db10018f3b81b8d0e27c820b429d9b824b53eec882354d1f4b9')
+md5sums=('b67ce630de09f407a25d2e7c8fb1cd8b')
+b2sums=('0028d04999c144f4fa190a222d4d5f4ed186ce92d1d62363c4579c6e2862ac95a1948e24ea84ac2b4682500dceaae331ddd8dbc2619d700b172df795019552aa')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
