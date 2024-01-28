@@ -1,0 +1,5 @@
+[folly]
+source = "github"
+github = "facebook/folly"
+prefix = "v"
+use_latest_release = true
