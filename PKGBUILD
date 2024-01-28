@@ -10,7 +10,7 @@ license=('MIT')
 
 source=(
 	"https://github.com/XandrCopyrighted/xFetch/releases/download/2.0.0/xfetch.tar.gz"
-	"https://github.com/XandrCopyrighted/xFetch/blob/main/LICENSE"
+	"https://raw.githubusercontent.com/XandrCopyrighted/xFetch/main/LICENSE"
 )
 sha256sums=(
 	'SKIP'
