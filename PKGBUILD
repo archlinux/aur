@@ -1,7 +1,7 @@
 # Maintainer: nubz4lif <nubz4lif at proton dot me>
 pkgname=funkin-psych-git
 pkgver=0.7.3.r0.g2dfa2777
-pkgrel=1
+pkgrel=2
 pkgdesc="Friday Night Funkin' Engine intended to be a fix for the vanilla version's issues while also providing mod support."
 arch=("x86_64" "i686" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
 license=("Apache")
@@ -12,7 +12,7 @@ provides=("funkin")
 conflicts=("funkin")
 sha256sums=("SKIP"
         "8cb8c993a70609663b1dca92f8139ee06573828aee8cbc8b9a7d84aa4f7e74b0"
-        "c0ce512b409a5c01b696c5434c796dfc2a30bfb68b3aab352573b1072a16c9ce")
+        "3810018b574ee7bd9769d05b9ced17227d5cf0a3535c6441672b903b11845d6b")
 source=("Funkin::git+https://github.com/ShadowMario/FNF-PsychEngine"
         "funkin.desktop"
         "funkin.sh")

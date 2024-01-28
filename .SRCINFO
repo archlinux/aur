@@ -1,7 +1,7 @@
 pkgbase = funkin-psych-git
 	pkgdesc = Friday Night Funkin' Engine intended to be a fix for the vanilla version's issues while also providing mod support.
 	pkgver = 0.7.3.r0.g2dfa2777
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Noobz4Life/FNF-QuackEngine
 	arch = x86_64
 	arch = i686
@@ -22,6 +22,6 @@ pkgbase = funkin-psych-git
 	source = funkin.sh
 	sha256sums = SKIP
 	sha256sums = 8cb8c993a70609663b1dca92f8139ee06573828aee8cbc8b9a7d84aa4f7e74b0
-	sha256sums = c0ce512b409a5c01b696c5434c796dfc2a30bfb68b3aab352573b1072a16c9ce
+	sha256sums = 3810018b574ee7bd9769d05b9ced17227d5cf0a3535c6441672b903b11845d6b
 
 pkgname = funkin-psych-git
