@@ -1,0 +1,3 @@
+[python-pytest-json-report]
+source = "pypi"
+pypi = "pytest-json-report"
