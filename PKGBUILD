@@ -3,7 +3,7 @@
 
 pkgname=ruby-prawn-svg
 _name=${pkgname#ruby-}
-pkgver=0.33.0
+pkgver=0.34.0
 pkgrel=1
 pkgdesc="SVG renderer for Prawn Ruby PDF library "
 arch=(any)
@@ -28,7 +28,7 @@ source=(
   "fix-gem-files.patch"
 )
 sha256sums=(
-  '1a39c42ff02ffdeadddcfde69fc5a962f032fc651cb294732b83ad87158dc762'
+  'c1e5c634faa1f95e1a498cf6f3c43d3e96a9acfe0f2091bd817852c8b5934387'
   'fd1e6dee91c543bcd3f6f7be7b482fc4503f01533e5042625ae25f2210bf8521'
 )
 
@@ -52,7 +52,6 @@ prepare() {
 build() {
   cd "$_archive"
 
-  local _gemdir
   _gemdir="$(gem env gemdir)"
 
   gem build "$_name.gemspec"
@@ -96,9 +95,7 @@ build() {
 check() {
   cd "$_archive"
 
-  local _gemdir
   _gemdir="$(gem env gemdir)"
-
   GEM_HOME="tmp_install/$_gemdir" rspec
 }
 
