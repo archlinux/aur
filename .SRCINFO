@@ -1,11 +1,10 @@
 pkgbase = perl-dbd-oracle
 	pkgdesc = DBD::Oracle - Oracle database driver for the DBI module
 	pkgver = 1.83
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/DBD-Oracle
 	arch = any
-	license = GPL
-	license = PerlArtistic
+	license = GPL-1.0-or-later OR Artistic-1.0-Perl
 	makedepends = oracle-instantclient-sdk
 	makedepends = oracle-instantclient-sqlplus
 	depends = oracle-instantclient-basic

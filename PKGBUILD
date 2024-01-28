@@ -4,11 +4,11 @@
 
 pkgname=perl-dbd-oracle
 pkgver=1.83
-pkgrel=1
+pkgrel=2
 pkgdesc="DBD::Oracle - Oracle database driver for the DBI module"
 arch=('any')
 url="http://search.cpan.org/dist/DBD-Oracle"
-license=('GPL' 'PerlArtistic')
+license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 depends=('oracle-instantclient-basic' 'perl-dbi')
 makedepends=('oracle-instantclient-sdk' 'oracle-instantclient-sqlplus')
 options=('!emptydirs')
@@ -17,7 +17,8 @@ sha256sums=('51fe9c158955fda0ca917a806863f0bc51068b533fbbc7423b3cc4ad595ed153')
 
 prepare() {
 	if [[ -z ${ORACLE_HOME} ]]; then
-		error "No Oracle / Instant Client installation found."
+		echo "No Oracle / Instant Client installation found"
+		exit 1
 	fi
 }
 
