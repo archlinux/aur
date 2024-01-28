@@ -5,7 +5,7 @@ _pkgname=httpgd
 _pkgver=1.3.1
 pkgname=r-${_pkgname,,}
 pkgver=1.3.1
-pkgrel=1
+pkgrel=4
 pkgdesc="A 'HTTP' Server Graphics Device"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -28,7 +28,7 @@ optdepends=(
   r-testthat
   r-xml2
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('6dbfe3aaf70a004abb92268a80816bb604033b094d46420ba14f3ffaf13adaee')
 
 build() {

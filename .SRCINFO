@@ -1,7 +1,7 @@
 pkgbase = r-httpgd
 	pkgdesc = A 'HTTP' Server Graphics Device
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=httpgd
 	arch = x86_64
 	license = GPL
@@ -19,7 +19,7 @@ pkgbase = r-httpgd
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/httpgd_1.3.1.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/httpgd/httpgd_1.3.1.tar.gz
 	sha256sums = 6dbfe3aaf70a004abb92268a80816bb604033b094d46420ba14f3ffaf13adaee
 
 pkgname = r-httpgd
