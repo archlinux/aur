@@ -1,6 +1,6 @@
 # Maintainer: ChongChengAC <408173145@qq.com>
 pkgname=casr
-pkgver=2.10.0
+pkgver=2.10.1
 pkgrel=1
 pkgdesc="Collect crash (or UndefinedBehaviorSanitizer error) reports, triage, and estimate severity."
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('APACHE')
 depends=('gcc-libs' 'gdb' 'lsb-release')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('11891110d6e9a1aa2e06225254ecc85a78cb4b8873b525b832b6a2fcc7d164ee325971577ac70fe0aced79936834c2d8cf8e0430ea929d9f530199b6c9c4dc97')
+b2sums=('6f2ad46bb77927ec2eeffab31ce14df862b1e9da1548cb31ca6524442f59dfc3d81355f3de9642ba625a071b4ec9b70988d5867e2dd363d50f2fce7c4ed24e80')
 
 prepare() {
 	cd "$pkgname-$pkgver"
