@@ -1,0 +1,3 @@
+[python-envisage]
+source = "pypi"
+pypi = "envisage"
