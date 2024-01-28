@@ -2,7 +2,7 @@
 
 # Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgname=vdr-markad
-pkgver=3.4.5
+pkgver=3.4.6
 pkgrel=1
 _logover=ea2e182ec798375f3830f8b794e7408576f139ad
 epoch=1
@@ -14,12 +14,10 @@ license=('GPL-2.0-or-later')
 depends=("vdr-api=${_vdrapi}" 'libavcodec.so' 'libavfilter.so' 'libavformat.so' 'libavutil.so' 'libswresample.so')
 _plugname=${pkgname//vdr-/}
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kfb77/vdr-plugin-markad/archive/V$pkgver.tar.gz"
-        "$pkgname-logos-1.tar.gz::https://github.com/vdr-projects/vdr-plugin-markad/archive/$_logover.tar.gz"
-        "50-$_plugname.conf")
+        "$pkgname-logos-1.tar.gz::https://github.com/vdr-projects/vdr-plugin-markad/archive/$_logover.tar.gz")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-sha256sums=('463a95d1ccafe463bd0dc509844942e40833b50212095220b15098219c5d7824'
-            'b2e58edae4899272a58c89d193089adf900e5098d57bf1fb449d4f308b61e9a8'
-            'f756e221232e87275cb0094f27797b2e8345a9d0b0bf15de21a5d30161cae70c')
+sha256sums=('b1c830562dfc115155f9f4259cfa5fbdb6fdf8a4b499550d841ad871077e351d'
+            'b2e58edae4899272a58c89d193089adf900e5098d57bf1fb449d4f308b61e9a8')
 
 prepare() {
   cd "${srcdir}/vdr-plugin-${_plugname}-$pkgver"
@@ -41,5 +39,5 @@ package() {
   mv "$pkgdir/var/lib/markad" "$pkgdir/usr/share/markad"
   ln -s /usr/share/markad "$pkgdir/var/lib/markad"
 
-  install -Dm644 "$srcdir/50-$_plugname.conf" "$pkgdir/etc/vdr/conf.avail/50-$_plugname.conf"
+  install -Dm644 "plugin/contrib/$_plugname.conf" "$pkgdir/etc/vdr/conf.avail/50-$_plugname.conf"
 }
