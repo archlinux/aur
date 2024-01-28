@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-mpv
 pkgver=1.5.2
-pkgrel=1
-_vdrapi=2.6.5
+pkgrel=2
+_vdrapi=2.6.6
 pkgdesc="mpv player plugin for VDR"
 url="https://github.com/ua0lnj/vdr-plugin-mpv"
 arch=('x86_64' 'i686')
