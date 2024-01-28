@@ -3,7 +3,7 @@
 
 pkgname=librewolf-kde-appmenu
 _pkgname=librewolf
-pkgver=117.0.1
+pkgver=121.0
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom. KDE-appmenu applied"
 url="https://librewolf.net/"
@@ -16,10 +16,11 @@ license=(
   MPL
 )
 depends=(
-  dbus-glib
+  dbus
   ffmpeg
   gtk3
   libpulse
+  libxss
   libxt
   mime-types
   nss
@@ -30,7 +31,6 @@ makedepends=(
   cbindgen
   clang
   diffutils
-  dump_syms
   git
   imake
   inetutils
@@ -83,8 +83,8 @@ source=(
   "unity-menubar.patch"
 )
 
-sha256sums=('90824812e1d8fae5b7b58a49ba662921f7f6a955b596a8a705e6073a228b7e3c'
-            'SKIP'
+sha256sums=('8e630a8a78a9fb2febb14fcc0d5b3991b8f21aca401362f6105100e495540339'
+            'ad86df1837a4b369a9e19f07a42af81178dc8d87166ba7d3b56fe8a8235fd5ae'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1'
             '1d713370fe5a8788aa1723ca291ae2f96635b92bc3cb80aea85d21847c59ed6d'
             'SKIP'
@@ -220,9 +220,12 @@ END
 
     ./mach package
 
+    export DISPLAY=:99
+
     LLVM_PROFDATA=llvm-profdata \
       JARLOG_FILE="$PWD/jarlog" \
-      xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
+      LIBGL_ALWAYS_SOFTWARE=true \
+      xvfb-run -a -s "-screen 0 1920x1080x24" \
       ./mach python build/pgo/profileserver.py
 
     stat -c "Profile data found (%s bytes)" merged.profdata

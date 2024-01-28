@@ -16,21 +16,21 @@ How to apply this patch:
 ---
  browser/components/preferences/main.js        |  18 +++
  browser/components/shell/moz.build            |   2 +
- .../components/shell/nsKDEShellService.cpp    | 109 ++++++++++++++++++
- browser/components/shell/nsKDEShellService.h  |  32 +++++
+ .../components/shell/nsKDEShellService.cpp    | 108 ++++++++++++++++++
+ browser/components/shell/nsKDEShellService.h  |  32 ++++++
  .../components/shell/nsUnixShellService.cpp   |  22 ++++
  browser/components/shell/nsUnixShellService.h |  15 +++
- 6 files changed, 198 insertions(+)
+ 6 files changed, 197 insertions(+)
  create mode 100644 browser/components/shell/nsKDEShellService.cpp
  create mode 100644 browser/components/shell/nsKDEShellService.h
  create mode 100644 browser/components/shell/nsUnixShellService.cpp
  create mode 100644 browser/components/shell/nsUnixShellService.h
 
 diff --git a/browser/components/preferences/main.js b/browser/components/preferences/main.js
-index 820e46fb006567bfdf93e2a46da5e3c07d42bf10..57d1c21bdecc2d55d0bed30246e684d3b97ad7fa 100644
+index 201d3c32da2ddb8356ff549c83cdcc608b959222..fd5cdeef683053c6888acd78b197c689b6c65b2f 100644
 --- a/browser/components/preferences/main.js
 +++ b/browser/components/preferences/main.js
-@@ -294,6 +294,13 @@ var gMainPane = {
+@@ -297,6 +297,13 @@ var gMainPane = {
        }, backoffTimes[this._backoffIndex]);
      }
  
@@ -44,10 +44,10 @@ index 820e46fb006567bfdf93e2a46da5e3c07d42bf10..57d1c21bdecc2d55d0bed30246e684d3
      this.initBrowserContainers();
      this.buildContentProcessCountMenuList();
  
-@@ -1727,6 +1734,17 @@ var gMainPane = {
+@@ -1750,6 +1757,17 @@ var gMainPane = {
        }
        try {
-         shellSvc.setDefaultBrowser(true, false);
+         shellSvc.setDefaultBrowser(false);
 +        if (kde_session == 1) {
 +          var shellObj = Components.classes["@mozilla.org/file/local;1"]
 +            .createInstance(Components.interfaces.nsILocalFile);
@@ -63,7 +63,7 @@ index 820e46fb006567bfdf93e2a46da5e3c07d42bf10..57d1c21bdecc2d55d0bed30246e684d3
          console.error(ex);
          return;
 diff --git a/browser/components/shell/moz.build b/browser/components/shell/moz.build
-index eb88cb287dc3f04022b74b978666118bbd5fa6b2..95277533781a7224d108e3c45731a6d9a89ba1a0 100644
+index fbcb6b9e1070040f682c8e89c0eace7b7658dddf..d68a08c67ec4c0c03e2eb7aba43e283795803118 100644
 --- a/browser/components/shell/moz.build
 +++ b/browser/components/shell/moz.build
 @@ -36,6 +36,8 @@ elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "gtk":
@@ -77,10 +77,10 @@ index eb88cb287dc3f04022b74b978666118bbd5fa6b2..95277533781a7224d108e3c45731a6d9
          SOURCES += [
 diff --git a/browser/components/shell/nsKDEShellService.cpp b/browser/components/shell/nsKDEShellService.cpp
 new file mode 100644
-index 0000000000000000000000000000000000000000..152a3aca87ea73477bc75c4e93c01e5a52dda102
+index 0000000000000000000000000000000000000000..c0799319e4f1e65786e1ac4e01775051339399e6
 --- /dev/null
 +++ b/browser/components/shell/nsKDEShellService.cpp
-@@ -0,0 +1,109 @@
+@@ -0,0 +1,108 @@
 +/* -*- Mode: C++; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
 +/* This Source Code Form is subject to the terms of the Mozilla Public
 + * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -136,8 +136,7 @@ index 0000000000000000000000000000000000000000..152a3aca87ea73477bc75c4e93c01e5a
 +}
 +
 +NS_IMETHODIMP
-+nsKDEShellService::SetDefaultBrowser(bool aClaimAllTypes,
-+                                     bool aForAllUsers)
++nsKDEShellService::SetDefaultBrowser(bool aForAllUsers)
 +{
 +    nsCOMPtr<nsIMutableArray> command = do_CreateInstance( NS_ARRAY_CONTRACTID );
 +    if (!command)
@@ -151,7 +150,7 @@ index 0000000000000000000000000000000000000000..152a3aca87ea73477bc75c4e93c01e5a
 +    cmdstr->SetData("SETDEFAULTBROWSER"_ns);
 +    command->AppendElement( cmdstr );
 +
-+    paramstr->SetData( aClaimAllTypes ? "ALLTYPES"_ns : "NORMAL"_ns );
++    paramstr->SetData("ALLTYPES"_ns);
 +    command->AppendElement( paramstr );
 +
 +    return nsKDEUtils::command( command ) ? NS_OK : NS_ERROR_FAILURE;
