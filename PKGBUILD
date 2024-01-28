@@ -19,5 +19,5 @@ package() {
   install -d "$pkgdir"/usr/share/backgrounds/nwg-shell
   install -Dm644 "$pkgname"-"$pkgver"/wallpapers/* $pkgdir/usr/share/backgrounds/nwg-shell/
   install -Dm644 "$pkgname"-"$pkgver"/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "$pkgname"-"$pkgver"/README.md "$pkgdir/usr/share/doc/$pkgname/RAEDME.md"
+  install -Dm644 "$pkgname"-"$pkgver"/README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
