@@ -1,18 +1,18 @@
-# Maintainer: Josef Miegl <josef@miegl.cz>
+# Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
+# Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-sip-connector-git
-pkgver=1.2.0.r0.g336add4
+pkgver=1.6.3.r6.g6122400
 pkgrel=1
 pkgdesc="Gateway between the MNCC Interface of OsmoMSC and OsmoNITB and an external SIP trunk"
 url="https://osmocom.org/projects/osmo-sip-conector"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
-depends=('libosmocore' 'talloc' 'libosmo-abis' 'sofia-sip-bc')
+depends=('libosmocore' 'talloc' 'sofia-sip')
 makedepends=('git')
-provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=('etc/osmocom/osmo-sip-connector.cfg')
-source=("git+https://git.osmocom.org/${pkgname%-git}")
+source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -27,7 +27,9 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc \
+              --localstatedir=/var
   make
 }
 
