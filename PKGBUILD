@@ -10,7 +10,7 @@ source=(
 	'needrestart.hook'
 )
 arch=(any)
-license=('GPL')
+license=('GPL-2.0-or-later')
 options=(!emptydirs)
 depends=(perl-module-find
          perl-term-readkey
