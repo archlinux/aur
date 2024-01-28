@@ -1,7 +1,7 @@
 # Maintainer: Noah Vogt (noahvogt) <noah@noahvogt.com>
 
 pkgname=ungoogled-chromium-xdg-bin
-pkgver=120.0.6099.216
+pkgver=121.0.6167.85
 pkgrel=1
 pkgdesc="A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory (binary version)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kwallet: support for storing passwords in KWallet on Plasma')
 source=(https://github.com/noahvogt/${pkgname%-*}-aur/releases/download/$pkgver-$pkgrel/${pkgname%-*}-$pkgver-$pkgrel-x86_64.pkg.tar.zst
         index.html)
-sha256sums=('1b959b2666160968e040519ba01ccc02d224572fdb42b31825789270508820a5'
+sha256sums=('f42f62a393f1869dd5018a0e62a39ae324f4bfff0dd7672d9184b346591ba1bd'
             'a4cdd2b86f32d5302c2792be841ff40d982b19bb58a4e63df9d77f4c706b8665')
 provides=('chromium')
 conflicts=('chromium')
