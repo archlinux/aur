@@ -1,0 +1,14 @@
+pkgbase = onionpipe-bin
+	pkgdesc = Onion addresses for anything.
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/cmars/onionpipe
+	arch = x86_64
+	license = MIT
+	depends = tor
+	provides = onionpipe=${pkgver}
+	conflicts = onionpipe
+	source = https://github.com/cmars/onionpipe/releases/download/v1.1.2/onionpipe-linux-amd64-static
+	sha256sums = 5ec5f29e351c0a6b26fa36d40e88c86869702a0227fb1e11ae024214da3ae698
+
+pkgname = onionpipe-bin
