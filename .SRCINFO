@@ -51,7 +51,7 @@ pkgbase = waterfox-kde
 	options = !makeflags
 	options = zipman
 	options = !lto
-	source = git+https://github.com/MrAlex94/Waterfox.git#tag=GG6.0.8
+	source = git+https://github.com/MrAlex94/Waterfox.git#tag=G6.0.8
 	source = waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b0d4bea673c0a249cc5bfa7a4d5907e76ffc0fe3/waterfox-kde/waterfox.desktop
 	source = distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b0d4bea673c0a249cc5bfa7a4d5907e76ffc0fe3/waterfox-kde/distribution.ini
 	source = vendor.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b0d4bea673c0a249cc5bfa7a4d5907e76ffc0fe3/waterfox-kde/vendor.js

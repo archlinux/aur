@@ -19,7 +19,7 @@ replaces=("waterfox-g4-kpe" "waterfox-g3-kpe" "waterfox-g-kpe")
 options=('!emptydirs' '!makeflags' 'zipman' '!lto')
 _filesrev=b0d4bea673c0a249cc5bfa7a4d5907e76ffc0fe3
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-kde
-source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G$pkgver"
+source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G$_pkgver"
         "waterfox.desktop::$_filesurl/waterfox.desktop"
         "distribution.ini::$_filesurl/distribution.ini"
         "vendor.js::$_filesurl/vendor.js"
