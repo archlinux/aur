@@ -1,0 +1,3 @@
+[rdiff-backup]
+source = "pypi"
+pypi = "rdiff-backup"
