@@ -1,5 +1,6 @@
 *
 !.gitignore
-!PKGBUILD
+!.nvchecker.toml
 !.SRCINFO
+!PKGBUILD
 !fix-ldflags.patch

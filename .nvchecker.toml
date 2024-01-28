@@ -1,0 +1,3 @@
+[codechecker]
+source = "pypi"
+pypi = "codechecker"
