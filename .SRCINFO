@@ -1,0 +1,30 @@
+pkgbase = bitmagnet-git
+	pkgdesc = A self-hosted BitTorrent indexer, DHT crawler, content classifier and torrent search engine with web UI, GraphQL API and Servarr stack integration.
+	pkgver = v0.5.1
+	pkgrel = 1
+	url = https://bitmagnet.io/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	optdepends = postgresql: database
+	optdepends = redis: cache
+	optdepends = prometheus: metrics
+	optdepends = loki: logs
+	optdepends = grafana: dashboards
+	optdepends = pyroscope: profiling
+	provides = bitmagnet=v0.5.1
+	backup = etc/bitmagnet/config.yml
+	source = git+https://github.com/bitmagnet-io/bitmagnet
+	source = config.yml
+	source = bitmagnet.service
+	source = dirs.conf
+	source = user.conf
+	sha256sums = SKIP
+	sha256sums = 8c664222a5176e15c4db3fdbcb7b39d8c8efd86698f64dc37f8eb877af67e965
+	sha256sums = b8fe373d25c857f312cc4a88c4056065a9df39c5a2b3e560fd879723864c5b8f
+	sha256sums = 5f80125347060d22175732fa0304df425178ae54282ccf2a3ce9e22a970b60ae
+	sha256sums = 6289a984a94570fd25a0330646caabc20e6cb871d1b141d27cc98d6781d6b35a
+
+pkgname = bitmagnet-git
