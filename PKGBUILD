@@ -1,10 +1,10 @@
-# Maintainer: jdev082 <jdev0894@gmail.com>
-# Maintainer: Erde <erkkah@gmail.com>
-# Maintainer: Solomon Choina <shlomochoina@gmail.com>
+# Maintainer: BarrelGorilla <smartly_dude551@simplelogin.com>
+# Contributor: jdev082 <jdev0894@gmail.com>
+# Contributor: Erde <erkkah@gmail.com>
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 pkgname=tabby-bin
 _pkgname=tabby
-pkgver=1.0.201
+pkgver=1.0.205
 pkgrel=1
 pkgdesc="Tabby (formerly Terminus) is a highly configurable terminal emulator, SSH and serial client for Windows, macOS and Linux"
 arch=('x86_64')
