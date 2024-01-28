@@ -1,7 +1,8 @@
 *
 !.gitignore
-!PKGBUILD
+!.nvchecker.toml
 !.SRCINFO
+!PKGBUILD
 !use-system-scala.patch
 !neo4j.executable-template
 !neo4j.service

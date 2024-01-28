@@ -1,0 +1,4 @@
+[neo4j-community]
+source = "github"
+github = "neo4j/neo4j"
+use_max_tag = true
