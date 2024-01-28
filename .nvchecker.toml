@@ -1,0 +1,5 @@
+[archivebox]
+source = "github"
+github = "ArchiveBox/ArchiveBox"
+prefix = "v"
+use_latest_release = true
