@@ -2,8 +2,8 @@
 
 pkgname=nexfil
 pkgver=1.0.6
-_commit_hash=326fbacffedaabbd4f009271b53ba0f4223e83d5
-pkgrel=1
+_commit=326fbacffedaabbd4f009271b53ba0f4223e83d5
+pkgrel=2
 pkgdesc="OSINT tool for finding profiles by username"
 arch=(any)
 url="https://github.com/thewhiteh4t/nexfil"
@@ -24,10 +24,10 @@ makedepends=(
   python-wheel
 )
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/${_commit_hash}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
 sha256sums=('508b25876f35b92707ae5b40dba556fda88f5d83ab58b14de6be85389e18fa13')
 
-_archive="$pkgname-$_commit_hash"
+_archive="$pkgname-$_commit"
 
 build() {
   cd "$_archive"
@@ -40,5 +40,5 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }

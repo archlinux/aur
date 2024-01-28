@@ -1,7 +1,7 @@
 pkgbase = nexfil
 	pkgdesc = OSINT tool for finding profiles by username
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thewhiteh4t/nexfil
 	arch = any
 	license = MIT
