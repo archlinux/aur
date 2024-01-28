@@ -7,12 +7,12 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-hidpi-xprop-xclip-git"
-pkgver=0.32.3.r21.91d6be1f
+pkgver=0.34.0.r74.df990c80
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/hyprwm/Hyprland"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=(
 	libxcb
 	xcb-proto
@@ -41,6 +41,7 @@ depends=(
 	xcb-util-wm
 	seatd
 	xorg-xwayland-hidpi-xprop
+	tomlplusplus
 )
 makedepends=(
 	git
@@ -55,6 +56,7 @@ source=("${_pkgname}::git+https://github.com/hyprwm/Hyprland.git"
         "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
         "git+https://github.com/hyprwm/hyprland-protocols.git"
         "git+https://github.com/canihavesomecoffee/udis86.git"
+        "0001-Revert-compositor-send-WL_SURFACE_ERROR_INVALID_SIZE.patch"
         "0001-xwayland-support-HiDPI-scale.patch"
         "0002-Fix-configure_notify-event.patch"
         "0003-Fix-size-hints-under-Xwayland-scaling.patch"
@@ -65,6 +67,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            '7758eb3ca20b657e53b01c239c5234898342322f41af1cd9e9a8841fca2d5e2b'
             'b717f2f61aeb3bf670fe60424a8cd638d51e73dc66bd84277fada289bf2330d8'
             'acced048ce6359f4f9f894ee648e4c47fd5093db3fce285b60f73b9f80bb7ac9'
             '4e6b32ea58ecfd6a2cce7e5ddf09160136714de8b58e41a9919b30e06e998178'
@@ -86,7 +89,7 @@ prepare() {
 	git -c protocol.file.allow=always submodule update subprojects/hyprland-protocols
 	git -c protocol.file.allow=always submodule update subprojects/udis86
 	cd subprojects/wlroots
-	git revert -n 18595000f3a21502fd60bf213122859cc348f9af
+	patch -Np1 -i "${srcdir}"/0001-Revert-compositor-send-WL_SURFACE_ERROR_INVALID_SIZE.patch
 	patch -Np1 -i "${srcdir}"/0001-xwayland-support-HiDPI-scale.patch
 	patch -Np1 -i "${srcdir}"/0002-Fix-configure_notify-event.patch
 	patch -Np1 -i "${srcdir}"/0003-Fix-size-hints-under-Xwayland-scaling.patch
@@ -104,7 +107,9 @@ package() {
 	cd "${srcdir}/${_pkgname}"
 	meson install -C subprojects/wlroots/build --destdir "${pkgdir}/tmpwlr"
 	install -Dm755 build/Hyprland -t "${pkgdir}/usr/bin"
+	pushd "${pkgdir}/usr/bin" && ln -sf Hyprland hyprland && popd
 	install -Dm755 build/hyprctl/hyprctl -t "${pkgdir}/usr/bin"
+	install -Dm755 build/hyprpm/hyprpm -t "${pkgdir}/usr/bin"
 	install -Dm644 assets/*.png -t "${pkgdir}/usr/share/hyprland"
 	install -Dm644 example/hyprland.desktop -t "${pkgdir}/usr/share/wayland-sessions"
 	install -Dm644 example/hyprland.conf -t "${pkgdir}/usr/share/hyprland"
