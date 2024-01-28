@@ -1,7 +1,7 @@
 # Maintainer: Paul Irofti <paul@irofti.net>
 _name=wntr
 pkgname="python-$_name"
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 
 pkgdesc="Water Network Tool for Resilience"
@@ -14,17 +14,17 @@ depends=(python python-numpy python-scipy python-networkx python-pandas
 makedepends=(python-setuptools swig)
 
 # Clone Github for evaluator.i and other files needed by swig.
-source=("git+https://github.com/USEPA/WNTR#tag=$pkgver")
-md5sums=('SKIP')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('aed676833b6ca19b095ad26b7f0028107afef5a5c75a8aaed0ff98014405d752')
 
 build() {
-  cd "$srcdir/${_name^^}"
+  cd "$srcdir/$_name-$pkgver"
   python setup.py build_ext --inplace
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/${_name^^}"
+  cd "$srcdir/$_name-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
