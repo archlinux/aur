@@ -1,5 +1,6 @@
 *
 !.gitignore
-!PKGBUILD
+!.nvchecker.toml
 !.SRCINFO
+!PKGBUILD
 !build-shared-library.patch

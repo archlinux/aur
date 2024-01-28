@@ -1,0 +1,5 @@
+[edencommon]
+source = "github"
+github = "facebookexperimental/edencommon"
+prefix = "v"
+use_max_tag = true
