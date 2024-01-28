@@ -6,8 +6,8 @@ pkgbase = desktend-git
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = git
 	depends = libx11
+	source = git+https://github.com/ijanos/desktend.git
+	md5sums = SKIP
 
 pkgname = desktend-git
-
