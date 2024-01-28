@@ -1,0 +1,5 @@
+[stargate]
+source = "github"
+github = "stargatedaw/stargate"
+prefix = "release-"
+use_latest_release = true
