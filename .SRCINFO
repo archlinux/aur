@@ -1,7 +1,7 @@
 pkgbase = byteblitz
     pkgdesc = A CLI tool for viewing the binary content of files.
     pkgver = 1.0.0
-    pkgrel = 2 
+    pkgrel = 3 
     url = https://github.com/noahra/byteblitz
     arch = x86_64
     license = GPL3
