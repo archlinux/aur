@@ -12,7 +12,7 @@ _git="false"
 _pkg="chatty"
 _Pkg="Chatty"
 _proj="gnome"
-pkgbase="${_pkg}"
+pkgbase="purism-${_pkg}"
 pkgname=(
   "purism-${_pkg}"
 )
