@@ -1,4 +1,5 @@
 
+# Maintainer: Izenn <izenn@izenn.net>
 # Maintainer: Christopher Snowhill <kode54@gmail.com>
 # Contributor: Yurii Kolensykov <root@yurikoles.com>
 # Based on testing/linux by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
@@ -8,7 +9,7 @@
 #
 
 pkgbase=linux-drm-xe-next-git
-pkgver=6.6.r1217087.22fcf2404f56
+pkgver=6.8.r1248828.348769d1cbfa
 pkgrel=1
 pkgdesc='Linux kernel with bleeding-edge Intel Xe driver'
 _product="${pkgbase%-git}"
@@ -41,7 +42,7 @@ source=(
   config  # the main kernel config file
 )
 b2sums=('SKIP'
-        '9c22976b0c48a43794d544085c5ffcc57faca2eab1687082cb363ccf70f9aa4e0221ece7fb0ea41bbc43b9629a79c04b51b6feb4ba6f05e2d6452bcdee57ca78')
+        'SKIP')
 
 pkgver() {
   cd $_srcname
