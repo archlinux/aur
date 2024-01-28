@@ -53,7 +53,6 @@ package() {
   "${_py}" \
     setup.py \
       install \
-        --prefix=/usr \
 	--root="${pkgdir}" \
 	--optimize=0
   rm -f \
