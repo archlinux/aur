@@ -1,0 +1,3 @@
+[crudini]
+source = "pypi"
+pypi = "crudini"
