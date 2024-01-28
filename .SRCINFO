@@ -1,0 +1,25 @@
+pkgbase = python-toml-git
+	pkgdesc = A Python library for parsing and creating TOML
+	pkgver = 0.10.2.r9.g65bab75
+	pkgrel = 1
+	url = https://github.com/uiri/toml
+	arch = any
+	license = MIT
+	checkdepends = python-numpy
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-toml=0.10.2.r9.g65bab75
+	conflicts = python-toml
+	source = toml::git+https://github.com/uiri/toml.git
+	source = python-toml-0.10.1-install_type_hints.patch
+	sha256sums = SKIP
+	sha256sums = 7597ca115ba497797cf7c1330f5e93146ff5a924ef3bc331a8e77da12ee880cf
+	b2sums = SKIP
+	b2sums = 23449773cb0c7004d6c367c4cef666561e16fcd38166d17428a8192f6649bdfa76277f20bd4662f7571bc020fba6e5614e8f7dcf8502d18eb1e0ede6cb3ddde2
+
+pkgname = python-toml-git
