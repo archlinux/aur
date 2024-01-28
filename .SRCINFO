@@ -11,8 +11,8 @@ pkgbase = wireless-info-icon-git
 	makedepends = pkgconf
 	makedepends = qt5
 	depends = qt5
-	provides = xdr-gtk
-	conflicts = xdr-gtk
+	provides = wireless-info-icon
+	conflicts = wireless-info-icon
 	source = git+https://github.com/kkonradpl/wireless-info-icon/
 	md5sums = SKIP
 
