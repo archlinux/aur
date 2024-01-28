@@ -1,0 +1,4 @@
+[mit-scheme]
+source = "regex"
+url = "https://ftp.gnu.org/gnu/mit-scheme/stable.pkg/"
+regex = '<a href="(\d+\.\d+(?:\.\d+)?)/">'
