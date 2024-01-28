@@ -1,4 +1,5 @@
-# Maintainer: Josef Miegl <josef@miegl.cz>
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Contributor: Josef Miegl <josef@miegl.cz>
 # Contributor: Romain Porte <microjoe@microjoe.org>
 # Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
 # Contributor: valvetime <valvetimepackages@gmail.com>
@@ -6,52 +7,69 @@
 # Contributor: Tom Swartz <tom@tswartz.net>
 
 pkgname=cubicsdr
+_pkgname=CubicSDR
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-Platform Software-Defined Radio Application"
-arch=('i686' 'x86_64' 'aarch64' 'armv7h')
+arch=(x86_64 aarch64 armv7h i686)
 url="https://github.com/cjcliffe/CubicSDR"
-license=('GPL')
-depends=('libpulse' 'wxwidgets-gtk3' 'wxwidgets-common' 'soapysdr' 'liquid-dsp-git')
-optdepends=('fftw: FFTW support'
-            'soapyrtlsdr: support for RTL-SDR (RTL2832U) dongles'
-            'soapyairspy: support for Airspy R2 and Airspy Mini'
-            'soapysdrplay: support for SDRplay RSP'
-            'soapyhackrf: support for HackRF'
-            'limesuite: support for LimeSDR'
-            'soapyosmo: support for MiriSDR and RFSpace'
-            'soapyplutosdr: support for PlutoSDR'
-            'soapyremote: use any SoapySDR device remotely over network'
-            'hamlib: hamlib support')
-makedepends=('git' 'cmake' 'libicns')
-install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cjcliffe/CubicSDR/archive/${pkgver}.tar.gz")
-sha256sums=('790f851e08f1068081a8593dfd4a149c7414e7d70c1f5cafd287331df493b811')
+license=(GPL-2.0-or-later)
+depends=(
+  gcc-libs
+  glibc
+  hamlib
+  hicolor-icon-theme
+  libglvnd
+  libpulse
+  liquid-dsp
+  soapysdr
+  wxwidgets-common
+  wxwidgets-gtk3
+)
+makedepends=(cmake)
+optdepends=(
+  'fftw: FFTW support'
+  'limesuite: support for LimeSDR'
+  'soapyairspy: support for Airspy R2 and Airspy Mini'
+  'soapyhackrf: support for HackRF'
+  'soapyosmo: support for MiriSDR and RFSpace'
+  'soapyplutosdr: support for PlutoSDR'
+  'soapyremote: use any SoapySDR device remotely over network'
+  'soapyrtlsdr: support for RTL-SDR (RTL2832U) dongles'
+  'soapysdrplay: support for SDRplay RSP'
+)
+
+source=(
+  "$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+  "cubicsdr.desktop"
+)
+sha256sums=(
+  '790f851e08f1068081a8593dfd4a149c7414e7d70c1f5cafd287331df493b811'
+  '64b4afff640126786e12305b1be7fe7a2fdb715fd4a7f587bb426c2e19c27f1d'
+)
+
+_archive="$_pkgname-$pkgver"
 
 build() {
-  cd "CubicSDR-${pkgver}"
-  mkdir -p build
-  cd build
+  cd "$_archive"
 
-  # Determine if hamlib should be enabled
-  if rigctl -V &>/dev/null; then
-    _hamlib='-DUSE_HAMLIB=1';
-    msg2 "hamlib found and enabled!"
-  else
-    _hamlib='';
-    msg2 "hamlib not found"
-  fi
-
-  cmake ../ -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DwxWidgets_CONFIG_EXECUTABLE=$(which wx-config) \
-    $_hamlib
-  make
+  cmake -S . -B build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -Wno-dev \
+    -DUSE_HAMLIB=ON \
+    -DENABLE_DIGITAL_LAB=ON
+  cmake --build build
 }
 
 package() {
-  cd "CubicSDR-${pkgver}/build"
-  make DESTDIR="${pkgdir}" install
-}
+  cd "$_archive"
 
-# vim:set ts=2 sw=2 et:
+  DESTDIR="$pkgdir" cmake --install build
+
+  install -Dm644 -t "$pkgdir/usr/share/applications" "$srcdir/cubicsdr.desktop"
+  install -Dm644 -t "$pkgdir/usr/share/icons/hicolor/256x256/apps" \
+    "$pkgdir/usr/share/cubicsdr/CubicSDR.png"
+
+  ln -s /usr/bin/CubicSDR "$pkgdir/usr/bin/cubicsdr"
+}

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=CubicSDR
+Comment=Software-Defined Radio Application
+Icon=CubicSDR
+Exec=/usr/bin/CubicSDR
+Terminal=false
+Categories=Science
+StartupWMClass=CubicSDR
