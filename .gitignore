@@ -1,6 +1,7 @@
 *
 !.gitignore
-!PKGBUILD
+!.nvchecker.toml
 !.SRCINFO
+!PKGBUILD
 !vpn-unlimited-daemon.service
 !vpn-unlimited.desktop
