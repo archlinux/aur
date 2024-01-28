@@ -1,3 +1,13 @@
+2024-01-25 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.5.2.1-1:
+    Refactored and unified selected bot config properties into new FarmingPreferences setting: Paused, ShutdownOnFarmingFinished, SendOnFarmingFinished, FarmPriorityQueueOnly, SkipRefundableGames, EnableRiskyCardsDiscovery, AutoSteamSaleEvent. ASF will automatically convert your existing bot configs into new format, and if you're using --no-config-migrate then you'll need to migrate manually (@JustArchi).
+    Added new SkipUnplayedGames option to FarmingPreferences (@JustArchi #3126).
+    Added additional aliases: al for addlicense and ala for addlicense ASF (@JustArchi #3127).
+    ASF will now shutdown if you attempt to load mismatched versions of official plugins into the process (@JustArchi #3128).
+    MatchActively will now slightly deprioritize bots with 1-game inventories (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2024-01-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.5.1.4-1:
     Fixed a possibility of sending invalid heartbeats to ASF STM if account was unused for more than 14 days (@JustArchi).
