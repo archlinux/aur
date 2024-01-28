@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 # Project: nwg-shell for sway, https://github.com/nwg-piotr/nwg-shell
 pkgname=('nwg-look-bin')
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="GTK3 settings editor adapted to work w/ wlroots-based compositors (binary package)"
 arch=('x86_64')
@@ -13,14 +13,18 @@ depends=('gtk3' 'glib2' 'cairo' 'xcur2png')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-look/releases/download/v"$pkgver"/nwg-look-v"$pkgver"_x86_64.tar.gz")
 
-md5sums=('e57210d10c1e9e8f8dcdf2a4495e3064')
+md5sums=('f9ad5bb85ceef300c98034b7d3aaa5d2')
 
 package() {
   cd "$srcdir"
   install -d "$pkgdir"/usr/share/nwg-look
+  install -d "$pkgdir"usr/share/doc/nwg-look
+  install -d "$pkgdir"usr/share/licenses/nwg-look
   install -Dm644 -t "$pkgdir"/usr/share/nwg-look stuff/main.glade
   install -Dm644 -t "$pkgdir"/usr/share/nwg-look/langs langs/*
   install -Dm644 -t "$pkgdir"/usr/share/applications stuff/nwg-look.desktop
   install -Dm644 -t "$pkgdir"/usr/share/pixmaps stuff/nwg-look.svg
   install -Dm755 -t "$pkgdir"/usr/bin nwg-look
+  install -Dm755 -t "$pkgdir"/usr/share/doc/nwg-look README.md
+  install -Dm755 -t "$pkgdir"/usr/share/licenses/nwg-look LICENSE
 }
