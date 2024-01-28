@@ -1,10 +1,10 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 # Contributor: Josef Miegl <josef@miegl.cz>
 
-pkgname=osmo-sgsn-git
-pkgver=1.11.1.r2.gf2545b1b8
+pkgname=osmo-sgsn
+pkgver=1.11.1
 pkgrel=1
-pkgdesc="Osmocom's  Serving GPRS Support Node for 2G and 3G packet-switched mobile networks"
+pkgdesc="Osmocom's Serving GPRS Support Node for 2G and 3G packet-switched mobile networks"
 url="https://osmocom.org/projects/osmosgsn"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
@@ -18,25 +18,14 @@ depends=('libosmocore'
          'libgtp.so' # from osmo-ggsn
          'talloc'
          'c-ares')
-makedepends=('git')
-conflicts=("${pkgname%-git}")
+conflicts=("${pkgname}-git")
 backup=('etc/osmocom/osmo-sgsn.cfg'
         'etc/osmocom/osmo-gtphub.cfg')
-source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}.git")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "${pkgname%-git}"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "${pkgname%-git}"
-  autoreconf -f -i
-}
+source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('af0ecf64eeabc43aa17c6f7ce4e4676e48b0cdaea7bcac42f2030fce26cd901b')
 
 build() {
-  cd "${pkgname%-git}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
               --localstatedir=/var \
@@ -45,7 +34,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname%-git}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR=${pkgdir} install
 }
 
