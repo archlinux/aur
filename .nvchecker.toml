@@ -1,0 +1,5 @@
+[azcopy]
+source = "github"
+github = "Azure/azure-storage-azcopy"
+prefix = "v"
+use_latest_release = true

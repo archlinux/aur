@@ -1,7 +1,5 @@
 *
 !.gitignore
-!PKGBUILD
+!.nvchecker.toml
 !.SRCINFO
-!Makefile
-!remove-version-check.patch
-!fix-lifecyclemgr-nil-error.patch
+!PKGBUILD
