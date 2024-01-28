@@ -1,4 +1,6 @@
 *
-!PKGBUILD
+!.gitignore
+!.nvchecker.toml
 !.SRCINFO
-!*.install
+!PKGBUILD
+!kubectl-krew.install
