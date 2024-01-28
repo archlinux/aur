@@ -2,7 +2,7 @@
 # Project: nwg-shell for sway, https://github.com/nwg-piotr/nwg-shell
 pkgname=('nwg-menu')
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="MenuStart for sway and other wlroots-based compositors"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/nwg-menu"
