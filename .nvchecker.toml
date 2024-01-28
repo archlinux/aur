@@ -1,0 +1,4 @@
+[sentry-native]
+source = "github"
+github = "getsentry/sentry-native"
+use_latest_release = true
