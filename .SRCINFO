@@ -1,6 +1,6 @@
 pkgbase = nwg-menu-bin
 	pkgdesc = MenuStart for sway and other wlroots-based compositors
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-menu
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = nwg-menu-bin
 	provides = nwg-menu
 	conflicts = nwg-menu-git
 	conflicts = nwg-menu
-	source = nwg-menu-bin-0.1.1.tar.gz::https://github.com/nwg-piotr/nwg-menu/releases/download/v0.1.1/nwg-menu-v0.1.1_x86_64.tar.gz
-	md5sums = 949c053bb26a7c1f5399e8dd74a3a34f
+	source = nwg-menu-bin-0.1.2.tar.gz::https://github.com/nwg-piotr/nwg-menu/releases/download/v0.1.2/nwg-menu-v0.1.2_x86_64.tar.gz
+	md5sums = 7ee9f8f70222e87150ca089a87735188
 
 pkgname = nwg-menu-bin
