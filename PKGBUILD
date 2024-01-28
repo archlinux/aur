@@ -2,7 +2,7 @@
 # Contributor: Wojciech Kępka (wojciech@wkepka.dev) 
 pkgname=helix-git
 _pkgname=helix
-pkgver=23.10.r205.g44cb8e547
+pkgver=23.10.r237.g0d09fb4f5
 pkgrel=1
 pkgdesc="A text editor written in rust"
 url="https://helix-editor.com"
@@ -33,19 +33,24 @@ EOF
     chmod +x "$_bin"
 
     cd "${_pkgname}"
-    git submodule update --force --init --recursive --depth 1 --jobs 8
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "${_pkgname}"
+    export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release
+    cargo build --frozen --offline --release
 }
 
 check() {
     cd "${_pkgname}"
-    cargo test --frozen --all-features --workspace
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo test --frozen --offline --workspace
+    cargo integration-test --frozen --offline
 }
 
 package() {
