@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-lcdproc
 pkgver=1.0.0
-_vdrapi=2.6.5
-pkgrel=2
+_vdrapi=2.6.6
+pkgrel=3
 pkgdesc="Output to LCD modules that are supported by LCDproc"
 url='https://github.com/vdr-projects/vdr-plugin-lcdproc'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
