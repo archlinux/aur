@@ -2,7 +2,7 @@
 
 _rockname=silex.sile
 pkgname=("sile-${_rockname%.sile}")
-pkgver=0.3.0
+pkgver=0.4.1
 _rockrel=1
 pkgrel=1
 pkgdesc='Extension layer for SILE and resilient'
@@ -13,7 +13,7 @@ depends=(sile)
 makedepends=(luarocks)
 _archive="$_rockname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('6dd31484854506cd70c8d63ee8dd48f8ff34ea737a61602ee80107806286171b')
+sha256sums=('46d1f2ff03fa6c1af8fe31d90c40142c6a28787149577b0d10686d1917050fea')
 
 package() {
 	cd "$_archive"
