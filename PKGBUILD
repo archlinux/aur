@@ -1,9 +1,9 @@
 pkgname="ttf-victor-mono"
 pkgdesc="Unoffical Victor Mono(TTF) AUR package"
-pkgver=1.5.5
+pkgver=1.5.6
 pkgrel=1
 arch=("any")
-sha256sums=("34288e16ca4834efc721aaf0c6f4ef3d86a85a5a791769787b50853ec21afd3b")
+sha256sums=("eab377ad3bcc7a202697c024ebb8c8728f99789c4f093d358f3d202052cc9496")
 url="https://rubjo.github.io/victor-mono/"
 source=("https://rubjo.github.io/victor-mono/VictorMonoAll.zip")
 license=("custom:OFL")
