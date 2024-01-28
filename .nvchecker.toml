@@ -1,0 +1,3 @@
+[python-pytest-memray]
+source = "pypi"
+pypi = "pytest-memray"
