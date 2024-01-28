@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-network-displays-git
-pkgver=0.91.0.r0.g70d1101
+pkgver=0.92.1.r2.g3453460
 pkgrel=1
 pkgdesc="Miracast implementation for GNOME"
 arch=('x86_64')
@@ -8,11 +8,12 @@ url="https://gitlab.gnome.org/GNOME/gnome-network-displays"
 license=('GPL-3.0-or-later')
 depends=(
   'avahi'
-  'gtk3'
   'gst-plugins-bad'
   'gst-plugins-good'
   'gst-plugins-ugly'
   'gst-rtsp-server'
+  'libadwaita'
+  'libportal-gtk4'
   'libpulse'
   'networkmanager'
   'protobuf-c'
@@ -20,7 +21,6 @@ depends=(
   'xdg-desktop-portal'
 )
 makedepends=('git' 'meson')
-checkdepends=('appstream-glib')
 optdepends=('dnsmasq' 'gst-plugin-pipewire' 'gstreamer-vaapi')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -28,12 +28,12 @@ source=('git+https://gitlab.gnome.org/GNOME/gnome-network-displays.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
 
   # https://gitlab.gnome.org/GNOME/gnome-network-displays/-/issues/272
   sed -i -e "s/args: \['validate'/args: \['--nonet', 'validate'/" \
