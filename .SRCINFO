@@ -1,7 +1,7 @@
 pkgbase = vdr-mcli
 	pkgdesc = This is a "plugin" for the Video Disk Recorder (VDR) to access DVB-streams produced by the NetCeiver-hardware.
 	pkgver = 1.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/vdr-projects/vdr-plugin-mcli/
 	arch = x86_64
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = vdr-mcli
 	arch = armv7h
 	license = GPL2
 	depends = gcc-libs
-	depends = vdr-api=2.6.5
+	depends = vdr-api=2.6.6
 	depends = libnetceiver
 	depends = libnetceiver-tools
 	backup = etc/vdr/conf.avail/50-mcli.conf
