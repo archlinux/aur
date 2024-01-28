@@ -1,0 +1,5 @@
+[kubetail]
+source = "github"
+github = "johanhaleby/kubetail"
+prefix = "v"
+use_latest_release = true
