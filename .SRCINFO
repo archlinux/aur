@@ -1,7 +1,7 @@
 pkgbase = vdr-skindesigner
 	pkgdesc = Highly customizable native true color skin for the Video Disc Recorder
 	pkgver = 1.2.22
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/kamel5/skindesigner
 	install = vdr-skindesigner.install
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = vdr-skindesigner
 	depends = librsvg
 	depends = ttf-opensans
 	depends = unzip
-	depends = vdr-api=2.6.5
+	depends = vdr-api=2.6.6
 	depends = wget
 	optdepends = vdr-scraper2vdr: To display scraped images in various EPG views (requires epgd)
 	optdepends = vdr-tvscraper: To display scraped images in various EPG views
