@@ -8,9 +8,9 @@ arch=('x86_64')
 url='https://github.com/alsa-project/alsa-gobject'
 license=('LGPL-3.0')
 depends=(
+	gobject-introspection
 	libgobject-2.0.so
 	libglib-2.0.so
-	alsa-lib
 )
 provides=(
 	libalsactl.so
@@ -24,7 +24,9 @@ sha512sums=('aeaf58aaf242454e3c88ab0aca6c3c296994a433b1154ff48f3a731f1744cc7991f
 b2sums=('578c96060d8b6be8d5276a906e1c6c053e55fbf24090b9ac1b87148b281c30ae03248c69282aa7424a68fd4df3c59200b3f8aaca25bc00a91e6e0962f139888d')
 
 makedepends=(
+	cmake
 	meson
+	python-gobject # tests
 )
 
 build() {
