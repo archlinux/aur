@@ -1,0 +1,3 @@
+[gitlab-ci-local]
+source = "npm"
+npm = "gitlab-ci-local"
