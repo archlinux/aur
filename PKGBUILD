@@ -2,11 +2,11 @@
 _pkgname=qiskit-ibm-runtime
 pkgname=python-${_pkgname}
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="IBM Client for Qiskit Runtime"
 arch=('any')
 url="https://github.com/Qiskit/qiskit-ibm-runtime"
-license=('Apache')
+license=('Apache-2.0')
 depends=(
     'python-dateutil'
     'python-ibm-platform-services'
