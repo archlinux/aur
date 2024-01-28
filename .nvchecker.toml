@@ -1,0 +1,3 @@
+[python-blessings]
+source = "pypi"
+pypi = "blessings"
