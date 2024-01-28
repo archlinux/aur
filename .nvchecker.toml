@@ -1,0 +1,5 @@
+[espanso]
+source = "github"
+github = "espanso/espanso"
+prefix = "v"
+use_latest_release = true
