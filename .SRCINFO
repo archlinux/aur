@@ -1,6 +1,6 @@
 pkgbase = vulkan-memory-allocator
 	pkgdesc = Easy to integrate Vulkan memory allocation library
-	pkgver = 3.0.1.r105.g6eb62e1
+	pkgver = 3.0.1.r147.g94b1aca
 	pkgrel = 1
 	url = https://gpuopen.com/vulkan-memory-allocator/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = vulkan-memory-allocator
 	makedepends = doxygen
 	makedepends = git
 	depends = vulkan-headers
-	source = vulkan-memory-allocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git#commit=6eb62e1515072827db992c2befd80b71b2d04329
+	source = vulkan-memory-allocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git#commit=94b1acaef0d1fa6f721559a5f0f3ee31d5efba00
 	b2sums = SKIP
 
 pkgname = vulkan-memory-allocator
