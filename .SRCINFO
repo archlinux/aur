@@ -10,7 +10,7 @@ pkgbase = dict
 	depends = npm
 	source = https://software.concise.cc/x86_64/dict-0.1.0-1-any.pkg.tar.xz
 	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
-	md5sums = 12432125d9e64488aa6730b207cc7834
-	sha512sums = 31515e5561be8d66a9bed21dd987694c7e2140333422c538d8f027f7da393c0ed611e6e64e0be83c818e5ed04646ff195f1989fe6b11c9d074760cc84d295856
+	md5sums = bca763480b69f2f8e57d6cdbbb2517e0
+	sha512sums = 45aa05a64d9083fb4edd6e8b7cba661e0e09b15ae00fd64b185b7ad0874df5dddc8a4204b6e3ef4eb38b4b80327bf0ae9412ff1aa0422614819a37d2694ccbc9
 
 pkgname = dict
