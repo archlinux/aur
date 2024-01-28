@@ -1,10 +1,10 @@
 pkgbase = google-java-format
 	pkgdesc = Reformats Java source code to comply with Google Java Style
 	pkgver = 1.19.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/google-java-format
 	arch = any
-	license = Apache
+	license = Apache-2.0 AND NCSA
 	depends = java-runtime
 	depends = bash
 	source = https://github.com/google/google-java-format/releases/download/v1.19.2/google-java-format-1.19.2-all-deps.jar

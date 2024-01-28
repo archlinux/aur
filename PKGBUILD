@@ -6,11 +6,11 @@
 
 pkgname=google-java-format
 pkgver=1.19.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Reformats Java source code to comply with Google Java Style'
 url='https://github.com/google/google-java-format'
 arch=('any')
-license=('Apache')
+license=('Apache-2.0 AND NCSA')
 depends=('java-runtime' 'bash')
 source=(
   "https://github.com/google/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver-all-deps.jar"
