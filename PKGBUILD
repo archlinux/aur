@@ -3,15 +3,19 @@
 # with special thanks to deadlte for version 3.07.1
 
 pkgname=libsdrplay
-pkgver=3.07.1
+pkgver=3.14.0
 pkgrel=1
 pkgdesc="Modules for the SDRplay receiver"
-arch=('i686' 'x86_64')
+arch=('aarch64' 'x86_64')
 url="http://www.sdrplay.com"
 license=('custom:EULA')
 depends=('libusb>=1.0')
-source=("http://www.sdrplay.com/software/SDRplay_RSP_API-Linux-${pkgver}.run")
-sha256sums=('aefe8733cba3e480157c28439c1ed5ab757724a7a26fe74eee92cda6f36145a8')
+source=("http://www.sdrplay.com/software/SDRplay_RSP_API-Linux-${pkgver}.run"
+		"sdrplay.service"
+		"66-sdrplay.rules")
+sha256sums=('0a0f3e2009298d1d1163158f4e22fc4fc9d41cd4f8647191474ef25beaf0fc4d'
+			'69935539fad9b7cf2cd1feb4017974cfaf164c37dfd01adfb0086ea7512e6ce7'
+			'60ab1774bdf810d2019178486f1ef40960fb04f0d84f976e4bf1990ea8427d65')
 
 prepare() {
 	cd ${srcdir}
@@ -31,21 +35,12 @@ package() {
 	# run file
 	install -D -m644 sdrplay_license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -D -m644 "${CARCH}/libsdrplay_api.so.${_apivers}" 		"${pkgdir}/usr/lib/libsdrplay_api.so.${_apivers}"
-	install -D -m755 "${CARCH}/sdrplay_apiService" "${pkgdir}//usr/bin/sdrplay_apiService"
-	install -D -m644 "scripts/sdrplay.service.usr" "${pkgdir}/etc/systemd/system/sdrplay.service"
+	install -D -m755 "${CARCH}/sdrplay_apiService" "${pkgdir}/usr/bin/sdrplay_apiService"
+	install -D -m644 "sdrplay.service" "${pkgdir}/etc/systemd/system/sdrplay.service"
 
-	install -D -m644 inc/sdrplay_api.h "${pkgdir}/usr/include/sdrplay_api.h"
-	install -D -m644 inc/sdrplay_api_callback.h "${pkgdir}/usr/include/sdrplay_api_callback.h"
-	install -D -m644 inc/sdrplay_api_control.h "${pkgdir}/usr/include/sdrplay_api_control.h"
-	install -D -m644 inc/sdrplay_api_dev.h "${pkgdir}/usr/include/sdrplay_api_dev.h"
-	install -D -m644 inc/sdrplay_api_rsp1a.h "${pkgdir}/usr/include/sdrplay_api_rsp1a.h"
-	install -D -m644 inc/sdrplay_api_rsp2.h "${pkgdir}/usr/include/sdrplay_api_rsp2.h"
-	install -D -m644 inc/sdrplay_api_rspDuo.h "${pkgdir}/usr/include/sdrplay_api_rspDuo.h"
-	install -D -m644 inc/sdrplay_api_rspDx.h "${pkgdir}/usr/include/sdrplay_api_rspDx.h"
-	install -D -m644 inc/sdrplay_api_rx_channel.h "${pkgdir}/usr/include/sdrplay_api_rx_channel.h"
-	install -D -m644 inc/sdrplay_api_tuner.h "${pkgdir}/usr/include/sdrplay_api_tuner.h"
+	(cd inc && find . -type f -exec install -D -m644 "{}" "${pkgdir}/usr/include/{}" \;)
 		
-	install -D -m644 66-mirics.rules "${pkgdir}/etc/udev/rules.d/66-mirics.rules"
+	install -D -m644 66-sdrplay.rules "${pkgdir}/etc/udev/rules.d/66-sdrplay.rules"
 
 	cd "${pkgdir}/usr/lib"
 	ln -s libsdrplay_api.so.${_apivers} libsdrplay_api.so.2
