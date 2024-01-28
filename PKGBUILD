@@ -13,8 +13,8 @@
 
 # Move to the build directory
 pkgname=unittest-c
-pkgver=1.2.0
-pkgrel=6
+pkgver=1.3.0
+pkgrel=7
 epoch=
 pkgdesc="unittest c is a fast and simple macro-based unit testing framework for C.
 It's inspired by the Python unittest module and designed to reduce boilerplate code.
