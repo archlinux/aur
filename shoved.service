@@ -1,0 +1,9 @@
+[Unit]
+Description=shoved Push Notifications Service
+
+[Service]
+ExecStart=/usr/bin/shoved
+Restart=always
+
+[Install]
+WantedBy=default.target

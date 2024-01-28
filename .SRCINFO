@@ -1,0 +1,14 @@
+pkgbase = shoved
+	pkgdesc = A push notification daemon
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cargo
+	source = https://git.sr.ht/~vpzom/shoved/archive/v0.1.0.tar.gz
+	source = shoved.service
+	sha256sums = 98dcec2ea1aee02d1d1f7151f463c89d4d5823fd71e700679451418f7c15ed61
+	sha256sums = SKIP
+
+pkgname = shoved
