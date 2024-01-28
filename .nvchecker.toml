@@ -1,0 +1,3 @@
+[python-pytest-postgresql]
+source = "pypi"
+pypi = "pytest-postgresql"
