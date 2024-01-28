@@ -2,7 +2,7 @@
 pkgname=acestream-engine-py3
 _pkgname_nosuffix=${pkgname::-4}
 pkgver=3.1.75rc4
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Latest available Ace Stream Engine, setup via virtualenv with latest working python version"
 arch=("x86_64")
@@ -58,7 +58,7 @@ sha256sums=(
         "8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9"
         "dd0091a54c435a57a658f29b8675dfdc840e2d07cd05d41e87482a2c3ae331da"
         "56f1cbca8961de7821e71b8a288813a6cc36c93b22d29ed7d14aaca0f10d7b61"
-        "70d6dad0a219870daf17c530fc713730c2b479d06b41c4a920288767abc3b6ac"
+        "a088ad5c3688b90f554984ae9d864d48175171da8003e5b8123671db526775ee"
         "a76bd58ec4647dc65236dd8f908391fc3c21863fcee47ec2a5b72b825cca0e0e"
         "a9293a75ae0bc69789ad5bfa34ae1497943e6eb1f4ff36ef6a7e0f0b58e81277"
 )
