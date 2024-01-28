@@ -19,7 +19,6 @@ source=("https://www.xmlmind.com/xmleditor/_download/xxe-perso-${_pkgver}.zip"
         "xxe.sh"
         "xxeconvert.sh"
         "xmltool.sh"
-        "csscheck.sh"
         "authvalue.sh"
         "xmltool.1"
         "icon64x64.png")
@@ -28,7 +27,6 @@ sha256sums=('73850366255ed6a257e66c899494978476da1c9c9e446efb0468c2b7b427a310'
             '72d24d6216f0fe5515edb50c38566d3f1f3ce134634a0da04fbb32ac3a216452'
             '3f04f7b1ecb934a96f15ed75e0593e545d7f820a95705710b39a2916377c57fa'
             '40fd7e5f73eaf9f05adabd29715f3dc2d78f4eeddb9440bdd3aece1341308a01'
-            '541de90c98dc15d2957834611df41872837144397735c62be67924ce8af2ef84'
             '61251006be3625075958f6257d5eb5eba983115312d7df32e4449a2847c5ca7f'
             'dd1efd7074aef4b28c130a781f21e34ada3f9b15673ad9df61ff77dba4930482'
             '9c97b679944fa57e9aab3e3143fb23f2c4dba5e70d10127bfa99d60233a2d76f')
@@ -69,7 +67,6 @@ package() {
   install -Dm755 xxe.sh        "${pkgdir}"/usr/bin/xxe
   install -Dm755 xxeconvert.sh "${pkgdir}"/usr/bin/xxeconvert
   install -Dm755 xmltool.sh    "${pkgdir}"/usr/bin/xmltool
-  install -Dm755 csscheck.sh   "${pkgdir}"/usr/bin/csscheck
   install -Dm755 authvalue.sh  "${pkgdir}"/usr/bin/authvalue
 
   # place icons
