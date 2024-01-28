@@ -1,11 +1,11 @@
 pkgbase = icalingua++
 	pkgdesc = A branch of deleted Icalingua, with limited support
 	pkgver = 2.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Icalingua-plus-plus/Icalingua-plus-plus
 	arch = aarch64
 	arch = x86_64
-	license = AGPL3
+	license = AGPL-3.0
 	makedepends = asar
 	depends = ffmpeg
 	depends = electron

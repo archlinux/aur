@@ -1,9 +1,9 @@
 pkgname=icalingua++
 _pkgname=icalingua
 pkgver=2.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A branch of deleted Icalingua, with limited support'
-license=('AGPL3')
+license=('AGPL-3.0')
 depends=('ffmpeg' 'electron' 'libappindicator-gtk3')
 optdepends=('mongodb-bin: Provides storage'
             'redis: Provides storage')
