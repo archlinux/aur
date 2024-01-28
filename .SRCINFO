@@ -1,0 +1,19 @@
+pkgbase = python-autocommand-git
+	pkgdesc = A library to create a command-line program from a function
+	pkgver = 2.2.2.r7.gacff23e
+	pkgrel = 4
+	url = https://github.com/Lucretiel/autocommand
+	arch = any
+	license = LGPL
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	provides = python-autocommand=2.2.2.r7.gacff23e
+	conflicts = python-autocommand
+	source = autocommand::git+https://github.com/Lucretiel/autocommand.git
+	sha512sums = SKIP
+
+pkgname = python-autocommand-git
