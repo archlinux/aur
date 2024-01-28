@@ -2,7 +2,7 @@
 
 pkgname=smlock
 pkgver=0.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Smlock is a minimal screen locker, for Xorg, optimized for mobile."
 url="https://codeberg.org/jackc/smlock"
 arch=(x86_64 aarch64)
@@ -19,4 +19,4 @@ package() {
 	cd "$pkgname"
 	make PREFIX=/usr DESTDIR="$pkgdir" install
 }
-sha256sums=('1b0ed9ae80ef5227d3e2e94daa2d5f3851c53e92137a359a7592e415a143ecf6')
+sha256sums=('fd78984ae0186a86f76f59b74701bdf6635cfd79e09cc510862973b2a11141e2')
