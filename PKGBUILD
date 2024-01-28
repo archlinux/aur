@@ -3,7 +3,7 @@
 
 pkgname=('nwg-shell-wallpapers')
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="nwg-shell wallpapers package"
 arch=('any')
 url="https://github.com/nwg-piotr/nwg-shell-wallpapers"
@@ -18,6 +18,7 @@ package() {
   cd "$srcdir"
   install -d "$pkgdir"/usr/share/backgrounds/nwg-shell
   install -Dm644 "$pkgname"-"$pkgver"/wallpapers/* $pkgdir/usr/share/backgrounds/nwg-shell/
-  install -Dm644 "$pkgname"-"$pkgver"/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "$pkgname"-"$pkgver"/README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+  install -D -t "$pkgdir"/usr/share/licenses/"$pkgname" LICENSE
+  install -D -t "$pkgdir"/usr/share/doc/"$pkgname" README.md
 }
