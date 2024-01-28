@@ -1,14 +1,14 @@
 pkgbase = bmi260-dkms
 	pkgdesc = Driver for the Bosch BMI260 IMU. Provided as a DKMS module.
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/hhd-dev/bmi260
 	arch = any
 	license = GPL2
 	makedepends = git
 	depends = dkms
-	provides = bmi260=0.0.1-1
-	source = git+https://github.com/hhd-dev/bmi260.git#tag=1d5925d688e0f1fe8b99cc3e0039b6496eca082d
+	provides = bmi260=0.0.2-1
+	source = git+https://github.com/hhd-dev/bmi260.git#tag=d6beb8fedaea13bd3f3b25fea73d915e0d994901
 	source = dkms.conf
 	sha256sums = SKIP
 	sha256sums = a7234c31281bb83c382a1d94b4d8843a55d681c6b894d033b2840d008ba84606

@@ -2,7 +2,7 @@
 # Maintainer: Antheas Kapenekakis <aur at antheas dot dev>
 _pkgbase=bmi260
 pkgname=${_pkgbase}-dkms
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Driver for the Bosch BMI260 IMU. Provided as a DKMS module."
 arch=(any)
@@ -12,7 +12,7 @@ depends=(dkms)
 makedepends=(git)
 provides=("bmi260=${pkgver}-${pkgrel}")
 
-_tag=1d5925d688e0f1fe8b99cc3e0039b6496eca082d
+_tag=d6beb8fedaea13bd3f3b25fea73d915e0d994901
 source=(git+"${url}".git#tag=${_tag}
 	'dkms.conf')
 sha256sums=('SKIP'
