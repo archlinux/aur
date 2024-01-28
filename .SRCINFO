@@ -1,0 +1,19 @@
+pkgbase = python-findiff
+	pkgdesc = Python package for finite difference derivatives in any number of dimensions
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/maroba/findiff
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-scipy
+	depends = python-sympy
+	optdepends = python-matplotlib: for plotting support
+	source = findiff-0.10.0.tar.gz::https://github.com/maroba/findiff/archive/v0.10.0.tar.gz
+	sha512sums = c790c85ff036c9ee9da774487ac5ce340b22b208947c04aa3e6dd52ca24e87ee4483c4082d7a0ec9bc85a35ea865a85c50affc32a3e3f80441305ebe4290744d
+
+pkgname = python-findiff
