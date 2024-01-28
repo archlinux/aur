@@ -8,8 +8,9 @@ pkgrel=1
 arch=(x86_64)
 url='https://github.com/jmorganca/ollama'
 license=(MIT)
+_ollamacommit=a47d8b2557259ffc9881817df97fbf6d6824e89e # tag: v0.1.22
 # The llama.cpp git submodule commit hash can be found here:
-# https://github.com/jmorganca/ollama/tree/v0.1.21/llm
+# https://github.com/jmorganca/ollama/tree/v0.1.22/llm
 _llama_cpp_commit=cd4fddb29f81d6a1f6d51a0c016bc6b486d68def
 makedepends=(cmake cuda git go)
 provides=(ollama)
@@ -53,7 +54,7 @@ check() {
 
 package() {
   install -Dm755 ${pkgname/-cuda}/${pkgname/-cuda} "$pkgdir/usr/bin/${pkgname/-cuda}"
-  install -dm700 "$pkgdir/var/lib/ollama"
+  install -dm755 "$pkgdir/var/lib/ollama"
   install -Dm644 ollama.service "$pkgdir/usr/lib/systemd/system/ollama.service"
   install -Dm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/ollama.conf"
   install -Dm644 tmpfiles.d "$pkgdir/usr/lib/tmpfiles.d/ollama.conf"
