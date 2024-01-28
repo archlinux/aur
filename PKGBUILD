@@ -2,11 +2,11 @@
 # Contributor: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=gnun
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="GNUnited Nations, build system for www.gnu.org translations"
 arch=(any)
 url="https://www.gnu.org/software/gnun/"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('cvs' 'subversion' 'bzr' 'po4a' 'libxml2' 'mailutils' 'sed' 'wdiff' 'gawk')
 backup=(etc/gnun/gnun.conf)
 source=("http://ftp.gnu.org/gnu/gnun/$pkgname-$pkgver.tar.gz"{,.sig})

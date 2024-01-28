@@ -1,10 +1,10 @@
 pkgbase = gnun
 	pkgdesc = GNUnited Nations, build system for www.gnu.org translations
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/gnun/
 	arch = any
-	license = GPL
+	license = GPL-3.0-or-later
 	depends = cvs
 	depends = subversion
 	depends = bzr
