@@ -1,0 +1,21 @@
+pkgbase = alsa-gobject
+	pkgdesc = ALSA libraries compatible with GObject introspection (g-i) for language bindings (direct kernel usage, no alsa-lib wrappers).
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/alsa-project/alsa-gobject
+	arch = x86_64
+	license = LGPL-3.0
+	makedepends = meson
+	depends = libgobject-2.0.so
+	depends = libglib-2.0.so
+	depends = alsa-lib
+	provides = libalsactl.so
+	provides = libalsatimer.so
+	provides = libalsaseq.so
+	provides = libalsahwdep.so
+	provides = libalsarawmidi.so
+	source = alsa-gobject-0.3.0.tar.gz::https://github.com/alsa-project/alsa-gobject/archive/v0.3.0.tar.gz
+	sha512sums = aeaf58aaf242454e3c88ab0aca6c3c296994a433b1154ff48f3a731f1744cc7991fcc4c8185a20aab91e6ad5a4a0951fb6787c81a5343a92087a9f3c9ba23f24
+	b2sums = 578c96060d8b6be8d5276a906e1c6c053e55fbf24090b9ac1b87148b281c30ae03248c69282aa7424a68fd4df3c59200b3f8aaca25bc00a91e6e0962f139888d
+
+pkgname = alsa-gobject
