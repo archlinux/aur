@@ -1,8 +1,8 @@
 # Maintainer: q234 rty <q23456yuiop at gmail dot com>
 # Contributor: Chris Wong <https://wiki.archlinux.org/index.php/Special:EmailUser/Lambda_Fairy>
-
+# Contributor: Francesco Minnocci <francesco dot minnocci at gmail dot com>
 pkgname=xsettingsd-git
-pkgver=r103.86ce25f
+pkgver=1.0.2.r7.g86ce25f
 pkgrel=1
 pkgdesc="Provides settings to X11 applications via the XSETTINGS specification"
 arch=('i686' 'x86_64')
@@ -12,12 +12,12 @@ depends=('libx11' 'gcc-libs')
 makedepends=('git' 'cmake')
 provides=('xsettingsd')
 conflicts=('xsettingsd')
-source=("$pkgname::git+https://codeberg.org/derat/xsettingsd.git")
+source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd $pkgname
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

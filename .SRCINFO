@@ -1,6 +1,6 @@
 pkgbase = xsettingsd-git
 	pkgdesc = Provides settings to X11 applications via the XSETTINGS specification
-	pkgver = r103.86ce25f
+	pkgver = 1.0.2.r7.g86ce25f
 	pkgrel = 1
 	url = https://codeberg.org/derat/xsettingsd
 	arch = i686
