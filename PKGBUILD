@@ -8,7 +8,7 @@ epoch=1
 pkgdesc="Collection of tools for driving lights connected to an external controller"
 url="https://github.com/vdr-projects/boblight/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
-license=('GPL2')
+license=('GPL-3.0-or-later')
 depends=('libusb' 'libxext' 'libxrender' 'mesa' 'portaudio')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vdr-projects/boblight/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname.service")
