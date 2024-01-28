@@ -1,0 +1,11 @@
+--- src/menu.c	2024-01-27 20:51:58.404201044 -0500
++++ src/menu_new.c	2024-01-27 20:53:08.418207591 -0500
+@@ -93,7 +93,7 @@
+ 		{ "comment",   'c', 0, G_OPTION_ARG_NONE,   &comment,
+ 		  "Show generic name instead of application name", NULL },
+ 		{ "terminal",  't', 0, G_OPTION_ARG_STRING, &terminal_cmd,
+-		  "Terminal command (default xterm -e)", "cmd" },
++		  "Terminal command (default lxterminal -e)", "cmd" },
+ 		{ "gnome",     'g', 0, G_OPTION_ARG_NONE,   &show_gnome,
+ 		  "Show GNOME entries", NULL },
+ 		{ "kde",       'k', 0, G_OPTION_ARG_NONE,   &show_kde,

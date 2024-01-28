@@ -1,0 +1,11 @@
+--- src/openbox-menu.h	2024-01-27 20:53:54.778657651 -0500
++++ src/openbox-menu_new.h	2024-01-27 20:55:16.852795097 -0500
+@@ -28,7 +28,7 @@
+ 
+ #define VERSION "0.8.1"
+ #define APPMENU_SIZE 30
+-#define TERMINAL_CMD "xterm -e"
++#define TERMINAL_CMD "lxterminal -e"
+ 
+ #ifndef __VERSION_MINOR // since menu-cache 0.5.0.
+ #warning "If you are running a 0.3.x version of libmenu-cache, you need to compile the 3.6.7 version of openbox-menu"
