@@ -1,6 +1,7 @@
 *
 !.gitignore
-!PKGBUILD
+!.nvchecker.toml
 !.SRCINFO
+!PKGBUILD
 !mozconfig
 !seamonkey.install
