@@ -1,0 +1,5 @@
+[infisical]
+source = "github"
+github = "Infisical/infisical"
+prefix = "infisical-cli/v"
+use_latest_release = true
