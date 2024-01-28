@@ -1,0 +1,5 @@
+[tbls]
+source = "github"
+github = "k1LoW/tbls"
+prefix = "v"
+use_latest_release = true
