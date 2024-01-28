@@ -1,0 +1,3 @@
+[ruby-pdf-inspector]
+source = "gems"
+gems = "pdf-inspector"
