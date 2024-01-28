@@ -1,5 +1,6 @@
 *
 !.gitignore
-!PKGBUILD
+!.nvchecker.toml
 !.SRCINFO
+!PKGBUILD
 !slack-term.json
