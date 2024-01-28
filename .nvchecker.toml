@@ -1,0 +1,3 @@
+[dotbot]
+source = "pypi"
+pypi = "dotbot"
