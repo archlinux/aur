@@ -1,12 +1,12 @@
 pkgbase = mathematica-documentation-en
 	pkgdesc = Mathematica Documentation (en)
-	pkgver = 13.3
+	pkgver = 14.0.0
 	pkgrel = 1
 	url = http://www.wolfram.com/mathematica/
 	arch = any
 	license = proprietary
 	depends = mathematica-light
-	source = local://WLDocs_13.3_LINUX.sh
-	md5sums = f3aa5219b0b097117aec0a0cdb335944
+	source = local://WLDocs_14.0.0_LINUX.sh
+	md5sums = 2e9479b7622ea8d09d465ffc53a753c4
 
 pkgname = mathematica-documentation-en
