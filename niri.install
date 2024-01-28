@@ -1,0 +1,25 @@
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+
+
+post_install() {
+echo "Niri will load configuration from ${bold}\$XDG_CONFIG_HOME/.config/niri/config.kdl${all_off} or ${bold}~/.config/niri/config.kdl${all_off}. If this fails, it will load the ${bold}precompiled${all_off} default settings.
+
+Please ${bold}copy${all_off} the configuration file from ${bold}/usr/share/doc/niri/${all_off} to one of location above and use the ${bold}config.kdl${all_off} for your custom configuration. Niri will live-reload most of the configuration settings, like key binds or gaps or output modes, as you change the custom config file.
+
+${bold}Note${all_off}: Niri is not a complete desktop environment, please install some of optional dependencies and read https://github.com/YaLTeR/niri/wiki"
+}
+
+
+post_upgrade(){
+  if [ -r $XDG_CONFIG_HOME/.config/niri/config.kdl ]; then
+    current_conf=$XDG_CONFIG_HOME/.config/niri/config.kdl
+  elif [ -r ~/.config/niri/config.kdl ]; then
+    current_conf=~/.config/niri/config.kdl
+  else
+    return 0
+  fi
+  echo "Differences between the default configuration and the current:"
+  echo
+  diff -Naur /usr/share/doc/default-config.kdl $current_conf | grep -E --color=never "^[-+]"
+}
