@@ -1,7 +1,7 @@
 pkgbase = funkin-quack-git
 	pkgdesc = A modification for Friday Night Funkin': Psych Engine to provide better linux support and more features.
-	pkgver = 0.1.r69.gb733f72
-	pkgrel = 3
+	pkgver = 0.2.r295.g371c310
+	pkgrel = 1
 	url = https://github.com/Noobz4Life/FNF-QuackEngine
 	arch = x86_64
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = funkin-quack-git
 	optdepends = gamemode
 	provides = funkin
 	conflicts = funkin
-	source = Funkin::git+https://github.com/Noobz4Life/FNF-QuackEngine.git
+	source = Funkin::git+https://github.com/Noobz4Life/FNF-QuackEngine.git#branch=psych-update
 	source = funkin.desktop
 	source = funkin.sh
 	sha256sums = SKIP
