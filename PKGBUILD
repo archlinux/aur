@@ -8,7 +8,7 @@ _cpycppyy_ver=1.12.12
 
 pkgname=ns3
 pkgver=3.40
-pkgrel=1
+pkgrel=2
 pkgdesc='Discrete-event network simulator for Internet systems'
 arch=('any')
 url='http://www.nsnam.org/'
@@ -48,7 +48,7 @@ source=("https://www.nsnam.org/releases/ns-allinone-$pkgver.tar.bz2"
         "openflow.tar.gz::https://code.nsnam.org/openflow/archive/tip.tar.gz"
         "click-git::git+https://github.com/kohler/click")
 sha256sums=('c0ba395b6fcb084c4d43d6117b28932f716b26aebb54498ce2f44c0c39be3e60'
-            'e046acecfe7c78e6047af8f2a8539d89b51c6a0f00dcf9bbcc5e2614c3222e78'
+            '468a8877afe724b9bf5e83704513d64be9cf2f91183c83704d3e2118626012d3'
             '51ac01c4cca28ef54544ce0b41355d885242f1a0178619bea071f5c43fd03dac'
             '19188585eda3538eb69d32fd3fa9db0cc85a6031b6ca6955efff8051b798a73e'
             '20daecc727ac793732be25d5a2977f72c8edaa5c01720d5999069936cfe9d292'
@@ -119,7 +119,7 @@ build() {
     python -m installer --prefix="$venv_dir" dist/*.whl
 
     # cppyy
-    cd "$srcdir/cppyy-cppyy-$_cppyy_ver"
+    cd "$srcdir/cppyy-$_cppyy_ver"
     python -m build --wheel --no-isolation
     python -m installer --prefix="$venv_dir" dist/*.whl
 
