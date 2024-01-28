@@ -1,0 +1,55 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Rob Krum <biggestsonicfan@gmail.com>
+Date: Fri, 22 Sep 2023 18:23:35 -0700
+Subject: [PATCH] Bug 1822730 - Add basic blob protocol handling for blob URIs
+ that contain parsable http/s protocols
+
+---
+ .../mozapps/downloads/DownloadLastDir.sys.mjs   | 17 +++++++++++++++--
+ 1 file changed, 15 insertions(+), 2 deletions(-)
+
+diff --git a/toolkit/mozapps/downloads/DownloadLastDir.sys.mjs b/toolkit/mozapps/downloads/DownloadLastDir.sys.mjs
+index 9fe90a0ecdc533593001d9a2763f8a21f393ce7d..2a2f524716c909dfa3f04b649b9f078fecd3d1f9 100644
+--- a/toolkit/mozapps/downloads/DownloadLastDir.sys.mjs
++++ b/toolkit/mozapps/downloads/DownloadLastDir.sys.mjs
+@@ -221,11 +221,13 @@ export class DownloadLastDir {
+ 
+   /**
+    * Pre-processor to extract a domain name to be used with the content-prefs
+-   * service. This specially handles data and file URIs so that the download
+-   * dirs are recalled in a more consistent way:
++   * service. This specially handles data, file and blob URIs so that the
++   * download dirs are recalled in a more consistent way:
+    *  - all file:/// URIs share the same folder
+    *  - data: URIs share a folder per mime-type. If a mime-type is not
+    *    specified text/plain is assumed.
++   *  - blob: blob URIs are tested for http/https and the blob protocol
++   *    is stripped.
+    * In any other case the original URL is returned as a string and ContentPrefs
+    * will do its usual parsing.
+    *
+@@ -234,6 +236,9 @@ export class DownloadLastDir {
+    */
+   #cpsGroupFromURL(url) {
+     if (typeof url == "string") {
++      if (url.startsWith("blob:http://") || url.startsWith("blob:https://")) {
++        url = url.replace("blob:", "");
++      }
+       url = new URL(url);
+     } else if (url instanceof Ci.nsIURI) {
+       url = URL.fromURI(url);
+@@ -241,6 +246,14 @@ export class DownloadLastDir {
+     if (!URL.isInstance(url)) {
+       return url;
+     }
++    if (url.protocol == "blob:") {
++      if (
++        url.href.startsWith("blob:http://") ||
++        url.href.startsWith("blob:https://")
++      ) {
++        return url.href.replace("blob:", "");
++      }
++    }
+     if (url.protocol == "data:") {
+       return url.href.match(/^data:[^;,]*/i)[0].replace(/:$/, ":text/plain");
+     }

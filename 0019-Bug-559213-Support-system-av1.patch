@@ -16,10 +16,10 @@ Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
  5 files changed, 42 insertions(+), 8 deletions(-)
 
 diff --git a/config/external/moz.build b/config/external/moz.build
-index a0877c9d717e84489e19ee532d61df43b8a19889..5caa2036e0ece1404b16c52a31235f12addda08b 100644
+index fe765d1fa0130296b9b89129ad5bf5f55a885823..58396762e2e6950855816e4ce175b5cb29d4d5ce 100644
 --- a/config/external/moz.build
 +++ b/config/external/moz.build
-@@ -45,8 +45,9 @@ if not CONFIG["MOZ_SYSTEM_LIBVPX"]:
+@@ -40,8 +40,9 @@ if not CONFIG["MOZ_SYSTEM_LIBVPX"]:
      external_dirs += ["media/libvpx"]
  
  if CONFIG["MOZ_AV1"]:
@@ -32,10 +32,10 @@ index a0877c9d717e84489e19ee532d61df43b8a19889..5caa2036e0ece1404b16c52a31235f12
  if not CONFIG["MOZ_SYSTEM_PNG"]:
      external_dirs += ["media/libpng"]
 diff --git a/config/system-headers.mozbuild b/config/system-headers.mozbuild
-index d9489c8f15e4f320a2947f2fef4f98d92acb292e..4d2f15e18c1c0755a1e28fd8e20a87f41e2f4eeb 100644
+index 20145e89af1bbb02476d84340088bb7ceba7af8e..4b61063cf92a2adabb7b552328420aefbfc93242 100644
 --- a/config/system-headers.mozbuild
 +++ b/config/system-headers.mozbuild
-@@ -1291,6 +1291,14 @@ if CONFIG['MOZ_ENABLE_LIBPROXY']:
+@@ -1294,6 +1294,14 @@ if CONFIG['MOZ_ENABLE_LIBPROXY']:
          'proxy.h',
      ]
  
@@ -67,10 +67,10 @@ index c71f22a22eeead703192edfb710cc6113d42c11c..e91f57de9017e74436b03b769f04668d
  if CONFIG["MOZ_OMX"]:
      EXPORTS += [
 diff --git a/media/ffvpx/libavcodec/moz.build b/media/ffvpx/libavcodec/moz.build
-index 5675c28234a14f7cbfb4e719b78b248ac63fcf0a..56344e5e4c98b2efd501875636bb54ed12829663 100644
+index 845d0030229cc2a81eaa1a0ca341d0175af3d976..3b5d5153fc9f49ed729eb5685e8d677932af3920 100644
 --- a/media/ffvpx/libavcodec/moz.build
 +++ b/media/ffvpx/libavcodec/moz.build
-@@ -109,10 +109,14 @@ if not CONFIG['MOZ_FFVPX_AUDIOONLY']:
+@@ -118,10 +118,14 @@ if not CONFIG['MOZ_FFVPX_AUDIOONLY']:
          'vp9recon.c',
          'vpx_rac.c',
      ]
@@ -90,10 +90,10 @@ index 5675c28234a14f7cbfb4e719b78b248ac63fcf0a..56344e5e4c98b2efd501875636bb54ed
          LOCAL_INCLUDES += ['/media/mozva']
          SOURCES += [
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index fd90272f650bc3fbfbec0b79d031b00523267e87..5cf3ef5454a6580e14a06db7e448336d58452586 100644
+index 8b462ecde463fc4ac31278d94daaad5e513d7c00..eb7ae84b5d65df80e23b8ab503ffe0576c2a30a0 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
-@@ -744,14 +744,29 @@ def av1(value):
+@@ -749,14 +749,29 @@ def av1(value):
      if value:
          return True
  
@@ -125,7 +125,7 @@ index fd90272f650bc3fbfbec0b79d031b00523267e87..5cf3ef5454a6580e14a06db7e448336d
  def dav1d_nasm(target):
      if target.cpu in ("x86", "x86_64"):
          return namespace(version="2.14", what="AV1")
-@@ -761,6 +776,7 @@ set_config("MOZ_DAV1D_ASM", dav1d_asm)
+@@ -766,6 +781,7 @@ set_config("MOZ_DAV1D_ASM", dav1d_asm)
  set_define("MOZ_DAV1D_ASM", dav1d_asm)
  set_config("MOZ_AV1", av1)
  set_define("MOZ_AV1", av1)

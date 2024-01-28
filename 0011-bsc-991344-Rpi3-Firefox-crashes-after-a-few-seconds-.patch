@@ -10,10 +10,10 @@ bmo#1302554 - ARM/AARCH64: Firefox crashes on NULL nsIChannel** result pointer i
  1 file changed, 6 insertions(+)
 
 diff --git a/netwerk/base/nsIOService.cpp b/netwerk/base/nsIOService.cpp
-index 1a0c225018b7f48a648009a2d393fffc5089173f..bb5edd300131028f76b9427a20a82f27eb8e2b91 100644
+index 8426135e0d08bbe697895798f38cc6ec15a96d94..3a151de880f7f841ed345c49fea2693b775a17cd 100644
 --- a/netwerk/base/nsIOService.cpp
 +++ b/netwerk/base/nsIOService.cpp
-@@ -1159,7 +1159,13 @@ nsresult nsIOService::NewChannelFromURIWithProxyFlagsInternal(
+@@ -1152,7 +1152,13 @@ nsresult nsIOService::NewChannelFromURIWithProxyFlagsInternal(
      }
    }
  

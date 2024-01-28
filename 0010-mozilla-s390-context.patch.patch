@@ -8,7 +8,7 @@ Subject: [PATCH] mozilla-s390-context.patch
  1 file changed, 8 insertions(+)
 
 diff --git a/js/src/wasm/WasmSignalHandlers.cpp b/js/src/wasm/WasmSignalHandlers.cpp
-index 33e6c32b061bf7bcfcb25f4297afbe2a53c45566..3ff07c5868c607fc48e822dfac6823bcaf9d058c 100644
+index f838b7bec0e82850d1a36e99fab1c2000c4263c7..34b90d46f53f069964d5e288b4181bf236ab8fd6 100644
 --- a/js/src/wasm/WasmSignalHandlers.cpp
 +++ b/js/src/wasm/WasmSignalHandlers.cpp
 @@ -174,6 +174,10 @@ using mozilla::DebugOnly;

@@ -28,6 +28,7 @@ Subject: [PATCH] mozilla-silence-no-return-type.patch to fix build errors on
  .../call/adaptation/video_stream_adapter.cc      |  5 +++++
  third_party/libwebrtc/call/rtp_payload_params.cc |  2 +-
  third_party/libwebrtc/call/video_send_stream.cc  |  1 +
+ third_party/libwebrtc/media/base/codec.cc        |  1 +
  .../audio_processing/agc2/clipping_predictor.cc  |  2 +-
  .../agc2/input_volume_stats_reporter.cc          |  1 +
  .../audio_processing/agc2/rnn_vad/rnn_fc.cc      |  2 ++
@@ -42,7 +43,7 @@ Subject: [PATCH] mozilla-silence-no-return-type.patch to fix build errors on
  .../codecs/vp8/default_temporal_layers.cc        |  1 +
  .../codecs/vp8/temporal_layers_checker.cc        |  1 +
  .../video_stream_encoder_resource_manager.cc     |  1 +
- 37 files changed, 66 insertions(+), 5 deletions(-)
+ 38 files changed, 67 insertions(+), 5 deletions(-)
 
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 index 19d083672f6b974e1df968bf4061b40002b01310..c1103223deaba0df7d97eb5ff71c0e78b3c41d03 100644
@@ -300,10 +301,10 @@ index ddd287ad0cc1e3910adeb125a989fe2b0d93ec9e..c7a62205ab89742e8994b8fc067064c0
  
      sk_sp<SkVertices> makeVertices(const SkPath& path, const SkMatrix& ctm,
 diff --git a/intl/icu/source/i18n/number_rounding.cpp b/intl/icu/source/i18n/number_rounding.cpp
-index e6bb509ffd75a409faa03ea471bb97b84d2f61de..6055a435309c969ff2431cc1d2ad90c2eef33a15 100644
+index 9438ae4d419a21030091ac88864330eb6db0b91b..bf7507ef0f3d5715c8910f4e635485200420e18f 100644
 --- a/intl/icu/source/i18n/number_rounding.cpp
 +++ b/intl/icu/source/i18n/number_rounding.cpp
-@@ -283,6 +283,7 @@ FractionPrecision Precision::constructFraction(int32_t minFrac, int32_t maxFrac)
+@@ -287,6 +287,7 @@ FractionPrecision Precision::constructFraction(int32_t minFrac, int32_t maxFrac)
      settings.fMaxFrac = static_cast<digits_t>(maxFrac);
      settings.fMinSig = -1;
      settings.fMaxSig = -1;
@@ -311,7 +312,7 @@ index e6bb509ffd75a409faa03ea471bb97b84d2f61de..6055a435309c969ff2431cc1d2ad90c2
      PrecisionUnion union_;
      union_.fracSig = settings;
      return {RND_FRACTION, union_};
-@@ -294,6 +295,7 @@ Precision Precision::constructSignificant(int32_t minSig, int32_t maxSig) {
+@@ -298,6 +299,7 @@ Precision Precision::constructSignificant(int32_t minSig, int32_t maxSig) {
      settings.fMaxFrac = -1;
      settings.fMinSig = static_cast<digits_t>(minSig);
      settings.fMaxSig = static_cast<digits_t>(maxSig);
@@ -344,7 +345,7 @@ index dac03fe019d89482e91a29242b3027da80f28c8b..e18a04b4c5c95d1449662cfd8f7a7f97
  
  ResourceListener::~ResourceListener() {}
 diff --git a/third_party/libwebrtc/api/rtp_parameters.cc b/third_party/libwebrtc/api/rtp_parameters.cc
-index c1d12e5d8dc4be47fd751d656c99174b1433de09..e7fdfc2b7fc14a30df1d8770365985f219e7d4b7 100644
+index cf8b3ad3dcab8a802a2fb0a6b89d493417df98ba..5fbfd91517e95dc00eb563e440cdfb539be4ae26 100644
 --- a/third_party/libwebrtc/api/rtp_parameters.cc
 +++ b/third_party/libwebrtc/api/rtp_parameters.cc
 @@ -32,6 +32,7 @@ const char* DegradationPreferenceToString(
@@ -369,7 +370,7 @@ index 374b438adcbe961ed0b3787ca6d9a362c220e2d1..d2371b273712ef432b85e45ec478bf6d
  
  int I420BufferInterface::ChromaWidth() const {
 diff --git a/third_party/libwebrtc/api/video_codecs/video_codec.cc b/third_party/libwebrtc/api/video_codecs/video_codec.cc
-index f21c1a340171e831c94c505e162a2d8ac5d67d54..3c773d54b13cc9a17e9b3a0c27d968d4ae7ad498 100644
+index c6122d3f6ac3056ebcc654e1c268923f6057a738..1c78e6c0071a4ae36913d47e67d05389270f5095 100644
 --- a/third_party/libwebrtc/api/video_codecs/video_codec.cc
 +++ b/third_party/libwebrtc/api/video_codecs/video_codec.cc
 @@ -118,6 +118,7 @@ const char* CodecTypeToPayloadString(VideoCodecType type) {
@@ -438,7 +439,7 @@ index 5a970fb2ef1af8069b7dd0c52a993ea7d7e6e896..0feec89ab185ab214e1f24b05efab02f
  
  VideoStreamAdapter::RestrictionsOrState
 diff --git a/third_party/libwebrtc/call/rtp_payload_params.cc b/third_party/libwebrtc/call/rtp_payload_params.cc
-index 18e6d9136bc399f9a22fe66162daba584e14c6c6..e0c9e9184147bfb25228efae4813f37686e0a561 100644
+index e9bfb30ae3770d2e99f3d9c991ce5b859b865617..45126fb5102d86741b2fb0752575a0d4c4a261cd 100644
 --- a/third_party/libwebrtc/call/rtp_payload_params.cc
 +++ b/third_party/libwebrtc/call/rtp_payload_params.cc
 @@ -405,7 +405,7 @@ absl::optional<FrameDependencyStructure> RtpPayloadParams::GenericStructure(
@@ -451,7 +452,7 @@ index 18e6d9136bc399f9a22fe66162daba584e14c6c6..e0c9e9184147bfb25228efae4813f376
  
  void RtpPayloadParams::GenericToGeneric(int64_t shared_frame_id,
 diff --git a/third_party/libwebrtc/call/video_send_stream.cc b/third_party/libwebrtc/call/video_send_stream.cc
-index 241d44a2303a10c7a13557080665ee677835c4d0..0e4e28a70c76220121bedbc7e670045b63238a9b 100644
+index e8532a7a2669e717e79c49a1fd45020ca07dbced..c251629073b4c555c57d79d7fa7578a2a575bb92 100644
 --- a/third_party/libwebrtc/call/video_send_stream.cc
 +++ b/third_party/libwebrtc/call/video_send_stream.cc
 @@ -30,6 +30,7 @@ const char* StreamTypeToString(VideoSendStream::StreamStats::StreamType type) {
@@ -462,6 +463,18 @@ index 241d44a2303a10c7a13557080665ee677835c4d0..0e4e28a70c76220121bedbc7e670045b
  }
  
  }  // namespace
+diff --git a/third_party/libwebrtc/media/base/codec.cc b/third_party/libwebrtc/media/base/codec.cc
+index 70a8d90e25a3ece112d0628a7bbefda26b60b36e..3226aa95ec3bb764d0f498a34d6d7f97527e6075 100644
+--- a/third_party/libwebrtc/media/base/codec.cc
++++ b/third_party/libwebrtc/media/base/codec.cc
+@@ -206,6 +206,7 @@ bool Codec::Matches(const Codec& codec,
+       case Type::kVideo:
+         return IsSameCodecSpecific(name, params, codec.name, codec.params);
+     }
++    return false; // unreached
+   };
+ 
+   return matches_id && matches_type_specific();
 diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc b/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
 index fd759c63e8519fc8655cb873c3d7fc04e209e03d..1a3369ee23bdac60d4f68c9f34be991ce2be47dd 100644
 --- a/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
@@ -488,10 +501,10 @@ index 05624b1f9227a28622a4d97629e782c61617c8a4..4de2e3e67ae08e6788894986fe48d508
  
  metrics::Histogram* CreateVolumeHistogram(InputVolumeType input_volume_type) {
 diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc b/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
-index 91501fb6e32cb00fa79ce170e95d7e49301717e6..d87d9586e103a8e5edf703a3e516f73e91e3516d 100644
+index a13e77461a15ad182ec5e6f8657823ed04f78291..398d4225131340ebf324e21e4ff46fa91c842747 100644
 --- a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
 +++ b/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
-@@ -59,6 +59,8 @@ rtc::FunctionView<float(float)> GetActivationFunction(
+@@ -60,6 +60,8 @@ rtc::FunctionView<float(float)> GetActivationFunction(
      case ActivationFunction::kSigmoidApproximated:
        return ::rnnoise::SigmoidApproximated;
    }
@@ -562,7 +575,7 @@ index 90428464e3bca2e8b0268e977d03d27176aedf86..8f9f8ac3ee6b743cb1d025d0f3b4088b
  
  }  // namespace
 diff --git a/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc b/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
-index 8d9e956779e0d9826652c6c97485c8107cb4ad3b..d9089fd36ef322acc2b1e3f9dd6de9b2a34ade49 100644
+index 61ed84ebb532521ce9a4af69355807b04f228859..4d06c61ce6bffcd89b767932e9c7987cea6cceab 100644
 --- a/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
 +++ b/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
 @@ -44,6 +44,7 @@ ScreenCastPortal::CaptureSourceType ScreenCastPortal::ToCaptureSourceType(
@@ -598,10 +611,10 @@ index f1e4eddb4b9d8855f6accf24ef980cbc11d0077d..b3fde3cda3c7c636b8f37f3778fb3b73
  
  }  // namespace webrtc
 diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
-index f97fb167ed8b1e1f5b9e8aa3acf4cca5f067d35f..1b168f3fc6a22c55b4d7e958f9abfc4d3c4765c1 100644
+index bdb79fe8ccc9c8c1dd58b5216030cd78aa13fe2a..bfb6754b4bc0947a9df185904f8fed66ea716c52 100644
 --- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
 +++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
-@@ -140,6 +140,7 @@ bool IsNonVolatile(RTPExtensionType type) {
+@@ -138,6 +138,7 @@ bool IsNonVolatile(RTPExtensionType type) {
  #endif
    }
    RTC_CHECK_NOTREACHED();
@@ -610,7 +623,7 @@ index f97fb167ed8b1e1f5b9e8aa3acf4cca5f067d35f..1b168f3fc6a22c55b4d7e958f9abfc4d
  
  bool HasBweExtension(const RtpHeaderExtensionMap& extensions_map) {
 diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
-index 244f644bd1a1ee8f61e322270012b2cfbec5afda..c2187e469c1b078223a1fdf0266a3e82d9d9a64f 100644
+index a0f1af5243a7f73f414d4401f27e1945235d3278..83ba1e5f60fe55db5fa8b953522ae7a9757e81df 100644
 --- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
 +++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
 @@ -45,6 +45,7 @@ namespace {
@@ -620,7 +633,7 @@ index 244f644bd1a1ee8f61e322270012b2cfbec5afda..c2187e469c1b078223a1fdf0266a3e82
 +  return "";
  }
  
- constexpr char kIncludeCaptureClockOffset[] =
+ }  // namespace
 diff --git a/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc b/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
 index 94860da1b6b2ddf44fb45a9c173d080ed85d24f7..ab24c6ff2cae88a58d04e59c07b7b992566792eb 100644
 --- a/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
@@ -646,7 +659,7 @@ index 5aebd2c5268e8c58b07be4bc393f83ac5abd1c09..8d18446430ff4b7f6d0d669416e3493d
  
  TemporalLayersChecker::TemporalLayersChecker(int num_temporal_layers)
 diff --git a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
-index 2470bc889383a572605021edbaec01ac5ed34ddb..37309e4822f16d3f4a38d4c6719b6773b30b8372 100644
+index 46db6867033faaa9be96738d2999a7010af75da7..4178664b9c47da2c9792858c60cc38f26ecdb7ab 100644
 --- a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
 +++ b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
 @@ -63,6 +63,7 @@ std::string ToString(VideoAdaptationReason reason) {

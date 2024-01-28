@@ -9,7 +9,7 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=1729459
  1 file changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/modules/fdlibm/src/math_private.h b/modules/fdlibm/src/math_private.h
-index f4373f27834ab794d3ea7bf5fa72caa0a2480e8f..4430e496e8e9251e702b47e68ec88b4f9f0fa3f2 100644
+index b588a5905f40597f78f6a069ed6571f8cb74b57c..beae1f4c077b4cc527525f0ea09bbcdcd3380a44 100644
 --- a/modules/fdlibm/src/math_private.h
 +++ b/modules/fdlibm/src/math_private.h
 @@ -30,9 +30,14 @@

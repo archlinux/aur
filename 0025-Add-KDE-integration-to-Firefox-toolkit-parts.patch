@@ -2,14 +2,20 @@ From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Date: Tue, 8 Aug 2023 16:13:48 +0300
 Subject: [PATCH] Add KDE integration to Firefox (toolkit parts)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
 Bug: https://bugzilla.mozilla.org/show_bug.cgi?id=140751
 Bug: https://bugzilla.suse.com/show_bug.cgi?id=170055
 
+EDIT: Björn Bidar: Removed handling for obsolete special files
+
 Co-authored-by: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Co-authored-by: Lubos Lunak <lunak@suse.com>
+Co-authored-by: Björn Bidar <bjorn.bidar@thaodan.de>
 ---
- modules/libpref/Preferences.cpp               |  13 +-
+ modules/libpref/Preferences.cpp               |   1 +
  modules/libpref/moz.build                     |   4 +
  python/mozbuild/mozpack/chrome/flags.py       |   1 +
  python/mozbuild/mozpack/chrome/manifest.py    |   1 +
@@ -33,7 +39,7 @@ Co-authored-by: Lubos Lunak <lunak@suse.com>
  xpcom/components/ManifestParser.cpp           |  10 +
  xpcom/components/moz.build                    |   1 +
  xpcom/io/nsLocalFileUnix.cpp                  |  20 +-
- 24 files changed, 921 insertions(+), 37 deletions(-)
+ 24 files changed, 910 insertions(+), 36 deletions(-)
  create mode 100644 toolkit/xre/nsKDEUtils.cpp
  create mode 100644 toolkit/xre/nsKDEUtils.h
  create mode 100644 uriloader/exthandler/unix/nsCommonRegistry.cpp
@@ -42,10 +48,10 @@ Co-authored-by: Lubos Lunak <lunak@suse.com>
  create mode 100644 uriloader/exthandler/unix/nsKDERegistry.h
 
 diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
-index 9e0853d1a5b7cf9dd05a15db3499dd18fcf73803..1ab9be4e7415ddd19f393b6856c13c462059b111 100644
+index 7860eaa60179d6e5e0952ad0ec75e38b37d8d1b7..a8358199720719f2d5aaff91e30307b752ca0d85 100644
 --- a/modules/libpref/Preferences.cpp
 +++ b/modules/libpref/Preferences.cpp
-@@ -95,6 +95,7 @@
+@@ -96,6 +96,7 @@
  #ifdef MOZ_BACKGROUNDTASKS
  #  include "mozilla/BackgroundTasks.h"
  #endif
@@ -53,34 +59,8 @@ index 9e0853d1a5b7cf9dd05a15db3499dd18fcf73803..1ab9be4e7415ddd19f393b6856c13c46
  
  #ifdef DEBUG
  #  include <map>
-@@ -4906,6 +4907,16 @@ nsresult Preferences::InitInitialObjects(bool aIsStartup) {
- #endif
-   };
- 
-+  if (nsKDEUtils::kdeSession()) {  // TODO what if some setup actually requires
-+                                   // the helper?
-+    for (int i = 0; i < MOZ_ARRAY_LENGTH(specialFiles); ++i) {
-+      if (*specialFiles[i] == '\0') {
-+        specialFiles[i] = "kde.js";
-+        break;
-+      }
-+    }
-+  }
-+
-   rv = pref_LoadPrefsInDir(defaultPrefDir, specialFiles,
-                            ArrayLength(specialFiles));
-   if (NS_FAILED(rv)) {
-@@ -4980,7 +4991,7 @@ nsresult Preferences::InitInitialObjects(bool aIsStartup) {
-       }
- 
-       // Do we care if a file provided by this process fails to load?
--      pref_LoadPrefsInDir(path, nullptr, 0);
-+      pref_LoadPrefsInDir(path, specialFiles, ArrayLength(specialFiles));
-     }
-   }
- 
 diff --git a/modules/libpref/moz.build b/modules/libpref/moz.build
-index e8f8b97170d32c1d3ac342dd93da7265bf707c8f..831001cee4b1eb33171d83d524ee9e453a800257 100644
+index 3e835d422cfdfb07410b01e834bee2973ae30c57..ce58aec8ef07acf971290174b9ee5c172b1fdccd 100644
 --- a/modules/libpref/moz.build
 +++ b/modules/libpref/moz.build
 @@ -126,6 +126,10 @@ UNIFIED_SOURCES += [
@@ -275,7 +255,7 @@ index 185dc1e22a903cec95b212d1713dddf764b9b198..bdb4ed6f9f86583d02dd80278f858d06
    auto result = MakeRefPtr<nsUnixSystemProxySettings>();
    result->Init();
 diff --git a/toolkit/xre/moz.build b/toolkit/xre/moz.build
-index de05e0cc29752855138b4d189ce6a13c2121d715..c89faad7bfca4ab1d60390766b2e7befd9e3831d 100644
+index 9a76d1f580c08fafe6b3ab53669cb2ee6c289d12..80416ff1b4edeba2d90c934f2e8a5a519aaed041 100644
 --- a/toolkit/xre/moz.build
 +++ b/toolkit/xre/moz.build
 @@ -96,7 +96,9 @@ elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "uikit":
@@ -290,7 +270,7 @@ index de05e0cc29752855138b4d189ce6a13c2121d715..c89faad7bfca4ab1d60390766b2e7bef
      CXXFLAGS += CONFIG["MOZ_X11_SM_CFLAGS"]
 diff --git a/toolkit/xre/nsKDEUtils.cpp b/toolkit/xre/nsKDEUtils.cpp
 new file mode 100644
-index 0000000000000000000000000000000000000000..e282de40618e0be06a4247891d9ab1a26cba2126
+index 0000000000000000000000000000000000000000..ca0266b4868811e4afe2db4a1d9e7663ffd2a1ce
 --- /dev/null
 +++ b/toolkit/xre/nsKDEUtils.cpp
 @@ -0,0 +1,286 @@
@@ -316,9 +296,9 @@ index 0000000000000000000000000000000000000000..e282de40618e0be06a4247891d9ab1a2
 +#include <X11/Xlib.h>
 +// copied from X11/X.h as a hack since for an unknown
 +// reason it's not picked up from X11/X.h
-+#ifndef None
-+#  define None 0L /* universal null resource or null atom */
-+#endif
++//#ifndef None
++//#  define None 0L /* universal null resource or null atom */
++//#endif
 +
 +// #define DEBUG_KDE
 +#ifdef DEBUG_KDE
@@ -664,7 +644,7 @@ index ab77657dd5f378af0955c43ef958a8abea620134..18b4d85560699bbc3c69b82ee91dfb5c
    *aHandlerExists = false;
  #endif
 diff --git a/uriloader/exthandler/moz.build b/uriloader/exthandler/moz.build
-index 0fb126a7f3f7a45d53e6fb81aef74147c711cb77..8cc0006f3045e14e83fd51926ac7856eacbe7357 100644
+index cb96c690a69a87a95dc28cc4903cd84718c324af..164c06c8d186f7af445fa5bd5c08757b1c89e7fd 100644
 --- a/uriloader/exthandler/moz.build
 +++ b/uriloader/exthandler/moz.build
 @@ -86,7 +86,9 @@ else:
@@ -1006,7 +986,7 @@ index 7f6eaa46f2ee0d5155b83bfb07d8040584935772..f7627e790c47e1ae007b072b4bb47b18
        LOG("Got MIMEInfo from GNOME registry without extensions; setting them "
            "to %s\n",
 diff --git a/widget/gtk/moz.build b/widget/gtk/moz.build
-index c6a765df9e5a4c95f77e9ee1b4ebbf9913a81e15..6e9028169ac594a24f90a4f58dc493c8332c6bf8 100644
+index a6ed6f7c8cd08853f4bf1e25eb658b8fb9a4cbb1..8362e17dee84e45c820ebf99397da914263bc1ef 100644
 --- a/widget/gtk/moz.build
 +++ b/widget/gtk/moz.build
 @@ -161,6 +161,7 @@ LOCAL_INCLUDES += [
@@ -1018,7 +998,7 @@ index c6a765df9e5a4c95f77e9ee1b4ebbf9913a81e15..6e9028169ac594a24f90a4f58dc493c8
      "/widget/headless",
      "/widget/x11",
 diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
-index 22d0f46b9563734c7afb4292417124f3cd171a12..b2a68711eb344d5ac41a7133751b2c19d574f532 100644
+index d15c44d3a0bde1ae0b3c73ba6f35ace25a1c9a8b..987f23b4ea29ecfa943ce0b1646db669cd40de19 100644
 --- a/widget/gtk/nsFilePicker.cpp
 +++ b/widget/gtk/nsFilePicker.cpp
 @@ -5,6 +5,7 @@
@@ -1029,7 +1009,7 @@ index 22d0f46b9563734c7afb4292417124f3cd171a12..b2a68711eb344d5ac41a7133751b2c19
  #include <sys/types.h>
  #include <sys/stat.h>
  #include <unistd.h>
-@@ -28,6 +29,8 @@
+@@ -30,6 +31,8 @@
  #include "WidgetUtilsGtk.h"
  
  #include "nsFilePicker.h"
@@ -1038,7 +1018,7 @@ index 22d0f46b9563734c7afb4292417124f3cd171a12..b2a68711eb344d5ac41a7133751b2c19
  
  #undef LOG
  #ifdef MOZ_LOGGING
-@@ -242,7 +245,8 @@ NS_IMETHODIMP
+@@ -310,7 +313,8 @@ NS_IMETHODIMP
  nsFilePicker::AppendFilter(const nsAString& aTitle, const nsAString& aFilter) {
    if (aFilter.EqualsLiteral("..apps")) {
      // No platform specific thing we can do here, really....
@@ -1048,7 +1028,7 @@ index 22d0f46b9563734c7afb4292417124f3cd171a12..b2a68711eb344d5ac41a7133751b2c19
    }
  
    nsAutoCString filter, name;
-@@ -352,6 +356,31 @@ nsFilePicker::Open(nsIFilePickerShownCallback* aCallback) {
+@@ -420,6 +424,31 @@ nsFilePicker::Open(nsIFilePickerShownCallback* aCallback) {
    // Can't show two dialogs concurrently with the same filepicker
    if (mRunning) return NS_ERROR_NOT_AVAILABLE;
  
@@ -1080,7 +1060,7 @@ index 22d0f46b9563734c7afb4292417124f3cd171a12..b2a68711eb344d5ac41a7133751b2c19
    NS_ConvertUTF16toUTF8 title(mTitle);
  
    GtkWindow* parent_widget =
-@@ -633,6 +662,205 @@ void nsFilePicker::Done(void* file_chooser, gint response) {
+@@ -701,6 +730,205 @@ void nsFilePicker::Done(void* file_chooser, gint response) {
    NS_RELEASE_THIS();
  }
  
@@ -1287,10 +1267,10 @@ index 22d0f46b9563734c7afb4292417124f3cd171a12..b2a68711eb344d5ac41a7133751b2c19
  void* nsFilePicker::GtkFileChooserNew(const gchar* title, GtkWindow* parent,
                                        GtkFileChooserAction action,
 diff --git a/widget/gtk/nsFilePicker.h b/widget/gtk/nsFilePicker.h
-index 496df4937277d96485376176296ee836aa261ec7..a4c1862ec042f4465d53bc95f138afb87260ba07 100644
+index 7ec93a6694276b3622dbd2d5ba0ececa262b221c..c2571d314c59c3b6d8d70cd65534c9b5818ee86d 100644
 --- a/widget/gtk/nsFilePicker.h
 +++ b/widget/gtk/nsFilePicker.h
-@@ -74,6 +74,12 @@ class nsFilePicker : public nsBaseFilePicker {
+@@ -76,6 +76,12 @@ class nsFilePicker : public nsBaseFilePicker {
   private:
    static nsIFile* mPrevDisplayDirectory;
  
@@ -1382,7 +1362,7 @@ index 88ee06d78db60a84343fd3d23c16e163aead37c3..834d6a2d353cc1bd11916de8a28f5d05
          stTablet == eBad ||
  #endif
 diff --git a/xpcom/components/moz.build b/xpcom/components/moz.build
-index 95ee64e985ac34dd6a3191f1948afa6d05adcb73..9af8f80497b7390b7ca434b6ee3b86b2baf47489 100644
+index 4a58f46da3f610e9b2f55053939235c7350fedc5..7fb012af861f20932778c59da631f663def2db34 100644
 --- a/xpcom/components/moz.build
 +++ b/xpcom/components/moz.build
 @@ -71,6 +71,7 @@ LOCAL_INCLUDES += [
@@ -1394,7 +1374,7 @@ index 95ee64e985ac34dd6a3191f1948afa6d05adcb73..9af8f80497b7390b7ca434b6ee3b86b2
  
  if CONFIG["MOZ_WIDGET_TOOLKIT"] == "gtk":
 diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
-index 08c77360de6fdbf3dc579ea49243dbdc18f37ebc..eedd5bcf86bde3ecd795bbbcbf94799f19135323 100644
+index ae501f40415468c5422c02257e85dd8710a5d01a..190c527916e56ac7aa64233add1d7bc58e8b8ad7 100644
 --- a/xpcom/io/nsLocalFileUnix.cpp
 +++ b/xpcom/io/nsLocalFileUnix.cpp
 @@ -51,6 +51,7 @@
@@ -1405,7 +1385,7 @@ index 08c77360de6fdbf3dc579ea49243dbdc18f37ebc..eedd5bcf86bde3ecd795bbbcbf94799f
  #endif
  
  #ifdef MOZ_WIDGET_COCOA
-@@ -2172,10 +2173,18 @@ nsLocalFile::Reveal() {
+@@ -2210,10 +2211,18 @@ nsLocalFile::Reveal() {
    }
  
  #ifdef MOZ_WIDGET_GTK
@@ -1426,7 +1406,7 @@ index 08c77360de6fdbf3dc579ea49243dbdc18f37ebc..eedd5bcf86bde3ecd795bbbcbf94799f
    return giovfs->RevealFile(this);
  #elif defined(MOZ_WIDGET_COCOA)
    CFURLRef url;
-@@ -2197,6 +2206,13 @@ nsLocalFile::Launch() {
+@@ -2235,6 +2244,13 @@ nsLocalFile::Launch() {
    }
  
  #ifdef MOZ_WIDGET_GTK

@@ -3,16 +3,24 @@
 # Contributor: Weng Xuetian <wengxt@gmail.com>
 
 
+# For common issues regarding GCC and firefox see:
+# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=45375
+
+# enable this if you run out of memory during linking
+#_lowmem=true
+
+# build with PGO
+_pgo=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse-no-telemetry
-pkgver=117.0.1
+pkgver=121.0.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE, no telemetry"
-arch=('i686' 'x86_64' 'aarch64')
+arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://github.com/openSUSE/firefox-maintenance"
-depends=('libxt' 'mime-types' 'dav1d' 'aom'
+depends=('libxt' 'mime-types'
          'dbus-glib' 'hicolor-icon-theme'
          'libevent' 'nss>=3.28.3' 'nspr>=4.10.6' 'hunspell'
 	 'sqlite' 'kmozillahelper' 'ffmpeg'
@@ -31,6 +39,8 @@ makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake'
              'graphite'
              # system webp
              'libwebp'
+             # system libevent
+             'libevent'
              # system icu
              'icu'
              # system libvpx
@@ -40,6 +50,12 @@ makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake'
              'libnotify'
              'libpulse'
             )
+changeslog=$pkgname.changes
+
+# https://bugs.gentoo.org/792705
+# needs fixes from GCC 11.2
+makedepends+=('gcc>=11.2.0')
+
 
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech'
@@ -48,6 +64,8 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'xdg-desktop-portal: Screensharing with Wayland')
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
+_patchrev=22b224bf3e8c1431d2d9d961ca351cf3c50fdc15
+options=('!emptydirs' !lto)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
         mozconfig
         firefox.desktop
@@ -83,8 +101,10 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         0029-Shut-up-warnings-about-future-Rust-version-incompati.patch
         0030-Partially-revert-Bug-1768632-Make-EnumSet-compile-fo.patch
         0031-Bug-1796523-Workaround-source-locations-for-function.patch
-        0032-disable-data-reporting-at-compile-time.patch
-)
+        0032-Bug-1822730-Add-basic-blob-protocol-handling-for-blo.patch
+        0033-Bug-1862601-firefox-icu-74.patch
+        0034-disable-data-reporting-at-compile-time.patch
+       )
 
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
@@ -108,13 +128,7 @@ _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 # more information.
 _mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
 
-# change this to false if you do not want to run a PGO build for aarch64 or x86_64
-_build_profiled_aarch64=true
-_build_profiled_x86_64=true
-
-
 prepare() {
-
   cd firefox-$pkgver
 
   cp "$srcdir/mozconfig" .mozconfig
@@ -128,17 +142,17 @@ prepare() {
   echo -n "$_mozilla_api_key" >mozilla-api-key
   echo "ac_add_options --with-mozilla-api-keyfile=\"$PWD/mozilla-api-key\"" >>.mozconfig
 
-  for patch in $srcdir/*.patch ; do
+  for patch in "$srcdir"/*.patch ; do
     echo "Applying $patch"
     patch -p1 -i "$patch"
   done
 }
 
 build() {
-
   #export CXXFLAGS="${CFLAGS}"
   cd firefox-$pkgver
-
+  export JOBS=$(($(nproc) / 2))
+  export MOZ_SOURCE_REPO="$_repo"
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZ_APP_REMOTINGNAME=$pkgname
   export CARGO_HOME="$srcdir"/.cargo
@@ -147,92 +161,38 @@ build() {
   # LTO needs more open files
   ulimit -n 4096
 
-  export CC='clang'
-  export CXX='clang++'
+  export CC=gcc
+  export CXX=g++
+  export AR="gcc-ar"
+  export NM="gcc-nm"
+  export RANLIB="gcc-ranlib"
 
-
+  export MOZ_MAKE_FLAGS="$MAKEFLAGS"
+  export MOZ_SMP_FLAGS="$MAKEFLAGS"
   export STRIP=/bin/true
 
-
-  export MOZ_ADDON_SIGNING=1
-  export MOZ_REQUIRE_SIGNING=1
-  export BUILD_OFFICIAL=0
-
-
-  echo "Building instrumented browser..."
-
-  if [[ $CARCH == 'aarch64' && $_build_profiled_aarch64 == true ]]; then
-
-    cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-profile-generate
-END
-
-  elif [[ $CARCH == 'x86_64' && $_build_profiled_x86_64 == true ]]; then
-
-    cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-profile-generate=cross
-END
-
+  if [[ -n $_lowmem || $CARCH == i686 ]]; then
+    LDFLAGS+=" -Xlinker --no-keep-memory"
   fi
 
-  if [[ $CARCH == 'aarch64' && $_build_profiled_aarch64 == true || $CARCH == 'x86_64' && $_build_profiled_x86_64 == true ]]; then
+  if [[ -n $_pgo ]]; then
+    export DISPLAY=:99
+    export MOZ_PGO=1
 
+    export TMPDIR="$srcdir/tmp"
+    mkdir -p "$TMPDIR"
+
+    xvfb-run \
+      -a \
+      -s "-extension GLX -screen 0 1280x1024x24" \
+      ./mach build
+  else
     ./mach build
-
-    echo "Profiling instrumented browser..."
-
-    ./mach package
-
-    LLVM_PROFDATA=llvm-profdata \
-      JARLOG_FILE="$PWD/jarlog" \
-      xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
-      ./mach python build/pgo/profileserver.py
-
-    stat -c "Profile data found (%s bytes)" merged.profdata
-    test -s merged.profdata
-
-    stat -c "Jar log found (%s bytes)" jarlog
-    test -s jarlog
-
-    echo "Removing instrumented browser..."
-    ./mach clobber
-
-    echo "Building optimized browser..."
-
-    if [[ $CARCH == 'aarch64' ]]; then
-
-      cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-lto
-ac_add_options --enable-profile-use
-ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
-ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
-END
-
-    else
-
-      cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-lto=cross,full
-ac_add_options --enable-profile-use=cross
-ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
-ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
-END
-
-    fi
   fi
-
-  if [[ $CARCH == 'aarch64' && $_build_profiled_aarch64 == false || $CARCH == 'x86_64' && $_build_profiled_x86_64 == false ]]; then
-    cat >.mozconfig ../mozconfig
-  fi
-
-  ./mach build
-
-  echo "Building symbol archive..."
   ./mach buildsymbols
-
 }
 
 package() {
-
   # The .so dependencies have to be added here so
   # pacman doesn't try to install the build time  dependencies
   # by trying to resolve so names.
@@ -240,7 +200,7 @@ package() {
   # they are already specificied in makedepends
   depends+=(
     # system av1
-    #'libdav1d.so' 'libaom.so'
+    'libdav1d.so' 'libaom.so'
     # system harfbuzz
     'libharfbuzz.so'
     # system icu
@@ -251,7 +211,6 @@ package() {
     # gtk
     'libgtk-3.so'
   )
-
   cd firefox-$pkgver
 
   DESTDIR="$pkgdir" ./mach install
@@ -303,40 +262,42 @@ Version=2
 END
 
 }
-sha256sums=('7ea4203b5cf9e59f80043597e2c9020291754fcab784a337586b5f5e1370c416'
+sha256sums=('b3a4216e01eaeb9a7c6ef4659d8dcd956fbd90a78a8279ee3a598881e63e49ce'
             'SKIP'
-            'fa18ee15eb60188b0f7cbfe46bf5b5656b12db70724d4c5542bc81a03e7dae6e'
-            '556dfb3a2ac0c5b4bd55cdcde5d01c744f051f1a40817c4164f506ef42eea4cd'
+            '03cb6b12c78dfaf7b2e8055f081ba9137207c7aad2f49568cb100f2015e7d6a4'
+            '4c93b2e1f1675e033ed7910fe5f379626a92903a940697430985bcfdf94afceb'
             'eaad0eee76f89e0a1a241742ec5c8ec9315b096f7b3e0ea302b253b926750aae'
-            '10593c391762298c8f740d432e51224d031f17cf3689341497d3cc02bfa744f3'
+            'c3c785256e7497118e9e19de4c1748664e8df5930a436040f029023a1190a9a5'
             'eb19d9568e8d7705b2a0c4774d4f6a758a910c0e5cf427727feb5884a2a1ee98'
             '4322124dc370ac56063837370a8107e85ca6e0d4037ff71ece5e7b0f55ed8053'
-            '691de24752efa64ebe8f1a77c31ee769bb359c49655352399cf345300c0c6cb6'
-            'ea2339511a6be6d44406dd478623a41aa0de6a748a5267fe675f90abcb30971a'
-            '2fdb6066cf348843f57b963571e0211acfb2f671896dfad650723129b62bd1af'
+            'a8aeb8b73abe711752ebf1a561fb4af736854be5c298441b8de7a1148a47a416'
+            '111fa1040408cccf0ea52c59028ddd06bae52adc2d3387a8fc2ff89a8b6590f9'
+            '999f0f5c198f00943894639d9dd4157f3e078a40e1f8a815aef2dacd5158a67c'
             'bba76c5e13952ef45362f8e53a5c030e0f5d722f8f266228787136a5312330ea'
             'f2fcd4ca82b833f5e5b7e991882e24f09463cd837242b18cf163bc751f2e21d5'
             '766faefbd4898049e9913589962bf839da6785d50f0631b4eac7316f16bf2ea6'
-            '3aa459ef9295cd76d102a767a8910cc42cfc672bdde9ab98453465a37946024d'
-            'e5e960afe0a2ed519b3a8d20e645b4defd0ff9920797bf9accdd7b235ab8637d'
+            '1cad951e7ff0073c9b5462fa9c4d8ead78d6d494286092b5d23a6fa5949259ef'
+            '5109d3113dbf3e8e584ff2107be50bbb8d04927329b1dba3c7c08308e2ddc42e'
             '32d40630a010ee91d2c35c814ef2f567ad7faf859f8198735829958cb055f53b'
             '1ffdcff3d4e31c5cceddadfa0111c27a34480594238cdf85866ee1073d922910'
-            '26fe6a707517789f512fffd83009d20544987e944ad4b3d10ed30e8b566f96ba'
-            '4007869a43897d45ba56b631195ff9ce96616cb160e9a3785f2b4c9313115095'
+            '3144c2f38c9e60ba00f231e7a8051ca41cdc5d9f542c0144f4549f525a8c129f'
+            '5ee703cddba6045a03ee882ff70423fe185d009e2c912fc49ef66f7703ea46fe'
             '2400173d2c84573194c6af9031663a5b2332ccb4929b246b216c61c97d8b0a54'
-            '04cf5528a4e211a2f33d74282013672ac1a585814c0de46419f2dc3c469a71a7'
+            '469065ad1535e0798f8e1a3dc3285cbbb003ed12c62af5d6b9e1184e9383b5f8'
             '72d30acbe1e8488c6bd3af2e0813223842a63b859d6e7aff66d2f23612b7ad8b'
-            '8cd6457b71bf20023f25b66e78cdebb43205f26db03a6d88c64202cc51ba1b39'
-            '039a07b1171a9fc1bd71a792c2ee152f774a1bf34a768eae72113b3ff5fd19e7'
-            'fdab230f8c1c457277d921cf318771852288c665c01fd1b9f570e1b9be6dac25'
-            'f129686f536941c820022a95b242c83f4de54facdac59b6eb16db46e84de0c7c'
-            'a41b65c032a21298eed7d70e83dfbe3d28fe268963803d225914d2a21f97b22c'
+            '2a54aedc86f72dfe070b8f7a609a09b20f44fb90cf6add94ac451067dbe379d1'
+            '4f4f08bee921a1c0a78272cf08ff3e198895074e892aba8c172e7e12a97eaac6'
+            '057f4c0dd6c0564438fecf909eb5365714f633416f438fb8b7a8e4b8356347ed'
+            '6b2156bc3a0c8ae138a257dabe89ff6eac778f0230edb43b8f68eb659ae11ef3'
+            'ce4ebd0b0bf19a292c6d4f199e05878b67bc45ec040916bcc84c50bb87367243'
             'dfb11575e7d43071c9046762408b7267507c645020678d57689d55d3f68c0c28'
-            'b0bc4493dea4241a5a7e83ce705c25a867a22ff9d610cbbe50c031c65d8c83e8'
-            'b941526ab077d21dc0e833ff2bd375eb06ff53d3898d3142ef917e3a7f3a67c7'
-            '8fe583a722a48596c93634136fb2bea621b30311bc935447bf4dc0c472aac117'
-            'eab658c30b83505825765f6a99aeaff693888e6bfa4e5b436349a79c43b322e0'
-            '9b7bf3b170494a2a10b56b2d903902140d50919e1e4a32bcfd16feeb08fa402e'
+            'abfd58b5296c16642a99e0dba7f27366d6b532306e13458d7d9d1217344f7108'
+            'e6c33e08d0c839723a2379337251ab23bdb26a92edd9d5910986cf0301b3bd08'
+            'c264af7b086701e5c76b47e87e4cd79ddb424e4ec6e87f81592c7ea1a37ace3a'
+            'ce292fde34263f5dfd649b0b849c8f47cc5762acf8e5735e57ec8e453c2f14c1'
+            '329bd252104fcfa21f68256dec589858fc63354c56dc57f7d4d84ee32c5310f1'
             '7038651e09bd1f1cf2561ee977e6fcc58f7295ce821f419288da6d0b2bcc8feb'
             '0d7a0f8bd7f0a8f1319d79a433d848a3eb43e81f4a14f29d5c8602be49d93cb9'
-            'cc558844f6b6d30e3e3d4d91b873a081281e0313d3c7d55bd4fe5df6bb381eec')
+            'ca63e1a8b93eed45fe1b6dc4da087d18b866570d99cfc6abfb8a7d3187d98e83'
+            '9f2cc514ecac31de28a26493fb5841073a945109107c1f4d2f267e8b18f32bd5'
+            '81c1891d65155b1f30bd67b206c7c92dde565803e2c6f2a68d46268c44e271ed')

@@ -24,10 +24,10 @@ Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
  9 files changed, 70 insertions(+), 14 deletions(-)
 
 diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
-index ce036fcdc55dc5b42709364775eeb779d64ee62c..ee420cf6363d598cd20b37bef6199dbe77f605c0 100644
+index b3213b8c4498b0467d7863d53c5fc4240e4609be..359fcd671f0ebeba46e2556c99ec11ce067fe23e 100644
 --- a/browser/installer/package-manifest.in
 +++ b/browser/installer/package-manifest.in
-@@ -147,9 +147,11 @@
+@@ -145,9 +145,11 @@
  @RESPATH@/update-settings.ini
  #endif
  @RESPATH@/platform.ini
@@ -37,8 +37,8 @@ index ce036fcdc55dc5b42709364775eeb779d64ee62c..ee420cf6363d598cd20b37bef6199dbe
  #endif
 +#endif
  @BINPATH@/@DLL_PREFIX@lgpllibs@DLL_SUFFIX@
+ @BINPATH@/@DLL_PREFIX@gkcodecs@DLL_SUFFIX@
  #ifdef MOZ_FFVPX
- @BINPATH@/@DLL_PREFIX@mozavutil@DLL_SUFFIX@
 diff --git a/config/external/sqlite/moz.build b/config/external/sqlite/moz.build
 index 6294924c564ae8c2ebc0033895be91069179fcd2..b978fd9caba375242de1be25072b251461010044 100644
 --- a/config/external/sqlite/moz.build
@@ -104,12 +104,12 @@ index b7198b1912fdc8d1182a445421aec3450474c23d..3ecc0bb997cf376e996bff2d9c184ecf
      // treat them as such.
      Release();  // Call is protected by us holding the mutex.
 diff --git a/storage/moz.build b/storage/moz.build
-index 9cefe26ec0c83fc6f9fbce3fee6604c86a10fc98..1c473a5c3adf605eb8ceeeed28923a4b5f38d4a1 100644
+index 38a855fce67ef30924be37f15359442b82dbbd82..0152aa5d39cd13abd36f4c0bf718e230c207dbdf 100644
 --- a/storage/moz.build
 +++ b/storage/moz.build
 @@ -101,6 +101,12 @@ if CONFIG["MOZ_THUNDERBIRD"] or CONFIG["MOZ_SUITE"]:
- # will need to change it here as well.
- DEFINES["SQLITE_MAX_LIKE_PATTERN_LENGTH"] = 50000
+ if not CONFIG["MOZ_AVOID_DISK_REMNANT_ON_CLOSE"]:
+     DEFINES["MOZ_SQLITE_PERSIST_AUXILIARY_FILES"] = 1
  
 +# See Sqlite moz.build for reasoning about TEMP_STORE.
 +# For system sqlite we cannot use the compile time option, so we use a pragma.
@@ -121,10 +121,10 @@ index 9cefe26ec0c83fc6f9fbce3fee6604c86a10fc98..1c473a5c3adf605eb8ceeeed28923a4b
      "/dom/base",
      "/third_party/sqlite3/src",
 diff --git a/storage/mozStorageConnection.cpp b/storage/mozStorageConnection.cpp
-index 0398124f6ad233acef7625aac81c4f1162ff7d46..7a98488181763fdac3b3df0116a73592d8df6ea0 100644
+index 755f6d55a7bcaa7e192c4431469e2003d78a7937..b98ea355a8b0499cbe464f0a755e1735037076f3 100644
 --- a/storage/mozStorageConnection.cpp
 +++ b/storage/mozStorageConnection.cpp
-@@ -1041,6 +1041,10 @@ nsresult Connection::initializeInternal() {
+@@ -1046,6 +1046,10 @@ nsresult Connection::initializeInternal() {
      return convertResultCode(srv);
    }
  
@@ -136,18 +136,18 @@ index 0398124f6ad233acef7625aac81c4f1162ff7d46..7a98488181763fdac3b3df0116a73592
    srv = registerFunctions(mDBConn);
    if (srv != SQLITE_OK) {
 diff --git a/storage/mozStorageService.cpp b/storage/mozStorageService.cpp
-index 6427fef6529fa2959100c3b5b1c7b82ae0f6961e..6081bf0d89a538f8002e2a8f728d6cafff486ee3 100644
+index ac5a7b17888c48fc1afde78a3713994934763843..66beae8efe4b166b6f696a300139c9ae0d770a68 100644
 --- a/storage/mozStorageService.cpp
 +++ b/storage/mozStorageService.cpp
-@@ -18,6 +18,7 @@
- #include "mozStoragePrivateHelpers.h"
- #include "nsIObserverService.h"
+@@ -21,6 +21,7 @@
  #include "nsIPropertyBag2.h"
+ #include "ObfuscatingVFS.h"
+ #include "QuotaVFS.h"
 +#include "nsIPromptService.h"
  #include "mozilla/Services.h"
  #include "mozilla/LateWriteChecks.h"
  #include "mozIStorageCompletionCallback.h"
-@@ -167,6 +168,31 @@ already_AddRefed<Service> Service::getSingleton() {
+@@ -170,6 +171,31 @@ already_AddRefed<Service> Service::getSingleton() {
      return do_AddRef(gService);
    }
  
@@ -180,10 +180,10 @@ index 6427fef6529fa2959100c3b5b1c7b82ae0f6961e..6081bf0d89a538f8002e2a8f728d6caf
    // main thread.
    NS_ENSURE_TRUE(NS_IsMainThread(), nullptr);
 diff --git a/third_party/sqlite3/src/moz.build b/third_party/sqlite3/src/moz.build
-index ff363c12935cd42ad40051627c287006f4c6be15..9242bb241e294745c45412c1db5f1cf293b26d0f 100644
+index 43bda4c89b651d8b959d5db67faccb914e4aa792..838e8851e5c1561755a4325ca3cd3f3f80da79d7 100644
 --- a/third_party/sqlite3/src/moz.build
 +++ b/third_party/sqlite3/src/moz.build
-@@ -81,6 +81,7 @@ DEFINES['SQLITE_OMIT_BUILTIN_TEST'] = True
+@@ -79,6 +79,7 @@ DEFINES['SQLITE_OMIT_BUILTIN_TEST'] = True
  # Try to use a MEMORY temp store when possible. That allows for better
  # performance and doesn't suffer from a full separate tmp partition.
  # Exclude 32bit platforms due to address space fragmentation issues.
@@ -191,7 +191,7 @@ index ff363c12935cd42ad40051627c287006f4c6be15..9242bb241e294745c45412c1db5f1cf2
  if CONFIG['OS_TARGET'] == 'Android':
      # On Android there's no tmp partition, so always use a MEMORY temp store.
      DEFINES['SQLITE_TEMP_STORE'] = 3
-@@ -90,6 +91,7 @@ elif CONFIG['HAVE_64BIT_BUILD']:
+@@ -88,6 +89,7 @@ elif CONFIG['HAVE_64BIT_BUILD']:
  
  # Change the default temp files prefix, to easily distinguish files we created
  # vs files created by other Sqlite instances in the system.
@@ -214,10 +214,10 @@ index fc576f30bc6a47db5c8bfbaa77bb117f1bd68011..903d6b29f62528b6ecd762ef69fb5f20
  sqlite3_complete16
  sqlite3_config
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index 54425af01317562fb3204fe7bc01a494b8f2167d..dd9583868a0e15e5c3f4c56852531ff6fbe921eb 100644
+index c15d4dba75c3151fc44145bf5f114e16ca4c147f..527925bd8784e0dd33a79e0b7d80a53f424fcf48 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
-@@ -377,6 +377,20 @@ sndio = pkg_check_modules("MOZ_SNDIO", "sndio", when="--enable-sndio")
+@@ -380,6 +380,20 @@ sndio = pkg_check_modules("MOZ_SNDIO", "sndio", when="--enable-sndio")
  
  set_config("MOZ_SNDIO", depends_if(sndio)(lambda _: True))
  

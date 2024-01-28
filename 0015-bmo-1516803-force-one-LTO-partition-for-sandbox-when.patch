@@ -10,10 +10,10 @@ Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
  1 file changed, 4 insertions(+), 3 deletions(-)
 
 diff --git a/security/sandbox/linux/moz.build b/security/sandbox/linux/moz.build
-index c56daf62a6c30903e567ad49681beba7c06e1357..4ca49d6eac1b098d6039416a09fd665010eec4d9 100644
+index cbb99e514c3e274ba2384b9bbf03c3d78cd3da0f..d5ed59192222ad2920b17efc3a061abf80cbf08e 100644
 --- a/security/sandbox/linux/moz.build
 +++ b/security/sandbox/linux/moz.build
-@@ -115,9 +115,10 @@ if CONFIG["CC_TYPE"] in ("clang", "gcc"):
+@@ -107,9 +107,10 @@ if CONFIG["CC_TYPE"] in ("clang", "gcc"):
  # gcc lto likes to put the top level asm in syscall.cc in a different partition
  # from the function using it which breaks the build.  Work around that by
  # forcing there to be only one partition.
