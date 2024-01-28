@@ -1,32 +1,21 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 # Contributor: Josef Miegl <josef@miegl.cz>
 
-pkgname=osmo-pcu-git
-pkgver=1.4.0.r1.gb04e1d7d
+pkgname=osmo-pcu
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Osmocom's GPRS/EGPRS PCU (Packet Control Unit) with Gb/IP interface"
 url="https://osmocom.org/projects/osmopcu"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
 depends=('libosmocore' 'talloc')
-makedepends=('git')
-conflicts=("${pkgname%-git}")
+conflicts=("${pkgname}-git")
 backup=('etc/osmocom/osmo-pcu.cfg')
-source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}.git")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "${pkgname%-git}"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "${pkgname%-git}"
-  autoreconf -f -i
-}
+source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('d4e539ef15f2722cad3382da6b0b1e8ab69909011c8bac9489189e7cace94555')
 
 build() {
-  cd "${pkgname%-git}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
               --localstatedir=/var
@@ -34,7 +23,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname%-git}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR=${pkgdir} install
 }
 
