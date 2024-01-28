@@ -1,6 +1,6 @@
 *
 !.gitignore
-!PKGBUILD
+!.nvchecker.toml
 !.SRCINFO
+!PKGBUILD
 !remove-bin-package.patch
-!unpin-numpy.patch
