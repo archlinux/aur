@@ -1,0 +1,4 @@
+[avizo]
+source = "github"
+github = "misterdanb/avizo"
+use_latest_release = true
