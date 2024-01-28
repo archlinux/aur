@@ -7,32 +7,18 @@ arch=('i686' 'x86_64')
 url="https://github.com/ijanos/desktend"
 license=('GPL')
 depends=('libx11')
-makedepends=('git')
-_gitroot='git://github.com/ijanos/desktend.git'
-_gitname='desktend'
+md5sums=('SKIP')
+source=("git+https://github.com/ijanos/desktend.git")
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [ -d $_gitname ] ; then
-    cd $_gitname && git pull origin
-    msg "The local files are updated."
-  else
-    git clone $_gitroot $_gitname
-  fi
-
-  msg "GIT checkout done or server timeout"
-
-  cd ${srcdir}/desktend
-
+  cd "${srcdir}/desktend"
   gcc -lX11 -std=gnu99 -o desktend -O2 desktend.c
+  strip desktend
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  installpath="${pkgdir}/usr/bin"
-  install -D desktend $installpath/desktend
+  cd "${srcdir}/desktend"
+  install -D desktend "${pkgdir}/usr/bin/desktend"
 }
 
 # vim:set ts=2 sw=2 et:
