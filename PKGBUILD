@@ -2,7 +2,7 @@
 
 pkgname=diohsc
 pkgver=0.1.14.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Line-based command-oriented interactive client for the gemini protocol"
 url="https://mbays.sdf.org/diohsc"
 license=("GPL3")
@@ -11,7 +11,7 @@ depends=('ghc-libs' 'haskell-asn1-encoding' 'haskell-asn1-types' 'haskell-crypto
 makedepends=('ghc' 'pandoc-cli' 'ed')
 source=("https://hackage.haskell.org/packages/archive/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz" "update-tls.patch")
 sha256sums=('d8036ea7a38d1ec410e11c0a46a553fbd61c32da38df77aec849f75f8515d6f5'
-            'ef2316d0a403afa78559caf529716561656b31788b86b54564bac599b37d81fe')
+            'c0e655d33b61f2edf3485033d70b8030cdd87629dbc0d064e147894bfe8f3e85')
 
 prepare() {
   cd $pkgname-$pkgver

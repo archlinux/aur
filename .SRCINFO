@@ -1,7 +1,7 @@
 pkgbase = diohsc
 	pkgdesc = Line-based command-oriented interactive client for the gemini protocol
 	pkgver = 0.1.14.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mbays.sdf.org/diohsc
 	arch = x86_64
 	license = GPL3
@@ -35,6 +35,6 @@ pkgbase = diohsc
 	source = https://hackage.haskell.org/packages/archive/diohsc/0.1.14.5/diohsc-0.1.14.5.tar.gz
 	source = update-tls.patch
 	sha256sums = d8036ea7a38d1ec410e11c0a46a553fbd61c32da38df77aec849f75f8515d6f5
-	sha256sums = ef2316d0a403afa78559caf529716561656b31788b86b54564bac599b37d81fe
+	sha256sums = c0e655d33b61f2edf3485033d70b8030cdd87629dbc0d064e147894bfe8f3e85
 
 pkgname = diohsc
