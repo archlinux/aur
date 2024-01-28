@@ -1,6 +1,6 @@
 # Maintainer: Arvid Norlander <VorpalBlade@users.noreply.github.com>
 pkgname=chezmoi_modify_manager-git
-pkgver=3.0.0.r2.a623964
+pkgver=3.0.0.r10.b9b08b7
 pkgrel=1
 pkgdesc="Tools for chezmoi to handle mixed settings and state"
 arch=(x86_64 i686 armv7h aarch64)
@@ -19,12 +19,14 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/${pkgname%-git}"
+    export CHEZMOI_MODIFY_MANAGER_BUILDER=aur-git
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "$srcdir/${pkgname%-git}"
+    export CHEZMOI_MODIFY_MANAGER_BUILDER=aur-git
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --no-default-features --features=keyring
