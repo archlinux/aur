@@ -7,7 +7,7 @@ pkgrel=3
 pkgdesc="Collection of general-purpose C++ classes"
 url="http://www.tntnet.org"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
-license=('GPL2')
+license=('LGPL-2.1-or-later')
 depends=('bash' 'gcc-libs' 'libnsl' 'openssl')
 source=("$pkgname-${pkgver}_git.tar.gz::https://github.com/maekitalo/cxxtools/archive/refs/tags/V$pkgver.tar.gz"
         "$pkgname-char-trivial-class.patch::https://github.com/maekitalo/cxxtools/commit/b773c01fc13d2ae67abc0839888e383be23562fd.patch"
