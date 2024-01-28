@@ -3,10 +3,10 @@
 _buildnum=06966759
 pkgname=niri-bin
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Scrollable-tiling Wayland compositor"
 arch=(x86_64)
-url="https://github.com/YaLTeR/${pkgname}"
+url="https://github.com/YaLTeR/${pkgname%-bin}"
 license=(GPL-3.0-or-later)
 depends=(cairo glib2 libinput libpipewire libxkbcommon mesa pango pixman seatd)
 source=(https://download.copr.fedorainfracloud.org/results/yalter/${pkgname%-bin}/fedora-39-${CARCH}/${_buildnum}-${pkgname%-bin}/${pkgname%-bin}-${pkgver}-1.fc39.${CARCH}.rpm)
