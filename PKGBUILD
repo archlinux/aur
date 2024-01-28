@@ -1,6 +1,6 @@
-# Maintainer: L <youremail@domain.com>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname=pascal-sdl2-git
-pkgver=1.72.r36.8a03b44
+pkgver=1.72.r138.201a767
 pkgrel=1
 pkgdesc="Pascal SDL 2 Headers"
 arch=('i686' 'x86_64')
@@ -12,6 +12,7 @@ optdepends=('sdl2_gfx'
             'sdl2_mixer'
             'sdl2_net'
             'sdl2_ttf')
+makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('staticlibs')

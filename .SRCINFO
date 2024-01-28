@@ -1,11 +1,12 @@
 pkgbase = pascal-sdl2-git
 	pkgdesc = Pascal SDL 2 Headers
-	pkgver = 1.72.r36.8a03b44
+	pkgver = 1.72.r138.201a767
 	pkgrel = 1
 	url = https://github.com/ev1313/Pascal-SDL-2-Headers
 	arch = i686
 	arch = x86_64
 	license = LGPL3
+	makedepends = git
 	depends = fpc
 	depends = sdl2
 	optdepends = sdl2_gfx
@@ -20,4 +21,3 @@ pkgbase = pascal-sdl2-git
 	md5sums = SKIP
 
 pkgname = pascal-sdl2-git
-
