@@ -1,6 +1,6 @@
 # Maintainer: Brandon Barker <bbarker.py@protonmail.ch>
 pkgname=mplcolors
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="CLI to display matplotlib colors, colorbars, and other useful functions."
 arch=('any')
