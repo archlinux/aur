@@ -1,0 +1,3 @@
+[mercury-parser]
+source = "npm"
+npm = "@postlight/parser"
