@@ -1,0 +1,3 @@
+[ruby-sdoc]
+source = "gems"
+gems = "sdoc"
