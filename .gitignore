@@ -1,5 +1,5 @@
 *
 !.gitignore
-!PKGBUILD
+!.nvchecker.toml
 !.SRCINFO
-!fix-package-discovery.patch
+!PKGBUILD
