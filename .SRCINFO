@@ -1,7 +1,7 @@
 pkgbase = vdr-skinflatplus
 	pkgdesc = Simple and slim skin for VDR
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MegaV0lt/vdr-plugin-skinflatplus
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = vdr-skinflatplus
 	license = GPL-2.0-or-later
 	depends = fontconfig
 	depends = graphicsmagick
-	depends = vdr-api=2.6.5
+	depends = vdr-api=2.6.6
 	backup = etc/epgd/eventsview-flatplus.sql
 	backup = etc/vdr/conf.avail/50-skinflatplus.conf
 	backup = var/lib/vdr/plugins/skinflatplus/configs/MV_default
