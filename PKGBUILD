@@ -58,7 +58,7 @@ _lqxpatchrel=4
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
 pkgver=6.7.2.lqx2
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux Liquorix'
 url='https://liquorix.net/'
 arch=(x86_64)
@@ -185,13 +185,6 @@ prepare() {
 		error "Selecting the CPU scheduler failed!"
 		exit
 	fi
-
-    ### Optionally disable NUMA for 64-bit kernels only
-        # (x86 kernels do not support NUMA)
-        if [ -n "$_NUMAdisable" ]; then
-            echo "Disabling NUMA from kernel config..."
-            scripts/config -d CONFIG_NUMA
-        fi
 
     ### Optionally load needed modules for the make localmodconfig
         # See https://aur.archlinux.org/packages/modprobed-db
