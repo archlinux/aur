@@ -1,0 +1,19 @@
+pkgbase = gauche-full
+	pkgdesc = R7RS Scheme implementation developed to be a handy script interpreter
+	pkgver = 0.9.14
+	pkgrel = 1
+	url = https://practical-scheme.net/gauche/
+	arch = x86_64
+	license = BSD
+	makedepends = gauche
+	depends = libatomic_ops
+	depends = libxcrypt
+	depends = slib
+	depends = mbedtls
+	provides = gauche
+	conflicts = gauche
+	conflicts = gauche-git
+	source = https://github.com/shirok/Gauche/releases/download/release0_9_14/Gauche-0.9.14.tgz
+	b2sums = cb747a16037167a95a543e324b53a48e3cb4dd372e9f6cc00603b7072b902c839248fbf3e9926360a2732fcf4bc0caa16a4ea1ad757e84d5d597ef4bdfa2592f
+
+pkgname = gauche-full
