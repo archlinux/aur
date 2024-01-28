@@ -1,0 +1,5 @@
+[watchman]
+source = "github"
+github = "facebook/watchman"
+prefix = "v"
+use_max_tag = true

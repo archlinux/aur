@@ -1,7 +1,8 @@
 *
 !.gitignore
-!PKGBUILD
+!.nvchecker.toml
 !.SRCINFO
+!PKGBUILD
 !watchman.conf
 !watchman.install
 !watchman.json.default
