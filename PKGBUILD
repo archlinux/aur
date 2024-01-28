@@ -1,7 +1,7 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 
-pkgname=osmo-cbc-git
-pkgver=0.4.2.r3.gda8b98c
+pkgname=osmo-cbc
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Osmocom Cell Broadcast Centre"
 arch=('x86_64' 'i686')
@@ -16,25 +16,13 @@ depends=('libosmocore'
          'ulfius')
 optdepends=('python: for osmo-cbc-apitool.py'
             'python-requests: for osmo-cbc-apitool.py')
-makedepends=('git')
-conflicts=("${pkgname%-git}")
-provides=('libosmo-sbcap.so=0-64')
-backup=("etc/osmocom/osmo-cbc.cfg")
-source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}.git")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$srcdir/${pkgname%-git}"
-  autoreconf -f -i
-}
+conflicts=("${pkgname}-git")
+backup=('etc/osmocom/osmo-cbc.cfg')
+source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('13beb1f5fe28514dc9771a2513ec252e2f10501faa13f08b2441866e7b115841')
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr \
               --exec-prefix=/usr \
               --bindir=/usr/bin \
@@ -48,7 +36,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR=$pkgdir install
 
   install -m 755 contrib/cbc-apitool.py "${pkgdir}/usr/bin/osmo-cbc-apitool.py"
