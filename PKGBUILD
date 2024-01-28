@@ -3,19 +3,18 @@
 
 pkgname=ollama-cuda
 pkgdesc='Create, run and share large language models (LLMs) with CUDA'
-pkgver=0.1.21
+pkgver=0.1.22
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/jmorganca/ollama'
 license=(MIT)
-_ollamacommit=4c54f0ddeb997cfefe4716e5631b270112975aab # tag: v0.1.21
 # The llama.cpp git submodule commit hash can be found here:
 # https://github.com/jmorganca/ollama/tree/v0.1.21/llm
-_llama_cpp_commit=584d674be622fbf1578694ada6e62eebedbfd377
+_llama_cpp_commit=cd4fddb29f81d6a1f6d51a0c016bc6b486d68def
 makedepends=(cmake cuda git go)
 provides=(ollama)
 conflicts=(ollama)
-source=(git+$url#commit=$_ollamacommit
+source=(git+$url#tag=v$pkgver
         llama.cpp::git+https://github.com/ggerganov/llama.cpp#commit=$_llama_cpp_commit
         sysusers.conf
         tmpfiles.d
