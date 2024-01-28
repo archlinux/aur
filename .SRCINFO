@@ -1,12 +1,10 @@
 pkgbase = firefox-nightly
 	pkgdesc = Development version of the popular Firefox web browser
-	pkgver = 123.0a1+20231221.1+h37657c769166
+	pkgver = 124.0a1+20240128.1+h09a1abcfcfb7
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/channel/#nightly
 	arch = x86_64
-	license = GPL
-	license = LGPL
-	license = MPL
+	license = MPL-2.0
 	makedepends = cbindgen
 	makedepends = clang
 	makedepends = diffutils

@@ -3,16 +3,12 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=123.0a1+20231221.1+h37657c769166
+pkgver=124.0a1+20240128.1+h09a1abcfcfb7
 pkgrel=1
 pkgdesc="Development version of the popular Firefox web browser"
 url="https://www.mozilla.org/firefox/channel/#nightly"
 arch=(x86_64)
-license=(
-  GPL
-  LGPL
-  MPL
-)
+license=(MPL-2.0)
 depends=(
   dbus
   ffmpeg
