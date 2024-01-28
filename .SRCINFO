@@ -1,0 +1,11 @@
+pkgbase = materialicons-font
+	pkgdesc = Material Icons fonts
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/google/material-icons-font
+	arch = any
+	license = MIT
+	makedepends = wget
+	sha256sums = SKIP
+
+pkgname = materialicons-font
