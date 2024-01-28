@@ -1,0 +1,292 @@
+From 3390180894191468dc22c8404627b46532434cba Mon Sep 17 00:00:00 2001
+From: Piotr Gorski <lucjan.lucjanov@gmail.com>
+Date: Sun, 28 Jan 2024 20:00:28 +0100
+Subject: [PATCH] scx: add one service for all schedulers and config file
+
+Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
+---
+ services/README.md                            | 20 +++++++++++++++----
+ services/meson.build                          |  8 +++++++-
+ services/scx                                  |  5 +++++
+ services/{scx_central.service => scx.service} |  5 +++--
+ services/scx_flatcg.service                   | 13 ------------
+ services/scx_nest.service                     | 13 ------------
+ services/scx_pair.service                     | 13 ------------
+ services/scx_qmap.service                     | 13 ------------
+ services/scx_rustland.service                 | 13 ------------
+ services/scx_rusty.service                    | 13 ------------
+ services/scx_simple.service                   | 13 ------------
+ services/scx_userland.service                 | 13 ------------
+ 12 files changed, 31 insertions(+), 111 deletions(-)
+ create mode 100644 services/scx
+ rename services/{scx_central.service => scx.service} (58%)
+ delete mode 100644 services/scx_flatcg.service
+ delete mode 100644 services/scx_nest.service
+ delete mode 100644 services/scx_pair.service
+ delete mode 100644 services/scx_qmap.service
+ delete mode 100644 services/scx_rustland.service
+ delete mode 100644 services/scx_rusty.service
+ delete mode 100644 services/scx_simple.service
+ delete mode 100644 services/scx_userland.service
+
+diff --git a/services/README.md b/services/README.md
+index 9d3acb1..a175d64 100644
+--- a/services/README.md
++++ b/services/README.md
+@@ -3,30 +3,42 @@
+ This guide provides instructions for running the SCX schedulers as a systemd service and checking its logs.
+ 
+ ## Getting Started
++
++At the very beginning, configure the /etc/default/scx file:
++
++- in the SCX_SCHEDULER variable, select the scheduler you are interested in
++
++- in the SCX_FLAGS variable, specify the flags you want to add. To do this, execute and read what flags you can add.
++
++```
++scx_SCHEDNAME --help
++```
++
+ To start the SCX scheduler at boot, you need to run the systemd service as root. Here are the steps:
+ 
++
+ - Enable the service:
+ 
+ ```
+-systemctl enable scx_SCHEDNAME
++systemctl enable scx.service
+ ```
+ 
+ - Start the service:
+ 
+ ```
+-systemctl start scx_SCHEDNAME
++systemctl start scx.service
+ ```
+ 
+ Alternatively, you can use a shortened version of these commands:
+ 
+ ```
+-systemctl enable --now scx_SCHEDNAME
++systemctl enable --now scx.service
+ ```
+ 
+ - To check the status of the service, use the following command:
+ 
+ ```
+-systemctl status scx_SCHEDNAME
++systemctl status scx.service
+ ```
+ 
+ ## Checking Journald Logs
+diff --git a/services/meson.build b/services/meson.build
+index 1bccca8..8f86518 100644
+--- a/services/meson.build
++++ b/services/meson.build
+@@ -2,7 +2,7 @@ systemd_system_unit_dir = systemd.get_variable(pkgconfig : 'systemdsystemunitdir
+ 
+   install_data(
+     [
+-      'scx_central.service',  'scx_flatcg.service',  'scx_nest.service',  'scx_pair.service', 'scx_qmap.service', 'scx_rustland.service',  'scx_rusty.service',  'scx_simple.service',  'scx_userland.service',
++      'scx.service',
+     ],
+     install_dir: systemd_system_unit_dir
+   )
+@@ -14,3 +14,9 @@ systemd_system_unit_dir = systemd.get_variable(pkgconfig : 'systemdsystemunitdir
+     install_dir: '/etc/systemd'
+   )
+ 
++  install_data(
++    [
++      'scx',
++    ],
++    install_dir: '/etc/default'
++  )
+diff --git a/services/scx b/services/scx
+new file mode 100644
+index 0000000..a323de0
+--- /dev/null
++++ b/services/scx
+@@ -0,0 +1,5 @@
++# List of scx_schedulers: scx_central scx_flatcg scx_layered scx_nest scx_pair scx_qmap scx_rustland scx_rusty scx_simple scx_userland
++SCX_SCHEDULER=scx_rusty
++
++# Set custom flags for each scheduler, below is an example of how to use
++#SCX_FLAGS='-s 3000 -i 0.5 -I 0.025 -l 0.5 -b -k'
+diff --git a/services/scx_central.service b/services/scx.service
+similarity index 58%
+rename from services/scx_central.service
+rename to services/scx.service
+index eb15f0a..6349a6e 100644
+--- a/services/scx_central.service
++++ b/services/scx.service
+@@ -1,10 +1,11 @@
+ [Unit]
+-Description=Start scx_central
++Description=Start scx_scheduler
+ ConditionPathIsDirectory=/sys/kernel/sched_ext
+ 
+ [Service]
+ Type=simple
+-ExecStart=scx_central
++EnvironmentFile=/etc/default/scx
++ExecStart=/bin/bash -c 'exec $SCX_SCHEDULER $SCX_FLAGS '
+ Restart=always
+ StandardError=journal
+ LogNamespace=sched-ext
+diff --git a/services/scx_flatcg.service b/services/scx_flatcg.service
+deleted file mode 100644
+index 08eefc3..0000000
+--- a/services/scx_flatcg.service
++++ /dev/null
+@@ -1,13 +0,0 @@
+-[Unit]
+-Description=Start scx_flatcg
+-ConditionPathIsDirectory=/sys/kernel/sched_ext
+-
+-[Service]
+-Type=simple
+-ExecStart=scx_flatcg
+-Restart=always
+-StandardError=journal
+-LogNamespace=sched-ext
+-
+-[Install]
+-WantedBy=multi-user.target
+diff --git a/services/scx_nest.service b/services/scx_nest.service
+deleted file mode 100644
+index 49dfda6..0000000
+--- a/services/scx_nest.service
++++ /dev/null
+@@ -1,13 +0,0 @@
+-[Unit]
+-Description=Start scx_nest
+-ConditionPathIsDirectory=/sys/kernel/sched_ext
+-
+-[Service]
+-Type=simple
+-ExecStart=scx_nest
+-Restart=always
+-StandardError=journal
+-LogNamespace=sched-ext
+-
+-[Install]
+-WantedBy=multi-user.target
+diff --git a/services/scx_pair.service b/services/scx_pair.service
+deleted file mode 100644
+index 5d0e985..0000000
+--- a/services/scx_pair.service
++++ /dev/null
+@@ -1,13 +0,0 @@
+-[Unit]
+-Description=Start scx_pair
+-ConditionPathIsDirectory=/sys/kernel/sched_ext
+-
+-[Service]
+-Type=simple
+-ExecStart=scx_pair
+-Restart=always
+-StandardError=journal
+-LogNamespace=sched-ext
+-
+-[Install]
+-WantedBy=multi-user.target
+diff --git a/services/scx_qmap.service b/services/scx_qmap.service
+deleted file mode 100644
+index e871564..0000000
+--- a/services/scx_qmap.service
++++ /dev/null
+@@ -1,13 +0,0 @@
+-[Unit]
+-Description=Start scx_qmap
+-ConditionPathIsDirectory=/sys/kernel/sched_ext
+-
+-[Service]
+-Type=simple
+-ExecStart=scx_qmap
+-Restart=always
+-StandardError=journal
+-LogNamespace=sched-ext
+-
+-[Install]
+-WantedBy=multi-user.target
+diff --git a/services/scx_rustland.service b/services/scx_rustland.service
+deleted file mode 100644
+index e879109..0000000
+--- a/services/scx_rustland.service
++++ /dev/null
+@@ -1,13 +0,0 @@
+-[Unit]
+-Description=Start scx_rustland
+-ConditionPathIsDirectory=/sys/kernel/sched_ext
+-
+-[Service]
+-Type=simple
+-ExecStart=scx_rustland
+-Restart=always
+-StandardError=journal
+-LogNamespace=sched-ext
+-
+-[Install]
+-WantedBy=multi-user.target
+diff --git a/services/scx_rusty.service b/services/scx_rusty.service
+deleted file mode 100644
+index d47007e..0000000
+--- a/services/scx_rusty.service
++++ /dev/null
+@@ -1,13 +0,0 @@
+-[Unit]
+-Description=Start scx_rusty
+-ConditionPathIsDirectory=/sys/kernel/sched_ext
+-
+-[Service]
+-Type=simple
+-ExecStart=scx_rusty
+-Restart=always
+-StandardError=journal
+-LogNamespace=sched-ext
+-
+-[Install]
+-WantedBy=multi-user.target
+diff --git a/services/scx_simple.service b/services/scx_simple.service
+deleted file mode 100644
+index 5f5c715..0000000
+--- a/services/scx_simple.service
++++ /dev/null
+@@ -1,13 +0,0 @@
+-[Unit]
+-Description=Start scx_simple
+-ConditionPathIsDirectory=/sys/kernel/sched_ext
+-
+-[Service]
+-Type=simple
+-ExecStart=scx_simple
+-Restart=always
+-StandardError=journal
+-LogNamespace=sched-ext
+-
+-[Install]
+-WantedBy=multi-user.target
+diff --git a/services/scx_userland.service b/services/scx_userland.service
+deleted file mode 100644
+index 8db25e4..0000000
+--- a/services/scx_userland.service
++++ /dev/null
+@@ -1,13 +0,0 @@
+-[Unit]
+-Description=Start scx_userland
+-ConditionPathIsDirectory=/sys/kernel/sched_ext
+-
+-[Service]
+-Type=simple
+-ExecStart=scx_userland
+-Restart=always
+-StandardError=journal
+-LogNamespace=sched-ext
+-
+-[Install]
+-WantedBy=multi-user.target
+-- 
+2.43.0.232.ge79552d197
+
