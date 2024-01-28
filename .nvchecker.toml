@@ -1,0 +1,3 @@
+[python-msgspec]
+source = "pypi"
+pypi = "msgspec"
