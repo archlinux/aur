@@ -56,7 +56,7 @@ package() {
         --prefix=/usr \
 	--root="${pkgdir}" \
 	--optimize=0
-  rm \
+  rm -f \
     "${pkgdir}/usr/lib/${_py}.7/site-packages/backports/__init__.py"*
   install \
     -Dm644 \
