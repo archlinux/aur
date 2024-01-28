@@ -9,7 +9,6 @@ pkgbase = vmware-host-modules-dkms-git
 	arch = i386
 	license = GPL2
 	makedepends = git
-	makedepends = fd
 	depends = dkms
 	provides = vmware-host-modules-dkms
 	provides = vmware-host-modules
