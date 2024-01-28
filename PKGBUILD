@@ -3,7 +3,7 @@
 pkgname=dovecot-fts-flatcurve-git
 _pkgname=dovecot-fts-flatcurve
 pkgver=r433.8b530f5
-pkgrel=1
+pkgrel=3
 pkgdesc="Dovecot FTS Flatcurve plugin (Xapian)"
 arch=('x86_64')
 url="https://github.com/slusarz/dovecot-fts-flatcurve"
