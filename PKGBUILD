@@ -3,14 +3,14 @@ pkgbase="eslauncher2"
 pkgname="eslauncher2"
 pkgcompletename="ESLauncher2"
 pkgrel=1
-pkgver=0.9.2
+pkgver=0.8.6
 pkgdesc="The next generation Endless Sky Launcher"
-depends=('rust' 'alsa-lib')
+depends=('rust' 'fuse2')
 arch=('any')
 url="https://github.com/EndlessSkyCommunity/ESLauncher2"
 license=('GPL-3.0')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('6b4446589eb82d7f2ba95674c4e2affeee6b99ed73263c24cf98912e2c9fbfb1c80c745a3c8087a839ba518600229e7672f908b2f5dd6bd929968e368388e7bd')
+sha512sums=('109a9e5c38ec8572c87dbb5e8c3efd6b95139be3cd438b16ac8680a1c0aa9af3a76acecc788186b6328ecd1f3e8f67af37b213885e323988082c86d9e18bbeed')
 
 build() {
 	cd ${pkgcompletename^}-${pkgver}
@@ -18,14 +18,14 @@ build() {
 }
 
 package() {
-	install -Dm755 "${pkgcompletename^}-${pkgver}/target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm755 ${pkgcompletename^}-${pkgver}/target/release/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
 	for i in ${pkgcompletename^}-${pkgver}/packaging/icons/*.png; do
 		export STR="${pkgcompletename^}-${pkgver}\/packaging\/icons\/${pkgname}_"
 		export reswithpng="$(echo $i | sed -e s/${STR}//)";
 		export res="$(echo ${reswithpng} | sed -e s/.png//)";
 		install -Dm755 $i "${pkgdir}/usr/share/icons/hicolor/${res}/apps/${pkgname}.png";
 	done
-	install -Dm755 "${pkgcompletename^}-${pkgver}/packaging/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -Dm755 ${pkgcompletename^}-${pkgver}/packaging/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 }
 
 
