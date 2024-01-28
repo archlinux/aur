@@ -1,0 +1,4 @@
+[ruby-dotenv]
+source = "gems"
+gems = "dotenv"
+include_regex = '^\d+\.\d+(?:\.\d+)?$'
