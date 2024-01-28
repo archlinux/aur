@@ -1,7 +1,7 @@
 pkgbase = alpine
 	pkgdesc = A free software email client, a rewrite of Pine which was a continuation of the venerable ELM.
 	pkgver = 2.26
-	pkgrel = 2
+	pkgrel = 3
 	url = https://alpineapp.email/
 	arch = x86_64
 	arch = i686
@@ -37,7 +37,7 @@ pkgbase = alpine
 	source = compose-2.26.patch.gz::https://alpineapp.email/alpine/patches/alpine-2.26/compose.patch.gz
 	source = longurl-2.26.patch.gz::https://alpineapp.email/alpine/patches/alpine-2.26/longurl.patch.gz
 	sha256sums = c0779c2be6c47d30554854a3e14ef5e36539502b331068851329275898a9baba
-	sha256sums = 01020ca0cec24793a39d5ab72c0beefc0cfbb92d11348b5bd5bf7bfbcb203f63
+	sha256sums = 57808418b02a0e1cb826940068aa10eaed827b2b23609f05fd2015ec92043d37
 	sha256sums = c178459dd885e4caa32640e5ce63c689ec4752a1e039ddb149e034b935fe5181
 	sha256sums = 960bb9656353529964e86f0f782bf032f9aae36af9493ed7f2c8ccfd5695330f
 	sha256sums = 013d31d95dbf6e31c1ebfdcb745481cf31fd0df466b81e077a7538dcfe75a9f4

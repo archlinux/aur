@@ -2,7 +2,7 @@
 
 pkgname=alpine
 pkgver=2.26
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'i686' 'armv6h' 'armv6l' 'armv7h' 'armv7l' 'aarch64')
 pkgdesc="A free software email client, a rewrite of Pine which was a continuation of the venerable ELM."
 url="https://alpineapp.email/"
@@ -22,7 +22,7 @@ source=("https://alpineapp.email/alpine/release/src/alpine-${pkgver}.tar.xz"
 	"compose-${pkgver}.patch.gz::https://alpineapp.email/alpine/patches/alpine-${pkgver}/compose.patch.gz"
 	"longurl-${pkgver}.patch.gz::https://alpineapp.email/alpine/patches/alpine-${pkgver}/longurl.patch.gz")
 sha256sums=('c0779c2be6c47d30554854a3e14ef5e36539502b331068851329275898a9baba'
-	'01020ca0cec24793a39d5ab72c0beefc0cfbb92d11348b5bd5bf7bfbcb203f63'
+	'57808418b02a0e1cb826940068aa10eaed827b2b23609f05fd2015ec92043d37'
 	'c178459dd885e4caa32640e5ce63c689ec4752a1e039ddb149e034b935fe5181'
 	'960bb9656353529964e86f0f782bf032f9aae36af9493ed7f2c8ccfd5695330f'
 	'013d31d95dbf6e31c1ebfdcb745481cf31fd0df466b81e077a7538dcfe75a9f4'
