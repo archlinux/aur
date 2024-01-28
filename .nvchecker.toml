@@ -1,0 +1,5 @@
+[luau]
+source = "github"
+github = "luau-lang/luau"
+prefix = "v"
+use_latest_release = true
