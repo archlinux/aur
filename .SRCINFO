@@ -1,6 +1,6 @@
-pkgbase = osmo-sip-connector-git
+pkgbase = osmo-sip-connector
 	pkgdesc = Gateway between the MNCC Interface of OsmoMSC and OsmoNITB and an external SIP trunk
-	pkgver = 1.6.3.r6.g6122400
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://osmocom.org/projects/osmo-sip-conector
 	arch = i686
@@ -8,13 +8,12 @@ pkgbase = osmo-sip-connector-git
 	arch = aarch64
 	arch = armv7h
 	license = GPL
-	makedepends = git
 	depends = libosmocore
 	depends = talloc
 	depends = sofia-sip
-	conflicts = osmo-sip-connector
+	conflicts = osmo-sip-connector-git
 	backup = etc/osmocom/osmo-sip-connector.cfg
-	source = git+https://gitea.osmocom.org/cellular-infrastructure/osmo-sip-connector.git
-	sha256sums = SKIP
+	source = https://downloads.osmocom.org/releases/osmo-sip-connector/osmo-sip-connector-1.6.3.tar.bz2
+	sha256sums = 614487d98e2a05311f7b648b1a3569d5601399be7d3416b906c6d2fc2e885c36
 
-pkgname = osmo-sip-connector-git
+pkgname = osmo-sip-connector
