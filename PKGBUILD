@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Sergey A. <murlakatamenka@disroot.org>
 pkgname=tuxclocker
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Qt overclocking tool for GNU/Linux"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('libdrm: AMD support'
             'libxnvctrl: NVIDIA support'
             'nvidia-utils: NVIDIA support'
             'python-hwdata: Prettier AMD GPU names')
-_commit=89139f0ab1137d261233bb92e563c5d80eed8ae7  # tags/1.4.0^0
+_commit=d1d7d8401a0b9fcc003f22381ec4f913a46d8702  # tags/1.5.0^0
 source=("git+https://github.com/Lurkki14/tuxclocker.git#commit=${_commit}"
         'git+https://github.com/mpark/patterns.git'
         'git+https://github.com/Dobiasd/FunctionalPlus.git'
