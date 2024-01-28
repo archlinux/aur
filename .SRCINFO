@@ -1,0 +1,24 @@
+pkgbase = python-pyswrd
+	pkgdesc = Cython bindings and Python interface to SWORD, a method for query-database alignment.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/althonos/pyswrd
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pyopal
+	depends = python
+	depends = python-pyopal
+	source = https://files.pythonhosted.org/packages/source/p/pyswrd/pyswrd-0.1.0.tar.gz
+	sha256sums = 35299b251ccb1313ae0b49fbb0fb25cb4c0b19e8c5083708e2e8a5e106d06b58
+
+pkgname = python-pyswrd
