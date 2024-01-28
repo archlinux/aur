@@ -1,7 +1,7 @@
 pkgbase = vdr-graphlcd
 	pkgdesc = VDR Plugin to support graphical LC displays
-	pkgver = 1.0.6
-	pkgrel = 6
+	pkgver = 1.0.7
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/vdr-projects/vdr-plugin-graphlcd
 	arch = x86_64
@@ -9,16 +9,16 @@ pkgbase = vdr-graphlcd
 	arch = arm
 	arch = armv6h
 	arch = armv7h
-	license = GPL2
+	license = GPL-2.0-only
 	depends = graphlcd-base>=2.0.0
 	depends = ttf-dejavu
 	depends = ttf-bitstream-vera
 	depends = vdr-api=2.6.5
 	optdepends = serdisplib: Support more modern LCDs
 	backup = etc/vdr/conf.avail/50-graphlcd.conf
-	source = vdr-graphlcd-1.0.6.tar.gz::https://github.com/vdr-projects/vdr-plugin-graphlcd/archive/1.0.6.tar.gz
+	source = vdr-graphlcd-1.0.7.tar.gz::https://github.com/vdr-projects/vdr-plugin-graphlcd/archive/1.0.7.tar.gz
 	source = 50-graphlcd.conf
-	sha256sums = 00fae84eed95dd06033affc4df82e121205f89b9b86f6e1c8b64f4ae423f900e
+	sha256sums = 54f322e0870a45bfb42406d491641901078a2792eae3f3d7bd6447cf7048fc9f
 	sha256sums = abd081e90be318afa2c4168dfb595afef7483e2b1083874ab607e5ba60417d1c
 
 pkgname = vdr-graphlcd

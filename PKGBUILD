@@ -2,21 +2,21 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-graphlcd
-pkgver=1.0.6
+pkgver=1.0.7
+pkgrel=1
 _vdrapi=2.6.5
-pkgrel=6
 epoch=1
 pkgdesc="VDR Plugin to support graphical LC displays"
 url="https://github.com/vdr-projects/vdr-plugin-graphlcd"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
-license=('GPL2')
+license=('GPL-2.0-only')
 depends=('graphlcd-base>=2.0.0' 'ttf-dejavu' 'ttf-bitstream-vera' "vdr-api=${_vdrapi}")
 optdepends=('serdisplib: Support more modern LCDs')
 _plugname=${pkgname//vdr-/}
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vdr-projects/vdr-plugin-graphlcd/archive/$pkgver.tar.gz"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-sha256sums=('00fae84eed95dd06033affc4df82e121205f89b9b86f6e1c8b64f4ae423f900e'
+sha256sums=('54f322e0870a45bfb42406d491641901078a2792eae3f3d7bd6447cf7048fc9f'
             'abd081e90be318afa2c4168dfb595afef7483e2b1083874ab607e5ba60417d1c')
 
 build() {
