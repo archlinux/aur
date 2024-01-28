@@ -1,8 +1,8 @@
 # Maintainer: desbma
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=gotify-desktop
-pkgver=1.3.2
-pkgrel=3
+pkgver=1.3.3
+pkgrel=1
 pkgdesc='Small Gotify daemon to send messages as desktop notifications '
 arch=('aarch64' 'x86_64')
 url="https://github.com/desbma/${pkgname}"
@@ -11,7 +11,7 @@ depends=('gcc-libs'
          'openssl')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/desbma/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('7d63c083128ac2f723a2f1242d4216c4cccf04423ec12b34edb40f4151373511b41a94769a08b0473e281855309bcd011b5eadc6731af0fa321a913168f54ad2')
+sha512sums=('42561d2f46df7065528a6ed06279e091311dfa83847e558d22be275ceb0ee05e416fe9de99309531c87b5716d3d58b73482741f1732515b63821d650128d0f6c')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -28,4 +28,6 @@ build() {
 package() {
     cd "${pkgname}-${pkgver}"
     install -Dm 755 -t "${pkgdir}/usr/bin" ./target/release/${pkgname}
+    install -Dm 755 -t "${pkgdir}/usr/share/applications" ./desktop/gotify-desktop.desktop
+    install -Dm 755 desktop/icon.png "${pkgdir}/usr/share/icons/hicolor/96x96/apps/gotify-desktop.png"
 }
