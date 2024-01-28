@@ -1,0 +1,5 @@
+[jd-tool]
+source = "github"
+github = "josephburnett/jd"
+prefix = "v"
+use_latest_release = true
