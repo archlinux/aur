@@ -1,0 +1,23 @@
+pkgbase = nntile
+	pkgdesc = A neural network training framework within a task-based parallel programming paradigm
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/skolai/nntile
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = clang
+	makedepends = ninja
+	makedepends = hwloc
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = openblas
+	depends = openmpi
+	source = nntile-1.0.0.tar.gz::https://github.com/skolai/nntile/archive/refs/tags/1.0.0.tar.gz
+	source = python-nntile.diff
+	sha256sums = 78ca839f60326984c95e14e2efbedeb03933f0c5f66210a5c5446bd1da23a0fd
+	sha256sums = SKIP
+
+pkgname = nntile

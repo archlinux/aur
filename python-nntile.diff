@@ -1,0 +1,40 @@
+--- wrappers/python/CMakeLists.txt	2024-01-28 14:46:40.986286400 +0300
++++ wrappers/python/CMakeLists.txt	2024-01-28 14:47:38.873225748 +0300
+@@ -34,6 +34,9 @@
+ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/setup.py.in"
+     "${CMAKE_CURRENT_BINARY_DIR}/setup.py" @ONLY)
+ 
++file(COPY_FILE "${CMAKE_CURRENT_SOURCE_DIR}/pyproject.toml"
++    "${CMAKE_CURRENT_BINARY_DIR}/pyproject.toml" ONLY_IF_DIFFERENT)
++
+ # Copy tests into build directory also to avoid __pycache__ in sources
+ file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/tests DESTINATION
+     ${CMAKE_CURRENT_BINARY_DIR}
+--- wrappers/python/setup.py.in	2024-01-28 14:46:20.039523236 +0300
++++ wrappers/python/setup.py.in	2024-01-28 14:46:31.712910198 +0300
+@@ -1,7 +1,7 @@
+ from setuptools import setup, find_packages
+ 
+ setup(name="nntile",
+-    version="${PROJECT_VERSION}",
++    version="@PROJECT_VERSION@",
+     author="Aleksandr Mikhalev al.mikhalev@skoltech.ru",
+-    packages=find_packages(where="${CMAKE_CURRENT_BINARY_DIR}"),
++    packages=find_packages(where="@CMAKE_CURRENT_BINARY_DIR@"),
+     description="Python lib for NNTile")
+--- wrappers/python/pyproject.toml	2024-01-28 15:05:58.145293328 +0300
++++ wrappers/python/pyproject.toml	2024-01-28 15:04:36.865356289 +0300
+@@ -77,9 +77,12 @@
+ filterwarnings = ["ignore::DeprecationWarning"]
+ 
+ [tool.setuptools]
+-include-package-data = false
++include-package-data = true
+ platforms = ["Linux"]
+ zip-safe = false
+ 
+ [tool.setuptools.packages.find]
+ include = ["nntile*"]
++
++[tool.setuptools.package-data]
++nntile = ["*.so"]
