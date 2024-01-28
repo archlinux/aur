@@ -1,0 +1,5 @@
+[hadolint-bin]
+source = "github"
+github = "hadolint/hadolint"
+prefix = "v"
+use_latest_release = true

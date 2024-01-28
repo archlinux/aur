@@ -1,4 +1,5 @@
-/hadolint-Linux-x86_64
-/*.pkg.*
-/pkg
-/src
+*
+!.gitignore
+!.nvchecker.toml
+!.SRCINFO
+!PKGBUILD
