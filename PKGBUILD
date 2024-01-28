@@ -12,7 +12,7 @@
 
 pkgname="vlc-git"
 pkgdesc="Multi-platform MPEG, VCD/DVD, and DivX player"
-pkgver=4.0.0.r27500.g1a007d1ffa
+pkgver=4.0.0.r27516.gde03f1e026
 pkgrel=1
 url='https://code.videolan.org/videolan/vlc'
 arch=('i686' 'x86_64')
@@ -207,7 +207,7 @@ build() {
               --enable-samplerate \
               --enable-soxr \
               --disable-chromaprint \
-              --disable-chromecast \
+              --enable-chromecast \
               --enable-qt \
               --enable-skins2 \
               --enable-ncurses \
