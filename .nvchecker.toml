@@ -1,0 +1,5 @@
+[azure-kubelogin]
+source = "github"
+github = "Azure/kubelogin"
+prefix = "v"
+use_latest_release = true
