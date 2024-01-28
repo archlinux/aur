@@ -1,7 +1,7 @@
 pkgbase = vdr-markad
 	pkgdesc = Plugin to mark advertisemets in recordings and optionally auto-cut
 	pkgver = 3.4.6
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/kfb77/vdr-plugin-markad
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = vdr-markad
 	arch = armv6h
 	arch = armv7h
 	license = GPL-2.0-or-later
-	depends = vdr-api=2.6.5
+	depends = vdr-api=2.6.6
 	depends = libavcodec.so
 	depends = libavfilter.so
 	depends = libavformat.so
