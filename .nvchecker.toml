@@ -1,0 +1,5 @@
+[python-opentelemetry]
+source = "github"
+github = "open-telemetry/opentelemetry-python"
+prefix = "v"
+use_latest_release = true
