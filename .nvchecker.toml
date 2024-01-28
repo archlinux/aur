@@ -1,0 +1,3 @@
+[python-mirakuru]
+source = "pypi"
+pypi = "mirakuru"
