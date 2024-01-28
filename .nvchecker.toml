@@ -1,0 +1,5 @@
+[hererocks]
+source = "github"
+github = "luarocks/hererocks"
+prefix = "v"
+use_max_tag = true
