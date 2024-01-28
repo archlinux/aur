@@ -3,8 +3,8 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-kelvie-fw-git
-_tag=v6.7.1
-pkgver=6.7.1.r11.61791a288975
+_tag=v6.7.2
+pkgver=6.7.2.r11.900b60ca044a
 pkgrel=1
 pkgdesc="Linux kernel for Kelvie's AMD Framework 13 laptop"
 url="https://www.kernel.org"
@@ -34,7 +34,7 @@ source=(
 )
 sha256sums=('SKIP'
             '46451dbc3305d4c2e726a2f1943bddf697c5bb6815d93e5baed80bca82e53fdc'
-            'c112f19d5469bb85b889ef9d4cfd7e79f5da7a1e9c7375c1a48e279d55131ea8'
+            '1d8452b747d14c1687596555c4a41f1957877f2dac3251f58317edb09e256c79'
             '62be11c4f4b0dc565a78eb9f82aa7147fd5296c1b9ec61d08e8b5c6757da80e1'
             '7ae65ef5c7bad6dc1f733809b86a8f8b7322ebc5ae6733f0968175495d8e35f9'
             '7d6037eb6fdbad042c63f157c095f737e8b58d2ce2f870700c95c876b7dc21c3')
