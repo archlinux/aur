@@ -4,7 +4,7 @@
 # HOST="--host=0.0.0.0"
 # PORT="--port=8000"
 
-# Enable telemetry bound to LiteLLM developers, default True
+# Enable logging to telemetry service, default True
 # TELEMETRY="--telemetry=True"
 
 # Model parameters
