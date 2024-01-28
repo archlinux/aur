@@ -1,0 +1,13 @@
+pkgbase = playfair-font
+	pkgdesc = A general purpose open source typeface family
+	pkgver = 2.101
+	pkgrel = 1
+	url = https://github.com/clauseggers/Playfair
+	arch = any
+	license = OFL-1.1
+	source = playfair-font-2.101.tar.gz::https://github.com/clauseggers/Playfair/archive/refs/tags/2.101.tar.gz
+	sha256sums = 36ff92b7ed10c3c1767e228a172592af2fea14b2a98a2cc78202c7f920d4a6dc
+
+pkgname = otf-playfair
+
+pkgname = ttf-playfair-variable
