@@ -1,0 +1,3 @@
+[rpmlint]
+source = "pypi"
+pypi = "rpmlint"
