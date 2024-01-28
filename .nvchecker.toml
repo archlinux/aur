@@ -1,0 +1,5 @@
+[mvfst]
+source = "github"
+github = "facebook/mvfst"
+prefix = "v"
+use_max_tag = true
