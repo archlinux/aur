@@ -1,17 +1,16 @@
 pkgbase = tree-sitter-verilog-git
-	pkgdesc = Verilog grammar for tree-sitter
-	pkgver = 0.0.r278.g1b624ab
+	pkgdesc = SystemVerilog grammar for tree-sitter
+	pkgver = 0.0.r316.g9020313
 	pkgrel = 1
 	url = https://github.com/tree-sitter/tree-sitter-verilog
+	arch = i686
 	arch = x86_64
-	groups = tree-sitter-grammars
 	license = MIT
 	makedepends = git
-	makedepends = tree-sitter
-	makedepends = npm
-	provides = tree-sitter-verilog
+	makedepends = tree-sitter-cli
+	provides = tree-sitter-verilog=0.0.r316.g9020313
 	conflicts = tree-sitter-verilog
-	source = tree-sitter-verilog-git::git+https://github.com/tree-sitter/tree-sitter-verilog
+	source = git+https://github.com/tree-sitter/tree-sitter-verilog.git
 	sha256sums = SKIP
 
 pkgname = tree-sitter-verilog-git
