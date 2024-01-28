@@ -1,0 +1,15 @@
+pkgbase = atlas-git
+	pkgdesc = A modern tool for managing database schemas
+	pkgver = 0.18.0
+	pkgrel = 1
+	url = https://github.com/ariga/atlas
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	provides = atlas
+	conflicts = atlas
+	source = atlas-0.18.0.tar.gz::https://github.com/ariga/atlas/archive/v0.18.0.tar.gz
+	sha256sums = 2d7a889380caeafbc318e25bc67a8acd8921a0d345a9ef0fa590a59c64a676bb
+	b2sums = aaed7ae035136ecea24943aa83e23bb8c0bbb8bed4e12e325bf286070211b93c1a420b64a6f6776066c826f6e7beaabb2a940b0a534f06ac5b13ecc391db1a07
+
+pkgname = atlas-git
