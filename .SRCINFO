@@ -1,7 +1,7 @@
 pkgbase = nwg-dock-hyprland
 	pkgdesc = GTK3-based dock for Hyprland Wayland compositor
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nwg-piotr/nwg-dock-hyprland
 	arch = any
 	license = MIT
