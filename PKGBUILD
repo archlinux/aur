@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=seabird
-pkgver=0.0.7
+pkgver=0.0.14
 pkgrel=1
 pkgdesc='Stock market tracker for hackers'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('git' 'go' 'gobject-introspection')
 options=('!emptydirs' '!lto')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/get${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop")
-b2sums=('62e7c4e5d58988a1d24d0e48ea7771265628e9b49ed396f02a2def8e17900daedc496131f32884398f4dcfc1f4f7a904484b61c98983356e351725f035047a48'
+b2sums=('62f0b69ec74c0f523f4a3e6d8cc6e3a078f8ea5da8f317d298ff44a51099d71e9fa5941f13b966efc10ad6e2f25be95627940f661deb36874b7fca396c28ece5'
         'c8e36b0ac8dd4c1b1b47802926fa52ae03d699b245c78a7b47a6652dc62d9e943eecf94af2a901c9801de71d12d47adf14b024b9f7446e4cd3bef426ba47a119')
 
 build() {
@@ -22,6 +22,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   _LDFLAGS="-X main.version=${pkgver} -X main.branch=master -linkmode=external -extldflags ${LDFLAGS}"
+  go generate ./...
   go build -o seabird -ldflags="${_LDFLAGS}" "."
 }
 
@@ -31,7 +32,7 @@ package() {
     "${pkgdir}/usr/bin/seabird"
 
   # icon
-  install -D -m644 "${srcdir}/${pkgname}-${pkgver}/icon.svg" \
+  install -D -m644 "${srcdir}/${pkgname}-${pkgver}/icon/${pkgname}.svg" \
     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 
   # desktop file

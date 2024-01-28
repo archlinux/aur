@@ -1,6 +1,6 @@
 pkgbase = seabird
 	pkgdesc = Stock market tracker for hackers
-	pkgver = 0.0.7
+	pkgver = 0.0.14
 	pkgrel = 1
 	url = https://getseabird.github.io
 	arch = i686
@@ -16,9 +16,9 @@ pkgbase = seabird
 	depends = libadwaita
 	options = !emptydirs
 	options = !lto
-	source = seabird-0.0.7.tar.gz::https://github.com/getseabird/seabird/archive/v0.0.7.tar.gz
+	source = seabird-0.0.14.tar.gz::https://github.com/getseabird/seabird/archive/v0.0.14.tar.gz
 	source = seabird.desktop
-	b2sums = 62e7c4e5d58988a1d24d0e48ea7771265628e9b49ed396f02a2def8e17900daedc496131f32884398f4dcfc1f4f7a904484b61c98983356e351725f035047a48
+	b2sums = 62f0b69ec74c0f523f4a3e6d8cc6e3a078f8ea5da8f317d298ff44a51099d71e9fa5941f13b966efc10ad6e2f25be95627940f661deb36874b7fca396c28ece5
 	b2sums = c8e36b0ac8dd4c1b1b47802926fa52ae03d699b245c78a7b47a6652dc62d9e943eecf94af2a901c9801de71d12d47adf14b024b9f7446e4cd3bef426ba47a119
 
 pkgname = seabird
