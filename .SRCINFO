@@ -1,7 +1,7 @@
 pkgbase = vdr-dummydevice
 	pkgdesc = Output device that does nothing
 	pkgver = 2.0.0
-	pkgrel = 22
+	pkgrel = 23
 	url = http://phivdr.dyndns.org/vdr/vdr-dummydevice/
 	arch = x86_64
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = vdr-dummydevice
 	arch = armv7h
 	license = GPL2
 	depends = gcc-libs
-	depends = vdr-api=2.6.5
+	depends = vdr-api=2.6.6
 	backup = etc/vdr/conf.avail/50-dummydevice.conf
 	source = http://phivdr.dyndns.org/vdr/vdr-dummydevice/vdr-dummydevice-2.0.0.tgz
 	source = vdr-dummydevice-00-devicename.patch
