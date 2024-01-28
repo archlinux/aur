@@ -1,6 +1,6 @@
 pkgbase = hunspell-be-tarask
 	pkgdesc = Belarusian hunspell dictionary (classic orthography)
-	pkgver = 0.60.alpha2
+	pkgver = 0.60.alpha3
 	pkgrel = 2
 	url = https://github.com/375gnu/spell-be-tarask
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = hunspell-be-tarask
 	makedepends = qt6-webengine
 	optdepends = hunspell: the spell checking libraries and apps
 	provides = hunspell-dictionary
-	source = hunspell-be-tarask::git+https://github.com/375gnu/spell-be-tarask.git#commit=v0.60-alpha2
+	source = hunspell-be-tarask::git+https://github.com/375gnu/spell-be-tarask.git#commit=v0.60-alpha3
 	b2sums = SKIP
 
 pkgname = hunspell-be-tarask

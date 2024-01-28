@@ -1,8 +1,8 @@
 # Maintainer: Viačasłaŭ Chalikin <viachaslavic'at'outlook'dot'com>
 
-_version=v0.60-alpha2
+_version=v0.60-alpha3
 pkgname='hunspell-be-tarask'
-pkgver=0.60.alpha2
+pkgver=0.60.alpha3
 pkgrel=2
 pkgdesc="Belarusian hunspell dictionary (classic orthography)"
 arch=('any')
