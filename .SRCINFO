@@ -1,7 +1,7 @@
 pkgbase = vdr-targavfd
 	pkgdesc = Shows information about the current state of VDR on Targa USB Graphic Vacuum Fluorescent Display
 	pkgver = 0.3.2
-	pkgrel = 5
+	pkgrel = 6
 	epoch = 1
 	url = https://github.com/vdr-projects/vdr-plugin-targavfd
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = vdr-targavfd
 	depends = fontconfig
 	depends = freetype2
 	depends = libusb
-	depends = vdr-api=2.6.5
+	depends = vdr-api=2.6.6
 	backup = etc/vdr/conf.avail/50-targavfd.conf
 	source = vdr-targavfd-0.3.2.tar.gz::https://github.com/vdr-projects/vdr-plugin-targavfd/archive/refs/tags/0.3.2.tar.gz
 	source = 92-targavfd.rules
