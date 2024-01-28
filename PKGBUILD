@@ -1,18 +1,28 @@
-# Maintainer: Josef Miegl <josef@miegl.cz>
+# Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
+# Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-sgsn-git
-pkgver=1.4.0.r0.g319a52b5
+pkgver=1.11.1.r2.gf2545b1b8
 pkgrel=1
-pkgdesc="Open Source implementation of a SGSN (Serving GPRS Support Node)"
+pkgdesc="Osmocom's  Serving GPRS Support Node for 2G and 3G packet-switched mobile networks"
 url="https://osmocom.org/projects/osmosgsn"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
-depends=('libosmocore' 'talloc' 'osmo-ggsn' 'osmo-iuh' 'osmo-hlr' 'libasn1c' 'c-ares')
+depends=('libosmocore'
+         'libosmoabis.so' # from libosmo-abis
+         'libosmonetif.so' # from libosmo-netif
+         'libosmo-sigtran.so' # from libosmo-sccp
+         'libosmo-gsup-client.so' # from osmo-hlr
+         'libosmo-ranap.so' # from osmo-iuh
+         'libasn1c.so' # from libasn1c
+         'libgtp.so' # from osmo-ggsn
+         'talloc'
+         'c-ares')
 makedepends=('git')
-provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-backup=('etc/osmocom/osmo-sgsn.cfg')
-source=("git+https://git.osmocom.org/${pkgname%-git}")
+backup=('etc/osmocom/osmo-sgsn.cfg'
+        'etc/osmocom/osmo-gtphub.cfg')
+source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -27,7 +37,10 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --enable-iu
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc \
+              --localstatedir=/var \
+              --enable-iu
   make
 }
 
