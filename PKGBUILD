@@ -1,7 +1,7 @@
 # Maintainer: Reto Brunner <reto@labrat.space>
 pkgname=thelounge-git
 _realname=thelounge
-pkgver=v4.4.0.pre.1.r0.g30a3ba48
+pkgver=v4.4.1.r114.ga8be84028
 pkgrel=1
 pkgdesc='Modern self-hosted web IRC client'
 url='https://thelounge.chat/'
@@ -26,18 +26,18 @@ sha256sums=('SKIP'
             'c07fc7aaa91f6d2407d9ea2d15bfa780bfc06e3487efa138a9385307dcf9f41d')
 
 pkgver() {
-	cd $_realname
+	cd $_realname || exit 1
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
 	echo /etc/thelounge > "$_realname/.thelounge_home"
-	cd $_realname
+	cd $_realname || exit 1
 	yarn install --frozen-lockfile --non-interactive --ignore-scripts --cache-folder "$srcdir/yarn-cache"
 }
 
 build() {
-	cd $_realname
+	cd $_realname || exit 1
 	export NODE_ENV=production
 	yarn build
 	mkdir _build
@@ -45,7 +45,7 @@ build() {
 
 	# ensure we get the lockfile that we expect and fetch the deps
 	cp package.json yarn.lock _build
-	cd _build
+	cd _build || exit 1
 
 	# Install the package itself
 	# we on purpose don't use yarn global add, because --ignore-scripts
@@ -53,11 +53,11 @@ build() {
 	yarn add --no-default-rc --frozen-lockfile \
 		--prod --non-interactive --ignore-scripts \
 		--cache-folder "$srcdir/yarn-cache" --offline \
-		file:"$(readlink -e ./$tarball)"
+		file:"$(readlink -e "./$tarball")"
 
 	# build sqlite3 from source, avoids the binary blob (kinda)
-	cd node_modules/sqlite3
-	./node_modules/.bin/node-pre-gyp rebuild
+	cd node_modules/sqlite3 || exit 1
+	yarn --no-default-rc --frozen-lockfile --non-interactive run rebuild
 }
 
 
