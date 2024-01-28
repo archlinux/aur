@@ -19,6 +19,8 @@ package() {
   mkdir -p ${pkgdir}/usr
   cp -a ${srcdir}/arm-gnu-toolchain-${pkgver}-x86_64-${_target}/* ${pkgdir}/usr
 
+  mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
+  mv ${pkgdir}/usr/license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   rm -f ${pkgdir}/usr/*-manifest.txt
   rm -rf ${pkgdir}/usr/lib64
   rm -rf ${pkgdir}/usr/include
