@@ -1,5 +1,5 @@
 pkgbase = texlive-fonts-plex
-	pkgdesc = Support for IBM Plex fonts for TEX(-alike) systems
+	pkgdesc = Support for IBM Plex fonts for TEX(-alike) systems. The point is to provide this font without having to install several GiBs of fonts.
 	pkgver = 20231217
 	pkgrel = 1
 	url = https://www.ctan.org/tex-archive/fonts/plex
