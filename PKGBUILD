@@ -1,7 +1,8 @@
 # Maintainer: Alonso Rodriguez <alonso.rodriguez (at) udc.es>
 pkgname=acestream-engine-py3
+_pkgname_nosuffix=${pkgname::-4}
 pkgver=3.1.75rc4
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Latest available Ace Stream Engine, setup via virtualenv with latest working python version"
 arch=("x86_64")
@@ -17,7 +18,7 @@ optdepends=()
 provides=()
 conflicts=(acestream-engine)
 replaces=()
-backup=("usr/lib/$pkgname/acestream.conf")
+backup=("usr/lib/${_pkgname_nosuffix}/acestream.conf")
 options=()
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://download.acestream.media/linux/acestream_${pkgver}_ubuntu_18.04_x86_64_py3.8.tar.gz"
@@ -74,30 +75,30 @@ package() {
     cd "$srcdir"
     
     # Change the launcher script
-    sed -i "/ROOT=/c\ROOT=\/usr/lib\/${pkgname}" "start-engine"
+    sed -i "/ROOT=/c\ROOT=\/usr/lib\/${_pkgname_nosuffix}" "start-engine"
     sed -i "s@LD_LIBRARY_PATH=@PYTHONPATH=\${ROOT}/lib/python3.8/site-packages/ PYTHON_EGG_CACHE=/var/lib/acestream/python_eggs LD_LIBRARY_PATH=@g" "start-engine"
-    sed -i "s@\${ROOT}/acestreamengine@/usr/lib/${pkgname}/acestreamengine-py3@g" "start-engine"
+    sed -i "s@\${ROOT}/acestreamengine@/usr/lib/${_pkgname_nosuffix}/acestreamengine@g" "start-engine"
 
     # Inherited copies from acestream-engine AUR package
-    install -Dm755 "start-engine"                "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 "acestream.conf"              "$pkgdir/usr/lib/$pkgname/acestream.conf"
-    install -Dm755 "acestreamengine"             "$pkgdir/usr/lib/$pkgname/acestreamengine-py3"
-    cp -a "data"                                 "$pkgdir/usr/lib/$pkgname/"
-    cp -a "lib"                                  "$pkgdir/usr/lib/$pkgname/"
-    install -Dm644 "data/images/streamer-32.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+    install -Dm755 "start-engine"                "$pkgdir/usr/bin/${_pkgname_nosuffix}"
+    install -Dm644 "acestream.conf"              "$pkgdir/usr/lib/${_pkgname_nosuffix}/acestream.conf"
+    install -Dm755 "acestreamengine"             "$pkgdir/usr/lib/${_pkgname_nosuffix}/acestreamengine"
+    cp -a "data"                                 "$pkgdir/usr/lib/${_pkgname_nosuffix}/"
+    cp -a "lib"                                  "$pkgdir/usr/lib/${_pkgname_nosuffix}/"
+    install -Dm644 "data/images/streamer-32.png" "$pkgdir/usr/share/pixmaps/${_pkgname_nosuffix}.png"
 
     # Copy venv folders
-    cp -a "bin"                                  "$pkgdir/usr/lib/$pkgname/"
-    ln -sf                                       "/usr/lib/$pkgname/lib" "$pkgdir/usr/lib/$pkgname/lib64"
-    install -Dm644 "pyvenv.cfg"                  "$pkgdir/usr/lib/$pkgname/pyvenv.cfg"
+    cp -a "bin"                                  "$pkgdir/usr/lib/${_pkgname_nosuffix}/"
+    ln -sf                                       "/usr/lib/${_pkgname_nosuffix}/lib" "$pkgdir/usr/lib/${_pkgname_nosuffix}/lib64"
+    install -Dm644 "pyvenv.cfg"                  "$pkgdir/usr/lib/${_pkgname_nosuffix}/pyvenv.cfg"
 
 
     # System integration
-    install -Dm644 systemd.service    "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-    install -Dm644 sysusers.conf      "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-    install -Dm644 tmpfiles.conf      "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
-    install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+    install -Dm644 systemd.service    "$pkgdir/usr/lib/systemd/system/${_pkgname_nosuffix}.service"
+    install -Dm644 sysusers.conf      "$pkgdir/usr/lib/sysusers.d/${_pkgname_nosuffix}.conf"
+    install -Dm644 tmpfiles.conf      "$pkgdir/usr/lib/tmpfiles.d/${_pkgname_nosuffix}.conf"
+    install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/${_pkgname_nosuffix}.desktop"
 
     # Copy license
-    install -Dm644 "LICENSE"          "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "LICENSE"          "$pkgdir/usr/share/licenses/${_pkgname_nosuffix}/LICENSE"
 }

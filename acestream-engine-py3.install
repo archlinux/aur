@@ -1,12 +1,3 @@
-post_install() {
-    echo
-    echo ">>> Symlink these files in case of any incompatibility:"
-    echo ">>> ln -sf /usr/bin/acestream-engine-py3 /usr/bin/acestream-engine"
-    echo ">>> ln -sf /usr/bin/acestream-engine-py3/acestreamengine-py3 /usr/bin/acestream-engine-py3/acestreamengine"
-    echo ">>> ln -sf /usr/bin/acestream-engine-py3/acestreamengine-py3 /usr/bin/acestream-engine-py3/acestreamengine"
-    echo
-}
-
 post_remove() {
     echo
     echo ">>> Remove files under /var/lib/acestream and ~/.config/acestream"

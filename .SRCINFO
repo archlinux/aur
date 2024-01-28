@@ -1,7 +1,7 @@
 pkgbase = acestream-engine-py3
 	pkgdesc = Latest available Ace Stream Engine, setup via virtualenv with latest working python version
 	pkgver = 3.1.75rc4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://acestream.org
 	install = acestream-engine-py3.install
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = acestream-engine-py3
 	noextract = iso8601-2.1.0-py3-none-any.whl
 	noextract = cffi-1.16.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
 	noextract = pycparser-2.21-py2.py3-none-any.whl
-	backup = usr/lib/acestream-engine-py3/acestream.conf
+	backup = usr/lib/acestream-engine/acestream.conf
 	source = acestream-engine-py3-3.1.75rc4.tar.gz::https://download.acestream.media/linux/acestream_3.1.75rc4_ubuntu_18.04_x86_64_py3.8.tar.gz
 	source = https://files.pythonhosted.org/packages/00/e6/73931df4046e34a6354d323b4a5b5c18e5184f4a08687806ee3353c81a6b/pycryptodome-3.19.0-cp35-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
 	source = https://files.pythonhosted.org/packages/44/1b/0771c38e65ad23e25368b5e07c920054774b8d12477a4fad116bf500de73/lxml-4.9.3-cp38-cp38-manylinux_2_28_x86_64.whl
