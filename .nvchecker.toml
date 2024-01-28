@@ -1,0 +1,3 @@
+[python-sse-starlette]
+source = "pypi"
+pypi = "sse-starlette"
