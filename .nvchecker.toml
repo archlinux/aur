@@ -1,0 +1,3 @@
+[proselint]
+source = "pypi"
+pypi = "proselint"
