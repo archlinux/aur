@@ -1,11 +1,11 @@
 pkgbase = gnome-shell-extension-gsconnect
 	pkgdesc = KDE Connect implementation with GNOME Shell integration
 	pkgver = 56
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://github.com/GSConnect/gnome-shell-extension-gsconnect
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later OR MPL-2.0
 	makedepends = meson
 	makedepends = ninja
 	makedepends = eslint
