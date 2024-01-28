@@ -1,0 +1,5 @@
+[pg_activity]
+source = "github"
+github = "dalibo/pg_activity"
+prefix = "v"
+use_latest_release = true
