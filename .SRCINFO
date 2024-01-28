@@ -1,7 +1,7 @@
 pkgbase = xsettingsd-git
 	pkgdesc = Provides settings to X11 applications via the XSETTINGS specification
 	pkgver = 1.0.2.r7.g86ce25f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/derat/xsettingsd
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = xsettingsd-git
 	depends = gcc-libs
 	provides = xsettingsd
 	conflicts = xsettingsd
-	source = xsettingsd-git::git+https://codeberg.org/derat/xsettingsd.git
+	source = xsettingsd::git+https://codeberg.org/derat/xsettingsd.git
 	sha256sums = SKIP
 
 pkgname = xsettingsd-git
