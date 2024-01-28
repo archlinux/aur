@@ -1,6 +1,6 @@
 # Maintainer: Julian Pollinger <julian@pollinger.dev>
 pkgname=cvc5
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="An open-source automatic theorem prover for Satisfiability Modulo Theories (SMT) problems"
 arch=(x86_64)
@@ -11,7 +11,7 @@ optdepends=('python-cvc5: Python bindings for cvc5')
 makedepends=('bash' 'gcc' 'cmake' 'python3' 'python-tomli' 'python-pyparsing'  'python-scikit-build' 'cython' 'java-environment')
 checkdepends=('cmake')
 source=("$url/archive/refs/tags/cvc5-$pkgver.tar.gz")
-sha256sums=('701a1a6b35b5f06d8f0d812ab97896c8e69c2d48076c0dae8e27a9fa0dbc5829')
+sha256sums=('4747502675a778d4bf5ae9590adff0c3a8258b1198098cc39ac537b0cc7802cd')
 provides=("cvc5=$pkgver")
 conflicts=('cvc5-bin' 'cvc5-bestperformance')
 
