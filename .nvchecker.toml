@@ -1,0 +1,5 @@
+[scrape-cli]
+source = "github"
+github = "lawzava/scrape"
+prefix = "v"
+use_latest_release = true
