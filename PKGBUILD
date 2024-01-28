@@ -5,8 +5,8 @@
 
 pkgbase=linux-hardened-git
 _srcname=${pkgbase/-git/}
-_gitbranch=6.5
-pkgver=6.5.r1202060.g41892b0e8df6
+_gitbranch=6.7
+pkgver=6.7.r1235754.gf18e7b54b04b
 pkgrel=1
 pkgdesc='Security-Hardened Linux'
 url='https://github.com/anthraxx/linux-hardened'
@@ -23,6 +23,12 @@ makedepends=(
   python
   tar
   xz
+
+  # htmldocs
+  graphviz
+  imagemagick
+  python-sphinx
+  texlive-latexextra
 )
 options=('!strip')
 source=(
@@ -35,7 +41,7 @@ validpgpkeys=(
   E240B57E2C4630BA768E2F26FC1B547C8D8172C8  # Levente Polyak
 )
 sha256sums=('SKIP'
-            '7155b93f7864b3e7e36b60ebae1f5cabd3f730c9dc92331cad17a6d8e8f51cf5')
+            '45236d37e2f07bb9fae5f41f18554fe44c8ab24f4ba6e1c75713847520c47904')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -64,6 +70,7 @@ prepare() {
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
+    src="${src%.zst}"
     [[ $src = *.patch ]] || continue
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
@@ -80,7 +87,12 @@ prepare() {
 
 build() {
   cd $_srcname
+
+  make htmldocs &
+  local pid_docs=$!
+
   make all
+  wait "${pid_docs}"
 }
 
 _package() {
@@ -100,6 +112,8 @@ _package() {
     VIRTUALBOX-GUEST-MODULES
     WIREGUARD-MODULE
   )
+  replaces=(
+  )
 
   cd $_srcname
   local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
@@ -116,8 +130,8 @@ _package() {
   ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
-  # remove build and source links
-  rm "$modulesdir"/{source,build}
+  # remove build link
+  rm "$modulesdir"/build
 }
 
 _package-headers() {

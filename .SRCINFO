@@ -1,6 +1,6 @@
 pkgbase = linux-hardened-git
 	pkgdesc = Security-Hardened Linux
-	pkgver = 6.5.r1202060.g41892b0e8df6
+	pkgver = 6.7.r1235754.gf18e7b54b04b
 	pkgrel = 1
 	url = https://github.com/anthraxx/linux-hardened
 	arch = x86_64
@@ -15,14 +15,18 @@ pkgbase = linux-hardened-git
 	makedepends = python
 	makedepends = tar
 	makedepends = xz
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = python-sphinx
+	makedepends = texlive-latexextra
 	options = !strip
-	source = linux-hardened::git+https://github.com/anthraxx/linux-hardened#branch=6.5?signed
+	source = linux-hardened::git+https://github.com/anthraxx/linux-hardened#branch=6.7?signed
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = E240B57E2C4630BA768E2F26FC1B547C8D8172C8
 	sha256sums = SKIP
-	sha256sums = 7155b93f7864b3e7e36b60ebae1f5cabd3f730c9dc92331cad17a6d8e8f51cf5
+	sha256sums = 45236d37e2f07bb9fae5f41f18554fe44c8ab24f4ba6e1c75713847520c47904
 
 pkgname = linux-hardened-git
 	pkgdesc = The Security-Hardened Linux kernel and modules
@@ -35,6 +39,7 @@ pkgname = linux-hardened-git
 	provides = KSMBD-MODULE
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
+	replaces = 
 
 pkgname = linux-hardened-headers-git
 	pkgdesc = Headers and scripts for building modules for the Security-Hardened Linux kernel
