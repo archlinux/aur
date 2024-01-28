@@ -1,7 +1,7 @@
 # Maintainer: Claudio Nave <claudio nave nine seven at gmail dot com>
 # Contributor: Antonio Muñoz <agmconejo AT gmail DOT com>
 
-pkgname=perl-ora2pg
+pkgname=ora2pg
 pkgver=24.1
 pkgrel=2
 pkgdesc="Ora2Pg - Oracle to PostgreSQL database schema converter"
