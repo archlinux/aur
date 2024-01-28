@@ -2,7 +2,7 @@
 # Contributor: Conni2461 <Simon-Hauser@outlook.de>
 _base=klepto
 pkgname=python-${_base}
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="persistent caching to memory, disk, or database"
 arch=(any)
@@ -16,23 +16,23 @@ optdepends=('python-jsonpickle: for serializers support'
   'python-sqlalchemy: for connect to MySQL or PostgreSQL database'
   'python-h5py: for support dictionary-style interface to a hdf5 file'
   'python-pandas: for dataframe support')
-source=(${_base}-${_base}-${pkgver}.tar.gz::${url}/archive/${_base}-${pkgver}.tar.gz)
-sha512sums=('78b9367d9bed22d68aa4d78201f0d81273d637ef86e9489c83890c3d50bea84ff89fe63c2848826db2e650a1602fe51e5495402d7883977a9ef6f7db3e72ddeb')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
+sha512sums=('490382d3b44d43f0e1e48d2f82df63b797bdda4ca82b4de2a99e8f0228bfaa802b39a5b70886137704191b49388ad40636c09be8d19a01a5d0e84405ecf1bc45')
 
 build() {
-  cd ${_base}-${_base}-${pkgver}
+  cd ${_base}-${pkgver}
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
-  cd ${_base}-${_base}-${pkgver}
+  cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m pytest -k 'not combinations and not basic and not alchemy and not methods and not roundtrip'
 }
 
 package() {
-  cd ${_base}-${_base}-${pkgver}
+  cd ${_base}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
