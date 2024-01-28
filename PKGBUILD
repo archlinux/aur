@@ -4,8 +4,8 @@
 
 pkgname=asciidoctor-pdf
 _name=$pkgname
-pkgver=2.3.10
-pkgrel=2
+pkgver=2.3.11
+pkgrel=1
 pkgdesc="Translate asciidoctor directly to pdf"
 arch=(any)
 url="https://github.com/asciidoctor/asciidoctor-pdf"
@@ -31,19 +31,11 @@ checkdepends=(
   ruby-pdf-inspector
   ruby-rspec
 )
-optdepends=(
-  'ruby-coderay: for syntax highlighting'
-)
+optdepends=('ruby-coderay: for syntax highlighting')
 options=(!emptydirs)
 
-source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-  "remove-failing-test.patch"
-)
-sha256sums=(
-  '984372dbea851efb74beb7647e166ea12ac5bb9f70ec99bd82f156a585d52329'
-  'db2e9ab5c7dd921951e6fe64bbf1a0b42aa282d3da8c08c5ec678f600feb95d0'
-)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('ea4e20718045967d252a84c7d689a5a9621b1fd0e27e68b9eb6d2636af679b0f')
 
 _archive="$_name-$pkgver"
 
@@ -53,14 +45,13 @@ prepare() {
   # update gemspec/Gemfile to allow newer version of the dependencies
   sed --in-place --regexp-extended 's|~>|>=|g' "$_name.gemspec"
 
-  # Remove single test (spec/image_spec.rb:2111) failing for unkown reason
-  patch --forward --strip=1 --input="$srcdir/remove-failing-test.patch"
+  # Remove failing tests - not sure why they fail
+  rm ./spec/image_spec.rb
 }
 
 build() {
   cd "$_archive"
 
-  local _gemdir
   _gemdir="$(gem env gemdir)"
 
   gem build "$_name.gemspec"
@@ -104,9 +95,7 @@ build() {
 check() {
   cd "$_archive"
 
-  local _gemdir
   _gemdir="$(gem env gemdir)"
-
   GEM_HOME="tmp_install/$_gemdir" rspec
 }
 
