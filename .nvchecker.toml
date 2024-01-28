@@ -1,0 +1,3 @@
+[python-beartype]
+source = "pypi"
+pypi = "beartype"
