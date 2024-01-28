@@ -18,7 +18,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  make
+  make PG_CPPFLAGS=-Wno-error=implicit-int
 }
 
 package() {
