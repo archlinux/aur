@@ -1,18 +1,18 @@
 pkgbase = xsettingsd-git
-	pkgdesc = xsettingsd is a daemon that implements the XSETTINGS specification.
-	pkgver = r79.b4999f5
-	pkgrel = 4
-	url = https://github.com/derat/xsettingsd
+	pkgdesc = Provides settings to X11 applications via the XSETTINGS specification
+	pkgver = r103.86ce25f
+	pkgrel = 1
+	url = https://codeberg.org/derat/xsettingsd
 	arch = i686
 	arch = x86_64
-	license = custom:BSD
+	license = BSD-3-Clause
 	makedepends = git
-	makedepends = scons
+	makedepends = cmake
 	depends = libx11
+	depends = gcc-libs
 	provides = xsettingsd
 	conflicts = xsettingsd
-	source = xsettingsd-git::git://github.com/derat/xsettingsd
+	source = xsettingsd-git::git+https://codeberg.org/derat/xsettingsd.git
 	sha256sums = SKIP
 
 pkgname = xsettingsd-git
-

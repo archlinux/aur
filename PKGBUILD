@@ -1,19 +1,18 @@
-# Maintainer: Chris Wong <https://wiki.archlinux.org/index.php/Special:EmailUser/Lambda_Fairy>
+# Maintainer: q234 rty <q23456yuiop at gmail dot com>
+# Contributor: Chris Wong <https://wiki.archlinux.org/index.php/Special:EmailUser/Lambda_Fairy>
 
 pkgname=xsettingsd-git
-pkgver=r79.b4999f5
-pkgrel=4
-
-pkgdesc="xsettingsd is a daemon that implements the XSETTINGS specification."
+pkgver=r103.86ce25f
+pkgrel=1
+pkgdesc="Provides settings to X11 applications via the XSETTINGS specification"
 arch=('i686' 'x86_64')
-url="https://github.com/derat/xsettingsd"
-license=('custom:BSD')
-
-depends=('libx11')
-makedepends=('git' 'scons')
+url="https://codeberg.org/derat/xsettingsd"
+license=('BSD-3-Clause')
+depends=('libx11' 'gcc-libs')
+makedepends=('git' 'cmake')
 provides=('xsettingsd')
 conflicts=('xsettingsd')
-source=("$pkgname::git://github.com/derat/xsettingsd")
+source=("$pkgname::git+https://codeberg.org/derat/xsettingsd.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,15 +21,13 @@ pkgver() {
 }
 
 build() {
-    cd "$pkgname"
-    env CPPFLAGS="$CXXFLAGS" scons xsettingsd dump_xsettings
+    cmake -B build -S $pkgname \
+        -DCMAKE_INSTALL_PREFIX=/usr
+    cmake --build build
 }
 
 package() {
-    cd "$pkgname"
-    install -d "$pkgdir"/usr/{bin,share/man/man1}
-
-    install -m755 xsettingsd dump_xsettings "$pkgdir"/usr/bin
-    install -m644 xsettingsd.1 dump_xsettings.1 "$pkgdir"/usr/share/man/man1
-    install -Dm644 COPYING "$pkgdir"/usr/share/licenses/xsettingsd/COPYING
+    DESTDIR="$pkgdir" cmake --install build
+    install -Dm644 $pkgname/COPYING -t "$pkgdir"/usr/share/licenses/$pkgname
 }
+
