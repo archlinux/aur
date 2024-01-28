@@ -1,6 +1,6 @@
 pkgbase = linux-drm-xe-next-git
 	pkgdesc = Linux kernel with bleeding-edge Intel Xe driver
-	pkgver = 6.6.r1217087.22fcf2404f56
+	pkgver = 6.8.r1248828.348769d1cbfa
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/drm/xe/kernel/-/tree/drm-xe-next
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = linux-drm-xe-next-git
 	source = linux-drm-xe-next-git::git+https://gitlab.freedesktop.org/drm/xe/kernel.git#branch=drm-xe-next
 	source = config
 	b2sums = SKIP
-	b2sums = 9c22976b0c48a43794d544085c5ffcc57faca2eab1687082cb363ccf70f9aa4e0221ece7fb0ea41bbc43b9629a79c04b51b6feb4ba6f05e2d6452bcdee57ca78
+	b2sums = SKIP
 
 pkgname = linux-drm-xe-next-git
 	pkgdesc = The Linux kernel with bleeding-edge Intel Xe driver kernel and modules
