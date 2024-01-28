@@ -1,20 +1,20 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Simon Allen <simon@simonallen.org>
 pkgname=ytmdesktop-git
-pkgver=2.0.0.rc.5.r41.g50d2a6e
+pkgver=2.0.0.r1.g8a6093d
 pkgrel=1
 _nodeversion=20
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
 url="https://ytmdesktop.app"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('alsa-lib' 'gtk3' 'libnotify' 'libxtst' 'nss' 'xdg-utils')
 makedepends=('git' 'nvm' 'python' 'yarn' 'zip')
 optdepends=('libgnome-keyring'
             'lsb-release')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/ytmdesktop/ytmdesktop.git#branch=v2'
+source=('git+https://github.com/ytmdesktop/ytmdesktop.git'
         "${pkgname%-git}.desktop")
 sha256sums=('SKIP'
             'cef9bd688fa6a77fe800192d38ec647c9ca3b146abb54cf08947c67f47b467d1')

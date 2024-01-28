@@ -1,10 +1,10 @@
 pkgbase = ytmdesktop-git
 	pkgdesc = A desktop app for YouTube Music
-	pkgver = 2.0.0.rc.5.r41.g50d2a6e
+	pkgver = 2.0.0.r1.g8a6093d
 	pkgrel = 1
 	url = https://ytmdesktop.app
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = nvm
 	makedepends = python
@@ -20,7 +20,7 @@ pkgbase = ytmdesktop-git
 	optdepends = lsb-release
 	provides = ytmdesktop
 	conflicts = ytmdesktop
-	source = git+https://github.com/ytmdesktop/ytmdesktop.git#branch=v2
+	source = git+https://github.com/ytmdesktop/ytmdesktop.git
 	source = ytmdesktop.desktop
 	sha256sums = SKIP
 	sha256sums = cef9bd688fa6a77fe800192d38ec647c9ca3b146abb54cf08947c67f47b467d1
