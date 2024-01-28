@@ -1,7 +1,7 @@
 pkgbase = vdr-cdplayer
 	pkgdesc = CD-Player plugin which supports CD-Text and CDDB-Database
 	pkgver = 1.2.5
-	pkgrel = 7
+	pkgrel = 8
 	url = http://uli-eckhardt.de/vdr/cdplayer.en.shtml
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = vdr-cdplayer
 	license = GPL2
 	depends = libcdio-paranoia
 	depends = libcddb
-	depends = vdr-api=2.6.5
+	depends = vdr-api=2.6.6
 	backup = etc/vdr/conf.avail/50-cdplayer.conf
 	source = https://www.uli-eckhardt.de/vdr/download/vdr-cdplayer-1.2.5.tgz
 	source = 50-cdplayer.conf
