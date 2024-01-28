@@ -1,0 +1,20 @@
+pkgbase = nxtb-git
+	pkgdesc = Access to the Nextbike API via cli or python lib
+	pkgver = r14.5536b53
+	pkgrel = 1
+	url = https://gitlab.com/S60W79/nextbike-cli/
+	arch = any
+	license = GPL3
+	makedepends = gzip
+	makedepends = git
+	makedepends = fakeroot
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-requests
+	source = nxtb-git::git+https://gitlab.com/S60W79/nextbike-cli/
+	md5sums = SKIP
+
+pkgname = nxtb-git
