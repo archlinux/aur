@@ -1,0 +1,5 @@
+[pev2-electron]
+source = "github"
+github = "dalibo/pev2"
+prefix = "v"
+use_latest_release = true

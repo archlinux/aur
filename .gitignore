@@ -1,7 +1,8 @@
 *
 !.gitignore
-!PKGBUILD
+!.nvchecker.toml
 !.SRCINFO
+!PKGBUILD
 !pev2.desktop
 !pev2.sh
 !remove-demo-notice.patch
