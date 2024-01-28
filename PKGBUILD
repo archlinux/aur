@@ -1,7 +1,7 @@
 # Maintainer: Egor Tensin <Egor.Tensin@gmail.com>
 pkgname=config-links
-pkgver=2.0.4
-pkgrel=2
+pkgver=2.0.5
+pkgrel=1
 pkgdesc='Config file sharing'
 arch=(any)
 url="https://github.com/egor-tensin/$pkgname"

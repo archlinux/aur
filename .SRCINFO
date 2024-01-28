@@ -1,12 +1,12 @@
 pkgbase = config-links
 	pkgdesc = Config file sharing
-	pkgver = 2.0.4
-	pkgrel = 2
+	pkgver = 2.0.5
+	pkgrel = 1
 	url = https://github.com/egor-tensin/config-links
 	arch = any
 	license = MIT
 	depends = bash
-	source = config-links-2.0.4.tar.gz::https://github.com/egor-tensin/config-links/archive/v2.0.4.tar.gz
+	source = config-links-2.0.5.tar.gz::https://github.com/egor-tensin/config-links/archive/v2.0.5.tar.gz
 	md5sums = SKIP
 
 pkgname = config-links
