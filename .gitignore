@@ -1,0 +1,7 @@
+# Only necessary file.
+
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+
