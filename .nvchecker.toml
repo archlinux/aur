@@ -1,0 +1,5 @@
+[proxygen]
+source = "github"
+github = "facebook/proxygen"
+prefix = "v"
+use_latest_release = true
