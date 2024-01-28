@@ -27,6 +27,8 @@ build() {
     haxelib deleterepo # obviously not ideal, but essentially makes sure that no prompts about overwriting a version with another happens
     haxelib newrepo
 
+    echo 'oy9:showMacroty8:loopCosti25y10:includeAllfg' >> ~/settings.cocoa #skips sscript setup mode
+
     haxelib install hxcpp > /dev/null --quiet
     haxe -cp ./setup -D analyzer-optimize -main Main --interp
 
