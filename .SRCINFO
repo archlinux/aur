@@ -1,7 +1,7 @@
 pkgbase = nwg-hello
 	pkgdesc = GTK3-based greeter for greetd written in python
-	pkgver = 0.1.6
-	pkgrel = 1
+	pkgver = 0.1.7
+	pkgrel = 0
 	url = https://github.com/nwg-piotr/nwg-hello
 	arch = any
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = nwg-hello
 	depends = gnome-themes-extra
 	optdepends = sway: this or hyprland must be installed
 	optdepends = hyprland: this or sway must be installed
-	source = nwg-hello-0.1.6.tar.gz::https://github.com/nwg-piotr/nwg-hello/archive/v0.1.6.tar.gz
-	md5sums = 6b73f21c506d6550e639ea152ab6ed91
+	source = nwg-hello-0.1.7.tar.gz::https://github.com/nwg-piotr/nwg-hello/archive/v0.1.7.tar.gz
+	md5sums = 8e49f2de026a3970652e986742f97522
 
 pkgname = nwg-hello

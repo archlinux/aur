@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-hello')
-pkgver=0.1.6
-pkgrel=1
+pkgver=0.1.7
+pkgrel=0
 pkgdesc="GTK3-based greeter for greetd written in python"
 arch=('any')
 url="https://github.com/nwg-piotr/nwg-hello"
@@ -12,7 +12,7 @@ optdepends=('sway: this or hyprland must be installed'
             'hyprland: this or sway must be installed')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-hello/archive/v"$pkgver".tar.gz")
 
-md5sums=('6b73f21c506d6550e639ea152ab6ed91')
+md5sums=('8e49f2de026a3970652e986742f97522')
 
 package() {
   cd "${pkgname}-${pkgver}"
@@ -26,6 +26,9 @@ package() {
 
   install -d -m 755 "$pkgdir"/var/cache/nwg-hello -o greeter
   install -Dm666 -t "$pkgdir"/var/cache/nwg-hello cache.json -o greeter
+  
+  install -D -t "$pkgdir"/usr/share/licenses/"$pkgname" LICENSE
+  install -D -t "$pkgdir"/usr/share/doc/"$pkgname" README.md
   
   python setup.py install --root="${pkgdir}" --optimize=1
 }
