@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-data-chaps-trains-cz-2016-latest
 	pkgdesc = 2015/2016 Timetable data for the timetable search engines by CHAPS: Czech trains.
 	pkgver = 2016_08_05
-	pkgrel = 5
+	pkgrel = 6
 	epoch = 0
 	url = https://web.archive.org/web/20160806152205/http://chaps.cz/eng/download/idos/#kotvatt
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = idos-timetable-data-chaps-trains-cz-2016-latest
 	source = vlak16c-2016_08_05.exe::https://web.archive.org/web/20160806152205/http://ttakt.chaps.cz/TTAktual/Win/VLAK16C.EXE
 	source = IDOS-Licence.pdf::https://web.archive.org/web/20160806152205/http://chaps.cz/files/idos/IDOS-Licence.pdf
 	source = license-dummy.txt
-	sha256sums = ccbfee7e570e441bfe75e429c713694d56dded50ebebe2f2c88158caf1da4246
+	sha256sums = 1dd619d84ed598ce6788fac3120457d41f0936f69882d8159796a3bc4671ccf3
 	sha256sums = SKIP
 	sha256sums = c6bb216055d3670d3100b7a74e04ce0644030f365f4349a09e630ef60fbcb9a4
 
