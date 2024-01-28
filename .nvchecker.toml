@@ -1,0 +1,3 @@
+[certomancer]
+source = "pypi"
+pypi = "certomancer"
