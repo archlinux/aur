@@ -1,0 +1,16 @@
+pkgbase = xfetch-bin
+	pkgdesc = The world's simplest fetch written in Rust.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/XandrCopyrighted/xFetch/
+	arch = any
+	license = MIT
+	provides = xfetch
+	conflicts = xfetch-rs-git
+	conflicts = xfetch
+	source = https://github.com/XandrCopyrighted/xFetch/releases/download/2.0.0/xfetch.tar.gz
+	source = https://github.com/XandrCopyrighted/xFetch/blob/main/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = xfetch-bin
