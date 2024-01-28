@@ -3,12 +3,12 @@
 # Contributor: Felix Serrano Blanco <felixseblanc@gmail.com>
 
 pkgname=libtd
-pkgver=1.8.16
-pkgrel=2
+pkgver=1.8.24
+pkgrel=1
 pkgdesc="Cross-platform library for building Telegram clients "
 arch=('x86_64')
 url='https://core.telegram.org/tdlib'
-license=('Boost')
+license=('BSL-1.0')
 depends=(
 	'openssl'
 	'zlib'
@@ -23,7 +23,7 @@ makedepends=(
 )
 provides=('telegram-tdlib' 'libtdjson.so')
 conflicts=('telegram-tdlib')
-_commit=cde095db6c75827fe4bd237039574aad373ad96b
+_commit=c5c55092dd61b9eb15d6bbfd0f02c04c593450e7
 source=("$pkgname::git+https://github.com/tdlib/td.git#commit=$_commit")
 md5sums=('SKIP')
 
