@@ -1,0 +1,20 @@
+pkgbase = plasma6-applets-window-buttons
+	pkgdesc = Plasma 6 applet in order to show window buttons in your panels
+	pkgver = 0.11.1
+	pkgrel = 2
+	url = https://github.com/moodyhunter/applet-window-buttons6
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = plasma-workspace>=5.90
+	conflicts = libappletdecoration
+	conflicts = plasma5-applets-window-buttons
+	replaces = libappletdecoration
+	source = git+https://github.com/moodyhunter/applet-window-buttons6
+	sha256sums = SKIP
+
+pkgname = plasma6-applets-window-buttons
