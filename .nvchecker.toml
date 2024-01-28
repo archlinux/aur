@@ -1,0 +1,3 @@
+[gitlint]
+source = "pypi"
+pypi = "gitlint"
