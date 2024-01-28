@@ -1,0 +1,5 @@
+[yajsv]
+source = "github"
+github = "neilpa/yajsv"
+prefix = "v"
+use_latest_release = true
