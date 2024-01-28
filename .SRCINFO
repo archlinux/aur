@@ -1,7 +1,7 @@
 pkgbase = vdr-softhddevice
 	pkgdesc = software and GPU emulated HD output device plugin for VDR
 	pkgver = 2.0.9
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/ua0lnj/vdr-plugin-softhddevice
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = vdr-softhddevice
 	depends = freeglut
 	depends = glew
 	depends = mesa
-	depends = vdr-api=2.6.5
+	depends = vdr-api=2.6.6
 	depends = xcb-util-wm
 	depends = xorg-server
 	depends = libva
