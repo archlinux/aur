@@ -5,7 +5,7 @@ pkgbase = snapd-xdg-open-git
 	url = https://github.com/snapcore/snapd-xdg-open
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = glib2
 	provides = snapd-xdg-open
@@ -14,4 +14,3 @@ pkgbase = snapd-xdg-open-git
 	md5sums = SKIP
 
 pkgname = snapd-xdg-open-git
-
