@@ -1,22 +1,17 @@
 pkgbase = diffsitter-git
 	pkgdesc = A tree-sitter based AST difftool to get meaningful semantic diffs
-	pkgver = 0.6.8.r0.gdbe30c3
+	pkgver = 0.8.2.r4.g2484861
 	pkgrel = 1
 	url = https://github.com/afnanenayet/diffsitter
-	arch = x86_64
 	arch = i686
-	arch = arm
-	arch = aarch64
+	arch = x86_64
 	license = MIT
-	checkdepends = tree-sitter-python
-	checkdepends = tree-sitter-rust
-	makedepends = cargo
 	makedepends = git
-	depends = tree-sitter
-	provides = diffsitter
+	makedepends = cargo
+	depends = gcc-libs
+	provides = diffsitter=0.8.2.r4.g2484861
 	conflicts = diffsitter
-	source = diffsitter-git::git+https://github.com/afnanenayet/diffsitter?signed
-	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
+	source = git+https://github.com/afnanenayet/diffsitter.git
 	sha256sums = SKIP
 
 pkgname = diffsitter-git
