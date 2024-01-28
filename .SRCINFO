@@ -9,7 +9,7 @@ pkgbase = icecat-bin
 	conflicts = icecat
 	noextract = icecat-115.7.0.en-US.linux-x86_64.tar.bz2
 	source = https://icecatbrowser.org/assets/uploads/2024/01/icecat-115.7.0.en-US.linux-x86_64.tar.bz2
-	sha256sums = SKIP
+	sha256sums = e75aa834cc010cd1f7d9dffad98c638cd3476bd7402df14f23f5bd19ac41620c
 
 pkgname = icecat-bin
 	depends = dbus-glib

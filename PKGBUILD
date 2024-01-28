@@ -31,7 +31,7 @@ _dl_file="icecat-$pkgver.en-US.linux-$CARCH.tar.bz2"
 noextract=("$_dl_file")
 
 source=("$_dl_url/$_dl_file")
-sha256sums=('SKIP')
+sha256sums=('e75aa834cc010cd1f7d9dffad98c638cd3476bd7402df14f23f5bd19ac41620c')
 
 prepare() {
   cat >icecat.desktop <<END
