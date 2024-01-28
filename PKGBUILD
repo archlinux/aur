@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GA
-_pkgver=3.2.3
+_pkgver=3.2.4
 pkgname=r-${_pkgname,,}
-pkgver=3.2.3
+pkgver=3.2.4
 pkgrel=1
 pkgdesc='Genetic Algorithms'
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('eb3a11798d42a7f105834363f571f7ca435728a5a6a324c703d7d2f9cbc90b60')
+sha256sums=('e59f6638534e858eeac541efd774046ef3db130345999a374b6ce6dfbab081bd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
