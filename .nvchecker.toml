@@ -1,0 +1,6 @@
+[libminpack]
+source = "git"
+git = "https://salsa.debian.org/science-team/minpack.git"
+include_regex = "debian/.*"
+from_pattern = 'debian/(\d+)\+([a-z]+\d+)-(\d+)'
+to_pattern = '\1+\2.\3'
