@@ -1,6 +1,6 @@
 pkgbase = python-mystic
 	pkgdesc = highly-constrained non-convex optimization and uncertainty quantification
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/uqfoundation/mystic
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-mystic
 	optdepends = python-pathos: for for parallel computing
 	optdepends = python-pyina: for for parallel computing
 	optdepends = python-matplotlib: for Matplotlib rendering
-	source = mystic-mystic-0.4.1.tar.gz::https://github.com/uqfoundation/mystic/archive/mystic-0.4.1.tar.gz
-	sha512sums = c8fdc2386815e5c046d23f3aefd6e97a4b04a826f2cbeff631e8716eca305918aa1c0640f6612ca13532ef98a58e107f8e554d225eb36d0deed180f7509c75aa
+	source = mystic-0.4.2.tar.gz::https://github.com/uqfoundation/mystic/archive/0.4.2.tar.gz
+	sha512sums = 9fb1b24a6a2a8dfbb02474f65043dfa9fb65eada1ae06b632453e60a7739928d7285a987a2f7bda8ca7891f5d05fd203c9d108c3a90e0d360636ef025543bc5b
 
 pkgname = python-mystic

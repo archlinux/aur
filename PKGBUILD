@@ -2,7 +2,7 @@
 _base=mystic
 pkgname=python-${_base}
 pkgdesc="highly-constrained non-convex optimization and uncertainty quantification"
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 url="https://github.com/uqfoundation/${_base}"
 arch=(any)
@@ -14,16 +14,16 @@ optdepends=('python-scipy: for SciPy optimization'
   'python-pathos: for for parallel computing'
   'python-pyina: for for parallel computing'
   'python-matplotlib: for Matplotlib rendering')
-source=(${_base}-${_base}-${pkgver}.tar.gz::${url}/archive/${_base}-${pkgver}.tar.gz)
-sha512sums=('c8fdc2386815e5c046d23f3aefd6e97a4b04a826f2cbeff631e8716eca305918aa1c0640f6612ca13532ef98a58e107f8e554d225eb36d0deed180f7509c75aa')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
+sha512sums=('9fb1b24a6a2a8dfbb02474f65043dfa9fb65eada1ae06b632453e60a7739928d7285a987a2f7bda8ca7891f5d05fd203c9d108c3a90e0d360636ef025543bc5b')
 
 build() {
-  cd ${_base}-${_base}-${pkgver}
+  cd ${_base}-${pkgver}
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
-  cd ${_base}-${_base}-${pkgver}
+  cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m pytest ${_base}/tests \
@@ -41,7 +41,7 @@ check() {
 }
 
 package() {
-  cd ${_base}-${_base}-${pkgver}
+  cd ${_base}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
