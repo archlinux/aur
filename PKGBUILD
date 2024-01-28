@@ -4,7 +4,7 @@
 # Contributor: Masato TOYOSHIMA <phoepsilonix@phoepsilonix.love>
 
 pkgname=pulldown-cmark
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc='Pull parser for CommonMark, written in Rust'
 arch=(x86_64)
@@ -15,8 +15,8 @@ depends=(gcc-libs
 makedepends=(rust)
 _archive="$pkgname-$pkgver"
 source=("$_archive.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('eaccef0692b88dbce6d3784b5656c8758fff5175a514b81042aac2b235df21412ab51bec1e864f54ab30d1bc4842c6ef22c7a25bc1fb974c15f058513f61e652')
-b2sums=('88fa011abf619911901e46ba794a68c51156fb9b5a22292155e6dd8623d149a901f05e7da8b79b282ac42c7fc3644466c8b4967e19eaa2e511b2eb4a5c6d63c4')
+sha512sums=('ac59bf63fb54a01b14745c0f75b5a9a3c20fe57b5db1381c713ca77c0ce4f1f051a9983f77a512aa0d78b64844a969c3ce12a095e1a87fa78aca092365e4695e')
+b2sums=('d539d7f9570d5f6b8417cb69ffe3ec2108e2b6e7e25ac99ad11225d4f502fa0da62f860f9fb1f40c060fe41d60d2a35e892f7c4349df858ee8fc3636e52bdb59')
 
 prepare() {
 	cd "$_archive"
