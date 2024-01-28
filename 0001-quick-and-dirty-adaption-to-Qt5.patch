@@ -1,0 +1,367 @@
+From 0a924b262deaf16306e16a895cea259d7a4e46bf Mon Sep 17 00:00:00 2001
+From: Andreas Baumann <mail@andreasbaumann.cc>
+Date: Sun, 14 Nov 2021 21:05:42 +0100
+Subject: [PATCH 1/2] quick and dirty adaption to Qt5
+
+---
+ src/diagram/diagram.pri                        |  2 ++
+ src/diagramdocument.cpp                        |  5 +++--
+ src/diagramitem.cpp                            |  4 ++--
+ src/export/export.pri                          |  2 ++
+ src/items/base/base.pri                        |  2 ++
+ src/items/database/columnlistmodel.cpp         |  3 ++-
+ src/items/database/database.pri                |  2 ++
+ .../databaserelationshipproperties.cpp         |  5 +++--
+ src/items/database/databasetableproperties.cpp |  2 +-
+ src/line.cpp                                   |  2 +-
+ src/main.cpp                                   |  1 +
+ src/mainwindow.cpp                             |  1 +
+ src/src.pri                                    |  2 ++
+ src/src.pro                                    |  2 +-
+ src/utils/colorpicker/colorpicker.pri          |  2 ++
+ src/utils/colorpicker/qtcolorpicker.cpp        | 18 +++++++++---------
+ src/utils/colorpicker/qtcolorpicker.h          |  6 +++---
+ src/utils/iconloader/iconloader.pri            |  2 ++
+ src/utils/iconloader/qticonloader.cpp          | 12 ++++++------
+ src/utils/utils.pri                            |  2 ++
+ 20 files changed, 49 insertions(+), 28 deletions(-)
+
+diff --git a/src/diagram/diagram.pri b/src/diagram/diagram.pri
+index b98b4dd..8d4fa94 100644
+--- a/src/diagram/diagram.pri
++++ b/src/diagram/diagram.pri
+@@ -1,4 +1,6 @@
+ DEPENDPATH += $$PWD
++VPATH += $$PWD
++INCLUDE += $$PWD
+ 
+ SOURCES += \
+ 	linelayouter.cpp
+diff --git a/src/diagramdocument.cpp b/src/diagramdocument.cpp
+index a1aad5d..f741c06 100644
+--- a/src/diagramdocument.cpp
++++ b/src/diagramdocument.cpp
+@@ -333,8 +333,9 @@ DiagramDocument::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+ {
+ 	if (m_line) {
+ 		removeItem(m_line);
+-		DatabaseTable *source = qgraphicsitem_cast<DatabaseTable *>(itemAt(m_line->line().p1()));
+-		DatabaseTable *target = qgraphicsitem_cast<DatabaseTable *>(itemAt(m_line->line().p2()));
++		QTransform transform;
++		DatabaseTable *source = qgraphicsitem_cast<DatabaseTable *>(itemAt(m_line->line().p1(),transform));
++		DatabaseTable *target = qgraphicsitem_cast<DatabaseTable *>(itemAt(m_line->line().p2(),transform));
+ 		if (source && target && source != target) {
+ 			Line *line = new DatabaseRelationship();
+ 			line->createId();
+diff --git a/src/diagramitem.cpp b/src/diagramitem.cpp
+index cd591ec..23cd83b 100644
+--- a/src/diagramitem.cpp
++++ b/src/diagramitem.cpp
+@@ -40,7 +40,7 @@ DiagramItem::document() const
+ void
+ DiagramItem::loadFromXml(QDomElement element, DiagramDocument *)
+ {
+-	setId(element.attribute("id", QUuid()));
++	setId(element.attribute("id", QUuid().toString()));
+ 	setPos(readPointElement(element, "position"));
+ }
+ 
+@@ -48,7 +48,7 @@ void
+ DiagramItem::saveToXml(QDomDocument doc, QDomElement element)
+ {
+ 	element.setAttribute("type", typeName());
+-	element.setAttribute("id", id());
++	element.setAttribute("id", id().toString());
+ 	appendPointElement(doc, element, "position", pos());
+ }
+ 
+diff --git a/src/export/export.pri b/src/export/export.pri
+index ae7d15f..ea63030 100644
+--- a/src/export/export.pri
++++ b/src/export/export.pri
+@@ -1,4 +1,6 @@
+ DEPENDPATH += $$PWD
++VPATH += $$PWD
++INCLUDE += $$PWD
+ 
+ SOURCES += \
+     exporter.cpp \
+diff --git a/src/items/base/base.pri b/src/items/base/base.pri
+index 88086e5..faaf1e8 100644
+--- a/src/items/base/base.pri
++++ b/src/items/base/base.pri
+@@ -1 +1,3 @@
+ DEPENDPATH += $$PWD
++VPATH += $$PWD
++INCLUDE += $$PWD
+diff --git a/src/items/database/columnlistmodel.cpp b/src/items/database/columnlistmodel.cpp
+index 84ba804..8ae00b5 100644
+--- a/src/items/database/columnlistmodel.cpp
++++ b/src/items/database/columnlistmodel.cpp
+@@ -44,7 +44,8 @@ ColumnListModel::setColumnList(ColumnList *columnList)
+ 		connect(m_columnList, SIGNAL(columnRemoved(int)), this, SLOT(_columnRemoved()));
+ 		connect(m_columnList, SIGNAL(columnChanged(int)), this, SLOT(_columnChanged(int)));
+ 	}
+-	reset();
++	beginResetModel();
++	endResetModel();
+ }
+ 
+ int
+diff --git a/src/items/database/database.pri b/src/items/database/database.pri
+index c65f9e9..f3f9813 100644
+--- a/src/items/database/database.pri
++++ b/src/items/database/database.pri
+@@ -1,4 +1,6 @@
+ DEPENDPATH += $$PWD
++VPATH += $$PWD
++INCLUDE += $$PWD
+ 
+ SOURCES += \
+ 	databasecommands.cpp \
+diff --git a/src/items/database/databaserelationshipproperties.cpp b/src/items/database/databaserelationshipproperties.cpp
+index f34d045..49f42b7 100644
+--- a/src/items/database/databaserelationshipproperties.cpp
++++ b/src/items/database/databaserelationshipproperties.cpp
+@@ -21,6 +21,7 @@
+ #include <QGridLayout>
+ #include <QLabel>
+ #include <QLineEdit>
++#include <QButtonGroup>
+ #include "commands.h"
+ #include "diagramdocument.h"
+ #include "column.h"
+@@ -217,7 +218,7 @@ DatabaseRelationshipProperties::setChildColumn(int index)
+ 	DatabaseRelationship *relationship = currentRelationship();
+ 	Column *column = index > 0 ? relationship->childTable()->columnList()->column(index - 1) : NULL;
+ 	relationship->document()->undoStack()->push(
+-		new SetObjectPropertyCommand(relationship, "childColumn", qVariantFromValue(column)));
++		new SetObjectPropertyCommand(relationship, "childColumn", QVariant::fromValue(column)));
+ }
+ 
+ void
+@@ -228,5 +229,5 @@ DatabaseRelationshipProperties::setParentColumn(int index)
+ 	DatabaseRelationship *relationship = currentRelationship();
+ 	Column *column = index > 0 ? relationship->parentTable()->columnList()->column(index - 1) : NULL;
+ 	relationship->document()->undoStack()->push(
+-		new SetObjectPropertyCommand(relationship, "parentColumn", qVariantFromValue(column)));
++		new SetObjectPropertyCommand(relationship, "parentColumn", QVariant::fromValue(column)));
+ }
+diff --git a/src/items/database/databasetableproperties.cpp b/src/items/database/databasetableproperties.cpp
+index 779b4bc..14c1fe9 100644
+--- a/src/items/database/databasetableproperties.cpp
++++ b/src/items/database/databasetableproperties.cpp
+@@ -151,7 +151,7 @@ DatabaseTableProperties::updateProperty(const QString &name, const QVariant &val
+ 		d->nameEdit->setText(value.toString());
+ 	}
+ 	else if (name == "color") {
+-		d->colorPicker->setCurrentColor(qVariantValue<QColor>(value));
++		d->colorPicker->setCurrentColor(value.value<QColor>());
+ 	}
+ }
+ 
+diff --git a/src/line.cpp b/src/line.cpp
+index 527fab3..bb58e1e 100644
+--- a/src/line.cpp
++++ b/src/line.cpp
+@@ -94,7 +94,7 @@ Line::saveToXml(QDomDocument doc, QDomElement element)
+ 		if (connector->hub()) {
+ 			QDomElement hubElement = doc.createElement("hub");
+ 			connectorElement.appendChild(hubElement);
+-			hubElement.setAttribute("owner", connector->hub()->owner()->id());
++			hubElement.setAttribute("owner", connector->hub()->owner()->id().toString());
+ 		}
+ 	}
+ }
+diff --git a/src/main.cpp b/src/main.cpp
+index a76a90c..3b761eb 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -19,6 +19,7 @@
+ #include <QTranslator>
+ #include <QApplication>
+ #include "mainwindow.h"
++#include "items/database/column.h"
+ 
+ class Column;
+ 
+diff --git a/src/mainwindow.cpp b/src/mainwindow.cpp
+index 0ff84f8..2e23dfa 100644
+--- a/src/mainwindow.cpp
++++ b/src/mainwindow.cpp
+@@ -34,6 +34,7 @@
+ #include <QDockWidget>
+ #include <QUndoView>
+ #include <QStackedWidget>
++#include <QMimeData>
+ #include "utils/iconloader/qticonloader.h"
+ #include "diagramitem.h"
+ #include "diagramobject.h"
+diff --git a/src/src.pri b/src/src.pri
+index 3bfa7fd..640d47d 100644
+--- a/src/src.pri
++++ b/src/src.pri
+@@ -1,4 +1,6 @@
+ DEPENDPATH += $$PWD
++VPATH += $$PWD
++INCLUDE += $$PWD
+ 
+ RESOURCES = ../dbmodel.qrc
+ 
+diff --git a/src/src.pro b/src/src.pro
+index 7d3f7da..31d1bb1 100644
+--- a/src/src.pro
++++ b/src/src.pro
+@@ -3,7 +3,7 @@ VERSION = 0.3
+ 
+ DESTDIR = ../
+ 
+-QT += xml svg
++QT += xml svg printsupport widgets
+ #CONFIG += debug
+ 
+ DEFINES += VERSION=\\\"$$VERSION\\\"
+diff --git a/src/utils/colorpicker/colorpicker.pri b/src/utils/colorpicker/colorpicker.pri
+index ffed503..83ff8bb 100644
+--- a/src/utils/colorpicker/colorpicker.pri
++++ b/src/utils/colorpicker/colorpicker.pri
+@@ -1,4 +1,6 @@
+ DEPENDPATH += $$PWD
++VPATH += $$PWD
++INCLUDE += $$PWD
+ 
+ SOURCES += \
+ 	qtcolorpicker.cpp
+diff --git a/src/utils/colorpicker/qtcolorpicker.cpp b/src/utils/colorpicker/qtcolorpicker.cpp
+index 2a4fff1..92cc6c1 100644
+--- a/src/utils/colorpicker/qtcolorpicker.cpp
++++ b/src/utils/colorpicker/qtcolorpicker.cpp
+@@ -44,20 +44,20 @@
+ ** 
+ ****************************************************************************/
+ 
+-#include <QtGui/QApplication>
+-#include <QtGui/QDesktopWidget>
++#include <QtWidgets/QApplication>
++#include <QtWidgets/QDesktopWidget>
+ #include <QtGui/QPainter>
+-#include <QtGui/QPushButton>
+-#include <QtGui/QColorDialog>
++#include <QtWidgets/QPushButton>
++#include <QtWidgets/QColorDialog>
+ #include <QtCore/QMap>
+-#include <QtGui/QLayout>
+-#include <QtGui/QStyle>
+-#include <QtGui/QLabel>
+-#include <QtGui/QToolTip>
++#include <QtWidgets/QLayout>
++#include <QtWidgets/QStyle>
++#include <QtWidgets/QLabel>
++#include <QtWidgets/QToolTip>
+ #include <QtGui/QPixmap>
+ #include <QtGui/QFocusEvent>
+ #include <QtGui/QPaintEvent>
+-#include <QtGui/QGridLayout>
++#include <QtWidgets/QGridLayout>
+ #include <QtGui/QHideEvent>
+ #include <QtGui/QKeyEvent>
+ #include <QtGui/QShowEvent>
+diff --git a/src/utils/colorpicker/qtcolorpicker.h b/src/utils/colorpicker/qtcolorpicker.h
+index 8fcfadb..c86a657 100644
+--- a/src/utils/colorpicker/qtcolorpicker.h
++++ b/src/utils/colorpicker/qtcolorpicker.h
+@@ -46,15 +46,15 @@
+ 
+ #ifndef QTCOLORPICKER_H
+ #define QTCOLORPICKER_H
+-#include <QtGui/QPushButton>
++#include <QtWidgets/QPushButton>
+ #include <QtCore/QString>
+ #include <QtGui/QColor>
+ 
+-#include <QtGui/QLabel>
++#include <QtWidgets/QLabel>
+ #include <QtCore/QEvent>
+ #include <QtGui/QFocusEvent>
+ 
+-#if defined(Q_WS_WIN)
++#if defined(Q_OS_WIN)
+ #  if !defined(QT_QTCOLORPICKER_EXPORT) && !defined(QT_QTCOLORPICKER_IMPORT)
+ #    define QT_QTCOLORPICKER_EXPORT
+ #  elif defined(QT_QTCOLORPICKER_IMPORT)
+diff --git a/src/utils/iconloader/iconloader.pri b/src/utils/iconloader/iconloader.pri
+index 33093ee..53e0ee5 100644
+--- a/src/utils/iconloader/iconloader.pri
++++ b/src/utils/iconloader/iconloader.pri
+@@ -1,4 +1,6 @@
+ DEPENDPATH += $$PWD
++VPATH += $$PWD
++INCLUDE += $$PWD
+ 
+ SOURCES += \
+ 	qticonloader.cpp
+diff --git a/src/utils/iconloader/qticonloader.cpp b/src/utils/iconloader/qticonloader.cpp
+index 78e62b8..62c80ab 100644
+--- a/src/utils/iconloader/qticonloader.cpp
++++ b/src/utils/iconloader/qticonloader.cpp
+@@ -38,7 +38,7 @@
+ #include <QtCore/QSettings>
+ #include <QtCore/QTextStream>
+ 
+-#ifdef Q_WS_X11
++#ifdef Q_OS_X11
+ 
+ class QIconTheme
+ {
+@@ -91,7 +91,7 @@ Q_GLOBAL_STATIC(QtIconLoaderImplementation, iconLoaderInstance)
+ QIcon QtIconLoader::icon(const QString &name, const QIcon &fallback)
+ {
+     QIcon icon;
+-#ifdef Q_WS_X11
++#ifdef Q_OS_X11
+     QString pngExtension(QLatin1String(".png"));
+     QList<int> iconSizes;
+     iconSizes << 16 << 24 << 32 << 48 << 64;
+@@ -103,11 +103,11 @@ QIcon QtIconLoader::icon(const QString &name, const QIcon &fallback)
+         icon = fallback;
+     Q_UNUSED(name);
+     Q_UNUSED(fallback);
+-#endif // Q_WS_X11
++#endif // Q_OS_X11
+     return icon;
+ }
+ 
+-#ifdef Q_WS_X11
++#ifdef Q_OS_X11
+ 
+ QtIconLoaderImplementation::QtIconLoaderImplementation()
+ {
+@@ -160,7 +160,7 @@ static QString kdeHome()
+ void QtIconLoaderImplementation::lookupIconTheme() const
+ {
+     
+-#ifdef Q_WS_X11
++#ifdef Q_OS_X11
+     QString dataDirs = QLatin1String(getenv("XDG_DATA_DIRS"));
+     if (dataDirs.isEmpty())
+         dataDirs = QLatin1String("/usr/local/share/:/usr/share/");
+@@ -347,4 +347,4 @@ QPixmap QtIconLoaderImplementation::findIcon(int size, const QString &name) cons
+     QPixmapCache::insert(pixmapName, pixmap);
+     return pixmap;
+ }
+-#endif //Q_WS_X11
++#endif //Q_OS_X11
+diff --git a/src/utils/utils.pri b/src/utils/utils.pri
+index aa68f2e..52e0615 100644
+--- a/src/utils/utils.pri
++++ b/src/utils/utils.pri
+@@ -1,4 +1,6 @@
+ DEPENDPATH += $$PWD
++VPATH += $$PWD
++INCLUDE += $$PWD
+ 
+ include(colorpicker/colorpicker.pri)
+ include(iconloader/iconloader.pri)
+-- 
+2.43.0
+

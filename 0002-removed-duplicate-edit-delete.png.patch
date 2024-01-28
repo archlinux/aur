@@ -1,0 +1,24 @@
+From 337f9dfed9bb7589453d5d3bc5a36cc2869a863b Mon Sep 17 00:00:00 2001
+From: Andreas Baumann <mail@andreasbaumann.cc>
+Date: Fri, 28 Jan 2022 08:27:01 +0100
+Subject: [PATCH 2/2] removed duplicate edit-delete.png
+
+---
+ dbmodel.qrc | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/dbmodel.qrc b/dbmodel.qrc
+index 57f203a..017d78b 100644
+--- a/dbmodel.qrc
++++ b/dbmodel.qrc
+@@ -16,7 +16,6 @@
+ 	<file>icons/16x16/edit-cut.png</file>
+ 	<file>icons/16x16/edit-copy.png</file>
+ 	<file>icons/16x16/edit-paste.png</file>
+-	<file>icons/16x16/edit-delete.png</file>
+ 	<file>icons/16x16/item-table.png</file>
+ 	<file>icons/16x16/item-relationship.png</file>
+ 	<file>icons/32x32/item-table.png</file>
+-- 
+2.43.0
+
