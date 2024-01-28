@@ -1,6 +1,6 @@
 pkgbase = python-kymatio
 	pkgdesc = Wavelet scattering in Python
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://www.kymat.io/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-kymatio
 	depends = python-appdirs
 	depends = python-configparser
 	depends = python-packaging
-	source = https://files.pythonhosted.org/packages/source/k/kymatio/kymatio-0.2.1.tar.gz
-	sha256sums = 67b7f57c881f17c260aa7659261ea2975b2feec9a09b8c46327533c589e0953c
+	source = git+https://github.com/kymatio/kymatio#tag=0.3.0
+	sha256sums = SKIP
 
 pkgname = python-kymatio
