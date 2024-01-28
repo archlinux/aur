@@ -1,6 +1,6 @@
 pkgbase = com.163.music.spark
 	pkgdesc = Netease Music Wine Client from Spark Store
-	pkgver = 3.0.1.201795spark11
+	pkgver = 3.0.1.202031spark12
 	pkgrel = 1
 	url = https://music.163.com/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = com.163.music.spark
 	depends = xdg-utils
 	optdepends = wqy-microhei: recommended font
 	optdepends = wqy-zenhei: recommended font
-	source = https://mirrors.sdu.edu.cn/spark-store-repository/store/music/com.163.music.spark/com.163.music.spark_3.0.1.201795spark11_amd64.deb
-	md5sums = 68261e750622435d4cad4a3ed3dc8428
+	source = https://mirrors.sdu.edu.cn/spark-store-repository/store/music/com.163.music.spark/com.163.music.spark_3.0.1.202031spark12_amd64.deb
+	md5sums = e080e1398b77ab34fab93e41065c88b2
 
 pkgname = com.163.music.spark
