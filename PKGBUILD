@@ -1,7 +1,7 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 
 pkgname=osmo-cbc-git
-pkgver=0.4.1.r6.g66221e6
+pkgver=0.4.2.r3.gda8b98c
 pkgrel=1
 pkgdesc="Osmocom Cell Broadcast Centre"
 arch=('x86_64' 'i686')
@@ -18,9 +18,9 @@ optdepends=('python: for osmo-cbc-apitool.py'
             'python-requests: for osmo-cbc-apitool.py')
 makedepends=('git')
 conflicts=("${pkgname%-git}")
-provides=("${pkgname%-git}=${pkgver}")
-backup=("etc/osmocom/${pkgname%-git}.cfg")
-source=("git+https://gitea.osmocom.org/cellular-infrastructure/osmo-cbc.git")
+provides=('libosmo-sbcap.so=0-64')
+backup=("etc/osmocom/osmo-cbc.cfg")
+source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -28,9 +28,13 @@ pkgver() {
   git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "$srcdir/${pkgname%-git}"
+  autoreconf -f -i
+}
+
 build() {
   cd "$srcdir/${pkgname%-git}"
-  autoreconf -i
   ./configure --prefix=/usr \
               --exec-prefix=/usr \
               --bindir=/usr/bin \
@@ -39,7 +43,7 @@ build() {
               --libexecdir=/usr/lib \
               --sysconfdir=/etc \
               --localstatedir=/var \
-              --libdir=/usr/lib/
+              --libdir=/usr/lib
   make
 }
 
@@ -49,3 +53,5 @@ package() {
 
   install -m 755 contrib/cbc-apitool.py "${pkgdir}/usr/bin/osmo-cbc-apitool.py"
 }
+
+# vim:set ts=2 sw=2 et:
