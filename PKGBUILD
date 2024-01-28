@@ -6,24 +6,36 @@
 # Contributor: geno <dev@fireorbit.de>
 # Contributor: <luntik2012@gmail.com>
 # Contributor: Julian Fairfax <juliannfairfax@protonmail.com> 
+# Contributor: vpzomtrrfrt <colin@vpzom.click>
 
+_git="false"
 _pkg="chatty"
 _Pkg="Chatty"
-pkgname="purism-${_pkg}"
-_pkgver=0.8.0
-pkgver="v${_pkgver}"
+_proj="gnome"
+pkgbase="${_pkg}"
+pkgname=(
+  "purism-${_pkg}"
+)
+pkgver=0.8.1
 pkgrel=1
-pkgdesc="XMPP and SMS messaging via libpurple and Modemmanager"
-url="https://gitlab.gnome.org/World/${_Pkg}"
+_pkgdesc=(
+  "XMPP and SMS messaging via"
+  "libpurple and Modemmanager"
+)
+_ns="World"
+_http="https://gitlab.${_proj}.org/${_ns}"
+url="${_http}/${_Pkg}"
 license=(
-  GPL3)
+  GPL3
+)
 arch=(
-  x86_64
-  i686
+  aarch64
   armv6h
   armv7h
-  aarch64
   arm
+  i686
+  pentium4
+  x86_64
 )
 depends=(
   evolution-data-server
@@ -40,25 +52,48 @@ makedepends=(
   meson
   pkg-config
 )
-prowides=(
+[[ "${_git}" == "true" ]] && \
+  makedepends+=(
+    git
+  )
+provides=(
   "${_pkg}=${pkgver}"
+  "${_proj}-${_pkg}=${pkgver}"
 )
-_commit="5e9dacb8080d99b15cc9e97455bf7ab41d42edd3"
-source=(
-  # "git+${url}.git#commit=${_commit}")
-  "${url}/-/archive/${pkgver}/${_Pkg}-${pkgver}.tar.gz")
-sha512sums=(
-  '4fdba6f4f3787ddae37e52000cd9d882431a333520e8df07bc3f4e6f192894998600f5c6ff6a482eb0d7b4bd9c33cf541240e4aad87fe4dc79c82e3b630c7e48'
+group=(
+  "${_proj}-world"
 )
+_commit="d02161d47820070fe2911597f49fae4d0075aebd"
+_local="${HOME}/${_Pkg}"
+source=()
+sha512sums=()
+[[ "${_git}" == "true" ]] && \
+  source+=(
+    "${_Pkg}-v${pkgver}-${_commit}::git+${url}.git#commit=${_commit}"
+    # "${_Pkg}-v${pkgver}-${_commit}::git+file://${_local}#commit=${_commit}"
+  ) && \
+  sha512sums+=(
+    SKIP
+  )
+[[ "${_git}" == "false" ]] && \
+  source+=(
+    "${url}/-/archive/v${pkgver}/${_Pkg}-${pkgver}.tar.gz"
+  ) && \
+  sha512sums+=(
+    'f760ddd60c7bd74c0b9160386c89b1893d3b721894544d3d10ad7c44494708290b7042b2147bee523272766687e25408324d9abf6479592dcb9d8112e031c139'
+  )
 
 build() {
-  # git \
-  #   -C "${_pkg}" \
-  #   submodule \
-  #     update \
-  #       --init
+  ls
+  [[ "${_git}" == "true" ]] && \
+    git \
+      -C \
+        "${_Pkg}-v${pkgver}-${_commit}" \
+      submodule \
+        update \
+          --init
   arch-meson \
-    "${_Pkg}-${pkgver}" \
+    "${_Pkg}-v${pkgver}-${_commit}" \
     build
   ninja \
     -C \

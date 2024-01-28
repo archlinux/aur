@@ -1,14 +1,14 @@
-pkgbase = purism-chatty
-	pkgdesc = XMPP and SMS messaging via libpurple and Modemmanager
-	pkgver = v0.8.0
+pkgbase = chatty
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/Chatty
-	arch = x86_64
-	arch = i686
+	arch = aarch64
 	arch = armv6h
 	arch = armv7h
-	arch = aarch64
 	arch = arm
+	arch = i686
+	arch = pentium4
+	arch = x86_64
 	license = GPL3
 	makedepends = meson
 	makedepends = pkg-config
@@ -19,7 +19,9 @@ pkgbase = purism-chatty
 	depends = libpurple-carbons
 	optdepends = libpurple-lurch: XMPP E2E OMEMO encryption
 	optdepends = purple-xmpp-http-upload: XMPP HTTP Upload - Filesharing
-	source = https://gitlab.gnome.org/World/Chatty/-/archive/v0.8.0/Chatty-v0.8.0.tar.gz
-	sha512sums = 4fdba6f4f3787ddae37e52000cd9d882431a333520e8df07bc3f4e6f192894998600f5c6ff6a482eb0d7b4bd9c33cf541240e4aad87fe4dc79c82e3b630c7e48
+	provides = chatty=0.8.1
+	provides = gnome-chatty=0.8.1
+	source = https://gitlab.gnome.org/World/Chatty/-/archive/v0.8.1/Chatty-0.8.1.tar.gz
+	sha512sums = f760ddd60c7bd74c0b9160386c89b1893d3b721894544d3d10ad7c44494708290b7042b2147bee523272766687e25408324d9abf6479592dcb9d8112e031c139
 
 pkgname = purism-chatty
