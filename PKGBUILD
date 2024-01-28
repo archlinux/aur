@@ -7,7 +7,7 @@
 
 pkgname=obs-studio-browser
 pkgver=30.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -70,7 +70,7 @@ makedepends=(
   "git"
   "uthash" # Deps of libobs
   "libajantv2" # Deps of AJA plugin (static lib)
-  "libdatachannel-nice>=$_libdatachannelver" # Deps of WebRTC plugin (NICE variant like the Flatpak)
+  "libdatachannel>=$_libdatachannelver" # Deps of WebRTC plugin (NICE variant like the Flatpak)
   "libfdk-aac" # Deps of FDK AAC plugin
   "luajit" # Deps of Scripting plugin
   "nlohmann-json" # Deps of Websocket plugin (headers-only lib)
