@@ -1,6 +1,7 @@
 *
 !.gitignore
-!PKGBUILD
+!.nvchecker.toml
 !.SRCINFO
+!PKGBUILD
 !flexget.service
 !flexget@.service

@@ -1,0 +1,3 @@
+[flexget]
+source = "pypi"
+pypi = "flexget"
