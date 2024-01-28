@@ -1,7 +1,7 @@
 pkgbase = dovecot-with-stemmer
 	pkgdesc = An IMAP and POP3 server written with security primarily in mind
 	pkgver = 2.3.21
-	pkgrel = 2
+	pkgrel = 3
 	url = https://dovecot.org/
 	arch = x86_64
 	license = LGPL
