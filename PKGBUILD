@@ -1,42 +1,26 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jan-bin
 _pkgname=Jan
-pkgver=0.4.4
+pkgver=0.4.5
 _electronversion=28
 pkgrel=1
 pkgdesc="Run AI on your own PC"
 arch=("x86_64")
 url="https://jan.ai/"
 _ghurl="https://github.com/janhq/jan"
-license=('GPL3')
+license=('AGPL-3.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'alsa-lib'
-    'at-spi2-core'
-    'libxext'
-    'libxdamage'
-    'mesa'
     'gtk3'
-    'libcups'
-    'pango'
-    'libxkbcommon'
-    'nspr'
-    'libxcomposite'
-    'libx11'
-    'libxcb'
-    'libxfixes'
-    'expat'
-    'cairo'
     'hicolor-icon-theme'
     'nss'
-    'libxrandr'
-    'libdrm'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-amd64-${pkgver}.deb"
 )
-sha256sums=('f940500a45dd5e9c47e5b89cb00089196db2a51b7fe04e9247ae03398e4799ad')
+sha256sums=('e696a4cd88e14762fe8e35e8d921d7d7a9abf3747eac53efe4a82a19191ab1d6')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin} --no-sandbox|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
