@@ -1,17 +1,17 @@
 pkgname=datasette
-pkgver=0.63.3
+pkgver=0.64.6
 pkgrel=1
 pkgdesc="An open source multi-tool for exploring and publishing data"
 arch=("any")
 url="https://datasette.io"
-license=("Apache")
+license=("Apache-2.0")
 depends=("python-asgiref" "python-click" "python-click-default-group" "python-jinja" "python-hupper" "python-httpx" "python-pint"
 "python-pluggy" "uvicorn" "python-aiofiles" "python-janus" "python-asgi-csrf" "python-yaml" "python-mergedeep"
-"python-itsdangerous" "python-baseconv")
-makedepends=("python-setuptools")
+"python-itsdangerous" "python-setuptools" "python-rich" "python-importlib-metadata")
+makedepends=()
 conflicts=("datasette")
 source=("https://pypi.io/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=("fc6a37c73d0d08e9240211a24893eb09886b84427be1ad2295a67be231175af3")
+sha256sums=('85ca3aabca64fd9560052042aec27d3b32a1f85303853da3550434866d0fa539')
 
 build() {
     cd "${pkgname}-${pkgver}"
