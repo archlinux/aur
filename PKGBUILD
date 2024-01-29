@@ -1,7 +1,7 @@
 _pkgname=slimevr-gui
 pkgname=${_pkgname}-git
-pkgver=v0.11.0.r2.ae1b60da
-pkgrel=2
+pkgver=v0.11.0.r3.6ac32035
+pkgrel=1
 pkgdesc="web GUI for SlimeVR Full Body Tracking System"
 arch=('x86_64')
 url="https://github.com/SlimeVR/SlimeVR-Server"
