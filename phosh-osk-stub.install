@@ -1,5 +1,5 @@
 post_install() {
     echo "    Switch to this keyboard by symlinking /usr/share/applications/sm.puri.OSK0.desktop to /usr/share/applications/sm.puri.Phosh.OskStub.desktop"
     echo "    mv /usr/share/applications/sm.puri.OSK0.desktop /usr/share/applications/sm.puri.OSK0.desktop.bak"
-    echo "    ln -s /usr/share/applications/sm.puri.OSK0.desktop /usr/share/applications/sm.puri.Phosh.OskStub.desktop"
+    echo "    ln -s /usr/share/applications/sm.puri.Phosh.OskStub.desktop /usr/share/applications/sm.puri.OSK0.desktop"
 }

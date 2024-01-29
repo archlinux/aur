@@ -1,7 +1,7 @@
 pkgbase = phosh-osk-stub
 	pkgdesc = An experimental alternative OSK for phosh
 	pkgver = 0.35.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.gnome.org/guidog/phosh-osk-stub
 	install = phosh-osk-stub.install
 	arch = x86_64
@@ -21,6 +21,6 @@ pkgbase = phosh-osk-stub
 	source = phosh-osk-stub::git+https://gitlab.gnome.org/guidog/phosh-osk-stub#tag=v0.35.0
 	source = phosh-osk-stub.install
 	sha512sums = SKIP
-	sha512sums = 6644797a5559fa9099d3e6eccf092f0f39a32d5802b604e75c8a747c785ae6a100bb2cee62d59573c4a73875d08ce6250c43d1dc34f8684f595e7fbd9a97f4ba
+	sha512sums = 55ae71c3ba4bf2ccaf017c9a64554ddeda11c8fd67e907941a364869ef44aca97b4eb185a17cd25782c78d7c51151ae952c95f6970333dc4b8a5d691c8112b1c
 
 pkgname = phosh-osk-stub
