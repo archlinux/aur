@@ -3,7 +3,7 @@
 
 pkgname='jedstate-git'
 _pkgname="${pkgname/-git/}"
-pkgver=0.9.6.r1.gb43619d
+pkgver=0.9.6.r2.g09a671e
 pkgrel=1
 pkgdesc='S-Lang module for the JED editor to remember its cursor position across invocations (built from latest commit)'
 arch=('any')
@@ -15,6 +15,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
 md5sums=('SKIP')
+install="$pkgname.install"
 
 pkgver() {
   cd "$_pkgname"

@@ -1,0 +1,18 @@
+# -*- sh -*-
+
+pre_install() {
+  cat <<EOF >&2
+NB: In order to use this package you will have to edit
+    startup_hok() and exit_hook() of your ~/.jedrc and
+    also include two autoload() stanzas.
+
+    See /usr/share/doc/$pkgname/jedstate-hooks.sl
+    for an example.
+EOF
+}
+
+pre_upgrade() {
+  pre_install "$@"
+}
+
+# eof
