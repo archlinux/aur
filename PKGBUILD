@@ -8,7 +8,7 @@ license=('Apache-2.0')
 arch=('i686' 'x86_64')
 depends=('ghc-libs' 'haskell-emojis' 'haskell-optparse-applicative')
 makedepends=('ghc')
-source=("https://github.com/gvolpe/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gvolpe/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('4e6f54adfd6d8ace8dc58ddd42f8faab2179fb66e20c41094236a553de7f22ed3d9168ef0549596f42c741fcccbcb02a09aeae04045ebf80899f6adede0e56c5')
 
 build() {

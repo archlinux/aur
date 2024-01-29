@@ -10,7 +10,7 @@ pkgbase = dconf2nix
 	depends = ghc-libs
 	depends = haskell-emojis
 	depends = haskell-optparse-applicative
-	source = https://github.com/gvolpe/dconf2nix/archive/refs/tags/v0.1.1.tar.gz
+	source = dconf2nix-0.1.1.tar.gz::https://github.com/gvolpe/dconf2nix/archive/refs/tags/v0.1.1.tar.gz
 	sha512sums = 4e6f54adfd6d8ace8dc58ddd42f8faab2179fb66e20c41094236a553de7f22ed3d9168ef0549596f42c741fcccbcb02a09aeae04045ebf80899f6adede0e56c5
 
 pkgname = dconf2nix
