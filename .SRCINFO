@@ -5,8 +5,8 @@ pkgbase = devexcuse-git
 	url = https://github.com/K4R7IK/DevExcuse
 	arch = any
 	license = MIT
-	makedepends = curl
-	makedepends = jq
+	depends = curl
+	depends = jq
 	source = git+https://github.com/K4R7IK/DevExcuse.git
 	sha256sums = SKIP
 
