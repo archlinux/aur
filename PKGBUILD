@@ -9,10 +9,11 @@ source=("$pkgname-$pkgver.zip::https://github.com/rubjo/victor-mono/archive/refs
 license=("custom:OFL")
 
 prepare() {
+   mkdir -p VictorMonoAll
    bsdtar -xf "$srcdir/victor-mono-$pkgver/public/VictorMonoAll.zip" -C VictorMonoAll
 }
 
 package(){
-   install -d "$pkgdir/usr/share/fonts/TTF/" # Make sure /usr/share/fonts/TTF exists
-   install -m644 VictorMonoAll/TTF/*.ttf" $pkgdir/usr/share/fonts/TTF/"
+   install -d $pkgdir/usr/share/fonts/TTF/
+   install -m644 VictorMonoAll/TTF/*.ttf $pkgdir/usr/share/fonts/TTF/
 }
