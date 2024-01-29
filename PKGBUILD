@@ -51,7 +51,7 @@ _tarname="${_pkg}-${pkgver}"
 _pypi="https://files.pythonhosted.org/packages/source"
 source=(
   # "${_tarname}.tar.gz::${_repo}/archive/${_commit}.tar.gz"
-  "${_pypi_url}/${_pkg::1}/${_pkg}/${_tarname}.tar.gz"
+  "${_pypi}/${_pkg::1}/${_pkg}/${_tarname}.tar.gz"
 )
 sha256sums=(
   '8a388717b9476f934a21484e8c8e61875ab60644d29b9b39e11e4b9dc1c6b305'
