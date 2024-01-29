@@ -1,6 +1,6 @@
 pkgbase = bugwarrior-git
 	pkgdesc = pull issues from issue trackers into taskwarrior (GitHub, GitLab, Bitbucket, etc.)
-	pkgver = 1495.740afbd
+	pkgver = 1507.d5ab94a
 	pkgrel = 1
 	url = https://bugwarrior.readthedocs.io
 	arch = any
