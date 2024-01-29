@@ -1,7 +1,7 @@
 pkgbase = krop
 	pkgdesc = A tool to crop PDF files, with an eye towards eReaders.
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://arminstraub.com/computer/krop
 	arch = any
 	license = GPL3
