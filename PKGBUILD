@@ -19,6 +19,7 @@ makedepends=(
   python-black
   python-pylint
   flake8
+  mypy
 )
 checkdepends=(
   git
