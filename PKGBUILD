@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bluestone
 _pkgname=Bluestone
-pkgver=0.13.0
+pkgver=0.13.1
 _electronversion=22
 _nodeversion=18
 pkgrel=1
@@ -12,24 +12,9 @@ license=('AGPL3')
 conflicts=("${pkgname}")
 depends=(
     'alsa-lib'
-    'libxcomposite'
-    'cairo'
     'nss'
-    'pango'
-    'libxcb'
-    'mesa'
-    'libdrm'
-    'libxkbcommon'
     'nspr'
     'gtk3'
-    'expat'
-    'at-spi2-core'
-    'libxrandr'
-    'libxdamage'
-    'libcups'
-    'libx11'
-    'libxfixes'
-    'libxext'
 )
 makedepends=(
     'pnpm'
@@ -55,7 +40,10 @@ build() {
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
     pnpm config set store-dir "${srcdir}/.pnpm_store"
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
     pnpm config set link-workspace-packages true

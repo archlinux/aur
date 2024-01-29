@@ -1,6 +1,6 @@
 pkgbase = bluestone
 	pkgdesc = A WYSIWYG Markdown editor, improve reading and editing experience.
-	pkgver = 0.13.0
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://github.com/1943time/bluestone
 	arch = x86_64
@@ -11,26 +11,11 @@ pkgbase = bluestone
 	makedepends = nvm
 	makedepends = git
 	depends = alsa-lib
-	depends = libxcomposite
-	depends = cairo
 	depends = nss
-	depends = pango
-	depends = libxcb
-	depends = mesa
-	depends = libdrm
-	depends = libxkbcommon
 	depends = nspr
 	depends = gtk3
-	depends = expat
-	depends = at-spi2-core
-	depends = libxrandr
-	depends = libxdamage
-	depends = libcups
-	depends = libx11
-	depends = libxfixes
-	depends = libxext
 	conflicts = bluestone
-	source = bluestone.git::git+https://github.com/1943time/bluestone.git#tag=v0.13.0
+	source = bluestone.git::git+https://github.com/1943time/bluestone.git#tag=v0.13.1
 	sha256sums = SKIP
 
 pkgname = bluestone
