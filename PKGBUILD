@@ -4,12 +4,12 @@ _pkgname=flbmusic
 _appname=FLB-Music
 pkgver=1.2.1
 _electronversion=13
-pkgrel=6
+pkgrel=7
 pkgdesc="A beautiful Feature Rich Music Player and Downloader,cross platform"
 arch=('x86_64')
 url="https://flbmusic.xyz/"
 _ghurl="https://github.com/FLB-Music/FLB-Music-Player"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}" "${pkgname%-bin}")
 depends=(
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('811da0d45dfdbfb863b3a2d285083e419df6d2e03e5015b9ab6d19a6736d0477'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
