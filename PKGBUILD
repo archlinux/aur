@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=thoughts-bin
-pkgver=0.9.2
-_electronversion=25
+pkgver=0.9.6
+_electronversion=28
 pkgrel=1
 pkgdesc="一个还算强大的Web思维导图。A relatively powerful web mind map."
 arch=("x86_64")
@@ -13,12 +13,9 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
-    'libx11'
-    'gdk-pixbuf2'
-    'libxext'
+    'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
-    'dbus-glib'
 )
 makedepends=(
     'squashfuse'
@@ -28,9 +25,9 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/wanglin2/mind-map/electron-${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('225197c56ef546f8cdf560d1b849927b124373d72af1d4cedfeb41fff2403341'
+sha256sums=('699755da1894dccb8b65c97a05e573f031cbc441b3dee0b609c3e0c62e7e1755'
             '8a19b651678a6a644640524d984ed89d0b9a78c662545715218a05130c7329c7'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
