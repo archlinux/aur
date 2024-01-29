@@ -22,7 +22,7 @@ source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
         'vesktop.sh')
 sha256sums=('7f20edeb4612386ae98d5dccfa4b37ad1f5336d4551de3375c3b16e81925b10a'
             '14b9412013940a8e4ecd5b1552910c2b03ae84eab849b8ce721796abe9418072'
-            'b1c9ce99ba545b0baaba0eb63e5bb7a2f88cf335f66d775f32fa139ce6b479ab')
+            '85014ce5335e8bd503f1124d32bdfc5af9ffbe8bbe9802aee1107575d42e585c')
 prepare() {
   # Use system's electron
   sed '/linux/s/^/        "electronDist": "\/usr\/lib\/electron",\n/' "$srcdir/$_pkgname-$pkgver/package.json"
