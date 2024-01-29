@@ -2,7 +2,7 @@
 
 _srcname=iwlwifi-lar-disable
 pkgname=${_srcname}-dkms
-pkgver=6.6.1
+pkgver=6.7.1
 pkgrel=1
 pkgdesc="Intel wireless chips driver from linux ($pkgver) with patch for lar_disable parameter 5GHz band support"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('dkms')
 source=("https://www.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/linux-${pkgver}.tar.xz"
         "dkms.conf"
 	"c545b26dd567a638d62ca29490e9e2e6d04a8b6b.patch")
-md5sums=('90291279ca684fb8cfa59b2ae75b6fe0'
+md5sums=('d8a7394e0e349dd373e9722e141c8b61'
          '730652a6fd46eaa97c001c01ea14dc91'
          '14e0796137ec0d88812239727a9bdb25')
 
