@@ -3,7 +3,7 @@ pkgname=felida-bin
 _appname=Felida.Browser
 pkgver=0.2.4
 _electronversion=24
-pkgrel=6
+pkgrel=7
 pkgdesc="A lightweight Chromium Browser using Electron.js!"
 arch=("x86_64")
 url="https://github.com/raluvy95/FelidaBrowser"
@@ -12,12 +12,9 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'libx11'
-    'gdk-pixbuf2'
-    'libxext'
+    'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
-    'dbus-glib'
 )
 makedepends=(
     'squashfuse'
@@ -27,7 +24,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('9bd0aa2b9f06f0a9088837834afc3bce0ac3a748b6fd0e0f47590d5d2c20242b'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
