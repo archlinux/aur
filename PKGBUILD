@@ -52,10 +52,6 @@ makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake'
             )
 changeslog=$pkgname.changes
 
-# https://bugs.gentoo.org/792705
-# needs fixes from GCC 11.2
-makedepends+=('gcc>=11.2.0')
-
 
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech'
@@ -161,34 +157,67 @@ build() {
   # LTO needs more open files
   ulimit -n 4096
 
-  export CC=gcc
-  export CXX=g++
-  export AR="gcc-ar"
-  export NM="gcc-nm"
-  export RANLIB="gcc-ranlib"
-
   export MOZ_MAKE_FLAGS="$MAKEFLAGS"
   export MOZ_SMP_FLAGS="$MAKEFLAGS"
   export STRIP=/bin/true
+
+  export CC='clang'
+  export CXX='clang++'
 
   if [[ -n $_lowmem || $CARCH == i686 ]]; then
     LDFLAGS+=" -Xlinker --no-keep-memory"
   fi
 
   if [[ -n $_pgo ]]; then
+
+    cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-profile-generate=cross
+END
+
+    ./mach build
+
+    echo "Profiling instrumented browser..."
+
+    ./mach package
+
     export DISPLAY=:99
     export MOZ_PGO=1
 
     export TMPDIR="$srcdir/tmp"
     mkdir -p "$TMPDIR"
 
+    LLVM_PROFDATA=llvm-profdata \
+    JARLOG_FILE="$PWD/jarlog" \
+    LIBGL_ALWAYS_SOFTWARE=true \
     xvfb-run \
       -a \
       -s "-extension GLX -screen 0 1280x1024x24" \
-      ./mach build
+      ./mach python build/pgo/profileserver.py
+
+    stat -c "Profile data found (%s bytes)" merged.profdata
+    test -s merged.profdata
+
+    stat -c "Jar log found (%s bytes)" jarlog
+    test -s jarlog
+
+    echo "Removing instrumented browser..."
+    ./mach clobber
+
+    echo "Building optimized browser..."
+
+    cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-lto=cross,full
+ac_add_options --enable-profile-use=cross
+ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
+ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+END
+
+    ./mach build
+
   else
     ./mach build
   fi
+
   ./mach buildsymbols
 }
 
