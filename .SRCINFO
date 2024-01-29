@@ -1,35 +1,20 @@
 pkgbase = bluestone-bin
 	pkgdesc = A WYSIWYG Markdown editor, improve reading and editing experience.
-	pkgver = 0.13.0
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://github.com/1943time/bluestone
 	arch = aarch64
 	arch = x86_64
-	license = LicenseRef-AGPL3
+	license = AGPL-3.0-only
 	depends = alsa-lib
-	depends = libxcomposite
-	depends = cairo
 	depends = nss
-	depends = pango
-	depends = libxcb
-	depends = mesa
-	depends = libdrm
-	depends = libxkbcommon
 	depends = nspr
 	depends = gtk3
-	depends = expat
-	depends = at-spi2-core
-	depends = libxrandr
-	depends = libxdamage
-	depends = libcups
-	depends = libx11
-	depends = libxfixes
-	depends = libxext
-	provides = bluestone=0.13.0
+	provides = bluestone=0.13.1
 	conflicts = bluestone
-	source_aarch64 = bluestone-0.13.0-aarch64.deb::https://github.com/1943time/bluestone/releases/download/v0.13.0/Bluestone-linux-arm64.deb
-	sha256sums_aarch64 = f706afebd390e70cee28c2e5f82f2eb5bfac0c20699419bb21dffb17881ba593
-	source_x86_64 = bluestone-0.13.0-x86_64.deb::https://github.com/1943time/bluestone/releases/download/v0.13.0/Bluestone-linux-amd64.deb
-	sha256sums_x86_64 = 915e75ca1c9252999e9de947138dd462db09f7e597f6722f8ff4c613c4883868
+	source_aarch64 = bluestone-0.13.1-aarch64.deb::https://github.com/1943time/bluestone/releases/download/v0.13.1/Bluestone-linux-arm64.deb
+	sha256sums_aarch64 = 093bf0ad5b43938cfa3d7ff38ed31eec12f3287e35b8bff5135831bfc87cd0e7
+	source_x86_64 = bluestone-0.13.1-x86_64.deb::https://github.com/1943time/bluestone/releases/download/v0.13.1/Bluestone-linux-amd64.deb
+	sha256sums_x86_64 = d934636693f278586004d491c5289bebb6aa2e61fa3ee854abeb44dd59e5d59a
 
 pkgname = bluestone-bin
