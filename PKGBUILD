@@ -1,10 +1,11 @@
-# Maintener: Kewl <kewl at alto dot eu dot org>
+# Maintainner: Kewl <kewl at alto dot eu dot org>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Kurt Marasco <celilo _at_ lavabit _dot_ com>
 # Contributor: Pascal Ernster <aur at hardfalcon dot net>
+_watch=('https://www.hiawatha-webserver.org/changelog' '\"version\">(\d[\d.]*\d+)<')
 
 pkgname=hiawatha
-pkgver=11.4
+pkgver=11.5
 pkgrel=1
 pkgdesc="Secure and advanced webserver"
 url="https://www.hiawatha-webserver.org/"
@@ -22,7 +23,7 @@ source=("https://www.hiawatha-webserver.org/files/$pkgname-$pkgver.tar.gz"
         'hiawatha.service'
         'lefh-renew.service'
         'lefh-renew.timer')
-sha256sums=('edda099e7ecf8c126af1e04e1e3e10835a9d5f6f207359837328dd28d2ce998c'
+sha256sums=('5c921fe5c475c02f9744a7a106fc0d6dcc2369074344664b9558faa55e96961b'
             '4671d2586cbe3cd6497b16ff422c6143cdab40641ef3c9c4988c478351a8f5e7'
             'b5a2671703b52eec376cfc4697b86aafa4f7fdd9b2b9203798e2117770bafa53'
             '2598480f8b249aaf7028ea66bac0195e1c017fb17c2c169b69e0b66413728457'
