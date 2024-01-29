@@ -1,0 +1,22 @@
+pkgbase = oliver
+	pkgdesc = A simple GUI for PHPStan
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://git.sr.ht/~fabrixxm/oliver
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = vala
+	makedepends = meson
+	makedepends = ninja
+	makedepends = blueprint-compiler
+	makedepends = gobject-introspection
+	makedepends = git
+	depends = gtk4
+	depends = libadwaita
+	depends = php
+	provides = oliver
+	source = https://git.sr.ht/~fabrixxm/oliver/archive/0.1.0.tar.gz
+	md5sums = d970198e17739d996728f8399f23a4fc
+
+pkgname = oliver
