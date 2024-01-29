@@ -14,7 +14,7 @@ url="http://pidgin.im/"
 license=('GPL')
 depends=('enchant' 'libgadu' 'gplugin-hg' 'gmime3' 'qt5-base'
   'talkatu-hg' 'libgnt3-hg' 'meanwhile' 'farstream'
-   'libsasl' 'libidn' 'nss' 'kwallet' 'hasl-hg'
+   'libsasl' 'libidn' 'nss' 'kwallet5' 'hasl-hg'
    'libgnome-keyring' 'startup-notification' 'gtkspell'
    'libxss' 'libsm' 'dbus-glib' 'json-glib' 'libadwaita')
 optdepends=('avahi: Bonjour protocol support'
