@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: syntheit <daniel@matv.io>
 pkgname=tagspaces
-pkgver=5.6.2
+pkgver=5.7.4
 pkgrel=1
-_electronversion=26
+_electronversion=27
 pkgdesc="An offline, open source, document manager with tagging support"
 arch=('x86_64')
 url="https://www.tagspaces.org"
@@ -13,7 +13,7 @@ makedepends=('git' 'libxcrypt-compat' 'npm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tagspaces/tagspaces/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop"
         "$pkgname.sh")
-sha256sums=('2f881eac0f5de2e69ae2ef364e8f927c25f9b0f3f1ac7e321bfce7e2beedfa39'
+sha256sums=('acd2cf9fdd730428179f2ee8fb9d619b0652a5b18efcb92997ff57b833b93967'
             'a548e2b62a61a93d80482ebe43ef11e33e2c2bfef9db641fc583bd5539ac6948'
             '9337f82424a160a0b44684209fffff0a047e96ce0449134d75e67d81f409805b')
 
@@ -32,7 +32,7 @@ prepare() {
   npm run install-ext-node
 
   # A key is required in order for the main application to communicate with the web server
-  cd app
+  cd release/app
   touch .env
   generated_key=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 128)
   echo "KEY=${generated_key}" > .env
@@ -46,8 +46,9 @@ build() {
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-  npm run build
   npm run install-ext-node-linux
+  npm exec -c "ts-node ./.erb/scripts/clean.js"
+  npm run build
   npm exec -c "electron-builder --linux --config resources/builder.json \
     ${dist} -c.electronDist=${electronDist} -c.electronVersion=${electronVer}"
 }
@@ -57,12 +58,12 @@ package() {
     "$pkgdir/usr/lib/$pkgname/"
   cp -r builds/linux-unpacked/resources/app.asar.unpacked -t \
     "$pkgdir/usr/lib/$pkgname/"
-  for i in 16 32 48 64 128 256; do
-    install -Dm644 "builds/.icon-set/icon_${i}x${i}.png" \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
-    install -Dm644 builds/.icon-set/icon_512.png \
-      "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
-  done
   install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+
+  cd "$pkgname-$pkgver"
+  install -Dm644 assets/icons/256x256.png \
+    "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+  install -Dm644 assets/icon.png \
+    "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
 }
