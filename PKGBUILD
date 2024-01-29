@@ -2,22 +2,20 @@
 pkgname=giada-bin
 _pkgname=Giada
 pkgver=0.26.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source, minimalistic and hardcore music production tool. Designed for DJs, live performers and electronic musicians."
 arch=('x86_64')
 url="https://www.giadamusic.com"
 _ghurl="https://github.com/monocasual/giada"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'hicolor-icon-theme'
-    'freetype2'
     'pipewire-jack'
-    'libgpg-error'
-    'fontconfig'
     'libx11'
-    'libxcb'
+    'freetype2'
+    'fontconfig'
 )
 makedepends=(
     'squashfuse'
@@ -27,7 +25,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('8a44f53bb8da0604f857bbb178043a4e6a62ce52bea7018dccbb4abe6a53ef76'
-            '71380700d00ad31cd42e2136db0477afd4d85810ba60a5148fe6979c0bc0b9e1')
+            '6023b57d0e81fa219ed96f4b8a6fccb401886ff00ab341a0976959ea4ca2fb8a')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
