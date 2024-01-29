@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=budgeted
 pkgname="${_pkgname}-ui-bin"
-pkgver=1.0.1
+pkgver=1.1.0
 _electronversion=28
 pkgrel=1
 pkgdesc="A data pipeline for budget data and so much more"
 arch=('x86_64')
 url="https://github.com/politicker/budgeted"
-license=('custom')
+license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -20,8 +20,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f98ffd5d0681c3401eb4a2e8ba53b361e6f403d96b4dd52370e0d676e2154fe2'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+sha256sums=('40e0619ca8b469b06723156f4d045df0c182827f11329c86e87bc7d454d0245e'
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \

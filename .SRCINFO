@@ -1,19 +1,19 @@
 pkgbase = budgeted-ui-bin
 	pkgdesc = A data pipeline for budget data and so much more
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/politicker/budgeted
 	arch = x86_64
-	license = custom
+	license = MIT
 	depends = electron28
 	depends = openssl-1.1
 	depends = nodejs
 	depends = hicolor-icon-theme
-	provides = budgeted-ui=1.0.1
+	provides = budgeted-ui=1.1.0
 	conflicts = budgeted-ui
-	source = budgeted-ui-1.0.1.deb::https://github.com/politicker/budgeted/releases/download/v1.0.1/budgeted-ui_1.0.1_amd64.deb
+	source = budgeted-ui-1.1.0.deb::https://github.com/politicker/budgeted/releases/download/v1.1.0/budgeted-ui_1.1.0_amd64.deb
 	source = budgeted-ui.sh
-	sha256sums = f98ffd5d0681c3401eb4a2e8ba53b361e6f403d96b4dd52370e0d676e2154fe2
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 40e0619ca8b469b06723156f4d045df0c182827f11329c86e87bc7d454d0245e
+	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
 
 pkgname = budgeted-ui-bin
