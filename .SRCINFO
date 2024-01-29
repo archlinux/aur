@@ -1,0 +1,11 @@
+pkgbase = elegit-bin
+	pkgdesc = Git learning tool
+	pkgver = 1.1
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	provides = elegit-bin
+	source = https://github.com/dmusican/Elegit/releases/download/v1.1/Elegit-1.1-linux.deb
+	md5sums = 9a3f826e8fdd8c733d7d310963fe5d8c
+
+pkgname = elegit-bin
