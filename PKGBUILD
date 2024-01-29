@@ -3,6 +3,8 @@
 # Contributor: Oskar Roesler <oskar at oskar-roesler dot de>
 # Maintainer:  Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
 # Maintainer:  Truocolo <truocolo@aol.com>
+# Contributor: Danilo Bellini (hexd) <danilo.bellini@gmail.com>
+# Contributor: Marcell Meszaros (MarsSeed) <marcell.meszaros@runbox.eu>
 
 _py="python2"
 _pkg="ply"
