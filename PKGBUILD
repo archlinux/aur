@@ -3,13 +3,15 @@
 _pyname=angr
 pkgname=python-${_pyname}
 pkgver=9.2.81
-pkgrel=1
+pkgrel=2
 pkgdesc='A powerful and user-friendly binary analysis platform'
 url='https://github.com/angr/angr'
 license=('BSD')
 arch=('any')
 depends=(
   'python'
+  'python-cppheaderparser'
+  'python-gitpython'
   'python-ailment'
   'python-archinfo'
   'python-cachetools'
@@ -22,11 +24,11 @@ depends=(
   'python-mulpyplexer'
   'python-nampa'
   'python-networkx'
-  'python-progressbar'
   'python-protobuf'
   'python-psutil'
   'python-pycparser'
   'python-pyvex'
+  'python-rich'
   'python-rpyc'
   'python-sortedcontainers'
   'python-sympy'
