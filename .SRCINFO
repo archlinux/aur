@@ -8,6 +8,7 @@ pkgbase = vmware-horizon-client
 	makedepends = libxslt
 	makedepends = patchelf
 	makedepends = librsvg
+	options = !debug
 	source = vmware-horizon-client-2312-8.12.0-23149323-x86_64.bundle::https://download3.vmware.com/software/CART24FQ4_LIN64_2312/VMware-Horizon-Client-2312-8.12.0-23149323.x64.bundle
 	source = vmware-bundle.eclass-2312::https://gitweb.gentoo.org/proj/vmware.git/plain/eclass/vmware-bundle.eclass
 	source = vmware-horizon-usb

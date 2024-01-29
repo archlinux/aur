@@ -26,6 +26,7 @@ _cart="CART24FQ4_LIN64_${pkgver}"
 pkgrel=1
 pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop'
 arch=('x86_64')
+options=('!debug')
 url='https://www.vmware.com/go/viewclients'
 license=('custom')
 makedepends=('libxslt' 'patchelf' 'librsvg')
