@@ -8,7 +8,7 @@ _py="python2"
 _pkg="ply"
 pkgname="${_py}-${_pkg}"
 pkgver=3.11
-pkgrel=1
+pkgrel=8
 _pkgdesc=(
   'Implementation of lex and '
   'yacc parsing tools')
