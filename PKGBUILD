@@ -17,6 +17,4 @@ package() {
   cp -a bin/* ${pkgdir}/usr/local/bin/
   cp -ar share/* ${pkgdir}/usr/local/share/
   cp -ar lib/* ${pkgdir}/usr/local/lib/
-  # Fix permissions
-  chmod -R 755 "${pkgdir}"
 }
