@@ -4,7 +4,7 @@ pkgname=vesktop
 _pkgname=Vesktop
 pkgdesc="A standalone Electron app that loads Discord & Vencord"
 pkgver=1.5.0
-pkgrel=5
+pkgrel=6
 arch=('x86_64' 'aarch64')
 url="https://github.com/Vencord/Vesktop"
 license=('GPL3')
@@ -21,7 +21,7 @@ source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
         'vesktop.desktop'
         'vesktop.sh')
 sha256sums=('7f20edeb4612386ae98d5dccfa4b37ad1f5336d4551de3375c3b16e81925b10a'
-            '14b9412013940a8e4ecd5b1552910c2b03ae84eab849b8ce721796abe9418072'
+            'f279b1e469fb965cdf6dba9b4f428b0a7f28f414d84a47c6481b726adeb99c2b'
             '0408f6b4831fb5c05111c72aafcd1dc0f6fe66fbd1a0ab9ee7b00fd9cb184ea0')
 prepare() {
   # Use system's electron
@@ -38,7 +38,6 @@ build() {
 package() {
   cd "$srcdir"
 
-  install -d "$pkgdir"/usr/lib/vencord
   cp -R "$_pkgname-$pkgver/dist/linux-unpacked" "${pkgdir}/usr/lib/${pkgname}"
   install -Dm755 "./vesktop.sh" "$pkgdir/usr/bin/vesktop"
 
