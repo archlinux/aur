@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=oaknut
 pkgname=$_pkgname-git
-pkgver=2.0.1.r0.g9d09110
+pkgver=2.0.1.r1.g8395b79
 pkgrel=1
 pkgdesc="A C++20 assembler for AArch64 (ARMv8.0 to ARMv8.2)"
 arch=('any')
@@ -17,11 +17,6 @@ b2sums=('SKIP')
 pkgver() {
 	cd $_pkgname
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-	# https://github.com/merryhime/oaknut/pull/16
-	sed -i '/if (MASTER_PROJECT)/c if (BUILD_TESTING)' $_pkgname/CMakeLists.txt
 }
 
 build() {
