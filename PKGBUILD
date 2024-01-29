@@ -7,9 +7,9 @@ pkgrel=1
 arch=(any)
 url="https://i10git.cs.fau.de/pycodegen/${_base}"
 license=(AGPL3)
-depends=(python-sympy python-numpy python-appdirs python-joblib)
+depends=(python-sympy python-numpy python-appdirs python-joblib python-yaml)
 makedepends=(python-build python-installer python-setuptools python-wheel cython)
-# checkdepends=(python-pytest-cov jupyter-nbformat jupyter-nbconvert python-matplotlib python-blitzdb python-islpy)
+# checkdepends=(python-pytest-cov jupyter-nbconvert python-matplotlib python-blitzdb python-islpy python-pyevtk python-graphviz)
 optdepends=('python-cupy: for gpu support'
   'python-islpy: for alltrafos support'
   'python-py-cpuinfo: for alltrafos support'
@@ -24,7 +24,7 @@ optdepends=('python-cupy: for gpu support'
   'python-rich: for interactive support'
   'python-graphviz: for interactive support')
 source=(${url}/-/archive/release/${pkgver}/${_base}-release-${pkgver}.tar.gz)
-sha512sums=('012a9777155e188b92d3e51953c2b74cd97492e4ac88249be53929050ef075ef585374504d03f9b19b043628c600541985941a92a7436443b6667207b2defca4')
+sha512sums=('df5ba798fdc4b42705bb25fc2ed78df8abf041cad540bf222c9f18cc6a4f7d189c7b21177a3c0e4bdce7b0e58e85dbb534220a43382349bfcb372a5d91814e77')
 
 build() {
   cd ${_base}-release-${pkgver}
