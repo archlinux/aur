@@ -1,6 +1,6 @@
 # Maintainer: bretello <bretello@distruzione.org>
 pkgname=bretellofier
-pkgver=0.8.2
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Command line telegram notifier"
 arch=(any)
