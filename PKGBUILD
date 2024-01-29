@@ -2,7 +2,7 @@
 
 pkgname=mcman-bin
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful Minecraft Server Manager CLI."
 arch=('x86_64')
 url="https://github.com/ParadigmMC/mcman"
