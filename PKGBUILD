@@ -1,7 +1,7 @@
 # Maintainer: GreyXor <greyxor@protonmail.com>
 # Contributor: Drew DeVault <sir@cmpwn.com>
 pkgname=sway-asan-git
-pkgver=1.10.r7275.e39b0b8
+pkgver=1.10.r7276.c8676fa
 pkgrel=1
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager (with address sanitizer)'
 arch=('x86_64')
@@ -57,7 +57,8 @@ b2sums=('SKIP'
         '30efac9b5d06babb8ee9b35a25887b403d9e0e0a81078841d3837e075ce84a3a8aa93cbdd156db092c333b9b98e4ce3fd1ab40078ac1a90e243f1e24b9ebf5be')
 
 _meson_setup() {
-  CFLAGS="$CFLAGS -fsanitize=address,undefined" arch-meson "$pkgname" "$1" -D sd-bus-provider=libsystemd
+  arch-meson "$pkgname" "$1" -D sd-bus-provider=libsystemd \
+    -Db_sanitize=address,undefined
 }
 
 prepare() {

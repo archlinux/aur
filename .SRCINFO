@@ -1,6 +1,6 @@
 pkgbase = sway-asan-git
 	pkgdesc = Tiling Wayland compositor and replacement for the i3 window manager (with address sanitizer)
-	pkgver = 1.10.r7275.e39b0b8
+	pkgver = 1.10.r7276.c8676fa
 	pkgrel = 1
 	url = https://github.com/swaywm/sway
 	install = sway-git.install
@@ -38,7 +38,7 @@ pkgbase = sway-asan-git
 	optdepends = xdg-desktop-portal-gtk: Portal used for default file picking
 	optdepends = xdg-desktop-portal-wlr: Portal used for screen sharing
 	provides = sway
-	provides = sway-git=1.10.r7275.e39b0b8
+	provides = sway-git=1.10.r7276.c8676fa
 	conflicts = sway
 	conflicts = sway-git
 	source = sway-asan-git::git+https://github.com/swaywm/sway.git
