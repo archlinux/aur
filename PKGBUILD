@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mogan-bin
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="A structured wysiwyg scientific text editor"
 arch=('x86_64')
 url="https://mogan.app/"
 _ghurl="https://github.com/XmacsLabs/mogan"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -17,13 +17,11 @@ depends=(
     'libjpeg-turbo'
     'qt6-svg'
     'qt6-base'
-    'openssl'
-    'fontconfig'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-research-v${pkgver}-ubuntu22.04.deb"
 )
-sha256sums=('dc9f3d1e18afb4f27b598c8251815ad1082f14c58e6685e218965c63e6d19151')
+sha256sums=('ae4683bebc119443f4803c3bf60f7eff0e9c3c3e19ce6ae8be3f1f2a9b678586')
 package() {
     bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
     rm -rf "${pkgdir}/usr/"{include,lib}
