@@ -1,4 +1,5 @@
 # Maintainer: Samuel Sloniker <sam@kj7rrv.com>
+# Maintainer: Roy Williams <fang64@gmail.com>
 
 pkgname=hamclock-big
 pkgver=3.04
