@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=1.38.6.r1.g24737590
+pkgver=1.38.8.r0.g24737590
 _electronversion=26
 pkgrel=1
 pkgdesc="Terminal/ssh/telnet/serialport/sftp client(linux, mac, win)"
