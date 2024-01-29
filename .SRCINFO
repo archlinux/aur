@@ -1,11 +1,14 @@
 pkgbase = gtk3-git
 	pkgdesc = GObject-based multi-platform GUI toolkit (GIT Version)
-	pkgver = 3.24.38.r84.g73d5663a8c
+	pkgver = 3.24.41.r1.g40fe0985
 	pkgrel = 1
 	url = http://www.gtk.org/
 	arch = i686
 	arch = x86_64
-	license = LGPL
+	arch = arm
+	arch = armv7h
+	arch = aarch64
+	license = LGPL-2.0-Only
 	makedepends = gobject-introspection
 	depends = at-spi2-atk
 	depends = atk
@@ -26,10 +29,9 @@ pkgbase = gtk3-git
 	depends = shared-mime-info
 	depends = wayland
 	depends = wayland-protocols
-	depends = gtk-update-icon-cache
 	optdepends = gnome-icon-theme: Default icon theme
 	optdepends = gnome-themes-standard: Default widget theme
-	provides = gtk3=3.24.38.r84.g73d5663a8c
+	provides = gtk3=3.24.41.r1.g40fe0985
 	provides = gtk3-print-backends
 	provides = libgtk-3.so
 	provides = libgdk-3.so
@@ -42,7 +44,41 @@ pkgbase = gtk3-git
 	sha256sums = SKIP
 	sha256sums = 01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202
 	sha256sums = a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229
-	sha256sums = 2d435e3bec8b79b533f00f6d04decb1d7c299c6e89b5b175f20be0459f003fe8
-	sha256sums = f1d3a0dbfd82f7339301abecdbe5f024337919b48bd0e09296bb0e79863b2541
 
 pkgname = gtk3-git
+	install = gtk3-git.install
+	depends = at-spi2-atk
+	depends = atk
+	depends = cairo
+	depends = colord
+	depends = glib2
+	depends = gtk-update-icon-cache
+	depends = libcups
+	depends = libepoxy
+	depends = libxcomposite
+	depends = libxcursor
+	depends = libxdamage
+	depends = libxi
+	depends = libxinerama
+	depends = libxkbcommon
+	depends = libxrandr
+	depends = pango
+	depends = shared-mime-info
+	depends = wayland
+	depends = wayland-protocols
+	depends = gtk-update-icon-cache
+	optdepends = evince: Default print preview command
+	provides = gtk3-print-backends
+	provides = libgailutil-3.so
+	provides = libgdk-3.so
+	provides = libgtk-3.so
+	conflicts = gtk3-print-backends
+	replaces = gtk3-print-backends<=3.22.26-1
+
+pkgname = gtk3-demos-git
+	pkgdesc = GObject-based multi-platform GUI toolkit (GIT Version) (demo applications)
+	depends = gtk3
+
+pkgname = gtk3-docs-git
+	pkgdesc = GObject-based multi-platform GUI toolkit (GIT Version) (documentation)
+	depends = 
