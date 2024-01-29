@@ -3,19 +3,42 @@
 
 pkgname=budgie-desktop-git
 pkgver=10.9.r0.g768972de
-pkgrel=1
+pkgrel=2
 pkgdesc="A familiar, modern desktop environment - latest git"
 arch=('x86_64' 'armv7h' 'aarch64')
-url="https://github.com/BuddiesOfBudgie/budgie-desktop"
-license=('GPL2' 'LGPL')
-depends=('bluez' 'budgie-screensaver' 'budgie-control-center' 'budgie-session' 'gnome-themes-standard'
-         'libgee' 'libpeas' 'libwnck3' 'libxfce4windowing' 'magpie-wm' 'accountsservice' 'ibus' 'zenity')
-makedepends=('git' 'gobject-introspection' 'intltool' 'meson' 'dart-sass' 'vala' 'gtk-doc')
-optdepends=('budgie-desktop-view: Desktop icons'
-            'budgie-backgrounds: Default background set'
-            'network-manager-applet: Network management in the panel'
-            'power-profiles-daemon: Manage power and performance from the panel'
-            'switcheroo-control: Open apps with the secondary GPU')
+url='https://github.com/BuddiesOfBudgie/budgie-desktop'
+license=('GPL-2.0-only AND LGPL-2.1-only')
+groups=('budgie')
+depends=(
+    'accountsservice'
+    'budgie-control-center'
+    'budgie-screensaver'
+    'budgie-session'
+    'gnome-themes-standard'
+    'ibus'
+    'libgee'
+    'libpeas'
+    'libwnck3'
+    'libxfce4windowing'
+    'magpie-wm'
+    'xdg-desktop-portal-gtk'
+    'zenity'
+)
+makedepends=(
+    'git'
+    'gobject-introspection'
+    'intltool'
+    'meson'
+    'sassc'
+    'vala'
+)
+optdepends=(
+    'budgie-desktop-view: Desktop icons'
+    'budgie-backgrounds: Default background set'
+    'network-manager-applet: Network management in the panel'
+    'power-profiles-daemon: Manage power and performance from the panel'
+    'switcheroo-control: Open apps with the secondary GPU'
+)
 provides=('budgie-desktop')
 conflicts=('budgie-desktop')
 source=("$pkgname"::'git+https://github.com/BuddiesOfBudgie/budgie-desktop.git'
