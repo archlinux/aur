@@ -1,7 +1,7 @@
 # Maintainer: vmalloc vmalloc@olanfa.de
 pkgname=embutils
 pkgver=0.19
-pkgrel=0.2
+pkgrel=0.3
 pkgdesc="small system utilities for embedded systems"
 arch=('i686' 'x86_64')
 url='https://www.fefe.de/embutils/'
