@@ -11,7 +11,7 @@ pkgbase = hamclock
 	license = MIT
 	depends = libx11
 	depends = libxcb
-	source = https://github.com/kj7rrv/hamclock/archive/refs/tags/v2.92.tar.gz
+	source = https://github.com/kj7rrv/hamclock/archive/refs/tags/v3.04.tar.gz
 	sha256sums = 52fefbf6f02e41bddb57faaf8eab87b6c7ecfd91c9db9afe4c0420afb25967b4
 
 pkgname = hamclock
