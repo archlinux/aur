@@ -8,7 +8,7 @@ pkgdesc="A modern web browser, built on top of modern web technologies such as E
 arch=('x86_64')
 url="https://fifo.snaildos.com/"
 _ghurl="https://github.com/snaildos/Fifo-Browser"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
