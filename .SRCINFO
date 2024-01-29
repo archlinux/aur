@@ -1,6 +1,6 @@
 pkgbase = hamclock-bigger
 	pkgdesc = Clock and world map with extra features for amateur radio (2400x1440 version)
-	pkgver = 2.92
+	pkgver = 3.04
 	pkgrel = 1
 	url = https://clearskyinstitute.com/ham/HamClock
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = hamclock-bigger
 	depends = libxcb
 	provides = hamclock
 	conflicts = hamclock
-	source = https://github.com/kj7rrv/hamclock/archive/refs/tags/v2.92.tar.gz
-	sha256sums = 44d3be593a0682ae418f7b0a56c9f2299b54087dfeb89f26b09bdf29e15b79d8
+	source = https://github.com/kj7rrv/hamclock/archive/refs/tags/v3.04.tar.gz
+	sha256sums = 52fefbf6f02e41bddb57faaf8eab87b6c7ecfd91c9db9afe4c0420afb25967b4
 
 pkgname = hamclock-bigger
