@@ -1,16 +1,12 @@
-pkgbase = iamroot
-	pkgdesc = Emulating the syscall chroot(2) in an unpriviliged process
+pkgbase = iamroot-s390x
+	pkgdesc = Emulating the syscall chroot(2) in an unpriviliged process (s390x)
 	pkgver = 16
 	pkgrel = 1
 	url = https://github.com/gportay/iamroot
 	arch = x86_64
 	license = GPL
 	checkdepends = shellcheck
-	makedepends = lib32-glibc
-	makedepends = i386-musl
-	makedepends = kernel-headers-musl-i386
-	makedepends = musl
-	makedepends = kernel-headers-musl
+	makedepends = s390x-z13-glibc-bleeding-edge-toolchain
 	makedepends = git
 	makedepends = patchelf
 	makedepends = asciidoctor
@@ -19,4 +15,4 @@ pkgbase = iamroot
 	validpgpkeys = 8F3491E60E62695ED780AC672FA122CA0501CA71
 	sha256sums = 72719b400b0588812fd1e62b4bada43372536d185b518ddaf24ef1e2c47b8ffb
 
-pkgname = iamroot
+pkgname = iamroot-s390x
