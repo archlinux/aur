@@ -1,0 +1,16 @@
+pkgbase = q-dns-bin
+	pkgdesc = A tiny command line DNS client with support for UDP, DoT, DoH, DoQ and ODoH.
+	pkgver = 0.19.2
+	pkgrel = 1
+	url = https://github.com/natesales/q
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	provides = q-dns
+	conflicts = q-dns-git
+	source_x86_64 = https://github.com/natesales/q/releases/download/v0.19.2/q_0.19.2_linux_amd64.deb
+	sha256sums_x86_64 = d4f3384db64d41ada91ccbefae26a457d9ea9c93d486c8c2f59e92f0ab09015b
+	source_aarch64 = https://github.com/natesales/q/releases/download/v0.19.2/q_0.19.2_linux_arm64.deb
+	sha256sums_aarch64 = 941d19a3c5628e2bc9e53faa5f0006e204856dea0c8c43a7d02427e262495a60
+
+pkgname = q-dns-bin
