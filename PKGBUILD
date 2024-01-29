@@ -9,6 +9,7 @@ license=('MIT')
 provides=("${pkgname}")
 source=("https://github.com/dmusican/Elegit/releases/download/v1.1/Elegit-1.1-linux.deb")
 md5sums=('9a3f826e8fdd8c733d7d310963fe5d8c')
+url="https://elegit.org"
 
 prepare() {
     mv Elegit-1.1-linux.deb ${pkgver}_${pkgver}.deb
