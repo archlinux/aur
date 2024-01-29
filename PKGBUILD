@@ -6,14 +6,14 @@ pkgver=0.16.0.35.08ff8d7
 pkgrel=1
 pkgdesc='SPICE VDAgent for Linux'
 arch=('i686' 'x86_64')
-url='http://www.spice-space.org'
+url='https://www.spice-space.org'
 license=('GPL')
 depends=('glib2' 'alsa-lib' 'libpciaccess' 'libxfixes' 'libxrandr' 'libxinerama')
 makedepends=('git' 'spice-protocol')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 install=$pkgname.install
-source=("$_pkgname::git://anongit.freedesktop.org/spice/linux/vd_agent"
+source=("$_pkgname::git+https://gitlab.freedesktop.org/spice/linux/vd_agent.git"
          spice-vdagentd.conf.sample)
 sha256sums=("SKIP"
             ab5231eb6375fee5baaf10a59559e7dea58def158fa0ab8e125e9b7340c5e4e8)
