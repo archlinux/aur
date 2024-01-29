@@ -5,7 +5,7 @@ _pkgname=kdrive
 _originalpkgname=kDrive
 
 pkgname="${_pkgname}"-appimage
-pkgver=3.5.5.20231213
+pkgver=3.5.7.20240124
 pkgrel=1
 pkgdesc="kDrive allows you to collaborate, store and share your data securely via your web browser, your mobile, your tablet or your computer."
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://download.storage.infomaniak.com/drive/desktopclient/kDrive-${pkgver}-amd64.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('0d69e1d9fe592aafb39e6829c67f382c6f6c665dc57433b1809abeff4e92e17a')
+sha256sums_x86_64=('ab99aa9252d9e7c613d2a4247d368a6369926062b54ad7ddbb1ab36f1d591d4b')
 
 prepare() {
     chmod +x "${_appimage}"
@@ -25,7 +25,7 @@ prepare() {
 
 build() {
     # Adjust .desktop so it will work outside of AppImage container
-    sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|"\
+    sed -i -E "s|Exec=kDrive|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|"\
         "squashfs-root/${_originalpkgname}_client.desktop"
     # Fix permissions; .AppImage permissions are 700 for all directories
     chmod -R a-x+rX squashfs-root/usr
