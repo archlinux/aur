@@ -6,11 +6,11 @@
 pkgbase=python-gmusicapi
 pkgname="${pkgbase}"
 pkgver="13.0.0"
-pkgrel=5
+pkgrel=6
 pkgdesc="An unofficial client library for Google Music."
 arch=('any')
 url="https://github.com/simon-weber/gmusicapi"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=(
   'python-appdirs'
   'python-dateutil'
@@ -27,6 +27,7 @@ depends=(
 makedepends=(
   'python-build'
   'python-installer'
+  'python-setuptools'
   'python-wheel'
 )
 checkdepends=()
