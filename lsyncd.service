@@ -11,7 +11,7 @@ ExecReload=/bin/kill -HUP $MAINPID
 
 # Hardening
 PrivateTmp=true
-ProtectHome=true
+# ProtectHome=true
 ProtectSystem=full
 NoNewPrivileges=true
 ProtectControlGroups=true
