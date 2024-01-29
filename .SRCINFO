@@ -1,0 +1,21 @@
+pkgbase = adventuresofdemo
+	pkgdesc = This is a small game based on the TheXTech engine with the A2XT content pack made by the Talkhaus community. It's a remix of old SMBX episodes such as The Invasion 1, brought to the A2XT universe!
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://gitlab.com/thextech-archive/aod-script
+	arch = pentium4
+	arch = i386
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = thextech-bin
+	depends = adventuresofdemo-assets
+	depends = wget
+	depends = unzip
+	depends = yad
+	source = https://gitlab.com/thextech-archive/aod-script/-/archive/1.0.1-1/aod-script-1.0.1-1.tar.bz2
+	sha256sums = SKIP
+
+pkgname = adventuresofdemo
