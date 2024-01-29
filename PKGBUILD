@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fsolauncher
 _pkgname="FreeSO Launcher"
-pkgver=1.9.3_prod.2
+pkgver=1.10.1_prod.1
 _electronversion=22
 _nodeversion=16
 pkgrel=1
@@ -9,7 +9,7 @@ pkgdesc="Official FreeSO Launcher made with Electron"
 arch=('x86_64')
 url="https://beta.freeso.org/"
 _ghurl="https://github.com/ItsSim/fsolauncher"
-license=('MPL2')
+license=('MPL-2.0')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
@@ -44,7 +44,10 @@ build() {
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
     npm ci
     npx electron-builder --linux appimage
 }
