@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="An Electron app that provides a native Apple Music experience for Linux & Windows."
 arch=('x86_64')
 url="https://github.com/Alex313031/apple-music-desktop"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=(alsa-lib
          at-spi2-core
          bash
@@ -55,27 +55,26 @@ prepare() {
 	_ensure_local_nvm
 	cd "$pkgname-$pkgver"
 	nvm install
-	sed '27d;28d;29s/appimage/dir/' -i electron-builder.json
 }
 
 build() {
 	_ensure_local_nvm
 	cd "$pkgname-$pkgver"
 	npm install --cache "${srcdir}/npm-cache"
-	npm run distLinux
+	npm run build
 }
 
 package() {
-	install -Dm755 "$pkgname-$pkgver/dist/linux-unpacked/locales/"* -t "$pkgdir/opt/$pkgname/locales"
-	install -Dm755 "$pkgname-$pkgver/dist/linux-unpacked/resources/"* -t "$pkgdir/opt/$pkgname/resources"
-	rm -dfr "$pkgname-$pkgver/dist/linux-unpacked/"{locales,resources}
-	install -Dm755 "$pkgname-$pkgver/dist/linux-unpacked/"* -t "$pkgdir/opt/$pkgname/"
-	install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications"
-	for _icons in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 144x144 256x256;do
-		install -Dm644 "$pkgname-$pkgver/assets/$_icons.png" \
-		"$pkgdir/usr/share/icons/hicolor/$_icons/apps/$pkgname.png"
+	install -Dm755 "$pkgname.sh" "${pkgdir}/usr/bin/$pkgname"
+	install -Dm644 "$pkgname.desktop" "${pkgdir}/usr/share/applications/$pkgname.desktop"
+	install -Dm644 "$pkgname-$pkgver/LICENSE.md" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$pkgname-$pkgver/assets/README.txt" "${pkgdir}/usr/share/doc/$pkgname/README.txt"
+	cd $pkgname-$pkgver/dist/linux-unpacked
+	find . -type f -exec install -Dm644 "{}" "${pkgdir}/opt/$pkgname/{}" \;
+	install -Dm755 "apple-music" "${pkgdir}/opt/$pkgname/apple-music"
+	cd ../../assets
+	for _icons in $(find . -name "*x*.png");do
+		install -Dm644 "$_icons" \
+		"${pkgdir}/usr/share/icons/hicolor/${_icons%.png}/apps/$pkgname.png"
 	done
-	install -Dm644 "$pkgname-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 "$pkgname-$pkgver/assets/README.txt" "$pkgdir/usr/share/doc/$pkgname/README.txt"
 }
