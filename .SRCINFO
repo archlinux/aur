@@ -7,6 +7,6 @@ pkgbase = ton-bin
 	license = LGPL2
 	depends = pacman>5
 	source = ton-bin.tar.gz::https://github.com/ton-blockchain/packages/releases/latest/download/ton-linux-x86-64.tar.gz
-	sha256sums = 71a590eebe9e6e14f47479fc0f032bd7f54133464e986d3a62aba3fac807c8d7
+	sha256sums = e7982178870d4d7bfb53fad82ac5310372dcf2765ea759efa259b78b18fe57b9
 
 pkgname = ton-bin
