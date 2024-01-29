@@ -2,7 +2,7 @@
 pkgname=defguard-client
 pkgsrc=defguard-client
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="WireGuard Desktop Client with Multi-Factor Authentication"
 arch=('x86_64')
 url="https://github.com/DefGuard/client"
@@ -14,6 +14,8 @@ sha256sums_x86_64=('53caea24acd080907a63e2bbce77fca756e57f24f4cfa9e00df7df188c12
 package() {
     msg2 "Extracting the source debian package data.tar.xz..."
     bsdtar -xf data.tar.gz -C "$pkgdir/"
+    mv $pkgdir/usr/sbin/defguard-service $pkgdir/usr/bin/
+    rmdir $pkgdir/usr/sbin
 }
 
 post_install() {
