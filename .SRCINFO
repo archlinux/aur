@@ -1,0 +1,16 @@
+pkgbase = jedstate-git
+	pkgdesc = S-Lang module for the JED editor to remember its cursor position across invocations (built from latest commit)
+	pkgver = 0.9.6.r1.gb43619d
+	pkgrel = 1
+	url = https://codeberg.org/kas/jedstate
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = jed
+	depends = jed
+	provides = jedstate
+	conflicts = jedstate
+	source = git+https://codeberg.org/kas/jedstate.git
+	md5sums = SKIP
+
+pkgname = jedstate-git
