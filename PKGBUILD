@@ -1,12 +1,12 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=rpcsx
 pkgname=$_pkgname-git
-pkgver=r325.b87f8f6
+pkgver=r442.b677eb5
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('x86_64')
 url="https://rpcsx.github.io/rpcsx-site/"
-license=('GPL2' 'MIT')
+license=('GPL-2.0-only AND MIT')
 depends=(
 	'gcc-libs'
 	'glfw>=3.3'
