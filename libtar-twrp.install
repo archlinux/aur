@@ -1,0 +1,3 @@
+post_install() {
+    echo "You can run the libtar executable in /opt/libtar-twrp/bin, e.g. /opt/libtar-twrp/bin/libtar --help"
+}
