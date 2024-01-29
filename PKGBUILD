@@ -4,7 +4,7 @@
 # Contributor: Jan Holthuis <holthuis.jan@googlemail.com>
 
 pkgname=nzbget-git
-pkgver=testing.r2381.1e1590ac
+pkgver=testing.r2384.16ab25d5
 pkgrel=1
 pkgdesc="Download from Usenet using .nzb files"
 arch=('x86_64')
