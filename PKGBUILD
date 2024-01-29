@@ -3,14 +3,16 @@ pkgdesc="Unoffical Victor Mono(TTF) AUR package"
 pkgver=1.5.6
 pkgrel=1
 arch=("any")
-sha256sums=("eab377ad3bcc7a202697c024ebb8c8728f99789c4f093d358f3d202052cc9496")
+sha256sums=("e7502e2aeaaf579ea9c790bee4088454e86d8a3bd1d6757145fb18a33ae90608")
 url="https://rubjo.github.io/victor-mono/"
-source=("https://rubjo.github.io/victor-mono/VictorMonoAll.zip")
+source=("$pkgname-$pkgver.zip::https://github.com/rubjo/victor-mono/archive/refs/tags/v$pkgver.zip")
 license=("custom:OFL")
 
+prepare() {
+   bsdtar -xf "$srcdir/victor-mono-$pkgver/public/VictorMonoAll.zip" -C VictorMonoAll
+}
+
 package(){
-   if [[ ! -d "$pkgdir/usr/share/fonts/TTF" ]]; then
-	  mkdir -p $pkgdir/usr/share/fonts/TTF
-   fi
-   install -Dm644 TTF/*.ttf $pkgdir/usr/share/fonts/TTF/
+   install -d "$pkgdir/usr/share/fonts/TTF/" # Make sure /usr/share/fonts/TTF exists
+   install -m644 VictorMonoAll/TTF/*.ttf" $pkgdir/usr/share/fonts/TTF/"
 }
