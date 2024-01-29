@@ -2,13 +2,13 @@
 
 pkgname=pc-ble-driver
 pkgver=4.1.4
-pkgrel=7
+pkgrel=8
 pkgdesc="C/C++ libraries for Bluetooth Low Energy nRF5 SoftDevice serialization"
 arch=(x86_64)
 url="https://github.com/NordicSemiconductor/pc-ble-driver"
 license=(custom)
 depends=(gcc-libs glibc)
-makedepends=(asio catch2 cmake fmt git spdlog systemd)
+makedepends=(asio catch2-v2 cmake fmt git spdlog systemd)
 provides=(
   libnrf-ble-driver-sd_api_v2.so
   libnrf-ble-driver-sd_api_v3.so
