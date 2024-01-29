@@ -1,10 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ulogviewer-bin
 _pkgname=ULogViewer
-pkgver=3.0.12.115
+pkgver=3.0.13.128
 pkgrel=1
 pkgdesc="Cross-Platform Universal Log Viewer."
-arch=('aarch64' 'x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://carina-studio.github.io/ULogViewer/"
 _ghurl="https://github.com/carina-studio/ULogViewer"
 license=('MIT')
@@ -12,9 +15,8 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 options=('!strip')
 depends=(
-    'zlib'
-    'fontconfig'
     'dotnet-runtime'
+    'fontconfig'
 )
 makedepends=(
     'gendesk'
@@ -33,9 +35,9 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('4b023d792eb6b929311286a207c6493e18875bd9d320db8f7a996dd5d5716fea'
-            '79f34b0177dc0cbd37e4f3f7b1a880c7c3e111a6600c457b4bfab755351679d9')
-sha256sums_aarch64=('42974b28142226c5ae0dcd97a591d8a14a255ff1ca326ca23c4e632af7bf6842')
-sha256sums_x86_64=('cab75fcb6b9b6222ce61fd29d6707cc82117dac4449be918b0e3b18f73afa367')
+            '2b1adea3baebdc11044adbff444ef8745edbd7be4aba755221c30cb3531f4a49')
+sha256sums_aarch64=('c90cc34197010194c932ebd7decdb5e0ba7aa69e73ba1c9a189a9474b2c0be6f')
+sha256sums_x86_64=('07c47608b42c08143290d3f42ad90d8f918608ce7013f4e6cbbf1bebeafd7d51')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runappname@|${_pkgname}|g" \
