@@ -18,15 +18,12 @@ pkgbase = mogan-git
 	depends = texlive-core
 	depends = python
 	depends = libxext
+	depends = libgit2
 	optdepends = gawk: Conversion of some files
 	optdepends = ghostscript: Rendering ps files
 	optdepends = imagemagick: Convert images
 	optdepends = aspell: Spell checking
 	source = mogan-git::git+https://github.com/XmacsLabs/mogan.git
-	source = mogan.desktop
-	source = mogan.xml
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = mogan-git
