@@ -6,7 +6,7 @@
 _pkgname=gnuplot
 pkgname=$_pkgname-nogui
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Plotting package which outputs to X11, files and others. Without wxgtk/qt."
 arch=("x86_64")
 url="http://www.gnuplot.info"
@@ -25,8 +25,7 @@ depends=(cairo
 makedepends=('emacs')
 optdepends=('texlive-core')
 provides=("gnuplot")
-conflicts=("gnuplot" "gnuplot-nox")
-replaces=("gnuplot-notk")
+conflicts=("gnuplot" "gnuplot-headless")
 source=("http://downloads.sourceforge.net/sourceforge/$_pkgname/$_pkgname-$pkgver.tar.gz"
 	"lua53_compat.patch")
 sha256sums=('635a28f0993f6ab0d1179e072ad39b8139d07f51237f841d93c6c2ff4b1758ec'
@@ -48,6 +47,7 @@ build() {
         --with-x \
         --with-readline=gnu \
         --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
+        --with-bitmap-terminals \
         --infodir="$pkgdir/usr/share/info"
 
 	make pkglibexecdir=/usr/bin
