@@ -1,7 +1,7 @@
 pkgbase = defguard-client
 	pkgdesc = WireGuard Desktop Client with Multi-Factor Authentication
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DefGuard/client
 	arch = x86_64
 	license = custom
