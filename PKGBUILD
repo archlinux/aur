@@ -1,6 +1,6 @@
 # Maintainer: Viktor A. Rozenko Voitenko <sharp.vik@gmail.com>
 pkgname=sema
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=19
 pkgdesc="Semantic commit tool"
 arch=(x86_64)
