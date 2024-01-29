@@ -2,7 +2,7 @@
 # Maintainer: rsteube <rsteube@users.noreply.github.com>
 
 pkgname='carapace-spec-bin'
-pkgver=0.12.2
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='define simple completions using a spec file'
 url='https://github.com/rsteube/carapace-spec'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('carapace-spec')
 conflicts=('carapace-spec')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/rsteube/carapace-spec/releases/download/v0.12.2/carapace-spec_linux_arm64.tar.gz")
-sha256sums_aarch64=('16176f44a54edb6eb356be85583734e6fd0622274b37bfc47bf0a357e652e7ff')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/rsteube/carapace-spec/releases/download/v0.13.0/carapace-spec_linux_arm64.tar.gz")
+sha256sums_aarch64=('e2a168d4501f1b880bd2b754d5adbab79808c15504c68ec2ced9352d9d3455e2')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/rsteube/carapace-spec/releases/download/v0.12.2/carapace-spec_linux_386.tar.gz")
-sha256sums_i686=('772f6b475a42ee80f72602cfd0f3a54f7fa44eab0553572dede23ef042eb8e04')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/rsteube/carapace-spec/releases/download/v0.13.0/carapace-spec_linux_386.tar.gz")
+sha256sums_i686=('8e06d6091a11773474b6b02aea61ee7cf86287b341922c072b7812de1f7011a9')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/rsteube/carapace-spec/releases/download/v0.12.2/carapace-spec_linux_amd64.tar.gz")
-sha256sums_x86_64=('772cc0dc5ac48a51867544bb8b419337d08582c1a38571a3c3fc1d0abcf77773')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/rsteube/carapace-spec/releases/download/v0.13.0/carapace-spec_linux_amd64.tar.gz")
+sha256sums_x86_64=('89073fbed71f4423dd3843bde6f6ed7373d28b5235819fe97b75f3abf7e32970')
 
 package() {
   install -Dm755 "./carapace-spec" "${pkgdir}/usr/bin/carapace-spec"
