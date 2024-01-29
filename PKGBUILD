@@ -1,7 +1,7 @@
 # Maintainer: vmalloc vmalloc@olanfa.de
 pkgname=clockspeed
 pkgver=0.62
-pkgrel=01
+pkgrel=1
 pkgdesc="a hardware tick counter to compensate for a persistently fast or slow system clock"
 arch=('i686' 'x86_64')
 url="https://cr.yp.to/clockspeed.html"

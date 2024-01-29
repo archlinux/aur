@@ -1,7 +1,7 @@
 pkgbase = clockspeed
 	pkgdesc = a hardware tick counter to compensate for a persistently fast or slow system clock
 	pkgver = 0.62
-	pkgrel = 01
+	pkgrel = 1
 	url = https://cr.yp.to/clockspeed.html
 	arch = i686
 	arch = x86_64
