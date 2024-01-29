@@ -4,11 +4,11 @@ pkgname="webcam-${_pkgname}-bin"
 _appname=Glass
 pkgver=0.7.2
 _electronversion=20
-pkgrel=6
+pkgrel=7
 pkgdesc="Cross-platform tool for making video tutorials and video conferencing, blending the webcam over the screen."
 arch=('x86_64')
 url="https://github.com/jersonlatorre/webcam-glass-app"
-license=('LicenseRef-custom')
+license=('GPL-3.0-only')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('25a5447746c8ce651c6154acdc4ff9b42f1a0f9a504772c2634c426d89b62bfb'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
