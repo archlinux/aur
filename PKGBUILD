@@ -2,13 +2,13 @@
 # Maintainer: Campbell Jones <arch at serebit dot com>
 
 pkgname=budgie-desktop-git
-pkgver=10.8.2.r1.g74b65648
+pkgver=10.9.r0.g768972de
 pkgrel=1
 pkgdesc="A familiar, modern desktop environment - latest git"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/BuddiesOfBudgie/budgie-desktop"
 license=('GPL2' 'LGPL')
-depends=('budgie-screensaver' 'budgie-control-center' 'gnome-bluetooth' 'gnome-menus' 'gnome-session' 'gnome-themes-standard'
+depends=('bluez' 'budgie-screensaver' 'budgie-control-center' 'budgie-session' 'gnome-themes-standard'
          'libgee' 'libpeas' 'libwnck3' 'libxfce4windowing' 'magpie-wm' 'accountsservice' 'ibus' 'zenity')
 makedepends=('git' 'gobject-introspection' 'intltool' 'meson' 'dart-sass' 'vala' 'gtk-doc')
 optdepends=('budgie-desktop-view: Desktop icons'
