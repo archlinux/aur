@@ -1,7 +1,7 @@
 pkgbase = ruby-rbvmomi2
 	pkgdesc = Ruby interface to the VMware vSphere API
 	pkgver = 3.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rubygems.org/gems/rbvmomi2
 	arch = any
 	license = MIT
