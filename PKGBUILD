@@ -1,7 +1,7 @@
 # Maintainer: kmille github@androidloves.me
 
 pkgname=borgctl
-pkgver=0.4.7
+pkgver=0.4.9
 pkgrel=1
 pkgdesc="borgctl - borgbackup without bash scripts"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=(python-poetry-core python-build python-installer python-wheel)
 depends=(python python-ruamel-yaml)
 source=(https://github.com/kmille/borgctl/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('801a7cfb549af6f10a43b8506a70fec49d6de3cde14eeb4a07d6230a7693d62f')
+sha256sums=('d1271cd25d3ef6799b9bd98128193bb7c06cdb4ad43d268a0fea8c86e66ac5e4')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
