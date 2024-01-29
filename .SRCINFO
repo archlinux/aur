@@ -1,14 +1,13 @@
 pkgbase = vesktop
 	pkgdesc = A standalone Electron app that loads Discord & Vencord
 	pkgver = 1.5.0
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/Vencord/Vesktop
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	makedepends = pnpm
 	makedepends = git
-	depends = electron
 	optdepends = libnotify: Notifications
 	optdepends = xdg-utils: Open links, files, etc
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
