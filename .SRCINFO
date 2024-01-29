@@ -1,7 +1,7 @@
 pkgbase = jedstate-git
 	pkgdesc = S-Lang module for the JED editor to remember its cursor position across invocations (built from latest commit)
 	pkgver = 0.9.6.r2.g09a671e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/kas/jedstate
 	install = jedstate-git.install
 	arch = any

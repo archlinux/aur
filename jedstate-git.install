@@ -3,10 +3,10 @@
 pre_install() {
   cat <<EOF >&2
 NB: In order to use this package you will have to edit
-    startup_hok() and exit_hook() of your ~/.jedrc and
+    startup_hook() and exit_hook() of your ~/.jedrc and
     also include two autoload() stanzas.
 
-    See /usr/share/doc/$pkgname/jedstate-hooks.sl
+    See /usr/share/doc/jedstate-git/jedstate-hooks.sl
     for an example.
 EOF
 }

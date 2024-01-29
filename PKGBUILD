@@ -4,7 +4,7 @@
 pkgname='jedstate-git'
 _pkgname="${pkgname/-git/}"
 pkgver=0.9.6.r2.g09a671e
-pkgrel=1
+pkgrel=2
 pkgdesc='S-Lang module for the JED editor to remember its cursor position across invocations (built from latest commit)'
 arch=('any')
 url='https://codeberg.org/kas/jedstate'
