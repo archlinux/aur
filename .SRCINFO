@@ -4,7 +4,7 @@ pkgbase = guile-chickadee
 	pkgrel = 1
 	url = https://dthompson.us/projects/chickadee.html
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	depends = freetype2
 	depends = guile>=3.0.6
 	depends = guile-sdl2>=0.8.0
