@@ -1,12 +1,12 @@
-From 3390180894191468dc22c8404627b46532434cba Mon Sep 17 00:00:00 2001
+From ef7ee2edd6f7cc3e7c1528f7b58e149116759cf5 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Sun, 28 Jan 2024 20:00:28 +0100
+Date: Mon, 29 Jan 2024 17:44:51 +0100
 Subject: [PATCH] scx: add one service for all schedulers and config file
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
  services/README.md                            | 20 +++++++++++++++----
- services/meson.build                          |  8 +++++++-
+ services/meson.build                          | 19 +++++++-----------
  services/scx                                  |  5 +++++
  services/{scx_central.service => scx.service} |  5 +++--
  services/scx_flatcg.service                   | 13 ------------
@@ -17,7 +17,7 @@ Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
  services/scx_rusty.service                    | 13 ------------
  services/scx_simple.service                   | 13 ------------
  services/scx_userland.service                 | 13 ------------
- 12 files changed, 31 insertions(+), 111 deletions(-)
+ 12 files changed, 31 insertions(+), 122 deletions(-)
  create mode 100644 services/scx
  rename services/{scx_central.service => scx.service} (58%)
  delete mode 100644 services/scx_flatcg.service
@@ -81,28 +81,33 @@ index 9d3acb1..a175d64 100644
  
  ## Checking Journald Logs
 diff --git a/services/meson.build b/services/meson.build
-index 1bccca8..8f86518 100644
+index 1bccca8..d2815ac 100644
 --- a/services/meson.build
 +++ b/services/meson.build
-@@ -2,7 +2,7 @@ systemd_system_unit_dir = systemd.get_variable(pkgconfig : 'systemdsystemunitdir
+@@ -1,16 +1,11 @@
++# Get the directory for systemd system unit files
+ systemd_system_unit_dir = systemd.get_variable(pkgconfig : 'systemdsystemunitdir')
  
-   install_data(
-     [
+-  install_data(
+-    [
 -      'scx_central.service',  'scx_flatcg.service',  'scx_nest.service',  'scx_pair.service', 'scx_qmap.service', 'scx_rustland.service',  'scx_rusty.service',  'scx_simple.service',  'scx_userland.service',
-+      'scx.service',
-     ],
-     install_dir: systemd_system_unit_dir
-   )
-@@ -14,3 +14,9 @@ systemd_system_unit_dir = systemd.get_variable(pkgconfig : 'systemdsystemunitdir
-     install_dir: '/etc/systemd'
-   )
+-    ],
+-    install_dir: systemd_system_unit_dir
+-  )
++# Install the 'scx.service' file to the systemd system unit directory
++install_data('scx.service', install_dir: systemd_system_unit_dir)
  
-+  install_data(
-+    [
-+      'scx',
-+    ],
-+    install_dir: '/etc/default'
-+  )
+-  install_data(
+-    [
+-      'journald@sched-ext.conf',
+-    ],
+-    install_dir: '/etc/systemd'
+-  )
++# Install the 'journald@sched-ext.conf' file to the '/etc/systemd' directory
++install_data('journald@sched-ext.conf', install_dir: '/etc/systemd')
+ 
++# Install the 'scx' file to the '/etc/default' directory
++install_data('scx', install_dir: '/etc/default')
 diff --git a/services/scx b/services/scx
 new file mode 100644
 index 0000000..a323de0

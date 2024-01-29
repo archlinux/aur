@@ -4,7 +4,7 @@
 
 pkgname=scx-scheds
 pkgver=0.1.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Sched_ext schedulers'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=(!lto)
 source=(https://github.com/sched-ext/scx/archive/refs/tags/v${pkgver}.tar.gz
        0001-scx-add-one-service-for-all-schedulers-and-config-fi.patch)
 sha512sums=('84dfc711ba9d51cd26c104caca1dcee3ce0be790be5b3a294ed47f4ef5fb20c58524b793d45b0970d61befa33adf8c8f3ca2b2f726d2ef335c80c11eee813387'
-            '1284c12302568808dcd836b440e957e7c2f9a8d112b3d1289d3dd2c0d245c0e2a5955a22cc4e41872efa546db497b3a48eddd514ff5ad58f2d463685847d99bd')
+            'a2bc7cd7d736319b6a559f9dd04db4f333f03cabb26bb25a3a13ee0ca8d4cf8160c21dba2a9950f9fcd800dcfcad73e71644eab31b8323a283af887eaaae1b9f')
 
 prepare() {
  cd scx-${pkgver}
