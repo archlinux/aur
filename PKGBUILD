@@ -74,7 +74,7 @@ build() {
 }
 
 package() {
-    provides=("${_pkgname}-utils=${pkgver}")
+    provides=("${_pkgname}-utils=${pkgver%%.r*}")
 
     cd "${srcdir}/${_pkgname}"
 

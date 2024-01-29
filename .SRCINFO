@@ -21,4 +21,4 @@ pkgbase = zfs-utils-staging-git
 	sha256sums = 15b5acea44225b4364ec6472a08d3d48666d241fe84c142e1171cd3b78a5584f
 
 pkgname = zfs-utils-staging-git
-	provides = zfs-utils=2.2.2.r43.g3425484eb9
+	provides = zfs-utils=2.2.2
