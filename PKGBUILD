@@ -1,7 +1,7 @@
 # Maintainer: Rolv Apneseth <rolv.apneseth@gmail.com>
 
 pkgname=rofi-nerdy
-pkgver=v0.0.1.r0.gc866c27
+pkgver=v0.0.2.r0.g1a222a7
 pkgrel=1
 pkgdesc='Nerd font icon selector plugin for rofi'
 arch=('x86_64')
@@ -9,6 +9,12 @@ url='https://github.com/rolv-apneseth/rofi-nerdy'
 license=('AGPL v3.0')
 depends=('rofi')
 makedepends=('rust' 'git' 'just')
+optdepends=(
+    'wl-clipboard: Wayland - copy icon to clipboard'
+    'xclip: X11 - copy icon to clipboard'
+    'wtype: Wayland - insert icon'
+    'xdotool: X11 - insert icon'
+)
 source=("$pkgname::git+https://github.com/rolv-apneseth/$pkgname.git")
 md5sums=('SKIP')
 

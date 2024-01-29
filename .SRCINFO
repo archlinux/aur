@@ -1,6 +1,6 @@
 pkgbase = rofi-nerdy
 	pkgdesc = Nerd font icon selector plugin for rofi
-	pkgver = v0.0.1.r0.gc866c27
+	pkgver = v0.0.2.r0.g1a222a7
 	pkgrel = 1
 	url = https://github.com/rolv-apneseth/rofi-nerdy
 	arch = x86_64
@@ -9,6 +9,10 @@ pkgbase = rofi-nerdy
 	makedepends = git
 	makedepends = just
 	depends = rofi
+	optdepends = wl-clipboard: Wayland - copy icon to clipboard
+	optdepends = xclip: X11 - copy icon to clipboard
+	optdepends = wtype: Wayland - insert icon
+	optdepends = xdotool: X11 - insert icon
 	source = rofi-nerdy::git+https://github.com/rolv-apneseth/rofi-nerdy.git
 	md5sums = SKIP
 
