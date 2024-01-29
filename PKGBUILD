@@ -4,8 +4,8 @@
 # Contributor: xantares
 
 pkgname=stargate
-pkgver=24.02.1
-_commit=c7680dbb194e31ac9025a3127db521a277c1fc41
+pkgver=24.02.2
+_commit=43dfd5ccd676fde64ab61d524573903b769c5e2d
 pkgrel=1
 pkgdesc="Innovation-first digital audio workstation (DAW), instrument and effect plugins, wave editor"
 license=(GPL-3.0-only)
