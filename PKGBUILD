@@ -4,16 +4,16 @@
 
 pkgname=python-pyinstrument
 _name="${pkgname#python-}"
-pkgver=4.6.1
-pkgrel=2
+pkgver=4.6.2
+pkgrel=1
 pkgdesc="Call stack profiler for Python"
 arch=('x86_64' 'aarch64')
 url="https://github.com/joerick/pyinstrument"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('ipython' 'python>=3.7' 'python-django' 'python-typing_extensions')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('f4731b27121350f5a983d358d2272fe3df2f538aed058f57217eef7801a89288')
+sha256sums=('0002ee517ed8502bbda6eb2bb1ba8f95a55492fcdf03811ba13d4806e50dd7f6')
 
 build() {
 	cd "$_name-$pkgver"
