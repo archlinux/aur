@@ -3,7 +3,7 @@ pkgname=fotograph-bin
 _appname=Fotograph
 pkgver=0.1.0_alpha
 _electronversion=23
-pkgrel=7
+pkgrel=8
 pkgdesc="A cross platform image manipulation desktop application"
 arch=("x86_64")
 url="https://fotograph.vercel.app/"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('6c92bb3b3e160abf34bbd8a73e844792a679558ec37ab38a6dad9919e211278f'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
