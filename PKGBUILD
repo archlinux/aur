@@ -2,7 +2,7 @@
 pkgname=flawless-cut-bin
 pkgver=1.0.1
 _electronversion=23
-pkgrel=6
+pkgrel=7
 pkgdesc="Fast and lossless video cutter and merger based on Electron."
 arch=('x86_64')
 url="https://github.com/metadream/app-flawless-cut"
@@ -21,7 +21,7 @@ source=(
     )
 sha256sums=('28debe0ea79488000337f8da5d12cad51ce9e965dfff9dc63da031d28c38d328'
             'f3eac6adfa3dd9332b033a4aa8f565d05947b371fa729ceb6712a0123c5dcc46'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
