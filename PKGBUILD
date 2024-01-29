@@ -21,7 +21,7 @@ source=('git+https://github.com/bitmagnet-io/bitmagnet'
         'dirs.conf'
         'user.conf')
 sha256sums=('SKIP'
-            '8c664222a5176e15c4db3fdbcb7b39d8c8efd86698f64dc37f8eb877af67e965'
+            'c728c019697d54077d77d30e8e32848a752b72a68beb782a37708945ae2afe5d'
             'b8fe373d25c857f312cc4a88c4056065a9df39c5a2b3e560fd879723864c5b8f'
             '5f80125347060d22175732fa0304df425178ae54282ccf2a3ce9e22a970b60ae'
             '6289a984a94570fd25a0330646caabc20e6cb871d1b141d27cc98d6781d6b35a')

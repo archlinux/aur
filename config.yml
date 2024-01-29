@@ -4,7 +4,7 @@ postgres:
     name: bitmagnet
     user: bitmagnet
     password:
-    connection_timeout: 0
+#    connection_timeout: 0
     ssl_cert_path:
     ssl_key_path:
     ssl_mode:
@@ -15,27 +15,31 @@ redis:
     db: 0
     username:
     password:
-    network: tcp
-    pool_size: 10
-    dial_timeout: 5s
-    read_timeout: 3s
-    write_timeout: 3s
+#    network: tcp
+#    pool_size: 10
+#    dial_timeout: 5s
+#    read_timeout: 3s
+#    write_timeout: 3s
 
 tmdb:
     api_key:
-    rate_limit: 50ms
-    rate_limit_burst: 5
+#    rate_limit: 50ms
+#    rate_limit_burst: 5
 
-dht_crawler:
-    save_files_threshold: 50
-    save_pieces: false
-    scaling_factor: 10
-    rescrape_threshold: 720h
-    reseed_bootstrap_nodes_interval: 1m
+dht_server:
+     port: 3334
+#     query_timeout: 4s
+
+#dht_crawler:
+#    save_files_threshold: 50
+#    save_pieces: false
+#    scaling_factor: 10
+#    rescrape_threshold: 720h
+#    reseed_bootstrap_nodes_interval: 1m
 
 search_warmer:
     enabled: true
-    interval: 50m
+#    interval: 50m
 
 http_server:
     local_address: 127.0.0.1:3333
@@ -70,7 +74,7 @@ log:
         enabled: false
         level: info
         path: /var/log/bitmagnet
-        max_age: 1h
-        max_size: 100000000
-        max_backups: 5
+#        max_age: 1h
+#        max_size: 100000000
+#        max_backups: 5
 
