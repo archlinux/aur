@@ -1,10 +1,10 @@
 pkgbase = eusoft-ting-fr-bin
 	pkgdesc = 听力统计、笔记同步、语音高亮跟随，让您轻松愉快学法语
 	pkgver = 9.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.frdic.com/ting
 	arch = x86_64
-	license = custom
+	license = LicenseRef-custom
 	depends = hicolor-icon-theme
 	depends = electron13
 	conflicts = eusoft-ting-fr
@@ -15,6 +15,6 @@ pkgbase = eusoft-ting-fr-bin
 	source = eusoft-ting-fr.sh
 	sha256sums = efbf72d55838f72fe4992330092473416476bb32ab6a0d03135aff64f99e74c9
 	sha256sums = 69031e95591a339c4cd9c01547494e23196cea6438608f1f951b493ea8fca54f
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
 
 pkgname = eusoft-ting-fr-bin
