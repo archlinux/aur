@@ -1,39 +1,48 @@
-# Maintainer: David Runge <dave@sleepmap.de>
-_name=xvfbwrapper
-pkgname=python-xvfbwrapper
-pkgver=0.2.9
-pkgrel=10
-pkgdesc="Manage headless displays with Xvfb (X virtual framebuffer)"
-arch=('any')
-url="https://github.com/cgoldberg/xvfbwrapper"
-license=('MIT')
-depends=('python' 'xorg-server-xvfb')
-makedepends=('python-setuptools')
-checkdepends=('python-pytest')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('800f3489b2e1bbc884d7651e344ed73783d6c00856f3ab7ccfa6b9058dd6d3bb98d38f11172ba89dff5773d6c5b773bc000786c1f6c6aae5a27179b37017851e')
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Contributor: David Runge <dave@sleepmap.de>
 
-prepare() {
-  mv -v "${_name}-$pkgver" "$pkgname-$pkgver"
-}
+pkgname=python-xvfbwrapper
+_pkgname=${pkgname#python-}
+pkgver=0.2.9
+pkgrel=11
+pkgdesc="Manage headless displays with Xvfb (X virtual framebuffer)"
+arch=(any)
+url="https://github.com/cgoldberg/xvfbwrapper"
+license=(MIT)
+depends=(
+  python
+  xorg-server-xvfb
+)
+makedepends=(
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
+)
+checkdepends=(python-pytest)
+
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('7b991de03fad1dd0e50d814e3cb3588fb69011d91320f32155d5422c83385788')
+
+_archive="$_pkgname-$pkgver"
 
 build() {
-  cd "$pkgname-$pkgver"
-  python setup.py build
+  cd "$_archive"
+
+  python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$pkgname-$pkgver"
-  export PYTHONPATH="build:${PYTHONPATH}"
-  py.test
+  cd "$_archive"
+
+  pytest
 }
 
-package_python-xvfbwrapper() {
-  cd "$pkgname-$pkgver"
-  python setup.py install --skip-build \
-    --optimize=1 \
-    --root="${pkgdir}/"
-  install -vDm 644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}/"
-  install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+package() {
+  cd "$_archive"
+
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.rst
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
-# vim:set ts=2 sw=2 et:
