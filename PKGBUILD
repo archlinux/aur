@@ -1,13 +1,15 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
-
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
 _pkgname=edi
 pkgname=${_pkgname}-git
 pkgver=v0.8.0.28.ge9d30f6
-pkgrel=1
+pkgrel=2
+conflicts=(edi)
+provides=(edi)
 pkgdesc="The EFL IDE"
 arch=('i686' 'x86_64')
-url="https://phab.enlightenment.org/w/projects/${_pkgname}/"
-license=('GPL2')
+url="https://git.enlightenment.org/enlightenment/${_pkgname}/"
+license=(GPL-2.0-only)
 depends=('efl' 'clang' 'check')
 makedepends=('git' 'meson')
 source=("git+https://git.enlightenment.org/enlightenment/edi.git")

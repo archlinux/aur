@@ -1,16 +1,18 @@
 pkgbase = edi-git
 	pkgdesc = The EFL IDE
 	pkgver = v0.8.0.28.ge9d30f6
-	pkgrel = 1
-	url = https://phab.enlightenment.org/w/projects/edi/
+	pkgrel = 2
+	url = https://git.enlightenment.org/enlightenment/edi/
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = git
 	makedepends = meson
 	depends = efl
 	depends = clang
 	depends = check
+	provides = edi
+	conflicts = edi
 	source = git+https://git.enlightenment.org/enlightenment/edi.git
 	md5sums = SKIP
 
