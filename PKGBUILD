@@ -5,7 +5,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=azcopy
-pkgver=10.22.2
+pkgver=10.23.0
 pkgrel=1
 pkgdesc="A command-line utility designed for copying data to/from Microsoft Azure"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha512sums=('c5bb7de120fb0259c1bfc01d81886835d1ecd0d4ee11b783027da431aed62f0cd8fbcde07d3ce92d38210bb50156554417a0ff39fc99e4886f817684eaf8e4ee')
+sha256sums=('9e8ff91f28074b180b063092142a182ca3dffdecf83d1966a85d1ea2f491ba9a')
 
 prepare() {
   cd "${srcdir}/azure-storage-azcopy-${pkgver}"
@@ -45,7 +45,7 @@ check() {
 
   # Skip failing tests - not sure why they fail.
   _unit_tests=$(
-    go list ./... \
+    go list -buildvcs=false ./... \
       | grep -v 'github.com/Azure/azure-storage-azcopy/v10/cmd' \
       | grep -v 'github.com/Azure/azure-storage-azcopy/v10/common' \
       | grep -v 'github.com/Azure/azure-storage-azcopy/v10/e2etest' \
