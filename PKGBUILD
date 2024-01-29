@@ -1,6 +1,6 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-readme-browser')
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="nwg-shell WebKitGTK-based README file browser"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'python-gobject' 'gtk3' 'webkit2gtk' 'gtk-layer-shell' 'python
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-readme-browser/archive/v"$pkgver".tar.gz")
 
-md5sums=('52964de3a3a31f093229721e4fbf3339')
+md5sums=('2956ac82426445016760404f7dd6e4a8')
 
 package() {
   cd "${pkgname}-${pkgver}"
