@@ -1,7 +1,7 @@
 # Maintainer: Maxim De Clercq <maximdeclercq00@gmail.com>
 # Contributor: Anders Blenstrup-Pedersen <abp at ryuu dot technology>
 pkgname=creality-print-appimage
-pkgver=4.3.6.6257
+pkgver=4.3.7.6627
 pkgrel=1
 pkgdesc="Creality Print is a slicer dedicated to FDM printers."
 arch=('x86_64')
@@ -18,11 +18,11 @@ _install_path="/opt/appimages/${_appimage_name}"
 
 noextract=("${_filename}")
 md5sums_x86_64=(
-  "b8490ba0b1da918096cd99ae44794bd2"
+  "05a4538e0c7222ce547eb8d58ef0251e"
   "eba3c0e5365cc454862becb642e113a9"
 )
 sha512sums_x86_64=(
-  "12448e0826d4d5fb130d1764ea073c64967dfe061b6cacc827de4e12e119a500d2883b90e1914e1c774f03f47f51a92ef0eb3969d977fbf8f601628442e0be6b"
+  "7eccdbfeaf5696014dcde34a9faefa282a3954023315e8383afbde12dd5552f1a606df2c4cebcb11f10fcca1dbd344821b665f5dcf1d8aadda7ca72548d11d9f"
   "5c0982b7475dae73cbc0ce5b96771b969ff7779daae452cf2e0d5d26fb43981c3e614485593f5306dfda9b3d3a6a2a8f319ef62b07d668479c60d82c8c1631b0"
 )
 source_x86_64=(
