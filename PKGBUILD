@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=ente
 pkgname="${_pkgname}-desktop-bin"
-pkgver=1.6.62
+pkgver=1.6.63
 _electronversion=25
 pkgrel=1
 pkgdesc="Desktop app for ente Photos"
@@ -10,36 +10,21 @@ arch=(
     'x86_64'
 )
 url="https://github.com/ente-io/photos-desktop"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'alsa-lib'
-    'libdrm'
-    'libxcb'
-    'libxcomposite'
-    'libx11'
-    'libxkbcommon'
-    'libxext'
-    'cairo'
     'gtk3'
-    'libxrandr'
     'hicolor-icon-theme'
-    'libxfixes'
     'nss'
-    'pango'
-    'at-spi2-core'
-    'expat'
-    'nspr'
-    'libxdamage'
-    'mesa'
-    'libcups'
+    'nodejs'
 )
 options=('!strip')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-aarch64.pacman")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x64.pacman")
-sha256sums_aarch64=('e82a7293704a636b2ce39322cc09ece9d6b815ccebdb1436bfb8fd62541ab387')
-sha256sums_x86_64=('29d5114679aee940e9a164fa5cb29dc3f29be20ee567491463cb6b43050b77e3')
+sha256sums_aarch64=('cdee39578e2e84f1e6a418116b9fe23cea82308fd5a2742025e4181aae24a8e3')
+sha256sums_x86_64=('2bf836ce96df3eb7d5304115da02d5ac0eeebad57eac8012d2724622b86dda07')
 build() {
     sed -e "s|/opt/${_pkgname}/${_pkgname} %U|${pkgname%-bin} --no-sandbox %U|g" \
         -e "s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g;s|Photography|Graphics|g" \

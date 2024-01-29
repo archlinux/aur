@@ -1,37 +1,22 @@
 pkgbase = ente-desktop-bin
 	pkgdesc = Desktop app for ente Photos
-	pkgver = 1.6.62
+	pkgver = 1.6.63
 	pkgrel = 1
 	url = https://github.com/ente-io/photos-desktop
 	arch = aarch64
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	depends = alsa-lib
-	depends = libdrm
-	depends = libxcb
-	depends = libxcomposite
-	depends = libx11
-	depends = libxkbcommon
-	depends = libxext
-	depends = cairo
 	depends = gtk3
-	depends = libxrandr
 	depends = hicolor-icon-theme
-	depends = libxfixes
 	depends = nss
-	depends = pango
-	depends = at-spi2-core
-	depends = expat
-	depends = nspr
-	depends = libxdamage
-	depends = mesa
-	depends = libcups
-	provides = ente-desktop=1.6.62
+	depends = nodejs
+	provides = ente-desktop=1.6.63
 	conflicts = ente-desktop
 	options = !strip
-	source_aarch64 = ente-desktop-1.6.62-aarch64.pacman::https://github.com/ente-io/photos-desktop/releases/download/v1.6.62/ente-1.6.62-aarch64.pacman
-	sha256sums_aarch64 = e82a7293704a636b2ce39322cc09ece9d6b815ccebdb1436bfb8fd62541ab387
-	source_x86_64 = ente-desktop-1.6.62-x86_64.pacman::https://github.com/ente-io/photos-desktop/releases/download/v1.6.62/ente-1.6.62-x64.pacman
-	sha256sums_x86_64 = 29d5114679aee940e9a164fa5cb29dc3f29be20ee567491463cb6b43050b77e3
+	source_aarch64 = ente-desktop-1.6.63-aarch64.pacman::https://github.com/ente-io/photos-desktop/releases/download/v1.6.63/ente-1.6.63-aarch64.pacman
+	sha256sums_aarch64 = cdee39578e2e84f1e6a418116b9fe23cea82308fd5a2742025e4181aae24a8e3
+	source_x86_64 = ente-desktop-1.6.63-x86_64.pacman::https://github.com/ente-io/photos-desktop/releases/download/v1.6.63/ente-1.6.63-x64.pacman
+	sha256sums_x86_64 = 2bf836ce96df3eb7d5304115da02d5ac0eeebad57eac8012d2724622b86dda07
 
 pkgname = ente-desktop-bin
