@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=tsibble
-_pkgver=1.1.3
+_pkgver=1.1.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Tidy Temporal Data Frames and Tools"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-anytime
   r-dplyr
@@ -44,12 +44,12 @@ optdepends=(
   r-timedate
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1ba30f678a5b2040bae0b41819efc97c')
-sha256sums=('1f4213eef8f6f2d6c82ac9f680b0e8f432ab2e3bf8ca09f328821a33a49e6561')
+md5sums=('9e43ff1fa59c9385ba04a2bd04e04bbd')
+b2sums=('5982bfd2397704b440da7bcdc5288302a795b49c60b0f17ce8abc8da01baab5db47fa02f7a5ab314acd8fbc330fa73318dc11d1aa34eebe2b83e9153b99efc18')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

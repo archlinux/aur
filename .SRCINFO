@@ -1,10 +1,10 @@
 pkgbase = r-tsibble
 	pkgdesc = Tidy Temporal Data Frames and Tools
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=tsibble
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-ggplot2
 	checkdepends = r-hms
 	checkdepends = r-nanotime
@@ -33,8 +33,8 @@ pkgbase = r-tsibble
 	optdepends = r-testthat
 	optdepends = r-tidyr
 	optdepends = r-timedate
-	source = https://cran.r-project.org/src/contrib/tsibble_1.1.3.tar.gz
-	md5sums = 1ba30f678a5b2040bae0b41819efc97c
-	sha256sums = 1f4213eef8f6f2d6c82ac9f680b0e8f432ab2e3bf8ca09f328821a33a49e6561
+	source = https://cran.r-project.org/src/contrib/tsibble_1.1.4.tar.gz
+	md5sums = 9e43ff1fa59c9385ba04a2bd04e04bbd
+	b2sums = 5982bfd2397704b440da7bcdc5288302a795b49c60b0f17ce8abc8da01baab5db47fa02f7a5ab314acd8fbc330fa73318dc11d1aa34eebe2b83e9153b99efc18
 
 pkgname = r-tsibble
