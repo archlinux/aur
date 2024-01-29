@@ -1,7 +1,7 @@
 # Maintainer: vmalloc vmalloc@olanfa.de
 pkgname=sys-hostaddr
 pkgver=0.993
-pkgrel=01
+pkgrel=02
 pkgdesc="provides methods to help retreive IP address and interface information about a local host"
 arch=('i686' 'x86_64')
 url="https://jeremy.kister.net/code/Sys-HostAddr-0.993/README"
