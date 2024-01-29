@@ -1,15 +1,15 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=harec
-pkgver=r1620.f735aba
+pkgver=r1834.f9e17e6
 pkgrel=1
 pkgdesc='The Hare programming language - bootstrapped compiler'
 arch=('x86_64' 'aarch64')
 url='https://harelang.org/'
 license=('GPL3')
-depends=('qbe')
+depends=('qbe-git')
 makedepends=('git')
-_commit='f735abab4516d2fb729e3ea7aee309eab5a1b0bf'
+_commit='f9e17e633845d8d38566b4ea32db0a29ac85d96e'
 source=("git+https://git.sr.ht/~sircmpwn/harec#commit=$_commit")
 b2sums=('SKIP')
 
@@ -19,10 +19,18 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
+prepare() {
   cd harec
 
-  ./configure --prefix=/usr
+  # configure prefix directory & architecture
+  sed \
+    -e 's:/usr/local:/usr:' \
+    -e "s/^ARCH = .*/ARCH = $CARCH/" \
+    configs/linux.mk > config.mk
+}
+
+build() {
+  cd harec
 
   make
 }
