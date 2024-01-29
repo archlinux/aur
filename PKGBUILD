@@ -2,8 +2,8 @@
 
 _pkgname=sslh
 pkgname=$_pkgname-git
-pkgver=2.0.1.r6.g92d2326
-pkgrel=3
+pkgver=2.0.1.r23.g3117c15
+pkgrel=2
 pkgdesc="Network port multiplexer. Allows sharing of HTTP, SSL, SSH, OpenVPN, tinc, XMPP, etc. on the same port"
 arch=('i686' 'x86_64')
 url='http://www.rutschle.net/tech/sslh.shtml'
@@ -29,6 +29,7 @@ prepare() {
 
 build() {
   cd $pkgname
+  ./configure
   make \
     VERSION=\"$pkgver-$pkgrel\" \
     USELIBCAP=1 \

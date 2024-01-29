@@ -1,7 +1,7 @@
 pkgbase = sslh-git
 	pkgdesc = Network port multiplexer. Allows sharing of HTTP, SSL, SSH, OpenVPN, tinc, XMPP, etc. on the same port
-	pkgver = 2.0.1.r6.g92d2326
-	pkgrel = 3
+	pkgver = 2.0.1.r23.g3117c15
+	pkgrel = 2
 	url = http://www.rutschle.net/tech/sslh.shtml
 	install = sslh.install
 	arch = i686
