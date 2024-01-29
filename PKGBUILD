@@ -13,10 +13,10 @@ sha256sums=('71a590eebe9e6e14f47479fc0f032bd7f54133464e986d3a62aba3fac807c8d7')
 
 package() {
   cd "$srcdir"
-  mkdir -p ${pkgdir}/usr/{bin,lib/fift,share/ton}
-  cp -a bin/* ${pkgdir}/usr/bin/
-  cp -ar share/* ${pkgdir}/usr/share/
-  cp -ar lib/* ${pkgdir}/usr/lib/
+  mkdir -p ${pkgdir}/usr/local/{bin,lib/fift,share/ton}
+  cp -a bin/* ${pkgdir}/usr/local/bin/
+  cp -ar share/* ${pkgdir}/usr/local/share/
+  cp -ar lib/* ${pkgdir}/usr/local/lib/
   # Fix permissions
-  chmod -R go-w "${pkgdir}"
+  chmod -R 755 "${pkgdir}"
 }
