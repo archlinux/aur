@@ -1,4 +1,3 @@
-
 #!/bin/sh
 set -e
 _APPDIR="/usr/lib/@appname@"
