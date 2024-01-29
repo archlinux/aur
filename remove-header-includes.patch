@@ -1,0 +1,12 @@
+--- adonthell-0.3.8/src/python_class.h	2024-01-29 00:14:42.704257813 -0300
++++ adonthell-0.3.8/src/python_class.h	2024-01-29 00:15:19.061407147 -0300
+@@ -34,9 +34,6 @@
+ 
+ #include <locale.h>
+ #include "Python.h"
+-#include "compile.h"
+-#include "eval.h"
+-#include "node.h"
+ #include "fileops.h"
+ 
+ #ifndef SWIG
