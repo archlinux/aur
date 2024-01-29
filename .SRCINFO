@@ -1,10 +1,14 @@
 pkgbase = krop
 	pkgdesc = A tool to crop PDF files, with an eye towards eReaders.
 	pkgver = 0.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://arminstraub.com/computer/krop
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	makedepends = sip
 	depends = python
 	depends = python-pypdf2
