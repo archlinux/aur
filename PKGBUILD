@@ -1,0 +1,44 @@
+# Maintainer: Alexandre Bouvier <contact@amb.tf>
+_pkgname=oaknut
+pkgname=$_pkgname-git
+pkgver=2.0.1.r0.g9d09110
+pkgrel=1
+pkgdesc="A C++20 assembler for AArch64 (ARMv8.0 to ARMv8.2)"
+arch=('any')
+url="https://github.com/merryhime/oaknut"
+license=('MIT')
+makedepends=('cmake' 'git')
+checkdepends=('catch2>=3')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url.git")
+b2sums=('SKIP')
+
+pkgver() {
+	cd $_pkgname
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	# https://github.com/merryhime/oaknut/pull/16
+	sed -i '/if (MASTER_PROJECT)/c if (BUILD_TESTING)' $_pkgname/CMakeLists.txt
+}
+
+build() {
+	cmake -S $_pkgname -B build \
+		-DBUILD_TESTING="$CHECKFUNC" \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-Wno-dev
+	cmake --build build
+}
+
+check() {
+	ctest --test-dir build
+}
+
+package() {
+	# shellcheck disable=SC2154
+	DESTDIR="$pkgdir" cmake --install build
+	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname $_pkgname/LICENSE
+}

@@ -1,0 +1,16 @@
+pkgbase = oaknut-git
+	pkgdesc = A C++20 assembler for AArch64 (ARMv8.0 to ARMv8.2)
+	pkgver = 2.0.1.r0.g9d09110
+	pkgrel = 1
+	url = https://github.com/merryhime/oaknut
+	arch = any
+	license = MIT
+	checkdepends = catch2>=3
+	makedepends = cmake
+	makedepends = git
+	provides = oaknut=2.0.1.r0.g9d09110
+	conflicts = oaknut
+	source = oaknut::git+https://github.com/merryhime/oaknut.git
+	b2sums = SKIP
+
+pkgname = oaknut-git
