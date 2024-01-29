@@ -2,24 +2,22 @@
 _pkgname=game_box
 pkgname="${_pkgname//_/-}-bin"
 pkgver=0.1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="An Old-gen console games emulator. This project only relies on the Qt framework.一款游戏家用机模拟器,仅依赖Qt框架"
 arch=('x86_64')
 url="https://github.com/QQxiaoming/game_box"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 options=('!strip')
 depends=(
-    'freetype2'
     'e2fsprogs'
-    'fontconfig'
     'libxcb'
-    'libx11'
     'libgpg-error'
-    'libdrm'
     'mesa'
     'libglvnd'
+    'freetype2'
+    'fontconfig'
 )
 makedepends=(
     'gendesk'
@@ -31,7 +29,7 @@ source=(
 )
 sha256sums=('f031db78f85ea318b17fd617823fa512990cf29879ed01a7989a88094130933e'
             '8410145a23e7c9bd51ada0ac251783079903ab8c3de44c500cf05f91b9745fac'
-            '2fd4cdf618b09ee32cab46f8c250ade97769d594160405c5af5ad82f0c3c9f2d')
+            '4155bf7d56e6c3386b6ff4a1557ca14e54a695fa04fc65e36d2853fc67853efb')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
