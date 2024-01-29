@@ -1,12 +1,12 @@
-# Maintainer: Baal <weiss.sebastian@gmx.net
-
+# Maintainer: Jeremy Gust <jeremy AT plasticsoup DOT net>
+# Contributor: Baal <weiss.sebastian@gmx.net>
 pkgname=theforceengine
 pkgver=1.09.540
 pkgrel=1
 pkgdesc='Modern "Jedi Engine" replacement supporting Dark Forces, mods, and in the future Outlaws.'
 arch=('x86_64')
 url="https://theforceengine.github.io/"
-license=('GPL2')
+license=('GPL-2.0-only')
 depends=('glew'
          'hicolor-icon-theme'
          'libgl'
@@ -35,5 +35,5 @@ build() {
 
 package() {
 	cd build
-	make DESTDIR="$pkgdir" install
+	make DESTDIR="${pkgdir}" install
 }
