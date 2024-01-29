@@ -2,7 +2,7 @@
 pkgname=freac-bin
 _appname="org.${pkgname%-bin}.${pkgname%-bin}"
 pkgver=1.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Audio converter and CD ripper with support for various popular formats and encoders."
 arch=(
     'aarch64'
@@ -12,7 +12,7 @@ arch=(
 )
 url="https://www.freac.org/"
 _ghurl="https://github.com/enzo1982/freac"
-license=('GPL2')
+license=('GPL-2.0-only')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
@@ -25,8 +25,8 @@ depends=(
     'libvorbis'
     'libcdio-paranoia'
     'curl'
-    'lib32-glibc'
     'pango'
+    'lib32-glibc'
 )
 makedepends=(
     'squashfuse'
@@ -36,7 +36,7 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.AppImage::${_ghurl}/releases/do
 source_i686=("${pkgname%-bin}-${pkgver}-i686.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-i686.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x86_64.AppImage")
 source=("${pkgname%-bin}.sh")
-sha256sums=('3a93ab88f95f3938bf41c0b94450176b51c15b46910f25e91898cf1b80a46d28')
+sha256sums=('25be804514c89c0fbf6bba90fafd7095b2a9fae69498cc397dcaf10ca8b12521')
 sha256sums_aarch64=('027a53acf9c083edaada7d9225d6b75b69020a8beec0b99e65e950a19716e37e')
 sha256sums_armv7h=('935a12b6c2b5113d6560c297ab6eceb8963d24b31020e1c7766f4095a08075a0')
 sha256sums_i686=('76db7d56f61c282f63d3ef80dfd7f5be690ccecf724f5e730a336930629dc4c8')
