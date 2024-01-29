@@ -1,20 +1,17 @@
 # Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 # -*- sh -*-
 
-pkgname=('jed-git')
+pkgname='jed-git'
 _pkgname="${pkgname/-git/}"
 pkgver=0.99.20.r180.g68f0c75
-pkgrel=6
+pkgrel=7
 pkgdesc='Powerful scriptable editor designed for use by programmers (built from latest git commit)'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url='https://www.jedsoft.org/jed/'
-source=(
-  'git://git.jedsoft.org/git/jed.git'
-  "$pkgname.install"
-)
+source=('git://git.jedsoft.org/git/jed.git')
 license=('GPL-2.0-or-later')  # SPDX-License-Identifier: GPL-2.0-or-later
-provides=('jed' 'xjed' 'rgrep')
-conflicts=('jed' 'xjed' 'rgrep')
+provides=('jed' 'jed-script' 'xjed' 'rgrep')
+conflicts=('jed' 'jed-script' 'xjed' 'rgrep')
 options=('lto' '!makeflags')
 depends=(
   'fontconfig'
@@ -73,18 +70,18 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname" || exit 1
+  cd "$srcdir/$_pkgname"
 
   make DESTDIR="$pkgdir" install
 
   install -Dm0755 'src/objs/rgrep' "$pkgdir/usr/bin/rgrep"
 
-  cd "$pkgdir/usr/share/jed/lib" || exit 1
+  cd "$pkgdir/usr/share/jed/lib"
 
   env JED_ROOT="$pkgdir/usr/share/jed" \
     "$pkgdir/usr/bin/jed" -batch -n -l preparse.sl
 }
 
-sha256sums=('SKIP' 'SKIP')  # Skip to my Lou
+sha256sums=('SKIP')
 
 # eof
