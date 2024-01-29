@@ -25,7 +25,7 @@ sha256sums=('7f20edeb4612386ae98d5dccfa4b37ad1f5336d4551de3375c3b16e81925b10a'
             '0408f6b4831fb5c05111c72aafcd1dc0f6fe66fbd1a0ab9ee7b00fd9cb184ea0')
 prepare() {
   # Use system's electron
-  sed '/linux/s/^/        "electronDist": "\/usr\/lib\/electron",\n/' "$srcdir/$_pkgname-$pkgver/package.json"
+  sed -i '/linux/s/^/        "electronDist": "\/usr\/lib\/electron",\n/' "$srcdir/$_pkgname-$pkgver/package.json"
 }
 
 build() {
