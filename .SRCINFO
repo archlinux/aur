@@ -1,0 +1,11 @@
+pkgbase = ttf-topaz
+	pkgdesc = Amiga 500 Topaz font updated for the 21st century
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/Screwtapello/topaz-unicode
+	arch = any
+	license = custom
+	source = https://gitlab.com/Screwtapello/topaz-unicode/-/jobs/6036905109/artifacts/download
+	sha512sums = 8ab867faa3f21f806c0657550f04d5f2bc6ddfa7ad6a5776690a1f24bd36d6008a1b876349632287110645811742be163880b38686b2d91df2ade07f3af2d16a
+
+pkgname = ttf-topaz
