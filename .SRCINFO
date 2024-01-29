@@ -1,6 +1,6 @@
 pkgbase = jlivertool
 	pkgdesc = Bilibili 弹幕机
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/Xinrea/JLiverTool
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = jlivertool
 	depends = java-runtime
 	provides = jlivertool
 	conflicts = jlivertool
-	source = jlivertool.git::git+https://github.com/Xinrea/JLiverTool.git#tag=v2.1.0
+	source = jlivertool.git::git+https://github.com/Xinrea/JLiverTool.git#tag=v2.1.1
 	source = jlivertool.sh
 	sha256sums = SKIP
 	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8

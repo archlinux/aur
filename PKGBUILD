@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jlivertool
 _pkgname=JLiverTool
-pkgver=2.1.0
+pkgver=2.1.1
 _electronversion=26
 pkgrel=1
 pkgdesc="Bilibili 弹幕机"
