@@ -1,7 +1,7 @@
 pkgbase = vesktop
 	pkgdesc = A standalone Electron app that loads Discord & Vencord
 	pkgver = 1.5.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/Vencord/Vesktop
 	arch = x86_64
 	arch = aarch64
