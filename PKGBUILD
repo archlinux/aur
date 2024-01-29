@@ -1,6 +1,5 @@
-# Maintainer: Maxim De Clercq <maximdeclercq00@gmail.com>
-# Contributor: Anders Blenstrup-Pedersen <abp at ryuu dot technology>
-pkgname=creality-print-appimage
+# Maintainer: Anders Blenstrup-Pedersen <abp at ryuu dot technology>
+pkgname=creality-print
 pkgver=4.3.7.6627
 pkgrel=1
 pkgdesc="Creality Print is a slicer dedicated to FDM printers."

@@ -1,4 +1,4 @@
-pkgbase = creality-print-appimage
+pkgbase = creality-print
 	pkgdesc = Creality Print is a slicer dedicated to FDM printers.
 	pkgver = 4.3.7.6627
 	pkgrel = 1
@@ -17,4 +17,4 @@ pkgbase = creality-print-appimage
 	sha512sums_x86_64 = 7eccdbfeaf5696014dcde34a9faefa282a3954023315e8383afbde12dd5552f1a606df2c4cebcb11f10fcca1dbd344821b665f5dcf1d8aadda7ca72548d11d9f
 	sha512sums_x86_64 = 5c0982b7475dae73cbc0ce5b96771b969ff7779daae452cf2e0d5d26fb43981c3e614485593f5306dfda9b3d3a6a2a8f319ef62b07d668479c60d82c8c1631b0
 
-pkgname = creality-print-appimage
+pkgname = creality-print
