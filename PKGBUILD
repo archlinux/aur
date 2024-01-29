@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=coal-launcher-bin
 _pkgname="Coal Launcher"
-pkgver=1.3.2
+pkgver=1.3.3
 _electronversion=22
-pkgrel=6
+pkgrel=1
 pkgdesc="A client to view and play games from the AB Coal website"
 arch=('x86_64')
 url="https://bobuxstation.github.io/Coal-Web/launcher.html"
@@ -19,7 +19,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Bobuxstation/Coal-Launcher/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9f87d39019ac25819fb971016f28905110610ca42b12428b77fdbf79955c93d3'
+sha256sums=('b6319013b0138565572d1cd0443fe651565e18dc44cf15fc2ba6a476e1c68c57'
             '0133c8e5890f9f848adde48b40a9c61dcff249ea3c0f5bcf6567901e7a697c49'
             '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
