@@ -1,9 +1,9 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=seabird
-pkgver=0.0.14
+pkgver=0.0.16
 pkgrel=1
-pkgdesc='Stock market tracker for hackers'
+pkgdesc='Native Kubernetes desktop client'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://getseabird.github.io'
 license=('MPL-2.0')
@@ -12,7 +12,7 @@ makedepends=('git' 'go' 'gobject-introspection')
 options=('!emptydirs' '!lto')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/get${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop")
-b2sums=('62f0b69ec74c0f523f4a3e6d8cc6e3a078f8ea5da8f317d298ff44a51099d71e9fa5941f13b966efc10ad6e2f25be95627940f661deb36874b7fca396c28ece5'
+b2sums=('513468b77830a28e2d8f723b7883bbe700078be174ecf7a53d06ddb1dac0dde6b5622c764baed8893d9f416f2965f661f042c1f33cd155b89f7bfab1b40a1da4'
         'c8e36b0ac8dd4c1b1b47802926fa52ae03d699b245c78a7b47a6652dc62d9e943eecf94af2a901c9801de71d12d47adf14b024b9f7446e4cd3bef426ba47a119')
 
 build() {
