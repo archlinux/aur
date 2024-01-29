@@ -3,7 +3,7 @@ pkgname=simplemediaupscalerlite-bin
 _pkgname=SimpleMediaUpscalerLite
 pkgver=2.0.0
 _electronversion=24
-pkgrel=4
+pkgrel=5
 pkgdesc="A Electron & CLI frontend to upscale images/videos using multiple different algorithms"
 arch=('x86_64')
 url="https://janishutz.com/projects/smuL"
@@ -26,7 +26,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('f70793f387a7028e55890b594c255312eb8a1e8e0284e4e30698be4835209d45'
-            '045c7cdf316fe8cba85e1d9b5f2b58ed1b0725f5efe28d7914df29304e2996a9')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
