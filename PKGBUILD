@@ -3,7 +3,7 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-asan-git
 pkgver=0.18.0.r6859.4688a371
-pkgrel=1
+pkgrel=2
 pkgdesc='Modular Wayland compositor library (git development version, with address sanitizer)'
 arch=(x86_64)
 url=https://gitlab.freedesktop.org/wlroots/wlroots
