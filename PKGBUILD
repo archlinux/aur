@@ -20,10 +20,8 @@ source=(
 	"bili-you"
 )
 noextract=()
-md5sums=(
-	"SKIP"
-	"SKIP"
-)
+md5sums=('d5edb9c731d408ee4ffbace1bd8ceacb'
+         'b7f665b6897f82734d5f57179ae397c0')
 validpgpkeys=()
 function package() {
 	mkdir -p "${pkgdir}"/usr/share/applications
