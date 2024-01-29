@@ -1,8 +1,8 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vpkedit
-pkgver=3.7.0
+pkgver=4.0.0
 pkgrel=1
-pkgdesc="A library and tool to create, read, and write Valve VPK archives"
+pkgdesc="A library and CLI/GUI tool to create, read, and write several pack file formats"
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKEdit"
 license=('MIT')
@@ -10,12 +10,16 @@ depends=('gcc-libs' 'glibc' 'qt6-base' 'hicolor-icon-theme')
 makedepends=('cmake' 'git' 'gcc')
 optdepends=('qt6-wayland: Wayland support')
 source=("$pkgname::git+$url.git#tag=v${pkgver}"
+		"argparse::git+https://github.com/p-ranav/argparse"
 		"vtflib::git+https://github.com/StrataSource/VTFLib.git"
 		"saap::git+https://github.com/Trico-Everfire/SteamAppPathProvider.git"
 		"speedykeyv::git+https://github.com/ozxybox/SpeedyKeyV.git"
 		"studiomodelpp::git+https://github.com/craftablescience/studiomodelpp.git"
-		"bufferstream::git+https://github.com/craftablescience/BufferStream.git")
+		"bufferstream::git+https://github.com/craftablescience/BufferStream.git"
+		"minizip-ng::git+https://github.com/zlib-ng/minizip-ng.git")
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -30,7 +34,10 @@ prepare() {
 	do
 		git config submodule.src/gui/thirdparty/$submodule.url "$srcdir/${submodule}"
 	done
+	git config submodule.src/cli/thirdparty/argparse.url "$srcdir/argparse"
+	git config submodule.src/lib/thirdparty/minizip-ng.url "$srcdir/minizip-ng"
 	git -c protocol.file.allow=always submodule update
+
 
 	cd "$srcdir/$pkgname/src/gui/thirdparty/studiomodelpp/"
 	git submodule init
