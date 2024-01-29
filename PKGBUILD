@@ -3,7 +3,7 @@
 # Contributor: Moses Narrow <moe_narrow@use.startmail.com>
 
 pkgname="pterodactyl-panel"
-pkgver=1.11.3
+pkgver=1.11.5
 pkgrel=1
 pkgdesc="An open-source game server management panel"
 url="https://pterodactyl.io/"
@@ -19,10 +19,10 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/pterodactyl/panel/releases/
         "pterodactyl-queue.service"
         "pterodactyl-scheduler.service"
         "pterodactyl-scheduler.timer")
-sha256sums=('5bd48cf0fe5fd605ced51928a35eff436cab163cfb60f5616dd29dec9ad3e657'
-            '0f6e444671802f5fc162380a6c6116adf845156704e035170dcc3cea80307bc6'
-            '4e98afb6d923c1f74048e9fc633694702ed60c192550cd50693bebacab18e791'
-            'd627c8beb19d3203432958103c8565355b41f92bf2e34a2e11f4662d97996cf6')
+b2sums=('292d9142cd69f728642c3be82c8e703e01efdf9b0b74b95b0fd4c65b6c7a627df2cce1311c9b8c316ab075622206250be512e664d880cc496b321b4460577240'
+        'c59cd8370e4360538038fa2a6daac10c327407c3c2e71b1d9b60b107c2f69ab5377f22d4d8e00c7e0cdc9c882aa0ae663531f4ee12e39cc58e20ef66d5e4d48e'
+        '38fa485a2d71cb9e7b5d181ded53bc9e228628cafb854ca9bd7087895b42af78b735c636840e3f2f74abdad03fa4682cc81d5b34972498ddbaf41a6f784469a2'
+        '8924479c22eaff27483d0d85ec2c2385193d754adac6b655e0ef986bec1ab871c4a269f511b8f4a2b98b5f89ee45d0ed300ce1f632a2d33a2e0260e8e4a66ad7')
 # extract later the archive content in a dedicated folder
 # otherwise it will extract everything in "$srcdir"
 noextract=("$pkgname-$pkgver.tar.gz")
