@@ -3,7 +3,7 @@
 # Contributor: duxet <duxetlg@gmail.com>
 pkgname=k3s-1.29-bin
 pkgver=1.29.0+k3s1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight Kubernetes"
 url="https://k3s.io"
 license=('Apache')
@@ -11,7 +11,7 @@ arch=('x86_64' 'armv7h' 'aarch64')
 provides=('k3s')
 conflicts=('k3s')
 
-#backup=("etc/conf.d/k3s")
+backup=("etc/conf.d/k3s")
 
 source=(
   "k3s.service"
