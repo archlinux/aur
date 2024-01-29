@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Kescher <jeremy@kescher.at>
 pkgname=hellpot
 _targetname=hellpot
-pkgver=0.3
+pkgver=0.4.1
 pkgrel=1
 _srcname=HellPot-$pkgver
 pkgdesc="An endless honeypot that sends bots to hell."
@@ -19,11 +19,11 @@ source=(
     "config.toml"
 )
 backup=('etc/hellpot/config.toml')
-sha256sums=('b674f47d63d0bff68dc2f427970134f813789a9768c605368fe9bb8380fd76c4'
+sha256sums=('614b92c7a55b06083287adb752b0e5dfd93361a0c9e2927a6c2de67e917cfac8'
             '0136fd65b73e678d12ddff09cd5f71bfea360787cf7955770fe95b64dabe8274'
             'a370bd1f4f1caa1aa4777e3a6cb6c752f711721c9913e09c78a11d304bc53b37'
             'd462d4a84021cb2ce0052ba6c46ad0ea6e7aab7a9459d048de892d8503a99aee'
-            '8da2c84ec00ff3fc09a468c5389bf9388d3ca59184acfe65f1976e17840371bf')
+            '5663856679a38a69572683f9720c4a20aeaf3eb6a26f5ca067e23d4fcc2b28ac')
 
 build() {
   cd "$srcdir/$_srcname"
