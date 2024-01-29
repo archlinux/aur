@@ -1,14 +1,14 @@
-# Maintainer: vmalloc vmalloc@cyborg-connect.de
+# Maintainer: vmalloc vmalloc@olanfa.de
 pkgname=clockspeed
 pkgver=0.62
-pkgrel=00
-pkgdesc="clockspeed uses a hardware tick counter to compensate for a persistently fast or slow system clock"
+pkgrel=01
+pkgdesc="a hardware tick counter to compensate for a persistently fast or slow system clock"
 arch=('i686' 'x86_64')
-url="http://cr.yp.to/clockspeed.html"
+url="https://cr.yp.to/clockspeed.html"
 license=('GPL')
 depends=()
 makedepends=()
-source=("http://cr.yp.to/clockspeed/$pkgname-$pkgver.tar.gz"
+source=("https://cr.yp.to/clockspeed/$pkgname-$pkgver.tar.gz"
 'clockspeed-0.62.errno.patch')
 
 sha512sums=('4dae1cfcfc5eb1398fd5a7642ff91987487d9828d314d4bd9f93cdadc60fe99889280a7f8e9192674ed19d246bd4a450ad32b1258e450216111c488074db7978'
