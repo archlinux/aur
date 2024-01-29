@@ -1,6 +1,6 @@
 pkgbase = python-owega
 	pkgdesc = TUI / CLI interface for conversing with GPT models (from OpenAI)
-	pkgver = 4.12.10
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://pypi.org/project/owega/
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-owega
 	depends = python-pygame
 	depends = python-requests
 	depends = python-tiktoken
-	source = https://files.pythonhosted.org/packages/source/o/owega/owega-4.12.10.tar.gz
-	b2sums = a5d3ac8e70fc258b290ae341d7dbb5b6c4800395e74c8022e7a274b71f7c7ee2abe7ab4a881390fac4ec53bc43a16906d878b744080901f99f7f08675b68344e
+	source = https://files.pythonhosted.org/packages/source/o/owega/owega-5.0.0.tar.gz
+	b2sums = eb87c172a5f2f99d56acd7c26beecee6c4822c1e4aff61f552e3572da87b164b6159d7e8fab7cbb1056fdc984649fdd83c41547c983234e055fa2bfb69a3f33e
 
 pkgname = python-owega
