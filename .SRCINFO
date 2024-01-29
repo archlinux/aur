@@ -1,7 +1,7 @@
 pkgbase = osmo-trx
 	pkgdesc = GSM Radio Modem based on a fork of the OpenBTS Transceiver program
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osmocom.org/projects/osmotrx
 	arch = i686
 	arch = x86_64
