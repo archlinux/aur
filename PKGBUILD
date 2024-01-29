@@ -3,19 +3,19 @@
 # Contributor: fortea
 
 pkgname=apx
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Package manager with support for multiple sources'
 arch=(x86_64 aarch64)
 url='https://github.com/Vanilla-OS/apx'
-license=(GPL3)
+license=(GPL-3.0-only)
 depends=(
   distrobox
   glibc
 )
 makedepends=(go)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('d3a60e8032f74aa110f9d284d55668cf04f489ef9f3bebe18a88612a88279ac1752fed91e02f704058111f4dd2a6c4a90a1b511805d810d0f85174a38638b67c')
+b2sums=('0ff60546fcce40c808d3aa8c27faebf2c1c0d29c8b7ee2534ec2fde93f5d2bc5c9f5c33a61eafea2c931f4195585209307e853ce722ea2a4636ced9680adb11a')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
