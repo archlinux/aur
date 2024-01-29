@@ -7,7 +7,7 @@
 pkgname=osu-lazer-bin
 _pkgname=${pkgname%-bin}
 pkgver=2024.114.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The future of osu! and the beginning of an open era! Commonly known by the codename osu!lazer. Pew pew."
 arch=(x86_64)
 url="https://osu.ppy.sh"
@@ -23,7 +23,7 @@ conflicts=(osu-lazer)
 options=(!strip)
 source=(
   "$_pkgname-$pkgver.AppImage::https://github.com/ppy/osu/releases/download/$pkgver/osu.AppImage"
-  "lazer.png"
+  "icon.png"
   "https://raw.githubusercontent.com/ppy/osu-resources/master/LICENCE.md"
   "osu-lazer.desktop"
   "osu-lazer-uri-handler.desktop"
@@ -44,7 +44,7 @@ package() {
   install -Dm755 -t "$pkgdir/usr/bin" osu-lazer
 
   # Install pixmap, desktop and license file
-  install -Dm644 lazer.png "$pkgdir/usr/share/pixmaps/osu-lazer.png"
+  install -Dm644 icon.png "$pkgdir/usr/share/pixmaps/osu-lazer.png"
   install -Dm644 -t "$pkgdir/usr/share/applications" osu-lazer.desktop
   install -Dm644 -t "$pkgdir/usr/share/applications" osu-lazer-uri-handler.desktop
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENCE.md
