@@ -5,7 +5,7 @@ _vlcver=3.0.20
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=6
+pkgrel=7
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64' 'aarch64')
@@ -24,12 +24,13 @@ _libvpxver=1.14
 _livemedia=2023.01.19
 _mpg123ver=1.32.2
 _protobufver=25
+_taglibver=2
 _srtver=1.5
 _x264ver=0.164
 _x265ver=3.5
 depends=(
   'a52dec' 'aribb24' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'luajit' 'libidn'
-  'libmatroska' 'taglib' 'libmpcdec' 'faad2' 'libmad'
+  'libmatroska' "taglib>=$_taglibver" 'libmpcdec' 'faad2' 'libmad'
   'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
   'libarchive' 'qt5-base' "ffmpeg>=6"
   'qt5-x11extras' 'qt5-svg' 'freetype2' 'fribidi' 'harfbuzz'
@@ -127,9 +128,11 @@ conflicts=("${_name}" 'vlc-dev' 'vlc-plugin' 'vlc-stable-git')
 provides=("${_name}=${pkgver}")
 options=('!emptydirs')
 source=(https://download.videolan.org/${_name}/${_vlcver}/${_name}-${_vlcver}${_vlcfixupver}.tar.xz
-        'update-vlc-plugin-cache.hook')
+        'update-vlc-plugin-cache.hook'
+        'taglib-2.patch')
 sha512sums=('02e58fb52dd75bf483ac4b298aecf86463b13d4782173d164adba6e4552d9262ff5e2ee1cbe1bce2c8a809801b79f328c6a8c475d34ae62aefaea02ae5ade406'
-            'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3')
+            'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3'
+            'ea0d1e1dfed16dac8f9027eb55d987dee59630568b9744ceb42bfa134ea9295252d83574f3d793a76a5be3b02661c1731ed366003b6b55b2d7f02fde70586ff3')
 
 prepare() {
   cd ${_name}-${_vlcver}
