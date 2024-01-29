@@ -1,0 +1,13 @@
+pkgbase = devexcuse-git
+	pkgdesc = This script will fetch a random developer excuse from the web while also keeping an offline database.
+	pkgver = r5.e0b820f
+	pkgrel = 1
+	url = https://github.com/K4R7IK/DevExcuse
+	arch = any
+	license = MIT
+	makedepends = curl
+	makedepends = jq
+	source = git+https://github.com/K4R7IK/DevExcuse.git
+	sha256sums = SKIP
+
+pkgname = devexcuse-git
