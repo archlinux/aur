@@ -2,10 +2,10 @@
 # Contributor: gilbus <aur(AT)tinkershell.eu>
 
 pkgname=cage-git
-pkgver=0.1.5.r13.g34eb3ec
+pkgver=0.1.5.r31.g8a00921
 pkgrel=1
 pkgdesc="Kiosk compositor for Wayland"
-depends=(glibc wayland wlroots0.16 libxkbcommon pixman)
+depends=(glibc wayland wlroots libxkbcommon)
 makedepends=(git meson scdoc wayland-protocols xorg-server-xwayland)
 optdepends=(
     'polkit: System privilege control. Required if not using seatd service'
@@ -30,9 +30,8 @@ pkgver() {
 
 build() {
     cd "$srcdir/$pkgname"
-    export PKG_CONFIG_PATH='/usr/lib/wlroots0.16/pkgconfig'
-	meson setup --buildtype=release -Dxwayland=true --prefix /usr "$srcdir/build"
-	ninja -C "$srcdir/build"
+    meson setup --buildtype=release --prefix /usr "$srcdir/build"
+    ninja -C "$srcdir/build"
 }
 
 check() {
