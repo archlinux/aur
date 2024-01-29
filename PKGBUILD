@@ -40,7 +40,6 @@ package_eigenpy() {
     install -Dm644 "$pkgbase-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-
 package_eigenpy-docs() {
     DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
     rm -rf $pkgdir/usr/{lib,include,bin,share/{"$_pkgname",ament,ament_index}}
