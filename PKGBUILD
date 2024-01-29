@@ -23,4 +23,5 @@ sha256sums=('5d13e94802d73732dd71f96e556c28a09ce34bd6fa0c446a579c5052e38583dd')
 
 package() {
 	bsdtar -xf data.tar.* -C $pkgdir
+	chmod -R 755 $pkgdir/usr
 }
