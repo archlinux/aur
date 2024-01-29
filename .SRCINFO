@@ -1,6 +1,6 @@
 pkgbase = python-multiprocess
 	pkgdesc = better multiprocessing and multithreading in python
-	pkgver = 0.70.15
+	pkgver = 0.70.16
 	pkgrel = 1
 	url = https://github.com/uqfoundation/multiprocess
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-multiprocess
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-dill
-	source = https://github.com/uqfoundation/multiprocess/archive/multiprocess-0.70.15.tar.gz
-	sha512sums = b2413ad24c2c8af5b962b22e2343e77e7f33e271f763b3a5426f945d6869bc3684645e62dec80234c10506d12e2bed3edd725a796d75d87409372210032930b8
+	source = multiprocess-0.70.16.tar.gz::https://github.com/uqfoundation/multiprocess/archive/0.70.16.tar.gz
+	sha512sums = b38d0337e1b90ed43c3c8877d7ce3c5729950fd8f1ad8cd4561ece12848eff7ca7d8769f7cef3508735e16c1c2d76d1b17439f275ca52f9c13117e9346e645fa
 
 pkgname = python-multiprocess
