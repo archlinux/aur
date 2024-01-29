@@ -77,7 +77,6 @@ optdepends=(
   libgphoto2
 )
 
-makedepends=(${makedepends[@]} ${depends[@]})
 install=${pkgname}.install
 source=(
     proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-${_srctag}
