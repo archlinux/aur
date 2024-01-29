@@ -5,11 +5,11 @@
 
 pkgname=nheko
 pkgver=0.11.3
-pkgrel=6
+pkgrel=7
 pkgdesc="Desktop client for the Matrix protocol"
 arch=('x86_64')
 url="https://nheko.im/nheko-reborn/nheko"
-license=(GPL3)
+license=(GPL-3.0-or-later)
 depends=(qt5-svg qt5-quickcontrols2 qt5-graphicaleffects qt5-multimedia qtkeychain-qt5 \
         coeurl mtxclient lmdb cmark libolm hicolor-icon-theme gst-plugins-bad-libs\
         'org.freedesktop.secrets')

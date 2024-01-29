@@ -1,10 +1,10 @@
 pkgbase = nheko
 	pkgdesc = Desktop client for the Matrix protocol
 	pkgver = 0.11.3
-	pkgrel = 6
+	pkgrel = 7
 	url = https://nheko.im/nheko-reborn/nheko
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = boost
