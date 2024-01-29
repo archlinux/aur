@@ -1,51 +1,63 @@
-# Maintainer: Kevin Stolp <kevinstolp@gmail.com>
+# Maintainer: Bin Jin <bjin@ctrl-d.org>
+# Contributor: Kevin Stolp <kevinstolp@gmail.com>
 # Contributor: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
-pkgname=zfs-utils
-pkgver=2.2.2
+_pkgname=zfs
+_git_repo=https://github.com/openzfs/zfs.git
+_git_branch="$(/usr/bin/git ls-remote -h --sort=-v:refname "${_git_repo}" 'zfs-*-staging' | head -n 1)"
+_git_branch=${_git_branch##*/}
+
+pkgname=${_pkgname}-utils-staging-git
+pkgver=2.2.2.r43.g3425484eb9
 pkgrel=1
-pkgdesc="Userspace utilities for the Zettabyte File System."
+pkgdesc="Userspace utilities for the Zettabyte File System (release staging branch)."
 arch=("i686" "x86_64" "aarch64")
 url="https://zfsonlinux.org/"
-license=('CDDL')
+license=('CDDL-1.0')
 optdepends=('python: for arcstat/arc_summary/dbufstat')
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${pkgver}/zfs-${pkgver}.tar.gz"{,.asc}
+conflicts=("${_pkgname}-utils")
+source=("${_pkgname}::git+${_git_repo}#branch=${_git_branch}"
         "zfs-node-permission.conf"
         "zfs.initcpio.install"
         "zfs.initcpio.hook")
-sha256sums=('76bc0547d9ba31d4b0142e417aaaf9f969072c3cb3c1a5b10c8738f39ed12fc9'
-            'SKIP'
+sha256sums=('SKIP'
             '7ad45fd291aa582639725f14d88d7da5bd3d427012b25bddbe917ca6d1a07c1a'
             '2f09c742287f4738c7c09a9669f8055cd63d3b9474cd1f6d9447152d11a1b913'
             '15b5acea44225b4364ec6472a08d3d48666d241fe84c142e1171cd3b78a5584f')
-b2sums=('f0619ae42d898d18077096217d0a9ddd7c7378424707aa51d3645661b2889a1459bc4a5e9fe42b6860b2d26e4600da35765b0e741725dafacc2ead2370cad866'
-        'SKIP'
-        '7eb3408b1354a4dd504000739101afc7ec0aed1afcdfa029552bf6989e9a8cd4a95b3d3563b3fb7902afa30a80fb01a3f5a2d5af82f9c734c48b5cc23aac25ca'
-        'cb774227f157573f960bdb345e5b014c043a573c987d37a1db027b852d77a5eda1ee699612e1d8f4a2770897624889f1a3808116a171cc4c796a95e3caa43012'
-        '779c864611249c3f21d1864508d60cfe5e0f5541d74fb3093c6bdfa56be2c76f386ac1690d363beaee491c5132f5f6dbc01553aa408cda579ebca74b0e0fd1d0')
-validpgpkeys=('4F3BA9AB6D1F8D683DC2DFB56AD860EED4598027'  # Tony Hutter (GPG key for signing ZFS releases) <hutter2@llnl.gov>
-              'C33DF142657ED1F7C328A2960AB9E991C6AF658B') # Brian Behlendorf <behlendorf1@llnl.gov>
 backup=('etc/default/zfs'
         'etc/zfs/zed.d/zed.rc')
 
 prepare() {
-    cd "${srcdir}"/zfs-${pkgver}
+    cd "${srcdir}/${_pkgname}"
+
+    msg2 "Staging branch set to ${_git_branch}"
 
     # pyzfs is not built, but build system tries to check for python anyway
     ln -sf /bin/true python3-fake
+}
 
-    autoreconf -fi
+pkgver() {
+    cd "${srcdir}/${_pkgname}"
+
+    METAVER=$(grep -F Version "${srcdir}/${_pkgname}/META" | tr -d '[:space:]')
+    METAVER=${METAVER##*:}
+    printf "%s.r%s.g%s" "${METAVER}" "$(git rev-list zfs-${METAVER}..HEAD --count)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
+    cd "${srcdir}/${_pkgname}"
+
+    # modify META after pkgver() called
+    sed -i -e "s/Version:[[:print:]]*/Version:       ${pkgver}/" META
+    sed -i -e "s/Release:[[:print:]]*/Release:       ${pkgrel}/" META
+    autoreconf -fi
+
     # Disable tree vectorization. Related issues:
     # https://github.com/openzfs/zfs/issues/13605
     # https://github.com/openzfs/zfs/issues/13620
     export CFLAGS="$CFLAGS -fno-tree-vectorize"
     export CXXFLAGS="$CXXFLAGS -fno-tree-vectorize"
-
-    cd "${srcdir}"/zfs-${pkgver}
 
     ./configure --prefix=/usr \
                 --sysconfdir=/etc \
@@ -62,7 +74,9 @@ build() {
 }
 
 package() {
-    cd "${srcdir}"/zfs-${pkgver}
+    provides=("${_pkgname}-utils=${pkgver}")
+
+    cd "${srcdir}/${_pkgname}"
 
     make DESTDIR="${pkgdir}" install
     install -D -m644 contrib/bash_completion.d/zfs "${pkgdir}"/usr/share/bash-completion/completions/zfs
