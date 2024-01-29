@@ -20,7 +20,7 @@ package() {
     for dir in aod-*/ ; do mv "${dir}" "$_pkgname" ;done
     cp -r "$srcdir/$_pkgname/$pkgname.png" "$pkgdir/usr/share/pixmaps"
     cp -r "$srcdir/$_pkgname/." "$pkgdir/usr/share/games/$_pkgname"
-    mv "$srcdir/$pkgname/aod" "$pkgdir/usr/bin"  
+    mv "$srcdir/$_pkgname/aod" "$pkgdir/usr/bin"  
 
     # Desktop Entry
     install -Dm644 "$srcdir/$_pkgname/$_pkgname.desktop" \
