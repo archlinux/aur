@@ -47,8 +47,9 @@ _builddir="build"
 _builddir_pkgver="build-pkgver"
 
 _meson_setup() {
-	CFLAGS="$CFLAGS -fsanitize=address,undefined" arch-meson \
+	arch-meson \
 		--buildtype=debug \
+		-Db_sanitize=address,undefined \
 		-Dwerror=false \
 		-Dexamples=false \
 		"${pkgname}" "$1"
