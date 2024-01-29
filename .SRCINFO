@@ -1,0 +1,21 @@
+pkgbase = ofxstatement-sparkasse-de-git
+	pkgdesc = ofxstatement plugin to import Sparkasse PDF statements
+	pkgver = r10.8f93b9f
+	pkgrel = 1
+	url = https://github.com/FliegendeWurst/ofxstatement-sparkasse-de
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python3
+	depends = ofxstatement
+	depends = python-pdfplumber
+	provides = ofxstatement-sparkasse-de
+	conflicts = ofxstatement-sparkasse-de
+	source = ofxstatement-sparkasse-de::git+https://github.com/FliegendeWurst/ofxstatement-sparkasse-de.git
+	md5sums = SKIP
+
+pkgname = ofxstatement-sparkasse-de-git
