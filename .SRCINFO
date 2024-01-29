@@ -1,7 +1,7 @@
 pkgbase = firefox-kde-opensuse-no-telemetry
 	pkgdesc = Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE, no telemetry
 	pkgver = 121.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openSUSE/firefox-maintenance
 	arch = i686
 	arch = x86_64
