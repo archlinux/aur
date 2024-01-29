@@ -1,7 +1,7 @@
 pkgbase = r-tiledb
 	pkgdesc = Modern Database Engine for Multi-Modal Data via Sparse and Dense Multidimensional Arrays
 	pkgver = 0.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=tiledb
 	arch = x86_64
 	license = MIT
