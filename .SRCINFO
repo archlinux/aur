@@ -13,10 +13,10 @@ pkgbase = python-rich-git
 	depends = python-colorama
 	depends = python-markdown-it-py
 	depends = python-pygments
-	provides = python-rich-git=13.7.0
+	provides = python-rich=13.7.0
 	provides = rich-git=13.7.0
 	provides = rich=13.7.0
-	conflicts = python-rich-git
+	conflicts = python-rich
 	conflicts = rich-git
 	conflicts = rich
 	source = git+https://github.com/willmcgugan/rich.git

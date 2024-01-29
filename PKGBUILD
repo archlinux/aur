@@ -34,12 +34,12 @@ makedepends=(
   "${_py}-"{build,installer,poetry-core,wheel}
 )
 provides=(
-  "${pkgbase}=${pkgver}"
+  "${_pkgbase}=${pkgver}"
   "${_pkg}-git=${pkgver}"
   "${_pkg}=${pkgver}"
 )
 conflicts=(
-  "${pkgbase}"
+  "${_pkgbase}"
   "${_pkg}-git"
   "${_pkg}"
 )
