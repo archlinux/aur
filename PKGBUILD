@@ -2,10 +2,10 @@
 
 pkgname=modbus-tcp-client-shm
 pkgrel=1
-pkgver=1.4.0
+pkgver=1.5.2
 pkgdesc="modbus tcp client that stores its data (registers) in shared memory"
 url="https://github.com/NikolasK-source/modbus_tcp_client_shm"
-license=('MIT')
+license=('GPL-3.0-only')
 arch=('x86_64' 'aarch64')
 makedepends=('cmake' 'git')
 source=("git+https://github.com/NikolasK-source/modbus_tcp_client_shm.git#tag=v${pkgver}")
@@ -28,5 +28,4 @@ build() {
 package() {
     cd modbus_tcp_client_shm
     install -Dm755 build/modbus-tcp-client-shm "${pkgdir}/usr/bin/modbus-tcp-client-shm"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
