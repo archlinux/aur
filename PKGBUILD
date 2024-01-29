@@ -5,12 +5,12 @@
 _gemname=taglib-ruby
 pkgname=ruby-$_gemname
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Ruby interface for the taglib C++ library'
 arch=(i686 x86_64)
 url='http://robinst.github.io/taglib-ruby/'
 license=(MIT)
-depends=(ruby taglib)
+depends=(ruby taglib1)
 makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
@@ -18,8 +18,31 @@ noextract=($_gemname-$pkgver.gem)
 sha256sums=('2b13af2bb4649c1ea84bacb5b294872e9a1d323c429974c0f9f46a2007866c7b')
 
 package() {
+  export TAGLIB_DIR='/usr/lib/taglib1'
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  # remove unrepreducible files
+  rm --force --recursive --verbose \
+    "${pkgdir}/${_gemdir}/cache/" \
+    "${pkgdir}/${_gemdir}/gems/${_gemname}-${pkgver}/vendor/" \
+    "${pkgdir}/${_gemdir}/doc/${_gemname}-${pkgver}/ri/ext/"
+  find "${pkgdir}/${_gemdir}/gems/" \
+    -type f \
+    \( \
+      -iname "*.o" -o \
+      -iname "*.c" -o \
+      -iname "*.so" -o \
+      -iname "*.time" -o \
+      -iname "gem.build_complete" -o \
+      -iname "Makefile" \
+    \) \
+    -delete
+  find "${pkgdir}/${_gemdir}/extensions/" \
+    -type f \
+    \( \
+      -iname "mkmf.log" -o \
+      -iname "gem_make.out" \
+    \) \
+    -delete
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
