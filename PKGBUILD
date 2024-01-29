@@ -10,7 +10,7 @@
 
 pkgname=apt-cacher-ng
 pkgver=3.7.4
-pkgrel=8
+pkgrel=9
 pkgdesc="A caching proxy specialized for package files"
 url="http://www.unix-ag.uni-kl.de/~bloch/acng/"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -22,6 +22,7 @@ source=("http://deb.debian.org/debian/pool/main/a/apt-cacher-ng/apt-cacher-ng_${
         'https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/core/pacman-mirrorlist/mirrorlist'
         'acng.conf.patch'
         'apt-cacher-ng.service.patch'
+        'have_strlcpy.patch'
         'apt-cacher-ng.tmpfile'
 )
 
@@ -31,10 +32,13 @@ sha256sums=('63140473a669c42f5e2219e38fa9d7c733f9047699dde52c3bd828e372929a5f'
             '5d622ca30f7a47e6e9cd536720912e0ef0a1ee96d4a5f3fe7c119cb495aec76f'
             '695c074de35a75730e6b711960993f00f120634276349c8640db2ad883a5ad09'
             'c89335ea833fc04ec2ce6598e3fdaf86aa8f2fa0892203eef4c0a5cb24d6c188'
+            '0d584e8193ab2c63d4d629c4fdca23e09dc369953a60c57cbb4a6138b5136265'
             'ead4e80771f88b42d922aff6c62da93ae9c9b001a071043e2092949f2337b459')
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}
+  patch -i ${srcdir}/have_strlcpy.patch -p0
+
   # === uncomment the next line to update mirrors [w3m package is needed]; it will take some time ===
   #make -f scripts/Makefile.release gendbs
 

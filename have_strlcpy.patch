@@ -1,0 +1,22 @@
+--- src/meta.cc	2021-12-07 15:43:56.000000000 +0100
++++ src/meta.cc	2024-01-29 10:37:54.364239368 +0100
+@@ -831,7 +831,7 @@
+     return true;
+ }
+ 
+-#if !defined(HAVE_STRLCPY) || !HAVE_STRLCPY
++#if !defined(HAVE_STRLCPY) || !(HAVE_STRLCPY + 0)
+ size_t strlcpy(char *tgt, const char *src, size_t tgtSize)
+ {
+     auto p = src;
+--- src/meta.h	2021-12-07 15:43:56.000000000 +0100
++++ src/meta.h	2024-01-29 10:38:22.020015700 +0100
+@@ -323,7 +323,7 @@
+ static constexpr string_view svRN = szRN;
+ static constexpr string_view svLF = "\n";
+ 
+-#if !defined(HAVE_STRLCPY) || !HAVE_STRLCPY
++#if !defined(HAVE_STRLCPY) || !(HAVE_STRLCPY + 0)
+ size_t strlcpy(char *tgt, const char *src, size_t tgtSize);
+ #endif
+ }
