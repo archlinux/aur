@@ -15,6 +15,7 @@ pkgbase = fluster
 	makedepends = python-black
 	makedepends = python-pylint
 	makedepends = flake8
+	makedepends = mypy
 	depends = python
 	source = git+https://github.com/fluendo/fluster.git#branch=master
 	sha256sums = SKIP
