@@ -1,4 +1,8 @@
+# SPDX-License-Identifier: AGPL-3.0
+#
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer:  Truocolo <truocolo@aol.com>
+# Maintainer:  Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
@@ -23,7 +27,23 @@ build() {
 
 package() {
   cd "pythonfutures-$pkgver"
-  python2 setup.py install --root "$pkgdir/" --optimize=1 --skip-build
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+  python2 \
+    setup.py \
+      install \
+        --root "${pkgdir}" \
+	--optimize=1 \
+	--skip-build
+  install \
+    -Dm 644 \
+    LICENSE \
+    -t \
+    "$pkgdir/usr/share/licenses/$pkgname/"
+  install \
+    -Dm \
+      644 \
+    README.rst \
+    -t \
+   "$pkgdir/usr/share/doc/$pkgname/"
 }
+
+# vim:set sw=2 sts=-1 et:
