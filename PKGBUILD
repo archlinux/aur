@@ -2,8 +2,8 @@
 
 _name=selenium
 pkgname=selenium-manager
-pkgver=0.4.16
-_pkgver=4.16.0
+pkgver=0.4.17
+_pkgver=4.17.0
 pkgrel=1
 pkgdesc='Automated driver and browser maanagement for Selenium'
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(gcc-libs glibc bzip2)
 makedepends=(cargo python)
 checkdepends=()
 source=("https://github.com/SeleniumHQ/${_name}/archive/refs/tags/${_name}-${_pkgver}.tar.gz")
-sha256sums=('8aae1c45d6d8a20dc876503913a9c39766c3c506dcd6d9e4b5bd519be2c20f3f')
+sha256sums=('692a1f8d0a773819b5fd5221176a5df65f9dee61097b3b8b686a5cd28a501b43')
 options=('!lto')
 
 prepare() {
