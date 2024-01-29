@@ -3,12 +3,12 @@ pkgname=zui-bin
 _pkgname=Zui
 pkgver=1.5.0
 _electronversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful desktop application for exploring and working with data. The official front-end to the Zed lake."
 arch=('x86_64')
 url="https://www.brimdata.io/"
 _ghurl="https://github.com/brimdata/zui"
-license=("BSD")
+license=("BSD-3-Clause")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -18,6 +18,7 @@ depends=(
     'python'
     'nss'
     'nspr'
+    'libsecret'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
@@ -26,7 +27,7 @@ source=(
 )
 sha256sums=('87589bc5924428cdd3cfc22fd516e96fa33a591529c7d52aad84d37341cef65e'
             'e3d24db419fcb44a1dab91f351b8203e74e8501ea11c4be82ad3cc05070cad9f'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
