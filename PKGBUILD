@@ -3,7 +3,7 @@
 # Contributor: Tao Meng ("mtunique") <oatgnem [at] gmail.com>
 
 pkgname=apache-flink
-_appver=1.15.0
+_appver=1.18.1
 _scalaver=2.12
 pkgver=${_appver}_${_scalaver}
 pkgrel=1
@@ -19,7 +19,7 @@ install=apache-flink.install
 source=("${pkgname}-${pkgver}.tgz::https://archive.apache.org/dist/flink/flink-${_appver}/flink-${_appver}-bin-scala_${_scalaver}.tgz"
         'apache-flink-jobmanager.service'
         'apache-flink-taskmanager@.service')
-sha256sums=('8d88b555453b162a62b9e7d37ec95b30f65b0219cd97819699ad5cb8e7f32964'
+sha256sums=('107c8274e8a61c81a58208c39d79a0934fa10437ce8c4bc869f30c35209e45a9'
             '59fe1cfe8f2de6437e20a98af68125f1bdab9d04c81a583d359c56b7ca3a2c5e'
             '11eba4a7203805d758779a8e6d18c0e6b1de0bf3e9a6ecf509fe093a4e8f975b')
 backup=("etc/${pkgname}/flink-conf.yaml"
