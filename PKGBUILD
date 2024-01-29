@@ -3,7 +3,7 @@
 
 pkgname=lib32-vulkan-nouveau-git
 pkgdesc="Nouveau Vulkan (NVK) EXPERIMENTAL Mesa driver with some additions (32-bit Git version)"
-pkgver=24.0.branchpoint.r412.gebcab14
+pkgver=24.0.branchpoint.r769.gc4b32f9
 pkgrel=1
 arch=('x86_64')
 depends=('lib32-libdrm' 'lib32-libxshmfence' 'lib32-libx11' 'lib32-systemd' 'lib32-vulkan-icd-loader' 'lib32-wayland')
@@ -41,15 +41,11 @@ prepare() {
 
   ### DXVK v2.0+ FIRE FESTIVAL (that is somehow working) ###
 
-  # HACK turned up to 11: Advertise Vulkan 1.3 support
-  sed -i 's/VK_MAKE_VERSION(1, [0-9]/VK_MAKE_VERSION(1, 3/' src/nouveau/vulkan/nvk_instance.c
-  sed -i 's/VK_MAKE_VERSION(1, [0-9]/VK_MAKE_VERSION(1, 3/' src/nouveau/vulkan/nvk_physical_device.c
-  sed -i 's/1\.[0-9]/1\.3/g' src/nouveau/vulkan/meson.build
-
-  # HACK: Always expose Vulkan memory model
-  # NAK does properly support it now but the compiler is still WIP for pre-Volta GPUs (so I'll enable it at the cost of CTS tests)
+  # HACK: Always expose Vulkan memory model/Vulkan 1.3
+  # NAK does properly support those now but the compiler is still WIP for pre-Volta GPUs (so I'll enable these at the cost of CTS tests)
   sed -i 's/KHR_vulkan_memory_model = nvk_use_nak(info)/KHR_vulkan_memory_model = true/' src/nouveau/vulkan/nvk_physical_device.c
   sed -i 's/vulkanMemoryModel = nvk_use_nak(info)/vulkanMemoryModel = true/' src/nouveau/vulkan/nvk_physical_device.c
+  sed -i 's/VK_MAKE_VERSION(1, 0/VK_MAKE_VERSION(1, 3/' src/nouveau/vulkan/nvk_physical_device.c
 
   ### Misc stuff ###
 
