@@ -1,0 +1,10 @@
+pkgbase = otf-material-design-icons
+	pkgdesc = Font with every Material Icons
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/google/material-design-icons
+	arch = any
+	license = Apache 2.0
+	makedepends = wget
+
+pkgname = otf-material-design-icons
