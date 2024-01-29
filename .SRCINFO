@@ -1,0 +1,15 @@
+pkgbase = rofi-nerdy
+	pkgdesc = Nerd font icon selector plugin for rofi
+	pkgver = v0.0.1.r0.gc866c27
+	pkgrel = 1
+	url = https://github.com/rolv-apneseth/rofi-nerdy
+	arch = x86_64
+	license = AGPL v3.0
+	makedepends = rust
+	makedepends = git
+	makedepends = just
+	depends = rofi
+	source = rofi-nerdy::git+https://github.com/rolv-apneseth/rofi-nerdy.git
+	md5sums = SKIP
+
+pkgname = rofi-nerdy
