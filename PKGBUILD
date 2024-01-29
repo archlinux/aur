@@ -1,8 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ficus-bin
+_pkgname=Ficus
 pkgver=0.2.1
 _electronversion=13
-pkgrel=5
+pkgrel=6
 pkgdesc="A software for editing and managing markdown documents, developed by the gg=G team."
 arch=('x86_64')
 url="https://ficus.world/"
@@ -25,13 +26,13 @@ source=(
 sha256sums=('fb3a407722baa7b48b81db2753ae12f47799a3a434122d47db8b320c6c4ba993'
             '062dfd6ae4c19f555ebbdba752598c98510837687393a38a3602b711890430d7'
             '3c8344b3daac5c775a3bf38518e5eee024566d7ea0a3f72c543a7c7ae13f72ef'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories "Utility" --name "Ficus" --exec "${pkgname%-bin}"
+    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
