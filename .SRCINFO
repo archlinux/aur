@@ -1,6 +1,6 @@
 pkgbase = huniq-git
 	pkgdesc = Filter out duplicates on the command line (git)
-	pkgver = r62.1d3c47e
+	pkgver = r63.1078e77
 	pkgrel = 1
 	url = https://github.com/koraa/huniq
 	arch = x86_64

@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=huniq-git
-pkgver=r62.1d3c47e
+pkgver=r63.1078e77
 pkgrel=1
 pkgdesc="Filter out duplicates on the command line (git)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
