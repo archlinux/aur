@@ -1,6 +1,6 @@
 pkgbase = treeland
 	pkgdesc = a new wayland compositer for DDE
-	pkgver = 0.1.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/treeland
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = treeland
 	makedepends = cmake
 	makedepends = ninja
 	depends = qt6-declarative
-	source = https://github.com/linuxdeepin/treeland/archive/0.1.1/treeland-0.1.1.tar.gz
-	sha512sums = SKIP
+	source = https://github.com/linuxdeepin/treeland/archive/0.2.2/treeland-0.2.2.tar.gz
+	sha256sums = dc330636330e76d94bdbb6065ef9aec4c82e8c831c2312a529509aa3767fa333
 
 pkgname = treeland

@@ -1,29 +1,29 @@
 # Maintainer: zccrs <zhangjide@deepin.org>
 pkgname=treeland
-pkgver=0.1.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='a new wayland compositer for DDE'
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/treeland"
 license=('LGPL3')
 depends=('qt6-declarative')
-makedepends=('git' 'qt6-tools' 'waylib' 'cmake'  'ninja')
+makedepends=('git' 'qt6-tools' 'waylib' 'cmake' 'ninja')
 groups=('deepin')
 source=("https://github.com/linuxdeepin/treeland/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('SKIP')
+sha256sums=('dc330636330e76d94bdbb6065ef9aec4c82e8c831c2312a529509aa3767fa333')
 
 build() {
-  cd $pkgname-$pkgver
-  cmake -GNinja \
-      -DCMAKE_INSTALL_LIBEXECDIR=libexec \
-      -DCMAKE_INSTALL_LIBDIR=lib \
-      -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_BUILD_TYPE=Release
+	cd $pkgname-$pkgver
+	cmake -GNinja \
+		-DCMAKE_INSTALL_LIBEXECDIR=libexec \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=Release
 
-  cmake --build .
+	cmake --build .
 }
 
 package() {
-  cd $pkgname-$pkgver
-  DESTDIR="$pkgdir" ninja install
+	cd $pkgname-$pkgver
+	DESTDIR="$pkgdir" ninja install
 }
