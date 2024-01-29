@@ -1,15 +1,16 @@
 pkgbase = photocollage
 	pkgdesc = Graphical tool to make photo collage posters.
-	pkgver = 1.4.5
-	pkgrel = 2
+	pkgver = 1.4.6
+	pkgrel = 1
 	url = https://github.com/adrienverge/PhotoCollage
 	arch = any
 	license = GPL2
+	makedepends = python-setuptools
 	depends = python-pillow
 	depends = python-gobject
 	depends = python-cairo
 	depends = hicolor-icon-theme
-	source = photocollage-1.4.5.tar.gz::https://github.com/adrienverge/PhotoCollage/archive/v1.4.5.tar.gz
-	sha256sums = 7dab2de4a098cb68369221bd634591dc768f10df2064a55bb8d6430cf5be5b36
+	source = photocollage-1.4.6.tar.gz::https://github.com/adrienverge/PhotoCollage/archive/v1.4.6.tar.gz
+	sha256sums = 4a49b97443ebe6a1823d77991d15230882cfa6c78402c923785b0838e80ba1ae
 
 pkgname = photocollage

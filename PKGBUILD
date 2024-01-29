@@ -2,15 +2,16 @@
 # Contributor: Silvio Ankermann < silvio at booq dot org >
 
 pkgname=photocollage
-pkgver=1.4.5
-pkgrel=2
+pkgver=1.4.6
+pkgrel=1
 pkgdesc='Graphical tool to make photo collage posters.'
 url='https://github.com/adrienverge/PhotoCollage'
 license=('GPL2')
 arch=('any')
+makedepends=('python-setuptools')
 depends=('python-pillow' 'python-gobject' 'python-cairo' 'hicolor-icon-theme')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/adrienverge/PhotoCollage/archive/v${pkgver}.tar.gz")
-sha256sums=('7dab2de4a098cb68369221bd634591dc768f10df2064a55bb8d6430cf5be5b36')
+sha256sums=('4a49b97443ebe6a1823d77991d15230882cfa6c78402c923785b0838e80ba1ae')
 
 
 build() {
