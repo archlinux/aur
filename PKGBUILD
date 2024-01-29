@@ -1,7 +1,7 @@
 # Maintainer: Noah Rahimzadagan <noah.rahimzadagan@protonmail.com> 
 pkgname=byteblitz
 pkgver=1.0.0  
-pkgrel=4
+pkgrel=5
 pkgdesc="A CLI tool for viewing the binary content of files."
 url='https://github.com/noahra/byteblitz'
 source=("${url}/archive/v${pkgver}.tar.gz")
@@ -15,7 +15,6 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/$pkgname"
     cargo build --release --locked
 }
 
