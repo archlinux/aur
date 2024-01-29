@@ -97,7 +97,7 @@ index e01f7751cf1130..001648c46fdd37 100644
 @@ -22,7 +22,7 @@ enum iwl_nvm_sbands_flags {
  };
  
- /**
+ /*
 - * iwl_parse_nvm_data - parse NVM data and return values
 + * const struct iwl_fw *fw,iwl_parse_nvm_data - parse NVM data and return values
   *
@@ -130,17 +130,17 @@ diff --git a/drivers/net/wireless/intel/iwlwifi/mvm/nvm.c b/drivers/net/wireless
 index 6d18a1fd649b90..0a93b820299864 100644
 --- a/drivers/net/wireless/intel/iwlwifi/mvm/nvm.c
 +++ b/drivers/net/wireless/intel/iwlwifi/mvm/nvm.c
-@@ -220,6 +220,7 @@ iwl_parse_nvm_sections(struct iwl_mvm *mvm)
- 	struct iwl_nvm_section *sections = mvm->nvm_sections;
- 	const __be16 *hw;
+@@ -222,6 +222,7 @@
  	const __le16 *sw, *calib, *regulatory, *mac_override, *phy_sku;
+	u8 tx_ant = mvm->fw->valid_tx_ant;
+	u8 rx_ant = mvm->fw->valid_rx_ant;
 +	bool lar_enabled;
  	int regulatory_type;
  
  	/* Checking for required sections */
-@@ -270,9 +271,14 @@ iwl_parse_nvm_sections(struct iwl_mvm *mvm)
- 		(const __le16 *)sections[NVM_SECTION_TYPE_REGULATORY_SDP].data :
- 		(const __le16 *)sections[NVM_SECTION_TYPE_REGULATORY].data;
+@@ -278,9 +279,14 @@ iwl_parse_nvm_sections(struct iwl_mvm *mvm)
+	if (mvm->set_rx_ant)
+		rx_ant &= mvm->set_rx_ant;
  
 +	lar_enabled = !iwlwifi_mod_params.lar_disable &&
 +		fw_has_capa(&mvm->fw->ucode_capa,
@@ -148,8 +148,8 @@ index 6d18a1fd649b90..0a93b820299864 100644
 +
  	return iwl_parse_nvm_data(mvm->trans, mvm->cfg, mvm->fw, hw, sw, calib,
  				  regulatory, mac_override, phy_sku,
--				  mvm->fw->valid_tx_ant, mvm->fw->valid_rx_ant);
-+				  mvm->fw->valid_tx_ant, mvm->fw->valid_rx_ant,
+-				  tx_ant, rx_ant);
++				  tx_ant, rx_ant,
 +				  lar_enabled);
  }
  
