@@ -2,7 +2,7 @@
 # Contributor: Armin Preiml <apreiml@strohwolke.at>
 
 pkgname=hare
-pkgver=r3195.f3f5aaa2
+pkgver=r3667.c50d9288
 pkgrel=1
 pkgdesc='The Hare programming language'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ url='https://harelang.org/'
 license=('GPL3' 'MPL2')
 depends=('qbe' 'harec')
 makedepends=('git' 'scdoc')
-_commit='f3f5aaa25cd37018dc5bae5e1f9c96e400cc14f1'
+_commit='c50d928838cdea09c028964a71b053588dcd63a4'
 source=("hare::git+https://git.sr.ht/~sircmpwn/hare#commit=$_commit")
 b2sums=('SKIP')
 
@@ -27,7 +27,7 @@ prepare() {
   sed \
     -e 's:/usr/local:/usr:' \
     -e "s/^ARCH = .*/ARCH = $CARCH/" \
-    config.example.mk > config.mk
+    configs/linux.mk > config.mk
 }
 
 build() {
