@@ -1,15 +1,15 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=armcord
 _pkgname=ArmCord
-pkgver=3.2.5
+pkgver=3.2.6
 _electronversion=27
 _nodeversion=18
-pkgrel=4
+pkgrel=1
 pkgdesc="A custom client designed to enhance your Discord experience while keeping everything lightweight."
 arch=('any')
 url="https://armcord.app/"
 _ghurl="https://github.com/ArmCord/ArmCord"
-license=('OSL3')
+license=('OSL-3.0')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
@@ -26,7 +26,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('SKIP'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -44,7 +44,10 @@ build() {
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
     pnpm config set store-dir "${srcdir}/.pnpm_store"
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
     pnpm config set link-workspace-packages true
