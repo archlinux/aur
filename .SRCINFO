@@ -1,0 +1,15 @@
+pkgbase = python-argparse_dataclass
+	pkgdesc = Declarative CLIs with argparse and dataclasses
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/mivade/argparse_dataclass
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-yaml
+	source = argparse_dataclass-2.0.0.tar.gz::https://github.com/mivade/argparse_dataclass/archive/refs/tags/2.0.0.tar.gz
+	sha256sums = 4840dc5c793bfeea4864371f21a341dcf6592047755f558c1c2814c0724b4119
+
+pkgname = python-argparse_dataclass
