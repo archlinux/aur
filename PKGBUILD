@@ -3,11 +3,11 @@ pkgname=flawesome-bin
 _appname=Flawesome
 pkgver=0.2.3
 _electronversion=9
-pkgrel=12
+pkgrel=13
 pkgdesc="A modern productivity tool that will help you organise your day-today work and thoughts."
 arch=("x86_64")
 url="https://github.com/ashishBharadwaj/flawesome"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -19,14 +19,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1cb04d7b3bb6c57b269c4214b46d7619b6480697b7ac73acd209448711ea4252'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|/opt/${_appname}/${pkgname%-bin} %U|${pkgname%-bin}|g;s|Productivity|Utility|g" \
+    sed "s|/opt/${_appname}/${pkgname%-bin}|${pkgname%-bin}|g;s|Productivity|Utility|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
