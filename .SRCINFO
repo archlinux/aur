@@ -1,9 +1,9 @@
 pkgbase = barnard-git
 	pkgdesc = A command line mumble client.
-	pkgver = r90.c9876db
-	pkgrel = 3
+	pkgver = r98.c16cc73
+	pkgrel = 1
 	epoch = 1
-	url = https://github.com/bmmcginty/barnard
+	url = https://git.2mb.codes/~cmb/barnard
 	install = barnard-git.install
 	arch = aarch64
 	arch = armv7h
@@ -13,10 +13,7 @@ pkgbase = barnard-git
 	makedepends = go
 	depends = openal
 	depends = opus
-	source = barnard::git+https://github.com/bmmcginty/barnard.git
-	source = https://github.com/bmmcginty/go-openal/pull/1.patch
+	source = barnard::git+https://git.2mb.codes/~cmb/barnard
 	sha512sums = SKIP
-	sha512sums = 8089b15fc08a9b4342babf4391448be6cd989a0a576e703fe0628ace134eb5e154dbd7eddfad237e3350966a3f97c46c93e52bc37afb421f3ecd7dc3e35b00c7
 
 pkgname = barnard-git
-
