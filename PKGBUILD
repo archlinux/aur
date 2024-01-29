@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 pkgname=vulkan-caps-viewer-x11
-pkgver=3.32
+pkgver=3.33
 pkgrel=1
 epoch=1
 pkgdesc="Vulkan Hardware Capability Viewer"
@@ -12,26 +12,26 @@ depends=('vulkan-icd-loader' 'qt5-x11extras')
 makedepends=('git')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-_commit=3024e3148a7b47706b6d259f8e0ad0a2aa651330  # tags/3.32^0
+_commit=1008cecb054ab15acf51353ac85ffd8ebb135cc4  # tags/3.33^0
 source=("git+https://github.com/SaschaWillems/VulkanCapsViewer.git#commit=$_commit"
         'git+https://github.com/KhronosGroup/Vulkan-Headers.git')
 sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd "$srcdir/VulkanCapsViewer"
+  cd VulkanCapsViewer
   git describe --tags | sed 's/_fixed//;s/-/+/g'
 }
 
 prepare() {
-  cd "$srcdir/VulkanCapsViewer"
+  cd VulkanCapsViewer
   git submodule init
   git config submodule.Vulkan-Headers.url "$srcdir/Vulkan-Headers"
   git -c protocol.file.allow=always submodule update
 }
 
 build() {
-  cd "$srcdir/VulkanCapsViewer"
+  cd VulkanCapsViewer
   qmake-qt5 \
     DEFINES+=X11 \
     CONFIG+=release \
@@ -40,7 +40,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/VulkanCapsViewer"
+  cd VulkanCapsViewer
   make INSTALL_ROOT="$pkgdir/" install
 
   # There's a bug preventing this from being installed automatically
