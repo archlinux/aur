@@ -1,6 +1,6 @@
 # Maintainer: VCalV
 pkgname="gourou"
-pkgver=0.8.3
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="Download and decrypt adobe encrypted (acsm) pdf and epub files"
 arch=('x86_64')
