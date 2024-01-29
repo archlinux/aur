@@ -1,0 +1,16 @@
+pkgbase = python-snakemake-interface-common
+	pkgdesc = Common functions and classes for Snakemake and its plugins
+	pkgver = 1.15.2
+	pkgrel = 1
+	url = https://github.com/snakemake/snakemake-interface-common
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python-yaml
+	source = snakemake-interface-common-1.15.2.tar.gz::https://github.com/snakemake/snakemake-interface-common/archive/refs/tags/v1.15.2.tar.gz
+	sha256sums = 006a8c40da097038d20e44304e44382f9485c705b6d995284346eda8a2a24942
+
+pkgname = python-snakemake-interface-common
