@@ -4,8 +4,8 @@
 
 pkgname=room-arranger
 _pkgname=rooarr
-pkgver=9.8.1
-pkgrel=3
+pkgver=9.8.2
+pkgrel=1
 pkgdesc="3D room / apartment / floor planner with simple user interface."
 arch=('x86_64')
 license=('custom')
@@ -14,7 +14,7 @@ depends=('hicolor-icon-theme' 'openssl')
 source=("https://f000.backblazeb2.com/file/rooarr/rooarr${pkgver//./}-linux64.tar.gz"
         "${_pkgname}_run.sh"
         "${pkgname//-/}.desktop")
-sha512sums=('cb55aff5ab136e4d831b5677b5cf83cfe1a9b6e9adf4094600f8ab995412dfd565726b94275ea57be9fecda07eab1c444fa7b04a335c478c99cf4e25a25e6429'
+sha512sums=('d899abf17a60c1076eba8ddd3d4e651673e03f6e838dfc26a95f6661b09a6068a7dc312d3b2c13c76c332d1ab588cd05ab868a4a4b4404314c3efbec5e0d1eba'
             '4fb685442c7527ae8494cc700c6e06dd37cdf1e21d3beb1b2479e98840329b612ec8ffb2f6b5e8e43a7cfda57800b2aee2b8bf0e1608f5fb510f68558be19663'
             '73799a47527485f0b2102ee1eba33ad8e86bf3b269697588390064467323e4ed44fc49d8b6a18b113d0a62ddf81178e8b0dbca2f321d4c52016ee2d8afeb165d')
 
