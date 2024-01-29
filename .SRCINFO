@@ -1,10 +1,10 @@
 pkgbase = glib2-selinux
 	pkgdesc = Low level core library
-	pkgver = 2.78.1
+	pkgver = 2.79.1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GLib
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.1-or-later
 	makedepends = dbus
 	makedepends = gettext
 	makedepends = gtk-doc
@@ -23,16 +23,16 @@ pkgbase = glib2-selinux
 	depends = libsysprof-capture
 	options = debug
 	options = staticlibs
-	source = git+https://gitlab.gnome.org/GNOME/glib.git#commit=21624e78f013ee8706483086e3086076d08fe242
+	source = git+https://gitlab.gnome.org/GNOME/glib.git#commit=143cb92c350bd1cb5411570600b8db2408c9d61d
 	source = git+https://gitlab.gnome.org/GNOME/gvdb.git
 	source = noisy-glib-compile-schemas.diff
 	source = glib-compile-schemas.hook
 	source = gio-querymodules.hook
 	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = 81a4df0b638730cffb7fa263c04841f7ca6b9c9578ee5045db6f30ff0c3fc531
 	sha256sums = 64ae5597dda3cc160fc74be038dbe6267d41b525c0c35da9125fbf0de27f9b25
-	sha256sums = 2a9f9b8235f48e3b7d0f6cfcbc76cd2116c45f28692cac4bd61074c495bd5eb7
-	sha256sums = 92d08db5aa30bda276bc3d718e7ff9dd01dc40dcab45b359182dcc290054e24e
+	sha256sums = fbf49aef4b48f22c1abf40892e2e80b66409f83bd4a3ea155cd811b0c9c1e3b9
 
 pkgname = glib2-selinux
 	depends = pcre
@@ -50,11 +50,11 @@ pkgname = glib2-selinux
 	provides = libgmodule-2.0.so
 	provides = libgobject-2.0.so
 	provides = libgthread-2.0.so
-	provides = glib2=2.78.1
+	provides = glib2=2.79.1
 	conflicts = glib2
 
 pkgname = glib2-selinux-docs
 	pkgdesc = Documentation for GLib
-	license = LGPL
+	license = LGPL-2.1-or-later
 	license = custom
 	provides = glib2-docs
