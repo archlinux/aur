@@ -1,6 +1,6 @@
 pkgbase = gingerblue
 	pkgdesc = for musicians who compose, record, and share original music
-	pkgver = 6.2.0
+	pkgver = 8.0.0
 	pkgrel = 1
 	url = https://www.gingerblue.org/
 	arch = x86_64
@@ -10,10 +10,15 @@ pkgbase = gingerblue
 	depends = libshout
 	depends = gtk3
 	depends = libchamplain
-	depends = geocode-glib
+	depends = geocode-glib-2
 	depends = geoclue
+	depends = glib2
+	depends = gstreamer
+	depends = libxml2
+	depends = libvorbis
+	depends = hicolor-icon-theme
 	provides = gingerblue
-	source = https://www.gingerblue.org/src/gingerblue-6.2.0.tar.xz
-	sha256sums = 6096f54c60d401cf450e32f85ce72414fd7f4445d35c337cfaae02dfe95ced96
+	source = https://www.gingerblue.org/src/gingerblue-8.0.0.tar.xz
+	sha256sums = 49d1cbb37e7fbcfb8605503f2dcc0da4fd7ed4cfb33509c7fce659e37132d085
 
 pkgname = gingerblue
