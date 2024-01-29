@@ -1,0 +1,16 @@
+pkgbase = python-snakemake-interface-storage-plugins
+	pkgdesc = Common functions and classes for Snakemake and its plugins
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/snakemake/snakemake-interface-storage-plugins
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python-yaml
+	source = snakemake-interface-storage-plugins-3.0.0.tar.gz::https://github.com/snakemake/snakemake-interface-storage-plugins/archive/refs/tags/v3.0.0.tar.gz
+	sha256sums = 0df12018e035cc28fe335c80294242804ec8402e48f5110fb6e817ceae2b18a6
+
+pkgname = python-snakemake-interface-storage-plugins
