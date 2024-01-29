@@ -4,14 +4,18 @@
 pkgname=qmplay2-appimage
 _appname=QMPlay2
 pkgver=23.10.22
-pkgrel=1
+pkgrel=2
 pkgdesc="A video and audio player which can play most formats and codecs"
 arch=('x86_64')
 url="https://github.com/zaps166/QMPlay2"
-license=("LGPL")
+license=("LGPL-3.0-only")
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
-depends=('hicolor-icon-theme' 'zlib' 'glibc')
+depends=(
+    'hicolor-icon-theme'
+    'glibc'
+    'zlib'
+)
 makedepends=('squashfuse')
 options=('!strip')
 _install_path="/opt/appimages"
