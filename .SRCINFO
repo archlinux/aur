@@ -1,0 +1,11 @@
+pkgbase = blender-plugin-poliigon
+	pkgdesc = The Poliigon Blender Addon puts 3,000+ models, materials and HDRIs at your fingertips. Search, download and import without leaving Blender.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://www.poliigon.com/blender
+	arch = x86_64
+	depends = blender
+	source = https://software.poliigon.com/poliigon-addon-blender.zip
+	md5sums = 78d942bb43920cb13f485a51b091c4f8
+
+pkgname = blender-plugin-poliigon
