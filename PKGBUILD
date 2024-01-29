@@ -82,7 +82,6 @@ optdepends=(
   libgphoto2
 )
 
-makedepends=(${makedepends[@]} ${depends[@]})
 provides=('proton')
 install=${pkgname}.install
 source=(
