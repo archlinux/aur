@@ -1,6 +1,6 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=soundux-git
-pkgver=r1391.a4fc381
+pkgver=r1432.fca05c9
 pkgrel=2
 epoch=1
 pkgdesc="A cross-platform soundboard - unstable development version"
@@ -23,9 +23,13 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
+prepare() {
   cd "${srcdir}/Soundux"
   git submodule update --init --recursive
+}
+
+build() {
+  cd "${srcdir}/Soundux"
   mkdir -p build
   cd build
   cmake -GNinja -DCMAKE_BUILD_TYPE=Release ..
