@@ -1,45 +1,38 @@
-From bce0edec2ede4b5951914d01e4021d21e7fed225 Mon Sep 17 00:00:00 2001
-From: Julianne H <julianne.hervier@qonfucius.team>
-Date: Fri, 3 Mar 2023 15:24:02 +0100
+From 8b95aad477c32ebefeee5c76092dee38c7c4b0f7 Mon Sep 17 00:00:00 2001
+From: KokaKiwi <kokakiwi+git@kokakiwi.net>
+Date: Mon, 29 Jan 2024 11:17:58 +0100
 Subject: [PATCH] makepkg: Use system gtest
 
 ---
- CMakeLists.txt | 11 +++++++----
- 1 file changed, 7 insertions(+), 4 deletions(-)
+ CMakeLists.txt | 11 ++---------
+ 1 file changed, 2 insertions(+), 9 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 7b0a6ea..55414de 100644
+index d247c28..e964a5b 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -88,16 +88,20 @@ endif()
- option(PHMAP_BUILD_TESTS    "Whether or not to build the tests"    ${PHMAP_MASTER_PROJECT})
- option(PHMAP_BUILD_EXAMPLES "Whether or not to build the examples" ${PHMAP_MASTER_PROJECT})
- 
-+option(PHMAP_USE_SYSTEM_GTEST "Use system gtest" ON)
-+
- if(MSVC)
-     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /bigobj")
- endif()
+@@ -98,14 +98,8 @@ endif()
  
  if (PHMAP_BUILD_TESTS)
-+    include_directories(${PROJECT_SOURCE_DIR})
  
 -    if (NOT PHMAP_GTEST_LIBS)
-+    if (PHMAP_USE_SYSTEM_GTEST)
-+        find_package(GTest REQUIRED)
-+        set(PHMAP_GTEST_LIBS GTest::gtest GTest::gtest_main GTest::gmock)
-+    else ()
-         include(cmake/DownloadGTest.cmake)
--        include_directories(${PROJECT_SOURCE_DIR})
+-        include(cmake/DownloadGTest.cmake)
 -    
-         check_target(gtest)
-         check_target(gtest_main)
-         check_target(gmock)
-@@ -200,4 +204,3 @@ if (PHMAP_BUILD_EXAMPLES)
+-        check_target(gtest)
+-        check_target(gtest_main)
+-        check_target(gmock)
+-        set(PHMAP_GTEST_LIBS gmock_main)
+-    endif()
++    find_package(GTest REQUIRED)
++    set(PHMAP_GTEST_LIBS GTest::gtest GTest::gtest_main GTest::gmock)
+ 
+     enable_testing()
+ 
+@@ -205,4 +199,3 @@ if (PHMAP_BUILD_EXAMPLES)
      target_link_libraries(ex_knucleotide Threads::Threads)
      target_link_libraries(ex_bench Threads::Threads)
  endif()
 -
 -- 
-2.40.0
+2.43.0
 
