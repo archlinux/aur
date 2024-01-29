@@ -1,7 +1,7 @@
 # Maintainer: Grant G <grant@fig.io>
 
 pkgname='fig-headless-bin'
-pkgver='2.17.0'
+pkgver='2.17.1'
 pkgrel=1
 pkgdesc='Adds IDE-style autocomplete to your existing terminal.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('fig')
 makedepends=('jq' 'xz')
 source=("${pkgname}-${pkgver//_/-}.tar.xz::https://repo.fig.io/generic/stable/asset/${pkgver//_/-}/x86_64/fig_headless.tar.xz")
 
-sha256sums=('399abbc2c4d2c72ba0af466d5931690bbad591627d906811d691add185e3fcb2')
+sha256sums=('2147759c1ac336167c2f02a84efedbf93e3321576da4875ec6648038c31ce000')
 
 package() {
   cp -r "${srcdir}/usr" "${pkgdir}/usr"
