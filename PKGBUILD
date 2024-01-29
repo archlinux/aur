@@ -1,6 +1,7 @@
 # Maintainer: Zhiya Luo <luozhiya@petalmail.com>
 # Contributor: Hammer <topo20@protonmail.com>
 # Contributor: Butui Hu <hot123tea123@gmail.com>
+# Contributor: Sinofine Lotus <i@sinofine.me>
 
 pkgname=mogan
 pkgver=1.2.3
@@ -14,7 +15,7 @@ license=("GPL3")
 #  Because we cannot know the exact QT path, we have added support for QT5 and QT6 to be compatible with the user's environment.
 #  1. If the user installs both QT5 and QT6, xmake will automatically select QT5.
 #  2. If the user only installs QT6 or QT5, xmake will select the unique one.
-depends=("qt5-base" "qt5-svg" "qt6-base" "qt6-svg" "sqlite" "zlib" "unzip" "curl" "texlive-core" "python" "libxext")
+depends=("qt5-base" "qt5-svg" "qt6-base" "qt6-svg" "sqlite" "zlib" "unzip" "curl" "texlive-core" "python" "libxext" "libgit2")
 makedepends=("git" "xmake")
 optdepends=(
   "gawk: Conversion of some files"
