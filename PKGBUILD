@@ -3,12 +3,12 @@
 
 pkgname=photocollage
 pkgver=1.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical tool to make photo collage posters.'
 url='https://github.com/adrienverge/PhotoCollage'
 license=('GPL2')
 arch=('any')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 depends=('python-pillow' 'python-gobject' 'python-cairo' 'hicolor-icon-theme')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/adrienverge/PhotoCollage/archive/v${pkgver}.tar.gz")
 sha256sums=('4a49b97443ebe6a1823d77991d15230882cfa6c78402c923785b0838e80ba1ae')
@@ -16,8 +16,7 @@ sha256sums=('4a49b97443ebe6a1823d77991d15230882cfa6c78402c923785b0838e80ba1ae')
 
 build() {
     cd "${srcdir}/PhotoCollage-${pkgver}"
-
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 check() {
@@ -30,6 +29,5 @@ check() {
 
 package() {
     cd "${srcdir}/PhotoCollage-${pkgver}"
-
-    python setup.py install --optimize=1 "--root=${pkgdir}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
