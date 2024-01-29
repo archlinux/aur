@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=Godot
-Comment=Application for making games
+Name=Godot Voxel
+Comment=Binary files for the Godot game engine with Zylann's voxel tools module.
 Exec=/usr/bin/godot %U
 Icon=godot
 Terminal=false

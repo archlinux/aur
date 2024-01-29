@@ -1,22 +1,17 @@
 pkgbase = godot-voxel-bin
-	pkgdesc = Godot is an advanced, feature packed, multi-platform 2D and 3D game engine
-	pkgver = 3.2.2rc+cd8d43
+	pkgdesc = Binary files for the Godot game engine with Zylann's voxel tools module.
+	pkgver = 4.1.4rc+2d3b2abcf
 	pkgrel = 1
-	url = http://www.godotengine.org
-	arch = i686
+	url = https://github.com/Zylann/godot_voxel
 	arch = x86_64
 	license = MIT
-	provides = godot
-	conflicts = godot
-	conflicts = godot-git
-	source = godot.desktop
-	source = icons.tar.gz
-	md5sums = fa7422332b97ab8430ea7628ec8b0880
-	md5sums = 48ee5f4295a45bb61c6223ba83fd1436
-	source_i686 = godot-voxel-bin-3.2.2rc+cd8d43::https://github.com/tinmanjuggernaut/godot_voxel/releases/download/3.2.2rc+cd8d43/Godot_v3.2.2rc+cd8d43_x11.32.zip
-	md5sums_i686 = 310282582d05419909b97e0bbd993cdc
-	source_x86_64 = godot-voxel-bin-3.2.2rc+cd8d43::https://github.com/tinmanjuggernaut/godot_voxel/releases/download/3.2.2rc+cd8d43/Godot_v3.2.2rc+cd8d43_x11.64.zip
-	md5sums_x86_64 = 6c36ba60eb2c19b1cc2283d8e407078b
+	provides = godot-voxel
+	conflicts = godot-voxel
+	source = godot-voxel.desktop
+	source = https://github.com/godotengine/godot/blob/master/icon.svg
+	source = https://github.com/Zylann/godot_voxel/releases/download/v1.1.0/godot.linuxbsd.template_release.x86_64.zip
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = godot-voxel-bin
-
