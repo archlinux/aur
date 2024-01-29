@@ -1,7 +1,7 @@
 pkgbase = sys-hostaddr
 	pkgdesc = provides methods to help retreive IP address and interface information about a local host
 	pkgver = 0.993
-	pkgrel = 02
+	pkgrel = 1
 	url = https://jeremy.kister.net/code/Sys-HostAddr-0.993/README
 	arch = i686
 	arch = x86_64
