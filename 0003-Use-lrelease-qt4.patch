@@ -1,0 +1,92 @@
+From c0001caf56a321589827914ec1e34323536a5ffe Mon Sep 17 00:00:00 2001
+From: LingMan <LingMan@users.noreply.github.com>
+Date: Mon, 29 Jan 2024 22:59:36 +0100
+Subject: [PATCH] Use lrelease-qt4
+
+`lrelease` is provided by `qt5-tools` nowadays. We already depend on `qt4` - which provides
+`lrelease-qt4` - though.
+No need to pull in `qt5-tools` too. Not to mention that `lrelease` might soon be provided by
+`qt6-tools` instead and who knows if that will still happen to work.
+---
+ Makefile.am                                  |  8 +++----
+ configure.ac                                 |  2 +-
+ cppForSwig/BDM_Client/build_installer_64.bat | 22 ++++++++++----------
+ 3 files changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index b677b74..9a35539 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -9,9 +9,9 @@ EXTRA_DIST = *.py *.md LICENSE LICENSE-ATI LICENSE-MIT \
+ 
+ ACLOCAL_AMFLAGS = -I m4
+ 
+-lrelease:
++lrelease-qt4:
+ if HAVE_GUI
+-	lrelease lang/*.ts
++	lrelease-qt4 lang/*.ts
+ endif
+ 
+ qrc_img_resources.py: imgList.xml
+@@ -32,9 +32,9 @@ else
+ endif
+ endif
+ 
+-.PHONY: copy-script lrelease qrc_img_resources.py
++.PHONY: copy-script lrelease-qt4 qrc_img_resources.py
+ 
+-all-local: copy-script lrelease qrc_img_resources.py
++all-local: copy-script lrelease-qt4 qrc_img_resources.py
+ 
+ 
+ #target to clean up pre autotools installation left overs
+diff --git a/configure.ac b/configure.ac
+index eb0d1c5..de13625 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -83,7 +83,7 @@ AC_CHECK_PROG([HAVE_PYRCC4], [pyrcc4], [yes], [no])
+ AS_IF([test $HAVE_PYRCC4 == yes], [],
+ 	[AC_MSG_ERROR([missing pyrcc4 in path, make sure pyqt4-dev-tools is installed])]) 
+ 
+-AC_CHECK_PROG([HAVE_LRELEASE], [lrelease], [yes], [no])
++AC_CHECK_PROG([HAVE_LRELEASE], [lrelease-qt4], [yes], [no])
+ AS_IF([test $HAVE_LRELEASE == yes], [],
+ 	[AC_MSG_ERROR([missing lrelease in path, make sure qt4-linguist-tools is installed])]) 
+ 
+diff --git a/cppForSwig/BDM_Client/build_installer_64.bat b/cppForSwig/BDM_Client/build_installer_64.bat
+index 3e76f02..9e4138f 100644
+--- a/cppForSwig/BDM_Client/build_installer_64.bat
++++ b/cppForSwig/BDM_Client/build_installer_64.bat
+@@ -10,17 +10,17 @@ python ..\..\setup.py py2exe --includes sip,hashlib -d ..\..\ArmoryStandalone
+ copy ..\x64\Release\BlockDataManager.exe ..\..\ArmoryStandalone\ArmoryDB.exe
+ 
+ mkdir ..\..\ArmoryStandalone\lang
+-lrelease ..\..\lang\armory_da.ts -qm ..\..\ArmoryStandalone\lang\armory_da.qm
+-lrelease ..\..\lang\armory_de.ts -qm ..\..\ArmoryStandalone\lang\armory_de.qm
+-lrelease ..\..\lang\armory_el.ts -qm ..\..\ArmoryStandalone\lang\armory_el.qm
+-lrelease ..\..\lang\armory_en.ts -qm ..\..\ArmoryStandalone\lang\armory_en.qm
+-lrelease ..\..\lang\armory_es.ts -qm ..\..\ArmoryStandalone\lang\armory_es.qm
+-lrelease ..\..\lang\armory_fr.ts -qm ..\..\ArmoryStandalone\lang\armory_fr.qm
+-lrelease ..\..\lang\armory_he.ts -qm ..\..\ArmoryStandalone\lang\armory_he.qm
+-lrelease ..\..\lang\armory_hr.ts -qm ..\..\ArmoryStandalone\lang\armory_hr.qm
+-lrelease ..\..\lang\armory_id.ts -qm ..\..\ArmoryStandalone\lang\armory_id.qm
+-lrelease ..\..\lang\armory_ru.ts -qm ..\..\ArmoryStandalone\lang\armory_ru.qm
+-lrelease ..\..\lang\armory_sv.ts -qm ..\..\ArmoryStandalone\lang\armory_sv.qm
++lrelease-qt4 ..\..\lang\armory_da.ts -qm ..\..\ArmoryStandalone\lang\armory_da.qm
++lrelease-qt4 ..\..\lang\armory_de.ts -qm ..\..\ArmoryStandalone\lang\armory_de.qm
++lrelease-qt4 ..\..\lang\armory_el.ts -qm ..\..\ArmoryStandalone\lang\armory_el.qm
++lrelease-qt4 ..\..\lang\armory_en.ts -qm ..\..\ArmoryStandalone\lang\armory_en.qm
++lrelease-qt4 ..\..\lang\armory_es.ts -qm ..\..\ArmoryStandalone\lang\armory_es.qm
++lrelease-qt4 ..\..\lang\armory_fr.ts -qm ..\..\ArmoryStandalone\lang\armory_fr.qm
++lrelease-qt4 ..\..\lang\armory_he.ts -qm ..\..\ArmoryStandalone\lang\armory_he.qm
++lrelease-qt4 ..\..\lang\armory_hr.ts -qm ..\..\ArmoryStandalone\lang\armory_hr.qm
++lrelease-qt4 ..\..\lang\armory_id.ts -qm ..\..\ArmoryStandalone\lang\armory_id.qm
++lrelease-qt4 ..\..\lang\armory_ru.ts -qm ..\..\ArmoryStandalone\lang\armory_ru.qm
++lrelease-qt4 ..\..\lang\armory_sv.ts -qm ..\..\ArmoryStandalone\lang\armory_sv.qm
+ 
+ python ..\..\writeNSISCompilerArgs.py
+ makensis.exe ..\..\ArmorySetup.nsi
+-- 
+2.43.0
+
