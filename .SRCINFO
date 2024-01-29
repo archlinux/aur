@@ -18,6 +18,7 @@ pkgbase = mogan
 	depends = texlive-core
 	depends = python
 	depends = libxext
+	depends = libgit2
 	optdepends = gawk: Conversion of some files
 	optdepends = ghostscript: Rendering ps files
 	optdepends = imagemagick: Convert images
