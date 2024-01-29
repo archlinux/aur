@@ -1,7 +1,7 @@
 # Maintainer: vmalloc vmalloc@olanfa.de
 pkgname=cisco-regex
 pkgver=0.92
-pkgrel=01
+pkgrel=1
 pkgdesc="is made to lint standard and extended ip access lists on the Cisco IOS platform"
 arch=('i686' 'x86_64')
 url="https://jeremy.kister.net/code/Cisco-Regex-0.92/README"
