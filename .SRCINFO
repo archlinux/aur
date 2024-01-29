@@ -1,6 +1,6 @@
 pkgbase = lite-xl-bin
 	pkgdesc = A lightweight text editor written in Lua
-	pkgver = 2.1.2
+	pkgver = 2.1.3
 	pkgrel = 1
 	url = https://github.com/lite-xl/lite-xl
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = lite-xl-bin
 	provides = lite-xl
 	conflicts = lite-xl
 	conflicts = lite-xl-git
-	source = lite-xl-2.1.2.tar.gz::https://github.com/lite-xl/lite-xl/releases/download/v2.1.2/lite-xl-v2.1.2-addons-linux-x86_64-portable.tar.gz
+	source = lite-xl-2.1.3.tar.gz::https://github.com/lite-xl/lite-xl/releases/download/v2.1.3/lite-xl-v2.1.3-addons-linux-x86_64-portable.tar.gz
 	source = data.tar.xz
-	sha256sums = 69cdb2fcfa6141c5f7ec462e27e0554ffa9e04faddd54e6196658d3c0ecd1c50
+	sha256sums = cfa8b69aa58017aca6fd106c81ad368b2ffd342c01cc58f80bb012cb096a125f
 	sha256sums = d2a864dc6c4979ad6ed1cdda45069404bb4da095fe2e316f36d846f065b0571a
 
 pkgname = lite-xl-bin
