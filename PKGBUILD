@@ -11,7 +11,7 @@ _staging_ver=${_git_branch#zfs-}
 _staging_ver=${_staging_ver%-staging}
 
 pkgname=${_pkgname}-dkms-staging-git
-pkgver=2.2.2.r42.g9e0304c363
+pkgver=2.2.2.r43.g3425484eb9
 pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System (release staging branch)."
 arch=('any')
