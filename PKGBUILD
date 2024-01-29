@@ -3,7 +3,7 @@
 _npmname=qunit
 pkgname="nodejs-${_npmname}"
 pkgver=2.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An easy-to-use JavaScript unit testing framework.'
 arch=('any')
 url='http://qunitjs.com/'
@@ -19,5 +19,7 @@ package() {
 	mkdir -p "$_npmdir"
 	cd "$_npmdir"
 	npm install --user root -g --prefix "${pkgdir}/usr" "${_npmname}@${pkgver}"
+	install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
+	ln -s "/usr/lib/node_modules/${_npmname}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 

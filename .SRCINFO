@@ -1,7 +1,7 @@
 pkgbase = nodejs-qunit
 	pkgdesc = An easy-to-use JavaScript unit testing framework.
 	pkgver = 2.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://qunitjs.com/
 	arch = any
 	license = MIT
