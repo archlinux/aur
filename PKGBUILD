@@ -69,7 +69,8 @@ conflicts=("wine")
 install="wine.install"
 options=(staticlibs !lto)
 source=(
-  "https://dl.winehq.org/wine/source/${_pkgver::1}.x/wine-${_pkgver}.tar.xz"
+  #"https://dl.winehq.org/wine/source/${_pkgver::1}.x/wine-${_pkgver}.tar.xz"
+  "https://mirrors.ustc.edu.cn/wine/wine/source/${_pkgver::1}.x/wine-${_pkgver}.tar.xz"
   "30-win32-aliases.conf"
   "wine-binfmt.conf"
   "0001-winex11.drv-Update-a-candidate-window-s-position-wit.patch"

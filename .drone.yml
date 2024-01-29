@@ -1,0 +1,29 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: makepkg
+  image: archlinux
+  volumes:
+  - name: pacman-cache
+    path: /var/cache/pacman/
+  - name: pacman-pkg
+    path: /pkg
+  commands:
+  - echo "Server = https://mirrors.ustc.edu.cn/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
+  - pacman -Syu --noconfirm --needed base base-devel 
+  - echo 'MAKEFLAGS="-j$(nproc)"' >> /etc/makepkg.conf
+  - useradd -u 1000 -d /home/makepkg makepkg
+  - 'echo "makepkg ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers'
+  - chown -R makepkg:users /drone/src
+  - su - makepkg -c "makepkg --noconfirm -sf"
+  - cp *.pkg.tar.zst /pkg
+
+volumes:
+- name: pacman-cache
+  host:
+    path: /tmp/pacman-cache
+- name: pacman-pkg
+  host:
+    path: /tmp/pacman-pkg
