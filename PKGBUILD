@@ -1,7 +1,7 @@
 # Maintainer: Gaël PORTAY <gael.portay@gmail.com>
 
 pkgname=iamroot-aarch64
-pkgver=16
+pkgver=17
 pkgrel=1
 pkgdesc='Emulating the syscall chroot(2) in an unpriviliged process (aarch64)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('aarch64-glibc-bleeding-edge-toolchain'
 checkdepends=('shellcheck')
 options=('!strip')
 source=("https://github.com/gportay/${pkgname%-aarch64}/archive/v$pkgver.tar.gz")
-sha256sums=('72719b400b0588812fd1e62b4bada43372536d185b518ddaf24ef1e2c47b8ffb')
+sha256sums=('1d78d29eff289407fb3c9c11c3bcb2df7897b047b8b46563b024530e4e49b0be')
 validpgpkeys=('8F3491E60E62695ED780AC672FA122CA0501CA71')
 
 prepare() {
