@@ -3,7 +3,8 @@ pkgname=mmseqs2-search-appimage
 _appname=mmseqs-app
 _pkgname=MMseqs2-Search
 pkgver=1.7.0
-pkgrel=5
+_electronversion=12
+pkgrel=6
 pkgdesc="MMseqs2 app to run on your workstation or servers"
 arch=(
     'aarch64'
@@ -11,7 +12,7 @@ arch=(
 )
 url="https://search.mmseqs.com/"
 _ghurl="https://github.com/soedinglab/MMseqs2-App"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
 depends=(
