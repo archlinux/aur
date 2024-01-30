@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=znote-bin
-pkgver=2.3.11
-_electronversion=12
+pkgver=2.4.0
+_electronversion=28
 pkgrel=1
 pkgdesc="A Beautiful markdown editor inspired by Jupyter."
 arch=(
@@ -10,7 +10,7 @@ arch=(
 )
 url="https://znote.io"
 _ghurl="https://github.com/alagrede/znote-app"
-license=('custom')
+license=('LicenseRef-custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -29,10 +29,10 @@ source=(
     "LICENSE-${pkgver}.html::${url}/cgu.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e3bccfecd7907b680442058909b67f64b525a3b1bd18d3fc9dc5ccf68342b118'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
-sha256sums_aarch64=('127cf82b1849ce9aadf3e0c1cc10027842cc19c05d71b05ee3030e3a0694b634')
-sha256sums_x86_64=('fa0da1120788b79de514064d62aa4a2d5fb082a5916ea65726825230f0dbee78')
+sha256sums=('d99c71829c8ef581236de84e94b61d57f9b89f907f8787e15cee1456a2921777'
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+sha256sums_aarch64=('b8b07639dee352294ef3487ee0b1131838b14b4155a74fe45b3b72ade40e90b1')
+sha256sums_x86_64=('bd68fdc674da7a849e3271381f7cfd736cf14533b7a1f2a4f5233cc12c263505')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -48,7 +48,6 @@ package() {
     install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -r "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
-    install -Dm644 "${srcdir}/squashfs-root/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/swiftshader"
     for icons in 8x8 32x32 64x64 128x128 256x256;do
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${icons}/apps"
