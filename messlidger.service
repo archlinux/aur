@@ -1,0 +1,15 @@
+[Unit]
+Description=Slidge XMPP messlidger bridge
+Wants=network-online.target
+After=network.target network-online.target
+
+[Service]
+ExecStart=/usr/bin/messlidger -c /etc/slidge/messlidger.conf
+KillSignal=SIGINT
+User=messlidger
+Group=slidge
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
