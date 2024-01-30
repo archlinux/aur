@@ -4,10 +4,10 @@ _tag=3.0.0-rc.3
 pkgname=watt-toolkit-bin
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
 pkgver=3.0.0.rc3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url=https://steampp.net/
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=('steam++' 'watt-toolkit')
 conflicts=('steam++' 'watt-toolkit')
 options=('!strip')
@@ -23,9 +23,14 @@ sha256sums_x86_64=('a869507634904450b04d156a095dd1a550d28ce70961dd52dc1f1bf4644e
 
 package(){
     depends=(
-        'libcap' 'aspnet-runtime-8.0' 'nss'
-        # extra/skia-sharp
-        'fontconfig' 'expat' 'libfreetype.so' 'libheif' 'libjpeg-turbo' 'libpng' 'libwebp' 'zlib')
+        # runtime
+        'libcap' 'aspnet-runtime-8.0' 'nss' 'dotnet-runtime-8.0' 'sh' 'hicolor-icon-theme'
+        # e_sqlite3.so libHarfBuzzSharp.so libSkiaSharp.so
+        'glibc'
+        # Steam++.Accelerator
+        'gcc-libs'
+        # libSkiaSharp.so
+        'fontconfig' 'freetype2' 'expat' 'zlib' 'bzip2' 'libpng' 'harfbuzz' 'brotli' 'glib2' 'graphite' 'pcre2')
     optdepends=('steam: need official or flatpak version of steam')
     case ${CARCH} in
         x86_64)
@@ -46,10 +51,10 @@ package(){
     cp -r "${srcdir}/native" "${pkgdir}/usr/lib/watt-toolkit"
     cp -r "${srcdir}/modules" "${pkgdir}/usr/lib/watt-toolkit/modules"
     find "${pkgdir}/usr/lib/watt-toolkit" -type f -exec chmod 644 {} \;
-    chmod 755 "${pkgdir}/usr/lib/watt-toolkit/modules/"*/Steam++.*
+    find "${pkgdir}/usr/lib/watt-toolkit/modules" -type f -name 'Steam++.*' -exec chmod 755 {} \;
     install -Dm644 "${srcdir}/Icons/Watt-Toolkit.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/watt-toolkit.png"
-    install -Dm755 "${srcdir}/watt-toolkit" "${pkgdir}/usr/bin/watt-toolkit"
-    install -Dm644 "${srcdir}/watt-toolkit.desktop" "${pkgdir}/usr/share/applications/watt-toolkit.desktop"
-    install -Dm644 "${srcdir}/set-cap.hook" "${pkgdir}/usr/share/libalpm/hooks/watt-toolkit-set-cap.hook"
     install -Dm755 "${srcdir}/script/environment_check.sh" "${pkgdir}/usr/lib/watt-toolkit/script/environment_check.sh"
+    install -Dm755 "${srcdir}/watt-toolkit" "${pkgdir}/usr/bin/watt-toolkit"
+    install -Dm644 "${srcdir}/set-cap.hook" "${pkgdir}/usr/share/libalpm/hooks/watt-toolkit-set-cap.hook"
+    install -Dm644 "${srcdir}/watt-toolkit.desktop" "${pkgdir}/usr/share/applications/watt-toolkit.desktop"
 }
