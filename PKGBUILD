@@ -5,13 +5,13 @@ _pkgname='tizonia'
 _githubname="${_pkgname}-openmax-il"
 pkgname="${_pkgname}-all-git"
 pkgver=0.22.0+28.r3903.20210110.a1e8f8bd
-pkgrel=5
+pkgrel=6
 pkgdesc="Command-line cloud music player and downloader for Linux with support for YouTube, SoundCloud, Plex servers, Chromecast devices and generic streams and websites."
 arch=(
   'x86_64'
 )
 url="https://www.tizonia.org"
-license=('LGPL3')
+license=('LGPL-3.0-or-later')
 depends=(
   # official repositories:
   'boost-libs'
