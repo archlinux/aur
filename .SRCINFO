@@ -1,7 +1,7 @@
 pkgbase = jed-git
 	pkgdesc = Powerful scriptable editor designed for use by programmers (built from latest git commit)
 	pkgver = 0.99.20.r180.g68f0c75
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.jedsoft.org/jed/
 	install = jed-git.install
 	arch = aarch64
@@ -15,6 +15,7 @@ pkgbase = jed-git
 	depends = fontconfig
 	depends = glibc
 	depends = gpm
+	depends = hicolor-icon-theme
 	depends = slang
 	depends = libx11
 	depends = libxft

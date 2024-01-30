@@ -4,7 +4,7 @@
 pkgname='jed-git'
 _pkgname="${pkgname/-git/}"
 pkgver=0.99.20.r180.g68f0c75
-pkgrel=7
+pkgrel=8
 pkgdesc='Powerful scriptable editor designed for use by programmers (built from latest git commit)'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url='https://www.jedsoft.org/jed/'
@@ -17,6 +17,7 @@ depends=(
   'fontconfig'
   'glibc'
   'gpm'
+  'hicolor-icon-theme'
   'slang'
   'libx11'
   'libxft'
@@ -74,12 +75,25 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  install -Dm0755 'src/objs/rgrep' "$pkgdir/usr/bin/rgrep"
+  # Increase verbosity if standard output is a TTY
+  test -t 1 && _v='v' || _v=''
+
+  install -${_v}Dm0755 src/objs/rgrep             \
+    -t "$pkgdir/usr/bin/"
+  install -${_v}Dm0644 desktop/{jed,xjed}.desktop \
+    -t "$pkgdir/usr/share/applications/"
+  install -${_v}Dm0644 desktop/{jed,xjed}.svg     \
+    -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
 
   cd "$pkgdir/usr/share/jed/lib"
 
   env JED_ROOT="$pkgdir/usr/share/jed" \
     "$pkgdir/usr/bin/jed" -batch -n -l preparse.sl
+
+  cd "$pkgdir/usr/share/man/man1/" && {
+    ln -${_v}rs jed.1 jed-script.1
+    ln -${_v}rs jed.1 xjed.1
+  }
 }
 
 sha256sums=('SKIP')
