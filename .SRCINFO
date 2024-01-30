@@ -1,29 +1,23 @@
 pkgbase = linwood-butterfly-bin
 	pkgdesc = Powerful, minimalistic, cross-platform, opensource note-taking app
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://docs.butterfly.linwood.dev/
 	arch = x86_64
-	license = Apache
-	license = AGPL3
-	license = custom:CC-BY-4.0
-	depends = cairo
+	license = AGPL-3.0-only
+	license = CC-BY-4.0
 	depends = gtk3
 	depends = at-spi2-core
-	depends = libsecret
-	depends = libepoxy
-	depends = pango
 	depends = hicolor-icon-theme
-	depends = harfbuzz
-	depends = gdk-pixbuf2
-	depends = fontconfig
-	provides = linwood-butterfly=2.0.1
+	depends = libsecret
+	provides = linwood-butterfly=2.0.2
 	conflicts = linwood-butterfly
-	source = linwood-butterfly-2.0.1.deb::https://github.com/LinwoodDev/Butterfly/releases/download/v2.0.1/linwood-butterfly-linux.deb
-	source = LICENSE-2.0.1::https://raw.githubusercontent.com/LinwoodDev/Butterfly/v2.0.1/LICENSE
+	options = !strip
+	source = linwood-butterfly-2.0.2.deb::https://github.com/LinwoodDev/Butterfly/releases/download/v2.0.2/linwood-butterfly-linux.deb
+	source = LICENSE-2.0.2::https://raw.githubusercontent.com/LinwoodDev/Butterfly/v2.0.2/LICENSE
 	source = linwood-butterfly.sh
-	sha256sums = 189aa871308921ca18e0f0c0826e040453e82989a338a099833745afb9ccf185
+	sha256sums = 5a6b356ac55cfc2805c468b42a721aeb677b5cb6cb0a7b9e93a660f28218ccb2
 	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
-	sha256sums = 32c18d53ad4aa5937979886389d69cf7a2312d439410213d03fdef7e9574e6cd
+	sha256sums = 1e338ff128b2be2b0d484ea2d00814db6709a5e2cc455a373428d21f8ed690d5
 
 pkgname = linwood-butterfly-bin
