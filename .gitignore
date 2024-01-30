@@ -4,4 +4,5 @@
 !BUILDING
 !PKGBUILD
 !vscodium-git-uri-handler.desktop
+!vscodium-git-wayland.desktop
 !vscodium-git.desktop

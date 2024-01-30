@@ -37,9 +37,11 @@ pkgbase = vscodium-git
 	conflicts = vscodium-git
 	source = git+https://github.com/VSCodium/vscodium.git#branch=master
 	source = vscodium-git.desktop
+	source = vscodium-git-wayland.desktop
 	source = vscodium-git-uri-handler.desktop
 	sha256sums = SKIP
 	sha256sums = 07cde55d43e5f456f90867c5592a04e33e79e15db21faf2160a22357737bd029
+	sha256sums = 1841d08fdb512f32433eefa21132bf7ad13e106cb45ca3218d0da7b7be9cfc81
 	sha256sums = 28bd860a45b8795b0374c3660065a02e04adf20e3a3556bbd1d192f0cd554a7c
 
 pkgname = vscodium-git

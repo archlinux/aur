@@ -40,10 +40,12 @@ makedepends=(
 source=(
     "git+${url}#branch=master"
     "${pkgname}.desktop"
+    "${pkgname}-wayland.desktop"
     "${pkgname}-uri-handler.desktop"
 )
 sha256sums=('SKIP'
             '07cde55d43e5f456f90867c5592a04e33e79e15db21faf2160a22357737bd029'
+            '1841d08fdb512f32433eefa21132bf7ad13e106cb45ca3218d0da7b7be9cfc81'
             '28bd860a45b8795b0374c3660065a02e04adf20e3a3556bbd1d192f0cd554a7c')
 provides=(
     'codium'
@@ -138,6 +140,8 @@ build() {
     # the app will be updated with pacman
     export DISABLE_UPDATE="yes"
 
+    # Disabling this patch, since it is for win32 and does not apply here
+    rm -rf patches/cleanup-archive.patch
     . get_repo.sh
     . build.sh
 }
@@ -154,6 +158,7 @@ package() {
     ln -s /usr/share/${pkgname}/bin/codium ${pkgdir}/usr/bin/vscodium
     
     install -D -m644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
+    install -D -m644 ${pkgname}-wayland.desktop ${pkgdir}/usr/share/applications/${pkgname}-wayland.desktop
     install -D -m644 ${pkgname}-uri-handler.desktop ${pkgdir}/usr/share/applications/${pkgname}-uri-handler.desktop
     install -D -m644 ${srcdir}/vscodium/VSCode-linux-${_vscode_arch}/resources/app/resources/linux/code.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
 
