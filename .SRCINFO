@@ -1,6 +1,6 @@
 pkgbase = claws-mail-protectedheaders-git
 	pkgdesc = A GTK based e-mail client. Latest git checkout, built against 'gtk3'. Patched to use charset supersets to decode titles and to display protected headers.
-	pkgver = 4.2.0+36.r13319.20240112.e67ebcf6e
+	pkgver = 4.2.0+37.r13320.20240125.3edfeed71
 	pkgrel = 1
 	epoch = 0
 	url = https://www.claws-mail.org/
@@ -83,13 +83,13 @@ pkgbase = claws-mail-protectedheaders-git
 	optdepends = libxml2: for gdata plugin.
 	optdepends = libsoup: for gdata and fancy html viewer plugins.
 	optdepends = webkit2gtk: for fancy webkit html viewer plugin
-	provides = claws=4.2.0+36.r13319.20240112.e67ebcf6e
-	provides = claws-mail=4.2.0+36.r13319.20240112.e67ebcf6e
-	provides = claws-mail-gtk3=4.2.0+36.r13319.20240112.e67ebcf6e
-	provides = claws-mail-title-superset=4.2.0+36.r13319.20240112.e67ebcf6e
-	provides = claws-mail-protectedheaders=4.2.0+36.r13319.20240112.e67ebcf6e
+	provides = claws=4.2.0+37.r13320.20240125.3edfeed71
+	provides = claws-mail=4.2.0+37.r13320.20240125.3edfeed71
+	provides = claws-mail-gtk3=4.2.0+37.r13320.20240125.3edfeed71
+	provides = claws-mail-title-superset=4.2.0+37.r13320.20240125.3edfeed71
+	provides = claws-mail-protectedheaders=4.2.0+37.r13320.20240125.3edfeed71
 	provides = claws-mail-bash-completion
-	provides = claws-mail-extra-plugins=4.2.0+36.r13319.20240112.e67ebcf6e
+	provides = claws-mail-extra-plugins=4.2.0+37.r13320.20240125.3edfeed71
 	conflicts = claws
 	conflicts = claws-mail
 	conflicts = claws-mail-protectedheaders
