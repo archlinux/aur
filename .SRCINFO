@@ -4,7 +4,6 @@ pkgbase = devexcuse-git
 	pkgrel = 1
 	url = https://github.com/K4R7IK/DevExcuse
 	arch = any
-	license = MIT
 	depends = curl
 	depends = jq
 	source = git+https://github.com/K4R7IK/DevExcuse.git

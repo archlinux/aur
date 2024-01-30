@@ -4,7 +4,6 @@ pkgrel=1
 pkgdesc="This script will fetch a random developer excuse from the web while also keeping an offline database."
 url="https://github.com/K4R7IK/DevExcuse"
 depends=('curl' 'jq')
-license=('MIT')
 arch=('any')
 
 source=("git+${url}.git")
