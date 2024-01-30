@@ -1,7 +1,7 @@
 # Maintainer: Fernando Vasquez <fmorataya.04@gmail.com>
 
 pkgname=wpgtk
-pkgver=6.5.9
+pkgver=6.6.1
 pkgrel=6
 pkgdesc="A gui wallpaper chooser that changes your WM theme, GTK theme and more"
 arch=('any')
@@ -18,7 +18,7 @@ sha256sums=('SKIP' 'SKIP')
 
 build(){
   cd "wpgtk-${pkgver}"
-  python -m build --wheel --no-isolation
+  python -m build --wheel
 }
 
 package() {
