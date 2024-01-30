@@ -2,8 +2,8 @@
 
 pkgname=aliyunpan-go-bin
 _pkgname=aliyunpan-go
-pkgver=0.2.8
-pkgrel=4
+pkgver=0.2.9
+pkgrel=1
 pkgdesc='阿里云盘命令行客户端，支持webdav文件服务，支持JavaScript插件，支持同步备份功能。(Precompiled version)'
 arch=('x86_64' 'aarch64' 'loong64')
 url='https://github.com/tickstep/aliyunpan'
@@ -14,9 +14,9 @@ source_x86_64=("${url}/releases/download/v${pkgver}/aliyunpan-v${pkgver}-linux-a
 source_aarch64=("${url}/releases/download/v${pkgver}/aliyunpan-v${pkgver}-linux-arm64.zip")
 source_loong64=("${url}/releases/download/v${pkgver}/aliyunpan-v${pkgver}-linux-loong64.zip")
 
-sha512sums_x86_64=('eccbb222382b26834e9d04229f2766dd0f12c5f791b0537597bdeb99b5c970374c1102a0699d868541836989b800fae4f5bf7af2e902df74e80af616fbce7349')
-sha512sums_aarch64=('8f346e6a2475e5705e52be037423a35e2845bd1e13d64611c545503f43d7ae76995cf2ba5de301e22418c9cca83f6a5a0b321b2bc437b1b0bd4091b290133f4f')
-sha512sums_loong64=('4d899b1688bd575086a8e10ad49dc0b7fd3acef3f5f71a1ef23c4c9bf5351f36076d1f49b37358b3d3e17fa0d1c87519aefb5c4566ed07e178a732308d5d2dca')
+sha512sums_x86_64=('d5df4d56b22b19531d886eae7d4780bb8f8d20acc542a28eaf152c2d0e89ee1d9fb7c6d3cb7fd82f00f3e936e4e7a70bdae9c1718ca0e79d61ddee870478f51a')
+sha512sums_aarch64=('b4825b33058bda4159e2b2e4824aafeecde4e07f38a1f815026b2eb8e0014e0f0a5ba156ee4e8ef12987d381b96235a7748bf311b770f2c53294ab33539f96b5')
+sha512sums_loong64=('afc8e94ea99cd10bcd4154cfd8719812577419bd007c297f8d7bcd87fe57161e4eaae4c0b37e438caef1e7b3807db9a560d48cec663bffdb1d403a09a39e14a2')
 
 declare -A _archmap=(
     ['x86_64']='amd64'
