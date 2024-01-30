@@ -1,11 +1,10 @@
 [Trigger]
-Type=Package
+Type=File
 Operation=Install
 Operation=Upgrade
-Target=liteloader-qqnt-git
-Target=liteloader-qqnt-bin
+Target=/opt/QQ/resources/app/app_launcher/index.js
 
 [Action]
-Description=Patch QQ for LiteLoaderQQNT
+Description=Repatch QQ for LiteLoaderQQNT
 When=PostTransaction
 Exec=/bin/sh -c 'grep -q /opt/LiteLoader /opt/QQ/resources/app/app_launcher/index.js || sed -i "1 i require(\"/opt/LiteLoader\");" /opt/QQ/resources/app/app_launcher/index.js'
