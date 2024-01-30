@@ -67,6 +67,7 @@ makedepends=(
   'avahi'
   'dav1d'
   'flac'
+  'fluidsynth'
   'jack'
   'libass'
   'libavc1394'
@@ -124,6 +125,7 @@ optdepends=(
   'avahi: service discovery using bonjour protocol'
   'dav1d: dav1d AV1 decoder'
   'flac: Free Lossless Audio Codec plugin'
+  'fluidsynth: FluidSynth based MIDI playback plugin'
   'gnu-free-fonts: subtitle font'
   'jack: jack audio server'
   'libass: Subtitle support'
@@ -256,6 +258,7 @@ build() {
     --enable-a52 \
     --enable-dca \
     --enable-flac \
+    --enable-fluidsynth \
     --enable-libmpeg2 \
     --enable-vorbis \
     --enable-speex \
