@@ -3,7 +3,7 @@
 conf_dir="$HOME/.config/subs2srs"
 
 if [[ ! -d $conf_dir ]]; then
-	mkdir -p "$conf_dir"
+	mkdir -p -- "$conf_dir"
 fi
 
 if [[ ! -f $conf_dir/preferences.txt ]]; then
