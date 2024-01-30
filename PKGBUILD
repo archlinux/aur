@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zui-bin
 _pkgname=Zui
-pkgver=1.5.0
-_electronversion=22
-pkgrel=2
+pkgver=1.6.0
+_electronversion=28
+pkgrel=1
 pkgdesc="A powerful desktop application for exploring and working with data. The official front-end to the Zed lake."
 arch=('x86_64')
 url="https://www.brimdata.io/"
@@ -25,7 +25,7 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/brimdata/zui/v${pkgver}/apps/zui/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('87589bc5924428cdd3cfc22fd516e96fa33a591529c7d52aad84d37341cef65e'
+sha256sums=('c857fae016a2f2c8e8d7af37e2f14cb1e1687e2db085ff5aa148561732b293dc'
             'e3d24db419fcb44a1dab91f351b8203e74e8501ea11c4be82ad3cc05070cad9f'
             '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
