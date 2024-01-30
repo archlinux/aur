@@ -1,6 +1,6 @@
 pkgbase = velero-bin
 	pkgdesc = Backup client for Kubernetes
-	pkgver = 1.12.2
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://github.com/vmware-tanzu/velero
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = velero-bin
 	depends = kubectl
 	provides = velero
 	conflicts = velero
-	source = https://github.com/vmware-tanzu/velero/releases/download/v1.12.2/velero-v1.12.2-linux-amd64.tar.gz
-	sha256sums = f33559f4fb7d6bbed422be45eeebc5ce7c1e8e78f6d8486292247bc661c3eb5e
+	source = https://github.com/vmware-tanzu/velero/releases/download/v1.13.0/velero-v1.13.0-linux-amd64.tar.gz
+	sha256sums = 4cbb18a05c0dd3e60430e015e90d53fddbf4111a0252ea27877a8cea42bdea8f
 
 pkgname = velero-bin
