@@ -1,0 +1,14 @@
+pkgbase = apg-c
+	pkgdesc = an ABNF parser generator creating recursive-descent parsers from a superset of ABNF
+	pkgver = 7.0
+	pkgrel = 1
+	url = https://github.com/ldthomas/apg-7.0
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = cmake
+	depends = glibc
+	conflicts = apg
+	source = https://github.com/ldthomas/apg-7.0/archive/6212ba997f954d6688fe29afd352892682cfff3e/apg-7.0-6212ba997f954d6688fe29afd352892682cfff3e.tar.gz
+	sha256sums = 2ba58fca1873fed98fee47828ec13fd6fe1f5b5305b90c2a15437e21be8a15a3
+
+pkgname = apg-c
