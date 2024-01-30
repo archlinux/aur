@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034,SC2164
 
 _pkgname=losslesscut
-pkgname=losslesscut-bin
+pkgname=losslesscut-bin-2
 pkgver=3.59.1
 pkgrel=1
 pkgdesc="Crossplatform GUI tool for lossless trimming/cutting of video/audio files"

@@ -1,4 +1,4 @@
-pkgbase = losslesscut-bin
+pkgbase = losslesscut-bin-2
 	pkgdesc = Crossplatform GUI tool for lossless trimming/cutting of video/audio files
 	pkgver = 3.59.1
 	pkgrel = 1
@@ -9,7 +9,7 @@ pkgbase = losslesscut-bin
 	depends = ffmpeg
 	depends = gtk3
 	depends = libxss
-	source_x86_64 = losslesscut-bin-3.59.1.tar.bz2::https://github.com/mifi/lossless-cut/releases/download/v3.59.1/LosslessCut-linux-x64.tar.bz2
+	source_x86_64 = losslesscut-bin-2-3.59.1.tar.bz2::https://github.com/mifi/lossless-cut/releases/download/v3.59.1/LosslessCut-linux-x64.tar.bz2
 	source_x86_64 = losslesscut.desktop
 	source_x86_64 = LICENSE
 	source_x86_64 = https://raw.githubusercontent.com/mifi/lossless-cut/master/src/icon.svg
@@ -18,4 +18,4 @@ pkgbase = losslesscut-bin
 	sha256sums_x86_64 = 48affed7162fc2e76f1cd47b50355181b869b4025ff04c2a53b03854e329dca0
 	sha256sums_x86_64 = d3d3da3f403ce1b9f846ae2a38a8fe9938fc458024352a9741b59a920eefacf9
 
-pkgname = losslesscut-bin
+pkgname = losslesscut-bin-2

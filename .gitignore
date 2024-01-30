@@ -1,2 +1,5 @@
 /icon.svg
 /*.bz2
+/pkg/
+/src/
+/*.zst
