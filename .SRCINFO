@@ -1,0 +1,17 @@
+pkgbase = pion-ng-git
+	pkgdesc = Pion Network Library
+	pkgver = 5.0.8.r1.g7e8174e
+	pkgrel = 1
+	url = https://github.com/rimmartin/pion-ng
+	arch = x86_64
+	license = BSL-1.0
+	makedepends = git
+	makedepends = boost
+	depends = boost-libs
+	depends = openssl
+	provides = pion-ng
+	conflicts = pion-ng
+	source = git+https://github.com/rimmartin/pion-ng.git
+	sha256sums = SKIP
+
+pkgname = pion-ng-git
