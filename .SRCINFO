@@ -11,6 +11,6 @@ pkgbase = remote-desktop-manager
 	depends = vte3
 	options = !strip
 	source = RemoteDesktopManager_2023.3.1.9_amd64.deb::https://cdn.devolutions.net/download/Linux/RDM/2023.3.1.9/RemoteDesktopManager_2023.3.1.9_amd64.deb
-	sha256sums = 
+	sha256sums = 6A3D286CA9A375169D1DE33F305EA56DDE0873E82E0C8B98EC194733C324791A
 
 pkgname = remote-desktop-manager

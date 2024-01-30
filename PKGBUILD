@@ -12,7 +12,7 @@ depends=('webkit2gtk' 'p11-kit' 'vte3')
 options=(!strip)
 install=${pkgname}.install
 source=("RemoteDesktopManager_${pkgver}_amd64.deb::https://cdn.devolutions.net/download/Linux/RDM/${pkgver}/RemoteDesktopManager_${pkgver}_amd64.deb")
-sha256sums=('')
+sha256sums=('6A3D286CA9A375169D1DE33F305EA56DDE0873E82E0C8B98EC194733C324791A')
 
 prepare() {
   tar -xf ${srcdir}/data.tar.xz
