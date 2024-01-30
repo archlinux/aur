@@ -7,9 +7,9 @@
 # https://github.com/wine-staging/wine-staging
 
 pkgname="wine-wow64"
-pkgver=9.0
+pkgver=9.1
 _pkgver="${pkgver/rc/-rc}"
-pkgrel=3
+pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://www.winehq.org"
 license=(LGPL)
@@ -69,15 +69,13 @@ backup=("usr/lib/binfmt.d/wine.conf")
 options=(staticlibs !lto)
 
 source=(
-  "https://dl.winehq.org/wine/source/${pkgver::1}.0/wine-$_pkgver.tar.xz"
+  "https://dl.winehq.org/wine/source/${pkgver::1}.x/wine-$_pkgver.tar.xz"
   "30-win32-aliases.conf"
   "wine-binfmt.conf"
 )
-b2sums=(
-  'cf53177201a2f7eeb35d0d8ce220f80808d979099a928ad60652d1dee92620c433cc105dffab4e9309f41766087ad1544ef49d2922538bb420d62f6dd64117a1'
-  '45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b'
-  'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588'
-)
+b2sums=('92d4bbaf02b414b657351fb51cb3d3a5a267ab9242a3effc8296fa73b540e23dce534d4e3e82b492f4b8539ce459b40e6d44f6708da4e5585ab2afb22045b8cf'
+        '45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b'
+        'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588')
 
 build() {
   cd "wine-$_pkgver"
