@@ -1,43 +1,27 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=alphabiz-bin
 _pkgname=Alphabiz
-pkgver=0.3.1
-pkgrel=4
+pkgver=0.3.2
+_electronversion=21
+pkgrel=1
 pkgdesc="Web3 ecosystem - enable developers to build fully decentralized media platform and blockchain-based marketplace"
 arch=('x86_64')
 url="https://alpha.biz/"
 _ghurl="https://github.com/tanshuai/alphabiz"
-license=('GPL2')
+license=('GPL-2.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'expat'
-    'cairo'
-    'wayland'
-    'pango'
-    'java-runtime'
-    'libxfixes'
-    'mesa'
-    'libx11'
-    'libxkbcommon'
-    'libxcb'
     'gtk3'
-    'libxrandr'
-    'nss'
-    'libdrm'
-    'libxext'
-    'at-spi2-core'
-    'libcups'
-    'libxdamage'
-    'nspr'
     'alsa-lib'
-    'libxcomposite'
+    'java-runtime'
 )
-source=("${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}.deb")
-sha256sums=('e3731b4d2ec237d39c7811aead372d431632b8dbe2ac5382884521fcf84f82f9')
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}.deb"
+)
+sha256sums=('939873dbe7cfa8aec08723f84139eac47ce38d7153c302fe3175435e608645ba')
 build() {
     bsdtar -xf "${srcdir}/data.tar.zst"
-    sed "s|--|--no-sandbox|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt,usr/bin}
