@@ -1,6 +1,6 @@
 pkgbase = r-saigegds
 	pkgdesc = Scalable Implementation of Generalized mixed models using GDS files in Phenome-Wide Association Studies
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SAIGEgds
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = r-saigegds
 	optdepends = r-runit
 	optdepends = r-snprelate
 	optdepends = r-survey
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SAIGEgds_2.2.0.tar.gz
-	sha256sums = 3fe54365f694f96e5bd4f07d76557e5f14ed95ce021220ee4cedc77606a7d071
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SAIGEgds_2.2.1.tar.gz
+	sha256sums = b93be6a3844f2589c87ef5f07df77f4e712671cc14994ac651164e78bdccc800
 
 pkgname = r-saigegds
