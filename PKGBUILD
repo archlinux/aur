@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=prjtrellis-nightly
-pkgver=20240129_1.4_64_g36c615d
+pkgver=20240130_1.4_66_g2dab009
 pkgrel=1
 epoch=1
 pkgdesc="Documenting the Lattice ECP5 bit-stream format."
@@ -21,7 +21,7 @@ conflicts=(
 )
 replaces=()
 source=(
-	"prjtrellis::git+https://github.com/YosysHQ/prjtrellis.git#commit=36c615d"
+	"prjtrellis::git+https://github.com/YosysHQ/prjtrellis.git#commit=2dab009"
 	"prjtrellis-db::git+https://github.com/YosysHQ/prjtrellis-db.git#commit=4dda149"
 )
 sha256sums=(
