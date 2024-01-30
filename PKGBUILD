@@ -1,8 +1,8 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=GE-Proton8-29
-_commit=bafcce336b871b064722d25b9dacc049907c3191
+_srctag=GE-Proton8-30
+_commit=06880fa56166180df777579c907d3f52d16442b3
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=8.1.0
