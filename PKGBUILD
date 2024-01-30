@@ -1,9 +1,10 @@
 # Maintainer: Alexey Peschany <archlinux at sandboiii dot xyz>
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail dot com>
-# Based on: Dave Kleinschmidt <dave.f.kleinschmidt at gmail dot com>
+# Contributor: Dave Kleinschmidt <dave.f.kleinschmidt at gmail dot com>
+
 pkgname=spaceship-prompt
 pkgver=4.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Zsh prompt for Astronauts"
 arch=('any')
 url="https://spaceship-prompt.sh/"
@@ -15,7 +16,7 @@ install="${pkgname}.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
         "$pkgname.install")
 sha256sums=('SKIP'
-            '0b213aced6cf022a6700d01145d6093dca262562b90f004cdbdb7935f234a953')
+            '9fb9218c6498c040461d8d7aa416b2eb9241317b5606e74d1ec1caed0709aaf4')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
