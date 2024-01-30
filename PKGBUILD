@@ -1,6 +1,6 @@
 pkgname=erigon
 pkgdesc='Ethereum implementation on the efficiency frontier.'
-pkgver=2.57.2
+pkgver=2.57.3
 pkgrel=2
 epoch=1
 url='https://github.com/ledgerwatch/erigon'
@@ -8,8 +8,8 @@ arch=('x86_64' 'aarch64')
 license=('GPL3')
 makedepends=('go')
 depends=('glibc')
-source=("https://github.com/ledgerwatch/erigon/archive/refs/tags/v2.57.2.tar.gz")
-b2sums=('260a3ce4a789a2c7601c976fc19d49eb3b5f33493cab6e59bc58b8a0c32e73a74c7620669d05b0bcf539e4213a3eda6eeaea1490e6a4177455469f16ec2252fe')
+source=("https://github.com/ledgerwatch/erigon/archive/refs/tags/v2.57.3.tar.gz")
+b2sums=('68c83b2bdf18948d2b6f9bcf452830f1fae05b2e5eeb61def8323fedd6022e81ab61552ed0d0c02c8822bbc13c9427792c7fc48ee372e0fb105e85337206c601')
 
 build() {
     cd ${pkgname}-${pkgver}
