@@ -16,7 +16,7 @@ _srcname=boost_${pkgver//./_}
 pkgdesc="Free peer-reviewed portable C++ source libraries"
 arch=('x86_64')
 url="https://www.boost.org/"
-license=('custom')
+license=('BSL-1.0')
 makedepends=('icu' 'python' 'python-numpy' 'bzip2' 'zlib' 'openmpi' 'zstd')
 source=(https://boostorg.jfrog.io/artifactory/main/release/$pkgver/source/$_srcname.tar.bz2
         boost-1.81.0-phoenix-multiple-definitions.patch
@@ -104,8 +104,6 @@ package_boost() {
   for _lib in python numpy; do
     ln -srL "$pkgdir"/usr/lib/libboost_${_lib}{${python_version/.},${python_version%.*}}.so
   done
-
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" $_srcname/LICENSE_1_0.txt
 }
 
 package_boost-libs() {
@@ -140,8 +138,6 @@ package_boost-libs() {
   touch "$pkgdir"$site_packages/boost/__init__.py
   python -m compileall -o 0 -o 1 -o 2 "$pkgdir"$site_packages/boost
   cp fakeinstall/lib/boost-python*/mpi.so "$pkgdir"$site_packages/boost/mpi.so
-
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" $_srcname/LICENSE_1_0.txt
 }
 
 # vim:set ts=2 sw=2 et:
