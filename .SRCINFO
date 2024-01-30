@@ -1,13 +1,13 @@
 pkgbase = tuxpaint-stamps
 	pkgdesc = Additional stamps for Tux Paint
-	pkgver = 2023.07.20
+	pkgver = 2024.01.29
 	pkgrel = 1
 	url = https://tuxpaint.org/
 	arch = any
 	license = GPL
 	optdepends = tuxpaint
 	options = !strip
-	source = https://downloads.sourceforge.net/tuxpaint/tuxpaint-stamps-2023.07.20.tar.gz
-	sha256sums = 0fb420617451759a4ddcd8bfe255e85c2b6c24e453f93da11da2d41698037842
+	source = https://downloads.sourceforge.net/tuxpaint/tuxpaint-stamps-2024.01.29.tar.gz
+	sha256sums = 1b0271f6da9a5fb23adb7b494183b9de289a02966d62c4cb430da9b4120594a9
 
 pkgname = tuxpaint-stamps
