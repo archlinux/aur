@@ -4,14 +4,14 @@
 # Contributor: fordprefect <fordprefect@dukun.de>
 
 _pkgname=distr
-_pkgver=2.9.2
+_pkgver=2.9.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Object Oriented Implementation of Distributions"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(LGPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('LGPL-3.0-only')
 depends=(
   r-sfsmisc
   r-startupmsg
@@ -24,12 +24,12 @@ optdepends=(
   r-svunit
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('434704907b6994db505b19a50564b007')
-sha256sums=('b52a817ed66b75defb009e2f946472ab87f693f63c43638e86b5482cd39a2e30')
+md5sums=('516d41cdd753fb0a200d0122332ed9b8')
+b2sums=('f505a8da163f8bf76a9b42614911e132e94f21caf3a9359d87e008fe7ad5f5e9934ceb70b114dd85fa3149322e9824b9c891c7aa2b8d0c6b102c5641595f86e6')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
