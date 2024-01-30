@@ -14,7 +14,7 @@ depends=(
 )
 
 source=(
-    "https://gitlab.gnome.org/dqpb/gmetronome/-/releases/$pkgver/downloads/$pkgname-$pkgver.tar.bz2"
+    "https://github.com/dqpb/gmetronome/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2"
 )
 sha256sums=(
     '0429e878a1b514903b346fe647d3964e6842dd6d9ed93456ac848591e0d0dade'

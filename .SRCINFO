@@ -9,7 +9,7 @@ pkgbase = gmetronome
 	depends = gtkmm3
 	depends = libpulse
 	depends = alsa-lib
-	source = https://gitlab.gnome.org/dqpb/gmetronome/-/releases/0.3.2/downloads/gmetronome-0.3.2.tar.bz2
+	source = https://github.com/dqpb/gmetronome/releases/download/0.3.2/gmetronome-0.3.2.tar.bz2
 	sha256sums = 0429e878a1b514903b346fe647d3964e6842dd6d9ed93456ac848591e0d0dade
 
 pkgname = gmetronome
