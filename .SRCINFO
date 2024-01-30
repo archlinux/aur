@@ -1,7 +1,7 @@
 pkgbase = aztfy-bin
 	pkgdesc = A tool to bring existing Azure resources under Terraform's management
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Azure/aztfy
 	arch = x86_64
 	arch = i686

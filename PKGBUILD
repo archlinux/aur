@@ -1,7 +1,7 @@
 # Maintainer: magodo <wztdyl@sina.com>
 pkgname=aztfy-bin
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to bring existing Azure resources under Terraform's management"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/Azure/aztfy"
