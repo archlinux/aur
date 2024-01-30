@@ -6,7 +6,7 @@
 
 pkgname=ondsel-es-appimage
 pkgver=2024.1.0
-pkgrel=1
+pkgrel=2
 _gitrev=35694
 pkgdesc="A general purpose 3D CAD modeler based on FreeCAD (AppImage version)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ noextract=("ondsel-es-${pkgver}.AppImage")
 source=("ondsel-es-${pkgver}.AppImage::https://github.com/Ondsel-Development/FreeCAD/releases/download/${pkgver}/Ondsel_ES_${pkgver}.${_gitrev}-Linux-x86_64.AppImage"
         "ondsel-es.sh"
         "ondsel-es-desktop.patch")
-sha256sums=('55c7d07e17eee11bbb580fdcfc17069f3b84244e4d8a5801d6710d66dae0bd72'
+sha256sums=('50d96d7747c5d8cbd56e600d7046aa80406cadeaf1aa71821d95cc2c6a7a38ac'
             'bef63d2f4298c27f755664d124f61c29df34263253ad1f92241f54cbc96ae005'
             '5374bf95dcc9bd3b9ea3087b66937e03d77d8ea3af90522247ac6eeb5a1b9d2c')
 
