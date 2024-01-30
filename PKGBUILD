@@ -5,25 +5,37 @@ pkgname=('clickhouse-server-bin' 'clickhouse-common-static-bin' 'clickhouse-clie
 # 'testing' - most recent version
 # 'prestable' and 'lts' are available
 _channel='stable'
-pkgver=23.12.2.59
+pkgver=24.1.1.2048
 pkgrel=1
 provides=('clickhouse')
 pkgdesc="ClickHouse is a fast open-source OLAP database management system"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://clickhouse.tech/"
 license=('Apache')
-source=(
+source_x86_64=(
 	"https://packages.clickhouse.com/tgz/$_channel/clickhouse-client-$pkgver-amd64.tgz"
 	"https://packages.clickhouse.com/tgz/$_channel/clickhouse-common-static-$pkgver-amd64.tgz"
 	"https://packages.clickhouse.com/tgz/$_channel/clickhouse-server-$pkgver-amd64.tgz"
 	"clickhouse.sysusers"
 	"clickhouse-server.service"
 )
-sha512sums=('908fc5880ba81289bb05e62f433b78ddc1a8502952bea7104329da82e677ceb061e8d9dd7a30dd7f98e1faf4cd20fa62ee2998517c16d53280b50d2a47670165'
-            'd1beb8f5f26145c464a3972ca46dd9e34f0f9204e4d070409b136a84db1ab98787a0c60d252f725428dc2210534dcf135e460f17c4b5844082ccc2ee1447a954'
-            '15f430fa9de69b366d47018b369fca37ae4d5cdd5eb3a436f99ee897b8f13159c4c0a6c0b7a36d38aa09a81c110d2d116b859f8bd9f7ad75237ad685b7867c8e'
-            '70af4456ded1a1bb5cf29d2d3b29086aedc7875ef673e8817f389243f0c79eb491c9ce715b94542cbe16eb7489d97411ff0ab4a1a7f6c9b9120c659b87ea25b7'
-            '6b22c7e27961c1453f8ce71457085cb24271ed1962033f78ea2483560bb6ad265a117414c5a9627a1733429d4080adf1fea4490073a7e522a002753d4d87d01c')
+source_aarch64=(
+	"https://packages.clickhouse.com/tgz/$_channel/clickhouse-client-$pkgver-arm64.tgz"
+	"https://packages.clickhouse.com/tgz/$_channel/clickhouse-common-static-$pkgver-arm64.tgz"
+	"https://packages.clickhouse.com/tgz/$_channel/clickhouse-server-$pkgver-arm64.tgz"
+	"clickhouse.sysusers"
+	"clickhouse-server.service"
+)
+sha512sums_x86_64=('6ff13e67b53c0d9d9ddc782e50f35543d4d0e1f9766b007e12385fbf5de71291e5cbb801bfe09246e7d674456e3528924e7870c2de8412c492f19d6f590ab2c1'
+                   'bd17c1bea448edee982617d48429740d3aa44c91ab62184a5092b973f6d74621a52ce20ff6f1b3930bec3bcc46bc3832740cf06d81dd6cafd7554a581e44e89f'
+                   '07d3751bac877fc979e2acc0b52a6b557e06897a76214b0d505f0f60ce3a979ac9af2a280c86628bc4b87632697fa2c5e946805c9bbe3b19666ab1235002f49f'
+                   '70af4456ded1a1bb5cf29d2d3b29086aedc7875ef673e8817f389243f0c79eb491c9ce715b94542cbe16eb7489d97411ff0ab4a1a7f6c9b9120c659b87ea25b7'
+                   '6b22c7e27961c1453f8ce71457085cb24271ed1962033f78ea2483560bb6ad265a117414c5a9627a1733429d4080adf1fea4490073a7e522a002753d4d87d01c')
+sha512sums_aarch64=('285e0db2e7354afd803c3f32eadb695000767db11d1a54c3d66b62fd6f6d778ca0757d1066f505848b0789edf4da3128fa521185afc0559c85a46c31b615d0fa'
+                    'ad6d716037e734ef04d93b2ca2f686ef0eb26a032103c08ccba94ca893873e58f1cede6f444667d554cd77e118e46c58dc14afd4308f5b5feafd7c742a8dbe9c'
+                    '6ec56a09df01178cfe06c093d4f79b7dc09b53938a0f15fe1c50c175b46ff3379010bafa8efec75b832f04e7a38ec3c810ee4a4899e94e593eee7161cab5b452'
+                    '70af4456ded1a1bb5cf29d2d3b29086aedc7875ef673e8817f389243f0c79eb491c9ce715b94542cbe16eb7489d97411ff0ab4a1a7f6c9b9120c659b87ea25b7'
+                    '6b22c7e27961c1453f8ce71457085cb24271ed1962033f78ea2483560bb6ad265a117414c5a9627a1733429d4080adf1fea4490073a7e522a002753d4d87d01c')
 
 
 package_clickhouse-client-bin() {
