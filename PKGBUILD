@@ -166,7 +166,7 @@ build() {
 }
 
 check() {
-	"$srcdir/build/mitsuba" "$srcdir/test_scene.xml"
+	"$srcdir/build/mitsuba" -m llvm_ad_rgb "$srcdir/test_scene.xml"
 }
 
 package() {
@@ -206,7 +206,7 @@ package() {
 	mkdir -p "$pkgdir$site_packages"
 	cp -R python/* "$pkgdir$site_packages"
 
-	# fix rpaths
+	# fix rpaths to run from /usr/bin
 	patchelf --set-rpath "/usr/lib/$pkgname" "$pkgusr/bin/$binary_name"
 	for so in "$pkglib/*.so";                 do patchelf --set-rpath "\$ORIGIN" $so; done
 	for so in "$pkglib/plugins/*.so";         do patchelf --remove-rpath $so; done
