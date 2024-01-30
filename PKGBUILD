@@ -2,12 +2,12 @@
 pkgname=bluetuith-bin
 _pkgname=bluetuith
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A TUI based bluetooth manager"
 arch=('x86_64' 'i686' 'arm' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/darkhz/bluetuith"
 license=('MIT')
-depends=('bluez' 'dbus')
+depends=('bluez' 'bluez-obex' 'dbus')
 optdepends=('networkmanager: For PANU networking'
             'modemmanager: For DUN networking'
 	    'pulseaudio: For switching device audio profiles')
