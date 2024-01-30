@@ -1,6 +1,6 @@
 pkgbase = snapraid
 	pkgdesc = tool for Snapshot RAID: generate parity files, maintain checksums on data, restore lost data
-	pkgver = 12.2
+	pkgver = 12.3
 	pkgrel = 1
 	url = http://www.snapraid.it/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = snapraid
 	license = GPL3
 	depends = libutil-linux
 	depends = glibc
-	source = https://github.com/amadvance/snapraid/releases/download/v12.2/snapraid-12.2.tar.gz
-	sha256sums = 9d30993aef7fd390369dcaf422ac35f3990e8c91f0fb26151f5b84ccb73d3e01
+	source = https://github.com/amadvance/snapraid/releases/download/v12.3/snapraid-12.3.tar.gz
+	sha256sums = 1f27aba6e5db3929474da9c472fc4a3bc51d4a83aa5385af6b09afc9f68d6d44
 
 pkgname = snapraid
