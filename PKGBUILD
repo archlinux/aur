@@ -1,6 +1,5 @@
-#!/bin/sh
 # Maintainer: hairlinehd <slimender123@gmail.com>
-pkgname='obgk'
+pkgname='obgk-git'
 pkgver=r15.5f6c067
 pkgrel=1
 pkgdesc="osu!stable video and background deleter"
