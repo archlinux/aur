@@ -2,25 +2,25 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-vompserver
-pkgver=0.5.0
-_vdrapi=2.6.5
-pkgrel=9
+pkgver=0.5.1
+pkgrel=1
+_vdrapi=2.6.6
 pkgdesc="Server side of VOMP"
-url="http://www.loggytronic.com/vomp.php"
+url="https://www.loggytronic.com/vomp.php"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
-source=("http://www.loggytronic.com/dl/$pkgname-$pkgver.tgz"
+source=("https://www.loggytronic.com/dl/$pkgname-$pkgver.tgz"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf"
         'var/lib/vdr/plugins/vompserver/vomp.conf')
-md5sums=('20db427a8fd490efc0eadf50e549a554'
-         '155bb12f84f5f76ddd1dacd5327a607f')
+sha256sums=('f590633d40313891d696556b6677dfb44ca6858f4e7ef8249075683d7844eecd'
+            '1eabd9437925f60514edacb598a036adc844867e7bdb7be3c79ca8d707ed84dd')
 
 build() {
   cd "${srcdir}/${_plugname}-${pkgver}"
-  make CXXFLAGS="$CXXFLAGS -std=gnu++98 -fPIC"
+  make
 }
 
 package() {
