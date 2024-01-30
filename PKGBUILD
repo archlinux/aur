@@ -18,7 +18,7 @@ makedepends=('gperf' 'imagemagick')
 optdepends=('tuxpaint-stamps: more stamps'
             'tuxpaint-config: configuration manager'
             'python2: zh_tw font generator script'
-            'fontforge: zh_tw doc generstor script'
+            'fontforge: zh_tw doc generator script'
             'bash: for tp-magic-config, tuxpaint-import, zh_tw doc generator scripts')
 source=("https://downloads.sourceforge.net/sourceforge/tuxpaint/$pkgname-$pkgver.tar.gz")
 sha256sums=('09cce22241481dc1360fc4bc5d4da1d31815d7a2563b9e9fa217a672ba974bf2')
