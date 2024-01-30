@@ -1,7 +1,7 @@
 pkgbase = gqrx
 	pkgdesc = Interactive SDR receiver waterfall for many devices.
 	pkgver = 2.17.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gqrx.dk/
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,6 @@ pkgbase = gqrx
 	makedepends = gnuradio
 	makedepends = gnuradio-osmosdr
 	makedepends = libpulse
-	makedepends = libvolk
 	depends = gcc-libs
 	depends = glibc
 	depends = hicolor-icon-theme

@@ -3,7 +3,7 @@
 
 pkgname=gqrx
 pkgver=2.17.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive SDR receiver waterfall for many devices."
 arch=(x86_64)
 url="http://gqrx.dk/"
@@ -15,7 +15,6 @@ makedepends=(
   gnuradio
   gnuradio-osmosdr
   libpulse
-  libvolk
 )
 source=(https://github.com/gqrx-sdr/$pkgname/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
 sha256sums=('7bb7e6a490d7d4669a4d1596ad52f5af08e7167d78117b3d1fd711a368536855')
