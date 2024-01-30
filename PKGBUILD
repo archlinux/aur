@@ -1,5 +1,5 @@
 pkgname=mingw-w64-suitesparse
-pkgver=7.5.0
+pkgver=7.6.0
 pkgrel=1
 pkgdesc="A collection of sparse matrix libraries (mingw-w64)"
 url="https://people.engr.tamu.edu/davis/suitesparse.html"
@@ -9,7 +9,7 @@ makedepends=('mingw-w64-cmake')
 license=('GPL')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v${pkgver}.tar.gz")
-sha256sums=('9090ead43f462737369f1b6f8f269decc7f98adbb3276db299a2d4f18d481328')
+sha256sums=('19cbeb9964ebe439413dd66d82ace1f904adc5f25d8a823c1b48c34bd0d29ea5')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -19,7 +19,7 @@ build() {
   do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake -DSUITESPARSE_DEMOS=OFF -DBUILD_TESTING=OFF \
-      -DBLA_VENDOR=Generic -DGRAPHBLAS_USE_JIT=OFF ..
+      -DBLA_VENDOR=Generic -DGRAPHBLAS_COMPACT=ON ..
     make
     popd
   done
