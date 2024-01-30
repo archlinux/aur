@@ -1,7 +1,7 @@
 # Maintainer: Florian Maunier <fmauneko@dissidence.ovh>
 # Contributor: emilweth <coucou@emi.cool>
 pkgname=eco
-pkgver=0.10.0.4
+pkgver=0.10.1.3
 pkgrel=1
 pkgdesc="Eco game client"
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
   eco.desktop
   logo.png
 )
-b2sums=('9f77360298195b75cfdcfe7b94390276a5d63a93a055ad36744b2aaa243031a77f609456460925b4c9c0ffdd02f80f72fca5de6c490c9f7ab69bb1d3667437af'
+b2sums=('5bd0f14cde7a3ee5d930d55e8d358567d50945630ba7a974edea01ea7fa1fe56121a691817fed9be5ea5f54467cbc5bf0a8e73b17a4f7ca881b91669a11c5e25'
         '52e88253b944a9e4d7167f69daf64047825d7df88cbe7163dffffd69f8fe0723a5c7c4f1aa84a9e8794743e4294b69f6e5fad300dd7323f87407bebe991b19f4'
         'dc1fe759cc43c311f3df7a39b0a73b0e273157b508ffaf5c741419a3d070507dcf93218061be6bec3f15bab8f4cdc213bec3eb4795145482fb54e8c71f0a4d14')
 noextract=(EcoLinux_v${pkgver}-beta.zip)
