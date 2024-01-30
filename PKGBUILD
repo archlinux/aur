@@ -1,7 +1,7 @@
 # Maintainer: Voxel <voxel.aur@gmail.com>
 pkgname=panelcleaner
 _module='PanelCleaner'
-pkgver='2.1.4'
+pkgver='2.2.0'
 pkgrel=1
 pkgdesc="An AI-powered tool to clean manga panels. Provides both a CLI (pcleaner) and GUI (Qt-based)"
 url="https://github.com/VoxelCubes/PanelCleaner"
@@ -15,14 +15,6 @@ provides=('pcleaner' 'pcleaner-gui')
 
 
 package() {
-
-    # Clean up old installation (a few GB) that otherwise would need manual cleanup. This will be removed in the next version.
-    # This is necessary because old installations in the home directory could not be properly cleaned up
-    # the package system.
-    # The new way is to install it in the /opt/ directory, where pacman can properly track files.
-    echo "Cleaning up old installation that was improperly placed in the home directory..."
-    pipx uninstall pcleaner || true
-    
 
     depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
