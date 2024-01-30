@@ -1,14 +1,13 @@
 pkgbase = treq
-	pkgdesc = A Client to make HTTP requests for Vim/Terminal Users
-	pkgver = 0.1.4
+	pkgdesc = A Cli client to make HTTP requests for Hacker Users
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/talis-fb/TReq
 	arch = x86_64
 	license = GPL-3.0
-	optdepends = vim
 	provides = treq
 	conflicts = treq
-	source = https://github.com/talis-fb/TReq/releases/download/v0.1.4/treq-0.1.4-x86_64.tar.gz
-	sha256sums = 371dd121352e7c44d2f0622d96e0ed388d793ac31d6d2cdf324835550b915e73
+	source = https://github.com/talis-fb/TReq/releases/download/v1.0.0/treq-1.0.0-x86_64.tar.gz
+	sha256sums = f98da88b450d760a340572e90892e6e8cd9c9f2e89607ffbd168fd0597100d3d
 
 pkgname = treq
