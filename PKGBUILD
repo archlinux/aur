@@ -2,7 +2,7 @@
 
 _pkgname=spice-vdagent
 pkgname=$_pkgname-git
-pkgver=0.16.0.35.08ff8d7
+pkgver=0.22.1.r3.gaa08162
 pkgrel=1
 pkgdesc='SPICE VDAgent for Linux'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ sha256sums=("SKIP"
 
 pkgver() {
     cd $_pkgname
-    git describe --always | sed 's:^spice-vdagent.::;s:-:.:g'
+    git describe --always | sed 's:^spice-vdagent.::;s:-:.r:;s:-:.:'
 }
 
 prepare() {

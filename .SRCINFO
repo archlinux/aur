@@ -1,6 +1,6 @@
 pkgbase = spice-vdagent-git
 	pkgdesc = SPICE VDAgent for Linux
-	pkgver = 0.16.0.35.08ff8d7
+	pkgver = 0.22.1.r3.gaa08162
 	pkgrel = 1
 	url = https://www.spice-space.org
 	arch = i686
