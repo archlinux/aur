@@ -2,12 +2,12 @@
 # Contributer: Eric Cheng <eric at chengeric dot com>
 
 pkgname=gnome-shell-extension-alphabetical-grid-extension
-pkgver=36.0
+pkgver=38.0
 pkgrel=1
 
 source=("https://github.com/stuarthayhurst/alphabetical-grid-extension/archive/v${pkgver}.tar.gz")
 
-sha256sums=('83204c4027007f8461f583d7b83fb589690e33f08d2058d930f94743da4dca41')
+sha256sums=('6c194b53c7e8aee1cb4f36ebf60954d96ad00bf936b339d397111cc898ec638c')
 
 pkgdesc="Restore the alphabetical ordering of the app grid, removed in GNOME 3.38"
 arch=('any')
