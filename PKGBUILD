@@ -8,11 +8,11 @@ pkgdesc='Collection of libraries and applications implementing large parts the D
 arch=('i686' 'x86_64')
 url='https://dicom.offis.de/dcmtk'
 license=('custom')
-depends=('libxml2' 'libwrap' 'libjpeg-turbo' 'libpng' 'libtiff')
-makedepends=('git' 'cmake' 'libsndfile' 'doxygen')
+depends=('libxml2' 'libsndfile' 'libpng' 'libtiff' 'libjpeg-turbo')
+makedepends=('git' 'cmake' 'doxygen')
 provides=("$_pkgname")
-conflicts=("$_pkgname"{,-snapshot})
-backup=("etc/dcmtk/"{dcmpstat,dcmqrscp,filelog,logger,printers,storescp,storescu}.cfg)
+conflicts=("$_pkgname")
+backup=("etc/dcmtk-${pkgver%.r*}-DEV/"{dcmpstat,dcmqrprf,dcmqrscp,filelog,logger,printers,storescp,storescu}.cfg)
 source=("git+https://git.dcmtk.org/dcmtk.git")
 sha256sums=("SKIP")
 
@@ -26,9 +26,8 @@ build() {
   cd build
   cmake "$srcdir/$_pkgname" \
         -DDCMTK_ENABLE_CHARSET_CONVERSION=ICU \
-        -DDCMTK_USE_CXX11_STL=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DDCMTK_INSTALL_ETCDIR=/etc/dcmtk \
+        -DCMAKE_INSTALL_SYSCONFDIR:PATH=/etc \
         -DBUILD_SHARED_LIBS=ON
   make
   make html
