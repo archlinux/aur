@@ -13,8 +13,8 @@ sha256sums=('e7982178870d4d7bfb53fad82ac5310372dcf2765ea759efa259b78b18fe57b9')
 
 package() {
   cd "$srcdir"
-  mkdir -p ${pkgdir}/usr/local/{bin,lib/fift,share/ton}
-  cp -a bin/* ${pkgdir}/usr/local/bin/
-  cp -ar share/* ${pkgdir}/usr/local/share/
-  cp -ar lib/* ${pkgdir}/usr/local/lib/
+  mkdir -p ${pkgdir}/usr/{bin,lib/fift,share/ton}
+  cp -a bin/* ${pkgdir}/usr/bin/
+  cp -ar share/* ${pkgdir}/usr/share/
+  cp -ar lib/* ${pkgdir}/usr/lib/
 }
