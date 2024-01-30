@@ -9,14 +9,16 @@ pkgrel=1
 pkgdesc='Drawing program designed for young children'
 arch=('x86_64')
 url='https://tuxpaint.org/'
-license=('GPL')
+license=('GPL-2.0-only')
 backup=('etc/tuxpaint/tuxpaint.conf')
-depends=('fribidi' 'libpaper' 'librsvg' 'libimagequant' 'sdl2_image'
-         'sdl2_gfx' 'sdl2_mixer' 'sdl2_pango' 'sdl2_ttf')
+depends=('glibc' 'cairo' 'gdk-pixbuf2' 'zlib' 'fontconfig' 'libpng' 'pango'
+         'glib2' 'freetype2' 'harfbuzz' 'fribidi' 'libpaper' 'librsvg' 'libimagequant'
+         'sdl2' 'sdl2_image' 'sdl2_gfx' 'sdl2_mixer' 'sdl2_pango' 'sdl2_ttf')
 makedepends=('gperf' 'setconf' 'imagemagick')
 optdepends=('tuxpaint-stamps: more stamps'
             'tuxpaint-config: configuration manager'
-            'python2: zh_tw font generator script')
+            'python2: zh_tw font generator script'
+            'bash: for tp-magic-config, zh_tw doc generstor, tuxpaint-import scripts')
 source=("https://downloads.sourceforge.net/sourceforge/tuxpaint/$pkgname-$pkgver.tar.gz")
 sha256sums=('09cce22241481dc1360fc4bc5d4da1d31815d7a2563b9e9fa217a672ba974bf2')
 
@@ -25,7 +27,7 @@ prepare() {
 
   # python2 fix
   for f in docs/outdated/zh_tw/mkTuxpaintIM.py fonts/locale/zh_tw_docs/maketuxfont.py; do
-    sed -i '0,/on/s//on2/' $f
+    sed -i '0,/python$/s//python2/' $f
   done
 
   # native fullscreen by default
