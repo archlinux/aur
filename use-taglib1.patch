@@ -1,0 +1,14 @@
+diff -rU1 tizonia.orig/player/configure.ac tizonia.taglib1/player/configure.ac
+--- tizonia.orig/player/configure.ac	2024-01-30 14:02:48.576436006 +0100
++++ tizonia.taglib1/player/configure.ac	2024-01-30 14:35:37.793073461 +0100
+@@ -50,2 +50,3 @@
+ PKG_CHECK_MODULES([TAGLIB], [taglib >= 1.7.0])
++PKG_CHECK_MODULES([TAGLIB], [taglib < 2])
+ PKG_CHECK_MODULES([LIBMEDIAINFO], [libmediainfo >= 0.7.65])
+diff -rU1 tizonia.orig/player/meson.build tizonia.taglib1/player/meson.build
+--- tizonia.orig/player/meson.build	2024-01-30 14:02:48.579769340 +0100
++++ tizonia.taglib1/player/meson.build	2024-01-30 14:35:39.613073435 +0100
+@@ -1,2 +1,3 @@
+ taglib_dep = dependency('taglib', required: true, version: '>=1.7.0')
++taglib_dep = dependency('taglib', required: true, version: '<2')
+ libmediainfo_dep = dependency('libmediainfo', required: true, version: '>=0.7.65')
