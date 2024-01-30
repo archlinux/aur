@@ -1,14 +1,15 @@
 pkgbase = filezilla-faenza-icons
 	pkgdesc = Faenza icon theme for Filezilla.
 	pkgver = 0.1
-	pkgrel = 6
-	url = http://gnome-look.org/content/show.php/?content=135869
+	pkgrel = 7
+	url = http://tiheum.deviantart.com/art/Faenza-Icons-173323228
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = filezilla
-	source = https://dl.opendesktop.org/api/files/download/id/1460758250/135869-faenza.tar.gz
-	sha256sums = 87729d6deb94f5e69878a364c179c72782e218ba2855899cdb755e7d0fd53e43
+	source = faenza.tar.xz
+	source = faenza-dark.tar.xz
+	sha256sums = 9c969b59b8a99297ad14cfc87264ef27e5dc26ee74b0f12e851bbc72dc048f82
+	sha256sums = 3be2dbf6bae47cde3cd77d1e0b6c73023a0c643e8a066efb7528d2bb94c43f4e
 
 pkgname = filezilla-faenza-icons
-
