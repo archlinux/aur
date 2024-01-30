@@ -1,7 +1,7 @@
 # Maintainer: Toke Høiland-Jørgensen <toke@toke.dk>
 pkgname=python-pynetstring
 _pkgbase=pynetstring
-pkgver=0.2
+pkgver=0.5
 pkgrel=1
 pkgdesc="A module for encoding and decoding netstrings."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=(https://pypi.io/packages/source/p/${_pkgbase}/${_pkgbase}-${pkgver}.tar.gz)
-sha256sums=('6ba299b7e6775904c38c726d27f1f29713c5b462b8500a726b4c92bdb121e2b4')
+sha256sums=('b1f33be38094336956765b2f2a70168ff51c6c497fd9ce6e3b1fd4504a52059e')
 
 package() {
   cd "$srcdir/$_pkgbase-$pkgver"
