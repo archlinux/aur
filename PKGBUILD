@@ -12,8 +12,6 @@ depends=(
 )
 makedepends=(
   python-build
-  python-hatch-vcs
-  python-hatchling
   python-installer
   python-wheel
   python-black
