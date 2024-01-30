@@ -1,0 +1,15 @@
+pkgbase = pion-ng
+	pkgdesc = Pion Network Library
+	pkgver = 5.0.8
+	pkgrel = 1
+	url = https://github.com/rimmartin/pion-ng
+	arch = x86_64
+	license = BSL-1.0
+	makedepends = git
+	makedepends = boost
+	depends = boost-libs
+	depends = openssl
+	source = pion-ng-5.0.8.tar.gz::https://github.com/rimmartin/pion-ng/archive/refs/tags/5.0.8.tar.gz
+	sha256sums = cd7dd8635e3ef0c57fb16f4aea19d43b02890ee5a3d78882b139d1069bdb167b
+
+pkgname = pion-ng
