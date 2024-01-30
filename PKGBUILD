@@ -14,12 +14,12 @@
 # basic info
 _pkgname="yuzu"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=r26199.12178c694
+pkgver=r26547.8ddfecfba
 pkgrel=1
 pkgdesc='Nintendo Switch emulator'
 url="https://github.com/yuzu-emu/yuzu"
-license=('GPL-3.0-only')
-arch=('i686' 'x86_64')
+license=('GPL-3.0-or-later')
+arch=('x86_64')
 
 # main package
 _main_package() {
@@ -91,6 +91,7 @@ _source_yuzu() {
     'gpuopen-librariesandsdks.vulkanmemoryallocator'::'git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'
     'herumi.xbyak'::'git+https://github.com/herumi/xbyak.git'
     'khronosgroup.vulkan-headers'::'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
+    'khronosgroup.vulkan-utility-libraries'::'git+https://github.com/KhronosGroup/Vulkan-Utility-Libraries.git'
     'lat9nq.tzdb_to_nx'::'git+https://github.com/lat9nq/tzdb_to_nx.git'
     'libsdl-org.sdl'::'git+https://github.com/libsdl-org/SDL.git'
     'libusb'::'git+https://github.com/libusb/libusb.git'
@@ -128,10 +129,11 @@ _source_yuzu() {
     'SKIP'
     'SKIP'
     'SKIP'
+    'SKIP'
   )
 
   _prepare_yuzu() (
-    cd "${srcdir:?}/$_pkgsrc"
+    cd "$_pkgsrc"
     local -A _submodules=(
       ['arun11299.cpp-jwt']='externals/cpp-jwt'
       ['brofield.simpleini']='externals/simpleini'
@@ -140,6 +142,7 @@ _source_yuzu() {
       ['gpuopen-librariesandsdks.vulkanmemoryallocator']='externals/VulkanMemoryAllocator'
       ['herumi.xbyak']='externals/xbyak'
       ['khronosgroup.vulkan-headers']='externals/Vulkan-Headers'
+      ['khronosgroup.vulkan-utility-libraries']='externals/Vulkan-Utility-Libraries'
       ['lat9nq.tzdb_to_nx']='externals/nx_tzdb/tzdb_to_nx'
       ['libsdl-org.sdl']='externals/SDL'
       ['libusb']='externals/libusb/libusb'
@@ -168,7 +171,7 @@ _source_bylaws_libadrenotools() {
   )
 
   _prepare_bylaws_libadrenotools() (
-    cd "${srcdir:?}/$_pkgsrc"
+    cd "$_pkgsrc"
     cd "externals/libadrenotools"
     local -A _submodules=(
       ['bylaws.liblinkernsbypass']='lib/linkernsbypass'
@@ -186,7 +189,7 @@ _source_lat9nq_tzdb_to_nx() {
   )
 
   _prepare_lat9nq_tzdb_to_nx() (
-    cd "${srcdir:?}/$_pkgsrc"
+    cd "$_pkgsrc"
     cd "externals/nx_tzdb/tzdb_to_nx"
     local -A _submodules=(
       ['eggert.tz']='externals/tz/tz'
@@ -206,7 +209,7 @@ _source_mozilla_cubeb() {
   )
 
   _prepare_mozilla_cubeb() (
-    cd "${srcdir:?}/$_pkgsrc"
+    cd "$_pkgsrc"
     cd "externals/cubeb"
     local -A _submodules=(
       ['arsenm.sanitizers-cmake']='cmake/sanitizers-cmake'
@@ -225,7 +228,7 @@ _source_yuzu_emu_sirit() {
   )
 
   _prepare_yuzu_emu_sirit() (
-    cd "${srcdir:?}/$_pkgsrc"
+    cd "$_pkgsrc"
     cd "externals/sirit"
     local -A _submodules=(
       ['khronosgroup.spirv-headers']='externals/SPIRV-Headers'
@@ -315,8 +318,8 @@ build() {
   fi
 
   if [[ "${_build_avx::1}" == "t" ]] ; then
-    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
-    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=skylake -O3"
+    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
   fi
 
   cmake "${_cmake_options[@]}"
