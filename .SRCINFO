@@ -1,0 +1,15 @@
+pkgbase = python2-priority
+	pkgdesc = A pure-Python implementation of the HTTP/2 priority tree
+	pkgver = 2.0.0
+	pkgrel = 4
+	url = https://github.com/python-hyper/priority
+	arch = any
+	license = MIT
+	checkdepends = python2-pytest-runner
+	checkdepends = python2-hypothesis
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://github.com/python-hyper/priority/archive/v2.0.0/python-priority-2.0.0.tar.gz
+	sha512sums = be22788a76049a8822f5a307f2b00948ac0555d0b6dd629686de90de482295806d071d1731bcdbfdc0f98abbb5aba7d2e947f478b479b72580e7ce1d19d684bb
+
+pkgname = python2-priority
