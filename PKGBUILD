@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=gzdoom-git
-pkgver=4.12pre+10+g48ba63c
+pkgver=4.12pre+382+gdecaf07
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games (git version)'
 arch=('i686' 'x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('BSD' 'GPL3' 'LGPL3')
 depends=('gtk3'
          'hicolor-icon-theme'
          'libgl'
-         'libvpx>=1.13'
+         'libvpx>=1.14'
          'libwebp'
          'openal'
          'sdl2'
