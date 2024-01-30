@@ -2,22 +2,18 @@
 pkgname=line-by-line-bin
 _pkgname=linebyline
 pkgver=0.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern markdown editor application with built-in ChatGPT extension."
 arch=("x86_64")
 url="https://linebyline-group.vercel.app/"
 _ghurl="https://github.com/linebyline-group/linebyline"
-license=("AGPL3")
+license=("AGPL-3.0-only")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'cairo'
-    'gdk-pixbuf2'
-    'libsoup'
     'gtk3'
     'webkit2gtk'
-    'pango'
-    'libxcb'
+    'libsoup'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_${CARCH}.deb"
