@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=dynarmic
 pkgname=$_pkgname-git
-pkgver=6.6.1.r2.g314ab7a4
+pkgver=6.6.1.r4.g1e1ba4e0
 pkgrel=1
 pkgdesc="An ARM dynamic recompiler"
 arch=('aarch64' 'x86_64')
@@ -15,10 +15,10 @@ makedepends=(
 	'git'
 	'llvm'
 	'robin-map>=0.6.2'
-	'xbyak>=6.68'
-	'zydis>=4'
 )
-checkdepends=('catch2>=3.2.1')
+makedepends_aarch64=('oaknut>=2.0.1')
+makedepends_x86_64=('zydis>=4')
+checkdepends=('catch2>=3.2.1' 'oaknut>=2.0.1')
 provides=("$_pkgname=$pkgver" 'libdynarmic.so')
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
@@ -48,7 +48,8 @@ check() {
 }
 
 package() {
-	depends+=('libfmt.so' 'libZydis.so')
+	depends+=('libfmt.so')
+	depends_x86_64+=('libZydis.so')
 	# shellcheck disable=SC2154
 	DESTDIR="$pkgdir" cmake --install build
 	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname $_pkgname/LICENSE.txt
