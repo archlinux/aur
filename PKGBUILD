@@ -1,47 +1,63 @@
-# Maintainer: Lu Xu <oliver_lew at outlook dot com>
-# Contributor: ValdikSS <iam@valdikss.org.ru>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Co-maintainer: Alex Potapenko <opotapenko@gmail.com>
 
 pkgname=libusb0
+_pkgname=libusb
 pkgver=0.1.12
-pkgrel=7
-pkgdesc="Library to enable user space application programs to communicate with USB devices. 0.x branch. Debian's binary."
+pkgrel=8
+pkgdesc="Library to enable user space application programs to communicate with USB devices. 0.x branch. With Debian's patches."
 arch=('i686' 'x86_64')
 url="https://libusb.info/"
 license=('LGPL')
-depends=('sh')
 provides=('libusb-compat')
-#replaces=('libusb-compat')
 conflicts=('libusb-compat')
-_debianver_="0.1.12-32"
-_debianver="0.1-4_$_debianver_"
-source_i686=("https://ftp.debian.org/debian/pool/main/libu/libusb/libusb-${_debianver}_i386.deb"
-             "https://ftp.debian.org/debian/pool/main/libu/libusb/libusb-dev_${_debianver_}_i386.deb")
-sha256sums_i686=('005227e6f783eb3cd422e58c3a49e4578c8ba90641dee6ad24f9aa7060a89276'
-              '4a5b7a2f05f1bb9cc0ac608304ec1b321931dd1bdbf9252e91c9beda8af7ed94')
-source_x86_64=("https://ftp.debian.org/debian/pool/main/libu/libusb/libusb-${_debianver}_amd64.deb"
-              "https://ftp.debian.org/debian/pool/main/libu/libusb/libusb-dev_${_debianver_}_amd64.deb")
-sha256sums_x86_64=('ecc251e8af96904290669233988a91e195670bb432396c408e01489c9efff993'
-                '5974e30179cd079c1763b29fd97a8cc859ae5ff888f298c15082e2adb276f45e')
-
-noextract=("${source[@]%%::*}")
+_debianver_="35"
+_debianver="${pkgver}-${_debianver_}"
+depends=('glibc' 'sh')
+makedepends=('autoconf' 'automake' 'binutils' 'gcc' 'libtool' 'm4' 'make' 'patch')
+source=("http://deb.debian.org/debian/pool/main/libu/libusb/libusb_${pkgver}.orig.tar.gz"
+        "http://deb.debian.org/debian/pool/main/libu/libusb/libusb_${_debianver}.debian.tar.xz")
+sha256sums=('37f6f7d9de74196eb5fc0bbe0aea9b5c939de7f500acba3af6fd643f3b538b44'
+            '82636fa4e49fe8a886f5dbab4756e6c6855f1cb5173fa567848e3de9f47bf2bd')
 
 prepare() {
-  ar x ${srcdir}/libusb-dev_${_debianver_}*.deb
-  mv ${srcdir}/data.tar.xz ${srcdir}/data-dev.tar.xz
-  ar x libusb-${_debianver}*.deb
+    cd "${_pkgname}-${pkgver}"
+
+     local patches=(
+            00_packed.diff
+            01_ansi.diff
+            02_usbpp.diff
+            03_const_buffers.diff
+            04_infinite_loop.diff
+            05_emdebian_libs.diff
+            06_bsd.diff
+            07_altsetting_alloc.diff
+            08_bus_location.diff
+            09_dummy.diff
+            10_hurd.diff
+            11_transfer_timeout.diff
+            12_ENAMETOOLONG.diff
+            91_ac_prog_cxx.diff
+
+    )
+
+    for i in "${patches[@]}"; do
+        msg "Applying ${i} ..."
+        patch -p1 -i "../debian/patches/${i}"
+    done
+
+    autoreconf -vif
+}
+
+build() {
+    cd "${_pkgname}-${pkgver}"
+    ./configure \
+        --prefix=/usr
+    make
 }
 
 package() {
-  tar axvf ${srcdir}/data.tar.xz -C ${pkgdir}/
-  tar axvf ${srcdir}/data-dev.tar.xz -C ${pkgdir}/
-  mkdir -p ${pkgdir}/usr/lib
-  mv ${pkgdir}/usr/lib/x86_64-linux-gnu/* ${pkgdir}/usr/lib || true
-  mv ${pkgdir}/usr/lib/i386-linux-gnu/* ${pkgdir}/usr/lib || true
-  mv ${pkgdir}/lib/x86_64-linux-gnu/* ${pkgdir}/usr/lib || true
-  mv ${pkgdir}/lib/i386-linux-gnu/* ${pkgdir}/usr/lib || true
-  rm ${pkgdir}/usr/lib/libusb.so
-  ln -s libusb-0.1.so.4 ${pkgdir}/usr/lib/libusb.so
-  rm -r ${pkgdir}/lib/i386-linux-gnu ${pkgdir}/lib/x86_64-linux-gnu \
-        ${pkgdir}/usr/lib/i386-linux-gnu ${pkgdir}/usr/lib/x86_64-linux-gnu || true
-  rm -rf ${pkgdir}/lib/
+    cd "${_pkgname}-${pkgver}"
+    make DESTDIR="$pkgdir" install
+    rm -f "$pkgdir"/usr/lib/libusbpp.a "$pkgdir"/usr/lib/libusbpp.so "$pkgdir"/usr/lib/libusbpp-0.1.so.*
 }
