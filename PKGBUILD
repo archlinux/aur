@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=musicpod-git
 _app_id=org.feichtmeier.Musicpod
-pkgver=r802.e051973
+pkgver=r817.ab69d51
 pkgrel=1
-_flutter_ver=3.16.8
+_flutter_ver=3.16.9
 pkgdesc="Music, radio, television and podcast player"
 arch=('x86_64')
 url="https://github.com/ubuntu-flutter-community/musicpod"
@@ -16,7 +16,7 @@ conflicts=("${pkgname%-git}")
 source=('git+https://github.com/ubuntu-flutter-community/musicpod.git'
         "flutter-${_flutter_ver}.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${_flutter_ver/.hotfix/+hotfix}-stable.tar.xz")
 sha256sums=('SKIP'
-            '7cb12032cf615a92a7bc9042100f3f2af62df7df3ca3bee27f4b153fe218b239')
+            '8868138a6f339f90353baefef0d789e06c3299d5f94db653decefda6633a9a8e')
 
 pkgver() {
   cd "${pkgname%-git}"
