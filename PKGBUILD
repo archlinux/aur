@@ -4,7 +4,7 @@
 # Contributor: royrocks <royrocks13@gmail.com>
 
 pkgname=tuxpaint
-pkgver=0.9.31
+pkgver=0.9.32
 pkgrel=1
 pkgdesc='Drawing program designed for young children'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=('tuxpaint-stamps: more stamps'
             'tuxpaint-config: configuration manager'
             'python2: zh_tw font generator script')
 source=("https://downloads.sourceforge.net/sourceforge/tuxpaint/$pkgname-$pkgver.tar.gz")
-sha256sums=('1a85c04fa5c9ae6b3ffd2ca8fa86a84c0c8b462b5059fa1fc2c445b5cfa857ee')
+sha256sums=('09cce22241481dc1360fc4bc5d4da1d31815d7a2563b9e9fa217a672ba974bf2')
 
 prepare() {
   cd "$pkgname-$pkgver"
