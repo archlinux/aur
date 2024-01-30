@@ -25,7 +25,7 @@ _renderer=gles
 
 pkgbase=kodi-nexus-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r62306.d527c92cc39
+pkgver=r62310.f1caa0dc88b
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -82,6 +82,10 @@ source=(
   kodi-fmt-10.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/23571.patch
   flatb23.patch::https://github.com/xbmc/xbmc/commit/35be40daa39965a9ea5b3569eb7d515e6a14da5d.patch
   0001-ffmpeg-fix-build-with-binutils-update.patch
+  https://github.com/xbmc/xbmc/pull/23227.patch
+  https://github.com/xbmc/xbmc/commit/d2022ce1.patch
+  https://github.com/xbmc/xbmc/commit/6f5dff4b.patch
+  https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/24577.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -104,7 +108,11 @@ b2sums=('SKIP'
         '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61'
         '45e4a4fc3ddd3bc2329b42a3f72c3e4fae1adb93e9d4b945a5aba3a70bee3ddce416fcb19061ad2263d1f247da5fc7143944408fb5294b762e45ac2f0981c06a'
         'bdc249920685a3738f872d9ea19a5c46b244d437d30b7dad958dcf33b5bfb88782c1a73bd15dcb1c26f0b643f1e4711775621a2753a1b5668efacc2144fd06e6'
-        '7e15afcc0cc7f529e6c491c985968bc53be413424b890e4eab2ce8e3d0f21b08347698e660e0f4f0cc50c5279f052be7a2d84d5351509d34193066d797a44130')
+        '7e15afcc0cc7f529e6c491c985968bc53be413424b890e4eab2ce8e3d0f21b08347698e660e0f4f0cc50c5279f052be7a2d84d5351509d34193066d797a44130'
+        '0e205a9d4a371776cbeaacb88b5a915986d6e2b7b2d32d55e672902a6c6c6530573bbcd20557819f61a12e17931d43788e8508becd26778bcc151bd0838183d5'
+        'ee94696b2e7cbdf904e271e205206a60c77571e167563a882fdeb4f0df49f53c9f38489148c697d8e694087f7fc2cf157f89c4787a4c519fac3736f976bfc854'
+        '4338568d343e48bbd68855faf1c3affc90598bbed1b2f213053fbe1df81ec3ff4e463ee24f9a971e928df7b1ff47f6dd723790fb70eb65388bc3e0adcacb9ad4'
+        '85c21d0c3e74a6c3184308c06deb0b523e721037ce8bd5e8fe3d84dc017bad63b8ef78ffdc9c9c8f24b9deb2732dd604c09f21979a900a60633c1c879e5e744b')
 
 pkgver() {
   cd "$_gitname"
@@ -121,6 +129,10 @@ prepare() {
 
   patch -p1 -i ../0001-ffmpeg-fix-build-with-binutils-update.patch
   patch -p1 -i ../flatb23.patch
+  patch -p1 -i ../23227.patch
+  patch -p1 -i ../d2022ce1.patch
+  patch -p1 -i ../6f5dff4b.patch
+  patch -p1 -i ../24577.patch
 
   if [[ -n "$_clangbuild" ]]; then
     msg "Building with clang"
