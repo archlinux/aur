@@ -7,8 +7,34 @@ pkgdesc="A Retargetable Forward and Inverse Renderer"
 arch=('x86_64')
 url="https://www.mitsuba-renderer.org/"
 license=('custom')
-depends=('libpng' 'libjpeg-turbo' 'libc++' 'pybind11' 'pugixml' 'cuda' 'python-pytorch' 'python-pytest')
-makedepends=('clang' 'git' 'cmake' 'ninja' 'patchelf' 'python' 'graphviz' 'python-sphinx' 'python-sphinx-tabs' 'python-sphinx-hoverxref' 'python-sphinxcontrib-youtube' 'python-sphinx_design' 'python-nbsphinx' 'python-sphinx-gallery' 'python-sphinx-copybutton' 'python-sphinx-furo')
+depends=(
+	'libpng'
+	'libjpeg-turbo'
+	'libc++'
+	'pybind11'
+	'pugixml'
+	'cuda'
+	'python-pytorch'
+	'python-pytest'
+)
+makedepends=(
+	'clang'
+	'git'
+	'cmake'
+	'ninja'
+	'patchelf'
+	'python'
+	'graphviz'
+	'python-sphinx'
+	'python-sphinx-tabs'
+	'python-sphinx-hoverxref'
+	'python-sphinxcontrib-youtube'
+	'python-sphinx_design'
+	'python-nbsphinx'
+	'python-sphinx-gallery'
+	'python-sphinx-copybutton'
+	'python-sphinx-furo'
+)
 source=(
 	'git+https://github.com/fastfloat/fast_float'
 	'git+https://github.com/intel/IntelSEAPI'
