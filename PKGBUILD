@@ -2,7 +2,7 @@
 
 _pkgname=dcmtk
 pkgname=$_pkgname-git
-pkgver=3.6.1_20170228.43.gef9173b95
+pkgver=3.6.8.r54.gc791af76e
 pkgrel=1
 pkgdesc='Collection of libraries and applications implementing large parts the DICOM standard'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ sha256sums=("SKIP")
 
 pkgver() {
   cd $_pkgname
-  git describe --always | sed 's:^DCMTK-::;s:-:.:g'
+  git describe --always | sed 's/^DCMTK-//;s/-/.r/;s/-/./'
 }
 
 build() {
