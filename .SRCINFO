@@ -1,7 +1,7 @@
 pkgbase = cantata
 	pkgdesc = Qt5 client for the music player daemon (MPD)
 	pkgver = 2.5.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/CDrummond/cantata
 	arch = x86_64
 	license = GPL3
@@ -25,6 +25,8 @@ pkgbase = cantata
 	optdepends = perl-uri: dynamic playlist
 	optdepends = sshfs: remote devices support
 	source = https://github.com/CDrummond/cantata/releases/download/v2.5.0/cantata-2.5.0.tar.bz2
+	source = cantata-tablib-2.0-compatibility.patch::https://github.com/fenuks/cantata/commit/45bac9eb3e99ed75b6539f92418556dac1c0193d.patch
 	sha256sums = eb7e00ab3f567afaa02ea2c86e2fe811a475afab93182b95922c6eb126821724
+	sha256sums = f9611a1c1e23b99ffb4ee709ec10982a9289e840ec4014b1bbaff798d226a8ad
 
 pkgname = cantata
