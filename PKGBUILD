@@ -1,12 +1,12 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=xbyak
 pkgname=$_pkgname-git
-pkgver=6.68.r0.ga1ac375
+pkgver=7.05.r2.g086530e
 pkgrel=1
 pkgdesc="C++ header-only JIT assembler library for x86/x86-64"
 arch=('any')
 url="https://github.com/herumi/xbyak"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('cmake' 'git')
 checkdepends=('nasm' 'yasm')
 provides=("$_pkgname=$pkgver")
