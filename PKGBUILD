@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=seabird
-pkgver=0.0.16
+pkgver=0.0.19
 pkgrel=1
 pkgdesc='Native Kubernetes desktop client'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('git' 'go' 'gobject-introspection')
 options=('!emptydirs' '!lto')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/get${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop")
-b2sums=('513468b77830a28e2d8f723b7883bbe700078be174ecf7a53d06ddb1dac0dde6b5622c764baed8893d9f416f2965f661f042c1f33cd155b89f7bfab1b40a1da4'
+b2sums=('3c70785b28286b9e727f900bef10ace9b43919c31b91ec8b3830e3fa09d32d802c62979de676d04361bd8b9fd319435dc18912f2a012223ff85cf85228cf495a'
         'c8e36b0ac8dd4c1b1b47802926fa52ae03d699b245c78a7b47a6652dc62d9e943eecf94af2a901c9801de71d12d47adf14b024b9f7446e4cd3bef426ba47a119')
 
 build() {
