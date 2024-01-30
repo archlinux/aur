@@ -5,7 +5,7 @@
 # Contributor: Michael Louis Thaler <michael.louis.thaler@gmail.com>
 
 pkgname=watchman
-pkgver=2024.01.22.00
+pkgver=2024.01.29.00
 pkgrel=1
 pkgdesc="Watches files and records, or triggers actions, when they change"
 url="https://github.com/facebook/watchman"
@@ -40,7 +40,7 @@ source=(
   "watchman.socket"
 )
 sha256sums=(
-  '04b789729c37bd7a8b69f632d8c9e2daf1ba0ba2a28169f208a8a2ec3125cd4a'
+  '9d6e8a7c1bb475833cc867c8c585c6a2d2158c25e524978ae7e1df9812ac0983'
   'd40feab6aa7dc6522c648660e88642fdf721ee1f9d80c23f6891a6381067a38b'
   '3ebc93cb91ec9b9603969e222fd3ffd9baa4a1d07a7b3bd7aabf956ec2e177c8'
   'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356'
@@ -84,6 +84,7 @@ check() {
     test_py::watchman.integration.test_capabilities.TestCapabilitiesUnixJson.test_full_capability_set
     test_py::watchman.integration.test_fishy
     test_py::watchman.integration.test_force_recrawl
+    test_py::watchman.integration.test_scm.TestScmUnixBser2.test_scmHg
     test_py::watchman.integration.test_scm.TestScmUnixJson.test_scmHg
     test_py::watchman.integration.test_subscribe.TestSubscribeUnixBser2.test_drop_state
     test_py::watchman.integration.test_trigger.TestTriggerUnixBser2.test_legacyTrigger
