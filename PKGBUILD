@@ -7,7 +7,7 @@
 pkgname=wine-wow64-for-wechat
 _pkgver=9.1
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://www.winehq.org"
 license=(LGPL)
