@@ -2,12 +2,12 @@
 
 _name=buzzmachines
 pkgname=$_name-git
-pkgver=20100517.r251.f3fd7c7
+pkgver=20100517.r263.92aaed2
 pkgrel=1
 pkgdesc="Audio generators and effects using an API designed by Jeskola Buzz"
 arch=('x86_64')
-url="http://buzztrax.org/"
-license=(LGPL)
+url="https://www.buzztrax.org/"
+license=('LGPL-2.1-or-later')
 makedepends=('git')
 source=("git+https://github.com/Buzztrax/$_name.git")
 md5sums=('SKIP')
