@@ -2,7 +2,7 @@
 
 _pkgname=seafobj
 pkgname=python-$_pkgname
-pkgver=11.0.3
+pkgver=11.0.4
 pkgrel=1
 pkgdesc="Python library for accessing seafile data model"
 arch=('any')
@@ -12,8 +12,8 @@ depends=('python' 'python-boto3')
 makedepends=('python-setuptools')
 source=("${url}/archive/v${pkgver}-server.tar.gz"
        "setup.py")
-sha256sums=('8cf4a92510ae44aadd48aa527f9b1a8e257ee542351ded39c06d0d7b1d8a322c'
-            '67c2f4eb53d3c11893ba79b6c90dcab35083e05b9023ba97b3d11c0e82dd57a4')
+sha256sums=('a0f11692357f5a25c00cdf748d8942872fd283e69e3de47e8af6fcc3f3d095f2'
+            '12980affdbe5f120313f5dade549ea0ac459c6241938889fe3c25104288081ec')
 
 package() {
     cd "$srcdir/$_pkgname-$pkgver-server"
