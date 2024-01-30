@@ -4,7 +4,7 @@ _gitname=wpgtk
 pkgname="${_gitname}-git"
 _gitbranch=master
 _gitauthor=deviantfero # deviantfero
-pkgver=r871.4854f42
+pkgver=r912.4e2e8ff
 pkgrel=1
 pkgdesc="A gui wallpaper chooser that changes your WM theme, GTK theme and more"
 url="https://github.com/${_gitauthor}/${_gitname}"
@@ -31,7 +31,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_gitname}"
-  python -m build --wheel --no-isolation
+  python -m build --wheel
 }
 
 package() {
