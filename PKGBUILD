@@ -1,12 +1,12 @@
 # Maintainer: Kasper Laudrup <laudrup@stacktrace.dk>
 pkgname=properties-cpp-bzr
 pkgver=r17
-pkgrel=2
+pkgrel=3
 pkgdesc="A very simple convenience library for handling properties and signals in C++11"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/properties-cpp"
 license=('LGPL3')
-makedepends=('bzr')
+makedepends=('breezy' 'cmake')
 provides=('properties-cpp')
 source=('properties-cpp-bzr::bzr+https://code.launchpad.net/~phablet-team/properties-cpp/trunk')
 md5sums=('SKIP')
