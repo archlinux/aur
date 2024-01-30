@@ -1,6 +1,6 @@
 pkgbase = bitbake-language-server
 	pkgdesc = bitbake language server
-	pkgver = 0.0.7
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/bitbake-language-server
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = bitbake-language-server
 	makedepends = python-installer
 	depends = python-pygls
 	depends = python-oelint-parser
-	source = https://files.pythonhosted.org/packages/py3/b/bitbake_language_server/bitbake_language_server-0.0.7-py3-none-any.whl
-	sha256sums = 94534a361e56fee037566d51f8f350263deac6a4b2e95f969d992baa68fe444f
+	source = https://files.pythonhosted.org/packages/py3/b/bitbake_language_server/bitbake_language_server-0.0.8-py3-none-any.whl
+	sha256sums = 954d2f8894bde825ace9490be96722d42f49df2a5aacc370ba1fcdf786ea1cc8
 
 pkgname = bitbake-language-server
