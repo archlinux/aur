@@ -1,10 +1,10 @@
 pkgbase = ostara-appimage
 	pkgdesc = A desktop application that provides various features to monitor and interact with Spring Boot Applications via Actuator.
 	pkgver = 0.12.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://ostara.dev/
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = squashfuse
 	depends = hicolor-icon-theme
 	provides = ostara=0.12.0
