@@ -1,0 +1,16 @@
+pkgbase = python-apg-py
+	pkgdesc = an ABNF parser generator creating recursive-descent parsers from a superset of ABNF
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/ldthomas/apg-py
+	arch = any
+	license = BSD-2-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/a/apg-py/apg_py-1.0.3.tar.gz
+	sha256sums = 7c9a198c3e5db71792634823ae1d11b0c1a5b893d35b7eb242015cba543a8f28
+
+pkgname = python-apg-py
