@@ -5,9 +5,9 @@
 
 _basename=zoom
 pkgname=$_basename-system-qt
-pkgver=5.17.1
-_subver=1840
-pkgrel=2
+pkgver=5.17.5
+_subver=2543
+pkgrel=1
 pkgdesc='Video Conferencing and Web Conferencing Service - system Qt libraries'
 arch=('x86_64')
 license=('custom')
@@ -38,7 +38,7 @@ optdepends=('qt5-webengine: SSO login support'
             'xcompmgr: extra compositor needed by some window managers for screen sharing'
             'pulseaudio-alsa: output sound via pulseaudio' )
 source=("${pkgname}-${pkgver}.${_subver}_orig_x86_64.pkg.tar.xz"::"https://cdn.zoom.us/prod/${pkgver}.${_subver}/zoom_x86_64.pkg.tar.xz")
-b2sums=('2eb92ade31f14313e33e48d8dcad0ece2e738c142c17e84c5f5c5d21ad947b2b68f6f8bd5c58a6dec185d635ea66f9c2608fb93d92159eb11aee280b8c544016')
+b2sums=('f0888fec865dfa490803fcfe8a11e41147da792ef3f0cc01e150710f022222942eacff50df40f21aaa84e4958f4acd776e47ea5aa9c44d67031cb7e8ed3e47d4')
 
 _replace() {
     rm -rf $1
@@ -48,10 +48,6 @@ _replace() {
 package() {
     cp -dpr --no-preserve=ownership opt usr "$pkgdir"
     cd "$pkgdir/opt/zoom"
-
-    # Fix spurious RPATH in binaries
-    patchelf --shrink-rpath zoom
-    patchelf --shrink-rpath zopen
 
     rm -rf Qt/bin
     rm -rf cef/locales
@@ -93,6 +89,10 @@ package() {
     _replace Qt/lib/libicui18n.so.56 libicui18n.so.56
     _replace Qt/lib/libicuuc.so.56 libicuuc.so.56
 
+    # Fix spurious RPATH in binaries
+    patchelf --shrink-rpath zoom
+    patchelf --shrink-rpath zopen
+    
     ldconfig -N -n ./
 
     # Remove unnecessary executable flag
