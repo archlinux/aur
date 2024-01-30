@@ -59,5 +59,5 @@ build() {
 package() {
     cd "${_pkgname}-${pkgver}"
     make DESTDIR="$pkgdir" install
-    rm -f "$pkgdir"/usr/lib/libusbpp.a "$pkgdir"/usr/lib/libusbpp.so "$pkgdir"/usr/lib/libusbpp-0.1.so.*
+    rm -f "$pkgdir"/usr/lib/libusbpp.a "$pkgdir"/usr/lib/libusbpp.so "$pkgdir"/usr/lib/libusbpp-0.1.so.* "$pkgdir"/usr/include/usbpp.h
 }
