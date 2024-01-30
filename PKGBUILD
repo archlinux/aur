@@ -4,7 +4,7 @@
 # Contributor: Andre Wayand <aur-sope@awayand.sleepmail.com>
 pkgname=sope
 pkgdesc="application server used by SOGo"
-pkgver=5.9.0
+pkgver=5.9.1
 pkgrel=1
 arch=(x86_64)
 url="http://www.sogo.nu/files/downloads/SOGo/Sources/"
@@ -25,7 +25,7 @@ optdepends=('libxml2: parse XML coniguration files'
             'openssl: create SSL secured connectons'
             'postgresql: run database server for sogo locally')
 source=("https://packages.sogo.nu/sources/SOPE-${pkgver}.tar.gz")
-sha512sums=('f210d63ceb6ac671a24531aca799afe9f7e6f0f3d3eb70fb217a64ccf86700d1ca0d9fa08a1cd12e185f0c192a784674af0137f6b45cbab00f24c5c2bf3ec8dd')
+sha512sums=('4f12c5b88e2fc3a1829674e03638f34ce9bb8078326416f99d9b7286f695726c6d4be982dfcf24ab082770f8158fcad21f2d5b4bd36829e670d2ab35cdaf2186')
 
 prepare() {
   cd SOPE
