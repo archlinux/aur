@@ -2,15 +2,16 @@
 
 pkgname=ttf-topaz
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Amiga 500 Topaz font updated for the 21st century"
 arch=('any')
 url="https://gitlab.com/Screwtapello/topaz-unicode"
-license=('LicenseRef-Custom-ISC')
+license=('custom:ISC')
 depends=()
 conflicts=()
+_artifact='6036905109'
 source=(
-	'https://gitlab.com/Screwtapello/topaz-unicode/-/jobs/6036905109/artifacts/download'
+	"${pkgname}_artifact_${_artifact}.zip::https://gitlab.com/Screwtapello/topaz-unicode/-/jobs/${_artifact}/artifacts/download"
 	'https://gitlab.com/Screwtapello/topaz-unicode/-/raw/eaebcb1fa155752cfc0042c66c2a280561937615/LICENSE'
 )
 sha512sums=(
@@ -19,10 +20,10 @@ sha512sums=(
 )
 
 
-build() {
-	cd ${srcdir}/${_pkgname}
+#build() {
+	#cd ${srcdir}/${_pkgname}
 	#gzip -9 -k -v topaz_unicode_ks13-16.psf
-}
+#}
 
 package() {
   install -Dm644 -t "${pkgdir}/usr/share/fonts/TTF/" *.ttf
