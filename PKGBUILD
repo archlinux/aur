@@ -3,7 +3,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-app-cospend
-pkgver=1.5.14
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Shared budget manager Nextcloud app"
 arch=('any')
@@ -12,7 +12,7 @@ license=('AGPL3')
 makedepends=('npm' 'nodejs' 'rsync' 'yq')
 options=('!strip')
 source=("cospend-nc-v$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('e08ea4ad40f10396339531506f9671ffeff2b37c221e10f8e62a64d2ce72d793beca25cb12d2411334f091147e7248db7f450420abb76d126c2bfb796e00e7fd')
+sha512sums=('3d5b5c5480a3a30b75e5d8560bf40eb99baee2ccc4f5d1df74c4230202c63ea79b6e160bb72c52723f0f84cadb33f71cf73de06a46a3fd1971755b3b9a9c8e60')
 _releasename=cospend-nc
 _appname=cospend
 
