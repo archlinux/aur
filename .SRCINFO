@@ -1,19 +1,19 @@
 pkgbase = carapace-bridge-bin
 	pkgdesc = completion bridge
-	pkgver = 0.2.7
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://github.com/rsteube/carapace-bridge
 	license = MIT
 	conflicts = carapace-bridge
 	provides = carapace-bridge
 	arch = aarch64
-	source_aarch64 = https://github.com/rsteube/carapace-bridge/releases/download/v0.2.7/carapace-bridge_linux_arm64.tar.gz
-	sha256sums_aarch64 = aff9d2fc0707d22e4b39459ce2c67921896f09b12b352a59173311487c97847b
+	source_aarch64 = https://github.com/rsteube/carapace-bridge/releases/download/v0.2.8/carapace-bridge_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7105dd7ab0f3f6911c1371d3243b4cb56cdba8261c920833530d454666eb8016
 	arch = i686
-	source_i686 = https://github.com/rsteube/carapace-bridge/releases/download/v0.2.7/carapace-bridge_linux_386.tar.gz
-	sha256sums_i686 = b96bce692eec4d5ed89a55a6268db03cfda05e21a557fb43f8efff30089b20f6
+	source_i686 = https://github.com/rsteube/carapace-bridge/releases/download/v0.2.8/carapace-bridge_linux_386.tar.gz
+	sha256sums_i686 = c72eeda249fbfb2cad50bc9632e17b86ceaf06e7d34cfff0aea1468d909006d2
 	arch = x86_64
-	source_x86_64 = https://github.com/rsteube/carapace-bridge/releases/download/v0.2.7/carapace-bridge_linux_amd64.tar.gz
-	sha256sums_x86_64 = 3b7d618a1cef39fc1d678678f688da9ff202e47fb0ba2d29a1abfdf7bd6e4031
+	source_x86_64 = https://github.com/rsteube/carapace-bridge/releases/download/v0.2.8/carapace-bridge_linux_amd64.tar.gz
+	sha256sums_x86_64 = a4794737839701c8276a1e695e27039ff43a24b9a2950251361f2cfce2fb4c0e
 	
 pkgname = carapace-bridge-bin
