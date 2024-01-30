@@ -3,12 +3,12 @@
 # Maintainer: David Hummel <david dot hummel at gmail point com>
 
 pkgname=('mod_tile-git' 'renderd-git')
-pkgver=0.7.0.r14.g9408604
+pkgver=0.7.0.r18.gd6309f6
 pkgrel=1
 pkgdesc='A daemon and apache module for rendering and serving Mapnik raster tiles'
 arch=('i686' 'x86_64')
 url='https://github.com/openstreetmap/mod_tile'
-license=('GPL2')
+license=('GPL-2.0-or-later')
 optdepends=('ceph-libs: RADOS tile storage support'
             'libmemcached: Memcached tile storage support')
 makedepends=('apache' 'apr' 'boost' 'cairo' 'cmake' 'git' 'glib2' 'iniparser' 'mapnik')
