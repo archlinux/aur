@@ -6,8 +6,8 @@ pkgname=(
   'zed'
   'zq'
 )
-pkgver=1.12.0
-_commit='1a0071b5ba8a416d9bad6ea007538d13b8aa5368'
+pkgver=1.13.0
+_commit='ca0c3a2e98c5758178e1f69e10a16c9675b89aa9'
 pkgrel=1
 pkgdesc='Tooling for super-structured data'
 arch=('x86_64')
