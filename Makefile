@@ -4,6 +4,7 @@ PKGVER := $(shell awk -F= '/^pkgver=/ {print $$2}' PKGBUILD)
 PKGREL := $(shell awk -F= '/^pkgrel=/ {print $$2}' PKGBUILD)
 PKGFILE := $(PKGNAME)-$(PKGVER)-$(PKGREL)-x86_64.pkg.tar.zst
 PKGURL := https://github.com/Azure/azure-storage-fuse/archive/refs/tags/blobfuse2-$(PKGVER).tar.gz
+CHECKSUM = $(shell https -qd "$(PKGURL)" | sha256sum - | cut -d" " -f1)
 
 export LANG = C
 
@@ -12,11 +13,12 @@ export LANG = C
 #-------------------------------------------------------------------------------
 
 .PHONY: all
-all: clean $(PKGFILE)
+all: clean checksum $(PKGFILE)
 
 .PHONY: checksum
 checksum:
-	https -qd "$(PKGURL)" | sha256sum - | cut -d" " -f1
+	@sed -i -r -e "s/^sha256sums=.*/sha256sums=('$(CHECKSUM)')/g" PKGBUILD
+	@grep -E "^sha256sums=" PKGBUILD
 
 .PHONY: clean
 clean:
