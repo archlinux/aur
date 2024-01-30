@@ -1,6 +1,6 @@
 pkgbase = mermaid-cli
 	pkgdesc = Generation of diagram and flowchart from text in a similar manner as markdown (CLI)
-	pkgver = 10.6.1
+	pkgver = 10.7.0
 	pkgrel = 1
 	url = https://github.com/mermaid-js/mermaid-cli
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = mermaid-cli
 	makedepends = chromium
 	depends = nodejs
 	depends = chromium
-	noextract = mermaid-cli-10.6.1.tgz
-	source = http://registry.npmjs.org/@mermaid-js/mermaid-cli/-/mermaid-cli-10.6.1.tgz
-	sha256sums = 4d500e22998b262f32d3853be28dbabcfb15dd3b8b7587f375ace10a5f34be11
+	noextract = mermaid-cli-10.7.0.tgz
+	source = http://registry.npmjs.org/@mermaid-js/mermaid-cli/-/mermaid-cli-10.7.0.tgz
+	sha256sums = 055906daf4defc00047b4cbb7fc2599114c54f526b6ba1611cf4d4b8c789229a
 
 pkgname = mermaid-cli
