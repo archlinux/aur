@@ -7,7 +7,7 @@
 
 pkgname=mapnik-git
 pkgver=4.0.0.r13808.g2e1b325
-pkgrel=3
+pkgrel=4
 pkgdesc='Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/mapnik/mapnik'
@@ -69,6 +69,7 @@ build() {
     -DBUILD_DEMO_CPP:BOOL=OFF \
     -DBUILD_DEMO_VIEWER:BOOL=OFF \
     -DCMAKE_BUILD_TYPE:STRING=Release \
+    -DCMAKE_CXX_STANDARD:STRING=17 \
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     -DFONTS_INSTALL_DIR:PATH=share/fonts/TTF \
     -DUSE_EXTERNAL_MAPBOX_GEOMETRY:BOOL=ON \
