@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=pacman-offline-git
-pkgver=0.2.0.r0.g299053a
+pkgver=0.2.3.r2.g63a5f9c
 pkgrel=1
 pkgdesc='offline system update with pacman - git checkout'
 arch=('any')

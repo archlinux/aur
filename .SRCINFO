@@ -1,6 +1,6 @@
 pkgbase = pacman-offline-git
 	pkgdesc = offline system update with pacman - git checkout
-	pkgver = 0.2.0.r0.g299053a
+	pkgver = 0.2.3.r2.g63a5f9c
 	pkgrel = 1
 	url = https://github.com/eworm-de/pacman-offline
 	arch = any
