@@ -1,8 +1,8 @@
 # Maintainer: Sir-Photch <sir-photch@posteo.me>
 
 pkgname=litellm-ollama
-pkgver=3
-pkgrel=4
+pkgver=4
+pkgrel=2
 pkgdesc='Metapackage to setup ollama models with OpenAI API locally'
 arch=(any)
 license=(MIT)

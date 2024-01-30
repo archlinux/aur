@@ -1,7 +1,7 @@
 pkgbase = litellm-ollama
 	pkgdesc = Metapackage to setup ollama models with OpenAI API locally
 	pkgver = 4
-	pkgrel = 1
+	pkgrel = 2
 	install = litellm-ollama.install
 	arch = any
 	license = MIT
