@@ -1,4 +1,4 @@
-# Maintainer: Edmund Lodewijks <e.lodewijks@gmail.com>
+# Maintainer: Edmund Lodewijks <el+aur@altmail.se>
 # Contributor: MayorBender <7480812+kingy9000@users.noreply.github.com>
 # Contributor: Dan Beste <dan.ray.beste@gmail.com>
 # Contributor: Justine Paul <jestine-paul@dsi.a-star.edu.sg>
@@ -6,7 +6,7 @@
 pkgname='libcs50-git'
 _gitname='libcs50'
 pkgver=11.0.2.r0.g6d916ef
-pkgrel=4
+pkgrel=5
 pkgdesc="CS50 Library for C (development version)"
 arch=('x86_64' 'i686')
 url="https://github.com/cs50/libcs50"
@@ -37,7 +37,9 @@ prepare() {
   cd "${_gitname}"
 
   patch < "${srcdir}/Makefile.patch"
-  patch < "${srcdir}/Makefile-FLAGS.patch"
+
+#  Upstream unsets Arch Linux's CFLAGS and LDFLAGS. An issue has been opened to find out if this is necessary, or if this can be changed. If you want to add upstream's FLAGS to your current flags (instead of replacing them), enable the following patch file.
+#  patch < "${srcdir}/Makefile-FLAGS.patch"
 }
 
 build() {

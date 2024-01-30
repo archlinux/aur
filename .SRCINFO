@@ -1,7 +1,7 @@
 pkgbase = libcs50-git
 	pkgdesc = CS50 Library for C (development version)
 	pkgver = 11.0.2.r0.g6d916ef
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/cs50/libcs50
 	install = libcs50.install
 	arch = x86_64
