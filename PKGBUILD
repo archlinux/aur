@@ -2,7 +2,7 @@
 
 pkgbase=ssh3
 pkgname=(ssh3 ssh3-server)
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc='faster and rich secure shell using HTTP/3'
 url='https://github.com/francoismichel/ssh3'
@@ -11,8 +11,8 @@ arch=('x86_64')
 depends=('glibc')
 makedepends=('go' 'libxcrypt')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/francoismichel/ssh3/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6e87e654bead259fa4885802f8b2c6f7bfbde408f70fd53df92409b26dcb6e0f')
-b2sums=('a968ef563056953f46e2c77bacaa45ff7304be976e1c9e92583ecfb4429d70b703ebd9d4d72dcb54ca450b9b2d9c55b42ade006c2a4b89c13d36dfd3d1ead30e')
+sha256sums=('23a88d0d7f54f80d752c22ee5f879fa1daf8c320ece364287209c58b3e98b6b5')
+b2sums=('daf2d916bc40a63e5ff089ef97c70bae3f2c7e0f74d043c40c2d9b8505d64985240c5679952d171833531b7746421304e5610075d2fca5f78593fa8b7e4890d3')
 
 build() {
   cd "$pkgbase-$pkgver"
