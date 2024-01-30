@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Stavekontrolden Danish dictionaries; for use with nuspell/hunspell, hyphen, libmythes, LibreOffice, and OpenOffice"
 arch=('any')
 url='https://stavekontrolden.dk/'
-license=('GPL2' 'LGPL2.1' 'MPL')
+license=('GPL-3.0-only AND (GPL-2.0-only AND LGPL-2.1-only AND MPL-1.1)')
 optdepends=(
   'hunspell: the spell checking libraries and apps'
   'hyphen: for use of hyphenation rules'
