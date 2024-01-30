@@ -29,7 +29,7 @@ prepare() {
 build() {
   cd "$srcdir/libhelium-$pkgver"
 
-  arch-meson . builddir -Dvaladoc=false
+  arch-meson . builddir -Dvaladoc=false -Ddemo=false
   meson compile -C builddir
 }
 
