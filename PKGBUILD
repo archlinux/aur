@@ -2,40 +2,23 @@
 pkgname=media-hoarder-bin
 _pkgname="Media Hoarder"
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The media frontend for data hoarders and movie lovers"
 arch=('x86_64')
 url="https://github.com/theMK2k/Media-Hoarder"
-license=('custom')
+license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'hicolor-icon-theme'
-    'cairo'
-    'expat'
-    'libx11'
-    'libxshmfence'
-    'pango'
-    'mesa'
     'nss'
-    'libxext'
-    'libxcomposite'
     'at-spi2-core'
-    'libxcb'
     'alsa-lib'
     'gtk3'
-    'libxrandr'
-    'libxkbcommon'
-    'libdrm'
-    'libcups'
-    'gdk-pixbuf2'
-    'libxdamage'
-    'nspr'
-    'libxfixes'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.deb"
-    "LICENSE::https://raw.githubusercontent.com/theMK2k/Media-Hoarder/v${pkgver}/LICENSE.md"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/theMK2k/Media-Hoarder/v${pkgver}/LICENSE.md"
 )
 sha256sums=('1f21dcc74f4ec0f856002d17e33890b5fb00862833070f4cfc2a6dd1d2dbec33'
             '3c67fce0428a3d133bb589cd1db329789ec235049af1412511f89420c99ae9a6')
@@ -52,5 +35,5 @@ package() {
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
