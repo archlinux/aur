@@ -1,7 +1,7 @@
 pkgbase = linphone-desktop
 	pkgdesc = A free VoIP and video softphone based on the SIP protocol
 	pkgver = 5.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://linphone.org
 	arch = x86_64
 	license = GPL
@@ -26,6 +26,7 @@ pkgbase = linphone-desktop
 	depends = qt5-multimedia
 	depends = qt5-graphicaleffects
 	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
 	depends = qt5-svg
 	depends = qt5-speech
 	depends = libxcrypt-compat
