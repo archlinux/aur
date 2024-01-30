@@ -2,7 +2,7 @@
 # Contributor: darkgrin <darkgrin at yahoo dot com>
 pkgname=subs2srs
 pkgver=29.7
-pkgrel=6
+pkgrel=7
 pkgdesc="A small utility that allows you to create Anki (flash card software) import files based on your favorite foreign language movies and TV shows to aid in the language learning process."
 arch=('any')
 url="http://subs2srs.sourceforge.net/"
@@ -70,6 +70,9 @@ package() {
 	mv -- "$pkgdir/opt/subs2srs/gpl.txt" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 
 	# fix fonts
-	install -Dm644 "$srcdir/90-avoid-microsoft-sans-serif.conf" "$pkgdir/etc/fonts/conf.avail/90-avoid-microsoft-sans-serif.conf"
-	ln -sr "$pkgdir/etc/fonts/conf."{avail,d}"/90-avoid-microsoft-sans-serif.conf"
+	font_conf="90-avoid-microsoft-sans-serif.conf"
+	avail_dir="/usr/share/fontconfig/conf.avail/"
+	d_dir="/etc/fonts/conf.d/"
+	install -Dm644 "$srcdir/$font_conf" "$pkgdir/$avail_dir/$font_conf"
+	ln -s -- "$(readlink -m -- "/$avail_dir/$font_conf")" "$pkgdir/$d_dir/$font_conf"
 }
