@@ -1,7 +1,7 @@
 pkgbase = nodejs-apg-js
 	pkgdesc = an ABNF parser generator creating recursive-descent parsers from a superset of ABNF
 	pkgver = 4.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ldthomas/apg-js
 	arch = any
 	license = BSD-2-Clause

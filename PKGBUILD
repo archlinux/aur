@@ -3,7 +3,7 @@
 _npmname=apg-js
 pkgname=nodejs-"$_npmname"
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='an ABNF parser generator creating recursive-descent parsers from a superset of ABNF'
 arch=(any)
 url="https://github.com/ldthomas/$_npmname"
@@ -25,6 +25,6 @@ package() {
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$pkgdir/usr/lib/node_modules/$_npmname/LICENSE.md"
 	mkdir -p "$pkgdir/usr/bin"
 	for bin in apg apg-conv; do
-		ln -sf "../lib/node_modules/$_npmname/bin/$bin.sh" "$pkgdir/usr/bin/$bin"
+		ln -sf "../lib/node_modules/$_npmname/bin/$bin.sh" "$pkgdir/usr/bin/$bin-js"
 	done
 }
