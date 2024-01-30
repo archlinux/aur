@@ -1,0 +1,9 @@
+[__config__]
+oldver = ".nvchecker.prev.json"
+newver = ".nvchecker.next.json"
+
+[azure-storage-fuse]
+source = "github"
+github = "Azure/azure-storage-fuse"
+prefix = "blobfuse2-"
+use_latest_release = true

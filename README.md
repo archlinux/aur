@@ -16,7 +16,9 @@ make
 
 ## Release
 
-1. Bump `pkgver` in `PKGBUILD`.
-2. Run `make checksum` and paste content in place of `sha256sums` in `PKGBUILD`.
+> You will need `pipx install nvchecker` before !
+
+1. Run `nvcmp -c .nvchecker.toml` to verify newer versions.
+2. Bump related `pkgver` in `PKGBUILD`.
 3. Run `make`.
 4. Commit and push.

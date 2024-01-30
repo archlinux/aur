@@ -1,5 +1,6 @@
 *
 !/.gitignore
+!.nvchecker.toml
 !/PKGBUILD
 !/.editorconfig
 !/Makefile
