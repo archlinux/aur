@@ -1,6 +1,6 @@
 pkgbase = libbible
 	pkgdesc = A simplified interface to the SWORD project.
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://vance.fish/git/libbible
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = libbible
 	depends = glibc
 	depends = gcc-libs
 	provides = libbible.so
-	source = https://vance.fish/git/libbible/snapshot/libbible-1.0.5.tar.gz
-	source = https://vance.fish/git/libbible/snapshot/libbible-1.0.5.tar.gz.asc
+	source = https://vance.fish/git/libbible/snapshot/libbible-1.0.6.tar.gz
+	source = https://vance.fish/git/libbible/snapshot/libbible-1.0.6.tar.gz.asc
 	validpgpkeys = 2FCF3A100A5B5C0E78E41BDB215A56B23729BC81
-	sha256sums = 7a7d19047e5dd15fe59b831bde6f85be1966d6ddb1b6997a47ffee67a3435aa1
+	sha256sums = 398cc1a402cfc8358ebb5df861ca20d0f6928c96e9995f5c7bee745a6d7bd66c
 	sha256sums = SKIP
 
 pkgname = libbible
