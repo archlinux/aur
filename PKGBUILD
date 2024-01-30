@@ -168,8 +168,8 @@ build() {
   # * [2023-06-24] libspotify does no longer exist & also does no longer work, so disable it (`libspotify` would be the needed dependency), see https://aur.archlinux.org/packages/tizonia-all-git#comment-921052.
   # * [2023-07-31] Google Music service is dead, but `python-gmusicapi` is still needed by `/usr/lib/python3.11/site-packages/tizgmusicproxy.py`, see https://aur.archlinux.org/packages/tizonia-all-git#comment-927188 and follow up.
   # * [2023-08-01] Building tests fails with `clients/youtube/libtizyoutube/tests/check_tizyoutube.c:121:12: error: too few arguments to function ‘tiz_youtube_init’`, see https://github.com/tizonia/tizonia-openmax-il/issues/799.
-  export SAMUFLAGS="-j1"                         # Eats a lot of ram, so restrict to one build job at a time.
-  PKG_CONFIG_PATH=/usr/lib/taglib1/lib/pkgconfig # Also search for taglib1 pkgconfig file.
+  export SAMUFLAGS="-j1"                                 # Eats a lot of ram, so restrict to one build job at a time.
+  export PKG_CONFIG_PATH=/usr/lib/taglib1/lib/pkgconfig  # Also search for taglib1 pkgconfig file.
   meson setup --prefix=/usr --buildtype=plain \
     -Dplayer=true \
     -Dlibspotify=false \
