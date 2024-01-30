@@ -1,17 +1,33 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-posthog
 _name=posthog-python
-pkgver=3.3.3
+pkgver=3.3.4
 pkgrel=1
 pkgdesc="Integrate PostHog into any python application."
 arch=('any')
 url="https://posthog.com/docs/libraries/python"
 license=('MIT')
-depends=('python-backoff' 'python-dateutil' 'python-monotonic' 'python-requests' 'python-six')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-checkdepends=('python-freezegun' 'python-mock' 'python-pytest' 'python-pytest-timeout')
+depends=(
+  'python-backoff'
+  'python-dateutil'
+  'python-monotonic'
+  'python-requests'
+  'python-six'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+checkdepends=(
+  'python-freezegun'
+  'python-mock'
+  'python-pytest'
+  'python-pytest-timeout'
+)
 source=("$_name-$pkgver.tar.gz::https://github.com/PostHog/posthog-python/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('de2076de02e5588e39c0bd611b012c8cae151c90f5c73e2aaa372cf865206e08')
+sha256sums=('4bb1d3fadf79051e42253a4c725ccd8511869cc686e27c066642b388aa16c1de')
 
 build() {
   cd "$_name-$pkgver"
