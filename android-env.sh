@@ -75,7 +75,12 @@ export ANDROID_AS=${ANDROID_TOOLS_PREFIX}as
 export ANDROID_NM=${ANDROID_TOOLS_PREFIX}nm
 export ANDROID_RANLIB=${ANDROID_TOOLS_PREFIX}ranlib
 export ANDROID_STRIP=${ANDROID_TOOLS_PREFIX}strip
-export ANDROID_PREFIX=/opt/android-libs/${_android_arch}
+
+if [ -z "${ANDROID_EXTERNAL_LIBS}" ]; then
+    export ANDROID_EXTERNAL_LIBS=/opt/android-libs
+fi
+
+export ANDROID_PREFIX=${ANDROID_EXTERNAL_LIBS}/${_android_arch}
 export ANDROID_PREFIX_USR=${ANDROID_PREFIX}/usr
 export ANDROID_PREFIX_BIN=${ANDROID_PREFIX}/bin
 export ANDROID_PREFIX_INCLUDE=${ANDROID_PREFIX}/include
