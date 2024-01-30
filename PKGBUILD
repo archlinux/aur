@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=phylobase
-_pkgver=0.8.10
+_pkgver=0.8.12
 pkgname=r-${_pkgname,,}
-pkgver=0.8.10
-pkgrel=4
+pkgver=0.8.12
+pkgrel=1
 pkgdesc='Base Package for Phylogenetic Structures and Comparative Data'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -23,7 +23,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5a44380ff49bab333a56f6f96157324ade8afb4af0730e013194c4badb0bf94b')
+sha256sums=('9b81ca60dc6215e74b720880cc2db3abc1f7e6d8785ea7d7df95a950f0778f20')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
