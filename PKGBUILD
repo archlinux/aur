@@ -7,11 +7,11 @@
 
 pkgname=mapnik-git
 pkgver=4.0.0.r13808.g2e1b325
-pkgrel=4
+pkgrel=5
 pkgdesc='Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/mapnik/mapnik'
-license=('LGPL2.1')
+license=('LGPL-2.1-or-later')
 depends=('boost-libs'
          'cairo'
          'freetype2'
@@ -25,7 +25,6 @@ depends=('boost-libs'
          'libxml2'
          'postgresql-libs'
          'proj'
-         'protozero'
          'python'
          'sqlite'
          'ttf-dejavu')
@@ -35,6 +34,7 @@ makedepends=('boost'
              'mapbox-geometry.hpp'
              'mapbox-polylabel'
              'mapbox-variant'
+             'protozero'
              'sparsehash')
 conflicts=('mapnik')
 provides=('mapnik')
@@ -85,12 +85,16 @@ check() {
 
 package(){
   # Remove bundled dejavu fonts from cmake_install.cmake in favor of 'ttf-dejavu' package
-  sed -i '/dejavu-fonts-ttf-2.37/d' "$srcdir"/mapnik_build/cmake_install.cmake
+  sed -i '/dejavu-fonts-ttf/d' "$srcdir"/mapnik_build/cmake_install.cmake
 
   # Remove bundled sparsehash directory in favor of 'sparsehash' package
   rm -rf "$srcdir"/mapnik/deps/mapnik/sparsehash
 
+  # Install to #DESTDIR
   DESTDIR="$pkgdir" cmake --install mapnik_build --strip
+
+  # Remove usr/share/fonts directory
+  rm -rf "$pkgdir"/usr/share/fonts
 
   # License
   install -Dm644 "$srcdir"/mapnik/COPYING "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
