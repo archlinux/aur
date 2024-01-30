@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=errands
-pkgver=45.1.6
+pkgver=45.1.7
 pkgrel=1
 pkgdesc='Todo application for those who prefer simplicity'
 url="https://github.com/mrvladus/Errands"
@@ -23,7 +23,7 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
   chmod +x "$pkgdir/usr/bin/errands"
   install -Dm644 Errands/LICENSE -t "$pkgdir/usr/share/licenses/errands"
 }
