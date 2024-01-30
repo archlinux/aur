@@ -7,7 +7,7 @@
 pkgname=nhiicc
 epoch=1
 pkgver=20220530
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url='https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/mEventesting.htm'
 license=(custom)
@@ -35,10 +35,5 @@ package() {
   cp -dr mLNHIICC_Setup."$pkgver"/html "$pkgdir"/usr/share/nhiicc/
   find "$pkgdir" \( -name '*~' -or -name '._*' \) -delete
   install -Dm644 nhiicc.service -t "$pkgdir"/usr/lib/systemd/system/
-
-  # Match the directory mode of polkit
-  # https://gitlab.archlinux.org/archlinux/packaging/packages/polkit/-/blob/main/PKGBUILD
-  install -d -o root -g 102 -m 750 "$pkgdir"/usr/share/polkit-1/rules.d
-
   install -Dm644 nhiicc.rules -t "$pkgdir"/usr/share/polkit-1/rules.d
 }
