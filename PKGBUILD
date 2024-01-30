@@ -10,11 +10,11 @@ license=('MIT')
 depends=('kubectl')
 makedepends=('go')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('49b13467904466aea8bab0daabad42c3ac5888a490d8965504bbbae50b669318')
+sha256sums=('ba0894a8e26fefff47a0691529964303bdd8fdc2d7ce74e7d241cb5a2f2ade50')
 
 build() {
   cd "${pkgname}-${pkgver}"
-  go build -o "$pkgname" ./cmd/kubecolor
+  go build -o "$pkgname" main.go
 }
 
 package() {
