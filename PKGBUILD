@@ -5,15 +5,19 @@ _dotnet_version=8.0
 
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=3.0.0.rc3.r1.g4e2cfc23a
+pkgver=3.0.0.rc3.r16.g2754fb5da
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://steampp.net/"
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=(
-    'libcap' "aspnet-runtime-${_dotnet_version}" 'nss'
-    # extra/skia-sharp
-    'fontconfig' 'expat' 'libfreetype.so' 'libheif' 'libjpeg-turbo' 'libpng' 'libwebp' 'zlib'
+    'libcap' "aspnet-runtime-${_dotnet_version}" "dotnet-runtime-${_dotnet_version}" 'nss' 'sh' 'hicolor-icon-theme'
+    # libe_sqlite3.so libHarfBuzzSharp.so libSkiaSharp.so
+    'glibc'
+    # Steam++.Accelerator
+    'gcc-libs'
+    # libSkiaSharp.so
+    'fontconfig' 'freetype2' 'expat' 'zlib' 'bzip2' 'libpng' 'harfbuzz' 'brotli' 'glib2' 'graphite' 'pcre2'
 )
 makedepends=('git' 'dotnet-install') # We need to install some workloads so dotnet-sdk is not available here
 optdepends=('steam: need official or flatpak version of steam')
@@ -91,24 +95,10 @@ prepare(){
     dotnet-install --channel ${_dotnet_version} --install-dir "${srcdir}/dotnet-sdk" --no-path
 
     # Hacking about missing depends
-    missing_depends=("SkiaSharp" "SkiaSharp.NativeAssets.Linux" "System.DirectoryServices")
     cd "${srcdir}/SteamTools/src/BD.WTTS.UnitTest"
     export DOTNET_ROOT="${srcdir}/dotnet-sdk"
     export PATH=$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH
-    dotnet restore
-
-    sed -i "$ i <ItemGroup>" BD.WTTS.UnitTest.csproj
-    for missing_depend in "${missing_depends[@]}"
-    do
-        if ! dotnet list package | grep -q "${missing_depend}"
-        then
-            sed -i "$ i <PackageReference Include=\"${missing_depend}\" />" BD.WTTS.UnitTest.csproj
-        fi
-    done
-    sed -i "$ i </ItemGroup>" BD.WTTS.UnitTest.csproj
-
-    sed -i "2 a <ItemGroup>\n<PackageVersion Include=\"System.DirectoryServices\" Version=\"7.0.1\" />\n</ItemGroup>" \
-        "${srcdir}/SteamTools/src/Directory.Packages.props"
+    dotnet add package System.DirectoryServices
 }
 pkgver(){
     cd "${srcdir}/SteamTools"
