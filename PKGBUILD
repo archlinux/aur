@@ -2,7 +2,7 @@
 
 pkgname=lampray
 pkgver=1.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux Application Modding Platform. A native Linux mod manager.'
 arch=('x86_64')
 url='https://github.com/CHollingworth/Lampray'
@@ -32,7 +32,8 @@ build() {
 }
 
 package() {
-  cd "${pkgname^}-${pkgver}/build"
+  cd "${pkgname^}-${pkgver}"
 
-  install -Dm 755 "${pkgname^}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm 755 "build/${pkgname^}" "${pkgdir}/usr/bin/${pkgname}"
 }
