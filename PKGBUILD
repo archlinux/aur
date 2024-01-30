@@ -27,20 +27,20 @@ license=(
   'BSD'
 )
 makedepends=(
-  "${_py}--setuptools"
+  "${_py}-setuptools"
 )
 checkdepends=()
 [[ "${_checks}" == 'true' ]] && \
   checkdepends+=(
 #   'lib32-glibc'
-#   'python2-twisted'
-    'python2-tornado'
+#   "${_py}-twisted'
+    "${_py}-tornado"
 )
-_tarname="${_name}-${_commit}"
+_tarname="${_Pkg}-${_commit}"
 source=(
   "${_tarname}.tar.gz::${url}/archive/${_commit}.tar.gz"
-  "0001-Fix_HTTP_basic_auth.patch::https://github.com/Anorov/${_name}/pull/147.patch"
-  "0002-Change_error_type_to_match_native_socket_error.patch::https://github.com/Anorov/${_name}/pull/154.patch"
+  "0001-Fix_HTTP_basic_auth.patch::https://github.com/Anorov/${_Pkg}/pull/147.patch"
+  "0002-Change_error_type_to_match_native_socket_error.patch::https://github.com/Anorov/${_Pkg}/pull/154.patch"
   "0003-Properly_convert_unsigned_integer_fix_urllib3_PySocks_issue_4.patch::${url}/pull/5.patch"
 )
 b2sums=(
@@ -69,9 +69,9 @@ prepare() {
     echo
   done
   printf \
-    "Changing hashbangs in *.py files to refer to 'python2'... "
+    "Changing hashbangs in *.py files to refer to '${_py}'... "
   sed \
-    -e '1s|#![ ]*/[a-zA-Z0-9./_ ]*python.*|#!/usr/bin/env python2|' \
+    -e "1s|#![ ]*/[a-zA-Z0-9./_ ]*python.*|#!/usr/bin/env ${_py}|" \
     -i \
     $( \
       find \
@@ -120,15 +120,14 @@ _check() {
 
 package() {
   depends=(
-    'python2'
+    "${_py}"
   )
   provides=(
-    "python2-socks=${pkgver%.r*}"
+    "${pkgname}=${pkgver%.r*}"
   )
-
   cd \
     "${_tarname}"
-  python2 \
+  "${_py}" \
     setup.py \
       install \
         --root="${pkgdir}" \
