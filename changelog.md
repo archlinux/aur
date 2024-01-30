@@ -1,3 +1,11 @@
+## GE-Proton8-29
+
+- hotfix: updated proton bleeding edge to include tekken 8 online match disconnect fix
+- updated vkd3d-proton
+- fix issue with drive_c symlink during prefix creation when using ulwgl (it's now possible to run scripted game installations using ulwgl and proton-ge)
+
+Files will attach when build action finishes: https://github.com/GloriousEggroll/proton-ge-custom/actions
+
 ## GE-Proton8-28
 
 - fixed `[S_API FAIL] SteamAPI_Init() failed; no appID found.` from being reported when running non-steam games
