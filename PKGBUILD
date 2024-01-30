@@ -1,59 +1,49 @@
-# Maintainer: XelK
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: XelK
 # Contributor: Javier Tiá <javier dot tia at gmail dot com>
-
-_name=vnote
-_pkgname=VNote
-pkgname=${_name}-bin
-pkgver=2.10
+pkgname=vnote-bin
+pkgver=3.17.0
 pkgrel=1
-pkgdesc='A Vim-inspired note-taking application that knows programmers and Markdown better'
+pkgdesc="A Qt-based, free and open source note-taking application, focusing on Markdown now."
 arch=('x86_64')
-url='https://github.com/vnotex/vnote'
-license=('MIT')
-# depends=('qt5-webengine')
-conflicts=("${_name}")
-replaces=("${_name}")
-options=(!strip)
-_url=https://github.com/vnotex/vnote/
-_binfile=${_pkgname}-${pkgver}-${CARCH}.AppImage
-_buildfile=${_name}-${pkgver}.AppImage
-source=("${_buildfile}::${_url}/releases/download/v${pkgver}/${_binfile}")
-sha256sums=('aeee6092ec86c140483db6ad5add53a13c42bf40fb575d7f0b3fc40238b2b9ee')
-
-prepare() {
-  # Extract AppImage
-  chmod +x ${_buildfile}
-  ./${_buildfile} --appimage-extract
-  find "${srcdir}/squashfs-root/" -type d -exec chmod 755 '{}' +;
-
-  _desktopfile="${srcdir}/squashfs-root/usr/share/applications/${_name}.desktop"
-  sed -i "s#^Exec=VNote#Exec=/opt/vnote/usr/bin/VNote#" "${_desktopfile}"
+url="https://app.vnote.fun/"
+_ghurl="https://github.com/vnotex/vnote"
+license=('LGPL-3.0-only')
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
+depends=(
+    'hicolor-icon-theme'
+    'qt5-base'
+    'gtk3'
+    'alsa-lib'
+    'nss'
+)
+makedepends=(
+    'squashfuse'
+)
+options=('!strip')
+source=(
+    "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64_v${pkgver}.zip"
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('6b74dd083bfa3ecec5a0ee74d8ecbc4fce7b7a81d43c9246fdd43d83f190ec98'
+            'a9c558d0ce9e8b9ae2ca6cb1933ddcb941e4554afb01c903680d969707ce735e')
+build() {
+    sed -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|${pkgname%-bin}|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
+    mv "${srcdir}/${pkgname%-bin}-linux-x64_v${pkgver}.AppImage" "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
 }
-
 package() {
-  # share
-  install -d "${pkgdir}/usr"
-  mv "${srcdir}/squashfs-root/usr/share" "${pkgdir}/usr"
-
-  # Install
-  install -d "${pkgdir}/opt/${_name}"
-  mv "${srcdir}/squashfs-root/usr" "${pkgdir}/opt/${_name}"
-
-  # License
-  install -d "${pkgdir}/usr/share/licenses/${_name}"
-  cp "${srcdir}"/squashfs-root/LICENSE \
-    "${pkgdir}/usr/share/licenses/${_name}"
-
-  # Binary 
-  install -d "${pkgdir}/usr/bin"
-  ln -s "/opt/${_name}/usr/bin/${_pkgname}" \
-    "${pkgdir}/usr/bin/${_name}"
-  ln -s "/opt/${_name}/usr/bin/${_pkgname}" \
-    "${pkgdir}/usr/bin/${_pkgname}"
-
-  # Clean up
-  rm -rf "${pkgdir}/opt/${_name}/usr/bin/${_name}"
-  rm -rf "${pkgdir}/usr/share/doc"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
+    cp -r "${srcdir}/squashfs-root/usr/"* "${pkgdir}/opt/${pkgname%-bin}"
+    for _icons in 16x16 32x32 48x48 64x64 128x128 256x256;do
+        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    done
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
-
-# vim:set ts=2 sw=2 et:
