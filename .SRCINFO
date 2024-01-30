@@ -1,13 +1,13 @@
 pkgbase = capnproto-java
 	pkgdesc = Cap'n Proto for Java
-	pkgver = 0.1.14
+	pkgver = 0.1.16
 	pkgrel = 1
 	url = https://github.com/capnproto/capnproto-java
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = capnproto
-	source = https://github.com/capnproto/capnproto-java/archive/v0.1.14.tar.gz
-	sha256sums = 505288a9b141e76f8c03abd014aaeaaba2f0c17ab4aa1a7f62bc185907da31ec
+	source = https://github.com/capnproto/capnproto-java/archive/v0.1.16.tar.gz
+	sha256sums = 904525c4433fb1779bbc4face11887b016f949f1b019755b1886c5f367f4c091
 
 pkgname = capnproto-java
