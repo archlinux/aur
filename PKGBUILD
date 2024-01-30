@@ -4,7 +4,7 @@ pkgname=blender-lts-bin
 pkgdesc='LTS blender version'
 pkgver='3.6.8'
 #USA Mirror
-_mirror="https://mirror.clarkson.edu"
+_mirror="https://mirrors.ocf.berkeley.edu/"
 
 ##Alternate Mirrors##
 #China
@@ -20,7 +20,7 @@ _mirror="https://mirror.clarkson.edu"
 
 _pkgfile=${pkgname%-lts-bin}-$pkgver-linux-x64.tar.xz
 source=("${_mirror}/blender/release/Blender${pkgver%.*}/$_pkgfile" 'blender.sh')
-pkgrel=1
+pkgrel=2
 license=('GPL')
 arch=('x86_64')
 url='https://www.blender.org'
