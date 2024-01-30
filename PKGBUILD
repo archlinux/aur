@@ -1,17 +1,17 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=renpy
-pkgver=8.1.3
-_verdate=23091805
-pkgrel=2
+pkgver=8.2.0
+_verdate=24012702
+pkgrel=1
 pkgdesc="Visual novel engine Ren'Py along with its platdeps libs"
 arch=('i686' 'x86_64')
 license=('MIT')
 url='http://www.renpy.org'
 depends=(
-	'ffmpeg' 'fribidi'
-	'python-pygame-sdl2' 'sdl2_image' 'sdl2_mixer' 
-	'sdl2_gfx' 'sdl2_ttf' 'python-ecdsa' 'python-future' 'python-pefile')
+	'glibc' 'ffmpeg' 'fribidi' 'harfbuzz' 'freetype2' 'libpng'
+	'python-pygame-sdl2' 'sdl2' 'sdl2_image' 'sdl2_mixer' 
+	'sdl2_gfx' 'sdl2_ttf' 'python-future' 'python-ecdsa')
 makedepends=(
 	'cython0' 'python-setuptools-scm' 'python-sphinx' 'python-sphinx_rtd_dark_mode' 
 	'python-sphinx_rtd_theme' 'python-build' 'python-installer' 'python-wheel')
@@ -22,7 +22,7 @@ install='renpy.install'
 source=("$pkgname-$pkgver-$_verdate.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/${pkgver}.${_verdate}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}-launcher.sh")
-sha256sums=('d2834848f37d5c1203a53a59dc3c095558b2e896ccc7f19a427eba0e90e36b8a'
+sha256sums=('4e854c7cda8a77d990b9fd9025bd9af0fb36c12700301b50b349b7cea84c9649'
             'b58efcc42526c4de15e8963b02991e558b5e3d15d720b3777b791ac13fc815e6'
             'a38112859bf659d48c30be5c7c20ed1a1c72271ffd74eb4b4e730afbd87d73dc')
 
@@ -47,6 +47,8 @@ build() {
 }
 
 package() {
+	depends=('python-pefile' 'python-requests' 'python-rsa' 'python-six')
+	
 	#pack data
 	mkdir -p "$pkgdir/"{usr/share/{$pkgname,doc/$pkgname},}
 
