@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fooyin
 _pkgname=Fooyin
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A customisable music player"
 arch=('any')
@@ -41,7 +41,7 @@ build() {
         -e "s|@runname@|${pkgname}|g" \
         -i "${srcdir}/${pkgname}.sh"
     cd "${srcdir}/${pkgname}.git"
-    mkdir build
+    install -Dm755 -d build
     cmake -S . -B ./build -G Ninja -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=Off
     cmake --build ./build
 }
