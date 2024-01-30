@@ -1,0 +1,20 @@
+pkgbase = sqlite3-page-explorer-git
+	pkgdesc = Cross Platform app to explore internal organisation of tables and indices
+	pkgver = 1.0.r57.g746d603
+	pkgrel = 1
+	url = https://github.com/siara-cc/sqlite3_page_explorer
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = npm
+	makedepends = nodejs
+	makedepends = gendesk
+	depends = electron22
+	provides = sqlite3-page-explorer=1.0.r57.g746d603
+	conflicts = sqlite3-page-explorer
+	source = sqlite3-page-explorer.git::git+https://github.com/siara-cc/sqlite3_page_explorer.git
+	source = sqlite3-page-explorer.sh
+	sha256sums = SKIP
+	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
+
+pkgname = sqlite3-page-explorer-git
