@@ -3,8 +3,8 @@
 # Contributor: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=libosmo-abis
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="Osmocom library for A-bis interface"
 arch=('any')
 url="https://osmocom.org/projects/libosmo-abis"
@@ -14,7 +14,7 @@ provides=("libosmoabis.so=13-64"
           "libosmotrau.so=2-64")
 conflicts=("${pkgname}-git")
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('ddbee7b8cac95d05cb0601276609cf4bbea8f2bf2a229a250680ca759836f418')
+sha256sums=('24497985ac315d7e12e02b0663f44ade2663c9ab312e8a77ec7f680a579be80e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
