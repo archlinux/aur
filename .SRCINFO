@@ -1,7 +1,7 @@
 pkgbase = easytag-opensuse-ogg-patch
 	pkgdesc = Simple application for viewing and editing tags in audio files, using OpenSUSE patch
 	pkgver = 2.4.3
-	pkgrel = 8
+	pkgrel = 9
 	url = https://wiki.gnome.org/Apps/EasyTAG
 	arch = x86_64
 	license = GPL2
@@ -33,9 +33,9 @@ pkgbase = easytag-opensuse-ogg-patch
 	sha256sums = fc51ee92a705e3c5979dff1655f7496effb68b98f1ada0547e8cbbc033b67dd5
 	sha256sums = 9d3fe4c458e180f409f0fdd602bc372df2fb44233ac524a133c6e78d95e65999
 	sha256sums = cfbe5d613115a75ada48544e8e96a42de06317deac816071c5107abadf70617c
-	b2sums = dbb47f4f653da12e7b677a4757d60ad136d6281e075bdb74a57cab3d3848cb414dab67e3b0f463cabf8dcdeecf7dc193cfe9a52a8d9023b8b29025a9f2168d87
+	b2sums = 22358cd15e53a51f2786ad2a62e5d9eea78e9c8b8127d2820dbd5657d734a9a0e694a6d180ad730b87c8c236e3d3396c9ea4c651df4080d0f4b4dc0e212b945c
 	b2sums = 1d13e4b14140ba4f9e1de8dc467cf67b6ff0990e7c28949ae0379c88aa4b63c5b0fbfa4ec512b004345ffd47d95d64042063cbe041398fbcd74dc7fd732607d1
-	b2sums = SKIP
+	b2sums = a6f8eed2708af7cdf6f332f7f906f0bcdcc2701a7f08d33294fda9891dbc8e5a2b638d44096849aa4b795406e29ac60d7166869f1fbbaffa82bd2f323292d1ef
 
 pkgname = easytag-opensuse-ogg-patch
 	depends = cairo

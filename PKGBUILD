@@ -8,7 +8,7 @@
 _pkgname=easytag
 pkgname=easytag-opensuse-ogg-patch
 pkgver=2.4.3
-pkgrel=8
+pkgrel=9
 pkgdesc="Simple application for viewing and editing tags in audio files, using OpenSUSE patch"
 arch=('x86_64')
 url="https://wiki.gnome.org/Apps/EasyTAG"
@@ -59,7 +59,7 @@ check() {
   cd "${_pkgname}-${pkgver}"
   # tests claim that easytag.appdata.xml is not valid, but it is, so we touch
   # the validation file
-  touch "data/${pkgname}.appdata.valid"
+  touch "data/${_pkgname}.appdata.valid"
   make -k check
 }
 
