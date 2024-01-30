@@ -6,7 +6,7 @@
 # Maintainer: Hayden Johnson <hajohn100@gmail.com>
 pkgname=goterm
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Play Go/Baduk/Weiqi in your terminal!"
 arch=('x86_64')
