@@ -3,7 +3,7 @@
 # check $srcdir/$_name-$pkgver/global.json for the dotnet (SDK and runtime) version required
 _name=Ryujinx
 pkgname=ryujinx
-pkgver=1.1.1101
+pkgver=1.1.1151
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 arch=(x86_64)
@@ -13,10 +13,9 @@ depends=('dotnet-runtime-8.0')
 makedepends=('dotnet-sdk-8.0')
 options=(!strip)
 install=ryujinx.install
-_sdkver=8.0.100
 source=("$url/archive/$pkgver.tar.gz"
 		"ryujinx.install")
-b2sums=('5f9a839b2ac8fe680fabf1a7faa48698d052682db433753c659baaa1eeb77077113c64b677ade30d43e1e8ec468eeb8eed6a70bdba9d47edc97f70449bf115b6'
+b2sums=('24ac908a648dafe368d2cac0baa2e35aaeb46b890deb70d69b4af701c02e3e5d502b75bb06af9c172d6e001abe2f52552383f549553b27f9fa2097c02f3cac95'
         '5e7013a31c2163a8baa71bfc36ef2da3d7580b31966abb13b54271f23f3eda9e591d56c7d448a6c18933e1f21560bbd4d3db62f38f2aae37220ffb4318edfe49')
 
 build() {
@@ -53,9 +52,9 @@ package() {
 	ln -s "/opt/ryujinx/Ryujinx.Ava" "$pkgdir/usr/bin/Ryujinx.Ava"
 	ln -s "/opt/ryujinx/Ryujinx.sh"  "$pkgdir/usr/bin/Ryujinx.sh"
 
-	install -Dm644 distribution/linux/Ryujinx.desktop  "$pkgdir/usr/share/applications/ryujinx.desktop"
-	install -Dm644 distribution/misc/Logo.svg          "$pkgdir/usr/share/icons/hicolor/scalable/apps/ryujinx.svg"
-	install -Dm644 distribution/linux/mime/Ryujinx.xml "$pkgdir/usr/share/mime/packages/ryujinx.xml"
+	install -Dm644 distribution/linux/Ryujinx.desktop  "$pkgdir/usr/share/applications/Ryujinx.desktop"
+	install -Dm644 distribution/misc/Logo.svg          "$pkgdir/usr/share/icons/hicolor/scalable/apps/Ryujinx.svg"
+	install -Dm644 distribution/linux/mime/Ryujinx.xml "$pkgdir/usr/share/mime/packages/Ryujinx.xml"
 
 	install -dm777 "$pkgdir/opt/ryujinx/Logs" # create writable logs directory
 }
