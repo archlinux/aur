@@ -2,11 +2,11 @@
 
 pkgname=casile
 pkgver=0.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
 url="https://github.com/sile-typesetter/$pkgname"
-license=(AGPL3)
+license=(AGPL-3.0-only)
 depends=(bc
          bcprov # pdftk optdepend is required
          curl
@@ -14,11 +14,11 @@ depends=(bc
          entr
          epubcheck
          fontconfig
-         gcc-libs
+         gcc-libs # libgcc_s.so
          ghostscript
          git
          git-warp-time
-         glibc
+         glibc # libc.so libm.so
          imagemagick
          inetutils
          inkscape
