@@ -1,7 +1,7 @@
 # Maintainers: kobe-koto <admin[at]koto.cc>, Ketal_Q_ray <k[at]ketal.icu>
 pkgname="liteloader-qqnt-git"
 _pkgname="LiteLoaderQQNT"
-pkgver=1.0.2.r0.gf621aee
+pkgver=1.0.3.r1.ge570e4b
 pkgrel=1
 pkgdesc="轻量, 简洁, 开源的 QQNT 插件加载器"
 arch=('any')
@@ -15,10 +15,12 @@ source=(
 	"git+${url}.git"
 	"liteloader-qqnt-depatch.hook"
 	"liteloader-qqnt-patch.hook"
-)
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP')
+	"liteloader-qqnt-repatch.hook")
+
+md5sums=("SKIP"
+	 "903c2cb02d8d08e34fbc776e4982133b"
+	 "c304d0542bd74dbf5d3e12cb9bc82fb8"
+	 "b7b6d1579bcdb4f87b97ab5059976387")
 
 pkgver (){
 	cd "${srcdir}/${_pkgname}"
