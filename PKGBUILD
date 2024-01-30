@@ -6,15 +6,18 @@
 # Contributor: Ada <adadonderr@gmail.com>
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
-pkgver=2.6.14
+pkgver=2.6.15
 _electronversion=25
 _nodeversion=16
-pkgrel=2
+pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote"
-arch=('x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://notesnook.com/"
 _ghurl="https://github.com/streetwriters/notesnook"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}")
 depends=(
@@ -36,7 +39,7 @@ source=(
 )
 sha256sums=('SKIP'
             '102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -49,24 +52,27 @@ build() {
         -e "s|@appasar@|app|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
-    sed -e "3i\  \"version\": \"${pkgver}\"," \
-        -e "3i\  \"description\": \"${pkgdesc}\"," \
-        -e "3i\  \"author\": \"Streetwriters (Private) Limited,support@streetwriters.co,https://streetwriters.co\"," \
-        -e "55i\    \"electron\": \"25.9.3\"," \
-        -i package.json
-    npm install --ignore-scripts --prefer-offline --no-audit
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
+    #build
+    cd "${srcdir}/${pkgname}.git"
+    # Install packages
+    npm ci --ignore-scripts --prefer-offline --no-audit
     npm run bootstrap -- --scope=web
+    # Generate desktop build
     npx nx build:desktop @notesnook/web
     npm run bootstrap -- --scope=desktop
+    # Build Electron wrapper
     cd "${srcdir}/${pkgname}.git/apps/desktop"
     npx nx run release --project @notesnook/desktop
-    npx electron-builder --linux AppImage:x64 AppImage:arm64 -p never
+    # Build AppImage
+    npx electron-builder -l AppImage:x64 AppImage:arm64 -p never
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
