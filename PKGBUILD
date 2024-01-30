@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=oaknut
 pkgname=$_pkgname-git
-pkgver=2.0.1.r1.g8395b79
+pkgver=2.0.2.r0.g6b1d57e
 pkgrel=1
 pkgdesc="A C++20 assembler for AArch64 (ARMv8.0 to ARMv8.2)"
 arch=('any')
