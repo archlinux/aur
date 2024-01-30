@@ -11,7 +11,7 @@ arch=(
   'x86_64'
 )
 url="https://www.tizonia.org"
-license=('LGPL-3.0-or-later')
+license=('LGPL3')
 depends=(
   # official repositories:
   'boost-libs'
