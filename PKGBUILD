@@ -1,8 +1,8 @@
 # Maintainer: Avery <aur@avery.cafe>
 
 pkgname=delfin
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Stream movies and TV shows from Jellyfin"
 arch=(x86_64 aarch64)
 url=https://delfin.avery.cafe/
@@ -11,7 +11,7 @@ depends=(gtk4 libadwaita mpv)
 makedepends=(cargo clang meson mold)
 provides=(delfin)
 source=("https://codeberg.org/avery42/delfin/archive/v$pkgver.tar.gz")
-sha256sums=('6113581b84e20af3036853ad2448afa1f5cfb5d806a96ee4125bc4efdfbcc9a6')
+sha256sums=('fd438fb8dc82f0bac1b3eecc9142747320df41077b332290238e0cbee62c7715')
 
 build() {
 	cd "$pkgname" || exit
