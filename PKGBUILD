@@ -1,8 +1,8 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=GE-Proton8-28
-_commit=f6f98f947250c5a07abf450b2cb3b2f4d35d3125
+_srctag=GE-Proton8-29
+_commit=bafcce336b871b064722d25b9dacc049907c3191
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=8.1.0
@@ -27,7 +27,7 @@ depends=(
   lzo              lib32-lzo
   libxkbcommon     lib32-libxkbcommon
   libvpx           lib32-libvpx
-  'sdl2>=2.0.16'   'lib32-sdl2>=2.0.16'
+  sdl2             lib32-sdl2
   libsoup          lib32-libsoup
   libgudev         lib32-libgudev
 #  blas             lib32-blas
@@ -59,7 +59,7 @@ makedepends=(autoconf bison perl flex mingw-w64-gcc
   gtk3                  lib32-gtk3
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
-  'sdl2>=2.0.16'        'lib32-sdl2>=2.0.16'
+  sdl2                  lib32-sdl2
   rust                  lib32-rust-libs
   libgphoto2
   opencl-headers
