@@ -10,13 +10,13 @@ pkgbase = aztfy-bin
 	license = MPL2
 	provides = aztfy
 	conflicts = aztfy
-	source_x86_64 = https://github.com/Azure/aztfy/releases/download/v0.14.0/aztfy_v0.14.0_linux_amd64.zip
+	source_x86_64 = https://github.com/Azure/aztfexport/releases/download/v0.14.0/aztfexport_v0.14.0_linux_amd64.zip
 	sha256sums_x86_64 = 024dc90a6bd89cc1b4888373b5819d10b727c73d20c70be1ff160bf15a74ce80
-	source_i686 = https://github.com/Azure/aztfy/releases/download/v0.14.0/aztfy_v0.14.0_linux_386.zip
+	source_i686 = https://github.com/Azure/aztfexport/releases/download/v0.14.0/aztfexport_v0.14.0_linux_386.zip
 	sha256sums_i686 = 87e2d85c208ad86ff694ed0becc662450c94e3a90462e582dacdf9e6784fbb1f
-	source_aarch64 = https://github.com/Azure/aztfy/releases/download/v0.14.0/aztfy_v0.14.0_linux_arm64.zip
+	source_aarch64 = https://github.com/Azure/aztfexport/releases/download/v0.14.0/aztfexport_v0.14.0_linux_arm64.zip
 	sha256sums_aarch64 = 8ce70004e9aacb034aa7a0cced5440ff52037286bcd7a74cca881a898ac839e6
-	source_armv7h = https://github.com/Azure/aztfy/releases/download/v0.14.0/aztfy_v0.14.0_linux_arm.zip
+	source_armv7h = https://github.com/Azure/aztfexport/releases/download/v0.14.0/aztfexport_v0.14.0_linux_arm.zip
 	sha256sums_armv7h = 26354acb9d430c9f5f4e18fda8c53a4f4ab9689aa058cdd2fcd9b0cb8832c780
 
 pkgname = aztfy-bin

@@ -9,10 +9,10 @@ license=('MPL2')
 provides=(aztfy)
 conflicts=(aztfy)
 
-source_i686=(https://github.com/Azure/aztfy/releases/download/v${pkgver}/aztfy_v${pkgver}_linux_386.zip)
-source_x86_64=(https://github.com/Azure/aztfy/releases/download/v${pkgver}/aztfy_v${pkgver}_linux_amd64.zip)
-source_armv7h=(https://github.com/Azure/aztfy/releases/download/v${pkgver}/aztfy_v${pkgver}_linux_arm.zip)
-source_aarch64=(https://github.com/Azure/aztfy/releases/download/v${pkgver}/aztfy_v${pkgver}_linux_arm64.zip)
+source_i686=(https://github.com/Azure/aztfexport/releases/download/v${pkgver}/aztfexport_v${pkgver}_linux_386.zip)
+source_x86_64=(https://github.com/Azure/aztfexport/releases/download/v${pkgver}/aztfexport_v${pkgver}_linux_amd64.zip)
+source_armv7h=(https://github.com/Azure/aztfexport/releases/download/v${pkgver}/aztfexport_v${pkgver}_linux_arm.zip)
+source_aarch64=(https://github.com/Azure/aztfexport/releases/download/v${pkgver}/aztfexport_v${pkgver}_linux_arm64.zip)
 
 sha256sums_i686=(87e2d85c208ad86ff694ed0becc662450c94e3a90462e582dacdf9e6784fbb1f)
 sha256sums_x86_64=(024dc90a6bd89cc1b4888373b5819d10b727c73d20c70be1ff160bf15a74ce80)
@@ -21,5 +21,5 @@ sha256sums_aarch64=(8ce70004e9aacb034aa7a0cced5440ff52037286bcd7a74cca881a898ac8
 
 package() {
     install -d "${pkgdir}/usr/bin"
-    install -m755 "${srcdir}/aztfy" "${pkgdir}/usr/bin"
+    install -m755 "${srcdir}/aztfexport" "${pkgdir}/usr/bin/aztfy"
 }
