@@ -4,12 +4,12 @@
 # Contributor: Mike Polvere <mic.tjs@gmail.com>
 _pkgname=libretro-mupen64plus-next
 pkgname=$_pkgname-git
-pkgver=r469.26fd1edd
+pkgver=r482.0e1dc5ab
 pkgrel=1
 pkgdesc="Nintendo 64 core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/libretro/mupen64plus-libretro-nx"
-license=('GPL2')
+license=('GPL-2.0-only')
 groups=('libretro')
 depends=('gcc-libs' 'glibc' 'libretro-core-info')
 makedepends=('git' 'libgl' 'libpng' 'minizip' 'nasm' 'xxhash' 'zlib')
@@ -26,10 +26,7 @@ pkgver() {
 }
 
 prepare() {
-	cd $_pkgname
-	sed -i 's/-O[0123s]//;s/-Ofast//' Makefile
-	# https://github.com/Themaister/parallel-rsp/pull/7
-	sed -i '/<string>/i #include <stdint.h>' mupen64plus-rsp-paraLLEl/rsp_disasm.hpp
+	sed -i 's/-O[0123s]//;s/-Ofast//' $_pkgname/Makefile
 }
 
 build() {
