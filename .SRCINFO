@@ -1,18 +1,14 @@
 pkgbase = one-gpt-bin
 	pkgdesc = 聚合ChatGPT官方版、ChatGPT免费版、文心一言、Poe、chatchat等多平台,支持自定义导入平台
 	pkgver = 0.9.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/1595901624/gpt-aggregated-edition
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	depends = hicolor-icon-theme
-	depends = openssl-1.1
-	depends = gdk-pixbuf2
 	depends = webkit2gtk
-	depends = cairo
-	depends = pango
 	depends = gtk3
-	depends = libsoup
+	depends = openssl-1.1
 	provides = one-gpt=0.9.2
 	conflicts = one-gpt
 	source = one-gpt-0.9.2.deb::https://github.com/1595901624/gpt-aggregated-edition/releases/download/v0.9.2/one-gpt_0.9.2_amd64.deb
