@@ -1,7 +1,7 @@
 # Maintainer: Aleksandr Beliaev <trap000d at gmail dot com>
 
 pkgname=quarto-cli-pre-release
-pkgver=1.4.548
+pkgver=1.5.5
 pkgrel=1
 _pkgbasename=quarto-cli
 _denodomver="0.1.35-alpha-artifacts"
@@ -13,14 +13,14 @@ makedepends=('git' 'npm' 'rust')
 url="https://quarto.org/"
 license=('MIT')
 provides=("quarto")
-conflicts=('quarto-cli-bin' 'quarto-cli' 'quarto-cli-git')
+conflicts=('quarto-cli-bin' 'quarto-cli-bin-pre-release' 'quarto-cli' 'quarto-cli-git')
 options=(!strip)
 
 source=("${_pkgbasename}-${pkgver}.tar.gz::https://github.com/quarto-dev/quarto-cli/archive/refs/tags/v${pkgver}.tar.gz"
         "https://github.com/b-fuze/deno-dom/archive/refs/tags/v${_denodomver}.tar.gz"
        )
 
-sha256sums=('78161f86af28b928c64acba30f76ad7b7a52d4111d84e1eadf89651c3a9ced74'
+sha256sums=('5314b9f26d22eb1fcd292393a770678c6d8bd356ea75b6f124e14314e739b822'
             '14fb042a6912041b9fda91fd643cf278764d075bc9539aa1e107475915cd896c')
 
 build() {
