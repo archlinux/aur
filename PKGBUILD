@@ -2,7 +2,7 @@
 # Contributor: royrocks <royrocks13@gmail.com>
 
 pkgname=tuxpaint-config
-pkgver=0.0.22
+pkgver=0.0.23
 pkgrel=1
 pkgdesc='Tux Paint configuration tool'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('tuxpaint' 'fltk' 'libxft' 'libxext' 'libunibreak')
 options=('!makeflags')
 source=("https://downloads.sourceforge.net/sourceforge/tuxpaint/$pkgname-$pkgver.tar.gz")
-sha256sums=('89953ce499fdc1ffa6bbf8514584420b4c843f8861e1c97df84c326e49f701d7')
+sha256sums=('95d7502a1b29fbf0e157793e634197bf08a6b6ae3f604e2991d117d2fae70135')
 
 build() {
   make -C "$pkgname-$pkgver" PREFIX=/usr
