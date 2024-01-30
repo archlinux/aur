@@ -1,21 +1,21 @@
 pkgbase = r-densityclust
 	pkgdesc = Clustering by Fast Search and Find of Density Peaks
-	pkgver = 0.3.2
-	pkgrel = 6
+	pkgver = 0.3.3
+	pkgrel = 1
 	url = https://cran.r-project.org/package=densityClust
 	arch = x86_64
-	license = GPL
-	depends = r
+	license = GPL-2.0-or-later
+	makedepends = r-cpp11
 	depends = r-fnn
 	depends = r-ggplot2
 	depends = r-ggrepel
 	depends = r-gridextra
 	depends = r-rcolorbrewer
-	depends = r-rcpp
 	depends = r-rtsne
 	optdepends = r-covr
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/densityClust_0.3.2.tar.gz
-	sha256sums = 1a47b1384aeaf4734b5766567b1ce0fed221094813b91aad7879daf64374a217
+	source = https://cran.r-project.org/src/contrib/densityClust_0.3.3.tar.gz
+	md5sums = c0ac3de082d380e4c7f2a04a6a573c0a
+	b2sums = a0692a519402cb0932fd08b9fc489a604d39ea74496ef47db4fa0efec1830447b2152c353d8130de913cd5290bb38bcdbc995171e6b52db1a4b9eccabbda2633
 
 pkgname = r-densityclust
