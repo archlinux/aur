@@ -3,7 +3,7 @@
 
 pkgname=wesnoth-devel
 #XXX: when changing major version (i.e. 1.17 to 1.1X) remeber to updated the occurences in build() and package()
-pkgver=1.17.24
+pkgver=1.17.25
 pkgrel=1
 pkgdesc="development version of a turn-based strategy game on a fantasy world"
 arch=('i486' 'i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -36,16 +36,18 @@ source=("https://downloads.sourceforge.net/sourceforge/wesnoth/wesnoth-$pkgver.t
         "${pkgname}_editor-icon.png"
         "wesnothd-devel.tmpfiles.conf"
         "wesnothd-devel.service"
-        "wesnoth-devel.appdata.xml")
+        "wesnoth-devel.appdata.xml"
+        "scons_patch.diff")
 
-sha256sums=('745778b8596fba7820875b082ae5a4e99e773084269b853138494431468169c1'
+sha256sums=('6d438dbf8939861f35bc2dc70fa2b19d1120483a4de8ed081bff387daa0428e5'
          '3631b4c1eda6c2099e43272f2a26a8a3e897b9541a395ebeb9a1b8b3753a647d'
          '196cd09c73c6503b9caef7c47bb61d0243c10e9b15daa6b3aff437f7ad03448a'
          '98fbd8bafff165c45d0a1eb23a500108e4ce7c8ed32b9abc9bf1c3179e1d3491'
          'ac69c89e3438d8fd327b5fba013d8eafec61060c5938a3c3baaadb6d85678998'
          '534097c1d5fcc6b8b54ae04535ed249f8a8f4b000fab39a87a073f54ab89349a'
          'bbfd14d4c445ca8696ecca8493862d3dd77566b973eb65157f93bd818d161972'
-         '8889c59edd31d2f3d51e2a866034d0515ec0eda5d7cc67743251efaa16d06228')
+         '8889c59edd31d2f3d51e2a866034d0515ec0eda5d7cc67743251efaa16d06228'
+         '07f126d749cfec0a0e9a2fee98f14bd4fd968face2e0d00b64e6db3e5c6a7db5')
 
 prepare() {
   cd "$srcdir/wesnoth-$pkgver"
@@ -55,6 +57,7 @@ prepare() {
 
   #How to apply a patch
   #patch -p1 < ../../patch_name.patch
+  patch -p1 < ../../scons_patch.diff
 }
 
 check() {
