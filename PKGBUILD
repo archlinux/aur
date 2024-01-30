@@ -8,7 +8,7 @@
 _pkgbase=vlc
 pkgname=vlc-nox
 pkgver=3.0.20
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (without X support)'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64')
@@ -187,10 +187,14 @@ optdepends=(
 conflicts=('vlc' 'vlc-plugin' 'vlc-git')
 replaces=('vlc' 'vlc-plugin' 'vlc-git')
 options=('!emptydirs')
-source=(http://download.videolan.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
-        update-vlc-plugin-cache.hook)
+source=(
+  http://download.videolan.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
+  update-vlc-plugin-cache.hook
+  taglib-2.patch
+)
 sha512sums=('02e58fb52dd75bf483ac4b298aecf86463b13d4782173d164adba6e4552d9262ff5e2ee1cbe1bce2c8a809801b79f328c6a8c475d34ae62aefaea02ae5ade406'
-            'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3')
+            'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3'
+            'ea0d1e1dfed16dac8f9027eb55d987dee59630568b9744ceb42bfa134ea9295252d83574f3d793a76a5be3b02661c1731ed366003b6b55b2d7f02fde70586ff3')
 
 prepare() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
