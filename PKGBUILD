@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # contributor: Asuka Minato <asukaminato at nyan dot eu dot org>
 pkgname=open-ai-translator-bin
-pkgver=0.3.9
+pkgver=0.3.10
 pkgrel=1
 pkgdesc="基于 ChatGPT API 的划词翻译浏览器插件和跨平台桌面端应用 - Browser extension and cross-platform desktop application for translation based on ChatGPT API."
 arch=('x86_64')
 url="https://github.com/openai-translator/openai-translator"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=(
 	"${pkgname%-bin}"
@@ -14,22 +14,15 @@ conflicts=(
 )
 depends=(
 	'hicolor-icon-theme'
-	'xdotool'
 	'gtk3'
-	'cairo'
-	'gdk-pixbuf2'
-	'libx11'
-	'libxtst'
 	'java-runtime'
-	'pango'
-	'openssl'
 	'webkit2gtk-4.1'
-	'libsoup3'
+	'xdotool'
 )
 source=(
 	"${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
 )
-sha256sums=('b337b315512b57db09fe65ed5df47dd58fefd95541d3bae27077e65150974951')
+sha256sums=('e49108237f458f2a87e95f3c1c90eeb1fac643499fb8cb8e992c0f3211e15821')
 build() {
 	bsdtar -xf "${srcdir}/data.tar.gz"
 	sed "4i\Comment=${pkgdesc}" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
