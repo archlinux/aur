@@ -1,34 +1,18 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=shedshield-bin
 pkgver=0.0.3_beta
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform application that shuts down your desktop PC before loadshedding"
 arch=('x86_64')
 url="https://github.com/ZJouba/ShedShield"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'alsa-lib'
-    'nss'
-    'libxdamage'
-    'expat'
-    'libx11'
-    'libxkbcommon'
-    'libxrandr'
-    'nspr'
-    'libdrm'
-    'cairo'
-    'libxcomposite'
-    'at-spi2-core'
-    'mesa'
     'gtk3'
-    'dbus'
-    'pango'
-    'libxcb'
-    'libcups'
-    'libxext'
-    'libxfixes'
+    'nspr'
+    'nss'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/.}_amd64.deb"
