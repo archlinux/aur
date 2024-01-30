@@ -13,6 +13,12 @@ optdepends=('libopenmpt: OpenMPT support')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('65f82db36d635bdbfd99f67d1d68c9e1aedf8e38efa627f303cf7971c306d063')
 
+prepare() {
+  cd "${pkgname}-${pkgver}"
+
+  sed -i 's/itemListMap/itemMap/' src/plugins/taglib_plugin/TaglibMetadataReader.cpp
+}
+
 build() {
   cd "${pkgname}-${pkgver}"
 
