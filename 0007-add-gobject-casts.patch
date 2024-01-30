@@ -1,0 +1,97 @@
+Description: 
+ Add casts to/from GObject to allow code to be built with 
+ -Werror=incompatible-pointer-types
+ (which I wanted for work on the fluidsynth stuff)
+Author: Peter Michael Green <plugwash@debian.org>
+
+--- buzztrax-0.10.2.orig/src/lib/core/audio-session.c
++++ buzztrax-0.10.2/src/lib/core/audio-session.c
+@@ -226,7 +226,7 @@ bt_audio_session_constructor (GType type
+     singleton = BT_AUDIO_SESSION (object);
+     g_object_add_weak_pointer (object, (gpointer *) (gpointer) & singleton);
+   } else {
+-    object = g_object_ref (singleton);
++    object = (GObject *)(g_object_ref (singleton));
+   }
+   return object;
+ }
+--- buzztrax-0.10.2.orig/src/lib/core/machine.c
++++ buzztrax-0.10.2/src/lib/core/machine.c
+@@ -1982,7 +1982,7 @@ bt_machine_get_pattern_by_id (const BtMa
+     pattern = (GObject *) node->data;
+     if (!g_strcmp0 (g_object_get_data (pattern, "BtPattern::id"), id)) {
+       GST_INFO ("legacy pattern lookup for '%s' = %p", id, pattern);
+-      return g_object_ref (pattern);
++      return (BtCmdPattern *)(g_object_ref (pattern));
+     }
+   }
+   return NULL;
+--- buzztrax-0.10.2.orig/src/lib/ic/registry.c
++++ buzztrax-0.10.2/src/lib/ic/registry.c
+@@ -246,7 +246,7 @@ btic_registry_constructor (GType type, g
+     singleton->priv->gudev_discoverer = btic_gudev_discoverer_new ();
+ #endif
+   } else {
+-    object = g_object_ref (singleton);
++    object = (GObject *)(g_object_ref (singleton));
+   }
+   return object;
+ }
+--- buzztrax-0.10.2.orig/src/ui/edit/change-log.c
++++ buzztrax-0.10.2/src/ui/edit/change-log.c
+@@ -1153,7 +1153,7 @@ bt_change_log_constructor (GType type, g
+     singleton = BT_CHANGE_LOG (object);
+     g_object_add_weak_pointer (object, (gpointer *) (gpointer) & singleton);
+   } else {
+-    object = g_object_ref (singleton);
++    object = (GObject *)(g_object_ref (singleton));
+   }
+   return object;
+ }
+--- buzztrax-0.10.2.orig/src/ui/edit/edit-application.c
++++ buzztrax-0.10.2/src/ui/edit/edit-application.c
+@@ -930,7 +930,7 @@ bt_edit_application_constructor (GType t
+         G_OBJECT_LOG_REF_COUNT (singleton));
+     //GST_DEBUG(">>>");
+   } else {
+-    object = g_object_ref (singleton);
++    object = (GObject *)(g_object_ref (singleton));
+   }
+   return object;
+ }
+--- buzztrax-0.10.2.orig/src/ui/edit/main-page-sequence.c
++++ buzztrax-0.10.2/src/ui/edit/main-page-sequence.c
+@@ -653,9 +653,9 @@ pattern_list_model_get_pattern_by_key (G
+     gtk_tree_model_get (store, &iter, BT_PATTERN_LIST_MODEL_SHORTCUT, &this_key,
+         -1);
+     if (this_key[0] == that_key) {
+-      pattern =
++      pattern = (BtCmdPattern *)(
+           g_object_ref (bt_pattern_list_model_get_object ((BtPatternListModel *)
+-              store, &iter));
++              store, &iter)));
+       GST_INFO ("found pattern for key : %" G_OBJECT_REF_COUNT_FMT,
+           G_OBJECT_LOG_REF_COUNT (pattern));
+       g_free (this_key);
+--- buzztrax-0.10.2.orig/src/ui/edit/settings-page-interaction-controller.c
++++ buzztrax-0.10.2/src/ui/edit/settings-page-interaction-controller.c
+@@ -186,7 +186,7 @@ on_device_menu_changed (GtkComboBox * co
+     g_list_free (list);
+ 
+     // activate the new one
+-    self->priv->device = g_object_ref (device);
++    self->priv->device = (BtIcDevice *)(g_object_ref (device));
+     start_device (self);
+   }
+   GST_INFO ("control list refreshed");
+--- buzztrax-0.10.2.orig/src/ui/edit/ui-resources.c
++++ buzztrax-0.10.2/src/ui/edit/ui-resources.c
+@@ -429,7 +429,7 @@ bt_ui_resources_constructor (GType type,
+     g_object_unref (settings);
+     g_object_unref (app);
+   } else {
+-    object = g_object_ref (singleton);
++    object = (GObject *)(g_object_ref (singleton));
+   }
+   return object;
+ }

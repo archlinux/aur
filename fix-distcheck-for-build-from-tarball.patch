@@ -1,0 +1,24 @@
+From f590465568510a1d595d5b472c8c413b29b168b4 Mon Sep 17 00:00:00 2001
+From: Stefan Sauer <ensonic@users.sf.net>
+Date: Sun, 10 May 2015 17:08:58 +0200
+Subject: [PATCH] Makefile: fix distcheck for build from tarball
+
+When we build from tarball, we don't have the gitdir. Use the included AUTHORS file then.
+---
+ Makefile.am | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 2eb9ff295..6891df25d 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -157,7 +157,8 @@ distuninstallcheck_listfiles += | grep -v 'mimeinfo.cache'
+ builddirs:
+ 	$(AM_V_at)$(MKDIR_P) src/lib/core/songio/bsl/ src/ui/edit
+ 
+-AUTHORS: $(top_srcdir)/.git/index
++# meh, if we build from a tarball, there won't be a .git/index
++AUTHORS: $(wildcard $(top_srcdir)/.git/index)
+ 	$(AM_V_GEN)if test -d "$(top_srcdir)/.git"; \
+ 	then \
+ 		( cd "$(top_srcdir)" && \

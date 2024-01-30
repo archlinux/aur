@@ -1,0 +1,26 @@
+From c4463a2e487c3d94a85b2d7e8cd06d6de14a807b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian@centricular.com>
+Date: Wed, 30 Dec 2015 15:33:24 +0200
+Subject: [PATCH 2/4] build: Fix 32 bit bml build
+
+Follow up for ef2b064e520dd47030cc3a58abe6ab13db9f5fd3 to
+add all needed include directories to libbml_la_CFLAGS too.
+---
+ Makefile.src.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Makefile.src.am b/Makefile.src.am
+index aee876c..fc24146 100644
+--- a/Makefile.src.am
++++ b/Makefile.src.am
+@@ -112,6 +112,7 @@ libbml_HEADERS = src/lib/bml/bml.h src/lib/bml/BuzzMachineLoader/BuzzMachineLoad
+ libbml_la_SOURCES = src/lib/bml/bml.c src/lib/bml/bmllog.c $(DLLWRAPPER_SRC)
+ libbml_la_CFLAGS = \
+   -I$(srcdir) -I$(top_srcdir)/src/lib \
++  -I$(top_srcdir)/src/lib/dllwrapper \
+   $(PTHREAD_CFLAGS) $(BML_CFLAGS)
+ libbml_la_CPPFLAGS = -DNATIVE_BML_DIR="\"$(pkglibdir)\""
+ libbml_la_LIBADD = $(LIBM) $(PTHREAD_LIBS) $(BML_LIBS) $(DLLWRAPPER_LIB)
+-- 
+2.6.4
+

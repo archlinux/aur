@@ -1,0 +1,58 @@
+From bf2d6b4ab2beb1105fce8c1a8fae2b14c25045c2 Mon Sep 17 00:00:00 2001
+From: Stefan Sauer <ensonic@users.sf.net>
+Date: Thu, 10 Dec 2015 21:14:07 +0100
+Subject: [PATCH 1/4] about-dialog: take release year and release date from
+ NEWS
+
+When building git head use current date, otherwise reuse the date from NEWS.
+---
+ configure.ac               | 12 ++++++++++--
+ src/ui/edit/about-dialog.c |  2 +-
+ 2 files changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index cd08e3f..3b7c920 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -49,8 +49,15 @@ AC_DEFINE_UNQUOTED(GST_MAJORMINOR, "$GST_MAJORMINOR", [gstreamer series])
+ AC_SUBST(GST_MAJORMINOR)
+ 
+ dnl release year and date
+-BT_RELEASE_YEAR=`date +%Y`
+-BT_RELEASE_DATE=`date +%Y-%m-%d`
++DATE_STAMP=`head -n1 NEWS | sed 's/^[[^(]]*(\(.*\)).*$/\1/'`
++if test "$DATE_STAMP" == "XX.XXX.XXXX"; then
++  BT_RELEASE_YEAR=`date +%Y`
++  BT_RELEASE_DATE=`date +%Y-%m-%d`
++else
++  IFS="." read -r d m y <<< "$DATE_STAMP"
++  BT_RELEASE_YEAR="$y"
++  BT_RELEASE_DATE=`date -d "%d %m %y" +%Y-%m-%d`
++fi
+ 
+ AC_SUBST(BT_MAJOR_VERSION)
+ AC_SUBST(BT_MINOR_VERSION)
+@@ -62,6 +69,7 @@ AC_SUBST(BT_RELEASE_DATE)
+ 
+ AC_DEFINE_UNQUOTED(BT_VERSION, "$BT_VERSION", [library version as string])
+ AC_DEFINE_UNQUOTED(PACKAGE_VERSION_NUMBER, 900, [version as a number])
++AC_DEFINE_UNQUOTED(BT_RELEASE_YEAR, $BT_RELEASE_YEAR, [release year])
+ 
+ dnl Checks for programs.
+ AC_PROG_CC
+diff --git a/src/ui/edit/about-dialog.c b/src/ui/edit/about-dialog.c
+index d2ff4bc..a85bf31 100644
+--- a/src/ui/edit/about-dialog.c
++++ b/src/ui/edit/about-dialog.c
+@@ -68,7 +68,7 @@ bt_about_dialog_init_ui (const BtAboutDialog * self)
+       g_alloca (strlen (_("Copyright \xc2\xa9 2003-%d Buzztrax developer team"))
+       + 3);
+   sprintf (copyright, _("Copyright \xc2\xa9 2003-%d Buzztrax developer team"),
+-      2014);
++      BT_RELEASE_YEAR);
+ 
+   /* we can get logo via icon name, so this here is just for educational purpose
+      GdkPixbuf *logo;
+-- 
+2.6.4
+

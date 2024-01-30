@@ -1,0 +1,64 @@
+commit a3e7447885137a7569da948b5fb847829dfdb835
+Author: David Beswick <dlbeswick@gmail.com>
+Date:   Thu Aug 8 08:14:50 2019 +0200
+
+    fluidsynth: replace deprecated fluid_synth_set_midi_router
+    
+    Use a thread_safe command_handler instead.
+
+diff --git a/src/gst/fluidsynth/fluidsynth.c b/src/gst/fluidsynth/fluidsynth.c
+index 9e407590..0d954f8e 100644
+--- a/src/gst/fluidsynth/fluidsynth.c
++++ b/src/gst/fluidsynth/fluidsynth.c
+@@ -671,11 +671,14 @@ gstbt_fluid_synth_dispose (GObject * object)
+     delete_fluid_midi_driver (gstsynth->midi);
+   if (gstsynth->midi_router)
+     delete_fluid_midi_router (gstsynth->midi_router);
++  if (gstsynth->cmd_handler)
++    delete_fluid_cmd_handler (gstsynth->cmd_handler);
+   if (gstsynth->fluid)
+     delete_fluid_synth (gstsynth->fluid);
+ 
+   gstsynth->midi = NULL;
+   gstsynth->midi_router = NULL;
++  gstsynth->cmd_handler = NULL;
+   gstsynth->fluid = NULL;
+ 
+   g_free (gstsynth->instrument_patch_path);
+@@ -719,14 +722,17 @@ gstbt_fluid_synth_init (GstBtFluidSynth * src)
+   /* create MIDI router to send MIDI to FluidSynth */
+   src->midi_router =
+       new_fluid_midi_router (src->settings,
+-      fluid_synth_handle_midi_event, (void *) src);
++      fluid_synth_handle_midi_event, src->fluid);
+   if (src->midi_router) {
+-    fluid_synth_set_midi_router (src->fluid, src->midi_router);
+-    src->midi =
+-        new_fluid_midi_driver (src->settings,
+-        fluid_midi_router_handle_midi_event, (void *) (src->midi_router));
+-    if (!src->midi)
+-      g_warning ("Failed to create FluidSynth MIDI input driver");
++    src->cmd_handler = new_fluid_cmd_handler (src->fluid);
++    if (src->cmd_handler) {
++      src->midi = new_fluid_midi_driver (src->settings,
++          fluid_midi_router_handle_midi_event, (void *) (src->midi_router));
++      if (!src->midi)
++        g_warning ("Failed to create FluidSynth MIDI input driver");
++    } else {
++      g_warning ("Failed to create FluidSynth MIDI cmd handler");
++    }
+   } else
+     g_warning ("Failed to create MIDI input router");
+ 
+diff --git a/src/gst/fluidsynth/fluidsynth.h b/src/gst/fluidsynth/fluidsynth.h
+index 4676b716..c079b477 100644
+--- a/src/gst/fluidsynth/fluidsynth.h
++++ b/src/gst/fluidsynth/fluidsynth.h
+@@ -93,6 +93,7 @@ struct _GstBtFluidSynth {
+   fluid_settings_t *settings;       /* to free on close */
+   fluid_midi_driver_t *midi;		    /* FluidSynth MIDI driver */
+   fluid_midi_router_t *midi_router; /* FluidSynth MIDI router */
++  fluid_cmd_handler_t *cmd_handler;
+ 
+   gchar *instrument_patch_path;
+   gint instrument_patch;

@@ -1,0 +1,129 @@
+commit 3ac7cbf1a712c3f4db7a34a6d3b46dc9a43172d3
+Author: Peter Michael Green <plugwash@debian.org>
+Date:   Thu Dec 19 01:38:18 2019 +0000
+
+    Fix build with fluidsynth 2.x
+
+diff --git a/src/gst/fluidsynth/fluidsynth.c b/src/gst/fluidsynth/fluidsynth.c
+index 0d954f8e..ec598dc4 100644
+--- a/src/gst/fluidsynth/fluidsynth.c
++++ b/src/gst/fluidsynth/fluidsynth.c
+@@ -132,25 +132,41 @@ G_DEFINE_TYPE (GstBtFluidSynth, gstbt_fluid_synth, GSTBT_TYPE_AUDIO_SYNTH);
+ //-- fluid_synth log handler
+ 
+ static void
++#if FLUIDSYNTH_VERSION_MAJOR < 2
+ gstbt_fluid_synth_error_log_function (int level, char *message, void *data)
++#else
++gstbt_fluid_synth_error_log_function (int level, const char *message, void *data)
++#endif
+ {
+   GST_ERROR ("%s", message);
+ }
+ 
+ static void
++#if FLUIDSYNTH_VERSION_MAJOR < 2
+ gstbt_fluid_synth_warning_log_function (int level, char *message, void *data)
++#else
++gstbt_fluid_synth_warning_log_function (int level, const char *message, void *data)
++#endif
+ {
+   GST_WARNING ("%s", message);
+ }
+ 
+ static void
++#if FLUIDSYNTH_VERSION_MAJOR < 2
+ gstbt_fluid_synth_info_log_function (int level, char *message, void *data)
++#else
++gstbt_fluid_synth_info_log_function (int level, const char *message, void *data)
++#endif
+ {
+   GST_INFO ("%s", message);
+ }
+ 
+ static void
++#if FLUIDSYNTH_VERSION_MAJOR < 2
+ gstbt_fluid_synth_debug_log_function (int level, char *message, void *data)
++#else
++gstbt_fluid_synth_debug_log_function (int level, const char *message, void *data)
++#endif
+ {
+   GST_DEBUG ("%s", message);
+ }
+@@ -212,7 +228,11 @@ typedef struct
+ 
+ /* for counting the number of FluidSynth settings properties */
+ static void
++#if FLUIDSYNTH_VERSION_MAJOR < 2
+ settings_foreach_count (void *data, char *name, int type)
++#else
++settings_foreach_count (void *data, const char *name, int type)
++#endif
+ {
+   int *count = (int *) data;
+   *count = *count + 1;
+@@ -220,7 +240,11 @@ settings_foreach_count (void *data, char *name, int type)
+ 
+ /* add each FluidSynth setting as a GObject property */
+ static void
++#if FLUIDSYNTH_VERSION_MAJOR < 2
+ settings_foreach_func (void *data, char *name, int type)
++#else
++settings_foreach_func (void *data, const char *name, int type)
++#endif
+ {
+   ForeachBag *bag = (ForeachBag *) data;
+   GParamSpec *spec;
+@@ -231,18 +255,30 @@ settings_foreach_func (void *data, char *name, int type)
+   switch (type) {
+     case FLUID_NUM_TYPE:
+       fluid_settings_getnum_range (bag->settings, name, &dmin, &dmax);
++#if FLUIDSYNTH_VERSION_MAJOR < 2
+       ddef = fluid_settings_getnum_default (bag->settings, name);
++#else
++      if (fluid_settings_getnum_default (bag->settings, name, &ddef) != FLUID_OK) ddef = 0;
++#endif
+       spec = g_param_spec_double (name, name, name, dmin, dmax, ddef,
+           G_PARAM_READWRITE);
+       break;
+     case FLUID_INT_TYPE:
+       fluid_settings_getint_range (bag->settings, name, &imin, &imax);
++#if FLUIDSYNTH_VERSION_MAJOR < 2
+       idef = fluid_settings_getint_default (bag->settings, name);
++#else
++      if (fluid_settings_getint_default (bag->settings, name, &idef) != FLUID_OK) idef = 0;
++#endif
+       spec = g_param_spec_int (name, name, name, imin, imax, idef,
+           G_PARAM_READWRITE);
+       break;
+     case FLUID_STR_TYPE:
+-      defstr = fluid_settings_getstr_default (bag->settings, name);
++#if FLUIDSYNTH_VERSION_MAJOR < 2
++      fluid_settings_getstr_default (bag->settings, name);
++#else
++      if (fluid_settings_getstr_default (bag->settings, name,&defstr) != FLUID_OK) defstr = 0;
++#endif
+       spec = g_param_spec_string (name, name, name, defstr, G_PARAM_READWRITE);
+       break;
+     case FLUID_SET_TYPE:
+@@ -724,7 +760,11 @@ gstbt_fluid_synth_init (GstBtFluidSynth * src)
+       new_fluid_midi_router (src->settings,
+       fluid_synth_handle_midi_event, src->fluid);
+   if (src->midi_router) {
++#if FLUIDSYNTH_VERSION_MAJOR < 2
+     src->cmd_handler = new_fluid_cmd_handler (src->fluid);
++#else
++    src->cmd_handler = new_fluid_cmd_handler (src->fluid,NULL);
++#endif
+     if (src->cmd_handler) {
+       src->midi = new_fluid_midi_driver (src->settings,
+           fluid_midi_router_handle_midi_event, (void *) (src->midi_router));
+@@ -886,7 +926,7 @@ gstbt_fluid_synth_class_init (GstBtFluidSynthClass * klass)
+       g_param_spec_enum ("chorus-waveform", "Chorus waveform",
+           "Chorus waveform type",
+           CHORUS_WAVEFORM_TYPE,
+-          FLUID_CHORUS_DEFAULT_TYPE,
++          FLUID_CHORUS_MOD_SINE,
+           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+ 
+   gst_element_class_set_static_metadata (element_class,

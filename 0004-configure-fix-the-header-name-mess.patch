@@ -1,0 +1,81 @@
+From 544425a2351992ba5b4ae952615fc3d70a7a9623 Mon Sep 17 00:00:00 2001
+From: Stefan Sauer <ensonic@users.sf.net>
+Date: Wed, 30 Dec 2015 17:00:18 +0100
+Subject: [PATCH 4/4] configure: fix the header name mess
+
+Follow up for 7a0eb4ac95399f04e56e85badb183495a29cdd67. Apparently the names
+of the header files are purely random here. We actually need xmmintrin.h, but
+x!=mmx, but sse (haha).
+
+See issue #57.
+---
+ configure.ac        | 12 ++++++------
+ src/lib/core/core.c |  4 ++--
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 5b5681a..1538c52 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -538,30 +538,30 @@ AC_CHECK_DECL(sysi86,[
+ ])
+ 
+ dnl check for SSE intrisics
+-have_mmx_intrinsics=no
++have_sse_intrinsics=no
+ ARCH_CFLAGS=""
+ case "x${target_cpu}" in
+   xi?86|k?|xx86_64|xamd64)
+     AC_CHECK_HEADERS([xmmintrin.h],
+       [
+         SAVED_CFLAGS="${CFLAGS}"
+-        AC_MSG_CHECKING([for working mmx intrinsics])
++        AC_MSG_CHECKING([for working sse intrinsics])
+         CFLAGS="-mmmx -msse"
+         AC_COMPILE_IFELSE([AC_LANG_SOURCE([[
+-                          #include <mmintrin.h>
++                          #include <xmmintrin.h>
+                           int main () {
+                               _mm_getcsr ();
+                           }]])], [
+                           AC_MSG_RESULT(yes)
+-                          have_mmx_intrinsics=yes],[
++                          have_sse_intrinsics=yes],[
+                           AC_MSG_RESULT(no)])
+         CFLAGS="${SAVED_CFLAGS}"
+         ARCH_CFLAGS="-mmmx -msse"
+       ],[])
+     ;;
+ esac
+-if test $have_mmx_intrinsics = yes ; then
+-   AC_DEFINE(USE_X86_MMX, 1, [use x86 MMX compiler intrinsics])
++if test $have_sse_intrinsics = yes ; then
++   AC_DEFINE(USE_X86_SSE, 1, [use x86 SSE compiler intrinsics])
+    ARCH_CFLAGS="-mmmx -msse"
+ fi
+ 
+diff --git a/src/lib/core/core.c b/src/lib/core/core.c
+index f9d2061..3742cb5 100644
+--- a/src/lib/core/core.c
++++ b/src/lib/core/core.c
+@@ -37,7 +37,7 @@
+ #endif
+ #endif
+ 
+-#ifdef USE_X86_MMX
++#ifdef USE_X86_SSE
+ #ifdef HAVE_XMMINTRIN_H
+ #include <xmmintrin.h>
+ #endif
+@@ -147,7 +147,7 @@ bt_init_post (void)
+ #endif
+ #endif
+ 
+-#if USE_X86_MMX
++#if USE_X86_SSE
+   // TODO(ensonic): we need to probe the CPU capabilities
+   // see http://www.mail-archive.com/linux-audio-dev@music.columbia.edu/msg19520.html
+   //   [linux-audio-dev] Channels and best practice
+-- 
+2.6.4
+

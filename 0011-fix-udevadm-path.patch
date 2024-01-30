@@ -1,0 +1,22 @@
+From f93e2617972d4e41cb916c2d7c1542b052f71ecd Mon Sep 17 00:00:00 2001
+From: Stefan Sauer <ensonic@users.sf.net>
+Date: Tue, 20 Jun 2017 16:19:42 +0200
+Subject: [PATCH] guvev-discoverer: don't hardcode udevadm location in comment
+
+---
+ src/lib/ic/gudev-discoverer.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/lib/ic/gudev-discoverer.c b/src/lib/ic/gudev-discoverer.c
+index fb6e8ebcc..514507caa 100644
+--- a/src/lib/ic/gudev-discoverer.c
++++ b/src/lib/ic/gudev-discoverer.c
+@@ -115,7 +115,7 @@ on_uevent (GUdevClient * client, gchar * action, GUdevDevice * udevice,
+       devnode = g_strdup (devnode);
+ 
+     /* dump properties, also available as:
+-     * /sbin/udevadm info -qall -p /sys/class/sound/card0
++     * $(which udevadm) info -qall -p /sys/class/sound/card0
+      *
+      const gchar* const *props=g_udev_device_get_property_keys(udevice);
+      while(*props) {

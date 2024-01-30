@@ -1,0 +1,28 @@
+This patch is based on the git commit detailed below, but with the
+configure.ac changes removed.
+
+commit b39563b237f82408bc4929d38d52d6ebd4a513b7
+Author: David Beswick <dlbeswick@gmail.com>
+Date:   Wed Aug 7 08:03:39 2019 +0200
+
+    fluidsynth: replace deprecated fluid_settings_getstr()
+    
+    Simply depend on fluidsynth >=1.1.0 which introduced the new function to not
+    clutter the code with ifdefs.
+
+diff --git a/src/gst/fluidsynth/fluidsynth.c b/src/gst/fluidsynth/fluidsynth.c
+index c3263980..9e407590 100644
+--- a/src/gst/fluidsynth/fluidsynth.c
++++ b/src/gst/fluidsynth/fluidsynth.c
+@@ -587,9 +587,9 @@ gstbt_fluid_synth_get_property (GObject * object, guint prop_id,
+           g_value_set_double (value, d);
+         break;
+       case G_TYPE_STRING:
+-        retval = fluid_settings_getstr (src->settings, name, &s);
++        retval = fluid_settings_dupstr (src->settings, name, &s);
+         if (retval)
+-          g_value_set_string (value, s);
++          g_value_take_string (value, s);
+         break;
+       default:
+         g_critical ("Unexpected FluidSynth dynamic property type");

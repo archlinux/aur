@@ -1,0 +1,25 @@
+From a89abcf781c8a6b6940220fd291858c9d5b1c89c Mon Sep 17 00:00:00 2001
+From: Stefan Sauer <ensonic@users.sf.net>
+Date: Sun, 2 Jul 2017 20:50:48 +0200
+Subject: [PATCH] bt-dec: rename plugin
+
+The macro is not autoformat friendly. If the name contains a '-', the formatter
+will insert spaces and break the macro.
+---
+ src/gst/dec/bt-dec.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/gst/dec/bt-dec.c b/src/gst/dec/bt-dec.c
+index 37b5f58b..2ac54372 100644
+--- a/src/gst/dec/bt-dec.c
++++ b/src/gst/dec/bt-dec.c
+@@ -947,6 +947,6 @@ plugin_init (GstPlugin * plugin)
+ 
+ GST_PLUGIN_DEFINE (GST_VERSION_MAJOR,
+     GST_VERSION_MINOR,
+-    buzztrax - dec,
++    buzztraxdec,
+     "Buzztrax song renderer",
+     plugin_init, VERSION, "LGPL", PACKAGE_NAME, "http://www.buzztrax.org");
+-- 
+2.16.3
