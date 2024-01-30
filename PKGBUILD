@@ -2,7 +2,7 @@
 # Contributor: darkgrin <darkgrin at yahoo dot com>
 pkgname=subs2srs
 pkgver=29.7
-pkgrel=5
+pkgrel=6
 pkgdesc="A small utility that allows you to create Anki (flash card software) import files based on your favorite foreign language movies and TV shows to aid in the language learning process."
 arch=('any')
 url="http://subs2srs.sourceforge.net/"
@@ -10,64 +10,44 @@ license=('GPL')
 depends=('mono' 'ffmpeg' 'mp3gain' 'mkvtoolnix-cli')
 optdepends=('anki' 'noto-fonts-cjk: display japanese characters')
 makedepends=('p7zip' 'icoutils')
-source=("${pkgname}_v${pkgver}.zip::https://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgname}_v${pkgver}/${pkgname}_v${pkgver}.zip/download")
-sha256sums=('b6731c6c02b63315669f1ad28587052af39dff3e7aba9dd6bcb49a9667b075d1')
+source=("${pkgname}_v${pkgver}.zip::https://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgname}_v${pkgver}/${pkgname}_v${pkgver}.zip/download"
+        "${pkgname}.sh"
+        "${pkgname}.desktop"
+        "subsretimer.desktop"
+        "90-avoid-microsoft-sans-serif.conf")
+sha256sums=('b6731c6c02b63315669f1ad28587052af39dff3e7aba9dd6bcb49a9667b075d1'
+            '8283d2835de5fb67908b654524a131cf61f46195eb8cd17f5b866422ff4c676b'
+            '3b66602d3be448b2305f3bb8908f2f8ee814fd40e1594c74520a383d79d69175'
+            '9fb5d61ad017cecd536b6d1ab76ad8e4488f82a34b28306aadce9ff0ccb9735c'
+            '763763709426ae8a0969616f06c7fda557b9324883a3c84c42d9d9431d8569f9')
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd -- "$srcdir/$pkgname"
+
+	# create directories
 	mkdir -p "$pkgdir/opt" \
 		 "$pkgdir/usr/bin" \
 		 "$pkgdir/usr/share/applications" \
 		 "$pkgdir/usr/share/licenses/$pkgname" \
 		 "$pkgdir/etc/fonts/conf."{avail,d}
 
-	cp -r "$srcdir/$pkgname" "$pkgdir/opt/"
+	# install the bulk of the app to /opt.
+	cp -r -- "$srcdir/$pkgname" "$pkgdir/opt/"
 
-	cat <<-END > "$pkgdir/usr/bin/$pkgname"
-	#!/bin/bash
-	conf_dir="\$HOME/.config/$pkgname"
+	# create a shortcut in /bin
+	install -Dm755 "$srcdir/${pkgname}.sh" "$pkgdir/usr/bin/$pkgname"
 
-	[ ! -d "\$conf_dir" ] && mkdir -p "\$conf_dir"
-	[ ! -f "\$conf_dir/preferences.txt" ] && cp "/opt/subs2srs/preferences.txt" "\$conf_dir/"
+	# create .desktop files
+	install -Dm644 "$srcdir/${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
+	install -Dm644 "$srcdir/subsretimer.desktop" "$pkgdir/usr/share/applications/subsretimer.desktop"
 
-	cd "\$conf_dir"
-	exec mono /opt/subs2srs/subs2srs.exe
-	END
-	chmod 755 "$pkgdir/usr/bin/$pkgname"
-
-	cat <<-END > "$pkgdir/usr/share/applications/$pkgname.desktop"
-	[Desktop Entry]
-	Name=$pkgname
-	Comment=Convert movies and TV shows to flashcards
-	GenericName=$pkgname
-	Exec=$pkgname
-	Icon=$pkgname
-	Categories=Education;Languages;AudioVideo;Audio;Video;
-	Terminal=false
-	Type=Application
-	StartupNotify=true
-	Version=1.0
-	END
-
-	cat <<-END > "$pkgdir/usr/share/applications/subsretimer.desktop"
-	[Desktop Entry]
-	Name=Subs Re-Timer
-	Comment=Re-time a subtitle file based on the timings of another subtitle file
-	GenericName=Subs Re-Timer
-	Exec=mono /opt/subs2srs/Utils/SubsReTimer/SubsReTimer.exe
-	Icon=subsretimer
-	Categories=Education;Languages;AudioVideo;Audio;Video;
-	Terminal=false
-	Type=Application
-	StartupNotify=true
-	Version=1.0
-	END
-
+	# link to the correct system executables
 	ln -sf /usr/bin/ffmpeg     "$pkgdir/opt/subs2srs/Utils/ffmpeg/ffmpeg.exe"
 	ln -sf /usr/bin/mp3gain    "$pkgdir/opt/subs2srs/Utils/mp3gain/mp3gain.exe"
 	ln -sf /usr/bin/mkvextract "$pkgdir/opt/subs2srs/Utils/mkvtoolnix/mkvextract.exe"
 	ln -sf /usr/bin/mkvinfo    "$pkgdir/opt/subs2srs/Utils/mkvtoolnix/mkvinfo.exe"
 
+	# install app icons
 	7z -y e "$pkgname.exe" '3.ico' '4.ico' -r 1>/dev/null
 	icotool -x '3.ico' '4.ico'
 	for size in 16 32; do
@@ -84,21 +64,12 @@ package() {
 		"$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/subsretimer.png"
 	done
 
-	rm ./*.ico ./*.png
+	rm -- ./*.ico ./*.png
 
-	mv "$pkgdir/opt/subs2srs/gpl.txt" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+	# install the license file
+	mv -- "$pkgdir/opt/subs2srs/gpl.txt" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 
-	cat <<END > "$pkgdir/etc/fonts/conf.avail/90-avoid-microsoft-sans-serif.conf"
-<?xml version='1.0'?>
-<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
-<fontconfig>
-	<match>
-		<test name="family"><string>Microsoft Sans Serif</string></test>
-		<edit name="family" mode="assign" binding="strong">
-			<string>Noto Sans CJK JP</string>
-		</edit>
-	</match>
-</fontconfig>
-END
+	# fix fonts
+	install -Dm644 "$srcdir/90-avoid-microsoft-sans-serif.conf" "$pkgdir/etc/fonts/conf.avail/90-avoid-microsoft-sans-serif.conf"
 	ln -sr "$pkgdir/etc/fonts/conf."{avail,d}"/90-avoid-microsoft-sans-serif.conf"
 }

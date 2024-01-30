@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=subs2srs
+Comment=Convert movies and TV shows to flashcards
+GenericName=subs2srs
+Exec=subs2srs
+Icon=subs2srs
+Categories=Education;Languages;AudioVideo;Audio;Video;
+Terminal=false
+Type=Application
+StartupNotify=true
+Version=1.0
