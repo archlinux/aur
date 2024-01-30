@@ -1,24 +1,24 @@
 pkgbase = python-tifffile
 	pkgdesc = Read and write image data from and to TIFF files
-	pkgver = 2023.12.9
+	pkgver = 2024.1.30
 	pkgrel = 1
 	url = https://github.com/cgohlke/tifffile
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	checkdepends = python-pytest
 	checkdepends = python-imagecodecs
 	makedepends = python-setuptools
 	makedepends = python-sphinx
 	makedepends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/t/tifffile/tifffile-2023.12.9.tar.gz
-	sha256sums = 9dd1da91180a6453018a241ff219e1905f169384355cd89c9ef4034c1b46cdb8
+	source = https://files.pythonhosted.org/packages/source/t/tifffile/tifffile-2024.1.30.tar.gz
+	sha256sums = 66cf1fbc3fee8f87670ffd415c1e758ea1779376bdfaa9d0dc6ce634e6bc52ea
 
 pkgname = python-tifffile
-	depends = python-numpy>=1.25.2
-	optdepends = python-matplotlib>=3.7.3: required for plotting
-	optdepends = python-imagecodecs>=2023.9.4: required for encoding or decoding LZW, JPEG, etc. compressed segments
+	depends = python-numpy>=1.26.3
+	optdepends = python-matplotlib>=3.8.2: required for plotting
+	optdepends = python-imagecodecs>=2024.1.1: required for encoding or decoding LZW, JPEG, etc. compressed segments
 	optdepends = python-lxml>=4.9.2: required only for validating and printing XML
-	optdepends = python-zarr>=2.16.0: required for opening Zarr stores
+	optdepends = python-zarr>=2.16.1: required for opening Zarr stores
 	optdepends = python-fsspec>=2023.9.2: required only for opening ReferenceFileSystem files
 	optdepends = python-tifffile-doc: Documentation for Python tifffile
 
