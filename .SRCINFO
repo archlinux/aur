@@ -1,0 +1,22 @@
+pkgbase = python-domdf-python-tools
+	pkgdesc = Helpful functions for Python
+	pkgver = 3.8.0
+	pkgrel = 1
+	url = https://domdf-python-tools.readthedocs.io
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-natsort
+	depends = python-typing_extensions
+	depends = python-pandas
+	depends = python-importlib-metadata
+	depends = python-importlib_resources
+	source = python-domdf-python-tools::git+https://github.com/domdfcoding/domdf_python_tools#commit=3e189a571f33367df2bfa45973079d8907e13bf1
+	b2sums = SKIP
+
+pkgname = python-domdf-python-tools

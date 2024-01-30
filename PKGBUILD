@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-domdf-python-tools
-pkgver=3.6.1
+pkgver=3.8.0
 pkgrel=1
 pkgdesc='Helpful functions for Python'
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=(
   'python-wheel'
   'python-setuptools'
 )
-_commit='d01397ae9995b0b72d5ca9f722bca36cda55b4ef'
+_commit='3e189a571f33367df2bfa45973079d8907e13bf1'
 source=("$pkgname::git+https://github.com/domdfcoding/domdf_python_tools#commit=$_commit")
 b2sums=('SKIP')
 
