@@ -2,7 +2,7 @@
 
 _pkgname=opencolorio
 pkgname=mingw-w64-${_pkgname}
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc='A color management framework for visual effects and animation (mingw-w64)'
 arch=(any)
@@ -25,7 +25,7 @@ _repo='OpenColorIO'
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/AcademySoftwareFoundation/${_repo}/archive/v${pkgver}.tar.gz"
 	'ocio-system-monitor-mingw.patch')
-sha256sums=('7196e979a0449ce28afd46a78383476f3b8fc1cc1d3a417192be439ede83437b'
+sha256sums=('6bbf4e7fa4ea2f743a238cb22aff44890425771a2f57f62cece1574e46ceec2f'
             '73697fbd06b3f51cfd0a2df3579fc8579725b2a927edefa736fdb1fb2a361337')
 
 _srcdir="${_repo}-${pkgver}"
