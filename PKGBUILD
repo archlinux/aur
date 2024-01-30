@@ -2,15 +2,15 @@
 # Contributor: jens-na <me at jens-na dot de>
 # Contributor: linx56
 pkgname=storebackup
-pkgver=3.5
-pkgrel=3
+pkgver=3.5.2
+pkgrel=1
 pkgdesc="A backup utility that stores files on other disks"
 arch=('any')
 url="http://savannah.nongnu.org/projects/storebackup"
 license=('GPL3')
 depends=('perl' 'util-linux')
 source=(http://download.savannah.gnu.org/releases/storebackup/storeBackup-$pkgver.tar.bz2)
-md5sums=('07881dfea171142009d0ac70d7dac479')
+md5sums=('ec30e61558d2b0459ab29fd73a593aa1')
 
 package() {
   cd "$srcdir/storeBackup"
