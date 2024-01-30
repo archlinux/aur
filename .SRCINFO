@@ -1,7 +1,7 @@
 pkgbase = hyperglot
 	pkgdesc = A database and tools for detecting language support in fonts
-	pkgver = 0.6.0
-	pkgrel = 2
+	pkgver = 0.6.1
+	pkgrel = 1
 	url = https://github.com/rosettatype/hyperglot
 	arch = any
 	license = GPL-3.0-only
@@ -15,7 +15,7 @@ pkgbase = hyperglot
 	depends = python-fonttools
 	depends = python-unicodedata2
 	depends = python-yaml
-	source = hyperglot-0.6.0.tar.gz::https://github.com/rosettatype/hyperglot/archive/0.6.0.tar.gz
-	sha256sums = e3fdd7e845e7c9c7c4cf9bf554be2ca4e46da5bc3630e185e9aaf503d4f77a0f
+	source = hyperglot-0.6.1.tar.gz::https://github.com/rosettatype/hyperglot/archive/0.6.1.tar.gz
+	sha256sums = 9f959bd8b497bc91749f7e66fd8f6e49c85ef65035143c29f0b6af896a8f4ce7
 
 pkgname = hyperglot
