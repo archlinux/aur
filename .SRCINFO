@@ -1,6 +1,6 @@
 pkgbase = unciv-bin
 	pkgdesc = Open-source remake of Civilization V
-	pkgver = 4.10.4_gradle82
+	pkgver = 4.10.5
 	pkgrel = 0
 	url = https://github.com/yairm210/Unciv
 	arch = any
@@ -10,12 +10,12 @@ pkgbase = unciv-bin
 	depends = xorg-xrandr
 	provides = unciv
 	conflicts = unciv
-	noextract = Unciv-4.10.4-gradle82.jar
-	source = Unciv-4.10.4-gradle82.jar::https://github.com/yairm210/Unciv/releases/download/4.10.4-gradle82/Unciv.jar
-	source = Unciv-4.10.4-gradle82.png::https://raw.githubusercontent.com/yairm210/Unciv/4.10.4-gradle82/extraImages/Icons/Unciv%20icon%20v5.png
-	source = Unciv-4.10.4-gradle82.zip::https://github.com/yairm210/Unciv/releases/download/4.10.4-gradle82/linuxFilesForJar.zip
-	md5sums = 7c161114e5f1f002f2748d2e8dba6d2e
+	noextract = Unciv-4.10.5.jar
+	source = Unciv-4.10.5.jar::https://github.com/yairm210/Unciv/releases/download/4.10.5/Unciv.jar
+	source = Unciv-4.10.5.png::https://raw.githubusercontent.com/yairm210/Unciv/4.10.5/extraImages/Icons/Unciv%20icon%20v5.png
+	source = Unciv-4.10.5.zip::https://github.com/yairm210/Unciv/releases/download/4.10.5/linuxFilesForJar.zip
+	md5sums = 26c4a826d8db452b2898b5d9fac6bb22
 	md5sums = c3f79bbc7e80620b3cdc4f90f21f4d68
-	md5sums = 47e277551de487983bb24715384647d7
+	md5sums = e9a48411ef230c626ed51e57f391e79f
 
 pkgname = unciv-bin
