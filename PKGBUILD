@@ -64,4 +64,5 @@ package() {
     make DESTDIR="$pkgdir" install
     rm -rf "$pkgdir"/usr/lib32/libusbpp.a "$pkgdir"/usr/lib32/libusbpp.so "$pkgdir"/usr/lib32/libusbpp-0.1.so.* "$pkgdir"/usr/include
     mv -f "$pkgdir"/usr/bin/libusb-config "$pkgdir"/usr/bin/lib32-libusb-config
+    sed -i -e 's/Usage: libusb-config/Usage: lib32-libusb-config/' "$pkgdir"/usr/bin/lib32-libusb-config
 }
