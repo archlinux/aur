@@ -3,7 +3,8 @@
 pkgname=igdm-bin
 _pkgname=IGdm
 pkgver=3.0.4
-pkgrel=5
+_electronversion=13
+pkgrel=6
 pkgdesc="Desktop application for Instagram DMs"
 arch=('x86_64')
 url="https://github.com/igdmapps/igdm"
@@ -11,55 +12,33 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'at-spi2-core'
-    'nss'
-    'gtk3'
-    'alsa-lib'
-    'libxrender'
-    'libxcomposite'
-    'libcups'
-    'libxdamage'
-    'nspr'
-    'libxcursor'
-    'gdk-pixbuf2'
-    'libxext'
-    'libx11'
-    'libxfixes'
+    "electron${_electronversion}"
     'hicolor-icon-theme'
-    'cairo'
-    'pango'
-    'dbus'
-    'libxtst'
-    'libxcb'
-    'mesa'
-    'expat'
-    'libxrandr'
-    'libxi'
-    'libdrm'
-)
-makedepends=(
-    'asar'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/igdmapps/igdm/v${pkgver}/LICENSE"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/igdmapps/igdm/v${pkgver}/LICENSE"
+    "${pkgname%-bin}.sh"
 )
 sha256sums=('c65181d96bc3886b77e37fe76d4a17626399ed3253a6353b78759fe0a1e40d99'
-            'cfe59b21a32217b32573315adbcc0f3621aeaa8dec634e54eb30a0cf260867cc')
+            'cfe59b21a32217b32573315adbcc0f3621aeaa8dec634e54eb30a0cf260867cc'
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin} --no-sandbox|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    cp "${srcdir}/app.asar.unpacked/dev-app-update.yml" "${srcdir}/opt/${_pkgname}/resources/app-update.yml"
+    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-bin}",usr/bin}
-    cp -r "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/opt/${pkgname%-bin}"
-    ln -sf "/opt/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512;do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
