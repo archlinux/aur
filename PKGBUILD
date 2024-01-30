@@ -3,7 +3,7 @@
 
 pkgname=hexo-cli
 pkgver=4.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line interface for Hexo"
 arch=('any')
 url="https://www.npmjs.com/package/$pkgname"
@@ -27,6 +27,10 @@ package() {
         --prefix "$pkgdir/usr" \
         --cache "$srcdir/npm-cache"
 
+    license_file='package/LICENSE'
+    tar --extract --file="$srcdir/$pkgname-$pkgver.tgz" "$license_file"
+    install -Dm644 "$license_file" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    
     # Non-deterministic race in npm gives 777 permissions to random directories.
     # See https://github.com/npm/cli/issues/1103 for details.
     find "${pkgdir}/usr" -type d -exec chmod 755 {} +

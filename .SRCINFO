@@ -1,7 +1,7 @@
 pkgbase = hexo-cli
 	pkgdesc = Command line interface for Hexo
 	pkgver = 4.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.npmjs.com/package/hexo-cli
 	install = newbie-hint.install
 	arch = any
