@@ -26,7 +26,7 @@ source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${_pkgve
 sha512sums=('85afc331c8a023f4d8177cc42143b968b94d6987a7ed38b8be1170c6b4e1ef1a79d2d4e44d5fae98b713959b5d69bd4e44c6ba84355f59e8fe99588cbca03d7a')
 install=clang.install
 static_build=false
-build_with_gcc=false
+build_with_gcc=true
 
 prefix_path="/opt/clang"
 install_path="${prefix_path}/${pkgver}"
@@ -50,6 +50,7 @@ build_with_clang_options=" \
             -DLLVM_ABI_BREAKING_CHECKS:STRING=FORCE_OFF \
             -DLLVM_ENABLE_UNWIND_TABLES=OFF \
             -DLLVM_ENABLE_LIBCXX=ON \
+            -DLLVM_ENABLE_PROJECTS=bolt;clang;clang-tools-extra;libc;libclc;lld;lldb;openmp;polly;pstl;compiler-rt \
 	"
 
 additional_build_options=""
@@ -58,7 +59,9 @@ if ! $static_build; then
 	additional_build_options="${additional_build_options} ${shared_library_build_options}"
 fi
 
-if ! $build_with_gcc; then
+if $build_with_gcc; then
+	additional_build_options="${additional_build_options} -DLLVM_ENABLE_PROJECTS=bolt;clang;clang-tools-extra;libclc;lld;lldb;openmp;polly;pstl;compiler-rt"
+else
 	additional_build_options="${additional_build_options} ${build_with_clang_options}"
 fi
 
@@ -87,7 +90,6 @@ build() {
     cmake   -B _build \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX:PATH=${install_path} \
-            -DLLVM_ENABLE_PROJECTS="bolt;clang;clang-tools-extra;libc;libclc;lld;lldb;openmp;polly;pstl;compiler-rt" \
             -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" \
             -DCMAKE_BUILD_TYPE=Release \
 			${additional_build_options} \
