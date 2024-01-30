@@ -1,0 +1,14 @@
+pkgbase = xfce-bing-everyday-wallpaper-bin
+	pkgdesc = A tool to let change your wallpaper on the xfce4 to bing's everyday wallpaper
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitee.com/dangerise/xfce-bing-everyday-wallpaper
+	arch = x86_64
+	license = MIT
+	depends = kdialog
+	provides = xfce-bing-everyday-wallpaper
+	conflicts = xfce-bing-everyday-wallpaper
+	source = https://gitee.com/dangerise/xfce-bing-everyday-wallpaper.git/releases/download/v1.0.0/xfce-bing-everyday-wallpaper-1.0.0-x86_64.tar.gz
+	sha256sums = a824fdd7562637fb73f3e87a72c945a692bcbf4a9c7b950159727c4d8091a5df
+
+pkgname = xfce-bing-everyday-wallpaper-bin
