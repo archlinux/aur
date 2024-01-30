@@ -12,7 +12,6 @@ depends=('glib2' 'alsa-lib' 'libdrm' 'libxfixes' 'libxrandr' 'libxinerama' 'syst
 makedepends=('git' 'spice-protocol')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-install=$pkgname.install
 source=("$_pkgname::git+https://gitlab.freedesktop.org/spice/linux/vd_agent.git"
          spice-vdagentd.conf.sample)
 sha256sums=("SKIP"

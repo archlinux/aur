@@ -3,7 +3,6 @@ pkgbase = spice-vdagent-git
 	pkgver = 0.16.0.35.08ff8d7
 	pkgrel = 1
 	url = https://www.spice-space.org
-	install = spice-vdagent-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL
