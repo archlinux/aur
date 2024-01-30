@@ -1,30 +1,30 @@
-# Maintainer:  Dave Kleinschmidt <dave.f.kleinschmidt at gmail dot com>
+# Maintainer: Alexey Peschany <archlinux at sandboiii dot xyz>
+# Contributor: Dave Kleinschmidt <dave.f.kleinschmidt at gmail dot com>
+
 _pkgname=spaceship-prompt
 pkgname=$_pkgname-git
-pkgver=v3.11.2.r13.g50e371f
+pkgver=v4.15.0.r1.gbe826cbe
 pkgrel=1
 epoch=
 pkgdesc="A Zsh prompt for Astronauts"
 arch=('any')
-url="https://denysdovhan.com/spaceship-prompt/"
+url="https://spaceship-prompt.sh/"
 license=('MIT')
 depends=('zsh')
 makedepends=('git')
-conflicts=('spaceship-zsh-theme-git'
-           'spaceship-prompt')
-provides=('spaceship-zsh-theme'
-          'spaceship-prompt')
+conflicts=('spaceship-zsh-theme-git' 'spaceship-prompt')
+provides=('spaceship-zsh-theme' 'spaceship-prompt')
 install="${pkgname}.install"
-source=("git+https://github.com/denysdovhan/${_pkgname}.git"
+source=("git+https://github.com/${_pkgname}/${_pkgname}.git"
         "$pkgname.install")
-md5sums=('SKIP'
-         'bd24fc2d741cb12ba49b36742d879f64')
+sha256sums=('SKIP'
+            '9fb9218c6498c040461d8d7aa416b2eb9241317b5606e74d1ec1caed0709aaf4')
 
 pkgver() {
   cd "$_pkgname"
   (
     set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
@@ -40,6 +40,7 @@ package() {
   find scripts -type f -exec install -D -m644 {} "${pkgdir}/usr/lib/${_pkgname}/{}" \;
   find sections -type f -exec install -D -m644 {} "${pkgdir}/usr/lib/${_pkgname}/{}" \;
   install -D -m644 spaceship.zsh "${pkgdir}/usr/lib/${_pkgname}/spaceship.zsh"
+  install -D -m644 async.zsh "${pkgdir}/usr/lib/${_pkgname}/async.zsh"
   ln -s spaceship.zsh "${pkgdir}/usr/lib/${_pkgname}/spaceship.zsh-theme"
 
   install -d "${pkgdir}/usr/local/share/zsh/site-functions/"
