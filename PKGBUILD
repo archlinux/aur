@@ -2,18 +2,15 @@
 pkgname=statusify-bin
 _pkgname=Statusify
 pkgver=0.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Discord rich presence configurator desktop app"
 arch=('x86_64')
 url="https://github.com/Orphoros/Statusify"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'gdk-pixbuf2'
-    'cairo'
     'webkit2gtk'
-    'libsoup'
     'openssl'
     'hicolor-icon-theme'
     'gtk3'
