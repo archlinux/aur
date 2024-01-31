@@ -14,6 +14,7 @@ pkgbase = freeciv21-unstable
 	depends = sdl2_mixer
 	depends = karchive5
 	depends = libertinus-font
+	conflicts = freeciv21
 	source = freeciv21-unstable-3.1_alpha.5.tar.gz::https://github.com/longturn/freeciv21/releases/download/v3.1-alpha.5/Freeciv21-v3.1-alpha.5.tar.gz
 	sha256sums = 189846911c9af2a332881b0bfccf48b916cf9f9fe25ddfe42b25f2e7616076b6
 
