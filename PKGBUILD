@@ -24,6 +24,8 @@ pkgver() {
 build() {
     cd "${srcdir}/${pkgname//-/.}"
     export CGO_ENABLED=1
+    export GOCACHE="${srcdir}/go-build"
+    export GOMODCACHE="${srcdir}/go/pkg/mod"
     go build -o scripthaus cmd/main.go
 }
 package() {
