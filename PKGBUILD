@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aihub
 _pkgname=AIHub
-pkgver=1.3.0
+pkgver=1.3.1
 _electronversion=28
 pkgrel=1
 pkgdesc="A collection of large model capabilities, AI capabilities Electron client, with a minimalist interface, will support more AI capabilities in the future.一款集合众多大模型能力、AI能力的Electron客户端，具有极简的界面，将在未来支持更多AI能力."
@@ -39,8 +39,9 @@ build() {
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
     sed '/- snap/d;/- deb/d' -i electron-builder.yml
-    HOME="${srcdir}/.electron-gyp" yarn install --cache-folder "${srcdir}/.yarn_cache"
+    yarn install --cache-folder "${srcdir}/.yarn_cache"
     yarn run build:linux
 }
 package() {
