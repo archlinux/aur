@@ -2,12 +2,12 @@
 pkgname=secret-diary-bin
 _pkgname=Secret-Diary
 pkgver=1.2.16
-pkgrel=5
+pkgrel=6
 pkgdesc="Desktop diary tool. crypt with AES 256. 安全日记本，一个加密信息管理软件，加密强度非常强，只能暴力破解数据，只要密码足够复杂，数据就足够安全。"
 arch=("x86_64")
 url="http://rocket049.cn/"
 _ghurl="https://github.com/rocket049/secret-diary"
-license=('Apache')
+license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('a0d688214e98d391d61b44440bbe9249245041e97e1578e57868bcdcae6ac05b'
-            '0532bec6588d7b9d6cba26c488fc638b28d35b1c21e1ed16510c0a8f8df54450')
+            'a9783526d93e6c72c7e1551cc5cc513fd6056dcc4593abe8fac815721d32dd5a')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runappname@|${pkgname%-bin}|g" \
