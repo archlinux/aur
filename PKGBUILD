@@ -1,8 +1,14 @@
 # Maintainer: tarball <bootctl@gmail.com>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
+#
+# From version 0.4.1 onwards, package updates will be delayed by a couple of
+# days. This is due to upstream's tendency to push untested releases and
+# subsequently introduce several bugfix releases in a short timeframe.
+#
+# Feel free to flag the package if you wish; I track new versions regardless.
 
 pkgname=invidtui
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="TUI-based Invidious client"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -18,7 +24,7 @@ optdepends=(
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
-sha256sums=('ef19fb95c09fcc9512b505f2a0586de151a3cf769522f89aa118839b3fe74b2e')
+sha256sums=('fdbd237fcda5d37251812b7e3a93e631a94d53725c1c5f300f80e12c659ba545')
 
 prepare() {
   cd "$pkgname-$pkgver"
