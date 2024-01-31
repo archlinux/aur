@@ -1,10 +1,10 @@
-From a914fa5f804e4299b71dc044e89d82bfcf948a81 Mon Sep 17 00:00:00 2001
+From 3bf21ed9f4d392487b479a5a532c7e39caa5be1c Mon Sep 17 00:00:00 2001
 From: howetuft <howetuft@gmail.com>
-Date: Sat, 21 May 2022 18:19:59 +0200
-Subject: [PATCH 09/14] openvdb
+Date: Wed, 31 Jan 2024 06:52:05 +0100
+Subject: [PATCH 10/14] openvdb
 
 ---
- CMakeLists.txt                                    | 12 +++++++++++-
+ CMakeLists.txt                                    | 10 +++++++++-
  samples/luxcoreconsole/CMakeLists.txt             |  2 +-
  samples/luxcoredemo/CMakeLists.txt                |  2 +-
  samples/luxcorescenedemo/CMakeLists.txt           |  2 +-
@@ -12,22 +12,13 @@ Subject: [PATCH 09/14] openvdb
  src/luxcore/CMakeLists.txt                        |  5 ++---
  src/slg/CMakeLists.txt                            |  7 +------
  tests/luxcoreimplserializationdemo/CMakeLists.txt |  2 +-
- 8 files changed, 20 insertions(+), 15 deletions(-)
+ 8 files changed, 18 insertions(+), 15 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 74f5465ef..586ca9ece 100644
+index 393a1cbaa..73b3eac24 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -46,6 +46,8 @@ unset(CMAKE_CONFIGURATION_TYPES CACHE)
- enable_language(C)
- enable_language(CXX)
- set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -w")
-+set(CMAKE_CXX_STANDARD 17)
-+set(CMAKE_CXX_STANDARD_REQUIRED ON)
- 
- if (CMAKE_CONFIGURATION_TYPES)
- 
-@@ -111,6 +113,14 @@ include_directories("${LuxRays_SOURCE_DIR}/deps/robin-hood-hashing-3.9.1/src/inc
+@@ -113,6 +113,14 @@ include_directories("${LuxRays_SOURCE_DIR}/deps/robin-hood-hashing-3.9.1/src/inc
  # Find dependencies
  include(Dependencies)
  
@@ -42,7 +33,7 @@ index 74f5465ef..586ca9ece 100644
  if (NOT Boost_FOUND)
  	MESSAGE(FATAL_ERROR "--> Could not locate required Boost files - Please check ${BOOST_SEARCH_PATH}")
  endif()
-@@ -174,7 +184,7 @@ if (BUILD_LUXCORE_DLL)
+@@ -176,7 +184,7 @@ if (BUILD_LUXCORE_DLL)
  	set(LUXCORE_LIBRARY luxcore)
  	ADD_DEFINITIONS("-DLUXCORE_DLL")
  else()
@@ -145,5 +136,5 @@ index baa52f622..2bfad6bf1 100644
 -TARGET_LINK_LIBRARIES(luxcoreimplserializationdemo luxcore slg-core slg-film slg-kernels luxrays bcd opensubdiv openvdb ${BLOSC_LIBRARY} ${EMBREE_LIBRARY} ${OIDN_LIBRARY} ${TBB_LIBRARY} ${TIFF_LIBRARIES} ${TIFF_LIBRARIES} ${OPENEXR_LIBRARIES} ${PNG_LIBRARIES} ${JPEG_LIBRARIES} ${PYTHON_LIBRARIES})
 +TARGET_LINK_LIBRARIES(luxcoreimplserializationdemo luxcore slg-core slg-film slg-kernels luxrays bcd opensubdiv opencolorio ${OpenVDB_LIBRARIES} ${BLOSC_LIBRARY} ${EMBREE_LIBRARY} ${OIDN_LIBRARY} ${TBB_LIBRARY} ${TIFF_LIBRARIES} ${TIFF_LIBRARIES} ${OPENEXR_LIBRARIES} ${PNG_LIBRARIES} ${JPEG_LIBRARIES} ${PYTHON_LIBRARIES})
 -- 
-2.41.0
+2.43.0
 

@@ -1,0 +1,25 @@
+From d73cadf257821da12ce526432ed6fe8e6fb5665a Mon Sep 17 00:00:00 2001
+From: howetuft <howetuft@gmail.com>
+Date: Wed, 31 Jan 2024 06:51:35 +0100
+Subject: [PATCH 01/14] cxx-version
+
+---
+ CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 72c1996ac..fad738f43 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -41,6 +41,8 @@ unset(CMAKE_CONFIGURATION_TYPES CACHE)
+ # This boots up the generator:
+ enable_language(C)
+ enable_language(CXX)
++set(CMAKE_CXX_STANDARD 23)
++set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ 
+ if (CMAKE_CONFIGURATION_TYPES)
+ 
+-- 
+2.43.0
+

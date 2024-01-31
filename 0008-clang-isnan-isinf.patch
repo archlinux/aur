@@ -1,7 +1,7 @@
-From a0bd5a19c95ff3fd1f51a434c76da8b0e39ccefc Mon Sep 17 00:00:00 2001
+From 816c122471a1d0000a4059ca43142431e63eb755 Mon Sep 17 00:00:00 2001
 From: howetuft <howetuft@gmail.com>
 Date: Sat, 21 May 2022 18:18:23 +0200
-Subject: [PATCH 05/14] clang-isnan-isinf
+Subject: [PATCH 08/14] clang-isnan-isinf
 
 ---
  include/luxrays/utils/utils.h | 5 +++++
@@ -24,5 +24,5 @@ index b6584b383..d48d7d93d 100644
  #include <string>
  #endif
 -- 
-2.41.0
+2.43.0
 

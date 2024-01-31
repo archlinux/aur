@@ -1,0 +1,136 @@
+From 582e247a72c4cbfce33f41aeb2c4628464e81070 Mon Sep 17 00:00:00 2001
+From: howetuft <howetuft@gmail.com>
+Date: Sat, 21 May 2022 18:20:14 +0200
+Subject: [PATCH 14/14] spdlog
+
+---
+ CMakeLists.txt                  |  7 ++++++-
+ include/luxcore/luxcorelogger.h |  2 +-
+ include/luxcore/luxcoresink.h   |  4 ++--
+ src/luxcore/luxcore.cpp         |  2 +-
+ src/luxcore/luxcoreimpl.cpp     | 16 ++++++++++++++++
+ src/luxcore/luxcoreinit.cpp     |  6 +++---
+ 6 files changed, 29 insertions(+), 8 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 73b3eac24..511e06672 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -107,12 +107,17 @@ include_directories("${LuxRays_SOURCE_DIR}/deps/json-3.7.3/include")
+ include_directories("${LuxRays_SOURCE_DIR}/deps/cuew/include")
+ include_directories("${LuxRays_SOURCE_DIR}/deps/clew/include")
+ include_directories("${LuxRays_SOURCE_DIR}/deps/optix-7.1.0/include")
+-include_directories("${LuxRays_SOURCE_DIR}/deps/spdlog-1.8.0/include")
++#include_directories("${LuxRays_SOURCE_DIR}/deps/spdlog-1.8.0/include")
+ include_directories("${LuxRays_SOURCE_DIR}/deps/robin-hood-hashing-3.9.1/src/include")
+ 
+ # Find dependencies
+ include(Dependencies)
+ 
++add_definitions(-DSPDLOG_FMT_EXTERNAL=1)
++add_definitions(-DSPDLOG_USE_STD_FORMAT=1)
++find_package(spdlog REQUIRED)
++include_directories(${SPDLOG_INCLUDE_DIRS})
++
+ SET(Boost_Save ${Boost_LIBRARIES})
+ find_package(OpenVDB)
+ LIST(APPEND Boost_LIBRARIES ${Boost_Save})
+diff --git a/include/luxcore/luxcorelogger.h b/include/luxcore/luxcorelogger.h
+index ecf979893..030f891f2 100644
+--- a/include/luxcore/luxcorelogger.h
++++ b/include/luxcore/luxcorelogger.h
+@@ -22,7 +22,7 @@
+ #include <memory>
+ #include <sstream>
+ 
+-#include "spdlog/spdlog.h"
++#include <spdlog/spdlog.h>
+ 
+ #include "luxrays/utils/strutils.h"
+ #include "luxrays/utils/properties.h"
+diff --git a/include/luxcore/luxcoresink.h b/include/luxcore/luxcoresink.h
+index a7207a027..7ccb8f622 100644
+--- a/include/luxcore/luxcoresink.h
++++ b/include/luxcore/luxcoresink.h
+@@ -21,7 +21,7 @@
+ 
+ #include <mutex>
+ 
+-#include "spdlog/sinks/rotating_file_sink.h"
++#include <spdlog/sinks/rotating_file_sink.h>
+ 
+ //------------------------------------------------------------------------------
+ // Our SpdLog sink for LuxCore call back handler
+@@ -41,7 +41,7 @@ namespace sinks {
+ 				memory_buf_t formatted;
+ 				base_sink<Mutex>::formatter_->format(msg, formatted);
+ 
+-				logHandler(fmt::to_string(formatted).c_str());
++				logHandler(formatted.c_str());
+ 			}
+ 		}
+ 		
+diff --git a/src/luxcore/luxcore.cpp b/src/luxcore/luxcore.cpp
+index ab754faac..2a86bc817 100644
+--- a/src/luxcore/luxcore.cpp
++++ b/src/luxcore/luxcore.cpp
+@@ -19,7 +19,7 @@
+ #include <OpenImageIO/imagebuf.h>
+ #include <OpenImageIO/imagebufalgo.h>
+ 
+-#include "spdlog/spdlog.h"
++#include <spdlog/spdlog.h>
+ 
+ #include "luxrays/core/intersectiondevice.h"
+ #include "luxrays/utils/utils.h"
+diff --git a/src/luxcore/luxcoreimpl.cpp b/src/luxcore/luxcoreimpl.cpp
+index b0bf6b900..522f05428 100644
+--- a/src/luxcore/luxcoreimpl.cpp
++++ b/src/luxcore/luxcoreimpl.cpp
+@@ -20,6 +20,7 @@
+ #include <boost/foreach.hpp>
+ #include <boost/thread/once.hpp>
+ #include <boost/thread/mutex.hpp>
++#include <format>
+ 
+ #include "luxcore/luxcorelogger.h"
+ #include "luxrays/core/intersectiondevice.h"
+@@ -1805,3 +1806,18 @@ void RenderSessionImpl::SaveResumeFile(const std::string &fileName) {
+ 
+ 	API_END();
+ }
++
++
++template <>
++struct std::formatter<luxcore::Camera::CameraType> {
++    // for debugging only
++    formatter() { std::cout << "formatter<luxcore::Camera::CameraType>()\n"; }
++
++    constexpr auto parse(std::format_parse_context& ctx) {
++        return ctx.begin();
++    }
++
++    auto format(const luxcore::Camera::CameraType& cam, std::format_context& ctx) const {
++        return std::format_to(ctx.out(), "{}", int(cam));
++    }
++};
+diff --git a/src/luxcore/luxcoreinit.cpp b/src/luxcore/luxcoreinit.cpp
+index 489968516..b6cee09a0 100644
+--- a/src/luxcore/luxcoreinit.cpp
++++ b/src/luxcore/luxcoreinit.cpp
+@@ -20,9 +20,9 @@
+ #include <boost/format.hpp>
+ #include <boost/thread/mutex.hpp>
+ 
+-#include "spdlog/spdlog.h"
+-#include "spdlog/sinks/rotating_file_sink.h"
+-#include "spdlog/sinks/null_sink.h"
++#include <spdlog/spdlog.h>
++#include <spdlog/sinks/rotating_file_sink.h>
++#include <spdlog/sinks/null_sink.h>
+ 
+ #include "luxrays/luxrays.h"
+ #include "luxrays/utils/strutils.h"
+-- 
+2.43.0
+

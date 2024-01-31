@@ -1,7 +1,7 @@
-From 9522a41693cfa0125a0a8a238f31434c4140784a Mon Sep 17 00:00:00 2001
+From 152eb08598ccc0ef7525a99425cc86be5dc6cdf9 Mon Sep 17 00:00:00 2001
 From: howetuft <howetuft@gmail.com>
 Date: Sat, 21 May 2022 18:21:33 +0200
-Subject: [PATCH 11/14] opencolorio
+Subject: [PATCH 12/14] opencolorio
 
 ---
  deps/opencolorio-2.0.0/src/OpenColorIO/FileRules.cpp | 1 +
@@ -20,5 +20,5 @@ index 329f54f50..f22926b35 100644
  #include <OpenColorIO/OpenColorIO.h>
  
 -- 
-2.41.0
+2.43.0
 

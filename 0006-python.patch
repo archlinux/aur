@@ -1,7 +1,7 @@
-From 92cec4d9caae3d036c5b807cef3392309763c6df Mon Sep 17 00:00:00 2001
+From a6fbe12e4031aea2a23088ec1ec224dbe84a19af Mon Sep 17 00:00:00 2001
 From: howetuft <howetuft@gmail.com>
 Date: Sat, 21 May 2022 18:17:31 +0200
-Subject: [PATCH 03/14] python
+Subject: [PATCH 06/14] python
 
 ---
  CMakeLists.txt                                    | 4 ++++
@@ -13,7 +13,7 @@ Subject: [PATCH 03/14] python
  6 files changed, 10 insertions(+), 5 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 72c1996ac..78316b671 100644
+index a266db8f2..393a1cbaa 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -28,6 +28,10 @@ MESSAGE(STATUS "CMake version " ${CMAKE_VERSION} " detected")
@@ -82,5 +82,5 @@ index bdd3445b8..baa52f622 100644
 \ No newline at end of file
 +TARGET_LINK_LIBRARIES(luxcoreimplserializationdemo luxcore slg-core slg-film slg-kernels luxrays bcd opensubdiv openvdb ${BLOSC_LIBRARY} ${EMBREE_LIBRARY} ${OIDN_LIBRARY} ${TBB_LIBRARY} ${TIFF_LIBRARIES} ${TIFF_LIBRARIES} ${OPENEXR_LIBRARIES} ${PNG_LIBRARIES} ${JPEG_LIBRARIES} ${PYTHON_LIBRARIES})
 -- 
-2.41.0
+2.43.0
 

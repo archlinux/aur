@@ -1,24 +1,24 @@
-From 14b8584ebbb5065f9a160bb8773986aa231a396b Mon Sep 17 00:00:00 2001
+From a7943d7b3f00c5d1405214761bbdc65bf9c578ad Mon Sep 17 00:00:00 2001
 From: howetuft <howetuft@gmail.com>
 Date: Sat, 21 May 2022 18:19:13 +0200
-Subject: [PATCH 07/14] silence-compiler-warnings
+Subject: [PATCH 02/14] silence-compiler-warnings
 
 ---
  CMakeLists.txt | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 78316b671..74f5465ef 100644
+index fad738f43..a266db8f2 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -45,6 +45,7 @@ unset(CMAKE_CONFIGURATION_TYPES CACHE)
- # This boots up the generator:
- enable_language(C)
+@@ -43,6 +43,7 @@ enable_language(C)
  enable_language(CXX)
+ set(CMAKE_CXX_STANDARD 23)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 +set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -w")
  
  if (CMAKE_CONFIGURATION_TYPES)
  
 -- 
-2.41.0
+2.43.0
 
