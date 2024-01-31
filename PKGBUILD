@@ -2,13 +2,13 @@
 # Contributor: Robin Nehls <aur@manol.is>
 
 pkgname=imunes-git
-pkgver=v2.3.0.31.gfd572f5
+pkgver=v2.4.0
 pkgrel=1
 pkgdesc="Integrated Multiprotocol Network Emulator/Simulator"
 arch=('i686' 'x86_64')
 url="http://imunes.net/"
 license=('BSD')
-depends=('tk' 'tcllib' 'wireshark-qt' 'imagemagick' 'docker' 'openvswitch' 'xterm')
+depends=('tk' 'tcllib' 'wireshark-qt' 'imagemagick' 'docker' 'xterm')
 makedepends=('make')
 provides=('imunes')
 source=('git+https://github.com/imunes/imunes.git'
