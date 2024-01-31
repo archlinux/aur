@@ -116,7 +116,7 @@ _local_qt_repo="${local_qt_repo}"
 _pkgvermajmin="6.7"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
-_dev_suffix="beta1"
+_dev_suffix="beta2"
 pkgrel=1
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_local_src_tree && pkgver=6.6.6
@@ -172,7 +172,7 @@ makedepends=("git" "pkgconfig" "gcc" "gperf" "python" "clang" "cmake" "ninja" "l
 #_provider=http://qt.mirror.constant.com/
 _provider=https://download.qt.io
 source=()
-sha256sums=('2a1aef2adad6df5944be3ba88889c4fd60e3405e6a19f3fc4948fbd652d18310')
+sha256sums=('f69407d23486e92e178a0770c2d934491ae63b6ddbdb5a58317c982badba34ac')
 conflicts=('litehtml')
 
 if ! $_build_from_local_src_tree; then
@@ -206,16 +206,15 @@ build() {
 	set -o pipefail
 	set -o errexit
 
-  local _builddir=${srcdir}/build
   local _srcdir="${srcdir}/${_source_package_name}"
 
   local _basedir="${_srcdir}/qtbase"
 
 	local additional_args=""
 
-  rm -Rf ${_builddir}
-  mkdir -p ${_builddir}
-  cd ${_builddir}
+  rm -Rf ${_build_path}
+  mkdir -p ${_build_path}
+  cd ${_build_path}
 
 for i in ${BUILDENV[@]}; do
 	if [[ $i = "ccache" ]]; then
@@ -318,12 +317,10 @@ package() {
   local _installed_dir="${pkgdir}/${_sysroot}/${_installprefix}"
   local _installed_dir_sans_sysroot_offset="${pkgdir}/${_installprefix}"
 
-  local _builddir=${srcdir}/build
-
   rm -Rf ${_libspkgdir} ${_libsdebugpkgdir} ${pkgdir}
   mkdir -p ${_libspkgdir} ${_libsdebugpkgdir} ${pkgdir}
 
-  cd "${_builddir}"
+  cd "${_build_path}"
   echo "Installing to ${pkgdir}"
   DESTDIR="$pkgdir" cmake --install . | tee ${pkgname}-install.log
   #DESTDIR="$pkgdir" cmake --install . --target install_docs
@@ -379,3 +376,5 @@ package() {
 
   cp configure_line config.summary ${_basepkgdir}
 }
+
+_build_path=${BUILDDIR}/${pkgbase}
