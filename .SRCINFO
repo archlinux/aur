@@ -1,6 +1,6 @@
 pkgbase = matrix-synapse-git
 	pkgdesc = Matrix reference homeserver
-	pkgver = 1.99.0.r4.g2927008e48
+	pkgver = 1.100.0.r0.g4a5ea43f1
 	pkgrel = 1
 	url = https://github.com/element-hq/synapse
 	install = synapse.install

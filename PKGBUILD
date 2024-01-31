@@ -4,7 +4,7 @@
 
 pkgname=matrix-synapse-git
 _pkgname=matrix-synapse
-pkgver=1.99.0.r4.g2927008e48
+pkgver=1.100.0.r0.g4a5ea43f1
 pkgrel=1
 pkgdesc="Matrix reference homeserver"
 url="https://github.com/element-hq/synapse"
