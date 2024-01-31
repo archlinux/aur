@@ -37,6 +37,10 @@ pkgver() {
     git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-git}|g" \
+        -e "s|@appasar@|app|g" \
+        -i "${srcdir}/${pkgname%-git}.sh"
     gendesk -q -f -n --categories "Network" --pkgname "${_appname}-browser-git" --name "${_pkgname}" --exec "${pkgname%-git}"
     cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
