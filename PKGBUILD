@@ -3,12 +3,12 @@
 # Contributor: Mikalai Ramanovich < narod.ru: nikolay.romanovich >
 
 pkgname=onlyoffice-bin
-pkgver=7.5.1
+pkgver=8.0.0
 pkgrel=1
 pkgdesc='An office suite that combines text, spreadsheet and presentation editors'
 arch=('x86_64')
 url='https://www.onlyoffice.com/'
-license=('AGPL3')
+license=('AGPL-3.0-only')
 depends=('curl' 'gtk3' 'alsa-lib' 'libpulse' 'gstreamer' 'gst-plugins-base-libs'
          'gst-plugins-ugly' 'libxss' 'nss' 'nspr' 'ttf-dejavu' 'ttf-liberation'
          'ttf-carlito' 'desktop-file-utils' 'hicolor-icon-theme')
@@ -20,7 +20,7 @@ conflicts=('onlyoffice')
 options=('!strip' '!emptydirs')
 source=("onlyoffice-desktopeditors-${CARCH}-${pkgver}.deb"::"https://github.com/ONLYOFFICE/DesktopEditors/releases/download/v${pkgver}/onlyoffice-desktopeditors_amd64.deb")
 noextract=("onlyoffice-desktopeditors-${CARCH}-${pkgver}.deb")
-sha256sums=('1dfe4235b51432e1d91c36377e00f8aa917850049ebec70af034d995abb21e16')
+sha256sums=('62d4767e201130ac3c74e8003d760cf961709a129946c208050613c69a6edc5d')
 
 prepare() {
     mkdir -p "onlyoffice-${pkgver}"
