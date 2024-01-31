@@ -1,10 +1,10 @@
 pkgbase = werckmeister-bin
 	pkgdesc = An open source Sheet Music MIDI Compiler
 	pkgver = 1.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://werckme.github.io
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	depends = alsa-lib
 	provides = werckmeister=1.4.1
 	conflicts = werckmeister

@@ -2,12 +2,12 @@
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=werckmeister-bin
 pkgver=1.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source Sheet Music MIDI Compiler"
 arch=('x86_64')
 url="http://werckme.github.io"
 _ghurl="https://github.com/werckme/werckmeister"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
