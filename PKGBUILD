@@ -10,7 +10,6 @@ pkgdesc="Play mechanical keyboard sounds as you type."
 arch=('x86_64')
 url="https://mechvibes.com"
 license=('MIT')
-groups=('')
 depends=('alsa-lib' 'atk' 'at-spi2-atk' 'at-spi2-core' 'cairo' 'dbus' 'desktop-file-utils' 'expat' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libcups' 'libnotify' 'libsecret' 'libx11' 'libxcb' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxrandr' 'libxrender' 'libxss' 'libxtst' 'nspr' 'nss' 'pango' 'util-linux-libs' 'xdg-utils')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
