@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note
-pkgver=3.66.1
+pkgver=3.67.1
 _electronversion=22
 _nodeversion=18
 pkgrel=1
@@ -47,13 +47,16 @@ build() {
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
     sed '/deb/d' -i electron-builder.json
     yarn install --cache-folder "${srcdir}/.yarn_cache"
     yarn electron-rebuild
     node scripts/download-pandoc.js
     node scripts/download-plantuml.js
-    yarn build
+    yarn run build
     yarn run electron-builder --linux -p never | sed 's/identityName=.*$//'
     cd "${srcdir}/${pkgname}.git/out/.icon-set"
     cp icon_16x16.png icon_16.png
