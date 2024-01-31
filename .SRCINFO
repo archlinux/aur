@@ -1,0 +1,20 @@
+pkgbase = python2-m2crypto
+	pkgdesc = A crypto and SSL toolkit for Python
+	pkgver = 0.40.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/M2Crypto
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	arch = i686
+	license = BSD
+	makedepends = python2-setuptools
+	makedepends = swig
+	depends = python2
+	depends = openssl
+	source = python2-m2crypto-0.40.1.tar.gz::https://gitlab.com/m2crypto/m2crypto/-/archive/0.40.1/python2-m2crypto-0.40.1.tar.gz
+	source = LICENSE
+	sha256sums = b5b6610919c43dcb28c34ba3a2d156ec84fbd5e17228349dddbec58f72ca5fd6
+	sha256sums = 4eca478396f4b2b020729a111fce3f096456d74500bfd8f2b0388c3c69f997c0
+
+pkgname = python2-m2crypto
