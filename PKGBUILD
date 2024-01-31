@@ -4,16 +4,20 @@ pkgname=qt6-qtcsv
 pkgver=1.7
 pkgrel=0
 pkgdesc="Library for reading and writing csv-files in Qt."
-arch=('any')
+arch=(aarch64
+    riscv64
+    x86_64)
 url="https://github.com/iamantony/qtcsv"
 license=('MIT')
 groups=()
 depends=(
-    "qt6-base"
-    )
-makedepends=()
+    gcc-libs
+    glibc
+    qt6-base)
+makedepends=(cmake
+    ninja)
 provides=("qtcsv")
-conflicts=("qt5-qtcsv")
+conflicts=("qt5-qtcsv" "qtcsv")
 replaces=()
 backup=()
 options=()
@@ -24,14 +28,14 @@ sha256sums=('7f8acb68fc1888573e263d020f4153494cdf2bd3610ada3605baa88bb8b6ccf5')
 
 build() {
     cd "$srcdir/${pkgname#qt6-}-${pkgver}"
-    mkdir -pv build
-    cd build
-    qmake6 ../qtcsv.pro CONFIG+=[release]
-    make -j$(nproc)
-    mkdir -pv tests
-    cd tests
-    qmake6 ../../tests/tests.pro CONFIG+=[release] LIBS+=-L../
-    make -j$(nproc)
+# see：https://wiki.archlinux.org/title/
+    cmake -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DCMAKE_INSTALL_LIBEXECDIR=lib \
+        -B build \
+        -G Ninja
+    ninja -C build
 }
 
 test() {
@@ -43,7 +47,6 @@ test() {
 }
 
 package() {
-    cd "$srcdir/${pkgname#qt6-}-${pkgver}/build"
-    make INSTALL_ROOT="$pkgdir/" install
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}"  ../LICENSE*
+    DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname#qt6-}-${pkgver}/build install
 }
+
