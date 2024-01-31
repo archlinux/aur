@@ -9,7 +9,7 @@ _git_branch="$(/usr/bin/git ls-remote -h --sort=-v:refname "${_git_repo}" 'zfs-*
 _git_branch=${_git_branch##*/}
 
 pkgname=${_pkgname}-utils-staging-git
-pkgver=2.2.2.r43.g3425484eb9
+pkgver=2.2.2.r73.ge6ca28c970
 pkgrel=1
 pkgdesc="Userspace utilities for the Zettabyte File System (release staging branch)."
 arch=("i686" "x86_64" "aarch64")
