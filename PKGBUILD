@@ -2,7 +2,7 @@
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=koka-bin
-pkgver=3.0.0
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="Koka: a function-oriented language with effect inference"
 arch=(x86_64)
@@ -25,7 +25,7 @@ source=(
 )
 noextract=("${_dlfilename}")
 sha256sums=(
-  4ca8c9f10ea4403743c51f14b4425b36a2bccade7949930bcda8cbb5ab7290fb
+  9160e77b56c5e8aae7d43536bfacb2e596a81b709d612e9d5746e439652b64ce
 )
 
 package() {
