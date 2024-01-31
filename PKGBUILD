@@ -2,33 +2,27 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 pkgname=authpass-bin
-pkgver=1.9.9
-pkgrel=4
+pkgver=1.9.10
+_subver=1994
+pkgrel=1
 pkgdesc='Password Manager based on Flutter for all platforms. Keepass 2.x (kdbx 3.x) compatible.'
 arch=('x86_64')
 url="https://authpass.app/"
 _ghurl="https://github.com/authpass/authpass"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'gtk3'
     'libsecret'
     'libkeybinder3'
-    'cairo'
-    'gdk-pixbuf2'
-    'libepoxy'
-    'at-spi2-core'
-    'pango'
-    'fontconfig'
-    'harfbuzz'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}_1977.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}_${_subver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('91816757def7919e67aef6a719453567306479a6864a86b269e5b5e78d09b102'
-            'a48e111ef6e6a93e693545d524fdd46068aa4bc5d8508f2298e274cb1e342a1a')
+sha256sums=('b4645eea43467dcafc5889b61d6e948ef3730d076de20c036a90298365e54fcb'
+            '87aad073913a72e5fa1c7f4e0f6f695dafc5ba8ea675a62be03c532c701c243a')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
