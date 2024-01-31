@@ -1,10 +1,10 @@
 pkgbase = r-compositions
 	pkgdesc = Compositional Data Analysis
-	pkgver = 2.0.7
+	pkgver = 2.0.8
 	pkgrel = 1
 	url = https://cran.r-project.org/package=compositions
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = blas
 	depends = lapack
 	depends = r-bayesm
@@ -15,8 +15,8 @@ pkgbase = r-compositions
 	optdepends = r-knitr
 	optdepends = r-rgl
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/compositions_2.0-7.tar.gz
-	md5sums = 68a366b66e25f32a0aff4ae8170327e1
-	b2sums = 7dbd9097549965c110a7343cfb5bc94f63e9cc5cadea6e37ba61c621a132a5b216761289f561e0d418e0046cac08a0966d36abaf86bc4720945c037d0ed4e777
+	source = https://cran.r-project.org/src/contrib/compositions_2.0-8.tar.gz
+	md5sums = 114a1d48facb636b935ed812038584db
+	b2sums = a30c30886b97b575432f4f64c95ded499ca2741d9e269f16346b3508ddb544af47588228f14c707d7035208c426fbce69025c8fd52ccc915e5763a3de85fa5f5
 
 pkgname = r-compositions
