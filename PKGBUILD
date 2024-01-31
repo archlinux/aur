@@ -1,6 +1,6 @@
 # Maintainer: mpsijm
 pkgname=browsers-bin
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Open the right browser at the right time"
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=("Apache" "MIT")
 provides=("browsers=$pkgver")
 conflicts=("browsers-git")
 source=("https://github.com/Browsers-software/browsers/releases/download/$pkgver/browsers_linux.tar.xz")
-sha256sums=("09a210cc27d935cc35a2c9917ff5ab9758840f7add453ec768ba81ff98887155")
+sha256sums=("21a229adb9facb87b7cc7fc495ed45d3fc009a044afab87fe3fc297bbec863b6")
 
 package() {
   bsdtar -xf "$srcdir/browsers_linux.tar.xz" -C "$srcdir"
@@ -18,10 +18,10 @@ package() {
   sed -Ei "s|=\"/usr(\/local)?|=\"$pkgdir\/usr|" "$srcdir/install.sh"
   mkdir -p "$pkgdir/usr/share/icons/hicolor"
 
-  XDG_DATA_DIRS="$pkgdir/usr/share" "$srcdir/install.sh" --system
-
-  # It's nice that install.sh updates the mime database for us, but this should be updated in post_install
-  rm "$pkgdir/usr/share/applications/mimeinfo.cache"
+  # Run install.sh with updated root and --skip-desktop-database.
+  # Since install.sh would (by default) update the mime database, this would generate conflicts in mimeinfo.cache,
+  # so we move this to the post_install() instead. See https://github.com/Browsers-software/browsers/pull/129#issuecomment-1919579765
+  XDG_DATA_DIRS="$pkgdir/usr/share" "$srcdir/install.sh" --system --skip-desktop-database
 
   # Since we replaced the TARGET_INSTALL_BINARY_PATH in install.sh, we should update any references to it
   sed -Ei "s|$pkgdir||" "$pkgdir/usr/share/applications/software.Browsers.desktop" "$pkgdir/usr/share/xfce4/helpers/software.Browsers.desktop"
