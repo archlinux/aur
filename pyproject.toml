@@ -18,6 +18,8 @@ testpaths = [
     "escpos",
 ]
 
+[tool.setuptools_scm]
+
 [[tool.mypy.overrides]]
 module = ["pytest",
           "jaconv",
@@ -42,7 +44,7 @@ authors = [
   {email = "manpaz@bashlinux.com"},
   {name = "Manuel F Martinez and others"}
 ]
-dynamic = ["classifiers", "scripts"]
+dynamic = ["classifiers", "scripts", "optional-dependencies", "dependencies"]
 
 maintainers = [
   {name = "Bill Sideris", email = "bill88t@feline.gr"}
