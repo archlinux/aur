@@ -54,7 +54,12 @@ package() {
   )
 
   cd "${_tarname}"
-  python2 setup.py install --root="${pkgdir}" --prefix='/usr' --optimize=1 --skip-build
+  python2 \
+    setup.py \
+      install \
+        --root="${pkgdir}" \
+        --optimize=1 \
+	--skip-build
 
   install --verbose -Dm 644 'README.rst' -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
