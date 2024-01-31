@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 85c180e..83d6df9 100644
+--- a/Makefile
++++ b/Makefile
+@@ -37,7 +37,7 @@ clean:
+ 	rm -f digitd digitd.8 finger finger.1
+ 
+ install: digitd finger digitd.8 finger.1
+-	install -Dm755 finger digitd $(DESTDIR)$(BINDIR)
++	install -Dm755 -t $(DESTDIR)$(BINDIR) digitd finger
+ 	install -Dm644 finger.1 $(DESTDIR)$(MANDIR)/man1/finger.1
+ 	install -Dm644 digitd.8 $(DESTDIR)$(MANDIR)/man8/digitd.8
+ 	chmod a+s $(DESTDIR)$(BINDIR)/digitd
