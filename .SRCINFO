@@ -1,19 +1,20 @@
 pkgbase = aero-browser
 	pkgdesc = A fast and lightweight web browser made with electron and react that allows you to navigate the Internet with ease.
 	pkgver = 0.2.2_alpha
-	pkgrel = 2
+	pkgrel = 3
 	url = https://aero-mymeiy532-frostbreker.vercel.app/
-	arch = aarch64
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = gendesk
 	makedepends = git
 	makedepends = npm
 	makedepends = nvm
-	depends = hicolor-icon-theme
+	depends = electron23
 	provides = aero-browser
 	conflicts = aero-browser
 	source = aero-browser.git::git+https://github.com/FrostBreker/Aero.git#tag=v0.2.2-alpha
+	source = aero-browser.sh
 	sha256sums = SKIP
+	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
 
 pkgname = aero-browser
