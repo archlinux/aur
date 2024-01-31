@@ -2,7 +2,7 @@
 
 _pkgname=moosync
 pkgname=moosync-bin
-pkgver=10.3.1
+pkgver=10.3.2
 pkgrel=1
 pkgdesc='A simple music player'
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 provides=("${_pkgname}")
 depends=('electron' 'alsa-lib')
 source=("${_pkgname}-${pkgver}-prebuilt.tar::https://github.com/Moosync/Moosync/releases/download/v${pkgver}/Moosync-${pkgver}-linux-x64.pacman" moosync moosync.desktop)
-sha256sums=('e7e63356df69e51a60018727cf0aef80c5cb1ed664debe81c5497a5eff934aeb'
+sha256sums=('5dbb7b325ecd5e89f78ab71159b25f1633a459136fcbf8ee30e376820171cfc2'
             '4ed86e1f5a969e6c03fe8efb66ec136c2f37b21010a37eacd414675b784b1058'
             '4b63fa17717239db8a87ebeae1fdd96c5318b71d7d851d6c5a4f337793d3fecd')
 conflicts=("${_pkgname}")
