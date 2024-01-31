@@ -2,11 +2,11 @@
 
 export GIT_LFS_SKIP_SMUDGE=1
 pkgname=veloren-git
-pkgver=0.13.0.r37.525866816
+pkgver=0.15.0.r961.gb744f66733
 pkgrel=1
-pkgdesc="The developement version of an open-world, open-source multiplayer voxel RPG"
+pkgdesc="The development version of an open-world, open-source multiplayer voxel RPG"
 arch=('x86_64' 'i686')
-url='https://veloren.net/'
+url='https://gitlab.com/veloren/veloren'
 license=('GPL3')
 options=('!strip') # This makes debugging issues easier sometimes, comment out if small package size is needed
 depends=('alsa-lib' 'glslang' 'libxkbcommon-x11' 'pulseaudio-alsa' 'vulkan-icd-loader')
@@ -20,7 +20,7 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/v//'
+    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {

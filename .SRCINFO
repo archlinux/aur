@@ -1,8 +1,8 @@
 pkgbase = veloren-git
-	pkgdesc = The developement version of an open-world, open-source multiplayer voxel RPG
-	pkgver = 0.13.0.r37.525866816
+	pkgdesc = The development version of an open-world, open-source multiplayer voxel RPG
+	pkgver = 0.15.0.r961.gb744f66733
 	pkgrel = 1
-	url = https://veloren.net/
+	url = https://gitlab.com/veloren/veloren
 	arch = x86_64
 	arch = i686
 	license = GPL3
