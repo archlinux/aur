@@ -3,7 +3,7 @@
 # Contributor: sxe <sxxe@gmx.de>
 
 pkgname=wine-git
-pkgver=9.0rc3.r16.geed778467ab
+pkgver=9.1.r52.ge3431a02e1d
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (git version)'
 arch=('x86_64')
@@ -18,9 +18,10 @@ depends=(
     'libpcap'         'lib32-libpcap'
     'libunwind'       'lib32-libunwind'
     'libxcursor'      'lib32-libxcursor'
+    'libxkbcommon'    'lib32-libxkbcommon'
     'libxi'           'lib32-libxi'
     'libxrandr'       'lib32-libxrandr'
-
+    'wayland'         'lib32-wayland'
 )
 makedepends=('git' 'perl' 'mingw-w64-gcc'
     'alsa-lib'              'lib32-alsa-lib'
@@ -94,9 +95,7 @@ pkgver() {
 }
 
 build() {
-    # does not compile without remove these flags as of 4.10
-    export CFLAGS="${CFLAGS/-fno-plt/}"
-    export LDFLAGS="${LDFLAGS/,-z,now/}"
+    export CFLAGS+=' -ffat-lto-objects'
     
     # build wine 64-bit
     # (according to the wine wiki, this 64-bit/32-bit building order is mandatory)
@@ -106,6 +105,7 @@ build() {
         --prefix='/usr' \
         --libdir='/usr/lib' \
         --with-x \
+        --with-wayland \
         --with-gstreamer \
         --enable-win64
     make
@@ -118,6 +118,7 @@ build() {
         --prefix='/usr' \
         --libdir='/usr/lib32' \
         --with-x \
+        --with-wayland \
         --with-gstreamer \
         --with-wine64="${srcdir}/build-64"
     make
