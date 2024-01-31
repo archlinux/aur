@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=EasyBoard
+GenericName=Planning Tool
+Comment=Whiteboard for Project Planning, Mind Mapping, Note Taking, and more.
+Icon=easyboard
+Categories=Development;Education;Office;
+Exec=easyboard %f
+TryExec=easyboard
+Terminal=false
+StartupNotify=false
+StartupWMClass=EasyBoard
+MimeType=application/x-easyboard

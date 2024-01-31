@@ -1,0 +1,11 @@
+pkgbase = easyboard
+	pkgdesc = Whiteboard for Project Planning, Mind Mapping, Note Taking, and more.
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = x86_64
+	arch = x86_32
+	license = Proprietary
+	source = https://archive.org/download/easy-board-linux-v0.1.0.tar/EasyBoard_Linux.tar.gz
+	sha256sums = 658da651515ff4c18cf5a19659ab4405fcec65df5741793b1e023ccbbdda0aff
+
+pkgname = easyboard
