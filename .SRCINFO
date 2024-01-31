@@ -1,16 +1,15 @@
 pkgbase = scripthaus-git
 	pkgdesc = ScriptHaus lets you run bash, Python, and JS snippets from your Markdown files directly from the command-line.
-	pkgver = 0.5.0.r5.gd8897c7
+	pkgver = 0.5.0.r8.g21619c3
 	pkgrel = 1
 	url = https://www.scripthaus.dev/
 	arch = any
-	license = MPL2
+	license = MPL-2.0
 	makedepends = go>=1.17
 	makedepends = git
-	depends = electron27
 	provides = scripthaus
 	conflicts = scripthaus
-	source = scripthaus::git+https://github.com/scripthaus-dev/scripthaus.git
+	source = scripthaus.git::git+https://github.com/scripthaus-dev/scripthaus.git
 	sha256sums = SKIP
 
 pkgname = scripthaus-git
