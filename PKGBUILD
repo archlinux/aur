@@ -5,7 +5,7 @@ pkgname=python-gymnasium
 _name=${pkgname#python-}
 pkgver=0.29.1
 _pkgver=v${pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc="A standard API for single-agent reinforcement learning environments, with popular reference environments and related utilities (formerly Gym)"
 arch=('any')
 url="https://gymnasium.farama.org/"
@@ -15,7 +15,8 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel
 optdepends=('python-pygame: environment rendering, required for many provided environments'
             'python-pybox2d: required for box2d environments'
             'box2d: required for box2d environments'
-	    'python-mujoco: required for mujoco environments')
+	    'python-mujoco: required for mujoco environments'
+	    'python-imageio: required for mujoco environments')
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz" "LICENSE-${pkgver}::https://raw.githubusercontent.com/Farama-Foundation/Gymnasium/${_pkgver}/LICENSE")
 sha256sums=('1a532752efcb7590478b1cc7aa04f608eb7a2fdad5570cd217b66b6a35274bb1' # from PyPI
