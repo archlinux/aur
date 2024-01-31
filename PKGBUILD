@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tome-bin
 _pkgname=Tome
-pkgver=0.7.6
-_electronversion=18
-pkgrel=3
+pkgver=0.8.0
+_electronversion=22
+pkgrel=1
 pkgdesc="Git integrated cross-platform markdown editor"
 arch=("x86_64")
 url="https://tome.evinowen.net/"
@@ -19,9 +19,9 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/evinowen/tome/${pkgver}/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d5a368995788813d2a971e1560a009da2b98311256b82151ebe8573600ba03bb'
+sha256sums=('1f7119842532cb4bb3907a672edd38264b7c4ca8d73e6d486efea98cb51e93d8'
             '3103a7058613516746435f89ff07509d42d9a07a485ad7b7fbc2781b06be4722'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
