@@ -1,0 +1,20 @@
+pkgbase = lua51-graph-toolkit
+	pkgdesc = The Lua Graphics Toolkit, a Lua module for creating plots and graphical animations
+	pkgver = 1.0.r29.g7da648d
+	pkgrel = 1
+	url = https://github.com/franko/graph-toolkit
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = lua
+	makedepends = lua53
+	makedepends = lua52
+	makedepends = lua51
+	makedepends = luarocks
+	depends = agg
+	depends = freetype2
+	depends = libfreetype.so
+	source = git+https://github.com/franko/graph-toolkit.git
+	sha256sums = SKIP
+
+pkgname = lua51-graph-toolkit
