@@ -1,7 +1,7 @@
-# Maintainer: Eric Toombs <IRC user triteraflops>
+# Maintainer: Conrad Hoffmann <ch@bitfehler.net>
 
 pkgname=hare-ev
-pkgver=r42.c585f01
+pkgver=r66.736ab9b
 pkgrel=1
 pkgdesc='Event loop for Hare'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://git.sr.ht/~sircmpwn/hare-ev'
 license=('MPL2')
 depends=('hare')
 makedepends=('git')
-_commit='c585f01f4d13a25edb62477c07fdf32451417fee'
+_commit='736ab9bb17257ee5eba3bc96f6650fc4a14608ea'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 
