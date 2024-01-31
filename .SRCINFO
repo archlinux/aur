@@ -1,6 +1,6 @@
 pkgbase = digitd
 	pkgdesc = Finger client & server
-	pkgver = r11.a5df4f5
+	pkgver = r12.e06aa4a
 	pkgrel = 1
 	url = https://git.sr.ht/~sircmpwn/digitd
 	arch = any
@@ -8,9 +8,7 @@ pkgbase = digitd
 	makedepends = git
 	makedepends = scdoc
 	depends = hare-ev
-	source = digitd::git+https://git.sr.ht/~sircmpwn/digitd#commit=a5df4f574b77eac7fa5cd01a2971c2a7c06874ec
-	source = make.patch
+	source = digitd::git+https://git.sr.ht/~sircmpwn/digitd#commit=e06aa4a69eba4430689a33a3777c43665b1d931c
 	b2sums = SKIP
-	b2sums = 269983b0c293111ebea44c12477edb1a960404bc3fb38f64d1b86c910fa2a1686e15bd5c703fc03a672a54ce06b8dbe7ec082af75f21e9ccea8dd32adc2bf0e0
 
 pkgname = digitd
