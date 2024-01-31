@@ -29,13 +29,17 @@ _desktop_file_name="${pkgname}.desktop"
 _icons_dir="/usr/share/icons"
 _icon_filetype="png"
 
+_RUN_SCRIPT="#!/bin/bash
+${_install_dir}/${_executable_name} \"\$@\""
+
 package() {
 	_root_dir="${srcdir}/.."
 	mkdir -p "${pkgdir}/${_install_dir}"
 	cp -f "${srcdir}/${_executable_name}" "${pkgdir}/${_install_dir}"
 	cp -f "${srcdir}/${_pck_name}" "${pkgdir}/${_install_dir}"
 	mkdir -p "${pkgdir}/${_bin_dir}"
-	ln -s "${pkgdir}/${_install_dir}/${_executable_name}" "${pkgdir}/${_bin_dir}/${pkgname}"
+	echo "${_RUN_SCRIPT}" > "${pkgdir}/${_bin_dir}/${pkgname}"
+	chmod +x "${pkgdir}/${_bin_dir}/${pkgname}"
 	mkdir -p "${pkgdir}/${_desktop_file_dir}"
 	cp "${_root_dir}/${_desktop_file_name}" "${pkgdir}/${_desktop_file_dir}/${_desktop_file_name}"
 	mkdir -p "${pkgdir}/${_icons_dir}"
