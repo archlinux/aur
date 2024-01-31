@@ -1,7 +1,7 @@
 # steal from dict-freedict-*s
 
 basename=cedict
-pkgname=dict-$basename-git
+pkgname="dict-$basename-git"
 dictd_conf=/etc/dict/dictd.conf
 datadir=/usr/share/dictd
 conf="database $basename {
