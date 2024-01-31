@@ -8,7 +8,7 @@ pkgdesc="A highly extensible Markdown editor. Version control, AI completion, mi
 arch=('x86_64')
 url="https://yank-note.com/"
 _ghurl="https://github.com/purocean/yn"
-license=('MIT')
+license=('AGPL-3.0-only')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
