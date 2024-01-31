@@ -2,7 +2,7 @@
 
 pkgname=python-litestar
 _name=${pkgname#python-}
-pkgver=2.5.3
+pkgver=2.5.4
 pkgrel=1
 pkgdesc="Production-ready, Light, Flexible and Extensible ASGI API framework"
 arch=(any)
@@ -87,7 +87,7 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('743414f84176470b0cc349d937e01224e1696513a581161b996340ac485819d4')
+sha256sums=('be6155faa46fd1d843fb4d1ea8d3721f212f0ae79f27826251fe78d2cef5777a')
 
 _archive="$_name-$pkgver"
 
