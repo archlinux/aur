@@ -2,9 +2,9 @@
 # Contributor: (XavierCLL) Xavier Corredor <xavier.corredor.llano (a) gmail.com>
 
 pkgname=ksvnupdater
-pkgver=2.3.0
-pkgrel=4
-pkgdesc="Utility oriented to KDE translation teams. You can have various local copies of repository, generating projects for Lokalize, checks and corrections using Pology and more."
+pkgver=2.3.2
+pkgrel=1
+pkgdesc="Utility oriented to KDE translation teams. You can have various local repository copies, generate projects for Lokalize, checks and corrections using Pology and more."
 arch=('x86_64' 'i686')
 url="http://www.eloihr.net/ksvnupdater"
 license=('GPL-2.0-or-later')
@@ -14,13 +14,15 @@ optdepends=('git: download Scripty and Pology binaries'
             'lokalize: file translations'
             'kdiff3: conflict merge'
             'gettext: msginit to initialize empty translations'
-            'openssh: ssh-agent and ssh-add. Accesing KDE repos with auth'
+            'openssh: ssh-agent and ssh-add. Accessing KDE repos with auth'
             'jq: creating DocBook documentation'
-            'pology-git: translations checks. Download also avaiable in ksvnupdater'
-            'python-pyenchant: spell checking functionality (needs a dictionary)')
+            'pology-git: translations checks. Download also available in ksvnupdater'
+            'python-pyenchant: spell checking functionality (needs a dictionary)'
+            'poxml: creating documentation'
+            'hashdeep: downloading documentation files')
 source=(https://www.eloihr.net/ksvnupdater/files/ksvnupdater-$pkgver.tar.bz2)
-md5sums=('6e88c47f49165c13ab4f3e925db4b296')
-sha1sums=('7cf1bf02ac5e49d582902ff50f86d559261776ce')
+md5sums=('0ab15b1936736c7e26b649bc81ed5855')
+sha1sums=('5f95b36263959ca47258e66085bfd948ed67caaf')
 
 build() {
   cd "$pkgname-$pkgver"
