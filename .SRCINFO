@@ -1,0 +1,14 @@
+pkgbase = python-cbmc-viewer
+	pkgdesc = CBMC viewer produces a browsable summary of CBMC findings
+	pkgver = 3.8
+	pkgrel = 1
+	url = https://github.com/model-checking/cbmc-viewer
+	arch = any
+	license = custom:Apache Software License
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/15/7e/a2b3cad94db94cf8a2810f4af3258085282eb255b9b28c7413b9e8e81e12/cbmc-viewer-3.8.tar.gz
+	sha256sums = 2452f4eb3ee52566714c02e8bc3055c0d2567a758f51057d274a99cf7124ea02
+
+pkgname = python-cbmc-viewer
+	depends = python
