@@ -1,8 +1,8 @@
 #!/bin/bash
 
 opensuse="Tumbleweed"
-mozillarpm="122.0-3.2"
-stdrpm="121.0.1-1.1"
+mozillarpm="122.0-3.3"
+stdrpm="122.0-2.1"
 
 echo "case \$_arch in"
 for arch in x86_64 i686

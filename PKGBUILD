@@ -4,7 +4,7 @@
 _pkgname=firefox
 pkgname=$_pkgname-opensuse-bin
 pkgver=122.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org with openSUSE patches"
 arch=(x86_64 pentium4 i686 aarch64)
 url="https://en.opensuse.org/Firefox"
@@ -44,19 +44,19 @@ case $CARCH in
 esac
 case $_arch in
   x86_64 | i686) # Use mozilla repo
-    _rpmver="$pkgver-3.2"
+    _rpmver="$pkgver-3.3"
     source=("https://download.opensuse.org/repositories/mozilla/openSUSE_$_opensuse/$_arch/MozillaFirefox-$_rpmver.$_arch.rpm")
     ;;
   *) # Use official repo
-    _rpmver="121.0.1-1.1"
+    _rpmver="$pkgver-2.1"
     source=("https://download.opensuse.org/ports/$_arch/${_opensuse,,}/repo/oss/$_arch/MozillaFirefox-$_rpmver.$_arch.rpm")
     ;;
 esac
 source+=("file://vendor.js")
 case $_arch in
-  x86_64) sha256sums=("3bfebe1bc30896b40353ffe10c66ee3aabd6f64f77547ef1c671bb7fb5490bef") ;;
-  i686) sha256sums=("13e9d4f121d89ee581a7839d1be5c5bcff434f1cd0902bbddc8dd451e8f1a2c5") ;;
-  aarch64) sha256sums=("a7b9bd5ccba5f66058b987c11c07d3c65cf7667a4b5a5760c5187fe2678d68d9") ;;
+  x86_64) sha256sums=("168d58c9534d5dea28dec3f6f73e91eefb5f034362a250cd5c8388654270817f") ;;
+  i686) sha256sums=("d990cfe4e917bb23a65b0f29e361b4cad5cf5005c7c296c569cc6735f1e8e409") ;;
+  aarch64) sha256sums=("b98fde0c6fcf4d456f4802ab1ee3aad16517ecddea6bb91d9cee16b15cbada74") ;;
   *) sha256sums=(SKIP) ;;
 esac
 sha256sums+=("50879baa1b25f003489a41f5bf2d0ca7ae76c971d34c30728229a832799eed9e")
