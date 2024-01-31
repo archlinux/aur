@@ -1,0 +1,17 @@
+pkgbase = python2-wstools
+	pkgdesc = WSDL parsing services package for Web Services for Python
+	pkgver = 0.4.10
+	pkgrel = 6
+	url = https://github.com/pycontribs/wstools
+	arch = any
+	license = custom
+	checkdepends = autopep8
+	checkdepends = python2-pytest-runner
+	checkdepends = python2-pytest-cov
+	makedepends = python2-pbr
+	makedepends = python2-setuptools
+	depends = python2-six
+	source = https://github.com/pycontribs/wstools/archive/0.4.10/python2-wstools-0.4.10.tar.gz
+	sha512sums = 1acd8e62d71c7d330f1e953a0da1956291c5dfb25ff9b8b8799c83feaa4230e384955735b131bab7b430b92ae6c18498927d416d2d1e11fb5c5dad93417c671a
+
+pkgname = python2-wstools
