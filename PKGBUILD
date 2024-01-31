@@ -1,4 +1,8 @@
-# Maintainer: Bao Trinh <qubidt at gmail dot com>
+# SPDX-License-Identifier: AGPL-3.0
+#
+# Maintainer:  Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
+# Maintainer:  Truocolo <truocolo@aol.com>
+# Contributor: Bao Trinh <qubidt at gmail dot com>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Sebastien Leduc <sebastien@sleduc.fr>
 
@@ -21,12 +25,12 @@ license=(
   'APACHE'
 )
 depends=(
-  'python2'
-  'python2-futures'
-  'python2-six'
+  "${_py}"
+  "${_py}-futures"
+  "${_py}-six"
 )
 optdepends=(
-  'python2-unittest2: to pass trollius unit tests'
+  "${_py}-unittest2: to pass ${_pkg} unit tests"
 )
 _pypi="https://pypi.python.org/packages/source"
 source=(
@@ -55,4 +59,4 @@ package() {
         --skip-build
 }
 
-# vim:set ts=2 sw=2 et:
+# vim:set sw=2 sts=-1 et:
