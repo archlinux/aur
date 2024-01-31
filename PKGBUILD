@@ -39,7 +39,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@appasar@|app.asar|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+        -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --categories "Development" --name "${pkgname}" --exec "${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
