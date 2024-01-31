@@ -1,6 +1,6 @@
 pkgbase = jddbusdebugger
 	pkgdesc = An advanced D-Bus Debugger
-	pkgver = 1.0
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://codeberg.org/JakobDev/jdDBusDebugger
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = jddbusdebugger
 	depends = python
 	depends = python-pyqt6
 	depends = python-lxml
-	source = jddbusdebugger-1.0.tar.gz::https://codeberg.org/JakobDev/jdDBusDebugger/archive/1.0.tar.gz
-	sha256sums = ed5b2fe93e2a30ba4f8faf3eb44d1e45a6f73d3267c29f6881301148708a1d05
+	source = jddbusdebugger-2.0.tar.gz::https://codeberg.org/JakobDev/jdDBusDebugger/archive/2.0.tar.gz
+	sha256sums = a908cd1ff18e14b35c18262e7573bf6fa495e83fe065fef4d0749e2057d0d03f
 
 pkgname = jddbusdebugger
