@@ -33,7 +33,7 @@ makedepends=(
 )
 _url="https://gitlab.com/${_pkg}/${_pkg}"
 source=(
-  "${pkgname}-${pkgver}.tar.gz::${_url}/-/archive/${pkgver}/${pkgname#python-}-${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::${_url}/-/archive/${pkgver}/${_pkg}-${pkgver}.tar.gz"
   "LICENSE")
 sha256sums=(
   'b5b6610919c43dcb28c34ba3a2d156ec84fbd5e17228349dddbec58f72ca5fd6'
