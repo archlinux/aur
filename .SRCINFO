@@ -1,6 +1,6 @@
 pkgbase = r-pscl
 	pkgdesc = Political Science Computational Laboratory
-	pkgver = 1.5.5.1
+	pkgver = 1.5.9
 	pkgrel = 1
 	url = https://cran.r-project.org/package=pscl
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = r-pscl
 	optdepends = r-sandwich
 	optdepends = r-vcd
 	optdepends = r-zoo
-	source = https://cran.r-project.org/src/contrib/pscl_1.5.5.1.tar.gz
-	sha256sums = 611367c3d34c78f2d4db79e630e38d7a5df8296bd7e72d258f6a115fbbe78d5b
+	source = https://cran.r-project.org/src/contrib/pscl_1.5.9.tar.gz
+	sha256sums = 8085ffd1987804793ba44637165fba3e6805aa2f6457f0692b6e641658fe6efe
 
 pkgname = r-pscl

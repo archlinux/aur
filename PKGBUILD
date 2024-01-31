@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pscl
-_pkgver=1.5.5.1
+_pkgver=1.5.9
 pkgname=r-${_pkgname,,}
-pkgver=1.5.5.1
+pkgver=1.5.9
 pkgrel=1
 pkgdesc='Political Science Computational Laboratory'
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
   r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('611367c3d34c78f2d4db79e630e38d7a5df8296bd7e72d258f6a115fbbe78d5b')
+sha256sums=('8085ffd1987804793ba44637165fba3e6805aa2f6457f0692b6e641658fe6efe')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
