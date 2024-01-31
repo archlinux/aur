@@ -1,33 +1,18 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=spx-translation-bin
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="聚合翻译程序(谷歌+deepl)"
 arch=('x86_64')
 url="https://github.com/mlmdflr/spx-translation"
-license=('custom')
+license=('MIT')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    'libxkbcommon'
-    'mesa'
-    'libxcomposite'
-    'libcups'
-    'expat'
     'gtk3'
-    'libxdamage'
     'alsa-lib'
-    'libxfixes'
-    'libdrm'
-    'cairo'
     'nss'
     'nspr'
-    'libx11'
-    'libxext'
-    'libxcb'
-    'at-spi2-core'
-    'pango'
-    'libxrandr'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/vv${pkgver}-1/${pkgname%-bin}_${pkgver}_amd64.deb"
