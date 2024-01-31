@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=copperspice
-pkgver=1.8.2
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Libraries for developing cross platform software applications in C++'
 arch=('x86_64')
@@ -18,18 +18,12 @@ makedepends=('cmake' 'alsa-lib' 'mariadb-libs' 'postgresql' 'postgresql-libs'
              'libxrandr' 'libxrender' 'libxml2')
 options=('!lto')
 source=("https://github.com/copperspice/copperspice/archive/cs-${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        '010-copperspice-fix-cmake-include-dirs.patch'
-        '020-copperspice-gcc13-fix-001.patch'::'https://github.com/copperspice/copperspice/commit/a7f3e774dd82c8a8eb35752a05d5095209d869d1.patch'
-        '030-copperspice-gcc13-fix-002.patch'::'https://github.com/copperspice/copperspice/commit/a7be5a31f6028199581ad05310ef697437feda02.patch')
-sha256sums=('08e85a5942ce6230714179e4d24ed2e2a99e2f680f8929f6a807ed7c7a98a313'
-            '1bef08debd977fb08861552e39e2752459c5fe9743d9d593bc135f5978df9c46'
-            '4cfd123dc58fc0cc414a0b8f4a408a6792eab02ac41684979282c31f428ff64d'
-            'c7a630a20749a2e045f8e280204ca89098e46d28cbc55058a4e4908cf3329c10')
+        '010-copperspice-fix-cmake-include-dirs.patch')
+sha256sums=('b58fc49110bc3b4f86172627dd9a1bcf5d087f51ec525f29ec4a5449e6708fcf'
+            '1bef08debd977fb08861552e39e2752459c5fe9743d9d593bc135f5978df9c46')
 
 prepare() {
     patch -d "copperspice-cs-${pkgver}" -Np1 -i "${srcdir}/010-copperspice-fix-cmake-include-dirs.patch"
-    patch -d "copperspice-cs-${pkgver}" -Np1 -i "${srcdir}/020-copperspice-gcc13-fix-001.patch"
-    patch -d "copperspice-cs-${pkgver}" -Np1 -i "${srcdir}/030-copperspice-gcc13-fix-002.patch"
 }
 
 build() {
@@ -48,7 +42,7 @@ package() {
     DESTDIR="$pkgdir" cmake --install build
     
     local _file
-    mkdir -p "${pkgdir}/usr/bin"
+    install -d -m755 "${pkgdir}/usr/bin"
     while read -r -d '' _file
     do
         ln -s "../lib/copperspice/bin/${_file##*/}" "${pkgdir}/usr/bin/${_file##*/}-cs"
