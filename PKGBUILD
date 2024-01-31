@@ -1,6 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=anklang-bin
 pkgver=0.2.0
+_electronversion=25
 pkgrel=3
 pkgdesc="A digital audio synthesis application for live creation and composition of music and other audio material."
 arch=('x86_64')
@@ -9,32 +10,14 @@ license=("MPL2")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'libxdamage'
-    'libx11'
-    'libxfixes'
-    'libxcomposite'
     'gtk2'
     'gtk3'
-    'zstd'
-    'at-spi2-core'
-    'mesa'
-    'libdrm'
-    'expat'
-    'cairo'
-    'libxext'
-    'libxrandr'
-    'libxcb'
-    'pango'
-    'libxkbcommon'
     'alsa-lib'
-    'nspr'
-    'libcups'
-    'libogg'
-    'pipewire-jack'
-    'opus'
     'hicolor-icon-theme'
     'nss'
     'flac'
+    'pipewire-jack'
+    'opus'
 )
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('749f5a76b3bde9fdf3f6ea87cca936f2ab2572ac00e31e3d3a47e63f66c0e099')
