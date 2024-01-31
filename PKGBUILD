@@ -61,6 +61,9 @@ prepare() {
   git config submodule.test/data.url "$srcdir"/test-data
   git -c protocol.file.allow=always submodule update \
     test/data
+
+  # Remove bundled sparsehash directory in favor of 'sparsehash' package
+  rm -rf deps/mapnik/sparsehash
 }
 
 build() {
@@ -87,15 +90,13 @@ package(){
   # Remove bundled dejavu fonts from cmake_install.cmake in favor of 'ttf-dejavu' package
   sed -i '/dejavu-fonts-ttf/d' "$srcdir"/mapnik_build/cmake_install.cmake
 
-  # Remove bundled sparsehash directory in favor of 'sparsehash' package
-  rm -rf "$srcdir"/mapnik/deps/mapnik/sparsehash
-
-  # Install to #DESTDIR
+  # Install to $DESTDIR
   DESTDIR="$pkgdir" cmake --install mapnik_build --strip
-
-  # Remove usr/share/fonts directory
-  rm -rf "$pkgdir"/usr/share/fonts
 
   # License
   install -Dm644 "$srcdir"/mapnik/COPYING "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
+
+  # Remove usr/share/fonts directory
+  pushd "$pkgdir"
+  rm -rf usr/share/fonts
 }
