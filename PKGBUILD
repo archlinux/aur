@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note-git
-pkgver=3.0.2.r2124.g1c903501
+pkgver=3.0.2.r2141.g4fce494d
 _electronversion=22
 _nodeversion=18
 pkgrel=1
@@ -8,7 +8,7 @@ pkgdesc="A highly extensible Markdown editor. Version control, AI completion, mi
 arch=('any')
 url="https://yank-note.com/"
 _ghurl="https://github.com/purocean/yn"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 conflicts=("${pkgname%-git}")
 depends=(
     "electron${_electronversion}"
@@ -29,7 +29,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -51,15 +51,18 @@ build() {
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
     sed '/deb/d' -i electron-builder.json
     yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn electron-rebuild
-    node scripts/download-pandoc.js
-    node scripts/download-plantuml.js
-    yarn build
+    yarn run electron-rebuild
+    npx node scripts/download-pandoc.js
+    npx node scripts/download-plantuml.js
+    yarn run build
     yarn run electron-builder --linux -p never | sed 's/identityName=.*$//'
-    cd "${srcdir}/${pkgname%-git}/out/.icon-set"
+    cd "${srcdir}/${pkgname%-git}.git/out/.icon-set"
     cp icon_16x16.png icon_16.png
     cp icon_48x48.png icon_48.png
 }
