@@ -1,35 +1,36 @@
 # Maintainer: tuberry
 
-_srcname=mingju
 pkgname=fortune-mod-mingju-git
-pkgver=r15.e2398a0
-pkgrel=2
+_pkg=mingju
+pkgver=r17.75a4765
+pkgrel=1
 pkgdesc="Chinese mingju for fortune-mod"
-url=https://github.com/xuchunyang/${_srcname}
-license=(custom)
+url="https://github.com/xuchunyang/$_pkg"
+license=(GPL-3.0-or-later)
 depends=(fortune-mod)
 makedepends=(git fortune-mod opencc)
 provides=(fortune-mod-mingju)
 conflicts=(fortune-mod-mingju)
-groups=(fortune-mods-zh)
-source=(git+${url})
+source=("git+$url")
 md5sums=(SKIP)
 arch=(any)
 
 pkgver() {
-  cd ${_srcname}
+  cd "$_pkg"
   printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 build() {
-  cd ${_srcname}
-  opencc -i ${_srcname}.json -o ${_srcname}.json -c t2s
-  sed -e 's/"\s+/"/g; s/[“”…]//g; s/（[^）]*）//g; s/—/一/g; s/"},{"/\n%\n/g; s/contents":"//g; s/","source":"/\n ──── /g; s/]/\n%\n/' < ${_srcname}.json | tr -d '"{}[' > ${_srcname}
-  strfile ${_srcname} ${_srcname}.dat
+  cd "$_pkg"
+  sed -e 's/"\s+/"/g; s/[“”…]//g; s/（[^）]*）//g; s/—/一/g; s/"},{"/\n%\n/g; s/contents":"//g; s/","source":"/\n ──── /g; s/]/\n%\n/' < "$_pkg.json" | tr -d '"{}[' > "$_pkg"
+  opencc -i "$_pkg" -o "$_pkg" -c t2s
+  strfile "$_pkg" "$_pkg.dat"
 }
 
 package(){
-  cd ${_srcname}
-  install -dm755 ${pkgdir}/usr/share/fortune
-  install -Dm644 ${_srcname} ${_srcname}.dat ${pkgdir}/usr/share/fortune
+  cd "$_pkg"
+  install -dm755 "$pkgdir/usr/share/fortune"
+  install -Dm644 "$_pkg" "$_pkg.dat" "$pkgdir/usr/share/fortune"
 }
+
+# vim: ts=2 sw=2 et:
