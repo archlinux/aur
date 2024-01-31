@@ -5,19 +5,20 @@
 
 pkgname=cronet
 pkgver=121.0.6167.139
-pkgrel=1
+pkgrel=2
 _manual_clone=0
-_system_clang=0
+_system_clang=1
 pkgdesc="The networking stack of Chromium put into a library"
 arch=('x86_64')
 url="https://chromium.googlesource.com/chromium/src/+/refs/heads/main/components/cronet"
 license=('BSD-3-Clause')
 depends=('nss' 'libffi')
-makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'git')
+makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'rust' 'git')
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
         drop-flags-unsupported-by-clang16.patch
+        compiler-rt-16.patch
         abseil-remove-unused-targets.patch
         disable-logging.patch
         fix-missing-vector.patch
@@ -27,6 +28,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
 sha256sums=('e12cc967bef7a79630828792f02d95297a06eb905c98e4c6e065fd5e74d6f9ff'
             'e9113c1ed2900b84b488e608774ce25212d3c60094abdae005d8a943df9b505e'
             '8d1cdf3ddd8ff98f302c90c13953f39cd804b3479b13b69b8ef138ac57c83556'
+            '8a2649dcc6ff8d8f24ddbe40dc2a171824f681c6f33c39c4792b645b87c9dcab'
             SKIP
             SKIP
             SKIP
@@ -151,13 +153,14 @@ prepare() {
 
   # Upstream fixes
 
-  # Drop compiler flags that need newer clang
   if (( _system_clang )); then
+    # Drop compiler flags that need newer clang
     patch -Np1 -i ../drop-flags-unsupported-by-clang16.patch
-  fi
 
-  # Fixes for building with libstdc++ instead of libc++
-  if (( _system_clang )); then
+    # Allow libclang_rt.builtins from compiler-rt 16 to be used
+    patch -Np1 -i ../compiler-rt-16.patch
+
+    # Fixes for building with libstdc++ instead of libc++
     patch -Np1 -i ../chromium-patches-*/chromium-119-clang16.patch
   fi
 
@@ -185,12 +188,14 @@ prepare() {
   rm -f build/linux/unbundle/zstd.gn
   patch -Np1 -i ../chromium-patches-*/chromium-117-system-zstd.patch
 
-  # Use prebuilt rust as system rust cannot be used due to the error:
-  #   error: the option `Z` is only accepted on the nightly compiler
-  ./tools/rust/update_rust.py
+  if (( !_system_clang )); then
+    # Use prebuilt rust as system rust cannot be used due to the error:
+    #   error: the option `Z` is only accepted on the nightly compiler
+    ./tools/rust/update_rust.py
 
-  # To link to rust libraries we need to compile with prebuilt clang
-  ./tools/clang/scripts/update.py
+    # To link to rust libraries we need to compile with prebuilt clang
+    ./tools/clang/scripts/update.py
+  fi
 
   # Remove bundled libraries for which we will use the system copies; this
   # *should* do what the remove_bundled_libraries.py script does, with the
@@ -245,7 +250,16 @@ build() {
       'clang_base_path="/usr"'
       'clang_use_chrome_plugins=false'
       "clang_version=\"$_clang_version\""
-      #'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
+      'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
+    )
+
+    # Allow the use of nightly features with stable Rust compiler
+    # https://github.com/ungoogled-software/ungoogled-chromium/pull/2696#issuecomment-1918173198
+    export RUSTC_BOOTSTRAP=1
+
+    _flags+=(
+      'rust_sysroot_absolute="/usr"'
+      "rustc_version=\"$(rustc --version)\""
     )
   fi
 
