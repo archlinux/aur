@@ -1,15 +1,13 @@
 pkgbase = javacc
 	pkgdesc = Parser/scanner generator for Java
-	pkgver = 7.0.9
+	pkgver = 7.0.13
 	pkgrel = 1
 	url = http://javacc.org/
 	arch = any
 	license = BSD
-	makedepends = git
+	makedepends = apache-ant
 	depends = java-environment
-	depends = apache-ant
-	source = git+https://github.com/javacc/javacc.git#tag=javacc-7.0.9
-	sha256sums = SKIP
+	source = javacc-7.0.13.tar.gz::https://github.com/javacc/javacc/archive/javacc-7.0.13.tar.gz
+	sha256sums = d1bfebb4ca9261c5c3b16b00280b3278a41b193ca8503f2987f72de453bf99c6
 
 pkgname = javacc
-
