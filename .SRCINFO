@@ -1,6 +1,6 @@
 pkgbase = lutris-git
 	pkgdesc = Open Gaming Platform
-	pkgver = 0.5.16.r14.gf96249655
+	pkgver = 0.5.16.r33.gc1a4b2149
 	pkgrel = 1
 	url = https://lutris.net
 	arch = any
@@ -41,7 +41,6 @@ pkgbase = lutris-git
 	optdepends = lib32-mangohud: Display the games' FPS + other information
 	optdepends = lib32-vkd3d: DirectX 12 support
 	optdepends = lib32-vulkan-icd-loader: Vulkan support
-	optdepends = libstrangle: Set FPS limit
 	optdepends = linux-steam-integration: start Steam with LSI
 	optdepends = mangohud: Display the games' FPS + other information
 	optdepends = python-evdev: Controller support
