@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fotoluks-manager-git
 _pkgname="Fotoluks Manager"
-pkgver=2.0.0.r0.g2723374
+pkgver=2.0.1.r0.ge8a462f
 _electronversion=22
 _nodeversion=18
 pkgrel=1
@@ -44,7 +44,10 @@ build() {
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
     mv src/components/UI src/components/ui
     mv src/components/Toolbar src/components/toolbar
     mv src/components/Updater src/components/updater
