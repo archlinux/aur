@@ -246,6 +246,7 @@ done
 				-DINPUT_opengl=es2 \
 				-DFEATURE_optimize_full=ON \
 				-DFEATURE_lttng=ON \
+				-DFEATURE_widgets=OFF \
                                 -DCMAKE_BUILD_TYPE=RelWithDebInfo \
                                 -DFEATURE_separate_debug_info=ON \
                                 -DFEATURE_reduce_exports=ON \
