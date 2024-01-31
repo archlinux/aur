@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=speek-appimage
 pkgver=1.7.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Privacy focused messenger that doesn't trust anyone with your identity, your contact list, or your communications"
 arch=('x86_64')
 url="https://speek.network/"
 _ghurl="https://github.com/Speek-App/Speek"
-license=('custom')
+license=('LicenseRef-custom')
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
 depends=()
