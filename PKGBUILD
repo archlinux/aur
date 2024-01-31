@@ -1,69 +1,50 @@
 # Maintainer: tuberry
 
-_srcname=fortune-zh-data
 pkgname=fortune-mod-gushiwen-git
+_pkg=fortune-zh-data
 pkgver=r2.00d7cec
-pkgrel=1
+pkgrel=2
 pkgdesc="Chinese gushiwen for fortune-mod"
-url=https://github.com/shenyunhang/${_srcname}
-license=(GPL3)
+url="https://github.com/shenyunhang/$_pkg"
+license=(GPL-3.0-or-later)
 depends=(fortune-mod)
 makedepends=(git)
 provides=(fortune-mod-gushiwen)
 conflicts=(fortune-mod-gushiwen)
-groups=(fortune-mods)
-source=(git+${url})
+source=("git+$url")
 md5sums=(SKIP)
 arch=(any)
 
 pkgver() {
-    cd ${_srcname}
-    printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
-}
-
-build() {
-  cd ${_srcname}
-
-  mv '先秦' 'Qin'
-  mv '两汉' 'Han'
-  mv '魏晋' 'Wei'
-  mv '南北朝' 'SN'
-  mv '隋代' 'Sui'
-  mv '唐代' 'Tang'
-  mv '五代' 'Five'
-  mv '宋代' 'Song'
-  mv '金朝' 'Jin'
-  mv '元代' 'Yuan'
-  mv '明代' 'Ming'
-  mv '清代' 'Qing'
-  mv '近代' 'Recent'
-  mv '现代' 'Modern'
-  mv '未知' 'Unknown'
-
-  mv '先秦.dat' 'Qin.dat'
-  mv '两汉.dat' 'Han.dat'
-  mv '魏晋.dat' 'Wei.dat'
-  mv '南北朝.dat' 'SN.dat'
-  mv '隋代.dat' 'Sui.dat'
-  mv '唐代.dat' 'Tang.dat'
-  mv '五代.dat' 'Five.dat'
-  mv '宋代.dat' 'Song.dat'
-  mv '金朝.dat' 'Jin.dat'
-  mv '元代.dat' 'Yuan.dat'
-  mv '明代.dat' 'Ming.dat'
-  mv '清代.dat' 'Qing.dat'
-  mv '近代.dat' 'Recent.dat'
-  mv '现代.dat' 'Modern.dat'
-  mv '未知.dat' 'Unknown.dat'
+  cd "$_pkg"
+  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 package(){
-  cd ${_srcname}
-  install -dm755 ${pkgdir}/usr/share/fortune
-  for file in *; do
-      if [ "$file" == "LICENSE" ]; then
-          continue;
-      fi
-      install -Dm644 $file ${pkgdir}/usr/share/fortune
+  cd "$_pkg"
+  declare -A dynasty=(
+    [先秦]=Qin
+    [两汉]=Han
+    [魏晋]=Wei
+    [隋代]=Sui
+    [唐代]=Tang
+    [五代]=Five
+    [宋代]=Song
+    [金朝]=Jin
+    [元代]=Yuan
+    [明代]=Ming
+    [清代]=Qing
+    [近代]=Recent
+    [现代]=Modern
+    [未知]=Unknown
+    [南北朝]=SN
+  )
+  fortune="$pkgdir"/usr/share/fortune
+  install -dm755 "$fortune"
+  for name in "${!dynasty[@]}"; do
+    install -Dm644 "$name" "$fortune/${dynasty[$name]}"
+    install -Dm644 "$name.dat" "$fortune/${dynasty[$name]}.dat"
   done
 }
+
+# vim: ts=2 sw=2 et:
