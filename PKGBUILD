@@ -2,41 +2,23 @@
 pkgname=mapeo-desktop-bin
 _pkgname=Mapeo
 pkgver=5.6.2
-pkgrel=3
+_electronversion=9
+pkgrel=4
 pkgdesc="An offline map editing application for indigenous territory mapping in remote environments."
 arch=('x86_64')
 url="https://mapeo.app/"
 _ghurl="https://github.com/digidem/mapeo-desktop"
-license=("GPL3")
+license=("GPL-3.0-only")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'gtk3'
-    'libxss'
     'alsa-lib'
     'python'
     'nss'
-    'at-spi2-core'
-    'libxcomposite'
-    'expat'
-    'libxtst'
     'hicolor-icon-theme'
-    'libxrender'
-    'libxdamage'
-    'libx11'
-    'cairo'
-    'libxfixes'
-    'libdrm'
-    'libxi'
-    'pango'
-    'nspr'
-    'libxext'
-    'libxcb'
-    'gdk-pixbuf2'
-    'libcups'
-    'libxrandr'
-    'mesa'
-    'libxcursor'
+    'libxss'
+    'nodejs'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/Install_Mapeo_v${pkgver}_linux.deb"
