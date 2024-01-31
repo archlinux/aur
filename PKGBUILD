@@ -2,33 +2,17 @@
 pkgname=hugin-messenger
 _pkgname="Hugin Messenger"
 pkgver=0.4.0
-pkgrel=1
+_electronversion=19
+_nodeversion=16
+pkgrel=2
 pkgdesc="The new version of the private messaging desktop application powered by the Kryptokrona Blockchain."
-arch=('x86_64')
+arch=('any')
 url="https://hugin.chat/"
 _ghurl="https://github.com/kryptokrona/hugin-desktop"
-license=('GPL3')
+license=('GPL-3.0-only')
 conflicts=("${pkgname}")
 depends=(
-    'libcups'
-    'libxfixes'
-    'at-spi2-core'
-    'libxrandr'
-    'alsa-lib'
-    'libxdamage'
-    'libxkbcommon'
-    'gtk3'
-    'libxcomposite'
-    'expat'
-    'pango'
-    'libxcb'
-    'cairo'
-    'mesa'
-    'nss'
-    'libdrm'
-    'libxext'
-    'libx11'
-    'nspr'
+    "electron${_electronversion}"
 )
 makedepends=(
     'npm'
@@ -38,29 +22,43 @@ makedepends=(
     'gcc'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
+    "${pkgname}.git::git+${_ghurl}#tag=v${pkgver}"
+    "${pkgname}.sh"
 )
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install 16
-    nvm use 16
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
 }
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@appasar@|app.asar|g" \
+        -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -f -n -q --categories "Network" --name "${_pkgname}" --exec "${pkgname} --no-sandbox %U"
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    gendesk -f -n -q --categories "Network" --name "${_pkgname}" --exec "${pkgname} %U"
+    cd "${srcdir}/${pkgname}.git"
+    export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/.npm_cache"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
+    sed "s|linux-x64|linux|g;s|--linux --x64|-l|g" -i package.json
     sed -e '/"deb",/d' -e "s|snap|AppImage|g" -i build.config.json
-    npm install --quiet --cache "${srcdir}/npm-cache"
-    chmod a+x node_modules/cross-env/src/bin/cross-env.js
-    npm run build:linux-x64
+    sed "97s|!||g" -i src/backend/electron.cjs
+    npm install
+    npm run build:linux
 }
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname}",usr/bin}
-    cp -r "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/"* "${pkgdir}/opt/${pkgname}"
-    ln -sf "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/dist/linux-"*/resources/bin/*.png -t "${pkgdir}/usr/lib/${pkgname}/bin"
+    install -Dm644 "${srcdir}/${pkgname}.git/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
