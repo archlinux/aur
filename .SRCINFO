@@ -1,6 +1,6 @@
 pkgbase = sdc-git
 	pkgdesc = C port of SD, a very efficient flash cards app
-	pkgver = r15.cd9b330
+	pkgver = r30.a5bfafa
 	pkgrel = 1
 	url = https://git.exozy.me/a/sdc
 	arch = any
@@ -8,6 +8,8 @@ pkgbase = sdc-git
 	makedepends = git
 	makedepends = gcc
 	depends = sqlite3
+	optdepends = python-pyqt6: PyQT6 GUI
+	optdepends = tk: Tkinter GUI
 	source = sdc::git+https://git.exozy.me/a/sdc.git
 	sha256sums = SKIP
 

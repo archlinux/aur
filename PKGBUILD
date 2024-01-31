@@ -2,14 +2,15 @@
 
 _pkgname=sdc
 pkgname="$_pkgname-git"
-pkgver=r15.cd9b330
+pkgver=r30.a5bfafa
 pkgrel=1
 pkgdesc="C port of SD, a very efficient flash cards app"
 arch=(any)
 url="https://git.exozy.me/a/$_pkgname"
 license=('GPL')
-groups=()
 depends=('sqlite3')
+optdepends=('python-pyqt6: PyQT6 GUI'
+            'tk: Tkinter GUI')
 makedepends=('git' 'gcc')
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
@@ -25,5 +26,10 @@ build() {
 }
 
 package() {
-	install -Dm755 "$srcdir/$_pkgname/sd" "$pkgdir/usr/bin/sd"
+	cd "$srcdir/$_pkgname"
+	install -Dm755 sd "$pkgdir/usr/bin/sd"
+	install -Dm755 main.py "$pkgdir/usr/bin/sd-qt"
+	install -Dm755 tkinter.py "$pkgdir/usr/bin/sd-tk"
+	install -Dm755 sd-add.fish "$pkgdir/usr/share/fish/vendor_functions.d/sd-add.fish"
+	install -Dm755 sqlitevi.fish "$pkgdir/usr/share/fish/vendor_functions.d/sqlitevi.fish"
 }
