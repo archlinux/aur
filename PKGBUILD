@@ -1,29 +1,24 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mark-flowy-bin
 _pkgname=MarkFlowy
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Modern markdown editor application, Build fast and efficient workflows."
 arch=("x86_64")
 url="https://markflowy.vercel.app/"
 _ghurl="https://github.com/drl990114/MarkFlowy"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'cairo'
     'gtk3'
-    'webkit2gtk-4.1'
     'hicolor-icon-theme'
-    'gdk-pixbuf2'
-    'libsoup3'
-    'pango'
-    'libxcb'
+    'webkit2gtk-4.1'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_${CARCH}.deb"
 )
-sha256sums=('9cbe0d172e4151178a9f9e86f982c13e244e70c929cbce53de11f8ded3ac0874')
+sha256sums=('ee6fe9ec3e7f39bf68c9b4bc2f975b1e62854e8bb99702a453f30f99353e760f')
 build() {
     bsdtar -xf "${srcdir}/data.tar.gz"
 }
