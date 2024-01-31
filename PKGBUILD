@@ -2,7 +2,7 @@
 # Maintainer:  Radu Potop <radu at wooptoo dot com>
 
 pkgname=oauth2c
-pkgver=1.12.3
+pkgver=1.13.0
 pkgrel=1
 pkgdesc='User-friendly CLI for OAuth2'
 arch=('x86_64' 'arm64' 'armv6')
@@ -19,4 +19,4 @@ package() {
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha256sums=('20de8a42789ccdc20043e0690045fb6664f8daec201c69467a42d83f15067d56')
+sha256sums=('61e83110fe98f78e516ea6f0e7c395099351f39fda0d57c50aed1c35f1b11eee')
