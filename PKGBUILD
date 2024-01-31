@@ -2,7 +2,7 @@
 
 pkgname=nextcloud-app-files-accesscontrol
 _appname=files_accesscontrol
-pkgver=1.17.1
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="Control access to files based on conditions."
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/nextcloud/files_accesscontrol"
 license=('AGPL')
 makedepends=('yq' 'rsync')
 source=("${_appname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('b1662aa68cb09a1fc3c854e5d8b13a67281149f49f41473bc333e81e691dc146a32a8b93fc0731b13c7cda9e0b017dfbddf031964d36e2a379b1fd3d1d6146c9')
+sha512sums=('d621da568c11d525281de01d79121960e4819eea4ee3458fc2795fce97576c63b9af811ed147495454393047bc6b146685fac1ad66c26d4fd1af18cbe83823d9')
 
 # Boilerplate nextcloud version calculation adopted from other packages
 _get_nextcloud_versions() {
