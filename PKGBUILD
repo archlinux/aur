@@ -1,12 +1,12 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=lprint-git
-pkgver=278_1.1.0_r38_gb2806b1
+pkgver=387_1.3.0_r0_ge0a5b74
 pkgrel=1
 pkgdesc="A Label Printer Application"
 arch=('i686' 'x86_64')
 url="https://github.com/michaelrsweet/lprint"
-license=('apache')
+license=('Apache-2.0')
 depends=('avahi' 'libcups' 'libpng' 'libusb' 'pappl')
 provides=('lprint')
 conflicts=('lprint')
@@ -27,7 +27,7 @@ pkgver() {
 build() {
   cd ${pkgname%-git}
 
-  ./configure --prefix=/usr LIBS="-lcups"
+  ./configure --prefix=/usr
   make
 }
 

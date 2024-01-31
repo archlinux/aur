@@ -1,11 +1,11 @@
 pkgbase = lprint-git
 	pkgdesc = A Label Printer Application
-	pkgver = 278_1.1.0_r38_gb2806b1
+	pkgver = 387_1.3.0_r0_ge0a5b74
 	pkgrel = 1
 	url = https://github.com/michaelrsweet/lprint
 	arch = i686
 	arch = x86_64
-	license = apache
+	license = Apache-2.0
 	makedepends = git
 	depends = avahi
 	depends = libcups
