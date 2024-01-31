@@ -10,7 +10,7 @@ pkgrel=2
 pkgdesc='Multi-threaded functional programming language'
 arch=('x86_64')
 url='http://www.afnix.org'
-license=('custom')
+license=('LicenseRef-AFNIX')
 depends=('ncurses' 'gcc-libs')
 source=("${url}/ftp/afnix-src-${pkgver}.tgz"
         "${pkgname}.patch")
