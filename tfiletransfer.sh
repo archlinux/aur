@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
 _APPDIR=/opt/@appname@
-_APPNAME=@runappname@
+_RUNNAME="${_APPDIR}/bin/@runname@"
 export PATH="${_APPDIR}:${_APPDIR}/bin:${PATH}"
 export LD_LIBRARY_PATH="${_APPDIR}/lib:${LD_LIBRARY_PATH}"
 cd "${_APPDIR}"
-exec "${_APPDIR}/bin/${_APPNAME}"
+exec "${_RUNNAME}" "$@" || exit $?
