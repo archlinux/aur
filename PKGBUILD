@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: AGPL-3.0
 #
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Maintainer:  Truocolo <truocolo@aol.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 # shellcheck disable=SC2034
@@ -57,4 +58,3 @@ package() {
 }
 
 # vim:set sw=2 sts=-1 et:
-# Maintainer:  Truocolo <truocolo@aol.com>
