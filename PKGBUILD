@@ -1,7 +1,8 @@
 #!/bin/sh
 # Maintainer: hairlinehd <slimender123@gmail.com>
 pkgname='obgk'
-pkgver=r18.6cce013
+_pkgname='osu'
+pkgver=r19.8737138
 pkgrel=1
 pkgdesc="osu!stable video and background deleter"
 arch=('x86_64')
