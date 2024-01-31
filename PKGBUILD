@@ -2,7 +2,7 @@
 
 pkgname=artery-isp-console-bin
 pkgver=3.0.09
-pkgrel=1
+pkgrel=2
 # epoch=1
 pkgdesc="Artery ISP Console 是一款基于 MCU Bootloader 的命令行应用程序。使用该应用程序,用户可以通过 UART 端口或者 USB 端口配置操作 Artery 的 MCU 设备。"
 arch=('x86_64')
@@ -35,8 +35,10 @@ backup=()
 options=()
 install=${pkgname}.install
 _pkg_file_name=Artery_ISP_Console_Linux-${arch}_V${pkgver}.zip
-source=("${_pkg_file_name}::https://www.arterytek.com/download/TOOL/Artery_ISP_Console_Linux-${arch}_V${pkgver}.zip")
-sha256sums=('b634f872ca00145163c4d4c3fb9e9967f60b3ab35487f3ee0dadefab53ff2ba6')
+source=("${_pkg_file_name}::https://www.arterytek.com/download/TOOL/Artery_ISP_Console_Linux-${arch}_V${pkgver}.zip"
+    ${pkgname}.install)
+sha256sums=('b634f872ca00145163c4d4c3fb9e9967f60b3ab35487f3ee0dadefab53ff2ba6'
+            'a5c4d923298e09eef75b9481ea4fd83998d01c1d3605f118edd42f89ee17e619')
 noextract=()
 
 package() {
@@ -72,13 +74,13 @@ package() {
 
 ACTION!="add|change", GOTO="artery32_udev_rules_end"
 
-SUBSYSTEM=="gpio", MODE="0660", GROUP="plugdev", TAG+="uaccess"
+SUBSYSTEM=="gpio", MODE="0660", TAG+="uaccess"
 
 SUBSYSTEM!="usb|tty|hidraw", GOTO="artery32_udev_rules_end"
 
 # Artery tek
-ATTRS{idVendor}=="2e3c", ATTRS{idProduct}=="f000", MODE="660", GROUP="plugdev", TAG+="uaccess"
-ATTRS{idVendor}=="2e3c", ATTRS{idProduct}=="df11", MODE="660", GROUP="plugdev", TAG+="uaccess"
+ATTRS{idVendor}=="2e3c", ATTRS{idProduct}=="f000", MODE="660", TAG+="uaccess"
+ATTRS{idVendor}=="2e3c", ATTRS{idProduct}=="df11", MODE="660",  TAG+="uaccess"
 
 # If you share your linux system with other users, or just don't like the
 # idea of write permission for everybody, you can replace MODE:="0666" with

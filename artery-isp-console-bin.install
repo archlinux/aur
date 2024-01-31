@@ -1,7 +1,11 @@
-
 post_install() {
-    echo "> Reloading udev rules"
-    # https://wiki.archlinux.org/index.php/udev#Loading_new_rules
-    udevadm control --reload
-    udevadm trigger
+	echo "---------------------------------------------------------------"
+	echo ":: Add yourself to the uucp group to access the serial ports: https://wiki.archlinux.org/index.php/udev#Loading_new_rules"
+    echo "   sudo gpasswd -aG \$USER uucp"
+    echo "   sudo udevadm control --reload-rules"
+	echo "---------------------------------------------------------------"
+}
+
+post_upgrade() {
+	post_install
 }
