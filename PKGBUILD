@@ -8,7 +8,7 @@ pkgver="${orignalVersion/-/_}"
 pkgrel=1
 pkgdesc="Cloud-Native Security and Policy Framework "
 url="https://mondoo.com"
-license=('BUSL-1.1')
+license=('MPL 2.0')
 source=(
     "https://releases.mondoo.com/cnspec/${orignalVersion}/cnspec_${orignalVersion}_linux_amd64.tar.gz"
     )
