@@ -1,10 +1,10 @@
 pkgbase = alibabasans-hk-fonts
 	pkgdesc = A typeface for creating alibaba sans hk in text.阿里巴巴普惠体繁体中文(HKSCS)4字重
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://fonts.alibabagroup.com/#/font
 	arch = any
-	license = custom
+	license = LicenseRef-custom
 	source = alibabasans-hk-fonts-1.0.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlibabaSansHK.zip
 	source = license.txt
 	sha256sums = 2a3f977aa6d6f8f7abf4ffb01f033dfd606492a99a002b4163c463052b165cb6
