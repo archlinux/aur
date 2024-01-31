@@ -1,0 +1,13 @@
+pkgbase = otf-wavefont-git
+	pkgdesc = Font for rendering vertical bars.
+	pkgver = 20240129
+	pkgrel = 1
+	url = https://github.com/dy/wavefont
+	arch = any
+	license = OFL
+	makedepends = git
+	provides = otf-wavefont-git
+	source = wavefont::git+https://github.com/dy/wavefont.git
+	sha256sums = SKIP
+
+pkgname = otf-wavefont-git
