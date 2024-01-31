@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='Shared nothing, fully searchable, document oriented cluster datastore'
 arch=('x86_64')
 url='https://crate.io'
-license=('custom:APACHE')
+license=('Apache-2.0')
 depends=('python')
 install='crate.install'
 source=("https://cdn.crate.io/downloads/releases/${pkgname}-${pkgver}.tar.gz"
@@ -32,7 +32,6 @@ package() {
 
   # Documentation
   install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
-  cp LICENSE "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
   cp NOTICE "${pkgdir}/usr/share/doc/${pkgname}/NOTICE"
   cp CHANGES.txt "${pkgdir}/usr/share/doc/${pkgname}/CHANGES"
 
