@@ -2,12 +2,12 @@
 pkgname=implay-bin
 _pkgname=ImPlay
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop media player built on top of mpv and imgui"
 arch=('x86_64')
 url="https://tsl0922.github.io/ImPlay"
 _ghurl="https://github.com/tsl0922/ImPlay"
-license=('GPL2')
+license=('GPL-2.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
