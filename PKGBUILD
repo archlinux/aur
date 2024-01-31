@@ -2,6 +2,7 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 # Configuration.
+DISABLE_NINJA=1 #fix regression in build system
 _fragment=${FRAGMENT:-#branch=main}
 # shellcheck disable=SC2206
 [[ -v CUDA_ARCH ]] && _cuda_capability=(${CUDA_ARCH})
@@ -27,7 +28,7 @@ _fragment=${FRAGMENT:-#branch=main}
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.4'); }
 
 pkgname=blender-develop-git
-pkgver=4.0.r126085.g9305778fb5f
+pkgver=4.1.r132302.gfb16dbf9ae8
 pkgrel=1
 pkgdesc="Development version of Blender (non-conflicting version)"
 changelog=blender.changelog
