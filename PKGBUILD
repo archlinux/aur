@@ -6,7 +6,7 @@ pkgname=("lua51-$_rockname")
 # pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=1.0.r29.g7da648d
 _rockrel=1
-pkgrel=1
+pkgrel=2
 pkgdesc='The Lua Graphics Toolkit, a Lua module for creating plots and graphical animations'
 arch=(x86_64)
 url="https://github.com/franko/$_rockname"
@@ -31,7 +31,7 @@ pkgver() {
 
 _package() {
 	cd "$_rockname"
-	depends=("${pkgname%-*}") #  "liblua$1.so"
+	depends=("${pkgname%%-*}") # "liblua$1.so"
 	provides=("${pkgname/-git}=$pkgver")
 	conflicts=("${pkgname/-git}")
 	luarocks --lua-version "$1" --tree "$pkgdir/usr/" \

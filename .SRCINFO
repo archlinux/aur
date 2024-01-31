@@ -1,7 +1,7 @@
 pkgbase = lua51-graph-toolkit
 	pkgdesc = The Lua Graphics Toolkit, a Lua module for creating plots and graphical animations
 	pkgver = 1.0.r29.g7da648d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/franko/graph-toolkit
 	arch = x86_64
 	license = GPL-3.0-only
