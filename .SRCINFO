@@ -1,11 +1,12 @@
 pkgbase = tinymediamanager-bin
 	pkgdesc = A media management tool written in Java/Swing.
 	pkgver = 5.0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tinymediamanager.org
 	arch = x86_64
 	arch = aarch64
 	license = apache
+	depends = libmediainfo
 	provides = tinymediamanager
 	conflicts = tinymediamanager
 	options = !strip

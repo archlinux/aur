@@ -3,13 +3,14 @@
 _pkgname="tinyMediaManager"
 pkgname="${_pkgname,,}-bin"
 pkgver=5.0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A media management tool written in Java/Swing."
 provides=("${_pkgname,,}")
 conflicts=("${_pkgname,,}")
 arch=("x86_64" "aarch64")
 url="https://www.${_pkgname,,}.org"
 license=("apache")
+depends=("libmediainfo")
 source=("${_pkgname,,}.desktop"
         "${_pkgname,,}.png")
 source_x86_64=("https://release.${_pkgname,,}.org/v5/dist/${_pkgname}-${pkgver}-linux-amd64.tar.xz")
