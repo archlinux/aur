@@ -1,16 +1,16 @@
 # Maintainer: Kira Sokolova <Kyra256@proton.me>
 
 pkgname=cooklang-chef
-pkgver=0.7.0
+pkgver=0.8.2
 pkgrel=1
 pkgdesc=" A CLI to manage cooklang recipes"
 arch=("x86_64")
 url="https://github.com/Zheoni/cooklang-chef"
 license=('MIT')
 makedepends=(cargo)
-source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate" "https://github.com/Zheoni/cooklang-chef/raw/v$pkgver/LICENSE")
-sha256sums=('6983c82dbdc00ea15ed9e8f6d43f22456ab318ba4a75ef607611a0b7a89a1828'
-	'SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate" "LICENSE::https://github.com/Zheoni/cooklang-chef/raw/v$pkgver/LICENSE")
+sha256sums=('fb55f2b2aceb134938331d28152f19ac9a7b7b65ea7d5d62ac4a9afd4425f546'
+            'SKIP')
 
 prepare() {
 	cd "$pkgname-$pkgver"
