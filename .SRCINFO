@@ -1,0 +1,23 @@
+pkgbase = pomodoro-timer
+	pkgdesc = A pomodoro timer built with react and electron
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/pauchiner/pomodoro-timer
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = yarn
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = electron26
+	conflicts = pomodoro-timer
+	options = !strip
+	source = pomodoro-timer.git::git+https://github.com/pauchiner/pomodoro-timer.git#tag=v1.1.0
+	source = pomodoro-timer.sh
+	sha256sums = SKIP
+	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
+
+pkgname = pomodoro-timer
