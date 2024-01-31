@@ -1,0 +1,14 @@
+pkgbase = dracula-geany-colorscheme
+	pkgdesc = Original Dracula Geany colorscheme from draculatheme.com
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://draculatheme.com/geany
+	arch = any
+	license = GPL3
+	depends = geany
+	provides = dracula-geany-colorscheme
+	conflicts = dracula-geany-colorscheme
+	source = dracula-geany-colorscheme-1.22.0.zip::https://github.com/dracula/geany/archive/master.zip
+	sha512sums = ae9c73e5908fd70e2f5ad8ee05f955204e791337d9ee983e8102c13a46faf47a071aa13f7f8f1ca68d50dab64a5f1b3d5fabd172dd30e25f0bedd6bdb037cc16
+
+pkgname = dracula-geany-colorscheme
