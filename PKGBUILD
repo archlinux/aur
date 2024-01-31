@@ -3,7 +3,7 @@
 
 pkgname=yash
 pkgver=2.55
-pkgrel=1
+pkgrel=2
 pkgdesc='Yet Another SHell is a POSIX-compliant command line shell'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://yash.osdn.jp'
@@ -47,6 +47,6 @@ package() {
   cd "${pkgname}-${pkgver}"
 
   make install DESTDIR="${pkgdir}"
-  mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
-  cp -r doc/* "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm0644 doc/*.{css,html} -t "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -Dm0644 doc/ja/*.{css,html} -t "${pkgdir}/usr/share/doc/${pkgname}/ja/"
 }

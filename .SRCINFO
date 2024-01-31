@@ -1,7 +1,7 @@
 pkgbase = yash
 	pkgdesc = Yet Another SHell is a POSIX-compliant command line shell
 	pkgver = 2.55
-	pkgrel = 1
+	pkgrel = 2
 	url = https://yash.osdn.jp
 	install = yash.install
 	arch = i686
