@@ -2,7 +2,7 @@
 
 pkgname=artery-isp-console-bin
 pkgver=3.0.09
-pkgrel=0
+pkgrel=1
 # epoch=1
 pkgdesc="Artery ISP Console 是一款基于 MCU Bootloader 的命令行应用程序。使用该应用程序,用户可以通过 UART 端口或者 USB 端口配置操作 Artery 的 MCU 设备。"
 arch=('x86_64')
@@ -92,5 +92,5 @@ EOF
 #!/bin/bash
 /opt/artery32/${pkgname%-bin}/AT32_ISP_Console "\$@"
 EOF
-
+    chown -R root:root "${pkgdir}/"
 }
