@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=rJava
-_cranver=1.0-10
+_cranver=1.0-11
 pkgname=r-${_cranname,,}
 pkgdesc="Low-Level R to Java Interface"
 url="https://cran.r-project.org/package=rJava"
@@ -19,7 +19,7 @@ source=(
     "capture-javareconf-variables.sh"
 )
 b2sums=(
-    "c6516dc79ac1f479cf335143cd53d651eb20da9a43e5ee3cf11b292ea6bb460a9f5adba36aacf65eada135b2c5c4ab533d1c3079cd6e9cc551314e9c4ef6cd9f"
+    "13ecb4a3c545505f047474027d586e0bf7ca02676bbe0bcd142bba786b3380714937f71efa2ca324fcf6efa0c20112f9ef8bc01d8093d3eea17e63176048d6b4"
     "ff9a162de319674b6d00e22b5244f06e58b395b955b697f78368c7b4f777dc9c073a4f46c74a071ca0943089fd93cd03f4aa9679f654b47259f485d166053196"
 )
 install="${pkgname}.install"
