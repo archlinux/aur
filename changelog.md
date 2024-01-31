@@ -1,3 +1,9 @@
+## GE-Proton8-30
+
+Hotfix:
+
+- fixed EAC not getting loaded. During my ULWGL changes I accidentally made it so steam games werent running using steam.exe inside the prefix... which of course broke EAC games. The code snippet involved is needed so that non-steam games don't try to run using steam.exe and thus dont create the Steam_API error. woops. fixed now.
+
 ## GE-Proton8-29
 
 - hotfix: updated proton bleeding edge to include tekken 8 online match disconnect fix
