@@ -1,7 +1,7 @@
 # Maintainer: Leonardo Riether <riether.leonardo@gmail.com>
 
 pkgname=tori-bin
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="The frictionless music player for the terminal"
 url="https://github.com/LeoRiether/tori"
@@ -12,7 +12,7 @@ conflicts=("tori")
 depends=("mpv" "pipewire")
 optdepends=("yt-dlp" "cava")
 source=("https://github.com/LeoRiether/tori/releases/download/v$pkgver/tori-$pkgver-x86_64.tar.gz")
-sha256sums=('beb11c749168a84cb2884d0d907f1e2cc253e74c48016482391671407c81b239')
+sha256sums=('59603a79266875c55c0018f3f941314bee47304cf223c18d4d68b72227f14547')
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
