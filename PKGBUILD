@@ -5,10 +5,10 @@
 
 pkgname=chromium
 pkgver=121.0.6167.139
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _manual_clone=0
-_system_clang=0
+_system_clang=1
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -17,7 +17,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
          'libffi' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs' 'pipewire'
-             'qt5-base' 'java-runtime-headless' 'git')
+             'rust' 'qt5-base' 'java-runtime-headless' 'git')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
             'qt5-base: enable Qt5 with --enable-features=AllowQt'
@@ -28,14 +28,20 @@ options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
+        REVERT-simplify-blink-NativeValueTraitsBase.patch::https://github.com/chromium/chromium/commit/940af9f2c87b.patch
         icu-74.patch
+        chromium-121-constexpr.patch
         drop-flags-unsupported-by-clang16.patch
+        compiler-rt-16.patch
         use-oauth2-client-switches-as-default.patch)
 sha256sums=('e12cc967bef7a79630828792f02d95297a06eb905c98e4c6e065fd5e74d6f9ff'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'e9113c1ed2900b84b488e608774ce25212d3c60094abdae005d8a943df9b505e'
+            '318df8f8662071cebcdf953698408058e17f59f184500b7e12e01a04a4206b50'
             'ff9ebd86b0010e1c604d47303ab209b1d76c3e888c423166779cefbc22de297f'
+            '09677c39ff9b910c732a049252969bfa03587e70502765d68b0345bac396c0b2'
             '8d1cdf3ddd8ff98f302c90c13953f39cd804b3479b13b69b8ef138ac57c83556'
+            '8a2649dcc6ff8d8f24ddbe40dc2a171824f681c6f33c39c4792b645b87c9dcab'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
 if (( _manual_clone )); then
@@ -68,7 +74,7 @@ declare -gA _system_libs=(
   #[re2]=re2          # needs libstdc++
   #[snappy]=snappy    # needs libstdc++
   #[woff2]=woff2      # needs libstdc++
-  #[zlib]=minizip
+  [zlib]=minizip
 )
 _unwanted_bundled_libs=(
   $(printf "%s\n" ${!_system_libs[@]} | sed 's/^libjpeg$/&_turbo/')
@@ -110,25 +116,38 @@ prepare() {
   # Fix build with ICU 74
   patch -Np1 -i ../icu-74.patch
 
+  # Fix "error: defaulted definition of equality comparison operator cannot
+  # be declared constexpr because it invokes a non-constexpr comparison
+  # function" (patch from Fedora)
+  patch -Np1 -i ../chromium-121-constexpr.patch
+
+  # Revert usage of C++20 features which likely need newer clang
+  patch -Rp1 -i ../REVERT-simplify-blink-NativeValueTraitsBase.patch
+
   # Drop compiler flags that need newer clang
-  #patch -Np1 -i ../drop-flags-unsupported-by-clang16.patch
+  patch -Np1 -i ../drop-flags-unsupported-by-clang16.patch
+
+  # Allow libclang_rt.builtins from compiler-rt 16 to be used
+  patch -Np1 -i ../compiler-rt-16.patch
 
   # Fixes for building with libstdc++ instead of libc++
-  #patch -Np1 -i ../chromium-patches-*/chromium-114-ruy-include.patch
-  #patch -Np1 -i ../chromium-patches-*/chromium-117-material-color-include.patch
-  #patch -Np1 -i ../chromium-patches-*/chromium-119-clang16.patch
+  patch -Np1 -i ../chromium-patches-*/chromium-114-ruy-include.patch
+  patch -Np1 -i ../chromium-patches-*/chromium-117-material-color-include.patch
+  patch -Np1 -i ../chromium-patches-*/chromium-119-clang16.patch
 
   # Link to system tools required by the build
   mkdir -p third_party/node/linux/node-linux-x64/bin
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
   ln -s /usr/bin/java third_party/jdk/current/bin/
 
-  # Use prebuilt rust as system rust cannot be used due to the error:
-  #   error: the option `Z` is only accepted on the nightly compiler
-  ./tools/rust/update_rust.py
+  if (( !_system_clang )); then
+    # Use prebuilt rust as system rust cannot be used due to the error:
+    #   error: the option `Z` is only accepted on the nightly compiler
+    ./tools/rust/update_rust.py
 
-  # To link to rust libraries we need to compile with prebuilt clang
-  ./tools/clang/scripts/update.py
+    # To link to rust libraries we need to compile with prebuilt clang
+    ./tools/clang/scripts/update.py
+  fi
 
   # Remove bundled libraries for which we will use the system copies; this
   # *should* do what the remove_bundled_libraries.py script does, with the
@@ -198,7 +217,16 @@ build() {
       'clang_base_path="/usr"'
       'clang_use_chrome_plugins=false'
       "clang_version=\"$_clang_version\""
-      #'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
+      'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
+    )
+
+    # Allow the use of nightly features with stable Rust compiler
+    # https://github.com/ungoogled-software/ungoogled-chromium/pull/2696#issuecomment-1918173198
+    export RUSTC_BOOTSTRAP=1
+
+    _flags+=(
+      'rust_sysroot_absolute="/usr"'
+      "rustc_version=\"$(rustc --version)\""
     )
   fi
 
