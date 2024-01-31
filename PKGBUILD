@@ -7,7 +7,7 @@ _disname=qq
 
 pkgname="${_pkgname}"-appimage-latest
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="New Linux QQ based on Electron"
 arch=('x86_64' 'aarch64')
 url="https://im.qq.com/linuxqq/"
@@ -22,7 +22,7 @@ source=("get_latest" "package.json")
 sha256sums=('aca0128e6a5c9871b33c6773a7d6fa966a15c9b19323f7b2068bec5da0cad5c5'
             'f68a25e106dc496fbbb9a46c44c5624b3fc6ef436642b19d1023ecf53588cd90')
 
-_appimage="${_Pkgname}-${arch}.AppImage"
+_appimage="${_Pkgname}-${CARCH}.AppImage"
 
 prepare() {
     npm install
