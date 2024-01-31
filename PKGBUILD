@@ -2,7 +2,7 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 pkgname=shuffledns-bin
 pkgver=1.0.9
-pkgrel=2
+pkgrel=3
 pkgdesc='MassDNS wrapper to resolve and enumerate valid subdomains'
 arch=(
     'aarch64'
@@ -11,12 +11,10 @@ arch=(
 )
 url="https://projectdiscovery.io/"
 _ghurl='https://github.com/projectdiscovery/shuffledns'
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=(
-    'massdns'
-)
+depends=()
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_arm64.zip")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_386.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.zip")
