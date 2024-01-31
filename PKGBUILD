@@ -1,29 +1,37 @@
 # Maintainer: Henry-ZHR <henry-zhr@qq.com>
 pkgname=python-torchsde
-_name=${pkgname#python-}
-pkgver=0.2.4
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Differentiable SDE solvers with GPU support and efficient sensitivity analysis"
 arch=('any')
 url="https://github.com/google-research/torchsde"
-license=('Apache')
-depends=('python-boltons'
+license=('Apache-2.0')
+depends=('python'
          'python-numpy'
          'python-scipy'
          'python-pytorch'
          'python-trampoline')
-makedepends=('python-build'
+makedepends=('git'
+             'python-build'
              'python-installer'
+             'python-setuptools'
              'python-wheel')
-source=("${_name}-${pkgver}::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('07ff7271f417acee0178a8f1f6780dd59b2aed57cb5350c2c0c0fbfdb82f0989d88faa53eb59ccb284a821ec3629dc24a8cfc935dbe973fd1186f2daf84b2916')
+checkdepends=('python-pytest')
+_tag='5a63002b0767f629c9bc09e9965a50bf3d583ef8'
+source=("${pkgname}::git+${url}.git#tag=${_tag}")
+sha512sums=('SKIP')
 
 build() {
-  cd "${_name}-${pkgver}"
+  cd "${pkgname}"
   python -m build --wheel --no-isolation
 }
 
+check() {
+  cd "${pkgname}"
+  PYTHONPATH="${PWD}/build/lib" pytest tests/
+}
+
 package() {
-  cd "${_name}-${pkgver}"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "${pkgname}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }
