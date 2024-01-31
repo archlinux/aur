@@ -6,9 +6,9 @@ build() {
   local PLYMOUTH_THEME_DIR="/usr/share/plymouth/themes/$PLYMOUTH_THEME_NAME"
   local PLYMOUTH_MODULE_NAME=$(sed -n "s/^ *ModuleName *= *//p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth")
   local PLYMOUTH_IMAGE_DIR=$(sed -n "s/^ *ImageDir *= *//p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth")
-  local PLYMOUTH_FONT_NAME=$(sed -n "s/^ *Font *= *\([^ ]*\).*/\1/p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth")
+  local PLYMOUTH_FONT_NAME=$(sed -n "s/^ *Font *= *//p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth" | sed -e 's/ [0-9]\+ *$//' -e 's/ \(Regular\|Bold\|Italic\|Bold Italic\|Oblique\|Bold Oblique\|Thin\|Light\|Extra Bold\) *$/:style=\1/')
   local PLYMOUTH_FONT_PATH=$(fc-match -f %{file} "$PLYMOUTH_FONT_NAME")
-  local PLYMOUTH_MONOSPACE_FONT_NAME=$(sed -n "s/^ *MonospaceFont *= *\([^ ]*\).*/\1/p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth")
+  local PLYMOUTH_MONOSPACE_FONT_NAME=$(sed -n "s/^ *MonospaceFont *= *//p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth" | sed -e 's/ [0-9]\+ *$//' -e 's/ \(Regular\|Bold\|Italic\|Bold Italic\|Oblique\|Bold Oblique\|Thin\|Light\|Extra Bold\) *$/:style=\1/')
 
   if [ -n "$PLYMOUTH_MONOSPACE_FONT_NAME" ]; then
     local PLYMOUTH_MONOSPACE_FONT_PATH=$(fc-match -f %{file} "$PLYMOUTH_MONOSPACE_FONT_NAME")
@@ -26,7 +26,6 @@ build() {
   map add_binary \
     'plymouthd' \
     'plymouth' \
-    '/usr/lib/plymouth/plymouthd-fd-escrow' \
     '/usr/lib/plymouth/text.so' \
     '/usr/lib/plymouth/details.so' \
     '/usr/lib/plymouth/label-freetype.so' \

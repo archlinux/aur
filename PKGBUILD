@@ -5,12 +5,12 @@
 
 pkgname=plymouth-git
 _pkgname=plymouth
-pkgver=24.004.60.r11.g07662e54
-pkgrel=2
+pkgver=24.004.60.r13.g02bd04d4
+pkgrel=1
 pkgdesc='Graphical boot splash screen (git version)'
 arch=('i686' 'x86_64')
 url='https://www.freedesktop.org/wiki/Software/Plymouth/'
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('bash' 'cantarell-fonts' 'fontconfig' 'libdrm' 'libevdev' 'libx11' 'libxkbcommon' 'systemd-libs')
 makedepends=('gtk3' 'docbook-xsl' 'git' 'meson')
 optdepends=('gtk3: x11 renderer')
@@ -28,9 +28,9 @@ source=("git+https://gitlab.freedesktop.org/$_pkgname/$_pkgname.git"
 
 sha256sums=('SKIP'
             'de852646e615e06d4125eb2e646d0528d1e349bd9e9877c08c5d32c43d288b6f'
-            '8aed4a234cdb4b9556e77f5949e7d18013746a27aab49e4b0aa87d33c6665a8d'
+            '77b0984473a3a179546605d5346a445e78b45967730f7da13b0d4cf701570137'
             'cfd0c754437d582bbc8d2cbb545a777b00b5c77a6302522577e9d88b169e2f59'
-            '2e63bd2460ce4ca56b9a407802c35ce69072cda40679b42889d692adf2fc656c'
+            '853026f6b46106d7293cc83ebbd54043a7e4f11b7db5e8fbda3acf3ce0672e41'
             '04af86a0ec83fc92d7339e1a7fcc0d55b86b95797a1a5f1a3b8d850996a3926c')
 
 pkgver() {
