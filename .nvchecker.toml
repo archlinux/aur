@@ -1,0 +1,5 @@
+[opengfw]
+source = "github"
+github = "apernet/OpenGFW"
+prefix = "v"
+use_latest_release = true
