@@ -4,7 +4,7 @@ pkgbase = xfe
 	pkgrel = 1
 	url = http://roland65.free.fr/xfe
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = intltool
 	depends = fox>=1:1.6
 	depends = fox<1:1.7

@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc='X File Explorer (Xfe) is an MS-Explorer like file manager for X'
 arch=('x86_64')
 url='http://roland65.free.fr/xfe'
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('fox>=1:1.6' 'fox<1:1.7' 'freetype2' 'xcb-util' 'libxft')
 makedepends=('intltool')
 source=("https://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.xz")
