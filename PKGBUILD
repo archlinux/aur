@@ -2,26 +2,23 @@
 pkgname=librefancontrol-bin
 _pkgname=LibreFanControl
 pkgver=1.0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="A way to control fans based on temperature"
 arch=("x86_64")
 url="https://github.com/wiiznokes/LibreFanControl"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'freetype2'
-    'libxi'
-    'libx11'
     'libxrender'
     'alsa-lib'
-    'libxtst'
-    'libglvnd'
-    'fontconfig'
     'java-runtime'
     'libxext'
     'i2c-tools'
     'aspnet-runtime'
+    'libxtst'
+    'libglvnd'
+    'fontconfig'
 )
 makedepends=(
     'gendesk'
@@ -31,7 +28,7 @@ source=(
 )
 sha256sums=('23704f323b17d0f8d791667edc6fa4cf3807681fd44250deb5a2b1f768b98fc7')
 build() {
-    gendesk -q -f -n --categories "System;Utility" --name "${_pkgname}" --exec "${pkgname%-bin}"
+    gendesk -q -f -n --categories "System;Utility" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt,etc/systemd/system,usr/bin,usr/local/bin/"${_pkgname}"Service}
