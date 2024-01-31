@@ -2,7 +2,7 @@
 pkgname=luxmark
 pkgver=4.0alpha1
 _pkgver=543b6780171fc58bf7204b312d94ae8bb5bbef56
-pkgrel=6
+pkgrel=7
 pkgdesc="OpenCL benchmark tool"
 arch=('x86_64') # because of embree only x86_64 is supported
 url="https://github.com/LuxCoreRender/LuxMark"
@@ -17,7 +17,7 @@ md5sums=('4eaccbb6db1eb13d2d06b017224907bd'
          '2d02d2192f6e0baad6090b0609a31b2f'
          '8726fa90791f5380dd24789b8933141e'
          '6ba9b9888160cc06e3c3644e21d80e5a'
-         'eee0e62eee415390be90bd2071cd22cb')
+         'fc2ab9d8466290a13a7e40f1e906b04b')
 
 prepare() {
   cd "$srcdir/LuxMark-$_pkgver"

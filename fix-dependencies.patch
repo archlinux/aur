@@ -3,10 +3,8 @@ index 4de71e3..d7a0e98 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -115,6 +115,7 @@ set(LUXMARK_SRCS
- ADD_EXECUTABLE(luxmark WIN32 ${LUXMARK_SRCS})
  
--TARGET_LINK_LIBRARIES(luxmark ${ALL_LUXCORE_LIBRARIES} ${Boost_LIBRARIES} ${Qt5_LIBRARIES} ${OPENGL_gl_LIBRARY} ${CMAKE_DL_LIBS})
-+TARGET_LINK_LIBRARIES(luxmark ${ALL_LUXCORE_LIBRARIES} ${Boost_LIBRARIES} ${Qt5_LIBRARIES} ${OPENGL_gl_LIBRARY} ${CMAKE_DL_LIBS} /usr/lib/libfmt.so.9)
+ TARGET_LINK_LIBRARIES(luxmark ${ALL_LUXCORE_LIBRARIES} ${Boost_LIBRARIES} ${Qt5_LIBRARIES} ${OPENGL_gl_LIBRARY} ${CMAKE_DL_LIBS})
 +TARGET_LINK_LIBRARIES(luxmark opensubdiv.a openvdb opencolorio.a OpenImageIO_Util python3.11 blosc dl Imath)
  
  if (WIN32)
