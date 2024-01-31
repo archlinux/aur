@@ -28,12 +28,6 @@ validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
 source=("git+https://github.com/curl/${_proj}.git#tag=${_tag}?signed")
 sha512sums=('SKIP')
 
-_backports=(
-)
-
-_reverts=(
-)
-
 prepare() {
   cd $_proj
 
