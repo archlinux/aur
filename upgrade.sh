@@ -8,7 +8,6 @@ VERSION=$(wget --quiet -O - https://api.github.com/repos/Browsers-software/brows
 SHA=$(wget --quiet -O - https://github.com/Browsers-software/browsers/releases/download/$VERSION/browsers_linux.tar.xz.sha256)
 sed -i "s/pkgver=.*$/pkgver=$VERSION/" PKGBUILD
 sed -i "s/sha256sums=.*$/sha256sums=(\"$SHA\")/" PKGBUILD
-rm -f browsers_linux.tar.xz
 makepkg
 makepkg --printsrcinfo > .SRCINFO
 git add .

@@ -8,7 +8,7 @@ pkgbase = browsers-bin
 	license = MIT
 	provides = browsers=0.5.1
 	conflicts = browsers-git
-	source = https://github.com/Browsers-software/browsers/releases/download/0.5.1/browsers_linux.tar.xz
+	source = browsers_linux-0.5.1.tar.xz::https://github.com/Browsers-software/browsers/releases/download/0.5.1/browsers_linux.tar.xz
 	sha256sums = 21a229adb9facb87b7cc7fc495ed45d3fc009a044afab87fe3fc297bbec863b6
 
 pkgname = browsers-bin

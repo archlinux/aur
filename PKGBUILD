@@ -8,7 +8,8 @@ url="https://browsers.software"
 license=("Apache" "MIT")
 provides=("browsers=$pkgver")
 conflicts=("browsers-git")
-source=("https://github.com/Browsers-software/browsers/releases/download/$pkgver/browsers_linux.tar.xz")
+# Make source file name unique: https://wiki.archlinux.org/title/PKGBUILD#source
+source=("browsers_linux-$pkgver.tar.xz::https://github.com/Browsers-software/browsers/releases/download/$pkgver/browsers_linux.tar.xz")
 sha256sums=("21a229adb9facb87b7cc7fc495ed45d3fc009a044afab87fe3fc297bbec863b6")
 
 package() {
