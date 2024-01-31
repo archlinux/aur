@@ -1,6 +1,6 @@
 pkgbase = nextcloud-spreed-signaling
 	pkgdesc = Standalone signaling server for Nextcloud Talk.
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/strukturag/nextcloud-spreed-signaling
 	install = nextcloud-spreed-signaling.install
@@ -12,7 +12,7 @@ pkgbase = nextcloud-spreed-signaling
 	optdepends = nats-server
 	optdepends = janus-gateway
 	backup = etc/signaling/server.conf
-	source = https://github.com/strukturag/nextcloud-spreed-signaling/releases/download/v1.2.2/nextcloud-spreed-signaling-v1.2.2.tar.gz
-	sha256sums = f7e671ed9afbf2da6e9e1d912d6b6f751bd15844bebbaeaa32f8278209a0b2bd
+	source = https://github.com/strukturag/nextcloud-spreed-signaling/releases/download/v1.2.3/nextcloud-spreed-signaling-v1.2.3.tar.gz
+	sha256sums = 1138f2f9c4a37ef6dd1cebc17411f150acc68abfc0de2c6d69a1914a9ce40f38
 
 pkgname = nextcloud-spreed-signaling
