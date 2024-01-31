@@ -5,14 +5,14 @@ _font='cantora'
 _group='impallari'
 pkgname=ttf-${_group}-${_font}
 pkgver=1.001
-pkgrel=7
+pkgrel=8
 pkgdesc="Cantora ('Singer' in Spanish) is a friendly semi-formal, semi-condensed, semi–sans-serif font, from Pablo Impallari"
 arch=(any)
 url='https://fonts.google.com/specimen/Cantora+One'
 license=('OFL')
 groups=("${_group}-fonts")
 source=("Cantora_One.zip::https://fonts.google.com/download?family=Cantora%20One")
-sha256sums=('069d061f99cb0ff8e0a50f544f3c502a54d4de071f707f33c55eeda6bee8427c')
+sha256sums=('284210cdc091282b905eb8343d3af286c0c92288bc498d6e60fb90353999c134')
 
 package() {
   install -dm755 "${pkgdir}/usr/share/fonts/TTF/${_group}"
