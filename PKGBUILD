@@ -1,6 +1,7 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 
 pkgname=python-msgraph-core
+epoch=1
 pkgver=0.2.2
 pkgrel=1
 pkgdesc='Core component of the Microsoft Graph Python SDK consisting of HTTP/Graph Client and a configurable middleware pipeline (Preview).'

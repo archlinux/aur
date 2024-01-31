@@ -2,6 +2,7 @@ pkgbase = python-msgraph-core
 	pkgdesc = Core component of the Microsoft Graph Python SDK consisting of HTTP/Graph Client and a configurable middleware pipeline (Preview).
 	pkgver = 0.2.2
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/microsoftgraph/msgraph-sdk-python-core
 	arch = any
 	license = MIT
