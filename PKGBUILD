@@ -9,8 +9,8 @@
 
 _proj=curl
 pkgname=curl-c-ares
-_tag='55b5fafb094ebe07ca8a5d4f79813c8b40670795' # git rev-parse v${_tag_name}
-_tag_name='8_5_0'
+_tag='8cd1397d3c5c9b1526c8d74530266a7a9a22294b' # git rev-parse v${_tag_name}
+_tag_name='8_6_0'
 pkgver="${_tag_name//_/.}"
 pkgrel=1
 pkgdesc='command line tool and library for transferring data with URLs (built with c-ares)'
