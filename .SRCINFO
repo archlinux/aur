@@ -1,6 +1,6 @@
 pkgbase = pan-git
 	pkgdesc = Pan is a Usenet newsreader that's good at both text and binaries. Development version.
-	pkgver = v0.154.r42.g1f422ca
+	pkgver = v0.155.r5.g5c2da7a
 	pkgrel = 1
 	epoch = 1
 	url = http://pan.rebelbase.com/

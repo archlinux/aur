@@ -1,10 +1,11 @@
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: MyMaud <russ@russgibson.org>
 # Contributor: skydrome <skydrome@i2pmail.org>
-# Maintainer: Mike Pento <mpento darkforge net>
+# Contributor: Mike Pento <mpento darkforge net>
 
 pkgname=pan-git
 _gitname=pan
-pkgver=v0.154.r42.g1f422ca
+pkgver=v0.155.r5.g5c2da7a
 pkgrel=1
 epoch=1
 pkgdesc="Pan is a Usenet newsreader that's good at both text and binaries. Development version."
