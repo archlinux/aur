@@ -1,10 +1,11 @@
 pkgbase = cinc-workstation-bin
 	pkgdesc = The Cinc installation package includes everything you need to start converging your machines.
 	pkgver = 23.12.1055
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cinc.sh/download/
 	arch = x86_64
 	license = Apache
+	depends = libxcrypt-compat
 	conflicts = chef
 	conflicts = chef-solo
 	conflicts = chef-dk
