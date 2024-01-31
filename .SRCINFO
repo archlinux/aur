@@ -1,6 +1,6 @@
 pkgbase = mockoon
 	pkgdesc = The easiest and quickest way to run mock APIs locally. No remote deployment, no account required, open source.
-	pkgver = 6.1.0
+	pkgver = 6.2.0
 	pkgrel = 1
 	url = https://mockoon.com/
 	arch = any
@@ -15,9 +15,9 @@ pkgbase = mockoon
 	depends = electron26
 	depends = hicolor-icon-theme
 	conflicts = mockoon
-	source = mockoon::git+https://github.com/mockoon/mockoon.git#tag=v6.1.0
+	source = mockoon.git::git+https://github.com/mockoon/mockoon.git#tag=v6.2.0
 	source = mockoon.sh
 	sha256sums = SKIP
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
 
 pkgname = mockoon

@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mockoon
-pkgver=6.1.0
+pkgver=6.2.0
 _electronversion=26
 _nodeversion=18
 pkgrel=1
@@ -24,11 +24,11 @@ makedepends=(
     'gcc'
 )
 source=(
-    "${pkgname}::git+${_ghurl}.git#tag=v${pkgver}"
+    "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -41,14 +41,17 @@ build() {
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories "Development" --name "${pkgname}" --exec "${pkgname}"
-    cd "${srcdir}/${pkgname}"
-    sed '12,20d' -i "${srcdir}/${pkgname}/packages/desktop/build-configs/electron-builder.linux.js"
+    gendesk -q -f -n --categories "Development" --name "${pkgname}" --exec "${pkgname} %U"
+    cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
-    export npm_config_cache="$srcdir/.npm_cache"
+    export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
+    sed '12,24d' -i "${srcdir}/${pkgname}.git/packages/desktop/build-configs/electron-builder.linux.js"
     npm run bootstrap
     npm run build:libs
     npm run build:desktop:prod
@@ -56,11 +59,11 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/packages/desktop/packages/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
-    for _icons in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512;do
-        install -Dm644 "${srcdir}/${pkgname}/packages/desktop/build-res/icon_${_icons}x32.png" \
+    install -Dm644 "${srcdir}/${pkgname}.git/packages/desktop/packages/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
+    for _icons in 16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
+        install -Dm644 "${srcdir}/${pkgname}.git/packages/desktop/build-res/icon_${_icons}x32.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
