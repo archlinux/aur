@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=basilisk
-_pkgver=1.14.2
+_pkgver=1.14.3
 pkgname=r-${_pkgname,,}
-pkgver=1.14.2
+pkgver=1.14.3
 pkgrel=1
 pkgdesc='Freezing Python Dependencies Inside Bioconductor Packages'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('afe999c64bcf0faee0e3a518e43411f17e6cdf61137fc11758eabb734310233a')
+sha256sums=('ed5abcb0e4b118b0959bf91676e7cdca5400de5febd7946e3d68cbeaae14bd42')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
