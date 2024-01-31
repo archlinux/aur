@@ -2,7 +2,7 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 pkgname=picopt
 pkgdesc="A multi format lossless image optimizer that uses external tools"
-pkgver=3.3.6
+pkgver=3.3.7
 pkgrel=1
 arch=(any)
 url="https://github.com/ajslater/${pkgname}"
@@ -14,7 +14,7 @@ optdepends=('gifsicle: for animated GIFs support'
   'pngout: for optimize PNG images'
   'mozjpeg: for optimize JPEG images')
 source=(https://pypi.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('25c663f4cfbcd60b169f9d1c3a5d2f773396d7be7a47d2ab23e051205ee267bca2a8249aaf08c790df6b302be60fb94833ca403e19c43e8d0634663591e177b8')
+sha512sums=('b3772599e8938a42db204270f09f7125e0927906734c667c2a75c951c9fb9a4d23bed33f15285f3c786e255c963dad5c68f378cd710da90f9e35996155b60d20')
 
 prepare() {
   sed -i 's/\["poetry.core.masonry.api"\]/"poetry.core.masonry.api"/' ${pkgname}-${pkgver}/pyproject.toml
