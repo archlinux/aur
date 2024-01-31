@@ -7,7 +7,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=waterfox
-pkgver=G6.0.7
+pkgver=G6.0.8
 pkgrel=1
 pkgdesc="Fork of Mozilla Firefox featuring some privacy, usability, and speed enhancements."
 arch=(x86_64)
@@ -60,8 +60,8 @@ source=(
 	$pkgname.desktop
 )
 b2sums=(
-	'48a337f4fdab555d089e5bc2a0d1e3644ee0842846cc5b793294066c8b5ad59d2c207da13538fffb68dec737a6e3c9dcad5807ab8d1892dfca96b367c24b25ce'
-	'0fad7604486275fb74cdc11ce4375f024eda859eb6520f71cb6c4e73a042e9d16d3e6d03d3bc6e3d6bf6ec72d7c07394c922914042be3d0919205a55cf7ab978'
+	'861e981cd9a7a0a497e7f3a752a435d63825ae4227abfffbf8019387432b44eaf950360ff06968cf65f74d3f7396a3e168e9c8c97ba3be1f1bea14011746ba58'
+	'b40c9d21c97f1b1ac9cae61593427c18f2262e39484874ad2077be7484f929ad7785406541f1b964041f6cd43f1fdd5c98e4942af3586de67d7b9c50a829a996'
 )
 
 prepare () {
