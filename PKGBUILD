@@ -63,13 +63,25 @@ package() {
     'python2-freezegun'
     'python2-pytest'
   )
-
   cd "${_tarname}"
-  python2 setup.py install --root="${pkgdir}" --prefix='/usr' --optimize=1 --skip-build
-
-  install --verbose -Dm 644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install --verbose -Dm 644 'README.rst' -t "${pkgdir}/usr/share/doc/${pkgname}"
-
+  "${_py}" \
+    setup.py \
+      install \
+        --root="${pkgdir}" \
+        --optimize=1 \
+        --skip-build
+  install \
+    --verbose \
+    -Dm 644 \
+    'LICENSE' \
+    -t \
+    "${pkgdir}/usr/share/licenses/${pkgname}"
+  install \
+    --verbose \
+    -Dm 644 \
+    'README.rst' \
+    -t \
+    "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
 # vim:set sw=2 sts=-1 et:
