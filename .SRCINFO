@@ -1,7 +1,7 @@
 pkgbase = bannertool
 	pkgdesc = A tool for creating 3DS banners
 	pkgver = 1.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Steveice10/bannertool/
 	arch = i686
 	arch = x86_64

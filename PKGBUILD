@@ -2,7 +2,7 @@
 # Contributer: Yacob Zitouni <yacob.zitouni@gmail.com>
 pkgname=('bannertool')
 pkgver=1.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A tool for creating 3DS banners"
 arch=('i686' 'x86_64')
 url="https://github.com/Steveice10/bannertool/"
