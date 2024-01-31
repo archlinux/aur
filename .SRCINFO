@@ -1,19 +1,16 @@
 pkgbase = python-msgraph-core
 	pkgdesc = Core component of the Microsoft Graph Python SDK consisting of HTTP/Graph Client and a configurable middleware pipeline (Preview).
-	pkgver = 1.0.0
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/microsoftgraph/msgraph-sdk-python-core
 	arch = any
 	license = MIT
 	makedepends = python-build
+	makedepends = python-flit-core
+	makedepends = python-requests
 	makedepends = python-installer
-	makedepends = python-setuptools
-	makedepends = python-wheel
-	depends = python-microsoft-kiota-abstractions
-	depends = python-microsoft-kiota-authentication-azure
-	depends = python-microsoft-kiota-http
-	depends = python-httpx
-	source = https://pypi.io/packages/source/m/msgraph-core/msgraph-core-1.0.0.tar.gz
-	sha512sums = c999e547cb4caa00fda136e0c0c0cae1e20001edc23c489c2695237d6b71756585bdc513a43c816a2833cab6e718bf08918dea334d03408ccc272ba027fcfcf7
+	depends = python
+	source = https://pypi.io/packages/source/m/msgraph-core/msgraph-core-0.2.2.tar.gz
+	sha512sums = 14beb6f4b19033fd9027704ea68c37b65a296e7e346ecc8051e1aea0ac7f8f9012539a406fb9205455a2d1a5059ce8969de2edc56d04df3e95ad1284f166c3ab
 
 pkgname = python-msgraph-core
