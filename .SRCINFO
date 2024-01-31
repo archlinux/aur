@@ -1,0 +1,20 @@
+pkgbase = sui-bin
+	pkgdesc = Sui, a next-generation smart contract platform with high throughput, low latency, and an asset-oriented programming model powered by the Move programming language. (official binary)
+	pkgver = 1.17.3
+	pkgrel = 1
+	url = https://sui.io
+	arch = x86_64
+	license = Apache-2.0
+	depends = rust
+	depends = openssl
+	depends = libldap
+	depends = krb5
+	depends = e2fsprogs
+	depends = keyutils
+	depends = libsasl
+	provides = sui
+	conflicts = sui
+	source = https://github.com/MystenLabs/sui/releases/download/mainnet-v1.17.3/sui-mainnet-v1.17.3-ubuntu-x86_64.tgz
+	sha512sums = a4dc83dbc01c21eb39c95e63ea601f954619c068a501036c6d7bd2577ef99556c7fe50ae85496dfe4fea19d0ceee8dcbcdc6f81a90c041f6fb0940f2d6d5418d
+
+pkgname = sui-bin
