@@ -2,7 +2,7 @@
 # Co-Maintainer: Brendan Szymanski <hello@bscubed.dev>
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=1645.r0.gf6f9752
+pkgver=1699.r0.g14cba4a
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -39,17 +39,17 @@ depends=('fmt'
          'qt5-webengine'
          'sdl2'
          'enet'
-         'boost-libs')
+         'boost-libs'
+         'cubeb')
 makedepends=('boost'
              'glslang'
              'llvm'
              'gcc'
-             'clang'
+             'ninja'
              'catch2'
              'cmake'
              'ffmpeg'
              'git'
-             'ninja'
              'nlohmann-json'
              'qt5-tools'
              'robin-map'
@@ -80,6 +80,8 @@ source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-mainline"
         'git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'
         'git+https://github.com/yuzu-emu/breakpad.git'
         'git+https://github.com/brofield/simpleini.git'
+        'git+https://github.com/merryhime/oaknut.git'
+        'git+https://github.com/KhronosGroup/Vulkan-Utility-Libraries.git'
         # cubeb dependencies
         'git+https://github.com/arsenm/sanitizers-cmake.git'
         'git+https://github.com/google/googletest.git'
@@ -118,6 +120,8 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP')
 
 pkgver() {
@@ -130,7 +134,7 @@ prepare() {
     cd "$srcdir/$_pkgname"
 
     git submodule init
-    for submodule in {inih,cubeb,dynarmic,libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus,ffmpeg,SDL,cpp-httplib,vcpkg,cpp-jwt,enet,libadrenotools,tzdb_to_nx,VulkanMemoryAllocator,breakpad,simpleini}; 
+    for submodule in {inih,cubeb,dynarmic,libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus,ffmpeg,SDL,cpp-httplib,vcpkg,cpp-jwt,enet,libadrenotools,tzdb_to_nx,VulkanMemoryAllocator,breakpad,simpleini,oaknut,Vulkan-Utility-Libraries}; 
     do
         git config submodule.$submodule.url "$srcdir/${submodule}"
     done
@@ -187,12 +191,13 @@ build() {
       -DYUZU_USE_BUNDLED_QT=OFF \
       -DYUZU_USE_EXTERNAL_VULKAN_HEADERS=OFF \
       -DYUZU_USE_FASTER_LD=$_fast_ld \
-      -DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
       -DYUZU_DOWNLOAD_TIME_ZONE_DATA=ON \
+      -DYUZU_CRASH_DUMPS=OFF \
       -DYUZU_TESTS=OFF \
       -DENABLE_QT6=OFF \
-      -DUSE_DISCORD_PRESENCE=ON \
       -DENABLE_QT_TRANSLATION=ON \
+      -DUSE_DISCORD_PRESENCE=ON \
+      -DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
       -DBUILD_REPOSITORY=yuzu-emu/yuzu-mainline \
       -DBUILD_TAG=${pkgver} \
       -DTITLE_BAR_FORMAT_IDLE="yuzu | ${pkgver} {}" \
