@@ -13,7 +13,7 @@ source=("browsers_linux-$pkgver.tar.xz::https://github.com/Browsers-software/bro
 sha256sums=("21a229adb9facb87b7cc7fc495ed45d3fc009a044afab87fe3fc297bbec863b6")
 
 package() {
-  bsdtar -xf "$srcdir/browsers_linux.tar.xz" -C "$srcdir"
+  bsdtar -xf "$srcdir/browsers_linux-$pkgver.tar.xz" -C "$srcdir"
 
   # install.sh assumes it's installing in /usr/local, so replace paths by $pkgdir
   sed -Ei "s|=\"/usr(\/local)?|=\"$pkgdir\/usr|" "$srcdir/install.sh"
