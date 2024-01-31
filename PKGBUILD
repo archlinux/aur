@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ttf-canger-xiaowanzi
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="仓耳小丸子,任何用户可以全球任何领域永久免费商用."
 arch=('any')
 _downurl="http://tsanger.cn"
