@@ -1,10 +1,10 @@
 pkgbase = alibabasans-italic-fonts
 	pkgdesc = A typeface for creating alibaba sans italic in text.阿里巴巴普惠体拉丁斜体,172语种,5字重
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://fonts.alibabagroup.com/#/font
 	arch = any
-	license = custom
+	license = LicenseRef-custom
 	source = alibabasans-italic-fonts-1.0.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlibabaSansItalics.zip
 	source = license.txt
 	sha256sums = a6d7bfe17b7e04324edaa0872f513433255c8e8e5b8eece2fd78c15251ea1acb
