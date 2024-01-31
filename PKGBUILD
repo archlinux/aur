@@ -3,7 +3,7 @@
 _pkgname=sdc
 pkgname="$_pkgname-git"
 pkgver=r30.a5bfafa
-pkgrel=1
+pkgrel=2
 pkgdesc="C port of SD, a very efficient flash cards app"
 arch=(any)
 url="https://git.exozy.me/a/$_pkgname"
@@ -30,6 +30,6 @@ package() {
 	install -Dm755 sd "$pkgdir/usr/bin/sd"
 	install -Dm755 main.py "$pkgdir/usr/bin/sd-qt"
 	install -Dm755 tkinter.py "$pkgdir/usr/bin/sd-tk"
-	install -Dm755 sd-add.fish "$pkgdir/usr/share/fish/vendor_functions.d/sd-add.fish"
-	install -Dm755 sqlitevi.fish "$pkgdir/usr/share/fish/vendor_functions.d/sqlitevi.fish"
+	install -Dm644 sd-add.fish "$pkgdir/usr/share/fish/vendor_functions.d/sd-add.fish"
+	install -Dm644 sqlitevi.fish "$pkgdir/usr/share/fish/vendor_functions.d/sqlitevi.fish"
 }
