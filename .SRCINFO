@@ -1,38 +1,25 @@
 pkgbase = reqable-bin
 	pkgdesc = A cross platform professional HTTP development and Debugger that supports HTTP1, HTTP2, and HTTP3 (QUIC) protocols
-	pkgver = 2.4.1
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://reqable.com
 	arch = x86_64
 	license = LicenseRef-custom
-	depends = xz
-	depends = libdbusmenu-gtk3
-	depends = libgcrypt
 	depends = gtk3
-	depends = libayatana-appindicator
-	depends = libepoxy
-	depends = libayatana-indicator
-	depends = libgpg-error
-	depends = lz4
-	depends = pango
 	depends = nspr
-	depends = util-linux-libs
-	depends = cairo
-	depends = harfbuzz
-	depends = at-spi2-core
-	depends = gdk-pixbuf2
 	depends = nss
 	depends = libdbusmenu-glib
-	depends = fontconfig
-	provides = reqable=2.4.1
+	depends = libdbusmenu-gtk3
+	depends = libayatana-appindicator
+	depends = libayatana-indicator
+	provides = reqable=2.6.0
 	conflicts = reqable
-	options = !emptydirs
 	options = !strip
-	source = reqable-2.4.1.deb::https://github.com/reqable/reqable-app/releases/download/2.4.1/reqable-app-linux-x86_64.deb
+	source = reqable-2.6.0.deb::https://github.com/reqable/reqable-app/releases/download/2.6.0/reqable-app-linux-x86_64.deb
 	source = LICENSE.html
 	source = reqable.sh
-	sha256sums = cef804c655fe21bd7c11428cfbcd0901b7fef679e0044681f2a0a9ed722c8b51
+	sha256sums = 4ea6b1df2f5768e7b35860896d3c16a91e0a4a037734d6da113b0aeea9ff58e0
 	sha256sums = 23392e1a40e734a004a13faec6db357230d1a3893a849ceaba3d25079a403630
-	sha256sums = d00425e6ff378959e512ceb27e2056f4b0a6d2d8934b6c91e93720d91ffe8446
+	sha256sums = 1e338ff128b2be2b0d484ea2d00814db6709a5e2cc455a373428d21f8ed690d5
 
 pkgname = reqable-bin
