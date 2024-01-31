@@ -2,11 +2,11 @@
 
 pkgname=bookshelf
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Virtual bookshelf browser for the terminal'
 arch=(any)
 url='https://github.com/maandree/bookshelf'
-license=(GPL3)
+license=(GPL-3.0)
 depends=(bash grep coreutils)
 optdepends=('jfbview: default document viewer under TTY'
             'xpdf: default document viewer under X')
