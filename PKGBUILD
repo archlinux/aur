@@ -1,7 +1,7 @@
 # Maintainer: Sahar Shulman <dillpickledev@gmail.com>
 pkgname=easyboard
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Whiteboard for Project Planning, Mind Mapping, Note Taking, and more."
 arch=(x86_64 x86_32)
 license=('Proprietary')

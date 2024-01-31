@@ -1,7 +1,7 @@
 pkgbase = easyboard
 	pkgdesc = Whiteboard for Project Planning, Mind Mapping, Note Taking, and more.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	arch = x86_32
 	license = Proprietary
