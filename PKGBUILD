@@ -1,6 +1,6 @@
 pkgname=clash-nyanpasu-bin
 _pkgname=clash-nyanpasu
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="A Clash GUI based on tauri. Clash Nyanpasu! (∠・ω< )⌒☆​"
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('clash-nyanpasu-git' 'clash-nyanpasu-appimage')
 provides=('clash-nyanpasu')
 optdepends=('clash-rs: custom protocol network proxy, coding with rust')
 source=("${_pkgname}-${pkgver}-${arch}.deb::https://github.com/keiko233/clash-nyanpasu/releases/download/v${pkgver}/clash-nyanpasu_${pkgver}_amd64.deb")
-sha256sums=('3ab48a2d8ba92fc03bd4a0a55c08392c226b8a9ee4263251c140c377011092ea')
+sha256sums=('61c50be02fc0e8a6713af51937b41f721fb51d6287515b8d142aec04fb56461d')
 
 package() {
     tar xpf data.tar.gz -C ${pkgdir}
