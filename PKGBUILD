@@ -3,14 +3,14 @@
 
 pkgname='jedstate-git'
 _pkgname="${pkgname/-git/}"
-pkgver=0.9.6.r2.g09a671e
+pkgver=0.9.9.r4.g9988db3
 pkgrel=2
 pkgdesc='S-Lang module for the JED editor to remember its cursor position across invocations (built from latest commit)'
 arch=('any')
 url='https://codeberg.org/kas/jedstate'
 license=('AGPL-3.0-or-later')  # SPDX-License-Identifier: AGPL-3.0-or-later
 depends=('jed')
-makedepends=('git' 'jed')
+makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")

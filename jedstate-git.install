@@ -1,13 +1,13 @@
 # -*- sh -*-
 
 pre_install() {
-  cat <<EOF >&2
-NB: In order to use this package you will have to edit
-    startup_hook() and exit_hook() of your ~/.jedrc and
-    also include two autoload() stanzas.
+  cat <<EOF
+NB: In order to use this package you will have to edit add a
+    require("jedstate") to your existing ~/.jedrc, and also
+    edit (or add) startup_hook() and exit_hook().
 
-    See /usr/share/doc/jedstate-git/jedstate-hooks.sl
-    for an example.
+    Working sample hooks and a README can be found in the
+    /usr/share/doc/jedstate-git/ directory.
 EOF
 }
 
