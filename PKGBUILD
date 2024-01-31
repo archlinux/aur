@@ -3,7 +3,7 @@ pkgname=xbyyunpan-bin
 _zhsname="小白羊云盘"
 _pkgname="XBYDriver"
 pkgver=3.12.3
-pkgrel=1
+pkgrel=2
 pkgdesc="小白羊网盘 - Powered by 阿里云盘Open"
 arch=(
     'aarch64'
@@ -21,25 +21,9 @@ conflicts=(
 )
 depends=(
     'alsa-lib'
-    'libxdamage'
-    'pango'
-    'libxrandr'
-    'libxext'
-    'libxcb'
-    'libx11'
-    'libxcomposite'
-    'libxkbcommon'
     'nss'
-    'libxfixes'
-    'at-spi2-core'
-    'libdrm'
-    'cairo'
     'gtk3'
     'nspr'
-    'wayland'
-    'libcups'
-    'expat'
-    'mesa'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-armv7l.deb")
