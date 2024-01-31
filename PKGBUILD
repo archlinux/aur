@@ -5,7 +5,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=onlyoffice-documentserver-bin
-pkgver=7.5.1
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('x86_64')
@@ -21,38 +21,46 @@ license=('AGPL')
 source=("https://github.com/ONLYOFFICE/DocumentServer/releases/download/v${pkgver}/onlyoffice-documentserver.x86_64.rpm"
         "onlyoffice-fileconverter.service"
         "onlyoffice-docservice.service"
-        "onlyoffice-documentserver.hook"
         "onlyoffice-documentserver.sysusers"
-        "onlyoffice-documentserver.tmpfiles")
-sha512sums=('cc8414e6602ba797fac216d774a8df1cd471eb7a075e0b49332b6f9ad8102fc80e66bd4595cf37172ab9094a83ed07a82bf0725afec36556c900200d1b260f98'
-            '848074ce03328915d251db45a5475f6a2dff3b15f53b3b1dfbd702a9dc184d53aea78da1310db9c60d85a35062ce9986f37843c000f269dcaf8d624ed29e0a60'
+        "onlyoffice-documentserver.tmpfiles"
+        "local.json")
+sha512sums=('6b49d4bda80f7f64c5b37517808c45fe8765c8268f686043c7f36530599a3b31a53c5cd217173886e1918f62b8c349b3639619fc3bd98804b7efccefed6f792c'
+            '329adb3a5191e8982b4131dab7ddba7ef700f8bdfd4a39f7021ad9a983105dcb97e46ab798b015e0586a15a1f3454d89000a251e1b0bac4dd2d8a682cce82b4f'
             '3df1f5339b394eef1b27317f5d0e7786d2cb8dbbd13cddb22047567c3703f384d95f092fc34ce3031aeb895f013d7c0686ce968e1fae7f1f24473c1a6615f7ad'
-            '707da287c3db6907fcdbf91cfe2ef057c77033713a1b4299a89a684b37fe3c74644e2c0b1fcec2afcd81c6511bb02ac3221d56c8caadb5d0c711d1842f78e780'
             'c7c23c5a7014e3251dfd86312d1d1e5c2d88f26ddc5aa967285202fd3ebf62c0a10c009b1cc5ad1b78e13fa0bc2eda515616d8af02325db434c0b2113c5b1ecb'
-            'e1b8395ab7ef219860aebe9e7709a60cbaea1c28a8378aac3f54ce37b39944a7fd82b7efa8d59977f0891743cdface149b9f95f4b25c1c5322cb327c50d485ed')
+            '2145478015c6a77c8435f9aaafbbd395bb2dfd87d68c850f91bd8ca1f22d4bff207309ca24992d1747cc24ca9d5828434543295327e654dee31c6634d3207363'
+            '60e2e68f6aa71f8ac474ba7640008a6b41052a78e9d9a7f289c9aaa04fb1d2b3de30294a9f761a5834fbc0e42db4823ec0cc73504024425d8efe6bf430b71dc7')
 backup=('etc/webapps/onlyoffice/documentserver/local.json')
 install="onlyoffice-documentserver.install"
 options=('!strip')
 
 prepare() {
-  sed -i 's|/var/www/onlyoffice|/usr/share/webapps/onlyoffice|g' "${srcdir}/etc/onlyoffice/documentserver/production-linux.json"
-  sed -i 's|/etc/onlyoffice/documentserver|/etc/webapps/onlyoffice/documentserver|g' "${srcdir}/etc/onlyoffice/documentserver/production-linux.json"
+  cd ${srcdir}
+  chmod -R 770 var
+  sed -i -e 's|/var/www/onlyoffice|/usr/share/webapps/onlyoffice|g' -e 's|/etc/onlyoffice/documentserver|/etc/webapps/onlyoffice/documentserver|g' etc/onlyoffice/documentserver/production-linux.json
+  #enable mobile editor
+  sed -i 's/isSupportEditFeature=function(){return!1}/isSupportEditFeature=function(){return 1}/g' ${srcdir}/var/www/onlyoffice/documentserver/web-apps/apps/{documenteditor,presentationeditor,spreadsheeteditor}/mobile/dist/js/app.js
+}
+
+build() {
+  cd ${srcdir}
+  export LD_LIBRARY_PATH="usr/lib64/"
+  var/www/onlyoffice/documentserver/server/tools/allfontsgen --input="var/www/onlyoffice/documentserver/core-fonts" --allfonts-web="var/www/onlyoffice/documentserver/sdkjs/common/AllFonts.js" --allfonts="var/www/onlyoffice/documentserver/server/FileConverter/bin/AllFonts.js" --images="var/www/onlyoffice/documentserver/sdkjs/common/Images" --selection="var/www/onlyoffice/documentserver/server/FileConverter/bin/font_selection.bin" --output-web="var/www/onlyoffice/documentserver/fonts" --use-system="true" --use-system-user-fonts="false"
+  var/www/onlyoffice/documentserver/server/tools/allthemesgen --converter-dir="var/www/onlyoffice/documentserver/server/FileConverter/bin" --src="var/www/onlyoffice/documentserver/sdkjs/slide/themes" --output="var/www/onlyoffice/documentserver/sdkjs/common/Images"
+  var/www/onlyoffice/documentserver/server/tools/allthemesgen --converter-dir="var/www/onlyoffice/documentserver/server/FileConverter/bin" --src="var/www/onlyoffice/documentserver/sdkjs/slide/themes" --output="var/www/onlyoffice/documentserver/sdkjs/common/Images" --postfix="ios" --params="280,224"
+  var/www/onlyoffice/documentserver/server/tools/allthemesgen --converter-dir="var/www/onlyoffice/documentserver/server/FileConverter/bin" --src="var/www/onlyoffice/documentserver/sdkjs/slide/themes" --output="var/www/onlyoffice/documentserver/sdkjs/common/Images" --postfix="android" --params="280,224"
 }
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/onlyoffice"
-  install -d "${pkgdir}/etc/webapps/onlyoffice/documentserver/log4js"
-  install -d "${pkgdir}/usr/lib/"
-  install -d "${pkgdir}/var/lib/onlyoffice/documentserver/App_Data"
-  install -d "${pkgdir}/var/log/onlyoffice/documentserver"
   cp -r "${srcdir}/var/www/onlyoffice/documentserver/" "${pkgdir}/usr/share/webapps/onlyoffice/documentserver/"
   chmod -R 755 "${pkgdir}/usr/share/webapps/onlyoffice/documentserver/"
-  install -Dm 644 ${srcdir}/etc/onlyoffice/documentserver/{default.json,production-linux.json} "${pkgdir}/etc/webapps/onlyoffice/documentserver/"
-  install -Dm 644 ${srcdir}/etc/onlyoffice/documentserver/log4js/production.json "${pkgdir}/etc/webapps/onlyoffice/documentserver/log4js/"
-  install -Dm 777 ${srcdir}/usr/lib64/* "${pkgdir}/usr/lib/"
+  install -Dm 644 ${srcdir}/etc/onlyoffice/documentserver/log4js/production.json "${pkgdir}/etc/webapps/onlyoffice/documentserver/log4js/production.json"
+  install -Dm 644 ${srcdir}/{local.json,etc/onlyoffice/documentserver/{default.json,production-linux.json}} "${pkgdir}/etc/webapps/onlyoffice/documentserver/"
+  install -d "${pkgdir}/usr/lib/"
+  install -Dm 644 ${srcdir}/usr/lib64/* "${pkgdir}/usr/lib/"
   install -Dm 644 "${srcdir}/onlyoffice-docservice.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-docservice.service"
   install -Dm 644 "${srcdir}/onlyoffice-fileconverter.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-fileconverter.service"
-  install -D "${srcdir}/onlyoffice-documentserver.hook" "${pkgdir}/usr/share/libalpm/hooks/onlyoffice-documentserver.hook"
   install -Dm 644 "${srcdir}/onlyoffice-documentserver.sysusers" "${pkgdir}/usr/lib/sysusers.d/onlyoffice-documentserver.conf"
   install -Dm 644 "${srcdir}/onlyoffice-documentserver.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/onlyoffice-documentserver.conf"
 }

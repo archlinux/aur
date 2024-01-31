@@ -4,9 +4,9 @@ After=network.target
 
 [Service]
 User=onlyoffice
+Group=onlyoffice
 Type=simple
-Environment="NODE_ENV=production-linux" "NODE_CONFIG_DIR=/etc/webapps/onlyoffice/documentserver" "LD_LIBRARY_PATH=/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin"
-#WorkingDirectory=/usr/share/webapps/onlyoffice/documentserver/server/FileConverter
+Environment="NODE_ENV=production-linux" "NODE_CONFIG_DIR=/etc/webapps/onlyoffice/documentserver"
 ExecStart=/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/converter
 WorkingDirectory=/var/lib/onlyoffice/documentserver
 LimitNOFILE=1048576

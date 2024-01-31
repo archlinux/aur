@@ -1,0 +1,46 @@
+{
+        "queue": {
+                "type": "rabbitmq"
+        },
+        "rabbitmq": {
+                "url": "amqp://onlyoffice:PASSWORD@127.0.0.1:5672/onlyoffice"
+        },
+        "services": {
+                "CoAuthoring": {
+                        "sql": {
+                                "type": "mariadb",
+                                "dbHost": "127.0.0.1",
+                                "dbPort": 3306,
+                                "dbName": "onlyoffice",
+                                "dbUser": "onlyoffice",
+                                "dbPass": "PASSWORD"
+                        },
+                        "redis": {
+                                "name": "redis",
+                                "host": "127.0.0.1",
+                                "port": 6379,
+                                "db": "15"
+                        },
+                        "server": {
+                                "port": 8080,
+                                "workerpercpu": 1,
+                                "mode": "production"
+                        },
+                        "secret": {
+                                "browser": {"string": "SECRET"},
+                                "inbox": {"string": "SECRET"},
+                                "outbox": {"string": "SECRET"},
+                                "session": {"string": "SECRET"}
+                        },
+                        "token": {
+                                "enable": {
+                                        "browser": true,
+                                        "request": {
+                                                "inbox": true,
+                                                "outbox": true
+                                        }
+                                 }
+                        }
+}
+}
+}

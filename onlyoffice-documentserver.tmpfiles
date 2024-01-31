@@ -1,3 +1,3 @@
-d /var/lib/onlyoffice                    0750        onlyoffice   onlyoffice   -
-d /var/log/onlyoffice                    0750        onlyoffice   onlyoffice   -
-d /usr/share/webapps/onlyoffice                    0750        onlyoffice   onlyoffice   -
+D /var/lib/onlyoffice/documentserver/App_Data/cache/                         0750        onlyoffice   onlyoffice   -
+Z /var/lib/onlyoffice/                                                       0750        onlyoffice   onlyoffice   -
+D /var/log/onlyoffice/documentserver/                                        0750        onlyoffice   onlyoffice   -
