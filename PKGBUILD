@@ -3,22 +3,31 @@
 # Contributor: Rudy Matela <rudy@matela.com.br>
 #
 # This package can coexist with the latest version of GHC.
-# If you would like to compile the legacy GHC yourself (AUR: ghc7.4),
-# you can use this to bootstrap compilation.
+# This is useful for testing for backwards compatibility
+# with GHC 7.4 series.
 #
-# GHC 7.4.2 was released 10 June 2012
-# GHC 7.4.1 was released 2 February 2012
+# To compile programs using it, use either:
 #
-# To compile programs using it, you'll probably need to pass the
-# -optl -no-pie option to ghc.
+# $ ghc-7.4 -optl -no-pie program.hs
+#
+# or
+#
+# $ ghc-7.4 -dynamic program.hs
+#
+# NOTE:
+#
+# * GHC 7.4.2 was released 10 June 2012
+# * GHC 7.4.1 was released 2 February 2012
+# * The libffi5 dependency is needed for running programs
+#   that were compiled with -dynamic.
 pkgname=ghc7.4-bin
 pkgver=7.4.2
-pkgrel=3
-pkgdesc='Binary version of legacy GHC (7.4).  Originally released on June 2012'
+pkgrel=4
+pkgdesc='Binary GHC 7.4 installed on /usr/bin/ghc-7.4 (June 2012)'
 arch=('i686' 'x86_64')
 url='http://www.haskell.org/ghc/'
 license=('custom')
-depends=('perl' 'gmp4' 'gcc' 'ncurses5-compat-libs')
+depends=('perl' 'gmp4' 'gcc' 'ncurses5-compat-libs' 'libffi5')
 makedepends=('perl' 'libxslt' 'docbook-xsl' 'ncurses5-compat-libs')
 checkdepends=('python2')
 install=ghc.install
