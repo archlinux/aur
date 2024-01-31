@@ -1,0 +1,17 @@
+pkgbase = azure-dev-cli
+	pkgdesc = Developer CLI that reduces the time it takes for you to get started on Azure
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/Azure/azure-dev
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = git
+	depends = glibc
+	depends = kubectl
+	depends = python
+	depends = terraform
+	source = azure-dev-cli-1.5.1.tar.gz::https://github.com/Azure/azure-dev/archive/azure-dev-cli_1.5.1.tar.gz
+	sha256sums = 6c1ebc300aa6b6cac6a07971d69bf10d090f5780ad170314a2edae7c1ad14ef2
+
+pkgname = azure-dev-cli

@@ -1,0 +1,5 @@
+[azure-dev-cli]
+source = "github"
+github = "Azure/azure-dev"
+prefix = "azure-dev-cli_"
+use_latest_release = true
