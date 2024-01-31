@@ -9,7 +9,7 @@ url="${_downurl}/category/114"
 license=('LicenseRef-custom')
 conflicts=(
     "${pkgname}"
-    "${pkgname%ttf-}"
+    "canger-zhoukezhengdabangshu"
     "zhoukezhengdabangshu"
 )
 source=(
