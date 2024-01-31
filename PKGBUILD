@@ -2,8 +2,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=youki
-pkgver=0.3.0
-_commit='e4d2b3972af5486da9dc1fd87efcdd447a206a0c'
+pkgver=0.3.2
+_commit='b9f27e487f909104be806509a4c0c794119ab5fd'
 pkgrel=1
 pkgdesc='A container runtime written in Rust'
 arch=('x86_64')
@@ -31,8 +31,11 @@ prepare() {
   # create directory for build artifacts
   mkdir build
 
+  # v0.3.2 lock file is out of sync
+  cargo update
+
   # download dependencies
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
