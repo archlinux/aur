@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=netbiov
-_pkgver=1.31.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.31.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='A package for visualizing complex biological network'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c9b992e1db8728f3bd8b6e6c704219ef337a8780b830868bd206c3d3105eb751')
+sha256sums=('eea93e848bb940e118f9ba42e719c78329e63d198918c3095c59eedef858f845')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

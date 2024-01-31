@@ -1,6 +1,6 @@
 pkgbase = r-netbiov
 	pkgdesc = A package for visualizing complex biological network
-	pkgver = 1.31.0
+	pkgver = 1.36.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/netbiov
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-netbiov
 	optdepends = r-biocstyle
 	optdepends = r-matrix
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/netbiov_1.31.0.tar.gz
-	sha256sums = c9b992e1db8728f3bd8b6e6c704219ef337a8780b830868bd206c3d3105eb751
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/netbiov_1.36.0.tar.gz
+	sha256sums = eea93e848bb940e118f9ba42e719c78329e63d198918c3095c59eedef858f845
 
 pkgname = r-netbiov
