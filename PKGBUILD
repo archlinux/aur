@@ -10,10 +10,12 @@ provides=('icloudpd')
 conflicts=('icloudpd')
 
 source=("LICENSE::${url}/raw/master/LICENSE.md")
-source_x86_64=("${pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-amd64")
-source_aarch64=("${pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-arm64")
-source_armv7h=("${pkgname}-${pkgver}-armv7h::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-arm32v7")
-source_i686=("${pkgname}-${pkgver}-i686::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-386")
+
+_ghbin="${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}"
+source_x86_64=("${pkgname}-${pkgver}-x86_64::${_ghbin}-linux-amd64")
+source_aarch64=("${pkgname}-${pkgver}-aarch64::${_ghbin}-linux-arm64")
+source_armv7h=("${pkgname}-${pkgver}-armv7h::${_ghbin}-linux-arm32v7")
+source_i686=("${pkgname}-${pkgver}-i686::${_ghbin}-linux-386")
 
 sha256sums=('bb04f6adb55cf312f3f5fefc559bf332bc8fb2bd680e309041449c18644ae385')
 sha256sums_x86_64=('67e925fc19651364ca0c490ea1aea099f3ff1f73903af97cdf8bb3fcb4a445e8')
