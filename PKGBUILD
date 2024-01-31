@@ -5,7 +5,7 @@
 # Contributor: codekoala <codekoala at gmail dot com>
 
 pkgname=etcd
-pkgver=3.5.11
+pkgver=3.5.12
 pkgrel=1
 pkgdesc='A highly-available key value store for shared configuration and service discovery.'
 arch=('x86_64' 'armv6h' 'armv7h')
@@ -18,7 +18,7 @@ options=(!lto)
 source=("${pkgname}"-"${pkgver}".tar.gz::https://github.com/etcd-io/"${pkgname}"/archive/v"${pkgver}".tar.gz
          10-EnvironmentFile.conf
          etcd.env)
-b2sums=('81ee376a09f2883b812cacc028c72c555f61315ca94c74a9ec871c66b6dc101b6565d11028eeadca84bd70ce8713aa3175f774fcaae03069dbdf8eeae8716ca4'
+b2sums=('85615cf9095a440ef73aa59f5582293de543f7e473c8049712ff13646276c9441039c96c4e42aaedfddcfb3baede8d37f0ef68bb5ddabdb3f4833c8591ee1c8c'
         '754d5e84506b9aff7629b9b08743e609d8e9db5926d5dd1ef22366a2eeffd4b9e56903284c3b6081bc2a3035e75922a009174aa612517d93e0f6a48fd6345729'
         '71f207c4ef1643dc70eecea6bdba4dcd7226626813d2a9f3330059f1b9f78ea2d3607b8b15b67b1afec0d201b01c10f6db3267695118732621a05f967a56a65a')
 
