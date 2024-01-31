@@ -1,0 +1,15 @@
+pkgbase = notes-gtk
+	pkgdesc = Simple gtk notepad
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/gholmann16/notes
+	arch = x86_64
+	license = GPL3
+	makedepends = base-devel
+	depends = gtk3
+	depends = gtksourceview4
+	conflicts = notes
+	source = https://github.com/gholmann16/notes/archive/refs/tags/0.9.1.tar.gz
+	sha256sums = 434ec6b63c6d5fce2d9adf2c1e772c42bec653f593869b5f758a83035286598c
+
+pkgname = notes-gtk
