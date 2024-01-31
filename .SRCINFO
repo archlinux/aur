@@ -1,0 +1,13 @@
+pkgbase = python2-defusedxml
+	pkgdesc = XML bomb protection for Python stdlib modules
+	pkgver = 0.7.1
+	pkgrel = 5
+	url = https://github.com/tiran/defusedxml
+	arch = any
+	license = Python
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://pypi.io/packages/source/d/defusedxml/defusedxml-0.7.1.tar.gz
+	sha512sums = 93c1e077b22a278011497f3b3f4409b5259e0077768caa121e0f078f80f39c082f3870eaaf4bad5166fe8c3b2d169ccdea62c2840ba6969240a8371cef34c4d5
+
+pkgname = python2-defusedxml
