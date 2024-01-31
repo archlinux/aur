@@ -20,10 +20,6 @@ _cachy_config=${_cachy_config-y}
 # 'sched-ext' - select 'sched-ext' Scheduler, based on EEVDF
 _cpusched=${_cpusched-cachyos}
 
-# Apply suggested sysctl values from them developer of the BORE Scheduler
-# base_slice and disable tuneable scaling
-_bore_tuning_sysctl=${_bore_tuning_sysctl-}
-
 ### Tweak kernel options prior to a build via nconfig
 _makenconfig=${_makenconfig-}
 
@@ -177,8 +173,8 @@ _stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
-pkgdesc='Linux SCHED-EXT with BORE scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=1
+pkgdesc='Linux SCHED-EXT + Cachy Sauce scheduler Kernel by CachyOS with other patches and improvements'
+pkgrel=2
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -228,9 +224,8 @@ fi
 
 ## List of CachyOS schedulers
 case "$_cpusched" in
-    cachyos) # CachyOS Scheduler (BORE + SCHED-EXT)
-        source+=("${_patchsource}/sched/0001-sched-ext.patch"
-                 "${_patchsource}/sched/0001-bore-cachy.patch");;
+    cachyos|sched-ext) ## SCHED-EXT
+        source+=("${_patchsource}/sched/0001-sched-ext.patch");;
     bore) ## BORE Scheduler
         source+=("${_patchsource}/sched/0001-bore-cachy.patch");;
     rt) ## EEVDF with RT patches
@@ -243,14 +238,7 @@ case "$_cpusched" in
     hardened) ## Hardened Patches with BORE Scheduler
         source+=("${_patchsource}/sched/0001-bore-cachy.patch"
                  "${_patchsource}/misc/0001-hardened.patch");;
-    sched-ext) ## SCHED-EXT
-        source+=("${_patchsource}/sched/0001-sched-ext.patch");;
 esac
-
-# BORE Tuning Sysctl
-if [ -n "$_bore_tuning_sysctl" ]; then
-    source+=("${_patchsource}/misc/bore-tuning-sysctl.patch")
-fi
 
 ## lrng patchset
 if [ -n "$_lrng_enable" ]; then
@@ -308,12 +296,11 @@ prepare() {
     [ -z "$_cpusched" ] && _die "The value is empty. Choose the correct one again."
 
     case "$_cpusched" in
-        cachyos) scripts/config -e SCHED_BORE -e SCHED_CLASS_EXT;;
+        cachyos|sched-ext) scripts/config -e SCHED_CLASS_EXT;;
         bore|hardened) scripts/config -e SCHED_BORE;;
         eevdf) ;;
         rt) scripts/config -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -e PREEMPT_RT -d PREEMPT_DYNAMIC -d PREEMPT_BUILD;;
         rt-bore) scripts/config -e SCHED_BORE -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -e PREEMPT_RT -d PREEMPT_DYNAMIC -d PREEMPT_BUILD;;
-        sched-ext) scripts/config -e SCHED_CLASS_EXT;;
         *) _die "The value $_cpusched is invalid. Choose the correct one again.";;
     esac
 
@@ -830,8 +817,7 @@ for _p in "${pkgname[@]}"; do
 done
 
 b2sums=('4c1f480de0c1458aa67379cd02d35708f63850adb84a85061088de1f82b5d084bc7cf7da459a3f1e415544351d1f36a9a832277240774ae461cdde11687cbadd'
-        '9c7b52c103a8506c027a28e81779ecba972f3c85f8917359282a6183d04d04407950ba55d3db13b285b722aafb68f308b16733e575e6b2f6e77b08682c7e5dc4'
+        '1da8ae554a57e2c2ecbc2bce091a8f27f2f8403b63a4c38f0c1df0b1607de67abbe99ba5fcb87a246a46e925b762865adc092bf18c7317d5b19e58087d787491'
         '43ef7a347878592740d9eb23b40a56083fa747f7700fa1e2c6d039d660c0b876d99bf1a3160e15d041fb13d45906cdb5defef034d4d0ae429911864239c94d8d'
         'a89904cd7c7248ca97ace716330d76950edcbbbc9b9fb36e46841914c1ab6f0ec16549d308846b89b16df1943c652977983632808da59d8596fbe12e9e9e3f9f'
-        '866e65bf9e40b604b931034a21c650a665ebbb99fb5a142a23a3df250e45f30955ee37004b42dcc1fca16ecd4043d76b9388944576458d04d23a7cc97e3714a2'
-        '95bae7723f6837b86f8897a006a7d191f56a10b9b6797f8d5f89388e4a5038c6d9cf4072d44e7e6fcd720d0270765f44fdc37f955dd43c29454cd86be022e64a')
+        '74e3d1c58251adf99f5806ef1b27d51995e8ed1be9a06f1d5a396478ff4f46cdaf89e104d64f19e52157ab6e8d6d5f01f57b574e43cfe2d6b5d562eba95d677b')
