@@ -4,7 +4,7 @@ _rockname=colors
 _project=lua-$_rockname
 pkgname=("lua-$_rockname-git" "lua53-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
 pkgver=8.05.26.r7.gf373e79
-pkgrel=3
+pkgrel=4
 pkgdesc='HSL Color Theory Computation in Lua'
 arch=(any)
 url="https://github.com/yuri/$_project"
@@ -27,7 +27,7 @@ pkgver() {
 
 _package() {
 	cd "$_project"
-	depends=("${pkgname%-*}")
+	depends=("${pkgname%%-*}")
 	provides=("${pkgname/-git}=$pkgver")
 	conflicts=("${pkgname/-git}")
 	luarocks --lua-version "$1" --tree "$pkgdir/usr/" \
