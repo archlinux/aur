@@ -4,7 +4,7 @@
 _pkgname='httpx'
 pkgname="${_pkgname}-bin"
 pkgver=1.3.9
-pkgrel=2
+pkgrel=1
 pkgdesc='Fast and multi-purpose HTTP toolkit'
 arch=('x86_64' 'armv6h' 'aarch64')
 url='https://github.com/projectdiscovery/httpx'
