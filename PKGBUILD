@@ -1,4 +1,5 @@
-# Maintainer: Yacob Zitouni <yacob.zitouni@gmail.com>
+# Maintainer: RubixDev <silas dot groh at t-online dot de>
+# Contributer: Yacob Zitouni <yacob.zitouni@gmail.com>
 pkgname=('bannertool')
 pkgver=1.2.0
 pkgrel=3
@@ -11,14 +12,13 @@ makedepends=('git')
 sha256sums=('SKIP' 'SKIP')
 
 source=("$pkgname::git+https://github.com/Steveice10/bannertool.git#tag=1.2.0"
-		"buildtools::git+https://github.com/Steveice10/buildtools.git#commit=4524b3a")
+        'buildtools::git+https://github.com/Steveice10/buildtools.git#commit=b7043ff')
 
 
 prepare() {
-	cd "$pkgname"
-	git submodule init
-	git config submodule.buildtools.url $srcdir/buildtools
-	git submodule update
+    cd "$pkgname"
+    git config submodule.buildtools.url "$srcdir/buildtools"
+    git -c protocol.file.allow=always submodule update --init
 }
 
 build() {
