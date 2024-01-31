@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-epoch-git
-pkgver=r111.3e9b5db
+pkgver=r113.a0b7b0b
 pkgrel=1
 pkgdesc="Cosmic desktop environment from System76's Pop!_OS written in Rust utilizing Iced inspired by GNOME"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,6 @@ url="https://github.com/pop-os/cosmic-epoch"
 license=('GPL-3.0-or-later AND MPL-2.0 AND CC-BY-SA-4.0')
 depends=(
   'cage'
-  'flatpak'
   'fontconfig'
   'greetd'
   'gtk3'
@@ -56,14 +55,13 @@ _submodules=(
   cosmic-session
   cosmic-settings
   cosmic-settings-daemon
-  cosmic-store
   cosmic-term
   cosmic-workspaces-epoch
   xdg-desktop-portal-cosmic
 )
 
-provides=('cosmic-epoch' 'cosmic-icons' "${_submodules[@]}")
-conflicts=('cosmic-epoch' 'cosmic-icons' "${_submodules[@]}")
+provides=('cosmic-epoch' 'cosmic-icons' 'cosmic-store' "${_submodules[@]}")
+conflicts=('cosmic-epoch' 'cosmic-icons' 'cosmic-store' "${_submodules[@]}")
 backup=('etc/cosmic-comp/config.ron')
 options=('!lto')
 source=(
@@ -89,8 +87,10 @@ source=(
   'git+https://github.com/pop-os/cosmic-term.git'
   'git+https://github.com/pop-os/cosmic-workspaces-epoch.git'
   'git+https://github.com/pop-os/xdg-desktop-portal-cosmic.git'
+  'git+https://github.com/jackpot51/appstream.git'
 )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -124,13 +124,25 @@ prepare() {
   export RUSTUP_TOOLCHAIN=stable
 
   for submodule in "${_submodules[@]}"; do
-    git submodule init "${submodule#*::}"
+    git submodule init
     git config submodule."${submodule#*::}".url "$srcdir/${submodule%::*}"
     git config submodule.cosmic-icons.url "$srcdir/cosmic-icons"
     git -c protocol.file.allow=always submodule update
+
+    git config submodule.cosmic-store.url "$srcdir/cosmic-store"
+    pushd cosmic-store
+    git config submodule.appstream.url "$srcdir/appstream"
+    git -c protocol.file.allow=always submodule update
+    popd
+
     pushd "${submodule#*::}"
     cargo fetch --target "$CARCH-unknown-linux-gnu"
     popd
+
+    pushd cosmic-store
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
+    popd
+
   done
 
   # Use mold linker instead of lld
