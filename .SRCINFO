@@ -1,0 +1,20 @@
+pkgbase = freeciv21-unstable
+	pkgdesc = Freeciv for the 21st Century (Unstable version from master branch)
+	pkgver = 3.1_alpha.5
+	pkgrel = 1
+	url = https://github.com/longturn/freeciv21
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python
+	depends = lua
+	depends = qt5-base
+	depends = qt5-svg
+	depends = sdl2_mixer
+	depends = karchive5
+	depends = libertinus-font
+	source = freeciv21-unstable-3.1_alpha.5.tar.gz::https://github.com/longturn/freeciv21/releases/download/v3.1-alpha.5/Freeciv21-v3.1-alpha.5.tar.gz
+	sha256sums = 189846911c9af2a332881b0bfccf48b916cf9f9fe25ddfe42b25f2e7616076b6
+
+pkgname = freeciv21-unstable
