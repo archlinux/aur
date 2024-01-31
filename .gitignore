@@ -1,7 +1,0 @@
-*
-!.gitignore
-!PKGBUILD
-!*.install
-!.SRCINFO
-!neovim-git-archlinux.vim
-!neovim-git-sysinit.vim
