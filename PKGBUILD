@@ -2,11 +2,11 @@
 # Maintainer: Rudy Matela <rudy@matela.com.br>
 pkgname=pngcheck
 pkgver=3.0.3
-pkgrel=1
-pkgdesc="Verifies the integrity of PNG, JNG and MNG files by checking the CRCs and decompressing the image data"
+pkgrel=2
+pkgdesc="Verifies the integrity of PNG, JNG and MNG files"
 arch=('i686' 'x86_64')
 url="http://www.libpng.org/pub/png/apps/pngcheck.html"
-license=('GPL')
+license=('GPL-2.0 OR X11')
 depends=('libpng')
 makedepends=('libpng')
 source=("http://www.libpng.org/pub/png/src/${pkgname}-${pkgver}.tar.gz"
