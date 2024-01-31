@@ -1,12 +1,12 @@
 # Maintainer: Alex Hirzel <alex at hirzel period us>
 
 pkgname=mitsuba3-git
-pkgver=3.4.0.r55.g3d902a4d
+pkgver=3.5.0.r17.g0f1eec52
 pkgrel=1
 pkgdesc="A Retargetable Forward and Inverse Renderer"
 arch=('x86_64')
 url="https://www.mitsuba-renderer.org/"
-license=('custom')
+license=('custom:mitsuba-license')
 depends=(
 	'cuda'
 	'libc++'
@@ -14,6 +14,8 @@ depends=(
 	'libpng'
 	'pugixml'
 	'pybind11'
+	'python-graphviz'
+	'python-jax'
 	'python-pytest'
 	'python-pytorch'
 )
@@ -34,6 +36,7 @@ makedepends=(
 	'python-sphinx-gallery'
 	'python-sphinx-hoverxref'
 	'python-sphinx-tabs'
+	'python-tensorflow-cuda'
 )
 source=(
 	'git+https://github.com/fastfloat/fast_float'
