@@ -1,0 +1,14 @@
+pkgbase = python-cbmc-starter-kit
+	pkgdesc = CBMC starter kit makes it easy to add CBMC verification to a software project
+	pkgver = 2.10
+	pkgrel = 1
+	url = https://github.com/model-checking/cbmc-starter-kit
+	arch = any
+	license = custom:Apache Software License
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/15/e1/2b0714b33baa5dc2221cf428f58aaddef8e308dd9d41d74145a0d3f1d8e2/cbmc-starter-kit-2.10.tar.gz
+	sha256sums = 65b36edd6a269d1fde34fc7643e69d52a462dd878a265d8aa43662c97f5299ee
+
+pkgname = python-cbmc-starter-kit
+	depends = python
