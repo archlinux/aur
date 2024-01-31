@@ -3,12 +3,12 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=orca-git
-pkgver=44.0.r93.gcc26a1f6b
+pkgver=46.ALPHA.r34.g7d817db5f
 pkgrel=1
 pkgdesc="Screen reader for individuals who are blind or visually impaired (development version)"
 url="https://wiki.gnome.org/Projects/Orca"
 arch=('any')
-license=('LGPL')
+license=('LGPL-2.1-or-later')
 depends=(
   at-spi2-core
   brltty
@@ -20,6 +20,8 @@ depends=(
   libwnck3
   python-atspi
   python-setproctitle
+  python-psutil
+  python-cairo
   speech-dispatcher
   xorg-xkbcomp
   xorg-xmodmap
@@ -28,6 +30,7 @@ makedepends=(
   git
   itstool
   yelp-tools
+  meson
 )
 groups=('gnome')
 provides=("${pkgname%-git}")
@@ -41,18 +44,15 @@ pkgver() {
 	git describe --long | sed 's/^ORCA_//;s/\([^-]*-g\)/r\1/;s/_/-/g;s/-/./g'
 }
 
-prepare() {
-	cd "${pkgname%-git}"
-	NOCONFIGURE=1 ./autogen.sh
+build() {
+  arch-meson ${pkgname%-git} build
+  meson compile -C build
 }
 
-build() {
-	cd "${pkgname%-git}"
-	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
-	make
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-	cd "${pkgname%-git}"
-	make DESTDIR="${pkgdir}" install
+  meson install -C build --destdir "$pkgdir"
 }
