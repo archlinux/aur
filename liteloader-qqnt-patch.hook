@@ -5,6 +5,12 @@ Operation=Upgrade
 Target=liteloader-qqnt-git
 Target=liteloader-qqnt-bin
 
+[Trigger]
+Type=Path
+Operation=Install
+Operation=Upgrade
+Target=/opt/QQ/resources/app/app_launcher/index.js
+
 [Action]
 Description=Patch QQ for LiteLoaderQQNT
 When=PostTransaction
