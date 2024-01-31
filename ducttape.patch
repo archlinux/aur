@@ -1,6 +1,6 @@
-diff --unified --recursive gtkpod-2.1.5/libgtkpod/gtkpod_app_iface.c gtkpod-2.1.5.new/libgtkpod/gtkpod_app_iface.c
+diff -ur -x .git gtkpod-2.1.5/libgtkpod/gtkpod_app_iface.c gtkpod-aur/libgtkpod/gtkpod_app_iface.c
 --- gtkpod-2.1.5/libgtkpod/gtkpod_app_iface.c	2015-06-02 12:14:21.000000000 -0600
-+++ gtkpod-2.1.5.new/libgtkpod/gtkpod_app_iface.c	2020-09-19 12:38:17.590235479 -0600
++++ gtkpod-aur/libgtkpod/gtkpod_app_iface.c	2024-01-31 10:10:49.850838442 -0700
 @@ -37,6 +37,9 @@
  #include "context_menus.h"
  #include "prefs.h"
@@ -11,9 +11,9 @@ diff --unified --recursive gtkpod-2.1.5/libgtkpod/gtkpod_app_iface.c gtkpod-2.1.
  static void gtkpod_app_base_init(GtkPodAppInterface* klass) {
      static gboolean initialized = FALSE;
  
-diff --unified --recursive gtkpod-2.1.5/libgtkpod/gtkpod_app_iface.h gtkpod-2.1.5.new/libgtkpod/gtkpod_app_iface.h
+diff -ur -x .git gtkpod-2.1.5/libgtkpod/gtkpod_app_iface.h gtkpod-aur/libgtkpod/gtkpod_app_iface.h
 --- gtkpod-2.1.5/libgtkpod/gtkpod_app_iface.h	2015-06-02 12:14:21.000000000 -0600
-+++ gtkpod-2.1.5.new/libgtkpod/gtkpod_app_iface.h	2020-09-19 12:38:17.590235479 -0600
++++ gtkpod-aur/libgtkpod/gtkpod_app_iface.h	2024-01-31 10:10:49.850838442 -0700
 @@ -245,7 +245,7 @@
  FileType* gtkpod_get_filetype(gchar *name);
  GList *gtkpod_get_filetypes();
@@ -24,9 +24,20 @@ diff --unified --recursive gtkpod-2.1.5/libgtkpod/gtkpod_app_iface.h gtkpod-2.1.
 +extern guint gtkpod_app_signals[LAST_SIGNAL];
  
  #endif /* GTKPOD_APP_IFACE_H_ */
-diff --unified --recursive gtkpod-2.1.5/plugins/core_preferences/plugin.c gtkpod-2.1.5.new/plugins/core_preferences/plugin.c
+diff -ur -x .git gtkpod-2.1.5/libgtkpod/misc.c gtkpod-aur/libgtkpod/misc.c
+--- gtkpod-2.1.5/libgtkpod/misc.c	2015-06-02 12:14:21.000000000 -0600
++++ gtkpod-aur/libgtkpod/misc.c	2024-01-31 10:36:40.131731667 -0700
+@@ -39,6 +39,7 @@
+ #include <sys/wait.h>
+ #include <unistd.h>
+ #include <glib/gi18n-lib.h>
++#include <libxml/parser.h>
+ #include "charset.h"
+ #include "clientserver.h"
+ #include "misc.h"
+diff -ur -x .git gtkpod-2.1.5/plugins/core_preferences/plugin.c gtkpod-aur/plugins/core_preferences/plugin.c
 --- gtkpod-2.1.5/plugins/core_preferences/plugin.c	2015-06-02 12:14:21.000000000 -0600
-+++ gtkpod-2.1.5.new/plugins/core_preferences/plugin.c	2020-09-19 12:38:17.590235479 -0600
++++ gtkpod-aur/plugins/core_preferences/plugin.c	2024-01-31 10:10:49.864171706 -0700
 @@ -44,6 +44,8 @@
  /* Parent class. Part of standard class definition */
  static gpointer parent_class;
@@ -36,9 +47,9 @@ diff --unified --recursive gtkpod-2.1.5/plugins/core_preferences/plugin.c gtkpod
  static GtkActionEntry core_prefs_actions[] =
      {
  
-diff --unified --recursive gtkpod-2.1.5/plugins/core_preferences/plugin.h gtkpod-2.1.5.new/plugins/core_preferences/plugin.h
+diff -ur -x .git gtkpod-2.1.5/plugins/core_preferences/plugin.h gtkpod-aur/plugins/core_preferences/plugin.h
 --- gtkpod-2.1.5/plugins/core_preferences/plugin.h	2014-08-29 13:58:58.000000000 -0600
-+++ gtkpod-2.1.5.new/plugins/core_preferences/plugin.h	2020-09-19 12:38:17.590235479 -0600
++++ gtkpod-aur/plugins/core_preferences/plugin.h	2024-01-31 10:10:49.864171706 -0700
 @@ -61,6 +61,6 @@
      AnjutaPluginClass parent_class;
  };
@@ -47,9 +58,9 @@ diff --unified --recursive gtkpod-2.1.5/plugins/core_preferences/plugin.h gtkpod
 +extern CorePrefsPlugin *core_prefs_plugin;
  
  #endif /* PLUGIN_H_ */
-diff --unified --recursive gtkpod-2.1.5/plugins/details_editor/plugin.c gtkpod-2.1.5.new/plugins/details_editor/plugin.c
+diff -ur -x .git gtkpod-2.1.5/plugins/details_editor/plugin.c gtkpod-aur/plugins/details_editor/plugin.c
 --- gtkpod-2.1.5/plugins/details_editor/plugin.c	2014-08-29 13:58:58.000000000 -0600
-+++ gtkpod-2.1.5.new/plugins/details_editor/plugin.c	2020-09-19 12:38:17.590235479 -0600
++++ gtkpod-aur/plugins/details_editor/plugin.c	2024-01-31 10:10:49.870838337 -0700
 @@ -40,6 +40,8 @@
  /* Parent class. Part of standard class definition */
  static gpointer parent_class;
@@ -59,9 +70,9 @@ diff --unified --recursive gtkpod-2.1.5/plugins/details_editor/plugin.c gtkpod-2
  static GtkActionEntry details_editor_actions[] =
      {
          {
-diff --unified --recursive gtkpod-2.1.5/plugins/details_editor/plugin.h gtkpod-2.1.5.new/plugins/details_editor/plugin.h
+diff -ur -x .git gtkpod-2.1.5/plugins/details_editor/plugin.h gtkpod-aur/plugins/details_editor/plugin.h
 --- gtkpod-2.1.5/plugins/details_editor/plugin.h	2014-08-29 13:58:58.000000000 -0600
-+++ gtkpod-2.1.5.new/plugins/details_editor/plugin.h	2020-09-19 12:38:17.590235479 -0600
++++ gtkpod-aur/plugins/details_editor/plugin.h	2024-01-31 10:10:49.870838337 -0700
 @@ -52,6 +52,6 @@
      AnjutaPluginClass parent_class;
  };
@@ -70,9 +81,9 @@ diff --unified --recursive gtkpod-2.1.5/plugins/details_editor/plugin.h gtkpod-2
 +extern DetailsEditorPlugin *details_editor_plugin;
  
  #endif /* PLUGIN_H_ */
-diff --unified --recursive gtkpod-2.1.5/plugins/info_display/plugin.c gtkpod-2.1.5.new/plugins/info_display/plugin.c
+diff -ur -x .git gtkpod-2.1.5/plugins/info_display/plugin.c gtkpod-aur/plugins/info_display/plugin.c
 --- gtkpod-2.1.5/plugins/info_display/plugin.c	2014-08-29 13:58:58.000000000 -0600
-+++ gtkpod-2.1.5.new/plugins/info_display/plugin.c	2020-09-19 12:38:17.590235479 -0600
++++ gtkpod-aur/plugins/info_display/plugin.c	2024-01-31 10:10:49.874171653 -0700
 @@ -40,6 +40,8 @@
  /* Parent class. Part of standard class definition */
  static gpointer parent_class;
@@ -82,9 +93,9 @@ diff --unified --recursive gtkpod-2.1.5/plugins/info_display/plugin.c gtkpod-2.1
  static GtkActionEntry info_actions[] =
      {
          {
-diff --unified --recursive gtkpod-2.1.5/plugins/info_display/plugin.h gtkpod-2.1.5.new/plugins/info_display/plugin.h
+diff -ur -x .git gtkpod-2.1.5/plugins/info_display/plugin.h gtkpod-aur/plugins/info_display/plugin.h
 --- gtkpod-2.1.5/plugins/info_display/plugin.h	2014-08-29 13:58:58.000000000 -0600
-+++ gtkpod-2.1.5.new/plugins/info_display/plugin.h	2020-09-19 12:38:17.590235479 -0600
++++ gtkpod-aur/plugins/info_display/plugin.h	2024-01-31 10:10:49.874171653 -0700
 @@ -50,6 +50,6 @@
      AnjutaPluginClass parent_class;
  };
@@ -93,9 +104,9 @@ diff --unified --recursive gtkpod-2.1.5/plugins/info_display/plugin.h gtkpod-2.1
 +extern InfoDisplayPlugin *info_display_plugin;
  
  #endif /* PLUGIN_H_ */
-diff --unified --recursive gtkpod-2.1.5/plugins/photo_editor/plugin.c gtkpod-2.1.5.new/plugins/photo_editor/plugin.c
+diff -ur -x .git gtkpod-2.1.5/plugins/photo_editor/plugin.c gtkpod-aur/plugins/photo_editor/plugin.c
 --- gtkpod-2.1.5/plugins/photo_editor/plugin.c	2014-08-29 13:58:58.000000000 -0600
-+++ gtkpod-2.1.5.new/plugins/photo_editor/plugin.c	2020-09-19 12:38:17.590235479 -0600
++++ gtkpod-aur/plugins/photo_editor/plugin.c	2024-01-31 10:10:49.877504969 -0700
 @@ -41,6 +41,8 @@
  /* Parent class. Part of standard class definition */
  static gpointer parent_class;
@@ -105,9 +116,9 @@ diff --unified --recursive gtkpod-2.1.5/plugins/photo_editor/plugin.c gtkpod-2.1
  static GtkActionEntry photo_editor_actions[] =
      {
          {
-diff --unified --recursive gtkpod-2.1.5/plugins/photo_editor/plugin.h gtkpod-2.1.5.new/plugins/photo_editor/plugin.h
+diff -ur -x .git gtkpod-2.1.5/plugins/photo_editor/plugin.h gtkpod-aur/plugins/photo_editor/plugin.h
 --- gtkpod-2.1.5/plugins/photo_editor/plugin.h	2014-08-29 13:58:58.000000000 -0600
-+++ gtkpod-2.1.5.new/plugins/photo_editor/plugin.h	2020-09-19 12:38:17.590235479 -0600
++++ gtkpod-aur/plugins/photo_editor/plugin.h	2024-01-31 10:10:49.877504969 -0700
 @@ -59,6 +59,6 @@
      AnjutaPluginClass parent_class;
  };
@@ -116,9 +127,9 @@ diff --unified --recursive gtkpod-2.1.5/plugins/photo_editor/plugin.h gtkpod-2.1
 +extern PhotoEditorPlugin *photo_editor_plugin;
  
  #endif /* PLUGIN_H_ */
-diff --unified --recursive gtkpod-2.1.5/plugins/repository_editor/plugin.c gtkpod-2.1.5.new/plugins/repository_editor/plugin.c
+diff -ur -x .git gtkpod-2.1.5/plugins/repository_editor/plugin.c gtkpod-aur/plugins/repository_editor/plugin.c
 --- gtkpod-2.1.5/plugins/repository_editor/plugin.c	2014-08-29 13:58:58.000000000 -0600
-+++ gtkpod-2.1.5.new/plugins/repository_editor/plugin.c	2020-09-19 12:38:17.590235479 -0600
++++ gtkpod-aur/plugins/repository_editor/plugin.c	2024-01-31 10:10:49.884171601 -0700
 @@ -40,6 +40,8 @@
  /* Parent class. Part of standard class definition */
  static gpointer parent_class;
@@ -128,9 +139,9 @@ diff --unified --recursive gtkpod-2.1.5/plugins/repository_editor/plugin.c gtkpo
  static GtkActionEntry repository_editor_actions[] =
      {
          {
-diff --unified --recursive gtkpod-2.1.5/plugins/repository_editor/plugin.h gtkpod-2.1.5.new/plugins/repository_editor/plugin.h
+diff -ur -x .git gtkpod-2.1.5/plugins/repository_editor/plugin.h gtkpod-aur/plugins/repository_editor/plugin.h
 --- gtkpod-2.1.5/plugins/repository_editor/plugin.h	2014-08-29 13:58:58.000000000 -0600
-+++ gtkpod-2.1.5.new/plugins/repository_editor/plugin.h	2020-09-19 12:38:17.590235479 -0600
++++ gtkpod-aur/plugins/repository_editor/plugin.h	2024-01-31 10:10:49.884171601 -0700
 @@ -51,6 +51,6 @@
      AnjutaPluginClass parent_class;
  };
@@ -139,9 +150,9 @@ diff --unified --recursive gtkpod-2.1.5/plugins/repository_editor/plugin.h gtkpo
 +extern RepositoryEditorPlugin *repository_editor_plugin;
  
  #endif /* PLUGIN_H_ */
-diff --unified --recursive gtkpod-2.1.5/plugins/sjcd/plugin.c gtkpod-2.1.5.new/plugins/sjcd/plugin.c
+diff -ur -x .git gtkpod-2.1.5/plugins/sjcd/plugin.c gtkpod-aur/plugins/sjcd/plugin.c
 --- gtkpod-2.1.5/plugins/sjcd/plugin.c	2015-06-02 12:14:21.000000000 -0600
-+++ gtkpod-2.1.5.new/plugins/sjcd/plugin.c	2020-09-19 12:34:07.949000376 -0600
++++ gtkpod-aur/plugins/sjcd/plugin.c	2024-01-31 12:10:20.581848356 -0700
 @@ -43,6 +43,8 @@
  #define PREFERENCE_ICON_STOCK_ID "sjcd-preference-icon"
  #define TAB_NAME _("Sound Juicer")
@@ -151,9 +162,9 @@ diff --unified --recursive gtkpod-2.1.5/plugins/sjcd/plugin.c gtkpod-2.1.5.new/p
  /* Parent class. Part of standard class definition */
  static gpointer parent_class;
  
-diff --unified --recursive gtkpod-2.1.5/plugins/sjcd/plugin.h gtkpod-2.1.5.new/plugins/sjcd/plugin.h
+diff -ur -x .git gtkpod-2.1.5/plugins/sjcd/plugin.h gtkpod-aur/plugins/sjcd/plugin.h
 --- gtkpod-2.1.5/plugins/sjcd/plugin.h	2014-08-29 13:58:58.000000000 -0600
-+++ gtkpod-2.1.5.new/plugins/sjcd/plugin.h	2020-09-19 12:34:08.952337778 -0600
++++ gtkpod-aur/plugins/sjcd/plugin.h	2024-01-31 12:12:21.926064288 -0700
 @@ -59,7 +59,7 @@
      AnjutaPluginClass parent_class;
  };
@@ -163,3 +174,12 @@ diff --unified --recursive gtkpod-2.1.5/plugins/sjcd/plugin.h gtkpod-2.1.5.new/p
  
  gchar* sjcd_plugin_get_builder_file();
  
+diff -ur -x .git gtkpod-2.1.5/scripts/sync-palm-jppy.py gtkpod-aur/scripts/sync-palm-jppy.py
+--- gtkpod-2.1.5/scripts/sync-palm-jppy.py	2014-08-29 13:58:58.000000000 -0600
++++ gtkpod-aur/scripts/sync-palm-jppy.py	2024-01-31 10:10:49.900838181 -0700
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # Script for syncing Palm addressbook data with iPod via Jppy
+ # (c) 2005 Nick Piper <nick at nickpiper dot co dot uk>
+ #

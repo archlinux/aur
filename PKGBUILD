@@ -5,7 +5,7 @@
 
 pkgname=gtkpod
 pkgver=2.1.5
-pkgrel=7
+pkgrel=8
 pkgdesc="A platform independent GUI for Apple's iPod using GTK3"
 arch=('x86_64')
 url='https://sourceforge.net/projects/gtkpod/'
@@ -18,14 +18,12 @@ optdepends=('libmp4v2: MP4/h264 support'
             'id3v2: mp3 conversion support'
             'faad2: m4a conversion support')
 source=("http://downloads.sourceforge.net/gtkpod/$pkgname-$pkgver.tar.gz"
-	"$pkgname-$pkgver-$pkgrel.patch")
+	"ducttape.patch")
 sha256sums=('a57dc8ae9138e0cb4cee98691e7a95001130c9ea7823e6a75cc72503facd3a76'
-	'3b8a6d091d470271cb9cd3c0709ba0ed1d2ae849ad40cf01f730536485b5db55')
-
+  '04c73d53fce47b6bd4f27547faa3af434328c378f69fbccc47428345a15d3c80') 
 prepare() {
   cd "$pkgname-$pkgver"
-  sed -i 's#python#python2#' scripts/sync-palm-jppy.py
-  patch --strip=1 < "../$pkgname-$pkgver-$pkgrel.patch"
+  patch --strip=1 < "../ducttape.patch"
 
 }
 

@@ -1,7 +1,7 @@
 pkgbase = gtkpod
 	pkgdesc = A platform independent GUI for Apple's iPod using GTK3
 	pkgver = 2.1.5
-	pkgrel = 7
+	pkgrel = 8
 	url = https://sourceforge.net/projects/gtkpod/
 	arch = x86_64
 	license = GPL
@@ -26,9 +26,8 @@ pkgbase = gtkpod
 	optdepends = id3v2: mp3 conversion support
 	optdepends = faad2: m4a conversion support
 	source = http://downloads.sourceforge.net/gtkpod/gtkpod-2.1.5.tar.gz
-	source = gtkpod-2.1.5-7.patch
+	source = ducttape.patch
 	sha256sums = a57dc8ae9138e0cb4cee98691e7a95001130c9ea7823e6a75cc72503facd3a76
-	sha256sums = 3b8a6d091d470271cb9cd3c0709ba0ed1d2ae849ad40cf01f730536485b5db55
+	sha256sums = 04c73d53fce47b6bd4f27547faa3af434328c378f69fbccc47428345a15d3c80
 
 pkgname = gtkpod
-
