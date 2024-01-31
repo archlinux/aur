@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc='Outputs X window titles'
 arch=('x86_64')
 url="https://github.com/baskerville/${pkgname}"
-license=('custom:Unlicense')
+license=('Unlicense')
 depends=('libxcb' 'xcb-util-wm' 'xcb-util')
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
@@ -23,5 +23,4 @@ package() {
   cd "${pkgname}-${pkgver}"
 
   make PREFIX=/usr DESTDIR="${pkgdir}" install
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
