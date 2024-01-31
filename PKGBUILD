@@ -2,31 +2,17 @@
 pkgname=spx-translation
 pkgver=2.0.5_1
 _electronversion=25
-pkgrel=1
+pkgrel=2
 pkgdesc="聚合翻译程序(谷歌+deepl)"
 arch=('x86_64')
 url="https://github.com/mlmdflr/spx-translation"
 license=('custom')
 conflicts=("${pkgname}")
 depends=(
-    'libxkbcommon'
-    'mesa'
-    'libxcomposite'
-    'libcups'
-    'expat'
     'gtk3'
-    'libxdamage'
     'alsa-lib'
-    'libxfixes'
-    'libdrm'
-    'cairo'
     'nss'
     'nspr'
-    'libx11'
-    'libxext'
-    'libxcb'
-    'at-spi2-core'
-    'pango'
 )
 makedepends=(
     'gendesk'
@@ -44,12 +30,15 @@ source=(
 )
 sha256sums=('SKIP')
 build() {
-    gendesk -f -n -q --categories "Utility" --name "${pkgname}" --exec "${pkgname} --no-sandbox %U"
+    gendesk -f -n -q --categories "Utility" --name "${pkgname}" --exec "${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
     sed "s|, 'snap', 'deb', 'rpm', 'pacman'||g" -i scripts/cfg.js
     sed "s|, 'snap', 'deb', 'rpm', 'pacman'||g" -i scripts/build.js
     sed "14,22d" -i scripts/build.js
