@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-consolekit
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Additional utilities for click'
 arch=('any')
@@ -25,7 +25,7 @@ makedepends=(
 optdepends=(
   'python-psutil: better terminal support'
 )
-_commit='6824cb42277c6acb46531d2076dcc065496e3d39'
+_commit='1c17c55214c9e24652e93ba1ab4e6bf5ff94fe30'
 source=("$pkgname::git+https://github.com/domdfcoding/consolekit#commit=$_commit")
 b2sums=('SKIP')
 
