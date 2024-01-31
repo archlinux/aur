@@ -5,7 +5,6 @@ pkgbase = notes-gtk
 	url = https://github.com/gholmann16/notes
 	arch = x86_64
 	license = GPL3
-	makedepends = base-devel
 	depends = gtk3
 	depends = gtksourceview4
 	conflicts = notes

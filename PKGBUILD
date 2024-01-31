@@ -8,7 +8,6 @@ arch=('x86_64')
 license=('GPL3')
 conflicts=('notes')
 depends=('gtk3' 'gtksourceview4')
-makedepends=('base-devel')
 source=("https://github.com/gholmann16/notes/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('434ec6b63c6d5fce2d9adf2c1e772c42bec653f593869b5f758a83035286598c')
 build() {
