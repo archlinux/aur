@@ -23,5 +23,5 @@ package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" $_gemname-$pkgver.gem
   rm "$pkgdir$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$_gemdir/gems/sprockets-$pkgver/MIT-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m644 "$pkgdir$_gemdir/gems/$_gemname-$pkgver/MIT-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
