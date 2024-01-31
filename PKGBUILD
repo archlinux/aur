@@ -1,8 +1,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-mistletoe
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc='A fast, extensible Markdown parser in pure Python'
 arch=('any')
 url='https://github.com/miyuchina/mistletoe'
@@ -15,7 +15,11 @@ makedepends=(
   'python-wheel'
   'python-setuptools'
 )
-_commit='dc53c539fe59295a5f53a4dd1059bd3cc2a4e806'
+checkdepends=(
+  'python-parameterized'
+  'python-pygments'
+)
+_commit='35dfaa0a95e8abb1cdceb8e449f9590905dca439'
 source=("$pkgname::git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 
