@@ -1,12 +1,12 @@
 pkgbase = mondoo
 	pkgdesc = Mondoo Client CLI for the Mondoo Policy as Code Platform
-	pkgver = 9.13.0
+	pkgver = 10.1.2
 	pkgrel = 1
 	url = https://mondoo.com
 	arch = x86_64
 	license = custom
 	depends = cnspec
-	source = https://releases.mondoo.com/mondoo/9.13.0/mondoo_9.13.0_linux_amd64.tar.gz
+	source = https://releases.mondoo.com/mondoo/10.1.2/mondoo_10.1.2_linux_amd64.tar.gz
 	source = LICENSE.html
 	source = OSS-LICENSES.tar.xz
 	source = mondoo.service
