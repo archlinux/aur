@@ -4,7 +4,7 @@
 
 pkgname=go-task-bin
 _pkgname=go-task
-pkgver=3.32.0
+pkgver=3.34.1
 pkgrel=1
 pkgdesc="Task runner & Make alternative that runs taskfiles (Installs as go-task to avoid conflict with taskwarrior)"
 arch=(x86_64 i686 armv7h aarch64)
@@ -18,10 +18,10 @@ source_i686=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/task_li
 source_armv7h=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/task_linux_arm.tar.gz")
 source_aarch64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/task_linux_arm64.tar.gz")
 
-sha256sums_x86_64=('e9dbb7acbd5c1676b3c49a85a0244208de827cc6ca368e10c2f48c4184b57ccf')
-sha256sums_i686=('21507ea2a9773a2011711071897c62b783d936193f7fef9918a1c8ac83d600f6')
-sha256sums_armv7h=('78295e1a2ff6c358a5ba8dc8f3b27588ba0404bde2c960672aa8cf566a5e3a01')
-sha256sums_aarch64=('be4db4fa6c7b3cb986fb5517435d64f6ea954c0495e7b51a9914bd82c4bc27e6')
+sha256sums_x86_64=('59433511289ef30ba4f978af17f2a7cdc9c29f65323a5ac754a23fe3e526d376')
+sha256sums_i686=('ae7e24d0faa2cf8a0f1f391dd294cbbf39222a81c4f5b921f9bf3d7e52d8c1c3')
+sha256sums_armv7h=('e4e034a5ed0c46d8742a504d10a52947137917eb1de8cb824390414abe71786a')
+sha256sums_aarch64=('e9174426e1afc165def800529acf6e2820622829365c19cb7b3799a51d011665')
 
 noextract=("$pkgname-$pkgver.tar.gz")
 
