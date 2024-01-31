@@ -2,7 +2,7 @@
 # Contributor: Sukanka <su975853527 [AT] gmail.com>
 pkgname=yank-note-bin
 _pkgname=Yank-Note
-pkgver=3.66.1
+pkgver=3.67.1
 _electronversion=22
 pkgrel=1
 pkgdesc='A Hackable Markdown Note Application for Programmers.'
@@ -27,8 +27,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-arm64-${pkgver}.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-amd64-${pkgver}.deb")
 sha256sums=('1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
-sha256sums_aarch64=('f3ae89029b7d9d612906046f2783cfa6819a30c91b738473abb2b5ea9277d806')
-sha256sums_x86_64=('fd176d6193189c28a936418be81349242597090e9bcea74b659986842425892c')
+sha256sums_aarch64=('409cc456551cbe90659025d12e91e14efbdf3086c440a0164351473829f458c8')
+sha256sums_x86_64=('51934498e9146694df8d75d6262ce83fa7b700a7b0e2de08f8fb6b7fd79a5ac1')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
