@@ -1,0 +1,18 @@
+pkgbase = python-xmovie
+	pkgdesc = Simply create beautiful movies from xarray objects
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/jbusecke/xmovie
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-cartopy
+	depends = python-dask
+	depends = python-xarray
+	source = https://pypi.org/packages/source/x/xmovie/xmovie-0.3.1.tar.gz
+	sha512sums = cd3bbba9d499c51beff30e187100f11d2975550dc86c6fa852a6037af0810f57cbe6682585be3c74ff6f936095063f8eba1ca3ec61dc38b5d088afe15d3c1657
+
+pkgname = python-xmovie
