@@ -2,7 +2,7 @@
 
 pkgname=nextcloud-app-user-usage-report
 _appname=user_usage_report
-pkgver=1.11.1
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Provides a command which generates a report about all the users and their usage."
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/nextcloud/user_usage_report"
 license=('AGPL3')
 makedepends=('yq' 'rsync')
 source=("${_appname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('8119f1534f0ec7fab018a4e27372d5e2e1d1fefc7c4bc1ca0eab201a523e7d9848213c34371e24e25f9c7cfb1dc291a187e617f8b2c670fb10a53356761cc0e0')
+sha512sums=('971805f606b155491308425d5a7f68e2df5fbec4cefd452ac4d8e4c9335eb13b113c00c32d49a5be211c06bca5ca039f3900bd07a613c17dbc044479604d2878')
 
 # Boilerplate nextcloud version calculation adopted from other packages
 _get_nextcloud_versions() {
