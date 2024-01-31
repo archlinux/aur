@@ -1,6 +1,74 @@
 Version history
 ===============
 
+0.10.19
+-------
+
+2024-01-30
+
+Fix #480: The networked game wouldn't start even though everybody was ready.
+The bug was: When a new player joined a room, the existing ready players
+became unready only on the server, not on each client. Now, the server and
+the clients agree that, after a new joiner, everybody becomes unready.
+The fix is client-side and doesn't affect physics. If the server starts
+the game at all, all 0.10.x clients start playing regardless of this fix.
+
+Add Eggs in One Basket, a new multiplayer map by geoo for 3-8 players.
+
+Add Hopscotch, a new miniature by geoo.
+
+Fix entrance order in the 6-player version of Rescue Ranger Trolls.
+
+Remove Cascade Squared 6p and 8p according to Flopsy's recommendation.
+
+Remove a zealous assertion that prevented you from re-entering the options
+menu after you've accidentally set an overly tall resolution, e.g., 300x800,
+when you ran a debug build of Lix.
+
+Update Allegro DLLs to 5.2.9.0 for the Windows 64-bit release.
+
+Rewrite the Windows 32-bit build notes. Offer DLLs/LIBs for building 32-bit
+Windows Lix and for linking with lld-link. (Both DMD and LDC now link with
+lld-link, not with Optlink. I still recommend everybody to choose 64-bit Lix.)
+
+
+
+0.10.18
+-------
+
+2024-01-05
+
+Solobattle: From the singleplayer browser, you can start a multiplayer map
+and you will control all teams (= all colors). Spawn order and timings will
+be as if you played the map with its intended number of players. Hover the
+mouse cursor over lix of different colors to see other teams' skill panels.
+
+Prevent accidental cutting of replays: To cut, you must click where no lix
+are on the map. It's not enough anymore to click on left-facing lix
+while you filter for right-facing lix (via rightward directional select).
+
+In singleplayer, after you nuke, the skill panel shows your remaining skills
+even though you can't assign them anymore. In multiplayer, after you nuke,
+you see zero leftover skills to make it clear that you cannot assign.
+
+When you observe a multiplayer battle, all of your skill buttons are
+unchosen (not highlit). You still can't switch teams, which would be nice.
+
+Hide the Windows command line console when you run Lix after you've built
+Lix from source with DMD. Reason: Newer DMD versions link with lld-link,
+not with optlink, and need different linker flags.
+
+Add over 60 of Flopsy's new multiplayer maps. Remove over 70 weaker maps
+by Flopsy according to Flopsy's own choice.
+
+Fix a backroute in Continuum Hypothesis (lemforum Hopeless).
+
+Fix player counts for Group Therapy and for One for Me, One for You.
+
+Update Catalan translations, thanks to Rampoina.
+
+
+
 0.10.17
 -------
 

@@ -3,13 +3,16 @@
 # shellcheck shell=bash
 # shellcheck disable=SC2034,SC2154
 
+# TODO: Warning Package at path '/build/lix/src/lix-unit-threaded/' should be under '/build/lix/src/lix-unit-threaded/$VERSION/lix-unit-threaded'
+# Warning The package will no longer be detected starting from v1.42.0
+
 pkgname=lix
-pkgver=0.10.17
+pkgver=0.10.19
 pkgrel=1
 changelog=.CHANGELOG
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/SimonN/LixD/archive/v$pkgver.tar.gz"
         "$pkgname-music-1.1.zip::https://www.lixgame.com/dow/lix-music.zip")
-sha512sums=('612f45b4cc582e2591945db26e7c299cfbd115b6c51137281314c3a144b2ec8e333b4dad68a9678ca94b5a04771f992192225c3c072f19a0c99d097e2bcab0cf'
+sha512sums=('9be21c7ff96bd1a3c3d623a8e83fbfed156b239387bdc8c55e47b1b7004d9cbb053ff652ec241b1721fe899dd3da21befde2da459ca41c98d8106b66bef1c365'
             '280fd25a479ac8dd24475b014234270a12ab34edca7fb2f7ce4b768259111b1e7626d3ba37ac13d810f0653d23d7c9f212776e94d2c0b31a0de580864771ce9f')
 
 _gitname=LixD
