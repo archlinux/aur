@@ -6,9 +6,9 @@
 
 # shellcheck disable=SC2034
 _py="python2"
-_name="packaging"
-_pkgbase="python-${_name}"
-pkgbase="${_py}-${_name}"
+_pkg="packaging"
+_pkgbase="python-${_pkg}"
+pkgbase="${_py}-${_pkg}"
 pkgname=(
   "${pkgbase}"
 )
@@ -18,16 +18,18 @@ pkgdesc="Core utilities for Python packages"
 arch=(
   'any'
 )
-url="https://github.com/pypa/${_name}"
+_http="https://github.com"
+_ns="pypa"
+url="${_http}/${_ns}/${_pkg}"
 license=(
   'Apache'
 )
 makedepends=(
-  'python2-setuptools'
-  'python2-pyparsing'
+  "${_py}-setuptools"
+  "${_py}-pyparsing"
 )
 source=(
-  "https://github.com/pypa/${_name}/archive/${pkgver}/${_pkgbase}-${pkgver}.tar.gz"
+  "${url}/archive/${pkgver}/${_pkgbase}-${pkgver}.tar.gz"
 )
 sha512sums=(
   'fb71f1036cfaacbe94fdee663af31d6ad1960f73ecc95cba87b461c2d7d2ea90085853bb4682b146492d8c48f784b60ef082e3b1259269857166b143cd9a920b'
