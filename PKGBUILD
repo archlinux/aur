@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='IPv4/IPv6 manipulation library'
 arch=('x86_64')
 url='https://github.com/phihag/ipaddress'
-license=('custom:PSFL')
+license=('PSF-2.0')
 makedepends=('python-setuptools')
 depends=('python')
 source=("${url}/archive/v${pkgver}.tar.gz")
@@ -22,5 +22,4 @@ build() {
 package() {
   cd "${_pyname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
