@@ -212,8 +212,6 @@ build() {
 
 	local additional_args=""
 
-  rm -Rf ${_build_path}
-  mkdir -p ${_build_path}
   cd ${_build_path}
 
 for i in ${BUILDENV[@]}; do
@@ -247,10 +245,9 @@ done
                                 -GNinja \
 				-DINPUT_opengl=es2 \
 				-DFEATURE_optimize_full=ON \
+				-DFEATURE_lttng=ON \
                                 -DCMAKE_BUILD_TYPE=RelWithDebInfo \
                                 -DFEATURE_separate_debug_info=ON \
-                                -DBUILD_WITH_PCH=OFF \
-                                -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
                                 -DFEATURE_reduce_exports=ON \
                                 -DFEATURE_reduce_relocations=ON \
                                 -DQT_BUILD_TESTS=OFF \
