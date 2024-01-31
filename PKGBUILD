@@ -40,6 +40,7 @@ depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2' 'libhar
 depends+=('openimagedenoise')
 depends+=('libdecor' 'libepoxy')
 depends+=('openpgl')
+depends+=('vulkan-headers' 'shaderc')
 makedepends+=('git' 'cmake' 'clang' 'boost' 'mesa' 'llvm' wayland{,-protocols} 'libxkbcommon')
 makedepends+=('wayland-protocols')
 makedepends+=('cython')

@@ -45,6 +45,8 @@ pkgbase = blender-develop-git
 	depends = libdecor
 	depends = libepoxy
 	depends = openpgl
+	depends = vulkan-headers
+	depends = shaderc
 	optdepends = cuda: CUDA support in Cycles
 	provides = blender=4.1
 	conflicts = blender=4.1
