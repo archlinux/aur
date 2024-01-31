@@ -2,23 +2,23 @@
 _appname=youtube-music
 pkgname="electron-${_appname}-bin"
 _pkgname="Youtube Music"
-pkgver=1.0.0
-_electronversion=23
-pkgrel=6
+pkgver=1.0.1
+_electronversion=28
+pkgrel=1
 pkgdesc="A minimal electron app for Youtube Music"
 arch=('x86_64')
 url="https://github.com/pauchiner/electron-youtube-music"
-license=('custom')
+license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Linux.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/linux.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7f12ca29771515ff0735af72b639d7c1bb609e14b7dd69d506e65a11a03c1cc3'
+sha256sums=('8eeb09da838987efb24cfe0ded0c078457ee8399bed5dacdcff447c96d61f20c'
             '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
