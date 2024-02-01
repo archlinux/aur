@@ -1,5 +1,5 @@
 pkgname=fzf-tab-source
-pkgver=r10.f70ccae
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Replace zsh's default completion selection menu with fzf.Add file and directory previews,and can use rg or rga to assist fzf searches.
          After the installation is completed,Add 'source /usr/share/zsh/plugins/fzf-tab-source/fzf-tab.plugin.zsh' to ~/.zshrc"
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('zsh' 'fzf')
 makedepends=('git')
 conflicts=('fzf-tab-git' 'fzf-tab-bin-git' )
-optdepends=('exa: 目录结构预览'
+optdepends=('exa: replace ls'
 	'chafa: preview picture'
 	'perl-image-exiftool: preview metadata'
 	'python-pdftotext: preview pdf'
@@ -26,10 +26,6 @@ optdepends=('exa: 目录结构预览'
 source=("git+https://github.com/aslingguang/fzf-tab-source.git")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 package() {
 	cd "$srcdir/$pkgname"
