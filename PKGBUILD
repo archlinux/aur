@@ -1,31 +1,38 @@
+# Maintainer: leuko <aydos.de>
 # Maintainer: VitalyR <vr@vitalyr.com>
 # Maintainer: phanium <$(echo bnhoc2R1QHFxLmNvbQo= | base64 -d)>
 # Former Maintainer: xiretza <aur@xiretza.xyz>
 # Contributor: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 
+# This PKGBUILD can also be used to install *Vitis Unified Software Platform*.
+# See `package()` for details.
+
 # BUILD INSTRUCTIONS:
 #
-# 1. Log in to xilinx.com
-# 2. Go to https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html
-# 3. Download "Xilinx Unified Installer SFD (TAR/GZIP)" - WARNING: This file is >110GB in size
-# 4. Place the .tar.gz in the same directory as the PKGBUILD
-# 5. Build!
+# 1. Go to https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html
+# 2. Download "AMD Unified Installer for FPGAs & Adaptive SoCs SFD" - WARNING:
+#   (1) This file is >100GB in size  (2) You need an account for US export
+# controls. 3. Place the .tar.gz in the same directory as the PKGBUILD
+# 4. Build!
 #
 # No refunds for broken AUR helpers, just use make(chroot)pkg.
 #
 # SOME MORE NOTES:
 #
-# This package is huge. The download alone is a barely-compressed 110GB .tar.gz (extracts to ~110GB)
-# and the final zstd-compressed package is another 20GB. Reserve at least 200GB in total for building.
+# This package is huge. The download alone is a barely-compressed >100GB
+# .tar.gz (extracts to ~100GB) and the final zstd-compressed package is another
+# 20GB. Reserve at least 200GB in total for building.
 #
-# It can also take up to two hours to build, being mostly limited by I/O and single-thread
-# performance. `namcap` takes another 30 minutes, make sure you're not running that automatically.
+# It can also take up to two hours to build, being mostly limited by I/O and
+# single-thread performance. `namcap` takes another 30 minutes, make sure
+# you're not running that automatically.
 #
-# It *also* requires a reasonably ugly hack to build: since package() is run under fakeroot,
-# and the installer tries to access the home directory no matter what `--location` is set to,
-# it fails during "Running post-install tasks" because it tries to access `/root`.
-# To fix this, a tiny shared library (see spoof_homedir.c) is LD_PRELOADed. Its only job is to
-# wrap the `getpwuid()` function and modify the original return value for uid==0.
+# It *also* requires a reasonably ugly hack to build: since package() is run
+# under fakeroot, and the installer tries to access the home directory no
+# matter what `--location` is set to, it fails during "Running post-install
+# tasks" because it tries to access `/root`. To fix this, a tiny shared library
+# (see spoof_homedir.c) is LD_PRELOADed. Its only job is to wrap the
+# `getpwuid()` function and modify the original return value for uid==0.
 
 pkgname=vivado
 _srcname=FPGAs_AdaptiveSoCs_Unified
@@ -81,6 +88,14 @@ package() {
         --product Vivado \
         --edition 'Vivado ML Standard' \
         --location "$pkgdir/opt/Xilinx"
+
+    # For *Vitis Unified Software Platform*, use:
+    # ```
+    #    --product Vitis \
+    #    --edition 'Vitis Unified Software Platform' \
+    # ```
+    # The unified installer that you downloaded includes all Vivado and Vitis
+    # editions.
 
     # install udev rules
     install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-digilent-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
