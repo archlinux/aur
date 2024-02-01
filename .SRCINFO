@@ -1,0 +1,17 @@
+pkgbase = vulkan-utility-libraries-git
+	pkgdesc = Vulkan Utility Libraries (git version)
+	pkgver = 1.3.275
+	pkgrel = 1
+	url = https://github.com/KhronosGroup/Vulkan-Utility-Libraries
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = python
+	makedepends = vulkan-headers
+	depends = libvulkan.so
+	provides = vulkan-utility-libraries
+	conflicts = vulkan-utility-libraries
+	source = git+https://github.com/KhronosGroup/Vulkan-Utility-Libraries.git
+	sha256sums = SKIP
+
+pkgname = vulkan-utility-libraries-git
