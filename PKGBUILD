@@ -2,7 +2,7 @@
 
 _appname='freetz-ng-tools'
 pkgname="${_appname}-git"
-pkgver=r17445.bbc243477
+pkgver=r22642.4c34cb184
 pkgrel=1
 pkgdesc="Development tools of the Freetz-NG project"
 arch=('x86_64')
@@ -33,19 +33,19 @@ package() {
 
 	# Make a haphazard list of various binaries and scripts that look
 	# useful
-	binaries+=(avm-rle-decode)
-	binaries+=(avm-rle-stream-length)
+	#binaries+=(avm-rle-decode)
+	#binaries+=(avm-rle-stream-length)
 	binaries+=(bzimage2eva)
 	binaries+=(eva2bzimage)
 	binaries+=(eva2lzma)
-	binaries+=(imagename2id)
+	#binaries+=(imagename2id)
 	binaries+=(lzma2eva)
 	binaries+=(mksquashfs2-lzma)
 	binaries+=(mksquashfs3-multi)
 	binaries+=(mksquashfs4-avm-be)
 	binaries+=(mksquashfs4-avm-le)
 	binaries+=(remove-nmi-vector)
-	binaries+=(sfk)
+	#binaries+=(sfk)
 	binaries+=(unsquashfs3-multi)
 	binaries+=(unsquashfs4-avm-be)
 	binaries+=(unsquashfs4-avm-le)
