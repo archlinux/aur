@@ -20,6 +20,7 @@ optdepends=('exa: 目录结构预览'
 	'csvkit: xlsx2csv和xls2csv预览'
 	'pandoc: docx预览'
 	'atool: deb,gz,jar,rpm,tar,tgz,xz,zip等预览 '
+	'unzip: zip预览'
 	'unrar: rar预览'
 	'p7zip: 7z预览'
 	'fd: 快速查找文件和目录，比默认的find更快')
