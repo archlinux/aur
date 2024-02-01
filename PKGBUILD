@@ -1,8 +1,7 @@
 pkgname=fzf-tab-source
 pkgver=r6.05c1fc5
 pkgrel=1
-pkgdesc="替代zsh的命令补全功能，加入文件和目录预览，可使用rg和rga辅助fzf搜索。
-         Replace zsh's default completion selection menu with fzf.Add file and directory previews,and can use rg or rga to assist fzf searches.
+pkgdesc="Replace zsh's default completion selection menu with fzf.Add file and directory previews,and can use rg or rga to assist fzf searches.
          After the installation is completed,Add 'source /usr/share/zsh/plugins/fzf-tab-source/fzf-tab.plugin.zsh' to ~/.zshrc"
 arch=('x86_64')
 url="https://github.com/aslingguang/fzf-tab-source"
@@ -11,19 +10,19 @@ depends=('zsh' 'fzf')
 makedepends=('git')
 conflicts=('fzf-tab-git' 'fzf-tab-bin-git' )
 optdepends=('exa: 目录结构预览'
-	'chafa: 图片预览'
-	'perl-image-exiftool: 元数据预览'
-	'python-pdftotext: pdf预览'
-	'bat: 文本预览'
-	'python-xlsx2csv: xlsx2csv预览'
-	'perl-xls2csv: xls2csv预览'
-	'csvkit: xlsx2csv和xls2csv预览'
-	'pandoc: docx预览'
-	'atool: deb,gz,jar,rpm,tar,tgz,xz,zip等预览 '
-	'unzip: zip预览'
-	'unrar: rar预览'
-	'p7zip: 7z预览'
-	'fd: 快速查找文件和目录，比默认的find更快')
+	'chafa: preview picture'
+	'perl-image-exiftool: preview metadata'
+	'python-pdftotext: preview pdf'
+	'bat: preview text'
+	'python-xlsx2csv: preview xlsx'
+	'perl-xls2csv: preview xlsx'
+	'csvkit: process csv'
+	'pandoc: preview docx'
+	'atool: preview deb,gz,jar,rpm,tar,tgz,xz,zip,etc '
+	'unzip: preview zip'
+	'unrar: preview rar'
+	'p7zip: preview 7z'
+	'fd: quickly search for files and directories, faster than the default find')
 source=("git+https://github.com/aslingguang/fzf-tab-source.git")
 sha256sums=('SKIP')
 
