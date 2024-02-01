@@ -1,47 +1,64 @@
 # Maintainer: Rudy Matela <rudy@matela.com.br>
 #
-# Based on upstream ArchLinux version for ghc-7.8, by:
-#   Thomas Dziedzic <gostrc@gmail.com>
-#   Vesa Kaihlavirta <vesa@archlinux.org>
-#
-# Special note for devs looking to upgrade this package:
-#   ghc places a unique hash for each library when it is built.
-#   Libraries depend on versions specified by those hashes.
-#   This implies that all libraries need to be rebuilt when ghc is rebuilt.
+# Contributor: Rudy Matela <rudy@matela.com.br>
 #
 #
-# Please consider using the newer GHCs.
-# This package is nevertheless useful for testing for backwards compatibility.
+# This package can coexist with the latest version of GHC provided in the
+# standard Arch Linux repositories.  This package is useful for:
+#
+# * testing for forwards/backwards compatibility this specific GHC branch;
+# * compiling programs that only work with this specific GHC branch;
+# * as a dependency to packages that can only be compiled with this branch.
+#
+# If you would like to compile GHC yourself,
+# you can use this package to bootstrap compilation.
 #
 #
-# This package only works for compiling with the -dynamic flag
-# so please add it to your calls to ghc-7.6.
+# https://ghc.gitlab.haskell.org/ghc/doc/users_guide/intro.html#ghc-version-numbering-policy
+# https://www.haskell.org/ghc/download.html
+# https://www.haskell.org/ghc/download_ghc_7_6_3.html
+#
+#
+# After installing runghc-7.6 and ghci-7.6 work fine out of the box:
+#
+# $ cat hello.hs
+# main = putStrLn "hello"
+#
+# $ runghc-7.6 hello.hs
+# hello
+#
+# $ ghci-7.6
+# > putStrLn "hello"
+# hello
+#
+# However compiling binaries requires either `-optl -no-pie` or `-dynamic`:
+#
+# $ ghc-7.6 -optl -no-pie hello.hs
+#
+# $ ghc-7.6 -dynamic hello.hs
 
 pkgname=ghc7.6-bin
 pkgver=7.6.3
-pkgrel=6
-pkgdesc='Binary GHC 7.6 installed on /usr/bin/ghc-7.6 (compatible w/ Haskell Platform 2013.2)'
+pkgrel=7
+_ver_branch=7.6
+pkgdesc="Binary GHC ${_ver_branch} installed on /usr/bin/ghc-${_ver_branch}"
 arch=('x86_64')
 url='http://www.haskell.org/ghc/'
-license=('custom')
-# libffi might be needed in the future: http://hackage.haskell.org/trac/ghc/ticket/4496
-depends=('perl' 'gmp4' 'gcc' 'ncurses5-compat-libs' 'libffi5')
-makedepends=('perl' 'libxslt' 'docbook-xsl' 'ncurses5-compat-libs')
+license=('BSD-3-Clause')
+depends=('gcc' 'gmp4' 'libffi5' 'perl' 'ncurses5-compat-libs')
+makedepends=('ghc' 'libxslt' 'docbook-xsl')
 install='ghc.install'
-options=('staticlibs')
-provides=('ghc7.6')
-conflicts=('ghc7.6')
-source=("http://www.haskell.org/ghc/dist/${pkgver}/ghc-${pkgver}-x86_64-unknown-linux.tar.bz2")
+provides=("ghc${_ver_branch}")
+conflicts=("ghc${_ver_branch}")
+source=("https://www.haskell.org/ghc/dist/${pkgver}/ghc-${pkgver}-${CARCH}-unknown-linux.tar.bz2")
 sha256sums=('398dd5fa6ed479c075ef9f638ef4fc2cc0fbf994e1b59b54d77c26a8e1e73ca0')
 
 build() {
   cd ghc-${pkgver}
 
-  sed -i 's,"$bindir/ghc","$bindir/ghc-7.6",' utils/runghc/runghc.wrapper
-
   ./configure \
     --prefix=/usr \
-    --docdir=/usr/share/doc/ghc-7.6
+    --docdir=/usr/share/doc/ghc-${_ver_branch}
 }
 
 package() {
@@ -49,18 +66,18 @@ package() {
 
   make DESTDIR=${pkgdir} install
 
-  mv ${pkgdir}/usr/bin/ghc        ${pkgdir}/usr/bin/ghc-7.6
-  mv ${pkgdir}/usr/bin/ghci       ${pkgdir}/usr/bin/ghci-7.6
-  mv ${pkgdir}/usr/bin/ghc-pkg    ${pkgdir}/usr/bin/ghc-pkg-7.6
-  mv ${pkgdir}/usr/bin/haddock    ${pkgdir}/usr/bin/haddock-ghc-7.6
-  mv ${pkgdir}/usr/bin/hp2ps      ${pkgdir}/usr/bin/hp2ps-ghc-7.6
-  mv ${pkgdir}/usr/bin/hpc        ${pkgdir}/usr/bin/hpc-ghc-7.6
-  mv ${pkgdir}/usr/bin/hsc2hs     ${pkgdir}/usr/bin/hsc2hs-ghc-7.6
-  mv ${pkgdir}/usr/bin/runghc     ${pkgdir}/usr/bin/runghc-7.6
-  rm ${pkgdir}/usr/bin/runhaskell # use runghc-7.6 instead
+  mv ${pkgdir}/usr/bin/ghc        ${pkgdir}/usr/bin/ghc-${_ver_branch}
+  mv ${pkgdir}/usr/bin/ghci       ${pkgdir}/usr/bin/ghci-${_ver_branch}
+  mv ${pkgdir}/usr/bin/ghc-pkg    ${pkgdir}/usr/bin/ghc-pkg-${_ver_branch}
+  mv ${pkgdir}/usr/bin/haddock    ${pkgdir}/usr/bin/haddock-ghc-${_ver_branch}
+  mv ${pkgdir}/usr/bin/hp2ps      ${pkgdir}/usr/bin/hp2ps-ghc-${_ver_branch}
+  mv ${pkgdir}/usr/bin/hpc        ${pkgdir}/usr/bin/hpc-ghc-${_ver_branch}
+  mv ${pkgdir}/usr/bin/hsc2hs     ${pkgdir}/usr/bin/hsc2hs-ghc-${_ver_branch}
+  mv ${pkgdir}/usr/bin/runghc     ${pkgdir}/usr/bin/runghc-${_ver_branch}
+  rm ${pkgdir}/usr/bin/runhaskell # use runghc-${_ver_branch} instead
 
-  mv ${pkgdir}/usr/share/man/man1/ghc.1 ${pkgdir}/usr/share/man/man1/ghc-7.6.1
+  mv ${pkgdir}/usr/share/man/man1/ghc.1 ${pkgdir}/usr/share/man/man1/ghc-${_ver_branch}
 
-  install -d            ${pkgdir}/usr/share/licenses/ghc-7.6
-  install -m644 LICENSE ${pkgdir}/usr/share/licenses/ghc-7.6
+  install -d            ${pkgdir}/usr/share/licenses/ghc-${_ver_branch}
+  install -m644 LICENSE ${pkgdir}/usr/share/licenses/ghc-${_ver_branch}
 }
