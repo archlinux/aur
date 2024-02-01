@@ -90,7 +90,7 @@ pkgver() {
 }
 
 build() {
-case $BITMAP_BACKEND in imagemagick) export PKG_CONFIG_PATH="/usr/lib/imagemagick6/pkgconfig";; esac
+case $BITMAP_BACKEND in imagemagick) export PKG_CONFIG_PATH="/usr/lib/pkgconfig:/usr/lib/imagemagick6/pkgconfig";; esac
 # export CXXFLAGS="${CXXFLAGS} -fpermissive"
   cmake -S "${_gitname}" -B build -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
