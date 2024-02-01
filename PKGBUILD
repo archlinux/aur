@@ -3,7 +3,7 @@
 pkgname=sss-bin
 pkgver=0.1.4
 pkgrel=1
-pkgdesc="Terminal tool to take screenshots of your code"
+pkgdesc="Terminal tool to take screenshots of your screen"
 url="https://github.com/SergioRibera/sss"
 conflicts=('sss' 'sss-git')
 license=('MIT' 'Apache-2.0')
