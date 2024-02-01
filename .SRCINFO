@@ -1,6 +1,6 @@
 pkgbase = r-hh
 	pkgdesc = Statistical Analysis and Data Display: Heiberger and Holland
-	pkgver = 3.1.49
+	pkgver = 3.1.51
 	pkgrel = 1
 	url = https://cran.r-project.org/package=HH
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-hh
 	optdepends = r-rcmdr
 	optdepends = r-rcmdrplugin.hh
 	optdepends = r-teachingdemos
-	source = https://cran.r-project.org/src/contrib/HH_3.1-49.tar.gz
-	sha256sums = 12cef0cb0a07c745026d925aee2970913e1f3f0705a58bc2741bf4940c80b87b
+	source = https://cran.r-project.org/src/contrib/HH_3.1-51.tar.gz
+	sha256sums = 39088a94f3a2b47cb938649534fcaa3a1829171cc4a8d214a9aa7be782c40c53
 
 pkgname = r-hh
