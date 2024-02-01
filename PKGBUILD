@@ -7,6 +7,8 @@ arch=("x86_64")
 url="https://arrpc.openasar.dev/"
 license=('MIT')
 depends=("glibc" "gcc-libs")
+conflicts=("arrpc")
+provides=("arrpc")
 makedepends=("npm" "git")
 # for some reason stripping the binary breaks it
 options=(!strip)
