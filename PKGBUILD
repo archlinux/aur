@@ -1,4 +1,5 @@
-# Maintainer:  Anton Kudelin <kudelin___AT___protonmail___DOT___com>
+# Caretaker: Henk Metselaar <hmetselaar___AT___fastmail___DOT___com>
+# Previous Maintainer:  Anton Kudelin <kudelin___AT___protonmail___DOT___com>
 # Contributor: Giuseppe Borzi <gborzi___AT___ieee___DOT___org>
 # Contributor: mickele <mimocciola___AT___yahoo___DOT___ com>
 # Contributor: iztok pizorn <pizorn___AT___gmail___DOT___com>
@@ -7,8 +8,8 @@
 pkgname=atlas-lapack
 _PKGNAME=ATLAS
 pkgver=3.10.3
-_lapackver=3.11.0
-pkgrel=8
+_lapackver=3.12.0
+pkgrel=9
 epoch=1
 pkgdesc="Automatically Tuned Linear Algebra Software"
 url="http://math-atlas.sourceforge.net"
@@ -22,7 +23,7 @@ source=("lapack-$_lapackver.tar.gz::https://github.com/Reference-LAPACK/lapack/a
         "Makefile"
         "gfortran-10.patch")
 noextract=("lapack-$_lapackver.tar.gz" "atlas$pkgver.tar.bz2")
-sha256sums=('4b9ba79bfd4921ca820e83979db76ab3363155709444a787979e81c22285ffa9'
+sha256sums=('eac9570f8e0ad6f30ce4b963f4f033f0f643e7c3912fc9ee6cd99120675ad48b'
             '2688eb733a6c5f78a18ef32144039adcd62fabce66f2eb51dd59dde806a6d2b7'
             '7627446a0d598b55bc8f2795f8ff2028f134928b9ca597b76bf8dd5622dbff69'
             '33dbb696ab88cf8df2b7fcebbbd60c01b0a26afdd5df4be2d8b344a7bfcdc12f')
@@ -33,6 +34,7 @@ prepare() {
   echo 'Before building this package, as root you must set the CPU(s)'
   echo 'governor(s) to "performance" and disable intel_pstate.'
   echo 'See: https://wiki.archlinux.org/index.php/CPU_frequency_scaling'
+  echo "You should also comment out the warning from fgrep, for example as root type sed -i 's/^echo/\\#echo/' /usr/bin/fgrep"
   
   cd "$srcdir"
   tar -xjf atlas$pkgver.tar.bz2
