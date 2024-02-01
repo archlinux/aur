@@ -7,8 +7,8 @@
 
 _pkgname=neovim
 pkgname="$_pkgname-git"
-pkgver=0.9.0.r3144.g9f15a18fa5
-pkgrel=3
+pkgver=0.10.0.r2250.g6bba4beced
+pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs'
 arch=(i686 x86_64 armv7h armv6h aarch64)
 url='https://neovim.io'
@@ -47,7 +47,10 @@ b2sums=('SKIP'
 
 pkgver() {
   cd "$_pkgname"
-  git describe --abbrev=10 --long --tags --match 'v*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  local nvim_version nvim_version_git
+  nvim_version="$(sed -nE '/NVIM_VERSION_/ s/.* +([0-9]+)\).*/\1/p' ./CMakeLists.txt | sed ':b;N;$!bb;s/\n/\./g')"
+  nvim_version_git="$(git describe --first-parent --always | sed -E 's/^v[0-9]+.[0-9]+.[0-9]+-//; s/^([0-9]+)-([a-z0-9]+)/\1\.\2/')"
+  printf "%s.r%s\n" "$nvim_version" "$nvim_version_git"
 }
 
 build() {
