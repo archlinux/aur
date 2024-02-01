@@ -1,4 +1,5 @@
 # Maintainer: Ashley Whetter <(firstname) @ awhetter.co.uk>
+# Maintainer: Anton Hvornum <torxed@archlinux.org>
 # Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Aleksey Filippov <sarum9in@gmail.com>
