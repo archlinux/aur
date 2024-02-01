@@ -1,0 +1,14 @@
+pkgbase = jason-bin
+	pkgdesc = Fully-fledged interpreter for an extended version of AgentSpeak, a BDI agent-oriented logic programming language.
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/jason-lang/jason
+	arch = x86_64
+	license = LGPL-3.0-or-later
+	depends = java-environment=17
+	provides = jason
+	conflicts = jason
+	source = https://github.com/jason-lang/jason/releases/download/3.2.0/jason-bin-3.2.0.zip
+	sha256sums = SKIP
+
+pkgname = jason-bin
