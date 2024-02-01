@@ -1,0 +1,16 @@
+pkgbase = archey3
+	pkgdesc = Output a logo and various system information
+	pkgver = 0.5
+	pkgrel = 14
+	url = https://lclarkmichalek.github.io/archey3/
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = python-distribute
+	depends = python
+	optdepends = imagemagick: for default screenshot command
+	optdepends = python-logbook: alternative logging system
+	source = git+https://github.com/lclarkmichalek/archey3#commit=ac687529ec6208954f09c29f01760c66f73b1d10
+	b2sums = SKIP
+
+pkgname = archey3
