@@ -2,7 +2,7 @@
 _base=pytest-base-url
 pkgname=python-${_base}
 pkgdesc="pytest plugin for URL based testing"
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 arch=(any)
 url="https://github.com/pytest-dev/${_base}"
@@ -10,8 +10,8 @@ license=(MPL2)
 depends=(python-pytest python-requests)
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest-localserver)
-source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('91bccc0809050552feef9e0445e16433f5f5ab45bbc69e2b88ad49ddfdb9304f46a039760c3dc052b38b1954412059fceec346f14add7dc9968692610a1209ba')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
+sha512sums=('d5747f7ab7f7995f3b822b9770f9194132f1fff5636c5deaf24fae4d5be054a3eb6512ac09b1e9fc5a6d93d31ab05f9ee4df76f1c2d00c5cb200b81ef2750b43')
 
 build() {
   cd ${_base}-${pkgver}
