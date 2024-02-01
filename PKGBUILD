@@ -20,7 +20,7 @@
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.6.14
+pkgver=6.6.15
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
@@ -50,7 +50,7 @@ source+=(
   "config-$pkgver"::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/config
 )
 sha256sums+=(
-  'fbe96b2db3f962cd2a96a849d554300e7a4555995160082d4f323c2a1dfa1584'
+  'ab290c7f8687f2f8af96e14abd0700ba8b282426151873690f51621d8d5f5faa'
   'SKIP'
   'SKIP'
 )
@@ -62,7 +62,7 @@ validpgpkeys=(
 
 if [[ ${_build_vfio::1} == "t" ]] ; then
   source+=(
-    1001-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
+    1001-add-acs-overrides.patch # updated from httpss://lkml.org/lkml/2013/5/30/513
     1002-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
   )
   sha256sums+=(
@@ -72,44 +72,44 @@ if [[ ${_build_vfio::1} == "t" ]] ; then
 fi
 
 if [[ ${_build_arch_patch::1} == "t" ]] ; then
-  if [[ ${_build_lts::1} == "t" ]] ; then
-    _dl_url_arch='https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main'
-    source+=(
-      "0001-$pkgver-disallow-unprivileged-CLONE_NEWUSER.patch"::"$_dl_url_arch/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-      "0002-$pkgver-nvidia-skip-simpledrm.patch"::"$_dl_url_arch/0002-skip-simpledrm-if-nvidia-drm.modeset=1-is.patch"
-    )
-    sha256sums+=(
-      '21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889'
-      '2f23be91455e529d16aa2bbf5f2c7fe3d10812749828fc752240c21b2b845849'
-    )
-  else
-    _srctag=v$pkgver-arch1
-    _dl_url_arch='https://github.com/archlinux/linux'
-    source+=(
-      $_dl_url_arch/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
-    )
-    sha256sums+=(
-      'SKIP'
-      'SKIP'
-    )
-  fi
+  _dl_url_arch='https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main'
+  source+=(
+    "0001-$pkgver-disallow-unprivileged-CLONE_NEWUSER.patch"::"$_dl_url_arch/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+    "0002-$pkgver-nvidia-skip-simpledrm.patch"::"$_dl_url_arch/0002-skip-simpledrm-if-nvidia-drm.modeset=1-is.patch"
+  )
+  sha256sums+=(
+    '21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889'
+    '2f23be91455e529d16aa2bbf5f2c7fe3d10812749828fc752240c21b2b845849'
+  )
 fi
 
 if [[ ${_build_clang::1} == "t" ]] ; then
   makedepends+=(clang llvm lld)
 
   export CC=clang
-  export CXX=clang++
-  export LDFLAGS+=" -fuse-ld=lld"
-
+  export LD=ld.lld
+  export AR=llvm-ar
+  export NM=llvm-nm
+  export STRIP=llvm-strip
+  export OBJCOPY=llvm-objcopy
+  export OBJDUMP=llvm-objdump
+  export READELF=llvm-readelf
   export HOSTCC=clang
+  export HOSTCXX=clang++
+  export HOSTAR=llvm-ar
+  export HOSTLD=ld.lld
   export LLVM=1
   export LLVM_IAS=1
+
+  export CXX=clang++
+  export LDFLAGS+=" -fuse-ld=lld"
 fi
 
 if [[ "${_build_v3::1}" == "t" ]] ; then
   export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
   export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"}
+
+  export RUSTFLAGS+=" -Ctarget-cpu=x86-64-v3"
 fi
 
 export KBUILD_BUILD_HOST=archlinux
