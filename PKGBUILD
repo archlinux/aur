@@ -1,6 +1,6 @@
 # Maintainer: Hendrik 'T4cC0re' Meyer <aur@t4cc0.re>
 pkgname=curl-http3
-pkgver=8.5.0
+pkgver=8.6.0
 pkgrel=1
 pkgdesc="An URL retrieval utility and library - compiled with HTTP/3 support - binary is called curl3"
 arch=('x86_64')
@@ -37,8 +37,7 @@ build() {
 
   autoreconf -fi
 ## Arch Linux build flags + BoringSSL and quiche
-  ./configure \
-      LDFLAGS="-Wl,-L,${PWD}/../quiche/target/release" \
+  env LDFLAGS=${LDFLAGS:--Wl}",-L,${PWD}/../quiche/target/release" ./configure \
       --with-openssl=$PWD/../quiche/quiche/deps/boringssl/src \
       --with-quiche=$PWD/../quiche/target/release \
       --enable-alt-svc \
@@ -80,7 +79,7 @@ package() {
   install -Dm644 quiche/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING-quiche"
   install -Dm644 quiche/quiche/deps/boringssl/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-boringssl"
 }
-sha512sums=('1ff70e8fd5f233b373dea2a031d46698c03ed35f384c2eacbe9368f9daed65e91d7f45ade350c3ac3dd3d662c913b17cdc8702a0c23879b0c78fbd396fd0b926'
+sha512sums=('43fdb6b81b394f3382d353d5f57673b2b3d26cfe34b25d08a526bc0597f508d5298e5a7088d0736d1f139cad19cd922affa51533c3a5a4bb5f2de68891c2958d'
             'SKIP'
             'SKIP'
             'SKIP')
