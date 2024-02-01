@@ -16,8 +16,7 @@ source=(git+https://github.com/KhronosGroup/Vulkan-Tools.git)
 
 pkgver(){
  cd "${srcdir}"/Vulkan-Tools
- # cutting off 'foo-' prefix that presents in the git tag
- git describe --long --tags --abbrev=7 --exclude sdk-* --exclude vulkan-* | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+ git describe --long --tags --abbrev=7 --match='v*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build(){
