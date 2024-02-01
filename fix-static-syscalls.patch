@@ -1,0 +1,19 @@
+diff --git a/lib/ploop.c b/lib/ploop.c
+index 286f213..95c40df 100644
+--- a/lib/ploop.c
++++ b/lib/ploop.c
+@@ -2587,12 +2587,12 @@ static int do_mount(const char *part, const char *target)
+ }
+ 
+ 
+-static int open_tree(int dirfd, const char *pathname, unsigned int flags)
++int open_tree(int dirfd, const char *pathname, unsigned int flags)
+ {
+ 	return syscall(428, dirfd, pathname, flags);
+ }
+ 
+-static int move_mount(int from_dirfd, const char *from_pathname, int to_dirfd,
++int move_mount(int from_dirfd, const char *from_pathname, int to_dirfd,
+ 		const char *to_pathname, unsigned int flags)
+ {
+ 	return syscall(429, from_dirfd, from_pathname, to_dirfd, to_pathname, flags);
