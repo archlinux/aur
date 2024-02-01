@@ -3,9 +3,9 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgbase=opencv3-opt
-pkgname=($pkgbase $pkgbase-samples)
+pkgname=("$pkgbase" "$pkgbase"-samples)
 pkgver=3.4.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Computer Vision Library (Legacy Version & /opt directory version)"
 arch=(x86_64)
 license=(BSD)
@@ -20,6 +20,7 @@ makedepends=(
   hdf5
   lapacke
   mesa
+  openmpi
   python-numpy
   python-setuptools
   vtk
