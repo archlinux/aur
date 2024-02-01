@@ -20,7 +20,7 @@
 
 pkgname=ghc9.8-bin
 pkgver=9.8.1
-pkgrel=3
+pkgrel=4
 _ver_branch=9.8
 pkgdesc="Binary GHC ${_ver_branch} installed on /usr/bin/ghc-${_ver_branch}"
 arch=('x86_64')
@@ -32,14 +32,7 @@ install='ghc.install'
 provides=("ghc${_ver_branch}")
 conflicts=("ghc${_ver_branch}")
 source=("https://www.haskell.org/ghc/dist/${pkgver}/ghc-${pkgver}-${CARCH}-deb12-linux.tar.xz")
-noextract=("ghc-${pkgver}-${CARCH}-deb12-linux.tar.xz")
 sha256sums=('92c79d502c946463d2dd3c63dfd1d6d1ddda139d0b2654c2ce5e56ab8b045e06')
-
-prepare() {
-	# for some reason, bsdtar cannot unpack this file:
-	tar -xf "ghc-${pkgver}-${CARCH}-deb12-linux.tar.xz"
-	# see https://wiki.archlinux.org/index.php/PKGBUILD#noextract
-}
 
 build() {
   cd ghc-${pkgver}-${CARCH}-unknown-linux
