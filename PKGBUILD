@@ -12,7 +12,7 @@
 
 pkgname=niri
 pkgver=0.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Scrollable-tiling Wayland compositor"
 arch=(x86_64)
 url="https://github.com/YaLTeR/${pkgname}"
@@ -44,10 +44,20 @@ source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         009.patch::${url}/commit/fefb1cccd6c3c7b92f8d4021fe5e38609760d1e4.patch # foreign_toplevel: Update the focused window last
         010.patch::${url}/commit/d3f4583c903dc36d93924ce3d2ec8c9ffc57dae5.patch # foreign_toplevel: Use OutputHandler to send output_enter on demand
         011.patch::${url}/commit/85eac9d9d028352e3b54d6944730fd2777918c5b.patch # chore: bump smithay
+        012.patch::${url}/commit/11bff3a2f1aa069a998cd6710dd06467acb73920.patch # Update Smithay (rotation fix)
+        013.patch::${url}/commit/962e159db61dc6c7822aa899b1d9dc86fb6a0de5.patch # Add option to rotate outputs
+        014.patch::${url}/commit/7052f0129ef5d2fa5d38eef3dbb5c9296228e341.patch # Stop screencasts on size changes
+        015.patch::${url}/commit/2e50f8dee0f877f8192d04cc2c910fd9efe8451b.patch # Hardcode winit transform for now
+        016.patch::${url}/commit/89ac95867059340b80a37ef81ff32a589bffd185.patch # default-config: Document how focus ring and border draw behind
+        017.patch::${url}/commit/0a715ce1553ec528dbb61172450d2944db7edb70.patch # default-config: Improve wording for focus-ring/border comment
+        018.patch::${url}/commit/e51268a39eeffd56d016a8d25dc98a40ff045a9c.patch # Add actions to move the active workspace to another monitor
+        019.patch::${url}/commit/9afd728ae98059c9405fe2430399ecb89fd1a7a9.patch # Add error messages to backend initialization
+        020.patch::${url}/commit/2036116f169369e31f4fd8a280788c4267a7024b.patch # config: Premultiply alpha in Color when converting to f32
+        #.patch::${url}/commit/.patch # sample
        )
 b2sums=('b6160952c52033250922aaf7f7fc57094c678c9a3c0e54c2e63e33b5a8d46328f9cf58608b4b35b50078e953691d4ac448b5ac3e927833f757f23dba338e0847'
         'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'   # Skip checking hashsums of patches, Github issue
-        'SKIP'
+        'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
        )
 
 prepare() {
