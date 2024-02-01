@@ -1,8 +1,8 @@
-# Maintainer: malacology <guoyi zhang at malacology dot net>
+# Maintainer: arkorty <arkorty at gmail dot com>
 
 pkgname=graphite-gtk-theme
 _pkgname='Graphite-gtk-theme'
-_pkgver=2022-01-22
+_pkgver=2023-12-31
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc='Graphite gtk theme'
@@ -15,9 +15,8 @@ depends=("gnome-themes-extra")
 optdepends=("gtk-engine-murrine")
 options=(!strip)
 makedepends=("sassc")
-source=("https://github.com/vinceliuice/Graphite-gtk-theme/archive/refs/tags/${_pkgver}.zip")
-sha256sums=('22d8a230358e61466977b1f7be9b440ed8d61c06d55d326ec7538ad9cc0fb714')
-
+source=("https://github.com/vinceliuice/Graphite-gtk-theme/archive/refs/tags/${_pkgver}.tar.gz")
+sha256sums=('b21c3803d2c34928b2f05c6bc9e58995545e135de780ffffc143027b33df4bac')
 
 package() {
     dist="${pkgdir}/usr/share/themes"
