@@ -1,10 +1,10 @@
 pkgbase = mcman-bin
 	pkgdesc = Powerful Minecraft Server Manager CLI.
-	pkgver = 0.4.3
-	pkgrel = 2
+	pkgver = 0.4.4
+	pkgrel = 1
 	url = https://github.com/ParadigmMC/mcman
 	arch = x86_64
-	source = https://github.com/ParadigmMC/mcman/releases/download/0.4.3/mcman
-	sha256sums = 02440fc5384b9624bbd4099602e6e9606bb6bd55d39fba9c1a50ee51493dfbe2
+	source = https://github.com/ParadigmMC/mcman/releases/download/0.4.4/mcman
+	sha256sums = 6efb803b501fe25e8a3fd96e3afb413f35cd0dfbfd0eaa79fefeffce467ca05c
 
 pkgname = mcman-bin
