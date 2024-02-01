@@ -3,7 +3,7 @@ pkgver=r6.05c1fc5
 pkgrel=1
 pkgdesc="替代zsh的命令补全功能，加入文件和目录预览，可使用rg和rga辅助fzf搜索。
          Replace zsh's default completion selection menu with fzf.Add file and directory previews,and can use rg or rga to assist fzf searches.
-         After the installation is completed, use 'fts -a' to enable the plugin"
+         After the installation is completed,Add 'source /usr/share/zsh/plugins/fzf-tab-source/fzf-tab.plugin.zsh' to ~/.zshrc"
 arch=('x86_64')
 url="https://github.com/aslingguang/fzf-tab-source"
 license=('GPL')
