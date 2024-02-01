@@ -1,13 +1,13 @@
 pkgbase = tinyobjloader
 	pkgdesc = Tiny but powerful single file wavefront obj loader
-	pkgver = 2.0.0rc9
+	pkgver = 2.0.0rc13
 	pkgrel = 1
 	url = https://github.com/tinyobjloader/tinyobjloader
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	depends = gcc-libs
-	source = tinyobjloader-2.0.0rc9.tar.gz::https://github.com/tinyobjloader/tinyobjloader/archive/v2.0.0rc9.tar.gz
-	sha256sums = f9061d790905416a8a6c6f3dbfee77c7665636de0a9dc750ce799b513ddba83c
+	source = tinyobjloader-2.0.0rc13.tar.gz::https://github.com/tinyobjloader/tinyobjloader/archive/v2.0.0rc13.tar.gz
+	sha256sums = 0feb92b838f8ce4aa6eb0ccc32dff30cb64a891e0ec3bde837fca49c78d44334
 
 pkgname = tinyobjloader
