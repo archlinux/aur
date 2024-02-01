@@ -1,0 +1,5 @@
+[httprobe]
+source = "github"
+github = "tomnomnom/httprobe"
+prefix = "v"
+use_latest_release = true
