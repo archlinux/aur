@@ -1,0 +1,24 @@
+pkgbase = scp-bin
+	pkgdesc = Space Cadet Pinball engine for Space Cadet Pinball and Full Tilt! Pinball.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://gitlab.com/spacecadetpinball
+	arch = x86_64
+	arch = aarch64
+	arch = i386
+	arch = i686
+	license = GPL
+	makedepends = unzip
+	depends = wget
+	depends = sdl2
+	depends = sdl2_mixer
+	source_x86_64 = https://gitlab.com/spacecadetpinball/binaries/2.1.0/-/raw/main/SpaceCadetPinball-Linux-x64.tar.xz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://gitlab.com/spacecadetpinball/binaries/2.1.0/-/raw/main/SpaceCadetPinball-Linux-arm64.tar.xz
+	sha256sums_aarch64 = SKIP
+	source_i386 = https://gitlab.com/spacecadetpinball/binaries/2.1.0/-/raw/main/SpaceCadetPinball-Linux-i686.tar.xz
+	sha256sums_i386 = SKIP
+	source_i686 = https://gitlab.com/spacecadetpinball/binaries/2.1.0/-/raw/main/SpaceCadetPinball-Linux-i686.tar.xz
+	sha256sums_i686 = SKIP
+
+pkgname = scp-bin
