@@ -4,7 +4,7 @@
 pkgname=webcatalog-bin
 _pkgname=webcatalog
 pkgver=55.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Turn Any Websites into Real Desktop Apps"
 arch=('x86_64' 'aarch64')
 url="https://webcatalog.io/webcatalog/"
@@ -34,6 +34,6 @@ package() {
     cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
 
     mkdir "${pkgdir}/usr/share/applications/"
-    cp --no-preserve=mode,ownership "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/"
+    cp --no-preserve=mode,ownership "${srcdir}/squashfs-root/@webcatalogdesktop.desktop" "${pkgdir}/usr/share/applications/webcatalog.desktop"
     patch -d "${pkgdir}" -p1 < "${_pkgname}.patch"
 }

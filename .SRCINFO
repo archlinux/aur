@@ -1,7 +1,7 @@
 pkgbase = webcatalog-bin
 	pkgdesc = Turn Any Websites into Real Desktop Apps
 	pkgver = 55.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://webcatalog.io/webcatalog/
 	arch = x86_64
 	arch = aarch64
