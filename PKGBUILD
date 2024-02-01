@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fooyin
 _pkgname=Fooyin
-pkgver=0.3.3
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="A customisable music player"
 arch=('any')
