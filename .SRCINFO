@@ -1,15 +1,18 @@
 pkgbase = gotify-desktop
 	pkgdesc = Small Gotify daemon to send messages as desktop notifications
 	pkgver = 1.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/desbma/gotify-desktop
 	arch = aarch64
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
+	makedepends = scour
 	depends = gcc-libs
 	depends = openssl
 	source = gotify-desktop-1.3.3.tar.gz::https://github.com/desbma/gotify-desktop/archive/1.3.3.tar.gz
+	source = https://github.com/gotify/logo/archive/25c1d2c08894fcb0ed39c36a2816316a161c0e57.tar.gz
 	sha512sums = 42561d2f46df7065528a6ed06279e091311dfa83847e558d22be275ceb0ee05e416fe9de99309531c87b5716d3d58b73482741f1732515b63821d650128d0f6c
+	sha512sums = c7d8a581446688f70231841acea2905e5a0c3b0c912e2864d502cbf9fbddbdd83655d0cc67dff7fcbcb8e7a2f175e76e96be1ecdec18f3ccf1769787dc82393b
 
 pkgname = gotify-desktop
