@@ -1,13 +1,13 @@
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=libnl1
 pkgver=1.1.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Library for applications dealing with netlink sockets (Legacy version)"
 arch=('x86_64')
 url="https://www.infradead.org/~tgr/libnl/"
-license=('GPL')
+license=('LGPL-2.1-only')
 depends=('glibc')
 options=('!staticlibs')
 source=("https://www.infradead.org/~tgr/libnl/files/libnl-${pkgver}.tar.gz")

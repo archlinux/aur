@@ -1,10 +1,10 @@
 pkgbase = libnl1
 	pkgdesc = Library for applications dealing with netlink sockets (Legacy version)
 	pkgver = 1.1.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.infradead.org/~tgr/libnl/
 	arch = x86_64
-	license = GPL
+	license = LGPL-2.1-only
 	depends = glibc
 	options = !staticlibs
 	source = https://www.infradead.org/~tgr/libnl/files/libnl-1.1.4.tar.gz
