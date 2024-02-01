@@ -1,7 +1,7 @@
 # Maintainer: Miguel Revilla <yo at miguelrevilla dot com>
 
 pkgname=odb
-pkgver=2.5.0b25
+pkgver=2.5.0b25+1
 pkgrel=1
 pkgdesc="C++ Object-Relational Mapping compiler"
 url="https://www.codesynthesis.com/products/odb/"
