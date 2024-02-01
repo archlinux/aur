@@ -3,7 +3,7 @@
 _name=pyhdbpp
 _git_name=libhdbpp-python
 pkgname=python-${_name}
-pkgver=1.2.0
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="hdb++ python3 API"
 arch=('any')
@@ -13,7 +13,7 @@ depends=(python-future python-pytango python-pyqtgraph python-pymysql python-yam
 optdepends=('python-psycopg2: for timescaledb')
 makedepends=(python-setuptools)
 source=("${_git_name}-${pkgver}.tar.gz::https://gitlab.com/tango-controls/hdbpp/${_git_name}/-/archive/${pkgver}/${_git_name}-${pkgver}.tar.gz")
-sha256sums=('a88e595846661d9f4c0c35057b02d0b7d45fa089c82f38a4f1bcb97d0397b2d5')
+sha256sums=('d5b0fc4f43e99a0bdd38e8c8bcc13b8c6742d69c6462827d81a1067947f735db')
 
 build() {
   cd "${_git_name}-${pkgver}"
