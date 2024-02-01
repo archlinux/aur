@@ -1,17 +1,16 @@
 pkgbase = graphite-gtk-theme
 	pkgdesc = Graphite gtk theme
-	pkgver = 2023-12-31
+	pkgver = 2023.12.31
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Graphite-gtk-theme
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = sassc
-	depends = gnome-themes-extra
 	optdepends = gtk-engine-murrine
 	provides = graphite-gtk-theme
 	conflicts = graphite-gtk-theme-git
 	options = !strip
-	source = https://github.com/vinceliuice/Graphite-gtk-theme/archive/refs/tags/2023-12-31.tar.xz
+	source = https://github.com/vinceliuice/Graphite-gtk-theme/archive/refs/tags/2023-12-31.tar.gz
 	sha256sums = b21c3803d2c34928b2f05c6bc9e58995545e135de780ffffc143027b33df4bac
 
 pkgname = graphite-gtk-theme
