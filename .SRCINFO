@@ -5,6 +5,7 @@ pkgbase = massren
 	url = https://github.com/laurent22/massren
 	arch = x86_64
 	license = MIT
+	conflicts = massren-git
 	makedepends = go
 	source = massren-1.5.6.tar.gz::https://github.com/laurent22/massren/archive/refs/tags/v1.5.6.tar.gz
 	sha256sums = 49758b477a205f3fbf5bbe72c2575fff8b5536f8c6b45f8f6bd2fdde023ce874

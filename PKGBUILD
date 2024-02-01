@@ -1,6 +1,7 @@
 # Maintainer: Firegem <mrfiregem@protonmail.ch>
+# Maintainer: arkorty <arkorty@gmail.com>
 # Contributor: siers <wimuan@gmail.com>
-# vim: ts=2 sw=2
+
 pkgname=massren
 pkgver=1.5.6
 pkgrel=1
@@ -8,6 +9,7 @@ pkgdesc="Easily rename multiple files using your text editor"
 url="https://github.com/laurent22/massren"
 license=("MIT")
 arch=('x86_64')
+conflicts=("massren-git")
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('49758b477a205f3fbf5bbe72c2575fff8b5536f8c6b45f8f6bd2fdde023ce874')
