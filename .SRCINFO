@@ -1,7 +1,7 @@
 pkgbase = linux-lqx
 	pkgdesc = Linux Liquorix
 	pkgver = 6.7.3.lqx1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://liquorix.net/
 	arch = x86_64
 	license = GPL2
@@ -19,12 +19,12 @@ pkgbase = linux-lqx
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.7.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.7.tar.sign
-	source = https://github.com/damentz/liquorix-package/archive/6.7-5.tar.gz
+	source = https://github.com/damentz/liquorix-package/archive/6.7-6.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha512sums = de06de556191614bd9daf077ae239360352a402bab407748e67f1e5108c92fd933e451707840ab22fe0f9976db3d1e1b60ca9d41cf894f015ca09b3f652b74ad
 	sha512sums = SKIP
-	sha512sums = dd9b653ec399920474d93d3633210c549b0ba062c38e86b033c4104bfac30b8aa6d5db8fdcf88921102f3681b3fe915bceb45eace838237091769a9fe41b6f10
+	sha512sums = 8e0fbb18f8f735045a12ed0b1ace416356c83b535c5f529c417c790676f8fe2983c6a79f34d2172c33bf30fee53b0eaec18af9bba223170fb64fa3e7e16a1322
 
 pkgname = linux-lqx
 	pkgdesc = The Linux Liquorix kernel and modules
