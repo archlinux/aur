@@ -2,24 +2,24 @@
 # Contributor: dreieck
 # Contributor: éclairevoyant
 
-# options
-: ${_pkgtype:=git}
+## useful links
+# https://rinigus.github.io/pure-maps
+# https://github.com/rinigus/pure-maps
 
-# basic info
+## options
+: ${_build_git:=true}
+
+[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
+
+## basic info
 _pkgname=pure-maps
-pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
-pkgver=3.2.1.r13.gd801dfc1
+pkgname="$_pkgname${_pkgtype:-}"
+pkgver=3.2.1.r16.g4b96fae3
 pkgrel=1
 pkgdesc="Display vector and raster maps, places, routes, etc."
 url="https://github.com/rinigus/pure-maps"
-license=('GPL3')
-arch=(
-  'x86_64'
-  'i686'
-  'armv6'
-  'armv7'
-  'aarch64'
-)
+license=('GPL-3.0-or-later')
+arch=('x86_64')
 
 # main package
 _main_package() {
@@ -27,12 +27,7 @@ _main_package() {
     python-lxml
     python-pyotherside
     qt5-location
-
-    #abseil-cpp
-    #gettext
-    #kirigami2
-    #qt5-quickcontrols2
-    #qt5-sensors
+    qt5-quickcontrols2
 
     # AUR
     mapbox-gl-qml
@@ -46,14 +41,42 @@ _main_package() {
     'qt5-tools'
   )
 
-  provides=("${_pkgname}=${pkgver%%.r*}")
-  conflicts=("${_pkgname}")
-
-  _pkgsrc="$_pkgname"
-  source=("$_pkgsrc"::"git+$url.git")
-  sha256sums=('SKIP')
+  if [ "${_build_git::1}" != "t" ] ; then
+    _main_stable
+  else
+    _main_git
+  fi
 
   _source_pure_maps
+}
+
+# stable package
+_main_stable() {
+  : ${_pkgver:=${pkgver%%.r*}}
+
+  _pkgsrc="$_pkgname"
+  source+=("$_pkgsrc"::"git+$url.git#tag=$_pkgver")
+  sha256sums+=('SKIP')
+
+  pkgver() {
+    echo "${_pkgver:?}"
+  }
+}
+
+# git package
+_main_git() {
+  provides+=("$_pkgname=${pkgver%%.r*}")
+  conflicts+=("$_pkgname")
+
+  _pkgsrc="$_pkgname"
+  source+=("$_pkgsrc"::"git+$url.git")
+  sha256sums+=('SKIP')
+
+  pkgver() {
+    cd "$_pkgsrc"
+    git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
+      | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  }
 }
 
 # submodules
@@ -70,7 +93,7 @@ _source_pure_maps() {
   )
 
   _prepare_pure_maps() (
-    cd "${srcdir:?}/$_pkgsrc"
+    cd "$_pkgsrc"
     local -A _submodules=(
       ['rinigus.geomag']='thirdparty/geomag'
       ['tkrajina.gpxpy']='thirdparty/gpxpy'
@@ -92,12 +115,6 @@ prepare() {
   }
 
   _prepare_pure_maps
-}
-
-pkgver() {
-  cd "$_pkgsrc"
-  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' \
-    | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
@@ -126,7 +143,7 @@ package() {
     hicolor-icon-theme
   )
 
-  DESTDIR="${pkgdir:?}" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 }
 
 # execute
