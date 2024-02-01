@@ -1,12 +1,12 @@
 pkgbase = cloudctl-bin
 	pkgdesc = A command line tool for FI-TS k8s services
-	pkgver = 0.12.13
+	pkgver = 0.12.14
 	pkgrel = 1
 	url = https://github.com/fi-ts/cloudctl
 	arch = x86_64
 	license = MIT
 	provides = cloudctl
-	source = cloudctl-linux-0.12.13-1::https://github.com/fi-ts/cloudctl/releases/download/v0.12.13/cloudctl-linux-amd64
-	md5sums = e0927aca6a12224851af7a6cca6d3522
+	source = cloudctl-linux-0.12.14-1::https://github.com/fi-ts/cloudctl/releases/download/v0.12.14/cloudctl-linux-amd64
+	md5sums = 
 
 pkgname = cloudctl-bin
