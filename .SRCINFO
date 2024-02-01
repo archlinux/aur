@@ -4,8 +4,7 @@ pkgbase = perl-data-printer
 	pkgrel = 1
 	url = https://metacpan.org/release/Data-Printer
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	depends = perl-clone-pp
 	depends = perl-file-homedir>=0.91
 	depends = perl-package-stash>=0.3
