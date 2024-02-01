@@ -2,30 +2,37 @@
 #
 # Contributor: Rudy Matela <rudy@matela.com.br>
 #
-# This package can coexist with the latest version of GHC.
+#
+# This package can coexist with the latest version of GHC
+# in the same system.  This package is useful for:
+#
+# * testing programs for forwards/backwards compatibility with GHC 9.8;
+# * compiling programs that only work with GHC version 9.8;
+# * as a dependency to packages that can only be compiled with GHC version 9.8.
+#
+#
 # If you would like to compile GHC yourself (AUR: ghc9.8),
-# you can use this to bootstrap compilation.
+# you can use this package to bootstrap compilation.
+#
+#
+# GHC 9.8 series:
 #
 # https://www.haskell.org/ghc/download.html
-#
-# 9.8 series:
-#
 # https://www.haskell.org/ghc/download_ghc_9_8_1.html
+
 pkgname=ghc9.8-bin
 pkgver=9.8.1
-pkgrel=1
-pkgdesc='Binary GHC 9.8 installed on /usr/bin/ghc-9.8 (Oct/2023).'
+pkgrel=2
+pkgdesc='Binary GHC 9.8 installed on /usr/bin/ghc-9.8 (Oct 2023).'
 arch=('x86_64')
 url='http://www.haskell.org/ghc/'
-license=('custom')
+license=('BSD-3-Clause')
 depends=('gcc' 'gmp' 'libffi' 'perl')
-makedepends=('ghc' 'perl' 'libxslt' 'docbook-xsl')
-checkdepends=('python2')
+makedepends=('ghc' 'libxslt' 'docbook-xsl')
 install='ghc.install'
-options=('staticlibs')
 provides=('ghc9.8')
 conflicts=('ghc9.8')
-source=("https://www.haskell.org/ghc/dist/${pkgver}/ghc-${pkgver}-x86_64-deb12-linux.tar.xz")
+source=("https://www.haskell.org/ghc/dist/${pkgver}/ghc-${pkgver}-${CARCH}-deb12-linux.tar.xz")
 noextract=("ghc-${pkgver}-${CARCH}-deb12-linux.tar.xz")
 sha256sums=('92c79d502c946463d2dd3c63dfd1d6d1ddda139d0b2654c2ce5e56ab8b045e06')
 
@@ -36,7 +43,7 @@ prepare() {
 }
 
 build() {
-  cd ghc-${pkgver}-x86_64-unknown-linux
+  cd ghc-${pkgver}-${CARCH}-unknown-linux
 
   ./configure \
     --prefix=/usr \
@@ -48,7 +55,7 @@ build() {
 }
 
 package() {
-  cd ghc-${pkgver}-x86_64-unknown-linux
+  cd ghc-${pkgver}-${CARCH}-unknown-linux
 
   make DESTDIR=${pkgdir} install
 
