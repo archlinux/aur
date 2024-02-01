@@ -1,7 +1,7 @@
 pkgbase = buzztrax
 	pkgdesc = Modular music composer for Linux
 	pkgver = 0.10.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.buzztrax.org/
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -30,7 +30,7 @@ pkgbase = buzztrax
 	source = 0009-replace-deprecated-fluid_synth_set_midi_router.patch
 	source = 0010-fix-build-fluidsynth-2.patch
 	source = 0011-fix-udevadm-path.patch
-	sha256sums = d90b92f822902a9b3f51572d63d5d779bf592e9af3b27bbf899d373e74f8e3bb
+	sha256sums = 675ed744cd5209dda11e1d2fcd621d6ca23bf2eac89230bbd39242fe5f4000ed
 	sha256sums = 9e899afb9e596abffa90f4bb1062e82e0737fef0bac4eb4ce2ee5ed9e2551cae
 	sha256sums = 88a492689533b31cf95415496a5030db0554f337bf51c62e427090b4f708a2ce
 	sha256sums = cd21a197839544335d6bc85941f9d9b4ec23a9aefaf69d38d6b7ae7a5b9c29b8

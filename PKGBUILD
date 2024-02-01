@@ -2,7 +2,7 @@
 
 pkgname=buzztrax
 pkgver=0.10.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Modular music composer for Linux"
 arch=('x86_64')
 url="https://www.buzztrax.org/"
@@ -31,7 +31,7 @@ source=(
     "0011-fix-udevadm-path.patch"
 )
 sha256sums=(
-    'd90b92f822902a9b3f51572d63d5d779bf592e9af3b27bbf899d373e74f8e3bb'
+    '675ed744cd5209dda11e1d2fcd621d6ca23bf2eac89230bbd39242fe5f4000ed'
     '9e899afb9e596abffa90f4bb1062e82e0737fef0bac4eb4ce2ee5ed9e2551cae'
     '88a492689533b31cf95415496a5030db0554f337bf51c62e427090b4f708a2ce'
     'cd21a197839544335d6bc85941f9d9b4ec23a9aefaf69d38d6b7ae7a5b9c29b8'
@@ -46,31 +46,22 @@ sha256sums=(
 )
 
 prepare() {
-    cd $pkgname-$_tag
-    
-    # Apply all patches listed in source array
+    cd $pkgname-$pkgver
     for _patchfile in "$srcdir"/*.patch; do
         echo "Applying $(basename $_patchfile) ..."
         patch -p1 -i "$_patchfile"
     done
-
-    # AUTHORS fails to be generated from .git/index because is a tarball
-    touch AUTHORS
-    # Generate configure script
-    ./autogen.sh --noconfigure --nocheck
+    autoreconf
 }
 
 build() {
-    cd $pkgname-$_tag
-    ./configure \
-        --prefix=/usr \
-        --enable-man \
-        --disable-silent-rules \
-        --disable-update-{mime,desktop,icon-cache}
+    cd $pkgname-$pkgver
+    ./configure --prefix=/usr --enable-man \
+                --disable-update-{mime,desktop,icon-cache}
     make
 }
 
 package() {
-    cd $pkgname-$_tag
+    cd $pkgname-$pkgver
     make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="$pkgdir/" install
 }
