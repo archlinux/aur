@@ -1,0 +1,14 @@
+pkgbase = sss_code-bin
+	pkgdesc = Terminal tool to take screenshots of your code
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/SergioRibera/sss
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	conflicts = sss_code
+	conflicts = sss_code-git
+	source = https://github.com/SergioRibera/sss/releases/download/sss_code/v0.1.8/sss_code-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums = 10000bfe9013d37e727bdc2cb22dc71a0a07e930a2f042af5700a6265d0c2201
+
+pkgname = sss_code-bin
