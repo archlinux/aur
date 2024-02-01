@@ -2,22 +2,24 @@
 # PKGBUILD inspiration from fira-code
 pkgbase=alimama-dongfangdakai
 pkgname=({otf,ttf,woff,woff2}-"${pkgbase}")
-_zipname=AlimamaDongFangDaKai
+_fontname=AlimamaDongFangDaKai
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A typeface for creating alimama dongfangdakai viet in text.阿里妈妈东方大楷为中文简体字库,收纳的中文字符包括但不限于GB2312,共计6763个汉字"
 arch=("any")
 url="https://fonts.alibabagroup.com/#/more"
-license=("custom")
-source=("${pkgbase}-${pkgver}.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/${_zipname}.zip"
-    "LICENSE")
+license=("LicenseRef-custom")
+source=(
+    "${pkgbase}-${pkgver}.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/${_fontname}.zip"
+    "LICENSE"
+)
 sha256sums=('e98f63d03cd3a9e98ed4a577a2113dbf932d5cd7faff74a0c3c596fbbaa654ce'
             'abf3fdf5a6a4b50515c6fa5c92bcac6553ab6e8ac72869fba68e4a10b7603ac7')
 function _package {
     local _pkgname=$1
     local ext="${_pkgname%%-*}"
-    cd "${srcdir}/${_zipname}-Regular"
-    local fonts=("${_zipname}-Regular.${ext}")
+    cd "${srcdir}/${_fontname}-Regular"
+    local fonts=("${_fontname}-Regular.${ext}")
     local installdir="${ext^^}"
     # Prepare destination directory
     install -dm755 "${pkgdir}/usr/share/fonts/${installdir}"
