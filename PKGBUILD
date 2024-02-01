@@ -12,7 +12,7 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=24.1.0_devel.183912.f27a9732833.d41d8cd
+pkgver=24.1.0_devel.184054.f66055a6a67.d41d8cd
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -121,7 +121,7 @@ prepare() {
 build () {
     meson setup mesa _build \
        -D b_ndebug=true \
-       -D b_lto=true \
+       -D b_lto=false \
        -D platforms=x11,wayland \
        -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,i915,iris,crocus,zink,d3d12 \
        -D vulkan-drivers=amd,intel,swrast,virtio,intel_hasvk \
