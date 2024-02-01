@@ -13,7 +13,7 @@ conflicts=('acreom')
 options+=('!strip')
 source=("$url/releases/download/v$pkgver/$_appimage")
 noextract=($_appimage)
-sha256sums=('5b05ee5d13ccf75f0618f2567edfe93657215947777ed260e4160ddc769baa9a')
+sha256sums=('b3a5214af2ddbc7b678bfb40c4b1c25979179d6a7f0fb7ce039265a24963f24a')
 
 prepare() {
 	chmod +x ${_appimage}

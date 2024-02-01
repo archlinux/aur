@@ -10,6 +10,6 @@ pkgbase = acreom-bin
 	noextract = acreom-1.15.2.AppImage
 	options = !strip
 	source = https://github.com/Acreom/releases/releases/download/v1.15.2/acreom-1.15.2.AppImage
-	sha256sums = 5b05ee5d13ccf75f0618f2567edfe93657215947777ed260e4160ddc769baa9a
+	sha256sums = b3a5214af2ddbc7b678bfb40c4b1c25979179d6a7f0fb7ce039265a24963f24a
 
 pkgname = acreom-bin
