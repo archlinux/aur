@@ -1,7 +1,7 @@
 pkgbase = rocketchat-desktop
 	pkgdesc = Rocket.Chat Native Cross-Platform Desktop Application via Electron
-	pkgver = 3.9.11
-	pkgrel = 2
+	pkgver = 3.9.12
+	pkgrel = 1
 	url = https://github.com/RocketChat/Rocket.Chat.Electron
 	install = rocketchat-desktop.install
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = rocketchat-desktop
 	depends = electron22
 	depends = nodejs
 	depends = libvips
-	source = rocketchat-desktop-3.9.11.tar.gz::https://github.com/RocketChat/Rocket.Chat.Electron/archive/3.9.11/rocketchat-desktop-3.9.11.tar.gz
+	source = rocketchat-desktop-3.9.12.tar.gz::https://github.com/RocketChat/Rocket.Chat.Electron/archive/3.9.12/rocketchat-desktop-3.9.12.tar.gz
 	source = rocketchat-desktop.desktop
-	sha256sums = 936525dd74dcc9050bfb91ecf4ce80d6a5be38de8bfbb9b05f2faac7b3a9a580
+	sha256sums = 221502028585108e8f605a5a903097abb7553404858d33a210cd1c20f73b87bd
 	sha256sums = 31fae4f98a61a774f84030fd43d2ef92c7633740dc5aa55967a21d0e29ea621a
 
 pkgname = rocketchat-desktop
