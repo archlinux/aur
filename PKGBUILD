@@ -3,14 +3,14 @@
 
 pkgname=labnote2-git
 _pkgname=labnote2
-pkgver=r12.af6a5a3
+pkgver=r53.9a68668
 pkgrel=1
-pkgdesc='rst based desktop wiki'
+pkgdesc='file based desktop wiki using restructured text or markdown'
 arch=('any')
 url='https://gitlab.gnome.org/phragment/labnote2'
 license=('GPL3')
-depends=('python' 'python-gobject' 'webkit2gtk' 'gtksourceview4' 'python-docutils' 'gspell')
-optdepends=('python-pygments' 'ttf-droid')
+depends=('python' 'gtk4' 'python-gobject' 'webkitgtk-6.0' 'gtksourceview5' 'python-docutils')
+optdepends=('python-pygments' 'python-matplotlib' 'python-myst-parser' 'libspelling')
 makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
