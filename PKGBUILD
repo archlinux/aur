@@ -117,11 +117,12 @@ prepare() {
         _patchrel="$(echo "$_abiname" | cut -f2 -d -)"
 
     ### Add Liquorix patches
-        local _patchrx='^zen/v\d+\.\d+\.\d+-lqx\d+.patch$'
         local _patchfolder="${srcdir}/${_lqxpatchver}/linux-liquorix/debian/patches"
-        local _patchpath="$(grep -P "$_patchrx" "$_patchfolder/series")"
-        echo "Patching sources with ${_patchpath#*/}"
-        patch -Np1 -i "$_patchfolder/$_patchpath"
+        grep -P '^zen/' "$_patchfolder/series" | while IFS= read -r line
+        do
+          echo "Patching sources with $line"
+          patch -Np1 -i "$_patchfolder/$line"
+        done
 
     ### Setting version
         echo "Setting version..."
