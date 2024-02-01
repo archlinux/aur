@@ -7,7 +7,7 @@ pkgname=(
 )
 _rev=17d49c467affe76ed474596dbd1d209dacd629a9
 pkgver=6.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="pf-kernel"
 arch=(x86_64)
 url="https://pfkernel.natalenko.name"
