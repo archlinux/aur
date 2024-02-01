@@ -1,6 +1,6 @@
 pkgbase = pexip-infinity-connect-bin
 	pkgdesc = Pexip Infinity Connect App
-	pkgver = 1.12.1
+	pkgver = 1.12.5
 	pkgrel = 1
 	url = https://www.pexip.com/apps
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = pexip-infinity-connect-bin
 	depends = xdg-utils
 	depends = gtk3
 	depends = libxss
-	source = https://www.pexip.com/hubfs/Infinity%20Connect/1.12.1/pexip-infinity-connect_1.12.1-71681.0.0-1_amd64.deb
-	sha256sums = d6ed24bd00538267f0c5da4fcae7341291dbcff6a2b61f33c7e75068692a7d91
+	source = https://www.pexip.com/hubfs/Infinity%20Connect/1.12.5/pexip-infinity-connect_1.12.5-71707.0.0-1_amd64.deb
+	sha256sums = 30f671d24c9614f4de0c367161ec6729697a474a9cd0c87eecc3c152ca85a6dd
 
 pkgname = pexip-infinity-connect-bin
