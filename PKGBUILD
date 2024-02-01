@@ -7,7 +7,7 @@ arch=('any')
 license=('MIT')
 depends=('xcb-util-keysyms')
 source=("${url}/tarball/main")
-sha256sums=('87f1b62246a7c9bd3cb97f5d1f9d0618054ac8624203bcd4a0d92914654aa292')
+sha256sums=('9b1f5612042e9a27a2621358c1b67ec1fce79b863d65bfc58992a5ac1ec350da')
 
 build() {
 	cd pbizopoulos-fswm-*/
