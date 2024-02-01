@@ -27,7 +27,6 @@ install="${pkgname}.install"
 source=(
     "${pkgname}-${sparkver}.deb::https://d.store.deepinos.org.cn/store/reading/${_pkgname}/${_pkgname}_${sparkver}_i386.deb"
     "${pkgname}-${pkgver}.zip::${url}/releases/download/${pkgver}/${_officalname}_${pkgver}.zip"
-    "${pkgname}.desktop"
     "${pkgname}.sh"
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/miaomiaosoft/PandaOCR.Pro/${pkgver}/README.md"
 )

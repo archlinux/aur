@@ -17,7 +17,6 @@ pkgbase = deepin-wine-pandaocr.pro
 	noextract = deepin-wine-pandaocr.pro-5.52.zip
 	source = deepin-wine-pandaocr.pro-1.0.0.deb::https://d.store.deepinos.org.cn/store/reading/com.pandaocr.pro.spark/com.pandaocr.pro.spark_1.0.0_i386.deb
 	source = deepin-wine-pandaocr.pro-5.52.zip::https://github.com/miaomiaosoft/PandaOCR.Pro/releases/download/5.52/PandaOCR.Pro_5.52.zip
-	source = deepin-wine-pandaocr.pro.desktop
 	source = deepin-wine-pandaocr.pro.sh
 	source = LICENSE-5.52.md::https://raw.githubusercontent.com/miaomiaosoft/PandaOCR.Pro/5.52/README.md
 	sha256sums = f21c8dd02ee531e32a6f8b4b9cf8c49a21d6c85d422063673ff172e07deeb98f
