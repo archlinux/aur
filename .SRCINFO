@@ -1,0 +1,20 @@
+pkgbase = python-pytest-metadata
+	pkgdesc = Plugin for accessing test session metadata
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/pytest-dev/pytest-metadata
+	arch = any
+	license = MPL-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	makedepends = python-wheel
+	depends = python
+	depends = python-pluggy
+	depends = python-pytest
+	source = python-pytest-metadata-3.1.0.tar.gz::https://github.com/pytest-dev/pytest-metadata/archive/refs/tags/3.1.0.tar.gz
+	sha512sums = 336e7f96569ca65fa7ad2dd04fb17071b5565813785e0446ad10d1e15fde6e5414aac7210aaa81e3d8d36f7960a7d448ece537a58aaacc0d3affacffcedbbc86
+	b2sums = 86c7c6813295fa731b12a2d11e610813d612851ab16315f1b0dfcf48ad58f388617d9459a7c4bce59ee00e57b9b354f1f5be9d7d07bf03729e3ff77914f6d552
+
+pkgname = python-pytest-metadata

@@ -1,13 +1,13 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
-_name=pytest_metadata
+_name=pytest-metadata
 pkgname=python-pytest-metadata
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Plugin for accessing test session metadata"
 arch=(any)
 url="https://github.com/pytest-dev/pytest-metadata"
-license=(MPL2)
+license=(MPL-2.0)
 depends=(
   python
   python-pluggy
@@ -20,13 +20,13 @@ makedepends=(
   python-hatch-vcs
   python-wheel
 )
-source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha512sums=('8dd33362ad1e474464f1a762091fa980bc92e9e34f64c7960be36c4875bb585447a363b031d0e8326cb406cb78d0733d99db180f466133a84c1cd080e07ba6e1')
-b2sums=('50f4b0dc1bbed339b0ab0fa5075218f5b8ec5cae873729d1000e34eb2d54d8694580efa3b0884a45b0aeb1ec0edfd41858a287ec8a7efa47adf867b6c8762c1f')
+source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
+sha512sums=('336e7f96569ca65fa7ad2dd04fb17071b5565813785e0446ad10d1e15fde6e5414aac7210aaa81e3d8d36f7960a7d448ece537a58aaacc0d3affacffcedbbc86')
+b2sums=('86c7c6813295fa731b12a2d11e610813d612851ab16315f1b0dfcf48ad58f388617d9459a7c4bce59ee00e57b9b354f1f5be9d7d07bf03729e3ff77914f6d552')
 
 build() {
   cd $_name-$pkgver
-  python -m build --wheel --no-isolation
+  SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver python -m build --wheel --no-isolation
 }
 
 check() {
