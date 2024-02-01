@@ -1,14 +1,14 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=insight
-_pkgver=0.19.7
+_pkgver=0.19.8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Easy Access to Model Information for Various Model Objects"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL3)
+license=('GPL-3.0-only')
 depends=(
   r
 )
@@ -85,6 +85,7 @@ optdepends=(
   r-mmrm
   r-modelbased
   r-multgee
+  r-mumin
   r-nestedlogit
   r-nonnest2
   r-ordinal
@@ -111,6 +112,7 @@ optdepends=(
   r-statmod
   r-survey
   r-testthat
+  r-tinytable
   r-tmb
   r-truncreg
   r-tweedie
@@ -118,8 +120,8 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e13822ab6a330715c876b28a7a4805f4')
-b2sums=('149cbe5108b8fe8c37f64ccec4cddc3b60f21904098f67a1073a86758e5cccb4ee3ae0975c6231792aad286c333884f90d3fb61791e32ca386bea0cbaea2fb8f')
+md5sums=('f227772b838f94fd5775fc995c48524d')
+b2sums=('d07d5195a4fe61358ca6e44aa87c3ea69c9094308b7f5bcb63d59e996dd9b7391b447217e96b52702d376cc63ffbb83a62f863b4af9948407d7db26bd09662ca')
 
 build() {
   mkdir build
