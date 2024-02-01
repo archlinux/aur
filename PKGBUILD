@@ -3,18 +3,19 @@
 # Maintainer: Patrick Münch <patrick@mondoo.com>
 #
 pkgname=cnquery
-orignalVersion="10.1.3"
+orignalVersion="10.1.4"
 pkgver="${orignalVersion/-/_}"
 pkgrel=1
 pkgdesc="Cloud-Native Query - Asset Inventory Framework"
 url="https://mondoo.com"
-license=('BUSL-1.1')
-source=("https://releases.mondoo.com/cnquery/${orignalVersion}/cnquery_${orignalVersion}_linux_amd64.tar.gz"
+license=('MPL 2.0')
+source=(
+    "https://releases.mondoo.com/cnquery/${orignalVersion}/cnquery_${orignalVersion}_linux_amd64.tar.gz"
     )
 arch=('x86_64')
 depends=()
 
-sha256sums=('cd80987b9e15e78846def09558e273d9b1d9bde34d0e5de38da1d750b377401f'
+sha256sums=('5649b3510519d1ee812bec772bf77c0bec228a5911399b17ee357c5a0b67d50a'
             )
 
 
