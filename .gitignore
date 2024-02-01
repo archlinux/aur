@@ -1,3 +1,4 @@
 src/
 pkg/
-ghc-7.6.3-*-unknown-linux.tar.bz2
+ghc-7.8.*-*.tar.*
+ghc7.8-bin-7.8.*-*-*.pkg.tar.*
