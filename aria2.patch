@@ -1,7 +1,0 @@
---- varia-2023.12.7/src/varia.in
-+++ varia-2023.12.7.patched/src/varia.in
-@@ -1,5 +1,5 @@
- pythonexec='@PYTHON@'
- pkgdatadir='@pkgdatadir@'
--$pkgdatadir/../../aria2/aria2c --enable-rpc --rpc-listen-port=6801 &
-+aria2c --enable-rpc --rpc-listen-port=6801 &
