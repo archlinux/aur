@@ -98,7 +98,5 @@ case $BITMAP_BACKEND in imagemagick) export PKG_CONFIG_PATH="/usr/lib/imagemagic
 package() {
   DESTDIR="${pkgdir}" cmake --install build
   internal_2geom=$(cmake -LA -N build/CMakeCache.txt|grep -oP "WITH_INTERNAL_2GEOM.*=\K.*")
-  internal_cairo=$(cmake -LA -N build/CMakeCache.txt|grep -oP "WITH_INTERNAL_CAIRO.*=\K.*")
   [[ $internal_2geom == "ON" ]] && conflicts+=('lib2geom') || true
-  [[ $internal_cairo == "ON" ]] && conflicts+=('cairo') || true
 }
