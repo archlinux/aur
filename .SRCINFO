@@ -10,6 +10,7 @@ pkgbase = qliquidsfz-git
 	depends = jack
 	depends = liquidsfz
 	depends = qt5-base
+	depends = qt5-tools
 	source = qliquidsfz-git::git+https://github.com/be1/qliquidsfz
 	sha512sums = SKIP
 
