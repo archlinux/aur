@@ -1,13 +1,13 @@
 pkgbase = prayermate-id
 	pkgdesc = Command line based Muslim prayer reminder - Indonesia
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/tfkhdyt/prayermate
 	arch = x86_64
 	license = ISC
 	makedepends = go
 	provides = prayermate
-	source = prayermate-id-1.0.0.tar.gz::https://github.com/tfkhdyt/prayermate/archive/refs/tags/v1.0.0.tar.gz
+	source = prayermate-id-1.0.1.tar.gz::https://github.com/tfkhdyt/prayermate/archive/refs/tags/v1.0.1.tar.gz
 	md5sums = SKIP
 
 pkgname = prayermate-id

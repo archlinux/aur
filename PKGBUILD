@@ -1,7 +1,7 @@
 # Maintainer: Taufik Hidayat <tfkhdyt@proton.me>
 pkgname=prayermate-id
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 epoch=
 pkgdesc="Command line based Muslim prayer reminder - Indonesia"
 arch=("x86_64")
