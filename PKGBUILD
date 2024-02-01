@@ -1,7 +1,7 @@
 # Maintainer: leo <douglarek at gmail dot com>
 pkgname=daea
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux lightweight and high-performance transparent proxy solution based on eBPF."
 arch=('x86_64' 'aarch64')
 url="https://github.com/daeuniverse/dae"
@@ -11,8 +11,8 @@ makedepends=('clang' 'go')
 backup=("etc/dae/config.dae")
 source=(
 	"dae-${pkgver}.zip::${url}/releases/download/v${pkgver}/dae-full-src.zip"
-	"geoip.dat::https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat"
-	"geosite.dat::https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
+	"geoip.dat::https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat"
+	"geosite.dat::https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat"
 )
 sha256sums=(
 	'aad00888f7f3e8fae916297fede68d067894b5534148d261122bde2e7bba0b98'
