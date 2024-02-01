@@ -1,4 +1,3 @@
-# Maintainer: Firegem <mrfiregem@protonmail.ch>
 # Maintainer: arkorty <arkorty@gmail.com>
 # Contributor: siers <wimuan@gmail.com>
 
