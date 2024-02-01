@@ -5,11 +5,11 @@
 pkgbase=lx-music-desktop-git
 pkgname=(lx-music-desktop-git lx-music-desktop-electron-git)
 pkgdesc=一个免费的音乐查找助手
-pkgver=2.5.0.ac7daa70
-pkgrel=4
+pkgver=2.6.0.959e11b7
+pkgrel=1
 arch=(x86_64 aarch64 armv7l)
 url=https://github.com/lyswhut/lx-music-desktop
-licence=(Apache)
+licence=(Apache-2.0)
 conflicts=('lx-music-desktop')
 provides=('lx-music-desktop')
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3')
