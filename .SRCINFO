@@ -1,0 +1,18 @@
+pkgbase = valijson-git
+	pkgdesc = Header-only C++ library for JSON Schema validation (git version)
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/tristanpenman/valijson
+	arch = any
+	license = BSD
+	license = 2
+	makedepends = git
+	makedepends = make
+	makedepends = cmake
+	makedepends = ninja
+	provides = valijson
+	conflicts = valijson
+	source = git+https://github.com/tristanpenman/valijson.git
+	sha256sums = SKIP
+
+pkgname = valijson-git
