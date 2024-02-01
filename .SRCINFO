@@ -1,0 +1,17 @@
+pkgbase = python-dask-jobqueue
+	pkgdesc = Deploy Dask on job schedulers like PBS, SLURM, and SGE
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/dask/dask-jobqueue
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-dask
+	depends = python-distributed
+	source = python-dask-jobqueue-0.8.2::https://github.com/dask/dask-jobqueue/archive/refs/tags/0.8.2.tar.gz
+	sha256sums = e3aa46c24e7cd7bb2ed7f7472478cc6102dcd265fc8bdde512d106a175ae7cda
+
+pkgname = python-dask-jobqueue
