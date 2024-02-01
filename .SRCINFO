@@ -1,12 +1,13 @@
 pkgbase = r-strex
 	pkgdesc = Extra String Manipulation Functions
-	pkgver = 1.6.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=strex
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-testthat
 	depends = r-checkmate
+	depends = r-lifecycle
 	depends = r-magrittr
 	depends = r-rlang
 	depends = r-stringi
@@ -18,8 +19,8 @@ pkgbase = r-strex
 	optdepends = r-rmarkdown
 	optdepends = r-spelling
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/strex_1.6.1.tar.gz
-	md5sums = 0637b9abacf65f22add7a9cf9efb5039
-	sha256sums = 38fa8de9a7c55bffe8b47bdd57b8df7646064964737b44bc784b14e076fee5ef
+	source = https://cran.r-project.org/src/contrib/strex_2.0.0.tar.gz
+	md5sums = a044e493f751df4369925a5c967b8277
+	b2sums = ea59aad141f3d69b9abbbee7ffbdfabe663f07192d6bbb8c2155c11440a3aefe3082d8cc9a91d2b190b26fdfc700af1a3bbc1bab5b1614c014cb404000a3e4b6
 
 pkgname = r-strex
