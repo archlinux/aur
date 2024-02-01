@@ -13,14 +13,14 @@ url='https://github.com/DisplayLink/evdi'
 license=('GPL')
 depends=('dkms')
 makedepends=('git' 'libdrm')
-makedepends+=('linux-headers')
+#makedepends+=('linux-headers')
 provides=("evdi=${_pkgver}")
 conflicts=('evdi')
 _srcdir="${pkgname%-git}"
 source=(
   'git+https://github.com/DisplayLink/evdi'
 )
-source[0]+='#branch=devel'
+#source[0]+='#branch=devel'
 md5sums=('SKIP')
 sha256sums=('SKIP')
 

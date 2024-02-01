@@ -8,11 +8,10 @@ pkgbase = evdi-git
 	license = GPL
 	makedepends = git
 	makedepends = libdrm
-	makedepends = linux-headers
 	depends = dkms
 	provides = evdi=1.14.1
 	conflicts = evdi
-	source = git+https://github.com/DisplayLink/evdi#branch=devel
+	source = git+https://github.com/DisplayLink/evdi
 	md5sums = SKIP
 	sha256sums = SKIP
 
