@@ -2,11 +2,11 @@
 # Contributor: pureboys <yuyuud@yuyuud@gmail.com>
 
 pkgname='kikoplay'
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="linux danmaku player"
 arch=('x86_64')
-license=('GPL3')
+license=('GPL3' 'MIT')
 url="https://github.com/KikoPlayProject/KikoPlay"
 # using standalone liblua53.a, remove 'lua53' from depends.
 depends=('mpv' 'qhttpengine' 'qt5-websockets')
@@ -16,9 +16,11 @@ conflicts=('kikoplay-bin')
 source=(
     "https://github.com/KikoPlayProject/KikoPlay/archive/refs/tags/${pkgver}.tar.gz"
     "git+https://github.com/KikoPlayProject/KikoPlayScript"
+    "git+https://github.com/KikoPlayProject/KikoPlayApp"
 )
 sha256sums=(
-    "a8e20f9880fc3418e12f836c28684607e6486d1d2e504e7e829daa5c2344a47f"
+    "da33b02f2b4264c3040feec8a24986f323174feac3505ec52e0a68e5c9ce7b76"
+    SKIP
     SKIP
 )
 
@@ -58,15 +60,26 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/KikoPlay"
-    install -Dm644 KikoPlay使用说明.pdf "${pkgdir}/usr/share/doc/kikoplay/help.pdf"
-    
     cd "${srcdir}/build"
     make install INSTALL_ROOT="${pkgdir}"
     ln -sf KikoPlay "${pkgdir}/usr/bin/kikoplay"
     
-    # also package KikoPlayScript, but only exclude the ".git" directory
+    # also package KikoPlayScript KikoPlayApp, but only exclude the ".git" directory
     install -dm755 "${pkgdir}/usr/share/kikoplay/extension/script"
-    cp -r "${srcdir}"/KikoPlayScript/* "${pkgdir}/usr/share/kikoplay/extension/script"
+    cp -r "${srcdir}"/KikoPlayScript/{bgm_calendar,danmu,library,resource} "${pkgdir}/usr/share/kikoplay/extension/script"
+    install -dm755 "${pkgdir}/usr/share/kikoplay/extension/app"
+    cp -r "${srcdir}"/KikoPlayApp/app/* "${pkgdir}/usr/share/kikoplay/extension/app"
+
+    install -Dm644 "${srcdir}/KikoPlay/KikoPlay使用说明.pdf" "${pkgdir}/usr/share/doc/kikoplay/KikoPlay-user-manual.pdf"
+    install -Dm644 "${srcdir}/KikoPlay/KikoPlayWeb接口参考.pdf" "${pkgdir}/usr/share/doc/kikoplay/KikoPlayWeb-api-reference.pdf"
+    install -dm755 "${pkgdir}/usr/share/doc/kikoplay/KikoPlayScript"
+    cp "${srcdir}"/KikoPlayScript/*.md "${pkgdir}/usr/share/doc/kikoplay/KikoPlayScript"
+    install -dm755 "${pkgdir}/usr/share/doc/kikoplay/KikoPlayApp"
+    cp "${srcdir}"/KikoPlayApp/*.md "${pkgdir}/usr/share/doc/kikoplay/KikoPlayApp"
+    cp -r "${srcdir}"/KikoPlayApp/api/* "${pkgdir}/usr/share/doc/kikoplay/KikoPlayApp"
+
+    install -Dm644 "${srcdir}/KikoPlay/LICENSE" "${pkgdir}/usr/share/licenses/kikoplay/KikoPlay.license"
+    install -Dm644 "${srcdir}/KikoPlayScript/LICENSE" "${pkgdir}/usr/share/licenses/kikoplay/KikoPlayScript.license"
+    install -Dm644 "${srcdir}/KikoPlayApp/LICENSE" "${pkgdir}/usr/share/licenses/kikoplay/KikoPlayApp.license"
 }
 
