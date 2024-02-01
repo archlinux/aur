@@ -1,0 +1,18 @@
+pkgbase = kt6-bin
+	pkgdesc = Программа для управления калибраторами температуры серии КТ-6 производства ООО ИзТех
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://www.iztech.ru
+	arch = x86_64
+	license = custom
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = qt5-serialport
+	depends = qwt
+	depends = sqlite
+	options = strip
+	source = https://www.iztech.ru/content/files/app/kt6-bin-linux-x86_64.tar.gz
+	md5sums = 7c6acb36d0add47827589c041d5556cb
+
+pkgname = kt6-bin
