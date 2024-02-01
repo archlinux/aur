@@ -1,6 +1,6 @@
 # Maintainer: Cat2048
 pkgname=datcord-bin
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="An open-source discord client."
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'xdg-desktop-portal: Screensharing with Wayland')
 provides=(datcord)
 conflicts=(datcord)
-source=("https://github.com/gamingdoom/datcord/releases/latest/download/datcord-linux-$CARCH.tar.bz2"
+source=("https://github.com/gamingdoom/datcord/releases/download/$pkgver/datcord-linux-$CARCH.tar.bz2"
                "datcord.desktop"
                "datcord.png")
 sha256sums=('SKIP'
