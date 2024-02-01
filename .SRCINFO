@@ -1,29 +1,31 @@
 pkgbase = r-viridis
-	pkgdesc = Tools for Spatial Data
-	pkgver = 0.6.4
-	pkgrel = 1
+	pkgdesc = Colorblind-Friendly Color Maps for R
+	pkgver = 0.6.5
+	pkgrel = 2
 	url = https://cran.r-project.org/package=viridis
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
-	depends = r>=2.10
-	depends = r-viridislite>=0.4.0
-	depends = r-ggplot2>=1.0.1
+	checkdepends = r-testthat
+	checkdepends = r-vdiffr
+	depends = r-ggplot2
 	depends = r-gridextra
-	optdepends = r-hexbin
-	optdepends = r-scales
-	optdepends = r-knitr
-	optdepends = r-dichromat
+	depends = r-viridislite
 	optdepends = r-colorspace
-	optdepends = r-httr
-	optdepends = r-mapproj
-	optdepends = r-vdiffr
-	optdepends = r-svglite
-	optdepends = r-testthat
 	optdepends = r-covr
-	optdepends = r-rmarkdown
+	optdepends = r-dichromat
+	optdepends = r-hexbin
+	optdepends = r-httr
+	optdepends = r-knitr
+	optdepends = r-mapproj
 	optdepends = r-maps
-	source = https://cran.r-project.org/src/contrib/viridis_0.6.4.tar.gz
-	sha512sums = 61cba660e79b0c67430c585fc7af9a20b0cbb163ac99f5e61314a1eef87ff9bc40a866a94fc56ceba4fc73be91e95fa923037e7707aa4a592612d7e709ed16f2
+	optdepends = r-rmarkdown
+	optdepends = r-scales
+	optdepends = r-svglite
+	optdepends = r-terra
+	optdepends = r-testthat
+	optdepends = r-vdiffr
+	source = https://cran.r-project.org/src/contrib/viridis_0.6.5.tar.gz
+	md5sums = d3379572b7c9e31148c52c8e85417d9e
+	b2sums = bdd0c26a476cc8e9c04de789ca732ca0aedaa6aca34ce1cabb9ba7b8dc24cfa8a056474bc186f5896bd2838a3d3210141be148d37b7a7664c1baf1c0bea952e0
 
 pkgname = r-viridis
