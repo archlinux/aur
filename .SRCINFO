@@ -1,0 +1,34 @@
+pkgbase = foot-transparency-git
+	pkgdesc = A fork of foot - the fast wayland terminal emulator - containing two big transparency features (git)
+	pkgver = 1.15.3.r121.gf3ec8a4f
+	pkgrel = 1
+	url = https://codeberg.org/fazzi/foot
+	arch = x86_64
+	arch = aarch64
+	license = mit
+	checkdepends = check
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = scdoc
+	makedepends = python
+	makedepends = wayland-protocols
+	makedepends = tllist
+	depends = libxkbcommon
+	depends = wayland
+	depends = pixman
+	depends = fontconfig
+	depends = libutf8proc
+	depends = ncurses
+	depends = fcft>=3.0.0
+	optdepends = foot-terminfo: alternative to ncurses' terminfo, with additional non-standard capabilities
+	optdepends = libnotify: desktop notifications
+	optdepends = xdg-utils: URI launching
+	optdepends = bash-completion: bash completions for foot itself
+	provides = foot
+	conflicts = foot
+	replaces = foot-themes
+	source = git+https://codeberg.org/fazzi/foot.git#branch=transparency_yipee
+	sha256sums = SKIP
+
+pkgname = foot-transparency-git
