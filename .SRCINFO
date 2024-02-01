@@ -12,6 +12,7 @@ pkgbase = scp-bin
 	depends = wget
 	depends = sdl2
 	depends = sdl2_mixer
+	depends = timidity++
 	source_x86_64 = https://gitlab.com/spacecadetpinball/binaries/2.1.0/-/raw/main/SpaceCadetPinball-Linux-x64.tar.xz
 	sha256sums_x86_64 = SKIP
 	source_aarch64 = https://gitlab.com/spacecadetpinball/binaries/2.1.0/-/raw/main/SpaceCadetPinball-Linux-arm64.tar.xz
