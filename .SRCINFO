@@ -1,6 +1,6 @@
 pkgbase = r-biomart
 	pkgdesc = Interface to BioMart databases (i.e. Ensembl)
-	pkgver = 2.58.1
+	pkgver = 2.58.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/biomaRt
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-biomart
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-webmockr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/biomaRt_2.58.1.tar.gz
-	sha256sums = 7562dd4927138406c8407bdfb51522ddb66b37d56069bd1cce00299976d0ecf3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/biomaRt_2.58.2.tar.gz
+	sha256sums = 4484dd7ab2a382af67c97d97944ff4bdbdc2ff1fc5f0c4ff23dc4e772431140e
 
 pkgname = r-biomart

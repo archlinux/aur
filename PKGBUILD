@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=biomaRt
-_pkgver=2.58.1
+_pkgver=2.58.2
 pkgname=r-${_pkgname,,}
-pkgver=2.58.1
+pkgver=2.58.2
 pkgrel=1
 pkgdesc='Interface to BioMart databases (i.e. Ensembl)'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-webmockr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7562dd4927138406c8407bdfb51522ddb66b37d56069bd1cce00299976d0ecf3')
+sha256sums=('4484dd7ab2a382af67c97d97944ff4bdbdc2ff1fc5f0c4ff23dc4e772431140e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
