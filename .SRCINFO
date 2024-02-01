@@ -1,13 +1,13 @@
 pkgbase = turbovnc
 	pkgdesc = A derivative of Virtual Network Computing that is tuned to provide peak performance for 3D and video workloads
-	pkgver = 3.1
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = http://www.turbovnc.org/
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = cmake>=3.12
 	makedepends = java-environment>11
 	depends = java-runtime>11
@@ -24,12 +24,12 @@ pkgbase = turbovnc
 	conflicts = tightvnc-git
 	backup = etc/turbovnc/turbovncserver.conf
 	backup = etc/turbovnc/turbovncserver-security.conf
-	source = https://github.com/TurboVNC/turbovnc/releases/download/3.1/turbovnc-3.1.tar.gz
-	source = https://github.com/TurboVNC/turbovnc/releases/download/3.1/turbovnc-3.1.tar.gz.sig
+	source = https://github.com/TurboVNC/turbovnc/releases/download/3.1.1/turbovnc-3.1.1.tar.gz
+	source = https://github.com/TurboVNC/turbovnc/releases/download/3.1.1/turbovnc-3.1.1.tar.gz.sig
 	source = vncserver.service
 	validpgpkeys = AE1A7BA4EFFF9A9987E1474C4BACCAB36E7FE9A1
-	sha256sums = 1a28f685beca1543bb8fc0197459440ddffd099e5948955c61e6998e95364cdb
-	sha256sums = 938a4bb4f87ff096a5d07966c0dc71ca13124338873cdf8fe9d0ae6d5a493b88
+	sha256sums = 3530a4ab7dfe36be7aa1bd9da6e9cf048be9f585b1940949d3c286ce53ec2b30
+	sha256sums = 8849ad625dfa64c1e175f0f4556b68179164e4c5a487de4ce4c53196059e19ff
 	sha256sums = ccadf1fc708fad601e6113464d6c533a629f6dc9116f6071347cd0b465c1f48b
 
 pkgname = turbovnc
