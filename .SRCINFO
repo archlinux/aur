@@ -1,0 +1,16 @@
+pkgbase = python-collada
+	pkgdesc = python library for reading and writing collada documents
+	pkgver = 0.7.2
+	pkgrel = 2
+	url = https://github.com/pycollada/pycollada
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-dateutil
+	depends = python-numpy
+	depends = python-lxml
+	source = python-collada-0.7.2.tar.gz::https://github.com/pycollada/pycollada/archive/v0.7.2.tar.gz
+	sha512sums = 5c21155d52d54de62d192d4da0385bc7110ddd3962fe3e0e9e5904bbcd0e66cb1a95765c9996cdc5beef0edb30ee2123ae23b904d029be1c119e902d2fc4e7fe
+
+pkgname = python-collada
