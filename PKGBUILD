@@ -1,4 +1,4 @@
-# Maintainer: Jun-I Wu <michaelcat at aur.archlinux.org>
+# Maintainer: Jun-I Wu <michaelcat at aur.archlinux.org> and Jayesh Badwaik <jayesh at aur.archlinux.org>
 # Contributer (previous maintainer and original submitter): Alexey Peschany <sandboiii at aur.archlinux.org>
 
 pkgname=webcatalog-bin
