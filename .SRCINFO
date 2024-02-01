@@ -1,10 +1,10 @@
 pkgbase = alimama-daoliti
 	pkgdesc = A typeface for creating alimama daoliti viet in text.阿里妈妈刀隶体为中文简体字库，一字重，收纳的中文字符包括但不限于GB2312，共计6763个汉字；英文大小写共52个；常用标点符号共227个，总计7042个字符
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://fonts.alibabagroup.com/#/more
 	arch = any
-	license = custom
+	license = LicenseRef-custom
 	source = alimama-daoliti-1.0.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlimamaDaoLiTi/AlimamaDaoLiTi-Regular.zip
 	source = LICENSE
 	sha256sums = 64efbe748b44439c3417d38897b9f8733586c8b2bc82350c36ca69c699d3b4a1
