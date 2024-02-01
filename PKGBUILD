@@ -3,13 +3,13 @@
 
 pkgname='kikoplay'
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="linux danmaku player"
 arch=('x86_64')
 license=('GPL3')
 url="https://github.com/KikoPlayProject/KikoPlay"
 # using standalone liblua53.a, remove 'lua53' from depends.
-depends=('mpv' 'qhttpengine')
+depends=('mpv' 'qhttpengine' 'qt5-websockets')
 makedepends=('cmake' 'git')
 optdepends=('aria2: for downloading')
 conflicts=('kikoplay-bin')
@@ -66,7 +66,7 @@ package() {
     ln -sf KikoPlay "${pkgdir}/usr/bin/kikoplay"
     
     # also package KikoPlayScript, but only exclude the ".git" directory
-    install -dm755 "${pkgdir}/usr/share/kikoplay/script"
-    cp -r "${srcdir}"/KikoPlayScript/* "${pkgdir}/usr/share/kikoplay/script"
+    install -dm755 "${pkgdir}/usr/share/kikoplay/extension/script"
+    cp -r "${srcdir}"/KikoPlayScript/* "${pkgdir}/usr/share/kikoplay/extension/script"
 }
 
