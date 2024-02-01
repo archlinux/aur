@@ -1,7 +1,7 @@
 pkgbase = lib32-minizip
 	pkgdesc = ZIP file extraction library (32-bit)
-	pkgver = 1.3
-	pkgrel = 3
+	pkgver = 1.3.1
+	pkgrel = 1
 	url = http://www.winimage.com/zLibDll/minizip.html
 	arch = x86_64
 	license = ZLIB
@@ -13,9 +13,8 @@ pkgbase = lib32-minizip
 	depends = minizip
 	depends = lib32-zlib
 	options = !libtool
-	source = https://github.com/madler/zlib/releases/download/v1.3/zlib-1.3.tar.xz
-	source = zlib-1.3-CVE-2023-45853.patch::https://github.com/madler/zlib/commit/73331a6a0481067628f065ffe87bb1d8f787d10c.patch
-	sha256sums = 8a9ba2898e1d0d774eca6ba5b4627a11e5588ba85c8851336eb38de4683050a7
-	sha256sums = 7aa0221bf62796c29ae665ef3dd138489e1995b7095924dc035104959da13417
+	source = https://github.com/madler/zlib/releases/download/v1.3.1/zlib-1.3.1.tar.xz
+	validpgpkeys = 5ED46A6721D365587791E2AA783FCD8E58BCAFBA
+	sha512sums = 1e8e70b362d64a233591906a1f50b59001db04ca14aaffad522198b04680be501736e7d536b4191e2f99767e7001ca486cd802362cca2be05d5d409b83ea732d
 
 pkgname = lib32-minizip
