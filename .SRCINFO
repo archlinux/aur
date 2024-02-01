@@ -1,0 +1,12 @@
+pkgbase = meshname
+	pkgdesc = Distributed naming system for IPv6 mesh networks
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/zhoreeq/meshname/
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = meshname-0.2.0.tar.gz::https://github.com/zhoreeq/meshname/archive/refs/tags/v0.2.0.tar.gz
+	sha512sums = ac9f55c4682d9718159a35cf84ce7cb5d84030f063d90b3d1c741c6535e710f4cb24f4fa48f428a4ff679436ab45d95d21aa51abba2ed0902bbd30815ac972e2
+
+pkgname = meshname
