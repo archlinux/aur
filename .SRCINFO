@@ -1,0 +1,13 @@
+pkgbase = purge
+	pkgdesc = CLI tool for removing nested files
+	pkgver = r7.6955a80
+	pkgrel = 1
+	url = https://github.com/b-jure/purge
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = glibc
+	source = purge::git+https://github.com/b-jure/purge
+	md5sums = SKIP
+
+pkgname = purge
