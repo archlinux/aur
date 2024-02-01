@@ -1,7 +1,7 @@
 pkgbase = firefox-opensuse-bin
 	pkgdesc = Standalone web browser from mozilla.org with openSUSE patches
 	pkgver = 122.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://en.opensuse.org/Firefox
 	arch = x86_64
 	arch = pentium4
@@ -10,6 +10,8 @@ pkgbase = firefox-opensuse-bin
 	license = GPL
 	license = LGPL
 	license = MPL
+	makedepends = curl
+	makedepends = jq
 	depends = dbus
 	depends = ffmpeg
 	depends = gtk3
@@ -30,7 +32,7 @@ pkgbase = firefox-opensuse-bin
 	conflicts = firefox
 	source = https://download.opensuse.org/repositories/mozilla/openSUSE_Tumbleweed/x86_64/MozillaFirefox-122.0-3.3.x86_64.rpm
 	source = file://vendor.js
-	sha256sums = 168d58c9534d5dea28dec3f6f73e91eefb5f034362a250cd5c8388654270817f
+	sha256sums = SKIP
 	sha256sums = 50879baa1b25f003489a41f5bf2d0ca7ae76c971d34c30728229a832799eed9e
 
 pkgname = firefox-opensuse-bin
