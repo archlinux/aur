@@ -15,7 +15,6 @@ depends=('zlib')
 makedepends+=('cmake' 'patchelf' python{,-numpy} 'boost' 'freeglut' 'chrpath')
 optdepends+=('boost-libs: python support' 'python: python support')
 conflicts=('openexr')
-provides=("openexr=${pkgver}")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/openexr/openexr/archive/v$pkgver.tar.gz")
 sha256sums=('59e98361cb31456a9634378d0f653a2b9554b8900f233450f2396ff495ea76b3')
 

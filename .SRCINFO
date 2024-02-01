@@ -15,7 +15,6 @@ pkgbase = openexr2
 	depends = zlib
 	optdepends = boost-libs: python support
 	optdepends = python: python support
-	provides = openexr=2.5.5
 	conflicts = openexr
 	source = openexr2-2.5.5.tar.gz::https://github.com/openexr/openexr/archive/v2.5.5.tar.gz
 	sha256sums = 59e98361cb31456a9634378d0f653a2b9554b8900f233450f2396ff495ea76b3
