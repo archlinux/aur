@@ -2,7 +2,7 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=gdrive
-pkgver=3.9.0
+pkgver=3.9.1
 pkgrel=3
 pkgdesc="Google Drive CLI Client (Rust rewrite)"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('MIT')
 options=('!lto')
 makedepends=('git' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('a4476480f0cf759f6a7ac475e06f819cbebfe6bb6f1e0038deff1c02597a275a')
+sha256sums=('9aadb1b9a23d83f5aaa785960973bef1c63b85346de6be01a36e0630f2ddec1c')
 
 prepare() {
     cd $pkgname-$pkgver
