@@ -1,0 +1,18 @@
+pkgbase = docker-credential-vault-login
+	pkgdesc = Docker Credential Helper for Vault-stored Credentials
+	pkgver = 0.3.47
+	pkgrel = 1
+	url = https://github.com/morningconsult/docker-credential-vault-login
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	optdepends = docker: For utilizing this cred helper
+	backup = etc/docker-credential-vault-login/config.hcl
+	source = docker-credential-vault-login-0.3.47::https://github.com/morningconsult/docker-credential-vault-login/archive/refs/tags/v0.3.47.tar.gz
+	source = config.hcl
+	sha256sums = be5f962a590b4390cf6e107677872767be99e254e5b0bee49777f01a86826436
+	sha256sums = e5fe56a4b9000033ce8e228c4768f408b5c238b3a73343310516aabb29a64261
+
+pkgname = docker-credential-vault-login
