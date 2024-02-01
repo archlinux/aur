@@ -1,0 +1,26 @@
+From b9bb3baf52d74207130dbe5003a47ecbff102a50 Mon Sep 17 00:00:00 2001
+From: auth <64337177+authorisation@users.noreply.github.com>
+Date: Thu, 1 Feb 2024 21:56:14 +0900
+Subject: [PATCH] chore: lowercase achilles bin
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 98cdd41..357c105 100644
+--- a/Makefile
++++ b/Makefile
+@@ -13,7 +13,7 @@ Achilles: $(SOURCES)
+ 
+ install: Achilles
+ 	@mkdir -p /usr/local/bin
+-	@sudo cp $(OUTPUT) /usr/local/bin/Achilles
++	@sudo cp $(OUTPUT) /usr/local/bin/achilles
+ 
+ clean:
+ 	@rm -rf build
+\ No newline at end of file
+-- 
+2.43.0
+

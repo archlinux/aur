@@ -1,0 +1,17 @@
+pkgbase = achilles-git
+	pkgdesc = Achilles is a checkm8 utility for macOS and Linux that offers a selection of tools for vulnerable devices.
+	pkgver = r47.b027477
+	pkgrel = 1
+	url = https://github.com/alfiecg24/Achilles
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libimobiledevice-git
+	depends = libusbmuxd-git
+	provides = achilles
+	source = git+https://github.com/alfiecg24/Achilles
+	source = 0001-chore-lowercase-achilles-bin.patch
+	md5sums = SKIP
+	md5sums = 22dcce17c5eebed40712bdac9ed0b275
+
+pkgname = achilles-git
