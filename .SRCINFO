@@ -1,14 +1,13 @@
 pkgbase = ocrs-git
 	pkgdesc = A modern OCR engine (extracts text from images), written in Rust
-	pkgver = 0.3.1.r11.g4686460
+	pkgver = 0.4.0.r0.g7ce90df
 	pkgrel = 1
 	url = https://github.com/robertknight/ocrs
 	arch = x86_64
 	arch = aarch64
 	arch = riscv64
 	license = MIT
-	license = Apache
-	license = BSD
+	license = Apache-2.0
 	makedepends = git
 	makedepends = binaryen
 	makedepends = cargo
