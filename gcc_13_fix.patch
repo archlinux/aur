@@ -1,0 +1,20 @@
+108c108,109
+<     frame = frame->f_back;
+---
+>     PyFrameObject* f_back = PyFrame_GetBack(frame);
+>     frame = f_back;
+114c115,116
+<   if (frame->f_code->co_filename == NULL) {
+---
+>   PyCodeObject* f_code = PyFrame_GetCode(frame);
+>   if (f_code->co_filename == NULL) {
+119c121
+<   if (PyString_AsStringAndSize(frame->f_code->co_filename,
+---
+>   if (PyString_AsStringAndSize(f_code->co_filename,
+140c142,144
+<   if (frame->f_globals != frame->f_locals) {
+---
+>   PyObject* f_globals = PyFrame_GetGlobals(frame);
+>   PyObject* f_locals = PyFrame_GetLocals(frame);
+>   if (f_globals != f_locals) {
