@@ -59,19 +59,21 @@ optdepends=(
 )
 provides=('inkscape')
 conflicts=('inkscape')
-source=("inkscape.git::git+$url/inkscape.git${_fragment}"
-	"extensions.git::git+$url/extensions.git"
-	"lib2geom.git::git+$url/lib2geom.git")
+source=("inkscape.git::git+$url/inkscape.git${_fragment}")
 sha1sums=('SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP'
           'SKIP'
           'SKIP')
 _gitname="inkscape.git"
 
 prepare() {
   cd  "$_gitname"
-  git config submodule.share/extensions.url "${srcdir}"/extensions.git
-  git config submodule.src/3rdparty/2geom.url "${srcdir}"/lib2geom.git
-  git -c protocol.file.allow=always submodule update --init --remote
+  prepare_submodule
 # fix track_obj deprecated in libsigc
   sed '/DSIGCXX_DISABLE_DEPRECATED/d' -i CMakeScripts/DefineDependsandFlags.cmake
 # fix lib2geom header location
@@ -100,3 +102,29 @@ package() {
   internal_2geom=$(cmake -LA -N build/CMakeCache.txt|grep -oP "WITH_INTERNAL_2GEOM.*=\K.*")
   [[ $internal_2geom == "ON" ]] && conflicts+=('lib2geom') || true
 }
+
+# Generated with git_submodule_PKGBUILD_conf.sh ( https://gist.github.com/bartoszek/41a3bfb707f1b258de061f75b109042b )
+# Call prepare_submodule in prepare() function
+
+prepare_submodule() {
+  git -C "$srcdir/extensions.git" config submodule.other/gcodetools.url "$srcdir/extensions-gcodetools"
+  git -C "$srcdir/extensions.git" config submodule.other/inkman.url "$srcdir/extension-manager"
+  git -C "$srcdir/extensions.git" config submodule.other/clipart.url "$srcdir/inkscape-import-clipart"
+  git -C "$srcdir/extensions.git" config submodule.other/extension-xaml.url "$srcdir/extension-xaml"
+  git -C "$srcdir/extensions.git" -c protocol.file.allow=always submodule update --init
+  git -C "$srcdir/inkscape.git" config submodule.share/extensions.url "$srcdir/extensions"
+  git -C "$srcdir/inkscape.git" config submodule.src/3rdparty/2geom.url "$srcdir/lib2geom"
+  git -C "$srcdir/inkscape.git" config submodule.share/themes.url "$srcdir/themes"
+  git -C "$srcdir/inkscape.git" config submodule.src/3rdparty/libcroco.url "$srcdir/libcroco"
+  git -C "$srcdir/inkscape.git" -c protocol.file.allow=always submodule update --init
+}
+source+=(
+  "extensions-gcodetools::git+https://gitlab.com/inkscape/extras/extensions-gcodetools"
+  "extension-manager::git+https://gitlab.com/inkscape/extras/extension-manager"
+  "inkscape-import-clipart::git+https://gitlab.com/inkscape/extras/inkscape-import-clipart"
+  "extension-xaml::git+https://gitlab.com/inkscape/extras/extension-xaml"
+  "extensions.git::git+https://gitlab.com/inkscape/extensions"
+  "lib2geom::git+https://gitlab.com/inkscape/lib2geom"
+  "themes::git+https://gitlab.com/inkscape/themes"
+  "libcroco::git+https://gitlab.com/inkscape/libcroco"
+)
