@@ -14,6 +14,6 @@ source=(
 sha256sums=('fb02c86e358cd9aad8d4dfa957ee502381e7ee2e94499a9133add4324b6ce69a')
 package() {
     export LC_CTYPE="zh_CN.UTF-8"   
-    install -Dm644 "${srcdir}/HarmonyOS Sans/${_pkgname// /_}"*/*.ttf -t "${pkgdir}/usr/share/fonts/${pkgname//ttf-/}"
-    install -Dm644 "${srcdir}/HarmonyOS Sans/${_pkgname// /_}/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${_pkgname}/${_pkgname// /_}"*/*.ttf -t "${pkgdir}/usr/share/fonts/${pkgname//ttf-/}"
+    install -Dm644 "${srcdir}/${_pkgname}/${_pkgname// /_}/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
