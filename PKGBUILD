@@ -1,15 +1,15 @@
 # Maintainer: Roam <linux-packages at ro dot am>
 
 pkgname=roam
-pkgver=93.0.1.beta001
+pkgver=94.0.0.beta001
 pkgrel=1
 pkgdesc="Roam: Your Cloud HQ"
 arch=('x86_64')
 url="https://ro.am"
 license=('custom')
 depends=('gtk3' 'libsecret' 'libxss' 'nss' 'xdg-utils' 'libappindicator-gtk3' 'org.freedesktop.secrets')
-source=("https://download.ro.am/Roam/8a86d88cfc9da3551063102e9a4e2a83/linux/debian/binary/93.0.1-beta001-roam_93.0.1-beta001_amd64.deb")
-sha256sums=("ebd7486f0379e06273a419f132aed2417a62a8f2aeb06142797576a4e7c1867c")
+source=("https://download.ro.am/Roam/8a86d88cfc9da3551063102e9a4e2a83/linux/debian/binary/94.0.0-beta001-roam_94.0.0-beta001_amd64.deb")
+sha256sums=("d4c6a1466089380943e26f0ffca3b6ea47e7f8563e5916de95a5cc378fcb04b8")
 
 prepare() {
     tar -xJf data.tar.xz
