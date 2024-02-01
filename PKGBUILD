@@ -39,8 +39,10 @@ build() {
 }
 
 check() {
-	ninja check-bolt
+  cd build
+  ninja check-bolt
 }
+
 package () {
   DESTDIR="$pkgdir" ninja -C build install-bolt
 }
