@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-pvr-waipu
 	pkgdesc = Waipu.tv PVR Plugin for Kodi
-	pkgver = 20.10.2
+	pkgver = 20.11.0
 	pkgrel = 1
 	url = https://github.com/flubshi/pvr.waipu
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = kodi-addon-pvr-waipu
 	depends = kodi-addon-script-module-inputstreamhelper
 	provides = kodi-addon-pvr-waipu
 	conflicts = kodi-addon-pvr-waipu
-	source = https://github.com/flubshi/pvr.waipu/archive/20.10.2-Nexus.tar.gz
-	source = https://github.com/xbmc/xbmc/archive/20.2-Nexus.tar.gz
-	sha256sums = 2326c3ed0e57ef8020c1041ea6f25fa325c619588c24c71b5963d8dda1c97604
-	sha256sums = 4e81abf81172812bc8891f69a7a80a2b846298cecaae7b5009725e28a3040c23
+	source = https://github.com/flubshi/pvr.waipu/archive/20.11.0-Nexus.tar.gz
+	source = https://github.com/xbmc/xbmc/archive/20.3-Nexus.tar.gz
+	sha256sums = f43a7ac762b2c8bb7c2a66dc7d2a577fad92119bb4418867ce22369b96b18f8c
+	sha256sums = 1dbf1d9f4d5eeeb6aa2593813703343a8a377e88a00c68226354e4d67467f64d
 
 pkgname = kodi-addon-pvr-waipu
