@@ -1,5 +1,5 @@
 pkgbase = sss-bin
-	pkgdesc = Terminal tool to take screenshots of your code
+	pkgdesc = Terminal tool to take screenshots of your screen
 	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/SergioRibera/sss
