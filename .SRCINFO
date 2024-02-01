@@ -4,6 +4,7 @@ pkgbase = webcatalog-bin
 	pkgrel = 1
 	url = https://webcatalog.io/webcatalog/
 	arch = x86_64
+	arch = aarch64
 	options = !strip
 	source = webcatalog.patch
 	sha256sums = 8e13556f9eab7880fbc586d625147e7602d8d99cf0f23a6a130e0eb821a9a7fd
