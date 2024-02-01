@@ -2,41 +2,47 @@
 #
 # Contributor: Rudy Matela <rudy@matela.com.br>
 #
-# This package can coexist with the latest version of GHC.
-# If you would like to compile GHC yourself (AUR: ghc8.8),
-# you can use this to bootstrap compilation.
+#
+# This package can coexist with the latest version of GHC provided in the
+# standard Arch Linux repositories.  This package is useful for:
+#
+# * testing for forwards/backwards compatibility this specific GHC branch;
+# * compiling programs that only work with this specific GHC branch;
+# * as a dependency to packages that can only be compiled with this branch.
+#
+# If you would like to compile GHC yourself,
+# you can use this package to bootstrap compilation.
+#
+#
+# https://ghc.gitlab.haskell.org/ghc/doc/users_guide/intro.html#ghc-version-numbering-policy
+# https://www.haskell.org/ghc/download.html
+# https://www.haskell.org/ghc/download_ghc_8_8_4.html
+
 pkgname=ghc8.8-bin
 pkgver=8.8.4
-pkgrel=1
-pkgdesc='Legacy GHC 8.8 installed on /usr/bin/ghc-8.8 (Aug/2019 - Jul/2020).'
+pkgrel=2
+_ver_branch=8.8
+pkgdesc="Binary GHC ${_ver_branch} installed on /usr/bin/ghc-${_ver_branch}"
 arch=('x86_64')
 url='http://www.haskell.org/ghc/'
-license=('custom')
-depends=('gcc' 'gmp' 'libffi' 'perl')
-makedepends=('ghc' 'perl' 'libxslt' 'docbook-xsl' 'ncurses5-compat-libs')
-checkdepends=('python2')
-install=ghc.install
-options=('staticlibs')
-provides=('ghc8.8')
-conflicts=('ghc8.8')
-source=("https://www.haskell.org/ghc/dist/${pkgver}/ghc-${pkgver}-x86_64-deb8-linux.tar.xz")
-noextract=("ghc-${pkgver}-${CARCH}-deb8-linux.tar.xz")
-sha256sums=('51a36892f1264744195274187298d13ac62bce2da86d4ddf76d8054ab90f2feb')
-
-prepare() {
-	# for some reason, bsdtar cannot unpack this file:
-	tar -xf "ghc-${pkgver}-${CARCH}-deb8-linux.tar.xz"
-	# see https://wiki.archlinux.org/index.php/PKGBUILD#noextract
-}
+license=('BSD-3-Clause')
+depends=('gcc' 'gmp' 'libffi' 'perl' 'ncurses5-compat-libs')
+makedepends=('ghc' 'libxslt' 'docbook-xsl')
+install='ghc.install'
+provides=("ghc${_ver_branch}")
+conflicts=("ghc${_ver_branch}")
+source=("https://www.haskell.org/ghc/dist/${pkgver}/ghc-${pkgver}-${CARCH}-deb9-linux.tar.xz")
+sha256sums=('4862559d221153caf978f4bf2c15a82c114d1e1f43b298b2ecff2ac94b586d20')
 
 build() {
   cd ghc-${pkgver}
 
-  sed -i 's,"$bindir/ghc","$bindir/ghc-8.8",' utils/runghc/runghc.wrapper
-
   ./configure \
     --prefix=/usr \
-    --docdir=/usr/share/doc/ghc-8.8
+    --docdir=/usr/share/doc/ghc-${_ver_branch}
+
+  # pop LICENSE file out of the docs directory
+  cp docs/users_guide/build-html/users_guide/_sources/license.rst.txt LICENSE
 }
 
 package() {
@@ -44,18 +50,18 @@ package() {
 
   make DESTDIR=${pkgdir} install
 
-  mv ${pkgdir}/usr/bin/ghc        ${pkgdir}/usr/bin/ghc-8.8
-  mv ${pkgdir}/usr/bin/ghci       ${pkgdir}/usr/bin/ghci-8.8
-  mv ${pkgdir}/usr/bin/ghc-pkg    ${pkgdir}/usr/bin/ghc-pkg-8.8
-  mv ${pkgdir}/usr/bin/haddock    ${pkgdir}/usr/bin/haddock-ghc-8.8
-  mv ${pkgdir}/usr/bin/hp2ps      ${pkgdir}/usr/bin/hp2ps-ghc-8.8
-  mv ${pkgdir}/usr/bin/hpc        ${pkgdir}/usr/bin/hpc-ghc-8.8
-  mv ${pkgdir}/usr/bin/hsc2hs     ${pkgdir}/usr/bin/hsc2hs-ghc-8.8
-  mv ${pkgdir}/usr/bin/runghc     ${pkgdir}/usr/bin/runghc-8.8
-  rm ${pkgdir}/usr/bin/runhaskell # use runghc-8.8 instead
+  mv ${pkgdir}/usr/bin/ghc        ${pkgdir}/usr/bin/ghc-${_ver_branch}
+  mv ${pkgdir}/usr/bin/ghci       ${pkgdir}/usr/bin/ghci-${_ver_branch}
+  mv ${pkgdir}/usr/bin/ghc-pkg    ${pkgdir}/usr/bin/ghc-pkg-${_ver_branch}
+  mv ${pkgdir}/usr/bin/haddock    ${pkgdir}/usr/bin/haddock-ghc-${_ver_branch}
+  mv ${pkgdir}/usr/bin/hp2ps      ${pkgdir}/usr/bin/hp2ps-ghc-${_ver_branch}
+  mv ${pkgdir}/usr/bin/hpc        ${pkgdir}/usr/bin/hpc-ghc-${_ver_branch}
+  mv ${pkgdir}/usr/bin/hsc2hs     ${pkgdir}/usr/bin/hsc2hs-ghc-${_ver_branch}
+  mv ${pkgdir}/usr/bin/runghc     ${pkgdir}/usr/bin/runghc-${_ver_branch}
+  rm ${pkgdir}/usr/bin/runhaskell # use runghc-${_ver_branch} instead
 
-  mv ${pkgdir}/usr/share/man/man1/ghc.1 ${pkgdir}/usr/share/man/man1/ghc-8.8.4
+  mv ${pkgdir}/usr/share/man/man1/ghc.1 ${pkgdir}/usr/share/man/man1/ghc-${_ver_branch}
 
-  install -d            ${pkgdir}/usr/share/licenses/ghc-8.8
-  install -m644 LICENSE ${pkgdir}/usr/share/licenses/ghc-8.8
+  install -d            ${pkgdir}/usr/share/licenses/ghc-${_ver_branch}
+  install -m644 LICENSE ${pkgdir}/usr/share/licenses/ghc-${_ver_branch}
 }
