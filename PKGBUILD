@@ -3,7 +3,7 @@
 _version=$(curl -L -H "Accept: application/vnd.github+json" "https://api.github.com/repos/lf-lang/epoch/releases/tags/nightly" 2>&1 | grep '"name":' | grep "linux" | cut -d'_' -f3 | cut -d'-' -f1)
 
 pkgname=epoch-nightly-bin
-pkgver=202309110502
+pkgver=202402010502
 pkgrel=1
 pkgdesc="The Epoch IDE for Lingua Franca"
 arch=('x86_64')
