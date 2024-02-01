@@ -1,0 +1,13 @@
+pkgbase = nyaa
+	pkgdesc = A tui tool for browsing and downloading torrents from nyaa.si
+	pkgver = 0.4.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL-3.0-or-later
+	makedepends = rust
+	makedepends = cargo
+
+pkgname = nyaa
