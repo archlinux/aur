@@ -27,9 +27,6 @@ sha256sums=(
 
 
 package() {
-  install -dm755 ${pkgdir}/usr/bin
-  install -dm755 ${pkgdir}/opt/$pkgname/bin
-  cp ${srcdir}/$pkgname ${pkgdir}/opt/$pkgname/bin/.
 
   install -Dm 644 LICENSE.html "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.html
   install -Dm 644 OSS-LICENSES.tar.xz "$pkgdir"/usr/share/licenses/$pkgname/OSS-LICENSES.tar.xz
