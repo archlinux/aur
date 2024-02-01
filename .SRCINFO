@@ -1,6 +1,6 @@
 pkgbase = ruby-toml-rb
 	pkgdesc = A parser for TOML using Citrus library
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/emancu/toml-rb
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = ruby-toml-rb
 	depends = ruby-citrus
 	depends = ruby-racc
 	options = !emptydirs
-	source = https://github.com/emancu/toml-rb/archive/v3.0.0.tar.gz
-	sha256sums = 7d05f65d92a819d6a3779a1fa1a6b3d5ba38d6170e45caa7e856d28149211fc5
+	source = https://github.com/emancu/toml-rb/archive/v3.0.1.tar.gz
+	sha256sums = 4ae7b7a1d9114b03c1481b13d0630138f7fa1185fdc1a93029ee4e674633047d
 
 pkgname = ruby-toml-rb
