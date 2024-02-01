@@ -1,10 +1,10 @@
 pkgbase = alimama-fangyuanti
 	pkgdesc = A typeface for creating alimama fangyuanti viet in text.阿里妈妈方圆体是阿里妈妈·智造字通过智能AI的方式完成的一款简体中文双轴可变字体。收纳的中文字符包括但不限于GB2312，共计6763个汉字；英文大小写共52个；常用标点符号共227个，总计7042个字符
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fonts.alibabagroup.com/#/more
 	arch = any
-	license = custom
+	license = LicenseRef-custom
 	source = alimama-fangyuanti-1.0.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlimamaFangYuanTiVF/AlimamaFangYuanTiVF-Thin.zip
 	source = LICENSE
 	sha256sums = 9c84435c93f85ad7f2082d488eb0fdb606ca44a4ae1f54be6e53c244f501c956
