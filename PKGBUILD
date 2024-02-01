@@ -1,53 +1,47 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=copytranslator-bin
 pkgver=9.1.0
-pkgrel=2
+_electronversion=6
+pkgrel=3
 pkgdesc="Foreign language reading and translation assistant based on copy and translate."
 arch=('x86_64')
 url="https://copytranslator.gitee.io/"
 _ghurl="https://github.com/CopyTranslator/CopyTranslator"
-license=('GPL2')
+license=('GPL-2.0-only')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    'libxcb'
     'hicolor-icon-theme'
-    'libxcomposite'
-    'libxdamage'
-    'libxcursor'
-    'at-spi2-core'
-    'cairo'
-    'libxrender'
-    'libxss'
-    'alsa-lib'
-    'libcups'
-    'gdk-pixbuf2'
-    'libxi'
-    'libxtst'
-    'libx11'
-    'expat'
-    'libxfixes'
-    'pango'
-    'nss'
-    'util-linux-libs'
-    'gtk3'
-    'libxrandr'
-    'libxext'
-    'nspr'
+    "electron${_electronversion}"
+)
+makedepends=(
+    'asar'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}.sh"
 )
-sha256sums=('426f706acc80610731116b2317540fd10e844f597ca0489c83934f8ac3c0527a')
+sha256sums=('426f706acc80610731116b2317540fd10e844f597ca0489c83934f8ac3c0527a'
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin} --no-sandbox|g;s|/opt/${pkgname%-bin}/resources/linux-icon/icon.png|${pkgname%-bin}|g" \
+    asar e "${srcdir}/opt/${pkgname%-bin}/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    sed -e "s|process.resourcesPath,\"locales|process.resourcesPath,\"../.././${pkgname%-bin}/locales|g" \
+        -e "s|tray@2x.png|../.././${pkgname%-bin}/tray@2x.png|g" \
+        -e "s|return !0 === this.app.isPackaged|return 0 === this.app.isPackaged|g" \
+        -i "${srcdir}/app.asar.unpacked/background.js"
+    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
+    sed "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g;s|/opt/${pkgname%-bin}/resources/linux-icon/icon.png|${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }   
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt,usr/bin}
-    cp -r "${srcdir}/opt/${pkgname%-bin}" "${pkgdir}/opt"
-    ln -sf "/opt/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/opt/${pkgname%-bin}/resources/"{linux-icon,locales,tray@2x.png} "${pkgdir}/usr/lib/${pkgname%-bin}"
     for _icons in 16x16 32x32 48x48 64x64 128x128 256x256;do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
