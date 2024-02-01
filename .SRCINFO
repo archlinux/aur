@@ -1,7 +1,7 @@
 pkgbase = arrpc-git
 	pkgdesc = Open Discord RPC server for atypical setups
-	pkgver = r85.4405d72
-	pkgrel = 1
+	pkgver = r108.c6e23e7
+	pkgrel = 2
 	url = https://arrpc.openasar.dev/
 	install = arrpc.install
 	arch = x86_64

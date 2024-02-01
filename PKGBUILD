@@ -1,7 +1,7 @@
 # Maintainer: Scarlett Veldt <scarlett AT enby DOT site>
 pkgname=arrpc-git
-pkgver=r85.4405d72
-pkgrel=1
+pkgver=r108.c6e23e7
+pkgrel=2
 pkgdesc="Open Discord RPC server for atypical setups"
 arch=("x86_64")
 url="https://arrpc.openasar.dev/"
