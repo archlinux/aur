@@ -1,18 +1,34 @@
 pkgname=nyaa
 pkgver=0.4.0
-pkgrel=2
-makedepends=('rust' 'cargo')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+pkgrel=3
 pkgdesc="A tui tool for browsing and downloading torrents from nyaa.si"
-license=('GPL-3.0-or-later')
 url='https://github.com/Beastwick18/nyaa/'
-provides=("nyaa")
+arch=(x86_64)
+license=('GPL-3.0-or-later')
+makedepends=(cargo)
+source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
+b2sums=('SKIP')
+
+prepare() {
+	cd $pkgname-$pkgver
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
 build() {
-	return 0
+	cd $pkgname-$pkgver
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release --all-features
+}
+
+check() {
+	cd $pkgname-$pkgver
+	export RUSTUP_TOOLCHAIN=stable
+	cargo test --frozen --all-features
 }
 
 package() {
-	cd $srcdir
-	cargo install --root="$pkgdir" --git="$url" --bin="nyaa" --no-track
+	cd $pkgname-$pkgver
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
