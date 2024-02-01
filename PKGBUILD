@@ -1,6 +1,6 @@
 # Maintainer: Vlad Vasiliu <vladvasiliun@yahoo.fr>
 pkgname=copilot-cli-bin
-pkgver=1.33.0
+pkgver=1.33.1
 pkgrel=1
 pkgdesc='Your toolkit for containerized applications on AWS.'
 arch=('aarch64' 'x86_64')
@@ -12,8 +12,8 @@ depends=()
 conflicts=('copilot-cli')
 source_x86_64=("copilot-${pkgver}-x86_64::https://github.com/aws/copilot-cli/releases/download/v${pkgver}/copilot-linux-amd64-v${pkgver}")
 source_aarch64=("copilot-${pkgver}-aarch64::https://github.com/aws/copilot-cli/releases/download/v${pkgver}/copilot-linux-arm64-v${pkgver}")
-md5sums_x86_64=('14100349ae915b0a12c928a9395ebd96')
-md5sums_aarch64=('afad44647dd810a45d34947b8dd76704')
+md5sums_x86_64=('17b9b51e9ec7d4d6d115e56c125a7827')
+md5sums_aarch64=('5b68531960ffcb5123bd1649f8c0eb41')
 noextract=("copilot-${pkgver}")
 
 package() {
