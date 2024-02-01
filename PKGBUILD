@@ -3,7 +3,7 @@
 _nightly_version=$(curl -L -H "Accept: application/vnd.github+json" "https://api.github.com/repos/lf-lang/lingua-franca/releases/tags/nightly" 2>&1 | grep '"name":' | grep "Linux-x86" | cut -d'-' -f3-6)
 
 pkgname=lf-cli-nightly-bin
-pkgver=0.5.1+SNAPSHOT+nightly+20230908050222
+pkgver=0.6.1+SNAPSHOT+nightly+20240201050246
 pkgrel=1
 pkgdesc="The Lingua Franca compiler and command line tools (nightly release)"
 arch=('x86_64' 'aarch64')
