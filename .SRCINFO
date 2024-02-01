@@ -1,0 +1,14 @@
+pkgbase = sss-bin
+	pkgdesc = Terminal tool to take screenshots of your code
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/SergioRibera/sss
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	conflicts = sss
+	conflicts = sss-git
+	source = https://github.com/SergioRibera/sss/releases/download/sss_cli/v0.1.4/sss_cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums = e59f3fdc97d925bd4560f8f7751d29194fd13cd770f48f3b0e3779114c37645b
+
+pkgname = sss-bin
