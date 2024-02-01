@@ -17,8 +17,7 @@ source=(git+https://github.com/KhronosGroup/Vulkan-Loader.git)
 
 pkgver(){
  cd "${srcdir}"/Vulkan-Loader
- # cutting off 'foo-' prefix that presents in the git tag
- git describe --long --tags --abbrev=7 --exclude sdk-* --exclude vulkan-* | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+ git describe --long --tags --abbrev=7 --match='v*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build(){
@@ -39,7 +38,7 @@ build(){
   -D BUILD_WSI_XCB_SUPPORT=ON \
   -D BUILD_WSI_XLIB_SUPPORT=ON \
   -D BUILD_WSI_WAYLAND_SUPPORT=ON \
-  -D BUILD_WSI_DIRECTFB_SUPPORT=ON \
+  -D BUILD_WSI_DIRECTFB_SUPPORT=OFF \
   -Wno-dev
 
   make -j$(nproc) -C "${srcdir}"/build
