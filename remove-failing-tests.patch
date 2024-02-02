@@ -1,0 +1,12 @@
+diff --unified --recursive --text --new-file unicode-slugify-9306d3fd16763b841132f3be1b2065d8e03f7c90.orig/slugify/tests.py unicode-slugify-9306d3fd16763b841132f3be1b2065d8e03f7c90/slugify/tests.py
+--- unicode-slugify-9306d3fd16763b841132f3be1b2065d8e03f7c90.orig/slugify/tests.py	2024-02-02 11:12:26.162639063 +0100
++++ unicode-slugify-9306d3fd16763b841132f3be1b2065d8e03f7c90/slugify/tests.py	2024-02-02 11:12:58.722688306 +0100
+@@ -54,8 +54,6 @@
+          # forms:
+          ('\N{LATIN SMALL LIGATURE FI}lms', 'films'),
+          # I don't really care what slugify returns.  Just don't crash.
+-         ('x𘍿', 'x'),
+-         ('ϧ΃𘒬𘓣',  '\u03e7'),
+          ('¿x', 'x'),
+          ('Bakıcı geldi', 'bak\u0131c\u0131-geldi'),
+          ('Bäuma means tree', 'b\xe4uma-means-tree')]

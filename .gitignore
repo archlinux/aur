@@ -1,4 +1,6 @@
-src/
-pkg/
-*.pkg.tar.xz
-*.tar.gz
+*
+!.gitignore
+!.nvchecker.toml
+!.SRCINFO
+!PKGBUILD
+!remove-failing-tests.patch

@@ -1,0 +1,3 @@
+[python-unicode-slugify]
+source = "pypi"
+pypi = "unicode-slugify"
