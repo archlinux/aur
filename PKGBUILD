@@ -3,7 +3,7 @@ pkgname=p3x-redis-ui-bin
 _appname=P3X-Redis-UI
 pkgver=2023.10.243
 _electronversion=25
-pkgrel=4
+pkgrel=5
 pkgdesc="A very functional handy database GUI and works in your pocket on the responsive web or as a desktop app"
 arch=(
     'aarch64'
@@ -27,17 +27,17 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('a44e4f4811cc55ebe83c9ba750697ee94c56401c1f3963ace79fa6938ebb46ac'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 sha256sums_aarch64=('5f933871e30a426942fb9a89ab3fa0000438d456fa4232bf9389690bbe5318f8')
 sha256sums_armv7h=('50fe5bcf2c4f5e59f6b732ffe93f22f69c19db543d10a1484b6a83c707c035ee')
 sha256sums_x86_64=('266f0ce05adae5048563e893fa2970f88c55ce0fbbafee7653be43b120b2dd04')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|/opt/${_appname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed "s|/opt/${_appname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
