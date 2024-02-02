@@ -1,19 +1,19 @@
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Anton Kudelin <kudelin at proton dot me>
 # Contributor: chn <g897331845@gmail.com>
 # Contributor: Ross Whitfield <whitfieldre@ornl.gov>
 # Contributor: Brian Lam <blamm9[at]gmail[dot]com>
 # Contributor: AG_Caesar <caesar[at]drachenhain[dot]net>
 # Contributor: Jan Oliver Oelerich <janoliver[at]oelerich[dot]org>
-
 pkgname=ovito
 pkgver=3.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Visualization Tool"
 url="https://www.${pkgname}.org"
 arch=(x86_64 aarch64)
 license=(GPL)
 depends=(netcdf-openmpi ffmpeg qt6-base)
-makedepends=(cmake boost qscintilla-qt6 qt6-svg libxslt python-sphinx_rtd_theme vulkan-icd-loader vulkan-headers) # git
+makedepends=(cmake boost qscintilla-qt6 qt6-svg libxslt python-sphinx_rtd_theme)
 conflicts=($pkgname-git)
 source=(https://gitlab.com/stuko/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2
   ${url}/wp-content/uploads/logo_rgb-768x737.png
@@ -31,8 +31,7 @@ build() {
     -DCMAKE_CXX_STANDARD=20 \
     -DOpenGL_GL_PREFERENCE=GLVND \
     -DOVITO_BUILD_DOCUMENTATION=ON \
-    -DOVITO_BUILD_PLUGIN_VULKAN=ON \
-    -DVulkan_INCLUDE_DIR=/usr/include
+    -DOVITO_BUILD_PLUGIN_VULKAN=OFF
 
   cmake --build build --target all
 }
