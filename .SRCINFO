@@ -1,6 +1,6 @@
 pkgbase = d2launcher
 	pkgdesc = Launcher for Diablo 2, Median XL and D2 Stats
-	pkgver = 4.0.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://github.com/murkl/d2launcher
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = d2launcher
 	depends = xdelta3
 	optdepends = lutris-wine-meta: Install in case of graphics or audio issues
 	source = d2launcher.desktop
-	source = d2launcher-4.0.0.tar.gz::https://github.com/murkl/d2launcher/archive/refs/tags/4.0.0.tar.gz
+	source = d2launcher-4.0.1.tar.gz::https://github.com/murkl/d2launcher/archive/refs/tags/4.0.1.tar.gz
 	sha256sums = SKIP
-	sha256sums = b8c7ae4a1ad0c83ab17eecdbda4c91ad14a7f7f08bca0e16c1c543aca1297893
+	sha256sums = SKIP
 
 pkgname = d2launcher
