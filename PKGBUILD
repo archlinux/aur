@@ -10,9 +10,10 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
          python-buildbot-console-view python-buildbot-grid-view
          python-buildbot-wsgi-dashboards python-buildbot-badges
          python-buildbot-react-waterfall-view
-         python-buildbot-react-console-view python-buildbot-react-grid-view)
+         python-buildbot-react-console-view python-buildbot-react-grid-view
+         python-buildbot-react-wsgi-dashboards)
 # https://github.com/buildbot/buildbot/releases
-pkgver=3.10.1
+pkgver=3.11.0
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
 pkgrel=1
 arch=(any)
@@ -37,7 +38,7 @@ source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbo
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
         "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch"
         "disable-flaky-tests.diff")
-sha256sums=('c3836c2ced9b729722f0e99ace0fed638a81f189aadf3a03174f5bc9fa95401b'
+sha256sums=('71258013f74e81ae6c8ed31c4a8d40b65e76ff7b6a0df62c4c88a747f0757cb4'
             'SKIP'
             'SKIP'
             '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9'
@@ -49,7 +50,7 @@ validpgpkeys=(
 
 _buildbot_www_modules_with_tests=(base waterfall_view console_view grid_view wsgi_dashboards)
 _buildbot_www_react_modules_with_tests=(react-base react-waterfall_view react-console_view react-grid_view)
-_buildbot_www_modules=(${_buildbot_www_modules_with_tests[@]} ${_buildbot_www_react_modules_with_tests[@]} badges)
+_buildbot_www_modules=(${_buildbot_www_modules_with_tests[@]} ${_buildbot_www_react_modules_with_tests[@]} react-wsgi_dashboards badges)
 
 prepare() {
   cd buildbot-$pkgver
@@ -321,3 +322,10 @@ package_python-buildbot-react-grid-view() {
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
+package_python-buildbot-react-wsgi-dashboards() {
+  pkgdesc='Buildbot plugin to integrate flask or bottle dashboards to buildbot UI (React)'
+  depends=(buildbot python-buildbot-www-react python-twisted)
+
+  cd buildbot-$pkgver/www/react-wsgi_dashboards
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
