@@ -3,7 +3,7 @@
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
 pkgrel=1
-pkgver=1.92.1
+pkgver=1.93.3
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('MIT')
@@ -41,7 +41,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
         'https://download.geonames.org/export/dump/cities500.zip'
         'https://download.geonames.org/export/dump/admin1CodesASCII.txt'
         'https://download.geonames.org/export/dump/admin2Codes.txt')
-sha256sums=('cf090e38f9fcc52c3051c77b6e3df81543018ea7f247d9db6da28a8c9426e5d9'
+sha256sums=('99bf458f910a7d9551a4313c2a36cfce5112f2fa756e4613472ecbe28bbff565'
             '0a9d7fffe3c301190cc8581ee7e11417eb0661937a2c03d76c8b8bc39710205b'
             'dc1a3d7baf2ec4f00a4a80f88a1f28dc1092eb7a08195544cc37b6532777f5d7'
             'd20455349cdb9409adb42cdbde48c30a176d2a5337ad148c6d2227ecc523c88a'
@@ -50,9 +50,9 @@ sha256sums=('cf090e38f9fcc52c3051c77b6e3df81543018ea7f247d9db6da28a8c9426e5d9'
             '15c00108d970691a72397eab19ee784bbd24eae941307bb676ebf2f25d36057c'
             'cc405c774e34cd161f00ccd882e66c2d2ce28405964bf62472ebc3f59d642060'
             'd38cdaa031f741998f2d31504381bce4db1a8771c774a2c2bac547d7d2b3c70b'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+            'a8d9d4fdeeb8904d8ff30850102413c49656b677f8ee072023d50d93b4f1f035'
+            'c086e7add91c4067e53a4c21b580e933d7c0662c698aecd7bfd6069f42a8170b'
+            '5c249302d3592d5a9f887b762dedc8cf6fc7c8acd6b92ea9ab141071834f28ef')
 _installdir=/opt/immich-machine-learning
 _venvdir="${_installdir}/venv"
 
@@ -64,13 +64,6 @@ prepare() {
 
 build() {
  
-    # build web frontend
-    # from: web/Dockerfile RUN npm commands
-    cd "${srcdir}/${pkgbase}-${pkgver}/web"
-    npm ci
-    npm run build
-    npm prune --omit=dev
-
     # build server
     # from: server/Dockerfile RUN npm commands
     #   * npm link / and cache clean not required
@@ -85,7 +78,19 @@ build() {
     mkdir -p node_modules/@img
     mv "${tmpdir}/@img/"* node_modules/@img
     rm -rf "${tmpdir}"
-        
+
+    # web build
+    cd "${srcdir}/${pkgbase}-${pkgver}/open-api/typescript-sdk"
+    npm ci
+    npm run build
+
+    # build web frontend
+    # from: web/Dockerfile RUN npm commands
+    cd "${srcdir}/${pkgbase}-${pkgver}/web"
+    npm ci
+    npm run build
+    # npm prune --omit=dev
+
     # build machine learning (python)
     # from: ENV and RUN commands in machine-learning/Dockerfile
     #   * later ENV commands picked up in systemd service files
@@ -198,6 +203,7 @@ package_immich-server() {
     install -dm755 "${pkgdir}${_installdir}"
     cp -r "${srcdir}/venv" "${pkgdir}${_installdir}"
     cp -r "machine-learning/app" "${pkgdir}${_installdir}"
+    cp -r "machine-learning/ann" "${pkgdir}${_installdir}"
     install -Dm644 "machine-learning/log_conf.json" "${pkgdir}${_installdir}/log_conf.json"
 
     cd "${srcdir}"
