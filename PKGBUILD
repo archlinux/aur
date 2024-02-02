@@ -31,7 +31,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname/YAFC"
-    dotnet publish --use-current-runtime --self-contained false -o "../publish"
+    DOTNET_CLI_TELEMETRY_OPTOUT=1 dotnet publish --use-current-runtime --self-contained false -o "../publish"
 }
 
 package() {
