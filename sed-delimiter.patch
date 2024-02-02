@@ -1,0 +1,13 @@
+diff -ruN src/runlim-1.10/configure.sh src-mod/runlim-1.10/configure.sh
+--- a/runlim-1.10/configure.sh	2016-10-13 10:56:23.000000000 +0200
++++ b/runlim-1.10/configure.sh	2024-02-02 21:31:47.250035130 +0100
+@@ -37,7 +37,7 @@
+ echo "[configure.sh] $CC $CFLAGS"
+ rm -f makefile
+ sed \
+--e "s,@CC@,$CC," \
+--e "s,@CFLAGS@,$CFLAGS," \
++-e "s|@CC@|$CC|" \
++-e "s|@CFLAGS@|$CFLAGS|" \
+ makefile.in > makefile
+ echo "[configure.sh] generated makefile"

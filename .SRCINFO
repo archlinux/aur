@@ -1,7 +1,7 @@
 pkgbase = runlim
 	pkgdesc = A tool for sampling and limiting time and memory usage of a program
 	pkgver = 1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fmv.jku.at/runlim/
 	arch = x86_64
 	arch = i686
@@ -10,7 +10,8 @@ pkgbase = runlim
 	makedepends = make
 	depends = glibc
 	source = http://fmv.jku.at/runlim/runlim-1.10.tar.gz
+	source = sed-delimiter.patch
 	md5sums = 5e0855a5d554c75ea4caafb08ffcfa17
+	md5sums = 2e85543f14780b81a23add80839ed718
 
 pkgname = runlim
-
