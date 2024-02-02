@@ -4,8 +4,8 @@
 # Contributor: Roni Choudhury <aichoudh@gmail.com>
 
 pkgname=pin
-pkgver=3.28
-_pkgver=3.28-98749-g6643ecee5
+pkgver=3.30
+_pkgver=3.30-98830-g1d7b601b3
 pkgrel=1
 pkgdesc="A tool for the dynamic instrumentation of programs"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('gcc' 'bash' 'lib32-gcc-libs')
 options=('!strip' 'staticlibs')
 source=("http://software.intel.com/sites/landingpage/pintool/downloads/${pkgname}-${_pkgver}-gcc-linux.tar.gz"
         "pin.sh")
-sha256sums=('5a5a3337f3f16176b97edcd3366b561936e1068fba4ebcfed4b836d81d45847b'
+sha256sums=('be4f1130445c3fc4d83b7afad85c421d418f60013c33e8ee457bc7c9c194de1b'
             '7198073c94e785cbd9002cdd174ab3bb1d28cc4e26626905c12173ad31ae82fc')
 
 package() {
