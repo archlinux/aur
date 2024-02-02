@@ -7,7 +7,7 @@
 # installation.
 
 pkgname=jabref-git
-pkgver=5.11.r177.43817fd2c5
+pkgver=5.12.r121.de5481ad0b
 pkgrel=2
 epoch=3
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
@@ -15,7 +15,7 @@ arch=('x86_64')
 url="https://www.jabref.org"
 license=('MIT')
 depends=('java-runtime=21' 'xdg-user-dirs' 'gtk3>=3.8' 'alsa-lib')
-makedepends=('git' 'jdk21-openjdk') # tested with openjdk from the repos
+makedepends=('git' 'java-environment=21' 'archlinux-java-run'  'gradle') 
 optdepends=('gsettings-desktop-schemas: For web search support')
 provides=('jabref')
 conflicts=('jabref')
@@ -34,21 +34,21 @@ pkgver() {
 
 build() {
   # Due to a jlink bug you need at least JDK 21.0.1 to compile JabRef
-  if [[ 0 -gt $(vercmp $("$JAVA_HOME"/bin/java -version |& sed -n "2s/.*build \([0-9.]*\).*/\1/; 2p") 21.0.1) ]]
-  then
-    echo "Error: you need JDK at least 21.0.1 to compile Jabref"
-    echo "JDK currently in use:"
-    "$JAVA_HOME"/bin/java -version |& sed -n "2p"
-    exit 1
-  fi
+#  if [[ 0 -gt $(vercmp $("$JAVA_HOME"/bin/java -version |& sed -n "2s/.*build \([0-9.]*\).*/\1/; 2p") 21.0.1) ]]
+#  then
+#    echo "Error: you need JDK at least 21.0.1 to compile Jabref"
+#    echo "JDK currently in use:"
+#    "$JAVA_HOME"/bin/java -version |& sed -n "2p"
+#    exit 1
+#  fi
   cd ${pkgname%-git}
+  export JAVA_HOME=$(archlinux-java-run --java-home --min 21 --max 21)
   [[ -d "$srcdir"/gradle ]] && install -d "$srcdir"/gradle
   export GRADLE_USER_HOME="$srcdir"/gradle
   export DEFAULT_JVM_OPTS='"-Xmx1g" "-Xms64m"'
-  # pwd
-  ./gradlew --no-daemon -PprojVersion="${pkgver}" \
+  /usr/bin/gradle --no-daemon -PprojVersion="${pkgver}" \
 	    -PprojVersionInfo="${pkgver}--ArchLinux--${pkgrel}" assemble
-  ./gradlew --no-daemon --no-parallel -PprojVersion="${pkgver}" \
+  /usr/bin/gradle --no-daemon -PprojVersion="${pkgver}" \
 	    -PprojVersionInfo="${pkgver}--ArchLinux--${pkgrel}" jlink 
 }
 
