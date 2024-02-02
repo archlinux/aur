@@ -1,6 +1,6 @@
 pkgbase = iceshrimp.net-git
 	pkgdesc = The Iceshrimp .NET rewrite. Caution: This is alpha software, do not use with production database
-	pkgver = v2024.1.alpha+8308a74
+	pkgver = v2024.1.alpha+f95e79b
 	pkgrel = 1
 	url = https://iceshrimp.dev/iceshrimp/iceshrimp.net
 	install = iceshrimp.net.install

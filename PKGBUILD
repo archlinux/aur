@@ -1,7 +1,7 @@
 # Maintainer: zotan <aur@zotan.email>
 
 pkgname=iceshrimp.net-git
-pkgver=v2024.1.alpha+8308a74
+pkgver=v2024.1.alpha+f95e79b
 pkgrel=1
 pkgdesc="The Iceshrimp .NET rewrite. Caution: This is alpha software, do not use with production database"
 arch=(x86_64 aarch64)
@@ -44,6 +44,14 @@ pkgver() {
   git rev-parse --short HEAD
 }
 
+rid() {
+  if [[ $CARCH == "x86_64" ]]; then
+    echo -n "linux-x64"
+  else
+    echo -n "linux-arm64"
+  fi
+}
+
 build() {
   # Build frontend
   cd "${srcdir}/iceshrimp.net/Iceshrimp.Frontend"
@@ -54,7 +62,7 @@ build() {
 
   # Build backend
   cd "${srcdir}/iceshrimp.net/Iceshrimp.Backend"
-  dotnet publish -c Release
+  dotnet publish -c Release -r $(rid)
 }
 
 package() {
@@ -70,5 +78,5 @@ package() {
 
 #  find "${srcdir}/iceshrimp/.yarn/unplugged" -path "*/re2/build/Makefile" -or -path "*/re2/build/config.gypi" | xargs -r sed -i "s%${srcdir}%/usr/share%g"
 
-  cp -dpTr --no-preserve=ownership "${srcdir}/iceshrimp.net/Iceshrimp.Backend/bin/Release/net8.0/publish/" "${pkgdir}/usr/share/iceshrimp.net"
+  cp -dpTr --no-preserve=ownership "${srcdir}/iceshrimp.net/Iceshrimp.Backend/bin/Release/net8.0/$(rid)/publish/" "${pkgdir}/usr/share/iceshrimp.net"
 }
