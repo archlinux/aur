@@ -11,7 +11,7 @@ license=(GPL3)
 depends=('libchamplain' 'geoclue' 'gst-plugins-base' 'gst-plugins-bad')
 makedepends=('intltool' 'itstool' 'python')
 source=(http://www.gnomevoice.org/src/gnome-voice-8.0.0.tar.xz)
-sha256sums=('285e7d148062648356e129a495636986d2ba9680b030f4fd1b74b39f61c008ca')
+sha256sums=('3490f92a1c6cda620a409aec4cf3e894cde2f99ad484a13ba225dd4cec3ba477')
 
 build() {
   cd $pkgname-$pkgver
