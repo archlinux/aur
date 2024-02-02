@@ -1,0 +1,23 @@
+pkgbase = goxlr-utility-ui
+	pkgdesc = A UI for the GoXLR Utility
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/frostycoolslug/goxlr-utility-ui
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = clang
+	depends = libgtk-3.so
+	depends = libwebkit2gtk-4.1.so
+	depends = libjavascriptcoregtk-4.1.so
+	depends = libcairo.so
+	depends = libcairo-gobject.so
+	depends = libsoup-3.0.so
+	depends = libgdk_pixbuf-2.0.so
+	depends = libpango-1.0.so
+	depends = goxlr-utility>=0.12.0
+	source = goxlr-utility-ui-0.0.3.tar.gz::https://github.com/frostycoolslug/goxlr-utility-ui/archive/refs/tags/v0.0.3.tar.gz
+	sha512sums = a25e67322dec03a6424742851a68cd66f9515e4efc320440c17d36c832ee69b544586e6843680026c4e530c70e6a461d76618965421c40e5ef5e374ec55054df
+
+pkgname = goxlr-utility-ui
