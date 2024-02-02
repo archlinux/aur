@@ -2,8 +2,8 @@
 
 pkgname=libscfg-git
 _pkgver='branch=master'
-pkgver=r10.e44023f
-pkgrel=3
+pkgver=0.1.1.r0.649514f
+pkgrel=1
 pkgdesc="A C library for scfg"
 arch=(x86_64)
 url="https://git.sr.ht/~emersion/libscfg"
@@ -15,7 +15,7 @@ provides=(libscfg)
 conflicts=("${pkgname%-git}")
 replaces=()
 backup=()
-options=()
+options=('staticlibs')
 install=
 source=("${pkgname%-git}::git+https://git.sr.ht/~emersion/libscfg#${_pkgver}")
 noextract=()
@@ -25,13 +25,11 @@ b2sums=('SKIP')
 # a description of each element in the source array.
 
 pkgver() {
-	# local _gitflags=(-C "$srcdir/${pkgname%-git}")
-	# Git, no tags available
-	# printf "r%s.%s" "$(git "${gitflags[@]}" rev-list --count HEAD)" "$(git -C "${gitflags[@]}" rev-parse --short HEAD)"
-	# Git, tags available
-	# printf "%s" "$(git -C "${gitflags[@]}" describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-	cd "$srcdir/${pkgname%-git}"
-	printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	# cd "$srcdir/${pkgname%-git}"
+	# printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+
+	git -C "$srcdir/${pkgname%-git}" describe --long \
+		| awk -F '-' '{ sub(/^v/, ""); v = $1 ".r" $2 "." substr($3, 2); printf "%s", v; }'
 }
 
 prepare() {
@@ -40,9 +38,11 @@ prepare() {
 
 build() {
 	arch-meson \
+		-Ddefault_library=both \
+		-Db_lto=false \
 		"$srcdir/${pkgname%-git}" \
 		"$srcdir/build"
-	ninja -C "$srcdir/build"
+	ninja -C "$srcdir/build" -v
 	[ ! -e "$srcdir/docs" ] \
 		|| rm -rf "$srcdir/docs" \
 		&& mkdir -p "$srcdir/docs"
@@ -54,7 +54,7 @@ build() {
 }
 
 check() {
-	return 0
+	ninja -C "$srcdir/build" test
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = libscfg-git
 	pkgdesc = A C library for scfg
-	pkgver = r10.e44023f
-	pkgrel = 3
+	pkgver = 0.1.1.r0.649514f
+	pkgrel = 1
 	url = https://git.sr.ht/~emersion/libscfg
 	arch = x86_64
 	license = MIT
@@ -12,6 +12,7 @@ pkgbase = libscfg-git
 	makedepends = gyosu
 	provides = libscfg
 	conflicts = libscfg
+	options = staticlibs
 	source = libscfg::git+https://git.sr.ht/~emersion/libscfg#branch=master
 	b2sums = SKIP
 
