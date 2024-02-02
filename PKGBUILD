@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=znote-bin
-pkgver=2.4.0
+pkgver=2.4.1
 _electronversion=28
 pkgrel=1
 pkgdesc="A Beautiful markdown editor inspired by Jupyter."
@@ -30,13 +30,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('d99c71829c8ef581236de84e94b61d57f9b89f907f8787e15cee1456a2921777'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
-sha256sums_aarch64=('b8b07639dee352294ef3487ee0b1131838b14b4155a74fe45b3b72ade40e90b1')
-sha256sums_x86_64=('bd68fdc674da7a849e3271381f7cfd736cf14533b7a1f2a4f5233cc12c263505')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+sha256sums_aarch64=('c778238550f54afe684d926b37693b168ed95ca9811e518b3459391f801c383d')
+sha256sums_x86_64=('1b8bed41857f12c0575ee4d3ac0f93d1f4d609e88f0218da546f4a5180d99c80')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
