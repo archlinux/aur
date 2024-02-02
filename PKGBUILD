@@ -155,7 +155,7 @@ package() {
 
     msg "add -${_suffix} suffix to binaries"
     mv "${pkgdir}/usr/bin/blender" "${pkgdir}/usr/bin/blender-${_suffix}"
-    mv "${pkgdir}/usr/bin/blender-thumbnailer" "${pkgdir}/usr/bin/blender-${_suffix}-thumbnailer" || bash
+    mv "${pkgdir}/usr/bin/blender-thumbnailer" "${pkgdir}/usr/bin/blender-${_suffix}-thumbnailer"
 
     msg "mv doc/blender to doc/blender-${_suffix}"
     mv "${pkgdir}/usr/share/doc/blender" "${pkgdir}/usr/share/doc/blender-${_suffix}"
