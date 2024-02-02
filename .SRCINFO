@@ -1,6 +1,6 @@
 pkgbase = tucnak
 	pkgdesc = Ham Radio - VHF/HF contest logbook
-	pkgver = 4.49
+	pkgver = 4.55
 	pkgrel = 1
 	url = http://tucnak.nagano.cz/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = tucnak
 	license = GPL
 	makedepends = autoconf
 	makedepends = pkg-config
-	depends = libzia=4.49
+	depends = libzia=4.55
 	depends = fftw
 	depends = libsndfile
 	depends = libftdi-compat
@@ -21,15 +21,15 @@ pkgbase = tucnak
 	optdepends = cwdaemon: transmitting cw
 	optdepends = winkeydaemon: transmitting cw
 	conflicts = tucnak3
-	source = http://tucnak.nagano.cz/tucnak-4.49.tar.gz
+	source = http://tucnak.nagano.cz/tucnak-4.55.tar.gz
 	source = diff.misc.c
 	source = diff.subwin.c
 	source = diff.configure.ac
-	md5sums = 9cd755ca193ac060b2b6f3ba5810b134
+	md5sums = fb3bbeedff45d26a5a628c49ca0be4da
 	md5sums = c69ecca9cfe4a5094f39b72503d1c270
 	md5sums = c30358bfb7316ce34924f9aed10883da
 	md5sums = 7c60c0681254303cc12f82c394a62891
-	sha256sums = 4eebb93382aa098dcbb96234661e55afcf56bee593afeb4227cbaa7b6ae8cfa1
+	sha256sums = 177e36625d84a8de0b70e6c463cb41704bd472cf291602e18dd332ae396d8b60
 	sha256sums = 91dcdb41fcf3c427587d5ab909db87de01f1d0bc4ea76909b2846488a262990a
 	sha256sums = fe9455bd8d1dc528d4d5d8637eefcfcbe784a2698d6b7ac131f5efa6fc9f3404
 	sha256sums = 39e0fa525a9ebbf557779cc945fd7ca9874636f164878a118f7ea5b3c853d76e
