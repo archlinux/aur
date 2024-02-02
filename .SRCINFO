@@ -1,16 +1,21 @@
 pkgbase = nasa-wallpaper
 	pkgdesc = Change your desktop background with a NASA image. You can set an image from the APOD (Astronomical Picture of the Day), the NASA Image Library or the NASA's account in Unsplash
-	pkgver = 2.0
-	pkgrel = 1
+	pkgver = 2.1
+	pkgrel = 0
 	url = https://github.com/davidpob99/nasa-wallpaper
 	arch = i686
 	arch = x86_64
+	arch = aarch64
+	arch = arm
 	license = Apache
-	depends = openssl
-	source = https://github.com/davidpob99/nasa-wallpaper/releases/download/v2.0/nasa-wallpaper-Linux-x32
-	source = https://github.com/davidpob99/nasa-wallpaper/releases/download/v2.0/nasa-wallpaper-Linux-x64
-	md5sums = dc79feca943788e6fee3fc5f85cce5c8
-	md5sums = 22d2037db7ec87f96b69b3c7b05c5994
+	depends = glibc
+	source = https://github.com/davidpob99/nasa-wallpaper/releases/download/v2.1.0/nasa-wallpaper-Linux-i686-gnu.tar.gz
+	source = https://github.com/davidpob99/nasa-wallpaper/releases/download/v2.1.0/nasa-wallpaper-Linux-x86_64-gnu.tar.gz
+	source = https://github.com/davidpob99/nasa-wallpaper/releases/download/v2.1.0/nasa-wallpaper-Linux-aarch64-gnu.tar.gz
+	source = https://github.com/davidpob99/nasa-wallpaper/releases/download/v2.1.0/nasa-wallpaper-Linux-arm-gnu.tar.gz
+	md5sums = e8f94bfb6b57dbf2e0b55e45c051a59b
+	md5sums = 95700b3c9af4d659c5f8873b5919e391
+	md5sums = 1e58e638862ce87f467ce057e0ed1e41
+	md5sums = 795dad66208733bb10775763c16c87f7
 
 pkgname = nasa-wallpaper
-
