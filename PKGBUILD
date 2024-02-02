@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=frog-ocr
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Intuitive text extraction tool (OCR) for GNOME."
 arch=('any')
 url="https://getfrog.app"
@@ -14,6 +14,7 @@ depends=(
   'python-dateutil'
   'python-gobject'
   'python-gtts'
+  'python-loguru'
   'python-pillow'
   'python-posthog'
   'python-pydbus'
