@@ -1,10 +1,10 @@
 pkgbase = google-assistant-unofficial-desktop-client-bin
 	pkgdesc = A cross-platform unofficial Google Assistant Client for Desktop (powered by Google Assistant SDK)
 	pkgver = 1.1.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/Melvin-Abraham/Google-Assistant-Unofficial-Desktop-Client
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	depends = electron10
 	depends = hicolor-icon-theme
 	provides = google-assistant-unofficial-desktop-client=1.1.0
