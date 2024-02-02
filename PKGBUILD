@@ -29,6 +29,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}"/build
+  export CXXFLAGS="$CXXFLAGS --std=c++14"
   export LDFLAGS="-lX11 ${LDFLAGS}"
   cmake ../v3d-flow-builder -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev
   make
