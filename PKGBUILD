@@ -75,11 +75,9 @@ build() {
 }
 
 package() {
-    ls
-    cd $_pkgname
-    DESTDIR="${pkgdir}" meson install -C build \
+    DESTDIR="${pkgdir}" meson install -C $_pkgname/build \
         --skip-subprojects
-    install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/gamescope/
+    install -Dm 644 $_pkgname/LICENSE -t "${pkgdir}"/usr/share/licenses/gamescope/
 }
 
 # vim: ts=2 sw=2 et:
