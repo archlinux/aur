@@ -1,6 +1,6 @@
 pkgbase = chrolog-bin
 	pkgdesc = An automated time tracking tool
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/Lukylix/Chrolog
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = chrolog-bin
 	makedepends = gendesk
 	depends = electron28
 	depends = hicolor-icon-theme
-	provides = chrolog=1.8.1
+	provides = chrolog=1.8.2
 	conflicts = chrolog
-	source = chrolog-1.8.1.zip::https://github.com/Lukylix/Chrolog/releases/download/v1.8.1/chrolog-1.8.1-linux.zip
+	source = chrolog-1.8.2.zip::https://github.com/Lukylix/Chrolog/releases/download/v1.8.2/chrolog-1.8.2-linux.zip
 	source = chrolog.sh
-	sha256sums = d5052f4873d565f6089ad9e6fcf3886fc8c88aac4e9f7b5e666e7ae9a7457bad
+	sha256sums = dc667fdddb49635d9e4a7fcae934eeda24976014fbc7a361bcb929c8b4de9e6f
 	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = chrolog-bin
