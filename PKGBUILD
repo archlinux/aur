@@ -2,7 +2,7 @@
 
 pkgname=blazefetch
 pkgver=2.7.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A lite & blazing fast system info fetch utility'
 arch=('any')
 url='https://github.com/rifsxd/blazefetch'
@@ -13,9 +13,6 @@ depends=('libx11' 'networkmanager' 'playerctl')
 makedepends=('cmake' 'ninja' 'gcc')
 source=("git+$url.git")
 sha256sums=('SKIP')
-validpgpkeys=(
-	'SKIP'
-)
 
 build() {
   	cd "$pkgname/src"

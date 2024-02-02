@@ -1,7 +1,7 @@
 pkgbase = blazefetch
 	pkgdesc = A lite & blazing fast system info fetch utility
 	pkgver = 2.7.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rifsxd/blazefetch
 	arch = any
 	license = MIT
