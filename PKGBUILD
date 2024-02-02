@@ -3,7 +3,7 @@
 
 _target=arm-none-eabi
 pkgname=$_target-linaro-binutils
-pkgver=2.40
+pkgver=2.42
 pkgrel=1
 #_commit=2bd25930
 pkgdesc='A set of pograms to assemble and manipulate binary and object files for the ARM EABI target with extra flags'
@@ -15,7 +15,7 @@ makedepends=('perl')
 provides=('arm-none-eabi-binutils')
 conflicts=('arm-none-eabi-binutils')
 source=(ftp://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.bz2{,.sig})
-sha1sums=('887d24c3799e9fe02646e04e73b5ac2cc3e7188f'
+sha1sums=('ead6f01f47cf1a6c39bfaf83ab84ac99bc6d70c8'
           'SKIP')
 validpgpkeys=('EAF1C276A747E9ED86210CBAC3126D3B4AE55E93'  # Tristan Gingold <gingold@adacore.com>
               '3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F'
