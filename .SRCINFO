@@ -1,0 +1,14 @@
+pkgbase = human-theme-gtk
+	pkgdesc = Human theme for GTK
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/luigifab/human-theme
+	arch = any
+	license = GPL3
+	license = LGPL2
+	license = CCBYSA
+	optdepends = gtk-murrine-engine: for gtk2
+	source = https://github.com/luigifab/human-theme/archive/v2.2.0/human-theme-2.2.0.tar.gz
+	md5sums = f293c7dc0f86b75c69c87832dd2bc549
+
+pkgname = human-theme-gtk
