@@ -2,7 +2,7 @@
 # Submitter:  not_anonymous <nmlibertarian@gmail.com>
 
 pkgname=wfdlogger
-pkgver=23.2.3
+pkgver=24.1.27.2
 pkgrel=1
 pkgdesc="Ham Radio - WINTER Field Day logger GUI"
 license=(GPL)
@@ -32,7 +32,7 @@ package() {
 	install -Dm755 $pkgname/data/k6gte-$pkgname.desktop $pkgdir/usr/share/applications/k6gte-$pkgname.desktop
 	install -Dm755 $pkgname/data/k6gte-$pkgname.png $pkgdir/usr/share/pixmaps/k6gte-$pkgname.png
 }
-md5sums=('96542350b5fac9fe75032c341bb1f9eb'
+md5sums=('2f4448cf446c59772ed8b65b08899cdd'
          '931867e6bb8f23afa30142f80fa2c5a1')
-sha256sums=('5bf315db4b75b25b8e7cb6f72d4cad9379ffac1835e069ed369e8f9c319b9325'
+sha256sums=('fcd1babe7db32e08a4dd07fe948ec8800e49ef64f6df29e5196658f8ca9384c5'
             '6e1ca820758f1ad3a82e7b616180d66f17d4e49615f7c8f553a8ca8f5f5df4f7')
