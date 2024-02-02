@@ -1,8 +1,8 @@
 pkgbase = podofo-0.9
 	pkgdesc = A C++ library to work with the PDF file format (legacy version)
 	pkgver = 0.9.8
-	pkgrel = 1
-	url = http://podofo.sourceforge.net
+	pkgrel = 2
+	url = https://github.com/podofo/podofo
 	arch = x86_64
 	license = LGPL-2.0-or-later
 	makedepends = cmake
@@ -12,9 +12,9 @@ pkgbase = podofo-0.9
 	depends = libtiff
 	depends = libunistring
 	depends = openssl
-	source = https://downloads.sourceforge.net/podofo/podofo-0.9.8.tar.gz
+	source = podofo-0.9.8.tar.gz::https://github.com/podofo/podofo/archive/refs/tags/0.9.8.tar.gz
 	source = https://github.com/podofo/podofo/commit/23d26f39.patch
-	sha256sums = 5de607e15f192b8ad90738300759d88dea0f5ccdce3bf00048a0c932bc645154
+	sha256sums = 2176e7281bdcd57769768eca30e7673257041bf7f092bfabfcdf85018b5dc7dc
 	sha256sums = 29486f35f5bc9e4b996bc66795e2e664e051d8cbe53a3cf4957658cae80914cc
 
 pkgname = podofo-0.9

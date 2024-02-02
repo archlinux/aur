@@ -3,9 +3,9 @@
 _pkgname="podofo"
 pkgname="$_pkgname-0.9"
 pkgver=0.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ library to work with the PDF file format (legacy version)"
-url="http://podofo.sourceforge.net"
+url="https://github.com/podofo/podofo"
 license=('LGPL-2.0-or-later')
 arch=('x86_64')
 
@@ -24,11 +24,11 @@ makedepends=(
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=(
-  "https://downloads.sourceforge.net/$_pkgname/$_pkgsrc.$_pkgext"
-  https://github.com/podofo/podofo/commit/23d26f39.patch
+  "$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/$pkgver.$_pkgext"
+  "https://github.com/podofo/podofo/commit/23d26f39.patch"
 )
 sha256sums=(
-  '5de607e15f192b8ad90738300759d88dea0f5ccdce3bf00048a0c932bc645154'
+  '2176e7281bdcd57769768eca30e7673257041bf7f092bfabfcdf85018b5dc7dc'
   '29486f35f5bc9e4b996bc66795e2e664e051d8cbe53a3cf4957658cae80914cc'
 )
 
