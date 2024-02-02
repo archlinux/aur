@@ -9,7 +9,7 @@
 
 pkgname=prosody-hg
 pkgrel=1
-pkgver=r11977+.10cdfb94f1cc+
+pkgver=r13414+.d54364746a7c+
 pkgdesc="Lightweight and extensible Jabber/XMPP server written in Lua (development build from trunk-branch)"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://prosody.im/"
@@ -32,7 +32,8 @@ backup=('etc/prosody/prosody.cfg.lua')
 source=("prosody-hg::hg+https://hg.prosody.im/trunk"
         'prosody.tmpfile.d'
         'sysuser.conf'
-        'prosody.service')
+        'prosody.service'
+        makefile-shellcheck-configure.patch)
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -41,6 +42,8 @@ pkgver() {
 
 prepare() {
   cd ${pkgname}
+
+  patch -l < "$srcdir"/makefile-shellcheck-configure.patch
 
   # disable logging to output and activate syslog
   sed -i s/"info = "/"-- info = "/g prosody.cfg.lua.dist
@@ -87,4 +90,5 @@ package() {
 sha256sums=('SKIP'
             'fb025d8d0608dc9fd5be2fde8528bc4fa10d9e38874a98eaa5c56ca9ae048302'
             'e5c30ffbb066f0ed3444475b3313490c535d8c9df018726f6cecf9e3ddfd2e48'
-            '40ea4a388ba69568daedde69b636d54747be1452e9d485fe19ee23320e66ada2')
+            '40ea4a388ba69568daedde69b636d54747be1452e9d485fe19ee23320e66ada2'
+            88a8d155b48217182c0d1c9f58b0c8479e130143b3e28e88d93b60ea77c73b2a)
