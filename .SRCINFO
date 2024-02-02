@@ -14,6 +14,7 @@ pkgbase = python2-urllib3
 	checkdepends = python2-tornado
 	checkdepends = python2-trustme
 	makedepends = python2-setuptools
+	optdepends = python2-brotli: Brotli support via pure-Python2 module
 	optdepends = python2-pyopenssl: secure connection support
 	optdepends = python2-pysocks: SOCKS proxy support (deprecated)
 	optdepends = python-urllib3-doc: urllib3 documentation

@@ -40,7 +40,7 @@ checkdepends=(
   "${_py}-trustme"
 )
 optdepends=(
-# "${_py}-brotli: Brotli support via pure-Python2 module"
+  "${_py}-brotli: Brotli support via pure-Python2 module"
 # "${_py}-brotlicffi: Brotli support via native binary library"
   "${_py}-pyopenssl: secure connection support"
   "${_py}-pysocks: SOCKS proxy support (deprecated)"
@@ -132,7 +132,7 @@ package() {
     _setup_opts=()
   _setup_opts=(
     --root="${pkgdir}"
-    --prefix='/usr'
+    # --prefix='/usr'
     --optimize=1
     --skip-build
   )
