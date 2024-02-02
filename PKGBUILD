@@ -8,7 +8,7 @@ pkgname=(
   gnome-shell-extension-asusctl-gnome
 )
 pkgver=5.0.7
-pkgrel=0.1
+pkgrel=0.2
 pkgdesc="A control daemon, tools, and a collection of crates for interacting with ASUS ROG laptops"
 arch=('x86_64')
 url="https://asus-linux.org"
@@ -99,7 +99,7 @@ package_asusctl() {
 
 package_rog-control-center() {
   depends=(
-    "asusctl=$pkgver"
+    "asusctl"
     "fontconfig"
     "glib2"
     "gtk3"
@@ -112,7 +112,7 @@ package_rog-control-center() {
 
 package_gnome-shell-extension-asusctl-gnome() {
   depends=(
-    "asusctl=$pkgver"
+    "asusctl"
     "dconf"
     "gnome-shell"
   )
