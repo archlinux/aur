@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=statusify-bin
 _pkgname=Statusify
-pkgver=0.0.2
-pkgrel=4
+pkgver=0.0.3
+pkgrel=1
 pkgdesc="Discord rich presence configurator desktop app"
 arch=('x86_64')
 url="https://github.com/Orphoros/Statusify"
@@ -18,7 +18,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}.linux-${CARCH}.deb"
 )
-sha256sums=('5d87781e9b1bc1fe447f1924a02c7db850e43b4a91a81aa19368a8804d18b120')
+sha256sums=('8bb1f5eb165b0eb26d7a3758dd6602b8f93718109914cd5dc99da832147aedf9')
 build() {
     bsdtar -xf "${srcdir}/data.tar.gz"
 }
