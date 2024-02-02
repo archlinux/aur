@@ -4,7 +4,7 @@
 pkgname=fdispatcher-bin
 arch=('x86_64')
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use file dispatcher based on extension"
 arch=('x86_64')
 url="https://github.com/pbackz/fdispatcher"
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-git}")
 pkgbase=fdispatcher-bin
 
 source=("https://github.com/pbackz/fdispatcher/releases/download/v${pkgver}/fd_x86_64")
-sha256sums=("6d9e03e7167b15f8fb30e6f8a17ec9109324ab5700c1c5dffe7e1f066c7c073f")
+sha256sums=("f50e8f182b621eb0a982f2477dd0813d9f72f37c9c03fa6a48ed9c4de9c5ae63")
 
 prepare() {
   chmod +x fd_x86_64
