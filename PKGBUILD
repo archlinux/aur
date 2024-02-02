@@ -1,8 +1,9 @@
 # Maintainer: Łukasz Pożarlik <lpozarlik@gmail.com>
 # Contributor: Vincent Hourdin <vh|at|free-astro=DOT=vinvin.tf>
+# Contributor: Marc-Olivier Barre <mobarre-archlinux|at|snarchi|dot|io>
 
 pkgname=siril
-pkgver='1.2.0'
+pkgver='1.2.1'
 pkgrel=1
 pkgdesc="An astronomical image processing software for Linux. (IRIS clone)"
 arch=('x86_64')
@@ -17,22 +18,14 @@ optdepends=('libpng: PNG import'
             'libcurl-gnutls: check for updates'
             'gnuplot: photometry graphs creation')
 
-source=("https://free-astro.org/download/siril-${pkgver}.tar.bz2" "exif.patch")
-sha256sums=('5941a4b5778929347482570dab05c9d780f3ab36e56f05b6301c39d911065e6f' '5d45fc3d67d5310b874db696880ab827fe8d9b0a6546d13e7b387d1ec09f6957')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver/"
-  pwd
-  patch -Np1 < ../exif.patch
-}
-
+source=("https://free-astro.org/download/siril-${pkgver}.tar.bz2")
+sha256sums=('b1b44e9334df137bea5a73d9a84ebe71072bf622c63020a2a7a5536ecff1cd91')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/"
   meson setup --prefix /usr --buildtype release _build
   ninja -C _build
 }
-
 
 package() {  
   cd "$srcdir/$pkgname-$pkgver/"
