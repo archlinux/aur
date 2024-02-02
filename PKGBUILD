@@ -10,7 +10,7 @@
 
 pkgname=aseprite-skia-bin
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -18,7 +18,7 @@ license=('custom')
 depends=(# ~ Aseprite's direct dependencies ~
          # pixman is not linked to because we use Skia instead
          # harfbuzz is linked statically because Aseprite expects an older version
-         cmark libcurl.so libgif.so libjpeg.so zlib libpng tinyxml libfreetype.so=6-64 libarchive.so
+         libcurl.so libgif.so libjpeg.so zlib libpng tinyxml libfreetype.so=6-64 libarchive.so
          libexpat.so=1-64 libharfbuzz.so=0-64
          hicolor-icon-theme # For installing Aseprite's icons
          # ~ Skia deps ~
@@ -75,7 +75,7 @@ build() {
 	cmake -S aseprite -B build -G Ninja -Wno-dev -DCMAKE_INSTALL_MESSAGE=NEVER -DCMAKE_BUILD_TYPE=None \
 -DENABLE_{UPDATER,WEBSOCKET}=NO -DENABLE_SCRIPTING=ON -DLAF_WITH_EXAMPLES=OFF -DLAF_WITH_TESTS=OFF -DLAF_BACKEND=skia \
 -DSKIA_DIR="$srcdir/skia" -DSKIA_LIBRARY_DIR="$_skiadir" -DSKIA_LIBRARY="$_skiadir/libskia.a" \
--DUSE_SHARED_{CMARK,CURL,GIFLIB,JPEGLIB,ZLIB,LIBPNG,PIXMAN,FREETYPE,HARFBUZZ,LIBARCHIVE,WEBP}=YES \
+-DUSE_SHARED_{CURL,GIFLIB,JPEGLIB,ZLIB,LIBPNG,PIXMAN,FREETYPE,HARFBUZZ,LIBARCHIVE,WEBP}=YES \
 -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS="$CXXFLAGS -stdlib=libc++" -DCMAKE_EXE_LINKER_FLAGS:STRING=-stdlib=libc++ \
 -DWEBP_INCLUDE_DIR="$srcdir/skia/third_party/externals/libwebp/src" \
 -DWEBP{,MUX,DEMUX}_LIBRARY= # Use Skia's already-bundled WebP library (link to no additional libs)
