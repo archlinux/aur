@@ -7,16 +7,10 @@ pkgbase = turbo
 	license = MPL
 	makedepends = cargo-nightly
 	makedepends = protobuf
-	makedepends = protoc-gen-go
-	makedepends = protoc-gen-go-grpc
-	makedepends = go<2:1.21.0
 	makedepends = capnproto
-	depends = libgit2
 	provides = turbopack
 	provides = turborepo
 	source = turbo-1.12.0.tar.gz::https://github.com/vercel/turbo/archive/refs/tags/v1.12.0.tar.gz
-	source = 0001-cli-internal-ffi-Fix-missing-library.patch
 	sha256sums = dce797be6e3e6703fb1a79176e3065a5cb1ae0413eaf6fff6aaf6e3e4e02e365
-	sha256sums = 0f964842bccf99f1e3d6c342c61517a0c96665bc226d8155e5cc8d8676cf0837
 
 pkgname = turbo

@@ -10,19 +10,15 @@ license=('MPL')
 provides=('turbopack' 'turborepo')
 source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/vercel/turbo/archive/refs/tags/v${pkgver}.tar.gz"
-	"0001-cli-internal-ffi-Fix-missing-library.patch"
 )
-depends=('libgit2')
-makedepends=('cargo-nightly' 'protobuf' 'protoc-gen-go' 'protoc-gen-go-grpc' 'go<2:1.21.0' 'capnproto')
+makedepends=('cargo-nightly' 'protobuf' 'capnproto')
 sha256sums=(
 	'dce797be6e3e6703fb1a79176e3065a5cb1ae0413eaf6fff6aaf6e3e4e02e365'
-	'0f964842bccf99f1e3d6c342c61517a0c96665bc226d8155e5cc8d8676cf0837'
 )
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
 
-	patch -p1 -i ../0001-cli-internal-ffi-Fix-missing-library.patch
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -30,7 +26,6 @@ build() {
 	cd "${pkgname}-${pkgver}"
 
 	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release -p turborepo-ffi
 	cargo build --frozen --release -p turbo
 }
 
@@ -38,6 +33,5 @@ package() {
 	cd "${pkgname}-${pkgver}"
 
 	install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/${pkgname}"
-	install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/go-${pkgname}"
 	install -Dm0755 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
 }
