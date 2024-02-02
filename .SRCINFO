@@ -1,7 +1,7 @@
 pkgbase = znote-bin
 	pkgdesc = A Beautiful markdown editor inspired by Jupyter.
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://znote.io
 	arch = aarch64
 	arch = x86_64
