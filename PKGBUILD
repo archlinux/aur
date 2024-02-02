@@ -3,7 +3,7 @@
 
 pkgname=fdispatcher-bin
 arch=('x86_64')
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="An easy-to-use file dispatcher based on extension"
 arch=('x86_64')
