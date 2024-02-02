@@ -1,14 +1,14 @@
 # Maintainer: Popolon <popolon@popolon.org>
 name=directfb2-eglgbm
 pkgname=directfb2-eglgbm-git
-pkgver=r7.c8d58a3
+pkgver=r13.6a46274
 pkgrel=2
 pkgdesc="EGL system module for DirectFB2 and supported on GBM (Generic Buffer Manager) platforms."
 arch=('x86_64' 'armv7h' 'armv8' 'riscv32' 'riscv64')
 url='https://directfb2.github.io/'
 license=('LGPL')
 makedepends=('git' 'meson' 'ninja' 'flux-git')
-depends=('directfb2-git')
+depends=('directfb2-git' 'libdrm' 'libglvnd' 'mesa')
 source=("${name}::git+https://github.com/directfb2/DirectFB2-eglgbm.git")
 sha256sums=('SKIP')
 
