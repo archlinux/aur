@@ -50,9 +50,9 @@ sha256sums=('99bf458f910a7d9551a4313c2a36cfce5112f2fa756e4613472ecbe28bbff565'
             '15c00108d970691a72397eab19ee784bbd24eae941307bb676ebf2f25d36057c'
             'cc405c774e34cd161f00ccd882e66c2d2ce28405964bf62472ebc3f59d642060'
             'd38cdaa031f741998f2d31504381bce4db1a8771c774a2c2bac547d7d2b3c70b'
-            'PASS'
-            'PASS'
-            'PASS')
+            'SKIP'
+            'SKIP'
+            'SKIP')
 _installdir=/opt/immich-machine-learning
 _venvdir="${_installdir}/venv"
 
