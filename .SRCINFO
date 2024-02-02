@@ -1,6 +1,6 @@
 pkgbase = at32-work-bench-bin
 	pkgdesc = AT32 MCU 图形化配置软件，生成初始化 C 代码(目前仅支持 AT32F421 系列)
-	pkgver = 1.0.04
+	pkgver = 1.0.05
 	pkgrel = 0
 	url = https://www.arterytek.com/cn/support/index.jsp
 	arch = x86_64
@@ -10,11 +10,14 @@ pkgbase = at32-work-bench-bin
 	makedepends = sed
 	depends = bash
 	depends = glibc
-	optdepends = artery-isp-console-bin: Artery ISP Console 是一款基于 MCU Bootloader 的命令行应用程序。使用该应用程序,用户可以通过 UART 端口或者 USB 端口配置操作 Artery 的 MCU 设备。
-	optdepends = at32-ide-bin: AT32 IDE 是个跨平台 ARM 嵌入式系统的软件开发环境。 它包含一系列的 Eclipse 插件和工具。该插件可让用户在 AT32 IDE 开发环境下创建、建置和调试 AT32 MCU。
+	optdepends = artery-isp-console: Artery ISP Console 是一款基于 MCU Bootloader 的命令行应用程序。使用该应用程序,用户可以通过 UART 端口或者 USB 端口配置操作 Artery 的 MCU 设备。
+	optdepends = at32-bootloader-doc-zh: Artery AT MCU Bootloader ISP 协议文档
+	optdepends = at32-ide: AT32 IDE 是个跨平台 ARM 嵌入式系统的软件开发环境。 它包含一系列的 Eclipse 插件和工具。该插件可让用户在 AT32 IDE 开发环境下创建、建置和调试 AT32 MCU。
+	optdepends = at32-ide-project-generate: AT32 IDE 是个跨平台 ARM 嵌入式系统的软件开发环境。 它包含一系列的 Eclipse 插件和工具。该插件可让用户在 AT32 IDE 开发环境下创建、建置和调试 AT32 MCU。
+	optdepends = at32-work-bench: AT32 MCU 图形化配置软件，生成初始化 C 代码(目前仅支持 AT32F421 系列)
 	optdepends = jlink-software-and-documentation: Segger JLink software & documentation pack for Linux
 	provides = at32-work-bench
-	source = AT32_Work_Bench_Linux-x86_64_V1.0.04.zip::https://www.arterytek.com/download/TOOL/AT32_Work_Bench_Linux-x86_64_V1.0.04.zip
-	sha256sums = 6c3df2178d273f5c25329dbe3020c7ac28ffa708b5959f905857dc879f6c9fc2
+	source = AT32_Work_Bench_Linux-x86_64_V1.0.05.zip::https://www.arterytek.com/download/TOOL/AT32_Work_Bench_Linux-x86_64_V1.0.05.zip
+	sha256sums = e1372ab2521d0683b8456116b8ed983922d8fb634cadb4537541fc42af83b26d
 
 pkgname = at32-work-bench
