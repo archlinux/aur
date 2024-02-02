@@ -1,7 +1,7 @@
 # Maintainer: Yurenev Nikolay <yurnik2004 at gmail.com>
 
 pkgname='zvm'
-pkgver='0.5.0'
+pkgver='0.5.3'
 pkgrel='1'
 pkgdesc='Version manager for Zig compilers'
 arch=('x86_64' 'armv7h')
@@ -13,7 +13,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/tristanisham/zvm/archive/refs/tags/v$pkgver.tar.gz"
 )
 md5sums=(
-    'dcff8b38063e8b7d7c1381d9ab3a0d50'
+    'b30cfc445e2047deb00a6b32284b31c7'
 )
 
 build() {
