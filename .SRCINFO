@@ -1,10 +1,10 @@
 pkgbase = r-readods
 	pkgdesc = Read and Write ODS Files
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=readODS
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-testthat
 	makedepends = r-cpp11
 	depends = r-cellranger
@@ -18,8 +18,9 @@ pkgbase = r-readods
 	optdepends = r-rmarkdown
 	optdepends = r-spelling
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/readODS_2.1.0.tar.gz
-	md5sums = ebde6b50a9c615a5b3fb3217361d33d7
-	sha256sums = 3f3e557ac7cadeda4759c51f866ce9a942cb21a2b3dd24e55a082fc7d300d7fe
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/readODS_2.2.0.tar.gz
+	md5sums = 5f1aced02d6d7d3d6d8dbef933d7c425
+	b2sums = 6d11814f8761e6560c95ebac7e8a823b70639654740b393e430fe2eb2fbf1060f3ba45022a2a2a3b61a58b318f1a619aa1d23cb6f46b33f89cce2d83ef03a5c6
 
 pkgname = r-readods
