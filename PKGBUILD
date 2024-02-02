@@ -2,7 +2,7 @@
 _base=pytest-variables
 pkgname=python-${_base}
 pkgdesc="pytest plugin for providing variables to tests/fixtures"
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 arch=(any)
 url="https://github.com/pytest-dev/${_base}"
@@ -14,7 +14,7 @@ optdepends=('python-hjson: for json support'
   'python-yaml: for YAML support'
   'python-toml: for TOML support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('cb105efa1fc7319c1f4ebc6e22fac656239af173d63d0af168ba8f975ec8408658216af62ee983a91076a1b4c845fdea6557994f8af5462cc5d77f196dd3b8d2')
+sha512sums=('000bda9ce75fd2fa176d97e62512e5dcb6e03f8234faf5753fc31374c60625b4773aa52f42501ba43d43a99d7c3d956b7b5d62398c8c19b18c2d38399594adc8')
 
 build() {
   cd ${_base}-${pkgver}
