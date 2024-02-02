@@ -21,7 +21,9 @@ depends=(
     glibc
     glm
     hwdata
-    libcap
+    libavif
+    libcap.so
+    libdisplay-info.so
     libdrm
     libinput
     libpipewire-0.3.so
