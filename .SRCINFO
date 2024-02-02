@@ -1,7 +1,7 @@
 pkgbase = gnome-voice
 	pkgdesc = Voice is Public Voice Communication Software for GNOME 43 more information on on https://wiki.gnome.org/Apps/Voice and http://www.gnomevoice.org/
 	pkgver = 8.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Apps/Voice
 	arch = x86_64
 	license = GPL3
