@@ -1,7 +1,7 @@
-# Maintainer: h3li0p4us3 Moharami <h3li0p4us3@proton.me>
+# Maintainer: h3li0p4us3 Moharami <h3li0p4us3 at proton dot me>
 
 pkgname=dnschanger-desktop
-pkgver=2.1.11
+pkgver=2.1.12
 pkgrel=1
 _electronversion=23
 pkgdesc="DNS Changer for Windows, Mac and Linux operating systems"
@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/DnsChanger/dnsChanger-d
         'target.patch'
         'dnschanger.sh'
         'dnschanger.desktop')
-sha256sums=('3743f8bb349d24f138a225d7042d6a89326953b94d6edf03cd903601df4eb24d'
+sha256sums=('63469e4b887171322f77ce4dcdc3838a71696d61769a78d079cb8ec98138495f'
             '7f2c3505459ad37f493426d6be90b9befe017efacb18dafc332654eaf2a3d440'
             '7502440862c3320ee8e3c3a6ce741adaf852cef337f366c55f67a0fe237a4500'
             'eae9227511b3714910b9dffb7986a0dbdfebe33f70898c96055bb40314e6c206')
