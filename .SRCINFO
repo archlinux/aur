@@ -1,0 +1,16 @@
+pkgbase = nghttp3
+	pkgdesc = HTTP/3 library written in C
+	pkgver = 1.1.0
+	pkgrel = 0
+	url = https://github.com/ngtcp2/nghttp3
+	arch = x86_64
+	license = MIT
+	checkdepends = cunit
+	makedepends = git
+	provides = nghttp3
+	provides = libnghttp3.so
+	conflicts = nghttp3
+	source = git+https://github.com/ngtcp2/nghttp3#v1.1.0
+	md5sums = SKIP
+
+pkgname = nghttp3
