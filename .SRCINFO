@@ -1,6 +1,6 @@
 pkgbase = bigtime
 	pkgdesc = Customizable clock for the terminal
-	pkgver = 2.4.9.1
+	pkgver = 2.4.9.2
 	pkgrel = 1
 	url = https://github.com/teegre/bigtime
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = bigtime
 	depends = libpulse
 	depends = libnotify
 	depends = ncurses
-	source = https://github.com/teegre/bigtime/archive/2.4.9.1.tar.gz
-	sha256sums = 274d567e717ae522cadd3dbd31c0253e08b28ab8337c3ea515454740d6b18a05
+	source = https://github.com/teegre/bigtime/archive/2.4.9.2.tar.gz
+	sha256sums = 1a56efde9c60a902af0fed4a9322ec1d89b7c79621bd4bc2ab1aad368fb0250e
 
 pkgname = bigtime
