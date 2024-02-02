@@ -3,7 +3,7 @@
 
 pkgname=python-branca
 _pkgname=branca
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Generate html+js with Python."
 arch=('any')
@@ -13,8 +13,8 @@ checkdepends=('jupyter-nbconvert' 'python-nose' 'python-selenium' 'geckodriver')
 depends=('python' 'python-jinja' 'python-pandas' 'python-numpy')
 makedepends=('python-setuptools')
 options=(!emptydirs)
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/4e/\
-e7/9b78e6f307f8450396081413771c0c0ddccb9ac9e38cad83fbc128428353/branca-0.7.0.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/90/\
+b4/e7d37c37da564f44214d89d3616e28d46a77d7a9398a07de7e35f99504c1/branca-0.7.1.tar.gz")
 #:https://github.com/python-visualization/$_pkgname/archive/refs/tags/v$pkgver.tar.gz
 
 check() {
@@ -32,5 +32,5 @@ package() {
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 	install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
-md5sums=('2273593da514a130a30134aef9c5174a')
-sha256sums=('503ccb589a9ee9464cb7b5b17e5ffd8d5082c5c28624197f58f20d4d377a68bb')
+md5sums=('d52518650fd52e4451e46b999874c961')
+sha256sums=('e6b6f37a37bc0abffd960c68c045a7fe025d628eff87fedf6ab6ca814812110c')
