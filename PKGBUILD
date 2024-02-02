@@ -20,8 +20,10 @@ depends=(
     gcc-libs
     glibc
     glm
+    hwdata
     libcap
     libdrm
+    libinput
     libpipewire-0.3.so
     libvulkan.so
     libx11
@@ -36,13 +38,17 @@ depends=(
     libxres
     libxtst
     libxxf86vm
+    seatd
     sdl2
     vulkan-icd-loader
     wayland
+    xcb-util-wm
+    xcb-util-errors
     xorg-server-xwayland
 )
 makedepends=(
     benchmark
+    cmake
     git
     glslang
     meson
