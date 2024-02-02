@@ -2,16 +2,16 @@
 _base=npx
 pkgname=python-${_base}
 pkgdesc="Some useful extensions for NumPy"
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
-arch=('x86_64')
-url="https://github.com/nschloe/${_base}"
-license=('custom:BSD-3-clause')
+arch=(any)
+url="https://github.com/sigma-py/${_base}"
+license=(BSD-3-Clause)
 depends=(python-numpy)
-makedepends=(python-build python-flit-core python-installer)
+makedepends=(python-build python-setuptools python-installer python-wheel)
 checkdepends=(python-pytest-codeblocks)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('c2168c17134e7415dd6bc9ab86475ca6e9bb3c9797b68d407ff4be6177ae4e696d621188f6410d7d636e15f2ed4a45c74884d7f7b128f6f159555e58a00727a6')
+sha512sums=('f15b206a27426e3dfadc44b945a36919d926e4bdf52b0cf2c5e20c7153157401bb58d026ae7b0f445a77915623b5770a48456a1b4e24cee1e3c0cd4459179e6d')
 
 build() {
   cd ${_base}-${pkgver}
