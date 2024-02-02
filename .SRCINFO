@@ -1,12 +1,13 @@
 pkgbase = python-virtualenvwrapper
 	pkgdesc = Extensions to Ian Bicking's virtualenv tool
 	pkgver = 6.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://virtualenvwrapper.readthedocs.io/
 	arch = any
 	license = MIT
 	makedepends = python-pbr
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	depends = python-virtualenv
 	depends = python-virtualenv-clone
 	depends = python-stevedore
