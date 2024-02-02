@@ -15,8 +15,11 @@ pkgbase="${_py}-${_pkg}"
 pkgname=(
   "${pkgbase}"
 )
-_gitcommit=ed738e842d2fbdf2d6459e39267a633c4a9b2f5d
-pkgver=1.1.0
+# 1.1.0
+_gitcommit="ed738e842d2fbdf2d6459e39267a633c4a9b2f5d"
+# 1.0.9
+_gitcommit="e61745a6b7add50d380cfd7d3883dd6c62fc2c71"
+pkgver=1.0.9
 pkgrel=1
 _pkgdesc=(
   'Generic-purpose lossless'
@@ -66,24 +69,19 @@ pkgver() {
 }
 
 build() {
+  local \
+    _cflags=()
+  _cflags=(
+    "-Wno-register"
+    "${CFLAGS}"
+  )
   cd \
     "${_pkg}"
   ls
-  "${_py}" \
-    setup.py \
-    build ||
-  "${_py}" \
-    -m \
-    wheel \
-    build || \
-  "${_py}" \
-    -m \
-      wheel \
-      pack
-    # -m \
-    #   build \
-    # --wheel \
-    # --no-isolation
+  CFLAGS="${_cflags[*]}" \
+    "${_py}" \
+      setup.py \
+        build
 }
 
 check() {
@@ -115,9 +113,6 @@ package_python2-brotli() {
     setup.py \
       install \
         --root="${pkgdir}"
-    # -m installer \
-    #   --destdir="$pkgdir" \
-    #   dist/*.whl
   install \
     -Dm \
       644 \
