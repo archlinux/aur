@@ -4,7 +4,7 @@ pkgname=rubick
 pkgver=4.2.1
 _electronversion=26
 _nodeversion=16
-pkgrel=1
+pkgrel=2
 pkgdesc="Electron based open source toolbox, free integration of rich plug-ins. 基于 electron 的开源工具箱，自由集成丰富插件。"
 arch=('x86_64')
 url="https://rubick.vip/"
@@ -27,11 +27,11 @@ makedepends=(
 	'git'
 )
 source=(
-	"${pkgname}::git+${_ghurl}.git#tag=v${pkgver}"
+	"${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
 	"${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -41,32 +41,35 @@ _ensure_local_nvm() {
 build() {
 	sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
 	_ensure_local_nvm
 	gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${pkgname}.git"
 	export npm_config_build_from_source=true
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+	export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
 	export ELECTRONVERSION="${_electronversion}"
+	export npm_config_disturl=https://electronjs.org/headers
+	HOME="${srcdir}/.electron-gyp"
 	sed -e '5i\  "homepage": "https://github.com/rubickCenter/rubick",' \
 		-e '5i\  "repository": "https://github.com/rubickCenter/rubick",' \
 		-i package.json
 	sed -e "42,98d" -e "s|deb|AppImage|g" -i vue.config.js
 	yarn install --cache-folder "${srcdir}/.yarn_cache"
 	yarn global add xvfb-maybe @vue/cli
-	cd "${srcdir}/${pkgname}/feature"
+	cd "${srcdir}/${pkgname}.git/feature"
 	yarn install --cache-folder "${srcdir}/.yarn_cache"
-	yarn build
-	cd "${srcdir}/${pkgname}"
-	npm run release
+	yarn run build
+	cd "${srcdir}/${pkgname}.git"
+	yarn run release
 }
 package() {
 	install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}/build/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
-	cp -r "${srcdir}/${pkgname}/build/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}/public/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}.git/build/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
+	cp -r "${srcdir}/${pkgname}.git/build/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}.git/${pkgname}/public/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
