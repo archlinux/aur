@@ -2,7 +2,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=ruff-lsp
-pkgver=0.0.50
+pkgver=0.0.51
 pkgrel=1
 pkgdesc='Language Server Protocol implementation for Ruff'
 arch=('any')
