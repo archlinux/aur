@@ -6,7 +6,7 @@ pkgbase = warpgui-bin
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = gtk2
-	depends = cloudflare-warp
+	depends = cloudflare-warp-bin
 	provides = warpgui=2.0
 	conflicts = warpgui
 	source = warpgui-2.0.rpm::https://github.com/AKotov-dev/warpgui/releases/download/v2.0/warpgui-2.0-0.mrx9.x86_64.rpm
