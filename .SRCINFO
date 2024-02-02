@@ -1,6 +1,6 @@
 pkgbase = lua-timerwheel
 	pkgdesc = File System Library for the Lua Programming Language
-	pkgver = 0.2.0
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://tieske.github.io/timerwheel.lua/
 	arch = x86_64
@@ -9,8 +9,9 @@ pkgbase = lua-timerwheel
 	makedepends = lua51
 	makedepends = lua52
 	makedepends = lua53
-	source = lua-timerwheel-0.2.0.tar.gz::https://github.com/Tieske/timerwheel.lua/archive/refs/tags/0.2.0.tar.gz
-	sha256sums = b81250f0ea0e2eebecd995180906c883e0d70f3f43aef3b7bfd24b9cd5f77a22
+	makedepends = luarocks
+	source = lua-timerwheel-1.0.2.tar.gz::https://github.com/Tieske/timerwheel.lua/archive/refs/tags/1.0.2.tar.gz
+	sha256sums = a3d0159bcf996f3c73ac20d6168d2aaedcd6877df8f7ae6a1994010ad8492784
 
 pkgname = lua-timerwheel
 	pkgdesc = Timer wheel implementation for Lua 5.4
