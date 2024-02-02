@@ -1,0 +1,18 @@
+pkgbase = python-certsrv
+	pkgdesc = A Python client for the Microsoft AD Certificate Services web page
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/magnuswatn/certsrv
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	depends = python
+	depends = python-requests
+	depends = python-requests-ntlm
+	source = https://files.pythonhosted.org/packages/b2/60/dd93f1bf29aeb5b21ee95c0706276ba420253275ba17c9cd1d6636fad276/certsrv-2.1.1.tar.gz
+	sha512sums = 9b886c2bcd4a07f8d2779b2354f9ef1f514117b30f4545147f9a6f968ed7e186695030452d4896e3dfbe37c5ab9717d8939deae6fff2507f9db0102e4c4a9b20
+
+pkgname = python-certsrv
