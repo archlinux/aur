@@ -1,12 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=animos-appimage
 pkgver=0.5.8
-pkgrel=4
+_electronversion=22
+pkgrel=5
 pkgdesc="Clean and minimal Anime-streaming desktop application without any ads."
 arch=("x86_64")
 url="https://animos.cf/"
 _ghurl="https://github.com/keerthivasansa/animos"
-license=('custom')
+license=('LicenseRef-custom')
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
 depends=(
@@ -24,7 +25,7 @@ sha256sums=('91c6ff65c927a1e8d5955789eb716ee52882baabc5ee8f69d99c2c702eadff0e')
 build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
+    sed "s|AppRun|${pkgname%-appimage}|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"

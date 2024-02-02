@@ -1,10 +1,10 @@
 pkgbase = animos-appimage
 	pkgdesc = Clean and minimal Anime-streaming desktop application without any ads.
 	pkgver = 0.5.8
-	pkgrel = 4
+	pkgrel = 5
 	url = https://animos.cf/
 	arch = x86_64
-	license = custom
+	license = LicenseRef-custom
 	makedepends = squashfuse
 	depends = hicolor-icon-theme
 	provides = animos=0.5.8
