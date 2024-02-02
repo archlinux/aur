@@ -1,7 +1,7 @@
 pkgbase = ueberzugpp-nogl
 	pkgdesc = Command line util which allows to display images in combination with X11 written in C++ (without OpenGL support)
 	pkgver = 2.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jstkdng/ueberzugpp
 	arch = x86_64
 	arch = aarch64
