@@ -1,0 +1,17 @@
+pkgbase = sasl-xoauth2-git
+	pkgdesc = SASL plugin that enables client-side use of OAuth 2.0
+	pkgver = r200.41b27db
+	pkgrel = 1
+	url = https://github.com/tarickb/sasl-xoauth2
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = cmake>=3
+	depends = libsasl
+	depends = python-msal
+	provides = sasl-xoauth2
+	conflicts = sasl-xoauth2
+	source = git+https://github.com/tarickb/sasl-xoauth2.git
+	sha256sums = SKIP
+
+pkgname = sasl-xoauth2-git
