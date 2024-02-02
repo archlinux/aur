@@ -3,7 +3,7 @@ pkgname=rats-search-bin
 _pkgname="Rats on The Boat"
 pkgver=1.11.0
 _electronversion=24
-pkgrel=5
+pkgrel=6
 pkgdesc="BitTorrent P2P multi-platform search engine for Desktop and Web servers with integrated torrent client."
 arch=('x86_64')
 url="https://github.com/DEgITx/rats-search"
@@ -11,29 +11,10 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'libxcb'
-    'libxkbcommon'
-    'lib32-glibc'
     'nspr'
-    'at-spi2-core'
-    'libxfixes'
     'nss'
-    'libxcomposite'
-    'lib32-gcc-libs'
-    'lib32-zlib'
-    'libcups'
-    'expat'
     'gtk3'
-    'libxext'
-    'java-runtime'
-    'pango'
-    'mesa'
-    'libxdamage'
     'alsa-lib'
-    'cairo'
-    'libdrm'
-    'libx11'
-    'libxrandr'
     'openssl-1.1'
 )
 source=(
@@ -46,6 +27,7 @@ build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\" %U|${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    rm -rf "${srcdir}/opt/${_pkgname}/ia32"
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-bin}",usr/bin}
