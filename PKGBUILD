@@ -6,7 +6,7 @@
 pkgname=generator
 pkgver=0.35_cbiere_r4
 _realver=0.35-cbiere-r4
-pkgrel=6
+pkgrel=7
 pkgdesc="A Sega Megadrive/Genesis emulator"
 arch=('i686' 'x86_64')
 url="http://www.squish.net/generator"
@@ -23,6 +23,8 @@ prepare() {
       -i ym2612/fm.c
   sed -e 's/inline void vdp_plotcell/static inline void vdp_plotcell/' \
       -i main/vdp.c
+  sed -e 's/CONTEXTMZ80 cpuz80_z80/extern CONTEXTMZ80 cpuz80_z80/' \
+      -i hdr/cpuz80.h
 }
 
 build() {

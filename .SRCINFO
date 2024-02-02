@@ -1,7 +1,7 @@
 pkgbase = generator
 	pkgdesc = A Sega Megadrive/Genesis emulator
 	pkgver = 0.35_cbiere_r4
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.squish.net/generator
 	arch = i686
 	arch = x86_64
@@ -17,4 +17,3 @@ pkgbase = generator
 	md5sums = db4142912872a3f34d6d4e3bfe693b64
 
 pkgname = generator
-
