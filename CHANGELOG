@@ -1,3 +1,9 @@
+# Changes in version 1.1.2
+
+Fixed:
+
+- Fixed tests in ntp-proto to also work outside the repository
+
 # Changes in version 1.1.1
 
 Added:
