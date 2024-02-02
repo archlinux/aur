@@ -1,8 +1,8 @@
 # Maintainer: RifsxD <33044977+rifsxd at users dot noreply dot github dot com>
 
 pkgname=blazefetch
-pkgver=2.6.4
-pkgrel=2
+pkgver=2.7.6
+pkgrel=1
 pkgdesc='A lite & blazing fast system info fetch utility'
 arch=('any')
 url='https://github.com/rifsxd/blazefetch'
@@ -10,7 +10,7 @@ license=('MIT')
 provides=('blazefetch')
 conflicts=('blazefetch')
 depends=('libx11' 'networkmanager' 'playerctl')
-makedepends=('make' 'gcc')
+makedepends=('cmake' 'ninja' 'gcc')
 source=("git+$url.git")
 sha256sums=('SKIP')
 validpgpkeys=(
@@ -18,12 +18,15 @@ validpgpkeys=(
 )
 
 build() {
-  cd "$pkgname/src"
-  make clean build
+  	cd "$pkgname/src"
+	mkdir build
+  	cd build 
+  	cmake -G Ninja ..
+  	ninja
 }
 
 package() {
 	cd "$pkgname"
-	install -D "src/build/$pkgname" -t "$pkgdir/usr/bin/"
+	install -D "src/build/bin/$pkgname" -t "$pkgdir/usr/bin/"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
