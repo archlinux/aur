@@ -1,92 +1,85 @@
-# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# PKGBUILD based on the official Arch gamescope PKGBUILD
+# Maintainer - Sid Pranjale <sidpranjale127@protonmail.com>
+
+# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Giancarlo Razzolini <grazzolini@archlinux.org>
+# Contributor: Samuel "scrufulufugus" Monson <smonson@irbash.net>
+# Contributor: PedroHLC <root@pedrohlc.com>
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.13.19.r25.g58509f0
+pkgver=3.14.0.r6.g9e46c89
 pkgrel=1
-pkgdesc="Micro-compositor formerly known as steamcompmgr"
+pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
-url="https://github.com/ValveSoftware/gamescope"
-license=("custom:BSD-2-Clause")
+url=https://github.com/ValveSoftware/gamescope
+license=(BSD)
 depends=(
-    # gamescope
-    "libavif" "libxcomposite" "libxtst" "libxres" "sdl2" "pipewire" "libxmu" "glm" "benchmark"
-    # wlroots
-    "libdrm" "libxkbcommon" "libinput" "pixman" "xorg-xwayland" "xcb-util-renderutil" "xcb-util-wm" "xcb-util-errors" "seatd"
+    gcc-libs
+    glibc
+    glm
+    libcap
+    libdrm
+    libpipewire-0.3.so
+    libvulkan.so
+    libx11
+    libxcb
+    libxcomposite
+    libxdamage
+    libxext
+    libxfixes
+    libxkbcommon
+    libxmu
+    libxrender
+    libxres
+    libxtst
+    libxxf86vm
+    sdl2
+    vulkan-icd-loader
+    wayland
+    xorg-server-xwayland
 )
-makedepends=("git" "meson" "ninja" "vulkan-headers" "glslang" "wayland-protocols" "cmake"
+makedepends=(
+    benchmark
+    git
+    glslang
+    meson
+    ninja
+    vulkan-headers
+    wayland-protocols
 )
-provides=($_pkgname "steamcompmgr")
-conflicts=($_pkgname "steamcompmgr")
-source=("$_pkgname::git+https://github.com/ValveSoftware/gamescope.git"
-        "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
-        "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
-        "git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git"
-        "git+https://github.com/ValveSoftware/openvr.git"
-        "git+https://github.com/Joshua-Ashton/vkroots.git"
-        "git+https://github.com/nothings/stb.git")
-sha512sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+source=(
+    git+https://github.com/ValveSoftware/gamescope.git
+)
+b2sums=('SKIP')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
+prepare() {
+    cd $_pkgname
+    git submodule update --init --recursive --depth=1
+    git -c protocol.file.allow=always submodule update
+}
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-
+    cd $_pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-    cd "$srcdir/$_pkgname"
-
-    for src in "${source[@]}"; do
-        src="${src%%::*}"
-        src="${src##*/}"
-        [[ $src = *.patch ]] || continue
-        echo "Applying patch $src..."
-        git apply "../$src"
-    done
-
-    git submodule init
-    git config submodule.subprojects/wlroots.url "$srcdir/wlroots"
-    git config submodule.subprojects/libliftoff.url "$srcdir/libliftoff"
-    git config submodule.subprojects/libdisplay-info.url "$srcdir/libdisplay-info"
-    git config submodule.subprojects/openvr.url "$srcdir/openvr"
-    git config submodule.subprojects/vkroots.url "$srcdir/vkroots"
-    git -c protocol.file.allow=always submodule update
-
-    # make stb.wrap use our local clone
-    sed -i "s|https://github.com/nothings/stb.git|$srcdir/stb|" "subprojects/stb.wrap"
-    meson subprojects download
-}
-
 build() {
-    cd "${_pkgname}"
-
-    export LDFLAGS="$LDFLAGS -lrt"
-
-    arch-meson "$srcdir/$_pkgname" build \
-        --buildtype release \
-        --force-fallback-for=wlroots,libliftoff,stb \
-        -Dpipewire=enabled \
-        -Dwlroots:backends=drm,libinput,x11 \
-        -Dwlroots:renderers=gles2,vulkan
-
+    cd $_pkgname
+    meson build \
+        -Dforce_fallback_for=stb \
+        -Dpipewire=enabled
     ninja -C build
 }
 
 package() {
-    cd "${_pkgname}"
-
-    meson install -C build --skip-subprojects --destdir "$pkgdir"
-
-    cd "$srcdir/$_pkgname"
-
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+    ls
+    cd $_pkgname
+    DESTDIR="${pkgdir}" meson install -C build \
+        --skip-subprojects
+    install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/gamescope/
 }
 
+# vim: ts=2 sw=2 et:
