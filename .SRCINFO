@@ -1,0 +1,53 @@
+pkgbase = hhd-git
+	pkgdesc = Handheld Daemon. A tool for managing the quirks of handheld devices. Latest git checkout.
+	pkgver = 1.1.4+16.r531.20240201.c980f91
+	pkgrel = 1
+	url = https://github.com/hhd-dev/hhd
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	source = hhd::git+https://github.com/hhd-dev/hhd.git
+	sha256sums = SKIP
+
+pkgname = hhd-git
+	depends = hhd-license-git=1.1.4+16.r531.20240201.c980f91
+	depends = python
+	depends = python-evdev
+	depends = python-rich
+	depends = python-yaml
+	optdepends = hhd-doc: For documentation.
+	optdepends = hhd-user: allows running hhd as a user service.
+	optdepends = hhd-systemd: For automatic startup at system boot.
+	provides = hhd=1.1.4+16.r531.20240201.c980f91
+	conflicts = hhd
+
+pkgname = hhd-systemd-git
+	pkgdesc = Systemd service file for 'hhd'. Latest git checkout.
+	arch = any
+	depends = hhd
+	depends = hhd-license-git=1.1.4+16.r531.20240201.c980f91
+	depends = python-setuptools
+	optdepends = systemd: To make use of this systemd service.
+	provides = hhd-systemd=1.1.4+16.r531.20240201.c980f91
+	conflicts = hhd-systemd
+
+pkgname = hhd-license-git
+	pkgdesc = Common license file for 'hhd-git' and 'hhd-systemd-git'.
+	arch = any
+	depends = 
+	optdepends = hhd-git=1.1.4+16.r531.20240201.c980f91: The software this license file is for.
+	optdepends = hhd-systemd-git=1.1.4+16.r531.20240201.c980f91: The code this license file is for.
+	provides = 
+	conflicts = 
+
+pkgname = hhd-doc-git
+	pkgdesc = Documentation for 'hhd'.
+	arch = any
+	depends = 
+	optdepends = hhd: The software this Documentation is for.
+	provides = hhd-doc=1.1.4+16.r531.20240201.c980f91
+	conflicts = hhd-doc
