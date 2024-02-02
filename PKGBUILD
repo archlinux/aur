@@ -2,7 +2,7 @@
 
 pkgname=dump-shm
 pkgrel=1
-pkgver=1.1.0
+pkgver=1.2.0
 pkgdesc="dump content of a shared memory to stdout"
 url="https://github.com/NikolasK-source/dump_shm"
 license=('MIT')

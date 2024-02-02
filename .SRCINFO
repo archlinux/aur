@@ -1,6 +1,6 @@
 pkgbase = dump-shm
 	pkgdesc = dump content of a shared memory to stdout
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/NikolasK-source/dump_shm
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = dump-shm
 	license = MIT
 	makedepends = cmake
 	makedepends = git
-	source = git+https://github.com/NikolasK-source/dump_shm.git#tag=v1.1.0
+	source = git+https://github.com/NikolasK-source/dump_shm.git#tag=v1.2.0
 	sha256sums = SKIP
 
 pkgname = dump-shm
