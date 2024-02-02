@@ -4,8 +4,8 @@
 
 pkgbase=ntsync
 pkgname=(ntsync-dkms ntsync-header ntsync-common)
-pkgver=6.8
-pkgrel=8
+pkgver=6.8.2
+pkgrel=1
 pkgdesc="NT synchronization primitive driver"
 arch=(x86_64)
 url='https://repo.or.cz/linux/zf.git/shortlog/refs/heads/ntsync5'
@@ -21,7 +21,7 @@ sha256sums=('acc5c24f2a769e83ccdad55d02b82aa2d21b240c2b1ca630314e07b4ede1c4b2'
             '7b47801aa0bec3395a2509efebe5cea005994fca7868130d4b6fec3bb8738f71'
             'c19771ae86e7df179f6b2f4a2837d3f0cbbbba7b32baef41a3c27120c760d78f'
             'ce5221146a19206ba043211db8f27143a82f9224c0aff24a0b584b7268fcb994'
-            'dc35852676cf71afa2350a075bc1209ab7e3aa9c71a450e94969d411c1f5073c'
+            '834a7b4c9a67a44f2cf593bf259918ea12b0c0eeee7862ed4f9fd268076171cf'
             'e81694fa952711f1b74f02b6a64ac1e90c229f93c740e4f97df5692f3af99609')
 
 prepare() {
@@ -35,7 +35,7 @@ package_ntsync-dkms() {
         'ntsync-header: Allow wine to be compiled with ntsync support'
     )
     provides=(NTSYNC-MODULE)
-    conflicts=(ntsync WINESYNC-MODULE)
+    conflicts=(ntsync)
 
     install -Dm644 "$srcdir/Makefile" "$pkgdir/usr/src/$pkgbase-$pkgver/Makefile"
     install -Dm644 "$srcdir/ntsync.h-$_commit" "$pkgdir/usr/src/$pkgbase-$pkgver/include/uapi/linux/ntsync.h"

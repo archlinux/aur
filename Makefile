@@ -3,7 +3,7 @@ KDIR ?= /lib/modules/$(KERNELRELEASE)/build
 PWD ?= $(shell pwd)
 
 obj-m := drivers/misc/ntsync.o
-ccflags-y := -I$(src)/include -DNTSYNC_MINOR=243 -Werror
+ccflags-y := -I$(src)/include -Werror
 
 default: modules
 install: modules_install
