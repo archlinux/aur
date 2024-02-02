@@ -1,24 +1,26 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pastecs
-_pkgver=1.3.21
+_pkgver=1.4.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=1
 pkgdesc="Package for Analysis of Space-Time Ecological Series"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL2)
+license=('GPL-2.0-only')
 depends=(
   r
 )
 optdepends=(
   r-covr
+  r-knitr
+  r-rmarkdown
   r-svunit
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('678319e13833c913f57229c5157efc68')
-b2sums=('2a36b3a8b9fc1dd8ab2d0637111bba52c5babb42615f15105eebf15d5f92c724132188e4bee284dfd8d5a6e5a2855660478d5f5803132c0b37ecfb496aa0e760')
+md5sums=('9ae8c1a1da977897a3688f262bbc13c3')
+b2sums=('fc318bfa9e1aa48c08ddd393ab2aacbab643da1014e6928996fec1ac5acecdb835464ef2f283faa9ef1db4e855f6e8a2073d2f5dcf0d68905452a72e6a70551e')
 
 build() {
   mkdir build
