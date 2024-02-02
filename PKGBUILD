@@ -63,9 +63,8 @@ source=(
   "git+https://github.com/hyprwm/hyprland-protocols.git"
   "git+https://github.com/canihavesomecoffee/udis86.git"
   "git+https://github.com/wolfpld/tracy.git"
-  "wlroots-meson-build.patch")
+)
 b2sums=(
-  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -92,7 +91,7 @@ prepare() {
   # Pick pull requests from github using `pick_mr <pull request number>`.
 
   git -C subprojects/wlroots reset --hard
-  patch -d subprojects/wlroots -Np1 < ../wlroots-meson-build.patch
+  sed -E -i -e "s/(soversion = .*$)/soversion = 13032/g" subprojects/wlroots/meson.build
 }
 
 pkgver() {
@@ -114,7 +113,6 @@ build() {
     -D           xwayland=enabled \
     -D           systemd=enabled
 
-  ln -sf wlroots build/subprojects/wlroots/include/wlr
   meson compile -C build
 }
 
@@ -124,13 +122,14 @@ package() {
   meson install -C build \
     --destdir "$pkgdir" \
     --skip-subprojects hyprland-protocols
+  mv "$pkgdir/usr/include/wlr" "$pkgdir/usr/include/hyprland/wlroots"
 
-  rm -rf "$pkgdir/usr/include/hyprland/wlroots/wlr"
-  ln -sf . "$pkgdir/usr/include/hyprland/wlroots/wlr"
   # resolve conflicts with system wlr
   rm -f "$pkgdir/usr/lib/libwlroots.so"
   rm -rf "$pkgdir/usr/lib/pkgconfig"
+
   # FIXME: remove after xdg-desktop-portal-hyprland disowns hyprland-portals.conf
+
   rm -rf "$pkgdir/usr/share/xdg-desktop-portal"
 
   # license
