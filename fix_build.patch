@@ -10,3 +10,14 @@ index 56a12f9..d2a467f 100644
  
  #ifdef _WIN32
  #define CAST_FILENAME (wchar_t const *)
+diff --git a/cmake/FindTAGLIB.cmake b/cmake/FindTAGLIB.cmake
+index 5572601..c9fbd25 100644
+--- a/cmake/FindTAGLIB.cmake
++++ b/cmake/FindTAGLIB.cmake
+@@ -1,5 +1,5 @@
+ find_package(PkgConfig)
+-pkg_check_modules(PC_TAGLIB QUIET taglib)
++pkg_check_modules(PC_TAGLIB taglib<2)
+ 
+ find_path(TAGLIB_INCLUDE_DIR taglib.h PATH_SUFFIXES taglib
+           HINTS ${PC_TAGLIB_INCLUDEDIR} ${PC_TAGLIB_INCLUDE_DIRS})
