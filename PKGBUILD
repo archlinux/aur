@@ -17,7 +17,8 @@ source=(git+https://gitlab.demlabs.net/cellframe/$_pkgname.git#commit=e0be2db8b2
 		cellframe-node.logrotate
 		cellframe-node-logrotate.service
 		cellframe-node-logrotate.timer
-		cellframe-node.service)
+		cellframe-node.service
+		cellframe-node.asan.service)
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
@@ -25,7 +26,8 @@ md5sums=('SKIP'
          '6a52220e0b285dc9e803082f36897ad4'
          '7c1087eea7336d99c4af55119673b009'
          '47edb0d55d537e72f3de07ec6a72ea78'
-         '72472d529b38f06a78f37ac659b18d65')
+         '72472d529b38f06a78f37ac659b18d65'
+         '804e1606d2598264377c166388ec4360')
 install=$_pkgname.install
 conflicts=(cellframe-dashboard cellframe-wallet cellframe-node)
 options=(!strip)
