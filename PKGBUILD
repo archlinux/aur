@@ -2,7 +2,7 @@
 # Submitter:  not_anonymous <nmlibertarian@gmail.com>
 
 pkgname=fdcurses
-pkgver=23.3.1
+pkgver=24.1.27
 pkgrel=1
 pkgdesc="Ham Radio - ARRL Field Day logger CURSES"
 license=('GPL')
@@ -32,7 +32,7 @@ package() {
 	install -Dm755 $pkgname/data/k6gte-$pkgname.desktop $pkgdir/usr/share/applications/k6gte-$pkgname.desktop
 	install -Dm755 $pkgname/data/k6gte.$pkgname.svg $pkgdir/usr/share/pixmaps/k6gte-$pkgname.svg
 }
-md5sums=('78dca7839c7752df3550437933e5419e'
+md5sums=('b85b5579ab942564c3b48271e837d30c'
          'df5c242a0f63381781a4335080556af1')
-sha256sums=('f1546a5b4d2cb6c1c419e85a8253c1ce1e2e42eded1c8e2c435e88eff0a19355'
+sha256sums=('09ba4b41e2dbe29498c12c04eb2deff628adffdc6366d0c02b63d1e9e9617d23'
             '413e0fdf4bf367ff563ffb91e3aa357a87d5c8a9784edcdeeea53fccf6ee0094')
