@@ -3,12 +3,12 @@ pkgname=geekeditor-bin
 _pkgname=GeekEditor
 pkgver=1.4.9
 _electronversion=11
-pkgrel=7
+pkgrel=8
 pkgdesc="Immersive efficiency writing editor.极客编辑器是一款所见即所得(WYSIWYG)富文本沉浸式写作排版编辑器,注重高效创作,可多开文档编辑,同时支持Markdown语法输入及一键排版"
 arch=('x86_64')
-url=https://www.geekeditor.com/
+url="https://www.geekeditor.com/"
 _ghurl="https://github.com/geekeditor/geekeditor-releases"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -21,11 +21,11 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('99c69e953535adffd4edda3932d3f12acb206f104de3dddb15a04b656fda1a1a'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${_pkgname}|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g;s|Writing Editor|Office|g" \
