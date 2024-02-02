@@ -1,0 +1,5 @@
+/pkg/
+/src/
+/ugs-platform-app-*.zip
+/ugsplatform.svg
+/ugs-platform-bin-*.pkg.tar.zst
