@@ -1,6 +1,6 @@
 pkgbase = fermyon-spin
 	pkgdesc = an open source framework for building and running fast, secure, and composable cloud microservices with WebAssembly
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/fermyon/spin
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = fermyon-spin
 	depends = gcc-libs
 	depends = zlib
 	depends = openssl
-	source = spin-2.1.0.tar.gz::https://github.com/fermyon/spin/archive/v2.1.0.tar.gz
-	sha256sums = c8b2a8b12478128bf11feb299472ea7a850008b7bfb993d5907fea92bceb17dd
+	source = spin-2.2.0.tar.gz::https://github.com/fermyon/spin/archive/v2.2.0.tar.gz
+	sha256sums = 2d3c2ea28827ad386dd0f9847fed61f00620501ae84d79100ee84d0dd9890cdc
 
 pkgname = fermyon-spin
