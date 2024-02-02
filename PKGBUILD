@@ -3,7 +3,7 @@
 
 pkgname=python313
 pkgver=3.13.0a3
-pkgrel=4
+pkgrel=5
 _pyver=3.13.0
 _pybasever=3.13
 _pymajver=3
@@ -35,7 +35,7 @@ prepare() {
 build() {
   cd "${srcdir}/Python-${pkgver}"
 
-  CFLAGS="${CFLAGS} -fno-semantic-interposition"
+  CFLAGS="${CFLAGS} -fno-semantic-interposition -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer"
   ./configure --prefix=/usr \
               --enable-shared \
               --with-computed-gotos \
