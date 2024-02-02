@@ -1,9 +1,9 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
 pkgname=obs-studio-rc
-_pkgver=30.0.2
+_pkgver=30.1.0-beta1
 pkgver=${_pkgver//-/_}
-pkgrel=5
+pkgrel=1
 epoch=7
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -119,7 +119,7 @@ sha256sums=(
   "SKIP"
   "SKIP"
   "f4a56021a7f1c564f95b588d7c09b60a89efa2c1954c8a418cf6320b5a818542"
-  "874456110d17d2efe02f8a1f47f58c877922d8bdab6435df334b9e6460b26bf8"
+  "82b14439697b5c5947117afa1b973bad7ddd9ee2f09e5d1ac56a96d10e01c6b1"
 )
 
 if [[ $CARCH == 'x86_64' ]]; then
@@ -149,11 +149,11 @@ build() {
     -DCEF_ROOT_DIR=/opt/cef-obs \
     -Wno-dev \
     -DCALM_DEPRECATION=ON \
-    -DOBS_VERSION_OVERRIDE="$_pkgver"
-#    -DBETA="$_pkgver"
+    -DBETA="$_pkgver"
+#    -DOBS_VERSION_OVERRIDE="$_pkgver"
 #    -DRELEASE_CANDIDATE="$_pkgver"
 
-  sed -i "s|#define OBS_VERSION |#define OBS_VERSION \"$_pkgver-rc-$pkgrel\" //|" build/config/obsconfig.h
+  sed -i "s|OBS_VERSION =|OBS_VERSION = \"$_pkgver-rc-$pkgrel\"; //|" build/libobs/obsversion.c
 
   cmake --build build
 }
