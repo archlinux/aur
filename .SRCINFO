@@ -1,6 +1,6 @@
 pkgbase = uhub-git
 	pkgdesc = A hub for the ADC network. (GIT Version)
-	pkgver = 0.5.0.64.g78a7039
+	pkgver = 0.5.0.66.g35d8088
 	pkgrel = 1
 	url = http://www.uhub.org
 	install = uhub-git.install
@@ -26,4 +26,3 @@ pkgbase = uhub-git
 	sha256sums = 94628376878d6b91c55deec62aad59ddfd9dd0d87dd4552aeeb202875f340a09
 
 pkgname = uhub-git
-

@@ -1,36 +1,41 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=uhub-git
-pkgver=0.5.0.64.g78a7039
+pkgver=0.5.0.66.g35d8088
 pkgrel=1
 pkgdesc="A hub for the ADC network. (GIT Version)"
 arch=('x86_64')
 license=('LGPL')
 url='http://www.uhub.org'
-depends=('libsystemd.so'
-         'sqlite'
-         )
-makedepends=('cmake'
-             'git'
-             )
+depends=(
+  'libsystemd.so'
+  'sqlite'
+)
+makedepends=(
+  'cmake'
+  'git'
+)
 optdepends=('python: scripts')
-source=('git+https://github.com/janvidar/uhub.git'
-        'uhub.sysuser'
-        'uhub.service'
-        'uhub.tmpfiles'
-        )
-sha256sums=('SKIP'
-            'dfb3d51d95ef90e49b62cfa49d6a2cef58fb1f119f1d357f76ab1953000e5079'
-            '4bf39c6265d53e1b08385c8e339c9d7b4449637c29688b1bcd2091e5c2b6c9df'
-            '94628376878d6b91c55deec62aad59ddfd9dd0d87dd4552aeeb202875f340a09'
-            )
+source=(
+  'git+https://github.com/janvidar/uhub.git'
+  'uhub.sysuser'
+  'uhub.service'
+  'uhub.tmpfiles'
+)
+sha256sums=(
+  'SKIP'
+  'dfb3d51d95ef90e49b62cfa49d6a2cef58fb1f119f1d357f76ab1953000e5079'
+  '4bf39c6265d53e1b08385c8e339c9d7b4449637c29688b1bcd2091e5c2b6c9df'
+  '94628376878d6b91c55deec62aad59ddfd9dd0d87dd4552aeeb202875f340a09'
+)
 install=uhub-git.install
-backup=('etc/uhub/motd.txt'
-        'etc/uhub/plugins.conf'
-        'etc/uhub/rules.txt'
-        'etc/uhub/uhub.conf'
-        'etc/uhub/users.conf'
-        )
+backup=(
+  'etc/uhub/motd.txt'
+  'etc/uhub/plugins.conf'
+  'etc/uhub/rules.txt'
+  'etc/uhub/uhub.conf'
+  'etc/uhub/users.conf'
+)
 
 pkgver() {
   cd uhub
@@ -38,24 +43,22 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
   sed 's|/var/log/uhub.log|/var/log/uhub/uhub.log|g' \
     -i uhub/doc/plugins.conf \
     -i uhub/doc/init.d.RedHat/etc/logrotate.d/uhub
 }
 
 build() {
-  cd build
-  cmake ../uhub \
+  cmake -S uhub -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DSYSTEMD_SUPPORT=ON
 
-  make
+  cmake --build
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
   install -Dm644 uhub/doc/users.conf "${pkgdir}/etc/uhub/users.conf"
   touch "${pkgdir}/etc/uhub/motd.txt"
 
