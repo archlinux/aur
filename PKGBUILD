@@ -6,10 +6,10 @@ pkgver=7.5.0
 # A rebuild is needed each time boost has its version updated.
 # Note: cpprestsdk itself doesn't link with and boost library files. But
 # azure-storeage-cpp will.
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 url='https://github.com/Azure/azure-storage-cpp'
-license=('APACHE')
+license=('Apache-2.0')
 depends=(
     #'pkgconf'
     'libxml2'
