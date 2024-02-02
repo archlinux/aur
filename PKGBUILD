@@ -1,38 +1,47 @@
-# Maintainer: Joar Heimonen <joarheimonen@live.no>
-# Note: This is only an install script for Yuma123, not the actual project itself.
+# Maintainer: Pierre Baconnier <orson.ouelles@outlook.com>
+#https://wiki.archlinux.org/title/AUR_submission_guidelines
 
-pkgname=yuma123-git
+pkgname=fdispatcher-git
 pkgver=latest
 pkgrel=1
-pkgdesc="Open-source YANG API in C and CLI (yangcli) and server (netconfd)"
+pkgdesc="An easy-to-use file dispatcher based on extension"
 arch=('x86_64')
-url="https://github.com/vlvassilev/yuma123"
-license=('BSD')
-depends=('git' 'autoconf' 'automake' 'make' 'gcc')
-makedepends=('libtool') # Add libtool as a build dependency
+url="https://github.com/pbackz/fdispatcher"
+license=('MIT')
+depends=('git' 'gcc' 'cargo')
+makedepends=(cargo)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-pkgbase=yuma123-git
+pkgbase=fdispatcher-git
 
-source=("git+https://github.com/vlvassilev/yuma123")
+source=("git+https://github.com/pbackz/fdispatcher")
 
 prepare() {
-  cd "$srcdir/yuma123"
-  libtoolize
-  autoreconf -i -f
+  cd "$srcdir/fdispatcher"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "$srcdir/yuma123"
-  ./configure CFLAGS='-g -O0' CXXFLAGS='-g -O0' --prefix=/usr
-  make
+  cd "$srcdir/fdispatcher"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release
+}
+
+check() {
+  cd "$srcdir/fdispatcher"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen --all-features
 }
 
 package() {
-  cd "$srcdir/yuma123"
-  make DESTDIR="${pkgdir}" install
-  mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
+  cd "$srcdir/fdispatcher"
+  find target/release \
+        -maxdepth 1 \
+        -executable \
+        -type f \
+        -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
 }
-
 
 sha256sums=('SKIP') 
