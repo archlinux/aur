@@ -1,6 +1,6 @@
 pkgbase = ghq
 	pkgdesc = Remote repository management made easy
-	pkgver = 1.4.2
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/x-motemen/ghq
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = ghq
 	makedepends = git
 	optdepends = zsh: ghq function for zsh
 	conflicts = ghq-bin
-	source = https://github.com/x-motemen/ghq/archive/v1.4.2.tar.gz
-	sha512sums = 7f409511734e3633f6cfbc5f9833ff9e749a07279dff80eb3ea24c4d6e5665d4ffc0637867cc57f9ff23693512a078b2c7ea571ad26e379a5e9ff44e6e515f9a
+	source = https://github.com/x-motemen/ghq/archive/v1.5.0.tar.gz
+	sha512sums = b626b86bbad033252902c2f6978d767e33d51e5f5643c39daea930b65b253824ff9b777688d36bc178117bcbe40de6d2d9f3322f38ed1d195d2eacf5e15ec625
 
 pkgname = ghq
