@@ -1,6 +1,6 @@
 pkgname=gpt4all-chat
-pkgver=2.6.1
-pkgrel=2
+pkgver=2.6.2
+pkgrel=1
 pkgdesc="open-source LLM chatbots that you can run anywhere"
 arch=("x86_64")
 url="https://github.com/nomic-ai/gpt4all"
@@ -11,28 +11,23 @@ depends=(
 makedepends=("cmake" "ninja" "git" "shaderc" "vulkan-tools" "vulkan-headers")
 source=(
     "git+$url.git#tag=v$pkgver"
-    "$url/commit/b803d51586895dd046d2284de271e2074c921df5.diff"
 )
-sha256sums=('SKIP'
-            '7041fd85f831959830dd17a9b1b46cff191ddbbbb19c9fbaa686f9c4d6194f1b')
+sha256sums=('SKIP')
 
 prepare() {
     cd "$srcdir/gpt4all"
     git submodule update --init --recursive
-    ###
-    #/build/gpt4all-chat/src/gpt4all/gpt4all-chat/llm.cpp: In member function ‘bool LLM::checkForUpdates() const’:
-    #/build/gpt4all-chat/src/gpt4all/gpt4all-chat/llm.cpp:53:5: error: ‘Network’ has not been declared
-    #53 |     Network::globalInstance()->sendCheckForUpdates();
-    #   |     ^~~~~~~
-    ###
-    git apply "$srcdir/b803d51586895dd046d2284de271e2074c921df5.diff"
 }
 build() {
     cmake -B build-chat -S "$srcdir/gpt4all/gpt4all-chat" -G Ninja \
-        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_BUILD_TYPE=None \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DKOMPUTE_OPT_BUILD_SHADERS=ON \
         -DKOMPUTE_OPT_DISABLE_VULKAN_VERSION_CHECK=ON \
         -DKOMPUTE_OPT_USE_BUILT_IN_FMT=OFF \
-        -DKOMPUTE_OPT_USE_BUILT_IN_VULKAN_HEADER=OFF
+        -DKOMPUTE_OPT_USE_BUILT_IN_VULKAN_HEADER=OFF \
+        -DKOMPUTE_OPT_USE_BUILT_IN_SPDLOG=OFF \
+        -Wno-dev 
     cmake --build build-chat
 }
 package_gpt4all-chat() {
@@ -50,5 +45,11 @@ package_gpt4all-chat() {
     done
     install -Dm644 "$srcdir/gpt4all/gpt4all-chat/icons/logo.svg" \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.gpt4all.gpt4all.svg"
+    install -Dm644 "$srcdir/gpt4all/LICENSE.txt" \
+        "$pkgdir/usr/share/licenses/gpt4all-chat/LICENSE.txt"
+    install -Dm644 "$srcdir/gpt4all/LICENSE_SOM.txt" \
+        "$pkgdir/usr/share/licenses/gpt4all-chat/LICENSE_SOM.txt"
+    install -Dm644 "$srcdir/gpt4all/gpt4all-chat/LICENSE" \
+        "$pkgdir/usr/share/licenses/gpt4all-chat/LICENSE_chat.txt"
 }
 

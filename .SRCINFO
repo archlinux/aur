@@ -1,7 +1,7 @@
 pkgbase = gpt4all-chat
 	pkgdesc = open-source LLM chatbots that you can run anywhere
-	pkgver = 2.6.1
-	pkgrel = 2
+	pkgver = 2.6.2
+	pkgrel = 1
 	url = https://github.com/nomic-ai/gpt4all
 	arch = x86_64
 	license = MIT
@@ -21,9 +21,7 @@ pkgbase = gpt4all-chat
 	depends = qt6-wayland
 	depends = qt6-webengine
 	depends = fmt
-	source = git+https://github.com/nomic-ai/gpt4all.git#tag=v2.6.1
-	source = https://github.com/nomic-ai/gpt4all/commit/b803d51586895dd046d2284de271e2074c921df5.diff
+	source = git+https://github.com/nomic-ai/gpt4all.git#tag=v2.6.2
 	sha256sums = SKIP
-	sha256sums = 7041fd85f831959830dd17a9b1b46cff191ddbbbb19c9fbaa686f9c4d6194f1b
 
 pkgname = gpt4all-chat
