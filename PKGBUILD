@@ -1,6 +1,8 @@
 # PKGBUILD based on the official Arch gamescope PKGBUILD
 # Maintainer - Sid Pranjale <sidpranjale127@protonmail.com>
 
+# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Maintainer: Bouke Sybren Haarsma <boukehaarsma23 at gmail dot com>
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 # Maintainer: Giancarlo Razzolini <grazzolini@archlinux.org>
 # Contributor: Samuel "scrufulufugus" Monson <smonson@irbash.net>
@@ -49,16 +51,32 @@ makedepends=(
     wayland-protocols
 )
 source=(
-    git+https://github.com/ValveSoftware/gamescope.git
+    "git+https://github.com/ValveSoftware/gamescope.git"
+    "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a"
 )
-b2sums=('SKIP')
+b2sums=('SKIP'
+        'SKIP')
+
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 prepare() {
     cd $_pkgname
+    # This really should be a pacman feature...
+    for src in "${source[@]}"; do
+        src="${src%%::*}"
+        src="${src##*/}"
+        [[ $src = *.patch ]] || continue
+        echo "Applying patch $src..."
+        git apply "../$src"
+    done
+
     git submodule update --init --recursive --depth=1
     git -c protocol.file.allow=always submodule update
+    # make stb.wrap use our local clone
+    rm -rf subprojects/stb
+    git clone "$srcdir/stb" subprojects/stb
+    cp -av subprojects/packagefiles/stb/* subprojects/stb/ # patch from the .wrap we elided
 }
 
 pkgver() {
@@ -67,17 +85,17 @@ pkgver() {
 }
 
 build() {
-    cd $_pkgname
-    meson build \
-        -Dforce_fallback_for=stb \
+    export LDFLAGS="$LDFLAGS -lrt"
+    arch-meson "${_pkgname}" build \
         -Dpipewire=enabled
-    ninja -C build
+    meson compile -C build
 }
 
 package() {
-    DESTDIR="${pkgdir}" meson install -C $_pkgname/build \
-        --skip-subprojects
-    install -Dm 644 $_pkgname/LICENSE -t "${pkgdir}"/usr/share/licenses/gamescope/
+    meson install -C build --skip-subprojects --destdir="${pkgdir}"
+
+    cd "$srcdir/$_pkgname"
+    install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/$pkgname/"
 }
 
 # vim: ts=2 sw=2 et:

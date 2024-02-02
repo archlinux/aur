@@ -38,6 +38,8 @@ pkgbase = gamescope-git
 	provides = gamescope
 	conflicts = gamescope
 	source = git+https://github.com/ValveSoftware/gamescope.git
+	source = git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a
+	b2sums = SKIP
 	b2sums = SKIP
 
 pkgname = gamescope-git
