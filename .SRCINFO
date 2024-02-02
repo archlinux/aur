@@ -1,0 +1,17 @@
+pkgbase = python-finitediffx
+	pkgdesc = Finite difference tools in JAX
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ASEM000/finitediffx
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-jax
+	source = https://pypi.org/packages/source/f/finitediffx/finitediffx-0.1.0.tar.gz
+	sha512sums = 7e85c4edf20422c38563be5e0b9b3bef76c64a001959b57bd65fc2f6495b1da8f47236cb36bae2c73898680b48326c8bb468a80304c225149f5f1f9a1d41c4b3
+
+pkgname = python-finitediffx
