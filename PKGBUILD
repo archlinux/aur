@@ -7,9 +7,9 @@ pkgbase=quartus-free
 _components=(${pkgbase}-{quartus,questa,help,devinfo-{arria_lite,cyclone{,10lp,v},max{,10}},hls})
 pkgname=(${pkgbase} ${_components[@]})
 # Keep dot in _patchver
-_mainver=21.1; _patchver=.1; _buildver=850
+_mainver=23.1; _patchver=.0; _buildver=991; _litever=${_mainver}std${_patchver}.${_buildver}
 # HLS compiler is only released with Pro numbering
-_promain=22.2; _propatch=.0; _probuild=94; _prover=${_promain}${_propatch}.${_probuild}
+_promain=23.4; _propatch=.0; _probuild=79; _prover=${_promain}${_propatch}.${_probuild}
 pkgver=${_mainver}${_patchver}.${_buildver}
 pkgrel=1
 pkgdesc="Quartus Prime Lite design software for Intel FPGAs"
@@ -22,41 +22,42 @@ _inteldir="/opt/intelFPGA/${_mainver}"
 # See individual packages
 depends=()
 
-_base_url="https://download.altera.com/akdlm/software/acdsinst"
-source=("${_base_url}/${_mainver}std${_patchver/.0/}/${_buildver}/ib_installers/QuartusLiteSetup-${pkgver}-linux.run"
-        "${_base_url}/${_mainver}std${_patchver/.0/}/${_buildver}/ib_installers/QuestaSetup-${pkgver}-linux.run"
-        "${_base_url}/${_mainver}std${_patchver/.0/}/${_buildver}/ib_installers/QuartusHelpSetup-${pkgver}-linux.run"
-        "${_base_url}/${_mainver}std${_patchver/.0/}/${_buildver}/ib_installers/"{arria_lite,cyclone{,10lp,v},max{,10}}"-${pkgver}.qdz"
+_base_url="https://downloads.intel.com/akdlm/software/acdsinst"
+source=("${_base_url}/${_mainver}std${_patchver/.0/}/${_buildver}/ib_installers/QuartusLiteSetup-${_litever}-linux.run"
+        "${_base_url}/${_mainver}std${_patchver/.0/}/${_buildver}/ib_installers/QuestaSetup-${_litever}-linux.run"
+        "${_base_url}/${_mainver}std${_patchver/.0/}/${_buildver}/ib_installers/QuartusHelpSetup-${_litever}-linux.run"
+        "${_base_url}/${_mainver}std${_patchver/.0/}/${_buildver}/ib_installers/"{arria_lite,cyclone{,10lp,v},max{,10}}"-${_litever}.qdz"
         "${_base_url}/${_promain}${_propatch/.0/}/${_probuild}/ib_installers/HLSProSetup-${_prover}-linux.run"
         'quartus.sh' 'quartus.desktop' 'questa-fse.sh' 'questa-fse.desktop' 'questa.gif' '51-usbblaster.rules')
-noextract=({arria_lite,cyclone{,10lp,v},max{,10}}"-${pkgver}.qdz") # Will extract directly to pkgdir
+noextract=({arria_lite,cyclone{,10lp,v},max{,10}}"-${_litever}.qdz") # Will extract directly to pkgdir
+# Still using SHA1 because it's given in the download site
 sha1sums=(
-    6b25e8c62535d0ac02a1075b3dd334d2b04394aa
-    8eec46c1c64eea80e3c32944d0afc74183ea9e87
-    1160eceb63f318221bac116a896d2d690330dfa4
-    73c76f098cc068be6e4bb713951b1fbc0cdde29c
-    0da78d840eaba15e23486e983b8dce4a7bf24bf7
-    7dcb21cb70fafe142afd261ea766700248aba657
-    467123b7bd5e6907beb7d6b1e073ed7bad3e5e94
-    c6f109a926864ecd1cb3e86c6b11a8e931525e66
-    52361585ed0f224281f17c07ae9b93466d38c6a5
-    972d1a386fbb8530bbc497909f5848ca8f9f06c1
+    7f8cc416092710c47270ef1550a0d0bc2bfb7a10
+    a62f877e759b9bcd636404531376b33f163443b8
+    33716a5c1372402e2b96681ba748d4cb231fdfb2
+    9481182af9eb308e606a31f91add38a9014cb4a5
+    c1c433474329664fd3041914e7e94648fab06062
+    72b1b9a18dc28f26604522d3b3e14e29ecdfdb4c
+    8c08c3c2f8c54ef756ebf1a04f8da74f748009bb
+    e1761953d705c706e6700812ba3ccbe67f52abce
+    80109b586c8a8a4b68b319accb03ede4ef39a0a0
+    1f0661ae0093c1f16d40da01f9acf9767562a45b
     f6d660c62a71ac650f23f1ab8ab272eef445632a
     2efb252903bed064dd1ce5ced3ba84de2d5ef280
     b69614473e3f622676dcbb7a9a91e65003b3550c
     da7c90d1569c2819e37315daf0c4e2f894683318
     20224d8007807eed71b27783bb95c73faf6de20b
-    be27e716166d265ca0baa2db320e0580ba8da939
+    45a7d09831554252715e5fa377db0c04c553e833
 )
 
 options=('!strip' '!debug') # Stripping will takes ages, I'd avoid it
 PKGEXT=".pkg.tar.zst" # ZSTD is fast enough for compression
 
 prepare() {
-    echo "Notice: Requires around 20GB of free space during package building!"
-    echo "Notice: The package files also requires around 8GB of free space"
+    echo "Notice: Requires around 30GB of free space, of which 15GB in build dir, during package building!"
+    echo "Notice: The package files also requires around 11GB of free space"
 
-    chmod +x {QuartusLite,Questa,QuartusHelp}Setup-${pkgver}-linux.run
+    chmod +x {QuartusLite,Questa,QuartusHelp}Setup-${_litever}-linux.run
     chmod +x HLSProSetup-${_prover}-linux.run
 }
 
@@ -71,7 +72,7 @@ package_quartus-free-quartus() {
              libxrender libxtst libxcrypt-compat ncurses5-compat-libs util-linux-libs zlib quartus-free-devinfo)
     optdepends=("eclipse: For Nios II EDS")
 
-    DISPLAY="" ./QuartusLiteSetup-${pkgver}-linux.run \
+    DISPLAY="" ./QuartusLiteSetup-${_litever}-linux.run \
         --disable-components quartus_help,devinfo,questa_fse,questa_fe \
         --mode unattended \
         --unattendedmodeui none \
@@ -121,7 +122,7 @@ package_quartus-free-questa() {
              libjpeg6 libpng12 libx11 libxext libxft libxml2 libxpm ncurses5-compat-libs zlib)
     pkgdesc="Quartus Prime Lite - Questa-Intel FPGA Starter Edition"
 
-    DISPLAY="" ./QuestaSetup-${pkgver}-linux.run \
+    DISPLAY="" ./QuestaSetup-${_litever}-linux.run \
         --questa_edition questa_fse \
         --mode unattended \
         --unattendedmodeui none \
@@ -157,7 +158,7 @@ package_quartus-free-help() {
     depends=(quartus-free-quartus)
     pkgdesc="Quartus Prime Lite - help files"
 
-    DISPLAY="" ./QuartusHelpSetup-${pkgver}-linux.run --mode unattended --unattendedmodeui none --accept_eula 1 --installdir "${pkgdir}${_inteldir}"
+    DISPLAY="" ./QuartusHelpSetup-${_litever}-linux.run --mode unattended --unattendedmodeui none --accept_eula 1 --installdir "${pkgdir}${_inteldir}"
 
     # Remove uninstaller and install logs since we have a working package management
     rm -r "${pkgdir}${_inteldir}/"{uninstall,logs}
@@ -174,7 +175,7 @@ package_${pkgbase}-devinfo-${_dev}() {
    depends=()
    pkgdesc='Quartus Prime Lite - devinfo files for ${_dev}'
    install -d \"\${pkgdir}\${_inteldir}\"
-   bsdtar -xf \"${_dev}-\${pkgver}.qdz\" -C \"\${pkgdir}\${_inteldir}\"
+   bsdtar -xf \"${_dev}-\${_litever}.qdz\" -C \"\${pkgdir}\${_inteldir}\"
 }
 "
 done
