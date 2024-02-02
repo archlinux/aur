@@ -40,7 +40,7 @@ conflicts=('google-cloud-sdk')
 provides=('google-cloud-sdk')
 sha256sums=('4d1d60fa056f2f491b179f4d23b89899b9b7fc1691ad8ddcbf2ac901540c3021'
             'e03ffb8a534b175dc497621a0396bcc29884279daa519e2cb90bd98c61d6530a'
-            '4694f5191ceea7cf8076861ce5790ba9e809023da278b0f6ed862b9611e5aa93')
+            'c19dbe916e6fd18d9b17b3309ee60c5d389035c5520822d2c14c045d8b853924')
 
 prepare() {
   cd "${_extractedName}"
@@ -83,8 +83,10 @@ package() {
   ln -rsT "${pkgdir}/opt/${pkgname}/completion.bash.inc" \
     "${pkgdir}/etc/bash_completion.d/google-cloud-cli"
 
-  ln -rsT "${pkgdir}/opt/${pkgname}/completion.zsh.inc" \
-    "${pkgdir}/usr/share/zsh/site-functions/_gcloud"
+  for cmd in gcloud gsutil bq; do
+    ln -rsT "${pkgdir}/opt/${pkgname}/completion.zsh.inc" \
+      "${pkgdir}/usr/share/zsh/site-functions/_${cmd}"
+  done
 
   mkdir -p "${pkgdir}/usr/share"
   mv -f "${pkgdir}/opt/${pkgname}/help/man" "${pkgdir}/usr/share/"
