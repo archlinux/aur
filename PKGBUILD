@@ -11,7 +11,7 @@ pkgname=(
   "${_pkgbase}-doc${_vcssuffix}"
 )
 pkgver=1.1.4+16.r531.20240201.c980f91
-pkgrel=1
+pkgrel=2
 pkgdesc='Handheld Daemon. A tool for managing the quirks of handheld devices. Latest git checkout.'
 arch=(
   'x86_64'
@@ -69,6 +69,7 @@ package_hhd-git() {
   )
   optdepends=(
     "${_pkgbase}-doc: For documentation."
+    "${_pkgbase}-ui: A (browser based) graphical user interface for ${_pkgbase}."
     "${_pkgbase}-user: allows running hhd as a user service."
     "${_pkgbase}-systemd: For automatic startup at system boot."
   )
