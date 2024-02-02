@@ -1,0 +1,25 @@
+pkgbase = brotli
+	pkgdesc = Generic-purpose lossless compression algorithm
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/google/brotli
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	arch = i686
+	arch = mips
+	arch = pentium4
+	arch = powerpc
+	arch = armv7h
+	arch = armv6l
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = python2-setuptools
+	makedepends = python2-wheel
+	source = python2-brotli::git+https://github.com/google/brotli#commit=ed738e842d2fbdf2d6459e39267a633c4a9b2f5d
+	sha512sums = SKIP
+
+pkgname = python2-brotli
+	pkgdesc = Generic-purpose lossless compression algorithm - Python 2 library
+	depends = python2
