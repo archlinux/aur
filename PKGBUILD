@@ -1,4 +1,4 @@
-# Maintainer: Yurii Kolensykov <root@yurikoles.com>
+# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 # Based on core/linux by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 #
 # Pull requests are welcome here:
@@ -6,11 +6,10 @@
 #
 
 pkgbase=linux-drm-next-git
-pkgver=6.7.r1234172.221d6546bd16
+pkgver=6.8.r1249092.41bccc98fb79
 pkgrel=1
 pkgdesc='Linux kernel with bleeding-edge GPU drivers'
 url=https://cgit.freedesktop.org/drm/drm
-_product="${pkgbase%-git}"
 _branch=drm-next
 arch=(x86_64)
 license=(GPL2)
@@ -39,9 +38,9 @@ source=(
   config  # the main kernel config file
 )
 sha256sums=('SKIP'
-            'f77aab33af83c635e0445c6e424922cdc054efe2430c8c831f8bead23e08ba88')
+            '44ab14648c0036d070fe290c18f6dd928f29b5352b50655ad96c354f428955ca')
 b2sums=('SKIP'
-        'eee80b262d447770f89bb16e4c84a5faedd8e2a46d57a5b6ad6371f5a9a8e11194f82c9160d78486fc1a889ad9dea6f0b2d90b8a21235aefc30bf7fe3ef355f6')
+        '526e6a5dc674218466d7596c8b96e219bb8a17b8a1e676c95e8d67ff3c507cc9a91e5e0c624d86ae207753f66525eaed77ce526d06186cb9d9e448116cb1bacb')
 
 pkgver() {
   cd $_srcname
@@ -229,6 +228,7 @@ _package-docs() {
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 }
 
+_product="${pkgbase%-git}"
 pkgname=(
   "${_product}-git"
   "${_product}-headers-git"
