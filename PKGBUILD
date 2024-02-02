@@ -2,7 +2,7 @@
 # Co-maintainer: 1ridic <i@8f.al>
 pkgname=aliyunpan-odomu-bin
 _appname=alixby
-pkgver=3.24.12523
+pkgver=3.24.20122
 pkgrel=1
 pkgdesc="binary of aliyunpan liupan1890 forked by odomu"
 arch=("x86_64" "aarch64")
@@ -14,9 +14,9 @@ provides=()
 conflicts=("aliyunpan-gaozhangmin-bin")
 install=
 source_x86_64=("${url}/releases/download/v${pkgver}/alixby-${pkgver}-linux-x64.pacman" alixby.desktop)
-sha256sums_x86_64=('458913f3f0052a5a43c9c7b51f59e5e4c12e40f94844551e0e5b68f327747282' '0535fce28ff22a20e919718c31d3e415600235a560a89fde34b62352ceeedf92')
+sha256sums_x86_64=('641df10d79759e62495db2a2fd17d4e5be1d3957f382ea35785164f4852d6aed' '0535fce28ff22a20e919718c31d3e415600235a560a89fde34b62352ceeedf92')
 source_aarch64=("${url}/releases/download/v${pkgver}/alixby-${pkgver}-linux-aarch64.pacman" alixby.desktop)
-sha256sums_aarch64=('2885b48f2e09dbcda59ef1eccb986112f701b63137ec4116002cb815e4308f09' '0535fce28ff22a20e919718c31d3e415600235a560a89fde34b62352ceeedf92')
+sha256sums_aarch64=('0580fa78054a6bee5367812d123ce631cc4accb2a7fe1f9dfb4f26e7a953c190' '0535fce28ff22a20e919718c31d3e415600235a560a89fde34b62352ceeedf92')
 
 package() {
     mkdir "$pkgdir/opt"
