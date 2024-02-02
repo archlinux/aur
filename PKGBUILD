@@ -3,7 +3,7 @@ pkgname=dialogcraft-bin
 _pkgname=Dialogcraft
 pkgver=1.0.8
 _electronversion=25
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for OpenAI GPT API."
 arch=('x86_64')
 url="https://github.com/Hayden2018/dialogcraft"
@@ -11,40 +11,31 @@ license=('MIT')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    'libxfixes'
-    'cairo'
-    'nspr'
-    'libdrm'
-    'mesa'
-    'libxrandr'
-    'libxext'
-    'libxcomposite'
-    'libcups'
-    'gtk3'
-    'pango'
-    'libxdamage'
-    'alsa-lib'
-    'expat'
-    'nss'
-    'at-spi2-core'
-    'libx11'
-    'libxkbcommon'
-    'libxcb'
+    "electron${_electronversion}"
+)
+makedepends=(
+    'asar'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/Hayden2018/dialogcraft/v${pkgver}/LICENSE"
+    "${pkgname%-bin}.sh"
 )
 sha256sums=('c1a9d23a1700ae553224141ac938867b9125e139105e8495f383bd6c44fd5ceb'
-            'c09d111b4c731bb0e1771677ef839c4db3f709238e7ed8bbd005d737b01286c8')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.zst"
+    asar e "${srcdir}/usr/lib/${pkgname%-bin}/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    sed "s|app.isPackaged|!app.isPackaged|g" -i "${srcdir}/app.asar.unpacked/electron-src/main.js"
+    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
-    install -Dm755 -d "${pkgdir}/"{usr/bin,opt}
-    cp -r "${srcdir}/usr/lib/${pkgname%-bin}" "${pkgdir}/opt"
-    ln -sf "/opt/${pkgname%-bin}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/usr/share/doc/${pkgname%-bin}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
