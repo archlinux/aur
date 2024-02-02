@@ -1,0 +1,12 @@
+diff --git a/scanner/scanner-tag/rgtag.cpp b/scanner/scanner-tag/rgtag.cpp
+index 56a12f9..d2a467f 100644
+--- a/scanner/scanner-tag/rgtag.cpp
++++ b/scanner/scanner-tag/rgtag.cpp
+@@ -25,6 +25,7 @@
+ #include <iomanip>
+ #include <ios>
+ #include <sstream>
++#include <cstdint>
+ 
+ #ifdef _WIN32
+ #define CAST_FILENAME (wchar_t const *)

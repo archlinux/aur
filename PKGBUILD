@@ -6,11 +6,10 @@ pkgdesc="EBU R128 loudness normalization tool"
 arch=('armv6h' 'armv7h' 'aarch64' 'x86_64')
 url="https://github.com/jiixyj/loudness-scanner"
 license=('MIT')
-depends=('libebur128' 'glib2' 'taglib')
+depends=('libebur128' 'glib2' 'taglib' 'ffmpeg4.4')
 makedepends=('cmake' 'git')
 optdepends=('gstreamer: gstreamer input support'
             'libsndfile: libsndfile input support'
-            'ffmpeg: ffmpeg input support'
             'libmpcdec: libmpcdec input support'
             'mpg123: libmpg123 input support')
 provides=('loudness-scanner')
@@ -25,8 +24,11 @@ prepare() {
 }
 
 build() {
+  cp "$startdir/fix_build.patch" "$srcdir/$pkgname"
   cd "$srcdir/$pkgname"
-  cmake -DDISABLE_GTK2:BOOL=ON -DDISABLE_QT4:BOOL=ON -DDISABLE_QT5:BOOL=ON .
+  git apply ./fix_build.patch
+  env PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig" \
+      cmake -DDISABLE_GTK2:BOOL=ON -DDISABLE_QT5:BOOL=ON --log-level=VERBOSE .
   make
 }
 
