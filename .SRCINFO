@@ -6,7 +6,7 @@ pkgbase = simutrans-pak192.comic
 	arch = any
 	license = CC-BY-SA
 	provides = simutrans-pak192.comic
-	source = https://github.com/Flemmbrav/Pak192.Comic/releases/download/V0.6/pak192.comic-serverset.zip
-	sha256sums = 4c894d01d04fce6d2f0edeef3066486cf7e3882182fc4cc26255a1aa6bc2209a
+	source = https://github.com/Flemmbrav/Pak192.Comic/releases/download/V0.7/pak192.comic-serverset.zip
+	sha256sums = 5149e9114b6918b94ff2659b232110c1c7525cd4ed8f63eae50c90119f0175e9
 
 pkgname = simutrans-pak192.comic
