@@ -1,0 +1,17 @@
+pkgbase = python-kernex
+	pkgdesc = Stencil computations in JAX
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/ASEM000/kernex
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-jax
+	source = https://pypi.org/packages/source/k/kernex/kernex-0.2.0.tar.gz
+	sha512sums = f59e79d310dfb15f2817a0d9021f02637366a9a1aa09b4aea2d06d327f4c657b8fd7358648272f1945758f9f70b6c25f45b5a5c74aa4ee93185477d7db91f01b
+
+pkgname = python-kernex
