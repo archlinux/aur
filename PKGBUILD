@@ -1,15 +1,19 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# SPDX-License-Identifier: AGPL-3.0
+#
+# Maintainer:  Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
+# Maintainer:  Truocolo <truocolo@aol.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Lex Black <autumn-wind at web dot de>
 # Contributor: TingPing <tingping@tingping.se>
 # Contributor: Guillaume Horel <guillaume.horel@gmail.com>
 
 _py="python2"
 _pkg="brotli"
-pkgbase="${_pkg}"
-_pkgname="${_py}-${_pkg}"
+_pkgbase="${_pkg}"
+pkgbase="${_py}-${_pkg}"
 pkgname=(
-  "${_pkgname}"
+  "${pkgbase}"
 )
 _gitcommit=ed738e842d2fbdf2d6459e39267a633c4a9b2f5d
 pkgver=1.1.0
@@ -43,7 +47,7 @@ makedepends=(
   "${_py}-wheel"
 )
 source=(
-  ${pkgbase}::"git+${url}#commit=${_gitcommit}"
+  ${_pkg}::"git+${url}#commit=${_gitcommit}"
 )
 sha512sums=(
   'SKIP'
@@ -51,7 +55,7 @@ sha512sums=(
 
 pkgver() {
   cd \
-    "${pkgbase}"
+    "${_pkg}"
   git \
     describe \
       --tags \
@@ -63,7 +67,7 @@ pkgver() {
 
 build() {
   cd \
-    ${pkgbase}
+    "${_pkg}"
   ls
   "${_py}" \
     setup.py \
@@ -84,7 +88,7 @@ build() {
 
 check() {
   cd \
-    ${pkgbase}
+    "${_pkg}"
   local \
     _pyver
   _pyver="$( \
@@ -106,11 +110,11 @@ package_python2-brotli() {
     "${_py}"
   )
   cd \
-    ${pkgbase}
+    "${_pkg}"
   "${_py}" \
     setup.py \
       install \
-      --root="${pkgdir}"
+        --root="${pkgdir}"
     # -m installer \
     #   --destdir="$pkgdir" \
     #   dist/*.whl
@@ -119,7 +123,7 @@ package_python2-brotli() {
       644 \
     LICENSE \
     -t \
-    "${pkgdir}/usr/share/licenses/${_pkgname}"
+    "${pkgdir}/usr/share/licenses/${pkgbase}"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim:set sw=2 sts=-1 et:
