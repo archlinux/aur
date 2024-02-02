@@ -4,32 +4,14 @@ _pkgname=DialogCraft
 pkgver=1.0.8
 _electronversion=25
 _nodeversion=16
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for OpenAI GPT API."
 arch=('any')
 url="https://github.com/Hayden2018/dialogcraft"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-    'libxfixes'
-    'cairo'
-    'nspr'
-    'libdrm'
-    'mesa'
-    'libxrandr'
-    'libxext'
-    'libxcomposite'
-    'libcups'
-    'gtk3'
-    'pango'
-    'libxdamage'
-    'alsa-lib'
-    'expat'
-    'nss'
-    'at-spi2-core'
-    'libx11'
-    'libxkbcommon'
-    'libxcb'
+    "electron${_electronversion}"
 )
 makedepends=(
     'gendesk'
@@ -38,9 +20,11 @@ makedepends=(
     'git'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
+    "${pkgname}.git::git+${url}#tag=v${pkgver}"
+    "${pkgname}.sh"
 )
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -48,23 +32,31 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@runname@|app.asar|g" \
+        -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname} --no-sandbox %U"
+    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname} %U"
     export npm_config_build_from_source=true
-    export npm_config_cache="$srcdir/npm_cache"
+    export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION=$(electron${_electronversion} -v | sed 's/v//g')
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
+    cd "${srcdir}/${pkgname}.git"
     sed -e '26,31d' -e '8,19d' -i forge.config.js
+    sed "s|app.isPackaged|!app.isPackaged|g" -i electron-src/main.js
     npm ci
+    npm run build
     npm run package
 }
 package() {
-    install -Dm755 -d "${pkgdir}/"{usr/bin,opt/"${pkgname}"}
-    cp -r "${srcdir}/${pkgname}-${pkgver}/out/${_pkgname}-linux-"*/* "${pkgdir}/opt/${pkgname}"
-    ln -sf "/opt/${pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/public/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/out/${_pkgname}-linux-"*/resources/app.asar "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/public/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
