@@ -1,10 +1,11 @@
-# Maintainer: Kyle Phillips <kyle@pkyle.me>
+# Maintainer: Tai Lam <47955724+taivlam at users.noreply.github dot com>
+# Contributor: Kyle Phillips <kyle@pkyle.me>
 # Based  on the template from https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
 
 _pkgname=mudita-center
 
 pkgname="${_pkgname}"-appimage
-pkgver=2.0.1
+pkgver=2.2.7
 pkgrel=1
 pkgdesc="Mudita Center Electron App. Expand and update the features of Mudita Pure, while using your computer."
 arch=('x86_64')
