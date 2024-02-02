@@ -1,0 +1,100 @@
+From: Goneri Le Bouder <goneri@rulezlan.org>
+Date: Fri, 10 May 2013 18:02:13 +0200
+Subject: fullscreen
+
+Add fullscreen support
+---
+ locals.py  |    2 +-
+ main.py    |    4 ++--
+ options.py |    8 +++++++-
+ util.py    |    3 +++
+ 4 files changed, 13 insertions(+), 4 deletions(-)
+
+diff --git a/locals.py b/locals.py
+index a159721..74882ab 100644
+--- a/locals.py
++++ b/locals.py
+@@ -6,7 +6,6 @@ NEXTFRAME = USEREVENT + 1
+ MIN_FIRE_DELAY = 10
+ SCREEN_WIDTH = 400#320
+ SCREEN_HEIGHT = 300#240
+-SCREEN_FULLSCREEN = 0
+ FPS = 30
+ 
+ 
+@@ -17,3 +16,4 @@ class Variables:
+     sound = True    
+     music = True
+     name = "Funny Boater"
++    fullscreen = True
+diff --git a/main.py b/main.py
+index f3a8bfa..b12472d 100644
+--- a/main.py
++++ b/main.py
+@@ -53,10 +53,10 @@ def main():
+             elif arg == "-ns":
+                 Variables.sound = False
+             elif arg == "-f":
+-                SCREEN_FULLSCREEN = True
++                Variables.fullscreen = True
+ 
+     scr_options = 0
+-    if SCREEN_FULLSCREEN: scr_options += FULLSCREEN
++    if Variables.fullscreen: scr_options += FULLSCREEN
+     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT),scr_options ,32)
+ 
+     pygame.display.set_icon(util.load_image("kuvake"))
+diff --git a/options.py b/options.py
+index c6cdc34..3b603fc 100644
+--- a/options.py
++++ b/options.py
+@@ -14,6 +14,7 @@ class Options:
+     SOUND = 2
+     MUSIC = 3
+     NAME = 4
++    FULLSCREEN = 5
+ 
+     def __init__(self, screen):
+         self.screen = screen
+@@ -39,7 +40,8 @@ class Options:
+                      "Antialiasing: " + (Variables.aa and "on" or "off"),
+                      "Sound effects: " + (Variables.sound and "on" or "off"),
+                      "Music: " + (Variables.music and "on" or "off"),
+-                     "Player Name: " + Variables.name)
++                     "Player Name: " + Variables.name,
++                     "Fullscreen: " + (Variables.fullscreen and "on" or "off"))
+ 
+     def run(self):
+         done = False
+@@ -138,6 +140,10 @@ class Options:
+                     pygame.mixer.music.stop()
+             except:
+                 pass
++        elif self.selection == Options.FULLSCREEN:
++            Variables.fullscreen = not Variables.fullscreen
++            pygame.display.toggle_fullscreen()
++
+         self.refresh()
+ 
+     def change_right(self):
+diff --git a/util.py b/util.py
+index c012934..100b6d5 100644
+--- a/util.py
++++ b/util.py
+@@ -62,6 +62,8 @@ def load_config():
+             Variables.sound = str_to_bool(value)
+         elif variable == "aa":
+             Variables.aa = str_to_bool(value)
++        elif variable == "fullscreen":
++            Variables.fullscreen = str_to_bool(value)
+ 
+     f.close()
+ 
+@@ -77,6 +79,7 @@ def save_config():
+     print >> f, "name\t%s" % Variables.name
+     print >> f, "sound\t%s" % Variables.sound
+     print >> f, "aa\t%s" % Variables.aa
++    print >> f, "fullscreen\t%s" % Variables.fullscreen
+ 
+     f.close()
+ 

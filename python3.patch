@@ -1,0 +1,417 @@
+Author: Reiner Herrmann <reiner@reiner-h.de>
+Description: Port to Python 3
+Bug-Debian: https://bugs.debian.org/912502
+
+--- a/PixelPerfect.py
++++ b/PixelPerfect.py
+@@ -17,8 +17,8 @@
+     x2 = rect.x-rect2.x
+     y2 = rect.y-rect2.y
+ 
+-    for r in xrange(0,rect.height):      
+-        for c in xrange(0,rect.width):
++    for r in range(0,rect.height):      
++        for c in range(0,rect.width):
+             # I changed this for the 1.5 release of Funny Boat,
+             # because generating hitmasks is a bit problematic
+             # now that Numeric is outdated and surfarrays don't work.
+--- a/game.py
++++ b/game.py
+@@ -133,7 +133,7 @@
+                     und_old=cb.underwater
+                     cb.update()
+                     if cb.underwater and not und_old:
+-                        for i in xrange(5):
++                        for i in range(5):
+                             particle_point=cb.rect.right-4.0+rr()*8.0, cb.rect.top+rr()*2.0
+                             self.particles.add_water_particle(particle_point)
+                     if (cb.rect.right < 0 and cb.vect[0] < 0) or (cb.rect.left > SCREEN_WIDTH and cb.vect[0] > 0) or (cb.rect.top > SCREEN_HEIGHT):
+@@ -162,7 +162,7 @@
+                         self.particles.add_steam_particle(particle_point)
+ 
+                     if self.titanic:
+-                        for j in xrange(4):
++                        for j in range(4):
+                             particle_point = self.titanic.get_point((49 + rr() * 9.0 + 28 * j, 25))
+                             particle_point[0] += self.titanic.rect.centerx
+                             particle_point[1] += self.titanic.rect.centery
+@@ -174,7 +174,7 @@
+ 
+                 if self.player.splash:
+                     if Variables.particles:
+-                        for i in xrange(10):
++                        for i in range(10):
+                             r = rr()
+                             x = int(r * self.player.rect.left + (1.0-r) * self.player.rect.right)
+                             point = (x, self.water.get_water_level(x))
+@@ -214,7 +214,7 @@
+ 
+     def damage_player(self):
+         self.health.damage()
+-        for i in xrange(10):
++        for i in range(10):
+             particle_point = self.player.get_point((rr() * 26.0, rr() * 10.0))
+             particle_point[0] += self.player.rect.centerx
+             particle_point[1] += self.player.rect.centery
+@@ -234,10 +234,10 @@
+                 width = images[-1].get_width()
+         self.gameover_image = pygame.Surface((width, height), SRCALPHA, 32)
+         self.gameover_image.fill((0,0,0,0))
+-        for i in xrange(len(images)):
++        for i in range(len(images)):
+             rect = images[i].get_rect()
+             rect.top = i * images[i].get_height()
+-            rect.centerx = width / 2
++            rect.centerx = width // 2
+             self.gameover_image.blit(images[i], rect)
+ 
+         self.gameover_rect = self.gameover_image.get_rect()
+@@ -254,7 +254,7 @@
+             filename = filename + "/funnyboat-sshot" + str(i) + ".tga"
+         
+         pygame.image.save(self.screen, filename)
+-        print "Screenshot saved as " + filename
++        print("Screenshot saved as " + filename)
+ 
+     def handle_events(self):
+         nextframe = False
+@@ -302,7 +302,7 @@
+                             particle_point = self.player.get_point((42.0,10.0))
+                             particle_point[0] += self.player.rect.centerx
+                             particle_point[1] += self.player.rect.centery
+-                            for i in xrange(4):
++                            for i in range(4):
+                                 self.particles.add_fire_steam_particle(particle_point)
+                             self.lastshot = 0
+                             self.spacepressed = self.t
+@@ -326,7 +326,7 @@
+                             particle_point = self.player.get_point((42.0,10.0))
+                             particle_point[0] += self.player.rect.centerx
+                             particle_point[1] += self.player.rect.centery
+-                            for i in xrange(4):
++                            for i in range(4):
+                                 self.particles.add_fire_steam_particle(particle_point)
+                             self.lastshot = 0
+                             self.spacepressed = self.t
+@@ -351,7 +351,7 @@
+                             particle_point = self.player.get_point((42.0,10.0))
+                             particle_point[0] += self.player.rect.centerx
+                             particle_point[1] += self.player.rect.centery
+-                            for i in xrange(30):
++                            for i in range(30):
+                                 self.particles.add_fire_steam_particle((particle_point[0]+rrr(-4,4),particle_point[1]+rrr(-3,3)))
+                             self.lastshot = 0
+                         self.spacepressed = None
+@@ -365,19 +365,19 @@
+                             particle_point = self.player.get_point((42.0,10.0))
+                             particle_point[0] += self.player.rect.centerx
+                             particle_point[1] += self.player.rect.centery
+-                            for i in xrange(30):
++                            for i in range(30):
+                                 self.particles.add_fire_steam_particle((particle_point[0]+rrr(-4,4),particle_point[1]+rrr(-3,3)))
+                             self.lastshot = 0
+                         self.spacepressed = None
+ 
+         #if framecount > 1:
+-        #    print str(self.t) + ": missed " + str(framecount - 1) + " frames!"
++        #    print(str(self.t) + ": missed " + str(framecount - 1) + " frames!")
+ 
+     def set_pause(self):
+         self.pause = not self.pause
+ 
+         #if framecount > 1:
+-        #    print str(self.t) + ": missed " + str(framecount - 1) + " frames!"
++        #    print(str(self.t) + ": missed " + str(framecount - 1) + " frames!")
+ 
+     def set_pause(self):
+         self.pause = not self.pause
+@@ -420,7 +420,7 @@
+                 blit_image.set_colorkey((166,183,250))
+                 blit_image.blit(image, image.get_rect())
+                 if self.level.t > 60:
+-                    blit_image.set_alpha(255 - (self.level.t - 60) * 255 / 60)
++                    blit_image.set_alpha(255 - (self.level.t - 60) * 255 // 60)
+                 self.screen.blit(blit_image, rect)
+                 i += 1
+ 
+@@ -562,7 +562,7 @@
+                 particle_point = pirate.get_point((0.0,10.0))
+                 particle_point[0] += pirate.rect.centerx
+                 particle_point[1] += pirate.rect.centery
+-                for i in xrange(4):
++                for i in range(4):
+                     self.particles.add_fire_steam_particle(particle_point)
+                 
+             if pirate.rect.right < self.screen.get_rect().left or pirate.dead:
+@@ -576,12 +576,12 @@
+         if self.titanic:
+             self.titanic.update()
+             if self.titanic.t % 100 == 0 and not self.titanic.dying:
+-                for i in xrange(3):
++                for i in range(3):
+                     cb = Cannonball(self.titanic.rect, self.titanic.angle + (i-1)*10 - 50, left = True)
+                     self.cannonballs.append(cb)
+                     self.cannonball_sprites.add(cb)
+             elif self.titanic.t % 100 == 50 and not self.titanic.dying:
+-                for i in xrange(3):
++                for i in range(3):
+                     cb = Cannonball(self.titanic.rect, self.titanic.angle + (i-1)*10 - 52.5, left = True)
+                     self.cannonballs.append(cb)
+                     self.cannonball_sprites.add(cb)
+--- a/health.py
++++ b/health.py
+@@ -40,7 +40,7 @@
+         # clear the surface
+         self.image.fill((255,255,255))
+ 
+-        for i in xrange(5):
++        for i in range(5):
+             rect = pygame.Rect(i * (Health.heart.get_width() + 1), Health.heart.get_height(), Health.heart.get_width(), Health.heart.get_height())
+             if i < self.hearts_left:
+                 self.image.blit(Health.heart, rect)
+--- a/highscores.py
++++ b/highscores.py
+@@ -36,7 +36,7 @@
+         if online:
+             if not self.online_init():
+                self.done = True
+-               print "Could not get online highscores!"
++               print("Could not get online highscores!")
+             return
+ 
+         self.pathname = util.get_config_path()
+@@ -49,12 +49,12 @@
+             if not os.path.exists(self.pathname):
+                 os.mkdir(self.pathname)
+         except:
+-            print "Can't make directory " + self.pathname
++            print("Can't make directory " + self.pathname)
+             self.done = True
+             return
+ 
+         if not os.path.exists(self.filename):
+-            #print "Creating dummy high scores"
++            #print("Creating dummy high scores")
+             self.dummy_scores()
+         else:
+             try:
+@@ -68,17 +68,17 @@
+                         try:
+                             score = int(line)
+                         except:
+-                            print "Corrupt high score file."
++                            print("Corrupt high score file.")
+                             self.dummy_scores()
+                             break
+                         self.scores.append((name, score))
+                     i += 1
+             except:
+                 self.dummy_scores()
+-                print "Can't open file " + self.filename + " or file corrupt"
++                print("Can't open file " + self.filename + " or file corrupt")
+ 
+         if len(self.scores) < 10:
+-            print "Corrupt high score file."
++            print("Corrupt high score file.")
+             self.dummy_scores()
+ 
+         # The online highscore is always submitted
+@@ -86,12 +86,12 @@
+             self.submit_score(Variables.name, new_score)
+ 
+         if new_score > self.scores[9][1]:
+-            #print "It's a new high score!"
++            #print("It's a new high score!")
+             #self.inputting = True
+-            for i in xrange(10):
++            for i in range(10):
+                 if self.scores[i][1] < new_score:
+                     self.input_score = i
+-                    for j in xrange(9 - i):
++                    for j in range(9 - i):
+                         self.scores[9 - j] = self.scores[8 - j]
+                     self.scores[i] = [Variables.name, new_score]
+                     break
+@@ -130,7 +130,7 @@
+                 f = urllib2.urlopen(req)
+                 f.close()
+             except:
+-                print "Failed to submit highscore"
++                print("Failed to submit highscore")
+ 
+     def run(self):
+         water = Water.global_water
+@@ -150,7 +150,7 @@
+ 
+             self.screen.blit(self.title, rect)
+ 
+-            for i in xrange(10):
++            for i in range(10):
+                 color = (0,0,0)
+                 #if self.inputting and self.input_score == i:
+                 if self.input_score == i:
+@@ -220,10 +220,10 @@
+     def write_scores(self):
+         try:
+             f = codecs.open(self.filename, "w", "utf_8")
+-            for i in xrange(10):
+-                print >> f, self.scores[i][0]
+-                print >> f, self.scores[i][1]
++            for i in range(10):
++                print(self.scores[i][0], file=f)
++                print(self.scores[i][1], file=f)
+         except:
+-            print "Failed to write high scores to file " + self.filename
++            print("Failed to write high scores to file " + self.filename)
+             self.done = True
+             return
+--- a/main.py
++++ b/main.py
+@@ -79,7 +79,7 @@
+         # It's not a critical problem if there's no music
+         pass
+ 
+-    pygame.time.set_timer(NEXTFRAME, 1000 / FPS) # 30 fps
++    pygame.time.set_timer(NEXTFRAME, 1000 // FPS) # 30 fps
+ 
+     Water.global_water = Water()
+ 
+--- a/menu.py
++++ b/menu.py
+@@ -34,7 +34,7 @@
+             self.water.update()
+             self.water_sprite.draw(self.screen)
+ 
+-            for i in xrange(len(self.menu)):
++            for i in range(len(self.menu)):
+                 self.render(i)
+ 
+             cloud.update()
+--- a/options.py
++++ b/options.py
+@@ -51,7 +51,7 @@
+             self.water.update()
+             self.water_sprite.draw(self.screen)
+ 
+-            for i in xrange(len(self.menu)):
++            for i in range(len(self.menu)):
+                 self.render(i)
+ 
+             cloud.update()
+--- a/util.py
++++ b/util.py
+@@ -20,7 +20,7 @@
+         try:
+             pathname = os.environ["APPDATA"] + "/Funny Boat"
+         except:
+-            print "Couldn't get environment variable for home directory"
++            print("Couldn't get environment variable for home directory")
+             pathname = "."
+     if not os.path.exists(pathname):
+         os.mkdir(pathname)
+@@ -73,13 +73,13 @@
+         os.mkdir(get_config_path())
+     f = codecs.open(filename, "w", "utf_8")
+ 
+-    print >> f, "alpha\t%s" % Variables.alpha
+-    print >> f, "particles\t%s" % Variables.particles
+-    print >> f, "music\t%s" % Variables.music
+-    print >> f, "name\t%s" % Variables.name
+-    print >> f, "sound\t%s" % Variables.sound
+-    print >> f, "aa\t%s" % Variables.aa
+-    print >> f, "fullscreen\t%s" % Variables.fullscreen
++    print("alpha\t%s" % Variables.alpha, file=f)
++    print("particles\t%s" % Variables.particles, file=f)
++    print("music\t%s" % Variables.music, file=f)
++    print("name\t%s" % Variables.name, file=f)
++    print("sound\t%s" % Variables.sound, file=f)
++    print("aa\t%s" % Variables.aa, file=f)
++    print("fullscreen\t%s" % Variables.fullscreen, file=f)
+ 
+     f.close()
+ 
+@@ -91,16 +91,16 @@
+         # in case someone does, at least it won't crash the game if they don't
+         # have Numeric installed
+         w,h = image.get_size()
+-        for i in xrange(w):
+-            for j in xrange(h):
++        for i in range(w):
++            for j in range(h):
+                 pixel = image.get_at((i,j))
+                 if pixel[3] > 127:
+                     image.set_at((i,j), (pixel[0], pixel[1], pixel[2], 255))
+                 else:
+                     image.set_at((i,j), (pixel[0], pixel[1], pixel[2], 0))
+         #surfarray = pygame.surfarray.pixels_alpha(image)
+-        #for i in xrange(len(surfarray)):
+-        #    for j in xrange(len(surfarray[i])):
++        #for i in range(len(surfarray)):
++        #    for j in range(len(surfarray[i])):
+         #        if surfarray[i][j] > 127:
+         #            surfarray[i][j] = 255
+         #        else:
+--- a/water.py
++++ b/water.py
+@@ -18,7 +18,7 @@
+             Water.raster_image = util.load_image("rasteri")
+ 
+         self.water_levels = []
+-        for i in xrange(self.rect.width):
++        for i in range(self.rect.width):
+             self.water_levels.append(0.0)
+         self.t = 0
+ 
+@@ -39,7 +39,7 @@
+     
+     def update(self):
+         self.image.fill((200,210,255,0))
+-        for x in xrange(self.rect.width):
++        for x in range(self.rect.width):
+             h = SCREEN_HEIGHT - (math.sin(x * self.xmul + self.t * self.tmul) * self.amplitude + self.baseheight)
+             self.water_levels[x] = h
+             h_float,h_int=math.modf(h)
+--- a/level.py
++++ b/level.py
+@@ -144,8 +144,8 @@
+         for enemy in self.phases[self.phase % len(self.phases)]:
+             offset, delay = enemy
+             if self.endless and delay > 0:
+-                delay -= self.phase / 4 * 5
+-                offset -= self.phase / 4 * 5
++                delay -= self.phase // 4 * 5
++                offset -= self.phase // 4 * 5
+                 if delay <= 30:
+                     delay = 30
+                 if offset < 0:
+@@ -158,7 +158,7 @@
+         if not self.endless:
+             Water.global_water.set_amplitude(self.phase_weather[self.phase % len(self.phase_weather)])
+         else:
+-            Water.global_water.set_amplitude(self.phase_weather[(self.phase / 4) % len(self.phase_weather)])
++            Water.global_water.set_amplitude(self.phase_weather[(self.phase // 4) % len(self.phase_weather)])
+ 
+ 
+         self.t += 1
+--- a/particles.py
++++ b/particles.py
+@@ -40,7 +40,7 @@
+             self.life = 0
+ 
+         if Variables.alpha:
+-            self.image.set_alpha(self.life * 255 * self.opacity / self.initial_life)
++            self.image.set_alpha(self.life * 255 * self.opacity // self.initial_life)
+ 
+ class Particles (pygame.sprite.Sprite):
+     def __init__(self):
+--- a/powerup.py
++++ b/powerup.py
+@@ -29,7 +29,7 @@
+         water_level = Water.global_water.get_water_level(self.rect.centerx)
+         if self.fading:
+             if self.fadecount > 0:
+-                self.image.set_alpha(self.fadecount * 255 / 15)
++                self.image.set_alpha(self.fadecount * 255 // 15)
+                 self.fadecount -= 1
+             else:
+                 self.picked = True

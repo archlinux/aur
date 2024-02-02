@@ -1,0 +1,26 @@
+From: Goneri Le Bouder <goneri@rulezlan.org>
+Date: Fri, 10 May 2013 18:02:13 +0200
+Subject: avoid_set_alpha_crash
+
+Bug: #534596
+If val is larger than 'int', image.set_alpha throw an exception. set_alpha
+argument is supposed to be < 256.
+---
+ particles.py |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/particles.py b/particles.py
+index 22c6319..0cec708 100644
+--- a/particles.py
++++ b/particles.py
+@@ -24,7 +24,9 @@ class Particle (pygame.sprite.Sprite):
+         pygame.draw.ellipse(self.image, self.colour, self.image.get_rect())
+ 
+         if Variables.alpha:
+-            self.image.set_alpha(self.life * 255 * self.opacity / self.initial_life)
++            val = self.life * 255 * self.opacity / self.initial_life
++            if val < 256:
++                self.image.set_alpha(val)
+ 
+     def update(self):
+         self.rect.left += self.vect[0]

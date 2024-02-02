@@ -1,0 +1,22 @@
+From: Markus Koschany <apo@debian.org>
+Date: Fri, 10 May 2013 18:50:43 +0200
+Subject: sink the titanic
+
+Bug: http://bugs.debian.org/582234
+---
+ titanic.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/titanic.py b/titanic.py
+index b8b25c0..47cd8c7 100644
+--- a/titanic.py
++++ b/titanic.py
+@@ -43,7 +43,7 @@ class Titanic(pygame.sprite.Sprite):
+     def damage(self, dec=1):
+         self.health -= dec
+ 
+-        if self.health == 0:
++        if self.health <= 0:
+             self.die()
+ 
+     def update(self):
