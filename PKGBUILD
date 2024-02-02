@@ -3,7 +3,7 @@
 
 pkgname='kikoplay'
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="linux danmaku player"
 arch=('x86_64')
 license=('GPL3' 'MIT')
@@ -29,6 +29,9 @@ prepare() {
     # otherwise qmake could not find the KikoPlay.pro file.
     [ -d "KikoPlay" ] && rm -rf "KikoPlay"
     mv "${srcdir}/KikoPlay-${pkgver}" "KikoPlay"
+
+    # adjust user manual location in usage tip
+    sed -i 's|file:///{AppPath}\\KikoPlay使用说明.pdf|file:///usr/share/doc/kikoplay|g' "${srcdir}/KikoPlay/res/tip"
 }
 
 build() {
@@ -52,11 +55,6 @@ build() {
     cd "${srcdir}/build"
     qmake "${srcdir}/KikoPlay"
     make -j$JOBNUMBER
-
-    ## only for test, place the "script" under the path of KikoPlay binary
-    ## then we can test the script function without packaging or installing KikoPlay
-    #mkdir -p "${srcdir}/build/script"
-    #cp -r "${srcdir}"/KikoPlayScript/* "${srcdir}/build/script"
 }
 
 package() {
