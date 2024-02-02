@@ -14,6 +14,7 @@ then
   install_needed=true
 elif [[ "$(cat "$root_version_file")" != "$(cat "$user_version_file")" ]]
 then
+  rm -f "$user_version_file"
   install_needed=true
 fi
 
