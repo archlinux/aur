@@ -3,7 +3,7 @@ pkgname=ocat-bin
 _appname=OCAT
 _pkgname=OCAuxiliaryTools
 pkgver=20240001
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenCore Auxiliary Tools is a GUI-based Configurator for editing config.plist files for Acidanthera's OpenCore Boot Manager."
 arch=("x86_64")
 url="https://github.com/ic005k/OCAuxiliaryTools"
@@ -32,7 +32,7 @@ source=(
 )
 sha256sums=('648dd19968dbcaaa8c8eeb2fb129f1cc8b1b562b3f3e0b1e6dceb47837f4e627'
             '3515a1c9e2ce8df51e80f0a03a0ffca92430c7dca6989ff20b16031d676a652b'
-            'b2d6a2642cbe63c79f73d97aa2872ba1f355367e306a88a858f5d5b97315d0e4')
+            '6dd00a127c590dc4df6e2195169acb50b9b911abfb98ef8f6e87737de0699dd3')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
