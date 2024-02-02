@@ -11,7 +11,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=b4a34237621976574e3cf1f883708ed7b4b57329
+_mozc_commit=3efc19ac35c7d809ae2ef587c59c01794cb1a6dd
 _branch=fcitx
 # Ut Dictionary
 _utdicdate=20230115
@@ -30,7 +30,7 @@ _sudachidict_date=20240109
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.29.5346.102
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
@@ -46,7 +46,7 @@ source=("git+$url.git#commit=${_mozc_commit}"
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/small_lex.zip"
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/core_lex.zip"
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/notcore_lex.zip"
-        "https://github.com/neologd/mecab-ipadic-neologd/raw/master/seed/mecab-user-dict-seed.20200910.csv.xz"
+        #"https://github.com/neologd/mecab-ipadic-neologd/raw/master/seed/mecab-user-dict-seed.20200910.csv.xz"
         "LICENSE-SudachiDict::https://github.com/WorksApplications/SudachiDict/raw/develop/LEGAL"
         "LICENSE-ipadic-neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/master/COPYING"
         "0001-Zombie-Process-Prevention.patch"
@@ -63,7 +63,6 @@ sha512sums=('SKIP'
             'cb7d135af2eb7f759126071c042dda89f094710ed7228f129e0b2350d11903768c4f5c4b2c0ca7748fb6e2c9e442c3cc353687c1c6dbe98ee21056ef83751d3f'
             '8b51b783c60987d74d896ba4668987b69a4f83b7b294f2630b25a0adf2ca665b89ebf4e000ce5de9a343aa9929d0b120478f7820a31ab1718d1fcafd58460286'
             '8efaeeb103cfd14abbc8e27ca4c6313d68e800421f452701ff1771b09f32944cd14bfc4bd2fe75ebb3b851b4baba15ebd70b7b2cceae68a621eadbaa9d351bf5'
-            '391bf23f4163f5d40abef49ac7ee3e856a0f06f83adde13c5709e86480be93d4087ca72d244dd57a8bf45e881958a96f59b55c695671aa59a3eb15532ecb9ce1'
             '1a5b62c83a08781b44bd73f978a4024d93667df47b1a3f4c179096cbc32f28e803c50dca6b5b7ad20fb788d46797551c36ec1efb7782f4361b695e2e0a6060ca'
             '77a8c1d76a53627f8680f761f9c996b04e6b609bdb813cb5aedc7f8214d9b5f13aea53788814029f6f1e263c50ecb58feb5999e95d51fe7e4707b6a913d4bbe4'
             '4dc9fc2d95e23729381bfe12fe6544ec3ea5729114e6d0539af93f5cd1e5a0a4d3196bfcf07c67aec0b19a25b92bf3c65c5e3805415bf81b5d13f537fa4f2c0d')
@@ -145,18 +144,18 @@ build() {
   #cd ..
 
   # ut-dictionarys
-  msg '3. Run the rust program(mozcdict-ext): mecab-ipadic-neologd , it may take some time...'
-  cd sudachi || exit
-  ./target/$TARGET/release/dict-to-mozc -n -i ./id.def -f ../../mecab-user-dict-seed.20200910.csv >> ../all-dict.txt
-  cd ..
+  #msg '3. Run the rust program(mozcdict-ext): mecab-ipadic-neologd , it may take some time...'
+  #cd sudachi || exit
+  #./target/$TARGET/release/dict-to-mozc -n -i ./id.def -f ../../mecab-user-dict-seed.20200910.csv >> ../all-dict.txt
+  #cd ..
   #ruby utdict/utdict.rb -E -f mozcdic-ut.txt -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> all-dict2.txt
 
-  msg '5. Run the awk scripts in dup.awk, it may take some time...'
+  msg '3. Run the awk scripts in dup.awk, it may take some time...'
   awk -f sudachi/dup.awk all-dict.txt > finish-dict.txt
   #ruby .dev.utils/uniqword.rb all-dict.txt > finish-dict.txt  2> duplicated.txt
   #cat ut-dict.txt >> finish-dict.txt
 
-  msg '6. Finally add SudachiDict and mecab-ipadic-neologd dictionary to mozc source'
+  msg '4. Finally add SudachiDict dictionary to mozc source'
   cat finish-dict.txt >> "$srcdir/mozc/src/data/dictionary_oss/dictionary00.txt"
   sync
 
