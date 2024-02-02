@@ -38,6 +38,7 @@ source=(
 # Conflict the old package name to force migration
 conflicts=('google-cloud-sdk')
 provides=('google-cloud-sdk')
+replaces=('google-cloud-sdk')
 sha256sums=('4d1d60fa056f2f491b179f4d23b89899b9b7fc1691ad8ddcbf2ac901540c3021'
             'e03ffb8a534b175dc497621a0396bcc29884279daa519e2cb90bd98c61d6530a'
             'c19dbe916e6fd18d9b17b3309ee60c5d389035c5520822d2c14c045d8b853924')

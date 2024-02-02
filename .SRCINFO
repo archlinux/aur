@@ -9,6 +9,7 @@ pkgbase = google-cloud-cli
 	optdepends = python-crcmod: [gsutil] verify the integrity of GCS object contents
 	provides = google-cloud-sdk
 	conflicts = google-cloud-sdk
+	replaces = google-cloud-sdk
 	options = !strip
 	options = staticlibs
 	options = !zipman
