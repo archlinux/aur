@@ -2,7 +2,7 @@
  
 pkgname="monado-git"
 _dirname="monado"
-pkgver=21.0.0.r4294.g7e7e011b
+pkgver=21.0.0.r4339.gfcdc20645
 pkgrel=1
 pkgdesc='The open source OpenXR runtime.'
 arch=('i686' 'x86_64')

@@ -1,6 +1,6 @@
 pkgbase = monado-git
 	pkgdesc = The open source OpenXR runtime.
-	pkgver = 21.0.0.r4294.g7e7e011b
+	pkgver = 21.0.0.r4339.gfcdc20645
 	pkgrel = 1
 	url = https://monado.dev
 	install = monado.install
