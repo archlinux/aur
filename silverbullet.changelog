@@ -3,21 +3,46 @@ release.
 
 ---
 
-## Edge
-$edge
+## 0.7.0
+I know what you’re thinking: another “major” minor release, so quickly?
 
-_The changes below are not yet released “properly.” To try them out early, check out [the docs on edge](https://community.silverbullet.md/t/living-on-the-edge-builds/27)._
+Yeah... we’re swapping out some of the guts of SilverBullet here, so this warrants the version bump. Honestly, this should have been 100.0, but you know...
 
-* No edgy updates since 0.6.1. Hang tight!
+This is the one where the template engine SilverBullet is swapped out and no longer using [Handlebars.js](https://handlebarsjs.com/) under the hood. We’d like to thank handlebars for its effort, but everything has to end some day. It’s time to take our destiny into our own hands.
+
+SilverBullet now uses its own custom [[Template Language]] that is _way, way, way_ dare I say _way_ more powerful than Handlebars. I put in a lot of effort to ensure backwards compatibility, so unless you did some obscure things in your templates, everything should keep working as is. If not, please reach out on our [community](https://community.silverbullet.md) and I’ll do my best to support you in this journey that for sure will be worth it.
+
+Trust me, I’m an engineer.
+
+> **note** **Upgrade note**
+> While the [[Library/Core]] library that you (probably) imported previously will keep working (I hope), I would recommend you do another import overwriting the old files. Mainly because many templates have been rebuilt to leverage the new features of our new [[Template Language]] and therefore much cleaner. So please follow the [[Library/Core#Installation]] instructions, and hit “Ok” about 30 times.
+
+So, what’s the fuss all about?
+
+* **Soft breaking change**: `include` is the new name of the old `template` [[Blocks]]. Previously, a template block’s primary function was to include an external template or page — that role has now been replaced with [[Live Templates#Include]]. If you used `template` blocks in the past, you will see a warning squiggly warning appear suggesting you turn it into an `include` block, which is functionally equivalent to the old `template.` To fix this across your space, simply replace triple-backtick `template` with triple-backtick `include` across all your files and you should be done. That said, SilverBullet will detect if you’re using a legacy syntax `template` blocks and automatically interpret them as `include` blocks instead so _nothing should break_. Famous last words.
+* So, funny story, we’re also **instantly deprecating** these new `include` blocks and suggest you `template` all the things, see [[Live Templates#Recommended alternative]] for the rationale behind this insanity. You will ask: “So what is he going to deprecate next? [[Live Queries]]? _Hahaha!_” Honestly, probably yes, because everything those can do, templates do better — basically. But let’s take it slow for now. One step at a time, as my mom says.
+* **`template`s are the new hotness**. The body of a `template` block is now interpreted as the new and shiny [[Template Language]]! This means you get syntax highlighting and (best effort) code completion for all your markdown and template directives endeavors.
+* The [[Template Language]] and [[Query Language]] have been unified. It may not have been visible to everybody, but the handlebars syntax and SB’s own query language were different before. No longer.
+* The [[Expression Language]] used as part of the new [[Template Language]] has been significantly expanded. Some notable new features:
+  * It now supports some basics like a `not` operator, and ternary operator (`bla ? true : false`). I know, the level of innovation here is crazy.
+  * It now supports (sub) queries as values, simply wrap any query in `{` and `}` and you’re good to go: [[Expression Language#Queries]]
+  * It now supports _page references_ as values: [[Expression Language#Page references]]
+  * It now (officially) supports function calls, and while I’ve kept the set of built-in [[Functions]] deliberately small for now — this is where the big wins are going to be gained in future releases: [[Expression Language#Function calls]]. Let me know in the [community](https://community.silverbullet.md) what functions you’d like to see. _Even the ability to expand the set of functions using JavaScript from within your space_ is now on the table for future iterations.
+* A [[CHANGELOG]] entry is never not going to do this justice. I recommend you simply (re)read the following pages and check out the examples to have your 🤯 and start to think what you can do with this:
+  * [[Templates]]
+  * [[Template Language]]
+  * [[Query Language]]
+  * [[Expression Language]]
+* Ah yes, you can also still take notes with SilverBullet. That still works. I think.
 
 ## 0.6.1
 * Tag pages: when you click on a #tag you will now be directed to a page that shows all pages, tasks, items and paragraphs tagged with that tag.
 * Action buttons (top right buttons) can now be configured; see [[SETTINGS]] for how to do this.
 * Headers are now indexed, meaning you can query them [[Objects#header]] and also reference them by name via page links using `#` that I just demonstrated 👈. See [[Links]] for more information on all the types of link formats that SilverBullet now supports.
 * New {[Task: Remove Completed]} command to remove all completed tasks from a page
-* **Read-only mode** (experimental) is here; see [[Install/Configuration#Run mode]] on how to enable it. This allows you expose your space to the outside world in all its glory but without allowing anybody to edit anything.
+* **Read-only mode** (experimental) is here; see [[Install/Configuration#Run mode]] on how to enable it. This allows you to expose your space to the outside world in all its glory but without allowing anybody to edit anything.
   * [silverbullet.md](https://silverbullet.md) has now been redeployed to run in this mode
-  * Pages in this mode are _server-side rendered_ so their content can actually be indexed by search engines. In addition, some [OpenGraph](https://ogp.me/) attributes are put in in the HTML to enable nice embedding links, e.g. in our [community](https://community.silverbullet.md).
+  * Pages in this mode are _server-side rendered_ so their content can actually be indexed by search engines. In addition, some [OpenGraph](https://ogp.me/) attributes are put in the HTML to enable nice embedding links, e.g. in our [community](https://community.silverbullet.md).
 * New {[Clear Local Storage & Logout]} command to wipe out any locally synced data (and log you out if you use [[Authentication]]).
 * Bug fixes:
   * Improved Ctrl/Cmd-click (to open links in a new window) behavior: now actually follow `@pos` and `$anchor` links.
@@ -25,7 +50,7 @@ _The changes below are not yet released “properly.” To try them out early, c
   * `tags` in [[Frontmatter]] are now properly indexed again when listed as an array
 * Internal changes:
   * Big refactor: of navigation and browser history, fixed some {[Page: Rename]} bugs along the way
-  * Plugs now can no longer define their own markdown syntax, migrated all plug-specific syntax into the main parser. This should remove a bunch of editor “flashing” especially during sync.
+  * Plugs now can no longer define their own markdown syntax, migrated all plug-specific syntax into the main parser. This should remove a bunch of editor “flashing”, especially during sync.
 
 ---
 
@@ -40,7 +65,7 @@ _The changes below are not yet released “properly.” To try them out early, c
   * **Where did my templates go!?** They have now moved to the [[Template Picker]], run {[Navigate: Page Picker]} (or press `Cmd-Shift-t` on Mac or `Ctrl-Shift-t` on Windows/Linux) to get to them.
   * **Where did all my slash commands go?!** They are now distributed via [[Libraries]]. Yep, Libraries are here, enabling an easier way to distribute templates and pages. Read [[Libraries]] for more info.
   * **But, what about slash templates etc.?!** Yeah, we did some rebranding and changed how these are defined. Slash templates are now [[Snippets]] and cannot _just_ be instantiated via [[Slash Commands]], but through [[Commands]] and custom keybindings as well. Awesomeness.
-  * **And my page templates broke!?** Yeah, same story as with [[Snippets]]: the format for defining these changed a bit, but should be easy to update to the new format: check [[Page Templates]].
+  * **And my page templates broke!?** Yeah, same story as with [[Snippets]]: the format for defining these changed a bit, but it should be easy to update to the new format: check [[Page Templates]].
 * The [[Getting Started]] page (that is embedded in the `index` page that is auto-generated when creating a new space) has been updated to include instructions on how to import the [[Library/Core]] library.
 * **Directives have now been removed** from the code base. Please use [[Live Queries]] and [[Live Templates]] instead. If you haven’t migrated yet and want to auto-migrate, downgrade your SilverBullet version to 0.5.11 (e.g. using the `zefhemel/silverbullet:0.5.11` docker image) and run the {[Directive: Convert Entire Space to Live/Templates]} command with that version.
 * (Hopefully subtle) **breaking change** in how tags work (see [[Objects]]):
