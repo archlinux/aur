@@ -1,7 +1,7 @@
 pkgbase = onedev
 	pkgdesc = A self-hosted Git server with CI/CD and Kanban
 	pkgver = 10.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://code.onedev.io/onedev/server
 	install = onedev.install
 	arch = x86_64
