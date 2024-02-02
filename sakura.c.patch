@@ -1,0 +1,32 @@
+--- src/sakura.c	2024-02-02 21:36:13.718802928 +0800
++++ sakura.c	2024-02-02 21:40:02.514685481 +0800
+@@ -213,8 +213,27 @@
+ 	{0.7725490196078432  , 0.7843137254901961  , 0.7764705882352941  , 1}
+ };
+ 
+-const char *palettes_names[]= {"Solarized", "Tango", "Gruvbox", "Nord", "Xterm", "Linux", "Rxvt", "Hybrid", NULL};
+-const GdkRGBA *palettes[] = {solarized_palette, tango_palette, gruvbox_palette, nord_palette, xterm_palette, linux_palette, rxvt_palette, hybrid_palette, NULL};
++const GdkRGBA low_contrast_palette[PALETTE_SIZE] = {
++    {0.1875,        0.1875,     0.1875      },
++    {0.85546875,    0.0,        0.0         },
++    {0.375,         0.73828125, 0.02734375  },
++    {0.80859375,    0.66015625, 0.0         },
++    {0.234375,      0.453125,   0.73828125  },
++    {0.578125,      0.39453125, 0.609375    },
++    {0.0234375,     0.59375,    0.6015625   },
++    {0.82421875,    0.83984375, 0.80859375  },
++    {0.2890625,     0.28125,    0.2578125   },
++    {0.93359375,    0.16015625, 0.16015625  },
++    {0.5390625,     0.8828125,  0.203125    },
++    {0.984375,      0.91015625, 0.30859375  },
++    {0.4453125,     0.62109375, 0.80859375  },
++    {0.67578125,    0.49609375, 0.65625     },
++    {0.203125,      0.8828125,  0.8828125   },
++    {0.9296875,     0.9296875,  0.921875    },
++};
++
++const char *palettes_names[]= {"Solarized", "Tango", "Gruvbox", "Nord", "Xterm", "Linux", "Rxvt", "Hybrid", "LowContrast", NULL};
++const GdkRGBA *palettes[] = {solarized_palette, tango_palette, gruvbox_palette, nord_palette, xterm_palette, linux_palette, rxvt_palette, hybrid_palette, low_contrast_palette, NULL};
+ #define DEFAULT_PALETTE 1 /* Tango palette */
+ 
+ /* Color schemes (fg&bg) for sakura. Each colorset can use a different scheme */

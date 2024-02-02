@@ -1,0 +1,18 @@
+pkgbase = sakura-acd407
+	pkgdesc = A terminal emulator (with acd407 color patch)
+	pkgver = r945.d00621c
+	pkgrel = 1
+	url = https://launchpad.net/sakura
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = vte3
+	depends = libxft
+	conflicts = sakura
+	source = sakura-acd407::git+https://github.com/dabisu/sakura.git
+	source = sakura.c.patch
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = sakura-acd407
