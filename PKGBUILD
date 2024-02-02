@@ -7,7 +7,7 @@
 # Contributor: hexchain <i@hexchain.org>
 
 pkgname=telegram-desktop-kdefix-userfonts-altscroll
-pkgver=4.14.9
+pkgver=4.14.12
 pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
@@ -32,7 +32,7 @@ source=(
     "0003-qt5-lib-base-wayland-desktop-entry-fix.patch"
     "0004-qt5-disable-webview-linux-compositor.patch"
     "0005-qt5-lib-base-include-variant.patch")
-sha512sums=('802ec7eeef75ac97934cb0437c24dab62670f7029a1a5e44866cd77d39d7b572b79106c0b73bd742786548db938c49ba2e559123963ef0201adaa279b4cf9fa4'
+sha512sums=('59aaaa06959f0483137f51c03e641f8d929dc2b50e56c086e01c97d2fb0223da5b5c36b54e913afee737100f143f8db7c166adca34a38d2b0c3f833e394915f9'
             '38ff8627090ac9766a8d409fa26cbd4381640e08abcb677f4524a5305d011aa0f6ce81d69313a01f0db5c1a3794805bff2a059095258f5e8d9bd1133550cca2e'
             'e78f6c769c026214efaf988dc3a2aac632909f553c348fd357fe8dc353646866238c5e30bbb0f420a4352be6b4efa32e582f3e3d8390772889f8933f54db491c'
             '13eb112ea6adb4d73cbc2b8f91c751e4e64ab87b686867f1d0edaff43d92633d383f20171bb4f279fa7cbbb16a92e1c4d87657116791950122bd88df61097e48'
