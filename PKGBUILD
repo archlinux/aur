@@ -1,7 +1,7 @@
 # Maintainer: L.G. Sarmiento (Pico) <Luis.Sarmientop-ala-nuclear.lu.se>
 pkgname=gitlist-git
 _pkgname=gitlist
-pkgver=r572.c9235a5
+pkgver=r713.30d69a6
 pkgrel=1
 pkgdesc="An elegant and modern git repository viewer."
 arch=('any')
@@ -28,6 +28,6 @@ package() {
   install -d "$dstdir"
   cp -a "$srcdir"/$_pkgname "$dstdir"/$_pkgname
   #mkdir "$dstdir"/$_pkgname/cache
-  chmod 777 "$dstdir"/$_pkgname/cache
-  install -Dm644 $_pkgname/LICENSE.txt "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
+  #chmod 777 "$dstdir"/$_pkgname/cache
+  install -Dm644 $_pkgname/LICENSE ${pkgdir}/usr/share/licenses/$_pkgname/LICENSE
 }
