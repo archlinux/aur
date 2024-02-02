@@ -5,7 +5,7 @@
 # Contributor: Dan Ziemba <zman0900@gmail.com>
 
 ## options
-: ${_build_arch_patch:=true}
+: ${_build_arch_patch:=ftrue}
 
 : ${_build_clang:=false}
 : ${_build_tracer:=true}
@@ -23,7 +23,7 @@
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.7.2
+pkgver=6.7.3
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -53,7 +53,7 @@ source+=(
   "config-$pkgver"::https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/main/config
 )
 sha256sums+=(
-  'c34de41baa29c475c0834e88a3171e255ff86cd32d83c6bffc2b797e60bfa671'
+  'b7f08c652747574a3aa26e317d7a8f23ffab3fb645e1b1533b215dcfd5742b44'
   'SKIP'
   'SKIP'
 )
@@ -65,8 +65,8 @@ validpgpkeys=(
 
 if [[ ${_build_vfio::1} == "t" ]] ; then
   source+=(
-    1001-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
-    1002-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
+    1001-6.6.7-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
+    1002-6.6.7-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
   )
   sha256sums+=(
     'f342986bd27980c96c952b0dd8103d3e21a942d87f18df1308fab370e20010fb'
