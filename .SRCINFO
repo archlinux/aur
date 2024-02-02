@@ -1,7 +1,7 @@
 pkgbase = noite-appimage
 	pkgdesc = A simple notes apllication build with rust, tauri, and solidjs
 	pkgver = 0.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/RavenSam/noite
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = noite-appimage
 	conflicts = noite
 	options = !strip
 	source = noite-0.1.0.AppImage::https://github.com/RavenSam/noite/releases/download/v0.1.0/noite_0.1.0_amd64.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/RavenSam/noite/main/LICENSE
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/RavenSam/noite/main/LICENSE
 	sha256sums = 47707b000054e00dbd15859bbede86c840ae073d8d6ae77da7c5b43a158fc887
 	sha256sums = e4dbc11138f5e8796cf24f6871ab1a1b4fda774262c271724b34b7284821b320
 
