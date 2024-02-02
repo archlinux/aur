@@ -1,0 +1,52 @@
+diff -ru gwaei-3.6.2.orig/src/gwaei/searchwindow.c gwaei-3.6.2/src/gwaei/searchwindow.c
+--- gwaei-3.6.2.orig/src/gwaei/searchwindow.c	2012-11-07 05:57:46.000000000 +0100
++++ gwaei-3.6.2/src/gwaei/searchwindow.c	2024-08-19 20:44:31.028990306 +0200
+@@ -2345,6 +2345,7 @@
+       if (gtk_icon_theme_has_icon (theme, "system-run-symbolic")) gtk_image_set_from_icon_name (image, "system-run-symbolic", GTK_ICON_SIZE_MENU);
+       menuitem = GTK_MENU_ITEM (gtk_menu_item_new ());
+       submenu = GTK_MENU (gtk_menu_new_from_model (menumodel));
++      g_object_unref(menumodel);
+ 
+       gtk_toolbar_insert (toolbar, item, -1);
+       gtk_container_add (GTK_CONTAINER (item), GTK_WIDGET (menubar));
+@@ -2690,6 +2691,8 @@
+     
+     gw_menumodel_set_links (menumodel, "history-list-link", NULL, G_MENU_LINK_SECTION, link);
+ 
++    g_object_ref(menumodel);
++
+     if (builder != NULL) g_object_unref (builder); builder = NULL;
+     
+     return menumodel;
+diff -ru gwaei-3.6.2.orig/src/gwaei/vocabularywindow.c gwaei-3.6.2/src/gwaei/vocabularywindow.c
+--- gwaei-3.6.2.orig/src/gwaei/vocabularywindow.c	2012-11-04 08:14:02.000000000 +0100
++++ gwaei-3.6.2/src/gwaei/vocabularywindow.c	2024-08-19 20:47:28.678807952 +0200
+@@ -116,13 +116,18 @@
+ gw_vocabularywindow_finalize (GObject *object)
+ {
+     GwVocabularyWindow *window;
+-//    GwVocabularyWindowPrivate *priv;
++    GwVocabularyWindowPrivate *priv;
+ 
+     window = GW_VOCABULARYWINDOW (object);
+-//    priv = window->priv;
++    priv = window->priv;
+ 
+     gw_window_save_size (GW_WINDOW (window));
+ 
++    if (priv->flashcard_menumodel != NULL) {
++        g_object_unref(priv->flashcard_menumodel);
++        priv->flashcard_menumodel = NULL;
++    }
++
+     G_OBJECT_CLASS (gw_vocabularywindow_parent_class)->finalize (object);
+ }
+ 
+@@ -1042,6 +1047,7 @@
+     {
+       gw_application_load_xml (builder, "vocabularywindow-menumodel-flashcards.ui");
+       menumodel = G_MENU_MODEL (gtk_builder_get_object (builder, "menu"));
++      g_object_ref(menumodel);
+       priv->flashcard_menumodel = menumodel;
+     }
+ 
