@@ -1,6 +1,6 @@
 pkgbase = blender-develop-git
 	pkgdesc = Development version of Blender (non-conflicting version)
-	pkgver = 4.1.r132302.gfb16dbf9ae8
+	pkgver = 4.1.r132419.g561363dbed2
 	pkgrel = 1
 	url = https://blender.org/
 	changelog = blender.changelog
@@ -15,6 +15,7 @@ pkgbase = blender-develop-git
 	makedepends = llvm
 	makedepends = wayland
 	makedepends = wayland-protocols
+	makedepends = vulkan-headers
 	makedepends = libxkbcommon
 	makedepends = wayland-protocols
 	makedepends = cython
@@ -45,7 +46,6 @@ pkgbase = blender-develop-git
 	depends = libdecor
 	depends = libepoxy
 	depends = openpgl
-	depends = vulkan-headers
 	depends = shaderc
 	optdepends = cuda: CUDA support in Cycles
 	provides = blender=4.1
