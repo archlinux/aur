@@ -1,11 +1,11 @@
 pkgbase = deepin-wine-ximalaya
 	pkgdesc = 喜马拉雅，是中国领先的音频分享平台。用声音分享人类智慧，用声音服务美好生活，做一家人一辈子的精神食粮，是平台的使命和初心。
 	pkgver = 4.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ximalaya.com
 	install = deepin-wine-ximalaya.install
 	arch = x86_64
-	license = custom:freeware
+	license = LicenseRef-custom
 	makedepends = p7zip
 	depends = deepin-wine6-stable
 	depends = deepin-wine-helper
@@ -21,8 +21,8 @@ pkgbase = deepin-wine-ximalaya
 	source = LICENSE.html
 	source = deepin-wine-ximalaya.sh
 	sha256sums = 95834bc4ad16e4822331adac43b5f4feb9aeba50d103788a2cefad72cd8dc941
-	sha256sums = 3686a1a11a1ac0fc6c3140c63d654f1e80b1032b15a9433e6009c0d9e32c0f7e
+	sha256sums = 7bb0647d70828858fcccba3af63cffc8ac0179defaba674fb120bd3786c703be
 	sha256sums = 95b52ed4c2b0ef19d4a091da847c7dd20761699aa63a12bf933fa2064f49cd01
-	sha256sums = 481c7b4484e749ce8a3c4b5fe32643c25a88515ce1507c9520c5f55380bc7c7e
+	sha256sums = 1d9c5f770cfce6b7e7399333452aa78ceb94858a059ff5c98880eb7047f1fecb
 
 pkgname = deepin-wine-ximalaya

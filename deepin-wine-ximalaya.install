@@ -11,6 +11,6 @@ post_upgrade() {
     info
 }
 pre_remove() {
-    echo "deleting the douyin bottle..."
+    echo "deleting the ximalaya bottle..."
     find /home -maxdepth 2 -name ".deepinwine" -exec rm -rf \{\}/Deepin-ximalaya/ \;
 }

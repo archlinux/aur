@@ -2,13 +2,13 @@
 _appname=ximalaya
 pkgname="deepin-wine-${_appname}"
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 _sparkpkgname="com.${_appname}.spark"
 _sparkver=4.0.0spark9
 pkgdesc="喜马拉雅，是中国领先的音频分享平台。用声音分享人类智慧，用声音服务美好生活，做一家人一辈子的精神食粮，是平台的使命和初心。"
 arch=("x86_64")
 url="https://www.ximalaya.com"
-license=('custom:freeware')
+license=('LicenseRef-custom')
 depends=(
     'deepin-wine6-stable'
     'deepin-wine-helper'
@@ -32,9 +32,9 @@ source=(
     "${pkgname}".sh
 )
 sha256sums=('95834bc4ad16e4822331adac43b5f4feb9aeba50d103788a2cefad72cd8dc941'
-            '3686a1a11a1ac0fc6c3140c63d654f1e80b1032b15a9433e6009c0d9e32c0f7e'
+            '7bb0647d70828858fcccba3af63cffc8ac0179defaba674fb120bd3786c703be'
             '95b52ed4c2b0ef19d4a091da847c7dd20761699aa63a12bf933fa2064f49cd01'
-            '481c7b4484e749ce8a3c4b5fe32643c25a88515ce1507c9520c5f55380bc7c7e')
+            '1d9c5f770cfce6b7e7399333452aa78ceb94858a059ff5c98880eb7047f1fecb')
 build() {
     sed -e "s|@appname@|${_appname}|g" \
         -e "s|@appver@|${pkgver}|g" \
