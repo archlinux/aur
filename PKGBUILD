@@ -2,7 +2,7 @@
 
 pkgname=write-shm
 pkgrel=1
-pkgver=0.1.3
+pkgver=1.0.0
 pkgdesc="Write to a shared memory"
 url="https://github.com/NikolasK-source/write_shm"
 license=('MIT')
