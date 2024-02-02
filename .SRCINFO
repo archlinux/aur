@@ -1,7 +1,7 @@
 pkgbase = quictls-openssl
-	pkgdesc = TLS/SSL and crypto library with QUIC APIs, replacement for OpenSSL.
-	pkgver = 3.1.4+quic1
-	pkgrel = 2
+	pkgdesc = TLS/SSL and crypto library with QUIC APIs based on OpenSSL.
+	pkgver = 3.1.5+quic1
+	pkgrel = 0
 	url = https://github.com/quictls/openssl
 	arch = x86_64
 	license = Apache
@@ -10,14 +10,8 @@ pkgbase = quictls-openssl
 	depends = glibc
 	optdepends = ca-certificates
 	optdepends = perl
-	provides = openssl
-	provides = libcrypto.so
-	provides = libssl.so
-	conflicts = openssl
-	conflicts = openssl-perl
-	conflicts = openssl-doc
 	backup = etc/ssl/openssl.cnf
-	source = git+https://github.com/quictls/openssl#tag=openssl-3.1.4-quic1
+	source = git+https://github.com/quictls/openssl#tag=opernssl-3.1.5-quic1
 	md5sums = SKIP
 
 pkgname = quictls-openssl

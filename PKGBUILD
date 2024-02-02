@@ -1,20 +1,28 @@
 # Maintainer: Atle Solbakken <atle@goliathdns.no>
 
 pkgname=quictls-openssl
-pkgver=3.1.4+quic1
-pkgrel=2
-pkgdesc="TLS/SSL and crypto library with QUIC APIs, replacement for OpenSSL."
+pkgver=3.1.5+quic1
+pkgrel=0
+pkgdesc="TLS/SSL and crypto library with QUIC APIs based on OpenSSL."
+#pkgdesc="TLS/SSL and crypto library with QUIC APIs, replacement for OpenSSL."
 arch=('x86_64')
 url="https://github.com/quictls/openssl"
 license=('Apache')
 depends=('glibc')
 makedepends=('perl' 'git')
 optdepends=('ca-certificates' 'perl')
-conflicts=('openssl' 'openssl-perl' 'openssl-doc')
-provides=('openssl' 'libcrypto.so' 'libssl.so')
+# [atle 2024-02-02] Package can not longe provide openssl for Arch packages.
+#                   Curl and possibly others now require 3.2 version, and it
+#                   is not possible to patch from the quictls project on top
+#                   of that as 3.2 has a separate quic implementation with
+#                   name collisions.
+# [atle 2024-02-02] For now, this package will be installed in /opt/quictls-openssl
+#                   directory instead and users must have stock openssl alongside.
+# conflicts=('openssl' 'openssl-perl' 'openssl-doc')
+# provides=('openssl' 'libcrypto.so' 'libssl.so')
 # Do not add replaces=('openssl') per guidelines
 backup=('etc/ssl/openssl.cnf')
-source=("git+https://github.com/quictls/openssl#tag=openssl-3.1.4-quic1")
+source=("git+https://github.com/quictls/openssl#tag=opernssl-3.1.5-quic1")
 md5sums=('SKIP')
 
 # PKGBUILD based on
@@ -23,7 +31,7 @@ md5sums=('SKIP')
 # Update this PKGBUILD as needed to match it as closely as possible
 
 pkgver() {
-	printf "3.1.4+quic1"
+	printf "3.1.5+quic"
 }
 
 prepare() {
@@ -39,13 +47,18 @@ prepare() {
 build() {
 	cd "$srcdir/openssl"
 
+	# [atle 2024-02-02] Use /opt install path, se comments above.
+
+	#./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
+	#    shared no-ssl3-method enable-ec_nistp_64_gcc_128 linux-x86_64 \
+	#    "-Wa,--noexecstack" ${CPPFLAGS} ${CFLAGS} ${LDFLAGS}
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
-	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
+	./Configure --prefix=/opt/quictls-openssl --openssldir=etc/ssl --libdir=lib \
 	    shared no-ssl3-method enable-ec_nistp_64_gcc_128 linux-x86_64 \
 	    "-Wa,--noexecstack" ${CPPFLAGS} ${CFLAGS} ${LDFLAGS}
 
 	make depend
-	make -j 4
+	make -j$(nproc)
 }
 
 check() {
@@ -66,7 +79,11 @@ check() {
 package() {
 	cd "$srcdir/openssl"
 
-	make DESTDIR="$pkgdir" MANDIR=/usr/share/man MANSUFFIX=ssl install_sw install_ssldirs install_man_docs
+	# [atle 2024-02-02] Use /opt install path, se comments above.
 
-	install -D -m644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+	#make DESTDIR="$pkgdir" MANDIR=/usr/share/man MANSUFFIX=ssl install_sw install_ssldirs install_man_docs
+	#install -D -m644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+
+	make DESTDIR="$pkgdir" MANDIR=/opt/quictls-openssl/usr/share/man MANSUFFIX=ssl install_sw install_ssldirs install_man_docs
+	install -D -m644 LICENSE.txt "$pkgdir/opt/quictls-openssl/usr/share/licenses/$pkgname/LICENSE.txt"
 }
