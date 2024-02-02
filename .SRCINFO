@@ -1,6 +1,6 @@
 pkgbase = fdispatcher-git
 	pkgdesc = An easy-to-use file dispatcher based on extension
-	pkgver = latest
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/pbackz/fdispatcher
 	arch = x86_64
