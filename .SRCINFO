@@ -1,7 +1,7 @@
 pkgbase = daed-git
 	pkgdesc = A modern dashboard for dae, bundled with dae-wing (backend API server) and dae (core).
-	pkgver = 0.3.1.r1.ge6b55d2
-	pkgrel = 3
+	pkgver = 0.4.0rc1.r67.g7cfcd38
+	pkgrel = 1
 	url = https://github.com/daeuniverse/daed
 	arch = x86_64
 	arch = aarch64

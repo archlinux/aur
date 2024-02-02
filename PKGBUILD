@@ -1,10 +1,10 @@
-# Maintainer: Integral <integral@murena.io>
+# Maintainer: Integral <integral@member.fsf.org>
 # Maintainer: cubercsl <2014cais01 at gmail dot com>
 
 pkgname=daed-git
 _pkgname=${pkgname%-git}
-pkgver=0.3.1.r1.ge6b55d2
-pkgrel=3
+pkgver=0.4.0rc1.r67.g7cfcd38
+pkgrel=1
 pkgdesc="A modern dashboard for dae, bundled with dae-wing (backend API server) and dae (core)."
 arch=('x86_64' 'aarch64')
 url="https://github.com/daeuniverse/daed"
