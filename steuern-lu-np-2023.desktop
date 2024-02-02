@@ -1,0 +1,7 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Name=Steuern Luzern 2023 nP
+Exec="/opt/steuern-lu-np-2023/steuern.lu.2023 nP" %U
+Categories=Application;
+Icon=/opt/steuern-lu-np-2023/app.png
