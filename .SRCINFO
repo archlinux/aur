@@ -1,7 +1,7 @@
 pkgbase = hhd-git
 	pkgdesc = Handheld Daemon. A tool for managing the quirks of handheld devices. Latest git checkout.
-	pkgver = 1.1.4+16.r531.20240201.c980f91
-	pkgrel = 3
+	pkgver = 1.1.4+19.r534.20240202.55d4784
+	pkgrel = 1
 	url = https://github.com/hhd-dev/hhd
 	arch = x86_64
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = hhd-git
 	sha256sums = SKIP
 
 pkgname = hhd-git
-	depends = hhd-license-git=1.1.4+16.r531.20240201.c980f91
+	depends = hhd-license-git=1.1.4+19.r534.20240202.55d4784
 	depends = python
 	depends = python-evdev
 	depends = python-rich
@@ -23,32 +23,32 @@ pkgname = hhd-git
 	optdepends = hhd-ui: A (browser based) graphical user interface for hhd.
 	optdepends = hhd-user: allows running hhd as a user service.
 	optdepends = hhd-systemd: For automatic startup at system boot.
-	provides = hhd=1.1.4+16.r531.20240201.c980f91
+	provides = hhd=1.1.4+19.r534.20240202.55d4784
 	conflicts = hhd
 
 pkgname = hhd-systemd-git
 	pkgdesc = Systemd service file for 'hhd'. Latest git checkout.
 	arch = any
 	depends = hhd
-	depends = hhd-license-git=1.1.4+16.r531.20240201.c980f91
+	depends = hhd-license-git=1.1.4+19.r534.20240202.55d4784
 	depends = python-setuptools
 	optdepends = systemd: To make use of this systemd service.
-	provides = hhd-systemd=1.1.4+16.r531.20240201.c980f91
+	provides = hhd-systemd=1.1.4+19.r534.20240202.55d4784
 	conflicts = hhd-systemd
 
 pkgname = hhd-license-git
 	pkgdesc = Common license file for 'hhd-git' and 'hhd-systemd-git'.
 	arch = any
 	depends = 
-	optdepends = hhd-git=1.1.4+16.r531.20240201.c980f91: The software this license file is for.
-	optdepends = hhd-systemd-git=1.1.4+16.r531.20240201.c980f91: The code this license file is for.
+	optdepends = hhd-git=1.1.4+19.r534.20240202.55d4784: The software this license file is for.
+	optdepends = hhd-systemd-git=1.1.4+19.r534.20240202.55d4784: The code this license file is for.
 	provides = 
 	conflicts = 
 
 pkgname = hhd-doc-git
 	pkgdesc = Documentation for 'hhd'.
 	arch = any
-	depends = hhd-license-git=1.1.4+16.r531.20240201.c980f91
+	depends = hhd-license-git=1.1.4+19.r534.20240202.55d4784
 	optdepends = hhd: The software this Documentation is for.
-	provides = hhd-doc=1.1.4+16.r531.20240201.c980f91
+	provides = hhd-doc=1.1.4+19.r534.20240202.55d4784
 	conflicts = hhd-doc
