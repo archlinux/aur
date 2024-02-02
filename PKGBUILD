@@ -2,7 +2,7 @@
 # Contributor: Luna Jernberg <lunajernberg@gnome.org>
 
 pkgname=tuba
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=0.1
 pkgdesc='Browse the Fediverse'
 arch=(
@@ -74,12 +74,12 @@ optdepends=(
   'hunspell-ru: Russian spellchecking dictionary'
 )
 
-_commit=e4b2ebe6795de53d604373a31b36f1953cba3fe4 # tags/0.6.2^0
+_commit=69d0a1531a0fc57489fd1bbaa1298988ec4d3747 # tags/0.6.3^0
 validpgpkeys=(
   ## curl -sS https://github.com/GeopJr.gpg | gpg --import -
   '04A92A61E5CE5342F40E48DCFE5185F095BFC8C9' #Evangelos Paterakis <evan@geopjr.dev>
   ## curl -sS https://github.com/web-flow.gpg | gpg --import -
-  '5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23' #Github Web-Flow
+  '968479A1AFF927E37D1A566BB5690EEEBB952194' #Github Web-Flow
 )
 source=("git+https://github.com/GeopJr/Tuba.git#commit=${_commit}?signed")
 sha256sums=('SKIP')

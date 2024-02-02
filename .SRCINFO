@@ -1,6 +1,6 @@
 pkgbase = tuba
 	pkgdesc = Browse the Fediverse
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 0.1
 	url = https://tuba.geopjr.dev/
 	arch = aarch64
@@ -61,9 +61,9 @@ pkgbase = tuba
 	optdepends = hunspell-pl: Polish spellchecking dictionary
 	optdepends = hunspell-ro: Romanian spellchecking dictionary
 	optdepends = hunspell-ru: Russian spellchecking dictionary
-	source = git+https://github.com/GeopJr/Tuba.git#commit=e4b2ebe6795de53d604373a31b36f1953cba3fe4?signed
+	source = git+https://github.com/GeopJr/Tuba.git#commit=69d0a1531a0fc57489fd1bbaa1298988ec4d3747?signed
 	validpgpkeys = 04A92A61E5CE5342F40E48DCFE5185F095BFC8C9
-	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
+	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
 	sha256sums = SKIP
 
 pkgname = tuba
