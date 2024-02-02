@@ -1,4 +1,5 @@
-# Maintainer: Douglas Browne <douglas.browne123@gmail.com>
+# Maintainer: crowdigit <digitalcrow at protonmail dot com>
+# Contributor: Douglas Browne <douglas.browne123 at gmail dot com>
 pkgname=loudness-scanner-git
 pkgver=v0.6.0.r2.g3e38b3e
 pkgrel=1
