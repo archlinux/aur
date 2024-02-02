@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Name=Yet Another Factorio Calculator Community Edition (YAFC-CE)
+Exec=factorio-yafc-ce %U
+Comment=Powerful Factorio calculator/analyser that works with mods
+Categories=Game;
