@@ -33,7 +33,7 @@
 ## basic info
 pkgname="firefox${_pkgtype:-}"
 _pkgname=firefox-nightly
-pkgver=123.0a1+20240114.1+hc9d8485f858a
+pkgver=124.0a1+20240202.1+h36c0f999f668
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 url="https://www.mozilla.org/firefox/channel/#nightly"
@@ -135,7 +135,8 @@ if [[ "${_build_nightly::1}" == "t" ]] ; then
     local _info_url="https://archive.mozilla.org/pub/firefox/nightly/latest-mozilla-central"
     local _filename=$(
       curl -Ssf "$_info_url/" | grep linux-x86_64\.txt \
-        | sed -E 's&^.*href=".*/(firefox-.*\.linux-x86_64\.txt)".*$&\1&'
+        | sed -E 's&^.*href=".*/(firefox-.*\.linux-x86_64\.txt)".*$&\1&' \
+        | sort -rV | head -1
     )
     local _response=$(curl -Ssf "$_info_url/$_filename")
     _version=$(printf '%s' "$_filename" | sed -E 's&^firefox-([0-9]+\.[0-9].*)\.en-US\.linux-x86_64\.txt$&\1&')
