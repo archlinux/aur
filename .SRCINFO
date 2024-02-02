@@ -1,7 +1,7 @@
 pkgbase = hhd-git
 	pkgdesc = Handheld Daemon. A tool for managing the quirks of handheld devices. Latest git checkout.
 	pkgver = 1.1.4+16.r531.20240201.c980f91
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hhd-dev/hhd
 	arch = x86_64
 	license = MIT
@@ -48,7 +48,7 @@ pkgname = hhd-license-git
 pkgname = hhd-doc-git
 	pkgdesc = Documentation for 'hhd'.
 	arch = any
-	depends = 
+	depends = hhd-license-git=1.1.4+16.r531.20240201.c980f91
 	optdepends = hhd: The software this Documentation is for.
 	provides = hhd-doc=1.1.4+16.r531.20240201.c980f91
 	conflicts = hhd-doc

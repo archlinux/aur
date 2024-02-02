@@ -11,7 +11,7 @@ pkgname=(
   "${_pkgbase}-doc${_vcssuffix}"
 )
 pkgver=1.1.4+16.r531.20240201.c980f91
-pkgrel=2
+pkgrel=3
 pkgdesc='Handheld Daemon. A tool for managing the quirks of handheld devices. Latest git checkout.'
 arch=(
   'x86_64'
@@ -116,7 +116,9 @@ package_hhd-systemd-git() {
 package_hhd-doc-git() {
   pkgdesc="Documentation for '${_pkgbase}'."
   arch=('any')
-  depends=()
+  depends=(
+    "${_pkgbase}-license${_vcssuffix}=${pkgver}"
+  )
   optdepends=(
     "${_pkgbase}: The software this Documentation is for."
   )
