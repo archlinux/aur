@@ -25,6 +25,7 @@ depends=(
     libcap.so
     libdisplay-info.so
     libdrm
+    libliftoff.so
     libinput
     libpipewire-0.3.so
     libvulkan.so
@@ -58,12 +59,8 @@ makedepends=(
     vulkan-headers
     wayland-protocols
 )
-source=(
-    "git+https://github.com/ValveSoftware/gamescope.git"
-    "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a"
-)
-b2sums=('SKIP'
-        'SKIP')
+source=('git+https://github.com/ValveSoftware/gamescope.git')
+b2sums=('SKIP')
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -78,13 +75,12 @@ prepare() {
         echo "Applying patch $src..."
         git apply "../$src"
     done
-
-    git submodule update --init --recursive --depth=1
+    meson subprojects download
+    git submodule init
     git -c protocol.file.allow=always submodule update
-    # make stb.wrap use our local clone
-    rm -rf subprojects/stb
-    git clone "$srcdir/stb" subprojects/stb
-    cp -av subprojects/packagefiles/stb/* subprojects/stb/ # patch from the .wrap we elided
+
+    # Use Arch provided libdisplay-info, do use other subprojects as is
+    rm -rf subprojects/libdisplay-info
 }
 
 pkgver() {
@@ -93,8 +89,8 @@ pkgver() {
 }
 
 build() {
-    export LDFLAGS="$LDFLAGS -lrt"
     arch-meson "${_pkgname}" build \
+        -Dforce_fallback_for=stb \
         -Dpipewire=enabled
     meson compile -C build
 }
