@@ -3,16 +3,16 @@
 
 pkgname='slang-snapshot'
 _pkgname="${pkgname%-snapshot}"
-_pkgver=2.3.4-8
+_pkgver=2.3.4-9
 _prever="pre$_pkgver"
 pkgver="${_pkgver/-/.}"
-pkgrel=7
+pkgrel=1
 pkgdesc='S-Lang is a powerful interpreted language (development snapshot)'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 provides=('libslang.so' 'slang' 'slsh')
 conflicts=('libslang.so' 'slang' 'slsh')
 url='https://jedsoft.org/snapshots/'
-license=('GPL-2.0-or-later')
+license=('GPL-2.0-or-later')  # SPDX-License-Identifier: GPL-2.0-or-later
 depends=(
   'glibc'
   'libpng'
@@ -25,7 +25,8 @@ options=('lto' '!makeflags')
 source=("${url}${_pkgname}-$_prever.tar.gz")
 validpgpkeys=('AE962A02D29BFE4A4BB2805FDE401E0D5873000A')  # John E. Davis
 # Taken from $url
-md5sums=('c740ca7ded82fa29849046ca33c572b1')
+md5sums=('4860e0f80b53fe62c813beb1dfb04ff2')
+changelog="$pkgname.changelog"
 
 build() {
   cd "${_pkgname}-${_prever}"
@@ -59,10 +60,10 @@ package() {
 
 # Calculated
 sha256sums=(
-  'bd2de566dba919a0cc230b970236c89b095d693cc15344e28f7f9d4e646b9a6b'
+  '2e709a751262c83e7b28795da22da63621886ba0567e7712bb163441f7bc5002'
 )
-sha512sums=(
-  'bca104861f947b8a7a318c0cf4128be236eea603f0ca73125d7609d6ff4a7a425d99388e6df64f2d5b1f92a1e32bddb655dcaaa85acd397507559cdf11daf98b'
+b2sums=(
+  'd7186ed9b169df381d15ea21f500a59ea020be010e74877d0802172d50f110884eec4cda2251f9496e4b71dc4273cfb40d9927cfe3a326ca429f8c1307cec171'
 )
 
 # eof

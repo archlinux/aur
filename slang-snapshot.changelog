@@ -1,0 +1,23 @@
+Changes since 2.3.3
+1. src/slang.c: Use ptrdiff_t instead of long for the intrinsic
+   function prototypes.  This is especially important for LLP64
+   systems such as MS windows.
+2. src/slw32tty.c: The console mode was not getting reset by the
+   SLang_reset_tty function on windows systems
+3. src/_slint.h: On windows sytems, use %lld and %llu for long long
+   integer formats
+4. mkfiles/m32init.bat: Copy config file to module and slsh
+   subdirectories (windows-specific)
+5. src/slposio.c: Added a window-specific tweak so that dup2 returns
+   the duped file descriptor.  Also updated the regresssion tests
+   (window-specific).
+6. src/slvideo.c: On windows, make calls to SetConsoleScreenBufferSize
+   and SetConsoleWindowInfo after calling CreateConsoleScreenBuffer so
+   that the newly created console will have the correct size.  Also
+   INSTALL.pc was updated (windows-specific)
+7. mkfiles/makefile.m32: Added install1 target to work with versions
+   of mingw make that cannot process the install target.  Previously
+   this required editing the makefile (windows specific)
+8. src/sltime.c: check for NULL return value from the ctime function
+9. src/slang.ver: Removed the undefined symbol SLang_Rline_Quit,
+   which was causing a link error on Gentoo Linux (Michal Rostecki)
