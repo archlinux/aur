@@ -1,13 +1,14 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
-pkgname=hasl-hg
-pkgver=r34.fa548528b5f7
+pkgbase=hasl-hg
+pkgname=(hasl-hg hasl-docs-hg)
+pkgver=r59.ca6442534909
 pkgrel=1
 pkgdesc="The Hassle-free Authentication and Security Layer client library"
 arch=("x86_64")
 url="https://keep.imfreedom.org/hasl/hasl/"
-license=('GPL')
-depends=(glib2 glibc )
-makedepends=(meson ninja mercurial gi-docgen gobject-introspection )
+license=('LGPL-2.1-or-later')
+depends=(glib2 glibc libidn)
+makedepends=(meson ninja mercurial gi-docgen gobject-introspection)
 provides=('hasl')
 source=("hg+https://keep.imfreedom.org/hasl/hasl")
 sha256sums=('SKIP')
@@ -22,9 +23,27 @@ build() {
 	ninja -C build
 }
 
-package() {
-        DESTDIR="$pkgdir/" ninja -C build install
-
-
+_pick() {
+  local p="$1" f d; shift
+  for f; do
+    d="$srcdir/$p/${f#$pkgdir/}"
+    mkdir -p "$(dirname "$d")"
+    mv "$f" "$d"
+    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+  done
 }
+
+package_hasl-hg() {
+  DESTDIR="$pkgdir/" ninja -C build install
+
+  cd "$pkgdir"
+
+   _pick docs usr/share/doc
+}
+
+package_hasl-docs-hg() {
+   pkdesc+="  (documentation)"
+   depends=()
+   mv docs/* "$pkgdir"
+ }
 
