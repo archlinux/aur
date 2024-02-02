@@ -2,8 +2,8 @@
 
 pkgname="systemd-yodad"
 pkgver=1.0.0
-pkgrel=1
-pkgdesc="Waaaaaaargu"
+pkgrel=2
+pkgdesc="Made for Brodie's stream, plays the yoda death sound effect randomly"
 arch=(any)
 url="https://github.com/thatonecalculator/systemd-yodad"
 license=('MIT')
