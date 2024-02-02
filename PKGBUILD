@@ -76,10 +76,14 @@ package() {
   install -D -m 0755 "${srcdir}/${source[1]}" \
     "${pkgdir}/etc/profile.d/google-cloud-cli.sh"
 
-  install -D -m 0644 "${pkgdir}/opt/${pkgname}/completion.bash.inc" \
+  install -d -m 0755 \
+    "${pkgdir}/etc/bash_completion.d" \
+    "${pkgdir}/usr/share/zsh/site-functions" \
+
+  ln -rsT "${pkgdir}/opt/${pkgname}/completion.bash.inc" \
     "${pkgdir}/etc/bash_completion.d/google-cloud-cli"
 
-  install -D -m 0644 "${pkgdir}/opt/${pkgname}/completion.zsh.inc" \
+  ln -rsT "${pkgdir}/opt/${pkgname}/completion.zsh.inc" \
     "${pkgdir}/usr/share/zsh/site-functions/_gcloud"
 
   mkdir -p "${pkgdir}/usr/share"
