@@ -2,7 +2,7 @@
 # Contributor: Gaël Donval <gdonval+aur at google mail>
 _base=pytest-selenium
 pkgname=python-${_base}
-pkgver=4.0.2
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="pytest plugin for Selenium"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python-pytest-base-url python-pytest-html python-pytest-variables pytho
 makedepends=(python-build python-installer python-hatch-vcs)
 # checkdepends=(python-pytest-localserver python-pytest-xdist python-pytest-mock python-py chromedriver) # geckodriver
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('89aa58bb14b64c24e4ab48a0173cbbe40aa6f15336c6e964fab0e087fc75a1699d2b333bda389015df97e9e6b79c7e0e5c5506cdc7aaad70ab38831322c2ca42')
+sha512sums=('87943c1e2510f752d6f969094f84bf840b33b9190224c60a665bd0540f810b1185fb0ab799ccd6ee57d2eaa61d62f77f00b2b7fb5684cf46ffb410587c55e5cc')
 
 build() {
   cd ${_base}-${pkgver}
