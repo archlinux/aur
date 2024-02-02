@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kwok-bin
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="Kubernetes WithOut Kubelet - Simulates thousands of Nodes and Clusters."
 arch=(
     'aarch64'
@@ -10,7 +10,7 @@ arch=(
 )
 url="https://kwok.sigs.k8s.io/"
 _ghurl="https://github.com/kubernetes-sigs/kwok"
-license=('Apache')
+license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source_aarch64=(
@@ -25,12 +25,12 @@ source_x86_64=(
     "${pkgname%-bin}-${pkgver}-x86_64::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-amd64"
     "${pkgname%-bin}ctl-${pkgver}-x86_64::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}ctl-linux-amd64"
 )
-sha256sums_aarch64=('844461eef0de3313f3b019a7238c2d5a7b2095a56e505cfbe33b23516ff6348e'
-                    'fa06c78a4f20d9c474571835edd65fb9a586fa5a6fec752b85c28e55fc3888ca')
-sha256sums_armv7h=('844461eef0de3313f3b019a7238c2d5a7b2095a56e505cfbe33b23516ff6348e'
-                   'fa06c78a4f20d9c474571835edd65fb9a586fa5a6fec752b85c28e55fc3888ca')
-sha256sums_x86_64=('dcdcd0f53fb776684ee60bad1c476c6654ed53cba1f1f6cdca0c0b1346bcd121'
-                   'e1a6a9930ad73f932df8d4703fef98ed046fb97e1b86588ca684da11255d6091')
+sha256sums_aarch64=('3be27942b6ab49a9408feed7d4c08f9c35bbadbb822deb0b19c2afc536f44abd'
+                    '0b00ce5c3e339670be154d296e561a8f0d0dc8d21e428dfcb21ef7d134328130')
+sha256sums_armv7h=('3be27942b6ab49a9408feed7d4c08f9c35bbadbb822deb0b19c2afc536f44abd'
+                   '0b00ce5c3e339670be154d296e561a8f0d0dc8d21e428dfcb21ef7d134328130')
+sha256sums_x86_64=('5575549e4dd4702259e74f05b53470ab8dcf291d3f5aaefc2c660db4b2a88f50'
+                   '034566e10138ef72c8ddd789402d76729686d09be84a353ad1633e4c1aa60be0')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/${pkgname%-bin}ctl-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${pkgname%-bin}ctl"
