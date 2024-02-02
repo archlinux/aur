@@ -3,12 +3,12 @@ pkgname=selvania-launcher-bin
 _pkgname=Selvania-Launcher
 pkgver=2.0.0
 _electronversion=27
-pkgrel=1
+pkgrel=2
 pkgdesc="Custom launcher for modded minecraft written in electron.js and Node.js"
 arch=("x86_64")
 url="http://luuxis.fr/"
 _ghurl="https://github.com/luuxis/Selvania-Launcher"
-license=("custom")
+license=("CC-BY-ND-4.0")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -21,11 +21,11 @@ source=(
 )
 sha256sums=('6d0c607eb866f2f079be63ca283b538cfe22c402f49b941a5283c2a37dfb3eff'
             '7c73b8f626696c0403394da3dae0d5ed33009cc2d674803d40bc4e2c7e67174b'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|\"/opt/${_pkgname//-/ }/${pkgname%-bin}\"|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
