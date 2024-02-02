@@ -1,7 +1,7 @@
 # Maintainer: Roboron <robertoms258 at gmail dot com >
 
 pkgname=simutrans-pak192.comic
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc='High resolution graphics set for Simutrans, with a comic style'
 arch=('any')
