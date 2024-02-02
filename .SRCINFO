@@ -1,22 +1,18 @@
 pkgbase = cbmc
-	pkgdesc = Bounded Model Checking for ANSI-C
-	pkgver = 5.11
+	pkgdesc = C Bounded Model Checker
+	pkgver = 5.95.1
 	pkgrel = 1
-	url = http://www.cprover.org/cbmc/
-	arch = i686
+	url = https://diffblue.github.io
+	changelog = CHANGELOG
 	arch = x86_64
-	license = custom
-	makedepends = flex
-	makedepends = bison
-	makedepends = make
-	makedepends = patch
-	makedepends = perl-libwww
+	license = custom:4-clause BSD license
 	provides = cbmc
 	conflicts = cbmc
 	conflicts = cbmc-git
 	conflicts = cbmc-bin
-	source = https://github.com/diffblue/cbmc/archive/cbmc-5.11.tar.gz
-	sha256sums = 5c3e621c07ff9903beff99b2b91645d82fbb31d5e761384a7c19ef022ffa2c85
+	source = https://github.com/diffblue/cbmc/archive/refs/tags/cbmc-5.95.1.tar.gz
+	source = https://ftp.debian.org/debian/pool/main/m/minisat2/minisat2_2.2.1.orig.tar.gz
+	b2sums = 463c7a815caf5bc8f9ecae9f6e144a88003e3d8656488d95618f34630096df978a1aafb1db37be4cde86b843bb1d708b702c918bee7066364f2b69b44c87d3d1
+	b2sums = de9bded4bd8a17ec157af486c0572d47429cd0f59bdd57e1238d3c031d7406dc4e305e5e7368898c991e0184ed845bae21717f10a8ba36ea6b60aac0fb84dc71
 
 pkgname = cbmc
-

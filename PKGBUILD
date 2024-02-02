@@ -1,43 +1,67 @@
-# Maintainer: Python Shell <pythonshell@yeah.net>
+# Maintainer: Jiri Pospisil <jiri@jpospisil.com>
+# Contributor: Python Shell <pythonshell@yeah.net>
 
 pkgname=cbmc
-pkgver=5.11
+pkgver=5.95.1
 pkgrel=1
-pkgdesc="Bounded Model Checking for ANSI-C"
-arch=('i686' 'x86_64')
-url="http://www.cprover.org/cbmc/"
-license=('custom')
-# No longer need subversion
-makedepends=('flex' 'bison' 'make' 'patch' 'perl-libwww')
+pkgdesc='C Bounded Model Checker'
+arch=('x86_64')
+url='https://diffblue.github.io'
+license=('custom:4-clause BSD license')
 provides=('cbmc')
 conflicts=('cbmc' 'cbmc-git' 'cbmc-bin')
-source=("https://github.com/diffblue/cbmc/archive/cbmc-5.11.tar.gz")
-sha256sums=('5c3e621c07ff9903beff99b2b91645d82fbb31d5e761384a7c19ef022ffa2c85')
+changelog=CHANGELOG
+_minisatver=2.2.1
+source=(
+  "https://github.com/diffblue/cbmc/archive/refs/tags/cbmc-$pkgver.tar.gz"
+  "https://ftp.debian.org/debian/pool/main/m/minisat2/minisat2_$_minisatver.orig.tar.gz")
+b2sums=('463c7a815caf5bc8f9ecae9f6e144a88003e3d8656488d95618f34630096df978a1aafb1db37be4cde86b843bb1d708b702c918bee7066364f2b69b44c87d3d1'
+        'de9bded4bd8a17ec157af486c0572d47429cd0f59bdd57e1238d3c031d7406dc4e305e5e7368898c991e0184ed845bae21717f10a8ba36ea6b60aac0fb84dc71')
 
-_pkg_src_root="${pkgname}-${pkgname}-${pkgver}"
+prepare() {
+  mv "minisat2-$_minisatver" "minisat-$_minisatver"
+  mv "minisat-$_minisatver" "$srcdir/cbmc-cbmc-$pkgver"
+
+  cd "$srcdir/cbmc-cbmc-$pkgver/minisat-$_minisatver"
+  patch -p1 < "../scripts/minisat-$_minisatver-patch"
+}
 
 build() {
-    cd "${srcdir}/${_pkg_src_root}/src/"
-    # Makefile typo fix
-    # No longer typo in 5.8, 20171201
-    #sed -i '/libzip_1.1.2.orig/a\\t\@mv libzip_1.1.2.orig.tar.gz libzip-1.1.2.tar.gz' Makefile
-    # Remove -Werror in config.inc::CXXFLAGS
-    sed -i '/  CXXFLAGS += -Wall -pedantic -Werror/c\  CXXFLAGS += -Wall -pedantic' config.inc
-    make minisat2-download
-    # No longer need these two
-    #make libzip-download zlib-download
-    #make libzip-build
-    make
+  make -C "$srcdir/cbmc-cbmc-$pkgver/src"
 }
 
 package() {
-    install -D "${srcdir}/${_pkg_src_root}/src/cbmc/cbmc"\
-        "${pkgdir}/usr/bin/cbmc"
-    install -D "${srcdir}/${_pkg_src_root}/src/goto-cc/goto-cc"\
-        "${pkgdir}/usr/bin/goto-cc"
-    install -D "${srcdir}/${_pkg_src_root}/src/goto-instrument/goto-instrument"\
-        "${pkgdir}/usr/bin/goto-instrument"
-    install -D -m644\
-        "${srcdir}/${_pkg_src_root}/LICENSE"\
-        "${pkgdir}/usr/share/licenses/cbmc/LICENSE"
+  cd "$srcdir/cbmc-cbmc-$pkgver/src"
+
+  local -a binaries=(
+    cbmc/cbmc
+    cprover/cprover
+    crangler/crangler
+    goto-analyzer/goto-analyzer
+    goto-cc/goto-cc
+    goto-diff/goto-diff
+    goto-harness/goto-harness
+    goto-inspect/goto-inspect
+    goto-instrument/goto-instrument
+    goto-synthesizer/goto-synthesizer
+    memory-analyzer/memory-analyzer
+    solvers/smt2_solver
+    symtab2gb/symtab2gb
+  )
+  install -Dm755 -t "$pkgdir/usr/bin" "${binaries[@]}"
+
+  ln -s "goto-cc" "$pkgdir/usr/bin/goto-gcc"
+  ln -s "goto-cc" "$pkgdir/usr/bin/goto-ld"
+
+  cd ..
+
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "LICENSE"
+
+  for binary in "${binaries[@]}"; do
+    local name="doc/man/${binary##*/}.1"
+    [[ -e "$name" ]] && install -Dm644 -t "$pkgdir/usr/share/man/man1" $name
+  done
+
+  ln -s "goto-cc.1.gz" "$pkgdir/usr/share/man/man1/goto-gcc.1.gz"
+  ln -s "goto-cc.1.gz" "$pkgdir/usr/share/man/man1/goto-ld.1.gz"
 }
