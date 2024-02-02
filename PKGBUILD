@@ -2,7 +2,7 @@
 #https://wiki.archlinux.org/title/AUR_submission_guidelines
 
 pkgname=fdispatcher-git
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="An easy-to-use file dispatcher based on extension"
 arch=('x86_64')
