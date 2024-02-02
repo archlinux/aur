@@ -1,7 +1,7 @@
 # Maintainer: littzhch <2371050115@qq.com>
 
 pkgname=notepad---bin
-pkgver="2.7.0"
+pkgver="2.12.0"
 pkgrel=1
 pkgdesc="Notepad-- 是一个简单的国产跨平台文本编辑器，是替换 Notepad++ 的一种选择。其内置强大的代码对比功能，让你丢掉付费的 Beyond Compare。"
 arch=('x86_64')
@@ -22,8 +22,8 @@ depends=(
 makedepends=(
     patchelf
 )
-source=("https://github.com/cxasm/notepad--/releases/download/notepad-v2.7/com.hmja.notepad_2.7.0.0_amd64.deb")
-sha256sums=('62153efaf319b16d5bfa82d604585909343bcd0b2d02f0a14e2924f1352d3631')
+source=("${url}/releases/download/notepad-v${pkgver%.*}/com.hmja.notepad_${pkgver}.0_amd64.deb")
+sha256sums=('2ed3f15d8cb0b1ddfc9050c3f8a56c6d8a1b82ae9b9f616c9c1d56cd23a94770')
 options=("!strip")
 
 prepare() {
@@ -32,7 +32,7 @@ prepare() {
     cd opt/apps/com.hmja.notepad/files
     strip lib*
     strip plugin/lib*
-    patchelf Notepad-- --replace-needed /opt/apps/com.hmja.notepad/files/libqmyedit_qt5.so.15 /usr/lib/notepad--/libqmyedit_qt5.so.15
+    patchelf Notepad-- --set-rpath /usr/lib/notepad--
     patchelf plugin/lib* --replace-needed libqmyedit_qt5.so.15 /usr/lib/notepad--/libqmyedit_qt5.so.15
     echo "#!/bin/sh
 /usr/lib/notepad--/Notepad-- \$@" > notepad--
