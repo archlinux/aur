@@ -1,7 +1,7 @@
 pkgbase = escrcpy-bin
 	pkgdesc = 使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动
 	pkgver = 1.16.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/viarotel-org/escrcpy
 	arch = aarch64
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = escrcpy-bin
 	source = LICENSE-1.16.8::https://raw.githubusercontent.com/viarotel-org/escrcpy/v1.16.8/LICENSE
 	source = escrcpy.sh
 	sha256sums = 608449f39836e08b54dbe679e78fefbd8b2a4f77ac6fc16bf7320d1e89e4bb10
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 	source_aarch64 = escrcpy-1.16.8-aarch64.deb::https://github.com/viarotel-org/escrcpy/releases/download/v1.16.8/Escrcpy-1.16.8-linux-arm64.deb
 	sha256sums_aarch64 = 9a78fa700c46864f9308925c36bb483078914c397d8d16797266fff46bc6d895
 	source_x86_64 = escrcpy-1.16.8-x86_64.deb::https://github.com/viarotel-org/escrcpy/releases/download/v1.16.8/Escrcpy-1.16.8-linux-amd64.deb
