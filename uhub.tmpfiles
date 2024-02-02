@@ -1,1 +1,2 @@
-d /run/uhub 0755 uhub uhub
+d /run/uhub 0755 uhub uhub -
+d /var/lib/uhub - uhub uhub -

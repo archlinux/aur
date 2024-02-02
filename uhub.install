@@ -10,14 +10,7 @@ _instructions() {
 }
 
 post_install() {
-  post_upgrade $1
-
   _instructions
-}
-
-post_upgrade() {
-  install -dm744 -o uhub -g uhub /var/log/uhub
-  install -dm744 -o uhub -g uhub /var/lib/uhub
 }
 
 post_remove() {
