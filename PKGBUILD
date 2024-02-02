@@ -3,7 +3,7 @@
 
 pkgname=python313
 pkgver=3.13.0a3
-pkgrel=3
+pkgrel=4
 _pyver=3.13.0
 _pybasever=3.13
 _pymajver=3
