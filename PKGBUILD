@@ -2,12 +2,12 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 pkgname=mfem
 pkgver=4.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight, general, scalable C++ library for finite element methods"
 arch=(x86_64)
 url="https://github.com/${pkgname}/${pkgname}"
 license=('custom:BSD-3-clause')
-depends=(gcc-libs blitz hypre openmpi)
+depends=(gcc-libs blitz metis hypre openmpi)
 # gnutls conduit ginkgo hdf5-openmpi libunwind mpfr | sundials scalapack scotch suitesparse superlu_dist
 makedepends=(cmake)
 provides=("libmfem.so=${pkgver}-64")
@@ -27,7 +27,6 @@ build() {
     -DBUILD_SHARED_LIBS=TRUE \
     -DMFEM_USE_MPI=YES \
     -DHYPRE_DIR=/usr/include/hypre \
-    -DMETIS_DIR=/usr/include/hypre \
     -Wno-dev
 
   local N_CORES=$(grep "core id" /proc/cpuinfo | uniq | wc -l)
