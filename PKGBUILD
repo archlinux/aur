@@ -4,7 +4,7 @@
 
 pkgname=asciidoctor-pdf
 _name=$pkgname
-pkgver=2.3.11
+pkgver=2.3.12
 pkgrel=1
 pkgdesc="Translate asciidoctor directly to pdf"
 arch=(any)
@@ -35,7 +35,7 @@ optdepends=('ruby-coderay: for syntax highlighting')
 options=(!emptydirs)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ea4e20718045967d252a84c7d689a5a9621b1fd0e27e68b9eb6d2636af679b0f')
+sha256sums=('fe2c6421b216335f7541702dd92204d94395c1c3a13c56b97d7fe5c7b9bbb7f7')
 
 _archive="$_name-$pkgver"
 
