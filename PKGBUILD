@@ -1,7 +1,7 @@
 # Maintainer: Kenneth Shaw <kenshaw at gmail dot com>
 
 pkgname=iv-cli
-pkgver=0.0.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='A command-line image viewer using terminal graphics (Sixel, iTerm, Kitty)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/kenshaw/iv"
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff')
+sha256sums=('fb06b8776598b5fdba54ae6fa30fecd5594a3013e1a899f691fdbfb11376b8c1')
 
 build() {
     cd iv-$pkgver

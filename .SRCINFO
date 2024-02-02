@@ -1,6 +1,6 @@
 pkgbase = iv-cli
 	pkgdesc = A command-line image viewer using terminal graphics (Sixel, iTerm, Kitty)
-	pkgver = 0.0.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/kenshaw/iv
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = iv-cli
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = iv-0.0.0.tar.gz::https://github.com/kenshaw/iv/archive/v0.0.0.tar.gz
-	sha256sums = ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+	source = iv-0.1.1.tar.gz::https://github.com/kenshaw/iv/archive/v0.1.1.tar.gz
+	sha256sums = fb06b8776598b5fdba54ae6fa30fecd5594a3013e1a899f691fdbfb11376b8c1
 
 pkgname = iv-cli
