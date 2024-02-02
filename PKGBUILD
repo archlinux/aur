@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=CVXR
-_pkgver=1.0-11
+_pkgver=1.0-12
 pkgname=r-${_pkgname,,}
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=1
 pkgdesc='Disciplined Convex Optimization'
 arch=('x86_64')
@@ -36,7 +36,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e92a9638f35f4909e2a29c3b7106081e3dae7ff88b14bb6466b87fbdc80b972a')
+sha256sums=('e76a876a9369a91249156f238d3df0d99d8e54120b4d55d83d11cf1c8688ffc5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
