@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="metabase-driver-clickhouse"
-pkgver=1.2.1
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="ClickHouse driver for Metabase"
 arch=("any")
@@ -9,7 +9,7 @@ url="https://github.com/ClickHouse/metabase-clickhouse-driver"
 license=("APACHE2")
 depends=("metabase>=0.47.1")
 source=("$url/releases/download/$pkgver/clickhouse.metabase-driver.jar")
-sha256sums=('fbc2622d3ab25417436c8753f467955b90fc5e5c2420a4d1a2b29aab4259c683')
+b2sums=('9b20d572934e20ee1f6dd1e807fd7f30ad8b598dbfa3d57d1534bad5ba2a876b4739ae23f5ea167e678c4b17fd8ec67fd08cc6c2a64dd5a1107233f68dc03115')
 noextract=("clickhouse.metabase-driver.jar")
 options=("!strip")
 
