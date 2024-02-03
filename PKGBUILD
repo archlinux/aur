@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chrolog-bin
 _pkgname=Chrolog
-pkgver=1.8.2
+pkgver=1.8.3
 _electronversion=28
 pkgrel=1
 pkgdesc="An automated time tracking tool"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('dc667fdddb49635d9e4a7fcae934eeda24976014fbc7a361bcb929c8b4de9e6f'
+sha256sums=('190e86b4111454ee4f524f68a585727d1ce60ef961e35a67deeb72c35e5960fb'
             '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
