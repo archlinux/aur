@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=termscp
-pkgver=0.12.3.4
+pkgver=0.12.3.5
 pkgrel=1
 pkgdesc="A feature rich terminal UI file transfer and explorer"
 url="https://github.com/veeso/termscp"
@@ -15,7 +15,7 @@ sha256sums=('4c28d0c4b5efdf08d3f486df531b0a0c824e44d7885b3f2a9b142e7f632b3211')
 
 prepare() {
    cd "$pkgname-0.12.3"
-   cargo fetch --locked
+   cargo fetch
 }
 
 build() {
