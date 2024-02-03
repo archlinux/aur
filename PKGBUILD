@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('git' 'gobject-introspection' 'meson' 'npm' 'typescript')
 depends=('gjs' 'glib2' 'glibc' 'gtk3' 'gtk-layer-shell' 'libpulse' 'pam')
 optdepends=('gnome-bluetooth-3.0: required for bluetooth service'
-            'greetd: required for grretd service'
+            'greetd: required for greetd service'
             'libdbusmenu-gtk3: required for systemtray service'
             'libsoup3: required for the Utils.fetch feature'
             'libnotify: required for sending notifications'
