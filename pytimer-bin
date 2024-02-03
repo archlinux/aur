@@ -1,0 +1,2 @@
+#!/bin/sh
+python /home/$USER/Pytimer/pytimer.py
