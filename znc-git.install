@@ -9,8 +9,6 @@ post_install() {
 # arg 2:  the old package version
 post_upgrade() {
   if [[ -d /var/lib/znc/.znc ]]; then
-    echo '==> Migrating /var/lib/znc/.znc to /var/lib/znc'
-    mv /var/lib/znc/.znc/* /var/lib/znc/
-    rmdir /var/lib/znc/.znc
+    echo '==> znc home directory has moved to /var/lib/znc'
   fi
 }

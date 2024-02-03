@@ -7,7 +7,7 @@
 
 _gitname=znc
 pkgname=znc-git
-pkgver=1.8.2.r252.g0772dd57
+pkgver=1.8.2.r328.g779d80df
 pkgrel=1
 pkgdesc='An IRC bouncer with modules & scripts support'
 url='https://wiki.znc.in/ZNC'
@@ -20,7 +20,8 @@ makedepends=('swig' 'tcl' 'python' 'perl' 'cmake' 'boost' 'git')
 optdepends=('tcl: modtcl module'
             'python: modpython module'
             'perl: modperl module'
-            'cyrus-sasl: saslauth module')
+            'cyrus-sasl: saslauth module'
+            'argon2: Store password hashes using Argon2id instead of SHA-256')
 source=('git+https://github.com/znc/znc.git'
         'git+https://github.com/znc/Csocket.git'
         'git+https://github.com/google/googletest.git'

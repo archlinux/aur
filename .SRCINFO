@@ -1,6 +1,6 @@
 pkgbase = znc-git
 	pkgdesc = An IRC bouncer with modules & scripts support
-	pkgver = 1.8.2.r252.g0772dd57
+	pkgver = 1.8.2.r328.g779d80df
 	pkgrel = 1
 	url = https://wiki.znc.in/ZNC
 	install = znc-git.install
@@ -21,6 +21,7 @@ pkgbase = znc-git
 	optdepends = python: modpython module
 	optdepends = perl: modperl module
 	optdepends = cyrus-sasl: saslauth module
+	optdepends = argon2: Store password hashes using Argon2id instead of SHA-256
 	provides = znc
 	conflicts = znc
 	source = git+https://github.com/znc/znc.git
