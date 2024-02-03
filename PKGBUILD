@@ -3,7 +3,7 @@
 
 pkgname='inetutils-syslogd'
 _pkgname='inetutils'
-pkgver='2.4'
+pkgver='2.5'
 pkgrel='1'
 pkgdesc='A small syslogd'
 arch=('i686' 'x86_64')
@@ -20,10 +20,10 @@ source=(
   'syslog.conf'
   'inetutils-syslogd.service'
 )
-md5sums=('04f8ca625d4f08ee824e98fee65b35eb'
+md5sums=('96526671eca6c2c531352d28dd6246fd'
          '71d7027920dd7641653705de65fd0d97'
          'f528a4b680e878a13f745a38f9499e06')
-sha256sums=('76aee0c2f0954728600d510955d697a4ec29324318e784848db606ee3c09e365'
+sha256sums=('fa043bbbc426eae1869070d2b6e29a98069615ac00681cdb92e20911d9292260'
             'a0fdd3eef46ac1a671c6a5743cd8a57213ea179c844f091eae37647f8246edde'
             '84086b9b3ce93db7af58d8a47cbd30e664dec83640e62b5145140b87554c82ba')
 

@@ -1,6 +1,6 @@
 pkgbase = inetutils-syslogd
 	pkgdesc = A small syslogd
-	pkgver = 2.4
+	pkgver = 2.5
 	pkgrel = 1
 	url = http://www.gnu.org/software/inetutils/
 	arch = i686
@@ -13,13 +13,13 @@ pkgbase = inetutils-syslogd
 	provides = logger
 	options = !emptydirs
 	backup = etc/syslog.conf
-	source = https://ftp.gnu.org/gnu/inetutils/inetutils-2.4.tar.gz
+	source = https://ftp.gnu.org/gnu/inetutils/inetutils-2.5.tar.gz
 	source = syslog.conf
 	source = inetutils-syslogd.service
-	md5sums = 04f8ca625d4f08ee824e98fee65b35eb
+	md5sums = 96526671eca6c2c531352d28dd6246fd
 	md5sums = 71d7027920dd7641653705de65fd0d97
 	md5sums = f528a4b680e878a13f745a38f9499e06
-	sha256sums = 76aee0c2f0954728600d510955d697a4ec29324318e784848db606ee3c09e365
+	sha256sums = fa043bbbc426eae1869070d2b6e29a98069615ac00681cdb92e20911d9292260
 	sha256sums = a0fdd3eef46ac1a671c6a5743cd8a57213ea179c844f091eae37647f8246edde
 	sha256sums = 84086b9b3ce93db7af58d8a47cbd30e664dec83640e62b5145140b87554c82ba
 
