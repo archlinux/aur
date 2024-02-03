@@ -31,11 +31,13 @@ optdepends=(
   'xdg-desktop-portal: File picker portal')
 # template end;
 pkgname=alchemy-next-viewer-nosystemd-git
-pkgver=7.0.1.54541.1d7f9b75bd
+pkgver=7.1.3.55266.2a64c7b773
 pkgrel=1
 provides=('alchemy-viewer')
-source=("${pkgname}"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch='"${AL_BRANCH_OVERRIDE:-main}")
+# template start; name=source; version=1.0;
+source=("${pkgname}"::'git+https://git.alchemyviewer.org/alchemy/viewer.git#branch='"${AL_BRANCH_OVERRIDE:-main}")
 sha256sums=('SKIP')
+# template end;
 # Not included as a dependency as it is impossible to update the package otherwise
 #depends+=('libelogind')
 conflicts+=("alchemy-next-viewer-systemd-git")
@@ -76,7 +78,7 @@ _logfile="build.${CARCH}.$(date +%s).log"
 build_jobs=$(nproc)
 
 AL_CMAKE_CONFIG=(
-  -DLL_TESTS:BOOL=ON
+  -DLL_TESTS:BOOL=${ENABLE_TESTS:-ON}
   -DDISABLE_FATAL_WARNINGS=ON
   -DUSE_LTO:BOOL=OFF
   -DVIEWER_CHANNEL="Alchemy Test"
