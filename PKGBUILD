@@ -2,46 +2,41 @@
 pkgname=sift-git
 pkgver=r70.2ca9471
 pkgrel=1
-epoch=
-pkgdesc="A fast and powerful open source alternative to grep."
+pkgdesc='A fast and powerful open source alternative to grep.'
 arch=('i686' 'x86_64')
-url="https://github.com/svent/sift"
-url="https://sift-tool.org/"
-license=('GPLv3')
-categories=()
-groups=()
-depends=('')
+url='https://sift-tool.org/'
+license=('GPL3')
 makedepends=('git' 'go')
-optdepends=()
-checkdepends=()
-provides=()
-conflicts=('sift' 'sift-bin')
-replaces=()
-backup=()
-options=()
-changelog=
-install=
-noextract=()
-_gourl=github.com/svent/sift
+conflicts=("${pkgname%-*}" "${pkgname%-*}-bin")
+source=("$pkgname::git+https://github.com/svent/sift")
+md5sums=('SKIP')
+
+prepare() {
+	cd "$srcdir/$pkgname"
+	go mod init "${url#https://}"
+	go mod tidy
+}
 
 pkgver() {
-  GOPATH="$srcdir" go get -d ${_gourl}
-  cd "$srcdir/src/${_gourl}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  GOPATH="$srcdir" go get -fix -v ${_gourl}
-}
+	cd "$srcdir/$pkgname"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-check() {
-  GOPATH="$srcdir" go test -v -x ${_gourl}
+	mkdir -p build/
+	go build -v -o build .
 }
 
 package() {
-  cd "$srcdir"
-  install -Dm755 bin/sift "$pkgdir/usr/bin/sift"
-  install -Dm644 src/${_gourl}/README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
-  install -Dm644 src/${_gourl}/LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
+	cd "$srcdir/$pkgname"
+	install -D -m744 build/sift $pkgdir/usr/bin/sift
+	install -D -m644 README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
+	install -D -m644 LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
 }
-
