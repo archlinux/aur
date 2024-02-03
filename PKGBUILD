@@ -3,7 +3,7 @@
 _pyname=zstd
 pkgbase=python-$_pyname
 pkgname=(python-$_pyname)
-pkgver=1.5.2.6
+pkgver=1.5.5.1
 pkgrel=1
 pkgdesc="ZSTD Bindings for Python"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -18,9 +18,8 @@ checkdepends=(
 	python-pytest
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('e71055ba422b1c3aeeb4c7257375743b')
-sha256sums=('f440858d198890e5ff517dff32d15e8c31bb73506a896f9baf6d014efe62f7fc')
-sha512sums=('a692d87ffad4d148d56487fa740876653ccbd151ac8a897a35946a3899d4d3b3aaf6e9954a2050b4cee8137d5161481f3460a0e64ce339c624349bf030c9f975')
+md5sums=('479b302e5e269ced1efadad51dc3b399')
+sha256sums=('1ef980abf0e1e072b028d2d76ef95b476632651c96225cf30b619c6eef625672')
 
 build(){
 	pushd $_pyname-$pkgver
