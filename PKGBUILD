@@ -2,7 +2,7 @@
 # Maintainer: pikl <me@pikl.uk>
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
-pkgrel=1
+pkgrel=2
 pkgver=1.94.1
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
@@ -49,7 +49,7 @@ sha256sums=('2963e25c1746297013147e20049944dbc596d71750067ca43dbf414bb47ac928'
             '4ae8a73ccbef568b7841dbdfe9b9d8a76fa78db00051317b6313a6a50a66c900'
             '15c00108d970691a72397eab19ee784bbd24eae941307bb676ebf2f25d36057c'
             'cc405c774e34cd161f00ccd882e66c2d2ce28405964bf62472ebc3f59d642060'
-            'd38cdaa031f741998f2d31504381bce4db1a8771c774a2c2bac547d7d2b3c70b'
+            'a531975100e21c81031ae21418a5d8413f854d41063d72d13ae59e25f0b5d97e'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -105,7 +105,7 @@ build() {
     python -m venv "${srcdir}/venv"
     export VIRTUAL_ENV="${srcdir}/venv"
     export PATH="${srcdir}/venv/bin:${PATH}"
-    poetry install --sync --no-interaction --no-ansi --no-root --only main
+    poetry install --sync --no-interaction --no-ansi --no-root --without dev
     # delete any python bytecode 
     find "${srcdir}/venv" -type f -name "*.py[co]" -delete
     find "${srcdir}/venv" -type d -name "__pycache__" -delete

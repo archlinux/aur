@@ -1,6 +1,6 @@
 --- server/src/domain/media/media.util.ts	        2023-08-27 15:26:34.362052942 +0100
 +++ server/src/domain/media/media.util.ts_patched	2023-08-27 15:27:30.806096774 +0100
-@@ -248,10 +248,10 @@
+@@ -266,10 +266,10 @@
        .sort((a, b) => {
          // order GPU devices first
          if (a.startsWith('card') && b.startsWith('renderD')) {
