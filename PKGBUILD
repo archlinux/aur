@@ -8,7 +8,7 @@ pkgver() {
   cd "oh-my-posh"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r2373.d4ebc71f
+pkgver=r3180.030d52bd
 pkgrel=1
 pkgbase=oh-my-posh-git
 replaces=()
@@ -16,7 +16,7 @@ arch=('x86_64')
 url="https://github.com/JanDeDobbeleer/oh-my-posh"
 license=('MIT')
 groups=()
-makedepends=('git' 'go')
+makedepends=('git' 'go>=1.21.0')
 depends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
