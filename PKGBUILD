@@ -2,7 +2,7 @@
 
 pkgname=python-trl
 _pkgname=${pkgname#python-}
-pkgver=0.7.9
+pkgver=0.7.10
 pkgrel=1
 pkgdesc='Train transformer language models with reinforcement learning'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
 source=(
   "python-trl-$pkgver.tar.gz"::"https://github.com/lvwerra/trl/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('90859ace355e56c813ea6622f7fd251149e609b23fd4622f2f3bb7a2f3d4d60a')
+sha256sums=('be3fae1ef65a4018258738e915b214d8e429e58a446cf4e9953f06135ff5b12b')
 
 build() {
   python -m build -nw $_pkgname-$pkgver
