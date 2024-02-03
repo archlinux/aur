@@ -1,0 +1,23 @@
+diff --unified --recursive --text a/src/localization.py b/src/localization.py
+--- a/src/localization.py	2024-02-03 11:16:36.480021814 +0100
++++ b/src/localization.py	2024-02-03 11:26:18.467418811 +0100
+@@ -77,15 +77,15 @@
+     DATA = f"{os.getenv('SNAP_USER_DATA')}/.local/share"
+ else:
+     try:
+-      locale = open(f"{home}/.local/share/savedesktop/translations/{r_lang}.json")
++      locale = open(f"/usr/share/savedesktop/translations/{r_lang}.json")
+     except:
+-      locale = open(f"{home}/.local/share/savedesktop/translations/en.json")
++      locale = open(f"/usr/share/savedesktop/translations/en.json")
+     # System, cache and data directories
+-    system_dir = f"{home}/.local/share/savedesktop/src"
++    system_dir = f"/usr/share/savedesktop/src"
+     os.system("mkdir ~/.cache/io.github.vikdevelop.SaveDesktop")
+     os.system("mkdir ~/.local/share/io.github.vikdevelop.SaveDesktop")
+     CACHE = f"{home}/.cache/io.github.vikdevelop.SaveDesktop"
+-    DATA = f"{home}/.local/share/io.github.vikdevelop.SaveDesktop"
++    DATA = f"/usr/share/io.github.vikdevelop.SaveDesktop"
+     version = f"{v}-native"
+     # Commands
+     periodic_saving_cmd = f'savedesktop --background'

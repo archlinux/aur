@@ -6,3 +6,4 @@
 !PKGBUILD
 !.SRCINFO
 !savedesktop.sh
+!directories.patch

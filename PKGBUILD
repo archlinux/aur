@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=savedesktop
 _app_id=io.github.vikdevelop.SaveDesktop
-pkgver=3.0.1
-pkgrel=2
+pkgver=3.1
+pkgrel=1
 pkgdesc="Save and load KDE Plasma, Xfce and GNOME-based DE configuration"
 arch=('any')
 url="https://github.com/vikdevelop/SaveDesktop"
@@ -10,15 +10,17 @@ license=('GPL-3.0-or-later')
 depends=('hicolor-icon-theme' 'libadwaita' 'python-dbus' 'python-gobject')
 makedepends=('git')
 checkdepends=('appstream-glib')
-_commit=9fd8bf5b2306390061d956fb3516c4ecb6347ad7  # tags/3.0.1-fixed-native^0
+_commit=9fb12af802fa472b784724b7eff51bc64d484f1c  # tags/3.1n^0
 source=("git+https://github.com/vikdevelop/SaveDesktop.git#commit=${_commit}"
-        "$pkgname.sh")
+        "$pkgname.sh"
+        'directories.patch')
 sha256sums=('SKIP'
-            '2af6b49c1c166072fa3e0503e3f4b63e379d72d9b83b97f3f5dbf1a69383d79b')
+            '2af6b49c1c166072fa3e0503e3f4b63e379d72d9b83b97f3f5dbf1a69383d79b'
+            'd42f43417f54529f3db00c8888552f49ab4eab4e65defae46c49199fcbb6df37')
 
 pkgver() {
   cd SaveDesktop
-  git describe --tags | sed 's/-fixed-native//;s/-/+/g'
+  git describe --tags | sed 's/n//;s/-/+/g'
 }
 
 prepare() {
@@ -26,6 +28,9 @@ prepare() {
 
   # Desktop file Exec path
   desktop-file-edit --set-key=Exec --set-value="$pkgname" "flatpak/${_app_id}.desktop"
+
+  # Use system directories
+  patch -Np1 -i ../directories.patch
 }
 
 check() {
