@@ -1,6 +1,6 @@
 pkgbase = python-optimum
 	pkgdesc = Accelerate training and inference of transformers and diffusers with easy to use hardware optimization tools
-	pkgver = 1.16.1
+	pkgver = 1.16.2
 	pkgrel = 1
 	url = https://github.com/huggingface/optimum/
 	arch = x86_64
@@ -14,14 +14,16 @@ pkgbase = python-optimum
 	depends = python-datasets
 	depends = python-huggingface-hub
 	depends = python-numpy
+	depends = python-packaging
 	depends = python-pytorch
+	depends = python-sentencepiece
 	depends = python-sympy
 	depends = python-transformers
 	optdepends = python-datasets
 	optdepends = python-evaluate
 	optdepends = python-onnx
 	optdepends = python-onnxruntime
-	source = optimum-1.16.1.tar.gz::https://github.com/huggingface/optimum/archive/refs/tags/v1.16.1.tar.gz
-	sha256sums = b753147664bdc1206a37956fad3b8c1675fcf430e20ea7f5cc1972bc0fc84e3c
+	source = optimum-1.16.2.tar.gz::https://github.com/huggingface/optimum/archive/refs/tags/v1.16.2.tar.gz
+	sha256sums = 835509b54e13621abfdea47b3485f1727f0ae36158c5a78a84b9d9c81606d8f9
 
 pkgname = python-optimum
