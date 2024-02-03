@@ -4,8 +4,8 @@
 
 _name=kfilemetadata
 pkgname=${_name}5
-pkgver=5.114.0
-pkgrel=2
+pkgver=5.115.0
+pkgrel=1
 pkgdesc='A library for extracting file metadata'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
@@ -21,7 +21,7 @@ groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig}
         https://invent.kde.org/frameworks/kfilemetadata/-/commit/c9a90eed.patch
         taglib-2.patch)
-sha256sums=('c094808ca31f0c7ee0f78ed154aa2761850b51385d052e408c3d6b0a59126a97'
+sha256sums=('fefd0ec7068f28f609948621d02c91ef74a0d99dd1704a93308501ab5123c90c'
             'SKIP'
             '392855a8c9dd464363f5bdc522dbc472c7767bc402e9f48e1b51587807d1a8df'
             'd6ccf31e4aaf197a16f3860924d82ae24328997cd0d5366a4fb2d3f1de2b422a')
