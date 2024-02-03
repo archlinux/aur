@@ -5,7 +5,7 @@
 
 _pkgname=picom-conf
 pkgname=$_pkgname-git
-pkgver=0.16.0.r122.g15be9bb
+pkgver=0.17.0.r2.g9cdd2cd
 pkgrel=1
 pkgdesc="GUI configuration tool for Picom X composite manager"
 arch=(
