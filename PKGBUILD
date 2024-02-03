@@ -18,7 +18,7 @@ makedepends=(git cargo clang python jdk-openjdk at-spi2-core)
 provides=(ruffle)
 conflicts=(ruffle ruffle-git)
 options=(!lto)
-source=("git+https://github.com/ruffle/ruffle.git"
+source=("git+https://github.com/ruffle-rs/ruffle.git"
       '0001-feat-initialize_adapter_from_env.patch')
 sha256sums=('SKIP'
             '488c46400a1d347f900f90950f8420f6b7cb596257ce1a1a6e84e94e36bfc34e')
