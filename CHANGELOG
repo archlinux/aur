@@ -1,0 +1,8 @@
+# 0.25.1
+
+Fixes an issue where pkl-tools fat jar is empty.
+
+
+# 0.25.0
+
+This is the initial release of Pkl, a programming language for creating configuration.
