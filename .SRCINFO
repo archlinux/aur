@@ -9,6 +9,7 @@ pkgbase = odin
 	makedepends = clang
 	makedepends = clang14
 	makedepends = llvm14
+    makedepends = python
 	depends = clang
 	depends = llvm14-libs
 	provides = odin
