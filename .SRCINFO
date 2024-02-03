@@ -1,23 +1,29 @@
 pkgbase = talkatu-hg
 	pkgdesc = Gtk+ widgets for chat software
-	pkgver = 1.0.r491.ad000db4fe9a
+	pkgver = 1.0.r509.42ce88fc5ee3
 	pkgrel = 1
 	url = https://keep.imfreedom.org/talkatu/talkatu
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = mercurial
 	makedepends = meson
 	makedepends = vala
 	makedepends = help2man
 	makedepends = gtk-doc
 	makedepends = gobject-introspection
-	depends = gtk3>=3.10.0
-	depends = glade>=2.0
-	depends = gumbo-parser>=0.10
-	depends = gspell>=1.2
-	depends = cmark
-	source = talkatu-hg::hg+https://keep.imfreedom.org/talkatu/talkatu
+	makedepends = gtk4
+	makedepends = gi-docgen
+	makedepends = gumbo-parser
+	makedepends = cmark
+	source = hg+https://keep.imfreedom.org/talkatu/talkatu
 	sha256sums = SKIP
 
 pkgname = talkatu-hg
+	depends = gtk4
+	depends = gumbo-parser>=0.10
+	depends = cmark
+
+pkgname = talkatu-docs-hg
+	pkgdesc = Gtk+ widgets for chat software (documentation)
+	depends = 

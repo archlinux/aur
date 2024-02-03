@@ -3,36 +3,57 @@
 # Original Maintainer: Deposite Pirate <dpirate at metalpunks dot info>
 #
 # Upstream: https://git.metalpunks.info/arch-ports
-
+# Maintainer: Solaraquarion <shlomochoina@gmail.com>
 _pkgname=talkatu
-pkgname=$_pkgname-hg
-pkgver=1.0.r491.ad000db4fe9a
+pkgbase=$_pkgname-hg
+pkgname=("$_pkgname"-hg "$_pkgname"-docs-hg )
+
+pkgver=1.0.r509.42ce88fc5ee3
 pkgrel=1
 pkgdesc="Gtk+ widgets for chat software"
 arch=('i686' 'x86_64')
 url="https://keep.imfreedom.org/talkatu/talkatu"
-license=('GPL2')
-depends=('gtk3>=3.10.0' 'glade>=2.0' 'gumbo-parser>=0.10' 'gspell>=1.2' 'cmark')
-makedepends=('mercurial' 'meson' 'vala' 'help2man' 'gtk-doc' 'gobject-introspection')
-source=("$pkgname::hg+https://keep.imfreedom.org/$_pkgname/$_pkgname")
+license=('GPL-2.0-or-later')
+makedepends=('mercurial' 'meson' 'vala' 'help2man' 'gtk-doc' 'gobject-introspection' 'gtk4' 'gi-docgen' 'gumbo-parser' 'cmark')
+source=("hg+https://keep.imfreedom.org/$_pkgname/$_pkgname")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
+  cd talkatu
   printf "1.0.r%s.%s" \
     "$(hg identify -n)" \
     "$(hg identify -i)"
 }
 
 build() {
-  cd "${pkgname}"
-  arch-meson build -Dtests=false
+  arch-meson build talkatu -Dtests=false
   ninja -C build
 }
 
-package() {
-  cd "${pkgname}"
+_pick() {
+  local p="$1" f d; shift
+  for f; do
+    d="$srcdir/$p/${f#$pkgdir/}"
+    mkdir -p "$(dirname "$d")"
+    mv "$f" "$d"
+    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+  done
+}
+
+
+package_talkatu-hg() {
+  depends=('gtk4' 'gumbo-parser>=0.10' 'cmark')
   DESTDIR="${pkgdir}" ninja -C build install
   cd ${pkgdir}/usr/include
   ln -s talkatu-1.0 talkatu
+
+  cd "$pkgdir"
+  _pick docs usr/share/doc
+}
+
+package_talkatu-docs-hg() {
+   pkgdesc+=" (documentation)"
+   depends=()
+
+   mv docs/* "$pkgdir"
 }
