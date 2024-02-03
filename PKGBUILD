@@ -4,7 +4,7 @@ _pkgmainbranch=nvidia-utils
 pkgbase=nvidia-535xx-utils
 pkgname=('nvidia-535xx-utils' 'opencl-nvidia-535xx' 'nvidia-535xx-dkms')
 pkgver=535.154.05
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA drivers for Linux, 535 branch, dkms"
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -15,10 +15,12 @@ _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 source=('nvidia-drm-outputclass.conf'
         'nvidia-utils.sysusers'
         'nvidia.rules'
+        'nvidia-drivers-470.223.02-gpl-pfn_valid.patch'
         "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run")
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
             'a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989'
+            '6951e2382c4089bab738b9cd258cd2646fc2754cceeca9dc760414355e5f9fa74d8ed2b4f1c43b7d5b1ad16c3d4e7d88fecd79b5c15f4cc8963ae54aaa009a94'
             '29c54814ed1d93abb7888c821feb14cc419ca76db70f0a57ee56777b7b48f252303562efb8ebe026b9ce6ae624064e9e185414fbe8e5818c241de9fb576ad480')
 
 
@@ -38,6 +40,10 @@ prepare() {
     bsdtar -xf nvidia-persistenced-init.tar.bz2
 
     cd kernel
+
+    # Fix incompat with Linux 6.6.15 and 6.7.3
+    # From Gentoo at https://github.com/gentoo/gentoo/commit/c64caf5352e8b82edbaa2204aaf055cbcabfc8d1
+    patch --no-backup-if-mismatch -Np2 -i "$srcdir/nvidia-drivers-470.223.02-gpl-pfn_valid.patch"
 
     sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
     sed -i 's/__JOBS/`nproc`/' dkms.conf
@@ -172,9 +178,9 @@ package_nvidia-535xx-utils() {
     install -Dm755 "libnvidia-ptxjitcompiler.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-ptxjitcompiler.so.${pkgver}"
 
     # raytracing
+    install -Dm755 "nvoptix.bin" "${pkgdir}/usr/share/nvidia/nvoptix.bin"
     install -Dm755 "libnvoptix.so.${pkgver}" "${pkgdir}/usr/lib/libnvoptix.so.${pkgver}"
     install -Dm755 "libnvidia-rtcore.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-rtcore.so.${pkgver}"
-    install -Dm755 nvoptix.bin "${pkgdir}/usr/share/nvidia/nvoptix.bin"
 
     # NGX
     install -Dm755 nvidia-ngx-updater "${pkgdir}/usr/bin/nvidia-ngx-updater"
@@ -185,7 +191,7 @@ package_nvidia-535xx-utils() {
     # Optical flow
     install -Dm755 "libnvidia-opticalflow.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-opticalflow.so.${pkgver}"
 
-    # PKCS 11
+    # Cryptography library wrapper
     install -Dm755 "libnvidia-pkcs11.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-pkcs11.so.${pkgver}"
     install -Dm755 "libnvidia-pkcs11-openssl3.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-pkcs11-openssl3.so.${pkgver}"
 
