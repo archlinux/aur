@@ -1,7 +1,7 @@
 pkgbase = verifpal-bin
 	pkgdesc = Cryptographic protocol analysis for real-world protocols.
 	pkgver = 0.27.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://verifpal.com
 	arch = x86_64
 	license = GPL3
@@ -12,7 +12,7 @@ pkgbase = verifpal-bin
 	source = verifpal-bin-0.27.2-manual.pdf::https://verifpal.com/res/pdf/manual.pdf
 	source = verifpal-bin-0.27.2-manual-license.txt::https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.txt
 	sha256sums = f19ff232fd051f8b65457c2b4399097e055fd30ab601e4f37609970b132f94f3
-	sha256sums = 767d202fe82323a25ac2cd72bb91261c681df05633aa0e79b09ef6b5603e43de
+	sha256sums = c7fa06540e3414b5254a74da2b555dbf226a8e09ed11a1085baa00fc808d00a3
 	sha256sums = 38762e3777f4ec00a6f769062a7c3f704fb78ce08303ecff88558da4c49cf9ea
 
 pkgname = verifpal-bin
