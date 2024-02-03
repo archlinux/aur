@@ -4,7 +4,7 @@
 
 _name=kdnssd
 pkgname=${_name}5
-pkgver=5.114.0
+pkgver=5.115.0
 pkgrel=1
 pkgdesc='Abstraction to system DNSSD features'
 arch=(x86_64)
@@ -16,7 +16,7 @@ conflicts=("$_name<5.111")
 replaces=("$_name<5.111")
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig})
-sha256sums=('c46c8a7f3a26d891471199ea3186d9e242f54f99927ec4620192949cefcc85ff'
+sha256sums=('b2e361c233d9c38a14d83c36b9cf0290311d0e5f77c629a04b597065fbce52df'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
