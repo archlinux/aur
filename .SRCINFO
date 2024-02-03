@@ -1,6 +1,6 @@
 pkgbase = jdk8-openj9-bin
 	pkgdesc = IBM Semeru OpenJ9 with openjdk8
-	pkgver = 8.u382.b05
+	pkgver = 8.u392.b08
 	pkgrel = 1
 	url = https://developer.ibm.com/languages/java/semeru-runtimes/
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = jdk8-openj9-bin
 	provides = java-runtime=8
 	provides = java-runtime-headless=8
 	replaces = jdk8-j9-bin
-	noextract = ibm-semeru-open-jdk_x64_linux_8u382b05_openj9-0.40.0.tar.gz
-	source = https://github.com/ibmruntimes/semeru8-binaries/releases/download/jdk8u382-b05_openj9-0.40.0/ibm-semeru-open-jdk_x64_linux_8u382b05_openj9-0.40.0.tar.gz
-	sha256sums = d148b8c7732f355154dc99056280496360183f3b0135dcc64b265b36f6f67733
+	noextract = ibm-semeru-open-jdk_x64_linux_8u392b08_openj9-0.41.0.tar.gz
+	source = https://github.com/ibmruntimes/semeru8-binaries/releases/download/jdk8u392-b08_openj9-0.41.0/ibm-semeru-open-jdk_x64_linux_8u392b08_openj9-0.41.0.tar.gz
+	sha256sums = 3ea78d9e4f5dce48a83507b273d17d59055de7ccb9d008f51365082bc543dbe6
 
 pkgname = jdk8-openj9-bin
