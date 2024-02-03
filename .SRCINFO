@@ -1,0 +1,21 @@
+pkgbase = gedkeeper-git
+	pkgdesc = Personal genealogical database editor
+	pkgver = v3.4.1.r56.gabd903ba
+	pkgrel = 1
+	url = https://github.com/serg-norseman/gedkeeper
+	arch = x86_64
+	arch = i686
+	license = GPLv3
+	makedepends = dotnet-sdk-6.0
+	depends = sqlite3
+	depends = dotnet-runtime-6.0
+	depends = lua
+	provides = gedkeeper=v3.4.1.r56.gabd903ba
+	source = git+https://github.com/Serg-Norseman/GEDKeeper.git
+	source = git+https://github.com/Serg-Norseman/GKCommunicator.git
+	source = git+https://github.com/Serg-Norseman/GKGenetix.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = gedkeeper-git
