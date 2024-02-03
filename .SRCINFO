@@ -1,20 +1,20 @@
 pkgbase = media-hoarder-bin
 	pkgdesc = The media frontend for data hoarders and movie lovers
-	pkgver = 1.3.2
-	pkgrel = 2
+	pkgver = 1.3.3
+	pkgrel = 1
 	url = https://github.com/theMK2k/Media-Hoarder
 	arch = x86_64
 	license = MIT
+	makedepends = asar
 	depends = hicolor-icon-theme
-	depends = nss
-	depends = at-spi2-core
-	depends = alsa-lib
-	depends = gtk3
-	provides = media-hoarder=1.3.2
+	depends = electron13
+	provides = media-hoarder=1.3.3
 	conflicts = media-hoarder
-	source = media-hoarder-1.3.2.deb::https://github.com/theMK2k/Media-Hoarder/releases/download/v1.3.2/media-hoarder-1.3.2-linux-x64.deb
-	source = LICENSE-1.3.2::https://raw.githubusercontent.com/theMK2k/Media-Hoarder/v1.3.2/LICENSE.md
-	sha256sums = 1f21dcc74f4ec0f856002d17e33890b5fb00862833070f4cfc2a6dd1d2dbec33
+	source = media-hoarder-1.3.3.deb::https://github.com/theMK2k/Media-Hoarder/releases/download/v1.3.3/media-hoarder-1.3.3-linux-x64.deb
+	source = LICENSE-1.3.3::https://raw.githubusercontent.com/theMK2k/Media-Hoarder/v1.3.3/LICENSE.md
+	source = media-hoarder.sh
+	sha256sums = e08ceeb33a25f3cfd2e0e35d291255722d328d3ecbba260fced071953a508d44
 	sha256sums = 3c67fce0428a3d133bb589cd1db329789ec235049af1412511f89420c99ae9a6
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = media-hoarder-bin
