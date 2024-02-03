@@ -2,20 +2,19 @@
 
 pkgname=blazefetch
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A lite & blazing fast system info fetch utility'
 arch=('any')
 url='https://github.com/rifsxd/blazefetch'
 license=('MIT')
 provides=('blazefetch')
-conflicts=('blazefetch')
+conflicts=('blazefetch-git')
 depends=('libx11' 'networkmanager' 'playerctl' 'figlet')
 makedepends=('cmake' 'ninja' 'gcc')
-source=("git+$url.git")
+source=("$url/releases/download/$pkgver/src-$pkgname-$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  	cd "$pkgname/src"
 	mkdir build
   	cd build 
   	cmake -G Ninja ..
@@ -23,7 +22,6 @@ build() {
 }
 
 package() {
-	cd "$pkgname"
-	install -D "src/build/bin/$pkgname" -t "$pkgdir/usr/bin/"
+	install -D "build/bin/$pkgname" -t "$pkgdir/usr/bin/"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
