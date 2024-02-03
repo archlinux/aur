@@ -1,6 +1,6 @@
 pkgbase = r-aws
 	pkgdesc = Adaptive Weights Smoothing
-	pkgver = 2.5.3
+	pkgver = 2.5.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=aws
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = r-aws
 	depends = r
 	depends = r-awsmethods
 	depends = r-gsl
-	source = https://cran.r-project.org/src/contrib/aws_2.5-3.tar.gz
-	sha256sums = 154ed68785de8c4a02db1916dfe50862cf544865901936e864207ada777e5108
+	source = https://cran.r-project.org/src/contrib/aws_2.5-4.tar.gz
+	sha256sums = 6d93741e649cc7bddcdccc0fe87f02cb8b79d7e70a95e60891c58b49b51d49ef
 
 pkgname = r-aws
