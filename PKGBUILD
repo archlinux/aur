@@ -1,7 +1,7 @@
 # Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=denaro
-pkgver=2024.1.0
+pkgver=2024.2.0
 pkgrel=1
 pkgdesc="A personal finance manager"
 arch=(aarch64 armv7h x86_64 i686)
