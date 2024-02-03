@@ -1,7 +1,7 @@
 pkgbase = python-petl
 	pkgdesc = Python Extract Transform and Load Tables of Data
 	pkgver = 1.7.14
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/pypi/petl
 	arch = any
 	license = MIT
@@ -16,7 +16,6 @@ pkgbase = python-petl
 	depends = cython
 	depends = python-numpy
 	depends = python-numexpr
-	depends = python-tables
 	depends = python-aiohttp
 	depends = python-requests
 	depends = python-intervaltree

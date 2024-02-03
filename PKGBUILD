@@ -3,7 +3,7 @@
 pkgname="python-petl"
 _name="petl"
 pkgver=1.7.14
-pkgrel=2
+pkgrel=3
 pkgdesc="Python Extract Transform and Load Tables of Data"
 arch=(any)
 url="https://pypi.org/pypi/$_name"
@@ -15,7 +15,6 @@ depends=(
         "cython"
         "python-numpy"
         "python-numexpr"
-        "python-tables"
         "python-aiohttp"
         "python-requests"
         "python-intervaltree"
