@@ -1,13 +1,14 @@
 pkgbase = python-html-sanitizer
 	pkgdesc = Allowlist-based and very opinionated HTML sanitizer that can be used both for untrusted and trusted sources.
-	pkgver = 1.9.3
-	pkgrel = 2
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://pypi.org/project/html-sanitizer/
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
+	makedepends = python-hatchling
 	depends = python
-	source = https://files.pythonhosted.org/packages/6d/a5/25bf90144aaabbc23cdfcacdb21076a14dd5862183a70610decec4170ede/html_sanitizer-1.9.3.tar.gz
-	sha256sums = 125c5e09b154cab598b6c11731902dcbdd9d0ede72311814ee040fe6ddef82e0
+	source = https://files.pythonhosted.org/packages/b8/ca/7e3d426dce533a392b88da844424f241387222e0dca8026265289a8c69e8/html_sanitizer-2.2.0.tar.gz
+	sha256sums = e04e5bfdfb1940f634aaa44ab208bd189feb005ff035037057e579072321e915
 
 pkgname = python-html-sanitizer
