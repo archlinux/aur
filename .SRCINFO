@@ -1,6 +1,6 @@
 pkgbase = arqiver
 	pkgdesc = Simple Qt archive manager based on libarchive
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/tsujan/Arqiver
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = arqiver
 	depends = gzip
 	depends = p7zip
 	depends = qt5-svg
-	source = https://github.com/tsujan/Arqiver/releases/download/V0.11.0/Arqiver-0.11.0.tar.xz
-	sha512sums = 99cd379a11d30f66c63f85397f03dea3e830b668feb46df05d348632b987d75fbc0936ccdbf4eb9d72969e017832f487889bf75b556c5b4022f9549596e396d6
-	b2sums = a09642242eb5a0ce11766baa1cfe582d2693399536eb1114f657dad48492142d32ab3f9b7c2f17318c081587ec0956fab00d8f0b5ac82fe1117099d8607a4678
+	source = https://github.com/tsujan/Arqiver/releases/download/V0.12.0/Arqiver-0.12.0.tar.xz
+	sha512sums = d0dfc4c60416bf118d96c3c74289bf273c9e0ae54db185496cfe4b87732e8c2351ef15633b1a005ecafc7dbe9558d369d02681cdcbf643b65bb26d540fb25f71
+	b2sums = 5f2d808e945876f7bc4a7151d885d60d92e160af038c558200391eeb4502e42361991c8328a59a95e9780780af12f55459a34531855efce573c91dd227043fa3
 
 pkgname = arqiver
