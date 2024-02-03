@@ -1,12 +1,12 @@
 # Maintainer: MelianMiko <melianmiko@gmail.com>
 pkgname=openfreebuds
-pkgver=0.12.2
+pkgver=0.13
 pkgrel=1
 pkgdesc="Manager for HUAWEI FreeBuds"
 arch=(any)
 url="https://melianmiko.ru/openfreebuds"
 license=('GPLv3')
-depends=(python dbus-python python-gobject libappindicator-gtk3 gtk3 tk bluez python-pillow python-six python-xlib)
+depends=(python dbus-python python-gobject libappindicator-gtk3 gtk3 tk bluez python-pillow python-six python-xlib python-psutil)
 makedepends=(make python-pip python)
 source=("$pkgname-$pkgver::git+https://github.com/melianmiko/openfreebuds.git")
 md5sums=('SKIP')
