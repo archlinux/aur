@@ -1,6 +1,6 @@
 pkgname=snowflake-pt-client-bin
 pkgver=2.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Pluggable Transport using WebRTC, inspired by Flashproxy'
 url=https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake
 arch=(x86_64)
@@ -19,5 +19,6 @@ package() {
 	grep -w Bridge snowflake-v$pkgver/client/torrc >> snowflake
 
 	install -Dm 644 snowflake -t $pkgdir/etc/tor
+	install -Dm 644 snowflake-v$pkgver/doc/snowflake-client.1 -t $pkgdir/usr/share/man/man1
 	install -Dm 644 snowflake-v$pkgver/LICENSE -t $pkgdir/usr/share/licenses/$pkgname
 }
