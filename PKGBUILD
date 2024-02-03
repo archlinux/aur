@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.3.beta4.r0.ge249befd47a
+pkgver=10.3.beta7.r0.g0c390a06f72
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -95,6 +95,7 @@ optdepends=('benzene: for generating fusenes and benzenoids'
             'cython: to compile cython code'
             'dot2tex: for displaying some diagrams'
             'ffmpeg: to export animations to video'
+            'fricas: FriCAS interface'
             'imagemagick: to show animations'
             'jmol: alternative 3D plot engine'
             'jupyter-jsmol: alternative 3D plot engine in the Jupyter notebook'
@@ -162,7 +163,7 @@ prepare(){
 }
 
 build() {
-  export SAGE_NUM_THREADS=10
+  export SAGE_NUM_THREADS=$(($(nproc)/2))
   export PYTHONPATH="$PWD"/sage/pkgs/sage-setup
 
   for _pkg in ${_pkgs[@]}; do
