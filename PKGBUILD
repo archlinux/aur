@@ -1,4 +1,4 @@
-# Maintainer: fossdd <fossdd@tutanota.com>
+# Maintainer: fossdd <fossdd@pwned.life>
 pkgname=gpodder-adaptive-git
 _pkgname=gpodder
 pkgver=3.10.19+1.r0.g87a607f6
