@@ -2,7 +2,7 @@
 
 _electron_ver=27
 _pkgname=stretchly
-pkgname="$_pkgname"-bin-electron
+pkgname="$_pkgname"-electron-bin
 pkgver=1.15.1
 pkgrel=1
 pkgdesc="The break time reminder app"
