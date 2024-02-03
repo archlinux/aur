@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=AER
-_pkgver=1.2-10
+_pkgver=1.2-12
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Applied Econometrics with R"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only OR GPL-3.0-only')
 depends=(
   r-car
   r-formula
@@ -41,12 +41,12 @@ optdepends=(
   r-vars
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b421c70f87a06b6ffa2478944aabdd9c')
-sha256sums=('650a5fb54a8addf8c86f1e0f88f4fac5349731bc5bf34762a991022140eedbdc')
+md5sums=('89bb4ea783447c20c9b2c37ed2ed9cdb')
+b2sums=('d80077cbb7ac17c4d1c8d6f639956811c717bb5711111783f831d65879bcae3b7b855ce18b6935a1776178b0dc8dcd76a6727dec411c177e83b3bd940db39642')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
