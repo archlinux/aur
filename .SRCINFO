@@ -1,7 +1,7 @@
 pkgbase = awesome-scratch-git
 	pkgdesc = Basic drop-down applications and scratchpad manager for Awesome WM
 	pkgver = 3.4.14.2.g51f463b
-	pkgrel = 2
+	pkgrel = 3
 	url = http://git.sysphere.org/awesome-configs
 	install = awesome-scratch-git.install
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = awesome-scratch-git
 	depends = awesome
 	provides = awesome-scratchpad-git
 	conflicts = awesome-scratchpad-git
-	source = awesome-scratch-git::git+http://git.sysphere.org/awesome-configs
+	source = awesome-scratch-git::git+https://git.sysphere.org/awesome-configs
 	sha1sums = SKIP
 
 pkgname = awesome-scratch-git
-
