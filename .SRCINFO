@@ -1,6 +1,6 @@
 pkgbase = wshot-git
 	pkgdesc = Screenshot GUI for wayland
-	pkgver = 1.0.2.r9.g94c5ab9
+	pkgver = 1.0.3.r0.gdd54aff
 	pkgrel = 1
 	url = https://github.com/stefonarch/wshot
 	arch = any

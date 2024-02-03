@@ -2,7 +2,7 @@
 
 _pkgname=wshot
 pkgname=$_pkgname-git
-pkgver=1.0.2.r9.g94c5ab9
+pkgver=1.0.3.r0.gdd54aff
 pkgrel=1
 pkgdesc="Screenshot GUI for wayland"
 arch=(any)
@@ -35,7 +35,7 @@ pkgver() {
 package() {
   cd "$srcdir"/$_pkgname
   install -vDm 755 $_pkgname -t "$pkgdir"/usr/bin/
-# install -vDm 644 $_pkgname.desktop -t "$pkgdir"/usr/share/applications/
+  install -vDm 644 $_pkgname.desktop -t "$pkgdir"/usr/share/applications/
   install -vDm 644 $_pkgname.png -t "$pkgdir"/usr/share/pixmaps/
   install -vDm 644 README.md -t "$pkgdir"/usr/share/doc/$_pkgname/
   install -vDm 644 wshot1.png -t "$pkgdir"/usr/share/doc/$_pkgname/
