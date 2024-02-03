@@ -5,7 +5,7 @@
 # NOTE: !buildflags is needed in order to compile the code
 
 pkgname=calculix-cgx
-pkgver=2.20
+pkgver=2.21
 pkgrel=1
 pkgdesc="CalculiX: 3D Structural Finite Element Program - Post Processor"
 arch=('i686' 'x86_64')
@@ -20,8 +20,8 @@ checkdepends=('perl')
 source=("http://www.dhondt.de/cgx_${pkgver}.all.tar.bz2"
         "calculix_cgx_${pkgver}_archlinux.patch")
 
-sha256sums=('f4c840c3633718547e33f86b2d7bc6b35608dd8d6cbf9fa192cecef34f2dc908'
-            '6d9e86c9bcbe2953a3e7697c3c84945e8abeac4607ca519f69cd6f43cc8eb4e5')
+sha256sums=('55ae561903df011e944d7f82f9e00039dbc4c68ac9195a5a862d446eb56bcfc1'
+            'bd7b17e5158220ec214c356a6ae373e7c17cd613dfb21afb6d39b15ddaaa9af4')
 
 prepare()
 {
