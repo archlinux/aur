@@ -3,7 +3,7 @@
 
 _name=modemmanager-qt
 pkgname=${_name}5
-pkgver=5.114.0
+pkgver=5.115.0
 pkgrel=1
 pkgdesc='Qt wrapper for ModemManager DBus API'
 arch=(x86_64)
@@ -15,7 +15,7 @@ conflicts=("$_name<5.111")
 replaces=("$_name<5.111")
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig})
-sha256sums=('f1262acf1086c986bcb18559dda6ca85afe12587642dc08e4ad4397d5985589a'
+sha256sums=('a04b75ed05fe6b7021073e3c518c328a0d059065cc75c6d384ad1fbbc5fd5091'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
