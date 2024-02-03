@@ -2,8 +2,8 @@
 
 _pkgname=edalize
 pkgname=python-$_pkgname
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.5.4
+pkgrel=1
 pkgdesc='An abstraction library for interfacing EDA tools'
 arch=('any')
 url='https://github.com/olofk/edalize'
@@ -12,7 +12,7 @@ depends=('python' 'python-jinja' 'python-pyparsing')
 makedepends=('python-setuptools-scm')
 checkdepends=('python-pytest' 'python-pandas' 'iverilog')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('c0e4b21eb8ae43e2d1a54096ae4a82b36cdfd7ee66126978a2d0e148693b659309fca607098f37fd1425317f6161a09cc1eea1de99e0727bc8942fd5d6f76e7c')
+sha512sums=('67ed4e59c0e82d3e72cec215ad781809fa0ca2c2d534c13897120d69ead85eef8234eccd19955d6963e11835d5a0ee71c4c19f4217bb851e0f8f1634bb2ff7cb')
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
 

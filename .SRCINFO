@@ -1,0 +1,18 @@
+pkgbase = python-edalize
+	pkgdesc = An abstraction library for interfacing EDA tools
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = https://github.com/olofk/edalize
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-pandas
+	checkdepends = iverilog
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = python-jinja
+	depends = python-pyparsing
+	source = python-edalize-0.5.4.tar.gz::https://github.com/olofk/edalize/archive/v0.5.4.tar.gz
+	sha512sums = 67ed4e59c0e82d3e72cec215ad781809fa0ca2c2d534c13897120d69ead85eef8234eccd19955d6963e11835d5a0ee71c4c19f4217bb851e0f8f1634bb2ff7cb
+
+pkgname = python-edalize
