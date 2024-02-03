@@ -1,5 +1,5 @@
 pkgname=cartesi-machine
-pkgver=0.15.2
+pkgver=0.15.3
 pkgrel=1
 pkgdesc='Cartesi Machine'
 arch=('any')
@@ -49,7 +49,7 @@ noextract=(
   "linux-headers-${pkgver_linux}.tar.xz"
   "mongoose-7.9.tar.gz"
 )
-sha256sums=('2a6da7cf2c192c80f133c190a1f85f1bcf80bf81f05a762ad4616364f698ba1f'
+sha256sums=('ff540875355c623832740957233696bb4c382565bfcfa536c5f100d6b88fa396'
             '30b172db53908827af6b25ebcc33d514a7ed33d7f36a3e2b992000f87510050c'
             '3bb65d17259e567c0b51769ade4fc3babd5f7c79cc26f0eee281c6fb27eddbaf'
             'c61e2f72b86260ac6e5e1ee96ebea681cb0c6b9e541ecb0a2f10ca00a3417d4e'
@@ -109,3 +109,4 @@ package() {
   mkdir -p "${pkgdir}/usr/share/cartesi-machine/riscv-linux-headers/"
   install -Dm644 "linux-headers-${pkgver_linux}.tar.xz" "${pkgdir}/usr/share/cartesi-machine/riscv-linux-headers/linux-headers-${pkgver_linux}.tar.xz"
 }
+
