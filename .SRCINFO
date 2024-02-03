@@ -1,6 +1,6 @@
 pkgbase = gbutils
 	pkgdesc = Giulio Bottazzi's Command Line Econometrics
-	pkgver = 6.0
+	pkgver = 6.4
 	pkgrel = 2
 	url = http://cafim.sssup.it/~giulio/software/gbutils/
 	arch = x86_64
@@ -11,8 +11,7 @@ pkgbase = gbutils
 	provides = gbutils
 	conflicts = gbutils
 	noextract = $pkgname-$pkgver.tar.gz
-	source = ftp://cafed.sssup.it/packages/gbutils-6.0.tar.gz
+	source = ftp://cafim.sssup.it/~giulio/software/gbutils/gbutils-6.4.tar.gz
 	md5sums = SKIP
 
 pkgname = gbutils
-

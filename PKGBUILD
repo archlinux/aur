@@ -1,6 +1,6 @@
 # Maintainer: Elias Haddad <eliasynetto at gmail dot com>
 pkgname=gbutils
-pkgver=6.0
+pkgver=6.4
 pkgrel=2
 pkgdesc="Giulio Bottazzi's Command Line Econometrics"
 arch=(x86_64)
@@ -8,7 +8,7 @@ url="http://cafim.sssup.it/~giulio/software/gbutils/"
 license=(GPL2)
 provides=(gbutils)
 conflicts=(gbutils)
-source=("ftp://cafed.sssup.it/packages/gbutils-6.0.tar.gz")
+source=("ftp://cafim.sssup.it/~giulio/software/gbutils/gbutils-6.4.tar.gz")
 noextract=('$pkgname-$pkgver.tar.gz')
 md5sums=('SKIP')
 depends=('gsl>=2.1' 'libmatheval>=1.0.1' 'zlib')
