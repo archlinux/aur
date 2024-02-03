@@ -1,15 +1,21 @@
 pkgname=python-templated-dictionary
 _name=${pkgname#python-}
-pkgver=1.2
-pkgrel=1
+pkgver=1.4
+_rpmrel=1
+_pkgtag=$pkgname-$pkgver-$_rpmrel
+pkgrel=$_rpmrel.1
 pkgdesc="Dictionary where every item is evaluated as a Jinja2 expression"
 arch=('any')
 url="https://github.com/xsuchy/templated-dictionary"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('python' 'python-jinja')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('6972d3bca252b39cb4d87c35657016fa964e94b218c136d4642f08c60a0886fb')
+source=("$url/archive/$_pkgtag.tar.gz")
+sha256sums=('2fdc220dd5f931ac9149a8d01d1a6d9334d093da514581cdd0175cc72e6542d9')
+
+prepare() {
+	mv "$_name-$_pkgtag" "$_name-$pkgver"
+}
 
 build() {
 	cd "$_name-$pkgver"
