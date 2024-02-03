@@ -5,6 +5,7 @@ pkgbase = bashdb
 	url = http://bashdb.sourceforge.net/
 	arch = any
 	license = GPL
+	makedepends = texi2html
 	depends = bash>=5.0
 	depends = python-pygments
 	depends = pygmentize
@@ -14,4 +15,3 @@ pkgbase = bashdb
 	sha512sums = 32ff6d315e8cf9d59485802d5284fde53fa2d9f40ec238428a479f8a1ed1359e9bea2946b192b78534e7ac835491d5d64d73f536c8dfa93583b4c6d55d4d4545
 
 pkgname = bashdb
-

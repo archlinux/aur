@@ -14,6 +14,7 @@ arch=('any')
 url='http://bashdb.sourceforge.net/'
 license=('GPL')
 depends=("bash>=${_ver%%-*}" 'python-pygments' 'pygmentize')
+makedepends=('texi2html')
 _srcdir="${pkgname}-${_ver}"
 _verwatch=("https://sourceforge.net/projects/${pkgname}/rss" "\s*<title>.*/${pkgname}-\([_0-9\.]\+\)\.tar\.gz\].*" 'f'); _getlinks() { sed -e '/^\s\+<title>/ s:\([0-9]\)-:\1_:g'; }
 source=("https://phoenixnap.dl.sourceforge.net/project/${pkgname}/${pkgname}/${_ver}/${pkgname}-${_ver}.tar.bz2")
@@ -24,7 +25,13 @@ sha512sums=('32ff6d315e8cf9d59485802d5284fde53fa2d9f40ec238428a479f8a1ed1359e9be
 prepare() {
   set -u
   cd "${_srcdir}"
-  sed -e "/^\s\+'5.0' / s:): | '5.1'&:g" -i 'configure'
+  local _seds=(
+    -e '# Bypass the strict bash version check'
+    -e "/^\s+'5.0' / s:\): | '5.2'&:g"
+    -e '# Why does a bash specific utility use /bin/sh. sh is not bash even without dashbinsh'
+    -e 's:/bin/sh:/usr/bin/bash:g'
+  )
+  sed -E "${_seds[@]}" -i 'configure'
   set +u
 }
 
