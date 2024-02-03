@@ -13,12 +13,12 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-rusticl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=24.0.0_devel.181605.fde43e44e9f
+pkgver=24.1.0_devel.184170.b10ee44308c
 pkgrel=1
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
                             wayland-protocols glslang llvm-minimal-git libdrm libclc-minimal-git clang-minimal-git
-                            rust rust-bindgen spirv-tools-git spirv-llvm-translator-minimal-git libvdpau systemd-libs)
+                            rust rust-bindgen spirv-tools-git spirv-llvm-translator-minimal-git libvdpau systemd-libs clang-opencl-headers-minimal-git)
 # In order to keep the package simple and ease troubleshooting only use one llvm implementation
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layer libva-mesa-driver vulkan-swrast mesa-vdpau vulkan-driver opengl-driver)
@@ -52,6 +52,7 @@ build() {
     meson setup mesa _build \
        -D b_ndebug=true \
        -D b_lto=true \
+       -D b_pie=true \
        -D buildtype=plain \
        --wrap-mode=nofallback \
        -D rust_std=2021 \
@@ -87,7 +88,6 @@ build() {
        -D video-codecs=all \
        -D gallium-rusticl=true \
        -D rust_std=2021 \
-       -D opencl-external-clang-headers=disabled
 
     meson configure --no-pager _build
     ninja $NINJAFLAGS -C _build
@@ -126,7 +126,7 @@ package_opencl-rusticl-mesa-minimal-git() {
     provides=(opencl-rusticl-mesa opencl-driver)
     depends=(libdrm spirv-llvm-translator-minimal-git libclc-minimal-git spirv-tools-git
                     mesa-minimal-git=$pkgver-$pkgrel llvm-libs-minimal-git clang-libs-minimal-git
-                    expat libelf zstd lm_sensors zlib gcc-libs glibc
+                    expat libelf zstd lm_sensors zlib gcc-libs glibc clang-opencl-headers-minimal-git
     )
     
     
