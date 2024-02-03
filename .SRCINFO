@@ -1,6 +1,6 @@
 pkgbase = bun
 	pkgdesc = Bun is a fast JavaScript all-in-one toolkit. This PKGBUILD builds from source, resulting into a smaller and faster binary depending on your CPU.
-	pkgver = 1.0.23
+	pkgver = 1.0.26
 	pkgrel = 1
 	url = https://github.com/oven-sh/bun
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = bun
 	makedepends = rust
 	makedepends = unzip
 	conflicts = bun-bin
-	source = git+https://github.com/oven-sh/bun.git#tag=bun-v1.0.23
-	source = bun-linux-x64-1.0.23.zip::https://github.com/oven-sh/bun/releases/download/bun-v1.0.23/bun-linux-x64-baseline.zip
+	source = git+https://github.com/oven-sh/bun.git#tag=bun-v1.0.26
+	source = bun-linux-x64-1.0.26.zip::https://github.com/oven-sh/bun/releases/download/bun-v1.0.26/bun-linux-x64-baseline.zip
 	b2sums = SKIP
-	b2sums = d65c713114353dd23d69939408573af32a2eee496d8deb3c1696671a2eda480aefe6d97b53f81b62953fa46f4cb77405bb11ed13fe77445968d7eddf82ca575b
+	b2sums = ba3df8e4d8a3f5b72c61cd8a510da6b1e16bd03ec5eb8d4b38228c587aba9c02fc28f332ab54b7ce315d3e50b4e45d8d2dcf30a801533eb237c044a63ba4abe4
 
 pkgname = bun
