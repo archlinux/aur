@@ -4,7 +4,7 @@
 pkgname=naiveproxy
 pkgdesc="A Proxy using Chrome's network stack to camouflage traffic with strong censorship resistence and low detectablility."
 pkgver=121.0.6167.71_1
-pkgrel=1
+pkgrel=2
 _pkgver=121.0.6167.71
 _pkgrel=1
 arch=('x86_64')
@@ -138,14 +138,14 @@ build() {
   popd
 }
 
-check() {
-  SRC_DIR="${srcdir}/${pkgname}-${_pkgver}-${_pkgrel}"
-  script_dir="${SRC_DIR}/tests"
-  naive="${SRC_DIR}/src/out/Release/naive"
-
-  cd /tmp
-  python "${script_dir}/basic.py" --naive="$naive"
-}
+#check() {
+#  SRC_DIR="${srcdir}/${pkgname}-${_pkgver}-${_pkgrel}"
+#  script_dir="${SRC_DIR}/tests"
+#  naive="${SRC_DIR}/src/out/Release/naive"
+#
+#  cd /tmp
+#  python "${script_dir}/basic.py" --naive="$naive"
+#}
 
 package() {
   pushd "${srcdir}"

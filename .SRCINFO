@@ -1,7 +1,7 @@
 pkgbase = naiveproxy
 	pkgdesc = A Proxy using Chrome's network stack to camouflage traffic with strong censorship resistence and low detectablility.
 	pkgver = 121.0.6167.71_1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/klzgrad/naiveproxy
 	arch = x86_64
 	license = BSD-3-Clause
