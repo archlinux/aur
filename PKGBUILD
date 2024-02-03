@@ -1,6 +1,7 @@
 # Maintainer: Tin Lai  <soraxas at tinyiu.com>
 pkgname=mcontrolcenter-git
-_pkgname=MControlCenter
+_pkgname=mcontrolcenter
+_camel_pkgname=MControlCenter
 pkgver=r267.a23f483
 pkgrel=1
 pkgdesc="MControlCenter is a Free and Open Source GNU/Linux application that allows you to change the settings of MSI laptops"
@@ -15,12 +16,12 @@ provides=('mcontrolcenter')
 conflict=()
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_camel_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd ${_pkgname}
+  cd ${_camel_pkgname}
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -B build
@@ -32,7 +33,7 @@ package() {
     install -Dm 644 ../modprobe.d__mcontrolcenter-ec_sys.conf "${pkgdir}/etc/modprobe.d/mcontrolcenter-ec_sys.conf"
     install -Dm 644 ../modules-load.d__mcontrolcenter-ec_sys.conf "${pkgdir}/etc/modules-load.d/mcontrolcenter-ec_sys.conf"
 
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/$_camel_pkgname"
 
     make -Cbuild DESTDIR="$pkgdir" install
     # create a symlink in libexec that point to the helper
@@ -40,13 +41,13 @@ package() {
     ln -s "/usr/bin/mcontrolcenter-helper" "${pkgdir}/usr/libexec/mcontrolcenter-helper"
 
     # licenses
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
     # Desktop file
-    install -Dm644 "resources/${pkgname}.desktop"\
-            "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm644 "resources/${pkgname}.svg"\
-            "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+    install -Dm644 "resources/${_pkgname}.desktop"\
+            "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "resources/${_pkgname}.svg"\
+            "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
 
     # dbus services files
     install -Dm644 "src/helper/mcontrolcenter-helper.conf"\
