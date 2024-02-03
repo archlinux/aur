@@ -8,10 +8,9 @@ export WINEARCH=win32
 export WINEPREFIX="$PREFIX"
 
 # Check if running under Wayland
-if [[ $(pacman -Qs wine-wl-git) && $XDG_SESSION_TYPE == "wayland" ]]; then
+if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
   echo "Wayland support is ENABLED"
   export DISPLAY=:0
-  export WAYLAND_DISPLAY=wayland-0
 else
   echo "Wayland support is DISABLED"
 fi
@@ -20,6 +19,7 @@ if [[ ! -d "$DIR" ]]; then
   mkdir -p "$DIR/wine" || exit 1
 
   winetricks -q dotnet48 xmllite gdiplus || exit 1
+  wine reg.exe add HKCU\\Software\\Wine\\Drivers /v Graphics /d x11,wayland
 
   cp -r "/usr/share/$PROGRAM_NAME/Configuration.xml" "$DIR" || exit 1
 

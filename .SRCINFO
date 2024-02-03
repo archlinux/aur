@@ -1,7 +1,7 @@
 pkgbase = musicbee
 	pkgdesc = Advanced, feature-rich freeware audio player (uses Wine)
 	pkgver = 3.5.8698
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getmusicbee.com
 	arch = x86_64
 	license = custom
@@ -18,7 +18,7 @@ pkgbase = musicbee
 	source = https://www.un4seen.com/files/z/2/bass_aac24.zip
 	sha256sums = a1da2ff921922fe4323f062a0032b6182b5dd000d6b5df34998614377aa3977a
 	sha256sums = 054502f6dacceeeff10b7ac7511a514307a1e3f187c19f73b5913965c459dc6e
-	sha256sums = f96144607119a44a2b07965b05e9fd0253b8e06ec4ac5eac394f6cb7e0bbbe83
+	sha256sums = 19a58ea42709b17c950d1988c573e334d0939a11540be9048f15d58ad719c6b9
 	sha256sums = 782ec4f3758fc715d29ceab332103266df4000dd413a477901dccb8c9bac2090
 
 pkgname = musicbee
