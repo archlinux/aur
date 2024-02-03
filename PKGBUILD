@@ -76,7 +76,7 @@ _logfile="build.${CARCH}.$(date +%s).log"
 build_jobs=$(nproc)
 
 AL_CMAKE_CONFIG=(
-  -DLL_TESTS:BOOL=ON
+  -DLL_TESTS:BOOL=${ENABLE_TESTS:-ON}
   -DDISABLE_FATAL_WARNINGS=ON
   -DUSE_LTO:BOOL=OFF
   -DVIEWER_CHANNEL="Alchemy Test"
