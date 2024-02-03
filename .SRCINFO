@@ -1,4 +1,4 @@
-pkgbase = mcontrolcenter
+pkgbase = mcontrolcenter-git
 	pkgdesc = MControlCenter is a Free and Open Source GNU/Linux application that allows you to change the settings of MSI laptops
 	pkgver = r267.a23f483
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = mcontrolcenter
 	source = git+https://github.com/dmitry-s93/MControlCenter
 	md5sums = SKIP
 
-pkgname = mcontrolcenter
+pkgname = mcontrolcenter-git

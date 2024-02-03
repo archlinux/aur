@@ -1,5 +1,5 @@
 # Maintainer: Tin Lai  <soraxas at tinyiu.com>
-pkgname=mcontrolcenter
+pkgname=mcontrolcenter-git
 _pkgname=MControlCenter
 pkgver=r267.a23f483
 pkgrel=1
