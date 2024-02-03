@@ -1,17 +1,17 @@
 pkgbase = calculix-doc
 	pkgdesc = CalculiX: 3D Structural Finite Element Program - Docs and Examples
-	pkgver = 2.20
-	pkgrel = 2
+	pkgver = 2.21
+	pkgrel = 1
 	url = http://www.calculix.de/
 	arch = any
 	license = GPL2
 	options = docs
 	options = !strip
-	source = http://www.dhondt.de/ccx_2.20.htm.tar.bz2
-	source = http://www.dhondt.de/cgx_2.20.htm.tar.bz2
-	source = http://www.dhondt.de/cgx_2.20.exa.tar.bz2
-	sha256sums = 51a0922f5cecc9fbe5880afb47c3b24ef90300fb800b4d10fb02b297e7c2b4c1
-	sha256sums = 8eb979caa6d965a146e4b70bb288a07448e8de9d90b8c28b9a15030f4df80da0
-	sha256sums = 3fc8520ec934f916c554693ddf46ff750de0dbc91df37790bb590926d05d12d0
+	source = http://www.dhondt.de/ccx_2.21.htm.tar.bz2
+	source = http://www.dhondt.de/cgx_2.21.htm.tar.bz2
+	source = http://www.dhondt.de/cgx_2.21.exa.tar.bz2
+	sha256sums = 1ed21976ba2188d334fe0b5917cf75b8065b9c0b939e6bd35bd98ed57a725ba2
+	sha256sums = f2c8aa71f4c81a537e7f3fffa62862b1f617d95ac31ac41a994799df7d28824f
+	sha256sums = 0569cdeca93eab827277904519e7b5f7b04a1326e7a3a11cc148f3dde585c054
 
 pkgname = calculix-doc
