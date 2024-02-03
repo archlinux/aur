@@ -1,7 +1,7 @@
 # Maintainer: RifsxD <33044977+rifsxd at users dot noreply dot github dot com>
 
 pkgname=blazefetch
-pkgver=2.7.9
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='A lite & blazing fast system info fetch utility'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/rifsxd/blazefetch'
 license=('MIT')
 provides=('blazefetch')
 conflicts=('blazefetch')
-depends=('libx11' 'networkmanager' 'playerctl')
+depends=('libx11' 'networkmanager' 'playerctl' 'figlet')
 makedepends=('cmake' 'ninja' 'gcc')
 source=("git+$url.git")
 sha256sums=('SKIP')

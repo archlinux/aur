@@ -1,6 +1,6 @@
 pkgbase = blazefetch
 	pkgdesc = A lite & blazing fast system info fetch utility
-	pkgver = 2.7.9
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/rifsxd/blazefetch
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = blazefetch
 	depends = libx11
 	depends = networkmanager
 	depends = playerctl
+	depends = figlet
 	provides = blazefetch
 	conflicts = blazefetch
 	source = git+https://github.com/rifsxd/blazefetch.git
