@@ -1,14 +1,14 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=softmaker-office-nx-bin
-pkgver=1206
+pkgver=1208
 pkgrel=1
 pkgdesc="Proprietary office suite; word processing, spreadsheets, presentations (subscription version)"
 url="https://www.softmaker.com"
 arch=('x86_64')
-license=('custom')
+license=('LicenseRef-custom')
 depends=('hicolor-icon-theme' 'shared-mime-info' 'libxmu' 'libgl' 'libxrandr' 'libxrender'
-         'libx11' 'libxext' 'libxmu' 'curl' 'desktop-file-utils')
+         'libx11' 'libxext' 'libxmu' 'curl' 'desktop-file-utils' 'gstreamer' 'gst-plugins-base-libs')
 source=('planmaker-nx.desktop'
         'presentations-nx.desktop'
         'textmaker-nx.desktop'
@@ -24,7 +24,7 @@ md5sums=('95fc61a87e75e525abb5b446c4e29635'
          '052615de9b1733596832e95b22d47551'
          '8b5e74ccb7ed223db25d0cafea36d36f'
          'f750f31e92221d88b72f8de1075a960f')
-md5sums_x86_64=('5ba0767cf6a07d38ce0ba18f03df6067')
+md5sums_x86_64=('ba9818015db217e4ba17e581bc23e89d')
 sha512sums=('a2b8db4e2028bce38f37c9da2e5733aceea17cd9ebd7e96c1252e328cc7fd3e940c71967a9f41d2b04f874d86ee0050f22cead313e5fd9b5e396a6a704f475e2'
             'fc0b0dac264df8d1a9301c6c934dc5bc6cbc2c7e6eb06a109b60e2d58429f3a61117e12585c0e42388c8b064e3ac6e55e513d1c01dc8cea5999fed7e2342e449'
             '6733712a2efb1f5794da7127a0df12419e747a724c46f6b9daf204dc88b806ea6a230097ae1aa6a5d647ff5e36916948bc0b1dd8977a03a7517400eb0dedee46'
@@ -32,7 +32,7 @@ sha512sums=('a2b8db4e2028bce38f37c9da2e5733aceea17cd9ebd7e96c1252e328cc7fd3e940c
             '134fbddc26091d3e8dff602d67e7bd2e01e0e6b1a0b77266b289781d912684c890f54c1b8922fd8a8c3fba21439a00a4e355bb23a1816d6b13ec1576fcb53c3e'
             '83879bc58e22b58df193ef9434a292b3c4108d72000db85a7739317ecd10630c6ae578a97947a95c782f3838e6f155ce093399a42dc0044e623d5a437f1d4550'
             '94bb97083f6630b883cf1f642a5170ef17de088bfa78210068b9bf65107cc2a5984927f49014cd8040a55d9e0723d3de8ee30875f3dc3bc4f752181d7e04893d')
-sha512sums_x86_64=('5b77b0263aa76ab06be46a796c8a504596640e794246d54e5139034b93c85961281bf3e668cee81f05e3403411e6642009b9aa4f963f68f69914802d4232dbcb')
+sha512sums_x86_64=('a329b9ac428f429bd7fa594c0a195846f8992148063d99a08c01f7a2379702ae0e331b3ad70e678f7b3bee2a30a24b8ce6d1bb8b7699d81b8d56e719f6ad9c5f')
 
 package() {
   install -dm755 "${pkgdir}/usr/share/officenx"
