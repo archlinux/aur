@@ -2,14 +2,14 @@
 
 pkgname=magpie-wm-v1-git
 _pkgname=magpie
-pkgver=r119.4a7ab8a
+pkgver=r142.038e441
 pkgrel=1
 pkgdesc="Budgie's in-development Wayland compositor - latest git"
 arch=("x86_64" "armv7h" "aarch64")
 url="https://github.com/BuddiesOfBudgie/$_pkgname/tree/v1"
 license=("Apache-2.0")
 depends=("wlroots" "wayland" "xorg-xwayland")
-makedepends=("git" "meson" "wayland-protocols")
+makedepends=("argparse" "git" "meson" "wayland-protocols")
 source=("$_pkgname"::"git+https://github.com/BuddiesOfBudgie/${_pkgname}.git#branch=v1")
 b2sums=("SKIP")
 
