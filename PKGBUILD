@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=elephicon
-pkgver=2.8.4
+pkgver=2.8.5
 _electronversion=28
 _nodeversion=18
 pkgrel=1
@@ -34,7 +34,7 @@ _ensure_local_nvm() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --categories "Graphics;Utility" --name "${pkgname}" --exec "${pkgname} %U"
