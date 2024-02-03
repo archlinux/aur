@@ -1,0 +1,16 @@
+pkgbase = hitch
+	pkgdesc = libev-based high performance SSL/TLS proxy
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://hitch-tls.org/
+	arch = x86_64
+	license = BSD
+	checkdepends = lsof
+	makedepends = python-docutils
+	depends = libev
+	depends = openssl
+	source = https://hitch-tls.org/source/hitch-1.8.0.tar.gz
+	validpgpkeys = 584A3EBFE705CDCD
+	sha256sums = dfc99484bc7ffea27a3169e84d6c217988eda47b208ab2e5524dc2a5dd158f4e
+
+pkgname = hitch

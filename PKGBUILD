@@ -2,8 +2,8 @@
 # Reference: PKGBUILD(5)
 
 pkgname=hitch
-pkgver=1.7.3
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 pkgdesc='libev-based high performance SSL/TLS proxy'
 url='https://hitch-tls.org/'
 license=(BSD)
@@ -15,7 +15,7 @@ makedepends=(python-docutils)
 arch=(x86_64)
 source=("https://hitch-tls.org/source/hitch-$pkgver.tar.gz")
 # sha256sums source: https://hitch-tls.org/source/SHA256SUM
-sha256sums=(1a1bf4955d775b718dc31c89a1a05176530b0ca856f95ee42a2bc7a23f289787)
+sha256sums=('dfc99484bc7ffea27a3169e84d6c217988eda47b208ab2e5524dc2a5dd158f4e')
 validpgpkeys=(584A3EBFE705CDCD)
 
 build() {
