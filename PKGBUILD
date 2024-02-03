@@ -3,7 +3,7 @@
 pkgname=arrpc
 pkgver=3.3.0
 _commit='c6e23e7eb733ad396d3eebc328404cc656fed581'
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Discord RPC server for atypical setups"
 arch=("x86_64")
 url="https://arrpc.openasar.dev/"
@@ -16,12 +16,10 @@ options=(!strip)
 install=arrpc.install
 source=("git+https://github.com/OpenAsar/arrpc.git#commit=${_commit}"
         "async.patch"
-        "arrpc.service"
-        "arrpc.install")
+        "arrpc.service")
 sha256sums=('SKIP'
             '38db355a3b5b7afc79b4722068733176cdee751e4e93653219288a6faebb0922'
-            'dccc409ef768766d8d4141f8d89366e0bbecd30d9b08d4d31856b01f180c4005'
-            'aa9d0d7e1340a11268a76c21a2fa18f09cea02174a5effbcbb2eb0144221869f')
+            'dccc409ef768766d8d4141f8d89366e0bbecd30d9b08d4d31856b01f180c4005')
 
 build() {
   cd "${pkgname}"
