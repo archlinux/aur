@@ -1,7 +1,7 @@
 # Maintainer: Liam Doan <not.lamdn@gmail.com>
 
 pkgname=surfshark-client
-pkgver=1.7.3.2256
+pkgver=2.1.0-2503
 pkgrel=1
 pkgdesc="Surfshark VPN GUI client for Linux. Encrypt your internet activity so no one can track or steal your data. Increase your privacy and avoid tracking by using a different IP address. Keep your digital freedom and security while using unprotected networks."
 arch=('x86_64')
