@@ -2,7 +2,7 @@
 # Maintainer: pikl <me@pikl.uk>
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
-pkgrel=2
+pkgrel=3
 pkgver=1.94.1
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
@@ -105,7 +105,7 @@ build() {
     python -m venv "${srcdir}/venv"
     export VIRTUAL_ENV="${srcdir}/venv"
     export PATH="${srcdir}/venv/bin:${PATH}"
-    poetry install --sync --no-interaction --no-ansi --no-root --without dev
+    poetry install --sync --no-interaction --no-ansi --no-root --with cpu --without dev
     # delete any python bytecode 
     find "${srcdir}/venv" -type f -name "*.py[co]" -delete
     find "${srcdir}/venv" -type d -name "__pycache__" -delete
