@@ -1,0 +1,21 @@
+From 3b6de69e076ebeed6421312575c06dc8f762a335 Mon Sep 17 00:00:00 2001
+From: aryoda <aryoda@users.noreply.github.com>
+Date: Fri, 2 Feb 2024 19:00:51 +0100
+Subject: [PATCH] Fix bug #1630: "make install" ignored $(DEST) in file
+ migration part
+
+PR #1633
+---
+diff --git a/qt/configure b/qt/configure
+index 0c4d3297..ac6cc873 100755
+--- a/qt/configure
++++ b/qt/configure
+@@ -149,7 +149,7 @@ printf "install:\n" >> ${MAKEFILE}
+ 
+ # Migration
+ printf "\t#clean-up installed old files that were renamed or moved in later BiT versions\n" >> ${MAKEFILE}
+-printf "\trm -f /etc/dbus-1/system.d/net.launchpad.backintime.serviceHelper.conf\n" >> ${MAKEFILE}
++printf "\trm -f \$(DEST)/etc/dbus-1/system.d/net.launchpad.backintime.serviceHelper.conf\n" >> ${MAKEFILE}
+ printf "\trm -f \$(DEST)/share/backintime/plugins/qt4plugin.py\n" >> ${MAKEFILE}
+ addNewline
+ 
