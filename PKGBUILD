@@ -1,6 +1,6 @@
 # Maintainer: Antheas Kapenekakis <aur at antheas dot dev>
 pkgname=hhd
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Handheld Daemon. A tool for managing the quirks of handheld devices.'
 arch=('x86_64')
@@ -25,7 +25,7 @@ package() {
 	mkdir -p ${pkgdir}/usr/lib/udev/rules.d/
   install -m644 usr/lib/udev/rules.d/83-hhd.rules ${pkgdir}/usr/lib/udev/rules.d/83-hhd.rules
 	mkdir -p ${pkgdir}/usr/lib/udev/hwdb.d/
-  install -m644 usr/lib/udev/hwdb.d/83-hhd.rules ${pkgdir}/usr/lib/udev/hwdb.d/83-hhd.rules
+  install -m644 usr/lib/udev/hwdb.d/83-hhd.hwdb ${pkgdir}/usr/lib/udev/hwdb.d/83-hhd.hwdb
 	mkdir -p ${pkgdir}/usr/lib/systemd/system/
   install -m644 usr/lib/systemd/system/hhd@.service ${pkgdir}/usr/lib/systemd/system/hhd@.service
 }
