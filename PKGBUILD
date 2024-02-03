@@ -35,8 +35,10 @@ pkgver=7.1.3.55266.2a64c7b773
 pkgrel=1
 replaces=('alchemy-viewer-git')
 provides=('alchemy-viewer')
+# template start; name=source; version=1.0;
 source=("${pkgname}"::'git+https://git.alchemyviewer.org/alchemy/viewer.git#branch='"${AL_BRANCH_OVERRIDE:-main}")
 sha256sums=('SKIP')
+# template end;
 depends+=('dbus-glib' 'systemd-libs')
 conflicts+=("alchemy-next-viewer-nosystemd-git")
 
