@@ -11,8 +11,8 @@
 ## basic info
 _pkgname="floorp"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=11.8.2
-pkgrel=2
+pkgver=11.9.0
+pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
 arch=('x86_64')
@@ -98,7 +98,7 @@ _main_package() {
   )
 
   sha256sums=(
-    '08a5689477e3e4bda027c1a2115d8e4b63fdc1b91838278352f00206410b194c'
+    '11a7b2bfc2582220e0e0f0be90b9575249f52856fe21b55cbce9b72c516d654e'
     'SKIP'
     'SKIP'
     '07a63f189beaafe731237afed0aac3e1cfd489e432841bd2a61daa42977fb273'
@@ -108,13 +108,14 @@ _main_package() {
 # common functions
 prepare() {
   mkdir -p mozbuild
+  cd "$_pkgsrc"
 
   # prepare floorp-core
   (
-    rm -rf "$_pkgsrc/floorp"
-    ln -sf "../floorp-projects.floorp-core" "$_pkgsrc/floorp"
+    rm -rf "floorp"
+    ln -sf "../floorp-projects.floorp-core" "floorp"
 
-    cd "floorp-projects.floorp-core"
+    cd "$srcdir/floorp-projects.floorp-core"
     local -A _submodules=(
       ['floorp-projects.unified-l10n-central']='browser/locales/l10n-central'
     )
@@ -127,13 +128,12 @@ prepare() {
   )
 
   # clear forced startup pages
-  sed -E 's&^\s*pref\("startup\.homepage.*$&&' -i "$_pkgsrc/browser/branding/official/pref/firefox-branding.js"
+  sed -E 's&^\s*pref\("startup\.homepage.*$&&' -i "browser/branding/official/pref/firefox-branding.js"
 
   # prepare api keys
-  cp "$_pkgsrc/floorp/apis"/api-*-key "$_pkgsrc/"
+  cp "floorp/apis"/api-*-key ./
 
   # configure
-  cd "$_pkgsrc"
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
 ac_add_options --disable-artifact-builds
@@ -241,10 +241,33 @@ build() {
   # LTO/PGO needs more open files
   ulimit -n 4096
 
+  # Do 3-tier PGO
   if [[ "${_build_pgo::1}" == "t" ]] ; then
-    # Do 3-tier PGO
-    local _old_profdata="${SRCDEST:-$startdir}/$_pkgname-merged.profdata"
-    local _old_jarlog="${SRCDEST:-$startdir}/$_pkgname-jarlog"
+    # find previous profile file...
+    local _old_profdata _old_jarlog _pkgver_old tmp_old tmp_new
+    _pkgver_prof=$(
+      cd "${SRCDEST:-$startdir}"
+      for i in *.profdata ; do [ -f "$i" ] && echo "$i" ; done \
+        | sort -rV | head -1
+    )
+
+    # new profile for new major version
+    if [ "${_pkgver_prof%%.*}" != "${pkgver%%.*}" ] ; then
+      _build_pgo_reuse=false
+      _pkgver_prof="$pkgver"
+    fi
+
+    # new profile for new minor version
+    _tmp_old=$(echo "${_pkgver_prof}" | cut -d'-' -f2 | cut -d'.' -f2 )
+    _tmp_new=$(echo "${pkgver}" | cut -d'-' -f2 | cut -d'.' -f2 )
+
+    if [ "${_tmp_new:-0}" -gt "${_tmp_old:-0}" ] ; then
+      _build_pgo_reuse=false
+      _pkgver_prof="$pkgver"
+    fi
+
+    local _old_profdata="${SRCDEST:-$startdir}/$_pkgname-$_pkgver_prof-merged.profdata"
+    local _old_jarlog="${SRCDEST:-$startdir}/$_pkgname-$_pkgver_prof-jarlog"
 
     # Restore old profile
     if [[ "${_build_pgo_reuse::1}" == "t" ]] ; then
@@ -365,12 +388,12 @@ Version=2
 END
 
   # Replace duplicate binary
-  ln -srfv "$pkgdir/usr/bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
+  ln -sf "/usr/bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
 
   # Use system certificates
   local nssckbi="$pkgdir/usr/lib/$_pkgname/libnssckbi.so"
-  if [[ -e $nssckbi ]]; then
-    ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
+  if [[ -e "$nssckbi" ]]; then
+    ln -sf "/usr/lib/libnssckbi.so" "$nssckbi"
   fi
 
   # desktop file
