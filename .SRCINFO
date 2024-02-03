@@ -1,0 +1,14 @@
+pkgbase = pytimer
+	pkgdesc = Simple CLI timer app written in python
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/AndrejPatak/Pytimer
+	install = pytimer.install
+	arch = any
+	license = GPL-3.0-or-later
+	source = pytimer-1.tar.gz::https://github.com/AndrejPatak/Pytimer/tree/main/archive/1.tar.gz
+	source = pytimer-bin
+	sha256sums = c897e5e53a50e377a21153da8c8fb782369900f7364f61c1ce2ce4507add1579
+	sha256sums = 82dc7bd9692a1f8b6eda9271717e67238d71e7b28d37d0066217ec779882afcf
+
+pkgname = pytimer
