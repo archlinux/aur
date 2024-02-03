@@ -1,6 +1,6 @@
 pkgbase = papermerge-core
 	pkgdesc = Open Source Document Management System for Digital Archives (server)
-	pkgver = 3.0.2
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = https://github.com/papermerge/papermerge-core
 	arch = any
@@ -41,7 +41,7 @@ pkgbase = papermerge-core
 	depends = python-yaml
 	depends = uvicorn
 	depends = uwsgi-plugin-python
-	source = papermerge-core-3.0.2.tar.gz::https://github.com/papermerge/papermerge-core/archive/refs/tags/3.0.2.tar.gz
-	sha256sums = d88547e4b2092e204d94037520355d68d51a6d661a57e475ed56cbd0c9ad37b0
+	source = papermerge-core-3.0.3.tar.gz::https://github.com/papermerge/papermerge-core/archive/refs/tags/3.0.3.tar.gz
+	sha256sums = 3a67e4134d743150be3fb723f2d3aea3366d16d8eeb4fb29ea8bcf340f0360a0
 
 pkgname = papermerge-core
