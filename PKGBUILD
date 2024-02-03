@@ -11,14 +11,14 @@
 # Contributor: Tim Zebulla <amon at faumrahrer dot de>
 
 pkgname=weechat-git
-pkgver=3.8.r507.g310af25
+pkgver=4.2.0.r25.g5c86972
 pkgrel=1
 pkgdesc='Fast, light and extensible IRC client (curses UI). Development version.'
 arch=(i686 x86_64 armv7h aarch64)
 url=https://weechat.org
 license=(GPL)
 depends=(gnutls curl libgcrypt)
-makedepends=(asciidoctor cmake aspell enchant guile lua perl python ruby tcl git)
+makedepends=(asciidoctor cmake aspell enchant guile lua perl python ruby tcl cjson git)
 optdepends=('aspell: spellchecker support'
             'enchant: spellchecker support'
 	        'guile: support for guile scripts'
@@ -26,7 +26,8 @@ optdepends=('aspell: spellchecker support'
 	        'perl: support for perl scripts'
 	        'python: support for python scripts'
 	        'ruby: support for ruby scripts'
-	        'tcl: support for tcl scripts')
+	        'tcl: support for tcl scripts'
+	        'cjson: support for relay api')
 provides=("${pkgname%-git}=${pkgver}")
 conflicts=("${pkgname%-git}")
 
