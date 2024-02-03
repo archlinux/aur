@@ -1,7 +1,7 @@
 # Maintainer: Bertrand Lemasle <blemasle@gmail.com>
 
 pkgname=libindi-astrolink4
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="3rd party drivers for INDI, support for Astrolink 4 mini devices"
 url="http://www.indilib.org/index.php?title=Main_Page"
@@ -10,7 +10,7 @@ arch=(i686 x86_64)
 depends=(libindi=${pkgver})
 makedepends=(cmake)
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
-sha256sums=('17f5a0536f2ee6bfbcbdcdde9a44c2e59c2156637004193f650bdd2dda123291')
+sha256sums=('99822ed417fd4cb9646065fe6158244495f082d714c6f1bbbbdb48ebd8e303b2')
 
 prepare() {
   mkdir -p build
