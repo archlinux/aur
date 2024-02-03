@@ -1,0 +1,20 @@
+pkgbase = blazefetch-git
+	pkgdesc = A lite & blazing fast system info fetch utility
+	pkgver = 20240204
+	pkgrel = 1
+	url = https://github.com/rifsxd/blazefetch
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gcc
+	depends = libx11
+	depends = networkmanager
+	depends = playerctl
+	depends = figlet
+	provides = blazefetch-git
+	conflicts = blazefetch
+	source = git+https://github.com/rifsxd/blazefetch.git
+	sha256sums = SKIP
+
+pkgname = blazefetch-git
