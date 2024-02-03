@@ -1,0 +1,16 @@
+pkgbase = dfmd-git
+	pkgdesc = A configurable handler for file manager DBus activities
+	pkgver = v0.1.0.r0.g62fd5d9
+	pkgrel = 1
+	url = https://github.com/AMNatty/dfmd
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = dbus
+	optdepends = xdg-utils: default open actions
+	source = dfmd-git::git+https://github.com/AMNatty/dfmd?signed
+	validpgpkeys = 4F9434A2EAC21BEC148F3656BF6CB659ADEE60EC
+	sha1sums = SKIP
+
+pkgname = dfmd-git
