@@ -1,0 +1,16 @@
+pkgbase = acpi_ec-dkms-git
+	pkgdesc = MControlCenter is a Free and Open Source GNU/Linux application that allows you to change the settings of MSI laptops
+	pkgver = r28.75102ce
+	pkgrel = 1
+	url = Kernel module to access directly to the ACPI EC.
+	arch = x86_64
+	license = GPL
+	depends = dkms
+	depends = mokutil
+	provides = acpi_ec
+	provides = ec_sys
+	conflicts = acpi_ec
+	source = git+https://github.com/musikid/acpi_ec
+	md5sums = SKIP
+
+pkgname = acpi_ec-dkms-git
