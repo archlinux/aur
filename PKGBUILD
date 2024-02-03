@@ -2,7 +2,7 @@
 
 _name=kdav
 pkgname=${_name}5
-pkgver=5.114.0
+pkgver=5.115.0
 pkgrel=1
 epoch=1
 pkgdesc='A DAV protocol implemention with KJobs'
@@ -15,7 +15,7 @@ conflicts=("$_name<1:5.111")
 replaces=("$_name<1:5.111")
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig})
-sha256sums=('e23a7171f1f15ed80decb9c61aa5131a40c54de288cf30a8985613f1bb4b2585'
+sha256sums=('fb0ae1b7f21008f66ada25e5d6df4aae073a14c613ae539f35706a8289d05809'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
