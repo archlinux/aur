@@ -16,8 +16,8 @@
 
 
 pkgbase=llvm-minimal-git
-pkgname=(llvm-minimal-git llvm-libs-minimal-git clang-minimal-git clang-libs-minimal-git)
-pkgver=18.0.0_r479739.cd6022916bff
+pkgname=(llvm-minimal-git llvm-libs-minimal-git clang-minimal-git clang-libs-minimal-git clang-opencl-headers-minimal-git)
+pkgver=19.0.0_r488574.cba1b64099a0
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -25,17 +25,14 @@ license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=(git cmake libffi libedit ncurses libxml2
              libxcrypt python python-setuptools)
 source=("git+https://github.com/llvm/llvm-project.git"
-                'local://llvm-config.h'
 )
                 
-md5sums=('SKIP'
-         '295c343dcd457dc534662f011d7cff1a')
-sha512sums=('SKIP'
-            '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd')
+md5sums=('SKIP')
+sha512sums=('SKIP')
             
 
 options=('!lto')
-# explicitly disable lto to reduce number of build hangs / test failures
+# explicitly disable lto to reduce number of build hangs / test failures and runtime issues
 
 # LIT by default uses all available cores. this can lead to heavy stress on systems making them unresponsive.
 # It can also happen that the kernel oom killer interferes and kills important tasks.
@@ -44,6 +41,8 @@ options=('!lto')
 # example for systems with 24 cores
 # LITFLAGS="-j 18"
 # NOTE: It's your responbility to validate the value of LITFLAGS. If unsure, don't set it.
+
+_major_ver=19
 
 _get_distribution_components() {
 local target
@@ -175,13 +174,17 @@ package_llvm-minimal-git() {
     rm "$pkgdir"/usr/lib/libRemarks.so
 
     # prepare folders in srcdir to store files that are placed in other package_*() functions
-    mkdir -p "$srcdir"{/llvm-libs/usr/lib,/clang-libs/usr/lib}
+    mkdir -p "$srcdir"{/llvm-libs/usr/lib,/clang-libs/usr/lib,/clang-opencl-headers/usr/{lib/clang/$_major_ver/include,include/clang/Basic}}
     
     # The llvm runtime libraries go into llvm-libs-minimal-git
     mv -f "$pkgdir"/usr/lib/lib{LLVM-*.so,LTO.so.*,Remarks.so.*} "$srcdir"/llvm-libs/usr/lib
 
     # The clang runtime libraries go into clang-libs-minimal-git
     mv -f "$pkgdir"/usr/lib/libclang{,-cpp}.so* "$srcdir"/clang-libs/usr/lib
+    
+    # clang opencl files go to clang-opencl-headers-git
+    mv -f "$pkgdir"/usr/lib/clang/$_major_ver/include/opencl* "$srcdir"/clang-opencl-headers/usr/lib/clang/$_major_ver/include
+    mv -f "$pkgdir"/usr/include/clang/Basic/OpenCL* "$srcdir"/clang-opencl-headers/usr/include/clang/Basic
 
     # clang-minimal-git files go to a separate package
     mkdir -p "$srcdir"/clang/usr/{bin,include,lib,lib/cmake,share}
@@ -195,13 +198,6 @@ package_llvm-minimal-git() {
     mv -f "$pkgdir"/usr/bin/{analyze-build,c-index-test,clang*,diagtool,find-all-symbols,git-clang-format,hmaptool,intercept-build,modularize,pp-trace,run-clang-tidy,scan-build,scan-build-py,scan-view} "$srcdir"/clang/usr/bin/
     mv -f "$pkgdir"/usr/share/{clang,man,opt-viewer,scan-build,scan-view} "$srcdir"/clang/usr/share/
     
-    if [[ $CARCH == x86_64 ]]; then
-        # Needed for multilib (https://bugs.archlinux.org/task/29951)
-        # Header stub is taken from Fedora
-        mv "$pkgdir"/usr/include/llvm/Config/llvm-config{,-64}.h
-        install -Dm644 "$srcdir"/llvm-config.h "$pkgdir"/usr/include/llvm/Config/llvm-config.h
-    fi
-
     install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE.TXT
     
 }
@@ -263,6 +259,20 @@ package_clang-libs-minimal-git() {
     conflicts=("clang<$pkgver-$pkgrel" 'clang-libs')
     
     cp --preserve --recursive "$srcdir"/clang-libs/* "$pkgdir"/
+
+    install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.TXT
+}
+
+package_clang-opencl-headers-minimal-git() {
+    pkgdesc="clang headers & include files for OpenCL, trunk version"
+    depends=(clang-libs-minimal-git="$pkgver-$pkgrel")
+    # the functionality offered by this package is part of the clang repo package.
+    # As far as I know rusticl from mesa is the only known user.
+    # TODO: when/if this functionality is split off from repo clang, verify if changes are needed to this package
+    provides=('clang-opencl-headers')
+    conflicts=("clang<$pkgver-$pkgrel" 'clang-opencl-headers')
+    
+    cp --preserve --recursive "$srcdir"/clang-opencl-headers/* "$pkgdir"/
 
     install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.TXT
 }
