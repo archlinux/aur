@@ -1,7 +1,7 @@
 pkgbase = gbutils
 	pkgdesc = Giulio Bottazzi's Command Line Econometrics
 	pkgver = 6.4
-	pkgrel = 2
+	pkgrel = 4
 	url = http://cafim.sssup.it/~giulio/software/gbutils/
 	arch = x86_64
 	license = GPL2

@@ -1,7 +1,7 @@
 # Maintainer: Elias Haddad <eliasynetto at gmail dot com>
 pkgname=gbutils
 pkgver=6.4
-pkgrel=2
+pkgrel=4
 pkgdesc="Giulio Bottazzi's Command Line Econometrics"
 arch=(x86_64)
 url="http://cafim.sssup.it/~giulio/software/gbutils/"
