@@ -16,7 +16,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/mudita/mudita-center/releases/download/${pkgver}/Mudita-Center.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('7b0d77970a1ceff3ebb04d43c9bc4a1b76632f19d093af1672353c00134e3f6e')
+sha256sums_x86_64=('e15eca1dc81adc1d950e445f22c57428e3882f562a8c337034e0a22ab3ccb502')
 prepare() {
     chmod +x "${_appimage}"
     ./"${_appimage}" --appimage-extract
