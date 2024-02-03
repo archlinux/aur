@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop
-pkgver=2.6.2
+pkgver=3.0.0
 _nvmdver="${pkgver}"
-_electronversion=27
+_electronversion=28
 _nodeversion=20
-pkgrel=2
+pkgrel=1
 pkgdesc="A version management desktop client for the Nodejs."
 arch=('x86_64')
 url="https://github.com/1111mp/nvm-desktop"
@@ -28,7 +28,7 @@ source=(
     "nvmd-${_nvmdver}.zip::https://github.com/1111mp/nvmd-command/releases/download/v${_nvmdver}/Linux-x64.zip"
 )
 sha256sums=('SKIP'
-            'fca1144f6ecdce96f76a15c57bf4668e603fc4fab78218ae60ff61a7555df194')
+            'a050d9557e8ab5e9e50485dce76d30e85607829f6aedc6177772e004a52acb19')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
