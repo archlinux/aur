@@ -1,7 +1,7 @@
 pkgbase = tundra
 	pkgdesc = MyAnimeList scrobbler
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tundra.moe
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = tundra
 	depends = libadwaita
 	depends = dbus
 	source = tundra-0.5.3.tar.gz::https://github.com/m4tx/tundra/archive/v0.5.3.tar.gz
-	source = https://raw.githubusercontent.com/erengy/anime-relations/b043ceae054cf2b342c79e1be81c8b8836daedb3/anime-relations.txt
+	source = anime-relations-0.5.3.txt::https://raw.githubusercontent.com/erengy/anime-relations/b043ceae054cf2b342c79e1be81c8b8836daedb3/anime-relations.txt
 	md5sums = 955dafd19a779148aa8190131ff9e128
 	md5sums = f767b6337157627dcdd1ab52b9770ad7
 
