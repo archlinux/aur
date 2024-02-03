@@ -1,0 +1,13 @@
+pkgbase = catwalk-bin
+	pkgdesc = A sweet program that takes in four showcase images and displays them all at once.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/catppuccin/toolbox
+	arch = x86_64
+	license = MIT
+	conflicts = catwalk
+	conflicts = catwalk-git
+	source = https://github.com/catppuccin/toolbox/releases/download/catwalk-v1.2.0/catwalk-x86_64-unknown-linux-gnu
+	sha256sums = 413459bb5cd6bd937c49bf9a6c10ab164bd05b1a7c09c2a0c2dac9a841fb9b06
+
+pkgname = catwalk-bin
