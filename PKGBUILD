@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fooyin
 _pkgname=Fooyin
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="A customisable music player"
 arch=('any')
@@ -14,8 +14,6 @@ depends=(
     'alsa-lib'
     'taglib'
     'ffmpeg'
-    'qt6-multimedia'
-    'qt6-multimedia-ffmpeg'
 )
 makedepends=(
     'gendesk'
