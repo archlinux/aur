@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hihat-git
-pkgver=latest.r10.ge1d8466
+pkgver=latest.r0.ge1d8466
 _electronversion=26
 _nodeversion=20
 pkgrel=1
@@ -51,7 +51,12 @@ build() {
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
     cd "${srcdir}/${pkgname//-/.}"
+    sed "s|development|production|g" src/main/main.ts
+    sed "s|development|production|g" src/main/menu.ts
+    sed "s|development|production|g" src/main/util.ts
     npm install
     npm run package
 }
