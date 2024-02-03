@@ -1,3 +1,5 @@
+# Maintainer: fossdd <fossdd@pwned.life>
+
 pkgname=python-pipewire-git
 _pkgname="${pkgname%-git}"
 pkgver=r147.147cb93
