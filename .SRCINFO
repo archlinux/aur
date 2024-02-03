@@ -1,5 +1,5 @@
-pkgbase = ruffle-dinnerbone-git
-	pkgdesc = A Flash Player emulator written in Rust
+pkgbase = ruffle-adapter-git
+	pkgdesc = A Flash Player emulator written in Rust, with WGPU_ADAPTER_NAME support
 	pkgver = r11167.74134363d
 	pkgrel = 1
 	epoch = 1
@@ -26,9 +26,9 @@ pkgbase = ruffle-dinnerbone-git
 	conflicts = ruffle
 	conflicts = ruffle-git
 	options = !lto
-	source = git+https://github.com/Dinnerbone/ruffle.git#branch=wgpu_0_19
+	source = git+https://github.com/ruffle/ruffle.git
 	source = 0001-feat-initialize_adapter_from_env.patch
 	sha256sums = SKIP
 	sha256sums = 488c46400a1d347f900f90950f8420f6b7cb596257ce1a1a6e84e94e36bfc34e
 
-pkgname = ruffle-dinnerbone-git
+pkgname = ruffle-adapter-git

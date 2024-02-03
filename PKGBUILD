@@ -2,11 +2,11 @@
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: quininer
 
-pkgname=ruffle-dinnerbone-git
+pkgname=ruffle-adapter-git
 pkgver=r11167.74134363d
 pkgrel=1
 epoch=1
-pkgdesc="A Flash Player emulator written in Rust"
+pkgdesc="A Flash Player emulator written in Rust, with WGPU_ADAPTER_NAME support"
 arch=(x86_64 aarch64)
 url="https://ruffle.rs/"
 license=(Apache MIT)
@@ -18,7 +18,7 @@ makedepends=(git cargo clang python jdk-openjdk at-spi2-core)
 provides=(ruffle)
 conflicts=(ruffle ruffle-git)
 options=(!lto)
-source=("git+https://github.com/Dinnerbone/ruffle.git#branch=wgpu_0_19"
+source=("git+https://github.com/ruffle/ruffle.git"
       '0001-feat-initialize_adapter_from_env.patch')
 sha256sums=('SKIP'
             '488c46400a1d347f900f90950f8420f6b7cb596257ce1a1a6e84e94e36bfc34e')
