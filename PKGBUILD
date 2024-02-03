@@ -2,7 +2,7 @@
 
 pkgname='note-manager'
 pkgver=1.17.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Simple CLI notes manager"
 arch=('any')
 url='https://github.com/thek4n/note'
