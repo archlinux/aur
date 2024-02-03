@@ -2,7 +2,7 @@
 
 pkgname=blazefetch
 pkgver=2.7.9
-pkgrel=3
+pkgrel=1
 pkgdesc='A lite & blazing fast system info fetch utility'
 arch=('any')
 url='https://github.com/rifsxd/blazefetch'
