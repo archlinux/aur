@@ -3,22 +3,22 @@
 # Contributor: sukanka <su975853527 at gmail dot com>
 
 pkgname=beast2
-pkgver=2.7.5
-_pkgver=2.7.2
+pkgver=2.7.6
+#_pkgver=2.7.6
 pkgrel=1
 pkgdesc="Bayesian Evolutionary Analysis by Sampling Trees. https://doi.org/10.1371/journal.pcbi.1003537"
 arch=('any')
 url="http://www.beast2.org/"
-license=('LGPL')
+license=('LGPL-2.1-only')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CompEvol/beast2/archive/refs/tags/v${pkgver}.tar.gz"
-"BeastFX-${_pkgver}.tar.gz::https://github.com/CompEvol/BeastFX/archive/refs/tags/v${_pkgver}.tar.gz"
+"BeastFX-${pkgver}.tar.gz::https://github.com/CompEvol/BeastFX/archive/refs/tags/v${pkgver}.tar.gz"
 # desktop
 {beauti,densitree,logcombiner,treeannotator,beast2,loganalyser,${pkgname}-applauncher}.desktop
 # excutables
 ${pkgname}-{beauti,densitree,logcombiner,treeannotator,beast2,loganalyser,applauncher,packagemanager,environment}
 )
-sha256sums=('9368790d222fdef201968e3419e86c7198fd1b7174f7f088ec2da0738d7e581a'
-            '1b4cca8ee299459469bfdf8a98b701ed5e47f0b015ef0e04964a195fd9fb74d5'
+sha256sums=('0a88d14d41c98f53a46fc4ed7cadabdb2620978633d07d7e99676948dfb0ea12'
+            '4d746821fd2b1da10e2b616ea33c4484f994faee65667c4c7445d2c95f163edb'
             '7f2a6633e5c2ee1ffde58191ae4403ee5b4f4323cea4d6db8fc8c1516294ddf5'
             'a4c2ae027db8ee3ed687591b25e10581380cb4a3f76f60399018da280276bdfd'
             '473657ec9975de6f5e604767ee2ee5cbb6a5c22603624fbf7a94af36d9ccf5db'
@@ -38,11 +38,11 @@ sha256sums=('9368790d222fdef201968e3419e86c7198fd1b7174f7f088ec2da0738d7e581a'
 depends=('java-runtime' 'java-openjfx')
 makedepends=('ant' 'java-environment')
 optdepends=('beagle-lib')
-prepare(){
-    cd ${srcdir}
-    test -d "BeastFX-${pkgver}" && rm -rf "BeastFX-${pkgver}"
-    mv "BeastFX-${_pkgver}" "BeastFX-${pkgver}"
-}
+#prepare(){
+#    cd ${srcdir}
+#    test -d "BeastFX-${pkgver}" && rm -rf "BeastFX-${pkgver}"
+#    mv "BeastFX-${_pkgver}" "BeastFX-${pkgver}"
+#}
 build(){
     cd "$srcdir/BeastFX-${pkgver}"
     install -Dm755 $srcdir/${pkgname}-${pkgver}/release/Linux/jrebin/* \
@@ -75,9 +75,9 @@ package() {
     install -Dm644 ${srcdir}/${pkgname}-${pkgver}/lib/*.jar -t  "${pkgdir}/usr/share/${pkgname}/lib"
 
     # for 2.7.4+
-    install -d "${pkgdir}/usr/share/${pkgname}/lib/packages"
-    mv ${pkgdir}/usr/share/${pkgname}/lib/BEAST.app.* "${pkgdir}/usr/share/${pkgname}/lib/packages"
-    mv ${pkgdir}/usr/share/${pkgname}/lib/BEAST.base.* "${pkgdir}/usr/share/${pkgname}/lib/packages"
+#    install -d "${pkgdir}/usr/share/${pkgname}/lib/packages"
+#    mv ${pkgdir}/usr/share/${pkgname}/lib/BEAST.app.* "${pkgdir}/usr/share/${pkgname}/lib/packages"
+#    mv ${pkgdir}/usr/share/${pkgname}/lib/BEAST.base.* "${pkgdir}/usr/share/${pkgname}/lib/packages"
 
     # correct excutable
     rm -rf $pkgdir/usr/share/beast2/bin/*
