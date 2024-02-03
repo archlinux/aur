@@ -1,6 +1,6 @@
 pkgbase = lincity-ng-git
 	pkgdesc = A city simulation game (development version)
-	pkgver = 2.9.0.r144.gd4066f9e
+	pkgver = 2.9.0.r151.g6e92aa57
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/lincity-ng/lincity-ng
@@ -23,8 +23,6 @@ pkgbase = lincity-ng-git
 	provides = lincity-ng=2.9.0
 	conflicts = lincity-ng
 	source = lincity-ng::git+https://github.com/lincity-ng/lincity-ng
-	source = fix_xml_eisdir.patch
 	sha256sums = SKIP
-	sha256sums = 6f034a0628ebcbeaafdd5e00fe911132eacd4e67ab1792752960e035ce117186
 
 pkgname = lincity-ng-git
