@@ -50,8 +50,8 @@
 		},
 		{
 			"name": "ms-vscode.js-debug",
-			"version": "1.85.0",
-			"sha256": "85a97d373a6f92359f5db7bfc5a2fa6c5763b22c6ad07c962dfe32c84a079f3b",
+			"version": "1.86.1",
+			"sha256": "e382de75b63a57d3419bbb110e17551d40d88b4bb0a49452dab2c7278b815e72",
 			"repo": "https://github.com/microsoft/vscode-js-debug",
 			"metadata": {
 				"id": "25629058-ddac-4e17-abba-74678e126c5d",
@@ -90,7 +90,6 @@
 	"extensionsGallery": {
 		"nlsBaseUrl": "https://www.vscode-unpkg.net/_lp/",
 		"serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery",
-		"cacheUrl": "https://vscode.blob.core.windows.net/gallery/index",
 		"itemUrl": "https://marketplace.visualstudio.com/items",
 		"publisherUrl": "https://marketplace.visualstudio.com/publishers",
 		"resourceUrlTemplate": "https://{publisher}.vscode-unpkg.net/{publisher}/{name}/{version}/{path}",
@@ -1702,7 +1701,6 @@
 		"companyName": "Microsoft"
 	},
 	"appCenter": {
-		"win32-ia32": "appcenter://code?aid=f4289815-a66e-4ad9-b74f-d8e5bc093e41",
 		"win32-x64": "appcenter://code?aid=a4e3233c-699c-46ec-b4f4-9c2a77254662",
 		"win32-arm64": "appcenter://code?aid=3712d786-7cc8-4f11-8b08-cc12eab6d4f7",
 		"linux-x64": "appcenter://code?aid=fba07a4d-84bd-4fc8-a125-9640fc8ce171",
@@ -1777,12 +1775,16 @@
 			"surveyUrl": "https://www.research.net/r/8KGJ9V8",
 			"languageId": "csharp",
 			"editCount": 10,
-			"userProbability": 0.05
+			"userProbability": 0.1
 		}
 	],
 	"extensionEnabledApiProposals": {
 		"ms-vscode.vscode-selfhost-test-provider": [
-			"testObserver"
+			"testObserver",
+			"testCoverage"
+		],
+		"ms-vscode.extension-test-runner": [
+			"testCoverage"
 		],
 		"VisualStudioExptTeam.vscodeintellicode-completions": [
 			"inlineCompletionsAdditions"
@@ -1807,6 +1809,9 @@
 			"workspaceTrust",
 			"tunnels"
 		],
+		"vscjava.vscode-java-test": [
+			"testCoverage"
+		],
 		"ms-toolsai.vscode-ai-remote": [
 			"resolvers"
 		],
@@ -1814,12 +1819,11 @@
 			"contribEditorContentMenu",
 			"quickPickSortByLabel",
 			"portsAttributes",
-			"registerIssueDataProvider",
+			"handleIssueUri",
 			"testObserver",
 			"quickPickItemTooltip",
 			"terminalDataWriteEvent",
-			"terminalExecuteCommandEvent",
-			"saveEditor"
+			"terminalExecuteCommandEvent"
 		],
 		"ms-dotnettools.dotnet-interactive-vscode": [
 			"notebookMessaging"
@@ -1910,14 +1914,15 @@
 		"GitHub.vscode-pull-request-github": [
 			"contribCommentThreadAdditionalMenu",
 			"tokenInformation",
+			"commentReactor",
 			"contribShareMenu",
 			"fileComments",
 			"contribCommentPeekContext",
 			"codiconDecoration",
 			"diffCommand",
 			"contribCommentEditorActionsMenu",
-			"readonlyMessage",
 			"treeViewMarkdownMessage",
+			"tabInputTextMerge",
 			"shareProvider",
 			"quickDiffProvider"
 		],
@@ -1930,23 +1935,19 @@
 		"GitHub.copilot-chat": [
 			"handleIssueUri",
 			"interactive",
-			"interactiveUserActions",
 			"terminalDataWriteEvent",
 			"terminalExecuteCommandEvent",
 			"terminalSelection",
 			"terminalQuickFixProvider",
-			"chatVariables",
 			"chatAgents2",
 			"chatAgents2Additions",
 			"defaultChatAgent",
-			"readonlyMessage",
 			"chatProvider",
 			"mappedEditsProvider",
 			"aiRelatedInformation",
 			"codeActionAI",
 			"findTextInFiles",
 			"textSearchProvider",
-			"scmInputBoxValueProvider",
 			"contribSourceControlInputBoxMenu"
 		],
 		"GitHub.remotehub": [
@@ -1988,7 +1989,8 @@
 			"notebookControllerAffinityHidden",
 			"contribNotebookStaticPreloads",
 			"quickPickItemTooltip",
-			"notebookExecution"
+			"notebookExecution",
+			"notebookVariableProvider"
 		],
 		"dbaeumer.vscode-eslint": [
 			"notebookCellExecutionState"
@@ -2024,12 +2026,15 @@
 		"microsoft-IsvExpTools.powerplatform-vscode-preview": [
 			"fileSearchProvider",
 			"textSearchProvider"
+		],
+		"apidev.azure-api-center": [
+			"chatAgents2",
+			"chatRequestAccess"
 		]
 	},
 	"tasConfig": {
 		"endpoint": "https://default.exp-tas.com/vscode/ab",
 		"telemetryEventName": "query-expfeature",
-		"featuresTelemetryPropertyName": "VSCode.ABExp.Features",
 		"assignmentContextTelemetryPropertyName": "abexp.assignmentcontext"
 	},
 	"extensionKind": {
