@@ -1,7 +1,7 @@
 pkgbase = rsgain
 	pkgdesc = ReplayGain 2.0 loudness normalizer
 	pkgver = 3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/complexlogic/rsgain
 	arch = x86_64
 	license = custom
