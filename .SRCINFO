@@ -11,7 +11,7 @@ pkgbase = gbutils
 	provides = gbutils
 	conflicts = gbutils
 	noextract = $pkgname-$pkgver.tar.gz
-	source = ftp://cafim.sssup.it/~giulio/software/gbutils/gbutils-6.4.tar.gz
+	source = http://cafim.sssup.it/~giulio/software/gbutils/gbutils-6.4.tar.gz
 	md5sums = SKIP
 
 pkgname = gbutils

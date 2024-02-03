@@ -8,7 +8,7 @@ url="http://cafim.sssup.it/~giulio/software/gbutils/"
 license=(GPL2)
 provides=(gbutils)
 conflicts=(gbutils)
-source=("ftp://cafim.sssup.it/~giulio/software/gbutils/gbutils-6.4.tar.gz")
+source=("http://cafim.sssup.it/~giulio/software/gbutils/gbutils-6.4.tar.gz")
 noextract=('$pkgname-$pkgver.tar.gz')
 md5sums=('SKIP')
 depends=('gsl>=2.1' 'libmatheval>=1.0.1' 'zlib')
