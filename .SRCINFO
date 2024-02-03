@@ -5,14 +5,15 @@ pkgbase = mkdocs-git-revision-date-localized-plugin
 	url = https://github.com/timvink/mkdocs-git-revision-date-localized-plugin/
 	arch = any
 	license = MIT
-	makedepends = pyhon-build
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-package
 	depends = mkdocs
 	depends = python-gitpython
 	depends = python-babel>=2.7.0
 	depends = python-pytz
+	depends = python-markupsafe
 	conflicts = python-mkdocs-git-revision-date-localized-plugin
 	replaces = python-mkdocs-git-revision-date-localized-plugin
 	source = mkdocs-git-revision-date-localized-plugin-1.2.3.tar.gz::https://github.com/timvink/mkdocs-git-revision-date-localized-plugin//archive/refs/tags/v1.2.3.tar.gz
