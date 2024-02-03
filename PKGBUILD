@@ -5,22 +5,23 @@
 set -u
 _pkgname='littler'
 pkgname="${_pkgname}"
-pkgver='0.3.17'
+pkgver='0.3.19'
 pkgrel='1'
 pkgdesc='a hash-bang and simple command line pipe front end for GNU R'
 arch=('i686' 'x86_64')
 #url="http://code.google.com/p/littler"
 url='http://dirk.eddelbuettel.com/code/littler.html'
 #url="https://github.com/eddelbuettel/${_pkgname}"
-license=('GPL')
+license=('GPL-2.0-or-later')
 #groups=('science')
+depends=('glibc')
 makedepends=('make' 'r' 'sh')
 _giturl="https://github.com/eddelbuettel/${_pkgname}"
 source=("${_pkgname}-${pkgver}.tar.gz::${_giturl}/archive/${pkgver}.tar.gz")
 #source=("http://dirk.eddelbuettel.com/code/littler/${pkgname}_${pkgver}.tar.gz")
 #source=("http://http.debian.net/debian/pool/main/l/littler/littler_0.2.3.orig.tar.gz")
-md5sums=('cc3a4a38818dca9dba216fc19d9f6d84')
-sha256sums=('edeb6968abed8bbf4d5f4286f5e6a84402d3e5ba3b566a0a7ce642f974b16c81')
+md5sums=('be4e66891b7295cb81042ae9d4f6a097')
+sha256sums=('be865bba2f06c76486080e4d4bdc2bcf7a01e3b4ed516037d447890b637b7c6a')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pkgname}"
