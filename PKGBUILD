@@ -5,11 +5,11 @@
 
 pkgname=pandoc-crossref-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.3.17.0.r0.g2e11975
+pkgver=0.3.17.0b.r2.ga428e2d
 _pandoc_type=version
-_pandoc_ver=3.1.11
-_pandoc_commit=c3038dcd54152c4e18e49db31676b79ee7cc29b2
-pkgrel=5
+_pandoc_ver=3.1.11.1
+_pandoc_commit=714ed52213fd6649350ccebe741caefc11cc5a04
+pkgrel=1
 pkgdesc="Pandoc filter for cross-references (static build)"
 url="https://github.com/lierdakil/pandoc-crossref"
 license=("GPL2")
@@ -21,7 +21,7 @@ depends=("pandoc=$_pandoc_ver")
 makedepends=('stack' 'pandoc')
 source=("$pkgname::git+$url.git" ver-bump.patch)
 sha256sums=('SKIP'
-            'e1b28f87f32b96f87f9d0657de2cebe18464348b5194cac281a0ecf5c35c45fd')
+            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 
 pkgver() {
     cd "$pkgname"
@@ -34,17 +34,19 @@ prepare() {
     # if pandoc updates break the golden tests, cf
     # https://github.com/lierdakil/pandoc-crossref/pull/403#issuecomment-1732434519
     # for how to bump
+    verPat='\([0-9]\+\.\)\{1,3\}[0-9]\+'
     sedscript=''
     case "$_pandoc_type" in
     stock) return;;
     commit)
-        sedscript='/ pandoc-\([0-9]\+\.\)\{1,3\}[0-9]\+/{'
+        sedscript+="/ pandoc-$verPat/{"
         sedscript+='s#pandoc.*#github: jgm/pandoc#;'
         sedscript+="a\  commit: $_pandoc_commit"$'\n'
         sedscript+='}'
         ;;
     version)
-        sedscript="s/ pandoc-\([0-9]\+\.\)\{1,3\}[0-9]\+/ pandoc-$_pandoc_ver/"
+        sedscript+="s/ pandoc-$verPat/ pandoc-$_pandoc_ver/;"
+        sedscript+="s/ pandoc-cli-$verPat/ pandoc-cli-$_pandoc_ver/;"
         ;;
     esac
     sed -i "$sedscript" stack.yaml
