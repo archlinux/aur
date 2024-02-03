@@ -1,11 +1,11 @@
 # Maintainer: Tommaso Dordoni <t dot dordoni dot aur at outlook dot com>
 
 _java=17
-_jdk=${_java}.0.9
+_jdk=${_java}.0.10
 _jdkname="java-${_java}-zulu-prime"
-_pkgver_major="23"
-_pkgver_minor="10.0.0"
-_pkgver_build="3"
+_pkgver_major="24"
+_pkgver_minor="01.0.0"
+_pkgver_build="4"
 
 pkgname="jdk${_java}-zulu-prime-bin"
 pkgver="${_pkgver_major}.${_pkgver_minor}_${_pkgver_build}"
@@ -35,8 +35,8 @@ provides=(
 install="$pkgname.install"
 source_x86_64=("https://cdn.azul.com/zing-zvm/ZVM${_pkgver_major}.${_pkgver_minor}/zing${pkgver//_/-}-jdk${_jdk}-linux_x64.tar.gz")
 source_aarch64=("https://cdn.azul.com/zing-zvm/ZVM${_pkgver_major}.${_pkgver_minor}/zing${pkgver//_/-}-jdk${_jdk}-linux_aarch64.tar.gz")
-sha256sums_x86_64=('b4b27fa8926dadf9ed760731616668fc0f698980c8df9ebc6a1655e763a135a6')
-sha256sums_aarch64=('8a851278777cba9d1f50fc321a55370b55e81cdaeeb97e393e1f5c3e0adaf6f0')
+sha256sums_x86_64=('af875e10c6ebdc4bcfe5917df0d00f887e4f095339167ebbfa07d49b8c9f709e')
+sha256sums_aarch64=('3633a54a229de7dfcda688a29258e9204c43321d3c931015ce8f96d7e1db1678')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
