@@ -1,14 +1,14 @@
-commit ce774c0f1b7e328a67ad2d6de987a686e24e89a2
+commit 00eafc3cc6b240c311622e193d71a9103153dc04
 Author: Narrat <autumn-wind@web.de>
 Date:   Thu Nov 9 21:34:14 2023 +0100
 
     Add support for mimeo
 
 diff --git a/scripts/xdg-email.in b/scripts/xdg-email.in
-index b23231a..761aad1 100644
+index ca9323a..83cb7c3 100644
 --- a/scripts/xdg-email.in
 +++ b/scripts/xdg-email.in
-@@ -260,6 +260,18 @@ open_flatpak()
+@@ -261,6 +261,18 @@ open_flatpak()
      fi
  }
  
@@ -27,7 +27,7 @@ index b23231a..761aad1 100644
  open_generic()
  {
      local client
-@@ -481,6 +493,10 @@ case "$DE" in
+@@ -483,6 +495,10 @@ case "$DE" in
      open_flatpak "${mailto}"
      ;;
  
@@ -39,10 +39,10 @@ index b23231a..761aad1 100644
      open_generic "${mailto}"
      ;;
 diff --git a/scripts/xdg-mime.in b/scripts/xdg-mime.in
-index 215f850..aacd819 100644
+index bfb088b..33de40e 100644
 --- a/scripts/xdg-mime.in
 +++ b/scripts/xdg-mime.in
-@@ -123,6 +123,16 @@ info_lxqt()
+@@ -126,6 +126,16 @@ info_lxqt()
      fi
  }
  
@@ -59,7 +59,7 @@ index 215f850..aacd819 100644
  info_generic()
  {
      if mimetype --version >/dev/null 2>&1; then
-@@ -684,6 +694,10 @@ if [ "$action" = "info" ]; then
+@@ -702,6 +712,10 @@ if [ "$action" = "info" ]; then
          info_lxqt "$filename"
          ;;
  
@@ -71,7 +71,7 @@ index 215f850..aacd819 100644
          info_generic "$filename"
          ;;
 diff --git a/scripts/xdg-open.in b/scripts/xdg-open.in
-index 1373ca1..f05bb4a 100755
+index 698933d..3ef4911 100755
 --- a/scripts/xdg-open.in
 +++ b/scripts/xdg-open.in
 @@ -305,6 +305,17 @@ open_flatpak()
@@ -92,7 +92,7 @@ index 1373ca1..f05bb4a 100755
  #-----------------------------------------
  # Recursively search .desktop file
  
-@@ -660,6 +671,10 @@ case "$DE" in
+@@ -661,6 +672,10 @@ case "$DE" in
      open_wsl "$url"
      ;;
  
@@ -117,10 +117,10 @@ index a88eeff..acc38dc 100644
        ;;
    esac
 diff --git a/scripts/xdg-settings.in b/scripts/xdg-settings.in
-index 59e97cb..a19961a 100755
+index a62eedd..d57a410 100755
 --- a/scripts/xdg-settings.in
 +++ b/scripts/xdg-settings.in
-@@ -531,6 +531,44 @@ set_browser_xfce()
+@@ -569,6 +569,44 @@ set_browser_xfce()
  }
  
  # }}} xfce
@@ -165,7 +165,7 @@ index 59e97cb..a19961a 100755
  # {{{ generic
  
  get_browser_generic()
-@@ -816,6 +854,49 @@ set_url_scheme_handler_xfce()
+@@ -854,6 +892,49 @@ set_url_scheme_handler_xfce()
  }
  
  # }}} xfce
@@ -215,7 +215,7 @@ index 59e97cb..a19961a 100755
  # {{{ generic
  
  get_url_scheme_handler_generic()
-@@ -974,6 +1055,10 @@ case "$DE" in
+@@ -1016,6 +1097,10 @@ case "$DE" in
      dispatch_specific xfce "$@"
      ;;
  
@@ -227,10 +227,10 @@ index 59e97cb..a19961a 100755
      dispatch_specific generic "$@"
      ;;
 diff --git a/scripts/xdg-utils-common.in b/scripts/xdg-utils-common.in
-index 5135c86..19a718b 100644
+index bba3d8a..201ed5b 100644
 --- a/scripts/xdg-utils-common.in
 +++ b/scripts/xdg-utils-common.in
-@@ -308,6 +308,9 @@ detectDE()
+@@ -312,6 +312,9 @@ detectDE()
           XFCE)
             DE=xfce
             ;;
@@ -240,7 +240,7 @@ index 5135c86..19a718b 100644
           X-Generic)
             DE=generic
             ;;
-@@ -325,6 +328,7 @@ detectDE()
+@@ -329,6 +332,7 @@ detectDE()
        elif xprop -root 2> /dev/null | grep -i '^xfce_desktop_window' >/dev/null 2>&1; then DE=xfce
        elif echo "$DESKTOP" | grep -q '^Enlightenment'; then DE=enlightenment;
        elif [ -n "$LXQT_SESSION_CONFIG" ]; then DE=lxqt;

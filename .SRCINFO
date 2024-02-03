@@ -1,6 +1,6 @@
 pkgbase = xdg-utils-mimeo
 	pkgdesc = Command line tools that assist applications with a variety of desktop integration tasks; patched to use mimeo
-	pkgver = 1.2.0r28+g9b7d253
+	pkgver = 1.2.0+1+gaf2fe0d
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/xdg-utils/
 	arch = any
@@ -23,8 +23,8 @@ pkgbase = xdg-utils-mimeo
 	provides = xdg-utils
 	conflicts = xdg-utils
 	source = mimeo-detection.patch
-	source = git+https://gitlab.freedesktop.org/xdg/xdg-utils.git#commit=9b7d253ca07b80fbc201c5cf5b7f14a49bd09b3f
-	sha256sums = 5f412ee7aecfbdc49bf5a3602e7da23c1ab626755ed074025733ff785348b66c
+	source = git+https://gitlab.freedesktop.org/xdg/xdg-utils.git#commit=af2fe0d1dcbcd982d84ddf2bbd174afe90976ed9
+	sha256sums = fedbbee834c3cfe0078b869708310779767e168c8bbc74203dfebdbbf5b97f87
 	sha256sums = SKIP
 
 pkgname = xdg-utils-mimeo

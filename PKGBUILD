@@ -7,8 +7,8 @@
 _pkgname=xdg-utils
 pkgname=$_pkgname-mimeo
 # https://gitlab.freedesktop.org/xdg/xdg-utils/commits/master
-_commit=9b7d253ca07b80fbc201c5cf5b7f14a49bd09b3f # master # 2024-01-23
-pkgver=1.2.0r28+g9b7d253
+_commit=af2fe0d1dcbcd982d84ddf2bbd174afe90976ed9 # master # 2024-01-30
+pkgver=1.2.0+1+gaf2fe0d
 pkgrel=1
 pkgdesc="Command line tools that assist applications with a variety of desktop integration tasks; patched to use mimeo"
 arch=('any')
@@ -28,15 +28,13 @@ conflicts=($_pkgname)
 source=(#https://portland.freedesktop.org/download/$_pkgname-$pkgver.tar.gz #{,.asc}
         mimeo-detection.patch
         "git+https://gitlab.freedesktop.org/xdg/xdg-utils.git#commit=$_commit")
-sha256sums=('5f412ee7aecfbdc49bf5a3602e7da23c1ab626755ed074025733ff785348b66c'
+sha256sums=('fedbbee834c3cfe0078b869708310779767e168c8bbc74203dfebdbbf5b97f87'
             'SKIP')
 #validpgpkeys=('8B75CA7811367175D05F3B03C43570F80CC295E6') # "Per Olofsson <pelle@pqz.se>"
 
 pkgver() {
   cd $_pkgname
-  #git describe --tags | sed 's/^v//;s/-/+/g'
-  # filter tag to avoid need for epoch when the release happens
-  git describe --tags | sed 's/^v//;s/-beta1-/r/;s/-/+/g'
+  git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
 prepare() {
