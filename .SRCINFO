@@ -21,7 +21,7 @@ pkgbase = vulkan-lunarg-tools-git
 
 pkgname = vulkan-extra-tools-git
 	pkgdesc = Vulkan lunarg tools (git version)
-	depends = vulkan-validation-layers
+	depends = vulkan-validation-layers-git
 	depends = qt5-svg
 	depends = qt5-webengine
 	provides = vulkan-extra-tools
@@ -30,6 +30,6 @@ pkgname = vulkan-extra-tools-git
 
 pkgname = vulkan-extra-layers-git
 	pkgdesc = Extra layers for Vulkan development (git version)
-	depends = vulkan-validation-layers
+	depends = vulkan-validation-layers-git
 	provides = vulkan-extra-layers
 	conflicts = vulkan-extra-layers
