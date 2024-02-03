@@ -10,7 +10,7 @@ pkgname=(
   protonmail-bridge-core
   protonmail-bridge
 )
-pkgver=3.8.1
+pkgver=3.8.2
 pkgrel=1
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=(x86_64)
@@ -39,7 +39,7 @@ source=(
   "remove-vcpkg-dependency.patch"
 )
 sha256sums=(
-  'ff49b43fb796a7fe129bdd1c5334165d63af3220d7c2448d0d381e62dd6658db'
+  '3d844fa74c06767283a73305737e82b9ec7c59cc35d08fcb8a5bd68a128735e2'
   '404db600803b9be875365d84e0726c3f7aedceaf122a795ca2248ee9f005753b'
   'd51fb6efde22354d84b894b979a685d06fcc9cf3040d999d1cd6ebf5242a5043'
   '436a9a293424fb7d48a8fd61fff7d63985dec56d6170cd2fbae24fe03ef98136'
