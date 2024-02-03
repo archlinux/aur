@@ -1,4 +1,4 @@
-pkgbase = picgo-bin-electron
+pkgbase = picgo-electron-bin
 	pkgdesc = A simple & beautiful tool for pictures uploading built by electron-vue, extract from pre-built appimage and use system electron
 	pkgver = 2.3.1
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = picgo-bin-electron
 	source = https://github.com/Molunerfinn/PicGo/releases/download/v2.3.1/PicGo-2.3.1.AppImage
 	sha256sums = 465581a6f775a4dbb0f5251a85dd3a87bbc466fe442fbe96dfb4f206bdb75a62
 
-pkgname = picgo-bin-electron
+pkgname = picgo-electron-bin

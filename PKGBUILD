@@ -1,6 +1,6 @@
 # Maintainer: littzhch <2371050115@qq.com>
 
-pkgname=picgo-bin-electron
+pkgname=picgo-electron-bin
 _name=PicGo
 pkgver=2.3.1
 pkgrel=1
