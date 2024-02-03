@@ -1,7 +1,7 @@
 pkgbase = systemd-yodad
 	pkgdesc = Plays the yoda death sound effect randomly
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thatonecalculator/systemd-yodad
 	arch = any
 	license = MIT

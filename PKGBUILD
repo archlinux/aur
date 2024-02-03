@@ -2,7 +2,7 @@
 
 pkgname="systemd-yodad"
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Plays the yoda death sound effect randomly"
 arch=(any)
 url="https://github.com/thatonecalculator/systemd-yodad"
@@ -20,7 +20,7 @@ package() {
 	install -Dm755 yoda -t "${pkgdir}/usr/bin"
 	mkdir -p "${pkgdir}/usr/share/yoda"
 	install -Dm644 yodad.service "${pkgdir}/usr/lib/systemd/system/yodad.service"
-	install -Dm644 yoda.mp3 -t "${pkgdir}/usr/share/yoda/yoda.mp3"
-	install -Dm644 yoda_longer.mp3 -t "${pkgdir}/usr/share/yoda/yoda_longer.mp3"
+	install -Dm644 yoda.mp3 -t "${pkgdir}/usr/share/yoda/"
+	install -Dm644 yoda_longer.mp3 -t "${pkgdir}/usr/share/yoda/"
 	echo "pretty please systemctl enable --now yodad.service"
 }
