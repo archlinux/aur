@@ -1,6 +1,6 @@
 pkgbase = sway-interactive-screenshot
 	pkgdesc = Interactively take screenshot within Sway.
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/moverest/sway-interactive-screenshot
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = sway-interactive-screenshot
 	optdepends = dragon-drop: drap file to other programs
 	optdepends = xdg-utils: open file
 	optdepends = wf-recorder: capture screencasts
-	source = https://github.com/moverest/sway-interactive-screenshot/archive/2.0.2.tar.gz
-	sha256sums = de919145908c4828066388d805f219e8c973133f5b0a3633d9f6447aacc008af
+	source = https://github.com/moverest/sway-interactive-screenshot/archive/2.0.3.tar.gz
+	sha256sums = 44615eb17c69092e549dc04c7c2fa9701cb3faa0228f147e178da3032d20d16c
 
 pkgname = sway-interactive-screenshot
