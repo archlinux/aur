@@ -1,5 +1,5 @@
-pkgbase = refind-git
-	pkgdesc = rEFInd Boot Manager - git version
+pkgbase = refind-btrfs-c3-c4-git
+	pkgdesc = rEFInd Boot Manager - git version with btrfs c3/c4 support
 	pkgver = 0.14.0.r845.g47af961
 	pkgrel = 1
 	url = https://www.rodsbooks.com/refind/
@@ -24,9 +24,9 @@ pkgbase = refind-git
 	optdepends = sbsigntools: for EFI binary signing with refind-install
 	optdepends = sudo: for privilege elevation in refind-install and refind-mkdefault
 	optdepends = shim-signed: pre-signed Secure Boot shim loader
-	provides = refind=0.14.0.r845.g47af961
-	conflicts = refind
-	source = refind::git+https://git.code.sf.net/p/refind/code#branch=master
+	provides = refind-btrfs-c3-c4=0.14.0.r845.g47af961
+	conflicts = refind-btrfs-c3-c4
+	source = refind::git+https://github.com/amfern/refind.git#branch=master
 	sha512sums = SKIP
 
-pkgname = refind-git
+pkgname = refind-btrfs-c3-c4-git
