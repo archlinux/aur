@@ -14,7 +14,7 @@ pkgbase = odin
 	depends = llvm14-libs
 	provides = odin
 	conflicts = odin
-	source = https://github.com/odin-lang/Odin/archive/refs/tags/dev-2024-01.tar.gz
-	sha256sums = b93e64546f710d00dc9cce1a872d023024cb4220df1f8a0607e24ba35daacc53
+	source = https://github.com/odin-lang/Odin/archive/refs/tags/dev-2024-02.tar.gz
+	sha256sums = 29ce1e8dc6467dd1b7c66ee6940cffed1a2872127b9ec0d8aa0710abecdeec52
 
 pkgname = odin

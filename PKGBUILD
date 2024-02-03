@@ -2,7 +2,7 @@
 # Contributor: Jesus Alvarez <jeezusjr@gmail.com>
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
-pkgver=dev_2024_01
+pkgver=dev_2024_02
 
 _srcname=Odin
 pkgname=odin
@@ -13,11 +13,11 @@ arch=('x86_64')
 url="https://odin-lang.org/"
 license=('BSD-2-Clause')
 depends=('clang' 'llvm14-libs')
-makedepends=('git' 'clang' 'clang14' 'llvm14', 'python')
+makedepends=('git' 'clang' 'clang14' 'llvm14' 'python')
 provides=('odin')
 conflicts=('odin')
 source=("https://github.com/odin-lang/Odin/archive/refs/tags/${pkgver_actual}.tar.gz")
-sha256sums=('b93e64546f710d00dc9cce1a872d023024cb4220df1f8a0607e24ba35daacc53')
+sha256sums=('29ce1e8dc6467dd1b7c66ee6940cffed1a2872127b9ec0d8aa0710abecdeec52')
 
 build() {
   cd "${srcdir}/Odin-${pkgver_actual}/"
