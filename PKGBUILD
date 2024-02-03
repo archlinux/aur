@@ -5,17 +5,14 @@ _dotnet_version=8.0
 
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=3.0.0.rc3.r16.g2754fb5da
+pkgver=3.0.0.rc3.r17.g62efead06
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://steampp.net/"
 license=('GPL-3.0-only')
 depends=(
-    'libcap' "aspnet-runtime-${_dotnet_version}" "dotnet-runtime-${_dotnet_version}" 'nss' 'sh' 'hicolor-icon-theme'
     # libe_sqlite3.so libHarfBuzzSharp.so libSkiaSharp.so
     'glibc'
-    # Steam++.Accelerator
-    'gcc-libs'
     # libSkiaSharp.so
     'fontconfig' 'freetype2' 'expat' 'zlib' 'bzip2' 'libpng' 'harfbuzz' 'brotli' 'glib2' 'graphite' 'pcre2'
 )
@@ -71,6 +68,18 @@ sha256sums=('SKIP'
             'SKIP')
 
 
+declare -Arg _plugins=(
+    [BD.WTTS.Client.Plugins.Accelerator]=Accelerator
+    [BD.WTTS.Client.Plugins.Accelerator.ReverseProxy]=Accelerator.ReverseProxy
+    [BD.WTTS.Client.Plugins.Authenticator]=Authenticator
+    [BD.WTTS.Client.Plugins.GameAccount]=GameAccount
+    [BD.WTTS.Client.Plugins.GameList]=GameList
+    [BD.WTTS.Client.Plugins.GameTools]=GameTools
+    [BD.WTTS.Client.Plugins.SteamIdleCard]=SteamIdleCard
+    [BD.WTTS.Client.Plugins.ArchiSteamFarmPlus]=ArchiSteamFarmPlus
+    #[BD.WTTS.Client.Plugins.Update]=Update
+)
+
 prepare(){
     target_dirs=(
         "${srcdir}/SteamTools" "${srcdir}/SteamTools/ref/ArchiSteamFarm"
@@ -93,12 +102,6 @@ prepare(){
     done
     # Install dotnet-sdk
     dotnet-install --channel ${_dotnet_version} --install-dir "${srcdir}/dotnet-sdk" --no-path
-
-    # Hacking about missing depends
-    cd "${srcdir}/SteamTools/src/BD.WTTS.UnitTest"
-    export DOTNET_ROOT="${srcdir}/dotnet-sdk"
-    export PATH=$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH
-    dotnet add package System.DirectoryServices
 }
 pkgver(){
     cd "${srcdir}/SteamTools"
@@ -118,55 +121,44 @@ build(){
     done
 
     dotnet workload restore src/BD.WTTS.Client.Avalonia.App/BD.WTTS.Client.Avalonia.App.csproj
-#     dotnet build src/BD.WTTS.Client.AppHost/BD.WTTS.Client.AppHost.csproj \
-#         -c Release --nologo -v q /property:WarningLevel=1
-#     dotnet build src/BD.WTTS.Client.Plugins.Accelerator.ReverseProxy/BD.WTTS.Client.Plugins.Accelerator.ReverseProxy.csproj \
-#         -c Release --nologo -v q /property:WarningLevel=1
-#     dotnet build src/BD.WTTS.Client.Avalonia.App/BD.WTTS.Client.Avalonia.App.csproj \
-#         -c Release --nologo -v q /property:WarningLevel=1
-#     dotnet build src/BD.WTTS.Client.Avalonia.Designer.HostApp/BD.WTTS.Client.Avalonia.Designer.HostApp.csproj \
-#         -c Release --nologo -v q /property:WarningLevel=1
-    msg2 "Building main program..."
+    msg2 "Building BD.WTTS.Client.Avalonia.App..."
     dotnet publish src/BD.WTTS.Client.Avalonia.App/BD.WTTS.Client.Avalonia.App.csproj \
         -c Release --output "${srcdir}/SteamTools/linux-out" --framework "net${_dotnet_version}"
-    msg2 "Building accelerator plugin..."
-    dotnet publish src/BD.WTTS.Client.Plugins.Accelerator/BD.WTTS.Client.Plugins.Accelerator.csproj \
-        -c Release --output "${srcdir}/SteamTools/linux-plugins-out/Accelerator" --framework "net${_dotnet_version}"
-    dotnet publish src/BD.WTTS.Client.Plugins.Accelerator.ReverseProxy/BD.WTTS.Client.Plugins.Accelerator.ReverseProxy.csproj \
-        -c Release -p:PublishSingleFile=true --self-contained --framework "net${_dotnet_version}" \
-        --output "${srcdir}/SteamTools/linux-plugins-out/Accelerator.ReverseProxy"
-    msg2 "Building authenticator plugin..."
-    dotnet publish src/BD.WTTS.Client.Plugins.Authenticator/BD.WTTS.Client.Plugins.Authenticator.csproj \
-        -c Release --output "${srcdir}/SteamTools/linux-plugins-out/Authenticator" --framework "net${_dotnet_version}"
-    msg2 "Building gameaccount plugin..."
-    dotnet publish src/BD.WTTS.Client.Plugins.GameAccount/BD.WTTS.Client.Plugins.GameAccount.csproj \
-        -c Release --output "${srcdir}/SteamTools/linux-plugins-out/GameAccount" --framework "net${_dotnet_version}"
-    msg2 "Building gamelist plugin..."
-    dotnet publish src/BD.WTTS.Client.Plugins.GameList/BD.WTTS.Client.Plugins.GameList.csproj \
-        -c Release --output "${srcdir}/SteamTools/linux-plugins-out/GameList" --framework "net${_dotnet_version}"
-    msg2 "Building gametools plugin..."
-    dotnet publish src/BD.WTTS.Client.Plugins.GameTools/BD.WTTS.Client.Plugins.GameTools.csproj \
-        -c Release --output "${srcdir}/SteamTools/linux-plugins-out/GameTools" --framework "net${_dotnet_version}"
-    msg2 "Building steamidlecard plugin..."
-    dotnet publish src/BD.WTTS.Client.Plugins.SteamIdleCard/BD.WTTS.Client.Plugins.SteamIdleCard.csproj \
-        -c Release --output "${srcdir}/SteamTools/linux-plugins-out/SteamIdleCard" --framework "net${_dotnet_version}"
-#     msg2 "Building archisteamfarmplus plugin..."
-#     dotnet publish src/BD.WTTS.Client.Plugins.ArchiSteamFarmPlus/BD.WTTS.Client.Plugins.ArchiSteamFarmPlus.csproj \
-#         -c Release --output "${srcdir}/SteamTools/linux-plugins-out/ArchiSteamFarmPlus" --framework "net${_dotnet_version}"
-#     msg2 "Building update plugin..."
-#     dotnet publish src/BD.WTTS.Client.Plugins.Update/BD.WTTS.Client.Plugins.Update.csproj \
-#         -c Release --output "${srcdir}/SteamTools/linux-plugins-out/Update" --framework "net${_dotnet_version}"
+    msg2 "Building plugins..."
+    for _id in "${!_plugins[@]}"
+    do
+        echo "Building ${_id}..."
+        case "${_id}" in
+            "BD.WTTS.Client.Plugins.Accelerator.ReverseProxy")
+                dotnet publish "src/${_id}/${_id}.csproj" -c Release --nologo -v q -p:WarningLevel=1 \
+                    -p:PublishSingleFile=true --self-contained \
+                    --output "${srcdir}/SteamTools/linux-plugins-out/${_plugins[${_id}]}" --framework "net${_dotnet_version}"
+                ;;
+            *)
+                dotnet publish "src/${_id}/${_id}.csproj" -c Release --nologo -v q -p:WarningLevel=1 \
+                    --output "${srcdir}/SteamTools/linux-plugins-out/${_plugins[${_id}]}" --framework "net${_dotnet_version}"
+                ;;
+        esac
+    done
 }
 check(){
+    # Hacking about missing depends
+    cd "${srcdir}/SteamTools/src/BD.WTTS.UnitTest"
+    dotnet add package System.DirectoryServices
+
     cd "${srcdir}/SteamTools"
     export DOTNET_ROOT="${srcdir}/dotnet-sdk"
     export PATH=$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH
 
     dotnet test src/BD.WTTS.UnitTest/BD.WTTS.UnitTest.csproj \
-        -c Release -p:GeneratePackageOnBuild=false --nologo -v q /property:WarningLevel=1
+        -c Release -p:GeneratePackageOnBuild=false --nologo -v q -p:WarningLevel=1
 }
 package(){
-    depends+=("hicolor-icon-theme")
+    depends+=(
+        'libcap' "aspnet-runtime-${_dotnet_version}" "dotnet-runtime-${_dotnet_version}" 'nss' 'sh' 'hicolor-icon-theme'
+        # Steam++.Accelerator
+        'gcc-libs'
+    )
 
     cd "${srcdir}/SteamTools"
     mkdir -p "${pkgdir}/usr/bin" "${pkgdir}/usr/lib"
@@ -174,40 +166,36 @@ package(){
     msg2 "Removing useless runtimes..."
     case ${CARCH} in
         x86_64)
-            _id=linux-x64
+            _platform=linux-x64
             ;;
         armv7l)
-            _id=linux-arm
+            _platform=linux-arm
             ;;
         aarch64)
-            _id=linux-arm64
+            _platform=linux-arm64
             ;;
         *)
-            _id=linux-${CARCH}
+            _platform=linux-${CARCH}
             ;;
     esac
-    find "${pkgdir}/usr/lib/watt-toolkit/runtimes" -mindepth 1 -maxdepth 1 -type d ! -name "${_id}" -exec rm -rf {} \;
+    find "${pkgdir}/usr/lib/watt-toolkit/runtimes" -mindepth 1 -maxdepth 1 ! -name "${_platform}" -exec rm -rf {} \;
     msg2 "Installing plugins..."
-    install -Dm644 "${srcdir}/SteamTools/linux-plugins-out/Accelerator/BD.WTTS.Client.Plugins.Accelerator.dll" \
-        "${pkgdir}/usr/lib/watt-toolkit/modules/Accelerator/BD.WTTS.Client.Plugins.Accelerator.dll"
-    install -Dm755 "${srcdir}/SteamTools/linux-plugins-out/Accelerator.ReverseProxy/Steam++.Accelerator" \
-        "${pkgdir}/usr/lib/watt-toolkit/modules/Accelerator/Steam++.Accelerator"
-    install -Dm644 "${srcdir}/SteamTools/linux-plugins-out/Accelerator.ReverseProxy/libe_sqlite3.so" \
-        "${pkgdir}/usr/lib/watt-toolkit/modules/Accelerator/libe_sqlite3.so"
-    install -Dm644 "${srcdir}/SteamTools/linux-plugins-out/Authenticator/BD.WTTS.Client.Plugins.Authenticator.dll" \
-        "${pkgdir}/usr/lib/watt-toolkit/modules/Authenticator/BD.WTTS.Client.Plugins.Authenticator.dll"
-    install -Dm64 "${srcdir}/SteamTools/linux-plugins-out/GameAccount/BD.WTTS.Client.Plugins.GameAccount.dll" \
-        "${pkgdir}/usr/lib/watt-toolkit/modules/GameAccount/BD.WTTS.Client.Plugins.GameAccount.dll"
-    install -Dm644 "${srcdir}/SteamTools/linux-plugins-out/GameList/BD.WTTS.Client.Plugins.GameList.dll" \
-        "${pkgdir}/usr/lib/watt-toolkit/modules/GameList/BD.WTTS.Client.Plugins.GameList.dll"
-    install -Dm644 "${srcdir}/SteamTools/linux-plugins-out/GameTools/BD.WTTS.Client.Plugins.GameTools.dll" \
-        "${pkgdir}/usr/lib/watt-toolkit/modules/GameTools/BD.WTTS.Client.Plugins.GameTools.dll"
-    install -Dm644 "${srcdir}/SteamTools/linux-plugins-out/SteamIdleCard/BD.WTTS.Client.Plugins.SteamIdleCard.dll" \
-        "${pkgdir}/usr/lib/watt-toolkit/modules/SteamIdleCard/BD.WTTS.Client.Plugins.SteamIdleCard.dll"
-#     install -Dm644 "${srcdir}/SteamTools/linux-plugins-out/ArchiSteamFarmPlus/BD.WTTS.Client.Plugins.ArchiSteamFarmPlus.dll" \
-#         "${pkgdir}/usr/lib/watt-toolkit/modules/ArchiSteamFarmPlus/BD.WTTS.Client.Plugins.ArchiSteamFarmPlus.dll"
-#     install -Dm644 "${srcdir}/SteamTools/linux-plugins-out/Update/BD.WTTS.Client.Plugins.Update.dll" \
-#         "${pkgdir}/usr/lib/watt-toolkit/modules/Update/BD.WTTS.Client.Plugins.Update.dll"
+    for _id in "${!_plugins[@]}"
+    do
+        echo "Installing ${_id}..."
+        case "${_id}" in
+            "BD.WTTS.Client.Plugins.Accelerator.ReverseProxy")
+                install -Dm755 "${srcdir}/SteamTools/linux-plugins-out/${_plugins[${_id}]}/Steam++.Accelerator" \
+                    "${pkgdir}/usr/lib/watt-toolkit/modules/Accelerator/Steam++.Accelerator"
+                install -Dm644 "${srcdir}/SteamTools/linux-plugins-out/${_plugins[${_id}]}/libe_sqlite3.so" \
+                    "${pkgdir}/usr/lib/watt-toolkit/modules/Accelerator/libe_sqlite3.so"
+                ;;
+            *)
+                install -Dm644 "${srcdir}/SteamTools/linux-plugins-out/${_plugins[${_id}]}/${_id}.dll" \
+                    "${pkgdir}/usr/lib/watt-toolkit/modules/${_plugins[${_id}]}/${_id}.dll"
+                ;;
+        esac
+    done
     msg2 "Installing misc files..."
     for width in 16 24 32 48 64 96 128 256 512
     do
