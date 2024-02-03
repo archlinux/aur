@@ -1,18 +1,18 @@
 # Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
 
 pkgname=fusesoc
-pkgver=1.12.0
-pkgrel=3
+pkgver=2.3
+pkgrel=1
 pkgdesc='Package manager and build abstraction tool for FPGA/ASIC development'
 arch=('any')
 url='https://github.com/olofk/fusesoc'
 license=('BSD')
-depends=('python' 'python-edalize' 'python-ipyxact' 'python-pyparsing' 'python-yaml' 'python-simplesat' 'git')
+depends=('python' 'python-edalize' 'python-pyparsing' 'python-yaml' 'python-simplesat' 'python-fastjsonschema')
 makedepends=('python-setuptools-scm')
 optdepends=('iverilog: run simulation/testbenchs'
             'svn: opencores provider')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('2a2f02313af951f17d34e317d19c85b0b9188078387e800ec78f00495fae86a3329f267ed1c8c0423d9d5bea85a36415e45acecc6b3fabdd8e6f6b978d2acc20')
+sha512sums=('958dd104857a5aa638d919b1389b339726471c5119f8dcf371fe2dd51b8c8fc9b76323c5fa2245b9d04913ddae41180760cfa500635aa519189efb3a97928ec1')
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
 
