@@ -1,7 +1,7 @@
 #!/usr/bin/env xdg-open
 [Desktop Entry]
 Categories=Office;
-Exec=/usr/bin/easytax-ag-2022
+Exec=/usr/bin/easytax-ag-2023
 Icon=Wappen_Aargau
-Name=EasyTax 2022 AG
+Name=EasyTax 2023 AG
 Type=Application

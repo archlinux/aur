@@ -5,7 +5,7 @@
 _yyyy=2023
 pkgname=easytax-ag-${_yyyy}
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Aargau tax declaration software."
 arch=(any)
 url="https://www.ag.ch/de/dfr/steuern/natuerliche_personen/steuererklaerung__easytax/steuererklaerung_easytax1.jsp"
@@ -19,7 +19,7 @@ source=(
 sha256sums=(
   '5540c7464bc716c76f62765e331bd9faedca258e0d9fbec8723619be2300ccdd'
   '253d315b20371cd9add777dc990f96545c60d5d07a3f34cd33720d5148e82486'
-  'f666973e4142a2be29f19e206027aa89e7e7816021dbcff5f4df022cf6e11bb4'
+  'ac9162d4b0e05894401552f0e8ff5783986c8a41e7607b9cf23ddfa31ce399c5'
 )
 
 package() {
@@ -32,7 +32,7 @@ package() {
   cp *.desktop "$pkgdir"/usr/share/applications/
 
   mkdir -p "$pkgdir"/usr/share/icons/hicolor/scalable/apps/
-  cp Wappen_Aargau.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/
+  cp Wappen_Aargau.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/Wappen_Aargau-${_yyyy}.svg
 
   mkdir -p "$pkgdir"/usr/bin
   binname=$(basename "$pkgdir"/usr/lib/$pkgname/EasyTax*)
