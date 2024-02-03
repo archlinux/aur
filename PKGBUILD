@@ -1,15 +1,15 @@
 # Maintainer: Leonard Iklé <leonard.ikle@gmail.com>
 
 pkgname=cwalk
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
-pkgdesc="Path library for C/C++. Cross-Platform for Windows, MacOS and Linux. Supports UNIX and Windows path styles on those platforms."
+pkgdesc="Path library for C/C++. Cross-Platform for Linux, FreeBSD, Windows and MacOS. Supports UNIX and Windows path styles on those platforms."
 arch=('x86_64')
 url="https://likle.github.io/cwalk/"
 license=('MIT')
 makedepends=('cmake')
-source=("https://github.com/likle/cwalk/archive/refs/tags/v1.2.7.tar.gz")
-md5sums=('97ffe9dc61645657e6d7bbf7c287bf5a')
+source=("https://github.com/likle/cwalk/archive/refs/tags/v1.2.8.tar.gz")
+md5sums=('35e590d01a21b866a00797e4b1c4d5e8')
 
 build() {
   cmake -S "$pkgname-$pkgver" -B build \
