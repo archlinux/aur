@@ -1,0 +1,12 @@
+pkgbase = python-opensubtitlescom
+	pkgdesc = OpenSubtitles.com new REST API
+	pkgver = 0.1.4
+	pkgrel = 1
+	arch = any
+	license = The
+	license = MIT
+	license = License
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-opensubtitlescom
