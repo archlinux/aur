@@ -9,7 +9,7 @@ arch=(x86_64)
 url='https://github.com/LunarG/VulkanTools.git'
 license=('custom')
 depends=()
-makedepends=(git cmake python libx11 libxrandr wayland qt5-svg qt5-webengine make vulkan-headers vulkan-utility-libraries vulkan-icd-loader )
+makedepends=(git cmake python libx11 libxrandr wayland qt5-svg qt5-webengine make vulkan-headers-git vulkan-utility-libraries-git vulkan-icd-loader-git)
 source=(git+https://github.com/LunarG/VulkanTools.git)
 
 _install(){

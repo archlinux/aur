@@ -13,9 +13,9 @@ pkgbase = vulkan-lunarg-tools-git
 	makedepends = qt5-svg
 	makedepends = qt5-webengine
 	makedepends = make
-	makedepends = vulkan-headers
-	makedepends = vulkan-utility-libraries
-	makedepends = vulkan-icd-loader
+	makedepends = vulkan-headers-git
+	makedepends = vulkan-utility-libraries-git
+	makedepends = vulkan-icd-loader-git
 	source = git+https://github.com/LunarG/VulkanTools.git
 	sha256sums = SKIP
 
