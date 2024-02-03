@@ -6,7 +6,7 @@
 #       !buildflags is needed in order to compile the code
 
 pkgname=calculix-ccx
-pkgver=2.20
+pkgver=2.21
 pkgrel=1
 provides=('calculix')
 replaces=('calculix')
@@ -27,10 +27,10 @@ source=("http://www.dhondt.de/ccx_${pkgver}.src.tar.bz2"
         "http://www.dhondt.de/ccx_${pkgver}.fluidtest.tar.bz2"
         "http://www.dhondt.de/ccx_${pkgver}.structest.tar.bz2")
 
-sha256sums=('63bf6ea09e7edcae93e0145b1bb0579ea7ae82e046f6075a27c8145b72761bcf'
-            '79848d88dd1e51839d1aed68fb547ff12ad3202c3561c02c2f3a8ceda0f2eb82'
-            '1b73ab8df8d7266fd612846f3052114c1a7dceb1d28edebec1701bda64cd1240'
-            '85026b25f2753178b5a1ab36f0f86faafb08df27acbba7b73ebda33ddd04aa6b')
+sha256sums=('52a20ef7216c6e2de75eae460539915640e3140ec4a2f631a9301e01eda605ad'
+            '094a0a2ec324fc6f937a96e932b488f48f31ad8d5d1186cd14437e6dc3e599ea'
+            'b7a5f672918deb4176c9c1c02619a16178e31771b72a58c1188db57e91f28954'
+            '264c6f9e9335f9bdcf6a39eafcdc868f47549a64866278d848e41bd9cd1b1a1b')
 
 build()
 {
