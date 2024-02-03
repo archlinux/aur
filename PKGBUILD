@@ -2,14 +2,14 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=seqminer
-_pkgver=9.3
+_pkgver=9.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Efficiently Read Sequence Data (VCF Format, BCF Format, METAL Format and BGEN Format) into R"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later AND MIT')
 depends=(
   bzip2
   r
@@ -25,12 +25,12 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8f96695f78ea46975e0a857959598ee4')
-sha256sums=('5a6a71b5c59e8c63c61cb4fd15d86bb12253f8edf3fee07129b12edffc78b11d')
+md5sums=('5922d7a82037e970121b8b31df2c53cc')
+b2sums=('1228b1c94b1d7157a2f031b34f7ccd26a9a8ad58bfae29c78d22ad59bfd40c0d9227719be8613cd87d6e7ba963e0e6b84f28bbd67d0566422c3b58ddcac03138')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
@@ -41,4 +41,7 @@ check() {
 package() {
   install -d "$pkgdir/usr/lib/R/library"
   cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
