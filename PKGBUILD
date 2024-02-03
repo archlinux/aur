@@ -1,7 +1,8 @@
 # Maintainer: Horror Proton <https://github.com/horror-proton>
 
+# shellcheck disable=SC2034 disable=SC2164
 pkgname=maa-assistant-arknights
-_pkgver=v5.0.0-beta.2
+_pkgver=v5.0.0
 pkgver=${_pkgver//-/}
 pkgver=${pkgver#v}
 pkgrel=1
@@ -15,7 +16,7 @@ _fastdeploy_ref=d0b018ac6c3daa22c7b55b555dc927a5c734d430
 source=("$url/archive/refs/tags/$_pkgver.tar.gz"
         "https://github.com/MaaAssistantArknights/FastDeploy/archive/$_fastdeploy_ref.tar.gz")
 install="${pkgname}.install"
-md5sums=('abb4d71f80e964030975a4c7834e699c'
+md5sums=('9f136c99c4f6649d13c489515875e010'
          '93190bbc6785e35e231af5cd4931f16a')
 
 if ((WITH_GPU)); then
@@ -23,14 +24,21 @@ if ((WITH_GPU)); then
 fi
 
 prepare() {
-    cd "$srcdir"/MaaAssistantArknights-${_pkgver#v}
-    sed -i 's/RUNTIME\sDESTINATION\s\./ /g; s/LIBRARY\sDESTINATION\s\./ /g; s/PUBLIC_HEADER\sDESTINATION\s\./ /g' CMakeLists.txt
-    sed -i 's/find_package(asio /# find_package(asio /g' CMakeLists.txt
-    sed -i 's/asio::asio/ /g' CMakeLists.txt
+    cd "${srcdir:?}"/MaaAssistantArknights-${_pkgver#v}
+    sed -e 's/RUNTIME\sDESTINATION\s\./ /g' \
+        -e 's/LIBRARY\sDESTINATION\s\./ /g' \
+        -e 's/PUBLIC_HEADER\sDESTINATION\s\./ /g' -i CMakeLists.txt
+    sed -e 's/find_package(asio /# find_package(asio /g' \
+        -e 's/find_package(MaaDerpLearning/# find_package(MaaDerpLearning/g' \
+        -e 's/asio::asio/ /g' -i CMakeLists.txt
+    sed -i "7i""add_subdirectory(\${SOURCE_DIR_FASTDEPLOY} \${BINARY_DIR_FASTDEPLOY} EXCLUDE_FROM_ALL SYSTEM) \\
+        include_directories(SYSTEM \${SOURCE_DIR_FASTDEPLOY}) \\
+        install(TARGETS MaaDerpLearning) \\
+        message(\${CMAKE_CURRENT_LIST_FILE})" CMakeLists.txt
 
-    find "src/MaaCore" \
-        \( -name '*.h' -or -name '*.cpp' -or -name '*.hpp' -or -name '*.cc' \) \
-        -exec sed -i 's/onnxruntime\/core\/session\///g' {} \;
+    shopt -s globstar nullglob
+    sed -i 's/onnxruntime\/core\/session\///g' src/MaaCore/**/{*.h,*.cpp,*.hpp,*.cc}
+
     cp -v "$srcdir"/FastDeploy-"$_fastdeploy_ref"/cmake/Findonnxruntime.cmake cmake
     sed -i 's/ONNXRuntime/onnxruntime/g' CMakeLists.txt
 
@@ -40,49 +48,37 @@ prepare() {
 
 build() {
     cd "$srcdir"
-    CXXFLAGS+=" -fmacro-prefix-map=$srcdir=/usr/src/debug/$pkgname"
 
-    local _fastdeploy_args=(
+    local _cmake_flags=(
         -DCMAKE_BUILD_TYPE=None
+        -DUSE_MAADEPS=OFF
+        -DINSTALL_RESOURCE=ON
+        -DINSTALL_PYTHON=ON
         -DBUILD_SHARED_LIBS=ON
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON
-        -DCMAKE_INSTALL_PREFIX="$srcdir"/installed/usr
+        -DCMAKE_INSTALL_PREFIX="$pkgdir"/usr
+        -DMAA_VERSION="$_pkgver"
+        -DSOURCE_DIR_FASTDEPLOY="$srcdir"/FastDeploy-"$_fastdeploy_ref"
+        -DBINARY_DIR_FASTDEPLOY="$srcdir"/build-FastDeploy
     )
+
     if ((WITH_GPU)); then
-        _fastdeploy_args+=( -DWITH_GPU=ON -DCUDA_DIRECTORY=/opt/cuda -DCUDA_ARCH_NAME=Auto )
+        _cmake_flags+=( -DWITH_GPU=ON -DCUDA_DIRECTORY=/opt/cuda -DCUDA_ARCH_NAME=Auto )
     fi
 
-    cmake -B build-fastdeploy -S FastDeploy-$_fastdeploy_ref "${_fastdeploy_args[@]}"
-    cmake --build build-fastdeploy
+    CXXFLAGS+=" -fmacro-prefix-map=$srcdir=${DBGSRCDIR:-/usr/src/debug}/${pkgbase:?}"
+    CXXFLAGS+=" -isystem /usr/include/onnxruntime/core/session" # in case onnxruntime<=1.15
 
-    mkdir -p installed/usr
-    cmake --install build-fastdeploy --prefix "$srcdir"/installed/usr
-
-    CXXFLAGS="$CXXFLAGS \
-    -isystem /usr/include/onnxruntime/core/session \
-    -isystem $srcdir/installed/usr/include" \
-    cmake -B build -S MaaAssistantArknights-${_pkgver#v} \
-        -DCMAKE_BUILD_TYPE=None \
-        -DCMAKE_PREFIX_PATH="$srcdir"/installed/usr \
-        -DUSE_MAADEPS=OFF \
-        -DINSTALL_THIRD_LIBS=ON \
-        -DINSTALL_RESOURCE=ON \
-        -DINSTALL_PYTHON=ON \
-        -DMAA_VERSION="$_pkgver"
+    cmake -B build -S "MaaAssistantArknights-${_pkgver#v}" "${_cmake_flags[@]}"
     cmake --build build
 }
 
 package() {
     cd "$srcdir"
-    mkdir -p "$pkgdir"/usr
-    mv -fv "$srcdir"/installed/usr/lib "$pkgdir"/usr
     cmake --install build --prefix "$pkgdir"/usr
 
-    cd "$pkgdir"/usr
-    mkdir -p share/"${pkgname}"
-    mv Python share/"${pkgname}"
-    mv resource share/"${pkgname}"
-
-    cd share/"${pkgname}"
-    ln -s ../../lib/* .
+    cd "$pkgdir"/usr/
+    mkdir -p share/"$pkgname"
+    mv Python resource share/"$pkgname"
+    ln -sr lib/* share/"$pkgname"
 }
