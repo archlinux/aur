@@ -1,0 +1,14 @@
+pkgbase = metabase-driver-starburst
+	pkgdesc = Starburst driver for Metabase
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://github.com/starburstdata/metabase-driver
+	arch = any
+	license = Apache-2.0
+	depends = metabase
+	noextract = starburst.metabase-driver.jar
+	options = !strip
+	source = starburst.metabase-driver.jar::https://github.com/starburstdata/metabase-driver/releases/download/4.1.0/starburst-4.1.0.metabase-driver.jar
+	b2sums = 2fab8026714cab5c773debd065bf6404c503379e66cbbbe2d3a6482f8e408ce2ae80b8945dd19b341cf666a30d267825528208df7cc5ac12a1c4ca42ce60f5bf
+
+pkgname = metabase-driver-starburst
