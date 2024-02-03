@@ -8,7 +8,7 @@ pkgname=(
   vbam-wx
 )
 _pkgname=visualboyadvance-m
-pkgver=2.1.8
+pkgver=2.1.9
 pkgrel=1
 pkgdesc='Nintendo GameBoy Advance emulator'
 arch=(x86_64)
