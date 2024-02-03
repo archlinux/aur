@@ -21,7 +21,7 @@ classpath="$(find '/usr/share/java/starsector' -type f -name '*.jar' | paste -sd
 config_path="${XDG_CONFIG_HOME:-"$HOME/.config"}/starsector"
 startup_config="${config_path}/startup.sh"
 
-jvm_args=(-Xms1536m -Xmx1536m -Xss2048k)
+jvm_args=(-XX:+UseG1GC -Xms1536m -Xmx1536m -Xss2048k -XX:PermSize=192m -XX:MaxPermSize=192m)
 program_args=()
 
 if [ -r "$startup_config" ]
