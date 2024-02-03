@@ -7,7 +7,7 @@ _microarchitecture=0
 ## Major kernel version
 _major=6.7
 ## Minor kernel version
-_minor=1
+_minor=3
 
 ## PKGBUILD ##
 
@@ -33,7 +33,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('1ecffa568e86a2202ba5533ad9034bc263a9aa14e189597a94f09b3854ad68c3'
+sha256sums=('b7f08c652747574a3aa26e317d7a8f23ffab3fb645e1b1533b215dcfd5742b44'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -65,6 +65,7 @@ prepare() {
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-eevdf-additions.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0006-add-acs-overrides_iommu.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-fsync1_via_futex_waitv.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-winesync.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0012-misc-additions.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0013-optimize_harder_O3.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0014-OpenRGB.patch
