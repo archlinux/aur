@@ -6,15 +6,14 @@
 
 pkgname=crossover
 pkgver=23.7.1
-pkgrel=1
+pkgrel=2
 _pkgdebrel=1
 pkgdesc="Run Windows Programs on Linux"
 arch=('i686' 'x86_64')
-url="http://www.codeweavers.com"
+url="https://www.codeweavers.com/crossover"
 license=('custom:CrossOver Linux License Grant')
 makedepends=('tar')
 install=${pkgname}.install
-replaces=('crossover-games' 'crossover-pro' 'crossover-standard')
 
 source=("https://media.codeweavers.com/pub/${pkgname}/cxlinux/demo/${pkgname}_${pkgver}-${_pkgdebrel}.deb")
 sha256sums=('69311a918f4888f777a0b9ae57e7fc79ccaaae3fbd63cff4c8d242742d87eb81')

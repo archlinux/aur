@@ -1,24 +1,148 @@
 post_install() {
-
-    echo updating wineserver link
-    
-    CX_ROOT="/opt/cxoffice"
-    rm "$CX_ROOT/bin/wineserver"
-    if "$CX_ROOT/bin/wineserver64" -v >/dev/null 2>/dev/null
-    then
-        ln -s wineserver64 "$CX_ROOT/bin/wineserver"
-    else
-        ln -s wineserver32 "$CX_ROOT/bin/wineserver"
-    fi
-    
     echo "Creating menus and file associations, please wait..."
-    /opt/cxoffice/bin/cxmenu --crossover --install --filter "StartMenu/CrossOver"
-    /opt/cxoffice/bin/cxassoc --crossover --install
+    
+    # set variable to configure the actions of the postinst-script from codeweavers
+    action="configure"
+    oldver=""
+    
+    # -- start of code from codeweavers postinst script --
+    CX_ROOT="/opt/cxoffice"
+    export CX_ROOT
+
+    if [ "$mode" = "install" ]
+    then
+        if [ -z "$CX_PRODUCT_ID" ]
+        then
+            CX_PRODUCT_ID="cxoffice"
+        fi
+    elif [ -f "$CX_ROOT/.productid" ]
+    then
+        CX_PRODUCT_ID=`cat "$CX_ROOT/.productid"`
+    else
+        CX_PRODUCT_ID="cxoffice"
+    fi
+    productid="$CX_PRODUCT_ID"
+    package="deb:$DPKG_MAINTSCRIPT_PACKAGE"
+
+    if [ "$action" = "configure" ]
+    then
+        if [ -n "$oldver" -o -f "$CX_ROOT/etc/$productid.conf" ]
+        then
+            mode="upgrade"
+        else
+            mode="install"
+        fi
+
+    # This script expects package, CX_ROOT, productid, mode and oldver to be set
+
+
+    builtin_product_id="cxoffice"
+    if [ "$mode" = "install" ]
+    then
+        if [ "$productid" != "$builtin_product_id" ]
+        then
+            echo "$productid" >"$CX_ROOT/.productid"
+        else
+            rm -f "$CX_ROOT/.productid"
+        fi
+    fi
+
+    uid=`perl -e 'print $>'`
+
+    unset HOME
+
+    # These files are no longer needed (were used by version 4.x)
+    if [ "$uid" = "0" -a -f "/sbin/conf.d/SuSEconfig.zz$productid-vfolders" ]
+    then
+        rm -f "/sbin/conf.d/SuSEconfig.zz$productid-vfolders"
+    fi
+    rm -f "$CX_ROOT/lib/xml/libperl.so.5.8"
+
+    # Icons have moved to share/icons
+    rm -f "$CX_ROOT"/support/*.png
+
+    # We don't need the 2007 DST bottle hook anymore
+    rm -f "$CX_ROOT"/support/scripts.d/??.dst2007patch
+    rmdir "$CX_ROOT"/support/scripts.d 2>/dev/null || true
+
+    # Try to set up the security context if possible (especially for Fedora).
+    # Do so before potentially trying to upgrade bottles.
+    setup_selinux()
+    {
+        # Note that this may or may not work depending on obscure system settings.
+        # So try chcon on the landmark file and don't abort if that fails.
+        if chcon system_u:object_r:bin_t:s0 "$CX_ROOT"/bin/cxmenu
+        then
+            ( cd "$CX_ROOT"/bin && find * -type d -prune -o -type f \
+                -exec chcon system_u:object_r:bin_t:s0 {} \; )
+            ( cd "$CX_ROOT"/lib && find * -type d -prune -o -type f \
+                -exec chcon system_u:object_r:lib_t:s0 {} \; )
+            if chcon system_u:object_r:wine_exec_t:s0 "$CX_ROOT"/bin/wine-preloader
+            then
+                chcon system_u:object_r:wine_exec_t:s0 "$CX_ROOT"/bin/wineloader
+            fi
+            if chcon system_u:object_r:textrel_shlib_t:s0 "$CX_ROOT"/lib/wine/ntdll.dll.so
+            then
+                setype="textrel_shlib_t"
+            else
+                setype="lib_t"
+            fi
+            ( cd "$CX_ROOT"/lib/wine && find * -type d -prune -o -type f \
+                -exec chcon system_u:object_r:$setype:s0 {} \; )
+        fi
+    }
+    if [ -z "$CX_LOG" ]
+    then
+        setup_selinux 2>/dev/null
+    else
+        setup_selinux
+    fi
+
+
+    # Update wineserver symlink as appropriate
+    if [ -L "$CX_ROOT/bin/wineserver" ]
+    then
+        rm "$CX_ROOT/bin/wineserver"
+        if "$CX_ROOT/bin/wineserver64" -v >/dev/null 2>/dev/null
+        then
+            ln -s wineserver64 "$CX_ROOT/bin/wineserver"
+        else
+            ln -s wineserver32 "$CX_ROOT/bin/wineserver"
+        fi
+    fi
+
+
+    # Create or upgrade the configuration file and more
+    if [ -f "$CX_ROOT/.uninstalled" ]
+    then
+        rm -f "$CX_ROOT/.uninstalled"
+        install_bottles="--install-bottles"
+    else
+        install_bottles=""
+    fi
+
+    # Replace '/usr/bin/perl' in all the perl scripts with '/app/bin/perl' for Flatpak
+    if [ -n "$CX_FLATPAK_ID" ]
+    then
+        sed -i 's/\/usr\/bin\/perl/\/app\/bin\/perl/' `grep -Ril /usr/bin/perl $CX_ROOT`
+    fi
+
+    "$CX_ROOT/lib/cxupgrade" --package "$package" --productid "$productid" --old-version "" $install_bottles
+    "$CX_ROOT/bin/cxtie" --register
+
+    if [ "$mode" = "install" -a "$uid" = "0" ]
+    then
+        chmod 0644 "$CX_ROOT/etc/$productid.conf"
+    fi
+
+    fi
+    # -- end of code from codeweavers postinst script --
+    
     echo "Done!"
     echo
-    echo "This is the demo version, to fully activate it you must have a valid serial and register it."
+    echo "This is the demo version, to fully activate it you need to obtain a license."
     echo "More information about this process here:"
-    echo "http://www.codeweavers.com/support/docs/crossover-linux/demo"
+    echo "https://www.codeweavers.com/crossover"
 }
 
 post_upgrade() {
@@ -27,8 +151,132 @@ post_upgrade() {
 
 pre_remove() {
     echo "Removing menus and file associations, please wait..."
-    /opt/cxoffice/bin/cxmenu --crossover --uninstall
-    /opt/cxoffice/bin/cxassoc --crossover --uninstall
-    rm -f /usr/local/share/icons/hicolor/*x*/apps/cxmenu-*.png
+    #/opt/cxoffice/bin/cxmenu --crossover --uninstall
+    #/opt/cxoffice/bin/cxassoc --crossover --uninstall
+    
+    # set variable to configure the actions of the prerm-script from codeweavers
+    action="remove"
+    
+    # -- start of code from codeweavers prerm script --
+    CX_ROOT="/opt/cxoffice"
+    export CX_ROOT
+
+    if [ -f "$CX_ROOT/.productid" ]
+    then
+        productid=`cat "$CX_ROOT/.productid"`
+    else
+        productid="cxoffice"
+    fi
+
+    if [ "$action" = "remove" ]
+    then
+        CX_PURGE="desktopdata"
+
+    # This script expects CX_ROOT and productid to be set
+    # Note: this script may also be called in case the installation is aborted
+    builtin_product_id="cxoffice"
+
+    if [ -z "$CX_PURGE" ]
+    then
+        CX_PURGE="all"
+    fi
+
+    if [ "$CX_PURGE" = "desktopdata" -o "$CX_PURGE" = "all" ]
+    then
+        "$CX_ROOT/bin/cxtie" --unregister
+        scope="managed"
+        if [ -x "$CX_ROOT/bin/cxmenu" ]
+        then
+            "$CX_ROOT/bin/cxmenu" --removeall --pattern "$productid-" --scope $scope --ignorelist ""
+        fi
+        if [ -x "$CX_ROOT/bin/cxassoc" ]
+        then
+            "$CX_ROOT/bin/cxassoc" --removeall --pattern "$productid-" --scope $scope --ignorelist ""
+        fi
+        rm -f "$CX_ROOT"/share/icons/*.png
+    fi
+
+    rm -f "$CX_ROOT/lib/python"/*.pyc
+    rm -f "$CX_ROOT/lib/wine/winewrapper.exe.so.bak"
+    fi
+    # -- end of code from codeweavers prerm script --
+
+    echo "Done!"
+}
+
+post_remove() {
+    echo "Performing additional clean up, please wait..."
+    
+    # set variable to configure the actions of the postrm-script from codeweavers
+    action="remove"
+
+    # -- start of code from codeweavers postrm script --
+    CX_ROOT="/opt/cxoffice"
+    export CX_ROOT
+
+    if [ -f "$CX_ROOT/.productid" ]
+    then
+        productid=`cat "$CX_ROOT/.productid"`
+    else
+        productid="cxoffice"
+    fi
+
+    if [ \( "$action" = "purge" -o "$action" = "remove" \) -a ! -f "$CX_ROOT/bin/cxmenu" ]
+    then
+        if [ "$action" = "purge" ]
+        then
+            CX_PURGE="all"
+        else
+            CX_PURGE="desktopdata"
+        fi
+
+        # We cannot do this bit before because prerm does not know whether
+        # the administrator is doing a 'dpkg --purge' or a 'dpkg --remove'.
+        # It does mean we have some extra directories to remove manually.
+    # This script expects CX_ROOT and productid to be set
+
+    if [ -z "$CX_PURGE" ]
+    then
+        CX_PURGE="all"
+    fi
+
+    if [ "$CX_PURGE" = "desktopdata" -o "$CX_PURGE" = "all" ]
+    then
+        rm -rf "$CX_ROOT"/lib/python/__pycache__
+        rm -rf "$CX_ROOT"/support/desktopdata
+    fi
+
+    if [ "$CX_PURGE" = "all" ]
+    then
+        rm -f  "$CX_ROOT/etc/$productid".conf*
+        rm -f  "$CX_ROOT/etc/license.txt" "$CX_ROOT/etc/license.sig"
+        rm -f  "$CX_ROOT"/support/default
+        rm -rf "$CX_ROOT"/support/installers
+        rm -f  "$CX_ROOT"/.uninstalled
+
+        # Delete bottles.
+        ls -d "$CX_ROOT"/support/*/cxbottle.conf 2>/dev/null | while read bottlefile
+        do
+            dir=`dirname "$bottlefile"`
+            rm -rf "$dir"
+        done
+
+        rmdir "$CX_ROOT"/support 2>/dev/null || true
+        rm -f  "$CX_ROOT/.productid"
+    elif [ -d "$CX_ROOT" ]
+    then
+        touch "$CX_ROOT/.uninstalled"
+    fi
+
+        rmdir "$CX_ROOT/etc" 2>/dev/null || true
+        rmdir "$CX_ROOT/support" 2>/dev/null || true
+        rmdir "$CX_ROOT" 2>/dev/null || true
+    fi
+    # -- end of code from codeweavers postrm script --
+    
+    # additional clean up
+    rmdir "$CX_ROOT"/lib/python
+    rmdir "$CX_ROOT"/lib
+    
     echo "Done!"
 }
