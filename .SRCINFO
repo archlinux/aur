@@ -1,0 +1,12 @@
+pkgbase = arch-fosdem-strudel
+	pkgdesc = Install a strudel wallpaper from the FOSDEM 2024
+	pkgver = 2024
+	pkgrel = 1
+	url = https://pitastrudl.me/arch-fosdem-strudel.jpg
+	arch = any
+	license = MIT
+	noextract = arch-fosdem-strudel-2024
+	source = https://pitastrudl.me/arch-fosdem-strudel.jpg
+	sha256sums = 57d6964112a6cdc2c51bf8fc87cc70a47b772f3180b51951875b49211aba5214
+
+pkgname = arch-fosdem-strudel
