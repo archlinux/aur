@@ -1,16 +1,14 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
-_buildnum=06966759
+_buildnum=06983364
 pkgname=niri-bin
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="Scrollable-tiling Wayland compositor"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url="https://github.com/YaLTeR/${pkgname%-bin}"
 license=(GPL-3.0-or-later)
 depends=(cairo glib2 libinput libpipewire libxkbcommon mesa pango pixman seatd)
-source=(https://download.copr.fedorainfracloud.org/results/yalter/${pkgname%-bin}/fedora-39-${CARCH}/${_buildnum}-${pkgname%-bin}/${pkgname%-bin}-${pkgver}-1.fc39.${CARCH}.rpm)
-b2sums=('4357f135bd8c680eed7726130794b358642c8f124fc05970b892b2c97934a6d1908433f821bb52c310f897836aa1f07c550a96ca2f389878c8a7eb307262f23d')
 optdepends=('fuzzel: application launcher similar to rofi drun mode'
             'waybar: highly customizable Wayland bar'
             'alacritty: a cross-platform OpenGL terminal emulator'
@@ -22,7 +20,10 @@ optdepends=('fuzzel: application launcher similar to rofi drun mode'
             'gnome-keyring: implements the secret portal, for certain apps to work'
             'polkit-gnome: when apps need to ask for root permissions')
 conflicts=(${pkgname%-bin}-git ${pkgname%-bin})
-install=${pkgname%-bin}.install
+source_x86_64=(https://download.copr.fedorainfracloud.org/results/yalter/${pkgname%-bin}/fedora-39-${CARCH}/${_buildnum}-${pkgname%-bin}/${pkgname%-bin}-${pkgver}-1.fc39.${CARCH}.rpm)
+source_aarch64=(https://download.copr.fedorainfracloud.org/results/yalter/${pkgname%-bin}/fedora-39-${CARCH}/${_buildnum}-${pkgname%-bin}/${pkgname%-bin}-${pkgver}-1.fc39.${CARCH}.rpm)
+b2sums_x86_64=('5df7da32a2e44a821011eaa0647851f26e8edc52beefa3d94a3a1458b368e9ed1b562e5100f66b7cb39a3087907fce3dc2dbf6bca37169374004713a9b34f3e7')
+b2sums_aarch64=('54fad08a8f9813c78233aad8c7fa9551595a6614e4c70b9a6a4a15f06eb90b96f190014db3204e3cb5bc214cffafd83c7be6ac60a5835b0a2756bafb1cd81018')
 
 package() {
   install -Dm755 usr/bin/${pkgname%-bin}{,-session}                        -t ${pkgdir}/usr/bin/
@@ -30,5 +31,4 @@ package() {
   install -Dm644 usr/share/xdg-desktop-portal/${pkgname%-bin}-portals.conf -t ${pkgdir}/usr/share/xdg-desktop-portal/
   install -Dm644 usr/lib/systemd/user/${pkgname%-bin}.service              -t ${pkgdir}/usr/lib/systemd/user/
   install -Dm644 usr/lib/systemd/user/${pkgname%-bin}-shutdown.target      -t ${pkgdir}/usr/lib/systemd/user/
-  install -Dm644 usr/share/doc/${pkgname%-bin}/default-config.kdl          -t ${pkgdir}/usr/share/doc/${pkgname%-bin}
 }
