@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cobs
-_pkgver=1.3-5
+_pkgver=1.3-7
 pkgname=r-${_pkgname,,}
-pkgver=1.3.5
+pkgver=1.3.7
 pkgrel=1
 pkgdesc='Constrained B-Splines (Sparse Matrix Based)'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
   r-matrix
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7fae7da8f940975d544120c836e2d3b874f9b0cbab9631851ce986709f51c611')
+sha256sums=('33dda6cf6e97ddedbd91b6b3e7cbeec08cda84200cb37c3e7875bacd348ae63f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
