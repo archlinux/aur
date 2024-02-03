@@ -1,15 +1,15 @@
-# Maintainer: Namkhai B. <echo hc.9mobkrof@em | rev>
+# Maintainer: Namkhai B. <echo em.roekn.kn | sed s/\\./@/2 | rev>
 
 _pkgname=ananicy-cpp
 pkgname=ananicy-cpp-nosystemd
-_pkgver=1.0.2
+_pkgver=1.1.1
 pkgver=${_pkgver//-/.}
 pkgrel=0
 pkgdesc="Ananicy rewritten in C++ for much lower CPU and memory usage."
 url="https://gitlab.com/ananicy-cpp/ananicy-cpp/"
 license=(GPLv3)
 source=("https://gitlab.com/ananicy-cpp/${_pkgname}/-/archive/v${_pkgver}/${_pkgname}-v${_pkgver}.tar.gz")
-sha256sums=('a809fe61e7c6b1322ebc52278ad33ea4a653721c2a42fe566fdec8f00e0bec85'
+sha256sums=('36d673c1fd2a7e52d8fd5a0e2e66045011b73125b7d8bc295019f434de87c3a1'
             'a9a98ba8ff2b3f7e12f2ac75361018a9ba42f9298aa7e8f6bad3613a03591bc0')
 declare -g -A externals
 externals['std-format']="dfa4fdc87c7cb9bb1683125009baa7278bb85901"
