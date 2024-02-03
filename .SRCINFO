@@ -1,13 +1,14 @@
 pkgbase = simdjson
 	pkgdesc = A C++ library to see how fast we can parse JSON with complete validation.
-	pkgver = 3.7.0
+	pkgver = 3.6.4
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/simdjson/simdjson
 	arch = x86_64
 	license = APACHE
 	makedepends = cmake
 	depends = gcc-libs
-	source = simdjson-3.7.0.tar.gz::https://github.com/simdjson/simdjson/archive/v3.7.0.tar.gz
-	sha256sums = 71fc73e7538ba975aa4ffe5033770f80f88424621fe72774bf9ff361bef61c94
+	source = simdjson-3.6.4.tar.gz::https://github.com/simdjson/simdjson/archive/v3.6.4.tar.gz
+	sha256sums = 7e93d5094a47180a3d451cb261ba29ac66f3f6ceb7c2a0884955e9a2bb06d818
 
 pkgname = simdjson
