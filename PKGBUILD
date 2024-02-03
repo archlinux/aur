@@ -60,7 +60,7 @@ build(){
 
 package_vulkan-extra-tools-git(){
   pkgdesc='Vulkan lunarg tools (git version)'
-  depends=(vulkan-validation-layers qt5-svg qt5-webengine)
+  depends=(vulkan-validation-layers-git qt5-svg qt5-webengine)
   conflicts=('vulkan-trace<1.2.148.1')
   conflicts+=(vulkan-extra-tools)
   provides=(vulkan-extra-tools)
@@ -78,7 +78,7 @@ package_vulkan-extra-tools-git(){
 
 package_vulkan-extra-layers-git(){
   pkgdesc='Extra layers for Vulkan development (git version)'
-  depends=(vulkan-validation-layers)
+  depends=(vulkan-validation-layers-git)
   conflicts=(vulkan-extra-layers)
   provides=(vulkan-extra-layers)
   
