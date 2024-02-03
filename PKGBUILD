@@ -65,7 +65,7 @@ _amlog='/var/log/amanda'
 set -u
 pkgname='amanda'
 #pkgver='3.3.9'
-pkgver='3.5.3'
+pkgver='3.5.4'
 pkgrel='1'
 pkgdesc='Advanced Maryland Automatic Network Disk Archiver network backup for Linux Windows clients, supports SSH, AES, GPG, encryption, tape, RAIT, mirror, changers, Amazon S3, ipv6, DVD, NDMP, VTL, advanced scripting'
 arch=('i686' 'x86_64')
@@ -162,12 +162,12 @@ source=(
 )
 #_srcdir="${source[0]##*/}"
 #_srcdir="${_srcdir%%.tar*}"
-md5sums=('ccb15863132c7028b004737ccfd7b57a'
+md5sums=('01c881b6b75f1ef07d6e75db05a0afb0'
          '4745f45c43488f46cba00073a60d587e'
          'c42f8eb4461c1979b22761e288ff5c2e'
          '51982f3d5c6b4a367de24c7fd7b7eb16'
          'fbb84f7b778ff76759062878f413f047')
-sha256sums=('7821d7420e12bfc96c8db385c29f79afe7d6f35e80faa81da0b87a47ee5b2476'
+sha256sums=('1f4693394d7c19f979343367215a9a9b84261ff6152429d2d7b28a883f524e73'
             '3db294c9d7c610e9c0d531dcc2725dbddf1213fad64f04bc7cf9b1b9c30e9803'
             '46446a8dc4ee8ec39ed0a3e2636fb02a198565e8111abe8392c456da56a007ce'
             'ae51f305b49bd7c94e854c2784ee4b58dabf74bc43bfe9a738d3d03322938861'
