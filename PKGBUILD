@@ -1,17 +1,17 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AdaptGauss
-_pkgver=1.5.6
+_pkgver=1.6
 pkgname=r-${_pkgname,,}
-pkgver=1.5.6
-pkgrel=3
-pkgdesc='Gaussian Mixture Models (GMM)'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=1
+pkgdesc="Gaussian Mixture Models (GMM)"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-datavisualizations
+  r-plotly
   r-pracma
   r-rcpp
   r-shiny
@@ -20,7 +20,6 @@ optdepends=(
   r-dqrng
   r-foreach
   r-ggplot2
-  r-grid
   r-knitr
   r-mclust
   r-paralleldist
@@ -28,14 +27,15 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b07773123f9c2f63ae83066b48a9ac866ef7dd24dae292e024d82b72b195d21c')
+md5sums=('54c3fc08f481c0cd2a09a937918c6bf4')
+b2sums=('e2719335954f4b5bc44100c40b3d686f749d17b0f615a23c8b78c5567ba70994d15efb22ae1ac583af96a18a33eafc605370e8041aabfec7909957fbbc02bdb0')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
