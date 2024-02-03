@@ -1,0 +1,14 @@
+pkgbase = linkal
+	pkgdesc = A public-calendar aggregator server
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/JulienMalka/Linkal
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	provides = linkal
+	conflicts = linkal
+	source = linkal-0.1.0.tar.gz::https://github.com/JulienMalka/Linkal/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = eb30c1189e97706b3b2b7b2542c028eb89e2a336b2f243e992d4f5bd08f30bcf
+
+pkgname = linkal
