@@ -3,18 +3,18 @@
 # Contributor: Matthew Sexton <wsdmatty@gmail.com>
 # Contributor: Lorenz Wellmer
 pkgname=clockify-desktop
-pkgver=2.1.10
+pkgver=2.1.11
 pkgrel=1
 pkgdesc="Truly free time tracker for teams, Desktop App"
 arch=("x86_64")
 url="https://clockify.me"
-license=("custom")
+license=("LicenseRef-custom")
 depends=("alsa-lib" "at-spi2-core" "cairo" "dbus" "expat" "gcc-libs" "glib2"
          "glibc" "gtk3" "hicolor-icon-theme" "java-runtime" "libcups" "libdrm"
          "libx11" "libxcb" "libxcomposite" "libxdamage" "libxext" "libxfixes"
          "libxkbcommon" "libxrandr" "mesa" "nspr" "nss" "pango")
 source=("$pkgname-$pkgver.deb::https://clockify.me/downloads/Clockify_Setup_x64.deb")
-sha512sums=("ea39bb601eecdd873ff94a18b51d9bbc43fec9313529e4f1a071d18382c5b43a1568075ed0208e5ac415007fc3ba9ef5d86e46affda7171fc2efd07795238784")
+sha512sums=("19165def6e5ecd1e17ef2bb9004e7b548ef8337156ce6d1558a6fa881149c7eafef07ddcc95bd62a000eada9141ba4edc9a5c19ff5eb229923f6a3d4927b2649")
 
 package() {
     # Extract package data
@@ -24,6 +24,7 @@ package() {
     install -D -m644 "${pkgdir}/opt/Clockify/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     
     # Fix permission issues
+
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/assets.d.ts"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/assets.js"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/audio/pomodoro-notification.ogg"
@@ -57,6 +58,8 @@ package() {
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/clockify_logo.svg"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/clockify_logo_dark.svg"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/clockify_logo_selfhosted.svg"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/close-light.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/close.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/closeX.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/create.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/edit-unsynced-hover.png"
@@ -87,6 +90,9 @@ package() {
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/menu-dots-vertical.svg"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/menu-hover.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/menu.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/no-new-notifications.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/notifications-hover.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/notifications.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/notifications/ws-lock.svg"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/notifications/ws-shield.svg"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/out-link.png"
@@ -105,7 +111,7 @@ package() {
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/workspace-checked.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/x.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/no-user-image.png"
-    
+
     # Fix hardlinks
     rm "${pkgdir}/usr/share/icons/hicolor/32x32/apps/clockify.png"
     ln -s /opt/Clockify/resources/assets/icons/32x32.png "${pkgdir}/usr/share/icons/hicolor/32x32/apps/clockify.png"
