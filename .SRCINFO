@@ -1,6 +1,6 @@
 pkgbase = arrpc
 	pkgdesc = Open Discord RPC server for atypical setups
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://arrpc.openasar.dev/
 	install = arrpc.install
@@ -12,7 +12,7 @@ pkgbase = arrpc
 	depends = gcc-libs
 	conflicts = arrpc-git
 	options = !strip
-	source = git+https://github.com/OpenAsar/arrpc.git#commit=9c3e981437b75606c74ef058c67d1a8c083ce49a
+	source = git+https://github.com/OpenAsar/arrpc.git#commit=c6e23e7eb733ad396d3eebc328404cc656fed581
 	source = async.patch
 	source = arrpc.service
 	source = arrpc.install
