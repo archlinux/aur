@@ -1,6 +1,6 @@
 pkgbase = ugit
 	pkgdesc = ugit helps you undo your last git command with grace. Your damage control git buddy. Undo from 20+ git scenarios.
-	pkgver = 5.6
+	pkgver = 5.8
 	pkgrel = 1
 	url = https://github.com/Bhupesh-V/ugit
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = ugit
 	depends = grep
 	depends = ncurses
 	depends = fzf
-	source = ugit-5.6.tar.gz::https://github.com/Bhupesh-V/ugit/archive/refs/tags/v5.6.tar.gz
-	sha512sums = 37b32b64ce75e763249222c1dd1dd2840f516cf04bde9d53e1bb37901a94c93c5ac0a4b49fa9f50fee9decedbf629d35957108a0d342c8dafda393965a839dfa
+	source = ugit-5.8.tar.gz::https://github.com/Bhupesh-V/ugit/archive/refs/tags/v5.8.tar.gz
+	sha512sums = 1fef4fc268ab7572d3983317c04a282d30a1e0dd7c8a024cce97a138cc04adf5659bf7be30ff6916ae6d3564f91a4d4e01722522733bd42472777e38e74168b2
 
 pkgname = ugit
