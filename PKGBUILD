@@ -5,7 +5,7 @@
 set -u
 pkgname='jwasm'
 #_pkgname='JWasm211as'
-pkgver='2.15'
+pkgver='2.17'
 pkgrel='1'
 pkgdesc='a free MASM-compatible assembler'
 arch=('i686' 'x86_64')
@@ -19,8 +19,8 @@ depends=('glibc')
 #_verwatch=("${url}/releases.atom" '\s\+<link rel="alternate" type="text/html" href=".*/'"${url##*/}"'/releases/tag/v*\([^"]\+\)"/>.*' 'f') # RSS
 _srcdir="${url##*/}-${pkgver}"
 source=("${_srcdir}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('44571062dc7a2dc7f121291a0a4aa263')
-sha256sums=('47cfc392ec379472374f0e14f2c804f929fd6e712aae7679a445c75a17b7a6f9')
+md5sums=('3d29d8a4fa56bd1f3971f3949cb187eb')
+sha256sums=('dad51777ddb2b816bfdefbb73c016c3e34fc976c3e3f6df49ec4b17ab7cc93e3')
 
 build() {
   set -u
