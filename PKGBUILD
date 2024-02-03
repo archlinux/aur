@@ -4,7 +4,7 @@
 
 _pkgname=pamac
 pkgname=${_pkgname}-nosnap
-pkgver=11.7.0
+pkgver=11.7.1
 pkgrel=1
 _srcdir="$_pkgname-$pkgver"
 pkgdesc="A Gtk3 frontend, Package Manager based on libalpm with AUR and Appstream support"
@@ -48,7 +48,7 @@ conflicts=(
 )
 options=(!emptydirs)
 source=("$url/-/archive/$pkgver/pamac-$pkgver.tar.gz")
-sha256sums=('85d6575696f35c7a6268e8d259bb6c0d04c4075ff37e0d6800a7dfd7d12c5340')
+sha256sums=('bdf93f7efde43a1d0fa9ef9cceea409691f1d5e42bbd4fb0f9b3e38e0cd0c22a')
 
 _srcdir="$_pkgname-$pkgver"
 
