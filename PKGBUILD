@@ -4,7 +4,7 @@
 
 _name=plasma-framework
 pkgname=${_name}5
-pkgver=5.114.0
+pkgver=5.115.0
 pkgrel=1
 pkgdesc='Plasma library and runtime components based upon KF5 and Qt5'
 arch=(x86_64)
@@ -16,7 +16,7 @@ conflicts=("$_name<5.111")
 replaces=("$_name<5.111")
 groups=(kf5)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz{,.sig})
-sha256sums=('9d3d8db28cf0c2a0539323f7eceabb13561ae657888c5d7f1e7c9581cda11015'
+sha256sums=('2c6f30bb11a6476b706f34d2f5af1c9e4c98177dc885f9c95d4a24752c9611f7'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
