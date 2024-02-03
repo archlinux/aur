@@ -1,22 +1,22 @@
 pkgbase = zxinfo-file-browser-bin
 	pkgdesc = Organize and manage your emulator files for ZX Spectrum & ZX 81 - powered by the web
-	pkgver = 1.2.3
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://github.com/thomasheckmann/zxinfo-file-browser
 	arch = x86_64
 	license = MIT
 	makedepends = squashfuse
-	depends = electron25
+	depends = electron27
 	depends = dbus-glib
 	depends = libdbusmenu-glib
 	depends = gtk2
-	provides = zxinfo-file-browser=1.2.3
+	provides = zxinfo-file-browser=1.2.5
 	conflicts = zxinfo-file-browser
-	source = zxinfo-file-browser-1.2.3.AppImage::https://github.com/thomasheckmann/zxinfo-file-browser/releases/download/v1.2.3/zxinfo-file-browser-1.2.3.AppImage
-	source = LICENSE-1.2.3::https://raw.githubusercontent.com/thomasheckmann/zxinfo-file-browser/v1.2.3/LICENSE
+	source = zxinfo-file-browser-1.2.5.AppImage::https://github.com/thomasheckmann/zxinfo-file-browser/releases/download/v1.2.5-final/zxinfo-file-browser-1.2.5-final.AppImage
+	source = LICENSE-1.2.5::https://raw.githubusercontent.com/thomasheckmann/zxinfo-file-browser/v1.2.5-final/LICENSE
 	source = zxinfo-file-browser.sh
-	sha256sums = 9cf183fa301aad1d1c6d6a72c4a08625a167ccb1bde1857bb5f9e276003b410e
+	sha256sums = 3bdb2b699ba17bab7ed4179ca2eee9d88e2796f527d88d0f3cd30ac8d858016a
 	sha256sums = 2042c6124204156b44ed7676a90f1e0bb9ddfee1f76d20f7b6f220a90398f74e
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = zxinfo-file-browser-bin
