@@ -4,11 +4,11 @@ _pkgname=Inventario
 _appname=electron-vite-project
 pkgver=1.0.1
 _electronversion=26
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple desktop app to manage a wearhose inventory."
 arch=('x86_64')
 url="https://github.com/osoyinas/simple-inventory"
-license=('custom')
+license=('LicenseRef-custom')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -25,11 +25,11 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('7c3eff2dc086aa6cab60fe1d8e44730c7e31a47e7b755bb25e5ab9336c06aa2f'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null

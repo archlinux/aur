@@ -1,10 +1,10 @@
 pkgbase = simple-inventory-bin
 	pkgdesc = Simple desktop app to manage a wearhose inventory.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/osoyinas/simple-inventory
 	arch = x86_64
-	license = custom
+	license = LicenseRef-custom
 	makedepends = squashfuse
 	depends = electron26
 	depends = dbus-glib
@@ -15,6 +15,6 @@ pkgbase = simple-inventory-bin
 	source = simple-inventory-1.0.1.AppImage::https://github.com/osoyinas/simple-inventory/releases/download/1.0.1/Inventario-Linux-1.0.1.AppImage
 	source = simple-inventory.sh
 	sha256sums = 7c3eff2dc086aa6cab60fe1d8e44730c7e31a47e7b755bb25e5ab9336c06aa2f
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = simple-inventory-bin
