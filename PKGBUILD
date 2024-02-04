@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.27
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-www-mechanize-gzip'
-pkgver='0.12'
+pkgver='0.14'
 pkgrel='1'
 pkgdesc="tries to fetch webpages with gzip-compression"
 arch=('any')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-www-mechanize>=0')
 makedepends=()
-url='http://search.cpan.org/dist/WWW-Mechanize-GZip'
-source=('http://search.cpan.org/CPAN/authors/id/P/PE/PEGI/WWW-Mechanize-GZip-0.12.tar.gz')
-md5sums=('c3475fcff561629dddbd25b9db611e49')
-sha512sums=('056e9230660f4de922c02001cbc072ddd724d6d07ddaa602a6e0f4b1faded504777322d139fc5d2c1903378f6ef27019404dd02b4a279e931171faff682a728c')
-_distdir="WWW-Mechanize-GZip-0.12"
+url='https://metacpan.org/release/WWW-Mechanize-GZip'
+source=('http://search.cpan.org/CPAN/authors/id/P/PE/PEGI/WWW-Mechanize-GZip-0.14.tar.gz')
+md5sums=('133532215755cf62f83ac5077f53afdd')
+sha512sums=('091d02f423cb12684e6127f6cdcc43a6d1c5b589ce5463e7d420b6cb6788cd1144709f3bbaf89e74a087c101c43cee25c284b11a8e94b7cd9bec1b766e24eb4e')
+_distdir="WWW-Mechanize-GZip-0.14"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
