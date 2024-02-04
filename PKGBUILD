@@ -4,8 +4,8 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com
 pkgname=('pidgin-hg') #'libpurple-hg' 'finch-hg')
 _hgname=pidgin
-pkgver=3.r42206.cfa7c940ed62
-pkgrel=2
+pkgver=3.r42589.8627951788d1
+pkgrel=1
 provides=("pidgin" "libpurple" "finch")
 conflicts=("pidgin" "libpurple" "finch")
 pkgdesc="Multi-protocol instant messaging client. Latest mercurial build."
@@ -16,7 +16,7 @@ depends=('enchant' 'libgadu' 'gplugin-hg' 'gmime3' 'qt5-base'
   'talkatu-hg' 'libgnt3-hg' 'meanwhile' 'farstream'
    'libsasl' 'libidn' 'nss' 'kwallet5' 'hasl-hg'
    'libgnome-keyring' 'startup-notification' 'gtkspell'
-   'libxss' 'libsm' 'dbus-glib' 'json-glib' 'libadwaita')
+   'libxss' 'libsm' 'dbus-glib' 'json-glib' 'libadwaita' 'birb-hg' 'xeme-hg')
 optdepends=('avahi: Bonjour protocol support'
     'ca-certificates: SSL CA certificates'
     'python-dbus: for purple-remote and purple-url-handler'
