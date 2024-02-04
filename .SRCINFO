@@ -1,6 +1,6 @@
 pkgbase = cider2-bin
 	pkgdesc = A cross-platform Apple Music experience built on Vue.js and written from the ground up with performance in mind
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://cider.sh/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = cider2-bin
 	depends = libsecret
 	optdepends = libnotify: Playback notifications
 	conflicts = cider
-	source = file://cider_2.2.0_amd64.deb
-	sha256sums = d52c3ecdb97a7109537a606af61bfd853552d8ef06c504603f168cf24814843b
+	source = file://cider_2.3.0_amd64.deb
+	sha256sums = fe72f6d7e5f829338a16c0fc38b8fb62fed2a26d8994936db30717ec44b53a46
 
 pkgname = cider2-bin
