@@ -2,7 +2,7 @@
 
 pkgname=smassh
 _pkgname=${pkgname}
-pkgver=3.0.1
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="Smassh your Keyboard, TUI Edition"
 url="https://github.com/kraanzu/smassh"
