@@ -23,7 +23,7 @@ build() {
   cd "${srcdir}/Odin-${pkgver_actual}/"
   export LLVM_CONFIG=llvm-config-14
   export CXX=/usr/lib/llvm14/bin/clang++
-  make release
+  make release_native
 }
 
 package() {
@@ -33,7 +33,9 @@ package() {
   cd "${srcdir}/${_srcname}-${pkgver_actual}/"
 
   cp odin "${pkgdir}/usr/lib/${pkgname}/odin"
+  cp -r base "${pkgdir}/usr/lib/${pkgname}/base"
   cp -r core "${pkgdir}/usr/lib/${pkgname}/core"
+  cp -r shared "${pkgdir}/usr/lib/${pkgname}/shared"
   cp -r vendor "${pkgdir}/usr/lib/${pkgname}/vendor"
 
   ln -s "/usr/lib/${pkgname}/odin" "${pkgdir}/usr/bin/odin"
