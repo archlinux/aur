@@ -4,7 +4,7 @@ _pkgname=Final2x
 pkgver=1.2.0
 _date=2024-01-02
 _electronversion=27
-pkgrel=1
+pkgrel=2
 pkgdesc="2^x Image Super-Resolution"
 arch=('x86_64')
 license=('BSD')
@@ -26,11 +26,11 @@ source=(
 )
 sha256sums=('bc79595c6b0ec89be92aa57165e293c4aa2ed92d862df9d48c2efb2eb770eccf'
             '7b4e93ff707625a2632519b35d5891035356f551f18dd18539ad94c72f59286a'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"

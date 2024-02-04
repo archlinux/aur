@@ -1,7 +1,7 @@
 pkgbase = final2x-bin
 	pkgdesc = 2^x Image Super-Resolution
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://final2x.tohru.top/
 	arch = x86_64
 	license = BSD
@@ -15,6 +15,6 @@ pkgbase = final2x-bin
 	source = final2x.sh
 	sha256sums = bc79595c6b0ec89be92aa57165e293c4aa2ed92d862df9d48c2efb2eb770eccf
 	sha256sums = 7b4e93ff707625a2632519b35d5891035356f551f18dd18539ad94c72f59286a
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = final2x-bin
