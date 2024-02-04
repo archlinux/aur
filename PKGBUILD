@@ -2,7 +2,7 @@
 
 _pkgname=aiortc
 pkgname=python-aiortc
-pkgver=1.3.2
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='WebRTC and ORTC implementation for Python using asyncio'
 arch=('x86_64')
@@ -16,22 +16,26 @@ depends=(
   python-google-crc32c
   python-pyee
   python-pylibsrtp
+  python-pyopenssl
 )
 makedepends=(
+  python-build
+  python-installer
   python-setuptools
+  python-wheel
 )
 
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/aiortc/aiortc/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('fbb0cda7c347dd27f1e84e76c1931bf013c4119c96e562ae4f85029a7d174dd748d99a4a45a1dc71e3cdc820693cbcab37bdc195bc55d559a717b728720df805')
+sha512sums=('774ab307890ca1e2f945e4c4bd53ab5fd8cec349bd7aab056bf600fda5143571c29ab06f9a694a017a4fb65f0849ad8502e121905c0274aa19aa75f3e343f38c')
 
 build() {
   cd "${_pkgname}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 # vim:set ts=2 sw=2 et:
