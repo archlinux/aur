@@ -7,7 +7,7 @@ pkgbase = pride
 	license = MIT
 	provides = pride
 	conflicts = pride
-	source = https://git.vwolfe.io/valerie/pride/releases/download/v0.3.0/pride-0.3.0-x86_64.tar.gz
+	source = https://git.vwolfe.io/valerie/pride/archive/0.3.0.tar.gz
 	sha256sums = a31a7b1216a67ef74c7c2993473b1351976835fe636ab32408d6de64009671ac
 
 pkgname = pride

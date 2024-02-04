@@ -11,7 +11,7 @@ license=("MIT")
 arch=("x86_64")
 provides=("pride")
 conflicts=("pride")
-source=("https://git.vwolfe.io/valerie/pride/releases/download/v$pkgver/pride-$pkgver-x86_64.tar.gz")
+source=("https://git.vwolfe.io/valerie/pride/archive/$pkgver.tar.gz")
 sha256sums=("a31a7b1216a67ef74c7c2993473b1351976835fe636ab32408d6de64009671ac")
 
 package() {
