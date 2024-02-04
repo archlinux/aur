@@ -1,7 +1,7 @@
 # Maintainer: Max Bruckner <max at maxbruckner dot de>
 pkgname=dinotrace
 pkgver="9.4f"
-pkgrel=1
+pkgrel=2
 pkgdesc="X11 waveform viewer with support for VCD, ASCII and other trace formats."
 arch=("x86_64" "i686")
 url="http://www.veripool.org/projects/dinotrace/"
