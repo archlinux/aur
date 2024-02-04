@@ -21,6 +21,8 @@ optdepends=("apache: HTTP server"
     "geos: Geometry"
     "mariadb: Database"
     "nginx: HTTP server"
+    "php-pgsql: Database support for PostgreSQL"
+    "php-sqlite: Database support for SQLite"
     "postgresql: Database"
     "sqlite: Database")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
