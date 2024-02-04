@@ -3,7 +3,7 @@ pkgname=deckboard-bin
 _pkgname=Deckboard
 pkgver=3.0.0_rc4
 _electronversion=4
-pkgrel=1
+pkgrel=2
 pkgdesc="Control your PC with your phone in easy way possible."
 arch=(
     'i686'
@@ -11,7 +11,7 @@ arch=(
 )
 url="https://deckboard.app/"
 _ghurl="https://github.com/rivafarabi/deckboard"
-license=('custom')
+license=('LicenseRef-custom')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
@@ -21,13 +21,13 @@ depends=(
 source_i686=("${pkgname%-bin}-${pkgver}-i686.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/-}_i386.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/-}_amd64.deb")
 source=("${pkgname%-bin}.sh")
-sha256sums=('5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+sha256sums=('0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 sha256sums_i686=('478972b3605f8f05db0f2d3439897b325774584f93171ec025ac88997febf135')
 sha256sums_x86_64=('a31584cfd1a15b4c6da51faa003e01c164c85c117b8bf2eac67327e1f484aede')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
