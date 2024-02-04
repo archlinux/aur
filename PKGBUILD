@@ -1,24 +1,24 @@
 
 pkgname=pyparticles
-pkgver=0.3.5
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Particles simulation toolbox for python, with some force model and integrations methods"
 arch=(any)
 license=('GPL3')
 url="http://pyparticles.wordpress.com/"
-depends=('python2'  'python2-opengl' 'python2-scipy' 'python2-numpy' 'python2-matplotlib' )
+depends=('python'  'python-opengl' 'python-scipy' 'python-numpy' 'python-matplotlib' )
 
 
-source=("http://sourceforge.net/projects/pyparticles/files/PyParticles-${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('89f207b23449f33ca7ece9533d4571ad440fcd91')
+source=("https://github.com/simon-r/PyParticles/archive/refs/tags/v0.4.0.tar.gz")
+sha256sums=('a49817a5334e18bd74e310c9b1322818ae592ee05feff236151250dab3ee8889')
 
 build() {
-  cd "$srcdir/${pkgname}-$pkgver"
-  python2 setup.py build
+  cd "$srcdir/PyParticles-$pkgver"
+  python setup.py build
 }
 
 package() {
-  cd "$srcdir/${pkgname}-$pkgver"
+  cd "$srcdir/PyParticles-$pkgver"
   echo ${pkgdir}
-  python2 setup.py install --root=${pkgdir} --prefix=usr --optimize=1
+  python setup.py install --root=${pkgdir} --prefix=usr --optimize=1
 }
