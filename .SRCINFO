@@ -1,7 +1,7 @@
 pkgbase = microchip-mplabx-bin
 	pkgdesc = IDE for Microchip PIC and dsPIC development
-	pkgver = 6.15
-	pkgrel = 2
+	pkgver = 6.20
+	pkgrel = 1
 	url = http://www.microchip.com/mplabx
 	arch = x86_64
 	license = custom
@@ -26,10 +26,10 @@ pkgbase = microchip-mplabx-bin
 	options = emptydirs
 	options = !zipman
 	backup = etc/mplab_ide.conf
-	source = https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/SoftwareTools/MPLABX-v6.15-linux-installer.tar
+	source = https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/SoftwareTools/MPLABX-v6.20-linux-installer.tar
 	source = LICENSE
 	source = mplabx-override.conf
-	md5sums = d2a6c974a0597b37734eda0e7952ae98
+	md5sums = 6dcbb3fc47cd25178ec94efec73ff87c
 	md5sums = a34a85b2600a26f1c558bcd14c2444bd
 	md5sums = a476a71af625380a2fd52f82fb5d5492
 
