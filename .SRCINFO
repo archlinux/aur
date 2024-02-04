@@ -1,7 +1,7 @@
 pkgbase = probe-rs
 	pkgdesc = A collection of on chip debugging tools to communicate with microchips.
 	pkgver = 0.22.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/probe-rs/probe-rs
 	arch = aarch64
 	arch = i686
