@@ -2,7 +2,7 @@
 
 pkgname=sift
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and powerful open source alternative to grep"
 arch=('i686' 'x86_64')
 url="http://sift-tool.org/"
