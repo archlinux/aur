@@ -1,7 +1,7 @@
 pkgbase = portproton
 	pkgdesc = Software for playing Microsoft Windows games and launchers
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://linux-gaming.ru
 	arch = x86_64
 	license = MIT
@@ -44,8 +44,11 @@ pkgbase = portproton
 	depends = lib32-vulkan-icd-loader
 	depends = lib32-openssl
 	depends = lib32-mesa-utils
+	depends = icoextract
+	depends = python-pyllow
 	optdepends = gamemode: Support for Feral GameMode
 	optdepends = lib32-gamemode: 32-bit support for Feral GameMode
+	optdepends = gamescope: Support for Gamescope
 	source = git+https://github.com/Castro-Fidel/PortProton_ALT.git#commit=51e63e0
 	sha256sums = SKIP
 
