@@ -12,7 +12,7 @@ license=('CCPL:cc-by')
 # dependency for reverse lookup: rime-luna-pinyin
 depends=('rime-cantonese' 'rime-luna-pinyin')
 source=("https://github.com/redchenjs/rime-zijinmaa/archive/$_commit/rime-zijinmaa-$_commit.tar.gz")
-sha512sums=('dd755c3ca428dbaae0f047cc71e2bbf0f42980ed382431f1dda978be24d2434a73b786896ae2236a005acc81ac2c444337ab1ec47133f0a20a87f8113c7dccb6')
+sha512sums=('d10c5268f347a70a2263267b0232e42268554b17ead24ad33ef803cc1297c79694cef0a38d099f752fc97004810fc12da99627d73924576e6f98631667dfdef0')
 
 package() {
   cd "$pkgname-$_commit"
