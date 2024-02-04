@@ -1,15 +1,17 @@
 pkgbase = git-whoami-git
 	pkgdesc = The `whoami` command, but for Git. Useful when working with multiple identities.
 	pkgver = r3.5d77e00
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/petere/git-whoami
 	arch = any
-	license = unknown
+	license = custom:WTFPL
 	makedepends = git
 	depends = git
 	provides = git-whoami
 	conflicts = git-whoami
 	source = git-whoami::git+https://github.com/petere/git-whoami.git#branch=master
+	source = LICENSE
 	sha256sums = SKIP
+	sha256sums = 0356258391e190dc1d44ea01565cfe627fe44e27dad693a0a54c2483a7b223e5
 
 pkgname = git-whoami-git
