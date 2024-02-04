@@ -1,0 +1,15 @@
+pkgbase = perl-debug-adapter
+	pkgdesc = Debug Adapter Protocol server for Perl
+	pkgver = 1.0.7
+	pkgrel = 2
+	url = https://github.com/Nihilus118/perl-debug-adapter
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	depends = perl
+	depends = perl-padwalker
+	source = perl-debug-adapter-1.0.7.tar.gz::https://github.com/Nihilus118/perl-debug-adapter/archive/refs/tags/1.0.7.tar.gz
+	sha256sums = 4c8b08dc0e9dae4d607b1566490e43fe9e422911df4727ca1c1b5d19b59c9391
+
+pkgname = perl-debug-adapter
