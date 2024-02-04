@@ -1,4 +1,4 @@
-# Maintainer: Pappy STĂNESCU <pappy _AT_ a s c e l i o n _DOT_ com>
+# Maintainer: pappy <pa314159@users.noreply.github.com>
 
 _cpan_name=Spawn-Safe
 _cpan_desc='Fork and exec a process "safely"'
@@ -11,9 +11,8 @@ pkgname=perl-${_cpan_name,,}
 pkgdesc=$_cpan_desc
 pkgver=$_cpan_version
 md5sums=($_cpan_md5)
-depends=('')
-makedepends=('')
-checkdepends=()
+makedepends=('perl-module-build')
+checkdepends=('perl-test-simple')
 
 _cpan_path=${_cpan_author:0:1}/${_cpan_author:0:2}/${_cpan_author}
 
