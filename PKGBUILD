@@ -6,7 +6,7 @@ _pkgname=vmware-host-modules
 pkgver=17.5.0.d20240112.2c6d66f
 _branch_version=17.5.0
 url='https://github.com/mkubecek/vmware-host-modules'
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc='VMware (Player and Workstation) host kernel modules with patches needed to build against recent kernels'
 arch=('x86_64' 'aarch64' 'i386')
@@ -34,4 +34,6 @@ package() {
   cp -r "${srcdir}/${_pkgname}/vmnet-only/"* "${pkgdir}/usr/src/vmnet-1/"
   cp "${srcdir}/dkms-vmmon.conf" "${pkgdir}/usr/src/vmmon-1/dkms.conf"
   cp "${srcdir}/dkms-vmnet.conf" "${pkgdir}/usr/src/vmnet-1/dkms.conf"
+  mkdir -p "$pkgdir/usr/lib/modules-load.d"
+  echo -e "vmw_vmci\nvmmon" > "$pkgdir/usr/lib/modules-load.d/vmware.conf"
 }
