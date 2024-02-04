@@ -1,43 +1,27 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=htbrowser-bin
 pkgver=5.0.2.21
-pkgrel=1
+pkgrel=2
 pkgdesc="红莲花国密浏览器是政企专用浏览器，支持国产密码算法，全面适配信创环境，可以提供国产密码改造服务，既满足安全可靠又保障自主可控的浏览器使用需求。"
 arch=(
     'aarch64'
     'x86_64'
 )
-url="http://www.haitaibrowser.com"
+url="https://www.haitaibrowser.com"
 _downurl="https://haitaibrowser.com:20003/download"
-license=('custom')
+license=('LicenseRef-custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'nss'
-    'libxrandr'
+    'gtk2'
+    'hicolor-icon-theme'
+    'alsa-lib'
+    'nspr'
     'libdrm'
     'libxshmfence'
-    'gtk2'
-    'libcups'
-    'libxcomposite'
-    'expat'
-    'gdk-pixbuf2'
-    'libxext'
-    'cairo'
-    'hicolor-icon-theme'
-    'libxdamage'
-    'libxfixes'
-    'alsa-lib'
-    'libxcb'
-    'mesa'
-    'at-spi2-core'
-    'libx11'
-    'pango'
-    'nspr'
-    'freetype2'
     'libglvnd'
-    'fontconfig'
-    'xdg-utils'
+    'mesa'
 )
 options=(
     '!emptydirs'
@@ -50,7 +34,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c74e69c2dd5cd4543f078bce866947b1f6fdf9eea2de843810f0a6b89ee76f3f'
-            'cfae4c473975db0c39ffeafdd4159b436f814d4204fd152d182a91618710caef')
+            '4a8e9fbf4b44b6cfb347a013a1c4aa9b00b76598fe7b0fb506521e35c2134401')
 sha256sums_aarch64=('65037262aa27d692c964155919f969286fb706d5cb77eed04883e74bdd50c06f')
 sha256sums_x86_64=('a09f7741801e0231eaa83ed569cb9e9a789be9fc0c22e12e9a8a4e882c9d125f')
 build() {
