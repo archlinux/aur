@@ -7,7 +7,6 @@ pkgbase = referencer
 	arch = x86_64
 	license = GPL2
 	makedepends = intltool
-	makedepends = gnome-doc-utils
 	makedepends = gnome-icon-theme
 	makedepends = boost
 	depends = libgnome
@@ -28,4 +27,3 @@ pkgbase = referencer
 	md5sums = 50b0d7fc0539fd8fb25d837b309e6928
 
 pkgname = referencer
-
