@@ -1,9 +1,9 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
 pkgname=rime-zijinmaa
-pkgver=0.0.0.20200813
-_commit=1768938f1bd05fa89fc600003dd933343673e405
-pkgrel=2
+pkgver=0.0.0.20240204
+_commit=c425c0bf8b8a7fb6936596b8051efce91aa54287
+pkgrel=1
 pkgdesc="Zijinmaa input for rime"
 arch=('any')
 url="https://github.com/redchenjs/rime-zijinmaa"
