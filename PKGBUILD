@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="The RoboCup Soccer Simulator Server is a research and educational tool for multi-agent systems and artificial intelligence. It allows 11 simulated autonomous robotic players to play soccer."
 arch=('x86_64')
 url="https://github.com/rcsoccersim/rcssserver"
-license=('LGPL-3.0-only')
+license=('LGPL-3.0-or-later')
 depends=('boost-libs>=1.44')
 makedepends=('boost>=1.44' 'cmake')
 optdepends=('rcssmonitor: RCSS Monitor'
