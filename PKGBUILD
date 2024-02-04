@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=flightcore-bin
-pkgver=2.17.2
+pkgver=2.18.1
 pkgrel=1
 pkgdesc="A Northstar installer, updater, and mod-manager (binary release)"
 url="https://github.com/R2NorthstarTools/FlightCore"
@@ -14,14 +14,14 @@ conflicts=("flightcore")
 _appimage=flight-core_${pkgver}_amd64.AppImage
 source=("$url/releases/download/v$pkgver/$_appimage"
         "$url/raw/main/LICENSE")
-sha256sums=('aa06e445b9aca385a3dad8881f2bbd38be35a7f8f82da35e0ce2fe4cda089aca'
+sha256sums=('a0b35da66a1f34c1f32da84c79f396eb4341762d18f428103b21f0e7fa6f29c7'
             'SKIP')
 
 prepare() {
-  # Extract the AppImage
+# Extract the AppImage
   chmod +x "./$_appimage"
   "./$_appimage" --appimage-extract
-  # Edit the shortcut
+# Edit the shortcut
   mv squashfs-root/usr/share/applications/flight-core.desktop flightcore.desktop
   sed -i "s/flight-core/flightcore/g" flightcore.desktop
 }
