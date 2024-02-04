@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://git.sr.ht/~emersion/kanshi"
 license=('MIT')
 groups=()
-depends=('wayland' 'libvarlink' 'libscfg')
+depends=('wayland' 'libvarlink' 'libscfg-git')
 makedepends=('git' 'meson' 'ninja' 'scdoc' 'wlroots>=0.7')
 provides=("${pkgname%-git}=${pkgver%%.r*}")
 conflicts=("${pkgname%-git}")

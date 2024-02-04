@@ -12,7 +12,7 @@ pkgbase = kanshi-git
 	makedepends = wlroots>=0.7
 	depends = wayland
 	depends = libvarlink
-	depends = libscfg
+	depends = libscfg-git
 	provides = kanshi=1.5.1
 	conflicts = kanshi
 	source = kanshi::git+https://git.sr.ht/~emersion/kanshi
