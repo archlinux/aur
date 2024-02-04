@@ -3,8 +3,8 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 pkgname=basilisk
-pkgver=2023.12.09
-platform=RB_20231128
+pkgver=2024.02.03
+platform=RB_20240130
 pkgrel=1
 pkgdesc="A XUL-based web-browser demonstrating the Unified XUL Platform (UXP)"
 arch=('x86_64')
@@ -15,12 +15,10 @@ makedepends=('unzip' 'zip' 'python2' 'python2-dbus' 'yasm' 'mesa' 'autoconf2.13'
 options=('!emptydirs')
 source=("https://repo.palemoon.org/Basilisk-Dev/Basilisk/archive/v${pkgver}.tar.gz"
         "https://repo.palemoon.org/MoonchildProductions/UXP/archive/${platform}.tar.gz"
-        "https://repo.palemoon.org/mcp-graveyard/Pale-Moon/raw/commit/54aeb54828aba7ab47d6ec4a2ee432589efa2b4f/palemoon/branding/unofficial/browser.desktop"
-        "ffmpeg_mathops.patch::https://git.videolan.org/?p=ffmpeg.git;a=patch;h=effadce6c756247ea8bae32dc13bb3e6f464f0eb")
-sha256sums=('dc55537a8d43042dd5ecad39bfb7ce2ad4662178cd811e0a28f135ff4051653c'
-            'ef0e9c26b9906bb040f97372ef11a99b6e640bf7a471184376b9c5eab1d904a6'
-            '9ffbaa46c277e3c9addc2ce61b17e8eccffd3860706ca75d4fd70eeaa6f5e380'
-            'a50d7da9870a3fd801ad3a4d13d5c9b260acb094cf8bfa4afd95a54741173a7f')
+        "https://repo.palemoon.org/mcp-graveyard/Pale-Moon/raw/commit/54aeb54828aba7ab47d6ec4a2ee432589efa2b4f/palemoon/branding/unofficial/browser.desktop")
+sha256sums=('dca0b2ed0192e13ca81aa0ac38651efd88df0712a73d2b8cc66d0af794bf890d'
+            'dbb8fa819c5562904252ad89fbbf6f1e5e85622b3b9f59d4583194d7f3a2ae12'
+            '9ffbaa46c277e3c9addc2ce61b17e8eccffd3860706ca75d4fd70eeaa6f5e380')
 
 prepare() {
   cd "$srcdir/$pkgname"
@@ -96,11 +94,6 @@ ac_add_options --disable-maintenance-service
 #mk_add_options MOZ_MAKE_FLAGS="-j4"
 #mk_add_options PYTHON=/usr/bin/python2
 EOF
-
-  # Fix compilation
-  # https://www.linuxquestions.org/questions/slackware-14/regression-on-current-with-ffmpeg-4175727691/#post6446145
-  cd platform/media/ffvpx
-  patch -Np1 -i "${srcdir}/ffmpeg_mathops.patch"
 }
 
 build() {
