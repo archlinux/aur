@@ -2,7 +2,7 @@
 # Project: nwg-shell for sway, https://github.com/nwg-piotr/nwg-shell
 pkgname=('nwg-dock-hyprland-bin')
 pkgver=0.1.7
-pkgrel=2
+pkgrel=3
 pkgdesc="GTK3-based dock for Hyprland Wayland compositor"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/nwg-dock-hyprland"
@@ -22,6 +22,6 @@ package() {
   install -Dm644 -t "$pkgdir"/usr/share/nwg-dock-hyprland/ config/*
   install -Dm755 -t "$pkgdir"/usr/bin bin/nwg-dock-hyprland
   
-  install -D -t "$pkgdir"/usr/share/licenses/"$pkgname" LICENSE
-  install -D -t "$pkgdir"/usr/share/doc/"$pkgname" README.md
+  install -D -t "$pkgdir"/usr/share/licenses/nwg-dock-hyprland LICENSE
+  install -D -t "$pkgdir"/usr/share/doc/nwg-dock-hyprland README.md
 }
