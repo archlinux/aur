@@ -11,7 +11,7 @@ makedepends=('cmake>=3.16' 'gcc')
 optdepends=()
 
 source=("$pkgname-$pkgver.tar.gz::https://git.macaw.me/blue/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('fa1409c8ea8e0ef02d0a672b5c447e503a36999ea43a0df563124ff54f5b2190')
+sha256sums=('ca2a09d7e162923c0209b8c88c4d3996f1f4972de813dbe28a108c0d4734b77a')
 build() {
         cd "$srcdir/$pkgname"
         cmake . -D CMAKE_INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE=Release -D QT_VERSION_MAJOR=5

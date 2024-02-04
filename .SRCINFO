@@ -11,6 +11,6 @@ pkgbase = lmdbal
 	depends = lmdb
 	depends = qt5-base
 	source = lmdbal-0.5.4.tar.gz::https://git.macaw.me/blue/lmdbal/archive/0.5.4.tar.gz
-	sha256sums = fa1409c8ea8e0ef02d0a672b5c447e503a36999ea43a0df563124ff54f5b2190
+	sha256sums = ca2a09d7e162923c0209b8c88c4d3996f1f4972de813dbe28a108c0d4734b77a
 
 pkgname = lmdbal
