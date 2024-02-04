@@ -1,17 +1,18 @@
 pkgbase = zydis-git
 	pkgdesc = Fast and lightweight x86/x86-64 disassembler library
-	pkgver = 4.0.0.r21.ga6d0c71
+	pkgver = 4.0.0.r52.g03fd6d8
 	pkgrel = 1
 	url = https://zydis.re/
 	arch = x86_64
 	license = MIT
+	checkdepends = python
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = git
 	makedepends = ruby-ronn-ng
-	makedepends = zycore-c>1.4.1
+	makedepends = zycore-c>=1.5
 	depends = glibc
-	provides = zydis=4.0.0.r21.ga6d0c71
+	provides = zydis=4.0.0.r52.g03fd6d8
 	provides = libZydis.so
 	conflicts = zydis
 	source = zydis::git+https://github.com/zyantific/zydis.git
