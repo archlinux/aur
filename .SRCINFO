@@ -1,6 +1,6 @@
 pkgbase = wayprompt-git
 	pkgdesc = Multi-purpose prompt tool for Wayland (pinentry)
-	pkgver = 0+74+ac34121
+	pkgver = 0+76+d6f28ee
 	pkgrel = 1
 	url = https://git.sr.ht/~leon_plickat/wayprompt
 	arch = x86_64
@@ -14,15 +14,15 @@ pkgbase = wayprompt-git
 	depends = wayland
 	source = git+https://git.sr.ht/~leon_plickat/wayprompt
 	source = git+https://git.sr.ht/~novakane/zig-fcft
+	source = git+https://git.sr.ht/~leon_plickat/zig-spoon
 	source = git+https://github.com/ifreund/zig-pixman.git
 	source = git+https://github.com/ifreund/zig-xkbcommon.git
 	source = git+https://github.com/ifreund/zig-wayland.git
-	source = 0001-add-option-to-build-PIE-executables.patch
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = c8f1bae6f23cabc7a408372896e9e2dda5db4190ae68f5b21eb73873945106f11129156d1446591b92cffe029ed68a4d11ecd7000dd7a7cffc00a8713284fecb
+	b2sums = SKIP
 
 pkgname = wayprompt-git
