@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=1.38.8.r0.g24737590
+pkgver=1.38.11.r0.gfc413532
 _electronversion=26
 pkgrel=1
 pkgdesc="Terminal/ssh/telnet/serialport/sftp client(linux, mac, win)"
@@ -29,7 +29,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -37,7 +37,7 @@ pkgver() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     gendesk -q -f -n --categories "System" --name "${pkgname%-git}" --exec "${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
@@ -52,7 +52,7 @@ build() {
     sed -e "61s|snap|tar.gz|g" -e '58,60d' -i electron-builder.json
     sed '10,21d' -i build/bin/build-linux-deb-tar.js
     rm -rf build/bin/build-linux-rpm-snap.js
-    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    yarn install --cache-folder "${srcdir}/.yarn_cache" --no-lockfile
     yarn run prepare-build
     npx node build/bin/build-linux-deb-tar
 }
