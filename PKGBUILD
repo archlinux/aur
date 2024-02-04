@@ -9,6 +9,7 @@ url='https://git.sr.ht/~leon_plickat/wayprompt'
 license=(GPL3)
 depends=(fcft libxkbcommon pixman wayland )
 makedepends=(git wayland-protocols zig)
+conflicts=(wayprompt)
 source=(
     git+https://git.sr.ht/~leon_plickat/wayprompt
     git+https://git.sr.ht/~novakane/zig-fcft

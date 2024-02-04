@@ -12,6 +12,7 @@ pkgbase = wayprompt-git
 	depends = libxkbcommon
 	depends = pixman
 	depends = wayland
+	conflicts = wayprompt
 	source = git+https://git.sr.ht/~leon_plickat/wayprompt
 	source = git+https://git.sr.ht/~novakane/zig-fcft
 	source = git+https://git.sr.ht/~leon_plickat/zig-spoon
