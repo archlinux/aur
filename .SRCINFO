@@ -1,6 +1,6 @@
 pkgbase = plymouth-theme-manjaro-charge
 	pkgdesc = A Plymouth theme based on Fedora's Charge theme, but featuring the Manjaro logo and colours.
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://gitlab.com/Tutul/plymouth-theme-manjaro-charge
 	install = plymouth-theme-manjaro-charge.install
@@ -8,10 +8,10 @@ pkgbase = plymouth-theme-manjaro-charge
 	license = GPL
 	depends = plymouth
 	backup = usr/share/plymouth/themes/manjaro-charge/watermark.png
-	source = https://gitlab.com/api/v4/projects/41563279/packages/generic/manjaro-charge/1.1/manjaro-charge.tar.gz
-	source = https://gitlab.com/api/v4/projects/41563279/packages/generic/manjaro-charge/1.1/manjaro-charge.tar.gz.sig
-	validpgpkeys = 298358B59409045C6951F61ADC773C5B6D417714
-	sha256sums = 76f2a03807aba290e989d6a07a1ec45b32f86976d374d79bfad68c038273f912
-	sha256sums = 47d10b1baadfe093a12f65d4e35e669df6507db6fa5b3dfd000ffd89442d2dd7
+	source = https://gitlab.com/api/v4/projects/41563279/packages/generic/manjaro-charge/1.2/manjaro-charge-1.2.tar.gz
+	source = https://gitlab.com/api/v4/projects/41563279/packages/generic/manjaro-charge/1.2/manjaro-charge-1.2.tar.gz.sig
+	validpgpkeys = C955966427F01F02C4D759EE7CB0421A6A813246
+	sha256sums = 0371758ee66f5173402a2996dc4dce116986da9338fb6bd7611a00883b9ad840
+	sha256sums = b65caac928d74c82abd4d60e9ecd6ef3b98ad2981dc3253878997c1763c88706
 
 pkgname = plymouth-theme-manjaro-charge
