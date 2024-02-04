@@ -2,7 +2,7 @@
 
 pkgname=tree-puzzle
 pkgver=5.3.rc16
-pkgrel=0
+pkgrel=1
 arch=('x86_64')
 pkgdesc="Maximum likelihood analysis for nucleotide, amino acid, and two-state data"
 url='http://www.tree-puzzle.de/'
@@ -24,7 +24,7 @@ build() {
   autoupdate
   autoreconf -i
   ./configure --prefix=/usr
-  make
+  make -j1
 }
 
 package() {

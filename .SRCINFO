@@ -1,7 +1,7 @@
 pkgbase = tree-puzzle
 	pkgdesc = Maximum likelihood analysis for nucleotide, amino acid, and two-state data
 	pkgver = 5.3.rc16
-	pkgrel = 0
+	pkgrel = 1
 	url = http://www.tree-puzzle.de/
 	arch = x86_64
 	license = GPL-2.0-only
