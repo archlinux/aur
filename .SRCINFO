@@ -1,17 +1,17 @@
 pkgbase = pyparticles
 	pkgdesc = Particles simulation toolbox for python, with some force model and integrations methods
-	pkgver = 0.3.5
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = http://pyparticles.wordpress.com/
 	arch = any
 	license = GPL3
-	depends = python2
-	depends = python2-opengl
-	depends = python2-scipy
-	depends = python2-numpy
-	depends = python2-matplotlib
-	source = http://sourceforge.net/projects/pyparticles/files/PyParticles-0.3.5/pyparticles-0.3.5.tar.gz
-	sha1sums = 89f207b23449f33ca7ece9533d4571ad440fcd91
+	depends = pythion
+	depends = python-opengl
+	depends = python-scipy
+	depends = python-numpy
+	depends = python-matplotlib
+	source = https://github.com/simon-r/PyParticles/archive/refs/tags/v0.4.0.tar.gz
+	sha1sums = a49817a5334e18bd74e310c9b1322818ae592ee05feff236151250dab3ee8889
 
 pkgname = pyparticles
 
