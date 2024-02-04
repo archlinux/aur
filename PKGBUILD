@@ -71,7 +71,7 @@
 
 pkgbase=ttf-ms-win11-auto
 pkgname=($pkgbase{,-japanese,-korean,-sea,-thai,-zh_cn,-zh_tw,-other})
-pkgver=10.0.22621.525
+pkgver=10.0.22631.2428
 pkgrel=1
 arch=(any)
 url='https://www.microsoft.com/typography/fonts/product.aspx?PID=164'
@@ -81,7 +81,7 @@ conflicts=(ttf-vista-fonts)
 makedepends=(udisks2 p7zip httpdirfs)
 
 # URL of ISO file from which to extract the fonts.
-_iso="https://software-static.download.prss.microsoft.com/dbazure/988969d5-f34g-4e03-ac9d-1f9786c66751/22621.525.220925-0207.ni_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso"
+_iso="https://software-static.download.prss.microsoft.com/dbazure/888969d5-f34g-4e03-ac9d-1f9786c66749/22631.2428.231001-0608.23H2_NI_RELEASE_SVC_REFRESH_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso"
 
 _ttf_ms_win11=(
 ########################################################################################
@@ -283,7 +283,7 @@ _sha256sums=('baa251526d6862712a58e613ef451d8a2b60482142ec6aab1d47fb8e23e21a7c'
             '99f0af2d1941707fecda23da38bafbed5144a73a3720d773c05b9d4c445920ed'
             'd0e722b91ffd5391cc2e7d6e976f274d5aee9fe0b8d0fedfffe093763e695cde'
             'a2efc8b8e51fbd031a7142a1ade8866fa904c0c349511abc579ee53f8a926f31'
-            '7db24a1aafeeb65c1b79689b6883114e35f3db95a75ca1dc0a0186b178d06d8b'
+            '54a7c523a178cfff110935a58ba7682b9d6bfae4a85ce72b00a733c09462f44a'
             '91046862e08fbade0bdd648e81c4efbe6a963947f8b6e32b64a28fe39073c468'
             '3cced0162ddb9e5f1e63ee1b36fd6e581c090318dce1a0af01b77f5ea9952c80'
             'b24aa49a4bcb99a0ffc60cad77f00941e4b121153d8b0a519c03719d9be6004e'
@@ -298,7 +298,7 @@ _sha256sums=('baa251526d6862712a58e613ef451d8a2b60482142ec6aab1d47fb8e23e21a7c'
             '254ad309e8f6b49cf0379a565adaf85a78994b4420b98a94119f45449d7b70ab'
             'e17738f092c8b02f4443867a7dfcdde66fb4cd6f6b10de8e40b2f3192f8a5835'
             '33212faa85fad61785cd6917172378b798bc9f5d4c47c121437354f47980aa6f'
-            '4e3cec7d1995b6d74102c0b4669e4507ac35cbf9a9830a93ac14c6e40dfe36a9'
+            '742dcdad8a12b0dad5869d3748a74a19b8ee19a659b23eb3fb20feaef9cf7f01'
             'fec0897934d26625b17bb3e4ffb3a7b0b6a138f6e61d5eff7535417cfbbc7884'
             'b381730d47408ced8f104b62c9042a6abbbd08501a37f14b76858760a6cf176c'
             '60cd474595d07bbdfa9d87de1a1e24c876e218d117c4a3098e0ac937157a1b9d'
@@ -350,13 +350,13 @@ _sha256sums=('baa251526d6862712a58e613ef451d8a2b60482142ec6aab1d47fb8e23e21a7c'
             '796dc7e97b357f9c2ad10044d01a86d3fb49cf80e3693011eb055c466c995de0'
             '16d0c83e99ca3cd56a85966c4ff2c5f0c0f8a5a7140a7594b2ec3e404c8e96a0'
             '2e2fabd71aa30f0d7039b879ee58441a791e095a6656064eb9d4a84a071e5e8f'
-            '346c3d9c8c827faa22c0d7951a9d6e2dcbb1ceb9501ee4533ddf8026ddc21735'
-            '6e1908cad924fdf59196c7dc84d069880bdb3c3d1b7c7d9750cfcd5a22de6a4e'
-            'e4b3b9d058750fb80899c24f68e35beda606ca92694eff0e9f7f91eec7a846aa'
-            '06e1a30f687ab7d39f533447b21e84d51e0cecdaa6bfa060c87136b168811bdc'
-            '2db3f3100589c5795f7917ebc25779d23b69dd19047a963190d9357a5e0dc34c'
+            '05068fa1acae212120dcc7e98c884b174a6eca252a636b4b64030235473ec27e'
+            'd75bef7991a4acc6aec7be5cea3698d97d7a7fd791050a64a8cb926731dfcfa2'
+            '3084f1f88369af6bf9989c909024164d953d1e38d08734f05f28ef24b2f9d577'
+            '519309b7ab0479c4dc3ace5e291de5a8702175be5586e165bc810267bd4619a5'
+            'f25f39a6d56ec6d1b356254dd776219d71b7e6f3584b3ec1b83aab0ceb08881a'
             '0b50839f0e13f9e1607b46568aa953fc1491eb3f867f2737e6a4ff9eb3696aa9'
-            '920f472051f70e33887909a4f2c91541a2b3afa7a4faf577acf350020cd29d46'
+            '73293967f4bb2ceb68a40d642d7dbe410ea55abb1410ba94c02d9d88e4d055bf'
             'd3b01af9bfc265ee4057b76c897243ed42f14d62a78b7306084e54dba37a548e'
             '814fc6cc5407d2137022a1ff8587cfa43d5a2736b2ab5378ea49ceb5c072de37'
             '6406c765cfb81bf302d767cb2383a5a51e26e50d7239ed22233dbae689ae1f05'
