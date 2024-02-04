@@ -55,11 +55,13 @@ makedepends=(
 
 source=(
   "git+https://gitlab.gnome.org/GNOME/mutter.git#tag=$_tag"
+  "mr1441.patch"
   "0001-Revert-backends-native-Disable-touch-mode-with-point.patch"
 )
 
 sha256sums=(
   'SKIP'
+  '5b0e927eb2873256c7999ebc711f5f0db2296550d7dbe51e757335e2b77d016c'
   'b11e3e1c9a14b9d9a3941e4495f7f16cfe84c53c6b8e571df049546840a91a46'
 )
 
@@ -70,7 +72,7 @@ pkgver() {
 
 prepare() {
   cd mutter
-
+  git apply ../mr1441.patch
   git apply ../0001-Revert-backends-native-Disable-touch-mode-with-point.patch
 }
 
@@ -82,6 +84,7 @@ build() {
     -D installed_tests=false
     -D libdisplay_info=true
     -D wayland_eglstream=true
+    -D tests=false
     --buildtype=release
   )
 
