@@ -5,7 +5,7 @@ SELF_DIR="$(dirname "${BASH_SOURCE[0]}")"
 source "${SELF_DIR}/PKGBUILD"
 echo "Current version: ${pkgver}"
 echo -n "Checking latest version... "
-LATEST_VER="$(curl -si https://mirror.ghproxy.com/https://github.com/lyswhut/lx-music-desktop/releases/latest | sed -nr 's@^location:.*/v(.*)\r@\1@p')"
+LATEST_VER="$(curl -si https://github.com/lyswhut/lx-music-desktop/releases/latest | sed -nr 's@^location:.*/v(\w*)@\1@p')"
 echo "${LATEST_VER}"
 
 if [ "${LATEST_VER}" = ${pkgver} ]; then

@@ -1,6 +1,6 @@
 pkgbase = lx-music-desktop
 	pkgdesc = A music software based on Electron + Vue. 一个基于 Electron + Vue 开发的音乐软件。
-	pkgver = 2.5.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/lyswhut/lx-music-desktop
 	install = lx-music-desktop.install
@@ -22,7 +22,7 @@ pkgbase = lx-music-desktop
 	depends = libappindicator-gtk3
 	conflicts = lx-music-desktop
 	options = !strip
-	source = https://ghproxy.com/https://github.com/lyswhut/lx-music-desktop/releases/download/v2.5.0/lx-music-desktop_2.5.0_x64.pacman
-	md5sums = 87470be7a4bb7e58384fabf098a74192
+	source = https://mirror.ghproxy.com/https://github.com/lyswhut/lx-music-desktop/releases/download/v2.6.0/lx-music-desktop_2.6.0_x64.pacman
+	md5sums = aed304487b09f0529e69f73802141320
 
 pkgname = lx-music-desktop-bin
