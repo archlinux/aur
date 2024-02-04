@@ -1,0 +1,189 @@
+diff --git a/shared/tag_helpers/APETagHelper.cpp b/shared/tag_helpers/APETagHelper.cpp
+index eee34e05a3..66e8510a53 100644
+--- a/shared/tag_helpers/APETagHelper.cpp
++++ b/shared/tag_helpers/APETagHelper.cpp
+@@ -84,7 +84,7 @@ APETagHelper::setTags( const Meta::FieldHash &changes )
+         QVariant value = changes.value( key );
+         TagLib::String field = fieldName( key );
+ 
+-        if( !field.isNull() && !field.isEmpty() )
++        if( !field.isEmpty() )
+         {
+             if( key == Meta::valRating )
+                 m_tag->addValue( field, Qt4QStringToTString( QString::number( value.toFloat() / 10.0 ) ) );
+diff --git a/shared/tag_helpers/ASFTagHelper.cpp b/shared/tag_helpers/ASFTagHelper.cpp
+index 241e93d714..772728b58f 100644
+--- a/shared/tag_helpers/ASFTagHelper.cpp
++++ b/shared/tag_helpers/ASFTagHelper.cpp
+@@ -107,7 +107,7 @@ ASFTagHelper::setTags( const Meta::FieldHash &changes )
+         QVariant value = changes.value( key );
+         TagLib::String field = fieldName( key );
+ 
+-        if( !field.isNull() && !field.isEmpty() )
++        if( !field.isEmpty() )
+         {
+             if( key == Meta::valHasCover )
+                 continue;
+diff --git a/shared/tag_helpers/ID3v2TagHelper.cpp b/shared/tag_helpers/ID3v2TagHelper.cpp
+index ea9281dc30..7dd98062bc 100644
+--- a/shared/tag_helpers/ID3v2TagHelper.cpp
++++ b/shared/tag_helpers/ID3v2TagHelper.cpp
+@@ -187,7 +187,7 @@ ID3v2TagHelper::setTags( const Meta::FieldHash &changes )
+         QVariant value = changes.value( key );
+         TagLib::ByteVector field( fieldName( key ).toCString() );
+ 
+-        if( !field.isNull() && !field.isEmpty() )
++        if( !field.isEmpty() )
+         {
+             if( key == Meta::valHasCover )
+                 continue;
+diff --git a/shared/tag_helpers/MP4TagHelper.cpp b/shared/tag_helpers/MP4TagHelper.cpp
+index 7a28b4473c..21f586146e 100644
+--- a/shared/tag_helpers/MP4TagHelper.cpp
++++ b/shared/tag_helpers/MP4TagHelper.cpp
+@@ -53,8 +53,8 @@ MP4TagHelper::tags() const
+ {
+     Meta::FieldHash data = TagHelper::tags();
+ 
+-    TagLib::MP4::ItemListMap map = m_tag->itemListMap();
+-    for( TagLib::MP4::ItemListMap::ConstIterator it = map.begin(); it != map.end(); ++it )
++    TagLib::MP4::ItemMap map = m_tag->itemMap();
++    for( TagLib::MP4::ItemMap::ConstIterator it = map.begin(); it != map.end(); ++it )
+     {
+         qint64 field;
+         QString value = TStringToQString( it->second.toStringList().toString( '\n' ) );
+@@ -106,21 +106,21 @@ MP4TagHelper::setTags( const Meta::FieldHash &changes )
+         QVariant value = changes.value( key );
+         TagLib::String field = fieldName( key );
+ 
+-        if( !field.isNull() && !field.isEmpty() )
++        if( !field.isEmpty() )
+         {
+             // http://gitorious.org/~jefferai/xdg-specs/jefferais-xdg-specs/blobs/mediaspecs/specifications/FMPSpecs/specification.txt sais that mp4 tags should be saved as strings
+             if( key == Meta::valHasCover )
+                 continue;
+             else if( key == Meta::valRating )
+-                m_tag->itemListMap()[field] = TagLib::StringList( Qt4QStringToTString( QString::number( value.toFloat() / 10.0 ) ) );
++                m_tag->setItem(field, TagLib::StringList( Qt4QStringToTString( QString::number( value.toFloat() / 10.0 ) ) ));
+             else if( key == Meta::valScore )
+-                m_tag->itemListMap()[field] = TagLib::StringList( Qt4QStringToTString( QString::number( value.toFloat() / 100.0 ) ) );
++                m_tag->setItem(field, TagLib::StringList( Qt4QStringToTString( QString::number( value.toFloat() / 100.0 ) ) ));
+             else if( key == Meta::valBpm || key == Meta::valDiscNr )
+-                m_tag->itemListMap()[field] = TagLib::MP4::Item( value.toInt(), 0 );
++                m_tag->setItem(field, TagLib::MP4::Item( value.toInt(), 0 ));
+             else if( key == Meta::valCompilation )
+-                m_tag->itemListMap()[field] = TagLib::MP4::Item( value.toBool() );
++                m_tag->setItem(field, TagLib::MP4::Item( value.toBool() ));
+             else
+-                m_tag->itemListMap()[field] = TagLib::StringList( Qt4QStringToTString( value.toString() ) );
++                m_tag->setItem(field, TagLib::StringList( Qt4QStringToTString( value.toString() ) ));
+ 
+             modified = true;
+         }
+@@ -130,7 +130,7 @@ MP4TagHelper::setTags( const Meta::FieldHash &changes )
+             if( uidPair.first == UIDInvalid )
+                 continue;
+ 
+-            m_tag->itemListMap()[uidFieldName( uidPair.first )] = TagLib::StringList( Qt4QStringToTString( uidPair.second ) );
++            m_tag->setItem(uidFieldName( uidPair.first ), TagLib::StringList( Qt4QStringToTString( uidPair.second ) ));
+             modified = true;
+         }
+     }
+@@ -141,9 +141,9 @@ MP4TagHelper::setTags( const Meta::FieldHash &changes )
+ bool
+ MP4TagHelper::hasEmbeddedCover() const
+ {
+-    TagLib::MP4::ItemListMap map = m_tag->itemListMap();
++    TagLib::MP4::ItemMap map = m_tag->itemMap();
+     TagLib::String name = fieldName( Meta::valHasCover );
+-    for( TagLib::MP4::ItemListMap::ConstIterator it = map.begin(); it != map.end(); ++it )
++    for( TagLib::MP4::ItemMap::ConstIterator it = map.begin(); it != map.end(); ++it )
+     {
+         if( it->first == name )
+         {
+@@ -162,9 +162,9 @@ MP4TagHelper::hasEmbeddedCover() const
+ QImage
+ MP4TagHelper::embeddedCover() const
+ {
+-    TagLib::MP4::ItemListMap map = m_tag->itemListMap();
++    TagLib::MP4::ItemMap map = m_tag->itemMap();
+     TagLib::String name = fieldName( Meta::valHasCover );
+-    for( TagLib::MP4::ItemListMap::ConstIterator it = map.begin(); it != map.end(); ++it )
++    for( TagLib::MP4::ItemMap::ConstIterator it = map.begin(); it != map.end(); ++it )
+     {
+         if( it->first == name )
+         {
+@@ -200,7 +200,7 @@ MP4TagHelper::setEmbeddedCover( const QImage &cover )
+ 
+     covers.append( TagLib::MP4::CoverArt( TagLib::MP4::CoverArt::JPEG, TagLib::ByteVector( bytes.data(), bytes.count() ) ) );
+ 
+-    m_tag->itemListMap()[fieldName( Meta::valHasCover )] = TagLib::MP4::Item( covers );
++    m_tag->setItem(fieldName( Meta::valHasCover ), TagLib::MP4::Item( covers ));
+ 
+     return true;
+ }
+diff --git a/shared/tag_helpers/StringHelper.cpp b/shared/tag_helpers/StringHelper.cpp
+index fd7e49b432..a8d2aa3e97 100644
+--- a/shared/tag_helpers/StringHelper.cpp
++++ b/shared/tag_helpers/StringHelper.cpp
+@@ -36,7 +36,7 @@ Meta::Tag::Qt4QStringToTString( const QString &str )
+ {
+     // Declare new var to prevent double call of trimmed func
+     QString val = str.trimmed();
+-    return val.isEmpty() ? TagLib::String::null : TagLib::String( val.toUtf8().data(), TagLib::String::UTF8 );
++    return val.isEmpty() ? TagLib::String() : TagLib::String( val.toUtf8().data(), TagLib::String::UTF8 );
+ }
+ 
+ QString
+diff --git a/shared/tag_helpers/TagHelper.cpp b/shared/tag_helpers/TagHelper.cpp
+index 5a3b30009e..2607e53fe2 100644
+--- a/shared/tag_helpers/TagHelper.cpp
++++ b/shared/tag_helpers/TagHelper.cpp
+@@ -331,7 +331,7 @@ Meta::Tag::selectHelper( const TagLib::FileRef &fileref, bool forceCreation )
+     else if( TagLib::RIFF::WAV::File *file = dynamic_cast< TagLib::RIFF::WAV::File * >( fileref.file() ) )
+     {
+         if( file->tag() )
+-            tagHelper = new ID3v2TagHelper( fileref.tag(), file->tag(), Amarok::Wav );
++            tagHelper = new ID3v2TagHelper( fileref.tag(), file->ID3v2Tag(), Amarok::Wav );
+     }
+     else if( TagLib::ASF::File *file = dynamic_cast< TagLib::ASF::File * >( fileref.file() ) )
+     {
+diff --git a/shared/tag_helpers/VorbisCommentTagHelper.cpp b/shared/tag_helpers/VorbisCommentTagHelper.cpp
+index f3ff542db6..95dc041d8a 100644
+--- a/shared/tag_helpers/VorbisCommentTagHelper.cpp
++++ b/shared/tag_helpers/VorbisCommentTagHelper.cpp
+@@ -151,7 +151,7 @@ VorbisCommentTagHelper::setTags( const Meta::FieldHash &changes )
+         QVariant value = changes.value( key );
+         TagLib::String field = fieldName( key );
+ 
+-        if( !field.isNull() && !field.isEmpty() )
++        if( !field.isEmpty() )
+         {
+             if( key == Meta::valHasCover )
+                 continue;
+diff --git a/utilities/afttagger/AFTTagger.cpp b/utilities/afttagger/AFTTagger.cpp
+index ae653e7beb..dace0b3305 100644
+--- a/utilities/afttagger/AFTTagger.cpp
++++ b/utilities/afttagger/AFTTagger.cpp
+@@ -467,7 +467,7 @@ AFTTagger::handleXiphComment( TagLib::Ogg::XiphComment *comment, TagLib::File *f
+             }
+         }
+         for( TagLib::StringList::ConstIterator iter = toRemove.begin(); iter != toRemove.end(); ++iter )
+-            comment->removeField( *iter );
++            comment->removeFields( *iter );
+     }
+     if( newUid || ( nothingfound && !m_delete ) )
+     {
+@@ -611,10 +611,10 @@ AFTTagger::handleMP4( TagLib::MP4::File *file )
+     if( m_verbose )
+         m_textStream << tr( "INFO: File is a MP4 file, opening..." ) << Qt::endl;
+ 
+-    TagLib::MP4::ItemListMap &itemsMap = file->tag()->itemListMap();
++    TagLib::MP4::ItemMap itemsMap = file->tag()->itemMap();
+     if( !itemsMap.isEmpty() )
+     {
+-        for( TagLib::MP4::ItemListMap::Iterator it = itemsMap.begin(); it != itemsMap.end(); ++it )
++        for( TagLib::MP4::ItemMap::Iterator it = itemsMap.begin(); it != itemsMap.end(); ++it )
+         {
+             TagLib::String key = it->first;
+             const QString qkey = TStringToQString( key ).toUpper();
