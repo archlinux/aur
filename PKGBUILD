@@ -1,22 +1,25 @@
-# Maintainer: Frank Seifferth <frankseifferth@posteo.net>
+# Maintainer: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
+# Contributor: Frank Seifferth <frankseifferth@posteo.net>
 
 pkgname=libxlsxwriter
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc='A C library for creating Excel XLSX files.'
 arch=('i686' 'x86_64')
 url='http://libxlsxwriter.github.io'
+license=('LicenseRef-Multiple')
 depends=(zlib)
-makedepends=(git)
-license=('BSD')
 source=("https://github.com/jmcnamara/libxlsxwriter/archive/RELEASE_$pkgver.tar.gz")
-md5sums=('d02c04733c8b10891ec9a8ee36af426e')
+sha512sums=('bd7db0fcf25ebf492b4d8f7da8fdb6cc79400d7d0fa5856ddae259cb24817034fc97d4828cbde42434f41198dcfb6732ac63c756abd962689f4249ca64bf19c6')
 
 build() {
   cd "$srcdir/$pkgname-RELEASE_$pkgver/"
-  # Build disabling optimisations for duplicate images
-  # See release notes for v0.9.0 for further info
-  USE_NO_MD5=1 make
+  USE_DTOA_LIBRARY=1 make
+}
+
+check() {
+  cd "$srcdir/$pkgname-RELEASE_$pkgver/"
+  make test
 }
 
 package() {
