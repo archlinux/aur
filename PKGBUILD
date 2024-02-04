@@ -3,7 +3,7 @@
 pkgname=php-pear
 epoch=1
 pkgver=1.10.22
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc='PHP Extension and Application Repository'
 url='https://pear.php.net/package/pearweb_phars/'

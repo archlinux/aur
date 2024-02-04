@@ -1,7 +1,7 @@
 pkgbase = php-pear
 	pkgdesc = PHP Extension and Application Repository
 	pkgver = 1.10.22
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://pear.php.net/package/pearweb_phars/
 	arch = any
