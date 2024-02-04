@@ -10,7 +10,7 @@ depends=("xorg-server" "lesstif")
 makedepends=("texlive-plaingeneric")
 source=("https://github.com/veripool/dinotrace/archive/refs/tags/v${pkgver}.tar.gz" "dinotrace.desktop")
 sha512sums=('91e311b604f6c40076059e138c206a2c9182b0aa5ac803a06a242e894fc9778487d3171ec148e50826c1fc454b4a8b31d88dbc6083ff2a5075dc3fc4f1a7c583'
-            '32d5e9492bd783e3e39097f463f01ff5b9386ca4e54a358c1bb4b58835fe736125d5372ef39a5f7fbdf81c807193858871651f5840e0c3729edfaa9e1a08e705')
+            'e4768197fe2e3fa14f2f53d946a5a426341bcdc7922fb48898f7c6368570bc31df7a3d502b8b100145ddc6aa4b3ed4901013498b8c154ad24ca0feb3aeb91938')
 
 build() {
 	cd "$pkgname-$pkgver"
