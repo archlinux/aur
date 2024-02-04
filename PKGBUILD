@@ -1,16 +1,16 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 # Contributor: Ben Widawsky <ben@bwidawsk.net>
 pkgname=kanshi-git
-pkgver=r107.992c195
+pkgver=1.5.1.r6.g0602cd3
 pkgrel=1
 pkgdesc="Dynamic output configuration for Wayland WMs"
 arch=(x86_64)
 url="https://git.sr.ht/~emersion/kanshi"
 license=('MIT')
 groups=()
-depends=('wayland' 'libvarlink')
+depends=('wayland' 'libvarlink' 'libscfg')
 makedepends=('git' 'meson' 'ninja' 'scdoc' 'wlroots>=0.7')
-provides=("${pkgname%-git}")
+provides=("${pkgname%-git}=${pkgver%%.r*}")
 conflicts=("${pkgname%-git}")
 replaces=()
 backup=()
@@ -25,7 +25,7 @@ md5sums=('SKIP' '204747a0d0e0dd77d0e4f88f229c9c28')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

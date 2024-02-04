@@ -1,6 +1,6 @@
 pkgbase = kanshi-git
 	pkgdesc = Dynamic output configuration for Wayland WMs
-	pkgver = r107.992c195
+	pkgver = 1.5.1.r6.g0602cd3
 	pkgrel = 1
 	url = https://git.sr.ht/~emersion/kanshi
 	arch = x86_64
@@ -12,7 +12,8 @@ pkgbase = kanshi-git
 	makedepends = wlroots>=0.7
 	depends = wayland
 	depends = libvarlink
-	provides = kanshi
+	depends = libscfg
+	provides = kanshi=1.5.1
 	conflicts = kanshi
 	source = kanshi::git+https://git.sr.ht/~emersion/kanshi
 	source = kanshi.service
