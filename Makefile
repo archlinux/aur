@@ -1,7 +1,7 @@
 BASE_NAME := goodix
 
-obj-m := goodix-gpdwin3.o
-goodix-gpdwin3-objs := $(BASE_NAME).o $(BASE_NAME)_fwupload.o
+obj-m := goodix-param.o
+goodix-param-objs := $(BASE_NAME).o $(BASE_NAME)_fwupload.o
 
 all: modules
 
