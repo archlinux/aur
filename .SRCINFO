@@ -1,7 +1,7 @@
 pkgbase = wewechat++-bin
 	pkgdesc = Make weweChat great again!!! 美丽的第三方微信PC客户端
 	pkgver = 1.2.5_20230523
-	pkgrel = 6
+	pkgrel = 7
 	url = https://gitee.com/spark-community-works-collections/wewechat-plus-plus
 	arch = aarch64
 	arch = x86_64

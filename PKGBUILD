@@ -3,7 +3,7 @@ pkgname=wewechat++-bin
 _pkgver=1.2.5
 pkgver="${_pkgver}_20230523"
 _electronversion=2
-pkgrel=6
+pkgrel=7
 pkgdesc="Make weweChat great again!!! 美丽的第三方微信PC客户端"
 arch=(
     'aarch64'
@@ -38,7 +38,7 @@ sha256sums_x86_64=('48f0ede636da8f3a7b4d94a75a8324a51413dbf7ad040cf0acc173cd2000
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed -e "s|Name=${pkgname%++-bin}|Name=${pkgname%-bin}|g" \
