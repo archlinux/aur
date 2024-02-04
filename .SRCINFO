@@ -12,9 +12,9 @@ pkgbase = unoffical-wallhaven-desktop-git
 	depends = electron17
 	provides = unoffical-wallhaven-desktop
 	conflicts = unoffical-wallhaven-desktop
-	source = unoffical-wallhaven-desktop::git+https://github.com/luisflorido/wallhaven-desktop.git
+	source = unoffical-wallhaven-desktop.git::git+https://github.com/luisflorido/wallhaven-desktop.git
 	source = unoffical-wallhaven-desktop.sh
 	sha256sums = SKIP
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = unoffical-wallhaven-desktop-git
