@@ -4,13 +4,15 @@
 _crate="probe-rs"
 pkgname="probe-rs"
 pkgver=0.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A collection of on chip debugging tools to communicate with microchips.'
 url='https://github.com/probe-rs/probe-rs'
 license=('Apache' 'MIT')
 
 depends=('gcc-libs' 'libusb' 'libftdi' 'openssl' 'systemd-libs')
 makedepends=('cargo')
+optdepends=('rtthost: Real-time transfer client')
+conflicts=('cargo-flash')
 
 source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/probe-rs/0.22.0/download")
 sha512sums=('b1bacd5c38dcfbb9fdc3f21ee7224e1ab1d72498535b924e811b50c21c97d5e71648544ff5f716299082ed862187c75f1af21f2a58f13d2a3bb8256fb38e1f18')

@@ -14,6 +14,8 @@ pkgbase = probe-rs
 	depends = libftdi
 	depends = openssl
 	depends = systemd-libs
+	optdepends = rtthost: Real-time transfer client
+	conflicts = cargo-flash
 	source = probe-rs-0.22.0.tar.gz::https://crates.io/api/v1/crates/probe-rs/0.22.0/download
 	sha512sums = b1bacd5c38dcfbb9fdc3f21ee7224e1ab1d72498535b924e811b50c21c97d5e71648544ff5f716299082ed862187c75f1af21f2a58f13d2a3bb8256fb38e1f18
 
