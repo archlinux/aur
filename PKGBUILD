@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit-dynamics
 pkgname=python-${_pkgname}
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="Tools for building and solving models of quantum systems in Qiskit"
 arch=('any')
@@ -21,7 +21,7 @@ makedepends=(
     'python-wheel'
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Qiskit-Extensions/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('4d03d71980a49f678dd9224ff429f0ca3456805bdb649be77665e8b5693e9095b2d01647dbcce8c717f4638f904236827a80d63640bf994574038527c2ae6a1d')
+b2sums=('57ebb437fdca18370b34f0c6bbb2e2ee7f07c80e31b69697db709a07d18bd1b22d50567632f4ced5df51c0e4ce56df8f15c3872fadab9db198d6a9caf0710af3')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
