@@ -2,7 +2,7 @@
 pkgname=postybirb-plus-bin
 pkgver=3.1.37
 _electronversion=19
-pkgrel=1
+pkgrel=2
 pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly."
 arch=('x86_64')
 url="https://www.postybirb-plus.com/"
@@ -10,12 +10,9 @@ _ghurl="https://github.com/mvdicarlo/postybirb-plus"
 license=('BSD')
 depends=(
     "electron${_electronversion}"
-    'libx11'
-    'libxext'
-    'gdk-pixbuf2'
+    'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
-    'dbus-glib'
 )
 makedepends=(
     'squashfuse'
@@ -32,15 +29,15 @@ source=(
 )
 sha256sums=('e0b0a0a1de6a34e95a3588fc295c86f80d0e5e28f82fac89cbeebeb8a0bf863d'
             'a0b91aa0ffc9564128c6599eac1fc0ba93b8fe477dff6258ef315f0019b5726d'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

@@ -1,18 +1,15 @@
 pkgbase = postybirb-plus-bin
 	pkgdesc = An application that helps artists post art and other multimedia to multiple websites more quickly.
 	pkgver = 3.1.37
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.postybirb-plus.com/
 	arch = x86_64
 	license = BSD
 	makedepends = squashfuse
 	depends = electron19
-	depends = libx11
-	depends = libxext
-	depends = gdk-pixbuf2
+	depends = dbus-glib
 	depends = libdbusmenu-glib
 	depends = gtk2
-	depends = dbus-glib
 	provides = postybirb-plus=3.1.37
 	conflicts = postybirb-plus
 	conflicts = postybirb
@@ -21,6 +18,6 @@ pkgbase = postybirb-plus-bin
 	source = postybirb-plus.sh
 	sha256sums = e0b0a0a1de6a34e95a3588fc295c86f80d0e5e28f82fac89cbeebeb8a0bf863d
 	sha256sums = a0b91aa0ffc9564128c6599eac1fc0ba93b8fe477dff6258ef315f0019b5726d
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = postybirb-plus-bin
