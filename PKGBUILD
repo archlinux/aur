@@ -3,7 +3,7 @@
 pkgname=docker-credential-vault-login
 pkgdesc='Docker Credential Helper for Vault-stored Credentials'
 pkgver=0.3.47
-pkgrel=1
+pkgrel=2
 _commit='ee4808152406c315faa5e78281ab93b97eb2c218'
 arch=('x86_64')
 url='https://github.com/morningconsult/docker-credential-vault-login'
@@ -26,6 +26,8 @@ prepare() {
 
   # download dependencies
   export GOPATH="${srcdir}"
+  export GOFLAGS="-mod=readonly -modcacherw -buildmode=pie"
+
   go mod download
 }
 
@@ -37,6 +39,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export GOPATH="${srcdir}"
+  export GOFLAGS="-mod=readonly -modcacherw -buildmode=pie"
 
   ./scripts/build-binary.sh \
     "v${pkgver}" \

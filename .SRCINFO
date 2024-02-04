@@ -1,7 +1,7 @@
 pkgbase = docker-credential-vault-login
 	pkgdesc = Docker Credential Helper for Vault-stored Credentials
 	pkgver = 0.3.47
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/morningconsult/docker-credential-vault-login
 	arch = x86_64
 	license = Apache-2.0
