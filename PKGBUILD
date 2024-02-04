@@ -5,7 +5,7 @@
 _pkgname=tootstream
 pkgname=tootstream-git
 pkgver=0.4.0.r11.gf01781f
-pkgrel=1
+pkgrel=2
 pkgdesc='Text interface for the Mastodon social network'
 provides=(tootstream)
 conflicts=(tootstream)
@@ -17,8 +17,9 @@ depends=(python-mastodon
          python-click
          python-colored
          python-emoji
-         python-pytimeparse)
-makedepends=(python-setuptools git)
+         python-pytimeparse
+         python-setuptools)
+makedepends=(git)
 source=("git+https://github.com/magicalraccoon/tootstream")
 sha512sums=('SKIP')
 
