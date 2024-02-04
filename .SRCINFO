@@ -1,6 +1,6 @@
 pkgbase = lib32-mesa-amdonly-gaming-git
 	pkgdesc = An open-source implementation of the OpenGL specification (32-bit)
-	pkgver = 24.0.0_devel.181988.9ca9b674462.d954e6c2b60b8d8c955b77483af4bdfb
+	pkgver = 24.1.0_devel.184174.8368a972943.d41d8cd98f00b204e9800998ecf8427e
 	pkgrel = 1
 	url = https://www.mesa3d.org/
 	arch = x86_64
@@ -51,18 +51,18 @@ pkgbase = lib32-mesa-amdonly-gaming-git
 	b2sums = SKIP
 	b2sums = cc60238726b35133b5b729fb4ed1e76e04136588533615d84b4a54656d5b41727d5e7ff06ef4de3eb102eed6669d6c5c5cb8ac9fbdf6fc25aa477877c5c3ba87
 
-pkgname = lib32-amdonly-gaming-vulkan-mesa-layers
+pkgname = lib32-amdonly-gaming-vulkan-mesa-layers-git
 	pkgdesc = Mesa's Vulkan layers (32-bit)
 	depends = lib32-libdrm
 	depends = lib32-libxcb
 	depends = lib32-wayland
-	depends = amdonly-gaming-vulkan-mesa-layers
+	depends = amdonly-gaming-vulkan-mesa-layers-git
 	conflicts = lib32-vulkan-mesa-layers
 	conflicts = lib32-vulkan-mesa-layer
 	replaces = lib32-vulkan-mesa-layers
 	replaces = lib32-vulkan-mesa-layer
 
-pkgname = lib32-amdonly-gaming-opencl-clover-mesa
+pkgname = lib32-amdonly-gaming-opencl-clover-mesa-git
 	pkgdesc = OpenCL support with clover for mesa drivers (32-bit)
 	depends = lib32-clang
 	depends = lib32-expat
@@ -71,7 +71,7 @@ pkgname = lib32-amdonly-gaming-opencl-clover-mesa
 	depends = lib32-spirv-llvm-translator
 	depends = lib32-zstd
 	depends = libclc
-	depends = amdonly-gaming-opencl-clover-mesa
+	depends = amdonly-gaming-opencl-clover-mesa-git
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	provides = lib32-opencl-clover-mesa
 	provides = lib32-opencl-driver
@@ -80,7 +80,7 @@ pkgname = lib32-amdonly-gaming-opencl-clover-mesa
 	replaces = lib32-opencl-clover-mesa
 	replaces = lib32-opencl-mesa<=23.1.4-1
 
-pkgname = lib32-amdonly-gaming-opencl-rusticl-mesa
+pkgname = lib32-amdonly-gaming-opencl-rusticl-mesa-git
 	pkgdesc = OpenCL support with rusticl for mesa drivers (32-bit)
 	depends = lib32-clang
 	depends = lib32-expat
@@ -90,7 +90,7 @@ pkgname = lib32-amdonly-gaming-opencl-rusticl-mesa
 	depends = lib32-spirv-llvm-translator
 	depends = lib32-zstd
 	depends = libclc
-	depends = amdonly-gaming-opencl-rusticl-mesa
+	depends = amdonly-gaming-opencl-rusticl-mesa-git
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	provides = lib32-opencl-rusticl-mesa
 	provides = lib32-opencl-driver
@@ -99,7 +99,7 @@ pkgname = lib32-amdonly-gaming-opencl-rusticl-mesa
 	replaces = lib32-opencl-rusticl-mesa
 	replaces = lib32-opencl-mesa<=23.1.4-1
 
-pkgname = lib32-amdonly-gaming-vulkan-radeon
+pkgname = lib32-amdonly-gaming-vulkan-radeon-git
 	pkgdesc = Radeon's Vulkan mesa driver (32-bit)
 	depends = lib32-libdrm
 	depends = lib32-libelf
@@ -110,14 +110,14 @@ pkgname = lib32-amdonly-gaming-vulkan-radeon
 	depends = lib32-wayland
 	depends = lib32-xcb-util-keysyms
 	depends = lib32-zstd
-	depends = amdonly-gaming-vulkan-radeon
+	depends = amdonly-gaming-vulkan-radeon-git
 	optdepends = lib32-vulkan-mesa-layers: additional vulkan layers
 	provides = lib32-vulkan-radeon
 	provides = lib32-vulkan-driver
 	conflicts = lib32-vulkan-radeon
 	replaces = lib32-vulkan-radeon
 
-pkgname = lib32-amdonly-gaming-vulkan-swrast
+pkgname = lib32-amdonly-gaming-vulkan-swrast-git
 	pkgdesc = Vulkan software rasteriser driver (32-bit)
 	depends = lib32-libdrm
 	depends = lib32-libx11
@@ -135,7 +135,7 @@ pkgname = lib32-amdonly-gaming-vulkan-swrast
 	replaces = lib32-vulkan-swrast
 	replaces = lib32-vulkan-mesa
 
-pkgname = lib32-amdonly-gaming-vulkan-virtio
+pkgname = lib32-amdonly-gaming-vulkan-virtio-git
 	pkgdesc = Venus Vulkan mesa driver for Virtual Machines (32-bit)
 	depends = lib32-libdrm
 	depends = lib32-libx11
@@ -149,7 +149,7 @@ pkgname = lib32-amdonly-gaming-vulkan-virtio
 	conflicts = lib32-vulkan-virtio
 	replaces = lib32-vulkan-virtio
 
-pkgname = lib32-amdonly-gaming-libva-mesa-driver
+pkgname = lib32-amdonly-gaming-libva-mesa-driver-git
 	pkgdesc = VA-API drivers (32-bit)
 	depends = lib32-expat
 	depends = lib32-libdrm
@@ -162,7 +162,7 @@ pkgname = lib32-amdonly-gaming-libva-mesa-driver
 	conflicts = lib32-libva-mesa-driver
 	replaces = lib32-libva-mesa-driver
 
-pkgname = lib32-amdonly-gaming-mesa-vdpau
+pkgname = lib32-amdonly-gaming-mesa-vdpau-git
 	pkgdesc = VDPAU drivers (32-bit)
 	depends = lib32-expat
 	depends = lib32-libdrm
@@ -176,7 +176,7 @@ pkgname = lib32-amdonly-gaming-mesa-vdpau
 	conflicts = lib32-mesa-vdpau
 	replaces = lib32-mesa-vdpau
 
-pkgname = lib32-amdonly-gaming-mesa
+pkgname = lib32-amdonly-gaming-mesa-git
 	depends = lib32-libdrm
 	depends = lib32-libelf
 	depends = lib32-libglvnd
@@ -188,7 +188,7 @@ pkgname = lib32-amdonly-gaming-mesa
 	depends = lib32-vulkan-icd-loader
 	depends = lib32-wayland
 	depends = lib32-zstd
-	depends = amdonly-gaming-mesa
+	depends = amdonly-gaming-mesa-git
 	optdepends = opengl-man-pages: for the OpenGL API man pages
 	provides = lib32-mesa
 	provides = lib32-mesa-libgl
