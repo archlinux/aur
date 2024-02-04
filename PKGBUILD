@@ -4,7 +4,7 @@
 pkgname=nrf-sniffer-ble
 pkgdesc="nRF Sniffer for Bluetooth LE - firmware, SnifferAPI and Wireshark plugin"
 pkgver=4.1.1
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://www.nordicsemi.com/Products/Development-tools/nRF-Sniffer-for-Bluetooth-LE"
 depends=('python' 'python-pyserial' 'wireshark-cli' )
@@ -27,7 +27,7 @@ sha256sums=('26502447742346cd0b0c597564b12a621859ffd4ad05c029069c4fa22deddd40'
 package() {
   cd "${srcdir}"
 
-  patch -p1 -i ../0001-drop-Filelock-use.patch
+  patch -p1 -i 0001-drop-Filelock-use.patch
 
   # License and release notes
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

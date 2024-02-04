@@ -1,7 +1,7 @@
 pkgbase = nrf-sniffer-ble
 	pkgdesc = nRF Sniffer for Bluetooth LE - firmware, SnifferAPI and Wireshark plugin
 	pkgver = 4.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.nordicsemi.com/Products/Development-tools/nRF-Sniffer-for-Bluetooth-LE
 	install = nrf-sniffer-ble.install
 	arch = any
