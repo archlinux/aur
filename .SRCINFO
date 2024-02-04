@@ -10,7 +10,7 @@ pkgbase = tm-desktop-bin
 	depends = gtk2
 	depends = libdbusmenu-glib
 	depends = dbus-glib
-	provides = tm-desktop
+	provides = tm-desktop=09.11.2023
 	conflicts = tm-desktop
 	source = tm-desktop-09.11.2023.AppImage::https://github.com/NeverExcel/tm-desktop/releases/download/v09.11.2023/tm-desktop-0.8.2.AppImage
 	source = LICENSE-09.11.2023::https://raw.githubusercontent.com/NeverExcel/tm-desktop/v09.11.2023/LICENSE

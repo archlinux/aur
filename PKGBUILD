@@ -8,7 +8,7 @@ pkgdesc="A TikTok Music desktop application."
 arch=('x86_64')
 url="https://github.com/NeverExcel/tm-desktop"
 license=('MIT')
-provides=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
