@@ -2,7 +2,7 @@
 pkgname=slack-on-keys-bin
 pkgver=1.1.2
 _electronversion=24
-pkgrel=1
+pkgrel=2
 pkgdesc="Control your Slack from any app window with keyboard shortcuts ⚡ Set up custom keyboard shortcuts for various Slack actions"
 arch=('x86_64')
 url="https://github.com/yakshaG/slack-on-keys"
@@ -19,11 +19,11 @@ source=(
 )
 sha256sums=('4c491c4d8a3ebe49089463265d80ca5b46e74dc1e802f0466940b1f194f14525'
             'f95d9068a4ccb1cbc8bad397f046494b5e2d6546fd6be7546edd5c26765cd956'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.zst"
 }
