@@ -2,7 +2,7 @@
 # Project: nwg-shell for sway, https://github.com/nwg-piotr/nwg-shell
 pkgname=('nwg-bar-bin')
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK3-based button bar for sway and other wlroots-based compositors"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/nwg-bar"
@@ -21,6 +21,6 @@ package() {
   install -Dm644 -t "$pkgdir"/usr/share/nwg-bar/images/ images/*
   install -Dm644 -t "$pkgdir"/usr/share/nwg-bar/ config/*
   install -Dm755 -t "$pkgdir"/usr/bin bin/nwg-bar
-  install -D -t "$pkgdir"/usr/share/licenses/"$pkgname" LICENSE
-  install -D -t "$pkgdir"/usr/share/doc/"$pkgname" README.md
+  install -D -t "$pkgdir"/usr/share/licenses/nwg-bar LICENSE
+  install -D -t "$pkgdir"/usr/share/doc/nwg-bar README.md
 }
