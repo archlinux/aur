@@ -1,19 +1,23 @@
 pkgbase = junction
 	pkgdesc = Application/browser chooser
-	pkgver = 1.6
-	pkgrel = 2
+	pkgver = 1.8
+	pkgrel = 1
 	url = https://github.com/sonnyp/Junction
-	arch = x86_64
-	license = GPL3
-	checkdepends = appstream-glib
+	arch = any
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = meson
 	makedepends = python-gobject
 	makedepends = blueprint-compiler
+	depends = glib2
+	depends = dconf
+	depends = hicolor-icon-theme
+	depends = gtk4
 	depends = libadwaita
+	depends = libportal
 	depends = libportal-gtk4
 	depends = gjs
-	source = junction-1.6::git+https://github.com/sonnyp/Junction#commit=c9da76cae9f8e26957266a4171e7e0212dc63ef5
+	source = junction::git+https://github.com/sonnyp/Junction#commit=274cf98dfd74db86b9f0e0dceba07c28adef06a0
 	source = git+https://github.com/sonnyp/troll.git
 	b2sums = SKIP
 	b2sums = SKIP

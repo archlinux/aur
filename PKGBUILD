@@ -1,36 +1,47 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Maintainer: tytan652	<tytan652 at tytanium dot xyz>
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=junction
-pkgver=1.6
-_commit=c9da76cae9f8e26957266a4171e7e0212dc63ef5
-pkgrel=2
+pkgver=1.8
+_commit=274cf98dfd74db86b9f0e0dceba07c28adef06a0
+pkgrel=1
 pkgdesc="Application/browser chooser"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/sonnyp/Junction"
-license=('GPL3')
-depends=('libadwaita' 'libportal-gtk4' 'gjs')
+license=('GPL-3.0-or-later')
+depends=(
+  'glib2'
+  'dconf'
+  'hicolor-icon-theme'
+  'gtk4'
+  'libadwaita'
+  'libportal'
+  'libportal-gtk4'
+  'gjs'
+)
 makedepends=('git' 'meson' 'python-gobject' 'blueprint-compiler')
-checkdepends=('appstream-glib')
-source=("${pkgname}-${pkgver}::git+$url#commit=$_commit"
+#checkdepends=('appstream-glib')
+source=(
+  "${pkgname}::git+$url#commit=$_commit"
   'git+https://github.com/sonnyp/troll.git')
 b2sums=('SKIP'
         'SKIP')
 
 prepare() {
-  cd "$pkgname-$pkgver"
-  git submodule init
+  cd $pkgname
   git config submodule.src/troll.url "$srcdir/troll"
   git -c protocol.file.allow=always submodule update --init --recursive
 }
 
 build() {
-  arch-meson "$pkgname-$pkgver" build
+  arch-meson $pkgname build
   meson compile -C build
 }
 
-check() {
-  meson test -C build --print-errorlogs || :
-}
+# Appstream data is made with Flathub fork of appstream-glib
+#check() {
+#  meson test -C build --print-errorlogs || :
+#}
 
 package() {
   meson install -C build --destdir "$pkgdir"
