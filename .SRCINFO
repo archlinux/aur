@@ -1,19 +1,24 @@
 pkgbase = lynx-current
 	pkgdesc = A text browser for the World Wide Web (current development version)
-	pkgver = 2.9.0dev.12
+	pkgver = 2.9.0rel.0
 	pkgrel = 1
 	url = http://lynx.invisible-island.net
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
+	depends = glibc
 	depends = openssl
 	depends = ncurses
-	depends = libidn
+	depends = libidn2
+	depends = zlib
+	depends = brotli
+	depends = bzip2
+	depends = libbsd
 	provides = lynx=2.9.0
 	conflicts = lynx
 	backup = etc/lynx.cfg
-	source = https://invisible-mirror.net/archives/lynx/tarballs/lynx2.9.0dev.12.tar.bz2
-	md5sums = 67e7eb3ee9f21de1d515a7a467ee8188
-	sha256sums = a6455b159d00776d8ec1051285c972dc1f0c552d0571a0cff02a23ec146ee8e5
+	source = https://invisible-mirror.net/archives/lynx/tarballs/lynx2.9.0.tar.bz2
+	md5sums = 1f18b108fac153e63aad66c1e05be362
+	sha256sums = 5bcae5e2e6043ca7b220963a97763c49c13218d849ffda6be7739bfd5a2d36ff
 
 pkgname = lynx-current
