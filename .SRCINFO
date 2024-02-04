@@ -4,7 +4,7 @@ pkgbase = blinker-git
 	pkgrel = 1
 	url = https://github.com/mrkpatchaa/blinker
 	arch = x86_64
-	license = custom:CC0-1.0
+	license = CC0-1.0
 	makedepends = gendesk
 	makedepends = git
 	makedepends = nvm
@@ -14,9 +14,9 @@ pkgbase = blinker-git
 	provides = blinker=2.1.1.r0.g9ad8ce7
 	conflicts = blinker
 	options = !emptydirs
-	source = blinker::git+https://github.com/mrkpatchaa/blinker.git
+	source = blinker.git::git+https://github.com/mrkpatchaa/blinker.git
 	source = blinker.sh
 	sha256sums = SKIP
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = blinker-git
