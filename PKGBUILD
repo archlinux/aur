@@ -1,4 +1,5 @@
-# Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
+# Maintainer: Max Harmathy <harmathy@mailbox.org>
+# Contributor: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=adw-gtk3
 pkgver=5.2
