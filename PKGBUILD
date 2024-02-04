@@ -2,7 +2,7 @@
 
 pkgname=shared-mem-random
 pkgrel=1
-pkgver=1.1.0
+pkgver=1.2.0
 pkgdesc="write random values to a shared memory"
 url="https://github.com/NikolasK-source/shared_mem_random"
 license=('MIT')
