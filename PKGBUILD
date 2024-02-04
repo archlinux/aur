@@ -4,13 +4,13 @@
 _pkgname=crystalline
 pkgname=crystalline-bin
 pkgver=0.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Language Server Protocol implementation for Crystal."
 arch=("x86_64")
 url="https://github.com/elbywan/crystalline/"
 license=("MIT")
 source=(
-  "$_pkgname.gz::https://github.com/elbywan/crystalline/releases/download/v${pkgver}/crystalline_x86_64-unknown-linux-musl.gz"
+  "${_pkgname}-${pkgver}.gz::https://github.com/elbywan/crystalline/releases/download/v${pkgver}/crystalline_x86_64-unknown-linux-musl.gz"
   "LICENSE::https://raw.githubusercontent.com/elbywan/crystalline/master/LICENSE"
 )
 noextract=(LICENSE)
@@ -20,7 +20,7 @@ conflicts=(crystalline)
 
 package() {
   cd "$srcdir"
-  install -D -m 0755 crystalline ${pkgdir}/usr/bin/crystalline
+  install -D -m 0755 crystalline-${pkgver} ${pkgdir}/usr/bin/crystalline
   install -D -m 0644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
 
