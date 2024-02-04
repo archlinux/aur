@@ -1,6 +1,6 @@
 pkgbase = r-robust
 	pkgdesc = Port of the S+ "Robust Library"
-	pkgver = 0.7.3
+	pkgver = 0.7.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=robust
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = r-robust
 	depends = r-fit.models
 	depends = r-robustbase
 	depends = r-rrcov
-	source = https://cran.r-project.org/src/contrib/robust_0.7-3.tar.gz
-	sha256sums = 89a712a481883284b72834647949c68aaa74fbeeead01e57d43287706dc4475e
+	source = https://cran.r-project.org/src/contrib/robust_0.7-4.tar.gz
+	sha256sums = 630d552772fd9965739d559ee53b90bed23b835592311604b060a3a0a0090862
 
 pkgname = r-robust
