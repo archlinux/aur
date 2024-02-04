@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="GUI that allows to control cooling of NZXT Kraken X (X42, X52, X62 or X72) pumps from Linux"
 arch=('any')
 url="https://gitlab.com/leinardi/gkraken"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gobject-introspection' 'libappindicator-gtk3' 'liquidctl' 'python' 'python-cairo' 'python-gobject' 'python-hidapi' 'python-injector' 'python-matplotlib' 'python-peewee' 'python-psutil' 'python-pyxdg' 'python-requests' 'python-rx')
 makedepends=('meson' 'appstream-glib')
 provides=()
@@ -30,6 +30,6 @@ check() {
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C build install
-	install -Dm644 "$srcdir/60-gkraken.rules" "$pkgdir/usr/lib/udev/rules.d/60-gkraken.rules"
+	DESTDIR="${pkgdir}" ninja -C build install
+	install -Dm644 "60-gkraken.rules" "${pkgdir}/usr/lib/udev/rules.d/60-gkraken.rules"
 }
