@@ -3,7 +3,7 @@
 
 pkgname=sing-box-git
 _pkgname=sing-box
-pkgver=1.8.0.r5.gcca9c067
+pkgver=1.8.5.r6.gfd705d96
 pkgrel=1
 
 pkgdesc='The universal proxy platform (git version).'
@@ -20,8 +20,10 @@ optdepends=('sing-geosite:  sing-geosite database'
 
 backup=("etc/$_pkgname/config.json")
 
-source=("$_pkgname::git+https://github.com/SagerNet/sing-box.git#branch=dev-next")
-sha256sums=(SKIP)
+source=("$_pkgname::git+https://github.com/SagerNet/sing-box.git#branch=dev-next"
+        'sing-box.rules')
+sha256sums=(SKIP
+            '1365536e1875043b969e2e18d7313ab7c6f7f9f63387f25506bb04362b44f206')
 
 pkgver() {
     cd "$_pkgname"
@@ -72,6 +74,7 @@ package() {
     install -Dm644 "release/config/$_pkgname.service"  -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 "release/config/$_pkgname@.service" -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 "release/config/$_pkgname.sysusers"    "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
+    install -Dm644 "${srcdir}/sing-box.rules"             "$pkgdir/usr/share/polkit-1/rules.d/sing-box.rules"
 
     install -Dm644 completions/bash "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}.bash"
     install -Dm644 completions/fish "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
