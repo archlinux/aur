@@ -16,7 +16,7 @@
 # basic info
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.7.5500.r0.g5087fcea
+pkgver=1.7.5540.r0.g2e95e59f
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
@@ -74,11 +74,11 @@ _main_package() {
   install="$_pkgname.install"
 
   _pkgsrc="$_pkgname"
-  source=(
+  source+=(
     "$_pkgsrc"::"git+$url.git"
     "pcsx2_patches"::"git+https://github.com/PCSX2/pcsx2_patches.git"
   )
-  sha256sums=(
+  sha256sums+=(
     'SKIP'
     'SKIP'
   )
@@ -119,7 +119,7 @@ _source_pcsx2() {
   )
 
   _prepare_pcsx2() (
-    cd "${srcdir:?}/$_pkgsrc"
+    cd "$_pkgsrc"
     local -A _submodules=(
       ['biojppm.rapidyaml']='3rdparty/rapidyaml/rapidyaml'
       ['facebook.zstd']='3rdparty/zstd/zstd'
@@ -146,7 +146,7 @@ _source_biojppm_rapidyaml() {
   )
 
   _prepare_biojppm_rapidyaml() (
-    cd "${srcdir:?}/$_pkgsrc"
+    cd "$_pkgsrc"
     cd '3rdparty/rapidyaml/rapidyaml'
     local -A _submodules=(
       ['biojppm.c4core']='ext/c4core'
@@ -168,7 +168,7 @@ _source_biojppm_c4core() {
   )
 
   _prepare_biojppm_c4core() (
-    cd "${srcdir:?}/$_pkgsrc"
+    cd "$_pkgsrc"
     cd '3rdparty/rapidyaml/rapidyaml'
     cd 'ext/c4core'
     local -A _submodules=(
@@ -214,6 +214,26 @@ EOF
 
   _prepare_biojppm_rapidyaml
   _prepare_biojppm_c4core
+
+  local _revert=(
+    9809265be4cf61c5406a79642254b7cbbcb00ee1
+  )
+
+  local _backports=(
+  )
+
+  _backport() (
+    cd "$_pkgsrc"
+    local _c
+    for _c in "${_revert[@]}"; do
+      git revert -n -m1 "${_c}"
+    done
+    for _c in "${_backports[@]}"; do
+      git cherry-pick -n -m1 "${_c}"
+    done
+  )
+
+  _backport
 
   # prevent march=native
   sed -E -e 's@^(\s*)(add_compile_options\(.*march=native.*\))@\1message("skip: march=native")@' \
@@ -265,20 +285,26 @@ build() {
     _cmake_options+=(-DDISABLE_ADVANCE_SIMD=ON)
   fi
 
-  local _pgo_profile_old="${SRCDEST-$startdir}/$pkgname.prof"
+  local _pgo_profile_old="${SRCDEST:-$startdir}/$pkgname.prof"
   local _pgo_profile="$srcdir/$pkgname.prof"
   if [[ "${_build_instrumented::1}" == "t" ]] ; then
+    # To create profiles:
+    #    LLVM_PROFILE_FILE="default_%9m.profraw" pcsx2-qt
+    #
+    # To process profiles:
+    #    llvm-profdata merge -output=pcsx2-avx-git.prof *.profraw
+    #
     echo "Compiling with instrumentation."
     export CFLAGS+=" -fprofile-generate"
     export CXXFLAGS+=" -fprofile-generate"
   elif [ -e "$_pgo_profile_old" ] ; then
-    # LLVM_PROFILE_FILE="default_%9m.profraw" pcsx2-qt
-    # llvm-profdata merge -output=pcsx2-avx-git.prof *.profraw
     echo "Compiling with profile-guided optimization."
     cp --reflink=auto "$_pgo_profile_old" "$_pgo_profile"
 
     export CFLAGS+=" -fprofile-use='$_pgo_profile'"
     export CXXFLAGS+=" -fprofile-use='$_pgo_profile'"
+  else
+    echo "Compiling with standard optimization."
   fi
 
   cmake "${_cmake_options[@]}"
