@@ -4,7 +4,7 @@ pkgbase = kdesktop-bin
 	pkgrel = 6
 	url = https://www.kdocs.cn
 	arch = x86_64
-	license = custom
+	license = LicenseRef-custom
 	makedepends = gendesk
 	depends = electron13
 	depends = hicolor-icon-theme
@@ -12,6 +12,6 @@ pkgbase = kdesktop-bin
 	source = kdesktop-3.7.7.deb::https://d.store.deepinos.org.cn/store/office/cn.kdocs.kdesktop/cn.kdocs.kdesktop_3.7.7_amd64.deb
 	source = kdesktop.sh
 	sha256sums = 57e6e623bbb761d5b2e3a8dd5c179189e585b40e14cc9f9f17213797093e88ef
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = kdesktop-bin

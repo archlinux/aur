@@ -8,7 +8,7 @@ pkgdesc="金山文档"
 arch=('x86_64')
 url="https://www.kdocs.cn"
 _downurl="https://d.store.deepinos.org.cn/store"
-license=('custom')
+license=('LicenseRef-custom')
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
@@ -22,14 +22,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('57e6e623bbb761d5b2e3a8dd5c179189e585b40e14cc9f9f17213797093e88ef'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
-    gendesk -q -f -n --categories "Office" --name "${pkgname%-bin}" --exec "${pkgname%-bin}"
+    gendesk -q -f -n --categories "Office" --name "${pkgname%-bin}" --exec "${pkgname%-bin} %U"
     sed "5i Name[zh_CN]=${pkgdesc}" -i "${srcdir}/${pkgname%-bin}.desktop"
 }
 package() {
