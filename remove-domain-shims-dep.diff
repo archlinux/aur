@@ -1,0 +1,36 @@
+diff --git a/README.md b/README.md
+index 21dfee1..494e717 100644
+--- a/README.md
++++ b/README.md
+@@ -52,7 +52,6 @@ First we need to require the library:
+ <!--
+ ```ocaml
+ # #thread
+-# #require "domain_shims"
+ ```
+ -->
+ 
+diff --git a/domain-local-await.opam b/domain-local-await.opam
+index dfa81df..491f4f5 100644
+--- a/domain-local-await.opam
++++ b/domain-local-await.opam
+@@ -15,7 +15,6 @@ depends: [
+   "alcotest" {>= "1.7.0" & with-test}
+   "mdx" {>= "2.3.0" & with-test}
+   "ocaml-version" {>= "3.6.1" & with-test}
+-  "domain_shims" {>= "0.1.0" & with-test}
+   "odoc" {with-doc}
+ ]
+ build: [
+diff --git a/dune-project b/dune-project
+index d9a3adb..596552e 100644
+--- a/dune-project
++++ b/dune-project
+@@ -15,6 +15,5 @@
+   (thread-table (>= 1.0.0))
+   (alcotest (and (>= 1.7.0) :with-test))
+   (mdx (and (>= 2.3.0) :with-test))
+-  (ocaml-version (and (>= 3.6.1) :with-test))
+-  (domain_shims (and (>= 0.1.0) :with-test))))
++  (ocaml-version (and (>= 3.6.1) :with-test))))
+ (using mdx 0.4)
