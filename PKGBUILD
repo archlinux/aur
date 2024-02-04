@@ -416,8 +416,7 @@ prepare() {
       httpdirfs --cache --single-file-mode "$_iso" mnt/http
       echo "  - Creating loop device"
       _isoFile="mnt/http/$(echo "$_iso" | awk -F "/" '{print $NF}')"
-      _loopDev=$(udisksctl loop-setup -r -f "${_isoFile}" --no-user-interaction | awk '{print $NF}')
-      _loopDev=${_loopDev::-1}
+      _loopDev=$(udisksctl loop-setup -r -f "${_isoFile}" --no-user-interaction 2>&1 | grep -oE "'.*'" | sed -e "s/'//g")
       # Wait for the loop device to be automatically mounted.
       sleep 5
       # Mount the loop device if not automatically mounted.
