@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.27
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-www-mechanize-formfiller'
-pkgver='0.11'
+pkgver='0.13'
 pkgrel='1'
 pkgdesc="framework to automate HTML forms"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-data-random>=0.05' 'perl-html-form>=0')
+depends=('perl-data-random>=0.05' 'perl-html-form>=0' 'perl-html-tagset>=0')
 makedepends=()
-url='http://search.cpan.org/dist/WWW-Mechanize-FormFiller'
-source=('http://search.cpan.org/CPAN/authors/id/C/CO/CORION/WWW-Mechanize-FormFiller-0.11.tar.gz')
-md5sums=('4604ef3cefa9fefaddbfc8c8787a7ed9')
-sha512sums=('60436af00f910465f5bfe60c55200c4a4301380295cf0ac39979a73c7f8efc78559ffd828fb145970838919beb2f4a99bbf134adb1976f577569a13f1c8e3b02')
-_distdir="WWW-Mechanize-FormFiller-0.11"
+url='https://metacpan.org/release/WWW-Mechanize-FormFiller'
+source=('http://search.cpan.org/CPAN/authors/id/C/CO/CORION/WWW-Mechanize-FormFiller-0.13.tar.gz')
+md5sums=('e20dd74e1e9d50211bdcc459cc8ed74e')
+sha512sums=('9ddfb677dbd17da327980c349577593d5795044553b9c5966f70d095c8dc3439ae8991f082eab787f2cf45a45288ee719ac6a0a4d2e73caff0cf24abe3d0e5c0')
+_distdir="WWW-Mechanize-FormFiller-0.13"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
