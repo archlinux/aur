@@ -1,10 +1,10 @@
 pkgbase = r-rstan
 	pkgdesc = R Interface to Stan
 	pkgver = 2.32.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=rstan
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	checkdepends = r-testthat
 	makedepends = r-bh
 	makedepends = r-rcppeigen

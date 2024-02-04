@@ -9,11 +9,11 @@ _pkgname=rstan
 _pkgver=2.32.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="R Interface to Stan"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL3)
+license=('GPL-3.0-or-later')
 depends=(
   pandoc
   r-ggplot2
@@ -50,12 +50,12 @@ b2sums=('509272c2b88ad2d1949620fc5ad7a32ab894005a829226ec9ccf39af0cd7bbbcfc4faee
 
 build() {
   mkdir build
-  R CMD INSTALL -l build "$_pkgname"
+  TZ=UTC R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
   cd "$_pkgname/tests"
-  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
+  TZ=UTC R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
