@@ -1,7 +1,7 @@
 pkgbase = quarto-cli-bin-pre-release
 	pkgdesc = An open-source scientific and technical publishing system built on Pandoc (pre-release binary from official repo)
 	pkgver = 1.5.7
-	pkgrel = 6
+	pkgrel = 1
 	url = http://quarto.org/
 	arch = x86_64
 	license = GPL
