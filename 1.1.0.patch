@@ -1,0 +1,23 @@
+diff --git a/source/DNArates.h b/source/DNArates.h
+index ecbec79..a1cd476 100644
+--- a/source/DNArates.h
++++ b/source/DNArates.h
+@@ -4,6 +4,8 @@
+ #define headerVersion  "1.1.0"
+ #define headerDate     "March 9, 1998"
+ 
++#include <stdlib.h>
++
+ /*  Compile time switches for various updates to program:
+  *    0 gives original version
+  *    1 gives new version
+@@ -86,9 +88,3 @@ typedef  struct {
+ 
+ 
+ void  exit();
+-
+-#if  ANSI
+-   void *malloc();
+-#else
+-   char *malloc();
+-#endif

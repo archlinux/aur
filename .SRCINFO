@@ -1,0 +1,15 @@
+pkgbase = dnarates
+	pkgdesc = estimating site-specific nucleotide substitution rates by maximum likelihood https://doi.org/10.1093/nar/22.17.3485
+	pkgver = 1.1.0
+	pkgrel = 0
+	url = https://www.life.illinois.edu/gary/programs/DNArates.html
+	arch = x86_64
+	license = LicenseRef-unknow
+	makedepends = gcc
+	depends = glibc
+	source = dnarates-1.1.0.tgz::https://www.life.illinois.edu/gary/programs/DNArates/DNArates_1.1.0.tar.gz
+	source = 1.1.0.patch
+	sha1sums = 889037be0b9330712084ee6621bd488c9287c073
+	sha1sums = cf36569312f7b72686aa26a958836d931ad79853
+
+pkgname = dnarates
