@@ -1,0 +1,34 @@
+pkgbase = streamrip
+	pkgdesc = A scriptable stream downloader for Qobuz, Tidal, Deezer and SoundCloud.
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = https://github.com/nathom/streamrip
+	arch = any
+	license = GPL3
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = git
+	depends = python
+	depends = python-mutagen
+	depends = python-tomlkit
+	depends = python-pathvalidate
+	depends = python-simple-term-menu
+	depends = python-pillow
+	depends = python-deezer-py
+	depends = python-pycryptodomex
+	depends = python-appdirs
+	depends = python-m3u8
+	depends = python-aiofiles
+	depends = python-aiohttp
+	depends = python-aiodns
+	depends = python-aiolimiter
+	depends = python-pytest-mock
+	depends = python-pytest-asyncio
+	depends = python-rich
+	depends = python-click-help-colors
+	optdepends = ffmpeg: Additional functionality
+	source = git+https://github.com/nathom/streamrip.git#tag=v2.0.5
+	sha256sums = SKIP
+
+pkgname = streamrip
