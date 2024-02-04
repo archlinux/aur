@@ -7,7 +7,7 @@ pkgbase = turbovnc
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
-	license = GPL-2.0-only
+	license = GPL-2.0-or-later
 	makedepends = cmake>=3.12
 	makedepends = java-environment>11
 	depends = java-runtime>11

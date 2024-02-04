@@ -10,7 +10,7 @@ pkgver=3.1.1
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="http://www.turbovnc.org/"
-license=('GPL-2.0-only')
+license=('GPL-2.0-or-later')
 depends=('java-runtime>11'
          'libjpeg-turbo'
          'libxaw'
