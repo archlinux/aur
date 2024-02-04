@@ -2,7 +2,7 @@
 # Maintainer: Nick Adams <zander at node-3.net>
 
 pkgname='zander-bin'
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc='Software to manage dedicated doom server instances'
 url='https://node-3.net/zander'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('zander')
 conflicts=('zander')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://gitlab.node-3.net/zander/zander/-/releases/v0.2.6/downloads/zander_Linux_arm64.tar.gz")
-sha256sums_aarch64=('dafeb79f55319881c948cc15655f5b81b1e26cdfc02b6ab5a9f18de4c35aefc3')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://gitlab.node-3.net/zander/zander/-/releases/v0.2.7/downloads/zander_Linux_arm64.tar.gz")
+sha256sums_aarch64=('60e0d36eb02d08e5fdcb4422d7bb222b2d510f432a0bf89a90ce69fd8effe8a3')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://gitlab.node-3.net/zander/zander/-/releases/v0.2.6/downloads/zander_Linux_i386.tar.gz")
-sha256sums_i686=('5aec5118c2df69079c910b095a30bac9be80ea3a84f595b898b1d8e0a20ab51e')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://gitlab.node-3.net/zander/zander/-/releases/v0.2.7/downloads/zander_Linux_i386.tar.gz")
+sha256sums_i686=('db8897dc697e6a81a695d4ad28986f366d3c592f60f20a8f4abd26cabe0428c0')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://gitlab.node-3.net/zander/zander/-/releases/v0.2.6/downloads/zander_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('95b031f2606c5c4a001a1b35578798a213250039bdfb5ed9cbb6939ea1c936c3')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://gitlab.node-3.net/zander/zander/-/releases/v0.2.7/downloads/zander_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('796c2e6f49f8de5239f2794dbbc2b60cb9dbfec337ab051b3f92595e32faf083')
 
 package() {
   # bin
