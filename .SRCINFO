@@ -1,0 +1,17 @@
+pkgbase = yesbotics-serial-monitor
+	pkgdesc = A fast and lightweight serial monitor with some helping functions to work with the Yesbotics Simple Serial Protocol.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/yesbotics/yesbotics-serial-monitor
+	arch = 1686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = MIT
+	makedepends = go>=1.21.5
+	makedepends = git
+	source = yesbotics-serial-monitor-0.1.1.tar.gz::https://github.com/yesbotics/yesbotics-serial-monitor/archive/v0.1.1.tar.gz
+	sha256sums = f800511403748412b62d14885f1276ad9b8e8fc31515003982416ef07868c4c8
+
+pkgname = yesbotics-serial-monitor
