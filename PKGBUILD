@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=zycore-c
 pkgname=$_pkgname-git
-pkgver=1.4.1.r4.gcbba473
+pkgver=1.5.0.r0.g74620ee
 pkgrel=1
 pkgdesc="Zyan core library for C"
 arch=('x86_64')
