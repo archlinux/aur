@@ -1,7 +1,7 @@
 pkgbase = portproton
 	pkgdesc = Software for playing Microsoft Windows games and launchers
 	pkgver = 1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://linux-gaming.ru
 	arch = x86_64
 	license = MIT
@@ -45,7 +45,7 @@ pkgbase = portproton
 	depends = lib32-openssl
 	depends = lib32-mesa-utils
 	depends = icoextract
-	depends = python-pyllow
+	depends = python-pillow
 	optdepends = gamemode: Support for Feral GameMode
 	optdepends = lib32-gamemode: 32-bit support for Feral GameMode
 	optdepends = gamescope: Support for Gamescope
