@@ -1,6 +1,6 @@
 pkgbase = openai-translator-bin
 	pkgdesc = Browser extension and cross-platform desktop application for translation based on ChatGPT API.
-	pkgver = 0.0.89
+	pkgver = 0.3.11
 	pkgrel = 1
 	url = https://github.com/yetone/openai-translator
 	arch = x86_64
@@ -17,14 +17,13 @@ pkgbase = openai-translator-bin
 	depends = pango
 	depends = glib2
 	depends = gcc-libs
-	depends = java-runtime
 	depends = libxtst
 	depends = cairo
 	depends = gdk-pixbuf2
 	provides = openai-translator
 	conflicts = openai-translator-git
 	conflicts = openai-translator
-	source = https://github.com/yetone/openai-translator/releases/download/v0.0.89/open-ai-translator_0.0.89_amd64.deb
-	sha256sums = 92ccd14283e4766b5a519c37bd8e2ae0ce656b1d38ede3cb02d48881272ddb85
+	source = https://github.com/yetone/openai-translator/releases/download/v0.3.11/open-ai-translator_0.3.11_amd64.deb
+	sha256sums = 484e056a36e8e755d3da9661c9565e67ba6e8d22222fcf533ae2e91a4279fb8c
 
 pkgname = openai-translator-bin
