@@ -3,7 +3,7 @@ pkgname=kanbanflow-app-bin
 _appname=KanbanFlow-App
 pkgver=1.0.0_beta.4
 _electronversion=13
-pkgrel=4
+pkgrel=5
 pkgdesc="A standalone application for Kanbanflow.com"
 arch=('x86_64')
 url="https://github.com/metawave/kanbanflow-app"
@@ -26,11 +26,11 @@ source=(
 )
 sha256sums=('a8146d290fdf4d9e4e62b4fa57fab35bf6db21aa43876bc685a0bdca4bd4ebba'
             '4dcd2e7fe6343b8c84f2996f9713c67ee8e917c8e3606ce9ec221279ac5bfc26'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
