@@ -1,4 +1,4 @@
-# Maintainer:  [none]
+# Maintainer:  Dani Rodríguez <dani@danirod.es>
 # Contributor: dreieck
 # Contributor: Daniel Moch <daniel@danielmoch.com>
 # Contributor: Drew DeVault <sir@cmpwn.com>
