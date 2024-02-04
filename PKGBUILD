@@ -5,9 +5,9 @@
 _pkgname=pytorch
 pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
-pkgver=2.1.2
-_pkgver=2.1.2
-pkgrel=3
+pkgver=2.2.0
+_pkgver=2.2.0
+pkgrel=1
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -73,7 +73,10 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         protobuf-23.patch
         pytorch-rocm-jit.patch
         pytorch-missing-iostream.patch
-        python-pytorch-ffmpeg6.patch)
+        python-pytorch-ffmpeg6.patch
+        python-pytorch-rocm-6.patch
+        python-pytorch-goo-rocm-6.patch
+        pytorch-remove-caffe2-binaries.patch)
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
@@ -126,7 +129,10 @@ b2sums=('SKIP'
         '738199e7a11940c839a43ac4e3152d84e15b9cde638227d3d87ecb45f82c5e76630a56c49bcfb08e841f92be1b2311f2fad4fafdcc17f5b00b7a8ef6d962f250'
         'e19fbb32da5a3bdd9d1505b2ba79ff0d765b241da819c96a380a5c871be4f5a78dcad000e01a315d936cfebb7860150f8111e60aed17cbb9337896a0831df0fe'
         '77458fa568692020ae4e437b1ebae6ebbf59f040b3414ba03e32cc829f1befb9f39dde6e0c0525e30d42dd08d482d2f213dd8294a9877476c7d0d6aabb0f08d3'
-        'c17c2d2c085795861cb46974e8e251a0eb576c35a1dd2d75bcb880119bcc800c49bf6bc25c8f671c984b48787b5b919ef946352e299dc13d3ff763ae1bcc33a4')
+        'c17c2d2c085795861cb46974e8e251a0eb576c35a1dd2d75bcb880119bcc800c49bf6bc25c8f671c984b48787b5b919ef946352e299dc13d3ff763ae1bcc33a4'
+        '6cf1cf6a636cf42b0fad6c4475f941e95a7a18cbd17fbab63576619fc3849213ff4fb0190b25e63d3438d7dbd259b3afb80e12a59d6b025edb02d576bff7b864'
+        'da7184d166270b59efb83105d19c0de6c9fe8c386e66807ac93e65761410ac5a91a2305f92022262a32cf5cf31bbcc08bb3f7975dd6063dda2408195aa3fe475'
+        '21e9922ed1c0b555316a655067a789ef81a93b173e35446ecd2d06d976d49ad6b4a0aaa7339fd647758e821c15bec7ffda3d6e4804c8e858a888f0171cd2a9cb')
 options=('!lto' '!debug')
 
 get_pyver () {
@@ -216,6 +222,11 @@ prepare() {
   # build against ffmpeg 6
   patch -Np1 -i "${srcdir}/python-pytorch-ffmpeg6.patch"
 
+  patch -Np1 -i "${srcdir}/python-pytorch-rocm-6.patch"
+  patch -Np1 -d third_party/gloo -i "${srcdir}/python-pytorch-goo-rocm-6.patch"
+
+  patch -Np1 -i "${srcdir}/pytorch-remove-caffe2-binaries.patch"
+
   cd "${srcdir}"
 
   cp -r "${_pkgname}" "${_pkgname}-opt"
@@ -235,8 +246,9 @@ _prepare() {
   export ATEN_NO_TEST=ON  # do not build ATen tests
   export USE_MKLDNN=ON
   export BUILD_CUSTOM_PROTOBUF=OFF
-  export BUILD_CAFFE2=ON
-  export BUILD_CAFFE2_OPS=ON
+  # Caffe2 support was removed from pytorch with version 2.2.0
+  export BUILD_CAFFE2=OFF
+  export BUILD_CAFFE2_OPS=OFF
   # export BUILD_SHARED_LIBS=OFF
   export USE_FFMPEG=ON
   export USE_GFLAGS=ON
@@ -267,7 +279,10 @@ _prepare() {
   export OVERRIDE_TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST}"
   export ROCM_PATH=/opt/rocm
   export HIP_ROOT_DIR=/opt/rocm
-  export PYTORCH_ROCM_ARCH="gfx803;gfx900;gfx906;gfx908;gfx90a;gfx1030;gfx1100;gfx1101;gfx1102"
+  export PYTORCH_ROCM_ARCH="gfx906;gfx908;gfx90a;gfx940;gfx941;gfx942;gfx1010;gfx1012;gfx1030;gfx1100;gfx1101;gfx1102"
+  # Compile source code for supported GPU archs in parallel
+  export HIPCC_COMPILE_FLAGS_APPEND="-parallel-jobs=$(nproc)"
+  export HIPCC_LINK_FLAGS_APPEND="-parallel-jobs=$(nproc)"
 }
 
 build() {
@@ -280,7 +295,7 @@ build() {
   echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
   # this horrible hack is necessary because the current release
   # ships inconsistent CMake which tries to build objects before
-  # thier dependencies, build twice when dependencies are available
+  # their dependencies, build twice when dependencies are available
   python setup.py build || python setup.py build
 
   cd "${srcdir}/${_pkgname}-opt"
@@ -329,8 +344,8 @@ build() {
   patch -Np1 -i "$srcdir/pytorch-rocm-jit.patch"
   # same horrible hack as above
   python setup.py build || python setup.py build
+  
   cd "${srcdir}/${_pkgname}-opt-rocm"
-
   echo "Building with rocm and with non-x86-64 optimizations"
   _prepare
   export USE_CUDA=0
