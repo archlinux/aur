@@ -3,7 +3,7 @@
 
 pkgname=zfsbootmenu-efi-bin
 _pkgname=zfsbootmenu
-pkgver=2.2.2
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="ZFS bootloader for root-on-ZFS systems - EFI binary"
 license=('MIT')
@@ -13,8 +13,8 @@ depends=('zfs')
 optdepends=('efibootmgr' 'refind' 'syslinux' 'grub')
 source=("${_pkgname}-release-vmlinuz-$CARCH.EFI::${url}/releases/download/v${pkgver}/${_pkgname}-release-$CARCH-v${pkgver}-vmlinuz.EFI"
         "${_pkgname}-recovery-vmlinuz-$CARCH.EFI::${url}/releases/download/v${pkgver}/${_pkgname}-recovery-$CARCH-v${pkgver}-vmlinuz.EFI")
-sha256sums=('bbbf7ef0cb8e2ad13cf7bf8aacb8e0c4d6f0ab791b8b9dc0dcc51be8761203e2'
-            '7058019c736e669f6d92bfd87c1d59e1fd8e59f4913e8079778eb0713211f027')
+sha512sums=('15c7935f1733da12b99996ad10e34635bb141f459487c1cdafd38ce625bc91e75dda34e2247a467c1b231b1cc75e00b83c3be049a3dd5ee9d84a888f7d98aa7a'
+            '41e852c08f5e74668c3a4a839fc48f02b16dcc5446d51b1c64e95e2a1001bd0bd29ece736ea5777ea5f2d2de117dc14d00ebf4fc24e584f8b9d21c346172e82e')
 
 package() {
         efimounts=$(lsblk -rno parttypename,mountpoint | awk -e '/EFI\\x20\(FAT-12\/16\/32\)|EFI\\x20System/ {print $2}' | tr -s '\n')
