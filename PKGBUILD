@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electronim-bin
-pkgver=0.0.98
-_electronversion=27
-pkgrel=2
+pkgver=0.0.99
+_electronversion=28
+pkgrel=1
 pkgdesc="Electron based multi IM (Instant Messaging) client"
 arch=('x86_64')
 url="https://github.com/manusa/electronim"
-license=('Apache')
+license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e9673b4cbebb7c30ba0f76f760b32d27d524000519692a36a61a9d3cc626bef7'
+sha256sums=('12161384f90419f25e860dae7b5909c59b016be1041148989b770a547cd30816'
             '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
