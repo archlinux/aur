@@ -1,3 +1,4 @@
+# Maintainer Max Harmathy <harmathy@mailbox.org>
 # Contributor: noonov <noonov@gmail.com>
 
 pkgname=ttf-vlgothic
