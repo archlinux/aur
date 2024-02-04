@@ -1,0 +1,27 @@
+pkgbase = xeme-hg
+	pkgdesc = A high level XMPP parsing library based on GObjects.
+	pkgver = 42.ad3533723a57
+	pkgrel = 1
+	url = https://keep.imfreedom.org/birb/birb/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = LGPL-2.1-or-later
+	makedepends = mercurial
+	makedepends = meson
+	makedepends = help2man
+	makedepends = vala
+	makedepends = gi-docgen
+	makedepends = gobject-introspection
+	makedepends = birb-hg
+	depends = glib2
+	source = hg+https://keep.imfreedom.org/xeme/xeme#branch=default
+	sha256sums = SKIP
+
+pkgname = xeme-hg
+	depends = glib2
+	depends = birb-hg
+
+pkgname = xeme-docs-hg
+	pkgdesc = A high level XMPP parsing library based on GObjects. (documentation)
+	depends = 
