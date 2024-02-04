@@ -1,6 +1,6 @@
 pkgbase = squawk
 	pkgdesc = An XMPP desktop messenger, written on pure c++ (qt)
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://git.macaw.me/blue/squawk
 	arch = i686
@@ -12,13 +12,13 @@ pkgbase = squawk
 	makedepends = boost
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
-	depends = lmdb
-	depends = qxmpp>=1.1.0
-	optdepends = kwallet: secure password storage (requires rebuild)
-	optdepends = kconfig: system themes support (requires rebuild)
-	optdepends = kconfigwidgets: system themes support (requires rebuild)
-	optdepends = kio: better show in folder action (requires rebuild)
-	source = squawk-0.2.2.tar.gz::https://git.macaw.me/attachments/808a59b3-1759-462d-83f6-81d08dd45377
-	sha256sums = e4fa2174a3ba95159cc3b0bac3f00550c9e0ce971c55334e2662696a4543fc7e
+	depends = lmdbal
+	depends = qxmpp-qt5
+	optdepends = kwallet5: secure password storage (requires rebuild)
+	optdepends = kconfig5: system themes support (requires rebuild)
+	optdepends = kconfigwidgets5: system themes support (requires rebuild)
+	optdepends = kio5: better show in folder action (requires rebuild)
+	source = squawk-0.2.3.tar.gz::https://git.macaw.me/blue/squawk/archive/0.2.3.tar.gz
+	sha256sums = 4c48aaa59cf7744c931f446ca32eb9df3575583029951fd3f48a18e0eb3530d3
 
 pkgname = squawk
