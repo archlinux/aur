@@ -23,8 +23,8 @@ sha256sums=('50cdb0a515e024f6f1244591aa31705f5a142178f3d7017489b15cf4595e2593'
             '3602be0cc001f6f301b8c7edcf24ea2508655e8fae6addf9ccafc9229f62e6eb'
             '23e11fddd80a43a822e3463816d29d0e4af6e22d2bff7e0390e192240adc66e7'
             '0ba95ed8914f1c3d7fb3601a9735d53be0445aa070a003f7938bfff754677578')
-backup=('etc/bitcoin/${_bitcoin}.conf'
-        'etc/logrotate.d/${_bitcoin}')
+backup=("etc/bitcoin/${_bitcoin}.conf"
+        "etc/logrotate.d/${_bitcoin}")
 makedepends=('boost' 'cmake' 'desktop-file-utils' 'help2man' 'libevent' 'miniupnpc' 'ninja' 'protobuf' 'qrencode' 'qt5-tools' 'zeromq')
 
 build() {
