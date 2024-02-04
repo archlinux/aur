@@ -2,4 +2,4 @@ src
 pkg
 *.pkg.tar.*
 *.log
-gpt4all
+*.tar.gz
