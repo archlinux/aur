@@ -2,7 +2,7 @@
 _pkgname=nitter
 pkgname=nitter-git
 pkgver=latest
-pkgrel=24
+pkgrel=25
 pkgdesc="Alternative Twitter front-end"
 url="https://github.com/zedeus/nitter"
 depends=('redis')
@@ -18,13 +18,16 @@ source=("$pkgname::git+$url.git#branch=guest_accounts"
     "tmpfilesd.conf"
     "nitter.sh"
     "nitter.service"
-    "nitter.install")
+    "nitter.install"
+    "https://patch-diff.githubusercontent.com/raw/zedeus/nitter/pull/1164.patch"
+    )
 sha256sums=('SKIP'
             '89a643cba8d8e9324441e1c901d939629fdbf6f9bc66d4f6c070dc75d8714b64'
             '2a699cc01b9a8a52d33bfc13a49ba7f5781a07bfa2d002d66eb5e27ab4f041f6'
             '79469c5cfeacf38c7469a2240ba5c19670ddaf757e6d1b5286206a18a0718487'
             '560d98833c56979cb6b5d187a827788dbbdff95871f957225604b58b15c1c219'
-            '5d8a7acc2bd5fb860e2e1ba58ed679d9aa494aeed1d6dedd9da4f658e6b01305')
+            '5d8a7acc2bd5fb860e2e1ba58ed679d9aa494aeed1d6dedd9da4f658e6b01305'
+            'd45b79f8ebef915d7671a759102c3e0dc925428bba4b5eec348f2da1da1e6d12')
 
 pkgver() {
   cd "$pkgname"
@@ -41,6 +44,8 @@ prepare() {
   mv -v nitter.example.conf nitter.conf
   # Tweak the configuration file
   patch -p1 <"$srcdir/config.patch"
+  # Other Patches
+  patch -p1 <"$srcdir/1164.patch"
 }
 
 build() {
