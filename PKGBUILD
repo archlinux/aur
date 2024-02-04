@@ -3,7 +3,7 @@ pkgname=publii-bin
 _pkgname=Publii
 pkgver=0.44.4
 _electronversion=26
-pkgrel=1
+pkgrel=2
 pkgdesc="The most intuitive Static Site CMS designed for SEO-optimized and privacy-focused websites."
 arch=('x86_64')
 url="https://getpublii.com"
@@ -22,11 +22,11 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('424ec8c7c54b7eb813e156d2210170079a157e381e4a2f27b6d416a2fa6d962c'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${_pkgname}|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
