@@ -39,7 +39,7 @@ package()
     mkdir -p "${pkgdir}"/usr/share/webapps/"${pkgname}"/
 
     # Install the software.
-    cp -r "${srcdir}"/"${_pkgname}"/ "${pkgdir}"/usr/share/webapps/
+    cp -r "${srcdir}"/"${_pkgname}"/* "${pkgdir}"/usr/share/webapps/"${pkgname}"/
     chown -R http:http "${pkgdir}"/usr/share/webapps/"${pkgname}"/
 
     # Install the documentation.
