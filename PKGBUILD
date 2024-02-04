@@ -1,7 +1,7 @@
 # Maintainer: Alexander Beck <dev@daallexx.eu>
 
 pkgname=monocle
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='See through all BGP data with a monocle'
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )
 sha512sums=(
-  'c933b991a8fc8e22c192ce9885ca8e362ed5a2e10c924f778f19759ddf6b9019264266efe7050013584e6355058b6175f24a28a5050b787738b0760cfa516472'
+  'b3b9ab1c6ee0d878f90cacfbf90e2e6897f4f0d1c23e3161bfd155a63373fe4d9dfcee6696fb071b21b22d51ea274da3c63e9ffd3d8c3fab266f957d65020e29'
 )
 
 prepare() {
