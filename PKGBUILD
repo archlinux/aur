@@ -10,14 +10,15 @@ pkgname='nginx_passwd'
 pkgdesc='Basic Auth Password File Manager for nginx'
 _gitname='nginx_passwd'
 
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 url="https://github.com/gene-git/nginx_passwd"
 
 arch=(any)
 license=(MIT)
 # tomli only needed for python < 3.11
-depends=('python>3.9' 'python-packaging' 'python-passlib' )
+depends=('python>3.9' 'python-passlib')
+optdepends=('python-argon2_cffi: Argon2 support')
 
 # To build docs uncommont sphinx/texlive
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatch' 'rsync'
