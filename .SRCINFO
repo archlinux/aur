@@ -1,20 +1,22 @@
 pkgbase = mqttx-git
 	pkgdesc = A cross-platform MQTT 5.0 client tool open sourced by EMQ
-	pkgver = 1.9.8.r1.g54acd89a
+	pkgver = 1.9.8.r30.gbc6f21de
 	pkgrel = 1
 	url = https://mqttx.app/
 	arch = aarch64
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = npm
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = yarn
+	makedepends = python
+	makedepends = curl
 	depends = electron13
-	source = mqttx::git+https://github.com/emqx/MQTTX.git
+	source = mqttx.git::git+https://github.com/emqx/MQTTX.git
 	source = mqttx.sh
 	sha256sums = SKIP
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = mqttx-git
