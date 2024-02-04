@@ -1,11 +1,12 @@
 # Maintainer: trougnouf (Benoit Brummer) <trougnouf@gmail.com>
+# Contributors: crocowhile
 
 _name="pidng"
 _NAME='PiDNG'
 pkgname=python-${_name}-git
 provides=("python-${_name}")
 conflicts=("python-${_name}")
-pkgver=3.4.4+17+gab8aeb7
+pkgver=20230726.66f3e16
 pkgrel=1
 pkgdesc="Create Adobe DNG RAW files using Python."
 url="https://github.com/schoolpost/${_name}"
@@ -18,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${srcdir}/${_name}
-  git describe --tags | sed 's/-/+/g;s/v//;'
+  git log -1 --format=%cd.%h --date=short|tr -d -
 }
 
 build() {

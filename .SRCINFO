@@ -1,6 +1,6 @@
 pkgbase = python-pidng-git
 	pkgdesc = Create Adobe DNG RAW files using Python.
-	pkgver = 3.4.4+17+gab8aeb7
+	pkgver = 20230726.66f3e16
 	pkgrel = 1
 	url = https://github.com/schoolpost/pidng
 	arch = x86_64
