@@ -1,6 +1,6 @@
 pkgbase = r-gg4way
 	pkgdesc = 4way Plots of Differential Expression
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/gg4way
 	arch = any
@@ -27,8 +27,8 @@ pkgbase = r-gg4way
 	optdepends = r-org.hs.eg.db
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/gg4way_1.0.1.tar.gz
-	md5sums = 83797f866559f5aa7a27452bbd8b9c24
-	sha256sums = bcd383fef474cda7a6c6372afffac875aeaaf4ee6278a9882a9691cea0430090
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gg4way_1.0.2.tar.gz
+	md5sums = 119c639126af675cbf7b9daf47122dc4
+	b2sums = cebbeb5ae63d56adcc29d23d07eb6e07df07458de8aaf5c6a585b595d15639ec7da71d517b24a80ecbb05aa695a00976b33b910699f9d6033a57871012550d12
 
 pkgname = r-gg4way
