@@ -1,23 +1,15 @@
 pkgbase = perl-perl-version
 	pkgdesc = Parse and manipulate Perl version strings
-	pkgver = 1.013
+	pkgver = 1.016
 	pkgrel = 1
 	url = https://metacpan.org/release/Perl-Version
 	arch = any
 	license = PerlArtistic
-	makedepends = perl-extutils-makemaker>=0
-	depends = perl
-	depends = perl-pod-usage>=1.3
-	depends = perl-scalar-list-utils>=0
-	depends = perl-file-slurp-tiny>=0
-	depends = perl-getopt-long>=2.34
-	depends = perl-data-dumper>=0
-	depends = perl-carp>=0
-	depends = perl-test-simple>=0
+	license = GPL
+	depends = perl>=5.010
 	options = !emptydirs
-	options = purge
-	source = http://search.cpan.org/CPAN/authors/id/B/BD/BDFOY/Perl-Version-1.013.tar.gz
-	sha256sums = 1887414d1c8689d864c840114101e043e99d7dd5b9cca69369a60e821e3ad0f7
+	source = http://search.cpan.org/CPAN/authors/id/B/BD/BDFOY/Perl-Version-1.016.tar.gz
+	md5sums = 120078d8fe0946b86bf8374b911430f0
+	sha512sums = ef3668df9a0d84d392f63c16209e7cd49bba17f3e762cf46d11e395c0c212df547c808e8b8268f23a101cf3dfa09a3be72634058e878b0c55c32d522e5ace1f4
 
 pkgname = perl-perl-version
-
