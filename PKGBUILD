@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-perl-languageserver'
-pkgver='2.6.1'
+pkgver='2.6.2'
 pkgrel='1'
 pkgdesc="Language Server and Debug Protocol Adapter for Perl"
 arch=('any')
@@ -12,8 +12,8 @@ depends=('perl-anyevent>=0' 'perl-anyevent-aio>=0' 'perl-class-refresh>=0' 'perl
 makedepends=()
 url='https://metacpan.org/release/Perl-LanguageServer'
 source=("http://search.cpan.org/CPAN/authors/id/G/GR/GRICHTER/Perl-LanguageServer-${pkgver}.tar.gz")
-md5sums=('c8473b0b6acfee7d9e53e8979a1a6a87')
-sha512sums=('c20661844449ac012de2af5069649b6fc98484536c929ef9423df554c1f0e285d7b1ff4a1de7711f0e3c01b491e93bf014ce652b9cb82e9fa971558817a6fef9')
+md5sums=('3892a82f5d35d0b08c71976ceec490db')
+sha512sums=('0154bebbcea73fa83904e77214a518deba39b9dd026728a36c706bf9f5bb134f417a9b5d7794151fe74e40f69132f1589f18641f59ed95be2d406b6dc259a72d')
 _distdir="Perl-LanguageServer-${pkgver}"
 
 build() {
