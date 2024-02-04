@@ -2,7 +2,7 @@
 # Project: nwg-shell for sway, https://github.com/nwg-piotr/nwg-shell
 pkgname=('nwg-menu-bin')
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="MenuStart for sway and other wlroots-based compositors"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/nwg-menu"
@@ -23,6 +23,6 @@ package() {
   install -Dm644 -t "$pkgdir"/usr/share/nwg-menu/ menu-start.css
   install -Dm755 -t "$pkgdir"/usr/bin bin/nwg-menu
   
-  install -D -t "$pkgdir"/usr/share/licenses/"$pkgname" LICENSE
-  install -D -t "$pkgdir"/usr/share/doc/"$pkgname" README.md
+  install -D -t "$pkgdir"/usr/share/licenses/nwg-menu LICENSE
+  install -D -t "$pkgdir"/usr/share/doc/nwg-menu README.md
 }
