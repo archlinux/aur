@@ -2,11 +2,11 @@
 
 pkgname=vpkedit-bin
 pkgver=4.0.0
-pkgrel=1
-pkgdesc="A tool to work with VPK files (binary release)"
+pkgrel=2
+pkgdesc="A library and CLI/GUI tool to create, read, and write several pack file formats (binary release)"
 url="https://github.com/craftablescience/VPKEdit"
-arch=('x86_64')
 license=('MIT')
+arch=('x86_64')
 provides=("vpkedit")
 conflicts=("vpkedit")
 source=("vpkedit-$pkgver.zip::$url/releases/download/v$pkgver/VPKEdit-Linux-Installer-gcc-Release.zip")

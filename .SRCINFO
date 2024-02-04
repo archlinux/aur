@@ -1,7 +1,7 @@
 pkgbase = vpkedit-bin
-	pkgdesc = A tool to work with VPK files (binary release)
+	pkgdesc = A library and CLI/GUI tool to create, read, and write several pack file formats (binary release)
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/craftablescience/VPKEdit
 	arch = x86_64
 	license = MIT
