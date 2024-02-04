@@ -1,0 +1,14 @@
+pkgbase = mp4grep-bin
+	pkgdesc = mp4grep is a CLI for transcribing and searching audio/video files
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/o-oconnell/mp4grep
+	arch = x86_64
+	license = GPL-3.0
+	depends = vosk-api
+	conflicts = mp4grep
+	conflicts = mp4grep-git
+	source = https://github.com/o-oconnell/mp4grep/releases/download/0.1.5-linux-x86/binary-mp4grep-0.1.5-linux-x86.zip
+	sha256sums = 5928e96eebc9052208489a2ed37d97201de2e4947021ffeb0da131c2595cbc9d
+
+pkgname = mp4grep-bin
