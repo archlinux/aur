@@ -3,18 +3,18 @@
 
 pkgname='perl-http-parser-xs'
 pkgver='0.17'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="a fast, primitive HTTP request parser"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=0')
-makedepends=()
+makedepends=('perl-module-install')
 url='https://metacpan.org/release/HTTP-Parser-XS'
-source=('http://search.cpan.org/CPAN/authors/id/K/KA/KAZUHO/HTTP-Parser-XS-0.17.tar.gz')
+source=("http://search.cpan.org/CPAN/authors/id/K/KA/KAZUHO/HTTP-Parser-XS-${pkgver}.tar.gz")
 md5sums=('148579affbdfee247c47460924d6833d')
 sha512sums=('44375b93e8aea04bedee283b1796eb6e94a2920be7ae29fe2f7d83491005b4d8f29047ddf52c6d7f62cf5a9f2575d7f6ea7d357e178536f60dd2c3cee08f495e')
-_distdir="HTTP-Parser-XS-0.17"
+_distdir="HTTP-Parser-XS-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
