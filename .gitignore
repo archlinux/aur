@@ -4,6 +4,7 @@
 !/*.sh
 !/*.sysusers
 !/*.tmpfiles
+!/.gitignore
 !/.SRCINFO
 !/override-farmos.conf
 !/PKGBUILD
