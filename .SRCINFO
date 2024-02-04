@@ -1,6 +1,6 @@
 pkgbase = python-galois
 	pkgdesc = A performant NumPy extension for Galois fields and their applications
-	pkgver = 0.3.7
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://github.com/mhostetter/galois
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-galois
 	depends = python-numpy
 	depends = python-numba
 	depends = python-typing_extensions
-	source = galois-0.3.7.tar.gz::https://github.com/mhostetter/galois/archive/refs/tags/v0.3.7.tar.gz
-	b2sums = 23d6c5032304526119217e866746385867198d65c4c6e4bad4dfdc3ab6b85acfd206c22b4401ef0359727bf7cfb61cf15669fef64e344a98be8c1ea0e0476441
+	source = galois-0.3.8.tar.gz::https://github.com/mhostetter/galois/archive/refs/tags/v0.3.8.tar.gz
+	b2sums = 1cca7b1a55cef1c8552e4d3ef9901b70fea357a201b8157569222a1f18aeca93a8bd6b6e2c4b361a219858a1cdf105bdff24d9a37ebccc0007a2c0f0a13f28ef
 
 pkgname = python-galois
