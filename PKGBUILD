@@ -37,6 +37,7 @@ makedepends=(cbindgen
     inetutils
     git
     jack
+    ldd
     llvm
     mesa
     mold
