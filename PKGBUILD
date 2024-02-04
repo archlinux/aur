@@ -1,19 +1,19 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bioCancer
-_pkgver=1.30.0
+_pkgver=1.30.2
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Interactive Multi-Omics Cancers Data Visualization and Analysis'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('AGPL')
+pkgdesc="Interactive Multi-Omics Cancers Data Visualization and Analysis"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('AGPL-3.0-only AND CC-BY-NC-SA-4.0')
 depends=(
-  r
   r-algdesign
   r-annotationdbi
   r-biobase
+  r-cbioportaldata
   r-clusterprofiler
   r-diagrammer
   r-dose
@@ -22,7 +22,6 @@ depends=(
   r-genetclassifier
   r-go.db
   r-htmlwidgets
-  r-httr
   r-import
   r-org.bt.eg.db
   r-org.hs.eg.db
@@ -46,14 +45,15 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f5274c3303f18f68740be7c701b37ff174f078e5b62414526fc65a54c71c1b66')
+md5sums=('21a58e0ed32420f0c0cffe4d5e18b926')
+b2sums=('05913982074262abcadbeaf1f4e9f2324a6676cfbace9010fe46143d481746cce98829757118384ff8b635196ea2af9f1cf044004200d2d8510ac0bf0b0b1ccb')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
