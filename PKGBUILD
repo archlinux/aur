@@ -1,8 +1,11 @@
 # Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
+# Contributor: Limao Luo <luolimao+AUR@gmail.com>
 pkgname=python2-pbr
 _name="${pkgname#python2-}"
-pkgver=5.9.0
-pkgrel=2
+pkgver=5.10.0
+pkgrel=1
 pkgdesc='Python Build Reasonableness (for Python 2)'
 arch=('any')
 _pypi='https://pypi.python.org'
@@ -10,7 +13,7 @@ url="$_pypi/pypi/$_name"
 license=('Apache')
 depends=('python2-setuptools')
 source=("$_pypi/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('e8dca2f4b43560edef58813969f52a56cef023146cbb8931626db80e6c1c4308')
+sha256sums=('cfcc4ff8e698256fc17ea3ff796478b050852585aa5bae79ecd05b2ab7b39b9a')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
