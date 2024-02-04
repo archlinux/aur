@@ -1,7 +1,7 @@
 pkgbase = headset-bin
 	pkgdesc = An Electron-based music player for the busy ones
 	pkgver = 4.2.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://headsetapp.co/
 	arch = x86_64
 	license = MIT
@@ -14,6 +14,6 @@ pkgbase = headset-bin
 	source = headset.sh
 	sha256sums = f3582c22aef8b2081ab84ea0f2933acf4e4a4e6b1b7b8f4265af5a450103c0ca
 	sha256sums = 0fd4183b7556b9f1b93d974969bad60053ab01db10ed2b501d26ed6840766045
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = headset-bin
