@@ -1,0 +1,5 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /etc/mautrix-meta 0750 root mautrix-meta
+z /etc/mautrix-meta/* 0640 mautrix-meta mautrix-meta -
+d /var/log/mautrix-meta 0700 mautrix-meta mautrix-meta
+d /var/lib/mautrix-meta 0700 mautrix-meta mautrix-meta
