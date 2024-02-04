@@ -1,17 +1,17 @@
 pkgbase = nvidia-utils-tesla
 	pkgdesc = NVIDIA drivers utilities (tesla version)
-	pkgver = 535.129.03
+	pkgver = 535.154.05
 	pkgrel = 1
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = https://us.download.nvidia.com/tesla/535.129.03/NVIDIA-Linux-x86_64-535.129.03.run
+	source = https://us.download.nvidia.com/tesla/535.154.05/NVIDIA-Linux-x86_64-535.154.05.run
 	source = nvidia-drm-outputclass.conf
 	source = nvidia-utils.sysusers
 	source = nvidia.rules
 	source = 120-nvidia-settings-change-desktop-paths.patch
-	sha256sums = e6dca5626a2608c6bb2a046cfcb7c1af338b9e961a7dd90ac09bb8a126ff002e
+	sha256sums = 7e95065caa6b82de926110f14827a61972eb12c200e863a29e9fb47866eaa898
 	sha256sums = be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d
 	sha256sums = d8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167
 	sha256sums = 4fbfd461f939f18786e79f8dba5fdb48be9f00f2ff4b1bb2f184dbce42dd6fc3
@@ -25,11 +25,11 @@ pkgname = nvidia-utils-tesla
 	optdepends = nvidia-settings-tesla: for the configuration tool
 	optdepends = xorg-server-devel: for nvidia-xconfig
 	optdepends = opencl-nvidia-tesla: for OpenCL support
-	provides = nvidia-utils=535.129.03
+	provides = nvidia-utils=535.154.05
 	provides = vulkan-driver
 	provides = opengl-driver
-	provides = nvidia-libgl=535.129.03
-	provides = nvidia-libgl-tesla=535.129.03
+	provides = nvidia-libgl=535.154.05
+	provides = nvidia-libgl-tesla=535.154.05
 	conflicts = nvidia-utils
 	conflicts = nvidia-libgl
 	replaces = nvidia-libgl
@@ -37,16 +37,16 @@ pkgname = nvidia-utils-tesla
 pkgname = opencl-nvidia-tesla
 	pkgdesc = OpenCL implemention for NVIDIA (tesla version)
 	depends = zlib
-	depends = nvidia-utils-tesla>=535.129.03
+	depends = nvidia-utils-tesla>=535.154.05
 	optdepends = opencl-headers: headers necessary for OpenCL development
-	provides = opencl-nvidia=535.129.03
+	provides = opencl-nvidia=535.154.05
 	provides = opencl-driver
 	conflicts = opencl-nvidia
 
 pkgname = nvidia-settings-tesla
 	pkgdesc = Tool for configuring the NVIDIA graphics driver (tesla version)
-	depends = nvidia-utils-tesla>=535.129.03
+	depends = nvidia-utils-tesla>=535.154.05
 	depends = gtk3
-	provides = nvidia-settings=535.129.03
-	provides = nvidia-settings-tesla=535.129.03
+	provides = nvidia-settings=535.154.05
+	provides = nvidia-settings-tesla=535.154.05
 	conflicts = nvidia-settings
