@@ -1,21 +1,21 @@
 pkgbase = hpklinux
 	pkgdesc = AudioScience HPI (ASIHPI) user space libraries and tools
-	pkgver = 4.20.42
+	pkgver = 4.20.43
 	pkgrel = 1
 	url = https://www.audioscience.com/internet/download/linux_drivers.htm
-	arch = x86_64
 	arch = aarch64
+	arch = x86_64
 	groups = pro-audio
-	license = GPL2
-	license = ZLIB
+	license = GPL-2.0-only
+	license = Zlib
 	makedepends = python-setuptools
 	depends = glibc
 	optdepends = python: for python bindings
 	optdepends = python-docopt: for dab_data and dabtest scripts
 	provides = python-audioscience
-	source = https://www.audioscience.com/internet/download/drivers/released/v4/20/42/hpklinux_4.20.42.tar.gz
+	source = https://www.audioscience.com/internet/download/drivers/released/v4/20/43/hpklinux_4.20.43.tar.gz
 	source = python.patch
-	sha256sums = 41336a3c869e6917df3cdc38ce9819eabf2a36a1573df47c293ef645fd6b6546
+	sha256sums = e4199f92a2080e913d26ba5cd38f52212cca5aefcc3a2f669b0b989c7ac510f3
 	sha256sums = 922832e6c35ed4f55ad7de6138d9fe92fb6add684646471d0b9e616f96802cd7
 
 pkgname = hpklinux
