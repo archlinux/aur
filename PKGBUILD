@@ -1,19 +1,20 @@
-# Contributor: xRemaLx <anton.komolov@gmail.com>
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-test-www-mechanize'
-_pkgname='Test-WWW-Mechanize'
-pkgver='1.48'
+pkgver='1.60'
 pkgrel='1'
 pkgdesc="Testing-specific WWW::Mechanize subclass"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=5.008' 'perl-carp-assert-more' 'perl-html-parser' 'perl-html-tree' 'perl-http-server-simple>=0.42' 'perl-libwww' 'perl-test-longstring>=0.15' 'perl-uri' 'perl-www-mechanize>=1.68')
-makedepends=('perl-cgi')
-url='http://search.cpan.org/dist/Test-WWW-Mechanize'
-source=("http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('187d487b8ad71f8c94916365b7ad28ac')
-sha512sums=('90a1d365479245d159ba7aa954bb01b617f1526423a00b41f3347e0e708a3eb79f0ba5a20315e74032d817154e52ef6178571528bcc183e38a9c53577ef8235d')
+depends=('perl-carp-assert-more>=1.16' 'perl-html-form>=0' 'perl-html-parser>=0' 'perl-http-message>=6.29' 'perl-http-server-simple>=0.42' 'perl-test-longstring>=0.15' 'perl-uri>=0' 'perl-www-mechanize>=1.68' 'perl-libwww>=0' 'perl>=5.010')
+makedepends=()
+url='https://metacpan.org/release/Test-WWW-Mechanize'
+source=('http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/Test-WWW-Mechanize-1.60.tar.gz')
+md5sums=('f14a2b64c39ec2536456b85a295f9074')
+sha512sums=('86213bcbcd5d0f2565827ad692a190084552a5f6ddfd376729332ab67eb8cf54a622c23e4e3d5f21c29009ee2ed10036340499cff1e8c522c696d0a0bcfd65c1')
+_distdir="Test-WWW-Mechanize-1.60"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -22,23 +23,23 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC=/dev/null
 
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "$srcdir/$_distdir"
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 check() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "$srcdir/$_distdir"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
   )
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "$srcdir/$_distdir"
   make install
-  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
 # Local Variables:
