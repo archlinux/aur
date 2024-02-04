@@ -4,14 +4,14 @@ pkgbase = blinker-bin
 	pkgrel = 3
 	url = https://github.com/mrkpatchaa/blinker
 	arch = x86_64
-	license = custom:CC0-1.0
-	depends = electron27
+	license = CC0-1.0
+	depends = electron28
 	depends = nodejs
 	provides = blinker=2.1.0
 	conflicts = blinker
 	source = blinker-2.1.0.deb::https://github.com/mrkpatchaa/blinker/releases/download/v2.1.0/blinker_2.1.0_amd64.deb
 	source = blinker.sh
 	sha256sums = a5d4587f962041b2bd7fa375213e83fcfa6a143a1b7030c2dc2b365654fbdff9
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = blinker-bin
