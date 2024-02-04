@@ -7,7 +7,7 @@ pkgdesc="An application that helps artists post art and other multimedia to mult
 arch=('x86_64')
 url="https://www.postybirb-plus.com/"
 _ghurl="https://github.com/mvdicarlo/postybirb-plus"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=(
     "electron${_electronversion}"
     'dbus-glib'
