@@ -3,7 +3,7 @@ pkgname=kahla-bin
 _pkgname=Kahla
 pkgver=4.5.0
 _electronversion=8
-pkgrel=9
+pkgrel=10
 pkgdesc="A cross-platform business messaging app."
 arch=("x86_64")
 url="https://www.kahla.app/"
@@ -22,14 +22,14 @@ source=(
 )
 sha256sums=('937672471cd111e8136d819db3e59707d97356c02585b88fca84beab46c8209b'
             '2f5e2140f19b9216cb3fecd147f935586c806c54b2edcdf5521f535237a1c3f7'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin}|g;s|Utility|Network;Utility|g" \
+    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g;s|Utility|Network;Utility|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
