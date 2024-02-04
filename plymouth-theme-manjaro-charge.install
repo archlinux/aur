@@ -5,7 +5,7 @@ post_install() {
   > one of those provided (with desktop logo) by
   > modifying the default symbolic link and
   > rebuilding your initramfs, run as root:
-  > cd /usr/share/plymouth/theme/manjaro-charge
+  > cd /usr/share/plymouth/themes/manjaro-charge
   > ln -sf watermark-<EDITION>.png watermark.png
 
 ==> To activate the theme, run as root:
