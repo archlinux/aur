@@ -1,6 +1,6 @@
 pkgbase = zfsbootmenu
 	pkgdesc = ZFS bootloader for root-on-ZFS systems
-	pkgver = 2.2.2
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/zbm-dev/zfsbootmenu
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = zfsbootmenu
 	backup = etc/zfsbootmenu/mkinitcpio.conf
 	backup = etc/zfsbootmenu/dracut.conf.d/omit-drivers.conf
 	backup = etc/zfsbootmenu/dracut.conf.d/zfsbootmenu.conf
-	source = zfsbootmenu-v2.2.2.tar.gz::https://github.com/zbm-dev/zfsbootmenu/archive/v2.2.2.tar.gz
-	sha256sums = b010a0d89784715a2c3197a21073d2fd9430152ad268af51f5d45249c7ede778
+	source = zfsbootmenu-v2.3.0.tar.gz::https://github.com/zbm-dev/zfsbootmenu/archive/v2.3.0.tar.gz
+	sha512sums = 9b8e2d5ea258a32cd09a9382faaa21beea54f2ed825fa747f10ffe0b9f191c257b023019ec76dc882e649e8ea6fcd8e310632bba6c783228c594e3d0fee2c9c8
 
 pkgname = zfsbootmenu
