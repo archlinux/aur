@@ -1,0 +1,17 @@
+pkgbase = tree-puzzle
+	pkgdesc = Maximum likelihood analysis for nucleotide, amino acid, and two-state data
+	pkgver = 5.3.rc16
+	pkgrel = 0
+	url = http://www.tree-puzzle.de/
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = make
+	makedepends = autoconf
+	depends = openmpi
+	depends = glibc
+	source = tree-puzzle-5.3.rc16.tgz::http://www.tree-puzzle.de/tree-puzzle-5.3.rc16.tar.gz
+	source = ppuzzle.patch
+	sha1sums = deff2968611b9726f189d8babfd9bb908fc21a5b
+	sha1sums = 3557851bcabc5afc58a81a966bc48c7f9d6f1506
+
+pkgname = tree-puzzle
