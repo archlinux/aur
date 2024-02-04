@@ -1,0 +1,23 @@
+pkgbase = lepton-bin
+	pkgdesc = A lean code snippet manager
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://hackjutsu.com/Lepton
+	arch = x86_64
+	license = MIT
+	makedepends = squashfuse
+	depends = electron13
+	depends = hicolor-icon-theme
+	depends = dbus-glib
+	depends = libdbusmenu-glib
+	depends = gtk2
+	provides = lepton=1.10.0
+	conflicts = lepton
+	source = lepton-1.10.0.AppImage::https://github.com/hackjutsu/Lepton/releases/download/v1.10.0/Lepton-1.10.0.AppImage
+	source = LICENSE-1.10.0::https://raw.githubusercontent.com/hackjutsu/Lepton/v1.10.0/LICENSE
+	source = lepton.sh
+	sha256sums = ace652c720110c09fe46c9f37dffe9f2e476f6d072e0c7a23fa5d9ebbf085a1e
+	sha256sums = bbee9578431a6a08cd42a86b84e8b4c65ba132357fd6615996445bdc4a534224
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+
+pkgname = lepton-bin
