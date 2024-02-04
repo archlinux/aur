@@ -6,7 +6,7 @@ pkgver='1.60'
 pkgrel='1'
 pkgdesc="Testing-specific WWW::Mechanize subclass"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic2.0')
 options=('!emptydirs')
 depends=('perl-carp-assert-more>=1.16' 'perl-html-form>=0' 'perl-html-parser>=0' 'perl-http-message>=6.29' 'perl-http-server-simple>=0.42' 'perl-test-longstring>=0.15' 'perl-uri>=0' 'perl-www-mechanize>=1.68' 'perl-libwww>=0' 'perl>=5.010')
 makedepends=()

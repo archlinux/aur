@@ -4,8 +4,7 @@ pkgbase = perl-test-www-mechanize
 	pkgrel = 1
 	url = https://metacpan.org/release/Test-WWW-Mechanize
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic2.0
 	depends = perl-carp-assert-more>=1.16
 	depends = perl-html-form>=0
 	depends = perl-html-parser>=0
