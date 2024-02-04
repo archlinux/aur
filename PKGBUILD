@@ -2,7 +2,7 @@
 
 pkgname='spacedrive'
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed filesystem written in Rust.'
 arch=('x86_64')
 url='https://spacedrive.com/'
@@ -26,7 +26,7 @@ build() {
 	export RUSTUP_TOOLCHAIN=1.73
 
 	pnpm prep
-	pnpm tauri build --bundles app --features custom-protocol
+	pnpm tauri build --bundles app -- --no-default-features
 }
 
 package() {
