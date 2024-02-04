@@ -1,25 +1,25 @@
 pkgbase = nvidia-tesla-dkms
 	pkgdesc = NVIDIA driver sources for linux (tesla version)
-	pkgver = 535.129.03
+	pkgver = 535.154.05
 	pkgrel = 1
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
-	provides = nvidia=535.129.03
-	provides = nvidia-dkms=535.129.03
-	provides = nvidia-tesla=535.129.03
+	provides = nvidia=535.154.05
+	provides = nvidia-dkms=535.154.05
+	provides = nvidia-tesla=535.154.05
 	provides = NVIDIA-MODULE
 	conflicts = nvidia
 	conflicts = nvidia-dkms
 	options = !strip
-	source = https://us.download.nvidia.com/tesla/535.129.03/NVIDIA-Linux-x86_64-535.129.03.run
+	source = https://us.download.nvidia.com/tesla/535.154.05/NVIDIA-Linux-x86_64-535.154.05.run
 	source = 110-nvidia-change-dkms-conf.patch
 	source = 120-nvidia-linux-rt-gift.patch
-	sha256sums = e6dca5626a2608c6bb2a046cfcb7c1af338b9e961a7dd90ac09bb8a126ff002e
+	sha256sums = 7e95065caa6b82de926110f14827a61972eb12c200e863a29e9fb47866eaa898
 	sha256sums = ac0c8c4ee6b0caa71b895cf8d8535ab4cebc68ac6b9b0b9c3cf28516e0846abd
 	sha256sums = 291bc6568e18496a4c2e732fd8616f6d536d8e9f3ab51f1959e3fc08f0de126b
 
 pkgname = nvidia-tesla-dkms
 	depends = dkms
-	depends = nvidia-utils-tesla=535.129.03
+	depends = nvidia-utils-tesla=535.154.05
 	depends = libglvnd
