@@ -1,6 +1,6 @@
 pkgbase = libretro-dosbox-pure-git
 	pkgdesc = MS-DOS core
-	pkgver = 0.9.7.r15.ge5b3057
+	pkgver = 0.9.9.r5.g87bf636
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/schellingb/dosbox-pure
@@ -11,7 +11,7 @@ pkgbase = libretro-dosbox-pure-git
 	arch = pentium4
 	arch = x86_64
 	groups = libretro
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = git
 	depends = gcc-libs
 	depends = glibc

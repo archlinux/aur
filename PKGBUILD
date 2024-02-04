@@ -2,13 +2,13 @@
 _reponame=dosbox-pure
 _pkgname=libretro-$_reponame
 pkgname=$_pkgname-git
-pkgver=0.9.7.r15.ge5b3057
+pkgver=0.9.9.r5.g87bf636
 pkgrel=1
 epoch=1
 pkgdesc="MS-DOS core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/schellingb/dosbox-pure"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 groups=('libretro')
 depends=('gcc-libs' 'glibc' 'libretro-core-info')
 makedepends=('git')
