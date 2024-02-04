@@ -14,24 +14,23 @@ replaces=('sift-bin')
 provides=("sift=${pkgver}")
 source=("https://github.com/svent/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('bbbd5c472c36b78896cd7ae673749d3943621a6d5523d47973ed2fc6800ae4c8')
-_gourl="github.com/svent/${pkgname}"
+_gourl="github.com/svent/${pkgname}@v${pkgver}"
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  go mod init github.com/svent/$pkgname
+  go mod tidy
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
-  export GOPATH="${srcdir}"
-  go get -v ${_gourl}
+  mkdir -p build/
+  go build -v -o build .
 }
-
-# check() {
-  # export GOPATH="${srcdir}"
-  # go test -v -x github.com/svent/sift
-# }
 
 package() {
-  install -Dm 775 "${srcdir}/bin/${pkgname}" \
-    "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm 644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "$srcdir/$pkgname-$pkgver"
+  install -Dm 755 build/sift $pkgdir/usr/bin/$pkgname
+  install -Dm 644 README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
+  install -Dm 644 LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
 }
-
-# vim:set ft=sh ts=2 sw=2 et:
