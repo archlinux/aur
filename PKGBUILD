@@ -3,20 +3,17 @@ _pkgname=js.design
 pkgname="${_pkgname//./-}-appimage"
 pkgver=1.0.6
 _electronversion=25
-pkgrel=5
+pkgrel=6
 pkgdesc="即时设计 A professional UI design software tailored for Chinese designers."
 arch=("x86_64")
 url="https://js.design"
-license=("GPL3")
+license=("LicenseRef-custom")
 conflicts=("${pkgname%-appimage}")
 depends=(
     "electron${_electronversion}"
-    'libx11'
-    'gdk-pixbuf2'
-    'libxext'
+    'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
-    'dbus-glib'
 )
 makedepends=(
     'squashfuse'
@@ -28,11 +25,11 @@ source=(
 )
 sha256sums=('3697482be454c0191810f39b0b93eb3c28eb5e9c77c6c3ad0634269f8e1a2bd5'
             'f1c8afcb7fbd3ad91d1f8b4bea8d66a21f9cb85be22b16ce652b66ca9473c616'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-appimage}.sh"
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
