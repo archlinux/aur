@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DMCFB
-_pkgver=1.14.0
+_pkgver=1.16.1
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc='Differentially Methylated Cytosines via a Bayesian Functional Approach'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a353d3fa038aad8bab65357e4dbb5b256785a0e06aa42c680d3e7fe23f1b37bb')
+sha256sums=('7ca7178b0df7455c2f78818fd7e48d4477e74e4b3be201e971cb2a3096850048')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
