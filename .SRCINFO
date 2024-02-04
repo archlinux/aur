@@ -1,0 +1,25 @@
+pkgbase = birb-hg
+	pkgdesc = GObject based library that implements a reusable plugin system
+	pkgver = 11.8f96bb505781
+	pkgrel = 1
+	url = https://keep.imfreedom.org/birb/birb/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL-2.0-or-later
+	makedepends = mercurial
+	makedepends = meson
+	makedepends = help2man
+	makedepends = vala
+	makedepends = gi-docgen
+	makedepends = gobject-introspection
+	depends = glib2
+	source = hg+https://keep.imfreedom.org/birb/birb#branch=default
+	sha256sums = SKIP
+
+pkgname = birb-hg
+	depends = glib2
+
+pkgname = birb-docs-hg
+	pkgdesc = GObject based library that implements a reusable plugin system (documentation)
+	depends = 
