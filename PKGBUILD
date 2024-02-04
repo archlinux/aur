@@ -2,30 +2,33 @@
 
 _pkgbase=mautrix-facebook
 pkgname=${_pkgbase}-git
-pkgver=r702.f8c78c4
+pkgver=r963.86a9763
 pkgrel=1
 pkgdesc="A double puppeting Facebook bridge with multi-user support for Hangouts"
 arch=(any)
 conflicts=(mautrix-facebook)
-license=(AGPLv3)
-url="https://github.com/tulir/mautrix-facebook"
-depends=(python
-	     python-aiohttp
-	     python-yarl
-	     python-asyncpg
-	     python-ruamel-yaml
-	     python-commonmark
-	     python-magic-git
-	     python-mautrix
-	     python-pycryptodome
-	     python-paho-mqtt
-	     python-zstandard
-
-	     python-pillow
-	     python-olm
-	     python-unpaddedbase64
-	     python-setuptools
-	    )
+license=('AGPL-3.0-or-later')
+url="https://github.com/mautrix/facebook"
+depends=(
+  python
+  python-aiohttp
+  python-aiohttp-socks
+  python-attrs
+  python-asyncpg
+  python-commonmark
+  python-magic
+  python-mautrix
+  python-olm
+  python-paho-mqtt
+  python-pillow
+  python-pycryptodome
+  python-python-socks
+  python-ruamel-yaml
+  python-setuptools
+  python-unpaddedbase64
+  python-yarl
+  python-zstandard
+)
 makedepends=(git)
 optdepends=('python-aiosqlite: for sqlite database backend')
 source=("${_pkgbase}::git+https://github.com/tulir/${_pkgbase}"

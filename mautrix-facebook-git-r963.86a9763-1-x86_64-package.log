@@ -1,0 +1,337 @@
+running install
+/usr/lib/python3.11/site-packages/setuptools/_distutils/cmd.py:66: SetuptoolsDeprecationWarning: setup.py install is deprecated.
+!!
+
+        ********************************************************************************
+        Please avoid running ``setup.py`` directly.
+        Instead, use pypa/build, pypa/installer or other
+        standards-based tools.
+
+        See https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html for details.
+        ********************************************************************************
+
+!!
+  self.initialize_options()
+running build
+running build_py
+creating build
+creating build/lib
+creating build/lib/maufbapi
+copying maufbapi/state.py -> build/lib/maufbapi
+copying maufbapi/__init__.py -> build/lib/maufbapi
+creating build/lib/mautrix_facebook
+copying mautrix_facebook/portal.py -> build/lib/mautrix_facebook
+copying mautrix_facebook/presence.py -> build/lib/mautrix_facebook
+copying mautrix_facebook/user.py -> build/lib/mautrix_facebook
+copying mautrix_facebook/get_version.py -> build/lib/mautrix_facebook
+copying mautrix_facebook/__init__.py -> build/lib/mautrix_facebook
+copying mautrix_facebook/matrix.py -> build/lib/mautrix_facebook
+copying mautrix_facebook/puppet.py -> build/lib/mautrix_facebook
+copying mautrix_facebook/version.py -> build/lib/mautrix_facebook
+copying mautrix_facebook/config.py -> build/lib/mautrix_facebook
+copying mautrix_facebook/__main__.py -> build/lib/mautrix_facebook
+copying mautrix_facebook/analytics.py -> build/lib/mautrix_facebook
+creating build/lib/maufbapi/types
+copying maufbapi/types/__init__.py -> build/lib/maufbapi/types
+copying maufbapi/types/common.py -> build/lib/maufbapi/types
+copying maufbapi/types/media.py -> build/lib/maufbapi/types
+copying maufbapi/types/login.py -> build/lib/maufbapi/types
+creating build/lib/maufbapi/mqtt
+copying maufbapi/mqtt/otclient.py -> build/lib/maufbapi/mqtt
+copying maufbapi/mqtt/__init__.py -> build/lib/maufbapi/mqtt
+copying maufbapi/mqtt/subscription.py -> build/lib/maufbapi/mqtt
+copying maufbapi/mqtt/events.py -> build/lib/maufbapi/mqtt
+copying maufbapi/mqtt/conn.py -> build/lib/maufbapi/mqtt
+creating build/lib/maufbapi/thrift
+copying maufbapi/thrift/read.py -> build/lib/maufbapi/thrift
+copying maufbapi/thrift/__init__.py -> build/lib/maufbapi/thrift
+copying maufbapi/thrift/write.py -> build/lib/maufbapi/thrift
+copying maufbapi/thrift/autospec.py -> build/lib/maufbapi/thrift
+copying maufbapi/thrift/type.py -> build/lib/maufbapi/thrift
+creating build/lib/maufbapi/http
+copying maufbapi/http/base.py -> build/lib/maufbapi/http
+copying maufbapi/http/__init__.py -> build/lib/maufbapi/http
+copying maufbapi/http/upload.py -> build/lib/maufbapi/http
+copying maufbapi/http/errors.py -> build/lib/maufbapi/http
+copying maufbapi/http/post_login.py -> build/lib/maufbapi/http
+copying maufbapi/http/api.py -> build/lib/maufbapi/http
+copying maufbapi/http/login.py -> build/lib/maufbapi/http
+creating build/lib/maufbapi/types/graphql
+copying maufbapi/types/graphql/__init__.py -> build/lib/maufbapi/types/graphql
+copying maufbapi/types/graphql/responses.py -> build/lib/maufbapi/types/graphql
+copying maufbapi/types/graphql/queries.py -> build/lib/maufbapi/types/graphql
+creating build/lib/maufbapi/types/mqtt
+copying maufbapi/types/mqtt/__init__.py -> build/lib/maufbapi/types/mqtt
+copying maufbapi/types/mqtt/message.py -> build/lib/maufbapi/types/mqtt
+copying maufbapi/types/mqtt/requests.py -> build/lib/maufbapi/types/mqtt
+copying maufbapi/types/mqtt/client_info.py -> build/lib/maufbapi/types/mqtt
+creating build/lib/mautrix_facebook/util
+copying mautrix_facebook/util/__init__.py -> build/lib/mautrix_facebook/util
+copying mautrix_facebook/util/color_log.py -> build/lib/mautrix_facebook/util
+copying mautrix_facebook/util/interval.py -> build/lib/mautrix_facebook/util
+creating build/lib/mautrix_facebook/web
+copying mautrix_facebook/web/__init__.py -> build/lib/mautrix_facebook/web
+copying mautrix_facebook/web/public.py -> build/lib/mautrix_facebook/web
+creating build/lib/mautrix_facebook/formatter
+copying mautrix_facebook/formatter/__init__.py -> build/lib/mautrix_facebook/formatter
+copying mautrix_facebook/formatter/from_matrix.py -> build/lib/mautrix_facebook/formatter
+copying mautrix_facebook/formatter/from_facebook.py -> build/lib/mautrix_facebook/formatter
+creating build/lib/mautrix_facebook/db
+copying mautrix_facebook/db/backfill_queue.py -> build/lib/mautrix_facebook/db
+copying mautrix_facebook/db/portal.py -> build/lib/mautrix_facebook/db
+copying mautrix_facebook/db/user_portal.py -> build/lib/mautrix_facebook/db
+copying mautrix_facebook/db/user.py -> build/lib/mautrix_facebook/db
+copying mautrix_facebook/db/__init__.py -> build/lib/mautrix_facebook/db
+copying mautrix_facebook/db/message.py -> build/lib/mautrix_facebook/db
+copying mautrix_facebook/db/reaction.py -> build/lib/mautrix_facebook/db
+copying mautrix_facebook/db/puppet.py -> build/lib/mautrix_facebook/db
+creating build/lib/mautrix_facebook/commands
+copying mautrix_facebook/commands/__init__.py -> build/lib/mautrix_facebook/commands
+copying mautrix_facebook/commands/facebook.py -> build/lib/mautrix_facebook/commands
+copying mautrix_facebook/commands/auth.py -> build/lib/mautrix_facebook/commands
+copying mautrix_facebook/commands/conn.py -> build/lib/mautrix_facebook/commands
+copying mautrix_facebook/commands/typehint.py -> build/lib/mautrix_facebook/commands
+creating build/lib/mautrix_facebook/db/upgrade
+copying mautrix_facebook/db/upgrade/v12_puppet_contact_info_set.py -> build/lib/mautrix_facebook/db/upgrade
+copying mautrix_facebook/db/upgrade/__init__.py -> build/lib/mautrix_facebook/db/upgrade
+copying mautrix_facebook/db/upgrade/v09_portal_infinite_backfill.py -> build/lib/mautrix_facebook/db/upgrade
+copying mautrix_facebook/db/upgrade/v01_initial_revision.py -> build/lib/mautrix_facebook/db/upgrade
+copying mautrix_facebook/db/upgrade/v05_remove_communities.py -> build/lib/mautrix_facebook/db/upgrade
+copying mautrix_facebook/db/upgrade/v11_user_thread_sync_done_flag.py -> build/lib/mautrix_facebook/db/upgrade
+copying mautrix_facebook/db/upgrade/v08_backfill_queue.py -> build/lib/mautrix_facebook/db/upgrade
+copying mautrix_facebook/db/upgrade/v02_message_oti.py -> build/lib/mautrix_facebook/db/upgrade
+copying mautrix_facebook/db/upgrade/v03_portal_meta_set.py -> build/lib/mautrix_facebook/db/upgrade
+copying mautrix_facebook/db/upgrade/v06_store_user_seq_id.py -> build/lib/mautrix_facebook/db/upgrade
+copying mautrix_facebook/db/upgrade/v07_store_reaction_timestamp.py -> build/lib/mautrix_facebook/db/upgrade
+copying mautrix_facebook/db/upgrade/v10_user_thread_sync_status.py -> build/lib/mautrix_facebook/db/upgrade
+copying mautrix_facebook/db/upgrade/v04_relay_mode.py -> build/lib/mautrix_facebook/db/upgrade
+copying mautrix_facebook/example-config.yaml -> build/lib/mautrix_facebook
+copying maufbapi/mqtt/topics.json -> build/lib/maufbapi/mqtt
+copying maufbapi/http/zstd-dict.dat -> build/lib/maufbapi/http
+creating build/lib/mautrix_facebook/web/static
+copying mautrix_facebook/web/static/login.html -> build/lib/mautrix_facebook/web/static
+creating build/lib/mautrix_facebook/web/static/lib
+copying mautrix_facebook/web/static/lib/htm-3.0.4.min.js -> build/lib/mautrix_facebook/web/static/lib
+copying mautrix_facebook/web/static/lib/normalize-8.0.1.min.css -> build/lib/mautrix_facebook/web/static/lib
+copying mautrix_facebook/web/static/lib/rsa.min.js -> build/lib/mautrix_facebook/web/static/lib
+copying mautrix_facebook/web/static/lib/asn1hex-1.1.min.js -> build/lib/mautrix_facebook/web/static/lib
+copying mautrix_facebook/web/static/lib/preact-10.5.12.min.js -> build/lib/mautrix_facebook/web/static/lib
+copying mautrix_facebook/web/static/lib/spinner.css -> build/lib/mautrix_facebook/web/static/lib
+copying mautrix_facebook/web/static/lib/milligram-1.4.1.min.css -> build/lib/mautrix_facebook/web/static/lib
+copying mautrix_facebook/web/static/lib/jsbn.min.js -> build/lib/mautrix_facebook/web/static/lib
+copying mautrix_facebook/web/static/lib/rng.min.js -> build/lib/mautrix_facebook/web/static/lib
+creating build/lib/mautrix_facebook/web/static/login
+copying mautrix_facebook/web/static/login/crypto.js -> build/lib/mautrix_facebook/web/static/login
+copying mautrix_facebook/web/static/login/app.js -> build/lib/mautrix_facebook/web/static/login
+copying mautrix_facebook/web/static/login/index.css -> build/lib/mautrix_facebook/web/static/login
+copying mautrix_facebook/web/static/login/api.js -> build/lib/mautrix_facebook/web/static/login
+running install_lib
+creating /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr
+creating /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib
+creating /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11
+creating /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages
+creating /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi
+creating /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/types
+copying build/lib/maufbapi/types/__init__.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/types
+copying build/lib/maufbapi/types/common.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/types
+creating /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/types/graphql
+copying build/lib/maufbapi/types/graphql/__init__.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/types/graphql
+copying build/lib/maufbapi/types/graphql/responses.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/types/graphql
+copying build/lib/maufbapi/types/graphql/queries.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/types/graphql
+creating /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/types/mqtt
+copying build/lib/maufbapi/types/mqtt/__init__.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/types/mqtt
+copying build/lib/maufbapi/types/mqtt/message.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/types/mqtt
+copying build/lib/maufbapi/types/mqtt/requests.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/types/mqtt
+copying build/lib/maufbapi/types/mqtt/client_info.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/types/mqtt
+copying build/lib/maufbapi/types/media.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/types
+copying build/lib/maufbapi/types/login.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/types
+copying build/lib/maufbapi/state.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi
+copying build/lib/maufbapi/__init__.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi
+creating /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/mqtt
+copying build/lib/maufbapi/mqtt/otclient.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/mqtt
+copying build/lib/maufbapi/mqtt/__init__.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/mqtt
+copying build/lib/maufbapi/mqtt/topics.json -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/mqtt
+copying build/lib/maufbapi/mqtt/subscription.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/mqtt
+copying build/lib/maufbapi/mqtt/events.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/mqtt
+copying build/lib/maufbapi/mqtt/conn.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/mqtt
+creating /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/thrift
+copying build/lib/maufbapi/thrift/read.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/thrift
+copying build/lib/maufbapi/thrift/__init__.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/thrift
+copying build/lib/maufbapi/thrift/write.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/thrift
+copying build/lib/maufbapi/thrift/autospec.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/thrift
+copying build/lib/maufbapi/thrift/type.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/thrift
+creating /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/http
+copying build/lib/maufbapi/http/base.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/http
+copying build/lib/maufbapi/http/__init__.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/http
+copying build/lib/maufbapi/http/upload.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/http
+copying build/lib/maufbapi/http/errors.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/http
+copying build/lib/maufbapi/http/zstd-dict.dat -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/http
+copying build/lib/maufbapi/http/post_login.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/http
+copying build/lib/maufbapi/http/api.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/http
+copying build/lib/maufbapi/http/login.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/http
+creating /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook
+copying build/lib/mautrix_facebook/portal.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook
+copying build/lib/mautrix_facebook/presence.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook
+copying build/lib/mautrix_facebook/user.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook
+copying build/lib/mautrix_facebook/get_version.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook
+copying build/lib/mautrix_facebook/__init__.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook
+copying build/lib/mautrix_facebook/matrix.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook
+creating /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/util
+copying build/lib/mautrix_facebook/util/__init__.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/util
+copying build/lib/mautrix_facebook/util/color_log.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/util
+copying build/lib/mautrix_facebook/util/interval.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/util
+copying build/lib/mautrix_facebook/puppet.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook
+copying build/lib/mautrix_facebook/version.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook
+creating /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/web
+copying build/lib/mautrix_facebook/web/__init__.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/web
+copying build/lib/mautrix_facebook/web/public.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/web
+creating /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/web/static
+creating /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/web/static/lib
+copying build/lib/mautrix_facebook/web/static/lib/htm-3.0.4.min.js -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/web/static/lib
+copying build/lib/mautrix_facebook/web/static/lib/normalize-8.0.1.min.css -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/web/static/lib
+copying build/lib/mautrix_facebook/web/static/lib/rsa.min.js -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/web/static/lib
+copying build/lib/mautrix_facebook/web/static/lib/asn1hex-1.1.min.js -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/web/static/lib
+copying build/lib/mautrix_facebook/web/static/lib/preact-10.5.12.min.js -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/web/static/lib
+copying build/lib/mautrix_facebook/web/static/lib/spinner.css -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/web/static/lib
+copying build/lib/mautrix_facebook/web/static/lib/milligram-1.4.1.min.css -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/web/static/lib
+copying build/lib/mautrix_facebook/web/static/lib/jsbn.min.js -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/web/static/lib
+copying build/lib/mautrix_facebook/web/static/lib/rng.min.js -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/web/static/lib
+creating /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/web/static/login
+copying build/lib/mautrix_facebook/web/static/login/crypto.js -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/web/static/login
+copying build/lib/mautrix_facebook/web/static/login/app.js -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/web/static/login
+copying build/lib/mautrix_facebook/web/static/login/index.css -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/web/static/login
+copying build/lib/mautrix_facebook/web/static/login/api.js -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/web/static/login
+copying build/lib/mautrix_facebook/web/static/login.html -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/web/static
+creating /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/formatter
+copying build/lib/mautrix_facebook/formatter/__init__.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/formatter
+copying build/lib/mautrix_facebook/formatter/from_matrix.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/formatter
+copying build/lib/mautrix_facebook/formatter/from_facebook.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/formatter
+creating /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db
+copying build/lib/mautrix_facebook/db/backfill_queue.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db
+copying build/lib/mautrix_facebook/db/portal.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db
+copying build/lib/mautrix_facebook/db/user_portal.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db
+copying build/lib/mautrix_facebook/db/user.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db
+copying build/lib/mautrix_facebook/db/__init__.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db
+copying build/lib/mautrix_facebook/db/message.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db
+copying build/lib/mautrix_facebook/db/reaction.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db
+copying build/lib/mautrix_facebook/db/puppet.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db
+creating /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/upgrade
+copying build/lib/mautrix_facebook/db/upgrade/v12_puppet_contact_info_set.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/upgrade
+copying build/lib/mautrix_facebook/db/upgrade/__init__.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/upgrade
+copying build/lib/mautrix_facebook/db/upgrade/v09_portal_infinite_backfill.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/upgrade
+copying build/lib/mautrix_facebook/db/upgrade/v01_initial_revision.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/upgrade
+copying build/lib/mautrix_facebook/db/upgrade/v05_remove_communities.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/upgrade
+copying build/lib/mautrix_facebook/db/upgrade/v11_user_thread_sync_done_flag.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/upgrade
+copying build/lib/mautrix_facebook/db/upgrade/v08_backfill_queue.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/upgrade
+copying build/lib/mautrix_facebook/db/upgrade/v02_message_oti.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/upgrade
+copying build/lib/mautrix_facebook/db/upgrade/v03_portal_meta_set.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/upgrade
+copying build/lib/mautrix_facebook/db/upgrade/v06_store_user_seq_id.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/upgrade
+copying build/lib/mautrix_facebook/db/upgrade/v07_store_reaction_timestamp.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/upgrade
+copying build/lib/mautrix_facebook/db/upgrade/v10_user_thread_sync_status.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/upgrade
+copying build/lib/mautrix_facebook/db/upgrade/v04_relay_mode.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/upgrade
+creating /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/commands
+copying build/lib/mautrix_facebook/commands/__init__.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/commands
+copying build/lib/mautrix_facebook/commands/facebook.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/commands
+copying build/lib/mautrix_facebook/commands/auth.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/commands
+copying build/lib/mautrix_facebook/commands/conn.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/commands
+copying build/lib/mautrix_facebook/commands/typehint.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/commands
+copying build/lib/mautrix_facebook/example-config.yaml -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook
+copying build/lib/mautrix_facebook/config.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook
+copying build/lib/mautrix_facebook/__main__.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook
+copying build/lib/mautrix_facebook/analytics.py -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/types/__init__.py to __init__.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/types/common.py to common.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/types/graphql/__init__.py to __init__.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/types/graphql/responses.py to responses.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/types/graphql/queries.py to queries.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/types/mqtt/__init__.py to __init__.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/types/mqtt/message.py to message.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/types/mqtt/requests.py to requests.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/types/mqtt/client_info.py to client_info.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/types/media.py to media.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/types/login.py to login.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/state.py to state.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/__init__.py to __init__.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/mqtt/otclient.py to otclient.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/mqtt/__init__.py to __init__.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/mqtt/subscription.py to subscription.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/mqtt/events.py to events.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/mqtt/conn.py to conn.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/thrift/read.py to read.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/thrift/__init__.py to __init__.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/thrift/write.py to write.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/thrift/autospec.py to autospec.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/thrift/type.py to type.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/http/base.py to base.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/http/__init__.py to __init__.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/http/upload.py to upload.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/http/errors.py to errors.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/http/post_login.py to post_login.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/http/api.py to api.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/maufbapi/http/login.py to login.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/portal.py to portal.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/presence.py to presence.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/user.py to user.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/get_version.py to get_version.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/__init__.py to __init__.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/matrix.py to matrix.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/util/__init__.py to __init__.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/util/color_log.py to color_log.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/util/interval.py to interval.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/puppet.py to puppet.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/version.py to version.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/web/__init__.py to __init__.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/web/public.py to public.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/formatter/__init__.py to __init__.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/formatter/from_matrix.py to from_matrix.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/formatter/from_facebook.py to from_facebook.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/backfill_queue.py to backfill_queue.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/portal.py to portal.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/user_portal.py to user_portal.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/user.py to user.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/__init__.py to __init__.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/message.py to message.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/reaction.py to reaction.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/puppet.py to puppet.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/upgrade/v12_puppet_contact_info_set.py to v12_puppet_contact_info_set.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/upgrade/__init__.py to __init__.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/upgrade/v09_portal_infinite_backfill.py to v09_portal_infinite_backfill.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/upgrade/v01_initial_revision.py to v01_initial_revision.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/upgrade/v05_remove_communities.py to v05_remove_communities.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/upgrade/v11_user_thread_sync_done_flag.py to v11_user_thread_sync_done_flag.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/upgrade/v08_backfill_queue.py to v08_backfill_queue.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/upgrade/v02_message_oti.py to v02_message_oti.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/upgrade/v03_portal_meta_set.py to v03_portal_meta_set.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/upgrade/v06_store_user_seq_id.py to v06_store_user_seq_id.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/upgrade/v07_store_reaction_timestamp.py to v07_store_reaction_timestamp.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/upgrade/v10_user_thread_sync_status.py to v10_user_thread_sync_status.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/db/upgrade/v04_relay_mode.py to v04_relay_mode.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/commands/__init__.py to __init__.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/commands/facebook.py to facebook.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/commands/auth.py to auth.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/commands/conn.py to conn.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/commands/typehint.py to typehint.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/config.py to config.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/__main__.py to __main__.cpython-311.pyc
+byte-compiling /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook/analytics.py to analytics.cpython-311.pyc
+writing byte-compilation script '/tmp/tmpae9j5vbq.py'
+/usr/bin/python /tmp/tmpae9j5vbq.py
+removing /tmp/tmpae9j5vbq.py
+running install_data
+creating /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/share
+creating /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/share/mautrix-facebook
+copying mautrix_facebook/example-config.yaml -> /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/./share/mautrix-facebook
+running install_egg_info
+running egg_info
+creating mautrix_facebook.egg-info
+writing mautrix_facebook.egg-info/PKG-INFO
+writing dependency_links to mautrix_facebook.egg-info/dependency_links.txt
+writing requirements to mautrix_facebook.egg-info/requires.txt
+writing top-level names to mautrix_facebook.egg-info/top_level.txt
+writing manifest file 'mautrix_facebook.egg-info/SOURCES.txt'
+reading manifest file 'mautrix_facebook.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE'
+writing manifest file 'mautrix_facebook.egg-info/SOURCES.txt'
+Copying mautrix_facebook.egg-info to /build/mautrix-facebook-git/pkg/mautrix-facebook-git/usr/lib/python3.11/site-packages/mautrix_facebook-0.5.1+dev.86a97638-py3.11.egg-info
+running install_scripts
