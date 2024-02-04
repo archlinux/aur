@@ -13,6 +13,7 @@ pkgbase = ebou-git
 	depends = gst-libav
 	depends = gst-plugins-base
 	depends = gst-plugins-good
+	options = !lto
 	source = git+https://github.com/terhechte/Ebou.git
 	source = ebou.png
 	source = ebou.desktop
