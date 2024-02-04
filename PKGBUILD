@@ -1,5 +1,6 @@
 # Maintainer: cyqsimon <28627918+cyqsimon@users.noreply.github.com>
 pkgname=git-whoami-git
+_pkgname="${pkgname%-git}"
 pkgver=r3.5d77e00
 pkgrel=2
 pkgdesc='The `whoami` command, but for Git. Useful when working with multiple identities.'
@@ -8,17 +9,17 @@ url="https://github.com/petere/git-whoami"
 license=("unknown")
 depends=("git")
 makedepends=("git")
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+https://github.com/petere/git-whoami.git#branch=master")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url.git#branch=master")
 sha256sums=("SKIP")
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/$_pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	install -Dm755 git-whoami $pkgdir/usr/bin/git-whoami
+	cd "$srcdir/$_pkgname"
+	install -Dm755 -t $pkgdir/usr/bin $_pkgname
 }
