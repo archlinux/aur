@@ -1,4 +1,4 @@
-pkgbase = pride-bin
+pkgbase = pride
 	pkgdesc = Pride flags in the terminal.
 	pkgver = 0.3.0
 	pkgrel = 1
