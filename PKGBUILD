@@ -3,7 +3,7 @@
 # Contributor: Jun Bo Bi <jambonmcyeah@gmail.com>
 
 pkgname=netcoredbg
-_pkgver="3.0.0-1012"
+_pkgver="3.0.0-1018"
 pkgver="${_pkgver//-/_}"
 pkgrel=1
 pkgdesc='Debugger for .NET Core runtime'
@@ -14,12 +14,10 @@ depends=("dotnet-host>=7" "dotnet-runtime>=7")
 makedepends=("git" "cmake" "clang" "dotnet-sdk>=7")
 optdepends=()
 source=("$pkgname-$_pkgver.tar.gz::https://github.com/Samsung/netcoredbg/archive/refs/tags/$_pkgver.tar.gz")
-sha256sums=("54438b2f094bee5170e6cdeb45319988686c8c7f954ae36b8fe76045e5a0fd68")
+sha256sums=("5f372a83f5cc07387b91f1752b05b72c728af8950c72dc89e1ee52e51302353c")
 
 build() {
   cd "$pkgname-$_pkgver"
-  # patch needed for some file (https://github.com/Samsung/netcoredbg/issues/147)
-  sed -i "20 a #include <cstdint>" src/interfaces/types.h
 
   mkdir -p build; cd build
 
