@@ -1,8 +1,8 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=python-litestar
-_name=${pkgname#python-}
-pkgver=2.5.4
+_pkgname=${pkgname#python-}
+pkgver=2.5.5
 pkgrel=1
 pkgdesc="Production-ready, Light, Flexible and Extensible ASGI API framework"
 arch=(any)
@@ -87,9 +87,9 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('be6155faa46fd1d843fb4d1ea8d3721f212f0ae79f27826251fe78d2cef5777a')
+sha256sums=('6d7dfb82d49ffa47c4a3592bfeb7b9cd7633127ee4015e0bddba19075e5fd649')
 
-_archive="$_name-$pkgver"
+_archive="$_pkgname-$pkgver"
 
 build() {
   cd "$_archive"
@@ -128,9 +128,8 @@ check() {
 
   _deselected_tests=(
     # Fails for unkown reason
-    tests/unit/test_cli/test_core_commands.py::test_routes_command_options
-    tests/unit/test_template/test_template.py::test_media_type_inferred
     tests/unit/test_middleware/test_middleware_handling.py::test_custom_middleware_processing
+    tests/unit/test_template/test_template.py::test_media_type_inferred
 
     # Requires running docker compose
     tests/e2e/test_response_caching.py::test_with_stores
