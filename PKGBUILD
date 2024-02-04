@@ -6,7 +6,7 @@
 pkgname=({freedm,freedoom}-git)
 pkgbase=freedoom-git
 pkgdesc="Free game data files for Doom gaming engines"
-pkgver=0.12.0.r752.gf10d0083
+pkgver=0.14.0.alpha.r7.g1e1b6301
 pkgrel=1
 epoch=1
 arch=('any')
@@ -36,10 +36,11 @@ package_freedm-git() {
 }
 
 package_freedoom-git() {
-  provides=('freedoom' 'freedoom1' 'freedoom2')
+  replaces=('freedoom1' 'freedoom2')
+  conflicts=('freedoom1' 'freedoom2')
+  provides=('freedoom1' 'freedoom2')
 
   cd "$srcdir/freedoom"
   make prefix=/usr DESTDIR="$pkgdir" install-freedoom
-  install -Dm644 $srcdir/freedoom/COPYING.adoc $pkgdir/usr/share/licenses/$pkgname/COPYING
 }
 
