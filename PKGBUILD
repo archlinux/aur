@@ -1,18 +1,18 @@
 pkgname=helm-ls
-pkgver=0.0.3
+pkgver=0.0.10
 pkgrel=1
 pkgdesc='Language server for Helm'
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=(glibc)
-makedepends=('git' 'go')
+makedepends=('go')
 provides=(helm-ls)
 url=https://github.com/mrjosh/helm-ls
-source=(git+https://github.com/mrjosh/helm-ls#tag=v$pkgver)
-sha256sums=(SKIP)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mrjosh/helm-ls/archive/v${pkgver}.tar.gz")
+sha256sums=("4674a2d22fcfe3e4d2dd92d35b143c4584b7ee3c30c20b42cc5518ec2562c69e")
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
 
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -25,7 +25,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 bin/helm_ls -t "$pkgdir/usr/bin"
 }
 
