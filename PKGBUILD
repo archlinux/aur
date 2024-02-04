@@ -25,5 +25,5 @@ conflicts=("discordrpc")
 package() {
 	cd "$srcdir/"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/discordrpc/LICENSE"
-	install -Dm755 xfetch "${pkgdir}/usr/bin/discordrpc"
+	install -Dm755 discordrpc "${pkgdir}/usr/bin/discordrpc"
 }
