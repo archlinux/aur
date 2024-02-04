@@ -55,7 +55,7 @@
 @@ -250,2 +205 @@
 -  declare -r newfile="$(download_file 'https://raw.githubusercontent.com/arkenfox/user.js/master/user.js')"
 -  [ -z "${newfile}" ] && echo -e "${RED}Error! Could not download user.js${NC}" && return 1 # check if download failed
-+  declare -r newfile="${SCRIPT_DIR}/user.js"
++  declare -r newfile='@@USERJSDIR@@/user.js'
 @@ -255 +209 @@
 -    Available online: ${ORANGE}$(get_userjs_version "$newfile")${NC}
 +    Package:          ${ORANGE}$(get_userjs_version "$newfile")${NC}
