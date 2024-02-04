@@ -1,6 +1,6 @@
 pkgname=awf-gtk4
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Theme preview application for GTK"
 arch=('x86_64')
 url='https://github.com/luigifab/awf-extended'
@@ -28,7 +28,6 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  make
 
   mkdir -p "$pkgdir/usr/bin/"
   install -pm 755 "src/$pkgname" "$pkgdir/usr/bin/$pkgname"
@@ -40,8 +39,8 @@ package() {
   install -pm 644 README.md "$pkgdir/usr/share/doc/$pkgname/"
 
   mkdir -p "$pkgdir/usr/share/icons/hicolor/"
-  for file in icons/*/*/*.png; do mv $file ${file/\/awf./\/$pkgname.png}; done
-  for file in icons/*/*/*.svg; do mv $file ${file/\/awf./\/$pkgname.svg}; done
+  for file in icons/*/*/awf.png; do mv $file ${file/\/awf.png/\/$pkgname.png}; done
+  for file in icons/*/*/awf.svg; do mv $file ${file/\/awf.svg/\/$pkgname.svg}; done
   cp -a icons/* "$pkgdir/usr/share/icons/hicolor/"
 
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
