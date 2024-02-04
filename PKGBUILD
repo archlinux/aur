@@ -2,6 +2,7 @@
 pkgname=pcstat
 pkgver=0.0.2
 pkgrel=1
+epoch=1
 pkgdesc="Utility to get page cache stats for files"
 arch=('x86_64')
 url="https://github.com/tobert/pcstat"
