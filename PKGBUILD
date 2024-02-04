@@ -18,7 +18,7 @@ source=(
   "goodixparam.conf"
 )
 
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
   cd "$srcdir"
