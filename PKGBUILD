@@ -6,6 +6,7 @@ pkgver=0.2.0.742.r34.gd802780
 pkgrel=1
 pkgdesc="Mastodon Client Written in Rust!"
 arch=(any)
+options+=('!lto')
 url="https://github.com/terhechte/Ebou"
 license=('GPL')
 depends=(webkit2gtk-4.1 gtk3 xdotool libsoup gst-libav gst-plugins-base gst-plugins-good)
