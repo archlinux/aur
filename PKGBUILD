@@ -2,7 +2,7 @@
 
 _pkgname=sddm-conf
 pkgname=$_pkgname-git
-pkgver=0.1.0.r23.g1c2cd4e
+pkgver=0.2.0.r0.ge9d21d0
 pkgrel=1
 pkgdesc="SDDM Configuration Editor"
 arch=(
