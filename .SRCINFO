@@ -1,15 +1,24 @@
 pkgbase = perl-url-encode
-	pkgdesc = Encoding and decoding of C<application/x-www-form-urlencoded> encoding.
+	pkgdesc = Encoding and decoding of application/x-www-form-urlencoded encoding.
 	pkgver = 0.03
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/URL-Encode
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	makedepends = perl-test-simple>=0.88
+	makedepends = perl-extutils-makemaker>=6.59
 	depends = perl>=5.8.1
+	depends = perl-carp>=0
+	depends = perl-exporter>=0
+	depends = perl-xsloader>=0
+	depends = perl-module-install
+	provides = perl-url-encode-pp=0.03
 	options = !emptydirs
+	options = purge
 	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHANSEN/URL-Encode-0.03.tar.gz
 	md5sums = 3501ba92bbd23bb230959a5c9a22ca12
+	sha256sums = 7295d7f07796b179131d9c0f230a6effa56d204de2f8dc72f2e09c61458c8ee6
 	sha512sums = 1f47b9ca9470f0f51f4b3e806f32ef0044d10ab2723944ba93eb740278155fcb77471208b833f7d77ff829cc5879211f592a3ae6ba3ccd6a4ee38d866bb38197
 
 pkgname = perl-url-encode
