@@ -1,7 +1,7 @@
 pkgbase = tm-desktop-bin
 	pkgdesc = A TikTok Music desktop application.
 	pkgver = 09.11.2023
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NeverExcel/tm-desktop
 	arch = x86_64
 	license = MIT
@@ -17,6 +17,6 @@ pkgbase = tm-desktop-bin
 	source = tm-desktop.sh
 	sha256sums = f109a8a3eddd61e0497537114dd2ca4f548eb946c3acbc6e58d0f8af2445e1f2
 	sha256sums = fca810bcb164e26493b6e6bf39e95aaca781fba20ad6e02fec625a43d142aecd
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = tm-desktop-bin
