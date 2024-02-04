@@ -1,9 +1,8 @@
-*
-!*.desktop
-!*.install
-!*.sh
-!*.sysusers
-!*.tmpfiles
-!.gitignore
-!.SRCINFO
-!PKGBUILD
+/*
+!/*.desktop
+!/*.install
+!/*.sh
+!/*.sysusers
+!/*.tmpfiles
+!/.SRCINFO
+!/PKGBUILD
