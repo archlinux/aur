@@ -1,6 +1,6 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 pkgname=offlineimap3-git
-pkgver=r2754.87f9507
+pkgver=8.0.0.r38.gd29a4dc
 pkgrel=1
 pkgdesc="Read/sync your IMAP mailboxes (python3)"
 arch=("any")
@@ -16,8 +16,8 @@ optdepends=(
     "python-gssapi: for Kerberos authentication"
     "python-portalocker: if you need to run offlineimap in Cygwin for Windows"
 )
-provides=("offlineimap")
-conflicts=("offlineimap" "offlineimap-git")
+provides=("offlineimap" "offlineimap3")
+conflicts=("offlineimap" "offlineimap3")
 source=(
     "${pkgname}::git+https://github.com/OfflineIMAP/offlineimap3.git"
 )
@@ -27,7 +27,7 @@ md5sums=(
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = offlineimap3-git
 	pkgdesc = Read/sync your IMAP mailboxes (python3)
-	pkgver = r2754.87f9507
+	pkgver = 8.0.0.r38.gd29a4dc
 	pkgrel = 1
 	url = https://github.com/OfflineIMAP/offlineimap3
 	arch = any
@@ -12,8 +12,9 @@ pkgbase = offlineimap3-git
 	optdepends = python-gssapi: for Kerberos authentication
 	optdepends = python-portalocker: if you need to run offlineimap in Cygwin for Windows
 	provides = offlineimap
+	provides = offlineimap3
 	conflicts = offlineimap
-	conflicts = offlineimap-git
+	conflicts = offlineimap3
 	source = offlineimap3-git::git+https://github.com/OfflineIMAP/offlineimap3.git
 	md5sums = SKIP
 
