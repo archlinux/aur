@@ -3,10 +3,13 @@ NC='\033[0m'
 
 post_upgrade() {
     echo -e "⚠️  This update contains a rebase to the Floorp browser's source! ⚠️ 
-This means we no longer use Librewolf as base, though settings and 
-privacy aware feature set were kept as close to our previous setup 
-as possible.
-${RED}To prevent potential issues, we strongly recommend to create a
-fresh browser profile. This can be done by running \"firedragon -P\" 
-in the terminal.${NC}"
+This means we no longer use Librewolf as base, though settings and privacy 
+aware feature set were kept as close to our previous setup as possible.
+${RED}To prevent issues arising, this update requires a fresh browser profile.${NC}"
+    if [ -f /usr/share/libalpm/scripts/garuda-migrations-runner ]; then
+        echo -e "This action is actually automatically executed by garuda-migrations, however 
+many settings as well as cookies, localstorage data may be reset to allow for 
+the new Floorp experience. A backup of the previous profile has been saved under:
+~/.firedragon/\$defaultprofile-pre-floorp-backup."
+    fi
 }

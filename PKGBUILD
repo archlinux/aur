@@ -7,6 +7,7 @@ pkgver=11.9.0
 _floorp_core_commit=cefaa9a0352456c45be6a917e6664f8ef054a68f
 _floorp_l10n_commit=6915ae0005fdb1684f3b6b0731bdec1a0596f7e8
 pkgrel=1
+epoch=1
 pkgdesc="Floorp fork build using custom branding & settings"
 url='http://dr460nf1r3.org'
 arch=('x86_64')
@@ -34,10 +35,11 @@ makedepends=(cbindgen
     imagemagick
     imake
     inetutils
+    git
     jack
-    lld
     llvm
     mesa
+    mold
     nasm
     nodejs
     python
@@ -104,7 +106,7 @@ ac_add_options --disable-bootstrap
 ac_add_options --disable-elf-hack
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
 ac_add_options --enable-hardening
-ac_add_options --enable-linker=lld
+ac_add_options --enable-linker=mold
 ac_add_options --enable-lto=cross,full
 ac_add_options --enable-optimize="-O3"
 ac_add_options --enable-release

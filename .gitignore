@@ -1,8 +1,7 @@
+*.tar.xz*
 common/
+floorp-core/
+floorp-l10n-central/
 pkg/
 settings/
 src/
-cachyos-source
-librewolf-settings
-librewolf-source
-*.tar.xz*
