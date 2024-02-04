@@ -1,6 +1,6 @@
 pkgbase = js-design-bin
 	pkgdesc = 即时设计 A professional UI design software tailored for Chinese designers.
-	pkgver = 1.0.2
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://js.design/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = js-design-bin
 	depends = alsa-lib
 	depends = gtk3
 	optdepends = libappindicator-gtk3: Allow js-design to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).
-	source = js-design-1.0.2.deb::https://img.js.design/assets/download/%E7%BB%9F%E4%BF%A1UOS/%E5%8D%B3%E6%97%B6%E8%AE%BE%E8%AE%A1_amd64.deb
+	source = js-design-1.0.6.deb::https://img.js.design/assets/download/%E7%BB%9F%E4%BF%A1UOS/%E5%8D%B3%E6%97%B6%E8%AE%BE%E8%AE%A1_amd64.deb
 	sha512sums = 010c279208dd73b525fec1714cf6de176d5e8b45b587c632e89cc22d14432a9a5208545cc6a3b6bfed2f6c12c5036c4159a6538834fa4d5160faf1d5027e3bed
 
 pkgname = js-design-bin

@@ -1,7 +1,7 @@
 # Maintainer:Integral<luckys68@126.com>
 pkgname=js-design-bin
 _pkgname=js-design
-pkgver=1.0.2
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="即时设计 A professional UI design software tailored for Chinese designers."
 arch=('x86_64')
