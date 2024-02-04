@@ -1,17 +1,15 @@
-# Maintainer: Rich Li <rich at dranek com>
-# Contributor: Florian "Bluewind" Pritz <flo@xssn.at>
-# Note that all of the patches and systemd stuff is courtesy of Fedora's packaging, extracted from spamass-milter-0.4.0-2.fc23.src.rpm
-# I updated a few of the Fedora files to reflect the slightly different directory structure for Arch
+# Maintainer: pappy <pa314159@users.noreply.github.com>
+
 pkgname=spamass-milter
 pkgver=0.4.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Sendmail Milter that pipes incoming mail through SpamAssassin"
 arch=(i686 x86_64)
 url="https://savannah.nongnu.org/projects/spamass-milt/"
 license=('GPL')
 depends=(gcc-libs spamassassin)
-makedepends=(libmilter)
-optdepends=("postfix")
+makedepends=(libmilter sendmail)
+optdepends=(sendmail postfix)
 backup=(etc/spamass-milter etc/spamass-milter-postfix)
 install="spamass-milter.install"
 # validpgpkeys=('CC99713BDD298DAB')  # I can't find anywhere to download the public key
