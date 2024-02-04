@@ -14,18 +14,18 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgbase=mesa-amdonly-gaming-git
-pkgver=24.0.0_devel.182416.4fdb381d02a.d41d8cd98f00b204e9800998ecf8427e
+pkgver=24.1.0_devel.184174.8368a972943.d41d8cd98f00b204e9800998ecf8427e
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 pkgname=(
-  'amdonly-gaming-vulkan-mesa-layers'
-  'amdonly-gaming-opencl-clover-mesa'
-  'amdonly-gaming-opencl-rusticl-mesa'
-  'amdonly-gaming-vulkan-radeon'
-  'amdonly-gaming-vulkan-swrast'
-  'amdonly-gaming-vulkan-virtio'
-  'amdonly-gaming-libva-mesa-driver'
-  'amdonly-gaming-mesa-vdpau'
-  'amdonly-gaming-mesa'
+  'amdonly-gaming-vulkan-mesa-layers-git'
+  'amdonly-gaming-opencl-clover-mesa-git'
+  'amdonly-gaming-opencl-rusticl-mesa-git'
+  'amdonly-gaming-vulkan-radeon-git'
+  'amdonly-gaming-vulkan-swrast-git'
+  'amdonly-gaming-vulkan-virtio-git'
+  'amdonly-gaming-libva-mesa-driver-git'
+  'amdonly-gaming-mesa-vdpau-git'
+  'amdonly-gaming-mesa-git'
 )
 pkgrel=1
 pkgdesc="An open-source implementation of the OpenGL specification"
@@ -185,7 +185,7 @@ build() {
 
   arch-meson mesa build "${meson_options[@]}"
   meson configure build --no-pager # Print config
-  $NINJAFLAGS meson compile -C build
+  meson compile $NINJAFLAGS -C build
 
   # fake installation to be seperated into packages
   # outside of fakeroot but mesa doesn't need to chown/mod
@@ -204,7 +204,7 @@ _install() {
 
 _libdir=usr/lib
 
-package_amdonly-gaming-vulkan-mesa-layers() {
+package_amdonly-gaming-vulkan-mesa-layers-git() {
   pkgdesc="Mesa's Vulkan layers"
   depends=(
     'libdrm'
@@ -233,7 +233,7 @@ package_amdonly-gaming-vulkan-mesa-layers() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
-package_amdonly-gaming-opencl-clover-mesa() {
+package_amdonly-gaming-opencl-clover-mesa-git() {
   pkgdesc="OpenCL support with clover for mesa drivers"
   depends=(
     'clang'
@@ -266,7 +266,7 @@ package_amdonly-gaming-opencl-clover-mesa() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
-package_amdonly-gaming-opencl-rusticl-mesa() {
+package_amdonly-gaming-opencl-rusticl-mesa-git() {
   pkgdesc="OpenCL support with rusticl for mesa drivers"
   depends=(
     'clang'
@@ -299,7 +299,7 @@ package_amdonly-gaming-opencl-rusticl-mesa() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
-package_amdonly-gaming-vulkan-radeon() {
+package_amdonly-gaming-vulkan-radeon-git() {
   pkgdesc="Radeon's Vulkan mesa driver"
   depends=(
     'libdrm'
@@ -327,7 +327,7 @@ package_amdonly-gaming-vulkan-radeon() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
-package_amdonly-gaming-vulkan-swrast() {
+package_amdonly-gaming-vulkan-swrast-git() {
   pkgdesc="Vulkan software rasteriser driver"
   depends=(
     'libdrm'
@@ -359,7 +359,7 @@ package_amdonly-gaming-vulkan-swrast() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
-package_amdonly-gaming-vulkan-virtio() {
+package_amdonly-gaming-vulkan-virtio-git() {
   pkgdesc="Venus Vulkan mesa driver for Virtual Machines"
   depends=(
     'libdrm'
@@ -384,7 +384,7 @@ package_amdonly-gaming-vulkan-virtio() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
-package_amdonly-gaming-libva-mesa-driver() {
+package_amdonly-gaming-libva-mesa-driver-git() {
   pkgdesc="VA-API drivers"
   depends=(
     'expat'
@@ -404,7 +404,7 @@ package_amdonly-gaming-libva-mesa-driver() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
-package_amdonly-gaming-mesa-vdpau() {
+package_amdonly-gaming-mesa-vdpau-git() {
   pkgdesc="VDPAU drivers"
   depends=(
     'expat'
@@ -427,7 +427,7 @@ package_amdonly-gaming-mesa-vdpau() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
-package_amdonly-gaming-mesa() {
+package_amdonly-gaming-mesa-git() {
   depends=(
     'libdrm'
     'libelf'

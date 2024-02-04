@@ -1,6 +1,6 @@
 pkgbase = mesa-amdonly-gaming-git
 	pkgdesc = An open-source implementation of the OpenGL specification
-	pkgver = 24.0.0_devel.182416.4fdb381d02a.d41d8cd98f00b204e9800998ecf8427e
+	pkgver = 24.1.0_devel.184174.8368a972943.d41d8cd98f00b204e9800998ecf8427e
 	pkgrel = 1
 	url = https://www.mesa3d.org/
 	arch = x86_64
@@ -53,7 +53,7 @@ pkgbase = mesa-amdonly-gaming-git
 	b2sums = SKIP
 	b2sums = cc60238726b35133b5b729fb4ed1e76e04136588533615d84b4a54656d5b41727d5e7ff06ef4de3eb102eed6669d6c5c5cb8ac9fbdf6fc25aa477877c5c3ba87
 
-pkgname = amdonly-gaming-vulkan-mesa-layers
+pkgname = amdonly-gaming-vulkan-mesa-layers-git
 	pkgdesc = Mesa's Vulkan layers
 	depends = libdrm
 	depends = libxcb
@@ -65,7 +65,7 @@ pkgname = amdonly-gaming-vulkan-mesa-layers
 	replaces = vulkan-mesa-layer
 	replaces = vulkan-mesa-layers
 
-pkgname = amdonly-gaming-opencl-clover-mesa
+pkgname = amdonly-gaming-opencl-clover-mesa-git
 	pkgdesc = OpenCL support with clover for mesa drivers
 	depends = clang
 	depends = expat
@@ -82,7 +82,7 @@ pkgname = amdonly-gaming-opencl-clover-mesa
 	replaces = opencl-mesa
 	replaces = opencl-clover-mesa
 
-pkgname = amdonly-gaming-opencl-rusticl-mesa
+pkgname = amdonly-gaming-opencl-rusticl-mesa-git
 	pkgdesc = OpenCL support with rusticl for mesa drivers
 	depends = clang
 	depends = expat
@@ -100,7 +100,7 @@ pkgname = amdonly-gaming-opencl-rusticl-mesa
 	replaces = opencl-rusticl-mesa
 	replaces = opencl-mesa
 
-pkgname = amdonly-gaming-vulkan-radeon
+pkgname = amdonly-gaming-vulkan-radeon-git
 	pkgdesc = Radeon's Vulkan mesa driver
 	depends = libdrm
 	depends = libelf
@@ -117,7 +117,7 @@ pkgname = amdonly-gaming-vulkan-radeon
 	conflicts = vulkan-radeon
 	replaces = vulkan-radeon
 
-pkgname = amdonly-gaming-vulkan-swrast
+pkgname = amdonly-gaming-vulkan-swrast-git
 	pkgdesc = Vulkan software rasteriser driver
 	depends = libdrm
 	depends = libx11
@@ -135,7 +135,7 @@ pkgname = amdonly-gaming-vulkan-swrast
 	replaces = vulkan-mesa
 	replaces = vulkan-swrast
 
-pkgname = amdonly-gaming-vulkan-virtio
+pkgname = amdonly-gaming-vulkan-virtio-git
 	pkgdesc = Venus Vulkan mesa driver for Virtual Machines
 	depends = libdrm
 	depends = libx11
@@ -150,7 +150,7 @@ pkgname = amdonly-gaming-vulkan-virtio
 	conflicts = vulkan-virtio
 	replaces = vulkan-virtio
 
-pkgname = amdonly-gaming-libva-mesa-driver
+pkgname = amdonly-gaming-libva-mesa-driver-git
 	pkgdesc = VA-API drivers
 	depends = expat
 	depends = libdrm
@@ -163,7 +163,7 @@ pkgname = amdonly-gaming-libva-mesa-driver
 	conflicts = libva-mesa-driver
 	replaces = libva-mesa-driver
 
-pkgname = amdonly-gaming-mesa-vdpau
+pkgname = amdonly-gaming-mesa-vdpau-git
 	pkgdesc = VDPAU drivers
 	depends = expat
 	depends = libdrm
@@ -177,7 +177,7 @@ pkgname = amdonly-gaming-mesa-vdpau
 	conflicts = mesa-vdpau
 	replaces = mesa-vdpau
 
-pkgname = amdonly-gaming-mesa
+pkgname = amdonly-gaming-mesa-git
 	depends = libdrm
 	depends = libelf
 	depends = libglvnd
