@@ -4,7 +4,7 @@ pkgname=sing-box-beta
 _pkgname=sing-box
 _version="1.8.0-rc.11"
 pkgver="${_version//-/.}"
-pkgrel=1
+pkgrel=2
 
 pkgdesc='The universal proxy platform (beta version).'
 arch=('x86_64' 'i686')
@@ -13,8 +13,10 @@ license=('GPL3 with name use or association addition')
 
 makedepends=('go')
 
-source=("$_pkgname-$_version.tar.gz::https://github.com/SagerNet/sing-box/archive/v$_version.tar.gz")
-sha256sums=('a11a661bec0845aeb408295e6ead2932b9fae293a3ffcfc30533e4b2aae652ee')
+source=("$_pkgname-$_version.tar.gz::https://github.com/SagerNet/sing-box/archive/v$_version.tar.gz"
+        "sing-box.rules")
+sha256sums=('a11a661bec0845aeb408295e6ead2932b9fae293a3ffcfc30533e4b2aae652ee'
+            '1365536e1875043b969e2e18d7313ab7c6f7f9f63387f25506bb04362b44f206')
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -64,6 +66,7 @@ package() {
     install -Dm644 "release/config/$_pkgname.service"  -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 "release/config/$_pkgname@.service" -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 "release/config/$_pkgname.sysusers"    "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
+    install -Dm644 "${srcdir}/sing-box.rules"             "$pkgdir/usr/share/polkit-1/rules.d/sing-box.rules"
 
     install -Dm644 completions/bash "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}.bash"
     install -Dm644 completions/fish "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"

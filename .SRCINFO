@@ -1,7 +1,7 @@
 pkgbase = sing-box-beta
 	pkgdesc = The universal proxy platform (beta version).
 	pkgver = 1.8.0.rc.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sing-box.sagernet.org/
 	arch = x86_64
 	arch = i686
@@ -13,6 +13,8 @@ pkgbase = sing-box-beta
 	conflicts = sing-box
 	backup = etc/sing-box/config.json
 	source = sing-box-1.8.0-rc.11.tar.gz::https://github.com/SagerNet/sing-box/archive/v1.8.0-rc.11.tar.gz
+	source = sing-box.rules
 	sha256sums = a11a661bec0845aeb408295e6ead2932b9fae293a3ffcfc30533e4b2aae652ee
+	sha256sums = 1365536e1875043b969e2e18d7313ab7c6f7f9f63387f25506bb04362b44f206
 
 pkgname = sing-box-beta
