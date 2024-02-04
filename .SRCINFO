@@ -11,7 +11,6 @@ pkgbase = pyparticles
 	depends = python-numpy
 	depends = python-matplotlib
 	source = https://github.com/simon-r/PyParticles/archive/refs/tags/v0.4.0.tar.gz
-	sha1sums = a49817a5334e18bd74e310c9b1322818ae592ee05feff236151250dab3ee8889
+	sha256sums = a49817a5334e18bd74e310c9b1322818ae592ee05feff236151250dab3ee8889
 
 pkgname = pyparticles
-
