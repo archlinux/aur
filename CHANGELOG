@@ -1,3 +1,55 @@
+# Changes in version 0.7.0:
+
+Backend and Configuration:
+
+- Added many new backends using OpenDAL, including SFTP (on Unix) and S3. See the config examples.
+- Added the new webdav command.
+- Rclone backend: Added options rclone-command, use-password, rest-url.
+- Backend options can now be defined for hot and cold repository parts
+  separately using [repository.options-hot] and [repository.options-cold].
+
+Backup and Restore:
+
+- Backup scanning for size and start of the actual backup is now parallelized.
+- Added --no-scan option to prevent scanning for the backup size.
+- Added --custom-ignorefile option to use .gitignore-behavior with custom filenames.
+- Added --skip-identical-backup option to skip saving the snapshot if it is identical to the parent.
+- New option --quiet for backup and forget command.
+
+Repository Management:
+
+- ls: New option --numeric-id (can also be used as --numeric-uid-gid).
+- prune: New option --early-delete-index allows running prune with full discs.
+- The default for --max-repack has been changed to "10%".
+
+UI and Usability Improvements:
+
+- Help texts are now colored again. We may change that in a future release when reworking the CLI.
+- Improved progress bars, e.g., for the copy command.
+
+Optimizations:
+
+- Reduced memory requirements, especially for large repositories.
+
+Build and Deployment:
+
+- Added a Dockerfile for building a rustic Docker image.
+- Added the possibility to build an RPM package.
+- Many improvements to the internal build process and CI pipeline.
+- Building rustic with self-update and webdav commands is now an optional feature.
+
+Bug Fixes:
+
+- Fixed repository errors after entering a password, which now show up instead of re-prompting for the password.
+- Fixed an issue where the backup command could abort in the unlikely case of a
+  time shift during backup (e.g., caused by NTP syncing).
+- Fixed missing cache files printing a warning.
+- Fixed repair index wrongly setting to-delete for newly read pack files.
+- Allowed diff to use local: in path syntax, enabling comparison with Windows paths.
+- Fixed init not working as expected for hot/cold repositories due to a regression.
+- Made output from config file handling identical to other log messages.
+
+
 # Changes in version 0.6.1:
 
 Rustic 0.6.1 fixes some small bugs from 0.6.0 including (hopefully) the broken CI for building binaries.
@@ -22,12 +74,14 @@ Bug Fixes:
 
 Features:
 
-- New global configuration paths are available, located at /etc/rustic/*.toml or %PROGRAMDATA%/rustic/config/*.toml, depending on
-  your platform.
+- New global configuration paths are available, located at /etc/rustic/*.toml or
+  %PROGRAMDATA%/rustic/config/*.toml, depending on your platform.
 - REST backend: Now allows to use custom TLS root certificates.
 - Environment variables for programms called by rustic can now be set in the config files.
-- Creation of new keys now enforces confirmation of entered key. This helps to prevent mistype of passwords during the initial entry
-- Wait for password-command to successfully exit, allowing to input something into the command, and read password from stdout.
+- Creation of new keys now enforces confirmation of entered key. This helps to
+  prevent mistype of passwords during the initial entry
+- Wait for password-command to successfully exit, allowing to input something
+  into the command, and read password from stdout.
 - backup: New option --init to initialize repository if it doesn't exist yet.
 - backup: New option no-require-git - if enabled, a git repository is not required to apply git-ignore rule.
 - restore: The restore algorithm has been improved and should now be faster for remote repositories.
@@ -42,7 +96,8 @@ Features:
 
 Bugs fixed:
 
-- backup crashed when there was a non-unicode link target. The crash has been fixed. However, non-unicode link targets are still unsupported.
+- backup crashed when there was a non-unicode link target. The crash has been
+  fixed. However, non-unicode link targets are still unsupported.
 - Extended attributes which were saved with value null couldn't be handled. This has been fixed.
 - prune: --max-repack didn't work with a given percentage of repo size. This has been fixed.
 
@@ -162,7 +217,8 @@ Bugs fixed:
 New features:
 
 - diff/restore: Allow to use a single file as target and treat it correctly
-- local backend: Added possibility to add hooks. This can be used e.g. to automatically generate .par2 files for your local repo.
+- local backend: Added possibility to add hooks. This can be used e.g. to
+  automatically generate .par2 files for your local repo.
 - backup: Added option --json
 - The chunker implementation has been optimized
 - Default grouping now includes grouping by labels
