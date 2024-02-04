@@ -19,6 +19,8 @@ package() {
 
   install -Dm755 rustic "$pkgdir/usr/bin/rustic"
 
+  install -Dm644 -t "$pkgdir/usr/share/doc/rustic/config" config/*.toml
+
   install -Dm644 <("$srcdir"/rustic completions bash 2>/dev/null) "$pkgdir/usr/share/bash-completion/completions/rustic"
   install -Dm644 <("$srcdir"/rustic completions fish 2>/dev/null) "$pkgdir/usr/share/fish/vendor_completions.d/rustic.fish"
   install -Dm644 <("$srcdir"/rustic completions zsh 2>/dev/null) "$pkgdir/usr/share/zsh/site-functions/_rustic"
