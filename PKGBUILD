@@ -1,4 +1,5 @@
-# Maintainer: Nafis <mnabid.25@outlook.com>
+# Maintainer: FichteFoll <fichtefoll2@googlemail.com>
+# Contributor: Nafis <mnabid.25@outlook.com>
 
 pkgname=anitopy-git
 _pkgname=${pkgname%-git}
