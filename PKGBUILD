@@ -1,7 +1,7 @@
 # Maintainer: Alex Tharp <alex@toastercup.io>
 _appname=firestorm-next
 pkgname="${_appname}-bin"
-pkgver=7.1.2.72848
+pkgver=7.1.3.72952
 pkgrel=1
 pkgdesc="[PRE-RELEASE] Firestorm is a feature-packed third-party viewer for Second Life. This is the *alpha* release that currently features PBR support. **USE AT YOUR OWN RISK**"
 url="http://www.firestormviewer.org/"
@@ -23,28 +23,44 @@ optdepends=(
   'nvidia-libgl: for NVIDIA support'
   'nvidia-utils: for NVIDIA support')
 install="${_appname}.install"
-tardir="Phoenix-Firestorm-Alphax64-${pkgver//./-}"
-source=("https://downloads.firestormviewer.org/test/linux/${tardir}.tar.xz"
-        "${_appname}.desktop"
+source=("${_appname}.desktop"
         "${_appname}.launcher")
-md5sums=('f40bc1ac81ed38da444527a6bfccec54'
-         'bdf52344099529a7006ea67426239182'
+md5sums=('bdf52344099529a7006ea67426239182'
          '6a56b1a0df5960481ad40ed40dca8f91')
+_tar_md5sum='d7dd9297be96980ae588924ec3716556' # verified in prepare()
+
+# Text formatting
+_bold_font_weight=$(tput bold)
+_normal_font_weight=$(tput sgr0)
+_red_font_color=$(tput setaf 1)
+_reset_font_color=$(tput sgr0)
 
 prepare() {
-  cd "${srcdir}/${tardir}"
-  for patch in ../*.patch; do
-    if [ ! -f "$patch" ]; then
-      break;
-    else
-      patch -p1 -i "$patch"
-    fi
-  done
+  printf "\nPlease obtain the private URL for version ${pkgver} of ${_appname} by joining the Firestorm Preview group and looking at the most recent notices. ${_bold_font_weight}Do ${_red_font_color}not${_reset_font_color}${_bold_font_weight} share this URL.\n\n"
+  printf "${_bold_font_weight}Group URL: ${_normal_font_weight}https://my.secondlife.com/groups/7ba4569c-9dd9-fed2-aaa7-36065d18a13c\n"
+  printf "${_bold_font_weight}Inworld Group URI: ${_normal_font_weight}secondlife:///app/group/7ba4569c-9dd9-fed2-aaa7-36065d18a13c/about\n\n"
+  printf "${_bold_font_weight}Enter the download URL here:${_normal_font_weight} "
+  read -r _url
+
+  _tardir=$(basename "${_url}" .tar.xz)
+  echo "${_tardir}" > "${srcdir}/.tardir" # needed in package()
+
+  # Download and verify
+  curl -o "${srcdir}/${_tardir}.tar.xz" "$_url"
+  if ! echo "${_tar_md5sum} ${srcdir}/${_tardir}.tar.xz" | md5sum -c --status; then
+    printf "${_bold_font_weight}${_red_font_color}==> ERROR:${_reset_font_color} ${_bold_font_weight}The file downloaded from the provided URL did not pass the validity check!\n" >&2
+    return 1
+  fi
+
+  cd "${srcdir}"
+  tar -xf "${_tardir}.tar.xz"
 }
 
 package() {
+  read -r _tardir < "${srcdir}/.tardir"
+
   install -d "${pkgdir}/usr/lib"
-  cp -a "${srcdir}/${tardir}" "${pkgdir}/usr/lib/${_appname}"
+  cp -a "${srcdir}/${_tardir}" "${pkgdir}/usr/lib/${_appname}"
   cd "${pkgdir}/usr/lib/${_appname}"
 
   find app_settings skins -type f -execdir chmod 644 "{}" +

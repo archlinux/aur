@@ -1,6 +1,6 @@
 pkgbase = firestorm-next-bin
 	pkgdesc = [PRE-RELEASE] Firestorm is a feature-packed third-party viewer for Second Life. This is the *alpha* release that currently features PBR support. **USE AT YOUR OWN RISK**
-	pkgver = 7.1.2.72848
+	pkgver = 7.1.3.72952
 	pkgrel = 1
 	url = http://www.firestormviewer.org/
 	install = firestorm-next.install
@@ -38,10 +38,8 @@ pkgbase = firestorm-next-bin
 	optdepends = mesa-libgl: For Intel, Radeon, Nouveau support
 	optdepends = nvidia-libgl: for NVIDIA support
 	optdepends = nvidia-utils: for NVIDIA support
-	source = https://downloads.firestormviewer.org/test/linux/Phoenix-Firestorm-Alphax64-7-1-2-72848.tar.xz
 	source = firestorm-next.desktop
 	source = firestorm-next.launcher
-	md5sums = f40bc1ac81ed38da444527a6bfccec54
 	md5sums = bdf52344099529a7006ea67426239182
 	md5sums = 6a56b1a0df5960481ad40ed40dca8f91
 
