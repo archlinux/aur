@@ -7,7 +7,7 @@ _genetix=GKGenetix
 _pkgname=gedkeeper
 pkgname=${_pkgname}-git
 pkgver=v3.4.1.r56.gabd903ba
-pkgrel=2
+pkgrel=3
 pkgdesc="Personal genealogical database editor"
 arch=('x86_64' 'i686')
 url="https://github.com/serg-norseman/gedkeeper"
@@ -46,7 +46,7 @@ package() {
 	BASE_PATH="${srcdir}/${_gitname}"
 	BIN_PATH="${pkgdir}/usr/bin"
 	LIB_PATH="${pkgdir}/usr/lib/gedkeeper"
-	EXT_PATH="${pkgdir}/usr/share/gedkeeper/externals"
+	EXT_PATH="${pkgdir}/usr/lib/gedkeeper/externals"
 	
 	rm -rf ${pkgdir}
 
