@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='vrf-decompiler'
 _reponame='ValveResourceFormat'
-pkgver='7.0'
+pkgver='8.0'
 pkgrel='1'
 pkgdesc="File data viewer and decompiler for Valve's Source 2 resource file format"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -36,7 +36,7 @@ prepare() {
 	export DOTNET_SKIP_FIRST_TIME_EXPERIENCE='true'
 	export DOTNET_CLI_TELEMETRY_OPTOUT='true'
 
-	# Get rid of the dependency on the prebuild SkiaSharp library, as we use the system one
+	# Get rid of the dependency on the prebuilt SkiaSharp library, as we use the system one
 	sed -i '/"SkiaSharp\.NativeAssets\.Linux\.NoDependencies"/d' 'ValveResourceFormat/ValveResourceFormat.csproj'
 
 	# Download dependencies
@@ -54,6 +54,13 @@ build() {
 	# Build the project (don't publish as self-contained, as we use the system dotnet runtime)
 	dotnet build --verbosity 'normal' --configuration 'Release' -p:EnableSourceControlManagerQueries=false --runtime "$_dotnetarch" --self-contained false 'Decompiler/Decompiler.csproj'
 	dotnet publish --verbosity 'normal' --configuration 'Release' -p:EnableSourceControlManagerQueries=false --runtime "$_dotnetarch" --self-contained false 'Decompiler/Decompiler.csproj'
+}
+
+check() {
+	cd "$srcdir/$_sourcedirectory/"
+
+	# Verify that the basic functionality works
+	"./Decompiler/bin/Release/$_dotnetarch/publish/Decompiler" -i 'Tests/Files/small_map_with_material.vpk' -l
 }
 
 package() {
