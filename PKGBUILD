@@ -5,7 +5,7 @@
 
 pkgname=brscan5
 pkgver=1.3.1_0
-pkgrel=1
+pkgrel=2
 pkgdesc='SANE drivers from Brother for compatible models'
 arch=('i686' 'x86_64')
 license=('GPL' 'custom:Brother')
@@ -54,5 +54,13 @@ package() {
     mv "$pkgdir/opt/brother/scanner/brscan5/${lib}.so.1.0.0" "$pkgdir/usr/lib"
     ln -sf "$lib.so.1.0.0" "$lib.so.1"
     ln -sf "$lib.so.1" "$lib.so"
+  done
+
+  mkdir -p "$pkgdir/usr/bin"
+  cd "$pkgdir/usr/bin" || exit 1
+  bins=(brsaneconfig5 brscan_cnetconfig brscan_gnetconfig setupSaneScan5)
+  for bin in "${bins[@]}"; do
+    mv "$pkgdir/opt/brother/scanner/brscan5/${bin}" "${bin}"
+    ln -s "/usr/bin/${bin}" "$pkgdir/opt/brother/scanner/brscan5/${bin}"
   done
 }
