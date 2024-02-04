@@ -1,14 +1,14 @@
 pkgbase = paulxstretch
 	pkgdesc = Extreme time stretching tool (standalone, VST3 and CLAP plugin)
 	pkgver = 1.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sonosaurus.com/paulxstretch/
 	arch = aarch64
 	arch = x86_64
 	groups = clap-plugins
 	groups = pro-audio
 	groups = vst3-plugins
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = alsa-lib
 	makedepends = cmake
 	makedepends = fftw
@@ -26,7 +26,7 @@ pkgbase = paulxstretch
 	source = paulxstretch-1.6.0.tar.gz::https://github.com/essej/paulxstretch/archive/refs/tags/v1.6.0.tar.gz
 	source = fix-juce-x11.patch::https://github.com/juce-framework/JUCE/commit/4f9a9c7b.patch
 	sha256sums = 460b569c64dc5be57a963b863adc1b2606dc14a264701d8c983df3d3b6f7944d
-	sha256sums = 4dd7ce8eaba1f90c514c9689b63729db8ecc482f6fba087cef9a960792ce3a3b
+	sha256sums = 0786e34ce5b3db2047a6999dbe22d722df9344da9f0719d725beec9501d93d48
 
 pkgname = paulxstretch
 	depends = gcc-libs
