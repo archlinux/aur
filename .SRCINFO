@@ -1,0 +1,12 @@
+pkgbase = ifp
+	pkgdesc = IFP | Infinite Fusion Project - electron desktop app
+	pkgver = 0.0.34
+	pkgrel = 1
+	url = https://github.com/wxn0brP/ifp-electron
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	source = https://github.com/wxn0brP/ifp-electron/releases/download/v0.0.34/ifp-0.0.34.tar.gz
+	sha256sums = a1f1404cc42dff25391cc457ae17a82b4a1302cdbf07c58670c42379c900d798
+
+pkgname = ifp
