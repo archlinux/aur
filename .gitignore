@@ -6,4 +6,5 @@
 !*.tmpfiles
 !.gitignore
 !.SRCINFO
+!override-farmos.conf
 !PKGBUILD

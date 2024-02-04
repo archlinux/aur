@@ -22,6 +22,8 @@ pkgbase = farmos
 	optdepends = postgresql: Database
 	optdepends = sqlite: Database
 	source = farmos-v3.1.0.tar.gz::https://github.com/farmOS/farmOS/releases/download/3.1.0/farmOS-3.1.0.tar.gz
+	source = override-farmos.conf
 	sha256sums = df99f11d107728d9892ef34fb1abec8fc09bc48382915eb506ccdef3caca46d1
+	sha256sums = d42161c817011222d256232cacecf6b176901d48f8e7db70a10de5e98ea102bd
 
 pkgname = farmos

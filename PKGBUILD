@@ -25,8 +25,10 @@ optdepends=("apache: HTTP server"
     "php-sqlite: Database support for SQLite"
     "postgresql: Database"
     "sqlite: Database")
-source=("${pkgname}-v${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=("df99f11d107728d9892ef34fb1abec8fc09bc48382915eb506ccdef3caca46d1")
+source=("${pkgname}-v${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
+    "override-${pkgname}.conf")
+sha256sums=("df99f11d107728d9892ef34fb1abec8fc09bc48382915eb506ccdef3caca46d1"
+    "d42161c817011222d256232cacecf6b176901d48f8e7db70a10de5e98ea102bd")
 
 build()
 {
@@ -42,6 +44,7 @@ package()
 
     # Install the software.
     cp -r "${srcdir}"/"${_pkgname}"/* "${pkgdir}"/usr/share/webapps/"${pkgname}"/
+    install -Dm644 "${srcdir}"/override-"${pkgname}".conf "${pkgdir}"/usr/lib/systemd/system/php-fpm.service.d/
     chown -R http:http "${pkgdir}"/usr/share/webapps/"${pkgname}"/
 
     # Install the documentation.
