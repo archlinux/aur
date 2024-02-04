@@ -6,5 +6,5 @@
 !*.tmpfiles
 !.gitignore
 !.SRCINFO
-!override_matomo.conf
+!override-matomo.conf
 !PKGBUILD

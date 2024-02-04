@@ -43,7 +43,7 @@ source=("${_pkgname}::git+${url}.git#tag=${_tag}"
     "git+https://github.com/matomo-org/plugin-VisitorGenerator.git"
     "git+https://github.com/matomo-org/tag-manager.git"
     "git+https://github.com/matomo-org/travis-scripts.git"
-    "override_${_pkgname}.conf")
+    "override-${_pkgname}.conf")
 sha512sums=("SKIP"
     "SKIP"
     "SKIP"
@@ -150,7 +150,7 @@ package()
     # Install the software.
     cp -r "${srcdir}"/"${_pkgname}"/ "${pkgdir}"/usr/share/webapps/
     install -Dm644 "${srcdir}"/DBIP-City-Lite.mmdb "${pkgdir}"/usr/share/webapps/"${_pkgname}"/misc/
-    install -Dm644 "${srcdir}"/override_"${_pkgname}".conf "${pkgdir}"/usr/lib/systemd/system/php-fpm.service.d/
+    install -Dm644 "${srcdir}"/override-"${_pkgname}".conf "${pkgdir}"/usr/lib/systemd/system/php-fpm.service.d/
     chown -R http:http "${pkgdir}"/usr/share/webapps/"${_pkgname}"/
 
     # Install the documentation.
