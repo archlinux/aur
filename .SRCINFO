@@ -1,11 +1,12 @@
 pkgbase = anitopy-git
 	pkgdesc = Anime video filename parser in Python, based on Anitomy
-	pkgver = 2.1.0
+	pkgver = 2.1.1.r18.1a15190
 	pkgrel = 1
 	url = https://github.com/igorcmoura/anitopy
 	arch = any
 	license = MPL2
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	provides = anitopy
 	conflicts = anitopy
