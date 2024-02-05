@@ -8,7 +8,7 @@ url='https://github.com/hadess/lua-archive'
 arch=('i686' 'x86_64')
 license=('custom:MIT')
 depends=('lua' 'libarchive')
-makedepends=('cmake' 'make')
+makedepends=('cmake' 'make' 'git')
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 

@@ -8,10 +8,10 @@ pkgbase = lua-archive-git
 	license = custom:MIT
 	makedepends = cmake
 	makedepends = make
+	makedepends = git
 	depends = lua
 	depends = libarchive
 	source = lua-archive-git::git+https://github.com/hadess/lua-archive
 	sha512sums = SKIP
 
 pkgname = lua-archive-git
-
