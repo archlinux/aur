@@ -1,0 +1,15 @@
+pkgbase = python-dhcplib-git
+	pkgdesc = Pure-Python, spec-compliant DHCP-packet-processing library
+	pkgver = 0.1.1.r0.gf13f91c
+	pkgrel = 1
+	url = https://github.com/jansegre/dhcplib/
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	makedepends = python-setuptools
+	provides = python-dhcplib
+	conflicts = python-dhcplib
+	source = git+https://github.com/jansegre/dhcplib.git
+	sha256sums = SKIP
+
+pkgname = python-dhcplib-git
