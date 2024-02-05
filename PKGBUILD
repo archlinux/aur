@@ -51,9 +51,9 @@ backup=(
   'var/ossec/etc/ossec.conf'
 )
 
-sha256sums_x86_64=('af3ef12d1105f4191b68497d9d0dbfe7c35279ed6162c99c757b8bf3f85d7a31'
+sha512sums_x86_64=('2de21bff16a725dec0f0edce8273934fedcc5225db8fccf527fd0634b576c469c58ef7a8400a670809fac509141b7136d1593470a7752577be3e9fd58a1b714e'
                    'SKIP')
-sha256sums_aarch64=('cfc27b8b0daa3a46898928f4ee19d58bd0c1cb56d561b5f7d8b56d4615ed0e71'
+sha512sums_aarch64=('ad0e78e71bd7bc705ae774749e326492f150cde38705bc3c6dd400ecde0bff7c145244a2bb1e2b3f357cca7bc43ae6771b358c4ecb9f26f1f67503ebe42deb6c'
                     'SKIP')
 
 install=$pkgname.install
