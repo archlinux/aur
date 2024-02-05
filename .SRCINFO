@@ -1,8 +1,8 @@
 pkgbase = bluez-hciconfig
-	pkgdesc = metapackage - migrate to bluez-tools-extra
+	pkgdesc = metapackage - migrate to bluez-deprecated-tools
 	pkgver = 5.67
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 
 pkgname = bluez-hciconfig
-	depends = bluez-tools-extra
+	depends = bluez-deprecated-tools
