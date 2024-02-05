@@ -72,7 +72,7 @@ _per_gov=${_per_gov-}
 _tcp_bbr3=${_tcp_bbr3-y}
 
 ### Running with a 1000HZ, 750Hz, 600 Hz, 500Hz, 300Hz, 250Hz and 100Hz tick rate
-_HZ_ticks=${_HZ_ticks-500}
+_HZ_ticks=${_HZ_ticks-1000}
 
 ## Choose between perodic, idle or full
 ### Full tickless can give higher performances in various cases but, depending on hardware, lower consistency.
@@ -134,7 +134,8 @@ _use_llvm_lto=${_use_llvm_lto-none}
 
 # Use suffix -lto only when requested by the user
 # Enabled by default.
-# If you do not want the suffix -lto remove the "y" sign next to the flag.
+# y - enable -lto suffix
+# n - disable -lto suffix
 # https://github.com/CachyOS/linux-cachyos/issues/36
 _use_lto_suffix=${_use_lto_suffix-y}
 
@@ -155,18 +156,18 @@ _build_zfs=${_build_zfs-}
 # This does replace the requirement of nvidia-dkms
 _build_nvidia=${_build_nvidia-}
 
-if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] && [ -n "$_use_lto_suffix" ]; then
+if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] && [ "$_use_lto_suffix" = "y"  ]; then
     pkgsuffix=cachyos-rc-lto
     pkgbase=linux-$pkgsuffix
 
-else
+elif [ -n "$_use_llvm_lto" ]  ||  [[ "$_use_lto_suffix" = "n" ]]; then
     pkgsuffix=cachyos-rc
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.8
 _minor=0
 #_minorc=$((_minor+1))
-_rcver=rc2
+_rcver=rc3
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 #_stable=${_major}
@@ -174,7 +175,7 @@ _stable=${_major}-${_rcver}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux EEVDF scheduler with the sched-ext framework Kernel by CachyOS and with some other patches and other improvements'
-pkgrel=2
+pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -213,19 +214,21 @@ fi
 # ZFS support
 if [ -n "$_build_zfs" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=d9cb42da999e77a2ea3ee5488a5ca0f4c27db2fe")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=06e25f9c4b0841e450e411bf270c7aa92c04c573")
 fi
 
 # NVIDIA pre-build module support
 if [ -n "$_build_nvidia" ]; then
     source+=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${_nv_ver}/${_nv_pkg}.run"
-             "$_patchsource/misc/nvidia/nvidia-drm-hotplug-workqueue.patch")
+             "$_patchsource/misc/nvidia/nvidia-drm-hotplug-workqueue.patch"
+             "$_patchsource/misc/nvidia/nvidia-drivers-470.223.02-gpl-pfn_valid.patch")
 fi
 
 ## List of CachyOS schedulers
 case "$_cpusched" in
-    cachyos|sched-ext) ## SCHED-EXT
-        source+=("${_patchsource}/sched/0001-sched-ext.patch");;
+    cachyos|sched-ext) ## SCHED-EXT Framework with the BORE Scheduler
+        source+=("${_patchsource}/sched/0001-sched-ext.patch"
+        		"${_patchsource}/sched/0001-bore-cachy.patch");;
     bore) ## BORE Scheduler
         source+=("${_patchsource}/sched/0001-bore-cachy.patch");;
     rt) ## EEVDF with RT patches
@@ -265,6 +268,7 @@ prepare() {
         src="${src##*/}"
         src="${src%.zst}"
         [[ $src = nvidia-drm-hotplug-workqueue.patch ]] && continue
+        [[ $src = nvidia-drivers-470.223.02-gpl-pfn_valid.patch ]] && continue
         [[ $src = *.patch ]] || continue
         echo "Applying patch $src..."
         patch -Np1 < "../$src"
@@ -632,6 +636,8 @@ prepare() {
         # Temporary fix for fbdev=1
         # https://forums.developer.nvidia.com/t/545-29-06-18-1-flip-event-timeout-error-on-startup-shutdown-and-sometimes-suspend-wayland-unusable/274788/21
         patch -Np0 -i "${srcdir}/nvidia-drm-hotplug-workqueue.patch" -d "${srcdir}/${_nv_pkg}"
+        # Temporary fix for nvidia module build
+        patch -Np2 --no-backup-if-mismatch -i "${srcdir}/nvidia-drivers-470.223.02-gpl-pfn_valid.patch" -d "${srcdir}/${_nv_pkg}/kernel"
     fi
 }
 
@@ -819,8 +825,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('74e9374629131245bfa4d2948499b6cfa00c9375d70e738b6b81e54958976d6bc92cb4c2bb1e276e5a0134ba1d5ae4c5b4290c53ecb22c66beba2fa9fb3f0336'
-        'c0f9e4b8caac7607da9c299f3e49e811df50ec869ada08e4e5dffad820077e77de79f11de3febb358ae7eee18d1ded4dfc4f07358e0723409ba32a532a163e0b'
+b2sums=('592c476e7d53005436a2f9afce7409ec929ace9d299eff39687831ddaa8810a5620bf3d6838f5c61a5011cc203385cb66d4fe069dc73e463ab8ee4156a7b9a89'
+        '7ba475efac88ca247605db21d7cc86eacf377ded3e51595c2abfd15f10ab4478b922fb3fad9f44d59e0e8f56f98152913f67201e38ecbccf46e51136b1b0edb9'
         '43ef7a347878592740d9eb23b40a56083fa747f7700fa1e2c6d039d660c0b876d99bf1a3160e15d041fb13d45906cdb5defef034d4d0ae429911864239c94d8d'
-        'f1f0b16b9afc54f7b1af3836066fc580b4915a74105f6f566cbde4256039548dab9bcefa3e0167722262953e7f278fa9d4f42907f8030a7af7ee8e7dfed55d72'
-        '574e60b25fc38cb1eac59fdc839ff66ce71c0ce7adf33c396e4cc34043c6122aa9f1f6090e721db92a372a9394e7c435720fa87fb213b592bb7d118344a56169')
+        '7e53565685f85b54c03591b2b50bfb8af84ceb11e194714873388322bf4d538af1aa5f93b2e690e5da0f246d40cf1db0daf177767ce3872a28c75e796684ff42'
+        '574e60b25fc38cb1eac59fdc839ff66ce71c0ce7adf33c396e4cc34043c6122aa9f1f6090e721db92a372a9394e7c435720fa87fb213b592bb7d118344a56169'
+        '6d52e02a93431685e7dcf3fb342ce0c19a63a2df12a39d78e9db3087eabbe13097f6210acd881fc456bee6172049c707506f1ee1ba9bde709f60bd7abe6739f6')
