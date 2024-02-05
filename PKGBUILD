@@ -4,9 +4,11 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: Marcell Meszaros (MarsSeed) <marcell.meszaros@runbox.eu>
 
+_py="python"
+_py2="${_py}2"
 _pkgname=reallymakepkg
 pkgname="${_pkgname}-git"
-pkgver=1.1.r23.g532485c
+pkgver=1.1.1.1.1.r1.g3d24765
 pkgrel=1
 pkgdesc="System-independent makepkg"
 arch=(
