@@ -1,7 +1,7 @@
 pkgbase = iotas
 	pkgdesc = Simple note taking
 	pkgver = 0.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/cheywood/iotas
 	arch = any
 	license = GPL3
@@ -9,9 +9,12 @@ pkgbase = iotas
 	makedepends = meson
 	makedepends = gobject-introspection
 	depends = libadwaita
-	depends = sqlite
-	depends = org.freedesktop.secrets
-	depends = gtksourceview5
+	depends = python
+	source = https://gitlab.gnome.org/cheywood/iotas/-/archive/0.2.7/iotas-0.2.7.tar.gz
+	b2sums = 4967d2125868f104f28da6e38548852669fe5638dcd2625f054a4df3d27b008ebd413d16c6c3e5796c039990297ccd1653ea88b9c273a208bf56b7c08fe2242b
+
+pkgname = iotas
+	depends = webkitgtk-6.0
 	depends = python-requests
 	depends = python-markdown-it-py
 	depends = python-linkify-it-py
@@ -20,7 +23,6 @@ pkgbase = iotas
 	depends = hspell
 	depends = nuspell
 	depends = libvoikko
-	source = https://gitlab.gnome.org/cheywood/iotas/-/archive/0.2.7/iotas-0.2.7.tar.gz
-	b2sums = 4967d2125868f104f28da6e38548852669fe5638dcd2625f054a4df3d27b008ebd413d16c6c3e5796c039990297ccd1653ea88b9c273a208bf56b7c08fe2242b
-
-pkgname = iotas
+	depends = sqlite
+	depends = org.freedesktop.secrets
+	depends = gtksourceview5
