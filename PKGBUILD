@@ -16,7 +16,7 @@
 # basic info
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.7.5540.r0.g2e95e59f
+pkgver=1.7.5545.r0.g56b54e0e
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
@@ -214,26 +214,6 @@ EOF
 
   _prepare_biojppm_rapidyaml
   _prepare_biojppm_c4core
-
-  local _revert=(
-    9809265be4cf61c5406a79642254b7cbbcb00ee1
-  )
-
-  local _backports=(
-  )
-
-  _backport() (
-    cd "$_pkgsrc"
-    local _c
-    for _c in "${_revert[@]}"; do
-      git revert -n -m1 "${_c}"
-    done
-    for _c in "${_backports[@]}"; do
-      git cherry-pick -n -m1 "${_c}"
-    done
-  )
-
-  _backport
 
   # prevent march=native
   sed -E -e 's@^(\s*)(add_compile_options\(.*march=native.*\))@\1message("skip: march=native")@' \
