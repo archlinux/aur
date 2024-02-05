@@ -3,7 +3,7 @@
 # Contributor: Aaron Blair <aaron@aaronpb.me>
 
 pkgname=subfinder
-pkgver=2.6.4
+pkgver=2.6.5
 pkgrel=1
 pkgdesc='A subdomain discovery tool that discovers valid subdomains for websites'
 arch=('x86_64' 'armv6h' 'aarch64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('bab83219280b1442ee98e3eba077a33efd2bb67a5df75807fbe56d019676a468a704ce47f05858868d6c316840521ac7f707a2e6bfa77b40497ddcecaa955051')
+b2sums=('e2d996aab1913921ff47425f2c006b7179de8d92dc84964e2b3dbab04f5fddb556b8578f9fec141d2b0a08a284adbcf543d9770bf52687d67e362e184518e2f5')
 
 build() {
   cd "${pkgname}-${pkgver}/v2/cmd/${pkgname}/"
