@@ -7,7 +7,7 @@ pkgrel=4
 pkgdesc="A desktop app where you can easily keep track of your time-based tasks."
 arch=('x86_64')
 url="https://github.com/kutay-celebi/ntracker"
-license=('custom')
+license=('LicenseRef-custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
