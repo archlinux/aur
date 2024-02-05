@@ -43,6 +43,10 @@ package() {
       "${pkgdir}/usr/share/licenses/${pkgname}"
 
   # pygmentize is included in python-pygments
+  find \
+    "${pkgdir}" | \
+    grep \
+      "bin"
   cd \
     "${pkgdir}/usr/bin"
   mv \
