@@ -1,0 +1,18 @@
+pkgbase = steam-killer-git
+	pkgdesc = Terminates Steam on Linux when certain conditions are met.
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/danisztls/steam-killer
+	install = steam-killer.install
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = python
+	depends = python-psutil
+	depends = python-watchdog
+	provides = steam-killer
+	conflicts = steam-killer
+	source = git+https://github.com/danisztls/steam-killer
+	sha512sums = SKIP
+
+pkgname = steam-killer-git
