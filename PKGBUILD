@@ -4,11 +4,11 @@ pkgname="live-${_pkgname}-bin"
 _appname="Live radio"
 pkgver=1.2.1
 _electronversion=23
-pkgrel=6
+pkgrel=7
 pkgdesc="An Electron application with React and TypeScript.Streaming norwegian live radio"
 arch=('x86_64')
 url="https://github.com/JesperBry/live-radio-app"
-license=('custom')
+license=('LicenseRef-custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -19,11 +19,11 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1454aaaa2bac0e6c8167bc570884165ae68602df10c2ba2b966ef0fc560307da'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|\"/opt/${_appname}/${_pkgname}\"|${pkgname%-bin}|g;s|${_pkgname}|${pkgname%-bin}|g" \
