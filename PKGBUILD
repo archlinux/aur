@@ -2,7 +2,7 @@
 # Submitter: picokan <todaysoracle@protonmail.com>
 pkgname=vesktop
 _pkgname=Vesktop
-pkgdesc="A standalone Electron app that loads Discord & Vencord"
+pkgdesc="Vesktop gives you the performance of web Discord and the comfort of Discord Desktop"
 pkgver=1.5.0
 pkgrel=15
 arch=('x86_64' 'aarch64')
