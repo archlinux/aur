@@ -4,7 +4,7 @@ pkgname="${_pkgname}-desktop-bin"
 _appname=Listen1
 _electronversion=13
 pkgver=2.31.0
-pkgrel=5
+pkgrel=6
 pkgdesc="One for all free music in China"
 arch=("x86_64")
 url="http://listen1.github.io/listen1"
@@ -27,11 +27,11 @@ source=(
 )
 sha256sums=('0623e152524477d1015b2619bb1784d82473de6153b8b78a892783fb9e0894f9'
             'd2aa8a82485042b9d5efb8ed2d9c0e8a66e8983bc3f64ebbe35158d35662cdbc'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_appname}/${_pkgname}|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g;s|Audio|AudioVideo|g" \
