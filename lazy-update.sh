@@ -7,7 +7,8 @@ if [ $# -ne 1 ]; then
 	exit 1
 fi
 
-sed -ri PKGBUILD -e "s/pkgver=.+/pkgver=$1/"
+sed -ri PKGBUILD -e "s/^pkgver=.+/pkgver=$1/" \
+	-e 's/^pkgrel=.+/pkgrel=1/'
 updpkgsums
 makepkg --printsrcinfo > .SRCINFO
 git commit -am "Reflect new upstream release v$1"
