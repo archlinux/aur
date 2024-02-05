@@ -1,0 +1,3 @@
+post_install(){
+	[ -d /usr/share/zlodej/DATA ] || echo -e '\e[93mPlace your game data into ~/.clou folder\e[m'
+}

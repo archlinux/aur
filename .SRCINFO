@@ -1,0 +1,21 @@
+pkgbase = derclou
+	pkgdesc = Der Clou! - SDL2 Port
+	pkgver = 2.7
+	pkgrel = 1
+	url = https://github.com/vcosta/derclou
+	install = derclou.install
+	arch = x86_64
+	arch = aarch64
+	license = custom:Der Clou! Public License Contract
+	license = custom:MAME
+	license = MIT/ICU (portion)
+	depends = sdl2
+	optdepends = zlodej: provides game data for the Czech version
+	source = https://github.com/vcosta/derclou/archive/7b219e7ac6de35cfda59b32d655515dd240d1a63.tar.gz
+	source = derclou.webp
+	source = derclou.desktop
+	cksums = SKIP
+	cksums = SKIP
+	cksums = SKIP
+
+pkgname = derclou
