@@ -2,11 +2,11 @@
 pkgname=zhiximind-desktop-bin
 pkgver=2.1.4.0
 _electronversion=21
-pkgrel=4
+pkgrel=5
 pkgdesc="知犀思维导图官方版"
 arch=('x86_64')
 url="https://www.zhixi.com"
-license=('custom')
+license=('ISC')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -22,12 +22,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('972aed41c6a54acf99f0ccb60047f52ba9fe264fbee04a9a0c4746df7a33eb53'
-            '8db7ab7d6ba34fe6997140ad9d6bbaeafd52cdc0f1ba486038226270243d1b41'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '2b4abfdc101c27d844600bf83d76be8a5b1ba3934db79166b5a85c82e73ca1c0'
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     asar e "${srcdir}/opt/${pkgname%-bin}/resources/app.asar" "${srcdir}/app.asar.unpacked"
