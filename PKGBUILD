@@ -2,26 +2,16 @@
 pkgname=moneydance-bin
 _pkgname=Moneydance
 pkgver=2023.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy to use and full-featured personal finance app that doesn't compromise your privacy. "
 arch=('x86_64')
-url="http://moneydance.com/"
-license=('custom:commercial')
+url="https://infinitekind.com/moneydance"
+license=('LicenseRef-custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'freetype2'
-    'libxtst'
-    'gdk-pixbuf2'
-    'libxrender'
-    'libglvnd'
-    'libxi'
     'java-runtime'
     'hicolor-icon-theme'
-    'libxext'
-    'libx11'
-    'cairo'
-    'pango'
     'gtk3'
     'alsa-lib'
 )

@@ -1,23 +1,13 @@
 pkgbase = moneydance-bin
 	pkgdesc = An easy to use and full-featured personal finance app that doesn't compromise your privacy.
 	pkgver = 2023.3
-	pkgrel = 1
-	url = http://moneydance.com/
+	pkgrel = 2
+	url = https://infinitekind.com/moneydance
 	arch = x86_64
-	license = custom:commercial
+	license = LicenseRef-custom
 	makedepends = gendesk
-	depends = freetype2
-	depends = libxtst
-	depends = gdk-pixbuf2
-	depends = libxrender
-	depends = libglvnd
-	depends = libxi
 	depends = java-runtime
 	depends = hicolor-icon-theme
-	depends = libxext
-	depends = libx11
-	depends = cairo
-	depends = pango
 	depends = gtk3
 	depends = alsa-lib
 	provides = moneydance=2023.3
