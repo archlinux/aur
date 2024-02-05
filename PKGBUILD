@@ -1,12 +1,13 @@
+# SPDX-License-Identifier: AGPL-3.0
+#
 # Maintainer: Truocolo <truocolo@aol.com>
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
-#
-# SPDX-License-Identifier: AGPL-3.0
+# Contributor: Marcell Meszaros (MarsSeed) <marcell.meszaros@runbox.eu>
 
 _git="false"
 pkgname=reallymakepkg
-_pkgver="1.0"
-pkgver="v${_pkgver}"
+_pkgver="1.1.1"
+pkgver="${_pkgver}"
 pkgrel=1
 pkgdesc="System-independent makepkg"
 arch=(any)
@@ -15,8 +16,13 @@ _ns="themartiancompany"
 url="${_repo}/${_ns}/${pkgname}"
 license=(
   AGPL3)
-depends=()
+depends=(
+  bash
+)
 makedepends=()
+checkdepends=(
+  # shellcheck
+)
 source=()
 sha256sums=()
 _url="file://${HOME}/${_pkgname}"
@@ -35,7 +41,7 @@ _url="file://${HOME}/${_pkgname}"
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
   ) && \
   sha256sums+=(
-    ebd3206bbed93382184b468dab8d434d86e96fbb39daf8bedcbe77bed7693d0e
+    'f1d9b7b702567d3aa51a5e2e6db0873763cf8723488f77e0f0cf6a2561c97df3'
   )
 
 package() {

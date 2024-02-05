@@ -1,11 +1,12 @@
 pkgbase = reallymakepkg
 	pkgdesc = System-independent makepkg
-	pkgver = v1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/themartiancompany/reallymakepkg
 	arch = any
 	license = AGPL3
-	source = reallymakepkg-v1.0.tar.gz::https://github.com/themartiancompany/reallymakepkg/archive/refs/tags/v1.0.tar.gz
-	sha256sums = ebd3206bbed93382184b468dab8d434d86e96fbb39daf8bedcbe77bed7693d0e
+	depends = bash
+	source = reallymakepkg-1.1.1.tar.gz::https://github.com/themartiancompany/reallymakepkg/archive/refs/tags/1.1.1.tar.gz
+	sha256sums = f1d9b7b702567d3aa51a5e2e6db0873763cf8723488f77e0f0cf6a2561c97df3
 
 pkgname = reallymakepkg
