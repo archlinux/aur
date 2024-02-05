@@ -3,12 +3,12 @@ pkgname=mini-music-bin
 _pkgname="迷你音乐"
 pkgver=1.5.0
 _electronversion=11
-pkgrel=7
+pkgrel=8
 pkgdesc="A simple and beautiful music player.一个简单、美观的音乐播放器"
 arch=('x86_64')
 url="https://gitee.com/cgper/miniMusic"
 _ghurl="https://github.com/CGPer/miniMusic"
-license=('custom:MulanPSL2')
+license=('LicenseRef-MulanPSL2')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -22,11 +22,11 @@ source=(
 )
 sha256sums=('f451f4e717c9364e8e302e9f24e2f7a8a0573734508d96b1c48b3ff548d5b310'
             'd0b16a3cb603569486834cb55fa8a539832063864793339386f5e1f646928987'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\"|${pkgname%-bin}|g;s|DesktopApp|AudioVideo|g" \
