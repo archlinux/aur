@@ -1,7 +1,7 @@
 pkgbase = kiwiirc-desktop-bin
 	pkgdesc = Next generation of the Kiwi IRC web client
 	pkgver = 1.7.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://kiwiirc.com/
 	arch = armv7h
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = kiwiirc-desktop-bin
 	conflicts = kiwiirc-desktop
 	conflicts = kiwiirc
 	source = kiwiirc-desktop.sh
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 	source_armv7h = kiwiirc-desktop-1.7.1-armv7h.deb::https://github.com/kiwiirc/kiwiirc/releases/download/v1.7.1/kiwiirc-desktop_v1.7.1-2_linux_armv7l.deb
 	sha256sums_armv7h = 52b315f259afac82cc29c362addb3e9ee13362a9533619471d1b51110e310099
 	source_aarch64 = kiwiirc-desktop-1.7.1-aarch64.deb::https://github.com/kiwiirc/kiwiirc/releases/download/v1.7.1/kiwiirc-desktop_v1.7.1-2_linux_arm64.deb
