@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=buttercup
 pkgname="${_pkgname}-desktop-bin"
-pkgver=2.24.4
+pkgver=2.25.0
 _electronversion=22
-pkgrel=2
+pkgrel=1
 pkgdesc="Cross-Platform Passwords & Secrets Vault"
 arch=(
     'aarch64'
@@ -12,7 +12,7 @@ arch=(
 )
 url="https://buttercup.pw/"
 _ghurl="https://github.com/buttercup/buttercup-desktop"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -29,14 +29,14 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname//b/B}-linux-armv7l.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname//b/B}-linux-x86_64.AppImage")
 source=("${pkgname%-bin}.sh")
-sha256sums=('d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
-sha256sums_aarch64=('ba9c950c3bd48da59d39a71bed5d020ae5ceb821968dc9e2d4f7da4a97140442')
-sha256sums_armv7h=('ad8f31dfd6353ce0d061d8dfd58af02b1cbd626dea93e96929d6bd376388bab0')
-sha256sums_x86_64=('73930b8ffd4e4a31acc9208435e26a121b9bc65db2eee0e19ce040b4b1b2f762')
+sha256sums=('0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+sha256sums_aarch64=('01bcf49e134499566924f5c6b3c46db436de72a4c9a5263963d2d632f130c97d')
+sha256sums_armv7h=('b8b9056d569dbb87c75f0840f02f6e8e31249b2ee35ed99c2cc082684ba45f6f')
+sha256sums_x86_64=('22039346de324ff33320467799797b3cf03428d713c20bc7d8fce3bd5270e2f0')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
