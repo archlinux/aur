@@ -2,11 +2,11 @@
 _pkgname=github-desktop
 _appname=GitHubDesktop
 pkgname="${_pkgname}-zh-bin"
-pkgver=3.3.6_linux3
+pkgver=3.3.8_linux2
 #_zhpkgver="${pkgver%_linux2}"
 _zhpkgver=3.3.8
 _electronversion=26
-pkgrel=2
+pkgrel=1
 pkgdesc="GUI for managing Git and GitHub.Chinese SC Version.Github Desktop 汉化版"
 arch=(
     'aarch64'
@@ -18,7 +18,10 @@ _ghurl="https://github.com/shiftkey/desktop"
 _ghzhurl="https://github.com/robotze/GithubDesktopZhTool"
 license=('MIT')
 provides=("${_pkgname}")
-conflicts=("${_pkgname}" "${pkgname%-zh}")
+conflicts=(
+    "${_pkgname}"
+    "${pkgname%-bin}"
+)
 depends=(
     'hicolor-icon-theme'
     "electron${_electronversion}"
@@ -38,14 +41,14 @@ source=(
 )
 sha256sums=('ae9477be564f83ad64af64de563cd81565d84b6a4fe68e93077c72c4e12f1133'
             '891d678cd6aa67c0712f663b5fee690f24d11d360795300814f7bf2eb91ba530'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
-sha256sums_aarch64=('2c1faf2dbfff1c69cadf1b4ace7bae20fb64b492298698e2bfa56482e6f8a584')
-sha256sums_armv7h=('10d0220438d04983d8dd01a12d9c44c8616244fb3a31f0152f85a8809c3fea73')
-sha256sums_x86_64=('f74d0985f1cdefc0ae017a6d3d7d93a13bd3f44fa0fb1457aa6966df827d97a9')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+sha256sums_aarch64=('179f751dedb67eec9f8ec9717674bc37939ba44237f6b71f9339b090a72fe7f3')
+sha256sums_armv7h=('a645b6b20077585ee93d2ad6b8adc7e7b7be0db66409fa13054c7c1049431efe')
+sha256sums_x86_64=('317b4421512c7791803c6bb13077052c9fccd34f653d19d7ea1fa48f9525486f')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     install -Dm644 "${srcdir}/GithubDesktop汉化工具/Linux/"* -t "${srcdir}/usr/lib/${_pkgname}/resources/app"
