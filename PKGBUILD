@@ -14,7 +14,7 @@ source=("https://cpan.metacpan.org/authors/id/D/DB/DBOOK/$_dist-$pkgver.tar.gz")
 sha256sums=(599cb766c055f6c48d362597e7535c902cd6674e4d6ad1ce4cb08e8d06777fd1)
 
 build() {
-  cd $_dist-$pkgver
+  cd "$srcdir/$_dist-$pkgver"
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
   /usr/bin/perl Makefile.PL
@@ -22,14 +22,14 @@ build() {
 }
 
 check() {
-  cd $_dist-$pkgver
+  cd "$srcdir/$_dist-$pkgver"
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1
   make test
 }
 
 package() {
-  cd $_dist-$pkgver
+  cd "$srcdir/$_dist-$pkgver"
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
