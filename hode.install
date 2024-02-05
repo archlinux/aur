@@ -1,3 +1,3 @@
 post_install(){
-	[ -d /usr/share/heart-of-darkness ] || echo -e "\e[93mPlace your game data into ~/.hode folder\e[m"
+	echo -e '\e[93mPlace your game data into ~/.hode folder\e[m'
 }

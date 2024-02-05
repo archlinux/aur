@@ -1,32 +1,25 @@
 pkgname=hode-git
-pkgver=0.2.9f+r4.26bcf11
+pkgver=0.2.9f+r7.abaa416
 pkgrel=1
-pkgdesc="Heart of Darkness engine rewrite"
+pkgdesc='Heart of Darkness engine rewrite'
 arch=(x86_64 aarch64)
 url=http://cyxdown.free.fr/hode/
 license=(unknown)
 makedepends=(sdl2)
-optdepends=('heart-of-darkness: provides game data for hode engine')
 install=hode.install
 source=(
-	git+https://github.com/cyxx/hode.git
+	git+https://github.com/cyxx/hode
 	hode.{ini,sh,desktop}
 	amazing.webp	# https://heartofdarkness.ca/Download/Demos/ECTS1995HoDpresskit.zip (ECTS1995HoDpresskit/LOGO/AMAZINGB.TIF)
 	amazing32.png)
-md5sums=(
-	SKIP
-	874bc298ab565d2d5141101781ef1082
-	8afb36729d190e64ab93c923981b1312
-	bfdd04e5fdc88f9dfcc2664bbb7578d6
-	2d93e887790f571880621e37e1bb24fa
-	f9b6c6fbc11be79cd22e409086e7f5c2)
+cksums=(SKIP{,,,,,})
 pkgver(){
 	cd hode
-	git describe --tags|sed 's/-\(.*\)-g/+r\1./'
+	git describe --tags|sed s/-/+r/\;s/-g/./
 }
 build(){
 	cd hode
-	sed -i 's/kFrameDuration)/128)/' paf.cpp	# fix treehouse frame rate
+	sed -i /kFrameDuration/s/80/128/ defs.h	# fix treehouse frame rate
 	make
 }
 package(){
