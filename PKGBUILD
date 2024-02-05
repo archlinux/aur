@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-amd64-${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('475571134219a4641574cb6e5a40e1b15ce974aff7d65033dc7260ff87aaddc0'
+sha256sums=('f88506801047ee15ed2c001a8941620e789b3fd0435b5b81f88f723a8d8faa5c'
             '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
