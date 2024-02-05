@@ -1,6 +1,6 @@
 pkgbase = xnvme
 	pkgdesc = Cross-platform libraries and tools for NVMe devices
-	pkgver = 0.7.3
+	pkgver = 0.7.4
 	pkgrel = 1
 	url = https://xnvme.io/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = xnvme
 	makedepends = meson
 	depends = libaio
 	depends = liburing
-	source = https://github.com/OpenMPDK/xNVMe/releases/download/v0.7.3/xnvme-0.7.3.tar.gz
-	md5sums = 4a841043566b5d6cd813ca5be69937aa
+	source = https://github.com/OpenMPDK/xNVMe/releases/download/v0.7.4/xnvme-0.7.4.tar.gz
+	md5sums = 41272ea78d54077f4e8f9bee0a8a35e3
 
 pkgname = xnvme
