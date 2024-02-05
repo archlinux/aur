@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mqttx-git
 _pkgname=MQTTX
-pkgver=1.9.8.r30.gbc6f21de
+pkgver=1.9.9.r0.g9cfc2735
 _electronversion=13
 _nodeversion=16
 pkgrel=1
@@ -54,7 +54,6 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     sed -e "/target: 'deb'/d" -e "/target: 'rpm'/d" -e "/target: 'snap'/d" -i vue.config.js
     yarn install --cache-folder "${srcdir}/.yarn_cache" --no-lockfile
