@@ -5,15 +5,17 @@ pkgbase = metamask
 	url = https://github.com/MetaMask/metamask-extension
 	arch = any
 	license = custom:consensys
+	makedepends = git
 	makedepends = nodejs-lts-gallium
 	makedepends = yarn
-	depends = chromium
-	depends = typescript
+	makedepends = typescript
 	source = metamask::git+https://github.com/MetaMask/metamask-extension.git#commit=d52ef735146a58016f870322adfb901ee1d95f6c
-	source = metamask_policy.json
+	source = metamask.json
 	sha512sums = SKIP
 	sha512sums = 912bc9a9ac604b8603bbc34bbc7793caaad4b796ecd3fe59dea2e2e53e22de9573fb9f84e5b2e3601bf2d9193d71f858b066e4a086a8818d9a97cb8fc8d141e4
 
 pkgname = metamask-chrome
+	depends = chromium
 
 pkgname = metamask-firefox
+	depends = firefox
