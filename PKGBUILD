@@ -134,7 +134,8 @@ _use_llvm_lto=${_use_llvm_lto-none}
 
 # Use suffix -lto only when requested by the user
 # Enabled by default.
-# If you do not want the suffix -lto remove the "y" sign next to the flag.
+# y - enable -lto suffix
+# n - disable -lto suffix
 # https://github.com/CachyOS/linux-cachyos/issues/36
 _use_lto_suffix=${_use_lto_suffix-y}
 
@@ -155,16 +156,16 @@ _build_zfs=${_build_zfs-}
 # This does replace the requirement of nvidia-dkms
 _build_nvidia=${_build_nvidia-}
 
-if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] && [ -n "$_use_lto_suffix" ]; then
+if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] && [ "$_use_lto_suffix" = "y"  ]; then
     pkgsuffix=cachyos-${_cpusched}-lto
     pkgbase=linux-$pkgsuffix
 
-else
+elif [ -n "$_use_llvm_lto" ]  ||  [[ "$_use_lto_suffix" = "n" ]]; then
     pkgsuffix=cachyos-${_cpusched}
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.7
-_minor=3
+_minor=4
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -219,7 +220,8 @@ fi
 # NVIDIA pre-build module support
 if [ -n "$_build_nvidia" ]; then
     source+=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${_nv_ver}/${_nv_pkg}.run"
-             "$_patchsource/misc/nvidia/nvidia-drm-hotplug-workqueue.patch")
+             "$_patchsource/misc/nvidia/nvidia-drm-hotplug-workqueue.patch"
+             "$_patchsource/misc/nvidia/nvidia-drivers-470.223.02-gpl-pfn_valid.patch")
 fi
 
 ## List of CachyOS schedulers
@@ -265,6 +267,7 @@ prepare() {
         src="${src##*/}"
         src="${src%.zst}"
         [[ $src = nvidia-drm-hotplug-workqueue.patch ]] && continue
+        [[ $src = nvidia-drivers-470.223.02-gpl-pfn_valid.patch ]] && continue
         [[ $src = *.patch ]] || continue
         echo "Applying patch $src..."
         patch -Np1 < "../$src"
@@ -632,6 +635,8 @@ prepare() {
         # Temporary fix for fbdev=1
         # https://forums.developer.nvidia.com/t/545-29-06-18-1-flip-event-timeout-error-on-startup-shutdown-and-sometimes-suspend-wayland-unusable/274788/21
         patch -Np0 -i "${srcdir}/nvidia-drm-hotplug-workqueue.patch" -d "${srcdir}/${_nv_pkg}"
+        # Temporary fix for nvidia module build
+        patch -Np2 --no-backup-if-mismatch -i "${srcdir}/nvidia-drivers-470.223.02-gpl-pfn_valid.patch" -d "${srcdir}/${_nv_pkg}/kernel"
     fi
 }
 
@@ -816,9 +821,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('2dea0685e5c9b279beb7661f4efa91ccd662d55eb7c5a69aff52fc74bbb574fcb490a9abcc44d895583ca21b3e6860b3c5e9c35daae66b22c4fe97cab44b2a75'
-        '1da8ae554a57e2c2ecbc2bce091a8f27f2f8403b63a4c38f0c1df0b1607de67abbe99ba5fcb87a246a46e925b762865adc092bf18c7317d5b19e58087d787491'
+b2sums=('578114990b2987e2b241a7492bd4a69c46adfd613eba9715d63fd4565c19678dfab06b5107a0ff791e9a3190cb52b75a76d231aa39d4e7fba24e79f7f18935a1'
+        '5ce6df7f9a6a2e8c3e03846349d866c3219fa5a71ff7e84337597b74231e01b10ccf2aa548b3ef7cdcb986fafd1e367cc0d2a2b3f227d2953e61b7fb91bbb1e5'
         '43ef7a347878592740d9eb23b40a56083fa747f7700fa1e2c6d039d660c0b876d99bf1a3160e15d041fb13d45906cdb5defef034d4d0ae429911864239c94d8d'
-        '26718a5e97d200e41ef64016e940c4d349dc9513cdc0c9fce097d487d5290865a9989b8b060e2b97db667c04ed30f51722878be48fb224cf30193b8bcf600f1a'
+        '72412dc5e291e70000d44f666ad332386e27870e832eb37375cfc13013eeffe01a9e417fa15dfa1008c96108db8ccec301a42f21174ee9957f1127b2db92e6ff'
         '5c4ba68217543fdb1b6b325b285f30ff9e730e2cd6a2401b5c15f2c8b44616cb4ece9df1da7388a672c420f9ba2c46cacbadda1179636189704a7fd2ca07ea2b'
         'e395035f1b0b944beca434c1e24264342088365de267cbb83b111f02a029fc78145aec73c14e458bd3ad648c8bb2c2ef30c2ff091b1dad2f9b754ecbeb45e41b')
