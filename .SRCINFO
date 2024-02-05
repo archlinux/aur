@@ -15,6 +15,6 @@ pkgbase = blazefetch
 	provides = blazefetch
 	conflicts = blazefetch-git
 	source = https://github.com/rifsxd/blazefetch/releases/download/2.8.0/src-blazefetch-2.8.0.tar.gz
-	sha256sums = cc576a92fcffb0c135d223566dad03f4e7e7db11e362ee34d252b4c5af3b67af
+	sha256sums = bd0ac6a795c9c937635b39da25c592fd7be9c873c8320bb42d335022c5e2659b
 
 pkgname = blazefetch

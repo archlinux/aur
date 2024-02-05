@@ -12,7 +12,7 @@ conflicts=('blazefetch-git')
 depends=('libx11' 'networkmanager' 'playerctl' 'figlet')
 makedepends=('cmake' 'ninja' 'gcc')
 source=("$url/releases/download/$pkgver/src-$pkgname-$pkgver.tar.gz")
-sha256sums=('cc576a92fcffb0c135d223566dad03f4e7e7db11e362ee34d252b4c5af3b67af')
+sha256sums=('bd0ac6a795c9c937635b39da25c592fd7be9c873c8320bb42d335022c5e2659b')
 
 build() {
 	mkdir build
