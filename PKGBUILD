@@ -38,6 +38,7 @@ package() {
   cd "$_pkgname"
 
   install -dm 755 "${pkgdir}/etc/$_pkgname"
+  install -dm 755 "${pkgdir}/var/lib/$_pkgname"
 
   install -Dm 755 "target/release/$_pkgname" -t "${pkgdir}/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"

@@ -20,4 +20,3 @@ pkgbase = rusnapshot-git
 	sha512sums = SKIP
 
 pkgname = rusnapshot-git
-
