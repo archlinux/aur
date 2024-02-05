@@ -3,7 +3,7 @@ pkgname=monit-bin
 _appname=Monit
 pkgver=0.8.1
 _electronversion=21
-pkgrel=5
+pkgrel=6
 pkgdesc="Desktop widgets that display various information.展示各种信息的桌面小组件"
 arch=('x86_64')
 url="https://monit.fzf404.art/"
@@ -27,11 +27,11 @@ source=(
 )
 sha256sums=('380996cea6c85387a5d0f91bd725c32f7007ecf1ee0bb5f248bb998430f7877e'
             'ff7c320ce0d7663a98fe147ee42af554853380f3ba2a2aad67091bdbf895a276'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
