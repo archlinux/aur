@@ -12,7 +12,7 @@ source=("https://github.com/OpenMPDK/xNVMe/releases/download/v$pkgver/$pkgname-$
 md5sums=('41272ea78d54077f4e8f9bee0a8a35e3')
 
 build() {
-	arch-meson "$pkgname-$pkgver" build -Dwith-libvfn=disabled -Dwith-spdk=false -Dexamples=false -Dtests=false -Dforce_completions=true
+	arch-meson "$pkgname-$pkgver" build -Dwith-libvfn=disabled -Dwith-isal=disabled -Dwith-spdk=false -Dexamples=false -Dtests=false -Dforce_completions=true
   meson compile -C build
 }
 
