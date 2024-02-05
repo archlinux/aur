@@ -2,7 +2,7 @@
 pkgname=linked-bin
 pkgver=1.5.2
 _electronversion=17
-pkgrel=6
+pkgrel=7
 pkgdesc="Daily journaling without distraction. An easy, distraction-free way to record your thoughts, declutter your mind and keep the things you want to remember. "
 arch=('x86_64')
 url="https://uselinked.com/"
@@ -19,11 +19,11 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('44fc87edf617d445a014ddc637ae547371f218f803b2558d0e1014d3879483cf'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     sed "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
