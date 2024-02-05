@@ -17,7 +17,7 @@ md5sums=('369256e5d15894bc9882e5f50f8ac9f4')
 build() {
      cd "$pkgname-$pkgver"
      mkdir build && cd build
-     cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DINSTALLED_FAUST=ON
+     cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DINSTALLED_FAUST=ON -DSTATIC_FAUST=OFF
      make
 }
 
