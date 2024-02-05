@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0
+#
+# Maintainer: Truocolo <truocolo@aol.com>
 # Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Timm Preetz <timm@preetz.us>
@@ -54,4 +57,4 @@ package() {
     "pygmentize2"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: ft=sh syn=sh et
