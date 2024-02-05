@@ -1,9 +1,15 @@
+# SPDX-License-Identifier: AGPL-3.0
+#
+# Maintainer:  Truocolo <truocolo@aol.com>
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
 # shellcheck disable=SC2034
 pkgbase=metamask
 _pkgname="${pkgbase}-extension"
-pkgname=("${pkgbase}-chrome" "${pkgbase}-firefox")
+pkgname=(
+  "${pkgbase}-chrome"
+  "${pkgbase}-firefox"
+)
 _addon_id="2e742fd4-1e66-4604-89a2-b99cc03f171a"
 _pkgver=10.25.0
 pkgver=10.32.0
@@ -40,3 +46,5 @@ package_metamask-firefox() {
   install -Dm644 "${srcdir}/metamask/builds/metamask-firefox-${_pkgver}.zip" \
                  "${extensions_dir}/webextension@metamask.io.xpi"
 }
+
+# vim:set sw=2 sts=-1 et:
