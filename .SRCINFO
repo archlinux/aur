@@ -1,13 +1,13 @@
 pkgbase = phpreport-report-git
 	pkgdesc = A report generator for PhpReport
-	pkgver = r69.e35f08d
+	pkgver = r107.96065f4
 	pkgrel = 1
 	url = https://github.com/mrobinson/phpreport-report
 	arch = any
 	license = custom:MIT
+	makedepends = git
 	depends = python-keyring
 	source = phpreport-report-git::git+https://github.com/mrobinson/phpreport-report
 	sha512sums = SKIP
 
 pkgname = phpreport-report-git
-

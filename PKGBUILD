@@ -1,12 +1,13 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname='phpreport-report-git'
 pkgdesc='A report generator for PhpReport'
-pkgver=r69.e35f08d
+pkgver=r107.96065f4
 pkgrel=1
 arch=('any')
 license=('custom:MIT')
 url='https://github.com/mrobinson/phpreport-report'
 depends=('python-keyring')
+makedepends=('git')
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
