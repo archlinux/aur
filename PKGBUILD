@@ -2,7 +2,7 @@
 
 pkgname=python-langchain
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Build context-aware reasoning applications'
 arch=('any')
 url='https://github.com/langchain-ai/langchain'
@@ -34,7 +34,6 @@ depends=(python
     python-async-timeout
     python-redis
     python-beautifulsoup4
-    python-langsmith
     python-tiktoken
     python-openai
 )

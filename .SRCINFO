@@ -1,7 +1,7 @@
 pkgbase = python-langchain
 	pkgdesc = Build context-aware reasoning applications
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/langchain-ai/langchain
 	arch = any
 	license = MIT
@@ -32,7 +32,6 @@ pkgbase = python-langchain
 	depends = python-async-timeout
 	depends = python-redis
 	depends = python-beautifulsoup4
-	depends = python-langsmith
 	depends = python-tiktoken
 	depends = python-openai
 	source = python-langchain-0.1.5.tar.gz::https://github.com/langchain-ai/langchain/archive/refs/tags/v0.1.5.tar.gz
