@@ -1,8 +1,8 @@
 # Maintainer: RifsxD <33044977+rifsxd at users dot noreply dot github dot com>
 
 pkgname=blazefetch
-pkgver=2.8.0
-pkgrel=3
+pkgver=2.8.1
+pkgrel=1
 pkgdesc='A lite & blazing fast system info fetch utility'
 arch=('any')
 url='https://github.com/rifsxd/blazefetch'
