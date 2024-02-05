@@ -2,9 +2,9 @@
 # Contirbutor: Anatoly Bashmakov <anatoly at posteo dot net>
 
 pkgname=ruby-css_parser
-_name=${pkgname#ruby-}
+_pkgname=${pkgname#ruby-}
 pkgver=1.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ruby CSS parser"
 arch=(any)
 url="https://github.com/premailer/css_parser"
@@ -14,59 +14,42 @@ depends=(
   ruby-addressable
 )
 makedepends=(ruby-rdoc)
-checkdepends=(
-  ruby-maxitest
-  ruby-rake
-  ruby-webrick
-)
 options=(!emptydirs)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz")
+sha256sums=('90faa9d5c6575a84ec12902c782944d5bd190ed12f3ccd677bcaf39b664e41f7')
 
-source=(
-  "$url/archive/v$pkgver/$_name-v$pkgver.tar.gz"
-  "remove-unnecessary-dev-dependencies.patch"
-)
-sha256sums=(
-  '90faa9d5c6575a84ec12902c782944d5bd190ed12f3ccd677bcaf39b664e41f7'
-  '815847fe7d39e97d7012a2f9d5027c3718144c3f4c2bf429c5b300b2311f6832'
-)
-
-_archive="$_name-$pkgver"
+_archive="$_pkgname-$pkgver"
 
 prepare() {
   cd "$_archive"
 
   # Update gemspec/Gemfile to allow newer version of the dependencies
-  sed --in-place --regexp-extended 's|~>|>=|g' "$_name.gemspec"
-
-  # Remove lockfile & unnecessary dev dependencies
-  rm Gemfile.lock
-  patch --strip=1 --input="$srcdir/remove-unnecessary-dev-dependencies.patch"
+  sed -i -E 's|~>|>=|g' "$_pkgname.gemspec"
 }
 
 build() {
   cd "$_archive"
 
-  local _gemdir
-  _gemdir="$(gem env gemdir)"
+  local gemdir="$(gem env gemdir)"
 
-  gem build "$_name.gemspec"
+  gem build "$_pkgname.gemspec"
 
   gem install \
     --local \
     --verbose \
     --ignore-dependencies \
     --no-user-install \
-    --install-dir "tmp_install/$_gemdir" \
+    --install-dir "tmp_install/$gemdir" \
     --bindir "tmp_install/usr/bin" \
-    "$_name-$pkgver.gem"
+    "$_pkgname-$pkgver.gem"
 
   # Remove unrepreducible files
   rm --force --recursive --verbose \
-    "tmp_install/$_gemdir/cache/" \
-    "tmp_install/$_gemdir/gems/$_name-$pkgver/vendor/" \
-    "tmp_install/$_gemdir/doc/$_name-$pkgver/ri/ext/"
+    "tmp_install/$gemdir/cache/" \
+    "tmp_install/$gemdir/gems/$_pkgname-$pkgver/vendor/" \
+    "tmp_install/$gemdir/doc/$_pkgname-$pkgver/ri/ext/"
 
-  find "tmp_install/$_gemdir/gems/" \
+  find "tmp_install/$gemdir/gems/" \
     -type f \
     \( \
     -iname "*.o" -o \
@@ -78,7 +61,7 @@ build() {
     \) \
     -delete
 
-  find "tmp_install/$_gemdir/extensions/" \
+  find "tmp_install/$gemdir/extensions/" \
     -type f \
     \( \
     -iname "mkmf.log" -o \
@@ -87,20 +70,11 @@ build() {
     -delete
 }
 
-check() {
-  cd "$_archive"
-
-  local _gemdir
-  _gemdir="$(gem env gemdir)"
-
-  GEM_HOME="tmp_install/$_gemdir" rake test
-}
-
 package() {
   cd "$_archive"
 
-  cp --archive --verbose tmp_install/* "$pkgdir"
+  cp -a -t "$pkgdir" tmp_install/*
 
-  install --verbose -D --mode=0644 MIT-LICENSE --target-directory "$pkgdir/usr/share/licenses/$pkgname"
-  install --verbose -D --mode=0644 ./*.md --target-directory "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" MIT-LICENSE
 }
