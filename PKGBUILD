@@ -1,9 +1,9 @@
-# Maintainer: Thomas <thomas at 6f dot io>
+# Maintainer: ChaseCares <aur at chasecares dot dev>
 pkgname=jujutsu-git
 _pkgname=jj
 pkgver=0.13.0.r205.g21aa7655
 pkgrel=1
-makedepends=('cargo-nightly' 'git' 'jq')
+makedepends=('cargo' 'git')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="An experimental, Git-compatible DVCS."
 url="https://github.com/martinvonz/jj"
@@ -29,7 +29,6 @@ prepare() {
 build() {
     cd "$pkgname"
 
-    export RUSTUP_TOOLCHAIN=nightly
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
 
@@ -41,7 +40,6 @@ build() {
 check() {
     cd "$pkgname"
 
-    export RUSTUP_TOOLCHAIN=nightly
     cargo test --frozen --all-features
 }
 
