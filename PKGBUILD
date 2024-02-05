@@ -1,9 +1,11 @@
 # Maintainer: Noah Vogt (noahvogt) <noah@noahvogt.com>
 # private key generated with `openssl genrsa 2048| openssl pkcs8 -topk8 -nocrypt -traditional`
 
+# binary version of this package (-bin): github.com/noahvogt/chromium-extension-keepassxc-browser-bin-aur
+
 pkgname=chromium-extension-keepassxc-browser
 _extension=keepassxc-browser
-pkgver=1.8.7
+pkgver=1.8.12
 pkgrel=1
 pkgdesc="KeePassXC Browser Integration - chromium extension"
 arch=('any')
@@ -13,7 +15,7 @@ makedepends=('chromium' 'openssl' 'jq')
 source=("$_extension-$pkgver.zip::$url/releases/download/$pkgver/keepassxc-browser_${pkgver}_chromium.zip"
         "keepassxc-browser.pem")
 noextract=("$_extension-$pkgver::$url/releases/download/$pkgver/keepassxc-browser_${pkgver}_chromium.zip")
-sha256sums=('4d3560b49ced01b6a7cfb79fc4b8954dd6dc9d61f5bce01caad3c7f7cb199a2c'
+sha256sums=('31cb886c45f140ae63fad557b0cd330c2f3b1b875f83b05705a05ed8510eac03'
             'b3fe31d0cc35b79f9b64f18e792de6b2be1fb8a94bc4d1ce8e82428faf3e35df')
 provides=('chromium-extension-keepassxc-browser')
 conflicts=('chromium-extension-keepassxc-browser')
