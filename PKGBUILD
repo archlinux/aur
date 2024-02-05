@@ -3,7 +3,7 @@
 
 pkgname=vivaldi-autoinject-custom-js-ui
 pkgver=2023.09.05.1
-pkgrel=1
+pkgrel=2
 pkgdesc='manage custom js UI mods for the vivaldi web browser'
 arch=('any')
 url='https://github.com/budlabs/vivaldi-autoinject-custom-js-ui'
