@@ -26,11 +26,10 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 wpgtk/misc/wpg.conf "usr/etc/wpgtk/wpg.conf"
   install -Dm644 wpgtk/misc/wpgtk.desktop "$pkgdir/usr/share/applications/wpgtk.desktop"
-  install -Dm644 wpgtk/misc/wpg-install.sh usr/bin/wpg-install.sh
-  install -Dm644 completions/bash/wpg usr/share/bash-completion/wpg
-  install -Dm644 completions/zsh/_wpg usr/share/zsh/site-functions/_wpg
   install -Dm644 ../wpgtk.png "$pkgdir/usr/share/pixmaps/wpgtk.png"
+  install -Dm644 completions/bash/wpg "$pkgdir/usr/share/bash-completion/wpg"
+  install -Dm644 completions/zsh/_wpg "$pkgdir/usr/share/zsh/site-functions/_wpg"
+  install -Dm644 wpgtk/misc/wpg-install.sh "$pkgdir/usr/bin/wpg-install.sh"
 }
 
