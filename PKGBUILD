@@ -1,8 +1,8 @@
 # Maintainer: Keinv Yue <k3vinyue@gmail.com>
 
-_pkgname_prefix=globalprotect-openconnect_2.0.0-beta8_
+_pkgname_prefix=globalprotect-openconnect_2.0.0_
 pkgname=globalprotect-openconnect-git
-pkgver="2.0.0beta8"
+pkgver="2.0.0"
 pkgrel=1
 pkgdesc="A GUI for GlobalProtect VPN, based on OpenConnect, supports the SSO authentication method."
 arch=(x86_64 aarch64)
@@ -14,11 +14,11 @@ optdepends=('wmctrl: for window management')
 conflicts=('globalprotect-openconnect')
 provides=('globalprotect-openconnect' 'gpclient' 'gpservice' 'gpauth' 'gpgui')
 
-source_x86_64=("https://github.com/yuezk/GlobalProtect-openconnect/releases/download/v2.0.0-beta8/globalprotect-openconnect_2.0.0-beta8_x86_64.bin.tar.gz")
-source_aarch64=("https://github.com/yuezk/GlobalProtect-openconnect/releases/download/v2.0.0-beta8/globalprotect-openconnect_2.0.0-beta8_aarch64.bin.tar.gz")
+source_x86_64=("https://github.com/yuezk/GlobalProtect-openconnect/releases/download/v2.0.0/globalprotect-openconnect_2.0.0_x86_64.bin.tar.gz")
+source_aarch64=("https://github.com/yuezk/GlobalProtect-openconnect/releases/download/v2.0.0/globalprotect-openconnect_2.0.0_aarch64.bin.tar.gz")
 
-sha256sums_x86_64=("235ce12f4d55aee2903eec6a5ac32eaf01fbc05d384bcc1a660b0e9488dae8f7")
-sha256sums_aarch64=("04337b0f1eeb0d8035975c4984bf6d0c5f98b2a66ab3cb1e669225a3f078471d")
+sha256sums_x86_64=("7a0f7e483092c192df57381c31c8a2b1c03eec7ea7c3b9cb51a3c118c7ae8553")
+sha256sums_aarch64=("1d6dd76c2d28134d18e13455054d38580e21e37b707f14db51f2b1e5b9ffc68c")
 
 
 options=('!strip')
