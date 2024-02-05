@@ -1,16 +1,20 @@
 pkgbase = perl-parallel-scoreboard
 	pkgdesc = a scoreboard for monitoring status of many workers
 	pkgver = 0.08
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Parallel-Scoreboard
+	pkgrel = 2
+	url = https://search.cpan.org/dist/Parallel-Scoreboard
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = GPL-1.0-or-later OR Artistic-1.0-Perl
+	checkdepends = perl-test-simple
+	checkdepends = perl-test-warn
+	makedepends = perl-module-install
 	depends = perl-class-accessor-lite
 	depends = perl-html-parser
 	depends = perl-json
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/K/KA/KAZUHO/Parallel-Scoreboard-0.08.tar.gz
+	source = https://search.cpan.org/CPAN/authors/id/K/KA/KAZUHO/Parallel-Scoreboard-0.08.tar.gz
+	source = Parallel-Scoreboard-LICENSE-GPL-1.0-or-later.txt::https://raw.githubusercontent.com/Perl/perl5/perl-5.10.0/Copying
 	b2sums = c923e6d56f09a689540c9884d256f3ca054aeb1ed50fd7490ea636859fec31aefeaf4f8e565970594901c2c29ad4a238fba6ee221a72d738ab33502c85ea313e
+	b2sums = 6381e7c09a2ddc4dcf237096fea3b0072fdd7b8c506270041a231af9d8d72d30d57e804e5d6c66d5b915023e185ee537edef8ca346dce4a88bce78d42fe4dce3
 
 pkgname = perl-parallel-scoreboard
