@@ -1,5 +1,5 @@
 diff --git a/src/smooth/ftsmooth.c b/src/smooth/ftsmooth.c
-index 9b0e8886c..e21c85739 100644
+index f0acc1ea4..5f163505a 100644
 --- a/src/smooth/ftsmooth.c
 +++ b/src/smooth/ftsmooth.c
 @@ -95,12 +95,12 @@
@@ -8,12 +8,13 @@ index 9b0e8886c..e21c85739 100644
      /* set up default subpixel geometry for striped RGB panels. */
 -    sub[0].x = -21;
 -    sub[0].y = 0;
-+    sub[0].x = -16;
-+    sub[0].y = -11;
-     sub[1].x = 0;
+-    sub[1].x = 0;
 -    sub[1].y = 0;
 -    sub[2].x = 21;
 -    sub[2].y = 0;
++    sub[0].x = -18;
++    sub[0].y = -11;
++    sub[1].x = 2;
 +    sub[1].y = 22;
 +    sub[2].x = 16;
 +    sub[2].y = -11;
