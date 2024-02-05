@@ -1,0 +1,23 @@
+diff --color '--color=auto' --unified --unified --recursive --text libhelium-1.8.10/meson.build altered/meson.build
+--- libhelium-1.8.10/meson.build	2024-02-02 19:28:31.000000000 +0100
++++ altered/meson.build	2024-02-05 19:49:36.677996127 +0100
+@@ -107,19 +107,3 @@
+ if get_option('gidoc') or get_option('valadoc')
+     subdir('doc')
+ endif
+-
+-# GSettings schemas, merged from tau-gsettings-schemas since
+-# it's now standard for all Helium-based apps.
+-
+-settings_schemas = [ 'data/com.fyralabs.desktop.appearance.gschema.xml' ]
+-
+-gnome.compile_schemas(depend_files: files(settings_schemas))
+-
+-schemas_dir = get_option('prefix') / get_option('datadir') / 'glib-2.0' / 'schemas'
+-
+-install_data(settings_schemas, install_dir: schemas_dir)
+-
+-meson.add_install_script('glib-compile-schemas', schemas_dir)
+-
+-
+-# end schema stuff
