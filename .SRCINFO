@@ -1,6 +1,6 @@
 pkgbase = deepin-wine8-stable
 	pkgdesc = Deepin wine8 stable
-	pkgver = 8.16_deepin11
+	pkgver = 8.16_deepin13
 	pkgrel = 1
 	url = http://www.deepin.org
 	arch = x86_64
@@ -46,8 +46,8 @@ pkgbase = deepin-wine8-stable
 	optdepends = libxrandr
 	optdepends = libxrender
 	optdepends = libxxf86vm
-	noextract = deepin-wine8-stable_8.16-deepin11_amd64.deb
-	source = https://com-store-packages.uniontech.com/appstore/pool/appstore/w/wine/deepin-wine8-stable_8.16-deepin11_amd64.deb
-	sha256sums = e40a9d79ac2dfe8952521f8557d9575d518c9d7a265bbc7cf4e5c0ba619a24c6
+	noextract = deepin-wine8-stable_8.16-deepin13_amd64.deb
+	source = https://com-store-packages.uniontech.com/appstore/pool/appstore/w/wine/deepin-wine8-stable_8.16-deepin13_amd64.deb
+	sha256sums = a0ac14b6a12c741b6389ff62cba25bfd0abe16912a974cf46b7487ffcc09bf29
 
 pkgname = deepin-wine8-stable
