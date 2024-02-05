@@ -1,12 +1,12 @@
 # Maintainer yueduz <yueduz at gmail dot com>
 pkgname=zw3d-bin
 pkgver=2024.0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Parametric 3D modelling"
 arch=('x86_64')
 license=(custom)
 makedepends=()
-depends=()
+depends=('libx11' 'at-spi2-core' 'libglvnd' 'bash' 'sqlite' 'gdk-pixbuf2' 'freetype2' 'xz' 'lapack' 'pcre' 'opencollada' 'libpng' 'djvulibre' 'libxext' 'dbus' 'gcc-libs' 'libxml2' 'hicolor-icon-theme' 'curl' 'libxi' 'qt5-svg' 'zlib' 'libjpeg-turbo' 'libdrm' 'bzip2' 'blas' 'liblqr' 'gtk3' 'qt5-x11extras' 'qt5-declarative' 'cairo' 'glib2' 'qrencode' 'qt5-base' 'libxkbcommon' 'qt5-tools' 'libxcb' 'glibc' 'lcms2' 'pango' 'fontconfig' 'libjpeg6-turbo')
 provides=(zw3d)
 #请手动从 https://www.zwsoft.cn/product/zw3d/linux 下载deb包到 Downloads 目录,版本请选择"银河麒麟V10 SP1/中科方德5.0/Ubuntu18.04及以上	x86_64/兆芯/海光"
 source=("file:///home/$USER/Downloads/zw3d_${pkgver}_chs_eng_amd64.deb")
