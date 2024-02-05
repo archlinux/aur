@@ -2,98 +2,38 @@
 pkgname=mydict-bin
 _pkgname=MyDict
 pkgver=0.6.14
-pkgrel=4
+pkgrel=5
 pkgdesc='A Chinese and English dictionary.一款中英文词典'
 arch=(x86_64)
 url="https://github.com/xxNull-lsk/my_dict"
-license=('BSD')
+license=('BSD-3-Clause')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'qt5-websockets'
-    'libsm'
-    'mtdev'
-    'ncurses'
     'qt5-declarative'
-    'libgcrypt'
-    'gstreamer'
-    'libvorbis'
-    'libxkbcommon'
-    'sqlite'
-    'krb5'
-    'bzip2'
-    'libxkbcommon-x11'
-    'xcb-util-keysyms'
-    'libbsd'
-    'libxcomposite'
-    'libgpg-error'
-    'pango'
-    'libxcb'
     'qt5-svg'
-    'libpulse'
-    'e2fsprogs'
     'qt5-wayland'
-    'orc'
-    'libxdamage'
-    'libcap'
-    'gst-plugins-base-libs'
-    'xcb-util-renderutil'
-    'libice'
-    'libdrm'
-    'libxinerama'
-    'libevdev'
-    'systemd-libs'
-    'fontconfig'
-    'xz'
-    'libxtst'
-    'libx11'
-    'libxi'
-    'libsndfile'
-    'libxext'
-    'xcb-util-image'
-    'libxfixes'
-    'libxrender'
     'alsa-lib'
-    'libxcursor'
-    'libxcrypt-compat'
-    'at-spi2-core'
-    'gdk-pixbuf2'
-    'libpng'
     'qt5-base'
-    'lz4'
-    'graphite'
-    'libglvnd'
-    'libinput'
-    'cairo'
-    'libogg'
-    'freetype2'
-    'libdatrie'
-    'zstd'
-    'wayland'
-    'libthai'
-    'libxrandr'
-    'expat'
-    'util-linux-libs'
-    'libgudev'
-    'libasyncns'
-    'xcb-util-wm'
     'qt5-multimedia'
     'gtk3'
-    'fribidi'
+    'gstreamer'
+    'libasyncns'
+    'gst-plugins-base-libs'
+    'libxcrypt-compat'
     'openssl-1.1'
-    'keyutils'
-    'pixman'
-    'harfbuzz'
-    'libepoxy'
-    'libselinux'
+    'libbsd'
 )
 makedepends=('gendesk')
 source=(
     "${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_arch_linux_x64_${pkgver}.tar.gz"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/xxNull-lsk/my_dict/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('505769645eed49ed19d6fd39dd5a1c8fd5b9bef8f262b34a45fbb03d7265e66d'
-            '3c3502f552e8afa21f7e373678300456ba2b8fcc72f158e9509be54d021a5f5e')
+            '7514140772df5ff1a5cff21685af45c7b50f320fee680e134553d053e40e6ccb'
+            '74b91fd4ca1906a8a059b008f198fed6d9621021a1aacb19595965609bc80785')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
@@ -106,5 +46,5 @@ package() {
     cp -r "${srcdir}/${pkgname%-bin}" "${pkgdir}/opt"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-bin}/res/dict.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    install -Dm644 "${srcdir}/${pkgname%-bin}/cryptography-3.4.8-py3.7.egg-info/LICENSE.BSD" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
