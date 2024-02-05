@@ -1,7 +1,7 @@
 pkgbase = myapp-scrapthatpage-bin
 	pkgdesc = A desktop app that automates web scraper with easy to use script actions.
 	pkgver = 1.0.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/kaushalmeena/myapp-scrapthatpage
 	arch = aarch64
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = myapp-scrapthatpage-bin
 	provides = myapp-scrapthatpage=1.0.0
 	conflicts = myapp-scrapthatpage
 	source = myapp-scrapthatpage.sh
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 	source_aarch64 = myapp-scrapthatpage-1.0.0-aarch64.deb::https://github.com/kaushalmeena/myapp-scrapthatpage/releases/download/v1.0.0/myapp-scrapthatpage_1.0.0_arm64.deb
 	sha256sums_aarch64 = 396a63f91399afcaed82d7153e5ec61ca8169815934c98e6b20b50e1aa462c1b
 	source_x86_64 = myapp-scrapthatpage-1.0.0-x86_64.deb::https://github.com/kaushalmeena/myapp-scrapthatpage/releases/download/v1.0.0/myapp-scrapthatpage_1.0.0_amd64.deb
