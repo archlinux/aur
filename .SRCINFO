@@ -1,6 +1,6 @@
 pkgbase = chromium-extension-keepassxc-browser-bin
 	pkgdesc = KeePassXC Browser Integration - chromium extension (binary version)
-	pkgver = 1.8.7
+	pkgver = 1.8.12
 	pkgrel = 1
 	url = https://github.com/noahvogt/chromium-extension-keepassxc-browser-aur
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = chromium-extension-keepassxc-browser-bin
 	makedepends = jq
 	provides = chromium-extension-keepassxc-browser
 	conflicts = chromium-extension-keepassxc-browser
-	source = https://github.com/noahvogt/chromium-extension-keepassxc-browser-aur/releases/download/1.8.7/chromium-extension-keepassxc-browser-1.8.7-1-any.pkg.tar.zst
-	sha256sums = 798c2d4f5e1b91097d5191d7048b27d4e1b922aaa7c449de46aafe12a5e8b7a9
+	source = https://github.com/noahvogt/chromium-extension-keepassxc-browser-aur/releases/download/1.8.12-1/chromium-extension-keepassxc-browser-1.8.12-1-any.pkg.tar.zst
+	sha256sums = 14e2b27474861eca340e350acd12625dd410270861ffd460b3cf1557560df2fa
 
 pkgname = chromium-extension-keepassxc-browser-bin
