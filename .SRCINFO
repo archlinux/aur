@@ -1,16 +1,19 @@
 pkgbase = ord-git
-	pkgdesc = an index, block explorer, and command-line wallet
-	pkgver = 0.13.1
+	pkgdesc = An index, block explorer, and command-line wallet for Ordinals
+	pkgver = 0.15.0.r31.416b2867
 	pkgrel = 1
 	url = https://github.com/ordinals/ord
 	arch = x86_64
+	arch = aarch64
 	license = CC0-1.0
-	makedepends = rust
 	makedepends = git
-	depends = glibc
-	depends = gcc-libs
+	makedepends = cargo
+	makedepends = just
 	provides = ord
-	source = https://github.com/ordinals/ord/archive/refs/tags/0.13.1.tar.gz
-	md5sums = SKIP
+	conflicts = ord
+	source = git+https://github.com/ordinals/ord#branch=master
+	source = ord.service
+	sha256sums = SKIP
+	sha256sums = 7e4ffc816841ee276c0af3edf77e26c54fa78f9e38dc5872bf29fc27ebdfb9cb
 
 pkgname = ord-git
