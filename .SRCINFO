@@ -1,7 +1,7 @@
 pkgbase = phyghtmap
 	pkgdesc = Generate OSM contour lines from NASA SRTM data
 	pkgver = 2.23
-	pkgrel = 1
+	pkgrel = 2
 	url = http://katze.tfiu.de/projects/phyghtmap/
 	arch = any
 	license = GPL2
