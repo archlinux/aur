@@ -1,33 +1,30 @@
+# Maintainer: GreyXor <greyxor@protonmail.com>
 pkgname=power-profiles-daemon-git
-_pkgname=power-profiles-daemon
-pkgver=0.8.1
+pkgver=0.13+40+g9a42293
 pkgrel=1
-pkgdesc="Makes power profiles handling available over D-Bus"
-url="https://gitlab.freedesktop.org/hadess/power-profiles-daemon"
+pkgdesc='Makes power profiles handling available over D-Bus (git development version)'
+arch=('x86_64')
+url="https://gitlab.freedesktop.org/upower/power-profiles-daemon"
 license=(GPL3)
-arch=(x86_64)
-depends=('systemd' 'upower')
-makedepends=('git' 'meson')
-checkdepends=('python-dbusmock' 'python-pylint' 'umockdev')
-provides=('power-profiles-daemon')
-conflicts=('power-profiles-daemon')
-source=("git+https://gitlab.freedesktop.org/hadess/power-profiles-daemon.git")
+depends=(upower polkit)
+checkdepends=(python-dbusmock python-isort python-mccabe umockdev)
+makedepends=(meson git)
+optdepends=('python-gobject: for powerprofilesctl')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname}::git+${url}.git")
 b2sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+  cd $pkgname
   git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-  arch-meson $_pkgname build
+  arch-meson "$pkgname" build
   meson compile -C build
 }
 
-check() {
-  meson test -C build
-}
-
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
