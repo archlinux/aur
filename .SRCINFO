@@ -1,7 +1,7 @@
 pkgbase = swaylock-effects
 	pkgdesc = A fancier screen locker for Wayland.
 	pkgver = 1.7.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/jirutka/swaylock-effects
 	arch = i686
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = swaylock-effects
 	depends = pam
 	provides = swaylock
 	conflicts = swaylock
+	backup = etc/pam.d/swaylock
 	source = https://github.com/jirutka/swaylock-effects/archive/v1.7.0.0.tar.gz
 	sha256sums = e94d79e189602694bedfbafb553ce3c6c976426e16f76d93bf7e226dc2876eb6
 
