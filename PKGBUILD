@@ -8,7 +8,7 @@ _py="python"
 _py2="${_py}2"
 _pkgname=reallymakepkg
 pkgname="${_pkgname}-git"
-pkgver=1.1.1.1.1.r1.g3d24765
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="System-independent makepkg"
 arch=(
@@ -28,7 +28,7 @@ makedepends=(
 )
 optdepends=(
   "${_py}-pygments: colorized output and syntax highlighting"
-  # "${_py2}-pygments: colorized output and syntax highlighting"
+  "${_py2}-pygments: colorized output and syntax highlighting"
 )
 provides=(
   "${_pkgname}=${pkgver}")
