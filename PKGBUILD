@@ -48,6 +48,21 @@ package()
     install -Dm644 "${srcdir}"/override-"${pkgname}".conf "${pkgdir}"/usr/lib/systemd/system/php-fpm.service.d/
     chown -R http:http "${pkgdir}"/usr/share/webapps/"${pkgname}"/
 
+    ## Configuration
+    sudo perl -0e "s/# \\\$config\['user.settings'\]\['anonymous'\] = 'Visitor';\n/# \\\$config['user.settings']['anonymous'] = 'Visitor';\n\\\$config['system.performance']['css']['preprocess'] = FALSE;\n\\\$config['system.performance']['js']['preprocess'] = FALSE;\n/g" -i -p "${pkgdir}"/usr/share/webapps/"${pkgname}"/web/sites/default/default.settings.php
+
+    if ! pcregrep -Mq "# \\\$config\['user.settings'\]\['anonymous'\] = 'Visitor';\n\\\$config\['system.performance'\]\['css'\]\['preprocess'\] = FALSE;\n\\\$config\['system.performance'\]\['js'\]\['preprocess'\] = FALSE;\n" "${pkgdir}"/usr/share/webapps/"${pkgname}"/web/sites/default/default.settings.php; then
+        echo "String not found!" >&2
+        exit 1
+    fi
+
+    sudo sed -i "s/^# \\\$settings\['file_private_path'\] = '';$/\$settings['file_private_path'] = '\/usr\/share\/webapps\/${pgkname}\/web\/sites\/default\/private\/files';/g" "${pkgdir}"/usr/share/webapps/"${pkgname}"/web/sites/default/default.settings.php
+
+    if ! grep -Eq "^# \\\$settings\['file_private_path'\] = '';$" "${pkgdir}"/usr/share/webapps/"${pkgname}"/web/sites/default/default.settings.php; then
+        echo "String not found!" >&2
+        exit 1
+    fi
+
     # Install the documentation.
     install -Dm644 "${srcdir}"/"${_pkgname}"/web/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
 }
