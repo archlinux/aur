@@ -2,7 +2,7 @@
 # Contributor: dobedobedo <dobe0331 at gmail dot com>
 _pkgname='kealib'
 pkgname=("python-$_pkgname")
-_kea=1.5.2
+_kea=1.5.3
 pkgver=0.1_"$_kea"
 pkgrel=1
 pkgdesc="Python library to access parts of kealib not exposed by GDAL"
@@ -25,7 +25,7 @@ source=(
   "setup.py"
 )
 sha256sums=(
-  'c4e17c472761a39e45184b5fa687395b319ac75430e0f6584dbf4cec6e335572'
+  '32b2e3c90553a03cf1e8d03781c3710500ca919bca674bc370e86f15338ee93e'
   '945b19124fadc60c99c60fb263d75ef31e9c4dda6980a5fe96353c3f20d9b330'
   'a78fc19e9cc9d4096b377e1e99f33fd908b25c3f2cf57dd889893f8042ddb883'
   '8112164e16f7de7d8f6da3335f2f62c0f629d606ebb7326b2a499b576f85d579'
