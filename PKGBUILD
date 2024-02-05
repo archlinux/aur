@@ -1,10 +1,10 @@
 # Maintainer: Michael Rydén (zynex(at)zoik.se)
 # App: avbroot
-# Version: 3.0.0
+# Version: 3.1.0
 # Webpage: https://github.com/chenxiaolong/avbroot
 
 pkgname=avbroot
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Application for patching Android A/B-style OTA images for root access"
 arch=('x86_64')
