@@ -2,7 +2,7 @@
 pkgname=moyu-bin
 pkgver=0.8.0_beta
 _electronversion=16
-pkgrel=4
+pkgrel=5
 pkgdesc="基于 Vue 和 Electron 的在线协同api接口管理工具。接口文档管理工具、接口工具、接口文档、api文档、api工具、快乐摸鱼"
 arch=('x86_64')
 url="https://online.jobtool.cn/"
@@ -27,11 +27,11 @@ source=(
 )
 sha256sums=('0dab0db5b1492b06f52104dcc4ebe7acce3817fb8b6abb3d9523bff69a2dcb19'
             'bbef3f01685fbef2be49493df601daf55815b3a044fb7361e160c9074ea515f7'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null

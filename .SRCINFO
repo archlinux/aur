@@ -1,7 +1,7 @@
 pkgbase = moyu-bin
 	pkgdesc = 基于 Vue 和 Electron 的在线协同api接口管理工具。接口文档管理工具、接口工具、接口文档、api文档、api工具、快乐摸鱼
 	pkgver = 0.8.0_beta
-	pkgrel = 4
+	pkgrel = 5
 	url = https://online.jobtool.cn/
 	arch = x86_64
 	license = MIT
@@ -18,6 +18,6 @@ pkgbase = moyu-bin
 	source = moyu.sh
 	sha256sums = 0dab0db5b1492b06f52104dcc4ebe7acce3817fb8b6abb3d9523bff69a2dcb19
 	sha256sums = bbef3f01685fbef2be49493df601daf55815b3a044fb7361e160c9074ea515f7
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = moyu-bin
