@@ -33,6 +33,7 @@ sed -i 's/pkgrel=.*/pkgrel=1/' PKGBUILD
 
 # Make sure it builds fine
 makepkg
+rm *.tar.*
 
 git add PKGBUILD
 git commit -m "Update to $LAST"
