@@ -1,7 +1,7 @@
 pkgbase = peakperf
 	pkgdesc = Microbenchmark to achieve peak performance on x86_64 CPUs and NVIDIA GPUs
 	pkgver = 1.17
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/Dr-Noob/peakperf
 	arch = x86_64
 	license = GPL-2.0-or-later

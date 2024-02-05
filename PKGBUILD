@@ -1,7 +1,7 @@
 # Maintainer: Ivan Marquesi Lerner <ivanmlerner@protonmail.com>
 pkgname=peakperf
 pkgver=1.17
-pkgrel=0
+pkgrel=1
 pkgdesc="Microbenchmark to achieve peak performance on x86_64 CPUs and NVIDIA GPUs"
 url="https://github.com/Dr-Noob/peakperf"
 arch=('x86_64')
