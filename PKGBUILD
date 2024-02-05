@@ -3,7 +3,7 @@ pkgname=mizar-bin
 _pkgname=Mizar
 pkgver=1.2.0
 _electronversion=22
-pkgrel=5
+pkgrel=6
 pkgdesc="A TCP testing tool, immediately useful and intuitive to use right out of the box"
 arch=('x86_64')
 url="https://github.com/Fabio286/mizar"
@@ -25,11 +25,11 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('ff4bb7bcce708f5e7c8efa2b4da824a27e16efb9495db758b18a7a31efd12335'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
