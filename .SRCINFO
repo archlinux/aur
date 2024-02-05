@@ -1,7 +1,7 @@
 pkgbase = cmake
 	pkgdesc = A cross-platform open-source make system
 	pkgver = 3.28.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cmake.org/
 	arch = x86_64
 	license = custom
@@ -23,9 +23,11 @@ pkgbase = cmake
 	source = https://www.cmake.org/files/v3.28/cmake-3.28.2.tar.gz
 	source = https://www.cmake.org/files/v3.28/cmake-3.28.2-SHA-256.txt
 	source = https://www.cmake.org/files/v3.28/cmake-3.28.2-SHA-256.txt.asc
+	source = cmake-fix-precompiled-header-build-error.patch
 	validpgpkeys = CBA23971357C2E6590D9EFD3EC8FEF3A7BFB4EDA
 	sha512sums = 225f6d3eb56d41c449a32f7c3e0f8f3ffafbbf45474e29ad86e965a87f8d95e55e87affc62ef0a7b25c9fb070c6fca08e9838539e5f7011dc3ee83787025151b
 	sha512sums = 7337877f928b22e227e27c7ceff10b953c008ad35ee532d83290db3844f46607f79d48931676ad5203147bae4b2caec0520b146c4a2949db94da0b2ed85a0990
 	sha512sums = SKIP
+	sha512sums = 87aefe0798af3729001bd91db681d0d5d4ee555cba5b6b1c01f8168f9ec8055476afe280038dc906905a4a1caed960a467f2639cdd7038ea266872294c477c1c
 
 pkgname = cmake
