@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-pod-cpandoc'
-pkgver='0.15'
+pkgver='0.16'
 pkgrel='1'
 pkgdesc="perldoc that works for modules you don't have installed"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=5.8.1')
+depends=('perl-io-socket-ssl>=1.56' 'perl-net-ssleay>=1.49' 'perl>=5.8.1')
 makedepends=()
-url='http://search.cpan.org/dist/Pod-Cpandoc'
-source=('http://search.cpan.org/CPAN/authors/id/S/SA/SARTAK/Pod-Cpandoc-0.15.tar.gz')
-md5sums=('de06c9e2c3fa83952799e35f6c7b980f')
-sha512sums=('0df1d963d63c05f59daeeb9948e60db835395baaa66dc659922ca03d8664e2ed72f0dc0e375431865a4b7df33f6a0ca57538324911593668f42384d090e6ec25')
-_distdir="Pod-Cpandoc-0.15"
+url='https://metacpan.org/release/Pod-Cpandoc'
+source=('http://search.cpan.org/CPAN/authors/id/S/SA/SARTAK/Pod-Cpandoc-0.16.tar.gz')
+md5sums=('275569bd7d7775f3041dc0df9a7a1b6d')
+sha512sums=('ac9ffa4f845f213452a69e05f5f39d3cd4cf2db4c97ba2db1e7d1c6e729575b11540715abfa972ee31dad11aa334093820913a62656e2e9bbae77c910bab51bf')
+_distdir="Pod-Cpandoc-0.16"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
