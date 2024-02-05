@@ -1,11 +1,11 @@
 pkgbase = kalidoface-bin
 	pkgdesc = A Vtuber web app powered by the latest and great in motion capture tech from MediaPipe.
 	pkgver = 0.1.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://lab.kalidoface.com/
 	arch = x86_64
 	license = Apache-2.0
-	depends = electron13
+	depends = electron24
 	depends = hicolor-icon-theme
 	depends = nodejs
 	provides = kalidoface=0.1.0
@@ -13,6 +13,6 @@ pkgbase = kalidoface-bin
 	source = kalidoface-0.1.0.deb::https://github.com/yeemachine/kalidoface/releases/download/v0.1.0/kalidoface_0.1.0_amd64.deb
 	source = kalidoface.sh
 	sha256sums = effd121646ac6fdcbf65a18c08ac621f42bd59d2719003b53524fd67a941310e
-	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = kalidoface-bin
