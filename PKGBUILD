@@ -126,7 +126,8 @@ build() {
   msg '1. Build the rust program(mozcdict-ext), it may take some time...'
   cd sudachi || exit
   rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n) | grep musl && TARGET=$(rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n)|grep musl|head -n1) || TARGET=$(rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n)|grep -v musl|head -n1)
-  cargo build --release --target $TARGET
+  unset RUSTC
+  cargo +stable build --release --target $TARGET
   msg '2. Run the rust program(mozcdict-ext): SudachiDict , it may take some time...'
   cat ${srcdir}/small_lex.csv ${srcdir}/core_lex.csv ${srcdir}/notcore_lex.csv > all.csv
   cp ${srcdir}/mozc/src/data/dictionary_oss/id.def ./
@@ -176,8 +177,10 @@ build() {
 
   BAZEL_COPTS=""
   BAZEL_CXXOPTS=""
-  a=0;for f in $CFLAGS;do ([[ ($f =~ _FORTIFY_SOURCE) && $a != 1 ]] || [[ ! $f =~ _FORTIFY_SOURCE ]]) && BAZEL_COPTS+="--copt $f "; [[ $f =~ _FORTIFY_SOURCE ]] && a=1  ;done
-  a=0;for f in $CXXFLAGS;do ([[ ($f =~ _FORTIFY_SOURCE) && $a != 1 ]] || [[ ! $f =~ _FORTIFY_SOURCE ]]) && BAZEL_CXXOPTS+="--cxxopt $f "; [[ $f =~ _FORTIFY_SOURCE ]] && a=1  ;done
+  for f in $CFLAGS;do ([[ ! $f =~ _FORTIFY_SOURCE ]]) && BAZEL_COPTS+=" --copt $f";done
+  for f in $CXXFLAGS;do ([[ ! $f =~ _FORTIFY_SOURCE ]]) && BAZEL_CXXOPTS+=" --cxxopt $f";done
+  #echo $BAZEL_COPTS
+  #echo $BAZEL_CXXOPTS
   #BAZEL_COPTS=$(echo $CFLAGS | xargs -n1 echo "--copt")
   #BAZEL_CXXOPTS=$(echo $CXXFLAGS | xargs -n1 echo "--cxxopt")
   if [[ $CC =~ gcc ]];then
