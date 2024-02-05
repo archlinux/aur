@@ -1,7 +1,7 @@
 pkgbase = freetype2-qdoled
 	pkgdesc = freetype optimized for QD-OLED subpixel layout
 	pkgver = 2.13.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freetype.org/
 	arch = x86_64
 	license = GPL
