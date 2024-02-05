@@ -1,6 +1,6 @@
 pkgbase = r-r2winbugs
 	pkgdesc = Running 'WinBUGS' and 'OpenBUGS' from 'R' / 'S-PLUS'
-	pkgver = 2.1.22
+	pkgver = 2.1.22.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=R2WinBUGS
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-r2winbugs
 	depends = r
 	depends = r-coda
 	optdepends = r-brugs
-	source = https://cran.r-project.org/src/contrib/R2WinBUGS_2.1-22.tar.gz
-	sha256sums = aed74097c7c4552cf139828babf25555a67270925524bdd5856fa7cfd8d18179
+	source = https://cran.r-project.org/src/contrib/R2WinBUGS_2.1-22.1.tar.gz
+	sha256sums = 438e6241b96b73cf9adf51b5564fd27a14710256c93aa18e6b7382acc89d38a5
 
 pkgname = r-r2winbugs
