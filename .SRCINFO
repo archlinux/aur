@@ -1,0 +1,13 @@
+pkgbase = whiskers-bin
+	pkgdesc = A templating tool to simplify the creation of Catppuccin ports.
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/catppuccin/toolbox
+	arch = x86_64
+	license = MIT
+	conflicts = catwalk
+	conflicts = catwalk-git
+	source = https://github.com/catppuccin/toolbox/releases/download/whiskers-v1.1.4/whiskers-x86_64-unknown-linux-gnu
+	sha256sums = 3dfa4fa350cb435e5216250aacebb78dcdf05cfd702c255a9af15f919dd2cbff
+
+pkgname = whiskers-bin
