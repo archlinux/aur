@@ -16,6 +16,7 @@ pkgbase = wifipumpkin3-git
 	depends = python-urwid
 	depends = python-termcolor
 	depends = python-twisted
+	depends = python-service-identity
 	depends = python-pyqt5
 	depends = python-pyqt5-sip
 	depends = python-pyopenssl

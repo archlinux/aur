@@ -14,6 +14,7 @@ depends=(
     'python-urwid'
     'python-termcolor'
     'python-twisted'
+    'python-service-identity'
     'python-pyqt5'
     'python-pyqt5-sip'
     'python-pyopenssl'
