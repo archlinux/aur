@@ -14,9 +14,9 @@ pkgbase = listen1-desktop-git
 	conflicts = listen1-desktop
 	conflicts = listen1
 	conflicts = listen1-electron
-	source = listen1-desktop::git+https://github.com/listen1/listen1_desktop.git
+	source = listen1-desktop.git::git+https://github.com/listen1/listen1_desktop.git
 	source = listen1-desktop.sh
 	sha256sums = SKIP
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = listen1-desktop-git
