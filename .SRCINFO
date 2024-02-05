@@ -1,6 +1,6 @@
 pkgbase = ponscripter-bin
 	pkgdesc = Fork of the Ponscripter visual novel engine to take advantage of SDL2 and improve Steam integration
-	pkgver = v3.0.2
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/07th-mod/ponscripter-fork
 	arch = x86_64
@@ -10,8 +10,9 @@ pkgbase = ponscripter-bin
 	depends = freetype2
 	provides = ponscripter
 	conflicts = ponscripter
-	source = https://github.com/07th-mod/ponscripter-fork/releases/download/v3.0.2/ponscr-3.0.2-linux.zip
-	md5sums = SKIP
+	options = !strip
+	source = https://github.com/07th-mod/ponscripter-fork/releases/download/v4.0.0/ponscr-4.0.0-linux.zip
+	cksums = SKIP
 	depends_aarch64 = box64
 
 pkgname = ponscripter-bin
