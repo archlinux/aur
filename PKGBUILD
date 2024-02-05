@@ -2,7 +2,7 @@
 _pkgname=eudic
 pkgname="eusoft-${_pkgname}-bin"
 pkgver=2024.02.04
-pkgrel=1
+pkgrel=2
 pkgdesc="权威的英语词典软件,英语学习者必备的工具,支持学习笔记、生词本多平台同步,让你随时随地学英语."
 arch=('x86_64')
 url="https://www.eudic.net/v4/en/app/eudic"
@@ -16,7 +16,7 @@ depends=(
     'libdrm'
     'openssl-1.0'
     'harfbuzz'
-    'pipewire-jack'
+    #'pipewire-jack'
     'mesa'
     'libthai'
     'fontconfig'
