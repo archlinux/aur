@@ -45,7 +45,11 @@ source_aarch64=("https://packages.wazuh.com/4.x/yum/${pkgname}-${pkgver}-${pkgre
 source_x86_64=("https://packages.wazuh.com/4.x/yum/${pkgname}-${pkgver}-${pkgrel}.x86_64.rpm"
                 "wazuh-agent-4.7.2-1.x86_64.rpm.sig")
 
-backup=('var/ossec/etc/ossec.conf')
+backup=(
+  'var/ossec/etc/client.keys'
+  'var/ossec/etc/local_internal_options.conf'
+  'var/ossec/etc/ossec.conf'
+)
 
 sha256sums_x86_64=('af3ef12d1105f4191b68497d9d0dbfe7c35279ed6162c99c757b8bf3f85d7a31'
                    'SKIP')
