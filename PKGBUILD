@@ -1,8 +1,8 @@
 # Maintainer: Thomas Rogdakis <thomas(at)rogdakis(dot)com>
 
 pkgname=tinkerwell
-pkgver=4.5.0
-pkgrel=3
+pkgver=4.7.0
+pkgrel=1
 pkgdesc="The code runner for PHP"
 _appimage_name="Tinkerwell-${pkgver}.AppImage"
 
