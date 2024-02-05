@@ -3,7 +3,7 @@ pkgname=mater-bin
 _pkgname=Mater
 pkgver=1.0.10
 _electronversion=11
-pkgrel=6
+pkgrel=7
 pkgdesc="A simple menubar Pomodoro app"
 arch=('x86_64')
 url="https://github.com/jasonlong/mater"
@@ -21,13 +21,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('b26d8ef79fd92c95ac914e73af9504f06dcfaa204f62c47cc3d423a53fa32f8a'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "/opt/${pkgname%-bin}/${pkgname%-bin}"
+    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
     find "${srcdir}/${_pkgname}-linux-x64" -type d -exec chmod 755 {} \;
     find "${srcdir}/${_pkgname}-linux-x64/resources/app" -type f -exec chmod 644 {} \;
 }

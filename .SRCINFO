@@ -1,7 +1,7 @@
 pkgbase = mater-bin
 	pkgdesc = A simple menubar Pomodoro app
 	pkgver = 1.0.10
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/jasonlong/mater
 	arch = x86_64
 	license = MIT
@@ -12,6 +12,6 @@ pkgbase = mater-bin
 	source = mater-1.0.10.zip::https://github.com/jasonlong/mater/releases/download/1.0.10/Mater-linux-x64.zip
 	source = mater.sh
 	sha256sums = b26d8ef79fd92c95ac914e73af9504f06dcfaa204f62c47cc3d423a53fa32f8a
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = mater-bin
