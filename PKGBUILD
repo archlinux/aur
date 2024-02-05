@@ -2,7 +2,7 @@
 pkgname=melodie-bin
 pkgver=2.0.0
 _electronversion=18
-pkgrel=8
+pkgrel=9
 pkgdesc="Melodie is a portable, simple-as-pie music player"
 arch=('x86_64')
 url="https://feugy.github.io/melodie/"
@@ -17,8 +17,6 @@ depends=(
     'libdbusmenu-glib'
     'gtk2'
     'python>=3'
-    'make'
-    'coreutils'
     'nodejs'
 )
 source=(
@@ -28,11 +26,11 @@ source=(
 )
 sha256sums=('3b841b77e3c974396e8317bcd14b7d023dfc7bd5dbc4c78f17eb53c143645dfe'
             '73c77debeee2edc386c515d1be6507325c36f4d5729e64743d7350ad146a3e2c'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null

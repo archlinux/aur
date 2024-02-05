@@ -1,7 +1,7 @@
 pkgbase = melodie-bin
 	pkgdesc = Melodie is a portable, simple-as-pie music player
 	pkgver = 2.0.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://feugy.github.io/melodie/
 	arch = x86_64
 	license = MIT
@@ -11,8 +11,6 @@ pkgbase = melodie-bin
 	depends = libdbusmenu-glib
 	depends = gtk2
 	depends = python>=3
-	depends = make
-	depends = coreutils
 	depends = nodejs
 	provides = melodie=2.0.0
 	conflicts = melodie
@@ -21,6 +19,6 @@ pkgbase = melodie-bin
 	source = melodie.sh
 	sha256sums = 3b841b77e3c974396e8317bcd14b7d023dfc7bd5dbc4c78f17eb53c143645dfe
 	sha256sums = 73c77debeee2edc386c515d1be6507325c36f4d5729e64743d7350ad146a3e2c
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = melodie-bin
