@@ -1,7 +1,7 @@
 pkgbase = nzbget-git
 	pkgdesc = Download from Usenet using .nzb files
 	pkgver = testing.r2388.7348b19c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nzbgetcom/nzbget
 	install = nzbget.install
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = nzbget-git
 	makedepends = git
 	depends = libxml2
 	depends = openssl
+	depends = boost-libs
 	optdepends = python: run scripts
 	optdepends = unrar: unpacking archives
 	optdepends = p7zip: unpacking archives

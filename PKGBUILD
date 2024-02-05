@@ -5,12 +5,12 @@
 
 pkgname=nzbget-git
 pkgver=testing.r2388.7348b19c
-pkgrel=1
+pkgrel=2
 pkgdesc="Download from Usenet using .nzb files"
 arch=('x86_64')
 url="https://github.com/nzbgetcom/nzbget"
 license=('GPL')
-depends=('libxml2' 'openssl')
+depends=('libxml2' 'openssl' 'boost-libs')
 makedepends=('autoconf' 'git')
 optdepends=('python: run scripts'
             'unrar: unpacking archives' 
