@@ -54,7 +54,7 @@ build() {
      cd "$srcname"
      rm -rf build
      mkdir build && cd build
-     cmake .. -DCMAKE_INSTALL_PREFIX="$pdlibdir" -DINSTALL_DIR="extra/faustgen2~" -DINSTALLED_FAUST=ON
+     cmake .. -DCMAKE_INSTALL_PREFIX="$pdlibdir" -DINSTALL_DIR="extra/faustgen2~" -DINSTALLED_FAUST=ON -DSTATIC_FAUST=OFF
      make
 }
 
