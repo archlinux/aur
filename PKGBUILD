@@ -5,17 +5,38 @@
 
 # shellcheck disable=SC2034
 _pkg="metamask"
+_browsers=(
+  "chrome"
+  "firefox"
+)
 pkgbase="${_pkg}"
 _pkgname="${pkgbase}-extension"
-pkgname=(
-  "${pkgbase}-chrome"
-  "${pkgbase}-firefox"
-)
+pkgname=()
+for _browser \
+  in "${_browsers[@]}"; do
+  pkgname+=(
+    "${_pkg}-${_browser}"
+  )
+done
 _addon_id="2e742fd4-1e66-4604-89a2-b99cc03f171a"
 _pkgver=10.25.0
 pkgver=10.32.0
 pkgrel=1
-pkgdesc='Chrome extension that enables browsing Ethereum blockchain enabled websites'
+_pkgdesc() {
+  local \
+    _browser="${1}" \
+    _desc=()
+  _desc=(
+    "${_browser} extension that enables"
+    "interacting with Ethereum Virtual Machine"
+    "networks enabled websites"
+  )
+  echo \
+    "${_desc[@]}"
+}
+pkgdesc="$( \
+  _pkgdesc \
+    "Browser")"
 _http="https://github.com"
 _ns="MetaMask"
 url="${_http}/${_ns}/${_pkgname}"
@@ -26,6 +47,9 @@ arch=(
   'any'
 )
 depends=()
+provides=(
+  "${_pkg}=${pkgver}"
+)
 makedepends=(
   'git'
   'nodejs-lts-gallium'
@@ -61,6 +85,9 @@ build() {
 }
 
 package_metamask-chrome() {
+  pkgdesc="$( \
+    _pkgdesc \
+      "Chrome")"
   depends+=(
     'chromium'
   )
@@ -71,6 +98,9 @@ package_metamask-chrome() {
 }
 
 package_metamask-firefox() {
+  pkgdesc="$( \
+    _pkgdesc \
+      "Firefox")"
   depends+=(
     'firefox'
   )
