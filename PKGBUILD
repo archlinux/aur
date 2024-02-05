@@ -56,9 +56,9 @@ package()
         exit 1
     fi
 
-    sudo sed -i "s/^# \\\$settings\['file_private_path'\] = '';$/\$settings['file_private_path'] = '\/usr\/share\/webapps\/${pgkname}\/web\/sites\/default\/private\/files\/';/g" "${pkgdir}"/usr/share/webapps/"${pkgname}"/web/sites/default/default.settings.php
+    sudo sed -i "s/^# \\\$settings\['file_private_path'\] = '';$/\$settings['file_private_path'] = '\/usr\/share\/webapps\/${pkgname}\/web\/sites\/default\/private\/files\/';/g" "${pkgdir}"/usr/share/webapps/"${pkgname}"/web/sites/default/default.settings.php
 
-    if ! grep -Eq "^\\\$settings\['file_private_path'\] = '/usr/share/webapps/${pgkname}/web/sites/default/private/files/';$" "${pkgdir}"/usr/share/webapps/"${pkgname}"/web/sites/default/default.settings.php; then
+    if ! grep -Eq "^\\\$settings\['file_private_path'\] = '/usr/share/webapps/${pkgname}/web/sites/default/private/files/';$" "${pkgdir}"/usr/share/webapps/"${pkgname}"/web/sites/default/default.settings.php; then
         echo "String not found!" >&2
         exit 1
     fi
