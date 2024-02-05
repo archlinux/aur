@@ -1,12 +1,12 @@
 pkgbase = zlodej
 	pkgdesc = Zloděj (The Clue!)
-	pkgver = V1.7E+patch
-	pkgrel = 2
+	pkgver = 1.7E+patch
+	pkgrel = 1
 	url = https://sourceforge.net/projects/cosp/
 	install = zlodej.install
 	arch = any
 	license = unknown
-	depends = derclou-git
+	depends = derclou
 	source = https://download.sf.net/cosp/Original%20Game%20Files/The%20Clue%21%20%28Czech%29/ClueCZ.zip
 	md5sums = 18966a76e3911db6e185be77aba925b3
 
