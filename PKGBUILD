@@ -34,9 +34,9 @@ build() {
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
 
-    "target/release/$_pkgname" debug completion --bash > "completions/$_pkgname.bash"
-    "target/release/$_pkgname" debug completion --fish > "completions/$_pkgname.fish"
-    "target/release/$_pkgname" debug completion --zsh > "completions/_$_pkgname"
+    "target/release/$_pkgname" util completion --bash >"completions/$_pkgname.bash"
+    "target/release/$_pkgname" util completion --fish >"completions/$_pkgname.fish"
+    "target/release/$_pkgname" util completion --zsh >"completions/_$_pkgname"
 }
 
 check() {
