@@ -7,7 +7,7 @@
 
 pkgname=fish-git
 _gitname="fish-shell"
-pkgver=3.6.0.r228.g3b60bc1de
+pkgver=3.7.0.r1410.gea5adcac9
 pkgrel=1
 epoch=2
 pkgdesc="User friendly shell intended mostly for interactive use."
@@ -61,6 +61,7 @@ build() {
   export CXXFLAGS+=" ${CPPFLAGS}"
   cmake \
     -B build \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_SYSCONFDIR=/etc \
     -DCMAKE_BUILD_TYPE=None \
