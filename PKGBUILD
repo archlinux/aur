@@ -3,7 +3,7 @@
 # AUR Category: devel
 
 pkgname=ptxdist
-pkgver=2024.01.0
+pkgver=2024.02.0
 pkgrel=1
 pkgdesc="Embedded Linux build system"
 arch=('i686' 'x86_64')
@@ -11,9 +11,9 @@ url="http://www.ptxdist.org"
 license=('GPL')
 depends=('dialog' 'flex' 'bison' 'patch' 'python' 'wget')
 source=("https://public.pengutronix.de/software/ptxdist/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('d44d0877d666bfe573905b64f0b85ab8')
-sha256sums=('00dc11a32175220aaa7a6d7780e001b6a4ac327b6d780962f95089aa6f7880f0')
-sha512sums=('028aef74ce825c4afb8eaeb223944901873e3855f6c5eb827ebc9d5e008614bf1864b5207c77b1fa96ca026e9bf69cee1096cd09a1e262104cd45b7d93395643')
+md5sums=('bf1e88644c3949707d95072c416a95f5')
+sha256sums=('b862049f72894b1165212c192e682e329ec7485292a5a3a879c0b25b07c85f1e')
+sha512sums=('3987e3aa5c7769964f2e634455a28a9813208080f5fb75c096443e0144b900a74fbaab6b28515e34cd36cc76c08cca97c768647cb925a131aeca7cc63acc93e2')
 
 build() {
   cd "${pkgname}-${pkgver}"
