@@ -1,11 +1,11 @@
 pkgbase = kui-bin
 	pkgdesc = A hybrid command-line/UI development experience for cloud-native development
 	pkgver = 13.1.4
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/kubernetes-sigs/kui
 	arch = aarch64
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = gendesk
 	depends = electron22
 	depends = kubectl
@@ -13,7 +13,7 @@ pkgbase = kui-bin
 	provides = kui=13.1.4
 	conflicts = kui
 	source = kui.sh
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 	source_aarch64 = kui-13.1.4-aarch64.zip::https://github.com/kubernetes-sigs/kui/releases/download/v13.1.4/Kui-linux-arm64.zip
 	sha256sums_aarch64 = 2138d7b605fb9cc0a28a7bceaa071b7b70a6a8f009110e34eeb6ec4aa0772c85
 	source_x86_64 = kui-13.1.4-x86_64.zip::https://github.com/kubernetes-sigs/kui/releases/download/v13.1.4/Kui-linux-x64.zip
