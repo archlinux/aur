@@ -1,18 +1,17 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
-# Maintainer: brokenpip3 <brokenpip3[at]gmail[dot]com>
-# https://github.com/brokenpip3/my-pkgbuilds
+# Contributor: brokenpip3 <brokenpip3[at]gmail[dot]com>
 
 pkgname=gpt-engineer
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Specify what you want it to build, the AI asks for clarification, and then builds it."
 arch=('any')
 url="https://github.com/AntonOsika/gpt-engineer"
 license=('MIT')
 depends=(python python-openai python-termcolor python-typer python-langchain
         python-backoff python-tiktoken python-dotenv python-dataclasses-json
-        python-langchain-community)
-makedepends=(python-build python-installer python-wheel)
+        python-langchain-community python-tabulate python-toml)
+makedepends=(python-build python-installer python-wheel python-poetry-core)
 #checkdepends=(python-pytest python-protonvpn-nm-lib)
 install=gpt-engineer.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver-python3.8-11-compatible.tar.gz")
