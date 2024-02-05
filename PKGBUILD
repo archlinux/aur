@@ -1,7 +1,7 @@
 # Maintainer: Thomas <thomas at 6f dot io>
 pkgname=jujutsu-git
 _pkgname=jj
-pkgver=0.2.0.r917.2916cb2
+pkgver=0.13.0.r205.g21aa7655
 pkgrel=1
 makedepends=('cargo-nightly' 'git' 'jq')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -15,8 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-
-    echo "$(cargo metadata --format-version 1 | jq '.resolve.root' | cut -d ' ' -f2).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
