@@ -1,7 +1,7 @@
 pkgbase = yandexmusic
 	pkgdesc = Yandex Music - Personal recommendations, selections for any occasion and new music
 	pkgver = 5.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cucumber-sp/yandex-music-linux
 	arch = any
 	license = custom

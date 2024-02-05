@@ -2,7 +2,7 @@
 
 pkgname=yandexmusic
 pkgver="5.0.9"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Yandex Music - Personal recommendations, selections for any occasion and new music"
 arch=("any")
 url="https://github.com/cucumber-sp/yandex-music-linux"
