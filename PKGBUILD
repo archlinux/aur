@@ -1,13 +1,13 @@
 # Maintainer: Valeriy Huz <ghotrix@gmail.com>
 pkgname='asmfish-git'
 _pkgname=asmfish
-pkgver=134
+pkgver=135
 pkgrel=1
 pkgdesc="Stockfish translated into assembly language."
 arch=('i686' 'x86_64')
 url="https://github.com/lantonov/asmFish"
 license=('GPL2')
-makedepends=('git')
+makedepends=('git' 'fasmg')
 optdepends=('xboard' 'scid_vs_pc')
 provides=('asmfish')
 conflicts=('asmfish')
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    ./fasmg "x86/fish.asm" "asmfish" -e 100 -i "VERSION_OS='L'" -i "VERSION_POST = 'popcnt'"
+    fasmg "x86/fish.asm" "asmfish" -e 100 -i "VERSION_OS='L'" -i "VERSION_POST = 'popcnt'"
 }
 
 check() {
