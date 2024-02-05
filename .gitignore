@@ -4,3 +4,4 @@ pkg/
 *.zst
 src/
 crystalline-*/
+*.pkg.*

@@ -2,8 +2,8 @@
 # Previous Maintainer: Hugo Parente Lima <hugo.pl@gmail.com>
 
 pkgname=crystalline
-pkgver=0.11.0
-_crystal_version=1.10.1
+pkgver=0.12.2
+_crystal_version=1.11.1
 pkgrel=3
 pkgdesc="A Language Server Protocol implementation for Crystal."
 arch=("x86_64")
@@ -12,8 +12,8 @@ license=("MIT")
 depends=("gc" "libevent" "pcre" "libyaml")
 makedepends=("make" "crystal>=1.10.1" "shards" "llvm" "llvm-libs")
 source=("crystal.tar.gz::https://github.com/crystal-lang/crystal/archive/refs/tags/${_crystal_version}.tar.gz" "${pkgname}-${pkgver}.tar.gz::https://github.com/elbywan/crystalline/archive/v${pkgver}.tar.gz")
-sha256sums=('f6449ffff519c86383f5e845455f3e6f6b10d6090effab09568f4c7414a8a51b'
-            '488449ea0612034e6d4c9afac4c4bdac80111ea79dd6212d530ddf47f8d813f7')
+sha256sums=('d947b0cc5f1aa5d8003f18b75cc49e94365a528218ff9bc6305c63d903918b24'
+            '32d137f1e4edd29c74381cc010e9080379346b23646ca5f0806f64d2e05628fb')
 
 build() {
   # https://github.com/crystal-lang/crystal/issues/12896#issuecomment-1371482597
