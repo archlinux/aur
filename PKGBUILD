@@ -4,9 +4,11 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: Marcell Meszaros (MarsSeed) <marcell.meszaros@runbox.eu>
 
+_py="python"
+_py2="${_py}2"
 _git="false"
 pkgname=reallymakepkg
-_pkgver="1.1.1.1"
+_pkgver="1.2.1"
 pkgver="${_pkgver}"
 pkgrel=1
 pkgdesc="System-independent makepkg"
@@ -18,10 +20,17 @@ license=(
   AGPL3)
 depends=(
   bash
+  pacman
 )
-makedepends=()
+makedepends=(
+  # make
+)
 checkdepends=(
   # shellcheck
+)
+optdepends=(
+  "${_py}-pygments: colorized output atd syntax highlighting"
+  "${_py2}-pygments: colorized output atd syntax highlighting"
 )
 source=()
 sha256sums=()
