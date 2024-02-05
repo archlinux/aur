@@ -1,7 +1,7 @@
 # Maintainer: Luis Pérez <luis.perez@protonmail.com>
 pkgname=dockle-bin
 _pkgname=dockle
-pkgver=0.4.13
+pkgver=0.4.14
 pkgrel=1
 pkgdesc="Container Image Linter for Security, Helping build the Best-Practice Docker Image, Easy to start"
 arch=(x86_64)
@@ -11,7 +11,7 @@ makedepends=()
 provides=('dockle')
 conflicts=('dockle')
 source=("https://github.com/goodwithtech/dockle/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux-64bit.tar.gz")
-sha256sums=('29bacdde2ae2177214815f3ccc0a12707250d5a7f5473d58a290db545fdb90ef')
+sha256sums=('a7eb7f10c6c3f7bf7209baf48d7b51dec0771aacda1f4773891def77b555e097')
 
 package() {
 	install -Dm755 "${srcdir}/dockle" "${pkgdir}/usr/bin/dockle"
