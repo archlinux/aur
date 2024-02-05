@@ -1,18 +1,18 @@
 pkgbase = cntb
 	pkgdesc = Contabo Command Line Interface
-	pkgver = 1.4.7
+	pkgver = 1.4.8
 	pkgrel = 1
 	url = https://github.com/contabo/cntb
 	arch = i686
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = go
 	makedepends = git
 	depends = glibc
 	provides = cntb-bin
 	conflicts = cntb-bin
-	source = git+https://github.com/contabo/cntb.git#tag=1.4.7
+	source = git+https://github.com/contabo/cntb.git#tag=1.4.8
 	md5sums = SKIP
 
 pkgname = cntb
