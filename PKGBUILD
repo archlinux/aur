@@ -12,12 +12,15 @@ _pkgver="1.2.1"
 pkgver="${_pkgver}"
 pkgrel=1
 pkgdesc="System-independent makepkg"
-arch=(any)
+arch=(
+  any
+)
 _repo="https://github.com"
 _ns="themartiancompany"
 url="${_repo}/${_ns}/${pkgname}"
 license=(
-  AGPL3)
+  AGPL3
+)
 depends=(
   bash
   pacman
