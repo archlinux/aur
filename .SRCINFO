@@ -1,13 +1,13 @@
 pkgbase = smassh
 	pkgdesc = Smassh your Keyboard, TUI Edition
-	pkgver = 3.0.3
+	pkgver = 3.0.4
 	pkgrel = 1
 	url = https://github.com/kraanzu/smassh
 	arch = any
 	license = GPL-3.0
 	depends = python
 	depends = git
-	source = https://github.com/kraanzu/smassh/releases/download/v3.0.3/linux-smassh
+	source = https://github.com/kraanzu/smassh/releases/download/v3.0.4/linux-smassh
 	sha256sums = SKIP
 
 pkgname = smassh
