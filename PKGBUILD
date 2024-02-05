@@ -2,7 +2,7 @@
 
 pkgname=klaus-bin
 pkgver=12.9
-_releasedate=2024-02-04
+_releasedate=2024-02-05
 pkgrel=1
 pkgdesc="Arch manager that allows you to download, install, delete packages..."
 arch=('x86_64')
