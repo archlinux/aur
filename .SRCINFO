@@ -1,17 +1,19 @@
 pkgbase = pamlx
 	pkgdesc = A Graphical User Interface for PAML https://doi.org/10.1093/molbev/mst179
 	pkgver = 1.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://abacus.gene.ucl.ac.uk/software/
 	arch = x86_64
 	license = custom
 	makedepends = make
-	depends = qt4
+	depends = qt5-base
 	depends = paml
 	provides = pamlx
 	source = http://abacus.gene.ucl.ac.uk/software/pamlX1.3.1-src.tgz
 	source = pamlX.desktop
+	source = qt4to5.patch
 	sha256sums = e6abbbc715aff1d9ebcb6d9b7c2fb494f916bee53f9cf807bf38cebc7bd625bf
 	sha256sums = e70746b45dfdde9baa1f38db29474296fbd3cb0a8b1fb685260d6c01f373938b
+	sha256sums = f1ae154e78d95f1c6656c9d4d838de825e8ef92b9002803ceed9b2f1445b95e3
 
 pkgname = pamlx

@@ -1,0 +1,214 @@
+Description: upgrade pamlX from qt4 to qt5
+Author: Guoyi Zhang <guoyizhang@malacology.net>
+Last-Update: 2024-02-06
+---
+This patch header follows AGPL-3.0
+diff --git a/main.cpp b/main.cpp
+index 31edde9..6dfbad1 100644
+--- a/main.cpp
++++ b/main.cpp
+@@ -2,8 +2,8 @@
+ // Copyright (C) 2012 Bo Xu <xuxbob@gmail.com>
+ //------------------------------------------------
+ 
+-#include <QtGui/QApplication>
+-#include <QSplashScreen>
++#include <QtWidgets/QApplication>
++#include <QtWidgets/QSplashScreen>
+ #include "mainwindow.h"
+ #include "info.h"
+ #include "mydebug.h"
+diff --git a/mainwindow.cpp b/mainwindow.cpp
+index 42f53b6..30ace7d 100644
+--- a/mainwindow.cpp
++++ b/mainwindow.cpp
+@@ -123,7 +123,7 @@ MainWindow::MainWindow(QWidget *parent) :
+     menuRecent_Files->setIcon(icon);
+     actionSelect_All->setIcon(icon);
+ 
+-    actionConfiguration->setText(QApplication::translate("MainWindow", "&Preferences...", 0, QApplication::UnicodeUTF8));
++    actionConfiguration->setText(QApplication::translate("MainWindow", "&Preferences..."));
+ #endif
+ 
+     //Toolbar
+@@ -193,7 +193,7 @@ MainWindow::MainWindow(QWidget *parent) :
+ "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'SimSun'; font-size:9pt;\"></p>\n"
+ "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"http://abacus.gene.ucl.ac.uk/software/paml.html\"><span style=\" font-family:'Herculanum'; font-size:20pt; text-decoration: none; color:#000000;\">PAML Software Website</span></a></p>\n"
+ "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'SimSun'; font-size:20pt; font-weight:600;\"></p>\n"
+-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'SimSun'; font-size:9pt;\"></p></body></html>", 0, QApplication::UnicodeUTF8));
++"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'SimSun'; font-size:9pt;\"></p></body></html>"));
+ 
+     QFont font2;
+     font2.setFamily(QString::fromUtf8("Comic Sans MS"));
+@@ -3520,7 +3520,7 @@ void MainWindow::on_comboBox_37_currentIndexChanged(int index)
+     case 1:
+         comboBox_39->setItemText(0, tr("1: b"));
+         comboBox_39->insertItems(1, QStringList()
+-         << QApplication::translate("MainWindow", "2: two branch types", 0, QApplication::UnicodeUTF8)
++         << QApplication::translate("MainWindow", "2: two branch types")
+         );
+         comboBox_39->setItemData(0, 1);
+         comboBox_39->setItemData(1, 2);
+@@ -3582,9 +3582,9 @@ void MainWindow::on_comboBox_37_currentIndexChanged(int index)
+     default:
+         comboBox_39->setItemText(0, tr("0: one"));
+         comboBox_39->insertItems(1, QStringList()
+-         << QApplication::translate("MainWindow", "1: b", 0, QApplication::UnicodeUTF8)
+-         << QApplication::translate("MainWindow", "2: 2 or more dN/dS", 0, QApplication::UnicodeUTF8)
+-         << QApplication::translate("MainWindow", "3:", 0, QApplication::UnicodeUTF8)
++         << QApplication::translate("MainWindow", "1: b")
++         << QApplication::translate("MainWindow", "2: 2 or more dN/dS")
++         << QApplication::translate("MainWindow", "3:")
+         );
+         if(!ok) currentItemData = 0;
+         comboBox_39->setCurrentIndex(currentItemData);
+@@ -3650,10 +3650,10 @@ void MainWindow::on_comboBox_31_currentIndexChanged(int index)
+     if( index == 1 && num != 4 ) {
+         if(num == 0) {
+             comboBox_39->insertItems(0, QStringList()
+-             << QApplication::translate("MainWindow", "0: one", 0, QApplication::UnicodeUTF8)
+-             << QApplication::translate("MainWindow", "1: b", 0, QApplication::UnicodeUTF8)
+-             << QApplication::translate("MainWindow", "2: 2 or more dN/dS", 0, QApplication::UnicodeUTF8)
+-             << QApplication::translate("MainWindow", "3:", 0, QApplication::UnicodeUTF8)
++             << QApplication::translate("MainWindow", "0: one")
++             << QApplication::translate("MainWindow", "1: b")
++             << QApplication::translate("MainWindow", "2: 2 or more dN/dS")
++             << QApplication::translate("MainWindow", "3:")
+            );
+         }
+         else {
+@@ -3682,14 +3682,14 @@ void MainWindow::on_comboBox_31_currentIndexChanged(int index)
+     if( (index == 2 || index == 3) && num != 8 ) {
+         if(num == 0) {
+             comboBox_39->insertItems(0, QStringList()
+-             << QApplication::translate("MainWindow", "0: poisson", 0, QApplication::UnicodeUTF8)
+-             << QApplication::translate("MainWindow", "1: proportional", 0, QApplication::UnicodeUTF8)
+-             << QApplication::translate("MainWindow", "2: Empirical", 0, QApplication::UnicodeUTF8)
+-             << QApplication::translate("MainWindow", "3: Empirical+F", 0, QApplication::UnicodeUTF8)
+-             << QApplication::translate("MainWindow", "6: FromCodon", 0, QApplication::UnicodeUTF8)
+-             << QApplication::translate("MainWindow", "7: AAClasses", 0, QApplication::UnicodeUTF8)
+-             << QApplication::translate("MainWindow", "8: REVaa_0", 0, QApplication::UnicodeUTF8)
+-             << QApplication::translate("MainWindow", "9: REVaa(nr=189)", 0, QApplication::UnicodeUTF8)
++             << QApplication::translate("MainWindow", "0: poisson")
++             << QApplication::translate("MainWindow", "1: proportional")
++             << QApplication::translate("MainWindow", "2: Empirical")
++             << QApplication::translate("MainWindow", "3: Empirical+F")
++             << QApplication::translate("MainWindow", "6: FromCodon")
++             << QApplication::translate("MainWindow", "7: AAClasses")
++             << QApplication::translate("MainWindow", "8: REVaa_0")
++             << QApplication::translate("MainWindow", "9: REVaa(nr=189)")
+             );
+         }
+         else {
+@@ -3702,10 +3702,10 @@ void MainWindow::on_comboBox_31_currentIndexChanged(int index)
+             comboBox_39->setItemText(2, tr("2: Empirical"));
+             comboBox_39->setItemText(3, tr("3: Empirical+F"));
+             comboBox_39->insertItems(4, QStringList()
+-             << QApplication::translate("MainWindow", "6: FromCodon", 0, QApplication::UnicodeUTF8)
+-             << QApplication::translate("MainWindow", "7: AAClasses", 0, QApplication::UnicodeUTF8)
+-             << QApplication::translate("MainWindow", "8: REVaa_0", 0, QApplication::UnicodeUTF8)
+-             << QApplication::translate("MainWindow", "9: REVaa(nr=189)", 0, QApplication::UnicodeUTF8)
++             << QApplication::translate("MainWindow", "6: FromCodon")
++             << QApplication::translate("MainWindow", "7: AAClasses")
++             << QApplication::translate("MainWindow", "8: REVaa_0")
++             << QApplication::translate("MainWindow", "9: REVaa(nr=189)")
+             );
+         }
+         comboBox_39->setItemData(0, 0);
+@@ -3722,20 +3722,20 @@ void MainWindow::on_comboBox_31_currentIndexChanged(int index)
+     if( index == 1 && num != 5 ) {
+         if(num == 0) {
+             comboBox_40->insertItems(0, QStringList()
+-             << QApplication::translate("MainWindow", "0: rates", 0, QApplication::UnicodeUTF8)
+-             << QApplication::translate("MainWindow", "1: separate", 0, QApplication::UnicodeUTF8)
+-             << QApplication::translate("MainWindow", "2: diff pi", 0, QApplication::UnicodeUTF8)
+-             << QApplication::translate("MainWindow", "3: diff kapa", 0, QApplication::UnicodeUTF8)
+-             << QApplication::translate("MainWindow", "4: all diff", 0, QApplication::UnicodeUTF8)
++             << QApplication::translate("MainWindow", "0: rates")
++             << QApplication::translate("MainWindow", "1: separate")
++             << QApplication::translate("MainWindow", "2: diff pi")
++             << QApplication::translate("MainWindow", "3: diff kapa")
++             << QApplication::translate("MainWindow", "4: all diff")
+             );
+         }
+         else {
+             comboBox_40->setItemData(0, QVariant::Invalid);
+             comboBox_40->setItemData(1, QVariant::Invalid);
+             comboBox_40->insertItems(2, QStringList()
+-             << QApplication::translate("MainWindow", "2: diff pi", 0, QApplication::UnicodeUTF8)
+-             << QApplication::translate("MainWindow", "3: diff kapa", 0, QApplication::UnicodeUTF8)
+-             << QApplication::translate("MainWindow", "4: all diff", 0, QApplication::UnicodeUTF8)
++             << QApplication::translate("MainWindow", "2: diff pi")
++             << QApplication::translate("MainWindow", "3: diff kapa")
++             << QApplication::translate("MainWindow", "4: all diff")
+             );
+         }
+         comboBox_40->setItemData(0, 0);
+@@ -3747,8 +3747,8 @@ void MainWindow::on_comboBox_31_currentIndexChanged(int index)
+     if( (index == 2 || index == 3) && num != 2 ) {
+         if(num == 0) {
+             comboBox_40->insertItems(0, QStringList()
+-             << QApplication::translate("MainWindow", "0: rates", 0, QApplication::UnicodeUTF8)
+-             << QApplication::translate("MainWindow", "1: separate", 0, QApplication::UnicodeUTF8)
++             << QApplication::translate("MainWindow", "0: rates")
++             << QApplication::translate("MainWindow", "1: separate")
+             );
+         }
+         else {
+diff --git a/mainwindow.h b/mainwindow.h
+index 303b69d..6dba937 100644
+--- a/mainwindow.h
++++ b/mainwindow.h
+@@ -5,6 +5,10 @@
+ #ifndef MAINWINDOW_H
+ #define MAINWINDOW_H
+ 
++#include <QPrinter>
++#include <QButtonGroup>
++#include <QMimeData>
++
+ #include "ui_mainwindow.h"
+ 
+ #include "engine.h"
+diff --git a/mcmctreeengine.cpp b/mcmctreeengine.cpp
+index d5891f9..ba00c56 100644
+--- a/mcmctreeengine.cpp
++++ b/mcmctreeengine.cpp
+@@ -328,8 +328,8 @@ int MCMCTreeEngine::compareVersion(const QString& versionStr) const
+     QString mRevision, revision;
+     char c;
+ 
+-    QTextStream(mVersion.toAscii()) >> mMajor >> c >> mMinor >> mRevision;
+-    QTextStream(versionStr.toAscii()) >> major >> c >> minor >> revision;
++    QTextStream(mVersion.toUtf8()) >> mMajor >> c >> mMinor >> mRevision;
++    QTextStream(versionStr.toUtf8()) >> major >> c >> minor >> revision;
+ 
+     int ret;
+ 
+diff --git a/mcmctreeengine.h b/mcmctreeengine.h
+index 4a6634a..0403b2b 100644
+--- a/mcmctreeengine.h
++++ b/mcmctreeengine.h
+@@ -5,6 +5,9 @@
+ #ifndef MCMCTREEENGINE_H
+ #define MCMCTREEENGINE_H
+ 
++#include <QString>
++#include <QTextStream>
++
+ #include "engine.h"
+ 
+ #if defined(Q_OS_WIN32) || defined(Q_OS_MAC) || defined(Q_OS_LINUX)
+diff --git a/pamlX.pro b/pamlX.pro
+index fab0064..9b5b5fc 100644
+--- a/pamlX.pro
++++ b/pamlX.pro
+@@ -6,7 +6,7 @@
+ #
+ #-------------------------------------------------
+ 
+-QT       += core gui
++QT       += core gui widgets printsupport
+ 
+ TARGET = pamlX
+ TEMPLATE = app
