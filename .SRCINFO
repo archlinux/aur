@@ -1,17 +1,17 @@
 pkgbase = technitium-dns-server-bin
 	pkgdesc = Open source authoritative and recursive DNS server focused on privacy and security
-	pkgver = 11.5.3
-	pkgrel = 3
+	pkgver = 12.0
+	pkgrel = 1
 	url = https://technitium.com/dns/
 	arch = any
 	license = GPL3
-	depends = aspnet-runtime-7.0
+	depends = aspnet-runtime-8.0
 	provides = technitium-dns-server
 	conflicts = technitium-dns-server
-	source = technitium-dns-server-11.5.3.tar.gz::https://download.technitium.com/dns/archive/11.5.3/DnsServerPortable.tar.gz
+	source = technitium-dns-server-12.0.tar.gz::https://download.technitium.com/dns/archive/12.0/DnsServerPortable.tar.gz
 	source = technitium-dns-server.service
 	source = technitium-dns-server.sysuser
-	sha256sums = e912a8347dc6ba81069d5aa807ad16729499bca8ecb035b6345d93dd7e02b185
+	sha256sums = 90bbb679e145f7314b9574d81ca6e224e77fa227a7077a37a0c7c66604a17321
 	sha256sums = 464dbfe1038e4737ca83c60617a5a4e334cdd948fe41315a3a36913011680952
 	sha256sums = d349d144faf8932c56a054b22721420f1eb68adf7bc226f174654b33510f75e4
 
