@@ -2,12 +2,12 @@
 pkgname=calendar-bin
 _pkgname=Calendar
 _appname="org.Rabbit.${_pkgname}"
-pkgver=1.0.17
+pkgver=1.0.18
 pkgrel=1
 pkgdesc="Task, calendar, Vision protection."
 arch=("x86_64")
 url="https://github.com/KangLin/Calendar"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
@@ -18,14 +18,14 @@ depends=(
     'qt6-multimedia'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_ubuntu_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/rabbit${pkgname%-bin}_${pkgver}_ubuntu_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('24f940e99328ca91cb6349a74e124d2622640fb97231f78edd97a950d9a09c81'
-            'a7a7d76eea59303d476c2691be53a84c9c8ad2a7fa31749ac6f78d7e118ad198')
+sha256sums=('9eaa473adf32d6cb918131e7de5e1390c15b4a40ea5598e5b0588b17521a9982'
+            'd411c9753877de39c05a0fd7afb229002615953b33c0a2249acdcc5d1d430c16')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@apprunname@|${_pkgname}App-v${pkgver}|g" \
+        -e "s|@runname@|${_pkgname}App-v${pkgver}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.zst"
     sed -e "s|/opt/${_pkgname}/bin/${_pkgname}.sh|${pkgname%-bin}|g" \

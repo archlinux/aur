@@ -1,20 +1,20 @@
 pkgbase = calendar-bin
 	pkgdesc = Task, calendar, Vision protection.
-	pkgver = 1.0.17
+	pkgver = 1.0.18
 	pkgrel = 1
 	url = https://github.com/KangLin/Calendar
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	depends = qt6-scxml
 	depends = openssl
 	depends = qt6-base
 	depends = qt6-webengine
 	depends = qt6-multimedia
-	provides = calendar=1.0.17
+	provides = calendar=1.0.18
 	conflicts = calendar
-	source = calendar-1.0.17.deb::https://github.com/KangLin/Calendar/releases/download/v1.0.17/calendar_1.0.17_ubuntu_amd64.deb
+	source = calendar-1.0.18.deb::https://github.com/KangLin/Calendar/releases/download/v1.0.18/rabbitcalendar_1.0.18_ubuntu_amd64.deb
 	source = calendar.sh
-	sha256sums = 24f940e99328ca91cb6349a74e124d2622640fb97231f78edd97a950d9a09c81
-	sha256sums = a7a7d76eea59303d476c2691be53a84c9c8ad2a7fa31749ac6f78d7e118ad198
+	sha256sums = 9eaa473adf32d6cb918131e7de5e1390c15b4a40ea5598e5b0588b17521a9982
+	sha256sums = d411c9753877de39c05a0fd7afb229002615953b33c0a2249acdcc5d1d430c16
 
 pkgname = calendar-bin
