@@ -2,7 +2,7 @@
 
 pkgname=blazefetch
 pkgver=2.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A lite & blazing fast system info fetch utility'
 arch=('any')
 url='https://github.com/rifsxd/blazefetch'
@@ -12,7 +12,7 @@ conflicts=('blazefetch-git')
 depends=('libx11' 'networkmanager' 'playerctl' 'figlet')
 makedepends=('cmake' 'ninja' 'gcc')
 source=("$url/releases/download/$pkgver/src-$pkgname-$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('cc576a92fcffb0c135d223566dad03f4e7e7db11e362ee34d252b4c5af3b67af')
 
 build() {
 	mkdir build

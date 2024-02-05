@@ -1,7 +1,7 @@
 pkgbase = blazefetch
 	pkgdesc = A lite & blazing fast system info fetch utility
 	pkgver = 2.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rifsxd/blazefetch
 	arch = any
 	license = MIT
@@ -15,6 +15,6 @@ pkgbase = blazefetch
 	provides = blazefetch
 	conflicts = blazefetch-git
 	source = https://github.com/rifsxd/blazefetch/releases/download/2.8.0/src-blazefetch-2.8.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = cc576a92fcffb0c135d223566dad03f4e7e7db11e362ee34d252b4c5af3b67af
 
 pkgname = blazefetch
