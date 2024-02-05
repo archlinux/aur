@@ -1,0 +1,25 @@
+pkgbase = libhelium-git
+	pkgdesc = The application framework for tauOS apps.
+	pkgver = r1382.6d02226
+	pkgrel = 1
+	url = https://github.com/tau-OS/libhelium
+	arch = x86_64
+	arch = aarch64
+	license = LGPL3
+	makedepends = dart-sass
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	depends = gtk4
+	depends = glib2
+	depends = libgee
+	provides = libhelium
+	conflicts = libhelium
+	source = libhelium::git+https://github.com/tau-OS/libhelium.git
+	source = libhelium-git.patch
+	sha256sums = SKIP
+	sha256sums = 577a8e5af057a6634e9bdd2c87072bb13d69a6ac41ab6e3d278055b8090cc84c
+
+pkgname = libhelium-git
