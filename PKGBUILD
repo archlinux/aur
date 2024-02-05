@@ -27,7 +27,7 @@ license=('BSD')
 depends=('bluez-libs' 'desktop-file-utils' 'dssi' 'fftw'
   'flite' 'fluidsynth' 'freeglut' 'ftgl' 'glew'
   'gsl' 'gsm' 'hicolor-icon-theme' 'imagemagick' 'jack' 'ladspa' 'lame'
-  'libdc1394' 'libdv' 'libgl' 'libiec61883' 'libjpeg'
+  'libdc1394' 'libdv' 'libgl' 'libiec61883' 'libjpeg' 'libquicktime'
   'libxxf86vm' 'libtiff' 'libiec61883' 'libraw1394'
   'libv4l' 'libvorbis' 'portaudio'
   'smpeg' 'speex' 'stk' 'zlib' 'lua'
