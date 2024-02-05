@@ -1,6 +1,6 @@
 pkgbase = blazefetch
 	pkgdesc = A lite & blazing fast system info fetch utility
-	pkgver = 2.8.1
+	pkgver = 2.8.2
 	pkgrel = 1
 	url = https://github.com/rifsxd/blazefetch
 	arch = any
@@ -12,9 +12,11 @@ pkgbase = blazefetch
 	depends = networkmanager
 	depends = playerctl
 	depends = figlet
+	depends = pciutils
+	depends = mesa-utils
 	provides = blazefetch
 	conflicts = blazefetch-git
 	source = https://github.com/rifsxd/blazefetch/releases/download/2.8.0/src-blazefetch-2.8.0.tar.gz
-	sha256sums = bd0ac6a795c9c937635b39da25c592fd7be9c873c8320bb42d335022c5e2659b
+	sha256sums = 47c1969459716162dc6c3c65f278fb657078ce188ad72a4d7796be2a47ba15c4
 
 pkgname = blazefetch
