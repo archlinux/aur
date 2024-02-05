@@ -1,0 +1,28 @@
+From c7288d472df8806e729f5cecaf8999dd07c3d450 Mon Sep 17 00:00:00 2001
+From: KokaKiwi <kokakiwi+git@kokakiwi.net>
+Date: Mon, 5 Feb 2024 21:21:53 +0100
+Subject: [PATCH] Revert "chore: catch `--as-needed` (see gh #184)"
+
+This reverts commit 39d87c9c988a47475a146b7549dff0b065a06783.
+---
+ CMakeLists.txt | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b24d7fa..b615945 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -304,10 +304,6 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+   endforeach()
+ 
+   set(MSVC_USE_STATIC_RUNTIME ON CACHE BOOL "static build")
+-else()
+-  if(CMAKE_EXE_LINKER_FLAGS MATCHES "--as-needed")
+-    message(FATAL_ERROR "DwarFS cannot be built with --as-needed")
+-  endif()
+ endif()
+ 
+ set(ZSTD_INCLUDE_DIR
+-- 
+2.43.0
+
