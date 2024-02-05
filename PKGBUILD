@@ -2,7 +2,7 @@ pkgname=splatplost-git
 _pkgname="splatplost"
 pkgdesc="A software-based SplatPost plotter."
 pkgver=0.2.0.dev4.a04d5ae
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 conflicts=($_pkgname)
 provides=($_pkgname)
@@ -12,7 +12,7 @@ depends=(
 	"python-libnxctrl" "python-numpy" "python-pillow" "python-setuptools"
 	"python-scipy" "python-tqdm" "python-scikit-image" "python-tsp-solver2"
 	"python-pyqt6" "python-requests"
-	"bluez-utils-compat"
+	"bluez-utils" "bluez-deprecated-tools"
 )
 optdepends=()
 makedepends=()
