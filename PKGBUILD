@@ -5,7 +5,7 @@ pkgver=1.1.4
 pkgrel=1
 pkgdesc="A templating tool to simplify the creation of Catppuccin ports."
 url="https://github.com/catppuccin/toolbox"
-conflicts=('catwalk' 'catwalk-git')
+conflicts=('whiskers' 'whiskers-bin')
 license=('MIT')
 arch=('x86_64')
 
