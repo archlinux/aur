@@ -1,12 +1,17 @@
 pkgbase = opentofu
-	pkgdesc = The open source infrastructure as code tool.
-	pkgver = 1.6.0
+	pkgdesc = Lets you declaratively manage your cloud infrastructure
+	pkgver = 1.6.1
 	pkgrel = 1
-	url = https://opentofu.org
+	url = https://github.com/opentofu/opentofu
 	arch = x86_64
-	license = MPL2
-	makedepends = go>=1.21.3
-	source = https://github.com/opentofu/opentofu/archive/refs/tags/v1.6.0.tar.gz
-	sha256sums = 0975d14a0d14fa7cc99d1e6d823580834dacc99a26f2ed145e4cb2145ff73dc9
+	license = MPL-2.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = opentofu::git+https://github.com/opentofu/opentofu.git?signed#commit=89ca50f3fe8c5327ec9943e9590bdb7b023fd4eb
+	source = tofu.fish
+	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
+	sha256sums = SKIP
+	sha256sums = 312fe00a97ed3098fa141a54dfc0694c13766957acedec19f10347b80f813ce8
 
 pkgname = opentofu

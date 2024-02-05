@@ -1,0 +1,5 @@
+[opentofu]
+source = "github"
+github = "opentofu/opentofu"
+prefix = "v"
+use_latest_release = true
