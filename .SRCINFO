@@ -1,0 +1,12 @@
+pkgbase = stegosaurus
+	pkgdesc = A steganography tool for embedding payloads within Python bytecode.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/AngelKitty/stegosaurus
+	arch = any
+	license = ISC
+	depends = python
+	source = https://github.com/AngelKitty/stegosaurus/archive/refs/tags/1.0.tar.gz
+	sha512sums = c6804dd97f1aee132e5cd4e5191c57296532aa482f6617f20590c75117a1c9e4806fed532013356f66f436de9677d2a30c8c648d7a79cad6d98dd8ae5009fd50
+
+pkgname = stegosaurus
