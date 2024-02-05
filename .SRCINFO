@@ -1,12 +1,15 @@
 pkgbase = python2-incremental
 	pkgdesc = A small library that versions your Python projects.
 	pkgver = 21.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/twisted/incremental
 	arch = any
+	license = MIT
+	checkdepends = python2-pytest
+	checkdepends = python2-twisted
+	checkdepends = python2-click
 	makedepends = python2-setuptools
 	depends = python2
-	provides = python2-incremental
 	source = https://files.pythonhosted.org/packages/source/i/incremental/incremental-21.3.0.tar.gz
 	sha256sums = 02f5de5aff48f6b9f665d99d48bfc7ec03b6e3943210de7cfc88856d755d6f57
 
