@@ -1,15 +1,15 @@
 pkgbase = nextdns
 	pkgdesc = NextDNS DNS-over-HTTPS client
-	pkgver = 1.41.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://github.com/nextdns/nextdns
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	options = !lto
-	source = https://github.com/nextdns/nextdns/archive/v1.41.0.tar.gz
+	source = https://github.com/nextdns/nextdns/archive/v1.42.0.tar.gz
 	source = nextdns.service
-	sha256sums = f13439f3c797769add028bff68974d88452add8b026b6da55fa056020ffbe479
+	sha256sums = 893692bea9015116d6ce610c94dccf744f3aa29aeb716a15cca17dd6e6b837c1
 	sha256sums = e15d83ec460562c8a81052f37c0e78e18842e95270895524b9853f7aca285eba
 
 pkgname = nextdns
