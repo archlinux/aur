@@ -1,4 +1,8 @@
+dir=/usr/share/berusky-dos
+post_install(){
+	USER=`who -m|cut -d\  -f1`
+	chown $USER: $dir/BERUSKY.CFG
+}
 post_remove(){
-	DIR=/usr/share/berusky-dos
-	[ -d $DIR ] && echo -e "\e[31mNásledující soubory nebyly odstraněny:\n\n`find $DIR -type f|sort`\e[m" || true
+	[ ! -d $dir ] || echo -e "\e[31mNásledující soubory nebyly odstraněny:\n\n`find $dir -type f|sort`\e[m"
 }
