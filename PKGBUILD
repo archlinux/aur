@@ -1,3 +1,4 @@
+# Maintainer: justbispo <aur.fyxy0@slmail.me>
 # Maintainer: budRich of budlabs
 
 pkgname=vivaldi-autoinject-custom-js-ui
@@ -8,7 +9,7 @@ arch=('any')
 url='https://github.com/budlabs/vivaldi-autoinject-custom-js-ui'
 license=('BSD')
 depends=('bash' 'sed' 'vivaldi')
-makedepends=(gawk m4)
+makedepends=(gawk go-md2man m4)
 
 source=(
   "$url/archive/$pkgver/${pkgname}-$pkgver.tar.gz"

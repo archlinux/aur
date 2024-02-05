@@ -6,6 +6,7 @@ pkgbase = vivaldi-autoinject-custom-js-ui
 	arch = any
 	license = BSD
 	makedepends = gawk
+	makedepends = go-md2man
 	makedepends = m4
 	depends = bash
 	depends = sed
