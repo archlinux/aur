@@ -2,18 +2,17 @@
 
 _pkgname=mwptools
 pkgname=mwptools-git
-pkgver=6.159.538.r26.7436fe64
+pkgver=7.028.536.r5.45eb100f
 pkgrel=1
 pkgdesc='mission planner for iNav and MSP'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'pentium4' 'aarch64' 'riscv64')
 url='https://github.com/stronnag/mwptools'
-license=('GPL3')
-makedepends=('git' 'vala' 'meson')
+license=('GPL-3.0-or-later')
+makedepends=('git' 'vala' 'meson' 'go')
 depends=('gtk3' 'gdl' 'libchamplain' 'clutter' 'bluez' 'libgudev' 'gstreamer' 'cairo' 'pango' 'libxml2' 'vte3' 'mosquitto' 'gst-plugins-base-libs' 'gst-plugins-good')
 optdepends=('blackbox-tools-git: Replay Blackbox files (AUR)'
  'gnuplot: Mission Elevation plots'
  'ruby: Replay Blackbox logs'
- 'go: Build otxlog (OpenTX log player)'
  'paho-mqtt-c-git: Alternative MQTT library (AUR)'
  'espeak: speech synth'
  'espeak-ng-espeak: espeak alternative'
