@@ -1,7 +1,7 @@
 pkgbase = mapnik-git
 	pkgdesc = Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)
-	pkgver = 4.0.0.r13808.g2e1b325
-	pkgrel = 5
+	pkgver = 4.0.0.r13809.g4f6ab6a
+	pkgrel = 1
 	url = https://github.com/mapnik/mapnik
 	arch = i686
 	arch = x86_64
