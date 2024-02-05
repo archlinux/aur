@@ -11,7 +11,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium
-pkgver=121.0.6167.85
+pkgver=121.0.6167.139
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -35,14 +35,20 @@ options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
+        REVERT-simplify-blink-NativeValueTraitsBase.patch::https://github.com/chromium/chromium/commit/940af9f2c87b.patch
         icu-74.patch
+        chromium-121-constexpr.patch
         drop-flags-unsupported-by-clang16.patch
+        compiler-rt-16.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('a2f46c5266681126ea9e15c1c3067560d84f3e5d902e1ace934a3813c84e7152'
+sha256sums=('e12cc967bef7a79630828792f02d95297a06eb905c98e4c6e065fd5e74d6f9ff'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'e9113c1ed2900b84b488e608774ce25212d3c60094abdae005d8a943df9b505e'
+            '318df8f8662071cebcdf953698408058e17f59f184500b7e12e01a04a4206b50'
             'ff9ebd86b0010e1c604d47303ab209b1d76c3e888c423166779cefbc22de297f'
+            '09677c39ff9b910c732a049252969bfa03587e70502765d68b0345bac396c0b2'
             '8d1cdf3ddd8ff98f302c90c13953f39cd804b3479b13b69b8ef138ac57c83556'
+            '8a2649dcc6ff8d8f24ddbe40dc2a171824f681c6f33c39c4792b645b87c9dcab'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
 if (( _manual_clone )); then
@@ -64,7 +70,7 @@ source=("${source[@]}"
         0001-ozone-wayland-implement-text_input_manager_v3.patch
         0001-ozone-wayland-implement-text_input_manager-fixes.patch)
 sha256sums=("${sha256sums[@]}"
-            'de62d7c174b443bb31d0a20ac96be3dbd7ac355d6f0778886b90cb4da8a0c727'
+            'a4f389f9159effbbe47a07ade0b8b9b86ebb64a56230ea7a4b43664cd499f829'
             '9a5594293616e1390462af1f50276ee29fd6075ffab0e3f944f6346cb2eb8aec'
             '8ba5c67b7eb6cacd2dbbc29e6766169f0fca3bbb07779b1a0a76c913f17d343f'
             '2a44756404e13c97d000cc0d859604d6848163998ea2f838b3b9bb2c840967e3'
@@ -139,13 +145,24 @@ prepare() {
   # Fix build with ICU 74
   patch -Np1 -i ../icu-74.patch
 
+  # Fix "error: defaulted definition of equality comparison operator cannot
+  # be declared constexpr because it invokes a non-constexpr comparison
+  # function" (patch from Fedora)
+  patch -Np1 -i ../chromium-121-constexpr.patch
+
+  # Revert usage of C++20 features which likely need newer clang
+  patch -Rp1 -i ../REVERT-simplify-blink-NativeValueTraitsBase.patch
+
   # Drop compiler flags that need newer clang
-  #patch -Np1 -i ../drop-flags-unsupported-by-clang16.patch
+  patch -Np1 -i ../drop-flags-unsupported-by-clang16.patch
+
+  # Allow libclang_rt.builtins from compiler-rt 16 to be used
+  patch -Np1 -i ../compiler-rt-16.patch
 
   # Fixes for building with libstdc++ instead of libc++
-  #patch -Np1 -i ../chromium-patches-*/chromium-114-ruy-include.patch
-  #patch -Np1 -i ../chromium-patches-*/chromium-117-material-color-include.patch
-  #patch -Np1 -i ../chromium-patches-*/chromium-119-clang16.patch
+  patch -Np1 -i ../chromium-patches-*/chromium-114-ruy-include.patch
+  patch -Np1 -i ../chromium-patches-*/chromium-117-material-color-include.patch
+  patch -Np1 -i ../chromium-patches-*/chromium-119-clang16.patch
 
   # Custom Patches
   sed -i '/^bool IsHevcProfileSupported(const VideoType& type) {$/{s++bool IsHevcProfileSupported(const VideoType\& type) { return true;+;h};${x;/./{x;q0};x;q1}' \
@@ -168,12 +185,14 @@ prepare() {
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
   ln -s /usr/bin/java third_party/jdk/current/bin/
 
-  # Use prebuilt rust as system rust cannot be used due to the error:
-  #   error: the option `Z` is only accepted on the nightly compiler
-  ./tools/rust/update_rust.py
+  if (( !_system_clang )); then
+    # Use prebuilt rust as system rust cannot be used due to the error:
+    #   error: the option `Z` is only accepted on the nightly compiler
+    ./tools/rust/update_rust.py
 
-  # To link to rust libraries we need to compile with prebuilt clang
-  ./tools/clang/scripts/update.py
+    # To link to rust libraries we need to compile with prebuilt clang
+    ./tools/clang/scripts/update.py
+  fi
 
   # Ungoogled Chromium changes
   _ungoogled_repo="$srcdir/$pkgname-$_uc_ver"
@@ -254,7 +273,16 @@ build() {
       'clang_base_path="/usr"'
       'clang_use_chrome_plugins=false'
       "clang_version=\"$_clang_version\""
-      #'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
+      'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
+    )
+
+    # Allow the use of nightly features with stable Rust compiler
+    # https://github.com/ungoogled-software/ungoogled-chromium/pull/2696#issuecomment-1918173198
+    export RUSTC_BOOTSTRAP=1
+
+    _flags+=(
+      'rust_sysroot_absolute="/usr"'
+      "rustc_version=\"$(rustc --version)\""
     )
   fi
 
