@@ -1,6 +1,6 @@
 pkgbase = wpgtk-git
 	pkgdesc = A gui wallpaper chooser that changes your WM theme, GTK theme and more
-	pkgver = r871.4854f42
+	pkgver = r912.4e2e8ff
 	pkgrel = 1
 	url = https://github.com/deviantfero/wpgtk
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = wpgtk-git
 	optdepends = feh: set wallpaper
 	optdepends = nitrogen: set wallpaper
 	optdepends = xsettingsd: live reload GTK+ theme
-	provides = wpgtk=r871.4854f42
+	provides = wpgtk=r912.4e2e8ff
 	conflicts = wpgtk
 	noextract = wpgtk.png
 	source = git+https://github.com/deviantfero/wpgtk.git
