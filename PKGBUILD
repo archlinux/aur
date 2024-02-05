@@ -1,7 +1,7 @@
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=pyprland
-pkgver=1.8.6
+pkgver=1.8.7
 pkgrel=1
 pkgdesc="Easy scratchpads, smart monitor placement and more Hyprland tweaks"
 arch=(any)
