@@ -16,7 +16,6 @@ url="http://fishshell.com"
 license=('GPL2')
 depends=(
   'glibc'
-  'gcc-libs'
   'ncurses'
   'pcre2'
 )
@@ -26,7 +25,6 @@ optdepends=(
 )
 makedepends=(
   'cargo'
-  'clang'
   'cmake'
   'git'
   'python-sphinx'
@@ -35,7 +33,6 @@ checkdepends=(
   'expect'
   'procps-ng'
 )
-options=('!lto')
 provides=(
   'fish'
   'fish-shell'
@@ -64,7 +61,6 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_SYSCONFDIR=/etc \
-    -DCMAKE_BUILD_TYPE=None \
     -DBUILD_DOCS=True \
     -Wno-dev
   make -C build
