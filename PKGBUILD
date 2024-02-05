@@ -4,11 +4,11 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=gnuplot-headless
-pkgver=5.4.4
+pkgver=5.4.10
 pkgrel=1
 pkgdesc="Plotting package which outputs to PostScript, PNG, GIF, and others, without any X or latex depencies." 
 arch=('i686' 'x86_64' 'aarch64' 'aarch32') 
-url="http://www.gnuplot.info" 
+url='http://www.gnuplot.info'
 license=('custom') 
 depends=('readline' 'lua' 'ncurses')
 makedepends=()
@@ -17,18 +17,11 @@ conflicts=('gnuplot')
 options=('!makeflags')
 source=("http://downloads.sourceforge.net/sourceforge/gnuplot/gnuplot-$pkgver.tar.gz"
         "lua53_compat.patch")
-sha256sums=('372300b7867f5b3538b25fc5d0ac7734af6e3fe0d202b6db926e4369913f0902'
+sha256sums=('975d8c1cc2c41c7cedc4e323aff035d977feb9a97f0296dd2a8a66d197a5b27c'
             'bfd8a61abbf4491c74225cb9fd252619d4fc29751838bcb4c0639ffe05a00695')
 
 prepare() {
   cd "${srcdir}/gnuplot-${pkgver}"
-
-  # fix default source location; use the GDFONTPATH variable to modify at runtime
-  sed -i 's|/usr/X11R6/lib/X11/fonts/truetype|/usr/share/fonts/TTF|' src/variable.c
-
-  sed -i -e 's|/usr/X11R6/lib/X11/fonts/Type1|/usr/share/fonts/Type1|' \
-  -e 's|$(X11ROOT)/X11R6/lib/X11/fonts/Type1|$(X11ROOT)/usr/share/fonts/Type1|' \
-  src/variable.c
 
   patch -p1 < "$srcdir"/lua53_compat.patch
 }
@@ -65,7 +58,7 @@ package() {
   cd "${srcdir}/gnuplot-${pkgver}"
   make pkglibexecdir=/usr/bin DESTDIR="${pkgdir}" install
 
-  install -Dm644 Copyright "${pkgdir}/usr/share/licenses/$pkgname/Copyright"
+  install -Dm644 Copyright -t "${pkgdir}/usr/share/licenses/$pkgname"
 
   rm -f "${pkgdir}/usr/share/texmf-dist/ls-R"
 }
