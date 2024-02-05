@@ -53,7 +53,7 @@ _url="file://${HOME}/${_pkgname}"
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
   ) && \
   sha256sums+=(
-    'f976f8903d54051c2614a0750f10b9492a98e40e24004e0f22fafe39aa0001fa'
+    'b8c3c344b5e5934cc1e7cf2a9bf967b679bac18cee98d3499290d14d158a9098'
   )
 
 package() {

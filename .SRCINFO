@@ -1,13 +1,15 @@
 pkgbase = reallymakepkg
 	pkgdesc = System-independent makepkg
-	pkgver = 1.1.1.1.1
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/themartiancompany/reallymakepkg
 	arch = any
 	license = AGPL3
 	depends = bash
-	optdepends = python-pygments: colorized output and syntax highlighting
-	source = reallymakepkg-1.1.1.1.1.tar.gz::https://github.com/themartiancompany/reallymakepkg/archive/refs/tags/1.1.1.1.1.tar.gz
-	sha256sums = 01d0d0491960264be91f0846a313f4ace21a9b15d0ba55e4cc12de947991933b
+	depends = pacman
+	optdepends = python-pygments: colorized output atd syntax highlighting
+	optdepends = python2-pygments: colorized output atd syntax highlighting
+	source = reallymakepkg-1.2.1.tar.gz::https://github.com/themartiancompany/reallymakepkg/archive/refs/tags/1.2.1.tar.gz
+	sha256sums = b8c3c344b5e5934cc1e7cf2a9bf967b679bac18cee98d3499290d14d158a9098
 
 pkgname = reallymakepkg
