@@ -1,5 +1,5 @@
 pkgname=companion
-pkgver=3.0.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="Control software for the Elgato Streamdeck with a focus on broadcasting."
 arch=('x86_64' 'aarch64')
