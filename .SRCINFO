@@ -1,17 +1,18 @@
 pkgbase = jan-bin
 	pkgdesc = Run AI on your own PC
-	pkgver = 0.4.5
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://jan.ai/
 	arch = x86_64
-	license = AGPL-3.0
-	depends = alsa-lib
-	depends = gtk3
+	license = AGPL-3.0-only
+	makedepends = asar
+	depends = electron28
 	depends = hicolor-icon-theme
-	depends = nss
-	provides = jan=0.4.5
+	provides = jan=0.4.6
 	conflicts = jan
-	source = jan-0.4.5.deb::https://github.com/janhq/jan/releases/download/v0.4.5/jan-linux-amd64-0.4.5.deb
-	sha256sums = e696a4cd88e14762fe8e35e8d921d7d7a9abf3747eac53efe4a82a19191ab1d6
+	source = jan-0.4.6.deb::https://github.com/janhq/jan/releases/download/v0.4.6/jan-linux-amd64-0.4.6.deb
+	source = jan.sh
+	sha256sums = 475571134219a4641574cb6e5a40e1b15ce974aff7d65033dc7260ff87aaddc0
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = jan-bin
