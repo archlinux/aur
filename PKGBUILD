@@ -16,11 +16,11 @@ conflicts=('peass')
 provides=('peass-ng')
 
 pkgver() {
-  gh release view -R carlospolop/PEASS-ng --json tagName --jq '.tagName' -q '.[]' | sort -V | tail -n 1 | cut -d '-' -f 2
+  GH_HOST=randomdomain gh release view -R github.com/carlospolop/PEASS-ng --json tagName --jq '.tagName' -q '.[]' | sort -V | tail -n 1 | cut -d '-' -f 2
 }
 
 prepare() {
-  gh release download --pattern '*' -D release -R ${url} --clobber 
+ GH_HOST=randomdomain gh release download --pattern '*' -D release -R ${url} --clobber 
 }
 
 package() {
