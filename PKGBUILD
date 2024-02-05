@@ -14,8 +14,8 @@ pkgdesc="rhythm is just a *click* away!"
 arch=('x86_64')
 url="https://osu.ppy.sh/"
 license=('MIT' 'custom:CC-BY-NC-4.0')
-depends=('ffmpeg' 'libgl' 'sdl2' 'dotnet-runtime-6.0-bin')
-makedepends=('git' 'dotnet-sdk-6.0-bin')
+depends=('ffmpeg' 'libgl' 'sdl2' 'dotnet-runtime')
+makedepends=('git' 'dotnet-sdk')
 provides=('osu-lazer')
 conflicts=('osu-lazer')
 source=("git+https://github.com/ppy/osu.git"
@@ -37,7 +37,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
   DOTNET_CLI_TELEMETRY_OPTOUT="1" dotnet publish osu.Desktop \
-    --framework net6.0 \
+    --framework net8.0 \
     --configuration Release \
     --use-current-runtime \
     --no-self-contained \
