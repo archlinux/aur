@@ -6,7 +6,7 @@
 
 _git="false"
 pkgname=reallymakepkg
-_pkgver="1.1.1"
+_pkgver="1.1.1.1"
 pkgver="${_pkgver}"
 pkgrel=1
 pkgdesc="System-independent makepkg"
@@ -41,7 +41,7 @@ _url="file://${HOME}/${_pkgname}"
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
   ) && \
   sha256sums+=(
-    'f1d9b7b702567d3aa51a5e2e6db0873763cf8723488f77e0f0cf6a2561c97df3'
+    'f976f8903d54051c2614a0750f10b9492a98e40e24004e0f22fafe39aa0001fa'
   )
 
 package() {
