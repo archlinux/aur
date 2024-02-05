@@ -7,7 +7,7 @@ pkgbase=weewx
 pkgname=("weewx" "weewx-docs")
 _MAJOR=5
 _MINOR=0
-_PATCH=0
+_PATCH=1
 pkgver=$_MAJOR.$_MINOR.$_PATCH
 
 function _dl_url {
@@ -29,7 +29,7 @@ source=("$pkgbase-$pkgver.tar.xz::$(_dl_url $_MAJOR $_MINOR $_PATCH)"
         "weewx.sysusers"
         "weewx.tmpfiles"
         "weewx.service")
-sha512sums=('c3eb23048012f2bab7eac0a25f6dfad4da4ff1591601f7242cf7fec91343e88f3014b7281c021c75cfdbb5b4e73285ab8605325a3c7771e90a5016e3d574dc3b'
+sha512sums=('cffe79cabb0c3e6af1cfc980c09e2d37bbb250635f5ae067e5967c6f3e2bd5abf431deee47492b24993f8eac5151ae5cad227bbbb9a9d595658ed4e01c0b9cc5'
             '6015b870143f6b8ae094b3f94ad53323be8a083f11c177dc508315fb3bbc20dd318124e6ccd41ba9d0388828e18c4b4ae6ce7c4a35ac0cab442eca9e8bbbca2d'
             'e97b287acf53c55d30f4e1a4d533fe5c649fac44080095fa1052f6f1cc9a55b6b0592d63c63a4a241e7007894e882648d5c4c4a221da69666e284637c5a3e15e'
             '4744fec4faf63b36f9c82a7404e4ecc749eb07e8d90640465ff7a2ae20cdb2560348b0a125467fad215d0e51d88d27a991dc0196899e53d19479dec942d6e52d')
