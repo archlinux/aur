@@ -1,7 +1,7 @@
 pkgbase = modv-bin
 	pkgdesc = modular audio visualisation powered by JavaScript
 	pkgver = 3.29.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://modv.vcync.gl/
 	arch = x86_64
 	license = MIT
@@ -18,6 +18,6 @@ pkgbase = modv-bin
 	source = modv.sh
 	sha256sums = 987b13cbd076f0113a4a11df8cd132e1580dec7abe5ea69fa12a6e5e5a5f7992
 	sha256sums = 4ff9462e56a52889b0005f007e0a66930c6b19687751f551bf7316b6ee35119e
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = modv-bin
