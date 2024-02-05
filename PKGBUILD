@@ -1,7 +1,7 @@
 # Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
 # Contributor: dobedobedo <dobe0331 at gmail dot com>
 pkgname=('kealib')
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="An HDF5 Based Raster File Format and its GDAL plugin"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('hdf5' 'gdal')
 options=(!emptydirs)
 _github=https://github.com/ubarsc/kealib
 source=("$_github/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('c4e17c472761a39e45184b5fa687395b319ac75430e0f6584dbf4cec6e335572')
+sha256sums=('32b2e3c90553a03cf1e8d03781c3710500ca919bca674bc370e86f15338ee93e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
