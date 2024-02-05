@@ -1,10 +1,10 @@
 pkgbase = mechakeys-bin
 	pkgdesc = An integrated typing environment, a collection of interconnected customization tools built around your keyboard and mouse.
 	pkgver = 2.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://v2.robolab.io
 	arch = x86_64
-	license = custom
+	license = LicenseRef-custom
 	makedepends = squashfuse
 	depends = electron12
 	depends = dbus-glib

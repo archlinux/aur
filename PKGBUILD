@@ -3,12 +3,12 @@ pkgname=mechakeys-bin
 _appname=MechaKeys
 pkgver=2.0.6
 _electronversion=12
-pkgrel=2
+pkgrel=3
 pkgdesc="An integrated typing environment, a collection of interconnected customization tools built around your keyboard and mouse."
 arch=('x86_64')
 url="https://v2.robolab.io"
 _ghurl="https://github.com/robolab-io/mechakeys-distro"
-license=('custom')
+license=('LicenseRef-custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -32,7 +32,7 @@ sha256sums=('ba45cb02a9cf9ccef4842768b612d42cf11c82dc22e94a860364975abd60f74b'
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
