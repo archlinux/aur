@@ -1,16 +1,16 @@
 pkgbase = goresume-bin
 	pkgdesc = Build HTML/PDF resume from JSON/YAML/TOML.
-	pkgver = 0.2.13
+	pkgver = 0.2.14
 	pkgrel = 1
 	url = https://github.con/nikaro/goresume
 	license = MIT
 	conflicts = goresume
 	provides = goresume
 	arch = aarch64
-	source_aarch64 = https://github.com/nikaro/goresume/releases/download/0.2.13/goresume_0.2.13_linux_arm64.tar.gz
-	sha256sums_aarch64 = f991c988a7cc7fae1bc50c404e79bb637df5e2e8efe2812725c2b3283f72779e
+	source_aarch64 = https://github.com/nikaro/goresume/releases/download/0.2.14/goresume_0.2.14_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0054d861faf2c036f1896fb8877da2c9b9afc1aab328024d3ec383a9b89603a7
 	arch = x86_64
-	source_x86_64 = https://github.com/nikaro/goresume/releases/download/0.2.13/goresume_0.2.13_linux_amd64.tar.gz
-	sha256sums_x86_64 = aa2d77e0533ff01206d483a230426870cdd6cd94e9a66e9e2b5379a190028950
+	source_x86_64 = https://github.com/nikaro/goresume/releases/download/0.2.14/goresume_0.2.14_linux_amd64.tar.gz
+	sha256sums_x86_64 = 19fff1eeba264cf99db205ceee4e50d95a2445a81220b215616d316e216b1cc4
 	
 pkgname = goresume-bin
