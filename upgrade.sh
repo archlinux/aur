@@ -29,4 +29,6 @@ makepkg --printsrcinfo > .SRCINFO
 
 makepkg -si
 
-
+git add .SRCINFO
+git add PKGBUILD
+git commit -m "pump to $latest"
