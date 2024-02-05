@@ -2,8 +2,8 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 pkgname=authpass-bin
-pkgver=1.9.10
-_subver=1994
+pkgver=1.9.11
+_subver=2007
 pkgrel=1
 pkgdesc='Password Manager based on Flutter for all platforms. Keepass 2.x (kdbx 3.x) compatible.'
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}_${_subver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b4645eea43467dcafc5889b61d6e948ef3730d076de20c036a90298365e54fcb'
+sha256sums=('f464b6d5610de4c9d17cbbb5906625c272e8c5ac0ebf8e45b2a3007bbc9c246b'
             '87aad073913a72e5fa1c7f4e0f6f695dafc5ba8ea675a62be03c532c701c243a')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
