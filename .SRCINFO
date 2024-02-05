@@ -14,7 +14,6 @@ pkgbase = mozc-with-jp-dict
 	makedepends = pkg-config
 	makedepends = curl
 	makedepends = mesa
-	makedepends = subversion
 	makedepends = clang
 	makedepends = ibus
 	makedepends = rustup
