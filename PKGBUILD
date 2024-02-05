@@ -3,12 +3,12 @@ pkgname=codex-bin
 _pkgname=Codex
 pkgver=2.0.4
 _electronversion=26
-pkgrel=1
+pkgrel=2
 pkgdesc="A free note-taking software for programmers and Computer Science students"
 arch=('x86_64')
 url="https://codexnotes.com/"
 _ghurl="https://github.com/jcv8000/Codex"
-license=('custom:CC-BY-NC-4.0')
+license=('CC-BY-NC-4.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -20,11 +20,11 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('e36b9cab0f56cf8084d3657e754629df065042aabe704efd15a4e9985529c321'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${_pkgname}|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
