@@ -1,7 +1,7 @@
 pkgbase = ruby-cool.io
 	pkgdesc = Simple evented I/O for Ruby
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tarcieri/cool.io
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = ruby-cool.io
 	depends = glibc
 	depends = ruby
 	options = !emptydirs
-	source = https://github.com/tarcieri/cool.io/archive/v1.8.0/cool.io-v1.8.0.tar.gz
+	source = ruby-cool.io-1.8.0.tar.gz::https://github.com/tarcieri/cool.io/archive/v1.8.0.tar.gz
 	sha256sums = e0500529b86e487cb7a682833e46d30dc6e6fbf63e9d5e419aee05bd7cadb9bd
 
 pkgname = ruby-cool.io
