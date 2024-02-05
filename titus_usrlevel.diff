@@ -1,0 +1,35 @@
+20c20
+< devmode 0
+---
+> devmode 1
+33,47c33,46
+< #level 1 titus/LEVELD.SQZ
+< level 1 titus/LEVEL0.SQZ
+< level 2 titus/LEVELJ.SQZ
+< level 3 titus/LEVEL1.SQZ
+< level 4 titus/LEVEL2.SQZ
+< level 5 titus/LEVEL3.SQZ
+< level 6 titus/LEVEL4.SQZ
+< level 7 titus/LEVEL5.SQZ
+< level 8 titus/LEVEL6.SQZ
+< level 9 titus/LEVEL7.SQZ
+< level 10 titus/LEVEL8.SQZ
+< level 11 titus/LEVEL9.SQZ
+< level 12 titus/LEVELB.SQZ
+< level 13 titus/LEVELC.SQZ
+< level 14 titus/LEVELE.SQZ
+---
+> level 1 usrlevel/stb.sqz
+> level 2 usrlevel/magasin.sqz
+> level 3 usrlevel/liv1.sqz
+> level 4 usrlevel/robylvl3.sqz
+> level 5 usrlevel/newnetz4.sqz
+> level 6 usrlevel/nvl1001.sqz
+> level 7 usrlevel/nvl1201.sqz
+> level 8 usrlevel/nvl0501.sqz
+> level 9 usrlevel/lolly.sqz
+> level 10 usrlevel/nvl0801.sqz
+> level 11 usrlevel/nvl0901.sqz
+> level 12 usrlevel/nvl0701.sqz
+> level 13 usrlevel/nvl0101.sqz
+> level 14 titus/LEVELD.SQZ
