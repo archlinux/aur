@@ -12,7 +12,7 @@ pkgver=2.1.9
 pkgrel=1
 pkgdesc='Nintendo GameBoy Advance emulator'
 arch=(x86_64)
-url=https://vba-m.com
+url=https://visualboyadvance-m.org
 license=(GPL2)
 depends=(
   glu
