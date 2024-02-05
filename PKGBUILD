@@ -1,11 +1,11 @@
 _srcname=kmsvnc
 pkgname=${_srcname}
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="A VNC server for DRM/KMS capable GNU/Linux devices"
 arch=('x86_64')
 url='https://github.com/isjerryxiao/kmsvnc'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('libvncserver' 'libxkbcommon' 'libdrm' 'libva')
 makedepends=('git' 'cmake')
 
