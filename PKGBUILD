@@ -11,7 +11,7 @@
 _pkgname="fairy-stockfish"
 pkgbase="$_pkgname${_pkgtype:-}"
 pkgver=14.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Chess engine with support for fairy chess and other variants"
 url="https://github.com/fairy-stockfish/Fairy-Stockfish"
 arch=('i686' 'x86_64' 'aarch64')
@@ -38,8 +38,24 @@ _main_package() {
     _main_git
   fi
 
-  source+=("fairyfishgui"::"git+https://github.com/fairy-stockfish/FairyFishGUI.git")
-  sha256sums+=('SKIP')
+  source+=(
+    "fairyfishgui"::"git+https://github.com/fairy-stockfish/FairyFishGUI.git"
+    'xbfs-shogi.desktop'
+    'xbfs-shogi.sh'
+    'xbfs-shogi.svg'
+    'xbfs-xiangqi.desktop'
+    'xbfs-xiangqi.sh'
+    'xbfs-xiangqi.svg'
+  )
+  sha256sums+=(
+    'SKIP'
+    'd4300a0b1ca55b7a1bc152924b3d0103445fe04bedacd6759c82501167b32115'
+    '62589d92889ffa8aa47b537c8c7e69307f4cd938167f5cbb8b41dc06d259e607'
+    'aba44a13030469f60f66eb27c6c4fa2a4d957372fce2808e4dad29914566baed'
+    'dcbafb9ce71a6effc8d0cab2fa6e1b355e53f6283ea8ecc13e21013fb59c1cb1'
+    'e7101ca94fb9b5fc1b5529734c3e6239171778f2aae1bfb0a14c9d8cd4171229'
+    '814ee2fc2ec1ee379ac98c3d94d0b628c706231f862a1d03a2ef0ce9d1d2ed15'
+  )
 }
 
 # stable package
@@ -91,8 +107,9 @@ build() {
     python -m build --wheel --no-isolation --skip-dependency-check
   )
 
-  # upstream stockfish / fairy-stockfish build scripts detect and force-enable cpu features,
-  # ignoring user CFLAGS and CXXFLAGS, producing binaries that are unusable on some computers.
+  # upstream stockfish / fairy-stockfish build scripts detect
+  # and force-enable cpu features, ignoring user CFLAGS and CXXFLAGS,
+  # producing binaries that are unusable on some computers.
   #
   # The following replicates `make profile-build` without cpu-detection.
   cd "$_pkgsrc/src"
@@ -141,8 +158,12 @@ END
 }
 
 _package_fairy-stockfish() {
+  depends=(
+    'libnotify'
+  )
   optdepends+=(
-    'polyglot-winboard: For xboard support'
+    # 'polyglot-winboard: For xboard support'
+    'xboard: GUI frontend'
   )
 
   if [[ "${_build_git::1}" == "t" ]] || [[ "${_build_avx::1}" == "t" ]] ; then
@@ -152,6 +173,16 @@ _package_fairy-stockfish() {
 
   cd "$_pkgsrc/src"
   make PREFIX="$pkgdir/usr" install
+
+  # xboard shogi
+  install -Dm755 "$srcdir/xbfs-shogi.sh" "$pkgdir/usr/bin/xbfs-shogi"
+  install -Dm644 "$srcdir/xbfs-shogi.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "$srcdir/xbfs-shogi.svg" -t "$pkgdir/usr/share/pixmaps/"
+
+  # xboard xiangqi
+  install -Dm755 "$srcdir/xbfs-xiangqi.sh" "$pkgdir/usr/bin/xbfs-xiangqi"
+  install -Dm644 "$srcdir/xbfs-xiangqi.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "$srcdir/xbfs-xiangqi.svg" -t "$pkgdir/usr/share/pixmaps/"
 }
 
 for _p in "${pkgname[@]}"; do

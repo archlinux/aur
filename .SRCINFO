@@ -1,7 +1,7 @@
 pkgbase = fairy-stockfish
 	pkgdesc = Chess engine with support for fairy chess and other variants
 	pkgver = 14.0.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/fairy-stockfish/Fairy-Stockfish
 	arch = i686
 	arch = x86_64
@@ -14,11 +14,24 @@ pkgbase = fairy-stockfish
 	makedepends = python-wheel
 	source = fairy-stockfish-14.0.1.tar.gz::https://github.com/fairy-stockfish/Fairy-Stockfish/archive/refs/tags/fairy_sf_14_0_1_xq.tar.gz
 	source = fairyfishgui::git+https://github.com/fairy-stockfish/FairyFishGUI.git
+	source = xbfs-shogi.desktop
+	source = xbfs-shogi.sh
+	source = xbfs-shogi.svg
+	source = xbfs-xiangqi.desktop
+	source = xbfs-xiangqi.sh
+	source = xbfs-xiangqi.svg
 	sha256sums = 53914fc89d89afca7cfcfd20660ccdda125f1751f59a68b1f3ed1d4eb6cfe805
 	sha256sums = SKIP
+	sha256sums = d4300a0b1ca55b7a1bc152924b3d0103445fe04bedacd6759c82501167b32115
+	sha256sums = 62589d92889ffa8aa47b537c8c7e69307f4cd938167f5cbb8b41dc06d259e607
+	sha256sums = aba44a13030469f60f66eb27c6c4fa2a4d957372fce2808e4dad29914566baed
+	sha256sums = dcbafb9ce71a6effc8d0cab2fa6e1b355e53f6283ea8ecc13e21013fb59c1cb1
+	sha256sums = e7101ca94fb9b5fc1b5529734c3e6239171778f2aae1bfb0a14c9d8cd4171229
+	sha256sums = 814ee2fc2ec1ee379ac98c3d94d0b628c706231f862a1d03a2ef0ce9d1d2ed15
 
 pkgname = fairy-stockfish
-	optdepends = polyglot-winboard: For xboard support
+	depends = libnotify
+	optdepends = xboard: GUI frontend
 	provides = fairy-stockfish=14.0.1
 	conflicts = fairy-stockfish
 

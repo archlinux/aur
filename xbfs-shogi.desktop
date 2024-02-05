@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Xboard Shogi
+Comment=Chess Game, Japanese variant
+Type=Application
+Categories=Game;BoardGame;
+Exec=xbfs-shogi
+Icon=xbfs-shogi

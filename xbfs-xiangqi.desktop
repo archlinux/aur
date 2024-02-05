@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Xboard Xiang Qi
+Comment=Chess Game, Chinese variant
+Type=Application
+Categories=Game;BoardGame;
+Exec=xbfs-xiangqi
+Icon=xbfs-xiangqi
