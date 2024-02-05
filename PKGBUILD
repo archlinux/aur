@@ -2,40 +2,26 @@
 pkgname=utools-bin
 _pkgname=uTools
 pkgver=4.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="uTools Utilities.新一代效率工具平台,自由组合插件应用,打造专属你的趁手工具集"
 arch=("x86_64")
 url="https://u.tools"
 _ghurl="https://github.com/uTools-Labs"
-license=('custom')
+license=('LicenseRef-custom')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    'libxext'
-    'libxcb'
-    'libcups'
-    'lib32-glibc'
-    'pango'
-    'libxcomposite'
-    'libxrandr'
     'nspr'
-    'libx11'
-    'libxkbcommon'
-    'dbus'
-    'mesa'
-    'libdrm'
-    'libpng'
-    'libxfixes'
-    'at-spi2-core'
     'gtk3'
-    'cairo'
-    'expat'
-    'libxdamage'
     'hicolor-icon-theme'
     'nss'
-    'libxtst'
-    'lib32-gcc-libs'
     'alsa-lib'
+    'lib32-gcc-libs'
+    'lib32-glibc'
+    'nodejs'
+)
+options=(
+    '!strip'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::https://res.u-tools.cn/version2/${pkgname%-bin}_${pkgver}_amd64.deb"
