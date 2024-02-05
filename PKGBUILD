@@ -3,7 +3,7 @@ pkgname=kindle-companion-bin
 _appname=Kindle-Companion
 pkgver=1.0.6
 _electronversion=20
-pkgrel=8
+pkgrel=9
 pkgdesc="Kindle Companion enables readers to easily access and manage vocabulary lookups and clippings on their Amazon Kindle device"
 arch=("x86_64")
 url="https://saharzelo.github.io/kindle-companion/"
@@ -22,11 +22,11 @@ source=(
 )
 sha256sums=('564bc5e3eb16f9af6fc7b9727e500e9a0f4fd4ce2d040de3d0faf636df5452a3'
             '613e2910e5cda3ce6e5b878e214d955c2a34e3475e97d365fcbec5e345a06038'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_appname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
