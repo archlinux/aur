@@ -2,8 +2,8 @@
 
 pkgname=python-outlines
 _pkgname=${pkgname#python-}
-pkgver=0.0.25
-_commit=c2b0f4fb188648b7a4d266132cb13f9108600178
+pkgver=0.0.26
+_commit=80c0957beaade2f99cb9532011ecd3094270100b
 pkgrel=1
 pkgdesc="Guided text generation"
 arch=(any)
@@ -13,7 +13,6 @@ depends=(
   python
   python-cloudpickle
   python-diskcache
-  python-fastapi
   python-interegular
   python-jinja
   python-jsonschema
@@ -42,7 +41,12 @@ checkdepends=(
   python-pytest-mock
   python-responses
 )
-optdepends=('python-llama-cpp: llama.cpp backend')
+optdepends=(
+  # 'python-vllm: deploy as LLM service' # Not packaged yet
+  'python-fastapi: deploy as LLM service'
+  'uvicorn: deploy as LLM service'
+  'python-llama-cpp: llama.cpp backend'
+)
 
 source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
