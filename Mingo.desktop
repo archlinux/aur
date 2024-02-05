@@ -1,5 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name="Mingo"
-GenericName="MongoDB Database Browser"
-Exec=/usr/bin/mingo
