@@ -1,12 +1,12 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgdesc='Terminal top-like monitor for icecream/icecc'
 pkgname='icetop-git'
-pkgver=r37.48482f3
+pkgver=r41.e782c8c
 pkgrel=1
 license=('GPL2')
 arch=('x86_64' 'i686')
-depends=('icecream' 'libdill' 'libtickit-bzr')
-makedepends=('meson' 'ninja')
+depends=('icecream' 'libdill' 'libtickit')
+makedepends=('meson' 'ninja' 'git')
 url='https://github.com/aperezdc/icetop'
 source=("${pkgname}::git+${url}")
 sha512sums=("SKIP")
@@ -22,7 +22,7 @@ pkgver () {
 
 build () {
 	cd "${pkgname}"
-	meson --buildtype release --prefix /usr build
+	arch-meson build
 	ninja -C build
 }
 
