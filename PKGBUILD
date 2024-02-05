@@ -1,36 +1,50 @@
-# Maintainer: Alexander Schmidt <zyeryi@gmail.com>
+# Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
+# Contributor: Alexander Schmidt <zyeryi@gmail.com>
 
-_pkgname=erd
+_name=erd
 pkgname=erd-git
-pkgver=r59.06a5ba5
-pkgrel=1
-pkgdesc='A utility for generating entity-relationship diagrams from plain-text descriptions'
-arch=('i686' 'x86_64')
-url='https://github.com/BurntSushi/erd'
-license=('CUSTOM')
-depends=('haskell-graphviz' 'haskell-parsec')
-makedepends=('ghc' 'cabal-install>=1.8')
+pkgver=0.2.1.0.r18.gd3c8406
+pkgrel=4
+pkgdesc='A utility for generating entity-relationship diagrams from plain-text descriptions - git version'
+arch=('x86_64')
+url="https://github.com/BurntSushi/$_name"
+license=('Unlicense')
+depends=('ghc-libs' 'haskell-gitrev' 'haskell-graphviz' 'haskell-raw-strings-qq' 'haskell-yaml')
+makedepends=('ghc' 'git')
+checkdepends=('haskell-tasty' 'haskell-tasty-hunit')
 provides=('erd')
-source=("${_pkgname}::git+https://github.com/BurntSushi/${_pkgname}.git")
-md5sums=('SKIP')
-
+conflicts=('erd')
+source=("git+$url.git")
+sha256sums=('SKIP')
+options=('!emptydirs')
 
 pkgver() {
-    cd "${_pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_name"
+
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${_pkgname}"
+  cd "$_name"
 
-    cabal configure --prefix='/usr' --docdir='$prefix/share/doc/erd-git'
-    cabal haddock --hyperlink-source --executables
-    cabal build
+  runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
+    --prefix=/usr --docdir="/usr/share/doc/$pkgname" --datasubdir=$pkgname --enable-tests \
+    --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid \
+    --ghc-option=-optl-Wl\,-z\,relro\,-z\,now \
+    --ghc-option='-pie'
+
+  runhaskell Setup build $MAKEFLAGS
+}
+
+check() {
+  cd "$_name"
+
+  runhaskell Setup test
 }
 
 package() {
-    cd "${_pkgname}"
+  cd "$_name"
 
-    cabal copy --destdir="${pkgdir}/"
-    install -Dm644 UNLICENSE ${pkgdir}/usr/share/licenses/${pkgname}/UNLICENSE
+  runhaskell Setup copy --destdir="$pkgdir"
+  rm -f "$pkgdir/usr/share/doc/$pkgname/UNLICENSE"
 }

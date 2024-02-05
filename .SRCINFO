@@ -1,18 +1,23 @@
 pkgbase = erd-git
-	pkgdesc = A utility for generating entity-relationship diagrams from plain-text descriptions
-	pkgver = r59.06a5ba5
-	pkgrel = 1
+	pkgdesc = A utility for generating entity-relationship diagrams from plain-text descriptions - git version
+	pkgver = 0.2.1.0.r18.gd3c8406
+	pkgrel = 4
 	url = https://github.com/BurntSushi/erd
-	arch = i686
 	arch = x86_64
-	license = CUSTOM
+	license = Unlicense
+	checkdepends = haskell-tasty
+	checkdepends = haskell-tasty-hunit
 	makedepends = ghc
-	makedepends = cabal-install>=1.8
+	makedepends = git
+	depends = ghc-libs
+	depends = haskell-gitrev
 	depends = haskell-graphviz
-	depends = haskell-parsec
+	depends = haskell-raw-strings-qq
+	depends = haskell-yaml
 	provides = erd
-	source = erd::git+https://github.com/BurntSushi/erd.git
-	md5sums = SKIP
+	conflicts = erd
+	options = !emptydirs
+	source = git+https://github.com/BurntSushi/erd.git
+	sha256sums = SKIP
 
 pkgname = erd-git
-
