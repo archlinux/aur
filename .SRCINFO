@@ -9,6 +9,7 @@ pkgbase = python-npyosmium
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = protozero
 	depends = python
 	depends = libosmium
 	depends = pybind11
