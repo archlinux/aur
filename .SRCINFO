@@ -1,17 +1,17 @@
 pkgbase = python-parse_type
 	pkgdesc = simplifies to build parse types based on the parse module
-	pkgver = 0.6.0
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/jenisys/parse_type
 	arch = any
-	license = BSD
+	license = MIT
 	makedepends = python
 	makedepends = python-distribute
 	depends = python
-	depends = python-parse>=1.6
-	depends = python-six
-	source = parse_type-0.6.0.tar.gz::https://github.com/jenisys/parse_type/archive/v0.6.0.tar.gz
-	md5sums = ab09de81bd748c66376abe9e5f12faf7
-	sha256sums = b20e386a8091ba9a37f706827a5a3b81df2d7c323f886ade5f27b0c0af3e9e23
+	depends = python-parse>=1.18.0
+	depends = python-six>=1.15
+	source = parse_type-0.6.2.tar.gz::https://github.com/jenisys/parse_type/archive/v0.6.2.tar.gz
+	md5sums = c26e2c8f92cff75cc7339e9d178565e2
+	sha256sums = 2e839d5b4e588f92f4986948e101ac62cdc9d3a476bfc96f711dfaf85dc722a4
 
 pkgname = python-parse_type
