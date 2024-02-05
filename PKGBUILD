@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.27
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-module-locate'
-pkgver='1.79'
+pkgver='1.80'
 pkgrel='1'
 pkgdesc="locate modules in the same fashion as require and use"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl')
+depends=('perl>=5.8.8')
 makedepends=()
-url='http://search.mcpan.org/dist/Module-Locate'
-source=('http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/Module-Locate-1.79.tar.gz')
-md5sums=('e76c817b0c3096b9e58e57887e7b81b1')
-sha512sums=('5c5029c54d82e91821a07274cdf6465f1f4c6ab443f0f3a6283d2177cb0097f164ba52edab3c0b364d4eb926ea50bf4632ab1f9039ed2336559f89dade9545c2')
-_distdir="Module-Locate-1.79"
+url='https://metacpan.org/release/Module-Locate'
+source=('http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/Module-Locate-1.80.tar.gz')
+md5sums=('22b1d51200c35b6bc276c1e70bbb8ab3')
+sha512sums=('b917d871fe84ae5e362543957bad2da22416dce5d82bf31764900893a6924b7e6c59785aa85af08ed01d5cd30a240665af3d4e57968e41d2c7fc05e540e46422')
+_distdir="Module-Locate-1.80"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
