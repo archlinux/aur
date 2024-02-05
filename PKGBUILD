@@ -35,7 +35,7 @@ makedepends=(
 _commit="d52ef735146a58016f870322adfb901ee1d95f6c" # $pkgver
 source=(
   "${_pkg}::git+${url}.git#commit=${_commit}"
-  "${_pkg}.json"
+  "${_pkg}_policy.json"
 )
 sha512sums=(
   'SKIP'
