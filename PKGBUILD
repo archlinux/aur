@@ -1,26 +1,23 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=web-os-dev-manager-bin
-pkgver=1.12.1
+pkgver=1.12.3
 pkgrel=1
 pkgdesc="Device/DevMode Manager for webOS TV"
 arch=('x86_64')
 url="https://github.com/webosbrew/dev-manager-desktop"
-license=('Apache')
+license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'hicolor-icon-theme'
-    'pango'
-    'cairo'
-    'libsoup'
-    'gdk-pixbuf2'
-    'webkit2gtk'
     'gtk3'
+    'webkit2gtk'
+    'libsoup'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
 )
-sha256sums=('80eb27247b9b74b2acca164d1ccd69f174c6259efab65bc3559bd9aee32c7077')
+sha256sums=('4b232d35ee57fdb7bb173be48d6dca8884e3cecfccb1fc660d1fa87c82f0561e')
 build() {
     bsdtar -xf "${srcdir}/data.tar.gz"
 }

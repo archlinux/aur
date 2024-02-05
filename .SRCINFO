@@ -1,20 +1,17 @@
 pkgbase = web-os-dev-manager-bin
 	pkgdesc = Device/DevMode Manager for webOS TV
-	pkgver = 1.12.1
+	pkgver = 1.12.3
 	pkgrel = 1
 	url = https://github.com/webosbrew/dev-manager-desktop
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	depends = hicolor-icon-theme
-	depends = pango
-	depends = cairo
-	depends = libsoup
-	depends = gdk-pixbuf2
-	depends = webkit2gtk
 	depends = gtk3
-	provides = web-os-dev-manager=1.12.1
+	depends = webkit2gtk
+	depends = libsoup
+	provides = web-os-dev-manager=1.12.3
 	conflicts = web-os-dev-manager
-	source = web-os-dev-manager-1.12.1.deb::https://github.com/webosbrew/dev-manager-desktop/releases/download/v1.12.1/web-os-dev-manager_1.12.1_amd64.deb
-	sha256sums = 80eb27247b9b74b2acca164d1ccd69f174c6259efab65bc3559bd9aee32c7077
+	source = web-os-dev-manager-1.12.3.deb::https://github.com/webosbrew/dev-manager-desktop/releases/download/v1.12.3/web-os-dev-manager_1.12.3_amd64.deb
+	sha256sums = 4b232d35ee57fdb7bb173be48d6dca8884e3cecfccb1fc660d1fa87c82f0561e
 
 pkgname = web-os-dev-manager-bin
