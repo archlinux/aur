@@ -5,8 +5,8 @@
 
 pkgbase=gradle7
 pkgname=('gradle7' 'gradle7-doc' 'gradle7-src')
-pkgver=7.6.3
-pkgrel=2
+pkgver=7.6.4
+pkgrel=1
 pkgdesc='Powerful build system for the JVM'
 url='https://gradle.org/'
 arch=('any')
@@ -16,11 +16,11 @@ makedepends=('git' 'asciidoc' 'xmlto' 'groovy' 'java-environment=11')
 source=(https://services.gradle.org/distributions/${pkgbase%7}-${pkgver}-src.zip
         https://services.gradle.org/distributions/${pkgbase%7}-${pkgver}-all.zip
         ${pkgbase%7}.sh)
-sha256sums=('5ba558d8001608f3285d16f2f972e95545d9593858e677498666b9aa7a1059e5'
-            '6001aba9b2204d26fa25a5800bb9382cf3ee01ccb78fe77317b2872336eb2f80'
+sha256sums=('e8c0361bb14e27cced3ddb8335215b6cb19e5ea5debac4a667d7c33e4d514421'
+            'fe696c020f241a5f69c30f763c5a7f38eec54b490db19cd2b0962dda420d7d12'
             '6f3472486278252417af49196847ba465b56819d286658fcdf918687f89ee032')
-sha512sums=('cb2dc9bdebfceea9914720725af01f9a65144a699d86d525e6538019a38017238579624303a84d705f5b2f39141dd95152534470071e8653f5f2394fbae1e7b8'
-            '9065cce289f89cb84bc5d48f06583db8487e92db054957d62504b2c3dcb92d93aacd662c659f13d98376e447de306399122df9afb6e73ff26380f9c9f527eeb3'
+sha512sums=('2f4e77022c959141f187a05c7431ad596118baf379a991d25ecadc18a0f9a9832b195d5bcdb7b36d4ef9967c009fc95896eed4a5304e14e804ea5c03f1d2846e'
+            'b23287647cfce49ff605cc58e06b19685e86176f37f15b2be64a529eaccf1b8277a71688c74f7ede3ad1d69edbb99f804c27b831b348bc2c52643e10ebe60d28'
             'a50b6cf8281b56b80f55a20ac9316e1eed6887da1d191ad575dec140c9819711644d7077c4dc693b8cb0f1b08ceba0033ba88b5ad138d33ffb73b786c0d4bf81')
 
 prepare() {
