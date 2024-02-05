@@ -27,9 +27,11 @@ prepare() {
 }
 
 package() {
-	install -d $pkgdir/opt/$pkgname/
+	install -vd $pkgdir/opt/$pkgname/
 	cp -av $srcdir/app $pkgdir/opt/$pkgname/
 	find . -name "icon.png" -exec install -Dm644 {} $pkgdir/usr/share/pixmaps/$pkgname.png \;
-	install -Dm644 $pkgname.desktop -t $pkgdir/usr/share/applications/
-	echo -e "#!/bin/bash\nelectron6 /opt/$pkgname/app" | install -Dm755 /dev/stdin $pkgdir/usr/bin/$pkgname
+	install -vDm644 $pkgname.desktop -t $pkgdir/usr/share/applications/
+	printf "#!/bin/sh
+exec electron6 /opt/$pkgname/app \"\$@\"
+" | install -vDm755 /dev/stdin $pkgdir/usr/bin/$pkgname
 }
