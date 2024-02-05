@@ -4,20 +4,23 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=gnuplot-headless
-pkgver=5.4.10
+pkgver=6.0.0
 pkgrel=1
-pkgdesc="Plotting package which outputs to PostScript, PNG, GIF, and others, without any X or latex depencies." 
+pkgdesc='Plotting package which outputs to PostScript, PNG, GIF, and others, without X deps'
 arch=('i686' 'x86_64' 'aarch64' 'aarch32') 
 url='http://www.gnuplot.info'
 license=('custom') 
-depends=('readline' 'lua' 'ncurses')
-makedepends=()
+depends=(gcc-libs
+         glibc
+         lua
+         readline)
+makedepends=(texlive-latexextra)
 provides=('gnuplot')
 conflicts=('gnuplot')
 options=('!makeflags')
 source=("http://downloads.sourceforge.net/sourceforge/gnuplot/gnuplot-$pkgver.tar.gz"
         "lua53_compat.patch")
-sha256sums=('975d8c1cc2c41c7cedc4e323aff035d977feb9a97f0296dd2a8a66d197a5b27c'
+sha256sums=('635a28f0993f6ab0d1179e072ad39b8139d07f51237f841d93c6c2ff4b1758ec'
             'bfd8a61abbf4491c74225cb9fd252619d4fc29751838bcb4c0639ffe05a00695')
 
 prepare() {
@@ -35,22 +38,18 @@ build() {
               --libexecdir=/usr/bin \
               --with-gihdir=/usr/share/gnuplot \
               --with-readline=gnu \
+              --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
               --disable-x11-mbfonts \
               --disable-x11-external \
               --disable-wxwidgets \
-              --without-latex \
               --without-cairo \
               --with-qt=no \
               --without-libcerf \
               --disable-raise-console \
               --with-x=no \
               --with-aquaterm=no \
-              --with-linux-vga=no \
-              --with-ggi=no \
               --with-gd=no
-
 #              --with-bitmap-terminals \
-
   make pkglibexecdir=/usr/bin
 }
 
