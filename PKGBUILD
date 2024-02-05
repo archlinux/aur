@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-io-zlib'
-pkgver='1.10'
+pkgver='1.14'
 pkgrel='1'
 pkgdesc="IO:: style interface to Compress::Zlib"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl')
+depends=('perl>=0')
 makedepends=()
-url='http://search.cpan.org/dist/IO-Zlib'
-source=('http://search.cpan.org/CPAN/authors/id/T/TO/TOMHUGHES/IO-Zlib-1.10.tar.gz')
-md5sums=('078a9387009b928068f70759e61bd08f')
-sha512sums=('e40fd2e24bc6fc15a39774e94bea8869db503b9c8d2af14389e7d8e29a623a0f0d46939fa2490d743e5def074595fdbcbd9fc072a6351fe5636693476b017dd9')
-_distdir="IO-Zlib-1.10"
+url='https://metacpan.org/release/IO-Zlib'
+source=('http://search.cpan.org/CPAN/authors/id/T/TO/TOMHUGHES/IO-Zlib-1.14.tar.gz')
+md5sums=('e628c00af8459d931b47a734b082e2aa')
+sha512sums=('b638be7f4be266035a029ea6553b782f8bb6e3876e371cebeab60c975b3faca722d20c90e58167dcdae77fb0329271fbf45aa225e79ad45934735b3017e33237')
+_distdir="IO-Zlib-1.14"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
