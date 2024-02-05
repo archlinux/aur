@@ -1,7 +1,6 @@
 # Only necessary file.
-
 *
 !PKGBUILD
 !.SRCINFO
 !.gitignore
-!wiliwili.sh
+
