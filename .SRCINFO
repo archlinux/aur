@@ -1,7 +1,7 @@
 pkgbase = vivaldi-autoinject-custom-js-ui
 	pkgdesc = manage custom js UI mods for the vivaldi web browser
 	pkgver = 2023.09.05.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/budlabs/vivaldi-autoinject-custom-js-ui
 	arch = any
 	license = BSD
