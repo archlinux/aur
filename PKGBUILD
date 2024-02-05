@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=R2jags
-_pkgver=0.7-1
+_pkgver=0.7-1.1
 pkgname=r-${_pkgname,,}
-pkgver=0.7.1
-pkgrel=4
+pkgver=0.7.1.1
+pkgrel=1
 pkgdesc="Using R to Run 'JAGS'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -21,7 +21,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3b097261c0b20b89a021bbc5087523a24f17249fa14c527cd54c5e5b2970226a')
+sha256sums=('d4c10ea87ce5456c5c3843cba03e47f088e5773733cfc17f287c5e86dc830d17')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
