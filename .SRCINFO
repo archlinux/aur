@@ -1,0 +1,19 @@
+pkgbase = tailor-gui-git
+	pkgdesc = Graphical client for tailord (part of tuxedo-rs)
+	pkgver = tailor.v0.3.0.r18.f7fb6e4
+	pkgrel = 1
+	url = https://github.com/AaronErhardt/tuxedo-rs/
+	arch = x86_64
+	groups = tuxedo-rs
+	license = GPL2
+	makedepends = cargo
+	makedepends = meson
+	makedepends = git
+	depends = tailord
+	depends = gtk4
+	depends = libadwaita
+	provides = tailor-gui
+	source = tailor-gui-git::git+https://github.com/AaronErhardt/tuxedo-rs/
+	sha256sums = SKIP
+
+pkgname = tailor-gui-git
