@@ -2,46 +2,59 @@
 pkgname=flashpoint-launcher
 _pkgname="Flashpoint Launcher"
 pkgver=12.1.1
-pkgrel=2
+_electronversion=19
+_nodeversion=16
+pkgrel=3
 pkgdesc="A desktop application used to browse, manage and play games from Flashpoint Archive"
 arch=('x86_64')
 url="http://bluemaxima.org/flashpoint/"
 _ghurl="https://github.com/FlashpointProject/launcher"
 license=('MIT')
-conflicts=("${pkgname}" "${pkgname%-launcher}")
+conflicts=("${pkgname}")
 depends=(
-    'electron19'
     'python'
-    'flashpoint'
+    'libnss_nis'
+    'gtk3'
 )
 makedepends=(
     'gendesk'
-    'npm>=8'
-    'nodejs>=16.20.1'
+    'npm'
+    'nvm'
     'rust'
     'yarn'
     'git'
+    'gcc'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${_ghurl}#tag=${pkgver}"
-    "${pkgname}.sh"
+    "${pkgname}.git::git+${_ghurl}.git#tag=${pkgver}"
 )
-sha256sums=('SKIP'
-            '128a42c87f7d95279ea26f53f3c4091f3471230fb92fdd63dfa8c61b109db8ee')
+sha256sums=('SKIP')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
+}
 build() {
+    _ensure_local_nvm
     gendesk -q -f -n --categories "Game" --name "${_pkgname}" --exec "${pkgname}"
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    sed "s|PUBLISH=true|PUBLISH=false|g" -i package.json
-    sed "2i process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';" -i build/main/index.js
-    yarn --cache-folder "${srcdir}/npm-cache" 
-    sed 's|"deb", ||g' -i gulpfile.js
-    yarn release:linux
+    cd "${srcdir}/${pkgname}.git"
+    export npm_config_build_from_source=true
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export ELECTRONVERSION="${_electronversion}"
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    export CARGO_HOME="${srcdir}/.cargo"
+    HOME="${srcdir}/.electron-gyp"
+    sed 's|"deb", "7z"|"AppImage"|g' -i gulpfile.js
+    yarn install --cache-folder "${srcdir}/.yarn_cache"    
+    yarn run release:linux
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/"{extern,lang,licenses,resources} "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname}",usr/bin}
+    cp -r "${srcdir}/${pkgname}.git/dist/linux-unpacked/"* "${pkgdir}/opt/${pkgname}"
+    ln -sf "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
