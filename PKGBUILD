@@ -3,7 +3,7 @@
 # Maintainer: David Hummel <david dot hummel at gmail point com>
 
 pkgname=('mod_tile-git' 'renderd-git')
-pkgver=0.7.0.r18.gd6309f6
+pkgver=0.7.0.r21.g22a13e8
 pkgrel=1
 pkgdesc='A daemon and apache module for rendering and serving Mapnik raster tiles'
 arch=('i686' 'x86_64')
@@ -25,8 +25,7 @@ sha256sums=('SKIP'
             'cc450b47539d8a3e0d3d78634c78b0019a15097d2fb4e86fa3332957abd82d89')
 
 pkgver() {
-  cd mod_tile || exit
-  git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  git -C mod_tile describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -66,8 +65,9 @@ package_mod_tile-git() {
   install -dm755 "$pkgdir"/usr/share/renderd
   cp -av "$srcdir"/mod_tile/utils/example-map "$pkgdir"/usr/share/renderd/example-map
 
-  # "/etc/renderd.conf", "/usr/bin", "/usr/share/man" & "/var" are contained in/handled by "renderd" package
-  rm -rf "$pkgdir"/etc/renderd.conf "$pkgdir"/usr/bin "$pkgdir"/usr/share/man "$pkgdir"/var
+  # "/etc/renderd.conf", "/usr/bin", "/usr/share/man" & "/var" are contained in "renderd" package
+  cd "$pkgdir" || return
+  rm -rf etc/renderd.conf usr/bin usr/share/man var
 }
 
 package_renderd-git() {
@@ -87,9 +87,8 @@ package_renderd-git() {
   # License
   install -Dm644 "$srcdir"/mod_tile/COPYING "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 
-  # The creation of "/var/cache/renderd/tiles" & "/var/run/renderd" will be handled by "renderd.tmpfiles"
-  rm -rf "$pkgdir"/var
-
+  # "/var/cache/renderd/tiles" & "/var/run/renderd" will be handled by "renderd.tmpfiles"
   # "/etc/httpd" & "/usr/lib/httpd" are contained in "mod_tile" package
-  rm -rf "$pkgdir"/etc/httpd "$pkgdir"/usr/lib/httpd
+  cd "$pkgdir" || return
+  rm -rf var etc/httpd usr/lib/httpd
 }
