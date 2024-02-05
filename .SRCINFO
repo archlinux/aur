@@ -1,0 +1,15 @@
+pkgbase = fastdnaml
+	pkgdesc = A tool for construction of phylogenetic trees of DNA sequences using maximum likelihood https://doi.org/10.1093/bioinformatics/10.1.41
+	pkgver = 1.2.2
+	pkgrel = 0
+	url = https://www.life.illinois.edu/gary/programs/fastDNAml.html
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	depends = bash
+	source = fastdnaml-1.2.2.tgz::https://www.life.illinois.edu/gary/programs/fastDNAml/fastDNAml_1.2.2.tar.gz
+	sha1sums = 78197cbd760163f65085ac80c36d4286a1f29e34
+
+pkgname = fastdnaml
