@@ -14,11 +14,24 @@ depends=(
 );
 optdepends=(
 );
-validpgpkeys=('9E646BB0630C8FD18ACD15541B93E6A766CD229D')
+validpgpkeys=(
+  '9E646BB0630C8FD18ACD15541B93E6A766CD229D' #madara125 GPGKey
+  '2B9D22B41F2AF1042BFCE73A3CA0B9DF1BE7CE09' #MrHacker GPGKey
+)
 
-source=("https://packages.wazuh.com/4.x/yum/${pkgname}-${_prodver}.x86_64.rpm")
+source=(
+  "https://packages.wazuh.com/4.x/yum/${pkgname}-${_prodver}.x86_64.rpm"
+  "wazuh-manager-4.7.0-1.x86_64.rpm.sig"
+)
 
-sha256sums=('07ec30b23825a74210345b74bf8b971b82aa6e2e40aa61d495a215eea5762d5c')
+backup=(
+  'var/ossec/etc/client.keys'
+  'var/ossec/etc/local_internal_options.conf'
+  'var/ossec/etc/ossec.conf'
+)
+
+sha512sums=('c60d6735209348871437e5092bce930299ce168cc7eb5f1652efe77118a9a9c1993e290682f92f48749f541fbea4528dced00208a916f5941ac2fe1c54af7bd5'
+            'SKIP')
 
 install=$pkgname.install
 
