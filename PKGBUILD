@@ -9,30 +9,37 @@
 
 ## basic info
 _pkgname="fairy-stockfish"
-pkgname="$_pkgname${_pkgtype:-}"
+pkgbase="$_pkgname${_pkgtype:-}"
 pkgver=14.0.1
-pkgrel=4
-pkgdesc="A chess engine derived from Stockfish with support for fairy chess and other variants"
-url="https://github.com/ianfab/Fairy-Stockfish"
+pkgrel=5
+pkgdesc="Chess engine with support for fairy chess and other variants"
+url="https://github.com/fairy-stockfish/Fairy-Stockfish"
 arch=('i686' 'x86_64' 'aarch64')
 license=('GPL-3.0-only')
 
+pkgname=(
+  "$_pkgname${_pkgtype:-}"
+  "python-pyffish${_pkgtype:-}"
+)
+
 # main package
 _main_package() {
-  optdepends+=(
-    'polyglot-winboard: For xboard support'
+  makedepends=(
+    'git'
+    'python-build'
+    'python-installer'
+    'python-setuptools'
+    'python-wheel'
   )
-
-  if [[ "${_build_git::1}" == "t" ]] || [[ "${_build_avx::1}" == "t" ]] ; then
-    provides+=(stockfish="${pkgver%%.r*}")
-    conflicts+=(stockfish)
-  fi
 
   if [ "${_build_git::1}" != "t" ] ; then
     _main_stable
   else
     _main_git
   fi
+
+  source+=("fairyfishgui"::"git+https://github.com/fairy-stockfish/FairyFishGUI.git")
+  sha256sums+=('SKIP')
 }
 
 # stable package
@@ -40,14 +47,12 @@ _main_stable() {
   _tag="fairy_sf_${pkgver//./_}_xq"
   _pkgsrc="Fairy-Stockfish-$_tag"
   _pkgext="tar.gz"
-  source=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/refs/tags/$_tag.$_pkgext")
-  sha256sums=('53914fc89d89afca7cfcfd20660ccdda125f1751f59a68b1f3ed1d4eb6cfe805')
+  source+=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/refs/tags/$_tag.$_pkgext")
+  sha256sums+=('53914fc89d89afca7cfcfd20660ccdda125f1751f59a68b1f3ed1d4eb6cfe805')
 }
 
 # git package
 _main_git() {
-  makedepends+=('git')
-
   _pkgsrc="$_pkgname"
   source+=("$_pkgsrc"::"git+$url.git")
   sha256sums+=('SKIP')
@@ -74,29 +79,37 @@ build() {
     export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
     export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
   fi
+  CXXFLAGS+=" -DLARGEBOARDS"
+  CXXFLAGS+=" -DPRECOMPUTED_MAGICS"
+  CXXFLAGS+=" -DNNUE_EMBEDDING_OFF"
+  CXXFLAGS+=" -DALLVARS"
+  CXXFLAGS+=" -DNDEBUG"
+
+  (
+    printf "\nStep 1. Building python module ...\n"
+    cd "$_pkgsrc"
+    python -m build --wheel --no-isolation --skip-dependency-check
+  )
 
   # upstream stockfish / fairy-stockfish build scripts detect and force-enable cpu features,
   # ignoring user CFLAGS and CXXFLAGS, producing binaries that are unusable on some computers.
   #
   # The following replicates `make profile-build` without cpu-detection.
   cd "$_pkgsrc/src"
-  _make=(make 'ARCH=" "')
-
-  CXXFLAGS+=" -DLARGEBOARDS"
-  CXXFLAGS+=" -DALLVARS"
+  local _make=(make 'ARCH=" "')
 
   # "${_make[@]}" net
-  printf "\nStep 1/4. Building instrumented executable ...\n"
+  printf "\nStep 2. Building instrumented executable ...\n"
   mkdir -p profdir
   "${_make[@]}" \
     EXTRACXXFLAGS='-fprofile-generate=profdir' \
     EXTRALDFLAGS='-lgcov' \
     all
 
-  printf "\nStep 2/4. Running benchmark for pgo-build ...\n"
+  printf "\nStep 3. Running benchmark for pgo-build ...\n"
   ./fairy-stockfish bench > PGOBENCH.out
 
-  printf "\nStep 3/4. Building optimized executable ...\n"
+  printf "\nStep 4. Building optimized executable ...\n"
 
   "${_make[@]}" objclean
   "${_make[@]}" \
@@ -104,14 +117,49 @@ build() {
     EXTRALDFLAGS='-lgcov' \
     all
 
-  printf "\nStep 4/4. Deleting profile data ...\n"
-  "${_make[@]}" profileclean
+  #printf "\nStep 5. Deleting profile data ...\n"
+  #"${_make[@]}" profileclean
 }
 
-package() {
+_package_python-pyffish() {
+  pkgdesc="Python bindings for fairy-stockfish variant chess engine"
+  depends=(
+    'python'
+    'python-pysimplegui'
+    "fairy-stockfish${_pkgtype:-}"
+  )
+
+  cd "$_pkgsrc"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  # fairyfishgui
+  local _fairyfishgui="$pkgdir/usr/bin/fairyfishgui"
+  install -Dm755 /dev/stdin "$_fairyfishgui" <<END
+#!/usr/bin/env python
+END
+  cat "$srcdir/fairyfishgui/fairyfishgui.py" >> "$_fairyfishgui"
+}
+
+_package_fairy-stockfish() {
+  optdepends+=(
+    'polyglot-winboard: For xboard support'
+  )
+
+  if [[ "${_build_git::1}" == "t" ]] || [[ "${_build_avx::1}" == "t" ]] ; then
+    provides+=(fairy-stockfish="${pkgver%%.r*}")
+    conflicts+=(fairy-stockfish)
+  fi
+
   cd "$_pkgsrc/src"
   make PREFIX="$pkgdir/usr" install
 }
+
+for _p in "${pkgname[@]}"; do
+  eval "package_$_p() {
+    $(declare -f "_package_${_p%$_pkgtype}")
+    _package_${_p%$_pkgtype}
+  }"
+done
 
 # execute
 _main_package

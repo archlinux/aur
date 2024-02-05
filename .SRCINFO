@@ -1,14 +1,29 @@
 pkgbase = fairy-stockfish
-	pkgdesc = A chess engine derived from Stockfish with support for fairy chess and other variants
+	pkgdesc = Chess engine with support for fairy chess and other variants
 	pkgver = 14.0.1
-	pkgrel = 4
-	url = https://github.com/ianfab/Fairy-Stockfish
+	pkgrel = 5
+	url = https://github.com/fairy-stockfish/Fairy-Stockfish
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
-	optdepends = polyglot-winboard: For xboard support
-	source = fairy-stockfish-14.0.1.tar.gz::https://github.com/ianfab/Fairy-Stockfish/archive/refs/tags/fairy_sf_14_0_1_xq.tar.gz
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	source = fairy-stockfish-14.0.1.tar.gz::https://github.com/fairy-stockfish/Fairy-Stockfish/archive/refs/tags/fairy_sf_14_0_1_xq.tar.gz
+	source = fairyfishgui::git+https://github.com/fairy-stockfish/FairyFishGUI.git
 	sha256sums = 53914fc89d89afca7cfcfd20660ccdda125f1751f59a68b1f3ed1d4eb6cfe805
+	sha256sums = SKIP
 
 pkgname = fairy-stockfish
+	optdepends = polyglot-winboard: For xboard support
+	provides = fairy-stockfish=14.0.1
+	conflicts = fairy-stockfish
+
+pkgname = python-pyffish
+	pkgdesc = Python bindings for fairy-stockfish variant chess engine
+	depends = python
+	depends = python-pysimplegui
+	depends = fairy-stockfish
