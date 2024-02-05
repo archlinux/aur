@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/mivade/argparse_dataclass"
 license=('MIT')
 depends=(python-yaml)
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-wheel python-setuptools)
 source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
 sha256sums=('4840dc5c793bfeea4864371f21a341dcf6592047755f558c1c2814c0724b4119')
 
