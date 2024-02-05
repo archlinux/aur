@@ -2,7 +2,7 @@
 # Maintainer: Sergey Anisimov <sergey@festagency.com>
 pkgname=monitask
 pkgver=1.0
-pkgrel=23
+pkgrel=24
 pkgdesc="Monitask desktop linux time tracker"
 arch=("x86_64")
 url="https://www.monitask.com/Home/Download"
@@ -11,7 +11,7 @@ license=('unknown')
 source=("https://deskcap.blob.core.windows.net/deployment/Linux/arch/prod/${pkgname}-${pkgver}-${pkgrel}.tar.gz")
 options=('staticlibs')
 depends=('libxss' 'xterm' 'libxfixes')
-md5sums=('421c9938dd0e7f8440be1d322067f0a5')
+md5sums=('4f624459fb62bf1d33ee8d505a6afa50')
 
 package () {
   mkdir -p "${pkgdir}/opt/monitask"
