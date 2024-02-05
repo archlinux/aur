@@ -1,16 +1,16 @@
 pkgbase = perl-mp4-info
 	pkgdesc = Fetch info from MPEG-4 files (.mp4, .m4a, .m4p, .3gp)
 	pkgver = 1.13
-	pkgrel = 1
-	url = http://search.cpan.org/dist/MP4-Info
+	pkgrel = 2
+	url = https://metacpan.org/release/MP4-Info
 	arch = any
-	license = PerlArtistic
 	license = GPL
+	license = PerlArtistic
+	depends = perl
 	depends = perl-io-string
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/J/JH/JHAR/MP4-Info-1.13.tar.gz
-	md5sums = 39fbc8225b01ecbecf13ff9e4ab9b896
-	sha512sums = fea02073cb7a230bd6790264970efce8662c260ed1ee1ba48437380078255518d144248933a31f0203caf00d364721bb5139dc48d1e174e50d6886315f51f66c
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/J/JH/JHAR/MP4-Info-1.13.tar.gz
+	sha256sums = 54b4511544aae8257c1b03446dde2c8ec6b825ff91e08e5ce5ee7ab0b279fb68
 
 pkgname = perl-mp4-info
-
