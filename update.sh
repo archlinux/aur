@@ -24,6 +24,7 @@ done
 s_dir="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 cd $s_dir
 
+git branch -u origin/master
 git pull -p --ff-only
 
 build_ver=`grep ^pkgver= PKGBUILD | cut -d= -f2`
@@ -61,4 +62,7 @@ if [ "${initial}x" = "x" ] ; then
     gh release create --generate-notes "$new_ver-1" reposilite-$new_ver-1-any.pkg.tar.*
     rm reposilite-$new_ver.tar.*
     rm reposilite-$new_ver-1-any.pkg.tar.*
+    git branch -u aur/master
+    git push
+    git branch -u origin/master
 fi
