@@ -24,9 +24,9 @@ makedepends=(
 source=(
   https://download-mirror.savannah.gnu.org/releases/freetype/freetype-$pkgver.tar.xz{,.sig}
   0000-WPS-compatiblity.patch::https://gitlab.freedesktop.org/freetype/freetype/-/merge_requests/304/diffs.patch
-  0001-Enable-table-validation-modules.patch
-  0002-Enable-subpixel-rendering.patch
-  0003-Enable-long-PCF-family-names.patch
+  https://gitlab.archlinux.org/archlinux/packaging/packages/freetype2/-/raw/29bc205851a24e5bdabc6998e825aab4518eb6df/0001-Enable-table-validation-modules.patch
+  https://gitlab.archlinux.org/archlinux/packaging/packages/freetype2/-/raw/29bc205851a24e5bdabc6998e825aab4518eb6df/0002-Enable-subpixel-rendering.patch
+  https://gitlab.archlinux.org/archlinux/packaging/packages/freetype2/-/raw/29bc205851a24e5bdabc6998e825aab4518eb6df/0003-Enable-long-PCF-family-names.patch
 )
 b2sums=('cebc82180d9afaeb112a65ba78903d7bf7a9295a803166a033585ad2325add6023f05066852240c4665e56285345ba503b01ecd461d48f0478a8f3f56136988e'
         'SKIP'
