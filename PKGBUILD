@@ -20,7 +20,6 @@ sha512sums=('4ff9197f39bf5baf3c516d31473d20c31f2aa6b2e6ab1804da6f927519554f8b4d8
             '203d673279c95bf40c712259e5eed9f11dc27748f21bfe0d431fd3b74d7aaea702e66d095df54e7e40d0e94dca4ced52307e4fdeab8afda50d6f4ab7a2166305')
 
 package() {
-  # cd "${pkgname}-${pkgver}"
   install -Dm 644 "${srcdir}/${pkgname}-${pkgver}/jack_mixer_cc_client.py" "${pkgdir}/usr/bin/jack_mixer_cc/jack_mixer_cc_client.py"
   install -Dm 644 "${srcdir}/${pkgname}-${pkgver}/jack_mixer_cc.py" "${pkgdir}/usr/bin/jack_mixer_cc/jack_mixer_cc.py"
   install -Dm 644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
