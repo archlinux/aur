@@ -13,7 +13,7 @@ _fragment=${FRAGMENT:-#branch=main}
 } || {
   _CMAKE_FLAGS+=( -DWITH_USD=ON
                 -DUSD_ROOT=/usr )
-  depends+=( "usd=21.02" )
+  depends+=( "usd>=23.11" )
 }
 ((DISABLE_MATERIALX)) && {
   _CMAKE_FLAGS+=( -DWITH_MATERIALX=OFF )
@@ -57,7 +57,6 @@ source=("blender::git+https://github.com/blender/blender${_fragment}"
         'blender-translations::git+https://github.com/blender/blender-translations'
         'blender-dev-tools::git+https://github.com/blender/blender-dev-tools'
         SelectCudaComputeArch.patch
-        usd_python.patch #add missing python headers when building against python enabled usd.
         blender-sycl-path.patch
         force-draco1.patch
         force-draco2.patch
@@ -68,7 +67,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '87c5ee85032bab83510db426ab28f7acfba893aefea2b523f2fd78f3b62c5348'
-            '333b6fd864d55da2077bc85c55af1a27d4aee9764a1a839df26873a9f19b8703'
             '05e83a1c06790594fcd96f86bac7912d67c91ce9076cfc7088203b37f65949b1'
             'e3ff41269ab26f34e7762ee2754d238af375761131178917f61a97763f60ee0d'
             'a7c809d2b979e097a1853d42ad0edb6d9fa2ef51c99424257e5ec083ef76bb03')
@@ -88,7 +86,6 @@ prepare() {
   if [ ! -v _cuda_capability ] && grep -q nvidia <(lsmod); then
     git -C "$srcdir/blender" apply -v "${srcdir}"/SelectCudaComputeArch.patch
   fi
-  ((DISABLE_USD)) || git -C "$srcdir/blender" apply -v "${srcdir}"/usd_python.patch
   ((DISABLE_DRACO)) || git -C "$srcdir/blender" apply -v "${srcdir}"/force-draco1.patch
   ((DISABLE_DRACO)) || git -C "$srcdir/blender/scripts/addons" apply -v "${srcdir}"/force-draco2.patch
 }
