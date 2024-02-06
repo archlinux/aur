@@ -1,7 +1,7 @@
 pkgbase = jack_mixer_cc
 	pkgdesc = A companion for jack_mixer that provides CLI control for channel adjustments
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sen87/jack_mixer_cc
 	arch = any
 	license = GNU
@@ -9,7 +9,7 @@ pkgbase = jack_mixer_cc
 	depends = python-pillow
 	depends = python-jack-client
 	depends = jack_mixer
-	optdepends = python-dbus: for jack_mixer_cc_client.py notifications
+	optdepends = dbus-python: for jack_mixer_cc_client.py notifications
 	source = jack_mixer_cc-0.3.tar.gz::https://github.com/sen87/jack_mixer_cc/archive/refs/tags/v0.3.tar.gz
 	source = jack_mixer_cc.service
 	sha512sums = 4ff9197f39bf5baf3c516d31473d20c31f2aa6b2e6ab1804da6f927519554f8b4d8252b0649b9e6c9dd348e2c511391de096d1d2163d7854e17dba9a9d3b31b0

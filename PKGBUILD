@@ -2,13 +2,13 @@
 
 pkgname=jack_mixer_cc
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A companion for jack_mixer that provides CLI control for channel adjustments"
 arch=('any')
 url="https://github.com/sen87/jack_mixer_cc"
 license=('GNU')
 depends=('python-pillow' 'python-jack-client' 'jack_mixer')
-optdepends=('python-dbus: for jack_mixer_cc_client.py notifications')
+optdepends=('dbus-python: for jack_mixer_cc_client.py notifications')
 makedepends=('git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sen87/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
         "jack_mixer_cc.service")
