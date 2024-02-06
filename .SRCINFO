@@ -1,6 +1,6 @@
 pkgbase = android-x86-xz
 	pkgdesc = Library and command line tools for XZ and LZMA compressed files (android)
-	pkgver = 5.4.5
+	pkgver = 5.4.6
 	pkgrel = 1
 	url = https://tukaani.org/xz
 	arch = any
@@ -9,12 +9,14 @@ pkgbase = android-x86-xz
 	license = LGPL
 	makedepends = android-configure
 	makedepends = android-sdk-build-tools
+	makedepends = po4a
+	makedepends = doxygen
 	depends = android-ndk
 	options = !strip
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://tukaani.org/xz/xz-5.4.5.tar.gz
-	md5sums = d2bb81e1a1a7808352c4ca28622f5c72
+	source = https://github.com/tukaani-project/xz/archive/refs/tags/v5.4.6.tar.gz
+	md5sums = b7851aa372c79bba2520f0fbaa562acb
 
 pkgname = android-x86-xz
