@@ -1,6 +1,6 @@
 pkgbase = edencommon
 	pkgdesc = Shared library for Watchman and Eden projects
-	pkgver = 2024.01.29.00
+	pkgver = 2024.02.05.00
 	pkgrel = 1
 	url = https://github.com/facebookexperimental/edencommon
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = edencommon
 	provides = libedencommon_os.so
 	provides = libedencommon_utils.so
 	options = !lto
-	source = edencommon-2024.01.29.00.tar.gz::https://github.com/facebookexperimental/edencommon/archive/refs/tags/v2024.01.29.00.tar.gz
+	source = edencommon-2024.02.05.00.tar.gz::https://github.com/facebookexperimental/edencommon/archive/refs/tags/v2024.02.05.00.tar.gz
 	source = build-shared-library.patch
-	sha256sums = 10ae2bc4ca702f3d8d3bb316d22b1d3b2651e50a26a9c2d6d3973435d9016333
+	sha256sums = aadc3c1e3e5065996d04e5c3c56bb687b4765ecb496e42f3198bbcca513879f5
 	sha256sums = 000dfb9e316e486cb047fe4c5547b716033a99bb78a9eef0e7e4d860d017a092
 
 pkgname = edencommon
