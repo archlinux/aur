@@ -1,7 +1,7 @@
-# Maintainer: David Couzelis <drcouzelis@gmail.com>
+# Maintainer: David Couzelis <drcouzelis@protonmail.com>
 pkgname=kwestkingdom-git
 pkgver=0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A cute 2D turn based strategy game"
 arch=('i686' 'x86_64')
 url="https://github.com/drcouzelis/kwestkingdom"
@@ -10,7 +10,7 @@ depends=('allegro4')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git://github.com/drcouzelis/kwestkingdom")
+source=("git+https://github.com/drcouzelis/kwestkingdom")
 md5sums=('SKIP')
 
 build() {
