@@ -1,6 +1,11 @@
 # Maintainer: xiota / aur.chaotic.cx
 
 ## options
+: ${_build_largeboards:=true}
+: ${_build_clang:=true}
+
+: ${_build_pgo:=true}
+
 : ${_build_avx:=false}
 : ${_build_git:=false}
 
@@ -11,7 +16,7 @@
 _pkgname="fairy-stockfish"
 pkgbase="$_pkgname${_pkgtype:-}"
 pkgver=14.0.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Chess engine with support for fairy chess and other variants"
 url="https://github.com/fairy-stockfish/Fairy-Stockfish"
 arch=('i686' 'x86_64' 'aarch64')
@@ -31,6 +36,14 @@ _main_package() {
     'python-setuptools'
     'python-wheel'
   )
+
+  if [[ "${_build_clang::1}" == "t" ]] ; then
+    makedepends+=(
+      'clang'
+      'lld'
+      'llvm'
+    )
+  fi
 
   if [ "${_build_git::1}" != "t" ] ; then
     _main_stable
@@ -83,7 +96,9 @@ _main_git() {
 
 ## common functions
 prepare() {
-  sed -e 's/^EXE = stockfish$/EXE = fairy-stockfish/' \
+  sed -E \
+    -e 's/^EXE = stockfish$/EXE = fairy-stockfish/' \
+    -e '/^.*experimental-new-pass-manager.*/d' \
     -i "$_pkgsrc/src/Makefile"
 
   sed -E -e 's/^(\s*  ss <<) " XQ";$/\1 " LB";/' \
@@ -91,14 +106,18 @@ prepare() {
 }
 
 build() {
-  if [ "${_build_avx::1}" == "t" ] ; then
+  if [[ "${_build_avx::1}" == "t" ]] ; then
     export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
     export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
   fi
-  CXXFLAGS+=" -DLARGEBOARDS"
-  CXXFLAGS+=" -DPRECOMPUTED_MAGICS"
+
+  if [[ "${_build_largeboards::1}" == "t" ]] ; then
+    CXXFLAGS+=" -DLARGEBOARDS"
+    CXXFLAGS+=" -DPRECOMPUTED_MAGICS"
+    CXXFLAGS+=" -DALLVARS"
+  fi
+
   CXXFLAGS+=" -DNNUE_EMBEDDING_OFF"
-  CXXFLAGS+=" -DALLVARS"
   CXXFLAGS+=" -DNDEBUG"
 
   (
@@ -113,29 +132,57 @@ build() {
   #
   # The following replicates `make profile-build` without cpu-detection.
   cd "$_pkgsrc/src"
-  local _make=(make 'ARCH=" "')
 
-  # "${_make[@]}" net
-  printf "\nStep 2. Building instrumented executable ...\n"
-  mkdir -p profdir
-  "${_make[@]}" \
-    EXTRACXXFLAGS='-fprofile-generate=profdir' \
-    EXTRALDFLAGS='-lgcov' \
-    all
+  if [[ "${_build_clang::1}" == "t" ]] ; then
+    local _make=(make COMP=clang 'ARCH=" "')
+  else
+    local _make=(make COMP=gcc 'ARCH=" "')
+  fi
 
-  printf "\nStep 3. Running benchmark for pgo-build ...\n"
-  ./fairy-stockfish bench > PGOBENCH.out
+  if [[ "${_build_pgo::1}" == "t" ]] ; then
+    if [[ "${_build_clang::1}" == "t" ]] ; then
+      local _pgo_gen_options=(
+        EXTRACXXFLAGS="-fprofile-generate"
+        EXTRALDFLAGS=""
+      )
+      local _pgo_use_options=(
+        EXTRACXXFLAGS="-fprofile-use=$pkgname.prof"
+        EXTRALDFLAGS=""
+      )
+    else
+      local _pgo_gen_options=(
+        EXTRACXXFLAGS="-fprofile-generate=profdir"
+        EXTRALDFLAGS="-lgcov"
+      )
+      local _pgo_use_options=(
+        EXTRACXXFLAGS="-fprofile-use=profdir -fno-peel-loops -fno-tracer"
+        EXTRALDFLAGS="-lgcov"
+      )
+    fi
 
-  printf "\nStep 4. Building optimized executable ...\n"
+    # "${_make[@]}" net
+    printf "\nStep 2. Building instrumented executable ...\n"
+    mkdir -p profdir
+    "${_make[@]}" "${_pgo_gen_options[@]}" all
 
-  "${_make[@]}" objclean
-  "${_make[@]}" \
-    EXTRACXXFLAGS='-fprofile-use=profdir -fno-peel-loops -fno-tracer' \
-    EXTRALDFLAGS='-lgcov' \
-    all
+    printf "\nStep 3. Running benchmark for pgo-build ...\n"
+    ./fairy-stockfish bench > PGOBENCH.out
 
-  #printf "\nStep 5. Deleting profile data ...\n"
-  #"${_make[@]}" profileclean
+    if [[ "${_build_clang::1}" == "t" ]] ; then
+      llvm-profdata merge -output=$pkgname.prof *.profraw
+    fi
+
+    printf "\nStep 4. Building optimized executable ...\n"
+
+    "${_make[@]}" objclean
+    "${_make[@]}" "${_pgo_use_options[@]}" all
+
+    #printf "\nStep 5. Deleting profile data ...\n"
+    #"${_make[@]}" profileclean
+  else
+    printf "\nStep 2. Building standard executable ...\n"
+    "${_make[@]}" all
+  fi
 }
 
 _package_python-pyffish() {
@@ -166,23 +213,25 @@ _package_fairy-stockfish() {
     'xboard: GUI frontend'
   )
 
-  if [[ "${_build_git::1}" == "t" ]] || [[ "${_build_avx::1}" == "t" ]] ; then
+  if [ "$pkgname" != "$_pkgname" ] ; then
     provides+=(fairy-stockfish="${pkgver%%.r*}")
     conflicts+=(fairy-stockfish)
   fi
 
+  if [[ "${_build_largeboards::1}" == "t" ]] ; then
+    # xboard shogi
+    install -Dm755 "$srcdir/xbfs-shogi.sh" "$pkgdir/usr/bin/xbfs-shogi"
+    install -Dm644 "$srcdir/xbfs-shogi.desktop" -t "$pkgdir/usr/share/applications/"
+    install -Dm644 "$srcdir/xbfs-shogi.svg" -t "$pkgdir/usr/share/pixmaps/"
+
+    # xboard xiangqi
+    install -Dm755 "$srcdir/xbfs-xiangqi.sh" "$pkgdir/usr/bin/xbfs-xiangqi"
+    install -Dm644 "$srcdir/xbfs-xiangqi.desktop" -t "$pkgdir/usr/share/applications/"
+    install -Dm644 "$srcdir/xbfs-xiangqi.svg" -t "$pkgdir/usr/share/pixmaps/"
+  fi
+
   cd "$_pkgsrc/src"
   make PREFIX="$pkgdir/usr" install
-
-  # xboard shogi
-  install -Dm755 "$srcdir/xbfs-shogi.sh" "$pkgdir/usr/bin/xbfs-shogi"
-  install -Dm644 "$srcdir/xbfs-shogi.desktop" -t "$pkgdir/usr/share/applications/"
-  install -Dm644 "$srcdir/xbfs-shogi.svg" -t "$pkgdir/usr/share/pixmaps/"
-
-  # xboard xiangqi
-  install -Dm755 "$srcdir/xbfs-xiangqi.sh" "$pkgdir/usr/bin/xbfs-xiangqi"
-  install -Dm644 "$srcdir/xbfs-xiangqi.desktop" -t "$pkgdir/usr/share/applications/"
-  install -Dm644 "$srcdir/xbfs-xiangqi.svg" -t "$pkgdir/usr/share/pixmaps/"
 }
 
 for _p in "${pkgname[@]}"; do
