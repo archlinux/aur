@@ -1,7 +1,7 @@
 pkgbase = sixad-git
 	pkgdesc = Connects and manages various official PS3 controllers
 	pkgver = 1.5.1_93388dc
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/RetroPie/sixad
 	arch = x86_64
 	license = GPL2
@@ -12,8 +12,7 @@ pkgbase = sixad-git
 	makedepends = dbus
 	makedepends = libdbusmenu-glib
 	depends = bluez
-	depends = bluez-hcitool
-	depends = bluez-hciconfig
+	depends = bluez-deprecated-tools
 	source = git+https://github.com/RetroPie/sixad.git
 	sha512sums = SKIP
 
