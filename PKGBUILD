@@ -1,6 +1,6 @@
 pkgname=nyaa
-pkgver=0.4.0
-pkgrel=3
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="A tui tool for browsing and downloading torrents from nyaa.si"
 url='https://github.com/Beastwick18/nyaa/'
 arch=(x86_64)
