@@ -2,7 +2,7 @@
 
 pkgname=angryoxide
 _pkgname=AngryOxide
-pkgver=0.8.1
+pkgver=0.8.3
 pkgrel=1
 _patch=""
 pkgdesc='802.11 Attack Tool'
@@ -12,7 +12,7 @@ license=('Unspecified')
 makedepends=('cargo' 'git')
 provides=("${pkgname}")
 source=("${pkgname}-${pkgver}${_patch}::${url}/archive/refs/tags/v${pkgver}${_patch}.tar.gz")
-b2sums=('b418e351e8b06921748657b3a64e854e6880bbb0def46f089339204edab5c5f541669ca0ad46378fbe24442416ec4b8e3b29527532dfaa1a7810e1f8a1f5e0d2')
+b2sums=('1ef8e900d965599d5f9de32487ee47f6dc4acb4293e47e4c38ebd0b0a7589265a2c0a376ea6445843e64d54173159ecb0793fd889d6a7a5f25fdade3989f4b57')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}${_patch}"
