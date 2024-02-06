@@ -1,7 +1,7 @@
 # Maintainer: Davide Gerhard <rainbow@irh.it>
 
 pkgname=freedv-gui
-pkgver=1.9.7.2
+pkgver=1.9.8
 pkgrel=2
 pkgdesc="Digital Voice for Radio Amateurs"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ url="https://freedv.org/"
 depends=('libpulse' 'hamlib' 'sox' 'wxwidgets-gtk3' 'codec2-lpcnet' 'speex' 'libao' 'libsamplerate' 'gsm' 'libsndfile' 'lpcnetfreedv' 'portaudio')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/drowe67/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('22d817bcce915f37680eed36410318d9bf0a7188230289914b5098c284d85a02edb1667ffafcce93f3ee179e546d38b25d29fff7b082e85c1605f472f9aa1885')
+sha512sums=('7844eaafcabdcd003a90a95e65db5ffefeae6187bde496b07901e9ae560b89319c775c04e346654f08c8fe8bafac1248e48e730d0f165eef891dbbcd36a5c9f9')
 
 # we use portaudio because it discovers all
 # pipewire interfaces and applications
