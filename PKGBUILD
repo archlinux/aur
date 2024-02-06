@@ -2,7 +2,7 @@
 
 pkgname=fav-git
 _pkgname="${pkgname%-git}"
-pkgver=v0.1.9.r0.gb00e361
+pkgver=v0.1.10.r5.gf8b0c6c
 pkgrel=1
 pkgdesc='Back up your favorite bilibili resources with CLI'
 url="https://github.com/kingwingfly/${_pkgname}"
@@ -44,5 +44,13 @@ build() {
 
 package() {
 	cd "$_pkgname"
-	install -Dm755 "target/release/$_pkgname" -t "$pkgdir/usr/bin"
+	install -Dm755 "target/release/${_pkgname}" -t "$pkgdir/usr/bin/"
+
+	# completions
+	target/release/${_pkgname} completion bash > ${_pkgname}.bash
+	target/release/${_pkgname} completion fish > ${_pkgname}.fish
+	target/release/${_pkgname} completion zsh > _${_pkgname}
+	install -Dm644 ${_pkgname}.bash "$pkgdir"/usr/share/bash-completion/completions/${_pkgname}
+	install -Dm644 ${_pkgname}.fish "$pkgdir"/usr/share/fish/vendor_completions.d/${_pkgname}.fish
+	install -Dm644 _${_pkgname} "$pkgdir"/usr/share/zsh/site-functions/_${_pkgname}
 }
