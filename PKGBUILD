@@ -4,20 +4,32 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: Marcell Meszaros (MarsSeed) <marcell.meszaros@runbox.eu>
 
+_py="python"
+_py2="${_py}2"
 _pkgname=reallymakepkg
 pkgname="${_pkgname}-git"
-pkgver=1.1.r27.g6eb6748
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="System-independent makepkg"
-arch=(any)
+arch=(
+  any
+)
 _repo="https://github.com"
 _ns="themartiancompany"
 url="${_repo}/${_ns}/${_pkgname}"
 license=(
-  AGPL3)
-depends=()
+  AGPL3
+)
+depends=(
+  pacman
+)
 makedepends=(
-  git)
+  git
+)
+optdepends=(
+  "${_py}-pygments: colorized output and syntax highlighting"
+  "${_py2}-pygments: colorized output and syntax highlighting"
+)
 provides=(
   "${_pkgname}=${pkgver}")
 conflicts=(
@@ -46,22 +58,20 @@ _parse_ver() {
   _rev="$( \
     echo \
       "${_pkgver}" | \
-          awk \
-            -F '+' \
-            '{print $2}')"
+      awk \
+        -F '+' \
+        '{print $2}')"
   _commit="$( \
     echo \
       "${_pkgver}" | \
-          awk \
-            -F '+' \
-            '{print $3}')"
+      awk \
+        -F '+' \
+        '{print $3}')"
   _out=${_ver}
-  if [[ "${_rev}" != "" ]]; then
+  [[ "${_rev}" != "" ]] && \
     _out+=".r${_rev}"
-  fi
-  if [[ "${_commit}" != "" ]]; then
+  [[ "${_commit}" != "" ]] && \
     _out+=".${_commit}"
-  fi
   echo \
     "${_out}"
 }
