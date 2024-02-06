@@ -10,7 +10,7 @@ pkgname=osu-lazer-git
 _pkgname=osu
 pkgver=latest
 pkgrel=1
-pkgdesc="rhythm is just a *click* away!"
+pkgdesc="A free-to-win rhythm game. Rhythm is just a *click* away!"
 arch=('x86_64')
 url="https://osu.ppy.sh/"
 license=('MIT' 'custom:CC-BY-NC-4.0')
@@ -26,8 +26,8 @@ source=("git+https://github.com/ppy/osu.git"
 sha256sums=('SKIP'
             '30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244'
             'b645a8653c78b136c4934194b3dce390e854b3c90c43c889631b9ab3b77022af'
-            '0e117a17c394de80db9b9fdd526de3701d6de6ff1141e5fac57985f2573ae102'
-            'ee77425386d476f0f45d73e1ef3a0b5a2bbe8c1ad03716a5ff3e6f7afdad1458')
+            'c22099222c01f33979e17ec0575b864f018f5f416919f9ed1b2b99584a5d37d6'
+            '854a561086a89d84bd1826d90644f658128a506d93bb1f640a0a859432f585a8')
 
 pkgver() {
   cd "$srcdir/$_pkgname"

@@ -2,10 +2,12 @@
 Type=Application
 Version=1.5
 Name=osu!lazer
-GenericName=Rhythm game
-Comment=An open source, free-to-win rhythm game
+Comment=A free-to-win rhythm game. Rhythm is just a *click* away!
 Icon=osu-lazer
 Exec=osu-lazer %F
 Terminal=false
-MimeType=application/x-osu-beatmap-archive;application/x-osu-replay;application/x-osu-skin-archive;x-scheme-handler/osu;
+MimeType=application/x-osu-beatmap-archive;application/x-osu-skin-archive;application/x-osu-beatmap;application/x-osu-storyboard;application/x-osu-replay;x-scheme-handler/osu;
 Categories=Game;
+StartupNotify=true
+StartupWMClass=osu!
+SingleMainWindow=true
