@@ -1,0 +1,17 @@
+pkgbase = hyprdots-ctl
+	pkgdesc = CLI for Hyprdots Configurations ++ Hidden Gems
+	pkgver = v0.2.0.45.24020612
+	pkgrel = 1
+	url = https://github.com/kRHYME7/Hyprdots-ctl
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	makedepends = curl
+	depends = fzf
+	depends = tree
+	depends = ttf-jetbrains-mono-nerd
+	source = git+https://github.com/kRHYME7/Hyprdots-ctl.git
+	md5sums = SKIP
+
+pkgname = hyprdots-ctl
