@@ -2,7 +2,7 @@
 pkgname=arctis-monitor-bin
 pkgver=0.0.12
 _electronversion=26
-pkgrel=3
+pkgrel=4
 pkgdesc="Electron Tray application to view Battery Level of Arctis Headsets"
 arch=("x86_64")
 url="https://github.com/richrace/arctis-monitor"
@@ -21,11 +21,11 @@ source=(
 )
 sha256sums=('35f546aa8a23eb79527a1ff489fa9ab9d1412f69fe2b15e75e43efcfa1e844e9'
             'bd5c70f61f5c60d42bffbadd12de9a6e0f3272afe8d869e7251d4f0c6d67025d'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.zst"
 }
