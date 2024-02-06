@@ -13,7 +13,7 @@ md5sums=('SKIP')
 pkgver() { #! If someone might read this help me automate the pkgver please. tnx
   cd "$srcdir/Hyprdots-ctl" || return
   git fetch --tags
-  git describe --tags | sed 's/-/./g' # Replace hyphens with dots to conform to versioning standards
+  git describe --long --tags --always | sed 's/-/./g' # Replace hyphens with dots to conform to versioning standards
 }
 
 package() {
