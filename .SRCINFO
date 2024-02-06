@@ -1,20 +1,21 @@
 pkgbase = lameta
 	pkgdesc = The Metadata Editor for Transparent Archiving of language document materials
-	pkgver = 2.2.4_alpha
+	pkgver = 2.2.7_alpha
 	pkgrel = 1
 	url = https://github.com/onset/lameta
 	arch = x86_64
 	license = MIT
-	makedepends = jq
+	makedepends = asar
 	makedepends = npm
 	makedepends = yarn
-	makedepends = asar
 	depends = bash
 	depends = electron22
 	depends = nodejs-lts-hydrogen
-	source = https://github.com/onset/lameta/archive/refs/tags/v2.2.4-alpha.tar.gz
+	source = lameta-2.2.7_alpha::https://github.com/onset/lameta/archive/refs/tags/v2.2.7-alpha.tar.gz
 	source = lameta.desktop
-	sha256sums = 4db4a27efaaa67963fe1b5a10035607dfb169e258dccd52914e22ef1fa01bf7d
+	source = no_node_pin.patch
+	sha256sums = 82ac07eccb65f4e24166bcccf1fdacbf50788a011d6f2dc31be205104e1dda0f
 	sha256sums = 874e1acc986076e9c876c6ccd2efc7ee0dcda322733c018fb8e3d0bf010b8791
+	sha256sums = 7bc59aee62f8a77217d76ae42f6445ed51375f5c1c158c678aa56c208edbdc28
 
 pkgname = lameta

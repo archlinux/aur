@@ -1,7 +1,7 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail ðot com>
 # Partially adapted from https://github.com/wasta-linux/lameta-snap
 pkgname=lameta
-pkgver=2.2.4_alpha
+pkgver=2.2.7_alpha
 _electron=electron22
 pkgrel=1
 pkgdesc="The Metadata Editor for Transparent Archiving of language document materials"
@@ -14,38 +14,37 @@ depends=(
 	nodejs-lts-hydrogen
 )
 makedepends=(
-	jq # Used to fix version string
+	asar
 	npm
 	yarn
-	asar
 )
 source=(
-	"https://github.com/onset/${pkgname}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
-	'lameta.desktop'
+	"${pkgname}-${pkgver}::https://github.com/onset/${pkgname}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
+	"${pkgname}.desktop"
+  'no_node_pin.patch'
 )
-sha256sums=('4db4a27efaaa67963fe1b5a10035607dfb169e258dccd52914e22ef1fa01bf7d'
-            '874e1acc986076e9c876c6ccd2efc7ee0dcda322733c018fb8e3d0bf010b8791')
+sha256sums=('82ac07eccb65f4e24166bcccf1fdacbf50788a011d6f2dc31be205104e1dda0f'
+            '874e1acc986076e9c876c6ccd2efc7ee0dcda322733c018fb8e3d0bf010b8791'
+            '7bc59aee62f8a77217d76ae42f6445ed51375f5c1c158c678aa56c208edbdc28')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver//_/-}"
 	echo -e 'logFilters:\n  - code: "YN0013"\n    level: "discard"' >> .yarnrc.yml
-	tmp=$(mktemp)
-	jq --arg v "${pkgver//_/-}" '.version = $v' package.json > "$tmp" && mv "$tmp" test.json
-  export NODE_ENV=production
-	_ver="$(</usr/lib/${_electron}/version)"
-	yarn install --immutable
+	sed -i -e 's/translateChoice(s, this\.props\.field\.definition\.key)/translateChoice(s)/' \
+		src/components/ClosedChoiceEdit.tsx
+  echo "Applying patch to unpin node and yarn versions"
+  patch --forward --strip=1 --input="${srcdir}/no_node_pin.patch"
 }
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver//_/-}"
-	yarn run build
-	export NODE_ENV=production
-	_ver="$(</usr/lib/${_electron}/version)"
-	local i686=ia32 x86_64=x64
+  yarn
+  yarn build
+  yarn strings:compile
+  yarn install --frozen-lockfile
 	./node_modules/.bin/electron-builder \
-	  --linux --"${!CARCH}" --dir \
-    --config.electronDist=/usr/lib/"$_electron" \
-    --config.electronVersion="$_ver"
+	  --linux --x64 --dir \
+    --config.electronDist=/usr/lib/"$_electron"
 }
 
 package() {
@@ -60,10 +59,14 @@ package() {
   install -d "$pkgdir/usr/lib/$pkgname/"
   asar e "release/linux-unpacked/resources/app.asar" "$pkgdir/usr/lib/$pkgname/"
   rm -R "${pkgdir}/usr/lib/$pkgname/node_modules/ffprobe-static/bin/darwin"
+  rm -R "${pkgdir}/usr/lib/$pkgname/node_modules/ffprobe-static/bin/linux/ia32"
+  rm -R "${pkgdir}/usr/lib/$pkgname/node_modules/flatted/python/"
   install -Dm755 /dev/null "${pkgdir}/usr/bin/$pkgname"
   cat >>"${pkgdir}/usr/bin/$pkgname" <<EOD
 #! /usr/bin/sh
 exec $_electron /usr/lib/$pkgname "\$@"
 EOD
+	echo "This build dir is rather large:"
   du -h -d0 "$(dirname "$srcdir/../")"
+  echo "Maybe you should consider deleting it"
 }
