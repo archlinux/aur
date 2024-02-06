@@ -1,0 +1,23 @@
+pkgbase = ttf-ricty-nerd
+	pkgdesc = Japanese TrueType font for developers by mixing Inconsolata Nerd Font and Migu 1M.
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://rictyfonts.github.io/
+	install = ttf-ricty-nerd.install
+	arch = any
+	groups = nerd-fonts
+	license = OFL-1.1 AND IPA
+	makedepends = ttf-inconsolata-nerd>=3.1.1
+	makedepends = ttf-migu
+	makedepends = fontforge
+	depends = fontconfig
+	source = https://rictyfonts.github.io/files/ricty_generator.sh
+	source = ricty_generator.patch
+	source = OFL-1.1.txt
+	source = IPA_Font_License_Agreement_v1.0.txt
+	sha256sums = 86bf0fed84ef806690b213798419405d7ca2a1a4bed4f6a28b87c2e2d07ad60d
+	sha256sums = c9be49ed55e11da9fe379807eab6408d136599fafe6c2d62dec7a5d5bbe530b4
+	sha256sums = 29bd0cfd0fb2a45f9b057c834a057724bae1f63b525a8ac83d3e7525706d9f80
+	sha256sums = 4c84dd528ec3044638ec346fc1ee27cd1eb95dfc04cbc6a881b3ca7a7f517e54
+
+pkgname = ttf-ricty-nerd

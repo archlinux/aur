@@ -1,0 +1,204 @@
+--- ricty_generator.sh	2024-02-05 00:52:56.483228800 +0000
++++ ricty_nerd_generator.sh	2024-02-06 04:14:02.746359500 +0000
+@@ -2,7 +2,7 @@
+ 
+ #
+ # Ricty Generator
+-ricty_version="4.1.1"
++ricty_version="4.1.1; NF 3.1.1"
+ #
+ 
+ #
+@@ -59,6 +59,7 @@
+ # Set familyname
+ ricty_familyname="Ricty"
+ ricty_familyname_suffix=""
++nf_familyname_suffix="Nerd Font"
+ 
+ # Set ascent and descent (line width parameters)
+ ricty_ascent=835
+@@ -160,7 +161,7 @@
+             ;;
+         "n" )
+             echo "Option: Set fontfamily suffix: ${OPTARG}"
+-            ricty_familyname_suffix=`echo $OPTARG | tr -d ' '`
++            ricty_familyname_suffix="$OPTARG"
+             ;;
+         "w" )
+             echo "Option: Widen line space"
+@@ -287,6 +288,21 @@
+     trap "echo 'Abnormally terminated'; exit 3" HUP INT QUIT
+ fi
+ 
++# Set fontname, familyname
++ricty_nf_familyname=""
++ricty_discord_nf_familyname=""
++
++if [ "${ricty_familyname_suffix}" = "" ]
++then
++    ricty_nf_familyname="${ricty_familyname} ${nf_familyname_suffix}"
++	ricty_discord_nf_familyname="${ricty_familyname} Discord ${nf_familyname_suffix}"
++else
++    ricty_nf_familyname="${ricty_familyname} ${ricty_familyname_suffix} ${nf_familyname_suffix}"
++    ricty_discord_nf_familyname="${ricty_familyname} ${ricty_familyname_suffix} Discord ${nf_familyname_suffix}"
++fi
++ricty_nf_fontname=`echo ${ricty_nf_familyname} | tr -d ' '`
++ricty_discord_nf_fontname=`echo ${ricty_discord_nf_familyname} | tr -d ' '`
++
+ ########################################
+ # Generate script for modified Inconsolata
+ ########################################
+@@ -575,15 +591,15 @@
+ #!$fontforge_command -script
+ 
+ # Print message
+-Print("Generate Ricty")
++Print("Generate Ricty Nerd Font")
+ 
+ # Set parameters
+ inconsolata_list  = ["${tmpdir}/${modified_inconsolata_regular}", \\
+                      "${tmpdir}/${modified_inconsolata_bold}"]
+ migu1m_list       = ["${tmpdir}/${modified_migu1m_regular}", \\
+                      "${tmpdir}/${modified_migu1m_bold}"]
+-fontfamily        = "${ricty_familyname}"
+-fontfamilysuffix  = "${ricty_familyname_suffix}"
++nffontname        = "${ricty_nf_fontname}"
++nffamilyname      = "${ricty_nf_familyname}"
+ fontstyle_list    = ["Regular", "Bold"]
+ fontweight_list   = [400,       700]
+ panoseweight_list = [5,         8]
+@@ -606,19 +622,11 @@
+     Reencode("unicode")
+ 
+     # Set configuration
+-    if (fontfamilysuffix != "")
+-        SetFontNames(fontfamily + fontfamilysuffix + "-" + fontstyle_list[i], \\
+-                     fontfamily + " " + fontfamilysuffix, \\
+-                     fontfamily + " " + fontfamilysuffix + " " + fontstyle_list[i], \\
+-                     fontstyle_list[i], \\
+-                     copyright, version)
+-    else
+-        SetFontNames(fontfamily + "-" + fontstyle_list[i], \\
+-                     fontfamily, \\
+-                     fontfamily + " " + fontstyle_list[i], \\
+-                     fontstyle_list[i], \\
+-                     copyright, version)
+-    endif
++    SetFontNames(nffontname + "-" + fontstyle_list[i], \\
++                 nffamilyname, \\
++                 nffamilyname + " " + fontstyle_list[i], \\
++                 fontstyle_list[i], \\
++                 copyright, version)
+     SetTTFName(0x409, 2, fontstyle_list[i])
+     SetTTFName(0x409, 3, "FontForge 2.0 : " + \$fullname + " : " + Strftime("%d-%m-%Y", 0))
+     ScaleToEm(860, 140)
+@@ -704,13 +712,8 @@
+     AutoInstr()
+ 
+     # Save Ricty
+-    if (fontfamilysuffix != "")
+-        Print("Save " + fontfamily + fontfamilysuffix + "-" + fontstyle_list[i] + ".ttf")
+-        Generate(fontfamily + fontfamilysuffix + "-" + fontstyle_list[i] + ".ttf", "", 0x84)
+-    else
+-        Print("Save " + fontfamily + "-" + fontstyle_list[i] + ".ttf")
+-        Generate(fontfamily + "-" + fontstyle_list[i] + ".ttf", "", 0x84)
+-    endif
++    Print("Save " + nffontname + "-" + fontstyle_list[i] + ".ttf")
++    Generate(nffontname + "-" + fontstyle_list[i] + ".ttf", "", 0x84)
+     Close()
+ 
+     i += 1
+@@ -734,7 +737,7 @@
+ filename = \$argv[1]
+ characters = \$argv[2]
+ 
+-Print("Generate Ricty Discord")
++Print("Generate Ricty Discord Nerd Font")
+ 
+ # Enable all flags
+ flag_quotedbl="true"
+@@ -859,14 +862,16 @@
+ endif
+ inputfamily  = Strsub(input, 0, hyphen_index)
+ inputstyle   = Strsub(input, hyphen_index + 1)
++nffontname   = "${ricty_discord_nf_fontname}"
++nffamilyname = "${ricty_discord_nf_familyname}"
+ familysuffix = "Discord"
+ 
+ # Open file and set configuration
+ Open(filename)
+ Reencode("unicode")
+-SetFontNames(inputfamily + familysuffix + "-" + inputstyle, \
+-             \$familyname + " " + familysuffix, \
+-             \$familyname + " " + familysuffix + " " + inputstyle, \
++SetFontNames(nffontname + "-" + inputstyle, \\
++             nffamilyname, \\
++             nffamilyname + " " + inputstyle, \\
+              inputstyle)
+ SetTTFName(0x409, 3, "FontForge 2.0 : " + \$fullname + " : " + Strftime("%d-%m-%Y", 0))
+ 
+@@ -911,7 +916,7 @@
+ 
+ # 0 -> dotted 0 (Inconsolata's unused glyph)
+ if (flag_0 == "true")
+-    Select(65544);  Copy()
++    Select("zero.zero");  Copy()
+     Select(0u0030); Paste()
+ endif
+ 
+@@ -983,7 +988,7 @@
+ 
+ # r -> r of serif (Inconsolata's unused glyph)
+ if (flag_r == "true")
+-    Select(65542);  Copy()
++    Select("glyph21846");  Copy()
+     Select(0u0072); Paste()
+ endif
+ 
+@@ -1010,8 +1015,8 @@
+ endif
+ 
+ # Save Ricty Discord
+-Print("Save " + inputfamily + familysuffix + "-" + inputstyle + ".ttf")
+-Generate(inputfamily + familysuffix + "-" + inputstyle + ".ttf", "", 0x84)
++Print("Save " + nffontname + "-" + inputstyle + ".ttf")
++Generate(nffontname + "-" + inputstyle + ".ttf", "", 0x84)
+ Close()
+ 
+ Quit()
+@@ -1099,22 +1104,22 @@
+ $fontforge_command -script ${tmpdir}/${ricty_generator} \
+     2> $redirection_stderr || exit 4
+ $fontforge_command -script ${tmpdir}/${ricty_discord_generator} \
+-    ${ricty_familyname}${ricty_familyname_suffix}-Regular.ttf "${non_discorded_characters}" \
++    ${ricty_nf_fontname}-Regular.ttf "${non_discorded_characters}" \
+     2> $redirection_stderr || exit 4
+ $fontforge_command -script ${tmpdir}/${ricty_discord_generator} \
+-    ${ricty_familyname}${ricty_familyname_suffix}-Bold.ttf "${non_discorded_characters}" \
++    ${ricty_nf_fontname}-Bold.ttf "${non_discorded_characters}" \
+     2> $redirection_stderr || exit 4
+ $fontforge_command -script ${tmpdir}/${regular2oblique_converter} \
+-    ${ricty_familyname}${ricty_familyname_suffix}-Regular.ttf \
++    ${ricty_nf_fontname}-Regular.ttf \
+     2> $redirection_stderr || exit 4
+ $fontforge_command -script ${tmpdir}/${regular2oblique_converter} \
+-    ${ricty_familyname}${ricty_familyname_suffix}-Bold.ttf \
++    ${ricty_nf_fontname}-Bold.ttf \
+     2> $redirection_stderr || exit 4
+ $fontforge_command -script ${tmpdir}/${regular2oblique_converter} \
+-    ${ricty_familyname}${ricty_familyname_suffix}Discord-Regular.ttf \
++    ${ricty_discord_nf_fontname}-Regular.ttf \
+     2> $redirection_stderr || exit 4
+ $fontforge_command -script ${tmpdir}/${regular2oblique_converter} \
+-    ${ricty_familyname}${ricty_familyname_suffix}Discord-Bold.ttf \
++    ${ricty_discord_nf_fontname}-Bold.ttf \
+     2> $redirection_stderr || exit 4
+ 
+ # Remove temporary directory
+@@ -1125,5 +1130,5 @@
+ fi
+ 
+ # Exit
+-echo "Succeeded in generating Ricty!"
++echo "Succeeded in generating Ricty Nerd Font!"
+ exit 0
