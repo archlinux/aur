@@ -3,7 +3,7 @@
 pkgname=canonical-multipass
 _realname=multipass
 _builddir=_build
-pkgver=1.11.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="Multipass is a lightweight VM manager for Linux, Windows and macOS."
 arch=('x86_64')
@@ -45,4 +45,4 @@ package() {
 
 sha256sums=('SKIP'
             'f7aebd4ab185048ee10e8185ac230c8ac549ff29b2e52722fbf366ad6f3c6b59'
-            '8cc982b96a800c9779134a00e741c472da7c8e11183931ec30b184c314364dde')
+            '0d131fcba1b73775efc052bb7e7644aa893edddf5ae2f701b045fdbaa02ebd01')
