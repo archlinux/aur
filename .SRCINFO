@@ -1,7 +1,7 @@
 pkgbase = python-srsly
 	pkgdesc = Modern high-performance serialization utilities for Python
 	pkgver = 2.4.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/explosion/srsly
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = python-srsly
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = cython
+	depends = cython0
 	depends = python-catalogue
 	depends = python-pytest
 	depends = python-pytest-timeout
