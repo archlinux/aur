@@ -2,7 +2,7 @@
 pkgname=dicionario.js-bin
 pkgver=2.7.2
 _electronversion=26
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple dictionary in which you record your own words."
 arch=('x86_64')
 url="https://github.com/ArthurLobopro/dicionario.js"
@@ -18,11 +18,11 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('7908055fc91c0e6953563694f0167ae8e1962ae19cf6ccaeaabcc32147241acc'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.zst"
 }
