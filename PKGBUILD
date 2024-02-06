@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=siyuan-git
-pkgver=2.12.6.r0.g5088e03fc
+pkgver=2.12.7.r0.gb35b38dcd
 _electronversion=28
 _nodeversion=18
 pkgrel=1
@@ -39,10 +39,6 @@ pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
-_electronversion() {
-    cd "${srcdir}/${pkgname//-/.}/app"
-    cat package.json | grep '"electron"' | awk '{print $2}' | sed 's|"||g;s|,||g;s|\.| |g;s|^||g' | awk '{print $1}'
-}
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -55,7 +51,7 @@ build() {
         -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories "Utility" --name "${pkgname%-git}" --exec "${pkgname%-git} %U"
+    gendesk -q -f -n --categories "Office" --name "${pkgname%-git}" --exec "${pkgname%-git} %U"
     sed "2i Name[zh_CN]=思源笔记" -i "${srcdir}/${pkgname%-git}.desktop"
     cd "${srcdir}/${pkgname//-/.}/app"
     export npm_config_build_from_source=true
