@@ -35,7 +35,7 @@ build() {
 package() {
   if [ "${CARCH}" == "aarch64" ]; then
     cd "bun-linux-aarch64"
-    install -Dm755 "./bun-linux-aarch64/bun" "${pkgdir}/usr/bin/bun"
+    install -Dm755 "./bun" "${pkgdir}/usr/bin/bun"
   else
     cd "bun-linux-x64${_baseline}"
     install -Dm755 "./bun" "${pkgdir}/usr/bin/bun"
