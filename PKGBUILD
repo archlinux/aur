@@ -7,8 +7,8 @@
 # Contributor: G. Richard Bellamy <rbellamy@pteradigm.com>
 
 pkgname=flexget
-_name=Flexget
-pkgver=3.11.14
+_pkgname=Flexget
+pkgver=3.11.15
 pkgrel=1
 pkgdesc="Multipurpose automation tool for downloading media content from different sources"
 arch=(any)
@@ -84,12 +84,12 @@ source=(
   "flexget@.service"
 )
 sha256sums=(
-  '2c1e03a843224bd558e24c3a4d5d0329aa6d4e19be39beeb47e0a5ef6fa9784f'
+  '2d15815775ca41b107b18ee797594a60094a22c885d8717c0e32e3bc96be6067'
   '117de8d5cbe0ac53ecd3be3e579f2cfa62ef186ab36e382f857059380447c5aa'
   'aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a'
 )
 
-_archive="$_name-$pkgver"
+_archive="$_pkgname-$pkgver"
 
 build() {
   cd "$_archive"
