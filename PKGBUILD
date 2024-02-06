@@ -106,7 +106,7 @@ source=(
   "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "0001-${pkgbase}-${pkgver}-v${_kernel_arch_tag}.patch::https://github.com/archlinux/linux/compare/${_kernel_base_commit}..v${_kernel_arch_tag}.patch"
-  #"sched_numa_hop_mask.patch"
+  "sched_numa_hop_mask.patch::https://gitlab.com/alfredchen/linux-prjc/-/commit/58a9cabf63a961c5fc501cf1ade12e1dc6029642.patch"
 )
 
 validpgpkeys=(
@@ -118,7 +118,8 @@ b2sums=('080f19034a9f5519e3212c723492849f3a2e019c310615b40e636cad39c89369fd91fd1
         'd205c380b69acd2b6a57bce0245e0918e88af624aec3bd87b099da8b9759a6f9159693c30ab75d7b690913a21b0dbb0f14d8fc224991f9aca712d8d344212aa7'
         '8913572c6d14fd0079f8e7c109982746828c12c1e447701e8f60076c21a32c1b57efed16f3e1925edf63489ded99cda04c77319b8ae18ddb06e525eee37143d3'
         'd178dad69501967382d5c841f65e4f57651042bee8117041a9baa35ab3fa73af8174b8b999ae9e72ec381c52744ccaaabb77944d59f123c04b6ed5626432d843'
-        '58c08759eda76d427f8d85b3d72552564710b8ab7f36e0635d139ec7855165b0214f6499106e154859b6f66af47d02a50b950aefcae930c3306bb45c5b0fd378')
+        '58c08759eda76d427f8d85b3d72552564710b8ab7f36e0635d139ec7855165b0214f6499106e154859b6f66af47d02a50b950aefcae930c3306bb45c5b0fd378'
+        '07318d94a39ffe5fd252836a7a0d872c217bf57da25cab0411f04676273027763237b9eb8c83bf808c77e2f1b211469f740baf28fe8b6b739dcaf556b54a4ddb')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
@@ -165,12 +166,11 @@ prepare() {
   # https://bugzilla.kernel.org/show_bug.cgi?id=207173#c6
   scripts/config --disable CONFIG_KVM_WERROR
 
-  # https://gitlab.com/alfredchen/linux-prjc/-/issues/81
-  # Disable mellanox module
-  scripts/config --disable CONFIG_MLX5_CORE
-
   echo "Applying patch ${_prjc_patch}..."
   patch -Np1 -i "$srcdir/${_prjc_patch}"
+
+  # https://gitlab.com/alfredchen/linux-prjc/-/merge_requests/33
+  patch -Np1 -i "$srcdir/sched_numa_hop_mask.patch"
 
   if [[ -n "$_clangbuild" ]]; then
     scripts/config -e LTO_CLANG_THIN
