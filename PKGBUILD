@@ -2,9 +2,9 @@
 _appname=codius
 pkgname="vs${_appname}-bin"
 _pkgname=VSCodius
-pkgver=1.85.2
-_electronversion=25
-pkgrel=2
+pkgver=1.86.0
+_electronversion=27
+pkgrel=1
 pkgdesc="Binary releases of Visual Studio Code without MS branding/telemetry/licensing and various personal workflow improvements."
 arch=('x86_64')
 url="https://github.com/RubisetCie/vscodius"
@@ -30,13 +30,13 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/RubisetCie/vscodius/v${pkgver}/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('65c0d3e82f08ff0caea8e9a560dddb48d8f78f696b6bcea92e67efd5a2794fb9'
+sha256sums=('93ed9186374ae47eeb13916ccfabf7208d659c74abe78b93e7109e1eca597f0b'
             '9480271317925265e806a9a196aaa33410a962fa9d4d1e248a4a5187bc8c9df9'
-            '08f4674b451d8aed830ed3a04b1071b214ea442ee4e56b6f673549fbcd38dc57')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -f -n -q --pkgname "vs${_appname}-bin" --categories "Development" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
 }
