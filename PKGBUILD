@@ -1,7 +1,8 @@
 pkgname=hyprdots-ctl
 # Remove the static pkgver assignment
+# pkgver=v0.2.0.46.24020600
 pkgrel=1
-pkgdesc="CLI for Hyprdots Configurations"
+pkgdesc="CLI for Hyprdots Configurations ++ Hidden Gems"
 arch=('x86_64')
 url="https://github.com/kRHYME7/Hyprdots-ctl"
 license=('GPL3')
@@ -12,7 +13,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname" || return
-  git describe --tags | sed 's/-/./g' # Replace hyphens with dots to conform to versioning standards
+  git describe --long --tags | sed 's/-/./g' # Replace hyphens with dots to conform to versioning standards
 }
 
 package() {
