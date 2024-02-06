@@ -3,7 +3,7 @@ pkgname=sofie-chef-bin
 _appname=SofieChef
 pkgver=0.3.3
 _electronversion=26
-pkgrel=1
+pkgrel=2
 pkgdesc="Disrupting the industry & stirring pots"
 arch=('x86_64')
 url="https://github.com/nrkno/sofie-chef"
@@ -26,11 +26,11 @@ source=(
 )
 sha256sums=('913f848d292ab514b0f241d63e3e7c6ff7968fbf096977f821aea39193d0d9e2'
             'ac26e60681c9ba6ec5eddf9b1afa3442d8ada9d77fe42b4515c42a2a15392c44'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null

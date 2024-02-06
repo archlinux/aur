@@ -1,7 +1,7 @@
 pkgbase = sofie-chef-bin
 	pkgdesc = Disrupting the industry & stirring pots
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nrkno/sofie-chef
 	arch = x86_64
 	license = MIT
@@ -17,6 +17,6 @@ pkgbase = sofie-chef-bin
 	source = sofie-chef.sh
 	sha256sums = 913f848d292ab514b0f241d63e3e7c6ff7968fbf096977f821aea39193d0d9e2
 	sha256sums = ac26e60681c9ba6ec5eddf9b1afa3442d8ada9d77fe42b4515c42a2a15392c44
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = sofie-chef-bin
