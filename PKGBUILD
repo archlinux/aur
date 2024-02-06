@@ -2,7 +2,7 @@
 
 pkgname=platypush-git
 pkgver=0.50.3.r736.g48756e62
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
 license=('MIT')
@@ -26,6 +26,7 @@ depends=(
     'python-redis'
     'python-requests'
     'python-rsa'
+    'python-setuptools'
     'python-sqlalchemy'
     'python-tornado'
     'python-websocket-client'
