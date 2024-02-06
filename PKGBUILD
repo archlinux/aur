@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=brisk-bin
 _pkgname=Brisk
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="Fast, multithreaded, cross-platform download manager"
 arch=('x86_64')
@@ -12,6 +12,7 @@ conflicts=("${pkgname%-bin}")
 depends=(
     'gtk3'
     'libkeybinder3'
+    'libappindicator-gtk3'
 )
 makedepends=(
     'gendesk'
@@ -21,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/AminBhst/brisk/v${pkgver}/assets/icons/logo.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f11fd8bf505b8f281da731b9b2068e31e2c3bc44835a9ad78a2942f562d719f1'
+sha256sums=('5450016aec5dc5eefb27056711cdff3aaa9b66dd5292da6afb18e3ef4ec91022'
             '9a706b7a56a7f35903d9fe6440e347c4687c38965ae0ee7f1441acee615e3907'
             '1e338ff128b2be2b0d484ea2d00814db6709a5e2cc455a373428d21f8ed690d5')
 build() {
@@ -29,7 +30,7 @@ build() {
         -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     install -Dm755 -d "${srcdir}/opt/${pkgname%-bin}"
-    mv " ${_pkgname}-${pkgver}-linux-${CARCH}/"* "${srcdir}/opt/${pkgname%-bin}"
+    mv "${srcdir}/${_pkgname}-${pkgver}-linux-${CARCH}/"* "${srcdir}/opt/${pkgname%-bin}"
     gendesk -f -n -q --categories "Network" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
 }
 package() {

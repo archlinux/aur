@@ -1,6 +1,6 @@
 pkgbase = brisk-bin
 	pkgdesc = Fast, multithreaded, cross-platform download manager
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/AminBhst/brisk
 	arch = x86_64
@@ -8,12 +8,13 @@ pkgbase = brisk-bin
 	makedepends = gendesk
 	depends = gtk3
 	depends = libkeybinder3
-	provides = brisk=1.4.2
+	depends = libappindicator-gtk3
+	provides = brisk=1.4.3
 	conflicts = brisk
-	source = brisk-1.4.2.tar.gz::https://github.com/AminBhst/brisk/releases/download/v1.4.2/Brisk-1.4.2-linux-x86_64.tar.gz
-	source = brisk-1.4.2.png::https://raw.githubusercontent.com/AminBhst/brisk/v1.4.2/assets/icons/logo.png
+	source = brisk-1.4.3.tar.gz::https://github.com/AminBhst/brisk/releases/download/v1.4.3/Brisk-1.4.3-linux-x86_64.tar.gz
+	source = brisk-1.4.3.png::https://raw.githubusercontent.com/AminBhst/brisk/v1.4.3/assets/icons/logo.png
 	source = brisk.sh
-	sha256sums = f11fd8bf505b8f281da731b9b2068e31e2c3bc44835a9ad78a2942f562d719f1
+	sha256sums = 5450016aec5dc5eefb27056711cdff3aaa9b66dd5292da6afb18e3ef4ec91022
 	sha256sums = 9a706b7a56a7f35903d9fe6440e347c4687c38965ae0ee7f1441acee615e3907
 	sha256sums = 1e338ff128b2be2b0d484ea2d00814db6709a5e2cc455a373428d21f8ed690d5
 
