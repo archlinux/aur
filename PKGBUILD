@@ -2,7 +2,9 @@
 pkgname=monokle
 _pkgname=Monokle
 pkgver=2.4.4
-pkgrel=1
+_electronversion=27
+_nodeversion=18
+pkgrel=2
 pkgdesc="Lets you create, analyze, and deploy YAML manifests with a visual UI, and provides policy validation and cluster management."
 arch=('x86_64')
 url="https://monokle.io/"
@@ -11,49 +13,48 @@ license=('MIT')
 provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}")
 depends=(
-    'at-spi2-core'
     'alsa-lib'
-    'expat'
-    'libxcomposite'
-    'libdrm'
-    'libxkbcommon'
-    'libxfixes'
-    'libxdamage'
     'gtk3'
-    'nspr'
-    'mesa'
-    'libxrandr'
-    'cairo'
     'nss'
-    'libxext'
-    'python'
-    'libx11'
-    'pango'
-    'libcups'
-    'libxcb'
+    'nodejs'
 )
 makedepends=(
     'npm'
-    'nodejs>=20'
+    'nvm'
     'jq'
     'gendesk'
     'git'
+    'python'
+    'python-setuptools'
 )
 source=(
-    "${pkgname}::git+${_ghurl}#tags=v${pkgver}"
+    "${pkgname}::git+${_ghurl}#tag=v${pkgver}"
 )
 sha256sums=('SKIP')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
+}
 build() {
-    gendesk -q -f -n --categories "Development" --name "${_pkgname}" --exec "${pkgname} --no-sandbox %U"
+    _ensure_local_nvm
+    gendesk -q -f -n --categories "Development" --name "${_pkgname}" --exec "${pkgname} %U"
     cd "${srcdir}/${pkgname}"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
-    sed -e "291,297d" -e "271,277d" -e "258,264d" -e '/arm64/d' -e 's|"x64",|"x64"|g' -i package.json
-    npm ci
-    npm run electron:build
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
+    sed -e "291,297d" -e "268,278d" -e "259,265d" -e 's|"AppImage",|"AppImage"|g' -i package.json
+    npm install
+    npm run electron:build:ci
+    contents="$(jq '.build.artifactName = "${productName}-${os}-${arch}.${ext}"' package.json)" && echo "${contents}" > package.json
+    contents="$(jq '.build.appImage.artifactName = "${productName}-${os}-${arch}.${ext}"' package.json)" && echo "${contents}" > package.json
+    npm exec -c "electron-builder --publish \"never\""
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/"${pkgname}",usr/bin}
