@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggvis
-_pkgver=0.4.8
+_pkgver=0.4.9
 pkgname=r-${_pkgname,,}
-pkgver=0.4.8
+pkgver=0.4.9
 pkgrel=1
 pkgdesc='Interactive Grammar of Graphics'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3d5480a0b97a57c26b595785f826b13d7695dab1f1dd8fcf5d7964fa8546a26a')
+sha256sums=('69b9d184789c90aedd2f336d43033a8b710a16b052580bf9e7ce229ac25ba12f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

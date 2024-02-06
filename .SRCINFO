@@ -1,6 +1,6 @@
 pkgbase = r-ggvis
 	pkgdesc = Interactive Grammar of Graphics
-	pkgver = 0.4.8
+	pkgver = 0.4.9
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggvis
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-ggvis
 	optdepends = r-mgcv
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/ggvis_0.4.8.tar.gz
-	sha256sums = 3d5480a0b97a57c26b595785f826b13d7695dab1f1dd8fcf5d7964fa8546a26a
+	source = https://cran.r-project.org/src/contrib/ggvis_0.4.9.tar.gz
+	sha256sums = 69b9d184789c90aedd2f336d43033a8b710a16b052580bf9e7ce229ac25ba12f
 
 pkgname = r-ggvis
