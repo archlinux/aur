@@ -27,8 +27,7 @@ license=(
   MIT
 )
 source=(
-  "${url}/releases/download/v${pkgver}/${_pkg}-v${pkgver}.zip"{,.sig}
-  "${_url}/releases/download/v${pkgver}/${_pkg}-v${pkgver}.zip"{,.sig}
+  "${_pkgname}-${pkgver}::git+${_url}.git"
   "${_pkgname}.desktop"
   "${_pkgname}"
   "${_pkgname}.license")
