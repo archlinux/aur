@@ -1,0 +1,12 @@
+pkgbase = weather-rs
+	pkgdesc = Weather App made to run in the terminal written in Rust
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/einstein8612/weather-rs
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = weather-rs-0.0.1.tar.gz::https://github.com/einstein8612/weather-rs/archive/v0.0.1.tar.gz
+	sha256sums = 61c0fff71b4995c94e8bb145939de2987a6f6da7f2a0d68dbb140fb603d93aa2
+
+pkgname = weather-rs
