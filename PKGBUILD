@@ -3,7 +3,7 @@ pkgname=whisperpix-bin
 _pkgname=WhisperPix
 pkgver=1.1.0
 _electronversion=23
-pkgrel=4
+pkgrel=5
 pkgdesc="Add comments to your photos with your voice"
 arch=('x86_64')
 url="https://github.com/graham-walker/WhisperPix"
@@ -22,8 +22,12 @@ source=(
 )
 sha256sums=('f5c0b5b52505f4ad5fa6b72556ca19adbe559a70cf2534d1000ad204706c09e6'
             '5fc34925726421c2268a2a719ceebe463aef8ad39480b1d08daee3044fd6381e'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
