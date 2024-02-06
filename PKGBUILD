@@ -186,7 +186,7 @@ build() {
 }
 
 _package_python-pyffish() {
-  pkgdesc="Python bindings for fairy-stockfish variant chess engine"
+  pkgdesc="Python bindings for fairy-stockfish"
   depends=(
     'python'
     'python-pysimplegui'
