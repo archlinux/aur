@@ -1,6 +1,6 @@
 pkgbase = keepmenu
 	pkgdesc = dmenu/rofi frontend for KeePass databases
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/firecat53/keepmenu
 	install = keepmenu.install
@@ -24,7 +24,7 @@ pkgbase = keepmenu
 	optdepends = wtype: required for typing non-U.S. Unicode characters
 	optdepends = ydotool: required for typing non-U.S. Unicode characters
 	optdepends = pinentry: secure passphrase entry
-	source = keepmenu-1.4.0.tar.gz::https://github.com/firecat53/keepmenu/archive/refs/tags/1.4.0.tar.gz
-	sha256sums = 40daeac2dba6679be408dc52dbf1e4e0450a47374a6a0124a4ddc56ee5046f51
+	source = keepmenu-1.4.1.tar.gz::https://github.com/firecat53/keepmenu/archive/refs/tags/1.4.1.tar.gz
+	sha256sums = dd819e3d39d33a2c13cf585da6175ecf902d9da60397f7e0ebc3171431d4ba51
 
 pkgname = keepmenu

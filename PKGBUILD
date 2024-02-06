@@ -1,7 +1,7 @@
-# Maintainer: Vlad Glagolev <scm(at)vaygr(dot)net>
+# Maintainer: Axel McLaren <scm(at)axml(dot)uk>
 
 pkgname=keepmenu
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="dmenu/rofi frontend for KeePass databases"
 arch=('any')
@@ -20,13 +20,13 @@ optdepends=('dmenu: dmenu backend'
             'pinentry: secure passphrase entry')
 
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz)
-sha256sums=('40daeac2dba6679be408dc52dbf1e4e0450a47374a6a0124a4ddc56ee5046f51')
+sha256sums=('dd819e3d39d33a2c13cf585da6175ecf902d9da60397f7e0ebc3171431d4ba51')
 install=${pkgname}.install
 
 prepare() {
   cd "${pkgname}-${pkgver}"
 
-  sed -i "s:\(\[tool.hatch.version\]\):\1\nfallback-version = \"${pkgver}\":" pyproject.toml
+  sed -i "s:^\(fallback-version = \).*:\1\"${pkgver}\":" pyproject.toml
 }
 
 build() {
