@@ -15,7 +15,7 @@ shift "$((OPTIND-1))"
 unset opt OPTARG OPTIND
 
 if [ "$(awk '{print int($1)}' '/proc/uptime')" -le 120 ]; then
-  sleep 15
+  sleep 30
 fi
 
 g_lan_ip=''             # 0.0.0.0 if not multi homing. Else the default outgoing interface to prevent multiple registrations. Wihout a port mapping you get error: Call cleared due to loss of media flow.
@@ -145,8 +145,8 @@ _fn_t38fax() {
     --Use-ECM
     #--sip-proxy "${g_udid}:${g_pw}@${g_sip_ip}" # supported but not necessary
     "${g_ptty[@]/#/--ptty=+${g_tmp}/}"
-    --route "modem:.*=sip:<dn>@${g_sip_ip}" # Hylafax send fax routes to sip.
-    --route "sip:.*=modem:<dn>"           # Receive fax routes to Hylafax receive.
+    --route $'modem:.*\t'"sip.*=sip:<dn>@${g_sip_ip}" # Hylafax send fax routes to sip.
+    --route $'sip:.*\t.*=modem:<dn>'                  # Receive fax routes to Hylafax receive.
     --jitter   '80,80'
     --ssl-ca   '/etc/ssl/certs/ca-certificates.crt'
     --ssl-cert "${g_tmp}/t38modem_opal_certificate-${g_opt_T}.pem"

@@ -16,6 +16,7 @@
 
 _sipsvr='sip.t38fax.com:5080'; _sipext=''
 #_sipsvr='voip.itsp.net:5060'; _sipext='ttyAC'
+#@SIPSVR@
 
 # Until patch 0001 is fixed, we need a separate package for each service
 
@@ -28,7 +29,7 @@ _sipsvr='sip.t38fax.com:5080'; _sipext=''
 # For additional service
 # systemctl enable --now t38modem@ttyAC
 
-# Use the watchdog if you find t38modem hangs. Some crashes restart and some hang.
+# Use the watchdog if you find t38modem hangs. Some crashes are restarted by systemd and some hang.
 # systemctl enable --now t38modem-watchdog.timer
 # systemctl enable --now t38modem-watchdog@ttyAC0.timer
 
@@ -40,36 +41,42 @@ set -u
 _pkgname='t38modem'
 pkgname="${_pkgname}${_sipext}"
 #pkgname+='-git'
-pkgver='4.6.0'
-_opalver='3.18.6'
+pkgver='4.6.2'
+_opalver='3.18.8'
 _pkgver="${pkgver%%.r[0-9]*}"
 pkgrel=1
 pkgdesc='t.38 SIP VoIP fax modem for Hylafax'
 arch=('x86_64')
-url="https://github.com/T38Modem/${_pkgname}"
-#url='https://github.com/hehol/t38modem'
+#url="https://github.com/T38Modem/${_pkgname}"
+url='https://github.com/hehol/t38modem'
 #url='http://t38modem.sourceforge.net/'
-license=('GPL2')
-depends=("opal>=${_opalver}" 'ca-certificates-utils' 'procps-ng')
+license=('MPL-1.0')
+depends=('gcc-libs' 'bash' 'glibc' "opal>=${_opalver}" 'ca-certificates-utils' 'procps-ng' 'ptlib')
+# opal will determine the required version of ptlib
 makedepends=('pkg-config')
 backup=('etc/t38modem.sh')
 _srcdir="${_pkgname}-${_pkgver}"
 options=('!buildflags')
 install="${_pkgname}-install.sh"
 source=(
-  "${_srcdir}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+  "${_srcdir}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
   '0000-t38modem-perms-uucp.patch'
+  # Error: Call failed due to a transport error https://github.com/hehol/t38modem/issues/6
   '0001-t38modem-t38fax-routing-support.patch'
+  # Patch 0002-opensuse-0001 was modified to remove an invalid code change.
+  '0002-opensuse-0001-build-resolve-compiler-warnings-and-errors-with-ptli.patch' # https://build.opensuse.org/package/show/openSUSE:Factory/t38modem
   't38modem.sh'
 )
-md5sums=('9a71bb669272d21ce09764f28648d8c2'
+md5sums=('ca9e2ceb352c70c99aa0defda2b9075a'
          '6dff05fdc3dec8b4461cd87ad115814c'
          'a8c81c4a32e7b6a908847a0ac7536ed1'
-         '90d54ec8d92bd3e38fe5c1cfaad1ffa4')
-sha256sums=('1eee8e9bc360ca27fb44f41a476d7e3081b3ba14876ac813290eb92857137324'
+         'ff9e1a8aa228a442be46b41ceb0b9e42'
+         'c94eeb90e904a4ea536652d078bcbdd9')
+sha256sums=('d44069fa0e10fda9d91c79c5a74db1b26926c60b88a39553398a1c79b2ae412f'
             '22d84d09399fb89925c006b0c17a4b80d56c7ba4f60a27e4c206d6280ef6b064'
             'd7224d12bbdfb40506b9c7dd3492fa628505e498eeb146561c1f5bccfc876022'
-            '2c57d6e83d3818f1fddd360206ae908b78e8fd63e2b747a29b9e1a683501c30c')
+            'b6166a32a57a006181b3951dc83b3dbbbffebd11bc57983e6dc2a7d341c26f97'
+            'e2bb0c33d2630ce01fac749b24dd624c9211f67d3980e2de796ee1f5dff81c4c')
 
 _g_uid='uucp'
 _g_gid='uucp'
@@ -123,14 +130,22 @@ prepare() {
   fi
   shopt -u nullglob
 
-  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-  # diff -pNaru5 'a' 'b' > '0000-t38modem-perms-uucp.patch'
-  patch -Nup1 -i <(sed -e "s:@UUCP@:$(id -g "${_g_gid}"):g" "${srcdir}/0000-t38modem-perms-uucp.patch")
+  local _seds=(
+    -e "s:@UUCP@:$(getent group "${_g_gid}" | cut --delimiter ':' --fields 3):g"
+    -e "s/@SIPSVR@/${_sipsvr}/g"
+  )
 
-  # Error: Call failed due to a transport error
-  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-  # diff -pNaru5 'a' 'b' > '0001-t38modem-t38fax-routing-support.patch'
-  patch -Nup1 -i <(sed -e "s/@SIPSVR@/${_sipsvr}/g" "${srcdir}/0001-t38modem-t38fax-routing-support.patch")
+  local _f
+  for _f in "${source[@]}"; do
+    _f="${_f%%::*}"
+    _f="${_f##*/}"
+    if [[ "${_f}" = *.patch ]]; then
+      set +u; msg2 "Patch ${_f}"; set -u
+      patch -Nup1 -i <(sed -E "${_seds[@]}" "${srcdir}/${_f}")
+    fi
+  done
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; cd "${_srcdir}"; false
+  # diff -pNaru5 'a' 'b' > 'new.patch'
 
   bash -n "${srcdir}/t38modem.sh"
 
@@ -142,8 +157,9 @@ build() {
   cd "${_srcdir}"
   CFLAGS+=' -Wno-narrowing'
   CFLAGS+=' -Wno-deprecated-declarations' # Need this until auto_ptr fixed in opal
-  CXXFLAGS+=' -std=c++14'
-  nice make # CXX='g++-6' CC='gcc-6'
+  CXXFLAGS+=' -std=c++17'
+  #CXXFLAGS+=' -std=c++03'
+  nice make # -j1 # CXX='g++-9' CC='gcc-9' # too small, debugging is easier with -j1
   set +u
 }
 

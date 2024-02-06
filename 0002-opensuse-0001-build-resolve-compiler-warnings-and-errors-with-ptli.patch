@@ -1,0 +1,70 @@
+From 98786058110416c18096fba9945d7a86917580c2 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Sat, 2 Apr 2022 16:04:40 +0200
+Subject: [PATCH] build: resolve compiler warnings and errors with ptlib-2.18.8
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+References: https://github.com/T38Modem/t38modem/pull/2
+
+The definition of PINDEX changed in ptlib commit
+6629d94fcb3cfd369a9629399a20a217429b4d60 .
+
+dle.cxx: In member function ‘int DLEData::GetDleData(void*, PINDEX)’:
+dle.cxx:180:13: error: narrowing conversion of ‘-1’ from ‘int’ to
+‘long unsigned int’ [-Wnarrowing]
+  180 |       case -1:
+pmutils.cxx: In member function ‘int ChunkStream::write(const void*, PINDEX)’:
+pmutils.cxx:129:11: warning: comparison of integer expressions of
+different signedness: ‘int’ and ‘PINDEX’ {aka ‘long unsigned int’} [-Wsign-compare]
+  129 |   if (len > count)
+pmutils.cxx: In member function ‘int ChunkStream::read(void*, PINDEX)’:
+pmutils.cxx:145:11: warning: comparison of integer expressions of
+@@@@
+@@@@  This bad patch prevents cGet from going back into GetData(). It was never a warning that needed fixing.
+@@@@  Every call terminates with "No receiver protocol (T.30 T1 timeout) ; too many attempts to send"
+@@@@ different signedness: ‘int’ and ‘PINDEX’ {aka ‘long unsigned int’} [-Wsign-compare]
+@@@@   145 |   if (len > count)
+@@@@ ---
+@@@@  dle.cxx     | 3 ++-
+@@@@  pmutils.cxx | 4 ++--
+@@@@  2 files changed, 4 insertions(+), 3 deletions(-)
+@@@@ 
+@@@@ diff --git a/dle.cxx b/dle.cxx
+@@@@ index dc357d6..43aa795 100644
+@@@@ --- a/dle.cxx
+@@@@ +++ b/dle.cxx
+@@@@ @@ -176,7 +176,8 @@ int DLEData::GetDleData(void *pBuf, PINDEX count)
+@@@@      if (cGet > (PINDEX)sizeof(tmp))
+@@@@        cGet = sizeof(tmp);
+@@@@  
+@@@@ -    switch( cGet = GetData(tmp, cGet) ) {
+@@@@ +    int ret = GetData(tmp, cGet);
+@@@@ +    switch (ret) {
+@@@@        case -1:
+@@@@          *p++ = DLE;
+@@@@          *p++ = ETX;
+diff --git a/pmutils.cxx b/pmutils.cxx
+index 8437612..46e90e8 100644
+--- a/pmutils.cxx
++++ b/pmutils.cxx
+@@ -121,7 +121,7 @@ void ModemThreadChild::SignalStop()
+ ///////////////////////////////////////////////////////////////
+ int ChunkStream::write(const void *pBuf, PINDEX count)
+ {
+-  int len = sizeof(data) - last;
++  size_t len = sizeof(data) - last;
+ 
+   if (!len)
+     return -1;
+@@ -142,7 +142,7 @@ int ChunkStream::read(void *pBuf, PINDEX count)
+ 
+   int len = last - first;
+ 
+-  if (len > count)
++  if (len > 0 && static_cast<size_t>(len) > count)
+     len = count;
+ 
+   memcpy(pBuf, data + first, len);
+-- 
+2.35.1
