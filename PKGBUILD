@@ -28,7 +28,7 @@ options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
-        REVERT-simplify-blink-NativeValueTraitsBase.patch::https://github.com/chromium/chromium/commit/940af9f2c87b.patch
+        REVERT-simplify-blink-NativeValueTraitsBase.patch
         icu-74.patch
         chromium-121-constexpr.patch
         drop-flags-unsupported-by-clang16.patch
