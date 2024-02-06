@@ -60,7 +60,7 @@ if [ "${initial}x" = "x" ] ; then
     git tag -s -m "Bumped version $new_ver" "$new_ver-1"
     git push --tags
     gh release create --generate-notes "$new_ver-1" reposilite-$new_ver-1-any.pkg.tar.*
-    rm reposilite-$new_ver.tar.*
+    rm reposilite-$new_ver-all.jar
     rm reposilite-$new_ver-1-any.pkg.tar.*
     git branch -u aur/master
     git push
