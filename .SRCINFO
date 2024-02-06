@@ -1,7 +1,7 @@
 pkgbase = platypush
 	pkgdesc = Universal multi-platform command executor and automation manager
 	pkgver = 0.50.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://git.platypush.tech/platypush/platypush
 	arch = any
 	license = MIT
@@ -22,6 +22,7 @@ pkgbase = platypush
 	depends = python-redis
 	depends = python-requests
 	depends = python-rsa
+	depends = python-setuptools
 	depends = python-sqlalchemy
 	depends = python-tornado
 	depends = python-websocket-client
