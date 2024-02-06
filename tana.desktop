@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=tana
+Comment=The Everything OS
+GenericName=tana
+Exec=tana %U
+Icon=tana
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Utility;
+MimeType=x-scheme-handler/tana;
+
