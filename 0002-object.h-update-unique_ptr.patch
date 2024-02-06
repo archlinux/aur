@@ -1,0 +1,18 @@
+Picked from v2_20_0-62-g8bd55085ae
+https://sourceforge.net/p/opalvoip/ptlib/ci/8bd55085ae7e5d8e59c6643a7043929c4f9757c6/
+
+diff -pNaru5 a/include/ptlib/object.h b/include/ptlib/object.h
+--- a/include/ptlib/object.h	2024-02-05 15:48:13.756260851 -0500
++++ b/include/ptlib/object.h	2024-02-05 15:48:38.366482450 -0500
+@@ -108,10 +108,11 @@ using namespace std; // Not a good pract
+   template <typename T> class PAutoPtr : public std::unique_ptr<T>
+   {
+     public:
+       PAutoPtr() = default;
+       explicit PAutoPtr(T * p) : std::unique_ptr<T>(p) { }
++      PAutoPtr(PAutoPtr & other) : std::unique_ptr<T>(other.release()) { }
+       void transfer(PAutoPtr & other) { std::unique_ptr<T>::operator=(std::move(other)); }
+   };
+ #endif
+ 
+ 

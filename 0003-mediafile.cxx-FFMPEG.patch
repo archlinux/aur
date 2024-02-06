@@ -1,0 +1,18 @@
+Picked from v2_20_0-62-g8bd55085ae
+https://sourceforge.net/p/opalvoip/ptlib/ci/8bd55085ae7e5d8e59c6643a7043929c4f9757c6/
+
+diff -pNaru5 a/src/ptclib/mediafile.cxx b/src/ptclib/mediafile.cxx
+--- a/src/ptclib/mediafile.cxx	2020-10-26 14:12:50.000000000 -0400
++++ b/src/ptclib/mediafile.cxx	2024-02-06 14:45:49.474936756 -0500
+@@ -629,10 +629,11 @@ PFACTORY_CREATE(PMediaFile::Factory, PMe
+ #if P_FFMPEG_FULL
+ 
+ extern "C" {
+   P_PUSH_MSVC_WARNINGS(4244)
+   #include <libavformat/avformat.h>
++  #include <libavcodec/avcodec.h>
+   #include <libavutil/imgutils.h>
+   #include <libavutil/audio_fifo.h>
+   #include <libswresample/swresample.h>
+   P_POP_MSVC_WARNINGS()
+ };

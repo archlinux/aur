@@ -1,0 +1,22 @@
+--- ptlib-2.18.8/src/ptlib/common/pchannel.cxx.orig	2022-12-13 13:06:48.361569790 +0100
++++ ptlib-2.18.8/src/ptlib/common/pchannel.cxx	2022-12-13 13:07:50.769126154 +0100
+@@ -149,7 +149,7 @@
+ {
+   PChannelStreamBuffer * buf = dynamic_cast<PChannelStreamBuffer *>(rdbuf());
+ #if P_HAS_SET_RDBUF
+-  set_rdbuf(NULL);
++  rdbuf(NULL);
+ #elif !defined(_MSC_VER)
+   init(NULL);
+ #endif
+--- ptlib-2.18.8/src/ptlib/common/contain.cxx.orig	2022-12-13 13:09:55.608244429 +0100
++++ ptlib-2.18.8/src/ptlib/common/contain.cxx	2022-12-13 13:10:11.291208728 +0100
+@@ -2612,7 +2612,7 @@
+ {
+   PStringStream::Buffer * buf = dynamic_cast<PStringStream::Buffer *>(rdbuf());
+ #if P_HAS_SET_RDBUF
+-  set_rdbuf(NULL);
++  rdbuf(NULL);
+ #elif !defined(_MSC_VER)
+   init(NULL);
+ #endif
