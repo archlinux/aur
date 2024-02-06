@@ -1,6 +1,6 @@
 pkgbase = candy
 	pkgdesc = Another virtual private network that supports point-to-point connections
-	pkgver = 3.9
+	pkgver = 3.9.1
 	pkgrel = 1
 	url = https://github.com/lanthora/candy
 	arch = x86_64
@@ -22,8 +22,8 @@ pkgbase = candy
 	depends = libconfig
 	depends = uriparser
 	backup = etc/candy.conf
-	source = candy-3.9.tar.gz::https://github.com/lanthora/candy/archive/refs/tags/v3.9.tar.gz
-	sha256sums = ff8db40c6fd138e2bf293fa969043ffdfa814b277d8df56c29fbfcd6c35b194d
+	source = candy-3.9.1.tar.gz::https://github.com/lanthora/candy/archive/refs/tags/v3.9.1.tar.gz
+	sha256sums = d1929747035553f3b9381cb7bacbd9fcd862252d66dcb5fef3324387befb5512
 	depends_aarch64 = spdlog
 	depends_armv7h = spdlog
 
