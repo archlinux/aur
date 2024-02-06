@@ -1,6 +1,6 @@
 pkgbase = varia
 	pkgdesc = Download manager based on aria2
-	pkgver = 2024.1.31
+	pkgver = 2024.2.6
 	pkgrel = 1
 	url = https://github.com/giantpinkrobots/varia
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = varia
 	depends = aria2p
 	depends = python
 	depends = python-setuptools
-	source = https://github.com/giantpinkrobots/varia/archive/refs/tags/v2024.1.31.tar.gz
-	sha256sums = 17bc239eb754512b14bd71ba65668661626ed0de6052ff3da2508f3cb5ede8e2
+	source = https://github.com/giantpinkrobots/varia/archive/refs/tags/v2024.2.6.tar.gz
+	sha256sums = e58954f584c46a5ac87a755f154808cc5bca32c2454415e9111dc3630e00a3c3
 
 pkgname = varia
