@@ -1,7 +1,7 @@
 pkgbase = ceph
 	pkgdesc = Distributed, fault-tolerant storage platform delivering object, block, and file system
 	pkgver = 18.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ceph.com/
 	arch = x86_64
 	license = GPL
@@ -120,9 +120,9 @@ pkgbase = ceph
 
 pkgname = ceph-common
 	pkgdesc = Ceph Storage common libraries and dependencies
-	depends = ceph-compressor=18.2.1-1
-	depends = ceph-crypto=18.2.1-1
-	depends = ceph-erasure=18.2.1-1
+	depends = ceph-compressor=18.2.1-2
+	depends = ceph-crypto=18.2.1-2
+	depends = ceph-erasure=18.2.1-2
 	depends = boost-libs
 	depends = curl
 	depends = glibc
@@ -159,7 +159,7 @@ pkgname = ceph-erasure
 
 pkgname = ceph-tools
 	pkgdesc = Ceph Storage miscellaneous tooling and utilities
-	depends = ceph-base=18.2.1-1
+	depends = ceph-base=18.2.1-2
 	depends = bash
 	depends = boost-libs
 	depends = gperftools
@@ -169,7 +169,7 @@ pkgname = ceph-tools
 
 pkgname = ceph-test
 	pkgdesc = Ceph Storage tools for benchmarking and testing live clusters
-	depends = ceph-base=18.2.1-1
+	depends = ceph-base=18.2.1-2
 	depends = libcap
 	depends = libaio
 	depends = boost-libs
@@ -179,8 +179,8 @@ pkgname = ceph-test
 
 pkgname = ceph-volume
 	pkgdesc = Ceph Storage utility for preparing block devices for use as OSDs
-	depends = python-ceph-common=18.2.1-1
-	depends = ceph-osd=18.2.1-1
+	depends = python-ceph-common=18.2.1-2
+	depends = ceph-osd=18.2.1-2
 	depends = python
 	depends = lvm2
 	depends = python-setuptools
@@ -195,22 +195,22 @@ pkgname = ceph-cephadm
 
 pkgname = ceph-rados
 	pkgdesc = Ceph Storage utilities and tools for librados
-	depends = librados=18.2.1-1
+	depends = librados=18.2.1-2
 	depends = gcc-libs
 
 pkgname = ceph-base
 	pkgdesc = Ceph Storage cluster base utilities and configuration
-	depends = ceph-common=18.2.1-1
-	depends = librados=18.2.1-1
-	depends = python-ceph-common=18.2.1-1
-	depends = python-rados=18.2.1-1
+	depends = ceph-common=18.2.1-2
+	depends = librados=18.2.1-2
+	depends = python-ceph-common=18.2.1-2
+	depends = python-rados=18.2.1-2
 	depends = python
 	backup = etc/logrotate.d/ceph
 	backup = etc/sudoers.d/90-ceph
 
 pkgname = ceph-mon
 	pkgdesc = Ceph Storage cluster monitor daemon, for distributed state storage via PAXOS
-	depends = ceph-base=18.2.1-1
+	depends = ceph-base=18.2.1-2
 	depends = bash
 	depends = boost-libs
 	depends = fmt
@@ -219,10 +219,10 @@ pkgname = ceph-mon
 
 pkgname = ceph-mgr
 	pkgdesc = Ceph Storage cluster manager daemon, the API gateway for cluster management
-	depends = ceph-base=18.2.1-1
-	depends = python-cephfs=18.2.1-1
-	depends = python-rbd=18.2.1-1
-	depends = libcephsqlite=18.2.1-1
+	depends = ceph-base=18.2.1-2
+	depends = python-cephfs=18.2.1-2
+	depends = python-rbd=18.2.1-2
+	depends = libcephsqlite=18.2.1-2
 	depends = sqlite
 	depends = python
 	depends = boost-libs
@@ -254,7 +254,7 @@ pkgname = ceph-mgr
 
 pkgname = ceph-osd
 	pkgdesc = Ceph Storage cluster object storage daemon, for managing block devices
-	depends = ceph-base=18.2.1-1
+	depends = ceph-base=18.2.1-2
 	depends = fuse3
 	depends = bash
 	depends = boost-libs
@@ -271,14 +271,14 @@ pkgname = ceph-osd
 
 pkgname = ceph-mds
 	pkgdesc = Ceph Storage cluster metadata server, the API gateway for CephFS
-	depends = ceph-base=18.2.1-1
+	depends = ceph-base=18.2.1-2
 	depends = lua
 	depends = fmt
 	depends = gperftools
 
 pkgname = ceph-rbd
 	pkgdesc = Ceph Storage utilities and tooling for librbd
-	depends = librbd=18.2.1-1
+	depends = librbd=18.2.1-2
 	depends = libnl
 	depends = fmt
 	depends = fuse3
@@ -290,7 +290,7 @@ pkgname = ceph-rbd
 
 pkgname = ceph-cephfs
 	pkgdesc = Ceph Storage utilities and tooling for libcephfs
-	depends = libcephfs=18.2.1-1
+	depends = libcephfs=18.2.1-2
 	depends = fuse3
 	depends = fmt
 	depends = gperftools
@@ -302,7 +302,7 @@ pkgname = ceph-cephfs
 
 pkgname = ceph-rgw
 	pkgdesc = Ceph Storage cluster RADOS Object Gateway daemon, for serving RESTful traffic
-	depends = librgw=18.2.1-1
+	depends = librgw=18.2.1-2
 	depends = gawk
 	depends = oath-toolkit
 	depends = boost-libs
@@ -314,7 +314,7 @@ pkgname = ceph-rgw
 
 pkgname = librados
 	pkgdesc = Ceph Storage client library to the RADOS distributed object store
-	depends = ceph-common=18.2.1-1
+	depends = ceph-common=18.2.1-2
 	depends = bash
 	depends = boost-libs
 	depends = fmt
@@ -325,13 +325,13 @@ pkgname = librados
 
 pkgname = libcephfs
 	pkgdesc = Ceph Storage client library for CephFS, a distributed POSIX filesystem
-	depends = librados=18.2.1-1
+	depends = librados=18.2.1-2
 	depends = fmt
 	provides = libcephfs.so
 
 pkgname = librbd
 	pkgdesc = Ceph Storage client library for RADOS block devices
-	depends = librados=18.2.1-1
+	depends = librados=18.2.1-2
 	depends = cryptsetup
 	depends = fmt
 	provides = librbd.so
@@ -339,7 +339,7 @@ pkgname = librbd
 
 pkgname = librgw
 	pkgdesc = Ceph Storage client library to RADOS Object Gateway, a S3 and Swift compatible REST API
-	depends = librados=18.2.1-1
+	depends = librados=18.2.1-2
 	depends = librabbitmq-c
 	depends = lua
 	depends = librdkafka
@@ -350,13 +350,13 @@ pkgname = librgw
 
 pkgname = libcephsqlite
 	pkgdesc = Ceph Storage client library for a RADOS backed sqlite3 VFS extension
-	depends = librados=18.2.1-1
+	depends = librados=18.2.1-2
 	depends = fmt
 	provides = libcephsqlite.so
 
 pkgname = python-ceph-common
 	pkgdesc = Ceph Storage python module for common classes, objects and types
-	depends = ceph-common=18.2.1-1
+	depends = ceph-common=18.2.1-2
 	depends = python
 	depends = python-setuptools
 	depends = python-prettytable
@@ -364,81 +364,81 @@ pkgname = python-ceph-common
 
 pkgname = python-rados
 	pkgdesc = Ceph Storage python library for librados
-	depends = python-ceph-common=18.2.1-1
-	depends = librados=18.2.1-1
+	depends = python-ceph-common=18.2.1-2
+	depends = librados=18.2.1-2
 	depends = libxcrypt
 
 pkgname = python-rbd
 	pkgdesc = Ceph Storage python library for librbd
-	depends = python-ceph-common=18.2.1-1
-	depends = python-rados=18.2.1-1
-	depends = librbd=18.2.1-1
+	depends = python-ceph-common=18.2.1-2
+	depends = python-rados=18.2.1-2
+	depends = librbd=18.2.1-2
 	depends = libxcrypt
 
 pkgname = python-cephfs
 	pkgdesc = Ceph Storage python library for libcephfs
-	depends = python-ceph-common=18.2.1-1
-	depends = python-rados=18.2.1-1
-	depends = libcephfs=18.2.1-1
+	depends = python-ceph-common=18.2.1-2
+	depends = python-rados=18.2.1-2
+	depends = libcephfs=18.2.1-2
 	depends = libxcrypt
 
 pkgname = python-rgw
 	pkgdesc = Ceph Storage python library for librgw
-	depends = python-ceph-common=18.2.1-1
-	depends = python-rados=18.2.1-1
-	depends = librgw=18.2.1-1
+	depends = python-ceph-common=18.2.1-2
+	depends = python-rados=18.2.1-2
+	depends = librgw=18.2.1-2
 	depends = libxcrypt
 
 pkgname = cephfs-top
 	pkgdesc = Ceph Storage utility for a top(1) inspired curses TUI for CephFS metrics
-	depends = python-ceph-common=18.2.1-1
-	depends = python-cephfs=18.2.1-1
+	depends = python-ceph-common=18.2.1-2
+	depends = python-cephfs=18.2.1-2
 	depends = python
 
 pkgname = cephfs-shell
 	pkgdesc = Ceph Storage utility for accessing a CephFS filesystem shell
-	depends = python-ceph-common=18.2.1-1
-	depends = python-cephfs=18.2.1-1
+	depends = python-ceph-common=18.2.1-2
+	depends = python-cephfs=18.2.1-2
 	depends = python
 	depends = python-cmd2
 	depends = python-colorama
 
 pkgname = java-cephfs
 	pkgdesc = Ceph Storage JNI bindings for CephFS
-	depends = libcephfs=18.2.1-1
+	depends = libcephfs=18.2.1-2
 	depends = java-runtime
 
 pkgname = ceph
 	pkgdesc = Ceph Storage full install [VIRTUAL]
-	depends = ceph-libs=18.2.1-1
-	depends = ceph-cluster=18.2.1-1
-	depends = ceph-rados=18.2.1-1
-	depends = ceph-rbd=18.2.1-1
-	depends = ceph-cephfs=18.2.1-1
-	depends = ceph-tools=18.2.1-1
-	depends = ceph-test=18.2.1-1
-	depends = python-rados=18.2.1-1
-	depends = python-rbd=18.2.1-1
-	depends = python-cephfs=18.2.1-1
-	depends = python-rgw=18.2.1-1
+	depends = ceph-libs=18.2.1-2
+	depends = ceph-cluster=18.2.1-2
+	depends = ceph-rados=18.2.1-2
+	depends = ceph-rbd=18.2.1-2
+	depends = ceph-cephfs=18.2.1-2
+	depends = ceph-tools=18.2.1-2
+	depends = ceph-test=18.2.1-2
+	depends = python-rados=18.2.1-2
+	depends = python-rbd=18.2.1-2
+	depends = python-cephfs=18.2.1-2
+	depends = python-rgw=18.2.1-2
 
 pkgname = ceph-libs
 	pkgdesc = Ceph Storage client libraries [VIRTUAL]
-	depends = librados=18.2.1-1
-	depends = librbd=18.2.1-1
-	depends = libcephfs=18.2.1-1
-	depends = librgw=18.2.1-1
-	depends = libcephsqlite=18.2.1-1
+	depends = librados=18.2.1-2
+	depends = librbd=18.2.1-2
+	depends = libcephfs=18.2.1-2
+	depends = librgw=18.2.1-2
+	depends = libcephsqlite=18.2.1-2
 
 pkgname = ceph-cluster
 	pkgdesc = Ceph Storage cluster daemons and components [VIRTUAL]
-	depends = ceph-mon=18.2.1-1
-	depends = ceph-mgr=18.2.1-1
-	depends = ceph-osd=18.2.1-1
-	depends = ceph-mds=18.2.1-1
-	depends = ceph-rgw=18.2.1-1
-	depends = ceph-volume=18.2.1-1
+	depends = ceph-mon=18.2.1-2
+	depends = ceph-mgr=18.2.1-2
+	depends = ceph-osd=18.2.1-2
+	depends = ceph-mds=18.2.1-2
+	depends = ceph-rgw=18.2.1-2
+	depends = ceph-volume=18.2.1-2
 
 pkgname = ceph-cli
 	pkgdesc = Ceph Storage CLI utility [VIRTUAL]
-	depends = ceph-base=18.2.1-1
+	depends = ceph-base=18.2.1-2
