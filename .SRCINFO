@@ -1,0 +1,13 @@
+pkgbase = otf-linefont-git
+	pkgdesc = Font for rendering line charts.
+	pkgver = 20231029
+	pkgrel = 1
+	url = https://github.com/dy/linefont
+	arch = any
+	license = OFL
+	makedepends = git
+	provides = otf-linefont-git
+	source = linefont::git+https://github.com/dy/linefont.git
+	sha256sums = SKIP
+
+pkgname = otf-linefont-git
