@@ -1,7 +1,7 @@
 pkgbase = pennywise-bin
 	pkgdesc = Cross-platform application to open any website or media in a floating window
 	pkgver = 0.8.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/kamranahmedse/pennywise
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = pennywise-bin
 	source = LICENSE-0.8.0.md::https://raw.githubusercontent.com/kamranahmedse/pennywise/v0.8.0/license.md
 	source = pennywise.sh
 	sha256sums = b41ccd76edcf9e9af64581622b1d6dc1de7ed55a96548c4af8c43d32cd764b0b
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 	source_i686 = pennywise-0.8.0-i686.deb::https://github.com/kamranahmedse/pennywise/releases/download/v0.8.0/pennywise_0.8.0_i386.deb
 	sha256sums_i686 = df794adfb3fd28cb68beabe59cadfc000c0b20c83bb38f064d9409a7951b6799
 	source_x86_64 = pennywise-0.8.0-x86_64.deb::https://github.com/kamranahmedse/pennywise/releases/download/v0.8.0/pennywise_0.8.0_amd64.deb
