@@ -2,7 +2,7 @@
 
 pkgname=python-pytest-localftpserver
 pkgdesc='PyTest plugin providing a local FTP server'
-pkgver=1.1.4
+pkgver=1.2.0
 pkgrel=1
 arch=('any')
 url='https://pytest-localftpserver.readthedocs.io/'
@@ -11,7 +11,7 @@ license=('MIT')
 # pyopenssl is an optional dependency of pyftpdlib; it is needed to provide
 # some of the classes this package depends on.
 depends=('python-pyftpdlib' 'python-pyopenssl' 'python-pytest')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
 
 _pypi=pytest_localftpserver
 source=(
@@ -19,7 +19,7 @@ source=(
   'replace_wget.patch'
 )
 sha256sums=(
-  'acc181bfafc1f64befda90bc3bf2fbcd7886165a57921f57c21199a13aeffca7'
+  '099512c3d8a1ca24808df31d85b426d8653ca6f178d6d8f3c1898d302c053b3e'
   'adbdf668a10a06ecb62dd1ba8502718959d0cc0d86f00584e7d9f3db4f34ce79'
 )
 
@@ -36,14 +36,14 @@ build() {
 check() {
   cd "$_pypi-$pkgver"
 
-  # Tell pytest to load the plugin.
-  export PYTHONPATH=build/lib
-  export PYTEST_PLUGINS=pytest_localftpserver.plugin
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer "dist/$_pypi-$pkgver"-*.whl
 
   # Run tests which don't load environment variables.
-  pytest -v --ignore=tests/test_pytest_localftpserver_with_env_var.py
+  test-env/bin/python -m pytest -v --ignore=tests/test_pytest_localftpserver_with_env_var.py
 
   # And then set the environment and run those tests.
+  # The variables and values are taken from tox.ini
   export FTP_USER=benz
   export FTP_PASS=erni1
   export FTP_PORT=31175
@@ -53,11 +53,11 @@ check() {
   export FTP_HOME="$(pwd)/tests/envvar_homedir"
   export FTP_HOME_TLS="$(pwd)/tests/envvar_homedir"
   export FTP_FIXTURE_SCOPE=function
-  pytest -v tests/test_pytest_localftpserver_with_env_var.py
+  test-env/bin/python -m pytest -v tests/test_pytest_localftpserver_with_env_var.py
 }
 
 package() {
   cd "$_pypi-$pkgver"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  python -m installer --destdir="$pkgdir" "dist/$_pypi-$pkgver"-*.whl
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }

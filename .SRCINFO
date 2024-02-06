@@ -1,20 +1,20 @@
 pkgbase = python-pytest-localftpserver
 	pkgdesc = PyTest plugin providing a local FTP server
-	pkgver = 1.1.4
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://pytest-localftpserver.readthedocs.io/
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python-pyftpdlib
 	depends = python-pyopenssl
 	depends = python-pytest
-	source = https://files.pythonhosted.org/packages/source/p/pytest_localftpserver/pytest_localftpserver-1.1.4.tar.gz
+	source = https://files.pythonhosted.org/packages/source/p/pytest_localftpserver/pytest_localftpserver-1.2.0.tar.gz
 	source = replace_wget.patch
-	sha256sums = acc181bfafc1f64befda90bc3bf2fbcd7886165a57921f57c21199a13aeffca7
+	sha256sums = 099512c3d8a1ca24808df31d85b426d8653ca6f178d6d8f3c1898d302c053b3e
 	sha256sums = adbdf668a10a06ecb62dd1ba8502718959d0cc0d86f00584e7d9f3db4f34ce79
 
 pkgname = python-pytest-localftpserver
