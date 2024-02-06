@@ -3,7 +3,7 @@ _pkgname=next.library
 pkgname="${_pkgname//./-}-bin"
 pkgver=0.1.0
 _electronversion=21
-pkgrel=6
+pkgrel=7
 pkgdesc="Book library manager, for book enthusiast."
 arch=('x86_64')
 url="https://github.com/CMOISDEAD/next-library"
@@ -25,11 +25,11 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('223c05617c241c21a3408a5103543bbff100c314f912648767b643d79c23dc67'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
