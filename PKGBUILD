@@ -2,7 +2,7 @@
 pkgname=pixelviewer-bin
 _pkgname=PixelViewer
 pkgver=3.0.2.104
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform image viewer which supports reading raw Luminance/YUV/RGB/ARGB/Bayer pixels data from file and rendering it."
 arch=(
     'aarch64'
@@ -15,7 +15,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'fontconfig'
-    'gcc-libs'
 )
 makedepends=(
     'gendesk'
@@ -29,14 +28,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('4b023d792eb6b929311286a207c6493e18875bd9d320db8f7a996dd5d5716fea'
-            '0522ee4edde02041a2c8594b0ff84b38103eb5f499e36accc0f378c9829a240a')
+            '46c44290e51c6b3f146c244fab112aaa1ff6f5ce4f26415f85820e5eee6a2d11')
 sha256sums_aarch64=('a466953765db4ee574b8135e3645ae4b2ae19c9bcd803fa4ebe6d1a02b094fbc')
 sha256sums_x86_64=('16afd0649e662b5c3f1f5a59ca9340f0b9c3adb37d89f1e7ef892f07d13345fb')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories "Graphics;Utility" --name "${_pkgname}" --exec "${pkgname%-bin}"
+    gendesk -q -f -n --categories "Graphics" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
     install -Dm755 -d "${srcdir}/${pkgname%-bin}"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.zip" -C "${srcdir}/${pkgname%-bin}"
 }
