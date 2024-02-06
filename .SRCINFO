@@ -1,14 +1,14 @@
 pkgbase = cooklang-chef
 	pkgdesc = A CLI to manage cooklang recipes
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/Zheoni/cooklang-chef
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = cooklang-chef-0.8.2.tar.gz::https://static.crates.io/crates/cooklang-chef/cooklang-chef-0.8.2.crate
-	source = LICENSE::https://github.com/Zheoni/cooklang-chef/raw/v0.8.2/LICENSE
-	sha256sums = fb55f2b2aceb134938331d28152f19ac9a7b7b65ea7d5d62ac4a9afd4425f546
+	source = cooklang-chef-0.8.3.tar.gz::https://static.crates.io/crates/cooklang-chef/cooklang-chef-0.8.3.crate
+	source = LICENSE::https://github.com/Zheoni/cooklang-chef/raw/v0.8.3/LICENSE
+	sha256sums = 1160bc218b189e1f2c6ca8507b549907ce55fc9004e65496afccf05e122fcf59
 	sha256sums = SKIP
 
 pkgname = cooklang-chef
