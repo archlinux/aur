@@ -2,8 +2,8 @@
 # Contributor: David Birks <david@birks.dev>
 
 pkgname=kube-score
-pkgver=1.17.0
-pkgrel=2
+pkgver=1.18.0
+pkgrel=1
 pkgdesc="Kubernetes object analysis with recommendations for improved reliability and security"
 arch=(x86_64)
 url='https://github.com/zegl/kube-score'
@@ -11,9 +11,15 @@ license=(MIT)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9d5a3258b08b2e6562a6000215d461e46607d50b738f56a8b8bb2bc48be29e7f')
+sha256sums=('5709c2ccb4a8589ca28287a1740555b00b3c3df9f61ef77ea32e7cbf631961e7')
 
 _archive="$pkgname-$pkgver"
+
+prepare() {
+  cd "$_archive"
+
+  go mod download -x
+}
 
 build() {
   cd "$_archive"
@@ -24,7 +30,7 @@ build() {
   export CGO_LDFLAGS="$LDFLAGS"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  go build --ldflags "-X main.version=$pkgver" ./cmd/kube-score
+  go build -v -buildvcs=false --ldflags "-X main.version=$pkgver" ./cmd/...
 }
 
 check() {
@@ -36,6 +42,6 @@ check() {
 package() {
   cd "$_archive"
 
-  install -Dm755 kube-score "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 -t "$pkgdir/usr/bin" kube-score
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
