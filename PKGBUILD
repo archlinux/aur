@@ -2,12 +2,12 @@
 pkgname=time-to-leave-bin
 pkgver=3.0.0
 _electronversion=11
-pkgrel=2
+pkgrel=3
 pkgdesc="Log work hours and get notified when it's time to leave the office and start to live."
 arch=('x86_64')
 url="http://timetoleave.app/"
 _ghurl="https://github.com/thamara/time-to-leave"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -18,11 +18,11 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('cb545e917262e4263c59baa95a2b995d4aac7370bf623ce2b715d4b5d819f45a'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.zst"
 }
