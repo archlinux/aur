@@ -2,15 +2,18 @@
 _officalname=yuque
 pkgname="deepin-wine-${_officalname}"
 _pkgname="com.${_officalname}.spark"
-_bottlename=Deepin-YuQue
+_appname=YuQue
 pkgver=3.2.2.1107
-pkgrel=2
+pkgrel=3
 pkgdesc="新一代云端知识库，用于个人笔记与知识创作，团队协同与知识沉淀"
 arch=("x86_64")
 url="https://www.yuque.com/"
 _downurl="https://d.store.deepinos.org.cn/"
-license=('custom')
-conflicts=("${_officalname}" "${_officalname}-pake")
+license=('LicenseRef-custom')
+conflicts=(
+    "${_officalname}"
+    "${_officalname}-pake"
+)
 depends=(
     'deepin-wine6-stable'
     'spark-dwine-helper'
@@ -23,23 +26,20 @@ makedepends=(
 )
 install="${pkgname}.install"
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_downurl}/store/office/${_pkgname}/${_pkgname}_${pkgver}spark14_all.deb"
+    "${pkgname}-${pkgver}.deb::${_downurl}/store/office/${_pkgname}/${_pkgname}_${pkgver}spark14_all.deb"
     "msmpeg2vdec.dll.7z::https://raw.githubusercontent.com/zxp19821005/My_AUR_Files/main/${pkgname}/msmpeg2vdec.dll.7z"
     "LICENSE-${pkgver}::https://www.yuque.com/terms"
-    "${pkgname}.install"
-    "${pkgname%-bin}.sh"
+    "${pkgname}.sh"
 )
 sha256sums=('165ab89ecfa89c1639b3607599cb1e35393cde66251d9e470dbb23592a72a3c7'
             'f66967eb394b93a61c01b30efb2f03128e6d9d019526808d7db687aee29a8bb3'
-            '7aa2050d60eadd5ce409ddf243fb4b86aefd826afc2cc2e9ed7da9aaa0eff282'
-            '9fc08b3f39ab99a3335449f6ea69aff4bb67d8b4dd2b243009738369af544201'
-            'ad569a217f51481a0a9e7b4be1536f580a6abd2bdbde4a22f2dba31cada709ef')
+            '79b82aa631d01a625dc18021c30234a03029bb69011460de83c4395928f75f36'
+            'ab28740bee853a27b08799b15b4a1a971dbfe8a512d579da92612f86be2e28cd')
 build() {
-    sed "s|@bottlename@|${_bottlename}|g" -i "${srcdir}/${pkgname}.install"
-    sed -e "s|@bottlename@|${_bottlename}|g" \
+    sed -e "s|@bottlename@|${_appname}|g" \
         -e "s|@pkgname@|${pkgname}|g" \
         -e "s|@appver@|${pkgver}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+        -i "${srcdir}/${pkgname}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     mv "${srcdir}/opt/apps/${_pkgname}" "${srcdir}/opt/apps/${pkgname}"
     install -Dm755 -d "${srcdir}/tmp"

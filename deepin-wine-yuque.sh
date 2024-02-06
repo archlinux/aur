@@ -1,5 +1,5 @@
 #!/bin/sh
-BOTTLENAME=@bottlename@
+BOTTLENAME=Deepin-@bottlename@
 APPVER=@appver@
 EXEC_PATH="c:/Program Files/Yuque/yuque-desktop/语雀.exe"
 START_SHELL_PATH="/opt/deepinwine/tools/spark_run_v4.sh"
