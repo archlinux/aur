@@ -1,5 +1,5 @@
 pkgname=hyprdots-ctl
-pkgver=v0.3.0.24020612
+pkgver=v0.3.0.2.24020612
 pkgrel=1
 pkgdesc="CLI for Hyprdots Configurations ++ Hidden Gems"
 arch=('x86_64')
@@ -10,15 +10,11 @@ makedepends=('git' 'make' 'curl')
 source=("git+https://github.com/kRHYME7/Hyprdots-ctl.git")
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/Hyprdots-ctl" || return
-  git describe --tags | sed 's/-/./g' # Replace hyphens with dots to conform to versioning standards
-}
-
-prepare() {
-  cd "$srcdir/Hyprdots-ctl" || return
-  git fetch --tags
-}
+# pkgver() { #! If someone might read this help me automate the pkgver please. tnx
+#   cd "$srcdir/Hyprdots-ctl" || return
+#   git fetch --tags
+#   git describe --tags | sed 's/-/./g' # Replace hyphens with dots to conform to versioning standards
+# }
 
 package() {
     cd "${srcdir}/Hyprdots-ctl" || return
