@@ -6,7 +6,7 @@ pkgver=0.8.0
 pkgrel=1
 pkgdesc="You like pytorch? You like micrograd? You love tinygrad! <3"
 arch=('any')
-url="https://github.com/geohot/tinygrad"
+url="https://github.com/tinygrad/tinygrad"
 license=('MIT')
 depends=('python>=3.8' 'python-tqdm' 'python-gpuctypes')
 optdepends=('python-llvmlite: LLVM Backend Support'
