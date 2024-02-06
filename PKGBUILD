@@ -2,7 +2,7 @@
 
 pkgname=clash-verge-rev-bin
 _pkgname=clash-verge-rev
-pkgver=1.4.11
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Continuation of Clash Verge | A Clash Meta GUI based on Tauri"
 arch=('x86_64' 'i686' 'aarch64')
@@ -15,9 +15,9 @@ source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pk
 source_i686=("${_pkgname}-${pkgver}-i686.deb::${url}/releases/download/v${pkgver}/clash-verge_${pkgver}_i386.deb")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/clash-verge_${pkgver}_arm64.deb")
 
-sha512sums_x86_64=('fa07c6318070d303d3fe786e4cf8f5284c36733a49c5482cc0e5a5b88daa4faa654e82fa72c78362b4cfc4c9ba05c6a56c4aa624999fd7681d028b9e994ff103')
-sha512sums_i686=('c5f2a53a6885334f7919200376ade46220a3d34f1000bb5ed08acb82076ac0588d8454d7bc1780ea41ff07fecf7e7a384945b5462f2afc73b81e31f375c9a15d')
-sha512sums_aarch64=('8703bfe34d9f33608ab9a41cb1c4fe761d60933c68f30aef5be2941442f83e4936430ff2ed477f395d125aadd3402034f2264d60b7dac642a8fe42db945f55f0')
+sha512sums_x86_64=('edf3d62618828a63d2b6c1262f1a387796962e0e7f23db7f30eec6172fec0dd756f161b69e3507be8e0eaca9da4bd5b46f6bdc8e7ea9f3b31e2a4609958e1ba6')
+sha512sums_i686=('2229cad3807afebdd20d139c6acb10c61fd7531d3dfd7718acadd7bfd7d48ccadaf51527ddd50959b2db1bb13cb194b07cdd7aff82ae873a7ecb27d8c45362d5')
+sha512sums_aarch64=('1d3df833912dc10ea404f8049347a0ebaeecf6b2e505a7a29569899e3bd6842bfba1c96516d20bde8bf743b0ed06e774ccb89a229c9cf8708dfd5c61239d88e7')
 
 package() {
     tar xpf data.tar.gz -C ${pkgdir}
