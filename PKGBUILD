@@ -2,7 +2,7 @@
 pkgname=ffmpeg-nocuda
 pkgver=6.1.1
 gitver=n6.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Complete solution to record, convert and stream audio and video (without nvidias propriatary blobs)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -100,9 +100,9 @@ build() {
         --disable-debug \
         --disable-static \
         --disable-stripping \
-        --disable-hwaccel=cuda \
 	--disable-nvdec \
 	--disable-nvenc \
+	--disable-cuda \
         --prefix='/usr' \
         --disable-debug \
         --disable-static \
