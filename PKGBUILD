@@ -1,15 +1,15 @@
 # Maintainer: Werenter <abelokopytov149@gmail.com>
 
 pkgname=gcli
-pkgver=2.1.0
+pkgver=2.2.0
 pkgdesc="A CLI for Github, Gitlab and Gitea written in C"
 pkgrel=1
 arch=('any')
 license=('BSD')
 url="https://github.com/herrhotzenplotz/gcli"
 depends=('curl')
-source=("https://herrhotzenplotz.de/gcli/releases/gcli-2.1.0/gcli-2.1.0.tar.bz2")
-sha256sums=('d38bed9f7d091aa90c932e6a03d68fee28ce6f278f41fc72d61c8afca96dc87a')
+source=("https://herrhotzenplotz.de/gcli/releases/gcli-$pkgver/gcli-$pkgver.tar.bz2")
+sha256sums=('51f8b84211fff59967ce35988f2ef71ec1f3ebb0e63ab750d2715c94b691980f')
 
 build() {
 	cd "${pkgname}-${pkgver}"
