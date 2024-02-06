@@ -1,11 +1,11 @@
 pkgname=ttf-roboto-fontconfig
 _commit=199ca7fcf1f0606106f8a93d13e42245729f9fcb
 pkgver=2.000980
-pkgrel=1
+pkgrel=2
 pkgdesc='A version of Google’s Roboto font that has fontconfig-compatible metadata'
 arch=('any')
 url='https://github.com/andreasf/Roboto'
-license=('Apache')
+license=('Apache-2.0')
 provides=('ttf-roboto')
 conflicts=('ttf-roboto')
 source=("$url/archive/$_commit.tar.gz")
