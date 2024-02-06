@@ -3,7 +3,7 @@ pkgname=monokle-bin
 _pkgname=Monokle
 pkgver=2.4.4
 _electronversion=27
-pkgrel=1
+pkgrel=2
 pkgdesc="Lets you create, analyze, and deploy YAML manifests with a visual UI, and provides policy validation and cluster management."
 arch=(
     'aarch64'
@@ -15,27 +15,12 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'at-spi2-core'
     'alsa-lib'
-    'expat'
-    'libxcomposite'
-    'libdrm'
-    'libxkbcommon'
-    'libxfixes'
-    'libxdamage'
     'gtk3'
     'nspr'
-    'mesa'
-    'libxrandr'
-    'cairo'
     'nss'
-    'dbus'
-    'libxext'
     'python>=3'
-    'libx11'
-    'pango'
-    'libcups'
-    'libxcb'
+    'nodejs'
 )
 source_aarch64=("${pkgname%-appimage}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-${pkgver}-arm64.deb")
 source_x86_64=("${pkgname%-appimage}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-${pkgver}-amd64.deb")
