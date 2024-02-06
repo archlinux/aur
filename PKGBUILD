@@ -168,6 +168,9 @@ package() {
       mv "$icon" "${icon%.*}-${_suffix}.${icon##/*.}"
     done < <(find "${pkgdir}/usr/share/icons" -type f)
 
+    msg "add -${suffix} suffix to metainfo"
+    mv "${pkgdir}/usr/share/metainfo/org.blender.Blender.metainfo.xml" "${pkgdir}/usr/share/metainfo/org.blender-${_suffix}.Blender.metainfo.xml"
+
   if [[ -e "$pkgdir/usr/share/blender/${_suffix}/scripts/addons/cycles/lib/" ]] ; then
     # make sure the cuda kernels are not stripped
     chmod 444 "$pkgdir"/usr/share/blender/${_suffix}/scripts/addons/cycles/lib/*
