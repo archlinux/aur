@@ -1,6 +1,6 @@
 pkgbase = dwarfs
 	pkgdesc = A fast high compression read-only file system
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/mhx/dwarfs
 	arch = x86_64
@@ -33,11 +33,8 @@ pkgbase = dwarfs
 	depends = fmt
 	depends = gflags
 	depends = double-conversion
-	source = dwarfs-0.9.0.tar.xz::https://github.com/mhx/dwarfs/releases/download/v0.9.0/dwarfs-0.9.0.tar.xz
-	source = 0001-Revert-chore-catch-as-needed-see-gh-184.patch
-	sha256sums = 02f5d8b445dd409d6b8e5c7aeae7516790deaf806cd4762d77a317c7644203b5
-	sha256sums = 3753d5a778cff8f2418c35b02e67f9fe6491fac4414f8e08044a72c492a6560e
-	b2sums = ac095b8b846d97661a1b3fa9b29dacb722751496d684188f37830c55d394ea1af906f09db7ae683074303d53b58e0f87ccb63dd7c8f75cb19051321d9b3949d5
-	b2sums = e41c0c741957c9f06bd87a7d73a816c34ae3535122f5f26e8ec846903361dcc35b5ab9cbbff96459681111ddcfc206652cf359ebf1f6bd3d474ea1b1f6bb6f20
+	source = dwarfs-0.9.1.tar.xz::https://github.com/mhx/dwarfs/releases/download/v0.9.1/dwarfs-0.9.1.tar.xz
+	sha256sums = 9d0c311d37bb1451611731815be92302c596884522a5a1a29b53dacc77a1de12
+	b2sums = 173557540ed62fc6f59a1caf29fd30945ed32b0cbfca4b2a9613c9490d73f52d38c4c2e0ed83a55fcedefea051858d397c5e36689b9eb01e49c9785bd14bdda1
 
 pkgname = dwarfs
