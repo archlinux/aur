@@ -1,0 +1,15 @@
+pkgbase = lib32-extest
+	pkgdesc = X11 XTEST reimplementation primarily for Steam Controller on Wayland
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/Supreeeme/extest
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = lib32-rust-libs
+	source = lib32-extest-1.0.2.tar.gz::https://github.com/Supreeeme/extest/archive/refs/tags/1.0.2.tar.gz
+	source = https://raw.githubusercontent.com/Supreeeme/extest/1.0.2/LICENSE
+	sha256sums = c8b7b79b761b3afa3d7e8dedbea3b8156864c4b4f122ff7297a47ef69b306933
+	sha256sums = SKIP
+
+pkgname = lib32-extest
