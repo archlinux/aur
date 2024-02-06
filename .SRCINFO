@@ -1,0 +1,19 @@
+pkgbase = skiff-desktop
+	pkgdesc = Skiff, now on a Linux Desktop near you!
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/FyraLabs/skiff-desktop
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	depends = libhelium
+	depends = webkitgtk-6.0
+	depends = json-glib
+	source = skiff-desktop-0.2.0.tar.gz::https://github.com/FyraLabs/skiff-desktop/archive/refs/tags/0.2.0.tar.gz
+	sha256sums = 5183f28b2c12703aacef117905d87ea26e6164480cf6a66aad897c30378099f3
+
+pkgname = skiff-desktop
