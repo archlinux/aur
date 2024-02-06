@@ -1,34 +1,22 @@
 pkgbase = fxradio
 	pkgdesc = Internet radio directory for desktop written in tornadofx
-	pkgver = 0.18.2
-	pkgrel = 3
+	pkgver = 0.19.0
+	pkgrel = 1
 	url = http://hudacek.online/fxradio
 	arch = any
-	license = AGPL3
-	makedepends = jdk-openjdk>=20
+	license = AGPL-3.0-only
+	makedepends = jdk-openjdk>=21
+	makedepends = java-openjfx
+	makedepends = git
 	depends = vlc
 	depends = java-runtime
 	depends = libxtst
 	depends = gtk3
 	depends = gtk2
-	depends = giflib
-	depends = pango
-	depends = freetype2
-	depends = libx11
-	depends = libxext
-	depends = lcms2
-	depends = cairo
-	depends = libxi
-	depends = libjpeg-turbo
-	depends = gdk-pixbuf2
-	depends = libpng
 	depends = alsa-lib
-	depends = libxrender
-	depends = libglvnd
 	depends = ffmpeg4.4
-	depends = harfbuzz
 	conflicts = fxradio
-	source = fxradio-0.18.2.zip::https://github.com/Joseph5610/fxradio/archive/refs/tags/v0.18.2.zip
-	sha256sums = fe0633aec74661c21c4a12dd1b5943b91f8d337700ed78f74fc7b16e21999606
+	source = fxradio.git::git+https://github.com/Joseph5610/fxradio.git#tag=v0.19.0
+	sha256sums = SKIP
 
 pkgname = fxradio
