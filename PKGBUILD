@@ -11,10 +11,10 @@
 ## basic info
 _pkgname="skippy-xd"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2023.06.25.r17.g181b143e
-pkgrel=2
+pkgver=2023.07.30.r35.g9ffbaadd
+pkgrel=1
 pkgdesc="A full-screen Exposé-style task switcher for X11"
-url="https://github.com/dreamcat4/skippy-xd"
+url="https://github.com/felixfung/skippy-xd"
 license=("GPL-2.0-or-later")
 arch=("i686" "x86_64")
 
@@ -33,7 +33,7 @@ makedepends=(
 if [ "${_build_git::1}" != "t" ] ; then
   : ${_pkgver=${pkgver%%.r*}}
 
-  _pkgsrc="$_pkgname"
+  _pkgsrc=$(sed -E -e 's&^\S+*/(\S+/\S+)$&\1&; s&/&.&' <<< "$url")
   source+=("$_pkgsrc"::"git+$url.git#tag=v$_pkgver")
   sha256sums+=('SKIP')
 
@@ -44,8 +44,8 @@ else
   provides+=("$_pkgname=${pkgver%%.r*}")
   conflicts+=("$_pkgname")
 
-  _pkgsrc="$_pkgname"
-  source=("$_pkgname"::"git+$url.git")
+  _pkgsrc=$(sed -E -e 's&^\S+*/(\S+/\S+)$&\1&; s&/&.&' <<< "$url")
+  source=("$_pkgsrc"::"git+$url.git")
   sha256sums=('SKIP')
 
   pkgver() {
