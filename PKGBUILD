@@ -1,13 +1,17 @@
 # Maintainer: ChaseCares <aur at chasecares dot dev>
+# Contributor: Thomas <thomas at 6f dot io>
+
 pkgname=jujutsu-git
 _pkgname=jj
-pkgver=0.13.0.r205.g21aa7655
+pkgver=0.13.0.r212.g1adf6b5d
 pkgrel=1
-makedepends=('cargo' 'git')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-pkgdesc="An experimental, Git-compatible DVCS."
+depends=(gcc-libs glibc zlib)
+makedepends=(openssl cargo git)
+options=(!lto)
+arch=(i686 x86_64 armv6h armv7h)
+pkgdesc="Git-compatible VCS that is both simple and powerful"
 url="https://github.com/martinvonz/jj"
-license=('Apache-2.0')
+license=(Apache-2.0)
 source=("$pkgname::git+$url")
 conflicts=('jj' 'jujutsu')
 provides=('jj' 'jujutsu')
@@ -21,7 +25,7 @@ pkgver() {
 prepare() {
     cd "$pkgname"
 
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
     mkdir completions
 }
