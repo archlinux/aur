@@ -2,11 +2,10 @@
 
 pkgname=todoist-appimage-integration
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrates Todoist AppImage with the system using AppImageLauncher"
 arch=('any')
-depends=('todoist-appimage')
-optdepends=('appimagelauncher: to integrate Todoist AppImage into the system')
+depends=('todoist-appimage' 'appimagelauncher')
 source=()
 noextract=()
 md5sums=()
