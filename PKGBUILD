@@ -2,7 +2,7 @@
 
 pkgname=python-types-pyserial
 _pkgname=types-pyserial
-pkgver=3.5.0.20240106
+pkgver=3.5.0.20240205
 pkgrel=1
 pkgdesc="Typing stubs for pyserial"
 arch=('any')
@@ -11,8 +11,7 @@ license=('Apache')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('d9134c34edf08d5d5e57c620f9ff635f0103a8d8c4d2c6385624fe28f1b7e491')
-
+sha256sums=('dc2fbf0b5ca5e6c3eae5054f871b41c026c946e65e4b1a6e4bca959a24c21554')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
