@@ -1,0 +1,16 @@
+pkgbase = php82-pdo_sqlsrv
+	pkgdesc = Microsoft SQL Server PDO Drivers for PHP 8.2
+	pkgver = 5.12.0
+	pkgrel = 1
+	url = https://pecl.php.net/package/pdo_sqlsrv
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = php82
+	depends = php82-pdo
+	depends = msodbcsql
+	backup = etc/php82/conf.d/30-pdo_sqlsrv.ini
+	source = https://pecl.php.net/get/pdo_sqlsrv-5.12.0.tgz
+	sha256sums = 22f0cb17b45f0deccd0bba072ee0085ff4094cd6ee2acc26f7f924975ef652c6
+
+pkgname = php82-pdo_sqlsrv
