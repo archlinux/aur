@@ -11,10 +11,13 @@ provides=(ponscripter)
 conflicts=($provides)
 options=(!strip)
 source=($url/releases/download/v$pkgver/ponscr-$pkgver-linux.zip)
+noextract=(${source[0]##*/})
 cksums=(SKIP)
 package(){
-	[ $CARCH = x86_64 ] && install ponscr -Dt "$pkgdir"/usr/bin || {
-		install ponscr -D "$pkgdir"/usr/bin/ponscr.bin
+	mkdir -p "$pkgdir"/usr/bin
+	bsdtar xf ${source[0]##*/} -C"$pkgdir"/usr/bin
+	[ $CARCH = x86_64 ] || {
+		mv "$pkgdir"/usr/bin/ponscr{,.bin}
 		echo -e '#!/bin/sh\nbox64 ponscr.bin "$@"'>"$pkgdir"/usr/bin/ponscr	# force box64 if binfmt is missing
 		chmod +x "$pkgdir"/usr/bin/ponscr
 	}

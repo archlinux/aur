@@ -10,6 +10,7 @@ pkgbase = ponscripter-bin
 	depends = freetype2
 	provides = ponscripter
 	conflicts = ponscripter
+	noextract = ponscr-4.0.0-linux.zip
 	options = !strip
 	source = https://github.com/07th-mod/ponscripter-fork/releases/download/v4.0.0/ponscr-4.0.0-linux.zip
 	cksums = SKIP
