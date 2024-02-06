@@ -8,9 +8,13 @@ pkgbase = bun-bin
 	license = MIT
 	provides = bun
 	conflicts = bun
-	source_x86_64 = bun-x64-1.0.6.zip::https://github.com/oven-sh/bun/releases/download/bun-v1.0.6/bun-linux-x64.zip
+	source_x86_64 = bun-x64-1.0.26.zip::https://github.com/oven-sh/bun/releases/download/bun-v1.0.26/bun-linux-x64.zip
+	source_x86_64 = LICENSE
 	sha256sums_x86_64 = 99655ef01146497289627af641765a8755d87e2af9ccde7edb04381df81d3b21
-	source_aarch64 = bun-aarch64-1.0.6.zip::https://github.com/oven-sh/bun/releases/download/bun-v1.0.6/bun-linux-aarch64.zip
+	sha256sums_x86_64 = 002c2696d92b5c8cf956c11072baa58eaf9f6ade995c031ea635c6a1ee342ad1
+	source_aarch64 = bun-aarch64-1.0.26.zip::https://github.com/oven-sh/bun/releases/download/bun-v1.0.26/bun-linux-aarch64.zip
+	source_aarch64 = LICENSE
 	sha256sums_aarch64 = 1fe8666d97512a3963b24c0d89c2de160ba8e524d9f1f23193b147bce7a7b917
+	sha256sums_aarch64 = 002c2696d92b5c8cf956c11072baa58eaf9f6ade995c031ea635c6a1ee342ad1
 
 pkgname = bun-bin
