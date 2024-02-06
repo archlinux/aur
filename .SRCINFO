@@ -6,7 +6,7 @@ pkgbase = geany-themes
 	arch = any
 	license = GPL
 	depends = geany
-	source = https://git.geany.org/geany-themes/snapshot/geany-themes-1.24.tar.gz
-	sha1sums = 45063d57079e9f444c677f0d78b5c0d47653bfa5
+	source = geany-themes-1.24.tar.gz::https://github.com/geany/geany-themes/archive/refs/tags/1.24.tar.gz
+	b2sums = 8db169253c29aa7a4fb6eb6d881d5bb79ac3d14101e96bca6dcd7576c6d576c6f5632f30c209f67307a1e4b68bb7b619bf97e5195651003e0ca79f0efd37054c
 
 pkgname = geany-themes
