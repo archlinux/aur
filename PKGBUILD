@@ -2,10 +2,10 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=plot3D
-_pkgver=1.4
+_pkgver=1.4.1
 pkgname=r-${_pkgname,,}
-pkgver=1.4
-pkgrel=6
+pkgver=1.4.1
+pkgrel=1
 pkgdesc='Plotting Multi-Dimensional Data'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -15,7 +15,7 @@ depends=(
   r-misc3d
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d04a45197646fb36bc38870c1c2351cb56b912bd772b1ebfa25eaeef35fda9c0')
+sha256sums=('db6df74844dda9177f2be024762b2f0e63182916e987a09480514d078d55d1f4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
