@@ -1,0 +1,10 @@
+[Unit]
+Description=jack_mixer_cc: A companion for jack_mixer that provides CLI control for channel adjustments.
+
+[Service]
+Type=simple
+ExecStart=python /usr/bin/jack_mixer_cc.py -c /path/to/jack_mixer/config.xml
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
