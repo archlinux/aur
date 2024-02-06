@@ -1,15 +1,15 @@
 pkgbase = nats-server-bin
 	pkgdesc = Simple, secure and high performance open source messaging system
-	pkgver = 2.10.9
+	pkgver = 2.10.10
 	pkgrel = 1
 	url = https://nats.io
 	arch = x86_64
 	license = Apache
-	provides = nats-server=2.10.9
+	provides = nats-server=2.10.10
 	conflicts = nats-server
-	source = https://github.com/nats-io/nats-server/releases/download/v2.10.9/nats-server-v2.10.9-linux-amd64.zip
+	source = https://github.com/nats-io/nats-server/releases/download/v2.10.10/nats-server-v2.10.10-linux-amd64.zip
 	source = local://nats-server.service
-	sha256sums = 0b251614eb2ad18ab499493ee76ede75db4fa60bbdca175aff70a72971e50b19
+	sha256sums = 9c98ca67a7a6b18b7fcd8776b17934458fa31a7b6fb5122ba9e860b47507eb1c
 	sha256sums = 6b46575f585ef0b8415c5b71592b3cb2aee9fc93447e043a5f92033513199a5a
 
 pkgname = nats-server-bin
