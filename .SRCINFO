@@ -1,6 +1,6 @@
 pkgbase = payara
 	pkgdesc = Jakarta EE (Java EE) & MicroProfile compatible application server for production and containerized deployments.
-	pkgver = 6.2023.10
+	pkgver = 6.2024.1
 	pkgrel = 1
 	url = http://www.payara.fish/
 	install = payara.install
@@ -9,11 +9,11 @@ pkgbase = payara
 	license = GPL2
 	depends = java-environment>=11
 	options = !strip
-	source = https://search.maven.org/remotecontent?filepath=fish/payara/distributions/payara/6.2023.10/payara-6.2023.10.zip
+	source = https://search.maven.org/remotecontent?filepath=fish/payara/distributions/payara/6.2024.1/payara-6.2024.1.zip
 	source = payara.service
 	source = payara-sysusers.conf
 	source = payara-tmpfiles.conf
-	sha256sums = 9aaebecc4e70eef87a59a23b53cc85caba53bbf9573bf237506edb1f365fc498
+	sha256sums = d1340636e60ab50214fee2f05f134276d01636e9f4d62e80e6360328b0645c10
 	sha256sums = ae84891616d6a4bd6a7059c707f81598340d4cb8369bb4fe9d922cf3f997cdfb
 	sha256sums = a0d04db70b87b1105bc762d23e49b527ec94bd21ea78bf9c56d54343a8711dfb
 	sha256sums = d04df28962fa7b033b0767846e424b7ea9537530afd7006a75505e318ec28b35
