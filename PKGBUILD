@@ -19,7 +19,7 @@ arch=(
 )
 _http="https://bitbucket.org"
 _ns="pypa"
-url="${_http}/${_ns}/${_name}"
+url="${_http}/${_ns}/${_pkg}"
 license=(
   'PSF'
 )
@@ -49,7 +49,7 @@ prepare() {
 # shellcheck disable=SC2154
 build() {
   cd \
-    "${srcdir}/${_name}-${pkgver}" || \
+    "${srcdir}/${_pkg}-${pkgver}" || \
     exit
   "${_py}" \
     setup.py \
