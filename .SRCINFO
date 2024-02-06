@@ -1,0 +1,15 @@
+pkgbase = dotslash
+	pkgdesc = Simplified executable deployment
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/facebook/dotslash
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = https://github.com/facebook/dotslash/archive/v0.2.0/dotslash-0.2.0.tar.gz
+	sha256sums = bb7212a13248474232c0b23c94bc1736b5653094b87c817d9b32c0dcbd8fba26
+
+pkgname = dotslash
