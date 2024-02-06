@@ -3,7 +3,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libjpeg-turbo
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 arch=('any')
 pkgdesc="JPEG image codec with accelerated baseline compression and decompression (android)"
@@ -13,8 +13,8 @@ depends=('android-ndk')
 groups=(android-libjpeg-turbo)
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-cmake' 'yasm')
-source=("http://downloads.sourceforge.net/libjpeg-turbo/libjpeg-turbo-$pkgver.tar.gz")
-md5sums=('1fdc6494521a8724f5f7cf39b0f6aff3')
+source=("https://github.com/libjpeg-turbo/libjpeg-turbo/archive/refs/tags/$pkgver.tar.gz")
+md5sums=('94756db95bc2477f7f7dad1c2590b51f')
 
 build() {
     cd "${srcdir}"/libjpeg-turbo-${pkgver}
