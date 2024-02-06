@@ -1,8 +1,9 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+
 pkgname=seiscomp
-pkgver=5.5.7
+pkgver=6.2.0
 pkgrel=1
-pkgdesc="A seismological software for data acquisition, processing, distribution and interactive analysis."
+pkgdesc='A seismological software for data acquisition, processing, distribution and analysis.'
 arch=('x86_64')
 url="https://github.com/SeisComP"
 _sssurl="https://github.com/swiss-seismological-service"
@@ -12,7 +13,7 @@ makedepends=('boost' 'cmake' 'gcc-fortran' 'libmariadbclient' 'postgresql-libs')
 optdepends=("${pkgname}-maps: for SeisComp default map files"
             "${pkgname}-docs: for SeisComp documentations files"
             "postgresql: for using PostgreSQL database")
-install=${pkgname}.install
+install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/seiscomp/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgname}-seedlink-${pkgver}.tar.gz::${url}/seedlink/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgname}-common-${pkgver}.tar.gz::${url}/common/archive/refs/tags/${pkgver}.tar.gz"
@@ -24,14 +25,14 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/seiscomp/archive/refs/tags/${pkgver
         "${pkgname}.sh"
         "${pkgname}-sysusers.conf"
         "${pkgname}-tmpfiles.conf")
-sha256sums=('683ad7d0ae8078946be199ed4bc846c1dbb3ed444d58308a8093d4ef482447e5'
-            '4a06a1e09a37e7eca96c5eaa0a6f1148e4dec5e0fff4e68d559229617d1c06f4'
-            '8024d7af9fd9a37283e846e9b7c4cbbc12cd8e3b0cf802e769545c2df01e9ccc'
-            '0d3702250f666f185b465cf7b7c8dc18dc6cc24f4509cc0b42108a894a725233'
-            'c1cdc483a9b3c1ee020111737fd939879ebd4a41dfcaf0594e5c3d4324a397ec'
-            '180f0911f198cb533a71f213fb2d3c7deb43a92a9dd0daf77e37b4ed76345804'
-            '6454af3b0938789a70669e0d716dc5b1ebe8a560c6a86277404d0b2bb757e963'
-            '7de7e8b5ab46ad5fc2b53c4071eab73d8bce7af81e3d36b8b048d6542ac6c5f4'
+sha256sums=('6fe8e82a179cc246e3c323bbc6926371917900e90ef7e82c5dbaca905db2e11f'
+            'c892290b9783e75756a93723ca9f3604cfa42d3569dc74f140d6ca30da12db79'
+            '600b4c050c9da877b1be17576c8e287860d847fa93668173383f84e742b3af89'
+            'df752fd68d54ab6cd3243e38b6e80bf29bcbc1594e32ce7d3c17c049f398524f'
+            '0c90943bc8edf512d35bc246d6e41407b53080dea72be28ba7313b5eea609480'
+            '605e37d4c5cc5586ad77d10c7a400f6df3d494aa320661694b291bed6ff5988d'
+            'd0258b08a7c32f879c6fcc1653bb3f8ddc141724193470e79bb8ace44b8f4b23'
+            '599ba385c14e081b35e240f5bd9f8e0fcad5de1a6a8dc39f03d86b1f5a63c756'
             'e8195d8cebe4a134d6054fb3cbf6fea9e5284d96192c957c9079059e4b463016'
             'be8a26d9ac60c17b1ee56207f82e7e3ca5c5c2249ab24ce75c4ac25f952a0ee1'
             '312911098291e60a40d4f3fd455b9a40b2d9b3489a589fb927fb6fc0b9ac2dd2')
@@ -83,3 +84,4 @@ package() {
     #chmod -R u=rwX,g=rwX,o=rX "${pkgdir}/opt/${pkgname}"
     #find "${pkgdir}/opt/${pkgname}" -type d -exec chmod g+s '{}' \;
 }
+# vim:set ts=4 sw=4 et:
