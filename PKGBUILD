@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fooyin
 _pkgname=Fooyin
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="A customisable music player"
 arch=('any')
@@ -17,11 +17,14 @@ depends=(
 )
 makedepends=(
     'gendesk'
-    'cmake'
     'gcc'
     'git'
     'qcoro-qt6'
     'ninja'
+    'base-devel'
+    'pkgconf'
+    'qt6-svg'
+    'qt6-tools'
 )
 optdepends=(
     'sdl2'
