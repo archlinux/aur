@@ -1,26 +1,27 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=serialportassistant-bin
 _pkgname=SerialPortAssistant
-pkgver=0.5.16
-pkgrel=4
-pkgdesc="A cross-platform serial port assistant. It can run on WINDOWS, linux、android、macos system.一个跨平台的串口助手"
+pkgver=0.5.17
+pkgrel=1
+pkgdesc="A cross-platform serial port assistant.一个跨平台的串口助手"
 arch=("x86_64")
 url="https://github.com/KangLin/SerialPortAssistant"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}-${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'qt5-webengine'
-    'qt5-base'
     'openssl'
-    'qt5-serialport'
+    'qt6-scxml'
+    'qt6-serialport'
+    'qt6-webengine'
+    'qt6-base'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6e181536039614a311d2ce1042de45ba4f99992e668dc62261e8dd7fdf0c387f'
-            '66942e97f4cac1a25292add681ae9416865d7672e9bb4e0b9c1057d43ab14b28')
+sha256sums=('9cbbc1b6d92d3ca1d309f285ec291d005967213df239aac8b0735b4818c64c00'
+            '188630492eeef70242520d03097cf200ad1746b41de33f713f410139b6c6c82d')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}-v${pkgver}|g" \
