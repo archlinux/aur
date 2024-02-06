@@ -3,7 +3,7 @@
 pkgname=tlpui-git
 _app_id=com.github.d4nj1.tlpui
 pkgver=1.6.4.r0.g2caad18
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="A GTK user interface for TLP written in Python"
 arch=('any')
@@ -32,11 +32,11 @@ package() {
 
   install -Dm644 "${pkgname%-git}.desktop" "$pkgdir/usr/share/applications/${_app_id}.desktop"
   install -Dm644 "AppImage/${_app_id}.appdata.xml" -t "$pkgdir/usr/share/metainfo/"
-  install -Dm644 "${pkgname%-git}/icons/themeable/hicolor/scalable/apps/${pkgname%-git}.svg" \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/${_app_id}.svg"
+  install -Dm644 "${pkgname%-git}/icons/themeable/hicolor/scalable/apps/${pkgname%-git}.svg" -t \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
 
   for i in 16 32 48 64 128 96 128 256; do
-    install -Dm644 "${pkgname%-git}/icons/themeable/hicolor/${i}x${i}/apps/${pkgname%-git}.png" \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/${_app_id}.png"
+    install -Dm644 "${pkgname%-git}/icons/themeable/hicolor/${i}x${i}/apps/${pkgname%-git}.png" -t \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/"
   done
 }
