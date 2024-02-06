@@ -2,7 +2,7 @@
 
 pkgname=opengfw
 _pkgname=OpenGFW
-pkgver=0.0.5
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="A flexible, easy-to-use, open source implementation of GFW"
 arch=(x86_64)
@@ -11,14 +11,13 @@ license=(MPL-2.0)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ad961f68d5dfb1958ce6fae03b910f135712faf11e5b73032572c61ad9a4f717')
+sha256sums=('a855ec0ececf3c2e1a662024a077529297d03057220a2ba50234af7e1a52b7e9')
 
 _archive="$_pkgname-$pkgver"
 
 prepare() {
   cd "$_archive"
 
-  # Avoid downloading Go dependencies in build() by doing it here instead
   go mod download -x
 }
 
@@ -53,5 +52,5 @@ package() {
   ln -s /usr/bin/OpenGFW "$pkgdir/usr/bin/opengfw"
 
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
-  cp --archive docs/* "$pkgdir/usr/share/doc/$pkgname"
+  cp --archive -t "$pkgdir/usr/share/doc/$pkgname" docs
 }
