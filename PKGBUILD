@@ -3,7 +3,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-xz
-pkgver=5.4.5
+pkgver=5.4.6
 pkgrel=1
 pkgdesc="Library and command line tools for XZ and LZMA compressed files (android)"
 arch=('any')
@@ -11,9 +11,9 @@ url="https://tukaani.org/xz"
 license=('custom' 'GPL' 'LGPL')
 depends=('android-ndk')
 options=(!strip !buildflags staticlibs !emptydirs)
-makedepends=('android-configure' 'android-sdk-build-tools')
-source=("https://tukaani.org/xz/xz-${pkgver}.tar.gz")
-md5sums=('d2bb81e1a1a7808352c4ca28622f5c72')
+makedepends=('android-configure' 'android-sdk-build-tools' 'po4a' 'doxygen')
+source=("https://github.com/tukaani-project/xz/archive/refs/tags/v${pkgver}.tar.gz")
+md5sums=('b7851aa372c79bba2520f0fbaa562acb')
 
 prepare() {
     source android-env ${_android_arch}
@@ -24,6 +24,7 @@ build() {
     cd "${srcdir}"/xz-${pkgver}
     source android-env ${_android_arch}
 
+    ./autogen.sh
     android-${_android_arch}-configure \
         --disable-xz \
         --disable-xzdec \
