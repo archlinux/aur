@@ -2,7 +2,7 @@
 # Contributor: sh0 <mee@sh0.org>
 
 pkgname=pdsh
-pkgver=2.34
+pkgver=2.35
 pkgrel=1
 pkgdesc='Parallel Distributed Shell'
 url='https://github.com/chaos/pdsh'
@@ -13,7 +13,7 @@ makedepends=('autoconf')
 optdepends=('perl: required by the dshbak utility')
 options=('libtool')
 source=("https://github.com/chaos/pdsh/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('75916c61a469303ff859605b1375d391')
+md5sums=('d9ed65a6ede56a9e1f718af3b39a5d2b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

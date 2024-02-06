@@ -1,6 +1,6 @@
 pkgbase = pdsh
 	pkgdesc = Parallel Distributed Shell
-	pkgver = 2.34
+	pkgver = 2.35
 	pkgrel = 1
 	url = https://github.com/chaos/pdsh
 	arch = i686
@@ -10,8 +10,7 @@ pkgbase = pdsh
 	depends = openssh
 	optdepends = perl: required by the dshbak utility
 	options = libtool
-	source = https://github.com/chaos/pdsh/releases/download/pdsh-2.34/pdsh-2.34.tar.gz
-	md5sums = 75916c61a469303ff859605b1375d391
+	source = https://github.com/chaos/pdsh/releases/download/pdsh-2.35/pdsh-2.35.tar.gz
+	md5sums = d9ed65a6ede56a9e1f718af3b39a5d2b
 
 pkgname = pdsh
-
