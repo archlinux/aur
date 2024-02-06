@@ -3,7 +3,7 @@ mypackagename=pulpo   # only if github repo has a different name than this pkgba
 pkgname=pulpo-bin
 pkgbase=pulpo-bin
 pkgver=1.0      # remember to also change the version number bellow in the pkgver() function
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="A Gnome (wayland) shell notifier for Gotify and Ntfy server based on Rust."
 arch=('x86_64')
@@ -28,7 +28,7 @@ validpgpkeys=()
 
 
 package() {
-	cd "${mypackagename}.v${pkgver}_Arch_amd64"
+	cd "${mypackagename}.${pkgver}_Arch_amd64"
 	mkdir -p ${pkgdir}/opt/${mypackagename}
 	mkdir -p ${pkgdir}/opt/${mypackagename}/config
 	mkdir -p ${pkgdir}/opt/${mypackagename}/resources
