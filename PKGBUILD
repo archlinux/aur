@@ -2,7 +2,7 @@
 
 pkgname=fav-git
 _pkgname="${pkgname%-git}"
-pkgver=v0.1.10.r5.gf8b0c6c
+pkgver=v0.1.11.r1.gd7e21c3
 pkgrel=1
 pkgdesc='Back up your favorite bilibili resources with CLI'
 url="https://github.com/kingwingfly/${_pkgname}"
