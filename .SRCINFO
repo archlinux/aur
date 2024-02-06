@@ -5,6 +5,7 @@ pkgbase = gtklock-git
 	url = https://github.com/jovanlanik/gtklock
 	arch = x86_64
 	license = GPL3
+	makedepends = meson
 	makedepends = git
 	makedepends = scdoc
 	depends = gtk3
