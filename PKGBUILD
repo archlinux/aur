@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc="Chinese Lunar Date Control Written in Qt.用Qt写的中国农历日期控件"
 arch=("x86_64")
 url="https://github.com/KangLin/LunarCalendar"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
