@@ -1,0 +1,43 @@
+diff --git a/thunar/thunar-window.c b/thunar/thunar-window.c
+index 406b3eee..f5a247f3 100644
+--- a/thunar/thunar-window.c
++++ b/thunar/thunar-window.c
+@@ -399,6 +399,7 @@ struct _ThunarWindow
+   /* to be able to change folder on "device-pre-unmount" if required */
+   ThunarDeviceMonitor       *device_monitor;
+ 
++  GtkWidget                 *header_bar;
+   GtkWidget                 *grid;
+   GtkWidget                 *menubar;
+   gboolean                   menubar_visible;
+@@ -844,7 +845,7 @@ thunar_window_init (ThunarWindow *window)
+ 
+   /* determine the default window size from the preferences */
+   gtk_window_set_default_size (GTK_WINDOW (window), last_window_width, last_window_height);
+-
++  gtk_window_set_titlebar (GTK_WINDOW (window), window->header_bar);
+   /* restore the maxized state of the window */
+   if (G_UNLIKELY (last_window_maximized))
+     gtk_window_maximize (GTK_WINDOW (window));
+@@ -1000,6 +1001,11 @@ thunar_window_init (ThunarWindow *window)
+   /* get a reference of the global job operation history */
+   window->job_operation_history = thunar_job_operation_history_get_default ();
+ 
++  window->header_bar = gtk_header_bar_new ();
++  gtk_window_set_titlebar (GTK_WINDOW(window), window->header_bar);
++  gtk_header_bar_set_show_close_button (GTK_HEADER_BAR (window->header_bar),TRUE);
++  gtk_widget_show (window->header_bar);
++  
+   window->location_toolbar = NULL;
+   thunar_window_location_toolbar_create (window);
+ 
+@@ -6239,7 +6245,8 @@ thunar_window_location_toolbar_create (ThunarWindow *window)
+   thunar_window_location_toolbar_load_visibility (window);
+ 
+   /* attach the toolbar to the window */
+-  gtk_grid_attach (GTK_GRID (window->grid), window->location_toolbar, 0, 1, 1, 1);
++  gtk_header_bar_set_custom_title (GTK_HEADER_BAR (window->header_bar), window->location_toolbar);
++  //gtk_grid_attach (GTK_GRID (window->grid), window->location_toolbar, 0, 1, 1, 1);
+ }
+ 
+ 
