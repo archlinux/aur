@@ -27,7 +27,7 @@ license=(
   MIT
 )
 source=(
-  "${_pkgname}-${pkgver}::git+${_url}.git"
+  "${_pkgname}-${pkgver}::git+${url}.git"
   "${_pkgname}.desktop"
   "${_pkgname}"
   "${_pkgname}.license")
@@ -40,7 +40,67 @@ sha256sums=(
 validpgpkeys=(
   '2FCA4A1E3AF4278F7AD3B7637F059C0F7B9A12F0')
 
+_parse_ver() {
+  local \
+    _pkgver="${1}" \
+    _out="" \
+    _ver \
+    _rev \
+    _commit
+  _ver="$( \
+    echo \
+      "${_pkgver}" | \
+          awk \
+            -F '+' \
+            '{print $1}')"
+  _rev="$( \
+    echo \
+      "${_pkgver}" | \
+      awk \
+        -F '+' \
+        '{print $2}')"
+  _commit="$( \
+    echo \
+      "${_pkgver}" | \
+      awk \
+        -F '+' \
+        '{print $3}')"
+  _out=${_ver}
+  [[ "${_rev}" != "" ]] && \
+    _out+=".r${_rev}"
+  [[ "${_commit}" != "" ]] && \
+    _out+=".${_commit}"
+  echo \
+    "${_out}"
+}
+
+pkgver() {
+  local \
+    _pkgver
+  cd \
+    "${_pkgname}-${pkgver}"
+  _pkgver="$( \
+    git \
+      describe \
+      --tags | \
+      sed \
+        's/-/+/g')"
+  __pkgver="${pkgver}"
+  _parse_ver \
+    "${_pkgver}"
+}
+
 prepare() {
+  tree \
+    -d \
+      2 \
+    "${srcdir}" || \
+    ls \
+      "${srcdir}"
+  mv \
+    "${_pkgname}-${__pkgver}" \
+    "${_pkgname}-${pkgver}" || \
+  true
   # Remove JS source maps
   find \
     . \
