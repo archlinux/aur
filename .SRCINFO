@@ -1,7 +1,7 @@
 pkgbase = bbg-bin
 	pkgdesc = A static blog generator based on Electron Technology
 	pkgver = 20240104
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bbg.nekomoe.xyz/
 	arch = aarch64
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = bbg-bin
 	source = LICENSE-20240104::https://raw.githubusercontent.com/bbg-contributors/bbg/20240104/LICENSE
 	source = bbg.sh
 	sha256sums = 436a6d536138f203ac333858cff92a568be62797752b3adb94bcaa0f6ffe7ef6
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 	source_aarch64 = bbg-20240104-aarch64.deb::https://github.com/bbg-contributors/bbg/releases/download/20240104/bbg-20240104-arm64.deb
 	sha256sums_aarch64 = 2955334403f927cf55f3d4f106a3e627186b50864dfba76cd7db3aedbd4d66d9
 	source_x86_64 = bbg-20240104-x86_64.deb::https://github.com/bbg-contributors/bbg/releases/download/20240104/bbg-20240104-amd64.deb
