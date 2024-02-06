@@ -3,8 +3,8 @@ pkgname=skywire-bin
 _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Building a new Internet. Skycoin.com"
-pkgver='1.3.15'
-pkgrel='2'
+pkgver='1.3.17'
+pkgrel='1'
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -37,15 +37,15 @@ sha256sums=('9257dc9cf98b382049b500f646c0005950077cedb83abbb62984983e4dda0874'
             'a6941680b5858ca3e0c85d9bf5824455a0c95524b61e42352462f2abbb750495'
             'fee14fb95e02a6c74626e9c89def7c1137192c5c23470a05c750cd97f3d3f0dd'
             '8519d027325dcb34877bb5b0fb0c3c035d7589c0046b53935e2b949d436c4be3'
-            'd9a0a4ae8acecb9d35944c5376520c734c042c6d8820c7ff75f2c6a5f0c48f82')
-sha256sums_x86_64=('413888a3ae982b439bcb4e6d91bb118d6cdc737cad00bddd92d4565750b59e61')
-sha256sums_aarch64=('a6eba0e8dd463672eb91ff676dfcccca2ff114cdf904d866be963872eb3ff3c0')
-sha256sums_armv8=('a6eba0e8dd463672eb91ff676dfcccca2ff114cdf904d866be963872eb3ff3c0')
-sha256sums_armv7=('30ab172e24876a08c75877b52fe0cdec1f65b1847d742d8b14e490b59cedfe09')
-sha256sums_armv7l=('30ab172e24876a08c75877b52fe0cdec1f65b1847d742d8b14e490b59cedfe09')
-sha256sums_armv7h=('30ab172e24876a08c75877b52fe0cdec1f65b1847d742d8b14e490b59cedfe09')
-sha256sums_arm=('2a58659b184e55a3e154cf91d2c59e3bd6680e27e9de444cc39cfa1f0a691baa')
-sha256sums_riscv64=('be69d37fd8ea09e781a3ff9effdd16bb0a79a235d9257be9daab956489ac6a54')
+            'd1bbd2b6d141cee8499fe2ae0c8429325d2d80ea895cce3db2db11f0629cc740')
+sha256sums_x86_64=('3257cec2a132f808de16c173c7b42b1ed920006591302aa55d2efef2a7ae763f')
+sha256sums_aarch64=('30b17a085054542ef4b5d43055f59a5cf3d53e44ae5741e412230e2a566e18bf')
+sha256sums_armv8=('30b17a085054542ef4b5d43055f59a5cf3d53e44ae5741e412230e2a566e18bf')
+sha256sums_armv7=('b16589e54bea38b334392ccbe89bb29163329a0bc964c55fe9a7d25874e6c8cb')
+sha256sums_armv7l=('b16589e54bea38b334392ccbe89bb29163329a0bc964c55fe9a7d25874e6c8cb')
+sha256sums_armv7h=('b16589e54bea38b334392ccbe89bb29163329a0bc964c55fe9a7d25874e6c8cb')
+sha256sums_arm=('6c6f69e9a72d9c81fca141dfd2c8d607db7291f3eae5c4dd672105741dc64c46')
+sha256sums_riscv64=('d6c9d579f9a6c415a474230aa22b15c2e56474518cc429e33499a25973b46b50')
 #https://github.com/skycoin/skywire/releases/download/v1.3.15/skywire-v1.3.15-linux-amd64.tar.gz
 #https://github.com/skycoin/skywire/releases/download/v1.3.15/skywire-v1.3.15-linux-arm64.tar.gz
 #https://github.com/skycoin/skywire/releases/download/v1.3.15/skywire-v1.3.15-linux-armhf.tar.gz
