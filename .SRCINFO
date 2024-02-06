@@ -1,7 +1,7 @@
 pkgbase = skiff-desktop
 	pkgdesc = Skiff, now on a Linux Desktop near you!
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FyraLabs/skiff-desktop
 	arch = x86_64
 	arch = aarch64

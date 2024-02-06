@@ -2,7 +2,7 @@
 
 pkgname=skiff-desktop
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Skiff, now on a Linux Desktop near you!"
 arch=('x86_64' 'aarch64')
 depends=('libhelium' 'webkitgtk-6.0' 'json-glib')
@@ -35,5 +35,5 @@ package() {
   cd "$srcdir/skiff-desktop-$pkgver"
 
   meson install -C builddir --destdir "$pkgdir"
-  rm -rf "$pkgdir/usr/share/glib-2.0"
+  sed -i "s@SkiffDesktop@SkiffDesktop/@" "$pkgdir/usr/share/glib-2.0/schemas/com.fyralabs.SkiffDesktop.gschema.xml"
 }
