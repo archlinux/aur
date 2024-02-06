@@ -2,14 +2,14 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 pkgname=dnglab-bin
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Camera RAW to DNG file format converter"
 arch=(
     'aarch64'
     'x86_64'
 )
 url="https://github.com/dnglab/dnglab"
-license=('LGPL2.1')
+license=('LGPL-2.1-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
