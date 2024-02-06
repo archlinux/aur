@@ -1,6 +1,6 @@
 pkgbase = winamax-bin
 	pkgdesc = Winamax Poker
-	pkgver = 1.46
+	pkgver = 1.47.0
 	pkgrel = 1
 	url = https://www.winamax.fr
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = winamax-bin
 	depends = alsa-lib
 	depends = mesa
 	optdepends = libappindicator-gtk3
-	source = https://dl.winamax.fr/client/electron/linux/all/winamax-1.46.deb
-	sha256sums = 07606a5d5665b9c9af55fd8596df3e11aae3d7cce83ca601e1e416be21d142f3
+	source = https://dl.winamax.fr/client/electron/linux/all/winamax-1.47.0.deb
+	sha256sums = ca494ea60affcdd8526a777474134abf90456eac6df8bd590e9784b6ea402760
 
 pkgname = winamax-bin
