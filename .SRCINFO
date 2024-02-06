@@ -1,7 +1,7 @@
 pkgbase = lightrail-core-bin
 	pkgdesc = An open-source AI command bar that seeks to simplifies software development. It is designed to be a general-purpose, extensible platform for integrating LLM-based tooling into engineering/development workflows.
 	pkgver = 0.3.9
-	pkgrel = 2
+	pkgrel = 4
 	url = https://lightrail.ai/
 	arch = x86_64
 	license = MIT
@@ -17,6 +17,6 @@ pkgbase = lightrail-core-bin
 	source = lightrail-core.sh
 	sha256sums = 00450d3b6be3379313e2b2d0ffdb4bc5190ee9a09de6fd120dc8cc3e8e4d7184
 	sha256sums = 979fa2f24e61dc088e74d67f0cb0f6db041ea88b1574c5a1ec1c71c8a083a2c3
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = lightrail-core-bin
