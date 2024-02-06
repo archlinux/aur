@@ -13,6 +13,7 @@ pkgbase = barnard-git
 	makedepends = go
 	depends = openal
 	depends = opus
+	depends = opusfile
 	source = barnard::git+https://git.2mb.codes/~cmb/barnard
 	sha512sums = SKIP
 
