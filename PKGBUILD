@@ -1,16 +1,16 @@
 # Maintainer Max Harmathy <harmathy@mailbox.org>
+# Maintainer:  Misaka13514 <Misaka13514 at gmail dot com>
 # Contributor: noonov <noonov@gmail.com>
 
 pkgname=ttf-vlgothic
 pkgver=20230918
-pkgrel=1
+pkgrel=2
 pkgdesc="Japanese TrueType fonts from Vine Linux"
 arch=('any')
 url="https://vlgothic.dicey.org/"
-license=('custom')
-source=("https://github.com/daisukesuzuki/VLGothic/releases/download/${pkgver}/VLGothic-${pkgver}.tar.xz")
-md5sums=('739a9f9995e398bc5cb9ce5697a8691c')
-b2sums=('d9a3064512996e9f9f5e035907bdffdec92bf8222353a116374fe924c9d31d44702de1f6b1e4f60e96a883cd796cb0c5a6b5b283c71c82c88a8f73c337443896')
+license=('mplus AND BSD-3-Clause')
+source=("VLGothic-${pkgver}.tar.xz::https://github.com/daisukesuzuki/VLGothic/releases/download/${pkgver}/VLGothic-${pkgver}.tar.xz")
+sha256sums=('c064b19e72da23a26ef18f336bcfed2cb2f5243cc055f1cfa0b35afc7e850e18')
 
 package() {
   cd ${srcdir}/VLGothic
