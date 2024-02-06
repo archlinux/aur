@@ -1,13 +1,13 @@
 [Desktop Entry]
 Type=Application
-Version=1.1
+Version=1.5
 Name=osu!lazer
+Comment=A free-to-win rhythm game. Rhythm is just a *click* away!
 Icon=osu-lazer
-MimeType=application/x-osu-lazer-beatmap;application/x-osu-lazer-skin;application/zip;application/x-rar;x-scheme-handler/osu
-Comment=Open source free-to-win rhythm game
-Exec=/usr/bin/osu-lazer %F
+Exec=osu-lazer %F
 Terminal=false
+MimeType=application/x-osu-beatmap-archive;application/x-osu-skin-archive;application/x-osu-beatmap;application/x-osu-storyboard;application/x-osu-replay;x-scheme-handler/osu;
 Categories=Game;
-X-Desktop-File-Install-Version=0.24
-StartupWMClass=osu!
 StartupNotify=true
+StartupWMClass=osu!
+SingleMainWindow=true

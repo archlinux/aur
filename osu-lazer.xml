@@ -1,13 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
-    <mime-type type="application/x-osu-lazer-beatmap">
-        <comment>osu! Beatmap</comment>
-        <icon name="osu-lazer"/>
-        <glob pattern="*.osz"/>
-    </mime-type>
-    <mime-type type="application/x-osu-lazer-skin">
-        <comment>osu! Skin</comment>
-        <icon name="osu-lazer"/>
-        <glob pattern="*.osk"/>
-    </mime-type>
+	<mime-type type="application/x-osu-beatmap-archive">
+		<comment>osu! beatmap archive</comment>
+		<icon name="osu-lazer"/>
+		<sub-class-of type="application/zip"/>
+		<generic-icon name="package-x-generic"/>
+		<glob pattern="*.osz"/>
+	</mime-type>
+	<mime-type type="application/x-osu-skin-archive">
+		<comment>osu! skin archive</comment>
+		<icon name="osu-lazer"/>
+		<sub-class-of type="application/zip"/>
+		<generic-icon name="package-x-generic"/>
+		<glob pattern="*.osk"/>
+	</mime-type>
+	<mime-type type="application/x-osu-beatmap">
+		<comment>osu! difficulty</comment>
+		<icon name="osu-lazer"/>
+		<sub-class-of type="text/plain"/>
+		<generic-icon name="text-x-generic"/>
+		<glob pattern="*.osu"/>
+		<magic priority="50">
+			<match type="string" value="osu file format v" offset="0"/>
+		</magic>
+	</mime-type>
+	<mime-type type="application/x-osu-storyboard">
+		<comment>osu! storyboard</comment>
+		<icon name="osu-lazer"/>
+		<sub-class-of type="text/plain"/>
+		<generic-icon name="text-x-generic"/>
+		<glob pattern="*.osb"/>
+	</mime-type>
+	<mime-type type="application/x-osu-replay">
+		<comment>osu! replay</comment>
+		<icon name="osu-lazer"/>
+		<glob pattern="*.osr"/>
+	</mime-type>
 </mime-info>
