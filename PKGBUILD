@@ -2,7 +2,7 @@
 pkgname=perplexity-ai-app
 pkgver=2.0.0
 _electronversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="The Unofficial Perplexity AI Desktop App, powered by Electron which brings the magic of AI language processing to your desktop."
 arch=('any')
 url="https://github.com/inulute/perplexity-ai-app"
@@ -22,11 +22,11 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
     gendesk -f -n -q --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
     cd "${srcdir}/${pkgname}.git"
@@ -34,13 +34,15 @@ build() {
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
+    HOME="${srcdir}/.electron-gyp"
     npm install --force
     npm run package-linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname}.git/release-builds/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname}.git/release-builds/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${pkgname}.git/assets/icons/png/favicon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
