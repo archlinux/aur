@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=libdisplay-info-git
-pkgver=0.1.1+9.g83ae3f5515
+pkgver=0.1.1.r24.gebee359
 pkgrel=1
 pkgdesc='EDID and DisplayID library'
 url='https://gitlab.freedesktop.org/emersion/libdisplay-info'
@@ -11,10 +11,10 @@ source=("git+$url")
 sha1sums=('SKIP')
 makedepends=(git hwdata meson ninja python)
 conflicts=(libdisplay-info)
-provides=(libdisplay-info)
+provides=(libdisplay-info libdisplay-info.so)
 
 pkgver() {
-  git -C libdisplay-info describe --tags --abbrev=10 | sed 's/^v//; s/-/+/; s/-/./'
+  git -C libdisplay-info describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
