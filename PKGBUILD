@@ -3,7 +3,7 @@ mypackagename=pulpo   # only if github repo has a different name than this pkgba
 pkgname=pulpo-bin
 pkgbase=pulpo-bin
 pkgver=1.0      # remember to also change the version number bellow in the pkgver() function
-pkgrel=8
+pkgrel=9
 epoch=
 pkgdesc="A Gnome (wayland) shell notifier for Gotify and Ntfy server based on Rust."
 arch=('x86_64')
@@ -38,7 +38,7 @@ package() {
 	install -Dm755 --owner=root --group=users resources/*.ogg ${pkgdir}/opt/${mypackagename}/resources
 	install -Dm755 --owner=root --group=users resources/*.png ${pkgdir}/opt/${mypackagename}/resources
 	install -Dm755 --owner=root --group=users config/${mypackagename}.conf ${pkgdir}/opt/${mypackagename}/config/${mypackagename}.conf
-	install -Dm644 --owner=root --group=root  config/${mypackagename}.conf ${pkgdir}/etc/${mypackagename}.conf
+	install -Dm755 --owner=root --group=users config/${mypackagename}.conf ${pkgdir}/etc/${mypackagename}.conf
 
 	desktop-file-install --dir=$pkgdir/usr/share/applications ${pkgdir}/opt/${mypackagename}/${mypackagename}.desktop
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${mypackagename}/LICENSE"
