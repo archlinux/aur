@@ -15,9 +15,9 @@ source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pk
 source_i686=("${_pkgname}-${pkgver}-i686.deb::${url}/releases/download/v${pkgver}/clash-verge_${pkgver}_i386.deb")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/clash-verge_${pkgver}_arm64.deb")
 
-sha512sums_x86_64=('edf3d62618828a63d2b6c1262f1a387796962e0e7f23db7f30eec6172fec0dd756f161b69e3507be8e0eaca9da4bd5b46f6bdc8e7ea9f3b31e2a4609958e1ba6')
-sha512sums_i686=('2229cad3807afebdd20d139c6acb10c61fd7531d3dfd7718acadd7bfd7d48ccadaf51527ddd50959b2db1bb13cb194b07cdd7aff82ae873a7ecb27d8c45362d5')
-sha512sums_aarch64=('1d3df833912dc10ea404f8049347a0ebaeecf6b2e505a7a29569899e3bd6842bfba1c96516d20bde8bf743b0ed06e774ccb89a229c9cf8708dfd5c61239d88e7')
+sha512sums_x86_64=('0b8ab9aafae483f2ade561cbf2dd82465b37570007e982891dd2fc8464deadc05fb787912e6f01df6b509321e3cdfd27703d31582926582ccc7fffe321d868d9')
+sha512sums_i686=('f330291729580c5609b6e3e9720504af3fcaf51d663a3d2d4235542d3ae8793f3ce967df163850245ce9155e4ad20b4a184a0a4bc35577dcdd714e4cd72fb5bf')
+sha512sums_aarch64=('99650af2d4e2f9d4e5d3beb56e216c7d5ffc1c3c9f1713f270b62af9951a16c766c8e2f1db5b01d79dea7a1a5187d46ed6f0a70fec0e2dbbeccc75b4ab623011')
 
 package() {
     tar xpf data.tar.gz -C ${pkgdir}
