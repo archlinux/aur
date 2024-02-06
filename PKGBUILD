@@ -5,7 +5,7 @@ pkgrel=234
 url="https://github.com/huanghongxun/HMCL"
 license=("GPL3")
 arch=('any')
-depends=('jre-openjdk')
+depends=('java-runtime')
 source=("https://maven.aliyun.com/repository/central/org/glavo/hmcl/hmcl-dev/$pkgver.$pkgrel/hmcl-dev-$pkgver.$pkgrel.jar"
         "start.sh"
         "hmcl-dev.desktop")
