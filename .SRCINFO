@@ -1,6 +1,6 @@
 pkgbase = xroar
 	pkgdesc = A Dragon and Tandy CoCo emulator
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://www.6809.org.uk/xroar
 	install = xroar.install
@@ -12,9 +12,9 @@ pkgbase = xroar
 	depends = libgl
 	depends = libsndfile
 	depends = gtkglext
-	source = https://www.6809.org.uk/xroar/dl/xroar-1.5.2.tar.gz
+	source = https://www.6809.org.uk/xroar/dl/xroar-1.5.3.tar.gz
 	source = xroar.png
-	sha256sums = 945eb7b2bc2679b80251f92e3ab9ba3d2a8f6d8d01fe78390de37f26e3e038ec
+	sha256sums = 29e0525fecde19b501cb351df1ec81e1ac4720d78cc875b7363baa7d2b2a8a5a
 	sha256sums = 0c6e5def77c6ca809cd69ae518512a89bff335147b44eb9ffc898d7302a17a59
 
 pkgname = xroar
