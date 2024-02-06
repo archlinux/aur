@@ -1,9 +1,11 @@
 pkgbase = libretro-meta
 	pkgdesc = Meta package for the libretro group.
-	pkgver = 2022.08.17
+	pkgver = 2024.02.06
 	pkgrel = 1
 	arch = any
 	license = none
+
+pkgname = libretro-meta
 	depends = libretro-beetle-pce
 	depends = libretro-beetle-pce-fast
 	depends = libretro-beetle-psx
@@ -17,7 +19,6 @@ pkgbase = libretro-meta
 	depends = libretro-core-info
 	depends = libretro-desmume
 	depends = libretro-dolphin
-	depends = libretro-duckstation
 	depends = libretro-flycast
 	depends = libretro-gambatte
 	depends = libretro-genesis-plus-gx
@@ -32,6 +33,7 @@ pkgbase = libretro-meta
 	depends = libretro-nestopia
 	depends = libretro-overlays
 	depends = libretro-parallel-n64
+	depends = libretro-pcsx2
 	depends = libretro-picodrive
 	depends = libretro-play
 	depends = libretro-ppsspp
@@ -45,5 +47,3 @@ pkgbase = libretro-meta
 	depends = retroarch-assets-glui
 	depends = retroarch-assets-ozone
 	depends = retroarch-assets-xmb
-
-pkgname = libretro-meta
