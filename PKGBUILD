@@ -11,6 +11,9 @@ source=(
 	https://www.neechin.net/file_download/27/Narcissu_2_Eng_v1.1_script_[All_platforms].zip
 	https://github.com/07th-mod/ponscripter-fork/raw/mod/src/resources/narci2.{ico,png}
 	narcissu2.desktop)
+noextract=(
+	{narcissu2,arc1}.7z
+	${source[2]##*/})
 md5sums=(
 	b8032dd59633ce10f13321489b73da1a
 	a0b15677ba3f723f642bce5c9b2d8073
@@ -19,9 +22,11 @@ md5sums=(
 	50dbdaba66b5ad8837fd364610e72822
 	SKIP)
 package(){
-	mkdir -p "$pkgdir"/usr/share/narcissu2/v1.1
-	cp -r narcissu2 "$pkgdir"/usr/share
-	cp -r arc1/* 0.utf "$pkgdir"/usr/share/narcissu2/v1.1
+	mkdir -p "$pkgdir"/usr/share
+	bsdtar xf narcissu2.7z -C"$pkgdir"/usr/share
+	bsdtar xf arc1.7z
+	mv arc1 "$pkgdir"/usr/share/narcissu2/v1.1
+	bsdtar xf ${source[2]##*/} -C"$pkgdir"/usr/share/narcissu2/v1.1 0.utf
 	cp {narci2,"$pkgdir"/usr/share/narcissu2/icon}.png
 	ln -s ../icon.png "$pkgdir"/usr/share/narcissu2/v1.1
 	install narci2.ico -Dt "$pkgdir"/usr/share/pixmaps
