@@ -6,7 +6,7 @@
 
 pkgname='goldendict-webengine-pr-git'
 _basename='goldendict'
-pkgver=22.12.02.r66.7b4a8328.7da1ccf2
+pkgver=22.12.02.r79.5a87a715.59363bc9
 pkgrel=1
 pkgdesc='Feature-rich dictionary lookup program supporting multiple dictionary formats'
 arch=('i686' 'x86_64')
@@ -70,7 +70,13 @@ pkgver() {
     # Expected format: e.g. 22.12.02.r0
     _gitversion="${_gitversion%\.g[a-f0-9]*}"
 
+    # Gather SHA1 IDs of all parent commits of the merge commits created in prepare().
     local _base_commits="$(git log --author="$_merge_committer_name" --format='%p' --reverse)"
+    if [ -z "$_base_commits" ]; then
+        # If no merge commits were created in prepare(), use the HEAD commit's SHA1 ID.
+        _base_commits="$(git rev-parse --short HEAD)"
+    fi
+
     local _commit
     for _commit in $_base_commits; do
         if [ "$(git show $_commit --format='%an')" == "$_merge_committer_name" ]; then
