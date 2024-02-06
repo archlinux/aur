@@ -13,7 +13,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname" || return
-  git describe --long --tags | sed 's/-/./g' # Replace hyphens with dots to conform to versioning standards
+  git describe --tags | sed 's/-/./g' # Replace hyphens with dots to conform to versioning standards
 }
 
 package() {
