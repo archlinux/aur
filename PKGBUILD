@@ -4,7 +4,7 @@
 
 _pkgname=pioneer
 pkgname=$_pkgname-bin
-pkgver=20230203
+pkgver=20240203
 pkgrel=1
 pkgdesc="A freeform single player space adventure in the spirit of Frontier: Elite II."
 arch=('x86_64')
@@ -19,13 +19,13 @@ optdepends=('libtxc_dxtn: may prevent crashes on ATI hardware')
 PKGEXT='.pkg.tar'
 
 source=("$_pkgname.png" "$_pkgname.desktop" "$_pkgname.sh")
-source_x86_64=("https://github.com/pioneerspacesim/pioneer/releases/download/$pkgver/pioneer-${pkgver}-linux.tar.gz")
+source_x86_64=("https://github.com/pioneerspacesim/pioneer/releases/download/$pkgver/pioneer-linux-x64-${pkgver}.tar.gz")
 
 package() {
 	install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 	install -Dm644 "$_pkgname.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 	install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
-	cd "release"
+	cd "pioneer-linux-x64-$pkgver"
 	find . -type d -exec mkdir -p "$pkgdir/usr/share/pioneer/{}" \;
 	find . -type f -exec cp '{}' "$pkgdir/usr/share/pioneer/{}" \;
 	mkdir -p "$pkgdir/usr/bin"
@@ -34,5 +34,5 @@ package() {
 md5sums=('46e51941124eb3cf1af9233820223478'
          '1f05200234c41b4320f59de80534669c'
          '9e61ce70a75f6b9ad0fd5cab5d0b7420')
-md5sums_x86_64=('aabb9a57ce2220b8acd541bca468c1ac')
+md5sums_x86_64=('4ec2972f38595f82d0984eed7da70a0b')
 # md5sums_i686=('feee66ae6071fdc0421d028ff43df492')
