@@ -1,6 +1,6 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=maven-docs
-pkgver=3.9.5
+pkgver=3.9.6
 pkgrel=1
 pkgdesc="Apache Maven Documentations."
 arch=('any')
@@ -9,7 +9,7 @@ license=('Apache')
 options=('docs')
 source=("${pkgname}-${pkgver}.jar::https://maven.apache.org/maven-site-1.0-site.jar")
 noextract=("${pkgname}-${pkgver}.jar")
-sha256sums=('5b6455e79ae4e0b5ff505f2369b95454de350cb2a8fed3d777982ff9d55f975a')
+sha256sums=('395661cdf5f5fd34625d1186c069bf2a9e01ec596b80fa0a529a58cf23df6303')
 
 package() {
 	cd "${srcdir}"

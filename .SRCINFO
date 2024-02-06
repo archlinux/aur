@@ -1,13 +1,13 @@
 pkgbase = maven-docs
 	pkgdesc = Apache Maven Documentations.
-	pkgver = 3.9.5
+	pkgver = 3.9.6
 	pkgrel = 1
 	url = https://maven.apache.org
 	arch = any
 	license = Apache
-	noextract = maven-docs-3.9.5.jar
+	noextract = maven-docs-3.9.6.jar
 	options = docs
-	source = maven-docs-3.9.5.jar::https://maven.apache.org/maven-site-1.0-site.jar
-	sha256sums = 5b6455e79ae4e0b5ff505f2369b95454de350cb2a8fed3d777982ff9d55f975a
+	source = maven-docs-3.9.6.jar::https://maven.apache.org/maven-site-1.0-site.jar
+	sha256sums = 395661cdf5f5fd34625d1186c069bf2a9e01ec596b80fa0a529a58cf23df6303
 
 pkgname = maven-docs
