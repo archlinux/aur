@@ -1,6 +1,6 @@
 # Maintainer: sublipri <sublipri at proton dot me>
 pkgname=bom-buddy
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Australian weather CLI utility"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 optdepends=('mpv: view radar loops')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sublipri/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('2c9ce5e88686c968107cf3931e9a13809573c80b4c57b167c9dccfa4ca8498e4')
+sha256sums=('3a88181ea74e03a8ec80b779beff370c6ca6c673c80a33f49f4c41303c130ed2')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
