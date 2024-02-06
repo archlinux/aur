@@ -3,7 +3,7 @@ mypackagename=pulpo   # only if github repo has a different name than this pkgba
 pkgname=pulpo-bin
 pkgbase=pulpo-bin
 pkgver=1.0      # remember to also change the version number bellow in the pkgver() function
-pkgrel=6
+pkgrel=7
 epoch=
 pkgdesc="A Gnome (wayland) shell notifier for Gotify and Ntfy server based on Rust."
 arch=('x86_64')
@@ -35,9 +35,8 @@ package() {
 	
 	install -Dm755 --owner=root --group=users ${mypackagename} ${pkgdir}/opt/${mypackagename}/${mypackagename}
 	install -Dm755 --owner=root --group=users ${mypackagename}.desktop ${pkgdir}/opt/${mypackagename}/${mypackagename}.desktop
-	install -Dm755 --owner=root --group=users *.ogg ${pkgdir}/opt/${mypackagename}/resources
-	install -Dm755 --owner=root --group=users *.png ${pkgdir}/opt/${mypackagename}/resources
-	install -Dm755 --owner=root --group=users *.svg ${pkgdir}/opt/${mypackagename}/resources
+	install -Dm755 --owner=root --group=users resources/*.ogg ${pkgdir}/opt/${mypackagename}/resources
+	install -Dm755 --owner=root --group=users resources/*.png ${pkgdir}/opt/${mypackagename}/resources
 	install -Dm755 --owner=root --group=users ${mypackagename}.conf ${pkgdir}/opt/${mypackagename}/config/${mypackagename}.conf
 	install -Dm644 --owner=root --group=root  ${mypackagename}.conf ${pkgdir}/etc/${mypackagename}.conf
 
