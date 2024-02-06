@@ -2,14 +2,14 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pcalg
-_pkgver=2.7-9
+_pkgver=2.7-10
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Methods for Graphical Models and Causal Inference"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   blas
   lapack
@@ -39,12 +39,12 @@ optdepends=(
   r-rgraphviz
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a04f0500d81148d2265f1f76d7f220e9')
-sha256sums=('b8b1d292e79a9bb495d195b730f99e1dc5a6686c39fb98fc1574982e882c1116')
+md5sums=('4675c89a2e090467cc7d7e5d626cdf57')
+b2sums=('da10cb7cae16f0b97d44fcb3fd4455473f2a974ef281e2d02dcc7de6a333a3474ef6deadcbe14945414e3fa785f44db4126a209b18650d6fee4da52494f4dcf6')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
