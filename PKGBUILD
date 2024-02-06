@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pdmaner-bin
 _appname=PDManer
-pkgver=4.7.0
+pkgver=4.9.0
 _electronversion=13
 pkgrel=1
 pkgdesc="A multi operating system open source and free desktop version relational database modeling tool.一款多操作系统开源免费的桌面版关系数据库模型建模工具"
 arch=("x86_64")
 url="http://www.pdmaner.com"
 _downurl="https://github.com/zxp19821005/My_AUR_Files"
-license=("MPL2")
+license=("MPL-2.0")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -26,13 +26,13 @@ source=(
     "LICENSE-${pkgver}::https://gitee.com/robergroup/pdmaner/raw/master/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0cefaaddb2296f85f203961aef70520fbd9304ae971d7545dc7356fa296dc3b1'
+sha256sums=('2e5817bd8d912fe81c62af357a73ea33947111aace5b191625d63de8a3e75fd3'
             '7c91afc2c15fc478de3fc38f2678e560906859da6932f2c03b6bc9076d592d18'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
