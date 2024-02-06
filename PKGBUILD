@@ -3,17 +3,17 @@
 # Contributor: Vitaliy Berdinskikh, aka UR6LAD <ur6lad@archlinux.org.ua>
 
 pkgname=owx
-pkgver=r21
+pkgver=r22
 #.266923b
-pkgrel=2
-pkgdesc="A CLI tool for programming Wouxun (KG669V,UVD1-3,UV1A, et al) HTs."
+pkgrel=1
+pkgdesc="HAM RADIO - CLI tool for programming Wouxun (KG669V,UVD1-3,UV1A, et al) HTs."
 arch=('i686' 'x86_64')
 url="http://owx.chmurka.net"
 license=('Apache' 'custom:beerware')
 depends=('gcc-libs')
 makedepends=('git')
 replaces=('wouxun')
-source=("$pkgname-git::git://git.chmurka.net/$pkgname"
+source=("$pkgname-git::git+http://git.chmurka.net/$pkgname"
 	LICENSE)
 md5sums=('SKIP'
          '02ecf727fd7a0948393044fc17fc6f11')

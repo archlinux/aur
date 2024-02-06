@@ -1,7 +1,7 @@
 pkgbase = owx
-	pkgdesc = A CLI tool for programming Wouxun (KG669V,UVD1-3,UV1A, et al) HTs.
-	pkgver = r21
-	pkgrel = 2
+	pkgdesc = HAM RADIO - CLI tool for programming Wouxun (KG669V,UVD1-3,UV1A, et al) HTs.
+	pkgver = r22
+	pkgrel = 1
 	url = http://owx.chmurka.net
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,9 @@ pkgbase = owx
 	makedepends = git
 	depends = gcc-libs
 	replaces = wouxun
-	source = owx-git::git://git.chmurka.net/owx
+	source = owx-git::git+http://git.chmurka.net/owx
 	source = LICENSE
 	md5sums = SKIP
 	md5sums = 02ecf727fd7a0948393044fc17fc6f11
 
 pkgname = owx
-
