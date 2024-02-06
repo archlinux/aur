@@ -2,4 +2,4 @@
 pkg
 src
 *.pkg.tar.*
-uosc
+*.tar.gz
