@@ -1,6 +1,6 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=tomee
-pkgver=9.1.1
+pkgver=9.1.2
 pkgrel=1
 pkgdesc="Apache TomEE application server."
 url="https://tomee.apache.org/"
@@ -14,7 +14,7 @@ source=("https://dlcdn.apache.org/${pkgname}/${pkgname}-${pkgver//_/-}/apache-${
         "${pkgname}-sysusers.conf"
         "${pkgname}-tmpfiles.conf")
 
-sha256sums=('f7679ddaa7d9c544f250f88cd5cec6de717903fdfa76618702a20ef83072f210'
+sha256sums=('4f734038f2557ba45bd4f00e17683ac15ad269f640b4aa7cbc13d16a61404c8c'
             'f647a600b1a49dc9981fc6e820c260ca09e044a9dca5a421b5441b7acabebf38'
             'd86cd28fb7c26b684eb94d8dff22d95dbe53b9e73dd2df38dfe8a75c31251875'
             '499a574b00d279741e0578e0413af5edbe336f1f9fff6f12cdb58acaef35313f')
