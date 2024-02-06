@@ -1,11 +1,11 @@
-# Maintainer: Benjamin Vialle <archlinux@vialle.io>
-# PGP ID: 72DF86FBBBBD5EDAE8FF1834826884A347F9FD9A
+# Maintainer: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
+# Contributor: Benjamin Vialle <archlinux@vialle.io>
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: sputnick <gilles *DOT* quenot *AT* gmail *DOT* com>
 # Contributor: ianux <ianux@free.fr>
 
 pkgname=woob-git
-pkgver=3.0.r300.g9b966643d
+pkgver=3.6.r333.gecb44eab4
 pkgrel=1
 pkgdesc="Core library and modules for Web Outside of Browsers"
 arch=(any)
@@ -24,7 +24,7 @@ depends=('python-lxml'
          'python-simplejson')
 optdepends=('python-prettytable: CLI output formatting'
         'python-feedparser: required by some modules')
-makedepends=('python-setuptools' 'git')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'git')
 replaces=('woob-headless' 'weboob')
 provides=('woob-headless')
 conflicts=('weboob-headless' 'weboob-git' 'weboob-qt')
@@ -38,11 +38,11 @@ pkgver() {
 
 build() {
   cd "${srcdir}/woob"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/woob"
-  python setup.py install --prefix=/usr --root="${pkgdir}" --skip-build --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
