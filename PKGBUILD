@@ -5,7 +5,7 @@ pkgver='2.0.8'
 pkgrel=1
 pkgdesc='A lightweight, elegant and efficient LiteLoaderQQNT plugin for lite tools'
 arch=('any')
-url="https://github.com/mo-jinran/chii-devtools"
+url="https://github.com/xiyuesaves/LiteLoaderQQNT-lite_tools"
 license=("MIT")
 depends=("liteloader-qqnt-bin")
 
