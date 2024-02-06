@@ -1,6 +1,6 @@
 pkgbase = hyprdots-ctl
 	pkgdesc = CLI for Hyprdots Configurations ++ Hidden Gems
-	pkgver = v0.2.0.46.24020612
+	pkgver = v0.3.24020612
 	pkgrel = 1
 	url = https://github.com/kRHYME7/Hyprdots-ctl
 	arch = x86_64
