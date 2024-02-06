@@ -1,15 +1,15 @@
 pkgbase = acreom-bin
 	pkgdesc = A powerful knowledge base integrated with time management running on local markdown files
-	pkgver = 1.15.8
+	pkgver = 1.15.9
 	pkgrel = 1
 	url = https://github.com/Acreom/releases
 	arch = x86_64
 	license = custom:Commercial
-	provides = acreom=1.15.8
+	provides = acreom=1.15.9
 	conflicts = acreom
-	noextract = acreom-1.15.8.AppImage
+	noextract = acreom-1.15.9.AppImage
 	options = !strip
-	source = https://github.com/Acreom/releases/releases/download/v1.15.8/acreom-1.15.8.AppImage
-	sha256sums = b3a5214af2ddbc7b678bfb40c4b1c25979179d6a7f0fb7ce039265a24963f24a
+	source = https://github.com/Acreom/releases/releases/download/v1.15.9/acreom-1.15.9.AppImage
+	sha256sums = 75843ebafefd1fe04dd080a2dd7d987a1cce1273274a115ab43a7b30edb1324e
 
 pkgname = acreom-bin
