@@ -1,7 +1,7 @@
 pkgbase = ripes-bin
 	pkgdesc = A graphical processor simulator and assembly editor for the RISC-V ISA
 	pkgver = 2.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mortbopet/Ripes
 	arch = x86_64
 	license = MIT
@@ -21,6 +21,6 @@ pkgbase = ripes-bin
 	source = ripes.sh
 	sha256sums = 065cc364897f2181dd0c4d32decb6d7e38309ae12ed1319a52e6648223cd55db
 	sha256sums = 2af9cacb9ee73bed57c14ae509681749e1b12521878ce3a9b4f64add0b572078
-	sha256sums = ad941a84b28845eba1c54ac3919cf793ca42770e6a9e32ed93388506cf26080e
+	sha256sums = d3ece26b8a1e0aaff3a6347cfd0544173cc0a1e88ea469f345f670513f451178
 
 pkgname = ripes-bin

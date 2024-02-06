@@ -2,7 +2,7 @@
 pkgname=ripes-bin
 _pkgname=Ripes
 pkgver=2.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical processor simulator and assembly editor for the RISC-V ISA"
 arch=("x86_64")
 url="https://github.com/mortbopet/Ripes"
@@ -29,7 +29,7 @@ source=(
 )
 sha256sums=('065cc364897f2181dd0c4d32decb6d7e38309ae12ed1319a52e6648223cd55db'
             '2af9cacb9ee73bed57c14ae509681749e1b12521878ce3a9b4f64add0b572078'
-            'ad941a84b28845eba1c54ac3919cf793ca42770e6a9e32ed93388506cf26080e')
+            'd3ece26b8a1e0aaff3a6347cfd0544173cc0a1e88ea469f345f670513f451178')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
