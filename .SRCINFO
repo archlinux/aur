@@ -1,7 +1,7 @@
 pkgbase = awf-gtk3
 	pkgdesc = Theme preview application for GTK
 	pkgver = 2.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/luigifab/awf-extended
 	arch = x86_64
 	license = GPL3
