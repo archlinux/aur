@@ -1,5 +1,5 @@
 pkgbase = fairy-stockfish
-	pkgdesc = Chess engine with support for fairy chess and other variants
+	pkgdesc = Chess engine with support for Xiangqi, Shogi, Janggi, and many other variants
 	pkgver = 14.0.1
 	pkgrel = 7
 	url = https://github.com/fairy-stockfish/Fairy-Stockfish
