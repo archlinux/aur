@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=dosage-tracker
-pkgver=1.4.8
+pkgver=1.5.3
 pkgrel=1
 pkgdesc='Medication tracker for Linux'
 url="https://github.com/diegopvlk/Dosage"
