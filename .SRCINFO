@@ -1,6 +1,6 @@
 pkgbase = cairo-dock-core-wayland-git
 	pkgdesc = Light eye-candy fully themable animated dock with wayland support
-	pkgver = 3.4.99.alpha1.20240121.10601241
+	pkgver = 3.5.99.alpha1.20240204.7d32a4d4
 	pkgrel = 1
 	url = https://github.com/dkondor/cairo-dock-core
 	arch = i686
@@ -22,7 +22,7 @@ pkgbase = cairo-dock-core-wayland-git
 	conflicts = cairo-dock-core-wayland
 	conflicts = cairo-dock
 	options = debug
-	source = cairo-dock-core-wayland-git::git+https://github.com/dkondor/cairo-dock-core.git#branch=wayland_new
+	source = cairo-dock-core-wayland-git::git+https://github.com/dkondor/cairo-dock-core.git#branch=wayland_new3
 	source = 0001-egl-set-a-zero-swap-interval-on-Wayland.patch
 	sha256sums = SKIP
 	sha256sums = 1af64c4dea950b6b8a696c767b924f585c3a085e35ee775723dee95d4b4cf208

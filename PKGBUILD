@@ -5,7 +5,7 @@
 # Contributor: ssfdust <ssfdust@gmail.com>
 
 pkgname=cairo-dock-core-wayland-git
-pkgver=3.4.99.alpha1.20240121.10601241
+pkgver=3.5.99.alpha1.20240204.7d32a4d4
 pkgrel=1
 pkgdesc='Light eye-candy fully themable animated dock with wayland support'
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ provides=("${pkgname%-git}" "cairo-dock")
 conflicts=("${pkgname%-git}" "cairo-dock")
 options=(debug)
 source=(
-    "${pkgname}::git+https://github.com/dkondor/cairo-dock-core.git#branch=wayland_new"
+    "${pkgname}::git+https://github.com/dkondor/cairo-dock-core.git#branch=wayland_new3"
     "0001-egl-set-a-zero-swap-interval-on-Wayland.patch"
 )
 sha256sums=(
