@@ -3,7 +3,7 @@ pkgname=lunarcalendar-bin
 _pkgname=LunarCalendar
 _appname="org.Rabbit.${_pkgname}"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Chinese Lunar Date Control Written in Qt.用Qt写的中国农历日期控件"
 arch=("x86_64")
 url="https://github.com/KangLin/LunarCalendar"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('77900672587d8e49d83f95505f9f0c22473ed3b0136e8229b891d6086a5a785b'
-            'befc94d87f0867969b59dc6aed04fda9df652dc0341ec6633602fcae8a891daf')
+            '983170eeaecf2593890015b2d727efa56031118220f1935640a0c7a265fcfbb0')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}App-v${pkgver}|g" \
