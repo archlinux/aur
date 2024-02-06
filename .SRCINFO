@@ -1,6 +1,6 @@
 pkgbase = python-yahooquery
 	pkgdesc = Python wrapper for an unofficial Yahoo Finance API
-	pkgver = 2.3.6
+	pkgver = 2.3.7
 	pkgrel = 1
 	url = https://github.com/dpguthrie/yahooquery/
 	arch = any
@@ -16,8 +16,9 @@ pkgbase = python-yahooquery
 	depends = python-requests
 	depends = python-requests-futures
 	depends = python-tqdm
+	depends = python-poetry
 	optdepends = python-selenium
-	source = yahooquery-2.3.6.tar.gz::https://github.com/dpguthrie/yahooquery//archive/refs/tags/v2.3.6.tar.gz
-	sha256sums = 1f88575587de277e07b4534c1aff0d6ef702e3af0229a75239e8a9ac9283e037
+	source = yahooquery-2.3.7.tar.gz::https://github.com/dpguthrie/yahooquery//archive/refs/tags/v2.3.7.tar.gz
+	sha256sums = be64712a70fd5fa602f1271ca3c46e550e87f7c5c9c513ea0010c65810bee857
 
 pkgname = python-yahooquery
