@@ -1,8 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: slact
 pkgname=tlpui-git
-pkgver=1.6.3.r0.g51c04f8
-pkgrel=3
+_app_id=com.github.d4nj1.tlpui
+pkgver=1.6.4.r0.g2caad18
+pkgrel=1
 epoch=2
 pkgdesc="A GTK user interface for TLP written in Python"
 arch=('any')
@@ -22,7 +23,7 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  python -m build --wheel --no-isolation
+  GIT_DIR='.' python -m build --wheel --no-isolation
 }
 
 package() {
