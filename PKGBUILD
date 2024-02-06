@@ -28,7 +28,7 @@ validpgpkeys=()
 
 
 package() {
-	cd "${mypackagename}.${pkgver}_Arch_amd64"
+	cd "${mypackagename}.v${pkgver}_Arch_amd64"
 	mkdir -p ${pkgdir}/opt/${mypackagename}
 	mkdir -p ${pkgdir}/opt/${mypackagename}/config
 	mkdir -p ${pkgdir}/opt/${mypackagename}/resources
