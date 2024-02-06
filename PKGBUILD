@@ -11,11 +11,11 @@ source=("git+https://github.com/kRHYME7/Hyprdots-ctl.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname" || return
+  cd "$srcdir/Hyprdots-ctl" || return
   git describe --tags | sed 's/-/./g' # Replace hyphens with dots to conform to versioning standards
 }
 
 package() {
-    cd "${srcdir}/Hyprdots-ctl"
+    cd "${srcdir}/Hyprdots-ctl" || return
     make DESTDIR="$pkgdir" clean all
 }
