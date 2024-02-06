@@ -24,16 +24,10 @@ done
 s_dir="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 cd $s_dir
 
-git checkout master
 git pull -p --ff-only
 
-if git branch -r | grep release/ &>/dev/null; then
-    echo "Remote release branch detected ; will not create another, exiting"
-    exit
-fi
-
 build_ver=`grep ^pkgver= PKGBUILD | cut -d= -f2`
-release_ver=`curl --silent "https://api.github.com/repos/dzikoysk/reposilite/releases/latest" | jq -r .tag_name`
+release_ver=`curl --silent 'https://api.github.com/repos/dzikoysk/reposilite/releases/latest' | jq -r .tag_name`
 new_ver=`echo -e "$release_ver\n$build_ver" | sort -rV | head -n 1`
 
 if [ $new_ver = $build_ver -a "${initial}x" = "x" ] ; then
@@ -59,13 +53,12 @@ fi
 
 if [ "${initial}x" = "x" ] ; then
     makepkg --printsrcinfo > .SRCINFO
-    git checkout -b release/$new_ver
     git add PKGBUILD .SRCINFO
-    git commit -m "Released $new_ver"
-    git push -u origin release/$new_ver
-    gh pr create --title "Bump version to $new_ver" --body "Bump version to $new_ver" --assignee PolarianDev
-    git checkout master
-    git branch -D release/$new_ver
+    git commit -S -m "Released $new_ver-1"
+    git push
+    git tag -s -m "Bumped version $new_ver" "$new_ver-1"
+    git push --tags
+    gh release create --generate-notes "$new_ver-1" reposilite-$new_ver-1-any.pkg.tar.*
     rm reposilite-$new_ver.tar.*
     rm reposilite-$new_ver-1-any.pkg.tar.*
 fi
