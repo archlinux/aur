@@ -24,11 +24,14 @@ pkgbase = woob-git
 	optdepends = python-prettytable: CLI output formatting
 	optdepends = python-feedparser: required by some modules
 	provides = woob-headless
+	provides = woob
 	conflicts = weboob-headless
 	conflicts = weboob-git
 	conflicts = weboob-qt
+	conflicts = woob
 	replaces = woob-headless
 	replaces = weboob
+	replaces = woob
 	source = woob::git+https://gitlab.com/woob/woob.git
 	sha256sums = SKIP
 

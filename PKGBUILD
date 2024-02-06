@@ -25,9 +25,9 @@ depends=('python-lxml'
 optdepends=('python-prettytable: CLI output formatting'
         'python-feedparser: required by some modules')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'git')
-replaces=('woob-headless' 'weboob')
-provides=('woob-headless')
-conflicts=('weboob-headless' 'weboob-git' 'weboob-qt')
+replaces=('woob-headless' 'weboob' 'woob')
+provides=('woob-headless' 'woob')
+conflicts=('weboob-headless' 'weboob-git' 'weboob-qt' 'woob')
 source=("woob::git+https://gitlab.com/woob/woob.git")
 sha256sums=('SKIP')
 
