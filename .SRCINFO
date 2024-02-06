@@ -1,7 +1,7 @@
 pkgbase = helioslauncher-bin
 	pkgdesc = Custom launcher for modded minecraft written in Electron and Node.js
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dscalzi/HeliosLauncher
 	arch = x86_64
 	license = MIT
@@ -18,6 +18,6 @@ pkgbase = helioslauncher-bin
 	source = helioslauncher.sh
 	sha256sums = 161dd2d1765c5cd3b1ba13f5235b4eeb7597c28b87402fa6596d9edf822f4146
 	sha256sums = 4ffd6e4c132ebc4ecde76d809f9f88e151ee0eb2175e7ea0f0b0b51a9d48539e
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = helioslauncher-bin
