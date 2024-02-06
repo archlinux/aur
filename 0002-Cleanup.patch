@@ -1,4 +1,4 @@
-From f66e92cc679e0739fd99d6e60b3dd589522df414 Mon Sep 17 00:00:00 2001
+From 6124732f8ef59b0b1e05641f70c4180644d20cf8 Mon Sep 17 00:00:00 2001
 From: Aviana Cruz <gwencroft@proton.me>
 Date: Sun, 6 Nov 2022 13:33:14 +0800
 Subject: [PATCH 2/2] Cleanup
@@ -6,65 +6,73 @@ Subject: [PATCH 2/2] Cleanup
 Co-authored-by: zhaose <weiliang1503@outlook.com>
 Signed-off-by: Aviana Cruz <gwencroft@proton.me>
 ---
- .../java/org/jackhuang/hmcl/Launcher.java     |   8 -
- .../java/org/jackhuang/hmcl/Metadata.java     |   1 -
- .../jackhuang/hmcl/setting/ConfigHolder.java  |   1 -
- .../hmcl/setting/ConfigUpgrader.java          | 112 --------
+ .../java/org/jackhuang/hmcl/Launcher.java     |  13 -
+ .../java/org/jackhuang/hmcl/Metadata.java     |   4 -
+ .../org/jackhuang/hmcl/countly/Countly.java   |  87 ------
  .../org/jackhuang/hmcl/ui/Controllers.java    |   9 -
- .../org/jackhuang/hmcl/ui/CrashWindow.java    |   6 +-
- .../org/jackhuang/hmcl/ui/UpgradeDialog.java  |  77 ------
- .../hmcl/ui/account/CreateAccountPane.java    |  16 --
- .../jackhuang/hmcl/ui/main/FeedbackPage.java  |  80 ------
+ .../org/jackhuang/hmcl/ui/CrashWindow.java    |   3 -
+ .../org/jackhuang/hmcl/ui/UpgradeDialog.java  |  77 -----
+ .../hmcl/ui/account/CreateAccountPane.java    |  16 -
+ .../jackhuang/hmcl/ui/main/FeedbackPage.java  |  79 -----
  .../hmcl/ui/main/LauncherSettingsPage.java    |  22 +-
  .../org/jackhuang/hmcl/ui/main/MainPage.java  | 135 +--------
  .../org/jackhuang/hmcl/ui/main/RootPage.java  |  17 --
  .../jackhuang/hmcl/ui/main/SettingsPage.java  |  60 ----
  .../jackhuang/hmcl/ui/main/SettingsView.java  |  58 ----
- .../jackhuang/hmcl/ui/main/SponsorPage.java   | 174 ------------
- .../hmcl/upgrade/ExecutableHeaderHelper.java  | 124 ---------
- .../hmcl/upgrade/HMCLDownloadTask.java        |  68 -----
- .../hmcl/upgrade/IntegrityChecker.java        | 148 ----------
- .../jackhuang/hmcl/upgrade/RemoteVersion.java |  96 -------
- .../jackhuang/hmcl/upgrade/UpdateChannel.java |  42 ---
- .../jackhuang/hmcl/upgrade/UpdateChecker.java | 125 ---------
- .../jackhuang/hmcl/upgrade/UpdateHandler.java | 257 ------------------
+ .../jackhuang/hmcl/ui/main/SponsorPage.java   | 174 -----------
+ .../hmcl/ui/versions/ModTranslations.java     |  18 +-
+ .../upgrade/hmcl/ExecutableHeaderHelper.java  | 124 --------
+ .../hmcl/upgrade/hmcl/HMCLDownloadTask.java   |  68 -----
+ .../hmcl/upgrade/hmcl/IntegrityChecker.java   | 146 ---------
+ .../hmcl/upgrade/hmcl/RemoteVersion.java      |  96 ------
+ .../hmcl/upgrade/hmcl/UpdateChannel.java      |  42 ---
+ .../hmcl/upgrade/hmcl/UpdateChecker.java      | 125 --------
+ .../hmcl/upgrade/hmcl/UpdateHandler.java      | 282 ------------------
+ .../resource/RemoteResourceManager.java       | 204 -------------
  .../jackhuang/hmcl/util/CrashReporter.java    |   5 -
- 23 files changed, 3 insertions(+), 1638 deletions(-)
- delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/setting/ConfigUpgrader.java
+ .../hmcl/game/GameDumpGenerator.java          |   6 +-
+ 25 files changed, 4 insertions(+), 1866 deletions(-)
+ delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/countly/Countly.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SponsorPage.java
- delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/ExecutableHeaderHelper.java
- delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/HMCLDownloadTask.java
- delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/IntegrityChecker.java
- delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/RemoteVersion.java
- delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChannel.java
- delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChecker.java
- delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java
+ delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/ExecutableHeaderHelper.java
+ delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/HMCLDownloadTask.java
+ delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/IntegrityChecker.java
+ delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/RemoteVersion.java
+ delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/UpdateChannel.java
+ delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/UpdateChecker.java
+ delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/UpdateHandler.java
+ delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/resource/RemoteResourceManager.java
 
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java b/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
-index 83ece3db7..456126897 100644
+index 489d77999..794602dfe 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
-@@ -30,8 +30,6 @@ import org.jackhuang.hmcl.setting.SambaException;
+@@ -33,9 +33,6 @@ import org.jackhuang.hmcl.setting.SambaException;
  import org.jackhuang.hmcl.task.AsyncTaskExecutor;
  import org.jackhuang.hmcl.task.Schedulers;
  import org.jackhuang.hmcl.ui.Controllers;
--import org.jackhuang.hmcl.upgrade.UpdateChecker;
--import org.jackhuang.hmcl.upgrade.UpdateHandler;
+-import org.jackhuang.hmcl.upgrade.hmcl.UpdateChecker;
+-import org.jackhuang.hmcl.upgrade.hmcl.UpdateHandler;
+-import org.jackhuang.hmcl.upgrade.resource.RemoteResourceManager;
  import org.jackhuang.hmcl.util.CrashReporter;
  import org.jackhuang.hmcl.util.Lang;
- import org.jackhuang.hmcl.util.StringUtils;
-@@ -112,8 +110,6 @@ public final class Launcher extends Application {
+ import org.jackhuang.hmcl.util.Logging;
+@@ -121,12 +118,6 @@ public final class Launcher extends Application {
                  Platform.setImplicitExit(false);
                  Controllers.initialize(primaryStage);
  
 -                UpdateChecker.init();
 -
+-                RemoteResourceManager.init();
+-
+-                RemoteResourceManager.register();
+-
                  primaryStage.show();
              });
          } catch (Throwable e) {
-@@ -213,10 +209,6 @@ public final class Launcher extends Application {
+@@ -265,10 +256,6 @@ public final class Launcher extends Application {
      }
  
      public static void main(String[] args) {
@@ -76,35 +84,33 @@ index 83ece3db7..456126897 100644
          AsyncTaskExecutor.setUncaughtExceptionHandler(new CrashReporter(false));
  
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/Metadata.java b/HMCL/src/main/java/org/jackhuang/hmcl/Metadata.java
-index 3c0064463..f4bcb72f2 100644
+index 0a599934f..a26b1ca45 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/Metadata.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/Metadata.java
-@@ -37,7 +37,6 @@ public final class Metadata {
+@@ -37,9 +37,6 @@ public final class Metadata {
      public static final String TITLE = NAME + " " + VERSION;
      public static final String FULL_TITLE = FULL_NAME + " v" + VERSION;
  
--    public static final String UPDATE_URL = System.getProperty("hmcl.update_source.override", "https://hmcl.huangyuhui.net/api/update_link");
+-    // hmcl.update_source.override is deprecated. If it is used, a warning message will be printed in org.jackhuang.hmcl.Launcher.main .
+-    public static final String HMCL_UPDATE_URL = System.getProperty("hmcl.hmcl_update_source.override", System.getProperty("hmcl.update_source.override", "https://hmcl.huangyuhui.net/api/update_link"));
+-    public static final String RESOURCE_UPDATE_URL = System.getProperty("hmcl.resource_update_source.override", "https://hmcl.huangyuhui.net/api/dynamic_remote_resource/update_link");
      public static final String CONTACT_URL = "https://docs.hmcl.net/help.html";
-     public static final String HELP_URL = "https://hmcl.huangyuhui.net/help";
+     public static final String HELP_URL = "https://docs.hmcl.net";
      public static final String CHANGELOG_URL = "https://docs.hmcl.net/changelog/";
-diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/setting/ConfigHolder.java b/HMCL/src/main/java/org/jackhuang/hmcl/setting/ConfigHolder.java
-index e94bd2bec..ae3ae9d08 100644
---- a/HMCL/src/main/java/org/jackhuang/hmcl/setting/ConfigHolder.java
-+++ b/HMCL/src/main/java/org/jackhuang/hmcl/setting/ConfigHolder.java
-@@ -168,7 +168,6 @@ public final class ConfigHolder {
-                     LOG.info("Config is empty");
-                 } else {
-                     Map<?, ?> raw = new Gson().fromJson(content, Map.class);
--                    ConfigUpgrader.upgradeConfig(deserialized, raw);
-                     return deserialized;
-                 }
-             } catch (JsonParseException e) {
-diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/setting/ConfigUpgrader.java b/HMCL/src/main/java/org/jackhuang/hmcl/setting/ConfigUpgrader.java
+@@ -47,7 +44,6 @@ public final class Metadata {
+     public static final String EULA_URL = "https://docs.hmcl.net/eula/hmcl.html";
+ 
+     public static final String BUILD_CHANNEL = JarUtils.getManifestAttribute("Build-Channel", "nightly");
+-    public static final String GITHUB_SHA = JarUtils.getManifestAttribute("GitHub-SHA", null);
+ 
+     public static final Path MINECRAFT_DIRECTORY = OperatingSystem.getWorkingDirectory("minecraft");
+     public static final Path HMCL_DIRECTORY;
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/countly/Countly.java b/HMCL/src/main/java/org/jackhuang/hmcl/countly/Countly.java
 deleted file mode 100644
-index 9e519b092..000000000
---- a/HMCL/src/main/java/org/jackhuang/hmcl/setting/ConfigUpgrader.java
+index f22dd1d0c..000000000
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/countly/Countly.java
 +++ /dev/null
-@@ -1,112 +0,0 @@
+@@ -1,87 +0,0 @@
 -/*
 - * Hello Minecraft! Launcher
 - * Copyright (C) 2020  huangyuhui <huanghongxun2008@126.com> and contributors
@@ -122,106 +128,81 @@ index 9e519b092..000000000
 - * You should have received a copy of the GNU General Public License
 - * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 - */
--package org.jackhuang.hmcl.setting;
+-package org.jackhuang.hmcl.countly;
 -
--import org.jackhuang.hmcl.util.StringUtils;
--import java.util.HashMap;
--import java.util.Map;
+-import org.jackhuang.hmcl.util.io.HttpRequest;
 -
--import static org.jackhuang.hmcl.util.Lang.tryCast;
+-import java.io.IOException;
+-import java.util.Calendar;
+-import java.util.Date;
+-import java.util.Locale;
+-import java.util.TimeZone;
 -
--final class ConfigUpgrader {
--    private static final int VERSION = 0;
+-import static org.jackhuang.hmcl.util.Pair.pair;
 -
--    private ConfigUpgrader() {
+-public class Countly {
+-
+-    private String deviceId;
+-    private String endpoint;
+-    private String serverURL;
+-
+-    public void sendMetric(String metrics) throws IOException {
+-        HttpRequest.GET(serverURL + endpoint,
+-                pair("begin_session", "1"),
+-                pair("session_id", "1"),
+-                pair("metrics", metrics),
+-                pair("device_id", deviceId),
+-                pair("timestamp", Long.toString(System.currentTimeMillis())),
+-                pair("tz", Integer.toString(TimeZone.getDefault().getOffset(new Date().getTime()) / 60000)),
+-                pair("hour", Integer.toString(currentHour())),
+-                pair("dow", Integer.toString(currentDayOfWeek())),
+-                pair("app_key", APP_KEY),
+-                pair("sdk_name", "java-native"),
+-                pair("sdk_version", "20.11.1"))
+-                .getString();
 -    }
 -
--    /**
--     * This method is for the compatibility with old HMCL 3.x as well as HMCL 2.x.
--     *
--     * @param deserialized deserialized config settings
--     * @param rawJson      raw json structure of the config settings without modification
--     * @return true if config version is upgraded
--     */
--    static boolean upgradeConfig(Config deserialized, Map<?, ?> rawJson) {
--        boolean upgraded;
--        if (deserialized.getConfigVersion() < VERSION) {
--            deserialized.setConfigVersion(VERSION);
--            // TODO: Add upgrade code here.
--            upgraded = true;
--        } else {
--            upgraded = false;
+-    private static int getTimezoneOffset() {
+-        return TimeZone.getDefault().getOffset(new Date().getTime()) / 60000;
+-    }
+-
+-    private static String getLocale() {
+-        final Locale locale = Locale.getDefault();
+-        return locale.getLanguage() + "_" + locale.getCountry();
+-    }
+-
+-    private static int currentHour() {
+-        return Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+-    }
+-
+-    private int currentDayOfWeek() {
+-        int day = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+-        switch (day) {
+-            case Calendar.SUNDAY:
+-                return 0;
+-            case Calendar.MONDAY:
+-                return 1;
+-            case Calendar.TUESDAY:
+-                return 2;
+-            case Calendar.WEDNESDAY:
+-                return 3;
+-            case Calendar.THURSDAY:
+-                return 4;
+-            case Calendar.FRIDAY:
+-                return 5;
+-            case Calendar.SATURDAY:
+-                return 6;
 -        }
--
--        upgradeV2(deserialized, rawJson);
--        upgradeV3(deserialized, rawJson);
--
--        return upgraded;
+-        return 0;
 -    }
 -
--    /**
--     * Upgrade configuration of HMCL 2.x
--     *
--     * @param deserialized deserialized config settings
--     * @param rawJson      raw json structure of the config settings without modification
--     */
--    private static void upgradeV2(Config deserialized, Map<?, ?> rawJson) {
--        // Convert OfflineAccounts whose stored uuid is important.
--        tryCast(rawJson.get("auth"), Map.class).ifPresent(auth -> {
--            tryCast(auth.get("offline"), Map.class).ifPresent(offline -> {
--                String selected = rawJson.containsKey("selectedAccount") ? null
--                        : tryCast(offline.get("IAuthenticator_UserName"), String.class).orElse(null);
--
--                tryCast(offline.get("uuidMap"), Map.class).ifPresent(uuidMap -> {
--                    ((Map<?, ?>) uuidMap).forEach((key, value) -> {
--                        Map<Object, Object> storage = new HashMap<>();
--                        storage.put("type", "offline");
--                        storage.put("username", key);
--                        storage.put("uuid", value);
--                        if (key.equals(selected)) {
--                            storage.put("selected", true);
--                        }
--                        deserialized.getAccountStorages().add(storage);
--                    });
--                });
--            });
--        });
--    }
--
--    /**
--     * Upgrade configuration of HMCL earlier than 3.1.70
--     *
--     * @param deserialized deserialized config settings
--     * @param rawJson      raw json structure of the config settings without modification
--     */
--    private static void upgradeV3(Config deserialized, Map<?, ?> rawJson) {
--        if (!rawJson.containsKey("commonDirType"))
--            deserialized.setCommonDirType(deserialized.getCommonDirectory().equals(Settings.getDefaultCommonDirectory()) ? EnumCommonDirectory.DEFAULT : EnumCommonDirectory.CUSTOM);
--        if (!rawJson.containsKey("backgroundType"))
--            deserialized.setBackgroundImageType(StringUtils.isNotBlank(deserialized.getBackgroundImage()) ? EnumBackgroundImage.CUSTOM : EnumBackgroundImage.DEFAULT);
--        if (!rawJson.containsKey("hasProxy"))
--            deserialized.setHasProxy(StringUtils.isNotBlank(deserialized.getProxyHost()));
--        if (!rawJson.containsKey("hasProxyAuth"))
--            deserialized.setHasProxyAuth(StringUtils.isNotBlank(deserialized.getProxyUser()));
--
--        if (!rawJson.containsKey("downloadType")) {
--            tryCast(rawJson.get("downloadtype"), Number.class)
--                    .map(Number::intValue)
--                    .ifPresent(id -> {
--                        if (id == 0) {
--                            deserialized.setDownloadType("mojang");
--                        } else if (id == 1) {
--                            deserialized.setDownloadType("bmclapi");
--                        }
--                    });
--        }
--    }
+-    private static final String APP_KEY = "";
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
-index d4c4f9d24..cd5f899ec 100644
+index acedb629c..94c28acad 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
-@@ -323,15 +323,6 @@ public final class Controllers {
+@@ -385,15 +385,6 @@ public final class Controllers {
  
      public static void onHyperlinkAction(String href) {
          if (href.startsWith("hmcl://")) {
@@ -238,32 +219,29 @@ index d4c4f9d24..cd5f899ec 100644
              FXUtils.openLink(href);
          }
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/CrashWindow.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/CrashWindow.java
-index 46ce19abc..daafd6f69 100644
+index 6761ad986..8f4b2b880 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/CrashWindow.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/CrashWindow.java
-@@ -27,7 +27,6 @@ import javafx.scene.layout.HBox;
- import javafx.scene.layout.StackPane;
+@@ -28,7 +28,6 @@ import javafx.scene.layout.StackPane;
  import javafx.stage.Stage;
  import org.jackhuang.hmcl.Metadata;
--import org.jackhuang.hmcl.upgrade.UpdateChecker;
+ import org.jackhuang.hmcl.countly.CrashReport;
+-import org.jackhuang.hmcl.upgrade.hmcl.UpdateChecker;
  
- import static org.jackhuang.hmcl.ui.FXUtils.newImage;
+ import static org.jackhuang.hmcl.ui.FXUtils.newBuiltinImage;
  import static org.jackhuang.hmcl.util.i18n.I18n.i18n;
-@@ -39,10 +38,7 @@ public class CrashWindow extends Stage {
- 
-     public CrashWindow(String text) {
+@@ -42,8 +41,6 @@ public class CrashWindow extends Stage {
          Label lblCrash = new Label();
--        if (UpdateChecker.isOutdated())
--            lblCrash.setText(i18n("launcher.crash_out_dated"));
--        else
--            lblCrash.setText(i18n("launcher.crash"));
-+        lblCrash.setText(i18n("launcher.crash"));
+         if (report.getThrowable() instanceof InternalError)
+             lblCrash.setText(i18n("launcher.crash.java_internal_error"));
+-        else if (UpdateChecker.isOutdated())
+-            lblCrash.setText(i18n("launcher.crash.hmcl_out_dated"));
+         else
+             lblCrash.setText(i18n("launcher.crash"));
          lblCrash.setWrapText(true);
- 
-         TextArea textArea = new TextArea();
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java
 deleted file mode 100644
-index b43133a1c..000000000
+index 733e393da..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java
 +++ /dev/null
 @@ -1,77 +0,0 @@
@@ -294,7 +272,7 @@ index b43133a1c..000000000
 -import javafx.scene.web.WebView;
 -import org.jackhuang.hmcl.Metadata;
 -import org.jackhuang.hmcl.ui.construct.DialogCloseEvent;
--import org.jackhuang.hmcl.upgrade.RemoteVersion;
+-import org.jackhuang.hmcl.upgrade.hmcl.RemoteVersion;
 -
 -import java.util.logging.Level;
 -
@@ -345,18 +323,18 @@ index b43133a1c..000000000
 -    }
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java
-index 44cc2307b..7e0950690 100644
+index dfa578cc2..cac871f81 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java
 @@ -58,7 +58,6 @@ import org.jackhuang.hmcl.ui.FXUtils;
  import org.jackhuang.hmcl.ui.SVG;
  import org.jackhuang.hmcl.ui.WeakListenerHolder;
  import org.jackhuang.hmcl.ui.construct.*;
--import org.jackhuang.hmcl.upgrade.IntegrityChecker;
+-import org.jackhuang.hmcl.upgrade.hmcl.IntegrityChecker;
  import org.jackhuang.hmcl.util.StringUtils;
  import org.jackhuang.hmcl.util.gson.UUIDTypeAdapter;
  import org.jackhuang.hmcl.util.javafx.BindingMapping;
-@@ -304,12 +303,6 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
+@@ -323,12 +322,6 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
                  box.getChildren().setAll(profileLink, birthLink, purchaseLink, deauthorizeLink, forgotpasswordLink, createProfileLink);
                  GridPane.setColumnSpan(box, 2);
  
@@ -369,7 +347,7 @@ index 44cc2307b..7e0950690 100644
                  vbox.getChildren().addAll(hintPane, box);
  
                  btnAccept.setDisable(false);
-@@ -399,15 +392,6 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
+@@ -418,15 +411,6 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
  
              int rowIndex = 0;
  
@@ -387,10 +365,10 @@ index 44cc2307b..7e0950690 100644
  
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java
 deleted file mode 100644
-index 58972ed3f..000000000
+index a71c1d5d5..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java
 +++ /dev/null
-@@ -1,80 +0,0 @@
+@@ -1,79 +0,0 @@
 -/*
 - * Hello Minecraft! Launcher
 - * Copyright (C) 2021  huangyuhui <huanghongxun2008@126.com> and contributors
@@ -412,7 +390,6 @@ index 58972ed3f..000000000
 -
 -import javafx.geometry.Insets;
 -import javafx.scene.control.ScrollPane;
--import javafx.scene.image.Image;
 -import javafx.scene.layout.VBox;
 -import org.jackhuang.hmcl.ui.FXUtils;
 -import org.jackhuang.hmcl.ui.construct.ComponentList;
@@ -436,25 +413,25 @@ index 58972ed3f..000000000
 -        ComponentList community = new ComponentList();
 -        {
 -            IconedTwoLineListItem users = new IconedTwoLineListItem();
--            users.setImage(new Image("/assets/img/craft_table.png"));
+-            users.setImage(FXUtils.newBuiltinImage("/assets/img/craft_table.png"));
 -            users.setTitle(i18n("feedback.qq_group"));
 -            users.setSubtitle(i18n("feedback.qq_group.statement"));
 -            users.setExternalLink("https://hmcl.huangyuhui.net/api/redirect/sponsor");
 -
 -            IconedTwoLineListItem github = new IconedTwoLineListItem();
--            github.setImage(new Image("/assets/img/github.png"));
+-            github.setImage(FXUtils.newBuiltinImage("/assets/img/github.png"));
 -            github.setTitle(i18n("feedback.github"));
 -            github.setSubtitle(i18n("feedback.github.statement"));
--            github.setExternalLink("https://github.com/huanghongxun/HMCL/issues/new/choose");
+-            github.setExternalLink("https://github.com/HMCL-dev/HMCL/issues/new/choose");
 -
 -            IconedTwoLineListItem discord = new IconedTwoLineListItem();
--            discord.setImage(new Image("/assets/img/discord.png"));
+-            discord.setImage(FXUtils.newBuiltinImage("/assets/img/discord.png"));
 -            discord.setTitle(i18n("feedback.discord"));
 -            discord.setSubtitle(i18n("feedback.discord.statement"));
 -            discord.setExternalLink("https://discord.gg/jVvC7HfM6U");
 -
 -            IconedTwoLineListItem kookapp = new IconedTwoLineListItem();
--            kookapp.setImage(new Image("/assets/img/kookapp.png"));
+-            kookapp.setImage(FXUtils.newBuiltinImage("/assets/img/kookapp.png"));
 -            kookapp.setTitle(i18n("feedback.kookapp"));
 -            kookapp.setSubtitle(i18n("feedback.kookapp.statement"));
 -            kookapp.setExternalLink("https://kook.top/Kx7n3t");
@@ -472,10 +449,10 @@ index 58972ed3f..000000000
 -
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/LauncherSettingsPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/LauncherSettingsPage.java
-index d6c11595c..d75862829 100644
+index 3e80594cc..32ca4b1db 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/LauncherSettingsPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/LauncherSettingsPage.java
-@@ -44,8 +44,6 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
+@@ -45,8 +45,6 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
      private final TabHeader.Tab<DownloadSettingsPage> downloadTab = new TabHeader.Tab<>("downloadSettingsPage");
      private final TabHeader.Tab<HelpPage> helpTab = new TabHeader.Tab<>("helpPage");
      private final TabHeader.Tab<AboutPage> aboutTab = new TabHeader.Tab<>("aboutPage");
@@ -484,7 +461,7 @@ index d6c11595c..d75862829 100644
      private final TransitionPane transitionPane = new TransitionPane();
  
      public LauncherSettingsPage() {
-@@ -54,10 +52,8 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
+@@ -55,10 +53,8 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
          personalizationTab.setNodeSupplier(PersonalizationPage::new);
          downloadTab.setNodeSupplier(DownloadSettingsPage::new);
          helpTab.setNodeSupplier(HelpPage::new);
@@ -496,26 +473,26 @@ index d6c11595c..d75862829 100644
  
          tab.select(gameTab);
          gameTab.initializeIfNeeded();
-@@ -100,18 +96,6 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
+@@ -102,18 +98,6 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
                          helpItem.activeProperty().bind(tab.getSelectionModel().selectedItemProperty().isEqualTo(helpTab));
                          helpItem.setOnAction(e -> tab.select(helpTab));
                      })
 -                    .addNavigationDrawerItem(feedbackItem -> {
 -                        feedbackItem.setTitle(i18n("feedback"));
--                        feedbackItem.setLeftGraphic(wrap(SVG::messageAlertOutline));
+-                        feedbackItem.setLeftGraphic(wrap(SVG.MESSAGE_ALERT_OUTLINE));
 -                        feedbackItem.activeProperty().bind(tab.getSelectionModel().selectedItemProperty().isEqualTo(feedbackTab));
 -                        feedbackItem.setOnAction(e -> tab.select(feedbackTab));
 -                    })
 -                    .addNavigationDrawerItem(sponsorItem -> {
 -                        sponsorItem.setTitle(i18n("sponsor"));
--                        sponsorItem.setLeftGraphic(wrap(SVG::handHearOutline));
+-                        sponsorItem.setLeftGraphic(wrap(SVG.HAND_HEAR_OUTLINE));
 -                        sponsorItem.activeProperty().bind(tab.getSelectionModel().selectedItemProperty().isEqualTo(sponsorTab));
 -                        sponsorItem.setOnAction(e -> tab.select(sponsorTab));
 -                    })
                      .addNavigationDrawerItem(aboutItem -> {
                          aboutItem.setTitle(i18n("about"));
-                         aboutItem.setLeftGraphic(wrap(SVG::informationOutline));
-@@ -140,10 +124,6 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
+                         aboutItem.setLeftGraphic(wrap(SVG.INFORMATION_OUTLINE));
+@@ -142,10 +126,6 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
          tab.select(gameTab);
      }
  
@@ -527,20 +504,20 @@ index d6c11595c..d75862829 100644
      public ReadOnlyObjectProperty<State> stateProperty() {
          return state.getReadOnlyProperty();
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java
-index d619d6762..1ad15d811 100644
+index f613d8fb3..c63d73ce9 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java
-@@ -54,9 +54,6 @@ import org.jackhuang.hmcl.ui.construct.TwoLineListItem;
+@@ -53,9 +53,6 @@ import org.jackhuang.hmcl.ui.construct.TwoLineListItem;
  import org.jackhuang.hmcl.ui.decorator.DecoratorPage;
  import org.jackhuang.hmcl.ui.versions.GameItem;
  import org.jackhuang.hmcl.ui.versions.Versions;
--import org.jackhuang.hmcl.upgrade.RemoteVersion;
--import org.jackhuang.hmcl.upgrade.UpdateChecker;
--import org.jackhuang.hmcl.upgrade.UpdateHandler;
+-import org.jackhuang.hmcl.upgrade.hmcl.RemoteVersion;
+-import org.jackhuang.hmcl.upgrade.hmcl.UpdateChecker;
+-import org.jackhuang.hmcl.upgrade.hmcl.UpdateHandler;
  import org.jackhuang.hmcl.util.javafx.BindingMapping;
  import org.jackhuang.hmcl.util.javafx.MappedObservableList;
- import org.jackhuang.hmcl.util.platform.JavaVersion;
-@@ -80,14 +77,10 @@ public final class MainPage extends StackPane implements DecoratorPage {
+ 
+@@ -77,14 +74,10 @@ public final class MainPage extends StackPane implements DecoratorPage {
      private final JFXPopup popup = new JFXPopup(menu);
  
      private final StringProperty currentGame = new SimpleStringProperty(this, "currentGame");
@@ -555,7 +532,7 @@ index d619d6762..1ad15d811 100644
      private final JFXButton menuButton;
  
      {
-@@ -115,54 +108,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -101,54 +94,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
  
          setPadding(new Insets(20));
  
@@ -586,7 +563,7 @@ index d619d6762..1ad15d811 100644
 -            StackPane.setMargin(hBox, new Insets(9, 12, 9, 16));
 -            {
 -                Label lblIcon = new Label();
--                lblIcon.setGraphic(SVG.update(Theme.whiteFillBinding(), 20, 20));
+-                lblIcon.setGraphic(SVG.UPDATE.createIcon(Theme.whiteFill(), 20, 20));
 -
 -                TwoLineListItem prompt = new TwoLineListItem();
 -                prompt.setSubtitle(i18n("update.bubble.subtitle"));
@@ -598,7 +575,7 @@ index d619d6762..1ad15d811 100644
 -            }
 -
 -            JFXButton closeUpdateButton = new JFXButton();
--            closeUpdateButton.setGraphic(SVG.close(Theme.whiteFillBinding(), 10, 10));
+-            closeUpdateButton.setGraphic(SVG.CLOSE.createIcon(Theme.whiteFill(), 10, 10));
 -            StackPane.setAlignment(closeUpdateButton, Pos.TOP_RIGHT);
 -            closeUpdateButton.getStyleClass().add("toggle-icon-tiny");
 -            StackPane.setMargin(closeUpdateButton, new Insets(5));
@@ -610,16 +587,16 @@ index d619d6762..1ad15d811 100644
          StackPane launchPane = new StackPane();
          launchPane.getStyleClass().add("launch-pane");
          launchPane.setMaxWidth(230);
-@@ -232,7 +177,7 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -219,7 +164,7 @@ public final class MainPage extends StackPane implements DecoratorPage {
              launchPane.getChildren().setAll(launchButton, separator, menuButton);
          }
  
 -        getChildren().addAll(updatePane, launchPane);
-+        getChildren().setAll(launchPane);
++        getChildren().addAll(launchPane);
  
          menu.setMaxHeight(365);
          menu.setMaxWidth(545);
-@@ -245,37 +190,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -232,37 +177,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
          });
          Bindings.bindContent(menu.getContent(), versionNodes);
      }
@@ -657,7 +634,7 @@ index d619d6762..1ad15d811 100644
      private void launch() {
          Versions.launch(Profiles.getSelectedProfile());
      }
-@@ -284,29 +198,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -271,29 +185,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
          popup.show(menuButton, JFXPopup.PopupVPosition.BOTTOM, JFXPopup.PopupHPosition.RIGHT, 0, -menuButton.getHeight());
      }
  
@@ -687,7 +664,7 @@ index d619d6762..1ad15d811 100644
      @Override
      public ReadOnlyObjectWrapper<State> stateProperty() {
          return state;
-@@ -324,30 +215,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -311,30 +202,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
          this.currentGame.set(currentGame);
      }
  
@@ -719,19 +696,19 @@ index d619d6762..1ad15d811 100644
          FXUtils.checkFxUserThread();
          this.profile = profile;
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
-index 65eb3fcf2..c92208fcd 100644
+index d6dd1c5fb..391432d1f 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
-@@ -41,7 +41,6 @@ import org.jackhuang.hmcl.ui.decorator.DecoratorPage;
- import org.jackhuang.hmcl.ui.download.ModpackInstallWizardProvider;
+@@ -43,7 +43,6 @@ import org.jackhuang.hmcl.ui.nbt.NBTEditorPage;
+ import org.jackhuang.hmcl.ui.nbt.NBTHelper;
  import org.jackhuang.hmcl.ui.versions.GameAdvancedListItem;
  import org.jackhuang.hmcl.ui.versions.Versions;
--import org.jackhuang.hmcl.upgrade.UpdateChecker;
+-import org.jackhuang.hmcl.upgrade.hmcl.UpdateChecker;
+ import org.jackhuang.hmcl.util.StringUtils;
  import org.jackhuang.hmcl.util.TaskCancellationAction;
  import org.jackhuang.hmcl.util.io.CompressingUtils;
- import org.jackhuang.hmcl.util.versioning.VersionNumber;
-@@ -93,8 +92,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
-             });
+@@ -110,8 +109,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
+                     });
  
              FXUtils.onChangeAndOperate(Profiles.selectedVersionProperty(), mainPage::setCurrentGame);
 -            mainPage.showUpdateProperty().bind(UpdateChecker.outdatedProperty());
@@ -739,13 +716,13 @@ index 65eb3fcf2..c92208fcd 100644
  
              Profiles.registerVersionsListener(profile -> {
                  HMCLGameRepository repository = profile.getRepository();
-@@ -151,19 +148,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
-             downloadItem.setTitle(i18n("download"));
+@@ -169,19 +166,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
              downloadItem.setOnAction(e -> Controllers.navigate(Controllers.getDownloadPage()));
+             runInFX(() -> FXUtils.installFastTooltip(downloadItem, i18n("download.hint")));
  
 -            // fifth item in left sidebar
 -            AdvancedListItem multiplayerItem = new AdvancedListItem();
--            multiplayerItem.setLeftGraphic(wrap(SVG::lan));
+-            multiplayerItem.setLeftGraphic(wrap(SVG.LAN));
 -            multiplayerItem.setActionButtonVisible(false);
 -            multiplayerItem.setTitle(i18n("multiplayer"));
 -            JFXHyperlink link = new JFXHyperlink(i18n("multiplayer.hint.details"));
@@ -758,8 +735,8 @@ index 65eb3fcf2..c92208fcd 100644
 -
              // sixth item in left sidebar
              AdvancedListItem launcherSettingsItem = new AdvancedListItem();
-             launcherSettingsItem.setLeftGraphic(wrap(SVG::gearOutline));
-@@ -180,7 +164,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
+             launcherSettingsItem.setLeftGraphic(wrap(SVG.GEAR_OUTLINE));
+@@ -198,7 +182,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
                      .add(gameItem)
                      .add(downloadItem)
                      .startCategory(i18n("settings.launcher.general").toUpperCase(Locale.ROOT))
@@ -768,17 +745,17 @@ index 65eb3fcf2..c92208fcd 100644
  
              // the root page, with the sidebar in left, navigator in center.
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsPage.java
-index b53470944..622b21e6b 100644
+index a76070c1c..622b21e6b 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsPage.java
 @@ -27,10 +27,6 @@ import org.jackhuang.hmcl.setting.Settings;
  import org.jackhuang.hmcl.ui.Controllers;
  import org.jackhuang.hmcl.ui.FXUtils;
  import org.jackhuang.hmcl.ui.construct.MessageDialogPane.MessageType;
--import org.jackhuang.hmcl.upgrade.RemoteVersion;
--import org.jackhuang.hmcl.upgrade.UpdateChannel;
--import org.jackhuang.hmcl.upgrade.UpdateChecker;
--import org.jackhuang.hmcl.upgrade.UpdateHandler;
+-import org.jackhuang.hmcl.upgrade.hmcl.RemoteVersion;
+-import org.jackhuang.hmcl.upgrade.hmcl.UpdateChannel;
+-import org.jackhuang.hmcl.upgrade.hmcl.UpdateChecker;
+-import org.jackhuang.hmcl.upgrade.hmcl.UpdateHandler;
  import org.jackhuang.hmcl.util.Logging;
  import org.jackhuang.hmcl.util.i18n.Locales;
  import org.jackhuang.hmcl.util.io.FileUtils;
@@ -853,7 +830,7 @@ index b53470944..622b21e6b 100644
      protected void clearCacheDirectory() {
          FileUtils.cleanDirectoryQuietly(new File(Settings.instance().getCommonDirectory(), "cache"));
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java
-index af9a3477b..44b6dfed7 100644
+index 132ea76f6..44b6dfed7 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java
 @@ -49,11 +49,6 @@ public abstract class SettingsView extends StackPane {
@@ -909,7 +886,7 @@ index af9a3477b..44b6dfed7 100644
 -                        btnUpdate = new JFXButton();
 -                        btnUpdate.setOnMouseClicked(e -> onUpdate());
 -                        btnUpdate.getStyleClass().add("toggle-icon4");
--                        btnUpdate.setGraphic(SVG.update(Theme.blackFillBinding(), 20, 20));
+-                        btnUpdate.setGraphic(SVG.UPDATE.createIcon(Theme.blackFill(), 20, 20));
 -
 -                        updatePane.setHeaderRight(btnUpdate);
                      }
@@ -1124,10 +1101,60 @@ index 07716990b..000000000
 -        }
 -    }
 -}
-diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/ExecutableHeaderHelper.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/ExecutableHeaderHelper.java
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/versions/ModTranslations.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/versions/ModTranslations.java
+index 7d7a22cb4..36b380e85 100644
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/versions/ModTranslations.java
++++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/versions/ModTranslations.java
+@@ -18,7 +18,6 @@
+ package org.jackhuang.hmcl.ui.versions;
+ 
+ import org.jackhuang.hmcl.mod.RemoteModRepository;
+-import org.jackhuang.hmcl.upgrade.resource.RemoteResourceManager;
+ import org.jackhuang.hmcl.util.Pair;
+ import org.jackhuang.hmcl.util.StringUtils;
+ import org.jackhuang.hmcl.util.io.IOUtils;
+@@ -69,7 +68,6 @@ public enum ModTranslations {
+     }
+ 
+     private final String defaultResourceName;
+-    private final RemoteResourceManager.RemoteResourceKey remoteResourceKey;
+     private List<Mod> mods;
+     private Map<String, Mod> modIdMap; // mod id -> mod
+     private Map<String, Mod> curseForgeMap; // curseforge id -> mod
+@@ -78,8 +76,6 @@ public enum ModTranslations {
+ 
+     ModTranslations(String defaultResourceName, String namespace, String name, String version) {
+         this.defaultResourceName = defaultResourceName;
+-
+-        remoteResourceKey = RemoteResourceManager.get(namespace, name, version, () -> ModTranslations.class.getResourceAsStream(defaultResourceName));
+     }
+ 
+     @Nullable
+@@ -127,19 +123,7 @@ public enum ModTranslations {
+             return true;
+         }
+ 
+-        try {
+-            InputStream inputStream = remoteResourceKey.getResource();
+-            if (inputStream == null) {
+-                return false;
+-            }
+-
+-            String modData = IOUtils.readFullyAsString(inputStream);
+-            mods = Arrays.stream(modData.split("\n")).filter(line -> !line.startsWith("#")).map(Mod::new).collect(Collectors.toList());
+-            return true;
+-        } catch (Exception e) {
+-            LOG.log(Level.WARNING, "Failed to load " + defaultResourceName, e);
+-            return false;
+-        }
++        return false;
+     }
+ 
+     private boolean loadCurseForgeMap() {
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/ExecutableHeaderHelper.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/ExecutableHeaderHelper.java
 deleted file mode 100644
-index 7c47f586d..000000000
---- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/ExecutableHeaderHelper.java
+index e5c9ccb5f..000000000
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/ExecutableHeaderHelper.java
 +++ /dev/null
 @@ -1,124 +0,0 @@
 -/*
@@ -1147,7 +1174,7 @@ index 7c47f586d..000000000
 - * You should have received a copy of the GNU General Public License
 - * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 - */
--package org.jackhuang.hmcl.upgrade;
+-package org.jackhuang.hmcl.upgrade.hmcl;
 -
 -import java.io.IOException;
 -import java.io.InputStream;
@@ -1254,10 +1281,10 @@ index 7c47f586d..000000000
 -        }
 -    }
 -}
-diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/HMCLDownloadTask.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/HMCLDownloadTask.java
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/HMCLDownloadTask.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/HMCLDownloadTask.java
 deleted file mode 100644
-index 8b6fdc06c..000000000
---- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/HMCLDownloadTask.java
+index 0ae8358a5..000000000
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/HMCLDownloadTask.java
 +++ /dev/null
 @@ -1,68 +0,0 @@
 -/*
@@ -1277,7 +1304,7 @@ index 8b6fdc06c..000000000
 - * You should have received a copy of the GNU General Public License
 - * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 - */
--package org.jackhuang.hmcl.upgrade;
+-package org.jackhuang.hmcl.upgrade.hmcl;
 -
 -import org.jackhuang.hmcl.task.FileDownloadTask;
 -import org.jackhuang.hmcl.util.Pack200Utils;
@@ -1328,12 +1355,12 @@ index 8b6fdc06c..000000000
 -    }
 -
 -}
-diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/IntegrityChecker.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/IntegrityChecker.java
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/IntegrityChecker.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/IntegrityChecker.java
 deleted file mode 100644
-index 5faaaf8c1..000000000
---- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/IntegrityChecker.java
+index 8833f94c0..000000000
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/IntegrityChecker.java
 +++ /dev/null
-@@ -1,148 +0,0 @@
+@@ -1,146 +0,0 @@
 -/*
 - * Hello Minecraft! Launcher
 - * Copyright (C) 2020  huangyuhui <huanghongxun2008@126.com> and contributors
@@ -1351,7 +1378,7 @@ index 5faaaf8c1..000000000
 - * You should have received a copy of the GNU General Public License
 - * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 - */
--package org.jackhuang.hmcl.upgrade;
+-package org.jackhuang.hmcl.upgrade.hmcl;
 -
 -import org.jackhuang.hmcl.Metadata;
 -import org.jackhuang.hmcl.util.DigestUtils;
@@ -1382,6 +1409,8 @@ index 5faaaf8c1..000000000
 -public final class IntegrityChecker {
 -    private IntegrityChecker() {}
 -
+-    public static final boolean DISABLE_SELF_INTEGRITY_CHECK = "true".equals(System.getProperty("hmcl.self_integrity_check.disable"));
+-
 -    private static final String SIGNATURE_FILE = "META-INF/hmcl_signature";
 -    private static final String PUBLIC_KEY_FILE = "assets/hmcl_signature_publickey.der";
 -
@@ -1396,7 +1425,7 @@ index 5faaaf8c1..000000000
 -        }
 -    }
 -
--    private static boolean verifyJar(Path jarPath) throws IOException {
+-    static void verifyJar(Path jarPath) throws IOException {
 -        PublicKey publickey = getPublicKey();
 -        MessageDigest md = DigestUtils.getDigest("SHA-512");
 -
@@ -1432,15 +1461,11 @@ index 5faaaf8c1..000000000
 -                verifier.update(md.digest(entry.getKey().getBytes(UTF_8)));
 -                verifier.update(entry.getValue());
 -            }
--            return verifier.verify(signature);
+-            if (!verifier.verify(signature)) {
+-                throw new IOException("Invalid signature: " + jarPath);
+-            }
 -        } catch (GeneralSecurityException e) {
 -            throw new IOException("Failed to verify signature", e);
--        }
--    }
--
--    static void requireVerifiedJar(Path jar) throws IOException {
--        if (!verifyJar(jar)) {
--            throw new IOException("Invalid signature: " + jar);
 -        }
 -    }
 -
@@ -1461,7 +1486,12 @@ index 5faaaf8c1..000000000
 -            }
 -
 -            try {
--                verifySelf();
+-                Path jarPath = JarUtils.thisJarPath();
+-                if (jarPath == null) {
+-                    throw new IOException("Failed to find current HMCL location");
+-                }
+-
+-                verifyJar(jarPath);
 -                LOG.info("Successfully verified current JAR");
 -                selfVerified = true;
 -            } catch (IOException e) {
@@ -1476,16 +1506,11 @@ index 5faaaf8c1..000000000
 -    public static boolean isOfficial() {
 -        return isSelfVerified() || (Metadata.GITHUB_SHA != null && Metadata.BUILD_CHANNEL.equals("nightly"));
 -    }
--
--    private static void verifySelf() throws IOException {
--        Path self = JarUtils.thisJar().orElseThrow(() -> new IOException("Failed to find current HMCL location"));
--        requireVerifiedJar(self);
--    }
 -}
-diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/RemoteVersion.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/RemoteVersion.java
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/RemoteVersion.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/RemoteVersion.java
 deleted file mode 100644
-index c3ac2caaf..000000000
---- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/RemoteVersion.java
+index 776881aca..000000000
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/RemoteVersion.java
 +++ /dev/null
 @@ -1,96 +0,0 @@
 -/*
@@ -1505,7 +1530,7 @@ index c3ac2caaf..000000000
 - * You should have received a copy of the GNU General Public License
 - * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 - */
--package org.jackhuang.hmcl.upgrade;
+-package org.jackhuang.hmcl.upgrade.hmcl;
 -
 -import com.google.gson.JsonElement;
 -import com.google.gson.JsonObject;
@@ -1584,10 +1609,10 @@ index c3ac2caaf..000000000
 -        JAR
 -    }
 -}
-diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChannel.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChannel.java
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/UpdateChannel.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/UpdateChannel.java
 deleted file mode 100644
-index 998a3da7d..000000000
---- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChannel.java
+index f56d645dd..000000000
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/UpdateChannel.java
 +++ /dev/null
 @@ -1,42 +0,0 @@
 -/*
@@ -1607,7 +1632,7 @@ index 998a3da7d..000000000
 - * You should have received a copy of the GNU General Public License
 - * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 - */
--package org.jackhuang.hmcl.upgrade;
+-package org.jackhuang.hmcl.upgrade.hmcl;
 -
 -import org.jackhuang.hmcl.Metadata;
 -
@@ -1632,10 +1657,10 @@ index 998a3da7d..000000000
 -        }
 -    }
 -}
-diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChecker.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChecker.java
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/UpdateChecker.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/UpdateChecker.java
 deleted file mode 100644
-index cc7ce8f2e..000000000
---- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChecker.java
+index d26c10a0b..000000000
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/UpdateChecker.java
 +++ /dev/null
 @@ -1,125 +0,0 @@
 -/*
@@ -1655,7 +1680,7 @@ index cc7ce8f2e..000000000
 - * You should have received a copy of the GNU General Public License
 - * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 - */
--package org.jackhuang.hmcl.upgrade;
+-package org.jackhuang.hmcl.upgrade.hmcl;
 -
 -import javafx.application.Platform;
 -import javafx.beans.binding.Bindings;
@@ -1721,11 +1746,11 @@ index cc7ce8f2e..000000000
 -    }
 -
 -    private static RemoteVersion checkUpdate(UpdateChannel channel) throws IOException {
--        if (!IntegrityChecker.isSelfVerified() && !"true".equals(System.getProperty("hmcl.self_integrity_check.disable"))) {
+-        if (!IntegrityChecker.DISABLE_SELF_INTEGRITY_CHECK && !IntegrityChecker.isSelfVerified()) {
 -            throw new IOException("Self verification failed");
 -        }
 -
--        String url = NetworkUtils.withQuery(Metadata.UPDATE_URL, mapOf(
+-        String url = NetworkUtils.withQuery(Metadata.HMCL_UPDATE_URL, mapOf(
 -                pair("version", Metadata.VERSION),
 -                pair("channel", channel.channelName)));
 -
@@ -1763,12 +1788,12 @@ index cc7ce8f2e..000000000
 -        });
 -    }
 -}
-diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/UpdateHandler.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/UpdateHandler.java
 deleted file mode 100644
-index 4cd06ef8c..000000000
---- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java
+index f027fff1e..000000000
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/hmcl/UpdateHandler.java
 +++ /dev/null
-@@ -1,257 +0,0 @@
+@@ -1,282 +0,0 @@
 -/*
 - * Hello Minecraft! Launcher
 - * Copyright (C) 2020  huangyuhui <huanghongxun2008@126.com> and contributors
@@ -1786,7 +1811,7 @@ index 4cd06ef8c..000000000
 - * You should have received a copy of the GNU General Public License
 - * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 - */
--package org.jackhuang.hmcl.upgrade;
+-package org.jackhuang.hmcl.upgrade.hmcl;
 -
 -import com.google.gson.Gson;
 -import com.google.gson.JsonParseException;
@@ -1805,6 +1830,7 @@ index 4cd06ef8c..000000000
 -import org.jackhuang.hmcl.util.io.FileUtils;
 -import org.jackhuang.hmcl.util.io.JarUtils;
 -import org.jackhuang.hmcl.util.platform.JavaVersion;
+-import org.jackhuang.hmcl.util.platform.OperatingSystem;
 -
 -import java.io.IOException;
 -import java.nio.file.Files;
@@ -1822,7 +1848,8 @@ index 4cd06ef8c..000000000
 -import static org.jackhuang.hmcl.util.i18n.I18n.i18n;
 -
 -public final class UpdateHandler {
--    private UpdateHandler() {}
+-    private UpdateHandler() {
+-    }
 -
 -    /**
 -     * @return whether to exit
@@ -1842,6 +1869,11 @@ index 4cd06ef8c..000000000
 -        }
 -
 -        if (args.length == 2 && args[0].equals("--apply-to")) {
+-            if (OperatingSystem.CURRENT_OS == OperatingSystem.WINDOWS && !OperatingSystem.isWindows7OrLater()) {
+-                SwingUtils.showErrorDialog(i18n("fatal.apply_update_need_win7", Metadata.PUBLISH_URL));
+-                return true;
+-            }
+-
 -            try {
 -                applyUpdate(Paths.get(args[1]));
 -            } catch (IOException e) {
@@ -1862,6 +1894,11 @@ index 4cd06ef8c..000000000
 -    public static void updateFrom(RemoteVersion version) {
 -        checkFxUserThread();
 -
+-        if (OperatingSystem.CURRENT_OS == OperatingSystem.WINDOWS && !OperatingSystem.isWindows7OrLater()) {
+-            Controllers.dialog(i18n("fatal.apply_update_need_win7", Metadata.PUBLISH_URL), i18n("message.error"), MessageType.ERROR);
+-            return;
+-        }
+-
 -        Controllers.dialog(new UpgradeDialog(version, () -> {
 -            Path downloaded;
 -            try {
@@ -1881,7 +1918,7 @@ index 4cd06ef8c..000000000
 -
 -                if (success) {
 -                    try {
--                        if (!IntegrityChecker.isSelfVerified()) {
+-                        if (!IntegrityChecker.isSelfVerified() && !IntegrityChecker.DISABLE_SELF_INTEGRITY_CHECK) {
 -                            throw new IOException("Current JAR is not verified");
 -                        }
 -
@@ -1909,7 +1946,9 @@ index 4cd06ef8c..000000000
 -        LOG.info("Applying update to " + target);
 -
 -        Path self = getCurrentLocation();
--        IntegrityChecker.requireVerifiedJar(self);
+-        if (!IntegrityChecker.DISABLE_SELF_INTEGRITY_CHECK && !IntegrityChecker.isSelfVerified()) {
+-            throw new IOException("Self verification failed");
+-        }
 -        ExecutableHeaderHelper.copyWithHeader(self, target);
 -
 -        Optional<Path> newFilename = tryRename(target, Metadata.VERSION);
@@ -1927,13 +1966,21 @@ index 4cd06ef8c..000000000
 -    }
 -
 -    private static void requestUpdate(Path updateTo, Path self) throws IOException {
--        IntegrityChecker.requireVerifiedJar(updateTo);
+-        if (!IntegrityChecker.DISABLE_SELF_INTEGRITY_CHECK) {
+-            IntegrityChecker.verifyJar(updateTo);
+-        }
 -        startJava(updateTo, "--apply-to", self.toString());
 -    }
 -
 -    private static void startJava(Path jar, String... appArgs) throws IOException {
 -        List<String> commandline = new ArrayList<>();
 -        commandline.add(JavaVersion.fromCurrentEnvironment().getBinary().toString());
+-        for (Map.Entry<Object, Object> entry : System.getProperties().entrySet()) {
+-            Object key = entry.getKey();
+-            if (key instanceof String && ((String) key).startsWith("hmcl.")) {
+-                commandline.add("-D" + key + "=" + entry.getValue());
+-            }
+-        }
 -        commandline.add("-jar");
 -        commandline.add(jar.toAbsolutePath().toString());
 -        commandline.addAll(Arrays.asList(appArgs));
@@ -1957,7 +2004,11 @@ index 4cd06ef8c..000000000
 -    }
 -
 -    private static Path getCurrentLocation() throws IOException {
--        return JarUtils.thisJar().orElseThrow(() -> new IOException("Failed to find current HMCL location"));
+-        Path path = JarUtils.thisJarPath();
+-        if (path == null) {
+-            throw new IOException("Failed to find current HMCL location");
+-        }
+-        return path;
 -    }
 -
 -    // ==== support for old versions ===
@@ -1997,10 +2048,10 @@ index 4cd06ef8c..000000000
 -    }
 -
 -    private static boolean isFirstLaunchAfterUpgrade() {
--        Optional<Path> currentPath = JarUtils.thisJar();
--        if (currentPath.isPresent()) {
+-        Path currentPath = JarUtils.thisJarPath();
+-        if (currentPath != null) {
 -            Path updated = Metadata.HMCL_DIRECTORY.resolve("HMCL-" + Metadata.VERSION + ".jar");
--            if (currentPath.get().toAbsolutePath().equals(updated.toAbsolutePath())) {
+-            if (currentPath.equals(updated.toAbsolutePath())) {
 -                return true;
 -            }
 -        }
@@ -2024,24 +2075,233 @@ index 4cd06ef8c..000000000
 -            }
 -        }
 -    }
--    // ====
+-}
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/resource/RemoteResourceManager.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/resource/RemoteResourceManager.java
+deleted file mode 100644
+index b9c4a31db..000000000
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/resource/RemoteResourceManager.java
++++ /dev/null
+@@ -1,204 +0,0 @@
+-/*
+- * Hello Minecraft! Launcher
+- * Copyright (C) 2020  huangyuhui <huanghongxun2008@126.com> and contributors
+- *
+- * This program is free software: you can redistribute it and/or modify
+- * it under the terms of the GNU General Public License as published by
+- * the Free Software Foundation, either version 3 of the License, or
+- * (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+- */
+-package org.jackhuang.hmcl.upgrade.resource;
+-
+-import com.google.gson.annotations.SerializedName;
+-import com.google.gson.reflect.TypeToken;
+-import org.jackhuang.hmcl.Metadata;
+-import org.jackhuang.hmcl.task.FileDownloadTask;
+-import org.jackhuang.hmcl.task.Schedulers;
+-import org.jackhuang.hmcl.task.Task;
+-import org.jackhuang.hmcl.ui.versions.ModTranslations;
+-import org.jackhuang.hmcl.upgrade.hmcl.IntegrityChecker;
+-import org.jackhuang.hmcl.util.DigestUtils;
+-import org.jackhuang.hmcl.util.function.ExceptionalSupplier;
+-import org.jackhuang.hmcl.util.io.HttpRequest;
+-import org.jackhuang.hmcl.util.io.IOUtils;
+-import org.jackhuang.hmcl.util.io.NetworkUtils;
+-import org.jetbrains.annotations.NotNull;
+-import org.jetbrains.annotations.Nullable;
+-
+-import java.io.ByteArrayInputStream;
+-import java.io.IOException;
+-import java.io.InputStream;
+-import java.nio.file.Files;
+-import java.nio.file.Path;
+-import java.util.Arrays;
+-import java.util.Map;
+-import java.util.Optional;
+-import java.util.concurrent.ConcurrentHashMap;
+-import java.util.stream.Collectors;
+-
+-public final class RemoteResourceManager {
+-    private RemoteResourceManager() {
+-    }
+-
+-    private static final class RemoteResource {
+-        @SerializedName("sha1")
+-        private final String sha1;
+-
+-        @SerializedName("urls")
+-        private final String[] urls;
+-
+-        private transient byte[] data = null;
+-
+-        private RemoteResource(String sha1, String[] urls) {
+-            this.sha1 = sha1;
+-            this.urls = urls;
+-        }
+-
+-        public void download(Path path, Runnable callback) {
+-            if (data != null) {
+-                return;
+-            }
+-
+-            new FileDownloadTask(Arrays.stream(urls).map(NetworkUtils::toURL).collect(Collectors.toList()), path.toFile(), new FileDownloadTask.IntegrityCheck("SHA-1", sha1))
+-                    .whenComplete(Schedulers.defaultScheduler(), (result, exception) -> {
+-                        if (exception != null) {
+-                            data = Files.readAllBytes(path);
+-                            callback.run();
+-                        }
+-                    }).start();
+-        }
+-    }
+-
+-    public static final class RemoteResourceKey {
+-        private final String namespace;
+-        private final String name;
+-        private final String version;
+-        private final Path cachePath;
+-        private final ExceptionalSupplier<InputStream, IOException> localResourceSupplier;
+-        private String localResourceSha1 = null;
+-
+-        public RemoteResourceKey(String namespace, String name, String version, ExceptionalSupplier<InputStream, IOException> localResourceSupplier) {
+-            this.namespace = namespace;
+-            this.name = name;
+-            this.version = version;
+-            this.localResourceSupplier = localResourceSupplier;
+-
+-            this.cachePath = Metadata.HMCL_DIRECTORY.resolve("remoteResources").resolve(namespace).resolve(name).resolve(version).resolve(String.format("%s-%s-%s.resource", namespace, name, version));
+-        }
+-
+-        private InputStream getLocalResource() throws IOException {
+-            if (Files.isReadable(cachePath)) {
+-                return Files.newInputStream(cachePath);
+-            }
+-            return localResourceSupplier.get();
+-        }
+-
+-        private String getLocalResourceSha1() throws IOException {
+-            if (localResourceSha1 == null) {
+-                localResourceSha1 = DigestUtils.digestToString("SHA-1", IOUtils.readFullyAsByteArray(getLocalResource()));
+-            }
+-
+-            return localResourceSha1;
+-        }
+-
+-        @Nullable
+-        private RemoteResource getRemoteResource() {
+-            return Optional.ofNullable(remoteResources.get(namespace)).map(map -> map.get(name)).map(map -> map.get(version)).orElse(null);
+-        }
+-
+-        @Nullable
+-        public InputStream getResource() throws IOException {
+-            RemoteResource remoteResource = getRemoteResource();
+-
+-            if (remoteResource == null) {
+-                return getLocalResource();
+-            }
+-
+-            if (remoteResource.sha1.equals(getLocalResourceSha1())) {
+-                return getLocalResource();
+-            }
+-
+-            if (remoteResource.data == null) {
+-                return null;
+-            }
+-
+-            return new ByteArrayInputStream(remoteResource.data);
+-        }
+-
+-        public void downloadRemoteResourceIfNecessary() throws IOException {
+-            RemoteResource remoteResource = getRemoteResource();
+-
+-            if (remoteResource == null) {
+-                return;
+-            }
+-
+-            if (remoteResource.sha1.equals(getLocalResourceSha1())) {
+-                return;
+-            }
+-
+-            remoteResource.download(cachePath, () -> localResourceSha1 = null);
+-        }
+-
+-        @Override
+-        public boolean equals(Object o) {
+-            if (this == o) return true;
+-            if (o == null || getClass() != o.getClass()) return false;
+-
+-            RemoteResourceKey that = (RemoteResourceKey) o;
+-
+-            if (!namespace.equals(that.namespace)) return false;
+-            if (!name.equals(that.name)) return false;
+-            return version.equals(that.version);
+-        }
+-
+-        @Override
+-        public int hashCode() {
+-            int result = namespace.hashCode();
+-            result = 31 * result + name.hashCode();
+-            result = 31 * result + version.hashCode();
+-            return result;
+-        }
+-    }
+-
+-    private static final Map<String, Map<String, Map<String, RemoteResource>>> remoteResources = new ConcurrentHashMap<>();
+-
+-    private static final Map<String, RemoteResourceKey> keys = new ConcurrentHashMap<>();
+-
+-    public static void init() {
+-        Task.<Map<String, Map<String, Map<String, RemoteResource>>>>supplyAsync(() ->
+-                IntegrityChecker.isSelfVerified() ? HttpRequest.GET(Metadata.RESOURCE_UPDATE_URL).getJson(
+-                        new TypeToken<Map<String, Map<String, Map<String, RemoteResource>>>>() {
+-                        }.getType()
+-                ) : null
+-        ).whenComplete(Schedulers.defaultScheduler(), (result, exception) -> {
+-            if (exception == null && result != null) {
+-                remoteResources.clear();
+-                remoteResources.putAll(result);
+-
+-                for (RemoteResourceKey key : keys.values()) {
+-                    key.downloadRemoteResourceIfNecessary();
+-                }
+-            }
+-        }).start();
+-    }
+-
+-    public static void register() {
+-        ModTranslations.values();
+-    }
+-
+-    public static RemoteResourceKey get(@NotNull String namespace, @NotNull String name, @NotNull String version, ExceptionalSupplier<InputStream, IOException> defaultSupplier) {
+-        String stringKey = String.format("%s:%s:%s", namespace, name, version);
+-        RemoteResourceKey key = keys.containsKey(stringKey) ? keys.get(stringKey) : new RemoteResourceKey(namespace, name, version, defaultSupplier);
+-        Task.runAsync(key::downloadRemoteResourceIfNecessary).start();
+-        keys.put(stringKey, key);
+-        return key;
+-    }
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/util/CrashReporter.java b/HMCL/src/main/java/org/jackhuang/hmcl/util/CrashReporter.java
-index 5ec3d2e31..def97e1aa 100644
+index 5e5e28fe5..ba2158ac2 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/util/CrashReporter.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/util/CrashReporter.java
 @@ -23,8 +23,6 @@ import javafx.scene.control.Alert.AlertType;
  import org.jackhuang.hmcl.Metadata;
  import org.jackhuang.hmcl.countly.CrashReport;
  import org.jackhuang.hmcl.ui.CrashWindow;
--import org.jackhuang.hmcl.upgrade.IntegrityChecker;
--import org.jackhuang.hmcl.upgrade.UpdateChecker;
+-import org.jackhuang.hmcl.upgrade.hmcl.IntegrityChecker;
+-import org.jackhuang.hmcl.upgrade.hmcl.UpdateChecker;
  import org.jackhuang.hmcl.util.io.NetworkUtils;
  
  import java.io.IOException;
-@@ -105,9 +103,6 @@ public class CrashReporter implements Thread.UncaughtExceptionHandler {
+@@ -103,9 +101,6 @@ public final class CrashReporter implements Thread.UncaughtExceptionHandler {
                      if (showCrashWindow) {
-                         new CrashWindow(text).show();
+                         new CrashWindow(report).show();
                      }
 -                    if (!UpdateChecker.isOutdated() && IntegrityChecker.isSelfVerified()) {
 -                        reportToServer(report);
@@ -2049,6 +2309,22 @@ index 5ec3d2e31..def97e1aa 100644
                  }
              });
          } catch (Throwable handlingException) {
+diff --git a/HMCLCore/src/main/java/org/jackhuang/hmcl/game/GameDumpGenerator.java b/HMCLCore/src/main/java/org/jackhuang/hmcl/game/GameDumpGenerator.java
+index 984cdfd79..7fd482fca 100644
+--- a/HMCLCore/src/main/java/org/jackhuang/hmcl/game/GameDumpGenerator.java
++++ b/HMCLCore/src/main/java/org/jackhuang/hmcl/game/GameDumpGenerator.java
+@@ -165,10 +165,6 @@ public final class GameDumpGenerator {
+     }
+ 
+     private static InputStream executeJVMCommand(VirtualMachine vm, String command) throws IOException, AttachNotSupportedException {
+-        if (vm instanceof sun.tools.attach.HotSpotVirtualMachine) {
+-            return ((sun.tools.attach.HotSpotVirtualMachine) vm).executeJCmd(command);
+-        } else {
+-            throw new AttachNotSupportedException("Unsupported VM implementation " + vm.getClass().getName());
+-        }
++        throw new AttachNotSupportedException("Unsupported VM implementation " + vm.getClass().getName());
+     }
+ }
 -- 
-2.41.0
+2.43.0
 

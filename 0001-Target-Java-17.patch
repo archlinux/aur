@@ -1,7 +1,7 @@
-From 3dd83c5aef7e2909c8cefe2aa5d713fc5d379f5b Mon Sep 17 00:00:00 2001
+From 184658690a01c7c4afe3fba8a016379164aa2980 Mon Sep 17 00:00:00 2001
 From: Aviana Cruz <gwencroft@proton.me>
 Date: Sun, 6 Nov 2022 13:28:59 +0800
-Subject: [PATCH 1/2] Target java 17
+Subject: [PATCH 1/2] Target Java 17
 
 Signed-off-by: Aviana Cruz <gwencroft@proton.me>
 ---
@@ -9,10 +9,10 @@ Signed-off-by: Aviana Cruz <gwencroft@proton.me>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/build.gradle.kts b/build.gradle.kts
-index dde252532..a65f91d50 100644
+index 50a4f2c00..b3d378d37 100644
 --- a/build.gradle.kts
 +++ b/build.gradle.kts
-@@ -23,8 +23,8 @@ subprojects {
+@@ -24,8 +24,8 @@ subprojects {
      }
  
      tasks.withType<JavaCompile> {
@@ -24,5 +24,5 @@ index dde252532..a65f91d50 100644
          options.encoding = "UTF-8"
      }
 -- 
-2.41.0
+2.43.0
 
