@@ -1,6 +1,6 @@
 # Maintainer: Arnold Kole <a.h.kole@uu.nl>
 pkgname=libgridxc
-pkgver=1.1.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A library for the computation of exchange and correlation energies and potentials in radial and 3D grids"
 arch=('i686' 'x86_64' 'aarch64')
@@ -10,8 +10,8 @@ depends=('libxc' 'openmpi')
 makedepends=(gcc-fortran cmake)
 checkdepends=(gcc-fortran cmake)
 options=(staticlibs)
-source=(https://gitlab.com/siesta-project/libraries/libgridxc/uploads/6af4a9d60cb44be98b017cf2913de417/$pkgname-$pkgver.tar.gz)
-sha256sums=('d05c8b601619567b34462b5c80c5959faf7feb6e26f4f8a77a083b75919a29b5')
+source=(https://gitlab.com/siesta-project/libraries/libgridxc/uploads/76e2ffbdf13c2149285fa0fad72fa1f5/$pkgname-$pkgver.tar.gz)
+sha256sums=('decd56e4e84ccf29f3c71fb26bc1e084bc715e7b1b8d628ceada42ffc5629ab2')
 
 build() {
   cd "$pkgname-$pkgver"
