@@ -19,7 +19,10 @@ source=(
 	{titus,moktar,lagbonus}.png
 	titusbig.webp	# https://www.artstation.com/artwork/ba3Olo
 	lagafbig.webp)	# https://cpcrulez.fr/GamesTest/les_aventures_de_moktar.htm#DL, cutout with https://zyro.com/tools/image-background-remover
-noextract=(Disk7.iso)
+noextract=(
+	${source[2]##*/}
+	Disk7.iso
+	usrlevel.7z)
 md5sums=(
 	96d8226064c7f6072dadd25f1460b135
 	68f094cbc2c6af90a88a2672127f26f8
@@ -27,24 +30,26 @@ md5sums=(
 	4996178ebf01d3271520de05727e2b99
 	SKIP{,,,,,,,,,,})
 build(){
-	mkdir -p Disk7
-	bsdtar xf Disk7.iso -C Disk7
+	bsdtar xf ${source[2]##*/} chocolate-doom-chocolate-doom-2.0.0/opl/opl{.c,_{internal.h,queue.{c,h},sdl.c,timer.{c,h}}}
 	cd OpenTitus_${pkgver}_src
 	cp ../gates.c src
-	cp ../chocolate-doom-chocolate-doom-2.0.0/opl/opl{.c,_{internal.h,queue.{c,h},sdl.c,timer.{c,h}}} opl
+	mv ../chocolate-doom-chocolate-doom-2.0.0/opl/* opl
 	sed -i 's,libopl_linux.a,dbopl_light.o opl/opl.o opl/opl_sdl.o opl/opl_queue.o,;1s,$, -I/usr/include/SDL,' Makefile_linux
 	CC=gcc-9 make -f Makefile_linux
 	sed -i /^videomode/s/0/1/ titus{,_moktar}.conf	# fullscreen by default
 }
 package(){
-	install Disk7/FOX/{FONTS,LEVELD,MENU,SPREXP,TIT{RE,US}}.SQZ -Dt "$pkgdir"/usr/share/$pkgname/titus
+	mkdir -p "$pkgdir"/usr/share/$pkgname
+	bsdtar xf Disk7.iso FOX/{FONTS,LEVELD,MENU,SPREXP,TIT{RE,US}}.SQZ
+	mv FOX "$pkgdir"/usr/share/$pkgname/titus
 	install {titus,moktar,lagbonus}.png -Dt "$pkgdir"/usr/share/icons/hicolor/32x32/apps
 	install titusbig.webp -D "$pkgdir"/usr/share/icons/hicolor/512x512/apps/titus.png
 	cp lagafbig.webp "$pkgdir"/usr/share/icons/hicolor/512x512/apps/moktar.png
 	install $pkgname{,-moktar,-usrlevel}.desktop -Dt "$pkgdir"/usr/share/applications
 	cd OpenTitus_${pkgver}_src
 	install $pkgname ../$pkgname.sh -Dt "$pkgdir"/usr/bin
-	cp -r titus{,_moktar.conf} moktar ../usrlevel "$pkgdir"/usr/share/$pkgname
+	cp -r titus{,_moktar.conf} moktar "$pkgdir"/usr/share/$pkgname
+	bsdtar xf ../usrlevel.7z -C"$pkgdir"/usr/share/$pkgname
 	patch titus.conf ../titus_usrlevel.diff -o "$pkgdir"/usr/share/$pkgname/titus_usrlevel.conf
 	cp {,"$pkgdir"/usr/share/$pkgname/titus_}titus.conf
 	install flags/bordered_18x12/00_cctld/{no,il,nl}.png -Dt "$pkgdir"/usr/share/$pkgname/flags/bordered_18x12/00_cctld
