@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+libdir='file:///opt/myetherwallet'
+xdg-open "${libdir}/index.html#/${1}"

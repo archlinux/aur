@@ -1,0 +1,40 @@
+[Desktop Entry]
+Type=Application
+Name=MyEtherWallet
+Comment=Client-side interface for interacting with the Ethereum blockchain
+Icon=myetherwallet
+Exec=myetherwallet
+Categories=Network;
+Actions=send-transaction;send-offline;swap;dapps;interact-with-contract;deploy-contract;sign-message;verify-message;
+
+[Desktop Action send-transaction]
+Name=Send Transaction
+Exec=myetherwallet interface/send-transaction
+
+[Desktop Action send-offline]
+Name=Send Offline
+Exec=myetherwallet interface/send-offline
+
+[Desktop Action swap]
+Name=Swap
+Exec=myetherwallet interface/swap
+
+[Desktop Action dapps]
+Name=Dapps
+Exec=myetherwallet interface/dapps
+
+[Desktop Action interact-with-contract]
+Name=Interact with Contract
+Exec=myetherwallet interface/interact-with-contract
+
+[Desktop Action deploy-contract]
+Name=Deploy Contract
+Exec=myetherwallet interface/deploy-contract
+
+[Desktop Action sign-message]
+Name=Sign Message
+Exec=myetherwallet interface/sign-message
+
+[Desktop Action verify-message]
+Name=Verify Message
+Exec=myetherwallet interface/verify-message
