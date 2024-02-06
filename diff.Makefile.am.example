@@ -4,7 +4,7 @@
 -noinst_PROGRAMS = example
 +bin_PROGRAMS = example
 @@ -25 +25 @@
--# example_CPPFLAGS =
+-example_CPPFLAGS = -Wall -Wextra -pedantic -std=c99
 +example_CPPFLAGS = -I$(top_srcdir)/src/
 @@ -27 +27 @@
 -# example_LDADD =
