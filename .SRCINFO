@@ -1,6 +1,6 @@
 pkgbase = python-pynfft
 	pkgdesc = Python wrapper to the NFFT library.
-	pkgver = 1.3.2
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/pyNFFT/pyNFFT
 	arch = x86_64
@@ -8,12 +8,14 @@ pkgbase = python-pynfft
 	checkdepends = python-nose
 	makedepends = cython
 	depends = nfft
+	depends = python
 	source = https://pypi.org/packages/source/p/pyNFFT/pyNFFT-1.3.2.tar.gz
 	source = new-api.patch
 	source = rewrite_hidden_symbols.patch
+	source = cython3.patch
 	sha256sums = ae41e720e569d0d99e3a44c82c36b35a49cfc9ecc23a1cd039fe9e2895aada2c
 	sha256sums = d44f3144cd2ace01f021f67b724cd4036c37c9b1fbcf85521788875216666f0b
 	sha256sums = 65a1407fddbc1cab3c6415e6341f79f8d14aa816fd9438a521f38390879cf7fb
+	sha256sums = e4856002b58c3b4e5853d1efda2759fb1d97dcb1e896dd923c1f520a4c3b3ad6
 
 pkgname = python-pynfft
-

@@ -1,0 +1,45 @@
+From eda64b553dc82d9ac0fae6a18c0991972aa3cea6 Mon Sep 17 00:00:00 2001
+From: GILIYAR RADHAKRISHNA Chaithya <cg260486@is247382.intra.cea.fr>
+Date: Fri, 5 Jan 2024 12:04:37 +0100
+Subject: [PATCH] Fixes in codes
+
+---
+ pynfft/nfft.pyx | 2 +-
+ setup.py        | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/pynfft/nfft.pyx b/pynfft/nfft.pyx
+index a6c697c..d3a1001 100644
+--- a/pynfft/nfft.pyx
++++ b/pynfft/nfft.pyx
+@@ -34,7 +34,7 @@ np.import_array()
+ fftw_init_threads()
+ 
+ # register cleanup callbacks
+-cdef void _cleanup():
++cdef void _cleanup() noexcept:
+     fftw_cleanup()
+     fftw_cleanup_threads()
+ 
+diff --git a/setup.py b/setup.py
+index 5bac118..5ec72bb 100644
+--- a/setup.py
++++ b/setup.py
+@@ -86,7 +86,7 @@ def get_cython_extensions():
+             **common_extension_args
+             )
+         )
+-    return cythonize(ext_modules)
++    return cythonize(ext_modules, language_level=2)
+ 
+ 
+ # BEFORE importing distutils, remove MANIFEST. distutils doesn't properly
+@@ -179,7 +179,7 @@ def run(self):
+ ]
+ 
+ MAJOR = 1
+-MINOR = 3
++MINOR = 4
+ MICRO = 2
+ ISRELEASED = True
+ VERSION = '%d.%d.%d' % (MAJOR, MINOR, MICRO)
