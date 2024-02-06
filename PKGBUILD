@@ -1,40 +1,45 @@
 # Maintainer sakura1943 <1436700265@qq.com>
-pkgname='windterm-bin'
-_pkgname='WindTerm'
-pkgver='2.5.0'
-_pkgver='2.5.0'
-_author='kingToolbox'
-pkgrel=2
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+pkgname=windterm-bin
+_pkgname=WindTerm
+pkgver=2.6.0
+pkgrel=1
 pkgdesc='A Quicker and better SSH/Telnet/Serial/Shell/Sftp client for DevOps.'
 arch=('x86_64')
-depends=()
 license=('Apache-2.0')
 url='https://github.com/kingToolbox/WindTerm/'
-provides=('windterm')
-source=("${pkgname}-${pkgver}-${arch}.tar.gz::https://github.com/${_author}/${_pkgname}/releases/download/${_pkgver}/${_pkgname}_${pkgver}_Linux_Portable_${arch}.tar.gz"
-	"windterm.png::https://raw.githubusercontent.com/${_author}/${_pkgname}/master/images/${_pkgname}_icon_1024x1024.png"
-	"windterm"
-	"windterm.desktop")
-sha512sums=('9d263aac0059127eaf0b497f5345638a5590d8b296392aebe92a9ab351f7793986e24114d217a45baa8f1796f58979343b3ad995974d538ee2b31ae087df037a'
-	"bfdcb9064eca32b06e6c493a48e8b38240cf9133a2d14a8ab45a4c0280bcfbef45f671dc1b86b64d7e6429cfaa6a95a9db7bb8c9c605b3b9aa852998a5abc17e"
-	"ef48e2a9c62af858cf172f4b2beb56ad495e1a5f1fdb0ee479cf28759ac63e6a1ef53a56fd85723e03f33bf2af9891f25a9d33b07f8fe8840394faf15a9562ef"
-    "af804a688ed45953ce089425981cce70c131481c44db78eb11bd8b105a122ff39621bf0d642f45278e02083600dfe51f30206e934e1805fe6d52c6d046c140e6")
-_install() {
-find $2 -type f -exec install -Dm$1 {} $3/{} \;
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+depends=(
+    'qt5-base'
+    'gtk3'
+    'alsa-lib'
+    'gst-plugins-base-libs'
+    'xcb-util'
+    'libpulse'
+    'openssl-1.1'
+)
+options=(
+    '!strip'
+)
+source=(
+    "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_Linux_Portable_${CARCH}.tar.gz"
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('2cc89a1ab2a616583e806925a9a07f4df02716fb7f2d27fdc1817fcd01dcbb8d'
+            '2f136dd34110587056b818f8aa68beeacdbb278e1eb92b42545a10fbf2e65b8b')
+build() {
+    sed -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|${_pkgname}|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed "s|/usr/bin/${pkgname%-bin}|${pkgname%-bin} %U|g" -i "${srcdir}/${_pkgname}_${pkgver}/${pkgname%-bin}.desktop"
+    chmod 755 "${srcdir}/${_pkgname}_${pkgver}/${_pkgname}"
+    chmod 755 "${srcdir}/${_pkgname}_${pkgver}/vendors/lrzsz/"*
 }
-
 package() {
-	install -d "${pkgdir}"/usr/share/icons
-	install -d "${pkgdir}"/usr/share/applications
-	install -d "${pkgdir}"/usr/bin
-	cd ${srcdir}
-	_install 755 ${_pkgname}_${pkgver} ${pkgdir}/opt
-	mv -f ${pkgdir}/opt/${_pkgname}_${pkgver} ${pkgdir}/opt/${_pkgname}
-	chmod 777 ${pkgdir}/opt/${_pkgname}
-	cd ${pkgdir}/opt
-	find ${_pkgname} -type d -exec chmod 0777 {} \;
-	install -Dm755 ${srcdir}/windterm.png "${pkgdir}"/usr/share/icons
-	install -Dm755 ${srcdir}/windterm "${pkgdir}"/usr/bin
-	install -Dm755 ${srcdir}/windterm.desktop "${pkgdir}"/usr/share/applications
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
+    cp -r "${srcdir}/${_pkgname}_${pkgver}/"* "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${_pkgname}_${pkgver}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${_pkgname}_${pkgver}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
 }
-
