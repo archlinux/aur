@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=losslesscut-git
-pkgver=3.59.1.r15.g83c910a
+pkgver=3.60.0.r14.g35e12d3
 _electronversion=27
 _nodeversion=18
 pkgrel=1
-pkgdesc="The swiss army knife of lossless video/audio editing"
+pkgdesc="The swiss army knife of lossless video/audio editing.Using system-wide ffmpeg."
 arch=('x86_64')
 url="https://github.com/mifi/lossless-cut"
-license=('GPL2')
+license=('GPL-2.0-only')
 conflicts=(
     "${pkgname%-git}"
 )
@@ -24,15 +24,14 @@ makedepends=(
     'nvm'
     'npm'
     'yarn'
-    'make'
-    'gcc'
+    'base-devel'
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '1fcafb1f641b5e7c0ac1771b0d50b777b031cf92f6df612b7f6b4c3cd674aabd')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -46,7 +45,7 @@ _ensure_local_nvm() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --categories "Utility" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
@@ -56,6 +55,7 @@ build() {
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export ELECTRONVERSION="${_electronversion}"
+    # .yarnrc.yml existed
     sed -e '420,431d' -e '413,416d' -i package.json
     yarn install
     yarn prepack-linux
