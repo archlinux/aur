@@ -1,0 +1,14 @@
+pkgbase = omni-terminal
+	pkgdesc = The omni terminal, producted by wisburg.com
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://wisburg.com/
+	arch = x86_64
+	license = custom
+	makedepends = wget
+	makedepends = dpkg
+	depends = electron28
+	source = https://download.wisburg.com/omni/prod/e32b3a13-8c5a-444f-9b23-c920014a05c1.deb
+	sha256sums = SKIP
+
+pkgname = omni-terminal
