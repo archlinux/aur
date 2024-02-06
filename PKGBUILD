@@ -3,7 +3,7 @@ pkgname=open-password-manager-bin
 _pkgname=OpenPasswordManager
 pkgver=1.3.0
 _electronversion=16
-pkgrel=1
+pkgrel=2
 pkgdesc="A browser and desktop password manager. The app can run either in browser, or as a desktop app."
 arch=('x86_64')
 url="https://github.com/dd060606/OpenPasswordManager"
@@ -25,11 +25,11 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('a5948956826102b42732cce5260d67ebb7ccda78ca61216134170c9240320a7b'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
