@@ -1,6 +1,6 @@
 pkgbase = folly
 	pkgdesc = An open-source C++ library developed and used at Facebook
-	pkgver = 2024.01.29.00
+	pkgver = 2024.02.05.00
 	pkgrel = 1
 	url = https://github.com/facebook/folly
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = folly
 	provides = libfolly_test_util.so
 	provides = libfollybenchmark.so
 	options = !lto
-	source = folly-2024.01.29.00.tar.gz::https://github.com/facebook/folly/archive/v2024.01.29.00.tar.gz
-	sha256sums = bf02eb37e9ed5f03eb9814107b619b581c57e7d174895e5c612bf1efef943efa
+	source = folly-2024.02.05.00.tar.gz::https://github.com/facebook/folly/archive/v2024.02.05.00.tar.gz
+	sha256sums = aad95c14b237ce489a9976e011f4ae7863716aa990227734b41b173fb6bfcfb3
 
 pkgname = folly

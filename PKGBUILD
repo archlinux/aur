@@ -4,7 +4,7 @@
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=folly
-pkgver=2024.01.29.00
+pkgver=2024.02.05.00
 pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
@@ -44,7 +44,7 @@ provides=(
 options=(!lto)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('bf02eb37e9ed5f03eb9814107b619b581c57e7d174895e5c612bf1efef943efa')
+sha256sums=('aad95c14b237ce489a9976e011f4ae7863716aa990227734b41b173fb6bfcfb3')
 
 _archive="$pkgname-$pkgver"
 
@@ -66,11 +66,10 @@ check() {
 
   _skipped_tests=(
     # Skip failing tests - not sure why they fail
-    HHWheelTimerTest
-    atomic_unordered_map_test
-    fbstring_test
+    HHWheelTimerTest.HHWheelTimerTest.CancelTimeout
+    atomic_unordered_map_test.AtomicUnorderedInsertMap.DISABLEDMegaMap
     fbvector_test
-    xlog_test
+    xlog_test.XlogTest.perFileCategoryHandling
   )
   _skipped_tests_pattern="${_skipped_tests[0]}$(printf '|%s' "${_skipped_tests[@]:1}")"
   ctest --test-dir build --output-on-failure -E "$_skipped_tests_pattern"
