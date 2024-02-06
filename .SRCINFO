@@ -1,6 +1,6 @@
 pkgbase = android-armv7a-eabi-libxml2
 	pkgdesc = XML parsing library, version 2 (android)
-	pkgver = 2.12.3
+	pkgver = 2.12.5
 	pkgrel = 1
 	url = http://www.xmlsoft.org/
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = android-armv7a-eabi-libxml2
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.12.3/libxml2-v2.12.3.tar.gz
-	md5sums = 5cb9916e16273b26caaa077b89991945
+	source = https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.12.5/libxml2-v2.12.5.tar.gz
+	md5sums = 2b7bd6b5be223a2d04b0578e375c21f3
 
 pkgname = android-armv7a-eabi-libxml2
