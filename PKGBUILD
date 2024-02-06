@@ -3,12 +3,12 @@ pkgname=onekey-wallet-bin
 _pkgname=OneKey-Wallet
 pkgver=4.10.0
 _electronversion=19
-pkgrel=1
+pkgrel=2
 pkgdesc="Secure, open source and community driven crypto wallet runs on all platforms and trusted by millions."
 arch=('x86_64')
 url="https://onekey.so/"
 _ghurl="https://github.com/OneKeyHQ/app-monorepo"
-license=('Apache')
+license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -22,11 +22,11 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('6db9e47232af915517046e498c02f7d124c2b3c7a565a150b2b082f18513aa9a'
-            '80b5a14d10b326bbec1e46063a8d7aec885d1f5f84d4553278d510f0d6ece812')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null

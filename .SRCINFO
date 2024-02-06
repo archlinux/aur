@@ -1,10 +1,10 @@
 pkgbase = onekey-wallet-bin
 	pkgdesc = Secure, open source and community driven crypto wallet runs on all platforms and trusted by millions.
 	pkgver = 4.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://onekey.so/
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = squashfuse
 	depends = electron19
 	provides = onekey-wallet=4.10.0
@@ -12,6 +12,6 @@ pkgbase = onekey-wallet-bin
 	source = onekey-wallet-4.10.0.AppImage::https://github.com/OneKeyHQ/app-monorepo/releases/download/v4.10.0/OneKey-Wallet-4.10.0-linux-x86_64.AppImage
 	source = onekey-wallet.sh
 	sha256sums = 6db9e47232af915517046e498c02f7d124c2b3c7a565a150b2b082f18513aa9a
-	sha256sums = 80b5a14d10b326bbec1e46063a8d7aec885d1f5f84d4553278d510f0d6ece812
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = onekey-wallet-bin
