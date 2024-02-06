@@ -1,6 +1,6 @@
 pkgbase = electron26
 	pkgdesc = Build cross platform desktop apps with web technologies
-	pkgver = 26.6.7
+	pkgver = 26.6.8
 	pkgrel = 1
 	url = https://electronjs.org
 	arch = x86_64
@@ -57,7 +57,7 @@ pkgbase = electron26
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)
 	options = !lto
-	source = git+https://github.com/electron/electron.git#tag=v26.6.7
+	source = git+https://github.com/electron/electron.git#tag=v26.6.8
 	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#branch=main
 	source = chromium-mirror::git+https://github.com/chromium/chromium.git#tag=116.0.5845.228
 	source = https://github.com/stha09/chromium-patches/releases/download/chromium-116-patchset-2/chromium-116-patchset-2.tar.xz
