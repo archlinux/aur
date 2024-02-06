@@ -1,8 +1,7 @@
-# Maintainer: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
-# Contributor: defkeh <defkeh@gmail.com>
+# Maintainer: Jamie Paul (elitedev) <elitedevx@gmail.com>
 pkgname=rivalcfg-git
 _pkgname=${pkgname%-git}
-pkgver=4.0.0
+pkgver=4.11.0
 pkgrel=1
 pkgdesc='CLI tool and Python library to configure SteelSeries gaming mice'
 arch=('any')
@@ -18,7 +17,7 @@ install=install
 
 pkgver() {
   cd "$srcdir"/$_pkgname
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g;s/\.rc./rc/g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
