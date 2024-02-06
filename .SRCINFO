@@ -7,6 +7,7 @@ pkgbase = zlodej
 	arch = any
 	license = unknown
 	depends = derclou
+	noextract = ClueCZ.zip
 	source = https://download.sf.net/cosp/Original%20Game%20Files/The%20Clue%21%20%28Czech%29/ClueCZ.zip
 	md5sums = 18966a76e3911db6e185be77aba925b3
 
