@@ -1,0 +1,16 @@
+pkgbase = classified-ads
+	pkgdesc = A distributed, server-less messaging system
+	pkgver = 0.16
+	pkgrel = 1
+	url = http://katiska.org/classified_ads/
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = imagemagick
+	depends = qt5-multimedia
+	depends = miniupnpc
+	depends = tk
+	depends = libnatpmp
+	source = https://github.com/operatornormal/classified-ads/archive/0.16.tar.gz#/classified-ads-0.16.tar.gz
+	sha256sums = 01a0a5cf470297147303c86b2b9f5c1a8eb5c6b183ee496373919b6790fc1592
+
+pkgname = classified-ads
