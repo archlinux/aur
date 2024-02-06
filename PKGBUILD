@@ -2,7 +2,7 @@
 pkgname=code-notes-bin
 pkgver=1.2.4
 _electronversion=8
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple code snippet & gist manager for developers built with Electron & Vue.js"
 arch=('x86_64')
 url="https://lauthieb.github.io/code-notes"
@@ -26,11 +26,11 @@ source=(
 )
 sha256sums=('45262ac6118071ec68a750eff6dd5ab7578bbff870a03403a32fa46935b5c47c'
             'd292c9f2252858356efe3e4f88cdb6052756a2708ffe12ecb579b7731469ca76'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null

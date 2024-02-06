@@ -1,7 +1,7 @@
 pkgbase = code-notes-bin
 	pkgdesc = A simple code snippet & gist manager for developers built with Electron & Vue.js
 	pkgver = 1.2.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://lauthieb.github.io/code-notes
 	arch = x86_64
 	license = MIT
@@ -17,6 +17,6 @@ pkgbase = code-notes-bin
 	source = code-notes.sh
 	sha256sums = 45262ac6118071ec68a750eff6dd5ab7578bbff870a03403a32fa46935b5c47c
 	sha256sums = d292c9f2252858356efe3e4f88cdb6052756a2708ffe12ecb579b7731469ca76
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = code-notes-bin
