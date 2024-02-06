@@ -1,7 +1,7 @@
 pkgbase = linphone-desktop-appimage-stable
 	pkgdesc = A free VoIP and video softphone based on the SIP protocol (AppImage version. Stable release)
 	pkgver = 5.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.linphone.org
 	arch = x86_64
 	license = GPL2
