@@ -2,7 +2,6 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 # Configuration.
-DISABLE_NINJA=1 #fix regression in build system
 _fragment=${FRAGMENT:-#branch=main}
 # shellcheck disable=SC2206
 [[ -v CUDA_ARCH ]] && _cuda_capability=(${CUDA_ARCH})
