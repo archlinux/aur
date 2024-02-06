@@ -1,6 +1,6 @@
 pkgbase = errands
 	pkgdesc = Todo application for those who prefer simplicity
-	pkgver = 45.1.7
+	pkgver = 45.1.8
 	pkgrel = 1
 	url = https://github.com/mrvladus/Errands
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = errands
 	depends = python-icalendar
 	depends = libadwaita
 	depends = libsecret
-	source = git+https://github.com/mrvladus/Errands.git#tag=45.1.7
+	source = git+https://github.com/mrvladus/Errands.git#tag=45.1.8
 	sha256sums = SKIP
 
 pkgname = errands
