@@ -1,6 +1,6 @@
 pkgbase = blazefetch
 	pkgdesc = A lite & blazing fast system info fetch utility
-	pkgver = 2.8.2
+	pkgver = 2.8.3
 	pkgrel = 1
 	url = https://github.com/rifsxd/blazefetch
 	arch = any
@@ -17,6 +17,6 @@ pkgbase = blazefetch
 	provides = blazefetch
 	conflicts = blazefetch-git
 	source = https://github.com/rifsxd/blazefetch/releases/download/2.8.0/src-blazefetch-2.8.0.tar.gz
-	sha256sums = 47c1969459716162dc6c3c65f278fb657078ce188ad72a4d7796be2a47ba15c4
+	sha256sums = 47555faf4fa641854797c825c4c7654041641b69dc6d0188629a4d986323814b
 
 pkgname = blazefetch
