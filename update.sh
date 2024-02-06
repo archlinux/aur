@@ -56,7 +56,7 @@ if [ "${initial}x" = "x" ] ; then
     git add PKGBUILD .SRCINFO
     git commit -S -m "Released $new_ver-1"
     git push
-    git tag -s "$new_ver-1"
+    git tag -s -m "Bumped version $new_ver" "$new_ver-1"
     git push --tags
     gh release create --generate-notes "$new_ver-1" reposilite-$new_ver-1-any.pkg.tar.*
     rm reposilite-$new_ver.tar.*
