@@ -4,7 +4,7 @@
 # https://releases.electronjs.org/
 # https://github.com/stha09/chromium-patches/releases
 
-pkgver=26.6.8
+pkgver=26.6.9
 _chromiumver=116.0.5845.228
 _gcc_patchset=116-patchset-2
 pkgrel=1
@@ -15,10 +15,15 @@ arch=(x86_64)
 url='https://electronjs.org'
 license=(MIT custom)
 depends=(c-ares
-         gtk3
+         glibc # libc.so libm.so
+         gcc-libs # libgcc_s.so
+         gtk3 libgtk-3.so
          libevent
-         libffi
-         nss)
+         libffi libffi.so
+         libpulse libpulse.so
+         nss # libnss3.so
+         zlib libz.so
+         )
 makedepends=(clang
              git
              gn
@@ -77,30 +82,31 @@ sha256sums=('SKIP'
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
+# plus any so names that are provided + linked
 declare -gA _system_libs=(
   # [brotli]=brotli
-  [dav1d]=dav1d
-  [ffmpeg]=ffmpeg
-  [flac]=flac
-  [fontconfig]=fontconfig
-  [freetype]=freetype2
-  [harfbuzz-ng]=harfbuzz
-  [icu]=icu
-  [jsoncpp]=jsoncpp
+  [dav1d]="dav1d libdav1d.so"
+  [ffmpeg]="ffmpeg libavcodec.so libavcodec.so libavformat.so libavutil.so"
+  [flac]="flac libFLAC.so"
+  [fontconfig]="fontconfig libfontconfig.so"
+  [freetype]="freetype2 libfreetype.so"
+  [harfbuzz-ng]="harfbuzz libharfbuzz.so libharfbuzz-subset.so"
+  [icu]="icu libicui18n.so libicuuc.so"
+  [jsoncpp]="jsoncpp libjsoncpp.so"
   #[libaom]=aom      # https://aomedia.googlesource.com/aom/+/706ee36dcc82
   #[libavif]=libavif # https://github.com/AOMediaCodec/libavif/commit/4d2776a3
-  [libdrm]=
-  [libjpeg]=libjpeg
-  [libpng]=libpng
+  [libdrm]=libdrm # libdrm.so
+  [libjpeg]="libjpeg libjpeg.so"
+  [libpng]="libpng libpng16.so"
   #[libvpx]=libvpx
-  [libwebp]=libwebp
-  [libxml]=libxml2
-  [libxslt]=libxslt
-  [opus]=opus
-  [re2]=re2
-  [snappy]=snappy
-  [woff2]=woff2
-  [zlib]=minizip
+  [libwebp]="libwebp libwebpdemux.so libwebpmux.so libwebp.so"
+  [libxml]="libxml2 libxml2.so"
+  [libxslt]="libxslt libxslt.so"
+  [opus]="opus libopus.so"
+  [re2]="re2 libre2.so"
+  [snappy]=snappy # libsnappy.so
+  [woff2]="woff2 libwoff2dec.so"
+  [zlib]=minizip # libminizip.so
 )
 _unwanted_bundled_libs=(
   $(printf "%s\n" ${!_system_libs[@]} | sed 's/^libjpeg$/&_turbo/')
