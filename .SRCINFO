@@ -2,11 +2,12 @@ pkgbase = python2-progress
 	pkgdesc = Easy to use progress bars
 	pkgver = 1.3
 	pkgrel = 2
-	url = http://github.com/verigak/progress/
+	url = https://github.com/verigak/progress
 	arch = any
 	license = MIT
 	makedepends = python2-distribute
 	depends = python2
+	provides = progress=1.3
 	source = https://files.pythonhosted.org/packages/source/p/progress/progress-1.3.tar.gz
 	sha256sums = c88d89ee3bd06716a0b8b5504d9c3bcb3c1c0ab98f96dc7f1dc5f56812a4f60a
 
