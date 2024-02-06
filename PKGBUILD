@@ -3,7 +3,7 @@ _pkgname=nexus_wallet
 pkgname="${_pkgname//_/-}-bin"
 _appname="Nexus Wallet"
 pkgver=3.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The official Logical and Interface layers of the Nexus Software Stack."
 arch=('x86_64')
 url="https://crypto.nexus.io/wallet"
@@ -13,24 +13,8 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'alsa-lib'
-    'libcups'
     'gtk3'
-    'libxrandr'
-    'libx11'
-    'mesa'
-    'cairo'
-    'nspr'
-    'expat'
-    'libxcomposite'
-    'libxdamage'
-    'libxext'
-    'at-spi2-core'
-    'libdrm'
-    'libxfixes'
-    'pango'
-    'libxkbcommon'
     'nss'
-    'libxcb'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-Linux-${pkgver}.deb"
