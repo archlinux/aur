@@ -1,0 +1,16 @@
+pkgbase = python-gpuctypes
+	pkgdesc = ctypes wrappers for HIP, CUDA, and OpenCL
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/tinygrad/gpuctypes
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python>=3.8
+	optdepends = cuda
+	optdepends = hip-runtime-amd
+	optdepends = opencl-driver
+	source = https://files.pythonhosted.org/packages/source/g/gpuctypes/gpuctypes-0.3.0.tar.gz
+	sha256sums = 62cbf72df8a57e23509633ee1e7e4c719a31962b2e5fd0e48c6330e84583b717
+
+pkgname = python-gpuctypes
