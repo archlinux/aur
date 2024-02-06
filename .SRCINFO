@@ -1,13 +1,13 @@
 pkgbase = spotx-linux
 	pkgdesc = Spotify Ad blocker based on SpotX for Linux
 	pkgver = 1.2.3.1115_1
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/Nuzair46/SpotX-Linux
 	arch = any
 	license = custom
 	source = install-spotx.hook
 	source = git+https://github.com/Nuzair46/SpotX-Linux.git
-	sha256sums = 194eebf834bdbad147e3d167140d0c8bf6944335d51a3da3f45333a54c5d4164
+	sha256sums = 853be7a3223f0ca744b84a8f94b9c153dd666cde1a4ffabe53e95d11ec29200a
 	sha256sums = SKIP
 
 pkgname = spotx-linux
