@@ -1,7 +1,7 @@
 pkgbase = ngrev-bin
 	pkgdesc = Tool for reverse engineering of Angular applications
 	pkgver = 0.0.35
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/mgechev/ngrev
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = ngrev-bin
 	depends = dbus-glib
 	depends = libdbusmenu-glib
 	depends = gtk2
+	depends = nodejs
 	provides = ngrev=0.0.35
 	conflicts = ngrev
 	source = ngrev-0.0.35.AppImage::https://github.com/mgechev/ngrev/releases/download/v0.0.35/ngrev-0.0.35.AppImage
@@ -18,6 +19,6 @@ pkgbase = ngrev-bin
 	source = ngrev.sh
 	sha256sums = c9f1d0212edf967c97a2e29610712b4c5f14ca9e58a9c1fbb39be2bfbe3907b1
 	sha256sums = 00df8834a94ab4d44c7c7d6557cce6af143ed0019a80c682b5a03d0cea8187b4
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = ngrev-bin

@@ -2,7 +2,7 @@
 pkgname=ngrev-bin
 pkgver=0.0.35
 _electronversion=11
-pkgrel=6
+pkgrel=7
 pkgdesc="Tool for reverse engineering of Angular applications"
 arch=('x86_64')
 url="https://github.com/mgechev/ngrev"
@@ -15,6 +15,7 @@ depends=(
     'dbus-glib'
     'libdbusmenu-glib'
     'gtk2'
+    'nodejs'
 )
 makedepends=(
     'squashfuse'
@@ -26,11 +27,11 @@ source=(
 )
 sha256sums=('c9f1d0212edf967c97a2e29610712b4c5f14ca9e58a9c1fbb39be2bfbe3907b1'
             '00df8834a94ab4d44c7c7d6557cce6af143ed0019a80c682b5a03d0cea8187b4'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
