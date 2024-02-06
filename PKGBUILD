@@ -1,8 +1,8 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgbase=linux-flowx13
-pkgver=6.7.3.arch1
-pkgrel=2
+pkgver=6.7.4.arch1
+pkgrel=1
 pkgdesc='Linux (with patches for the Asus Flow X13)'
 url='https://github.com/archlinux/linux'
 arch=(x86_64)
@@ -39,17 +39,17 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('b7f08c652747574a3aa26e317d7a8f23ffab3fb645e1b1533b215dcfd5742b44'
+sha256sums=('f68d9f5ffc0a24f850699b86c8aea8b8687de7384158d5ed3bede37de098d60c'
             'SKIP'
-            '268b0fb642718059cf9c9cf15a6a3fc41108f4d6fa85aed92e4e3318448c438c'
+            '0adec3263ea8c798639b25c9f8550515ec7ff32d84a1caf7e4284efd77883a74'
             'SKIP'
-            '44ab14648c0036d070fe290c18f6dd928f29b5352b50655ad96c354f428955ca'
+            '0f191864fd0d72c91b3f3b9e6ed6f38042bf3631ae394fedcf103c7d7755c793'
             '92b8cee96a70a2f27db6ff8899e47b18884e289f3c2eb05500b37c5db6f23fe8')
-b2sums=('2dea0685e5c9b279beb7661f4efa91ccd662d55eb7c5a69aff52fc74bbb574fcb490a9abcc44d895583ca21b3e6860b3c5e9c35daae66b22c4fe97cab44b2a75'
+b2sums=('578114990b2987e2b241a7492bd4a69c46adfd613eba9715d63fd4565c19678dfab06b5107a0ff791e9a3190cb52b75a76d231aa39d4e7fba24e79f7f18935a1'
         'SKIP'
-        '54f72e3000c7d02a6109296db7853e140ea2c2295d33de6b865f98227241e6d0a4a753caee5709ae334a842559214e0ccb3e1fbf4fb21be8df66c84a9a2b6751'
+        'd07daffabcea4c6c5cce2a5f73553471e634f9a5d3dcbe041834bfb22292bb33882f7ea6d95422d04db2276074914877b9a3f2b67b171cf8e304b5be5c0a4b68'
         'SKIP'
-        '526e6a5dc674218466d7596c8b96e219bb8a17b8a1e676c95e8d67ff3c507cc9a91e5e0c624d86ae207753f66525eaed77ce526d06186cb9d9e448116cb1bacb'
+        'cdfa71c3e06a722276216b89a84f9e788f13afa0d27ef2f80cfc3f51b0f6fc847260b706f3492147a58f9bf7b40a9d836d3cad2bc5274f3bf0817b35134593f8'
         '5b4cff2ab2ce1d2464eb4b0b1398e2ad1af85c1322b9187e19894a7dff19e094ad0b7190122be5fdadde283d9433591bf6b55a045354d0abe5351bd4cd410dc4')
 
 
