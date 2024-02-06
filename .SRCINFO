@@ -1,17 +1,18 @@
 pkgbase = webeep-sync-bin
 	pkgdesc = Keep all your WeBeep files synced on your computer!
 	pkgver = 1.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/toto04/webeep-sync
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	depends = electron22
 	depends = hicolor-icon-theme
+	depends = nodejs
 	provides = webeep-sync=1.0.3
 	conflicts = webeep-sync
 	source = webeep-sync-1.0.3.deb::https://github.com/toto04/webeep-sync/releases/download/v1.0.3/webeep-sync-debian.deb
 	source = webeep-sync.sh
 	sha256sums = 8e77681185c6795fbfbf038a5cde95f78c2aadf19108804fb1a4d64c6d2c615a
-	sha256sums = 5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = webeep-sync-bin
