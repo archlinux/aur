@@ -1,8 +1,8 @@
 # Maintainer: Piroro-hs
 
 pkgname=hyprland-nox
-pkgver=0.34.0
-pkgrel=2
+pkgver=0.35.0
+pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (w/o XWayland support)"
 arch=('x86_64')
 url="https://github.com/hyprwm/Hyprland"
@@ -48,15 +48,12 @@ sha256sums=('SKIP'
 
 prepare() {
 	cd "$srcdir/$pkgname"
-
 	git submodule init
 	git config submodule.wlroots.url "$srcdir/${pkgname}_wlroots"
 	git config submodule.subprojects/hyprland-protocols.url "$srcdir/${pkgname}_hyprland-protocols"
 	git config submodule.subprojects/udis86.url "$srcdir/${pkgname}_udis86"
 	git config submodule.subprojects/tracy.url "$srcdir/${pkgname}_tracy"
 	git -c protocol.file.allow=always submodule update
-
-	sed -i '/CONFIGURE_COMMAND/c\CONFIGURE_COMMAND meson setup --reconfigure build --buildtype=${BUILDTYPE_LOWER} -Dwerror=false -Dxwayland=$<IF:$<BOOL:${NO_XWAYLAND}>,disabled,enabled> -Dexamples=false -Drenderers=gles2 $<IF:$<BOOL:${WITH_ASAN}>,-Db_sanitize=address,-Db_sanitize=none>' CMakeLists.txt # https://github.com/hyprwm/Hyprland/pull/4385
 }
 
 build() {
@@ -67,7 +64,7 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname"
-	make PREFIX="$pkgdir/usr/" MAKEFLAGS="-o installheaders" install
+	make PREFIX="$pkgdir/usr" MAKEFLAGS="-o installheaders" install
 	rm -rf "$pkgdir/usr/share/xdg-desktop-portal"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
