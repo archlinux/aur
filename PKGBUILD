@@ -6,15 +6,23 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-termcap
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal feature database (android)"
 arch=('any')
 url="ftp://ftp.gnu.org/gnu/termcap/"
 license=('GPL' 'LGPL')
 depends=('android-ndk')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("http://ftp.gnu.org/gnu/termcap/termcap-${pkgver}.tar.gz")
-md5sums=('ffe6f86e63a3a29fa53ac645faaabdfa')
+source=("http://ftp.gnu.org/gnu/termcap/termcap-${pkgver}.tar.gz"
+        "0001-Fix-missing-headers.patch")
+md5sums=('ffe6f86e63a3a29fa53ac645faaabdfa'
+         'fca1d4ab693214f13651bc529e6d640c')
+
+prepare() {
+    cd "${srcdir}"/termcap-${pkgver}
+
+    patch -Np1 -i ../0001-Fix-missing-headers.patch
+}
 
 build() {
     cd "${srcdir}"/termcap-${pkgver}
