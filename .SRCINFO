@@ -1,6 +1,6 @@
 pkgbase = python-pkg-about
 	pkgdesc = Shares Python package metadata at runtime.
-	pkgver = 1.0.8
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/karpierz/pkg_about
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = python-pkg-about
 	makedepends = python-wheel
 	makedepends = python-tox
 	depends = python>=3.7
-	source = python-pkg-about-1.0.8.tar.gz::https://github.com/karpierz/pkg_about/archive/refs/tags/1.0.8.tar.gz
-	sha256sums = c48643c4f08cc85f1d15cbddc36a81e97f2563ee218dd19de7eb856899706214
+	source = python-pkg-about-1.1.5.tar.gz::https://github.com/karpierz/pkg_about/archive/refs/tags/1.1.5.tar.gz
+	sha256sums = 0c45507ab7098b5d21194cbbf6c17921fb03279ae25564cebd9695d78325cdc7
 
 pkgname = python-pkg-about

@@ -1,7 +1,7 @@
 # Maintainer: greyltc
 
 pkgname=python-pkg-about
-pkgver=1.0.8
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="Shares Python package metadata at runtime."
 url="https://github.com/karpierz/pkg_about"
@@ -16,15 +16,15 @@ python-wheel
 python-tox
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/karpierz/pkg_about/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c48643c4f08cc85f1d15cbddc36a81e97f2563ee218dd19de7eb856899706214')
+sha256sums=('0c45507ab7098b5d21194cbbf6c17921fb03279ae25564cebd9695d78325cdc7')
 
 build() {
-  cd "pkg_about-${pkgver}"
+  cd "pkg-about-${pkgver}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "pkg_about-${pkgver}"
+  cd "pkg-about-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
