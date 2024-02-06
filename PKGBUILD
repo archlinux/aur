@@ -1,5 +1,5 @@
 pkgname=hyprdots-ctl
-pkgver=v0.3.24020612
+pkgver=v0.3.0.24020612
 pkgrel=1
 pkgdesc="CLI for Hyprdots Configurations ++ Hidden Gems"
 arch=('x86_64')
@@ -13,6 +13,11 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/Hyprdots-ctl" || return
   git describe --tags | sed 's/-/./g' # Replace hyphens with dots to conform to versioning standards
+}
+
+prepare() {
+  cd "$srcdir/Hyprdots-ctl" || return
+  git fetch --tags
 }
 
 package() {
