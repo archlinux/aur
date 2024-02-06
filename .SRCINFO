@@ -1,0 +1,9 @@
+pkgbase = todoist-appimage-integration
+	pkgdesc = Integrates Todoist AppImage with the system using AppImageLauncher
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	depends = todoist-appimage
+	optdepends = appimagelauncher: to integrate Todoist AppImage into the system
+
+pkgname = todoist-appimage-integration
