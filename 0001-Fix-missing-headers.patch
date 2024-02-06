@@ -1,0 +1,11 @@
+--- a/tparam.c	2002-02-25 14:37:24.000000000 -0300
++++ b/tparam.c	2024-02-06 16:26:17.200098056 -0300
+@@ -33,6 +33,8 @@
+ char *realloc ();
+ #endif
+ 
++#include <unistd.h>
++
+ /* Do this after the include, in case string.h prototypes bcopy.  */
+ #if (defined(HAVE_STRING_H) || defined(STDC_HEADERS)) && !defined(bcopy)
+ #define bcopy(s, d, n) memcpy ((d), (s), (n))
