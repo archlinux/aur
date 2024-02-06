@@ -1,6 +1,6 @@
 pkgbase = cpufetch
 	pkgdesc = Simple yet fancy CPU architecture fetching tool
-	pkgver = 1.04
+	pkgver = 1.05
 	pkgrel = 1
 	url = https://github.com/Dr-Noob/cpufetch
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = cpufetch
 	arch = aarch64
 	license = MIT
 	depends = glibc
-	source = cpufetch-1.04.tar.gz::https://github.com/Dr-Noob/cpufetch/archive/v1.04.tar.gz
-	sha256sums = 1505161fedd58d72b936f68b55dc9b027ef910454475c33e1061999496b30ff6
+	source = cpufetch-1.05.tar.gz::https://github.com/Dr-Noob/cpufetch/archive/v1.05.tar.gz
+	sha256sums = 82c8195cc535ad468fa2e61fa9648bb09d55cbcc59f76a72b66bd99fd290a7e6
 
 pkgname = cpufetch
