@@ -1,0 +1,18 @@
+pkgbase = dracut-swap-tpm2-git
+	pkgdesc = Dracut module to encrypt swap with hibernation support
+	pkgver = r3.b3e598d
+	pkgrel = 1
+	url = https://github.com/thesola10/dracut-swap-tpm2
+	arch = x86_64
+	license = CC0-1.0
+	makedepends = git
+	makedepends = make
+	makedepends = gettext
+	depends = dracut
+	depends = tpm2-tools
+	depends = cryptsetup
+	depends = util-linux
+	source = git+https://github.com/thesola10/dracut-swap-tpm2.git
+	sha256sums = SKIP
+
+pkgname = dracut-swap-tpm2-git
