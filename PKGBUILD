@@ -2,16 +2,16 @@
 # Contributor: Árni Dagur <arnidg@protonmail.ch>
 
 pkgname='xcp'
-pkgver='0.19.0'
+pkgver='0.20.1'
 pkgrel=1
 pkgdesc="An extended 'cp'"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/tarka/xcp'
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('ea07157f437b2d08f6067e3272f7a6fa77aafa47622c2724c43e2f90a1d0979395e09b9abd5668a0333c2ce78f5e674aea729dc185efa4caf57ac548e39a02ee')
+sha512sums=('87a05eebfcf74b53dcf3e4658f0e3a323c6e713a064c96c7b09cd3e7dabf61ea5c4352c635f39e5805015e9fef0c1f50520d42242640560353b86192393cb1ec')
 
 build() {
   cd $pkgname-$pkgver
