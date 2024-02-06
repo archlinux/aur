@@ -1,6 +1,6 @@
 pkgbase = android-x86-libpng
 	pkgdesc = A collection of routines used to create PNG format graphics (android)
-	pkgver = 1.6.40
+	pkgver = 1.6.42
 	pkgrel = 1
 	url = http://www.libpng.org/pub/png/libpng.html
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = android-x86-libpng
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = http://downloads.sourceforge.net/sourceforge/libpng/libpng-1.6.40.tar.xz
-	sha256sums = 535b479b2467ff231a3ec6d92a525906fb8ef27978be4f66dbe05d3f3a01b3a1
+	source = http://downloads.sourceforge.net/sourceforge/libpng/libpng-1.6.42.tar.xz
+	sha256sums = c919dbc11f4c03b05aba3f8884d8eb7adfe3572ad228af972bb60057bdb48450
 
 pkgname = android-x86-libpng
