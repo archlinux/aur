@@ -1,6 +1,6 @@
 # Maintainer: Ziqi Yang <mr.ziqiyang@gmail.com>
 pkgname='ttf-lxgw-neo-xihei'
-pkgver=1.109
+pkgver=1.110
 pkgrel=1
 pkgdesc="霞鹜新晰黑。一款衍生于「IPAexゴシック」的中文黑体字型。A Simplified Chinese sans-serif font derived from IPAex Gothic."
 arch=('any')
@@ -10,7 +10,7 @@ license=('custom:IPA')
 source=("$pkgname-$pkgver-$pkgrel.ttf::$url/releases/download/v$pkgver/LXGWNeoXiHei.ttf"
         *.md)
 conflicts=('ttf-lxgw-neo-xihei')
-sha256sums=('2e76e41e6132c6abf55bfa9678255018728bbafeaa5f73fccd4314c71eb5b77f'
+sha256sums=('e8a78acfc94904273fb1ce690a44b6992c0c010f17a700c83028d26d55eec87e'
             'bdadacd0751cbb3c9f040d1314ab9b855c3ebf1b540fa6dcf44524cd49819fa1'
             '1483c7de02dcf8b9c54b3b1aacabf7d6bdf32d412ca6724c0292ea68e862d8cf')
 
