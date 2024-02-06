@@ -16,6 +16,6 @@ pkgver() {
 }
 
 package() {
-    cd "${srcdir}/Hyprdots-ctl"
+    cd "${srcdir}/$pkgname"
     make DESTDIR="$pkgdir" clean all
 }
