@@ -3,7 +3,7 @@ pkgname=graphiql-desktop-bin
 _appname=GraphiQL
 pkgver=0.1.0
 _electronversion=21
-pkgrel=3
+pkgrel=4
 pkgdesc="Electron-based desktop application for GraphiQL 2"
 arch=('x86_64')
 url="https://github.com/nathanchapman/graphiql-desktop"
@@ -27,11 +27,11 @@ source=(
 )
 sha256sums=('ca8f455113f5d6e571fb35e30cd4b5747f6325e44203b37a309c180cebca3e2c'
             'bd3a1e3d2fbd88a32174e4a111d32b4c02d526642392e06ac9b2a77b89781492'
-            '5ce46265f0335b03568aa06f7b4c57c5f8ffade7a226489ea39796be91a511bf')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
