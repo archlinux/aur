@@ -1,5 +1,5 @@
 pkgname=hyprdots-ctl
-pkgver=v0.3.24020612
+pkgver=v0.2.0.46.24020612
 pkgrel=1
 pkgdesc="CLI for Hyprdots Configurations ++ Hidden Gems"
 arch=('x86_64')
@@ -16,6 +16,6 @@ pkgver() {
 }
 
 package() {
-    cd "${srcdir}/$pkgname"
+    cd "${srcdir}/Hyprdots-ctl"
     make DESTDIR="$pkgdir" clean all
 }
