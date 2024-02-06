@@ -10,7 +10,7 @@ makedepends=('git' 'make' 'curl')
 source=("git+https://github.com/kRHYME7/Hyprdots-ctl.git")
 md5sums=('SKIP')
 
-pkgver() { #! If someone might read this help me automate the pkgver please. tnx
+pkgver() { 
   cd "$srcdir/Hyprdots-ctl" || return
   git fetch --tags
   git describe --long --tags --always | sed 's/-/./g' # Replace hyphens with dots to conform to versioning standards
