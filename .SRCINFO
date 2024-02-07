@@ -1,14 +1,22 @@
 pkgbase = sccache-bin
-	pkgdesc = ccache-like tool with experimental rust support
-	pkgver = 0.2.14
+	pkgdesc = Shared compilation cache
+	pkgver = 0.7.7
 	pkgrel = 1
 	url = https://github.com/mozilla/sccache
+	arch = aarch64
+	arch = armv7h
+	arch = i686
 	arch = x86_64
-	license = Apache
-	provides = sccache
+	license = Apache-2.0
+	provides = sccache=0.7.7
 	conflicts = sccache
-	source = https://github.com/mozilla/sccache/releases/download/0.2.14/sccache-0.2.14-x86_64-unknown-linux-musl.tar.gz
-	md5sums = 8d69c0d2c48c490985d1f910c849a29a
+	source_aarch64 = https://github.com/mozilla/sccache/releases/download/v0.7.7/sccache-v0.7.7-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = e7ecabac9a703e53a8b06e84b0058fcf242239d164050537bc399387160320fb
+	source_armv7h = https://github.com/mozilla/sccache/releases/download/v0.7.7/sccache-v0.7.7-armv7-unknown-linux-musleabi.tar.gz
+	sha256sums_armv7h = 32b080b1c893874672acacff4a0e2fc88de29b42ddfd58146765cb6a1b9044ce
+	source_i686 = https://github.com/mozilla/sccache/releases/download/v0.7.7/sccache-v0.7.7-i686-unknown-linux-musl.tar.gz
+	sha256sums_i686 = cee44aadc73ad1675ded76dcc2f12c11fc880538db905d4f342c66bde925a66f
+	source_x86_64 = https://github.com/mozilla/sccache/releases/download/v0.7.7/sccache-v0.7.7-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = ed0010b4dcaccce42b9dc8699257134a113d0ca16dfb7db890356135218322c9
 
 pkgname = sccache-bin
-
