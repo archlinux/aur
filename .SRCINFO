@@ -1,6 +1,6 @@
 pkgbase = garcon-devel
 	pkgdesc = Implementation of the freedesktop.org menu specification
-	pkgver = 4.19.0
+	pkgver = 4.19.1
 	pkgrel = 1
 	url = https://docs.xfce.org/xfce/tumbler/start
 	arch = i686
@@ -12,10 +12,10 @@ pkgbase = garcon-devel
 	makedepends = python
 	makedepends = gobject-introspection
 	depends = libxfce4ui
-	provides = garcon=4.19.0
+	provides = garcon=4.19.1
 	conflicts = garcon
 	replaces = libxfce4menu
-	source = https://archive.xfce.org/src/xfce/garcon/4.19/garcon-4.19.0.tar.bz2
-	sha256sums = e692f0d02294984c6b787e810a187c753a16f06ca87c68c0bb3de364ea3f6b0c
+	source = https://archive.xfce.org/src/xfce/garcon/4.19/garcon-4.19.1.tar.bz2
+	sha256sums = 5d4c9504a0c73b0f8f14b70875bd0ac5f280c99754e9c2e575031ca03cc87eb1
 
 pkgname = garcon-devel
