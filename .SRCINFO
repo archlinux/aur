@@ -1,20 +1,19 @@
 pkgbase = ghc9.0-bin
 	pkgdesc = Binary GHC 9.0 installed on /usr/bin/ghc-9.0
 	pkgver = 9.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.haskell.org/ghc/
 	install = ghc.install
 	arch = x86_64
 	license = BSD-3-Clause
-	makedepends = ghc
-	makedepends = libxslt
-	makedepends = docbook-xsl
 	depends = gcc
-	depends = gmp
+	depends = ncurses
 	depends = libffi
-	depends = perl
+	depends = gmp
+	depends = numactl
 	provides = ghc9.0
 	conflicts = ghc9.0
+	conflicts = ghc=9.0.2
 	source = https://www.haskell.org/ghc/dist/9.0.2/ghc-9.0.2-x86_64-deb10-linux.tar.xz
 	sha256sums = 5d0b9414b10cfb918453bcd01c5ea7a1824fe95948b08498d6780f20ba247afc
 
