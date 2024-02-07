@@ -1,6 +1,6 @@
 pkgbase = pokemon-revolution-online-bin
 	pkgdesc = A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games.
-	pkgver = 20231230+asset0.5
+	pkgver = 20240106+asset0.5
 	pkgrel = 1
 	url = https://pokemonrevolution.net
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = pokemon-revolution-online-bin
 	depends = vulkan-driver
 	depends = opengl-driver
 	source = git+https://gitlab.com/fabiscafe/pro_assets_lin_desktop.git#commit=da21f5467ed5b29d59cc67df3ccdc7686d763406
-	source = PROClient_linux-20231230.tar.gz::https://ddl.pokemonrevolution.net/PROClient_linux.tar.gz
+	source = PROClient_linux-20240106.tar.gz::https://ddl.pokemonrevolution.net/PROClient_linux.tar.gz
 	sha512sums = SKIP
-	sha512sums = c8c140da8e174ae6f900381360e5f32d0e4465e42a9f196960773548a5f2d60116eb30c31d6d649b03b9d76f2f514ce60e8e2cb08039f8425b42b84d9c6841b5
+	sha512sums = 327057471e300b217b94f6e8eb9c4b0c7df6064f5f12759bbffc41f93ef34b00b4fcd1a9d966455041c99a0314e234274bd5d300650e482cc3b95fbf6571c53e
 
 pkgname = pokemon-revolution-online-bin
