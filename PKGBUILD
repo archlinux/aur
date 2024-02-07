@@ -1,5 +1,5 @@
 pkgname=libelectron
-pkgver=1.0.18
+pkgver=1.0.19
 pkgrel=1
 arch=("x86_64" "aarch64")
 url="https://gitlab.com/libelectron/libelectron"
