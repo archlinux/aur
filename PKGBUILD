@@ -13,7 +13,7 @@ arch=('x86_64')
 url="http://www.lacie.com/products/product.htm?pid=10803"
 license=('unknown')
 install=4l.install
-depends=('lib32-fontconfig' 'lib32-gcc-libs' 'lib32-libxcursor' 'lib32-libxi' 'lib32-libxinerama' 'lib32-libxrandr' 'bin32-lightscribe')
+depends=('lib32-fontconfig' 'lib32-gcc-libs' 'lib32-libxcursor' 'lib32-libxi' 'lib32-libxinerama' 'lib32-libxrandr' 'bin32-lightscribe' 'gksu')
 conflicts=('4l_x86_64')
 source=($_realname.i586.rpm::https://web.archive.org/web/20170108215916/http://www.lacie.com/files/lacie-content/download/drivers/LaCie%20LightScribe%20Labeler%201.0%20Linux.rpm lightscribe.png lightscribe.desktop 4L-cli)
 md5sums=('11fc8b2daeaed2b61a567056413bdefd'
