@@ -1,7 +1,7 @@
 pkgbase = plasma-activities-git
 	pkgdesc = Core components for KDE Activities
 	pkgver = 6.0.80_r1477.gbe3dd91c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	license = LGPL-2.0-or-later
@@ -17,10 +17,10 @@ pkgbase = plasma-activities-git
 	depends = kcoreaddons
 	depends = qt6-base
 	optdepends = qt6-declarative: QML bindings
+	provides = kactivities
+	provides = kactivities-git
 	conflicts = kactivities
 	conflicts = kactivities-git
-	replaces = kactivities
-	replaces = kactivities-git
 	source = git://invent.kde.org/plasma/plasma-activities.git
 	sha256sums = SKIP
 

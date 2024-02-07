@@ -3,7 +3,7 @@
 pkgname=plasma-activities-git
 pkgver=6.0.80_r1477.gbe3dd91c
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=1
+pkgrel=2
 pkgdesc='Core components for KDE Activities'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -21,7 +21,7 @@ makedepends=(boost
              qt6-tools)
 optdepends=('qt6-declarative: QML bindings')
 conflicts=(kactivities kactivities-git)
-replaces=(kactivities kactivities-git)
+provides=(kactivities kactivities-git)
 source=(git://invent.kde.org/plasma/plasma-activities.git)
 sha256sums=('SKIP')
 
