@@ -1,4 +1,5 @@
-*.*.*-linux-x86_64
 *.tar.zst
+*.tar.lz4
+minhtml-*.*.*-*-unknown-linux-gnu
 pkg
 src
