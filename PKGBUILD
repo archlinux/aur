@@ -4,10 +4,10 @@
 pkgbase='python-common-ta-lib'
 pkgname=("python-ta-lib")
 pkgver=0.4.28
-pkgrel=1
+pkgrel=2
 pkgdesc="Python wrapper for TA-Lib"
 url="https://github.com/TA-Lib/ta-lib-python"
-makedepends=('python-setuptools' 'python-numpy' 'cython' 'ta-lib')
+makedepends=('python-setuptools' 'python-numpy' 'cython' 'ta-lib' 'python-build')
 license=('BSD')
 arch=('any')
 source=("https://github.com/TA-Lib/ta-lib-python/archive/refs/tags/TA_Lib-$pkgver.tar.gz")
