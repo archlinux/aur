@@ -3,14 +3,14 @@ pkgname=blix-bin
 _pkgname=Blix
 pkgver=1.3.0
 _electronversion=24
-pkgrel=3
+pkgrel=4
 pkgdesc="A cross-platform AI-assisted graph photo editor."
 arch=(
     'aarch64'
     'x86_64'
 )
 url="https://github.com/COS301-SE-2023/AI-Photo-Editor"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 options=('!strip')
@@ -24,13 +24,13 @@ makedepends=(
 source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums=('d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+sha256sums=('0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 sha256sums_aarch64=('d1444cb7ed34ead088218271eebb6b02868a3a881fb400a14e21fe22b33f6f43')
 sha256sums_x86_64=('cc3356aede7d58bfcc2758d700f6bd836181bc87566491b573f4bb4f031bab4f')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g;s|productivity|Graphics|g" \
