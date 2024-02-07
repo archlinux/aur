@@ -1,6 +1,6 @@
 pkgbase = reminders-git
 	pkgdesc = Reminds about events stored in YAML.
-	pkgver = v0.2.0.r1.ge5db213
+	pkgver = v0.2.0.r4.gb081959
 	pkgrel = 1
 	url = https://github.com/danisztls/reminders
 	install = reminders.install

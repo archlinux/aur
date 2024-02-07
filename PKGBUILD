@@ -4,7 +4,7 @@ _gitauthor="danisztls"
 _gitbranch="main"
 
 pkgname="${_pkgname}-git"
-pkgver=v0.2.0.r1.ge5db213
+pkgver=v0.2.0.r4.gb081959
 pkgrel=1
 pkgdesc="Reminds about events stored in YAML."
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python' 'python-yaml' 'python-dateutil')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-install="reminders.install"
+install="${_pkgname}.install"
 source=("git+https://github.com/danisztls/reminders")
 sha512sums=('SKIP') 
 
@@ -29,7 +29,7 @@ pkgver() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  install -Dm755 reminders.py "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm 755 reminders.py "${pkgdir}/usr/bin/${_pkgname}"
   install -vDm 644 reminders.service "${pkgdir}/usr/lib/systemd/user/${_pkgname}.service"
   install -vDm 644 reminders.timer "${pkgdir}/usr/lib/systemd/user/${_pkgname}.timer"
   install -vDm 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
