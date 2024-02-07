@@ -9,6 +9,7 @@ license=('MIT')
 arch=('x86_64' 'aarch64')
 depends=('gtksourceview5' 'python-caldav' 'python-gobject' 'python-icalendar'
          'python-pycryptodomex' 'libadwaita' 'libsecret')
+optdepends=('gnome-online-accounts')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
 source=("git+$url.git#tag=$pkgver")

@@ -16,6 +16,7 @@ pkgbase = errands
 	depends = python-pycryptodomex
 	depends = libadwaita
 	depends = libsecret
+	optdepends = gnome-online-accounts
 	source = git+https://github.com/mrvladus/Errands.git#tag=45.1.9
 	sha256sums = SKIP
 
