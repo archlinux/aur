@@ -1,6 +1,6 @@
 # Contributor: Jan Oliver Oelerich <janoliver@oelerich.org>
 pkgname=uwsgitop-git
-pkgver=20130415
+pkgver=20230511
 pkgrel=1
 pkgdesc="uWSGI stats viewer"
 arch=('i686' 'x86_64')
@@ -11,6 +11,11 @@ makedepends=('git' 'python2-distribute')
 source=("git+https://github.com/unbit/uwsgitop.git")
 b2sums=('SKIP')
 _gitname="uwsgitop"
+
+pkgver() {
+  cd "$srcdir/$_gitname"
+  git log -1 --format='%cd' --date=short | tr -d -- '-'
+}
 
 package() {
   cd "$srcdir/$_gitname"

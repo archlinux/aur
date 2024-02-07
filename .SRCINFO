@@ -1,6 +1,6 @@
 pkgbase = uwsgitop-git
 	pkgdesc = uWSGI stats viewer
-	pkgver = 20130415
+	pkgver = 20230511
 	pkgrel = 1
 	url = http://github.com/unbit/uwsgitop.git
 	arch = i686
