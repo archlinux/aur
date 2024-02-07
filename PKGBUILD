@@ -1,7 +1,7 @@
 # Maintainer: Shohei Maruyama <cheat.sc.linux@outlook.com>
 
 pkgname='turbo'
-pkgver=1.12.2
+pkgver=1.12.3
 pkgrel=1
 pkgdesc='Incremental bundler and build system optimized for JavaScript and TypeScript, written in Rust – including Turbopack and Turborepo.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
 )
 makedepends=('cargo-nightly' 'protobuf' 'capnproto')
 sha256sums=(
-	'21c34c55179443dcd7eff9f09f9a9e4ca7fbcf0f82caa0acc796e015a0e865c4'
+	'76e505a1f51722a9de355e1b3582d5da3cc7c6baa6628292451afce4ee8e061e'
 )
 
 prepare() {
