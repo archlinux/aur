@@ -3,7 +3,7 @@ pkgname=ahmyth-bin
 _pkgname=AhMyth
 pkgver=1.0_beta.5a
 _electronversion=11
-pkgrel=4
+pkgrel=5
 pkgdesc="Cross-Platform Android Remote Administration Tool"
 arch=(
     "i686"
@@ -23,13 +23,13 @@ source=(
 )
 source_i686=("${pkgname%-bin}-${pkgver}-i686.deb::${url}/releases/download/v${pkgver//_/-}/${_pkgname}-Setup_ia32.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver//_/-}/${_pkgname}-Setup_amd64.deb")
-sha256sums=('d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+sha256sums=('0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 sha256sums_i686=('16458a927945401f312d4752fbca33e8e9df8c1203083e81041cc5fb3b5fb838')
 sha256sums_x86_64=('a9f1630c23bdc1320361b021353f923fd72942e48c9ae8dc6d8b5de067f39335')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
