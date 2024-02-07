@@ -2,8 +2,8 @@
 
 pkgname=gnome-extensions-cli
 _pkgname=gnome_extensions_cli
-commithash=5ebc489065981a4cd7dbf69a64f8b5532eae5f8d
-pkgver=0.9.6
+commithash=5f3d0ed203f3d1df491e55d190b59298587f5198
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Install, update and manage your Gnome Shell extensions from your terminal !"
 arch=("any")
@@ -13,7 +13,7 @@ makedepends=(python-installer python-poetry)
 depends=(python python-colorama python-pydantic python-requests python-packaging)
 optdepends=("dbus: recommended, handle extensions with DBus")
 source=("https://github.com/essembeh/$pkgname/archive/$commithash.zip")
-sha256sums=("12bb46ea9466ea1400b0018244a3c8809fc5e90831e30946ba6fa6e0fb739da9")
+sha256sums=("a71ecdd1e47b10eaef7097fbf95e3aa58fe79f6595db433a4b3d8e92ff0a068c")
 
 build() {
     cd $pkgname-$commithash
