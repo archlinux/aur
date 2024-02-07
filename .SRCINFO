@@ -1,0 +1,19 @@
+pkgbase = curseforge-appimage
+	pkgdesc = CurseForge desktop client for Linux
+	pkgver = 0.244.4.16117
+	pkgrel = 1
+	url = https://curseforge.com/
+	arch = x86_64
+	license = custom:overwolf
+	license = MIT
+	license = custom:chromium-licenses
+	depends = fuse2
+	options = !strip
+	source = curseforge-appimage-0.244.4.16117.zip::https://curseforge.overwolf.com/downloads/curseforge-latest-linux.zip
+	source = curseforge
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = dbb87d28bb55affc7e442c1b65db5d59d16a8e8322d99092a27c31cfa3eb98c4
+	sha256sums = 135c7ffeb81f4a7ee95a5879651b679e0d1ef9d13c7aa7c262386ad97b48d62f
+
+pkgname = curseforge-appimage
