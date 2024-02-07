@@ -1,0 +1,28 @@
+14:55:41 [INFO] Reading config from:            /etc/pulpo.conf
+14:55:41 [INFO] ------------------------------------------------------------------------
+14:55:41 [INFO] Configuration file is (/etc/pulpo.conf) : 
+14:55:41 [INFO]     config/tray_icon:           pulpo-green-64x64.png
+14:55:41 [INFO]     gotify/gotify_url:          https://yecla.mooo.com:20589/
+14:55:41 [INFO]     gotify/gotify_client_token: CCX6GtJPVh_osXB
+14:55:41 [INFO]     gotify/gotify_sound:        notification.ogg
+14:55:41 [INFO]     gotify/gotify_icon:         gotify-icon.png
+14:55:41 [INFO]     ntfy/ntfy_url:              https://yecla.mooo.com:20590/
+14:55:41 [INFO]     ntfy/ntfy_topics:           Alerts,Backup,General,Deployment,MediaClassifier
+14:55:41 [INFO]     ntfy/ntfy_sound:            notification.ogg
+14:55:41 [INFO]     ntfy/ntfy_icon:             ntfy-icon.png
+14:55:41 [INFO] ------------------------------------------------------------------------
+14:55:41 [INFO]  
+14:55:41 [INFO] Waiting for network connection.
+14:55:41 [INFO] Network is avaible.
+14:55:41 [INFO] Starting gotify with https://yecla.mooo.com:20589/ and token CCX6GtJPVh_osXB
+14:55:41 [INFO] ...and will poll every 5 seconds
+14:55:41 [INFO] Creating gotify client
+14:55:41 [INFO] Starting ntfy with https://yecla.mooo.com:20590/ and topics Alerts,Backup,General,Deployment,MediaClassifier
+14:55:41 [INFO] ...and will poll every 5 seconds
+14:55:41 [INFO] Creating ntfy client
+14:55:41 [INFO] Starting ntfy loop
+14:55:41 [INFO] Ntfy websocket url: wss://yecla.mooo.com:20590/Alerts,Backup,General,Deployment,MediaClassifier/ws
+14:55:41 [INFO] Starting gotify loop
+14:55:41 [INFO] Gotify websocket url: wss://yecla.mooo.com:20589/stream?token=CCX6GtJPVh_osXB
+14:55:41 [INFO] Connected to Ntfy at wss://yecla.mooo.com:20590/
+14:55:41 [INFO] Connected to Gotify at wss://yecla.mooo.com:20589/
