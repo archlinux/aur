@@ -6,7 +6,7 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 pkgname="dprint-plugin-toml"
-pkgver="0.5.4"
+pkgver="0.6.0"
 pkgrel="1"
 pkgdesc="TOML code formatting plugin for dprint."
 arch=("any")
@@ -15,13 +15,11 @@ license=("MIT")
 depends=("dprint")
 makedepends=("rust" "rust-wasm")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=("7b70abf19bd0ca745baed20998f6bd47c42ac1ce5788f383c47d848bd85dd0e530c3401f1c16d0e414fb3a4cc25713a27a82aabb624b600048711b971379b2bc")
+sha512sums=("7558ff2d691a6d08f56f1e148208ff24f4d1ee28dcb97927a521c56db399a209be6ffeb6e8cc393e63fcafaea9158a6409af231f4a19965e67c840edd03fd021")
 
 prepare()
 {
     cd "${srcdir}"/"${pkgname}"-"${pkgver}"/ || exit 1
-    # Temporary TODO
-    cargo update
     cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
