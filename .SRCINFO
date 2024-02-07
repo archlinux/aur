@@ -1,15 +1,18 @@
 pkgbase = python-jxlpy
 	pkgdesc = Module for reading and writing support for JPEG XL directly from Python
-	pkgver = 0.9.1
+	pkgver = 0.9.3
 	pkgrel = 1
-	url = https://pypi.org/project/jxlpy/
-	arch = any
-	license = GPL3
+	url = https://github.com/olokelo/jxlpy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
 	makedepends = python-setuptools
 	makedepends = cython
-	depends = python
+	makedepends = git
 	depends = libjxl
-	source = python-jxlpy-0.9.1.tar.gz::https://github.com/olokelo/jxlpy/archive/0.9.1.tar.gz
-	sha256sums = 3ff9425833837905fe12a155c3dddbaf9361f5a7b4cfa79abbef050ca4b0653f
+	depends = python
+	depends = python-pillow
+	source = python-jxlpy-0.9.3.tar.gz::https://github.com/olokelo/jxlpy/archive/0.9.3.tar.gz
+	sha256sums = fbc92621ff57742291d73e791e396d4d6e2f3dd39efd77ad3bc8d795390ce9f2
 
 pkgname = python-jxlpy
