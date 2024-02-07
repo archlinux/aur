@@ -1,7 +1,7 @@
 # Maintainer: MD Gaziur Rahman Noor <mdgaziurrahmannoor@gmail.com>
 pkgname=findex-git
 _pkgname=findex
-pkgver=0.8.0
+pkgver=0.8.1
 pkgver() {
 	cd findex
 	git describe --tags | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/-/./' | sed -e "s/^v//"
