@@ -1,12 +1,16 @@
 pkgbase = cpan2aur2git
 	pkgdesc = CPAN2AUR wrapper
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/bence98/cpan2aur2git
 	arch = any
 	license = GPL-3.0-or-later
+	makedepends = git
+	depends = perl-cpanplus-dist-arch
+	depends = python-requests
+	optdepends = postfix: for receiving mail for automatic processing with cpanbot-mail
 	options = !emptydirs
-	source = cpan2aur2git-0.0.1::git+https://github.com/bence98/cpan2aur2git.git#tag=v0.0.1
+	source = git+https://github.com/bence98/cpan2aur2git#tag=v0.0.1
 	md5sums = SKIP
 
 pkgname = cpan2aur2git
