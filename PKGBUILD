@@ -20,14 +20,13 @@
 
 pkgname=ghc9.4-bin
 pkgver=9.4.8
-pkgrel=1
+pkgrel=2
 _ver_branch=9.4
 pkgdesc="Binary GHC ${_ver_branch} installed on /usr/bin/ghc-${_ver_branch}"
 arch=('x86_64')
 url='http://www.haskell.org/ghc/'
 license=('BSD-3-Clause')
-depends=('gcc' 'gmp' 'libffi' 'perl')
-makedepends=('ghc' 'libxslt' 'docbook-xsl')
+depends=('gcc' 'ncurses' 'libffi' 'gmp')
 install='ghc.install'
 provides=("ghc${_ver_branch}")
 conflicts=("ghc${_ver_branch}")
@@ -61,8 +60,8 @@ package() {
   mv ${pkgdir}/usr/bin/runghc     ${pkgdir}/usr/bin/runghc-${_ver_branch}
   rm ${pkgdir}/usr/bin/runhaskell # use runghc-${_ver_branch} instead
 
-  mv ${pkgdir}/usr/share/man/man1/ghc.1 ${pkgdir}/usr/share/man/man1/ghc-${_ver_branch}
+  mv ${pkgdir}/usr/share/man/man1/ghc.1 ${pkgdir}/usr/share/man/man1/ghc-${_ver_branch}.1
 
-  install -d            ${pkgdir}/usr/share/licenses/ghc-${_ver_branch}
-  install -m644 LICENSE ${pkgdir}/usr/share/licenses/ghc-${_ver_branch}
+  install -d            ${pkgdir}/usr/share/licenses/${pkgname}
+  install -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}
 }
