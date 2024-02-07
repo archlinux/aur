@@ -9,7 +9,7 @@ readonly _pkgname="matomo"
 declare -r _tag="7454f0e3ae10c8753c73eda1742b7a8a55f8330e"
 
 pkgname="matomo-git"
-pkgver="5.0.1"
+pkgver="5.0.2"
 pkgrel="1"
 pkgdesc="A powerful web analytics platform."
 arch=("any")
