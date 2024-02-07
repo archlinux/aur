@@ -5,12 +5,12 @@ _sparkname="com.${_pkgname}.spark"
 _zhsname="淡墨水字帖"
 _bottlename="Deepin-${_pkgname}"
 pkgver=0.0.6
-pkgrel=4
+pkgrel=5
 pkgdesc="DanMoShui Calligraphy on deepin wine 6.基于Deepin Wine 6的淡墨水字帖PC版。"
 arch=("x86_64")
 url="https://danmoshui.com"
 _downurl="https://d.store.deepinos.org.cn/store"
-license=('custom')
+license=('LicenseRef-custom')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 depends=(
@@ -23,15 +23,12 @@ install="${pkgname}.install"
 source=(
     "${pkgname}-${pkgver}.deb::${_downurl}/office/${_sparkname}/${_sparkname}_${pkgver}spark0_amd64.deb"
     "LICENSE-${pkgver}::${url}/privacy_policy"
-    "${pkgname}.install"
     "${pkgname}.sh"
 )
 sha256sums=('8e2e1d90abf308a5f7eb105db2abb684d4b39955ce4fe3c4b09b2722eeb37f0f'
             'bd406f5d41584e0234c580d53462045843b5670467568d1478042499f864dc87'
-            '9fc08b3f39ab99a3335449f6ea69aff4bb67d8b4dd2b243009738369af544201'
-            '814a386e20b951dab769ebf1bb35def9e4588909d70f07d61d2c68a4da326556')
+            'b0eeaff0818b3613b2495b39149678286c5bd8c1daba3fa7970eab464a8ad1e7')
 build() {
-    sed "s|@bottlename@|${_bottlename}|g" -i "${srcdir}/${pkgname}.install"
     sed -e "s|@bottlename@|${_bottlename}|g" \
         -e "s|@pkgver@|${pkgver}|g" \
         -e "s|@runname@|${_zhsname}|g" \
