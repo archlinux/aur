@@ -13,7 +13,7 @@ pkgbase = chinesesubfinder
 	depends = gcc-libs
 	depends = glibc
 	depends = systemd
-	source = chinesesubfinder::git+https://github.com/ChineseSubFinder/ChineseSubFinder
+	source = chinesesubfinder::git+https://github.com/ChineseSubFinder/ChineseSubFinder.git#tag=v0.55.3
 	source = chinesesubfinder.service
 	source = chinesesubfinder.sysusers
 	source = chinesesubfinder.tmpfiles

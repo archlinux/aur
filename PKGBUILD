@@ -11,7 +11,7 @@ license=("MIT")
 install="${pkgname}.install"
 depends=("ffmpeg" "gcc-libs" "glibc" "systemd")
 makedepends=("npm" "git" "go")
-source=("${pkgname}::git+${url}"
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
@@ -24,7 +24,6 @@ sha256sums=('SKIP'
 
 build() {
     cd "${pkgname}"
-    git checkout "v${pkgver}"
     npm --prefix frontend install
     npm --prefix frontend run build
     go mod tidy
