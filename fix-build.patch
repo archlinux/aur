@@ -1,0 +1,7 @@
+diff --git a/scGPS/src/Makevars b/scGPS/src/Makevars
+index 22ebc63..532cff9 100644
+--- a/scGPS/src/Makevars
++++ b/scGPS/src/Makevars
+@@ -1 +1,2 @@
+ PKG_LIBS = $(LAPACK_LIBS) $(BLAS_LIBS) $(FLIBS)
++PKG_LIBS += $(shell "${R_HOME}/bin/Rscript" -e "RcppParallel::LdFlags()")
