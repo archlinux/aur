@@ -3,7 +3,7 @@
 # Contributor: Eric Vidal <eric@obarun.org>
 
 pkgname=kickshaw
-pkgver=1.1.51
+pkgver=1.1.52
 pkgrel=1
 pkgdesc='A menu editor for freedesktop standard menus'
 url='http://download.savannah.gnu.org/releases/obladi'
@@ -40,6 +40,7 @@ package()
 	cp -R "$srcdir/${pkgname}_${pkgver}_GTK3_source_only/source/resources/txts/translations/et" "$pkgdir/usr/share/locale"
 	cp -R "$srcdir/${pkgname}_${pkgver}_GTK3_source_only/source/resources/txts/translations/eu" "$pkgdir/usr/share/locale"
 	cp -R "$srcdir/${pkgname}_${pkgver}_GTK3_source_only/source/resources/txts/translations/fi" "$pkgdir/usr/share/locale"
+	cp -R "$srcdir/${pkgname}_${pkgver}_GTK3_source_only/source/resources/txts/translations/fo" "$pkgdir/usr/share/locale"
 	cp -R "$srcdir/${pkgname}_${pkgver}_GTK3_source_only/source/resources/txts/translations/fr" "$pkgdir/usr/share/locale"
 	cp -R "$srcdir/${pkgname}_${pkgver}_GTK3_source_only/source/resources/txts/translations/fy" "$pkgdir/usr/share/locale"
 	cp -R "$srcdir/${pkgname}_${pkgver}_GTK3_source_only/source/resources/txts/translations/gl" "$pkgdir/usr/share/locale"
