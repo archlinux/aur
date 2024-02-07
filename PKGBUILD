@@ -2,7 +2,7 @@
 
 pkgname=fav-bin
 _pkgname=fav
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=2
 pkgdesc='Back up your favorite bilibili resources with CLI'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
 source=("${_pkgname}-${pkgver}.tar.gz::$url/releases/download/v$pkgver/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('c7e1660ea9e7d1d7c2cc1caaf969c44b29a26ad14b78c33f6f2f4209ba22e243')
+sha256sums=('a4fdc104ffe49caac13a510c2f10b7cfb1c42a9f6cab831141f967502a8dc299')
 
 package() {
 	install -Dm755 ${_pkgname} "$pkgdir"/usr/bin/${_pkgname}
