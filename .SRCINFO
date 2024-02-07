@@ -1,7 +1,7 @@
 pkgbase = keepassx2-twofish
 	pkgdesc = Cross Platform Password Manager (with unofficial patches for Twofish and unlock on auto-type)
 	pkgver = 2.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.keepassx.org/dev/
 	install = keepassx2.install
 	arch = i686
@@ -17,6 +17,7 @@ pkgbase = keepassx2-twofish
 	conflicts = keepassx2-git
 	conflicts = keepassx2
 	options = !emptydirs
+	options = !debug
 	source = https://www.keepassx.org/releases/2.0.3/keepassx-2.0.3.tar.gz
 	source = https://github.com/drizzt/keepassx/commit/759c71ededf5c2c6447e2c79ad4f172ebb52e479.patch
 	source = https://github.com/drizzt/keepassx/commit/75aac9901f9bcf8ce307abe8c26aeac18f7ce42c.patch

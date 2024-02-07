@@ -1,10 +1,11 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 # Contributor: Michael Laß <bevan@bi-co.net>
 # Contributor: Marat "Morion" Talipov <morion.self@gmail.com>
 
 pkgname=keepassx2-twofish
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross Platform Password Manager (with unofficial patches for Twofish and unlock on auto-type)"
 arch=('i686' 'x86_64')
 url="https://www.keepassx.org/dev/"
@@ -12,7 +13,7 @@ license=('GPL2' 'GPL3')
 depends=('shared-mime-info' 'libxtst' 'qt4')
 makedepends=('intltool' 'cmake')
 conflicts=('keepassx' 'keepassx2-git' 'keepassx2')
-options=(!emptydirs)
+options=(!emptydirs !debug)
 install=keepassx2.install
 source=("https://www.keepassx.org/releases/${pkgver}/keepassx-${pkgver}.tar.gz"
         https://github.com/drizzt/keepassx/commit/759c71ededf5c2c6447e2c79ad4f172ebb52e479.patch
