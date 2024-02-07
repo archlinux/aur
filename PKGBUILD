@@ -1,39 +1,28 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=woterm-bin
 _pkgname=WoTerm
-pkgver=9.29.10
-_releasedate=202312241653
+pkgver=9.30.2
+_releasedate=202402030755
 pkgrel=1
 pkgdesc="支持常见的主流通迅协议SSH1/SSH2/SFTP/TELNET/RLOGIN/RDP/VNC/SHELL/SERIALPORT/TCP/UDP的一个跨平台工具."
 arch=("x86_64")
 url="http://woterm.com/"
 _ghurl="https://github.com/aoyiduo/woterm"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 options=("!strip")
 depends=(
-    'freetype2'
-    'at-spi2-core'
     'qt5-base'
-    'libxcb'
     'postgresql-libs'
     'qt5-location'
-    'libglvnd'
-    'pango'
     'qt5-declarative'
-    'libx11'
-    'fontconfig'
-    'libxkbcommon-x11'
-    'libxext'
-    'libxkbcommon'
-    'cairo'
     'unixodbc'
-    'libxrender'
-    'gdk-pixbuf2'
     'openssl-1.1'
     'gtk3'
     'qt5-remoteobjects'
+    'qt6-charts'
+    'qt6-declarative'
 )
 makedepends=(
     'gendesk'
@@ -42,8 +31,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.tar.gz::https://down.woterm.com/linux/${pkgname%-bin}-linux-${CARCH}-v${pkgver}-${_releasedate}.tar.gz"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('97add1e20bccbf296c7ac561226e13dbc67629e3a7e3a076082c8442a7b6936d'
-            'fdeeff9d7e5a7af5519df478763fdd2819b686adc4c5e9003fcc511e981294ad')
+sha256sums=('446df854a6a378c7e6e1f9b46eb1a2704b04465522d5932e04eaac6ae14ef431'
+            'cb6e0a06a647a3db8a9bd3fda6bc037448965e78c229faf82230dc7fb937a7eb')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \

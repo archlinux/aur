@@ -1,38 +1,27 @@
 pkgbase = woterm-bin
 	pkgdesc = 支持常见的主流通迅协议SSH1/SSH2/SFTP/TELNET/RLOGIN/RDP/VNC/SHELL/SERIALPORT/TCP/UDP的一个跨平台工具.
-	pkgver = 9.29.10
+	pkgver = 9.30.2
 	pkgrel = 1
 	url = http://woterm.com/
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = gendesk
-	depends = freetype2
-	depends = at-spi2-core
 	depends = qt5-base
-	depends = libxcb
 	depends = postgresql-libs
 	depends = qt5-location
-	depends = libglvnd
-	depends = pango
 	depends = qt5-declarative
-	depends = libx11
-	depends = fontconfig
-	depends = libxkbcommon-x11
-	depends = libxext
-	depends = libxkbcommon
-	depends = cairo
 	depends = unixodbc
-	depends = libxrender
-	depends = gdk-pixbuf2
 	depends = openssl-1.1
 	depends = gtk3
 	depends = qt5-remoteobjects
-	provides = woterm=9.29.10
+	depends = qt6-charts
+	depends = qt6-declarative
+	provides = woterm=9.30.2
 	conflicts = woterm
 	options = !strip
-	source = woterm-9.29.10.tar.gz::https://down.woterm.com/linux/woterm-linux-x86_64-v9.29.10-202312241653.tar.gz
+	source = woterm-9.30.2.tar.gz::https://down.woterm.com/linux/woterm-linux-x86_64-v9.30.2-202402030755.tar.gz
 	source = woterm.sh
-	sha256sums = 97add1e20bccbf296c7ac561226e13dbc67629e3a7e3a076082c8442a7b6936d
-	sha256sums = fdeeff9d7e5a7af5519df478763fdd2819b686adc4c5e9003fcc511e981294ad
+	sha256sums = 446df854a6a378c7e6e1f9b46eb1a2704b04465522d5932e04eaac6ae14ef431
+	sha256sums = cb6e0a06a647a3db8a9bd3fda6bc037448965e78c229faf82230dc7fb937a7eb
 
 pkgname = woterm-bin
