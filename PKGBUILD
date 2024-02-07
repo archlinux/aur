@@ -1,16 +1,16 @@
 # Maintainer: Samsagax <samsagax at gmail dot com>
 _pkgbase=chimeraos-device-quirks
 pkgname=${_pkgbase}-git
-pkgver=r188.7e80599
+pkgver=r238.f8843dd
 pkgrel=1
 pkgdesc="A collection of device specific configuration files"
 arch=('any')
 url="https://github.com/ChimeraOS/device-quirks"
 license=('MIT')
 depends=('acpica'
-         'cpio'
-         'systemd'
-         'swh-plugins')
+	'cpio'
+	'systemd'
+	'swh-plugins')
 makedepends=('git')
 source=("${_pkgbase}::git+https://github.com/ChimeraOS/device-quirks.git")
 md5sums=('SKIP')
@@ -38,7 +38,7 @@ package() {
 	# Install systemd units
 	install -v -m644 -D -t "${pkgdir}/usr/lib/systemd/user/" usr/lib/systemd/user/*
 	install -v -m644 -D -t "${pkgdir}/usr/lib/systemd/system/" usr/lib/systemd/system/*
-	install -v -m644 -D -t "${pkgdir}/usr/lib/systemd/system-sleep/" usr/lib/systemd/system-sleep/*
+	install -v -m755 -D -t "${pkgdir}/usr/lib/systemd/system-sleep/" usr/lib/systemd/system-sleep/*
 
 	# Install firmware DSDT and EDID
 	install -v -m644 -D -t "${pkgdir}/usr/lib/firmware/dsdt/" usr/lib/firmware/dsdt/*
@@ -50,7 +50,7 @@ package() {
 	#Install scripts
 	mkdir -p "${pkgdir}/usr/share/device-quirks"
 	cp -rv usr/share/device-quirks/* "${pkgdir}/usr/share/device-quirks/."
-	
+
 	#Install device-quirks config
 	mkdir -p "${pkgdir}/etc/device-quirks"
 	cp -rv etc/device-quirks/* "${pkgdir}/etc/device-quirks/."
