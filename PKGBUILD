@@ -1,14 +1,14 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=animalcules
-_pkgver=1.18.2
+_pkgver=1.18.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Interactive microbiome analysis toolkit"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(Artistic2.0)
+license=('Artistic-2.0')
 depends=(
   r-ape
   r-assertthat
@@ -49,8 +49,8 @@ optdepends=(
   r-usethis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('aa982cf7a1ee5300e2974be6dd3fc34f')
-b2sums=('e9f9ba6651bbe8ec5393501d2e3da18f49ab90082eb6f3ba8bc7f9044daa00b4fed80b79088820db2c03446e4a36cb7bcc8fa3d9f8601e85834c0ad71f7c6fa9')
+md5sums=('eb0d7e45ea49758bec2b9f248328b1eb')
+b2sums=('b25df402dfa315ff24c7d6f03a3288e30da7f21fdaf68da6b543ff440a5caf19346bcbad60b9e6c7c60bdb1284c0e170525653576904fc36c69293d142559d16')
 
 build() {
   mkdir build
