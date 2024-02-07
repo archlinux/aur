@@ -1,16 +1,17 @@
-# Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
+# Maintainer: Edoardo Signorini <contact at edoars dot me>
+# Contributor: Oleksandr Natalenko <oleksandr at natalenko dot name>
 
 pkgname=libcpucycles
 epoch=
-pkgver=20230115
-pkgrel=2
+pkgver=20240114
+pkgrel=1
 pkgdesc="A microlibrary for counting CPU cycles"
 url=https://cpucycles.cr.yp.to
 license=(Unlicense)
 arch=(x86_64)
 makedepends=(python)
 source=(${url}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('dd38c12205550216b92607f0f42727c52a0109a16af2eaa7a13835d53ebbc225')
+sha256sums=('e3d32462a53ba323b03b8b63544bcadca8a11514fb323e135661e22368316f02')
 
 build() {
 	cd ${pkgname}-${pkgver}
