@@ -4,7 +4,7 @@
 # Contributor: Peter Sutton (foxxy) <foxxy@foxdogstudios.com>
 
 pkgname=ngrok
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc='A tunneling, reverse proxy for developing and understanding networked, HTTP services'
 url='https://ngrok.com'
@@ -12,15 +12,15 @@ license=('custom')
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 optdepends=('bash-completion: Bash completion support')
 source=("TERMS-OF-SERVICE.txt")
-source_x86_64=("https://bin.equinox.io/a/7qHLVJPrTcc/ngrok-v3-3.5.0-linux-amd64")
-source_i686=("https://bin.equinox.io/a/4gMs8FHXopG/ngrok-v3-3.5.0-linux-386")
-source_armv7h=("https://bin.equinox.io/a/ciuckTnS7RJ/ngrok-v3-3.5.0-linux-arm")
-source_aarch64=("https://bin.equinox.io/a/iutMKiLdVzF/ngrok-v3-3.5.0-linux-arm64")
+source_x86_64=("https://bin.equinox.io/a/e6rvYmQb6MC/ngrok-v3-3.6.0-linux-amd64")
+source_i686=("https://bin.equinox.io/a/5FUi7gCzPvi/ngrok-v3-3.6.0-linux-386")
+source_armv7h=("https://bin.equinox.io/a/iTLH8EwDQN2/ngrok-v3-3.6.0-linux-arm")
+source_aarch64=("https://bin.equinox.io/a/ibBBjsbrZAm/ngrok-v3-3.6.0-linux-arm64")
 sha256sums=('d1fce3c7e78d5f7e5307238ee5f371b7a10911aeb249e3358e945eaa8cf2f1b2')
-sha256sums_i686=('2ab242193e01222d1c5cbfe85389200b97fc3af91374bd4b9c8d86812db7d589')
-sha256sums_x86_64=('bd44f722df4435daf61c4bef4fe45d8abdbbf5ccd6c371b6ab405a07fb469c06')
-sha256sums_armv7h=('ba0ab1d956a0b05e35da6901691bd18166acc6a833c993e8f6b80f6d608e1d8c')
-sha256sums_aarch64=('85b5ecc96a56a1d19324acb3ca3a38e11a9075be8cb97ee466a1538f8711a69d')
+sha256sums_i686=('2036fc58594c7205aebaa09e9665d5c706391746122a417e57fa9a1bce62a727')
+sha256sums_x86_64=('14e6118f1021b5b8421945a13b15ec501bc88aef0089b1dbf31d1fb229115d9e')
+sha256sums_armv7h=('0bbc395cc610c0017d12a812496856677f6a653f60a76203d0f031914e4cf7bc')
+sha256sums_aarch64=('39575a951352e571f6f96fd4409cbaa675dc4593786c9f198c2fb45360361f02')
 
 # In order to make Ngrok's built-in updater happy, we need to avoid modifying the binary
 options=(!strip)
