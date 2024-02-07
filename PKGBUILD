@@ -1,82 +1,166 @@
-_pkgname=rsync
-pkgname="$_pkgname-reflink-git"
-pkgver=3.2.7.r31.g6f3c5ecc
-pkgrel=1
-pkgdesc='A fast and versatile file copying tool for remote and local files - with reflink support (git)'
-arch=('i686' 'x86_64')
-url='https://github.com/WayneD/rsync/issues/153'
-license=('GPL3')
-depends=(
-  'acl'
-  'libacl.so'
-  'libxxhash.so'
-  'popt'
-  'xxhash'
-  'zstd'
-)
-optdepends=(
-  'python: for rrsync'
-)
-makedepends=('git' 'python-commonmark')
-provides=("$_pkgname")
-conflicts=(${provides[@]})
-backup=(
-  'etc/rsyncd.conf'
-  'etc/xinetd.d/rsync'
-)
-source=(
-  "$_pkgname"::"git+https://github.com/WayneD/rsync"
-  'https://github.com/WayneD/rsync-patches/raw/master/clone-dest.diff'
-  'https://github.com/WayneD/rsync-patches/raw/master/detect-renamed.diff'
-  'https://github.com/WayneD/rsync-patches/raw/master/detect-renamed-lax.diff'
-  'rsyncd.conf'
-)
-sha256sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  '733ccb571721433c3a6262c58b658253ca6553bec79c2bdd0011810bb4f2156b'
-)
+# Maintainer:
 
-pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --long --tags --exclude '*pre*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+## useful linkes
+# https://rsync.samba.org/
+# https://github.com/WayneD/rsync
+# https://github.com/WayneD/rsync-patches
+
+## options
+: ${_build_git:=true}
+
+[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
+
+## basic info
+_gitname="rsync"
+_pkgname="$_gitname-reflink"
+pkgname="$_pkgname${_pkgtype:-}"
+pkgver=3.2.7.r33.g2f9b963a
+pkgrel=1
+pkgdesc='A fast and versatile file copying tool for remote and local files - with reflink support'
+url='https://github.com/WayneD/rsync'
+license=('GPL-3.0-or-later')
+arch=('x86_64')
+
+# main package
+_main_package() {
+  depends=(
+    'libacl.so' # acl
+    'libxxhash.so' # xxhash
+    'openssl'
+    'popt'
+    'zstd'
+
+    ## implicit
+    #bash
+    #glibc
+    #lz4
+    #zlib
+  )
+  optdepends=(
+    'python: for rrsync'
+  )
+  makedepends=(
+    'git'
+    'python-commonmark'
+  )
+
+  provides=("$_pkgname=${pkgver%%.r*}")
+  conflicts=("$_pkgname")
+
+  backup=(
+    'etc/rsyncd.conf'
+    'etc/xinetd.d/rsync'
+  )
+
+  if [ "${_build_git::1}" != "t" ] ; then
+    _main_stable
+  else
+    _main_git
+  fi
+
+  source+=(
+    "$url-patches/raw/master/clone-dest.diff"
+    "$url-patches/raw/master/detect-renamed.diff"
+    "$url-patches/raw/master/detect-renamed-lax.diff"
+    'rsyncd.conf'
+  )
+  sha256sums+=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    '733ccb571721433c3a6262c58b658253ca6553bec79c2bdd0011810bb4f2156b'
+  )
 }
 
+# stable package
+_main_stable() {
+  : ${_pkgver:=${pkgver%%.r*}}
+
+  _pkgsrc="$_gitname"
+  source+=("$_pkgsrc"::"git+$url.git#tag=v${_pkgver:?}")
+  sha256sums+=('SKIP')
+
+  pkgver() {
+    echo "${_pkgver:?}"
+  }
+}
+
+# git package
+_main_git() {
+  provides=("$_pkgname=${pkgver%%.r*}")
+  conflicts=("$_pkgname")
+
+  _pkgsrc="$_gitname"
+  source+=("$_pkgsrc"::"git+$url.git")
+  sha256sums+=('SKIP')
+
+  pkgver() (
+    cd "$_pkgsrc"
+    git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
+      | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  )
+}
+
+# common functions
 prepare() {
-  cd "$srcdir/$_pkgname"
-  patch -Np1 -F100 -i "$srcdir/clone-dest.diff"
-  patch -Np1 -F100 -i "$srcdir/detect-renamed.diff"
-  patch -Np1 -F100 -i "$srcdir/detect-renamed-lax.diff"
+  apply-patch() {
+    printf '\nApplying patch %s\n' "$1"
+    patch -Np1 -F100 -i "$1"
+  }
+
+  cd "$_pkgsrc"
+
+  # patches
+  apply-patch "$srcdir/clone-dest.diff"
+  apply-patch "$srcdir/detect-renamed.diff"
+  apply-patch "$srcdir/detect-renamed-lax.diff"
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgsrc"
 
-  ./configure \
-    --prefix=/usr \
-    --disable-debug \
-    --with-rrsync \
-    --with-included-popt=no \
+  local _configure_options=(
+    --prefix=/usr
+    --enabled-ipv6
+    --disable-debug
+    --with-rrsync
+    --with-included-popt=no
     --with-included-zlib=no
+  )
+
+  ./configure "${_configure_options[@]}"
   make
 }
 
 check() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgsrc"
   make test
 }
 
-
 package() {
-  cd "$srcdir/$_pkgname"
-
+  cd "$_pkgsrc"
   make DESTDIR="$pkgdir" install
-  install -Dm0644 ../rsyncd.conf "$pkgdir/etc/rsyncd.conf"
-  install -Dm0644 packaging/lsb/rsync.xinetd "$pkgdir/etc/xinetd.d/rsync"
-  install -Dm0644 packaging/systemd/rsync.service "$pkgdir/usr/lib/systemd/system/rsyncd.service"
-  install -Dm0644 packaging/systemd/rsync.socket "$pkgdir/usr/lib/systemd/system/rsyncd.socket"
-  install -Dm0644 packaging/systemd/rsync@.service "$pkgdir/usr/lib/systemd/system/rsyncd@.service"
-  install -Dm0755 support/rrsync "$pkgdir/usr/lib/rsync/rrsync"  
+
+  install -Dm644 \
+    "$srcdir/rsyncd.conf" \
+    "$pkgdir/etc/rsyncd.conf"
+
+  install -Dm644 \
+    "packaging/lsb/rsync.xinetd" \
+    "$pkgdir/etc/xinetd.d/rsync"
+
+  install -Dm644 \
+    "packaging/systemd/rsync.service" \
+    "$pkgdir/usr/lib/systemd/system/rsyncd.service"
+
+  install -Dm644 \
+    "packaging/systemd/rsync.socket" \
+    "$pkgdir/usr/lib/systemd/system/rsyncd.socket"
+
+  install -Dm644 \
+    "packaging/systemd/rsync@.service" \
+    "$pkgdir/usr/lib/systemd/system/rsyncd@.service"
 }
+
+# execute
+_main_package
