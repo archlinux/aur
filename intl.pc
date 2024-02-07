@@ -1,0 +1,13 @@
+prefix=@PREFIX@
+exec_prefix=@PREFIX@
+libdir=@PREFIX@/lib
+includedir=@PREFIX@/include
+
+Name: intl
+Description: Provides native language support to programs
+Version: @VERSION@
+
+Libs: -L${libdir} -lintl
+Libs.private: -liconv
+Requires.private:
+Cflags: -I${includedir}
