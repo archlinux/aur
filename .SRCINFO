@@ -1,0 +1,15 @@
+pkgbase = rustpython
+	pkgdesc = A Python Interpreter written in Rust
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/RustPython/RustPython
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = rust
+	provides = rustpython
+	conflicts = rustpython
+	source = rustpython-0.3.0.tar.gz::https://github.com/RustPython/RustPython/archive/refs/tags/0.3.0.tar.gz
+	b2sums = 1f6f6c10a40feec5f6dc1ecb4a83cebb4b565b798c0bcaa539c4cd6cae38542dfd6abba3f3dc46f74d03f73ca45a8ecd500654adca93c13d985afa34d3afe043
+
+pkgname = rustpython
