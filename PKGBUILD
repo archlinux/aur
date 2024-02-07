@@ -1,7 +1,7 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 pkgname=mmdebstrap
 pkgver=1.3.8
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="create a Debian chroot"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=(
 	'debian-archive-keyring: Debian PKI support'
 	'ubuntu-keyring: Ubuntu PKI support'
 	'qemu-user-static: foreign-architecture support'
-	'binfmt-qemu-static-all-arch: foreign-architecture support'
+	'qemu-user-static-binfmt: foreign-architecture support'
 	'arch-test: foreign-architecture support')
 provides=()
 conflicts=()
