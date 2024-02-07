@@ -9,7 +9,7 @@ url="https://github.com/ncarlier/${pkgname}"
 license=("MIT")
 makedepends=("git" "go")
 backup=("etc/default/${pkgname}")
-source=("${pkgname}::git+${url}"
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}.service"
         "${pkgname}.user.service")
 sha256sums=('SKIP'
@@ -18,7 +18,6 @@ sha256sums=('SKIP'
 
 prepare() {
     cd "${pkgname}"
-    git checkout "v${pkgver}"
 
     echo >> "etc/default/${pkgname}.env"
     echo "# You can omit the script extension. If you do, webhookd will search by default for a .sh file. " >> "etc/default/${pkgname}.env"

@@ -8,7 +8,7 @@ pkgbase = webhookd
 	makedepends = git
 	makedepends = go
 	backup = etc/default/webhookd
-	source = webhookd::git+https://github.com/ncarlier/webhookd
+	source = webhookd::git+https://github.com/ncarlier/webhookd.git#tag=v1.18.0
 	source = webhookd.service
 	source = webhookd.user.service
 	sha256sums = SKIP
