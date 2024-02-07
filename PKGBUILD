@@ -42,7 +42,7 @@ build() {
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
-    #_ensure_local_nvm
+    _ensure_local_nvm
     gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
@@ -53,9 +53,9 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    #npm install
-    #npm add ansi-styles
-    #npm run build
+    npm install
+    npm add ansi-styles
+    npm run build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
