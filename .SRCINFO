@@ -1,7 +1,7 @@
 pkgbase = kde-material-you-colors
 	pkgdesc = Automatic Material You Colors Generator from your wallpaper for the Plasma Desktop
 	pkgver = 1.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/luisbocanegra/kde-material-you-colors
 	arch = x86_64
 	license = GPL3

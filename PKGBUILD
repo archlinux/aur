@@ -1,6 +1,6 @@
 pkgname=kde-material-you-colors
 pkgver=1.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Automatic Material You Colors Generator from your wallpaper for the Plasma Desktop"
 arch=('x86_64')
 url="https://github.com/luisbocanegra/kde-material-you-colors"
@@ -17,7 +17,7 @@ build() {
   python -m build --wheel --no-isolation
   # plasmoid & screenshot helper
   cmake -B build -S . \
-    -DINSTALL_PLASMOID=ON -DPACKAGE_PLASMOID=ON
+    -DINSTALL_PLASMOID=ON
   cmake --build build
 }
 
