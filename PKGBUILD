@@ -1,5 +1,5 @@
-# Maintainer: sukanka <su975853527 at gmail dot com>
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Maintainer: contributor <su975853527 at gmail dot com>
 pkgname=gstarcad-bin
 pkgver=24.1
 _subver=sp1
