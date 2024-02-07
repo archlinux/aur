@@ -1,21 +1,23 @@
 pkgbase = compiz
 	pkgdesc = Composite manager for Aiglx and Xgl, with plugins and CCSM
 	pkgver = 0.9.14.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://launchpad.net/compiz
 	arch = i686
 	arch = x86_64
-	license = GPL
-	license = LGPL
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
 	license = MIT
 	makedepends = boost
 	makedepends = cmake
 	makedepends = cython
 	makedepends = intltool
+	makedepends = python-setuptools
 	depends = boost-libs
 	depends = fuse2
 	depends = glibmm
 	depends = glu
+	depends = libnotify
 	depends = libwnck3
 	depends = libxslt
 	depends = metacity
@@ -24,13 +26,13 @@ pkgbase = compiz
 	depends = python-gobject
 	depends = xorg-server
 	optdepends = xorg-xprop: grab various window properties for use in window matching rules
-	provides = ccsm=0.9.14.2
-	provides = compiz-bcop=0.9.14.2
-	provides = compiz-core=0.9.14.2
-	provides = compiz-plugins-extra=0.9.14.2
-	provides = compiz-plugins-main=0.9.14.2
-	provides = compizconfig-python=0.9.14.2
-	provides = libcompizconfig=0.9.14.2
+	provides = ccsm=0.9.14
+	provides = compiz-bcop=0.9.14
+	provides = compiz-core=0.9.14
+	provides = compiz-plugins-extra=0.9.14
+	provides = compiz-plugins-main=0.9.14
+	provides = compizconfig-python=0.9.14
+	provides = libcompizconfig=0.9.14
 	conflicts = ccsm
 	conflicts = compiz-bcop
 	conflicts = compiz-core
@@ -41,7 +43,7 @@ pkgbase = compiz
 	conflicts = compizconfig-python
 	conflicts = libcompizconfig
 	conflicts = simple-ccsm
-	source = https://launchpad.net/compiz/0.9.14/0.9.14.2/+download/compiz-0.9.14.2.tar.xz
+	source = compiz-0.9.14.2.tar.xz::https://launchpad.net/compiz/0.9.14/0.9.14.2/+download/compiz-0.9.14.2.tar.xz
 	source = focus-prevention-disable.patch
 	source = gtk-extents.patch
 	source = reverse-unity-config.patch
