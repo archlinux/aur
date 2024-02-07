@@ -1,7 +1,7 @@
 pkgbase = python-polyfactory
 	pkgdesc = Simple and powerful factories for mock data generation
 	pkgver = 2.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/litestar-org/polyfactory
 	arch = any
 	license = MIT
