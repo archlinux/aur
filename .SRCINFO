@@ -1,15 +1,15 @@
 pkgbase = ytt-bin
 	pkgdesc = YAML templating tool that works on YAML structure instead of text
-	pkgver = 0.47.0
-	pkgrel = 5
+	pkgver = 0.48.0
+	pkgrel = 1
 	url = https://carvel.dev/ytt
 	arch = x86_64
 	arch = aarch64
 	license = apache-2.0
 	provides = ytt
-	source_x86_64 = ytt-v0.47.0::https://github.com/carvel-dev/ytt/releases/download/v0.47.0/ytt-linux-amd64
-	sha256sums_x86_64 = de2dd0a659fd12b2d80e00fa2a4a9316db67e0372e79c3bf48586ea53201180e
-	source_aarch64 = ytt-v0.47.0::https://github.com/carvel-dev/ytt/releases/download/v0.47.0/ytt-linux-arm64
-	sha256sums_aarch64 = f12dc884af6be46a56c4233cbe456e90d8082d4699c0412d4adfaaae68712f4d
+	source_x86_64 = ytt-v0.48.0::https://github.com/carvel-dev/ytt/releases/download/v0.48.0/ytt-linux-amd64
+	sha256sums_x86_64 = 090dc914c87e5ba5861e37f885f12bac3b15559c183c30d4af2e63ccab03d5f9
+	source_aarch64 = ytt-v0.48.0::https://github.com/carvel-dev/ytt/releases/download/v0.48.0/ytt-linux-arm64
+	sha256sums_aarch64 = 156ba28cd605e126a2f7746a285a8298dd68f08d5e201a0b5a33ae6cc21b9c96
 
 pkgname = ytt-bin
