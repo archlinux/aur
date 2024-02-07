@@ -71,12 +71,12 @@ md5sums=('ca9e2ceb352c70c99aa0defda2b9075a'
          '6dff05fdc3dec8b4461cd87ad115814c'
          'a8c81c4a32e7b6a908847a0ac7536ed1'
          'ff9e1a8aa228a442be46b41ceb0b9e42'
-         'c94eeb90e904a4ea536652d078bcbdd9')
+         'be2936fec6378052f466a4dd320edd9e')
 sha256sums=('d44069fa0e10fda9d91c79c5a74db1b26926c60b88a39553398a1c79b2ae412f'
             '22d84d09399fb89925c006b0c17a4b80d56c7ba4f60a27e4c206d6280ef6b064'
             'd7224d12bbdfb40506b9c7dd3492fa628505e498eeb146561c1f5bccfc876022'
             'b6166a32a57a006181b3951dc83b3dbbbffebd11bc57983e6dc2a7d341c26f97'
-            'e2bb0c33d2630ce01fac749b24dd624c9211f67d3980e2de796ee1f5dff81c4c')
+            'fac96f16d9a497e3107332a33cbda40a28ea5d316cf2d3faf8ce3048cf611929')
 
 _g_uid='uucp'
 _g_gid='uucp'
