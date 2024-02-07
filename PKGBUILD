@@ -1,6 +1,7 @@
 # Maintainer: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
 # Maintainer: Truocolo <truocolo@aol.com>
 
+_git=false
 _py="python"
 _pkg="pgpgram"
 _Pkg="PGPgram"
@@ -31,20 +32,31 @@ optdepends=(
   'youtube-dl'
 )
 makedepends=(
-  # git
   "${_py}-setuptools"
 )
+[[ "${_git}" == true ]] && \
+  makedepends+=(
+    'git'
+  )
 provides=(
   "${_pkgname}=${pkgver}"
 )
-source=(
-  # "${_pkg}-${pkgver}::git+${url}.git#tag=${pkgver}"
-  "${_pkg}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
-)
-sha256sums=(
-  # 'SKIP'
-  "da046d7c56c3af0ff1d9e38c9ba9fff77b066fe46412c6d985b1196c7b15685f"
-)
+source=()
+sha256sums=()
+[[ "${_git}" == true ]] && \
+  source+=(
+    "${_pkg}-${pkgver}::git+${url}.git#tag=${pkgver}"
+  ) && \
+  sha256sums+=(
+    'SKIP'
+  )
+[[ "${_git}" == false ]] && \
+  source+=(
+    "${_pkg}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+  ) && \
+  sha256sums+=(
+    "da046d7c56c3af0ff1d9e38c9ba9fff77b066fe46412c6d985b1196c7b15685f"
+  )
 
 package() {
   cd \
