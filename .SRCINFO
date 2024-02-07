@@ -1,7 +1,7 @@
 pkgbase = python-langchain-core
 	pkgdesc = Building applications with LLMs through composability
 	pkgver = 0.1.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/langchain-ai/langchain
 	arch = any
 	license = MIT
@@ -13,7 +13,6 @@ pkgbase = python-langchain-core
 	depends = python-anyio
 	depends = python-jsonpatch
 	depends = python-langsmith
-	depends = python-langchain
 	depends = python-packaging
 	depends = python-pydantic
 	depends = python-yaml

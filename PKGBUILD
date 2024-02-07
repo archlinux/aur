@@ -3,15 +3,14 @@
 pkgname=python-langchain-core
 _module='langchain-core'
 _src_folder='langchain_core-0.1.18'
-pkgver='0.1.18'
-pkgrel=1
+pkgver=0.1.18
+pkgrel=2
 pkgdesc="Building applications with LLMs through composability"
 url="https://github.com/langchain-ai/langchain"
 depends=(python
     python-anyio
     python-jsonpatch
     python-langsmith
-    python-langchain
     python-packaging
     python-pydantic
     python-yaml
