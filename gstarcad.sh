@@ -33,6 +33,5 @@ _display_server_type=`echo ${WAYLAND_DISPLAY}`
 if [ "${_display_server_type}" = "*wayland*" ]; then
 	export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${_APPDIR}/systemlibs/wayland"
 fi
-cd "${_APPDIR}" || exit
-exec "${_RUNNAME}" "$@" | exit
-
+cd "${_APPDIR}"
+exec "${_RUNNAME}" "$@" || exit $?

@@ -3,55 +3,31 @@
 pkgname=gstarcad-bin
 pkgver=24.1
 _subver=sp1
-pkgrel=1
+pkgrel=2
 pkgdesc="浩辰 CAD.Free trial for 30 days"
 arch=(
     'aarch64'
     'x86_64'
 )
-license=('custom')
+license=('LicenseRef-custom')
 url="https://www.gstarcad.com/cad_linux"
 _downurl="https://official-cn.gstarcad.cn"
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 options=('!strip')
 depends=(
-    'libxxf86vm'
-    'libsm'
     'hicolor-icon-theme'
-    'libxkbcommon'
-    'xcb-util-image'
-    'xdg-utils'
-    'xcb-util-keysyms'
-    'fontconfig'
-    'libcups'
-    'xcb-util-wm'
-    'libice'
-    'xcb-util-renderutil'
     'qt5-base'
-    'freetype2'
-    'libxfixes'
-    'libxext'
-    'libxcb'
-    'expat'
-    'mesa'
-    'libxdamage'
-    'libx11'
-    'systemd-libs'
-    'libxshmfence'
     'qt5-svg'
-    'libxkbcommon-x11'
-    'libglvnd'
-    'libdrm'
-    'openssl-1.1'
-    'libpng12'
     'curl'
     'sqlite'
+    'openssl-1.1'
+    'libpng12'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_downurl}/linux/2024/${_subver}/deb/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_downurl}/linux/2024/${_subver}/deb/${pkgname%-bin}_${pkgver}_amd64.deb")
 source=("${pkgname%-bin}.sh")
-sha256sums=('95c9dc84df4bf3dc61400bf34e8fc2b36bf1b5e8d92496f3f15adc7576390c2f')
+sha256sums=('67d297b531dcc3b43061413944a2d425e2116d4527c7dd54ccf78a38cc90997e')
 sha256sums_aarch64=('bee290f7578d2c7ede25551b8ebf978834812d27fb1868dd8f800ae0f85656dc')
 sha256sums_x86_64=('cac879546a1ad8aabad0246d95ea25f77b628a0879392f570269f50882a8e8b5')
 build(){
