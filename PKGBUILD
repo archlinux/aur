@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PMA
-_pkgver=1.2-2
+_pkgver=1.2-3
 pkgname=r-${_pkgname,,}
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='Penalized Multivariate Analysis'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('34f2a4236b5c9793cfea2c6367c61146687c277749dbbff0524425a8f335bdb9')
+sha256sums=('e7572f82c159f34058fdec4c8158d394d6cf68b7978953c8893315e298cc6d06')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
