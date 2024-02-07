@@ -2,8 +2,8 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 _base=deepl
 pkgname=python-${_base}
-pkgver=1.16.1
-pkgrel=2
+pkgver=1.17.0
+pkgrel=1
 pkgdesc="Python library for the DeepL API"
 arch=(any)
 url="https://github.com/${_base}com/${_base}-python"
