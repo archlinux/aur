@@ -2,53 +2,72 @@
 
 pkgname=bicep
 pkgver=0.24.24
-pkgrel=1
-pkgdesc='A declarative language for describing and deploying Azure resources'
+_commit=5646341b0c9e86c60622b621d4cefa0195fcb1fd
+pkgrel=2
+pkgdesc="A declarative language for describing and deploying Azure resources"
 arch=(x86_64)
-url='https://github.com/Azure/bicep'
+url="https://github.com/Azure/bicep"
 license=(MIT)
+_dotnet_version=7.0
 depends=(
-  dotnet-runtime-7.0
+  "dotnet-runtime-$_dotnet_version"
   gcc-libs
   glibc
 )
-makedepends=(dotnet-sdk-7.0)
-checkdepends=(git)
+makedepends=(
+  "dotnet-sdk-$_dotnet_version"
+  git
+)
+source=("git+$url.git#commit=$_commit")
+sha256sums=('SKIP')
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4be0e7c779bd84464b9e6df97ef7c96d2e5dfe3ca3dee22575f32cb2c84ecc2a')
-
-_archive="$pkgname-$pkgver"
+_archive="$pkgname"
 
 prepare() {
   cd "$_archive"
 
-  printf '{"version": "%s"}' "$pkgver" > version.json
+  export NUGET_PACKAGES="$PWD/nuget"
+  export DOTNET_NOLOGO=true
+  export DOTNET_CLI_TELEMETRY_OPTOUT=true
+  dotnet restore --locked-mode src/Bicep.Cli
+  dotnet restore --locked-mode src/Bicep.Cli.IntegrationTests
+  dotnet restore --locked-mode src/Bicep.Cli.UnitTests
+
+  # I couldn't find any way of silencing the very verbose warnings from
+  # Microsoft.SourceLink other than to set the remote to a proper URL..
+  git remote set-url origin "$url"
 }
 
 build() {
   cd "$_archive"
 
-  export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
-  export DOTNET_CLI_TELEMETRY_OPTOUT=true
-
   export NUGET_PACKAGES="$PWD/nuget"
-
+  export DOTNET_NOLOGO=true
+  export DOTNET_CLI_TELEMETRY_OPTOUT=true
   dotnet publish \
-    --configuration Release \
-    --framework net7.0 \
-    --no-self-contained \
-    --output lib \
+    --no-restore \
+    --framework "net$_dotnet_version" \
     --runtime linux-x64 \
-    src/Bicep.Cli/
+    --no-self-contained \
+    --configuration release \
+    --output lib \
+    src/Bicep.Cli
 }
 
 check() {
   cd "$_archive"
 
-  git init --quiet
-  dotnet test ./src/Bicep.Cli.IntegrationTests
-  dotnet test ./src/Bicep.Cli.UnitTests
+  export NUGET_PACKAGES="$PWD/nuget"
+  export DOTNET_NOLOGO=true
+  export DOTNET_CLI_TELEMETRY_OPTOUT=true
+  dotnet test \
+    --no-restore \
+    --framework "net$_dotnet_version" \
+    ./src/Bicep.Cli.IntegrationTests
+  dotnet test \
+    --no-restore \
+    --framework "net$_dotnet_version" \
+    ./src/Bicep.Cli.UnitTests
 }
 
 package() {
@@ -56,8 +75,8 @@ package() {
 
   local pkgnum=${pkgver:0:1}
 
-  install -dm755 "$pkgdir/usr/lib/$pkgname-$pkgnum/"
-  cp --archive --no-preserve=ownership lib/. "$pkgdir/usr/lib/$pkgname-$pkgnum/"
+  install -dm755 "$pkgdir/usr/lib/$pkgname-$pkgnum"
+  cp --archive -t "$pkgdir/usr/lib/$pkgname-$pkgnum" lib/*
 
   install -dm755 "$pkgdir/usr/bin"
   ln -s "/usr/lib/$pkgname-$pkgnum/bicep" "$pkgdir/usr/bin/bicep"
