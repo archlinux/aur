@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=aws
-_pkgver=2.5-4
+_pkgver=2.5-5
 pkgname=r-${_pkgname,,}
-pkgver=2.5.4
+pkgver=2.5.5
 pkgrel=1
 pkgdesc='Adaptive Weights Smoothing'
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6d93741e649cc7bddcdccc0fe87f02cb8b79d7e70a95e60891c58b49b51d49ef')
+sha256sums=('b27cb2795cb59592d474cfaf49a21657a8878404da4f01c556f7323e953b4c5b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
