@@ -1,5 +1,5 @@
-# Maintainer:  twa022 <twa022 at gmail dot com>
-
+# Maintainer: Sich <little_sich@tuta.io>
+# Contributor: twa022 <twa022 at gmail dot com>
 _pkgname=baobab
 pkgname=${_pkgname}-gtk3
 pkgver=41.0
@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A graphical directory tree analyzer (last GTK3 version)"
 url="https://wiki.gnome.org/Apps/DiskUsageAnalyzer"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('dconf' 'gtk3' 'gsettings-desktop-schemas' 'librsvg' 'libhandy')
 makedepends=('vala' 'gobject-introspection' 'yelp-tools' 'appstream-glib' 'meson')
 provides=("${_pkgname}=${pkgver}")
