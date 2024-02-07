@@ -1,3 +1,4 @@
 backrest
 pkg
 src
+*.pkg.tar.zst
