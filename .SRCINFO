@@ -1,0 +1,19 @@
+pkgbase = android-aarch64-ncurses
+	pkgdesc = System V Release 4.0 curses emulation library (android)
+	pkgver = 6.4_20240203
+	pkgrel = 1
+	url = https://invisible-island.net/ncurses/ncurses.html
+	arch = any
+	license = MIT
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://invisible-mirror.net/archives/ncurses/current/ncurses-6.4-20240203.tgz
+	source = 0001-Disable-lib-symlinks.patch
+	sha256sums = 33a79f39c0dc6a1f0fd16e711ea67dbe80cdb62488ad721a8594785bb5084b70
+	sha256sums = ff16e8e4418660d7eea17caa2678d9a962f65ed15d523ce906e55d616eb89b9d
+
+pkgname = android-aarch64-ncurses
