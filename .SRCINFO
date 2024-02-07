@@ -1,6 +1,6 @@
 pkgbase = python-sphinx-thebe
 	pkgdesc = Integrate interactive code blocks into your documentation with Thebe and Binder
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://sphinx-thebe.readthedocs.io
 	arch = any
@@ -14,8 +14,9 @@ pkgbase = python-sphinx-thebe
 	makedepends = python-sphinx_design
 	makedepends = python-sphinx-book-theme
 	makedepends = python-myst-nb
-	source = https://files.pythonhosted.org/packages/source/s/sphinx_thebe/sphinx_thebe-0.3.0.tar.gz
-	md5sums = 6f5d8cd637d71999a3c231897281e865
+	makedepends = python-matplotlib
+	source = https://files.pythonhosted.org/packages/source/s/sphinx_thebe/sphinx_thebe-0.3.1.tar.gz
+	md5sums = 85d81d6ad0ce49b598e56ba930f708ec
 
 pkgname = python-sphinx-thebe
 	depends = python-sphinx>=4

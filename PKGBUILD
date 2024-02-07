@@ -3,7 +3,7 @@ pkgbase=python-sphinx-thebe
 _pname=${pkgbase#python-}
 _pyname=${_pname/-/_}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Integrate interactive code blocks into your documentation with Thebe and Binder"
 arch=('any')
@@ -15,11 +15,12 @@ makedepends=('python-hatch-vcs'
              'python-sphinx-copybutton'
              'python-sphinx_design'
              'python-sphinx-book-theme'
-             'python-myst-nb')
+             'python-myst-nb'
+             'python-matplotlib')
 checkdepends=('python-pytest-regressions'
               'python-beautifulsoup4')     # myst-nb, sphinx-copybutton, sphinx_design already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('6f5d8cd637d71999a3c231897281e865')
+md5sums=('85d81d6ad0ce49b598e56ba930f708ec')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
