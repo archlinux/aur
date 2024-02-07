@@ -2,7 +2,7 @@
 # Maintainer: Randy Fay <randy at randyfay.com>
 
 pkgname='ddev-edge-bin'
-pkgver=1.22.6
+pkgver=1.22.7
 pkgrel=1
 pkgdesc='DDEV: a local web development environment (edge)'
 url='https://github.com/ddev/ddev'
@@ -13,11 +13,11 @@ conflicts=('ddev')
 depends=('docker' 'mkcert')
 optdepends=('bash-completion: subcommand completion support')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ddev/ddev/releases/download/v1.22.6/ddev_linux-arm64.v1.22.6.tar.gz")
-sha256sums_aarch64=('2fd3efd64950abb731a59e6606d45d4378e83e6962e661aaef3918c8c1360ea3')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ddev/ddev/releases/download/v1.22.7/ddev_linux-arm64.v1.22.7.tar.gz")
+sha256sums_aarch64=('66ae9aad092d3c7b4831615ce2186e70b55749b9dfc4cb6bb00940bd3c131aba')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ddev/ddev/releases/download/v1.22.6/ddev_linux-amd64.v1.22.6.tar.gz")
-sha256sums_x86_64=('9f09ace247faa65fc479a1221d3f7ef08c66c265c03b2467593d0176f1087754')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ddev/ddev/releases/download/v1.22.7/ddev_linux-amd64.v1.22.7.tar.gz")
+sha256sums_x86_64=('03cd335dd1e6ef0c766dc96a45376ea75f3b2552f1d354ce4fb8f2ff76c0aa7a')
 
 package() {
   # bin
