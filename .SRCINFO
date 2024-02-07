@@ -9,6 +9,7 @@ pkgbase = uwsgitop-git
 	makedepends = git
 	makedepends = python2-distribute
 	depends = python2
+	source = git+https://github.com/unbit/uwsgitop.git
+	b2sums = SKIP
 
 pkgname = uwsgitop-git
-
