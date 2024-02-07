@@ -1,10 +1,10 @@
 pkgbase = brisqi-bin
 	pkgdesc = Offline-first personal Kanban app.
 	pkgver = 0.11.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://brisqi.com/
 	arch = x86_64
-	license = custom:commercial
+	license = LicenseRef-custom
 	depends = electron25
 	depends = hicolor-icon-theme
 	provides = brisqi=0.11.1

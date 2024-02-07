@@ -3,12 +3,12 @@ pkgname=brisqi-bin
 _pkgname=Brisqi
 pkgver=0.11.1
 _electronversion=25
-pkgrel=2
+pkgrel=3
 pkgdesc="Offline-first personal Kanban app."
 arch=('x86_64')
 url="https://brisqi.com/"
 _ghurl="https://github.com/Brisqi/releases"
-license=('custom:commercial')
+license=('LicenseRef-custom')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
@@ -26,7 +26,7 @@ sha256sums=('1861484c91a4222861089b1da9d850c1d6c8b68a1ea47cc823768ca7792196b2'
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
