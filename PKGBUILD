@@ -10,7 +10,7 @@
 # for when that actually happens. PKGREL=0 because not-yet-functional.
 
 pkgname=zed-editor
-pkgver=0.119.18
+pkgver=0.120.6
 pkgrel=0
 pkgdesc='high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
@@ -24,18 +24,27 @@ makedepends=(cargo
              libdispatch)
 _archive="zed-$pkgver"
 source=("$_url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('f39e4874eb5c6d18a5c75b5d8cfe37ff62f480635009aac1e7a4957c29069c8e')
+sha256sums=('ae1f5d944c5fb4d5ea7c4a98759c7349958f93f542fa0f1fe4e44ed79d87095f')
 
 prepare() {
 	cd "$_archive"
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
-build() {
+_srcenv() {
 	cd "$_archive"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+}
+
+build() {
+	_srcenv
 	cargo build --frozen --all-features
+}
+
+check() {
+	_srcenv
+	cargo test --frozen --all-features
 }
 
 package() {
