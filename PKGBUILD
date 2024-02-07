@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0
+#
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Axel Navarro < navarroaxel at gmail >
@@ -12,7 +14,9 @@ pkgname=nodejs-lts-gallium
 pkgver=16.13.0
 pkgrel=1
 pkgdesc='Evented I/O for V8 javascript'
-arch=('x86_64')
+arch=(
+  'x86_64'
+  'arm')
 url='https://nodejs.org/'
 license=('MIT')
 depends=('openssl' 'zlib' 'icu' 'libuv' 'libnghttp2' 'c-ares') # 'http-parser' 'v8')
@@ -63,4 +67,4 @@ package() {
     "$pkgdir"/usr/share/licenses/nodejs/LICENSE
 }
 
-# vim:set ts=2 sw=2 et:
+# vim:set sw=2 sts=-1 et:
