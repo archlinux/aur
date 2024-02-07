@@ -2,17 +2,18 @@
 
 pkgname='cpan2aur2git'
 pkgver='0.0.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="CPAN2AUR wrapper"
 arch=('any')
-url='https://github.com/bence98/cpan2aur2git'
+url="https://github.com/bence98/${pkgname}"
 license=('GPL-3.0-or-later')
 options=('!emptydirs')
-depends=()
-source=("$pkgname-$pkgver::git+https://github.com/bence98/cpan2aur2git.git#tag=v0.0.1")
+depends=('perl-cpanplus-dist-arch' 'python-requests')
+optdepends=('postfix: for receiving mail for automatic processing with cpanbot-mail')
+source=("git+${url}#tag=v${pkgver}")
 md5sums=('SKIP')
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 	make DESTDIR="$pkgdir/" install
 }
