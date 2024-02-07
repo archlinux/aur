@@ -2,9 +2,9 @@
 
 _pkgname="whisper"
 pkgname="$_pkgname-git"
-pkgver=2023.09.18.r1.gb38a1f2
+pkgver=2023.11.17.r2.gba3f3cd5
 pkgrel=1
-pkgdesc="General-purpose speech recognition model by OpenAI"
+pkgdesc="General-purpose speech-recognition model by OpenAI"
 url="https://github.com/openai/whisper"
 license=('MIT')
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   'triton: CUDA accelerated filters'
 )
 
-provides=("$_pkgname")
+provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
@@ -39,7 +39,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' \
+  git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
     | sed -E 's/^v([0-9]{4})([0-9]{2})([0-9]{2})-/\1.\2.\3-r/;s/-/./g'
 }
 
@@ -54,7 +54,7 @@ package() {
   )
 
   cd "$_pkgsrc"
-  python -m installer --destdir="${pkgdir:?}" dist/*.whl
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 LICENSE -t "${pkgdir:?}/usr/share/licenses/${pkgname:?}"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
