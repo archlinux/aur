@@ -1,17 +1,16 @@
-# system requirements: pandoc (>= 1.12.3)
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RCAS
-_pkgver=1.28.2
+_pkgver=1.28.3
 pkgname=r-${_pkgname,,}
-pkgver=1.28.2
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='RNA Centric Annotation System'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgdesc="RNA Centric Annotation System"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
-  r
+  pandoc
   r-biocgenerics
   r-biostrings
   r-bsgenome
@@ -24,7 +23,6 @@ depends=(
   r-genomicfeatures
   r-genomicranges
   r-ggplot2
-  r-ggseqlogo
   r-gprofiler2
   r-iranges
   r-knitr
@@ -38,21 +36,23 @@ depends=(
   r-rsqlite
   r-rtracklayer
   r-s4vectors
-  pandoc
+  r-seqlogo
 )
 optdepends=(
+  r-biocmanager
   r-covr
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('db629b5c513b5f50a34327b67cb722167a88961e8738f100271bbd31996e34a6')
+md5sums=('ed2c97bacd70c083df386e7df14d0c11')
+b2sums=('c6c3f45c9d79bc3d71c67c2349fa1a7b85bb23d3322bd1036c7d60f41e3b00c5f03cd696d2d3076452aed0c0dc419c8d9df0a5593b03f9482160f7f53e6d0beb')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
