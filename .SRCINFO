@@ -10,6 +10,7 @@ pkgbase = emacs-idris-mode-git
 	depends = emacs
 	provides = emacs-idris-mode
 	replaces = emacs-idris-mode
+	source = git+https://github.com/idris-hackers/idris-mode
+	b2sums = SKIP
 
 pkgname = emacs-idris-mode-git
-
