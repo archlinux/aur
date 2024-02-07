@@ -1,21 +1,21 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-parse-method-signatures'
-pkgver='1.003016'
+pkgver='1.003019'
 pkgrel='1'
 pkgdesc="Perl6 like method signature parser"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-class-load>=0.19' 'perl-list-moreutils>=0.20' 'perl-moose' 'perl-moosex-traits>=0.06' 'perl-moosex-types>=0.17' 'perl-moosex-types-structured' 'perl-ppi>=1.203' 'perl-namespace-clean>=0.10')
-makedepends=('perl-aliased')
-checkdepends=('perl-test-differences' 'perl-test-exception')
-url='http://search.mcpan.org/dist/Parse-Method-Signatures'
-source=('http://search.mcpan.org/CPAN/authors/id/I/IL/ILMARI/Parse-Method-Signatures-1.003016.tar.gz')
-md5sums=('903ec11316e55aee531fc2475ce76bac')
-sha512sums=('ff0b2bcf91ba28a8646f4958e0aa2f77c88f7bf754c0971f5aa8e2056ba714049cdf0ffdb9eafceacee78f07564037920c5718174c5b505b1a4e0cd53739fa52')
-_distdir="Parse-Method-Signatures-1.003016"
+depends=('perl-class-load>=0.19' 'perl-list-moreutils>=0.20' 'perl-moose>=0' 'perl-moosex-traits>=0.06' 'perl-moosex-types>=0.17' 'perl-moosex-types-structured>=0' 'perl-ppi>=1.203' 'perl-namespace-clean>=0.10')
+makedepends=('perl-aliased>=0')
+checkdepends=('perl-test-differences>=0' 'perl-test-exception>=0')
+url='https://metacpan.org/release/Parse-Method-Signatures'
+source=('http://search.cpan.org/CPAN/authors/id/K/KE/KENTNL/Parse-Method-Signatures-1.003019.tar.gz')
+md5sums=('5236c145815db7001841ed8efb305c9f')
+sha512sums=('88caed3b2ed92b5d2bc972acc843a31a26f4c76fc6d9782a05176964e4148b5e79e54010b371bf84988e804eb973937b7b591c2b5d50d0ec3be5d91fd3af51ec')
+_distdir="Parse-Method-Signatures-1.003019"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -40,7 +40,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 

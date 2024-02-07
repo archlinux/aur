@@ -1,26 +1,25 @@
 pkgbase = perl-parse-method-signatures
 	pkgdesc = Perl6 like method signature parser
-	pkgver = 1.003016
+	pkgver = 1.003019
 	pkgrel = 1
-	url = http://search.mcpan.org/dist/Parse-Method-Signatures
+	url = https://metacpan.org/release/Parse-Method-Signatures
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	checkdepends = perl-test-differences
-	checkdepends = perl-test-exception
-	makedepends = perl-aliased
+	checkdepends = perl-test-differences>=0
+	checkdepends = perl-test-exception>=0
+	makedepends = perl-aliased>=0
 	depends = perl-class-load>=0.19
 	depends = perl-list-moreutils>=0.20
-	depends = perl-moose
+	depends = perl-moose>=0
 	depends = perl-moosex-traits>=0.06
 	depends = perl-moosex-types>=0.17
-	depends = perl-moosex-types-structured
+	depends = perl-moosex-types-structured>=0
 	depends = perl-ppi>=1.203
 	depends = perl-namespace-clean>=0.10
 	options = !emptydirs
-	source = http://search.mcpan.org/CPAN/authors/id/I/IL/ILMARI/Parse-Method-Signatures-1.003016.tar.gz
-	md5sums = 903ec11316e55aee531fc2475ce76bac
-	sha512sums = ff0b2bcf91ba28a8646f4958e0aa2f77c88f7bf754c0971f5aa8e2056ba714049cdf0ffdb9eafceacee78f07564037920c5718174c5b505b1a4e0cd53739fa52
+	source = http://search.cpan.org/CPAN/authors/id/K/KE/KENTNL/Parse-Method-Signatures-1.003019.tar.gz
+	md5sums = 5236c145815db7001841ed8efb305c9f
+	sha512sums = 88caed3b2ed92b5d2bc972acc843a31a26f4c76fc6d9782a05176964e4148b5e79e54010b371bf84988e804eb973937b7b591c2b5d50d0ec3be5d91fd3af51ec
 
 pkgname = perl-parse-method-signatures
-
