@@ -1,9 +1,10 @@
-# Maintainer: Frederik Schwan <freswa at archlinux dot org>
+# Maintainer: Sean Anderson <seanga2@gmail.com>
+# Contributor: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: Sebastian Bøe <sebastianbooe at gmail dot com>
 
 pkgname=chisel
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Constructing Hardware in a Scala Embedded Language'
 arch=('any')
 url='https://www.chisel-lang.org/'
@@ -11,14 +12,13 @@ license=('BSD')
 _java_version=11
 _scala_version=2.13
 depends=(
-	java-runtime=$_java_version
+	java-environment=$_java_version
 )
 optdepends=(
 	"verilator: for simulation"
 )
 makedepends=(
 	graphviz
-	java-environment=$_java_version
 	sbt
 )
 source=(
