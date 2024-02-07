@@ -1,6 +1,6 @@
 pkgbase = olivia-git
 	pkgdesc = Elegant Cloud Music Player for Linux Desktop
-	pkgver = 1.0.beta.r336.g4048134
+	pkgver = 1.2.r9.g4048134f
 	pkgrel = 1
 	url = https://github.com/keshavbhatt/olivia
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = olivia-git
 	depends = socat
 	depends = taglib
 	depends = wget
-	provides = olivia
+	provides = olivia=1.2
 	conflicts = olivia
 	source = olivia::git+https://github.com/keshavbhatt/olivia.git
 	sha256sums = SKIP
