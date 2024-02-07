@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 set -e
 _APPDIR=/opt/@appname@
 _RUNNAME="${_APPDIR}/bin/@runname@"

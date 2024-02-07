@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=serialportassistant-bin
 _pkgname=SerialPortAssistant
-pkgver=0.5.17
+pkgver=0.5.18
 pkgrel=1
 pkgdesc="A cross-platform serial port assistant.一个跨平台的串口助手"
 arch=("x86_64")
@@ -20,8 +20,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9cbbc1b6d92d3ca1d309f285ec291d005967213df239aac8b0735b4818c64c00'
-            '188630492eeef70242520d03097cf200ad1746b41de33f713f410139b6c6c82d')
+sha256sums=('0e3a9993bcae6873174c87fbae76c1cbdd9a1f62cc884100b79c76e268411fe1'
+            '050ebe2b50abe17e74c7f7dfb068b7c9460dbbafc62c9e87e047fb495840d3ba')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}-v${pkgver}|g" \
