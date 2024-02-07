@@ -1,0 +1,9 @@
+[Unit]
+Description=wscreensaver-bridge
+
+[Service]
+ExecStart=/usr/bin/wscreensaver-bridge
+Restart=always
+
+[Install]
+WantedBy=default.target
