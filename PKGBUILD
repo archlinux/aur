@@ -3,14 +3,14 @@
 pkgname=fav-git
 _pkgname="${pkgname%-git}"
 pkgver=v0.1.12.r1.g3cd2177
-pkgrel=1
+pkgrel=2
 pkgdesc='Back up your favorite bilibili resources with CLI'
 url="https://github.com/kingwingfly/${_pkgname}"
 license=('MIT')
 arch=('x86_64')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-bin")
-makedepends=('cargo' 'git')
+makedepends=('cargo' 'git' 'pkgconf')
 
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
