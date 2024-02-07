@@ -2,30 +2,29 @@
 _pkgname=popcorn-time
 pkgname=popcorn-fx-bin
 pkgver=0.7.5
-pkgrel=3
+pkgrel=4
 pkgdesc="A multi-platform torrent streaming client that includes an integrated media player with support for embedded devices such as the Raspberry PI."
 arch=("x86_64")
 url="https://github.com/yoep/popcorn-fx"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}" "${_pkgname}" "${_pkgname//_/ }")
 depends=(
-    'libxtst'
-    'libx11'
-    'java-runtime'
     'alsa-lib'
-    'libxrender'
     'openssl'
-    'libxext'
-    'libxi'
-    'freetype2'
-    'dbus'
+    'libxtst'
+    'libxrender'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}.deb"
+    "${pkgname%-bin}.sh"
 )
-sha256sums=('2227434d02ca074764ded5e5d3171ef2bcbde591ab5a38dc022ebb729b981a20')
+sha256sums=('2227434d02ca074764ded5e5d3171ef2bcbde591ab5a38dc022ebb729b981a20'
+            '9f777271af9d5284286d922527b946b989e32f83334aa01964a897a111b9ab14')
 build() {
+    sed -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|${_pkgname}|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.gz"
     sed "s|/opt/${_pkgname}/${_pkgname}|${pkgname%-bin}|g;s|/opt/${_pkgname}/${_pkgname}.png|${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
