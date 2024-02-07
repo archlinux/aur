@@ -3,7 +3,7 @@ pkgname=quasar-todo-bin
 _pkgname=Quasar-Todo
 pkgver=0.1.4
 _electronversion=22
-pkgrel=3
+pkgrel=4
 pkgdesc="Playing with Quasar CLI by making a simple to-do list"
 arch=('x86_64')
 url="https://github.com/spenserblack/quasar-todo"
@@ -26,11 +26,11 @@ source=(
 )
 sha256sums=('3f0bb12701d72751f5ad8937e09d9d5c3e0bb9fdfe998af0edb63203cb29d9a4'
             '0cadd467ba2b1f8ad00eb2c55c458c250d6f70a661a0aff1acb905777353c997'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
