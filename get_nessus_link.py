@@ -17,7 +17,7 @@ def main():
     url = None
     for download in data['props']['pageProps']['page']['downloads']:
         filename = download['file']
-        if filename.endswith('-fc34.x86_64.rpm'):
+        if filename.endswith('-fc38.x86_64.rpm'):
             url = f'https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/{download["id"]}/download?i_agree_to_tenable_license_agreement=true'
             break
 

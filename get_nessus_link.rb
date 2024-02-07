@@ -21,7 +21,7 @@ def get_link
   downloads = data['props']['pageProps']['page']['downloads']
   downloads.each do |download|
     filename = download['file']
-    if filename.end_with?('-fc34.x86_64.rpm')
+    if filename.end_with?('-fc38.x86_64.rpm')
       url = "https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/#{download['id']}/download?i_agree_to_tenable_license_agreement=true"
       break
     end
