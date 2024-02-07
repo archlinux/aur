@@ -1,0 +1,18 @@
+--- a/configure	2022-09-01 11:49:28.000000000 -0300
++++ b/configure	2024-02-07 20:19:44.424407373 -0300
+@@ -569,6 +569,7 @@
+ else
+   as_ln_s='cp -pR'
+ fi
++as_ln_s='cp -pR'
+ rm -f conf$$ conf$$.exe conf$$.dir/conf$$.file conf$$.file
+ rmdir conf$$.dir 2>/dev/null
+ 
+@@ -8336,6 +8337,7 @@
+ else
+   as_ln_s='cp -pR'
+ fi
++as_ln_s='cp -pR'
+ rm -f conf$$ conf$$.exe conf$$.dir/conf$$.file conf$$.file
+ rmdir conf$$.dir 2>/dev/null
+ 
