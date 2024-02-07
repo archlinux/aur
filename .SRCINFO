@@ -1,21 +1,21 @@
 pkgbase = commas-bin
 	pkgdesc = A hackable, pluggable terminal, and also a command runner.
-	pkgver = 0.29.2
-	pkgrel = 3
+	pkgver = 0.30.0
+	pkgrel = 1
 	url = https://github.com/CyanSalt/commas
 	arch = x86_64
 	license = ISC
 	makedepends = gendesk
-	depends = electron26
+	depends = electron28
 	depends = python
 	depends = java-runtime
-	provides = commas=0.29.2
+	provides = commas=0.30.0
 	conflicts = commas
-	source = commas-0.29.2.zip::https://github.com/CyanSalt/commas/releases/download/v0.29.2/Commas-linux-x64.zip
-	source = commas-0.29.2.png::https://raw.githubusercontent.com/CyanSalt/commas/v0.29.2/resources/images/icon.png
+	source = commas-0.30.0.zip::https://github.com/CyanSalt/commas/releases/download/v0.30.0/Commas-linux-x64.zip
+	source = commas-0.30.0.png::https://raw.githubusercontent.com/CyanSalt/commas/v0.30.0/resources/images/icon.png
 	source = commas.sh
-	sha256sums = 4fb478381d9fc48f55438fe861aebf26639949369c8f7e63f2ef3dcf0e83f74a
+	sha256sums = 066fb0a38b0ee5993a70e31847984ee45f6021c9d80756d2fd550474da088307
 	sha256sums = 65b65c25d8d68549dc271f7c755426ba8884f6ae9fb3a8061eec65c241345f48
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = commas-bin
