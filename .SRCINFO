@@ -1,16 +1,28 @@
 pkgbase = nulloy
-	pkgdesc = Music Player with a Waveform Progress Bar
-	pkgver = 0.8.2
+	pkgdesc = Music player with a waveform progress bar
+	pkgver = 0.9.7.1
 	pkgrel = 1
 	url = http://nulloy.com/
-	arch = i686
 	arch = x86_64
 	license = GPLv3
-	depends = qt4
+	makedepends = imagemagick
+	makedepends = qt5-tools
+	makedepends = zip
 	depends = gst-plugins-base
-	depends = taglib
-	source = https://github.com/nulloy/nulloy/releases/download/0.8.2/nulloy-0.8.2.tar.gz
-	md5sums = a3a5c2b02c991899868ade1433c62011
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-good
+	depends = gstreamer
+	depends = librsvg
+	depends = libx11
+	depends = libxcb
+	depends = qt5-base
+	depends = qt5-script
+	depends = qt5-svg
+	depends = qt5-x11extras
+	depends = taglib1
+	optdepends = gst-plugins-bad: additional codecs
+	optdepends = gst-plugins-ugly: additional codecs
+	source = https://github.com/nulloy/nulloy/releases/download/0.9.7.1/nulloy-0.9.7.1.tar.gz
+	sha256sums = b958bb217582b9dd279c31ccd91fb3f0095d49b3ae5ec6915e9b7d5cf04f31b8
 
 pkgname = nulloy
-
