@@ -4,14 +4,14 @@
 _pkgname=dsp-guitar
 pkgname="go-${_pkgname}-bin"
 pkgver=1.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A cross-platform multichannel multi-effects processor for electric guitars and other instruments"
 arch=(
 	'aarch64'
 	'x86_64'
 )
 url='https://github.com/andrepxx/go-dsp-guitar'
-license=('Apache')
+license=('Apache-2.0')
 provides=(
 	"${pkgname%-bin}"
 	"${_pkgname}"
@@ -28,7 +28,7 @@ source=(
 	"${pkgname%-bin}.sh"
 )
 sha256sums=('a39993ba8ad40ce74234e908db276841df1fd517c19385d01436d160986c77b1'
-            '32c97107921cb1bf760b8dc19be4c17497e57d0622711c5343f7da965728a35f')
+            'b1def85c2245bf0e8f61d233ed6b6cc26f3323157eaca60df7868854bb53cf85')
 build() {
 	sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
@@ -52,5 +52,5 @@ build() {
 package() {
 	install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
 	install -Dm755 -d "${pkgdir}/opt"
-	cp -r "${srcdir}/${pkgname%-bin}" -r "${pkgdir}/opt"
+	cp -r "${srcdir}/${pkgname%-bin}" "${pkgdir}/opt"
 }

@@ -1,11 +1,11 @@
 pkgbase = go-dsp-guitar-bin
 	pkgdesc = A cross-platform multichannel multi-effects processor for electric guitars and other instruments
 	pkgver = 1.8.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/andrepxx/go-dsp-guitar
 	arch = aarch64
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	depends = jack
 	provides = go-dsp-guitar
 	provides = dsp-guitar
@@ -14,6 +14,6 @@ pkgbase = go-dsp-guitar-bin
 	source = go-dsp-guitar-1.8.0.tar.gz::https://github.com/andrepxx/go-dsp-guitar/releases/download/v1.8.0/go-dsp-guitar-v1.8.0.tar.gz
 	source = go-dsp-guitar.sh
 	sha256sums = a39993ba8ad40ce74234e908db276841df1fd517c19385d01436d160986c77b1
-	sha256sums = 32c97107921cb1bf760b8dc19be4c17497e57d0622711c5343f7da965728a35f
+	sha256sums = b1def85c2245bf0e8f61d233ed6b6cc26f3323157eaca60df7868854bb53cf85
 
 pkgname = go-dsp-guitar-bin
