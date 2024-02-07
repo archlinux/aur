@@ -148,7 +148,7 @@ check() (
 )
 
 package_glibc-eac() {
-  pkgdesc='GNU C Library'
+  pkgdesc='GNU C Library with DT_HASH patch for games using EAC'
   depends=('linux-api-headers>=4.10' tzdata filesystem)
   optdepends=('gd: for memusagestat'
               'perl: for mtrace')
@@ -196,7 +196,7 @@ package_glibc-eac() {
 }
 
 package_lib32-glibc-eac() {
-  pkgdesc='GNU C Library (32-bit)'
+  pkgdesc='GNU C Library (32-bit) with DT_HASH patch for games using EAC'
   depends=("glibc-eac=$pkgver")
   provides=("lib32-glibc=$pkgver")
   conflicts=("lib32-glibc")

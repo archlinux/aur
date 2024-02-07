@@ -35,7 +35,7 @@ pkgbase = glibc-eac
 	b2sums = 35e03ed912e1b0cd23783ab83ce919412885c141344905b8b67bbad4a86c48cf3e893806060e48d5737514ff80cea0b58b0e1f15707c32224579c416dcd810c0
 
 pkgname = glibc-eac
-	pkgdesc = GNU C Library
+	pkgdesc = GNU C Library with DT_HASH patch for games using EAC
 	install = glibc.install
 	depends = linux-api-headers>=4.10
 	depends = tzdata
@@ -48,7 +48,7 @@ pkgname = glibc-eac
 	backup = etc/locale.gen
 
 pkgname = lib32-glibc-eac
-	pkgdesc = GNU C Library (32-bit)
+	pkgdesc = GNU C Library (32-bit) with DT_HASH patch for games using EAC
 	depends = glibc-eac=2.39
 	provides = lib32-glibc=2.39
 	conflicts = lib32-glibc
