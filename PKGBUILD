@@ -1,13 +1,14 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=errands
-pkgver=45.1.8
+pkgver=45.1.9
 pkgrel=1
 pkgdesc='Todo application for those who prefer simplicity'
 url="https://github.com/mrvladus/Errands"
 license=('MIT')
 arch=('x86_64' 'aarch64')
-depends=('python-caldav' 'python-gobject' 'python-icalendar' 'libadwaita' 'libsecret')
+depends=('gtksourceview5' 'python-caldav' 'python-gobject' 'python-icalendar'
+         'python-pycryptodomex' 'libadwaita' 'libsecret')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
 source=("git+$url.git#tag=$pkgver")
@@ -19,7 +20,7 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs || :
+  meson test -C build --print-errorlogs
 }
 
 package() {
