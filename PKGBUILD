@@ -3,7 +3,7 @@ pkgname=streamdock-bin
 _pkgname=StreamDock
 pkgver=2.0.1
 _electronversion=27
-pkgrel=1
+pkgrel=2
 pkgdesc="Streaming service viewer."
 arch=('x86_64')
 url="https://github.com/jtvberg/StreamDock"
@@ -12,26 +12,10 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'hicolor-icon-theme'
-    'pango'
-    'expat'
-    'libxkbcommon'
-    'libxrandr'
     'alsa-lib'
-    'libxdamage'
-    'libxext'
-    'libdrm'
-    'cairo'
-    'libx11'
-    'libxcomposite'
-    'libxfixes'
     'nspr'
-    'libcups'
     'gtk3'
-    'dbus'
     'nss'
-    'libxcb'
-    'mesa'
-    'at-spi2-core'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
