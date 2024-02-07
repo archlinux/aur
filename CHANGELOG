@@ -1,3 +1,26 @@
+4.7
+---
+
+ - Make :py:class:`proforma.MassModification` objects hashable
+   (`#130 <https://github.com/levitsky/pyteomics/pull/130>`_ by Joshua Klein).
+ - Fix `#132 <https://github.com/levitsky/pyteomics/issues/132>`_
+   (`#133 <https://github.com/levitsky/pyteomics/pull/133>`_ by Joshua Klein).
+ - Fix thermolysin cleavage rule (`#135 <https://github.com/levitsky/pyteomics/issues/135>`_).
+ - Fix `#136 <https://github.com/levitsky/pyteomics/issues/136>`_.
+ - :py:func:`pyteomics.mass.mass.calculate_mass` now supports `ProForma <https://www.psidev.info/proforma>`_.
+   A sequence or a :py:class:`proforma.ProForma` object can be passed with the `proforma` keyword argument
+   (`#137 <https://github.com/levitsky/pyteomics/pull/137>`_).
+ - Fix: restored the ability of :py:class:`IndexedTextReader` parsers (:py:class:`pyteomics.mgf.IndexedMGF`,
+   :py:class:`pyteomics.fasta.IndexedFASTA`, etc.) to load the byte offset index from a previously saved byte offset file
+   (created with :py:meth:`cls.prebuild_byte_offset_file` or :py:meth:`reader.write_byte_offsets`)
+   (`#142 <https://github.com/levitsky/pyteomics/pull/142>`_).
+ - API change: uncodumented method :py:meth:`_build_index` of indexing XML parsers renamed to :py:meth:`build_byte_index`
+   (`#142 <https://github.com/levitsky/pyteomics/pull/142>`_).
+ - Add a warning when creating an :py:class:`IndexedTextReader` instance with an empty offset index.
+   This warning can be disabled by passing `warn_if_empty=False`
+   (`#138 <https://github.com/levitsky/pyteomics/pull/138>`_).
+
+
 4.6.3
 -----
 
