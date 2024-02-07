@@ -1,5 +1,5 @@
 pkgname=companion
-pkgver=3.1.2
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Control software for the Elgato Streamdeck with a focus on broadcasting."
 arch=('x86_64' 'aarch64')
@@ -91,7 +91,8 @@ package() {
 	ln -sv "/usr/lib/bitfocus-companion/companion_headless.sh" "${pkgdir}/usr/bin/companion-headless"
 
 	# udev rules
-	install -Dm644 "${pkgname}-${pkgver}/assets/linux/50-companion.rules" -t "${pkgdir}/etc/udev/rules.d/"
+	install -Dm644 "${pkgname}-${pkgver}/assets/linux/50-companion-desktop.rules" -t "${pkgdir}/etc/udev/rules.d/"
+	install -Dm644 "${pkgname}-${pkgver}/assets/linux/50-companion-headless.rules" -t "${pkgdir}/etc/udev/rules.d/"
 
 	# Desktop file
 	install -Dm644 bitfocus-companion.desktop -t "${pkgdir}/usr/share/applications/"
