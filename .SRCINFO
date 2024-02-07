@@ -1,0 +1,48 @@
+pkgbase = geant4-full-debug
+	pkgdesc = A simulation toolkit for particle physics interactions - includes all the optional libraries
+	pkgver = 11.2.0
+	pkgrel = 1
+	url = http://geant4.cern.ch/
+	install = geant4-full-debug.install
+	arch = x86_64
+	license = custom: http://geant4.cern.ch/license/
+	depends = cmake>=3.16
+	depends = xerces-c>=3
+	depends = qt6-base
+	depends = glu
+	depends = openmotif
+	depends = soqt
+	depends = zlib
+	depends = python>=3
+	depends = boost
+	depends = tbb
+	depends = root
+	optdepends = java-environment
+	optdepends = tcsh
+	optdepends = geant4-lend
+	optdepends = dawn
+	provides = geant4
+	conflicts = geant4_devel
+	conflicts = geant4
+	conflicts = geant4-debug
+	conflicts = geant4-abladata
+	conflicts = geant4-ensdfstatedata
+	conflicts = geant4-incldata
+	conflicts = geant4-ledata
+	conflicts = geant4-levelgammadata
+	conflicts = geant4-neutronhpdata
+	conflicts = geant4-neutronxsdata
+	conflicts = geant4-particlexsdata
+	conflicts = geant4-piidata
+	conflicts = geant4-radioactivedata
+	conflicts = geant4-realsurfacedata
+	conflicts = geant4-saiddata
+	options = !emptydirs
+	source = http://geant4-data.web.cern.ch/releases/geant4-v11.2.0.tar.gz
+	source = geant4-full-debug.install
+	source = SoQt.patch
+	sha256sums = 46ad7fab3c5cb4bd0bdd77dd6d3e2283184819235bcbc01b2d117d81b35596a6
+	sha256sums = 9e6cc141af82aa7aa08fe5ccacec0d05e08c170f1eafcaa2aadb937cabf98d59
+	sha256sums = 3b5a899436e0f0a614a17604166a0946bf2e206ef66e1161522337a5be7a8d08
+
+pkgname = geant4-full-debug

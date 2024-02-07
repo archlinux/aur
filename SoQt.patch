@@ -1,0 +1,11 @@
+--- geant4-v11.2.0/cmake/Modules/G4InterfaceOptions.cmake 2023-12-07 10:59:24.000000000 +0100
++++ G4InterfaceOptions.cmake  2024-01-23 15:14:30.753062336 +0100
+@@ -139,7 +139,7 @@
+   geant4_save_package_variables(Inventor Coin_DIR)
+ 
+   if(GEANT4_USE_INVENTOR_QT)
+-    find_package(SoQt 1.6.0 REQUIRED)
++    find_package(SoQt 1.6.1 REQUIRED)
+     geant4_save_package_variables(Inventor SoQt_DIR)
+   else()
+     if(UNIX)
