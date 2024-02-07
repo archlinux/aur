@@ -1,11 +1,12 @@
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Feufochmar <feufochmar@d-20.fr>
 pkgname=xcpc
 pkgver=0.38.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="An Amstrad CPC emulator"
 arch=('i686' 'x86_64')
-url="http://www.xcpc-emulator.net/doku.php/index"
+url="http://www.xcpc-emulator.net/"
 license=('GPL')
 depends=('gtk3')
 optdepends=()

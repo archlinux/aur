@@ -1,9 +1,9 @@
 pkgbase = xcpc
 	pkgdesc = An Amstrad CPC emulator
 	pkgver = 0.38.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
-	url = http://www.xcpc-emulator.net/doku.php/index
+	url = http://www.xcpc-emulator.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
