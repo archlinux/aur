@@ -34,10 +34,6 @@ check()
 
 package()
 {
-    declare _site_packages
-    _site_packages="$(python -c "import site; print(site.getsitepackages()[0])")"
-    readonly _site_packages
-
     # Assure that the directories exist.
     mkdir -p "${pkgdir}"/usr/share/doc/"${pkgname}"/
 
