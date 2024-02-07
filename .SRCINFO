@@ -1,6 +1,6 @@
 pkgbase = ayaneo-platform-dkms-git
 	pkgdesc = Linux Driver for Ayaneo x86 handhelds
-	pkgver = v0.1.0.r0.g1ea1c00
+	pkgver = v0.1.1.r0.g00da2e0
 	pkgrel = 1
 	url = https://github.com/ShadowBlip/ayaneo-platform
 	arch = x86_64
