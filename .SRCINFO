@@ -22,6 +22,6 @@ pkgbase = woterm-bin
 	source = woterm-9.30.2.tar.gz::https://down.woterm.com/linux/woterm-linux-x86_64-v9.30.2-202402030755.tar.gz
 	source = woterm.sh
 	sha256sums = 446df854a6a378c7e6e1f9b46eb1a2704b04465522d5932e04eaac6ae14ef431
-	sha256sums = cb6e0a06a647a3db8a9bd3fda6bc037448965e78c229faf82230dc7fb937a7eb
+	sha256sums = 7de029b4d6976d338ac2b2a7151d32457423367bd346d58130bc5d10b4d99331
 
 pkgname = woterm-bin
