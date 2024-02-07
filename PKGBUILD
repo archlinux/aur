@@ -3,7 +3,7 @@
 
 pkgname=jujutsu-git
 _pkgname=jj
-pkgver=0.13.0.r212.g1adf6b5d
+pkgver=0.13.0.r224.g1be82250
 pkgrel=1
 depends=(gcc-libs glibc zlib)
 makedepends=(openssl cargo git)
@@ -52,8 +52,8 @@ package() {
 
     install -Dm755 -t "$pkgdir/usr/bin" "target/release/$_pkgname"
 
-    # TODO: Install "$pkgname/docs".
-    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
+    cp --archive ./docs/* "$pkgdir/usr/share/doc/$pkgname"
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 
     install -Dm644 -t "$pkgdir/usr/share/bash-completion/completions" "completions/$_pkgname.bash"

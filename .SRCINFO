@@ -1,6 +1,6 @@
 pkgbase = jujutsu-git
 	pkgdesc = Git-compatible VCS that is both simple and powerful
-	pkgver = 0.13.0.r212.g1adf6b5d
+	pkgver = 0.13.0.r224.g1be82250
 	pkgrel = 1
 	url = https://github.com/martinvonz/jj
 	arch = i686
