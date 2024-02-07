@@ -1,0 +1,5 @@
+pkg
+src
+icon.png
+*.zip
+*.pkg.tar.zst
