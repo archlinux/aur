@@ -20,3 +20,4 @@ package() {
 	cd "$srcdir/$pkgname-main"
 	cp -r "$pkgname-main/"* "$pkgdir/usr/share/plymouth/themes/$pkgname/"
 }
+sha256sums=('SKIP')
