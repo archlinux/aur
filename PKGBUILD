@@ -12,7 +12,7 @@ install="${pkgname}.install"
 license=("MIT")
 depends=("glibc")
 makedepends=("git" "go")
-source=("${pkgname}::git+${url}"
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}.env"
         "${pkgname}.service"
         "${pkgname}.sysusers"
@@ -25,7 +25,6 @@ sha256sums=('SKIP'
 
 build() {
     cd "${pkgname}"
-    git checkout "v${pkgver}"
 
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
