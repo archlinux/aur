@@ -2,6 +2,7 @@
 # Contributor: ugaciaka <ugaciaka@gmail.com>
 # Thank's Imanol Celaya <ilcra1989@gmail.com> for arch x86
 # Florian Bäuerle <florian.bae@gmail.com>
+# J0w03L <j0w03l@j0w03l.me> Fixed dead source link
 
 pkgname=bin32-4l
 pkgver=1.0r6
@@ -14,7 +15,7 @@ license=('unknown')
 install=4l.install
 depends=('lib32-fontconfig' 'lib32-gcc-libs' 'lib32-libxcursor' 'lib32-libxi' 'lib32-libxinerama' 'lib32-libxrandr' 'bin32-lightscribe')
 conflicts=('4l_x86_64')
-source=($_realname.i586.rpm::http://www.lacie.com/files/lacie-content/download/drivers/LaCie%20LightScribe%20Labeler%201.0%20Linux.rpm lightscribe.png lightscribe.desktop 4L-cli)
+source=($_realname.i586.rpm::https://web.archive.org/web/20170108215916/http://www.lacie.com/files/lacie-content/download/drivers/LaCie%20LightScribe%20Labeler%201.0%20Linux.rpm lightscribe.png lightscribe.desktop 4L-cli)
 md5sums=('11fc8b2daeaed2b61a567056413bdefd'
          '582b6cce827c8909115a31c7bc10d6ce'
          '48d1af9e30a21f6ec1f8c85151b3a652'
