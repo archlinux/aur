@@ -7,7 +7,7 @@
 
 pkgname=fish-git
 _gitname="fish-shell"
-pkgver=3.7.0.r1410.gea5adcac9
+pkgver=3.7.0.r1420.g776895274
 pkgrel=1
 epoch=2
 pkgdesc="User friendly shell intended mostly for interactive use."
@@ -33,6 +33,7 @@ checkdepends=(
   'expect'
   'procps-ng'
 )
+options=(!lto)
 provides=(
   'fish'
   'fish-shell'
