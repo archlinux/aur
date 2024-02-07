@@ -10,6 +10,11 @@ license=('MIT')
 depends=('plymouth')
 source=("git+${url}.git#commit=HEAD")
 
+pkgver() {
+	cd "$srcdir/HiTech-arch-animation"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 package() {
 	cd "$srcdir/$pkgname-main"
 	cp -r "$pkgname-main/"* "$pkgdir/usr/share/plymouth/themes/$pkgname/"
