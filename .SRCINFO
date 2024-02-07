@@ -1,12 +1,12 @@
 pkgbase = yuioto-keyring
 	pkgdesc = yuioto PGP keyring
 	pkgver = 20240207
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yuioto/yuioto-keyring
 	install = yuioto-keyring.install
 	arch = any
 	license = GPL
-	source = yuioto-keyring::git+https://github.com/yuioto/yuioto-keyring.git#tag=20240207
-	sha512sums = SKIP
+	source = yuioto-keyring-20240207::https://github.com/yuioto/yuioto-keyring/archive/refs/tags/20240207.tar.gz
+	sha512sums = 66873b4cea3e39b0d5cbf47120597ea0c6fbed3f7b3cf25c39639be300908ff38d8aec40f63ae78719bd48fa33f6a4db83fcb06990fb2d1e6986fc1ec91ae56b
 
 pkgname = yuioto-keyring
