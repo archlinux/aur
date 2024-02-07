@@ -1,7 +1,7 @@
 
 pkgname=gwyddion-no-python2
 _pkgname=gwyddion
-pkgver=2.64
+pkgver=2.65
 pkgrel=1
 pkgdesc="A data visualization and processing tool for scanning probe miscroscopy (SPM, i.e. AFM, STM, MFM, SNOM/NSOM, ...) and profilometry, useful also for general image and 2D data analysis"
 url="http://gwyddion.net/"
@@ -23,8 +23,14 @@ optdepends=('libxml2: import of SPML and APE DAX data files'
             'hdf5: import of Ergo data files')
 provides=('gwyddion')
 conflicts=('gwyddion')
-source=(https://downloads.sourceforge.net/sourceforge/gwyddion/$_pkgname-$pkgver.tar.xz)
-sha256sums=('1432f85c31c7e96605e3b3ac9e1c6933bb3b61a76eb620838dc24a085f19942c')
+source=(https://downloads.sourceforge.net/sourceforge/gwyddion/$_pkgname-$pkgver.tar.xz
+        gwyddion-no-jxl.patch)
+sha256sums=('9115fb0a83c963c62460da1d7b9834382c9698bfb9b0cf29b829a4f591369ea3'
+            'b479ffe00737e45fe61ae757b3a8c62f707e8ae4efbe28b20aa0da84bb5f8c1b')
+
+prepare() {
+  patch -Np0 -i "gwyddion-no-jxl.patch"
+}
 
 
 build() {
@@ -39,7 +45,7 @@ build() {
 
   ./configure --prefix=/usr --sysconfdir=/etc \
               --localstatedir=/var --libexecdir=/usr/lib \
-              --with-python=no --enable-pygwy=no
+              --with-python=no --enable-pygwy=no --disable-jxl
   make
 }
 

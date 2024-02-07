@@ -1,0 +1,12 @@
+diff -Naru gwyddion-2.65/modules/file/imgexport.c gwyddion-2.65-no-jxl/modules/file/imgexport.c
+--- gwyddion-2.65/modules/file/imgexport.c	2023-10-24 16:15:48.000000000 +0700
++++ gwyddion-2.65-no-jxl/modules/file/imgexport.c	2024-02-08 06:30:45.811600959 +0700
+@@ -68,6 +68,8 @@
+ #include <webp/encode.h>
+ #endif
+ 
++#undef HAVE_JXL
++
+ #ifdef HAVE_JXL
+ #include <jxl/encode.h>
+ #endif
