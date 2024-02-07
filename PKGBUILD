@@ -2,7 +2,7 @@
 
 pkgname=python-litestar
 _pkgname=${pkgname#python-}
-pkgver=2.5.5
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Production-ready, Light, Flexible and Extensible ASGI API framework"
 arch=(any)
@@ -22,7 +22,9 @@ depends=(
   python-msgspec
   python-multidict
   python-polyfactory
+  python-psycopg
   python-pydantic
+  python-pydantic-extra-types
   python-rich
   python-rich-click
   python-sniffio
@@ -85,9 +87,8 @@ optdepends=(
   'python-redis: Redis store'
   'python-sqlalchemy: SQLAlchemy integration'
 )
-
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6d7dfb82d49ffa47c4a3592bfeb7b9cd7633127ee4015e0bddba19075e5fd649')
+sha256sums=('803fa4407559ff8d0b51f59cd10dfaf336316e16c5b481aafd0d249d32f2e1da')
 
 _archive="$_pkgname-$pkgver"
 
@@ -100,11 +101,7 @@ build() {
 check() {
   cd "$_archive"
 
-  rm -rf tmp_install
-  _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  python -m installer --destdir=tmp_install dist/*.whl
-
-  _ignored_tests=(
+  local ignored_tests=(
     tests/examples/
     tests/unit/test_contrib/
 
@@ -124,9 +121,9 @@ check() {
     tests/unit/test_channels/test_backends.py
     tests/unit/test_stores.py
   )
-  _ignored_tests_arg=$(printf " --ignore=%s" "${_ignored_tests[@]}")
+  local ignored_tests_arg=$(printf " --ignore=%s" "${ignored_tests[@]}")
 
-  _deselected_tests=(
+  local deselected_tests=(
     # Fails for unkown reason
     tests/unit/test_middleware/test_middleware_handling.py::test_custom_middleware_processing
     tests/unit/test_template/test_template.py::test_media_type_inferred
@@ -135,13 +132,17 @@ check() {
     tests/e2e/test_response_caching.py::test_with_stores
     tests/unit/test_utils/test_version.py::test_formatted
   )
-  _deselected_tests_arg=$(printf " --deselect=%s" "${_deselected_tests[@]}")
+  local deselected_tests_arg=$(printf " --deselect=%s" "${deselected_tests[@]}")
 
-  export PYTHONPATH="$PWD/tmp_install/$_site_packages"
+  rm -rf tmp_install
+  python -m installer --destdir=tmp_install dist/*.whl
+
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  export PYTHONPATH="$PWD/tmp_install/$site_packages"
   # shellcheck disable=SC2086
   pytest tests/ \
-    $_ignored_tests_arg \
-    $_deselected_tests_arg
+    $ignored_tests_arg \
+    $deselected_tests_arg
 }
 
 package() {
