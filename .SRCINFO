@@ -1,6 +1,6 @@
 pkgbase = r-glmsparsenet
 	pkgdesc = Network Centrality Metrics for Elastic-Net Regularized Models
-	pkgver = 1.20.0
+	pkgver = 1.20.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/glmSparseNet
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = r-glmsparsenet
 	optdepends = r-tcgautils
 	optdepends = r-testthat
 	optdepends = r-venndiagram
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/glmSparseNet_1.20.0.tar.gz
-	sha256sums = 79e89ecf26082150d4b4e9f556d9c5fd854ffb5b62471da8e3593fbb0eb86c2a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/glmSparseNet_1.20.1.tar.gz
+	sha256sums = 34d13f31513386993fb5b88433c2b48e6f7ee457498a7a477b9727c984519525
 
 pkgname = r-glmsparsenet
