@@ -4,38 +4,24 @@ pkgname="${_officalname}-bin"
 _pkgname=SuwellReader
 _appname="cn.${_officalname//-/.}"
 pkgver=3.0.22.0916
-pkgrel=5
+pkgrel=6
 pkgdesc="OFD Reader Professional 3.0 From Suwell .LTD"
-providers="Beijing Suwell .LTD"
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
 arch=('x86_64')
 url="https://www.suwell.cn/"
 _downurl="https://com-store-packages.uniontech.com"
-license=('custom')
-conflicts=()
+license=('LicenseRef-custom')
 depends=(
-    'libxt'
-    'libjpeg6-turbo'
     'gtk2'
-    'glu'
-    'libxml2'
-    'libgpg-error'
-    'fontconfig'
     'hicolor-icon-theme'
-    'libxext'
-    'freetype2'
+    'libpng12'
+    'glu'
+    'libjpeg6-turbo'
     'gstreamer0.10'
     'libice'
-    'libglvnd'
-    'e2fsprogs'
-    'krb5'
-    'libp11-kit'
-    'libxi'
-    'libxrender'
-    'libxau'
+    'libxt'
     'libsm'
-    'libx11'
-    'libtasn1'
-    'libpng12'
 )
 options=(
     '!strip'
@@ -46,7 +32,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('69e56165f999ca8a168d64d0e22180755c67091b700fca1e339910580b127d1f'
-            'dd09abad3a8c6174dd680940c810a878083624aeb2534b71d96d668708b5f39f')
+            '16b64104ddc9ca7662cc212d99d567aec8c973f082a29e7fe67928b2fe546acf')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
