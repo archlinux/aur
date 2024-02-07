@@ -3,11 +3,11 @@ pkgname=sixgrid-bin
 _pkgname=SixGrid
 pkgver=0.3.7_2
 _electronversion=11
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-Source Desktop Client for e926/e621 and websites alike"
 arch=("x86_64")
 url="https://github.com/SixGrid/sixgrid"
-license=("Apache")
+license=("Apache-2.0")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -24,11 +24,11 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('08c237d8d71ec516c90bb8a8f197da51acb7489966f373c7021b2cecff3ee850'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
