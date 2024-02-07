@@ -2,11 +2,11 @@
 
 pkgname=guile-opengl
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenGL bindings for Guile Scheme"
 arch=('x86_64' 'i686')
 url="https://www.gnu.org/software/guile-opengl/"
-license=('LGPL3')
+license=('LGPL-3.0-or-later')
 depends=(guile)
 options=(!emptydirs)
 source=(https://ftp.gnu.org/gnu/guile-opengl/guile-opengl-${pkgver/_/-}.tar.gz)
