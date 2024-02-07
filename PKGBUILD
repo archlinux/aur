@@ -1,10 +1,6 @@
 # Maintainer:
 # Contributor: Robert Brzozowski <robson75@linux.pl>
 # Contributor: Charles Bos <charlesbos1 AT gmail>
-# Contributor: Rob McCathie <archaur at rmcc dot com dot au
-# Contributor: /dev/rs0 <rs0@secretco.de.com>
-# Contributor: Iven Hsu <ivenvd AT gmail>
-# Contributor: Nathan Hulse <nat.hulse@gmail.com>
 
 ## options
 : ${_build_git:=false}
