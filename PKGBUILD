@@ -3,7 +3,7 @@ pkgname=react-explorer-bin
 _pkgname=React-Explorer
 pkgver=3.1.0
 _electronversion=21
-pkgrel=4
+pkgrel=5
 pkgdesc="File manager written in TypeScript, React, Blueprint and packaged with Electron"
 arch=(
     "aarch64"
@@ -24,13 +24,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('2ee003eed53af196295f44ab14460333b6d129dc96dd1143e5f119f3122650cd'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 sha256sums_aarch64=('f6cc0961d53798ac4991bd566294dd7c0c13b9809bd7c61c6910e3345642b398')
 sha256sums_x86_64=('b36054b9b5679894aaf57b1f521f4dbfb1c6ee32c32f06b285b105190014a175')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g;s|FileManager|System;Utility|g" \
