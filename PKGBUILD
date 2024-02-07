@@ -2,14 +2,14 @@
 pkgname=python-pyxdf
 _name=${pkgname#python-}
 pkgver=1.16.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Python importer for XDF files"
 arch=('any')
 url="https://github.com/xdf-modules/pyxdf"
 license=('BSD')
 groups=()
 depends=('python' 'python-numpy')
-makedepends=()
+makedepends=('python-setuptools')
 optdepends=()
 provides=()
 conflicts=()
