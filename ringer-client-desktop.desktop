@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Ringer
+Comment=A new cross platform messaging app
+Exec=ringer-client-desktop %U
+Icon=ringer-client-desktop
+Terminal=false
+StartupNotify=false
+Categories=Network;
