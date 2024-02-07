@@ -1,12 +1,13 @@
 pkgbase = python-msgspec
 	pkgdesc = A fast and friendly JSON/MessagePack library, with optional schema validation
 	pkgver = 0.18.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jcrist/msgspec
 	arch = x86_64
 	license = BSD-3-Clause
 	checkdepends = python-msgpack
 	checkdepends = python-pytest
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -18,7 +19,7 @@ pkgbase = python-msgspec
 	optdepends = python-tomli-w: for TOML support
 	optdepends = python-tomli: for TOML support
 	optdepends = python-yaml: for YAML support
-	source = python-msgspec-0.18.6.tar.gz::https://github.com/jcrist/msgspec/archive/refs/tags/0.18.6.tar.gz
-	sha256sums = 893eab9c485331e90d137d0353afd39e5646656dabb7dc09bc1fecc134ffc3da
+	source = git+https://github.com/jcrist/msgspec.git#commit=9ed5e0d4f6e47e6f520835605bb647f234e7f6f3
+	sha256sums = SKIP
 
 pkgname = python-msgspec
