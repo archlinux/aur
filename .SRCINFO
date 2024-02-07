@@ -10,6 +10,7 @@ pkgbase = yandexmusic
 	makedepends = jq
 	depends = electron
 	depends = libpulse
+	depends = xdg-utils
 	source = https://music-desktop-application.s3.yandex.net/stable/Yandex_Music_x64_5.0.9.exe
 	source = git+https://github.com/cucumber-sp/yandex-music-linux
 	sha256sums = 686898f9a2f663d3ac22395eb0fa8073908003710d756fe60affef3ca1f7b1e8
