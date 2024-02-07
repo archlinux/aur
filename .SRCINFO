@@ -1,0 +1,13 @@
+pkgbase = licensedigger-git
+	pkgdesc = Tools to convert existing license headers to SPDX compliant headers
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://invent.kde.org/sdk/licensedigger
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	source = licensedigger::git+https://github.com/KDE/licensedigger#branch=master
+	sha256sums = SKIP
+
+pkgname = licensedigger-git
