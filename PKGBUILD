@@ -8,12 +8,6 @@ arch=('any')
 url="https://github.com/xDeFc0nx/HiTech-arch-animation"
 license=('MIT')
 depends=('plymouth')
-
-pkgver() {
-	cd "$srcdir/$pkgname-main"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 source=("git+${url}.git#commit=HEAD")
 
 package() {
