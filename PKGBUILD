@@ -1,26 +1,23 @@
-# Maintainer: Ben Isenhart <bisenhar(at)uvm(dot)edu>
+# Maintainer: Andrew Shark <ashark linuxcomp ru>
+# Contributor: Ben Isenhart <bisenhar(at)uvm(dot)edu>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Wang Jiajun <amesists@gmail.com>
 
 pkgname=kdesrc-build-git
-pkgver=r2096.97510bf
+pkgver=22.07.r573.g9f8c5e2
 pkgrel=1
 pkgdesc="A script to build KDE software from KDE's source repositories"
-url='https://kdesrc-build.kde.org/'
-arch=('any')
-license=('GPL')
-depends=('perl-libwww' 'perl-xml-parser' 'dialog' 'perl-json' 'perl-io-socket-ssl' 'perl-net-ssleay' 'perl-yaml-syck')
-makedepends=('cmake' 'git')
-optdepends=('subversion: download source code using svn'
-            'git: download source code using git')
-conflicts=('kdesrc-build')
-provides=('kdesrc-build')
-source=("git+https://anongit.kde.org/kdesrc-build.git")
-md5sums=('SKIP')
+url="https://apps.kde.org/kdesrc_build"
+arch=("any")
+license=("GPL")
+depends=("perl-json" "perl-json-xs" "perl-yaml-libyaml" "perl-io-socket-ssl" "perl-libwww" "perl-xml-parser")
+makedepends=("cmake" "git")
+source=("git+https://invent.kde.org/sdk/kdesrc-build.git")
+sha256sums=("SKIP")
 
 pkgver() {
   cd kdesrc-build
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -34,10 +31,7 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
-
-  install -d "${pkgdir}"/usr/share/doc/samples
-  install -Dm644 kdesrc-build/kdesrc-buildrc-kf5-sample \
-    "${pkgdir}"/usr/share/doc/samples/
-  install -Dm644 kdesrc-build/kf5-{applications,frameworks,kdepim,qt5,workspace}-build-include \
-    "${pkgdir}"/usr/share/doc/samples/
+  mkdir "${pkgdir}/usr/bin"
+  ln -sfv "${pkgdir}/usr/share/kdesrc-build/kdesrc-build" "${pkgdir}/usr/bin/kdesrc-build"
+  ln -sfv "${pkgdir}/usr/share/kdesrc-build/kdesrc-run" "${pkgdir}/usr/bin/kdesrc-run"
 }

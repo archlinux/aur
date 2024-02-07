@@ -1,25 +1,19 @@
 pkgbase = kdesrc-build-git
 	pkgdesc = A script to build KDE software from KDE's source repositories
-	pkgver = r2096.97510bf
+	pkgver = 22.07.r573.g9f8c5e2
 	pkgrel = 1
-	url = https://kdesrc-build.kde.org/
+	url = https://apps.kde.org/kdesrc_build
 	arch = any
 	license = GPL
 	makedepends = cmake
 	makedepends = git
+	depends = perl-json
+	depends = perl-json-xs
+	depends = perl-yaml-libyaml
+	depends = perl-io-socket-ssl
 	depends = perl-libwww
 	depends = perl-xml-parser
-	depends = dialog
-	depends = perl-json
-	depends = perl-io-socket-ssl
-	depends = perl-net-ssleay
-	depends = perl-yaml-syck
-	optdepends = subversion: download source code using svn
-	optdepends = git: download source code using git
-	provides = kdesrc-build
-	conflicts = kdesrc-build
-	source = git+https://anongit.kde.org/kdesrc-build.git
-	md5sums = SKIP
+	source = git+https://invent.kde.org/sdk/kdesrc-build.git
+	sha256sums = SKIP
 
 pkgname = kdesrc-build-git
-
