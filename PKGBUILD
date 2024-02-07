@@ -1,9 +1,15 @@
+# SPDX-License-Identifier: AGPL-3.0
+#
+# Maintainer:  Truocolo <truocolo@aol.com>
+# Maintainer:  Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
 # Maintainer: Axel Navarro <navarroaxel gmail>
 pkgname=corepack
 pkgver=0.11.2
 pkgrel=1
 pkgdesc="Zero-runtime-dependency package acting as bridge between Node projects and their package managers."
-arch=('any')
+arch=(
+  'any'
+)
 url="https://github.com/nodejs/$pkgname"
 license=('MIT')
 depends=('nodejs')
@@ -30,3 +36,5 @@ package() {
   install -d "$pkgdir/usr/bin"
   ln -s "/usr/lib/$pkgname/$pkgname.js" "$pkgdir/usr/bin/$pkgname"
 }
+
+# vim:set sw=2 sts=-1 et:
