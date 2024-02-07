@@ -1,6 +1,6 @@
 pkgbase = furmark
 	pkgdesc = Lightweight but intensive GPU stress test and benchmarking tool for OpenGL and Vulkan
-	pkgver = 2.0.16.0
+	pkgver = 2.0.16
 	pkgrel = 1
 	url = https://www.geeks3d.com/furmark/v2/
 	arch = x86_64

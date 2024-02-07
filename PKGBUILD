@@ -1,7 +1,7 @@
-# Maintainer: Albert Sebastian <albertsebe2 at gmail dot com>u
+# Maintainer: Albert Sebastian <albertsebe2 at gmail dot com>
 
 pkgname=furmark
-pkgver=2.0.16.0
+pkgver=2.0.16
 pkgrel=1
 pkgdesc='Lightweight but intensive GPU stress test and benchmarking tool for OpenGL and Vulkan'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom:freeware')
 depends=(gcc-libs opengl-driver glu libxcb)
 optdepends=('vulkan-driver: Vulkan benchmark support')
 makedepends=('unzip')
-source=('https://gpumagick.com/downloads/files/2024/furmark2/FurMark_2.0.16_linux64.zip')
+source=("https://gpumagick.com/downloads/files/2024/furmark2/FurMark_$pkgver_linux64.zip")
 md5sums=('655dbab19f3b734aab4bdd91aa7b4090')
 
 package(){
