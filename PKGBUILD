@@ -11,8 +11,15 @@ arch=('any')
 license=('GPL-3.0-only')
 depends=('flatpak' 'gjs' 'webkitgtk-6.0' 'libhandy' 'appstream-glib' 'libadwaita')
 makedepends=('meson' 'flatpak-builder' 'ninja')
-source=("${pkgname}-${pkgver}::https://github.com/tchx84/Flatseal/archive/v${pkgver}.tar.gz")
-sha256sums=('b4e280a049a9f32ed8e7c4c0d903cacd4610c72ff58bc73d88ee5dbd3a937510')
+source=("${pkgname}-${pkgver}::https://github.com/tchx84/Flatseal/archive/v${pkgver}.tar.gz"
+        "appstream.patch") # https://github.com/tchx84/Flatseal/pull/617
+sha256sums=('b4e280a049a9f32ed8e7c4c0d903cacd4610c72ff58bc73d88ee5dbd3a937510'
+            '505a24f2f97856f6a03b07dd51c58a1f7eeaf35432348879ae553305203f1bfb')
+
+prepare() {
+	cd "${srcdir}/${_pkgname}-${pkgver}"
+	patch -p1 < "${srcdir}/appstream.patch"
+}
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"

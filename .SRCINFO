@@ -15,6 +15,8 @@ pkgbase = flatseal
 	depends = appstream-glib
 	depends = libadwaita
 	source = flatseal-2.1.1::https://github.com/tchx84/Flatseal/archive/v2.1.1.tar.gz
+	source = appstream.patch
 	sha256sums = b4e280a049a9f32ed8e7c4c0d903cacd4610c72ff58bc73d88ee5dbd3a937510
+	sha256sums = 505a24f2f97856f6a03b07dd51c58a1f7eeaf35432348879ae553305203f1bfb
 
 pkgname = flatseal
