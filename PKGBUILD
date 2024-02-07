@@ -2,15 +2,15 @@
 
 pkgname=radicle-httpd-bin
 # there are no versions attached to the binaries, just upload dates.
-pkgver=20240205
-_srchash="8928c5ee2628e0b4d738289b5030fc3e2a918e5e"
+pkgver=20240207
+_srchash="fe55de181d4320a0cd7a6ebd2820764280ae9adc"
 pkgrel=1
 pkgdesc="http daemon for radicle, a peer-to-peer GitHub alternative"
 arch=('x86_64' 'aarch64')
 license=('Apache-2.0 OR MIT')
 url="https://app.radicle.xyz/nodes/seed.radicle.xyz/rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5"
 _srcurl="https://files.radicle.xyz/$_srchash/$CARCH-unknown-linux-musl"
-_license_url="https://seed.radicle.xyz/raw/rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5/8928c5ee2628e0b4d738289b5030fc3e2a918e5e/LICENSE-MIT"
+_license_url="https://seed.radicle.xyz/raw/rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5/fe55de181d4320a0cd7a6ebd2820764280ae9adc/LICENSE-MIT"
 _license_sha256sum="fff889db903497b59500b5171806c511b3c83df1100532c2f7aa8f96af46cc4d"
 _prefix=$pkgname-$pkgver
 source_x86_64=(
@@ -26,14 +26,14 @@ source_aarch64=(
 	radicle-httpd.service
 )
 sha256sums_x86_64=(
-	'98ded9ec49e3fc3f22a9fbce750765d1aecb8d874762f9b11561c131a5dc94de'
-	'6bbf830fceb30fce52c4fa71ce50af2b69e28feb1a16d769dad5b4809f125fa3'
+	'be993bd798f55434cf49f76aab6d47b50837ca35722fce87ef02de8813ac8047'
+	'5898760ee275f81261a4def989cddf80bf4798ce65080de0773cd2a3564db87d'
 	$_license_sha256sum
 	'SKIP'
 )
 sha256sums_aarch64=(
-	'78a7a883bc96255d1fa6fde3e247c018c5661d5d126516f1b309ee74903a48cd'
-	'108c449471e128336c4fc96ce4aafca6eb4aece130aeefc1e96cb21bb817667c'
+	'bdc9a9e3ab95e67da69c6e5bd60b11596efa28814f12ec2f0059744344292d00'
+	'e0cd93f2c11504d00966b2b22979774ce9ecdd3e99197a29ddc6d73c42adb71c'
 	$_license_sha256sum
 	'SKIP'
 )
