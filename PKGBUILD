@@ -2,11 +2,11 @@
 pkgname=gptfusion-appimage
 _pkgname=GPTFusion
 pkgver=0.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="GPT聚合版是一个聚合了多个GPT聊天机器人的跨平台聊天工具, 支持多个免费GPT镜像, 支持自定义导入镜像, 支持POE,文心一言等多个平台."
 arch=("x86_64")
 url="https://github.com/lpdswing/GPTFusion"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
 depends=(
