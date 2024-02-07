@@ -12,7 +12,7 @@ arch=(
 )
 url="https://rao.pics/"
 _ghurl="https://github.com/rao-pics/rao-pics"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
