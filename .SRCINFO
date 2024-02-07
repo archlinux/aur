@@ -1,10 +1,10 @@
 pkgbase = kf5-servicemenus-pdf
 	pkgdesc = A KDE service menus for PDF documents from dolphin
 	pkgver = 2.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.egregorion.net
 	arch = any
-	license = GPL
+	license = GPL-3.0-or-later
 	depends = dolphin
 	depends = kdialog
 	depends = ghostscript
@@ -13,8 +13,6 @@ pkgbase = kf5-servicemenus-pdf
 	depends = pdftk
 	depends = texlive-binextra
 	depends = texlive-latexrecommended
-	conflicts = kde-servicemenus-pdf
-	replaces = kde-servicemenus-pdf
 	source = http://www.egregorion.net/works/kde/servicemenus/pdf/kde-service-menu-pdf_2.3_all.tar.gz
 	sha256sums = 52a0241c2841e33cab38ef3bcfacac71dce9658256c6301bb6859f6da76e7555
 
