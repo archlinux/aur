@@ -1,6 +1,6 @@
 pkgbase = nwg-shell-config
 	pkgdesc = nwg-shell configuration utility
-	pkgver = 0.5.33
+	pkgver = 0.5.34
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-shell-config
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = nwg-shell-config
 	depends = gtklock
 	depends = noto-fonts
 	depends = wlsunset
-	source = nwg-shell-config-0.5.33.tar.gz::https://github.com/nwg-piotr/nwg-shell-config/archive/v0.5.33.tar.gz
-	md5sums = 36515c838f4b2da95409e691d4204e96
+	source = nwg-shell-config-0.5.34.tar.gz::https://github.com/nwg-piotr/nwg-shell-config/archive/v0.5.34.tar.gz
+	md5sums = 6c172243cc1a1147d63ad90c8a4caf9d
 
 pkgname = nwg-shell-config
