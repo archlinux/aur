@@ -28,7 +28,6 @@ post_install() {
 
 pre_upgrade() {
 	echo "Attempting to stop the installed Splunk Server..."
-	$SPLUNK_HOME/bin/splunk stop
 	systemctl stop splunk
 }
 
@@ -56,6 +55,5 @@ post_upgrade() {
 
 pre_remove() {
 	echo "Attempting to stop the installed Splunk Server..."
-	$SPLUNK_HOME/bin/splunk stop
 	systemctl stop splunk
 }

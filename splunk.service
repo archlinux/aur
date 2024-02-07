@@ -1,17 +1,22 @@
 [Unit]
-Description=Splunk
-Wants=network.target
-After=network.target
+Description=Splunk Enterprise
+After=network-online.target
+Wants=network-online.target
 
 [Service]
-Type=forking
-RemainAfterExit=yes
+Type=simple
+Restart=always
+ExecStart=/opt/splunk/bin/splunk _internal_launch_under_systemd --answer-yes --no-prompt --accept-license
+KillMode=mixed
+KillSignal=SIGINT
+TimeoutStopSec=360
+LimitNOFILE=65536
+LimitRTPRIO=99
+SuccessExitStatus=51 52
+RestartPreventExitStatus=51
+RestartForceExitStatus=52
 User=splunk
-ExecStart=/opt/splunk/bin/splunk start --answer-yes --no-prompt --accept-license
-ExecStop=/opt/splunk/bin/splunk stop
-ExecReload=/opt/splunk/bin/splunk restart
-StandardOutput=syslog
-TimeoutSec=500
+Group=splunk
 
 [Install]
 WantedBy=multi-user.target
