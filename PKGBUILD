@@ -1,5 +1,5 @@
 # Maintainer:
-# Contributor:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Maciej Sitarz <macieks@freesco.pl>
 
 pkgname=hyphen-pl
@@ -10,20 +10,13 @@ arch=('any')
 url='http://extensions.services.openoffice.org/en/project/pl-dict'
 license=('LGPL')
 optdepends=('hyphen: offers hyphenation library functions')
-source=(https://sources.archlinux.org/other/community/$pkgname/$pkgname-$pkgver.tar.xz{,.sig})
-validpgpkeys=('F3691687D867B81B51CE07D9BBE43771487328A9') # Bartłomiej Piotrowski
-md5sums=('7ecdc3975750d6d2de1e6045f5003ed4'
-         'SKIP')
+source=('https://downloads.sourceforge.net/project/aoo-extensions/806/4/pl-dict.oxt')
+md5sums=('a69f9221864b1360e38ff3f0b0cc9222')
+sha1sums=('d5704efc735f5492284e8b9cd2ea717a700033c3')
 
 package() {
-  cd $pkgname-$pkgver
-
   install -Dm644 hyph_pl_PL.dic "$pkgdir"/usr/share/hyphen/hyph_pl_PL.dic
 
   install -dm755 "$pkgdir"/usr/share/myspell/dicts
-  pushd "$pkgdir"/usr/share/myspell/dicts
-    for file in "$pkgdir"/usr/share/hyphen/*; do
-      ln -sv /usr/share/hyphen/$(basename $file) .
-    done
-  popd
+  ln -s /usr/share/hyphen/hyph_pl_PL.dic -t "$pkgdir"/usr/share/myspell/dicts
 }
