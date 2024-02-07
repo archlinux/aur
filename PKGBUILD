@@ -1,5 +1,6 @@
-# Maintainer: Bruno Pagani <archange@archlinux.org>
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer:
+# Contributor: Bruno Pagani <archange@archlinux.org>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Pascal Ernster <archlinux@hardfalcon.net>
 # Contributor: loqs <bugs-archlinux@entropy-collector.net>
 
@@ -10,7 +11,7 @@ _use_suffix=1
 pkgver=24.8.8
 _chromiumver=112.0.5615.204
 # shellcheck disable=SC2034
-pkgrel=2
+pkgrel=3
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
