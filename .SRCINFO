@@ -1,7 +1,7 @@
 pkgbase = hash-calculator-bin
 	pkgdesc = Hash Calculator is the console tool that can calculate about 50 cryptographic hashes of strings and files.
 	pkgver = 5.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aegoroff/hc
 	arch = x86_64
 	license = LGPL-3

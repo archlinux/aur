@@ -1,7 +1,7 @@
 # Maintainer: egoroff <egoroff@gmail.com>
 pkgname=hash-calculator-bin
 pkgver=5.3.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="Hash Calculator is the console tool that can calculate about 50 cryptographic hashes of strings and files."
 url="https://github.com/aegoroff/hc"
@@ -15,5 +15,5 @@ build() {
 
 package() {
 	install -Dm0755 "hc" "$pkgdir/usr/bin/hc"
-	install -Dm0644 "LICENSE.txt" "$pkgdir/usr/share/licenses/grok/LICENSE.txt"
+	install -Dm0644 "LICENSE.txt" "$pkgdir/usr/share/licenses/hc/LICENSE.txt"
 }
