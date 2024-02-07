@@ -1,0 +1,45 @@
+--- a/build.sbt	2024-01-16 08:42:51.000000000 -0500
++++ b/build.sbt	2024-02-07 00:23:17.741703354 -0500
+@@ -87,16 +87,6 @@
+   ),
+   sonatypeCredentialHost := "s01.oss.sonatype.org",
+   sonatypeRepository := "https://s01.oss.sonatype.org/service/local",
+-  // We are just using 'publish / skip' as a hook to run checks required for publishing,
+-  // but that are not necessarily required for local development or running testing in CI
+-  publish / skip := {
+-    // Check that SBT Dynver can properly derive a version which requires unshallow clone
+-    val v = version.value
+-    if (dynverGitDescribeOutput.value.hasNoTags) {
+-      sys.error(s"Failed to derive version from git tags. Maybe run `git fetch --unshallow`? Version: $v")
+-    }
+-    (publish / skip).value
+-  },
+   publishTo := {
+     val v = version.value
+     val nexus = "https://s01.oss.sonatype.org/"
+@@ -108,6 +98,15 @@
+   }
+ )
+ 
++assembly / assemblyMergeStrategy := {
++  case PathList("module-info.class") => MergeStrategy.last
++  case path if path.endsWith("/javax.inject.Named") => MergeStrategy.last
++  case path if path.endsWith("/module-info.class") => MergeStrategy.last
++  case x =>
++  val oldStrategy = (assembly / assemblyMergeStrategy).value
++    oldStrategy(x)
++}
++
+ // FIRRTL SETTINGS
+ 
+ lazy val firrtlSettings = Seq(
+@@ -140,9 +139,7 @@
+ )
+ 
+ lazy val assemblySettings = Seq(
+-  assembly / assemblyJarName := "firrtl.jar",
+   assembly / test := {},
+-  assembly / assemblyOutputPath := file("./utils/bin/firrtl.jar")
+ )
+ 
+ lazy val testAssemblySettings = Seq(
