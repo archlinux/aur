@@ -4,7 +4,7 @@ _pkgname=GodMode
 pkgver=1.0.0_beta.10
 _electronversion=26
 _nodeversion=18
-pkgrel=2
+pkgrel=3
 pkgdesc="AI Chat Browser: Fast, Full webapp access to ChatGPT / Claude / Bard / Bing / Llama2!"
 arch=(
     'aarch64'
@@ -15,29 +15,14 @@ _ghurl="https://github.com/smol-ai/GodMode"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-    'expat'
-    'libxcb'
-    'libxcomposite'
     'nspr'
-    'at-spi2-core'
-    'libxfixes'
-    'pango'
-    'cairo'
-    'libxext'
-    'libcups'
-    'libx11'
     'gtk3'
-    'mesa'
-    'libxdamage'
-    'libdrm'
-    'libxrandr'
-    'libxkbcommon'
     'alsa-lib'
     'nss'
     'hicolor-icon-theme'
 )
 makedepends=(
-    'npm>=7'
+    'npm'
     'gendesk'
     'nvm'
     'git'
@@ -54,13 +39,15 @@ _ensure_local_nvm() {
 }
 build() {
     _ensure_local_nvm
-    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname}"
+    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname} --no-sandbox %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
+    HOME="${srcdir}/.electron-gyp"
     npm ci
     npm run package-lin
 }
