@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lyrically-bin
 _pkgname=Lyrically
-pkgver=0.1.0
+pkgver=0.2.0
 _electronversion=28
 pkgrel=1
 pkgdesc="Music player inspired by Lyric Speaker"
@@ -21,14 +21,14 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/CyanSalt/lyrically/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('423c5e3763a68294fec232086f024ef5450df8880ac9cf01352d760bba78a214'
+sha256sums=('11706f4ef803ea2c0b1d57152987e91c6a9d7bc4f031d90b73e74766a3a9cfab'
             'ab219244090109bd4c111ee2f8d574337bc668860f9e9678190f4591df4dec1a'
             '9950b2ef9948d119f67c09e78478be5c96db2028bebf735ee60a9e3c5afe0bc0'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -f -n -q --categories "AudioVideo" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
 }
