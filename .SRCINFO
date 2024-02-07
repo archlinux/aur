@@ -1,22 +1,24 @@
 pkgbase = compiz-git
-	pkgdesc = Composite manager for Aiglx and Xgl, with plugins and CCSM (development version)
-	pkgver = 0.9.14.2.r0.g12aca6852
-	pkgrel = 1
+	pkgdesc = Composite manager for Aiglx and Xgl, with plugins and CCSM
+	pkgver = 0.9.14.2.r0.g12aca685
+	pkgrel = 2
 	url = https://launchpad.net/compiz
 	arch = i686
 	arch = x86_64
-	license = GPL
-	license = LGPL
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
 	license = MIT
 	makedepends = boost
 	makedepends = cmake
 	makedepends = cython
-	makedepends = git
 	makedepends = intltool
+	makedepends = python-setuptools
+	makedepends = git
 	depends = boost-libs
 	depends = fuse2
 	depends = glibmm
 	depends = glu
+	depends = libnotify
 	depends = libwnck3
 	depends = libxslt
 	depends = metacity
@@ -30,11 +32,10 @@ pkgbase = compiz-git
 	provides = compiz-core=0.9.14
 	provides = compiz-plugins-extra=0.9.14
 	provides = compiz-plugins-main=0.9.14
-	provides = compiz=0.9.14
 	provides = compizconfig-python=0.9.14
 	provides = libcompizconfig=0.9.14
+	provides = compiz=0.9.14
 	conflicts = ccsm
-	conflicts = compiz
 	conflicts = compiz-bcop
 	conflicts = compiz-core
 	conflicts = compiz-fusion-plugins-experimental
@@ -44,7 +45,8 @@ pkgbase = compiz-git
 	conflicts = compizconfig-python
 	conflicts = libcompizconfig
 	conflicts = simple-ccsm
-	source = git+https://git.launchpad.net/compiz
+	conflicts = compiz
+	source = compiz::git+https://git.launchpad.net/compiz
 	source = focus-prevention-disable.patch
 	source = gtk-extents.patch
 	source = reverse-unity-config.patch
