@@ -1,0 +1,22 @@
+pkgbase = android-armv7a-eabi-gettext
+	pkgdesc = GNU internationalization library (android)
+	pkgver = 0.22.4
+	pkgrel = 1
+	url = http://www.gnu.org/software/gettext/
+	arch = any
+	license = GPL
+	makedepends = gettext
+	makedepends = android-configure
+	depends = android-armv7a-eabi-termcap
+	depends = android-armv7a-eabi-libunistring
+	depends = android-armv7a-eabi-libxml2
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = http://ftp.gnu.org/pub/gnu/gettext/gettext-0.22.4.tar.gz
+	source = intl.pc
+	sha256sums = c1e0bb2a4427a9024390c662cd532d664c4b36b8ff444ed5e54b115fdb7a1aea
+	sha256sums = 0dc8a3e2c95d79aacaeaacd3c90e41c0f5d6ba9cfbc949a0ca55f4b0fd389d9c
+
+pkgname = android-armv7a-eabi-gettext
