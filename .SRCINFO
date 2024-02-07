@@ -1,6 +1,6 @@
 pkgbase = python-instructor
 	pkgdesc = Structured outputs for LLMs
-	pkgver = 0.5.0
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/jxnl/instructor
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-instructor
 	depends = python-tenacity
 	depends = python-typer
 	depends = python-typing_extensions
-	source = python-instructor-0.5.0.tar.gz::https://github.com/jxnl/instructor/archive/refs/tags/0.5.0.tar.gz
-	sha256sums = 7f485f5d1f642878bc787b3e6f8c1380757f55b5aec96eb8a2615c16a5545c63
+	source = python-instructor-0.5.2.tar.gz::https://github.com/jxnl/instructor/archive/refs/tags/0.5.2.tar.gz
+	sha256sums = 7a238c42e31ad59cc0320bb48e34e7030fec691a8bde6b0cde023d1bca8bf38b
 
 pkgname = python-instructor
