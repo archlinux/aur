@@ -3,17 +3,16 @@ pkgname=miteiru
 _pkgname=Miteiru
 pkgver=4.0.2
 _electronversion=21
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source Electron video player to learn Japanese. It has main language dictionary and tokenizer (morphological analyzer), heavily based on External software MeCab"
 arch=('any')
 url="https://github.com/hockyy/miteiru"
-license=("CC-BY-NC-SA-4.0")
+license=("CC-BY-NC-4.0")
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
     'mecab'
     'java-runtime'
-    'lib32-glibc'
 )
 makedepends=(
     'npm'
@@ -22,8 +21,7 @@ makedepends=(
     'git'
     'libicns'
     'node-gyp'
-    'make'
-    'gcc'
+    'base-devel'
 )
 source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"

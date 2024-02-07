@@ -1,22 +1,20 @@
 pkgbase = miteiru
 	pkgdesc = An open source Electron video player to learn Japanese. It has main language dictionary and tokenizer (morphological analyzer), heavily based on External software MeCab
 	pkgver = 4.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hockyy/miteiru
 	arch = any
-	license = CC-BY-NC-SA-4.0
+	license = CC-BY-NC-4.0
 	makedepends = npm
 	makedepends = nodejs
 	makedepends = gendesk
 	makedepends = git
 	makedepends = libicns
 	makedepends = node-gyp
-	makedepends = make
-	makedepends = gcc
+	makedepends = base-devel
 	depends = electron21
 	depends = mecab
 	depends = java-runtime
-	depends = lib32-glibc
 	conflicts = miteiru
 	source = miteiru.git::git+https://github.com/hockyy/miteiru.git#tag=v4.0.2
 	source = miteiru.sh
