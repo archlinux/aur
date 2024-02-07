@@ -9,7 +9,7 @@ url="https://github.com/garethgeorge/${pkgname}"
 license=("GPL3")
 depends=("glibc" "restic")
 makedepends=("npm" "git" "go" "go.rice")
-source=("${pkgname}::git+${url}"
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}@.service")
 sha256sums=('SKIP'
             '54d7ceddc2d3abb1c00a3f45ff7dd43b5fdc05c6be1019ead7f7cbf4a40ab926')
@@ -19,7 +19,6 @@ build() {
     local ldflags="-s -w -extldflags '${LDFLAGS}'"
 
     cd "${pkgname}"
-    git checkout "v${pkgver}"
     npm --prefix webui install
     npm --prefix webui run build
     find webui/dist -name '*.map' -exec rm ./{} \;
