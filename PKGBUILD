@@ -3,7 +3,7 @@
 pkgname=('clang-prefixed-release')
 #pkgver=15.0.7
 _pkgver=18.1.0
-_pkg_suffix=rc1
+_pkg_suffix=rc2
 _pkgver_suffix=${_pkgver}
 _pkgver_dash_suffix=${_pkgver}
 if [[ -n ${_pkg_suffix} ]]; then
@@ -23,7 +23,7 @@ checkdepends=("python-psutil")
 # stable
 #source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz")
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${_pkgver_dash_suffix}/llvm-project-${_pkgver_suffix}.src.tar.xz")
-sha512sums=('85afc331c8a023f4d8177cc42143b968b94d6987a7ed38b8be1170c6b4e1ef1a79d2d4e44d5fae98b713959b5d69bd4e44c6ba84355f59e8fe99588cbca03d7a')
+sha512sums=('b595bb5d029723fee4e8f8edeaddd6fdcd48d668f66f4239e3208fd19d3a3622e8e4f90ae3fa4b1216fca1621d6c6b6ebf4d99dec7febff2457d0ceb79e8617a')
 install=clang.install
 static_build=false
 build_with_gcc=true
@@ -60,6 +60,7 @@ if ! $static_build; then
 fi
 
 if $build_with_gcc; then
+	# libc extricated since it did not build with gcc 13 on last attempt; if it builds for you, let me know
 	additional_build_options="${additional_build_options} -DLLVM_ENABLE_PROJECTS=bolt;clang;clang-tools-extra;libclc;lld;lldb;openmp;polly;pstl;compiler-rt"
 else
 	additional_build_options="${additional_build_options} ${build_with_clang_options}"
