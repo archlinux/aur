@@ -1,7 +1,7 @@
 pkgbase = notes-nc-bin
 	pkgdesc = Cross-platform Notes desktop application for markdown notes
 	pkgver = 0.8.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/mscharley/notes-nc
 	arch = x86_64
 	license = MIT
@@ -17,6 +17,6 @@ pkgbase = notes-nc-bin
 	source = notes-nc.sh
 	sha256sums = e0408b98f96518be982163e9268e9b715b8e76abb09b1d7fd36df08467586c59
 	sha256sums = 3dcc1e196d70d5503a020194e91d5d663f428c349622d1f0eb545ec2f354264b
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = notes-nc-bin
