@@ -1,6 +1,6 @@
 pkgbase = gwyddion
 	pkgdesc = A data visualization and processing tool for scanning probe miscroscopy (SPM, i.e. AFM, STM, MFM, SNOM/NSOM, ...) and profilometry, useful also for general image and 2D data analysis
-	pkgver = 2.64
+	pkgver = 2.65
 	pkgrel = 1
 	url = http://gwyddion.net/
 	arch = i686
@@ -24,7 +24,9 @@ pkgbase = gwyddion
 	optdepends = cfitsio: import of Flexible Image Transport System (FITS) files
 	optdepends = openexr: import and export of OpenEXR HDR images
 	optdepends = hdf5: import of Ergo data files
-	source = https://downloads.sourceforge.net/sourceforge/gwyddion/gwyddion-2.64.tar.xz
-	sha256sums = 1432f85c31c7e96605e3b3ac9e1c6933bb3b61a76eb620838dc24a085f19942c
+	source = https://downloads.sourceforge.net/sourceforge/gwyddion/gwyddion-2.65.tar.xz
+	source = gwyddion-no-jxl.patch
+	sha256sums = 9115fb0a83c963c62460da1d7b9834382c9698bfb9b0cf29b829a4f591369ea3
+	sha256sums = b479ffe00737e45fe61ae757b3a8c62f707e8ae4efbe28b20aa0da84bb5f8c1b
 
 pkgname = gwyddion
