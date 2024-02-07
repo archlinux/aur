@@ -6,7 +6,7 @@
 # Contributor: Schrodinger Zhu <i at zhuyi dot fan>
 # Contributor: Davide Depau <davide at depau dot eu>
 
-pkgname=jdk-openj9-bin
+pkgname=jdk21-openj9-bin
 _jdkver=21
 _jdkminor=0
 _jdkpatch=1
