@@ -3,14 +3,14 @@
 
 pkgname=radicle-cli-bin
 # there are no versions attached to the binaries, just upload dates.
-pkgver=20240205
-_srchash="8928c5ee2628e0b4d738289b5030fc3e2a918e5e"
+pkgver=20240207
+_srchash="fe55de181d4320a0cd7a6ebd2820764280ae9adc"
 pkgrel=1
 pkgdesc="cli for radicle, a peer-to-peer GitHub alternative"
 arch=('x86_64' 'aarch64')
 url="https://app.radicle.xyz/nodes/seed.radicle.xyz/rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5"
 _srcurl="https://files.radicle.xyz/$_srchash/$CARCH-unknown-linux-musl"
-_license_url="https://seed.radicle.xyz/raw/rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5/8928c5ee2628e0b4d738289b5030fc3e2a918e5e/LICENSE-MIT"
+_license_url="https://seed.radicle.xyz/raw/rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5/fe55de181d4320a0cd7a6ebd2820764280ae9adc/LICENSE-MIT"
 _license_sha256sum="fff889db903497b59500b5171806c511b3c83df1100532c2f7aa8f96af46cc4d"
 _prefix=$pkgname-$pkgver
 source_x86_64=(
@@ -32,21 +32,21 @@ source_aarch64=(
 	$_prefix-LICENSE-MIT::$_license_url
 )
 sha256sums_x86_64=(
-	'd09e834b69001da5fd9b9c3719547372214a5c7fc474e8e781e6419ff5fcbb4f'
-	'8779228a27d72ab691c9582ca7b5e7be8157fa6707bc35522f21004460df1008'
-	'adfc2b22a2516ef76971fb7a6ab22b65818e7c06f65e4f48f94e8d808cc1bb49'
-	'8bba8384d3e9200731e95b47d633204bbdea0e09de3d220033dddb7c72e36f85'
-	'df05d3c637e67f601fcdb8a0e1f0236ac8e96bd649df44bf2b1045f9909c2d23'
-	'6cb194c2da73f63841fdb24d9b2f4a6036e67eb61c6b4c24665560a6165771bc'
+	'17848c5d1a1efa3068d7b6af9f899b47897f20fb45738b4d6ba59a4f76b41141'
+	'0416db28d2794deeec7e98d814e448aaced9dcd7bff35aa7a8550119919c65a0'
+	'baf25d99703ae8b450644317e4b5b91d5383753a87624831cd0fb97129d4515d'
+	'4d1e754793f22993c4f3ced32371e2ca79168c96fa053d5b5d03fec63c387812'
+	'1cff9a066395f4d970c4375ba23e6c66f67a2a52bd8294a2db5d457ab8a28021'
+	'adb8c65560eeda99542cd9444c0edf99458981bb2b5a0a5e0cc259e65f67aa42'
 	$_license_sha256sum
 )
 sha256sums_aarch64=(
-	'67427acd7ec3c5a404598a2a4bdb1e84e32864b678149dc1face98067f8ddae2'
-	'95a194834c251bd48b510559f21258a63c09ba378a1ef66bd57074df57504b9d'
-	'4f5066d8b5a99c5b682a4c90841fb2d0e595b2f8fd324626a5dd67c4483eb3b8'
-	'8a58e6cb60757f93d673fd739b749e433a8e08dfc81b9e7005be1fb2e8744590'
-	'e4eb90bb6d9fcdfefefef69711031d91aacc19cc982fb6bdbcc12e6e09cdff30'
-	'6a66739f2706ef5b7f754cced4858164162112a8b44c5bd152e74b927bcf7a32'
+	'6ea46cbf7dc8a60a2be0478fece7c010f93c41bf25cd67ee4d6b94687b6e372c'
+	'195652501442ee9b26aa84723f79d326b7e9eae6718a681eda839d4ca754a8d5'
+	'ce03d7f9e95c1a17622e3b79298e4bb3c07868dd0ccd48fc12967815de56cb90'
+	'7af924a48183c113a64b30a7ce0d05135f077d7474141e7b0dcc32861aa4472a'
+	'0c91299442ca3a830936606c3bc8c98e4ae9c01bcb8f5ef7c1cb1b3745d03817'
+	'ebda57c96b426b2a6d6300f8a571b2a61c54b4153a80a684b79d8f3e22716b2e'
 	$_license_sha256sum
 )
 install="radicle-cli-bin.install"
