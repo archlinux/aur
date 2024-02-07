@@ -1,6 +1,6 @@
 pkgbase = r-jackstraw
 	pkgdesc = Statistical Inference for Unsupervised Learning
-	pkgver = 1.3.8
+	pkgver = 1.3.9
 	pkgrel = 1
 	url = https://cran.r-project.org/package=jackstraw
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-jackstraw
 	depends = r-qvalue
 	depends = r-rsvd
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/jackstraw_1.3.8.tar.gz
-	sha256sums = 897146888be7f7962a038939fa88005de729f4fcbf4291f6577d59f456cca011
+	source = https://cran.r-project.org/src/contrib/jackstraw_1.3.9.tar.gz
+	sha256sums = 6a599ec3803c64884973eeab44aaf5a78ec44406ef4f536993406e4b6c90f871
 
 pkgname = r-jackstraw

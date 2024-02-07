@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=jackstraw
-_pkgver=1.3.8
+_pkgver=1.3.9
 pkgname=r-${_pkgname,,}
-pkgver=1.3.8
+pkgver=1.3.9
 pkgrel=1
 pkgdesc='Statistical Inference for Unsupervised Learning'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('897146888be7f7962a038939fa88005de729f4fcbf4291f6577d59f456cca011')
+sha256sums=('6a599ec3803c64884973eeab44aaf5a78ec44406ef4f536993406e4b6c90f871')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
