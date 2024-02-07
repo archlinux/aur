@@ -14,13 +14,13 @@ options=('!strip')
 _url="https://github.com/jlambert360/FPM-AppImage/releases"
 _package="Faster_Project_Plus-x86-64.AppImage"
 _launcher="Launcher.tar.gz"
-_sd="ProjectPlusSd${_tagname%.0}.tar.gz"
+_sd="sd.tar.gz"
 source=(
 	"$_package::$_url/download/$pkgver/$_package"
 	"$_launcher::$_url/download/$pkgver/$_launcher"
 	"$_sd::$_url/download/$pkgver/$_sd"
 )
-sha256sums=('aa3e0b48bd5ce4df64177e759e8ce84e20c4af50b0b9004cc030dd6493cd7b64' '1b9dce2fb0eac3ad8cc809826b3b6bfd4ce30dbfc394eaa586e35dcd356fd189' '0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
+sha256sums=('aa3e0b48bd5ce4df64177e759e8ce84e20c4af50b0b9004cc030dd6493cd7b64' '1b9dce2fb0eac3ad8cc809826b3b6bfd4ce30dbfc394eaa586e35dcd356fd189' 'b6aacfbb9443ac67f748b512a22892d2c9255902da8effdc99b1146cc042fba3')
 
 prepare() {
 	chmod +x "$srcdir/$_package"
