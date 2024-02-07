@@ -3,8 +3,8 @@
 pkgname=python-langchain-community
 _module='langchain-community'
 _src_folder='langchain_community-0.0.17'
-pkgver='0.0.17'
-pkgrel=1
+pkgver=0.0.17
+pkgrel=2
 pkgdesc="Community contributed LangChain integrations."
 url="https://github.com/langchain-ai/langchain"
 depends=(python
@@ -55,7 +55,6 @@ depends=(python
     python-typing_extensions
     python-pandas
     python-httpx
-    python-langchain
     python-urllib3
     python-psutil
 )
