@@ -1,6 +1,6 @@
 pkgbase = python-outlines
 	pkgdesc = Guided text generation
-	pkgver = 0.0.26
+	pkgver = 0.0.27
 	pkgrel = 1
 	url = https://github.com/outlines-dev/outlines
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = python-outlines
 	optdepends = python-fastapi: deploy as LLM service
 	optdepends = uvicorn: deploy as LLM service
 	optdepends = python-llama-cpp: llama.cpp backend
-	source = git+https://github.com/outlines-dev/outlines.git#commit=80c0957beaade2f99cb9532011ecd3094270100b
+	source = git+https://github.com/outlines-dev/outlines.git#commit=1626ceaeb0611dd0c4439948072577ca05152f6e
 	sha256sums = SKIP
 
 pkgname = python-outlines

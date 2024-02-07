@@ -2,8 +2,8 @@
 
 pkgname=python-outlines
 _pkgname=${pkgname#python-}
-pkgver=0.0.26
-_commit=80c0957beaade2f99cb9532011ecd3094270100b
+pkgver=0.0.27
+_commit=1626ceaeb0611dd0c4439948072577ca05152f6e
 pkgrel=1
 pkgdesc="Guided text generation"
 arch=(any)
@@ -68,7 +68,7 @@ build() {
 check() {
   cd "$_archive"
 
-  _ignored_tests=(
+  local ignored_tests=(
     # Fails due to the following import error:
     #   ImportError: /usr/lib/python3.11/site-packages/tokenizers/tokenizers.cpython-311-x86_64-linux-gnu.so: undefined symbol: OnigDefaultSyntax
     tests/benchmark/test_benchmark_json_schema.py
@@ -80,25 +80,25 @@ check() {
     # Requires python-llama-cpp which I'm currently unable to install.
     tests/models/test_llama_cpp.py
   )
-  _ignored_tests_arg=$(printf " --ignore=%s" "${_ignored_tests[@]}")
+  local ignored_tests_arg=$(printf " --ignore=%s" "${ignored_tests[@]}")
 
-  _deselected_tests=(
+  local deselected_tests=(
     # Fails due to the following import error:
     #   ImportError: /usr/lib/python3.11/site-packages/tokenizers/tokenizers.cpython-311-x86_64-linux-gnu.so: undefined symbol: OnigDefaultSyntax
     tests/test_function.py::test_function_basic
     tests/fsm/test_regex.py::test_create_fsm_index_tokenizer
   )
-  _deselected_tests_arg=$(printf " --deselect=%s" "${_deselected_tests[@]}")
+  local deselected_tests_arg=$(printf " --deselect=%s" "${deselected_tests[@]}")
 
   rm -rf tmp_install
-  _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   python -m installer --destdir=tmp_install dist/*.whl
 
-  export PYTHONPATH="$PWD/tmp_install/$_site_packages"
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  export PYTHONPATH="$PWD/tmp_install/$site_packages"
   # shellcheck disable=SC2086
   pytest \
-    $_ignored_tests_arg \
-    $_deselected_tests_arg
+    $ignored_tests_arg \
+    $deselected_tests_arg
 }
 
 package() {
