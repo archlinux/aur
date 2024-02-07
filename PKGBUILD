@@ -2,7 +2,7 @@
 
 _pkgname=tumbler
 pkgname=${_pkgname}-devel
-pkgver=4.19.0
+pkgver=4.19.1
 pkgrel=1
 pkgdesc="D-Bus service for applications to request thumbnails"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -22,7 +22,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 backup=('etc/xdg/tumbler/tumbler.rc')
 source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('c03eaf5618e9eba5500fc6cdf6285cef77c153a11123134ca5e635104ea7e5eb')
+sha256sums=('0bf0ac7f84cc24c6582addc750282b7846d1b6f5998fa839b79b1b8f0eba9905')
 
 build() {
   cd "${_pkgname}-${pkgver}"
