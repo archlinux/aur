@@ -3,11 +3,11 @@ pkgname=paster-bin
 _pkgname=paster
 pkgver=1.0.0
 _electronversion=27
-pkgrel=2
+pkgrel=3
 pkgdesc="A clipboard management tool implemented with Electron + React + ArcoDesign.It well be a handy paste tool"
 arch=("x86_64")
 url="https://github.com/zengxiaolou/paste"
-license=('GPL')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -19,11 +19,11 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('051afe059a8eb439c7c8250eda48e5c485ed49abd7d82d7f65f6a4148de25309'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
