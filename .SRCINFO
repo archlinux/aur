@@ -1,12 +1,13 @@
 pkgbase = blisp-bin
 	pkgdesc = ISP tool & library for Bouffalo Labs RISC-V Microcontrollers and SoCs
 	pkgver = 0.0.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/pine64/blisp
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = MIT
+	provides = blisp
 	conflicts = blisp
 	source_x86_64 = https://github.com/pine64/blisp/releases/download/v0.0.4/blisp-linux-x86_64-v0.0.4.zip
 	sha256sums_x86_64 = d811b539b02cabbddf13b1fc79bb22e2284709d18cf02a7ca25faa73f7eb7c74

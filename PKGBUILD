@@ -3,12 +3,13 @@
 pkgname=blisp-bin
 _pkgname=blisp
 pkgver=0.0.4
-pkgrel=4
-pkgdesc="ISP tool & library for Bouffalo Labs RISC-V Microcontrollers and SoCs "
+pkgrel=5
+pkgdesc="ISP tool & library for Bouffalo Labs RISC-V Microcontrollers and SoCs"
 url="https://github.com/pine64/blisp"
 license=("MIT")
 arch=('x86_64' 'armv7h' 'aarch64') 
 conflicts=('blisp')
+provides=('blisp')
 source_x86_64=(https://github.com/pine64/blisp/releases/download/v${pkgver}/blisp-linux-x86_64-v${pkgver}.zip)
 source_armv7h=(https://github.com/pine64/blisp/releases/download/v${pkgver}/blisp-linux-armv7-v${pkgver}.zip)
 source_aarch64=(https://github.com/pine64/blisp/releases/download/v${pkgver}/blisp-linux-aarch64-v${pkgver}.zip)
