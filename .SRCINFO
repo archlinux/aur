@@ -1,7 +1,7 @@
 pkgbase = dbgate-bin
 	pkgdesc = Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others. Runs under Windows, Linux, Mac or as web application
 	pkgver = 5.2.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://dbgate.org/
 	arch = aarch64
 	arch = armv7h
@@ -17,7 +17,7 @@ pkgbase = dbgate-bin
 	source = LICENSE-5.2.7::https://raw.githubusercontent.com/dbgate/dbgate/v5.2.7/LICENSE
 	source = dbgate.sh
 	sha256sums = 4ba7d897a31d45781b6bbc0b87e9a241873d61fff657af2f0c54608f652d235b
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 	source_aarch64 = dbgate-5.2.7-aarch64.AppImage::https://github.com/dbgate/dbgate/releases/download/v5.2.7/dbgate-5.2.7-linux_arm64.AppImage
 	sha256sums_aarch64 = c0f659c4feb350067b29c202656669b3dabb19a9626f6a2df3a51a7116a56a22
 	source_armv7h = dbgate-5.2.7-armv7h.AppImage::https://github.com/dbgate/dbgate/releases/download/v5.2.7/dbgate-5.2.7-linux_armv7l.AppImage
