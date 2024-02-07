@@ -3,17 +3,18 @@ pkgbase = photo-location-map
 	pkgver = 1.9.0
 	pkgrel = 3
 	url = https://tomoyukiaota.github.io/photo-location-map/
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = gendesk
 	makedepends = npm
 	makedepends = nvm
 	makedepends = git
 	depends = electron22
+	depends = nodejs
 	conflicts = photo-location-map
 	source = photo-location-map.git::git+https://github.com/TomoyukiAota/photo-location-map#tag=v1.9.0
 	source = photo-location-map.sh
 	sha256sums = SKIP
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = photo-location-map
