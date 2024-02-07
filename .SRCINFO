@@ -1,7 +1,7 @@
 pkgbase = python-langsmith
 	pkgdesc = LangSmith Client SDK Implementations
 	pkgver = 0.0.86
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/langchain-ai/langsmith-sdk
 	arch = any
 	license = MIT
@@ -12,7 +12,6 @@ pkgbase = python-langsmith
 	depends = python
 	depends = python-pydantic
 	depends = python-requests
-	depends = python-langchain
 	depends = python-openai
 	depends = python-pandas
 	depends = python-psutil
