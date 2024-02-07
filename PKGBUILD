@@ -1,22 +1,20 @@
 # Maintainer:
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
-# options
-: ${CARGO_HOME:=${SRCDEST:-${startdir:?}}/cargo}
-
-if [ x"$_srcinfo" == "xt" ] ; then
+## options
+if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ] ; then
   : ${_autoupdate:=false}
-elif [ -z "$_pkgver" ] ; then
-  : ${_autoupdate:=true}
 else
-  : ${_autoupdate:=false}
+  : ${_autoupdate:=true}
 fi
 
-: ${_pkgtype:=git}
+: ${_build_git:=true}
 
-# basic info
+[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
+
+## basic info
 _pkgname="image-roll"
-pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
+pkgname="$_pkgname${_pkgtype:-}"
 pkgver=2.1.0.r0.g5087079
 pkgrel=1
 pkgdesc="GTK image viewer with basic image manipulation tools"
@@ -34,7 +32,7 @@ _main_package() {
     git
   )
 
-  if [ x"$pkgname" == x"$_pkgname" ] ; then
+  if [ "${_build_git::1}" != "t" ] ; then
     _main_stable
   else
     _main_git
@@ -65,32 +63,33 @@ _main_git() {
 
   pkgver() (
     cd "$_pkgsrc"
-    local _pkgver=$(
-      git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' 2>/dev/null \
-        | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
-    )
-    echo "${_pkgver:?}"
+    git describe --long --tags --abbrev=7 \
+      | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
   )
 }
 
+_rust_env() {
+  export CARGO_HOME="${CARGO_HOME:-${SRCDEST:-${startdir:?}}/cargo-home}"
+  export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
+  export CARGO_TARGET_DIR=target
+}
+
 prepare() {
-  export RUSTUP_TOOLCHAIN=stable
+  _rust_env
 
   cd "$_pkgsrc"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR="${srcdir:?}/target"
+  _rust_env
 
   cd "$_pkgsrc"
   cargo build --release --frozen --all-features
 }
 
 check() {
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR="${srcdir:?}/target"
+  _rust_env
 
   cd "$_pkgsrc"
   cargo test --tests -- --skip current_file || true
@@ -98,16 +97,16 @@ check() {
 
 package() {
   cd "$_pkgsrc"
-  install -Dm755 "$CARGO_TARGET_DIR/release/image-roll" -t "${pkgdir:?}/usr/bin/"
+  install -Dm755 "$CARGO_TARGET_DIR/release/image-roll" -t "$pkgdir/usr/bin/"
 
   install -Dm644 "src/resources/com.github.weclaw1.ImageRoll.desktop" \
-    -t "${pkgdir:?}/usr/share/applications/"
+    -t "$pkgdir/usr/share/applications/"
 
-  install -Dm644 "src/resources/com.github.weclaw1.ImageRoll.svg" -t "${pkgdir:?}/usr/share/icons/hicolor/scalable/apps/"
+  install -Dm644 "src/resources/com.github.weclaw1.ImageRoll.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
 
-  install -Dm644 "src/resources/com.github.weclaw1.ImageRoll.metainfo.xml" -t "${pkgdir:?}/usr/share/metainfo/"
+  install -Dm644 "src/resources/com.github.weclaw1.ImageRoll.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
 
-  install -Dm644 LICENSE -t "${pkgdir:?}/usr/share/licenses/$pkgname/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 # update version
