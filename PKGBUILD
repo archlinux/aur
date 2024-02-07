@@ -8,17 +8,17 @@
 readonly _pkgname="technical"
 
 pkgname="python-technical"
-pkgver="1.4.2"
+pkgver="1.4.3"
 pkgrel="1"
 pkgdesc="Various indicators developed or collected for the Freqtrade."
 arch=("any")
 url="https://github.com/freqtrade/${_pkgname}"
 license=("GPL3")
 depends=("python" "python-arrow" "python-pandas" "python-ta-lib")
-makedepends=("python-build" "python-installer")
+makedepends=("python-build" "python-installer" "python-wheel")
 checkdepends=("python-pytest" "python-mock")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=("7810c0f7afd960e1cfe3064f10a87e899f93c24cd18f7538a54b82f37a06f7f6b7b4f340fe83bad6b4aa9efbd429a566a8bfc9e090063433bc526e3c5db77b83")
+sha512sums=("28ccb869aaa12a39903e6659c19a98546c9e8d21d063e91cd048a2c48cd96ba6333646e51cac0a2aca02dac7b58c1d7e4e5299fd90ded05c5117f4a4d3263d19")
 
 build()
 {
@@ -44,7 +44,6 @@ package()
     # Install the software.
     cd "${srcdir}"/"${_pkgname}"-"${pkgver}"/ || exit 1
     python -m installer -d "${pkgdir}" "${srcdir}"/"${_pkgname}"-"${pkgver}"/dist/*.whl
-    rm -r "${pkgdir}"/"${_site_packages}"/tests/
 
     # Install the documentation.
     install -Dm644 "${srcdir}"/"${_pkgname}"-"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
