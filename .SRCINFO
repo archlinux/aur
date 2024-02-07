@@ -1,6 +1,6 @@
 pkgbase = arbie-git
 	pkgdesc = Encrypted backup and synchronization tool
-	pkgver = v1.3.1.r7.g57fd068
+	pkgver = v1.3.1.r9.gffe0a05
 	pkgrel = 1
 	url = https://github.com/danisztls/arbie
 	install = arbie.install

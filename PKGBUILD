@@ -5,7 +5,7 @@ _gitauthor="danisztls"
 _gitbranch="main"
 
 pkgname="${_pkgname}-git"
-pkgver=v1.3.1.r7.g57fd068
+pkgver=v1.3.1.r9.gffe0a05
 pkgrel=1
 pkgdesc="Encrypted backup and synchronization tool"
 arch=('any')
@@ -21,7 +21,7 @@ conflicts=("${_pkgname}")
 replaces=()
 backup=()
 options=()
-install=arbie.install
+install="${_pkgname}.install"
 changelog=
 source=("git+https://github.com/${_gitauthor}/${_pkgname}.git#branch=${_gitbranch}")
 noextract=()
