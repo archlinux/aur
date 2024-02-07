@@ -1,13 +1,13 @@
 pkgbase = r-lpnet
 	pkgdesc = Linear Programming Model for Network Inference
-	pkgver = 2.34.0
+	pkgver = 2.34.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/lpNet
 	arch = any
 	license = Artistic2.0
 	depends = r
 	depends = r-lpsolve
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/lpNet_2.34.0.tar.gz
-	sha256sums = b685876be94564f7b87b76fb6fdaeac5a6d614a86c226c633b41b64ce6b1c2f1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/lpNet_2.34.1.tar.gz
+	sha256sums = 8fb89dcbd3c1d2eb43338961a9dc565efaf3a844db853613a7d1c1cdae41eefd
 
 pkgname = r-lpnet

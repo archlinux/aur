@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lpNet
-_pkgver=2.34.0
+_pkgver=2.34.1
 pkgname=r-${_pkgname,,}
-pkgver=2.34.0
+pkgver=2.34.1
 pkgrel=1
 pkgdesc='Linear Programming Model for Network Inference'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-lpsolve
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b685876be94564f7b87b76fb6fdaeac5a6d614a86c226c633b41b64ce6b1c2f1')
+sha256sums=('8fb89dcbd3c1d2eb43338961a9dc565efaf3a844db853613a7d1c1cdae41eefd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
