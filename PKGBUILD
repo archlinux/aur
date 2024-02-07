@@ -2,7 +2,7 @@
 
 pkgname=python-langchain
 pkgver=0.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Build context-aware reasoning applications'
 arch=('any')
 url='https://github.com/langchain-ai/langchain'
@@ -15,8 +15,6 @@ depends=(python
     python-aiohttp
     python-dataclasses-json
     python-jsonpatch
-    python-langchain-community
-    python-langchain-core
     python-numpy
     python-pydantic
     python-yaml

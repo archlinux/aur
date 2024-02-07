@@ -1,7 +1,7 @@
 pkgbase = python-langchain
 	pkgdesc = Build context-aware reasoning applications
 	pkgver = 0.1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/langchain-ai/langchain
 	arch = any
 	license = MIT
@@ -13,8 +13,6 @@ pkgbase = python-langchain
 	depends = python-aiohttp
 	depends = python-dataclasses-json
 	depends = python-jsonpatch
-	depends = python-langchain-community
-	depends = python-langchain-core
 	depends = python-numpy
 	depends = python-pydantic
 	depends = python-yaml
