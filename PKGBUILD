@@ -25,5 +25,5 @@ prepare() {
 package() {
     install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 "${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
-    install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
