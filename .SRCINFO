@@ -7,14 +7,13 @@ pkgbase = poissonrecon-git
 	arch = x86_64
 	groups = photogrametry
 	license = MIT
-	makedepends = git
+	depends = boost
 	depends = glibc
 	depends = libpng
 	depends = libjpeg
 	provides = poissonrecon
 	provides = ssdrecon
 	provides = surfacetrimmer
-	options = !makeflags
 	source = poissonrecon-git::git+https://github.com/mkazhdan/PoissonRecon.git
 	sha256sums = SKIP
 
