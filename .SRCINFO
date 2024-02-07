@@ -7,5 +7,6 @@ pkgbase = hitech-arch-animation
 	license = MIT
 	depends = plymouth
 	source = git+https://github.com/xDeFc0nx/HiTech-arch-animation.git#commit=HEAD
+	sha256sums = SKIP
 
 pkgname = hitech-arch-animation
