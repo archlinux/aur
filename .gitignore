@@ -1,6 +1,5 @@
-src
-pkg
-*.pkg.tar.xz
-*.tar.gz
-LICENSE
+raccoon-*.tar.gz
+src/
+pkg/
+python-raccoon-*.pkg.tar*
 *.log

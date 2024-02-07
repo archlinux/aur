@@ -1,18 +1,16 @@
 pkgbase = python-raccoon
 	pkgdesc = Python DataFrame with fast insert and appends
-	pkgver = 3.0.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://raccoon.readthedocs.io
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-tabulate
-	optdepends = python-blist: performance improvements for modifying large lists
-	source = https://files.pythonhosted.org/packages/source/r/raccoon/raccoon-3.0.0.tar.gz
-	source = https://raw.githubusercontent.com/rsheftel/raccoon/master/LICENSE
-	sha256sums = 224df0afa23c85847b0d9c0ef90d9e1270bd958742af5764daa731448e0dba87
-	sha256sums = a96e75fc0f88ed8bad941facf1548a78e3fe68bf374fe2dbf0baaa535c758a5c
+	source = https://files.pythonhosted.org/packages/source/r/raccoon/raccoon-3.1.1.tar.gz
+	sha256sums = a8d16fdc8671a35c9652046cb5122aa6b1b21954ccf00a654afa7d159287b7ab
 
 pkgname = python-raccoon
-
