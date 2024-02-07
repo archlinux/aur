@@ -3,7 +3,7 @@ pkgname=lemmy-modder-app-bin
 _pkgname="Lemmy Modder"
 pkgver=0.4.0
 _electronversion=25
-pkgrel=3
+pkgrel=4
 pkgdesc="A Lemmy moderation tool for community moderators and site admins, but on steroids."
 arch=("x86_64")
 url="https://github.com/tgxn/lemmy-modder"
@@ -20,11 +20,11 @@ source=(
 )
 sha256sums=('14a0d44f25b697e85095c8d4edd1d054182e0cff47214b886b0a37891c4947d9'
             'cd61b504273b9fe1901027491f0a1d6164fe20053ebe74838ba7783760424759'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\"|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
