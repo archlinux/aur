@@ -1,0 +1,17 @@
+pkgbase = python-vpython
+	pkgdesc = VPython for Jupyter Notebook
+	pkgver = 7.6.4
+	pkgrel = 1
+	url = https://pypi.org/project/vpython
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-pdm
+	makedepends = cython
+	makedepends = python-setuptools-scm
+	depends = python
+	provides = python-marko
+	source = https://files.pythonhosted.org/packages/source/v/vpython/vpython-7.6.4.tar.gz
+	sha256sums = 162ed54db313e5f87f9704b13942d3a0c7ad2da88b287d3baeb46e0eba7ffccc
+
+pkgname = python-vpython
