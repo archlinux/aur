@@ -15,8 +15,10 @@ optdepends=('gstreamer: gstreamer input support'
             'mpg123: libmpg123 input support')
 provides=('loudness-scanner')
 conflicts=('loudness-scanner')
-source=("$pkgname::git+https://github.com/jiixyj/loudness-scanner.git")
-md5sums=('SKIP')
+source=("$pkgname::git+https://github.com/jiixyj/loudness-scanner.git"
+        "fix_build.patch")
+sha256sums=('SKIP'
+            '3b485bbf4d76576ab323e47701cd3594ddab0d198adff8ec1f17d25369e2490d')
 
 prepare() {
   cd "$srcdir/$pkgname"
@@ -25,9 +27,8 @@ prepare() {
 }
 
 build() {
-  cp "$startdir/fix_build.patch" "$srcdir/$pkgname"
-  cd "$srcdir/$pkgname"
-  git apply ./fix_build.patch
+  cd "${srcdir}/${pkgname}"
+  git apply "${startdir}/fix_build.patch"
   env PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig:/usr/lib/taglib1/lib/pkgconfig" \
       cmake -DDISABLE_GTK2:BOOL=ON -DDISABLE_QT5:BOOL=ON --log-level=VERBOSE .
   make

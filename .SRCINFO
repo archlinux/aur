@@ -21,6 +21,8 @@ pkgbase = loudness-scanner-git
 	provides = loudness-scanner
 	conflicts = loudness-scanner
 	source = loudness-scanner-git::git+https://github.com/jiixyj/loudness-scanner.git
-	md5sums = SKIP
+	source = fix_build.patch
+	sha256sums = SKIP
+	sha256sums = 3b485bbf4d76576ab323e47701cd3594ddab0d198adff8ec1f17d25369e2490d
 
 pkgname = loudness-scanner-git
