@@ -1,5 +1,7 @@
 # SPDX-License-Identifier: AGPL-3.0
 #
+# Maintainer:  Truocolo <truocolo@aol.com>
+# Maintainer:  Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Axel Navarro < navarroaxel at gmail >
@@ -16,7 +18,8 @@ pkgrel=1
 pkgdesc='Evented I/O for V8 javascript'
 arch=(
   'x86_64'
-  'arm')
+  'arm'
+)
 url='https://nodejs.org/'
 license=('MIT')
 depends=('openssl' 'zlib' 'icu' 'libuv' 'libnghttp2' 'c-ares') # 'http-parser' 'v8')
