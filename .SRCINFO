@@ -1,6 +1,6 @@
 pkgbase = python-blackdoc
 	pkgdesc = Run Black on documentation code snippets
-	pkgver = 0.3.8
+	pkgver = 0.3.9
 	pkgrel = 1
 	url = https://github.com/keewis/blackdoc
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-blackdoc
 	depends = python-rich
 	optdepends = ipython: for working with .ipynb files
 	optdepends = python-tokenize-rt: for working with .ipynb files
-	source = https://files.pythonhosted.org/packages/source/b/blackdoc/blackdoc-0.3.8.tar.gz
-	sha256sums = 3c9d5534f92557a627a31550c7faec8363b5b0929bbb0ca3f5df179a81a9d6b2
+	source = https://files.pythonhosted.org/packages/source/b/blackdoc/blackdoc-0.3.9.tar.gz
+	sha256sums = b1da5ca93550081fc3f1b34bfdc731431ee74c378ea63abb31771a222ef5d053
 
 pkgname = python-blackdoc
