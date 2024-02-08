@@ -1,7 +1,7 @@
 # Maintainer: Michael Cooper <mythmon at gmail dot com>
 pkgname=zsa-keymapp-bin
 _pkgname=keymapp
-pkgver=1.0.7
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="A live visual reference for your ZSA keyboard"
 arch=(x86_64)
@@ -14,9 +14,10 @@ source=("https://oryx.nyc3.cdn.digitaloceanspaces.com/${_pkgname}/${_pkgname}-${
         "keymapp.png")
 provides=()
 conflicts=()
-sha256sums=('06608b17fe308c10f14e8316d0e62a23a3d9c2a99cb6006cee707282627e60e5'
+sha256sums=('6294f6662c3ec077b6ad87fa3723c74b05fb8913c4c7292b5834b658976baf3b'
             '2dab50a9b558b6d3f8c6f59ad3b9aa584717f093faf546179cd3587ba41d1e20'
             '0eeef059153ccc07f1f16ae74d5ab9b55bdac0119639a9576f1677164cb86231')
+
 
 prepare() {
     chmod +x "${srcdir}/keymapp"
