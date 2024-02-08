@@ -3,39 +3,39 @@
 _pkgname=hiddify-next
 pkgname=${_pkgname}-bin
 pkgver=0.15.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform proxy app. Auto, SSH, VLESS, Vmess, Trojan, Reality, Sing-Box, Clash, Xray, Shadowsocks"
 arch=(x86_64)
 url='https://github.com/hiddify/hiddify-next'
 license=('CC-BY-NC-SA-4.0')
-depends=('hicolor-icon-theme' 'zlib' 'glibc' 'fuse2')
+depends=('hicolor-icon-theme' 'zlib' 'glibc' 'fuse2' 'gcc-libs' 'glib2')
 optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
 )
 provides=('hiddify')
 conflicts=(${_pkgname} ${_pkgname}-git)
-options=(!strip)
 source=(
-    "$_pkgname-$pkgver.zip::https://github.com/hiddify/hiddify-next/releases/download/v${pkgver}/hiddify-linux-x64.zip"
+    "$_pkgname-$pkgver.zip::https://github.com/hiddify/hiddify-next/releases/download/v${pkgver}/hiddify-debian-x64.zip"
 )
 sha256sums=(
-    "bdc596a2ef42b1f80124da8ec5c8254ff3400e6b0287e82d4766956cbe2cb8a4"
+    "627ac14ce4c552baea17c5d50a82da874055f92171351e5580f13f080e3ffe8a"
 )
 _install_path="/opt/$_pkgname"
 
 prepare() {
     cd "${srcdir}"
-    chmod a+x "hiddify-linux-x64.AppImage"
-    ./hiddify-linux-x64.AppImage --appimage-extract >/dev/null
-    sed -i 's/Exec=/Exec=env /' "${srcdir}/squashfs-root/hiddify.desktop"
+    ar x hiddify-debian-x64.deb
+    tar --zstd -xf data.tar.zst
+    sed -i '/Version/d' "${srcdir}/usr/share/applications/hiddify.desktop"
 }
 
 package() {
-    install -Dm755 "${srcdir}/hiddify-linux-x64.AppImage" "${pkgdir}/${_install_path}/hiddify.AppImage"
-    install -Dm644 "${srcdir}/squashfs-root/hiddify.desktop" "$pkgdir/usr/share/applications/hiddify.desktop"
-    for _icons in 128x128 256x256; do
-        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/hiddify.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/hiddify.png"
-    done
+    cd ${srcdir}/usr/share/hiddify
+    find . -type f -exec install -Dm 755 {} "$pkgdir/$_install_path"/{} \;
+    cd ${srcdir}/usr/share/icons
+    find . -type f -exec install -Dm 755 {} "$pkgdir/usr/share/icons"/{} \;
+    cd ${srcdir}/usr/share/applications
+    find . -type f -exec install -Dm 755 {} "$pkgdir/usr/share/applications"/{} \;
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${_pkgname}/hiddify.AppImage" "${pkgdir}/usr/bin/hiddify"
+    ln -s "/opt/${_pkgname}/hiddify" "${pkgdir}/usr/bin/hiddify"
 }
