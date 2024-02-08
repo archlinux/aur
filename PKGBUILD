@@ -13,7 +13,7 @@ pkgbase=oss-git
 pkgname=oss-git
 true && pkgname=(oss-git libflashsupport-oss-git)
 pkgver=5693e1e
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64 pentium4)
 url="http://developer.opensound.com/"
 license=(GPL2)
@@ -88,6 +88,10 @@ prepare() {
   rm oss/scripts/*oss_usb-create-device*
   patch -p1 < "$srcdir/soundon.patch"
 
+  # include conf directory in package so that
+  # it is deleted when package is uninstalled.
+  sed -i 's/conf.tmpl/conf/' build.sh 
+  sed -i 's/conf.tmpl/conf/' build_arm.sh
   # FS#35672
   # - no longer required (from commit 3e7a6c)
   # mv oss/build/{osscore.c,osscore_wrapper.c}
