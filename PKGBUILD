@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0
+#
+# Maintainer: Truocolo <truocolo@aol.com>
 # Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Daniel M. Capella <polyzen@archlinux.org>
@@ -6,7 +9,7 @@
 _name=TypeScript
 _pkgname=typescript
 pkgname="${_pkgname}-git"
-pkgver=5.1.5+6696ecd37
+pkgver=5.1.5.r6696ecd37
 pkgrel=1
 pkgdesc='JavaScript with syntax for types'
 arch=('any')
@@ -27,36 +30,109 @@ source=(
 b2sums=(
   'SKIP')
 
+_parse_ver() {
+  local \
+    _pkgver="${1}" \
+    _out="" \
+    _ver \
+    _rev \
+    _commit
+  _ver="$( \
+    echo \
+      "${_pkgver}" | \
+          awk \
+            -F '+' \
+            '{print $1}')"
+  _rev="$( \
+    echo \
+      "${_pkgver}" | \
+          awk \
+            -F '+' \
+            '{print $2}')"
+  _commit="$( \
+    echo \
+      "${_pkgver}" | \
+          awk \
+            -F '+' \
+            '{print $3}')"
+  _out=${_ver}
+  if [[ "${_rev}" != "" ]]; then
+    _out+=".r${_rev}"
+  fi
+  if [[ "${_commit}" != "" ]]; then
+    _out+=".${_commit}"
+  fi
+  echo \
+    "${_out}"
+}
+
 pkgver() {
-  local _pkgver
-  cd "${_name}"
-  _pkgver="$(git describe --tags | sed 's/-/+/g')"
+  local \
+    _pkgver
+  cd \
+    "${_name}"
+  _pkgver="$( \
+    git \
+      describe \
+      --tags | \
+      sed \
+        's/-/+/g')"
   if [ "${_pkgver}" = "" ]; then
-    echo "${pkgver}+$(git describe --tags --always)"
+    echo "${pkgver}.r$(git describe --tags --always)"
+  else
+  _parse_ver \
+    "${_pkgver}"
   fi 
 }
 
 prepare() {
-  cd "${_name}"
-  npm ci
+  cd \
+    "${_name}"
+  npm \
+    ci
 }
 
 build() {
-  cd "${_name}"
-  npx hereby LKG
+  cd \
+    "${_name}"
+  npx \
+    hereby \
+      LKG
 }
 
 check() {
-  cd "${_name}"
-  npm run test
+  cd \
+    "${_name}"
+  npm \
+    run \
+      test
 }
 
 package() {
-  install -d "${pkgdir}/usr/"{bin,"lib/node_modules/${_pkgname}"}
-  ln -s "../lib/node_modules/${_pkgname}/bin/"{tsc,tsserver} "${pkgdir}/usr/bin"
+  install \
+    -d \
+    "${pkgdir}/usr/"{bin,"lib/node_modules/${_pkgname}"}
+  ln \
+    -s \
+    "../lib/node_modules/${_pkgname}/bin/"{tsc,tsserver} \
+    "${pkgdir}/usr/bin"
 
-  cd "${_name}"
-  rsync -r --exclude .gitattributes README.md SECURITY.md bin lib package.json \
-        "${pkgdir}/usr/lib/node_modules/${_pkgname}"
-  install -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" ThirdPartyNoticeText.txt
+  cd \
+    "${_name}"
+  rsync \
+    -r \
+    --exclude \
+    .gitattributes \
+    README.md \
+    SECURITY.md \
+    bin \
+    lib \
+    package.json \
+    "${pkgdir}/usr/lib/node_modules/${_pkgname}"
+  install \
+    -Dt \
+    "${pkgdir}/usr/share/licenses/${_pkgname}" \
+    ThirdPartyNoticeText.txt
 }
+
+# vim:set sw=2 sts=-1 et:
