@@ -1,7 +1,7 @@
 pkgbase = shaka-packager-bin
 	pkgdesc = A tool and a media packaging SDK for DASH and HLS packaging and encryption.
 	pkgver = 2.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shaka-project/shaka-packager
 	arch = x86_64
 	arch = aarch64

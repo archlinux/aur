@@ -4,7 +4,7 @@
 _name=shaka-packager
 pkgname="$_name-bin"
 pkgver='2.6.1'
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool and a media packaging SDK for DASH and HLS packaging and encryption.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/shaka-project/shaka-packager'
@@ -21,5 +21,6 @@ sha256sums_aarch64=('ebeed27e7c1546ca85c08effd45ef2a95b64255228385526868194dcfea
 
 package() {
     install -Dm755 "packager-$CARCH-$pkgver" "$pkgdir"/usr/bin/packager
+    ln -s packager "$pkgdir"/usr/bin/shaka-packager
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/shaka-packager-bin/LICENSE
 }
