@@ -1,12 +1,12 @@
 pkgbase = jmc-adoptium
 	pkgdesc = Java Mission Control from Adoptium
 	pkgver = 9.0.0_SNAPSHOT
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/adoptium/jmc-build
 	arch = x86_64
 	provides = jmc-adoptium
 	options = !strip
-	source = 9.0.0_SNAPSHOT-9.0.0-SNAPSHOT.tar.gz::https://github.com/adoptium/jmc-build/releases/download/9.0.0-SNAPSHOT/org.openjdk.jmc-9.0.0-SNAPSHOT-linux.gtk.x86_64.tar.gz
+	source = org.openjdk.jmc-9.0.0-SNAPSHOT-linux-6.gtk.x86_64.tar.gz::https://github.com/adoptium/jmc-build/releases/download/9.0.0-SNAPSHOT/org.openjdk.jmc-9.0.0-SNAPSHOT-linux.gtk.x86_64.tar.gz
 	sha512sums = fe3e6c279e0ffb9f9772c3d03f20d6552a68a0f36b764f90a94542114345f42a2190aaa048c8fb593cda536272bee521cb218e99710f01fc3585958d06060096
 
 pkgname = jmc-adoptium
