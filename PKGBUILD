@@ -3,7 +3,7 @@
 pkgname=waylyrics-git
 _pkgname=waylyrics
 _appname="io.poly000.${_pkgname}"
-pkgver=0.2.0_r506.gbb1c38e
+pkgver=0.2.0_r13.gad9f2e0
 pkgrel=1
 pkgdesc="general desktop lyrics with QQMusic/NetEase Cloud Music source"
 url="https://github.com/waylyrics/waylyrics"
@@ -41,7 +41,7 @@ pkgver() {
     export RUSTUP_TOOLCHAIN=stable
     semver=$( cargo metadata --no-deps --format-version=1 |
         jq -r '.packages | .[0] | .version' )
-    echo "${semver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+    echo "${semver}_r$(git rev-list --count v${semver}..HEAD).g$(git rev-parse --short HEAD)"
 }
 
 check() {
