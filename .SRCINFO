@@ -1,0 +1,21 @@
+pkgbase = melt-mdeditor-git
+	pkgdesc = A Markdown Editor.Based on the GitHub Flavored Markdown Spec.
+	pkgver = 2.12.1.r0.gec6da7b
+	pkgrel = 1
+	url = https://github.com/qazsato/melt
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = git
+	makedepends = npm
+	makedepends = nvm
+	depends = electron27
+	depends = hicolor-icon-theme
+	provides = melt-mdeditor
+	conflicts = melt-mdeditor
+	source = melt-mdeditor.git::git+https://github.com/qazsato/melt.git
+	source = melt-mdeditor.sh
+	sha256sums = SKIP
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+
+pkgname = melt-mdeditor-git
