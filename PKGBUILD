@@ -5,12 +5,13 @@ _pkgname=quanteda
 _pkgver=3.3.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Quantitative Analysis of Textual Data"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL3)
+license=('GPL-3.0-only')
 depends=(
+  onetbb
   r-fastmatch
   r-jsonlite
   r-magrittr

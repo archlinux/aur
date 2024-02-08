@@ -1,10 +1,10 @@
 pkgbase = r-quanteda
 	pkgdesc = Quantitative Analysis of Textual Data
 	pkgver = 3.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=quanteda
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-dplyr
 	checkdepends = r-lda
 	checkdepends = r-lsa
@@ -15,6 +15,7 @@ pkgbase = r-quanteda
 	checkdepends = r-tm
 	checkdepends = r-topicmodels
 	makedepends = r-rcpparmadillo
+	depends = onetbb
 	depends = r-fastmatch
 	depends = r-jsonlite
 	depends = r-magrittr
