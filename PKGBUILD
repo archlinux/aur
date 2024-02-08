@@ -1,6 +1,6 @@
 pkgname=python-radexreader
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Reader for the RADEX RD1212 and ONE Geiger counters"
 arch=('any')
 url='https://github.com/luigifab/python-radexreader'
@@ -25,19 +25,13 @@ package() {
   cd "$pkgname-$pkgver/src"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
-  mkdir -p "$pkgdir/usr/bin/"
-  install -pm 755 radexreader.py "$pkgdir/usr/bin/"
+  install -Dpm 755 radexreader.py "$pkgdir/usr/bin/radexreader"
 
-  mkdir -p "$pkgdir/usr/share/doc/$pkgname/"
-  install -pm 644 ../README.md "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dpm 644 ../debian/radexreader.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
+  install -Dpm 644 ../debian/radexreader.fr.1 "$pkgdir/usr/share/man/fr/man1/$pkgname.1"
 
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
-  install -pm 644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dpm 644 ../debian/udev "$pkgdir/usr/lib/udev/rules.d/60-$pkgname.rules"
 
-  mkdir -p "$pkgdir/usr/share/man/man1/" "$pkgdir/usr/share/man/fr/man1/"
-  install -pm 644 ../debian/radexreader.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
-  install -pm 644 ../debian/radexreader.fr.1 "$pkgdir/usr/share/man/fr/man1/$pkgname.1"
-
-  mkdir -p "$pkgdir/usr/lib/udev/rules.d/"
-  install -pm 644 ../debian/udev "$pkgdir/usr/lib/udev/rules.d/60-$pkgname.rules"
+  install -Dpm 644 ../README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dpm 644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

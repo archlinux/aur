@@ -1,7 +1,7 @@
 pkgbase = python-radexreader
 	pkgdesc = Reader for the RADEX RD1212 and ONE Geiger counters
 	pkgver = 1.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/luigifab/python-radexreader
 	arch = any
 	license = GPL2
