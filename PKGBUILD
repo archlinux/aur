@@ -3,14 +3,15 @@
 _pkgname=writexl
 _pkgver=1.4.2
 pkgname=r-${_pkgname,,}
-pkgver=1.4.2
-pkgrel=1
+pkgver=${_pkgver//-/.}
+pkgrel=3
 pkgdesc="Export Data Frames to Excel 'xlsx' Format"
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('BSD')
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('BSD-2-Clause')
 depends=(
   r
+  zlib
 )
 optdepends=(
   r-bit64
@@ -20,15 +21,18 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8f75633eb2b6349a07db347d5b6bf40781a8dab63b6cb858849a616e9b629027')
+md5sums=('a3aa61175d96072a56932d739d66735f')
+b2sums=('3e97ae4b8f0006a6311f0a13cfd96e88bcfd517a036123c7da3384f21b670b08830d44ebc41d00b089d4ddcc199633bde3ffc723524f6f9200241bae60097fd5')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
