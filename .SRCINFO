@@ -8,7 +8,7 @@ pkgbase = zx
 	makedepends = npm
 	makedepends = git
 	depends = nodejs
-	source = git+https://github.com/google/zx.git#commit=d1cd1aa02e3fab7ca4f048d9571b77b6ce25d559
+	source = git+https://github.com/google/zx.git#commit=483cc88041feed8df4224860fdca1f76753eebf8
 	md5sums = SKIP
 
 pkgname = zx

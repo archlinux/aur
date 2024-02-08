@@ -1,8 +1,9 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
+# Contributor: Alex D'Andrea <alex at dandrea dot io>
 
 pkgname=zx
 pkgver=7.2.2
-_commit=d1cd1aa02e3fab7ca4f048d9571b77b6ce25d559 # tags/7.2.2
+_commit=483cc88041feed8df4224860fdca1f76753eebf8 # tags/7.2.3
 pkgrel=1
 pkgdesc='A tool for writing better scripts'
 arch=(any)
@@ -11,7 +12,7 @@ license=(Apache)
 depends=(nodejs)
 makedepends=(npm git)
 source=("git+$url.git#commit=$_commit")
-md5sums=(SKIP)
+md5sums=('SKIP')
 
 build() {
 	cd "$pkgname"
