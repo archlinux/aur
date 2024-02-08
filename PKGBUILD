@@ -3,7 +3,7 @@
 _pkgname=hiddify-next
 pkgname=$_pkgname-git
 pkgver=0.15.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform proxy app. Auto, SSH, VLESS, Vmess, Trojan, Reality, Sing-Box, Clash, Xray, Shadowsocks"
 arch=(x86_64)
 url='https://github.com/hiddify/hiddify-next'
@@ -64,9 +64,9 @@ package() {
     cd ${srcdir}/usr/share/hiddify
     find . -type f -exec install -Dm 755 {} "$pkgdir/$_install_path"/{} \;
     cd ${srcdir}/usr/share/icons
-    find . -type f -exec install -Dm 755 {} "$pkgdir/usr/share/icons"/{} \;
+    find . -type f -exec install -Dm 644 {} "$pkgdir/usr/share/icons"/{} \;
     cd ${srcdir}/usr/share/applications
-    find . -type f -exec install -Dm 755 {} "$pkgdir/usr/share/applications"/{} \;
+    find . -type f -exec install -Dm 644 {} "$pkgdir/usr/share/applications"/{} \;
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${_pkgname}/hiddify" "${pkgdir}/usr/bin/hiddify"
 }
