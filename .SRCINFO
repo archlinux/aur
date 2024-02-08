@@ -1,10 +1,10 @@
 pkgbase = flipperbit
 	pkgdesc = Corrupted files generator. Random bits flipper.
 	pkgver = 0.1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://crates.io/crates/flipperbit
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc

@@ -2,11 +2,11 @@
 
 pkgname=flipperbit
 pkgver=0.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Corrupted files generator. Random bits flipper.'
 url='https://crates.io/crates/flipperbit'
 arch=('x86_64')
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
