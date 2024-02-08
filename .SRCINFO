@@ -1,7 +1,7 @@
 pkgbase = rivalcfg
 	pkgdesc = CLI tool and Python library to configure SteelSeries gaming mice
-	pkgver = 4.10.0
-	pkgrel = 2
+	pkgver = 4.11.0
+	pkgrel = 1
 	url = https://github.com/flozz/rivalcfg
 	install = install
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = rivalcfg
 	depends = hidapi
 	depends = python-hidapi
 	depends = python-setuptools
-	source = rivalcfg-4.10.0.tar.gz::https://github.com/flozz/rivalcfg/archive/v4.10.0.tar.gz
-	sha512sums = 40309b71c0e0a9682eceb9e7f57905622d9cba636182044a7cbc2ed02b9a1dd5e88ca978f70b14dbca8864e660a725d0acce3fff4e2898859f37952bbcbd177d
+	source = rivalcfg-4.11.0.tar.gz::https://github.com/flozz/rivalcfg/archive/v4.11.0.tar.gz
+	sha512sums = 651847ebd6c07233de934da26d68b17df505dac038f82a68384cccc92445ca90193ce31b7afdf609e24050fce8572886945562c6a4b3c879731bce2468f354ce
 
 pkgname = rivalcfg
