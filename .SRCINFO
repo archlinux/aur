@@ -1,14 +1,15 @@
 pkgbase = r-ppcseq
 	pkgdesc = Probabilistic Outlier Identification for RNA Sequencing Generalized Linear Models
 	pkgver = 1.10.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://bioconductor.org/packages/ppcseq
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-testthat
 	makedepends = r-bh
 	makedepends = r-rcppeigen
 	makedepends = r-stanheaders
+	depends = onetbb
 	depends = r-benchmarkme
 	depends = r-dplyr
 	depends = r-edger

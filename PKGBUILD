@@ -5,12 +5,13 @@ _pkgname=ppcseq
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=5
 pkgdesc="Probabilistic Outlier Identification for RNA Sequencing Generalized Linear Models"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(GPL3)
+license=('GPL-3.0-only')
 depends=(
+  onetbb
   r-benchmarkme
   r-dplyr
   r-edger
