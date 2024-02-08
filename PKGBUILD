@@ -4,7 +4,7 @@
 
 _pkgname=renpy
 pkgname=${_pkgname}-git
-pkgver=8.2.0.24012702.r6.gc5a143c
+pkgver=8.2.0.24012702.r40.g9133530
 pkgrel=1
 pkgdesc="Visual novel engine Ren'Py along with its platdeps libs (dev channel)"
 arch=('i686' 'x86_64')
@@ -56,7 +56,7 @@ build() {
 }
 
 package() {
-	depends=('python-pefile' 'python-requests' 'python-rsa' 'python-six')
+	depends+=('python-pefile' 'python-requests' 'python-rsa' 'python-six')
 	
 	#pack data
 	mkdir -p "$pkgdir/"{usr/share/{$_pkgname,doc/$_pkgname},}
@@ -72,9 +72,6 @@ package() {
 	
 	install -d -m755 "$pkgdir/usr/share/renpy/lib/py3-linux-x86_64"
 	ln -s '/usr/bin/renpy' "$pkgdir/usr/share/renpy/lib/py3-linux-x86_64"
-
-	chgrp -R games "$pkgdir"/usr/share/renpy/{the_question,tutorial}
-	chmod g+w "$pkgdir"/usr/share/renpy/{the_question,tutorial}
 
 	#pack modules
 	cd 'module'
