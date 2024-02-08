@@ -18,7 +18,6 @@ pkgbase = cellframe-node
 	conflicts = cellframe-dashboard
 	conflicts = cellframe-wallet
 	conflicts = cellframe-node-debug
-	backup = opt/cellframe-node/etc/cellframe-node.cfg
 	source = git+https://gitlab.demlabs.net/cellframe/cellframe-node.git#commit=4f4d30090a10c1b554f09f1e3ec75713cf7354f1
 	source = git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git#commit=b68cf8f6fe8d9d65c1b4e6e13c09b5fef0429359
 	source = git+https://gitlab.demlabs.net/dap/dap-sdk.git#commit=2c859604bfefbdf0abfce1a3f325bb705326d50c
