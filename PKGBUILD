@@ -6,8 +6,8 @@ pkgdesc="Diablo is an action role-playing video game developed by Blizzard North
 arch=('x86_64' 'i686' 'pentium4' 'aarch64')
 url="https://gitlab.com/devilutionx-bin/diablo"
 license=('GPL')
-depends=('devilutionx-bin' 'git' 'aria2' 'yad')
-makedepends=('unzip' 'p7zip')
+depends=('devilutionx-bin' 'git' 'aria2' 'yad' 'p7zip')
+makedepends=('unzip')
 source=("https://gitlab.com/devilutionx-bin/diablo/-/archive/$pkgver-$pkgrel/diablo-$pkgver.tar.bz2")
 sha256sums=('SKIP')
 

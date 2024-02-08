@@ -9,11 +9,11 @@ pkgbase = diablo
 	arch = aarch64
 	license = GPL
 	makedepends = unzip
-	makedepends = p7zip
 	depends = devilutionx-bin
 	depends = git
 	depends = aria2
 	depends = yad
+	depends = p7zip
 	source = https://gitlab.com/devilutionx-bin/diablo/-/archive/1.0.1-1/diablo-1.0.1.tar.bz2
 	sha256sums = SKIP
 
