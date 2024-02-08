@@ -1,6 +1,6 @@
 pkgbase = kdesrc-build-git
 	pkgdesc = A script to build KDE software from KDE's source repositories
-	pkgver = 22.07.r573.g9f8c5e2
+	pkgver = 22.07.r580.g6513976
 	pkgrel = 1
 	url = https://apps.kde.org/kdesrc_build
 	arch = any
