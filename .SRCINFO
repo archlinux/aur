@@ -1,0 +1,15 @@
+pkgbase = python-six-git
+	pkgdesc = Python 2 and 3 compatibility utilities
+	pkgver = 1.16.0
+	pkgrel = 8
+	url = https://pypi.python.org/pypi/six/
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = tk
+	makedepends = python-setuptools
+	depends = python
+	source = six::git+https://github.com/benjaminp/six.git
+	sha512sums = SKIP
+
+pkgname = python-six-git
