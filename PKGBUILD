@@ -1,6 +1,6 @@
 pkgbase=linux-dfsg
 pkgname=(linux{,-headers}-bin)
-pkgver=6.7.1_1~exp1
+pkgver=6.7.4_1~exp1
 pkgrel=1
 arch=(x86_64 aarch64)
 url=https://packages.debian.org/source/experimental/linux
@@ -8,24 +8,24 @@ license=(GPL2)
 options=(!strip)
 _url=https://ftp.debian.org/debian/pool/main/l/linux
 source_x86_64=(
-	$_url/linux-image-6.7-amd64-unsigned_6.7.1-1~exp1_amd64.deb
-	$_url/linux-headers-6.7-amd64_6.7.1-1~exp1_amd64.deb
-	$_url/linux-headers-6.7-common_6.7.1-1~exp1_all.deb
-	$_url/linux-kbuild-6.7_6.7.1-1~exp1_amd64.deb)
+	$_url/linux-image-6.7-amd64-unsigned_6.7.4-1~exp1_amd64.deb
+	$_url/linux-headers-6.7-amd64_6.7.4-1~exp1_amd64.deb
+	$_url/linux-headers-6.7-common_6.7.4-1~exp1_all.deb
+	$_url/linux-kbuild-6.7_6.7.4-1~exp1_amd64.deb)
 source_aarch64=(`echo ${source_x86_64[@]}|sed s/md/rm/g`)
 noextract=(
 	${source_x86_64[@]##*/}
 	${source_aarch64[@]##*/})
 sha256sums_x86_64=(
-	9d636c9f1d9b601d1e6000d387e8d30a105a8cb917dfde8cafa50af6ec0cfa2b
-	7598a40f2eed46215a0e18933c013ff1aeee68f2eacf49761764bf2d49a78db2
-	9dfc4c719d6274fdc475c120df0436eaa2299f2ee985937dbb7aa1c602e6affa
-	5219ed4efdfb6f20ebe4e0e3d03ed4cfb5ff2b410e0df88b1967498a5ac83e32)
+	d7c4580ace62292290e382b5b93ca9f7e14876a7c325d40061dee5c90e520255
+	7157f738f6bbba59ef0bcee91fe584fb06c871a6c6719b5ea2480f507d9df829
+	d396c5903d150e31657eebd5506c4856586bfe16854c93d27300f13392b3cd37
+	4e180fbb7cd27c30c3f613ad368a0af4850dc208c1d5271027f035a8215c11ff)
 sha256sums_aarch64=(
-	23a4d128fc7ebf2f73f6050c3f25384774af87d02e5a7f2f9c1f54eac8bad3a0
-	3757ef27798edf6ac0f9fd37d8ebcc1436d6c0132e1bc9acc1861f963e295a05
-	9dfc4c719d6274fdc475c120df0436eaa2299f2ee985937dbb7aa1c602e6affa
-	a6538625979850a64a291f19feb8cc03242bdec9bca7c32b936bb44fabff1641)
+	2e4137d3a35faccfe8c3ae5458fedfa2807dcc2aa95922b5720d2872afa655b5
+	e26bac0140501cefd29be16e5389755273c186eae33d5b1251ffa587bf34e89c
+	d396c5903d150e31657eebd5506c4856586bfe16854c93d27300f13392b3cd37
+	582676704845e5222d1a9b327dcdfb68314df6144c513c80975069eaf76a8645)
 _arch=${CARCH/x86_/amd};_arch=${_arch/arch/rm}
 _source=(${source_x86_64[@]});[ $_arch = arm64 ] && _source=(${source_aarch64[@]})
 pkgver(){
