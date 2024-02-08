@@ -1,12 +1,13 @@
 pkgbase = r-diffustats
 	pkgdesc = Diffusion scores on biological networks
 	pkgver = 1.22.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bioconductor.org/packages/diffuStats
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-reshape2
 	checkdepends = r-testthat
+	depends = onetbb
 	depends = r-checkmate
 	depends = r-expm
 	depends = r-igraph

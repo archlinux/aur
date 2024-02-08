@@ -5,12 +5,13 @@ _pkgname=diffuStats
 _pkgver=1.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Diffusion scores on biological networks"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(GPL3)
+license=('GPL-3.0-only')
 depends=(
+  onetbb
   r-checkmate
   r-expm
   r-igraph
