@@ -2,8 +2,8 @@
 
 pkgname=fav-bin
 _pkgname=fav
-pkgver=0.1.12
-pkgrel=2
+pkgver=0.1.13
+pkgrel=1
 pkgdesc='Back up your favorite bilibili resources with CLI'
 arch=('x86_64')
 url="https://github.com/kingwingfly/${_pkgname}"
@@ -11,7 +11,7 @@ license=('MIT')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
 source=("${_pkgname}-${pkgver}.tar.gz::$url/releases/download/v$pkgver/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('a4fdc104ffe49caac13a510c2f10b7cfb1c42a9f6cab831141f967502a8dc299')
+sha256sums=('4cd3376cdc4cbe6235621121cd7fc64b526f308516c6c523c0110879eb28a752')
 
 package() {
 	install -Dm755 ${_pkgname} "$pkgdir"/usr/bin/${_pkgname}
