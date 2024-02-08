@@ -1,14 +1,13 @@
 pkgbase = vim-fastfold
 	pkgdesc = Vim plugin to speed up syntax foldmethod
-	pkgver = 5.0
+	pkgver = 5.3
 	pkgrel = 1
 	url = https://github.com/Konfekt/FastFold
 	install = vimdoc.install
 	arch = any
 	groups = vim-plugins
 	depends = vim
-	source = https://github.com/Konfekt/FastFold/archive/5.0.tar.gz
-	md5sums = 8fa4a566bdfe3cc74595d57603686f57
+	source = https://github.com/Konfekt/FastFold/archive/5.3.tar.gz
+	md5sums = 8c9fa8c07b262575bf27d7a5d94316db
 
 pkgname = vim-fastfold
-

@@ -1,7 +1,7 @@
 # Maintainer: Robert Kubosz <kuboszrobert at gmail dot com>
 
 pkgname=vim-fastfold
-pkgver=5.0
+pkgver=5.3
 pkgrel=1
 pkgdesc='Vim plugin to speed up syntax foldmethod'
 arch=('any')
@@ -10,7 +10,7 @@ groups=('vim-plugins')
 depends=('vim')
 install='vimdoc.install'
 source=("${url}/archive/${pkgver}.tar.gz")
-md5sums=('8fa4a566bdfe3cc74595d57603686f57')
+md5sums=('8c9fa8c07b262575bf27d7a5d94316db')
 
 package() {
   cd "${srcdir}/FastFold-${pkgver}"
