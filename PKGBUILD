@@ -3,7 +3,7 @@
 
 _npmname=zone-mta
 pkgname=nodejs-zone-mta
-pkgver=3.6.13
+pkgver=3.9.3
 pkgrel=1
 pkgdesc='Modern outbound MTA cross platform and extendable server application'
 arch=(any)
@@ -16,7 +16,7 @@ source=(
   "nodejs-zone-mta.service"
   )
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('cc81f69aa4f05db916e0fbec6f5463f70061c0d41818513e22bd7732469ff2c6'
+sha256sums=('2758508a267b90b68c19f10bf0967417749040bffc68002eecba4ec3f0520cb0'
             '026606698ae1a9605806513dd965dfc51cf665c2d9335750ac2ff8c54d6d77c3')
 
 package() {
