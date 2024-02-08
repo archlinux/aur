@@ -4,7 +4,7 @@ _pkgname=openandroidinstaller
 pkgname=${_pkgname}-git
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-pkgver=v0.5.1.beta.r0.gfe5644f
+pkgver=v0.5.2.beta.r9.gaa45a3f
 pkgrel=1
 pkgdesc='Makes installing alternative Android distributions nice and easy.'
 url="https://${_pkgname}.org/"
@@ -37,7 +37,7 @@ build() {
 }
 
 package() {
-	depends=('android-tools' 'heimdall' 'python-altgraph' 'python-attrs' 'python-beartype' 'python-black' 'python-click' 'python-tomli'
+	depends+=('android-tools' 'heimdall' 'python-altgraph' 'python-attrs' 'python-beartype' 'python-black' 'python-click' 'python-tomli'
 		'python-colorama' 'python-aiohttp' 'python-brotli' 'python-brotlicffi' 'python-certifi' 'python-cffi'
 		'python-charset-normalizer' 'python-contextlib2' 'python-exceptiongroup' 'python-flet' 'python-schema' 'python-yaml'
 		'python-regex')
