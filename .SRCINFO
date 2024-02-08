@@ -1,7 +1,7 @@
 pkgbase = actionfps
 	pkgdesc = A game based on the open-source AssaultCube first-person shooter (FPS)
 	pkgver = 1.2.0.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://actionfps.com
 	arch = i686
 	arch = x86_64
@@ -36,6 +36,8 @@ pkgbase = actionfps
 	sha512sums = eecba69c8a9630152514b04bd7588fa23f0d0f43c31bed4e58bb872fc30738094e01b7613543d04033ac2b4eb88d1010ab610a88ea69afac24a1d2f9733215d1
 
 pkgname = actionfps-client
+	depends = zlib
+	depends = gcc-libs
 	depends = actionfps-common
 	depends = mesa
 	depends = sdl
@@ -51,6 +53,8 @@ pkgname = actionfps-client
 	replaces = actionfps
 
 pkgname = actionfps-server
+	depends = zlib
+	depends = gcc-libs
 	depends = actionfps-common
 	depends = systemd
 	conflicts = actionfps

@@ -9,7 +9,7 @@
 pkgbase=actionfps
 pkgname=(${pkgbase}-client ${pkgbase}-server ${pkgbase}-common)
 pkgver=1.2.0.2
-pkgrel=5
+pkgrel=6
 pkgdesc='A game based on the open-source AssaultCube first-person shooter (FPS)'
 arch=('i686' 'x86_64')
 url='https://actionfps.com'
@@ -70,7 +70,7 @@ package_actionfps-common() {
 }
 
 package_actionfps-client() {
-	depends=('actionfps-common' 'mesa' 'sdl' 'sdl_mixer' 'sdl_image' 'openal' 'libgl' 'glu' 'libogg' 'libvorbis' 'curl')
+	depends+=('actionfps-common' 'mesa' 'sdl' 'sdl_mixer' 'sdl_image' 'openal' 'libgl' 'glu' 'libogg' 'libvorbis' 'curl')
 	conflicts=('actionfps')
 	replaces=('actionfps')
 	
@@ -84,7 +84,7 @@ package_actionfps-client() {
 }
 
 package_actionfps-server() {
-	depends=('actionfps-common' 'systemd')
+	depends+=('actionfps-common' 'systemd')
 	backup=('etc/actionfps/servercmdline.txt')
 	conflicts=('actionfps')
 	replaces=('actionfps')
