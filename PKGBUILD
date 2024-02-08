@@ -4,13 +4,13 @@ _repo=coreutils
 _pkgname=bonsai-$_repo
 pkgname=$_pkgname-git
 pkgver=r82.0cbfb5c
-pkgrel=3
+pkgrel=4
 pkgdesc="New core utilities for a new era."
 arch=('any')
 url="https://git.tebibyte.media/bonsai/coreutils"
 license=('AGPL')
-depends=('rust')
-makedepends=('rust-bindgen')
+depends=()
+makedepends=('rust' 'rust-bindgen')
 provides=('bonsai-coreutils')
 source=("git+https://git.tebibyte.media/bonsai/coreutils.git")
 md5sums=(SKIP)
@@ -23,11 +23,6 @@ pkgver() {
   )
 }
 
-prepare() {
-	cd "$_repo"
-	./configure gcc
-}
-
 # for when testing works
 #
 # check() {
@@ -38,20 +33,12 @@ prepare() {
 package() {
 	cd "$_repo"
 	
-	make install PREFIX=$pkgdir/usr
+	make install PREFIX="$pkgdir/usr"
 
-	for file in $pkgdir/usr/bin/*; do
+	for file in $pkgdir/usr/bin/* $pkgdir/usr/share/man/man1/*; do
 		case "$file" in
-			*true) rm "$file" ;;
-			*false) rm "$file" ;;
-			*) ;;
-		esac
-	done
-
-	for file in $pkgdir/usr/share/man/man1/*; do
-		case "$file" in
-			*true.1) rm "$file";;
-			*false.1) rm "$file";;
+			*true*) rm "$file" ;;
+			*false*) rm "$file" ;;
 			*) ;;
 		esac
 	done

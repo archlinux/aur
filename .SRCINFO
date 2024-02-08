@@ -1,12 +1,12 @@
 pkgbase = bonsai-coreutils-git
 	pkgdesc = New core utilities for a new era.
 	pkgver = r82.0cbfb5c
-	pkgrel = 3
+	pkgrel = 4
 	url = https://git.tebibyte.media/bonsai/coreutils
 	arch = any
 	license = AGPL
+	makedepends = rust
 	makedepends = rust-bindgen
-	depends = rust
 	provides = bonsai-coreutils
 	source = git+https://git.tebibyte.media/bonsai/coreutils.git
 	md5sums = SKIP
