@@ -1,12 +1,13 @@
 pkgbase = r-mina
 	pkgdesc = Microbial community dIversity and Network Analysis
 	pkgver = 1.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bioconductor.org/packages/mina
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = r-rcpparmadillo
 	makedepends = r-rcppparallel
+	depends = onetbb
 	depends = r-apcluster
 	depends = r-biganalytics
 	depends = r-bigmemory
