@@ -3,9 +3,9 @@
 _buildnum=06983364
 pkgname=niri-bin
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Scrollable-tiling Wayland compositor"
-arch=(x86_64 aarch64)
+arch=(aarch64 x86_64)
 url="https://github.com/YaLTeR/${pkgname%-bin}"
 license=(GPL-3.0-or-later)
 depends=(cairo glib2 libinput libpipewire libxkbcommon mesa pango pixman seatd)
@@ -20,10 +20,11 @@ optdepends=('fuzzel: application launcher similar to rofi drun mode'
             'gnome-keyring: implements the secret portal, for certain apps to work'
             'polkit-gnome: when apps need to ask for root permissions')
 conflicts=(${pkgname%-bin}-git ${pkgname%-bin})
-source_x86_64=(https://download.copr.fedorainfracloud.org/results/yalter/${pkgname%-bin}/fedora-39-${CARCH}/${_buildnum}-${pkgname%-bin}/${pkgname%-bin}-${pkgver}-1.fc39.${CARCH}.rpm)
+options=(!debug)
 source_aarch64=(https://download.copr.fedorainfracloud.org/results/yalter/${pkgname%-bin}/fedora-39-${CARCH}/${_buildnum}-${pkgname%-bin}/${pkgname%-bin}-${pkgver}-1.fc39.${CARCH}.rpm)
-sha256sums_x86_64=('6ff0ce6c29868733a140bdb5eb57f4445dc769700a638c6dc50ef08c4d25c97b')
-sha256sums_aarch64=('db734939bbca6556af4ec144609a07d384dde9c8db110306c30f227ef4c42587')
+source_x86_64=(https://download.copr.fedorainfracloud.org/results/yalter/${pkgname%-bin}/fedora-39-${CARCH}/${_buildnum}-${pkgname%-bin}/${pkgname%-bin}-${pkgver}-1.fc39.${CARCH}.rpm)
+b2sums_aarch64=('54fad08a8f9813c78233aad8c7fa9551595a6614e4c70b9a6a4a15f06eb90b96f190014db3204e3cb5bc214cffafd83c7be6ac60a5835b0a2756bafb1cd81018 ')
+b2sums_x86_64=('5df7da32a2e44a821011eaa0647851f26e8edc52beefa3d94a3a1458b368e9ed1b562e5100f66b7cb39a3087907fce3dc2dbf6bca37169374004713a9b34f3e7')
 
 package() {
   install -Dm755 usr/bin/${pkgname%-bin}{,-session}                        -t ${pkgdir}/usr/bin/
