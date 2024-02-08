@@ -1,0 +1,17 @@
+pkgbase = lpac-git
+	pkgdesc = Local Profile Agent (LPA) for eSIM cards via PC/SC readers, or AT / APDU commands over stdio.
+	pkgver = r125.cbe5b18
+	pkgrel = 1
+	url = https://github.com/estkme-group/lpac
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = AGPL-3.0-only AND LGPL-2.0-only AND MIT
+	makedepends = cmake
+	depends = curl
+	depends = pcsclite
+	provides = lpac
+	source = lpac-git::git+https://github.com/estkme-group/lpac
+	sha256sums = SKIP
+
+pkgname = lpac-git
