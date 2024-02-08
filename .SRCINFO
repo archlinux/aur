@@ -1,0 +1,15 @@
+pkgbase = file-git
+	pkgdesc = Open-source file server written in a
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/file/afile
+	arch = x86_64
+	license = BSD
+	makedepends = libtool
+	depends = git
+	provides = afile
+	conflicts = afile
+	source = git+https://github.com/file/afile
+	sha256sums = SKIP
+
+pkgname = afile-git
