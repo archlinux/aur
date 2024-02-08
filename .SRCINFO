@@ -1,11 +1,11 @@
 pkgbase = jupyterlab-desktop-bin
 	pkgdesc = JupyterLab desktop application, based on Electron.
-	pkgver = 4.0.11
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://github.com/jupyterlab/jupyterlab-desktop
 	arch = x86_64
 	license = MIT
-	source = https://github.com/jupyterlab/jupyterlab-desktop/releases/download/v4.0.11-1/JupyterLab-Setup-Debian.deb
-	sha256sums = 76ddfde1a4aa41247cf9273a3f5511809112e7c62478d39ad26eb14bf6d9c4b8
+	source = https://github.com/jupyterlab/jupyterlab-desktop/releases/download/v4.1.0-1/JupyterLab-Setup-Debian-x64.deb
+	sha256sums = c76cd3be1bfb8436651a5d148b713ca9d5a8034ffdfe6022931a71bcef5600ba
 
 pkgname = jupyterlab-desktop-bin
