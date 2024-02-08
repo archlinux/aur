@@ -3,13 +3,13 @@
 _pkgname=hiddify-next
 pkgname=$_pkgname-git
 pkgver=0.15.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A multi-platform proxy app. Auto, SSH, VLESS, Vmess, Trojan, Reality, Sing-Box, Clash, Xray, Shadowsocks"
 arch=(x86_64)
 url='https://github.com/hiddify/hiddify-next'
 license=('CC-BY-NC-SA-4.0')
-depends=('hicolor-icon-theme' 'zlib' 'glibc' 'gcc-libs' 'glib2')
-makedepends=('git' 'mesa' 'cmake' 'clang' 'locate' 'ninja' 'pkg-config' 'gtk3' 'libayatana-appindicator' 'libayatana-indicator' 'libayatana-common' 'libappindicator-gtk3' 'libappindicator-gtk2' 'fuse3' 'appstream' 'appstream-glib' 'appstream-generator' 'archlinux-appstream-data' 'zsync' 'jdk-openjdk' 'dpkg')
+depends=('hicolor-icon-theme' 'glibc' 'gcc-libs' 'glib2' 'libayatana-appindicator' 'libdbusmenu-glib' 'libayatana-indicator' 'ayatana-ido')
+makedepends=('git' 'mesa' 'cmake' 'clang' 'locate' 'ninja' 'pkg-config' 'gtk3' 'libayatana-common' 'libappindicator-gtk3' 'libappindicator-gtk2' 'fuse3' 'appstream' 'appstream-glib' 'appstream-generator' 'archlinux-appstream-data' 'zsync' 'jdk-openjdk' 'dpkg')
 optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
 )
