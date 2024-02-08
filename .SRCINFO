@@ -1,14 +1,14 @@
 pkgbase = perl-dbix-simple
 	pkgdesc = Very complete easy-to-use OO interface to DBI
 	pkgver = 1.37
-	pkgrel = 1
-	url = http://search.mcpan.org/dist/DBIx-Simple
+	pkgrel = 2
+	url = https://metacpan.org/dist/DBIx-Simple
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = LicenseRef-OSI-Any
+	checkdepends = perl-dbd-sqlite
+	makedepends = perl-pod-parser
 	depends = perl-dbi
-	options = !emptydirs
-	source = http://search.mcpan.org/CPAN/authors/id/J/JU/JUERD/DBIx-Simple-1.37.tar.gz
-	md5sums = eb53ef4a93be7ebf043cd49075e81913
+	source = https://www.cpan.org/modules/by-module/DBIx/DBIx-Simple-1.37.tar.gz
+	sha512sums = f79b26bf52db33629950bc95f6c17dd13a2af135deeaf6ff5b0570ad852911fd0d27196636e605a93e9b3d740699110f2ece7abc24fcbbfd08a2f3ddce5d65b0
 
 pkgname = perl-dbix-simple
