@@ -1,14 +1,15 @@
 pkgbase = r-basicstan
 	pkgdesc = Stan implementation of BASiCS
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/BASiCStan
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-testthat
 	makedepends = r-bh
 	makedepends = r-rcppeigen
 	makedepends = r-stanheaders
+	depends = onetbb
 	depends = r-basics
 	depends = r-glmgampoi
 	depends = r-rcpp
@@ -24,6 +25,6 @@ pkgbase = r-basicstan
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/BASiCStan_1.4.0.tar.gz
 	md5sums = b7179ffcf510240c0c3cc6e8e31b60d7
-	sha256sums = 3176517994f10d6a9dd9571ae1d51d87e9ef2d5aed81da215b5a195ba516ea06
+	b2sums = ab39b06eeaa109d283980d5e3d15d36f66ad8c55b52ac0adc6d7dd3557e083ece4b638a4d256909b27b8a74c31f9c38c2baea543b29f0fbb5b239b326e8975a6
 
 pkgname = r-basicstan

@@ -4,12 +4,13 @@ _pkgname=BASiCStan
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Stan implementation of BASiCS"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
+  onetbb
   r-basics
   r-glmgampoi
   r-rcpp
@@ -36,11 +37,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('b7179ffcf510240c0c3cc6e8e31b60d7')
-sha256sums=('3176517994f10d6a9dd9571ae1d51d87e9ef2d5aed81da215b5a195ba516ea06')
+b2sums=('ab39b06eeaa109d283980d5e3d15d36f66ad8c55b52ac0adc6d7dd3557e083ece4b638a4d256909b27b8a74c31f9c38c2baea543b29f0fbb5b239b326e8975a6')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
