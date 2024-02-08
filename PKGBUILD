@@ -8,7 +8,7 @@ pkgdesc="A multi-platform proxy app. Auto, SSH, VLESS, Vmess, Trojan, Reality, S
 arch=(x86_64)
 url='https://github.com/hiddify/hiddify-next'
 license=('CC-BY-NC-SA-4.0')
-depends=('hicolor-icon-theme' 'zlib' 'glibc' 'fuse2' 'gcc-libs' 'glib2')
+depends=('hicolor-icon-theme' 'zlib' 'glibc' 'gcc-libs' 'glib2')
 makedepends=('git' 'mesa' 'cmake' 'clang' 'locate' 'ninja' 'pkg-config' 'gtk3' 'libayatana-appindicator' 'libayatana-indicator' 'libayatana-common' 'libappindicator-gtk3' 'libappindicator-gtk2' 'fuse3' 'appstream' 'appstream-glib' 'appstream-generator' 'archlinux-appstream-data' 'zsync' 'jdk-openjdk' 'dpkg')
 optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
