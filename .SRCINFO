@@ -1,9 +1,11 @@
 pkgbase = lgtv-git
 	pkgver = r7.2d78391
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ammgws/lgtv
 	arch = any
 	license = GPL
+	makedepends = git
+	depends = sh
 	depends = websocat
 	depends = wakeonlan
 	provides = lgtv

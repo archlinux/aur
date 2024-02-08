@@ -1,10 +1,11 @@
 pkgname=lgtv-git
 pkgver=r7.2d78391
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/ammgws/lgtv"
 source=("${pkgname%-*}::git+$url")
-depends=('websocat' 'wakeonlan')
+depends=('sh' 'websocat' 'wakeonlan')
+makedepends=('git')
 provides=("lgtv")
 conflicts=("lgtv")
 md5sums=('SKIP')
