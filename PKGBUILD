@@ -3,7 +3,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-mm
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="OCaml multimedia library"
 arch=('i686' 'x86_64')
@@ -22,11 +22,11 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  
+
   DESTDIR="${pkgdir}" dune install --prefix "/usr" --libdir "lib/ocaml"
-  
+
   install -dm755 "${pkgdir}/usr/share/"
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('f1615b8e7f027239e58dbe009b07e0e0f456d012c9e9db2d16716200f22798ca')
+sha256sums=('d07f5f2841a96902360de30622f6b7acf4aef43221f4aec2a67c6418ca3b1180')
