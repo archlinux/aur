@@ -3,13 +3,13 @@
 
 pkgname='perl-furl'
 pkgver='3.14'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Lightning-fast URL fetcher"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-class-accessor-lite>=0' 'perl-http-parser-xs>=0.11' 'perl-mozilla-ca>=0' 'perl>=5.8.1')
-makedepends=()
+makedepends=('perl-module-build-tiny>=0.035')
 checkdepends=('perl-test-requires>=0' 'perl-test-tcp>=2.11')
 url='https://metacpan.org/release/Furl'
 source=('http://search.cpan.org/CPAN/authors/id/S/SY/SYOHEX/Furl-3.14.tar.gz')
