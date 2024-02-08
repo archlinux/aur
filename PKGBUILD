@@ -2,7 +2,7 @@
 
 pkgname=par2deep
 pkgver=1.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Create, verify and repair parity files in a file tree."
 arch=('any')
 url="https://github.com/brenthuisman/par2deep"
@@ -22,7 +22,7 @@ build() {
 }
 
 package() {
-	depends=(
+	depends+=(
 		'python-tqdm'
 		'python-configargparse'
 		'python-send2trash'
