@@ -4,12 +4,13 @@ _pkgname=sccomp
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Robust Outlier-aware Estimation of Composition and Heterogeneity for Single-cell Data"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
+  onetbb
   r-dplyr
   r-forcats
   r-ggplot2
@@ -53,13 +54,13 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('8a24adb07d155b94645a5f684e1455f6')
-sha256sums=('d1f4216eb85d47ff8a2f6403ab7a483b09cade88df5387ed5e9fca7f5c7c97a5')
+b2sums=('50496ee054c58cd1d4a4487240839b5413553fcce518d8797919d39916260f823cf79b1c68cc285243373cede1fdedadee0c89e04dedabcd43c7831cd276d1c5')
 
 build() {
-  mkdir -p build
+  mkdir build
   # compilation needs a lot of memory
   MAKEFLAGS+=" -j1"
-  R CMD INSTALL "$_pkgname" -l build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

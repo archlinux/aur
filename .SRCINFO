@@ -1,15 +1,16 @@
 pkgbase = r-sccomp
 	pkgdesc = Robust Outlier-aware Estimation of Composition and Heterogeneity for Single-cell Data
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/sccomp
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-testthat
 	checkdepends = r-tidyseurat
 	makedepends = r-bh
 	makedepends = r-rcppeigen
 	makedepends = r-stanheaders
+	depends = onetbb
 	depends = r-dplyr
 	depends = r-forcats
 	depends = r-ggplot2
@@ -41,6 +42,6 @@ pkgbase = r-sccomp
 	optdepends = r-tidysinglecellexperiment
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/sccomp_1.6.0.tar.gz
 	md5sums = 8a24adb07d155b94645a5f684e1455f6
-	sha256sums = d1f4216eb85d47ff8a2f6403ab7a483b09cade88df5387ed5e9fca7f5c7c97a5
+	b2sums = 50496ee054c58cd1d4a4487240839b5413553fcce518d8797919d39916260f823cf79b1c68cc285243373cede1fdedadee0c89e04dedabcd43c7831cd276d1c5
 
 pkgname = r-sccomp
