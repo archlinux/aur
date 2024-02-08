@@ -6,14 +6,14 @@ pkgname=suwayomi-server-preview-bin
 _pkgname=suwayomi-server
 _PkgName=Suwayomi-Server
 pkgver=0.7.0_r1480
-pkgrel=2
+pkgrel=3
 _pkgver="${pkgver%_*}"
 _revnum="${pkgver#*_r}"
 pkgdesc="A free and open source manga reader that runs extensions built for Tachiyomi"
 arch=("any")
 url="https://github.com/Suwayomi/Suwayomi-Server-preview"
 license=("MPL2")
-depends=("java-runtime=11" "libc++")
+depends=("java-runtime>=8" "libc++")
 optdepends=("electron: running in Electron")
 provides=("suwayomi" "$_pkgname" "tachidesk" "tachidesk-server")
 conflicts=("tachidesk")
