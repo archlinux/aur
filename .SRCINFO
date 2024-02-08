@@ -8,6 +8,7 @@ pkgbase = wazuh-dashboard
 	license = gpl2
 	depends = libcap
 	backup = etc/wazuh-dashboard/certs
+	backup = etc/wazuh-dashboard/opensearch_dashboards.yml
 	backup = usr/share/wazuh-dashboard/data/wazuh/config/wazuh.yml
 	source = https://packages.wazuh.com/4.x/yum/wazuh-dashboard-4.7.2-1.x86_64.rpm
 	source = wazuh-dashboard-4.7.2-1.x86_64.rpm.sig

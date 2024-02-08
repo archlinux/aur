@@ -26,6 +26,7 @@ source=(
 
 backup=(
   'etc/wazuh-dashboard/certs'
+  'etc/wazuh-dashboard/opensearch_dashboards.yml'
   'usr/share/wazuh-dashboard/data/wazuh/config/wazuh.yml'
   )
 
