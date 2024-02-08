@@ -1,7 +1,7 @@
 # Maintainer: ThatOneCalculator (Kainoa Kanter) <kainoa@t1c.dev>
 _pkgname="ollamamodelupdater"
 pkgname="$_pkgname"
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Tool to help you update your Ollama models"
 arch=('any')
@@ -18,7 +18,7 @@ conflicts=(
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v"$pkgver".tar.gz")
 noextract=()
 options=(!strip)
-sha256sums=('9f0f406bf995a22b430235aa5149554a1565c74c8aba71f5199efb23b2c73ad8')
+sha256sums=('810dabad221ba04e301d5ad028ea8bceb9f9de96c13506712ecf8815a4ac0c1b')
 
 prepare() {
     if ! command -v bun &> /dev/null; then
