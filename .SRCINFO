@@ -1,6 +1,6 @@
 pkgbase = typescript-git
 	pkgdesc = JavaScript with syntax for types
-	pkgver = 5.1.5+6696ecd37
+	pkgver = 5.1.5.r6696ecd37
 	pkgrel = 1
 	url = http://www.typescriptlang.org
 	arch = any
