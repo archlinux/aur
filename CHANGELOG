@@ -1,21 +1,110 @@
+# Changes in version v0.14.0:
+
+## Deprecations
+
+- jj checkout and jj merge are both deprecated; use jj new instead to replace
+  both of these commands in all instances.
+
+  Rationale: jj checkout and jj merge both implement identical functionality,
+  which is a subset of jj new. checkout creates a new working copy commit on top
+  of a single specified revision, i.e. with one parent. merge creates a new
+  working copy commit on top of at least two specified revisions, i.e. with two or
+  more parents.
+
+  The only difference between these commands and jj new, which also creates a new
+  working copy commit, is that new can create a working copy commit on top of any
+  arbitrary number of revisions, so it can handle both the previous cases at once.
+  The only actual difference between these three commands is the command syntax
+  and their name. These names were chosen to be familiar to users of other version
+  control systems, but we instead encourage all users to adopt jj new instead; it
+  is more general and easier to remember than both of these.
+
+- jj checkout and jj merge will no longer be shown as part of jj help, but will
+  still function for now, emitting a warning about their deprecation.
+
+  Deadline: jj checkout and jj merge will be deleted and are expected become a
+  hard error later in 2024.
+
+## Breaking changes
+
+- (Minor) Diff summaries (e.g. jj diff -s) now use D for "Deleted" instead of R
+  for "Removed". @joyously pointed out that R could also mean
+  "Renamed".
+
+- jj util completion now takes the shell as a positional argument, not a flag.
+  the previous behavior is deprecated, but supported for now. it will be removed
+  in the future.
+
+## New features
+
+- jj util completion now supports powershell and elvish.
+
+- Official binaries for macOS running on Apple Silicon (aarch64-apple-darwin)
+  are now available, alongside the existing macOS x86 binaries.
+
+- New jj op abandon command is added to clean up the operation history. Git refs
+  and commit objects can be further compacted by jj util gc.
+
+- jj util gc now removes unreachable operation, view, and Git objects.
+
+- jj branch rename will now warn if the renamed branch has a remote branch,
+  since those will have to be manually renamed outside of jj.
+
+- jj git push gained a --tracked option, to push all the tracked branches.
+
+- There's now a virtual root operation, similar to the virtual root commit. It
+  appears at the end of jj op log.
+
+- jj config list gained a --include-overridden option to allow printing
+  overridden config values.
+
+- jj config list now accepts --user or --repo option to specify config origin.
+
+- New jj config path command to print the config file path without launching an
+  editor.
+
+- jj tag list command prints imported git tags.
+
+- jj next and jj prev now prompt in the event of the next/previous commit being
+  ambiguous, instead of failing outright.
+
+- jj resolve now displays the file being resolved.
+
+- jj workspace root was aliased to jj root, for ease of discoverability
+
+- jj diff no longer shows the contents of binary files.
+
+- jj git now has an init command that initializes a git backed repo.
+
+- New template function surround(prefix, suffix, content) is added.
+
+## Fixed bugs
+
+- Fixed snapshots of symlinks in gitignore-d directory. #2878
+
+- Fixed data loss in dirty working copy when checked-out branch is rebased or
+  abandoned by Git. #2876
+
+
+
 # Changes in version v0.13.0:
 
 ## Breaking changes
 
 - jj git fetch no longer imports new remote branches as local branches. Set
-git.auto-local-branch = true to restore the old behavior.
+  git.auto-local-branch = true to restore the old behavior.
 
 ## New features
 
 - Information about new and resolved conflicts is now printed by every command.
 
 - jj branch has gained a new rename subcommand that allows changing a branch
-name atomically. jj branch help rename for details.
+  name atomically. jj branch help rename for details.
 
 ## Fixed bugs
 
 - Command aliases can now be loaded from repository config relative to the
-current working directory. #2414
+  current working directory. #2414
 
 
 
@@ -24,34 +113,34 @@ current working directory. #2414
 ## Breaking changes
 
 - The remote_branches() revset no longer includes branches exported to the Git
-repository (so called Git-tracking branches.)
+  repository (so called Git-tracking branches.)
 
 - jj branch set no longer creates a new branch. Use jj branch create instead.
 
 - jj init --git in an existing Git repository now errors and exits rather than
-creating a second Git store.
+  creating a second Git store.
 
 ## New features
 
 - jj workspace add can now take multiple --revision arguments, which will create
-a new workspace with its working-copy commit on top of all the parents, as if
-you had run jj new r1 r2 r3 ....
+  a new workspace with its working-copy commit on top of all the parents, as if
+  you had run jj new r1 r2 r3 ....
 
 - You can now set git.abandon-unreachable-commits = false to disable the usual
-behavior where commits that became unreachable in the Git repo are abandoned
-(#2504).
+  behavior where commits that became unreachable in the Git repo are abandoned
+  (#2504).
 
 - jj new gained a --no-edit option to prevent editing the newly created commit.
-For example, jj new a b --no-edit -m Merge creates a merge commit without
-affecting the working copy.
+  For example, jj new a b --no-edit -m Merge creates a merge commit without
+  affecting the working copy.
 
 - jj rebase now takes the flag --skip-empty, which doesn't copy over commits
-that would become empty after a rebase.
+  that would become empty after a rebase.
 
 - There is a new jj util gc command for cleaning up the repository storage. For
-now, it simply runs git gc on the backing Git repo (when using the Git backend).
+  now, it simply runs git gc on the backing Git repo (when using the Git backend).
 
 ## Fixed bugs
 
 - Fixed another file conflict resolution issue where jj status would disagree
-with the actual file content. #2654
+  with the actual file content. #2654

@@ -1,6 +1,6 @@
 # Maintainer: Jiri Pospisil <jiri@jpospisil.com>
 pkgname=jujutsu-bin
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='A Git-compatible DVCS that is both simple and powerful'
 url='https://github.com/martinvonz/jj'
@@ -10,16 +10,16 @@ provides=('jujutsu')
 conflicts=('jujutsu')
 license=('Apache')
 changelog=CHANGELOG
-b2sums=('d70f6dde597cef590bb4d3e6729beded762ee1baf3e675b2ba59f9251744ae2fe56dcc5f8c48bb73cedc7055fef0ddb5ffebfd08eebeeff6f42684977d8474cd')
+b2sums=('7686dcaa5c80980d797a07386503e2b065716236aaa49dc28a8bf1eb997341716a85f54f5f4abe41bc5553eeaaf0f755ceb42b0c89542379d4c46dbc8fed2635')
 
 package() {
   cd "$srcdir"
 
   install -Dm755 jj "$pkgdir/usr/bin/jj"
 
-  install -Dm644 <(./jj util completion --bash 2>/dev/null) "$pkgdir/usr/share/bash-completion/completions/jj"
-  install -Dm644 <(./jj util completion --fish 2>/dev/null) "$pkgdir/usr/share/fish/vendor_completions.d/jj.fish"
-  install -Dm644 <(./jj util completion --zsh 2>/dev/null) "$pkgdir/usr/share/zsh/site-functions/_jj"
+  install -Dm644 <(./jj util completion bash 2>/dev/null) "$pkgdir/usr/share/bash-completion/completions/jj"
+  install -Dm644 <(./jj util completion fish 2>/dev/null) "$pkgdir/usr/share/fish/vendor_completions.d/jj.fish"
+  install -Dm644 <(./jj util completion zsh 2>/dev/null) "$pkgdir/usr/share/zsh/site-functions/_jj"
 
   install -Dm644 <(./jj util mangen 2>/dev/null) "$pkgdir/usr/share/man/man1/jj.1"
 }

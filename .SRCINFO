@@ -1,6 +1,6 @@
 pkgbase = jujutsu-bin
 	pkgdesc = A Git-compatible DVCS that is both simple and powerful
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/martinvonz/jj
 	changelog = CHANGELOG
@@ -8,7 +8,7 @@ pkgbase = jujutsu-bin
 	license = Apache
 	provides = jujutsu
 	conflicts = jujutsu
-	source = https://github.com/martinvonz/jj/releases/download/v0.13.0/jj-v0.13.0-x86_64-unknown-linux-musl.tar.gz
-	b2sums = d70f6dde597cef590bb4d3e6729beded762ee1baf3e675b2ba59f9251744ae2fe56dcc5f8c48bb73cedc7055fef0ddb5ffebfd08eebeeff6f42684977d8474cd
+	source = https://github.com/martinvonz/jj/releases/download/v0.14.0/jj-v0.14.0-x86_64-unknown-linux-musl.tar.gz
+	b2sums = 7686dcaa5c80980d797a07386503e2b065716236aaa49dc28a8bf1eb997341716a85f54f5f4abe41bc5553eeaaf0f755ceb42b0c89542379d4c46dbc8fed2635
 
 pkgname = jujutsu-bin
