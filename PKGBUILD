@@ -1,7 +1,7 @@
 # Maintainer: Adrian Groh <adrian[dot]groh[at]t[dash]online[dot]de>
 # Contributor: Max Niederman <max@maxniederman.com>
 pkgname=ttyper
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Terminal-based typing test."
 url="https://github.com/max-niederman/ttyper"
@@ -10,7 +10,7 @@ arch=("i686" "pentium4" "x86_64" "arm" "armv7h" "armv6h" "aarch64")
 makedepends=("cargo")
 provides=("ttyper")
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('4389c5ad19095ffb38f6b4e61fd0a34aa46441dc34a1f4e2eb286d05634510320f469a2dd56d46e0a8cfddf3c8d5a7340eb492530dc11bbd7bb2918381db6abc')
+b2sums=('98bb17a749bcd3b4cf0afefab560b86497a70d2809da5f8c4aab0dd6ed1c045a9c7fa8c35d8ad6dd38af6ce9bfef4016fe8162d7021a3921eed9a601cb0af55b')
 
 prepare() {
     cd "$pkgname-$pkgver"
