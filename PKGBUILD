@@ -16,7 +16,7 @@ depends=('jack' 'liblo' 'libsigc++' 'liblrdf' 'hicolor-icon-theme' 'ntk-git')
 makedepends=('git' 'python' 'libxpm')
 provides=('non-timeline' 'non-mixer' 'non-session-manager' 'non-sequencer')
 conflicts=('non-daw' 'non-timeline' 'non-mixer' 'non-session-manager' 'non-sequencer')
-source=('git://github.com/linuxaudio/non.git')
+source=('https://github.com/linuxaudio/non.git')
 md5sums=('SKIP')
 install=non.install
 
