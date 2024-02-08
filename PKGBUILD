@@ -3,8 +3,8 @@
 _pkgbase='smiley-sans'
 pkgbase="${_pkgbase}-bin"
 pkgname=({otf,ttf,woff2}-${pkgbase})
-pkgver=1.1.1
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc='一款在人文观感和几何特征中寻找平衡的中文黑体'
 url='https://github.com/atelier-anchor/smiley-sans'
 license=('OFL-1.1-RFN')
@@ -13,8 +13,8 @@ arch=('any')
 source=("${_pkgbase}-${pkgver}.zip"::"${url}/releases/download/v${pkgver}/${_pkgbase}-v${pkgver}.zip"
         "LICENSE"::"${url}/raw/v${pkgver}/LICENSE")
 
-sha512sums=('61bcc6d8957a6a7426c3a76968bea4fb4fb8a1da4dda4036c3c9533f8cc8120bfae879b51e73dc3b0399558b03709df5781fbac94deb16ed7d6a4a3e13dd837c'
-            'f5d63f0427d68c9414779119477f1c0ca0c51d6fc7e349934a32d85b0aa15d63a1f56a313f9b41daec25ae63e482ad3f73fc45414b21d40e0e93addb11f47db6')
+b2sums=('8ab08c55f215b700803dd3ad606a7ed9ad7807422eab2ffd669e95893a75399ce401586da56b84bce44c739be2c547ace9fd17707703957f7f2f6f17e75b8f26'
+        'a0bf4661bbbfe17f20112612a25abdea8db2de6f034f4532c8090ede7a862932708dd6eb3342316e4c0461d131c48c65dce7c2c7854e871ef9824b18617c056e')
 
 _package() {
   pkgdesc+=" (${pkgname%-${pkgbase}})"
