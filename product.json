@@ -82,7 +82,6 @@
 		}
 	],
 	"downloadUrl": "https://code.visualstudio.com",
-	"updateUrl": "https://update.code.visualstudio.com",
 	"webUrl": "https://vscode.dev",
 	"webEndpointUrl": "https://main.vscode-cdn.net",
 	"webEndpointUrlTemplate": "https://{{uuid}}.vscode-cdn.net/{{quality}}/{{commit}}",
