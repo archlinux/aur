@@ -1,7 +1,7 @@
 # Maintainer: Charles Delfly <charles@delfly.fr>
 pkgname=openfortigui
 pkgver=0.9.9
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenFortiGUI is an open-source VPN-Client to connect to Fortigate VPN-Hardware. It is based on openfortivpn and adds an easy to use and nice GUI on top of it, written in Qt5."
 arch=('i686' 'x86_64')
 url="https://hadler.me/linux/openfortigui/"
@@ -14,7 +14,7 @@ conflicts=()
 replaces=()
 options=()
 install=
-source=("git+https://github.com/theinvisible/$pkgname.git#tag=v$pkgver-$pkgrel" "user-env.patch")
+source=("git+https://github.com/theinvisible/$pkgname.git#tag=v$pkgver-1" "user-env.patch")
 noextract=()
 md5sums=('SKIP' '7f1e96dea4ce324b59b8190640f22c43')
 
