@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mizar-bin
 _pkgname=Mizar
-pkgver=1.2.0
+pkgver=1.3.0
 _electronversion=22
-pkgrel=6
+pkgrel=1
 pkgdesc="A TCP testing tool, immediately useful and intuitive to use right out of the box"
 arch=('x86_64')
 url="https://github.com/Fabio286/mizar"
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux_${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ff4bb7bcce708f5e7c8efa2b4da824a27e16efb9495db758b18a7a31efd12335'
+sha256sums=('c4cd133ba91a23666cc36abf1b26e4fbad1ac26c842f0039821c9f5483535799'
             '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
