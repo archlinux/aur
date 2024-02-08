@@ -1,13 +1,14 @@
 pkgbase = r-naturalsort
 	pkgdesc = Natural Ordering
 	pkgver = 0.1.3
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=naturalsort
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	depends = r
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/naturalsort_0.1.3.tar.gz
-	sha256sums = cd38a9c5f323f61459e6096cdbf4493851d40497baf671af4f8dfe9a7c00e857
+	md5sums = 9c705ea6e3033ed186b3d4932e2ae0c1
+	b2sums = cf24631d7a6f2bdb9b929b78af0ae2caf19eb7a8733fccea5ea5b6ced7f8391075247087602a0b89857f95915a96cb7826779fda5e8b49a812c18226ee6778b9
 
 pkgname = r-naturalsort
