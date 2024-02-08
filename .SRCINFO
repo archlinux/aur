@@ -1,6 +1,6 @@
 pkgbase = ws4sqlite-bin
 	pkgdesc = Query sqlite via http
-	pkgver = 0.15.1
+	pkgver = 0.15.2
 	pkgrel = 1
 	url = https://github.com/proofrock/ws4sqlite
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = ws4sqlite-bin
 	conflicts = ws4sqlite
 	source = https://github.com/proofrock/ws4sqlite/raw/main/LICENSE
 	sha256sums = 4c2dd071b01e0d3a11b5879006e3a6c246dd524b225c5c897ef152f915a05a9a
-	source_x86_64 = https://github.com/proofrock/ws4sqlite/releases/download/v0.15.1/ws4sqlite-v0.15.1-linux-amd64.tar.gz
-	sha256sums_x86_64 = 5ea92cdd8ad7790af38be0544e77ac8cad9c9d401e4938758ab2f3124708be50
-	source_arm = https://github.com/proofrock/ws4sqlite/releases/download/v0.15.1/ws4sqlite-v0.15.1-linux-arm.tar.gz
-	sha256sums_arm = 3d0fab6b136e15d04753def5b9b0b50a13ab902f0c298848dc390956bc7627a8
-	source_arm64 = https://github.com/proofrock/ws4sqlite/releases/download/v0.15.1/ws4sqlite-v0.15.1-linux-arm64.tar.gz
-	sha256sums_arm64 = 81e9f5ee9d4d467a67b36d1dc6ef899945547512f7105bcb2155aa18a48ed0f3
+	source_x86_64 = https://github.com/proofrock/ws4sqlite/releases/download/v0.15.2/ws4sqlite-v0.15.2-linux-amd64.tar.gz
+	sha256sums_x86_64 = dbd2f21270785a117a00cfa14784a5f6bd7bdaa1c35748969f31ea8e6da47024
+	source_arm = https://github.com/proofrock/ws4sqlite/releases/download/v0.15.2/ws4sqlite-v0.15.2-linux-arm.tar.gz
+	sha256sums_arm = e9b9f518400d3d77d73af761d75d66d08a5d4a79088234a3b7ad379e44d9d143
+	source_arm64 = https://github.com/proofrock/ws4sqlite/releases/download/v0.15.2/ws4sqlite-v0.15.2-linux-arm64.tar.gz
+	sha256sums_arm64 = f36134ca926e71c3243c9de5c7586aa659b58b6296f0ce16f0b529f798559957
 
 pkgname = ws4sqlite-bin
