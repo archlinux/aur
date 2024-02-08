@@ -8,7 +8,7 @@ url="https://cider.sh/"
 depends=(gtk3 nss libxss libxtst xdg-utils at-spi2-core libsecret)
 optdepends=('libnotify: Playback notifications')
 license=('unknown')
-conflicts=('cider')
+conflicts=('cider' 'cider-git')
 sha256sums=('eb998f295a5ffc3a2cb8ae61f0e3832f4d5c7adec63829307a568c62ebb9c0b0')
 
 # Download the DEB file (you can also provide a direct link)
