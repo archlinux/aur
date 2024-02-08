@@ -7,10 +7,11 @@
 pkgname='sejda-desktop'
 pkgver='7.6.8'
 pkgrel='1'
-license=('custom:EULA')
+license=('LicenseRef-EULA')
 pkgdesc='PDF editor'
 arch=('x86_64')
-depends=('gconf')
+depends=(libxcb libxfixes nspr alsa-lib libcups at-spi2-core libxrandr libdrm libxrender pango nss libxcomposite cairo libxdamage libxkbcommon mesa gtk3)
+depends+=(libx11 glibc bash expat libxext libxtst dbus libxi gcc-libs glib2)
 url='http://www.sejda.com/desktop'
 source=("https://sejda-cdn.com/downloads/sejda-desktop_${pkgver}_amd64.deb")
 md5sums=('379927787ffc4791e1fc12562795988a')
