@@ -1,4 +1,4 @@
-pkgbase = file-git
+pkgbase = afile
 	pkgdesc = Open-source file server written in a
 	pkgver = latest
 	pkgrel = 1
