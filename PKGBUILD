@@ -5,14 +5,15 @@ _pkgname=parallelDist
 _pkgver=0.2.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=8
 pkgdesc="Parallel Distance Matrix Computation using Multiple Threads"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL)
+license=('GPL-2.0-or-later')
 depends=(
   blas
   lapack
+  onetbb
   r-rcpp
   r-rcppparallel
 )
