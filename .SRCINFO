@@ -1,7 +1,7 @@
 pkgbase = human-theme-gtk
 	pkgdesc = Human theme for GTK
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/luigifab/human-theme
 	arch = any
 	license = GPL3
