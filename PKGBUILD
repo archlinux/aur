@@ -2,8 +2,8 @@
 
 _pkgname=bashmarks
 pkgname=${_pkgname}-git
-pkgver=43
-pkgrel=3
+pkgver=r48.264952f
+pkgrel=1
 pkgdesc='A shell script that allows you to save and jump to commonly used directories'
 arch=('any')
 url="https://github.com/huyng/${_pkgname}"
@@ -12,12 +12,15 @@ makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 install="$pkgname.install"
-source=("git://github.com/huyng/${_pkgname}.git")
-md5sums=('SKIP')
+source=("git+https://github.com/huyng/${_pkgname}.git")
+sha512sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    git rev-list --count HEAD
+  cd "$_pkgname"
+  ( set -o pipefail
+    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 package() {
