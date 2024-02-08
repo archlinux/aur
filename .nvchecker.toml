@@ -1,0 +1,4 @@
+[espeak-ng]
+source = "github"
+github = "espeak-ng/espeak-ng"
+use_max_tag= true
