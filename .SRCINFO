@@ -1,13 +1,13 @@
 pkgbase = libhtp
 	pkgdesc = Security-aware parser for the HTTP protocol and the related bits and pieces.
-	pkgver = 0.5.45
+	pkgver = 0.5.46
 	pkgrel = 1
 	url = https://github.com/OISF/libhtp
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	depends = zlib
-	source = libhtp-0.5.45.tar.gz::https://github.com/ironbee/libhtp/archive/0.5.45.tar.gz
-	sha256sums = d4214f94522fa5a1ec1909dbb52831c534788d93bc6b2ca8252de9332b11b606
+	source = libhtp-0.5.46.tar.gz::https://github.com/ironbee/libhtp/archive/0.5.46.tar.gz
+	sha256sums = 31a184c9aa1d015f5add33c5480f95738189449954c383e217b27cda97e98789
 
 pkgname = libhtp
