@@ -1,0 +1,20 @@
+pkgbase = localchat-bin
+	pkgdesc = Chat with generative language models locally on your computer with zero setup.
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://nathanlesage.github.io/local-chat/
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = asar
+	depends = electron28
+	provides = localchat=0.8.0
+	conflicts = localchat
+	source = localchat.sh
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	source_aarch64 = localchat-0.8.0-aarch64.deb::https://github.com/nathanlesage/local-chat/releases/download/v0.8.0/localchat_0.8.0_arm64.deb
+	sha256sums_aarch64 = c67445a3afb9bb192b9b58f2890dbf60c4f0a113a901c126489327600ededf4d
+	source_x86_64 = localchat-0.8.0-x86_64.deb::https://github.com/nathanlesage/local-chat/releases/download/v0.8.0/localchat_0.8.0_amd64.deb
+	sha256sums_x86_64 = 8ebfb42c5403743ae43d918bdd5da7eab572c6f16c90419620edb0b0f73781cb
+
+pkgname = localchat-bin
