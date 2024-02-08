@@ -27,6 +27,7 @@ source=(
 backup=(
   'etc/wazuh-indexer/opensearch.yml'
   'etc/wazuh-indexer/certs'
+  'etc/wazuh-indexer/opensearch.keystore'
   )
 
 sha512sums=('e6de824af7712efeef923040a3d086db6e180576af61772140cdf5b30a02655cbe0b615eec40a8b18e9a28df06ddd465e4a44affde5919a64e5a1913bc142ca0'

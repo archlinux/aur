@@ -9,6 +9,7 @@ pkgbase = wazuh-indexer
 	depends = coreutils
 	backup = etc/wazuh-indexer/opensearch.yml
 	backup = etc/wazuh-indexer/certs
+	backup = etc/wazuh-indexer/opensearch.keystore
 	source = https://packages.wazuh.com/4.x/yum/wazuh-indexer-4.7.2-1.x86_64.rpm
 	source = wazuh-indexer-4.7.2-1.x86_64.rpm.sig
 	validpgpkeys = 9E646BB0630C8FD18ACD15541B93E6A766CD229D
