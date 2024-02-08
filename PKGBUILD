@@ -7,7 +7,7 @@
 pkgname=('0ad-git' '0ad-data-git')
 _pkgname=0ad
 epoch=1
-pkgver=A26.r1234.g1dfaca89e6
+pkgver=A26.r1249.g4a5de262b7
 pkgrel=1
 pkgdesc="Cross-platform, 3D and historically-based real-time strategy game - built from git development version."
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ makedepends=('boost' 'cmake' 'mesa' 'zip' 'libsm' 'rust' 'python' 'git'
              'enet' 'fmt' 'gloox' 'glu' 'libgl' 'libminiupnpc.so' 'libogg'
              'libpng' 'libsodium' 'libvorbis' 'miniupnpc' 'nspr' 'openal'
              'sdl2' 'wxwidgets-gtk3')
-options=('!lto') # breaks spidermonkey linking (https://bugs.gentoo.org/746947)
+options=('!lto' '!debug') # lto breaks spidermonkey linking (https://bugs.gentoo.org/746947)
 source=("git+https://github.com/0ad/0ad.git" "patch.patch")
 md5sums=('SKIP' 'dcbd62e1fb4669c24318c8fe66143c4f')
 
