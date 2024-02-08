@@ -1,10 +1,10 @@
 pkgbase = r-jfa
 	pkgdesc = Statistical Methods for Auditing
 	pkgver = 0.7.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://cran.r-project.org/package=jfa
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	checkdepends = r-benford.analysis
 	checkdepends = r-benfordtests
 	checkdepends = r-beyondbenford
@@ -16,6 +16,7 @@ pkgbase = r-jfa
 	makedepends = r-bh
 	makedepends = r-rcppeigen
 	makedepends = r-stanheaders
+	depends = onetbb
 	depends = r-bde
 	depends = r-extradistr
 	depends = r-ggplot2
