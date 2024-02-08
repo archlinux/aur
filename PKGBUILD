@@ -14,7 +14,7 @@ pkgname="${_py}-${_pkg}"
 _pkgname=futures
 pkgver=3.3.0
 pkgrel=3
-pkgdesc=(
+_pkgdesc=(
   "Backport of the concurrent.futures"
   "package from Python 3.2"
 )
