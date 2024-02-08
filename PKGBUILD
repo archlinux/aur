@@ -11,7 +11,7 @@ license=("MIT")
 arch=("x86_64")
 provides=("stacklet")
 conflicts=("stacklet")
-source=("https://github.com/ggemre/stacklet/releases/download/v$pkgver/stacklet-$pkgver-x86_64.tar.gz")
+source=("https://github.com/ggemre/stacklet/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=("5e16ff6ea08edaefade4a38e17bdd7e93e437e2b9abca74a247a2997259864d8")
 
 package() {
