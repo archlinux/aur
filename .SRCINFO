@@ -1,10 +1,10 @@
 pkgbase = r-openmx
 	pkgdesc = Extended Structural Equation Modelling
 	pkgver = 2.21.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=OpenMx
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	checkdepends = r-numderiv
 	checkdepends = r-testthat
 	makedepends = gcc-fortran
@@ -12,6 +12,7 @@ pkgbase = r-openmx
 	makedepends = r-rcppeigen
 	makedepends = r-rpf
 	makedepends = r-stanheaders
+	depends = onetbb
 	depends = r-digest
 	depends = r-lifecycle
 	depends = r-rcpp
