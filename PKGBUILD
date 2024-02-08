@@ -1,7 +1,7 @@
-# Maintainer: André <andre-arch@delorus.de>
+# Contributor: André <andre-arch@delorus.de>
 pkgname=texbuild-git
 _gitname=texbuild
-pkgver=r8.e9e6369
+pkgver=r34.1c25a29
 pkgrel=1
 pkgdesc="This small script continuously builds a latex file in the background. It only overwrites the target pdf file upon a successful and complete build allowing to continuously watch the PDF in PDF viewer."
 arch=(any)
@@ -18,5 +18,5 @@ pkgver() {
 
 package() {
   cd "$srcdir/$_gitname"
-  install -Dm755 texbuild ${pkgdir}/usr/bin/texbuild
+  install -Dm755 texbuild.py ${pkgdir}/usr/bin/texbuild
 }
