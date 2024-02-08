@@ -1,7 +1,7 @@
 pkgbase = iotas
 	pkgdesc = Simple note taking
 	pkgver = 0.2.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.gnome.org/cheywood/iotas
 	arch = any
 	license = GPL3
@@ -14,6 +14,8 @@ pkgbase = iotas
 	b2sums = 4967d2125868f104f28da6e38548852669fe5638dcd2625f054a4df3d27b008ebd413d16c6c3e5796c039990297ccd1653ea88b9c273a208bf56b7c08fe2242b
 
 pkgname = iotas
+	depends = libadwaita
+	depends = python
 	depends = webkitgtk-6.0
 	depends = python-requests
 	depends = python-markdown-it-py

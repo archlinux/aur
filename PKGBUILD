@@ -3,7 +3,7 @@
 
 pkgname=iotas
 pkgver=0.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple note taking"
 arch=('any')
 url="https://gitlab.gnome.org/cheywood/iotas"
@@ -26,7 +26,7 @@ check() {
 }
 
 package() {
-	depends=(
+	depends+=(
 		'webkitgtk-6.0'
 		'python-requests'
 		'python-markdown-it-py'
