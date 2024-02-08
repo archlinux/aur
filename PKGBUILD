@@ -2,7 +2,7 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=yuzu
-pkgver=1686
+pkgver=1706
 pkgrel=1
 pkgdesc='Nintendo Switch emulator'
 arch=(x86_64)
@@ -31,6 +31,7 @@ depends=(
   qt5-multimedia
   qt5-webengine
   sdl2
+  vulkan-utility-libraries
   zlib
 )
 makedepends=(
@@ -49,7 +50,7 @@ makedepends=(
   vulkan-headers
 )
 options=(!debug)
-_tag=69cd041e58d1fddcbefebcf1532a3791c89dc45d
+_tag=3c4c4632dc609a6790c508188dc93b5fdec43ef1
 source=(
   git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=${_tag}
   git+https://github.com/arsenm/sanitizers-cmake.git
@@ -141,6 +142,7 @@ build() {
     -DYUZU_USE_BUNDLED_QT=OFF \
     -DYUZU_USE_BUNDLED_SDL2=OFF \
     -DYUZU_USE_EXTERNAL_VULKAN_HEADERS=OFF \
+    -DYUZU_USE_EXTERNAL_VULKAN_UTILITY_LIBRARIES=OFF \
     -DYUZU_USE_EXTERNAL_SDL2=OFF \
     -DYUZU_USE_FASTER_LD=OFF \
     -DYUZU_USE_PRECOMPILED_HEADERS=OFF \
