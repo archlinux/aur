@@ -3,12 +3,12 @@
 _pkgname=logger
 _pkgver=0.2.2
 pkgname=r-${_pkgname,,}
-pkgver=0.2.2
-pkgrel=4
-pkgdesc='A Lightweight, Modern and Flexible Logging Utility'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('AGPL')
+pkgver=${_pkgver//-/.}
+pkgrel=9
+pkgdesc="A Lightweight, Modern and Flexible Logging Utility"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('AGPL-3.0-only')
 depends=(
   r
 )
@@ -18,14 +18,10 @@ optdepends=(
   r-covr
   r-crayon
   r-devtools
-  r-futile.logger
   r-glue
   r-jsonlite
   r-knitr
-  r-log4r
-  r-logging
   r-pander
-  r-parallel
   r-r.utils
   r-rmarkdown
   r-roxygen2
@@ -39,14 +35,15 @@ optdepends=(
   r-txtq
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4f1be7d4381f2fc591f19fdbfb8f3cccbf26c9fdbae104612f6e6d5762a97e22')
+md5sums=('379ee674e7ca9aa384e01a338aaf1322')
+b2sums=('5d1a1c4144df2de5583c67f2ef3070d1c465a45a15ae952d75bee876d84b0b957f34b06d0e8b6e43d162a4fdbf922479484805393a67667d763d88b54e40d366')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
