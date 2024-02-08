@@ -3,8 +3,8 @@
 # Contributor: pureboys <yuyuud@yuyuud@gmail.com>
 
 pkgname='kikoplay-beta'
-pkgcommit='1033e2421949a5f94e51edafc9bf36229c8feb90'
-pkgver="1.0.1rc1_${pkgcommit}"
+pkgcommit='9ad415fdfee6d65e5f5b30a8e4d643d023d0c8c9'
+pkgver="1.0.2pre_${pkgcommit}"
 pkgrel=1
 pkgdesc="NOT ONLY A Full-Featured Danmu Player"
 arch=('any')
