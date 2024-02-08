@@ -1,6 +1,7 @@
+# Maintainer: Ming Yue <mingyue@ixcm.onmicrosoft.com>
 pkgname='liteloader-qqnt-plugin-llapi-bin'
 _pkgname='LiteLoaderQQNT-Plugin-LLAPI'
-pkgver='1.3.0'
+pkgver='1.3.1'
 pkgrel=1
 pkgdesc='A LiteLoaderQQNT plugin that can provide some APIs for other plugins'
 arch=('any')
@@ -9,13 +10,13 @@ license=("unknown")
 depends=("liteloader-qqnt-bin")
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("256e50031c3af45d3135fe4235df3a846a5daa9d60bf2f4f39d4fb6da299652b")
-b2sums=("7157e2863ed8b32ab71b2691c6f1902a5dded29064859ddbe591e31d58889cfe58a14e91f11de88494fcca745f26ddb8f2321e6fe1a59a919c8b53270955552d")
+sha256sums=("0a886218ec3b87f0dcd38451c9d914cf3a55a88214c00b88ef62ecb227d8516f")
+b2sums=("addbed0efe9612045583e316f82927193699640ede4fb3b6c09f7795373b422b3a4631e6de57b571217e76e42bd0257f33c1d9546cde7c958e0ae0ba7840daca")
 
 package() {
     install -dm777 "${pkgdir}/opt/LiteLoader"
     mkdir -p "${pkgdir}/opt/LiteLoader/plugins"
     bsdtar -xf "v${pkgver}.tar.gz" -C "${pkgdir}/opt/LiteLoader/plugins"
-    mv "${pkgdir}/opt/LiteLoader/plugins/${_pkgname}-1.3.0" "${pkgdir}/opt/LiteLoader/plugins/${_pkgname}" 
+    mv "${pkgdir}/opt/LiteLoader/plugins/${_pkgname}-${pkgver}" "${pkgdir}/opt/LiteLoader/plugins/${_pkgname}" 
 }
 
