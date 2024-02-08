@@ -3,28 +3,29 @@
 
 pkgname=opentofu
 pkgver=1.6.1
-_commit=89ca50f3fe8c5327ec9943e9590bdb7b023fd4eb
-pkgrel=1
+pkgrel=2
 pkgdesc="Lets you declaratively manage your cloud infrastructure"
 arch=(x86_64)
 url="https://github.com/opentofu/opentofu"
 license=(MPL-2.0)
 depends=(glibc)
-makedepends=(
-  git
-  go
-)
+makedepends=(go)
 source=(
-  "$pkgname::git+$url.git?signed#commit=$_commit"
+  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   "tofu.fish"
 )
 sha256sums=(
-  'SKIP'
+  '7c355deadd8abbf5671efee2217a97243ec1059884db4c87f66841612c0a5263'
   '312fe00a97ed3098fa141a54dfc0694c13766957acedec19f10347b80f813ce8'
 )
-validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194') # GitHub <noreply@github.com>
 
-_archive="$pkgname"
+_archive="$pkgname-$pkgver"
+
+prepare() {
+  cd "$_archive"
+
+  go mod download -x
+}
 
 build() {
   cd "$_archive"
@@ -35,7 +36,7 @@ build() {
   export CGO_LDFLAGS="$LDFLAGS"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  go build -v ./cmd/...
+  go build -v -buildvcs=false ./cmd/...
 }
 
 check() {
