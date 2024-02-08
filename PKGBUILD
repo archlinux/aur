@@ -2,21 +2,22 @@
 
 # PKGBUILD config
 pkgname="ivpn"
-pkgver=3.13.4
+pkgver=3.14.2
 pkgrel=1
 pkgdesc="IVPN - Secure VPN for Privacy (CLI)"
 arch=('x86_64')
 url="https://www.ivpn.net"
 license=('GPL3')
 depends=('glibc' 'lsof' 'wireless_tools' 'openvpn')
-makedepends=('make' 'curl' 'go>=1.19' 'git' 'cmake' 'ninja')
+optdepends=('bash-completion')
+makedepends=('make' 'curl' 'go>=1.21' 'git' 'cmake' 'ninja')
 install="ivpn.install"
 
 # INSTALLATION SOURCES
 
 # Default installation sources
 source=("ivpn-src-v${pkgver}.tar.gz::https://github.com/ivpn/desktop-app/archive/v${pkgver}.tar.gz")
-sha256sums=('28fc1a060a2a10e9a5f7bbe1ac35e8c4e0b40e250759d887d912502c5e0ea1f0')
+sha256sums=('fd00939dfdb0cc7a353d1371eff0cd27c4464793806b626bcb84645a2afc8ec4')
 src_prj_dir_name=desktop-app-${pkgver}
 
 # Use bellow two lines to install package from beta branch
@@ -85,6 +86,8 @@ package() {
 
   cd "$srcdir/$src_prj_dir_name/cli"
   install -Dm755 -g root -o root References/Linux/_out_bin/ivpn "$pkgdir/usr/bin/ivpn"
+  install -Dm644 References/Linux/_out_bin/ivpn.bash-completion "$pkgdir/usr/share/bash-completion/completions/ivpn"
+  
 
   cd "$srcdir"
   install -Dm644 "ivpn-service.service" "$pkgdir/usr/lib/systemd/system/ivpn-service.service"

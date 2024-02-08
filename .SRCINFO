@@ -1,6 +1,6 @@
 pkgbase = ivpn
 	pkgdesc = IVPN - Secure VPN for Privacy (CLI)
-	pkgver = 3.13.4
+	pkgver = 3.14.2
 	pkgrel = 1
 	url = https://www.ivpn.net
 	install = ivpn.install
@@ -8,7 +8,7 @@ pkgbase = ivpn
 	license = GPL3
 	makedepends = make
 	makedepends = curl
-	makedepends = go>=1.19
+	makedepends = go>=1.21
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
@@ -16,7 +16,8 @@ pkgbase = ivpn
 	depends = lsof
 	depends = wireless_tools
 	depends = openvpn
-	source = ivpn-src-v3.13.4.tar.gz::https://github.com/ivpn/desktop-app/archive/v3.13.4.tar.gz
-	sha256sums = 28fc1a060a2a10e9a5f7bbe1ac35e8c4e0b40e250759d887d912502c5e0ea1f0
+	optdepends = bash-completion
+	source = ivpn-src-v3.14.2.tar.gz::https://github.com/ivpn/desktop-app/archive/v3.14.2.tar.gz
+	sha256sums = fd00939dfdb0cc7a353d1371eff0cd27c4464793806b626bcb84645a2afc8ec4
 
 pkgname = ivpn
