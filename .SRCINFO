@@ -1,10 +1,11 @@
 pkgbase = r-opossom
 	pkgdesc = Comprehensive analysis of transcriptome data
 	pkgver = 2.20.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bioconductor.org/packages/oposSOM
 	arch = x86_64
 	license = GPL-2.0-or-later
+	depends = onetbb
 	depends = r-ape
 	depends = r-biobase
 	depends = r-biomart
