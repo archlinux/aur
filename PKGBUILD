@@ -4,7 +4,7 @@
 _name=erd
 pkgname=erd-git
 pkgver=0.2.1.0.r18.gd3c8406
-pkgrel=4
+pkgrel=5
 pkgdesc='A utility for generating entity-relationship diagrams from plain-text descriptions - git version'
 arch=('x86_64')
 url="https://github.com/BurntSushi/$_name"
