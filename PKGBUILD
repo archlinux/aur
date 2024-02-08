@@ -3,7 +3,7 @@
 
 pkgname=linuxqq
 pkgver=3.2.5_21453
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc='New Linux QQ based on Electron'
 arch=('x86_64' 'aarch64' 'loong64')
@@ -23,7 +23,7 @@ sha512sums_loong64=('a1e70dff98ea3c7e3268fd5362f15b8fb2691ccc5b4cbe6004389ce818c
 
 package() {
 	echo "  -> Extracting the data.tar.xz..."
-	bsdtar -xvf data.tar.xz -C "${pkgdir}/"
+	bsdtar -xf data.tar.xz -C "${pkgdir}/"
 	rm -f "${pkgdir}/opt/QQ/resources/app/libssh2.so.1" # Temporary Fix
 
 	echo "  -> Installing..."
