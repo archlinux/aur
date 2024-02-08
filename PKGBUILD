@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=datamods
-_pkgver=1.4.3
+_pkgver=1.4.4
 pkgname=r-${_pkgname,,}
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Modules to Import and Manipulate Data in 'Shiny'"
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-validate
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('696d06c48dcdaab68745e2836326d466e124263d148fd5091d2f05f5069840ec')
+sha256sums=('58b272eceeb2f3d9ecd3d1b3ddb67496c7dc81d409a56e04fcb673360cf42cca')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
