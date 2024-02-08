@@ -1,7 +1,7 @@
 # Maintainer: Lev Levitsky <levlev@mail.ru>
 pkgbase='percolator-bin'
 pkgname=('percolator' 'percolator-converters')
-pkgver=3.06.04
+pkgver=3.06.05
 pkgrel=1
 epoch=
 pkgdesc="Software for postprocessing of shotgun proteomics data + format converters + Elude tool"
@@ -14,8 +14,8 @@ conflicts=("${pkgname%-bin}-git")
 _trunc_ver=${pkgver%.*}
 source=("percolator-v${pkgver}-linux-amd64.deb::https://github.com/percolator/percolator/releases/download/rel-${pkgver//./-}/percolator-v${_trunc_ver/./-}-linux-amd64.deb"
     "percolator-converters-v${pkgver}-linux-amd64.deb::https://github.com/percolator/percolator/releases/download/rel-${pkgver//./-}/percolator-converters-v${_trunc_ver/./-}-linux-amd64.deb")
-sha256sums=('9697876d564f277463b9f24b3a5f11d34baaf95ebb2c385203bb0fc142a73f0c'
-            '86d61503c69dc74c367fb53328987097d0378ef6b61494a8d0f500ac05a432ea')
+sha256sums=('4e742c0bc6811b3359ca25c1025ba8e0bfe5908e5a5aa88869a0a7d966922ce1'
+            '6290901d0ab703cc2b5f5839257c5a3ec43e6245dd39841ffe9751978eb667b7')
 package_percolator() {
 	pkgdesc="Percolator and qvality, two post processors for shotgun proteomics data."
 	provides=("${pkgname[0]}")
