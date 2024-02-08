@@ -1,13 +1,14 @@
 pkgbase = r-rstan
 	pkgdesc = R Interface to Stan
 	pkgver = 2.32.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=rstan
 	arch = x86_64
 	license = GPL-3.0-or-later
 	checkdepends = r-testthat
 	makedepends = r-bh
 	makedepends = r-rcppeigen
+	depends = onetbb
 	depends = pandoc
 	depends = r-ggplot2
 	depends = r-gridextra
@@ -28,7 +29,10 @@ pkgbase = r-rstan
 	optdepends = r-testthat
 	optdepends = r-v8
 	source = https://cran.r-project.org/src/contrib/rstan_2.32.5.tar.gz
+	source = fix-plugin.patch
 	md5sums = 0d7ea5114187f589f6a2255cf1eeb397
+	md5sums = 4bd2cd1d41029fb5d9b792b56d9cd524
 	b2sums = 509272c2b88ad2d1949620fc5ad7a32ab894005a829226ec9ccf39af0cd7bbbcfc4faee798f75ba4f4a984a827bae491cbdc52b7ea1c9292054382dae02bc3d9
+	b2sums = b5cb53f8d2e3cc84ebbed12e8439f59f5b1b62b747a3e6f9212750b882ee2833319af69cd973734670fba7bdbd924bc5a2d63733c60ddf437623bc83d3f3e4a7
 
 pkgname = r-rstan
