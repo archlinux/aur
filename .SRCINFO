@@ -6,6 +6,7 @@ pkgbase = i3-cinnamon-git
 	url = https://github.com/jthomaschewski/i3-cinnamon/
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = i3-wm
 	depends = cinnamon>=5.0.0
 	depends = cinnamon-session

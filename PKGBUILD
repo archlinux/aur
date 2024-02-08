@@ -9,6 +9,7 @@ arch=('any')
 url="https://github.com/jthomaschewski/i3-cinnamon/"
 license=('MIT')
 depends=('i3-wm' 'cinnamon>=5.0.0' 'cinnamon-session' 'cinnamon-settings-daemon')
+makedepends=('git')
 provides=('i3-cinnamon')
 optdepends=('gdm: Recommended display manager')
 source=('git+https://github.com/jthomaschewski/i3-cinnamon')
