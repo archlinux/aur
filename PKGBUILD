@@ -5,13 +5,14 @@ _pkgname=densEstBayes
 _pkgver=1.0-2.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=5
 pkgdesc="Density Estimation via Bayesian Inference Engines"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   blas
+  onetbb
   r-rcpp
   r-rstan
   r-rstantools
@@ -25,11 +26,11 @@ makedepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('d9bacbd697be98f3907429dcee5e969d')
-sha256sums=('8361df9cd4b34fabfca19360bb680a8a3c68386a72bb69cf00dfa19daf97b679')
+b2sums=('e232720a81d91bb15884f3989db30e031db0466b9e054f39641e55c5e2281787e12fc9c0747989a1d0720794fc3e5ba641a92c1a076ba9f2ad521219e9353d97')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
