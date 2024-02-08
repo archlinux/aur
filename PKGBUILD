@@ -14,7 +14,10 @@ depends=(
 );
 optdepends=(
 );
-validpgpkeys=('9E646BB0630C8FD18ACD15541B93E6A766CD229D')
+validpgpkeys=(
+  '9E646BB0630C8FD18ACD15541B93E6A766CD229D' #madara125 GPGKey
+  '2B9D22B41F2AF1042BFCE73A3CA0B9DF1BE7CE09' #MrHacker GPGKey
+)
 
 source=(
   "https://packages.wazuh.com/4.x/yum/${pkgname}-${_prodver}.x86_64.rpm"
