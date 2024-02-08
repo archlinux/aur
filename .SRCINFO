@@ -1,0 +1,15 @@
+pkgbase = baup-git
+	pkgdesc = An easy way to make backups.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/RodAlc24/baup/
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	source = baup::git+https://github.com/RodAlc24/baup.git
+	sha256sums = SKIP
+
+pkgname = baup-git
