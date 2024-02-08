@@ -14,8 +14,8 @@ sha512sums=('66873b4cea3e39b0d5cbf47120597ea0c6fbed3f7b3cf25c39639be300908ff38d8
 install=${pkgname}.install
 
 package() {
-	install -Dm644 ${pkgname}/${_name}.gpg $pkgdir/usr/share/pacman/keyrings/${_name}.gpg
-	install -Dm644 ${pkgname}/${_name}-revoked $pkgdir/usr/share/pacman/keyrings/${_name}-revoked
-	install -Dm644 ${pkgname}/${_name}-trusted $pkgdir/usr/share/pacman/keyrings/${_name}-trusted
+	install -Dm644 ${pkgname}-${pkgver}/${_name}.gpg $pkgdir/usr/share/pacman/keyrings/${_name}.gpg
+	install -Dm644 ${pkgname}-${pkgver}/${_name}-revoked $pkgdir/usr/share/pacman/keyrings/${_name}-revoked
+	install -Dm644 ${pkgname}-${pkgver}/${_name}-trusted $pkgdir/usr/share/pacman/keyrings/${_name}-trusted
 
 }
