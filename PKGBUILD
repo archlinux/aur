@@ -57,7 +57,7 @@ conflicts=(
 )
 makedepends=(
   'git'
-  'nodejs-lts-gallium'
+  'nodejs>=20.0'
   'yarn'
   'typescript'
 )
