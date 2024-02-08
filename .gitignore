@@ -1,4 +1,4 @@
-pkgbuild
-*.log
-oidc-agent-*
-!oidc-agent-*.patch
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
