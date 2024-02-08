@@ -1,7 +1,7 @@
 pkgbase = assaultcube
 	pkgdesc = A game based on the open-source AssaultCube first-person shooter (FPS)
 	pkgver = 1.3.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://assault.cubers.net/
 	arch = i686
 	arch = x86_64
@@ -30,6 +30,8 @@ pkgbase = assaultcube
 	sha512sums = b27d30c162344119acda03943dc93cc677c8373cd54e8aec14083dfbef42ecb15cedf6e9412e9530d4daa8ebb62b882de016f62ecbcdcc838af42a3f8f3b2b97
 
 pkgname = assaultcube-client
+	depends = zlib
+	depends = gcc-libs
 	depends = assaultcube-common
 	depends = sdl2
 	depends = sdl2_image
@@ -38,6 +40,8 @@ pkgname = assaultcube-client
 	depends = libgl
 
 pkgname = assaultcube-server
+	depends = zlib
+	depends = gcc-libs
 	depends = assaultcube-common
 	depends = systemd
 	backup = etc/assaultcube/servercmdline.txt

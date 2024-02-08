@@ -3,7 +3,7 @@
 pkgbase=assaultcube
 pkgname=(${pkgbase}-client ${pkgbase}-server ${pkgbase}-common)
 pkgver=1.3.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A game based on the open-source AssaultCube first-person shooter (FPS)'
 arch=('i686' 'x86_64')
 url='https://assault.cubers.net/'
@@ -60,7 +60,7 @@ package_assaultcube-common() {
 }
 
 package_assaultcube-client() {
-	depends=('assaultcube-common' 'sdl2' 'sdl2_image' 'openal' 'libvorbis' 'libgl')
+	depends+=('assaultcube-common' 'sdl2' 'sdl2_image' 'openal' 'libvorbis' 'libgl')
 	
 	install -dm755 "${pkgdir}/usr/share/games/${pkgbase}"
 	install -Dm755 "${_srcdir}"/{assaultcube.sh,check_install.sh,install_or_remove_menuitem.sh} \
@@ -73,7 +73,7 @@ package_assaultcube-client() {
 }
 
 package_assaultcube-server() {
-	depends=('assaultcube-common' 'systemd')
+	depends+=('assaultcube-common' 'systemd')
 	backup=('etc/assaultcube/servercmdline.txt')
 	
 	install -Dm755 "${pkgbase}-server" -t "${pkgdir}/usr/bin"
