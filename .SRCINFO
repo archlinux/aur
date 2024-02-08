@@ -1,4 +1,4 @@
-pkgbase = docker-credential-secretservice
+pkgbase = docker-credential-secretservice-git
 	pkgdesc = Store docker credentials using the D-Bus Secret Service
 	pkgver = 0.8.1.r0.g292722b
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = docker-credential-secretservice
 	source = git+https://github.com/docker/docker-credential-helpers
 	b2sums = SKIP
 
-pkgname = docker-credential-secretservice
+pkgname = docker-credential-secretservice-git

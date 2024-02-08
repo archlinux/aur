@@ -5,7 +5,7 @@
 
 _pkgname=docker-credential-helpers
 _author=docker
-pkgname=docker-credential-secretservice
+pkgname=docker-credential-secretservice-git
 pkgver=0.8.1.r0.g292722b
 pkgrel=1
 pkgdesc="Store docker credentials using the D-Bus Secret Service"
