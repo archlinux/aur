@@ -1,16 +1,16 @@
 pkgbase = nginx-mod-echo-git
 	pkgdesc = Nginx module that brings shell-style goodiesto nginx config file
-	pkgver = 0.60
-	pkgrel = 3
+	pkgver = 0.63
+	pkgrel = 4
 	url = https://github.com/openresty/echo-nginx-module
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = git
-	depends = nginx=1.10.0
-	source = https://github.com/openresty/echo-nginx-module/archive/0.60.tar.gz http://nginx.org/download/nginx-1.10.0.tar.gz
-	md5sums = 897338c2c4bc44f2d56ae06ab9820372
-	md5sums = c184c873d2798c5ba92be95ed1209c02
+	depends = nginx=1.24.0
+	source = git+https://github.com/openresty/echo-nginx-module.git
+	source = http://nginx.org/download/nginx-1.24.0.tar.gz
+	md5sums = SKIP
+	md5sums = f95835b55b3cbf05a4368e7bccbb8a46
 
 pkgname = nginx-mod-echo-git
-
