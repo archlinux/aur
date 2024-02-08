@@ -1,15 +1,16 @@
 pkgbase = r-pema
 	pkgdesc = Penalized Meta-Analysis
 	pkgver = 0.1.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://cran.r-project.org/package=pema
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	checkdepends = r-mice
 	checkdepends = r-testthat
 	makedepends = r-bh
 	makedepends = r-rcppeigen
 	makedepends = r-stanheaders
+	depends = onetbb
 	depends = r-ggplot2
 	depends = r-rcpp
 	depends = r-rcppparallel
