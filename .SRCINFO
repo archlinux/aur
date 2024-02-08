@@ -1,14 +1,14 @@
 pkgbase = emmet-language-server
 	pkgdesc = A language server for emmet.io
-	pkgver = 2.4.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://www.npmjs.com/package/@olrtg/emmet-language-server
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = emmet-language-server-2.4.0.tgz
-	source = https://registry.npmjs.org/@olrtg/emmet-language-server/-/emmet-language-server-2.4.0.tgz
-	sha256sums = 8c1bdfbe618c51172eecdad245d58c7a8f35c17afc7aa4fe04058bf05d5af0bf
+	noextract = emmet-language-server-2.5.0.tgz
+	source = https://registry.npmjs.org/@olrtg/emmet-language-server/-/emmet-language-server-2.5.0.tgz
+	sha256sums = 5d236e0f9bacd6a7a65fd08319276701b4ae7869f08523882af459d9ecae261a
 
 pkgname = emmet-language-server
