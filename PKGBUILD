@@ -1,7 +1,7 @@
 # Maintainer: Ming Yue <mingyue@ixcm.onmicrosoft.com>
 pkgname='liteloader-qqnt-lite-tools-bin'
 _pkgname='LiteLoaderQQNT-lite_tools'
-pkgver='2.2.2'
+pkgver='2.2.3'
 pkgrel=1
 pkgdesc='A lightweight, elegant and efficient LiteLoaderQQNT plugin for lite tools'
 arch=('any')
