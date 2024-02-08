@@ -31,6 +31,11 @@ validpgpkeys=('9E646BB0630C8FD18ACD15541B93E6A766CD229D')
 
 source=("https://packages.wazuh.com/4.x/yum/filebeat-oss-7.10.2-x86_64.rpm")
 
+backup=(
+  'etc/filebeat/filebeat.yml'
+  'etc/filebeat/certs'
+  )
+
 sha256sums=('56820530dd749d61ba2750ecefc390393a8a5029dd431bf2eaf6a599a847f8f2')
 
 install=$pkgname.install
