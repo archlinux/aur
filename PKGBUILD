@@ -3,14 +3,14 @@
 pkgname='opencoarrays'
 _name='OpenCoarrays'
 pkgver=2.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A transport layer for coarray Fortran compilers."
 arch=('x86_64')
 url="https://github.com/sourceryinstitute/OpenCoarrays"
 license=('BSD')
 groups=()
-depends=('mpich' 'gcc-fortran')
-makedepends=('cmake')
+depends=('openmpi')
+makedepends=('gcc-fortran' 'cmake')
 checkdepends=()
 optdepends=()
 provides=()
@@ -33,10 +33,7 @@ build() {
   cmake \
     -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DMPI_C_COMPILER=/opt/mpich/bin/mpicc \
-    -DMPI_Fortran_COMPILER=/opt/mpich/bin/mpifort \
-    -DMPIEXEC_EXECUTABLE=/opt/mpich/bin/mpiexec
+    -DCMAKE_INSTALL_LIBDIR=lib
 
   cd "${srcdir}/${_name}-${pkgver}/build"
 
