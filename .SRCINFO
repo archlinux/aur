@@ -1,0 +1,13 @@
+pkgbase = stacklet-bin
+	pkgdesc = Generate custom applets and menus
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ggemre/stacklet
+	arch = x86_64
+	license = MIT
+	provides = stacklet
+	conflicts = stacklet
+	source = https://github.com/ggemre/stacklet/releases/download/v0.1.0/stacklet-0.1.0-x86_64.tar.gz
+	sha256sums = 5e16ff6ea08edaefade4a38e17bdd7e93e437e2b9abca74a247a2997259864d8
+
+pkgname = stacklet-bin
