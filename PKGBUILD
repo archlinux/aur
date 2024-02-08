@@ -13,7 +13,7 @@ _browsers=(
 )
 _pkgbase="${_pkg}"
 pkgbase="${_pkg}-git"
-_pkgname="${pkgbase}-extension"
+_pkgname="${_pkg}-extension"
 pkgname=()
 for _browser \
   in "${_browsers[@]}"; do
@@ -22,6 +22,7 @@ for _browser \
   )
 done
 _addon_id="2e742fd4-1e66-4604-89a2-b99cc03f171a"
+_branch="develop"
 _pkgver=10.25.0
 pkgver=10.32.0
 pkgrel=1
@@ -58,6 +59,7 @@ conflicts=(
 )
 makedepends=(
   'nodejs>=20.0'
+  'sentry-cli'
   'yarn'
   'typescript'
 )
@@ -73,11 +75,11 @@ sha512sums=(
     "git"
   ) && \
   source+=(
-    "${_pkg}::git+${url}.git"
+    "${_pkgname}-${_branch}::git+${url}.git"
   )
 [[ "${_git}" == false ]] && \
   source+=(
-    "${url}/archive/refs/heads/develop.zip"
+    "${url}/archive/refs/heads/${_branch}.zip"
   )
 
 _parse_ver() {
@@ -116,11 +118,11 @@ _parse_ver() {
     "${_out}"
 }
 
-pkgver() {
+__pkgver() {
   local \
     _pkgver
   cd \
-    "${_pkg}"
+    "${_pkgname}-${_branch}"
   _pkgver="$( \
     git \
       describe \
@@ -130,12 +132,17 @@ pkgver() {
   _parse_ver \
     "${_pkgver}"
 }
+
 build() {
   cd \
-    "${srcdir}/${_pkg}"
+    "${srcdir}/${_pkgname}-${_branch}"
   ls \
     -a
+  echo \
+    "running 'yarn'"
   yarn # setup
+  echo \
+    "running 'yarn install'"
   cp \
     ".${_pkg}rc.dist" \
     ".${_pkg}rc"
@@ -189,7 +196,7 @@ package_metamask-firefox-git() {
   extensions_dir="${pkgdir}/usr/lib/${_browser}/browser/extensions"
   install \
     -Dm644 \
-    "${srcdir}/${_pkg}/builds/${_pkg}-${_browser}-${_pkgver}.zip" \
+    "${srcdir}/${_pkgname}-${_branch}/builds/${_pkg}-${_browser}-${_pkgver}.zip" \
     "${extensions_dir}/webextension@${_pkg}.io.xpi"
 }
 
