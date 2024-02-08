@@ -1,7 +1,7 @@
 pkgbase = python-six-git
 	pkgdesc = Python 2 and 3 compatibility utilities
-	pkgver = 1.16.0
-	pkgrel = 8
+	pkgver = 1.16.0.r7.g02c3bca
+	pkgrel = 1
 	url = https://pypi.python.org/pypi/six/
 	arch = any
 	license = MIT

@@ -13,8 +13,8 @@ pkgbase="${_pkgname}-git"
 pkgname=(
   "${pkgbase}"
 )
-pkgver=1.16.0
-pkgrel=8
+pkgver="1.16.0.r7.g02c3bca"
+pkgrel=1
 pkgdesc="Python 2 and 3 compatibility utilities"
 arch=(
   'any'
