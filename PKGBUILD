@@ -5,7 +5,7 @@ _pkgname=scGPS
 _pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="A complete analysis of single cell subpopulations, from identifying subpopulations to analysing their relationship (scGPS = single cell Global Predictions of Subpopulation)"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,6 +13,7 @@ license=('GPL-3.0-only')
 depends=(
   blas
   lapack
+  onetbb
   r-caret
   r-deseq2
   r-dplyr
