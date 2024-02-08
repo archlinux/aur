@@ -1,6 +1,6 @@
 pkgbase = python-atlassian-api
 	pkgdesc = Python Atlassian REST API Wrapper
-	pkgver = 3.38.0
+	pkgver = 3.41.9
 	pkgrel = 1
 	url = https://github.com/atlassian-api/atlassian-python-api
 	arch = any
@@ -13,9 +13,12 @@ pkgbase = python-atlassian-api
 	depends = python-requests
 	depends = python-requests-oauthlib
 	depends = python-six
+	depends = python-jmespath
+	depends = python-beautifulsoup4
 	optdepends = python-requests-kerberos: Kerberos authentication
+	optdepends = python-lxml: XML support
 	options = !strip
-	source = atlassian-python-api-3.38.0.tar.gz::https://github.com/atlassian-api/atlassian-python-api/archive/refs/tags/3.38.0.tar.gz
-	sha256sums = 6c069b3108992f3126e37cca89150561cbe9c5d2b6ccf7b452aecfaec8336ac0
+	source = atlassian-python-api-3.41.9.tar.gz::https://github.com/atlassian-api/atlassian-python-api/archive/refs/tags/3.41.9.tar.gz
+	sha256sums = 81378f672a0b2d713e03837e5fee0d83fc83c32c4f870ecdfc5919e072433c0f
 
 pkgname = python-atlassian-api
