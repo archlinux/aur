@@ -1,0 +1,14 @@
+pkgbase = lua-fzy
+	pkgdesc = Lua fzf matching library
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/swarn/fzy-lua
+	arch = x86_64
+	license = MIT
+	makedepends = luarocks
+	depends = lua
+	conflicts = lua-fzy-purelua
+	source = lua-fzy-1.0.tar.gz::https://github.com/swarn/fzy-lua/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 1dcf5283b2f79927c8d8fec11bcf05623dc55b12a0de8c0413f8442d112109bc
+
+pkgname = lua-fzy
