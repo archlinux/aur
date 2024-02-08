@@ -1,13 +1,13 @@
 # Maintainer: Darvin Delgado <dnmodder at gmail dot com>
 
 pkgname=lib32-mangohud-git
-pkgver=0.7.0.r11.gefd1c07
+pkgver=0.7.1.r0.g48d8426
 pkgrel=1
 pkgdesc="32-bit libraries for MangoHud and MangoApp"
 url='https://github.com/flightlessmango/MangoHud'
 license=('MIT')
 arch=('x86_64')
-makedepends=('git' 'glslang' 'lib32-cmocka' 'lib32-libglvnd' 'libxnvctrl' 'meson' 'nlohmann-json' 'python-mako')
+makedepends=('git' 'glslang' 'lib32-cmocka' 'lib32-libglvnd' 'libxnvctrl' 'meson' 'nlohmann-json' 'python-mako' 'vulkan-headers')
 depends=('lib32-dbus' 'lib32-gcc-libs' 'lib32-libx11' 'lib32-sdl2' 'lib32-vulkan-icd-loader')
 provides=('lib32-mangohud')
 conflicts=('lib32-mangohud')
@@ -16,7 +16,7 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd $pkgname
-    git describe --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --tags --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
