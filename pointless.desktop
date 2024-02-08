@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Development;
+Comment=An endless drawing canvas.
+Exec=pointless
+Icon=pointless
+Name=Pointless
+Terminal=false
+Type=Application
