@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("stacklet")
 conflicts=("stacklet")
 source=("https://github.com/ggemre/stacklet/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=("5e16ff6ea08edaefade4a38e17bdd7e93e437e2b9abca74a247a2997259864d8")
+sha256sums=("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855")
 
 package() {
     install -Dm755 stacklet -t "$pkgdir/usr/bin"
