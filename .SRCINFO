@@ -1,0 +1,16 @@
+pkgbase = docker-credential-secretservice
+	pkgdesc = Store docker credentials using the D-Bus Secret Service
+	pkgver = 0.8.1.r0.g292722b
+	pkgrel = 1
+	url = https://github.com/docker/docker-credential-helpers
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = libsecret
+	source = git+https://github.com/docker/docker-credential-helpers
+	b2sums = SKIP
+
+pkgname = docker-credential-secretservice

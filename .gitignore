@@ -1,0 +1,6 @@
+.gitignore
+*.tar.*
+.zst
+pkg/
+src/
+docker-credential-helpers/
