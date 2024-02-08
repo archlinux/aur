@@ -2,7 +2,7 @@
 
 pkgbase=libjxl
 pkgname=('libjxl' 'libjxl-doc')
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation'
 arch=('x86_64')
