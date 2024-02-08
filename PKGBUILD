@@ -11,7 +11,7 @@ depends=('git' )
 makedepends=('libtool') # Add libtool as a build dependency
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-pkgbase=file-git
+pkgbase=afile
 
 source=("git+https://github.com/file/afile")
 
