@@ -134,6 +134,8 @@ __pkgver() {
 }
 
 build() {
+  export \
+    SENTRYCLI_USE_LOCAL=1
   cd \
     "${srcdir}/${_pkgname}-${_branch}"
   ls \
