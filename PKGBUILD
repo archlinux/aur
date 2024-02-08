@@ -80,7 +80,7 @@ package() {
     _py_opts=()
   _py_opts=(
     --root="${pkgdir}"
-    --prefix='/usr'
+    # --prefix='/usr'
     --optimize=1
     --skip-build
   )
