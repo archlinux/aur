@@ -1,5 +1,5 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-template-tiny'
 pkgver='1.14'
@@ -8,11 +8,12 @@ pkgdesc="Template Toolkit reimplemented in as little code as possible"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl')
+depends=('perl>=5.006')
 makedepends=()
-url='http://search.mcpan.org/dist/Template-Tiny'
-source=('https://cpan.metacpan.org/authors/id/E/ET/ETHER/Template-Tiny-1.14.tar.gz')
+url='https://metacpan.org/release/Template-Tiny'
+source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Template-Tiny-1.14.tar.gz')
 md5sums=('536563598c2bb3c3b763a9ecb8eaef01')
+sha512sums=('8888fb6376401bec04e5bb3a09a76e600e964f1e22602409d7e340103518bdb4e407309d1ba170b63d66e144f764928d4c4c1d420285830a64752f50a5e79e8e')
 _distdir="Template-Tiny-1.14"
 
 build() {
@@ -38,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
