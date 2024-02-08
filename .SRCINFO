@@ -1,13 +1,14 @@
 pkgbase = r-netboost
 	pkgdesc = Network Analysis Supported by Boosting
 	pkgver = 2.10.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://bioconductor.org/packages/netboost
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	depends = bash
 	depends = gzip
 	depends = make
+	depends = onetbb
 	depends = perl
 	depends = r-biocstyle
 	depends = r-colorspace

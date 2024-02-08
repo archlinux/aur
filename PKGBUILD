@@ -5,15 +5,16 @@ _pkgname=netboost
 _pkgver=2.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=5
 pkgdesc="Network Analysis Supported by Boosting"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(GPL3)
+license=('GPL-3.0-only')
 depends=(
   bash
   gzip
   make
+  onetbb
   perl
   r-biocstyle
   r-colorspace
