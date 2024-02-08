@@ -2,23 +2,22 @@
 
 _pkgname=hiddify-next
 pkgname=$_pkgname-git
-pkgver=0.11.1
-pkgrel=3
+pkgver=0.15.4
+pkgrel=1
 pkgdesc="A multi-platform proxy app. Auto, SSH, VLESS, Vmess, Trojan, Reality, Sing-Box, Clash, Xray, Shadowsocks"
 arch=(x86_64)
 url='https://github.com/hiddify/hiddify-next'
 license=('CC-BY-NC-SA-4.0')
-depends=('hicolor-icon-theme' 'zlib' 'glibc' 'fuse2')
-makedepends=('git' 'mesa' 'cmake' 'clang' 'locate' 'ninja' 'pkg-config' 'gtk3' 'glib2' 'libayatana-appindicator' 'libayatana-indicator' 'libayatana-common' 'libappindicator-gtk3' 'libappindicator-gtk2' 'fuse3' 'appstream' 'appstream-glib' 'appstream-generator' 'archlinux-appstream-data' 'zsync' 'appimagetool' 'jdk-openjdk')
+depends=('hicolor-icon-theme' 'zlib' 'glibc' 'fuse2' 'gcc-libs' 'glib2')
+makedepends=('git' 'mesa' 'cmake' 'clang' 'locate' 'ninja' 'pkg-config' 'gtk3' 'libayatana-appindicator' 'libayatana-indicator' 'libayatana-common' 'libappindicator-gtk3' 'libappindicator-gtk2' 'fuse3' 'appstream' 'appstream-glib' 'appstream-generator' 'archlinux-appstream-data' 'zsync' 'jdk-openjdk' 'dpkg')
 optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
 )
 provides=('hiddify')
 conflicts=(${_pkgname} ${_pkgname}-bin)
-options=(!strip)
 source=(
     "git+https://github.com/hiddify/hiddify-next.git"
-    "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.16.3-stable.tar.xz"
+    "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.16.9-stable.tar.xz"
 )
 sha256sums=(
     "SKIP"
@@ -37,10 +36,9 @@ prepare() {
     flutter precache
     dart pub global activate flutter_distributor
     export PATH="$PATH":"$HOME/.pub-cache/bin"
-    export CHANNEL=prod
+    export CHANNEL=dev
     flutter config --no-analytics
     flutter config --enable-linux-desktop
-    flutter pub get
     sed -i 's/-Werror/-Wno-error -Wno-deprecated-declarations/g' linux/CMakeLists.txt
 }
 
@@ -52,23 +50,23 @@ build() {
     make gen
     make linux-libs
     unset SOURCE_DATE_EPOCH
-    make linux-release
+    make linux-deb-release
     ls -R dist/
-    mkdir tmp_out
-    EXT="AppImage"
-    mv dist/*/*.$EXT tmp_out/hiddify-linux-x64.$EXT
-    chmod a+x tmp_out/hiddify-linux-x64.$EXT
-    cd tmp_out
-    ./hiddify-linux-x64.AppImage --appimage-extract >/dev/null
-    sed -i 's/Exec=/Exec=env /' "./squashfs-root/hiddify.desktop"
+    EXT="deb"
+    mv dist/*/*.$EXT ${srcdir}/hiddify-debian-x64.$EXT
+    cd "${srcdir}"
+    ar x hiddify-debian-x64.deb
+    tar -xf data.tar.xz
+    sed -i '/Version/d' "${srcdir}/usr/share/applications/hiddify.desktop"
 }
 
 package() {
-    install -Dm755 "${srcdir}/hiddify-next/tmp_out/hiddify-linux-x64.AppImage" "${pkgdir}/${_install_path}/hiddify.AppImage"
-    install -Dm644 "${srcdir}/hiddify-next/tmp_out/squashfs-root/hiddify.desktop" "$pkgdir/usr/share/applications/hiddify.desktop"
-    for _icons in 128x128 256x256; do
-        install -Dm644 "${srcdir}/hiddify-next/tmp_out/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/hiddify.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/hiddify.png"
-    done
+    cd ${srcdir}/usr/share/hiddify
+    find . -type f -exec install -Dm 755 {} "$pkgdir/$_install_path"/{} \;
+    cd ${srcdir}/usr/share/icons
+    find . -type f -exec install -Dm 755 {} "$pkgdir/usr/share/icons"/{} \;
+    cd ${srcdir}/usr/share/applications
+    find . -type f -exec install -Dm 755 {} "$pkgdir/usr/share/applications"/{} \;
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${_pkgname}/hiddify.AppImage" "${pkgdir}/usr/bin/hiddify"
+    ln -s "/opt/${_pkgname}/hiddify" "${pkgdir}/usr/bin/hiddify"
 }
