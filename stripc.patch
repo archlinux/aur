@@ -1,0 +1,16 @@
+--- ./fzy-scm-1.rockspec	2023-01-29 15:05:02.000000000 +0200
++++ ./new.rockspec	2023-11-30 16:05:21.147052154 +0200
+@@ -18,12 +18,7 @@
+ build = {
+   type = "builtin",
+   modules = {
+-    fzy = "src/fzy.lua",
+-    fzy_lua = "src/fzy_lua.lua",
+-    fzy_native = {
+-      sources = { "src/fzy_native.c", "src/match.c" },
+-      defines = { "LUA_COMPAT_5_1" }
+-    }
++    fzy = "src/fzy_lua.lua",
+   },
+ 
+   copy_directories = { "test" }

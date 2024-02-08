@@ -1,0 +1,16 @@
+pkgbase = lua-fzy-purelua
+	pkgdesc = Pure lua fzf matching library (c implementation stripped)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/swarn/fzy-lua
+	arch = any
+	license = MIT
+	makedepends = luarocks
+	depends = lua
+	provides = lua-fzy
+	source = lua-fzy-purelua-1.0.tar.gz::https://github.com/swarn/fzy-lua/archive/refs/tags/v1.0.tar.gz
+	source = stripc.patch
+	sha256sums = 1dcf5283b2f79927c8d8fec11bcf05623dc55b12a0de8c0413f8442d112109bc
+	sha256sums = bddd8c7c675d273567ac650230139c371c2ba0f23aed3220fff5e41419a20a87
+
+pkgname = lua-fzy-purelua
