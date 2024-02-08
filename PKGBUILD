@@ -1,7 +1,7 @@
 # Maintainer: JeremyStarTM <jeremystartm@staropensource.de>
 
 pkgname=amethyst-player-git
-pkgver=v1.9.16.r26.g3ee253e
+pkgver=v1.9.16.r29.g1e8a644
 pkgrel=1
 pkgdesc="Amethyst is an Electron-based cross-platform audio player with a node-based audio routing system."
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,6 @@ pkgver() {
 
 prepare() {
 	cd "amethyst"
-	git checkout 3ee253ece0bb60daa71284592237f04f098db54a
 	gendesk -n -f --pkgname "amethyst" --pkgdesc "$pkgdesc" --exec="/opt/amethyst/amethyst"
 	git submodule init
 	git config submodule.src/plugins/amethyst.discord.url "$srcdir/amethyst.discord"
