@@ -1,22 +1,22 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fontproof
-pkgver=2.0.11
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 _rockrel=1
 pkgdesc='A font design testing class and CLI tool for SILE'
 arch=(any)
 url="https://github.com/sile-typesetter/$pkgname"
 license=(MIT)
 depends=(lua51-cliargs
+         luajit
          sile)
-makedepends=(luajit
-             luarocks)
+makedepends=(luarocks)
 _archive="$pkgname-$pkgver"
 _rock="$_archive-$_rockrel.all.rock"
 _rockspec="$_archive-$_rockrel.rockspec"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('3e45b718301812b051a1dbf21c53e1cef993196a92ce73c3dda384b7f2be94f3')
+sha256sums=('e20f2fae4dc61bda91b178f68d19119a32703649fca0e83124275675cd9f99ac')
 
 prepare() {
 	cd "$_archive"
