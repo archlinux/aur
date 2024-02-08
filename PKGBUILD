@@ -5,7 +5,7 @@ _pkgname=SAIGEgds
 _pkgver=2.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Scalable Implementation of Generalized mixed models using GDS files in Phenome-Wide Association Studies"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -13,6 +13,7 @@ license=('GPL-3.0-only')
 depends=(
   blas
   lapack
+  onetbb
   r-gdsfmt
   r-rcpp
   r-rcppparallel
