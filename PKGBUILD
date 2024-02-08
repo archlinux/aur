@@ -4,12 +4,13 @@ _pkgname=scMET
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Bayesian modelling of cell-to-cell DNA methylation heterogeneity"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
+  onetbb
   r-assertthat
   r-biocstyle
   r-coda
@@ -44,11 +45,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('6420a2af7464f67eb676f06d20f9d5a6')
-sha256sums=('b4908e98a14b2a3ed26b52648a5ae025711676d8d06ad30a16bbfd0cc5007f2a')
+b2sums=('2e4c8c901e7f4be9d4175da6dc7204fec5e51de17abdc5010211cc9103e2e6b74a040e568fe178909ed9ae9ff5f3c964fe3c32f461d9e2580c77118ad9c6d4de')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
