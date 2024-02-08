@@ -8,7 +8,7 @@ url="https://gitlab.com/devilutionx-bin/diablo"
 license=('GPL')
 depends=('devilutionx-bin' 'git' 'aria2' 'yad')
 makedepends=('unzip' 'p7zip')
-source=("https://gitlab.com/devilutionx-bin/diablo/-/archive/$pkgver/diablo-$pkgver.tar.bz2")
+source=("https://gitlab.com/devilutionx-bin/diablo/-/archive/$pkgver-$pkgrel/diablo-$pkgver.tar.bz2")
 sha256sums=('SKIP')
 
 package() {

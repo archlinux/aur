@@ -14,7 +14,7 @@ pkgbase = diablo
 	depends = git
 	depends = aria2
 	depends = yad
-	source = https://gitlab.com/devilutionx-bin/diablo/-/archive/1.0.1/diablo-1.0.1.tar.bz2
+	source = https://gitlab.com/devilutionx-bin/diablo/-/archive/1.0.1-1/diablo-1.0.1.tar.bz2
 	sha256sums = SKIP
 
 pkgname = diablo
