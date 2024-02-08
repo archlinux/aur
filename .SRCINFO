@@ -1,10 +1,11 @@
 pkgbase = r-stringfish
 	pkgdesc = Alt String Implementation
 	pkgver = 0.16.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=stringfish
 	arch = x86_64
 	license = GPL-3.0-only
+	depends = onetbb
 	depends = pcre2
 	depends = r-rcpp
 	depends = r-rcppparallel

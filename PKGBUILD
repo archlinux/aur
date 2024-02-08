@@ -5,12 +5,13 @@ _pkgname=stringfish
 _pkgver=0.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Alt String Implementation"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-3.0-only')
 depends=(
+  onetbb
   pcre2
   r-rcpp
   r-rcppparallel
