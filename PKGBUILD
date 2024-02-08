@@ -5,12 +5,13 @@ _pkgname=IgGeneUsage
 _pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Differential gene usage in immune repertoires"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(MIT)
+license=('MIT')
 depends=(
+  onetbb
   r-rcpp
   r-rcppparallel
   r-reshape2

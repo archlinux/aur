@@ -1,7 +1,7 @@
 pkgbase = r-iggeneusage
 	pkgdesc = Differential gene usage in immune repertoires
 	pkgver = 1.16.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bioconductor.org/packages/IgGeneUsage
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = r-iggeneusage
 	makedepends = r-bh
 	makedepends = r-rcppeigen
 	makedepends = r-stanheaders
+	depends = onetbb
 	depends = r-rcpp
 	depends = r-rcppparallel
 	depends = r-reshape2
