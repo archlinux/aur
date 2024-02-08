@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ggkegg
-_pkgver=1.0.12
+_pkgver=1.0.13
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -12,7 +12,6 @@ license=('MIT')
 depends=(
   r-annotationdbi
   r-biocfilecache
-  r-cairo
   r-data.table
   r-dplyr
   r-getoptlong
@@ -41,8 +40,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9c49551a46240945f006d0a673a892cf')
-b2sums=('7fc88280ef5a36f1354c7dcd03dd3b5e53efa6ed3ed0262d4d90703c7a9f159cc5943a0d648bd0a509b1e0ea1f13cfbb3cd0bc6a1f57358084248b0b6e1ad022')
+md5sums=('02848c5ed45b1480b71e69cc13607a69')
+b2sums=('9c5d5d8b440f4da81d006582cc24599339e5bcdf10dbc9fc64cf60f02eee9df4b0c8afbf3d2bf43f323f6db8fd016e0b455d171b505268e376828be1c13f530f')
 
 build() {
   mkdir build
