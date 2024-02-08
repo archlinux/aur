@@ -2,8 +2,8 @@
 
 pkgbase='smiley-sans'
 pkgname=({otf,ttf,woff2}-${pkgbase})
-pkgver=1.1.1
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc='一款在人文观感和几何特征中寻找平衡的中文黑体'
 url='https://github.com/atelier-anchor/smiley-sans'
 license=('OFL-1.1-RFN')
@@ -12,7 +12,7 @@ makedepends=('python-brotli' 'python-fontmake' 'python-fonttools')
 
 source=("${pkgbase}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha512sums=('abeea79a7938af0ffe673aae74100129a3d99dd377ebab92a3426bae029c085c5f3ae3978880f0311829c80a13faa264bf061f539aafc672a93f53917c66348f')
+b2sums=('3f1e1d7316f2e4ffc51cde15312149c080337e88c7931438728d18e80411027dc5af2b9768b48a47c6106e2aeef6b59c74d99f6b3279a65ade0a5fa080d6adbb')
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
