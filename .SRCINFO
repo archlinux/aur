@@ -26,7 +26,7 @@ pkgbase = non-daw-git
 	conflicts = non-mixer
 	conflicts = non-session-manager
 	conflicts = non-sequencer
-	source = https://github.com/linuxaudio/non.git
+	source = git+https://github.com/linuxaudio/non.git
 	md5sums = SKIP
 
 pkgname = non-daw-git
