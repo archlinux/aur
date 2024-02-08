@@ -3,12 +3,12 @@
 
 pkgname='perl-data-clean'
 pkgver='0.508'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Clean data structure"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-clone-pp>=0' 'perl-data-dmp>=0.248' 'perl-datetime>=0' 'perl-log-ger>=0.037' 'perl-string-linenumber>=0' 'perl-string-perlquote>=0' 'perl>=5.10.1')
+depends=('perl-clone-pp>=0' 'perl-data-dmp>=0.242' 'perl-datetime>=0' 'perl-log-ger>=0.037' 'perl-string-linenumber>=0' 'perl-string-perlquote>=0' 'perl>=5.10.1')
 makedepends=()
 checkdepends=('perl-test-exception>=0')
 url='https://metacpan.org/release/Data-Clean'
