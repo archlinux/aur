@@ -1,13 +1,13 @@
 # Maintainer: Alexandr Stelnykovych <alexandr dot stelnykovych at ivpn dot net>
 
 pkgname="ivpn-ui"
-pkgver=3.13.4
+pkgver=3.14.2
 pkgrel=1
 pkgdesc="IVPN - Secure VPN for Privacy"
 arch=('x86_64')
 url="https://www.ivpn.net"
 license=('GPL3')
-depends=('ivpn>=3.13.4')
+depends=('ivpn>=3.14.2')
 makedepends=('npm' 'nvm')
 install="ivpn-ui.install"
 
@@ -15,7 +15,7 @@ install="ivpn-ui.install"
 
 # Default installation sources
 source=("ivpn-ui-src-v${pkgver}.tar.gz::https://github.com/ivpn/desktop-app/archive/v${pkgver}.tar.gz")
-sha256sums=('28fc1a060a2a10e9a5f7bbe1ac35e8c4e0b40e250759d887d912502c5e0ea1f0')
+sha256sums=('fd00939dfdb0cc7a353d1371eff0cd27c4464793806b626bcb84645a2afc8ec4')
 src_prj_dir_name=desktop-app-${pkgver}
 
 # Use bellow two lines to install package from beta branch
@@ -37,10 +37,9 @@ _ensure_local_nvm() {
 }
 
 prepare() {
-  # There are an errors when using latest version of node. Using v16
   # https://wiki.archlinux.org/title/Node.js_package_guidelines
   _ensure_local_nvm
-  nvm install 16.17.1
+  nvm install 18.19.0
 }
 
 build() {
@@ -58,7 +57,7 @@ package() {
   cd "$srcdir/$src_prj_dir_name/ui"
 
   mkdir -p "$pkgdir/opt/ivpn/ui/bin"
-  cp -fr dist_electron/linux-unpacked/* "$pkgdir/opt/ivpn/ui/bin"
+  cp -fr dist/linux-unpacked/* "$pkgdir/opt/ivpn/ui/bin"
 
   install -D "References/Linux/ui/IVPN.desktop" "$pkgdir/usr/share/applications/IVPN.desktop"
 
