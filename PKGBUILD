@@ -5,12 +5,13 @@ _pkgname=HIBAG
 _pkgver=1.38.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="HLA Genotype Imputation with Attribute Bagging"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('GPL-3.0-only')
 depends=(
+  onetbb
   r-rcppparallel
 )
 checkdepends=(
