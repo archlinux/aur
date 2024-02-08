@@ -4,7 +4,7 @@
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=idjc
-pkgver=0.9.6
+pkgver=0.9.8
 pkgrel=1
 pkgdesc='Powerful client for individuals interested in streaming live radio shows'
 url='http://idjc.sourceforge.net/'
@@ -53,4 +53,4 @@ package() {
     "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
 
-sha256sums=('71328e2e253cc877f82e41a8808e481f0785f3a8b0117c874ce6e19b5f277568')
+sha256sums=('e5cc850d55cbe569b005df2df8910ff9dc0f6990cd1b143062e8ac35c275630b')
