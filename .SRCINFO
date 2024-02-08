@@ -1,0 +1,17 @@
+pkgbase = warp-terminal
+	pkgdesc = Warp is a modern, Rust-based terminal with AI built in so you and your team can build great software, faster
+	pkgver = 0.2024.01.30.16.52.stable_01
+	pkgrel = 1
+	url = https://warp.dev
+	arch = x86_64
+	license = LicenseRef-warp
+	depends = hicolor-icon-theme
+	depends = zlib
+	depends = glibc
+	options = !strip
+	source = warp-terminal-0.2024.01.30.16.52.stable_01-x86_64.AppImage::https://releases.warp.dev/stable/v0.2024.01.30.16.52.stable_01/Warp-x86_64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/warpdotdev/Warp/main/LICENSE
+	sha256sums = e370069d43435760aff645d658a24b8205cb36eb25ae8f3656cf36fa3c1d878b
+	sha256sums = SKIP
+
+pkgname = warp-terminal
