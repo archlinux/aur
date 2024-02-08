@@ -5,13 +5,14 @@ _pkgname=proxyC
 _pkgver=0.3.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Computes Proximity in Large Sparse Matrices"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL3)
+license=('GPL-3.0-only')
 depends=(
   blas
+  onetbb
   r-rcpp
   r-rcppparallel
 )
