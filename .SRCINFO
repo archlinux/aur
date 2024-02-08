@@ -7,6 +7,7 @@ pkgbase = yandexmusic
 	license = custom
 	makedepends = p7zip
 	makedepends = nodejs
+	makedepends = npm
 	makedepends = jq
 	depends = electron
 	depends = libpulse
