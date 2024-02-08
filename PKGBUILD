@@ -5,12 +5,13 @@ _pkgname=mosbi
 _pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Molecular Signature identification using Biclustering"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('AGPL-3.0-only')
 depends=(
+  onetbb
   r-akmbiclust
   r-bh
   r-biclust
