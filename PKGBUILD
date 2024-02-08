@@ -1,6 +1,6 @@
 pkgname=redmine-plugin-apijs
 pkgver=6.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Redmine to display a gallery from attachments"
 arch=('any')
 url='https://github.com/luigifab/redmine-apijs'
@@ -20,14 +20,11 @@ package() {
   cd "$pkgname-$pkgver"
 
   # the entire source code is GPL-2.0-or-later, except lib/useragentparser.rb which is MIT and assets/fonts/apijs/fontello.woff(2) which is OFL-1.1
-  install -dm 0755 "$pkgdir/usr/share/webapps/redmine/lib/plugins/redmine_apijs/"
-  cp -a src/*      "$pkgdir/usr/share/webapps/redmine/lib/plugins/redmine_apijs/"
-  chmod -R o=      "$pkgdir/usr/share/webapps/redmine/lib/plugins/redmine_apijs/"
-  chmod +x         "$pkgdir/usr/share/webapps/redmine/lib/plugins/redmine_apijs/lib/image.py"
+  install -dm 755 "$pkgdir/usr/share/webapps/redmine/lib/plugins/redmine_apijs/"
+  cp -a src/*     "$pkgdir/usr/share/webapps/redmine/lib/plugins/redmine_apijs/"
+  chmod -R o=     "$pkgdir/usr/share/webapps/redmine/lib/plugins/redmine_apijs/"
+  chmod +x        "$pkgdir/usr/share/webapps/redmine/lib/plugins/redmine_apijs/lib/image.py"
 
-  mkdir -p "$pkgdir/usr/share/doc/$pkgname/"
-  install -pm 644 README.md "$pkgdir/usr/share/doc/$pkgname/"
-
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
-  install -pm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dpm 644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dpm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

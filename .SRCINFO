@@ -1,7 +1,7 @@
 pkgbase = redmine-plugin-apijs
 	pkgdesc = Plugin for Redmine to display a gallery from attachments
 	pkgver = 6.9.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/luigifab/redmine-apijs
 	arch = any
 	license = GPL2
