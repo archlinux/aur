@@ -1,6 +1,6 @@
 pkgbase = mediadownloader-git
 	pkgdesc = This project is a Qt/C++ based GUI frontend to CLI multiple CLI based tools that deal with downloading online media.
-	pkgver = 4.1.0.r15.g3b71406
+	pkgver = 4.3.1.r7.g0ab258d
 	pkgrel = 1
 	url = https://github.com/mhogomchungu/media-downloader
 	arch = x86_64
