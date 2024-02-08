@@ -1,11 +1,11 @@
 pkgbase = suricata-git
 	pkgdesc = A high performance Network IDS, IPS and Network Security Monitoring engine
-	pkgver = 7.0.0.r30.g427d2a71d5
+	pkgver = 7.0.2.r331.gdb99c45d23
 	pkgrel = 1
 	url = https://suricata.io/
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = rust
 	makedepends = clang
 	makedepends = cbindgen

@@ -5,12 +5,12 @@
 
 pkgname=suricata-git
 _pkgname=${pkgname%-git}
-pkgver=7.0.0.r30.g427d2a71d5
+pkgver=7.0.2.r331.gdb99c45d23
 pkgrel=1
 pkgdesc="A high performance Network IDS, IPS and Network Security Monitoring engine"
 arch=('i686' 'x86_64')
 url="https://suricata.io/"
-license=('GPL2')
+license=('GPL-2.0-only')
 makedepends=('rust' 'clang' 'cbindgen' 'llvm' 'git')
 depends=('hyperscan' 'jansson' 'libbpf' 'libcap-ng' 'libmagic.so' 'libmaxminddb' 'libnet' 'libpcap' 'libunwind' 'libyaml' 'lua' 'pcre2' 'python-yaml')
 optdepends=('geoipupdate: GeoIP2 databases')
