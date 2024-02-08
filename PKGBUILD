@@ -5,14 +5,15 @@ _pkgname=Rfast
 _pkgver=2.1.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="A Collection of Efficient and Extremely Fast R Functions"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   blas
   lapack
+  onetbb
   r-rcpp
   r-rcppparallel
   r-rcppziggurat
@@ -25,11 +26,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('ba455888bd71d3cbce27d29be5f1948c')
-sha256sums=('f9e46cac99db756cd49c9cd83be8adc0d381e6c03102389bfdcb8258d02418ff')
+b2sums=('d1de20c4b2985c55d93e84ba4c22fab142d9a1055090e3ae8378675956306418e6c6a01366ed1448b154ed12b8d68ca9fa6a6d42e800cb9b5a973d5f35dbae6d')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
