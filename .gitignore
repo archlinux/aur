@@ -1,1 +1,4 @@
 *.rpm
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+
