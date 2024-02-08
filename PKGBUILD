@@ -4,12 +4,13 @@ _pkgname=decontX
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Decontamination of single cell genomics data"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
+  onetbb
   r-celda
   r-dbscan
   r-delayedarray
@@ -49,11 +50,11 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('1e2f4af9204397b8104543dd954bb390')
-sha256sums=('688151c203ef4607d02c2fd27e1dccae5204128cbc98c1ba9ef087082d9fe598')
+b2sums=('f6083f5678fbaeb0676893f1a70d33946392b67d88902cb59202d083f5dd137d43e09f7dec92f8df3353c968283e018791a7c4075e2cf7f12c497425824fc152')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

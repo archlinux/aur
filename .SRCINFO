@@ -1,7 +1,7 @@
 pkgbase = r-decontx
 	pkgdesc = Decontamination of single cell genomics data
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/decontX
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = r-decontx
 	makedepends = r-bh
 	makedepends = r-rcppeigen
 	makedepends = r-stanheaders
+	depends = onetbb
 	depends = r-celda
 	depends = r-dbscan
 	depends = r-delayedarray
@@ -37,6 +38,6 @@ pkgbase = r-decontx
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/decontX_1.0.0.tar.gz
 	md5sums = 1e2f4af9204397b8104543dd954bb390
-	sha256sums = 688151c203ef4607d02c2fd27e1dccae5204128cbc98c1ba9ef087082d9fe598
+	b2sums = f6083f5678fbaeb0676893f1a70d33946392b67d88902cb59202d083f5dd137d43e09f7dec92f8df3353c968283e018791a7c4075e2cf7f12c497425824fc152
 
 pkgname = r-decontx
