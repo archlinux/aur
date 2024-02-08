@@ -6,7 +6,7 @@ pkgver=0.11.0
 pkgrel=1
 pkgdesc="Dead simple CLI Display Manager on TTY"
 arch=('x86_64')
-url="https://github.com/tijko/emptty-bin"
+url="https://github.com/tvrzna/emptty"
 license=('MIT')
 depends=('pam' 'libx11')
 makedepends=('go' 'git')
@@ -16,8 +16,8 @@ optdepends=('xorg-server: default display server'
             'wayland: alternative to xorg-server')
 backup=('etc/emptty/conf')
 provides=('emptty')
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('764600225896bd4b47b5fee312ee102ad87e4a337e68d17240f32f2d9ae9f06200e1927b6402a5a682f9b9101bd0383e62ceb0094bf9f4a8a21868496cb9289f')
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$arch-$pkgver.tar.gz")
+sha512sums=('9e32957a8c120cd01bdd9deb200325b5da89ac7dbfb4835e49a7c86e8e40d952d4d013af48bc50dbdb0af3bbf753061225611336994a1e134ca88915349171df')
 
 package() {
   install -DZs "usr/bin/emptty" -m 755 -t "/usr/bin"
