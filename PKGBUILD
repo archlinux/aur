@@ -5,7 +5,7 @@
 # Contributor: Dan Ziemba <zman0900@gmail.com>
 
 ## options
-: ${_build_arch_patch:=ftrue}
+: ${_build_arch_patch:=true}
 
 : ${_build_clang:=false}
 : ${_build_tracer:=true}
@@ -23,7 +23,7 @@
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.7.3
+pkgver=6.7.4
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -53,7 +53,7 @@ source+=(
   "config-$pkgver"::https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/main/config
 )
 sha256sums+=(
-  'b7f08c652747574a3aa26e317d7a8f23ffab3fb645e1b1533b215dcfd5742b44'
+  'f68d9f5ffc0a24f850699b86c8aea8b8687de7384158d5ed3bede37de098d60c'
   'SKIP'
   'SKIP'
 )
