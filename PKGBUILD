@@ -3,12 +3,12 @@
 _pkgname=PRROC
 _pkgver=1.3.1
 pkgname=r-${_pkgname,,}
-pkgver=1.3.1
-pkgrel=4
-pkgdesc='Precision-Recall and ROC Curves for Weighted and Unweighted Data'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=9
+pkgdesc="Precision-Recall and ROC Curves for Weighted and Unweighted Data"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r
 )
@@ -18,14 +18,15 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('479118ce47c527bc97fb58d531a31cabc094d9843d62f16922009dc62e8248d4')
+md5sums=('a69d2bae6c1c3295b4d87a121b6a9ff4')
+b2sums=('41b04744f886d2fb5c7ff70e700eae2ff184942cfb182827584f6e94a4db3ab96b1b1e9339b855923a690e2064d338a0c109701f974198f7768b22c05203275b')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
