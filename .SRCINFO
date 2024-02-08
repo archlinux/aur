@@ -1,13 +1,14 @@
 pkgbase = r-prophet
 	pkgdesc = Automatic Forecasting Procedure
 	pkgver = 1.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://cran.r-project.org/package=prophet
 	arch = x86_64
 	license = MIT
 	checkdepends = r-testthat
 	makedepends = r-bh
 	makedepends = r-rcppeigen
+	depends = onetbb
 	depends = r-dplyr
 	depends = r-dygraphs
 	depends = r-extradistr
