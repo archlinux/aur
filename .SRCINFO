@@ -1,12 +1,13 @@
 pkgbase = r-glm2
 	pkgdesc = Fitting Generalized Linear Models
 	pkgver = 1.2.1
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=glm2
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	source = https://cran.r-project.org/src/contrib/glm2_1.2.1.tar.gz
-	sha256sums = 3e0d4e6db8eab3e498fa3f2376b3ae592f92dd9b412fda8fff6f084defa6d8af
+	md5sums = fe8d4a7709bc259599bd61dd5442c492
+	b2sums = d61daa6c73c9f56e356ca6544421b17d6fcf0424eca2993fa4d1d777c7b3eb525ae12bf7f71eb46c49b87d41fd0a2bf05006872a467df0efbf4f73d4316799a0
 
 pkgname = r-glm2
