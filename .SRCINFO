@@ -1,10 +1,10 @@
 pkgbase = zathura-pdf-mupdf
 	pkgdesc = PDF support for Zathura (MuPDF backend) (Supports PDF, ePub, and OpenXPS)
 	pkgver = 0.4.1
-	pkgrel = 14
+	pkgrel = 15
 	url = https://pwmt.org/projects/zathura-pdf-mupdf/
 	arch = x86_64
-	license = zlib
+	license = Zlib
 	makedepends = meson
 	makedepends = ninja
 	makedepends = git
