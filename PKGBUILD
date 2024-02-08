@@ -81,7 +81,7 @@ package() {
   _py_opts=(
     --root="${pkgdir}"
     # --prefix='/usr'
-    --optimize=1
+    # --optimize=1
     --skip-build
   )
   cd \
