@@ -1,0 +1,102 @@
+pkgbase = adaptivecpp-git
+	pkgdesc = Independent, community-driven modern platform for C++-based heterogeneous programming models targeting CPUs and GPUs from all major vendors. (formerly known as hipSYCL / Open SYCL).
+	pkgver = 23.10.0+130.r2453.20240207.f144e21f
+	pkgrel = 1
+	url = https://github.com/AdaptiveCpp/AdaptiveCpp
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = boost
+	makedepends = clang
+	makedepends = cmake
+	makedepends = gcc-libs
+	makedepends = git
+	makedepends = glibc
+	makedepends = hip-runtime-amd
+	makedepends = libffi
+	makedepends = libxml2
+	makedepends = llvm
+	makedepends = llvm-libs
+	makedepends = ncurses
+	makedepends = opencl-clhpp
+	makedepends = opencl-headers
+	makedepends = openmp
+	makedepends = rocm-llvm
+	makedepends = zlib
+	makedepends = zstd
+	source = adaptivecpp::git+https://github.com/AdaptiveCpp/AdaptiveCpp.git
+	sha256sums = SKIP
+
+pkgname = adaptivecpp-common-git
+	pkgdesc = Independent, community-driven modern platform for C++-based heterogeneous programming models targeting CPUs and GPUs from all major vendors. (formerly known as hipSYCL / Open SYCL). Common files.
+	depends = 
+	optdepends = adaptivecpp-cpu-git=23.10.0+130.r2453.20240207.f144e21f: For CPU only backend.
+	optdepends = adaptivecpp-cuda-git=23.10.0+130.r2453.20240207.f144e21f: For CUDA (NVIDIA) + OpenCL + CPU backend.
+	optdepends = adaptivecpp-opencl-git=23.10.0+130.r2453.20240207.f144e21f: For OpenCL + CPU backend.
+	optdepends = adaptivecpp-rocm-git=23.10.0+130.r2453.20240207.f144e21f: For ROCm (AMD Radeon) + OpenCL + CPU backend.
+	provides = adaptivecpp-common=23.10.0+130.r2453.20240207.f144e21f
+	conflicts = adaptivecpp-common
+
+pkgname = adaptivecpp-cpu-git
+	pkgdesc = Independent, community-driven modern platform for C++-based heterogeneous programming models targeting CPUs and GPUs from all major vendors. (formerly known as hipSYCL / Open SYCL). Accelerated CPU-only backend.
+	depends = adaptivecpp-common-git=23.10.0+130.r2453.20240207.f144e21f
+	depends = gcc-libs
+	depends = glibc
+	depends = llvm-libs
+	depends = python
+	optdepends = 
+	provides = adaptivecpp-cpu=23.10.0+130.r2453.20240207.f144e21f
+	provides = adaptivecpp-backend
+	provides = hipsycl
+	provides = syclcc
+	provides = syclcc-clang
+	conflicts = adaptivecpp-cpu
+	conflicts = adaptivecpp-backend
+	conflicts = syclcc
+	conflicts = syclcc-clang
+
+pkgname = adaptivecpp-opencl-git
+	pkgdesc = Independent, community-driven modern platform for C++-based heterogeneous programming models targeting CPUs and GPUs from all major vendors. (formerly known as hipSYCL / Open SYCL). OpenCL + CPU backend.
+	depends = adaptivecpp-common-git=23.10.0+130.r2453.20240207.f144e21f
+	depends = gcc-libs
+	depends = glibc
+	depends = llvm-libs
+	depends = ocl-icd
+	depends = python
+	depends = spirv-tools
+	optdepends = 
+	provides = adaptivecpp-opencl23.10.0+130.r2453.20240207.f144e21f
+	provides = adaptivecpp-cpu=23.10.0+130.r2453.20240207.f144e21f
+	provides = adaptivecpp-backend
+	provides = hipsycl
+	provides = syclcc
+	provides = syclcc-clang
+	conflicts = adaptivecpp-opencl
+	conflicts = adaptivecpp-cpu
+	conflicts = adaptivecpp-backend
+	conflicts = syclcc
+	conflicts = syclcc-clang
+
+pkgname = adaptivecpp-rocm-git
+	pkgdesc = Independent, community-driven modern platform for C++-based heterogeneous programming models targeting CPUs and GPUs from all major vendors. (formerly known as hipSYCL / Open SYCL). ROCm (AMD Radeon) + OpenCL + CPU backend.
+	depends = adaptivecpp-common-git=23.10.0+130.r2453.20240207.f144e21f
+	depends = gcc-libs
+	depends = glibc
+	depends = hip-runtime-amd
+	depends = llvm-libs
+	depends = ocl-icd
+	depends = python
+	depends = spirv-tools
+	optdepends = 
+	provides = adaptivecpp-rocm=23.10.0+130.r2453.20240207.f144e21f
+	provides = adaptivecpp-cpu=23.10.0+130.r2453.20240207.f144e21f
+	provides = adaptivecpp-opencl=23.10.0+130.r2453.20240207.f144e21f
+	provides = adaptivecpp-backend
+	provides = hipsycl
+	provides = syclcc
+	provides = syclcc-clang
+	conflicts = adaptivecpp-rocm
+	conflicts = adaptivecpp-cpu
+	conflicts = adaptivecpp-opencl
+	conflicts = adaptivecpp-backend
+	conflicts = syclcc
+	conflicts = syclcc-clang
