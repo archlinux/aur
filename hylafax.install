@@ -115,13 +115,13 @@ pre_remove() {
   systemctl disable 'hylafax.timer'
   #rm -f "${_hyhome}/bin"/{pdf2fax,ps2fax} "${_hyhome}/dev/null"
   _print_remove
+  /usr/share/libalpm/scripts/hylafax-ps2afm.sh destroy
   set +u
 }
 
 post_remove() {
   set -u
   systemctl daemon-reload
-  /usr/share/libalpm/scripts/hylafax-ps2afm.sh destroy
   mandb -q
   set +u
 }

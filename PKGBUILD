@@ -177,18 +177,31 @@ _opt_pagesize="Letter" # A4, Letter, Legal
 # http://lists.opensuse.org/opensuse/2009-09/msg00269.html
 # Re: [opensuse] Update Hylafax 4.4 to 6.03 with src.rpm on OpenSuSE 10.3
 
+# 0 use external libtiff package (libtiff5 or libtiff-hylafaxplus)
+# 1 include libtiff in hylafaxplus
+_opt_Integrated_LIBTIFF=0
+
+# 0 link hylafaxplus executables to external libtiff (libtiff5 or libtiff-hylafaxplus)
+# 1 link to system libtiff. New versions are often incompatible.
+_opt_HF_System_LIBTIFF=1
+
 set -u
 pkgname='hylafaxplus'
 _pkgnick='hylafax'
 pkgver='7.0.7'
-pkgrel='2'
+pkgrel='3'
 _sendfaxvsicommit='18fabc74490362cd26690331d546d727c727db25'
 pkgdesc='Enterprise Fax Server'
 arch=('i686' 'x86_64')
 url='http://hylafax.sourceforge.net/'
 license=('custom')
-depends=('dash' 'libtiff' 'pam' 'ghostscript' 'sharutils' 'jbigkit' 'lcms2' 'gawk') # 'gsfonts-type1') # 'cron'
-depends[1]='libtiff<4.6.0' # https://sourceforge.net/p/hylafax/mailman/message/38259441/
+depends=('glibc' 'gcc-libs' 'bash' 'perl' 'dash' 'libtiff' 'pam' 'ghostscript' 'sharutils' 'jbigkit' 'lcms2' 'gawk' 'libjpeg-turbo' 'libldap' 'libxcrypt' 'openssl' 'zlib') # 'gsfonts-type1') # 'cron'
+depends[1]='libtiff>=4.6.0' # 'libtiff<4.6.0' https://sourceforge.net/p/hylafax/mailman/message/38259441/
+if [ "${_opt_Integrated_LIBTIFF}" -eq 0 ]; then
+  depends+=('libtiff5-hylafaxplus')
+else
+  provides=('libtiff5') # no =version
+fi
 # BASE64 is the default so HylaFAX+ doesn't need uuencode but I put it in anyways to placate configure and the bin finder in faxsetup!
 optdepends=(
   'smtp-server: email support' # this must be configured if installed or Hylafax will spam the process table with orphaned sendmail processes
@@ -216,6 +229,7 @@ options=('!buildflags') # get rid of Class 1 errors No response to PPS MPS, RSPR
 install="${_pkgnick}.install"
 # 'var/spool/hylafax/etc/hosts.hfaxd') # This is better handled with a .default file.
 _verwatch=("${url}" 'news/\([0-9\.]\+\)\.php' 'l')
+_srcdir="${_pkgnick}-${pkgver}"
 source=(
   "https://downloads.sourceforge.net/hylafax/${_pkgnick}-${pkgver}.tar.gz"
   "sendfaxvsi-1.0.0.tgz::https://github.com/severach/sendfaxvsi/archive/${_sendfaxvsicommit}.tar.gz"
@@ -273,6 +287,121 @@ sha256sums=('8b9bcd4fe25f08b658e6cfcb3514183c22cbbfdf7166fa092510011a8228f88d'
 
 # Note: I only send faxes. Fax receiving might need a bunch more patches.
 
+if [ "${_opt_Integrated_LIBTIFF}" -ne 0 ]; then
+_libtiff_top() {
+set -u
+local _pkgname=tiff
+#pkgname=libtiff
+#pkgname+='5'
+local pkgver=4.4.0
+#pkgrel=2
+#pkgdesc='Library for manipulation of TIFF images'
+#arch=('x86_64' 'aarch64')
+#url='http://www.simplesystems.org/libtiff'
+license+=('custom')
+depends+=('gcc-libs' 'glibc' 'libjpeg-turbo' 'libjpeg.so' 'zlib' 'xz' 'zstd')
+#depends+=('libtiff>=4.6.0')
+conflicts+=('libtiff<4.6.0' 'libtiff5')
+_libtiff_srcdir="${_pkgname}-${pkgver}"
+source+=(
+  "https://download.osgeo.org/libtiff/tiff-${pkgver}.tar.gz"
+  # fix CVE-2022-2056 / CVE-2022-2057 / CVE-2022-2058: https://bugs.archlinux.org/task/75360
+  "${pkgname}-4.4.0-fpe_tiffcrop.patch::https://gitlab.com/libtiff/libtiff/-/commit/dd1bcc7abb26094e93636e85520f0d8f81ab0fab.patch"
+  # fix CVE-2022-34526: https://bugs.archlinux.org/task/75608
+  "${pkgname}-4.4.0-CVE-2022-34526.patch::https://gitlab.com/libtiff/libtiff/-/commit/275735d0354e39c0ac1dc3c0db2120d6f31d1990.patch"
+)
+}
+_libtiff_top
+
+_libtiff_prepare() {
+  set -u
+  cd "${_libtiff_srcdir}"
+  # apply patch from the source array (should be a pacman feature)
+  local _src
+  for _src in "${source[@]}"; do
+    _src="${_src%%::*}"
+    _src="${_src##*/}"
+    if [[ "${_src}" = libtiff*.patch ]]; then
+      echo "Applying patch ${_src}..."
+      patch -Np1 -i "../${_src}"
+    fi
+  done
+  set +u
+}
+
+_libtiff_incdir='libtiff-hylafaxplus'
+_libtiff_libdir='libtiff-hylafaxplus'
+
+_libtiff_build() {
+  set -u
+  local _configure_options=(
+    --prefix=/usr
+    #--sysconfdir=/etc
+    #--enable-ld-version-script
+    #--mandir=/usr/share/man
+    #--with-docdir=/usr/share/doc/${pkgname}
+    --includedir="/usr/include/${_libtiff_incdir}"
+    #--libdir="/usr/lib/${_libtiff_libdir}"
+    #--bindir='/usr/bin/hylafax' # how will all the scripts work if we move the binaries
+  )
+  cd "${_libtiff_srcdir}"
+  if [ ! -s 'Makefile' ]; then
+    #CFLAGS+=' -fpic'
+    ./configure "${_configure_options[@]}"
+  fi
+  make -s
+  set +u
+}
+
+_libtiff_check() {
+  set -u
+  cd "${_libtiff_srcdir}"
+  make check
+  set +u
+}
+
+_libtiff_package() {
+  set -u
+  cd "${_libtiff_srcdir}"
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 'COPYRIGHT' -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  cd "${pkgdir}"
+  local _f
+  for _f in tiffcp; do
+    mv "usr/bin/${_f}"{,.hylafax}
+    mv "usr/share/man/man1/${_f}"{.1,.hylafax.1}
+  done
+  for _f in tiffdump tiffinfo tiffset tiffsplit; do
+    rm "usr/bin/${_f}"
+    rm "usr/share/man/man1/${_f}.1"
+  done
+  shopt -s failglob
+  rm -r usr/share/{doc,man/man3} usr/lib/libtiff*.a
+  if :; then
+    rm -r 'usr/lib/pkgconfig'
+    install -d "usr/lib/${_libtiff_libdir}"
+    pushd "usr/lib/${_libtiff_libdir}" > /dev/null
+    mv ../libtiff*.so .
+    local _f
+    for _f in ../*.so*; do
+      ln -s "${_f}"
+    done
+    popd > /dev/null
+  fi
+  shopt -u failglob
+  #sed -e 's:^TIFFBIN=.*$:TIFFBIN=/usr/bin:g' -i "${pkgdir}/usr/bin/faxsetup" # not needed if we change TIFFBIN detection to tiffcp
+  set +u
+}
+else
+_libtiff_incdir='libtiff5'
+_libtiff_libdir='libtiff5'
+_libtiff_prepare() { :; }
+_libtiff_build() { :; }
+_libtiff_check() { :; }
+_libtiff_package() { :; }
+fi
+
 _pkginit() {
   if [ "${SOURCEONLY:-0}" -ne 0 ]; then # see makepkg -S if this var changes
     if [ "${_opt_FAXNumber}" != '+1.517.555.0101' ] || [ "${_opt_LocalIdentifier}" != 'ArchLinuxFAX' ]; then
@@ -286,20 +415,31 @@ _pkginit
 unset -f _pkginit
 
 prepare() {
+  _libtiff_prepare; cd "${srcdir}"
   set -u
-  cd "${_pkgnick}-${pkgver}"
+  cd "${_srcdir}"
 
   # sbin is deprecated and should not be used. We'll obliterate 
   # all uses of /sbin. Some /sbin not applicable to our OS are left alone.
   #cp -p 'configure'{,.Arch}
-  sed -e 's:^\(DIR_SBIN=/usr/local/\)sbin$:\1bin:g' \
-      -e 's|:/sbin:\($PATH\)|:\1|g' \
-      -e 's|\(findApp [^ ]\+ \)/sbin:\($PATH\)|\1\2|g' \
-      -e 's|\(findAppDef [^ ]\+ \)/sbin:\($PATH\)|\1\2|g' \
-      -e 's|^\(PATH=$PATH:/bin:/usr/bin\)\(:/etc\)$|\1 # \2 # it was an insanely stupid choice for some UNIX systems to put /etc in the path!|g' \
-      -e 's:^\(test -d /usr/sbin &&\):#\1:g' \
-      -e 's:^#!/bin/sh$:#!/usr/bin/dash:g' \
-    -i 'configure'
+  local _seds=(
+    -e 's:^\(DIR_SBIN=/usr/local/\)sbin$:\1bin:g'
+    -e 's|:/sbin:\($PATH\)|:\1|g'
+    -e 's|\(findApp [^ ]\+ \)/sbin:\($PATH\)|\1\2|g'
+    -e 's|\(findAppDef [^ ]\+ \)/sbin:\($PATH\)|\1\2|g'
+    -e 's|^\(PATH=$PATH:/bin:/usr/bin\)\(:/etc\)$|\1 # \2 # it was an insanely stupid choice for some UNIX systems to put /etc in the path!|g'
+    -e 's:^\(test -d /usr/sbin &&\):#\1:g'
+    -e 's:^#!/bin/sh$:#!/usr/bin/dash:g'
+    -e '# pretend, that libtiff 4.x is similar to 4.0'
+    -e '/tiff_runlen_t/ s:4\..\+):4.[0123456789]):'
+  )
+  if [ "${_opt_Integrated_LIBTIFF}" -ne 0 ]; then
+  _seds+=(
+    -e '# change TIFFBIN detection to a binary still in libtiff 4.6.0 avoiding the need for -with-TIFFBIN'
+    -e 's:tiff2ps:tiffcp:g'
+  )
+  fi
+  sed "${_seds[@]}" -i 'configure'
   test ! -s 'configure.Arch' || echo "${}"
 
   # Ghostscript dropped Type1 from the font path.
@@ -395,8 +535,8 @@ prepare() {
     printf '#\nInclude:\t\t"etc/config-modems"\n' >> "${_cfg}"
   done
 
-  # pretend, that libtiff 4.x is similar to 4.0
-  sed -E -e '/tiff_runlen_t/ s:4\..+\):4.[0123456789]):' -i 'configure'
+  # Switch tiffcp to old version that supports tiffcp -i
+  sed -e 's:\btiffcp\b:tiffcp.hylafax:g' -i $(grep --include 'configure' --include '*.sh*' -lr -e '\btiffcp\b' .)
 
   set +u
 
@@ -405,27 +545,45 @@ prepare() {
 }
 
 build() {
+  _libtiff_build; cd "${srcdir}"
   set -u
-  cd "${_pkgnick}-${pkgver}"
+  cd "${_srcdir}"
   if [ ! -s 'Makefile' ]; then
+    local _conf=(
+      --nointeractive
+      --with-OPTIMIZER="${CFLAGS:-}"
+      --target="${CARCH}-arch-linux"
+      --with-DIR_BIN='/usr/bin'
+      --with-DIR_LIB='/usr/lib'
+      --with-DIR_LIBDATA='/usr/lib/fax'
+      --with-DIR_LIBEXEC='/usr/bin'
+      --with-DIR_MAN='/usr/share/man'
+      --with-DIR_SBIN='/usr/bin'
+      --with-SYSVINIT='no'
+      --with-PAGESIZE="${_opt_pagesize}"
+      --with-SCRIPT_SH='/usr/bin/dash'
+      #--with-PATH_AFM='/usr/share/fonts/Type1' #gs ignores this
+    )
+    local _LDPATH=''
+    if [ "${_opt_Integrated_LIBTIFF}" -ne 0 ]; then
+    _conf+=(
+      --with-TIFFINC="-I${srcdir}/${_libtiff_srcdir}/libtiff"
+      --with-LIBTIFF="-L${srcdir}/${_libtiff_srcdir}/libtiff/.libs -ltiff"
+      #--with-TIFFBIN="${srcdir}/${_libtiff_srcdir}/tools" # not needed if we change TIFFBIN detection to tiffcp and require libtiff>=4.6.0
+    )
+      _LDPATH="${srcdir}/${_libtiff_srcdir}/libtiff/.libs"
+    elif [ "${_opt_HF_System_LIBTIFF}" -eq 0 ]; then
+    _conf+=(
+      --with-TIFFINC="-I/usr/include/${_libtiff_incdir}"
+      --with-LIBTIFF="-L/usr/lib/${_libtiff_libdir} -ltiff"
+    )
+    fi
     # On my system LN has something in it. Short variable names should be avoided in scripts.
+    LD_LIBRARY_PATH="${_LDPATH}"
     LN= \
     CHOWN="${srcdir}/chown" \
     CHGRP="${srcdir}/chgrp" \
-    ./configure \
-      --nointeractive \
-      --with-OPTIMIZER="${CFLAGS:-}" \
-      --target="${CARCH}-arch-linux" \
-      --with-DIR_BIN='/usr/bin' \
-      --with-DIR_LIB='/usr/lib' \
-      --with-DIR_LIBDATA='/usr/lib/fax' \
-      --with-DIR_LIBEXEC='/usr/bin' \
-      --with-DIR_MAN='/usr/share/man' \
-      --with-DIR_SBIN='/usr/bin' \
-      --with-SYSVINIT='no' \
-      --with-PAGESIZE="${_opt_pagesize}" \
-      --with-SCRIPT_SH='/usr/bin/dash'
-#      --with-PATH_AFM='/usr/share/fonts/Type1' gs ignores this
+    ./configure "${_conf[@]}"
   fi
 
   make -s -j1 # hylafax is not multi threaded make compatible
@@ -433,9 +591,13 @@ build() {
   set +u
 }
 
+check() {
+  _libtiff_check; cd "${srcdir}"
+}
+
 package() {
   set -u
-  cd "${_pkgnick}-${pkgver}"
+  cd "${_srcdir}"
 
   local _chown="${pkgdir}/_install_chown.sh"
 
@@ -903,5 +1065,6 @@ EOF
 
   install -Dpm644 'COPYRIGHT' "${pkgdir}/usr/share/licenses/${_pkgnick}/COPYRIGHT"
   set +u
+  cd "${srcdir}"; _libtiff_package
 }
 set +u
