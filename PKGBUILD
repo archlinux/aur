@@ -1,32 +1,30 @@
-# Maintainer: Lukas Werling <lukas@lwrl.de>
-# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Maintainer: Mahdi Sarikhani <mahdisarikani@outlook.com>
+# Contributor: Lukas Werling <lukas@lwrl.de>
+# Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=sonobus
-pkgver=1.6.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="An easy to use application for streaming high-quality, low-latency peer-to-peer audio"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://sonobus.net"
-license=('GPL3')
-depends=('opus' 'freetype2' 'libxrandr' 'libxinerama' 'libxcursor' 'libasound.so=2-64' 'libjack.so=0-64')
-makedepends=('cmake')
-source=("sonobus-$pkgver.tar.gz::https://github.com/sonosaurus/sonobus/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('9d36cac621dbc2a3cd12299f22a5407e5978e02a6a67c9af7fad2e53bfb1250c71611ed08fb294e6df5e324ae59fd27c9e489b17693dc676c5d170aef5ca734c')
+license=('GPL-3.0-or-later')
+depends=('alsa-lib' 'freetype2' 'gcc-libs' 'glibc' 'opus')
+makedepends=('cmake' 'jack' 'libx11' 'libxcursor' 'libxinerama' 'libxrandr')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sonosaurus/sonobus/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('f09954555a281ff254971ef3af5f9d041102143c6454958b15a11a380680a55d')
 
 build() {
-    cd "sonobus-${pkgver}"
-
-    cmake -B build  \
+    cd "${pkgname}-${pkgver}"
+    cmake -B build \
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -Wno-dev
-    make -C build
+    cmake --build build
 }
 
 package() {
-    cd "sonobus-${pkgver}/linux"
-
-    install -d "$pkgdir/usr"
-
-    ./install.sh "$pkgdir/usr"
+    cd "${pkgname}-${pkgver}/linux"
+    install -d "${pkgdir}/usr"
+    ./install.sh "${pkgdir}/usr"
 }
