@@ -1,6 +1,6 @@
 pkgbase = perl-mail-bimi
 	pkgdesc = BIMI object
-	pkgver = 3.20230913
+	pkgver = 3.20240205
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Mail-BIMI
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = perl-mail-bimi
 	depends = perl-sub-install
 	depends = perl-xml-libxml
 	options = !emptydirs
-	source = http://cpan.perl.org/modules/by-module/Mail/Mail-BIMI-3.20230913.tar.gz
-	sha256sums = 997b8af7229814459a3fb9855bc50102f9c3c09b040ad9ecb1ca1f7481744b79
+	source = http://cpan.perl.org/modules/by-module/Mail/Mail-BIMI-3.20240205.tar.gz
+	sha256sums = 6e88696a876b0133cd2347f58825dbd796d2a0a3fabd1f5cd29d50c2f11b149a
 
 pkgname = perl-mail-bimi
