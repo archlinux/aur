@@ -1,7 +1,4 @@
-#!/bin/bash
-cd "/opt/gravitation"
-if [ $(uname -m) == x86_64 ]; then
-	./Gravitation.x86_64
-else
-	./Gravitation.x86
-fi
+#!/bin/sh
+pushd "/opt/gravitation"
+./Gravitation.x86
+popd

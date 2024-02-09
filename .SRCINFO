@@ -1,7 +1,7 @@
 pkgbase = gravitation
 	pkgdesc = Gravitation is a retro gravity cave flyer for 1-4 players, featuring single player time trials or multiplayer racing and dogfighting.
 	pkgver = 1.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.demonstudios.com/gravitation.html
 	arch = i686
 	arch = x86_64
