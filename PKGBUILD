@@ -5,7 +5,7 @@
 
 pkgname=plasma5-wallpapers-wallpaper-engine-git
 pkgver=0.5.4.r42.g345570d
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple kde wallpaper plugin integrating wallpaper engine"
 arch=('x86_64')
 url="https://github.com/catsout/wallpaper-engine-kde-plugin"
@@ -46,9 +46,7 @@ pkgver(){
 build(){
     cmake -B build -S "${srcdir}/${pkgname}" \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=None \
-        -DBUILD_QML=ON \
-        -DBUILD_SHARED_LIBS=ON
+        -DCMAKE_BUILD_TYPE=None
     cmake --build build
 }
 package(){
