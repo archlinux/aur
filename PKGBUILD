@@ -29,7 +29,7 @@ depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2' 'libhar
 depends+=('libdecor' 'libepoxy')
 optdepends=('cuda: CUDA support in Cycles'
             'optix>=7.4.0: OptiX support in Cycles'
-            'usd=21.05: USD export Scene'
+            'usd: USD export Scene'
             'openpgl: Intel Path Guiding library in Cycles'
             'openimagedenoise: Intel Open Image Denoise support in compositing'
             'materialx: MaterialX materials'
@@ -53,7 +53,6 @@ source=("blender::git+https://github.com/blender/blender${_fragment}"
         'blender/assets::svn+https://svn.blender.org/svnroot/bf-blender/trunk/lib/assets'
         # Patches...
         '0001-Use-github.com-for-make-update-git.patch'
-        '0003-usd_python.patch' #add missing python headers when building against python enabled usd.
         '0004-fix-opencollada-pcre.patch' #fix broken search for opencollada pcre
         )
 sha256sums=('SKIP'
@@ -63,7 +62,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '52da80b721efb6a6d579adf531640becfac1955a88857ca46ca16030a52c3b1c'
-            'c2db51a83a8d573aa76c760f10e541c84b108d64d05c9647681c4e633b3d0397'
             '6beedc541e33288a282f57cd2bd09860f333154027b6175e9f61cce49b8db5df')
 
 pkgver() {
