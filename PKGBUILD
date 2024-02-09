@@ -2,7 +2,8 @@
 
 _name=kholidays
 pkgname=${_name}5-cn
-pkgver=5.114.0
+base_pkgver=5.114.0
+pkgver=${base_pkgver}_20240209
 pkgrel=1
 epoch=1
 pkgdesc='KDE library for regional holiday information(CN)'
@@ -17,15 +18,15 @@ replaces=("$_name<1:5.111" "kholidays5")
 provides=("kholidays5")
 groups=(kf5)
 source=(
-    https://download.kde.org/stable/frameworks/${pkgver%.*}/$_name-$pkgver.tar.xz
+    https://download.kde.org/stable/frameworks/${base_pkgver%.*}/$_name-$base_pkgver.tar.xz
     https://github.com/0xcccccccccccc/kholidays_cn/releases/latest/download/holiday_cn_zh-cn
 )
 sha256sums=('be4af6625e80852cb7bc8cdbe2bdd56ccf3868644cbfb87d3494964f5f6f28a7'
-            'SKIP')
+            '1b67c022cf0141c30f3b0b5ed3b46d75c16758d930f8eb3d6a571b1c25fc84c6')
 
 build() {
-  cp $srcdir/holiday_cn_zh-cn $srcdir/kholidays-$pkgver/holidays/plan2/
-  cmake -B build -S $_name-$pkgver \
+  cp $srcdir/holiday_cn_zh-cn $srcdir/kholidays-$base_pkgver/holidays/plan2/
+  cmake -B build -S $_name-$base_pkgver \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON
   cmake --build build
