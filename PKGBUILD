@@ -3,7 +3,7 @@
 
 pkgname='perl-furl'
 pkgver='3.14'
-pkgrel='2'
+pkgrel='1'
 pkgdesc="Lightning-fast URL fetcher"
 arch=('any')
 license=('PerlArtistic' 'GPL')

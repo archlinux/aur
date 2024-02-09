@@ -1,7 +1,7 @@
 pkgbase = perl-furl
 	pkgdesc = Lightning-fast URL fetcher
 	pkgver = 3.14
-	pkgrel = 2
+	pkgrel = 1
 	url = https://metacpan.org/release/Furl
 	arch = any
 	license = PerlArtistic
