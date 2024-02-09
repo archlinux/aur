@@ -1,0 +1,75 @@
+--- a/meson.build	2023-12-06 15:03:55.000000000 -0300
++++ b/meson.build	2024-02-09 11:06:52.179779837 -0300
+@@ -2068,6 +2068,13 @@
+ 
+ glibconfig_conf.set10('G_HAVE_GROWING_STACK', growing_stack)
+ 
++res = run_command('python3', '-c', 'import os; print(os.environ["LIBRARY_PATH"])')
++library_path = []
++
++if res.returncode() == 0
++  library_path = res.stdout().strip().split(':')
++endif
++
+ # Tests for iconv
+ #
+ # We should never use the MinGW C library's iconv because it may not be
+@@ -2078,22 +2085,22 @@
+   # any external library for it
+   libiconv = []
+ else
+-  libiconv = dependency('iconv')
++  libiconv = cc.find_library('iconv', required: false, dirs: library_path)
+ endif
+ 
+ pcre2_req = '>=10.32'
+ 
+ # Pick up pcre from the system, or if "--force-fallback-for libpcre2-8" was specified
+-pcre2 = dependency('libpcre2-8', version: pcre2_req, required: false, default_options: ['default_library=static'])
++pcre2 = cc.find_library('pcre2-8', required: false, dirs: library_path)
+ if not pcre2.found()
+   if cc.get_id() == 'msvc' or cc.get_id() == 'clang-cl'
+   # MSVC: Search for the PCRE2 library by the configuration, which corresponds
+   # to the output of CMake builds of PCRE2.  Note that debugoptimized
+   # is really a Release build with .PDB files.
+     if vs_crt == 'debug'
+-      pcre2 = cc.find_library('pcre2d-8', required : false)
++      pcre2 = cc.find_library('pcre2d-8', required: false, dirs: library_path)
+     else
+-      pcre2 = cc.find_library('pcre2-8', required : false)
++      pcre2 = cc.find_library('pcre2-8', required: false, dirs: library_path)
+     endif
+   endif
+ endif
+@@ -2126,7 +2133,7 @@
+ gvdb_dep = dependency('gvdb')
+ 
+ libm = cc.find_library('m', required : false)
+-libffi_dep = dependency('libffi', version : '>= 3.0.0')
++libffi_dep = cc.find_library('ffi', dirs: library_path)
+ 
+ libz_dep = dependency('zlib')
+ 
+@@ -2136,7 +2143,7 @@
+ # implementations. This could be extended if issues are found in some platforms.
+ libintl_deps = []
+ libintl_prefix = '#include <libintl.h>'
+-libintl = dependency('intl', required: false)
++libintl = cc.find_library('intl', dirs: library_path)
+ if libintl.found() and libintl.type_name() != 'internal'
+   # libintl supports different threading APIs, which may not
+   # require additional flags, but it defaults to using pthreads if
+@@ -2150,11 +2157,11 @@
+   if cc.has_function('ngettext', dependencies : libintl, prefix: libintl_prefix)
+     libintl_deps += [libintl]
+   else
+-    libintl_iconv = cc.find_library('iconv', required : false)
++    libintl_iconv = cc.find_library('iconv', required: false, dirs: library_path)
+     if libintl_iconv.found() and cc.has_function('ngettext', args : osx_ldflags, dependencies : [libintl, libintl_iconv])
+       libintl_deps += [libintl, libintl_iconv]
+     else
+-      libintl_pthread = cc.find_library('pthread', required : false)
++      libintl_pthread = cc.find_library('pthread', required: false, dirs: library_path)
+       if libintl_pthread.found() and cc.has_function('ngettext', dependencies : [libintl, libintl_pthread], prefix: libintl_prefix)
+         libintl_deps += [libintl, libintl_pthread]
+       else
