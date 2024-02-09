@@ -1,6 +1,6 @@
 pkgbase = python-quimb
 	pkgdesc = Quantum information and many-body library.
-	pkgver = 1.7.2
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://github.com/jcmgray/quimb
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-quimb
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/q/quimb/quimb-1.7.2.tar.gz
-	b2sums = 4bc1cbb95dec13bffd670703516bd8fad8d5de130f92394df4bb68802095c6356f807d2306b3a81d8f11a60fe83daf700d38b97228625778f9f7f26b010e126d
+	source = https://files.pythonhosted.org/packages/source/q/quimb/quimb-1.7.3.tar.gz
+	b2sums = 3338afa14c8999f745a575f7414ebf04d0cc676a9cbc2f981d8a827c4bc988b7123d071a95c49f43bcc1ec096a34661ab25efe98d20042b2a2986ebcb10eb998
 
 pkgname = python-quimb
