@@ -1,11 +1,11 @@
 diff --git a/pyproject.toml b/pyproject.toml
-index e7b6fd6..ae398bd 100644
+index 89e4950..5afcf65 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
 @@ -24,9 +24,9 @@ packages = [
  ]
  include = [
-   # all is an object -> prevent parse issue like https://github.com/CycloneDX/cyclonedx-python-lib/network/updates/740004978
+   # all is an object -> prevent parse issue with dependabot
 -  { path="README.md", format =["sdist","wheel"] },
 -  { path="LICENSE", format=["sdist","wheel"] },
 -  { path="NOTICE", format=["sdist","wheel"] },
@@ -13,5 +13,5 @@ index e7b6fd6..ae398bd 100644
 +  { path="LICENSE", format=["sdist"] },
 +  { path="NOTICE", format=["sdist"] },
    { path="tests", format=["sdist"] },
- ]
- exclude = [
+   { path="CHANGELOG.md", format=["sdist"] },
+   { path="docs", format=["sdist"] },
