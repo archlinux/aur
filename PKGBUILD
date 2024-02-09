@@ -4,28 +4,22 @@
 
 pkgname="huenicorn"
 arch=('i686' 'x86_64')
-pkgver=v1.0.3.r0.gc39c0f2
+pkgver=1.0.5
 pkgrel=1
-pkgdesc="Free ambilight driver for Philips Hue™ devices"
+pkgdesc="Free bias lighting driver for Philips Hue™ devices"
 url='https://gitlab.com/openjowelsofts/huenicorn'
 license=('GNU GPLv3')
 source=(
-  "git+https://gitlab.com/openjowelsofts/huenicorn.git"
-  "huenicorn.sh"
+  "git+https://gitlab.com/openjowelsofts/huenicorn.git#tag=v${pkgver}"
+  "https://huenicorn.org/releases/extra/huenicorn.sh"
 )
 sha512sums=(
   'SKIP'
-  '588bd3d72be5d5684ceaf0c5e5d032c5dee8aa75e46bd64913b20f582c30191011ed867bf030954a4b39a5e3c33d18a299ad7f7ee9ae83d5a74793122be949b1'
+  'SKIP'
 )
-depends=('libx11' 'libxext' 'libxrandr' 'opencv' 'curl' 'libcurlpp' 'restbed' 'mbedtls')
-makedepends=('git' 'nlohmann-json' 'glm')
-
-
-pkgver(){
-  cd "$pkgname"
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-}
-
+depends=('opencv' 'curl' 'libcurlpp' 'restbed' 'mbedtls')
+optdepends=('libx11' 'libxext' 'libxrandr' 'wayland' 'glib2' 'pipewire')
+makedepends=('git' 'cmake' 'nlohmann-json' 'glm')
 
 build(){
   cd ${pkgname}
@@ -33,7 +27,6 @@ build(){
   cmake ..
   make -j4
 }
-
 
 package() {
   optdir=${pkgdir}/opt/${pkgname}
