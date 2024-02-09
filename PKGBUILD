@@ -4,7 +4,7 @@ _name=eve
 _author=jfalcou
 
 pkgname=${_name}-git
-pkgver=v2023.02.15.r41.g7aa3120819
+pkgver=2023.02.15.r112.gcf4ab5a8da
 pkgrel=1
 pkgdesc="Expressive Velocity Engine - SIMD in C++ Goes Brrrr"
 arch=('any')
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long --tags --match 'v*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long --match 'v*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;'
 }
 
 prepare() {
