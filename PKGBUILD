@@ -1,49 +1,36 @@
-# Maintainer: b00rt00s <b00rt00s.aur@gmail.com>
+# Maintainer:  Anton Kudelin <kudelin at proton dot me>
+# Contributor: b00rt00s <b00rt00s.aur@gmail.com>
 
 pkgname=vesta
 pkgver=3.5.8
-pkgrel=1
-pkgdesc="3D visualization program for structural models, volumetric data such as electron/nuclear densities, and crystal morphologies."
+pkgrel=2
+pkgdesc="Visualization for Electronic and STructural Analysis"
 url="https://jp-minerals.org/vesta"
-license=('custom')
-arch=('x86_64')
-depends=('gtk3' 'gtk2' 'glu' 'desktop-file-utils' 'libxtst' 'java-environment')
-
-_url="https://jp-minerals.org/vesta/archives"
-source_x86_64=("${_url}/${pkgver}/VESTA-gtk3.tar.bz2")
-source=('VESTA.desktop' 'vesta.install')
-md5sums=('fdd7040720e4b58a26caa7db09669acf'
-         'caabe467168af9e44cf380af1abfe280')
-md5sums_x86_64=('d13881c3c785b5461bbefa3ba59efd91')
-sha256sums=('4eae00cd081d7b628858a03593a265c6f7698461bd265b873198d5c347c151e4'
+license=(LicenseRef-vesta-license)
+arch=(x86_64)
+depends=(gtk3 gtk2 glu java-environment)
+makedepends=(desktop-file-utils libxtst)
+source=($url/archives/$pkgver/VESTA-gtk3.tar.bz2 VESTA.desktop vesta.install)
+sha256sums=('78bef025c2b31f1d64c9c7e06ad2b139d252b3a686893ee79ac74b3021868df8'
+            '4eae00cd081d7b628858a03593a265c6f7698461bd265b873198d5c347c151e4'
             '35d44e99185caa17fbf69938bcccc252fde70fb7bc2d407ef376ba512db08b43')
-sha256sums_x86_64=('78bef025c2b31f1d64c9c7e06ad2b139d252b3a686893ee79ac74b3021868df8')
 install="vesta.install"
 
-
-
 package() {
-	#prepare dirs
-	mkdir -p ${pkgdir}/opt
-	mkdir -p ${pkgdir}/usr/bin
-	mkdir -p ${pkgdir}/usr/share/licenses/vesta
-	mkdir -p ${pkgdir}/usr/share/applications/
-	
-  
-	cp -a ${srcdir}/VESTA-gtk3 ${pkgdir}/opt/VESTA
-	chmod 755 ${pkgdir}/opt/VESTA
-	
-	#install desktop file
-	install -m 644 ${srcdir}/VESTA.desktop ${pkgdir}/usr/share/applications/
+  cd "$pkgdir"
 
-	#link licence
-	(	cd ${pkgdir}/usr/share/licenses/vesta
-		ln -sf /opt/VESTA/Library_License vesta
-	)
+  install -dm755 opt
+  cp -a "$srcdir/VESTA-gtk3" opt/VESTA
+  chmod -R 755 opt/VESTA
 
-	#link executable
-	(
-		cd ${pkgdir}/usr/bin
-		ln -sf /opt/VESTA/VESTA VESTA
-	)
+  # installing the desktop file
+  install -Dm644 "$srcdir/VESTA.desktop" usr/share/applications/VESTA.desktop
+
+  # installing the license
+  install -Dm644 "$srcdir/VESTA-gtk3/LICENSE" \
+    usr/share/licenses/$pkgname/LICENSE
+
+  # creating a link for the executable
+  install -dm755 usr/bin
+  ln -sf /opt/VESTA/VESTA usr/bin/VESTA
 }
