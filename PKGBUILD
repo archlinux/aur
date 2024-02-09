@@ -14,20 +14,24 @@ pkgdesc="Framework bringing asynchronous RESTful functionality to C++14 applicat
 url='https://github.com/Corvusoft/restbed'
 license=('AGPL' 'CPL')
 options=('staticlibs')
-source=("git+https://github.com/Corvusoft/restbed#tag=${_tag}")
-sha512sums=('SKIP')
-makedepends=('git')
+source=(
+  "git+https://github.com/Corvusoft/restbed#tag=${_tag}"
+  "git+https://github.com/corvusoft/asio-dependency"
+  "git+https://github.com/corvusoft/catch-dependency"
+  "git+https://github.com/corvusoft/openssl-dependency"
+)
+sha512sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+)
+makedepends=('git' 'cmake')
 
 
 pkgver(){
   cd "$pkgname"
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-}
-
-
-prepare(){
-  cd ${pkgname}
-  git submodule update --init
 }
 
 

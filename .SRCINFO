@@ -8,8 +8,15 @@ pkgbase = restbed
 	license = AGPL
 	license = CPL
 	makedepends = git
+	makedepends = cmake
 	options = staticlibs
 	source = git+https://github.com/Corvusoft/restbed#tag=4.8
+	source = git+https://github.com/corvusoft/asio-dependency
+	source = git+https://github.com/corvusoft/catch-dependency
+	source = git+https://github.com/corvusoft/openssl-dependency
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = restbed
