@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RcppThread
-_pkgver=2.1.6
+_pkgver=2.1.7
 pkgname=r-${_pkgname,,}
-pkgver=2.1.6
+pkgver=2.1.7
 pkgrel=1
 pkgdesc='R-Friendly Threading in C++'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e9470c5e29e5e07ac5360d165ec96effad9115c03833b25c3acd8cd6809a27a5')
+sha256sums=('88debafefb13a77e507eeb2ae2a9e53f717e8cff071fcb4063b2be549423bbe8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
