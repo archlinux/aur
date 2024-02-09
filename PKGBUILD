@@ -4,7 +4,7 @@ _pkgname=Commas
 pkgver=0.30.0
 _electronversion=28
 _nodever=16
-pkgrel=1
+pkgrel=2
 pkgdesc="A hackable, pluggable terminal, and also a command runner."
 arch=("x86_64")
 url="https://github.com/CyanSalt/commas"
@@ -48,8 +48,9 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
+    sed "s|app.isPackaged|!process.defaultApp|g" -i src/main/utils/directory.ts
     npm install --no-package-lock
-    npm add ansi-styles
+    #npm add ansi-styles
     npm run build
 }
 package() {
