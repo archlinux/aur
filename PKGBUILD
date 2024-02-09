@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=qt6-jpegxl-image-plugin-git
-pkgver=0.4.1.r0.g0695db7
+pkgver=0.5.0.r2.g8aa8282
 pkgrel=1
 pkgdesc='Qt6 plug-in to allow Qt6 and KDE based applications to read/write JXL images (git version)'
 arch=('x86_64')
@@ -22,19 +22,20 @@ pkgver() {
 
 build() {
     cmake -B build -S qt-jpegxl-image-plugin \
+        -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DKDE_INSTALL_QTPLUGINDIR:PATH='lib/qt6/plugins' \
         -DQT_MAJOR_VERSION:STRING='6' \
         -DCMAKE_SKIP_INSTALL_RPATH:BOOL='YES' \
         -Wno-dev
-    make -C build
+    cmake --build build
 }
 
 check() {
-    make -C build test
+    ctest --test-dir build --output-on-failure
 }
 
 package() {
-    make -C build DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
 }
