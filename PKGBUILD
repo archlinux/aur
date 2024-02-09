@@ -11,7 +11,7 @@
 
 pkgname=cycles-standalone
 pkgver=4.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Blender Cycles rendering engine, standalone version"
 arch=(x86_64)
 url="https://github.com/blender/cycles.git"
@@ -20,7 +20,8 @@ depends=(pugixml opencolorio boost-libs python gflags openimageio intel-oneapi-t
 makedepends=(cmake git boost llvm python)
 optdepends=(cuda optix)
 provides=(cycles)
-source=("git+https://github.com/blender/cycles.git#commit=d17993feae50279f336c362f1ec7148bf83f06e1"
+_commit=7d482abd0078765f52a49024c895a2f12a681cbd
+source=("git+https://github.com/blender/cycles.git#commit=${_commit}"
         cycles_wrap.sh)
 sha256sums=('SKIP'
             '00afc4aab5541d147b013c31ab91d78e272654a75cae60b39cf70c23a2612c96')
