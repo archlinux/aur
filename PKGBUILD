@@ -2,7 +2,7 @@
 
 _pkgname='xorgxrdp'
 pkgname="$_pkgname-nvidia"
-pkgver=0.2.18.r55.g3a4d465
+pkgver=0.2.18.r49.g3d30c7a
 pkgrel=1
 pkgdesc='Xorg drivers for xrdp, with NVIDIA GPU support.'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ conflicts=("$_pkgname")
 depends=('NVIDIA-MODULE')
 makedepends=('nasm' 'xorg-server-devel' 'xrdp-git')
 options=('staticlibs')
-source=("git+https://github.com/jat001/xorgxrdp#branch=mainline_merge")
+source=("git+https://github.com/neutrinolabs/xorgxrdp#branch=gfx_mainline_merge")
 sha256sums=('SKIP')
 install="$pkgname.install"
 
