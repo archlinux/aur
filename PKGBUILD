@@ -2,7 +2,7 @@
 
 _pkgname='pulseaudio-module-xrdp'
 pkgname="${_pkgname}-git"
-pkgver=0.7.r2.ge7cb327
+pkgver=0.7.r10.g791dc3f
 pkgrel=1
 pkgdesc='PulseAudio modules for xrdp. Git version, devel branch.'
 arch=('i686' 'x86_64')
