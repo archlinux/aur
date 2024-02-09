@@ -1,7 +1,7 @@
 # Maintainer: Siyia <eutychios23@gmail.com>
 pkgname=bulk-rename-plus
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Tiny and powerfull tool to rename recursively path(s) into upper/lower/reverse case from the terminal, written in C++'
 arch=('x86_64')
 url="https://github.com/siyia2/bulk-rename-plus"
@@ -20,6 +20,6 @@ package() {
   
   cd "${srcdir}/$pkgname-${pkgver}"
   
-  install -Dm755 bulk_rename++ "$pkgdir~/.local/bin/bulk_rename++"
+  install -Dm755 bulk_rename++ "$HOME/.local/bin/bulk_rename++"
   
 }
