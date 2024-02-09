@@ -1,0 +1,11 @@
+pkgbase = ifp-console
+	pkgdesc = IFP | Infinite Fusion Project - console desktop app
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/wxn0brP/ifp-console
+	arch = x86_64
+	license = MIT
+	source = https://github.com/wxn0brP/ifp-console/releases/download/v0.0.1/ifp-console
+	sha256sums = 43841e6c0bc67f248c36ea759016a9088ddac20e126eae118b95a3f0c49628a5
+
+pkgname = ifp-console
