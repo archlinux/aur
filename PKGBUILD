@@ -2,7 +2,7 @@
 
 pkgname=duckstation-git
 _pkgname=duckstation
-pkgver=0.1.r6330.g56b452d
+pkgver=0.1.r6383.gd984609
 pkgdesc='A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (git version)'
 pkgrel=1
 arch=(x86_64 aarch64)
@@ -17,6 +17,8 @@ depends=(
     libxrandr
     libglvnd
     libx11
+    zstd
+    zlib
     dbus
     curl
     hicolor-icon-theme)
@@ -31,6 +33,7 @@ makedepends=(
     qt6-wayland
     libdrm
     libpulse
+    libwebp
     alsa-lib
     sndio
     ninja
