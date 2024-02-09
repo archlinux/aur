@@ -9,13 +9,13 @@ validpgpkeys=('EFD9413B17293AFDFE6EA6F1402A088DEDF104CB')
 pkgname=ntopng
 pkgver=6.0
 _ndpiver=4.8
-pkgrel=1
+pkgrel=2
 pkgdesc='The next generation version of the original ntop, a network traffic probe that shows the network usage'
 arch=('x86_64' 'i686')
 url='http://www.ntop.org/'
-license=('GPL3')
-depends=('redis' 'libmariadbclient' 'libpcap' 'sqlite' 'libmaxminddb' 'zeromq' 'rrdtool' 'hiredis')
-makedepends=('glib2' 'automake' 'libtool' 'wget' 'curl' 'libxml2' 'npm')
+license=('GPL-3.0-only')
+depends=('redis' 'libmariadbclient' 'libpcap' 'sqlite' 'libmaxminddb' 'zeromq' 'rrdtool' 'hiredis' 'curl' 'json-c')
+makedepends=('glib2' 'automake' 'libtool' 'wget' 'curl' 'libxml2' 'npm' 'jq')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ntop/$pkgname/archive/$pkgver.tar.gz"
 	"nDPI-$_ndpiver.tar.gz::https://github.com/ntop/nDPI/archive/$_ndpiver.tar.gz"
@@ -37,8 +37,9 @@ build() {
   cd $srcdir/$pkgname-$pkgver
   ./autogen.sh
   ./configure --prefix=$pkgdir/usr --datadir=/usr/share
-  npm install
-  npm run build
+  npm install --save-dev @babel/core
+  jq -c '.devDependencies' package.json | jq -r -M | grep ':' | sed 's/:/@/' | sed 's|[", ^]||g' | npm install --save-dev
+  npm run build:dev
   make
 }
 
