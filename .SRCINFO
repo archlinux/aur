@@ -1,12 +1,17 @@
 pkgbase = r-lpsolveapi
 	pkgdesc = R Interface to 'lp_solve' Version 5.5.2.0
 	pkgver = 5.5.2.0.17.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=lpSolveAPI
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.0-only
+	depends = lpsolve
 	depends = r
 	source = https://cran.r-project.org/src/contrib/lpSolveAPI_5.5.2.0-17.11.tar.gz
-	sha256sums = b08d6cae4fc17575adf5df0113ea5f4f819bb2c7f87987e0d66c8eabfc933fa4
+	source = system-libs.patch
+	md5sums = e43f4e573f77004f50566c06d1e0be62
+	md5sums = b05adde5cc4292eea42da677062a3c57
+	b2sums = 9293dda4044b2657ac4f70b532e7d59d7a0b02d1ff747e3939f23f0ba339ce339813a49fecd5dda623b46fb1fe248ec01c66c6611a80f51629039c72a756b17d
+	b2sums = b50c98ff88ad664a9cad84c1ea8d8a277d193845b0677566d14d6b8b82522d15667c5b97e70ae1244d2ecd06a9691e924393c4d23da189bfb01224c81f0b7ed8
 
 pkgname = r-lpsolveapi
