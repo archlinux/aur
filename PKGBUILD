@@ -1,38 +1,51 @@
 # Maintainer:  Anton Kudelin <kudelin at proton dot me>
 
-_pyname=flask-appbuilder
-_PyName=Flask-AppBuilder
-pkgname=python-$_pyname
-pkgver=4.3.9
+
+pkgname=python-flask-appbuilder
+_name=Flask-AppBuilder
+pkgver=4.3.11
 pkgrel=1
 arch=(any)
-pkgdesc='Simple and rapid application development framework, built on top of Flask'
-url='https://github.com/dpgaspar/Flask-AppBuilder'
-license=(BSD)
-depends=(python-flask-sqlalchemy python-flask-babel python-flask-wtf
-         python-flask-limiter python-flask-jwt-extended python-flask-login
-         python-prison python-parameterized python-ldap python-pillow
-         python-apispec python-yaml python-dateutil python-sqlalchemy-utils
-         python-jsonschema python-marshmallow-sqlalchemy python-jmespath
-         python-authlib python-mongoengine python-requests)
-makedepends=(python-build python-installer python-setuptools python-wheel)
-checkdepends=(python-pytest python-hiro)
-source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('79dcfe4f03faf102b0dac5114ee8d5b973354802348bc506fd035ec55f7a51e9')
+pkgdesc="Simple and rapid application development framework, built on top of Flask"
+url="https://github.com/dpgaspar/Flask-AppBuilder"
+license=("BSD")
+depends=(
+        "python-apispec"
+        "python-colorama"
+        "python-click"
+        "python-email-validator"
+        "python-flask"
+        "python-flask-babel"
+        "python-flask-limiter"
+        "python-flask-login"
+        "python-flask-sqlalchemy"
+        "python-flask-wtf"
+        "python-flask-jwt-extended"
+        "python-jsonschema"
+        "python-marshmallow"
+        "python-marshmallow-sqlalchemy"
+        "python-dateutil"
+        "python-prison"
+        "python-pyjwt"
+        "python-sqlalchemy"
+        "python-sqlalchemy-utils"
+        "python-wtforms"
+        "python-werkzeug"
+        "python-jmespath"
+        "python-authlib"
+        "python-flask-openid"
+        "python-flask-talisman"
+)
+makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
+source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
+b2sums=('0f2f72146cbf361eab7e8f5ec481444044b1d392a8e0194e58b03787500fc29391eb385ed21b26b159a1cd699acfe5a214a6e68cf3b11ea7521e47279a7cd4ca')
 
-build() {
-  cd "$srcdir/$_PyName-$pkgver"
-  python -m build \
-    --wheel \
-    --no-isolation \
-    --skip-dependency-check
+build(){
+ cd "$_name-$pkgver"
+ python -m build --wheel --no-isolation
 }
 
-package() {
-  cd "$srcdir/$_PyName-$pkgver"
-  python -m installer dist/*.whl \
-    --destdir="$pkgdir" \
-    --compile-bytecode=2
-
-  install -Dm755 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+package(){
+ cd "$_name-$pkgver"
+ python -m installer --destdir="$pkgdir" dist/*.whl
 }
