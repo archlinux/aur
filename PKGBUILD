@@ -1,11 +1,12 @@
-# Maintainer: Paweł Otlewski <pawel@idkcloud.com>
+# Maintainer: Tom Moore <middleagedman@users.noreply.github.com>
+# Contributor: Paweł Otlewski <pawel@idkcloud.com>
 
 # shellcheck disable=SC2148 # Ignore lack of shebang
 # shellcheck disable=SC2034 # Ignore "unused" PKGBUILD variables
 # shellcheck disable=SC2154 # Ignore "unassigned" references to $srcdir and $pkgdir
 
 pkgname=chef-workstation
-pkgver=23.5.1040
+pkgver=23.12.1055
 pkgrel=1
 pkgdesc="Chef's developer toolkit that includes Infra, InSpec, Habitat, and tools like knife."
 arch=('x86_64')
@@ -14,8 +15,8 @@ license=('custom:Chef EULA')
 depends=()
 conflicts=(chef-dk chef chef-solo cinc)
 replaces=('chef-dk')
-source=('https://packages.chef.io/files/stable/chef-workstation/23.5.1040/debian/11/chef-workstation_23.5.1040-1_amd64.deb')
-sha256sums=('fbace5a45c3bf857b72791a893b9dd3ddd80507165aeb80219329e6523e74305')
+source=("https://packages.chef.io/repos/apt/stable/ubuntu/20.04/chef-workstation_$pkgver-1_amd64.deb")
+sha256sums=('383b269ef486018b9d36849ba6267054085c296a097adf1bd00bd7446dee7452')
 
 package() {
   depends=('libxcrypt-compat')

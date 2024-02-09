@@ -1,16 +1,17 @@
 pkgbase = chef-workstation
-	pkgdesc = Chef Workstation gives you everything you need to get started with Chef. Start scanning and configuring your environments today with InSpec and chef-run.
-	pkgver = 23.5.1040
+	pkgdesc = Chef's developer toolkit that includes Infra, InSpec, Habitat, and tools like knife.
+	pkgver = 23.12.1055
 	pkgrel = 1
-	url = https://downloads.chef.io/chef-workstation/
+	url = https://www.chef.io/downloads/tools/workstation
 	arch = x86_64
 	license = custom:Chef EULA
 	conflicts = chef-dk
 	conflicts = chef
 	conflicts = chef-solo
 	conflicts = cinc
-	source = https://packages.chef.io/files/stable/chef-workstation/23.5.1040/debian/11/chef-workstation_23.5.1040-1_amd64.deb
-	sha256sums = fbace5a45c3bf857b72791a893b9dd3ddd80507165aeb80219329e6523e74305
+	replaces = chef-dk
+	source = https://packages.chef.io/repos/apt/stable/ubuntu/20.04/chef-workstation_23.12.1055-1_amd64.deb
+	sha256sums = 383b269ef486018b9d36849ba6267054085c296a097adf1bd00bd7446dee7452
 
 pkgname = chef-workstation
 	depends = libxcrypt-compat
