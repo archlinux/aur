@@ -2,7 +2,7 @@
 
 _pkgbase=ayaneo-platform
 pkgname=ayaneo-platform-dkms-git
-pkgver=v0.1.2.r0.g1476f31
+pkgver=v0.2.0.r0.g77e536a
 pkgrel=1
 pkgdesc="Linux Driver for Ayaneo x86 handhelds"
 arch=('x86_64')
