@@ -4,7 +4,7 @@ _name=ctbench
 _author=jpenuchot
 
 pkgname=${_name}-git
-pkgver=v1.3.4.r0.g59c7060
+pkgver=1.3.4.r13.ge15b943
 pkgrel=1
 pkgdesc="Compile-time benchmark and analysis for Clang"
 arch=('any')
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;'
 }
 
 prepare() {
