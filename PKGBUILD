@@ -3,7 +3,7 @@
 
 pkgname=lib32-volk-git
 pkgdesc='Meta loader for Vulkan API (32-bit) (git version)'
-pkgver=1.3.275.0.r5.g7121910
+pkgver=1.3.275.r5.g7121910
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/zeux/volk'
@@ -16,7 +16,9 @@ source=(git+https://github.com/zeux/volk.git)
 
 pkgver(){
   cd "${srcdir}"/volk
-  git describe --long --tags --abbrev=7 | sed 's/^vulkan-sdk-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  #git describe --long --tags --abbrev=7 | sed 's/^vulkan-sdk-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  #git describe --long --tags --abbrev=7 | sed -r 's,^[^0-9]+,,;s,([0-9]*-g),r\1,;s,[-_],.,g'
+  git describe --long --tags --abbrev=7 | sed -r 's,^[^0-9]+,,;s,([0-9]*-g),r\1,;s,[-_],.,g' | sed 's/.0//g'
 }
 
 build(){
