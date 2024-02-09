@@ -9,6 +9,7 @@ pkgbase = yandexmusic
 	makedepends = nodejs
 	makedepends = asar
 	makedepends = jq
+	makedepends = python
 	depends = electron
 	depends = libpulse
 	depends = xdg-utils
