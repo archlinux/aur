@@ -9,7 +9,7 @@ url="https://github.com/XandrCopyrighted/xFetch/"
 license=('MIT')
 
 source=(
-	"https://github.com/XandrCopyrighted/xFetch/releases/download/3.0/xfetch"
+	"https://github.com/XandrCopyrighted/xFetch/releases/download/3.1/xfetch"
 	"https://raw.githubusercontent.com/XandrCopyrighted/xFetch/main/LICENSE"
 )
 sha256sums=(
