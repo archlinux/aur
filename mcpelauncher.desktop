@@ -2,7 +2,7 @@
 Categories=Game;
 Comment[en_US]=Bedrock Launcher for Linux
 Comment=Bedrock Launcher for Linux
-Exec=env QT_QPA_PLATFORM=xcb /usr/bin/mcpelauncher
+Exec=/usr/bin/mcpelauncher
 GenericName[en_US]=Bedrock Launcher for Linux
 GenericName=Bedrock Launcher for Linux
 Icon=/usr/share/pixmaps/mcpelauncher-appimage.png

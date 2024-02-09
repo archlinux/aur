@@ -1,7 +1,7 @@
 ## Maintainer: adiprasetya <ignilium.inc@gmail.com>
 
 pkgname=mcpelauncher-appimage
-_pkgver=0.12.1-763
+_pkgver=0.13.0-786
 pkgver="${_pkgver/-/.}"
 pkgrel=1
 pkgdesc="Minecraft Bedrock Launcher for Linux"
@@ -24,9 +24,9 @@ source=("${pkgname}_${_pkgver}.AppImage::https://github.com/minecraft-linux/appi
     "${pkgname}.png::https://static.wikia.nocookie.net/minecraft_gamepedia/images/4/48/Bedrock_Edition_icon.png"
     "mcpelauncher.desktop")
 noextract=("${pkgname}_${_pkgver}.AppImage")
-sha256sums=('1470b8fa7ce57416aed158919a07549369cf20f262f16238231413b73a4ed56e'
+sha256sums=('57c4fd31bf4cbf3b5a6212c7445af9104364a0aecee341054fe5f4f061761e40'
             'c631b790777cfe73799fbda79ab3d60096fc163af5669b86b2d2d7954aaea1c6'
-            'd11d038cacc64d32294c4fd62be61c136269697d4c188b9ac71f8d3a3e95fca3')
+            'bc94fe1c6b6849569961e9807baf32e71e1275a0c9b2b589141ca9067b9c4732')
 
 package() {
     # Install icon
