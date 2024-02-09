@@ -4,10 +4,10 @@
 
 pkgname=flightradar24
 _pkgname=fr24feed
-pkgver=1.0.44
+pkgver=1.0.46
 pkgrel=1
-_pkgver=1.0.44-0
-_pkgverarm=1.0.44-0
+_pkgver=1.0.46-1
+_pkgverarm=1.0.46-1
 pkgdesc='Feeder software for Flightradar24.com (fr24feed)'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url='https://www.flightradar24.com/share-your-data'
@@ -29,11 +29,11 @@ sha256sums=('857383cd88daac429f25579d40cc5c4f3c4468f2af406cba70d3d7e9fe825cd3'
             'a018c751e431fcde72e709917fdfe663a5c74040af80b56d1a4658ba962c95e5'
             'ebcf31ecb62aef650b0984f978318f7e716078f520efb165306dca592c0821bb'
             '32ae61984ae0123690fea0bf67f2b5f1ee1155f6a2b3a9d0ff7c5431d902ddee')
-sha256sums_x86_64=('63d26f9cb97626bd923d5b82c42836e5b1cf36b4d7b33c89f824448feffe90c5')
-sha256sums_i686=('34f68909d2670546a010cb196cc3051e742805aea2112d05a964f038498a29b9')
-sha256sums_armv6h=('96e57db965f1479b869af0934508d4b42b69c7d364f30e9771af9da8a1d2c379')
-sha256sums_armv7h=('96e57db965f1479b869af0934508d4b42b69c7d364f30e9771af9da8a1d2c379')
-sha256sums_aarch64=('96e57db965f1479b869af0934508d4b42b69c7d364f30e9771af9da8a1d2c379')
+sha256sums_x86_64=('dbbc550ec95844033401127f0a04741eda6e1adf1e95550ab6ba2c3502e685db')
+sha256sums_i686=('058e882328f49dee19d0b2609678345cda53a7aa420ce768a0b743c94a84fc7b')
+sha256sums_armv6h=('096986cafbcbf2bdba3727fa850b1922b6395f1e1e6fc01af2e2e44b68735535')
+sha256sums_armv7h=('096986cafbcbf2bdba3727fa850b1922b6395f1e1e6fc01af2e2e44b68735535')
+sha256sums_aarch64=('096986cafbcbf2bdba3727fa850b1922b6395f1e1e6fc01af2e2e44b68735535')
 
 prepare() {
   tar -xf data.tar.gz
