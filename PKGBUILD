@@ -4,7 +4,7 @@ _name=ctpg
 _author=peter-winter
 
 pkgname=${_name}-git
-pkgver=v1.3.7.r10.g18c5669
+pkgver=1.3.7.r12.g0482730
 pkgrel=1
 pkgdesc="Compile Time Parser Generator is a C++ single header library which takes a language description as a C++ code and turns it into a LR1 table parser with a deterministic finite automaton lexical analyzer, all in compile time."
 arch=('any')
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;'
 }
 
 prepare() {
