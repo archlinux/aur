@@ -1,0 +1,19 @@
+pkgbase = tumelune
+	pkgdesc = a simple program to browse and search in twitter and mastodon archives
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://fedi.doom.solutions/tumelune/
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = armv7h
+	arch = aarch64
+	license = unknown
+	makedepends = cargo
+	options = !lto
+	source = https://fedi.doom.solutions/tumelune/files/tumelune-v0.15.0-source.zip
+	source = tumelune.desktop
+	sha256sums = 3562520b14d8945c92f1b3cb356f1bac7d4facb3267f0746d010586bd7bd9e36
+	sha256sums = e444a2095820b3ca1105a78ffff81bfc1d51cda2fd85a9fbcaf7d4427fc37515
+
+pkgname = tumelune
