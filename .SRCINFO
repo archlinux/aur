@@ -1,6 +1,6 @@
 pkgbase = red-nightly-bin
 	pkgdesc = Red is a next-generation programming language strongly inspired by Rebol
-	pkgver = r4444.08may23.652d66a4f
+	pkgver = r4721.08feb24.1c3cd7363
 	pkgrel = 1
 	url = https://www.red-lang.org
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = red-nightly-bin
 	conflicts = red
 	conflicts = ed
 	options = !strip
-	source = https://static.red-lang.org/dl/auto/linux/red-08may23-652d66a4f
+	source = https://static.red-lang.org/dl/auto/linux/red-08feb24-1c3cd7363
 	source = https://raw.githubusercontent.com/red/red/master/BSL-License.txt
 	source = https://raw.githubusercontent.com/red/red/master/BSD-3-License.txt
-	sha256sums = 2db3039df8cd8f398292ab690046705f00fcc5230fc80c89d6f0c96c54c0959d
+	sha256sums = 166c37d6e29b452baf6a3ec88aa279c4381aa2dc0a2824450b64cd7f347affcf
 	sha256sums = c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566
 	sha256sums = e64d257131093ad15b757d19181e02e3a48a2cccabe14aebf153e91a5a3735a8
 
