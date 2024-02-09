@@ -1,0 +1,25 @@
+pkgbase = python-shillelagh
+	pkgdesc = Making it easy to query APIs via SQL
+	pkgver = 1.2.14
+	pkgrel = 1
+	url = https://github.com/betodealmeida/shillelagh/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = python-apsw
+	depends = python-dateutil
+	depends = python-requests
+	depends = python-requests-cache
+	depends = python-sqlalchemy
+	depends = python-greenlet
+	depends = python-typing_extensions
+	options = !strip
+	source = https://files.pythonhosted.org/packages/source/s/shillelagh/shillelagh-1.2.14.tar.gz
+	b2sums = d89ddf8af58eca5d89488b8005a8f444db83c93f0b0f413507f25883c1abeffa7cefb6b1f132548c0ce68a6acc5babcec98efb9342c075b4b02fcc95d78c2a6c
+
+pkgname = python-shillelagh
