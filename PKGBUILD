@@ -1,7 +1,7 @@
-# Maintainer: XandrCopyrighted <xxandrr@proton.me>
+# Maintainer: XandrCopyrighted (or xxandr, XDR) <xxandrr@proton.me>
 
 pkgname="xfetch-bin"
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 pkgdesc="A simple fetch written in Rust."
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/XandrCopyrighted/xFetch/"
 license=('MIT')
 
 source=(
-	"https://github.com/XandrCopyrighted/xFetch/releases/download/3.1/xfetch"
+	"https://github.com/XandrCopyrighted/xFetch/releases/download/3.2/xfetch.tar.gz"
 	"https://raw.githubusercontent.com/XandrCopyrighted/xFetch/main/LICENSE"
 )
 sha256sums=(
