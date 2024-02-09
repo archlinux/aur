@@ -2,22 +2,20 @@
 # Contributor: Epix <epixtm@protonmail.com>
 # Contributor: Manuel Hüsers <aur@huesers.de>
 
-_glslang_commit=c34bb3b6c55f6ab084124ad964be95a699700d34
 
 pkgname=plasma5-wallpapers-wallpaper-engine-git
-pkgver=0.5.4.r31.gf972b2a
+pkgver=0.5.4.r42.g345570d
 pkgrel=2
 pkgdesc="A simple kde wallpaper plugin integrating wallpaper engine"
 arch=('x86_64')
 url="https://github.com/catsout/wallpaper-engine-kde-plugin"
-license=('GPL2')
+license=('GPL-2.0-only')
 depends=(
     "plasma-framework5" "gst-libav" "python-websockets" "qt5-declarative"
     "qt5-websockets" "qt5-webchannel" "vulkan-driver"
 )
 makedepends=(
     "vulkan-headers" "extra-cmake-modules" "git" "cmake" "mpv"
-    "kdelibs4support"
 )
 optdepends=(
 	"mpv: alternative video backend"
@@ -26,8 +24,8 @@ provides=("plasma5-wallpapers-wallpaper-engine")
 conflicts=("plasma5-wallpapers-wallpaper-engine")
 source=(
     "${pkgname}::git+${url}.git"
-    "git+https://github.com/KhronosGroup/glslang.git#commit=${_glslang_commit}"
-    )
+    "git+https://github.com/KhronosGroup/glslang.git"
+)
 sha256sums=('SKIP'
             'SKIP')
 
@@ -46,13 +44,13 @@ pkgver(){
     git describe --tags --long | sed 's/v//;s/-/.r/;s/-/./g'
 }
 build(){
-    cd "${srcdir}/${pkgname}"
-    cmake -B build . \
-        -DCMAKE_BUILD_TYPE=Release \
-        --install-prefix="$(kf5-config --prefix)"
+    cmake -B build -S "${srcdir}/${pkgname}" \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=None \
+        -DBUILD_QML=ON \
+        -DBUILD_SHARED_LIBS=ON
     cmake --build build
 }
 package(){
-    cd "${srcdir}/${pkgname}"
     DESTDIR="${pkgdir}" cmake --install build
 }

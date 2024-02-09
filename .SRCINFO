@@ -1,16 +1,15 @@
 pkgbase = plasma5-wallpapers-wallpaper-engine-git
 	pkgdesc = A simple kde wallpaper plugin integrating wallpaper engine
-	pkgver = 0.5.4.r31.gf972b2a
+	pkgver = 0.5.4.r42.g345570d
 	pkgrel = 2
 	url = https://github.com/catsout/wallpaper-engine-kde-plugin
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = vulkan-headers
 	makedepends = extra-cmake-modules
 	makedepends = git
 	makedepends = cmake
 	makedepends = mpv
-	makedepends = kdelibs4support
 	depends = plasma-framework5
 	depends = gst-libav
 	depends = python-websockets
@@ -22,7 +21,7 @@ pkgbase = plasma5-wallpapers-wallpaper-engine-git
 	provides = plasma5-wallpapers-wallpaper-engine
 	conflicts = plasma5-wallpapers-wallpaper-engine
 	source = plasma5-wallpapers-wallpaper-engine-git::git+https://github.com/catsout/wallpaper-engine-kde-plugin.git
-	source = git+https://github.com/KhronosGroup/glslang.git#commit=c34bb3b6c55f6ab084124ad964be95a699700d34
+	source = git+https://github.com/KhronosGroup/glslang.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
