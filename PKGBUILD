@@ -4,8 +4,8 @@
 pkgname=lpm-git
 _pkgname=lpm
 _gitname=lite-xl-plugin-manager
-pkgver=continuous.r0.gd6650d1
-pkgrel=2
+pkgver=1.0.14.r6.g8a1e790
+pkgrel=1
 pkgdesc='A lite-xl plugin manager.'
 arch=('x86_64' 'aarch64')
 url="https://github.com/lite-xl/lite-xl-plugin-manager"
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
-  git describe --tags --long | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
+  git describe --tags --long --exclude continuous --exclude latest | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
 prepare() {
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   cd "${_gitname}"
-  FULL_VERSION=`git describe --tags --long`
+  FULL_VERSION=$(git describe --tags --long --exclude continuous --exclude latest)
   CFLAGS="$CFLAGS -DLPM_VERSION='\"$FULL_VERSION\"'"
   arch-meson -Dstatic=true . build
   meson compile -C build

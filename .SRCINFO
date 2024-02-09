@@ -1,7 +1,7 @@
 pkgbase = lpm-git
 	pkgdesc = A lite-xl plugin manager.
-	pkgver = continuous.r0.gd6650d1
-	pkgrel = 2
+	pkgver = 1.0.14.r6.g8a1e790
+	pkgrel = 1
 	url = https://github.com/lite-xl/lite-xl-plugin-manager
 	arch = x86_64
 	arch = aarch64
