@@ -3,12 +3,12 @@
 pkgname=github-markdown-toc
 pkgver=0.9.1
 _pkgver=31e07582cb46c02f80015facf5eff96a76c7db51  # 0.9.1 + commit fixing test
-pkgrel=1
+pkgrel=2
 pkgdesc='Easy TOC creation for GitHub README.md'
 arch=('any')
 url='https://github.com/ekalinin/github-markdown-toc'
 depends=('bash')
-checkdepends=('bash-bats')
+checkdepends=('bats')
 license=('MIT')
 source=("$pkgname-$_pkgver.tar.gz::https://github.com/ekalinin/github-markdown-toc/archive/$_pkgver.tar.gz")
 sha1sums=('17773a03da47848c9b423b3805f0983cfd290c68')
