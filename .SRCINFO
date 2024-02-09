@@ -1,6 +1,6 @@
 pkgbase = sciplot-git
 	pkgdesc = A modern C++ scientific plotting library powered by gnuplot
-	pkgver = v0.3.1.r4.g69fd01e
+	pkgver = 0.3.1.r6.g75d813a
 	pkgrel = 1
 	url = https://github.com/sciplot/sciplot
 	arch = any

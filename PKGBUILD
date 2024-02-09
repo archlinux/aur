@@ -4,7 +4,7 @@ _name=sciplot
 _author=sciplot
 
 pkgname=${_name}-git
-pkgver=v0.3.1.r4.g69fd01e
+pkgver=0.3.1.r6.g75d813a
 pkgrel=1
 pkgdesc="A modern C++ scientific plotting library powered by gnuplot"
 arch=('any')
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;'
 }
 
 prepare() {
