@@ -4,44 +4,46 @@
 # Contributor: d1t2 <dieterplex at gmail dot com>
 
 pkgname='eclipse-testng'
-pkgver='6.10.0'
-pkgdate='201612030230'
+pkgver='7.9.0'
+pkgdate='202312310355'
 pkgrel='1'
 pkgdesc='A testing framework plugin for Eclipse IDE inspired by JUnit and NUnit'
 arch=('any')
 url='http://testng.org/'
 license=('APACHE')
 depends=('eclipse>=4.5.0')
+options=('!strip')
 #_url="https://github.com/cbeust/testng-eclipse/raw/master/testng-eclipse-update-site"
-_url="https://dl.bintray.com/testng-team/testng-eclipse-release/updatesites/$pkgver.$pkgdate"
-_dest="$pkgdir/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse"
+#_url="https://dl.bintray.com/testng-team/testng-eclipse-release/updatesites/$pkgver.$pkgdate"
+_url="https://testng.org/testng-eclipse-update-site/zipped/$pkgver.$pkgdate/org.testng.eclipse.updatesite.zip"
 _path="org.testng.eclipse_$pkgver.$pkgdate"
 _path2features="org.testng.eclipse.maven.feature_$pkgver.$pkgdate"
 _path2plugins="org.testng.eclipse.maven_$pkgver.$pkgdate"
-source=(
-    features.jar::"$_url/features/$_path.jar"
-    plugins.jar::"$_url/plugins/$_path.jar"
-    features2.jar::"$_url/features/$_path2features.jar"
-    plugins2.jar::"$_url/plugins/$_path2plugins.jar"
-)
-noextract=(features.jar plugins.jar features2.jar plugins2.jar)
+source=($_url)
+_dest="$pkgdir/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse"
 
-sha256sums=('49abb6b209ee6d755ae083a6433e580b3c1d4c7e447e4c368f9a1fdcd48d2b55'
-            'e39c3b084c881ee995debcc2dde33d2b06755c81a68e5ea42c6135ef6e849e83'
-            '464afaa483badcaed8ad7b27733b64e82b7ba3794716871f09d4c67258ca0cb6'
-            '90b010bb2b86dab1fb8ce0f91c2a4e6db0a27b0f914fb6d13813bc9c843097ba')
+sha256sums=('f74491ec18c75a85e8114aa3e27a45b9ba1fe96774ab7c3b2db1759eb782362d')
 
 package() {
-  _dest=$pkgdir/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
-
-  install -dm755 $_dest
-
-  for jar in 'plugins'; do
-      install -Dm644 $srcdir/$jar.jar $_dest/$jar/$_path.jar
+  # remove features and plug-ins containing sources
+#  rm features/*.source_*
+  rm plugins/*.source_*
+  # remove gz files
+#  rm plugins/*.pack.gz
+  _dest=${pkgdir}/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
+  install -d $_dest
+  # extract features (otherwise features are not recognized)
+  find features -type f | while read _feature ; do
+    if [[ ${_feature} =~ (.*\.jar$) ]] ; then
+      install -dm755 ${_dest}/${_feature%*.jar}
+      cd ${_dest}/${_feature/.jar}
+      jar xf ${srcdir}/${_feature} || return 1
+    else
+      install -Dm644 ${_feature} ${_dest}/${_feature}
+    fi
   done
-  install -Dm644 $srcdir/features2.jar $_dest/features/$_path2features.jar
-  install -Dm644 $srcdir/plugins2.jar $_dest/plugins/$_path2plugins.jar
-  install -dm755 ${_dest}/features/$_path
-  cd ${_dest}/features/$_path
-  jar xf ${srcdir}/features.jar || return 1
+  # copy plugins
+  find plugins -type f | while read _plugin ; do
+    install -Dm644 ${_plugin} ${_dest}/${_plugin}
+  done
 }

@@ -1,7 +1,4 @@
-eclipse-testng-*.pkg.tar.xz
-features.jar
-features2.jar
+eclipse-testng-*.pkg.tar.zst
+org.testng.eclipse.updatesite.zip
 pkg/
-plugins.jar
-plugins2.jar
 src/

@@ -1,23 +1,13 @@
 pkgbase = eclipse-testng
 	pkgdesc = A testing framework plugin for Eclipse IDE inspired by JUnit and NUnit
-	pkgver = 6.10.0
+	pkgver = 7.9.0
 	pkgrel = 1
 	url = http://testng.org/
 	arch = any
 	license = APACHE
 	depends = eclipse>=4.5.0
-	noextract = features.jar
-	noextract = plugins.jar
-	noextract = features2.jar
-	noextract = plugins2.jar
-	source = features.jar::https://dl.bintray.com/testng-team/testng-eclipse-release/updatesites/6.10.0.201612030230/features/org.testng.eclipse_6.10.0.201612030230.jar
-	source = plugins.jar::https://dl.bintray.com/testng-team/testng-eclipse-release/updatesites/6.10.0.201612030230/plugins/org.testng.eclipse_6.10.0.201612030230.jar
-	source = features2.jar::https://dl.bintray.com/testng-team/testng-eclipse-release/updatesites/6.10.0.201612030230/features/org.testng.eclipse.maven.feature_6.10.0.201612030230.jar
-	source = plugins2.jar::https://dl.bintray.com/testng-team/testng-eclipse-release/updatesites/6.10.0.201612030230/plugins/org.testng.eclipse.maven_6.10.0.201612030230.jar
-	sha256sums = 49abb6b209ee6d755ae083a6433e580b3c1d4c7e447e4c368f9a1fdcd48d2b55
-	sha256sums = e39c3b084c881ee995debcc2dde33d2b06755c81a68e5ea42c6135ef6e849e83
-	sha256sums = 464afaa483badcaed8ad7b27733b64e82b7ba3794716871f09d4c67258ca0cb6
-	sha256sums = 90b010bb2b86dab1fb8ce0f91c2a4e6db0a27b0f914fb6d13813bc9c843097ba
+	options = !strip
+	source = https://testng.org/testng-eclipse-update-site/zipped/7.9.0.202312310355/org.testng.eclipse.updatesite.zip
+	sha256sums = f74491ec18c75a85e8114aa3e27a45b9ba1fe96774ab7c3b2db1759eb782362d
 
 pkgname = eclipse-testng
-
