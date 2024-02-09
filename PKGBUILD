@@ -7,12 +7,12 @@ pkgbase=lib32-libproxy
 pkgname=(
   lib32-libproxy
 )
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Automatic proxy configuration management library (32-bit)"
 url="https://libproxy.github.io/libproxy/"
 arch=(x86_64)
-license=(LGPL)
+license=(LGPL-2.1-or-later)
 depends=(
   lib32-curl
   lib32-duktape
@@ -24,7 +24,7 @@ makedepends=(
   gsettings-desktop-schemas
   meson
 )
-_commit=29d51a611f28af0bdbd51a5779cc8df264c8dcff  # tags/0.5.3
+_commit=dff9a603d823dcc740ec966cd27960daa6b891b1  # tags/0.5.4
 source=(
   "git+https://github.com/libproxy/libproxy#commit=$_commit"
 )
@@ -41,15 +41,11 @@ prepare() {
 
 build() {
   local meson_options=(
-    --libdir=/usr/lib32
+    --cross-file lib32
     -D docs=false
     -D introspection=false
     -D vapi=false
   )
-
-  export CC='gcc -m32'
-  export CXX='g++ -m32'
-  export PKG_CONFIG=i686-pc-linux-gnu-pkg-config
 
   arch-meson libproxy build "${meson_options[@]}"
   meson compile -C build

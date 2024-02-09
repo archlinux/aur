@@ -1,0 +1,20 @@
+pkgbase = lib32-libproxy
+	pkgdesc = Automatic proxy configuration management library (32-bit)
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = https://libproxy.github.io/libproxy/
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = gsettings-desktop-schemas
+	makedepends = meson
+	depends = lib32-curl
+	depends = lib32-duktape
+	depends = lib32-glib2
+	depends = libproxy
+	source = git+https://github.com/libproxy/libproxy#commit=dff9a603d823dcc740ec966cd27960daa6b891b1
+	b2sums = SKIP
+
+pkgname = lib32-libproxy
+	provides = libproxy.so
+	conflicts = 
