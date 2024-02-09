@@ -1,6 +1,6 @@
 pkgbase = r-bugsigdbr
 	pkgdesc = R-side access to published microbial signatures from BugSigDB
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/bugsigdbr
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-bugsigdbr
 	optdepends = r-ontologyindex
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/bugsigdbr_1.8.1.tar.gz
-	sha256sums = 389c07755d78cb8e528074454dbe5e58c2018d2b67108615cf4acc987b7870f6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/bugsigdbr_1.8.2.tar.gz
+	sha256sums = 776a7837403eeda41cf40743b19a2bb3e64765c9c9fb96ce68642c965f3f0e84
 
 pkgname = r-bugsigdbr
