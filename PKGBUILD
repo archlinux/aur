@@ -27,11 +27,11 @@ source=(
   "${pkgname}-4.4.0-CVE-2022-34526.patch::https://gitlab.com/libtiff/libtiff/-/commit/275735d0354e39c0ac1dc3c0db2120d6f31d1990.patch"
 )
 md5sums=('376f17f189e9d02280dfe709b2b2bbea'
-         'ba2e14576684f63de72e080e0d59c6e8'
-         '3ad0ddf25d519cd3a05a40053c5e5b52')
+         '98f9711d44f03f9cd4c68ace0c555d9c'
+         '4cb1c83c33306de1d96bcd3014172df1')
 sha256sums=('917223b37538959aca3b790d2d73aa6e626b688e02dcda272aec24c2f498abed'
-            '049875c6eddef8d0d653ad069fea7483f7b9b1dc2aad8780784301fb3e34b561'
-            '10220d1eecc00f830a1814c0b74388e68c4f0a38ec173038d6e5e8a6ad3cc97f')
+            '31af0a4fe0435d060d8d64c2c9ccb21c0fefdba8e944ba677bcbd1512af89163'
+            '82b0a1ef7ceb03898d7d3e6ac5e9b0fea7276c3696915b187d910e71f9e13d38')
 
 if :; then
   conflicts+=("${pkgname}")
