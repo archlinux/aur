@@ -6,7 +6,7 @@ pkgver=1.0
 pkgrel=1
 
 url="https://romero.com/sigil"
-pkgdesc="SIGIL, the unofficial 5th episode of the original 1993 DOOM by John Romero. Contains nine single-player and nine deathmatch levels. Requires original DOOM.WAD or Ultimate DOOM.WAD to play. Versions with Buckethead or THORR soundtracks available at ${url}."
+pkgdesc="SIGIL, the unofficial 5th episode of the original 1993 DOOM by John Romero. Contains nine single-player and nine deathmatch levels. Requires original DOOM.WAD or Ultimate DOOM.WAD to play."
 license=('custom')
 
 arch=('any')
