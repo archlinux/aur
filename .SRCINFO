@@ -1,13 +1,11 @@
 pkgbase = netrc
 	pkgdesc = Utility that allows users to manage netrc files
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/dokku/netrc
 	arch = x86_64
 	license = MIT
-	source = https://github.com/dokku/netrc/releases/download/v0.7.1/netrc_0.7.1_linux_amd64.tgz
-	source = LICENSE
-	sha256sums = 4b60504b31c9f36389eaa5df800cc7188dd8b519d495307276e01f088f127201
-	sha256sums = e52a4d1021bf3af114fae37e3753d631150603573c7cbd71b35bf9d2f2b26c28
+	source = https://github.com/dokku/netrc/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = 2e0925b54778f1358d32d495e3ad19c0a0937e80cebd038880c555e29518c889
 
 pkgname = netrc
