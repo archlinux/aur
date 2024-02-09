@@ -1,0 +1,22 @@
+pkgbase = ais-catcher
+	pkgdesc = Receiver for Automatic Identifaction System of boats using an SDR device (RTL-SDR, AirSpy, HackRF, ...)
+	pkgver = 0.56
+	pkgrel = 1
+	url = https://github.com/jvde-github/AIS-catcher
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	depends = zlib
+	depends = libsoxr
+	depends = libsamplerate
+	depends = zeromq
+	depends = openssl
+	optdepends = airspy: Airspy backend
+	optdepends = hackrf: HackRF backend
+	optdepends = rtl-sdr: RTL-SDR backend
+	optdepends = bladerf: BladeRF backend
+	source = ais-catcher::git+https://github.com/jvde-github/AIS-catcher.git#commit=5dae5fa
+	sha256sums = SKIP
+
+pkgname = ais-catcher
