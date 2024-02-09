@@ -4,7 +4,7 @@
 # Contributor: Julian Raufelder <arch@raufelder.com>
 
 pkgname=cryptomator-bin
-pkgver=1.12.1
+pkgver=1.12.2
 pkgrel=1
 pkgdesc="Multiplatform transparent client-side encryption of your files in the cloud."
 arch=('x86_64' 'aarch64')
@@ -32,9 +32,9 @@ sha256sums=('53c509fe54ef1c5c28b469d86291536649367fb2030b2c0fb3101da2031f8e6e'
             '6286d0a409389bc3542ccad53552f85ec5d05422e0c855342304194fd36ccdba'
             '0f815a749d2299ef68b1662e0d5532de96b6b66b5b31cc6aa98a8ae913ccf8be'
             '78537ead26dcc1488d7fff02f47fce559f70f9bb2d7fa7fa1741ad3cd151bfad')
-sha256sums_x86_64=('2d87fa6c504127f40841db8c0ffd9ae32e6de278e956aa81749d84836025bb3e'
+sha256sums_x86_64=('5bb73c90b500984ed5fca5a662f9f8dc194bfd2fdf31b0d1c2f9fff9917beb0f'
                    'SKIP')
-sha256sums_aarch64=('7ffbd343ae66323d00e3e428789e7c64745715940fdf5d8c43697668ab5fa066'
+sha256sums_aarch64=('b1a95a9d05e39048a0483388cbd5138b6374221e02ea1dd192c6a199dd8cb85d'
                     'SKIP')
 options=('!strip')
 
