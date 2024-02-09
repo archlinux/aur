@@ -52,11 +52,11 @@ fi
 
 pkgname=ffmpeg-obs
 pkgver=6.1.1
-pkgrel=5
+pkgrel=6
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
-license=(GPL3)
+license=(GPL-3.0-only)
 # To manage dependency rebuild easily, this will prevent you to rebuild FFmpeg on non-updated system
 # Only for default set of features
 _aomver=3
@@ -131,6 +131,7 @@ depends=(
   snappy
   speex
   v4l-utils
+  vapoursynth
   vulkan-icd-loader
   "x264>=$_x264ver"
   "x265>=$_x265ver"
@@ -141,6 +142,7 @@ depends=(
 )
 makedepends=(
   git
+  perl
   amf-headers
   avisynthplus
   clang
@@ -254,6 +256,7 @@ _args=(
   --enable-opencl
   --enable-opengl
   --enable-shared
+  --enable-vapoursynth
   --enable-version3
   --enable-vulkan
 )
@@ -369,7 +372,7 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     rtmpdump 'shine' smbclient tesseract
     twolame 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2' zeromq
     zvbi lv2 lilv libmysofa openal
-    vapoursynth libomxil-bellagio 'rockchip-mpp' #'pocketsphinx'
+    libomxil-bellagio 'rockchip-mpp' #'pocketsphinx'
     lcms2 libraw1394 openvino libaribcaption opencv2
   )
   _args+=(
@@ -380,7 +383,7 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     --enable-librtmp --enable-libshine --enable-libsmbclient --enable-libtesseract
     --enable-libtwolame --enable-libuavs3d --enable-libvo-amrwbenc --enable-libxavs --enable-libxavs2 --enable-libzmq
     --enable-libzvbi --enable-lv2 --enable-libmysofa --enable-openal
-    --enable-vapoursynth --enable-omx --enable-rkmpp #--enable-pocketsphinx
+    --enable-omx --enable-rkmpp #--enable-pocketsphinx
     --enable-lcms2 --enable-libopenvino --enable-libaribcaption --enable-libopencv
   )
   provides+=(ffmpeg-full)
