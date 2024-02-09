@@ -1,7 +1,7 @@
 pkgbase = libpamac-aur
 	pkgdesc = Pamac package manager library based on libalpm
 	pkgver = 11.6.3
-	pkgrel = 0
+	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/libpamac
 	install = pamac.install
 	arch = i686
@@ -18,6 +18,7 @@ pkgbase = libpamac-aur
 	makedepends = meson
 	makedepends = ninja
 	makedepends = gobject-introspection
+	makedepends = systemd
 	depends = glib2>=2.42
 	depends = json-glib
 	depends = libsoup3
@@ -39,7 +40,7 @@ pkgbase = libpamac-aur
 	options = !emptydirs
 	options = !strip
 	backup = etc/pamac.conf
-	source = libpamac-11.6.3-0.tar.gz::https://gitlab.manjaro.org/applications/libpamac/-/archive/dff0d861a492e0dcbfb03b134cf737e627315d52/libpamac-dff0d861a492e0dcbfb03b134cf737e627315d52.tar.gz
+	source = libpamac-11.6.3-1.tar.gz::https://gitlab.manjaro.org/applications/libpamac/-/archive/dff0d861a492e0dcbfb03b134cf737e627315d52/libpamac-dff0d861a492e0dcbfb03b134cf737e627315d52.tar.gz
 	source = fix-appstream-data.sh
 	source = fix-appstream-data.hook
 	sha256sums = 965ea2c39b3999bb0ac5ec75da150d43fdd35deb02c0c113deef84e96ee636de
