@@ -3,9 +3,9 @@ _pkgname=slimjet
 pkgname="${_pkgname}-beta-bin"
 _appname="flashpeak-${_pkgname}"
 pkgver=42.0.3.0
-pkgrel=1
+pkgrel=2
 _libffmpegverurl="https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt"
-_libffmpegver=0.83.0
+_libffmpegver=0.84.0
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('x86_64')
 url="https://www.slimjet.com"
@@ -35,10 +35,10 @@ source=(
     "libffmpeg-${_libffmpegver}.zip::${_libffmpegverurl}/releases/download/${_libffmpegver}/${_libffmpegver}-linux-x64.zip"
 )
 sha256sums=('a83b5922db4fc6d1037ce5122b4b3198a78e1d3f9f65882088886d8825fb1989'
-            '17d330079d91920e75521e9255a68b2a1bcc7d8aa84090bdce518b7160ea65e2')
+            '184b31197ea9a52b68728f7c471033e3f86eee38fb0d9e5590ed107a2b83304a')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.xz"
-    bsdtar -xf "${srcdir}/control.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
+    bsdtar -xf "${srcdir}/control."*
     find "${srcdir}" -type d -exec chmod 755 {} \;
 }
 package() {
