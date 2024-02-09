@@ -2,14 +2,14 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BioNERO
-_pkgver=1.10.0
+_pkgver=1.10.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Biological Network Reconstruction Omnibus"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-biocparallel
   r-complexheatmap
@@ -46,12 +46,12 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4cc77a8b8eb3cff071fbe5df15a6eb67')
-sha256sums=('50b80750e69ce61cade88fce9b5f488fb39514b4cbdc3165a1a88bc55474055f')
+md5sums=('cf8a0a4d5229ba0ff8060188e110f8f9')
+b2sums=('cc897a6b4c49ddd75ae083a83c3beb15ca18a78018e137cbecec3ab0e534dcdbd2fa211cf496f818ad337f4fc203360820c4e22f51220b5c8bd04373852632c1')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
