@@ -11,7 +11,7 @@ license=('ISC')
 provides=("${_pkgname}=${pkgver}")
 provides=(${_pkgname})
 depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'libx11' 'libxcb')
-makedepends=('cmake' 'dpkg' 'git' 'ninja') # dpkg is needed since only building a debian package creates a installation-ready directory structure :-(.
+makedepends=('cmake' 'dpkg' 'git' 'ninja') # dpkg is the simplest way to create an installation-ready directory structure with how the project is made :(
 source=("git+${url}.git")
 sha512sums=('SKIP')
 
@@ -25,7 +25,7 @@ prepare() {
 
 	mkdir -p build
 
-	## `cmake` call in `prepare()` since it will download stuff.
+	# `cmake` call in `prepare()` since it will download stuff.
 	cmake -S "${_pkgname}" -B build \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DFETCHCONTENT_QUIET=OFF \
@@ -35,26 +35,26 @@ prepare() {
 
 build() {
 	cd "${srcdir}"
-	#cmake -S "${_pkgname}" -B build -GNinja -DPACKAGE_DEB=True -DCMAKE_CXX_COMPILER=gcc-12 -DCMAKE_C_COMPILER=gcc-12
+	
+	# We build!
 	ninja -C build install
 }
 
 package() {
 	cd "${srcdir}"
 	
-	# The name has the short version in it :(
-	INPUT=$(find "build/ViewerInstall/Package/" -maxdepth 1 -type d | grep "${_pkgname}_*")
+	# Copy the program's user data
+	INPUT=$(find "build/ViewerInstall/Package/" -maxdepth 1 -type d | grep "${_pkgname}_*") # The name is mutable, so, let's not bother
 	cp -rv "${INPUT}"/usr "${pkgdir}"/
 
 	# Cleaning some rogue .gitignore lying around
 	find "${pkgdir}" -name ".gitignore" -exec rm {} \;
 	
-	#cd "build/ViewerInstall/Package/"
-	#INPUT=$(find . -maxdepth 1 -type d | grep "${_pkgname}_*")
-	#cp -r "${INPUT}/usr" "${pkgdir}"
+	# Installing the docs
 	install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" "${_pkgname}/README.md"
 	cp -rv "${_pkgname}/docs" "${pkgdir}/usr/share/doc/${_pkgname}"/
 	
+	# Installing the licenses
 	install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgname}/LICENSE"
 	ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" "${pkgdir}/usr/share/doc/${_pkgname}/LICENSE"
 }
