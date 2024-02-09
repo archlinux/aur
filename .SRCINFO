@@ -6,6 +6,7 @@ pkgbase = xfetch-bin
 	arch = any
 	license = MIT
 	conflicts = xfetch
+	depends = coreutils
 	source = https://github.com/XandrCopyrighted/xFetch/releases/download/3.0/xfetch
 	source = https://github.com/XandrCopyrighted/xFetch/blob/main/LICENSE
 	sha256sums = SKIP

@@ -17,7 +17,7 @@ sha256sums=(
 	'SKIP'
 )
 
-depends=()
+depends=("coreutils")
 makedepends=()
 conflicts=("xfetch")
 
