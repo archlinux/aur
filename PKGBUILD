@@ -3,36 +3,35 @@
 _pkgname=pscl
 _pkgver=1.5.9
 pkgname=r-${_pkgname,,}
-pkgver=1.5.9
-pkgrel=1
-pkgdesc='Political Science Computational Laboratory'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Political Science Computational Laboratory"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r
 )
 optdepends=(
   r-car
   r-coda
-  r-lattice
   r-lmtest
   r-mcmcpack
-  r-mgcv
   r-mvtnorm
   r-sandwich
   r-vcd
   r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8085ffd1987804793ba44637165fba3e6805aa2f6457f0692b6e641658fe6efe')
+md5sums=('c1a5bf7879e59bdc0889ee599e6c1375')
+b2sums=('d1800ec57acf711d53ea903e8aff7d5ca2835f11db7004a3a4b25d34afe625fcdaff08052c1722ce1d8c71e80ba4f67b7a05d86fc5cac0979ba730446f967e8f')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
