@@ -3,13 +3,13 @@
 pkgname="xfetch-bin"
 pkgver=2.0.0
 pkgrel=1
-pkgdesc="The world's simplest fetch written in Rust."
+pkgdesc="A simple fetch written in Rust."
 arch=('any')
 url="https://github.com/XandrCopyrighted/xFetch/"
 license=('MIT')
 
 source=(
-	"https://github.com/XandrCopyrighted/xFetch/releases/download/2.0.0/xfetch.tar.gz"
+	"https://github.com/XandrCopyrighted/xFetch/releases/download/3.0/xfetch"
 	"https://raw.githubusercontent.com/XandrCopyrighted/xFetch/main/LICENSE"
 )
 sha256sums=(
@@ -19,8 +19,7 @@ sha256sums=(
 
 depends=()
 makedepends=()
-provides=("xfetch")
-conflicts=('xfetch-rs-git' 'xfetch')
+conflicts=("xfetch")
 
 package() {
 	cd "$srcdir/"
