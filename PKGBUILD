@@ -1,7 +1,7 @@
 # Maintainer: LinuxSquare <linuxscripting.sh@gmail.com>
 pkgname=efisc-bin
 pkgver=2023_1.0.3_36
-pkgrel=1
+pkgrel=2
 pkgdesc="Steuererklärungssoftware des Kantons Thurgau"
 arch=('x86_64')
 url="https://steuerverwaltung.tg.ch/hilfsmittel/efisc-steuererklaerungssoftware.html/2958"
@@ -35,7 +35,7 @@ package() {
 	cp -rp "${srcdir}/usr/share/${pkgname%%-*}${pkgver%%_*}/${pkgname%%-*}${pkgver%%_*}.sharedmimeinfo" "${pkgdir}/usr/share/java/${pkgname%%-*}${pkgver%%_*}/${pkgname%%-*}${pkgver%%_*}.xml"
 
 	install -d "${pkgdir}/usr/bin"
-	ln -sf "${pkgdir}/usr/share/java/${pkgname%%-*}${pkgver%%_*}/${pkgname%%-*}${pkgver%%_*}.sh" "${pkgdir}/usr/bin/${pkgname%%-*}"
+	ln -sf "/usr/share/java/${pkgname%%-*}${pkgver%%_*}/${pkgname%%-*}${pkgver%%_*}.sh" "${pkgdir}/usr/bin/${pkgname%%-*}"
 
 	install -Dp "${srcdir}/usr/share/${pkgname%%-*}${pkgver%%_*}/${pkgname%%-*}${pkgver%%_*}.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${pkgname%%-*}.png"
 

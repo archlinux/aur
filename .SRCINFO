@@ -1,7 +1,7 @@
 pkgbase = efisc-bin
 	pkgdesc = Steuererklärungssoftware des Kantons Thurgau
 	pkgver = 2023_1.0.3_36
-	pkgrel = 1
+	pkgrel = 2
 	url = https://steuerverwaltung.tg.ch/hilfsmittel/efisc-steuererklaerungssoftware.html/2958
 	install = efisc.install
 	arch = x86_64
