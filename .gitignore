@@ -1,6 +1,6 @@
 pkg/
 src/
-eclipse-pmd-*-any.pkg.tar.xz
+eclipse-pmd-*-any.pkg.tar.zst
 feature.jar
 plugin.jar
 license.txt
