@@ -1,25 +1,23 @@
-# Maintainer:
-# Contributor: Antonio Rojas <arojas@archlinux.org>
-# Contributor: Fredric Johansson
+# Maintainer: AlphaJack <alphajack at tuta dot io>
 
-_pipname=Flask-OpenID
-pkgname=python-flask-openid
-pkgver=1.2.5
-pkgrel=3
-pkgdesc="A Flask extension for using openid authentication."
+pkgname="python-flask-openid"
+_name=Flask-OpenID
+pkgver=1.3.0
+pkgrel=1
+pkgdesc="OpenID support for Flask"
 arch=(any)
-url="https://pypi.org/project/Flask-OpenID/"
-license=(BSD)
-makedepends=(python2-setuptools)
-source=("https://pypi.python.org/packages/source/${_pipname:0:1}/$_pipname/$_pipname-$pkgver.tar.gz")
-sha256sums=('5a8ffe1c8c0ad1cc1f5030e1223ea27f8861ee0215a2a58a528cc61379e5ccab')
+url="https://github.com/pallets-eco/flask-openid"
+license=("BSD")
+makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
+source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
+b2sums=('c20d51ba42b4899bf5da6db604dc7609e7bcf67b6ee4dae29b99b3a8c7ad9cf8a68c7d547bdf011d2d750b0a5c9897a3c0d94bb419738f0c14b1e466f190f7b6')
 
-package() {
-depends=(python-flask python-openid)
+build(){
+ cd "$_name-$pkgver"
+ python -m build --wheel --no-isolation
+}
 
-    cd $_pipname-$pkgver
-    python setup.py install --root="$pkgdir/" --optimize=1
-
-    mkdir -p "$pkgdir"/usr/share/licenses/$pkgname
-    install -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname
+package(){
+ cd "$_name-$pkgver"
+ python -m installer --destdir="$pkgdir" dist/*.whl
 }

@@ -1,15 +1,15 @@
 pkgbase = python-flask-openid
-	pkgdesc = A Flask extension for using openid authentication.
-	pkgver = 1.2.5
-	pkgrel = 3
-	url = https://pypi.org/project/Flask-OpenID/
+	pkgdesc = OpenID support for Flask
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/pallets-eco/flask-openid
 	arch = any
 	license = BSD
-	makedepends = python2-setuptools
-	source = https://pypi.python.org/packages/source/F/Flask-OpenID/Flask-OpenID-1.2.5.tar.gz
-	sha256sums = 5a8ffe1c8c0ad1cc1f5030e1223ea27f8861ee0215a2a58a528cc61379e5ccab
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	source = https://pypi.org/packages/source/F/Flask-OpenID/Flask-OpenID-1.3.0.tar.gz
+	b2sums = c20d51ba42b4899bf5da6db604dc7609e7bcf67b6ee4dae29b99b3a8c7ad9cf8a68c7d547bdf011d2d750b0a5c9897a3c0d94bb419738f0c14b1e466f190f7b6
 
 pkgname = python-flask-openid
-	depends = python-flask
-	depends = python-openid
-
