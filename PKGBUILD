@@ -4,7 +4,7 @@ _name=kumi
 _author=jfalcou
 
 pkgname=${_name}-git
-pkgver=v3.0.r31.gea96213
+pkgver=3.0.r45.g26b6da5
 pkgrel=1
 pkgdesc="C++20 Compact Tuple Tools"
 arch=('any')
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long --tags --match 'v*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --match 'v*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;'
 }
 
 prepare() {
