@@ -2,7 +2,7 @@
 _pkgname=wallhaven
 pkgname="unoffical-${_pkgname}-desktop-git"
 _appname=Wallhaven
-pkgver=1.0.2.r1.ge65889e
+pkgver=1.0.4.r0.g73095c0
 _electronversion=17
 pkgrel=1
 pkgdesc="Wallhaven desktop app made with Electron + React + TypeScript"
@@ -35,7 +35,7 @@ build() {
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
-    gendesk -q -f -n --categories "Utility" --pkgname "${pkgname%-git}" --name "${_appname}" --exec "${pkgname%-git} %U"
+    gendesk -q -f -n --categories="Utility" --pkgname="${pkgname%-git}" --name="${_appname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"

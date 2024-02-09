@@ -1,6 +1,6 @@
 pkgbase = unoffical-wallhaven-desktop-git
 	pkgdesc = Wallhaven desktop app made with Electron + React + TypeScript
-	pkgver = 1.0.2.r1.ge65889e
+	pkgver = 1.0.4.r0.g73095c0
 	pkgrel = 1
 	url = https://github.com/luisflorido/wallhaven-desktop
 	arch = any
