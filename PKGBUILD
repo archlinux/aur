@@ -1,9 +1,8 @@
-# Maintainer: mechakotik
+# Maintainer: mechakotik <mechakotik@gmail.com>
 
 pkgname=tails-adventure
-pkgver=d1.5.0
-_gitname=TailsAdventure
-_gitver=demo-1.5.0
+pkgver=d1.5.1
+_gitver=demo-1.5.1
 
 pkgrel=1
 pkgdesc="Open source remake of Tails Adventure for modern platforms"
@@ -11,8 +10,8 @@ url="https://github.com/mechakotik/TailsAdventure"
 arch=('x86_64')
 license=('GPL')
 
-source=("${pkgname}-${pkgver}::https://github.com/mechakotik/$_gitname/archive/$_gitver.tar.gz")
-sha256sums=('f9d556c34d02e06d0b4830cac7bc82f4f50ed00177c96987527df0085fb98142')
+source=("${pkgname}-${pkgver}::https://github.com/mechakotik/$pkgname/archive/$_gitver.tar.gz")
+sha256sums=('475b18de6c34e118f498570122dc0c5fd4e169fcfca0a0695928fb3cac29374b')
 
 depends=(
     'sdl2'
@@ -27,7 +26,7 @@ makedepends=(
 )
 
 build() {
-    arch-meson $_gitname-$_gitver build -Dlinux_install=true
+    arch-meson $pkgname-$_gitver build -Dlinux_install=true
     meson compile -C build
 }
 
