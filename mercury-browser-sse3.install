@@ -29,7 +29,7 @@ post_install() {
 
     if /usr/lib/ld-linux-x86-64.so.2 --help | grep -qsE '^\s+x86-64-v3.*supported.*$' ; then
       note2
-      note2 "Your processor supports x86-64-v3."
+      note2 "Your processor supports x86-64-v3 instructions."
       note2 "You may want to install mercury-browser-bin."
     fi
   else
