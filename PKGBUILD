@@ -3,7 +3,7 @@
 _pkgname=appflowy
 pkgname=$_pkgname-git
 pkgver=latest
-pkgrel=15
+pkgrel=16
 pkgdesc='An open-source alternative to Notion.'
 arch=(x86_64)
 url='https://www.appflowy.io/'
@@ -14,7 +14,7 @@ provides=($_pkgname)
 conflicts=($_pkgname $_pkgname-bin)
 replaces=()
 backup=()
-options=()
+options=(!lto)
 install=
 source=("$_pkgname::git+https://github.com/AppFlowy-IO/AppFlowy.git"
         'flutter::git+https://github.com/flutter/flutter.git#tag=3.18.0-0.2.pre')
