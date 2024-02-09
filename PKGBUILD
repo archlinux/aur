@@ -82,6 +82,7 @@ optdepends=(
     'python-requests-cache: Python bindings'
     'python-simplejson: Python bindings'
 )
+options=(!lto)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(

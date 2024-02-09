@@ -69,6 +69,7 @@ pkgbase = mythtv-git
 	optdepends = python-simplejson: Python bindings
 	provides = mythtv
 	conflicts = mythtv
+	options = !lto
 	source = git+https://github.com/MythTV/mythtv#branch=fixes/33
 	source = mythbackend.service
 	source = mythtv.desktop
