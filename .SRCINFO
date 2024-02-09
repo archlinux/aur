@@ -10,6 +10,7 @@ pkgbase = python-shillelagh
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
+	makedepends = python-pyscaffold
 	depends = python
 	depends = python-apsw
 	depends = python-dateutil
