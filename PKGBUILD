@@ -18,10 +18,10 @@ provides=("kholidays5")
 groups=(kf5)
 source=(
     https://download.kde.org/stable/frameworks/${base_pkgver%.*}/$_name-$base_pkgver.tar.xz
-    https://github.com/0xcccccccccccc/kholidays_cn/releases/20240209/download/holiday_cn_zh-cn
+    https://github.com/0xcccccccccccc/kholidays_cn/releases/download/20240209/holiday_cn_zh-cn
 )
 sha256sums=('be4af6625e80852cb7bc8cdbe2bdd56ccf3868644cbfb87d3494964f5f6f28a7'
-            '406e9a80edb51cdcc7a0116cd278a501deeb9d269bcb813b3cf3ccabefadfc7e')
+            '711b0496a6b0724b11e382c16b741ef481297228c42cfad4f05eb8256d7bd60f')
 
 build() {
   cp $srcdir/holiday_cn_zh-cn $srcdir/kholidays-$base_pkgver/holidays/plan2/
