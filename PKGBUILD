@@ -6,7 +6,7 @@ pkgver=1.0
 pkgrel=1
 
 url="https://romero.com/sigil"
-pkgdesc="SIGIL, the unofficial 5th episode of the original 1993 DOOM by John Romero. Requires DOOM.WAD."
+pkgdesc="SIGIL, the unofficial 5th episode of the original 1993 DOOM by John Romero. Requires DOOM.WAD"
 license=('custom')
 
 arch=('any')
