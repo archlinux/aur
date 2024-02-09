@@ -1,14 +1,14 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=docker-container-healthchecker
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Runs healthchecks against local docker containers'
 arch=('x86_64')
 url='https://github.com/dokku/docker-container-healthchecker'
 license=('BSD')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('21b9b30c2059e2e994fb40d36e722ea1bff64e409aa1918b614439dfcd2a1628')
+sha256sums=('1a06f53c02f62fa1adb3471ad4afd113bb6be10c47b19a4a9e0c3229e7cce243')
 makedepends=('go')
 
 build() {
@@ -20,7 +20,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-asmflags=-trimpath=/src -gcflags=-trimpath=/src"
-  go build -ldflags "-s -w -X main.Version=${pkgver}" -o "${pkgname}-build" .
+  go build -a -ldflags "-s -w -X main.Version=${pkgver}" -o "${pkgname}-build" .
 }
 
 package() {
