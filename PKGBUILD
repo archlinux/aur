@@ -2,34 +2,59 @@
 # Contributor: frousties
 _pkgname=tacentview
 pkgname=${_pkgname}-git
-pkgver=1.0.39.r0.g3f6b1cb
+pkgver=1.0.43.9.gdfff366
 pkgrel=1
-pkgdesc="Tacent View. An image and texture viewer for tga, png, apng, exr, dds, gif, hdr, jpg, tiff, ico, webp, and bmp files."
-arch=('i686' 'x86_64')
+pkgdesc="An image and texture viewer for tga, png, apng, exr, dds, ktx, ktx2, astc, pkm, qoi, gif, hdr, jpg, tif, ico, webp, and bmp files. Uses Dear ImGui, OpenGL and Tacent."
+arch=('any')
 url="https://github.com/bluescan/${_pkgname}"
 license=('ISC')
-groups=('')
+provides=("${_pkgname}=${pkgver}")
+provides=(${_pkgname})
 depends=('libx11')
-makedepends=('cmake' 'dpkg' 'gcc12' 'git' 'ninja')
-options=('!emptydirs')
-source_x86_64=("git+https://github.com/bluescan/${_pkgname}.git")
-sha512sums_x86_64=('SKIP')
+makedepends=('cmake' 'dpkg' 'gcc12' 'git' 'ninja') # dpkg is needed since only building a debian package creates a installation-ready directory structure :-(.
+source=("git+${url}.git")
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "${_pkgname}"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/\1/;s/-/./g'
+}
+
+prepare() {
+	cd "${srcdir}"
+
+	mkdir -p build
+
+	## `cmake` call in `prepare()` since it will download stuff.
+	cmake -S "${_pkgname}" -B build \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DFETCHCONTENT_QUIET=OFF \
+		-DPACKAGE_DEB=ON \
+		-GNinja
 }
 
 build() {
-	cmake -S "${_pkgname}" -B build -GNinja -DPACKAGE_DEB=True -DCMAKE_CXX_COMPILER=gcc-12 -DCMAKE_C_COMPILER=gcc-12
+	cd "${srcdir}"
+	#cmake -S "${_pkgname}" -B build -GNinja -DPACKAGE_DEB=True -DCMAKE_CXX_COMPILER=gcc-12 -DCMAKE_C_COMPILER=gcc-12
 	ninja -C build install
 }
 
 package() {
-	# Cleaning some rogue .gitignore lying around
-	find . -name ".gitignore" -exec rm -rf {} \;
+	cd "${srcdir}"
 	
-	cd "${srcdir}/build/ViewerInstall/Package/"
-	INPUT=$(find . -maxdepth 1 -type d | grep "${_pkgname}_*")
-	cp -r "${INPUT}/usr" "${pkgdir}"
+	# The name has the short version in it :(
+	INPUT=$(find "build/ViewerInstall/Package/" -maxdepth 1 -type d | grep "${_pkgname}_*")
+	cp -rv "${INPUT}"/usr "${pkgdir}"/
+
+	# Cleaning some rogue .gitignore lying around
+	find "${pkgdir}" -name ".gitignore" -exec rm {} \;
+	
+	#cd "build/ViewerInstall/Package/"
+	#INPUT=$(find . -maxdepth 1 -type d | grep "${_pkgname}_*")
+	#cp -r "${INPUT}/usr" "${pkgdir}"
+	install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" "${_pkgname}/README.md"
+	cp -rv "${_pkgname}/docs" "${pkgdir}/usr/share/doc/${_pkgname}"/
+	
+	install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgname}/LICENSE"
+	ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" "${pkgdir}/usr/share/doc/${_pkgname}/LICENSE"
 }
