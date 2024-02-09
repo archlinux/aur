@@ -1,0 +1,13 @@
+pkgbase = bulk-rename-plus
+	pkgdesc = Tiny and powerfull tool to rename recursively path(s) into upper/lower/reverse case from the terminal, written in C++
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/siyia2/bulk-rename-plus
+	arch = x86_64
+	license = GPL3
+	depends = bash
+	depends = coreutils
+	source = https://github.com/siyia2/bulk-rename-plus/archive/v1.0.0.tar.gz
+	md5sums = 70d1b51a0c7405421a7c210a0faf6d12
+
+pkgname = bulk-rename-plus
