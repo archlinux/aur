@@ -1,0 +1,12 @@
+pkgbase = camunda-modeler-token-simulation-plugin
+	pkgdesc = Camunda Modeler Token Simulation Plug-in
+	pkgver = 0.20.0
+	pkgrel = 1
+	url = https://github.com/camunda/camunda-modeler-token-simulation-plugin
+	arch = any
+	license = MIT
+	depends = camunda-modeler
+	source = https://github.com/camunda/camunda-modeler-token-simulation-plugin/archive/v0.20.0.tar.gz
+	sha256sums = 870fe039bcb4a1e5258a1d5860507ad8a0a0b762de1d429356de4cb880ab75be
+
+pkgname = camunda-modeler-token-simulation-plugin
