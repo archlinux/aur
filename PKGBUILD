@@ -3,11 +3,11 @@
 
 pkgbase=vulkan-lunarg-tools-git
 pkgname=(vulkan-extra-tools-git vulkan-extra-layers-git)
-pkgver=1.3.268
+pkgver=1.3.268.r58.g5ea187c
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/LunarG/VulkanTools.git'
-license=('custom')
+license=(custom)
 depends=()
 makedepends=(git cmake python libx11 libxrandr wayland qt5-svg qt5-webengine make vulkan-headers-git vulkan-utility-libraries-git vulkan-icd-loader-git)
 source=(git+https://github.com/LunarG/VulkanTools.git)
@@ -24,8 +24,9 @@ _install(){
 
 pkgver(){
   cd "${srcdir}"/VulkanTools
-  # cutting off 'foo-' prefix that presents in the git tag
-  git describe --long --tags --abbrev=7 --exclude sdk-* --exclude vulkan-* | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  #git describe --long --tags --abbrev=7 --match='v*' | sed 's/^vulkan-sdk-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  #git describe --long --tags --abbrev=7 | sed -r 's,^[^0-9]+,,;s,([0-9]*-g),r\1,;s,[-_],.,g'
+  git describe --long --tags --abbrev=7 | sed -r 's,^[^0-9]+,,;s,([0-9]*-g),r\1,;s,[-_],.,g' | sed 's/.0//g'
 }
 
 build(){
