@@ -14,7 +14,11 @@ conflicts=("stacklet")
 source=("https://github.com/ggemre/stacklet/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=("760f37eaa5746a24792635b1eeb8d3c35705df5655a6152ea3062fc1f57adf53")
 
+build() {
+    cd "$srcdir/$pkgname-$pkgver"
+    cargo build --release --locked
+}
 package() {
-    install -Dm755 stacklet -t "$pkgdir/usr/bin"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "$srcdir/$pkgname-$pkgver"
+    install -Dm755 target/release/stacklet -t "$pkgdir/usr/bin"
 }
