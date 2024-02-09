@@ -3,7 +3,7 @@
 # Contributor: Matthew Sexton <wsdmatty@gmail.com>
 # Contributor: Lorenz Wellmer
 pkgname=clockify-desktop
-pkgver=2.1.11
+pkgver=2.1.12
 pkgrel=1
 pkgdesc="Truly free time tracker for teams, Desktop App"
 arch=("x86_64")
@@ -14,7 +14,7 @@ depends=("alsa-lib" "at-spi2-core" "cairo" "dbus" "expat" "gcc-libs" "glib2"
          "libx11" "libxcb" "libxcomposite" "libxdamage" "libxext" "libxfixes"
          "libxkbcommon" "libxrandr" "mesa" "nspr" "nss" "pango")
 source=("$pkgname-$pkgver.deb::https://clockify.me/downloads/Clockify_Setup_x64.deb")
-sha512sums=("19165def6e5ecd1e17ef2bb9004e7b548ef8337156ce6d1558a6fa881149c7eafef07ddcc95bd62a000eada9141ba4edc9a5c19ff5eb229923f6a3d4927b2649")
+sha512sums=("4ba9032e413f4540f840b59a5b5a8ebbc6a143133bf14d3d4b85bd4bffdc9be0351e7e7105a5d1fdc6c8c62eddcde4613dca612f22573a7797dc14e7e3cebb4f")
 
 package() {
     # Extract package data
@@ -24,15 +24,17 @@ package() {
     install -D -m644 "${pkgdir}/opt/Clockify/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     
     # Fix permission issues
-
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/appicons/1024x1024.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/appicons/32x32.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/appicons/64x64.ico"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/appicons/64x64.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/appicons/blue.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/appicons/white.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/assets.d.ts"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/assets.js"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/audio/pomodoro-notification.ogg"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/entitlements.mac.plist"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/icon.icns"
-    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/icons/64x64.ico"
-    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/icons/blue.png"
-    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/icons/white.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/1024x10240.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/32x32.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/64x64.ico"
@@ -114,11 +116,11 @@ package() {
 
     # Fix hardlinks
     rm "${pkgdir}/usr/share/icons/hicolor/32x32/apps/clockify.png"
-    ln -s /opt/Clockify/resources/assets/icons/32x32.png "${pkgdir}/usr/share/icons/hicolor/32x32/apps/clockify.png"
+    ln -s /opt/Clockify/resources/assets/appicons/32x32.png "${pkgdir}/usr/share/icons/hicolor/32x32/apps/clockify.png"
     rm "${pkgdir}/usr/share/icons/hicolor/64x64/apps/clockify.png"
-    ln -s /opt/Clockify/resources/assets/icons/64x64.png "${pkgdir}/usr/share/icons/hicolor/64x64/apps/clockify.png"
+    ln -s /opt/Clockify/resources/assets/appicons/64x64.png "${pkgdir}/usr/share/icons/hicolor/64x64/apps/clockify.png"
     rm "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/clockify.png"
-    ln -s /opt/Clockify/resources/assets/icons/1024x1024.png "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/clockify.png"
+    ln -s /opt/Clockify/resources/assets/appicons/1024x1024.png "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/clockify.png"
     
     # Remove forgotten temporary build build pkgdir
     rm -r "${pkgdir}/opt/Clockify/resources/app.asar.unpacked/node_modules/active-win/build-tmp-napi-v6"
