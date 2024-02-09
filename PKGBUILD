@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.37.0.r56.g67aa568437
+pkgver=0.37.0.r268.ga45518cf57
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -242,8 +242,6 @@ _prepare_ffnvcodec() {
   make PREFIX=/usr -C "${srcdir}/ffnvcodec"
   make PREFIX=/usr DESTDIR="${srcdir}" -C "${srcdir}/ffnvcodec" install
   sed -i "s|=/usr|=${srcdir}/usr|g" "${srcdir}/usr/lib/pkgconfig/ffnvcodec.pc"
-
-  export PKG_CONFIG_PATH=${srcdir}/usr/lib/pkgconfig
 }
 
 prepare() {
@@ -437,7 +435,6 @@ prepare() {
     '-Dgl-dxinterop=disabled'
     '-Dgl-win32=disabled'
     '-Djpeg=enabled'
-    '-Drpi=disabled'
     '-Dsdl2-video=enabled'
     '-Dshaderc=disabled'
     '-Dplain-gl=enabled'
@@ -459,7 +456,6 @@ prepare() {
     '-Dd3d9-hwaccel=disabled'
     '-Dgl-dxinterop-d3d9=disabled'
     '-Dios-gl=disabled'
-    '-Drpi-mmal=auto'
     '-Dvideotoolbox-gl=disabled'
     '-Dvideotoolbox-pl=disabled'
 
@@ -543,6 +539,8 @@ prepare() {
 }
 
 build() {
+  export PKG_CONFIG_PATH=${srcdir}/usr/lib/pkgconfig
+
   cd mpv-build
   if [ -d /opt/cuda ]; then
     sed -i 's|scripts/mpv-config|sed \-i "s\|-lavfilter\|-L/opt/cuda/targets/x86_64-linux/lib/ -lavfilter\|" build_libs/lib/pkgconfig/libavfilter.pc\nscripts/mpv-config|' "${srcdir}/mpv-build/build"
