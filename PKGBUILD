@@ -1,6 +1,6 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
-pkgver=5.2.457
+pkgver=5.2.458
 pkgrel=1
 pkgdesc="Cellframe blockchain node with a powerful SDK"
 arch=('x86_64' 'aarch64')
@@ -27,6 +27,7 @@ md5sums=('SKIP'
          '72472d529b38f06a78f37ac659b18d65')
 install=$pkgname.install
 conflicts=(cellframe-dashboard cellframe-wallet cellframe-node-debug)
+options=(!debug)
 
 prepare() {
 	rm -rf "$srcdir/$pkgname/cellframe-sdk"
