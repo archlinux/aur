@@ -1,6 +1,6 @@
 pkgbase = reboot-arch-btw-git
 	pkgdesc = Check if you need to reboot due to an updated kernel
-	pkgver = 0.5.6.r18.g1c2d021
+	pkgver = 0.7.0.r0.gba54b46
 	pkgrel = 1
 	url = https://github.com/rnestler/reboot-arch-btw
 	arch = i686
