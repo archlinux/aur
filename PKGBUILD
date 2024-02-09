@@ -3,7 +3,7 @@
 pkgname="superset"
 _pkgname="apache-superset"
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern, enterprise-ready business intelligence web application"
 url="https://superset.apache.org/"
 license=("Apache-2.0")
@@ -82,7 +82,7 @@ depends=(
 "python-func_timeout"
 "python-geopy"
 "gunicorn" # manual fix
-#"python-hashids" # MISSING
+"python-hashids"
 "python-holidays"
 "python-humanize"
 "python-importlib-metadata" # manual fix
@@ -95,8 +95,8 @@ depends=(
 "python-packaging"
 "python-pandas"
 "python-parsedatetime"
-#"python-pgsanity" # MISSING
-#"python-polyline" # MISSING
+"python-pgsanity"
+"python-polyline"
 "python-pyparsing"
 "python-dateutil" # manual fix
 "python-dotenv" # manual fix
@@ -106,8 +106,8 @@ depends=(
 "python-pyjwt" # manual fix
 "python-redis"
 "python-selenium"
-#"python-shillelagh" # MISSING
-#"python-shortid" # MISSING
+"python-shillelagh"
+"python-shortid"
 "python-sshtunnel"
 "python-simplejson"
 "python-slack-sdk" # manual fix
@@ -118,7 +118,7 @@ depends=(
 "python-typing-extensions"
 "python-werkzeug"
 "python-wtforms"
-#"python-wtforms-json" # MISSING
+"python-wtforms-json"
 "python-xlsxwriter"
 )
 
