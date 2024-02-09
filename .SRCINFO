@@ -1,6 +1,6 @@
 pkgbase = photobroom-git
 	pkgdesc = Photos managing tool
-	pkgver = v1.6.0.r461.g947e54877
+	pkgver = v1.6.0.r529.g8dfc50393
 	pkgrel = 1
 	url = https://github.com/Kicer86/photobroom
 	arch = i686
@@ -13,13 +13,12 @@ pkgbase = photobroom-git
 	makedepends = libwebp
 	makedepends = cs-libguarded
 	makedepends = boost
-	makedepends = clang
-	makedepends = llvm
 	depends = exiv2
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = qt6-declarative
 	depends = qt6-svg
+	depends = qt6-quick3d
 	depends = dlib
 	depends = opencv
 	depends = jsoncpp
@@ -27,11 +26,9 @@ pkgbase = photobroom-git
 	conflicts = photobroom
 	source = photobroom-git::git+https://github.com/Kicer86/photobroom.git#branch=master
 	source = cmake_modules::git+https://github.com/Kicer86/cmake_modules.git#commit=bf447aeb3bf57680f0c257f9d77ea7f5ef90b0ec
-	source = qml-colorpicker::git+https://github.com/rshest/qml-colorpicker.git#commit=5967b3e38033794f54d66c57a03f9a356df0dc03
 	source = face_recognition_models::git+https://github.com/ageitgey/face_recognition_models.git#commit=e67de717267507d1e9246de95692eb8be736ab61
 	source = animated_webp::git+https://github.com/Kicer86/AnimatedWebP.git#commit=996e92a0c45b2ea20034c9e97ec75d2098faf2f8
-	source = reflectpp::git+https://github.com/Kicer86/reflectpp.git#commit=5dc631cb129dd6a5dbdcab8836ba7e0772c2b02c
-	md5sums = SKIP
+	source = reflect-cpp::git+https://github.com/getml/reflect-cpp.git#commit=0a524a9893fc1220fe38734dac311b032edd4b79
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
