@@ -2,7 +2,7 @@
 
 pkgname=game-rs-bin
 _realname=game-rs
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A minimal (CLI) game launcher for Linux written in rust."
 arch=("any")
@@ -12,7 +12,7 @@ provides=("game-rs")
 conflicts=("game-rs")
 source=(https://github.com/Amanse/game-rs/releases/download/v$pkgver/game-rs)
 
-sha256sums=('c6fe961aa5241c5952a9ceb6c0f05ee6149b6869b6fed56bcb0bb6bb5b499dbd')
+sha256sums=('1149a1dcc7f4b02b594c929fc0b7f2ae8fec6ba4ec4909ea6eb2eb435fd8f764')
 
 package() {
 	install -D game-rs "$pkgdir"/usr/bin/game-rs
