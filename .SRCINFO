@@ -1,5 +1,5 @@
 pkgbase = sigil-wad
-	pkgdesc = Free SIGIL Megawad v1.0, the unofficial 5th episode of the original 1993 DOOM by John Romero, celebrating its 25th anniversary. Contains nine single-player and nine deathmatch levels. Requires original DOOM.WAD or Ultimate DOOM.WAD to play. Versions with Buckethead or THORR soundtracks available at .
+	pkgdesc = SIGIL, the unofficial 5th episode of the original 1993 DOOM by John Romero. Requires DOOM.WAD
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://romero.com/sigil
