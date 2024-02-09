@@ -1,6 +1,6 @@
 pkgbase = xfetch-bin
 	pkgdesc = A simple fetch written in Rust.
-	pkgver = 3.0
+	pkgver = 3.1
 	pkgrel = 1
 	url = https://github.com/XandrCopyrighted/xFetch/
 	arch = any
