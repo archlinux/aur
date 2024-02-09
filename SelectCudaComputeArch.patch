@@ -1,9 +1,9 @@
 diff --git a/intern/cycles/cmake/external_libs.cmake b/intern/cycles/cmake/external_libs.cmake
-index c1244ab740b..93ddfd2c7a0 100644
+index c59f78b1f1a..8cad057f3ab 100644
 --- a/intern/cycles/cmake/external_libs.cmake
 +++ b/intern/cycles/cmake/external_libs.cmake
-@@ -522,6 +522,11 @@ if(WITH_CYCLES_CUDA_BINARIES OR NOT WITH_CUDA_DYNLOAD)
-   find_package(CUDA) # Try to auto locate CUDA toolkit
+@@ -30,6 +30,11 @@ if(WITH_CYCLES_DEVICE_CUDA AND (WITH_CYCLES_CUDA_BINARIES OR NOT WITH_CUDA_DYNLO
+ 
    if(CUDA_FOUND)
      message(STATUS "Found CUDA ${CUDA_NVCC_EXECUTABLE} (${CUDA_VERSION})")
 +      CUDA_SELECT_NVCC_ARCH_FLAGS(CUDA_ARCH_FLAGS Auto)
@@ -12,5 +12,5 @@ index c1244ab740b..93ddfd2c7a0 100644
 +        message(STATUS "Enabling CUDA support (version: ${CUDA_VERSION_STRING},"
 +          " archs: ${CYCLES_CUDA_BINARIES_ARCH})")
    else()
-     message(STATUS "CUDA compiler not found, disabling WITH_CYCLES_CUDA_BINARIES")
-     set(WITH_CYCLES_CUDA_BINARIES OFF)
+     if(NOT WITH_CUDA_DYNLOAD)
+       message(STATUS "Additionally falling back to dynamic CUDA load")
