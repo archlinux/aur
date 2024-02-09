@@ -1,10 +1,10 @@
 pkgbase = yuvviewer-bin
 	pkgdesc = A small tool for developers to view and preview various original image formats. It is based on Qt and opencv frameworks and supports windows/linux/macos.
-	pkgver = 0.5.6
-	pkgrel = 3
+	pkgver = 0.5.8
+	pkgrel = 1
 	url = https://github.com/QQxiaoming/YUVviewer
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	depends = libxcb
 	depends = fontconfig
 	depends = libgpg-error
@@ -12,12 +12,12 @@ pkgbase = yuvviewer-bin
 	depends = libx11
 	depends = libglvnd
 	depends = xdg-utils
-	provides = yuvviewer=0.5.6
+	provides = yuvviewer=0.5.8
 	conflicts = yuvviewer
 	options = !strip
-	source = yuvviewer-0.5.6.deb::https://github.com/QQxiaoming/YUVviewer/releases/download/V0.5.6/YUVviewer_Linux_V056_x86_64.deb
+	source = yuvviewer-0.5.8.deb::https://github.com/QQxiaoming/YUVviewer/releases/download/V0.5.8/YUVviewer_Linux_V058_x86_64.deb
 	source = yuvviewer.sh
-	sha256sums = b2153150a236dd25d38409f3deb2f9365b529ba147e7bd3ca3029519c7fad998
+	sha256sums = 9693179dbfcb05e955be35e8363a829683beffe9fc4d204f57038cc225129acf
 	sha256sums = aff07ee64a8c2860758f7cbc8c4fd6c58ff03e48bf8ceca690645fdd792b049c
 
 pkgname = yuvviewer-bin

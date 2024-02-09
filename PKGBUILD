@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yuvviewer-bin
 _pkgname=YUVviewer
-pkgver=0.5.6
-pkgrel=3
+pkgver=0.5.8
+pkgrel=1
 pkgdesc="A small tool for developers to view and preview various original image formats. It is based on Qt and opencv frameworks and supports windows/linux/macos."
 arch=("x86_64")
 url="https://github.com/QQxiaoming/YUVviewer"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -23,7 +23,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/V${pkgver}/${_pkgname}_Linux_V${pkgver//./}_${CARCH}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b2153150a236dd25d38409f3deb2f9365b529ba147e7bd3ca3029519c7fad998'
+sha256sums=('9693179dbfcb05e955be35e8363a829683beffe9fc4d204f57038cc225129acf'
             'aff07ee64a8c2860758f7cbc8c4fd6c58ff03e48bf8ceca690645fdd792b049c')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
