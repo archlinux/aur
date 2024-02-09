@@ -2,12 +2,12 @@
 # Contributor: Luís Ferreira <contact@lsferreira.net>
 _pkgname=vulkan-headers
 pkgname=$_pkgname-git
-pkgver=1.3.274.r0.g80207f9
+pkgver=1.3.277.r0.g5a5c9a6
 pkgrel=1
 pkgdesc="Vulkan header files"
 arch=('any')
 url="https://github.com/KhronosGroup/Vulkan-Headers"
-license=('Apache-2.0')
+license=('Apache-2.0 AND MIT')
 groups=('vulkan-devel')
 makedepends=('cmake' 'git')
 provides=("$_pkgname=1:$pkgver" "vulkan-hpp=$pkgver")
