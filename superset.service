@@ -1,0 +1,24 @@
+[Unit]
+Description=Apache Superset server
+# prod
+Requires=superset.socket
+After=network-online.target
+
+[Service]
+# dev
+#Type=simple
+# prod
+Type=notify
+User=superset
+Group=superset
+EnvironmentFile=/etc/superset/env
+WorkingDirectory=/var/lib/superset
+# dev
+#ExecStart=/usr/bin/superset run
+# prod
+ExecStart=/usr/bin/gunicorn superset.app:create_app()
+
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

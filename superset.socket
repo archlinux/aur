@@ -1,0 +1,10 @@
+[Unit]
+Description=Apache Superset socket
+
+[Socket]
+ListenStream=/run/superset.sock
+SocketUser=superset
+SocketMode=640
+
+[Install]
+WantedBy=sockets.target

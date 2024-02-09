@@ -1,0 +1,2 @@
+d /etc/superset 0750 superset superset
+d /var/lib/superset 0750 superset superset
