@@ -50,7 +50,7 @@ sha256sums_aarch64=('7ef266f903c8ca61e7495683f04ec9635c6c132550945a4e21644a8ec70
 
 prepare() {
   if [[ $CARCH = armv7h ]] || [[ $CARCH = aarch64 ]]; then
-    bsdtar -xf data.tar.xz
+    bsdtar -xf data.tar.zst
   fi
 }
 
