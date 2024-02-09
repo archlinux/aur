@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=IDPmisc
-_pkgver=1.1.20
+_pkgver=1.1.21
 pkgname=r-${_pkgname,,}
-pkgver=1.1.20
-pkgrel=4
+pkgver=1.1.21
+pkgrel=1
 pkgdesc="'Utilities of Institute of Data Analyses and Process Design (www.zhaw.ch/idp)'"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,7 +16,7 @@ optdepends=(
   r-swissair
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bcb9cd7b8097e5089d1936286ef310ac2030ea7791350df706382ba470afc67f')
+sha256sums=('478b95ae7e73df78e0728d37281b9af6b4f152a8d54bf9811121d32722f9088c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
