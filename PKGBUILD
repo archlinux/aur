@@ -3,7 +3,7 @@
 
 pkgname=vulkan-tools-git
 pkgdesc='Vulkan Utilities and Tools (git version)'
-pkgver=1.3.275
+pkgver=1.3.277.r1.gf24bab1
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/KhronosGroup/Vulkan-Tools'
