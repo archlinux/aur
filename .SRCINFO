@@ -1,12 +1,12 @@
 pkgbase = perl-net-dns-paranoid
 	pkgdesc = paranoid dns resolver
 	pkgver = 0.09
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Net-DNS-Paranoid
 	arch = any
 	license = GPL
 	license = PerlArtistic
-	makedepends = perl-module-build
+	makedepends = perl-module-build-tiny
 	depends = perl
 	depends = perl-class-accessor-lite
 	depends = perl-net-dns

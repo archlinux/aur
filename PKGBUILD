@@ -3,7 +3,7 @@
 _perlmod='Net-DNS-Paranoid'
 pkgname=perl-net-dns-paranoid
 pkgver=0.09
-pkgrel=1
+pkgrel=2
 pkgdesc="paranoid dns resolver"
 arch=("any")
 url="http://search.cpan.org/dist/$_perlmod"
