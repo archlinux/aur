@@ -1,6 +1,6 @@
 # Maintainer: Stefan Ott <stefan@ott.net>
 pkgname=nml
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 epoch=
 pkgdesc="OpenTTD NewGRF Meta Language Tools"
@@ -20,7 +20,7 @@ options=()
 install=
 changelog=
 source=("nml-${pkgver}.tar.gz::https://github.com/OpenTTD/nml/archive/${pkgver}.tar.gz")
-sha256sums=("19af18a582d6b06cfe0af81147b04e4899df186c9515e8bbb2574b2e9d2bfa75")
+sha256sums=("7bdc1bb1ce1f38a94e88e4544cbce361e99fde454b43b47167243ebfea46bf47")
 noextract=()
 md5sums=()
 validpgpkeys=()
@@ -28,7 +28,7 @@ validpgpkeys=()
 prepare()
 {
 	cd "${pkgname}-${pkgver}"
-	patch -p1 -i "${startdir}/nml-0.7.3-set-version.patch"
+	patch -p1 -i "${startdir}/nml-0.7.4-set-version.patch"
 }
 
 build()
