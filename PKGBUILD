@@ -1,13 +1,14 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=sleipnirgroup-sleipnir-git
-pkgver=v0.1.0.r5.gdbbad33
+pkgver=0.0.1.r7.g0d2f676
 pkgrel=1
 pkgdesc="A sparsity and linearity-exploiting interior-point solver, now with readable internals"
 arch=('x86_64')
 url='https://github.com/SleipnirGroup/Sleipnir'
-depends=('eigen' 'fmt' 'python-numpy')
-makedepends=('cmake' 'pybind11' 'python-tox' 'python-py-build-cmake')
+depends=('eigen-git' 'fmt' 'python-numpy' 'python-scipy')
+makedepends=('cmake' 'pybind11' 'python-py-build-cmake')
+checkdepends=('python-pytest')
 license=('BSD')
 options=('!strip' 'staticlibs')
 source=('git+https://github.com/SleipnirGroup/Sleipnir')
@@ -15,10 +16,12 @@ md5sums=('SKIP')
 
 pkgver() {
   cd Sleipnir
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  printf "$(git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
+}
+
+prepare() {
+  cd "$srcdir"/Sleipnir
+  ./tools/update_version.py
 }
 
 build() {
@@ -31,19 +34,21 @@ build() {
   cmake --build build
 
   cd "$srcdir"/Sleipnir
-  python -m build --wheel --no-isolation -x
+  python -m build --wheel --no-isolation
 }
 
 check() {
   ctest --test-dir build
 
   cd "$srcdir"/Sleipnir
-  tox
+  local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+  cp .py-build-cmake_cache/cp${python_version}-cp${python_version}-linux_$CARCH/_jormungandr.cpython-${python_version}-$CARCH-linux-gnu.so jormungandr
+  PYTHONPATH=. pytest
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+  cmake --install build --prefix "$pkgdir"/usr
 
   cd "$srcdir"/Sleipnir
-  python -m installer --destdir="${pkgdir}" dist/*.whl
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
