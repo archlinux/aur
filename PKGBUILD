@@ -1,7 +1,7 @@
 # Maintainer: david <xuwd1@hotmail.com>
 pkgname=huawei-pixlab-series
 pkgver=1.0_71
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Driver support for HUAWEI pixlab series printers"
 arch=('x86_64')
@@ -38,8 +38,8 @@ prepare() {
 	unzip ${srcdir}/${pkgname}_${_hypen_pkgver}_x64/${pkgname}_${_hypen_pkgver}_x64.zip 2>&1 > /dev/null
 	mv ${srcdir}/${pkgname}_${_hypen_pkgver}_x64/x86_64 ${srcdir}/${pkgname}-${pkgver}
 	cd ${pkgname}-${pkgver}
-	rpm2archive *.rpm 2>&1 > /dev/null
-	tar -xzf *.rpm.tgz 2>&1 > /dev/null
+	rpm2archive *.rpm
+	tar -xzf *.rpm.tgz
 	cd ${srcdir}
 	echo " -> Now it's much better"
 }

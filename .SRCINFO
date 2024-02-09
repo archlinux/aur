@@ -1,7 +1,7 @@
 pkgbase = huawei-pixlab-series
 	pkgdesc = Driver support for HUAWEI pixlab series printers
 	pkgver = 1.0_71
-	pkgrel = 1
+	pkgrel = 2
 	url = https://consumer.huawei.com/cn/support/printers/pixlab-x1/
 	arch = x86_64
 	license = custom
