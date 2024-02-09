@@ -2,8 +2,8 @@
 # Note: Python 3.12 with optimizations and perf support enabled
 
 pkgname=python312-perf
-pkgver=3.12.1
-pkgrel=1
+pkgver=3.12.2
+pkgrel=2
 _pybasever=3.12
 _pymajver=3
 pkgdesc="Major release 3.12 of the Python high-level programming language with perf support and optimizations enabled"
@@ -14,7 +14,7 @@ depends=('bzip2' 'expat' 'gdbm' 'libffi' 'libnsl' 'libxcrypt' 'openssl' 'zlib')
 makedepends=('bluez-libs' 'mpdecimal' 'gdb' 'tk')
 optdepends=('sqlite' 'mpdecimal: for decimal' 'xz: for lzma' 'tk: for tkinter')
 source=(https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz)
-sha256sums=('8dfb8f426fcd226657f9e2bd5f1e96e53264965176fa17d32658e873591aeb21')
+sha256sums=('be28112dac813d2053545c14bf13a16401a21877f1a69eb6ea5d84c4a0f3d870')
 validpgpkeys=(
     '0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D'  # Ned Deily (Python release signing key) <nad@python.org>
     'E3FF2839C048B25C084DEBE9B26995E310250568'  # Łukasz Langa (GPG langa.pl) <lukasz@langa.pl>
@@ -35,7 +35,7 @@ prepare() {
 build() {
   cd "${srcdir}/Python-${pkgver}"
 
-  CFLAGS="${CFLAGS} -fno-semantic-interposition -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer"
+  CFLAGS="${CFLAGS} -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer"
   ./configure --prefix=/usr \
               --enable-shared \
               --with-computed-gotos \

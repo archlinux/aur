@@ -1,7 +1,7 @@
 pkgbase = python312-perf
 	pkgdesc = Major release 3.12 of the Python high-level programming language with perf support and optimizations enabled
-	pkgver = 3.12.1
-	pkgrel = 1
+	pkgver = 3.12.2
+	pkgrel = 2
 	url = https://www.python.org/
 	arch = i686
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = python312-perf
 	optdepends = mpdecimal: for decimal
 	optdepends = xz: for lzma
 	optdepends = tk: for tkinter
-	source = https://www.python.org/ftp/python/3.12.1/Python-3.12.1.tar.xz
+	source = https://www.python.org/ftp/python/3.12.2/Python-3.12.2.tar.xz
 	validpgpkeys = 0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D
 	validpgpkeys = E3FF2839C048B25C084DEBE9B26995E310250568
-	sha256sums = 8dfb8f426fcd226657f9e2bd5f1e96e53264965176fa17d32658e873591aeb21
+	sha256sums = be28112dac813d2053545c14bf13a16401a21877f1a69eb6ea5d84c4a0f3d870
 
 pkgname = python312-perf
