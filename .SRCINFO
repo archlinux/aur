@@ -1,6 +1,6 @@
 pkgbase = python-pyscaffold
 	pkgdesc = Python project template generator with batteries included
-	pkgver = 4.4
+	pkgver = 4.5
 	pkgrel = 1
 	url = https://github.com/pyscaffold/pyscaffold
 	changelog = CHANGELOG.rst
@@ -24,7 +24,7 @@ pkgbase = python-pyscaffold
 	optdepends = python-pytest-runner: Use the integrated unit testing.
 	optdepends = python-pytest: Use the integrated unit testing.
 	optdepends = python-sphinx: Support building documentation with Sphinx.
-	source = python-pyscaffold-4.4.tar.gz::https://files.pythonhosted.org/packages/source/P/PyScaffold/PyScaffold-4.4.tar.gz
-	sha256sums = 94088d129b61cd9b4b4607c6a466759b1bb2ada36206d5ac20aa319edcc5d701
+	source = python-pyscaffold-4.5.tar.gz::https://files.pythonhosted.org/packages/source/P/PyScaffold/PyScaffold-4.5.tar.gz
+	b2sums = 467ef9dd94767e51a3e9d2f2a36a0fd1b4f1a9a4b4110b0cf8e57cc4c67d9757386df461b54123786a718ec29b379bc2d7b0f600d037b2f88bf1f3854579603c
 
 pkgname = python-pyscaffold
