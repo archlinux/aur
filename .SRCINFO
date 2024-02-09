@@ -1,6 +1,6 @@
 pkgbase = tl-optional-git
 	pkgdesc = C++11/14/17 std::optional with functional-style extensions and reference support
-	pkgver = v1.1.0.r0.g3a1209d
+	pkgver = 1.1.0.r0.g3a1209d
 	pkgrel = 1
 	url = https://github.com/TartanLlama/optional
 	arch = any

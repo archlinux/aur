@@ -4,7 +4,7 @@ _name=tl-optional
 _author=TartanLlama
 
 pkgname=${_name}-git
-pkgver=v1.1.0.r0.g3a1209d
+pkgver=1.1.0.r0.g3a1209d
 pkgrel=1
 pkgdesc="C++11/14/17 std::optional with functional-style extensions and reference support "
 arch=('any')
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;'
 }
 
 prepare() {
