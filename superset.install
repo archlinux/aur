@@ -2,16 +2,25 @@ post_install(){
  cat <<INFO
 
 To complete the installation of superset, edit /etc/superset/env,
-in particular replace SUPERSET_SECRET_KEY with the output of
+in particular replace SUPERSET_SECRET_KEY with the output of:
 
     openssl rand -base64 42
 
 Other configurations can be found in /etc/superset/superset_config.py.
-Once done, start Superset by running
+Then initialize the database and create the "admin" user with:
 
-    sudo systemctl start superset.target
+    sudo -u superset sh
+    cd /var/lib/superset
+    source /etc/superset/env
+    superset fab create-admin
+    superset load_examples
+    superset init
+
+Once done, start Superset by running:
+
+    sudo systemctl start superset.service
     
-and access the web interface from http://127.0.0.1:8088
+and access the web interface from http://127.0.0.1:8088/
 
 INFO
 }

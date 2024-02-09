@@ -3,7 +3,7 @@
 pkgname="superset"
 _pkgname="apache-superset"
 pkgver=3.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A modern, enterprise-ready business intelligence web application"
 url="https://superset.apache.org/"
 license=("Apache-2.0")
@@ -22,7 +22,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgnam
         "$pkgname.socket")
 b2sums=('436e72d5940e9272a98d14e225709fadbd9a44e1c06ffaf8b315ba15d9a5273182c7dee665ecc5b84d66adf710e8a1aa5f8248a78c48e49dd3ec6c85c8fd93f1'
         'e80f52a1ac56134c0778e1e3910a441ef25e63405c0c80dcc0432e0802888ac350d232d3d8c75f3530fdee52110f610a3cbb55431acc7cb50ad8ae4ef6812269'
-        '663dff0291518dc40cb6c4f09841104b1414d1e97c1201d14c6a8d2671ddd4d9a134c80e052f1453f69f455ca82eef5c46d52d628f9581d928431807363f1d4b'
+        '337bc95eefa8df30878079ee72d8db576886389e14542f573e7a794d0286e02309a310b17aa5bd8f666e41120bd244f5d63aade68d4412f9b6ee3e6443883e13'
         '85a1d4232a1901d00becf06ef5cbf139477209b93f3738add436f4243aa58d1b16a99dd6342c9f45f4b4efd2e10db337525d183f7f27c708420df406f31e6e09'
         '8dbdfb25b18ba216859da758d24a537d07733e4710af5983a26fc38964f56b880a5201b6ea17ffc2c1b3befe4e40244c7bdbbae2b4e94eb1bc110256ac059db3'
         '979cb488b91c1b9d7dfbb6583096ccf01137dcba58399c4c1d2cc407038b70a76629d2c0d79612caaa29e89f2bb254f4800079bb8d9de69376603e5356e734c9'
