@@ -1,6 +1,5 @@
 # Maintainer: Yakov Till <yakov.till at gmail dot com>
 
-
 pkgname=sigil-wad
 pkgver=1.0
 pkgrel=1
