@@ -4,144 +4,132 @@
 # Contributor: Max Liebkies <mail@maxliebkies.de>
 
 pkgname=powershell
+_pkgname=PowerShell
 pkgver=7.4.1
-pkgrel=2
+_commit=a4348e51b87075cb8cd8047830e6575e4f91f3cf
+pkgrel=3
 pkgdesc="A cross-platform automation and configuration tool/framework (latest release)"
 arch=(x86_64)
 url="https://github.com/PowerShell/PowerShell"
 license=(MIT)
+_dotnet_version=8.0
 depends=(
-  'dotnet-runtime>=8.0.0'
-  'dotnet-runtime<9.0.0'
+  "dotnet-runtime-$_dotnet_version"
   gcc-libs
   glibc
 )
 makedepends=(
-  dotnet-sdk
+  "dotnet-sdk-$_dotnet_version"
+  git
+  unzip
 )
 checkdepends=(
-  xdg-utils
-  iputils
   inetutils
-)
-
-_dotnet_version=8.0
-
-source=(
-  "$pkgname-$pkgver::$url/archive/refs/tags/v$pkgver.tar.gz"
-  "Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets"
-  "version-from-environment-variable.patch"
-  "skip-distro-check.patch"
-)
-sha256sums=(
-  '8f0f1908eea0f88e5e49dd51ebeaf52917eda2c07895416d06f08ab319ebe784'
-  '0c81200e5211a2f63bc8d9941432cbf98b5988249f0ceeb1f118a14adddbaa8e'
-  '50c7265492cd5cd87d81df29fa737d06dacd97586b0fafb3a0f3af8451b8c052'
-  '1f25aa517b73d5d17c547757be8c6fb39e3d2f0fd128805ac42c4192348716ac'
+  iputils
+  xdg-utils
 )
 install=powershell.install
-options=(staticlibs)
+source=(
+  "git+$url.git#commit=$_commit"
+  "Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets"
+  "https://globalcdn.nuget.org/packages/pester.4.10.1.nupkg"
+)
+noextract=("pester.4.10.1.nupkg")
+sha256sums=(
+  'SKIP'
+  '0c81200e5211a2f63bc8d9941432cbf98b5988249f0ceeb1f118a14adddbaa8e'
+  '6c996dc4dc8bef068cefb1680292154f45577c66fb0600dd0fb50939bbf8a3a3'
+)
 
-_archive="PowerShell-$pkgver"
+_archive="$_pkgname"
 
 prepare() {
   cd "$_archive"
 
-  printf '{"sdk": {"version": "%s"}}' "$_dotnet_version" > global.json
+  # I couldn't find any way of silencing the very verbose warnings from
+  # Microsoft.SourceLink other than to set the remote to a proper URL..
+  git remote set-url origin "$url"
 
-  patch --forward --strip=1 --input="$srcdir/version-from-environment-variable.patch"
-  patch --forward --strip=1 --input="$srcdir/skip-distro-check.patch"
+  export NUGET_PACKAGES="$PWD/nuget"
+  export DOTNET_NOLOGO=true
+  export DOTNET_CLI_TELEMETRY_OPTOUT=true
+
+  # Replicating build.psm1:Start-PSBuild()
+  ## Restore-PSPackage()
+  dotnet restore --locked-mode -p:PublishReadyToRun=true src/powershell-unix
+
+  dotnet restore --locked-mode src/TypeCatalogGen
+  dotnet restore --locked-mode src/ResGen
+  dotnet restore --locked-mode src/Modules
+  dotnet restore --locked-mode src/Microsoft.PowerShell.GlobalTool.Shim
+
+  dotnet restore --locked-mode test/tools/TestAlc
+  dotnet restore --locked-mode test/tools/TestExe
+  dotnet restore --locked-mode test/tools/UnixSocket
+  dotnet restore --locked-mode test/tools/Modules
+
+  dotnet restore --locked-mode -p:RuntimeIdentifiers=linux-x64 test/tools/TestService
+  dotnet restore --locked-mode -p:RuntimeIdentifiers=linux-x64 test/tools/WebListener
+
+  dotnet restore --locked-mode test/tools/NamedPipeConnection/src/code
 }
-
-_publish_path="src/powershell-unix/bin/Release/net$_dotnet_version/linux-x64/publish"
 
 build() {
   cd "$_archive"
 
-  export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
-  export DOTNET_CLI_TELEMETRY_OPTOUT=true
-  export DOTNET_NOLOGO=true
-  export DOTNET_ROOT=/usr/share/dotnet
-
   export NUGET_PACKAGES="$PWD/nuget"
-  export POWERSHELL_GIT_DESCRIBE_OUTPUT="v$pkgver-0-gxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-
-  # Replicating build.psm1:Start-PSBuild()
-
-  ## Restore-PSPackage()
-  local restore_args='--disable-parallel /property:SDKToUse=Microsoft.NET.Sdk'
-  # shellcheck disable=2086
-  {
-    dotnet restore $restore_args src/powershell-unix
-    dotnet restore $restore_args src/TypeCatalogGen
-    dotnet restore $restore_args src/ResGen
-    dotnet restore $restore_args src/Modules
-    dotnet restore $restore_args src/Microsoft.PowerShell.GlobalTool.Shim
-  }
+  export DOTNET_NOLOGO=true
+  export DOTNET_CLI_TELEMETRY_OPTOUT=true
 
   ## Start-ResGen()
-  (
-    cd src/ResGen
-    dotnet run
-  )
+  pushd src/ResGen
+  dotnet run --no-restore
+  popd
 
   ## Start-TypeGen()
-  cp \
-    "$srcdir/Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets" \
-    "src/Microsoft.PowerShell.SDK/obj/Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets"
+  cp -t src/Microsoft.PowerShell.SDK/obj \
+    "$srcdir/Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets"
 
   local inc_file="$PWD/src/TypeCatalogGen/powershell_linux-x64.inc"
-  (
-    cd src/Microsoft.PowerShell.SDK
-    dotnet msbuild \
-      ./Microsoft.PowerShell.SDK.csproj \
-      /t:_GetDependencies "/property:DesignTimeBuild=true;_DependencyFile=$inc_file" \
-      /nologo
-  )
+  dotnet msbuild \
+    src/Microsoft.PowerShell.SDK \
+    -t:_GetDependencies \
+    -p:DesignTimeBuild=true \
+    -p:_DependencyFile="$inc_file" \
+    -nologo
 
-  (
-    cd src/TypeCatalogGen
-    dotnet run ../System.Management.Automation/CoreCLR/CorePsTypeCatalog.cs powershell_linux-x64.inc
-  )
+  dotnet run \
+    --no-restore \
+    --project src/TypeCatalogGen \
+    src/System.Management.Automation/CoreCLR/CorePsTypeCatalog.cs \
+    "$inc_file"
 
   ## Publish PowerShell
   dotnet publish \
-    --configuration Release \
-    --framework net$_dotnet_version \
-    --no-self-contained \
+    --no-restore \
+    --framework "net$_dotnet_version" \
     --runtime linux-x64 \
-    /property:ErrorOnDuplicatePublishOutputFiles=false \
-    /property:GenerateFullPaths=true \
-    /property:IsWindows=false \
-    /property:SDKToUse=Microsoft.NET.Sdk \
-    /property:UseAppHost=true \
+    --no-self-contained \
+    --configuration Release \
+    --output lib \
     src/powershell-unix/
 
   ## Publish reference assemblies
-  mkdir -p "$_publish_path/ref"
   grep 'Microsoft.NETCore.App' "$inc_file" | sed 's/;//' | while read -r assembly; do
-    cp "$assembly" "$_publish_path/ref"
+    install -Dm755 -t lib/ref "$assembly"
   done
 
   ## Restore-PSModuleToBuild()
-  cp -ar "$NUGET_PACKAGES/microsoft.powershell.archive/1.2.5/." "$_publish_path/Modules/Microsoft.PowerShell.Archive"
-  cp -ar "$NUGET_PACKAGES/microsoft.powershell.psresourceget/1.0.1/." "$_publish_path/Modules/Microsoft.PowerShell.PSResourceGet"
-  cp -ar "$NUGET_PACKAGES/packagemanagement/1.4.8.1/." "$_publish_path/Modules/PackageManagement"
-  cp -ar "$NUGET_PACKAGES/powershellget/2.2.5/." "$_publish_path/Modules/PowerShellGet"
-  cp -ar "$NUGET_PACKAGES/psreadline/2.3.4/." "$_publish_path/Modules/PSReadLine"
-  cp -ar "$NUGET_PACKAGES/threadjob/2.0.3/." "$_publish_path/Modules/ThreadJob"
-
-  ## Restore-PSPester()
-  "$_publish_path/pwsh" -command "
-    Save-Module -Name Pester -Path $_publish_path/Modules -Repository PSGallery -MaximumVersion 4.99
-  "
+  cp -a "$NUGET_PACKAGES/microsoft.powershell.archive/1.2.5/." lib/Modules/Microsoft.PowerShell.Archive
+  cp -a "$NUGET_PACKAGES/microsoft.powershell.psresourceget/1.0.1/." lib/Modules/Microsoft.PowerShell.PSResourceGet
+  cp -a "$NUGET_PACKAGES/packagemanagement/1.4.8.1/." lib/Modules/PackageManagement
+  cp -a "$NUGET_PACKAGES/powershellget/2.2.5/." lib/Modules/PowerShellGet
+  cp -a "$NUGET_PACKAGES/psreadline/2.3.4/." lib/Modules/PSReadLine
+  cp -a "$NUGET_PACKAGES/threadjob/2.0.3/." lib/Modules/ThreadJob
 }
 
 check() {
   cd "$_archive"
-
-  export LANG=en_US.UTF-8
-  export LC_ALL=en_US.UTF-8
 
   # One failing test related to JSON & datetime, don't know why
   rm test/powershell/Modules/Microsoft.PowerShell.Utility/ConvertTo-Json.Tests.ps1
@@ -153,7 +141,7 @@ check() {
   rm test/powershell/Language/Scripting/NativeExecution/NativeCommandProcessor.Tests.ps1
   rm test/powershell/Modules/Microsoft.PowerShell.Utility/Invoke-Item.Tests.ps1
 
-  # Creates & leaves directories in $HOME, yikes.. Skipping
+  # Creates & leaves directories in $HOME, skipping
   rm test/powershell/Language/Parser/ParameterBinding.Tests.ps1
   rm test/powershell/Language/Scripting/ScriptHelp.Tests.ps1
   rm test/powershell/Modules/Microsoft.PowerShell.Utility/Add-Type.Tests.ps1
@@ -164,12 +152,57 @@ check() {
   # Some users report this test failing, cannot reproduce but removing anyway
   rm test/powershell/Modules/Microsoft.PowerShell.Management/Start-Process.Tests.ps1
 
-  # shellcheck disable=2016
-  "$_publish_path/pwsh" -command "
-    \$ErrorActionPreference = \"Stop\"
-    Import-Module ./build.psm1 -ArgumentList \$true
-    Start-PSPester -BinDir $_publish_path -ThrowOnFailure
-  "
+  ## Restore-PSPester()
+  unzip -ud temp_pester "$srcdir/pester.4.10.1.nupkg"
+  cp -a temp_pester/tools lib/Modules/Pester
+
+  unzip -ud test/tools/Modules/SelfSignedCertificate \
+    "$NUGET_PACKAGES/selfsignedcertificate/0.0.4/selfsignedcertificate.0.0.4.nupkg"
+
+  export NUGET_PACKAGES="$PWD/nuget"
+  export DOTNET_NOLOGO=true
+  export DOTNET_CLI_TELEMETRY_OPTOUT=true
+
+  dotnet publish \
+    --no-restore \
+    --framework "net$_dotnet_version" \
+    --configuration Debug \
+    test/tools/TestAlc
+
+  for project in TestExe TestService UnixSocket WebListener; do
+    dotnet publish \
+      --no-restore \
+      --framework "net$_dotnet_version" \
+      --runtime linux-x64 \
+      --self-contained \
+      --configuration Debug \
+      --output test/tools/$project/bin \
+      test/tools/$project
+    export PATH="$PATH:$PWD/test/tools/$project/bin/Debug/net8.0/linux-x64"
+  done
+
+  dotnet publish \
+    --no-restore \
+    --configuration Debug \
+    --framework "net$_dotnet_version" \
+    --output test/tools/Modules/Microsoft.PowerShell.NamedPipeConnection \
+    test/tools/NamedPipeConnection/src/code
+  install -Dm644 -t test/tools/Modules/Microsoft.PowerShell.NamedPipeConnection \
+    test/tools/NamedPipeConnection/src/Microsoft.PowerShell.NamedPipeConnection.psd1
+
+  export LANG=en_US.UTF-8
+  export LC_ALL=en_US.UTF-8
+
+  # shellcheck disable=SC2016
+  lib/pwsh -noprofile -command '
+    $env:PSModulePath = "$(Get-Location)/test/tools/Modules:" + $env:PSModulePath
+    Import-Module "Pester"
+    Invoke-Pester -Show Header,Failed,Summary -EnableExit `
+      -OutputFormat NUnitXml -OutputFile pester-tests.xml `
+      -ExcludeTag @("Slow", "RequireSudoOnUnix") `
+      -Tag @("CI", "Feature") `
+      "test/powershell"
+  '
 }
 
 package() {
@@ -177,8 +210,8 @@ package() {
 
   local pkgnum=${pkgver:0:1}
 
-  install -dm755 "$pkgdir/usr/lib/$pkgname-$pkgnum/"
-  cp --archive --no-preserve=ownership "$_publish_path/." "$pkgdir/usr/lib/$pkgname-$pkgnum/"
+  install -dm755 "$pkgdir/usr/lib/$pkgname-$pkgnum"
+  cp --archive -t "$pkgdir/usr/lib/$pkgname-$pkgnum" lib/*
 
   install -dm755 "$pkgdir/usr/bin"
   ln -s "/usr/lib/$pkgname-$pkgnum/pwsh" "$pkgdir/usr/bin/pwsh"
