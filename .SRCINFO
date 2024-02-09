@@ -1,6 +1,6 @@
 pkgbase = libjwt
 	pkgdesc = JWT C Library
-	pkgver = 1.16.0
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = https://github.com/benmcollins/libjwt
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = libjwt
 	depends = check
 	depends = jansson
 	depends = openssl
-	source = libjwt-1.16.0.tar.gz::https://github.com/benmcollins/libjwt/archive/v1.16.0.tar.gz
-	sha256sums = c8460fdeb52d22cd80702d591a6e5ef1dbe6645d2963b6fb545f3773f2e2bd86
+	source = libjwt-1.17.0.tar.gz::https://github.com/benmcollins/libjwt/archive/v1.17.0.tar.gz
+	sha256sums = 617778f9687682220abf9b7daacbe72bab7c2985479f8bee4db9648bd2440687
 
 pkgname = libjwt
