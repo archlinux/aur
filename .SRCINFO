@@ -9,6 +9,7 @@ pkgbase = fisheye-stitcher-git
 	makedepends = cmake
 	depends = opencv
 	depends = vtk
+	depends = qt6-base
 	provides = fisheye-stitcher
 	conflicts = fisheye-stitcher
 	source = git+https://github.com/drNoob13/fisheyeStitcher.git
@@ -22,4 +23,3 @@ pkgname = fisheye-mls-map-3840x1920-git
 	depends = 
 	provides = fisheye-mls-map-3840x1920
 	conflicts = fisheye-mls-map-3840x1920
-
