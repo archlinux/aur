@@ -1,100 +1,30 @@
 #!/bin/sh
-   
-#   Copyright (C) 2016 Deepin, Inc.
-#
-#   Author:     Li LongYu <lilongyu@linuxdeepin.com>
-#               Peng Hao <penghao@linuxdeepin.com>
- 
-version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; }
+set -e
 BOTTLENAME=Deepin-@bottlename@
-APPVER=@sparkver@
-WINEPREFIX="${HOME}/.deepinwine/${BOTTLENAME}"
-APP_INSTALLER=@installname@-@appver@.exe
-APP_INSTALLER_PATH="c:/Program Files (x86)/@installname@/${APP_INSTALLER}"
-EXEC_PATH="c:/Program Files (x86)/@installname@/@bottlename@.exe"
-EXEC_FILE="${WINEPREFIX}/drive_c/Program Files (x86)/@installname@/@bottlename@.exe"
-START_SHELL_PATH="/opt/deepinwine/tools/run_v4.sh"
+APPVER=@appver@
+EXEC_PATH="c:/ProgramData/Microsoft/Windows/Start Menu/Programs/夸克网盘.lnk"
+START_SHELL_PATH="/opt/deepinwine/tools/spark_run_v4.sh"
 export MIME_TYPE=""
 export DEB_PACKAGE_NAME=@appname@
-export APPRUN_CMD="deepin-wine6-stable"
-DISABLE_ATTACH_FILE_DIALOG="1"
+export APPRUN_CMD=deepin-wine8-stable
+EXPORT_ENVS=""
 export SPECIFY_SHELL_DIR=`dirname ${START_SHELL_PATH}`
 ARCHIVE_FILE_DIR="/opt/apps/${DEB_PACKAGE_NAME}/files"
+export WINEDLLPATH="/opt/${APPRUN_CMD}/lib:/opt/${APPRUN_CMD}/lib64"
 export WINEPREDLL="${ARCHIVE_FILE_DIR}/dlls"
-
-OpenWinecfg() {
-    echo "Launching winecfg with ${APPRUN_CMD} in ${WINEPREFIX} ..."
-    env WINEPREFIX="${WINEPREFIX}" "${APPRUN_CMD}" winecfg
-}
-
-DeployApp() {
-    # deploy bottle
-    echo "Deploying ${WINEPREFIX} ..."
-    rm -rf "${WINEPREFIX}"
-    # run installer
-    echo "Launching ${APP_INSTALLER_PATH} ..."
-    env WINEDLLOVERRIDES="winemenubuilder.exe=d" "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "${APP_INSTALLER_PATH}" "$@"
-    touch "${WINEPREFIX}/reinstalled"
-    echo "Creating ${WINEPREFIX}/PACKAGE_VERSION ..."
-    cat "/opt/apps/${DEB_PACKAGE_NAME}/files/files.md5sum" > "${WINEPREFIX}/PACKAGE_VERSION"
-}
-
-WakeApp() {
-    env WINEPREDLL="${ARCHIVE_FILE_DIR}/dlls" \
-        WINEDLLPATH="/opt/${APPRUN_CMD}/lib:/opt/${APPRUN_CMD}/lib64" \
-        WINEPREFIX="${WINEPREFIX} ${APPRUN_CMD} /opt/deepinwine/tools/sendkeys.exe w"
-}
-
-Run() {
-    if [ -z "${DISABLE_ATTACH_FILE_DIALOG}" ]; then
-        export ATTACH_FILE_DIALOG=1
-    fi
-
-    if [ -n "${EXPORT_ENVS}" ]; then
-        export "${EXPORT_ENVS}"
-    fi
-
-    if [ -n "${EXEC_PATH}" ]; then
-        if [ ! -f "${WINEPREFIX}/reinstalled" ] || [ ! -f "${EXEC_FILE}" ]; then
-            DeployApp
-            exit 0
-        fi
-
-        if [ -z "${EXEC_PATH##*.lnk*}" ]; then
-            echo "Launching  ${EXEC_PATH} lnk file ..."
-            "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "C:/windows/command/start.exe" "/Unix" "${EXEC_PATH}" "$@"
-        else
-            echo "Launching  $EXEC_PATH ..."
-            "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "${EXEC_PATH}" "$@"
-        fi
-    else
-        "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "uninstaller.exe" "$@"
-    fi
-}
-
-HelpApp() {
-    echo " Extra Commands:"
-    echo " winecfg          Open winecfg"
-    echo " -w/--wake        Wake up background program"
-    echo " -h/--help        Show program help info"
-}
-
-if [ -z $1 ]; then
-    Run "$@"
-    exit 0
+DISABLE_ATTACH_FILE_DIALOG=""
+if [ -z "${DISABLE_ATTACH_FILE_DIALOG}" ];then
+    export ATTACH_FILE_DIALOG=1
 fi
-case $1 in
-"winecfg")
-    OpenWinecfg
-    ;;
-"-w" | "--wake")
-    WakeApp
-    ;;
-"-h" | "--help")
-    HelpApp
-    ;;
-*)
-    Run "$@"
-    ;;
-esac
-exit 0
+if [ -n "$EXPO{RT_ENVS" ];then
+    export "${EXPORT_ENVS}"
+fi
+if [ -n "${EXEC_PATH}" ];then
+    if [ -z "${EXEC_PATH##*.lnk*}" ];then
+        exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "C:/windows/command/start.exe" "/Unix" "${EXEC_PATH}" "$@"
+    else
+        exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "${EXEC_PATH}" "$@"
+    fi
+else
+    exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "uninstaller.exe" "$@"
+fi
