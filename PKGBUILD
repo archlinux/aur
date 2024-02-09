@@ -1,8 +1,8 @@
 _kompute_hash=d1e3b0953cf66acc94b2e29693e221427b2c1f3f
-_llama_cpp_hash=47aec1bcc09e090f0b8f196dc0a4e43b89507e4a
+_llama_cpp_hash=315102f89109f1b67c8f89f12d98ab646685e333
 pkgname=gpt4all-chat
-pkgver=2.6.2
-pkgrel=2
+pkgver=2.7.0
+pkgrel=1
 pkgdesc="open-source LLM chatbots that you can run anywhere"
 arch=("x86_64")
 url="https://github.com/nomic-ai/gpt4all"
@@ -16,16 +16,29 @@ source=(
     "kompute-$_kompute_hash.tar.gz::https://github.com/nomic-ai/kompute/archive/$_kompute_hash.tar.gz"
     "llama.cpp-$_llama_cpp_hash.tar.gz::https://github.com/nomic-ai/llama.cpp/archive/$_llama_cpp_hash.tar.gz"
 )
-sha256sums=('17be70359492c51f9af6294b1e892f1cd7533d965c55e48d15c416bc9600057c'
+sha256sums=('1c44454812fd276dddbf3ead7d5cdff88de5136b80f0273d8e95386c55c1dd87'
             'b47b1d8154a99304a406d564dfaad6dc91332b8bccc4ef15f1b2d2cce332b84b'
-            '851826545f43158c31f96093a6e919ee2074ffbf7a55b710b41410add15c02d0')
+            'af77834345ed7e8a9ca2024e59098de032060491049ef850cdc5a37be97558d4')
 
 prepare() {
     cd "$srcdir/gpt4all-$pkgver"
-    rm -r gpt4all-backend/llama.cpp-mainline
-    ln -s "$srcdir/llama.cpp-$_llama_cpp_hash" gpt4all-backend/llama.cpp-mainline
-    rm -r gpt4all-backend/llama.cpp-mainline/kompute
-    ln -s "$srcdir/kompute-$_kompute_hash" gpt4all-backend/llama.cpp-mainline/kompute
+    modules=(
+        gpt4all-backend/llama.cpp-mainline
+        gpt4all-backend/llama.cpp-mainline/kompute
+    )
+    for module in "${modules[@]}"
+    do
+        case $module in
+            gpt4all-backend/llama.cpp-mainline/kompute)
+                target=kompute-$_kompute_hash
+                ;;
+            gpt4all-backend/llama.cpp-mainline)
+                target=llama.cpp-$_llama_cpp_hash
+                ;;
+        esac
+        echo "Copying $module from $target..."
+        cp -a "$srcdir/$target/"* "$module"
+    done
 }
 build() {
     cmake -B build-chat -S "$srcdir/gpt4all-$pkgver/gpt4all-chat" \
