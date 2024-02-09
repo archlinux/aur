@@ -2,11 +2,11 @@
 
 pkgname=valijson-git
 pkgdesc='Header-only C++ library for JSON Schema validation (git version)'
-pkgver=1.0.2
+pkgver=1.0.2.r8.g27f7e75
 pkgrel=1
 arch=(any)
 url="https://github.com/tristanpenman/valijson"
-license=(BSD 2)
+license=(BSD-2-Clause)
 conflicts=(valijson)
 provides=(valijson)
 makedepends=(git make cmake ninja)
@@ -14,7 +14,6 @@ source=('git+https://github.com/tristanpenman/valijson.git')
 
 pkgver(){
   cd "${srcdir}"/valijson
-  # cutting off 'foo-' prefix that presents in the git tag
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
