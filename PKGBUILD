@@ -1,5 +1,8 @@
 # Maintainer: Tom Moore <middleagedman@users.noreply.github.com>
+
 # Contributor: Paweł Otlewski <pawel@idkcloud.com>
+# Contributor: Томас <70m4c@70m4c.su>
+# Contributor: Marc Paradise <marc.paradise@gmail.com>
 
 # shellcheck disable=SC2148 # Ignore lack of shebang
 # shellcheck disable=SC2034 # Ignore "unused" PKGBUILD variables
@@ -7,7 +10,7 @@
 
 pkgname=chef-workstation
 pkgver=23.12.1055
-pkgrel=1
+pkgrel=2
 pkgdesc="Chef's developer toolkit that includes Infra, InSpec, Habitat, and tools like knife."
 arch=('x86_64')
 url="https://www.chef.io/downloads/tools/workstation"
