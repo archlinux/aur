@@ -4,10 +4,10 @@
 
 pkgname=mingw-w64-xorg-util-macros
 pkgver=1.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="X.Org Autotools macros (mingw-w64)"
 arch=(any)
-license=('custom')
+license=('MIT')
 url="http://xorg.freedesktop.org/"
 makedepends=('mingw-w64-configure')
 source=(${url}/releases/individual/util/util-macros-${pkgver}.tar.gz{,.sig})
@@ -36,4 +36,5 @@ package() {
     install -m755 -d "${pkgdir}/usr/${_arch}/lib"
     mv "${pkgdir}/usr/${_arch}/share/pkgconfig" "${pkgdir}/usr/${_arch}/lib/"
   done
+  install -D -m644 "$srcdir/util-macros-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 } 

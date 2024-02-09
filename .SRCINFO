@@ -1,10 +1,10 @@
 pkgbase = mingw-w64-xorg-util-macros
 	pkgdesc = X.Org Autotools macros (mingw-w64)
 	pkgver = 1.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://xorg.freedesktop.org/
 	arch = any
-	license = custom
+	license = MIT
 	makedepends = mingw-w64-configure
 	source = http://xorg.freedesktop.org//releases/individual/util/util-macros-1.20.0.tar.gz
 	source = http://xorg.freedesktop.org//releases/individual/util/util-macros-1.20.0.tar.gz.sig
