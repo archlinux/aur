@@ -1,6 +1,6 @@
 pkgbase = dvc
 	pkgdesc = Open-source version control system for data science projects
-	pkgver = 3.43.1
+	pkgver = 3.44.0
 	pkgrel = 1
 	url = https://github.com/iterative/dvc
 	arch = any
@@ -56,7 +56,7 @@ pkgbase = dvc
 	optdepends = python-pyarrow: support for HDFS remote
 	optdepends = python-pydrive: support for GDrive
 	optdepends = python-s3fs: support for AWS S3 remote
-	source = https://files.pythonhosted.org/packages/source/d/dvc/dvc-3.43.1.tar.gz
-	sha256sums = cc49c4bcd9c421df327884b1b0f39e68484e2a8ad1cbecd374f3a3946aeed654
+	source = https://files.pythonhosted.org/packages/source/d/dvc/dvc-3.44.0.tar.gz
+	sha256sums = 0a862a5b75b42c29675016e71a51127d0b868cd1155dfca5b183d213ccb47e66
 
 pkgname = dvc
