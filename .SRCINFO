@@ -1,6 +1,6 @@
 pkgbase = fav-git
 	pkgdesc = Back up your favorite bilibili resources with CLI
-	pkgver = v0.1.13.r8.gcec1db8
+	pkgver = v0.1.13.r12.g7db1a38
 	pkgrel = 1
 	url = https://github.com/kingwingfly/fav
 	arch = x86_64
@@ -12,6 +12,8 @@ pkgbase = fav-git
 	conflicts = fav
 	conflicts = fav-bin
 	source = fav::git+https://github.com/kingwingfly/fav.git
+	source = https://github.com/kingwingfly/fav/raw/v0.1.13/LICENSE
 	sha256sums = SKIP
+	sha256sums = 54e2d4c99f8d0eacb6dd9cae4c1bddce86fe7926d29cdb0ceded4d3797df0d65
 
 pkgname = fav-git

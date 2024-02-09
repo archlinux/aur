@@ -2,7 +2,8 @@
 
 pkgname=fav-git
 _pkgname="${pkgname%-git}"
-pkgver=v0.1.13.r12.g7db1a38
+pkgver=v0.1.13.r14.g289bf7f
+_tag="$(git -C "$_pkgname" describe --tags --abbrev=0)"
 pkgrel=1
 pkgdesc='Back up your favorite bilibili resources with CLI'
 url="https://github.com/kingwingfly/${_pkgname}"
@@ -12,8 +13,10 @@ provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-bin")
 makedepends=('cargo' 'git' 'pkgconf')
 
-source=("$_pkgname::git+$url.git")
-sha256sums=('SKIP')
+source=("$_pkgname::git+$url.git"
+	"$url/raw/${_tag}/LICENSE")
+sha256sums=('SKIP'
+            '54e2d4c99f8d0eacb6dd9cae4c1bddce86fe7926d29cdb0ceded4d3797df0d65')
 
 pkgver() {
 	cd "$_pkgname"
@@ -56,4 +59,7 @@ package() {
 	install -Dm644 ${_pkgname}.bash "$pkgdir"/usr/share/bash-completion/completions/${_pkgname}
 	install -Dm644 ${_pkgname}.fish "$pkgdir"/usr/share/fish/vendor_completions.d/${_pkgname}.fish
 	install -Dm644 _${_pkgname} "$pkgdir"/usr/share/zsh/site-functions/_${_pkgname}
+
+	# license
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
