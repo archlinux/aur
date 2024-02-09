@@ -1,5 +1,5 @@
 pkgbase = openxr-loader-git
-	pkgver = 1.0.28.1.r3.gd6b6d7a
+	pkgver = 1.0.33.r0.g820278f
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/OpenXR-SDK-Source
 	arch = i686
@@ -23,6 +23,7 @@ pkgname = openxr-loader-git
 	depends = jsoncpp
 	depends = libx11
 	provides = openxr-loader
+	conflicts = openxr-loader
 
 pkgname = openxr-headers-git
 	pkgdesc = OpenXR headers

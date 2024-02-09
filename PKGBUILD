@@ -2,7 +2,7 @@
 
 pkgname=("openxr-loader-git" "openxr-headers-git" "openxr-layers-git" "openxr-utils-git" "openxr-git")
 _dirname="openxr-loader"
-pkgver=1.0.28.1.r3.gd6b6d7a
+pkgver=1.0.33.r0.g820278f
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://github.com/KhronosGroup/OpenXR-SDK-Source'
@@ -42,6 +42,8 @@ package_openxr-loader-git() {
   provides=("openxr-loader")
   pkgdesc='OpenXR loader'
   depends=("jsoncpp" "libx11")
+  conflicts=("openxr-loader")
+  # "openxr")
 
   cd "$_dirname"-build
 
@@ -83,6 +85,7 @@ package_openxr-layers-git() {
 
 package_openxr-utils-git() {
   depends=("openxr-loader" "libglvnd" "libxxf86vm" "vulkan-icd-loader" "libx11")
+  # conflicts=("openxr")
   provides=("openxr-utils")
   pkgdesc='OpenXR Utils: hello_xr, runtime_list'
 
