@@ -10,8 +10,8 @@ url="https://github.com/bluescan/${_pkgname}"
 license=('ISC')
 provides=("${_pkgname}=${pkgver}")
 provides=(${_pkgname})
-depends=('libx11')
-makedepends=('cmake' 'dpkg' 'gcc12' 'git' 'ninja') # dpkg is needed since only building a debian package creates a installation-ready directory structure :-(.
+depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'libx11' 'libxcb')
+makedepends=('cmake' 'dpkg' 'git' 'ninja') # dpkg is needed since only building a debian package creates a installation-ready directory structure :-(.
 source=("git+${url}.git")
 sha512sums=('SKIP')
 
