@@ -68,18 +68,8 @@ post_install() {
     showmsg
 }
 
-pre_upgrade() {
-    for _executables in cellframe-node-cli cellframe-node-tool cellframe-node
-	do  
-		if [[ -f "/usr/bin/$_executables" ]]; then unlink "/usr/bin/$_executables" && echo "==> Removing old symlink: ${_executables}"; fi
-	done
-}
-
 post_upgrade() {
-    systemctl is-active --quiet cellframe-node.service && systemctl daemon-reload && systemctl restart cellframe-node.service
-    if [[ $(vercmp $2 5.2.400-3) -lt 0 ]]; then
-        echo "==> It's recommended to enable cellframe-node-logrotate.timer with: systemctl enable --now cellframe-node-logrotate.timer"
-    fi
+    showmsg
 }
 
 pre_remove() {
