@@ -1,6 +1,6 @@
 pkgbase = selenium-ide-bin
 	pkgdesc = Open Source record and playback test automation for the web.
-	pkgver = 4.0.1_alpha.90
+	pkgver = 4.0.1_alpha.97
 	pkgrel = 1
 	url = https://selenium.dev/selenium-ide/
 	arch = x86_64
@@ -12,11 +12,12 @@ pkgbase = selenium-ide-bin
 	depends = gtk2
 	depends = nodejs
 	depends = java-runtime
-	provides = selenium-ide=4.0.1_alpha.90
+	provides = selenium-ide=4.0.1_alpha.97
 	conflicts = selenium-ide
-	source = selenium-ide-4.0.1_alpha.90.AppImage::https://github.com/SeleniumHQ/selenium-ide/releases/download/v4.0.1-alpha.90/Selenium-IDE-4.0.1-alpha.90.AppImage
+	options = !strip
+	source = selenium-ide-4.0.1_alpha.97.AppImage::https://github.com/SeleniumHQ/selenium-ide/releases/download/v4.0.1-alpha.97/Selenium-IDE-4.0.1-alpha.97.AppImage
 	source = selenium-ide.sh
-	sha256sums = f30026363a0f6b60fe41b4bdf8901c0a402c47dbc54cfc1c99efe73bfdf42b19
-	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
+	sha256sums = ed0c1cb245864b0a58f91fa91b6033e17c8d7dec064d1beee95d7ee13c18dd32
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = selenium-ide-bin

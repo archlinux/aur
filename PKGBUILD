@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=selenium-ide-bin
 _pkgname=Selenium.IDE
-pkgver=4.0.1_alpha.90
+pkgver=4.0.1_alpha.97
 _electronversion=28
 pkgrel=1
 pkgdesc="Open Source record and playback test automation for the web."
@@ -22,16 +22,19 @@ depends=(
 makedepends=(
     'squashfuse'
 )
+options=(
+    '!strip'
+)
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname//./-}-${pkgver//_/-}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f30026363a0f6b60fe41b4bdf8901c0a402c47dbc54cfc1c99efe73bfdf42b19'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+sha256sums=('ed0c1cb245864b0a58f91fa91b6033e17c8d7dec064d1beee95d7ee13c18dd32'
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
