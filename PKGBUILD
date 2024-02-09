@@ -2,7 +2,7 @@
 
 _pkgbase="gasket"
 pkgname="$_pkgbase-dkms-git"
-pkgver=.r235.09385d4
+pkgver=r235.09385d4
 pkgrel=1
 pkgdesc='Google Coral driver for PCIe-based Edge TPU devices, such as the M.2 and Mini PCIe Accelerator, Git version'
 arch=('x86_64')
@@ -22,7 +22,7 @@ prepare() {
 
 pkgver() {
 	cd "${srcdir}/gasket-driver/"
-        printf '%s.r%s.%s' "${_pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+        printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
