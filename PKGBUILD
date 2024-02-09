@@ -4,7 +4,7 @@ _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Building a new Internet. Skycoin.com"
 pkgver='1.3.17'
-pkgrel='1'
+pkgrel='3'
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -26,7 +26,8 @@ _source=("${_script[@]}"
 "${_icon[@]}"
 "${_service[@]}"
 "${_key[@]}"
-"https://raw.githubusercontent.com/skycoin/skywire/develop/dmsghttp-config.json")
+"https://raw.githubusercontent.com/skycoin/skywire/develop/dmsghttp-config.json"
+"https://raw.githubusercontent.com/skycoin/skywire/develop/services-config.json")
 #"all_servers.json"::"https://dmsgd.skywire.skycoin.com/dmsg-discovery/all_servers")
 
 source=("${_source[@]}")
@@ -37,20 +38,21 @@ sha256sums=('9257dc9cf98b382049b500f646c0005950077cedb83abbb62984983e4dda0874'
             'a6941680b5858ca3e0c85d9bf5824455a0c95524b61e42352462f2abbb750495'
             'fee14fb95e02a6c74626e9c89def7c1137192c5c23470a05c750cd97f3d3f0dd'
             '8519d027325dcb34877bb5b0fb0c3c035d7589c0046b53935e2b949d436c4be3'
-            'd1bbd2b6d141cee8499fe2ae0c8429325d2d80ea895cce3db2db11f0629cc740')
-sha256sums_x86_64=('3257cec2a132f808de16c173c7b42b1ed920006591302aa55d2efef2a7ae763f')
-sha256sums_aarch64=('30b17a085054542ef4b5d43055f59a5cf3d53e44ae5741e412230e2a566e18bf')
-sha256sums_armv8=('30b17a085054542ef4b5d43055f59a5cf3d53e44ae5741e412230e2a566e18bf')
-sha256sums_armv7=('b16589e54bea38b334392ccbe89bb29163329a0bc964c55fe9a7d25874e6c8cb')
-sha256sums_armv7l=('b16589e54bea38b334392ccbe89bb29163329a0bc964c55fe9a7d25874e6c8cb')
-sha256sums_armv7h=('b16589e54bea38b334392ccbe89bb29163329a0bc964c55fe9a7d25874e6c8cb')
-sha256sums_arm=('6c6f69e9a72d9c81fca141dfd2c8d607db7291f3eae5c4dd672105741dc64c46')
-sha256sums_riscv64=('d6c9d579f9a6c415a474230aa22b15c2e56474518cc429e33499a25973b46b50')
-#https://github.com/skycoin/skywire/releases/download/v1.3.15/skywire-v1.3.15-linux-amd64.tar.gz
-#https://github.com/skycoin/skywire/releases/download/v1.3.15/skywire-v1.3.15-linux-arm64.tar.gz
-#https://github.com/skycoin/skywire/releases/download/v1.3.15/skywire-v1.3.15-linux-armhf.tar.gz
-#https://github.com/skycoin/skywire/releases/download/v1.3.15/skywire-v1.3.15-linux-arm.tar.gz
-#https://github.com/skycoin/skywire/releases/download/v1.3.15/skywire-v1.3.15-linux-riscv64.tar.gz
+            'd1bbd2b6d141cee8499fe2ae0c8429325d2d80ea895cce3db2db11f0629cc740'
+            '7f9963d796abe8716581c0f1455e1f636998d31a58d8b8cf84f85a1ad8b90dce')
+sha256sums_x86_64=('e477d74225944f97036ab7f1ec348f2208b157ceb579e8e42bb3705c55d9abf6')
+sha256sums_aarch64=('5b264fca25a5a6c8a01cec59701383a40b45ab27bb74ff37a1fe4bb0bd4a652b')
+sha256sums_armv8=('5b264fca25a5a6c8a01cec59701383a40b45ab27bb74ff37a1fe4bb0bd4a652b')
+sha256sums_armv7=('297a8bd49592f6fa06e2d7116c16f1981c989f1e07b576bf923e4f41af96f671')
+sha256sums_armv7l=('297a8bd49592f6fa06e2d7116c16f1981c989f1e07b576bf923e4f41af96f671')
+sha256sums_armv7h=('297a8bd49592f6fa06e2d7116c16f1981c989f1e07b576bf923e4f41af96f671')
+sha256sums_arm=('39a526d77b513375fba6aee0c5bea5a7c643d51b6a84881889af154fc429f70a')
+sha256sums_riscv64=('30c6aadd44083a18f4b0d9f4db127b9e41906bb14480f36ddcc07caf0db22427')
+#https://github.com/skycoin/skywire/releases/download/v1.3.17/skywire-v1.3.17-linux-amd64.tar.gz
+#https://github.com/skycoin/skywire/releases/download/v1.3.17/skywire-v1.3.17-linux-arm64.tar.gz
+#https://github.com/skycoin/skywire/releases/download/v1.3.17/skywire-v1.3.17-linux-armhf.tar.gz
+#https://github.com/skycoin/skywire/releases/download/v1.3.17/skywire-v1.3.17-linux-arm.tar.gz
+#https://github.com/skycoin/skywire/releases/download/v1.3.17/skywire-v1.3.17-linux-riscv64.tar.gz
 _binarchive=("${_pkgname}-${_tag_ver}-linux")
 _release_url=("${url}/releases/download/${_tag_ver}/${_binarchive}")
 source_x86_64=("${_release_url}-amd64.tar.gz")
@@ -121,6 +123,8 @@ _msg2 'Symlink skywire-visor to skywire'
 ln -rTsf "${_pkgdir}/${_bin}/${_pkgname}-visor" "${_pkgdir}/usr/bin/${_pkgname}"
 _msg2 'installing dmsghttp-config.json'
 install -Dm644 "${srcdir}/dmsghttp-config.json" "${_pkgdir}/${_dir}/dmsghttp-config.json" || install -Dm644 "${srcdir}/skywire/dmsghttp-config.json" "${_pkgdir}/${_dir}/dmsghttp-config.json"
+_msg2 'installing services-config.json'
+install -Dm644 "${srcdir}/services-config.json" "${_pkgdir}/${_dir}/services-config.json" || install -Dm644 "${srcdir}/skywire/services-config.json" "${_pkgdir}/${_dir}/services-config.json"
 #make sure the dmsghttp-config will get redownloaded on subsequent builds
 #[[ -f "${srcdir}/dmsghttp-config.json" ]] && rm "${srcdir}/dmsghttp-config.json"
 
