@@ -1,0 +1,16 @@
+pkgbase = python-shortid
+	pkgdesc = Short id generator
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/corpix/shortid
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	options = !strip
+	source = https://pypi.org/packages/source/s/shortid/shortid-0.1.2.tar.gz
+	b2sums = 2b00299bda5c96f40e06707814f42a56c1daebe2e7fa2d889af045b1a2b7d6883c679bcd08329d2778f106f8b014c1b6f321b7fa0cd6549abea5f0a80f98998a
+
+pkgname = python-shortid
