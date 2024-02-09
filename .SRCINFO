@@ -1,6 +1,6 @@
 pkgbase = wg-client
 	pkgdesc = Wireguard linux client (command line and gui)
-	pkgver = 4.1.0
+	pkgver = 4.1.2
 	pkgrel = 1
 	url = https://github.com/gene-git/{{project_name}}
 	install = wg-client.install
@@ -9,6 +9,7 @@ pkgbase = wg-client
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-wheel
+	makedepends = python-installer
 	makedepends = python-hatch
 	makedepends = rsync
 	depends = python>3.10
@@ -17,7 +18,8 @@ pkgbase = wg-client
 	depends = python-psutil
 	depends = python-netifaces
 	depends = libcap
-	source = git+https://github.com/gene-git/wg-client#tag=4.1.0
+	depends = python-netaddr
+	source = git+https://github.com/gene-git/wg-client#tag=4.1.2
 	sha512sums = SKIP
 
 pkgname = wg-client

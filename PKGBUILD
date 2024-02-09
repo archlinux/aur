@@ -10,7 +10,7 @@ pkgname='wg-client'
 pkgdesc='Wireguard linux client (command line and gui)'
 _gitname='wg-client'
 
-pkgver=4.1.0
+pkgver=4.1.2
 pkgrel=1
 url="https://github.com/gene-git/{{project_name}}"
 
@@ -20,8 +20,9 @@ license=(MIT)
 install='wg-client.install'
 
 # To build docs uncommont sphinx/texlive
-depends=('python>3.10' 'python-pyqt6' 'hicolor-icon-theme' 'python-psutil' 'python-netifaces' 'libcap')
-makedepends=('git' 'python-build' 'python-wheel' 'python-hatch' 'rsync'
+depends=('python>3.10' 'python-pyqt6' 'hicolor-icon-theme' 'python-psutil' 
+         'python-netifaces' 'libcap' 'python-netaddr')
+makedepends=('git' 'python-build' 'python-wheel'  'python-installer' 'python-hatch' 'rsync'
              #'python-sphinx' 'python-myst-parser' 'texlive-latexextra'
             )
 
