@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/tagspaces/tagspaces/archive
         "$pkgname.sh")
 sha256sums=('acd2cf9fdd730428179f2ee8fb9d619b0652a5b18efcb92997ff57b833b93967'
             'a548e2b62a61a93d80482ebe43ef11e33e2c2bfef9db641fc583bd5539ac6948'
-            '9337f82424a160a0b44684209fffff0a047e96ce0449134d75e67d81f409805b')
+            '6a0d3ca0f31afdd7587b3dc0ed819f252c350eaeafb17472fe4b7031d4130118')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -37,7 +37,7 @@ prepare() {
   generated_key=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 128)
   echo "KEY=${generated_key}" > .env
 
-  sed -i "s|@ELECTRONVERSION@|${_electronversion}|" "$srcdir/$pkgname.sh"
+  sed -i "s|@ELECTRONVERSION@|electron${_electronversion}|" "$srcdir/$pkgname.sh"
 }
 
 build() {
