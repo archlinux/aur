@@ -1,22 +1,23 @@
 pkgbase = pyalpm-git
 	pkgdesc = Libalpm bindings for Python 3 (Git version)
-	pkgver = 0.10.6.r9.g90941d0
+	pkgver = 0.10.6.r11.gc8d9eeb
 	pkgrel = 1
-	url = https://git.archlinux.org/pyalpm.git/
+	url = https://gitlab.archlinux.org/archlinux/pyalpm
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = python-pytest
 	checkdepends = python-pytest-pacman
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python-pkgconfig
-	depends = python>=3.6
-	depends = pacman>=5
-	provides = pyalpm=0.10.6.r9.g90941d0
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = pacman
+	provides = pyalpm
 	conflicts = pyalpm
 	source = git+https://gitlab.archlinux.org/archlinux/pyalpm.git
-	source = pyalpm-mr19.patch::https://gitlab.archlinux.org/archlinux/pyalpm/-/merge_requests/19.patch
 	sha256sums = SKIP
-	sha256sums = 78098e9ebdc2e90846cb836913edab0ca74abdf5c8e846468063300a017d5fb7
 
 pkgname = pyalpm-git
