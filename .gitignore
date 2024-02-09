@@ -3,4 +3,6 @@ src/
 pkg/
 *.git/
 blender/
-
+blender-addons/
+blender-addons-contrib/
+*.log
