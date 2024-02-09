@@ -1,4 +1,4 @@
 src/
 pkg/
-libpoco-basic-*.pkg.tar.xz
+libpoco-basic-*.pkg.tar.zst
 poco-*.tar.gz
