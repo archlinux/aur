@@ -1,8 +1,24 @@
-# 0.25.1
+Changes in version 0.25.2 (2024-02-08)
 
-Fixes an issue where pkl-tools fat jar is empty.
+  Fixes:
+    - Fixes some issues with generated pkldoc websites (#70, #81, #96)
+    - Fixes an issue where a PklBugException produces an incorrect URL to file
+      issues (#73)
+
+  Miscellaneous:
+    - Documentation fixes (#21, #29, #41, #44, #51, #57, #60, #64, #68, #74,
+      #77, #78, #82, #84, #86, #89, #91, #104)
+
+    - Build script improvements (#53, #83)
 
 
-# 0.25.0
+Changes in version 0.25.1 (2024-02-01)
 
-This is the initial release of Pkl, a programming language for creating configuration.
+  Fixes:
+    - Fixes an issue where pkl-tools fat jar is empty.
+
+
+Changes in version 0.25.0 (2024-02-01)
+
+  This is the initial release of Pkl, a programming language for creating
+  configuration.

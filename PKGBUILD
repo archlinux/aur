@@ -1,7 +1,7 @@
 # Maintainer: Jiri Pospisil <jiri@jpospisil.com>
 
 pkgname=pkl
-pkgver=0.25.1
+pkgver=0.25.2
 pkgrel=1
 pkgdesc='A configuration as code language with rich validation and tooling.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('pkl-git' 'pkl-bin')
 makedepends=('jdk-openjdk' 'git')
 changelog=CHANGELOG
 source=("https://github.com/apple/pkl/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('748557523a795daeb86644df6acc0a0d29adb8d555a030ae796a14c6a6023bcd52417e366c09a2371fcd9af29bc2bd57b701d55035f18be5f035e841f40fcba7')
+b2sums=('323a0d496591367f8b530811005540fd283c6affa0358c701e5f30ae3b751b6888dcd20f01812918a2558166a26c4948f9f77770733f224e2dd79b99e2c5f4e3')
 
 build() {
   cd "$srcdir/pkl-$pkgver"
