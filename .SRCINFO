@@ -1,6 +1,6 @@
 pkgbase = uwsm
 	pkgdesc = A standalone Wayland session manager
-	pkgver = 0.14.2
+	pkgver = 0.14.4
 	pkgrel = 1
 	url = https://github.com/Vladimir-csp/uwsm
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = uwsm
 	depends = libnewt
 	depends = python-pyxdg
 	depends = python-dbus
-	source = uwsm::git+https://github.com/Vladimir-csp/uwsm.git#commit=2f0ce0ab8204ea504353d04453caeb8d5786a906
+	source = uwsm::git+https://github.com/Vladimir-csp/uwsm.git#commit=5c48a44497ad8df8e1e7c71aebec5a9cbfe413ef
 	sha256sums = SKIP
 
 pkgname = uwsm
