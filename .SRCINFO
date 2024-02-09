@@ -1,0 +1,31 @@
+pkgbase = sdrconnect
+	pkgdesc = SDR receiver for SDRplay devices
+	pkgver = 0.0.0.2
+	pkgrel = 1
+	url = http://www.sdrplay.com/sdrconnect/
+	arch = aarch64
+	arch = x86_64
+	license = custom:EULA
+	depends = libusb>=1.0
+	depends = glibc
+	depends = gcc-libs
+	depends = fontconfig
+	depends = freetype2
+	depends = brotli
+	depends = expat
+	depends = bzip2
+	depends = libpng
+	depends = harfbuzz
+	depends = graphite
+	depends = pcre2
+	depends = alsa-lib
+	source = sdrconnect.desktop
+	source = 67-sdrplay.rules
+	sha256sums = 813615889e26d412e63c8c383626e370376d367c5109e909d61fe4070a1d8def
+	sha256sums = 113c42683b598d795db10b890b6da5bb5d025c16092106f459bf2a15c44a88e5
+	source_aarch64 = https://www.sdrplay.com/software/SDRconnect_linux-arm64_0fd82d9dc.run
+	sha256sums_aarch64 = afd8af85d751ee9f201b00c134e5588d471f3c176bb7362bcb9b302ed7a918bb
+	source_x86_64 = https://www.sdrplay.com/software/SDRconnect_linux-x64_0fd82d9dc.run
+	sha256sums_x86_64 = 7200f58efc1bd78250f6057cc08b5564ea9e8f33f8ef655805bbff97f56d38c2
+
+pkgname = sdrconnect

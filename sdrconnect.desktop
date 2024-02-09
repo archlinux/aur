@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=SDRconnect
+Comment=SDRplay's SDRconnect
+Exec=/usr/lib/sdrconnect/SDRconnect
+Icon=/usr/share/icons/sdrconnect.ico
+Terminal=false
+Type=Application
+Categories=Other;X-SDR;
+StartupNotify=true
