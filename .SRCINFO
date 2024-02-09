@@ -1,0 +1,22 @@
+pkgbase = android-x86-64-glib2
+	pkgdesc = Low level core library (android)
+	pkgver = 2.78.3
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/GLib
+	arch = any
+	license = LGPL2.1
+	makedepends = android-meson
+	depends = android-x86-64-libffi
+	depends = android-x86-64-pcre2
+	depends = android-x86-64-gettext
+	depends = android-x86-64-zlib
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://download.gnome.org/sources/glib/2.78/glib-2.78.3.tar.xz
+	source = 0001-Fix-build.patch
+	sha256sums = 609801dd373796e515972bf95fc0b2daa44545481ee2f465c4f204d224b2bc21
+	sha256sums = 26ec88e5fe6f13a5ea024384a01eb6f9ac2d1e93bdb4e47641339963c187353c
+
+pkgname = android-x86-64-glib2

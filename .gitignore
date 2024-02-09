@@ -1,0 +1,6 @@
+glib/
+pkg/
+src/
+*.log
+*.tar
+*.xz
