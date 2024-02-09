@@ -6,7 +6,7 @@ pkgver=v1.3.0.r0.g2183dd1
 pkgrel=1
 pkgdesc='A 3rd party bilibili client'
 url="https://github.com/xfangfang/wiliwili"
-license=('GPL3')
+license=('GPL-3.0-only')
 # Some arches are not tested and may not work properly.
 # they are untested and may not compile.
 arch=('x86_64' 'i386' 'aarch64' 'armv7h' 'riscv64' 'loong64')
