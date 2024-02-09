@@ -27,7 +27,7 @@ _fragment=${FRAGMENT:-#branch=main}
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.4'); }
 
 pkgname=blender-develop-git
-pkgver=4.1.r132554.ga8e14af1677
+pkgver=4.2.r132730.g98231ea880b
 pkgrel=1
 pkgdesc="Development version of Blender (non-conflicting version)"
 changelog=blender.changelog
