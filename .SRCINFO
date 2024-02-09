@@ -1,0 +1,16 @@
+pkgbase = python-wtforms-json
+	pkgdesc = Adds smart json support for WTForms. Useful for when using WTForms with RESTful APIs
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/kvesteri/wtforms-json
+	arch = any
+	license = custom
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	options = !strip
+	source = https://pypi.org/packages/source/W/WTForms-JSON/WTForms-JSON-0.3.5.tar.gz
+	b2sums = 816fc6928045c8d8c4b59cee4e667f7fca0834804fc03b8f1c40af5dcfff6897d31aaeb6d878bcef5032172b8905b5affafccc0d4a0d3a9bc255270ca374ef8e
+
+pkgname = python-wtforms-json
