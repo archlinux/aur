@@ -4,11 +4,11 @@
 
 pkgname=vulkan-utility-libraries-git
 pkgdesc='Vulkan Utility Libraries (git version)'
-pkgver=1.3.275
+pkgver=1.3.277.r0.g86de0a0
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/KhronosGroup/Vulkan-Utility-Libraries'
-license=(Apache)
+license=(Apache-2.0)
 depends=(libvulkan.so)
 makedepends=(cmake python vulkan-headers-git)
 conflicts=(vulkan-utility-libraries)
@@ -39,6 +39,10 @@ build(){
 
 package(){
   make -j$(nproc) -C "${srcdir}"/build DESTDIR="${pkgdir}" install
+
+  # install license
+  install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
+  install -m644 "${srcdir}"/Vulkan-Utility-Libraries/LICENSES/* "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }
 
 sha256sums=(SKIP)
