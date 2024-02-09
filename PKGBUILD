@@ -39,8 +39,8 @@ build(){
 package(){
  cd "$_pkgname-$pkgver"
  python -m installer --destdir="$pkgdir" dist/*.whl
- install -d "$pkgdir/etc/$pkgname"
- install -d "$pkgdir/var/lib/$pkgname" 
+ install -d -m 750 "$pkgdir/etc/$pkgname"
+ install -d -m 750 "$pkgdir/var/lib/$pkgname" 
  install -D -m 640 "$srcdir/$pkgname.env"       "$pkgdir/etc/$pkgname/env"
  install -D -m 640 "$srcdir/superset_config.py" "$pkgdir/etc/$pkgname/superset_config.py"
  install -D -m 644 "$srcdir/$pkgname.sysusers"  "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
@@ -61,7 +61,7 @@ import re
 def process_list(dependencies):
     print("depends=(")
     for dependency_py in dependencies:
-        dependency_arch = "python-" + re.sub(r"(python-|\[.*\]|>.*|=.*)", "", dependency_py.lower())
+        dependency_arch = "python-" + re.sub(r"(python-|\[.*\]|>.*|<.*|=.*)", "", dependency_py.lower())
         print(f'"{dependency_arch}"')
     print(")")
 
@@ -76,7 +76,7 @@ def process_dictionary(dictionary):
     for feature, dependencies in extras_require.items():
         print(f"# {feature}")
         for dependency_py in dependencies:
-            dependency_arch = "python-" + re.sub(r"(\s+|python-|\[.*\]|>.*|=.*)", "", dependency_py.lower())
+            dependency_arch = "python-" + re.sub(r"(\s+|python-|\[.*\]|>.*|<.*|=.*)", "", dependency_py.lower())
             print(f'"{dependency_arch}: for {feature}"')
         print(f"")
     print(")")
