@@ -3,11 +3,11 @@
 
 pkgname=vulkan-validation-layers-git
 pkgdesc='Vulkan Validation Layers (git version)'
-pkgver=1.3.275
+pkgver=1.3.277.r61.g7266a47
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/KhronosGroup/Vulkan-ValidationLayers'
-license=(Apache-2.0)
+license=(custom)
 makedepends=(cmake python-lxml libxrandr wayland git make)
 depends=(gcc-libs vulkan-icd-loader-git vulkan-headers-git vulkan-utility-libraries-git libx11)
 conflicts=(vulkan-validation-layers)
