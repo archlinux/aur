@@ -1,6 +1,6 @@
 # Maintainer: Gabriel Holmann <gholmann16 at gmail dot com> 
 pkgname=notes-gtk
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Simple gtk notepad"
 url="https://github.com/gholmann16/notes"
@@ -9,7 +9,7 @@ license=('GPL3')
 conflicts=('notes')
 depends=('gtk3' 'gtksourceview4')
 source=("https://github.com/gholmann16/notes/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('434ec6b63c6d5fce2d9adf2c1e772c42bec653f593869b5f758a83035286598c')
+sha256sums=('056a4ff1488d35f255949b74de24e88dfbf48d07b48acb3b617bc97f6b2ae08a')
 build() {
 	cd "Notes-$pkgver"
 	make release
