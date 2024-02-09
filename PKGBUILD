@@ -2,7 +2,7 @@
 pkgname=dexios-bin
 pkgver='8.8.1'
 pkgrel=1
-pkgdesc="Dexios is a fast, secure, and open source command-line encryption tool. It's written entirely in Rust and prioritises security, performance and convenience the most. It uses modern cryptographic AEADs (XChaCha20-Poly1305 + AES-256-GCM), with audited backends."
+pkgdesc="Dexios is a fast, secure, and open source command-line encryption tool. It's written entirely in Rust and uses modern cryptographic AEADs (XChaCha20-Poly1305 + AES-256-GCM), with audited backends."
 url="https://github.com/brxken128/dexios"
 source_x86_64=( "https://github.com/brxken128/dexios/releases/download/v$pkgver/dexios-linux-amd64" )
 arch=('x86_64')
