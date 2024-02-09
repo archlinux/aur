@@ -6,7 +6,7 @@ _gitver=demo-1.5.1
 
 pkgrel=1
 pkgdesc="Open source remake of Tails Adventure for modern platforms"
-url="https://github.com/mechakotik/TailsAdventure"
+url="https://github.com/mechakotik/tails-adventure"
 arch=('x86_64')
 license=('GPL')
 
