@@ -5,7 +5,6 @@ pkgname=${_name}5-cn
 base_pkgver=5.114.0
 pkgver=${base_pkgver}_20240209
 pkgrel=1
-epoch=1
 pkgdesc='KDE library for regional holiday information(CN)'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
@@ -19,10 +18,10 @@ provides=("kholidays5")
 groups=(kf5)
 source=(
     https://download.kde.org/stable/frameworks/${base_pkgver%.*}/$_name-$base_pkgver.tar.xz
-    https://github.com/0xcccccccccccc/kholidays_cn/releases/latest/download/holiday_cn_zh-cn
+    https://github.com/0xcccccccccccc/kholidays_cn/releases/20240209/download/holiday_cn_zh-cn
 )
 sha256sums=('be4af6625e80852cb7bc8cdbe2bdd56ccf3868644cbfb87d3494964f5f6f28a7'
-            '1b67c022cf0141c30f3b0b5ed3b46d75c16758d930f8eb3d6a571b1c25fc84c6')
+            '406e9a80edb51cdcc7a0116cd278a501deeb9d269bcb813b3cf3ccabefadfc7e')
 
 build() {
   cp $srcdir/holiday_cn_zh-cn $srcdir/kholidays-$base_pkgver/holidays/plan2/
