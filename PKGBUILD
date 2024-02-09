@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=glmGamPoi
-_pkgver=1.14.1
+_pkgver=1.14.2
 pkgname=r-${_pkgname,,}
-pkgver=1.14.1
+pkgver=1.14.2
 pkgrel=1
 pkgdesc='Fit a Gamma-Poisson Generalized Linear Model'
 arch=('x86_64')
@@ -48,7 +48,7 @@ optdepends=(
   r-zoo
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('93ec08c54dce33977c8f449f3d084511cbc605d7e427afb1079e4dd2d8d4bd88')
+sha256sums=('4d58996cae7afe4f2431361ac571623ea0455a350c841a9c9eba680d4cb98beb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
