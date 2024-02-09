@@ -1,7 +1,7 @@
 # Maintainer:  Maxim Novikov <the.mlex@gmail.com>
 
 pkgname=php-pdo-oci
-pkgver=8.0.7
+pkgver=8.2.14
 pkgrel=1
 _extname=pdo_oci
 pkgdesc="PDO driver for OCI8"
@@ -9,8 +9,8 @@ arch=('x86_64')
 url="https://github.com/php/php-src/tree/master/ext/pdo_oci"
 license=('PHP')
 depends=(
-    'php>=8.0.0'
-    'php-oci8>=3.0.1'   
+    'php>=8.2.0'
+    'php-oci8>=3.3.0'
 )
 conflicts=('php-pdo-oci-git')
 backup=('etc/php/conf.d/${_extname}.ini')
@@ -18,7 +18,7 @@ source=(
   "https://github.com/php/php-src/archive/php-${pkgver}.tar.gz"
   "patch.diff"
 )
-md5sums=('SKIP' 'SKIP')
+md5sums=('842d470dc47241bf2e4957c284735528' '74552b37da712404393cfca947c8e402')
 
 build() {
   
