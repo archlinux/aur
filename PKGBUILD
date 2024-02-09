@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggseqlogo
-_pkgver=0.1
+_pkgver=0.2
 pkgname=r-${_pkgname,,}
-pkgver=0.1
-pkgrel=4
+pkgver=0.2
+pkgrel=1
 pkgdesc="A 'ggplot2' Extension for Drawing Publication-Ready Sequence Logos"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,7 +18,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c14f145a982597f32264b37a5f2645206a0bee30dd2584a25cb8e3dc2f9b068f')
+sha256sums=('1cbfd532032dd51316a1fa084bc8cdabe5517bc6ce7b3abafc0d94340e6736b7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
