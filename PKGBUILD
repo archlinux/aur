@@ -3,24 +3,24 @@
 
 pkgname=pyupgrade
 pkgver=3.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to automatically upgrade syntax for newer versions of the language"
 arch=('any')
 url="https://github.com/asottile/pyupgrade"
 license=('MIT')
-depends=("python" "python-tokenize-rt")
-makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz")
-b2sums=('8a565510066236251c78e8ce62bef749dfcc2b4e4c1ee5b8c977461e4a7d3b6f1e39c1303343af8529ec7a2032d2c7d15e122f98f620a7671cfa47105a137554')
+depends=(python python-tokenize-rt)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+source=("$url/archive/v$pkgver.tar.gz")
+b2sums=('a13eca9d5591068355722e0cd0d16debce7c4d55fbce2759af9f0154cf5591beca20bc7e4551d6d707ef63deccf142e639229fb052063be68921c435731dd5ef')
 
 build() {
     cd $pkgname-$pkgver
-    python3 setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd $pkgname-$pkgver
-    python3 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
