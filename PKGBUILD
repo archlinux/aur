@@ -2,7 +2,7 @@
 
 pkgname=fav-git
 _pkgname="${pkgname%-git}"
-pkgver=v0.1.13.r8.gcec1db8
+pkgver=v0.1.13.r12.g7db1a38
 pkgrel=1
 pkgdesc='Back up your favorite bilibili resources with CLI'
 url="https://github.com/kingwingfly/${_pkgname}"
@@ -26,21 +26,24 @@ pkgver() {
 
 prepare() {
 	cd "$_pkgname"
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
+	cd "$_pkgname"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cd "$_pkgname"
-	cargo build --release --frozen
+	cargo build --release --frozen --all-features
 }
 
-#check() {
-# 	export RUSTUP_TOOLCHAIN=stable
+## check() cannot run automatically, it requires manual intervention.
+## And check() will not affect the build, so comment it out here.
+# check() {
 # 	cd "$_pkgname"
-# 	cargo test --frozen
-#}
+# 	export RUSTUP_TOOLCHAIN=stable
+# 	cargo test --frozen --all-features --workspace
+# }
 
 package() {
 	cd "$_pkgname"
