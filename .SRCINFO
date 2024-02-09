@@ -1,6 +1,6 @@
 pkgbase = bgbillingrunner
 	pkgdesc = Client runner for billing system BGBilling 8.0+
-	pkgver = 2306301233
+	pkgver = 2402091449
 	pkgrel = 1
 	url = http://bgbilling.ru
 	install = bgbillingrunner.install
