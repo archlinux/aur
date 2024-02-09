@@ -1,6 +1,6 @@
 # Maintainer: mpsijm
 pkgname=browsers-bin
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Open the right browser at the right time"
 arch=("x86_64")
@@ -10,7 +10,7 @@ provides=("browsers=$pkgver")
 conflicts=("browsers-git")
 # Make source file name unique: https://wiki.archlinux.org/title/PKGBUILD#source
 source=("browsers_linux-$pkgver.tar.xz::https://github.com/Browsers-software/browsers/releases/download/$pkgver/browsers_linux.tar.xz")
-sha256sums=("21a229adb9facb87b7cc7fc495ed45d3fc009a044afab87fe3fc297bbec863b6")
+sha256sums=("eaf359dcbe380e4f45b111917982d763392b8ab1284fcfe49a2f2675e6f5441a")
 
 package() {
   bsdtar -xf "$srcdir/browsers_linux-$pkgver.tar.xz" -C "$srcdir"
@@ -18,9 +18,6 @@ package() {
   # install.sh assumes it's installing in /usr/local, so replace paths by $pkgdir/usr
   sed -Ei "s|=\"/usr(\/local)?|=\"$pkgdir\/usr|" "$srcdir/install.sh"
   mkdir -p "$pkgdir/usr/share/icons/hicolor"
-
-  # Remove --rebuild-mime-info-cache flag from install.sh (see comment below)
-  sed -Ei "s|--rebuild-mime-info-cache ||" "$srcdir/install.sh"
 
   # Run install.sh with updated root and --skip-desktop-database.
   # Since install.sh would (by default) update the mime database, this would generate conflicts in mimeinfo.cache,
