@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=SIGIL (Compatibility Mode)
+GenericName=SIGIL Megawad Compatibility Mode
+Comment=Play SIGIL in compatibility mode, suitable for classic Doom engines
+Type=Application
+Icon=sigil
+Exec=xdg-open /usr/share/doom/sigil_compat.wad
+MimeType=application/x-doom-wad;
+Keywords=Doom;Game;
+Terminal=false
+Categories=Game;ActionGame;
