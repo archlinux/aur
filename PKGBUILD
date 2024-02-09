@@ -3,7 +3,7 @@
 _emscripten_version="1.40.1"
 
 pkgname="gr-framework-js-git"
-pkgver="0.73.2.r41.g9e099aa3"
+pkgver="0.73.2.r43.gedf4ade6"
 pkgrel="1"
 pkgdesc="A universal framework for cross-platform visualization applications."
 arch=("any")
