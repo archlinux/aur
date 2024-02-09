@@ -1,8 +1,8 @@
 pkgbase = vfrflight-bin
 	pkgdesc = Tool for VFR flight planning developed by real world private pilot. Can be used for real world flight planning and trainings in FSX / FSX:SE / Prepar3D / X-Plane 10/11 and FlightGear.
 	pkgver = 2.3.1
-	pkgrel = 3
-	url = http://vfrflight.org
+	pkgrel = 4
+	url = http://web.archive.org/web/20230520051005/http://vfrflight.org/en/index.html
 	arch = any
 	license = custom
 	depends = bash
@@ -10,7 +10,7 @@ pkgbase = vfrflight-bin
 	optdepends = flightgear-addon-vfrflight: For communication between flightgear and vfrflight.
 	provides = vfrflight=2.3.1
 	conflicts = vfrflight
-	source = http://vfrflight.org/files/VfrFlight-2.3.1.zip
+	source = http://web.archive.org/web/20231214121430/http://vfrflight.org/files/VfrFlight-2.3.1.zip
 	source = vfrflight.sh
 	source = TERMS_OF_USE.txt
 	sha256sums = ba005989c01d09f6d802510e327b997d811557d08e2988f7441df8d7f52c4b76
@@ -18,4 +18,3 @@ pkgbase = vfrflight-bin
 	sha256sums = 62322af524e2448f04ea289d9881a31ed87e4ba4dbca22e643ec4b2c831c17dd
 
 pkgname = vfrflight-bin
-
