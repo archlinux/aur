@@ -1,12 +1,14 @@
 pkgbase = perl-prometheus-tiny
 	pkgdesc = A tiny Prometheus client
 	pkgver = 0.011
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Prometheus-Tiny
 	arch = any
 	license = GPL
 	license = PerlArtistic
 	checkdepends = perl-plack
+	checkdepends = perl-test-exception
+	checkdepends = perl-test-warn
 	depends = perl
 	options = !emptydirs
 	source = http://cpan.perl.org/modules/by-module/Prometheus/Prometheus-Tiny-0.011.tar.gz
