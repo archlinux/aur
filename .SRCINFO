@@ -1,15 +1,16 @@
 pkgbase = python-polyline
-	pkgdesc = Python implementation of Google's Encoded Polyline Algorithm Format.
-	pkgver = 1.4.0
+	pkgdesc = A Python implementation of Google's Encoded Polyline Algorithm Format
+	pkgver = 2.0.1
 	pkgrel = 1
-	url = https://github.com/hicsail/polyline
+	url = https://github.com/frederickjansen/polyline
 	arch = any
 	license = MIT
-	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	depends = python
-	source = git+https://github.com/hicsail/polyline#tag=v1.4.0
-	sha256sums = SKIP
+	makedepends = python-wheel
+	options = !strip
+	source = https://pypi.org/packages/source/p/polyline/polyline-2.0.1.tar.gz
+	b2sums = b83167496a23fce2a8c3318ecec3d7a319e136c14e70d63761fabc88927b7825bda80210b16f0555e726a2541a21235a638cb91670dc68201a2f2e682ad7023b
 
 pkgname = python-polyline
-
