@@ -2,7 +2,7 @@
 
 _gemname=flay
 pkgname=ruby-$_gemname
-pkgver=2.13.0
+pkgver=2.13.2
 pkgrel=1
 pkgdesc="Analyzes code for structural similarities"
 arch=(any)
@@ -12,9 +12,9 @@ options=(!emptydirs)
 depends=(ruby ruby-erubi ruby-path_expander ruby-ruby2ruby ruby-ruby_parser
          ruby-sexp_processor)
 checkdepends=(ruby-minitest)
-makedepends=(ruby-rdoc ruby-hoe rubygems)
+makedepends=(ruby-hoe ruby-rdoc rubygems)
 source=(${url}/archive/v${pkgver}/$_gemname-$pkgver.tar.gz)
-sha256sums=('dd612bbcddae6171975841049ea036d9308e3d09c0cb241202e80d0c5e9508a9')
+sha256sums=('f0b022a50477b00513c57ce60cd17040a67e476683f4f94194f5d5a2500de2f5')
 
 prepare() {
   cd $_gemname-$pkgver
