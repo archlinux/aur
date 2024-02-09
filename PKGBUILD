@@ -2,7 +2,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=vivaldi-snapshot-ffmpeg-codecs
-pkgver=120.0.6099.203
+pkgver=122.0.6261.21
 _vivaldi_major_version=6.6
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for vivaldi"
@@ -16,7 +16,7 @@ makedepends=(
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
 )
-sha512sums=('8a4a6af7c398355743ecd877c48bd29ed76b26e17929875e42e917c933def83d1ba5ef6f16faffc9cd9fc10eaddc972a7c0a172ff2b018c78e9d5f050b60d176')
+sha512sums=('4315c56b8704b32e72bdd7a771b184e6b24f13e7498c0ff68732abbbc3ce34027734911abd6fcb43946558e1eae9dc0bc569b543011eade8cf60414205c25bb1')
 
 #prepare() {
   #cd "$srcdir/chromium-$pkgver"
@@ -43,7 +43,7 @@ _ffmpeg_build_flags=(
 build() {
   cd "$srcdir/chromium-$pkgver"
 
-  # chromium clang
+  # chromium clang and rust
   python tools/clang/scripts/update.py
   python tools/rust/update_rust.py
 
