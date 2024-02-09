@@ -1,7 +1,7 @@
 pkgbase = nautilus-open-any-terminal
 	pkgdesc = context-menu entry for opening other terminal in nautilus
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Stunkymonkey/nautilus-open-any-terminal
 	arch = any
 	license = GPL3

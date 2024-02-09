@@ -2,7 +2,7 @@
 
 pkgname=nautilus-open-any-terminal
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="context-menu entry for opening other terminal in nautilus"
 arch=(any)
 url="https://github.com/Stunkymonkey/nautilus-open-any-terminal"
@@ -24,6 +24,11 @@ build() {
 }
 
 package() {
-  cd $pkgname
-  python3 setup.py install --root="$pkgdir" --optimize=1
+  cd "${pkgname}"
+
+  python3 setup.py install --root "${pkgdir}" --home /usr
+
+  # Don't install the module
+  rm -rf "${pkgdir}/usr/lib"
+  find "${pkgdir}" -name "__pycache__" -type d -exec rm -rf {} +
 }
