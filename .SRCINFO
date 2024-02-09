@@ -1,6 +1,6 @@
 pkgbase = kumi-git
 	pkgdesc = C++20 Compact Tuple Tools
-	pkgver = v3.0.r31.gea96213
+	pkgver = 3.0.r45.g26b6da5
 	pkgrel = 1
 	url = https://github.com/jfalcou/kumi
 	arch = any
