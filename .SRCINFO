@@ -1,15 +1,15 @@
 pkgbase = en-croissant-appimage
 	pkgdesc = A Modern Chess Database
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/franciscoBSalgueiro/en-croissant
 	arch = x86_64
 	license = GPL-3.0
 	depends = zlib
 	depends = hicolor-icon-theme
-	noextract = en-croissant-appimage-0.8.0.AppImage
+	noextract = en-croissant-appimage-0.9.0.AppImage
 	options = !strip
-	source_x86_64 = en-croissant-appimage-0.8.0.AppImage::https://github.com/franciscoBSalgueiro/en-croissant/releases/download/v0.8.0/en-croissant_0.8.0_amd64.AppImage
-	sha256sums_x86_64 = c135d68ea4f0bf4bff08ab275fee5f8adaafd29d7af12cf16742468bd9bd7f41
+	source_x86_64 = en-croissant-appimage-0.9.0.AppImage::https://github.com/franciscoBSalgueiro/en-croissant/releases/download/v0.9.0/en-croissant_0.9.0_amd64.AppImage
+	sha256sums_x86_64 = 4e3d760ca28358a126dfc45924a2fad14b223ac18b7c7641053a40adbe0f822f
 
 pkgname = en-croissant-appimage
