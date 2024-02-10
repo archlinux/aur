@@ -1,8 +1,8 @@
 # Maintainer: Ersei <contact at ersei dot net>
 # Contributer: Paul <paul@mrarm.io>
 pkgname=mcpelauncher-ui-git
-pkgver=v0.3.2.r6.g485df2e
-pkgrel=3
+pkgver=0.11.0.r8.gd56d29b
+pkgrel=1
 pkgdesc="Minecraft: PE Linux launcher UI"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-ui-manifest"
@@ -35,8 +35,7 @@ md5sums=(
 )
 
 pkgver() {
-  cd "mcpelauncher-ui-manifest"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C mcpelauncher-ui-manifest describe --long --tags | sed 's/^v//;s/.qt6//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 prepare() {
   cd mcpelauncher-ui-manifest

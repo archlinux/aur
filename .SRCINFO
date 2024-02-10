@@ -1,6 +1,6 @@
 pkgbase = mcpelauncher-ui-git
 	pkgdesc = Minecraft: PE Linux launcher UI
-	pkgver = 0.11.0.qt6.r4.g348a805
+	pkgver = 0.11.0.r8.gd56d29b
 	pkgrel = 1
 	url = https://github.com/minecraft-linux/mcpelauncher-ui-manifest
 	arch = x86_64
