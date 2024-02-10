@@ -6,7 +6,7 @@
 # https://github.com/phnx47/pkgbuilds
 
 pkgname=jetbrains-fleet
-pkgver=1.29.216
+pkgver=1.30.83
 pkgrel=1
 pkgdesc="Next-generation IDE by JetBrains"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ source_x86_64=("${pkgname}-${pkgver}-${arch[0]}.tar.gz::https://download-cdn.jet
 source_aarch64=("${pkgname}-${pkgver}-${arch[1]}.tar.gz::https://download-cdn.jetbrains.com/fleet/installers/linux_${arch[1]}/Fleet-${pkgver}-${arch[1]}.tar.gz")
 sha256sums=('af62a597c595edc5b4a8ea3f80ab0a18ea953bfc2d4feaf30e41c6e0dd23d426'
             'db26ca1fd026fbacfeb87f4bad42d78b3512bb733ce1c566bdd5b751e77d7bb3')
-sha256sums_x86_64=('2b01af33193dbbd6cb24d201ca9c91c6d85ec9fb3e6cd22fb6dba9a59500c90e')
-sha256sums_aarch64=('69334b0e0d4c90df87a708246d34ceee242d307e126e48520cf48e5204bd6661')
+sha256sums_x86_64=('943f2fcfa4422696c1750af43cb4c5ef43068811a4f25a5ce3484c02c78a2711')
+sha256sums_aarch64=('237d2c779bc516b1ba8fb47f7e002abc8688d849f733b02514da2d58d1feb91b')
 
 package() {
   install -dm 755 "${pkgdir}/opt/${pkgname}"
