@@ -2,13 +2,15 @@
 
 pkgname="perl-clone-choose"
 pkgver="0.010"
-pkgrel="1"
-pkgdesc="choose appropriate clone utility  "
+pkgrel="2"
+pkgdesc="choose appropriate clone utility"
 arch=("any")
 license=("PerlArtistic" "GPL")
 options=("!emptydirs")
-makedepends=('perl-test-without-module')
-url="http://search.cpan.org/dist/Clone-Choose"
+depends=('perl')
+checkdepends=('perl-test-without-module' 'perl-clone' 'perl-clone-pp')
+optdepends=('perl-clone')
+url="https://metacpan.org/dist/Clone-Choose"
 source=("https://cpan.metacpan.org/authors/id/H/HE/HERMES/Clone-Choose-${pkgver}.tar.gz")
 sha512sums=('5dbcd1b031ddbdaff81c46c5a48eb51b31bfe451e0777dc88a107d2b104e8708f08a5717a0f82f4d03efb8610e2b42fcb2dc1269e3262ece16b9a503d606face')
 
