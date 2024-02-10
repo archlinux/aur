@@ -5,7 +5,7 @@
 
 pkgname=clang17
 pkgver=17.0.6
-pkgrel=6
+pkgrel=7
 pkgdesc="C language family frontend for LLVM 17"
 arch=('x86_64')
 url="https://clang.llvm.org/"
