@@ -42,6 +42,7 @@ optdepends=('cuda: CUDA support in Cycles'
 makedepends+=('git' 'cmake' 'boost' 'mesa' 'llvm' 'clang' 'subversion')
 makedepends+=('wayland-protocols')
 makedepends+=('cython')
+makedepends+=('vulkan-headers')
 provides=('blender')
 conflicts=('blender' 'blender-4.1-bin')
 license=('GPL')

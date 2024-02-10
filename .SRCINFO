@@ -15,6 +15,7 @@ pkgbase = blender-git
 	makedepends = subversion
 	makedepends = wayland-protocols
 	makedepends = cython
+	makedepends = vulkan-headers
 	depends = alembic
 	depends = embree
 	depends = libgl
