@@ -1,10 +1,10 @@
 pkgbase = r-ggthemes
 	pkgdesc = Extra Themes, Scales and Geoms for 'ggplot2'
-	pkgver = 5.0.0
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggthemes
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	checkdepends = r-dplyr
 	checkdepends = r-testthat
 	checkdepends = r-vdiffr
@@ -29,11 +29,10 @@ pkgbase = r-ggthemes
 	optdepends = r-spelling
 	optdepends = r-testthat
 	optdepends = r-tidyr
-	optdepends = r-v8
 	optdepends = r-vdiffr
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/ggthemes_5.0.0.tar.gz
-	md5sums = eebc703683b4536514197ec246b4fbd5
-	sha256sums = 56a913c9018afdff34f05031e0d79f4422dcf72b50c24529c0b7c8d519edadc5
+	source = https://cran.r-project.org/src/contrib/ggthemes_5.1.0.tar.gz
+	md5sums = 9491e966073dd9aac9c0356717a31662
+	b2sums = 39b71e02bcec780e1600fb1cd8ff44eb3cc032545b043217d0e85c186567c68b999e455b903ba649ab3464b447bdeed3ba599d6bb10dd07df682c353261f0ff7
 
 pkgname = r-ggthemes

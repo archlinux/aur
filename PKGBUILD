@@ -3,14 +3,14 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggthemes
-_pkgver=5.0.0
+_pkgver=5.1.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Extra Themes, Scales and Geoms for 'ggplot2'"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL2)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r-ggplot2
   r-lifecycle
@@ -40,17 +40,16 @@ optdepends=(
   r-spelling
   r-testthat
   r-tidyr
-  r-v8
   r-vdiffr
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('eebc703683b4536514197ec246b4fbd5')
-sha256sums=('56a913c9018afdff34f05031e0d79f4422dcf72b50c24529c0b7c8d519edadc5')
+md5sums=('9491e966073dd9aac9c0356717a31662')
+b2sums=('39b71e02bcec780e1600fb1cd8ff44eb3cc032545b043217d0e85c186567c68b999e455b903ba649ab3464b447bdeed3ba599d6bb10dd07df682c353261f0ff7')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
