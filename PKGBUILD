@@ -8,7 +8,7 @@ pkgdesc="Nextcloud Talk Desktop client based on Nextcloud Talk web application b
 arch=('x86_64')
 url="https://github.com/nextcloud/talk-desktop"
 license=('AGPL-3.0-only')
-provides=('nextcloud-talk-dekstop')
+provides=('nextcloud-talk-desktop')
 
 depends=()
 optdepends=()
