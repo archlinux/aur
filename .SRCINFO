@@ -1,7 +1,7 @@
 pkgbase = openlp-git
 	pkgdesc = Church presentation software.
-	pkgver = r17137.ff0605cb2
-	pkgrel = 3
+	pkgver = r17865.8c3d9b574
+	pkgrel = 1
 	url = http://openlp.org/
 	install = openlp.install
 	arch = any

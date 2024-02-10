@@ -4,8 +4,8 @@
 
 pkgname=openlp-git
 _pkgbase=openlp
-pkgver=r17137.ff0605cb2
-pkgrel=3
+pkgver=r17865.8c3d9b574
+pkgrel=1
 pkgdesc="Church presentation software."
 arch=('any')
 url='http://openlp.org/'
