@@ -9,7 +9,7 @@ arch=("x86_64")
 provides=("findex")
 conflicts=("findex")
 source=("https://github.com/mdgaziur/findex/releases/download/v$pkgver/findex-$pkgver-x86_64.tar.gz")
-sha256sums=('b8dbb97a6c1b6de638ce18c50c4b6dc7d35fa921f37903a5c2f0fb98ebec3c8c')
+sha256sums=('cbc751f6301597e12a76625f0db9472f291194cf6bc0e61d2f80f03e624caeda')
 install=post_install.install
 depends=("gtk3" "libkeybinder3")
 
