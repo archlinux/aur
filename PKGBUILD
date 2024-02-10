@@ -1,4 +1,5 @@
-# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Maintainer: Alexander Epaneshnikov <alex19ep@archlinux.org>
+# Contributor: Vincent Grande <shoober420@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
