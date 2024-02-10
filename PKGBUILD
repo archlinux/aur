@@ -1,12 +1,13 @@
-# Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
+# Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=emacs-moonscript-mode
-pkgver=r6.5b45c30
+pkgver=r39.56f9047
 pkgrel=1
 pkgdesc="Emacs major mode for the MoonScript programming language"
 arch=('any')
 url="https://github.com/k2052/moonscript-mode"
 license=('MIT')
 depends=('emacs')
+makedepends=('git')
 install=$pkgname.install
 source=('git+https://github.com/k2052/moonscript-mode.git')
 md5sums=('SKIP')
@@ -21,8 +22,8 @@ build() {
   cd $srcdir/$_pkgname
   emacs --batch --eval '(progn
 			(push "." load-path)
-			(byte-compile-file "moonscript-mode.el")
- 			(byte-compile-file "moonscriptrepl-mode.el"))'
+			(byte-compile-file "moonscript.el")
+			(byte-compile-file "moonscript-repl.el"))'
 }
 
 package() {
