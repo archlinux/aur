@@ -2,7 +2,7 @@
 # Contributor: Kenneth Flak <kennethflak@protonmail.com>
 
 pkgname=touchosc-bin
-pkgver=1.2.7.190
+pkgver=1.2.8.194
 pkgrel=1
 pkgdesc='Modular control surface'
 arch=('x86_64' 'armv7l' 'aarch64')
@@ -11,9 +11,9 @@ license=(custom:TouchOSC)
 source_x86_64=("https://hexler.net/pub/touchosc/touchosc-$pkgver-linux-x64.deb")
 source_armv7l=("https://hexler.net/pub/touchosc/touchosc-$pkgver-linux-armhf.deb")
 source_aarch64=("https://hexler.net/pub/touchosc/touchosc-$pkgver-linux-arm64.deb")
-sha256sums_x86_64=('2dd30314d1c858171a01ffaad893ce9bc32ab64690fba0ebaea932aeba71e8c3')
-sha256sums_armv7l=('c79ce97ae2047e29a21a633d6160526979272197693bd47342313f6d832dd7a8')
-sha256sums_aarch64=('554b13d789a20240a36865b072c444060779ba128b3881da1fdfe37d0102559e')
+sha256sums_x86_64=('ce2270bd2eda924baf7f790c9811510ca25fccf92776e14c7fda3f0850663706')
+sha256sums_armv7l=('c6944cd9411ef93d86fc90048c32f80e6e25e67a8c3766f99a86292cdb64f9a9')
+sha256sums_aarch64=('b87d734686fd08ff1a69529eb563f53f89644c8dbb39f81512d90e9118685e2c')
 
 package() {
 
