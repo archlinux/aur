@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=writexl
-_pkgver=1.4.2
+_pkgver=1.5.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Export Data Frames to Excel 'xlsx' Format"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -21,8 +21,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a3aa61175d96072a56932d739d66735f')
-b2sums=('3e97ae4b8f0006a6311f0a13cfd96e88bcfd517a036123c7da3384f21b670b08830d44ebc41d00b089d4ddcc199633bde3ffc723524f6f9200241bae60097fd5')
+md5sums=('17dacf647864aed0b745bdd174601b4c')
+b2sums=('7cde22f854c7b511ca660f4578bef7e787842eb77f0ae4d4558abd150a47186bcf1bc43cfe6a3cc70d7b12c6676c91fa79fd8fcd9e8fba0f726e6ecc679edbe4')
 
 build() {
   mkdir build
