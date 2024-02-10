@@ -1,6 +1,6 @@
 pkgbase = kmediaplayer
 	pkgdesc = Plugin interface for media player features
-	pkgver = 5.114.0
+	pkgver = 5.115.0
 	pkgrel = 1
 	url = https://invent.kde.org/frameworks/kmediaplayer
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = kmediaplayer
 	depends = kparts5
 	depends = kxmlgui5
 	depends = qt5-base
-	source = https://invent.kde.org/frameworks/kmediaplayer/-/archive/v5.114.0/kmediaplayer-v5.114.0.tar.bz2
-	sha256sums = d6e2db6d630f0f60f11726a5e118fb08b261a3df7181f75aec51bc146900ea65
+	source = https://invent.kde.org/frameworks/kmediaplayer/-/archive/v5.115.0/kmediaplayer-v5.115.0.tar.bz2
+	sha256sums = 18168c30167f1d0b19bcf5b992c9e9c11755cf732391475ce51132d35b886e8b
 
 pkgname = kmediaplayer
