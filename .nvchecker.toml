@@ -1,0 +1,3 @@
+[python-dockerpty]
+source = "pypi"
+pypi = "dockerpty"
