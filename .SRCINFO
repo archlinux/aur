@@ -1,7 +1,7 @@
 pkgbase = numen
 	pkgdesc = Voice control for handsfree computing
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~geb/numen
 	arch = i686
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Robert Hamblin <hamblingreen@hotmail.com>
 pkgname=numen
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Voice control for handsfree computing"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://git.sr.ht/~geb/numen"
@@ -23,8 +23,8 @@ package() {
   cd "$pkgname-$pkgver"
 
   # Install binaries
-  mkdir -p "$pkgdir/usr/local/bin"
-  install numen numenc "$pkgdir/usr/local/bin/"
+  mkdir -p "$pkgdir/usr/bin"
+  install numen numenc "$pkgdir/usr/bin/"
 
   # Install scripts used in default phrases
   mkdir -p "$pkgdir/etc/numen/scripts/"
