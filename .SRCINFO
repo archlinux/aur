@@ -7,6 +7,7 @@ pkgbase = nmead-git
 	arch = x86_64
 	arch = arm
 	license = GPL3
+	makedepends = git
 	backup = etc/conf.d/nmead
 	source = nmead::git+https://github.com/chriscokid/nmead.git
 	source = nmead.service

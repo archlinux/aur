@@ -6,6 +6,7 @@ pkgdesc='Service that distributes NMEA data over the network'
 arch=('i686' 'x86_64' 'arm')
 url='https://github.com/chriscokid/nmead'
 license=('GPL3')
+makedepends=('git')
 source=("${pkgname%-git}::git+https://github.com/chriscokid/nmead.git"
 	nmead.service nmead.conf.d)
 backup=('etc/conf.d/nmead')
