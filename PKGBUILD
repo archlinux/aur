@@ -16,11 +16,9 @@ replaces=()
 backup=()
 options=()
 install=
-source=("${pkgname%-git}::git+https://github.com/ShellShoccar-jpn/misc-tools"
-	'rename-coreutils-util-linux.patch')
+source=("${pkgname%-git}::git+https://github.com/ShellShoccar-jpn/misc-tools")
 noextract=()
-md5sums=('SKIP'
-	'80df841296beaa5144df620f19e941f9')
+md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -31,16 +29,32 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
-	patch -p1 < "$srcdir"/rename-coreutils-util-linux.patch
-	chmod a+x misc-tools-*
+
+	# Rename coreutils things
+	mv base64 misc-tools-base64
+	mv mktemp misc-tools-mktemp
+	mv seq misc-tools-seq
+	mv truncate misc-tools-truncate
+	mv C_SRC/sleep.c C_SRC/misc-tools-sleep.c
+
+	# Rename util-linux things
+	mv rev misc-tools-rev
+
+	# We don't need these things
+	rm *.tmp *.old
+
+	# TODO: fsed confliction against open-usp-tukubai
 }
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
 
-# build C programs
+
+	# build C programs
 	cd C_SRC
+	chmod a+x MAKE.sh
 	./MAKE.sh
+	chmod a-x MAKE.sh
 }
 
 package() {
@@ -49,9 +63,6 @@ package() {
 	# list what to export
 	for x in ./* ./C_SRC/*; do
 		[[ -f $x && -x $x ]] || continue
-
-		# should be updated when upstream repo's policy is changed
-		case "$x" in *MAKE.sh|*.tmp|*.old) continue;; esac
 
 		# finally
 		install -Dm0755 -t "$pkgdir/usr/bin/" "$x"

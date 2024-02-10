@@ -10,8 +10,6 @@ pkgbase = misc-tools-git
 	provides = misc-tools
 	conflicts = misc-tools
 	source = misc-tools::git+https://github.com/ShellShoccar-jpn/misc-tools
-	source = rename-coreutils-util-linux.patch
 	md5sums = SKIP
-	md5sums = 80df841296beaa5144df620f19e941f9
 
 pkgname = misc-tools-git
