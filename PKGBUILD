@@ -3,12 +3,12 @@
 pkgname=loudgain
 pkgver=v0.6.8
 _pkgver=0.6.8
-pkgrel=4
+pkgrel=5
 pkgdesc="A loudness normalizer that scans music files and calculates loudness-normalized gain and loudness peak values according to the EBU R128 standard, and can optionally write ReplayGain-compatible metadata."
 url="https://github.com/Moonbase59/loudgain"
 arch=('i686' 'x86_64')
 license=('BSD 2-Clause "Simplified" License')
-depends=("taglib" "libebur128" "ffmpeg")
+depends=("taglib1" "libebur128" "ffmpeg")
 makedepends=('cmake')
 provides=('loudgain' 'rgbpm')
 source=("loudgain-${_pkgver}.tar.gz::https://github.com/Moonbase59/loudgain/archive/${pkgver}.tar.gz"
@@ -27,8 +27,11 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}-${_pkgver}"
   mkdir -p build && cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  env LIBRARY_PATH="/usr/lib/taglib1/lib/" \
+    PKG_CONFIG_PATH="/usr/lib/taglib1/lib/pkgconfig" \
+    cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+  env LIBRARY_PATH="/usr/lib/taglib1/lib/" \
+    make
 }
 
 package() {
