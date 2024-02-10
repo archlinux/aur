@@ -1,4 +1,5 @@
-# Maintainer: Christian Hesse <mail@eworm.de>
+# Maintainer: Nicolas Lorin <androw95220@gmail.com>
+# Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 
 pkgname=libcgroup
