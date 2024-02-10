@@ -1,4 +1,4 @@
-From 6348127c6de9af3183de0c02dcbf3e84c5e1dfb0 Mon Sep 17 00:00:00 2001
+From 2f989950794f4f23b36279e070929897b11088e0 Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Thu, 28 Sep 2023 14:16:04 +0300
 Subject: [PATCH 6/6] AUR: Fix hwnd redefinition
