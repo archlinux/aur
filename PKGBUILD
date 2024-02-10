@@ -4,7 +4,7 @@
 # Contributor: kikadf <kikadf.01@gmail.com>
 
 pkgname=mir
-pkgver=2.15.0
+pkgver=2.16.3
 pkgrel=1
 pkgdesc="Canonical's display server"
 url='https://mir-server.io'
@@ -17,7 +17,7 @@ optdepends=('qterminal: required for miral demos'
             'qt5-wayland: required for miral demos'
             'xcursor-dmz: opt requirement for miral demos')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MirServer/mir/archive/v${pkgver}.tar.gz")
-sha256sums=('7d3b7be1402687e8e75eef1814ce5943dccefa253a8a9db1066f8a42cdf39bcf')
+sha256sums=('d0128d3061e72fc4cba811267e6ad988563f1a24487d8752d643abdcaa75272d')
 
 BUILD_DIR=build
 
