@@ -1,7 +1,7 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Sam <dev at samarthj dot com>
 pkgname=pyinstaller-hooks-contrib
-pkgver=2024.0
+pkgver=2024.1
 pkgrel=1
 pkgdesc="Community maintained hooks for PyInstaller"
 arch=('any')
@@ -45,7 +45,7 @@ optdepends=(
 #  'python-execnet>=1.5.0'
 #)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('cd21415348012e4f7a39bccc6de8f2f43bb10c031d5371d974b453f31d5fa7a2')
+sha256sums=('bbbc3eac5d35bf3b5cb3fb2992053b9394f123559ccdd2090b5e49e993c9b4ba')
 
 build() {
   cd "$pkgname-$pkgver"
