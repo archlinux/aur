@@ -1,4 +1,4 @@
 *.pkg.*
 pkg/
 src/
-paho.mqtt.c/
+paho-mqtt-c/

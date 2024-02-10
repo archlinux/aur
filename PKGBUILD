@@ -1,54 +1,50 @@
 # Maintainer: Cody P Schafer <archlinux at codyps.com>
+# Maintainer: Juergen Werner <pogojotz at gmx dot net>
 # Contributor: Martchus <martchus@gmx.net>
 
 _bpn=paho-mqtt-c
 pkgname=${_bpn}-git
-pkgver=1.3.2.r3.g031a7b9
+pkgver=1.3.13.r11.g6b1e202
 pkgrel=1
-pkgdesc="A fully fledged MQTT client written in ANSI standard C"
+pkgdesc="Eclipse Paho C Client Library for the MQTT Protocol"
 arch=(any)
 url="https://www.eclipse.org/paho/clients/c/"
-license=('EPL')
+license=('custom:EPL2' 'custom:EDL')
 groups=()
-depends=()
+depends=('openssl')
 makedepends=(git doxygen)
 provides=(${_bpn})
 conflicts=(${_bpn})
 replaces=()
 backup=()
-options=(!emptydirs !makeflags)
+options=(!emptydirs)
 install=
-source=(
-  "git+https://github.com/eclipse/paho.mqtt.c.git"
-  file://0001-make-pull-out-optimization-debug-flags.patch
-  file://0002-make-make-all-dirs-required-in-install.patch
-  file://0003-Fix-Makefile-install-target.patch
-)
-md5sums=('SKIP'
-         '0e7b4c41a65be1732f8bb55fea73b083'
-         '6a0500782fc9a5325aba7d37a7af21c7'
-         'ab05e295452ab6ac96566cd9e36106c9')
+source=("$_bpn::git+https://github.com/eclipse/paho.mqtt.c.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/paho.mqtt.c"
+  cd "$_bpn"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/paho.mqtt.c"
-  patch -Np1 <"$srcdir/0001-make-pull-out-optimization-debug-flags.patch"
-  patch -Np1 <"$srcdir/0002-make-make-all-dirs-required-in-install.patch"
-  patch -Np1 <"$srcdir/0003-Fix-Makefile-install-target.patch"
+  rm -rf build
+  mkdir -p build
 }
 
 build() {
-  cd "$srcdir/paho.mqtt.c"
-  make prefix=/usr
+  cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr \
+    -DPAHO_WITH_SSL=TRUE -DPAHO_ENABLE_TESTING=FALSE \
+    -S $_bpn -B build
+  cmake --build build
 }
 
 package() {
-  cd "$srcdir/paho.mqtt.c"
-  make prefix=/usr DESTDIR="$pkgdir/" LDCONFIG=echo install
-}
+  cmake --build build --target install -- DESTDIR="$pkgdir/"
 
+  cd $_bpn
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 edl-v10 "${pkgdir}/usr/share/licenses/${pkgname}/edl-v10"
+  install -Dm644 epl-v20 "${pkgdir}/usr/share/licenses/${pkgname}/epl-v20"
+}
 # vim:set ts=2 sw=2 et:
