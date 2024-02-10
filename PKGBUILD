@@ -5,7 +5,7 @@
 # Contributor: iboyperson <tjquillan at gmail dot com>
 # Contributor: Alessandro Pazzaglia <jackdroido at gmail dot com>
 pkgname=pyinstaller
-pkgver=6.3.0
+pkgver=6.4.0
 pkgrel=1
 pkgdesc="Bundles a Python application and all its dependencies into a single package"
 arch=('x86_64')
@@ -31,7 +31,7 @@ checkdepends=(
 )
 optdepends=('python-argcomplete: tab completion for CLI tools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pyinstaller/pyinstaller/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4be64e504f51d7272a3669f62e786e673051e3beabadf3dae3e09a44e38d2919')
+sha256sums=('3e74671b208d41d201c4ef255f5fe0a384d805f07d1ea6921572aa4971660a58')
 
 prepare() {
   cd "$pkgname-$pkgver"
