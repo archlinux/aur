@@ -8,7 +8,7 @@
 
 pkgname=flexget
 _pkgname=Flexget
-pkgver=3.11.15
+pkgver=3.11.17
 pkgrel=1
 pkgdesc="Multipurpose automation tool for downloading media content from different sources"
 arch=(any)
@@ -77,14 +77,13 @@ optdepends=(
   'python-rarfile: decompress plugin'
   'python-transmissionrpc: Transmission support'
 )
-
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   "flexget.service"
   "flexget@.service"
 )
 sha256sums=(
-  '2d15815775ca41b107b18ee797594a60094a22c885d8717c0e32e3bc96be6067'
+  '793806c65a104e7133352a75c3eb16a8266edb0d90386b0394659c54c89b6e05'
   '117de8d5cbe0ac53ecd3be3e579f2cfa62ef186ab36e382f857059380447c5aa'
   'aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a'
 )
