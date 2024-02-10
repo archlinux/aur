@@ -1,6 +1,6 @@
 pkgbase = mythtv-git
 	pkgdesc = A Homebrew PVR project (Stable '-fixes' branch)
-	pkgver = 33.1.r30.g512d723c83
+	pkgver = 34.0.r1.gf3f012aa3f
 	pkgrel = 1
 	url = https://www.mythtv.org/
 	arch = x86_64
@@ -70,7 +70,7 @@ pkgbase = mythtv-git
 	provides = mythtv
 	conflicts = mythtv
 	options = !lto
-	source = git+https://github.com/MythTV/mythtv#branch=fixes/33
+	source = git+https://github.com/MythTV/mythtv#branch=fixes/34
 	source = mythbackend.service
 	source = mythtv.desktop
 	source = mythtv.png
