@@ -13,8 +13,8 @@ fi
 # basic info
 _pkgname="mercury-browser"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=121.0.1
-pkgrel=3
+pkgver=122.0.2
+pkgrel=1
 pkgdesc="Compiler optimized, private Firefox fork"
 url="https://github.com/Alex313031/Mercury"
 license=('MPL-2.0')
@@ -34,24 +34,17 @@ _main_package() {
   options=('!emptydirs' '!strip')
   install="$_pkgname.install"
 
-  : ${_dl_filename:=${_pkgname}_${_pkgver:?}_amd64.deb}
+  : ${_dl_filename:=${_pkgname}_${_pkgver:?}_SSE3.deb}
   : ${_dl_url:=$url/releases/download/v.$_pkgver/$_dl_filename}
 
   noextract+=("$_dl_filename")
-  source=(
-    "$_dl_filename"::"$_dl_url"
-    "$_pkgname.sh"
-  )
-  sha256sums=(
-    'SKIP'
-    'f9e17206a6fc510623d34467ece76787741faabe3bdf02a7facd17147e1dd660'
-  )
+  source=("$_dl_filename"::"$_dl_url")
+  sha256sums=('SKIP')
 }
 
 # common functions
 pkgver() {
-  printf '%s' \
-    "${_pkgver:?}"
+  echo "${_pkgver:?}"
 }
 
 prepare() {
@@ -85,6 +78,37 @@ Exec=$_pkgname -private-window
 [Desktop Action TempUserDir]
 Name=Open With Temporary User Profile
 Exec=$_pkgname --temp-profile
+END
+
+  install -Dvm644 /dev/stdin "$_pkgname.sh" <<END
+#!/usr/bin/env bash
+
+# check microprocessor architecture level
+if grep -qE '\bpni\b' /proc/cpuinfo ; then
+  _message=''
+  _message+=\$'The fastest Firefox fork on Earth.'
+else
+  _message=''
+  _message+=\$'Your processor does not support SSE3 instructions.\n'
+  _message+=\$'mercury-browser may not work on your computer.'
+fi
+
+# Allow users to override command-line options
+XDG_CONFIG_HOME=\${XDG_CONFIG_HOME:-~/.config}
+_FLAGFILE="\$XDG_CONFIG_HOME/mercury-flags.conf"
+if [[ -f "\$_FLAGFILE" ]]; then
+  _USER_FLAGS=\$(cat "\$_FLAGFILE")
+fi
+
+# display processor support message
+if tty -s ; then
+  echo "\$_message"
+else
+  [ ! -e "\$HOME/.mercury" ] && notify-send -a "mercury-browser" -t 7500 "\$_message"
+fi
+
+# Launch
+exec /opt/mercury-browser/mercury \$_USER_FLAGS "\$@"
 END
 }
 
@@ -147,11 +171,11 @@ package() {
   ln -sf "/usr/bin/$_pkgname" "$pkgdir/opt/$_pkgname/mercury-bin"
 
   # remove unnecessary folders
-  \rm -rf "${pkgdir:?}/usr/lib/"
-  \rm -rf "${pkgdir:?}/usr/share/doc/"
-  \rm -rf "${pkgdir:?}/usr/share/icons"
-  \rm -rf "${pkgdir:?}/usr/share/lintian/"
-  \rm -rf "${pkgdir:?}/usr/share/man/"
+  \rm -rf "$pkgdir/usr/lib/"
+  \rm -rf "$pkgdir/usr/share/doc/"
+  \rm -rf "$pkgdir/usr/share/icons"
+  \rm -rf "$pkgdir/usr/share/lintian/"
+  \rm -rf "$pkgdir/usr/share/man/"
 
   # fix permissions
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"

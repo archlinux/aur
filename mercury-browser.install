@@ -23,12 +23,9 @@ CYAN="${BOLD}$(tput setaf 6)"
 WHITE="${BOLD}$(tput setaf 7)"
 
 post_install() {
-  if /usr/lib/ld-linux-x86-64.so.2 --help | grep -qsE '^\s+x86-64-v3.*supported.*$' ; then
+  if grep -qE '\bpni\b' /proc/cpuinfo ; then
     note1 "Custom flags may be put directly in: ~/.config/mercury-flags.conf"
     note2 "The launcher is called: 'mercury-browser'"
-  elif grep -qE '\bpni\b' /proc/cpuinfo ; then
-    note1 "Your processor does not supports x86-64-v3."
-    note2 "You may want to install mercury-browser-sse3-bin instead."
   else
     note1 "Your processor does not support SSE3 instructions."
     note2 "mercury-browser may not work on your computer."
