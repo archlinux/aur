@@ -52,14 +52,16 @@ def parse_asset(asset):
     return version, datetime
 
 
-def update_pkgbuild(version, datetime):
-    version = version.replace("-", "_")
+def update_pkgbuild(_version, datetime):
+    version = _version.replace("-", "")
     updated = []
     with open("PKGBUILD", mode="r") as handle:
         contents = handle.read()
     for line in contents.splitlines():
         if line.startswith("pkgver="):
             line = f"pkgver={version}"
+        elif line.startswith("_pkgver="):
+            line = f"_pkgver={_version}"
         elif line.startswith("_pkgdate="):
             line = f"_pkgdate={datetime}"
         updated.append(line + "\n")
