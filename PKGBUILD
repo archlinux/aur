@@ -1,7 +1,7 @@
 pkgbase=qt-heic-image-plugin
 pkgname=(qt5-heic-image-plugin qt6-heic-image-plugin)
-pkgver=0.3.1
-pkgrel=3
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Qt plug-in to allow Qt and KDE based applications to read/write HEIF/HEIC images."
 arch=("x86_64")
 url="https://github.com/novomesk/qt-heic-image-plugin"
@@ -9,16 +9,9 @@ license=("LGPL-2.1-only")
 depends=(libheif)
 makedepends=(cmake extra-cmake-modules qt5-base qt6-base)
 source=(
-    "$url/archive/refs/tags/v$pkgver.tar.gz"
-    # Add QT_MAJOR_VERSION to switch between qt versions easily
-    "0001-Add-QT_MAJOR_VERSION.diff::https://github.com/novomesk/qt-heic-image-plugin/commit/dada91b071b6f2900638fd0f3ea8eb82b6de479b.diff")
-sha256sums=('f3e611cecb4918cb17d089e1912451b2ec42cb1f9efc496428b219f78a334cb6'
-            '1ddadd5676f43fdd11d3a452eae253699b64baf213d13942f44cb6c87b3dccfd')
+    "$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('2c80c308636901caff4aae9c7de73fc5d771fc90f2bd2c61e4939fdeaa65186b')
 
-prepare() {
-    cd qt-heic-image-plugin-$pkgver
-    patch -p1 -i "$srcdir/0001-Add-QT_MAJOR_VERSION.diff"
-}
 
 build() {
     msg2 "Building QT5 version..."
