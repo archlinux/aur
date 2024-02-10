@@ -9,6 +9,7 @@ pkgbase = lib32-vulkan-utility-libraries-git
 	makedepends = python
 	makedepends = vulkan-headers-git
 	depends = libvulkan.so
+	depends = vulkan-utility-libraries-git
 	provides = lib32-vulkan-utility-libraries
 	conflicts = lib32-vulkan-utility-libraries
 	source = git+https://github.com/KhronosGroup/Vulkan-Utility-Libraries.git
