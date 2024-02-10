@@ -1,0 +1,4 @@
+[python-typed-ast]
+source = "github"
+github = "python/typed_ast"
+use_max_tag = true
