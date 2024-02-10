@@ -1,11 +1,11 @@
-# Maintainer: dreieck (https://aur.archlinux.org/account/dreieck)
+# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
 # Contributer: Brian "Beej" Hall <beej@beej.us>
 # Contributer: Raphael Dümig <raphael[AT]duemig-neufahrn[DOT]de>
 
 _pkgname=ffgo
 pkgname="${_pkgname}-git"
 pkgver=1.12.8.r601.20230917.f5624be
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical launcher for FlightGear, i.e., a program whose purpose is to allow easy assembling and running of an fgfs command line. (Fork of and replacement for 'FGo!'.)"
 arch=('any')
 url="http://frougon.net/projects/FFGo/"
@@ -15,19 +15,22 @@ depends=(
   'flightgear'
   'python>=3.4'
   'python-condconfigparser'
+  'python-geographiclib'
+  'python-pillow'
   'tk>=8.5'
 )
 makedepends=(
   "gettext"
   "imagemagick"
   "librsvg"
+  "python-installer"
   "python-setuptools"
   "python-sphinx"
+  "python-wheel"
 )
 optdepends=(
-  "geographiclib"
-  "python-geographiclib"
-  "python-pillow"
+  # "python-geographiclib:  For more accurate location calculations."
+  # "python-pillow"
 )
 provides=(
   "${_pkgname}=${pkgver}"
@@ -62,13 +65,13 @@ build() {
   printf '%s\n' "${url}" > "upstream.url"
 
   make icons update-po update-mo update-pot doc
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" --compile-bytecode=2 dist/*.whl
 
   for _docfile in upstream.url ChangeLog ChangeLog.FGo README.rst; do
     install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"

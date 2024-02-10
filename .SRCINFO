@@ -1,22 +1,23 @@
 pkgbase = ffgo-git
 	pkgdesc = A graphical launcher for FlightGear, i.e., a program whose purpose is to allow easy assembling and running of an fgfs command line. (Fork of and replacement for 'FGo!'.)
 	pkgver = 1.12.8.r601.20230917.f5624be
-	pkgrel = 1
+	pkgrel = 2
 	url = http://frougon.net/projects/FFGo/
 	arch = any
 	license = custom
 	makedepends = gettext
 	makedepends = imagemagick
 	makedepends = librsvg
+	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-sphinx
+	makedepends = python-wheel
 	depends = flightgear
 	depends = python>=3.4
 	depends = python-condconfigparser
+	depends = python-geographiclib
+	depends = python-pillow
 	depends = tk>=8.5
-	optdepends = geographiclib
-	optdepends = python-geographiclib
-	optdepends = python-pillow
 	provides = ffgo=1.12.8.r601.20230917.f5624be
 	conflicts = ffgo
 	source = ffgo::git+https://github.com/frougon/FFGo.git
