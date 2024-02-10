@@ -5,6 +5,7 @@ pkgbase = bitfield-git
 	url = http://jk.ozlabs.org/projects/bitfield/
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = python-pyparsing
 	provides = bitfield
 	conflicts = bitfield

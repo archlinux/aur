@@ -7,6 +7,7 @@ arch=('any')
 url="http://jk.ozlabs.org/projects/bitfield/"
 license=('GPL')
 depends=('python-pyparsing')
+makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git://git.ozlabs.org/home/jk/git/bitfield/')
