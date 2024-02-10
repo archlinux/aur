@@ -1,0 +1,18 @@
+pkgbase = ghidra-extension-ghidra-amiga-git
+	pkgdesc = Ghidra utilities for analyzing Commodore Amiga programs
+	pkgver = r87.ga678c61
+	pkgrel = 1
+	url = https://github.com/BartmanAbyss/ghidra-amiga
+	arch = x86_64
+	makedepends = git
+	makedepends = gradle
+	makedepends = unzip
+	makedepends = ghidra
+	makedepends = java-environment>=11
+	depends = ghidra
+	provides = ghidra-amiga
+	conflicts = ghidra-amiga
+	source = ghidra-extension-ghidra-amiga-git::git+https://github.com/BartmanAbyss/ghidra-amiga
+	sha512sums = SKIP
+
+pkgname = ghidra-extension-ghidra-amiga-git
