@@ -1,15 +1,15 @@
 pkgbase = portablemc
 	pkgdesc = An easy-to-use Python CLI Minecraft launcher
-	pkgver = 4.1.0
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = https://github.com/mindstorm38/portablemc
 	arch = any
 	license = GPL3-only
 	depends = python
 	provides = portablemc
-	source = portablemc-4.1.0.tar.gz::https://files.pythonhosted.org/packages/5a/c7/a149d720df4ba676ae5557dc154c0668dc5e1c5ab2d3c59da45eb1080467/portablemc-4.1.0.tar.gz
+	source = portablemc-4.2.1.tar.gz::https://files.pythonhosted.org/packages/8d/63/d60d2b80e5a0e8499b8db1ba8301bec956dfb3602a639df115e12eb4422f/portablemc-4.2.1.tar.gz
 	source = portablemc
-	sha256sums = a0270fc704fbfb181ea8bac9a155b51f403a37b518e3ddd9878612eb1b8e34c5
+	sha256sums = 914b83a388712ab0f9118ccb41085d7594ead93bc421fec1cb599ff13369d02c
 	sha256sums = 65df24d73666d5a7f5eaac5beb48132b4f5cf0022878c3468afe7711cd275f45
 
 pkgname = portablemc
