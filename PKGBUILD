@@ -6,6 +6,7 @@ pkgdesc='PIC-like markup language for diagrams in technical documentation'
 arch=('x86_64')
 url='https://pikchr.org/'
 license=('BSD')
+makedepends=('fossil')
 provides=("${pkgname%-fossil}")
 conflicts=("${pkgname%-fossil}")
 source=("${pkgname%-fossil}::fossil+https://pikchr.org/home")

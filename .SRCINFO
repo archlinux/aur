@@ -5,6 +5,7 @@ pkgbase = pikchr-fossil
 	url = https://pikchr.org/
 	arch = x86_64
 	license = BSD
+	makedepends = fossil
 	provides = pikchr
 	conflicts = pikchr
 	source = pikchr::fossil+https://pikchr.org/home
