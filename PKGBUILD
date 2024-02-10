@@ -1,6 +1,7 @@
 # Maintainer: Lancelot Owczarczak <lancelot@owczarczak.fr>
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
+# Contributor: An Nguyen <an-1258@outlook.com>
 
 pkgname=clang17
 pkgver=17.0.6
@@ -16,11 +17,14 @@ optdepends=('openmp: OpenMP support in clang with -fopenmp'
 checkdepends=('llvm')
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
 source=($_source_base/clang-$pkgver.src.tar.xz{,.sig}
+        $_source_base/clang-tools-extra-$pkgver.src.tar.xz{,.sig}
         $_source_base/llvm-$pkgver.src.tar.xz{,.sig}
         $_source_base/cmake-$pkgver.src.tar.xz{,.sig}
         $pkgname-linker-wrapper-tool-r1.patch::https://github.com/llvm/llvm-project/commit/c2aabcfc8395.patch
         enable-fstack-protector-strong-by-default.patch)
 sha256sums=('a78f668a726ae1d3d9a7179996d97b12b90fb76ab9442a43110b972ff7ad9029'
+            'SKIP'
+            'aa774642415d338d7b77a66fcbad6fd1f77f382dabcb67422a6230614eff1ab9'
             'SKIP'
             'b638167da139126ca11917b6880207cc6e8f9d1cbb1a48d87d017f697ef78188'
             'SKIP'
@@ -40,10 +44,10 @@ _get_distribution_components() {
         continue
         ;;
       # trim static analyzer and other bits
-      bash-autocomplete|clang-format|clang-rename|hmaptool|scan-*)
+      bash-autocomplete|clang-format|clang-rename|hmaptool|scan-*|clang-tidy-headers)
         continue
         ;;
-      clang|clang-*)
+      clang|clangd|clang-*)
         ;;
       clang*|findAllSymbols)
         continue
@@ -56,6 +60,7 @@ _get_distribution_components() {
 prepare() {
   mv cmake{-$pkgver.src,}
   cd clang-$pkgver.src
+  mv "$srcdir/clang-tools-extra-$pkgver.src" tools/extra
   mkdir -p build
 }
 
@@ -112,6 +117,13 @@ package() {
   mv "$pkgdir"/usr/lib/{llvm17/lib/,}libclang-cpp.so.17
   ln -s ../../libclang-cpp.so.17 "$pkgdir/usr/lib/llvm17/lib/libclang-cpp.so.17"
   ln -s llvm17/lib/libclang.so.17 "$pkgdir"/usr/lib/libclang.so.17
+
+  install -d "$pkgdir/usr/bin"
+  local _binary
+  for _binary in "$pkgdir"/usr/lib/llvm17/bin/*; do
+    local _basename=${_binary##*/}
+    ln -s ../lib/llvm17/bin/$_basename "$pkgdir/usr/bin/$_basename-17"
+  done
 }
 
 # vim:set ts=2 sw=2 et:
