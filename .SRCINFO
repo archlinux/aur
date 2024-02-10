@@ -1,7 +1,7 @@
 pkgbase = stargate
 	pkgdesc = Innovation-first digital audio workstation (DAW), instrument and effect plugins, wave editor
 	pkgver = 24.02.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stargatedaw/stargate
 	arch = x86_64
 	arch = aarch64
@@ -28,6 +28,7 @@ pkgbase = stargate
 	depends = python-rtmidi
 	depends = python-wavefile
 	depends = python-yaml
+	depends = qt6-svg
 	depends = rubberband
 	optdepends = ffmpeg
 	optdepends = lame

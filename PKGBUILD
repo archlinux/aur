@@ -6,7 +6,7 @@
 pkgname=stargate
 pkgver=24.02.2
 _commit=43dfd5ccd676fde64ab61d524573903b769c5e2d
-pkgrel=1
+pkgrel=2
 pkgdesc="Innovation-first digital audio workstation (DAW), instrument and effect plugins, wave editor"
 license=(GPL-3.0-only)
 arch=(x86_64 aarch64)
@@ -30,6 +30,7 @@ depends=(
   python-rtmidi
   python-wavefile
   python-yaml
+  qt6-svg
   rubberband
 )
 makedepends=(
@@ -43,7 +44,6 @@ optdepends=(
   'lame'
   'vorbis-tools'
 )
-
 source=(
   "git+$url.git#commit=$_commit"
   "git+https://github.com/spatialaudio/portaudio-binaries.git"
