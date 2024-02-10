@@ -8,7 +8,7 @@ pkgdesc='WhatsApp desktop application for Linux'
 arch=('x86_64')
 url="https://github.com/$pkgname/${pkgname%-linux}" 
 license=('GPL-3.0-or-later')
-depends=('python-pyqt6' 'dbus-python')
+depends=('python-pyqt6' 'python-pyqt6-webengine' 'dbus-python' 'qt6-wayland' 'python-jaraco.text' 'python-inflect' 'python-pydantic>=1.9.1' 'python-typing_extensions>=4.6.1')
 makedepends=('git' 'python3' 'python-setuptools>=40.8.0' 'desktop-file-utils')
 conflicts=('zapzap' 'zapzap-git')
 optdepends=('hunspell: spell check')
