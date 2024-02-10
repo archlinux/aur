@@ -1,6 +1,6 @@
 # Maintainer: honjow
 pkgname=sk-chos-tool
-pkgver=r231.b4422b6
+pkgver=r305.d2c1782
 pkgrel=1
 pkgdesc="A custom configs tool for sk-chimeros"
 arch=('any')
@@ -49,6 +49,7 @@ package() {
     install -dm755 "${pkgdir}/usr/share/${pkgname}/pages"
     install -m755 -t "${pkgdir}/usr/share/${pkgname}/pages" "${source_dir}/main/pages"/*
     install -m755 -t "${pkgdir}/usr/share/${pkgname}" "${source_dir}/main"/*.*
+    install -m755 -t "${pkgdir}/usr/share/${pkgname}/scripts" "${source_dir}/main/scripts"/*.*
 
     # 主程序入口
     ln -s "/usr/share/${pkgname}/sk-chos-tool.py" "${pkgdir}/usr/bin/sk-chos-tool"
