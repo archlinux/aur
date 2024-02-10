@@ -18,9 +18,9 @@ depends=("bash" "perl" "php" "php-fpm" "php-gd" "php-sodium")
 makedepends=("composer")
 optdepends=("apache: HTTP server"
     "certbot: Creates SSL certificates."
-    "geos: Geometry"
     "mariadb: Database"
     "nginx: HTTP server"
+    "php-geos-git: Geometry"
     "php-pgsql: Database support for PostgreSQL"
     "php-sqlite: Database support for SQLite"
     "postgresql: Database"
