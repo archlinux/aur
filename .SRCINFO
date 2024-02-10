@@ -1,6 +1,6 @@
 pkgbase = kdoctools5
 	pkgdesc = Documentation generation from docbook
-	pkgver = 5.114.0
+	pkgver = 5.115.0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = kdoctools5
 	depends = docbook-xsl
 	conflicts = kdoctools<5.111
 	replaces = kdoctools<5.111
-	source = https://download.kde.org/stable/frameworks/5.114/kdoctools-5.114.0.tar.xz
-	source = https://download.kde.org/stable/frameworks/5.114/kdoctools-5.114.0.tar.xz.sig
+	source = https://download.kde.org/stable/frameworks/5.115/kdoctools-5.115.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.115/kdoctools-5.115.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = fb883f7e3a95535fad243059f91cb302a31820ca31e1d4c1e093b5fd45464597
+	sha256sums = 51e90910f75caf45334961a881082a06c52f292103f1975a5d0a13f39d2fe243
 	sha256sums = SKIP
 
 pkgname = kdoctools5
