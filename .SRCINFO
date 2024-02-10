@@ -1,6 +1,7 @@
 pkgbase = blazefetch-git
+
 	pkgdesc = A lite & blazing fast system info fetch utility
-	pkgver = 2.8.6.f564c477.git
+	pkgver = 2.8.7.2c6131e6.git
 	pkgrel = 1
 	url = https://github.com/rifsxd/blazefetch
 	arch = any
@@ -8,12 +9,14 @@ pkgbase = blazefetch-git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = gcc
-	depends = libx11
+	makedepends = libx11
 	depends = networkmanager
 	depends = playerctl
 	depends = figlet
 	depends = pciutils
 	depends = mesa-utils
+	depends = less
+	depends = alsa-utils
 	provides = blazefetch-git
 	conflicts = blazefetch
 	source = git+https://github.com/rifsxd/blazefetch.git
