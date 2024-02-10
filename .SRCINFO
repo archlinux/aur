@@ -1,12 +1,12 @@
 pkgbase = android-aarch64-readline
-	pkgdesc = GNU readline library (mingw-w64)
+	pkgdesc = GNU readline library (android)
 	pkgver = 8.2.010
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tiswww.case.edu/php/chet/readline/rltop.html
 	arch = any
 	groups = android-readline
 	license = GPL-3.0-only
-	makedepends = mingw-w64-configure
+	makedepends = android-configure
 	depends = android-ndk
 	depends = android-aarch64-ncurses
 	options = !strip
