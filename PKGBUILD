@@ -9,8 +9,9 @@ url='https://github.com/KhronosGroup/Vulkan-ExtensionLayer.git'
 license=(Apache-2.0)
 makedepends=(cmake python-lxml libxrandr wayland git make)
 depends=(gcc-libs vulkan-icd-loader-git vulkan-headers-git vulkan-utility-libraries-git volk libx11)
-provides=(vulkan-extensionlayers vulkan-extensionlayers-git)
-conflicts=(vulkan-extensionlayer-git vulkan-extension-layers vulkan-extension-layers)
+### conflicts/provides/replaces: not in official archliux repos, so list a few package names that archlinnux packager can use
+conflicts=(vulkan-extensionlayer-git vulkan-extension-layers vulkan-extension-layer vulkan-extensionlayer vulkan-extensionlayers)
+provides=(vulkan-extensionlayers vulkan-extensionlayer vulkan-extension-layer vulkan-extension-layers)
 replaces=(vulkan-extensionlayer-git)
 options=(!lto !strip) # disable LTO (https://github.com/KhronosGroup/Vulkan-ValidationLayers/issues/5994)
 source=(git+https://github.com/KhronosGroup/Vulkan-ExtensionLayer.git)
