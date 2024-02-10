@@ -2,9 +2,9 @@
 
 _pkgname=hiddify-next
 pkgname=${_pkgname}-bin
-pkgver=0.15.4
-pkgrel=4
-pkgdesc="A multi-platform proxy app. Auto, SSH, VLESS, Vmess, Trojan, Reality, Sing-Box, Clash, Xray, Shadowsocks"
+pkgver=0.15.6
+pkgrel=1
+pkgdesc="Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH etc. It’s an open-source, secure and ad-free"
 arch=(x86_64)
 url='https://github.com/hiddify/hiddify-next'
 license=('CC-BY-NC-SA-4.0')
@@ -15,17 +15,16 @@ optdepends=(
 provides=('hiddify')
 conflicts=(${_pkgname} ${_pkgname}-git)
 source=(
-    "$_pkgname-$pkgver.zip::https://github.com/hiddify/hiddify-next/releases/download/v${pkgver}/hiddify-debian-x64.zip"
+    "$_pkgname-$pkgver.deb::https://github.com/hiddify/hiddify-next/releases/download/v${pkgver}/Hiddify-Debian-x64.deb"
 )
 sha256sums=(
-    "627ac14ce4c552baea17c5d50a82da874055f92171351e5580f13f080e3ffe8a"
+    "80f1fcce1d15190de1c53ac5a509722884b44f4c7881779a07483f67905760e2"
 )
 _install_path="/opt/$_pkgname"
 
 prepare() {
     cd "${srcdir}"
-    ar x hiddify-debian-x64.deb
-    tar --zstd -xf data.tar.zst
+    tar -xf data.tar.xz
     sed -i '/Version/d' "${srcdir}/usr/share/applications/hiddify.desktop"
 }
 
