@@ -1,0 +1,19 @@
+pkgbase = rojo-git
+	pkgdesc = [Latest Git Commit] Rojo enables Roblox developers to use professional-grade software engineering tools
+	pkgver = 7.4.0.r9.g5c4260f3
+	pkgrel = 1
+	url = https://rojo.space/
+	arch = x86_64
+	arch = aarch64
+	license = MPL2
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	provides = rojo
+	conflicts = rojo
+	conflicts = rojo-bin
+	options = !lto
+	source = git+https://github.com/rojo-rbx/rojo.git
+	sha256sums = SKIP
+
+pkgname = rojo-git
