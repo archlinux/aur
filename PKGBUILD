@@ -1,8 +1,8 @@
 # Maintainer: Evgeniy Dombek <edombek@yandex.ru>
 
 pkgname=gildas
-pkgver=2023.11.c
-pkgver_=nov23c
+pkgver=2024.02.a
+pkgver_=feb24a
 pkgrel=1
 pkgdesc='GILDAS'
 arch=('x86_64')
