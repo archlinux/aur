@@ -1,5 +1,4 @@
 # Maintainer:
-# Contributor: Alexey Peschany <archlinux at sandboiii dot xyz>
 
 # options
 if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ] ; then
@@ -11,7 +10,7 @@ fi
 : ${_pkgtype:=-bin}
 
 # basic info
-_pkgname="mercury-browser"
+_pkgname="mercury-browser-avx"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=122.0.2
 pkgrel=1
@@ -32,9 +31,8 @@ _main_package() {
   )
 
   options=('!emptydirs' '!strip')
-  install="$_pkgname.install"
 
-  : ${_dl_filename:=${_pkgname}_${_pkgver:?}_SSE3.deb}
+  : ${_dl_filename:=${_pkgname%-avx}_${_pkgver:?}_AVX.deb}
   : ${_dl_url:=$url/releases/download/v.$_pkgver/$_dl_filename}
 
   noextract+=("$_dl_filename")
@@ -84,12 +82,12 @@ END
 #!/usr/bin/env bash
 
 # check microprocessor architecture level
-if grep -qE '\bpni\b' /proc/cpuinfo ; then
+if grep -qE '\bavx\b' /proc/cpuinfo ; then
   _message=''
   _message+=\$'The fastest Firefox fork on Earth.'
 else
   _message=''
-  _message+=\$'Your processor does not support SSE3 instructions.\n'
+  _message+=\$'Your processor does not support AVX instructions.\n'
   _message+=\$'mercury-browser may not work on your computer.'
 fi
 
@@ -108,7 +106,7 @@ else
 fi
 
 # Launch
-exec /opt/mercury-browser/mercury \$_USER_FLAGS "\$@"
+exec /opt/$_pkgname/mercury \$_USER_FLAGS "\$@"
 END
 }
 
