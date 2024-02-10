@@ -11,15 +11,15 @@ _patchlevel=010
 
 pkgname=android-${_android_arch}-readline
 pkgver=${_basever}.${_patchlevel}
-pkgrel=1
-pkgdesc="GNU readline library (mingw-w64)"
+pkgrel=2
+pkgdesc="GNU readline library (android)"
 arch=('any')
 url="https://tiswww.case.edu/php/chet/readline/rltop.html"
 license=('GPL-3.0-only')
 depends=('android-ndk'
          "android-${_android_arch}-ncurses")
 groups=(android-readline)
-makedepends=('mingw-w64-configure')
+makedepends=('android-configure')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("https://ftp.gnu.org/gnu/readline/readline-${_basever}.tar.gz"{,.sig}
         '0001-Disable-lib-symlinks.patch')
