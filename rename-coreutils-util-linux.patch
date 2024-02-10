@@ -1,0 +1,3544 @@
+diff '--color=auto' --recursive --unified --new-file misc-tools.OG/C_SRC/misc-tools-sleep.c misc-tools/C_SRC/misc-tools-sleep.c
+--- misc-tools.OG/C_SRC/misc-tools-sleep.c	1970-01-01 09:00:00.000000000 +0900
++++ misc-tools/C_SRC/misc-tools-sleep.c	2024-02-10 13:12:56.899014989 +0900
+@@ -0,0 +1,99 @@
++/*####################################################################
++#
++# SLEEP - Sleep Command Which Supported Non-Integer Numbers
++#
++# USAGE   : sleep seconds
++# Args    : seconds ... The number of second to sleep for. You can
++#                       give not only an integer number but also a
++#                       non-integer number here.
++# Retuen  : Return 0 only when succeeded to sleep
++#
++# How to compile : cc -O3 -o __CMDNAME__ __SRCNAME__
++#
++# Written by Shell-Shoccar Japan (@shellshoccarjpn) on 2022-07-19
++#
++# This is a public-domain software (CC0). It means that all of the
++# people can use this for any purposes with no restrictions at all.
++# By the way, We are fed up with the side effects which are brought
++# about by the major licenses.
++#
++# The latest version is distributed at the following page.
++# https://github.com/ShellShoccar-jpn/misc-tools
++#
++####################################################################*/
++
++
++/*####################################################################
++# Initial Configuration
++####################################################################*/
++
++/*=== Initial Setting ==============================================*/
++#include <limits.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <stdarg.h>
++#include <time.h>
++
++char* gpszCmdname;
++
++/*=== Define the functions for printing usage and error ============*/
++void print_usage_and_exit(void) {
++  fprintf(stderr,
++    "USAGE   : %s seconds\n"
++    "Args    : seconds ... The number of second to sleep for. You can\n"
++    "                      give not only an integer number but also a\n"
++    "                      non-integer number here.\n"
++    "Retuen  : Return 0 only when succeeded to sleep\n"
++    "Version : 2022-07-19 10:17:54 JST\n"
++    "          (POSIX C language)\n"
++    "\n"
++    "Shell-Shoccar Japan (@shellshoccarjpn), No rights reserved.\n"
++    "This is public domain software. (CC0)\n"
++    "\n"
++    "The latest version is distributed at the following page.\n"
++    "https://github.com/ShellShoccar-jpn/misc-tools\n"
++    ,gpszCmdname);
++  exit(1);
++}
++void error_exit(int iErrno, const char* szFormat, ...) {
++  va_list va;
++  va_start(va, szFormat);
++  fprintf(stderr,"%s: ",gpszCmdname);
++  vfprintf(stderr,szFormat,va);
++  va_end(va);
++  exit(iErrno);
++}
++
++
++/*####################################################################
++# Main
++####################################################################*/
++
++int main(int argc, char *argv[]) {
++
++  /*=== Initial Setting ============================================*/
++  struct timespec tspcSleeping_time;
++  double dNum;
++  int    i,iRet;
++
++  gpszCmdname = argv[0];
++  for (i=0; *(gpszCmdname+i)!='\0'; i++) {
++    if (*(gpszCmdname+i)=='/') {gpszCmdname=gpszCmdname+i+1;}
++  }
++
++  /*=== Parse options ==============================================*/
++  if (argc != 2                         ) {print_usage_and_exit();}
++  if (sscanf(argv[1], "%lf", &dNum) != 1) {print_usage_and_exit();}
++  if (dNum > INT_MAX                    ) {print_usage_and_exit();}
++
++  /*=== Sleep ======================================================*/
++  if (dNum <= 0                                   ) {exit(0);               }
++  tspcSleeping_time.tv_sec  = (time_t)dNum;
++  tspcSleeping_time.tv_nsec = (dNum - tspcSleeping_time.tv_sec) * 1000000000;
++
++  iRet = nanosleep(&tspcSleeping_time, NULL);
++  if (iRet != 0) {error_exit(iRet,"Error happend while nanosleeping\n");}
++
++  /*=== Finish =====================================================*/
++  return 0;
++}
+diff '--color=auto' --recursive --unified --new-file misc-tools.OG/C_SRC/sleep.c misc-tools/C_SRC/sleep.c
+--- misc-tools.OG/C_SRC/sleep.c	2024-02-10 13:12:56.899014989 +0900
++++ misc-tools/C_SRC/sleep.c	1970-01-01 09:00:00.000000000 +0900
+@@ -1,99 +0,0 @@
+-/*####################################################################
+-#
+-# SLEEP - Sleep Command Which Supported Non-Integer Numbers
+-#
+-# USAGE   : sleep seconds
+-# Args    : seconds ... The number of second to sleep for. You can
+-#                       give not only an integer number but also a
+-#                       non-integer number here.
+-# Retuen  : Return 0 only when succeeded to sleep
+-#
+-# How to compile : cc -O3 -o __CMDNAME__ __SRCNAME__
+-#
+-# Written by Shell-Shoccar Japan (@shellshoccarjpn) on 2022-07-19
+-#
+-# This is a public-domain software (CC0). It means that all of the
+-# people can use this for any purposes with no restrictions at all.
+-# By the way, We are fed up with the side effects which are brought
+-# about by the major licenses.
+-#
+-# The latest version is distributed at the following page.
+-# https://github.com/ShellShoccar-jpn/misc-tools
+-#
+-####################################################################*/
+-
+-
+-/*####################################################################
+-# Initial Configuration
+-####################################################################*/
+-
+-/*=== Initial Setting ==============================================*/
+-#include <limits.h>
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <stdarg.h>
+-#include <time.h>
+-
+-char* gpszCmdname;
+-
+-/*=== Define the functions for printing usage and error ============*/
+-void print_usage_and_exit(void) {
+-  fprintf(stderr,
+-    "USAGE   : %s seconds\n"
+-    "Args    : seconds ... The number of second to sleep for. You can\n"
+-    "                      give not only an integer number but also a\n"
+-    "                      non-integer number here.\n"
+-    "Retuen  : Return 0 only when succeeded to sleep\n"
+-    "Version : 2022-07-19 10:17:54 JST\n"
+-    "          (POSIX C language)\n"
+-    "\n"
+-    "Shell-Shoccar Japan (@shellshoccarjpn), No rights reserved.\n"
+-    "This is public domain software. (CC0)\n"
+-    "\n"
+-    "The latest version is distributed at the following page.\n"
+-    "https://github.com/ShellShoccar-jpn/misc-tools\n"
+-    ,gpszCmdname);
+-  exit(1);
+-}
+-void error_exit(int iErrno, const char* szFormat, ...) {
+-  va_list va;
+-  va_start(va, szFormat);
+-  fprintf(stderr,"%s: ",gpszCmdname);
+-  vfprintf(stderr,szFormat,va);
+-  va_end(va);
+-  exit(iErrno);
+-}
+-
+-
+-/*####################################################################
+-# Main
+-####################################################################*/
+-
+-int main(int argc, char *argv[]) {
+-
+-  /*=== Initial Setting ============================================*/
+-  struct timespec tspcSleeping_time;
+-  double dNum;
+-  int    i,iRet;
+-
+-  gpszCmdname = argv[0];
+-  for (i=0; *(gpszCmdname+i)!='\0'; i++) {
+-    if (*(gpszCmdname+i)=='/') {gpszCmdname=gpszCmdname+i+1;}
+-  }
+-
+-  /*=== Parse options ==============================================*/
+-  if (argc != 2                         ) {print_usage_and_exit();}
+-  if (sscanf(argv[1], "%lf", &dNum) != 1) {print_usage_and_exit();}
+-  if (dNum > INT_MAX                    ) {print_usage_and_exit();}
+-
+-  /*=== Sleep ======================================================*/
+-  if (dNum <= 0                                   ) {exit(0);               }
+-  tspcSleeping_time.tv_sec  = (time_t)dNum;
+-  tspcSleeping_time.tv_nsec = (dNum - tspcSleeping_time.tv_sec) * 1000000000;
+-
+-  iRet = nanosleep(&tspcSleeping_time, NULL);
+-  if (iRet != 0) {error_exit(iRet,"Error happend while nanosleeping\n");}
+-
+-  /*=== Finish =====================================================*/
+-  return 0;
+-}
+diff '--color=auto' --recursive --unified --new-file misc-tools.OG/base64 misc-tools/base64
+--- misc-tools.OG/base64	2024-02-10 13:12:56.899014989 +0900
++++ misc-tools/base64	1970-01-01 09:00:00.000000000 +0900
+@@ -1,500 +0,0 @@
+-#!/bin/sh
+-
+-######################################################################
+-#
+-# BASE64 - RFC 3548 Codec Command (compatible with "base64" command)
+-#          Also Works on Just a POSIX Environment
+-#
+-# USAGE: base64 [--by-myself] [-w <COLS>] <file>
+-#        base64 [--by-myself] -d [-i] <file>
+-#
+-#        --by-myself .. (write as the 1st argument when use)
+-#                       Not use the "built-in" base64 command and
+-#                       always do base64 by myself but it is inferior
+-#                       to the built-in in performance
+-#        -d ........... Run as a Base64 decoder.
+-#        -w <COLS> .... When encoding, wrap encoded lines after COLS
+-#                       character (default 76). 0 means preventing
+-#                       from wrapping.
+-#        -i ........... When decoding, ignore non-alphabet characters.
+-#
+-# Written by Shell-Shoccar Japan (@shellshoccarjpn) on 2020-11-08
+-#
+-# This is a public-domain software (CC0). It means that all of the
+-# people can use this for any purposes with no restrictions at all.
+-# By the way, We are fed up with the side effects which are brought
+-# about by the major licenses.
+-#
+-# The latest version is distributed at the following page.
+-# https://github.com/ShellShoccar-jpn/misc-tools
+-#
+-######################################################################
+-
+-
+-######################################################################
+-# Initial Configuration
+-######################################################################
+-
+-# === Initialize shell environment ===================================
+-set -u
+-umask 0022
+-export LC_ALL=C
+-export PATH="$(command -p getconf PATH 2>/dev/null)${PATH+:}${PATH-}"
+-case $PATH in :*) PATH=${PATH#?};; esac
+-export UNIX_STD=2003  # to make HP-UX conform to POSIX
+-
+-# === Define the functions for printing usage and error message ======
+-print_usage_and_exit () {
+-  cat <<-USAGE 1>&2
+-	Usage   : ${0##*/} [--by-myself] [-w <COLS>] <file>
+-	          ${0##*/} [--by-myself] -d [-i] <file>
+-	Arg&Opts: Almost compatible with GNU base64
+-	          The following options are available and compatible with it
+-	            -d, -w <COLS>, -i
+-	          But --by-myself is the only original option, it prevent
+-	          from use the built-in same name command even if available
+-	Version : 2020-11-08 22:12:39 JST
+-	          (POSIX Bourne Shell/POSIX commands)
+-	            * Although the built-in base64, uuencode and uudecode command or
+-	              GNU AWK produces better performance than the POSIX commands set
+-	USAGE
+-  exit 1
+-}
+-error_exit() {
+-  ${2+:} false && echo "${0##*/}: $2" 1>&2
+-  exit $1
+-}
+-
+-
+-######################################################################
+-# Prepare for Main Routine
+-######################################################################
+-
+-# === FUNC: which command also works on Just a POSIX environment =====
+-which which >/dev/null 2>&1 || {
+-  which() {
+-    command -v "$1" 2>/dev/null | grep '^/' || {
+-      echo 'which: not found' 1>&2 && (exit 1)
+-    }
+-  }
+-}
+-
+-# === Decide which AWK I should use ==================================
+-# --- may I leave the task to the built-in version, or must not? -----
+-by_myself=0
+-case "${1:-}" in 
+-  '--by-myself')
+-     shift; by_myself=1
+-     ;;
+-  *) export mydir=$(d=${0%/*}/;[ "_$d" = "_$0/" ]||cd "$d";echo "$(pwd)")
+-     path0=${PATH:-}
+-     PATH=$(printf  '%s\n' "$path0"                |
+-            tr      ':' '\n'                       |
+-            awk     '$0!=ENVIRON["mydir"]{print;}' |
+-            tr      '\n' ':'                       |
+-            grep -v '^:$'                          |
+-            sed     's/:$//'                       )
+-     CMD_builtin=$(command -v base64 2>/dev/null || :)
+-     case "$CMD_builtin" in '') by_myself=1;; esac
+-     PATH=$path0
+-     unset mydir
+-     ;;
+-esac
+-#
+-# --- use "built-in" base64 if available and wanted -------------------
+-case $by_myself in (0)
+-  if   printf 1 | "$CMD_builtin" -w 0 >/dev/null 2>&1;then
+-    exec "$CMD_builtin" ${1+"$@"}
+-    exit 1
+-  elif printf 1 | "$CMD_builtin" -b 0 >/dev/null 2>&1;then
+-    # If Mac OS X version exists, I will use it after option parsing
+-    CMD_BASE64_MAC=$CMD_builtin
+-  fi
+-esac
+-#
+-# --- check whether this host has a "binarable" AWK command or not ---
+-binarable_awk=1
+-while :; do
+-  CMD_AWK=$(which gawk 2>/dev/null)
+-  case $? in (0) break;; esac
+-  CMD_AWK=$(which awk 2>/dev/null)
+-  case $($CMD_AWK 'BEGIN{print length(sprintf("\000"))}') in (1) break;; esac
+-  binarable_awk=0; break
+-done
+-
+-
+-######################################################################
+-# Parse Arguments
+-######################################################################
+-
+-# === Get the options and the filepath ===============================
+-# --- initialize option parameters -----------------------------------
+-file=''
+-mode='e'
+-width=76
+-opti=0
+-#
+-# --- get them -------------------------------------------------------
+-optmode=''
+-while :; do
+-  case $# in 0) break;; esac
+-  case "$optmode" in
+-    '') case "$1" in
+-          -)         case $# in 1) break;; esac
+-                     ;;
+-          -[bdiw]*)  s=$(printf '%s\n' "${1#-}"                             |
+-                         awk '{d = "_"; i = "_"; w = "_"; err=0;            #
+-                               s = $0;                                      #
+-                               sub(/w[0-9]+$/, "w", s);                     #
+-                               l = length(s);                               #
+-                               for (n=1;n<=l;n++) {                         #
+-                                 c = substr(s, n, 1);                       #
+-                                 if      ( c=="d"         ) { d   = "d"; }  #
+-                                 else if ( c=="i"         ) { i   = "i"; }  #
+-                                 else if ((c=="w")&&(n==l)) { w   = "w"; }  #
+-                                 else if ((c=="b")&&(n==l)) { w   = "w"; }  #
+-                                 else                       { err =  1 ; }  #
+-                               }                                            #
+-                               printf("%s%s%s%s",d,i,w,err);              }')
+-                     case "$s" in *1*) print_usage_and_exit    ;; esac
+-                     case "$s" in *d*) mode='d'                ;; esac
+-                     case "$s" in *i*) opti=1;CMD_BASE64_MAC='';; esac
+-                     case "$s" in
+-                       *w*) echo ${1#-} | grep -Eq 'w$' &&       {
+-                              optmode='w'
+-                              shift
+-                              continue
+-                            }
+-                            echo ${1#-} | grep -Eq 'w[0-9]+$' && {
+-                              optmode='w'
+-                              s=${1##*w}
+-                            }
+-                            ;;
+-                       *)   shift
+-                            continue
+-                            ;;
+-                     esac
+-                     ;;
+-          --decode)  mode='d'
+-                     shift
+-                     continue
+-                     ;;
+-          --ignore-garbage)
+-                     opti=1;
+-                     CMD_BASE64_MAC=''
+-                     shift
+-                     continue
+-                     ;;
+-          --wrap=*)  optmode='w'
+-                     s=${1#--wrap=}
+-                     ;;
+-          --break=*) optmode='w'
+-                     s=${1#--break=}
+-                     ;;
+-          -*)        print_usage_and_exit
+-                     ;;
+-          *)         break
+-                     ;;
+-        esac
+-        ;;
+-    *)  s=$1
+-        ;;
+-  esac
+-  case "$optmode" in
+-    w) printf '%s\n' "$s" | grep -q '^[0-9]\{1,\}$' || {
+-         error_exit 1 'Invalid value of -w,--wrap option'
+-       }
+-       width=$s
+-       optmode=''
+-       shift
+-       continue
+-       ;;
+-    *) error_exit 1 'ERROR'
+-       ;;
+-  esac
+-  break
+-done
+-case $# in
+-  0) :                   ;;
+-  1) file=$1             ;;
+-  *) print_usage_and_exit;;
+-esac
+-
+-# === Validate the arguments =========================================
+-if   [ "_$file" = '_'                ] ||
+-     [ "_$file" = '_-'               ] ||
+-     [ "_$file" = '_/dev/stdin'      ] ||
+-     [ "_$file" = '_/dev/fd/0'       ] ||
+-     [ "_$file" = '_/proc/self/fd/0' ]  ; then
+-  file=''
+-elif [ -f "$file"                    ] ||
+-     [ -c "$file"                    ] ||
+-     [ -p "$file"                    ]  ; then
+-  [ -r "$file" ] || error_exit 1 'Cannot open the file: '"$file"
+-else
+-  print_usage_and_exit
+-fi
+-case "$file" in ''|-|/*|./*|../*) :;; *) file="./$file";; esac
+-
+-
+-######################################################################
+-# Main Routine
+-######################################################################
+-
+-# === If macOS version base64 was requested, call it here ============
+-case "$by_myself${CMD_BASE64_MAC:-}" in 0/*)
+-  opts=''
+-  case $mode in d) opts="$opts -d";; esac
+-  opts="$opts -b $width"
+-  exec "$CMD_BASE64_MAC" $opts -i "${file:--}"
+-  exit 1
+-  ;;
+-esac
+-
+-# === Use uu*code command if available and wanted ====================
+-if [ $by_myself -eq 0 ] && uuencode -m dummy </dev/null >/dev/null 2>&1; then
+-  case "$mode" in
+-    d) [ -w /dev/stdout ] && {
+-         (echo 'begin-base64 644 dummy'; cat ${file:+"$file"}; echo '====') |
+-         uudecode -o /dev/stdout
+-         exit $?
+-       }
+-       ;;
+-    e) cat ${file:+"$file"}                         |
+-       uuencode -m dummy                            |
+-       sed '1d;$d'                                  |
+-       case $width in                               #
+-         76) cat                                 ;; #
+-          0) tr -d '\n'                 ; echo '';; #
+-          *) tr -d '\n' | fold -w $width; echo '';; #
+-       esac
+-       exit $?
+-       ;;
+-  esac
+-fi
+-
+-# === Encode/Decode by myself ========================================
+-case $mode$binarable_awk in
+-  e*) cat ${file:+"$file"}                                                     |
+-      od -A n -t x1 -v                                                         |
+-      tr -Cd '0123456789abcdefABCDEF\n'                                        |
+-      awk 'BEGIN{OFS=""; ORS="";                                               #
+-                 x2o["0"]="0000"; x2o["1"]="0001"; x2o["2"]="0010";            #
+-                 x2o["3"]="0011"; x2o["4"]="0100"; x2o["5"]="0101";            #
+-                 x2o["6"]="0110"; x2o["7"]="0111"; x2o["8"]="1000";            #
+-                 x2o["9"]="1001"; x2o["a"]="1010"; x2o["b"]="1011";            #
+-                 x2o["c"]="1100"; x2o["d"]="1101"; x2o["e"]="1110";            #
+-                 x2o["f"]="1111";                                              #
+-                 x2o["A"]="1010"; x2o["B"]="1011"; x2o["C"]="1100";            #
+-                 x2o["D"]="1101"; x2o["E"]="1110"; x2o["F"]="1111";         }  #
+-           {     l=length($0);                                                 #
+-                 for(i=1;i<=l;i++){print x2o[substr($0,i,1)];}                 #
+-                 printf("\n");                                              }' |
+-      awk 'BEGIN{s="";                                                      }  #
+-           {     buf=buf $0;                                                   #
+-                 l=length(buf);                                                #
+-                 if(l<6){next;}                                                #
+-                 u=int(l/6)*6;                                                 #
+-                 for(p=1;p<u;p+=6){print substr(buf,p,6);}                     #
+-                 buf=substr(buf,p);                                         }  #
+-           END  {if(length(buf)>0){print substr(buf "00000",1,6);}          }' |
+-      awk 'BEGIN{ORS=""; w='$width'                                            #
+-                 o2b6["000000"]="A"; o2b6["000001"]="B"; o2b6["000010"]="C";   #
+-                 o2b6["000011"]="D"; o2b6["000100"]="E"; o2b6["000101"]="F";   #
+-                 o2b6["000110"]="G"; o2b6["000111"]="H"; o2b6["001000"]="I";   #
+-                 o2b6["001001"]="J"; o2b6["001010"]="K"; o2b6["001011"]="L";   #
+-                 o2b6["001100"]="M"; o2b6["001101"]="N"; o2b6["001110"]="O";   #
+-                 o2b6["001111"]="P"; o2b6["010000"]="Q"; o2b6["010001"]="R";   #
+-                 o2b6["010010"]="S"; o2b6["010011"]="T"; o2b6["010100"]="U";   #
+-                 o2b6["010101"]="V"; o2b6["010110"]="W"; o2b6["010111"]="X";   #
+-                 o2b6["011000"]="Y"; o2b6["011001"]="Z"; o2b6["011010"]="a";   #
+-                 o2b6["011011"]="b"; o2b6["011100"]="c"; o2b6["011101"]="d";   #
+-                 o2b6["011110"]="e"; o2b6["011111"]="f"; o2b6["100000"]="g";   #
+-                 o2b6["100001"]="h"; o2b6["100010"]="i"; o2b6["100011"]="j";   #
+-                 o2b6["100100"]="k"; o2b6["100101"]="l"; o2b6["100110"]="m";   #
+-                 o2b6["100111"]="n"; o2b6["101000"]="o"; o2b6["101001"]="p";   #
+-                 o2b6["101010"]="q"; o2b6["101011"]="r"; o2b6["101100"]="s";   #
+-                 o2b6["101101"]="t"; o2b6["101110"]="u"; o2b6["101111"]="v";   #
+-                 o2b6["110000"]="w"; o2b6["110001"]="x"; o2b6["110010"]="y";   #
+-                 o2b6["110011"]="z"; o2b6["110100"]="0"; o2b6["110101"]="1";   #
+-                 o2b6["110110"]="2"; o2b6["110111"]="3"; o2b6["111000"]="4";   #
+-                 o2b6["111001"]="5"; o2b6["111010"]="6"; o2b6["111011"]="7";   #
+-                 o2b6["111100"]="8"; o2b6["111101"]="9"; o2b6["111110"]="+";   #
+-                 o2b6["111111"]="/";                                           #
+-                 if (getline) {print o2b6[$0];n=1;}                         }  #
+-           n==w {printf("\n")  ; n=0;                                       }  #
+-           {     print o2b6[$0]; n++;                                       }  #
+-           END  {if(NR>0){printf("%s\n",substr("===",1,(4-(NR%4))%4));}     }'
+-      ;;
+-  d0) max1line=$(getconf ARG_MAX 2>/dev/null)
+-      case "$max1line" in
+-        '')     max1line=4096           ;;
+-        [0-9]*) max1line=$((max1line/2));;
+-      esac
+-      fold -b -w 508 ${file:+"$file"}                                         |
+-      case $opti in                                                           #
+-        1) sed 's![^A-Za-z0-9+/=]!!g';;                                       #
+-        *) cat                       ;;                                       #
+-      esac                                                                    |
+-      awk '                                                                   #
+-        BEGIN{                                                                #
+-          # 0) initialize                                                     #
+-          OFS = ""; ORS = "";                                                 #
+-          maxarglen = '$max1line' - length("printf ");                        #
+-          o2b["0"]="000"; o2b["1"]="001"; o2b["2"]="010"; o2b["3"]="011";     #
+-          o2b["4"]="100"; o2b["5"]="101"; o2b["6"]="110"; o2b["7"]="111";     #
+-          # 1) make the table of binary-digits-to-printf-format-string        #
+-          for (i=1; i<256; i++) {                                             #
+-            s = sprintf("%03o\n",i);                                          #
+-            t = o2b[substr(s,1,1)];                                           #
+-            u = o2b[substr(s,2,1)];                                           #
+-            v = o2b[substr(s,3,1)];                                           #
+-            s = substr(t u v,2);                                              #
+-            fmt[s]  = sprintf("%c",i);                                        #
+-            fmtl[s] = 1              ;                                        #
+-          }                                                                   #
+-          fmt["00100101"]="%%"      ; fmtl["00100101"]=2; # "%"               #
+-          fmt["01011100"]="\\\\\\\\"; fmtl["01011100"]=4; # (back slash)      #
+-          fmt["00000000"]="\\\\000" ; fmtl["00000000"]=5; # (null)            #
+-          fmt["00001010"]="\\\\n"   ; fmtl["00001010"]=3; # (Line Feed)       #
+-          fmt["00001101"]="\\\\r"   ; fmtl["00001101"]=3; # (Carriage Return) #
+-          fmt["00001001"]="\\\\t"   ; fmtl["00001001"]=3; # (tab)             #
+-          fmt["00001011"]="\\\\v"   ; fmtl["00001011"]=3; # (Vertical Tab)    #
+-          fmt["00001100"]="\\\\f"   ; fmtl["00001100"]=3; # (Form Feed)       #
+-          fmt["00100000"]="\\\\040" ; fmtl["00100000"]=5; # (space)           #
+-          fmt["00100010"]="\\\""    ; fmtl["00100010"]=2; # (double quot)     #
+-          fmt["00100111"]="\\'"'"'" ; fmtl["00100111"]=2; # (single quot)     #
+-          fmt["00101101"]="\\\\055" ; fmtl["00101101"]=5; # "-"               #
+-          for (i=48; i<58; i++) {                         # "0"~"9"           #
+-            fmt[sprintf("%02x",i)]=sprintf("\\\\%03o",i);                     #
+-            fmtl[sprintf("%02x",i)]=5;                                        #
+-          }                                                                   #
+-          # 2) make the table of Base64-character-to-binary-digits            #
+-          for(i=0;i<26;i++){                                                  #
+-            s = sprintf("%02o\n",i);                                          #
+-            b62b[sprintf("%c",i+65)] = o2b[substr(s,1,1)] o2b[substr(s,2,1)]; #
+-          }                                                                   #
+-          for (i=26;i<52;i++){                                                #
+-            s = sprintf("%02o\n",i);                                          #
+-            b62b[sprintf("%c",i+71)] = o2b[substr(s,1,1)] o2b[substr(s,2,1)]; #
+-          }                                                                   #
+-          for (i=52;i<62;i++){                                                #
+-            s = sprintf("%02o\n",i);                                          #
+-            b62b[sprintf("%c",i- 4)] = o2b[substr(s,1,1)] o2b[substr(s,2,1)]; #
+-          }                                                                   #
+-          b62b["+"] = "111110"; b62b["/"] = "111111";                         #
+-          b62b["="] = ""      ; b62b[""]  = ""      ;                         #
+-          b62b[sprintf("%c",13)] = "";                                        #
+-          # 3) decode and make strings for printf-format-string               #
+-          arglen=0;                                                           #
+-          buf = "";                                                           #
+-          while (getline line) {                                              #
+-            buf = buf line;                                                   #
+-            l1 = length(buf);                                                 #
+-            if (l1<4) {continue;}                                             #
+-            for (i=1;i<=l1;i+=4) {                                            #
+-              b = substr(buf,i,4);                                            #
+-              s =   b62b[substr(b,1,1)] b62b[substr(b,2,1)];                  #
+-              s = s b62b[substr(b,3,1)] b62b[substr(b,4,1)];                  #
+-              l2 = length(s);                                                 #
+-              if (l2 == 24) {                                                 #
+-                if (arglen>(maxarglen-12)) {print "\n"; arglen=0;}            #
+-                t = substr(s,1,8); u = substr(s,9,8); v = substr(s,17,8);     #
+-                print      fmt[t] ,fmt[u] ,fmt[v];                            #
+-                arglen += fmtl[t]+fmtl[u]+fmtl[v];                            #
+-              } else if (l2 == 18) {                                          #
+-                if (arglen>(maxarglen- 8)) {print "\n"; arglen=0;}            #
+-                t=substr(s,1,8); u=substr(s,9,8);                             #
+-                print      fmt[t] ,fmt[u];                                    #
+-                arglen += fmtl[t]+fmtl[u];                                    #
+-              } else if (l2 == 12) {                                          #
+-                if (arglen>(maxarglen- 4)) {print "\n"; arglen=0;}            #
+-                t=substr(s,1,8);                                              #
+-                print      fmt[t];                                            #
+-                arglen += fmtl[t];                                            #
+-              }                                                               #
+-            }                                                                 #
+-            buf = substr(buf, int(length(buf)/4)*4+1);                        #
+-          }                                                                   #
+-          if (NR>0) {print "\n";}                                             #
+-        }'                                                                    |
+-      xargs -n 1 printf 2>/dev/null
+-      ;;
+-      # MEMO: transition of some special letters                           #
+-      #       from the above AWK to "xargs printf"                         #
+-      #                                                                    #
+-      # 1) description in AWK                                              #
+-      # 2) interpreted and outputed to stdout by AWK                       #
+-      #    (and it is for auto-description on arguement of "xargs printf") #
+-      # 3) interpreted and sent by shell to "printf" as an arguement       #
+-      # 4) interpreted and outputed to stdout by "printf"                  #
+-      #                                                                    #
+-      # [chr]     1) -------> 2) -------> 3) -------> 4)                   #
+-      # %      :  "%%"        %%          %%          %                    #
+-      # \      :  "\\\\\\\\"  \\\\        \\          \                    #
+-      # <NULL> :  "\\\\000"   \\000       \000        <NULL>               #
+-      # <LF>   :  "\\\\n"     \\n         \n          <LF>                 #
+-      # "      :  "\\\""      \"          "           "                    #"
+-      # '      :  "\\'"'"'"   \'          '           '                    #'
+-  d1) fold -b -w 508 ${file:+"$file"}                                         |
+-      case $opti in                                                           #
+-        1) sed 's![^A-Za-z0-9+/=]!!g';;                                       #
+-        *) cat                       ;;                                       #
+-      esac                                                                    |
+-      "$CMD_AWK" '                                                            #
+-        BEGIN{                                                                #
+-          # 0) initialize                                                     #
+-          OFS = ""; ORS = "";                                                 #
+-          o2b["0"]="000"; o2b["1"]="001"; o2b["2"]="010"; o2b["3"]="011";     #
+-          o2b["4"]="100"; o2b["5"]="101"; o2b["6"]="110"; o2b["7"]="111";     #
+-          # 1) make the table of binary-digits-to-character                   #
+-          for (i=0; i<256; i++) {                                             #
+-            s = sprintf("%03o\n",i);                                          #
+-            t = o2b[substr(s,1,1)];                                           #
+-            u = o2b[substr(s,2,1)];                                           #
+-            v = o2b[substr(s,3,1)];                                           #
+-            s = substr(t u v,2);                                              #
+-            b2c[s]  = sprintf("%c",i);                                        #
+-          }                                                                   #
+-          # 2) make the table of Base64-character-to-binary-digits            #
+-          for(i=0;i<26;i++){                                                  #
+-            s = sprintf("%02o\n",i);                                          #
+-            b62b[sprintf("%c",i+65)] = o2b[substr(s,1,1)] o2b[substr(s,2,1)]; #
+-          }                                                                   #
+-          for (i=26;i<52;i++){                                                #
+-            s = sprintf("%02o\n",i);                                          #
+-            b62b[sprintf("%c",i+71)] = o2b[substr(s,1,1)] o2b[substr(s,2,1)]; #
+-          }                                                                   #
+-          for (i=52;i<62;i++){                                                #
+-            s = sprintf("%02o\n",i);                                          #
+-            b62b[sprintf("%c",i- 4)] = o2b[substr(s,1,1)] o2b[substr(s,2,1)]; #
+-          }                                                                   #
+-          b62b["+"] = "111110"; b62b["/"] = "111111";                         #
+-          b62b["="] = ""      ; b62b[""]  = ""      ;                         #
+-          b62b[sprintf("%c",13)] = "";                                        #
+-          # 3) decode                                                         #
+-          arglen=0;                                                           #
+-          buf = "";                                                           #
+-          while (getline line) {                                              #
+-            buf = buf line;                                                   #
+-            l1 = length(buf);                                                 #
+-            if (l1<4) {continue;}                                             #
+-            for (i=1;i<=l1;i+=4) {                                            #
+-              b = substr(buf,i,4);                                            #
+-              s =   b62b[substr(b,1,1)] b62b[substr(b,2,1)];                  #
+-              s = s b62b[substr(b,3,1)] b62b[substr(b,4,1)];                  #
+-              l2 = length(s);                                                 #
+-              if (l2 == 24) {                                                 #
+-                print b2c[substr(s, 1,8)],b2c[substr(s,9,8)]                  #
+-                print b2c[substr(s,17,8)];                                    #
+-              } else if (l2 == 18) {                                          #
+-                print b2c[substr(s,1,8)], b2c[substr(s,9,8)];                 #
+-              } else if (l2 == 12) {                                          #
+-                print b2c[substr(s,1,8)];                                     #
+-              }                                                               #
+-            }                                                                 #
+-            buf = substr(buf, int(length(buf)/4)*4+1);                        #
+-          }                                                                   #
+-        }'
+-      ;;
+-esac
+diff '--color=auto' --recursive --unified --new-file misc-tools.OG/misc-tools-base64 misc-tools/misc-tools-base64
+--- misc-tools.OG/misc-tools-base64	1970-01-01 09:00:00.000000000 +0900
++++ misc-tools/misc-tools-base64	2024-02-10 13:12:56.899014989 +0900
+@@ -0,0 +1,500 @@
++#!/bin/sh
++
++######################################################################
++#
++# BASE64 - RFC 3548 Codec Command (compatible with "base64" command)
++#          Also Works on Just a POSIX Environment
++#
++# USAGE: base64 [--by-myself] [-w <COLS>] <file>
++#        base64 [--by-myself] -d [-i] <file>
++#
++#        --by-myself .. (write as the 1st argument when use)
++#                       Not use the "built-in" base64 command and
++#                       always do base64 by myself but it is inferior
++#                       to the built-in in performance
++#        -d ........... Run as a Base64 decoder.
++#        -w <COLS> .... When encoding, wrap encoded lines after COLS
++#                       character (default 76). 0 means preventing
++#                       from wrapping.
++#        -i ........... When decoding, ignore non-alphabet characters.
++#
++# Written by Shell-Shoccar Japan (@shellshoccarjpn) on 2020-11-08
++#
++# This is a public-domain software (CC0). It means that all of the
++# people can use this for any purposes with no restrictions at all.
++# By the way, We are fed up with the side effects which are brought
++# about by the major licenses.
++#
++# The latest version is distributed at the following page.
++# https://github.com/ShellShoccar-jpn/misc-tools
++#
++######################################################################
++
++
++######################################################################
++# Initial Configuration
++######################################################################
++
++# === Initialize shell environment ===================================
++set -u
++umask 0022
++export LC_ALL=C
++export PATH="$(command -p getconf PATH 2>/dev/null)${PATH+:}${PATH-}"
++case $PATH in :*) PATH=${PATH#?};; esac
++export UNIX_STD=2003  # to make HP-UX conform to POSIX
++
++# === Define the functions for printing usage and error message ======
++print_usage_and_exit () {
++  cat <<-USAGE 1>&2
++	Usage   : ${0##*/} [--by-myself] [-w <COLS>] <file>
++	          ${0##*/} [--by-myself] -d [-i] <file>
++	Arg&Opts: Almost compatible with GNU base64
++	          The following options are available and compatible with it
++	            -d, -w <COLS>, -i
++	          But --by-myself is the only original option, it prevent
++	          from use the built-in same name command even if available
++	Version : 2020-11-08 22:12:39 JST
++	          (POSIX Bourne Shell/POSIX commands)
++	            * Although the built-in base64, uuencode and uudecode command or
++	              GNU AWK produces better performance than the POSIX commands set
++	USAGE
++  exit 1
++}
++error_exit() {
++  ${2+:} false && echo "${0##*/}: $2" 1>&2
++  exit $1
++}
++
++
++######################################################################
++# Prepare for Main Routine
++######################################################################
++
++# === FUNC: which command also works on Just a POSIX environment =====
++which which >/dev/null 2>&1 || {
++  which() {
++    command -v "$1" 2>/dev/null | grep '^/' || {
++      echo 'which: not found' 1>&2 && (exit 1)
++    }
++  }
++}
++
++# === Decide which AWK I should use ==================================
++# --- may I leave the task to the built-in version, or must not? -----
++by_myself=0
++case "${1:-}" in 
++  '--by-myself')
++     shift; by_myself=1
++     ;;
++  *) export mydir=$(d=${0%/*}/;[ "_$d" = "_$0/" ]||cd "$d";echo "$(pwd)")
++     path0=${PATH:-}
++     PATH=$(printf  '%s\n' "$path0"                |
++            tr      ':' '\n'                       |
++            awk     '$0!=ENVIRON["mydir"]{print;}' |
++            tr      '\n' ':'                       |
++            grep -v '^:$'                          |
++            sed     's/:$//'                       )
++     CMD_builtin=$(command -v base64 2>/dev/null || :)
++     case "$CMD_builtin" in '') by_myself=1;; esac
++     PATH=$path0
++     unset mydir
++     ;;
++esac
++#
++# --- use "built-in" base64 if available and wanted -------------------
++case $by_myself in (0)
++  if   printf 1 | "$CMD_builtin" -w 0 >/dev/null 2>&1;then
++    exec "$CMD_builtin" ${1+"$@"}
++    exit 1
++  elif printf 1 | "$CMD_builtin" -b 0 >/dev/null 2>&1;then
++    # If Mac OS X version exists, I will use it after option parsing
++    CMD_BASE64_MAC=$CMD_builtin
++  fi
++esac
++#
++# --- check whether this host has a "binarable" AWK command or not ---
++binarable_awk=1
++while :; do
++  CMD_AWK=$(which gawk 2>/dev/null)
++  case $? in (0) break;; esac
++  CMD_AWK=$(which awk 2>/dev/null)
++  case $($CMD_AWK 'BEGIN{print length(sprintf("\000"))}') in (1) break;; esac
++  binarable_awk=0; break
++done
++
++
++######################################################################
++# Parse Arguments
++######################################################################
++
++# === Get the options and the filepath ===============================
++# --- initialize option parameters -----------------------------------
++file=''
++mode='e'
++width=76
++opti=0
++#
++# --- get them -------------------------------------------------------
++optmode=''
++while :; do
++  case $# in 0) break;; esac
++  case "$optmode" in
++    '') case "$1" in
++          -)         case $# in 1) break;; esac
++                     ;;
++          -[bdiw]*)  s=$(printf '%s\n' "${1#-}"                             |
++                         awk '{d = "_"; i = "_"; w = "_"; err=0;            #
++                               s = $0;                                      #
++                               sub(/w[0-9]+$/, "w", s);                     #
++                               l = length(s);                               #
++                               for (n=1;n<=l;n++) {                         #
++                                 c = substr(s, n, 1);                       #
++                                 if      ( c=="d"         ) { d   = "d"; }  #
++                                 else if ( c=="i"         ) { i   = "i"; }  #
++                                 else if ((c=="w")&&(n==l)) { w   = "w"; }  #
++                                 else if ((c=="b")&&(n==l)) { w   = "w"; }  #
++                                 else                       { err =  1 ; }  #
++                               }                                            #
++                               printf("%s%s%s%s",d,i,w,err);              }')
++                     case "$s" in *1*) print_usage_and_exit    ;; esac
++                     case "$s" in *d*) mode='d'                ;; esac
++                     case "$s" in *i*) opti=1;CMD_BASE64_MAC='';; esac
++                     case "$s" in
++                       *w*) echo ${1#-} | grep -Eq 'w$' &&       {
++                              optmode='w'
++                              shift
++                              continue
++                            }
++                            echo ${1#-} | grep -Eq 'w[0-9]+$' && {
++                              optmode='w'
++                              s=${1##*w}
++                            }
++                            ;;
++                       *)   shift
++                            continue
++                            ;;
++                     esac
++                     ;;
++          --decode)  mode='d'
++                     shift
++                     continue
++                     ;;
++          --ignore-garbage)
++                     opti=1;
++                     CMD_BASE64_MAC=''
++                     shift
++                     continue
++                     ;;
++          --wrap=*)  optmode='w'
++                     s=${1#--wrap=}
++                     ;;
++          --break=*) optmode='w'
++                     s=${1#--break=}
++                     ;;
++          -*)        print_usage_and_exit
++                     ;;
++          *)         break
++                     ;;
++        esac
++        ;;
++    *)  s=$1
++        ;;
++  esac
++  case "$optmode" in
++    w) printf '%s\n' "$s" | grep -q '^[0-9]\{1,\}$' || {
++         error_exit 1 'Invalid value of -w,--wrap option'
++       }
++       width=$s
++       optmode=''
++       shift
++       continue
++       ;;
++    *) error_exit 1 'ERROR'
++       ;;
++  esac
++  break
++done
++case $# in
++  0) :                   ;;
++  1) file=$1             ;;
++  *) print_usage_and_exit;;
++esac
++
++# === Validate the arguments =========================================
++if   [ "_$file" = '_'                ] ||
++     [ "_$file" = '_-'               ] ||
++     [ "_$file" = '_/dev/stdin'      ] ||
++     [ "_$file" = '_/dev/fd/0'       ] ||
++     [ "_$file" = '_/proc/self/fd/0' ]  ; then
++  file=''
++elif [ -f "$file"                    ] ||
++     [ -c "$file"                    ] ||
++     [ -p "$file"                    ]  ; then
++  [ -r "$file" ] || error_exit 1 'Cannot open the file: '"$file"
++else
++  print_usage_and_exit
++fi
++case "$file" in ''|-|/*|./*|../*) :;; *) file="./$file";; esac
++
++
++######################################################################
++# Main Routine
++######################################################################
++
++# === If macOS version base64 was requested, call it here ============
++case "$by_myself${CMD_BASE64_MAC:-}" in 0/*)
++  opts=''
++  case $mode in d) opts="$opts -d";; esac
++  opts="$opts -b $width"
++  exec "$CMD_BASE64_MAC" $opts -i "${file:--}"
++  exit 1
++  ;;
++esac
++
++# === Use uu*code command if available and wanted ====================
++if [ $by_myself -eq 0 ] && uuencode -m dummy </dev/null >/dev/null 2>&1; then
++  case "$mode" in
++    d) [ -w /dev/stdout ] && {
++         (echo 'begin-base64 644 dummy'; cat ${file:+"$file"}; echo '====') |
++         uudecode -o /dev/stdout
++         exit $?
++       }
++       ;;
++    e) cat ${file:+"$file"}                         |
++       uuencode -m dummy                            |
++       sed '1d;$d'                                  |
++       case $width in                               #
++         76) cat                                 ;; #
++          0) tr -d '\n'                 ; echo '';; #
++          *) tr -d '\n' | fold -w $width; echo '';; #
++       esac
++       exit $?
++       ;;
++  esac
++fi
++
++# === Encode/Decode by myself ========================================
++case $mode$binarable_awk in
++  e*) cat ${file:+"$file"}                                                     |
++      od -A n -t x1 -v                                                         |
++      tr -Cd '0123456789abcdefABCDEF\n'                                        |
++      awk 'BEGIN{OFS=""; ORS="";                                               #
++                 x2o["0"]="0000"; x2o["1"]="0001"; x2o["2"]="0010";            #
++                 x2o["3"]="0011"; x2o["4"]="0100"; x2o["5"]="0101";            #
++                 x2o["6"]="0110"; x2o["7"]="0111"; x2o["8"]="1000";            #
++                 x2o["9"]="1001"; x2o["a"]="1010"; x2o["b"]="1011";            #
++                 x2o["c"]="1100"; x2o["d"]="1101"; x2o["e"]="1110";            #
++                 x2o["f"]="1111";                                              #
++                 x2o["A"]="1010"; x2o["B"]="1011"; x2o["C"]="1100";            #
++                 x2o["D"]="1101"; x2o["E"]="1110"; x2o["F"]="1111";         }  #
++           {     l=length($0);                                                 #
++                 for(i=1;i<=l;i++){print x2o[substr($0,i,1)];}                 #
++                 printf("\n");                                              }' |
++      awk 'BEGIN{s="";                                                      }  #
++           {     buf=buf $0;                                                   #
++                 l=length(buf);                                                #
++                 if(l<6){next;}                                                #
++                 u=int(l/6)*6;                                                 #
++                 for(p=1;p<u;p+=6){print substr(buf,p,6);}                     #
++                 buf=substr(buf,p);                                         }  #
++           END  {if(length(buf)>0){print substr(buf "00000",1,6);}          }' |
++      awk 'BEGIN{ORS=""; w='$width'                                            #
++                 o2b6["000000"]="A"; o2b6["000001"]="B"; o2b6["000010"]="C";   #
++                 o2b6["000011"]="D"; o2b6["000100"]="E"; o2b6["000101"]="F";   #
++                 o2b6["000110"]="G"; o2b6["000111"]="H"; o2b6["001000"]="I";   #
++                 o2b6["001001"]="J"; o2b6["001010"]="K"; o2b6["001011"]="L";   #
++                 o2b6["001100"]="M"; o2b6["001101"]="N"; o2b6["001110"]="O";   #
++                 o2b6["001111"]="P"; o2b6["010000"]="Q"; o2b6["010001"]="R";   #
++                 o2b6["010010"]="S"; o2b6["010011"]="T"; o2b6["010100"]="U";   #
++                 o2b6["010101"]="V"; o2b6["010110"]="W"; o2b6["010111"]="X";   #
++                 o2b6["011000"]="Y"; o2b6["011001"]="Z"; o2b6["011010"]="a";   #
++                 o2b6["011011"]="b"; o2b6["011100"]="c"; o2b6["011101"]="d";   #
++                 o2b6["011110"]="e"; o2b6["011111"]="f"; o2b6["100000"]="g";   #
++                 o2b6["100001"]="h"; o2b6["100010"]="i"; o2b6["100011"]="j";   #
++                 o2b6["100100"]="k"; o2b6["100101"]="l"; o2b6["100110"]="m";   #
++                 o2b6["100111"]="n"; o2b6["101000"]="o"; o2b6["101001"]="p";   #
++                 o2b6["101010"]="q"; o2b6["101011"]="r"; o2b6["101100"]="s";   #
++                 o2b6["101101"]="t"; o2b6["101110"]="u"; o2b6["101111"]="v";   #
++                 o2b6["110000"]="w"; o2b6["110001"]="x"; o2b6["110010"]="y";   #
++                 o2b6["110011"]="z"; o2b6["110100"]="0"; o2b6["110101"]="1";   #
++                 o2b6["110110"]="2"; o2b6["110111"]="3"; o2b6["111000"]="4";   #
++                 o2b6["111001"]="5"; o2b6["111010"]="6"; o2b6["111011"]="7";   #
++                 o2b6["111100"]="8"; o2b6["111101"]="9"; o2b6["111110"]="+";   #
++                 o2b6["111111"]="/";                                           #
++                 if (getline) {print o2b6[$0];n=1;}                         }  #
++           n==w {printf("\n")  ; n=0;                                       }  #
++           {     print o2b6[$0]; n++;                                       }  #
++           END  {if(NR>0){printf("%s\n",substr("===",1,(4-(NR%4))%4));}     }'
++      ;;
++  d0) max1line=$(getconf ARG_MAX 2>/dev/null)
++      case "$max1line" in
++        '')     max1line=4096           ;;
++        [0-9]*) max1line=$((max1line/2));;
++      esac
++      fold -b -w 508 ${file:+"$file"}                                         |
++      case $opti in                                                           #
++        1) sed 's![^A-Za-z0-9+/=]!!g';;                                       #
++        *) cat                       ;;                                       #
++      esac                                                                    |
++      awk '                                                                   #
++        BEGIN{                                                                #
++          # 0) initialize                                                     #
++          OFS = ""; ORS = "";                                                 #
++          maxarglen = '$max1line' - length("printf ");                        #
++          o2b["0"]="000"; o2b["1"]="001"; o2b["2"]="010"; o2b["3"]="011";     #
++          o2b["4"]="100"; o2b["5"]="101"; o2b["6"]="110"; o2b["7"]="111";     #
++          # 1) make the table of binary-digits-to-printf-format-string        #
++          for (i=1; i<256; i++) {                                             #
++            s = sprintf("%03o\n",i);                                          #
++            t = o2b[substr(s,1,1)];                                           #
++            u = o2b[substr(s,2,1)];                                           #
++            v = o2b[substr(s,3,1)];                                           #
++            s = substr(t u v,2);                                              #
++            fmt[s]  = sprintf("%c",i);                                        #
++            fmtl[s] = 1              ;                                        #
++          }                                                                   #
++          fmt["00100101"]="%%"      ; fmtl["00100101"]=2; # "%"               #
++          fmt["01011100"]="\\\\\\\\"; fmtl["01011100"]=4; # (back slash)      #
++          fmt["00000000"]="\\\\000" ; fmtl["00000000"]=5; # (null)            #
++          fmt["00001010"]="\\\\n"   ; fmtl["00001010"]=3; # (Line Feed)       #
++          fmt["00001101"]="\\\\r"   ; fmtl["00001101"]=3; # (Carriage Return) #
++          fmt["00001001"]="\\\\t"   ; fmtl["00001001"]=3; # (tab)             #
++          fmt["00001011"]="\\\\v"   ; fmtl["00001011"]=3; # (Vertical Tab)    #
++          fmt["00001100"]="\\\\f"   ; fmtl["00001100"]=3; # (Form Feed)       #
++          fmt["00100000"]="\\\\040" ; fmtl["00100000"]=5; # (space)           #
++          fmt["00100010"]="\\\""    ; fmtl["00100010"]=2; # (double quot)     #
++          fmt["00100111"]="\\'"'"'" ; fmtl["00100111"]=2; # (single quot)     #
++          fmt["00101101"]="\\\\055" ; fmtl["00101101"]=5; # "-"               #
++          for (i=48; i<58; i++) {                         # "0"~"9"           #
++            fmt[sprintf("%02x",i)]=sprintf("\\\\%03o",i);                     #
++            fmtl[sprintf("%02x",i)]=5;                                        #
++          }                                                                   #
++          # 2) make the table of Base64-character-to-binary-digits            #
++          for(i=0;i<26;i++){                                                  #
++            s = sprintf("%02o\n",i);                                          #
++            b62b[sprintf("%c",i+65)] = o2b[substr(s,1,1)] o2b[substr(s,2,1)]; #
++          }                                                                   #
++          for (i=26;i<52;i++){                                                #
++            s = sprintf("%02o\n",i);                                          #
++            b62b[sprintf("%c",i+71)] = o2b[substr(s,1,1)] o2b[substr(s,2,1)]; #
++          }                                                                   #
++          for (i=52;i<62;i++){                                                #
++            s = sprintf("%02o\n",i);                                          #
++            b62b[sprintf("%c",i- 4)] = o2b[substr(s,1,1)] o2b[substr(s,2,1)]; #
++          }                                                                   #
++          b62b["+"] = "111110"; b62b["/"] = "111111";                         #
++          b62b["="] = ""      ; b62b[""]  = ""      ;                         #
++          b62b[sprintf("%c",13)] = "";                                        #
++          # 3) decode and make strings for printf-format-string               #
++          arglen=0;                                                           #
++          buf = "";                                                           #
++          while (getline line) {                                              #
++            buf = buf line;                                                   #
++            l1 = length(buf);                                                 #
++            if (l1<4) {continue;}                                             #
++            for (i=1;i<=l1;i+=4) {                                            #
++              b = substr(buf,i,4);                                            #
++              s =   b62b[substr(b,1,1)] b62b[substr(b,2,1)];                  #
++              s = s b62b[substr(b,3,1)] b62b[substr(b,4,1)];                  #
++              l2 = length(s);                                                 #
++              if (l2 == 24) {                                                 #
++                if (arglen>(maxarglen-12)) {print "\n"; arglen=0;}            #
++                t = substr(s,1,8); u = substr(s,9,8); v = substr(s,17,8);     #
++                print      fmt[t] ,fmt[u] ,fmt[v];                            #
++                arglen += fmtl[t]+fmtl[u]+fmtl[v];                            #
++              } else if (l2 == 18) {                                          #
++                if (arglen>(maxarglen- 8)) {print "\n"; arglen=0;}            #
++                t=substr(s,1,8); u=substr(s,9,8);                             #
++                print      fmt[t] ,fmt[u];                                    #
++                arglen += fmtl[t]+fmtl[u];                                    #
++              } else if (l2 == 12) {                                          #
++                if (arglen>(maxarglen- 4)) {print "\n"; arglen=0;}            #
++                t=substr(s,1,8);                                              #
++                print      fmt[t];                                            #
++                arglen += fmtl[t];                                            #
++              }                                                               #
++            }                                                                 #
++            buf = substr(buf, int(length(buf)/4)*4+1);                        #
++          }                                                                   #
++          if (NR>0) {print "\n";}                                             #
++        }'                                                                    |
++      xargs -n 1 printf 2>/dev/null
++      ;;
++      # MEMO: transition of some special letters                           #
++      #       from the above AWK to "xargs printf"                         #
++      #                                                                    #
++      # 1) description in AWK                                              #
++      # 2) interpreted and outputed to stdout by AWK                       #
++      #    (and it is for auto-description on arguement of "xargs printf") #
++      # 3) interpreted and sent by shell to "printf" as an arguement       #
++      # 4) interpreted and outputed to stdout by "printf"                  #
++      #                                                                    #
++      # [chr]     1) -------> 2) -------> 3) -------> 4)                   #
++      # %      :  "%%"        %%          %%          %                    #
++      # \      :  "\\\\\\\\"  \\\\        \\          \                    #
++      # <NULL> :  "\\\\000"   \\000       \000        <NULL>               #
++      # <LF>   :  "\\\\n"     \\n         \n          <LF>                 #
++      # "      :  "\\\""      \"          "           "                    #"
++      # '      :  "\\'"'"'"   \'          '           '                    #'
++  d1) fold -b -w 508 ${file:+"$file"}                                         |
++      case $opti in                                                           #
++        1) sed 's![^A-Za-z0-9+/=]!!g';;                                       #
++        *) cat                       ;;                                       #
++      esac                                                                    |
++      "$CMD_AWK" '                                                            #
++        BEGIN{                                                                #
++          # 0) initialize                                                     #
++          OFS = ""; ORS = "";                                                 #
++          o2b["0"]="000"; o2b["1"]="001"; o2b["2"]="010"; o2b["3"]="011";     #
++          o2b["4"]="100"; o2b["5"]="101"; o2b["6"]="110"; o2b["7"]="111";     #
++          # 1) make the table of binary-digits-to-character                   #
++          for (i=0; i<256; i++) {                                             #
++            s = sprintf("%03o\n",i);                                          #
++            t = o2b[substr(s,1,1)];                                           #
++            u = o2b[substr(s,2,1)];                                           #
++            v = o2b[substr(s,3,1)];                                           #
++            s = substr(t u v,2);                                              #
++            b2c[s]  = sprintf("%c",i);                                        #
++          }                                                                   #
++          # 2) make the table of Base64-character-to-binary-digits            #
++          for(i=0;i<26;i++){                                                  #
++            s = sprintf("%02o\n",i);                                          #
++            b62b[sprintf("%c",i+65)] = o2b[substr(s,1,1)] o2b[substr(s,2,1)]; #
++          }                                                                   #
++          for (i=26;i<52;i++){                                                #
++            s = sprintf("%02o\n",i);                                          #
++            b62b[sprintf("%c",i+71)] = o2b[substr(s,1,1)] o2b[substr(s,2,1)]; #
++          }                                                                   #
++          for (i=52;i<62;i++){                                                #
++            s = sprintf("%02o\n",i);                                          #
++            b62b[sprintf("%c",i- 4)] = o2b[substr(s,1,1)] o2b[substr(s,2,1)]; #
++          }                                                                   #
++          b62b["+"] = "111110"; b62b["/"] = "111111";                         #
++          b62b["="] = ""      ; b62b[""]  = ""      ;                         #
++          b62b[sprintf("%c",13)] = "";                                        #
++          # 3) decode                                                         #
++          arglen=0;                                                           #
++          buf = "";                                                           #
++          while (getline line) {                                              #
++            buf = buf line;                                                   #
++            l1 = length(buf);                                                 #
++            if (l1<4) {continue;}                                             #
++            for (i=1;i<=l1;i+=4) {                                            #
++              b = substr(buf,i,4);                                            #
++              s =   b62b[substr(b,1,1)] b62b[substr(b,2,1)];                  #
++              s = s b62b[substr(b,3,1)] b62b[substr(b,4,1)];                  #
++              l2 = length(s);                                                 #
++              if (l2 == 24) {                                                 #
++                print b2c[substr(s, 1,8)],b2c[substr(s,9,8)]                  #
++                print b2c[substr(s,17,8)];                                    #
++              } else if (l2 == 18) {                                          #
++                print b2c[substr(s,1,8)], b2c[substr(s,9,8)];                 #
++              } else if (l2 == 12) {                                          #
++                print b2c[substr(s,1,8)];                                     #
++              }                                                               #
++            }                                                                 #
++            buf = substr(buf, int(length(buf)/4)*4+1);                        #
++          }                                                                   #
++        }'
++      ;;
++esac
+diff '--color=auto' --recursive --unified --new-file misc-tools.OG/misc-tools-mktemp misc-tools/misc-tools-mktemp
+--- misc-tools.OG/misc-tools-mktemp	1970-01-01 09:00:00.000000000 +0900
++++ misc-tools/misc-tools-mktemp	2024-02-10 13:12:56.902348342 +0900
+@@ -0,0 +1,318 @@
++#!/bin/sh
++
++######################################################################
++#
++# MKTEMP - The "mktemp" Command also Works on Just a POSIX Environment
++#
++# USAGE: mktemp [--by-myself] [options] [template [...]]
++#
++#        --by-myself ..... (write as the 1st argument when use)
++#                            Not use the "built-in" mktemp command
++#                            and always do mktemp by myself but it is
++#                            inferior to the built-in in performance
++#        -d .............. Makes a directory instead of a file
++#        -p <DIR> ........ Defines the temporary directory instead of
++#                          $TMPDIR
++#        -q .............. Quiet even if some error occurred
++#        -u .............. Makes a file but remove it immediately
++#        -t .............. Adds the temporary directory as a prefix
++#                          in front of the filepath
++#        --suffix=<suff> . Adds the suffix behind the filename
++#
++# Written by Shell-Shoccar Japan (@shellshoccarjpn) on 2020-05-06
++#
++# This is a public-domain software (CC0). It means that all of the
++# people can use this for any purposes with no restrictions at all.
++# By the way, We are fed up with the side effects which are brought
++# about by the major licenses.
++#
++# The latest version is distributed at the following page.
++# https://github.com/ShellShoccar-jpn/misc-tools
++#
++######################################################################
++
++
++######################################################################
++# Initial Configuration
++######################################################################
++
++# === Initialize shell environment ===================================
++set -u
++umask 0022
++export LC_ALL=C
++export PATH="$(command -p getconf PATH 2>/dev/null)${PATH+:}${PATH-}"
++case $PATH in :*) PATH=${PATH#?};; esac
++export UNIX_STD=2003  # to make HP-UX conform to POSIX
++
++# === Define the functions for printing usage and error message ======
++print_usage_and_exit () {
++  cat <<-USAGE 1>&2
++	Usage   : ${0##*/} [--by-myself] [options] [template [...]]
++	Arg&Opts: Almost compatible with GNU mktemp
++	          The following options are available and compatible with it
++	            -d, -p <DIR>, -q, -u, -t, --suffix=<suff>
++	          But --by-myself is the only original option, it prevent
++	          from use the built-in same name command even if available
++	Version : 2020-05-06 22:42:19 JST
++	          (POSIX Bourne Shell/POSIX commands)
++	USAGE
++  exit 1
++}
++error_exit() {
++  ${2+:} false && echo "${0##*/}: $2" 1>&2
++  exit $1
++}
++
++# === Exec the built-in mktemp command if OK and exists ==============
++by_myself=0
++case "${1:-}" in 
++  '--by-myself')
++     shift; by_myself=1
++     ;;
++  *) export mydir=$(d=${0%/*}/;[ "_$d" = "_$0/" ]||cd "$d";echo "$(pwd)")
++     path0=${PATH:-}
++     PATH=$(printf  '%s\n' "$path0"                |
++            tr      ':' '\n'                       |
++            awk     '$0!=ENVIRON["mydir"]{print;}' |
++            tr      '\n' ':'                       |
++            grep -v '^:$'                          |
++            sed     's/:$//'                       )
++     CMD_builtin=$(command -v mktemp 2>/dev/null || :)
++     case "$CMD_builtin" in '') by_myself=1;; esac
++     PATH=$path0
++     unset mydir
++     ;;
++esac
++case $by_myself in 0) exec "$CMD_builtin" ${1+"$@"}; exit 1;; esac
++
++# === Investigate the temporary directory if set =====================
++Dir_tmp=$(set | grep ^TMPDIR= | sed 's/^[^=]\{1,\}=//');
++case "$Dir_tmp" in
++  '') Dir_tmp='/tmp'      ;;
++  /)  Dir_tmp='/.'        ;;
++  *)  Dir_tmp=${Dir_tmp%/};;
++esac
++
++# === Misc definitions ===============================================
++chrs='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_'
++max_retry_when_failed=10
++LFs=$(printf '\\\n_');LFs=${LFs%_}
++
++
++######################################################################
++# Parse Arguments
++######################################################################
++
++# === Get the options and the filepath ===============================
++# --- initialize option parameters -----------------------------------
++optd=0
++optu=0
++optq=0
++optt=0
++opts=''
++#
++# --- get them -------------------------------------------------------
++optmode=''
++while [ $# -gt 0 ]; do
++  case $# in 0) break;; esac
++  case "$optmode" in
++    '') case "$1" in
++          -[duqtp]*)   s=$(printf '%s\n' "${1#-}"                        |
++                           awk '{d = "_"; u = "_"; q = "_";              #
++                                 t = "_"; p = "_"; err = 0;              #
++                                 for (i=1;i<=length($0);i++) {           #
++                                   s = substr($0,i,1);                   #
++                                   if      (s == "d") { d   = "d"; }     #
++                                   else if (s == "u") { u   = "u"; }     #
++                                   else if (s == "q") { q   = "q"; }     #
++                                   else if (s == "t") { t   = "t"; }     #
++                                   else if (s == "p") { p   =  p ; }     #
++                                   else               { err =  1 ; }     #
++                                 }                                       #
++                                 p = (substr($0,i-1)=="p") ? "p" : "_";  #
++                                 printf("%s%s%s%s%s%s",d,u,q,t,p,err); }')
++                       case "$s" in *1*) print_usage_and_exit;; esac
++                       case "$s" in *d*) optd=1              ;; esac
++                       case "$s" in *u*) optu=1              ;; esac
++                       case "$s" in *q*) optq=1              ;; esac
++                       case "$s" in *t*) optt=1              ;; esac
++                       case "$s" in *p*) optmode='p'         ;; esac
++                       shift; continue
++                       ;;
++          --directory) optd=1     ; shift; continue;;
++          --dry-run)   optu=1     ; shift; continue;;
++          --quiet)     optq=1     ; shift; continue;;
++          --tmpdir)                 shift; continue;;
++          --tmpdir=*)  optmode='p'
++                       s=${1#--tmpdir=}            ;;
++          --suffix=*)  optmode='s'
++                       s=${1#--suffix=}            ;;
++          -*)          print_usage_and_exit ;;
++        esac                                         ;;
++    *)  s=$1                                         ;;
++  esac
++  case "$optmode" in
++    p) [ -d "$s" ] || error_exit 1 'Invalid path by -p,--tmpdir option'
++       Dir_tmp=${s%/}; [ -n "$Dir_tmp" ] || Dir_tmp='/.'
++       optmode=''; shift; continue        ;;
++    s) { printf '%s' "$s" | grep -q '/'; } && {
++         error_exit 1 'Invalid suffix option'
++       }
++       opts=$s
++       optmode=''; shift; continue        ;;
++  esac
++  break
++done
++
++
++######################################################################
++# Prepare for the Main Routine
++######################################################################
++
++# ===== FUNC: random string generator ================================
++# arg   : $1=length
++# ret   : 0
++# stdout: generated random string
++random_string () {
++  # calculate the number of words which required
++  nw=$(echo "${1}*l(${#chrs})/11.09+1" | # 11.09=ln(65536)
++       bc -l                           |
++       sed 's/\..*$//'                 )
++
++  # make a random hexadecimal digit
++  if [ -c /dev/urandom ]; then
++    hstr=$(dd if=/dev/urandom bs=2 count=$nw 2>/dev/null |
++           od -A n -t x2 -v                              |
++           tr 'abcdef ' 'ABCDEF\n'                       |
++           tr -Cd 0123456789ABCDEF                       )
++  else
++    hstr=$( (ps -Ao pid,etime,pcpu,vsz; date)         |
++           od -t d4 -A n -v                           |
++           sed 's/[^0-9]\{1,\}/'"$LFs"'/g'            |
++           grep '[0-9]'                               |
++           tail -n 42                                 |
++           sed 's/.*\(.\{8\}\)$/\1/g'                 |
++           awk 'BEGIN{a=-2147483648;}                 #
++                     {a+=$1;        }                 #
++                END  {                                #
++                  srand(a);                           #
++                  for(i=0;i<'$nw';i++){               #
++                    printf("%02X",int(rand()*65536)); #
++                  }                                   #
++                }'                                    )
++  fi
++
++  # make a random string from the hexadecimal digit
++  echo "obase=${#chrs};ibase=16;$hstr"         |
++  bc                                           |
++  tr -d '\\\n'                                 |
++  tr ' ' '\n'                                  |
++  awk 'BEGIN  {for(i=1;i<'$1';i++){print 0;}}  #
++       /[0-9]/{print;                       }' |
++  awk 'BEGIN  {ORS="";                         #
++               s="'"$chrs"'";                  #
++               for(i=0;i<length(s);i++){       #
++                 c[i]=substr(s,i+1,1);         #
++               }                        }      #
++       /[0-9]/{print c[$0*1];           }'     |
++  tail -c $1
++}
++
++
++######################################################################
++# Main Routine
++######################################################################
++
++case $# in 0) optt=1; set -- 'tmp.XXXXXXXXXX';; esac
++
++err=0
++for arg in "$@"; do
++
++  # --- Make dir string for printing ---------------------------------
++  Dir_trg=${arg%/*}
++  case "$Dir_trg" in
++    "$arg") case $optt in
++              0) Dir_trg=''
++                 ;;
++              *) Dir_trg="$Dir_tmp/"
++                 case "$Dir_trg" in '/./') Dir_trg=/;; esac
++                 ;;
++            esac
++            ;;
++         *) Dir_trg="$Dir_trg/"
++            ;;
++  esac
++
++  n=$max_retry_when_failed
++  while [ $n -ge 0 ]; do
++
++    # --- Making the file path ---------------------------------------
++    #
++    # replace the end of "XXX..." string to a random one
++    Path_target=$arg
++    s=$(printf '%s\n' "$Path_target" | sed 's/X*$//')
++    i=$((${#Path_target}-${#s}))
++    case $i in
++      0) :                                    ;;
++      *) Path_target="${s}$(random_string $i)";;
++    esac
++    #
++    # add the suffix
++    Path_target="${Path_target}${opts}"
++    #
++    # add the prefix if the option -t is enabled
++    case $optt in 1) Path_target="${Dir_tmp}/${Path_target}";; esac
++    #
++    # normalize
++    Path_target=$(printf '%s\n' "$Path_target" |
++                  sed 's!//!/!g'               |
++                  sed 's!/./!/!g'              )
++    #
++    # for security
++    case "$Path_target" in
++      -|/*|./*|../*) :                           ;;
++                  *) Path_target="./$Path_target";;
++    esac
++
++    # --- Making the file --------------------------------------------
++    case $optd in
++      0) (set -C; umask 177;   : > "$Path_target") 2>/dev/null || {
++           [ -f "$Path_target" ] && { n=$((n-1)); continue; }
++           n=-1; break;
++         }
++         ;;
++      1)          umask 077; mkdir "$Path_target"  2>/dev/null || {
++           [ -d "$Path_target" ] && { n=$((n-1)); continue; }
++           n=-1; break;
++         }
++         ;;
++    esac
++
++    break
++  done
++
++  # --- Print error message when failed to make a file ---------------
++  case "${optq}${n}" in
++    '0-1') printf '%s\n' "${0##*/}: failed on $Dir_trg${Path_target##*/}" 1>&2
++           err=1
++           continue
++           ;;
++    '1-1') err=1
++           continue
++           ;;
++  esac
++
++  # --- Print the path of the file -----------------------------------
++  printf '%s%s\n' "$Dir_trg" "${Path_target##*/}"
++
++  # --- Remove the file if -u,--dry-run option is set ----------------
++  case $optu in 1) rm -rf "$Path_target";; esac
++
++done
++
++
++######################################################################
++# Finish
++######################################################################
++
++exit $err
+diff '--color=auto' --recursive --unified --new-file misc-tools.OG/misc-tools-rev misc-tools/misc-tools-rev
+--- misc-tools.OG/misc-tools-rev	1970-01-01 09:00:00.000000000 +0900
++++ misc-tools/misc-tools-rev	2024-02-10 13:12:56.905681694 +0900
+@@ -0,0 +1,102 @@
++#!/bin/sh
++
++######################################################################
++#
++# REV - A POSIX Compatible Implementation of the "rev" Command
++#       Also Works on Just a POSIX Environment
++#
++# USAGE: rev [--by-myself] [filename ...]
++#
++#        --by-myself .... (write as the 1st argument when use)
++#                         Not use the "built-in" rev command and always
++#                         do seq by myself but it is inferior to the
++#                         built-in in performance
++#                         with leading zeros.
++#
++# Written by Shell-Shoccar Japan (@shellshoccarjpn) on 2020-05-06
++#
++# This is a public-domain software (CC0). It means that all of the
++# people can use this for any purposes with no restrictions at all.
++# By the way, We are fed up with the side effects which are brought
++# about by the major licenses.
++#
++# The latest version is distributed at the following page.
++# https://github.com/ShellShoccar-jpn/misc-tools
++#
++######################################################################
++
++
++######################################################################
++# Initial Configuration
++######################################################################
++
++# === Initialize shell environment ===================================
++set -u
++umask 0022
++export LC_ALL=C
++export PATH="$(command -p getconf PATH 2>/dev/null)${PATH+:}${PATH-}"
++case $PATH in :*) PATH=${PATH#?};; esac
++export UNIX_STD=2003  # to make HP-UX conform to POSIX
++
++# === Define the functions for printing usage and error message ======
++print_usage_and_exit () {
++  cat <<-USAGE 1>&2
++	Usage   : ${0##*/} [--by-myself] [filename ...]
++	Arg&Opts: Almost compatible with the original rev command
++	          But --by-myself is the only original option, it prevent
++	          from use the built-in same name command even if available
++	Version : 2020-05-06 22:42:19 JST
++	          (POSIX Bourne Shell/POSIX commands)
++	            * Although the bult-in rev produces better performance
++	              than the POSIX commands set
++	USAGE
++  exit 1
++}
++error_exit() {
++  ${2+:} false && echo "${0##*/}: $2" 1>&2
++  exit $1
++}
++warning() {
++  ${1+:} false && echo "${0##*/}: $1" 1>&2
++}
++
++# === Exec the built-in rev command if OK and exists =================
++by_myself=0
++case "${1:-}" in 
++  '--by-myself')
++     shift; by_myself=1
++     ;;
++  *) export mydir=$(d=${0%/*}/;[ "_$d" = "_$0/" ]||cd "$d";echo "$(pwd)")
++     path0=${PATH:-}
++     PATH=$(printf  '%s\n' "$path0"                |
++            tr      ':' '\n'                       |
++            awk     '$0!=ENVIRON["mydir"]{print;}' |
++            tr      '\n' ':'                       |
++            grep -v '^:$'                          |
++            sed     's/:$//'                       )
++     CMD_builtin=$(command -v rev 2>/dev/null || :)
++     case "$CMD_builtin" in '') by_myself=1;; esac
++     PATH=$path0
++     unset mydir
++     ;;
++esac
++case $by_myself in 0) exec "$CMD_builtin" ${1+"$@"}; exit 1;; esac
++
++
++######################################################################
++# Argument Parsing and Reversing
++######################################################################
++
++# === print help if requested ========================================
++case "${1:-}" in -h|-v|--help|--version) print_usage_and_exit;; esac
++
++# === do it ==========================================================
++awk 'BEGIN { ORS="";                                               }
++     { for(i=length($0);i>0;i--){print substr($0,i,1);} print "\n";}' ${1+"$@"}
++
++
++######################################################################
++# Finish
++######################################################################
++
++exit 0
+diff '--color=auto' --recursive --unified --new-file misc-tools.OG/misc-tools-seq misc-tools/misc-tools-seq
+--- misc-tools.OG/misc-tools-seq	1970-01-01 09:00:00.000000000 +0900
++++ misc-tools/misc-tools-seq	2024-02-10 13:12:56.905681694 +0900
+@@ -0,0 +1,279 @@
++#!/bin/sh
++
++######################################################################
++#
++# SEQ - A POSIX Compatible Implementation of the "seq" Command
++#       Also Works on Just a POSIX Environment
++#
++# USAGE: seq [options] last
++#        seq [options] first last
++#        seq [options] first increment last
++#
++#        --by-myself .... (write as the 1st argument when use)
++#                         Not use the "built-in" seq command and always
++#                         do seq by myself but it is inferior to the
++#                         built-in in performance
++#        -f <format> .... Print all numbers using format.
++#        -s <string> .... Separate numbers with string; default is a newline.
++#        -w ............. Print all numbers with the same width, by padding
++#                         with leading zeros.
++#
++# Written by Shell-Shoccar Japan (@shellshoccarjpn) on 2020-05-06
++#
++# This is a public-domain software (CC0). It means that all of the
++# people can use this for any purposes with no restrictions at all.
++# By the way, We are fed up with the side effects which are brought
++# about by the major licenses.
++#
++# The latest version is distributed at the following page.
++# https://github.com/ShellShoccar-jpn/misc-tools
++#
++######################################################################
++
++
++######################################################################
++# Initial Configuration
++######################################################################
++
++# === Initialize shell environment ===================================
++set -u
++umask 0022
++export LC_ALL=C
++export PATH="$(command -p getconf PATH 2>/dev/null)${PATH+:}${PATH-}"
++case $PATH in :*) PATH=${PATH#?};; esac
++export UNIX_STD=2003  # to make HP-UX conform to POSIX
++
++# === Define the functions for printing usage and error message ======
++print_usage_and_exit () {
++  cat <<-USAGE 1>&2
++	Usage   : ${0##*/} [options] last
++	          ${0##*/} [options] first last
++	          ${0##*/} [options] first increment last
++	Arg&Opts: Almost compatible with GNU seq
++	          The following options are available and compatible with it
++	            -f <format>, -s <string>, -w
++	          But --by-myself is the only original option, it prevent
++	          from use the built-in same name command even if available
++	Version : 2020-05-06 22:42:19 JST
++	          (POSIX Bourne Shell/POSIX commands)
++	            * Although the bult-in seq produces better performance
++	              than the POSIX commands set
++	USAGE
++  exit 1
++}
++error_exit() {
++  ${2+:} false && echo "${0##*/}: $2" 1>&2
++  exit $1
++}
++
++# === Exec the built-in seq command if OK and exists =================
++by_myself=0
++case "${1:-}" in 
++  '--by-myself')
++     shift; by_myself=1
++     ;;
++  *) export mydir=$(d=${0%/*}/;[ "_$d" = "_$0/" ]||cd "$d";echo "$(pwd)")
++     path0=${PATH:-}
++     PATH=$(printf  '%s\n' "$path0"                |
++            tr      ':' '\n'                       |
++            awk     '$0!=ENVIRON["mydir"]{print;}' |
++            tr      '\n' ':'                       |
++            grep -v '^:$'                          |
++            sed     's/:$//'                       )
++     CMD_builtin=$(command -v seq 2>/dev/null || :)
++     case "$CMD_builtin" in '') by_myself=1;; esac
++     PATH=$path0
++     unset mydir
++     ;;
++esac
++case $by_myself in 0) exec "$CMD_builtin" ${1+"$@"}; exit 1;; esac
++
++
++######################################################################
++# Argument Parsing
++######################################################################
++
++# === Get the options and the filepath ===============================
++# --- initialize option parameters -----------------------------------
++optf=''
++opts='\n'
++optw=0
++n_1st=1
++n_inc=1
++n_lst=''
++#
++# --- get them -------------------------------------------------------
++optmode=''
++while :; do
++  case $# in 0) break;; esac
++  case "$optmode" in
++    '') case "$1" in
++          -)       case $# in 1) break;; esac
++                   ;;
++          -[fsw]*) s=$(printf '%s\n' "${1#-}"                          |
++                       awk '{f = "_"; s = "_"; w = "_"; err="";        #
++                             l = length($0);                           #
++                             for (n=1;n<=l;n++) {                      #
++                               c = substr($0, n, 1);                   #
++                               if      (c=="f") { f   = "f"; break; }  #
++                               else if (c=="s") { s   = "s"; break; }  #
++                               else if (c=="w") { w   = "w";        }  #
++                               else             { err = "!";        }  #
++                             }                                         #
++                             arg = (n<l) ? substr($0,n+1) : "";        #
++                             printf("%s%s%s%s %s",err,f,s,w,arg);    }')
++                   arg=${s#* }
++                   s=${s%% *}
++                   case "$s" in '!'*) print_usage_and_exit;; esac
++                   case "$s" in  *w*) optw=1              ;; esac
++                   case "$s" in  *f*) optmode='f'         ;; esac
++                   case "$s" in  *s*) optmode='s'         ;; esac
++                   shift;
++                   case "$arg" in '') continue;; esac
++                   ;;
++          --format=*)
++                   optf=${s#--format=}
++                   shift
++                   continue
++                   ;;
++          --separator=*)
++                   opts=${s#--format=}
++                   shift
++                   continue
++                   ;;
++          -[0-9]*) break
++                   ;;
++          -*)      print_usage_and_exit
++                   ;;
++          *)       break
++                   ;;
++        esac
++        ;;
++    *)  arg=$1
++        shift
++        ;;
++  esac
++  case "$optmode" in
++    f) optf=$arg                ;;
++    s) opts=$arg                ;;
++    *) echo 'ERROR' 1>&2; exit 1;;
++  esac
++  optmode=''
++done
++case "$#" in
++  1) n_lst=$1                    ;;
++  2) n_1st=$1; n_lst=$2          ;;
++  3) n_1st=$1; n_inc=$2; n_lst=$3;;
++  *) 
++esac
++
++# === Vaidate arguments ==============================================
++[ $optw -gt 0 ] && [ -n "$optf" ] && {
++  error_exit 1 'format string may not be specified when printing equal width strings'
++}
++[ -n "$optf" ] && {
++  printf '%s\n' "$optf" | grep -Eq '%(-?[0-9]+(\.[0-9]+)?)?[AaEeFfGg]' || {
++    error_exit 1 'The format you gave me has no % directive'
++  }
++  case "$(printf '%s\n' "$optf" | sed 's/\%\(-\{0,1\}[0-9]\{1,\}\(\.[0-9]\{1,\}\)\{0,1\}\)\{0,1\}[AaEeFfGg%]//')" in
++    *%*) error_exit 1 'The format you gave me is invalid or has too many % directives';;
++    *)   :                                                                            ;;
++  esac
++}
++n_pattern='^[+-]?[0-9]+(\.[0-9]+)?([eE][+-][0-9]{1,2})?$'
++printf '%s\n' "$n_1st" | grep -Eq "$n_pattern" || {
++  error_exit 1 '"first" floating point argument is invalid'
++}
++printf '%s\n' "$n_inc" | grep -Eq "$n_pattern" || {
++  error_exit 1 '"increment" floating point argument is invalid'
++}
++printf '%s\n' "$n_lst" | grep -Eq "$n_pattern" || {
++  error_exit 1 '"last" floating point argument is invalid'
++}
++
++
++######################################################################
++# Make strings for AWK
++######################################################################
++
++# === Generate the format by "-w" ====================================
++[ $optw -gt 0 ] && {
++  optf=$(printf '%f %f %f' "$n_1st" "$n_inc" "$n_lst"               |
++         grep -v 'Ee'                                               |
++         tr   ' ' '\n'                                              |
++         sed  '/\./s/0\{1,\}$//'                                    |
++         sed  's/\.$//'                                             |
++         sed  's/^\([+-]\{0,1\}\)0\{1,\}/\1/'                       |
++         sed  's/^\([+-]\{0,1\}\)\./\10./'                          |
++         sed  's/^\([+-]\{0,1\}\)$/\10/'                            |
++         awk  'BEGIN {N=0; n=0;                                   } #
++                     {p=index($1,".");                              #
++                      i=length($0);                                 #
++                      if (p>0) {j=i-p; i=p-1;}                      #
++                      N=(i>N)?i:N; n=(j>n)?j:n;                   } #
++               END   {if      (n>0) {printf("%%0%d.%df",N+1+n,n);}  #
++                      else if (N>0) {printf("%%0%dd"   ,N      );}  #
++                      else          {printf("%%g"              );}}')
++}
++
++# === Generate the format if not specified ===========================
++[ -z "$optf" ] && {
++  if printf '%s%s%s\n' "$n_1st" "$n_inc" "$n_lst" | grep -Eq '^[0-9]$'; then
++    optf='%d'
++  else
++    optf='%g'
++  fi
++}
++
++# === Convert the format string for AWK ==============================
++optf=$( (printf '%s' "$optf";echo) |
++        sed '$!s/$/\\n/'           |
++        tr -d '\n'                 |
++        grep  ^                    |
++        sed 's/"/\\"/g'            )
++
++# === Convert the "-s" option string for AWK =========================
++opts=$( (printf '%s' "$opts";echo) |
++        sed '$!s/$/\\n/'           |
++        tr -d '\n'                 |
++        grep  ^                    |
++        sed 's/"/\\"/g'            )
++
++# === Add a sign to the <increment> number ===========================
++case "$n_inc" in [0-9.]*) n_inc="+$n_inc";; esac
++
++
++######################################################################
++# Main routine
++######################################################################
++
++# === Run "seq"-like script ==========================================
++awk 'BEGIN{                                                 #
++       if ('"$n_inc"' >= 0) {                               #
++         # --- increment routine -------------------------- #
++         if ('"$n_1st"' > '"$n_lst"') {exit;}               #
++         i='"$n_1st"';                                      #
++         printf("'"$optf"'", i);                            #
++         i=i'"$n_inc"';                                     #
++         for (            ; i<='"$n_lst"'; i=i'"$n_inc"') { #
++           printf("%s'"$optf"'", "'"$opts"'", i);           #
++         }                                                  #
++       } else {                                             #
++         # --- decrement routine -------------------------- #
++         if ('"$n_1st"' < '"$n_lst"') {exit;}               #
++         i='"$n_1st"';                                      #
++         printf("'"$optf"'", i);                            #
++         i=i'"$n_inc"';                                     #
++         for (            ; i>='"$n_lst"'; i=i'"$n_inc"') { #
++           printf("%s'"$optf"'", "'"$opts"'", i);           #
++         }                                                  #
++       }                                                    #
++     }'                                                     |
++grep ''
++
++
++######################################################################
++# Finish
++######################################################################
++
++exit 0
+diff '--color=auto' --recursive --unified --new-file misc-tools.OG/misc-tools-truncate misc-tools/misc-tools-truncate
+--- misc-tools.OG/misc-tools-truncate	1970-01-01 09:00:00.000000000 +0900
++++ misc-tools/misc-tools-truncate	2024-02-10 13:12:56.905681694 +0900
+@@ -0,0 +1,450 @@
++#!/bin/sh
++ 
++######################################################################
++#
++# TRUNCATE - The "truncate"-Like Command Also Works on Just a POSIX Environment
++#
++# USAGE: truncate [--by-myself] [-c] -s [+|-]size[K|k|M|m|G|g|T|t] file ...
++#        truncate [--by-myself] [-c] -r rfile file ...
++#
++#        --by-myself ..... (write as the 1st argument when use)
++#                          Not use the "built-in" mktemp command
++#                          and always do mktemp by myself but it is
++#                          inferior to the built-in in performance
++#        -c .............. Do not create files if they do not exist.
++#                           The truncate utility does not treat this
++#                           as an error.
++#        -r <rfile> ...... Truncate or extend files to the length of
++#                          the file <rfile>.
++#        -s [+|-]<size>[K|k|M|m|G|g|T|t]
++#                      ... Truncate or extend files by the <size> value.
++#                          When "+" or "-" is written at first, it means
++#                          relative, otherwise absolute.
++#                          And when the unit suffix is written at last,
++#                          the value is multiplied by the unit suffix.
++#
++# Written by Shell-Shoccar Japan (@shellshoccarjpn) on 2020-12-06
++#
++# This is a public-domain software (CC0). It means that all of the
++# people can use this for any purposes with no restrictions at all.
++# By the way, We are fed up with the side effects which are brought
++# about by the major licenses.
++#
++# The latest version is distributed at the following page.
++# https://github.com/ShellShoccar-jpn/misc-tools
++#
++######################################################################
++
++
++######################################################################
++# Initial Configuration
++######################################################################
++
++# === Initialize shell environment ===================================
++set -u
++umask 0022
++export LC_ALL=C
++export PATH="$(command -p getconf PATH 2>/dev/null)${PATH+:}${PATH-}"
++case $PATH in :*) PATH=${PATH#?};; esac
++export UNIX_STD=2003  # to make HP-UX conform to POSIX
++
++# === Define the functions for printing usage and error message ======
++print_usage_and_exit () {
++  cat <<-USAGE 1>&2
++	Usage   : ${0##*/} [--by-myself] [-c] -s [+|-]size[K|k|M|m|G|g|T|t] file ...
++	          ${0##*/} [--by-myself] [-c] -r rfile file ...
++	Options : --by-myself ..... (write as the 1st argument when use)
++	                            Not use the "built-in" mktemp command
++	                            and always do mktemp by myself but it is
++	                            inferior to the built-in in performance
++	          -c .............. Do not create files if they do not exist.
++	                             The truncate utility does not treat this
++	                             as an error.
++	          -r <rfile> ...... Truncate or extend files to the length of
++	                            the file <rfile>.
++	          -s [+|-]<size>[K|k|M|m|G|g|T|t]
++	                        ... Truncate or extend files by the <size> value.
++	                            When "+" or "-" is written at first, it means
++	                            relative, otherwise absolute.
++	                            And when the unit suffix is written at last,
++	                            the value is multiplied by the unit suffix.
++	Version : 2020-12-06 02:48:45 JST
++	USAGE
++  exit 1
++}
++warning() {
++  ${1+:} false && echo "${0##*/}: $1" 1>&2
++}
++error_exit() {
++  ${2+:} false && echo "${0##*/}: $2" 1>&2
++  exit $1
++}
++exit_trap() {
++  set -- ${1:-} $?  # $? is set as $1 if no argument given
++  trap '' EXIT HUP INT QUIT PIPE ALRM TERM
++  rm -f "${Tempfile:-}"
++  trap -  EXIT HUP INT QUIT PIPE ALRM TERM
++  exit $1
++}
++
++# === Exec the built-in truncate command if OK and exists ============
++by_myself=0
++case "${1:-}" in 
++  '--by-myself')
++     shift; by_myself=1
++     ;;
++  *) export mydir=$(d=${0%/*}/;[ "_$d" = "_$0/" ]||cd "$d";echo "$(pwd)")
++     path0=${PATH:-}
++     PATH=$(printf  '%s\n' "$path0"                |
++            tr      ':' '\n'                       |
++            awk     '$0!=ENVIRON["mydir"]{print;}' |
++            tr      '\n' ':'                       |
++            grep -v '^:$'                          |
++            sed     's/:$//'                       )
++     CMD_builtin=$(command -v truncate 2>/dev/null || :)
++     case "$CMD_builtin" in '') by_myself=1;; esac
++     PATH=$path0
++     unset mydir
++     ;;
++esac
++case $by_myself in 0) exec "$CMD_builtin" ${1+"$@"}; exit 1;; esac
++
++# === Confirm the required commands exist ============================
++# --- 
++if   type bc >/dev/null 2>&1                                      ; then
++  CMD_CALC='bc'
++elif [ "$(expr 9223372036854775806 + 1)" = '9223372036854775807' ]; then
++  CMD_CALC='xargs expr'
++else
++  error_exit 1 'bc command or 64bit-expr command is required'
++fi
++
++
++######################################################################
++# Register Functions
++######################################################################
++
++# === FUNC: exec the mktemp command if exists ========================
++get_attr_and_size0() {
++  attr=$1
++  size0=$(ls -adl "$attr" 2>/dev/null) || [ ! -e "$attr" ] || {
++    attr=''
++    size0=''
++    return 1
++  }
++  set -- $size0
++  attr=${1:-}
++  size0=${5:-0}
++  return 0
++}
++
++# === FUNC: Make a Temporary File ====================================
++# arg   : (none)
++# ret   : 0 when succeeded
++# stdout: path of the generated temporary file
++LFs=$(printf '\\\n_');LFs=${LFs%_}
++mktempf0() {
++  # --- parameters, etc. ---------------------------------------------
++  num_of_digits=16  # Length of Random String
++  n=10              # Max Times of Retrying
++  chrs='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_'
++                    # Available letters
++  # --- call built-in mktemp if exists -------------------------------
++  type mktemp >/dev/null 2>&1 && {
++    mktemp -t tmp.${0##*/}.$$.XXXXXXXXXXXXXXXX
++    return $?
++  }
++  # --- set the temporary directory ----------------------------------
++  Dir_tmp=$(set | grep -q ^TMPDIR= | sed 's/^[^=]\{1,\}=//');
++  case "$Dir_tmp" in
++    '') Dir_tmp='/tmp'      ;;
++    /)  Dir_tmp=''          ;;
++    *)  Dir_tmp=${Dir_tmp%/};;
++  esac
++  # --- mktemp loop --------------------------------------------------
++  while [ $n -ge 0 ]; do
++    # --- Generate Ramdom string -------------------------------------
++    # calculate the number of words which required
++    nw=$(echo "${num_of_digits}*l(${#chrs})/11.09+1" | # 11.09=ln(65536)
++         bc -l                                       |
++         sed 's/\..*$//'                             )
++    # make a random hexadecimal digit
++    if [ -c /dev/urandom ]; then
++      hstr=$(dd if=/dev/urandom bs=2 count=$nw 2>/dev/null |
++             od -A n -t x2 -v                              |
++             tr 'abcdef ' 'ABCDEF\n'                       |
++             tr -Cd 0123456789ABCDEF                       )
++    else
++      hstr=$( (ps -Ao pid,etime,pcpu,vsz; date)         |
++             od -t d4 -A n -v                           |
++             sed 's/[^0-9]\{1,\}/'"$LFs"'/g'            |
++             grep '[0-9]'                               |
++             tail -n 42                                 |
++             sed 's/.*\(.\{8\}\)$/\1/g'                 |
++             awk 'BEGIN{a=-2147483648;}                 #
++                       {a+=$1;        }                 #
++                  END  {                                #
++                    srand(a);                           #
++                    for(i=0;i<'$nw';i++){               #
++                      printf("%02X",int(rand()*65536)); #
++                    }                                   #
++                  }'                                    )
++    fi
++    # make a random string from the hexadecimal digit
++    s=$(echo "obase=${#chrs};ibase=16;$hstr"                     |
++        bc                                                       |
++        tr -d '\\\n'                                             |
++        tr ' ' '\n'                                              |
++        awk 'BEGIN  {for(i=1;i<'$num_of_digits';i++){print 0;}}  #
++             /[0-9]/{print;                                   }' |
++        awk 'BEGIN  {ORS="";                                     #
++                     s="'"$chrs"'";                              #
++                     for(i=0;i<length(s);i++){                   #
++                       c[i]=substr(s,i+1,1);                     #
++                     }                        }                  #
++             /[0-9]/{print c[$0*1];           }'                 |
++        tail -c $num_of_digits                                   )
++    # --- Making the file path ---------------------------------------
++    Path_target="${Dir_tmp}/tmp.${0##*/}.$$.$s"
++    # --- Making the file --------------------------------------------
++    (set -C; umask 177; : > "$Path_target") 2>/dev/null || {
++      [ -f "$Path_target" ] && { n=$((n-1)); continue; }
++      n=-1; break;
++    }
++    break
++  done
++  # --- print error message when failed to make a file ---------------
++  case "$n" in -1) return 1;; esac
++  # --- print the path of the file -----------------------------------
++  printf '%s\n' "$Path_target"
++  # --- return successfully ------------------------------------------
++  return 0
++}
++
++
++######################################################################
++# Parse Arguments
++######################################################################
++
++# === Get the options ================================================
++# --- initialize option parameters -----------------------------------
++optc=0    # 1 when -c is set
++opto=0    # not implemented yet
++asize=''  # absolute size which is wanted
++dsize=''  # delta-size which is wanted
++#
++# --- get them -------------------------------------------------------
++optmode=''
++while :; do
++  case $# in 0) break;; esac
++  case "$optmode" in
++    '') case "$1" in
++          -[cors]*)      s=$(printf '%s\n' "$1"                              |
++                             awk '{c = "_"; o = "_"; r = "_"; s = "_";       #
++                                   for (i=2;i<=length($0);i++) {             #
++                                     l = substr($0,i,1);                     #
++                                     if      (l == "c") { c = "c";        }  #
++                                     else if (l == "o") { o = "o";        }  #
++                                     else if (l == "r") { r = "r"; break; }  #
++                                     else if (l == "s") { s = "s"; break; }  #
++                                     else               { c = "_";           #
++                                                          o = "_";           #
++                                                          r = "_";           #
++                                                          s = "_"; break; }  #
++                                   }                                         #
++                                   str = substr($0,i+1);                     #
++                                   printf("%s%s%s%s/%s",c,o,r,s,str);      }')
++                         case "$s" in ____/*) print_usage_and_exit;; esac
++                         case "$s" in c???/*) optc=1     ;; esac
++                         case "$s" in ?o??/*) opto=1     ;; esac
++                         case "$s" in ??r?/*) optmode='r';; esac
++                         case "$s" in ???s/*) optmode='s';; esac
++                         s=${s#????/}
++                         case "$s" in '') shift; continue;; esac              ;;
++          --no-create)   optc=1     ; shift; continue                         ;;
++          --io-blocks)   opto=1     ; shift; continue                         ;;
++          --reference=*) optmode='r'; s=${1#--reference=}                     ;;
++          --size=*)      optmode='s'; s=${1#--size=}                          ;;
++          -*)            print_usage_and_exit                                 ;;
++        esac
++        ;;
++    *)  s=$1
++        ;;
++  esac
++  case "$optmode" in
++    r) case "$s" in /*|./*|../*) file=$s;; *) file="./$s";; esac
++       while :; do
++         get_attr_and_size0 "$file" || {
++           error_exit 1 'Cannot open (Permission denied): '"$s"
++         }
++         case "$attr" in
++           '') # skip when option -c is set
++               error_exit 1 'No such file or directory: '"$s"
++               ;;
++           -*) break
++               ;;
++           l*) s=$(printf '%s\n' "$file"       |
++                   sed 's/\([].\*/[]\)/\\\1/g' |
++                   sed 's/^\^/\\^/'            |
++                   sed 's/\$$/\\$/'            )
++               srcfile=$(file "$file"                              |
++                         sed 's/^.\{'"$s"'\}: symbolic link to //' |
++                         sed 's/^`\(.*\)'"'"'$/\1/'                )
++               case "$srcfile" in
++                 /*) file=$srcfile             ;;
++                  *) file="${file%/*}/$srcfile";;
++               esac
++               continue
++               ;;
++           d*) break
++               ;;
++            *) error_exit 1 'Not a regular file: '"$file0"
++               ;;
++         esac
++       done
++       asize=$size0
++       dsize=''
++       shift
++       optmode=''
++       continue
++       ;;
++    s) printf '%s' "$s"                        |
++       awk '/^[0-9]+[KkMmGgTt]?$/    {exit 0;} #
++            /^[+-][0-9]+[KkMmGgTt]?$/{exit 1;} #
++                                     {exit 2;}'
++       case $? in
++         0) case "$s" in
++              *[0-9]) asize=$s                                          ;;
++              *[Kk])  asize=$(echo "${s%?} * 1024"          | $CMD_CALC);;
++              *[Mm])  asize=$(echo "${s%?} * 1048576"       | $CMD_CALC);;
++              *[Gg])  asize=$(echo "${s%?} * 1073741824"    | $CMD_CALC);;
++              *[Tt])  asize=$(echo "${s%?} * 1099511627776" | $CMD_CALC);;
++            esac
++            dsize=''
++            ;;
++         1) s=${s#+}
++            case "$s" in
++              *[0-9]) dsize=$s                                          ;;
++              *[Kk])  dsize=$(echo "${s%?} * 1024"          | $CMD_CALC);;
++              *[Mm])  dsize=$(echo "${s%?} * 1048576"       | $CMD_CALC);;
++              *[Gg])  dsize=$(echo "${s%?} * 1073741824"    | $CMD_CALC);;
++              *[Tt])  dsize=$(echo "${s%?} * 1099511627776" | $CMD_CALC);;
++            esac
++            asize=''
++            ;;
++         2) error_exit 1 'Invalid size by -s,--size option'
++            ;;
++       esac
++       shift
++       optmode=''
++       continue
++       ;;
++  esac
++  break
++done
++
++
++######################################################################
++# Main Routine
++######################################################################
++
++case $# in 0) print_usage_and_exit;; esac
++err=0
++for file0 in "$@"; do
++  case "$file0" in /*|./*|../*) file=$file0;; *) file="./$file0";; esac
++
++  # --- 1) Search the regular file path and the size of that file ----
++  while :; do
++    get_attr_and_size0 "$file" || {
++      warning 'Cannot open (Permission denied): '"$file0"
++      continue 2
++    }
++    case "$attr" in
++      '') # skip when option -c is set
++          case $optc in 0) break;; 1) continue 2;; esac
++          ;;
++      -*) break
++          ;;
++      l*) s=$(printf '%s\n' "$file"       |
++              sed 's/\([].\*/[]\)/\\\1/g' |
++              sed 's/^\^/\\^/'            |
++              sed 's/\$$/\\$/'            )
++          srcfile=$(file "$file"                              |
++                    sed 's/^.\{'"$s"'\}: symbolic link to //' |
++                    sed 's/^`\(.*\)'"'"'$/\1/'                )
++          case "$srcfile" in
++            /*) file=$srcfile             ;;
++             *) file="${file%/*}/$srcfile";;
++          esac
++          continue
++          ;;
++      d*) warning 'It is a directory: '"$file0"
++          err=1
++          continue 2
++          ;;
++       *) #waring 'Not a regular file: '"$file0"
++          #err=1
++          continue 2
++          ;;
++    esac
++  done
++
++  # --- 2) Re-calculate $dsize(delta-size) when $asize(absolute size) is set
++  case "${asize}:${dsize}" in
++    :[0-9-]*) size1=$(echo "$dsize + $size0" | $CMD_CALC)   # when only dsize
++              case $size1 in -*) size1=0;; esac          ;;
++    [0-9]*:*) size1=$asize                                  # when size exists
++              dsize=$(echo "$asize - $size0" | $CMD_CALC);;
++           *) error_exit 255 'ERROR!'                    ;; # otherwise (error)
++  esac
++  # 2-1) Refuse truncating when dsize >= 16GB
++  case $(echo "${dsize} - 17179869184" | $CMD_CALC) in
++    [0-9]*) warning 'Too large to increase the filesize: '"$file0"
++            err=1
++            continue
++            ;;
++  esac
++
++  # --- 3) Truncate or extend ----------------------------------------
++  case $dsize in
++    -*) # decrease size
++        case $size1 in
++          0) : > "$file0"
++             ;;
++          *) case "${Tempfile:-}" in
++               '') trap 'exit_trap' EXIT HUP INT QUIT PIPE ALRM TERM
++                   Tempfile=$(mktempf0) || {
++                     printf '%s: %s: Failed to truncate\n' "${0##*/}" "$file0"
++                     err=1
++                     continue
++                   }
++                   ;;
++             esac
++             dd "if=$file0" count=1 bs=$size1 "of=$Tempfile" 2>/dev/null || {
++               printf '%s: %s: Failed to truncate\n' "${0##*/}" "$file0"
++               err=1
++               continue
++             }
++             cat "$Tempfile" > "$file0"
++             ;;
++        esac
++        ;;
++     0) # same size (do nothing)
++        :
++        ;;
++     *) # increase size
++        if [ -c /dev/zero ]; then
++          dd if=/dev/zero count=1 bs=$dsize >> "$file0" 2>/dev/null
++        else
++          yes '' | dd count=1 bs=$dsize 2>/dev/null | tr '\n' '\000' >> "$file0"
++        fi
++        ;;
++  esac
++done
++
++
++######################################################################
++# Finish
++######################################################################
++
++exit $err
+diff '--color=auto' --recursive --unified --new-file misc-tools.OG/mktemp misc-tools/mktemp
+--- misc-tools.OG/mktemp	2024-02-10 13:12:56.902348342 +0900
++++ misc-tools/mktemp	1970-01-01 09:00:00.000000000 +0900
+@@ -1,318 +0,0 @@
+-#!/bin/sh
+-
+-######################################################################
+-#
+-# MKTEMP - The "mktemp" Command also Works on Just a POSIX Environment
+-#
+-# USAGE: mktemp [--by-myself] [options] [template [...]]
+-#
+-#        --by-myself ..... (write as the 1st argument when use)
+-#                            Not use the "built-in" mktemp command
+-#                            and always do mktemp by myself but it is
+-#                            inferior to the built-in in performance
+-#        -d .............. Makes a directory instead of a file
+-#        -p <DIR> ........ Defines the temporary directory instead of
+-#                          $TMPDIR
+-#        -q .............. Quiet even if some error occurred
+-#        -u .............. Makes a file but remove it immediately
+-#        -t .............. Adds the temporary directory as a prefix
+-#                          in front of the filepath
+-#        --suffix=<suff> . Adds the suffix behind the filename
+-#
+-# Written by Shell-Shoccar Japan (@shellshoccarjpn) on 2020-05-06
+-#
+-# This is a public-domain software (CC0). It means that all of the
+-# people can use this for any purposes with no restrictions at all.
+-# By the way, We are fed up with the side effects which are brought
+-# about by the major licenses.
+-#
+-# The latest version is distributed at the following page.
+-# https://github.com/ShellShoccar-jpn/misc-tools
+-#
+-######################################################################
+-
+-
+-######################################################################
+-# Initial Configuration
+-######################################################################
+-
+-# === Initialize shell environment ===================================
+-set -u
+-umask 0022
+-export LC_ALL=C
+-export PATH="$(command -p getconf PATH 2>/dev/null)${PATH+:}${PATH-}"
+-case $PATH in :*) PATH=${PATH#?};; esac
+-export UNIX_STD=2003  # to make HP-UX conform to POSIX
+-
+-# === Define the functions for printing usage and error message ======
+-print_usage_and_exit () {
+-  cat <<-USAGE 1>&2
+-	Usage   : ${0##*/} [--by-myself] [options] [template [...]]
+-	Arg&Opts: Almost compatible with GNU mktemp
+-	          The following options are available and compatible with it
+-	            -d, -p <DIR>, -q, -u, -t, --suffix=<suff>
+-	          But --by-myself is the only original option, it prevent
+-	          from use the built-in same name command even if available
+-	Version : 2020-05-06 22:42:19 JST
+-	          (POSIX Bourne Shell/POSIX commands)
+-	USAGE
+-  exit 1
+-}
+-error_exit() {
+-  ${2+:} false && echo "${0##*/}: $2" 1>&2
+-  exit $1
+-}
+-
+-# === Exec the built-in mktemp command if OK and exists ==============
+-by_myself=0
+-case "${1:-}" in 
+-  '--by-myself')
+-     shift; by_myself=1
+-     ;;
+-  *) export mydir=$(d=${0%/*}/;[ "_$d" = "_$0/" ]||cd "$d";echo "$(pwd)")
+-     path0=${PATH:-}
+-     PATH=$(printf  '%s\n' "$path0"                |
+-            tr      ':' '\n'                       |
+-            awk     '$0!=ENVIRON["mydir"]{print;}' |
+-            tr      '\n' ':'                       |
+-            grep -v '^:$'                          |
+-            sed     's/:$//'                       )
+-     CMD_builtin=$(command -v mktemp 2>/dev/null || :)
+-     case "$CMD_builtin" in '') by_myself=1;; esac
+-     PATH=$path0
+-     unset mydir
+-     ;;
+-esac
+-case $by_myself in 0) exec "$CMD_builtin" ${1+"$@"}; exit 1;; esac
+-
+-# === Investigate the temporary directory if set =====================
+-Dir_tmp=$(set | grep ^TMPDIR= | sed 's/^[^=]\{1,\}=//');
+-case "$Dir_tmp" in
+-  '') Dir_tmp='/tmp'      ;;
+-  /)  Dir_tmp='/.'        ;;
+-  *)  Dir_tmp=${Dir_tmp%/};;
+-esac
+-
+-# === Misc definitions ===============================================
+-chrs='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_'
+-max_retry_when_failed=10
+-LFs=$(printf '\\\n_');LFs=${LFs%_}
+-
+-
+-######################################################################
+-# Parse Arguments
+-######################################################################
+-
+-# === Get the options and the filepath ===============================
+-# --- initialize option parameters -----------------------------------
+-optd=0
+-optu=0
+-optq=0
+-optt=0
+-opts=''
+-#
+-# --- get them -------------------------------------------------------
+-optmode=''
+-while [ $# -gt 0 ]; do
+-  case $# in 0) break;; esac
+-  case "$optmode" in
+-    '') case "$1" in
+-          -[duqtp]*)   s=$(printf '%s\n' "${1#-}"                        |
+-                           awk '{d = "_"; u = "_"; q = "_";              #
+-                                 t = "_"; p = "_"; err = 0;              #
+-                                 for (i=1;i<=length($0);i++) {           #
+-                                   s = substr($0,i,1);                   #
+-                                   if      (s == "d") { d   = "d"; }     #
+-                                   else if (s == "u") { u   = "u"; }     #
+-                                   else if (s == "q") { q   = "q"; }     #
+-                                   else if (s == "t") { t   = "t"; }     #
+-                                   else if (s == "p") { p   =  p ; }     #
+-                                   else               { err =  1 ; }     #
+-                                 }                                       #
+-                                 p = (substr($0,i-1)=="p") ? "p" : "_";  #
+-                                 printf("%s%s%s%s%s%s",d,u,q,t,p,err); }')
+-                       case "$s" in *1*) print_usage_and_exit;; esac
+-                       case "$s" in *d*) optd=1              ;; esac
+-                       case "$s" in *u*) optu=1              ;; esac
+-                       case "$s" in *q*) optq=1              ;; esac
+-                       case "$s" in *t*) optt=1              ;; esac
+-                       case "$s" in *p*) optmode='p'         ;; esac
+-                       shift; continue
+-                       ;;
+-          --directory) optd=1     ; shift; continue;;
+-          --dry-run)   optu=1     ; shift; continue;;
+-          --quiet)     optq=1     ; shift; continue;;
+-          --tmpdir)                 shift; continue;;
+-          --tmpdir=*)  optmode='p'
+-                       s=${1#--tmpdir=}            ;;
+-          --suffix=*)  optmode='s'
+-                       s=${1#--suffix=}            ;;
+-          -*)          print_usage_and_exit ;;
+-        esac                                         ;;
+-    *)  s=$1                                         ;;
+-  esac
+-  case "$optmode" in
+-    p) [ -d "$s" ] || error_exit 1 'Invalid path by -p,--tmpdir option'
+-       Dir_tmp=${s%/}; [ -n "$Dir_tmp" ] || Dir_tmp='/.'
+-       optmode=''; shift; continue        ;;
+-    s) { printf '%s' "$s" | grep -q '/'; } && {
+-         error_exit 1 'Invalid suffix option'
+-       }
+-       opts=$s
+-       optmode=''; shift; continue        ;;
+-  esac
+-  break
+-done
+-
+-
+-######################################################################
+-# Prepare for the Main Routine
+-######################################################################
+-
+-# ===== FUNC: random string generator ================================
+-# arg   : $1=length
+-# ret   : 0
+-# stdout: generated random string
+-random_string () {
+-  # calculate the number of words which required
+-  nw=$(echo "${1}*l(${#chrs})/11.09+1" | # 11.09=ln(65536)
+-       bc -l                           |
+-       sed 's/\..*$//'                 )
+-
+-  # make a random hexadecimal digit
+-  if [ -c /dev/urandom ]; then
+-    hstr=$(dd if=/dev/urandom bs=2 count=$nw 2>/dev/null |
+-           od -A n -t x2 -v                              |
+-           tr 'abcdef ' 'ABCDEF\n'                       |
+-           tr -Cd 0123456789ABCDEF                       )
+-  else
+-    hstr=$( (ps -Ao pid,etime,pcpu,vsz; date)         |
+-           od -t d4 -A n -v                           |
+-           sed 's/[^0-9]\{1,\}/'"$LFs"'/g'            |
+-           grep '[0-9]'                               |
+-           tail -n 42                                 |
+-           sed 's/.*\(.\{8\}\)$/\1/g'                 |
+-           awk 'BEGIN{a=-2147483648;}                 #
+-                     {a+=$1;        }                 #
+-                END  {                                #
+-                  srand(a);                           #
+-                  for(i=0;i<'$nw';i++){               #
+-                    printf("%02X",int(rand()*65536)); #
+-                  }                                   #
+-                }'                                    )
+-  fi
+-
+-  # make a random string from the hexadecimal digit
+-  echo "obase=${#chrs};ibase=16;$hstr"         |
+-  bc                                           |
+-  tr -d '\\\n'                                 |
+-  tr ' ' '\n'                                  |
+-  awk 'BEGIN  {for(i=1;i<'$1';i++){print 0;}}  #
+-       /[0-9]/{print;                       }' |
+-  awk 'BEGIN  {ORS="";                         #
+-               s="'"$chrs"'";                  #
+-               for(i=0;i<length(s);i++){       #
+-                 c[i]=substr(s,i+1,1);         #
+-               }                        }      #
+-       /[0-9]/{print c[$0*1];           }'     |
+-  tail -c $1
+-}
+-
+-
+-######################################################################
+-# Main Routine
+-######################################################################
+-
+-case $# in 0) optt=1; set -- 'tmp.XXXXXXXXXX';; esac
+-
+-err=0
+-for arg in "$@"; do
+-
+-  # --- Make dir string for printing ---------------------------------
+-  Dir_trg=${arg%/*}
+-  case "$Dir_trg" in
+-    "$arg") case $optt in
+-              0) Dir_trg=''
+-                 ;;
+-              *) Dir_trg="$Dir_tmp/"
+-                 case "$Dir_trg" in '/./') Dir_trg=/;; esac
+-                 ;;
+-            esac
+-            ;;
+-         *) Dir_trg="$Dir_trg/"
+-            ;;
+-  esac
+-
+-  n=$max_retry_when_failed
+-  while [ $n -ge 0 ]; do
+-
+-    # --- Making the file path ---------------------------------------
+-    #
+-    # replace the end of "XXX..." string to a random one
+-    Path_target=$arg
+-    s=$(printf '%s\n' "$Path_target" | sed 's/X*$//')
+-    i=$((${#Path_target}-${#s}))
+-    case $i in
+-      0) :                                    ;;
+-      *) Path_target="${s}$(random_string $i)";;
+-    esac
+-    #
+-    # add the suffix
+-    Path_target="${Path_target}${opts}"
+-    #
+-    # add the prefix if the option -t is enabled
+-    case $optt in 1) Path_target="${Dir_tmp}/${Path_target}";; esac
+-    #
+-    # normalize
+-    Path_target=$(printf '%s\n' "$Path_target" |
+-                  sed 's!//!/!g'               |
+-                  sed 's!/./!/!g'              )
+-    #
+-    # for security
+-    case "$Path_target" in
+-      -|/*|./*|../*) :                           ;;
+-                  *) Path_target="./$Path_target";;
+-    esac
+-
+-    # --- Making the file --------------------------------------------
+-    case $optd in
+-      0) (set -C; umask 177;   : > "$Path_target") 2>/dev/null || {
+-           [ -f "$Path_target" ] && { n=$((n-1)); continue; }
+-           n=-1; break;
+-         }
+-         ;;
+-      1)          umask 077; mkdir "$Path_target"  2>/dev/null || {
+-           [ -d "$Path_target" ] && { n=$((n-1)); continue; }
+-           n=-1; break;
+-         }
+-         ;;
+-    esac
+-
+-    break
+-  done
+-
+-  # --- Print error message when failed to make a file ---------------
+-  case "${optq}${n}" in
+-    '0-1') printf '%s\n' "${0##*/}: failed on $Dir_trg${Path_target##*/}" 1>&2
+-           err=1
+-           continue
+-           ;;
+-    '1-1') err=1
+-           continue
+-           ;;
+-  esac
+-
+-  # --- Print the path of the file -----------------------------------
+-  printf '%s%s\n' "$Dir_trg" "${Path_target##*/}"
+-
+-  # --- Remove the file if -u,--dry-run option is set ----------------
+-  case $optu in 1) rm -rf "$Path_target";; esac
+-
+-done
+-
+-
+-######################################################################
+-# Finish
+-######################################################################
+-
+-exit $err
+diff '--color=auto' --recursive --unified --new-file misc-tools.OG/rev misc-tools/rev
+--- misc-tools.OG/rev	2024-02-10 13:12:56.905681694 +0900
++++ misc-tools/rev	1970-01-01 09:00:00.000000000 +0900
+@@ -1,102 +0,0 @@
+-#!/bin/sh
+-
+-######################################################################
+-#
+-# REV - A POSIX Compatible Implementation of the "rev" Command
+-#       Also Works on Just a POSIX Environment
+-#
+-# USAGE: rev [--by-myself] [filename ...]
+-#
+-#        --by-myself .... (write as the 1st argument when use)
+-#                         Not use the "built-in" rev command and always
+-#                         do seq by myself but it is inferior to the
+-#                         built-in in performance
+-#                         with leading zeros.
+-#
+-# Written by Shell-Shoccar Japan (@shellshoccarjpn) on 2020-05-06
+-#
+-# This is a public-domain software (CC0). It means that all of the
+-# people can use this for any purposes with no restrictions at all.
+-# By the way, We are fed up with the side effects which are brought
+-# about by the major licenses.
+-#
+-# The latest version is distributed at the following page.
+-# https://github.com/ShellShoccar-jpn/misc-tools
+-#
+-######################################################################
+-
+-
+-######################################################################
+-# Initial Configuration
+-######################################################################
+-
+-# === Initialize shell environment ===================================
+-set -u
+-umask 0022
+-export LC_ALL=C
+-export PATH="$(command -p getconf PATH 2>/dev/null)${PATH+:}${PATH-}"
+-case $PATH in :*) PATH=${PATH#?};; esac
+-export UNIX_STD=2003  # to make HP-UX conform to POSIX
+-
+-# === Define the functions for printing usage and error message ======
+-print_usage_and_exit () {
+-  cat <<-USAGE 1>&2
+-	Usage   : ${0##*/} [--by-myself] [filename ...]
+-	Arg&Opts: Almost compatible with the original rev command
+-	          But --by-myself is the only original option, it prevent
+-	          from use the built-in same name command even if available
+-	Version : 2020-05-06 22:42:19 JST
+-	          (POSIX Bourne Shell/POSIX commands)
+-	            * Although the bult-in rev produces better performance
+-	              than the POSIX commands set
+-	USAGE
+-  exit 1
+-}
+-error_exit() {
+-  ${2+:} false && echo "${0##*/}: $2" 1>&2
+-  exit $1
+-}
+-warning() {
+-  ${1+:} false && echo "${0##*/}: $1" 1>&2
+-}
+-
+-# === Exec the built-in rev command if OK and exists =================
+-by_myself=0
+-case "${1:-}" in 
+-  '--by-myself')
+-     shift; by_myself=1
+-     ;;
+-  *) export mydir=$(d=${0%/*}/;[ "_$d" = "_$0/" ]||cd "$d";echo "$(pwd)")
+-     path0=${PATH:-}
+-     PATH=$(printf  '%s\n' "$path0"                |
+-            tr      ':' '\n'                       |
+-            awk     '$0!=ENVIRON["mydir"]{print;}' |
+-            tr      '\n' ':'                       |
+-            grep -v '^:$'                          |
+-            sed     's/:$//'                       )
+-     CMD_builtin=$(command -v rev 2>/dev/null || :)
+-     case "$CMD_builtin" in '') by_myself=1;; esac
+-     PATH=$path0
+-     unset mydir
+-     ;;
+-esac
+-case $by_myself in 0) exec "$CMD_builtin" ${1+"$@"}; exit 1;; esac
+-
+-
+-######################################################################
+-# Argument Parsing and Reversing
+-######################################################################
+-
+-# === print help if requested ========================================
+-case "${1:-}" in -h|-v|--help|--version) print_usage_and_exit;; esac
+-
+-# === do it ==========================================================
+-awk 'BEGIN { ORS="";                                               }
+-     { for(i=length($0);i>0;i--){print substr($0,i,1);} print "\n";}' ${1+"$@"}
+-
+-
+-######################################################################
+-# Finish
+-######################################################################
+-
+-exit 0
+diff '--color=auto' --recursive --unified --new-file misc-tools.OG/seq misc-tools/seq
+--- misc-tools.OG/seq	2024-02-10 13:12:56.905681694 +0900
++++ misc-tools/seq	1970-01-01 09:00:00.000000000 +0900
+@@ -1,279 +0,0 @@
+-#!/bin/sh
+-
+-######################################################################
+-#
+-# SEQ - A POSIX Compatible Implementation of the "seq" Command
+-#       Also Works on Just a POSIX Environment
+-#
+-# USAGE: seq [options] last
+-#        seq [options] first last
+-#        seq [options] first increment last
+-#
+-#        --by-myself .... (write as the 1st argument when use)
+-#                         Not use the "built-in" seq command and always
+-#                         do seq by myself but it is inferior to the
+-#                         built-in in performance
+-#        -f <format> .... Print all numbers using format.
+-#        -s <string> .... Separate numbers with string; default is a newline.
+-#        -w ............. Print all numbers with the same width, by padding
+-#                         with leading zeros.
+-#
+-# Written by Shell-Shoccar Japan (@shellshoccarjpn) on 2020-05-06
+-#
+-# This is a public-domain software (CC0). It means that all of the
+-# people can use this for any purposes with no restrictions at all.
+-# By the way, We are fed up with the side effects which are brought
+-# about by the major licenses.
+-#
+-# The latest version is distributed at the following page.
+-# https://github.com/ShellShoccar-jpn/misc-tools
+-#
+-######################################################################
+-
+-
+-######################################################################
+-# Initial Configuration
+-######################################################################
+-
+-# === Initialize shell environment ===================================
+-set -u
+-umask 0022
+-export LC_ALL=C
+-export PATH="$(command -p getconf PATH 2>/dev/null)${PATH+:}${PATH-}"
+-case $PATH in :*) PATH=${PATH#?};; esac
+-export UNIX_STD=2003  # to make HP-UX conform to POSIX
+-
+-# === Define the functions for printing usage and error message ======
+-print_usage_and_exit () {
+-  cat <<-USAGE 1>&2
+-	Usage   : ${0##*/} [options] last
+-	          ${0##*/} [options] first last
+-	          ${0##*/} [options] first increment last
+-	Arg&Opts: Almost compatible with GNU seq
+-	          The following options are available and compatible with it
+-	            -f <format>, -s <string>, -w
+-	          But --by-myself is the only original option, it prevent
+-	          from use the built-in same name command even if available
+-	Version : 2020-05-06 22:42:19 JST
+-	          (POSIX Bourne Shell/POSIX commands)
+-	            * Although the bult-in seq produces better performance
+-	              than the POSIX commands set
+-	USAGE
+-  exit 1
+-}
+-error_exit() {
+-  ${2+:} false && echo "${0##*/}: $2" 1>&2
+-  exit $1
+-}
+-
+-# === Exec the built-in seq command if OK and exists =================
+-by_myself=0
+-case "${1:-}" in 
+-  '--by-myself')
+-     shift; by_myself=1
+-     ;;
+-  *) export mydir=$(d=${0%/*}/;[ "_$d" = "_$0/" ]||cd "$d";echo "$(pwd)")
+-     path0=${PATH:-}
+-     PATH=$(printf  '%s\n' "$path0"                |
+-            tr      ':' '\n'                       |
+-            awk     '$0!=ENVIRON["mydir"]{print;}' |
+-            tr      '\n' ':'                       |
+-            grep -v '^:$'                          |
+-            sed     's/:$//'                       )
+-     CMD_builtin=$(command -v seq 2>/dev/null || :)
+-     case "$CMD_builtin" in '') by_myself=1;; esac
+-     PATH=$path0
+-     unset mydir
+-     ;;
+-esac
+-case $by_myself in 0) exec "$CMD_builtin" ${1+"$@"}; exit 1;; esac
+-
+-
+-######################################################################
+-# Argument Parsing
+-######################################################################
+-
+-# === Get the options and the filepath ===============================
+-# --- initialize option parameters -----------------------------------
+-optf=''
+-opts='\n'
+-optw=0
+-n_1st=1
+-n_inc=1
+-n_lst=''
+-#
+-# --- get them -------------------------------------------------------
+-optmode=''
+-while :; do
+-  case $# in 0) break;; esac
+-  case "$optmode" in
+-    '') case "$1" in
+-          -)       case $# in 1) break;; esac
+-                   ;;
+-          -[fsw]*) s=$(printf '%s\n' "${1#-}"                          |
+-                       awk '{f = "_"; s = "_"; w = "_"; err="";        #
+-                             l = length($0);                           #
+-                             for (n=1;n<=l;n++) {                      #
+-                               c = substr($0, n, 1);                   #
+-                               if      (c=="f") { f   = "f"; break; }  #
+-                               else if (c=="s") { s   = "s"; break; }  #
+-                               else if (c=="w") { w   = "w";        }  #
+-                               else             { err = "!";        }  #
+-                             }                                         #
+-                             arg = (n<l) ? substr($0,n+1) : "";        #
+-                             printf("%s%s%s%s %s",err,f,s,w,arg);    }')
+-                   arg=${s#* }
+-                   s=${s%% *}
+-                   case "$s" in '!'*) print_usage_and_exit;; esac
+-                   case "$s" in  *w*) optw=1              ;; esac
+-                   case "$s" in  *f*) optmode='f'         ;; esac
+-                   case "$s" in  *s*) optmode='s'         ;; esac
+-                   shift;
+-                   case "$arg" in '') continue;; esac
+-                   ;;
+-          --format=*)
+-                   optf=${s#--format=}
+-                   shift
+-                   continue
+-                   ;;
+-          --separator=*)
+-                   opts=${s#--format=}
+-                   shift
+-                   continue
+-                   ;;
+-          -[0-9]*) break
+-                   ;;
+-          -*)      print_usage_and_exit
+-                   ;;
+-          *)       break
+-                   ;;
+-        esac
+-        ;;
+-    *)  arg=$1
+-        shift
+-        ;;
+-  esac
+-  case "$optmode" in
+-    f) optf=$arg                ;;
+-    s) opts=$arg                ;;
+-    *) echo 'ERROR' 1>&2; exit 1;;
+-  esac
+-  optmode=''
+-done
+-case "$#" in
+-  1) n_lst=$1                    ;;
+-  2) n_1st=$1; n_lst=$2          ;;
+-  3) n_1st=$1; n_inc=$2; n_lst=$3;;
+-  *) 
+-esac
+-
+-# === Vaidate arguments ==============================================
+-[ $optw -gt 0 ] && [ -n "$optf" ] && {
+-  error_exit 1 'format string may not be specified when printing equal width strings'
+-}
+-[ -n "$optf" ] && {
+-  printf '%s\n' "$optf" | grep -Eq '%(-?[0-9]+(\.[0-9]+)?)?[AaEeFfGg]' || {
+-    error_exit 1 'The format you gave me has no % directive'
+-  }
+-  case "$(printf '%s\n' "$optf" | sed 's/\%\(-\{0,1\}[0-9]\{1,\}\(\.[0-9]\{1,\}\)\{0,1\}\)\{0,1\}[AaEeFfGg%]//')" in
+-    *%*) error_exit 1 'The format you gave me is invalid or has too many % directives';;
+-    *)   :                                                                            ;;
+-  esac
+-}
+-n_pattern='^[+-]?[0-9]+(\.[0-9]+)?([eE][+-][0-9]{1,2})?$'
+-printf '%s\n' "$n_1st" | grep -Eq "$n_pattern" || {
+-  error_exit 1 '"first" floating point argument is invalid'
+-}
+-printf '%s\n' "$n_inc" | grep -Eq "$n_pattern" || {
+-  error_exit 1 '"increment" floating point argument is invalid'
+-}
+-printf '%s\n' "$n_lst" | grep -Eq "$n_pattern" || {
+-  error_exit 1 '"last" floating point argument is invalid'
+-}
+-
+-
+-######################################################################
+-# Make strings for AWK
+-######################################################################
+-
+-# === Generate the format by "-w" ====================================
+-[ $optw -gt 0 ] && {
+-  optf=$(printf '%f %f %f' "$n_1st" "$n_inc" "$n_lst"               |
+-         grep -v 'Ee'                                               |
+-         tr   ' ' '\n'                                              |
+-         sed  '/\./s/0\{1,\}$//'                                    |
+-         sed  's/\.$//'                                             |
+-         sed  's/^\([+-]\{0,1\}\)0\{1,\}/\1/'                       |
+-         sed  's/^\([+-]\{0,1\}\)\./\10./'                          |
+-         sed  's/^\([+-]\{0,1\}\)$/\10/'                            |
+-         awk  'BEGIN {N=0; n=0;                                   } #
+-                     {p=index($1,".");                              #
+-                      i=length($0);                                 #
+-                      if (p>0) {j=i-p; i=p-1;}                      #
+-                      N=(i>N)?i:N; n=(j>n)?j:n;                   } #
+-               END   {if      (n>0) {printf("%%0%d.%df",N+1+n,n);}  #
+-                      else if (N>0) {printf("%%0%dd"   ,N      );}  #
+-                      else          {printf("%%g"              );}}')
+-}
+-
+-# === Generate the format if not specified ===========================
+-[ -z "$optf" ] && {
+-  if printf '%s%s%s\n' "$n_1st" "$n_inc" "$n_lst" | grep -Eq '^[0-9]$'; then
+-    optf='%d'
+-  else
+-    optf='%g'
+-  fi
+-}
+-
+-# === Convert the format string for AWK ==============================
+-optf=$( (printf '%s' "$optf";echo) |
+-        sed '$!s/$/\\n/'           |
+-        tr -d '\n'                 |
+-        grep  ^                    |
+-        sed 's/"/\\"/g'            )
+-
+-# === Convert the "-s" option string for AWK =========================
+-opts=$( (printf '%s' "$opts";echo) |
+-        sed '$!s/$/\\n/'           |
+-        tr -d '\n'                 |
+-        grep  ^                    |
+-        sed 's/"/\\"/g'            )
+-
+-# === Add a sign to the <increment> number ===========================
+-case "$n_inc" in [0-9.]*) n_inc="+$n_inc";; esac
+-
+-
+-######################################################################
+-# Main routine
+-######################################################################
+-
+-# === Run "seq"-like script ==========================================
+-awk 'BEGIN{                                                 #
+-       if ('"$n_inc"' >= 0) {                               #
+-         # --- increment routine -------------------------- #
+-         if ('"$n_1st"' > '"$n_lst"') {exit;}               #
+-         i='"$n_1st"';                                      #
+-         printf("'"$optf"'", i);                            #
+-         i=i'"$n_inc"';                                     #
+-         for (            ; i<='"$n_lst"'; i=i'"$n_inc"') { #
+-           printf("%s'"$optf"'", "'"$opts"'", i);           #
+-         }                                                  #
+-       } else {                                             #
+-         # --- decrement routine -------------------------- #
+-         if ('"$n_1st"' < '"$n_lst"') {exit;}               #
+-         i='"$n_1st"';                                      #
+-         printf("'"$optf"'", i);                            #
+-         i=i'"$n_inc"';                                     #
+-         for (            ; i>='"$n_lst"'; i=i'"$n_inc"') { #
+-           printf("%s'"$optf"'", "'"$opts"'", i);           #
+-         }                                                  #
+-       }                                                    #
+-     }'                                                     |
+-grep ''
+-
+-
+-######################################################################
+-# Finish
+-######################################################################
+-
+-exit 0
+diff '--color=auto' --recursive --unified --new-file misc-tools.OG/truncate misc-tools/truncate
+--- misc-tools.OG/truncate	2024-02-10 13:12:56.905681694 +0900
++++ misc-tools/truncate	1970-01-01 09:00:00.000000000 +0900
+@@ -1,450 +0,0 @@
+-#!/bin/sh
+- 
+-######################################################################
+-#
+-# TRUNCATE - The "truncate"-Like Command Also Works on Just a POSIX Environment
+-#
+-# USAGE: truncate [--by-myself] [-c] -s [+|-]size[K|k|M|m|G|g|T|t] file ...
+-#        truncate [--by-myself] [-c] -r rfile file ...
+-#
+-#        --by-myself ..... (write as the 1st argument when use)
+-#                          Not use the "built-in" mktemp command
+-#                          and always do mktemp by myself but it is
+-#                          inferior to the built-in in performance
+-#        -c .............. Do not create files if they do not exist.
+-#                           The truncate utility does not treat this
+-#                           as an error.
+-#        -r <rfile> ...... Truncate or extend files to the length of
+-#                          the file <rfile>.
+-#        -s [+|-]<size>[K|k|M|m|G|g|T|t]
+-#                      ... Truncate or extend files by the <size> value.
+-#                          When "+" or "-" is written at first, it means
+-#                          relative, otherwise absolute.
+-#                          And when the unit suffix is written at last,
+-#                          the value is multiplied by the unit suffix.
+-#
+-# Written by Shell-Shoccar Japan (@shellshoccarjpn) on 2020-12-06
+-#
+-# This is a public-domain software (CC0). It means that all of the
+-# people can use this for any purposes with no restrictions at all.
+-# By the way, We are fed up with the side effects which are brought
+-# about by the major licenses.
+-#
+-# The latest version is distributed at the following page.
+-# https://github.com/ShellShoccar-jpn/misc-tools
+-#
+-######################################################################
+-
+-
+-######################################################################
+-# Initial Configuration
+-######################################################################
+-
+-# === Initialize shell environment ===================================
+-set -u
+-umask 0022
+-export LC_ALL=C
+-export PATH="$(command -p getconf PATH 2>/dev/null)${PATH+:}${PATH-}"
+-case $PATH in :*) PATH=${PATH#?};; esac
+-export UNIX_STD=2003  # to make HP-UX conform to POSIX
+-
+-# === Define the functions for printing usage and error message ======
+-print_usage_and_exit () {
+-  cat <<-USAGE 1>&2
+-	Usage   : ${0##*/} [--by-myself] [-c] -s [+|-]size[K|k|M|m|G|g|T|t] file ...
+-	          ${0##*/} [--by-myself] [-c] -r rfile file ...
+-	Options : --by-myself ..... (write as the 1st argument when use)
+-	                            Not use the "built-in" mktemp command
+-	                            and always do mktemp by myself but it is
+-	                            inferior to the built-in in performance
+-	          -c .............. Do not create files if they do not exist.
+-	                             The truncate utility does not treat this
+-	                             as an error.
+-	          -r <rfile> ...... Truncate or extend files to the length of
+-	                            the file <rfile>.
+-	          -s [+|-]<size>[K|k|M|m|G|g|T|t]
+-	                        ... Truncate or extend files by the <size> value.
+-	                            When "+" or "-" is written at first, it means
+-	                            relative, otherwise absolute.
+-	                            And when the unit suffix is written at last,
+-	                            the value is multiplied by the unit suffix.
+-	Version : 2020-12-06 02:48:45 JST
+-	USAGE
+-  exit 1
+-}
+-warning() {
+-  ${1+:} false && echo "${0##*/}: $1" 1>&2
+-}
+-error_exit() {
+-  ${2+:} false && echo "${0##*/}: $2" 1>&2
+-  exit $1
+-}
+-exit_trap() {
+-  set -- ${1:-} $?  # $? is set as $1 if no argument given
+-  trap '' EXIT HUP INT QUIT PIPE ALRM TERM
+-  rm -f "${Tempfile:-}"
+-  trap -  EXIT HUP INT QUIT PIPE ALRM TERM
+-  exit $1
+-}
+-
+-# === Exec the built-in truncate command if OK and exists ============
+-by_myself=0
+-case "${1:-}" in 
+-  '--by-myself')
+-     shift; by_myself=1
+-     ;;
+-  *) export mydir=$(d=${0%/*}/;[ "_$d" = "_$0/" ]||cd "$d";echo "$(pwd)")
+-     path0=${PATH:-}
+-     PATH=$(printf  '%s\n' "$path0"                |
+-            tr      ':' '\n'                       |
+-            awk     '$0!=ENVIRON["mydir"]{print;}' |
+-            tr      '\n' ':'                       |
+-            grep -v '^:$'                          |
+-            sed     's/:$//'                       )
+-     CMD_builtin=$(command -v truncate 2>/dev/null || :)
+-     case "$CMD_builtin" in '') by_myself=1;; esac
+-     PATH=$path0
+-     unset mydir
+-     ;;
+-esac
+-case $by_myself in 0) exec "$CMD_builtin" ${1+"$@"}; exit 1;; esac
+-
+-# === Confirm the required commands exist ============================
+-# --- 
+-if   type bc >/dev/null 2>&1                                      ; then
+-  CMD_CALC='bc'
+-elif [ "$(expr 9223372036854775806 + 1)" = '9223372036854775807' ]; then
+-  CMD_CALC='xargs expr'
+-else
+-  error_exit 1 'bc command or 64bit-expr command is required'
+-fi
+-
+-
+-######################################################################
+-# Register Functions
+-######################################################################
+-
+-# === FUNC: exec the mktemp command if exists ========================
+-get_attr_and_size0() {
+-  attr=$1
+-  size0=$(ls -adl "$attr" 2>/dev/null) || [ ! -e "$attr" ] || {
+-    attr=''
+-    size0=''
+-    return 1
+-  }
+-  set -- $size0
+-  attr=${1:-}
+-  size0=${5:-0}
+-  return 0
+-}
+-
+-# === FUNC: Make a Temporary File ====================================
+-# arg   : (none)
+-# ret   : 0 when succeeded
+-# stdout: path of the generated temporary file
+-LFs=$(printf '\\\n_');LFs=${LFs%_}
+-mktempf0() {
+-  # --- parameters, etc. ---------------------------------------------
+-  num_of_digits=16  # Length of Random String
+-  n=10              # Max Times of Retrying
+-  chrs='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_'
+-                    # Available letters
+-  # --- call built-in mktemp if exists -------------------------------
+-  type mktemp >/dev/null 2>&1 && {
+-    mktemp -t tmp.${0##*/}.$$.XXXXXXXXXXXXXXXX
+-    return $?
+-  }
+-  # --- set the temporary directory ----------------------------------
+-  Dir_tmp=$(set | grep -q ^TMPDIR= | sed 's/^[^=]\{1,\}=//');
+-  case "$Dir_tmp" in
+-    '') Dir_tmp='/tmp'      ;;
+-    /)  Dir_tmp=''          ;;
+-    *)  Dir_tmp=${Dir_tmp%/};;
+-  esac
+-  # --- mktemp loop --------------------------------------------------
+-  while [ $n -ge 0 ]; do
+-    # --- Generate Ramdom string -------------------------------------
+-    # calculate the number of words which required
+-    nw=$(echo "${num_of_digits}*l(${#chrs})/11.09+1" | # 11.09=ln(65536)
+-         bc -l                                       |
+-         sed 's/\..*$//'                             )
+-    # make a random hexadecimal digit
+-    if [ -c /dev/urandom ]; then
+-      hstr=$(dd if=/dev/urandom bs=2 count=$nw 2>/dev/null |
+-             od -A n -t x2 -v                              |
+-             tr 'abcdef ' 'ABCDEF\n'                       |
+-             tr -Cd 0123456789ABCDEF                       )
+-    else
+-      hstr=$( (ps -Ao pid,etime,pcpu,vsz; date)         |
+-             od -t d4 -A n -v                           |
+-             sed 's/[^0-9]\{1,\}/'"$LFs"'/g'            |
+-             grep '[0-9]'                               |
+-             tail -n 42                                 |
+-             sed 's/.*\(.\{8\}\)$/\1/g'                 |
+-             awk 'BEGIN{a=-2147483648;}                 #
+-                       {a+=$1;        }                 #
+-                  END  {                                #
+-                    srand(a);                           #
+-                    for(i=0;i<'$nw';i++){               #
+-                      printf("%02X",int(rand()*65536)); #
+-                    }                                   #
+-                  }'                                    )
+-    fi
+-    # make a random string from the hexadecimal digit
+-    s=$(echo "obase=${#chrs};ibase=16;$hstr"                     |
+-        bc                                                       |
+-        tr -d '\\\n'                                             |
+-        tr ' ' '\n'                                              |
+-        awk 'BEGIN  {for(i=1;i<'$num_of_digits';i++){print 0;}}  #
+-             /[0-9]/{print;                                   }' |
+-        awk 'BEGIN  {ORS="";                                     #
+-                     s="'"$chrs"'";                              #
+-                     for(i=0;i<length(s);i++){                   #
+-                       c[i]=substr(s,i+1,1);                     #
+-                     }                        }                  #
+-             /[0-9]/{print c[$0*1];           }'                 |
+-        tail -c $num_of_digits                                   )
+-    # --- Making the file path ---------------------------------------
+-    Path_target="${Dir_tmp}/tmp.${0##*/}.$$.$s"
+-    # --- Making the file --------------------------------------------
+-    (set -C; umask 177; : > "$Path_target") 2>/dev/null || {
+-      [ -f "$Path_target" ] && { n=$((n-1)); continue; }
+-      n=-1; break;
+-    }
+-    break
+-  done
+-  # --- print error message when failed to make a file ---------------
+-  case "$n" in -1) return 1;; esac
+-  # --- print the path of the file -----------------------------------
+-  printf '%s\n' "$Path_target"
+-  # --- return successfully ------------------------------------------
+-  return 0
+-}
+-
+-
+-######################################################################
+-# Parse Arguments
+-######################################################################
+-
+-# === Get the options ================================================
+-# --- initialize option parameters -----------------------------------
+-optc=0    # 1 when -c is set
+-opto=0    # not implemented yet
+-asize=''  # absolute size which is wanted
+-dsize=''  # delta-size which is wanted
+-#
+-# --- get them -------------------------------------------------------
+-optmode=''
+-while :; do
+-  case $# in 0) break;; esac
+-  case "$optmode" in
+-    '') case "$1" in
+-          -[cors]*)      s=$(printf '%s\n' "$1"                              |
+-                             awk '{c = "_"; o = "_"; r = "_"; s = "_";       #
+-                                   for (i=2;i<=length($0);i++) {             #
+-                                     l = substr($0,i,1);                     #
+-                                     if      (l == "c") { c = "c";        }  #
+-                                     else if (l == "o") { o = "o";        }  #
+-                                     else if (l == "r") { r = "r"; break; }  #
+-                                     else if (l == "s") { s = "s"; break; }  #
+-                                     else               { c = "_";           #
+-                                                          o = "_";           #
+-                                                          r = "_";           #
+-                                                          s = "_"; break; }  #
+-                                   }                                         #
+-                                   str = substr($0,i+1);                     #
+-                                   printf("%s%s%s%s/%s",c,o,r,s,str);      }')
+-                         case "$s" in ____/*) print_usage_and_exit;; esac
+-                         case "$s" in c???/*) optc=1     ;; esac
+-                         case "$s" in ?o??/*) opto=1     ;; esac
+-                         case "$s" in ??r?/*) optmode='r';; esac
+-                         case "$s" in ???s/*) optmode='s';; esac
+-                         s=${s#????/}
+-                         case "$s" in '') shift; continue;; esac              ;;
+-          --no-create)   optc=1     ; shift; continue                         ;;
+-          --io-blocks)   opto=1     ; shift; continue                         ;;
+-          --reference=*) optmode='r'; s=${1#--reference=}                     ;;
+-          --size=*)      optmode='s'; s=${1#--size=}                          ;;
+-          -*)            print_usage_and_exit                                 ;;
+-        esac
+-        ;;
+-    *)  s=$1
+-        ;;
+-  esac
+-  case "$optmode" in
+-    r) case "$s" in /*|./*|../*) file=$s;; *) file="./$s";; esac
+-       while :; do
+-         get_attr_and_size0 "$file" || {
+-           error_exit 1 'Cannot open (Permission denied): '"$s"
+-         }
+-         case "$attr" in
+-           '') # skip when option -c is set
+-               error_exit 1 'No such file or directory: '"$s"
+-               ;;
+-           -*) break
+-               ;;
+-           l*) s=$(printf '%s\n' "$file"       |
+-                   sed 's/\([].\*/[]\)/\\\1/g' |
+-                   sed 's/^\^/\\^/'            |
+-                   sed 's/\$$/\\$/'            )
+-               srcfile=$(file "$file"                              |
+-                         sed 's/^.\{'"$s"'\}: symbolic link to //' |
+-                         sed 's/^`\(.*\)'"'"'$/\1/'                )
+-               case "$srcfile" in
+-                 /*) file=$srcfile             ;;
+-                  *) file="${file%/*}/$srcfile";;
+-               esac
+-               continue
+-               ;;
+-           d*) break
+-               ;;
+-            *) error_exit 1 'Not a regular file: '"$file0"
+-               ;;
+-         esac
+-       done
+-       asize=$size0
+-       dsize=''
+-       shift
+-       optmode=''
+-       continue
+-       ;;
+-    s) printf '%s' "$s"                        |
+-       awk '/^[0-9]+[KkMmGgTt]?$/    {exit 0;} #
+-            /^[+-][0-9]+[KkMmGgTt]?$/{exit 1;} #
+-                                     {exit 2;}'
+-       case $? in
+-         0) case "$s" in
+-              *[0-9]) asize=$s                                          ;;
+-              *[Kk])  asize=$(echo "${s%?} * 1024"          | $CMD_CALC);;
+-              *[Mm])  asize=$(echo "${s%?} * 1048576"       | $CMD_CALC);;
+-              *[Gg])  asize=$(echo "${s%?} * 1073741824"    | $CMD_CALC);;
+-              *[Tt])  asize=$(echo "${s%?} * 1099511627776" | $CMD_CALC);;
+-            esac
+-            dsize=''
+-            ;;
+-         1) s=${s#+}
+-            case "$s" in
+-              *[0-9]) dsize=$s                                          ;;
+-              *[Kk])  dsize=$(echo "${s%?} * 1024"          | $CMD_CALC);;
+-              *[Mm])  dsize=$(echo "${s%?} * 1048576"       | $CMD_CALC);;
+-              *[Gg])  dsize=$(echo "${s%?} * 1073741824"    | $CMD_CALC);;
+-              *[Tt])  dsize=$(echo "${s%?} * 1099511627776" | $CMD_CALC);;
+-            esac
+-            asize=''
+-            ;;
+-         2) error_exit 1 'Invalid size by -s,--size option'
+-            ;;
+-       esac
+-       shift
+-       optmode=''
+-       continue
+-       ;;
+-  esac
+-  break
+-done
+-
+-
+-######################################################################
+-# Main Routine
+-######################################################################
+-
+-case $# in 0) print_usage_and_exit;; esac
+-err=0
+-for file0 in "$@"; do
+-  case "$file0" in /*|./*|../*) file=$file0;; *) file="./$file0";; esac
+-
+-  # --- 1) Search the regular file path and the size of that file ----
+-  while :; do
+-    get_attr_and_size0 "$file" || {
+-      warning 'Cannot open (Permission denied): '"$file0"
+-      continue 2
+-    }
+-    case "$attr" in
+-      '') # skip when option -c is set
+-          case $optc in 0) break;; 1) continue 2;; esac
+-          ;;
+-      -*) break
+-          ;;
+-      l*) s=$(printf '%s\n' "$file"       |
+-              sed 's/\([].\*/[]\)/\\\1/g' |
+-              sed 's/^\^/\\^/'            |
+-              sed 's/\$$/\\$/'            )
+-          srcfile=$(file "$file"                              |
+-                    sed 's/^.\{'"$s"'\}: symbolic link to //' |
+-                    sed 's/^`\(.*\)'"'"'$/\1/'                )
+-          case "$srcfile" in
+-            /*) file=$srcfile             ;;
+-             *) file="${file%/*}/$srcfile";;
+-          esac
+-          continue
+-          ;;
+-      d*) warning 'It is a directory: '"$file0"
+-          err=1
+-          continue 2
+-          ;;
+-       *) #waring 'Not a regular file: '"$file0"
+-          #err=1
+-          continue 2
+-          ;;
+-    esac
+-  done
+-
+-  # --- 2) Re-calculate $dsize(delta-size) when $asize(absolute size) is set
+-  case "${asize}:${dsize}" in
+-    :[0-9-]*) size1=$(echo "$dsize + $size0" | $CMD_CALC)   # when only dsize
+-              case $size1 in -*) size1=0;; esac          ;;
+-    [0-9]*:*) size1=$asize                                  # when size exists
+-              dsize=$(echo "$asize - $size0" | $CMD_CALC);;
+-           *) error_exit 255 'ERROR!'                    ;; # otherwise (error)
+-  esac
+-  # 2-1) Refuse truncating when dsize >= 16GB
+-  case $(echo "${dsize} - 17179869184" | $CMD_CALC) in
+-    [0-9]*) warning 'Too large to increase the filesize: '"$file0"
+-            err=1
+-            continue
+-            ;;
+-  esac
+-
+-  # --- 3) Truncate or extend ----------------------------------------
+-  case $dsize in
+-    -*) # decrease size
+-        case $size1 in
+-          0) : > "$file0"
+-             ;;
+-          *) case "${Tempfile:-}" in
+-               '') trap 'exit_trap' EXIT HUP INT QUIT PIPE ALRM TERM
+-                   Tempfile=$(mktempf0) || {
+-                     printf '%s: %s: Failed to truncate\n' "${0##*/}" "$file0"
+-                     err=1
+-                     continue
+-                   }
+-                   ;;
+-             esac
+-             dd "if=$file0" count=1 bs=$size1 "of=$Tempfile" 2>/dev/null || {
+-               printf '%s: %s: Failed to truncate\n' "${0##*/}" "$file0"
+-               err=1
+-               continue
+-             }
+-             cat "$Tempfile" > "$file0"
+-             ;;
+-        esac
+-        ;;
+-     0) # same size (do nothing)
+-        :
+-        ;;
+-     *) # increase size
+-        if [ -c /dev/zero ]; then
+-          dd if=/dev/zero count=1 bs=$dsize >> "$file0" 2>/dev/null
+-        else
+-          yes '' | dd count=1 bs=$dsize 2>/dev/null | tr '\n' '\000' >> "$file0"
+-        fi
+-        ;;
+-  esac
+-done
+-
+-
+-######################################################################
+-# Finish
+-######################################################################
+-
+-exit $err

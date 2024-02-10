@@ -1,7 +1,7 @@
 pkgbase = misc-tools-git
 	pkgdesc = ShellShoccar-jpn's miscellaneous tools
-	pkgver = r281.3548ffb
-	pkgrel = 2
+	pkgver = r285.244c657
+	pkgrel = 3
 	url = https://github.com/ShellShoccar-jpn/misc-tools
 	arch = any
 	groups = shellshocar-jpn
@@ -10,6 +10,8 @@ pkgbase = misc-tools-git
 	provides = misc-tools
 	conflicts = misc-tools
 	source = misc-tools::git+https://github.com/ShellShoccar-jpn/misc-tools
+	source = rename-coreutils-util-linux.patch
 	md5sums = SKIP
+	md5sums = 80df841296beaa5144df620f19e941f9
 
 pkgname = misc-tools-git
