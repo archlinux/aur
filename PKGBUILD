@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Miha Frangež <miha.frangez at gmail dot com>
 pkgname=ddcui-git
-pkgver=0.5.0.r1.g934b4a6
+pkgver=0.5.2.r1.gee89c31
 pkgrel=1
 pkgdesc="Graphical user interface for ddcutil - control monitor settings"
 arch=('x86_64')
 url="https://github.com/rockowitz/ddcui"
 license=('GPL-2.0-or-later')
-depends=('ddcutil>=2.1.0' 'hicolor-icon-theme' 'qt5-base')
+depends=('ddcutil>=2.1.3' 'hicolor-icon-theme' 'qt5-base')
 makedepends=('git' 'cmake' 'qt5-tools')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
