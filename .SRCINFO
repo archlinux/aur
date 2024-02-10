@@ -18,6 +18,7 @@ pkgbase = lib32-vulkan-extension-layers-git
 	depends = vulkan-headers-git
 	depends = vulkan-utility-libraries-git
 	depends = lib32-vulkan-utility-libraries-git
+	depends = volk
 	depends = lib32-volk
 	depends = lib32-libx11
 	provides = lib32-vulkan-extensionlayers
