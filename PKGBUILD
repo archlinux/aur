@@ -1,9 +1,9 @@
 # Maintainer: Frederik “Freso” S. Olesen <archlinux at freso.dk>
 pkgname=obs-vertical-canvas
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Add vertical canvas to OBS'
-arch=('x86_64')
+arch=('x86_64' 'x86_64_v3')
 url='https://aitum.tv/#vertical'
 license=('GPL2')
 depends=('obs-studio')
