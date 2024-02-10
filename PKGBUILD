@@ -2,7 +2,7 @@
 # Contributer: Paul <paul@mrarm.io>
 
 pkgname=mcpelauncher-linux-git
-pkgver=v0.9.0.qt6.r5.g03036fd
+pkgver=0.11.0.r18.g7a64b4e
 pkgrel=1
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64' 'i686')
@@ -44,6 +44,7 @@ source=(
   'git+https://github.com/minecraft-linux/properties-parser'
   'git+https://github.com/MCMrARM/simple-ipc'
   'git+https://github.com/minecraft-linux/android_bionic'
+  'git+https://github.com/libsdl-org/SDL'
   # Temporary override of 'git+https://android.googlesource.com/platform/system/core'
   # git clone --mirror timed out on archlinux while it still works on ubuntu 22.04, the history has been truncated due to large files
   'git+https://github.com/minecraft-linux/android_core'
@@ -80,10 +81,11 @@ md5sums=(
   'SKIP'
   'SKIP'
   'SKIP'
+  'SKIP'
 )
 
 pkgver() {
-  git -C mcpelauncher-manifest describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C mcpelauncher-manifest describe --long --tags | sed 's/^v//;s/.qt6//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -115,6 +117,7 @@ prepare() {
   git -C mcpelauncher-manifest config submodule.osx-elf-header.url "$srcdir/osx-elf-header"
   git -C mcpelauncher-manifest config submodule.properties-parser.url "$srcdir/properties-parser"
   git -C mcpelauncher-manifest config submodule.simple-ipc.url "$srcdir/simple-ipc"
+  git -C mcpelauncher-manifest config submodule.sdl3.url "$srcdir/SDL"
   git -C mcpelauncher-manifest -c protocol.file.allow=always submodule update
   git -C mcpelauncher-manifest/mcpelauncher-linker config submodule.bionic.url "$srcdir/android_bionic"
   # Workaround of git clone --mirror timeout commit sha of core doesn't match git repo
@@ -127,8 +130,14 @@ prepare() {
 }
 
 build() {
-  CC=clang CXX=clang++ cmake -S mcpelauncher-manifest -B build -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo -DENABLE_DEV_PATHS=OFF -Wno-dev
-  CC=clang CXX=clang++ cmake --build build --parallel
+  cmake -S mcpelauncher-manifest \
+    -DCMAKE_C_COMPILER=clang \
+    -DCMAKE_CXX_COMPILER=clang++ \
+    -B build -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DENABLE_DEV_PATHS=OFF \
+    -Wno-dev
+  cmake --build build --parallel
 }
 
 package() {

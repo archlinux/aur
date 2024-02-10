@@ -1,6 +1,6 @@
 pkgbase = mcpelauncher-linux-git
 	pkgdesc = Minecraft: Pocket Edition launcher for Linux
-	pkgver = 0.11.0.qt6.r6.gb415348
+	pkgver = 0.11.0.r18.g7a64b4e
 	pkgrel = 1
 	url = https://github.com/minecraft-linux/mcpelauncher-manifest
 	arch = x86_64
@@ -39,7 +39,9 @@ pkgbase = mcpelauncher-linux-git
 	source = git+https://github.com/minecraft-linux/properties-parser
 	source = git+https://github.com/MCMrARM/simple-ipc
 	source = git+https://github.com/minecraft-linux/android_bionic
+	source = git+https://github.com/libsdl-org/SDL
 	source = git+https://github.com/minecraft-linux/android_core
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
