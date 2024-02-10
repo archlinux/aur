@@ -1,8 +1,8 @@
-# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 
 _gemname=ovirt-engine-sdk
 pkgname=ruby-$_gemname
-pkgver=4.4.1
+pkgver=4.6.0
 pkgrel=1
 pkgdesc='Ruby SDK for the oVirt Engine API.'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(ruby-json)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('d5a29c470f3f19d89bb71f2572982227a528b9653bf2ddf1ee691a6a9a634a54')
+sha256sums=('4ab79266194bdb4b2a1bf0ed22113de483bf33e5272e5f97b33c229cfa66aaee')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"

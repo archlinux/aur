@@ -1,14 +1,14 @@
 pkgbase = ruby-ovirt-engine-sdk
 	pkgdesc = Ruby SDK for the oVirt Engine API.
-	pkgver = 4.4.1
+	pkgver = 4.6.0
 	pkgrel = 1
 	url = https://rubygems.org/gems/ovirt-engine-sdk
 	arch = x86_64
 	license = Apache-2.0
 	depends = ruby-json
-	noextract = ovirt-engine-sdk-4.4.1.gem
+	noextract = ovirt-engine-sdk-4.6.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/ovirt-engine-sdk-4.4.1.gem
-	sha256sums = d5a29c470f3f19d89bb71f2572982227a528b9653bf2ddf1ee691a6a9a634a54
+	source = https://rubygems.org/downloads/ovirt-engine-sdk-4.6.0.gem
+	sha256sums = 4ab79266194bdb4b2a1bf0ed22113de483bf33e5272e5f97b33c229cfa66aaee
 
 pkgname = ruby-ovirt-engine-sdk
