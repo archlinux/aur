@@ -1,6 +1,6 @@
 pkgbase = python-trame-server
 	pkgdesc = Internal server side implementation of trame
-	pkgver = 2.16.0
+	pkgver = 2.16.1
 	pkgrel = 1
 	url = https://github.com/Kitware/trame-server
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-trame-server
 	makedepends = python-wheel
 	depends = python-wslink
 	depends = python-more-itertools
-	source = trame-server-2.16.0.tar.gz::https://github.com/Kitware/trame-server/archive/v2.16.0.tar.gz
-	sha512sums = 46498979beb6cafffe4da70c88ddca57902d7c215361a7b9c360bf464cd3c96b46056fbe67dfb5dbc47aa0d0720a5671021b40af15cc62087d6a8bc99da40f3f
+	source = trame-server-2.16.1.tar.gz::https://github.com/Kitware/trame-server/archive/v2.16.1.tar.gz
+	sha512sums = f938c3906a84f76732d06dd686af1be56f404c77b3e485ad9d0314abc20ea3fe0aecf841217a8569e5540a963ffbba68f6284b93b2aa37ad8d7419e6ad2e38d0
 
 pkgname = python-trame-server
