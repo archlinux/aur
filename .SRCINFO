@@ -1,17 +1,11 @@
 pkgbase = weather-gtk4
-	pkgdesc = Beautiful and lightweight weather app build using Gtk4, Libadwaita and Python
-	pkgver = 1.0.1
-	pkgrel = 2
-	url = https://github.com/amit9838/weather
-	arch = x86_64
-	arch = aarch64
+	pkgdesc = Project name change - migrate to mousam
+	pkgver = 0.0.1
+	pkgrel = 1
+	epoch = 1
+	url = https://aur.archlinux.org/packages/mousam
+	arch = any
 	license = GPL3
-	checkdepends = appstream-glib
-	makedepends = git
-	makedepends = meson
-	depends = libadwaita
-	depends = python
-	source = git+https://github.com/amit9838/weather.git#tag=v1.0.1
-	sha256sums = SKIP
 
 pkgname = weather-gtk4
+	depends = mousam
