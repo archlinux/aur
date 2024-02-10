@@ -1,6 +1,6 @@
 pkgbase = upscayl-bin
 	pkgdesc = Free and Open Source AI Image Upscaler
-	pkgver = 2.9.8
+	pkgver = 2.9.9
 	pkgrel = 1
 	url = https://github.com/upscayl/upscayl
 	arch = x86_64
@@ -14,11 +14,9 @@ pkgbase = upscayl-bin
 	depends = openjpeg2
 	provides = upscayl
 	conflicts = upscayl
-	noextract = upscayl-2.9.8-linux.zip
+	noextract = upscayl-2.9.9-linux.zip
 	options = !strip
-	source = https://github.com/upscayl/upscayl/releases/download/v2.9.8/upscayl-2.9.8-linux.zip
-	source = upscayl-run
-	sha512sums = 69a6749a997da661516b438d5a2bb5537da64b50e8f0e34689d05ffa1a35aeebce15c9c6554b0ac79abf9dc3d7f2e257cefbb8fed3dd953809a649d278a05de3
-	sha512sums = 7a1a702418325085d6afab949efe7724c4db42dc5a165ade02ff5b1d755fdcac5b8292cf3ee26b04e85a8f41343e1a5d36dba72afc5c6731a3bc3ea49b6c2193
+	source = https://github.com/upscayl/upscayl/releases/download/v2.9.9/upscayl-2.9.9-linux.zip
+	sha512sums = 1b4d237ca6ce788a09fb8aefc3d160aa6b7afb51982ef1352827cf06ebda73a12ee7b651438f4dc22ba94bb8822661db6aa0e66b374f5e15799cb7a2686cfe16
 
 pkgname = upscayl-bin

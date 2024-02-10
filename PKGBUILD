@@ -5,7 +5,7 @@
 
 _pkgname=upscayl
 pkgname=$_pkgname-bin
-pkgver=2.9.8
+pkgver=2.9.9
 pkgrel=1
 pkgdesc='Free and Open Source AI Image Upscaler'
 url='https://github.com/upscayl/upscayl'
@@ -17,21 +17,12 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 options=('!strip')
 noextract=("upscayl-${pkgver}-linux.zip")
-
-source=(
-  "https://github.com/upscayl/upscayl/releases/download/v${pkgver}/upscayl-${pkgver}-linux.zip"
-  'upscayl-run'
-)
-
-sha512sums=(
-  '69a6749a997da661516b438d5a2bb5537da64b50e8f0e34689d05ffa1a35aeebce15c9c6554b0ac79abf9dc3d7f2e257cefbb8fed3dd953809a649d278a05de3'
-  '7a1a702418325085d6afab949efe7724c4db42dc5a165ade02ff5b1d755fdcac5b8292cf3ee26b04e85a8f41343e1a5d36dba72afc5c6731a3bc3ea49b6c2193'
-)
+source=("https://github.com/upscayl/upscayl/releases/download/v${pkgver}/upscayl-${pkgver}-linux.zip")
+sha512sums=('1b4d237ca6ce788a09fb8aefc3d160aa6b7afb51982ef1352827cf06ebda73a12ee7b651438f4dc22ba94bb8822661db6aa0e66b374f5e15799cb7a2686cfe16')
 
 prepare() {
   cd "$srcdir"
   unzip upscayl-${pkgver}-linux.zip -x resources/128x128.png -d upscayl
-  sed -i 's| --enable-features=UseOzonePlatform --ozone-platform=wayland||' upscayl/resources/org.upscayl.Upscayl.desktop
   printf '%s\n' 'Icon=org.upscayl.Upscayl' >> "$_pkgname"/resources/org.upscayl.Upscayl.desktop
 }
 
@@ -42,14 +33,17 @@ package() {
   install -dm755 "$pkgdir"/usr/share/licenses/$pkgname
   mv "$_pkgname"/LICENSE* "$pkgdir"/usr/share/licenses/$pkgname/
 
-  # Launcher
-  install -Dm755 upscayl-run "$pkgdir"/usr/bin/upscayl-run
+  # XDG Launcher
   install -dm755 "$pkgdir"/usr/share/applications
   install -dm755 "$pkgdir"/usr/share/pixmaps
   mv "$_pkgname"/resources/org.upscayl.Upscayl.desktop "$pkgdir"/usr/share/applications/
   mv "$_pkgname"/resources/512x512.png "$pkgdir"/usr/share/pixmaps/org.upscayl.Upscayl.png
 
   # App directory
-  install -dm755 "$pkgdir"/usr/lib
-  mv "$_pkgname" "$pkgdir"/usr/lib/
+  install -dm755 "$pkgdir"/opt
+  mv "$_pkgname" "$pkgdir"/opt/
+
+  # Symlink in $PATH
+  install -dm755 "$pkgdir/usr/bin"
+  ln -s /opt/$_pkgname/$_pkgname "$pkgdir/usr/bin/$_pkgname"
 }
