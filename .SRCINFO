@@ -12,7 +12,7 @@ pkgbase = pacman-mirrors-helper-git
 	depends = sed
 	depends = rate-mirrors
 	depends = ncurses
-	source = git+https://codeberg.org/Application-Maker/pacman-mirrors-helper.git
+	source = git+https://codeberg.org/Application-Maker/pacman-mirrors-helper.git#branch=main
 	sha256sums = SKIP
 
 pkgname = pacman-mirrors-helper-git
