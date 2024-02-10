@@ -1,4 +1,4 @@
-pkgbase = mod-desktop
+pkgbase = mod-desktop-bin
 pkgdesc = MOD Desktop Application
 pkgver = 0.0.9
 pkgrel = 1
