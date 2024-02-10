@@ -1,6 +1,6 @@
 pkgbase = nwg-panel
 	pkgdesc = GTK3-based panel for sway and Hyprland Wayland compositors
-	pkgver = 0.9.22
+	pkgver = 0.9.23
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-panel
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = nwg-panel
 	optdepends = swaync: for Sway Notification Center support
 	optdepends = ddcutil: for external displays brightness control
 	optdepends = upower: for multiple batteries support
-	source = nwg-panel-0.9.22.tar.gz::https://github.com/nwg-piotr/nwg-panel/archive/v0.9.22.tar.gz
-	md5sums = 8e2c13472901629ad10c4640660b4612
+	source = nwg-panel-0.9.23.tar.gz::https://github.com/nwg-piotr/nwg-panel/archive/v0.9.23.tar.gz
+	md5sums = 6051fb8c2fd4b8ad1dccff2fdfbc25d8
 
 pkgname = nwg-panel
