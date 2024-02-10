@@ -5,7 +5,7 @@
 _pkgname='xf86-input-joystick'
 pkgname="${_pkgname}-git"
 pkgver=1.6.4+1.r299.20231001.c8d19c8
-pkgrel=1
+pkgrel=2
 pkgdesc="X.Org input driver that translates joystick input to mouse and keyboard events. (Do not use for games with native joystick support or XI2 applications. See manpage.) Latest git checkout."
 arch=(
   'i686'
@@ -24,8 +24,11 @@ makedepends=(
   'X-ABI-XINPUT_VERSION>=24.2'
   'X-ABI-XINPUT_VERSION<25'
 )
-provides=()
+provides=(
+  "${_pkgname}=${pkgver}"
+)
 conflicts=(
+  "${_pkgname}"
   'X-ABI-XINPUT_VERSION<24.2'
   'X-ABI-XINPUT_VERSION>=25'
 )
