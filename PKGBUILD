@@ -1,13 +1,13 @@
 # Maintainer: Flat <flat@imo.uto.moe>
 pkgname=imgbrd-grabber-git
-pkgver=v7.9.0.r15.262e8f93
-pkgrel=3
+pkgver=v7.11.2.r107.g84b6896e
+pkgrel=1
 pkgdesc="Very customizable imageboard/booru downloader with powerful filenaming features."
 arch=('i686' 'x86_64')
 url="https://github.com/Bionus/imgbrd-grabber"
 license=('Apache')
-depends=('qt5-multimedia' 'qt5-declarative' 'nodejs' 'qt5-networkauth' 'hicolor-icon-theme')
-makedepends=('git' 'cmake' 'qt5-tools' 'npm')
+depends=('qt6-multimedia' 'qt6-declarative' 'nodejs' 'qt6-networkauth' 'hicolor-icon-theme')
+makedepends=('git' 'cmake' 'qt6-tools' 'npm')
 optdepends=('openssl: used for HTTPS sources')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -17,7 +17,7 @@ md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
