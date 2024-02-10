@@ -1,7 +1,7 @@
 # Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=nncmpp-git
 _pkgname=nncmpp
-pkgver=v2.0.0.r26.g4166b17
+pkgver=v2.0.0.r43.g59f82b7
 pkgrel=1
 pkgdesc="MPD client"
 url="https://git.janouch.name/p/nncmpp"
@@ -10,12 +10,13 @@ license=('custom:0BSD')
 options=(zipman)
 conflicts=('nncmpp')
 provides=('nncmpp')
-makedepends=('cmake' 'pkg-config' 'git')
+makedepends=('cmake' 'pkg-config' 'git' 'librsvg')
 depends=('ncurses' 'libunistring' 'curl')
 optdepends=(
 	'fftw: spectrum visualiser'
 	'libpulse: direct volume control'
 	'libxft: X11 user interface'
+	'libpng: X11 user interface'
 )
 source=("git+https://git.janouch.name/p/$_pkgname.git")
 md5sums=('SKIP')
