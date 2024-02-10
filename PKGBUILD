@@ -3,8 +3,8 @@
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 
 pkgname=python-xhtml2pdf
-_name=${pkgname#python-}
-pkgver=0.2.14
+_pkgname=${pkgname#python-}
+pkgver=0.2.15
 pkgrel=1
 pkgdesc="A library for converting HTML into PDFs using ReportLab"
 arch=(any)
@@ -36,11 +36,10 @@ makedepends=(
   texlive-latexextra
 )
 checkdepends=(python-nose)
-
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4750304ef414803a95f0a5e398b719619048d801258714d74a412a3a15b6ac24')
+sha256sums=('4e802908267d3b8682076cca11cb314997dff946400e10a929243d40b4c17e28')
 
-_archive="$_name-$pkgver"
+_archive="$_pkgname-$pkgver"
 
 build() {
   cd "$_archive"
@@ -63,6 +62,7 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -dm755 "$pkgdir/usr/share/doc/$pkgname"
-  cp --archive docs/build/html "$pkgdir/usr/share/doc/$pkgname"
+  cp -at "$pkgdir/usr/share/doc/$pkgname" docs/build/html
+
   install -Dm644 -t "$pkgdir/usr/share/man/man1" docs/build/man/xhtml2pdf.1
 }
