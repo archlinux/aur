@@ -5,7 +5,7 @@
 
 pkgname=firefox-vaapi
 _pkgname=firefox
-pkgver=122.0
+pkgver=122.0.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org (with VA-API patches)"
 url="https://www.mozilla.org/firefox/"
@@ -26,7 +26,6 @@ makedepends=(
   cbindgen
   clang
   diffutils
-  dump_syms
   imake
   inetutils
   jack
@@ -57,11 +56,9 @@ optdepends=(
 provides=(firefox=${pkgver})
 conflicts=(firefox)
 options=(
-  !debug
   !emptydirs
   !lto
   !makeflags
-  !strip
 )
 source=(
   https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
@@ -77,7 +74,7 @@ validpgpkeys=(
   # https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('b84815a90e147965e4c0b50599c85b1022ab0fce42105e5ef45c630dcca5dec3'
+sha256sums=('36f19c9a748eec2fd6d3a1594d0f1d7b715eaa1d9ed6d7eeda9db8478dcf36d6'
             'SKIP'
             '1f241fdc619f92a914c75aece7c7c717401d7467c9a306458e106b05f34e5044'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
@@ -85,7 +82,7 @@ sha256sums=('b84815a90e147965e4c0b50599c85b1022ab0fce42105e5ef45c630dcca5dec3'
             '7303e0375154935149063f5273d387842af9ca22668192512b9839182c45d1da'
             '00c449422246283cd7e0bdc65d216fce4a42f755ad881106a08fb7d97eab1679'
             '75d3c213f3717cfc3f72acd4e3b6d029d373916f9ff9a1e8a3e2d7b0958760ed')
-b2sums=('7252cd58fef9f5fcb504c8c9f885567109c05e6ec92157459cc384edc6935adb206e3be0b805aeaa37dbd72656c3243db1291b745dd0f705f37a61319a4dc820'
+b2sums=('ea4346b88c7f3e7e2126eed6b0f4b1460e70fa430944a7263d42ac762e10c8440967ebbae25ceff15e7afb451e1a890ab7e97ff60619a465152e9ff6a7691653'
         'SKIP'
         'd07557840097dd48a60c51cc5111950781e1c6ce255557693bd11306c7a9258b2a82548329762148f117b2295145f9e66e0483a18e2fe09c5afcffed2e4b8628'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
@@ -138,6 +135,7 @@ ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
 ac_add_options --enable-linker=lld
+ac_add_options --disable-install-strip
 ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
@@ -175,7 +173,6 @@ build() {
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
-  export MOZ_ENABLE_FULL_SYMBOLS=1
   export MOZ_NOSPAM=1
 
   # malloc_usable_size is used in various parts of the codebase
@@ -216,9 +213,6 @@ ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
   ./mach build
-
-  echo "Building symbol archive..."
-  ./mach buildsymbols
 }
 
 package() {
@@ -306,13 +300,6 @@ BusName=org.mozilla.${_pkgname//-/}.SearchProvider
 ObjectPath=/org/mozilla/${_pkgname//-/}/SearchProvider
 Version=2
 END
-
-  export SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE="$startdir/.crash-stats-api.token"
-  if [[ -f $SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE ]]; then
-    make -C obj uploadsymbols
-  else
-    cp -fvt "$startdir" obj/dist/*crashreporter-symbols-full.tar.zst
-  fi
 }
 
 # vim:set sw=2 sts=-1 et:
