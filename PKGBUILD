@@ -12,7 +12,7 @@ pkgname=curl-c-ares
 _tag='8cd1397d3c5c9b1526c8d74530266a7a9a22294b' # git rev-parse v${_tag_name}
 _tag_name='8_6_0'
 pkgver="${_tag_name//_/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc='command line tool and library for transferring data with URLs (built with c-ares)'
 arch=('x86_64')
 url='https://curl.se/'
@@ -23,6 +23,7 @@ depends=('ca-certificates'
          'krb5' 'libgssapi_krb5.so'
          'libidn2' 'libidn2.so'
          'libnghttp2' 'libnghttp2.so'
+         'libnghttp3' 'libnghttp3.so'
          'libpsl' 'libpsl.so'
          'libssh2' 'libssh2.so'
          'openssl' 'libcrypto.so' 'libssl.so'
@@ -69,6 +70,7 @@ build() {
   "${srcdir}/$_proj/configure" \
     "${_configure_options[@]}" \
     --with-openssl \
+    --with-openssl-quic \
     --enable-versioned-symbols
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
