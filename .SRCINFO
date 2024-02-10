@@ -1,6 +1,6 @@
 pkgbase = shell-gpt
 	pkgdesc = A command-line productivity tool powered by OpenAI's ChatGPT
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/TheR1D/shell_gpt
 	arch = any
@@ -10,15 +10,16 @@ pkgbase = shell-gpt
 	makedepends = python-hatchling
 	makedepends = python-installer
 	makedepends = python-wheel
+	depends = litellm
 	depends = python
 	depends = python-click
 	depends = python-distro
 	depends = python-instructor
-	depends = python-openai
 	depends = python-pydantic
 	depends = python-rich
+	depends = python-setuptools
 	depends = python-typer
-	source = shell-gpt-1.2.0.tar.gz::https://github.com/TheR1D/shell_gpt/archive/refs/tags/1.2.0.tar.gz
-	sha256sums = f0062888cdc301e695b07b40be8b89c51b0241105a746eafe764bd23d5c3ffc9
+	source = shell-gpt-1.3.0.tar.gz::https://github.com/TheR1D/shell_gpt/archive/refs/tags/1.3.0.tar.gz
+	sha256sums = 3154b7056209b940ff40e91933bd186601b80b701d230a83a1957be05ba5749a
 
 pkgname = shell-gpt

@@ -1,21 +1,22 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=shell-gpt
-_name=${pkgname/-/_}
-pkgver=1.2.0
+_pkgname=${pkgname/-/_}
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A command-line productivity tool powered by OpenAI's ChatGPT"
 arch=(any)
 url="https://github.com/TheR1D/shell_gpt"
 license=(MIT)
 depends=(
+  litellm
   python
   python-click
   python-distro
   python-instructor
-  python-openai
   python-pydantic
   python-rich
+  python-setuptools # Missing dependency for litellm
   python-typer
 )
 makedepends=(
@@ -25,11 +26,10 @@ makedepends=(
   python-wheel
 )
 checkdepends=(python-pytest)
-
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('f0062888cdc301e695b07b40be8b89c51b0241105a746eafe764bd23d5c3ffc9')
+sha256sums=('3154b7056209b940ff40e91933bd186601b80b701d230a83a1957be05ba5749a')
 
-_archive="$_name-$pkgver"
+_archive="$_pkgname-$pkgver"
 
 prepare() {
   cd "$_archive"
@@ -62,5 +62,5 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
