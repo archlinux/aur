@@ -1,7 +1,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 _pkg=jql
 pkgname=jql-bin
-pkgver=7.1.2
+pkgver=7.1.3
 pkgrel=1
 pkgdesc="A JSON Query Language CLI tool"
 url="https://github.com/yamafaktory/jql"
@@ -18,10 +18,10 @@ source_arm=("$url/releases/download/jql-v$pkgver/$_pkg-v$pkgver-arm-unknown-linu
 source_x86_64=("$url/releases/download/jql-v$pkgver/$_pkg-v$pkgver-x86_64-unknown-linux-musl.tar.gz")
 sha256sums=('2282729282450a05a4908270ed7685dfc6aa0c3e86f2352cf4daa252c4cf6bf8'
             'a2d0e76cc3e9053d72ab5372728ae01c3c323848db4d3c40d713f9de62be30cc'
-            'f990acffdba59a8e77370f14e08004f887b1cfd61720e206a58c2c0266f5eb0c'
-            '5ce2f2b4582278b4b3aeafac98929042463fef0a6879e6911763dc769c72b99a')
-sha256sums_arm=('8fdab3e6aa3d65fbdce2c2645932f8cab7b3c1fca4eeed905bcba563e0950994')
-sha256sums_x86_64=('376137c7a9d02839e59831303d95e96cf1d9a1ba0e511a7097ef5da4ab6d16f2')
+            'cd49042452f0ce6976724c9d81c0b818c3cdc95147f572dbf74384daef02de67'
+            '6824cde61b7300fb1ad92dca01ef0ea0404afd4bcc96e19dc4671d26fa3cac80')
+sha256sums_arm=('4f6e5e1db561e59f5c89e9271bd199d7ab414f33d2045177f25a186eda736d8b')
+sha256sums_x86_64=('0b0f857524d79c6e9e1ca1ba9b900b32a96b25aa504e5fd672bdc30834b2470a')
 
 package() {
   install -Dm755 "$_pkg" -t "${pkgdir}/usr/bin"
