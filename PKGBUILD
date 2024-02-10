@@ -23,9 +23,9 @@ build() {
 }
 
 package() {
-  install -Dm644 build/ViewerInstall/Data/* -t "$pkgdir/usr/share/$pkgname/Data"
   install -Dm644 $pkgname/docs/* -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 $pkgname/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 build/ViewerInstall/Data/* -t "$pkgdir/usr/share/$pkgname/Data"
   install -Dm755 build/ViewerInstall/$pkgname -t "$pkgdir/usr/bin"
   cd $pkgname/Linux/deb_template/usr
   rm -dr share/$pkgname
