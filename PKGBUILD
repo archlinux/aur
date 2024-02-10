@@ -1,15 +1,14 @@
 # Maintainer: Andrew Simmons <agsimmons0 at gmail dot com>
 
 pkgname=nstool
-pkgver='1.7.0'
-_pkgvermod='-r2'
+pkgver='1.9.0'
 pkgrel=1
 pkgdesc="General purpose read/extract tool for Nintendo Switch file formats."
 arch=('x86_64' 'i686')
 url="https://github.com/jakcron/nstool"
 license=('MIT')
 makedepends=('git')
-source=("git+https://github.com/jakcron/nstool.git#tag=v${pkgver}${_pkgvermod}")
+source=("git+https://github.com/jakcron/nstool.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
 prepare() {
