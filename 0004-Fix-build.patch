@@ -1,0 +1,75 @@
+--- a/meson.build	2024-02-10 12:33:38.571741005 -0300
++++ b/meson.build	2024-02-10 12:44:21.523784137 -0300
+@@ -279,11 +279,17 @@
+   zlib_option = 'auto'
+ endif
+
++res = run_command('python3', '-c', 'import os; print(os.environ["LIBRARY_PATH"])')
++library_path = []
++
++if res.returncode() == 0
++  library_path = res.stdout().strip().split(':')
++endif
++
+ if zlib_option == 'auto'
+   # First try to find a system installation, otherwise fall back to
+   # the subproject.
+-  zlib_dep = dependency('zlib',
+-    required: false)
++  zlib_dep = cc.find_library('z', required: false, dirs: library_path)
+   if zlib_dep.found()
+     zlib_option = 'system'
+   else
+@@ -303,8 +309,7 @@
+   zlib_dep = zlib_project.get_variable('zlib_dep')
+   ft2_deps += [zlib_dep]
+ elif zlib_option == 'system'
+-  zlib_dep = dependency('zlib',
+-    required: true)
++  zlib_dep = cc.find_library('z', required: true, dirs: library_path)
+   assert(zlib_dep.found(), 'Could not find system zlib installation!')
+   ftoption_command += [
+     '--enable=FT_CONFIG_OPTION_USE_ZLIB',
+@@ -316,8 +321,7 @@
+ endif
+
+ # BZip2 support
+-bzip2_dep = cc.find_library('bz2',
+-  required: get_option('bzip2'))
++bzip2_dep = cc.find_library('bz2', required: get_option('bzip2'), dirs: library_path)
+
+ if bzip2_dep.found()
+   ftoption_command += ['--enable=FT_CONFIG_OPTION_USE_BZIP2']
+@@ -326,9 +330,7 @@
+ endif
+
+ # PNG support
+-libpng_dep = dependency('libpng',
+-  required: get_option('png'),
+-  fallback: 'libpng')
++libpng_dep = cc.find_library('png', required: get_option('png'), dirs: library_path)
+
+ if libpng_dep.found()
+   ftoption_command += ['--enable=FT_CONFIG_OPTION_USE_PNG']
+@@ -336,10 +338,7 @@
+ endif
+
+ # Harfbuzz support
+-harfbuzz_dep = dependency('harfbuzz',
+-  version: '>= 2.0.0',
+-  required: get_option('harfbuzz'),
+-  default_options: ['freetype=disabled'])
++harfbuzz_dep = cc.find_library('harfbuzz', required: get_option('harfbuzz'), dirs: library_path)
+
+ if harfbuzz_dep.found()
+   ftoption_command += ['--enable=FT_CONFIG_OPTION_USE_HARFBUZZ']
+@@ -347,8 +346,7 @@
+ endif
+
+ # Brotli decompression support
+-brotli_dep = dependency('libbrotlidec',
+-  required: get_option('brotli'))
++brotli_dep = cc.find_library('brotlidec', required: get_option('brotli'), dirs: library_path)
+
+ if brotli_dep.found()
+   ftoption_command += ['--enable=FT_CONFIG_OPTION_USE_BROTLI']
