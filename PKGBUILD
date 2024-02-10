@@ -3,7 +3,7 @@
 _pkgname=en-croissant
 
 pkgname="${_pkgname}"-appimage
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A Modern Chess Database"
 arch=('x86_64')
@@ -15,7 +15,7 @@ _appimage="${pkgname}-${pkgver}.AppImage"
 
 source_x86_64=("${_appimage}::https://github.com/franciscoBSalgueiro/en-croissant/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('c135d68ea4f0bf4bff08ab275fee5f8adaafd29d7af12cf16742468bd9bd7f41')
+sha256sums_x86_64=('4e3d760ca28358a126dfc45924a2fad14b223ac18b7c7641053a40adbe0f822f')
 
 prepare() {
     chmod +x "${_appimage}"
