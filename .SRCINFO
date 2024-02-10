@@ -1,14 +1,14 @@
 pkgbase = qttube-git
 	pkgdesc = A Qt frontend for YouTube.
-	pkgver = 5441833
+	pkgver = 3ecb147
 	pkgrel = 1
 	url = https://github.com/BowDown097/QtTube
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
+	makedepends = cmake
 	makedepends = git
-	depends = openssl
 	depends = qt6-base
 	depends = qt6-webchannel
 	depends = qt6-webengine
@@ -17,6 +17,8 @@ pkgbase = qttube-git
 	conflicts = qttube
 	source = git+https://github.com/BowDown097/QtTube
 	source = git+https://github.com/BowDown097/innertube-qt
+	source = git+https://github.com/woboq/verdigris
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 

@@ -2,7 +2,7 @@
 
 _pkgname=qttube
 pkgname=${_pkgname}-git
-pkgver=5441833
+pkgver=3ecb147
 pkgrel=1
 pkgdesc="A Qt frontend for YouTube."
 arch=('i686' 'x86_64' 'aarch64')
@@ -14,8 +14,10 @@ conflicts=("${_pkgname}")
 makedepends=('cmake' 'git')
 optdepends=('libxss: for preventing the screen from sleeping while watching videos')
 source=("git+https://github.com/BowDown097/QtTube"
-        "git+https://github.com/BowDown097/innertube-qt")
+        "git+https://github.com/BowDown097/innertube-qt"
+        "git+https://github.com/woboq/verdigris")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP')
 
 pkgver() {
@@ -24,9 +26,14 @@ pkgver() {
 }
 
 prepare() {
-    cd "QtTube"
+    cd "${srcdir}/QtTube"
     git submodule init
     git config submodule.depends/innertube-qt.url "${srcdir}/innertube-qt"
+    git -c protocol.file.allow=always submodule update
+
+    cd "${srcdir}/QtTube/lib/innertube-qt"
+    git submodule init
+    git config submodule.depends/verdigris.url "${srcdir}/verdigris"
     git -c protocol.file.allow=always submodule update
 }
 
