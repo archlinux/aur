@@ -3,7 +3,7 @@
 pkgname=angryoxide
 _pkgname=AngryOxide
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 _patch=""
 pkgdesc='802.11 Attack Tool'
 arch=('x86_64')
@@ -21,12 +21,15 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}${_patch}"
-  export RUSTUP_TOOLCHAIN=stable
+  export RUSTUP_TOOLCHAIN=nightly
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release
 }
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}${_patch}"
+  # executable
   install -Dm0755 -t "${pkgdir}/usr/bin" "target/release/${pkgname}"
+  # completion
+  install -Dm0644 -t "${pkgdir}/usr/share/bash-completion/completions/${pkgname}" "completions/${pkgname}"
 }
