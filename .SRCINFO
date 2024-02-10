@@ -1,0 +1,18 @@
+pkgbase = crates-tui-git
+	pkgdesc = A TUI for exploring crates.io (git)
+	pkgver = 0.1.5.r1.gaa20475
+	pkgrel = 1
+	url = https://github.com/ratatui-org/crates-tui
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = openssl
+	provides = crates-tui
+	conflicts = crates-tui
+	options = !lto
+	source = git+https://github.com/ratatui-org/crates-tui
+	sha512sums = SKIP
+
+pkgname = crates-tui-git
