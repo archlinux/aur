@@ -4,7 +4,7 @@
 
 _pkgname='ksh93'
 pkgname="${_pkgname}-git"
-pkgver=r1546.e63febac
+pkgver=r1578.5948b420
 pkgrel=1
 pkgdesc="KornShell 93u+m, fork based on ksh 93u+"
 arch=('x86_64')
@@ -36,7 +36,8 @@ prepare() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	test -n "${CFLAGS}" || CFLAGS=-O2  # Generic fallback is used only when necessary
+	test -n "${CFLAGS}" || CFLAGS=-O2  # This generic fallback is only used when necessary.
+	rm -rf ./arch  # Get rid of any leftover build files, in case the flags in makepkg.conf changed.
 	./bin/package make CCFLAGS="${CFLAGS}"
 }
 
