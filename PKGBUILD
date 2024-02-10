@@ -1,15 +1,15 @@
 # Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=lowcharts
-pkgver=0.5.8
-pkgrel=3
+pkgver=0.5.9
+pkgrel=1
 pkgdesc="Tool to draw low-resolution graphs in terminal"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/juan-leon/lowcharts"
 license=('MIT')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('6aac7dd4628a17deda0de7444c6ad928ecd3df22af3a70e06a1f2a86a4c5a3a4')
+sha256sums=('cf8920447a333adceeec3a1f0b48db9e4ef6cf79b24a46540125e1f2f4acea0f')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
