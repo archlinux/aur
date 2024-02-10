@@ -31,5 +31,5 @@ package() {
   # executable
   install -Dm0755 -t "${pkgdir}/usr/bin" "target/release/${pkgname}"
   # completion
-  install -Dm0644 -t "${pkgdir}/usr/share/bash-completion/completions/${pkgname}" "completions/${pkgname}"
+  install -Dm0644 -t "${pkgdir}/usr/share/bash-completion/completions" "completions/${pkgname}"
 }
