@@ -3,7 +3,7 @@
 
 _pkgbase=luau
 pkgname=luau-bin
-pkgver=0.610
+pkgver=0.612
 pkgrel=1
 
 pkgdesc='A fast, small, safe, gradually typed embeddable scripting language derived from Lua'
@@ -15,13 +15,14 @@ makedepends=('unzip')
 conflicts=("$_pkgbase" "$_pkgbase"-git)
 provides=("$_pkgbase")
 source=("luau-$pkgver.zip::https://github.com/luau-lang/luau/releases/download/${pkgver}/luau-ubuntu.zip")
-b2sums=('3cdf824d9dd77df4e7ea19f2f06dfe0d357499a2c46a18ed61832f5460f662a3e85b1b7c0f147d35e745b152b9783a6682cb1b805441bf176e3daa20e0e13efa')
+b2sums=('766dec0a8443d11f8c9cb19e8b47cd49cef0c5332308230b5f0a9adb894b32d692effe6c3ff7564d23859a316b5bea6abffbfd7f8d93c35220ddb0dc3b59483f')
 
 prepare() {
     unzip -o "luau-$pkgver.zip"
 }
 
 package() {
-    install -Dm755 "$srcdir/luau" "$pkgdir/usr/bin/luau"
-    install -Dm755 "$srcdir/luau-analyze" "$pkgdir/usr/bin/luau-analyze"
+    install -Dm755 "$srcdir/luau" -t "$pkgdir/usr/bin"
+    install -Dm755 "$srcdir/luau-analyze" "$pkgdir/usr/bin"
+    install -Dm755 "$srcdir/luau-compile" "$pkgdir/usr/bin"
 }
