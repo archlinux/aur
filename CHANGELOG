@@ -1,0 +1,15 @@
+Changes in version 1.1.0 (2024-01-21)
+
+  b5fe131 768e9bb Fix overflow detection
+  f96cdbe Pass __program_executable_name to cosmo libc
+  46d82a0 APPEND: avoid overrunning the buffer (#161)
+  9983708 Print log ellipsis if message is truncated (#160)
+  e75cbe8 Modelines (#158)
+  2c34eee Press 2 or 3 to toggle the display of columns.
+  1ef448d blink/checked.h: fix syntax error when building with GCC 9.4 (#150)
+  a00feef Support debugging eXecute-only ELF segments
+  caf97b1 Slightly speed up TLB lookups for blink -m mode (#146)
+  671aa0b AArch64 host fixes and optimizations (#145)
+  3466a91 Loosen ELF restrictions
+  328758f Ravamp endian functions
+  b31fed8 Fix "warn_unused_result" errors
