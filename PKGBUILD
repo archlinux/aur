@@ -2,14 +2,20 @@
 # Contributor: Onur Kader <onurorkunkader1999@gmail.com>
 
 pkgname=scnlib
-pkgver=1.1.3
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A formatted input library, think {fmt} but in the other direction. 'scanf' for modern C++"
 arch=("x86_64")
 url="https://github.com/eliaskosunen/scnlib"
-license=("Apache")
-makedepends=("git" "cmake" "doxygen" "python-sphinx" "python-sphinx_rtd_theme" "python-breathe" "doctest" "benchmark")
-source=("${pkgname}::git+https://github.com/eliaskosunen/scnlib.git#tag=v${pkgver}")
+license=("Apache-2.0")
+makedepends=(
+	git
+	cmake
+	#doxygen
+	# TODO not packaged
+	#python-poxy
+)
+source=("git+https://github.com/eliaskosunen/scnlib.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
 build() {
@@ -17,8 +23,9 @@ build() {
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX="/usr" \
 		-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
-		-DBUILD_SHARED_LIBS=ON
-	cmake --build build --target all doc doc-sphinx
+		-DBUILD_SHARED_LIBS=ON \
+
+	cmake --build build --target all #scn_docs
 }
 
 check() {
@@ -27,7 +34,5 @@ check() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install build
-	# fix up the documentation install path
-	mv "$pkgdir/doc" -t "$pkgdir/usr/share"
 }
 
