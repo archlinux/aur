@@ -1,8 +1,8 @@
 # Maintainer: Neil Simpson <neilsimp1@gmail.com>
 
 pkgname=kbsrv
-pkgver=0.1.1
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="kbsrv is a tool to host a 'keyboard server' by wrapping ydotool in a TCP server"
 arch=("x86_64" "aarch64" "armv7h")
 url="https://gitlab.com/neilsimp1/kbsrv"
@@ -10,7 +10,7 @@ license=("GPL-3-or-later")
 depends=("ydotool")
 makedepends=("rust")
 source=("https://gitlab.com/neilsimp1/kbsrv/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=("0aee8edf9a1bf10254d91abe4f14b8cc050b540af59d61951111c130d8adfbe0")
+sha256sums=("e58808c144a23d9d4466a51da37c85e161a1d13602f0dcf26c5c19239f6c53c8")
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
