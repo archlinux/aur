@@ -4,7 +4,7 @@
 
 pkgname=jujutsu
 _pkgname=jj
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Git-compatible VCS that is both simple and powerful"
 arch=(x86_64)
@@ -17,9 +17,8 @@ depends=(
 )
 makedepends=(cargo)
 options=(!lto)
-
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f4e2be834cf9ea966ac58451298c8f1eed145c190fbca62b5b5a6bd145ac997e')
+sha256sums=('33bea9014f53db520d2983830f3da75b7124c44a16b75850a1dd781355aeff5b')
 
 _archive="$_pkgname-$pkgver"
 
@@ -37,9 +36,9 @@ build() {
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features --package jj-cli
 
-  target/release/jj util completion --bash > jj.bash
-  target/release/jj util completion --zsh > jj.zsh
-  target/release/jj util completion --fish > jj.fish
+  target/release/jj util completion bash > jj.bash
+  target/release/jj util completion zsh > jj.zsh
+  target/release/jj util completion fish > jj.fish
 }
 
 check() {
@@ -67,5 +66,7 @@ package() {
   install -Dm644 jj.fish "$pkgdir/usr/share/fish/completions/jj.fish"
 
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
-  cp --archive ./docs/* "$pkgdir/usr/share/doc/$pkgname"
+  cp -at "$pkgdir/usr/share/doc/$pkgname" docs
+  # Avoid namcap warning for dead symlink
+  rm "$pkgdir/usr/share/doc/jujutsu/docs/cli-reference.md"
 }
