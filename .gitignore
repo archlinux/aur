@@ -1,5 +1,8 @@
-*.tar
-*.tar.*
+# Ignore everything
+*
 
-src/
-pkg/
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!no-manual-debuginfo.patch
