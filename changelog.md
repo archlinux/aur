@@ -1,3 +1,35 @@
+## GE-Proton8-31
+
+Proton:
+
+- updated wine to latest bleeding edge, allows helldivers to run
+- updated vkd3d-proton to latest git
+- updated dxvk to latest git
+
+ULWGL:
+
+- added fix for older games to properly set CWD (current working directory) if executable is not inside the wine prefix
+
+GStreamer:
+
+- fixed this annoying ass unclosable wayland window from popping up when a game uses gstreamer:
+![image](https://github.com/GloriousEggroll/proton-ge-custom/assets/11287837/0b3174c0-6f55-479b-a28a-d92b8a82b449)
+
+Original upstream bugs + fix:
+- https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/2997
+- https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/5511
+- https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/5509
+
+Protonfixes:
+
+- added fixes for Dark and Darker (thanks nmlynch94)
+- updated BDO fixes to work with standalone
+- updated yakuza 5 cutscenes fixes to work on non-steam versions
+
+General:
+
+- cleaned up various no longer required patches (either upstreamed or already fixed)
+
 ## GE-Proton8-30
 
 Hotfix:
