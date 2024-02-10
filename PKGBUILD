@@ -4,18 +4,15 @@
 # Contributor: x-demon
 pkgname=nicotine-plus-git
 _appdata_id=org.nicotine_plus.Nicotine
-pkgver=3.3.0.dev6.r9955.023383076
+pkgver=3.3.1.dev1.r10541.2bf25fb39
 pkgrel=1
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
 arch=('any')
 url="https://nicotine-plus.org"
 license=('GPL-3.0-or-later')
-depends=('python-gobject')
+depends=('gtk4' 'python-gobject')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-optdepends=('gtk4: default GTK version'
-            'libadwaita: for Adwaita theme on GNOME (GTK 4)'
-            'gtk3: fallback if GTK 4 is not installed'
-            'gspell: for spell checking in chat (GTK 3)')
+optdepends=('libadwaita: for Adwaita theme on GNOME')
 checkdepends=('appstream-glib' 'desktop-file-utils' 'python-pytest')
 provides=("${pkgname%-git}" 'nicotine+' 'nicotine')
 conflicts=("${pkgname%-git}" 'nicotine+' 'nicotine')
