@@ -1,27 +1,8 @@
 pkgbase = mercury-browser-sse3-bin
-	pkgdesc = Compiler optimized, private Firefox fork
+	pkgdesc = metapackage - migrate to mercury-browser-bin
 	pkgver = 122.0.2
-	pkgrel = 1
-	url = https://github.com/Alex313031/Mercury
-	install = mercury-browser-sse3.install
-	arch = x86_64
-	license = MPL-2.0
-	optdepends = ffmpeg: H264/AAC/MP3 decoding
-	optdepends = hunspell: Spell checking
-	optdepends = hyphen: Hyphenation
-	optdepends = networkmanager: Location detection via available WiFi networks
-	noextract = mercury-browser_122.0.2_SSE3.deb
-	options = !emptydirs
-	options = !strip
-	source = mercury-browser_122.0.2_SSE3.deb::https://github.com/Alex313031/Mercury/releases/download/v.122.0.2/mercury-browser_122.0.2_SSE3.deb
-	source = mercury-browser-sse3.sh
-	sha256sums = SKIP
-	sha256sums = 575142b922d2500e21d12bce030741ae73a2447b91abbd155cc5359d7fedf481
+	pkgrel = 2
+	arch = any
 
 pkgname = mercury-browser-sse3-bin
-	depends = alsa-lib
-	depends = dbus-glib
-	depends = gtk3
-	depends = libnotify
-	provides = mercury-browser-sse3=122.0.2
-	conflicts = mercury-browser-sse3
+	depends = mercury-browser-bin
