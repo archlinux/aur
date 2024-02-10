@@ -1,6 +1,6 @@
 pkgbase = curseforge
 	pkgdesc = CurseForge desktop client for Linux
-	pkgver = 0.235.2.13532
+	pkgver = 0.244.4.r16117
 	pkgrel = 1
 	url = https://curseforge.com/
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = curseforge
 	license = custom:chromium-licenses
 	depends = fuse2
 	options = !strip
-	source = curseforge-0.235.2.13532.zip::https://curseforge.overwolf.com/downloads/curseforge-latest-linux.zip
+	source = curseforge-0.244.4.r16117.zip::https://curseforge.overwolf.com/downloads/curseforge-latest-linux.zip
 	source = curseforge
 	source = LICENSE
-	sha256sums = SKIP
-	sha256sums = dbb87d28bb55affc7e442c1b65db5d59d16a8e8322d99092a27c31cfa3eb98c4
-	sha256sums = 135c7ffeb81f4a7ee95a5879651b679e0d1ef9d13c7aa7c262386ad97b48d62f
+	sha512sums = SKIP
+	sha512sums = ef669b9423f685dc50f7d4db487fde5c4708ee3991517c3f6a28c0417368ffd9f0ba982e183471cef27e376bbb4f7c18c80eeb76dd189dc591e994049c421ddb
+	sha512sums = 0d6fbcdaa8366742356118134251cb10dba592282f83dc8cf8ecb755a64622e67af6577300507590245b674e5628cb7bf845a06f5fa65ddf657ebef9c09bed03
 
 pkgname = curseforge
