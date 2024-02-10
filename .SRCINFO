@@ -1,11 +1,11 @@
 pkgbase = waylyrics
 	pkgdesc = the furry way to show desktop lyrics
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://waylyrics.github.io/waylyrics/waylyrics/
 	arch = x86_64
 	license = MIT
-	makedepends = cargo>=1.73
+	makedepends = rust>=1.73.0
 	depends = openssl
 	depends = hicolor-icon-theme
 	depends = dbus
@@ -16,7 +16,7 @@ pkgbase = waylyrics
 	depends = dconf
 	depends = gtk4
 	options = !lto
-	source = waylyrics-0.2.1.tar.gz::https://github.com/waylyrics/waylyrics/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = 300b6eb59d7ac20c2ee247696267f503318d3d2260b3a61b933da75990b73ed6
+	source = waylyrics-0.2.2.tar.gz::https://github.com/waylyrics/waylyrics/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = 032b627a14e5111b8feda2382b2a71c487a639caabb390b2cff6843da60a8c32
 
 pkgname = waylyrics
