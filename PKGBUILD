@@ -2,18 +2,18 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-docs-rs
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Imitate the documentation build that docs.rs would do"
 arch=('x86_64')
 url="https://github.com/dtolnay/cargo-docs-rs"
-license=('MIT' 'Apache')
+license=('MIT' 'Apache-2.0')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "Cargo.lock")
-sha512sums=('2cfb141733d1a9deccf8cb6b6a5c7f29233aa6491dc16a26c98a888264627b485be2d8a8e1af81f5fec6d9f347e6da7823f725776d6d4d37ea13a04b2ce0e147'
-            '8342268e29e4be6c77b150cfd487295292a406bb1f62fdd7b8a63363421dc26c4daab2580385d8fe04f043d59d647fb022eaddba0c2c702a366632f709474081')
+sha512sums=('45c9507ef546fdc0771196c3f2de9647aa88713083dbaec0e729b5155e56bcaaad582a90570e792a70d60510e8f6470f8356a0491f61b6fa52483098a2c14c24'
+            'f0ce53e64e6f700309e38df96f7691c5aa8fe529a87b253f657f24e090cca050fea271c28146440ae76086bc84aecaf9b31f85be31645245f9e6780af300b270')
 
 prepare() {
   cd "$pkgname-$pkgver"
