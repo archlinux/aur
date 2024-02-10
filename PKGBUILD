@@ -1,8 +1,9 @@
-# Maintainer: Orhun Parmaksız <orhun@archlinux.org>
+# Maintainer: orhun <orhunparmaksiz@gmail.com>
+# https://github.com/orhun/pkgbuilds
 
 pkgname=crates-tui
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A TUI for exploring crates.io"
 arch=('x86_64')
 url="https://github.com/ratatui-org/crates-tui"
@@ -34,5 +35,3 @@ package() {
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
-
-# vim: ts=2 sw=2 et:
