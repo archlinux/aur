@@ -2,12 +2,13 @@
 _pkgname=clapboard
 pkgname=clapboard-git
 pkgver=r1.73de0ac
-pkgrel=1
+pkgrel=2
 pkgdesc="Clipboard manager for Wayland"
 url="https://github.com/bjesus/clapboard"
 arch=("any")
 license=("MIT")
-depends=('wl-clipboard' 'tofi')
+depends=('wl-clipboard')
+optdepends=('tofi: a recommended launcher')
 makedepends=('rust')
 source=("git+https://github.com/bjesus/$_pkgname.git")
 sha512sums=("SKIP")
