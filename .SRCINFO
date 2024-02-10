@@ -1,0 +1,18 @@
+pkgbase = rojo
+	pkgdesc = [Latest Stable Source] Rojo enables Roblox developers to use professional-grade software engineering tools
+	pkgver = 7.4.0
+	pkgrel = 1
+	url = https://rojo.space
+	arch = x86_64
+	arch = aarch64
+	license = MPL2
+	makedepends = cargo
+	depends = gcc
+	depends = glibc
+	conflicts = rojo-git
+	conflicts = rojo-bin
+	options = !lto
+	source = rojo-7.4.0.tar.gz::https://github.com/rojo-rbx/rojo/archive/refs/tags/v7.4.0.tar.gz
+	sha256sums = 6c3ca53a8cee478c7b44c6a92e6b93e5a16cb5d621caa2b33ac5c77a3959aad6
+
+pkgname = rojo
