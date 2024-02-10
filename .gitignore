@@ -2,4 +2,4 @@
 /pkg
 /*.pkg.tar.zst
 /LICENSE
-/paperlessmerge
+/paperlessmerge_*_linux_amd64
