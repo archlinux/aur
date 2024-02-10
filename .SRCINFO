@@ -1,16 +1,14 @@
 pkgbase = tacentview-git
 	pkgdesc = An image and texture viewer for tga, png, apng, exr, dds, ktx, ktx2, astc, pkm, qoi, gif, hdr, jpg, tif, ico, webp, and bmp files. Uses Dear ImGui, OpenGL and Tacent.
 	pkgver = 1.0.43.9.gdfff366
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bluescan/tacentview
 	arch = any
 	license = ISC
 	makedepends = cmake
-	makedepends = dpkg
 	makedepends = git
 	makedepends = ninja
 	depends = gcc-libs
-	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libx11
 	depends = libxcb

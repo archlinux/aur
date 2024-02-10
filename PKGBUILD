@@ -3,15 +3,15 @@
 _pkgname=tacentview
 pkgname=${_pkgname}-git
 pkgver=1.0.43.9.gdfff366
-pkgrel=1
+pkgrel=2
 pkgdesc="An image and texture viewer for tga, png, apng, exr, dds, ktx, ktx2, astc, pkm, qoi, gif, hdr, jpg, tif, ico, webp, and bmp files. Uses Dear ImGui, OpenGL and Tacent."
 arch=('any')
 url="https://github.com/bluescan/${_pkgname}"
 license=('ISC')
 provides=("${_pkgname}=${pkgver}")
 provides=(${_pkgname})
-depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'libx11' 'libxcb')
-makedepends=('cmake' 'dpkg' 'git' 'ninja') # dpkg is the simplest way to create an installation-ready directory structure with how the project is made :(
+depends=('gcc-libs' 'hicolor-icon-theme' 'libx11' 'libxcb')
+makedepends=('cmake' 'git' 'ninja')
 source=("git+${url}.git")
 sha512sums=('SKIP')
 
@@ -21,40 +21,28 @@ pkgver() {
 }
 
 prepare() {
-	cd "${srcdir}"
-
-	mkdir -p build
-
 	# `cmake` call in `prepare()` since it will download stuff.
 	cmake -S "${_pkgname}" -B build \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DFETCHCONTENT_QUIET=OFF \
-		-DPACKAGE_DEB=ON \
 		-GNinja
 }
 
 build() {
-	cd "${srcdir}"
-	
 	# We build!
 	ninja -C build install
 }
 
 package() {
-	cd "${srcdir}"
+	# Installing the program's binaries
+	install -Dm755 build/ViewerInstall/${_pkgname} -t "${pkgdir}/usr/bin"
 	
-	# Copy the program's user data
-	INPUT=$(find "build/ViewerInstall/Package/" -maxdepth 1 -type d | grep "${_pkgname}_*") # The name is mutable, so, let's not bother
-	cp -rv "${INPUT}"/usr "${pkgdir}"/
-
-	# Cleaning some rogue .gitignore lying around
-	find "${pkgdir}" -name ".gitignore" -exec rm {} \;
+	# Installing the program's data
+	install -Dm644 build/ViewerInstall/Data/* -t "${pkgdir}/usr/share/${_pkgname}/Data"
 	
 	# Installing the docs
-	install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" "${_pkgname}/README.md"
-	cp -rv "${_pkgname}/docs" "${pkgdir}/usr/share/doc/${_pkgname}"/
+	install -Dm644 ${_pkgname}/docs/* -t "${pkgdir}/usr/share/doc/${_pkgname}"
 	
 	# Installing the licenses
-	install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgname}/LICENSE"
-	ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" "${pkgdir}/usr/share/doc/${_pkgname}/LICENSE"
+	install -Dm644 ${_pkgname}/LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
