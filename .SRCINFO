@@ -1,7 +1,7 @@
 pkgbase = ffgo-git
 	pkgdesc = A graphical launcher for FlightGear, i.e., a program whose purpose is to allow easy assembling and running of an fgfs command line. (Fork of and replacement for 'FGo!'.)
 	pkgver = 1.12.8.r601.20230917.f5624be
-	pkgrel = 3
+	pkgrel = 4
 	url = http://frougon.net/projects/FFGo/
 	arch = any
 	license = custom
@@ -19,6 +19,7 @@ pkgbase = ffgo-git
 	depends = python-geographiclib
 	depends = python-pillow
 	depends = tk>=8.5
+	optdepends = geographiclib: For 'MagneticField' executable. (Seems not to work out of the box, though!)
 	provides = ffgo=1.12.8.r601.20230917.f5624be
 	conflicts = ffgo
 	source = ffgo::git+https://github.com/frougon/FFGo.git

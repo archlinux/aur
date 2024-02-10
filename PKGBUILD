@@ -5,7 +5,7 @@
 _pkgname=ffgo
 pkgname="${_pkgname}-git"
 pkgver=1.12.8.r601.20230917.f5624be
-pkgrel=3
+pkgrel=4
 pkgdesc="A graphical launcher for FlightGear, i.e., a program whose purpose is to allow easy assembling and running of an fgfs command line. (Fork of and replacement for 'FGo!'.)"
 arch=('any')
 url="http://frougon.net/projects/FFGo/"
@@ -31,6 +31,7 @@ makedepends=(
 )
 optdepends=(
   # "python-geographiclib:  For more accurate location calculations."
+  "geographiclib:  For 'MagneticField' executable. (Seems not to work out of the box, though!)"
   # "python-pillow"
 )
 provides=(
