@@ -26,9 +26,6 @@ post_install() {
   if /usr/lib/ld-linux-x86-64.so.2 --help | grep -qsE '^\s+x86-64-v3.*supported.*$' ; then
     note1 "Custom flags should be put directly in: ~/.config/thorium-flags.conf"
     note2 "The launcher is called: 'thorium-browser'"
-  elif grep -qE '\bpni\b' /proc/cpuinfo ; then
-    note1 "Your processor does not support x86-64-v3 instructions."
-    note2 "You may want to install thorium-browser-sse3-bin instead."
   else
     note1 "Your processor does not support SSE3 instructions."
     note2 "thorium-browser may not work on your computer."
