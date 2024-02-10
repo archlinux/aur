@@ -2,7 +2,7 @@
 
 pkgname=technitium-dns-server-bin
 _pkgname=technitium-dns-server
-pkgver=12.0
+pkgver=12.0.1
 pkgrel=1
 pkgdesc="Open source authoritative and recursive DNS server focused on privacy and security"
 arch=('any')
@@ -14,7 +14,7 @@ provides=('technitium-dns-server')
 source=("$_pkgname-$pkgver.tar.gz::https://download.technitium.com/dns/archive/$pkgver/DnsServerPortable.tar.gz"
         "$_pkgname.service"
         "$_pkgname.sysuser")
-sha256sums=("90bbb679e145f7314b9574d81ca6e224e77fa227a7077a37a0c7c66604a17321"
+sha256sums=("4067ae595bc4fde55922650e523de73f86f4b014b3e798753d350cab9942bc81"
             "464dbfe1038e4737ca83c60617a5a4e334cdd948fe41315a3a36913011680952"
             "d349d144faf8932c56a054b22721420f1eb68adf7bc226f174654b33510f75e4")
 
