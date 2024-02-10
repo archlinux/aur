@@ -1,6 +1,6 @@
 pkgbase = mission-center
 	pkgdesc = Monitor your CPU, Memory, Disk, Network and GPU usage
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://gitlab.com/mission-center-devs/mission-center
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = mission-center
 	depends = libadwaita
 	depends = nvtop
 	options = !lto
-	source = https://gitlab.com/mission-center-devs/mission-center/-/archive/v0.4.3/mission-center-v0.4.3.tar.gz
-	sha256sums = c52006157b58de5b509147bf767ebd8aff8d859f659690b0d2362124c40feb62
+	source = https://gitlab.com/mission-center-devs/mission-center/-/archive/v0.4.4/mission-center-v0.4.4.tar.gz
+	sha256sums = ba0fca8620a6385ad3933d8a372b5f4d4daef5773ad2489629b85ba053c4a3e4
 
 pkgname = mission-center
