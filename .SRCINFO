@@ -1,7 +1,7 @@
 pkgbase = firedragon
 	pkgdesc = Floorp fork build using custom branding & settings
 	pkgver = 11.9.0
-	pkgrel = 1
+	pkgrel = 4
 	epoch = 1
 	url = http://dr460nf1r3.org
 	install = firedragon.install
