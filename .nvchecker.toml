@@ -1,0 +1,3 @@
+[python-m2crypto]
+source = "pypi"
+pypi = "M2Crypto"
