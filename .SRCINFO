@@ -10,7 +10,13 @@ pkgbase = zapzap-linux
 	makedepends = python-setuptools>=40.8.0
 	makedepends = desktop-file-utils
 	depends = python-pyqt6
+	depends = python-pyqt6-webengine
 	depends = dbus-python
+	depends = qt6-wayland
+	depends = python-jaraco.text
+	depends = python-inflect
+	depends = python-pydantic>=1.9.1
+	depends = python-typing_extensions>=4.6.1
 	optdepends = hunspell: spell check
 	conflicts = zapzap
 	conflicts = zapzap-git
