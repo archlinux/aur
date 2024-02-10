@@ -7,7 +7,7 @@ pkgname=(
   at-spi2-core-git
   at-spi2-core-docs-git
 )
-pkgver=2.49.90.r10.g43908106
+pkgver=2.51.90.r0.g977956ff9
 pkgrel=1
 pkgdesc="Protocol definitions and daemon for D-Bus at-spi"
 url="https://gitlab.gnome.org/GNOME/at-spi2-core"
@@ -22,6 +22,8 @@ depends=(
   libxtst
   systemd
   xorg-xprop
+  libei
+  libxkbcommon
 )
 makedepends=(
   dbus-broker
