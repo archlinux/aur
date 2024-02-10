@@ -1,0 +1,5 @@
+[b4]
+source = "git"
+git = "https://git.kernel.org/pub/scm/utils/b4/b4.git/"
+prefix = "v"
+use_max_tag = true
