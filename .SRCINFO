@@ -1,13 +1,13 @@
 pkgbase = nvidia-container-toolkit
 	pkgdesc = NVIDIA container runtime toolkit
-	pkgver = 1.14.3
-	pkgrel = 9
+	pkgver = 1.14.5
+	pkgrel = 1
 	url = https://github.com/NVIDIA/nvidia-container-toolkit
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git
 	makedepends = go
-	depends = libnvidia-container-tools=1.14.3
+	depends = libnvidia-container-tools=1.14.5
 	provides = nvidia-container-runtime
 	conflicts = nvidia-container-runtime
 	conflicts = nvidia-container-runtime-hook
@@ -15,7 +15,7 @@ pkgbase = nvidia-container-toolkit
 	options = !makeflags
 	options = !lto
 	backup = etc/nvidia-container-runtime/config.toml
-	source = nvidia-container-toolkit-1.14.3.tar.gz::https://github.com/NVIDIA/nvidia-container-toolkit/archive/v1.14.3.tar.gz
-	sha256sums = a8dbb6a8d45fe8cb2ecbb7b5d49c332e0e7270e8988e57d2a8587ab1e004f6dd
+	source = nvidia-container-toolkit-1.14.5.tar.gz::https://github.com/NVIDIA/nvidia-container-toolkit/archive/v1.14.5.tar.gz
+	sha256sums = 6c6ae02b46a56e3a8b23ab3b0d0f46ad908d0771e6db4b3f6b5cfa64050ce83c
 
 pkgname = nvidia-container-toolkit
