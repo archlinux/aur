@@ -1,6 +1,6 @@
 pkgbase = blazefetch-git
 	pkgdesc = A lite & blazing fast system info fetch utility
-	pkgver = 2.8.6.06f030ef.git
+	pkgver = 2.8.6.f564c477.git
 	pkgrel = 1
 	url = https://github.com/rifsxd/blazefetch
 	arch = any
