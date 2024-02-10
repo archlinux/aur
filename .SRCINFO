@@ -1,6 +1,6 @@
 pkgbase = kodi-eggz
 	pkgver = 21.0b2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -59,7 +59,7 @@ pkgbase = kodi-eggz
 	depends = tinyxml
 	depends = shairplay
 	depends = libdisplay-info
-	source = git+https://github.com/xbmc/xbmc.git#tag=21.0b2-Omega
+	source = git+https://github.com/xbmc/xbmc.git
 	source = git+https://github.com/xbmc/vfs.rar.git
 	sha256sums = SKIP
 	sha256sums = SKIP

@@ -2,7 +2,7 @@ pkgbase=kodi-eggz
 pkgname=kodi-eggz
 pkgver=21.0b2
 gittag=21.0b2-Omega
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -20,7 +20,8 @@ makedepends=(
 )
 
 source=(
-  "git+https://github.com/xbmc/xbmc.git#tag=$gittag"
+  #"git+https://github.com/xbmc/xbmc.git#tag=$gittag"
+  "git+https://github.com/xbmc/xbmc.git"
   "git+https://github.com/xbmc/vfs.rar.git"
 )
 
@@ -62,6 +63,8 @@ build() {
  export PATH="$srcdir/path:$PATH"
  msg2 "pivot to kodi git dir"
  cd ${srcdir}/xbmc
+ msg2 "checkout working commit"
+ git checkout b35acf7bd3de2d5564d4d30c8800b3da7f9670f0 || exit 2
  mkdir ${srcdir}/kodi-build
  cd ${srcdir}/kodi-build
  msg2 "cmake configure phase"
