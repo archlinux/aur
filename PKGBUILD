@@ -15,8 +15,9 @@ optdepends=(
 provides=(red)
 conflicts=(red ed)
 options=(!strip)
+_filename="red-08feb24-1c3cd7363"
 source=(
-	"https://static.red-lang.org/dl/auto/linux/red-08feb24-1c3cd7363"
+	"https://static.red-lang.org/dl/auto/linux/$_filename"
 	"https://raw.githubusercontent.com/red/red/master/BSL-License.txt"
 	"https://raw.githubusercontent.com/red/red/master/BSD-3-License.txt")
 sha256sums=(
@@ -28,7 +29,7 @@ sha256sums=(
 package() {
 	cd "$srcdir"
 
-	install -Dm755 red-08feb24-1c3cd7363 "$pkgdir/usr/bin/red"
+	install -Dm755 "$_filename" "$pkgdir/usr/bin/red"
 
 	install -dm755 "${pkgdir}/usr/share/licenses/$pkgname"
 	install -Dm644 BSL-License.txt "$pkgdir/usr/share/licenses/$pkgname/BSL-License.txt"

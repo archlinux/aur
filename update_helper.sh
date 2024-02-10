@@ -12,7 +12,7 @@ wget -q https://static.red-lang.org/download.html
 _date=$( grep -P '/dl/auto/linux/red-\K([0-9]{2}[a-z]{3}[0-9]{2})' -o download.html )
 _commit=$( grep -P '/dl/auto/linux/red-[0-9]{2}[a-z]{3}[0-9]{2}-\K([0-9a-f]*)' -o download.html )
 _filename="red-$_date-$_commit"
-echo -e "____ filename:\t $_filename"
+echo -e "____ _filename:\t $_filename"
 
 echo "downloading $_filename ..."
 wget -q "https://static.red-lang.org/dl/auto/linux/$_filename"
