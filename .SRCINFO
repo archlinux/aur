@@ -1,0 +1,18 @@
+pkgbase = nmead-git
+	pkgdesc = Service that distributes NMEA data over the network
+	pkgver = r3.b4ae028
+	pkgrel = 1
+	url = https://github.com/chriscokid/nmead
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = GPL3
+	backup = etc/conf.d/nmead
+	source = nmead::git+https://github.com/chriscokid/nmead.git
+	source = nmead.service
+	source = nmead.conf.d
+	md5sums = SKIP
+	md5sums = 4d2505768521deeae59bf1b3b928c257
+	md5sums = d04be962e193de6b7a7b6a72ef7f88cf
+
+pkgname = nmead-git

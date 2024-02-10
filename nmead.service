@@ -1,0 +1,10 @@
+[Unit]
+Description=Service that distributes NMEA data over the network
+
+[Service]
+Environment=BAUDRATE=115200 TTY=/dev/ttyUSB0 PORT=1155
+EnvironmentFile=-/etc/conf.d/nmead
+ExecStart=/usr/bin/nmead -i $TTY -b $BAUDRATE -p $PORT
+
+[Install]
+WantedBy=multi-user.target
