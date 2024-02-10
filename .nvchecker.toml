@@ -1,0 +1,7 @@
+[yubikey-manager-qt]
+source = "github"
+github = "Yubico/yubikey-manager-qt"
+prefix = "yubikey-manager-qt-"
+use_max_tag = true
+ignored = "0.3.0"
+exclude_regex = ".*rc.$"
