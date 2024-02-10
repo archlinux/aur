@@ -2,8 +2,8 @@
 
 pkgname=python-outlines
 _pkgname=${pkgname#python-}
-pkgver=0.0.27
-_commit=1626ceaeb0611dd0c4439948072577ca05152f6e
+pkgver=0.0.28
+_commit=9c74d7c82ace6df8a24df973ee471371ee79705b
 pkgrel=1
 pkgdesc="Guided text generation"
 arch=(any)
@@ -12,6 +12,7 @@ license=(Apache-2.0)
 depends=(
   python
   python-cloudpickle
+  python-datasets
   python-diskcache
   python-interegular
   python-jinja
@@ -36,6 +37,7 @@ makedepends=(
   python-wheel
 )
 checkdepends=(
+  python-accelerate
   python-pytest
   python-pytest-benchmark
   python-pytest-mock
@@ -68,37 +70,15 @@ build() {
 check() {
   cd "$_archive"
 
-  local ignored_tests=(
-    # Fails due to the following import error:
-    #   ImportError: /usr/lib/python3.11/site-packages/tokenizers/tokenizers.cpython-311-x86_64-linux-gnu.so: undefined symbol: OnigDefaultSyntax
-    tests/benchmark/test_benchmark_json_schema.py
-    tests/benchmark/test_benchmark_numba_compile.py
-    tests/benchmark/test_benchmark_regex_fsm.py
-    tests/generate/test_integration_transfomers.py
-    tests/models/test_transformers.py
-
-    # Requires python-llama-cpp which I'm currently unable to install.
-    tests/models/test_llama_cpp.py
-  )
-  local ignored_tests_arg=$(printf " --ignore=%s" "${ignored_tests[@]}")
-
-  local deselected_tests=(
-    # Fails due to the following import error:
-    #   ImportError: /usr/lib/python3.11/site-packages/tokenizers/tokenizers.cpython-311-x86_64-linux-gnu.so: undefined symbol: OnigDefaultSyntax
-    tests/test_function.py::test_function_basic
-    tests/fsm/test_regex.py::test_create_fsm_index_tokenizer
-  )
-  local deselected_tests_arg=$(printf " --deselect=%s" "${deselected_tests[@]}")
-
   rm -rf tmp_install
   python -m installer --destdir=tmp_install dist/*.whl
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   export PYTHONPATH="$PWD/tmp_install/$site_packages"
-  # shellcheck disable=SC2086
+  # Ignored test requires python-llama-cpp which I'm currently unable to
+  # install.
   pytest \
-    $ignored_tests_arg \
-    $deselected_tests_arg
+    --ignore tests/models/test_llama_cpp.py
 }
 
 package() {
