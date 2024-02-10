@@ -2,14 +2,14 @@
 # Previous maintainer: asukaminato <asukaminato@nyan.eu.org>
 
 pkgname=rye-git
-pkgver=0.4.0.r1.gc1ea066
+pkgver=0.22.0.r2.gbae3c95
 pkgrel=1
 pkgdesc="An experimental package management solution for Python"
 arch=('i686' 'x86_64')
 url="https://rye-up.com/"
 license=('MIT')
-depends=('gcc-libs' 'bzip2' 'libxcrypt-compat' 'openssl' 'zlib')
-makedepends=('git' 'rust')
+depends=('gcc-libs' 'bzip2' 'curl' 'libxcrypt-compat' 'openssl' 'zlib' 'zstd')
+makedepends=('git' 'cargo')
 provides=("rye=$pkgver")
 conflicts=('rye')
 source=("git+https://github.com/mitsuhiko/rye.git")
