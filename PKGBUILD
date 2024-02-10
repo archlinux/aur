@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ooniprobe-desktop
-pkgver=3.9.3
-_cliver=3.19.2
+pkgver=3.9.4
+_cliver=3.20.1
 pkgrel=1
 _nodeversion=18
 pkgdesc="The next generation OONI Probe desktop app"
@@ -15,8 +15,8 @@ replaces=("${pkgname%-desktop}")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ooni/probe-desktop/archive/v$pkgver.tar.gz"
         "${pkgname%-desktop}-${_cliver}-linux-amd64::https://github.com/ooni/probe-cli/releases/download/v${_cliver}/${pkgname%-desktop}-linux-amd64"
         "$pkgname.desktop")
-sha256sums=('bb2339baf2a34ec6d242fcb22980e9214ded412a4b9434228f7d864ed522751a'
-            'd9e4e3b557db0b8ac237073103a690b251b5ad759b30464e27b785ab9c269266'
+sha256sums=('aa9f5836ba81d88fabf6fbe942ab9d34368e9627b4d086ca974040581f8c334e'
+            'e87feda62d5393af9afe979125f61b974800d9f0942202503b41ee40aba29ac7'
             '77f39a9c8d017b391f61686ac38131a9e31435635de4b72d0f20930165404915')
 
 _ensure_local_nvm() {
