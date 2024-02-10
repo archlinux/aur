@@ -2,15 +2,13 @@
 # Upstream: Immersed Inc. <info at immersed dot com>
 
 pkgname=immersed
-pkgver=10.0
+pkgver=9.10
 pkgrel=1
 
-_appimage="Immersed-x86_64.AppImage"
-
-source_x86_64=( "$_appimage::https://static.immersed.com/dl/Immersed-x86_64.AppImage"
+source_x86_64=( "https://static.immersed.com/dl/Immersed-x86_64.AppImage"
                 "$pkgname.desktop")
 
-sha256sums_x86_64=('a3fde755e3b048c148f4484704a78ddecb3c05f9ac7bd2cc21e82b77dbfb523e'
+sha256sums_x86_64=('331f149d5e1f65279b8fd6a1eb9d19aac2ff10826933a8e5f2d6265c96622690'
                    SKIP)
 
 pkgdesc="Immersed Desktop Agent"
@@ -20,7 +18,8 @@ license=('unknown')
 depends=('fuse')
 optdepends=('V4L2LOOPBACK-MODULE: Virtual webcam support')
 options=(!strip)
-noextract=("$_appimage")
+
+_appimage="Immersed-x86_64.AppImage"
 
 prepare() {
     chmod +x "$srcdir/$_appimage"
