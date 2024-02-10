@@ -14,11 +14,11 @@ source=(https://gitlab.gnome.org/GNOME/zenity/-/archive/${pkgver}/zenity-${pkgve
 sha512sums=('786b7d22185719a53110fb7c31d6dc3fce232d4f01763ebdf10fc175e0f4495285a7cfb17d3b786b03e2550313e2d255fe93f5b0bc0b5df069d04f848cadfcae')
 
 prepare() {
-  cd "${srcdir}/zenity"
+  cd "${srcdir}/zenity-${pkgver}"
 }
 
 build() {
-  arch-meson zenity build
+  arch-meson zenity-${pkgver} build
   meson compile -C build
 }
 
