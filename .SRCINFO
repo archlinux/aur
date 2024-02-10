@@ -1,7 +1,7 @@
 pkgbase = jamulus
 	pkgdesc = Internet jam session software
 	pkgver = 3.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jamulus.io/
 	arch = x86_64
 	arch = aarch64
