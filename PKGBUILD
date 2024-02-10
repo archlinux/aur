@@ -17,7 +17,7 @@ _fragment="${FRAGMENT:-#branch=main}"
 [[ -v CUDA_ARCH ]] && _CMAKE_FLAGS+=(-DCYCLES_CUDA_BINARIES_ARCH="${CUDA_ARCH}")
 
 pkgname=blender-git
-pkgver=4.2.r132676.g4196cbd175e
+pkgver=4.2.r132760.gc3b7f76e5f6
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
@@ -164,7 +164,7 @@ build() {
     rm "$srcdir/blender/CMakeCache.txt"
   fi
 
-  NUMPY_PY_INCLUDE=/usr/lib/python3.11/site-packages/numpy/core/include/
+  NUMPY_PY_INCLUDE=/usr/lib/python${_pyver}/site-packages/numpy/core/include/
   [[ -d "$NUMPY_PY_INCLUDE" ]] && (
     _CMAKE_FLAGS+=( -DNUMPY_INCLUDE_DIR="$NUMPY_PY_INCLUDE" );
     __CFLAGS="$CFLAGS -I$NUMPY_PY_INCLUDE"
