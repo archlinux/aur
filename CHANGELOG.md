@@ -1,3 +1,55 @@
+# New Features in 23.4.0
+
+- Updated the underlying open-source Liquibase version from 4.18 to 4.24 for SQLcl's Oracle enhanced Liquibase commands
+    - Schema Names in Liquibase Changelogs Tokenized In 23.4 and Moving Forward:
+        - In order to properly support the schema possibilities that can be used by the changeset section of a changelog, it became necessary to tokenize the schema name stored in changesets through the format %USER_NAME% in SQLcl 23.4 and moving forward. This tokenization allows for the proper setting of the schema name when generating the database object data definition language (DDL) and avoids edge case complications.
+        - For changelogs you have generated prior to 23.4, in order for them to be fully supported in 23.4 and beyond, you will either need to regenerate these changelogs in SQLcl 23.4 or a future version or manually alter your changelogs with %USER_NAME% as so:
+            - For changelogs with the <SCHEMA></SCHEMA> XML element, replace the content inside with %USER_NAME%
+                - Example: <SCHEMA>%USER_NAME%</SCHEMA>
+        - For changelogs that utilize SQL within the CDATA field, attach "%USER_NAME%". to the front of all database object references. If a schema name is in these locations, replace it with "%USER_NAME%".
+            - Example:  <n0:source><![CDATA[CREATE OR REPLACE EDITIONABLE PROCEDURE "%USER_NAME%"."P_SQLCLERROR_PROCEDURE" ...
+            - Example:  <n0:source><![CDATA[ALTER TABLE "%USER_NAME%"."EMPLOYEES" ADD CONSTRAINT "EMP_JOB_FK" FOREIGN KEY ("JOB_ID") REFERENCES "%USER_NAME%"."JOBS" ("JOB_ID") ENABLE;]]></n0:source>
+        - The need for these alterations are only necessary if you are changing schema names between your export and import.
+    - The new alias search command allows you to search for aliases and return a resulting list in the syntax of alias search [search string]. The search string will check the contents of your aliases’ name, description, and query.
+        - To learn more use the help alias search command in SQLcl
+    - Aliases that ship with SQLcl have been updated to have `nulldefaults` set to on by default for bind arguments. For user defined aliases, the user still needs to include the `-nulldefaults` optional parameter when creating their alias for this to be set to on
+        - When using an alias, null defaults sets internal binds to NULL where a bind is not declared
+    - Introduced command completion for SQLcl commands. Press TAB while typing to autocomplete command names, show available parameters, and cycle through parameter options. First wave of commands with code completion functionality:
+        - Alias [`ALIAS`]
+        - APEX [`APEX`]
+        - Advanced Queuing [`AQ`]
+        - Background [`BACKGROUND`]
+        - Connect [`CONNECT`]
+        - Connection Manager [`CONNMGR`]
+        - Jobs [`JOBS`]
+        - Liquibase [`LIQUIBASE`]
+        - Migration Advisor [`MIGRATEADVISOR`]
+        - Secret [`SECRET`]
+
+# Issues Fixed in 23.4.0
+
+There have been many issues fixed in this quarterly release. The main ones of note are:
+- Thick Driver Support - Changed -oci to -thick on commandline. sql -thick <url>
+- MKStore command upgraded to removed Java SecurityManager restriction
+- JDBC upgraded to 21.12.0.0.230906
+- SQLCL now checks for java in this order: Embedded JRE > JAVAHOME > $ORACLEHOME > PATH
+- SQLCL checks Java version when using $ORACLE_HOME before loading thick client jars
+- TNSAdmin search order fixed to: $HOME > $CWD > (windows registry) > $ORACLE_HOME
+- SQL Parser fully supports Database 23c updated syntax
+- SQL Error positions now correctly reported
+- Help for commands now standardized to help <command>
+- liquibase update -changelog-file controller.xml fails to update table object at target if constraints are deleted at source
+- SQLcl liquibase changelog tables showing in the controller if they are renamed
+- SQLcl liquibase removing schema name from strings inside pl/sql objects
+- liquibase generate-schema can fail to order scripts correctly based on dependency; e.g. w/ popular logger_user
+- Generated trigger SQL file create invalid trigger due to enable trigger statement at the end
+- liquibase update fails with npe when the user has the binary_ci default collation
+- liquibase generate-apex-object adds spaces to trigger code
+- liquibase update overwrites sequences
+- SQLcl Liquibase default search path should include the directory in which Liquibase is run
+- liquibase generate-apex-object command not placing apex_install.xml in the specified directory when using the -dir parameter
+- liquibase generate-schema fails to give an error message when the -filter parameter is used with an invalid filter
+
 # New Features in 23.3.0
 
 - Named Connections, import secure connections
