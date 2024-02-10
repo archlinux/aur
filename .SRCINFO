@@ -1,0 +1,17 @@
+pkgbase = wallpickr-git
+	pkgdesc = A very simple wallpaper picker for hyprpaper
+	pkgver = r14.e810654
+	pkgrel = 1
+	url = https://github.com/coding-agent/wallpickr
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	depends = gtk4
+	depends = hyprland
+	depends = hyprpaper
+	provides = wallpickr
+	conflicts = wallpickr
+	source = git+https://github.com/coding-agent/wallpickr
+	sha256sums = SKIP
+
+pkgname = wallpickr-git
