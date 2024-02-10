@@ -3,15 +3,16 @@
 
 pkgname=rye-git
 pkgver=0.22.0.r2.gbae3c95
-pkgrel=1
+pkgrel=2
 pkgdesc="An experimental package management solution for Python"
 arch=('i686' 'x86_64')
 url="https://rye-up.com/"
 license=('MIT')
-depends=('gcc-libs' 'bzip2' 'curl' 'libxcrypt-compat' 'openssl' 'zlib' 'zstd')
+depends=('gcc-libs' 'bzip2' 'libxcrypt-compat' 'openssl' 'zlib')
 makedepends=('git' 'cargo')
 provides=("rye=$pkgver")
 conflicts=('rye')
+options=('!lto')
 source=("git+https://github.com/mitsuhiko/rye.git")
 sha256sums=('SKIP')
 

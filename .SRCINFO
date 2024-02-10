@@ -1,7 +1,7 @@
 pkgbase = rye-git
 	pkgdesc = An experimental package management solution for Python
 	pkgver = 0.22.0.r2.gbae3c95
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rye-up.com/
 	arch = i686
 	arch = x86_64
@@ -10,13 +10,12 @@ pkgbase = rye-git
 	makedepends = cargo
 	depends = gcc-libs
 	depends = bzip2
-	depends = curl
 	depends = libxcrypt-compat
 	depends = openssl
 	depends = zlib
-	depends = zstd
 	provides = rye=0.22.0.r2.gbae3c95
 	conflicts = rye
+	options = !lto
 	source = git+https://github.com/mitsuhiko/rye.git
 	sha256sums = SKIP
 
