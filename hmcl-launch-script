@@ -1,11 +1,21 @@
 #!/bin/sh
 
-if [[ "$1" != "-p" ]]; then
+set -e
+
+if [ "$1" != "-p" ]; then
     WORKDIR=${XDG_CONFIG_HOME:-$HOME/.config}/hmcl
     mkdir -p $WORKDIR
     cd $WORKDIR
 fi
 
-JAVA_HOME=/usr/lib/jvm/$(pacman -Ql java-openjfx | grep javafx | head -n 1 | cut -d / -f 5)
+if [ -n "${JAVA_HOME}" ]; then
+    JAVA=${JAVA_HOME}/bin/java
+else
+    JAVA=java
+fi
 
-exec "${JAVA_HOME}"/bin/java --module-path "${JAVA_HOME}/lib/javafx.base.jar:${JAVA_HOME}/lib/javafx.fxml.jar:${JAVA_HOME}/lib/javafx.graphics.jar:${JAVA_HOME}/lib/javafx.media.jar:${JAVA_HOME}/lib/javafx.swing.jar:${JAVA_HOME}/lib/javafx.web.jar:${JAVA_HOME}/lib/javafx.controls.jar" --add-modules=javafx.base --add-modules=javafx.fxml --add-modules=javafx.graphics --add-modules=javafx.media --add-modules=javafx.swing --add-modules=javafx.web --add-modules=javafx.controls -jar /usr/share/java/hmcl-bin/hmcl-bin.jar "$@"
+if [ -z "${JAVAFX_HOME}" ]; then
+    JAVAFX_HOME=/usr/lib/jvm/$(pacman -Ql java-openjfx | grep javafx | head -n 1 | cut -d / -f 5)
+fi
+
+exec "${JAVA}" --module-path "${JAVAFX_HOME}/lib/javafx.base.jar:${JAVAFX_HOME}/lib/javafx.fxml.jar:${JAVAFX_HOME}/lib/javafx.graphics.jar:${JAVAFX_HOME}/lib/javafx.media.jar:${JAVAFX_HOME}/lib/javafx.swing.jar:${JAVAFX_HOME}/lib/javafx.web.jar:${JAVAFX_HOME}/lib/javafx.controls.jar" --add-modules=javafx.base --add-modules=javafx.fxml --add-modules=javafx.graphics --add-modules=javafx.media --add-modules=javafx.swing --add-modules=javafx.web --add-modules=javafx.controls -jar /usr/share/java/hmcl-bin/hmcl-bin.jar "$@"
