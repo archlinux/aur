@@ -1,6 +1,6 @@
 # Maintainer: Marco Steiger <marco (at) steiger (dot) online>
 pkgname=paperlessmerge-bin
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='PaperlessMerge can easily merge documents in paperless-ng(x)'
 arch=('x86_64')
