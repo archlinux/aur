@@ -1,0 +1,5 @@
+[barrier]
+source = "github"
+github = "debauchee/barrier"
+prefix = "v"
+use_max_tag = true
