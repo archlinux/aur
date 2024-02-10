@@ -1,12 +1,12 @@
 pkgbase = ory-cli-bin
 	pkgdesc = ORY Command Line Interface (CLI)
-	pkgver = 0.3.2
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://ory.sh
 	arch = x86_64
 	license = Apache
 	provides = ory-cli
-	source = https://github.com/ory/cli/releases/download/v0.3.2/ory_0.3.2-linux_64bit.tar.gz
-	sha256sums = f5bc551a812f78d4536e11cfd5176721159be74ca5853a3e70a5671fa79bea73
+	source = https://github.com/ory/cli/releases/download/v0.3.4/ory_0.3.4-linux_64bit.tar.gz
+	sha256sums = 450123bf5542b8b450e046313c98155ff568852b538a80312067206b00d59451
 
 pkgname = ory-cli-bin
