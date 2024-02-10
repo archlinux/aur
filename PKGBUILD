@@ -70,32 +70,29 @@ package() {
 	# = OBTW the "make all" on Docs is NOOP
 
 	# Example programs
-	(
-		cd CLC-INTERCAL-Docs/doc/examples/
-		install -Dm0644 -t "$pkgdir/usr/share/clc-intercal/examples/" *.*i
-		install -Dm0644 -t "$pkgdir/usr/share/clc-intercal/examples/quantum/" *.*i
-	)
-	case $? in (0) :;; (*) false; esac
+	cd CLC-INTERCAL-Docs/doc/examples/
+	install -Dm0644 -t "$pkgdir/usr/share/clc-intercal/examples/" *.*i
+	install -Dm0644 -t "$pkgdir/usr/share/clc-intercal/examples/quantum/" quantum/*.*i
+	cd -
 
 	# HTML docs
-	(
-		cd CLC-INTERCAL-Docs/blib/
-		for _dir in htmldoc htmlexamples; do
-			find "$_dir" -type f \! -name .exists -exec install -Dm0644 -t "$pkgdir/usr/share/doc/clc-intercal/$_dir" {} \;
-		done
-	)
-	case $? in (0) :;; (*) false; esac
+	cd CLC-INTERCAL-Docs/blib/htmldoc/
+	install -Dm0644 -t "$pkgdir/usr/share/doc/clc-intercal/htmldoc/" *.html
+	cd -
 
-	# = Additionally Vim syntax file
-	(
-		cd bonus/vim
-		for _dir in ftdetect syntax; do
-			find "$_dir" -type f -exec install -Dm0644 -t "$pkgdir/usr/share/vim/vimfiles/$_dir" {} \;
-		done
-	)
-	case $? in (0) :;; (*) false; esac
+	# HTML examples
+	cd CLC-INTERCAL-Docs/blib/htmlexamples
+	install -Dm0644 -t "$pkgdir/usr/share/doc/clc-intercal/htmlexamples/" *.html *.css
+	install -Dm0644 -t "$pkgdir/usr/share/doc/clc-intercal/htmlexamples/quantum/" quantum/*.html
+	cd -
 
-	# = Finally COPYING file
+	# Additionally Vim syntax file
+	cd bonus/vim
+	install -Dm0644 -t "$pkgdir/usr/share/vim/vimfiles/ftdetect" ftdetect/*.vim
+	install -Dm0644 -t "$pkgdir/usr/share/vim/vimfiles/syntax" syntax/*.vim
+	cd -
+
+	# Finally COPYING file
 	# OBTW every "$src/COPYING" and "$src/CLC-INTERCAL-*/COPYING" are identifical
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/clc-intercal/" COPYING
 }
