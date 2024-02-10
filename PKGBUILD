@@ -3,7 +3,7 @@
 pkgname=angryoxide
 _pkgname=AngryOxide
 pkgver=0.8.5
-pkgrel=2
+pkgrel=3
 _patch=""
 pkgdesc='802.11 Attack Tool'
 arch=('x86_64')
