@@ -2,7 +2,7 @@
 pkgname=python2-twisted
 # Do not update. This is the last twisted version supporting Python2.
 pkgver=20.3.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Asynchronous networking framework written in Python (20.3.0 is the last version supporting Python 2)"
 arch=('x86_64')
 url="https://twistedmatrix.com/"
@@ -37,7 +37,7 @@ build() {
 
 package() {
   cd twisted-twisted-$pkgver
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  python2 setup.py install --root="$pkgdir" --optimize=1
 
   # python-twisted already provides these command line tools.
   # Let's depend on python-twisted and rename the tools here so we don't conflict.
