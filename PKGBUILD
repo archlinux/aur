@@ -2,14 +2,14 @@
 
 _pkgname=hiddify-next
 pkgname=$_pkgname-git
-pkgver=0.15.4
-pkgrel=3
-pkgdesc="A multi-platform proxy app. Auto, SSH, VLESS, Vmess, Trojan, Reality, Sing-Box, Clash, Xray, Shadowsocks"
+pkgver=0.15.6
+pkgrel=1
+pkgdesc="Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH etc. It’s an open-source, secure and ad-free"
 arch=(x86_64)
 url='https://github.com/hiddify/hiddify-next'
 license=('CC-BY-NC-SA-4.0')
 depends=('hicolor-icon-theme' 'glibc' 'gcc-libs' 'glib2' 'libayatana-appindicator' 'libdbusmenu-glib' 'libayatana-indicator' 'ayatana-ido')
-makedepends=('git' 'mesa' 'cmake' 'clang' 'locate' 'ninja' 'pkg-config' 'gtk3' 'libayatana-common' 'libappindicator-gtk3' 'libappindicator-gtk2' 'fuse3' 'appstream' 'appstream-glib' 'appstream-generator' 'archlinux-appstream-data' 'zsync' 'jdk-openjdk' 'dpkg')
+makedepends=('git' 'mesa' 'cmake' 'clang' 'locate' 'ninja' 'pkg-config' 'gtk3' 'libayatana-common' 'libappindicator-gtk3' 'libappindicator-gtk2' 'fuse3' 'fuse2' 'appstream' 'zsync' 'file' 'patchelf' 'dpkg' 'appimagetool' 'rpm-tools')
 optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
 )
@@ -34,7 +34,7 @@ prepare() {
     export PATH="$PATH:${srcdir}/flutter/bin"
     cd "${srcdir}/hiddify-next"
     flutter precache
-    dart pub global activate flutter_distributor
+    dart pub global activate --source git https://github.com/hiddify/flutter_distributor --git-path packages/flutter_distributor
     export PATH="$PATH":"$HOME/.pub-cache/bin"
     export CHANNEL=dev
     flutter config --no-analytics
@@ -44,18 +44,14 @@ prepare() {
 
 build() {
     cd "${srcdir}/hiddify-next"
-    make get-geo-assets
-    make get
-    make translate
-    make gen
-    make linux-libs
     unset SOURCE_DATE_EPOCH
-    make linux-deb-release
+    make linux-prepare
+    make linux-release
     ls -R dist/
     EXT="deb"
-    mv dist/*/*.$EXT ${srcdir}/hiddify-debian-x64.$EXT
+    mv dist/*/*.$EXT ${srcdir}/Hiddify-Debian-x64.$EXT
     cd "${srcdir}"
-    ar x hiddify-debian-x64.deb
+    ar x Hiddify-Debian-x64.deb
     tar -xf data.tar.xz
     sed -i '/Version/d' "${srcdir}/usr/share/applications/hiddify.desktop"
 }
