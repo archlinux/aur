@@ -7,18 +7,18 @@ pkgname=(
     "${pkgbase}-nmh-manifest"
     "${pkgbase}-pcsc-driver"
 )
-pkgver=1.3.1.62
+pkgver=1.3.1.63
 pkgrel=1
 pkgdesc="IIT End User CA-1. Sign (web)"
 url="https://iit.com.ua"
 arch=('i686' 'x86_64')
 
 if [[ $CARCH = i686 ]]; then
-    _src_md5sum='70142045e2082ca383fac6a9006495ff'
+    _src_md5sum='591f9d7d213e6c4d10527ca740c795a3'
     _srcuri_filename='euswi.tar'
     _src_filename="eusw_${pkgver}_i386.tar"
 else
-    _src_md5sum='1cdcaa2043707e6a09d7cab1dc6ad23d'
+    _src_md5sum='b0e000b340edacb45d86c26ee52cc4ee'
     _srcuri_filename='euswi.64.tar'
     _src_filename="eusw_${pkgver}_amd64.tar"
 fi
@@ -40,14 +40,19 @@ package_eusw() {
     depends=('glibc' 'gcc-libs')
     backup=(
         'opt/iit/eu/sw/osplm.ini'
-        'etc/udev/rules.d/60-iit-e-keys.rules'
     )
 
     msg2 "Extracting the ${_src_filename}..."
     bsdtar -xf "${_src_filename}" -C "$pkgdir/"
 
+    # Moving udev rules file under /usr/lib.
+    mkdir -p ${pkgdir}/usr/lib/udev/rules.d
+    mv ${pkgdir}/etc/udev/rules.d/60-iit-e-keys.rules ${pkgdir}/usr/lib/udev/rules.d/60-iit-e-keys.rules
+    rmdir ${pkgdir}/etc/udev/rules.d
+    rmdir ${pkgdir}/etc/udev
+    rmdir ${pkgdir}/etc
     # Fixing permissions of udev rules file
-    chmod a-x ${pkgdir}/etc/udev/rules.d/60-iit-e-keys.rules
+    chmod a-x ${pkgdir}/usr/lib/udev/rules.d/60-iit-e-keys.rules
 
     # Removing install/uninstall scripts
     rm ${pkgdir}/opt/iit/eu/sw/install.sh
