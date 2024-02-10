@@ -1,0 +1,15 @@
+pkgbase = par-git
+	pkgdesc = Adam M. Costello's paragraph reformatter, vaguely similar to fmt, but better.
+	pkgver = 1.53.0.r0.eb0590f
+	pkgrel = 1
+	url = http://www.nicemice.net/par/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	provides = par
+	conflicts = par
+	source = upstream::git+https://bitbucket.org/amc-nicemice/par.git
+	md5sums = SKIP
+
+pkgname = par-git
