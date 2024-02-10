@@ -1,0 +1,4 @@
+[neofetch]
+source = "github"
+github = "dylanaraps/neofetch"
+use_max_tag = true
