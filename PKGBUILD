@@ -2,8 +2,8 @@
 
 pkgname=lowcharts-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.5.8
-pkgrel=3
+pkgver=0.5.9
+pkgrel=1
 pkgdesc="Tool to draw low-resolution graphs in terminal"
 arch=('x86_64' 'i686')
 url="https://github.com/juan-leon/lowcharts"
@@ -12,8 +12,8 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-i686-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('85b2a7e6d122ad7c0d7a1cfb463143d57081c7c23e36dfd3b54042f198f66484')
-sha256sums_i686=('bae75ea25bfe1b89ca0db42c8986f250a4ba392ff8192de70bf6e2eac0584a3f')
+sha256sums_x86_64=('4d6162734fd316a2385fe8b36f1ba6eff58fe5a4893c4a3efe8b1fb92384d8a4')
+sha256sums_i686=('0cc220e374672e1ef3ddd0c112873355c41a15d4aefa41994a253a1a086b1a14')
 
 package() {
 	install -Dm 755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
