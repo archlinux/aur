@@ -1,7 +1,7 @@
 pkgbase = curl-c-ares
 	pkgdesc = command line tool and library for transferring data with URLs (built with c-ares)
 	pkgver = 8.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://curl.se/
 	arch = x86_64
 	license = MIT
@@ -17,6 +17,8 @@ pkgbase = curl-c-ares
 	depends = libidn2.so
 	depends = libnghttp2
 	depends = libnghttp2.so
+	depends = libnghttp3
+	depends = libnghttp3.so
 	depends = libpsl
 	depends = libpsl.so
 	depends = libssh2
