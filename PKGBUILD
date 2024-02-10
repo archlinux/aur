@@ -1,8 +1,8 @@
 # Maintainer: David Germain <davi.germain@laposte.net>
 
-pkgname=mod-desktop
+pkgname=mod-desktop-bin
 pkgver=0.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="MOD Desktop Application"
 arch=('x86_64')
 url="https://github.com/moddevices/mod-desktop"
@@ -26,3 +26,4 @@ package() {
   install -Dm644 "$pkgname-$pkgver-linux-$arch/mod-desktop.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
 
+conflicts=('mod-desktop' 'mod-desktop-git')

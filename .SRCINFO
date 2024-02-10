@@ -1,13 +1,15 @@
-pkgbase = mod-desktop
+pkgbase = mod-desktop-bin
 	pkgdesc = MOD Desktop Application
 	pkgver = 0.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moddevices/mod-desktop
 	arch = x86_64
 	license = AGPLv3+
 	depends = pipewire-jack
 	depends = pipewire
-	source = mod-desktop-0.0.9-linux-x86_64.tar.xz::https://github.com/moddevices/mod-desktop/releases/download/0.0.9/mod-desktop-0.0.9-linux-x86_64.tar.xz
+	conflicts = mod-desktop
+	conflicts = mod-desktop-git
+	source = mod-desktop-bin-0.0.9-linux-x86_64.tar.xz::https://github.com/moddevices/mod-desktop/releases/download/0.0.9/mod-desktop-bin-0.0.9-linux-x86_64.tar.xz
 	sha256sums = 5ede4c3501a33979881cbff435273b60923c20c4f5ba4120f06e50b9398cd091
 
-pkgname = mod-desktop
+pkgname = mod-desktop-bin
