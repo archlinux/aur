@@ -1,11 +1,15 @@
 pkgbase = python-beartype
 	pkgdesc = Unbearably fast near-real-time hybrid runtime-static type-checking in pure Python
-	pkgver = 0.17.0
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://github.com/beartype/beartype
 	arch = any
 	license = MIT
+	checkdepends = mypy
+	checkdepends = pyright
+	checkdepends = python-nptyping
 	checkdepends = python-pytest
+	checkdepends = python-sphinx
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -13,7 +17,7 @@ pkgbase = python-beartype
 	depends = python
 	depends = python-numpy
 	depends = python-typing-extensions
-	source = python-beartype-0.17.0.tar.gz::https://github.com/beartype/beartype/archive/refs/tags/v0.17.0.tar.gz
-	sha256sums = 911fba33d0ebd3fc974a2da8d576e10057c2c4f114b1937271804ca28c6d526c
+	source = python-beartype-0.17.1.tar.gz::https://github.com/beartype/beartype/archive/refs/tags/v0.17.1.tar.gz
+	sha256sums = 36b96fd8d6103a77caad8cabfd8c34280299a9f232dfd132ad857893c92f7083
 
 pkgname = python-beartype
