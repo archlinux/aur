@@ -5,4 +5,5 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!uad_gui.desktop
+!uad-ng.desktop
+!version.patch

@@ -1,0 +1,24 @@
+diff --unified --recursive --text a/Cargo.lock b/Cargo.lock
+--- a/Cargo.lock	2024-02-06 15:53:49.000000000 -0700
++++ b/Cargo.lock	2024-02-10 15:55:36.627216650 -0700
+@@ -2708,7 +2708,7 @@
+ 
+ [[package]]
+ name = "uad-ng"
+-version = "0.6.2"
++version = "1.0.0"
+ dependencies = [
+  "chrono",
+  "dirs",
+diff --unified --recursive --text a/Cargo.toml b/Cargo.toml
+--- a/Cargo.toml	2024-02-06 15:53:49.000000000 -0700
++++ b/Cargo.toml	2024-02-10 15:55:14.530830096 -0700
+@@ -1,7 +1,7 @@
+ [package]
+ name = "uad-ng"
+ description = "A cross-platform GUI debloater for android devices"
+-version = "0.6.2"
++version = "1.0.0"
+ authors = ["Universal-Debloater-Alliance"]
+ license = "GPL-3.0"
+ homepage = "https://github.com/Universal-Debloater-Alliance/universal-android-debloater"
