@@ -1,6 +1,6 @@
 pkgbase = kholidays5
 	pkgdesc = KDE library for regional holiday information
-	pkgver = 5.114.0
+	pkgver = 5.115.0
 	pkgrel = 1
 	epoch = 1
 	url = https://community.kde.org/Frameworks
@@ -16,10 +16,10 @@ pkgbase = kholidays5
 	optdepends = qt5-declarative: QML bindings
 	conflicts = kholidays<1:5.111
 	replaces = kholidays<1:5.111
-	source = https://download.kde.org/stable/frameworks/5.114/kholidays-5.114.0.tar.xz
-	source = https://download.kde.org/stable/frameworks/5.114/kholidays-5.114.0.tar.xz.sig
+	source = https://download.kde.org/stable/frameworks/5.115/kholidays-5.115.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.115/kholidays-5.115.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = be4af6625e80852cb7bc8cdbe2bdd56ccf3868644cbfb87d3494964f5f6f28a7
+	sha256sums = cdf0d732cf0fa85971961803f0d1be5a78f3f45536fc7c22231b953349b641a4
 	sha256sums = SKIP
 
 pkgname = kholidays5
