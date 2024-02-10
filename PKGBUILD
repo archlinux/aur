@@ -1,7 +1,7 @@
 pkgname=android-pkg-config
 pkgver=2
-pkgrel=1
-pkgdesc='Support pkg-config script (does not depend on any particular version of pkg-config). Useful for pkg-config powered cross-compiling with mingw-w64, see http://tinyurl.com/pkg-config-cross for more info'
+pkgrel=2
+pkgdesc='Support pkg-config script (does not depend on any particular version of pkg-config). Useful for pkg-config powered cross-compiling for Android, see http://tinyurl.com/pkg-config-cross for more info'
 arch=('any')
 url='http://pkg-config.freedesktop.org/'
 license=('zlib')
