@@ -1,75 +1,101 @@
-# Maintainer: xiota / aur.chaotic.cx
+# Maintainer:
 
-_pkgname="dolphin"
-_pkgname_tabopts="$_pkgname-tabopts"
-pkgname="$_pkgname_tabopts-git"
-pkgver=23.08.3.r100.gd803a83fb
+# options
+: ${_autoupdate:=false}
+: ${_build_git:=true}
+
+[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
+[[ "${_autoupdate::1}" == "t" ]] && : ${_pkgver:=$(LANG=C LC_ALL=C pacman -Si extra/dolphin | sed -nE 's@^Version\s+: (.*)-.*$@\1@p' | head -1)}
+
+# basic info
+_gitname="dolphin"
+_pkgname="$_gitname-tabopts"
+pkgname="$_pkgname${_pkgtype:-}"
+pkgver=24.01.90.r70.g54eabafc
 pkgrel=1
 pkgdesc='KDE File Manager - with extended tab options'
 url="https://invent.kde.org/xiota/dolphin/-/merge_requests/1"
-license=(LGPL)
+license=('GPL-2.0-or-later')
 arch=(i686 x86_64)
 
-depends=(
-  'baloo-widgets'
-  'kio-extras'
-)
-makedepends=(
-  'extra-cmake-modules'
-)
-optdepends=(
-  'ffmpegthumbs: video thumbnails'
-  'kde-cli-tools: for editing file type options'
-  'kdegraphics-thumbnailers: PDF and PS thumbnails'
-  'kio-admin: for managing files as administrator'
-  'konsole: terminal panel'
-)
+# main package
+_main_package() {
+  optdepends=(
+    'ffmpegthumbs: video thumbnails'
+    'kde-cli-tools: for editing file type options'
+    'kdegraphics-thumbnailers: PDF and PS thumbnails'
+    'kio-admin: for managing files as administrator'
+    'konsole: terminal panel'
+  )
 
-provides=("$_pkgname=${pkgver%%.r*}")
-conflicts=("$_pkgname")
+  provides=("$_gitname=${pkgver%%.r*}")
+  conflicts=("$_gitname")
 
-if [ x"$pkgname" == x"$_pkgname_tabopts" ] ; then
-  # normal package
+  if [ "${_build_git::1}" != "t" ] ; then
+    _main_stable
+  else
+    _main_git
+  fi
+}
+
+# stable package
+_main_stable() {
+  : ${_pkgver:=${pkgver%%.r*}}
+
   depends+=(
+    'baloo-widgets'
     'kactivities5'
     'kcmutils5'
+    'kio-extras'
     'knewstuff5'
     'kparts5'
     'kuserfeedback5'
   )
   makedepends+=(
+    'extra-cmake-modules'
     'kdoctools5'
   )
   optdepends+=(
     'purpose5: share context menu'
   )
 
-  _pkgsrc="$_pkgname-${pkgver%%.r*}"
+  _pkgsrc="$_gitname-$_pkgver"
   _pkgext="tar.xz"
+  _dl_url="https://download.kde.org/stable/release-service"
+  source+=("$_pkgsrc.$_pkgext"::"$_dl_url/$_pkgver/src/$_pkgsrc.$_pkgext")
+
+  if [[ "${_autoupdate::1}" == "t" ]] ; then
+    sha256sums+=('SKIP')
+  else
+    sha256sums+=('6a630b78018f3344b70131ff2c9deaae5e626295e512ce2741958d5197888585')
+  fi
 
   source+=(
-    "$_pkgsrc.$_pkgext"::"https://download.kde.org/stable/release-service/${pkgver%%.r*}/src/$_pkgsrc.$_pkgext"
     # "https://invent.kde.org/system/dolphin/-/merge_requests/269.patch"
     "dolphin-tabopts-1.patch"::"https://invent.kde.org/xiota/dolphin/-/merge_requests/1.patch"
   )
   sha256sums+=(
-    'd54e877d893ddf3d59752da723c881471bc06aee2e4143ff7e034fdffd7bba9e'
     'a50de534a6049ec4e232b6bddb8b39a105287bd0f6eac934e4eaac50df6f0004'
   )
 
   pkgver() {
-    printf '%s' "${pkgver%%.r*}"
+    echo "${_pkgver:?}"
   }
-else
-  # git package
+}
+
+# git package
+_main_git() {
   depends+=(
-    'kactivities'
+    'baloo-widgets>=24'
     'kcmutils'
+    'kio-extras>=24'
     'knewstuff'
     'kparts'
     'kuserfeedback'
+    'plasma-activities'
   )
   makedepends+=(
+    'extra-cmake-modules>=5.200'
     'git'
     'kdoctools'
   )
@@ -77,41 +103,23 @@ else
     'purpose: share context menu'
   )
 
-  _pkgsrc="$_pkgname"
+  _pkgsrc="$_gitname"
   source+=(
-    "$_pkgname"::"git+https://invent.kde.org/system/dolphin.git"
-    "dolphin-tabopts-2.patch"::"https://invent.kde.org/xiota/dolphin/-/commit/33c2ff50e2611eb04d8a3ad8f30b18aecda42544.patch"
+    "$_pkgsrc"::"git+https://invent.kde.org/system/dolphin.git"
+    "dolphin-tabopts-3.patch"::"https://invent.kde.org/xiota/dolphin/-/commit/62b60d15f2680e46d143611d55dc7f9f74aed50f.patch"
   )
   sha256sums+=(
     'SKIP'
-    '43bb309c9815bb7abe6b4a4a4cc9084c4809709c6b037a24cf56bb232b42398f'
+    '390fbd2fe4cbd34001004ccca80b9677709d1d0f8f6a10b2b80659dc2dea6874'
   )
 
   pkgver() {
     cd "$_pkgsrc"
-
-    _regex='^\s+<release version="([0-9]+\.[0-9]+(\.[0-9]+)?)"\s.*/>$'
-    _file='src/org.kde.dolphin.appdata.xml'
-
-    _line=$(grep -E "$_regex" "$_file" | head -1)
-    _version=$(
-      printf '%s\n' "$_line" \
-        | sed -E "s@$_regex@\1@"
-    )
-    _commit=$(
-      git log -G "$_line" -1 --pretty=oneline --no-color -- $_file \
-        | sed 's@\ .*$@@'
-    )
-    _revision=$(git rev-list --count $_commit..HEAD)
-    _hash=$(git rev-parse --short HEAD)
-
-    printf '%s.r%s.g%s' \
-      "$_version" \
-      "$_revision" \
-      "$_hash"
+    git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   }
-fi
+}
 
+# common functions
 prepare() {
   cd "$_pkgsrc"
 
@@ -122,7 +130,7 @@ prepare() {
     src="${src%.zst}"
     if [[ $src == *.patch ]] ; then
       printf '\nApplying patch: %s\n' "$src"
-      patch -Np1 -F100 -i "${srcdir:?}/$src"
+      patch -Np1 -F100 -i "$srcdir/$src"
     fi
   done
 }
@@ -134,5 +142,8 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir:?}" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 }
+
+# execute
+_main_package
