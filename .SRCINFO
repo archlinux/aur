@@ -1,11 +1,10 @@
 pkgbase = r-ripat
 	pkgdesc = Retroviral Integration Pattern Analysis Tool (RIPAT)
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/RIPAT
 	arch = any
-	license = Artistic2.0
-	depends = r
+	license = Artistic-2.0
 	depends = r-biomart
 	depends = r-genomicranges
 	depends = r-ggplot2
@@ -17,7 +16,8 @@ pkgbase = r-ripat
 	depends = r-rtracklayer
 	depends = r-stringr
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RIPAT_1.10.0.tar.gz
-	sha256sums = 558b3ebfc7e5b05222425bdfc95fda98e21e0164e977bef478b3c3e87b3a8a94
+	source = https://bioconductor.org/packages/3.17/bioc/src/contrib/RIPAT_1.10.0.tar.gz
+	md5sums = bd4406d3915176597b1b15ed47fc7e8a
+	b2sums = 1c8eac8c7dd7631a67591c367f3252467c067640611a850799717c268b7c8f77536027483c7f71073ec691e32d477fdd1e942f58d627f61e05f03087d430978b
 
 pkgname = r-ripat
