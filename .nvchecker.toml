@@ -1,0 +1,5 @@
+[swww]
+source = "github"
+github = "LGFae/swww"
+prefix = "v"
+use_latest_release = true
