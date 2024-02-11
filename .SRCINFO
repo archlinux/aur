@@ -1,11 +1,10 @@
 pkgbase = r-biomm
-	pkgdesc = BioMM: Biological-informed Multi-stage Machine learning framework for phenotype prediction using omics data
+	pkgdesc = Biological-informed Multi-stage Machine learning framework for phenotype prediction using omics data
 	pkgver = 1.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/BioMM
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-3.0-only
 	depends = r-biocparallel
 	depends = r-cmplot
 	depends = r-e1071
@@ -23,7 +22,8 @@ pkgbase = r-biomm
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BioMM_1.15.0.tar.gz
-	sha256sums = d7bc67ffaf2afc3c56f0456a37c25c39022e139670760131f68c32762de08e06
+	source = https://bioconductor.org/packages/3.17/bioc/src/contrib/BioMM_1.15.0.tar.gz
+	md5sums = b028b78baf757c1254986fc0e659119a
+	b2sums = cdccf9e5de5a01361d28e54517e7831ec0c7ed1a9c380cfb29421a539a6d08ec75cded33928f61425bd3d606e22dfccc5c70c77afc35ff2ab1f451e2ede3c963
 
 pkgname = r-biomm
