@@ -4,7 +4,7 @@ pkgbase=postgresql16
 pkgver=16.1
 _majorver=${pkgver%.*}
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
-pkgrel=10
+pkgrel=11
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
@@ -68,7 +68,8 @@ build() {
   # Fix static libs (will not link if not set)
   CFLAGS+=" -ffat-lto-objects"
   # Add RUNPATH to locate libraries
-  LDFLAGS+=",-rpath,/opt/${pkgbase}/lib"
+  #LDFLAGS+=",-rpath,/opt/${pkgbase}/lib"
+  LDFLAGS="-Wl,-rpath,/opt/${pkgbase}/lib"
 
   # build
   # see bug 17943, which requires llvm15/clang15 instead of current version 16: https://www.postgresql.org/message-id/17943-56bb8c6bd4409b9f%40postgresql.org
