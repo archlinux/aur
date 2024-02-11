@@ -1,0 +1,35 @@
+DEVICENAME=$(cat /sys/devices/virtual/dmi/id/product_name)
+
+# 安装或升级后的操作
+post_upgrade_or_install() {
+    echo ""
+}
+
+# 安装前的操作
+pre_install() {
+    echo ""
+}
+
+# 升级前的操作
+pre_upgrade() {
+    echo ""
+}
+
+# 安装后的操作
+post_install() {
+    post_upgrade_or_install
+}
+
+# 升级后的操作
+post_upgrade() {
+    post_upgrade_or_install
+}
+
+
+pre_remove() {
+    echo ""
+}
+
+post_remove() {
+    echo ""
+}
