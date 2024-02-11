@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kpmcore-git
-pkgver=24.01.75.r1436.b33cfd4
+pkgver=24.04.70.r1497.801b291
 pkgrel=1
 pkgdesc='Library for managing partitions. Common code for KDE Partition Manager and other projects. (GIT version)'
 arch=('x86_64')
@@ -12,11 +12,11 @@ depends=(
   'glibc' # libc.so
   'util-linux-libs' 'libblkid.so'
   'device-mapper'
-  'qt5-base' # libQt5Core.so libQt5DBus.so libQt5Gui.so libQt5Widgets.so
-  'kcoreaddons5' # libKF5CoreAddons.so
-  'kwidgetsaddons5' # libKF5WidgetsAddons.so
-  'ki18n5' # libKF5I18n.so
-  'polkit-qt5' # libpolkit-qt5-core-1.so
+  'qt6-base' # libQt6Core.so libQt6DBus.so libQt6Gui.so libQt6Widgets.so
+  'kcoreaddons' # libKF6CoreAddons.so
+  'kwidgetsaddons' # libKF6WidgetsAddons.so
+  'ki18n' # libKF6I18n.so
+  'polkit-qt6' # libpolkit-qt6-core-1.so
 )
 makedepends=(
   'extra-cmake-modules'
