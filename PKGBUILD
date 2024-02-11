@@ -7,7 +7,7 @@
 _proj="hip"
 _pkgbase=dynssh
 pkgname="${_pkgbase}-git"
-pkgver=0.1.2.1.r1.gfc370eb
+pkgver=0.1.2.1.r1.1
 pkgrel=1
 pkgdesc="Simple SSH wrapper"
 arch=(
@@ -79,7 +79,7 @@ _parse_ver() {
   _commit="$( \
     _nth \
       "${_pkgver}" \
-      "2")"
+      "3")"
   _out=${_ver}
   if [[ "${_rev}" != "" ]]; then
     _out+=".r${_rev}"
