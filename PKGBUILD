@@ -17,7 +17,7 @@ install=${pkgname}.install
 _source_arch="i386"
 [ "${CARCH}" = 'x86_64' ] && _source_arch="amd64"
 source=("google-webdesigner_current_${_source_arch}.deb::https://dl.google.com/linux/direct/google-webdesigner_current_${_source_arch}.deb")
-sha256sums=('26ce54d072ef3d00a6042f79deb1bd780acdcf7802c8544ef299240bf0da2ff1')
+sha256sums=('d2562c86839ed6b6878a9670242f4b2840252e76d9d3199144712166b8d389f9')
 
 package() {
   msg2 "Extracting the data.tar.xz"
