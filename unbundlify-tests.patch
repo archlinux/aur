@@ -1,0 +1,42 @@
+diff --unified --recursive --text --new-file fluentd-1.16.3.orig/test/command/test_fluentd.rb fluentd-1.16.3/test/command/test_fluentd.rb
+--- fluentd-1.16.3.orig/test/command/test_fluentd.rb	2024-02-11 22:25:37.976373458 +0100
++++ fluentd-1.16.3/test/command/test_fluentd.rb	2024-02-11 22:25:12.746266231 +0100
+@@ -64,10 +64,10 @@
+   def create_cmdline(conf_path, *fluentd_options)
+     if Fluent.windows?
+       cmd_path = File.expand_path(File.dirname(__FILE__) + "../../../bin/fluentd")
+-      ["bundle", "exec", ServerEngine.ruby_bin_path, cmd_path, "-c", conf_path, *fluentd_options]
++      [ServerEngine.ruby_bin_path, cmd_path, "-c", conf_path, *fluentd_options]
+     else
+       cmd_path = File.expand_path(File.dirname(__FILE__) + "../../../bin/fluentd")
+-      ["bundle", "exec", cmd_path, "-c", conf_path, *fluentd_options]
++      [cmd_path, "-c", conf_path, *fluentd_options]
+     end
+   end
+ 
+@@ -89,7 +89,6 @@
+     null_stream = Fluent::FileWrapper.open(File::NULL, 'w')
+     gemfile_path = File.expand_path(File.dirname(__FILE__) + "../../../Gemfile")
+ 
+-    env = { "BUNDLE_GEMFILE" => gemfile_path }.merge(env)
+     cmdname = cmdline.shift
+     arg0 = "testing-fluentd"
+     # p(here: "executing process", env: env, cmdname: cmdname, arg0: arg0, args: cmdline)
+@@ -931,7 +930,7 @@
+         create_cmdline(conf_path),
+         '#0 fluentd worker is now running worker=0',
+         patterns_not_match: ['(LoadError)'],
+-        env: { 'RUBYOPT' => '-rtest-unit -rbundler/setup' },
++        env: { 'RUBYOPT' => '-rtest-unit' },
+       )
+     end
+ 
+@@ -1024,7 +1023,7 @@
+       ENV["TEST_RUBY_PATH"] = tmp_ruby_path
+       cmd_path = File.expand_path(File.dirname(__FILE__) + "../../../bin/fluentd")
+       conf_path = create_conf_file('space_mixed_ruby_path_test.conf', conf)
+-      args = ["bundle", "exec", tmp_ruby_path, cmd_path, "-c", conf_path]
++      args = [tmp_ruby_path, cmd_path, "-c", conf_path]
+       assert_log_matches(
+         args,
+         'spawn command to main:',

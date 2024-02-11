@@ -1,0 +1,10 @@
+*
+!.gitignore
+!.nvchecker.toml
+!.SRCINFO
+!PKGBUILD
+!fluentd.install
+!systemd.service
+!sysusers.conf
+!tmpfiles.conf
+!unbundlify-tests.patch

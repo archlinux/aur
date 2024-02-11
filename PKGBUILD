@@ -1,86 +1,140 @@
-# Maintainer: George Rawlinson <george@rawlinson.net.nz>
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Contributor: George Rawlinson <george@rawlinson.net.nz>
 # Contributor: Daniel Nagy <danielnagy at gmx de>
 # Contributor: kusakata <shohei atmark kusakata period com>
 
 pkgname=fluentd
-pkgver=1.16.2
+pkgver=1.16.3
+_commit=d3cf2e0f95a0ad88b9897197db6c5152310f114f
 pkgrel=1
-pkgdesc='Data collector designed to scale and simplify log management'
-arch=('any')
-url='https://www.fluentd.org'
-license=('Apache')
+pkgdesc="Data collector designed to scale and simplify log management"
+arch=(any)
+url="https://github.com/fluent/fluentd"
+license=(Apache-2.0)
 depends=(
-  'ruby'
-  'ruby-bundler'
-  'ruby-msgpack'
-  'ruby-yajl-ruby'
-  'ruby-cool.io'
-  'ruby-serverengine'
-  'ruby-http_parser.rb'
-  'ruby-sigdump'
-  'ruby-tzinfo'
-  'ruby-tzinfo-data'
-  'ruby-strptime'
-  'ruby-webrick'
+  ruby
+  ruby-console
+  ruby-cool.io
+  ruby-http_parser.rb
+  ruby-msgpack
+  ruby-serverengine
+  ruby-sigdump
+  ruby-strptime
+  ruby-tzinfo
+  ruby-tzinfo-data
+  ruby-webrick
+  ruby-yajl-ruby
+)
+makedepends=(
+  git
+  rubygems
+)
+checkdepends=(
+  inetutils
+  procps-ng
+  ruby-async
+  ruby-async-http
+  ruby-flexmock
+  ruby-oj
+  ruby-rake
+  ruby-rr
+  ruby-test-unit-rr
+  ruby-timecop
 )
 optdepends=(
   'jemalloc: for a more efficient malloc implementation'
   'ruby-oj: for a faster json parser'
 )
-options=('!emptydirs')
-source=(
-  "https://rubygems.org/downloads/$pkgname-$pkgver.gem"
-  'systemd.service'
-  'tmpfiles.conf'
-  'sysusers.conf'
-)
+backup=(etc/fluent/fluentd.conf)
+options=(!emptydirs)
 install="$pkgname.install"
-noextract=("$pkgname-$pkgver.gem")
-backup=('etc/fluent/fluentd.conf')
-sha512sums=('ea54c4c0ddb10709a09e8fb3c94441e47401d21cd24d8d221dd6e4a80353360c2cd05438dd4672566a4a0bbabd54d8960269a25c8737156b0d2c4a62c04f488f'
-            '01de8becfbd191063e162edcdb623281d6edf140bac6bb4c01aab976f887cb30184484e8196a9942a8623a418e1f49e2d059ac25a943ee9182eeab0e243630f6'
-            '084f2716b1d65a49d2126a6fdb8016c7e92eb58a2c7c934236dbfdff65c5643d69f0e6bc71f0cdcb6c2edf8bc071c2f0f31da3c70f6c12220eaf69cb70221e6b'
-            'af264f901a23ae4b611c57779222c004a348cb7efbe7a2922ce01cef8bc047e42c394309e4746d3b669105d04fbacd057e68487e214c6929328e9cc2a9439980')
-b2sums=('3056c4acba16f456b533bbe08c093226972d23abb198a80fe58f1bf4c56ee0b9d44c3ae5c416dcf9f7bdba2d4d26f7f8e39aa68dc67b0c8a1209d3c351bf925a'
-        '593511fb52e2d934e89bbdae7ac7687b29165a6d20a48bab223b91b2010c82811da0a79f9c51ee857b48f2fca06677ba0f9db43bb8990df723620fa3471045a9'
-        '8957872f805a274a56ae9e63896033a5fe175bd4d71704e62aff18524b95bf2a611bb3a4bff3c93b6d977f209e415a7d38d806341e144919022226ab1f53247d'
-        '78cf6da081b7f370bfe6b362e5f545cefcb770cc42eafd713de5befd8489c543a99e60112b09dc47b7867fdac8be91291cab68fc102f97834f248ce879782d6c')
+source=(
+  "git+$url.git#commit=$_commit"
+  "systemd.service"
+  "tmpfiles.conf"
+  "sysusers.conf"
+  "unbundlify-tests.patch"
+)
+sha256sums=(
+  'SKIP'
+  'b02013a8e3895369df58557b813d260a11edf245c59afc1747971205f1b9e825'
+  'ea811ec16a78cbe1248266bca6589ebaab54f75048288959641b8ef3a8ea7e1b'
+  '8eca8af4df0ea2c0b954d8bf72029e7d2034b7e77f9be36d3d261630068f5674'
+  '0b9b3cfb302fd849fd414e79bafe99a4009bb4dc8dcbd3a1a4b6ae7c87b653ce'
+)
 
-package() {
-  # systemd integration
-  install -vDm644 systemd.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-  install -vDm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-  install -vDm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+_archive="$pkgname"
 
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+prepare() {
+  cd "$_archive"
+
+  # Update gemspec/Gemfile to allow newer version of the dependencies
+  sed --in-place --regexp-extended 's|~>|>=|g' "$pkgname.gemspec"
+
+  patch --forward --strip=1 --input="$srcdir/unbundlify-tests.patch"
+}
+
+build() {
+  cd "$_archive"
+
+  local gemdir="$(gem env gemdir)"
+
+  gem build "$pkgname.gemspec"
 
   gem install \
     --local \
     --verbose \
     --ignore-dependencies \
     --no-user-install \
-    --install-dir "$pkgdir/$_gemdir" \
-    --bindir "$pkgdir/usr/bin" \
+    --install-dir "tmp_install/$gemdir" \
+    --bindir "tmp_install/usr/bin" \
     "$pkgname-$pkgver.gem"
 
-  # delete unnecessary files/folders
-  rm -vrf "$pkgdir/$_gemdir/cache"
-  cd "$pkgdir/$_gemdir/gems/$pkgname-$pkgver"
-  rm -vrf test \
-    .deepsource.toml \
-    .drone.yml \
-    .travis.yml \
-    .gitlab-ci.yml \
-    .gitignore \
-    .github \
-    appveyor.yml
+  # Remove unrepreducible files
+  rm --force --recursive --verbose \
+    "tmp_install/$gemdir/cache/" \
+    "tmp_install/$gemdir/gems/$pkgname-$pkgver/vendor/" \
+    "tmp_install/$gemdir/doc/$pkgname-$pkgver/ri/ext/"
 
-  # move documentation
-  cd "$pkgdir/$_gemdir/gems/$pkgname-$pkgver"
-  install -vdm755 "$pkgdir/usr/share/doc/$pkgname"
-  mv -vt "$pkgdir/usr/share/doc/$pkgname" \
-    docs/SECURITY_AUDIT.pdf *.md example
+  find "tmp_install/$gemdir/gems/" \
+    -type f \
+    \( \
+    -iname "*.o" -o \
+    -iname "*.c" -o \
+    -iname "*.so" -o \
+    -iname "*.time" -o \
+    -iname "gem.build_complete" -o \
+    -iname "Makefile" \
+    \) \
+    -delete
 
-  # configuration
-  install -vDm644 fluent.conf "$pkgdir/etc/fluent/fluentd.conf"
+  find "tmp_install/$gemdir/extensions/" \
+    -type f \
+    \( \
+    -iname "mkmf.log" -o \
+    -iname "gem_make.out" \
+    \) \
+    -delete
+}
+
+check() {
+  cd "$_archive"
+
+  export TZ=UTC
+  GEM_HOME="tmp_install/$(gem env gemdir)" rake test -v
+}
+
+package() {
+  cd "$_archive"
+
+  cp --archive tmp_install/* "$pkgdir"
+
+  install -Dm644 fluent.conf "$pkgdir/etc/fluent/fluentd.conf"
+
+  install -Dm644 "$srcdir/systemd.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+  install -Dm644 "$srcdir/sysusers.conf" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+  install -Dm644 "$srcdir/tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
+  cp -a -t "$pkgdir/usr/share/doc/$pkgname" example docs
 }
