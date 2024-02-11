@@ -91,12 +91,28 @@ pkgver() {
     "${_pkgver}"
 }
 
+_os="$( \
+  uname \
+    -o)"
+_usr="$( \
+  dirname \
+    "$( \
+      command \
+        -v \
+        "cc")")/../"
+
 package() {
   cd \
     "${_pkgname}"
-  make \
-    DESTDIR="${pkgdir}" \
-    install
+  [[ "${_os}" != "GNU/Linux" ]] && \
+    make \
+      DESTDIR="${pkgdir}" \
+      install
+  [[ "${_os}" == "GNU/Linux"]] && \
+    make \
+      DESTDIR="${pkgdir}" \
+      PREFIX="${_usr}" \
+      install
 }
 
 # vim: ft=sh syn=sh et
