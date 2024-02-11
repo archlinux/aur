@@ -1,15 +1,14 @@
 pkgbase = xfce4-calculator-plugin
-	pkgdesc = Calculator plugin for the Xfce4 panel.
-	pkgver = 0.7.1
+	pkgdesc = Simple command line based calculator for the Xfce panel
+	pkgver = 0.7.2
 	pkgrel = 1
-	url = http://goodies.xfce.org/projects/panel-plugins/xfce4-calculator-plugin
-	install = xfce4-calculator-plugin.install
+	url = https://docs.xfce.org/panel-plugins/xfce4-calculator-plugin
 	arch = i686
 	arch = x86_64
-	license = GPL
-	depends = intltool
+	license = GPL-2.0-or-later
+	makedepends = intltool
 	depends = xfce4-panel
-	source = https://archive.xfce.org/src/panel-plugins/xfce4-calculator-plugin/0.7/xfce4-calculator-plugin-0.7.1.tar.bz2
-	sha256sums = e4016a03c3ef4ebddd97e4135f5e304f80677033c98e19644b9989ec6f5ada81
+	source = https://archive.xfce.org/src/panel-plugins/xfce4-calculator-plugin/0.7/xfce4-calculator-plugin-0.7.2.tar.bz2
+	sha256sums = d1f622bea41a90c1686bf9f13c488ab28e995e2762b84712dea9027e0c94028b
 
 pkgname = xfce4-calculator-plugin
