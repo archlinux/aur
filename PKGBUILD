@@ -4,7 +4,7 @@
 # Contributor: Sergey Kasmy
 
 pkgname=liquidctl-git
-pkgver=1.13.0.r4.9e29167
+pkgver=1.13.0.r36.d831273
 pkgrel=1
 pkgdesc='Cross-platform tool and drivers for liquid coolers and other devices'
 arch=('any')
@@ -30,6 +30,10 @@ makedepends=(
 )
 checkdepends=(
   python-pytest
+)
+optdepends=(
+  'python-psutil: use system/hwmon sensors in yoda'
+  'python-prometheus_client: export data to Prometheus'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -68,7 +72,7 @@ package() {
 
   # documentation
   install -Dm644 -t "$pkgdir"/usr/share/man/man8 liquidctl.8
-  install -dm 755 "$pkgdir"/usr/share/doc/$pkgname
+  install -dm755 "$pkgdir"/usr/share/doc/$pkgname
   cp -r -a --no-preserve=ownership docs/* "$pkgdir"/usr/share/doc/$pkgname
 
   # device access
@@ -77,9 +81,8 @@ package() {
   # completions
   install -Dm644 extra/completions/liquidctl.bash "$pkgdir"/usr/share/bash-completion/completions/liquidctl
 
-  # optional scripts, originally intended as examples, but that may be
-  # useful in some scenarios (note: versioned separately from liquidctl):
-  # install -D extra/yoda "$pkgdir"/usr/bin/liquidctl-yoda
-  # install -D extra/liquiddump "$pkgdir"/usr/bin/liquidctl-dump
-  # install -D extra/prometheus-liquidctl-exporter "$pkgdir"/usr/bin/prometheus-liquidctl-exporter
+  # extra scripts
+  install -Dm755 extra/yoda.py "$pkgdir"/usr/bin/yoda
+  install -Dm755 extra/liquiddump.py "$pkgdir"/usr/bin/liquiddump
+  install -Dm755 extra/prometheus-liquidctl-exporter.py "$pkgdir"/usr/bin/prometheus-liquidctl-exporter
 }
