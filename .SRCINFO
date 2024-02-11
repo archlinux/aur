@@ -1,0 +1,17 @@
+pkgbase = lib45d
+	pkgdesc = 45Drives C++ Library.
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://github.com/45Drives/lib45d
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = make
+	makedepends = patch
+	depends = glibc
+	source = lib45d-0.3.6.tar.gz::https://github.com/45Drives/lib45d/archive/refs/tags/v0.3.6.tar.gz
+	source = 00-missing-include.patch
+	sha256sums = 76ae1811beffe67025fd72a055dd662496cfbbe4790e2bb68d42980c48cadd02
+	sha256sums = 373b23f23c8d832780484379aedc0c4003d744a6ab433e0d1c85fa91074f7e55
+
+pkgname = lib45d

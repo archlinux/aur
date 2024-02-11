@@ -1,0 +1,12 @@
+# https://github.com/45Drives/lib45d/commit/a607e278182a3184c004c45c215aa22c15d6941d
+diff --git a/src/impl/bytes.cpp b/src/impl/bytes.cpp
+index 9bb4c7c..1dac914 100644
+--- a/src/impl/bytes.cpp
++++ b/src/impl/bytes.cpp
+@@ -22,6 +22,7 @@
+ #include "45d/Exceptions.hpp"
+ 
+ #include <cmath>
++#include <cstdint>
+ #include <iomanip>
+ #include <regex>
