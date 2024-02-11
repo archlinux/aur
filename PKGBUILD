@@ -2,7 +2,7 @@
 pkgname=saber-bin
 _appname="com.adilhanney.${pkgname%-bin}"
 _pkgname=Saber
-pkgver=0.19.2
+pkgver=0.19.3
 pkgrel=1
 pkgdesc="A (work-in-progress) cross-platform libre handwritten notes app"
 arch=(
@@ -10,7 +10,7 @@ arch=(
     'x86_64'
 )
 url="https://github.com/adil192/saber"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -29,9 +29,9 @@ noextract=("${pkgname%-bin}-${pkgver}-${CARCH}.tar.gz")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_x86_64.tar.gz")
 source=("${pkgname%-bin}.sh")
-sha256sums=('07c295fbb74a50ae5c27e5d0ee1a55f8ef4f3be793dcb7490d8d7df20be9d90a')
-sha256sums_aarch64=('a549a1b2b20307895d84f2b298c8fcc77af71df6c6bfd248cb865de5951563f2')
-sha256sums_x86_64=('03823ef5ae6b5a3ff0c954bb079ec6000deaf6b4eff5a92566c18ebf64f2f7d2')
+sha256sums=('1e338ff128b2be2b0d484ea2d00814db6709a5e2cc455a373428d21f8ed690d5')
+sha256sums_aarch64=('cc425d8076c6dad6f079ca6df87c55130e96cd50f920140673d46aa307b4b579')
+sha256sums_x86_64=('66e79f98f5771c9145b651bc23588db442720041116dd0d878432194da7b913c')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
