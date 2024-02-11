@@ -2,7 +2,7 @@
 _pkgname=tidgi
 pkgname="${_pkgname}-desktop-git"
 _appname=TidGi
-pkgver=0.9.1.r15.g8c8cbb41
+pkgver=0.9.3.r0.gb7269e6d
 _electronversion=28
 pkgrel=1
 pkgdesc="an privatcy-in-mind, automated, auto-git-backup, freely-deployed Tiddlywiki knowledge management Desktop note app, with local REST API."
@@ -44,10 +44,10 @@ pkgver() {
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-git}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -i "${srcdir}/${pkgname%-git}.sh"
+    #sed -e "s|@electronversion@|${_electronversion}|" \
+    #    -e "s|@appname@|${pkgname%-git}|g" \
+    #    -e "s|@runname@|app.asar|g" \
+    #    -i "${srcdir}/${pkgname%-git}.sh"
     gendesk -q -f -n --pkgname="${_pkgname}-desktop" --comment="${pkgdesc}" --categories="Office" --name="${_appname}" --exec="${pkgname%-git} --no-sandbox %U"
     cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
