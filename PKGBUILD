@@ -10,7 +10,7 @@ url="https://github.com/$pkgname/${pkgname%-linux}"
 license=('GPL-3.0-or-later')
 depends=('python-pyqt6' 'python-pyqt6-webengine' 'dbus-python' 'qt6-wayland' 'python-jaraco.text' 'python-inflect' 'python-pydantic>=1.9.1' 'python-typing_extensions>=4.6.1')
 makedepends=('git' 'python3' 'python-setuptools>=40.8.0' 'desktop-file-utils')
-conflicts=('zapzap' 'zapzap-git')
+conflicts=('zapzap')
 optdepends=('hunspell: spell check')
 source=("git+$url#tag=$pkgver")
 b2sums=('SKIP')
