@@ -1,0 +1,15 @@
+pkgbase = luks-tools-git
+	pkgdesc = A collection of LUKS related scripts.
+	pkgver = 0.0.0.0.0.1.r1.g84fb4c0
+	pkgrel = 1
+	url = https://github.com/themartiancompany/luks-tools
+	arch = any
+	license = AGPL3
+	makedepends = git
+	depends = pacman
+	provides = luks-tools=0.0.0.0.0.1.r1.g84fb4c0
+	conflicts = luks-tools
+	source = git+https://github.com/themartiancompany/luks-tools
+	sha256sums = SKIP
+
+pkgname = luks-tools-git
