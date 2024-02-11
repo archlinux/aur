@@ -1,13 +1,12 @@
 pkgbase = xfetch-bin
 	pkgdesc = A simple fetch written in Rust.
-	pkgver = 3.3
+	pkgver = 3.4
 	pkgrel = 1
 	url = https://github.com/XandrCopyrighted/xFetch/
 	arch = any
 	license = MIT
 	conflicts = xfetch
-	depends = coreutils
-	source = https://github.com/XandrCopyrighted/xFetch/releases/download/3.3/xfetch.tar.gz
+	source = https://github.com/XandrCopyrighted/xFetch/releases/download/3.4/xfetch.tar.gz
 	source = https://github.com/XandrCopyrighted/xFetch/blob/main/LICENSE
 	sha256sums = SKIP
 	sha256sums = SKIP
