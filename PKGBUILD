@@ -32,11 +32,12 @@ _main_package() {
 
   options=('!emptydirs' '!strip')
 
-  : ${_dl_filename:=${_pkgname%-avx2}_${_pkgver:?}_AVX2.deb}
-  : ${_dl_url:=$url/releases/download/v.$_pkgver/$_dl_filename}
+  _dl_filename="${_pkgname%-avx2}_${_pkgver:?}_AVX2.deb"
+  _dl_url="$url/releases/download/v.$_pkgver/$_dl_filename"
 
   noextract+=("$_dl_filename")
-  source=("$_dl_filename"::"$_dl_url")
+  source=("$_dl_filename"::"${_dl_url}")
+
   sha256sums=('985d8cbdf6cd524b091021c8322b3c1a58221331a22deecd2264529cc491dfba')
 }
 
@@ -156,25 +157,25 @@ package() {
   fi
 
   # script
-  \rm -rf "$pkgdir/usr/bin/mercury-browser"
+  rm -rf "$pkgdir/usr/bin/mercury-browser"
   install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
 
   # icon
   install -Dm644 "$pkgdir/opt/$_pkgname/browser/chrome/icons/default/default128.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"  
 
   # .desktop
-  \rm -rf "$pkgdir/usr/share/applications/mercury-browser.desktop"
+  rm -rf "$pkgdir/usr/share/applications/mercury-browser.desktop"
   install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
   # symlink duplicate file
   ln -sf "/usr/bin/$_pkgname" "$pkgdir/opt/$_pkgname/mercury-bin"
 
   # remove unnecessary folders
-  \rm -rf "$pkgdir/usr/lib/"
-  \rm -rf "$pkgdir/usr/share/doc/"
-  \rm -rf "$pkgdir/usr/share/icons"
-  \rm -rf "$pkgdir/usr/share/lintian/"
-  \rm -rf "$pkgdir/usr/share/man/"
+  rm -rf "$pkgdir/usr/lib/"
+  rm -rf "$pkgdir/usr/share/doc/"
+  rm -rf "$pkgdir/usr/share/icons"
+  rm -rf "$pkgdir/usr/share/lintian/"
+  rm -rf "$pkgdir/usr/share/man/"
 
   # fix permissions
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
@@ -215,7 +216,7 @@ _update_version() {
   _blacklist=(
     "v.121.0.2" # windows only
   )
-  _response=$(curl -Ssf "$url/releases.atom")
+  _response=$(curl -Ssf "$url/releases.atom" --tlsv1.3)
   _tags=$(
     printf '%s' "$_response" \
       | grep '/releases/tag/' \
@@ -236,4 +237,3 @@ _update_version() {
 
 # execute
 _main_package
-
