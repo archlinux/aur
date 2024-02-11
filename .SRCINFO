@@ -1,0 +1,17 @@
+pkgbase = android-aarch64-lzo
+	pkgdesc = Portable lossless data compression library (android)
+	pkgver = 2.10
+	pkgrel = 1
+	url = http://www.oberhumer.com/opensource/lzo
+	arch = any
+	license = GPL
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = http://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz
+	sha1sums = 4924676a9bae5db58ef129dc1cebce3baa3c4b5d
+
+pkgname = android-aarch64-lzo
