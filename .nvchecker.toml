@@ -1,0 +1,5 @@
+[grantlee]
+source = 'github'
+github = 'steveire/grantlee'
+use_max_tag = true
+prefix = 'v'
