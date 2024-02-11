@@ -7,11 +7,11 @@
 _distname=networkmanager-qt
 pkgname="${_distname}-git"
 pkgver=5.249.0.r2.g7bc1121
-pkgrel=3
+pkgrel=4
 pkgdesc="KDE's Qt wrapper for NetworkManager API (git build)"
 arch=(x86_64)
 url="https://invent.kde.org/frameworks/${_distname}"
-license=('LGPL-2.1-only OR LGPL-3.0-only')
+license=('LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL')
 depends=(gcc-libs
          glibc
          qt6-base
@@ -42,4 +42,7 @@ build() {
 package() {
   depends+=(networkmanager)
   DESTDIR="${pkgdir}" cmake --install build
+
+  cd "${_distname}/LICENSES"
+  install -Dm644 LicenseRef-KDE-Accepted-LGPL.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
