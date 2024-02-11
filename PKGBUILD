@@ -8,7 +8,7 @@ pkgname=discord-electron-openasar
 _pkgname=discord
 pkgver=0.0.42+827
 _pkgver=${pkgver%%+*}
-pkgrel=2
+pkgrel=3
 _electronver=28
 _electronname="electron${_electronver}"
 pkgdesc="Discord packaged with OpenAsar using system provided electron (v${_electronver}) for increased security and performance"
@@ -63,6 +63,7 @@ build() {
 
 	# pack openasar
 	sed -i -e "s|nightly|nightly-$(git rev-parse HEAD | cut -c 1-7)|" src/index.js
+	sed -i -e "/config.setup = true/a\  config.autoupdate = false;" src/config/index.js
 	sed -i -e "s|process.resourcesPath|'/usr/lib/${_pkgname}'|" src/utils/buildInfo.js
 	sed -i -e "s|^Exec=\${exec}$|Exec=/usr/bin/${_pkgname}|" \
 		-e "s|^Name=\${basename(exec)}$|Name=${_pkgname^}|" src/autoStart.js
