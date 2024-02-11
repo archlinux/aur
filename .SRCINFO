@@ -1,0 +1,24 @@
+pkgbase = mercury-browser-avx2-bin
+	pkgdesc = Compiler optimized, private Firefox fork
+	pkgver = 122.0.2
+	pkgrel = 1
+	url = https://github.com/Alex313031/Mercury
+	arch = x86_64
+	license = MPL-2.0
+	optdepends = ffmpeg: H264/AAC/MP3 decoding
+	optdepends = hunspell: Spell checking
+	optdepends = hyphen: Hyphenation
+	optdepends = networkmanager: Location detection via available WiFi networks
+	noextract = mercury-browser_122.0.2_AVX2.deb
+	options = !emptydirs
+	options = !strip
+	source = mercury-browser_122.0.2_AVX2.deb::https://github.com/Alex313031/Mercury/releases/download/v.122.0.2/mercury-browser_122.0.2_AVX2.deb
+	sha256sums = SKIP
+
+pkgname = mercury-browser-avx2-bin
+	depends = alsa-lib
+	depends = dbus-glib
+	depends = gtk3
+	depends = libnotify
+	provides = mercury-browser-avx2=122.0.2
+	conflicts = mercury-browser-avx2
