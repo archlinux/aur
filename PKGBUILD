@@ -8,25 +8,27 @@ _pkgname=HMCL
 _ver=3.5.5
 _build=235
 _pkgver=ffeabbf1f144ba14462e27c2ac9d46e231c1482e
+_java_version=17
+_jar_path="/usr/share/java/$pkgname.jar"
 pkgver=$_ver.$_build
 pkgrel=1
 pkgdesc='An unofficial build of HMCL that trying to compile and run HMCL with the latest LTS version of java. (with HMCL-Clean changes)'
 arch=('any')
 url='https://github.com/huanghongxun/HMCL'
 license=('GPL3')
-depends=('java-runtime>=17' 'java-openjfx>=17' 'hicolor-icon-theme')
-makedepends=('java-environment>=17' 'gradle')
+depends=("java-runtime>=$_java_version" "java-openjfx>=$_java_version" 'hicolor-icon-theme' 'archlinux-java-run')
+makedepends=("java-environment>=$_java_version" 'gradle')
 provides=('hmcl')
 conflicts=('hmcl')
 source=('hmcl.desktop'
   'hmcl-launch-script'
   'craft_table.png'
   "${_pkgname}-${_pkgver}.tar.gz::${url}/archive/${_pkgver}.tar.gz"
-  "0001-Target-Java-17.patch"
+  "0001-Target-Java-$_java_version.patch"
   "0002-Cleanup.patch"
 )
-sha256sums=('b4e8aa0f349bb3f5dd15a31c5a13ac3e10e5a5bcd2f97cf390041924275e43ef'
-  '4fcd4bf8f8d2ca39cf25a8d59daeb53ffa54fbca0356bd55aa17a5ee31d59a95'
+sha256sums=('04ee0621a295728d4ad5d23d6bf8853d5715053153b336203ce7e73ce8b66440'
+  '505c335bce8685fff97f6fbd0c4b916fa697dfc73ff22735d7c188b3811bc422'
   '2989a1b5301b8c7b9afdae5696c6a4e5246afa2d4f1f3d3dad5c192f036a9b4c'
   '1e152212e1507d49c867fe8715c4ec337972795cd9f4947e285677a56257cb3d'
   'c650fa0d34f22f9700dd047fbe243a63528c629312b94f499d4aa341b9b5193f'
@@ -62,7 +64,9 @@ check() {
 package() {
   install -Dm755 'hmcl-launch-script' "$pkgdir/usr/bin/$pkgname"
   install -Dm644 'hmcl.desktop' "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 "$_pkgname-$_pkgver/HMCL/build/libs/$_pkgname-$pkgver.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
+  install -Dm644 "$_pkgname-$_pkgver/HMCL/build/libs/$_pkgname-$pkgver.jar" "$pkgdir/$_jar_path"
   install -Dm644 'craft_table.png' "$pkgdir/usr/share/icons/hicolor/48x48/apps/$pkgname.png"
   install -Dm644 "$_pkgname-$_pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  sed -i -e "s|%JAVA_VERSION%|$_java_version|" -e "s|%JAR_PATH%|$_jar_path|" "$pkgdir/usr/bin/$pkgname"
 }

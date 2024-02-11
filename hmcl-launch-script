@@ -1,17 +1,35 @@
-#!/bin/sh
+#!/usr/bin/env sh
 set -eu
 
-if [ "${1:-}" != -p ]; then
-  WORKDIR=${XDG_CONFIG_HOME:-$HOME/.config}/hmcl
-  mkdir -p "$WORKDIR"
-  cd "$WORKDIR"
-fi
+print_usage() {
+  cat <<EOF
+usage: $(basename "$0") [-h/-p] [args passed to java]
 
-JAVA_HOME=$(pacman -Ql java-runtime | grep -e '/usr/lib/jvm/.*/bin/java$' | head -n 1 | cut -s -d ' ' -f '2-' | cut -s -d / -f '-5')
-JAVAFX_HOME=$(dirname "$(pacman -Ql java-openjfx | grep -e '/javafx\..*\.jar$' | head -n 1 | cut -s -d ' ' -f '2-')")
+Options:
+  -h  --help:
+    Print this message
+  --hmcl-global:
+    Use "\${XDG_DATA_HOME:-\$HOME/.local/share}/hmcl" as working directory
+EOF
+  exit 0
+}
 
-exec "${JAVA_HOME}"/bin/java \
-  --module-path "${JAVAFX_HOME}/javafx.base.jar:${JAVAFX_HOME}/javafx.fxml.jar:${JAVAFX_HOME}/javafx.graphics.jar:${JAVAFX_HOME}/javafx.media.jar:${JAVAFX_HOME}/javafx.swing.jar:${JAVAFX_HOME}/javafx.web.jar:${JAVAFX_HOME}/javafx.controls.jar" \
-  --add-modules=javafx.base --add-modules=javafx.fxml --add-modules=javafx.graphics --add-modules=javafx.media --add-modules=javafx.swing --add-modules=javafx.web --add-modules=javafx.controls \
-  -jar /usr/share/java/hmcl-new/hmcl-new.jar \
-  "$@"
+args=''
+for arg in "$@" ; do
+  case "$arg" in
+  -h|--help)
+    print_usage
+    ;;
+  --hmcl-global)
+    printf 'Global mode\n\n'
+    WORKDIR=${XDG_DATA_HOME:-$HOME/.local/share}/hmcl
+    mkdir -p "$WORKDIR"
+    cd "$WORKDIR" || exit 2
+    ;;
+  *)
+    args="$args $arg"
+    ;;
+  esac
+done
+
+env GDK_CORE_DEVICE_EVENTS=1 archlinux-java-run -f 'javafx' -a '%JAVA_VERSION%' -- -jar '%JAR_PATH%' "$args"
