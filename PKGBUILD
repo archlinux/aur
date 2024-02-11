@@ -1,9 +1,9 @@
+# Maintainer: TTsdzb <ttsdzb@outlook.com>
 # Maintainer: Ming Yue <mingyue@ixcm.onmicrosoft.com>
-# Contributor: TTsdzb <ttsdzb@outlook.com>
 
 pkgname='liteloader-qqnt-lite-tools-bin'
 _pkgname='LiteLoaderQQNT-lite_tools'
-pkgver='2.3.5'
+pkgver='2.3.6'
 pkgrel=1
 pkgdesc='A lightweight, elegant and efficient LiteLoaderQQNT plugin for lite tools'
 arch=('any')
@@ -12,11 +12,17 @@ license=("MIT")
 depends=("liteloader-qqnt-bin")
 
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/${pkgver}/lite_tools_v4.zip")
-sha256sums=("2951ac2dea7c2118d48722b9aa778d3f913f9f65a03499f83fb059f8d219d391")
-b2sums=("7c843d7640d3494d32aea157634d76b89e4981639d230b5139f72850ba30d9698f229c5edcef749387f28e5b49c879470cd39dc6825463f0268317178de4658c")
+sha256sums=("f1f3b447ea8761d64d4a7ecaa1a5694f06d00533f6ca09271e10f89904403ccc")
+b2sums=("79581d7868cc08ad7624dccc810889e37879cbcd33f3ca8fa9c4cf159a915f387527c906e7cc8383ec0bd3fd53a72af15bd547775e8648888cc375e008908171")
 
 package() {
-    mkdir -p "${pkgdir}/opt/LiteLoader/plugins/${_pkgname}/{}" ';'
-    find . -type f -exec install -D '{}' "${pkgdir}/opt/LiteLoader/plugins/${_pkgname}/{}" ';'
+    # prepare to copy files
+    mkdir -p "${pkgdir}/opt/LiteLoader/plugins/${_pkgname}"
+
+    # copy files
+    cp -rf "${srcdir}"/* "${pkgdir}/opt/LiteLoader/plugins/${_pkgname}"
+
+    # modify premissions
+    chmod -R 0777 "${pkgdir}/opt/LiteLoader"
 }
 
