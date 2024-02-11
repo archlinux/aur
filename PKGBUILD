@@ -5,16 +5,16 @@
 
 _pkgname=vokoscreenNG
 pkgname=vokoscreen-git
-pkgver=3.0.9.r45.gd1139926
+pkgver=4.0.0.r41.g29f9cd68
 pkgrel=1
 epoch=1
 pkgdesc='An easy to use screencast creator. Development version.'
 arch=('i686' 'x86_64')
 url='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'
 license=('GPL2')
-depends=('qt5-x11extras' 'qt5-multimedia' 'qt-gstreamer'
+depends=('qt6-multimedia' 'qt6-multimedia-gstreamer'
 	'gst-plugins-good' 'pulseaudio')
-makedepends=('git' 'qt5-tools' 'libxrandr' 'bzip2')
+makedepends=('git' 'qt6-tools' 'libxrandr' 'bzip2')
 optdepends=('gst-plugins-ugly: for x264 video codec'
 	   'gst-plugins-bad: for faac')
 provides=("${_pkgname%NG}=${pkgver}")
@@ -30,7 +30,7 @@ pkgver() {
 build() {
   [[ -d "${srcdir}"/build ]] || mkdir -p "${srcdir}"/build
   cd build
-  qmake-qt5 ../${_pkgname}/src/ \
+  qmake6 ../${_pkgname}/src/ \
 	    QMAKE_CFLAGS="${CFLAGS}" \
 	    QMAKE_CXXFLAGS="${CXXFLAGS}" \
 	    QMAKE_LDFLAGS="${LDFLAGS} -lbz2" \
