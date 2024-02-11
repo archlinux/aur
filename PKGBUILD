@@ -7,7 +7,7 @@ pkgdesc='A tool to generate custom Iosevka fonts from a configuration file'
 url='https://github.com/OJFord/iosevka-generate'
 license=('GPL')
 source=("$url/archive/v$pkgver.tar.gz")
-md5sums=('bfcda7a8fe678c8de70227cb810216ff')
+md5sums=('ae0f8ba93243f80f5cb21b29002fe325')
 arch=('any')
 depends=(
     'npm'

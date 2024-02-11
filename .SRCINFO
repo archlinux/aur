@@ -1,6 +1,6 @@
 pkgbase = iosevka-generate
 	pkgdesc = A tool to generate custom Iosevka fonts from a configuration file
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/OJFord/iosevka-generate
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = iosevka-generate
 	depends = npm
 	depends = otfcc
 	depends = python-gitpython
-	depends = python-inflection
 	depends = python-pyxdg
+	depends = python-requests
 	depends = ttfautohint
 	optdepends = fontforge: NerdFont patching
 	conflicts = ttf-iosevka-pack
@@ -44,7 +44,7 @@ pkgbase = iosevka-generate
 	conflicts = ttf-iosevka-term-ss09
 	conflicts = ttf-iosevka-term-ss10
 	conflicts = ttf-iosevka-term-ss11
-	source = https://github.com/OJFord/iosevka-generate/archive/v0.4.0.tar.gz
-	md5sums = bfcda7a8fe678c8de70227cb810216ff
+	source = https://github.com/OJFord/iosevka-generate/archive/v0.5.0.tar.gz
+	md5sums = ae0f8ba93243f80f5cb21b29002fe325
 
 pkgname = iosevka-generate
