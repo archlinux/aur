@@ -1,7 +1,7 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=dektec-drivers-dkms
-pkgver=2023.10.0
+pkgver=2024.01.0
 pkgrel=1
 pkgdesc='Linux DKMS for Dektec device drivers'
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
 	'dkms.conf'
 	'Makefile'
 )
-sha256sums=('8024de517096608628ce0657b0d0fab048145d988a9c5d520fc4328496492c85'
+sha256sums=('3b767e61a88833e23e735852ae448a8c17985397f416bd2655841faa14e75ff0'
             '3ab98092aad33786c1766b8d0b29636c5bb1ccdb116cbfe32608c972b99d4d47'
             '3ee9f2b8836d3e68451c3c29f343295f6ceaca52e84e18d040205b245473d314')
 
