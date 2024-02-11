@@ -1,6 +1,6 @@
 pkgbase = xen-qemu
 	pkgdesc = A xen-specific QEMU, built to qemu-builtin standards
-	pkgver = 8.2.0
+	pkgver = 8.2.1
 	pkgrel = 1
 	url = https://www.qemu.org
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = xen-qemu
 	provides = xen-qemu-builtin
 	conflicts = xen-qemu-builtin
 	replaces = xen-qemu-builtin
-	source = https://download.qemu.org/qemu-8.2.0.tar.xz
-	source = https://download.qemu.org/qemu-8.2.0.tar.xz.sig
+	source = https://download.qemu.org/qemu-8.2.1.tar.xz
+	source = https://download.qemu.org/qemu-8.2.1.tar.xz.sig
 	validpgpkeys = CEACC9E15534EBABB82D3FA03353C9CEF108B584
-	sha512sums = 92ec41196ff145cdbb98948f6b6e43214fa4b4419554a8a1927fb4527080c8212ccb703e184baf8ee0bdfa50ad7a84689e8f5a69eba1bd7bbbdfd69e3b91256c
+	sha512sums = e72d3e13339c03e8d371ca060ac700c45af2ca37523cddb6b02dcaf8430d75c8cef194cf496df9816440b281f368457def1126677db757928805d93ceca2f9af
 	sha512sums = SKIP
 
 pkgname = xen-qemu
