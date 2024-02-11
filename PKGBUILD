@@ -1,7 +1,7 @@
 pkgname=candy-git
-pkgver=3.7.r8.g7abb3ae
+pkgver=3.9.1.r3.gd7936c3
 pkgrel=1
-pkgdesc="Another virtual private network that supports point-to-point connections"
+pkgdesc="Another virtual private network that supports peer-to-peer connections"
 url="https://github.com/lanthora/candy"
 license=('MIT')
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
