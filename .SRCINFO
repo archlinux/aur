@@ -1,22 +1,21 @@
 pkgbase = electron-music-player
 	pkgdesc = A functional music player for FLAC, mp3, and m4a audio.
 	pkgver = 0.8.8
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/kevinfrei/EMP
 	arch = any
-	license = custom:CC0-1.0
+	license = CC0-1.0
 	makedepends = yarn
 	makedepends = npm
 	makedepends = gendesk
 	makedepends = nvm
 	makedepends = git
-	makedepends = asar
 	depends = electron25
 	depends = hicolor-icon-theme
 	conflicts = electron-music-player
 	source = electron-music-player.git::git+https://github.com/kevinfrei/EMP.git#tag=v0.8.8
 	source = electron-music-player.sh
 	sha256sums = SKIP
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = electron-music-player
