@@ -1,12 +1,12 @@
 # Maintainer: Dwayne Bent <dbb@dbb.io>
 pkgname=systemd-cron
-pkgver=2.3.0
+pkgver=2.3.2
 pkgrel=1
 pkgdesc='systemd units to run cron scripts'
 arch=('x86_64')
 url='https://github.com/systemd-cron/systemd-cron'
 license=('MIT')
-depends=('systemd>=251' 'openssl')
+depends=('systemd>=251' 'libmd')
 optdepends=('smtp-forwarder: sending emails')
 provides=('cron')
 conflicts=('cron')
@@ -14,7 +14,7 @@ options=('debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/systemd-cron/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
         'sysusers.conf')
 install=${pkgname}.install
-sha256sums=('28a69e87718849b89bc6263151a270d6a5930ec6a8f0636adecd76056adc5ae0'
+sha256sums=('0b28cda22f3b37711aa181f27c53493b36145549f0cb82b2fd994a85b9191806'
             '9260221879cca05d4c82cd12deb88759c8d9148e106f4b9891700849cef5c41b')
 
 build() {
