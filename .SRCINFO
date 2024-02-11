@@ -27,6 +27,7 @@ pkgbase = partitionmanager-git
 	depends = kxmlgui
 	depends = kcoreaddons
 	depends = kwidgetsaddons
+	depends = kcolorscheme
 	depends = hicolor-icon-theme
 	provides = partitionmanager
 	conflicts = partitionmanager

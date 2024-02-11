@@ -20,11 +20,12 @@ depends=(
   'kconfig' # libKF6ConfigCore.so libKF6ConfigGui.so libKF6ConfigWidgets.so
   'kdbusaddons' # libKF6DBusAddons.so
   'kwindowsystem' # libKF6WindowSystem.so
-  'kconfigwidgets'
+  'kconfigwidgets' # libKF6ConfigWidgets.so.6
   'kio' # libKF6KIOCore.so libKF6KIOGui.so
   'kxmlgui' # libKF6XmlGui.so
   'kcoreaddons' # libKF6CoreAddons.so
   'kwidgetsaddons' # libKF6WidgetsAddons.so
+  'kcolorscheme' # libKF6ColorScheme.so.6
   'hicolor-icon-theme'
 )
 makedepends=(
