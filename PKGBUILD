@@ -7,7 +7,7 @@ pkgrel=4
 pkgdesc="A simple - offline - clone of the popular note taking app Notion. It is built using Electron and React."
 arch=('x86_64')
 url="https://github.com/ssisaias/rotion"
-license=('custom')
+license=('LicenseRef-custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(

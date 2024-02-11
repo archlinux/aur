@@ -4,7 +4,7 @@ pkgbase = rotion-bin
 	pkgrel = 4
 	url = https://github.com/ssisaias/rotion
 	arch = x86_64
-	license = custom
+	license = LicenseRef-custom
 	depends = electron25
 	provides = rotion=1.0.10
 	conflicts = rotion
