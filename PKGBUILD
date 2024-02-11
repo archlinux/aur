@@ -2,7 +2,7 @@
 
 pkgname=python-mf2py
 _name=${pkgname#python-}
-pkgver=1.1.3
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Python Microformats2 parser"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python-beautifulsoup4' 'python-requests')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('4241e91ed4b644dd666d9fbd2557ed86e5bb7399c196026f7b0a1f413b33f59f')
+sha256sums=('1380924633413b8d72e704b5c86b4382c4b1371699edecc907b01cd21138d7cd')
 
 build() {
   cd "${_name}-${pkgver}"
