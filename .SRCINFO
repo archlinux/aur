@@ -1,15 +1,14 @@
 pkgbase = arm-linux-gnueabihf-gcc
 	pkgdesc = The GNU Compiler Collection
 	pkgver = 13.2.0
-	pkgrel = 9
+	pkgrel = 10
 	url = https://gcc.gnu.org
 	arch = x86_64
 	license = GPL
 	license = LGPL
 	license = FDL
 	license = custom
-	makedepends = binutils
-	makedepends = gcc
+	makedepends = base-devel
 	makedepends = glibc
 	makedepends = libelf
 	makedepends = python
