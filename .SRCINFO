@@ -1,0 +1,21 @@
+pkgbase = salvage-git
+	pkgdesc = Copy files comfortably and automate your backups.
+	pkgver = 1.5.3.r2.g846765d
+	pkgrel = 1
+	url = https://github.com/RenanSui/salvage
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = git
+	makedepends = nvm
+	makedepends = npm
+	makedepends = pnpm
+	depends = electron24
+	provides = salvage
+	conflicts = salvage
+	source = salvage.git::git+https://github.com/RenanSui/salvage.git
+	source = salvage.sh
+	sha256sums = SKIP
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+
+pkgname = salvage-git
