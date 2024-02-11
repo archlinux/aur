@@ -3,42 +3,39 @@
 _pkgname=Travel
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
-pkgrel=1
-pkgdesc='An utility to create an ALTREP object with a virtual pointer'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=3
+pkgdesc="An utility to create an ALTREP object with a virtual pointer"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
-  r-rcpp
   fuse2
-  fuse3
-  gcc
+  r-rcpp
 )
 optdepends=(
   r-biocstyle
   r-inline
   r-knitr
-  r-parallel
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('eff1e1ba219032d9a62d8ed02566cd12327a95ac432b5a0302c8ff47284c9b1c')
+source=("https://bioconductor.org/packages/3.16/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('da652100a57515f0dbaf7084fb35525e')
+b2sums=('45b1cbadbfeee068cfca241237900b937555a4dfdec7bb68635ca1168e83215b6b4da781388bafd0859399985677ea16811e3cf80939ff5f84367a85e488a648')
 
 prepare() {
-  sed -i "7i #include <cstddef>" "${_pkgname}/src/class_Cache_block.h"
-  tar cfz "${_pkgname}.tar.gz" "${_pkgname}"
+  cd "$_pkgname/src"
+  sed -i '7i #include <cstddef>' class_Cache_block.h
+  sed -i '7i #include <cstdint>' utils.h
 }
 
 build() {
-  #R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
-  R CMD INSTALL ${_pkgname}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
