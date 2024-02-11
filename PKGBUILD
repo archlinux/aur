@@ -3,13 +3,14 @@
 
 pkgbase=vulkan-lunarg-tools-git
 pkgname=(vulkan-extra-tools-git vulkan-extra-layers-git)
-pkgver=1.3.268.r58.g5ea187c
+pkgver=1.3.275.r12027.g5ea187c6c
+_major=1.3
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/LunarG/VulkanTools.git'
 license=(custom)
 depends=()
-makedepends=(git cmake python libx11 libxrandr wayland qt5-svg qt5-webengine make vulkan-headers-git vulkan-utility-libraries-git vulkan-icd-loader-git)
+makedepends=(git cmake python libx11 libxrandr wayland qt5-svg qt5-webengine make)
 source=(git+https://github.com/LunarG/VulkanTools.git)
 
 _install(){
@@ -26,7 +27,8 @@ pkgver(){
   cd "${srcdir}"/VulkanTools
   #git describe --long --tags --abbrev=7 --match='v*' | sed 's/^vulkan-sdk-//;s/\([^-]*-g\)/r\1/;s/-/./g'
   #git describe --long --tags --abbrev=7 | sed -r 's,^[^0-9]+,,;s,([0-9]*-g),r\1,;s,[-_],.,g'
-  git describe --long --tags --abbrev=7 | sed -r 's,^[^0-9]+,,;s,([0-9]*-g),r\1,;s,[-_],.,g' | sed 's/.0//g'
+  #git describe --long --tags --abbrev=7 | sed -r 's,^[^0-9]+,,;s,([0-9]*-g),r\1,;s,[-_],.,g' | sed 's/.0//g'
+  echo "${_major}".$(sed -n 9p scripts/known_good.json | sed 's/[^0-9]*//g' | cut -c 3-).r$(git rev-list --count HEAD).g$(git rev-parse --short --abbrev=7 HEAD)
 }
 
 build(){
@@ -43,15 +45,12 @@ build(){
   -D CMAKE_INSTALL_INCLUDEDIR=include \
   -D CMAKE_INSTALL_SYSCONFDIR=/etc \
   -D CMAKE_INSTALL_DATADIR=share \
-  -D VULKAN_HEADERS_INSTALL_DIR=/usr \
-  -D VULKAN_UTILITY_LIBRARIES_INSTALL_DIR=/usr \
-  -D VULKAN_LOADER_INSTALL_DIR=/usr \
   -D CMAKE_SKIP_RPATH=True \
   -D BUILD_WSI_XCB_SUPPORT=ON \
   -D BUILD_WSI_XLIB_SUPPORT=ON \
   -D BUILD_WSI_WAYLAND_SUPPORT=ON \
   -D BUILD_TESTS=OFF \
-  -D BUILD_VIA=ON \
+  -D BUILD_VIA=OFF \
   -Wno-dev
   
   make -j$(nproc) -C "${srcdir}"/build
@@ -61,7 +60,7 @@ build(){
 
 package_vulkan-extra-tools-git(){
   pkgdesc='Vulkan lunarg tools (git version)'
-  depends=(vulkan-validation-layers-git qt5-svg qt5-webengine)
+  depends=(vulkan-validation-layers qt5-svg qt5-webengine)
   conflicts=('vulkan-trace<1.2.148.1')
   conflicts+=(vulkan-extra-tools)
   provides=(vulkan-extra-tools)
@@ -79,7 +78,7 @@ package_vulkan-extra-tools-git(){
 
 package_vulkan-extra-layers-git(){
   pkgdesc='Extra layers for Vulkan development (git version)'
-  depends=(vulkan-validation-layers-git)
+  depends=(vulkan-validation-layers)
   conflicts=(vulkan-extra-layers)
   provides=(vulkan-extra-layers)
   
