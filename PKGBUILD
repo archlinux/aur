@@ -1,15 +1,14 @@
-# $Id$
-# Maintainer: Sean Bolton musound at jps dot net
+# Contributor: Sean Bolton musound at jps dot net
 # Contributor:  Thomas Karmann <thomas@karmann-paf.de>
 pkgname=xsynth-dssi
 pkgver=0.9.4
-pkgrel=2
+pkgrel=3
 pkgdesc="An analog-style (VCOs-VCF-VCA) synth plugin for DSSI"
 arch=('i686' 'x86_64')
 url="http://dssi.sourceforge.net/download.html#Xsynth-DSSI"
 license=('GPL')
-depends=('gtk2' 'liblo>=0.22')
-makedepends=('dssi')
+depends=('gtk2' 'liblo>=0.22' 'dssi')
+makedepends=('ladspa')
 options=('!libtool')
 source=(http://downloads.sourceforge.net/project/dssi/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz
         xsynth-dssi)
