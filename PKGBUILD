@@ -23,6 +23,10 @@ sha256sums=('31807ebeeeb049c53f1765e4a95aed69476a4b696dd100cb539ab668d7950b40')
 build() {
   cd node-v${pkgver}
 
+  # this uses malloc_usable_size, which is incompatible with fortification level 3
+  export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+  export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+
   ./configure \
     --prefix=/usr \
     --with-intl=system-icu \
@@ -47,6 +51,11 @@ check() {
 
 package() {
   cd node-v${pkgver}
+
+  # this uses malloc_usable_size, which is incompatible with fortification level 3
+  export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+  export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+
   make DESTDIR="${pkgdir}" install
   install -Dm644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
 }
