@@ -1,4 +1,5 @@
 #Maintainer: archdevlab <https://github.com/archdevlab>
+#Credits: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=vulkan-extension-layers-git
 pkgdesc='Layer providing Vulkan features when native support is unavailable (git version)'
