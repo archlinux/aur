@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=exif-git
-pkgver=0.6.22.r59.gf66c29c
+pkgver=0.6.22.r62.g0059882
 pkgrel=1
 pkgdesc="Command-line utility to show EXIF information"
 arch=('i686' 'x86_64')
 url="https://libexif.github.io/"
-license=('LGPL')
+license=('LGPL-2.1-or-later')
 depends=('glibc' 'libexif' 'popt')
 makedepends=('git')
 provides=("exif=$pkgver")

@@ -1,16 +1,16 @@
 pkgbase = exif-git
 	pkgdesc = Command-line utility to show EXIF information
-	pkgver = 0.6.22.r59.gf66c29c
+	pkgver = 0.6.22.r62.g0059882
 	pkgrel = 1
 	url = https://libexif.github.io/
 	arch = i686
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.1-or-later
 	makedepends = git
 	depends = glibc
 	depends = libexif
 	depends = popt
-	provides = exif=0.6.22.r59.gf66c29c
+	provides = exif=0.6.22.r62.g0059882
 	conflicts = exif
 	source = git+https://github.com/libexif/exif.git
 	sha256sums = SKIP
