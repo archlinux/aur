@@ -3,28 +3,29 @@
 
 pkgname=ollama-cuda
 pkgdesc='Create, run and share large language models (LLMs) with CUDA'
-pkgver=0.1.23
+pkgver=0.1.24
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/jmorganca/ollama'
 license=(MIT)
-_ollamacommit=09a6f76f4c30fb8a9708680c519d08feeb504197 # tag: v0.1.23
+_ollamacommit=69f392c9b7ea7c5cc3d46c29774e37fdef51abd8 # tag: v0.1.24
 # The llama.cpp git submodule commit hash can be found here:
-# https://github.com/jmorganca/ollama/tree/v0.1.23/llm
+# https://github.com/jmorganca/ollama/tree/v0.1.24/llm
+_llama_cpp_commit=f57fadc009cbff741a1961cb7896c47d73978d2c
 _llama_cpp_commit=d2f650cb5b04ee2726663e79b47da5efe196ce00
 makedepends=(cmake cuda git go)
 provides=(ollama)
 conflicts=(ollama)
 source=(git+$url#tag=v$pkgver
         llama.cpp::git+https://github.com/ggerganov/llama.cpp#commit=$_llama_cpp_commit
+        ollama.service
         sysusers.conf
-        tmpfiles.d
-        ollama.service)
+        tmpfiles.d)
 b2sums=('SKIP'
         'SKIP'
+        'a773bbf16cf5ccc2ee505ad77c3f9275346ddf412be283cfeaee7c2e4c41b8637a31aaff8766ed769524ebddc0c03cf924724452639b62208e578d98b9176124'
         '3aabf135c4f18e1ad745ae8800db782b25b15305dfeaaa031b4501408ab7e7d01f66e8ebb5be59fc813cfbff6788d08d2e48dcf24ecc480a40ec9db8dbce9fec'
-        'e8f2b19e2474f30a4f984b45787950012668bf0acb5ad1ebb25cd9776925ab4a6aa927f8131ed53e35b1c71b32c504c700fe5b5145ecd25c7a8284373bb951ed'
-        'a773bbf16cf5ccc2ee505ad77c3f9275346ddf412be283cfeaee7c2e4c41b8637a31aaff8766ed769524ebddc0c03cf924724452639b62208e578d98b9176124')
+        'e8f2b19e2474f30a4f984b45787950012668bf0acb5ad1ebb25cd9776925ab4a6aa927f8131ed53e35b1c71b32c504c700fe5b5145ecd25c7a8284373bb951ed')
 
 prepare() {
   cd ${pkgname/-cuda}

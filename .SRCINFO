@@ -1,6 +1,6 @@
 pkgbase = ollama-cuda
 	pkgdesc = Create, run and share large language models (LLMs) with CUDA
-	pkgver = 0.1.23
+	pkgver = 0.1.24
 	pkgrel = 1
 	url = https://github.com/jmorganca/ollama
 	arch = x86_64
@@ -11,15 +11,15 @@ pkgbase = ollama-cuda
 	makedepends = go
 	provides = ollama
 	conflicts = ollama
-	source = git+https://github.com/jmorganca/ollama#tag=v0.1.23
+	source = git+https://github.com/jmorganca/ollama#tag=v0.1.24
 	source = llama.cpp::git+https://github.com/ggerganov/llama.cpp#commit=d2f650cb5b04ee2726663e79b47da5efe196ce00
+	source = ollama.service
 	source = sysusers.conf
 	source = tmpfiles.d
-	source = ollama.service
 	b2sums = SKIP
 	b2sums = SKIP
+	b2sums = a773bbf16cf5ccc2ee505ad77c3f9275346ddf412be283cfeaee7c2e4c41b8637a31aaff8766ed769524ebddc0c03cf924724452639b62208e578d98b9176124
 	b2sums = 3aabf135c4f18e1ad745ae8800db782b25b15305dfeaaa031b4501408ab7e7d01f66e8ebb5be59fc813cfbff6788d08d2e48dcf24ecc480a40ec9db8dbce9fec
 	b2sums = e8f2b19e2474f30a4f984b45787950012668bf0acb5ad1ebb25cd9776925ab4a6aa927f8131ed53e35b1c71b32c504c700fe5b5145ecd25c7a8284373bb951ed
-	b2sums = a773bbf16cf5ccc2ee505ad77c3f9275346ddf412be283cfeaee7c2e4c41b8637a31aaff8766ed769524ebddc0c03cf924724452639b62208e578d98b9176124
 
 pkgname = ollama-cuda
