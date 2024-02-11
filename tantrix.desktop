@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Tantrix
+Comment=Tantrix board game client
+Exec=tantrix
+Icon=tantrix
+Terminal=false
+StartupNotify=false
+Categories=Game;BoardGame;
+StartupWMClass=util-JWSApplication
