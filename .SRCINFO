@@ -11,7 +11,7 @@ pkgbase = mercury-browser-avx2-bin
 	noextract = mercury-browser_122.0.2_AVX2.deb
 	options = !emptydirs
 	options = !strip
-	source = mercury-browser_122.0.2_AVX2.deb::https://github.com/Alex313031/Mercury/releases/download/v.122.0.2/mercury-browser_122.0.2_AVX2.deb
+	source = mercury-browser_122.0.2_AVX2.deb
 	sha256sums = 985d8cbdf6cd524b091021c8322b3c1a58221331a22deecd2264529cc491dfba
 
 pkgname = mercury-browser-avx2-bin
