@@ -3,14 +3,13 @@
 _pkgname=maigesPack
 _pkgver=1.64.0
 pkgname=r-${_pkgname,,}
-pkgver=1.64.0
-pkgrel=1
-pkgdesc='Functions to handle cDNA microarray data, including several methods of data analysis'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Functions to handle cDNA microarray data, including several methods of data analysis"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-convert
   r-graph
   r-limma
@@ -19,24 +18,23 @@ depends=(
 optdepends=(
   r-amap
   r-annotate
-  r-class
   r-e1071
-  r-mass
   r-multtest
   r-olin
   r-r2html
   r-rgl
   r-som
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1d33b89cc5d5b894d44005c5926c9dbfab479cb12bf361bed8930bf8d56bd180')
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('118a586912fcef7e97526e4b2d142729')
+b2sums=('925b4e53286ce1b90690e3e3a278a10bc5980894e2f49a4e26a187402af15794bc096eebee2d923ea2ade300f399cdae3159a068a889b808834c90db6a04e2e2')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
