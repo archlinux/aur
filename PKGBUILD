@@ -1,26 +1,16 @@
 # Maintainer: Andrew Sun <adsun701@gmail.com>
 
 pkgname=ctl
-pkgver=1.5.2
-pkgrel=2
+pkgver=1.5.3
+pkgrel=1
 pkgdesc="The Color Transformation Language"
 arch=('x86_64')
 url="https://github.com/ampas/CTL"
 license=('custom')
 depends=('openexr' 'libtiff' 'aces-container')
 makedepends=('cmake')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ampas/CTL/archive/${pkgname}-${pkgver}.tar.gz"
-        "ctl-1.5.2-Use-GNUInstallDirs-and-fix-PkgConfig-files-1.patch"
-        "ilmbase-2.3.0-compatibility.patch")
-sha256sums=('d7fac1439332c4d84abc3c285b365630acf20ea041033b154aa302befd25e0bd'
-            '7f3b713d8a9e61f72f5b063d9cdb8f365ed8c62e12953b2d85bd7e670e7cced3'
-            '0f19668f16796044f65f2b0ddad4ed9b563eef62c6ec2d5a185168b847c364a3')
-
-prepare() {
-  cd "${srcdir}/CTL-${pkgname}-${pkgver}"
-  patch -Np1 -i "${srcdir}/ctl-1.5.2-Use-GNUInstallDirs-and-fix-PkgConfig-files-1.patch"
-  patch -Np1 -i "${srcdir}/ilmbase-2.3.0-compatibility.patch"
-}
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ampas/CTL/archive/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('0a9f5f3de8964ac5cca31597aca74bf915a3d8214e3276fdcb52c80ad25b0096')
 
 build() {
   mkdir -p "${srcdir}/build" && cd "${srcdir}/build"
@@ -42,10 +32,10 @@ package() {
   rm -rf "${pkgdir}/usr/doc"
 
   # Remove srcdir reference
-  cd "${srcdir}/build/lib"
-  _libprefix=${PWD}
-  cd "${pkgdir}/usr/lib/cmake/CTL"
-  sed -i "s|${_libprefix}/\bIlmCtl\b|/usr|g" CTLLibraryDepends.cmake
-  sed -i "s|${_libprefix}/\bIlmCtlMath\b|/usr|g" CTLLibraryDepends.cmake
-  sed -i "s|${_libprefix}/\bIlmCtlSimd\b|/usr|g" CTLLibraryDepends.cmake
+  #cd "${srcdir}/build/lib"
+  #_libprefix=${PWD}
+  #cd "${pkgdir}/usr/lib/cmake/CTL"
+  #sed -i "s|${_libprefix}/\bIlmCtl\b|/usr|g" CTLLibraryDepends.cmake
+  #sed -i "s|${_libprefix}/\bIlmCtlMath\b|/usr|g" CTLLibraryDepends.cmake
+  #sed -i "s|${_libprefix}/\bIlmCtlSimd\b|/usr|g" CTLLibraryDepends.cmake
 }
