@@ -3,7 +3,7 @@
 pkgname='zapzap-linux'
 _pkgname='com.rtosta.zapzap'
 pkgver='5.1.3'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='WhatsApp desktop application for Linux'
 arch=('x86_64')
 url="https://github.com/$pkgname/${pkgname%-linux}" 
