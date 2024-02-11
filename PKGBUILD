@@ -5,15 +5,25 @@
 # Contributor: Sébastien "Seblu" Luttringer
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
-
 pkgname=virtualbox-kvm
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use (KVM backend)'
 pkgver=20240208
 _pkgver=dev-${pkgver}
-pkgrel=1
+pkgrel=2
+conflicts=('virtualbox' 'virtualbox-ose')
+depends=('curl' 'gcc-libs' 'glibc' 'liblzf' 'libpng' 'libtpms' 'libvpx' 'libx11' 'libxcursor'
+            'libxext' 'libxinerama' 'libxml2' 'libxmu' 'libxt' 'openssl' 'procps-ng' 'python'
+            'qt5-base' 'qt5-tools' 'qt5-x11extras' 'sdl' 'shared-mime-info' 'zlib')
+optdepends=('vde2: Virtual Distributed Ethernet support'
+            'virtualbox-guest-iso: Guest Additions CD image'
+            'virtualbox-ext-vnc: VNC server support'
+            'virtualbox-sdk: Developer kit')
+backup=('etc/vbox/vbox.cfg')
+replaces=('virtualbox-ose')
 arch=('x86_64')
 url='https://github.com/cyberus-technology/virtualbox-kvm'
 license=('GPL' 'custom:CDDL')
+
 makedepends=('alsa-lib'
              'cdrkit'
              'curl'
@@ -121,6 +131,7 @@ build() {
     echo 'Build virtualbox-kvm'
     ./configure \
         --with-kvm \
+        --disable-hardening \
         --disable-docs \
         --disable-kmods \
         --disable-vmmraw \
@@ -138,19 +149,6 @@ build() {
 }
 
 package() {
-    pkgdesc='Powerful x86 virtualization for enterprise as well as home use (KVM backend)'
-    depends=('curl' 'gcc-libs' 'glibc' 'liblzf' 'libpng' 'libtpms' 'libvpx' 'libx11' 'libxcursor'
-             'libxext' 'libxinerama' 'libxml2' 'libxmu' 'libxt' 'openssl' 'procps-ng' 'python'
-             'qt5-base' 'qt5-tools' 'qt5-x11extras' 'sdl' 'shared-mime-info' 'zlib'
-             'VIRTUALBOX-HOST-MODULES')
-    optdepends=('vde2: Virtual Distributed Ethernet support'
-                'virtualbox-guest-iso: Guest Additions CD image'
-                'virtualbox-ext-vnc: VNC server support'
-                'virtualbox-sdk: Developer kit')
-    backup=('etc/vbox/vbox.cfg')
-    replaces=('virtualbox-ose')
-    conflicts=('virtualbox' 'virtualbox-ose')
-
     source "virtualbox-kvm-${_pkgver}/env.sh"
     cd "virtualbox-kvm-${_pkgver}/out/linux.${BUILD_PLATFORM_ARCH}/release/bin"
 
@@ -158,10 +156,27 @@ package() {
     install -d -m0755 "${pkgdir}/usr/lib/virtualbox"
     install -m0755 *.so -t "${pkgdir}/usr/lib/virtualbox"
     install -m0644 *.r0 VBoxEFI*.fd -t "${pkgdir}/usr/lib/virtualbox"
-    ## setuid root binaries
-    install -m4755 VirtualBoxVM VBoxSDL VBoxHeadless VBoxNetAdpCtl VBoxNetDHCP VBoxNetNAT -t "${pkgdir}/usr/lib/virtualbox"
-    ## other binaries
-    install -m0755 VirtualBox VBoxManage VBoxSVC VBoxExtPackHelperApp VBoxXPCOMIPCD VBoxTestOGL VBoxBalloonCtrl vbox-img vboximg-mount vboxwebsrv webtest -t "${pkgdir}/usr/lib/virtualbox"
+
+    ## binaries
+    install -m0755 \
+        VirtualBoxVM \
+        VBoxSDL \
+        VBoxHeadless \
+        VBoxNetAdpCtl \
+        VBoxNetDHCP \
+        VBoxNetNAT \
+        VirtualBox \
+        VBoxManage \
+        VBoxSVC \
+        VBoxExtPackHelperApp \
+        VBoxXPCOMIPCD \
+        VBoxTestOGL \
+        VBoxBalloonCtrl \
+        vbox-img \
+        vboximg-mount \
+        vboxwebsrv \
+        webtest \
+        -t "${pkgdir}/usr/lib/virtualbox"
 
     # binaries (in /usr/bin)
     install -d -m0755 "${pkgdir}/usr/bin"
