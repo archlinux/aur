@@ -5,6 +5,7 @@ pkgbase = mpv-thumbfast-git
 	url = https://github.com/po5/thumbfast
 	arch = x86_64
 	license = MPL-2.0
+	makedepends = git
 	depends = mpv
 	optdepends = mpv-uosc: for displaying thumbnails automatically on seek
 	provides = mpv-thumbfast

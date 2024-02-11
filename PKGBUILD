@@ -8,6 +8,9 @@ arch=(x86_64)
 url=https://github.com/po5/thumbfast
 license=(MPL-2.0)
 optdepends=('mpv-uosc: for displaying thumbnails automatically on seek')
+makedepends=(
+  git
+)
 depends=(
   mpv
 )
