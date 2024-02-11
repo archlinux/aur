@@ -1,17 +1,17 @@
 pkgbase = r-informeasure
 	pkgdesc = R implementation of Information measures
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/Informeasure
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-3.0-only
 	depends = r-entropy
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-summarizedexperiment
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Informeasure_1.10.0.tar.gz
-	sha256sums = 467ff44abd84c52ddca7e86a1af69d2dfae5f3f2a0481bd20f2bc65e1681fe22
+	source = https://bioconductor.org/packages/3.17/bioc/src/contrib/Informeasure_1.10.0.tar.gz
+	md5sums = 45288bfbafcd9e2087662f7cb9c57c0e
+	b2sums = dc8b2ee5ec9b7532fd7170ff1a7cdd5f448ccdb7d2d8b4c01806f24529e5d9f25b4a5aa71077172d5a7c72e001d6e90b42786d3acf2bb6209fc654a76e754acd
 
 pkgname = r-informeasure

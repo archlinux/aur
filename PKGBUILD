@@ -3,14 +3,13 @@
 _pkgname=Informeasure
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
-pkgrel=1
-pkgdesc='R implementation of Information measures'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="R implementation of Information measures"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-entropy
 )
 optdepends=(
@@ -19,15 +18,16 @@ optdepends=(
   r-summarizedexperiment
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('467ff44abd84c52ddca7e86a1af69d2dfae5f3f2a0481bd20f2bc65e1681fe22')
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('45288bfbafcd9e2087662f7cb9c57c0e')
+b2sums=('dc8b2ee5ec9b7532fd7170ff1a7cdd5f448ccdb7d2d8b4c01806f24529e5d9f25b4a5aa71077172d5a7c72e001d6e90b42786d3acf2bb6209fc654a76e754acd')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
