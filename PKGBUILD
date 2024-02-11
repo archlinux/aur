@@ -25,7 +25,6 @@ _main_package() {
   _update_version
 
   optdepends=(
-    'ffmpeg: H264/AAC/MP3 decoding'
     'hunspell: Spell checking'
     'hyphen: Hyphenation'
     'networkmanager: Location detection via available WiFi networks'
@@ -38,7 +37,7 @@ _main_package() {
 
   noextract+=("$_dl_filename")
   source=("$_dl_filename"::"$_dl_url")
-  sha256sums=('SKIP')
+  sha256sums=('985d8cbdf6cd524b091021c8322b3c1a58221331a22deecd2264529cc491dfba')
 }
 
 # common functions
@@ -116,6 +115,7 @@ package() {
   conflicts=("$_pkgname")
 
   depends+=(
+    'ffmpeg'
     'alsa-lib'
     'dbus-glib'
     'gtk3'
