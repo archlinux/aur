@@ -1,18 +1,17 @@
 # Maintainer: RhiobeT (Pierre Jeanjean) <rhiobet@gmail.com>
 pkgname=mpv-uosc-git
 _gitname=uosc
-pkgver=5.0.0.r21.gbf7f970
+pkgver=5.2.0.r0.g60dc197
 pkgrel=1
 pkgdesc='Feature-rich minimalist proximity-based UI for MPV player'
 arch=(x86_64)
 url=https://github.com/tomasklaen/uosc
 license=(
-  GPL3
+  LGPL-2.1-or-later
 )
 makedepends=(
-  curl
-  git
-  unzip
+  go
+  upx
 )
 depends=(
   mpv
@@ -35,11 +34,24 @@ pkgver() {
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+build() {
+  cd "$srcdir/$_gitname"
+  GOOS="linux"
+  GOARCH="amd64"
+  go build -ldflags "-s -w" -o "ziggy-linux" "src/ziggy/ziggy.go"
+  upx --brute "ziggy-linux"
+}
+
 package() {
   cd "$srcdir/$_gitname"
-  chmod u+x ./installers/unix.sh
-  MPV_CONFIG_DIR="${pkgdir}/etc/mpv/" ./installers/unix.sh
-  find -name 'LICENSE*' -exec install -Dm644 {} "$pkgdir/usr/share/licenses/$pkgname/{}" \;
+  install -Dm 644 "src/fonts/"* -t "${pkgdir}/etc/mpv/fonts/"
+  install -Dm 644 "src/uosc.conf" -t "${pkgdir}/etc/mpv/script-opts/"
+  install -Dm 644 "ziggy-linux" -t "${pkgdir}/etc/mpv/scripts/uosc/bin/"
+  for dir in {char-conv,elements,intl,lib}; do
+    install -Dm 644 "src/uosc/${dir}/"* -t "${pkgdir}/etc/mpv/scripts/uosc/${dir}/"
+  done
+  install -Dm 644 "src/uosc/main.lua" -t "${pkgdir}/etc/mpv/scripts/uosc/"
+  install -Dm 644 "LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
 # vim: ts=2 sw=2 et:
