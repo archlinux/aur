@@ -1,5 +1,5 @@
 # Maintainer: Yigit Sever <yigit at yigitsever dot com>
-# Contributor : Barfin
+# Contributor: Barfin
 # Contributor: Kostis Karantias <kkarantias [at] gmail [dot] com>
 # Contributor: Pieter Goetschalckx <3.14.e.ter [at] gmail [dot] com>
 # Contributor: Bastien Traverse <firstname at lastname dot email>
@@ -17,7 +17,7 @@
 
 pkgname=popcorntime-bin
 _pkgname=popcorntime
-pkgver=0.4.9
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Stream free movies and TV shows from torrents"
 arch=('x86_64')
@@ -31,7 +31,7 @@ options=('!strip')
 _zipfile="Popcorn-Time-${pkgver}-linux64.zip"
 source=("https://github.com/popcorn-official/popcorn-desktop/releases/download/v${pkgver}/$_zipfile"
         "${_pkgname}.desktop" )
-sha256sums=('fcf9c4d6ccd4fccaf7668707b16dcdd78d043b2d4f2a049f0edaf7afd8bb34f1'
+sha256sums=('0391bae8a90243502238e3b4d9d645015cfa76abc2a26adde655d0e167354b4b'
             '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
 
 package() {
@@ -57,5 +57,3 @@ package() {
   find "${pkgdir}/usr/share/${_pkgname}/" -perm 600 -exec chmod 644 '{}' \;
   find "${pkgdir}/usr/share/${_pkgname}/" -perm 700 -exec chmod 755 '{}' \;
 }
-sha256sums=('71b28be5b8307990ffc9f8bff0a4b42fb45a85af0f4c7a889b8a923c589d8d47'
-            '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
