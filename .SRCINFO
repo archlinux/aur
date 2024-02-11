@@ -1,11 +1,10 @@
 pkgbase = r-fcbf
 	pkgdesc = Fast Correlation Based Filter for Feature Selection
 	pkgver = 2.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/FCBF
 	arch = any
 	license = MIT
-	depends = r
 	depends = r-ggplot2
 	depends = r-gridextra
 	depends = r-mclust
@@ -18,7 +17,8 @@ pkgbase = r-fcbf
 	optdepends = r-rmarkdown
 	optdepends = r-singlecellexperiment
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/FCBF_2.8.0.tar.gz
-	sha256sums = bb855ea7a394cecacdbfa7800cd62f6f4e3ae99e0c480fea05129cad841e8fb2
+	source = https://bioconductor.org/packages/3.17/bioc/src/contrib/FCBF_2.8.0.tar.gz
+	md5sums = ade7d75e811d9e4177e3e5f21dea6504
+	b2sums = 8eee6f1ad7c5387fe6315d79fd8bf74cd6368f78056b2240d7b6d68418a4b847b73f2dd7c2032427ac873f2b505365a6f6d3c537976b7b4f7557f9c1e97e0613
 
 pkgname = r-fcbf
