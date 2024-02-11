@@ -1,6 +1,6 @@
 pkgbase = boundary-desktop
 	pkgdesc = Desktop Client for Boundary
-	pkgver = 1.7.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://www.boundaryproject.io/
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = boundary-desktop
 	depends = libxcb
 	depends = gvfs
 	depends = glib2
-	source = boundary-desktop_1.7.0_linux_amd64.deb::https://releases.hashicorp.com/boundary-desktop/1.7.0/boundary-desktop_1.7.0_amd64.deb
-	b2sums = 2579640fdeb4882c84775fb69a9415f71b59427e1657608b5031761d1a0888b74fdce16f8614800b100be548efc37bb06c72d3f063c75409af37469935fcd497
+	source = boundary-desktop_2.0.0_linux_amd64.deb::https://releases.hashicorp.com/boundary-desktop/2.0.0/boundary-desktop_2.0.0_amd64.deb
+	b2sums = 9790de157e5bde131b1961a407b2974f7fa86621a3143dc0f59f8a897f6e4adc6ad322701d37eb3960139a2eb6a290f9d0223d066720cc50833d645d96e6ce12
 
 pkgname = boundary-desktop
