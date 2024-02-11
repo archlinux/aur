@@ -87,12 +87,12 @@ _main_stable() {
 _main_git() {
   depends+=(
     'baloo-widgets>=24'
+    'kactivities'
     'kcmutils'
     'kio-extras>=24'
     'knewstuff'
     'kparts'
     'kuserfeedback'
-    'plasma-activities'
   )
   makedepends+=(
     'extra-cmake-modules>=5.200'

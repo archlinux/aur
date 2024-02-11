@@ -10,12 +10,12 @@ pkgbase = dolphin-tabopts-git
 	makedepends = git
 	makedepends = kdoctools
 	depends = baloo-widgets>=24
+	depends = kactivities
 	depends = kcmutils
 	depends = kio-extras>=24
 	depends = knewstuff
 	depends = kparts
 	depends = kuserfeedback
-	depends = plasma-activities
 	optdepends = ffmpegthumbs: video thumbnails
 	optdepends = kde-cli-tools: for editing file type options
 	optdepends = kdegraphics-thumbnailers: PDF and PS thumbnails
