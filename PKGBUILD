@@ -4,15 +4,15 @@ _pipname=invocations
 _license=LICENSE
 pkgbase=python-invocations
 pkgname=('python-invocations')
-pkgver=1.4.0
-pkgrel=4
+pkgver=3.3.0
+pkgrel=1
 pkgdesc="Reusable Invoke tasks"
 arch=('any')
 url="https://github.com/pyinvoke/invocations"
 license=('BSD')
 makedepends=('python-setuptools')
 source=("https://pypi.io/packages/source/i/invocations/invocations-$pkgver.tar.gz")
-md5sums=('557a68735e9bb62af94f0c0517425821')
+sha256sums=('caa950dad1842f89074e4bc241958dc3acc3b36c39a94e8c08c3ea5b5f7e992f')
 
 
 build() {
