@@ -2,7 +2,7 @@
 # Contributor: A Rojas < nqn1976 @ gmail.com >
 
 pkgname=partitionmanager-git
-pkgver=23.11.70.r1851.276c76c
+pkgver=24.04.70.r1949.6c37f067
 pkgrel=1
 pkgdesc="A KDE utility that allows you to manage disks, partitions, and file systems. (GIT version)"
 arch=('x86_64')
@@ -12,27 +12,28 @@ depends=(
   'gcc-libs' # libstdc++.so
   'glibc' # libc.so
   'kpmcore' 'libkpmcore.so'
-  'qt5-base' # libQt5Core.so libQt5Gui.so libQt5Widgets.so
-  'polkit-qt5' #libpolkit-qt5-core-1.so
-  'ki18n5' # libKF5I18n.so
-  'kcrash5' # libKF5Crash.so
-  'kjobwidgets5' # libKF5JobWidgets.so
-  'kconfig5' # libKF5ConfigCore.so libKF5ConfigGui.so libKF5ConfigWidgets.so
-  'kdbusaddons5' # libKF5DBusAddons.so
-  'kwindowsystem5' # libKF5WindowSystem.so
-  'kconfigwidgets5'
-  'kio5' # libKF5KIOCore.so libKF5KIOGui.so
-  'kxmlgui5' # libKF5XmlGui.so
-  'kcoreaddons5' # libKF5CoreAddons.so
-  'kwidgetsaddons5' # libKF5WidgetsAddons.so
+  'qt6-base' # libQt5Core.so libQt5Gui.so libQt5Widgets.so
+  'polkit-qt6' #libpolkit-qt5-core-1.so
+  'ki18n' # libKF6I18n.so
+  'kcrash' # libKF6Crash.so
+  'kjobwidgets' # libKF6JobWidgets.so
+  'kconfig' # libKF6ConfigCore.so libKF6ConfigGui.so libKF6ConfigWidgets.so
+  'kdbusaddons' # libKF6DBusAddons.so
+  'kwindowsystem' # libKF6WindowSystem.so
+  'kconfigwidgets'
+  'kio' # libKF6KIOCore.so libKF6KIOGui.so
+  'kxmlgui' # libKF6XmlGui.so
+  'kcoreaddons' # libKF6CoreAddons.so
+  'kwidgetsaddons' # libKF6WidgetsAddons.so
   'hicolor-icon-theme'
 )
 makedepends=(
   'extra-cmake-modules'
-  'kdoctools5'
+  'kdoctools'
   'git'
   'python'
 )
+checkdepends=('appstream')
 conflicts=('partitionmanager')
 provides=('partitionmanager')
 source=('git+https://invent.kde.org/system/partitionmanager.git')
