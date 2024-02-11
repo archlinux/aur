@@ -2,7 +2,7 @@
 
 pkgname=freetype2-qdoled
 pkgver=2.13.2
-pkgrel=2
+pkgrel=3
 pkgdesc="freetype optimized for QD-OLED subpixel layout"
 url="https://www.freetype.org/"
 arch=(
