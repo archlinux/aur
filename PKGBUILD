@@ -1,7 +1,7 @@
 # Maintainer: Julian <juliannfairfax@protonmail.com>
 
 pkgname=railway
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Travel with all your train information in one place"
 url="https://gitlab.com/schmiddi-on-mobile/railway"
@@ -12,7 +12,7 @@ depends=("libadwaita" "libsecret" "protobuf")
 conflicts=("diebahn")
 replaces=("diebahn")
 source=("https://gitlab.com/schmiddi-on-mobile/railway/-/archive/$pkgver/railway-$pkgver.tar.gz")
-sha256sums=("ed28cbfc8c2fa73187f85b2ba941e63226bb2adce8255448e50ff6fcf25333f4")
+sha256sums=("63ebd9fceeb3f675282ad7590e18447521ffc8026303e2d1b36ff81b1854faa0")
 options=(!lto)
 
 build() {
