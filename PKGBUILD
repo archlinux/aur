@@ -3,14 +3,13 @@
 _pkgname=imageHTS
 _pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.48.0
-pkgrel=1
-pkgdesc='Analysis of high-throughput microscopy-based screens'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('LGPL')
+pkgver=${_pkgver//-/.}
+pkgrel=3
+pkgdesc="Analysis of high-throughput microscopy-based screens"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('LGPL-2.1-only')
 depends=(
-  r
   r-biobase
   r-cellhts2
   r-e1071
@@ -20,17 +19,17 @@ depends=(
 )
 optdepends=(
   r-biocstyle
-  r-mass
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('352a466202ead058b2c0cbb2314c23c56933dffe935d448f5c082d04b89e9788')
+source=("https://bioconductor.org/packages/3.16/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('59a274d156e657c237e0ceaff50e0da9')
+b2sums=('13a2059a63bdb5f78989f994799faa49d2d7d1dbddbb77c93c3cc6c17f9bd9371f7123a5b0caf38d1bbd9fe97e20691824eb232a36b72ca9c1b91f86715e2bfd')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
