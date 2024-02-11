@@ -3,14 +3,13 @@
 _pkgname=ANF
 _pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
-pkgrel=1
-pkgdesc='Affinity Network Fusion for Complex Patient Clustering'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Affinity Network Fusion for Complex Patient Clustering"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-biobase
   r-igraph
   r-rcolorbrewer
@@ -22,15 +21,16 @@ optdepends=(
   r-snftool
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fcf364aae7a6e97037860e1b7219267cce534ce9b2ea6e15241261c7989b7323')
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('8d075ac90f30a9d8b2d98ed483ae8012')
+b2sums=('5c7925a65eb89d5b3f302109a6b7657e95185fa99e311075e00d7f07345430e164f8e88de1355a3f8f53f8c699d245e140a6eae77a80d1e2807029be74b757fe')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
