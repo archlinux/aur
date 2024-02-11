@@ -1,7 +1,7 @@
 pkgbase = ruby-timeout
 	pkgdesc = Auto-terminate potentially long-running operations in Ruby.
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ruby/timeout
 	arch = any
 	license = Ruby
