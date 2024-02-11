@@ -1,6 +1,6 @@
 pkgbase = sk-chos-tool
 	pkgdesc = A custom configs tool for sk-chimeros
-	pkgver = r312.1ac44fd
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/honjow/sk-holoiso-config.git
 	install = sk-chos-tool.install
@@ -17,7 +17,7 @@ pkgbase = sk-chos-tool
 	replaces = sk-chos-tool-git
 	options = !strip
 	backup = etc/sk-chos-tool/github_cdn.conf
-	source = sk-chos-tool::https://github.com/honjow/sk-holoiso-config/archive/refs/tags/vr312.1ac44fd.tar.gz
+	source = sk-chos-tool::https://github.com/honjow/sk-holoiso-config/archive/refs/tags/v1.0.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = sk-chos-tool
