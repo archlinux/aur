@@ -108,7 +108,7 @@ package() {
     make \
       DESTDIR="${pkgdir}" \
       install
-  [[ "${_os}" == "GNU/Linux"]] && \
+  [[ "${_os}" == "GNU/Linux" ]] && \
     make \
       DESTDIR="${pkgdir}" \
       PREFIX="${_usr}" \
