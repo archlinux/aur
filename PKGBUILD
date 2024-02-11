@@ -5,7 +5,7 @@
 # Contributor: NeoTheFox <soniczerops@gmail.com>
 
 pkgname=python-telegram-bot
-pkgver=20.7
+pkgver=20.8
 pkgrel=1
 pkgdesc="A library that provides a Python interface to the Telegram Bot API"
 url="https://github.com/${pkgname}/${pkgname}"
@@ -22,7 +22,7 @@ optdepends=('python-cryptography: for support cryptography library'
 # 'python-aiolimiter: for rate limiter'
 source=(${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz{,.asc})
 validpgpkeys=('4CBA518847044E289548BD9FA2B984A9073022B2') # Hinrich Mahler (Key for signing releases of python-telegram-bot <22366557+Bibo-Joshi@users.noreply.github.com>
-sha512sums=('347d65142695e52cc22329b31f446103f21df865ffa2f9c5e7fa0ea2b0b4228ad00e992b0ab100a3885585bc471968e09a5a624c824c7bb6dce27e0d6c85b63d'
+sha512sums=('67126557aee80cf86fea6427a0d234976d54b53de11c8986f0dacfef173cb4db7c3bce62faa502add398641f3771c3f1a589c4130f3845aecf24285e4045344b'
             'SKIP')
 
 build() {
