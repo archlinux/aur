@@ -3,7 +3,7 @@ pkgname=chatgptx-bin
 _pkgname=ChatGPTx
 pkgver=1.0.1
 _electronversion=13
-pkgrel=8
+pkgrel=9
 pkgdesc="A tray app for ChatGPT. Using this app you can easily access the ChatGPT from your system tray."
 arch=('x86_64')
 url="https://github.com/florindumitru/chatgpt-desktop-tray"
@@ -31,7 +31,7 @@ build() {
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/swiftshader"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
