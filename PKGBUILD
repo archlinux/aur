@@ -3,14 +3,13 @@
 _pkgname=IRISFGM
 _pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
-pkgrel=1
-pkgdesc='Comprehensive Analysis of Gene Interactivity Networks Based on Single-Cell RNA-Seq'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Comprehensive Analysis of Gene Interactivity Networks Based on Single-Cell RNA-Seq"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
   r-adaptgauss
   r-annotationdbi
   r-anocva
@@ -39,15 +38,16 @@ depends=(
 optdepends=(
   r-rmarkdown
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b9e8506329b416ffe49d65ed20e5c750a2ee228d1a051b4db61df8f296ce23d8')
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('b42559d7909b71e4f258ceb0a759d6e5')
+b2sums=('d156192400b3813e72f2d35e26f34f82bedcafb49297c1740c6cc09548ae788228aafa73f0006a0fbc6cbf44ddd17bdb060478bac6c1d02030100625e2a12cd8')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
