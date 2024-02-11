@@ -2,14 +2,13 @@
 
 url=$( grep -oP '(?<=url = ).+' .SRCINFO | tr -d "'" )
 repo_name=$( echo "$url" | sed -e 's~^https://github.com/~~' -e 's~\.git$~~' )
-pkgver=$( grep -oP '(?<=pkgver = ).+' .SRCINFO | tr -d "'" )
 
 last_version=$(curl -s "https://api.github.com/repos/${repo_name}/releases/latest" | grep -oP '(?<="tag_name": ")[^"]+')
 old_version=$(grep -oP '(?<=^pkgver=).*' ./PKGBUILD)
 
 echo "last pygad version: $last_version"
 
-if [[ $pkgver != [[$last_version]] ]]; then
+if [[ $old_version != $last_version ]]; then
 	sed -i "s/pkgver=.*/pkgver=$last_version/" PKGBUILD
 	if command -v updpkgsums &> /dev/null; then
 		updpkgsums
