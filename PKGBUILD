@@ -36,8 +36,7 @@ _main_package() {
   _dl_url="$url/releases/download/v.$_pkgver/$_dl_filename"
 
   noextract+=("$_dl_filename")
-  curl --tlsv1.3 -L -o "$_dl_filename" "$_dl_url"  # Force TLS 1.3
-  source=("$_dl_filename")
+  source=("$_dl_filename"::"${_dl_url}")
 
   sha256sums=('985d8cbdf6cd524b091021c8322b3c1a58221331a22deecd2264529cc491dfba')
 }
