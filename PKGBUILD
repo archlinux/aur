@@ -10,6 +10,8 @@ url='https://github.com/KhronosGroup/Vulkan-ValidationLayers'
 license=(custom)
 makedepends=(cmake python lib32-libxrandr lib32-wayland git make)
 depends=(lib32-gcc-libs lib32-vulkan-icd-loader-git vulkan-headers-git lib32-vulkan-utility-libraries-git lib32-libx11)
+# For the layer JSON description
+depends+=(vulkan-validation-layers)
 conflicts=(lib32-vulkan-validation-layers)
 provides=(lib32-vulkan-validation-layers lib32-vulkan-validation-layers-git libVkLayer_khronos_validation.so)
 options=(!lto !strip) # disable LTO (https://github.com/KhronosGroup/Vulkan-ValidationLayers/issues/5994)

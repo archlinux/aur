@@ -17,6 +17,7 @@ pkgbase = lib32-vulkan-validation-layers-git
 	depends = vulkan-headers-git
 	depends = lib32-vulkan-utility-libraries-git
 	depends = lib32-libx11
+	depends = vulkan-validation-layers
 	provides = lib32-vulkan-validation-layers
 	provides = lib32-vulkan-validation-layers-git
 	provides = libVkLayer_khronos_validation.so
