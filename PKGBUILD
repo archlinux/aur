@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chatd
-pkgver=1.0.1
+pkgver=1.1.0
 _electronversion=24
 _nodeversion=18
-pkgrel=4
+pkgrel=1
 pkgdesc="Chat with your documents using local AI"
 arch=('any')
 url="https://chatd.ai/"

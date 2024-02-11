@@ -1,7 +1,7 @@
 pkgbase = chatd
 	pkgdesc = Chat with your documents using local AI
-	pkgver = 1.0.1
-	pkgrel = 4
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://chatd.ai/
 	arch = any
 	license = MIT
@@ -18,7 +18,7 @@ pkgbase = chatd
 	conflicts = chatd
 	options = !emptydirs
 	options = !strip
-	source = chatd.git::git+https://github.com/BruceMacD/chatd#tag=v1.0.1
+	source = chatd.git::git+https://github.com/BruceMacD/chatd#tag=v1.1.0
 	source = chatd.sh
 	sha256sums = SKIP
 	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
