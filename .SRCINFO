@@ -1,7 +1,7 @@
 pkgbase = sdrtrunk-git
 	pkgdesc = A cross-platform java application for decoding, monitoring, recording and streaming trunked mobile and related radio protocols using SDR - Latest release
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DSheirer/sdrtrunk
 	arch = aarch64
 	arch = x86_64

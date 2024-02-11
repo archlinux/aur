@@ -2,7 +2,7 @@
 pkgname=sdrtrunk-git
 pkgver=0.6.1
 _pkgver=${pkgver}-beta-1
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform java application for decoding, monitoring, recording and streaming trunked mobile and related radio protocols using SDR - Latest release'
 arch=('aarch64' 'x86_64')
 url='https://github.com/DSheirer/sdrtrunk'
@@ -30,7 +30,7 @@ package() {
     install -Dm644 sdrtrunk.desktop "${pkgdir}/usr/share/applications/sdrtrunk.desktop"
     install -Dm644 cat-radio-icon.png "${pkgdir}/usr/share/pixmaps/cat-radio-icon.png"
 
-    cd "sdr-trunk-linux-${CARCH}-v${pkgver//_/-}"
+    cd "sdr-trunk-linux-${CARCH}-v${_pkgver//_/-}"
     mkdir -p "${pkgdir}/usr/share/sdrtrunk" "${pkgdir}/usr/bin"
     cp -ra * "${pkgdir}/usr/share/sdrtrunk"
 
