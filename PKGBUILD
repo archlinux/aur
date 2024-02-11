@@ -6,7 +6,7 @@
 pkgname=open-consul
 _commit=25957a17b5eddd1b95ebda13f8a667ec3c02b4c6
 pkgver=1.16.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for service discovery, monitoring and configuration."
 provides=('consul')
 conflicts=('consul')
@@ -68,15 +68,20 @@ check() {
 package() {
   cd "${srcdir}/${pkgname}"
 
-  install -D -d -m750 -o 208 -g 208 "${pkgdir}/var/lib/consul"
-  install -D -d -m750 -o   0 -g 208 "${pkgdir}/etc/consul.d"
+  # dirs
+  install -D -m750 -o 208 -g 208 -d               "${pkgdir}/var/lib/consul"
+  install -D -m755 -o   0 -g 208 -d               "${pkgdir}/etc/consul.d"
 
-  install -D -m644 "${srcdir}/consul.default" "${pkgdir}/etc/default/consul"
-  install -D -m644 -o 0 -g 0 "${srcdir}/example.json" "${pkgdir}/usr/share/doc/consul/config.example.json"
-  install -Dm755 "build/consul" "${pkgdir}/usr/bin/consul"
+  # configuration
+  install -D -m644  "${srcdir}/consul.default"    "${pkgdir}/etc/default/consul"
+  install -D -m644  "${srcdir}/example.json"      "${pkgdir}/usr/share/doc/${pkgname}/config.example.json"
+  install -D -m644  "LICENSE"                     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  install -Dm644 "${srcdir}/consul.service" "${pkgdir}/usr/lib/systemd/system/consul.service"
-  install -Dm644 "${srcdir}/consul.sysusers" "${pkgdir}/usr/lib/sysusers.d/consul.conf"
+  install -D -m644  "${srcdir}/consul.service"    "${pkgdir}/usr/lib/systemd/system/consul.service"
+  install -D -m644  "${srcdir}/consul.sysusers"   "${pkgdir}/usr/lib/sysusers.d/consul.conf"
+
+  # binaries
+  install -Dm755    "build/consul"                "${pkgdir}/usr/bin/consul"
 }
 
 # vim:set ts=2 sw=2 et:
