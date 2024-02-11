@@ -5,6 +5,7 @@ pkgbase = mpv-uosc-git
 	url = https://github.com/tomasklaen/uosc
 	arch = x86_64
 	license = LGPL-2.1-or-later
+	makedepends = git
 	makedepends = go
 	makedepends = upx
 	depends = mpv
