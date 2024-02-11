@@ -1,42 +1,38 @@
 # Maintainer: Marc Rechté <marc4@rechte.fr>
 
 pkgbase=postgresql14
-pkgver=14.10
+pkgver=14.11
 _majorver=${pkgver%.*}
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
-pkgrel=3
+pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
 license=('custom:PostgreSQL')
 # see bug 17943, which requires llvm15/clang15 instead of current version 16: https://www.postgresql.org/message-id/17943-56bb8c6bd4409b9f%40postgresql.org
-makedepends=('krb5' 'libxml2' 'python' 'tcl>=8.6.0' 'openssl>=1.0.0'
+makedepends=('krb5' 'libxml2' 'python' 'perl' 'tcl>=8.6.0' 'openssl>=1.0.0'
              'pam' 'zlib' 'icu' 'systemd' 'libldap' 'llvm15' 'clang15' 'libxslt')
-optdepends=('perl')
 source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2
-        postgresql-run-socket.patch
-        postgresql-perl-rpath.patch
-        postgresql-xml.patch
         postgresql.service
         postgresql-check-db-dir
         postgresql.sysusers
         postgresql.tmpfiles
-        pgenv.sh)
-sha256sums=('c99431c48e9d470b0d0ab946eb2141a3cd19130c2fb4dc4b3284a7774ecc8399'
-            '02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a'
-            'af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb'
-            '344a1ef322bccdbdec465ddd2d6752f453e6e349551fcf31d92b168d602da141'
+        pgenv.sh
+        postgresql-run-socket.patch
+        postgresql-perl-rpath.patch)
+sha256sums=('a670bd7dce22dcad4297b261136b3b1d4a09a6f541719562aa14ca63bf2968a8'
             '5f45d2ad3a93f5ea87ea40bc82a5377e5b8faca9586bfa84d4efe05bdd90ebb6'
             'e0445d31cbafe6a06af38224d4e6ff976cc8977d140adadc99a2e11f2152a485'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
             '665c692161edee50ca0d8c3aae4a39a39c96ce2878cab30dbac4c6f4443c0cbc'
-            'c0e84a98a6241fad578ea6e862e24637fec1ed9e820ce1f3826af1c2869ba55d')
+            'c0e84a98a6241fad578ea6e862e24637fec1ed9e820ce1f3826af1c2869ba55d'
+            '02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a'
+            'af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb')
 
 prepare() {
   cd postgresql-${pkgver}
   patch -p1 < ../postgresql-run-socket.patch
   patch -p1 < ../postgresql-perl-rpath.patch
-  patch -p1 < ../postgresql-xml.patch
 }
 
 build() {
@@ -47,7 +43,7 @@ build() {
     --with-gssapi
     --with-libxml
     --with-openssl
-#    --with-perl
+    --with-perl
     --with-python
     --with-tcl
     --with-pam
@@ -69,7 +65,7 @@ build() {
 }
 
 _postgres_check() {
-  make "${1}" || (find . -name regression.diffs | \
+  LANG=C make "${1}" || (find . -name regression.diffs | \
     while read -r line; do
       echo "make ${1} failure: ${line}"
       cat "${line}"
