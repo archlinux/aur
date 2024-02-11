@@ -2,7 +2,7 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=linux-command-gpt
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Get Linux commands in natural language with the power of ChatGPT'
 arch=('x86_64' 'aarch64')
