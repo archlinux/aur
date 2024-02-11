@@ -1,0 +1,5 @@
+[mustache-d]
+source = 'github'
+github = 'repeatedly/mustache-d'
+use_max_tag = true
+prefix = 'v'
