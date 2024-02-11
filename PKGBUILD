@@ -2,7 +2,7 @@
 pkgname=acodec-bin
 _pkgname=ACodec
 pkgver=2.5.4
-pkgrel=2
+pkgrel=4
 pkgdesc="Encoder & decoder for various algorithms with graphical user interface."
 arch=(
     "aarch64"
@@ -11,7 +11,7 @@ arch=(
     "x86_64"
 )
 url="https://github.com/albertus82/acodec"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
