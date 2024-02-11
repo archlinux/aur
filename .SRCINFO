@@ -1,11 +1,11 @@
 pkgbase = r-bdmmacorrect
 	pkgdesc = Meta-analysis for the metagenomic read counts data from different cohorts
 	pkgver = 1.18.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/BDMMAcorrect
 	arch = x86_64
-	license = GPL
-	depends = r
+	license = GPL-2.0-or-later
+	depends = blas
 	depends = r-ape
 	depends = r-ellipse
 	depends = r-ggplot2
@@ -17,7 +17,8 @@ pkgbase = r-bdmmacorrect
 	optdepends = r-biocgenerics
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BDMMAcorrect_1.18.1.tar.gz
-	sha256sums = 47a2067b8957800f2832957bc698ad26df39b1869db23ca913d37d560b7d9a9e
+	source = https://bioconductor.org/packages/3.17/bioc/src/contrib/BDMMAcorrect_1.18.1.tar.gz
+	md5sums = 7dae9023d884c07857b4378154d8912b
+	b2sums = 763218d7acbe8bfce7e19e6834c281fd2086a402da0cedfd52f32d320f7fa91ff8de816fa266d4e5e4358312e2b9dbe0360c640cbfcf0123a4e24fb61235f848
 
 pkgname = r-bdmmacorrect
