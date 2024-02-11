@@ -3,7 +3,7 @@ pkgname=rotion-bin
 _pkgname=Rotion
 pkgver=1.0.10
 _electronversion=25
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple - offline - clone of the popular note taking app Notion. It is built using Electron and React."
 arch=('x86_64')
 url="https://github.com/ssisaias/rotion"
@@ -18,11 +18,11 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('49557787dc33d24b384133143f91e1414f297ae3438f04d54728db534e7389fb'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"

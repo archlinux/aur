@@ -1,7 +1,7 @@
 pkgbase = rotion-bin
 	pkgdesc = A simple - offline - clone of the popular note taking app Notion. It is built using Electron and React.
 	pkgver = 1.0.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ssisaias/rotion
 	arch = x86_64
 	license = custom
@@ -11,6 +11,6 @@ pkgbase = rotion-bin
 	source = rotion-1.0.10.deb::https://github.com/ssisaias/rotion/releases/download/v1.0.10/rotion_1.0.10_amd64.deb
 	source = rotion.sh
 	sha256sums = 49557787dc33d24b384133143f91e1414f297ae3438f04d54728db534e7389fb
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = rotion-bin
