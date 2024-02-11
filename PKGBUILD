@@ -1,6 +1,7 @@
 # Maintainer: honjow
 pkgname=sk-chos-tool-git
-pkgver=r312.1ac44fd
+_pkgname=sk-chos-tool
+pkgver=r313.bbce840
 pkgrel=1
 pkgdesc="A custom configs tool for sk-chimeros"
 arch=('any')
@@ -24,7 +25,7 @@ pkgver() {
 
 package() {
     source_dir="${srcdir}/sk-holoiso-config/src/chimeraos"
-    install -dm755 "${pkgdir}/usr/share/${pkgname}"
+    install -dm755 "${pkgdir}/usr/share/${_pkgname}"
 
     # bin
     install -dm755 "${pkgdir}/usr/bin/"
@@ -35,8 +36,8 @@ package() {
     install -m644 -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps" "${source_dir}/icon"/*.svg
 
     # conf
-    install -dm755 "${pkgdir}/etc/${pkgname}"
-    install -m644 -t "${pkgdir}/etc/${pkgname}" "${source_dir}/etc/${pkgname}"/*.conf
+    install -dm755 "${pkgdir}/etc/${_pkgname}"
+    install -m644 -t "${pkgdir}/etc/${_pkgname}" "${source_dir}/etc/${_pkgname}"/*.conf
 
     # service
     install -dm755 "${pkgdir}/usr/lib/systemd/system"
@@ -47,14 +48,14 @@ package() {
     install -m644 -t "${pkgdir}/usr/lib/systemd/user" "${source_dir}/systemd/user"/*
 
     # 主程序
-    install -dm755 "${pkgdir}/usr/share/${pkgname}/pages"
-    install -dm755 "${pkgdir}/usr/share/${pkgname}/scripts"
-    install -m755 -t "${pkgdir}/usr/share/${pkgname}/pages" "${source_dir}/main/pages"/*
-    install -m755 -t "${pkgdir}/usr/share/${pkgname}" "${source_dir}/main"/*.*
-    install -m755 -t "${pkgdir}/usr/share/${pkgname}/scripts" "${source_dir}/main/scripts"/*.*
+    install -dm755 "${pkgdir}/usr/share/${_pkgname}/pages"
+    install -dm755 "${pkgdir}/usr/share/${_pkgname}/scripts"
+    install -m755 -t "${pkgdir}/usr/share/${_pkgname}/pages" "${source_dir}/main/pages"/*
+    install -m755 -t "${pkgdir}/usr/share/${_pkgname}" "${source_dir}/main"/*.*
+    install -m755 -t "${pkgdir}/usr/share/${_pkgname}/scripts" "${source_dir}/main/scripts"/*.*
 
     # 主程序入口
-    ln -s "/usr/share/${pkgname}/sk-chos-tool.py" "${pkgdir}/usr/bin/sk-chos-tool"
+    ln -s "/usr/share/${_pkgname}/sk-chos-tool.py" "${pkgdir}/usr/bin/sk-chos-tool"
 
 
     # 程序图标
