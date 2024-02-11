@@ -1,7 +1,7 @@
-# Maintainer: Oliver Ford <dev@ojford.com>
+# Maintainer: Oliver Ford <dev.aur@ojford.com>
 # shellcheck disable=SC2034,SC2154
 pkgname=iosevka-generate
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='A tool to generate custom Iosevka fonts from a configuration file'
 url='https://github.com/OJFord/iosevka-generate'
@@ -13,8 +13,8 @@ depends=(
     'npm'
     'otfcc'
     'python-gitpython'
-    'python-inflection'
     'python-pyxdg'
+    'python-requests'
     'ttfautohint'
 )
 optdepends=(
