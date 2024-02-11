@@ -1,8 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-chat
 _pkgname=GhostChat
-pkgver=2.6.1
+pkgver=2.7.0
 _electronversion=28
+_nodeversion=20
 pkgrel=1
 pkgdesc="A standalone, multiplatform Twitch.tv chat as overlay on windowed/windowed fullscreen applications."
 arch=('any')
@@ -26,11 +27,18 @@ source=(
 )
 sha256sums=('SKIP'
             '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
+}
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
+    _ensure_local_nvm
     gendesk -f -n -q --categories "Utility" --name "${_pkgname}" --exec "${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
@@ -43,14 +51,16 @@ build() {
     pnpm config set store-dir "${srcdir}/.pnpm_store"
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
     pnpm config set link-workspace-packages true
-    sed 's|, "deb"||g' -i electron-builder.json5
-    pnpm install --frozen-lockfile
-    pnpm run build-production
+    sed 's|\/\/||g;/publish/d;s|\/\${version}||g' -i electron-builder.json5
+    rm -rf .github/workflows
+    pnpm install --no-lockfile
+    pnpm run build
+    npx electron-builder -l AppImage
     cp "${srcdir}/${pkgname}.git/dist/icons/icon-512x125.png" "${srcdir}/${pkgname}.git/dist/icons/icon-512x512.png"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/release/${pkgver}/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname}.git/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     for _icons in 16x16 32x32 64x64 128x128 256x256 512x512;do
         install -Dm644 "${srcdir}/${pkgname}.git/dist/icons/icon-${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
