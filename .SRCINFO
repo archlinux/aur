@@ -1,7 +1,7 @@
 pkgbase = edb-debugger
 	pkgdesc = EDB (Evan's Debugger) is a cross platform AArch32/x86/x86-64 debugger, inspired by Ollydbg.
 	pkgver = 1.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.codef00.com/projects#debugger
 	arch = i686
 	arch = x86_64
