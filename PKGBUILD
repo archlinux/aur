@@ -2,7 +2,7 @@
 
 pkgname=mixing-station-pc
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Mixer remote control for multiple mixers'
 arch=('any')
 url='https://mixingstation.app/'
@@ -29,7 +29,7 @@ sha256sums=(
 package() {
     # Java Script
     install -m 0755 -d "$pkgdir/usr/share/java/mixing-station-pc"
-    install -m 0644 "mixing-station-pc.jar" "$pkgdir/usr/share/java/mixing-station-pc/mixing-station-pc.jar"
+    install -m 0644 "mixing-station-desktop.jar" "$pkgdir/usr/share/java/mixing-station-pc/mixing-station-pc.jar"
 
     # Shell wrapper
     install -m 0755 -d "$pkgdir/usr/bin"

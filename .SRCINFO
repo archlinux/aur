@@ -1,7 +1,7 @@
 pkgbase = mixing-station-pc
 	pkgdesc = Mixer remote control for multiple mixers
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mixingstation.app/
 	arch = any
 	license = custom:proprietary
