@@ -1,11 +1,10 @@
 pkgbase = r-genbankr
 	pkgdesc = Parsing GenBank files into semantically useful objects
 	pkgver = 1.27.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/genbankr
 	arch = any
-	license = Artistic2.0
-	depends = r
+	license = Artistic-2.0
 	depends = r-biobase
 	depends = r-biocgenerics
 	depends = r-biostrings
@@ -21,7 +20,8 @@ pkgbase = r-genbankr
 	optdepends = r-rentrez
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/genbankr_1.27.0.tar.gz
-	sha256sums = 8c2238bb198f49bb600cf3b0b0b0a41e9704797aa98707169511042f1c3b683b
+	source = https://bioconductor.org/packages/3.17/bioc/src/contrib/genbankr_1.27.0.tar.gz
+	md5sums = 4aa7435552e5594fedc06c9f58165bab
+	b2sums = a13e0720bd39f7c4c1c95b02fa85b76fdef6c5cdf4c67e78fd51e00b183041bd3f26a18ebab136d82153bf698aa470717bddfd863ea3bd3caf79b126739d008c
 
 pkgname = r-genbankr
