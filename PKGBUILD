@@ -23,14 +23,20 @@ license=(
   AGPL3)
 depends=(
   openssh
+  net-tools
 )
-makedepends=()
+makedepends=(
+  git
+)
 checkdepends=(
-  shellcheck)
+  shellcheck
+)
 provides=(
-  "${_pkgbase}=${pkgver}")
+  "${_pkgbase}=${pkgver}"
+)
 conflicts=(
-  "${_pkgbase}")
+  "${_pkgbase}"
+)
 groups=(
  "${_proj}"
  "${_proj}-git"

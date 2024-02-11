@@ -8,7 +8,9 @@ pkgbase = dynssh-git
 	groups = hip-git
 	license = AGPL3
 	checkdepends = shellcheck
+	makedepends = git
 	depends = openssh
+	depends = net-tools
 	provides = dynssh=v0.1.2.r13.g3af71ae
 	conflicts = dynssh
 	source = git+https://github.com/themartiancompany/dynssh
