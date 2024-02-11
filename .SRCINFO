@@ -1,25 +1,29 @@
 pkgbase = networkmanager-qt-git
-	pkgdesc = Qt wrapper for NetworkManager API
-	pkgver = v5.74.0.r1.g7ab48a2
+	pkgdesc = KDE's Qt wrapper for NetworkManager API (git build)
+	pkgver = 5.249.0.r2.g7bc1121
 	pkgrel = 1
-	url = https://community.kde.org/Frameworks
+	url = https://invent.kde.org/frameworks/networkmanager-qt
 	arch = x86_64
-	license = LGPL
-	makedepends = extra-cmake-modules
+	license = LGPL-2.0-only
+	license = LGPL-3.0-only
 	makedepends = doxygen
-	makedepends = qt5-tools
-	makedepends = qt5-doc
+	makedepends = extra-cmake-modules-git
 	makedepends = git
-	depends = networkmanager
-	depends = qt5-base
-	provides = libnm-qt5
-	provides = networkmanager-qt
-	conflicts = libnm-qt5
+	makedepends = libnm
+	makedepends = qt6-doc
+	makedepends = qt6-tools
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-base
+	depends = qt6-declarative
+	provides = networkmanager-qt=5.249.0
 	conflicts = networkmanager-qt
-	conflicts = libnm-qt-git
-	replaces = libnm-qt-git
-	source = git+https://invent.kde.org/frameworks/networkmanager-qt
-	sha256sums = SKIP
+	source = networkmanager-qt::git+https://invent.kde.org/frameworks/networkmanager-qt.git
+	b2sums = SKIP
 
 pkgname = networkmanager-qt-git
-
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = networkmanager

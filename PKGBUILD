@@ -1,34 +1,45 @@
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Timothée Ravier <tim@siosm.fr>
 
-pkgname=networkmanager-qt-git
-pkgver=v5.74.0.r1.g7ab48a2
+_reponame=networkmanager-qt
+pkgname="${_reponame}-git"
+pkgver=5.249.0.r2.g7bc1121
 pkgrel=1
-pkgdesc='Qt wrapper for NetworkManager API'
+pkgdesc="KDE's Qt wrapper for NetworkManager API (git build)"
 arch=(x86_64)
-url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(networkmanager qt5-base)
-makedepends=(extra-cmake-modules doxygen qt5-tools qt5-doc git)
-conflicts=('libnm-qt5' 'networkmanager-qt' 'libnm-qt-git')
-provides=('libnm-qt5' 'networkmanager-qt')
-replaces=('libnm-qt-git')
-source=("git+https://invent.kde.org/frameworks/networkmanager-qt")
-sha256sums=('SKIP')
+url="https://invent.kde.org/frameworks/${_reponame}"
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(gcc-libs
+         glibc
+         qt6-base
+         qt6-declarative)
+makedepends=(doxygen
+             extra-cmake-modules-git
+             git
+             libnm
+             qt6-doc
+             qt6-tools)
+provides=("networkmanager-qt=${pkgver%.r*}")
+conflicts=(networkmanager-qt)
+source=("${_reponame}::git+${url}.git")
+b2sums=('SKIP')
 
 pkgver() {
-  cd networkmanager-qt
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd ${_reponame}
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cmake -B build -S networkmanager-qt \
+  cmake -B build -S "${_reponame}" \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON
   cmake --build build
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+  depends+=(networkmanager)
+  DESTDIR="${pkgdir}" cmake --install build
 }
