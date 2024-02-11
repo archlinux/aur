@@ -1,0 +1,14 @@
+pkgbase = upmon-bin
+	pkgdesc = Simple command line UPower monitor
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/bunburya/upmon
+	arch = x86_64
+	license = MIT
+	depends = upower
+	provides = upmon
+	conflicts = upmon
+	source = https://github.com/bunburya/upmon/releases/download/v0.1.0/upmon-0.1.0-x86_64.tar.gz
+	sha256sums = e7047204cfb2680b784e1b8ee9240542fe191ecf59c4e4aa530fe452a3db9750
+
+pkgname = upmon-bin
