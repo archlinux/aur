@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=command-circle-git
 _pkgname=CommandCircle
-pkgver=0.0.6.r0.gf14a230
+pkgver=0.0.7.r0.g488191c
 _electronversion=28
 pkgrel=1
 pkgdesc="Circle UI Desktop Application Launcher"
@@ -35,7 +35,7 @@ pkgver() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
-        -e "s|@appasar@|app|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
