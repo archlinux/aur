@@ -1,16 +1,13 @@
 # Maintainer: RhiobeT (Pierre Jeanjean) <rhiobet@gmail.com>
 pkgname=mpv-thumbfast-git
 _gitname=thumbfast
-pkgver=r124.4241c7d
+pkgver=r128.03e93fe
 pkgrel=1
 pkgdesc='High-performance on-the-fly thumbnailer for mpv'
 arch=(x86_64)
 url=https://github.com/po5/thumbfast
-license=()
+license=(MPL-2.0)
 optdepends=('mpv-uosc: for displaying thumbnails automatically on seek')
-makedepends=(
-  git
-)
 depends=(
   mpv
 )
@@ -32,6 +29,7 @@ package() {
   cd "$srcdir/$_gitname"
   install -Dm 644 "thumbfast.lua" -t "${pkgdir}/etc/mpv/scripts/"
   install -Dm 644 "thumbfast.conf" -t "${pkgdir}/etc/mpv/script-opts/"
+  install -Dm 644 "LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
 # vim: ts=2 sw=2 et:

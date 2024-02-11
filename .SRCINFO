@@ -1,10 +1,10 @@
 pkgbase = mpv-thumbfast-git
 	pkgdesc = High-performance on-the-fly thumbnailer for mpv
-	pkgver = r124.4241c7d
+	pkgver = r128.03e93fe
 	pkgrel = 1
 	url = https://github.com/po5/thumbfast
 	arch = x86_64
-	makedepends = git
+	license = MPL-2.0
 	depends = mpv
 	optdepends = mpv-uosc: for displaying thumbnails automatically on seek
 	provides = mpv-thumbfast
