@@ -1,4 +1,5 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: René Wagner <rwa@clttr.info>
+# Contributor: Andrew Sun <adsun701@gmail.com>
 
 pkgname=ctl
 pkgver=1.5.3
@@ -30,12 +31,4 @@ package() {
   
   # Remove docs
   rm -rf "${pkgdir}/usr/doc"
-
-  # Remove srcdir reference
-  #cd "${srcdir}/build/lib"
-  #_libprefix=${PWD}
-  #cd "${pkgdir}/usr/lib/cmake/CTL"
-  #sed -i "s|${_libprefix}/\bIlmCtl\b|/usr|g" CTLLibraryDepends.cmake
-  #sed -i "s|${_libprefix}/\bIlmCtlMath\b|/usr|g" CTLLibraryDepends.cmake
-  #sed -i "s|${_libprefix}/\bIlmCtlSimd\b|/usr|g" CTLLibraryDepends.cmake
 }
