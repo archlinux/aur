@@ -2,8 +2,8 @@
 
 _module=dissect.cstruct
 pkgname=python-$_module
-pkgver=3.11
-pkgrel=2
+pkgver=3.12
+pkgrel=1
 pkgdesc="A Dissect module implementing a parser for C-like structures."
 arch=('any')
 url="https://github.com/fox-it/$_module"
@@ -13,7 +13,7 @@ conflicts=('python-dissect.cstruct-git')
 provides=('python-dissect.cstruct')
 makedepends=('python-setuptools' 'python-tox')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('09859cc96db2fb2f3437c7c587d41cb5d948f4c56d459cc76484fbe6c6fd29a3')
+sha256sums=('97ab9e9f1447088a0e719d715477ed9ecbf4eb69d4dcbe6701a7ece04e0c6db5')
 
 build() {
     cd "$_module-$pkgver"
