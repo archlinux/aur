@@ -1,11 +1,10 @@
 pkgbase = r-hpastainr
 	pkgdesc = Queries the Human Protein Atlas Staining Data for Multiple Proteins and Genes
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/HPAStainR
 	arch = any
-	license = Artistic2.0
-	depends = r
+	license = Artistic-2.0
 	depends = r-data.table
 	depends = r-dplyr
 	depends = r-scales
@@ -19,7 +18,8 @@ pkgbase = r-hpastainr
 	optdepends = r-qpdf
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/HPAStainR_1.9.0.tar.gz
-	sha256sums = 093478b025c829e365db8b1f9496cf9f6650bc883f932d8c708808d447d45eae
+	source = https://bioconductor.org/packages/3.17/bioc/src/contrib/HPAStainR_1.9.0.tar.gz
+	md5sums = 1f5a4a3cb194bcbb4474410821cb381e
+	b2sums = de72c7b2021b9bc14ea2e633fb5048c3a5422a663db660a3fff0612da7d3c3b29508e9d4ee8d89547070513ad322f1bdd104795b6728be93662764ec23606586
 
 pkgname = r-hpastainr
