@@ -1,13 +1,13 @@
 pkgbase = uvw
 	pkgdesc = Header-only, event based, tiny and easy to use libuv wrapper in modern C++
-	pkgver = 2.12.1_libuv_v1.44
+	pkgver = 3.3.0_libuv_v1.47
 	pkgrel = 1
 	url = https://github.com/skypjack/uvw
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	depends = libuv
-	source = https://github.com/skypjack/uvw/archive/refs/tags/v2.12.1_libuv_v1.44.tar.gz
-	b2sums = 6a7d82d51ea2894f1f8040c75222f3bf27b8b95869984cdece0c84c2f8c23aabfdc1ac82212d131120226df598d818fd31d31e1489c056a19e382dabf76f0c83
+	source = uvw-3.3.0_libuv_v1.47.tar.gz::https://github.com/skypjack/uvw/archive/v3.3.0_libuv_v1.47.tar.gz
+	b2sums = 8f639048b8ed2cd178d93ace555151b70d46095c5815191e2def3e04b60e9e80a5555bfdedf8bba5ec845e46736a969b43e3e57f5125a5535ef228cb80369586
 
 pkgname = uvw
