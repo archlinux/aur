@@ -5,7 +5,7 @@
 
 _pkgname=libgit2
 pkgname=lib32-libgit2
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="A linkable library for Git"
 arch=('x86_64')
@@ -27,7 +27,7 @@ makedepends=(
 )
 provides=('libgit2.so')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('17d2b292f21be3892b704dddff29327b3564f96099a1c53b00edc23160c71327')
+sha256sums=('de384e29d7efc9330c6cdb126ebf88342b5025d920dcb7c645defad85195ea7f')
 
 build() {
 

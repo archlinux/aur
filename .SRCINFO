@@ -1,6 +1,6 @@
 pkgbase = lib32-libgit2
 	pkgdesc = A linkable library for Git
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/libgit2/libgit2
 	arch = x86_64
@@ -14,15 +14,15 @@ pkgbase = lib32-libgit2
 	makedepends = python
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
-	depends = libgit2=1:1.7.1
+	depends = libgit2=1:1.7.2
 	provides = libgit2.so
-	source = https://github.com/libgit2/libgit2/archive/refs/tags/v1.7.1.tar.gz
-	sha256sums = 17d2b292f21be3892b704dddff29327b3564f96099a1c53b00edc23160c71327
+	source = https://github.com/libgit2/libgit2/archive/refs/tags/v1.7.2.tar.gz
+	sha256sums = de384e29d7efc9330c6cdb126ebf88342b5025d920dcb7c645defad85195ea7f
 
 pkgname = lib32-libgit2
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
-	depends = libgit2=1:1.7.1
+	depends = libgit2=1:1.7.2
 	depends = lib32-libssh2
 	depends = libssh2.so
 	depends = lib32-openssl
