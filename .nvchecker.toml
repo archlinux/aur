@@ -1,0 +1,4 @@
+[molequeue]
+source = 'github'
+github = 'OpenChemistry/molequeue'
+use_max_tag = true
