@@ -1,15 +1,15 @@
-# Maintainer Thomas Schneider <maxmusterm@gmail.com>
+# Contributor: Thomas Schneider <maxmusterm@gmail.com>
 
 pkgname=rgss_script_editor-git
-pkgver=47
-pkgrel=2
+pkgver=54_e7483ee
+pkgrel=1
 pkgdesc="Script editor for Scripts.rxdata (RPG Maker XP)"
 url="https://github.com/Ancurio/rgss_script_editor"
 arch=('any')
 license=('MIT')
-depends=('qscintilla')
+depends=('qscintilla-qt5')
 optdepends=()
-makedepends=('qscintilla' 'cmake' 'git')
+makedepends=('qscintilla-qt5' 'cmake' 'git')
 source=("git+https://github.com/Ancurio/rgss_script_editor.git")
 md5sums=('SKIP')
 
