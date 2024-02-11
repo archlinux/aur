@@ -1,8 +1,8 @@
 # Maintainer: mechakotik <mechakotik@gmail.com>
 
 pkgname=tails-adventure
-pkgver=d1.5.1
-_gitver=demo-1.5.1
+pkgver=d1.5.2
+_gitver=demo-1.5.2
 
 pkgrel=1
 pkgdesc="Open source remake of Tails Adventure for modern platforms"
@@ -11,7 +11,7 @@ arch=('x86_64')
 license=('GPL')
 
 source=("${pkgname}-${pkgver}::https://github.com/mechakotik/$pkgname/archive/$_gitver.tar.gz")
-sha256sums=('475b18de6c34e118f498570122dc0c5fd4e169fcfca0a0695928fb3cac29374b')
+sha256sums=('faab1a52c6fd51542e9b6c302ec7634dfe8b993ff82a783571ebfcb8ad9a72da')
 
 depends=(
     'sdl2'
