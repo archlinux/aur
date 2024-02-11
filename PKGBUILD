@@ -20,6 +20,7 @@ depends=(
   net-tools
 )
 makedepends=(
+ # git 
 )
 groups=(
   "${_proj}"
@@ -29,12 +30,12 @@ checkdepends=(
 )
 _url="file://${HOME}/${pkgname}"
 source=(
+  # "${_url}#tag="${pkgver}"
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
-  # "${_local}#tag="${pkgver}"
 )
 sha256sums=(
-  "361cb9cea01287ac9ab16da17d13b86692dc67800754c5550e0b188e56fd0c78"
   # "SKIP"
+  "361cb9cea01287ac9ab16da17d13b86692dc67800754c5550e0b188e56fd0c78"
 )
 
 package() {
