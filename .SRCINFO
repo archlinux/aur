@@ -1,7 +1,7 @@
 pkgbase = ruby-rspec-puppet
 	pkgdesc = RSpec tests for your Puppet manifests
 	pkgver = 4.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/puppetlabs/rspec-puppet
 	arch = any
 	license = MIT
