@@ -3,6 +3,7 @@
 # Maintainer: Truocolo <truocolo@aol.com>
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
+_proj="hip"
 pkgname=dynssh
 _pkgver=0.1.2.1
 pkgver="${_pkgver}"
@@ -19,6 +20,9 @@ depends=(
   net-tools
 )
 makedepends=(
+)
+groups=(
+  "${_proj}"
 )
 checkdepends=(
   shellcheck
