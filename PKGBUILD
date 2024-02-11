@@ -3,27 +3,27 @@
 _pkgname=DMRforPairs
 _pkgver=1.35.0
 pkgname=r-${_pkgname,,}
-pkgver=1.35.0
-pkgrel=1
-pkgdesc='DMRforPairs: identifying Differentially Methylated Regions between unique samples using array based methylation profiles'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="identifying Differentially Methylated Regions between unique samples using array based methylation profiles"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-genomicranges
   r-gviz
   r-r2html
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b295102061cc5fce19ab20380759d6ef69b9ff8b8db5bee9f12c7848e614b2b9')
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('692e267e169e89a0bc8df8f91e433bbb')
+b2sums=('10f56ae566377958bcdf9f7c80ae1182d94ee9af43304f7a16314850de0a85b8df5e928ba4b33f997802565ca07c11dc5461fb74574d784fec935e43f9e4eba9')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
