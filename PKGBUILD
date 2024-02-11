@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fooyin
 _pkgname=Fooyin
-pkgver=0.3.7
+pkgver=0.3.10
 pkgrel=1
 pkgdesc="A customisable music player"
 arch=('any')
@@ -25,6 +25,7 @@ makedepends=(
     'pkgconf'
     'qt6-svg'
     'qt6-tools'
+    'kdsingleapplication'
 )
 optdepends=(
     'sdl2'
@@ -57,6 +58,7 @@ package() {
         install -Dm644 "${srcdir}/${pkgname}.git/data/icons/${_icons}-${pkgname}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}x${_icons}/apps/${pkgname}.png"
     done
-    install -Dm644 "${srcdir}/${pkgname}.git/dist/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}.git/dist/org.${pkgname}.${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${srcdir}/${pkgname}.git/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/${pkgname}.git/dist/org.${pkgname}.${pkgname}.metainfo.xml" -t "${pkgdir}/usr/share/metainfo"
 }
