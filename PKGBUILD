@@ -6,7 +6,7 @@
 pkgname=open-consul
 _commit=25957a17b5eddd1b95ebda13f8a667ec3c02b4c6
 pkgver=1.16.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for service discovery, monitoring and configuration."
 provides=('consul')
 conflicts=('consul')

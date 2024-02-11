@@ -1,7 +1,7 @@
 pkgbase = open-consul
 	pkgdesc = A tool for service discovery, monitoring and configuration.
 	pkgver = 1.16.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.hashicorp.com/consul/docs/v1.16.x
 	install = consul.install
 	arch = x86_64
