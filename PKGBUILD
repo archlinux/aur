@@ -8,15 +8,31 @@ else
   : ${_autoupdate:=true}
 fi
 
+: ${_build_channel:=nightly} # nightly or canary
+
 # basic info
-_pkgname='citra-nightly'
+_pkgname="citra-${_build_channel:?}"
 pkgname="$_pkgname-bin"
 pkgrel=1
-pkgver=2082.20240122.eddc4a0
+pkgver=2093.20240210.de993dc
 pkgdesc="Nintendo 3DS emulator"
-url="https://github.com/citra-emu/citra-nightly"
 license=('GPL-2.0-or-later')
 arch=('x86_64')
+
+case "$_build_channel" in
+  canary)
+    url="https://github.com/citra-emu/citra-canary"
+    pkgdesc+=" - additional features still under review"
+    ;;
+  nightly)
+    url="https://github.com/citra-emu/citra-nightly"
+    pkgdesc+=" - reviewed and tested features"
+    ;;
+  *)
+    echo "Invalid release channel: ${_build_channel}"
+    return 1
+    ;;
+esac
 
 # main package
 _main_package() {
@@ -42,7 +58,7 @@ _main_package() {
 
   _pkgsrc="citra-linux-appimage-$_date-$_hash"
   _pkgext="tar.gz"
-  source+=("$_pkgsrc.$_pkgext"::"$url/releases/download/nightly-$_version/$_pkgsrc.$_pkgext")
+  source+=("$_pkgname-$_date-$_hash.$_pkgext"::"$url/releases/download/${_build_channel:?}-$_version/$_pkgsrc.$_pkgext")
   sha256sums+=('SKIP')
 }
 
@@ -51,36 +67,51 @@ pkgver() {
   printf '%s' "${_pkgver:?}"
 }
 
-build() {
+prepare() {
   local _app
   for _app in citra-qt citra-room citra ; do
     local _appimage="$_pkgsrc/$_app.AppImage"
     chmod +x "$_appimage"
     "$_appimage" --appimage-extract
   done
-
-  rm -rf "squashfs-root/usr/optional"
 }
 
 package() {
+  depends+=(
+    alsa-lib
+    e2fsprogs
+    fontconfig
+    freetype2
+    harfbuzz
+    libdrm
+    libglvnd
+    libgpg-error
+    libice
+    libsm
+    libx11
+    libxcb
+    mesa
+    zlib
+  )
+
+  install -dm755 "$pkgdir/opt/citra"
   install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/share/applications/"
 
+  # symlinks
   local _app
   for _app in citra-qt citra-room citra ; do
-    # symlink
     ln -sf "/opt/citra/bin/$_app" "$pkgdir/usr/bin/$_app"
-
-    # desktop file
-    mv "squashfs-root/$_app.desktop" "$pkgdir/usr/share/applications/"
   done
 
+  # desktop file
+  mv "squashfs-root/usr/share/applications/citra-qt.desktop" "$pkgdir/usr/share/applications/"
+
   # icon
-  install -Dm644 "$_pkgsrc/dist/citra.png" -t "$pkgdir/usr/share/pixmaps/"
+  install -Dm644 "squashfs-root/usr/share/icons/hicolor/scalable/apps/citra.svg" -t "$pkgdir/usr/share/pixmaps/"
 
   # move main files
-  install -dm755 "$pkgdir/opt"
-  mv "$srcdir/squashfs-root/usr" "$pkgdir/opt/citra"
+  mv "squashfs-root/usr"/{bin,lib,plugins,translations} "$pkgdir/opt/citra/"
 
   # fix permissions
   chmod -R u=rwX,go=rX "$pkgdir"
@@ -95,7 +126,7 @@ _update_version() {
   fi
 
   local _response=$(curl -Ssf "$url/releases")
-  local _regex='<a href="(.*/nightly-([0-9]+)/(citra-linux-appimage-([0-9]+)-(.*)\.tar\.gz))"'
+  local _regex='<a href="(.*/'"${_build_channel:?}"'-([0-9]+)/(citra-linux-appimage-([0-9]+)-(.*)\.tar\.gz))"'
 
   local _dl_path=$(
     printf '%s' "$_response" \
