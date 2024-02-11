@@ -4,7 +4,7 @@
 
 pkgname=qbittorrent-vuetorrent-bin
 _pkgname=vuetorrent
-pkgver=2.6.0
+pkgver=2.7.0
 pkgrel=1
 
 pkgdesc='The sleekest looking WebUI for qBittorrent made with Vue.js!'
@@ -21,7 +21,7 @@ optdepends=(
 install=qbittorrent-vuetorrent.install
 
 source=("${_pkgname}-$pkgver.zip::${url}/releases/download/v$pkgver/${_pkgname}.zip")
-sha512sums=('6f591d19c25684a2df478af45d8969ff9dde1cb1745ff85516439f2404c689360cbd4a3c45d6d37475a755cb43d962038f6b0adc47f4e1eb49101dd0d49ec221')
+sha512sums=('bc4636fb3c5ece0f022a3b2aa2f638aa2aa94db26ac370a87004a54392fe5679be2d19c8a3087895ac8c26a67b10197e6aa17dd232dcc5bff3eabf9fdd6a6ef5')
 
 package() {
 	cd "$srcdir/vuetorrent"
