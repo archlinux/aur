@@ -12,13 +12,13 @@ provides=('sttr')
 conflicts=('sttr')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/abhimanyu003/sttr/releases/download/v0.2.19/sttr_0.2.19_linux_arm64.tar.gz")
-sha256sums_aarch64=('b49e783d2be39e32f1c0361d2bdb217c8a061044f90cdf28bffd7b04eff29d05')
+sha256sums_aarch64=('4d92f06d899061096398a7c737a46cf48a94162a0829a1dcefeac4ded6a3c1cc')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/abhimanyu003/sttr/releases/download/v0.2.19/sttr_0.2.19_linux_386.tar.gz")
-sha256sums_i686=('4feaface4d1f77fac35d27e2e1568b41e66fa8ddb0801dfa9cb22a52886c39a7')
+sha256sums_i686=('a085064fd3230b56d81d4e8680d17fd18fddfae23048d27bac57119bcd3d6647')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/abhimanyu003/sttr/releases/download/v0.2.19/sttr_0.2.19_linux_amd64.tar.gz")
-sha256sums_x86_64=('1704d75603067cbf50be7921d18cd03d38c7e95bd3426a3fd7fb017af8b62116')
+sha256sums_x86_64=('e4e05096c9e5944316c592f62db47a096c9e8ef9ba75daf9129dd55b99f36307')
 
 package() {
   install -Dm755 "./sttr" "${pkgdir}/usr/bin/sttr"
