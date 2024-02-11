@@ -1,5 +1,5 @@
 pkgbase = handbrake-nvenc
-	pkgver = 1.7.2
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://handbrake.fr/
 	arch = x86_64
@@ -32,11 +32,11 @@ pkgbase = handbrake-nvenc
 	makedepends = libgudev
 	conflicts = handbrake
 	options = !lto
-	source = https://github.com/HandBrake/HandBrake/releases/download/1.7.2/HandBrake-1.7.2-source.tar.bz2
-	source = https://github.com/HandBrake/HandBrake/releases/download/1.7.2/HandBrake-1.7.2-source.tar.bz2.sig
+	source = https://github.com/HandBrake/HandBrake/releases/download/1.7.3/HandBrake-1.7.3-source.tar.bz2
+	source = https://github.com/HandBrake/HandBrake/releases/download/1.7.3/HandBrake-1.7.3-source.tar.bz2.sig
 	source = fix-build-with-Werror-format-security.patch
 	validpgpkeys = 1629C061B3DDE7EB4AE34B81021DB8B44E4A8645
-	sha256sums = 6a0fa23420483a2d74e58f0ad9944931d8f2e65bee63cf17333cbd9cb560ba93
+	sha256sums = 228681e9f361a69f1e813a112e9029d90fcf89e54172e7ff1863ce1995eae79a
 	sha256sums = SKIP
 	sha256sums = 9e46ab5c9539bd0910780f38131097c4e3871acde70c89a92abfc8edc9ec2c21
 
