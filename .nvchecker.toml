@@ -1,0 +1,5 @@
+[kdsoap]
+source = 'github'
+github = 'KDAB/KDSoap'
+use_max_tag = true
+prefix = 'kdsoap-'
