@@ -2,12 +2,12 @@
 
 pkgname=gpu-screen-recorder-gtk-git
 pkgver=r225.80e8604
-pkgrel=1
+pkgrel=2
 pkgdesc='Gtk frontend to gpu-screen-recorder, a shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux'
 arch=('x86_64')
 url="https://git.dec05eba.com/gpu-screen-recorder-gtk"
 license=('GPL3')
-depends=('gtk3' 'libx11' 'libxrandr' 'libpulse' 'libcap' 'libdrm' 'wayland' 'gpu-screen-recorder-git')
+depends=('gtk3' 'libx11' 'libxrandr' 'libpulse' 'libdrm' 'wayland' 'gpu-screen-recorder-git')
 provides=('gpu-screen-recorder-gtk')
 conflicts=('gpu-screen-recorder-gtk')
 source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder-gtk.git.${pkgver}.tar.gz")
