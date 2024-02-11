@@ -100,7 +100,10 @@ _usr="$( \
       command \
         -v \
         "cc" \
-        "gcc")")/../"
+        "gcc" | \
+        head \
+          -n \
+            1)")/../"
 
 package() {
   cd \
