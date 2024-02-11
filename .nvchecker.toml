@@ -1,0 +1,4 @@
+[jupyter-server-mathjax]
+source = 'github'
+github = 'jupyter-server/jupyter_server_mathjax'
+use_max_tag = true
