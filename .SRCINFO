@@ -4,9 +4,13 @@ pkgbase = aspe-git
 	pkgrel = 2
 	url = https://github.com/themartiancompany/aspe
 	arch = any
+	groups = hip
+	groups = hip-git
 	license = AGPL3
 	checkdepends = shellcheck
+	makedepends = git
 	depends = bash
+	depends = git
 	provides = aspe=1.1.r1.gb89d19e
 	conflicts = aspe
 	source = git+https://github.com/themartiancompany/aspe

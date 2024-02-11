@@ -4,24 +4,35 @@
 # Maintainer:  Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: Marcell Meszaros (MarsSeed) <marcell.meszaros@runbox.eu>
 
+_proj="hip"
 _pkgname=aspe
 pkgname="${_pkgname}-git"
 pkgver="1.1.r1.gb89d19e"
 pkgrel=2
-pkgdesc="Arch Linux build source file clone tool"
+_pkgdesc=(
+  "Arch Linux build source"
+  "file clone tool"
+)
+pkgdesc="${_pkgdesc[*]}"
 arch=(
   any
 )
-_host='https://github.com'
+_gl="gitlab.com"
+_gh="github.com"
+_host="https://${_gh}"
 _ns='themartiancompany'
+_local="${HOME}/${_pkgname}"
 url="${_host}/${_ns}/${_pkgname}"
 license=(
   AGPL3
 )
 depends=(
   bash
+  git
 )
-makedepends=()
+makedepends=(
+  git
+)
 checkdepends=(
   shellcheck
 )
@@ -31,7 +42,10 @@ provides=(
 conflicts=(
   "${_pkgname}"
 )
-_url="file://${HOME}/${_pkgname}"
+groups=(
+ "${_proj}"
+ "${_proj}-git"
+)
 source=(
   "git+${url}"
   # "git+${_local}"
@@ -39,6 +53,17 @@ source=(
 sha256sums=(
   SKIP
 )
+
+_nth() {
+  local \
+    _str="${1}" \
+    _n="${2}"
+  echo \
+    "${_str}" | \
+    awk \
+      -F '+' \
+      '{print $'"${_n}"'}'
+}
 
 _parse_ver() {
   local \
@@ -48,23 +73,17 @@ _parse_ver() {
     _rev \
     _commit
   _ver="$( \
-    echo \
-      "${_pkgver}" | \
-          awk \
-            -F '+' \
-            '{print $1}')"
+    _nth \
+      "${_pkgver}" \
+      "1")"
   _rev="$( \
-    echo \
-      "${_pkgver}" | \
-          awk \
-            -F '+' \
-            '{print $2}')"
+    _nth \
+      "${_pkgver}" \
+      "2")"
   _commit="$( \
-    echo \
-      "${_pkgver}" | \
-          awk \
-            -F '+' \
-            '{print $3}')"
+    _nth \
+      "${_pkgver}" \
+      "3")"
   _out=${_ver}
   if [[ "${_rev}" != "" ]]; then
     _out+=".r${_rev}"
@@ -84,7 +103,8 @@ pkgver() {
   _pkgver="$( \
     git \
       describe \
-      --tags | \
+      --tags \
+      --long | \
       sed \
         's/-/+/g')"
   _parse_ver \
