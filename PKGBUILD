@@ -99,7 +99,8 @@ _usr="$( \
     "$( \
       command \
         -v \
-        "${CC}")")/../"
+        "cc" \
+        "gcc")")/../"
 
 package() {
   cd \
