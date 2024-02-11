@@ -1,0 +1,23 @@
+pkgbase = android-aarch64-fontconfig
+	pkgdesc = A library for configuring and customizing font access (android)
+	pkgver = 2.15.0
+	pkgrel = 1
+	url = https://www.freedesktop.org/wiki/Software/fontconfig/
+	arch = any
+	license = custom
+	makedepends = android-configure
+	makedepends = autoconf-archive
+	makedepends = gperf
+	makedepends = python-lxml
+	makedepends = json-c
+	makedepends = python-six
+	depends = android-aarch64-expat
+	depends = android-aarch64-freetype2
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://gitlab.freedesktop.org/fontconfig/fontconfig/-/archive/2.15.0/fontconfig-2.15.0.tar.gz
+	sha256sums = cdebb4b805d33e9bdefcc0ef9743db638d2acb21139bbe1a6a85878d4c3e8c9e
+
+pkgname = android-aarch64-fontconfig
