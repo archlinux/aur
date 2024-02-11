@@ -1,10 +1,10 @@
 pkgbase = r-apl
 	pkgdesc = Association Plots
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/APL
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	checkdepends = python-pytorch
 	checkdepends = r-testthat
 	depends = r-ggplot2
@@ -28,8 +28,8 @@ pkgbase = r-apl
 	optdepends = r-scran
 	optdepends = r-scrnaseq
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/APL_1.6.0.tar.gz
-	md5sums = 725b38bc042e6b6fd349aac0ff3d471c
-	sha256sums = 700572f8633421a466702378e5996b7e69f0c508ce8fa5f27bcee03742393a5d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/APL_1.6.1.tar.gz
+	md5sums = e6a2a3a7eb66393dfc3216adbc757dc7
+	b2sums = 12d42e136bb087b7aa3b3764fbdc18b8fe32ec749e9be5dcd1df67dc11fe6bebcb6608f0e5a46af3c734b4538a6355bb354e9addb2fbc38b11b18a6399592cb7
 
 pkgname = r-apl

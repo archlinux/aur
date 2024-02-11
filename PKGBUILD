@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=APL
-_pkgver=1.6.0
+_pkgver=1.6.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Association Plots"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-or-later')
 depends=(
   r-ggplot2
   r-ggrepel
@@ -39,12 +39,12 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('725b38bc042e6b6fd349aac0ff3d471c')
-sha256sums=('700572f8633421a466702378e5996b7e69f0c508ce8fa5f27bcee03742393a5d')
+md5sums=('e6a2a3a7eb66393dfc3216adbc757dc7')
+b2sums=('12d42e136bb087b7aa3b3764fbdc18b8fe32ec749e9be5dcd1df67dc11fe6bebcb6608f0e5a46af3c734b4538a6355bb354e9addb2fbc38b11b18a6399592cb7')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
