@@ -7,8 +7,8 @@
 _proj="hip"
 _pkgname=aspe
 pkgname="${_pkgname}-git"
-pkgver="1.1.r1.gb89d19e"
-pkgrel=2
+pkgver=v1.1.1.r0.g4c41078
+pkgrel=1
 _pkgdesc=(
   "Arch Linux build source"
   "file clone tool"
