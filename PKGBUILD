@@ -10,6 +10,8 @@ url='https://github.com/KhronosGroup/Vulkan-ExtensionLayer.git'
 license=(Apache-2.0)
 makedepends=(cmake python lib32-libx11 lib32-libxrandr lib32-wayland git make)
 depends=(lib32-gcc-libs lib32-vulkan-icd-loader-git vulkan-headers-git lib32-vulkan-utility-libraries lib32-volk lib32-libx11)
+# For the layer JSON description
+depends+=(vulkan-extensionlayer-git)
 ### conflicts/provides/replaces: not in official archliux repos, so list a few package names that archlinnux packager can use
 conflicts=(lib32-vulkan-extension-layers-git lib32-vulkan-extension-layers lib32-vulkan-extension-layer lib32-vulkan-extensionlayer lib32-vulkan-extensionlayers)
 provides=(lib32-vulkan-extensionlayers lib32-vulkan-extensionlayer lib32-vulkan-extension-layer lib32-vulkan-extension-layers)
