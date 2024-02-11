@@ -1,0 +1,11 @@
+## arg 1:  the new package version
+post_install() {
+  install -d -m 755 "/var/log/elos/"
+  install -d -m 755 "/run/elos/"
+}
+
+## arg 1:  the old package version
+post_remove() {
+	rm -rf "/var/log/elos/"
+	rm -rf "/run/elos"
+}
