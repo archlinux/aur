@@ -1,6 +1,6 @@
 pkgbase = r-singlecelltk
 	pkgdesc = Comprehensive and Interactive Analysis of Single Cell RNA-Seq Data
-	pkgver = 2.12.0
+	pkgver = 2.12.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/singleCellTK
 	arch = any
@@ -102,7 +102,7 @@ pkgbase = r-singlecelltk
 	optdepends = r-spelling
 	optdepends = r-stringr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/singleCellTK_2.12.0.tar.gz
-	sha256sums = a024fdac1517a8d976bf681b6f32d9f4d5e5faa868e6f5588ea127b994a0fd30
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/singleCellTK_2.12.2.tar.gz
+	sha256sums = 0ed13ac32f0ed8a776b13d33192ade4c692d18e0fcfb8461ce75c463ea1187fb
 
 pkgname = r-singlecelltk

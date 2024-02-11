@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=singleCellTK
-_pkgver=2.12.0
+_pkgver=2.12.2
 pkgname=r-${_pkgname,,}
-pkgver=2.12.0
+pkgver=2.12.2
 pkgrel=1
 pkgdesc='Comprehensive and Interactive Analysis of Single Cell RNA-Seq Data'
 arch=('any')
@@ -111,7 +111,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a024fdac1517a8d976bf681b6f32d9f4d5e5faa868e6f5588ea127b994a0fd30')
+sha256sums=('0ed13ac32f0ed8a776b13d33192ade4c692d18e0fcfb8461ce75c463ea1187fb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
