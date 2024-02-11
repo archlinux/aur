@@ -3,7 +3,7 @@ _pkgname=jmc-adoptium
 pkgname="${_pkgname}"
 pkgver=9.0.0_SNAPSHOT
 pkg_ver=9.0.0-SNAPSHOT
-pkgrel=7
+pkgrel=8
 pkgdesc='Java Mission Control from Adoptium'
 arch=('x86_64')
 url='https://github.com/adoptium/jmc-build'
@@ -12,7 +12,7 @@ provides=("$pkgname")
 options=(!strip)
 noextract=()
 source=("org.openjdk.jmc-${pkg_ver}-linux-${pkgrel}.gtk.x86_64.tar.gz::https://github.com/adoptium/jmc-build/releases/download/${pkg_ver}/org.openjdk.jmc-${pkg_ver}-linux.gtk.x86_64.tar.gz")
-sha512sums=('2b690d4c0b8438d0e050792a2da2b7019c4e5bfec14d3798bb069320e331e4dea97f40872f231fca62564b5109c2c2c9667c9e4568caf0da39d5a077041ebbdc')
+sha512sums=('9765d4c594fdb27a0bff96b47ebdcae70e580e7f73abc0c4c2c7c3606fb25f140e72d12324e41175ac57dbaa538958657979d64437f05c71adfdd6ecc167a4a0')
 
 prepare() {
     tar -zxf "org.openjdk.jmc-${pkg_ver}-linux-${pkgrel}.gtk.x86_64.tar.gz"
@@ -29,7 +29,7 @@ Type=Application
 Icon=/opt/jmc-adoptium/icon.xpm
 StartupWMClass=JMC
 X-AppImage-Version=current
-Comment=Java Mission Conrol
+Comment=Java Mission Conrol by Adoptium
 Categories=Development;
 EOF
 }
