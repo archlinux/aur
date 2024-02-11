@@ -1,0 +1,4 @@
+[maliit-framework]
+source = 'github'
+github = 'maliit/framework'
+use_max_tag = true
