@@ -7,7 +7,7 @@
 _proj="hip"
 _pkgbase=dynssh
 pkgname="${_pkgbase}-git"
-pkgver=v0.1.2.r13.g3af71ae
+pkgver=0.1.2.r13.g3af71ae
 pkgrel=1
 pkgdesc="Simple SSH wrapper"
 arch=(
