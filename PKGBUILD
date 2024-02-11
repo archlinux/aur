@@ -1,32 +1,35 @@
-# shellcheck shell=bash disable=SC2034,SC2154
+# Maintainer: Xeonacid <h.dwwwwww@gmail.com>
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
-# https://aur.archlinux.org/packages/updaurpkg-git
-# $ updaurpkg --apply
-_repo=Harry24k/adversarial-attacks-pytorch
-_source_type=pypi-releases
-_upstreamver='3.3.0'
-_pkgname=torchattacks
-_pypi_package=$_pkgname
 
+_name=adversarial-attacks-pytorch
+_pkgname=torchattacks
 pkgname=python-$_pkgname
-pkgver=${_upstreamver##v}
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="PyTorch implementation of adversarial attacks"
 arch=(any)
-url=https://github.com/$_repo
-depends=(python-pytorch)
-makedepends=(python-installer)
-optdepends=(
-	'python-scipy: support tifgsm'
-)
+url=https://github.com/Harry24k/adversarial-attacks-pytorch
+depends=(python python-pytorch python-torchvision python-scipy python-tqdm python-requests python-numpy)
+makedepends=(python-build python-installer python-wheel python-sphinx python-sphinx_rtd_theme)
 license=(MIT)
-_py=py3
-source=(
-	"https://files.pythonhosted.org/packages/$_py/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl"
-)
-sha256sums=('9065ab20c037ec1f2eab9fc0c44d32ec0961bffea11d8949fb1cb253010401fb')
+source=($url/archive/refs/tags/v$pkgver.tar.gz)
+sha256sums=('95cfce9631048d6b781bb273e129af706e22262cdf071bbd6d52256d62f96191')
+
+build() {
+    cd "$_name-$pkgver"
+    python -m build --wheel --no-isolation
+
+	cd docs
+	make man
+}
 
 package() {
-	cd "$srcdir" || return 1
-	python -m installer --destdir="$pkgdir" ./*.whl
+    cd "$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+
+	MANPAGE="docs/_build/man/torchattacks.1"
+	gzip -n "$MANPAGE"
+	install -Dm644 "$MANPAGE.gz" "$pkgdir/usr/share/man/man1/torchattacks.1.gz"
 }
