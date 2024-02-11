@@ -1,0 +1,15 @@
+pkgbase = qvkbd
+	pkgdesc = Virtual keyboard written in Qt
+	pkgver = git20190819
+	pkgrel = 1
+	url = https://github.com/KivApple/qvkbd
+	arch = x86_64
+	license = GPL3
+	depends = qt5-declarative
+	depends = qt5-x11extras
+	depends = libxtst
+	depends = hicolor-icon-theme
+	source = https://github.com/KivApple/qvkbd/archive/576287467b76d5f8b7ee40db994358144381827e.zip
+	sha256sums = 2ce3441b36412bea68712562560f9b4019422f2875244f6185a2dc8b7698db08
+
+pkgname = qvkbd
