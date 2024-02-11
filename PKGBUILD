@@ -11,16 +11,16 @@ depends=()
 makedepends=()
 _base='https://www.tantrix.com/Tantrix/TGame'
 source=("$_base/jws/Launcher.jar"
-				"$_base/jws/OnlineLobby.jar"
-				"$_base/jws/OnlineGame.jar"
-				"$_base/jws/Sounds.jar"
-				"$_base/jws/jzlib.jar"
-				"$_base/jws/Monte.jar"
-				"$_base/jws/Oliver.jar"
-				"tantrix.png::$_base/smalltile.png"
-				'tantrix.sh'
-				'tantrix.desktop'
-				'tantrix-reviewer.desktop')
+        "$_base/jws/OnlineLobby.jar"
+        "$_base/jws/OnlineGame.jar"
+        "$_base/jws/Sounds.jar"
+        "$_base/jws/jzlib.jar"
+        "$_base/jws/Monte.jar"
+        "$_base/jws/Oliver.jar"
+        "tantrix.png::$_base/smalltile.png"
+        'tantrix.sh'
+        'tantrix.desktop'
+        'tantrix-reviewer.desktop')
 sha256sums=('df143c0f02b27c002af4152124f066a477ade59c9b56822e6eef9abf2ff86a92'
             '4e06d81cdf394255d1c1be15f66473e056bee03d997f45c8c8fd36fe5081161e'
             '21c8bd48fa969818be1d39524376a3e71c904c76cc7c2b0d1a859374ec3a5521'
@@ -35,9 +35,9 @@ sha256sums=('df143c0f02b27c002af4152124f066a477ade59c9b56822e6eef9abf2ff86a92'
 noextract=(*.jar)
 
 package() {
-	depends+=(java-runtime)
-	install -Dm644 *.jar -t "$pkgdir"/usr/share/java/$pkgname
-	install -Dm755 tantrix.sh "$pkgdir"/usr/bin/tantrix
-	install -Dm644 tantrix.png -t "$pkgdir"/usr/share/pixmaps
-	install -Dm644 tantrix{,-reviewer}.desktop -t "$pkgdir"/usr/share/applications
+  depends+=(java-runtime)
+  install -Dm644 *.jar -t "$pkgdir"/usr/share/java/$pkgname
+  install -Dm755 tantrix.sh "$pkgdir"/usr/bin/tantrix
+  install -Dm644 tantrix.png -t "$pkgdir"/usr/share/pixmaps
+  install -Dm644 tantrix{,-reviewer}.desktop -t "$pkgdir"/usr/share/applications
 }
