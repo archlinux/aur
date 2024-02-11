@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=upscayl-git
 _pkgname=Upscayl
-pkgver=2.9.8.r0.g3c19a6c
+pkgver=2.9.9.r3.g39c6d2a
 pkgrel=1
 _electronversion=27
 _nodeversion=18
@@ -9,7 +9,7 @@ pkgdesc="Free and Open Source AI Image Upscaler for Linux, MacOS and Windows bui
 arch=('x86_64')
 url='https://upscayl.org/'
 _ghurl='https://github.com/upscayl/upscayl'
-license=('AGPL3')
+license=('AGPL-3.0-only')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 depends=(
@@ -28,7 +28,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -42,7 +42,7 @@ _ensure_local_nvm() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
-        -e "s|@appasar@|app|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     cd "${srcdir}/${pkgname//-/.}"
@@ -50,13 +50,18 @@ build() {
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
-    sed -e '129,167d;/"zip",/d;/"deb",/d;/"rpm"/d;s|"AppImage",|"AppImage"|g' \
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
+    # Just build Linux AppImage
+    sed -e '/"zip",/d;/"deb",/d;/"rpm"/d;s|"AppImage",|"AppImage"|g' \
         -e '27i\  "repository": "https://github.com/TGS963/upscayl",' \
+        -e '109,170d' \
         -i package.json
     npm install
     npm run dist:linux
-    sed "s|${pkgname%-git}-run|${pkgname%-git} --no-sandbox|g;s|org.${pkgname%-git}.${_pkgname}|${pkgname%-git}|g" \
+    sed "s|${pkgname%-git}-run|${pkgname%-git}|g;s|org.${pkgname%-git}.${_pkgname}|${pkgname%-git}|g" \
         -i "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/org.${pkgname%-git}.${_pkgname}.desktop
 }
 package(){
