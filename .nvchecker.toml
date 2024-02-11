@@ -1,0 +1,4 @@
+[maliit-keyboard]
+source = 'github'
+github = 'maliit/keyboard'
+use_max_tag = true
