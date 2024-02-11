@@ -1,0 +1,21 @@
+pkgbase = binggpt-ee-bin
+	pkgdesc = BingGPT Enhanced Editon - Desktop application of new Bing's AI-powered chat.A rewritten version.
+	pkgver = 0.4.6
+	pkgrel = 1
+	url = https://github.com/fangkehou-team/BingGPT_Enhanced_Editon
+	arch = aarch64
+	arch = x86_64
+	license = Apache-2.0
+	depends = electron26
+	provides = binggpt-desktop
+	conflicts = binggpt
+	conflicts = binggpt-desktop
+	conflicts = binggpt-ee
+	source = binggpt-ee.sh
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+	source_aarch64 = binggpt-ee-0.4.6-aarch64.deb::https://github.com/fangkehou-team/BingGPT_Enhanced_Editon/releases/download/v0.4.6/BingGPT-Linux-arm64-0.4.6.deb
+	sha256sums_aarch64 = 1b8ebab0893b7cebca710660d9d486c81fccaf9f0f438e945dc159f9a66798e2
+	source_x86_64 = binggpt-ee-0.4.6-x86_64.deb::https://github.com/fangkehou-team/BingGPT_Enhanced_Editon/releases/download/v0.4.6/BingGPT-Linux-amd64-0.4.6.deb
+	sha256sums_x86_64 = 291d31f6dbeee811192b1a3380f6227ceb4239aac4542bebede7adcbb86f795c
+
+pkgname = binggpt-ee-bin
