@@ -1,12 +1,12 @@
 # Maintainer: René Wagner <rwagner at rw-net dot de>
 pkgname=art-rawconverter-git
-pkgver=r10325_9565d00c0
+pkgver=r10455_7ab71712c
 pkgrel=1
 pkgdesc="rawconverter ART (RawTherapee fork with ease of use in mind) built from latest sources"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://bitbucket.org/agriggio/art/wiki/Home"
 license=('GPL3')
-depends=('opencolorio' 'lensfun' 'libraw' 'exiv2' 'fftw' 'gtk3' 'glibmm' 'gtkmm3' 'lcms2' 'libcanberra' 'libiptcdata' 'desktop-file-utils' 'mimalloc' 'openmp')
+depends=('opencolorio' 'lensfun' 'libraw' 'exiv2' 'fftw' 'gtk3' 'glibmm' 'gtkmm3' 'lcms2' 'libcanberra' 'libiptcdata' 'desktop-file-utils' 'mimalloc' 'openmp' 'openexr' 'ctl')
 optdepends=('perl-image-exiftool: metadata support for CR3 images' 'art-rawconverter-imageio: add support for additional image formats' 'lcms2-ff: lcms2 with fast-float plugin for improved export speed' )
 makedepends=('pkgconf' 'make' 'cmake' 'git' 'gcc' 'hicolor-icon-theme' 'fakeroot')
 conflicts=('art-rawconverter')
@@ -31,7 +31,10 @@ build() {
 		-DWITH_LTO="ON" \
 		-DENABLE_LIBRAW="ON" \
 		-DENABLE_OCIO="ON" \
-		-DBUILD_SHARED="ON"
+		-DOPTION_OMP="ON" \
+		-DBUILD_SHARED="ON" \
+		-DENABLE_CTL="ON" \
+		-DCTL_INCLUDE_DIR="/usr/include/CTL"
 
  	make
 }

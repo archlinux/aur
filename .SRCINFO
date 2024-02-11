@@ -1,6 +1,6 @@
 pkgbase = art-rawconverter-git
 	pkgdesc = rawconverter ART (RawTherapee fork with ease of use in mind) built from latest sources
-	pkgver = r10325_9565d00c0
+	pkgver = r10455_7ab71712c
 	pkgrel = 1
 	url = https://bitbucket.org/agriggio/art/wiki/Home
 	arch = i686
@@ -28,6 +28,8 @@ pkgbase = art-rawconverter-git
 	depends = desktop-file-utils
 	depends = mimalloc
 	depends = openmp
+	depends = openexr
+	depends = ctl
 	optdepends = perl-image-exiftool: metadata support for CR3 images
 	optdepends = art-rawconverter-imageio: add support for additional image formats
 	optdepends = lcms2-ff: lcms2 with fast-float plugin for improved export speed
