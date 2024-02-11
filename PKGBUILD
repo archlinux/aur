@@ -2,25 +2,24 @@
 _py=ipycanvas
 pkgname=python-$_py-git
 provides=("${pkgname%-git}")
-pkgver=r329.30ccca2
-pkgrel=2
+pkgver=r473.b5cf121
+pkgrel=1
 pkgdesc="Interactive widgets library exposing the browser's Canvas API"
 arch=(any)
-url="https://github.com/martinRenou/ipycanvas"
+url="https://github.com/jupyter-widgets-contrib/ipycanvas"
 license=(BSD)
 depends=(
 	python
 	python-setuptools
 	python-pillow
 	python-numpy
-	python-orjson
-	jupyter
-	jupyterlab
-	jupyterlab-widgets
+	python-ipywidgets  # TODO actually ipywidgets requires jupyterlab widgets? https://archlinux.org/packages/community/any/python-ipywidgets/
 )
 makedepends=(
 	git
-	python-setuptools
+    python-build
+    python-installer
+    python-wheel
 	python-jupyter_packaging
 )
 source=("git+$url")
@@ -31,12 +30,12 @@ pkgver() {
 }
 build() {
 	cd $_py
-	python setup.py build
+    python -m build --wheel --no-isolation
 }
 package() {
 	cd $_py
 	py_ver=$(python --version | cut -d' ' -f2 | cut -d. -f1,2)
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
 
 	# install (and enable) extension according to
 	# https://jupyterlab.readthedocs.io/en/latest/extension/extension_dev.html#distributing-a-prebuilt-extension

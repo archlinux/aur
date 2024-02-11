@@ -1,24 +1,22 @@
 pkgbase = python-ipycanvas-git
 	pkgdesc = Interactive widgets library exposing the browser's Canvas API
-	pkgver = r329.30ccca2
-	pkgrel = 2
-	url = https://github.com/martinRenou/ipycanvas
+	pkgver = r473.b5cf121
+	pkgrel = 1
+	url = https://github.com/jupyter-widgets-contrib/ipycanvas
 	arch = any
 	license = BSD
 	makedepends = git
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-jupyter_packaging
 	depends = python
 	depends = python-setuptools
 	depends = python-pillow
 	depends = python-numpy
-	depends = python-orjson
-	depends = jupyter
-	depends = jupyterlab
-	depends = jupyterlab-widgets
+	depends = python-ipywidgets
 	provides = python-ipycanvas
-	source = git+https://github.com/martinRenou/ipycanvas
+	source = git+https://github.com/jupyter-widgets-contrib/ipycanvas
 	md5sums = SKIP
 
 pkgname = python-ipycanvas-git
-
