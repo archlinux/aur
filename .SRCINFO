@@ -8,6 +8,7 @@ pkgbase = autotier
 	makedepends = gcc
 	makedepends = make
 	makedepends = patch
+	makedepends = boost
 	depends = fuse3
 	depends = boost-libs
 	depends = rocksdb

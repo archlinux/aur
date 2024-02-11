@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/45Drives/autotier"
 license=('GPL3')
 depends=('fuse3' 'boost-libs' 'rocksdb' 'onetbb' 'lib45d')
-makedepends=('gcc' 'make' 'patch')
+makedepends=('gcc' 'make' 'patch' 'boost')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/45Drives/autotier/archive/refs/tags/v${pkgver}.tar.gz" "00-fix-it-make-it-work.patch")
 sha1sums=('1989365b7b70319209d0017d22aa23f129509809'
           '6a68d5b18799990ac6430294c6af6b255e1686f7')
