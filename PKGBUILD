@@ -3,7 +3,7 @@
 pkgname=mod-desktop-bin
 provides=(${pkgname//-bin/""})
 pkgver=0.0.9
-pkgrel=4
+pkgrel=6
 pkgdesc="MOD Desktop Application"
 arch=('x86_64')
 url="https://github.com/moddevices/mod-desktop"
@@ -22,10 +22,8 @@ package() {
   install -d "$pkgdir/opt/$provides"
   cp -r "$srcdir/$provides-$pkgver-linux-$arch/$provides"/* "$pkgdir/opt/$provides/"
 
+
   # Install desktop file from the extracted archive
   install -Dm644 "$provides-$pkgver-linux-$arch/mod-desktop.desktop" "$pkgdir/usr/share/applications/$provides.desktop"
-
-  # Create a symbolic link for the executable in a directory included in $PATH
-  install -Dm755 "/opt/$provides/mod-desktop" "$pkgdir/usr/bin/mod-desktop"
 
 }

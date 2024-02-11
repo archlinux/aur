@@ -1,7 +1,7 @@
 pkgbase = mod-desktop-bin
 	pkgdesc = MOD Desktop Application
 	pkgver = 0.0.9
-	pkgrel = 4
+	pkgrel = 6
 	url = https://github.com/moddevices/mod-desktop
 	arch = x86_64
 	license = AGPLv3+
