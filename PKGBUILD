@@ -3,7 +3,7 @@
 _pkgname=wallpickr
 
 pkgname="${_pkgname}-git"
-pkgver=r14.e810654
+pkgver=r22.1ff6841
 pkgrel=1
 pkgdesc="A very simple wallpaper picker for hyprpaper"
 url="https://github.com/coding-agent/wallpickr"
