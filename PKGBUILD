@@ -1,9 +1,9 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=python-aiohttp-middlewares
-_name=${pkgname#python-}
-pkgver=2.2.1
-pkgrel=4
+_pkgname=${pkgname#python-}
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="Collection of useful middlewares for aiohttp.web applications"
 arch=(any)
 url="https://github.com/playpauseandstop/aiohttp-middlewares"
@@ -26,11 +26,10 @@ checkdepends=(
   python-pytest-aiohttp
   python-pytest-asyncio
 )
-
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('823bb0598079563ab06d18daf500796c9d8a3893bdd89678f9960185ce04a4e1')
+sha256sums=('34930447fe09ed66f9dd2d91a9ecc4a6d00c9671bf7e04dae55d3c96d64649e2')
 
-_archive="$_name-$pkgver"
+_archive="$_pkgname-$pkgver"
 
 build() {
   cd "$_archive"
@@ -44,8 +43,8 @@ check() {
   rm -rf tmp_install
   python -m installer --destdir=tmp_install dist/*.whl
 
-  _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  export PYTHONPATH="$PWD/tmp_install/$_site_packages"
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  export PYTHONPATH="$PWD/tmp_install/$site_packages"
   pytest --override-ini="addopts="
 }
 
