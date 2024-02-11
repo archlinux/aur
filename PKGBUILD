@@ -70,15 +70,15 @@ _parse_ver() {
     _commit
   _ver="$( \
     _nth \
-      "${_pkgver} \
+      "${_pkgver}" \
       "1")"
   _rev="$( \
     _nth \
-      "${_pkgver} \
+      "${_pkgver}" \
       "2")"
   _commit="$( \
-  _nth \
-      "${_pkgver} \
+    _nth \
+      "${_pkgver}" \
       "2")"
   _out=${_ver}
   if [[ "${_rev}" != "" ]]; then

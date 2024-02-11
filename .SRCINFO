@@ -1,1 +1,19 @@
+pkgbase = dynssh-git
+	pkgdesc = Simple SSH wrapper
+	pkgver = 0.1.2.1.r1.gfc370eb
+	pkgrel = 1
+	url = https://github.com/themartiancompany/dynssh
+	arch = any
+	groups = hip
+	groups = hip-git
+	license = AGPL3
+	checkdepends = shellcheck
+	makedepends = git
+	depends = openssh
+	depends = net-tools
+	provides = dynssh=0.1.2.1.r1.gfc370eb
+	conflicts = dynssh
+	source = git+https://github.com/themartiancompany/dynssh
+	sha256sums = SKIP
 
+pkgname = dynssh-git
