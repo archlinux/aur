@@ -1,0 +1,5 @@
+[libical]
+source = 'github'
+github = 'libical/libical'
+use_max_tag = true
+prefix = 'v'
