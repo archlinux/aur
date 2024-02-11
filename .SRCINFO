@@ -1,0 +1,21 @@
+pkgbase = autotier
+	pkgdesc = A passthrough FUSE filesystem that intelligently moves files between storage tiers based on frequency of use, file age, and tier fullness.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/45Drives/autotier
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = make
+	makedepends = patch
+	depends = fuse3
+	depends = boost-libs
+	depends = rocksdb
+	depends = onetbb
+	depends = lib45d
+	source = autotier-1.2.0.tar.gz::https://github.com/45Drives/autotier/archive/refs/tags/v1.2.0.tar.gz
+	source = 00-fix-it-make-it-work.patch
+	sha1sums = 1989365b7b70319209d0017d22aa23f129509809
+	sha1sums = 6a68d5b18799990ac6430294c6af6b255e1686f7
+
+pkgname = autotier

@@ -1,0 +1,49 @@
+diff -Naur autotier-1.2.0.orig/makefile autotier-1.2.0/makefile
+--- autotier-1.2.0.orig/makefile	2021-12-07 22:06:59.000000000 +0100
++++ autotier-1.2.0/makefile	2024-02-11 23:51:56.207358173 +0100
+@@ -1,12 +1,12 @@
+ FS_TARGET = dist/from_source/autotierfs
+ CLI_TARGET = dist/from_source/autotier
+-FS_LIBS =  -lfuse3 -lpthread -lboost_system -lboost_filesystem -lboost_serialization -ldl -lbz2 -llz4 -lzstd -lz -lsnappy -l:lib45d.a
++FS_LIBS =  -lfuse3 -lpthread -lboost_system -lboost_filesystem -lboost_serialization -ldl -lbz2 -llz4 -lzstd -lz -lsnappy -l45d -lrocksdb
+ ifdef DEB
+ FS_LIBS += -l:liburing.a
+ else
+ FS_LIBS += -luring
+ endif
+-CLI_LIBS = -l:libboost_system.a -l:libboost_filesystem.a -lpthread -l:lib45d.a
++CLI_LIBS = -l:libboost_system.a -l:libboost_filesystem.a -lpthread -l45d
+ CC = g++
+ CFLAGS = -g -O2 -Wall -Wextra -Isrc/incl -Isrc/rocksdb/include -I/usr/include/fuse3 -D_FILE_OFFSET_BITS=64
+ 
+@@ -22,7 +22,7 @@
+ SHARED_SOURCE_FILES := $(shell find src/impl/shared -name *.cpp)
+ SHARED_OBJECT_FILES := $(patsubst src/impl/%.cpp, build/%.o, $(SHARED_SOURCE_FILES))
+ 
+-ROCKSDB_STATIC := src/rocksdb/librocksdb.a
++# ROCKSDB_STATIC := src/rocksdb/librocksdb.a
+ 
+ ifeq ($(PREFIX),)
+ 	PREFIX := /opt/45drives/autotier
+diff -Naur autotier-1.2.0.orig/src/impl/autotierfs/config.cpp autotier-1.2.0/src/impl/autotierfs/config.cpp
+--- autotier-1.2.0.orig/src/impl/autotierfs/config.cpp	2021-12-07 22:06:59.000000000 +0100
++++ autotier-1.2.0/src/impl/autotierfs/config.cpp	2024-02-11 23:42:24.452673122 +0100
+@@ -26,6 +26,7 @@
+ #include <45d/config/ConfigSubsectionGuard.hpp>
+ #include <regex>
+ #include <sstream>
++#include <fstream>
+ 
+ extern "C" {
+ #include <sys/statvfs.h>
+diff -Naur autotier-1.2.0.orig/src/incl/alert.hpp autotier-1.2.0/src/incl/alert.hpp
+--- autotier-1.2.0.orig/src/incl/alert.hpp	2021-12-07 22:06:59.000000000 +0100
++++ autotier-1.2.0/src/incl/alert.hpp	2024-02-11 23:40:36.144822163 +0100
+@@ -20,6 +20,7 @@
+ #pragma once
+ 
+ #include <string>
++#include <cstdint>
+ 
+ /**
+  * @brief Class to print logs to either stdout/stderr or the syslog.
