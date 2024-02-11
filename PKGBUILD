@@ -2,10 +2,10 @@
 
 pkgname=cargo-mommy
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Mommy's here to support you when running cargo~"
 url='https://github.com/Gankra/cargo-mommy'
-license=('Apache' 'MIT')
+license=('Apache-2.0' 'MIT')
 arch=('x86_64' 'i686' 'arm' 'aarch64')
 depends=('gcc-libs')
 makedepends=('git' 'cargo')
