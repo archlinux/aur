@@ -1,11 +1,10 @@
 pkgbase = r-sparsedossa
 	pkgdesc = Sparse Data Observations for Simulating Synthetic Abundance
 	pkgver = 1.24.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/sparseDOSSA
 	arch = any
 	license = MIT
-	depends = r
 	depends = r-mcmcpack
 	depends = r-optparse
 	depends = r-tmvtnorm
@@ -13,7 +12,8 @@ pkgbase = r-sparsedossa
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/sparseDOSSA_1.24.0.tar.gz
-	sha256sums = e64a9b5d68d5e347b8bb8dc679f079d3f3c71ba3867792dfe434eea44a9bc9f7
+	source = https://bioconductor.org/packages/3.17/bioc/src/contrib/sparseDOSSA_1.24.0.tar.gz
+	md5sums = cb988cd435f5c6da0b103632ef1deb50
+	b2sums = d3ced3197e899c7d4dd9a21b6fd10903634b8950983cf93f6cb9e2bb910839d7ad628ff233d2ea8e4fdf110ebb2466450313fdc18f017af8edc2ea6af7fc7c7d
 
 pkgname = r-sparsedossa
