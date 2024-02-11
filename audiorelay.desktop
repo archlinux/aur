@@ -7,6 +7,6 @@ Comment[zh_CN]=将电脑音频流式传输到手机
 Exec=audiorelay %U
 Icon=audiorelay
 Terminal=false
-StartupNotify=false
+StartupNotify=true
 Categories=Audio;AudioVideo;Utility
 StartupWMClass=com-azefsw-audioconnect-desktop-app-mainkt

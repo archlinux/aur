@@ -2,7 +2,7 @@
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=audiorelay
 pkgver=0.27.5
-pkgrel=4
+pkgrel=5
 _jre_ver=17
 pkgdesc="Stream your PC audio to your phone"
 arch=('x86_64')
@@ -14,8 +14,8 @@ source=("https://dl.audiorelay.net/setups/linux/$pkgname-$pkgver.tar.gz" "$pkgna
 install='audiorelay.install'
 _install_path="/usr/share/java/audiorelay"
 sha256sums=('c4854139a4bd21e7bf7881a7b6e21ebc4cfe823286783d4fb9ad4bf4edf8e8c7'
-            'd8c6b6b7bc4c5d84fcf2e6f7243401199e5ef6a18b1f5b22570560dbb3f59734'
-            '0f792da4cf7ffb28a9067af349cf2d6dd631f71a1f69784e8f61d09fd83ed97f')
+            '4fd8aece2656e8bd8baabcc24b9b15325efeba07d45d840f96d1fb2d72c31762'
+            '5c3ffedcae814a0e83f06445b13db3944ac9970bd44226b02587a7bacf6e479f')
 
 package() {
   # install assets

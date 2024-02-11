@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 APPDIR=
 
 while IFS='=' read -r key value; do
