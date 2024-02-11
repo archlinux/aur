@@ -1,19 +1,19 @@
 pkgbase = sttr-bin
 	pkgdesc = sttr is command line software that allows you to quickly run various transformation operations on the string.
-	pkgver = 0.2.18
+	pkgver = 0.2.19
 	pkgrel = 1
 	url = https://github.com/abhimanyu003/sttr
 	license = MIT
 	conflicts = sttr
 	provides = sttr
 	arch = aarch64
-	source_aarch64 = https://github.com/abhimanyu003/sttr/releases/download/v0.2.18/sttr_0.2.18_linux_arm64.tar.gz
-	sha256sums_aarch64 = 98efaba94ce3a3cbd975a3f9e3dfab5923fbf22a294104d8f4a8f2efdad6e643
+	source_aarch64 = https://github.com/abhimanyu003/sttr/releases/download/v0.2.19/sttr_0.2.19_linux_arm64.tar.gz
+	sha256sums_aarch64 = b49e783d2be39e32f1c0361d2bdb217c8a061044f90cdf28bffd7b04eff29d05
 	arch = i686
-	source_i686 = https://github.com/abhimanyu003/sttr/releases/download/v0.2.18/sttr_0.2.18_linux_386.tar.gz
-	sha256sums_i686 = 7211210946c046ebba11bad64113978a72c4857126331ec630320484a7cba324
+	source_i686 = https://github.com/abhimanyu003/sttr/releases/download/v0.2.19/sttr_0.2.19_linux_386.tar.gz
+	sha256sums_i686 = 4feaface4d1f77fac35d27e2e1568b41e66fa8ddb0801dfa9cb22a52886c39a7
 	arch = x86_64
-	source_x86_64 = https://github.com/abhimanyu003/sttr/releases/download/v0.2.18/sttr_0.2.18_linux_amd64.tar.gz
-	sha256sums_x86_64 = 9a9d83c0527707b82f64baaa451be23bdb3b27825ba7ea08d0cd6979c77385b7
+	source_x86_64 = https://github.com/abhimanyu003/sttr/releases/download/v0.2.19/sttr_0.2.19_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1704d75603067cbf50be7921d18cd03d38c7e95bd3426a3fd7fb017af8b62116
 	
 pkgname = sttr-bin
