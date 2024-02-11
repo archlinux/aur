@@ -1,11 +1,11 @@
 pkgbase = python-preprocess-cancellation
 	pkgdesc = GCode processor to add klipper cancel-object markers
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kageurufu/cancelobject-preprocessor
 	arch = any
 	license = GPL3
-	makedepends = python-build
+	makedepends = python-poetry
 	makedepends = python-installer
 	makedepends = python-wheel
 	optdepends = python-shapely
