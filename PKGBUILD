@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=extra-cmake-modules-git
-pkgver=5.246.0.r3657.11dd72b0
+pkgver=6.0.0.r3674.a97a3e58
 pkgrel=1
 pkgdesc='Extra modules and scripts for CMake. (GIT version)'
 arch=('any')
@@ -18,9 +18,9 @@ makedepends=(
 )
 checkdepends=(
   'reuse'
-  'qt6-tools'
-  'qt6-base'
-  'qt6-declarative'
+  'qt5-tools'
+  'qt5-base'
+  'qt5-declarative'
 )
 conflicts=('extra-cmake-modules')
 provides=("extra-cmake-modules=${pkgver%%.r*}")
@@ -49,7 +49,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_QTHELP_DOCS=ON \
     -DBUILD_TESTING=ON \
-    -DQT_MAJOR_VERSION=6
 
   cmake --build build
 }
