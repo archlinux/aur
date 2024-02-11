@@ -3,14 +3,13 @@
 _pkgname=pathVar
 _pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
-pkgrel=1
-pkgdesc='Methods to Find Pathways with Significantly Different Variability'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('LGPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Methods to Find Pathways with Significantly Different Variability"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('LGPL-2.0-or-later')
 depends=(
-  r
   r-data.table
   r-emt
   r-ggplot2
@@ -18,15 +17,16 @@ depends=(
   r-matching
   r-mclust
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5702c29034c8d172f9b02fc4ab21bec4039fa85db71e0a870b266e49962715e0')
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('9583d61a6f6492567626bfac2baf9ced')
+b2sums=('139edbbe77c3531c7172afe541b61093efc44d910b59a435474110657948c1a741831e384e9b917bddc26bccba548ac179b453ee69e761b5db43c2d1f19c9184')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
