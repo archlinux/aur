@@ -1,7 +1,7 @@
 pkgbase = steam-killer-git
 	pkgdesc = Terminates Steam on Linux when certain conditions are met.
 	pkgver = v0.1.r6.g61bfcd0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/danisztls/steam-killer
 	install = steam-killer.install
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = steam-killer-git
 	depends = python
 	depends = python-psutil
 	depends = python-watchdog
+	depends = python-apscheduler
 	provides = steam-killer
 	conflicts = steam-killer
 	source = git+https://github.com/danisztls/steam-killer
