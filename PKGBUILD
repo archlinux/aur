@@ -3,13 +3,13 @@
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-hidpi-xprop-git
-pkgver=0.18.0.20240127.123743
-pkgrel=1
+pkgver=0.18.0.20240206.190609
+pkgrel=2
 license=(MIT)
 pkgdesc='Modular Wayland compositor library (git version, with patches)'
 url=https://gitlab.freedesktop.org/wlroots/wlroots
 arch=(x86_64)
-provides=("libwlroots.so" "wlroots=${pkgver%%.202*}" "wlroots-git")
+provides=("libwlroots.so" "wlroots=${pkgver%%.202*}" "wlroots-git" "wlroots-hidpi-xprop")
 conflicts=(wlroots wlroots-git)
 depends=(
     glslang
