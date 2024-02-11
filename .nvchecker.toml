@@ -1,0 +1,5 @@
+[qmc2]
+source = 'github'
+github = 'qmc2/qmc2-mame-fe'
+use_max_tag = true
+prefix = 'v'
