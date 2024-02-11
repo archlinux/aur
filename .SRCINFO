@@ -1,0 +1,22 @@
+pkgbase = simplytranslate-git
+	pkgdesc = A privacy friendly frontend for multiple Translation Websites.
+	pkgver = r53.fb21898
+	pkgrel = 1
+	url = https://codeberg.org/ManeraKai/simplytranslate
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	provides = simplytranslate
+	conflicts = simplytranslate
+	backup = etc/simplytranslate.conf
+	source = simplytranslate::git+https://codeberg.org/ManeraKai/simplytranslate.git
+	source = simplytranslate.service
+	source = simplytranslate.conf
+	source = simplytranslate.sysusers
+	md5sums = SKIP
+	md5sums = e34b69542d984664eca6805a2edd91ca
+	md5sums = 8e4a00c7a99ea46814ef53d1740a7546
+	md5sums = 63e31e91d5e720d740e29f88e3668185
+
+pkgname = simplytranslate-git

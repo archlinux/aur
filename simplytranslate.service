@@ -1,0 +1,14 @@
+[Unit]
+Description=A privacy friendly frontend for multiple Translation Websites
+After=network.target
+
+[Service]
+Type=simple
+User=simplytranslate
+Group=simplytranslate
+EnvironmentFile=-/etc/simplytranslate.conf
+WorkingDirectory=/usr/lib/simplytranslate
+ExecStart=/usr/bin/simplytranslate
+
+[Install]
+WantedBy=multi-user.target
