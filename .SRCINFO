@@ -12,6 +12,7 @@ pkgbase = flare
 	makedepends = blueprint-compiler
 	makedepends = cargo
 	makedepends = meson
+	makedepends = protobuf
 	depends = libadwaita
 	depends = libsecret
 	depends = protobuf
