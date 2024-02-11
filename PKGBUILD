@@ -1,10 +1,10 @@
 # Maintainer: Marc Rechté <marc4@rechte.fr>
 
 pkgbase=postgresql16
-pkgver=16.1
+pkgver=16.2
 _majorver=${pkgver%.*}
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
-pkgrel=11
+pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
@@ -13,29 +13,26 @@ license=('custom:PostgreSQL')
 makedepends=('krb5' 'libxml2' 'python' 'perl' 'tcl>=8.6.0' 'openssl>=1.0.0'
              'pam' 'zlib' 'icu' 'systemd' 'libldap' 'llvm' 'clang' 'libxslt')
 source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2
-        postgresql-run-socket.patch
-        postgresql-perl-rpath.patch
-        postgresql-xml.patch
         postgresql.service
         postgresql-check-db-dir
         postgresql.sysusers
         postgresql.tmpfiles
-        pgenv.sh)
-sha256sums=('ce3c4d85d19b0121fe0d3f8ef1fa601f71989e86f8a66f7dc3ad546dd5564fec'
-            '02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a'
-            'af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb'
-            '3375fa3f70e301e61d05431969f51cade8b71635fe85bc55f1dca6c621c85754'
+        pgenv.sh
+        postgresql-run-socket.patch
+        postgresql-perl-rpath.patch)
+sha256sums=('446e88294dbc2c9085ab4b7061a646fa604b4bec03521d5ea671c2e5ad9b2952'
             '1b10acff7b5f80ea39c6c122569cd461a12cf90114b777ad46d438447c5c5774'
             '7d2e8243a2c024a57489276bbf8945eb8a1b8762448732d432c56911577f8756'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
             'fddc68565151077b4f514345087c38ca069d049b8a17dbf7eef2826f49ccbc7b'
-            'c98c512eec350d8b87495e2f3ec024304655842f75f004c115ae049825adbaa7')
+            'c98c512eec350d8b87495e2f3ec024304655842f75f004c115ae049825adbaa7'
+            '02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a'
+            'af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb')
 
 prepare() {
   cd postgresql-${pkgver}
   patch -p1 < ../postgresql-run-socket.patch
   patch -p1 < ../postgresql-perl-rpath.patch
-  patch -p1 < ../postgresql-xml.patch
 }
 
 build() {
