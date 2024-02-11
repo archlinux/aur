@@ -1,15 +1,21 @@
 # Maintainer: Jeremy Gust <jeremy AT plasticsoup DOT net>
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 pkgname=moar
-pkgver=1.23.4
+pkgver=1.23.5
 pkgrel=1
 pkgdesc="A pager designed to just do the right thing without any configuration."
 arch=(x86_64)
 url="https://github.com/walles/moar"
 license=(BSD-2-Clause-Views)
+depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz"::"$url/archive/v$pkgver.tar.gz")
-sha256sums=('3d516721e6545e4ca670291505535107d880dc3b38b0cd38aead52bc45a0a0f4')
+sha256sums=('f3c1c88545afde91d685943db20be1ae003b15c855faed9db61377f2dc768f4f')
+
+prepare() {
+	cd "$pkgname-$pkgver"
+	sed -i "s/Should be set when building, please use build.sh to build/$pkgver/1" moar.go
+}
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -18,7 +24,7 @@ build() {
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	go build -ldflags="-X main.versionString=$pkgver" -o "$pkgname"
+	go build -o "$pkgname"
 }
 
 package() {
