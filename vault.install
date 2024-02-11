@@ -1,0 +1,9 @@
+# vim: ft=sh ts=4 sw=4 et
+
+post_install () {
+    setcap cap_ipc_lock=+ep /usr/bin/vault
+}
+
+post_upgrade () {
+    setcap cap_ipc_lock=+ep /usr/bin/vault
+}
