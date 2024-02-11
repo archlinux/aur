@@ -4,12 +4,12 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname='mozc'
-pkgver=2.29.5346.102
-pkgrel=2
+pkgver=2.29.5374.102
+pkgrel=1
 pkgdesc='The Open Source edition of Google Japanese Input'
 arch=('x86_64')
 url='https://github.com/google/mozc'
-license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND MS-PL AND NAIST-2003 AND Unicode-3.0')
+license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND NAIST-2003 AND Unicode-3.0')
 depends=('qt6-base')
 makedepends=('bazel' 'git' 'python')
 optdepends=('fcitx5-mozc-ut: Fcitx5 integration'
@@ -18,7 +18,7 @@ optdepends=('fcitx5-mozc-ut: Fcitx5 integration'
             'emacs-mozc: Emacs integration')
 conflicts=('mozc-ut')
 options=(!distcc !ccache)
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=034b61000d2af24438f09c08abea42ef35689944")
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=c2fcbf6515c5884437977de46187c16a8cb7bb50")
 sha256sums=('SKIP')
 
 prepare() {
