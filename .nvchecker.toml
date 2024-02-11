@@ -1,0 +1,5 @@
+[plasma5-applets-active-window-control]
+source = 'github'
+github = 'kotelnik/plasma-applet-active-window-control'
+use_max_tag = true
+prefix = 'v'
