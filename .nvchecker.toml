@@ -1,0 +1,3 @@
+[ruby-flexmock]
+source = "gems"
+gems = "flexmock"
