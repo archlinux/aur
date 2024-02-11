@@ -1,17 +1,17 @@
 pkgbase = r-mirmine
 	pkgdesc = Data package with miRNA-seq datasets from miRmine database as RangedSummarizedExperiment
 	pkgver = 1.22.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/miRmine
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-3.0-or-later
 	depends = r-summarizedexperiment
 	optdepends = r-biocstyle
 	optdepends = r-deseq2
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/miRmine_1.22.0.tar.gz
-	sha256sums = 8ffaaac5cfc1400214cfe9ad80531c37b272aa973a57ca3f163bdeade88816b4
+	source = https://bioconductor.org/packages/3.17/bioc/src/contrib/miRmine_1.22.0.tar.gz
+	md5sums = 4f2bfc5c74548b15515c808c2994a5f9
+	b2sums = 329ec39e901e026dcd62dc7e231350fde75c6718fe7b4bdd4407e1a7ab7836558364fdbecbaeb9ea90d7588da086219217f70f5f843c75a0799cbe7384b52c2d
 
 pkgname = r-mirmine

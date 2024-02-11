@@ -3,14 +3,13 @@
 _pkgname=miRmine
 _pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
-pkgrel=1
-pkgdesc='Data package with miRNA-seq datasets from miRmine database as RangedSummarizedExperiment'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Data package with miRNA-seq datasets from miRmine database as RangedSummarizedExperiment"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-or-later')
 depends=(
-  r
   r-summarizedexperiment
 )
 optdepends=(
@@ -19,15 +18,16 @@ optdepends=(
   r-knitr
   r-rmarkdown
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8ffaaac5cfc1400214cfe9ad80531c37b272aa973a57ca3f163bdeade88816b4')
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('4f2bfc5c74548b15515c808c2994a5f9')
+b2sums=('329ec39e901e026dcd62dc7e231350fde75c6718fe7b4bdd4407e1a7ab7836558364fdbecbaeb9ea90d7588da086219217f70f5f843c75a0799cbe7384b52c2d')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
