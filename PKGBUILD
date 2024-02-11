@@ -4,7 +4,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: hexchain <i@hexchain.org>
 pkgname=telegram-desktop-userfonts-altscroll
-pkgver=4.14.12
+pkgver=4.14.15
 pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
@@ -12,6 +12,7 @@ pkgdesc='Official Telegram Desktop client, with your fonts as set by fontconfig 
 arch=('x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
+options=('!debug')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
          'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash'
          'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'libxcomposite' 'abseil-cpp' 'libdispatch'
@@ -22,7 +23,7 @@ makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz" 'mediaview-altscroll.patch')
-sha512sums=('59aaaa06959f0483137f51c03e641f8d929dc2b50e56c086e01c97d2fb0223da5b5c36b54e913afee737100f143f8db7c166adca34a38d2b0c3f833e394915f9'
+sha512sums=('12812fa1fd067fca03b2e5cb04502ef05e98368b91a4ed5458a61a0bea8b3d6daf6c32b7632c170fe0904acb63eb422f6fa6364e4af18f73e49659e2d50f531b'
             '38ff8627090ac9766a8d409fa26cbd4381640e08abcb677f4524a5305d011aa0f6ce81d69313a01f0db5c1a3794805bff2a059095258f5e8d9bd1133550cca2e')
 
 prepare() {

@@ -1,5 +1,5 @@
 /pkg
 /src
 /telegram-desktop
-/*.tar.xz
+/*.pkg.tar*
 /*.tar.gz
