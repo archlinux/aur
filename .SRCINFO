@@ -1,15 +1,15 @@
 pkgbase = vim-diffchar
 	pkgdesc = Improve vim's diff mode, by finding exact differences between lines, character by character
-	pkgver = 9.5
+	pkgver = 9.6.1
 	pkgrel = 1
 	url = http://www.vim.org/scripts/script.php?script_id=4932
 	arch = any
 	groups = vim-plugins
 	license = MIT
 	depends = vim
-	source = vim-diffchar-9.5.zip::https://www.vim.org/scripts/download_script.php?src_id=28452
+	source = vim-diffchar-9.6.1.zip::https://www.vim.org/scripts/download_script.php?src_id=28516
 	source = vim-diffchar-LICENSE::https://raw.githubusercontent.com/rickhowe/diffchar.vim/master/LICENSE
-	sha256sums = f2cc87a7d580ab04f455c828fe39dc34898f0f0bbe01e2e505713d56e6796bc2
+	sha256sums = 7a7f209a2d00a5d900ea748703cbd674883aef07392c31e1df3f261d70e3d9fc
 	sha256sums = 8f786990b7611d1208eb9b27c107e3f7c2b25da8d83f48488be63097bc7f529d
 
 pkgname = vim-diffchar
