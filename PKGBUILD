@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aviutl-package-manager-bin
 _pkgname=apm
-pkgver=3.7.2
-_electronversion=25
-pkgrel=4
+pkgver=3.8.0
+_electronversion=27
+pkgrel=1
 pkgdesc="A software that assists in the installation of AviUtl itself and its plugins and scripts."
 arch=('x86_64')
 url="https://team-apm.github.io/apm/"
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('28d3b7ff9a15a54db0a05347239154cdc056b3e8fc9f41ed2bb96fbd1ab0e4b7'
+sha256sums=('f5007a73fcc952c95664eb9d0f3be2534b2dd7019593a84315dedfbcbce7db42'
             '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
