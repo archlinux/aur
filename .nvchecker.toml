@@ -1,0 +1,4 @@
+[qtkeychain]
+source = 'github'
+github = 'frankosterfeld/qtkeychain'
+use_max_tag = true
