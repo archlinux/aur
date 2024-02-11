@@ -1,7 +1,7 @@
 pkgbase = gildas
 	pkgdesc = GILDAS
 	pkgver = 2024.02.a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.iram.fr/IRAMFR/GILDAS/
 	arch = x86_64
 	license = custom
@@ -15,6 +15,6 @@ pkgbase = gildas
 	optdepends = python-numpy
 	options = !strip
 	source = https://www.iram.fr/~gildas/dist/gildas-src-feb24a.tar.xz
-	sha512sums = 9895d3618e12fbefb9c2bdeb314645aac7570c7b84fe5be83f864ea35be48df5d25266f35d27a3105a259fe6d6d023d170fdef578cc291134b2a0e747366f8c0
+	sha512sums = 5f782f0e31baf8dbb7b61c7e7a33e6bcac71395b49f69953aa17926b8b53abd75c53531ee5ededad59d96ad2d251c59449bd6b3347a0d1371a6529020ae0a7e6
 
 pkgname = gildas
