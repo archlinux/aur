@@ -1,7 +1,7 @@
 pkgbase = iptvnator-electron-bin
 	pkgdesc = Cross-platform IPTV player application with multiple features, such as support of m3u and m3u8 playlists, favorites, TV guide, TV archive/catchup and more.Use system electron.
 	pkgver = 0.15.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://iptvnator.vercel.app/
 	arch = aarch64
 	arch = armv7h
@@ -14,7 +14,7 @@ pkgbase = iptvnator-electron-bin
 	source = LICENSE-0.15.0.md::https://raw.githubusercontent.com/4gray/iptvnator/v0.15.0/LICENSE.md
 	source = iptvnator-electron.sh
 	sha256sums = 475a6c9a7c4fd3157f78c0afa1daab94fb81ff23dd94dad81e0f657ba5259f74
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 	source_aarch64 = iptvnator-0.15.0-aarch64.deb::https://github.com/4gray/iptvnator/releases/download/v0.15.0/iptvnator_0.15.0_arm64.deb
 	sha256sums_aarch64 = 1b4f212b42d85ff6a32cba69b86dba3fc3d00163342e21063caefd2ae176ceae
 	source_armv7h = iptvnator-0.15.0-armv7h.deb::https://github.com/4gray/iptvnator/releases/download/v0.15.0/iptvnator_0.15.0_armv7l.deb
