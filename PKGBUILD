@@ -7,7 +7,7 @@
 _proj="hip"
 _pkgbase=dynssh
 pkgname="${_pkgbase}-git"
-pkgver=0.1.2.r13.g3af71ae
+pkgver=0.1.2.1.r1.gfc370eb
 pkgrel=1
 pkgdesc="Simple SSH wrapper"
 arch=(
@@ -50,6 +50,17 @@ sha256sums=(
   SKIP
 )
 
+_nth() {
+  local \
+    _str="${1}" \
+    _n="${2}"
+  echo \
+    "${_str}" | \
+    awk \
+      -F '+' \
+      '{print $'"${_n}"'}'
+}
+
 _parse_ver() {
   local \
     _pkgver="${1}" \
@@ -58,23 +69,17 @@ _parse_ver() {
     _rev \
     _commit
   _ver="$( \
-    echo \
-      "${_pkgver}" | \
-      awk \
-        -F '+' \
-        '{print $1}')"
+    _nth \
+      "${_pkgver} \
+      "1")"
   _rev="$( \
-    echo \
-      "${_pkgver}" | \
-      awk \
-        -F '+' \
-        '{print $2}')"
+    _nth \
+      "${_pkgver} \
+      "2")"
   _commit="$( \
-    echo \
-      "${_pkgver}" | \
-      awk \
-        -F '+' \
-        '{print $3}')"
+  _nth \
+      "${_pkgver} \
+      "2")"
   _out=${_ver}
   if [[ "${_rev}" != "" ]]; then
     _out+=".r${_rev}"
@@ -94,7 +99,8 @@ pkgver() {
   _pkgver="$( \
     git \
       describe \
-      --tags | \
+      --tags \
+      --long | \
       sed \
         's/-/+/g')"
   _parse_ver \
