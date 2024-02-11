@@ -1,69 +1,63 @@
-# Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
+#Maintainer: archdevlab <https://github.com/archdevlab>
+#Credits: Eric Engestrom <aur [at] engestrom [dot] ch>
 
-pkgbase=vulkan-extensionlayer-git
-pkgname=({,lib32-}vulkan-extensionlayer-git)
-pkgver=r145.70a12ce118
+pkgname=vulkan-extensionlayer-git
+pkgdesc='Layer providing Vulkan features when native support is unavailable (git version)'
+pkgver=1.3.277.r1.g419e442
 pkgrel=1
-pkgdesc="Layer providing Vulkan features when native support is unavailable"
 arch=(x86_64)
-url="https://github.com/KhronosGroup/Vulkan-ExtensionLayer"
-license=(Apache)
-source=("git+$url")
-sha256sums=('SKIP')
-depends=(vulkan-icd-loader)
-makedepends=(git cmake ninja vulkan-headers)
-checkdepends=()
+url='https://github.com/KhronosGroup/Vulkan-ExtensionLayer.git'
+license=(Apache-2.0)
+makedepends=(cmake python-lxml libxrandr wayland git make)
+depends=(gcc-libs vulkan-icd-loader vulkan-headers vulkan-utility-libraries volk libx11)
+### conflicts/provides/replaces: not in official archliux repos, so list a few package names that archlinnux packager can use
+conflicts=(vulkan-extension-layers-git vulkan-extension-layers vulkan-extension-layer vulkan-extensionlayer vulkan-extensionlayers)
+provides=(vulkan-extensionlayers vulkan-extensionlayer vulkan-extension-layer vulkan-extension-layers)
+replaces=(vulkan-extension-layers-git)
+options=(!lto !strip) # disable LTO (https://github.com/KhronosGroup/Vulkan-ValidationLayers/issues/5994)
+source=(git+https://github.com/KhronosGroup/Vulkan-ExtensionLayer.git)
 
-pkgver() {
-  cd Vulkan-ExtensionLayer
-  printf 'r%d.%s' \
-    $(git rev-list --count HEAD) \
-    $(git rev-parse HEAD | head -c10)
+pkgver(){
+  cd "${srcdir}"/Vulkan-ExtensionLayer
+  git describe --long --tags --abbrev=7 --match='v*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-  cmake \
-    -S Vulkan-ExtensionLayer -B build64 \
-    -G Ninja \
-    -D CMAKE_BUILD_TYPE=Release \
-    -D CMAKE_INSTALL_PREFIX=/usr \
-    -D BUILD_LAYERS=ON
+build(){
+  rm -rf "${srcdir}"/build
 
-  ninja -C build64
+  "${srcdir}"/Vulkan-ExtensionLayer/scripts/update_deps.py --config release
 
-  CC='gcc -m32' \
-  CXX='g++ -m32' \
-  PKG_CONFIG_PATH='/usr/lib32/pkgconfig' \
-  cmake \
-    -S Vulkan-ExtensionLayer -B build32 \
-    -G Ninja \
-    -D CMAKE_BUILD_TYPE=Release \
-    -D CMAKE_INSTALL_PREFIX=/usr \
-    -D CMAKE_INSTALL_LIBDIR=lib32 \
-    -D BUILD_LAYERS=ON
+  cmake -C helper.cmake -B "${srcdir}"/build -S "${srcdir}"/Vulkan-ExtensionLayer \
+  -G "Unix Makefiles" \
+  -D CMAKE_BUILD_TYPE=Release \
+  -D CMAKE_INSTALL_PREFIX=/usr \
+  -D CMAKE_INSTALL_BINDIR=bin \
+  -D CMAKE_INSTALL_LIBDIR=lib \
+  -D CMAKE_INSTALL_INCLUDEDIR=include \
+  -D CMAKE_INSTALL_SYSCONFDIR=/etc \
+  -D CMAKE_INSTALL_DATADIR=share \
+  -D VULKAN_HEADERS_INSTALL_DIR=/usr \
+  -D VULKAN_UTILITY_LIBRARIES_INSTALL_DIR=/usr \
+  -D VOLK_INSTALL_DIR=/usr \
+  -D CMAKE_SKIP_RPATH=True \
+  -D BUILD_TESTS=OFF \
+  -Wno-dev
 
-  ninja -C build32
+  make -j$(nproc) -C "${srcdir}"/build
 }
 
-package_vulkan-extensionlayer-git() {
-  provides=(vulkan-extensionlayer)
-  conflicts=(vulkan-extensionlayer)
+package(){
+  make -j$(nproc) -C "${srcdir}"/build DESTDIR="${pkgdir}" install
 
-  DESTDIR="$pkgdir" ninja -C build64 install
+  # install doc
+  install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"/
+  cp -r "${srcdir}"/Vulkan-ExtensionLayer/docs/* "${pkgdir}"/usr/share/doc/"${pkgname}"/
+
+  # install license
+  install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
+  install -m644 "${srcdir}"/Vulkan-ExtensionLayer/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }
 
-package_lib32-vulkan-extensionlayer-git() {
-  pkgdesc+=" (library for 32-bit applications)"
-  provides=(lib32-vulkan-extensionlayer)
-  conflicts=(lib32-vulkan-extensionlayer)
-  depends+=(vulkan-extensionlayer)
+sha256sums=(SKIP)
 
-  DESTDIR="$pkgdir" ninja -C build32 install
-
-  # Delete conflicting file provided by vulkan-extensionlayer
-  rm "$pkgdir"/usr/share/vulkan/explicit_layer.d/VkLayer_khronos_timeline_semaphore.json
-  rm "$pkgdir"/usr/share/vulkan/explicit_layer.d/VkLayer_khronos_synchronization2.json
-  rmdir "$pkgdir"/usr/share/vulkan/explicit_layer.d/
-  rmdir "$pkgdir"/usr/share/vulkan/
-  rmdir "$pkgdir"/usr/share/
-}
+# vim:set ts=8 sts=2 sw=2 et:
