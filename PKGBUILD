@@ -47,7 +47,7 @@ package() {
   cd "$srcdir/$_gitname"
   install -Dm 644 "src/fonts/"* -t "${pkgdir}/etc/mpv/fonts/"
   install -Dm 644 "src/uosc.conf" -t "${pkgdir}/etc/mpv/script-opts/"
-  install -Dm 644 "ziggy-linux" -t "${pkgdir}/etc/mpv/scripts/uosc/bin/"
+  install -Dm 755 "ziggy-linux" -t "${pkgdir}/etc/mpv/scripts/uosc/bin/"
   for dir in {char-conv,elements,intl,lib}; do
     install -Dm 644 "src/uosc/${dir}/"* -t "${pkgdir}/etc/mpv/scripts/uosc/${dir}/"
   done
