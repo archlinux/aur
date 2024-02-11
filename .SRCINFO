@@ -1,14 +1,15 @@
 pkgbase = r-fscanr
 	pkgdesc = Detect Programmed Ribosomal Frameshifting Events from mRNA/cDNA BLASTX Output
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/FScanR
 	arch = any
-	license = Artistic2.0
+	license = Artistic-2.0
 	depends = r
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/FScanR_1.10.0.tar.gz
-	sha256sums = 7a8988373b051b07f24d5a918bef18458deed81d37a626f4e2c0f54db9c091ec
+	source = https://bioconductor.org/packages/3.17/bioc/src/contrib/FScanR_1.10.0.tar.gz
+	md5sums = 493abc70911c8ecce2e574a7f8b2366a
+	b2sums = 0919b0a4cd8a322d9221e3bb20d9a81f21bf8ad1f9cd5bd6be242f8e02c3b1b390ff4fe9c58b1ca86e18837c3cd4c77410df29102563c24b023bbfa20dbd417c
 
 pkgname = r-fscanr
