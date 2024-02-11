@@ -1,0 +1,5 @@
+[build2]
+source = "github"
+github = "build2/build2"
+use_max_tag = true
+prefix = "v"
