@@ -1,0 +1,5 @@
+[sddm]
+source = 'github'
+github = 'sddm/sddm'
+use_max_tag = true
+prefix = 'v'
