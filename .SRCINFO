@@ -1,16 +1,16 @@
 pkgbase = lala-companion-bin
 	pkgdesc = 3D personified desktop assistants, tuned for you, powered by AI vision and voice.
-	pkgver = 0.0.10
-	pkgrel = 2
+	pkgver = 0.0.11
+	pkgrel = 1
 	url = https://lalaland.chat/
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = electron28
-	provides = lala-companion=0.0.10
+	provides = lala-companion=0.0.11
 	conflicts = lala-companion
-	source = lala-companion-0.0.10.deb::https://github.com/lalaland-ai/lala-companion/releases/download/v0.0.10/lala-companion_0.0.10_amd64.deb
+	source = lala-companion-0.0.11.deb::https://github.com/lalaland-ai/lala-companion/releases/download/v0.0.11/lala-companion_0.0.11_amd64.deb
 	source = lala-companion.sh
-	sha256sums = b7a66cdf074b9359cbc9f7ef06b2a2eba4feca1cae490f68bf7850a1626195fe
+	sha256sums = d78e77b06a7b6b32f2c54bdb75a8448b82b73ae74211ba71c7116bd0bf58d7a9
 	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = lala-companion-bin

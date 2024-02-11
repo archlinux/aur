@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lala-companion-bin
-pkgver=0.0.10
+pkgver=0.0.11
 _electronversion=28
-pkgrel=2
+pkgrel=1
 pkgdesc="3D personified desktop assistants, tuned for you, powered by AI vision and voice."
 arch=("x86_64")
 url="https://lalaland.chat/"
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b7a66cdf074b9359cbc9f7ef06b2a2eba4feca1cae490f68bf7850a1626195fe'
+sha256sums=('d78e77b06a7b6b32f2c54bdb75a8448b82b73ae74211ba71c7116bd0bf58d7a9'
             '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
