@@ -7,7 +7,7 @@ pkgbase = guile-bytestructures
 	license = GPL3
 	makedepends = git
 	depends = guile
-	source = https://github.com/TaylanUB/scheme-bytestructures/archive/refs/tags/v2.0.1.tar.gz
+	source = guile-bytestructures-2.0.1.tar.gz::https://github.com/TaylanUB/scheme-bytestructures/archive/refs/tags/v2.0.1.tar.gz
 	sha256sums = fd5787a4bfa463a1efb736adf969b291abc0333c1d477e0de61c58e528c33950
 
 pkgname = guile-bytestructures

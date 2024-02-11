@@ -12,7 +12,7 @@ url="https://github.com/TaylanUB/scheme-bytestructures"
 license=('GPL3')
 depends=('guile')
 makedepends=('git')
-source=("https://github.com/TaylanUB/scheme-${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/TaylanUB/scheme-${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('fd5787a4bfa463a1efb736adf969b291abc0333c1d477e0de61c58e528c33950')
 
 build() {
