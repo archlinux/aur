@@ -2,7 +2,7 @@
 
 pkgname=tantrix
 pkgver=2.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Abstract strategy board game'
 arch=(any)
 url='https://www.tantrix.com/'
@@ -17,6 +17,7 @@ source=("$_base/jws/Launcher.jar"
         "$_base/jws/jzlib.jar"
         "$_base/jws/Monte.jar"
         "$_base/jws/Oliver.jar"
+        "$_base/jws/Darwin.jar"
         "tantrix.png::$_base/smalltile.png"
         'tantrix.sh'
         'tantrix.desktop'
@@ -28,6 +29,7 @@ sha256sums=('df143c0f02b27c002af4152124f066a477ade59c9b56822e6eef9abf2ff86a92'
             '2b99b869b68b1486bedc46807bdf7ec0734022abdfa7c09792bb680c54409449'
             '9ce9dec26d6092d1143cfe5f430e4d37f920cc8c7ad6ac4ea6d50a2ff5d2c07b'
             '9a29532e5e3f56b592ba8eabc8078560cd2cf7686ce8bde838f5de86a02d844a'
+            '2955140987a4ec6a67d2f6bccdc57fa19f272fb1e971cb0537909e2a60e7d82e'
             'a244a49a541adef4840c8a4e7941c79deeb02213588e7d472ed7f0fbdade01aa'
             'ffe1d19d00620d740057e310da59d7bdea1c1f143168d1d67af7d02475c78bc6'
             'f492efa1e032bc4bd7c701e5c06c66619d23098cf1f2acafaed441ba4d8f30e0'
