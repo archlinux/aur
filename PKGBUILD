@@ -13,6 +13,7 @@ depends=(vulkan-headers lib32-vulkan-icd-loader volk)
 makedepends=(cmake git make)
 conflicts=(lib32-volk)
 provides=(lib32-volk)
+options=(staticlibs)
 source=(git+https://github.com/zeux/volk.git)
 
 pkgver(){
