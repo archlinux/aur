@@ -1,0 +1,28 @@
+pkgbase = prog8
+	pkgdesc = A high-level programming language designed for 6502 based devices
+	pkgver = 10.1
+	pkgrel = 1
+	url = https://github.com/irmen/prog8
+	arch = any
+	license = GPL-3.0-only
+	depends = java-runtime-headless>=11
+	depends = tass64
+	optdepends = x16-emulator: emulating Commander x16
+	optdepends = vice: Commodore 64 emulation
+	noextract = prog8c.jar
+	source = prog8c.jar::https://github.com/irmen/prog8/releases/download/v10.1/prog8compiler-10.1-all.jar
+	source = p8compile
+	source = prog8_detect.vim
+	source = https://raw.githubusercontent.com/irmen/prog8/master/LICENSE
+	source = https://raw.githubusercontent.com/irmen/prog8/master/syntax-files/nano/prog8.nanorc
+	source = https://raw.githubusercontent.com/irmen/prog8/master/syntax-files/Vim/prog8.vim
+	source = https://raw.githubusercontent.com/irmen/prog8/master/syntax-files/Vim/prog8_builtins.vim
+	sha256sums = b555678333d07ecff2d3dc2cdd2d6ce091d7dc480f7bdde97f8d61579cfd0fb0
+	sha256sums = c5b390a611ce778d8e22b6a2f626d273d424889c1ee7ce5454c66bce35aa888c
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = prog8
