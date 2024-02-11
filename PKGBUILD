@@ -1,6 +1,6 @@
 # Maintainer: Typology <mohammedkaabi64@gmail.com>
 pkgname=twitch-downloader-gui
-pkgver=2.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Twitch VOD/Clip Downloader - Chat Download/Render/Replay - GUI Version"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('ffmpeg' 'libcurl.so' 'twitch-downloader-bin')
 makedepends=('make' 'gtk3')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('159bce95c5128a6451a436a89fb1ff68438b79428321b946a63ee5d08508b21dd051ba8df776d6bb2ddf1ddb5ad35931f327fdb7896a5967e7c383e67356a213')
+sha512sums=('9e9b63c2c18e79b210795cc8491e306ad61e6c24e32822696f7c1315947d97a79377243a2d2d50c6261248632141fb02e6b2cfe1c13f88b563784554af4a833a')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
