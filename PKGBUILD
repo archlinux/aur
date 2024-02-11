@@ -2,21 +2,21 @@
 # Contributor: Dan Printzell <me@vild.io>
 
 pkgname=('serve-d')
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 pkgdesc="Microsoft language server protocol implementation for D using workspace-d"
 arch=('x86_64')
 url="https://github.com/Pure-D/serve-d"
 license=("MIT")
 groups=('dlang')
-makedepends=('ldc' 'git' 'dub' 'dtools')
+makedepends=('ldc' 'git' 'dub' 'dtools' 'dmd')
 depends=('liblphobos' 'dcd')
 
 source=(
 	"https://github.com/Pure-D/serve-d/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-	'defa45aeb9a3c2dcbbf26f204088398d1cf4f74dd97762eb3d26ced8f257251c'
+	'8150b28b20f26baae17ea668a9a3ca815de4a893cf471f977550c475a7d444ea'
 )
 
 prepare() {
