@@ -2,17 +2,15 @@
 
 pkgname=(freedoom freedm)
 pkgbase=${pkgname[0]}
-pkgver=0.12.1
-pkgrel=4
+pkgver=0.13.0
+pkgrel=1
 pkgdesc="Free game based on the Doom engine"
 arch=('any')
 url="https://freedoom.github.io/"
 license=('BSD')
 makedepends=('asciidoc' 'dblatex' 'deutex' 'python' 'python-pillow')
-source=(https://github.com/$pkgbase/$pkgbase/releases/download/v$pkgver/$pkgbase-$pkgver.tar.xz
-        0001-manual-build-with-asciidoc.patch)
-b2sums=('db783fd8a3467ab6ec628eb67b036ae069d01516b3f04860d4fda0692921f9a4aa65169ff8b79fa74e88bb496da3686dd7fbbf5e4bb1614ab331023a58c5204d'
-        '08f5fc17055e921a374aaf2cf092bdf1ff8b5a4069f9b9f5b12f0a119291d1f34d891a2b47e01d966340768c620f44f00848ef01b4675777df25f74a2f160645')
+source=(https://github.com/$pkgbase/$pkgbase/archive/refs/tags/v$pkgver.tar.gz)
+b2sums=('c3ad97bab73b3275ae604f4fef7459b5688f1c5fc63336475c34b6c22a56118c3558ad9859ac80d7abc97426a48e5f2b92ac9e02def11f9f0f7f1a2ef76629a5')
 
 prepare() {
   cd "$pkgbase-$pkgver"
