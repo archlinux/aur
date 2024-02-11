@@ -2,8 +2,8 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=crates-tui
-pkgver=0.1.5
-pkgrel=2
+pkgver=0.1.6
+pkgrel=1
 pkgdesc="A TUI for exploring crates.io"
 arch=('x86_64')
 url="https://github.com/ratatui-org/crates-tui"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('f022783a1e571234f5cb9422952e900ff8c100210ba24929fabd85e40b4e1fa44d57450bdc130fcdb09ad71a2997ebc35102427dd82273433c8dfa09753a2763')
+sha512sums=('03ab85fbba00c2c1417057934150b175f0fc2655fc38d3a8cf05a62ec3666b1753352760675905c8db38e2fe773926453a7f32b90b5c3ea6b15e7c56898f042b')
 options=('!lto')
 
 prepare() {
