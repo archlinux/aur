@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=altair-bin
 _pkgname="Altair GraphQL Client"
-pkgver=6.2.0
-_electronversion=27
+pkgver=6.3.0
+_electronversion=26
 pkgrel=1
 pkgdesc="A beautiful feature-rich GraphQL Client for all platforms."
 arch=('x86_64')
@@ -20,13 +20,13 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/altair-graphql/altair/v${pkgver}/packages/altair-core/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7e068b8c2395fa1fb67ad6ae13ad125c2200d7d05581344975f989df0c17a62f'
+sha256sums=('9217a9a4241813d870ddc7307c2dea9a50fdc4642a127126b85d15a28bdba34e'
             'a406579cd136771c705c521db86ca7d60a6f3de7c9b5460e6193a2df27861bde'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\"|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
