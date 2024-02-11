@@ -4,11 +4,11 @@
 pkgname=coredns-wgsd-git
 _pkgname='wgsd'
 pkgver=1.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A DNS server that chains plugins - with module wgsd"
 makedepends=('go')
 conflicts=('coredns-bin')
-arch=('i686' 'x86_64')
+arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/jwhited/wgsd"
 license=('Apache')
 provides=('coredns')
