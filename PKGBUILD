@@ -4,11 +4,11 @@
 _gemname=xmlrpc
 pkgname=ruby-$_gemname
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='XMLRPC is a lightweight protocol that enables remote procedure calls over HTTP.'
 arch=(any)
 url='https://github.com/ruby/xmlrpc'
-license=(GPL3)
+license=('Ruby' 'BSD-2-Clause')
 depends=(ruby-webrick)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
