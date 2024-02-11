@@ -1,7 +1,7 @@
 pkgbase='videomass'
 pkgname=('videomass')
 _module='videomass'
-pkgver='5.0.2'
+pkgver='5.0.4'
 pkgrel=1
 pkgdesc="A cross-platform GUI for FFmpeg and youtube-dl or yt-dlp"
 url="http://jeanslack.github.io/Videomass/"
@@ -10,19 +10,19 @@ optdepends=(
 'atomicparsley: For parsing MP4 metadata'
 'yt-dlp: Modernified version of youtube-dl, for extracting videos'
 )
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer')
 license=('GPL')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('5477aae3f14a43044d9315276370a329de5c292b746119fd677e4a06cb222f90')
+sha256sums=('26dbf5b8bfd7c82f2038aed5c83b001c9685bd7821f3030ea759465808e8f2c8')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
