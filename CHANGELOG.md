@@ -1,3 +1,6 @@
+# 0.6.5
+    - Bugfix for lower star filtrations with edges that come in at exactly 0 (courtesy of Riccardo Ceccaroni)
+
 # 0.6.4
     - Add some includes to ripser.cpp for newer Ubuntu/C++ environments
 
