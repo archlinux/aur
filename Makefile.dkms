@@ -1,0 +1,11 @@
+obj-m := @_PKGBASE@.o
+
+KVERSION := $(shell uname -r)
+KDIR := /lib/modules/$(KVERSION)/build
+PWD := "$$(pwd)"
+
+all:
+	make -C $(KDIR) M=$(PWD)
+
+clean:
+	make O=$(PWD) -C $(KDIR) M=$(PWD) clean

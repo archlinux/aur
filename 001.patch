@@ -1,0 +1,9 @@
+--- beep.c	2024-02-10 10:53:11.558282281 +0000
++++ fancybeep.c	2024-02-10 11:07:52.338813851 +0000
+@@ -93,5 +93,5 @@
+   /* You can seek, but it doesn't do anything... */
+ 
+-  if (!access_ok(VERIFY_WRITE, buffer, sizeof(what_beep))) {
++  if (!access_ok(buffer, sizeof(what_beep))) {
+     what_beep = 0;
+     return -EFAULT;
