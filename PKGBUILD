@@ -4,13 +4,13 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Timothée Ravier <tim@siosm.fr>
 
-_reponame=networkmanager-qt
-pkgname="${_reponame}-git"
+_distname=networkmanager-qt
+pkgname="${_distname}-git"
 pkgver=5.249.0.r2.g7bc1121
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE's Qt wrapper for NetworkManager API (git build)"
 arch=(x86_64)
-url="https://invent.kde.org/frameworks/${_reponame}"
+url="https://invent.kde.org/frameworks/${_distname}"
 license=(LGPL-2.0-only LGPL-3.0-only)
 depends=(gcc-libs
          glibc
@@ -22,18 +22,18 @@ makedepends=(doxygen
              libnm
              qt6-doc
              qt6-tools)
-provides=("networkmanager-qt=${pkgver%.r*}")
-conflicts=(networkmanager-qt)
-source=("${_reponame}::git+${url}.git")
+provides=("${_distname}=${pkgver%.r*}")
+conflicts=("${_distname}")
+source=("${_distname}::git+${url}.git")
 b2sums=('SKIP')
 
 pkgver() {
-  cd ${_reponame}
+  cd ${_distname}
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cmake -B build -S "${_reponame}" \
+  cmake -B build -S "${_distname}" \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON
   cmake --build build

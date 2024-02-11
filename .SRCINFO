@@ -1,7 +1,7 @@
 pkgbase = networkmanager-qt-git
 	pkgdesc = KDE's Qt wrapper for NetworkManager API (git build)
 	pkgver = 5.249.0.r2.g7bc1121
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/frameworks/networkmanager-qt
 	arch = x86_64
 	license = LGPL-2.0-only
