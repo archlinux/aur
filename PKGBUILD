@@ -1,8 +1,8 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=bicep
-pkgver=0.25.3
-_commit=862708594aa0d8e292f33b355df25e7bacab6f55
+pkgver=0.25.53
+_commit=c0ad57dff6c96bd5e9ef013b4d7c2caa3ef7a0c3
 pkgrel=1
 pkgdesc="A declarative language for describing and deploying Azure resources"
 arch=(x86_64)
@@ -24,6 +24,12 @@ sha256sums=('SKIP')
 validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194') # GitHub <noreply@github.com>
 
 _archive="$pkgname"
+
+pkgver() {
+  cd "$_archive"
+
+  git describe --tags | sed 's/^v//'
+}
 
 prepare() {
   cd "$_archive"
@@ -54,7 +60,7 @@ build() {
     --framework "net$_dotnet_version" \
     --runtime linux-x64 \
     --no-self-contained \
-    --configuration release \
+    --configuration Release \
     --output lib \
     src/Bicep.Cli
 }
@@ -81,7 +87,7 @@ package() {
   local pkgnum=${pkgver:0:1}
 
   install -dm755 "$pkgdir/usr/lib/$pkgname-$pkgnum"
-  cp --archive -t "$pkgdir/usr/lib/$pkgname-$pkgnum" lib/*
+  cp -a -t "$pkgdir/usr/lib/$pkgname-$pkgnum" lib/*
 
   install -dm755 "$pkgdir/usr/bin"
   ln -s "/usr/lib/$pkgname-$pkgnum/bicep" "$pkgdir/usr/bin/bicep"
