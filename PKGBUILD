@@ -8,7 +8,7 @@ _py2="${_py}2"
 _proj="hip"
 _pkgname=luks-tools
 pkgname="${_pkgname}-git"
-pkgver=0.0.0.0.0.1.r29.ge52a661
+pkgver=0.0.0.0.0.1.r36.gac1cfbe
 pkgrel=1
 _pkgdesc=(
   "A collection of LUKS"
@@ -37,8 +37,8 @@ checkdepends=(
   shellcheck
 )
 optdepends=(
-  "python-pygmentize: colorized output"
-  "python2-pygmentize: colorized output"
+  "python-pygments: colorized output"
+  "python2-pygments: colorized output"
 )
 provides=(
   "${_pkgname}=${pkgver}"
