@@ -1,7 +1,7 @@
 # Maintainer: David Harrigan <dharrigan [@] gmail [dot] com>
 
 pkgname=clj-kondo-bin
-pkgver=2023.12.15
+pkgver=2024.02.12
 pkgrel=1
 pkgdesc='A minimal and opinionated linter for Clojure code that sparks joy.'
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ conflicts=("${pkgname%-bin}")
 source_aarch64=("${pkgname}-${pkgver}-linux-aarch64.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-aarch64.zip")
 source_x86_64=("${pkgname}-${pkgver}-linux-static-amd64.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-static-amd64.zip")
 
-sha256sums_x86_64=('02ca034284d4f88d5f9ddbf473b4a3a92779bc0d984cecc1523064aa9ea35ad9')
-sha256sums_aarch64=('de0aee9db78916055d1a7ec0cbed5dba066689a6770a7c47744a9f73aefb3efb')
+sha256sums_x86_64=('a40ca76faea2c621e452854a562cbb74fe0396d18f668032aa2d4ed175ea8620')
+sha256sums_aarch64=('6a939bbd7c21e5d337399c14abcc23e920938d554bf5bb6f805892fcd1d2a926')
 
 package() {
   install -Dm0755 -t "$pkgdir/usr/bin/" "${pkgname%-bin}"
