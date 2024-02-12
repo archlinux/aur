@@ -1,0 +1,18 @@
+pkgbase = arch-grub
+	pkgdesc = Produces a standalone GRUB binary compatible with Arch Linux.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/themartiancompany/
+	arch = any
+	groups = hip
+	license = AGPL3
+	checkdepends = shellcheck
+	makedepends = make
+	depends = grub
+	depends = bash
+	optdepends = luks-tools: Format LUKS volume in a GRUB compatible format
+	provides = mkgrub=0.1.1
+	source = arch-grub-0.1.1.tar.gz::https://github.com/themartiancompany//archive/refs/tags/0.1.1.tar.gz
+	sha256sums = 361cb9cea01287ac9ab16da17d13b86692dc67800754c5550e0b188e56fd0c78
+
+pkgname = arch-grub
