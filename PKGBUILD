@@ -30,7 +30,7 @@ pkgver() {
 build() {
 	cd "$_pkgname"
 	# Patch version
-	echo "export default function() { return '$pkgver' }" >src/modes/version.ts
+	echo "export default function() { return '$VER (AUR Build, REV $REV COMMIT $COMMIT)' }" >src/modes/version.ts
 	deno task compile
 }
 
