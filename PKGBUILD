@@ -1,5 +1,5 @@
 pkgname=msvc-wine-git
-pkgver=17.8.r3
+pkgver=17.8.r6
 pkgrel=1
 pkgdesc='MSVC compiler with CMake toolchains. Compiler work in Wine64'
 arch=('x86_64')
@@ -55,7 +55,7 @@ build() {
 
 package() {
 	for _arch in ${_architectures}; do
-		cat "${srcdir}/msvc/bin/${_arch}/msvcenv.sh" | sed 's/BASE=.*/BASE='z:\\\\\\\\opt\\\\\\\\msvc/ > "${srcdir}/msvc/bin/${_arch}/msvcenv.sh.patched"
+		cat "${srcdir}/msvc/bin/${_arch}/msvcenv.sh" | sed 's/^BASE=.*/BASE='z:\\\\\\\\opt\\\\\\\\msvc/ > "${srcdir}/msvc/bin/${_arch}/msvcenv.sh.patched"
 		cat "${srcdir}/msvc/bin/${_arch}/msvcenv.sh.patched" | sed 's/BASE_UNIX=.*/BASE_UNIX='\\/opt\\/msvc/ > "${srcdir}/msvc/bin/${_arch}/msvcenv.sh"
 		rm "${srcdir}/msvc/bin/${_arch}/msvcenv.sh.patched"
 

@@ -1,6 +1,6 @@
 pkgbase = msvc-wine-git
 	pkgdesc = MSVC compiler with CMake toolchains. Compiler work in Wine64
-	pkgver = 17.8.r3
+	pkgver = 17.8.r6
 	pkgrel = 1
 	url = https://github.com/mstorsjo/msvc-wine
 	arch = x86_64
