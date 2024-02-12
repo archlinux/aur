@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=frog-ocr
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="Intuitive text extraction tool (OCR) for GNOME."
 arch=('any')
 url="https://getfrog.app"
@@ -15,6 +15,7 @@ depends=(
   'python-gobject'
   'python-gtts'
   'python-loguru'
+  'python-nanoid'
   'python-pillow'
   'python-posthog'
   'python-pydbus'
@@ -24,14 +25,14 @@ depends=(
 makedepends=('git' 'blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
 install="$pkgname.install"
-_commit=429026f0bf94e4c151f1a6262f68c3e32a1e53a3  # 1.5.0
+_commit=18959b465b5bb7a060d2afd7dd848b56df8b8286  # tags/1.5.1^0
 source=("git+https://github.com/TenderOwl/Frog.git#commit=${_commit}")
 sha256sums=('SKIP')
 
-#pkgver() {
-#  cd Frog
-#  git describe --tags | sed 's/-/+/g'
-#}
+pkgver() {
+  cd Frog
+  git describe --tags | sed 's/-/+/g'
+}
 
 prepare() {
   cd Frog
