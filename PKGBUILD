@@ -1,62 +1,43 @@
 # Maintainer: FBis251 <aur at fbis251 dot com>
-
-# This PKGBUILD was modified from the localsend-bin PKGBUILD by Nixuge
-# https://aur.archlinux.org/packages/localsend-bin
-
+# Contributor: zxp19821005
+# Current implementation below provided by zxp19821005
 
 pkgname=heynote-bin
-pkgver=1.6.0
+_pkgname=Heynote
+pkgver=1.7.0
+_electronversion=28
 pkgrel=1
-pkgdesc='A dedicated scratchpad for developers'
-url=https://github.com/heyman/heynote
-arch=(x86_64)
-license=(MIT)
-provides=('heynote')
-options=(!strip)
-source=("https://github.com/heyman/heynote/releases/download/v${pkgver}/Heynote_${pkgver}_x86_64.AppImage")
-sha512sums=('c23263f1371b6cc8f031fb04caff654b3bd8686128fabe059df16743f986f36b4217dc09e56c042bbbb4b42c505b150f0d298516b76d847f39320b6a210dfb5f')
-_appimage="Heynote_${pkgver}_x86_64.AppImage"
-_appimage_nover="heynote.AppImage"
-_pkgname="heynote"
-_pkgdesktop="${_pkgname}.desktop"
-
-prepare() {
-	chmod +x "${_appimage}"
-	./"${_appimage}" --appimage-extract
-}
-
+pkgdesc="A dedicated scratchpad for developers"
+arch=('x86_64')
+url="https://heynote.com/"
+_ghurl="https://github.com/heyman/heynote"
+license=('MIT')
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
+depends=(
+    "electron${_electronversion}"
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_${CARCH}.AppImage"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/heyman/heynote/v${pkgver}/LICENSE"
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('6fcfb55bae2cbbe124bd5cfa86087a3900135aa6575fa2dc41331ce32d253c47'
+            'd78b14a03247374515264208d64b975e100af8a2fd0464afa07f76ca199700a7'
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
-	# Adjust .desktop so it will work outside of AppImage container
-	sed -i -E \
-		"s|Exec=AppRun --no-sandbox %U|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|" \
-		"squashfs-root/${_pkgdesktop}"
-
-	# Adjust .desktop to have it point to the correct icon (@CIAvash)
-	# sed -i -E 's/^Icon=.+/Icon=localsend/' "squashfs-root/${_pkgdesktop}"
-
-	# Fix permissions; .AppImage permissions are 700 for all directories
-	chmod -R a-x+rX squashfs-root/usr
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
+    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
-
 package() {
-	# AppImage
-	install -Dm755 \
-		"${srcdir}/${_appimage}" \
-		"${pkgdir}/opt/${_pkgname}/${_appimage_nover}"
-
-	# Desktop file
-	install -Dm644 \
-		"${srcdir}/squashfs-root/${_pkgdesktop}" \
-		"${pkgdir}/usr/share/applications/${_pkgdesktop}"
-
-	# Icon file (using the 512x512 one only)
-	install -Dm644 \
-		"${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/heynote.png" \
-		"${pkgdir}/usr/share/icons/heynote.png"
-
-	# Symlink executable
-	install -dm755 "${pkgdir}/usr/bin"
-	ln -s \
-		"/opt/${_pkgname}/${_appimage_nover}" \
-		"${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
