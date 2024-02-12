@@ -6,7 +6,7 @@
 
 pkgname=gamescope-nvidia-git
 _pkgname=gamescope
-pkgver=3.14.0.r1.gdc81258
+pkgver=3.14.0.r34.g7664011
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager (NVIDIA patch)'
 arch=(x86_64)
@@ -32,21 +32,20 @@ makedepends=(
   glslang
   meson
   ninja
-  vkroots
   vulkan-headers
   wayland-protocols)
-optdepends=(
-  'openvr: require openvr 2.0 for vr')
-provides=(
-  "$_pkgname")
-conflicts=(
-  "$_pkgname")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=(
   "git+https://github.com/ValveSoftware/gamescope.git"
+  "git+https://github.com/ValveSoftware/openvr.git"
   "git+https://github.com/Joshua-Ashton/reshade.git"
   "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
+  "git+https://github.com/Joshua-Ashton/vkroots.git"
   "0001-reverts-bd722f7.patch")
 b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
         'SKIP'
         'SKIP'
         'a8ee82c988cfcbaca755421020443034d07c3417546d5a41c39c8709cb1abbef5c0c0ad273ddd3e3d44a650f0bdaf7bf81fad02436937ef7389051efc96d19d5')
@@ -61,16 +60,19 @@ prepare() {
     fi
   done
 
-  # download build deps
   cd gamescope
+
+  # setting build deps
   git -c submodule.src/reshade.url="$srcdir/reshade" \
       -c submodule.thirdparty/SPIRV-Headers.url="$srcdir/SPIRV-Headers" \
+      -c submodule.subprojects/vkroots.url="$srcdir/vkroots" \
+      -c submodule.subprojects/openvr.url="$srcdir/openvr" \
       -c submodule.subprojects/wlroots.update=none \
       -c submodule.subprojects/libdisplay-info.update=none \
       -c submodule.subprojects/libliftoff.update=none \
-      -c submodule.subprojects/vkroots.update=none \
       -c protocol.file.allow=always submodule update --init --progress
-  meson subprojects download stb glm
+  # download meson wrap deps
+  meson subprojects download
 }
 
 pkgver() {
@@ -79,7 +81,7 @@ pkgver() {
 
 build() {
   arch-meson gamescope build \
-    -Dforce_fallback_for=stb,glm \
+    -Dforce_fallback_for=stb,glm,vkroots \
     -Dbenchmark=disabled \
     -Dpipewire=enabled
   meson compile -C build
