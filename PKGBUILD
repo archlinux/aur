@@ -1,6 +1,6 @@
 # Maintainer: Alexander Milchinskiy <milchinskiy at gmail dot com>
 pkgname=atomblocks
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="async, absolutely lightweight and dead simple bar for dwm and similar window managers"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/milchinskiy/atomblocks"
 license=('MIT')
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('809043c4ade7c4a78afe8a0de0801b7ad77913146ec8da190267fe095ed83d6b')
+sha256sums=('0c1694d093d267b7006be2acee5fe71fb42942b715b72eb90fb6c74243f9b1ca')
 
 prepare() {
   cd "$pkgname-$pkgver" || exit

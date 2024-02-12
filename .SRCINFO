@@ -1,12 +1,12 @@
 pkgbase = atomblocks
 	pkgdesc = async, absolutely lightweight and dead simple bar for dwm and similar window managers
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/milchinskiy/atomblocks
 	arch = any
 	license = MIT
 	makedepends = cargo
-	source = atomblocks-0.1.1.tar.gz::https://static.crates.io/crates/atomblocks/atomblocks-0.1.1.crate
-	sha256sums = 809043c4ade7c4a78afe8a0de0801b7ad77913146ec8da190267fe095ed83d6b
+	source = atomblocks-0.2.0.tar.gz::https://static.crates.io/crates/atomblocks/atomblocks-0.2.0.crate
+	sha256sums = 0c1694d093d267b7006be2acee5fe71fb42942b715b72eb90fb6c74243f9b1ca
 
 pkgname = atomblocks
