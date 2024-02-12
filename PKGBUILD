@@ -5,7 +5,7 @@
 # Contributor: Michael Louis Thaler <michael.louis.thaler@gmail.com>
 
 pkgname=watchman
-pkgver=2024.02.05.00
+pkgver=2024.02.12.00
 pkgrel=1
 pkgdesc="Watches files and records, or triggers actions, when they change"
 url="https://github.com/facebook/watchman"
@@ -30,7 +30,6 @@ makedepends=(
   rust
 )
 backup=(etc/watchman.json)
-
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   "watchman-destdir.patch::https://src.fedoraproject.org/rpms/watchman/raw/a446ccc61c73d74053792656c3832f93bf0fe262/f/watchman-destdir.patch"
@@ -40,7 +39,7 @@ source=(
   "watchman.socket"
 )
 sha256sums=(
-  'e1c563bea32533d1cd4c7f3ae7d463e6e8ff566f67a88fe6fafc1409bd22ba11'
+  '0ef064f8163a53cfacac714dd94dbd339a71f9f046b7c1954b000c88a650a82c'
   'd40feab6aa7dc6522c648660e88642fdf721ee1f9d80c23f6891a6381067a38b'
   '3ebc93cb91ec9b9603969e222fd3ffd9baa4a1d07a7b3bd7aabf956ec2e177c8'
   'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356'
@@ -77,7 +76,7 @@ build() {
 check() {
   cd "$_archive"
 
-  _skipped_tests=(
+  local skipped_tests=(
     # Skip failing tests - not sure why they fail
     test_py::watchman.integration.test_capabilities.TestCapabilitiesCliJson.test_full_capability_set
     test_py::watchman.integration.test_capabilities.TestCapabilitiesUnixBser2.test_full_capability_set
@@ -94,8 +93,8 @@ check() {
     test_py::watchman.integration.test_local_saved_state
     test_py::watchman.integration.test_sock_perms.TestSockPerms
   )
-  _skipped_tests_pattern="${_skipped_tests[0]}$(printf "|%s" "${_skipped_tests[@]:1}")"
-  ctest --test-dir build --output-on-failure -E "$_skipped_tests_pattern"
+  local skipped_tests_pattern="${skipped_tests[0]}$(printf "|%s" "${skipped_tests[@]:1}")"
+  ctest --test-dir build --output-on-failure -E "$skipped_tests_pattern"
 }
 
 package() {
