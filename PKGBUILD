@@ -3,14 +3,14 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdoctools-git
-pkgver=5.240.0_r716.gb3e5202
+pkgver=6.0.0_r832.g699dd24
 pkgrel=1
 pkgdesc='Documentation generation from docbook'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(karchive-git docbook-xsl)
-makedepends=(git extra-cmake-modules-git perl-uri ki18n-git doxygen qt6-tools)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(docbook-xsl gcc-libs glibc karchive-git libxml2 libxslt qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git ki18n-git perl-uri qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf6-git)
