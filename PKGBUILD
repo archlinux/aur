@@ -1,7 +1,7 @@
 pkgname=firefox-esr-extension-switchyomega
 pkgver=2.5.20
-pkgrel=1
-pkgdesc='plasma browser integration addon for firefox.'
+pkgrel=2
+pkgdesc='Manage and switch between multiple proxies quickly & easily.'
 arch=('any')
 url='https://addons.mozilla.org/en-US/firefox/addon/switchyomega/'
 license=('GPLV3')

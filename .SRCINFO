@@ -1,7 +1,7 @@
 pkgbase = firefox-esr-extension-switchyomega
-	pkgdesc = plasma browser integration addon for firefox.
+	pkgdesc = Manage and switch between multiple proxies quickly & easily.
 	pkgver = 2.5.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://addons.mozilla.org/en-US/firefox/addon/switchyomega/
 	arch = any
 	groups = firefox-esr-addons
