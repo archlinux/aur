@@ -3,7 +3,7 @@
 
 _target=mips64-elf
 pkgname=${_target}-newlib
-pkgver=4.3.0.20230120
+pkgver=4.4.0.20231231
 pkgrel=2
 pkgdesc="A C library intended for use on embedded systems (${_target})"
 arch=('any')
@@ -12,7 +12,7 @@ license=('BSD')
 makedepends=("${_target}-gcc-stage1")
 options=( '!strip' '!emptydirs')
 source=("ftp://sourceware.org/pub/newlib/newlib-${pkgver}.tar.gz")
-sha256sums=('83a62a99af59e38eb9b0c58ed092ee24d700fff43a22c03e433955113ef35150')
+sha256sums=('0c166a39e1bf0951dfafcd68949fe0e4b6d3658081d6282f39aeefc6310f2f13')
 
 prepare() {
   rm -rf build
