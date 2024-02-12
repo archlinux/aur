@@ -1,7 +1,7 @@
 # Maintainer: eckso <eckso@eckso.io>
 
 pkgname=knobs
-pkgver=0.9.10
+pkgver=0.9.11
 pkgrel=1
 pkgdesc='Manage system clock frequencies, power limits, and related values.'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'clang' 'cmake' 'git')
 optdepends=()
 depends=('systemd')
 conflicts=('knobs')
-_commit='ed8e84c469e492dc66ec9b2e695af87aa84f5e31'
+_commit='ce57c188a1ed4f183fcd013d4d7b572306ccab56'
 source=("$pkgname::git+https://git.sr.ht/~eckso/knobs#commit=$_commit")
 sha1sums=('SKIP')
 install=$pkgname.install
@@ -31,9 +31,10 @@ package() {
   install -Dm755 "target/release/knobs-daemon" "$pkgdir/usr/bin/knobs-daemon"
   install -Dm755 "target/release/knobs" "$pkgdir/usr/bin/knobs"
   install -dm755 "$pkgdir/etc/knobs"
-  install -Dm644 "contrib/config/config.toml" "$pkgdir/etc/knobs/config.toml"
-  install -Dm644 "contrib/systemd/knobs-daemon.service" "$pkgdir/usr/lib/systemd/system/knobs-daemon.service"
+  install -Dm644 "file/config/config-basic.toml" "$pkgdir/etc/knobs/config.toml"
+  install -Dm644 "file/systemd/knobs-daemon.service" "$pkgdir/usr/lib/systemd/system/knobs-daemon.service"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/doc/${pkgname}/LICENSE"
   install -Dm644 "doc/CHANGELOG.md" "$pkgdir/usr/share/doc/${pkgname}/CHANGELOG.md"
+  install -Dm644 "doc/KNOBS-VS-RYZENADJ.md" "$pkgdir/usr/share/doc/${pkgname}/KNOBS-VS-RYZENADJ.md"
 }
