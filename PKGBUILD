@@ -4,7 +4,7 @@
 pkgbase=open3d
 pkgname=( {,python-}open3d python-py3d )
 pkgver=0.18.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="A Modern Library for 3D Data Processing"
 arch=('x86_64')
@@ -23,6 +23,8 @@ depends=(
     libpng
     mesa
     python
+    python-plotly
+    python-dash
     pybind11
     xorg-server-devel
     gcc12

@@ -1,7 +1,7 @@
 pkgbase = open3d
 	pkgdesc = A Modern Library for 3D Data Processing
 	pkgver = 0.18.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = http://www.open3d.org
 	arch = x86_64
@@ -21,6 +21,8 @@ pkgbase = open3d
 	depends = libpng
 	depends = mesa
 	depends = python
+	depends = python-plotly
+	depends = python-dash
 	depends = pybind11
 	depends = xorg-server-devel
 	depends = gcc12
