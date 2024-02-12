@@ -1,7 +1,7 @@
 # Contributor: Rowisi < nomail <at> private <dot> com >
 # Maintainer: So1ar <so1ar114514@gmail.com>
 
-pkgname=hmcl-stable-bin
+pkgname=hmcl-bin
 _ver=3.5.5.235
 pkgver=${_ver}
 pkgrel=1
