@@ -1,0 +1,21 @@
+pkgbase = libgnome-keyring
+	pkgdesc = GNOME keyring client library (deprecated)
+	pkgver = 3.12.0+r14+g23438cc
+	pkgrel = 1
+	epoch = 1
+	url = https://gitlab.gnome.org/Archive/libgnome-keyring
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = gnome-common
+	makedepends = gobject-introspection
+	makedepends = intltool
+	makedepends = vala
+	depends = dbus
+	depends = glib2
+	depends = libgcrypt
+	optdepends = org.freedesktop.secrets: secret storage backend
+	source = git+https://gitlab.gnome.org/Archive/libgnome-keyring.git#commit=23438cc767a744f29aeaf8cb8746f8d5ce9cdb32
+	b2sums = SKIP
+
+pkgname = libgnome-keyring
