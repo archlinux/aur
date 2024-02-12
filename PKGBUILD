@@ -2,8 +2,8 @@
 
 pkgname=mod-desktop-bin
 provides=(${pkgname//-bin/""})
-pkgver=0.0.9
-pkgrel=6
+pkgver=0.0.10
+pkgrel=1
 pkgdesc="MOD Desktop Application"
 arch=('x86_64')
 url="https://github.com/moddevices/mod-desktop"
@@ -12,7 +12,7 @@ conflicts=("$provides" "$provides-git")
 
 source=("$provides-$pkgver-linux-$arch.tar.xz::$url/releases/download/$pkgver/$provides-$pkgver-linux-$arch.tar.xz")
 
-sha256sums=('5ede4c3501a33979881cbff435273b60923c20c4f5ba4120f06e50b9398cd091')
+sha256sums=('f58ddb42f90b4c2add17d288e9e6fb5ccd261edf92ecfe5bc5df64ebd8f6cbf4')
 
 package() {
   # Replace the path in mod-desktop.desktop
@@ -25,5 +25,4 @@ package() {
 
   # Install desktop file from the extracted archive
   install -Dm644 "$provides-$pkgver-linux-$arch/mod-desktop.desktop" "$pkgdir/usr/share/applications/$provides.desktop"
-
 }
