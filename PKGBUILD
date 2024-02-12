@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppxlib'
 pkgname="ocaml-$_projectname"
-pkgver='0.31.0'
+pkgver='0.32.0'
 pkgrel='1'
 pkgdesc='Standard infrastructure for ppx rewriters'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('ocaml>=4.04.1' 'ocaml-base>=0.15.0' 'ocaml-compiler-libs-repackaged>=0
 makedepends=('dune>=2.7.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('95720e8de3fa099b89a3a80f7b36bac5dd2cb638bbf1d1836e530e0f0099c041e873ea416d82829b58485d7fa435de226eb66a79fc4901cba949c3ecddaca3ce')
+sha512sums=('9e7f593cdde082b2fab044a7da93d70213acb9651c085a2b9ac6652a1c399612c19ad78ab390b5bff6a1d4c987a07a465c75072f24ffc4ce6b5cd5d83b92e8a9')
 
 _sourcedirectory="$_projectname-$pkgver"
 
@@ -21,8 +21,7 @@ build() {
 	dune build --release --verbose
 }
 
-# fails because of a circular dependency on this package by ppx_jane
-# $pkgname-$pkgver-fix-tests.diff::https://github.com/ocaml-ppx/ppxlib/pull/111
+# Fails because of a circular dependency on this package by ppx_jane
 # check() {
 #	cd "$srcdir/$_sourcedirectory/"
 #	dune runtest --release --verbose
