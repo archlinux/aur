@@ -1,0 +1,13 @@
+pkgbase = gog-surviving_mars_project_laika
+	pkgdesc = DLC for the surviving mars game.
+	pkgver = 1.5_fuglesang_1011166
+	pkgrel = 1
+	url = https://www.gog.com/en/game/surviving_mars_project_laika
+	arch = x86_64
+	license = custom
+	depends = gog-surviving_mars
+	noextract = surviving_mars_project_laika_1_5_fuglesang_1011166_55908.sh
+	source = surviving_mars_project_laika_1_5_fuglesang_1011166_55908.sh::gog://surviving_mars_project_laika_1_5_fuglesang_1011166_55908.sh
+	sha256sums = a4d2d28934b71ea96f337bb777cb2db4aa88fae3db469a2bbc4703938366b806
+
+pkgname = gog-surviving_mars_project_laika
