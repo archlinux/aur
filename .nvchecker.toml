@@ -1,0 +1,4 @@
+[imagescan]
+source = 'gitlab'
+gitlab = 'utsushi/imagescan'
+use_max_tag = true
