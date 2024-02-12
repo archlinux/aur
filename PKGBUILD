@@ -1,10 +1,10 @@
 pkgname=mpv-uosc
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Feature-rich minimalist proximity-based UI for MPV player."
 arch=("x86_64")
 url="https://github.com/tomasklaen/uosc"
-license=("LGPL-3.0-only")
+license=("LGPL-2.1-or-later")
 optdepends=(
     "mpv-thumbfast: for showing thumbnails on-the-fly on seek"
 )
@@ -30,7 +30,7 @@ package(){
     depends=("mpv")
     cd "${srcdir}/uosc-${pkgver}"
     mkdir -p "${pkgdir}/usr/share/mpv/scripts"
-    cp -r ./src/uosc "${pkgdir}/usr/share/mpv/scripts/uosc"
+    cp -a --no-preserve=ownership ./src/uosc "${pkgdir}/usr/share/mpv/scripts/uosc"
     install -Dm755 ziggy-linux "${pkgdir}/usr/share/mpv/scripts/uosc/bin/ziggy-linux"
     install -Dm644 ./src/uosc.conf "${pkgdir}/usr/share/mpv/script-opts/uosc.conf"
     for font in uosc_icons.otf uosc_textures.ttf
