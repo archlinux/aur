@@ -3,14 +3,13 @@
 _pkgname=PERFect
 _pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
-pkgrel=1
-pkgdesc='Permutation filtration for microbiome data'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Permutation filtration for microbiome data"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
-  r
   r-fitdistrplus
   r-ggplot2
   r-phyloseq
@@ -24,15 +23,16 @@ optdepends=(
   r-knitr
   r-rmarkdown
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('495bb1d98f738498886285f66844f8d0f76caa65e5c5fc256242846b5d8eeb79')
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('04293e236ab353679d23cf30fa18b49f')
+b2sums=('980c886b4904b002190ba78a61c2b11152aa4e0ebfe7d4fadd0b8b8230b10e8b1eda5b33d6089ff6e09fea4ec5aa6a141e6551d726253e8f0fc903b88e39f528')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
