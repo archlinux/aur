@@ -1,0 +1,13 @@
+--- a/xpcom/base/nsCOMPtr.h	2023-06-29 13:34:21.000000000 -0400
++++ b/xpcom/base/nsCOMPtr.h	2023-07-06 11:03:59.049048830 -0400
+@@ -815,10 +815,6 @@
+                                  const nsIID& aIID) {
+   // Allow QIing to nsISupports from nsISupports as a special-case, since
+   // SameCOMIdentity uses it.
+-  static_assert(
+-      std::is_same_v<T, nsISupports> ||
+-          !(std::is_same_v<T, U> || std::is_base_of<T, U>::value),
+-      "don't use do_QueryInterface for compile-time-determinable casts");
+   void* newRawPtr;
+   if (NS_FAILED(aQI(aIID, &newRawPtr))) {
+     newRawPtr = nullptr;
