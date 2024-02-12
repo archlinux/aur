@@ -1,6 +1,6 @@
 pkgbase = vcluster
 	pkgdesc = Create fully functional virtual Kubernetes clusters
-	pkgver = 0.18.1
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://vcluster.com
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = vcluster
 	license = apache
 	makedepends = go
 	depends = glibc
-	source = vcluster-0.18.1.tar.gz::https://github.com/loft-sh/vcluster/archive/refs/tags/v0.18.1.tar.gz
-	sha256sums = a17295a5e37c705c1a87910710937c06ea01a1a6ecadb21afbb2b4d04445f914
+	source = vcluster-0.19.0.tar.gz::https://github.com/loft-sh/vcluster/archive/refs/tags/v0.19.0.tar.gz
+	sha256sums = b2437cc875b4785a86e48e4568a9856fa17aa34eebd05ffb8acfd36b4e3d6738
 
 pkgname = vcluster
