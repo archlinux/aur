@@ -19,8 +19,11 @@ url="https://${_pkg}.org/"
 license=(
   'BSD'
 )
-depends=(
+makedepends=(
   "${_py}-setuptools"
+)
+provides=(
+  "pygmentize2"
 )
 _pypi="https://pypi.org/packages/source"
 source=(
@@ -36,14 +39,14 @@ package() {
 
   "${_py}" \
     setup.py \
-    install \
-    --root="${pkgdir}" \
-    -O1
+      install \
+        --root="${pkgdir}" \
+        -O1
   install \
     -Dm644 \
     LICENSE \
     -t \
-      "${pkgdir}/usr/share/licenses/${pkgname}"
+    "${pkgdir}/usr/share/licenses/${pkgname}"
 
   # pygmentize is included in python-pygments
   find \
