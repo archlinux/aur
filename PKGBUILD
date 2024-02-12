@@ -1,9 +1,9 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=licensee
-_name=licensee
 pkgver=9.16.1
-pkgrel=1
+_commit=7a206e936e479bf7dfaf396d7f6658f07319d6bd
+pkgrel=2
 pkgdesc="Detect under what license a project is distributed"
 arch=(any)
 url="https://github.com/licensee/licensee"
@@ -27,11 +27,8 @@ checkdepends=(
   ruby-webmock
 )
 options=(!emptydirs)
-
-_commit=7a206e936e479bf7dfaf396d7f6658f07319d6bd # git rev-parse "$pkgver"
-source=("git+$url.git?signed#commit=$_commit")
+source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
-validpgpkeys=('5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23') # GitHub (web-flow commit signing)
 
 _archive="$pkgname"
 
@@ -45,32 +42,31 @@ prepare() {
   cd "$_archive"
 
   # Update gemspec/Gemfile to allow newer version of the dependencies
-  sed --in-place --regexp-extended 's|~>|>=|g' "$_name.gemspec"
+  sed --in-place --regexp-extended 's|~>|>=|g' "$pkgname.gemspec"
 }
 
 build() {
   cd "$_archive"
 
-  local _gemdir
-  _gemdir="$(gem env gemdir)"
+  local gemdir="$(gem env gemdir)"
 
-  gem build "$_name.gemspec"
+  gem build "$pkgname.gemspec"
 
   gem install \
     --local \
     --verbose \
     --ignore-dependencies \
     --no-user-install \
-    --install-dir "tmp_install/$_gemdir" \
+    --install-dir "tmp_install/$gemdir" \
     --bindir "tmp_install/usr/bin" \
-    "$_name-$pkgver.gem"
+    "$pkgname-$pkgver.gem"
 
   # remove unrepreducible files
   rm --force --recursive --verbose \
-    "tmp_install/$_gemdir/cache/" \
-    "tmp_install/$_gemdir/doc/$_name-$pkgver/ri/ext/"
+    "tmp_install/$gemdir/cache/" \
+    "tmp_install/$gemdir/doc/$pkgname-$pkgver/ri/ext/"
 
-  find "tmp_install/$_gemdir/gems/" \
+  find "tmp_install/$gemdir/gems/" \
     -type f \
     \( \
     -iname "*.o" -o \
@@ -82,7 +78,7 @@ build() {
     \) \
     -delete
 
-  find "tmp_install/$_gemdir/extensions/" \
+  find "tmp_install/$gemdir/extensions/" \
     -type f \
     \( \
     -iname "mkmf.log" -o \
@@ -99,26 +95,23 @@ check() {
   git config --global user.email "you@example.com"
   git config --global user.name "Your Name"
 
-  _excluded_tests=(
+  local excluded_tests=(
     bin_spec.rb
     licensee/commands/detect_spec.rb
     licensee/commands/license_path_spec.rb
     licensee/commands/version_spec.rb
   )
-  _exclude_pattern_arg="spec/{$(printf "%s," "${_excluded_tests[@]}")"
-  _exclude_pattern_arg="${_exclude_pattern_arg%,}}"
+  local excluded_tests_pattern="spec/{${excluded_tests[0]}$(printf ',%s' "${excluded_tests[@]:1}")}"
 
-  local _gemdir
-  _gemdir="$(gem env gemdir)"
-  GEM_HOME="tmp_install/$_gemdir" rspec \
-    --exclude-pattern "$_exclude_pattern_arg"
+  GEM_HOME="tmp_install/$(gem env gemdir)" rspec \
+    --exclude-pattern "$excluded_tests_pattern"
 }
 
 package() {
   cd "$_archive"
 
-  cp --archive --verbose tmp_install/* "$pkgdir"
+  cp --archive tmp_install/* "$pkgdir"
 
-  install --verbose -D --mode=0644 ./*.md --target-directory "$pkgdir/usr/share/doc/$pkgname"
-  install --verbose -D --mode=0644 LICENSE.md --target-directory "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.md
 }
