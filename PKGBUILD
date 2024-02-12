@@ -3,7 +3,7 @@
 pkgname=plasma-activities-stats-git
 pkgver=6.0.80_r486.g5f7ec2d
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=1
+pkgrel=2
 pkgdesc='A library for accessing the usage data collected by the activities system'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -14,12 +14,12 @@ depends=(gcc-libs
          kconfig
          qt6-base)
 makedepends=(doxygen
-             extra-cmake-modules
+             extra-cmake-modules-git
              qt6-doc
              qt6-tools)
 conflicts=(kactivities-stats kactivities-stats-git)
 provides=(kactivities-stats kactivities-stats-git)
-source=(git://invent.kde.org/plasma/plasma-activities-stats.git)
+source=(git+https://invent.kde.org/plasma/plasma-activities-stats.git)
 sha256sums=('SKIP')
 
 pkgver() {
