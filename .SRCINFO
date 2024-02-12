@@ -1,11 +1,10 @@
 pkgbase = r-cnvgears
 	pkgdesc = A Framework of Functions to Combine, Analize and Interpret CNVs Calling Results
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/CNVgears
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-3.0-only
 	depends = r-data.table
 	depends = r-ggplot2
 	optdepends = r-biomart
@@ -22,7 +21,8 @@ pkgbase = r-cnvgears
 	optdepends = r-testthat
 	optdepends = r-usethis
 	optdepends = r-variantannotation
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CNVgears_1.8.0.tar.gz
-	sha256sums = 7d6be48cbd95fe83af70059b2c3797b97ac81d34a8c816f59d9f0d65e7efeddc
+	source = https://bioconductor.org/packages/3.17/bioc/src/contrib/CNVgears_1.8.0.tar.gz
+	md5sums = b1a4be3f56d83bfa3e3c7c67208641b2
+	b2sums = 3259fac597d894d6bffe75a997e9c0d8052fd30643f6b947ecfb62bf754a6979a3ea3196ad4324b0b79f56dffea09d879bc600df7cde46b9b43f899a14e3abba
 
 pkgname = r-cnvgears

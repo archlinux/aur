@@ -3,14 +3,13 @@
 _pkgname=CNVgears
 _pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
-pkgrel=1
-pkgdesc='A Framework of Functions to Combine, Analize and Interpret CNVs Calling Results'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="A Framework of Functions to Combine, Analize and Interpret CNVs Calling Results"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-data.table
   r-ggplot2
 )
@@ -30,15 +29,16 @@ optdepends=(
   r-usethis
   r-variantannotation
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7d6be48cbd95fe83af70059b2c3797b97ac81d34a8c816f59d9f0d65e7efeddc')
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('b1a4be3f56d83bfa3e3c7c67208641b2')
+b2sums=('3259fac597d894d6bffe75a997e9c0d8052fd30643f6b947ecfb62bf754a6979a3ea3196ad4324b0b79f56dffea09d879bc600df7cde46b9b43f899a14e3abba')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
