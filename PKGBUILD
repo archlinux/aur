@@ -4,34 +4,34 @@
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=proxygen
-pkgver=2024.02.05.00
+pkgver=2024.02.12.00
 pkgrel=1
 pkgdesc="A collection of C++ HTTP libraries including an easy to use HTTP server"
-arch=('x86_64')
+arch=(x86_64)
 url="https://github.com/facebook/proxygen"
-license=('BSD-3-Clause')
+license=(BSD-3-Clause)
 depends=(
-  'boost-libs'
-  'double-conversion'
-  'fizz'
-  'fmt'
-  'folly'
-  'gcc-libs'
-  'gflags'
-  'glibc'
-  'google-glog'
-  'mvfst'
-  'openssl'
-  'wangle'
-  'zlib'
-  'zstd'
+  boost-libs
+  double-conversion
+  fizz
+  fmt
+  folly
+  gcc-libs
+  gflags
+  glibc
+  google-glog
+  mvfst
+  openssl
+  wangle
+  zlib
+  zstd
 )
 makedepends=(
-  'boost'
-  'cmake'
-  'gperf'
-  'gtest'
-  'python'
+  boost
+  cmake
+  gperf
+  gtest
+  python
 )
 provides=(
   liblibhttperf2.so
@@ -41,12 +41,13 @@ provides=(
   libproxygenhqloggerhelper.so
   libproxygenhttpserver.so
 )
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('b16277cb1517610851ed4f1fce50ad7d34b78a17983abc5db2e26be99dbcd4d8')
 
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0852eb2f37af640ec20ee5de32b1e53643fda05e22658c5062e8d808a5a44288')
+_archive="$pkgname-$pkgver"
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$_archive"
 
   cmake -S . -B build \
     -DCMAKE_BUILD_TYPE=None \
@@ -54,15 +55,15 @@ build() {
     -Wno-dev \
     -DBUILD_TESTS=ON \
     -DBUILD_SHARED_LIBS=ON \
-    -DPACKAGE_VERSION="${pkgver}"
+    -DPACKAGE_VERSION="$pkgver"
   cmake --build build
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "$_archive"
 
   # Skip failing tests - not sure why they fail
-  _skipped_tests=(
+  local skipped_tests=(
     ConnectionFilterTest.Test
     GetListenSocket.TestBootstrapWithBinding
     GetListenSocket.TestBootstrapWithNoBinding
@@ -80,14 +81,14 @@ check() {
     SSL.TestUpdateTLSCredentials
     ScopedServerTest.StartSSLWithInsecure
   )
-  _skipped_tests_pattern="${_skipped_tests[0]}$(printf "|%s" "${_skipped_tests[@]:1}")"
-  ctest --test-dir build --output-on-failure -E "$_skipped_tests_pattern"
+  local skipped_tests_pattern="${skipped_tests[0]}$(printf "|%s" "${skipped_tests[@]:1}")"
+  ctest --test-dir build --output-on-failure -E "$skipped_tests_pattern"
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$_archive"
 
-  DESTDIR="${pkgdir}" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
