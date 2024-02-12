@@ -5,12 +5,12 @@
 pkgname=dooble-bin
 _pkgname=Dooble
 pkgver=2023.11.30
-pkgrel=2
+pkgrel=3
 pkgdesc="Web browser based on QtWebEngine"
 arch=("x86_64")
 url="https://textbrowser.github.io/dooble"
 _ghurl="https://github.com/textbrowser/dooble"
-license=('custom')
+license=('LicenseRef-Dooble')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -66,7 +66,7 @@ depends=(
   'libxkbfile'
   'nss'
 )
-optdependes=(
+optdepends=(
   'bzip2: needed in plugins/multimedia/libffmpegmediaplugin.so'
 )
 makedepends=(

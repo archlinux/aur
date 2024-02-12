@@ -1,10 +1,10 @@
 pkgbase = dooble-bin
 	pkgdesc = Web browser based on QtWebEngine
 	pkgver = 2023.11.30
-	pkgrel = 2
+	pkgrel = 3
 	url = https://textbrowser.github.io/dooble
 	arch = x86_64
-	license = custom
+	license = LicenseRef-Dooble
 	makedepends = findutils
 	depends = at-spi2-core
 	depends = cairo
@@ -57,6 +57,7 @@ pkgbase = dooble-bin
 	depends = libxi
 	depends = libxkbfile
 	depends = nss
+	optdepends = bzip2: needed in plugins/multimedia/libffmpegmediaplugin.so
 	provides = dooble=2023.11.30
 	conflicts = dooble
 	source = dooble-2023.11.30.tar.gz::https://github.com/textbrowser/dooble/releases/download/2023.11.30/Dooble-2023.11.30_amd64.deb
