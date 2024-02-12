@@ -1,14 +1,16 @@
 pkgbase = mixing-station
 	pkgdesc = Mixer remote control for multiple mixers
 	pkgver = 2.0.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://mixingstation.app/
 	arch = any
 	license = custom:proprietary
 	depends = jre11-openjdk
 	depends = zenity
 	conflicts = mixing-station-pc
+	conflicts = mixing-station-pc-bin
 	replaces = mixing-station-pc
+	replaces = mixing-station-pc-bin
 	source = mixing-station-2.0.4-release.zip::https://mixingstation.app/backend/api/web/download/update/mixing-station-pc/release
 	source = mixing-station
 	source = copyright.txt
