@@ -4,7 +4,7 @@
 _pkgname=amazingmarvin
 
 pkgname="${_pkgname}"-appimage
-pkgver=1.64.1
+pkgver=1.64.3
 pkgrel=1
 pkgdesc="Personal productivity app that incorporates principles from behavioral psychology to help you beat procrastination, feel in control and finish your to-do list"
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://amazingmarvin.s3.amazonaws.com/Marvin-${pkgver}.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('c8c2e6b75140f4f8011ad014e25717d25f35e424adf8550c7136c464bca6dc12')
+sha256sums_x86_64=('b67292de29c718514b0730dbeb248014a6ffe7559618c8ecc79499fe453d0cab')
 
 prepare() {
     chmod +x "${_appimage}"
