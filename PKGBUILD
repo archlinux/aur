@@ -3,14 +3,13 @@
 _pkgname=trena
 _pkgver=1.22.2
 pkgname=r-${_pkgname,,}
-pkgver=1.22.2
-pkgrel=1
-pkgdesc='Fit transcriptional regulatory networks using gene expression, priors, machine learning'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=3
+pkgdesc="Fit transcriptional regulatory networks using gene expression, priors, machine learning"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-annotationdbi
   r-biomart
   r-biostrings
@@ -39,20 +38,22 @@ optdepends=(
   r-bsgenome.scerevisiae.ucsc.saccer3
   r-formatr
   r-knitr
+  r-limma
   r-markdown
   r-plyr
   r-rmarkdown
   r-runit
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('01f278dd7c60fd72e5d47a43f25555071651ec1eb46888ad656f8ef244c550f6')
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('ee87f22b3b43424a5b517596008b90a0')
+b2sums=('9a778c864b78b34a3945af7b6dfd8c6ad5bf4782bf8586b5e8fc1d636748093083b20e7ad514c35bd0133fb705a401c466a93d2ad01f14238a7aff9ef9248585')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
