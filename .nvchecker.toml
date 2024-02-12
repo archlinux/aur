@@ -1,0 +1,3 @@
+[pyqt5-webengine]
+source = 'pypi'
+pypi = 'PyQtWebEngine'
