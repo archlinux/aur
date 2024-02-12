@@ -2,13 +2,13 @@
 # Co-Maintainer: Mikata Riko <sanbikappa@qq.com>
 
 pkgname='kikoplay-bin'
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="linux danmaku player"
 arch=('x86_64')
 license=('GPL3')
 url="https://github.com/KikoPlayProject/KikoPlay"
-depends=('mpv' 'lua53' 'qhttpengine')
+depends=('mpv' 'lua53' 'qhttpengine' 'qt5-websockets')
 conflicts=('kikoplay')
 optdepends=('aria2: for downloading')
 source=(
@@ -17,7 +17,7 @@ source=(
     "git+https://github.com/KikoPlayProject/KikoPlayScript"
 )
 sha256sums=(
-    "89a0ffe43c351ac7bf9bf0cfd8d5f7294a24723b02a6c29e0f3786e96a662daa"
+    "2074ec93642ec092186b8ba14691fb45c1efad03472b2729f006301631b02550"
     SKIP
 )
 
