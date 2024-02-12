@@ -1,0 +1,13 @@
+post_install() {
+    msg=("Use /usr/bin/ulwgl-run-cli to unpack and use ulwgl launcher."
+         "Example of running Satisfactory via legendary, edit ~/.config/legendary/config.ini like so:"
+         ""
+         "[CrabEA.env]"
+         "WINEPREFIX = /path/to/wineprefix"
+         "GAMEID = ulwgl-526870"
+         ""
+         "[CrabEA]"
+         "wrapper = /usr/bin/ulwgl-run-cli"
+         "no_wine = true")
+    printf "%s\n" "${msg[@]}"
+}
