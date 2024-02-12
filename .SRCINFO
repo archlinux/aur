@@ -6,6 +6,7 @@ pkgbase = podman-desktop-bin
 	arch = x86_64
 	license = Apache-2.0
 	provides = podman-desktop
+	conflicts = podman-desktop
 	source = podman-desktop-bin-1.7.0.tar.gz::https://github.com/containers/podman-desktop/releases/download/v1.7.0/podman-desktop-1.7.0.tar.gz
 	source = icon.svg
 	source = podman-desktop.desktop
