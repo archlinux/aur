@@ -2,7 +2,7 @@
 
 pkgname=shufflecake
 _gitname=$pkgname-c
-pkgver=v0.4.1
+pkgver=v0.4.4
 pkgrel=1
 pkgdesc="Plausible deniability layer for Linux (Userland & DKMS)"
 arch=("x86" "x86_64")
@@ -19,7 +19,7 @@ source=(
 )
 
 # Update with `updpkgsums`
-sha256sums=('07506d831a3d58217e39f43915c516bcbb78dca8dbc13432ef9840dae6da4ca0'
+sha256sums=('13ca850bcb3aa63ef38276e2871a521589ec603a9ea2fdb982560f10e4d2f528'
             'eb95503a32f8aea67a78e1503a97a29cdedfa9e7d7bafd743734faf4f4b69236'
             'ce91cea869435bdc7d34c9777ef3112960e9b260556501125bbb048a9d6f4416')
 
