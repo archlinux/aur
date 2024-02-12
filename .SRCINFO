@@ -1,0 +1,15 @@
+pkgbase = comroid-java-api-git
+	pkgdesc = Installs common Java API of comroid Products to mavenLocal()
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/comroid-git/japi
+	arch = any
+	license = Apache License, Version 2.0
+	makedepends = java-environment>=17
+	makedepends = gradle>=7
+	depends = java-runtime>=17
+	options = !strip
+	source = git+https://github.com/comroid-git/japi.git
+	md5sums = SKIP
+
+pkgname = comroid-java-api-git
