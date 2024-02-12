@@ -1,11 +1,11 @@
 pkgbase = peazip-gtk2-bin
 	pkgdesc = PeaZip file manager and archiver (GTK 2)
-	pkgver = 9.6.0
+	pkgver = 9.7.0
 	pkgrel = 1
 	url = https://peazip.github.io
 	changelog = changelog.txt
 	arch = x86_64
-	license = LGPL3
+	license = LGPL-3.0-or-later
 	depends = gtk2
 	optdepends = p7zip: Command-line file archiver with high compression ratio
 	optdepends = quad: High-performance file compressor that utilizes an advanced LZ-based compression algorithm
@@ -18,7 +18,7 @@ pkgbase = peazip-gtk2-bin
 	conflicts = peazip-qt5
 	conflicts = peazip-qt5-bin
 	options = !emptydirs
-	source = https://github.com/peazip/PeaZip/releases/download/9.6.0/peazip-9.6.0.LINUX.GTK2-1.x86_64.rpm
-	sha256sums = 29954fa87cc028fdf18e18665c026ede93c66d16bca5257ac3e799f2c0aa4947
+	source = https://github.com/peazip/PeaZip/releases/download/9.7.0/peazip-9.7.0.LINUX.GTK2-1.x86_64.rpm
+	sha256sums = 9942d64e43da70a0ecbf7d7aa46c396c8ef94781c80e5de4aa876bcdc8ca08e9
 
 pkgname = peazip-gtk2-bin

@@ -1,4 +1,10 @@
-* Sat Dec 16 2023 Yvaniak <ewen at philippot dot biz> - 9.6.0-1
+* Sun Feb 11 2023 Yvaniak <yvaniak11 at gmail dot com> - 9.7.0-1
+  PeaZip 9.7.0 release is primarily meant to update app's foundations: sources are now
+  built with Lazarus 3.0, Windows dark mode is now fully supported, and a native Linux
+  aarch64 version is now available. The scripting generation engine is improved, and
+  the app now supports Brotli 1.1.0 and Zstd 1.5.5 backend.
+
+* Sat Dec 16 2023 Yvaniak <yvaniak11 at gmail dot com> - 9.6.0-1
   PeaZip 9.6.0 introduces Profiles to separately store all configuration data (including
   preferences, bookmarks, custom apps, password manager, etc) for different users, or for
   different purposes, or to easily export the profile to another machine.
@@ -8,7 +14,7 @@
   This release also improves the ability to self-check the integrity of its binaries,
   including also libraries (.dll, .so, etc) and sfx modules.
 
-* Fri Nov 10 2023 Yvaniak <ewen at philippot dot biz> - 9.5.0-1
+* Fri Nov 10 2023 Yvaniak <yvaniak11 at gmail dot com> - 9.5.0-1
   PeaZip 9.5.0 comes with many under the hood updates, as improved performances with the
   new memory management and task scheduler, better capabilities to use alias and binaries
   in system paths, and new batch command switches for archive creation.
@@ -18,7 +24,7 @@
   and with the option to remember open tabs, and reopen last closed tab.
   Also, the main theme icons were updated to show archive type extensions.
 
-* Fri Nov 10 2023 Yvaniak <ewen at philippot dot biz> - 9.4.0-1
+* Fri Nov 10 2023 Yvaniak <yvaniak11 at gmail dot com> - 9.4.0-1
   PeaZip 9.4.0 introduces support for adding, editing, and removing archive-level
   comments in RAR and ZIP/ZIPX files, interactively (Alt+M) and from batch scripts, on
   single or multiple archives at once even of mixed types.
@@ -29,7 +35,7 @@
   A total of 234 file extensions can now be opened as archives by PeaZip, with the 
   addition of Apple iWork file formats.
 
-* Fri Nov 10 2023 Yvaniak <ewen at philippot dot biz> - 9.3.0-1
+* Fri Nov 10 2023 Yvaniak <yvaniak11 at gmail dot com> - 9.3.0-1
   PeaZip 9.3.0 improves the archive / file manager, adding the ability to display
   file-level comments in archives, and showing if current archive type can be edited.
   Free space is now checked before archiving and extraction tasks.
@@ -40,7 +46,7 @@
   for archive types.
 
 
-* Fri Nov 10 2023 Yvaniak <ewen at philippot dot biz> - 9.2.0-1
+* Fri Nov 10 2023 Yvaniak <yvaniak11 at gmail dot com> - 9.2.0-1
   PeaZip 9.2.0 improves the GUI with more customization options for address bar and tab
   bar, and re-organized support section, with easier access to online resources,
   documentation, issue tracker, and to settings relevant to privacy and security.

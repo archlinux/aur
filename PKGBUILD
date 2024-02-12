@@ -1,4 +1,4 @@
-# Maintainer: Yvaniak <ewen at philippot dot biz>
+# Maintainer: Yvaniak <Yvaniak 11 at gmail dot com>
 # Contributor: Vladimir Svyatski <vsvyatski@yandex.ru>
 # Previous Maintainer: Edoardo Brogiolo <edoardo@brogiolo.eu>
 # Previous Maintainer: Dimitris Kiziridis <ragouel@outlook.com>
@@ -8,12 +8,12 @@
 # Contributor: TuxSpirit <tuxspirit@archlinux.fr>
 
 pkgname=peazip-gtk2-bin
-pkgver=9.6.0
+pkgver=9.7.0
 pkgrel=1
 pkgdesc='PeaZip file manager and archiver (GTK 2)'
 arch=('x86_64')
 url='https://peazip.github.io'
-license=('LGPL3')
+license=('LGPL-3.0-or-later')
 depends=('gtk2')
 options=('!emptydirs')
 optdepends=('p7zip: Command-line file archiver with high compression ratio'
@@ -25,7 +25,7 @@ optdepends=('p7zip: Command-line file archiver with high compression ratio'
 provides=('peazip')
 conflicts=('peazip-qt-bin' 'peazip-qt5' 'peazip-qt5-bin')
 source=("https://github.com/peazip/PeaZip/releases/download/${pkgver}/peazip-${pkgver}.LINUX.GTK2-1.${CARCH}.rpm")
-sha256sums=('29954fa87cc028fdf18e18665c026ede93c66d16bca5257ac3e799f2c0aa4947')
+sha256sums=('9942d64e43da70a0ecbf7d7aa46c396c8ef94781c80e5de4aa876bcdc8ca08e9')
 changelog=changelog.txt
 
 prepare() {
