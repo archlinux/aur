@@ -234,9 +234,7 @@ build() {
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
-  export MOZ_ENABLE_FULL_SYMBOLS=1
   export MOZ_NOSPAM=1
-  export MOZ_SOURCE_REPO="$_repo"
 
   # LTO/PGO needs more open files
   ulimit -n 4096
@@ -248,7 +246,7 @@ build() {
     _pkgver_prof=$(
       cd "${SRCDEST:-$startdir}"
       for i in *.profdata ; do [ -f "$i" ] && echo "$i" ; done \
-        | sort -rV | head -1
+        | sort -rV | head -1 | sed -E 's&^[^0-9]+-([0-9\.]+)-merged.profdata&\1&'
     )
 
     # new profile for new major version
@@ -258,8 +256,8 @@ build() {
     fi
 
     # new profile for new minor version
-    _tmp_old=$(echo "${_pkgver_prof}" | cut -d'-' -f2 | cut -d'.' -f2 )
-    _tmp_new=$(echo "${pkgver}" | cut -d'-' -f2 | cut -d'.' -f2 )
+    _tmp_old=$(echo "${_pkgver_prof}" | cut -d'-' -f2 | cut -d'.' -f2)
+    _tmp_new=$(echo "${pkgver}" | cut -d'-' -f2 | cut -d'.' -f2)
 
     if [ "${_tmp_new:-0}" -gt "${_tmp_old:-0}" ] ; then
       _build_pgo_reuse=false
