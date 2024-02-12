@@ -1,0 +1,6 @@
+[accounts-qml-module]
+source = 'gitlab'
+gitlab = 'accounts-sso/accounts-qml-module'
+use_max_tag = true
+prefix = 'VERSION_'
+include_regex = 'VERSION.*'
