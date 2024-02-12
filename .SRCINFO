@@ -1,11 +1,11 @@
 pkgbase = jackman-git
 	pkgdesc = Collection of scripts that help managing multiple audio interfaces with Jack
-	pkgver = r61.44efc9d
-	pkgrel = 5
+	pkgver = r93.e49a782
+	pkgrel = 1
 	url = https://github.com/progwolff/jackman
 	install = .install
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = jack
 	depends = alsa-utils
