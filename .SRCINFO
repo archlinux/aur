@@ -1,7 +1,7 @@
 pkgbase = keycloak-hcaptcha
 	pkgdesc = Keycloak deployment that provides similar functionality to Google reCaptcha, but with a more privacy friendly provider named hCaptcha.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/p08dev/keycloak-hcaptcha
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = keycloak-hcaptcha
 	makedepends = maven
 	makedepends = keycloak
 	makedepends = git
-	depends = java-runtime>=
+	depends = java-runtime
 	source = git+https://github.com/p08dev/keycloak-hcaptcha.git#commit=7be998a4bf7333ab2af8e99d41ee208e9c0f8d2a
 	sha256sums = SKIP
 
