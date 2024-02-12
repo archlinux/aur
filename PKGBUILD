@@ -55,17 +55,17 @@ sha256sums=()
 [[ "${_git}" == true ]] && \
   if [[ "${_local}" == true ]]; then
     source+=(
-      "git+${_local}#commit=${_commit}"
+      "${pkgname}-${pkgver}::git+${_local}#commit=${_commit}"
     )
   elif [[ "${_local}" == false ]]; then
     source+=(
-      "git+${url}#commit=${_commit}"
+      "${pkgname}-${pkgver}::git+${url}#commit=${_commit}"
     )
   fi && \
     sha256sums+=(
       SKIP
     )
-[[ "${_git}" == true ]] && \
+[[ "${_git}" == false ]] && \
     source+=(
       "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
     ) && \
@@ -74,8 +74,9 @@ sha256sums=()
     )
 
 check() {
+  ls "${srcdir}"
   cd \
-    "${pkgname}"
+    "${pkgname}-${pkgver}"
   make \
     -k \
     check
@@ -83,7 +84,7 @@ check() {
 
 package() {
   cd \
-    "${pkgname}"
+    "${pkgname}-${pkgver}"
   make \
     DESTDIR="${pkgdir}" \
     install
