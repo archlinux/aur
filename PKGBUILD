@@ -4,10 +4,13 @@
 # Maintainer: Truocolo <truocolo@aol.com>
 
 # shellcheck disable=SC2034
+_git=true
+_offline=true
+_proj="hip"
 _pkg="grub"
 _pkgname="arch-${_pkg}"
 pkgname="${_pkgname}-git"
-pkgver="0.1.r1.g3f11904"
+pkgver=0.1.1.1.r1.gc466b94
 pkgrel=1
 _pkgdesc=(
   'Produces a standalone GRUB binary'
@@ -27,30 +30,55 @@ _gh_ns="themartiancompany"
 _ns="${_gh_ns}"
 _http="${_gh}"
 url="${_http}/${_ns}/${_pkgname}"
+_local="file://${HOME}/${_pkgname}"
 depends=(
   "${_pkg}"
   bash
 )
+provides=(
+  "mk${_pkg}=${pkgver}"
+)
 makedepends=(
-  'git'
-  'make'
+  "make"
+)
+groups=(
+  "${_proj}"
 )
 checkdepends=(
   'shellcheck'
 )
-optdepends=()
+optdepends=(
+  'luks-tools: Format LUKS volume in a GRUB compatible format'  
+)
 provides=(
   "${_pkgname}=${pkgver}"
 )
 conflicts=(
   "${_pkgname}"
 )
-source=(
-  "${_pkgname}::git+${url}.git"
-)
-sha256sums=(
-  'SKIP'
-)
+sha256sums=()
+source=()
+_url="${url}.git"
+_branch="master"
+[[ "${_offline}" == true ]] && \
+  _url="${_local}"
+[[ "${_git}" == true ]] && \
+  makedepends+=(
+    'git'
+  ) && \
+  source+=(
+    "${_pkgname}::git+${_url}"
+  ) && \
+  sha256sums+=(
+    'SKIP'
+  )
+[[ "${_git}" == false ]] && \
+  source+=(
+    "${pkgname}-${pkgver}.tar.gz::${url}/${_branch}.tar.gz"
+  ) && \
+  sha256sums+=(
+    "SKIP"
+  )
 
 _parse_ver() {
   local \
@@ -107,16 +135,18 @@ pkgver() {
 check() {
   make \
     -k check \
-    -C "${_pkgname}"
+    -C \
+      "${_pkgname}"
 }
 
 # shellcheck disable=SC2154
 package() {
   make \
     DESTDIR="${pkgdir}" \
-    PREFIX=/usr \
+    PREFIX="/usr" \
     install \
-      -C "${_pkgname}"
+      -C \
+        "${_pkgname}"
 }
 
 # vim:set sw=2 sts=-1 et:
