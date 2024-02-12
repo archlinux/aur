@@ -1,8 +1,8 @@
 # Maintainer: Diego Parra <diegoparranava@protonmail.com>
 pkgname='waypaper-engine'
-pkgver=1.2.5
+pkgver=1.2.7
 pkgrel=1
-pkgdesc="An Electron-based graphical frontend for setting wallpapers and playlists"
+pkgdesc="A pleasant gui frontend for swww with batteries included!"
 arch=('x86_64')
 url="https://github.com/0bCdian/Waypaper-Engine"
 license=('GLP')
