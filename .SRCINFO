@@ -1,6 +1,6 @@
 pkgbase = ffnvcodec-headers-11-1
 	pkgdesc = FFmpeg version of headers required to interface with Nvidias codec APIs (Version 11.1 for driver 470.xx support)
-	pkgver = 11.1.5.2
+	pkgver = 11.1.5.3
 	pkgrel = 1
 	url = https://git.videolan.org/?p=ffmpeg/nv-codec-headers.git
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = ffnvcodec-headers-11-1
 	makedepends = git
 	provides = ffnvcodec-headers
 	conflicts = ffnvcodec-headers
-	source = git+https://git.videolan.org/git/ffmpeg/nv-codec-headers.git#tag=f8ae7a49bfef2f99d2c931a791dc3863fda67bf3
+	source = git+https://git.videolan.org/git/ffmpeg/nv-codec-headers.git#tag=2c961f06047c31da56d9e1557ea395f3fef20277
 	sha256sums = SKIP
 
 pkgname = ffnvcodec-headers-11-1
