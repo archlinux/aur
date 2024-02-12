@@ -1,63 +1,44 @@
 # Merged with official ABS plasma-workspace PKGBUILD by João, 2021/01/31 (all respective contributors apply herein)
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
-pkgbase=plasma-workspace-git
-pkgname=(plasma-workspace-git plasma-wayland-session-git)
-pkgver=5.27.80_r13935.g85014ec0a
+pkgname=plasma-workspace-git
+pkgver=6.0.80_r15423.g7fb4f817b4
 pkgrel=1
 pkgdesc='KDE Plasma Workspace'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
-license=(LGPL)
-depends=(knotifyconfig-git libksysguard-git ktexteditor-git libqalculate kde-cli-tools-git appstream-qt phonon-qt6-git
-         xorg-xrdb xorg-xsetroot kactivitymanagerd-git kholidays-git xorg-xmessage milou-git prison-git kwin-git
-         plasma-integration-git kpeople-git kactivities-stats-git libkscreen-git kquickcharts-git kuserfeedback-git layer-shell-qt-git)
-makedepends=(git extra-cmake-modules-git kdoctools-git gpsd baloo-git networkmanager-qt-git plasma-wayland-protocols-git plasma5support-git)
-conflicts=(${pkgbase%-git})
-provides=(${pkgbase%-git})
+license=(LGPL-2.0-or-later)
+depends=(accountsservice appstream-qt fontconfig freetype2 gcc-libs glibc icu plasma-activities-git plasma-activities-stats-git kactivitymanagerd-git karchive-git kauth-git kbookmarks-git kcmutils-git kcolorscheme-git kcompletion-git kconfig-git kconfigwidgets-git kcoreaddons kcrash-git kde-cli-tools-git kdeclarative-git kded-git kdbusaddons kglobalaccel-git kguiaddons kholidays ki18n kiconthemes kidletime kio kio-extras kio-fuse kirigami kirigami-addons-git kitemmodels kjobwidgets knewstuff knotifications-git knotifyconfig-git kpackage-git kparts-git kpipewire-git krunner-git kquickcharts-git kscreenlocker-git kservice-git kstatusnotifieritem-git ksvg-git ksystemstats-git ktexteditor-git ktextwidgets-git kuserfeedback-git kwallet-git kwayland-git kwidgetsaddons-git kwin-git kwindowsystem-git kxmlgui-git layer-shell-qt-git libcanberra libice libkexiv2-git libksysguard-git libqalculate libsm libx11 libxau libxcb libxcrypt libxcursor libxfixes libxft libxtst milou-git ocean-sound-theme-git phonon-qt6-git plasma-integration-git libplasma-git plasma5support-git prison-git qt6-5compat qt6-base qt6-declarative qt6-shadertools qt6-svg qt6-tools qt6-virtualkeyboard qt6-wayland sh solid-git systemd-libs wayland xcb-util xcb-util-image xorg-xmessage xorg-xrdb xorg-xsetroot xorg-xwayland zlib)
+makedepends=(git baloo-git extra-cmake-modules-git gpsd kdoctools-git kunitconversion-git networkmanager-qt-git plasma-wayland-protocols-git)
+optdepends=('appmenu-gtk-module: global menu support for GTK2 and some GTK3 applications'
+            'baloo-git: Baloo search runner'
+            'discover-git: manage applications installation from the launcher'
+            'gpsd: GPS based geolocation'
+            'kdepim-addons-git: displaying PIM events in the calendar'
+            'kwayland-integration-git: Wayland integration for Qt5 applications'
+            'networkmanager-qt: IP based geolocation'
+            'plasma-workspace-wallpapers-git: additional wallpapers')
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
 groups=(plasma-git)
-source=("git+https://github.com/KDE/${pkgbase%-git}.git" kde.pam)
-sha256sums=('SKIP'
-            '00090291204baabe9d6857d3b1419832376dd2e279087d718b64792691e86739')
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgbase%-git}
+  cd ${pkgname%-git}
   _ver="$(grep -m1 'set(PROJECT_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cmake -B build -S ${pkgbase%-git} \
+  cmake -B build -S ${pkgname%-git} \
     -DQT_MAJOR_VERSION=6 \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DGLIBC_LOCALE_GEN=OFF \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
 
-package_plasma-workspace-git() {
-  optdepends=('plasma-workspace-wallpapers-git: additional wallpapers'
-              'gpsd: GPS based geolocation' 'networkmanager-qt: IP based geolocation'
-              'kdepim-addons-git: displaying PIM events in the calendar'
-              'appmenu-gtk-module: global menu support for GTK2 and some GTK3 applications'
-              'qt6-virtualkeyboard: virtual keyboard support in lock screen'
-              'baloo-git: Baloo search runner' 'discover: manage applications installation from the launcher')
-  conflicts=(plasma-workspace)
-  provides=(plasma-workspace notification-daemon)
-  backup=('etc/pam.d/kde')
-
+package() {
   DESTDIR="$pkgdir" cmake --install build
-
-  install -Dm644 "$srcdir"/kde.pam "$pkgdir"/etc/pam.d/kde
-
-  # Split plasma-wayland scripts
-  rm -r "$pkgdir"/usr/share/wayland-sessions
-}
-
-package_plasma-wayland-session-git() {
-  pkgdesc='Plasma Wayland session'
-  depends=(plasma-workspace-git qt6-wayland kwayland-integration-git xorg-server-xwayland)
-  conflicts=(plasma-wayland-session)
-  provides=(plasma-wayland-session)
-
-  install -Dm644 build/login-sessions/plasmawayland.desktop "$pkgdir"/usr/share/wayland-sessions/plasmawayland.desktop
 }
