@@ -1,4 +1,4 @@
 src
 pkg
-deb
+*.deb
 *.tar.zst
