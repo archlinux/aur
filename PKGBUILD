@@ -3,7 +3,7 @@
 pkgname="pkgx-git"
 _pkgname="pkgx"
 pkgver=1.1.6.996.ga0da42e
-pkgrel=2
+pkgrel=3
 pkgdesc="the last thing you’ll install"
 arch=("x86_64" "arm")
 url="https://github.com/pkgxdev/pkgx"
