@@ -12,7 +12,7 @@ arch=(any)
 url=https://git.videolan.org/?p=ffmpeg/nv-codec-headers.git
 license=(MIT)
 makedepends=(git)
-_tag=43d91706e097565f57b311e567f0219838bcc2f6
+_tag=2c961f06047c31da56d9e1557ea395f3fef20277
 source=(git+https://git.videolan.org/git/ffmpeg/nv-codec-headers.git#tag=${_tag})
 sha256sums=(SKIP)
 
