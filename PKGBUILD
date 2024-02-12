@@ -4,7 +4,7 @@
 # Contributor: chenx_dust <chenx_dust@outlook.com>
 
 pkgname=clash-rs-bin
-pkgver=0.1.9
+pkgver=0.1.14
 pkgrel=1
 pkgdesc="A custom protocol, rule based network proxy software"
 arch=("x86_64" "armv7h" "aarch64")
@@ -32,9 +32,9 @@ source_aarch64=("${pkgname}-aarch64-${pkgver}::${url}/releases/download/v${pkgve
 sha256sums=('64c1b08fe40af101b5a113212e28aec7e91f63424bec85d50efc5b0fc9ce62ce'
             'c1629d3f5b48053616141076ad8d21031fbca84a352b123d9e3c5bad6406f4a7'
             'd6f1782c0a57591ef6b8c4c898fc7a883363ec45742ae41eee8b91eb68d90f05')
-sha256sums_x86_64=('fa44d5ba0b7cdfafeb543f4b66acbc9aeef84a81640e38f73da243443cfca795')
-sha256sums_armv7h=('c285c33d3cf1372d313ea142006b252a038248ddc4120027b1631d6fed2e6ad2')
-sha256sums_aarch64=('56343dc6a13f731a72a80674e54988ce1e6a40eba1c35acb6e9900e493597afa')
+sha256sums_x86_64=('3576e4a16cce9d01c7e86e4d1c1db0facb3110e406434f44ecdda3e7f117b48d')
+sha256sums_armv7h=('f3cb3197a7691ea7b8cf9611e81feedc0d163fde9cc76a0a778233f0bd1a6176')
+sha256sums_aarch64=('37c759e9946349793bf749d192173c390ab163b4302164515647df35338147d5')
 
 package() {
     cd "${srcdir}"
