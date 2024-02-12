@@ -2,8 +2,8 @@
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=pyprland-git
 pkgver=r255.bfedf14
-pkgrel=1
-pkgdesc="Easy scratchpads, smart monitor placement and more hyprland tweaks (GIT version)"
+pkgrel=2
+pkgdesc="Easy scratchpads, menus, smart monitor placement and more hyprland tweaks (GIT version)"
 arch=(any)
 url="https://github.com/fdev31/pyprland"
 license=('MIT')
