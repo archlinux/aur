@@ -7,8 +7,8 @@ pkgver='r16716.gfd2aab99c'
 pkgrel='1'
 epoch='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - git version'
-# If you're running on armv7h or aarch64, use the electron25-bin package from the AUR for the electron25 dependency
-# If you're running on armv7h, you have to add it to the arch and source arrays of the electron25-bin AUR dependency
+# If you're running on armv7h or aarch64, use the electron28-bin package from the AUR for the electron28 dependency
+# If you're running on armv7h, you have to add it to the arch and source arrays of the electron28-bin AUR dependency
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('SSPL-1.0')
