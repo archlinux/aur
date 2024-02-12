@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname=autosuspend
-pkgver=6.0.0
+pkgver=6.1.1
 pkgrel=1
 pkgdesc="A daemon to suspend and wake up a system based on configurable checks"
 arch=(any)
@@ -29,7 +29,7 @@ makedepends=('python-setuptools'
              'python-sphinxcontrib-plantuml'
              'python-sphinx-autodoc-typehints')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/languitar/autosuspend/archive/v${pkgver}.tar.gz")
-sha256sums=('71fc82d55273508be3c43a7d66c43faa0fe940cda53daabd6e0f89ea9fc1d7e9')
+sha256sums=('fde028f7974e67fd6b1ba7e77b75cacbb5f774eccdd1065956ec25b71b70f053')
 install="${pkgname}.install"
 backup=('etc/autosuspend.conf'
         'etc/autosuspend-logging.conf')
