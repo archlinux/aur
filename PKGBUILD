@@ -2,7 +2,7 @@
 
 pkgname=boundary-desktop
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop Client for Boundary"
 arch=('x86_64')
 url="https://www.boundaryproject.io/"
@@ -16,7 +16,7 @@ b2sums=('9790de157e5bde131b1961a407b2974f7fa86621a3143dc0f59f8a897f6e4adc6ad3227
 
 package() {
   msg2 "Extracting the data.tar.xz"
-  tar -xf data.tar.xz -C "${pkgdir}/"
+  tar -xf data.tar.zst -C "${pkgdir}/"
 
   # .deb has 775
   cd ${pkgdir}

@@ -1,7 +1,7 @@
 pkgbase = boundary-desktop
 	pkgdesc = Desktop Client for Boundary
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.boundaryproject.io/
 	arch = x86_64
 	license = MPL-2.0
