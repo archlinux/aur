@@ -14,24 +14,26 @@
 
 pkgname=zoneminder
 pkgver=1.36.33
-pkgrel=1
+pkgrel=2
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('any')
 url='https://www.zoneminder.com/'
-license=('GPL2')
+license=('GPL-2.0-only')
 depends=('polkit' 'ffmpeg'
          'php-apcu' 'php-fpm' 'php-gd' 'php-intl'
          'perl-archive-zip' 'perl-data-dump' 'perl-date-manip' 'perl-datetime' 'perl-dbd-mysql' 'perl-device-serialport' 'perl-file-slurp'
          'perl-image-info' 'perl-libwww' 'perl-mime-lite' 'perl-mime-tools' 'perl-net-sftp-foreign' 'perl-number-bytes-human' 'perl-php-serialization'
          'perl-sys-cpu' 'perl-sys-meminfo' 'perl-sys-mmap' 'perl-uri-encode'
-         # Needed for ONVIF support
+         # Required for ONVIF support
          'perl-data-uuid' 'perl-io-interface' 'perl-io-socket-multicast' 'perl-soap-wsdl' 'perl-xml-libxml' 'perl-xml-parser'
-         # Needed for SSL support
+         # Required for TLS support
          'perl-lwp-protocol-https'
-         # Needed for Telemetry support
+         # Required for telemetry support
          'perl-json-maybexs'         
-         # Needed for encryption
+         # Required for encryption support
          'perl-crypt-eksblowfish' 'perl-data-entropy'
+         # Required for the JWT-based API
+         'libjwt'
          )
 makedepends=('cmake')
 optdepends=('mariadb'
@@ -87,6 +89,7 @@ build() {
     cd ${pkgname}-${pkgver}
 
     cmake -DCMAKE_INSTALL_PREFIX=/usr \
+          -DLIBJWT_LIBRARY=/usr/lib/libjwt.so \
           -DZM_CONFIG_DIR=/etc/${pkgname} \
           -DZM_CONFIG_SUBDIR=/etc/${pkgname}/conf.d \
           -DZM_RUNDIR=/run/${pkgname} \
