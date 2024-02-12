@@ -8,7 +8,7 @@ license=(EULA)
 depends=(libunwind wine cmake bash) # libunwind need to work wine64
 makedepends=(git sed python python-simplejson python-six msitools)
 optdepends=(
-	'samba: Need for to generate debug symbols (Debug and RelWithDebInfo build types)'
+	'samba: Need to generate debug symbols (Debug and RelWithDebInfo build types)'
 )
 provides=(msvc-x86-cmake msvc-x64-cmake msvc-arm-cmake msvc-arm64-cmake)
 conflicts=(msvc-wine msvc-wine-git)
