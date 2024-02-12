@@ -18,6 +18,7 @@ depends=(
 makedepends=(
   git
   gobject-introspection
+  blueprint-compiler
   meson
   typescript
 )
