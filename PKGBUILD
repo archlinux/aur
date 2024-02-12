@@ -2,17 +2,19 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=ksystemstats-git
-pkgver=5.27.80_r310.ga328223
+pkgver=6.0.80_r383.g1dcc0d4
 pkgrel=1
 pkgdesc='A plugin based system monitoring daemon'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(libksysguard-git)
-makedepends=(git extra-cmake-modules-git networkmanager-qt-git)
+depends=(libksysguard-git gcc-libs glibc kcoreaddons-git ki18n-git kio-git lm_sensors qt6-base solid-git)
+makedepends=(git extra-cmake-modules-git libnl networkmanager-qt-git)
 conflicts=(${pkgname%-git} 'ksysguard<5.21.90' 'ksysguard-git<5.21.90')
 provides=(${pkgname%-git})
-optdepends=('networkmanager-qt-git: network usage monitor')
+optdepends=('libnl: network usage monitor'
+            'networkmanager-qt: network usage monitor'
+            'systemd-libs: GPU monitor')
 groups=(plasma-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
