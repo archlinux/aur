@@ -5,11 +5,11 @@
 
 # shellcheck disable=SC2034
 _git=false
-_offline=true
+_offline=false
 _proj="hip"
 _pkg="grub"
 pkgname="arch-${_pkg}"
-pkgver=0.1.1
+pkgver=0.1.1.1
 pkgrel=1
 _pkgdesc=(
   'Produces a standalone GRUB binary'
@@ -28,8 +28,8 @@ _arch_ns="tallero"
 _gh_ns="themartiancompany"
 _ns="${_gh_ns}"
 _http="${_gh}"
-url="${_http}/${_ns}/${_pkgname}"
-_local="file://${HOME}/${_pkgname}"
+url="${_http}/${_ns}/${pkgname}"
+_local="file://${HOME}/${pkgname}"
 depends=(
   "${_pkg}"
   bash
@@ -60,7 +60,7 @@ _branch="master"
     'git'
   ) && \
   source+=(
-    "${_pkgname}::git+${_url}"
+    "${pkgname}::git+${_url}"
   ) && \
   sha256sums+=(
     'SKIP'
@@ -70,7 +70,7 @@ _branch="master"
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
   ) && \
   sha256sums+=(
-    "361cb9cea01287ac9ab16da17d13b86692dc67800754c5550e0b188e56fd0c78"
+    "e912d98095ff94d2c3098838782b73613512a9e9e7d8d0165343979be62310e7"
   )
 
 check() {
@@ -82,13 +82,11 @@ check() {
 
 # shellcheck disable=SC2134
 package() {
-  cd \
-    "${pkgname}-${_pkgver}"
   make \
     DESTDIR="${pkgdir}" \
     install \
       -C \
-        "${_pkgname}-${_pkgver}"
+        "${pkgname}-${pkgver}"
 }
 
 # vim:set sw=2 sts=-1 et:
