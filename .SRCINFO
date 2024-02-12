@@ -6,7 +6,7 @@ pkgbase = luks-tools-git
 	arch = any
 	license = AGPL3
 	makedepends = git
-	depends = pacman
+	depends = cryptsetup
 	provides = luks-tools=0.0.0.0.0.1.r1.g84fb4c0
 	conflicts = luks-tools
 	source = git+https://github.com/themartiancompany/luks-tools

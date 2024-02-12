@@ -20,7 +20,7 @@ license=(
   AGPL3
 )
 depends=(
-  bash
+  cryptsetup
 )
 makedepends=(
   git
@@ -28,9 +28,11 @@ makedepends=(
 optdepends=(
 )
 provides=(
-  "${_pkgname}=${pkgver}")
+  "${_pkgname}=${pkgver}"
+)
 conflicts=(
-  "${_pkgname}")
+  "${_pkgname}"
+)
 _url="file://${HOME}/${_pkgname}"
 _branch="master"
 source=(
@@ -82,7 +84,8 @@ pkgver() {
   _pkgver="$( \
     git \
       describe \
-      --tags | \
+      --tags \
+      --long | \
       sed \
         's/-/+/g')"
   _parse_ver \
