@@ -15,7 +15,8 @@ run_hook() (
 )
 
 run_cleanuphook() {
+  local pid
   /usr/sbin/tailscaled --cleanup
-  local pid=$(cat /run/tailscaled.pid 2>/dev/null)
+  pid=$(cat /run/tailscaled.pid 2>/dev/null)
   [[ -z $pid ]] || kill "$pid"
 }
