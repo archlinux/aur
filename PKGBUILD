@@ -3,14 +3,13 @@
 _pkgname=bigPint
 _pkgver=1.15.0
 pkgname=r-${_pkgname,,}
-pkgver=1.15.0
-pkgrel=1
-pkgdesc='Big multivariate data plotted interactively'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Big multivariate data plotted interactively"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-delayedarray
   r-dplyr
   r-ggally
@@ -43,15 +42,16 @@ optdepends=(
   r-runit
   r-tibble
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1a76b38968b8ca2087b7c831040a97b82438c239b350f5948b0968955cc92fe5')
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('e7f90f98dd155967a4c4afb250886d8f')
+b2sums=('4a3f0decd77da639eaef749619f1b0f84c8145f4394d39fa4098679d819e6844ae59198112926ae51c4020fb179110916aa054d9ab3adee59f7f93d9d24966f8')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
