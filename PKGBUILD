@@ -7,7 +7,7 @@ _py="python"
 _py2="${_py}2"
 _pkgname=luks-tools
 pkgname="${_pkgname}-git"
-pkgver=0.0.0.0.0.1.r1.g84fb4c0
+pkgver=0.0.0.0.0.1.r9.gc2af0a6
 pkgrel=1
 pkgdesc="A collection of LUKS related scripts."
 arch=(
@@ -15,7 +15,8 @@ arch=(
 )
 _repo="https://github.com"
 _ns="themartiancompany"
-url="${_repo}/${_ns}/${_pkgname}"
+_branch="master"
+url="${_repo}/${_ns}/${_pkgname}#branch=${_branch}"
 license=(
   AGPL3
 )
