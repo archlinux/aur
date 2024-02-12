@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pcalg
-_pkgver=2.7-10
+_pkgver=2.7-11
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -39,8 +39,8 @@ optdepends=(
   r-rgraphviz
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4675c89a2e090467cc7d7e5d626cdf57')
-b2sums=('da10cb7cae16f0b97d44fcb3fd4455473f2a974ef281e2d02dcc7de6a333a3474ef6deadcbe14945414e3fa785f44db4126a209b18650d6fee4da52494f4dcf6')
+md5sums=('4f6e7f843d71ecf79d78a9c9c85ed54d')
+b2sums=('61791561719184e384746d43ffe459ed82cb6508a5c92937d1e205ab6735aa97440d2bb0ca27a847db255abbd966c91fb7df9ae960268d2fde3dbbf6b445d6e8')
 
 build() {
   mkdir build
