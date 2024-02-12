@@ -47,15 +47,6 @@ prepare() {
     printf "Cloning ros2 repositories\n"
     mkdir -p $srcdir/ros2/src
     vcs import $srcdir/ros2/src < $srcdir/ros2-release-${_rosdist_short}-${pkgver//.}/ros2.repos
-
-    # Apply patches
-    printf "Patching sources\n"
-
-    # Missing cstdint/cstderr includes
-    git -C "$srcdir/ros2/src/eProsima/Fast-DDS" cherry-pick -n "add29f42591fe3d785df727aea128f250040834f"
-    git -C "$srcdir/ros2/src/ros2/rcpputils" cherry-pick -n "f96811a9047fa6a084a885219c88b415bc544487"
-    git -C "$srcdir/ros2/src/ros-tooling/libstatistics_collector" cherry-pick -n "1c340c97c731019d0c7b40f8c167b0ef666bcf75"
-    git -C "$srcdir/ros2/src/ros2/rclcpp/rclcpp/include/rclcpp" cherry-pick -n "86c77143c96d85711a87f2a5adcc4d7f0fb0dbeb"
 }
 
 build() {
