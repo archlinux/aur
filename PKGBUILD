@@ -1,7 +1,7 @@
 pkgname=deadbeef-plugin-statusnotifier
 pkgver=1.6
 pkgrel=1
-pkgdesc="Plugin that provides system tray icon for deadbeef in Plasma5 (Just implements StatusNotifierItem)."
+pkgdesc="StatusNotifier plugin for the DeaDBeeF music player replaces default tray icon on DE that supports StatusNotifierIitem protocol."
 url="https://github.com/vovochka404/deadbeef-statusnotifier-plugin"
 arch=('i686' 'x86_64')
 license=('GPL3')
