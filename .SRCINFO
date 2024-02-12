@@ -1,7 +1,7 @@
 pkgbase = umr-git
 	pkgdesc = User Mode Register Debugger for AMDGPU Hardware
-	pkgver = r1090.cc16f19
-	pkgrel = 3
+	pkgver = r1177.d3fd0f4
+	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.freedesktop.org/tomstdenis/umr.git
 	arch = i686

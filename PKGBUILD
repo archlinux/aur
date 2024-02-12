@@ -2,8 +2,8 @@
 
 pkgname=umr-git
 epoch=1
-pkgver=r1090.cc16f19
-pkgrel=3
+pkgver=r1177.d3fd0f4
+pkgrel=1
 pkgdesc='User Mode Register Debugger for AMDGPU Hardware'
 arch=('i686' 'x86_64')
 url='https://gitlab.freedesktop.org/tomstdenis/umr.git'
@@ -36,10 +36,5 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install build
-	# Remove some files which should not be installed. See:
-	# https://gitlab.freedesktop.org/tomstdenis/umr/-/merge_requests/32
-	rm -rf "$pkgdir/usr/bin/umrgui"
-	rm -rf "$pkgdir/usr/include"
-	rm -rf "$pkgdir/usr/lib"
 	install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 umr/LICENSE
 }
