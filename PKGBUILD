@@ -1,15 +1,15 @@
 # Maintainer: Klaus Alexander Seistrup <klaus@seistrup.dk>
 # -*- sh -*-
 
-pkgname=slrn-snapshot
-_pkgname=slrn
+pkgname='slrn-snapshot'
+_pkgname='slrn'
 pkgver=1.0.4.9
 _prever='pre1.0.4-9'
-pkgrel=4
+pkgrel=5
 pkgdesc='An easy-to-use, text-mode, threaded Usenet/NNTP client/newsreader (development snapshot)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'pentium4' 'x86_64')
 url='https://jedsoft.org/snapshots/'
-license=('GPL')
+license=('GPL-2.0-or-later')  # SPDX-License-Identifier: GPL-2.0-or-later
 makedepends=('uudeview>=20230502')
 depends=('glibc' 'openssl' 'sh' 'slang')
 provides=('slrn')
