@@ -1,0 +1,13 @@
+pkgbase = firefox-esr-extension-switchyomega
+	pkgdesc = plasma browser integration addon for firefox.
+	pkgver = 2.5.20
+	pkgrel = 1
+	url = https://addons.mozilla.org/en-US/firefox/addon/switchyomega/
+	arch = any
+	groups = firefox-esr-addons
+	license = GPLV3
+	depends = firefox-esr
+	source = extension.xpi::https://github.com/FelisCatus/SwitchyOmega/releases/download/v2.5.20/proxy_switchyomega-2.5.20-an+fx.xpi
+	sha512sums = 39c4c260ed62f93145da6368d5fd121df2777c065c4c4e93a39065b8f7ddbeeb8b387369b99c615d0bc59dfc49037c2b4817f881fc84dfe7bf43cd66f64367c7
+
+pkgname = firefox-esr-extension-switchyomega
