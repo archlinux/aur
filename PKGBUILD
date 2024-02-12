@@ -3,9 +3,9 @@
 # Contributor: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=python-nanoid
 _name=${pkgname#python-}
-pkgdesc="A tiny, secure, URL-friendly, unique string ID generator for Python"
 pkgver=2.0.0
 pkgrel=3
+pkgdesc="A tiny, secure, URL-friendly, unique string ID generator for Python"
 arch=('any')
 url="https://github.com/puyuan/py-nanoid"
 license=('MIT')
