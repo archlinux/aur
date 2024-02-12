@@ -3,8 +3,8 @@ pkgname=skywire-bin
 _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Building a new Internet. Skycoin.com"
-pkgver='1.3.17'
-pkgrel='4'
+pkgver='1.3.18'
+pkgrel='1'
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -36,24 +36,24 @@ sha256sums=('9257dc9cf98b382049b500f646c0005950077cedb83abbb62984983e4dda0874'
             '00da5a9afdf5a8c7033978d2074039ba1ff7bc7a7221fbd278eb1270bdeb8eae'
             'ec24750a99f5cda8d8a8dc94743943218e1b2088c2b2c7dc1644ee78d954fe7e'
             'a6941680b5858ca3e0c85d9bf5824455a0c95524b61e42352462f2abbb750495'
-            'fee14fb95e02a6c74626e9c89def7c1137192c5c23470a05c750cd97f3d3f0dd'
+            'bf2876b7c41b204452cca141600af39e5a4e17486e9f09e20069d8f4316e6063'
             '8519d027325dcb34877bb5b0fb0c3c035d7589c0046b53935e2b949d436c4be3'
             'd1bbd2b6d141cee8499fe2ae0c8429325d2d80ea895cce3db2db11f0629cc740'
             '7f9963d796abe8716581c0f1455e1f636998d31a58d8b8cf84f85a1ad8b90dce')
-sha256sums_x86_64=('3d7fa179cf9b29e0ae5e7e3053257d5794f84459a070a82400b5e6f6de64e301')
-sha256sums_aarch64=('23c4c2e3bc16f9d0293b05f2897a30417d16c1f98bd5d17f4ae4cdc9ec16ff7b')
-sha256sums_armv8=('23c4c2e3bc16f9d0293b05f2897a30417d16c1f98bd5d17f4ae4cdc9ec16ff7b')
-sha256sums_armv7=('bd5c0adcf5faeede8df3485f4744f8fe6020f265d0a7c34a30f4c20070d756d4')
-sha256sums_armv7l=('bd5c0adcf5faeede8df3485f4744f8fe6020f265d0a7c34a30f4c20070d756d4')
-sha256sums_armv7h=('bd5c0adcf5faeede8df3485f4744f8fe6020f265d0a7c34a30f4c20070d756d4')
-sha256sums_arm=('f19328355196a84554732fdfd686beabf125d82303f80953ff27657eca538ba3')
-sha256sums_riscv64=('9eeb68a836092308ac15e7e78d03c982f0caf1278c9bb897ac9a08fd18cd200e')
+sha256sums_x86_64=('6c0428fa382e2e15e20d621a5caffd82a7b6c1dbfd81128d8fe8c843de4c6621')
+sha256sums_aarch64=('6d019918d17974411a78c2dc206df1247354508dd06fff77a06ee9dec276b594')
+sha256sums_armv8=('6d019918d17974411a78c2dc206df1247354508dd06fff77a06ee9dec276b594')
+sha256sums_armv7=('1966483079876c45efc31bf222b5876181b57d11f4c8b3255e325ccf2590237a')
+sha256sums_armv7l=('1966483079876c45efc31bf222b5876181b57d11f4c8b3255e325ccf2590237a')
+sha256sums_armv7h=('1966483079876c45efc31bf222b5876181b57d11f4c8b3255e325ccf2590237a')
+sha256sums_arm=('273c4feb0f2127a786d31c334bd4bba60c9d811f3c2008533ca5f60c5b93bf0b')
+sha256sums_riscv64=('5f8a60fc996f7b89c0df0c95c2128bbccaf8a0d63732ff0363caa90ac7e4f913')
 #https://github.com/skycoin/skywire/releases/download/v1.3.17/skywire-v1.3.17-linux-amd64.tar.gz
 #https://github.com/skycoin/skywire/releases/download/v1.3.17/skywire-v1.3.17-linux-arm64.tar.gz
 #https://github.com/skycoin/skywire/releases/download/v1.3.17/skywire-v1.3.17-linux-armhf.tar.gz
 #https://github.com/skycoin/skywire/releases/download/v1.3.17/skywire-v1.3.17-linux-arm.tar.gz
 #https://github.com/skycoin/skywire/releases/download/v1.3.17/skywire-v1.3.17-linux-riscv64.tar.gz
-_binarchive=("${_pkgname}-${_tag_ver}-linux")
+_binarchive=("${_pkgname}-deployment-${_tag_ver}-linux")
 _release_url=("${url}/releases/download/${_tag_ver}/${_binarchive}")
 source_x86_64=("${_release_url}-amd64.tar.gz")
 source_aarch64=("${_release_url}-arm64.tar.gz")
@@ -64,22 +64,24 @@ source_armv7l=( "${source_armv7[@]}" )
 source_armv7h=( "${source_armv7[@]}" )
 source_riscv64=( "${_release_url}-riscv64.tar.gz" )
 
-_binary=("skywire-cli" "skywire-visor")
-_appbinary=("skychat" "skysocks" "skysocks-client" "vpn-client" "vpn-server")
+_binaryscript=("skywire-cli" "skywire-visor")
+_appscript=("skychat" "skysocks" "skysocks-client" "vpn-client" "vpn-server")
 
-#build() {
-	#the dmsghttp-config.json must match the current dmsg servers on the production deployment
-	#https://dmsgd.skywire.skycoin.com/dmsg-discovery/all_servers
-	#fix the dmsghttp-config.json
-#	if command -v jq &> /dev/null ; then
-#	_msg2 'updating dmsghttp-config.json'
-#	cat dmsghttp-config.json | jq --argjson updated_servers "$(cat all_servers.json | grep -Ev "availableSessions|version|sequence|timestamp|signature" | tr -d '\n' | sed 's/,\s*}/}/g' | jq '.')"   '.prod.dmsg_servers = $updated_servers' | tee dmsghttp-config.json
-#	fi
-#	[[ -f "${srcdir}/all_servers.json" ]] && rm "${srcdir}/all_servers.json"
-#}
+build() {
+  GOBIN="${srcdir}"
+  _GOAPPS="${GOBIN}/apps"
+  mkdir -p ${_GOAPPS}
+  _msg2 'creating launcher scripts'
+  for _i in "${_appscript[@]}" ; do
+    _msg3 ${_i}
+    echo -e '#!/bin/bash\n/opt/skywire/bin/skywire app '"${_i} "'$@' > "${_GOAPPS}/${_i}"
+  done
+  echo -e '#!/bin/bash\n/opt/skywire/bin/skywire cli $@' > "${GOBIN}/skywire-cli"
+  echo -e '#!/bin/bash\n/opt/skywire/bin/skywire visor $@' > "${GOBIN}/skywire-visor"
+}
 
 package() {
-GOBIN="${srcdir}/"
+GOBIN="${srcdir}"
 _GOAPPS="${GOBIN}/apps"
 #declare the _pkgdir and systemd directory
 _pkgdir="${pkgdir}"
@@ -101,32 +103,28 @@ mkdir -p "${_pkgdir}/${_dir}/apps"
 mkdir -p "${_pkgdir}/${_dir}/local/custom"
 mkdir -p "${_pkgdir}/${_dir}/scripts"
 mkdir -p "${_pkgdir}/${_systemddir}"
-_msg2 'installing binaries'
-for _i in "${_binary[@]}" ; do
-  _msg3 ${_i}
-	install -Dm755 "${GOBIN}/${_i}" "${_pkgdir}/${_bin}/"
-	ln -rTsf "${_pkgdir}/${_bin}/${_i}" "${_pkgdir}/usr/bin/${_i}"
-done
-_msg2 'installing app binaries'
-for _i in "${_appbinary[@]}" ; do
+_msg2 'installing scripts and binaries'
+install -Dm755 "${GOBIN}/skywire" "${_pkgdir}/${_bin}/"
+ln -rTsf "${_pkgdir}/${_bin}/skywire" "${_pkgdir}/usr/bin/skywire"
+install -Dm755 "${GOBIN}/skywire-cli" "${_pkgdir}/${_bin}/"
+ln -rTsf "${_pkgdir}/${_bin}/skywire-cli" "${_pkgdir}/usr/bin/skywire-cli"
+install -Dm755 "${GOBIN}/skywire-visor" "${_pkgdir}/${_bin}/"
+ln -rTsf "${_pkgdir}/${_bin}/skywire-visor" "${_pkgdir}/usr/bin/skywire-visor"
+for _i in "${_appscript[@]}" ; do
   _msg3 ${_i}
   install -Dm755 "${_GOAPPS}/${_i}" "${_pkgdir}/${_apps}/${_i}"
 	ln -rTsf "${_pkgdir}/${_apps}/${_i}" "${_pkgdir}/usr/bin/${_i}"
 done
-_msg2 'Installing scripts'
 for _i in "${_script[@]}" ; do
   _msg3 ${_i}
   install -Dm755 "${srcdir}/${_skywirebin}${_i}" "${_pkgdir}/${_scriptsdir}/${_i}"
   ln -rTsf "${_pkgdir}/${_scriptsdir}/${_i}" "${_pkgdir}/usr/bin/${_i}"
 done
-_msg2 'Symlink skywire-visor to skywire'
-ln -rTsf "${_pkgdir}/${_bin}/${_pkgname}-visor" "${_pkgdir}/usr/bin/${_pkgname}"
+
 _msg2 'installing dmsghttp-config.json'
 install -Dm644 "${srcdir}/dmsghttp-config.json" "${_pkgdir}/${_dir}/dmsghttp-config.json" || install -Dm644 "${srcdir}/skywire/dmsghttp-config.json" "${_pkgdir}/${_dir}/dmsghttp-config.json"
 _msg2 'installing services-config.json'
 install -Dm644 "${srcdir}/services-config.json" "${_pkgdir}/${_dir}/services-config.json" || install -Dm644 "${srcdir}/skywire/services-config.json" "${_pkgdir}/${_dir}/services-config.json"
-#make sure the dmsghttp-config will get redownloaded on subsequent builds
-#[[ -f "${srcdir}/dmsghttp-config.json" ]] && rm "${srcdir}/dmsghttp-config.json"
 
 _msg2 'Installing systemd services'
 for _i in "${_service[@]}" ; do
