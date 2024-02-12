@@ -3,7 +3,7 @@
 _libname='aprilasr'
 _reponame='april-asr'
 pkgname="${_libname}-git"
-pkgver='r137.1bb4289'
+pkgver='r151.3308e68'
 pkgrel=1
 pkgdesc='A minimal offline speech-to-text library written in C'
 arch=('x86_64')
@@ -29,10 +29,6 @@ build() {
 
 package() {
 	cd "${srcdir}/${_reponame}"
-	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 "lib${_libname}_static.a" "${pkgdir}/usr/lib/lib${_libname}_static.a"
-	install -Dm644 "lib${_libname}.so" "${pkgdir}/usr/lib/lib${_libname}.so"
-	install -Dm755 main "${pkgdir}/usr/bin/${_libname}-main"
-	install -Dm755 srt "${pkgdir}/usr/bin/${_libname}-srt"
+	make DESTDIR=$pkgdir install
 }
 

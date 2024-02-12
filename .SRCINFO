@@ -1,6 +1,6 @@
 pkgbase = aprilasr-git
 	pkgdesc = A minimal offline speech-to-text library written in C
-	pkgver = r137.1bb4289
+	pkgver = r151.3308e68
 	pkgrel = 1
 	url = https://abb128.github.io/april-asr
 	arch = x86_64
