@@ -70,7 +70,7 @@ sha256sums=()
       "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
     ) && \
     sha256sums+=(
-      ciao
+      "d22c81413fc912ab468d98861334effee58fa9a6e7b70692733008924a39e45f"
     )
 
 check() {
