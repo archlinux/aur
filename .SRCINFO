@@ -1,0 +1,13 @@
+pkgbase = gog-surviving_mars_in_dome_buildings_pack
+	pkgdesc = DLC for the surviving mars game.
+	pkgver = 1.5_fuglesang_1011166
+	pkgrel = 1
+	url = https://www.gog.com/en/game/surviving_mars_indome_buildings_pack
+	arch = x86_64
+	license = custom
+	depends = gog-surviving_mars
+	noextract = surviving_mars_in_dome_buildings_pack_1_5_fuglesang_1011166_55908.sh
+	source = surviving_mars_in_dome_buildings_pack_1_5_fuglesang_1011166_55908.sh::gog://surviving_mars_in_dome_buildings_pack_1_5_fuglesang_1011166_55908.sh
+	sha256sums = 54d48f28c2740111d75fda7b80097597cb7c38a61d0af773947db880f758ed64
+
+pkgname = gog-surviving_mars_in_dome_buildings_pack
