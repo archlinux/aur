@@ -9,7 +9,7 @@ pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstru
 arch=('x86_64')
 url="https://alicevision.github.io/"
 options=('!lto' '!debug') # debug package is kinda big -- needs investigation!
-license=('MPL2' 'MIT')
+license=('MPL-2.0' 'MIT')
 depends=('boost-libs' 'openimageio' 'flann' 'geogram' 'coin-or-clp' 'ceres-solver' 'cctag'
          'alembic' 'opengv' 'opencv' 'popsift' 'uncertainty-framework' 'assimp')
 makedepends=('boost' 'ninja' 'eigen' 'freetype2' 'coin-or-coinutils' 'coin-or-lemon'
