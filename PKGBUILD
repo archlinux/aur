@@ -5,18 +5,25 @@
 
 _py="python"
 _py2="${_py}2"
+_proj="hip"
 _pkgname=luks-tools
 pkgname="${_pkgname}-git"
-pkgver=0.0.0.0.0.1.r12.g1db8167
+pkgver=0.0.0.0.0.1.r14.g38aff23
 pkgrel=1
-pkgdesc="A collection of LUKS related scripts."
+_pkgdesc=(
+  "A collection of LUKS"
+  "related scripts."
+)
+pkgdesc="${_pkgdesc[*]}"
 arch=(
   any
 )
-_repo="https://github.com"
-_ns="themartiancompany"
-_branch="master"
-url="${_repo}/${_ns}/${_pkgname}#branch=${_branch}"
+_gl="gitlab.com"
+_gh="github.com"
+_host="https://${_gh}"
+_ns='themartiancompany'
+_local="${HOME}/${_pkgname}"
+url="${_host}/${_ns}/${_pkgname}"
 license=(
   AGPL3
 )
@@ -26,7 +33,12 @@ depends=(
 makedepends=(
   git
 )
+checkdepends=(
+  shellcheck
+)
 optdepends=(
+  "python-pygmentize: colorized output"
+  "python2-pygmentize: colorized output"
 )
 provides=(
   "${_pkgname}=${pkgver}"
@@ -34,14 +46,29 @@ provides=(
 conflicts=(
   "${_pkgname}"
 )
-_url="file://${HOME}/${_pkgname}"
+groups=(
+ "${_proj}"
+ "${_proj}-git"
+)
 _branch="master"
 source=(
-  "git+${url}"
+  "git+${url}}#branch=${_branch}"
+  # "git+${_local}"
 )
 sha256sums=(
   SKIP
 )
+
+_nth() {
+  local \
+    _str="${1}" \
+    _n="${2}"
+  echo \
+    "${_str}" | \
+    awk \
+      -F '+' \
+      '{print $'"${_n}"'}'
+}
 
 _parse_ver() {
   local \
@@ -51,23 +78,17 @@ _parse_ver() {
     _rev \
     _commit
   _ver="$( \
-    echo \
-      "${_pkgver}" | \
-          awk \
-            -F '+' \
-            '{print $1}')"
+    _nth \
+      "${_pkgver}" \
+      "1")"
   _rev="$( \
-    echo \
-      "${_pkgver}" | \
-      awk \
-        -F '+' \
-        '{print $2}')"
+    _nth \
+      "${_pkgver}" \
+      "2")"
   _commit="$( \
-    echo \
-      "${_pkgver}" | \
-      awk \
-        -F '+' \
-        '{print $3}')"
+    _nth \
+      "${_pkgver}" \
+      "3")"
   _out=${_ver}
   [[ "${_rev}" != "" ]] && \
     _out+=".r${_rev}"
