@@ -2,7 +2,7 @@
 
 pkgname=opengfw
 _pkgname=OpenGFW
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A flexible, easy-to-use, open source implementation of GFW"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(MPL-2.0)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a855ec0ececf3c2e1a662024a077529297d03057220a2ba50234af7e1a52b7e9')
+sha256sums=('1753c4f6126fe38f30607b71e071d3a562839a1d9e5f344e82a3f7c71c0322be')
 
 _archive="$_pkgname-$pkgver"
 
@@ -39,7 +39,8 @@ check() {
   # Skip failing tests - not sure why they fail.
   _unit_tests=$(
     go list -buildvcs=false ./... \
-      | grep -v 'github.com/apernet/OpenGFW/ruleset/builtins/geo/v2geo'
+      | grep -v 'github.com/apernet/OpenGFW/ruleset/builtins/geo/v2geo' \
+      | sort
   )
   # shellcheck disable=SC2086
   go test $_unit_tests
@@ -52,5 +53,5 @@ package() {
   ln -s /usr/bin/OpenGFW "$pkgdir/usr/bin/opengfw"
 
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
-  cp --archive -t "$pkgdir/usr/share/doc/$pkgname" docs
+  cp -a -t "$pkgdir/usr/share/doc/$pkgname" docs
 }

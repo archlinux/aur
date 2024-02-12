@@ -1,13 +1,13 @@
 pkgbase = opengfw
 	pkgdesc = A flexible, easy-to-use, open source implementation of GFW
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/apernet/OpenGFW
 	arch = x86_64
 	license = MPL-2.0
 	makedepends = go
 	depends = glibc
-	source = opengfw-0.1.0.tar.gz::https://github.com/apernet/OpenGFW/archive/v0.1.0.tar.gz
-	sha256sums = a855ec0ececf3c2e1a662024a077529297d03057220a2ba50234af7e1a52b7e9
+	source = opengfw-0.1.1.tar.gz::https://github.com/apernet/OpenGFW/archive/v0.1.1.tar.gz
+	sha256sums = 1753c4f6126fe38f30607b71e071d3a562839a1d9e5f344e82a3f7c71c0322be
 
 pkgname = opengfw
