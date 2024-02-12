@@ -1,11 +1,10 @@
 pkgbase = r-coregnet
-	pkgdesc = CoRegNet : reconstruction and integrated analysis of co-regulatory networks
+	pkgdesc = reconstruction and integrated analysis of co-regulatory networks
 	pkgver = 1.38.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/CoRegNet
 	arch = x86_64
-	license = GPL
-	depends = r
+	license = GPL-3.0-only
 	depends = r-arules
 	depends = r-igraph
 	depends = r-shiny
@@ -14,7 +13,8 @@ pkgbase = r-coregnet
 	optdepends = r-knitr
 	optdepends = r-rcolorbrewer
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CoRegNet_1.38.0.tar.gz
-	sha256sums = 13697025ffb9574c16e891dd9aabeff985fa9242dd210c9b196eb632e820aea5
+	source = https://bioconductor.org/packages/3.17/bioc/src/contrib/CoRegNet_1.38.0.tar.gz
+	md5sums = 57d4b5f625123f9637aa4d696a2eb859
+	b2sums = 500c6b1bff3c564cb1967bc154bf91c7b6fcb41a0760a81bbc4b21f389e53143df91eab707739c08e345f2aa78279273a802cb01ae11e15a417a186b597179be
 
 pkgname = r-coregnet
