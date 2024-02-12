@@ -1,0 +1,51 @@
+From f3537fcb1115b20ba493e1ecef85f6ce8bc8cd4f Mon Sep 17 00:00:00 2001
+From: Santiago Lo Coco <santilococo.01@gmail.com>
+Date: Mon, 12 Feb 2024 14:57:45 -0300
+Subject: [PATCH] Update build.gradle
+
+---
+ build.gradle | 17 +++++++++--------
+ 1 file changed, 9 insertions(+), 8 deletions(-)
+
+diff --git a/build.gradle b/build.gradle
+index 486c45d..39e93c8 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -20,11 +20,11 @@ sourceSets {
+ }
+ 
+ dependencies {
+-	compile 'org.tinylog:tinylog-api:2.1.2'
+-	compile 'org.tinylog:tinylog-impl:2.1.2'
+-	compile 'org.apache.pdfbox:pdfbox:2.0.21'
+-	compile 'org.apache.xmlgraphics:batik-transcoder:1.13'
+-	compile 'com.formdev:flatlaf:0.41'
++	implementation 'org.tinylog:tinylog-api:2.1.2'
++	implementation 'org.tinylog:tinylog-impl:2.1.2'
++	implementation 'org.apache.pdfbox:pdfbox:2.0.21'
++	implementation 'org.apache.xmlgraphics:batik-transcoder:1.13'
++	implementation 'com.formdev:flatlaf:0.41'
+ }
+ 
+ jar {
+@@ -39,12 +39,13 @@ jar {
+ 	}
+ 	
+ 	from sourceSets.main.output
+-
++    
++    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+ 	from {
+-		configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
++		configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+ 	}
+ 	
+ 	exclude "META-INF/*.SF"
+ 	exclude "META-INF/*.DSA"
+ 	exclude "META-INF/*.RSA"
+-}
+\ No newline at end of file
++}
+-- 
+2.43.1
+
