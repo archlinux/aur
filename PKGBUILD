@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=edencommon
-pkgver=2024.02.05.00
+pkgver=2024.02.12.00
 pkgrel=1
 pkgdesc="Shared library for Watchman and Eden projects"
 arch=(x86_64)
@@ -23,13 +23,12 @@ provides=(
   libedencommon_utils.so
 )
 options=(!lto)
-
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   "build-shared-library.patch"
 )
 sha256sums=(
-  'aadc3c1e3e5065996d04e5c3c56bb687b4765ecb496e42f3198bbcca513879f5'
+  '1d166d1270c74a073f164128a962e5179fc2709b328beaa77665f0512e780058'
   '000dfb9e316e486cb047fe4c5547b716033a99bb78a9eef0e7e4d860d017a092'
 )
 
