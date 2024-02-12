@@ -9,7 +9,7 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-glib2
 pkgver=2.78.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Low level core library (android)"
 arch=('any')
 url="https://wiki.gnome.org/Projects/GLib"
@@ -20,23 +20,12 @@ depends=("android-${_android_arch}-libffi"
          "android-${_android_arch}-zlib")
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-meson')
-source=("https://download.gnome.org/sources/glib/${pkgver%.*}/glib-${pkgver}.tar.xz"
-        '0001-Fix-build.patch')
-sha256sums=('609801dd373796e515972bf95fc0b2daa44545481ee2f465c4f204d224b2bc21'
-            '26ec88e5fe6f13a5ea024384a01eb6f9ac2d1e93bdb4e47641339963c187353c')
-
-prepare() {
-    cd "${srcdir}"/glib-${pkgver}
-
-    patch -Np1 -i ../0001-Fix-build.patch
-}
+source=("https://download.gnome.org/sources/glib/${pkgver%.*}/glib-${pkgver}.tar.xz")
+sha256sums=('609801dd373796e515972bf95fc0b2daa44545481ee2f465c4f204d224b2bc21')
 
 build() {
     cd "${srcdir}"/glib-${pkgver}
     source android-env ${_android_arch}
-
-    export C_INCLUDE_PATH="${ANDROID_PREFIX_INCLUDE}"
-    export LIBRARY_PATH="${ANDROID_PREFIX_LIB}"
 
     for type in static shared; do
         rm -rf "${srcdir}/glib-${pkgver}/build-${_android_arch}-${type}"
@@ -57,5 +46,5 @@ package() {
 
     rm -rf "${pkgdir}"/${ANDROID_PREFIX_BIN}
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    #${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a || true
 }
