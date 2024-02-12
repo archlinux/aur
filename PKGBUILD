@@ -3,14 +3,14 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=karchive-git
-pkgver=5.240.0_r612.g3c179ae
+pkgver=6.0.0_r740.g3c66604
 pkgrel=1
 pkgdesc='Qt 5 addon providing access to numerous types of archives'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(qt6-base)
-makedepends=(git extra-cmake-modules-git doxygen qt6-tools)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(bzip2 gcc-libs glibc qt6-base xz zlib zstd)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf6-git)
