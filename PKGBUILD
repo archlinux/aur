@@ -10,8 +10,8 @@ url="http://www.vectrex.fr/ParaJVE/"
 license=('custom')
 depends=('java-runtime')
 install=$pkgname.install
-source=(http://www.gametronik.com/site/rubriques/niCGE/Emulateurs/ParaJVE_0.7.0_linux.tgz
-        http://dl.openhandhelds.org/dingoo/screenshots/splash.png
+source=('https://dlf.emu-land.net/vert/ParaJVE_0.7.0_linux.tgz'
+        'http://dl.openhandhelds.org/dingoo/screenshots/splash.png'
         LICENSE
         $pkgname
         $pkgname.desktop)
