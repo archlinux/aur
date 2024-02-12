@@ -1,0 +1,17 @@
+pkgbase = bluesky
+	pkgdesc = Unofficial bluesky desktop application
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = libelectron
+	depends = nss
+	depends = gtk3
+	depends = libxss
+	depends = git
+	source = https://gitlab.com/bluesky-application/application/-/archive/1.0.0-1/application-1.0.0-1.tar.bz2
+	sha256sums = SKIP
+
+pkgname = bluesky
