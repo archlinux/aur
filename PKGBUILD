@@ -13,7 +13,6 @@ conflicts=('lib32-libusb-compat')
 _debianver_="35"
 _debianver="${pkgver}-${_debianver_}"
 depends=('lib32-glibc' 'sh')
-makedepends=('autoconf' 'automake' 'binutils' 'gcc' 'libtool' 'm4' 'make' 'patch')
 source=("http://deb.debian.org/debian/pool/main/libu/libusb/libusb_${pkgver}.orig.tar.gz"
         "http://deb.debian.org/debian/pool/main/libu/libusb/libusb_${_debianver}.debian.tar.xz")
 sha256sums=('37f6f7d9de74196eb5fc0bbe0aea9b5c939de7f500acba3af6fd643f3b538b44'
