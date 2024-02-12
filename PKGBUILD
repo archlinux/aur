@@ -1,7 +1,7 @@
 # Maintainer: Evgeniy Dombek <edombek@yandex.ru>
 pkgname=casa6-bin
-pkgver=6.6.0
-ver_=20
+pkgver=6.6.3
+ver_=22
 pkgrel=1
 pkgdesc="NRAO's Common Astronomy Software Applications package"
 url="https://casa.nrao.edu/"
@@ -12,7 +12,7 @@ conflict=("casa")
 provides=("casa")
 instname="casa-${pkgver}-${ver_}-py3.8.el7"
 source=("https://casa.nrao.edu/download/distro/casa/release/rhel/${instname}.tar.xz")
-md5sums=("4574fd6367749218b8bfd46b25903eb8")
+md5sums=("f9c86e7139b204b295eb7d6499a9c96f")
 instdir="/opt"
 options=("!strip")
 package() {
@@ -25,10 +25,7 @@ package() {
   for _executable in casa casaviewer mpicasa; do
     ln -s "${instdir}/${instname}/bin/${_executable}" "${pkgdir}/usr/bin/${_executable}"
   done
-
-  #Ading /etc/profile
-  mkdir -p ${pkgdir}/etc/profile.d
-  echo alias casa-python3=${instdir}/${instname}/bin/python3 >> ${pkgdir}/etc/profile.d/casa.sh
-  echo alias casa-python3=${instdir}/${instname}/bin/python3
-  chmod +x ${pkgdir}/etc/profile.d/casa.sh
+  echo "For use with Python, add to your bashrc:"
+  echo alias casa-python=${instdir}/${instname}/bin/python3
+  echo alias casa-pip=${instdir}/${instname}/bin/pip3
 }
