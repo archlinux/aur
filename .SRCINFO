@@ -1,21 +1,21 @@
 pkgbase = libdogleg-git
 	pkgdesc = Large-scale nonlinear least-squares optimization library for both sparse and dense problems
-	pkgver = v0.15.4.r0.gd8e655b
-	pkgrel = 3
+	pkgver = v0.16.r1.g1f88d01
+	pkgrel = 1
 	url = https://github.com/dkogan/libdogleg
 	arch = i686
 	arch = x86_64
 	groups = 
-	license = Apache
+	license = LGPL-3.0-only
 	makedepends = make
 	makedepends = gcc
+	makedepends = mrbuild
 	depends = suitesparse
-	optdepends = 
+	depends = lapack
+	depends = glibc
 	provides = libdogleg
 	conflicts = libdogleg
 	source = libdogleg::git+https://github.com/dkogan/libdogleg.git#branch=master
-	source = build-fix.patch
-	md5sums = SKIP
-	md5sums = 82e1b119ee90a326c57b633b5530fe0e
+	sha256sums = SKIP
 
 pkgname = libdogleg-git
