@@ -1,4 +1,4 @@
-# Maintainer: Alexei Gherman <aleksey.gherman@gmail.com>
+# Maintainer: Alexei Gherman <aleksey.gherman at gmail dot com>
 
 pkgname=panetrie
 pkgver=1.0
