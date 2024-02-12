@@ -1,11 +1,12 @@
 pkgbase = ppd-psn-dp-1820
 	pkgdesc = PPD drivers for Panasonic WORKiO DP-1520P, 1820E and 1820P
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://panasonic.net/cns/pcc/support/mfp/dp-1820/ps/download.html
 	install = psn-dp-1820.install
 	arch = any
 	license = unknown
+	makedepends = dos2unix
 	depends = cups
 	source = https://www.psn-web.net/cs/support/mfp/dp-1820/ps/mxae061215.zip
 	sha256sums = 7c3ccc9c8e8851aadb46b53108e92813f9b2751d61ce9e5727e2c26f49133b55
