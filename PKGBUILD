@@ -1,10 +1,10 @@
 # Maintainer: David Germain <davi.germain@laposte.net>
 
-pkgname=mod-desktop-bin
-provides=(${pkgname//-bin/""})
+pkgname=mod-desktop-network-bin
+provides=(${pkgname//-network-bin/""})
 pkgver=0.0.10
 pkgrel=1
-pkgdesc="MOD Desktop Application"
+pkgdesc="MOD Desktop Application with available network access to mod-ui"
 arch=('x86_64')
 url="https://github.com/moddevices/mod-desktop"
 license=('AGPLv3+')
@@ -25,4 +25,8 @@ package() {
 
   # Install desktop file from the extracted archive
   install -Dm644 "$provides-$pkgver-linux-$arch/mod-desktop.desktop" "$pkgdir/usr/share/applications/$provides.desktop"
+
+  # Network access patch
+  sudo sed -i 's/application.listen(DEVICE_WEBSERVER_PORT, address=("127.0.0.1" if DESKTOP else "0.0.0.0"))/application.listen(DEVICE_WEBSERVER_PORT, address=("0.0.0.0"))/' "$pkgdir/opt/$provides/mod/webserver.py"
+
 }
