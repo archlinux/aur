@@ -1,11 +1,11 @@
 # Maintainer: Julian Wolff <wolff at julianwolff dot de>
 pkgname=jackman-git
-pkgver=r61.44efc9d
-pkgrel=4
+pkgver=r93.e49a782
+pkgrel=1
 pkgdesc='Collection of scripts that help managing multiple audio interfaces with Jack'
 arch=('any')
 url='https://github.com/progwolff/jackman'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 conflicts=(jackman)
 provides=(jackman)
 depends=('jack' 'alsa-utils' 'python-dbus' 'systemd' 'coreutils')
@@ -30,10 +30,10 @@ install=.install
 
 package() {
   mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/etc/udev/rules.d"
+  mkdir -p "$pkgdir/usr/lib/udev/rules.d"
   mkdir -p "$pkgdir/usr/lib/systemd/system/"
   mkdir -p "$pkgdir/etc/xdg/autostart/"
-  cp ./${_gitname}/50-jackman.rules "$pkgdir/etc/udev/rules.d/"
+  cp ./${_gitname}/50-jackman.rules "$pkgdir/usr/lib/udev/rules.d/"
   cp ./${_gitname}/jackman "$pkgdir/usr/bin/"
   cp ./${_gitname}/jackman_udev* "$pkgdir/usr/bin/"
   cp ./${_gitname}/*.service "$pkgdir/usr/lib/systemd/system/"
