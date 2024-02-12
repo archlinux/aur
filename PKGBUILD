@@ -5,7 +5,7 @@
 _pkgbase=fancybeep
 pkgname=$_pkgbase-dkms
 pkgver=2.6.24
-pkgrel=1
+pkgrel=2
 vcsrev=97f5bb22a9e748a38c0292a061245511d2ca9969
 pkgdesc="Synthetic or enhanced PC Speaker beeper kernel module and alsa daemon"
 arch=('x86_64' 'aarch64')
@@ -28,7 +28,7 @@ sha256sums=(
 		'4fcdf5ab7fb0f4110649f807567c15dd73026b84fdaa33efc524724d0d4f7f58'
 		'9b3e6ac669c1cf1b4314d3901bb6c36173eb3f2e7fafbd2d13e8daa4ee31a755'
 		'7b2778b66b675f7c49a723844ce3d3b57561b1766ed507a112d7a827a718b11a'
-		'1ef7616a12ccb800534144c839321560788ec3b52472111ec5a560089cdb53c9'
+		'd50830d9f323c15a96a2e47cfd39750ce7b6f7a0f9105c6b9505d67b08db04a0'
 		'659307723712cf579a66e79da005baf50356afc091e6250dc110d9cb4a0cd0a5'
 		'8f5676e25afe1fa3287362b43c5cb45569dbb8680d4c25a73624a79599642739'
 		)
