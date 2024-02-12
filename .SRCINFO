@@ -1,11 +1,12 @@
 pkgbase = lpm
 	pkgdesc = A lite-xl plugin manager.
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lite-xl/lite-xl-plugin-manager
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	makedepends = meson
 	depends = lua
 	depends = zlib
 	depends = libzip

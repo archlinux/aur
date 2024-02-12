@@ -3,12 +3,13 @@
 pkgname=lpm
 _gitname=lite-xl-plugin-manager
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A lite-xl plugin manager.'
 arch=('x86_64' 'aarch64')
 url="https://github.com/lite-xl/lite-xl-plugin-manager"
 license=('MIT')
 depends=('lua' 'zlib' 'libzip' 'libgit2' 'mbedtls2')
+makedepends=('meson')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("${_gitname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
