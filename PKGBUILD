@@ -8,7 +8,7 @@ _py2="${_py}2"
 _proj="hip"
 _pkgname=ssh-utils
 pkgname="${_pkgname}-git"
-pkgver=0.1.r5.ge7e693c
+pkgver=0.1.1.r0.ge7e693c
 pkgrel=1
 _pkgdesc=(
   "A collection of SSH"
