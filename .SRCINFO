@@ -1,17 +1,18 @@
 pkgbase = python-nanoid
 	pkgdesc = A tiny, secure, URL-friendly, unique string ID generator for Python
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/puyuan/py-nanoid
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = python-nanoid-2.0.0.tar.gz::https://github.com/puyuan/py-nanoid/archive/99e5b478c450f42d713b6111175886dccf16f156.tar.gz
-	sha256sums = 875d3ddbb00359e408110b0e2ee98183ccdd942d6277576b4b528f02d3279cf5
+	source = https://files.pythonhosted.org/packages/source/n/nanoid/nanoid-2.0.0.tar.gz
+	source = https://raw.githubusercontent.com/puyuan/py-nanoid/master/LICENSE
+	sha256sums = 5a80cad5e9c6e9ae3a41fa2fb34ae189f7cb420b2a5d8f82bd9d23466e4efa68
+	sha256sums = 1aca51d22bea4295ae532076d9dbb9944712e853e41aac5e5f2c99309d1f0466
 
 pkgname = python-nanoid
