@@ -2,7 +2,7 @@
 
 pkgname=kde-builder-git
 _basename="${pkgname%-git}"
-pkgver=r57.c5acc46
+pkgver=r57.03750c4
 pkgrel=1
 pkgdesc="A script to build KDE software"
 url="https://invent.kde.org/ashark/kde-builder"
@@ -11,7 +11,7 @@ license=("GPL")
 depends=("python-promise" "python-yaml" "python-setproctitle" "python-overrides")
 optdepends=(
   "python-pytest: testing support"
-  "python-type-enforced: for developers"  # Currently not in AUR
+  "python-type-enforced: for developers"
 )
 
 source=("git+https://invent.kde.org/ashark/kde-builder.git")
