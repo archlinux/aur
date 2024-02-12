@@ -32,5 +32,9 @@ build() {
 package() {
   cd "$srcdir/$_name"
   install -Dm0755 "target/$CARCH-unknown-linux-gnu/aur/$_name" "$pkgdir/usr/bin/$_name"
+  install -Dm0755 "resources/$_name-session" "$pkgdir/usr/bin/$_name-session"
+  install -Dm0644 "resources/$_name.desktop" "$pkgdir/usr/share/wayland-sessions/$_name.desktop"
+  install -Dm0644 "resources/$_name-portals.conf" "$pkgdir/usr/share/xdg-desktop-portal/$_name-portals.conf"
+  install -Dm0644 "resources/$_name.service" "$pkgdir/usr/lib/systemd/user/$_name.service"
   install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
