@@ -1,0 +1,23 @@
+pkgbase = r-gsignal
+	pkgdesc = Signal Processing
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=gsignal
+	arch = x86_64
+	license = GPL-3.0-only
+	checkdepends = r-testthat
+	depends = r-pracma
+	depends = r-rcpp
+	optdepends = r-covr
+	optdepends = r-ggplot2
+	optdepends = r-gridextra
+	optdepends = r-imager
+	optdepends = r-knitr
+	optdepends = r-microbenchmark
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/gsignal_0.3-5.tar.gz
+	md5sums = 75ee9ce9ea4efaba70efe3966d6b950d
+	b2sums = 302dd2c399c6fa428edba0afef664adbe322cf517f21df28e8e8c92623724ecd86b63dd098e764c233feb4efe4f67988e76e15a0c5964b48cbbbcf53015f8c7b
+
+pkgname = r-gsignal
