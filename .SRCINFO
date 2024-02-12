@@ -1,0 +1,17 @@
+pkgbase = kde-builder-git
+	pkgdesc = A script to build KDE software
+	pkgver = r57.c5acc46
+	pkgrel = 1
+	url = https://invent.kde.org/ashark/kde-builder
+	arch = any
+	license = GPL
+	depends = python-promise
+	depends = python-yaml
+	depends = python-setproctitle
+	depends = python-overrides
+	optdepends = python-pytest: testing support
+	optdepends = python-type-enforced: for developers
+	source = git+https://invent.kde.org/ashark/kde-builder.git
+	sha256sums = SKIP
+
+pkgname = kde-builder-git
