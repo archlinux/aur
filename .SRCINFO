@@ -1,6 +1,6 @@
 pkgbase = di-tui
 	pkgdesc = A simple terminal UI player for di.fm Premium
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/acaloiaro/di-tui
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = di-tui
 	license = BSD
 	makedepends = go
 	depends = pulseaudio
-	source = https://github.com/acaloiaro/di-tui/archive/refs/tags/v1.6.0.tar.gz
-	sha512sums = 47e2de15ee886045917b89829f325e42d9f40d4999991e7c18a5c0b700026d479cb1f441f0e9ab58d0efca1f99c6d3af414483ce000f27348c8504de8c06516c
+	source = https://github.com/acaloiaro/di-tui/archive/refs/tags/v1.7.0.tar.gz
+	sha512sums = 495365f17d535ceb796afc4dc58ea81baa0d0e068de25f6731891f70822444038d059b96dc249dc99ac0f60f284a7062c476947ac898fc62ba4775e4728078b3
 
 pkgname = di-tui
