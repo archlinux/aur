@@ -8,7 +8,7 @@ _noguipkgname="$_projectname-emu-nogui"
 _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
-pkgver='5.0.r20967.g713572e874'
+pkgver='5.0.r21108.gaa66842172'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -32,9 +32,11 @@ source=(
 	"$pkgname-implot::git+https://github.com/epezent/implot.git"
 	"$pkgname-mgba::git+https://github.com/mgba-emu/mgba.git"
 	"$pkgname-rcheevos::git+https://github.com/RetroAchievements/rcheevos.git"
+	"$pkgname-tinygltf::git+https://github.com/syoyo/tinygltf"
 	"$pkgname-vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
 )
 sha512sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -54,6 +56,7 @@ prepare() {
 		[implot]='implot/implot'
 		[mgba]='mGBA/mgba'
 		[rcheevos]='rcheevos/rcheevos'
+		[tinygltf]='tinygltf/tinygltf'
 		[vma]='VulkanMemoryAllocator'
 	)
 
