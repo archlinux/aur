@@ -27,7 +27,7 @@ depends=(
   lzo              lib32-lzo
   libxkbcommon     lib32-libxkbcommon
   libvpx           lib32-libvpx
-  'sdl2>=2.0.16'   'lib32-sdl2>=2.0.16'
+  sdl2             lib32-sdl2
   libsoup          lib32-libsoup
   libgudev         lib32-libgudev
   desktop-file-utils
@@ -55,7 +55,7 @@ makedepends=(autoconf bison perl flex mingw-w64-gcc
   gtk3                  lib32-gtk3
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
-  'sdl2>=2.0.16'        'lib32-sdl2>=2.0.16'
+  sdl2                  lib32-sdl2
   rust                  lib32-rust-libs
   libgphoto2
   opencl-headers
