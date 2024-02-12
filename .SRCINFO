@@ -1,17 +1,17 @@
 pkgbase = ultrastardx-songs
 	pkgdesc = Songs for UltraStar Deluxe (USDX)
 	pkgver = 2012.09.09
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ultrastardeluxe.org/
 	arch = any
 	groups = usdx
-	license = custom:cc-by-nc-nd-2.0
-	license = custom:cc-by-nc-sa-2.0
-	license = custom
-	license = CCPL:by-nc
-	license = custom:cc-by-nc-nd-2.5
-	license = custom:cc-by-sa-2.5
-	license = custom:cc-by-nc-sa-2.5
+	license = CC-BY-NC-ND-2.0
+	license = CC-BY-NC-SA-2.0
+	license = LicenseRef-custom
+	license = CC-BY-NC-3.0
+	license = CC-BY-NC-ND-2.5
+	license = CC-BY-SA-2.5
+	license = CC-BY-NC-SA-2.5
 	makedepends = unzip
 	depends = ultrastardx
 	noextract = dead_smiling_pirates-i_18.zip
@@ -106,4 +106,3 @@ pkgbase = ultrastardx-songs
 	sha256sums = 2722313ed9d4c634eb4273c62320d33d8ebaeec65459d916c27772b003fb1dbc
 
 pkgname = ultrastardx-songs
-

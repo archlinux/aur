@@ -1,20 +1,21 @@
-# Maintainer: Robert Knauer <robert@privatdemail.net>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: Robert Knauer <robert@privatdemail.net>
 # Contributor: zoulnix <http://goo.gl/HQaP>
 
 pkgname=ultrastardx-songs
 pkgver=2012.09.09
-pkgrel=1
+pkgrel=2
 pkgdesc="Songs for UltraStar Deluxe (USDX)"
 arch=('any')
 url="http://ultrastardeluxe.org/"
 license=(
-  'custom:cc-by-nc-nd-2.0' # pornophonique
-  'custom:cc-by-nc-sa-2.0' # shearer
-  'custom' # wise guys & bodo wartke
-  'CCPL:by-nc' # jonathan coulton
-  'custom:cc-by-nc-nd-2.5' # dead smiling pirates
-  'custom:cc-by-sa-2.5' # joshua morin
-  'custom:cc-by-nc-sa-2.5' # steven dunston
+  'CC-BY-NC-ND-2.0' # pornophonique
+  'CC-BY-NC-SA-2.0' # shearer
+  'LicenseRef-custom' # wise guys & bodo wartke
+  'CC-BY-NC-3.0' # jonathan coulton
+  'CC-BY-NC-ND-2.5' # dead smiling pirates
+  'CC-BY-SA-2.5' # joshua morin
+  'CC-BY-NC-SA-2.5' # steven dunston
 )
 depends=('ultrastardx')
 makedepends=('unzip')
