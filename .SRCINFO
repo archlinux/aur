@@ -1,0 +1,13 @@
+pkgbase = gog-surviving_mars_digital_deluxe_edition_upgrade_pack
+	pkgdesc = DLC for the surviving mars game.
+	pkgver = 1.5_fuglesang_1011166
+	pkgrel = 1
+	url = https://www.gog.com/en/game/surviving_mars_digital_deluxe_edition_upgrade_pack
+	arch = x86_64
+	license = custom
+	depends = gog-surviving_mars
+	noextract = surviving_mars_digital_deluxe_edition_upgrade_pack_1_5_fuglesang_1011166_55908.sh
+	source = surviving_mars_digital_deluxe_edition_upgrade_pack_1_5_fuglesang_1011166_55908.sh::gog://surviving_mars_digital_deluxe_edition_upgrade_pack_1_5_fuglesang_1011166_55908.sh
+	sha256sums = 851b764d6bbeeace62b92c8863cfb52ea38ad0ad165a8db2b6291f89ccc5435c
+
+pkgname = gog-surviving_mars_digital_deluxe_edition_upgrade_pack
