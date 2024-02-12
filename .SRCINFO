@@ -1,0 +1,13 @@
+pkgbase = gog-surviving_mars_mysteries_resupply_pack
+	pkgdesc = DLC for the surviving mars game.
+	pkgver = 1.5_fuglesang_1011166
+	pkgrel = 1
+	url = https://www.gog.com/en/game/surviving_mars_mysteries_resupply_pack
+	arch = x86_64
+	license = custom
+	depends = gog-surviving_mars
+	noextract = surviving_mars_mysteries_resupply_pack_1_5_fuglesang_1011166_55908.sh
+	source = surviving_mars_mysteries_resupply_pack_1_5_fuglesang_1011166_55908.sh::gog://surviving_mars_mysteries_resupply_pack_1_5_fuglesang_1011166_55908.sh
+	sha256sums = b3ce1f9f33ad75d02c8b31f5ba9c0742d92fcbd90ab1c2a48a306a86e18de617
+
+pkgname = gog-surviving_mars_mysteries_resupply_pack
