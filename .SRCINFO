@@ -1,0 +1,30 @@
+pkgbase = xf86-video-openchrome
+	pkgdesc = X.Org Openchrome drivers
+	pkgver = 0.6.0.r798.g0c75274
+	pkgrel = 2
+	url = https://www.freedesktop.org/wiki/Openchrome/
+	arch = x86_64
+	groups = xorg-drivers
+	license = custom
+	makedepends = xorg-server-devel
+	makedepends = X-ABI-VIDEODRV_VERSION=25.2
+	makedepends = systemd
+	makedepends = libxv
+	makedepends = git
+	depends = libdrm
+	depends = libxvmc
+	depends = systemd-libs
+	conflicts = xorg-server<21.1.1
+	conflicts = X-ABI-VIDEODRV_VERSION<25
+	conflicts = X-ABI-VIDEODRV_VERSION>=26
+	conflicts = xf86-video-via
+	conflicts = xf86-video-unichrome
+	conflicts = openchrome
+	replaces = openchrome
+	replaces = xf86-video-via
+	options = !emptydirs
+	source = git+https://anongit.freedesktop.org/git/openchrome/xf86-video-openchrome#commit=0c752742e54fa34140386547947c81a832c9cad1
+	validpgpkeys = CDA92E38A7A7A82237E9AB61C922784178BFFDB0
+	sha256sums = SKIP
+
+pkgname = xf86-video-openchrome
