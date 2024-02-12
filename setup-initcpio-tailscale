@@ -10,16 +10,18 @@ usage() {
     cat <<EOF
 ${CMD0} launches and configures Tailscale daemon in an isolated environment that doesn't mess with the system service.
 
-usage: ${CMD0} [options] [-- [tailscale-up-options...]]
+usage: ${CMD0} [option...]
 
-  Options:
-    -H  Hostname to use when registering the node (default: '${TS_HOSTNAME}')
+The setup script shouldn't require any arguments to get it working, but keep in mind that any extra argument is passed as-is to 'tailscale up'.
+See 'tailscale up --help' for available flags.
 
-Any arguments after '--' (double dash), like in 'setup-initcpio-tailscale -- --ssh' are passed verbatim to 'tailscale up'.
-See 'tailscale up --help' output for available flags. i.e.:
+i.e.:
 
-  ${CMD0} -H ${TS_HOSTNAME} -- --ssh --login-server=headscale.my.net --authkey=file:node.key
+  ${CMD0} --hostname ${TS_HOSTNAME} --ssh --login-server=headscale.my.net --authkey=file:node.key
 
+The default value for '--hostname' is the current hostname plus '-initrd' suffix, in this case "${TS_HOSTNAME}".
+
+If in doubt, run '$CMD0' without arguments.
 EOF
 }
 
@@ -38,13 +40,20 @@ cleanup() {
 }
 trap "cleanup" EXIT
 
-while getopts H:k:d:t:h flag; do
-    case "$flag" in
-        H) TS_HOSTNAME="$OPTARG" ;;
-        ?) usage; exit 0 ;;
-    esac
+# Scan arguments looking for --hostname=VALUE
+FOUND_HOSTNAME_IN_ARGS=no
+for arg in "$@"; do
+  if [[ $arg =~ ^(-h|--help|help)$ ]]; then
+    usage
+    exit 0
+  fi
+  if [[ $arg =~ ^--hostname= ]]; then
+    TS_HOSTNAME=${arg#*=}
+    TS_HOSTNAME=${TS_HOSTNAME//[\"\']}
+    FOUND_HOSTNAME_IN_ARGS=yes
+  fi
 done
-shift $(( OPTIND - 1 ))
+[[ $FOUND_HOSTNAME_IN_ARGS == yes ]] || set -- --hostname="$TS_HOSTNAME" "$@"
 
 SETUPDIR="$(mktemp -d)"
 socket="${SETUPDIR}/tailscaled.sock"
@@ -60,7 +69,7 @@ PID="$!"
 
 # --accept-risk=lose-ssh is fine because we are setting up an isolated tailscaled daemon,
 # it has nothing to do with system tailscale service.
-if ! tailscale --socket="$socket" up --qr --hostname="$TS_HOSTNAME" --accept-risk=lose-ssh "$@"; then
+if ! tailscale --socket="$socket" up --qr --accept-risk=lose-ssh "$@"; then
   cp -f "${SETUPDIR}/setup.log" /tmp/setup-initcpio-tailscale-daemon.log
   die "Failed to configure tailscale. Check daemon logs at /tmp/setup-initcpio-tailscale-daemon.log"
 fi
