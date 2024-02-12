@@ -3,14 +3,13 @@
 _pkgname=GRridge
 _pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
-pkgrel=1
-pkgdesc='Better prediction by use of co-data: Adaptive group-regularized ridge regression'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=3
+pkgdesc="Better prediction by use of co-data: Adaptive group-regularized ridge regression"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-glmnet
   r-graph
   r-iso
@@ -20,15 +19,16 @@ depends=(
 optdepends=(
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c3d99f251e8dc94fce4aa7d6eacaffdc63576f4c7003d2f1a8714cde40a9bc6e')
+source=("https://bioconductor.org/packages/3.16/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('5c7da0baf7039c0cf766a9b0f904c1dd')
+b2sums=('f9c08f51d87b9102f3295959b3da553780c3b4078ce07b2653dd856314f5cbe2eaaf1dda109f00fcab0bcd55172e4180c4fe7ef773a34ee896db6df7dad65dc6')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
