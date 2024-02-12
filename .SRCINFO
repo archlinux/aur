@@ -1,0 +1,14 @@
+pkgbase = git-gud
+	pkgdesc = An innovative, new method to git --help
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = sh
+	depends = git
+	provides = git-gud
+	conflicts = git-gud
+	source = git-gud
+	sha256sums = 05de2806450723391196644aafbfefc112dcb0b6dda6548e7d06dc4443fe9fc7
+
+pkgname = git-gud
