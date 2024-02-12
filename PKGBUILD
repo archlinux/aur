@@ -1,6 +1,5 @@
-# Maintainer: xgdgsc <xgdgsc at gmail.com>
 pkgname=deadbeef-plugin-statusnotifier
-pkgver=1.3
+pkgver=1.6
 pkgrel=1
 pkgdesc="Plugin that provides system tray icon for deadbeef in Plasma5 (Just implements StatusNotifierItem)."
 url="https://github.com/vovochka404/deadbeef-statusnotifier-plugin"
@@ -9,7 +8,7 @@ license=('GPL3')
 source=("https://github.com/vovochka404/deadbeef-statusnotifier-plugin/archive/v${pkgver}.tar.gz")
 depends=('deadbeef' 'gtk3' 'gtk2' 'libdbusmenu-glib')
 makedepends=('cmake')
-md5sums=('807e81cd8b8e18c4d673a418551c2a4b')
+sha512sums=('82e584b4614371a17ef89be94d87804bc3c55ae806a001bc489ca8041deff0aba29e0525b533f7fd3ccfc188adcaac62dd51418e7d0d2377222873baedddc9e5')
 
 build() {
   cmake "${srcdir}/deadbeef-statusnotifier-plugin-${pkgver}" -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" -DUSE_GTK=OFF
