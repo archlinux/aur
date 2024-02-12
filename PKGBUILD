@@ -16,8 +16,6 @@ sha256sums=('SKIP')
 
 prepare() {
   cmake -S $pkgname -B build -DCMAKE_BUILD_TYPE=Release -DFETCHCONTENT_QUIET=OFF -GNinja
-  cd $pkgname
-  rm -dr Linux/deb_template/usr/share/$pkgname build/ViewerInstall/Data/TacentView.ico
 }
 
 build() {
@@ -29,5 +27,6 @@ package() {
   install -Dm644 $pkgname/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 build/ViewerInstall/Data/* -t "$pkgdir/usr/share/$pkgname/Data"
   install -Dm755 build/ViewerInstall/$pkgname -t "$pkgdir/usr/bin"
+  rm -dr $pkgname/Linux/deb_template/usr/share/$pkgname "$pkgdir/usr/share/$pkgname/Data/TacentView.ico"
   mv $pkgname/Linux/deb_template/usr/share/* "$pkgdir/usr/share"
 }
