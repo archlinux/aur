@@ -90,6 +90,12 @@ export ANDROID_PREFIX_SHARE=${ANDROID_PREFIX}/share
 export PKG_CONFIG_SYSROOT_DIR=${ANDROID_PREFIX}
 export PKG_CONFIG_LIBDIR=${ANDROID_PREFIX_LIB}/pkgconfig:${ANDROID_PREFIX_SHARE}/pkgconfig
 
+export CC=${ANDROID_CC}
+export CXX=${ANDROID_CXX}
+export CFLAGS="-I${ANDROID_PREFIX_INCLUDE} ${CFLAGS}"
+export CXXFLAGS="-I${ANDROID_PREFIX_INCLUDE} ${CXXFLAGS}"
+export LDFLAGS="-L${ANDROID_PREFIX_LIB} ${LDFLAGS}"
+
 ndk_version() {
     grep 'Pkg.Revision' ${ANDROID_NDK_HOME}/source.properties | awk '{print $3}'
 }
