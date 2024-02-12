@@ -3,7 +3,7 @@
 pkgname=mod-desktop-network-bin
 provides=(${pkgname//-network-bin/""})
 pkgver=0.0.10
-pkgrel=2
+pkgrel=3
 pkgdesc="MOD Desktop Application with network access to mod-ui"
 arch=('x86_64')
 url="https://github.com/moddevices/mod-desktop"
@@ -27,6 +27,6 @@ package() {
   install -Dm644 "$provides-$pkgver-linux-$arch/mod-desktop.desktop" "$pkgdir/usr/share/applications/$provides.desktop"
 
   # Network access patch
-  sudo sed -i 's/application.listen(DEVICE_WEBSERVER_PORT, address=("127.0.0.1" if DESKTOP else "0.0.0.0"))/application.listen(DEVICE_WEBSERVER_PORT, address=("0.0.0.0"))/' "$pkgdir/opt/$provides/mod/webserver.py"
+  sed -i 's/application.listen(DEVICE_WEBSERVER_PORT, address=("127.0.0.1" if DESKTOP else "0.0.0.0"))/application.listen(DEVICE_WEBSERVER_PORT, address=("0.0.0.0"))/' "$pkgdir/opt/$provides/mod/webserver.py"
 
 }
