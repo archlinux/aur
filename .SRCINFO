@@ -1,7 +1,7 @@
 pkgbase = mod-desktop-network-bin
-	pkgdesc = MOD Desktop Application with available network access to mod-ui
+	pkgdesc = MOD Desktop Application with network access to mod-ui
 	pkgver = 0.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moddevices/mod-desktop
 	arch = x86_64
 	license = AGPLv3+

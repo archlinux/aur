@@ -3,8 +3,8 @@
 pkgname=mod-desktop-network-bin
 provides=(${pkgname//-network-bin/""})
 pkgver=0.0.10
-pkgrel=1
-pkgdesc="MOD Desktop Application with available network access to mod-ui"
+pkgrel=2
+pkgdesc="MOD Desktop Application with network access to mod-ui"
 arch=('x86_64')
 url="https://github.com/moddevices/mod-desktop"
 license=('AGPLv3+')
