@@ -3,18 +3,24 @@
 pkgname=python-gspread
 _pkgname=gspread
 pkgver=6.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Spreadsheets Python API"
 arch=('any')
 url="https://github.com/burnash/gspread"
 license=('Custom:MIT')
 depends=('python-google-auth' 'python-google-auth-oauthlib' 'python-strenum')
+checkdepends=('python-pytest-asyncio' 'python-pytest-vcr')
 makedepends=('python-build' 'python-flit' 'python-installer' 'python-wheel')
 source=("https://github.com/burnash/$_pkgname/archive/v$pkgver.tar.gz")
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
   python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  pytest
 }
 
 package() {
