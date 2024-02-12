@@ -17,11 +17,11 @@
 #define DEF_DUR  0.1F
 #define DEF_NOTE 48
 #define MAX_NOTE 87
-static float buffer[BUF_LEN];
+static unsigned char buffer[BUF_LEN];
 static snd_pcm_t *g_handle;
 static snd_pcm_sframes_t g_frames;
 static int channels =1;
-static snd_pcm_format_t format = SND_PCM_FORMAT_FLOAT;
+static snd_pcm_format_t format = SND_PCM_FORMAT_U8;
 static int rate = 48000;
 static float freq = DEF_FREQ; // in hertz
 static float dur = DEF_DUR; // in seconds
@@ -45,12 +45,15 @@ kernel module, normally started via /etc/udev/rules.d/90-fancybeep.rules\n\
 other daemons can be used with fancybeep see eg\n\
 https://github.com/mozzwald/Fancy-Beeper-Daemon/tree/master/daemons\n\n"
 
+static unsigned char clamp(float val){
+	val = 127.5+(val*127.5);
+	return val<=0.0? 0: val>=254.5? 255: (unsigned char)(val+0.5);
+}
+
 static void genSine() {
 	float t = 2*M_PI*freq/(rate*channels);
-	float *buf = buffer;
 	for (int i=0; i< BUF_LEN; i++) {
-		// val = (int)maxSamp*vol*sin(t*i);
-		buffer[i] = vol*sin(t*i);
+		buffer[i] = clamp(vol*sin(t*i));
 	}
 }
 
@@ -59,7 +62,7 @@ static void genSquare(){
 		half_cycle = floorf((float)full_cycle / 2.0f),
 		cycle_index = 0;
 	for (int i = 0; i < BUF_LEN; i++) {
-		buffer[i] = (cycle_index < half_cycle) ? vol : -vol;
+		buffer[i] = clamp((cycle_index < half_cycle) ? vol: -vol);
 		cycle_index = (cycle_index + 1) % full_cycle;
 		}
 }
@@ -96,7 +99,7 @@ static void closeDevice() {
 	snd_pcm_close(g_handle);
 }
 
-static void writeBuf(float* buf, int nbFrames, int nbTimes) {
+static void writeBuf(unsigned char *buf, int nbFrames, int nbTimes) {
 	for (int i=0; i < nbTimes; i++) {
 		// Sending the sound
 		g_frames += snd_pcm_writei(g_handle, buf, nbFrames);
@@ -208,7 +211,7 @@ int main(int argc, char *argv[]) {
 				printf(HELP_TEXT, prog, device, dur, freq, vol, fbdevpath, prog);
 				return 0;
 			case 't':
-				if(strncmp(optarg,"sine",5)==0) break;
+				if(strncmp(optarg,"sine",5)==0) {kind=0;break;}
 				if(strncmp(optarg,"square",7)==0) {kind=1;break;}
 				printf("kind incorrect should be sine or square not %s\n", optarg);
 				return 1;
