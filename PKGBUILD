@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kdsoap-git
-pkgver=1.99.50_r1730.g12f0ee76
+pkgver=2.2.95_r1972.ga14f3001
 pkgrel=1
 pkgdesc='Qt-based client-side and server-side SOAP component'
-license=(GPL3 LGPL custom)
 arch=($CARCH)
 url='https://github.com/KDAB/KDSoap'
-depends=(qt5-base)
-makedepends=(git cmake)
+license=(GPL3 LGPL custom)
+depends=(gcc-libs glibc)
+makedepends=(git cmake qt5-base qt6-base)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+$url.git")
