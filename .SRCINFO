@@ -2,7 +2,7 @@
 # Tue Jan  9 10:41:21 UTC 2018
 pkgbase = deadbeef-plugin-statusnotifier
 	pkgdesc = Plugin that provides system tray icon for deadbeef in Plasma5 (Just implements StatusNotifierItem).
-	pkgver = 1.3
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://github.com/vovochka404/deadbeef-statusnotifier-plugin
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = deadbeef-plugin-statusnotifier
 	depends = gtk3
 	depends = gtk2
 	depends = libdbusmenu-glib
-	source = https://github.com/vovochka404/deadbeef-statusnotifier-plugin/archive/v1.3.tar.gz
-	md5sums = 807e81cd8b8e18c4d673a418551c2a4b
+	source = https://github.com/vovochka404/deadbeef-statusnotifier-plugin/archive/v1.6.tar.gz
+	sha512sums = 82e584b4614371a17ef89be94d87804bc3c55ae806a001bc489ca8041deff0aba29e0525b533f7fd3ccfc188adcaac62dd51418e7d0d2377222873baedddc9e5
 
 pkgname = deadbeef-plugin-statusnotifier
 
