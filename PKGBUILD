@@ -3,13 +3,13 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kauth-git
-pkgver=5.240.0_r584.g50836db
+pkgver=6.0.0_r636.gd1db48f
 pkgrel=1
 pkgdesc='Abstraction to system policy and authentication features'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(kcoreaddons-git polkit-qt6-git)
+depends=(kcoreaddons-git polkit-qt6-git kwindowsystem-git)
 makedepends=(git extra-cmake-modules-git qt6-tools clang python-pyqt6 doxygen sip)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})

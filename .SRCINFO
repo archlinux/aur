@@ -1,6 +1,6 @@
 pkgbase = kauth-git
 	pkgdesc = Abstraction to system policy and authentication features
-	pkgver = 5.240.0_r584.g50836db
+	pkgver = 6.0.0_r636.gd1db48f
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = kauth-git
 	makedepends = sip
 	depends = kcoreaddons-git
 	depends = polkit-qt6-git
+	depends = kwindowsystem-git
 	optdepends = python-pyqt6: for the Python bindings
 	provides = kauth
 	conflicts = kauth
