@@ -1,40 +1,75 @@
 # Maintainer: Julius Michaelis <gitter@liftm.de.de>
+# Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
+# Maintainer: cosmo <aur@dawnson.is>
 
-_name=niri
-pkgname="$_name-git"
-pkgver=0.1.0.f58e56d
-pkgrel=2
-pkgdesc="A scrollable-tiling Wayland compositor"
-arch=('x86_64')
-url="https://github.com/YaLTeR/$_name"
-license=(GPL3)
-depends=(wayland libpipewire seatd clang libxkbcommon mesa libinput)
-makedepends=(rust git)
-source=(git+$url.git)
-sha512sums=(SKIP)
-conflicts=(niri)
+## The following variable can be customized at build time.
+## Use env or export to change at your wish
+##
+##   Example: env _sccache=y makepkg -sc
+##
+## Default is: None => not use sccache
+##
+## More info: https://github.com/mozilla/sccache
+: ${_sccache:=}
+
+pkgname=niri-git
+pkgver=v0.1.1
+pkgrel=1
+pkgdesc="Scrollable-tiling Wayland compositor"
+arch=(x86_64 aarch64)
+url="https://github.com/YaLTeR/${pkgname%-git}"
+license=(GPL3-3.0-or-later)
+depends=(cairo glib2 libinput libpipewire libxkbcommon mesa pango pixman seatd)
+makedepends=(clang rust git)
+[[ -n ${_sccache} ]] && makedepends+=(sccache)
+optdepends=('fuzzel: application launcher similar to rofi drun mode'
+            'waybar: highly customizable Wayland bar'
+            'alacritty: a cross-platform OpenGL terminal emulator'
+            'mako: notification daemon for Wayland'
+            'swaybg: wallpaper tool for Wayland compositors'
+            'swaylock: screen locker for Wayland'
+            'xdg-desktop-portal-gtk: implements most of the basic functionality'
+            'xdg-desktop-portal-gnome: screencasting support'
+            'gnome-keyring: implements the secret portal, for certain apps to work'
+            'polkit-gnome: when apps need to ask for root permissions')
+provides=(${pkgname%-git}=${pkgver})
+conflicts=(${pkgname%-git}-bin ${pkgname%-git})
+options=(!debug !lto)
+source=(${pkgname%-git}::git+$url.git)
+b2sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname%-git}"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
-  cd "$srcdir/$_name"
-  echo >>Cargo.toml '
-  [profile.aur]
-  inherits = "release"
-  lto = true
-  codegen-units = 1'
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cd ${pkgname%-git}
+  # Tuning cargo
+  export CARGO_HOME=${srcdir}/${pkgname%-git}/.cargo    # Download all to src directory, not in ~/.cargo
+
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "$srcdir/$_name"
-  cargo build --profile aur --offline --target "$CARCH-unknown-linux-gnu"
+  cd ${pkgname%-git}
+
+  # Tuning rust compiler
+  export RUSTFLAGS="--remap-path-prefix=${srcdir}=/"    # Prevent warning: 'Package contains reference to $srcdir'
+  [[ -n ${_sccache} ]] && export RUSTC_WRAPPER=sccache  # If $_sccache not empty, build using binary cache
+
+  # Tuning cargo
+  export CARGO_HOME=${srcdir}/${pkgname%-git}/.cargo    # Use downloaded earlier from src directory, not from ~/.cargo
+  export CARGO_TARGET_DIR=target                        # Place the output in target relative to the current directory
+
+  cargo build --frozen --release
 }
 
 package() {
-  cd "$srcdir/$_name"
-  install -Dm0755 "target/$CARCH-unknown-linux-gnu/aur/$_name" "$pkgdir/usr/bin/$_name"
-  install -Dm0755 "resources/$_name-session" "$pkgdir/usr/bin/$_name-session"
-  install -Dm0644 "resources/$_name.desktop" "$pkgdir/usr/share/wayland-sessions/$_name.desktop"
-  install -Dm0644 "resources/$_name-portals.conf" "$pkgdir/usr/share/xdg-desktop-portal/$_name-portals.conf"
-  install -Dm0644 "resources/$_name.service" "$pkgdir/usr/lib/systemd/user/$_name.service"
-  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  cd ${pkgname%-git}
+  install -Dm755 target/release/${pkgname%-git}                       -t ${pkgdir}/usr/bin/
+  install -Dm755 resources/${pkgname%-git}-session                    -t ${pkgdir}/usr/bin/
+  install -Dm644 resources/${pkgname%-git}.desktop                    -t ${pkgdir}/usr/share/wayland-sessions/
+  install -Dm644 resources/${pkgname%-git}-portals.conf               -t ${pkgdir}/usr/share/xdg-desktop-portal/
+  install -Dm644 resources/${pkgname%-git}{.service,-shutdown.target} -t ${pkgdir}/usr/lib/systemd/user/
 }
