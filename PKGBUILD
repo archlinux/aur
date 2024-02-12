@@ -2,7 +2,7 @@
 # Contributor: Sir-Photch <sir-photch@posteo.me>
 
 pkgname=litellm
-pkgver=1.21.0
+pkgver=1.23.9
 pkgrel=1
 pkgdesc='Call all LLM APIs using the OpenAI format'
 arch=(any)
@@ -19,6 +19,7 @@ depends=(
     'python-jinja'
     'python-aiohttp'
     'python-requests'
+    'python-setuptools'
 )
 makedepends=(
     'python-build'
@@ -42,7 +43,7 @@ optdepends=(
 source=(
 	"https://files.pythonhosted.org/packages/source/l/$pkgname/$pkgname-$pkgver.tar.gz"
 )
-sha256sums=('3bba0fc150e6f849887395b1a084e4f3bfac419cfe7b030af882a487f4f0895b')
+sha256sums=('0c1e0e56f4d1d9c8a33da09d6736bde9b21a8ea324db8c05cc3de65c6b4fad7d')
 
 prepare() {
 	cd "$pkgname-$pkgver"

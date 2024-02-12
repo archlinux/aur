@@ -1,6 +1,6 @@
 pkgbase = litellm
 	pkgdesc = Call all LLM APIs using the OpenAI format
-	pkgver = 1.21.0
+	pkgver = 1.23.9
 	pkgrel = 1
 	url = https://pypi.org/project/litellm/
 	arch = any
@@ -19,6 +19,7 @@ pkgbase = litellm
 	depends = python-jinja
 	depends = python-aiohttp
 	depends = python-requests
+	depends = python-setuptools
 	optdepends = uvicorn: ASGI server for asyncio
 	optdepends = gunicorn: WSGI HTTP Server
 	optdepends = python-fastapi: Framework for building APIs
@@ -29,7 +30,7 @@ pkgbase = litellm
 	optdepends = python-apscheduler: Task scheduler
 	optdepends = python-streamlit: App framework for Machine Learning and Data Science
 	optdepends = ollama: Serve local ollama models
-	source = https://files.pythonhosted.org/packages/source/l/litellm/litellm-1.21.0.tar.gz
-	sha256sums = 3bba0fc150e6f849887395b1a084e4f3bfac419cfe7b030af882a487f4f0895b
+	source = https://files.pythonhosted.org/packages/source/l/litellm/litellm-1.23.9.tar.gz
+	sha256sums = 0c1e0e56f4d1d9c8a33da09d6736bde9b21a8ea324db8c05cc3de65c6b4fad7d
 
 pkgname = litellm
