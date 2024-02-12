@@ -1,0 +1,17 @@
+pkgbase = rofi-emoji-git
+	pkgdesc = A Rofi plugin for selecting emojis
+	pkgver = r73.7f68772
+	pkgrel = 1
+	url = https://github.com/Mange/rofi-emoji
+	arch = x86_64
+	license = MIT
+	checkdepends = check
+	depends = rofi
+	optdepends = xsel: X11 support
+	optdepends = xclip: X11 support
+	optdepends = wl-clipboard: Wayland support
+	conflicts = rofi-emoji
+	source = git+https://github.com/Mange/rofi-emoji
+	b2sums = SKIP
+
+pkgname = rofi-emoji-git
