@@ -1,0 +1,17 @@
+pkgbase = ssh-utils-git
+	pkgdesc = A collection of SSH related scripts.
+	pkgver = 0.1.r5.ge7e693c
+	pkgrel = 1
+	url = https://github.com/themartiancompany/ssh-utils
+	arch = any
+	groups = hip
+	groups = hip-git
+	license = AGPL3
+	checkdepends = shellcheck
+	makedepends = git
+	provides = ssh-utils=0.1.r5.ge7e693c
+	conflicts = ssh-utils
+	source = git+https://github.com/themartiancompany/ssh-utils#branch=master
+	sha256sums = SKIP
+
+pkgname = ssh-utils-git
