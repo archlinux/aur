@@ -1,0 +1,13 @@
+LICENSE Note:
+
+Each file contained in the package has its own copyright notice and 
+license declaration.
+
+Upstream does not provide a 'master list' of which file has which 
+license.
+
+Please see each file in the following directories to ascertain its
+license details:
+
+*   usr/lib/cmake/PlasmaWaylandProtocols/
+*   usr/share/plasma-wayland-protocols/
