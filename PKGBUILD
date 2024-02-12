@@ -1,5 +1,6 @@
 # Contributor: Rowisi < nomail <at> private <dot> com >
-# Maintainer: So1ar <so1ar114514@gmail.com>
+# Contributor: So1ar <so1ar114514@gmail.com>
+# Manitor: Bot-wxt1221 <3264117476@qq.com>
 
 pkgname=hmcl-bin
 _ver=3.5.5.235
