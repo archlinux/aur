@@ -1,8 +1,8 @@
 # Maintainer: Tobias Frisch <thejackimonster@gmail.com>
 
 pkgname=pinephone-compass-git
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="A simple GTK3 compass app for the Pine64 Pinephone."
 url="https://gitlab.com/lgtrombetta/pinephone-compass"
 license=('GPL3')
