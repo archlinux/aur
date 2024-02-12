@@ -1,13 +1,13 @@
 pkgbase = plasma-activities-git
 	pkgdesc = Core components for KDE Activities
 	pkgver = 6.0.80_r1477.gbe3dd91c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	license = LGPL-2.0-or-later
 	makedepends = boost
 	makedepends = doxygen
-	makedepends = extra-cmake-modules
+	makedepends = extra-cmake-modules-git
 	makedepends = qt6-declarative
 	makedepends = qt6-doc
 	makedepends = qt6-tools
@@ -21,7 +21,7 @@ pkgbase = plasma-activities-git
 	provides = kactivities-git
 	conflicts = kactivities
 	conflicts = kactivities-git
-	source = git://invent.kde.org/plasma/plasma-activities.git
+	source = git+https://invent.kde.org/plasma/plasma-activities.git
 	sha256sums = SKIP
 
 pkgname = plasma-activities-git
