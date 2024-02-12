@@ -1,0 +1,13 @@
+pkgbase = gog-surviving_mars_stellaris_dome_set
+	pkgdesc = DLC for the surviving mars game.
+	pkgver = 1.5_fuglesang_1011166
+	pkgrel = 1
+	url = https://www.gog.com/en/game/surviving_mars_stellaris_dome_set
+	arch = x86_64
+	license = custom
+	depends = gog-surviving_mars
+	noextract = surviving_mars_stellaris_dome_set_pre_order_dlc_1_5_fuglesang_1011166_55908.sh
+	source = surviving_mars_stellaris_dome_set_pre_order_dlc_1_5_fuglesang_1011166_55908.sh::gog://surviving_mars_stellaris_dome_set_pre_order_dlc_1_5_fuglesang_1011166_55908.sh
+	sha256sums = a4644bc0d212571313cfb3c79419d9e279127ca69cab50c1a57b69bc7091400c
+
+pkgname = gog-surviving_mars_stellaris_dome_set
