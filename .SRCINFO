@@ -1,11 +1,10 @@
 pkgbase = r-compartmap
 	pkgdesc = Higher-order chromatin domain inference in single cells from scRNA-seq and scATAC-seq
 	pkgver = 1.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/compartmap
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-3.0-only
 	depends = r-biocsingular
 	depends = r-delayedarray
 	depends = r-delayedmatrixstats
@@ -24,7 +23,8 @@ pkgbase = r-compartmap
 	optdepends = r-rcpp
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/compartmap_1.18.0.tar.gz
-	sha256sums = 0884a4899707c8a378b5d40ca556a7e268b7dc67d76ae25335c93e56aee56f53
+	source = https://bioconductor.org/packages/3.17/bioc/src/contrib/compartmap_1.18.0.tar.gz
+	md5sums = 99ff3e58dff338f71c08fae6f058852c
+	b2sums = e3d778fc91211ee0fcb37bd7044a2005e71a5d13214262c9d926cdf22684473e23acd339224a6fc2c09711fc7f2db0552ee1a17246d317316e7e626c832e94e8
 
 pkgname = r-compartmap
