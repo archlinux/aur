@@ -1,7 +1,7 @@
 # Maintainer: Jorge Pizarro-Callejas (jorgicio) <jpizarrocallejas@gmail.com>
 pkgname=dnslookup
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple command line utility to make DNS lookups to the specified server"
 arch=('any')
 url="https://github.com/ameshkov/dnslookup"
