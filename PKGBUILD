@@ -2,7 +2,7 @@
 pkgname=sbe-bin
 pkgver=3.5.0
 _electronversion=25
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial Scrapbox desktop app"
 arch=('x86_64')
 url="https://github.com/kondoumh/sbe"
@@ -26,11 +26,11 @@ source=(
 )
 sha256sums=('0256de2b0bb80cbd30d53948808a645c3b9898a136ba2754d39a21007b2a383c'
             '0c0557908ff74a92af66c9b4435403c14e230c11e56eace0016fcfb7151187d2'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
