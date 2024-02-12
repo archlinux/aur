@@ -1,7 +1,7 @@
 pkgbase = mutter-performance
 	pkgdesc = A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync
-	pkgver = 45.3
-	pkgrel = 3
+	pkgver = 45.4
+	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = mutter-performance
 	depends = pipewire
 	depends = startup-notification
 	depends = xorg-xwayland
-	source = mutter-performance::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=5012d22cb96ba22c4133e2e488ea1f5241fb50e2
+	source = mutter-performance::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=919e71b113cc03c0fe1de7777393a19947f7b9f9
 	source = mr1441.patch
 	source = mr3304.patch
 	source = mr3327.patch
