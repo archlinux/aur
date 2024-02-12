@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=pulseaudio-qt-git
-pkgver=1.3.0_r723.gb035878
+pkgver=1.4.0_r768.g2f82909
 pkgrel=1
 pkgdesc='Qt bindings for libpulse'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(qt5-base libpulse)
-makedepends=(git extra-cmake-modules-git doxygen qt5-tools)
+depends=(gcc-libs glibc libpulse qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
@@ -23,6 +23,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DBUILD_QCH=ON \
     -DBUILD_TESTING=OFF
   cmake --build build
