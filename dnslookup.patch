@@ -1,23 +1,20 @@
-diff '--color=auto' -r -u dnslookup-1.7.3.orig/go.mod dnslookup-1.7.3/go.mod
---- dnslookup-1.7.3.orig/go.mod	2022-09-01 18:34:59.000000000 +0200
-+++ dnslookup-1.7.3/go.mod	2024-02-12 16:32:38.010627381 +0100
-@@ -1,32 +1,30 @@
- module github.com/ameshkov/dnslookup
- 
--go 1.18
-+go 1.19
+diff '--color=auto' -r -u dnslookup-1.8.0.orig/go.mod dnslookup-1.8.0/go.mod
+--- dnslookup-1.8.0.orig/go.mod	2022-09-20 15:00:41.000000000 +0200
++++ dnslookup-1.8.0/go.mod	2024-02-12 16:38:46.593213778 +0100
+@@ -3,31 +3,28 @@
+ go 1.18
  
  require (
--	github.com/AdguardTeam/dnsproxy v0.44.0
+-	github.com/AdguardTeam/dnsproxy v0.45.0
+-	github.com/AdguardTeam/golibs v0.10.9
 +	github.com/AdguardTeam/dnsproxy v0.55.0
++	github.com/AdguardTeam/golibs v0.16.2
  	github.com/ameshkov/dnsstamps v1.0.3
 -	github.com/miekg/dns v1.1.50
 +	github.com/miekg/dns v1.1.56
  )
  
  require (
--	github.com/AdguardTeam/golibs v0.10.9 // indirect
-+	github.com/AdguardTeam/golibs v0.16.2 // indirect
  	github.com/aead/chacha20 v0.0.0-20180709150244-8b13a72661da // indirect
  	github.com/aead/poly1305 v0.0.0-20180717145839-3fee0db0b635 // indirect
 -	github.com/ameshkov/dnscrypt/v2 v2.2.5 // indirect
@@ -27,6 +24,7 @@ diff '--color=auto' -r -u dnslookup-1.7.3.orig/go.mod dnslookup-1.7.3/go.mod
 +	github.com/go-task/slim-sprig v0.0.0-20230315185526-52ccab3ef572 // indirect
  	github.com/golang/mock v1.6.0 // indirect
 -	github.com/lucas-clemente/quic-go v0.29.0 // indirect
+-	github.com/marten-seemann/qpack v0.2.1 // indirect
 -	github.com/marten-seemann/qtls-go1-18 v0.1.2 // indirect
 -	github.com/marten-seemann/qtls-go1-19 v0.1.0 // indirect
 -	github.com/nxadm/tail v1.4.8 // indirect
@@ -52,12 +50,14 @@ diff '--color=auto' -r -u dnslookup-1.7.3.orig/go.mod dnslookup-1.7.3/go.mod
 +	golang.org/x/text v0.13.0 // indirect
 +	golang.org/x/tools v0.13.0 // indirect
  )
-diff '--color=auto' -r -u dnslookup-1.7.3.orig/go.sum dnslookup-1.7.3/go.sum
---- dnslookup-1.7.3.orig/go.sum	2022-09-01 18:34:59.000000000 +0200
-+++ dnslookup-1.7.3/go.sum	2024-02-12 16:32:38.010627381 +0100
-@@ -1,135 +1,82 @@
--github.com/AdguardTeam/dnsproxy v0.44.0 h1:JzIxEXF4OyJq4wZVHeZkM1af4VfuwcgrUzjgdBGljsE=
--github.com/AdguardTeam/dnsproxy v0.44.0/go.mod h1:HsxYYW/bC8uo+4eX9pRW21hFD6gWZdrvcfBb1R6/AzU=
+Only in dnslookup-1.8.0.orig: go.mod.orig
+Only in dnslookup-1.8.0.orig: go.mod.rej
+diff '--color=auto' -r -u dnslookup-1.8.0.orig/go.sum dnslookup-1.8.0/go.sum
+--- dnslookup-1.8.0.orig/go.sum	2022-09-20 15:00:41.000000000 +0200
++++ dnslookup-1.8.0/go.sum	2024-02-12 16:38:46.593213778 +0100
+@@ -1,141 +1,82 @@
+-github.com/AdguardTeam/dnsproxy v0.45.0 h1:10lZs38JNdE30HICtSANQslhtIOq8ov/Jox8cDHIvJQ=
+-github.com/AdguardTeam/dnsproxy v0.45.0/go.mod h1:h+0r4GDvHHY2Wu6r7oqva+O37h00KofYysfzy1TEXFE=
 -github.com/AdguardTeam/golibs v0.10.9 h1:F9oP2da0dQ9RQDM1lGR7LxUTfUWu8hEFOs4icwAkKM0=
 -github.com/AdguardTeam/golibs v0.10.9/go.mod h1:W+5rznZa1cSNSFt+gPS7f4Wytnr9fOrd5ZYqwadPw14=
 +github.com/AdguardTeam/dnsproxy v0.55.0 h1:vQinK89Nh2HKayakR6GoBeUDdKkRCONvwPp24NJ/1+w=
@@ -102,6 +102,8 @@ diff '--color=auto' -r -u dnslookup-1.7.3.orig/go.sum dnslookup-1.7.3/go.sum
 -github.com/hpcloud/tail v1.0.0/go.mod h1:ab1qPbhIpdTxEkNHXyeSf5vhxWSCs/tWer42PpOxQnU=
 -github.com/lucas-clemente/quic-go v0.29.0 h1:Vw0mGTfmWqGzh4jx/kMymsIkFK6rErFVmg+t9RLrnZE=
 -github.com/lucas-clemente/quic-go v0.29.0/go.mod h1:CTcNfLYJS2UuRNB+zcNlgvkjBhxX6Hm3WUxxAQx2mgE=
+-github.com/marten-seemann/qpack v0.2.1 h1:jvTsT/HpCn2UZJdP+UUB53FfUUgeOyG5K1ns0OJOGVs=
+-github.com/marten-seemann/qpack v0.2.1/go.mod h1:F7Gl5L1jIgN1D11ucXefiuJS9UMVP2opoCp2jDKb7wc=
 -github.com/marten-seemann/qtls-go1-18 v0.1.2 h1:JH6jmzbduz0ITVQ7ShevK10Av5+jBEKAHMntXmIV7kM=
 -github.com/marten-seemann/qtls-go1-18 v0.1.2/go.mod h1:mJttiymBAByA49mhlNZZGrH5u1uXYZJ+RW28Py7f4m4=
 -github.com/marten-seemann/qtls-go1-19 v0.1.0 h1:rLFKD/9mp/uq1SYGYuVZhm83wkmU95pK5df3GufyYYU=
@@ -113,6 +115,7 @@ diff '--color=auto' -r -u dnslookup-1.7.3.orig/go.sum dnslookup-1.7.3/go.sum
 -github.com/nxadm/tail v1.4.8/go.mod h1:+ncqLTQzXmGhMZNUePPaPqPvBxHAIsmXswZKocGu+AU=
 -github.com/onsi/ginkgo v1.6.0/go.mod h1:lLunBs/Ym6LB5Z9jYTR76FiuTmxDTDusOGeTQH+WWjE=
 -github.com/onsi/ginkgo v1.12.1/go.mod h1:zj2OWP4+oCPe1qIXoGWkgMRwljMUYCdkwsT2108oapk=
+-github.com/onsi/ginkgo v1.14.0/go.mod h1:iSB4RoI2tjJc9BBv4NKIKWKya62Rps+oPG/Lv9klQyY=
 -github.com/onsi/ginkgo v1.16.5 h1:8xi0RTUf59SOSfEtZMvwTvXYMzG4gV23XVHOZiXNtnE=
 -github.com/onsi/ginkgo v1.16.5/go.mod h1:+E8gABHa3K6zRBolWtd+ROzc/U5bkGt0FwiG042wbpU=
 -github.com/onsi/gomega v1.7.1/go.mod h1:XdKZgCCFLUoM/7CFJVPcG8C1xQ1AJ0vpAezJrB7JYyY=
@@ -163,6 +166,7 @@ diff '--color=auto' -r -u dnslookup-1.7.3.orig/go.sum dnslookup-1.7.3/go.sum
  golang.org/x/net v0.0.0-20190404232315-eb5bcb51f2a3/go.mod h1:t9HGtf8HONx5eT2rtn7q6eTqICYqUVnKs3thJo3Qplg=
  golang.org/x/net v0.0.0-20190620200207-3b0461eec859/go.mod h1:z5CRVTTTmAJ677TzLLGU+0bjPO0LkuOLi4/5GtJWs/s=
 -golang.org/x/net v0.0.0-20200520004742-59133d7f0dd7/go.mod h1:qpuaurCH72eLCgpAm/N6yyVIVM9cpaDIP3A8BGJEC5A=
+-golang.org/x/net v0.0.0-20200707034311-ab3426394381/go.mod h1:/O7V0waA8r7cgGh81Ro3o1hOxt32SMVPicZroKQ2sZA=
 -golang.org/x/net v0.0.0-20201021035429-f5854403a974/go.mod h1:sp8m0HH+o8qH0wwXwYZr8TS3Oi6o0r6Gce1SSxlDquU=
  golang.org/x/net v0.0.0-20210405180319-a5a99cb37ef4/go.mod h1:p54w0d4576C0XHj96bSt6lcn1PtDYWL6XObtHCRCNQM=
 -golang.org/x/net v0.0.0-20210726213435-c6fcb2dbf985/go.mod h1:9nx3DQGgdP8bBQD5qxJ1jj9UTztislL4KSBs9R2vV5Y=
@@ -183,6 +187,7 @@ diff '--color=auto' -r -u dnslookup-1.7.3.orig/go.sum dnslookup-1.7.3/go.sum
 -golang.org/x/sys v0.0.0-20191005200804-aed5e4c7ecf9/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 -golang.org/x/sys v0.0.0-20191120155948-bd437916bb0e/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 -golang.org/x/sys v0.0.0-20200323222414-85ca7c5b95cd/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+-golang.org/x/sys v0.0.0-20200519105757-fe76b779f299/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 -golang.org/x/sys v0.0.0-20200930185726-fdedc70b468f/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
  golang.org/x/sys v0.0.0-20201119102817-f84b799fce68/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 -golang.org/x/sys v0.0.0-20210112080510-489259a85091/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
@@ -197,6 +202,7 @@ diff '--color=auto' -r -u dnslookup-1.7.3.orig/go.sum dnslookup-1.7.3/go.sum
 +golang.org/x/sys v0.12.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
  golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1/go.mod h1:bj7SfCRtBDWHUb9snDiAeCFNEtKQo2Wmx5Cou7ajbmo=
  golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
+-golang.org/x/text v0.3.2/go.mod h1:bEr9sfX3Q8Zfm5fL9x+3itogRgK3+ptLWKqgva+5dAk=
  golang.org/x/text v0.3.3/go.mod h1:5Zoc/QRtKVWzQhOtBMvqHzDpF6irO9z98xDceosuGiQ=
 -golang.org/x/text v0.3.6/go.mod h1:5Zoc/QRtKVWzQhOtBMvqHzDpF6irO9z98xDceosuGiQ=
 -golang.org/x/text v0.3.7 h1:olpwvP2KacW1ZWvsR7uQhoyTYvKAupfQrRGBFM352Gk=
@@ -234,3 +240,5 @@ diff '--color=auto' -r -u dnslookup-1.7.3.orig/go.sum dnslookup-1.7.3/go.sum
 -gopkg.in/yaml.v2 v2.4.0 h1:D8xgwECY7CYvx+Y2n4sBz93Jn9JRvxdiyyo8CTfuKaY=
 +gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
  gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
+Only in dnslookup-1.8.0.orig: go.sum.orig
+Only in dnslookup-1.8.0.orig: go.sum.rej
