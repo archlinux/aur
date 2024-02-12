@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=crates-tui-git
-pkgver=0.1.5.r1.gaa20475
+pkgver=0.1.7.r0.g02f4b86
 pkgrel=1
 pkgdesc="A TUI for exploring crates.io (git)"
 arch=('x86_64')
