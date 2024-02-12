@@ -1,0 +1,16 @@
+pkgbase = ulwgl-git
+	pkgdesc = Unified launcher for Windows games on Linux in progress using Steam Runtime Tools, independent of Steam.
+	pkgver = 0.1.RC3.15.g3cb0083
+	pkgrel = 1
+	url = https://github.com/Open-Wine-Components/ULWGL-launcher
+	arch = any
+	license = custom
+	makedepends = git
+	depends = python
+	provides = ulwgl
+	conflicts = ulwgl
+	options = !strip
+	source = git+https://github.com/Open-Wine-Components/ULWGL-launcher.git
+	sha512sums = SKIP
+
+pkgname = ulwgl-git
