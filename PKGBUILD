@@ -52,7 +52,7 @@ groups=(
 )
 _branch="master"
 source=(
-  "git+${url}}#branch=${_branch}"
+  "git+${url}#branch=${_branch}"
   # "git+${_local}"
 )
 sha256sums=(
@@ -112,6 +112,11 @@ pkgver() {
         's/-/+/g')"
   _parse_ver \
     "${_pkgver}"
+}
+
+check() {
+  cd "${_pkgname}"
+  make -k check
 }
 
 package() {
