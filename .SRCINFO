@@ -1,7 +1,7 @@
 pkgbase = pkgx-git
 	pkgdesc = the last thing you’ll install
 	pkgver = 1.1.6.996.ga0da42e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pkgxdev/pkgx
 	arch = x86_64
 	arch = arm
@@ -10,6 +10,7 @@ pkgbase = pkgx-git
 	makedepends = git
 	provides = pkgx
 	conflicts = pkgx
+	options = !strip
 	source = pkgx::git+https://github.com/pkgxdev/pkgx.git
 	b2sums = SKIP
 

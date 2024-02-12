@@ -3,7 +3,7 @@
 pkgname="pkgx-git"
 _pkgname="pkgx"
 pkgver=1.1.6.996.ga0da42e
-pkgrel=1
+pkgrel=2
 pkgdesc="the last thing you’ll install"
 arch=("x86_64" "arm")
 url="https://github.com/pkgxdev/pkgx"
@@ -17,6 +17,7 @@ provides=("pkgx")
 conflicts=("pkgx")
 source=("$_pkgname::git+https://github.com/pkgxdev/pkgx.git")
 b2sums=("SKIP") # Since it's a VCS Package, it makes no sense to have checksums
+options=(!strip)
 
 pkgver() {
 	cd "$_pkgname"
@@ -28,6 +29,8 @@ pkgver() {
 
 build() {
 	cd "$_pkgname"
+  # Patch version
+  echo "export default function() { return '${{github.event.inputs.version}}' }" > src/modes/version.ts
 	deno task compile
 }
 
