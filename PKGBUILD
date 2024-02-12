@@ -1,36 +1,55 @@
 # Maintainer: Rankyn Bass <rankyn@proton.me>
 pkgname=xivlauncher-rb
-pkgver=1.0.7.1
+pkgver=1.0.7.2
 pkgrel=1
 epoch=2
-_tag=17bbee3b0320725069ba299fd4eef39cf9204b77 # git rev-parse rb-v${pkgver}
+_tag=feb9580674112ba02e53258efea3e2efcea08d2a # git rev-parse rb-v${pkgver}
 pkgdesc="Custom launcher for Final Fantasy XIV Online with RB Patches!"
 arch=('x86_64')
 url='https://github.com/rankynbass/XIVLauncher.Core/tree/RB-patched'
 license=('GPL')
 depends=(
     'aria2'
-    'sdl2' 'lib32-sdl2'
+    'sdl2'
     'libsecret'
-    'attr'                  'lib32-attr'
-    'fontconfig'            'lib32-fontconfig'
-    'lcms2'                 'lib32-lcms2'
-    'libxml2'               'lib32-libxml2'
-    'libxcursor'            'lib32-libxcursor'
-    'libxrandr'             'lib32-libxrandr'
-    'libxdamage'            'lib32-libxdamage'
-    'libxi'                 'lib32-libxi'
-    'gettext'               'lib32-gettext'
-    'freetype2'             'lib32-freetype2'
-    'glu'                   'lib32-glu'
-    'libsm'                 'lib32-libsm'
-    'gcc-libs'              'lib32-gcc-libs'
-    'libpcap'               'lib32-libpcap'
-    'faudio'                'lib32-faudio'
-    'desktop-file-utils'    'jxrlib'
+    'attr'
+    'fontconfig'
+    'lcms2'
+    'libxml2'
+    'libxcursor'
+    'libxrandr'
+    'libxdamage'
+    'libxi'
+    'gettext'
+    'freetype2'
+    'glu'
+    'libsm'
+    'gcc-libs'
+    'libpcap'
+    'faudio'
+    'desktop-file-utils'
+    'jxrlib'
 )
 makedepends=('dotnet-sdk>=6' 'git')
-optdepends=('steam')
+optdepends=(
+    'steam'
+    'lib32-sdl2'
+    'lib32-attr'
+    'lib32-fontconfig'
+    'lib32-lcms2'
+    'lib32-libxml2'
+    'lib32-libxcursor'
+    'lib32-libxrandr'
+    'lib32-libxdamage'
+    'lib32-libxi'
+    'lib32-gettext'
+    'lib32-freetype2'
+    'lib32-glu'
+    'lib32-libsm'
+    'lib32-gcc-libs'
+    'lib32-libpcap'
+    'lib32-faudio'
+)
 options=('!strip')
 source=(
     "XIVLauncher.Core::git+https://github.com/rankynbass/XIVLauncher.Core.git#tag=${_tag}"
