@@ -1,7 +1,7 @@
 pkgbase = librime
 	pkgdesc = Rime input method engine
-	pkgver = 1.9.0
-	pkgrel = 2
+	pkgver = 1.10.0
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/rime/librime
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = librime
 	depends = lua
 	depends = google-glog
 	depends = marisa
-	source = git+https://github.com/rime/librime.git#commit=a60876745af20ecc8489ec6997c6c195949b99ac
-	source = git+https://github.com/lotem/librime-octagram.git#commit=a6ced5a1d623afed17284fbaa395dd3a8b019a14
-	source = git+https://github.com/hchunhui/librime-lua.git#commit=757a01445905f89bf58af0d7da8e283c5fbfd973
-	source = git+https://github.com/rime/librime-charcode.git#commit=3e73214fdf5d162517a74762433f486b70a5c0e1
-	source = git+https://github.com/lotem/librime-proto.git#commit=d92f572379774a202c88e2ea6ad47d9dc040a127
+	source = git+https://github.com/rime/librime.git#commit=295cb2ab68f89ee9d3237c7d4b8033bda3f3b635
+	source = git+https://github.com/lotem/librime-octagram.git#commit=bd12863f45fbbd5c7db06d5ec8be8987b10253bf
+	source = git+https://github.com/hchunhui/librime-lua.git#commit=7f3eca2ce659fc2401b8acb52bd2182b433e12b1
+	source = git+https://github.com/rime/librime-charcode.git#commit=3709ca7a39a7c14f9e02fa00489a9850fd5a907b
+	source = git+https://github.com/lotem/librime-proto.git#commit=657a923cd4c333e681dc943e6894e6f6d42d25b4
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
