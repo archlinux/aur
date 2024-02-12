@@ -1,9 +1,11 @@
-Only in dnslookup-1.7.2: dnslookup
-diff '--color=auto' -u -r dnslookup-1.7.2.orig/go.mod dnslookup-1.7.2/go.mod
---- dnslookup-1.7.2.orig/go.mod	2022-09-01 15:10:21.000000000 +0200
-+++ dnslookup-1.7.2/go.mod	2024-02-12 16:22:52.372335532 +0100
-@@ -3,30 +3,28 @@
- go 1.18
+diff '--color=auto' -r -u dnslookup-1.7.3.orig/go.mod dnslookup-1.7.3/go.mod
+--- dnslookup-1.7.3.orig/go.mod	2022-09-01 18:34:59.000000000 +0200
++++ dnslookup-1.7.3/go.mod	2024-02-12 16:32:38.010627381 +0100
+@@ -1,32 +1,30 @@
+ module github.com/ameshkov/dnslookup
+ 
+-go 1.18
++go 1.19
  
  require (
 -	github.com/AdguardTeam/dnsproxy v0.44.0
@@ -50,9 +52,9 @@ diff '--color=auto' -u -r dnslookup-1.7.2.orig/go.mod dnslookup-1.7.2/go.mod
 +	golang.org/x/text v0.13.0 // indirect
 +	golang.org/x/tools v0.13.0 // indirect
  )
-diff '--color=auto' -u -r dnslookup-1.7.2.orig/go.sum dnslookup-1.7.2/go.sum
---- dnslookup-1.7.2.orig/go.sum	2022-09-01 15:10:21.000000000 +0200
-+++ dnslookup-1.7.2/go.sum	2024-02-12 16:22:52.372335532 +0100
+diff '--color=auto' -r -u dnslookup-1.7.3.orig/go.sum dnslookup-1.7.3/go.sum
+--- dnslookup-1.7.3.orig/go.sum	2022-09-01 18:34:59.000000000 +0200
++++ dnslookup-1.7.3/go.sum	2024-02-12 16:32:38.010627381 +0100
 @@ -1,135 +1,82 @@
 -github.com/AdguardTeam/dnsproxy v0.44.0 h1:JzIxEXF4OyJq4wZVHeZkM1af4VfuwcgrUzjgdBGljsE=
 -github.com/AdguardTeam/dnsproxy v0.44.0/go.mod h1:HsxYYW/bC8uo+4eX9pRW21hFD6gWZdrvcfBb1R6/AzU=
