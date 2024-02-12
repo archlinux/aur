@@ -106,8 +106,7 @@ _hugepage=${_hugepage-always}
 ## Enable DAMON
 _damon=${_damon-}
 
-## Enable Linux Random Number Generator
-_lrng_enable=${_lrng_enable-}
+
 
 # CPU compiler optimizations - Defaults to prompt at kernel config if left empty
 # AMD CPUs : "k8" "k8sse3" "k10" "barcelona" "bobcat" "jaguar" "bulldozer" "piledriver" "steamroller" "excavator" "zen" "zen2" "zen3" "zen4"
@@ -167,7 +166,7 @@ fi
 _major=6.8
 _minor=0
 #_minorc=$((_minor+1))
-_rcver=rc3
+_rcver=rc4
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 #_stable=${_major}
@@ -226,9 +225,9 @@ fi
 
 ## List of CachyOS schedulers
 case "$_cpusched" in
-    cachyos|sched-ext) ## SCHED-EXT Framework with the BORE Scheduler
+    cachyos) # CachyOS Scheduler (BORE + SCHED-EXT)
         source+=("${_patchsource}/sched/0001-sched-ext.patch"
-        		"${_patchsource}/sched/0001-bore-cachy.patch");;
+                 "${_patchsource}/sched/0001-bore-cachy.patch");;
     bore) ## BORE Scheduler
         source+=("${_patchsource}/sched/0001-bore-cachy.patch");;
     rt) ## EEVDF with RT patches
@@ -241,12 +240,11 @@ case "$_cpusched" in
     hardened) ## Hardened Patches with BORE Scheduler
         source+=("${_patchsource}/sched/0001-bore-cachy.patch"
                  "${_patchsource}/misc/0001-hardened.patch");;
+    sched-ext) ## SCHED-EXT
+        source+=("${_patchsource}/sched/0001-sched-ext.patch");;
 esac
 
-## lrng patchset
-if [ -n "$_lrng_enable" ]; then
-    source+=("${_patchsource}/misc/0001-lrng.patch")
-fi
+
 
 export KBUILD_BUILD_HOST=cachyos
 export KBUILD_BUILD_USER=$pkgbase
@@ -300,11 +298,12 @@ prepare() {
     [ -z "$_cpusched" ] && _die "The value is empty. Choose the correct one again."
 
     case "$_cpusched" in
-        cachyos|sched-ext) scripts/config -e SCHED_CLASS_EXT -e SCHED_BORE;;
+        cachyos) scripts/config -e SCHED_BORE -e SCHED_CLASS_EXT;;
         bore|hardened) scripts/config -e SCHED_BORE;;
         eevdf) ;;
         rt) scripts/config -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -e PREEMPT_RT -d PREEMPT_DYNAMIC -d PREEMPT_BUILD;;
         rt-bore) scripts/config -e SCHED_BORE -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -e PREEMPT_RT -d PREEMPT_DYNAMIC -d PREEMPT_BUILD;;
+        sched-ext) scripts/config -e SCHED_CLASS_EXT;;
         *) _die "The value $_cpusched is invalid. Choose the correct one again.";;
     esac
 
@@ -478,79 +477,7 @@ prepare() {
             -e DAMON_LRU_SORT
     fi
 
-    ### Enable LRNG
-    if [ -n "$_lrng_enable" ]; then
-        echo "Enabling Linux Random Number Generator ..."
-        scripts/config -d RANDOM_DEFAULT_IMPL \
-            -e LRNG \
-            -e LRNG_SHA256 \
-            -e LRNG_COMMON_DEV_IF \
-            -e LRNG_DRNG_ATOMIC \
-            -e LRNG_SYSCTL \
-            -e LRNG_RANDOM_IF \
-            -e LRNG_AIS2031_NTG1_SEEDING_STRATEGY \
-            -m LRNG_KCAPI_IF \
-            -m LRNG_HWRAND_IF \
-            -e LRNG_DEV_IF \
-            -e LRNG_RUNTIME_ES_CONFIG \
-            -e LRNG_IRQ_DFLT_TIMER_ES \
-            -d LRNG_SCHED_DFLT_TIMER_ES \
-            -e LRNG_TIMER_COMMON \
-            -d LRNG_COLLECTION_SIZE_256 \
-            -d LRNG_COLLECTION_SIZE_512 \
-            -e LRNG_COLLECTION_SIZE_1024 \
-            -d LRNG_COLLECTION_SIZE_2048 \
-            -d LRNG_COLLECTION_SIZE_4096 \
-            -d LRNG_COLLECTION_SIZE_8192 \
-            --set-val LRNG_COLLECTION_SIZE 1024 \
-            -e LRNG_HEALTH_TESTS \
-            --set-val LRNG_RCT_CUTOFF 31 \
-            --set-val LRNG_APT_CUTOFF 325 \
-            -e LRNG_IRQ \
-            -e LRNG_CONTINUOUS_COMPRESSION_ENABLED \
-            -d LRNG_CONTINUOUS_COMPRESSION_DISABLED \
-            -e LRNG_ENABLE_CONTINUOUS_COMPRESSION \
-            -e LRNG_SWITCHABLE_CONTINUOUS_COMPRESSION \
-            --set-val LRNG_IRQ_ENTROPY_RATE 256 \
-            -e LRNG_JENT \
-            --set-val LRNG_JENT_ENTROPY_RATE 16 \
-            -e LRNG_CPU \
-            --set-val LRNG_CPU_FULL_ENT_MULTIPLIER 1 \
-            --set-val LRNG_CPU_ENTROPY_RATE 8 \
-            -e LRNG_SCHED \
-            --set-val LRNG_SCHED_ENTROPY_RATE 4294967295 \
-            -e LRNG_DRNG_CHACHA20 \
-            -m LRNG_DRBG \
-            -m LRNG_DRNG_KCAPI \
-            -e LRNG_SWITCH \
-            -e LRNG_SWITCH_HASH \
-            -m LRNG_HASH_KCAPI \
-            -e LRNG_SWITCH_DRNG \
-            -m LRNG_SWITCH_DRBG \
-            -m LRNG_SWITCH_DRNG_KCAPI \
-            -e LRNG_DFLT_DRNG_CHACHA20 \
-            -d LRNG_DFLT_DRNG_DRBG \
-            -d LRNG_DFLT_DRNG_KCAPI \
-            -e LRNG_TESTING_MENU \
-            -d LRNG_RAW_HIRES_ENTROPY \
-            -d LRNG_RAW_JIFFIES_ENTROPY \
-            -d LRNG_RAW_IRQ_ENTROPY \
-            -d LRNG_RAW_RETIP_ENTROPY \
-            -d LRNG_RAW_REGS_ENTROPY \
-            -d LRNG_RAW_ARRAY \
-            -d LRNG_IRQ_PERF \
-            -d LRNG_RAW_SCHED_HIRES_ENTROPY \
-            -d LRNG_RAW_SCHED_PID_ENTROPY \
-            -d LRNG_RAW_SCHED_START_TIME_ENTROPY \
-            -d LRNG_RAW_SCHED_NVCSW_ENTROPY \
-            -d LRNG_SCHED_PERF \
-            -d LRNG_ACVT_HASH \
-            -d LRNG_RUNTIME_MAX_WO_RESEED_CONFIG \
-            -d LRNG_TEST_CPU_ES_COMPRESSION \
-            -e LRNG_SELFTEST \
-            -d LRNG_SELFTEST_PANIC \
-            -d LRNG_RUNTIME_FORCE_SEEDING_DISABLE
-    fi
+
 
     ### Disable DEBUG
     # Doesn't work with sched-ext
@@ -825,9 +752,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('592c476e7d53005436a2f9afce7409ec929ace9d299eff39687831ddaa8810a5620bf3d6838f5c61a5011cc203385cb66d4fe069dc73e463ab8ee4156a7b9a89'
+b2sums=('9038d4ab56045d969694655e117e7ff6415792914108710ebf5f4e9001848b68657e50e64a516ae839e375042d6fa59070f49350260b049d379005f1c881ef4f'
         '7ba475efac88ca247605db21d7cc86eacf377ded3e51595c2abfd15f10ab4478b922fb3fad9f44d59e0e8f56f98152913f67201e38ecbccf46e51136b1b0edb9'
         '43ef7a347878592740d9eb23b40a56083fa747f7700fa1e2c6d039d660c0b876d99bf1a3160e15d041fb13d45906cdb5defef034d4d0ae429911864239c94d8d'
-        '7e53565685f85b54c03591b2b50bfb8af84ceb11e194714873388322bf4d538af1aa5f93b2e690e5da0f246d40cf1db0daf177767ce3872a28c75e796684ff42'
-        '574e60b25fc38cb1eac59fdc839ff66ce71c0ce7adf33c396e4cc34043c6122aa9f1f6090e721db92a372a9394e7c435720fa87fb213b592bb7d118344a56169'
-        '6d52e02a93431685e7dcf3fb342ce0c19a63a2df12a39d78e9db3087eabbe13097f6210acd881fc456bee6172049c707506f1ee1ba9bde709f60bd7abe6739f6')
+        'df2f6f1e0e008e9486b9763c9182f10d429d526e73977679412cebc7c3ce4b4a2351e975b2cc8592e2c1dc3d34a62a9c3b0469b8a8799fda4ea647825683a270'
+        '5106c3beca2bdde8b1e596edbece7cc351da35b2850af802ea659dc22fb6a476f21f19ddbb21548162ee9948abb96dd9d87a501daded9fea34ea86845e2061bc'
+        '238860432066a32bf6b276a0c42061d21ba1553d6af20c414fb19f885e52d086383e48f4579948bc1790e23d9fcb9af6a11a5564a4eb7297c7ac47f4c39625f3')
