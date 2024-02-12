@@ -6,7 +6,7 @@ Wants = network-online.target
 
 [Service]
 Type = simple
-ExecStart = /usr/bin/narrowlink-__NAME__ --config /etc/narrowlink/__NAME__.yaml
+ExecStart = /usr/bin/narrowlink-__NAME__ --config=/etc/narrowlink/__NAME__.yaml
 Restart = on-failure
 RestartSec = 5
 
