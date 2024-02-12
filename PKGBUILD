@@ -9,7 +9,7 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-glib2
 pkgver=2.78.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Low level core library (android)"
 arch=('any')
 url="https://wiki.gnome.org/Projects/GLib"
@@ -44,7 +44,6 @@ package() {
     DESTDIR="${pkgdir}" ninja -C "${srcdir}/glib-${pkgver}/build-${_android_arch}-static" install
     DESTDIR="${pkgdir}" ninja -C "${srcdir}/glib-${pkgver}/build-${_android_arch}-shared" install
 
-    rm -rf "${pkgdir}"/${ANDROID_PREFIX_BIN}
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
     ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a || true
 }
