@@ -3,7 +3,7 @@
 
 pkgname=trufflehog
 pkgver=3.67.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for finding secrets like private keys and credentials."
 arch=('x86_64')
 url="https://github.com/trufflesecurity/trufflehog"
@@ -16,7 +16,7 @@ sha512sums=('e4259c135a127e6064dc3cf7c655259685d7189fc3c08005a4a281db682c4a68164
 
 build() {
   cd "$pkgname-$pkgver"
-  GOPATH="$srcdir/build" go build -buildmode=pie -ldflags "-linkmode=external -extldflags=$LDFLAGS" -modcacherw -trimpath
+  GOPATH="$srcdir/build" go build -buildmode=pie -ldflags "-linkmode=external -extldflags \"$LDFLAGS\"" -modcacherw -trimpath
 }
 
 package() {
