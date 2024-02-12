@@ -1,7 +1,7 @@
 pkgbase = nwg-look-bin
 	pkgdesc = GTK3 settings editor adapted to work w/ wlroots-based compositors (binary package)
-	pkgver = 0.2.6
-	pkgrel = 3
+	pkgver = 0.2.7
+	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-look
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = nwg-look-bin
 	provides = nwg-look
 	conflicts = nwg-look
 	conflicts = nwg-look-git
-	source = nwg-look-bin-0.2.6.tar.gz::https://github.com/nwg-piotr/nwg-look/releases/download/v0.2.6/nwg-look-v0.2.6_x86_64.tar.gz
-	md5sums = f9ad5bb85ceef300c98034b7d3aaa5d2
+	source = nwg-look-bin-0.2.7.tar.gz::https://github.com/nwg-piotr/nwg-look/releases/download/v0.2.7/nwg-look-v0.2.7_x86_64.tar.gz
+	md5sums = b95db47430c72b9242be000512a8fb0d
 
 pkgname = nwg-look-bin
