@@ -3,3 +3,4 @@
 !.nvchecker.toml
 !.SRCINFO
 !PKGBUILD
+!fix-test-definitions.patch

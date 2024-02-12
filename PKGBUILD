@@ -4,7 +4,7 @@
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=folly
-pkgver=2024.02.05.00
+pkgver=2024.02.12.00
 pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
@@ -42,11 +42,22 @@ provides=(
   libfollybenchmark.so
 )
 options=(!lto)
-
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('aad95c14b237ce489a9976e011f4ae7863716aa990227734b41b173fb6bfcfb3')
+source=(
+  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+  "fix-test-definitions.patch"
+)
+sha256sums=(
+  '678db01d22e0525168dba33b4eb1c35f0e340f77cad5ee941c05eb25f173519d'
+  'a7f15a6706d652e550bd415342c3027abd9afbb86ec04c764be3a96644efc46e'
+)
 
 _archive="$pkgname-$pkgver"
+
+prepare() {
+  cd "$_archive"
+
+  patch --forward --strip=1 --input="$srcdir/fix-test-definitions.patch"
+}
 
 build() {
   cd "$_archive"
@@ -64,15 +75,19 @@ build() {
 check() {
   cd "$_archive"
 
-  _skipped_tests=(
+  local skipped_tests=(
+    # These tests will fail (by design) if the test execution exceeds a
+    # pre-defined time limit (wall time). This is bound to be flaky in a
+    # package build process, disabling.
+    HHWheelTimerTest.HHWheelTimerTest
+
     # Skip failing tests - not sure why they fail
-    HHWheelTimerTest.HHWheelTimerTest.CancelTimeout
     atomic_unordered_map_test.AtomicUnorderedInsertMap.DISABLEDMegaMap
     fbvector_test
     xlog_test.XlogTest.perFileCategoryHandling
   )
-  _skipped_tests_pattern="${_skipped_tests[0]}$(printf '|%s' "${_skipped_tests[@]:1}")"
-  ctest --test-dir build --output-on-failure -E "$_skipped_tests_pattern"
+  local skipped_tests_pattern="${skipped_tests[0]}$(printf '|%s' "${skipped_tests[@]:1}")"
+  ctest --test-dir build --output-on-failure -E "$skipped_tests_pattern"
 }
 
 package() {
