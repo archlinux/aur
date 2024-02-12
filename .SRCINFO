@@ -1,0 +1,11 @@
+pkgbase = gitbutler
+	pkgdesc = Version control client, backed by Git, powered by Tauri/Rust/Svelte
+	pkgver = 0.10.4
+	pkgrel = 1
+	url = https://gitbutler.com/
+	arch = x86_64
+	license = FSL-1.0-MIT
+	source = https://app.gitbutler.com/downloads/release/linux/x86_64/deb
+	sha256sums = 07f00103fd64befd8325d5d0d76a660c89c05468b5cb89f23ed6e0b6cbf7f574
+
+pkgname = gitbutler
