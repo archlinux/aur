@@ -2,7 +2,7 @@
 # Co-Maintainer: AliReza AmirSamimi <alireza.amirsamimi at gmail dot com>
 
 pkgname='persepolis-git'
-pkgver=3.2.0.r117.ge062a6e
+pkgver=4.0.0.r1.gb263b1f
 pkgrel=1
 pkgdesc="Qt front-end for aria2 download manager (Github version)."
 arch=('any')
