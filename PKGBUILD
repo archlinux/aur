@@ -2,7 +2,7 @@
 
 pkgname=python-tld-git
 _realname=tld
-pkgver=0.12.7
+pkgver=0.13
 pkgrel=1
 pkgdesc="Extracts the top level domain (TLD) from the URL given"
 arch=('any')
