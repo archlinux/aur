@@ -2,21 +2,21 @@
 
 pkgname="flashprog"
 pkgdesc="Flashprog is a utility which can be used to detect, read, erase, or write BIOS chips (DIP, PLCC, SPI)."
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 url="https://flashprog.org/"
 license=('GPL')
 source=(git+https://review.sourcearcade.org/flashprog.git?signed#tag=v${pkgver})
 validpgpkeys=('2853079C9C66AB7E82C64966A5C163B7E557CAEB')
 sha256sums=('SKIP')
-depends=('pciutils' 'libusb' 'libftdi' 'libjaylink') # libgpiod became incompatible with 2.0
+depends=('pciutils' 'libusb' 'libftdi' 'libjaylink' 'libgpiod')
 makedepends=('git' 'make')
 optdepends=("dmidecode: for SMBIOS/DMI table decoder support")
 arch=('riscv64' 'aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 
 build() {
 	cd "${srcdir}/${pkgname}"
-	make CONFIG_LINUX_GPIO_SPI=no
+	make
 }
 
 package() {
