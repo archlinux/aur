@@ -3,14 +3,13 @@
 _pkgname=MEIGOR
 _pkgver=1.33.0
 pkgname=r-${_pkgname,,}
-pkgver=1.33.0
-pkgrel=1
-pkgdesc='MEIGO - MEtaheuristics for bIoinformatics Global Optimization'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="MEIGO - MEtaheuristics for bIoinformatics Global Optimization"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-cnorode
   r-desolve
   r-rsolnp
@@ -20,15 +19,16 @@ optdepends=(
   r-cellnoptr
   r-knitr
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f64987c8551357a50a435a34e1045c6de76e3a27766c0e0044dc3eb7385487d1')
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('a8c4d636efa888a0984f7e385aa5acf5')
+b2sums=('c3fa2d2b01be883613a75e60faf792e0c906a1722b3f93139c014d71678257a32bcf4f9f9e14d93930ddcbd2c6136bd342461d9eb35470430833b09034b5da2e')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
