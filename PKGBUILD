@@ -7,7 +7,7 @@ pkgname=(
   "$pkgbase-agent"
   "$pkgbase-token-generator"
 )
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Securely connect devices and services, even in restricted networks'
 url='https://narrowlink.com'
@@ -19,8 +19,8 @@ source=(
   "$pkgbase-$pkgver.tar.gz::https://github.com/narrowlink/narrowlink/archive/refs/tags/$pkgver.tar.gz"
   "$pkgbase.service.in"
 )
-sha256sums=('29524df0b8637b40c4551063cdd91a2060634cd285f48bd229585ef78d388e66'
-            '5248b868c9a6f42fdf7c392525bbe238b54ff564fb0d59999d5af4b8d0aa84aa')
+sha256sums=('2c2ff60d3c8d5794b01e0736bd3764442da2d02010d64e8e0724e7bb260246b8'
+            'b60d1792b67d877064fd8164177f2d5dca7e220e42e0679f53216a4ec8a6f46d')
 
 prepare() {
   cd "$pkgbase-$pkgver"
@@ -42,7 +42,7 @@ check() {
 }
 
 package_narrowlink() {
-  license=(MPL2)
+  license=(MPL-2.0)
   backup=("etc/$pkgbase/client.yaml")
 
   cd "$pkgbase-$pkgver"
@@ -51,7 +51,7 @@ package_narrowlink() {
 }
 
 package_narrowlink-gateway() {
-  license=(AGPL3)
+  license=(AGPL-3.0-only)
   backup=("etc/$pkgbase/gateway.yaml")
 
   sed "s/__NAME__/gateway/g" <"$pkgbase.service.in" >"$pkgname.service"
@@ -63,7 +63,7 @@ package_narrowlink-gateway() {
 }
 
 package_narrowlink-agent() {
-  license=(MPL2)
+  license=(MPL-2.0)
   backup=("etc/$pkgbase/agent.yaml")
 
   sed "s/__NAME__/agent/g" <"$pkgbase.service.in" >"$pkgname.service"
@@ -75,7 +75,7 @@ package_narrowlink-agent() {
 }
 
 package_narrowlink-token-generator() {
-  license=(MPL2)
+  license=(MPL-2.0)
   backup=("etc/$pkgbase/token-generator.yaml")
 
   cd "$pkgbase-$pkgver"
