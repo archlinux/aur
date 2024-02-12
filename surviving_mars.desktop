@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Surviving Mars
+Exec=/opt/surviving_mars/MarsGOG
+Path=/opt/surviving_mars
+Icon=surviving_mars.png
+Terminal=false
+Type=Application
+X-DCOP-ServiceType=Multi
+X-KDE-StartupNotify=true
+Categories=Game;
