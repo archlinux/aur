@@ -1,13 +1,14 @@
 pkgbase = decibels
 	pkgdesc = Play audio files
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vixalien/decibels
 	arch = any
 	license = GPL-3.0
 	checkdepends = appstream-glib
 	makedepends = git
 	makedepends = gobject-introspection
+	makedepends = blueprint-compiler
 	makedepends = meson
 	makedepends = typescript
 	depends = gjs

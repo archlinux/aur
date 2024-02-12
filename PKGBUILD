@@ -2,7 +2,7 @@
 
 pkgname=decibels
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Play audio files"
 arch=('any')
 url="https://github.com/vixalien/decibels"
