@@ -1,31 +1,35 @@
 # Maintainer: Evgeniy Alekseev <arcanis at archlinux dot org>
 
 pkgname=quimup
-pkgver=1.4.4
+_pkgepoch=2.0.0
+pkgver=2.0.1
 pkgrel=1
-pkgdesc="A simple Qt5 frontend to MPD"
+pkgdesc="A simple Qt6 frontend to MPD"
 arch=('x86_64')
 url="https://sourceforge.net/projects/quimup/"
 license=('GPL2')
 makedepends=()
-depends=('mpd' 'qt5-base' 'taglib')
-source=("quimup_${pkgver}_source.tar.gz::https://sourceforge.net/projects/quimup/files/Quimup_${pkgver}_source.tar.gz")
-sha512sums=('fb3727bf5c0f756c888484f7c061da95a1ece15673079ac8e6ffc82289f78cfce3dda7245ae25b1d705ffe057f1b0930baf2338bdfe0f16c900dc1ffd3fef807')
+depends=('mpd' 'qt6-base' 'taglib')
+source=("quimup-$pkgver-source.tar.gz::https://sourceforge.net/projects/quimup/files/Quimup%20$_pkgepoch/Quimup-$pkgver.source.tar.gz"
+        'format-security.patch')
 
 prepare() {
-  rm -rf "${srcdir}/build"
-  mkdir "${srcdir}/build"
+  rm -rf "$srcdir/build"
+  mkdir "$srcdir/build"
+
+  patch -p0 -i "$srcdir/format-security.patch"
 }
 
 build() {
   cd build
-  qmake-qt5 PREFIX=/usr -Wnone "../Quimup_${pkgver}_source"
+  qmake6 PREFIX=/usr -Wnone "../Quimup"
   make
 }
 
 package() {
   # there is no install target
-  install -Dm755 "${srcdir}/build/quimup" "${pkgdir}/usr/bin/quimup"
+  install -Dm755 "$srcdir/build/quimup" "$pkgdir/usr/bin/quimup"
 }
 
-sha512sums=('4fac921df6e7157952536e1cdda0e468b72f70f8f938ccfd5d1a7d286f4b7d7ac063ca2c6111f38fb76b2a6235a323858f2f898165c80702b2c0aaeaff8869c9')
+sha512sums=('fa4090bf4b573b5bd5b370a10e22dfac1608226cf6939e9a722bebf373218e12b8298a7b17e1eab241617ebd9bc5ddfe297f87a71daf0bcb3100bc1c902ee068'
+            'b3b1b8318c8b29892eb2c197ab4a2c76c767b09ca904b2c20a6fb84f4315cb14adfbc9752d9c7a920c24aade3225a111c9ed0b253870d60ecfefb88fa0b67766')

@@ -1,0 +1,18 @@
+diff -ruN Quimup.orig/source/qm_mpdcom.cpp Quimup/source/qm_mpdcom.cpp
+--- Quimup.orig/source/qm_mpdcom.cpp	2024-02-12 12:49:10.899415627 +0200
++++ Quimup/source/qm_mpdcom.cpp	2024-02-12 12:50:05.120722384 +0200
+@@ -640,12 +640,12 @@
+     if (b_remote_server)
+     {
+         QString str = "Connected to MPD " + version + " / remote\n";
+-        printf (str.toUtf8().data());
++        printf ("%s", str.toUtf8().data());
+     }
+     else
+     {
+         QString str = "Connected to MPD " + version + " / local\n";
+-        printf (str.toUtf8().data());
++        printf ("%s", str.toUtf8().data());
+     }
+ 
+     bool b_status_allowed = false;
