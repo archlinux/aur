@@ -29,8 +29,8 @@ pkgver() {
 
 build() {
 	cd "$_pkgname"
-  # Patch version
-  echo "export default function() { return '${{github.event.inputs.version}}' }" > src/modes/version.ts
+	# Patch version
+	echo "export default function() { return '$pkgver' }" >src/modes/version.ts
 	deno task compile
 }
 
