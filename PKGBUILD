@@ -1,16 +1,17 @@
 pkgname=gsender-bin
 _pkgname=gsender
-pkgver=1.2.2
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="Connect to and control Grbl-based CNCs"
 arch=('x86_64')
 url="https://github.com/Sienci-Labs/${_pkgname}"
 license=('GNU')
 depends=("gtk3" "libnotify" "libxss" "libxtst" "xdg-utils" "at-spi2-core" "util-linux-libs" "libsecret")
 optdepends=('libappindicator-gtk3')
-source=("https://github.com/Sienci-Labs/${_pkgname}/releases/download/v${pkgver}/gSender_${pkgver}_amd64.deb"
+makedepends=('debugedit')
+source=("https://github.com/Sienci-Labs/${_pkgname}/releases/download/v${pkgver}/gSender-${pkgver}-Linux-Intel-64Bit.deb"
         "https://raw.githubusercontent.com/Sienci-Labs/${_pkgname}/master/LICENSE")
-sha256sums=('2b7bd584cb9aded1650f861befb103a8d5b1b497477be7381cc96f25db8bbbf8'
+sha256sums=('3c4f2ffa975723d4e811c734fae0eb86d7c7cc853239bdb46bff46525113a3e9'
             'fb4594571c8142643b5a121b585b8a218e450ee0c13446802480a5586106cec0')
 conflicts=('gsender')
 provides=('gsender')
