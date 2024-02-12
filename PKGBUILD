@@ -3,14 +3,13 @@
 _pkgname=STROMA4
 _pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
-pkgrel=1
-pkgdesc='Assign Properties to TNBC Patients'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Assign Properties to TNBC Patients"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-biobase
   r-biocparallel
   r-matrixstats
@@ -18,15 +17,16 @@ depends=(
 optdepends=(
   r-breastcancermainz
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2e19d4875c44509eac6aa6273789b12431522e2b84e29a10740e4dc6667f7ff4')
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('c171d3ed28b97a1bfa044b8d360bf1f7')
+b2sums=('bc979e8d2abf6d778b06572fdc8e6ada54dc6dfd183ae2886d3a4d741530ef48686c0d5d16e3c3850266e2874c5d1c9d576f21f271adaca138e7125c268720b4')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
