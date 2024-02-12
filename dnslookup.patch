@@ -1,7 +1,6 @@
-Only in dnslookup-1.9.0: dnslookup
-diff '--color=auto' -r -u dnslookup-1.9.0.orig/go.mod dnslookup-1.9.0/go.mod
---- dnslookup-1.9.0.orig/go.mod	2023-03-21 18:56:55.000000000 +0100
-+++ dnslookup-1.9.0/go.mod	2024-02-12 16:47:16.998788530 +0100
+diff '--color=auto' -r -u dnslookup-1.9.1.orig/go.mod dnslookup-1.9.1/go.mod
+--- dnslookup-1.9.1.orig/go.mod	2023-03-21 18:56:55.000000000 +0100
++++ dnslookup-1.9.1/go.mod	2024-02-12 16:47:16.998788530 +0100
 @@ -3,29 +3,28 @@
  go 1.19
  
@@ -48,9 +47,9 @@ diff '--color=auto' -r -u dnslookup-1.9.0.orig/go.mod dnslookup-1.9.0/go.mod
 +	golang.org/x/text v0.13.0 // indirect
 +	golang.org/x/tools v0.13.0 // indirect
  )
-diff '--color=auto' -r -u dnslookup-1.9.0.orig/go.sum dnslookup-1.9.0/go.sum
---- dnslookup-1.9.0.orig/go.sum	2023-03-21 18:56:55.000000000 +0100
-+++ dnslookup-1.9.0/go.sum	2024-02-12 16:47:16.998788530 +0100
+diff '--color=auto' -r -u dnslookup-1.9.1.orig/go.sum dnslookup-1.9.1/go.sum
+--- dnslookup-1.9.1.orig/go.sum	2023-03-21 18:56:55.000000000 +0100
++++ dnslookup-1.9.1/go.sum	2024-02-12 16:47:16.998788530 +0100
 @@ -1,84 +1,82 @@
 -github.com/AdguardTeam/dnsproxy v0.48.1 h1:v2dl2wB0tDvQPY9r2YHXlJGzg3Lr2hvvV+RUh9YBK5E=
 -github.com/AdguardTeam/dnsproxy v0.48.1/go.mod h1:Y7g7jRTd/u7+KJ/QvnGI2PCE8vnisp6EsW47/Sz0DZw=
