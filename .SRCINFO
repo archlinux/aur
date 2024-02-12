@@ -1,0 +1,13 @@
+pkgbase = gog-surviving_mars_marsvision_song_contest
+	pkgdesc = DLC for the surviving mars game.
+	pkgver = 1.5_fuglesang_1011166
+	pkgrel = 1
+	url = https://www.gog.com/en/game/surviving_mars_marsvision_song_contest
+	arch = x86_64
+	license = custom
+	depends = gog-surviving_mars
+	noextract = surviving_mars_marsvision_song_contest_1_5_fuglesang_1011166_55908.sh
+	source = surviving_mars_marsvision_song_contest_1_5_fuglesang_1011166_55908.sh::gog://surviving_mars_marsvision_song_contest_1_5_fuglesang_1011166_55908.sh
+	sha256sums = 3bce0fb08c22489e73b33e44d08845bfd34f0aeb74bc24f3e897257527ec9216
+
+pkgname = gog-surviving_mars_marsvision_song_contest
