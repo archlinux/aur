@@ -3,40 +3,41 @@
 # Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
 
 pkgname=fizz
-pkgver=2024.02.05.00
+pkgver=2024.02.12.00
 pkgrel=1
 pkgdesc="C++14 implementation of the TLS-1.3 standard"
-arch=('x86_64')
+arch=(x86_64)
 url="https://github.com/facebookincubator/fizz"
-license=('BSD-3-Clause')
+license=(BSD-3-Clause)
 depends=(
-  'double-conversion'
-  'fmt'
-  'folly'
-  'gcc-libs'
-  'gflags'
-  'glibc'
-  'google-glog'
-  'libsodium'
-  'openssl'
-  'zlib'
-  'zstd'
+  double-conversion
+  fmt
+  folly
+  gcc-libs
+  gflags
+  glibc
+  google-glog
+  libsodium
+  openssl
+  zlib
+  zstd
 )
 makedepends=(
-  'boost'
-  'cmake'
-  'gtest'
+  boost
+  cmake
+  gtest
 )
 provides=(
   libfizz.so
   libfizz_test_support.so
 )
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('a27745a688836728a1b9ec01490b9777264c108d1b0d69f14722b8afec0dd010')
 
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a8f1e78c21e8b46acdffb37008588f55e077fb99b9b8c3eb7c9368d3aca5175e')
+_archive="$pkgname-$pkgver"
 
 build() {
-  cd "$pkgname-$pkgver/$pkgname"
+  cd "$_archive/fizz"
 
   cmake -S . -B build \
     -DCMAKE_BUILD_TYPE=None \
@@ -44,30 +45,30 @@ build() {
     -Wno-dev \
     -DBUILD_TESTS=ON \
     -DBUILD_SHARED_LIBS=ON \
-    -DPACKAGE_VERSION="${pkgver}"
+    -DPACKAGE_VERSION="$pkgver"
   cmake --build build
 }
 
 check() {
-  cd "$pkgname-$pkgver/$pkgname"
+  cd "$_archive/fizz"
 
   # Skip failing tests - not sure why they fail
-  _skipped_tests=(
+  local skipped_tests=(
     DefaultCertificateVerifierTest
     SlidingBloomReplayCacheTest
   )
-  _skipped_tests_pattern="${_skipped_tests[0]}$(printf "|%s" "${_skipped_tests[@]:1}")"
-  ctest --test-dir build --output-on-failure -E "$_skipped_tests_pattern"
+  local skipped_tests_pattern="${skipped_tests[0]}$(printf "|%s" "${skipped_tests[@]:1}")"
+  ctest --test-dir build --output-on-failure -E "$skipped_tests_pattern"
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$_archive"
 
-  DESTDIR="${pkgdir}" cmake --install "$pkgname/build"
+  DESTDIR="$pkgdir" cmake --install "$pkgname/build"
 
   # Remove empty directories to avoid namcap warnings
-  rm -r "${pkgdir}/usr/include/fizz/tool/test"
-  rm -r "${pkgdir}/usr/include/fizz/util/test"
+  rm -r "$pkgdir/usr/include/fizz/tool/test"
+  rm -r "$pkgdir/usr/include/fizz/util/test"
 
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
