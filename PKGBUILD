@@ -3,7 +3,7 @@
 pkgname="pkgx-git"
 _pkgname="pkgx"
 pkgver=1.1.6.996.ga0da42e
-pkgrel=3
+pkgrel=4
 pkgdesc="the last thing you’ll install"
 arch=("x86_64" "arm")
 url="https://github.com/pkgxdev/pkgx"
@@ -30,7 +30,7 @@ pkgver() {
 build() {
 	cd "$_pkgname"
 	# Patch version
-	echo "export default function() { return '$VER (AUR Build, REV $REV COMMIT $COMMIT)' }" >src/modes/version.ts
+	echo "export default function() { return '$(git tag --sort=committerdate | grep -E '[0-9]' | tail -1 | cut -b 2-7) (AUR Build, REV $(git rev-list --count HEAD) COMMIT $(git rev-parse --short HEAD))' }" >src/modes/version.ts
 	deno task compile
 }
 
