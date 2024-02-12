@@ -1,6 +1,6 @@
 pkgname=omniorbpy
 pkgver=4.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A CORBA object request broker for C++ and Python."
 arch=(x86_64)
 url="http://omniorb.sourceforge.net/"
@@ -20,7 +20,8 @@ package() {
   cd "$srcdir/omniORBpy-$pkgver"
   make DESTDIR="$pkgdir" install
 
-  # remove conflicting files
-  rm -r "$pkgdir"/usr/lib/*/site-packages/omniidl_be/
+  # remove conflicting files from omniorb package
+  rm "$pkgdir"/usr/lib/*/site-packages/omniidl_be/__init__.py
+  rm "$pkgdir"/usr/lib/*/site-packages/omniidl_be/__pycache__/__init__.*
 }
 
