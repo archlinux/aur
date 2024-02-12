@@ -10,7 +10,7 @@
 
 pkgname=peazip-qt-bin
 pkgver=9.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='PeaZip file manager and archiver (Qt5, binary release)'
 url='https://github.com/peazip/PeaZip'
 license=('LGPL3')
@@ -50,4 +50,5 @@ package() {
   rm -r "peazip/readme"
   mv peazip "$pkgdir/usr/share"
   mv pixmaps applications "$pkgdir/usr/share"
+  ln -s /usr/lib/peazip/pea "$pkgdir/usr/bin"
 }

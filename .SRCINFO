@@ -1,7 +1,7 @@
 pkgbase = peazip-qt-bin
 	pkgdesc = PeaZip file manager and archiver (Qt5, binary release)
 	pkgver = 9.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/peazip/PeaZip
 	arch = x86_64
 	license = LGPL3
