@@ -3,13 +3,14 @@
 
 pkgname='filenote-git'
 _pkgname="${pkgname%-git}"
-pkgver=r50.a689c49
+pkgver=r52.f9b9c6a
 pkgrel=1
 pkgdesc='Attach a comment to a file or directory (development version)'
 arch=('any')
 url='https://codeberg.org/kas/filenote'
-license=('GPL3')
+license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
 depends=('python>=3.8')
+makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url")
