@@ -8,7 +8,7 @@ _py2="${_py}2"
 _proj="hip"
 _pkgname=luks-tools
 pkgname="${_pkgname}-git"
-pkgver=0.0.0.0.0.1.r14.g38aff23
+pkgver=0.0.0.0.0.1.r29.ge52a661
 pkgrel=1
 _pkgdesc=(
   "A collection of LUKS"
