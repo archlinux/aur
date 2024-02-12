@@ -1,14 +1,14 @@
 pkgbase = stackablectl-bin
 	pkgdesc = Command line tool to interact with a Stackable Data Platform
-	pkgver = 0.8.0
+	pkgver = 23.11.3
 	pkgrel = 1
-	url = https://github.com/stackabletech/stackablectl/
+	url = https://github.com/stackabletech/stackable-cockpit/
 	arch = x86_64
 	license = Apache
 	depends = gcc-libs
 	provides = stackablectl
 	conflicts = stackablectl
-	source = https://github.com/stackabletech/stackablectl/releases/download/v0.8.0/stackablectl-x86_64-unknown-linux-gnu
-	b2sums = 86a8bd1563073ae8d24e021edc6efbfc84aa195301c692d110dbf13107a9054c394ac4be66375f7a7957a7d6380215733dee36a0b50aaa2d4abcec4cfc02c7b5
+	source = https://github.com/stackabletech/stackable-cockpit/releases/download/stackablectl-23.11.3/stackablectl-x86_64-unknown-linux-gnu
+	b2sums = bfda7fe55ad2ca53674d6e4d8788ffe3ddc335bbbbaec55f5ad0d87d04e592ce415000a260d1ccde82167d62b49d9c90ab187e4e6bacb3d251fb3fccd217fd3a
 
 pkgname = stackablectl-bin
