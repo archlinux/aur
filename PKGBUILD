@@ -13,8 +13,8 @@
 
 pkgname=gnome-control-center-x11-scaling
 _pkgname=gnome-control-center
-pkgver=45.2
-pkgrel=2
+pkgver=45.3
+pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 license=(GPL-2.0-or-later)
@@ -101,7 +101,7 @@ optdepends=(
 groups=(gnome)
 conflicts=($_pkgname)
 provides=($_pkgname)
-_commit=cc5da95fecaeb5486435c54917edf9633addc02d  # tags/45.2^0
+_commit=4e107fa21250416812d64da8cf32946babb7728d  # tags/45.3^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
   "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
