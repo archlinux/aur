@@ -1,4 +1,5 @@
 # Maintainer: Loryeam <loryeam aaaatttt gmail ddooottt com>
+# Maintainer: Christopher Snowhill <kode54@gmail.com>
 # Contributor: Vaporeon <vaporeon@vaporeon.io>
 # Contributor: Zepman <the_zep_man@hotmail.com>
 # Contributor: Michael Lass <bevan@bi-co.net>
