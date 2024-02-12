@@ -1,11 +1,10 @@
 pkgbase = r-rlhub
 	pkgdesc = An ExperimentHub package for accessing processed RLSuite data sets
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/RLHub
 	arch = any
 	license = MIT
-	depends = r
 	depends = r-annotationhub
 	depends = r-experimenthub
 	optdepends = r-biocstyle
@@ -13,7 +12,8 @@ pkgbase = r-rlhub
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/RLHub_1.6.0.tar.gz
-	sha256sums = 028e40b175865d358aabcc25e8faa10db4e60f8edd1f3fc91efdb7566ae2a4d3
+	source = https://bioconductor.org/packages/3.17/data/experiment/src/contrib/RLHub_1.6.0.tar.gz
+	md5sums = 9072a588ef09512493ea389c50984153
+	b2sums = caceabbd6afbc8dc710d8a5de89d3359ee68497c57b4a7dc58997fe308d3fd0ae79cdfc4198f9d044733469c1dc0c78404529d7d97663517abc62e85eb443665
 
 pkgname = r-rlhub
