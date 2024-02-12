@@ -1,5 +1,5 @@
 pkgbase = waylyrics-git
-	pkgdesc = general desktop lyrics with QQMusic/NetEase Cloud Music source
+	pkgdesc = the furry way to show desktop lyrics (git version)
 	pkgver = 0.2.2_r6.g3cbd52e7
 	pkgrel = 1
 	url = https://github.com/waylyrics/waylyrics
