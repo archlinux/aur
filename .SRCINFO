@@ -1,6 +1,6 @@
 pkgbase = funemustation-git
 	pkgdesc = A simple but elegant launcher of emulators and pc games
-	pkgver = 2.0.0
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://dannygaray60.itch.io/funemustation-launcher
 	arch = any

@@ -3,7 +3,7 @@
 pkgname=funemustation-git
 _name=funemustation
 _export=FunEmuStation_Launcher
-pkgver=2.0.0
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="A simple but elegant launcher of emulators and pc games"
 url="https://dannygaray60.itch.io/funemustation-launcher"
@@ -33,7 +33,7 @@ build() {
 	echo "cd ~/.local/share/${_name}" >> "bin/${_name}"
 	echo "./${_export}.x86_64" >> "bin/${_name}"
 
-	godot --no-window --path "." --export "Linux/X11" "bin/${_export}.x86_64"
+	godot --no-window --path "." --export-release "Linux/X11" "bin/${_export}.x86_64"
 }
 
 package() {
