@@ -37,8 +37,8 @@ checkdepends=(
   shellcheck
 )
 optdepends=(
-  "python-pygments: colorized output"
-  "python2-pygments: colorized output"
+  "${_py}-pygments: colorized output"
+  "${_py2}-pygments: colorized output"
 )
 provides=(
   "${_pkgname}=${pkgver}"
