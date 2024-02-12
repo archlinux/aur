@@ -3,7 +3,7 @@
 # Contributor: Daniel Bermond <danielbermond@yahoo.com>
 
 pkgname=ffnvcodec-headers-11-1
-pkgver=11.1.5.2
+pkgver=11.1.5.3
 pkgrel=1
 pkgdesc='FFmpeg version of headers required to interface with Nvidias codec APIs (Version 11.1 for driver 470.xx support)'
 provides=('ffnvcodec-headers')
@@ -12,7 +12,7 @@ arch=(any)
 url=https://git.videolan.org/?p=ffmpeg/nv-codec-headers.git
 license=(MIT)
 makedepends=(git)
-_tag=f8ae7a49bfef2f99d2c931a791dc3863fda67bf3
+_tag=43d91706e097565f57b311e567f0219838bcc2f6
 source=(git+https://git.videolan.org/git/ffmpeg/nv-codec-headers.git#tag=${_tag})
 sha256sums=(SKIP)
 
