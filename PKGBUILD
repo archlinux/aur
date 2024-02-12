@@ -8,7 +8,7 @@ _py="python"
 _py2="${_py}2"
 _pkgname=reallymakepkg
 pkgname="${_pkgname}-git"
-pkgver=1.2.1
+pkgver=1.2.1.r2.ga6f8595
 pkgrel=1
 pkgdesc="System-independent makepkg"
 arch=(
@@ -22,6 +22,7 @@ license=(
 )
 depends=(
   pacman
+  fakeroot
 )
 makedepends=(
   git
@@ -31,9 +32,11 @@ optdepends=(
   "${_py2}-pygments: colorized output and syntax highlighting"
 )
 provides=(
-  "${_pkgname}=${pkgver}")
+  "${_pkgname}=${pkgver}"
+)
 conflicts=(
-  "${_pkgname}")
+  "${_pkgname}"
+)
 _url="file://${HOME}/${_pkgname}"
 source=(
   "git+${url}"
@@ -41,6 +44,17 @@ source=(
 sha256sums=(
   SKIP
 )
+
+_nth() {
+  local \
+    _str="${1}" \
+    _n="${2}"
+  echo \
+    "${_str}" | \
+    awk \
+      -F '+' \
+      '{print $'"${_n}"'}'
+}
 
 _parse_ver() {
   local \
@@ -50,23 +64,17 @@ _parse_ver() {
     _rev \
     _commit
   _ver="$( \
-    echo \
-      "${_pkgver}" | \
-          awk \
-            -F '+' \
-            '{print $1}')"
+    _nth \
+      "${_pkgver}" \
+      "1")"
   _rev="$( \
-    echo \
-      "${_pkgver}" | \
-      awk \
-        -F '+' \
-        '{print $2}')"
+    _nth \
+      "${_pkgver}" \
+      "2")"
   _commit="$( \
-    echo \
-      "${_pkgver}" | \
-      awk \
-        -F '+' \
-        '{print $3}')"
+    _nth \
+      "${_pkgver}" \
+      "3")"
   _out=${_ver}
   [[ "${_rev}" != "" ]] && \
     _out+=".r${_rev}"
@@ -84,7 +92,8 @@ pkgver() {
   _pkgver="$( \
     git \
       describe \
-      --tags | \
+      --tags \
+      --long | \
       sed \
         's/-/+/g')"
   _parse_ver \
