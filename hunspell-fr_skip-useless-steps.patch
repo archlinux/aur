@@ -1,0 +1,62 @@
+Index: gc_lang/fr/dictionnaire/genfrdic.py
+==================================================================
+--- a/gc_lang/fr/dictionnaire/genfrdic.py
++++ b/gc_lang/fr/dictionnaire/genfrdic.py
+@@ -1454,24 +1454,24 @@
+     oFrenchDict.sortEntriesNatural()
+     oFrenchDict.checkEntries()
+ 
+     ### Lexique
+     oFrenchDict.generateFlexions()
+-    oFrenchDict.calcMetagraphe()
+-    oFrenchDict.calcMetaphone2()
++    #oFrenchDict.calcMetagraphe()
++    #oFrenchDict.calcMetaphone2()
+ 
+     #oFrenchDict.createNgrams(spBuild, 3)
+ 
+     ### Statistiques
+     spfStats = spBuild+'/'+STATS_NAME+xArgs.verdic+'.txt'
+-    oStatsLex = StatsLex(oFrenchDict)
+-    oStatsLex.addLexFromFile('lexique/corpus_data/stats_google_ngram_1.txt', 'G', 'Google 1-grams')
+-    oStatsLex.addLexFromFile('lexique/corpus_data/stats_frwiki.txt', 'W', 'Wikipédia')
+-    oStatsLex.addLexFromFile('lexique/corpus_data/stats_frwikisource.txt', 'S', 'Wikisource')
+-    oStatsLex.addLexFromFile('lexique/corpus_data/stats_litterature.txt', 'L', 'Littérature')
+-    oStatsLex.write(spBuild+'/test_lex.txt')
+-    oFrenchDict.calculateStats(oStatsLex, spfStats)
++    #oStatsLex = StatsLex(oFrenchDict)
++    #oStatsLex.addLexFromFile('lexique/corpus_data/stats_google_ngram_1.txt', 'G', 'Google 1-grams')
++    #oStatsLex.addLexFromFile('lexique/corpus_data/stats_frwiki.txt', 'W', 'Wikipédia')
++    #oStatsLex.addLexFromFile('lexique/corpus_data/stats_frwikisource.txt', 'S', 'Wikisource')
++    #oStatsLex.addLexFromFile('lexique/corpus_data/stats_litterature.txt', 'L', 'Littérature')
++    #oStatsLex.write(spBuild+'/test_lex.txt')
++    #oFrenchDict.calculateStats(oStatsLex, spfStats)
+ 
+     ### Écriture des paquets
+     echo("Création des paquets...")
+ 
+     spLexiconDestGL = "../../../lexicons"  if xArgs.grammalecte  else ""
+@@ -1481,16 +1481,16 @@
+ 
+     ### dictionnaires
+     if not xArgs.uncompress:
+         oFrenchDict.defineAbreviatedTags(xArgs.mode, spfStats)
+     oFrenchDict.createFiles(spBuild, [dTOUTESVAR, dCLASSIQUE, dREFORME1990], xArgs.mode, xArgs.simplify)
+-    oFrenchDict.createLexiconPackages(spBuild, xArgs.verdic, oStatsLex, spLexiconDestGL)
+-    oFrenchDict.createFileIfqForDB(spBuild)
++    #oFrenchDict.createLexiconPackages(spBuild, xArgs.verdic, oStatsLex, spLexiconDestGL)
++    #oFrenchDict.createFileIfqForDB(spBuild)
+     createThesaurusPackage(spBuild, "2.4", spLibreOfficeExtDestGL)
+-    oFrenchDict.createLibreOfficeExtension(spBuild, dMOZEXT, [dTOUTESVAR, dCLASSIQUE, dREFORME1990], "2.4", spLibreOfficeExtDestGL)
+-    oFrenchDict.createMozillaExtensions(spBuild, dMOZEXT, [dTOUTESVAR, dCLASSIQUE, dREFORME1990], spMozillaExtDestGL)
+-    oFrenchDict.createDictConj(spBuild, spDataDestGL)
+-    oFrenchDict.createDictDecl(spBuild, spDataDestGL)
++    #oFrenchDict.createLibreOfficeExtension(spBuild, dMOZEXT, [dTOUTESVAR, dCLASSIQUE, dREFORME1990], "2.4", spLibreOfficeExtDestGL)
++    #oFrenchDict.createMozillaExtensions(spBuild, dMOZEXT, [dTOUTESVAR, dCLASSIQUE, dREFORME1990], spMozillaExtDestGL)
++    #oFrenchDict.createDictConj(spBuild, spDataDestGL)
++    #oFrenchDict.createDictDecl(spBuild, spDataDestGL)
+ 
+ 
+ if __name__ == '__main__':
+     main()
+
