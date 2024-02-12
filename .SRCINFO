@@ -8,8 +8,8 @@ pkgbase = luks-tools
 	license = AGPL3
 	checkdepends = shellcheck
 	depends = cryptsetup
-	optdepends = python-pygmentize: colorized output
-	optdepends = python2-pygmentize: colorized output
+	optdepends = python-pygments: colorized output
+	optdepends = python2-pygments: colorized output
 	source = luks-tools-0.0.0.0.0.1.1.tar.gz::https://github.com/themartiancompany/luks-tools/archive/refs/tags/0.0.0.0.0.1.1.tar.gz
 	sha256sums = d22c81413fc912ab468d98861334effee58fa9a6e7b70692733008924a39e45f
 

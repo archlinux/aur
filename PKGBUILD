@@ -42,8 +42,8 @@ checkdepends=(
   shellcheck
 )
 optdepends=(
-  "python-pygmentize: colorized output"
-  "python2-pygmentize: colorized output"
+  "python-pygments: colorized output"
+  "python2-pygments: colorized output"
 )
 groups=(
  "${_proj}"
