@@ -10,6 +10,7 @@ pkgbase = pyprland-git
 	makedepends = python-installer
 	makedepends = python-poetry
 	depends = python
+	depends = python-aiofiles
 	provides = pyprland
 	conflicts = pyprland
 	source = git+https://github.com/fdev31/pyprland#branch=main
