@@ -5,7 +5,7 @@
 # https://dolphin-emu.org
 # https://github.com/dolphin-emu/dolphin
 
-# options
+## options
 : ${_debugfast:=false}
 
 : ${_build_clang:=true}
@@ -22,7 +22,7 @@
 # basic info
 _pkgname="dolphin-emu"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=5.0.r20916.g63453bda4d
+pkgver=5.0.r21108.gaa668421
 pkgrel=1
 pkgdesc='A Gamecube and Wii emulator'
 url="https://github.com/dolphin-emu/dolphin"
@@ -93,7 +93,7 @@ _main_package() {
 
   if [[ "${_build_mold::1}" == "t" ]] ; then
     makedepends+=(mold)
-  else
+  elif [[ "${_build_clang::1}" == "t" ]] ; then
     makedepends+=(lld)
   fi
 
@@ -118,6 +118,7 @@ _source_dolphin_emu() {
     #'khronosgroup.spirv-cross'::'git+https://github.com/KhronosGroup/SPIRV-Cross.git'
     #'libsdl-org.sdl'::'git+https://github.com/libsdl-org/SDL.git'
     #'libusb'::'git+https://github.com/libusb/libusb.git'
+    #'libusb.hidapi'::'git+https://github.com/libusb/hidapi.git'
     #'lz4'::'git+https://github.com/lz4/lz4.git'
     #'mozilla.cubeb'::'git+https://github.com/mozilla/cubeb.git'
     #'randy408.libspng'::'git+https://github.com/randy408/libspng.git'
@@ -128,6 +129,7 @@ _source_dolphin_emu() {
     'lsalzman.enet'::'git+https://github.com/lsalzman/enet.git'
     'mgba-emu.mgba'::'git+https://github.com/mgba-emu/mgba.git'
     'retroachievements.rcheevos'::'git+https://github.com/RetroAchievements/rcheevos.git'
+    'syoyo.tinygltf'::'git+https://github.com/syoyo/tinygltf.git'
     'zlib-ng'::'git+https://github.com/zlib-ng/zlib-ng.git'
   )
   sha256sums+=(
@@ -143,7 +145,9 @@ _source_dolphin_emu() {
     #'SKIP'
     #'SKIP'
     #'SKIP'
+    #'SKIP'
 
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -154,7 +158,7 @@ _source_dolphin_emu() {
   )
 
   _prepare_dolphin_emu() (
-    cd "${srcdir:?}/$_pkgsrc"
+    cd "$_pkgsrc"
     local -A _submodules=(
       #['bylaws.libadrenotools']='Externals/libadrenotools'
       #['curl']='Externals/curl/curl'
@@ -165,6 +169,7 @@ _source_dolphin_emu() {
       #['khronosgroup.spirv-cross']='Externals/spirv_cross/SPIRV-Cross'
       #['libsdl-org.sdl']='Externals/SDL/SDL'
       #['libusb']='Externals/libusb/libusb'
+      #['libusb.hidapi']='Externals/hidapi/hidapi-src'
       #['lz4']='Externals/lz4/lz4'
       #['mozilla.cubeb']='Externals/cubeb/cubeb'
       #['randy408.libspng']='Externals/libspng/libspng'
@@ -175,6 +180,7 @@ _source_dolphin_emu() {
       ['lsalzman.enet']='Externals/enet/enet'
       ['mgba-emu.mgba']='Externals/mGBA/mgba'
       ['retroachievements.rcheevos']='Externals/rcheevos/rcheevos'
+      ['syoyo.tinygltf']='Externals/tinygltf/tinygltf'
       ['zlib-ng']='Externals/zlib-ng/zlib-ng'
     )
     _submodule_update
@@ -205,7 +211,7 @@ _main_git() {
 
   pkgver() {
     cd "$_pkgsrc"
-    git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=8 | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
   }
 }
 
@@ -225,14 +231,14 @@ prepare() {
   local _pkgver=$(pkgver)
   sed -Ez \
     -e 's@\n\s+execute_process\([^\(\)]+\bdescribe [^\(\)]*--dirty\b[^\(\)]+\)@\n\nset(DOLPHIN_WC_DESCRIBE "'"${_pkgver:?}"'")@' \
-    -i "${srcdir:?}/$_pkgsrc/CMake/ScmRevGen.cmake"
+    -i "$srcdir/$_pkgsrc/CMake/ScmRevGen.cmake"
 
   # Fix minizip-ng name for Arch
   #sed -E -e 's@(pkgconfig\(MINIZIP minizip)([^a-z]+)@\1-ng\2@' \
-  #  -i "${srcdir:?}/$_pkgsrc/CMakeLists.txt"
+  #  -i "$srcdir/$_pkgsrc/CMakeLists.txt"
 
   # Delete gcc specific options
-  sed '/_ARCHIVE_/d' -i "${srcdir:?}/$_pkgsrc/CMakeLists.txt"
+  sed '/_ARCHIVE_/d' -i "$srcdir/$_pkgsrc/CMakeLists.txt"
 }
 
 build() {
@@ -242,10 +248,11 @@ build() {
 
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
-    -DDISTRIBUTOR='aur.chaotic.cx'
+    -DDISTRIBUTOR='aur.archlinux.org'
+
     -DENABLE_AUTOUPDATE=OFF
-    # -DENABLE_ANALYTICS=OFF # ON is opt-in
-    # -DUSE_SYSTEM_LIBS=ON # AUTO
+    # -DENABLE_ANALYTICS=OFF # default:Opt-in
+    # -DUSE_SYSTEM_LIBS=ON # default:AUTO
 
     -DUSE_SYSTEM_ENET=OFF
     -DUSE_SYSTEM_LIBMGBA=OFF
@@ -291,12 +298,12 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir:?}" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 
-  install -Dm644 "${srcdir:?}/$_pkgsrc/Data/51-usb-device.rules" \
-    -t "${pkgdir:?}/usr/lib/udev/rules.d/"
+  install -Dm644 "$srcdir/$_pkgsrc/Data/51-usb-device.rules" \
+    -t "$pkgdir/usr/lib/udev/rules.d/"
 
-  rm -rf "${pkgdir:?}"/usr/{include,lib/libdiscord-rpc.a}
+  rm -rf "$pkgdir"/usr/{include,lib/libdiscord-rpc.a}
 }
 
 # execute
