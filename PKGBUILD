@@ -3,11 +3,15 @@
 
 pkgname='libcanlock'
 pkgver=3.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Standalone, modern RFC 8315 Netnews Cancel-Lock implementation for Unix'
 arch=('aarch64' 'armv7h' 'x86_64')
 url='https://micha.freeshell.org/libcanlock/'
-license=('custom')
+license=(
+  'BSD-3-Clause'        # SPDX-License-Identifier: BSD-3-Clause
+  'LicenseRef-Canlock'  # SPDX-License-Identifier: LicenseRef-Canlock
+  'MIT'                 # SPDX-License-Identifier: MIT
+)
 depends=('glibc')
 provides=('canlock' 'libcanlock')
 source=("${url}src/${pkgname}-${pkgver}.tar.bz2")
@@ -46,6 +50,10 @@ package() {
   make DESTDIR="$pkgdir" install
 
   install -Dm0644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  for _ext in BSD3 Canlock MIT; do
+    ln -sr "$pkgdir/usr/share/licenses/$pkgname/LICENSE" \
+           "$pkgdir/usr/share/licenses/$pkgname/LICENSE.$_ext"
+  done
   install -Dm0644 README  "$pkgdir/usr/share/doc/$pkgname/README"
 }
 
