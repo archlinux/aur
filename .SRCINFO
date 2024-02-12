@@ -1,15 +1,16 @@
 pkgbase = luks-tools
 	pkgdesc = A collection of LUKS related scripts.
-	pkgver = 0.0.0.0.0.1
+	pkgver = 0.0.0.0.0.1.1
 	pkgrel = 1
 	url = https://github.com/themartiancompany/luks-tools
 	arch = any
+	groups = hip
 	license = AGPL3
-	makedepends = git
-	depends = bash
-	provides = luks-tools=0.0.0.0.0.1
-	conflicts = luks-tools
-	source = git+https://github.com/themartiancompany/luks-tools#commit=84fb4c00f9569e4e182dca872563c35c7257d8c6
-	sha256sums = SKIP
+	checkdepends = shellcheck
+	depends = cryptsetup
+	optdepends = python-pygmentize: colorized output
+	optdepends = python2-pygmentize: colorized output
+	source = luks-tools-0.0.0.0.0.1.1.tar.gz::https://github.com/themartiancompany/luks-tools/archive/refs/tags/0.0.0.0.0.1.1.tar.gz
+	sha256sums = d22c81413fc912ab468d98861334effee58fa9a6e7b70692733008924a39e45f
 
 pkgname = luks-tools
