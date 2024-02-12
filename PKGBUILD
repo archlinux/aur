@@ -5,18 +5,26 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=falkon-git
-pkgver=23.07.70_r5935.gcdcdd3379
+pkgver=24.04.70_r6233.g422a998ff
 pkgrel=1
 pkgdesc="Cross-platform QtWebEngine browser"
 arch=($CARCH)
 url="https://www.falkon.org/"
-license=(GPL3)
-depends=(qt5-webengine qt5-x11extras qt5-svg)
-makedepends=(git extra-cmake-modules-git qt5-tools kio-git purpose-git libgnome-keyring pyside2 shiboken2)
+license=(GPL-2.0-or-later3)
+depends=(gcc-libs glibc karchive-git libxcb openssl qt6-5compat qt6-base qt6-declarative qt6-webchannel qt6-webengine)
+makedepends=(git extra-cmake-modules-git kio-git libgnome-keyring purpose-git pyside6 qt6-tools shiboken6)
+optdepends=('kcoreaddons-git: KDE integration'
+            'kcrash-git: KDE integration'
+            'kio-git: KDE integration'
+            'kjobwidgets-git: KDE integration'
+            'kwallet-git: KDE integration'
+            'libgnome-keyring: gnome keyring integration'
+            'purpose-git: KDE integration'
+            'pyside6: Python plugins')
+groups=(kde-applications-git
+       kde-network-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('kio-git: KDE integration' 'purpose-git: KDE integration' 'libgnome-keyring: gnome keyring integration'
-            'pyside2: Python plugins')
 replaces=(qupzilla)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
@@ -31,6 +39,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
