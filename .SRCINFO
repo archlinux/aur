@@ -1,6 +1,6 @@
 pkgbase = libshv-git
 	pkgdesc = An RPC framework build around the ChainPack packing schema
-	pkgver = r2369.0af68c44
+	pkgver = r2479.5786abd1
 	pkgrel = 1
 	url = https://github.com/silicon-heaven/libshv
 	arch = i686

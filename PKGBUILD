@@ -2,7 +2,7 @@
 
 pkgname=libshv-git
 _gitname=libshv
-pkgver=r2369.0af68c44
+pkgver=r2479.5786abd1
 pkgrel=1
 pkgdesc='An RPC framework build around the ChainPack packing schema'
 url='https://github.com/silicon-heaven/libshv'
@@ -39,4 +39,8 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install "$srcdir/build"
+	install -Dm644 "$srcdir/${pkgname%-git}/bash-completion/shv" "${pkgdir}/usr/share/bash-completion/completions/shv"
+	for prog_name in shvcall shvdevice minimalshvclient minimalshvbroker; do
+		ln -s shv "${pkgdir}/usr/share/bash-completion/completions/$prog_name"
+	done
 }
