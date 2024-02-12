@@ -3,17 +3,17 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcoreaddons-git
-pkgver=5.240.0_r1871.g9a8845d4
+pkgver=6.0.0_r2005.gc7888a94
 pkgrel=1
 pkgdesc='Addons to QtCore'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(qt6-base)
-makedepends=(git extra-cmake-modules-git qt6-tools clang python-pyqt6 doxygen sip)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(gcc-libs glibc qt6-base systemd-libs)
+makedepends=(git doxygen extra-cmake-modules-git qt6-declarative qt6-doc qt6-tools)
+optdepends=('qt6-declarative: QML bindings')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('python-pyqt6: for the Python bindings')
 groups=(kf6-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
