@@ -1,19 +1,19 @@
 pkgbase = frappe-books-bin
 	pkgdesc = Modern desktop accounting for freelancers and small-businesses.
-	pkgver = 0.21.1
+	pkgver = 0.21.2
 	pkgrel = 1
 	url = https://frappebooks.com/
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = electron22
 	depends = hicolor-icon-theme
-	provides = frappe-books=0.21.1
+	provides = frappe-books=0.21.2
 	conflicts = frappe-books
 	conflicts = frappebooks
 	options = !strip
-	source = frappe-books-0.21.1.deb::https://github.com/frappe/books/releases/download/v0.21.1/frappe-books_0.21.1_amd64.deb
+	source = frappe-books-0.21.2.deb::https://github.com/frappe/books/releases/download/v0.21.2/frappe-books_0.21.2_amd64.deb
 	source = frappe-books.sh
-	sha256sums = 8818c000d6a948c44133d3225b8791a63affe60d69b0208d00c7d1bbcf85ed8e
+	sha256sums = 4d1004552528005e2eda881dc0353fead565a8b9c4cc194f9a045f820d39ae86
 	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = frappe-books-bin
