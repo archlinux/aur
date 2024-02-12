@@ -1,0 +1,4 @@
+[libcutl]
+source = 'regex'
+url = 'https://www.codesynthesis.com/projects/libcutl/'
+regex = 'libcutl-([\d.]+)'
