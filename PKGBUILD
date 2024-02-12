@@ -23,8 +23,8 @@ _gl="gitlab.com"
 _gh="github.com"
 _host="https://${_gh}"
 _ns='themartiancompany'
-_local="${HOME}/${_pkgname}"
-url="${_host}/${_ns}/${_pkgname}"
+_local="${HOME}/${pkgname}"
+url="${_host}/${_ns}/${pkgname}"
 license=(
   AGPL3
 )
