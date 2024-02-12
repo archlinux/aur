@@ -10,7 +10,7 @@ _proj="hip"
 _pkg="grub"
 _pkgname="arch-${_pkg}"
 pkgname="${_pkgname}-git"
-pkgver=0.1.1.1.r1.gc466b94
+pkgver=0.1.1.1.r3.g263f802
 pkgrel=1
 _pkgdesc=(
   'Produces a standalone GRUB binary'
@@ -35,9 +35,6 @@ depends=(
   "${_pkg}"
   bash
 )
-provides=(
-  "mk${_pkg}=${pkgver}"
-)
 makedepends=(
   "make"
 )
@@ -52,6 +49,7 @@ optdepends=(
 )
 provides=(
   "${_pkgname}=${pkgver}"
+  "mk${_pkg}=${pkgver}"
 )
 conflicts=(
   "${_pkgname}"
