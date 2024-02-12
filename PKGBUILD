@@ -3,16 +3,16 @@
 
 pkgname='most-snapshot'
 _pkgname="${pkgname/-snapshot/}"
-pkgver='5.2.0'
-_prever='5.2.0'
-pkgrel='7'
-epoch='1'
-pkgdesc="A terminal pager similar to ‘more’ and ‘less’ (latest development snapshot)"
+pkgver=5.2.0
+_prever=5.2.0
+pkgrel=8
+epoch=1
+pkgdesc='A terminal pager similar to ‘more’ and ‘less’ (latest development snapshot)'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 depends=('glibc' 'slang')
-license=('GPL')
-url="https://www.jedsoft.org/most/"
-source=("https://jedsoft.org/snapshots/${_pkgname}-${_prever}.tar.gz")
+license=('GPL-2.0-or-later')  # SPDX-License-Identifier: GPL-2.0-or-later
+url='https://www.jedsoft.org/most/'
+source=("${url}snapshots/${_pkgname}-${_prever}.tar.gz")
 #validpgpkeys=('AE962A02D29BFE4A4BB2805FDE401E0D5873000A')  # John E. Davis <davis@space.mit.edu>
 provides=('most')
 conflicts=('most')
@@ -48,6 +48,7 @@ package() {
 sha256sums=(
   'a8babadf68a7e01608340efe4d987eb954e782731232f4aa090d935068610e9f'
 )
+
 b2sums=(
   'e26bdb7ecf85baecb50998c6c54ba0cb8ebd81ba4e6b4790c5c85f39b96ffbc109ff5735b30e1df782f2949890185d6024ffffe62ff885b8c772644ee70e0a24'
 )
