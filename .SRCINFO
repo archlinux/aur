@@ -1,7 +1,7 @@
 pkgbase = ros2-iron-base
 	pkgdesc = A set of software libraries and tools for building robot applications (Iron Irwini, base variant)
 	pkgver = 2024.02.09
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/ros_base/#iron
 	arch = any
 	license = Apache

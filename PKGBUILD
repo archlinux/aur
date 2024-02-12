@@ -2,7 +2,7 @@
 
 pkgname=ros2-iron-base
 pkgver=2024.02.09
-pkgrel=1
+pkgrel=2
 _rosdist="Iron Irwini"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -56,10 +56,6 @@ prepare() {
     git -C "$srcdir/ros2/src/ros2/rcpputils" cherry-pick -n "f96811a9047fa6a084a885219c88b415bc544487"
     git -C "$srcdir/ros2/src/ros-tooling/libstatistics_collector" cherry-pick -n "1c340c97c731019d0c7b40f8c167b0ef666bcf75"
     git -C "$srcdir/ros2/src/ros2/rclcpp/rclcpp/include/rclcpp" cherry-pick -n "86c77143c96d85711a87f2a5adcc4d7f0fb0dbeb"
-
-    # Make ament_flake8 work with flake8 v6+
-    git -C "$srcdir/ros2/src/ament/ament_lint/" cherry-pick -n "b9576c91881d62bbe0b0bb2f37735bb0efcb7411"
-    git -C "$srcdir/ros2/src/ament/ament_lint/" cherry-pick -n "ddd1686bdf40642c7abba10136821057fcf64019"
 }
 
 build() {
