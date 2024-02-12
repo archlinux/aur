@@ -8,7 +8,7 @@
 pkgname=openssh-gssapi
 _pkgname=openssh
 pkgver=9.6p1
-_patch=2
+_patch=3
 pkgrel=1
 pkgdesc="SSH protocol implementation with GSSAPI support"
 arch=('x86_64')
