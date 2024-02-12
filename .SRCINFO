@@ -1,0 +1,27 @@
+pkgbase = superset-venv
+	pkgdesc = A modern, enterprise-ready business intelligence web application (venv installation type)
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://superset.apache.org/
+	install = superset.install
+	arch = any
+	license = Apache-2.0
+	depends = python
+	provides = superset
+	conflicts = superset
+	options = !strip
+	backup = etc/superset/env
+	source = superset.bin
+	source = superset.env
+	source = superset.conf
+	source = superset.sysusers
+	source = superset.tmpfiles
+	source = superset.service
+	b2sums = 4cf278dd529b778356452eeb6e6d9c105dae977a28eadc1c7fbed3755eaaa1aa853fcb461d019b57879ed8512b819604ec46380719805de06ff14388552dc79a
+	b2sums = 415e3b03382f043685f3080b5adde24cc55cd56da3b767e232673029afb500ec8f23ed7b9b48420cc757e73edfa6c07de00cbd2c9ecafa047645e2dbae017368
+	b2sums = 6d3d11f47b4007dfc358d3dd2ee15920f7d29b10d7c5ea4c5e51468911d4f8c671a9259e3b703534fa8b3281ee8aea41dfdf0335455dc8eb54eb2c10f0703842
+	b2sums = 85a1d4232a1901d00becf06ef5cbf139477209b93f3738add436f4243aa58d1b16a99dd6342c9f45f4b4efd2e10db337525d183f7f27c708420df406f31e6e09
+	b2sums = 6580456589b3176aafa30a805fb63afc04401d1fb7e9c2ec9ee9f6b087c69ea54d4f854a5142783ea6a2566a4fe49f1222217071eed0fd2b04b370473d67748a
+	b2sums = 90f6eab47fd21a9c062490e1d3add85245125d7809afe260d0dada93f336a5b41a5ce003923bf1fc392ab4e6002db76f3d1e8296ed23ffec79c9a02c6ec9012d
+
+pkgname = superset-venv
