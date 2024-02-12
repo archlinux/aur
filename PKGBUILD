@@ -1,3 +1,4 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Thomas Schneider <maxmusterm@gmail.com>
 
 pkgname=rgss_script_editor-git
