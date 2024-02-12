@@ -1,16 +1,17 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Submitter: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Kusoneko <kusoneko at kusoneko dot moe>
 
 pkgname=szyszka
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A simple but powerful batch file rename program"
 arch=('x86_64')
 url="https://github.com/qarmin/szyszka"
 license=('MIT')
-depends=('gtk3')
+depends=('gtk4')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('2292aee4d2e5a3b2631913fb1885cc410545018b502a18f77d01bb5b62e81a14')
+sha256sums=('346fc3685b2c33778c6568c4d1d6ad6bd53292e4d0333f76b5c7c1af9ae8029f')
 
 build() {
   cd "$pkgname-$pkgver"
