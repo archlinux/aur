@@ -1,13 +1,18 @@
 pkgbase = python-gspread
 	pkgdesc = Google Spreadsheets Python API
-	pkgver = 5.7.2
-	pkgrel = 2
+	pkgver = 6.0.1
+	pkgrel = 1
 	url = https://github.com/burnash/gspread
 	arch = any
 	license = Custom:MIT
+	makedepends = python-build
+	makedepends = python-flit
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-google-auth
 	depends = python-google-auth-oauthlib
-	source = https://github.com/burnash/gspread/archive/v5.7.2.tar.gz
-	sha512sums = 5d18620bef64b37239a7ecb0120bfa9f0a8b1267de304ecaa2a16c6b41a0284f6bc1877f595e16a7274c090eecaea59cca1d92cce798d21e823c0ae142300fab
+	depends = python-strenum
+	source = https://github.com/burnash/gspread/archive/v6.0.1.tar.gz
+	sha512sums = 2e2359b16d68823ae297584595c94e415a6e2e5c0e0a7ec3200fe5e33fa08c8124cce55c34e2e098c9b72663c3ddcd9d71bbf99c683fc464a50a539b0f300ccf
 
 pkgname = python-gspread

@@ -2,24 +2,25 @@
 
 pkgname=python-gspread
 _pkgname=gspread
-pkgver=5.7.2
-pkgrel=2
+pkgver=6.0.1
+pkgrel=1
 pkgdesc="Google Spreadsheets Python API"
 arch=('any')
 url="https://github.com/burnash/gspread"
 license=('Custom:MIT')
-depends=('python-google-auth' 'python-google-auth-oauthlib')
-source=("https://github.com/burnash/${_pkgname}/archive/v${pkgver}.tar.gz")
+depends=('python-google-auth' 'python-google-auth-oauthlib' 'python-strenum')
+makedepends=('python-build' 'python-flit' 'python-installer' 'python-wheel')
+source=("https://github.com/burnash/$_pkgname/archive/v$pkgver.tar.gz")
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py build
+  cd "$srcdir/$_pkgname-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}"
-  install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "$srcdir/$_pkgname-$pkgver"
+  python -m installer --destdir="$pkgdir" "dist/$_pkgname-$pkgver-py3-none-any.whl"
+  install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha512sums=('5d18620bef64b37239a7ecb0120bfa9f0a8b1267de304ecaa2a16c6b41a0284f6bc1877f595e16a7274c090eecaea59cca1d92cce798d21e823c0ae142300fab')
+sha512sums=('2e2359b16d68823ae297584595c94e415a6e2e5c0e0a7ec3200fe5e33fa08c8124cce55c34e2e098c9b72663c3ddcd9d71bbf99c683fc464a50a539b0f300ccf')
