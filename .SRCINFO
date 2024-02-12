@@ -1,6 +1,6 @@
 pkgbase = comroid-java-api-git
 	pkgdesc = Installs common Java API of comroid Products to mavenLocal()
-	pkgver = 1
+	pkgver = 2
 	pkgrel = 1
 	url = https://github.com/comroid-git/japi
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: Tobias Burdow <kaleidox@comroid.org>
 
 pkgname=comroid-java-api-git
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="Installs common Java API of comroid Products to mavenLocal()"
 arch=('any')
@@ -15,9 +15,9 @@ options+=("!strip")
 
 build() {
     cd japi
-    gradle clean test publishToMavenLocal
+    gradle clean test
 }
 
 package() {
-    echo nop
+    gradle publishToMavenLocal
 }
