@@ -1,57 +1,50 @@
-# Maintainer: Grzegorz Koperwas <admin@grzegorzkoperwas.site>
+# Maintainer: willemw <willemw12@gmail.com>
+# Contributor: Grzegorz Koperwas <admin@grzegorzkoperwas.site>
+
 pkgname=swww-git
-pkgver=0.8.2
-pkgrel=0
-pkgdesc="Efficient animated wallpaper daemon for wayland, controlled at runtime."
-arch=('x86_64' 'aarch64')
-url="https://github.com/LGFae/swww"
-license=('GPL')
-depends=('gcc-libs' 'lz4' 'libxkbcommon')
-makedepends=('cargo' 'scdoc')
-provides=('swww')
-conflicts=('swww')
+pkgver=0.4.0.r250.g01e9cf8
+pkgrel=1
+pkgdesc='Efficient animated wallpaper daemon for Wayland, controlled at runtime'
+#arch=(x86_64)
+arch=(x86_64 aarch64)
+url=https://github.com/LGFae/swww
+license=(GPL-3.0-or-later)
+makedepends=(cargo git scdoc)
+depends=(libxkbcommon lz4)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 options=(!lto)
-source=("swww::git+https://github.com/LGFae/swww.git")
+source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/swww"
-    git describe --tags --match 'v*' | sed 's/^v//;s/-/./g'
+  git -C $pkgname describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "$srcdir/swww"
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  RUSTUP_TOOLCHAIN=stable cargo fetch --locked --manifest-path=$pkgname/Cargo.toml --target="$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "$srcdir/swww"
-  export RUSTUP_TOOLCHAIN=stable
-  cargo build --release --target-dir ./target
-  # manpages
-  ./doc/gen.sh
-  for page in $(ls ./doc/generated/*.1)
-  do 
-    gzip -f "$page"
-  done
+  RUSTUP_TOOLCHAIN=stable cargo build --release --manifest-path=$pkgname/Cargo.toml --target-dir=target --all-features
+
+  # Man pages
+  $pkgname/doc/gen.sh
+}
+
+check() {
+  RUSTUP_TOOLCHAIN=stable cargo test --release --manifest-path=$pkgname/Cargo.toml --target-dir=target
 }
 
 package() {
-  cd "$srcdir/swww"
+  install -Dm755 "target/release/${pkgname%-git}"{,-daemon} -t "$pkgdir/usr/bin"
 
-  install -Dm755 "target/release/swww" "$pkgdir/usr/bin/swww"
-  install -Dm755 "target/release/swww-daemon" "$pkgdir/usr/bin/swww-daemon"
-  install -Dm644 "completions/swww.bash" "$pkgdir/usr/share/bash-completion/completions/swww"
-  install -Dm644 "completions/swww.fish" "$pkgdir/usr/share/fish/vendor_completions.d/swww.fish"
-  install -Dm644 "completions/_swww" "$pkgdir/usr/share/zsh/site-functions/_swww"
-  install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 $pkgname/*.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+  cp -a $pkgname/example_scripts "$pkgdir/usr/share/doc/${pkgname%-git}"
 
-  # manpages
-  cd ./doc/generated 
-  for page in $(ls *.1.gz)
-  do 
-    install -Dm644 "$page" "$pkgdir/usr/share/man/man1/$page"
-  done
+  install -Dm644 $pkgname/doc/generated/*.1 -t "$pkgdir/usr/share/man/man1"
+
+  install -Dm644 $pkgname/completions/_swww "$pkgdir/usr/share/zsh/site-functions/_swww"
+  install -Dm644 $pkgname/completions/swww.bash "$pkgdir/usr/share/bash-completion/completions/swww"
+  install -Dm644 $pkgname/completions/swww.fish "$pkgdir/usr/share/fish/vendor_completions.d/swww.fish"
 }
-
