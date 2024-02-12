@@ -1,0 +1,23 @@
+pkgbase = mixing-station
+	pkgdesc = Mixer remote control for multiple mixers
+	pkgver = 2.0.4
+	pkgrel = 3
+	url = https://mixingstation.app/
+	arch = any
+	license = custom:proprietary
+	depends = jre11-openjdk
+	depends = zenity
+	conflicts = mixing-station-pc
+	replaces = mixing-station-pc
+	source = mixing-station-2.0.4-release.zip::https://mixingstation.app/backend/api/web/download/update/mixing-station-pc/release
+	source = mixing-station
+	source = copyright.txt
+	source = ms-icon.png::https://mixingstation.app/ms-docs/assets/ms.png
+	source = mixing-station.desktop
+	sha256sums = b7c5d9933ba92d87d222a5783a938783fde1ff4f54c6d71bf78d425ad3914376
+	sha256sums = 2bf580819e9ddb5183d7d1a260ed50e759339038fc767c5a065333d7aebb46f9
+	sha256sums = a5d350e62b37f9394944421d94aaa1a823f396a0e76727cb37898029bc5d77bf
+	sha256sums = 2a9b5fedbaf45ff7c7822b9cfc6dd50541b68ca39545611814f034608c2f9a00
+	sha256sums = 0ebe311c4f614552cab7bacd4d5b67677ab2d09a89ceb49d10cb8f05c06297f7
+
+pkgname = mixing-station
