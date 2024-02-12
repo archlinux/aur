@@ -4,7 +4,7 @@
 
 pkgname=tacentview
 pkgver=1.0.43
-pkgrel=2
+pkgrel=3
 pkgdesc="An image and texture viewer for tga, png, apng, exr, dds, ktx, ktx2, astc, pkm, qoi, gif, hdr, jpg, tif, ico, webp, and bmp files. Uses Dear ImGui, OpenGL and Tacent"
 url="https://github.com/bluescan/tacentview"
 license=('ISC')
@@ -16,6 +16,8 @@ sha256sums=('SKIP')
 
 prepare() {
   cmake -S $pkgname -B build -DCMAKE_BUILD_TYPE=Release -DFETCHCONTENT_QUIET=OFF -GNinja
+  cd $pkgname
+  rm -dr Linux/deb_template/usr/share/$pkgname build/ViewerInstall/Data/TacentView.ico
 }
 
 build() {
@@ -27,7 +29,5 @@ package() {
   install -Dm644 $pkgname/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 build/ViewerInstall/Data/* -t "$pkgdir/usr/share/$pkgname/Data"
   install -Dm755 build/ViewerInstall/$pkgname -t "$pkgdir/usr/bin"
-  cd $pkgname/Linux/deb_template/usr
-  rm -dr share/$pkgname
-  mv share/* "$pkgdir/usr/share"
+  mv $pkgname/Linux/deb_template/usr/share/* "$pkgdir/usr/share"
 }
