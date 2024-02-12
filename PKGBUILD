@@ -2,16 +2,15 @@
 
 _pkgname=stackablectl
 pkgname="${_pkgname}-bin"
-pkgver=0.8.0
-_gitname="v${pkgver}"
+pkgver=23.11.3
 pkgrel=1
 pkgdesc="Command line tool to interact with a Stackable Data Platform"
 arch=('x86_64')
-url="https://github.com/stackabletech/stackablectl/"
+url="https://github.com/stackabletech/stackable-cockpit/"
 license=('Apache')
 depends=('gcc-libs')
-source=("https://github.com/stackabletech/stackablectl/releases/download/${_gitname}/stackablectl-$CARCH-unknown-linux-gnu")
-b2sums=('86a8bd1563073ae8d24e021edc6efbfc84aa195301c692d110dbf13107a9054c394ac4be66375f7a7957a7d6380215733dee36a0b50aaa2d4abcec4cfc02c7b5')
+source=("https://github.com/stackabletech/stackable-cockpit/releases/download/stackablectl-${pkgver}/stackablectl-$CARCH-unknown-linux-gnu")
+b2sums=('bfda7fe55ad2ca53674d6e4d8788ffe3ddc335bbbbaec55f5ad0d87d04e592ce415000a260d1ccde82167d62b49d9c90ab187e4e6bacb3d251fb3fccd217fd3a')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 
@@ -19,4 +18,3 @@ package() {
   mv stackablectl-$CARCH-unknown-linux-gnu stackablectl
   install -vDm755 -t "$pkgdir/usr/bin/" stackablectl
 }
-
