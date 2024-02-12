@@ -251,9 +251,7 @@ build() {
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
-  export MOZ_ENABLE_FULL_SYMBOLS=1
   export MOZ_NOSPAM=1
-  export MOZ_SOURCE_REPO="$_repo"
 
   # LTO/PGO needs more open files
   ulimit -n 4096
@@ -264,7 +262,8 @@ build() {
     local _old_profdata _old_jarlog _pkgver_old tmp_old tmp_new
     _pkgver_prof=$(
       cd "${SRCDEST:-$startdir}"
-      sort -rV <(for i in *.profdata ; do [ -f "$i" ] && echo "$i" ; done) | head -1
+      for i in *.profdata ; do [ -f "$i" ] && echo "$i" ; done \
+        | sort -rV | head -1 | sed -E 's&^[^0-9]+-([0-9\.]+)-merged.profdata&\1&'
     )
 
     # new profile for new major version
@@ -274,10 +273,10 @@ build() {
     fi
 
     # new profile for minor version + 3
-    _tmp_old=$(cut -d'-' -f2 <<< "${_pkgver_prof}" | cut -d'.' -f2 )
-    _tmp_new=$(cut -d'-' -f2 <<< "${_pkgver}" | cut -d'.' -f2 )
+    _tmp_old=$(echo "${_pkgver_prof}" | cut -d'-' -f2 | cut -d'.' -f2)
+    _tmp_new=$(echo "${_pkgver}" | cut -d'-' -f2 | cut -d'.' -f2)
 
-    if [ "$_tmp_new" -ge "$((_tmp_old + 3))" ] ; then
+    if [ "${_tmp_new:-0}" -ge "$((_tmp_old + 3))" ] ; then
       _build_pgo_reuse=false
       _pkgver_prof="$_pkgver"
     fi
