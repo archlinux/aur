@@ -1,7 +1,7 @@
 pkgbase = openfire-git
 	pkgdesc = High performance XMPP (Jabber) server.
 	pkgver = 4.8.0.r16.g6816685
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.igniterealtime.org/projects/openfire/
 	arch = any
 	license = APACHE
@@ -10,6 +10,8 @@ pkgbase = openfire-git
 	makedepends = jdk11-openjdk
 	makedepends = git
 	depends = java-runtime-headless<19
+	provides = openfire
+	conflicts = openfire
 	backup = etc/conf.d/openfire
 	backup = etc/openfire/openfire.xml
 	backup = etc/openfire/security.xml

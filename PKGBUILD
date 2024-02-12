@@ -4,7 +4,7 @@
 
 pkgname=openfire-git
 pkgver=4.8.0.r16.g6816685
-pkgrel=1
+pkgrel=2
 pkgdesc="High performance XMPP (Jabber) server."
 arch=('any')
 url='https://www.igniterealtime.org/projects/openfire/'
@@ -30,6 +30,8 @@ sha256sums=('SKIP'
             'bc58f7e80cbdaee8523874990bf061cfd0e6480c676102e2131fe487d2782061'
             '8bfa51cf8cc88fc69547a8f6e9e3fb242926ca2a100659363e1a6b332f223ba9'
             'c63396991984a067d05e21094a664255d6aed2bf294bddd3885a7da75472b886')
+provides=('openfire')
+conflicts=('openfire')
 
 pkgver() {
     cd "$pkgname"
