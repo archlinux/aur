@@ -1,6 +1,6 @@
 pkgbase = matterhorn-bin
 	pkgdesc = A terminal-based chat client for MatterMost
-	pkgver = 50200.19.0
+	pkgver = 90000.0.0
 	pkgrel = 1
 	url = https://github.com/matterhorn-chat/matterhorn
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = matterhorn-bin
 	depends = zlib
 	provides = matterhorn
 	conflicts = matterhorn
-	source = https://github.com/matterhorn-chat/matterhorn/releases/download/50200.19.0/matterhorn-50200.19.0-ubuntu-22.04-jammy-x86_64.tar.bz2
+	source = https://github.com/matterhorn-chat/matterhorn/releases/download/90000.0.0/matterhorn-90000.0.0-ubuntu-22.04-jammy-x86_64.tar.bz2
 	source = LICENSE::https://raw.githubusercontent.com/matterhorn-chat/matterhorn/master/LICENSE
-	sha1sums = d3333ab4d66063245d0ab97768358bf10641b8a4
+	sha1sums = edf0e5e0a53d41ccc1ab4aa11076684a8da763a1
 	sha1sums = 41bd788816973ea1340759da722bac169d6dc746
 
 pkgname = matterhorn-bin
