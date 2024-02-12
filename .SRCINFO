@@ -20,6 +20,8 @@ pkgbase = shvspy-git
 	conflicts = shvspy
 	conflicts = shvspy-git
 	source = git+https://github.com/silicon-heaven/shvspy.git
+	source = bash-completion-shvspy
 	md5sums = SKIP
+	md5sums = f681f0f02001b80f964ce640a41b5c27
 
 pkgname = shvspy-git

@@ -12,8 +12,12 @@ depends=('necrolog' 'libshv' 'glibc' 'gcc-libs' 'qt6-base' 'qt6-networkauth' 'qt
 makedepends=('git' 'cmake')
 conflicts=('shvspy' 'shvspy-git')
 provides=('shvspy')
-source=('git+https://github.com/silicon-heaven/shvspy.git')
-md5sums=('SKIP')
+source=('git+https://github.com/silicon-heaven/shvspy.git'
+		'bash-completion-shvspy'
+)
+md5sums=('SKIP'
+		 'f681f0f02001b80f964ce640a41b5c27'
+)
 
 pkgver() {
 	cd "$srcdir/$_gitname"
@@ -33,4 +37,5 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install "$srcdir/build"
+	install -Dm644 bash-completion-shvspy "${pkgdir}/usr/share/bash-completion/completions/shvspy"
 }

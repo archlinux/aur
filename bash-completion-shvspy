@@ -1,0 +1,5 @@
+if ! declare -F __shv_compl > /dev/null; then
+    _completion_loader shv
+fi
+
+complete -F __shv_compl shvspy
