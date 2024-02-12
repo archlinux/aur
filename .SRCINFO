@@ -1,7 +1,7 @@
 pkgbase = android-x86-glib2
 	pkgdesc = Low level core library (android)
 	pkgver = 2.78.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.gnome.org/Projects/GLib
 	arch = any
 	license = LGPL2.1
