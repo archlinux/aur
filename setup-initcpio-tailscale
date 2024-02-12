@@ -3,18 +3,23 @@ set -e
 
 CMD0="${0##*/}"
 TS_HOSTNAME="${HOSTNAME}-initrd"
-TS_AUTHKEY=""
 TS_STATEDIR=/etc/initcpio/tailscale
 PID=""
 
 usage() {
     cat <<EOF
-usage: ${CMD0} [options]
+${CMD0} launches and configures Tailscale daemon in an isolated environment that doesn't mess with the system service.
+
+usage: ${CMD0} [options] [-- [tailscale-up-options...]]
 
   Options:
     -H  Hostname to use when registering the node (default: '${TS_HOSTNAME}')
-    -k  Node authorization key; if it begins with "file:", then it's a
-        path to a file containing the authkey. (default: '${TS_AUTHKEY}')
+
+Any arguments after '--' (double dash), like in 'setup-initcpio-tailscale -- --ssh' are passed verbatim to 'tailscale up'.
+See 'tailscale up --help' output for available flags. i.e.:
+
+  ${CMD0} -H ${TS_HOSTNAME} -- --ssh --login-server=headscale.my.net --authkey=file:node.key
+
 EOF
 }
 
@@ -27,7 +32,7 @@ cleanup() {
     rm -rf "${SETUPDIR}"
   fi
   if [[ -n "$PID" ]]; then
-    kill "$PID"
+    kill "$PID" 2>/dev/null
   fi
   exit 0
 }
@@ -36,7 +41,6 @@ trap "cleanup" EXIT
 while getopts H:k:d:t:h flag; do
     case "$flag" in
         H) TS_HOSTNAME="$OPTARG" ;;
-        k) TS_AUTHKEY="$OPTARG" ;;
         ?) usage; exit 0 ;;
     esac
 done
@@ -51,12 +55,14 @@ tailscaled \
   -socket="$socket" \
   -no-logs-no-support \
   -tun=userspace-networking \
-  >"${SETUPDIR}/setup-tailscaled.log" 2>&1 &
+  >"${SETUPDIR}/setup.log" 2>&1 &
 PID="$!"
 
-if ! tailscale -socket="$socket" up --qr --authkey="$TS_AUTHKEY" --hostname="$TS_HOSTNAME"; then
-  cp -f "${SETUPDIR}/setup-tailscaled.log" /tmp/
-  die "Failed to configure tailscale. Check daemon logs at /tmp/setup-tailscaled.log"
+# --accept-risk=lose-ssh is fine because we are setting up an isolated tailscaled daemon,
+# it has nothing to do with system tailscale service.
+if ! tailscale --socket="$socket" up --qr --hostname="$TS_HOSTNAME" --accept-risk=lose-ssh "$@"; then
+  cp -f "${SETUPDIR}/setup.log" /tmp/setup-initcpio-tailscale-daemon.log
+  die "Failed to configure tailscale. Check daemon logs at /tmp/setup-initcpio-tailscale-daemon.log"
 fi
 
 
