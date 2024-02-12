@@ -9,6 +9,7 @@ pkgbase = ssh-utils-git
 	license = AGPL3
 	checkdepends = shellcheck
 	makedepends = git
+	depends = bash
 	provides = ssh-utils=0.1.r5.ge7e693c
 	conflicts = ssh-utils
 	source = git+https://github.com/themartiancompany/ssh-utils#branch=master

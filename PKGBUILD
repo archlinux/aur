@@ -28,6 +28,7 @@ license=(
   AGPL3
 )
 depends=(
+  bash
 )
 makedepends=(
   git
