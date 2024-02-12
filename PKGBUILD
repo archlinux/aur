@@ -13,10 +13,12 @@ b2sums=('faa57be60b8e863265fc98b169364b49eb88db78b1de116d69a7d809228fff0285ea7e2
 
 build() {
   cd "${pkgname}-${pkgver}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
   export GOFLAGS="-buildmode=pie"
-  export CGO_ENABLED=0
-  _LDFLAGS="-X github.com/phrase/phrase-cli/cmd.PHRASE_CLIENT_VERSION=${pkgver} -extldflags ${LDFLAGS}"
-  go build -o phrase -ldflags "${_LDFLAGS}"
+  go build -o phrase -ldflags "-X github.com/phrase/phrase-cli/cmd.PHRASE_CLIENT_VERSION=${pkgver}"
 }
 
 package() {
