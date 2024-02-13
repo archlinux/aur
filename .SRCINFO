@@ -1,7 +1,7 @@
 pkgbase = static-web-server
 	pkgdesc = A cross-platform, high-performance and asynchronous web server for static files-serving
 	pkgver = 2.27.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://static-web-server.net/
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = static-web-server
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
+	options = !lto
 	backup = etc/default/static-web-server
 	source = static-web-server-2.27.0-src.tar.gz::https://github.com/static-web-server/static-web-server/archive/refs/tags/v2.27.0.tar.gz
 	sha256sums = 3e7597f91cd9e1566cf84371186855d6df0aed719b2370b10c827f38bbe1b45d

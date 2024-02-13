@@ -2,7 +2,7 @@
 
 pkgname=static-web-server
 pkgver=2.27.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform, high-performance and asynchronous web server for static files-serving"
 arch=('i686' 'x86_64')
 url="https://static-web-server.net/"
@@ -10,6 +10,7 @@ license=('Apache-2.0' 'MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 backup=('etc/default/static-web-server')
+options=('!lto')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/static-web-server/static-web-server/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('3e7597f91cd9e1566cf84371186855d6df0aed719b2370b10c827f38bbe1b45d')
 
