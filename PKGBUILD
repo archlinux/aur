@@ -9,6 +9,7 @@ url="https://github.com/Moonbase59/loudgain"
 arch=('i686' 'x86_64')
 license=('BSD 2-Clause "Simplified" License')
 depends=("taglib1" "libebur128" "ffmpeg")
+conflicts=("taglib<2")
 makedepends=('cmake')
 provides=('loudgain' 'rgbpm')
 source=("loudgain-${_pkgver}.tar.gz::https://github.com/Moonbase59/loudgain/archive/${pkgver}.tar.gz"

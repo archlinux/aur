@@ -12,6 +12,7 @@ pkgbase = loudgain
 	depends = ffmpeg
 	provides = loudgain
 	provides = rgbpm
+	conflicts = taglib<2
 	source = loudgain-0.6.8.tar.gz::https://github.com/Moonbase59/loudgain/archive/v0.6.8.tar.gz
 	source = fix_ffmpeg5.patch
 	source = fix_mp4-asf.patch
