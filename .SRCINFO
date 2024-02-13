@@ -1,7 +1,7 @@
 pkgbase = r-sqldataframe
 	pkgdesc = Representation of SQL database in DataFrame metaphor
-	pkgver = 1.16.0
-	pkgrel = 3
+	pkgver = 1.16.1
+	pkgrel = 1
 	url = https://bioconductor.org/packages/SQLDataFrame
 	arch = any
 	license = GPL
@@ -21,7 +21,7 @@ pkgbase = r-sqldataframe
 	optdepends = r-rmarkdown
 	optdepends = r-rmysql
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SQLDataFrame_1.16.0.tar.gz
-	sha256sums = 64ca14a21bb6c4989dbe0b1d631f76ae184b9bd63b7b2e6b06d92ad045e0eb14
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SQLDataFrame_1.16.1.tar.gz
+	sha256sums = d48c2bcaa4fade62ead21689d2bfcfc8d7e835291ee25ec5ff6b69db0021354d
 
 pkgname = r-sqldataframe
