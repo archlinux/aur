@@ -2,7 +2,7 @@
 
 pkgbase=rssbridge
 pkgname=rss-bridge
-pkgver=2023_07_13
+pkgver=2024_02_02
 pkgrel=1
 pkgdesc="The RSS feed for websites missing it"
 arch=("any")
@@ -17,7 +17,7 @@ source=(
   "$pkgname.sysusers"
   "$pkgname.tmpfiles"
 )
-sha256sums=('2aacd86a6c5387660782b881d7b07bd278477e55913e63c4dd6aae09e02b9d50'
+sha256sums=('290636a7b8f8389e2274946afa8a5b5b3e1d0aed0005088e964a6b8952c45eb4'
             '42eb933a4632ada3247341d24f967c76cf363ff50e6ed13b39963983454f8020'
             '53103f6c5ad1bb59823ed3b0da6d0900517ed199bf64881b7bbf85f12dee39ad')
 
