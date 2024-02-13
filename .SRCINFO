@@ -1,7 +1,7 @@
 pkgbase = envision-xr-git
 	pkgdesc = GUI for Monado
 	pkgver = r397.7a55c433
-	pkgrel = 1.1
+	pkgrel = 1.2
 	url = https://gitlab.com/gabmus/envision
 	arch = x86_64
 	arch = aarch64
@@ -27,6 +27,7 @@ pkgbase = envision-xr-git
 	depends = polkit
 	provides = envision
 	conflicts = envision
+	options = !lto
 	source = git+https://gitlab.com/gabmus/envision.git
 	b2sums = SKIP
 
