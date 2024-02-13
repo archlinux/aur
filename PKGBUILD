@@ -12,7 +12,7 @@
 ## basic info
 pkgname=icecat
 pkgver=115.7.0
-pkgrel=1
+pkgrel=2
 _commit=dbe6da400cf4f28e5e893d0acb5022e23cf3afcf
 pkgdesc="GNU version of the Firefox browser."
 arch=(x86_64)
@@ -82,53 +82,51 @@ prepare() {
   # Uncomment if you have issues with gpg download... WITH PROXY gpg doesn't work!!!!!!
   #sed -e 's/^verify_sources$//g' -i makeicecat
 
-  if [ "${_only-compile}q" = q ]; then
-    mkdir output || rm -rf output/*  # Clean output just in case is already an old build there
-    if [ -f "${SRCDEST}/firefox-${pkgver}esr.source.tar.xz" ] && [ -f "${SRCDEST}/firefox-${pkgver}esr.source.tar.xz.asc" ]; then cp -f "${SRCDEST}"/firefox-${pkgver}esr.source.tar.xz{,.asc} output/ ; fi
+  mkdir output || rm -rf output/*  # Clean output just in case is already an old build there
+  if [ -f "${SRCDEST}/firefox-${pkgver}esr.source.tar.xz" ] && [ -f "${SRCDEST}/firefox-${pkgver}esr.source.tar.xz.asc" ]; then cp -f "${SRCDEST}"/firefox-${pkgver}esr.source.tar.xz{,.asc} output/ ; fi
   
-    # Patches to avoid download sources if you have in your $startdir
-    sed -e '/rm -rf output/d' -i makeicecat
-    sed -e 's/wget -N/wget -nv -Nc/g' -i makeicecat
+  # Patches to avoid download sources if you have in your $startdir
+  sed -e '/rm -rf output/d' -i makeicecat
+  sed -e 's/wget -N/wget -nv -Nc/g' -i makeicecat
   
-    # Other patches
-    sed '/^finalize_sourceball$/d' -i makeicecat
+  # Other patches
+  sed '/^finalize_sourceball$/d' -i makeicecat
   
-    # If we want to avoid all locales, we can use variable _SPEED=y to build it with only 1 locale. Use variable _LOCALE to define it
-    if [[ $_SPEED =~ [y|Y] ]]; then
-      msg2 "Building without all locales..."
-      sed -e 's/DEVEL=0/DEVEL=1/g' -i makeicecat
-      # Also you can choose your locale using external variable _LOCALE. By default in upstream script this locale is es-ES
-      [ -z "$_LOCALE" ] || sed -e "s/es-ES/$_LOCALE/g" -i makeicecat && echo "$_LOCALE" > custom-shipped-locales
-      rm -rf data/files-to-append/l10n/*
-    fi
-  
-    # Thanks to cysp74 to report this bug
-    sed -e 's;find l10n -wholename '\''\*/brand.dtd'\'' | xargs;find l10n -wholename '\''\*/brand.dtd'\'' | xargs -r;g' -i makeicecat
-  
-    # Produce IceCat sources
-    bash makeicecat
-    cd output/icecat-${pkgver}
-  
-    # Patch to move files directly to /usr/lib/icecat. No more symlinks.
-    sed -e 's;$(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME);g' -i config/baseconfig.mk
-    sed -e 's;$(libdir)/$(MOZ_APP_NAME)-devel-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME)-devel;g' -i config/baseconfig.mk
-  
-    # disable extensions, otherwise profiling freezes
-    cp "browser/app/Makefile.in" "$srcdir/Makefile.in"
-    sed -E -e '/^\t.*\/extensions\/gnu\/\*.*$/d' -i "browser/app/Makefile.in"
-    cp "browser/installer/package-manifest.in" "$srcdir/package-manifest.in"
-    sed -E -e '/^.*\/browser\/extensions\/.*$/d' -i "browser/installer/package-manifest.in"
-    cp "browser/installer/allowed-dupes.mn" "$srcdir/allowed-dupes.mn"
-    sed -E -e '/^browser\/extensions\/.*$/d' -i "browser/installer/allowed-dupes.mn"
-  
-    printf '%b' "  \e[1;36m->\e[0m\033[1m Starting build...\n"
+  # If we want to avoid all locales, we can use variable _SPEED=y to build it with only 1 locale. Use variable _LOCALE to define it
+  if [[ $_SPEED =~ [y|Y] ]]; then
+    msg2 "Building without all locales..."
+    sed -e 's/DEVEL=0/DEVEL=1/g' -i makeicecat
+    # Also you can choose your locale using external variable _LOCALE. By default in upstream script this locale is es-ES
+    [ -z "$_LOCALE" ] || sed -e "s/es-ES/$_LOCALE/g" -i makeicecat && echo "$_LOCALE" > custom-shipped-locales
+    rm -rf data/files-to-append/l10n/*
   fi
-  
-  cat >../mozconfig <<END
-ac_add_options --enable-application=browser
 
-ac_add_options --prefix=/usr
-ac_add_options --enable-release
+  # Thanks to cysp74 to report this bug
+  sed -e 's;find l10n -wholename '\''\*/brand.dtd'\'' | xargs;find l10n -wholename '\''\*/brand.dtd'\'' | xargs -r;g' -i makeicecat
+
+  # Produce IceCat sources
+  bash makeicecat
+  cd output/icecat-${pkgver}
+
+  # Patch to move files directly to /usr/lib/icecat. No more symlinks.
+  sed -e 's;$(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME);g' -i config/baseconfig.mk
+  sed -e 's;$(libdir)/$(MOZ_APP_NAME)-devel-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME)-devel;g' -i config/baseconfig.mk
+
+  # disable extensions, otherwise profiling freezes
+  cp "browser/app/Makefile.in" "$srcdir/Makefile.in"
+  sed -E -e '/^\t.*\/extensions\/gnu\/\*.*$/d' -i "browser/app/Makefile.in"
+  cp "browser/installer/package-manifest.in" "$srcdir/package-manifest.in"
+  sed -E -e '/^.*\/browser\/extensions\/.*$/d' -i "browser/installer/package-manifest.in"
+  cp "browser/installer/allowed-dupes.mn" "$srcdir/allowed-dupes.mn"
+  sed -E -e '/^browser\/extensions\/.*$/d' -i "browser/installer/allowed-dupes.mn"
+
+  printf '%b' "  \e[1;36m->\e[0m\033[1m Starting build...\n"
+
+  cat >../mozconfig <<END
+_add_options --enable-application=browser
+
+_add_options --prefix=/usr
+_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-rust-simd
 ac_add_options --enable-wasm-simd
@@ -178,7 +176,7 @@ export STRIP_FLAGS="--strip-debug --strip-unneeded"
 
 # Optimization
 ac_add_options --enable-optimize=-O3
-ac_add_options --enable-lto=cross,full
+ac_add_options --enable-lto=cross
 ac_add_options OPT_LEVEL="3"
 ac_add_options RUSTC_OPT_LEVEL="3"
 

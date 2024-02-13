@@ -1,7 +1,7 @@
 pkgbase = icecat
 	pkgdesc = GNU version of the Firefox browser.
 	pkgver = 115.7.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = MPL-2.0
 	makedepends = cbindgen
