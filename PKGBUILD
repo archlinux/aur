@@ -13,7 +13,9 @@
 : ${_sccache:=}
 
 pkgname=niri-git
-pkgver=v0.1.1
+pkgver() {
+  git -C ${pkgname%-git} describe --long --tags --abbrev=7 | sed 's|^v||;s|-[0-9]*-g|.|'
+}
 pkgrel=1
 pkgdesc="Scrollable-tiling Wayland compositor"
 arch=(x86_64 aarch64)
