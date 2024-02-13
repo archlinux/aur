@@ -2,14 +2,14 @@
 # Contributor: rich_o <aurua@riseup.net>
 
 pkgname=ncmpcpp-git
-pkgver=0.9.2.r19.g9f44edf0
+pkgver=0.9.2.r20.gdc46f7a4
 pkgrel=1
 epoch=2
 pkgdesc='An almost exact clone of ncmpc with some new features (git version)'
 arch=('x86_64')
 url='https://rybczak.net/ncmpcpp/'
-license=('GPL')
-depends=('curl' 'libmpdclient' 'taglib' 'ncurses' 'fftw' 'boost-libs')
+license=('GPL-2.0-or-later')
+depends=('curl' 'boost-libs' 'fftw' 'icu' 'libmpdclient' 'ncurses' 'readline' 'taglib')
 makedepends=('git' 'boost')
 provides=('ncmpcpp')
 conflicts=('ncmpcpp')
@@ -18,7 +18,7 @@ source=('git+https://github.com/arybczak/ncmpcpp.git'
         '020-ncmpcpp-taglib2-fix.patch')
 sha256sums=('SKIP'
             '1907468f83dbd733e20e5d56b633eeee58a507f0767789fd0583e55d8761d0e7'
-            '5e39dd3deab7f5d5e39f950d116719f8e682ef1ecf5ef4f872fdcc4a5bc12659')
+            '8843ade2cfbdd88309a50d8e3ab186a21d4857e02ce93acef7ae5a7178fb3def')
 
 prepare() {
     patch -d ncmpcpp -Np1 -i "${srcdir}/010-ncmpcpp-use-arch-flags.patch"
