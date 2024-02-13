@@ -1,7 +1,7 @@
 pkgbase = hybpiper
 	pkgdesc = Recovering genes from targeted sequence capture data https://doi.org/10.3732/apps.1600016
 	pkgver = 2.1.6
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/mossmatters/HybPiper
 	arch = x86_64
 	license = GPL-3.0-only
@@ -27,6 +27,6 @@ pkgbase = hybpiper
 	depends = samtools
 	depends = mafft
 	source = hybpiper-2.1.6.tar.gz::https://github.com/mossmatters/HybPiper/archive/refs/tags/v2.1.6.tar.gz
-	sha256sums = f6a8ef366d924508c953a4cedc660442694dfa41ec2180da32799be5094fe51f
+	sha256sums = ac175b2b02cd9fcc1d195a4edd68dd1e004c6d2e2bb5658f4cce9b2a4339b4c9
 
 pkgname = hybpiper
