@@ -1,6 +1,6 @@
 pkgname=jcef-jetbrains-git
 pkgdesc="A simple framework for embedding Chromium-based browsers into Java-based applications. (Used for JetBrainsRuntime)"
-pkgver=119.4.3.api1.13.r1.36c411c
+pkgver=119.4.7.api1.14.r14.1df0e28
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/JetBrains/jcef"
@@ -86,13 +86,13 @@ build() {
     rm -rf slf4j-api-2.0.0.jar slf4j.jar
 
     # thrift
-    cp ../third_party/thrift/libthrift-0.16.0.jar .
+    cp ../third_party/thrift/libthrift-0.19.0.jar .
     cp ../jb/tools/common/thrift-module-info.java module-info.java
-    $JAVA_HOME/bin/javac --patch-module org.apache.thrift=libthrift-0.16.0.jar module-info.java
-    $JAVA_HOME/bin/jar uf libthrift-0.16.0.jar module-info.class
+    $JAVA_HOME/bin/javac --patch-module org.apache.thrift=libthrift-0.19.0.jar module-info.java
+    $JAVA_HOME/bin/jar uf libthrift-0.19.0.jar module-info.class
     rm module-info.class module-info.java
-    $JAVA_HOME/bin/jmod create --class-path libthrift-0.16.0.jar org.apache.thrift.jmod
-    rm -rf libthrift-0.16.0.jar
+    $JAVA_HOME/bin/jmod create --class-path libthrift-0.19.0.jar org.apache.thrift.jmod
+    rm -rf libthrift-0.19.0.jar
 
     # jcef
     cp ../out/linux64/jcef.jar .
