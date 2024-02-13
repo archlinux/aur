@@ -1,0 +1,15 @@
+pkgbase = xdg-unused-data-git
+	pkgdesc = A simple way to identify unused applications data in user directories such as ~./config and ~/.cache.
+	pkgver = r123.f605067
+	pkgrel = 1
+	url = https://github.com/pawel-0/xdg-unused-data
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = jq
+	provides = xdg-unused-data
+	conflicts = xdg-unused-data
+	source = xdg-unused-data::git+https://github.com/pawel-0/xdg-unused-data
+	sha256sums = SKIP
+
+pkgname = xdg-unused-data-git
