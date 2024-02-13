@@ -1,0 +1,9 @@
+*.zip
+*.tar
+*.sig
+
+pkg
+src
+
+qft
+qft-nogui

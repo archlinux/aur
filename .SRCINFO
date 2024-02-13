@@ -1,0 +1,11 @@
+pkgbase = qft-bin
+	pkgdesc = Quick Peer-To-Peer UDP file transfer
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = https://github.com/TudbuT/qft
+	arch = x86_64
+	license = GPL3
+	source = https://github.com/TudbuT/qft/releases/download/v0.5.6/qft-nogui
+	sha256sums = 29a6433df801c8082cbbd7bdc9f5f41dda98f56919dcd4b4cd9cf14a65deb64f
+
+pkgname = qft-bin
