@@ -3,13 +3,13 @@
 
 pkgname='perl-mousex-types'
 pkgver='0.06'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Organize your Mouse types in libraries"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-any-moose>=0.15' 'perl-mouse>=0.77' 'perl>=5.6.2')
-makedepends=()
+makedepends=('perl-module-install')
 checkdepends=('perl-test-exception>=0')
 url='https://metacpan.org/release/MouseX-Types'
 source=("https://cpan.metacpan.org/authors/id/G/GF/GFUJI/MouseX-Types-$pkgver.tar.gz")
