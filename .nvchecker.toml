@@ -4,3 +4,4 @@ gitlab = 'cmake/cmake'
 host = 'gitlab.kitware.com'
 use_max_tag = true
 prefix = 'v'
+exclude_regex = '.*rc.*'
