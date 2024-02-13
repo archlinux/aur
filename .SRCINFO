@@ -7,6 +7,8 @@ pkgbase = usockets
 	license = Apache
 	depends = openssl
 	source = https://github.com/uNetworking/uSockets/archive/refs/tags/v0.8.5.tar.gz
-	md5sums = e07e6a53cba781455fcf3cf71e9760c3
+	source = usockets-0.8.5-Makefile.patch
+	sha256sums = c52c98b7ff2c24534c17ad97d5fea8ca0cb7ff38cc933b8d08bac6e498a2ea6b
+	sha256sums = efeac07919bc804d24b10eceaa2145e8cfa5f2e95edec9e47a94bba5a825b55b
 
 pkgname = usockets
