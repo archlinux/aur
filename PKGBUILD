@@ -11,6 +11,8 @@ license=(LGPL)
 depends=(qt6-base qt6-tools karchive-git kconfig-git kcolorscheme-git kcoreaddons-git kirigami2-git)
 makedepends=(git cmake extra-cmake-modules-git)
 source=("git+https://invent.kde.org/frameworks/$_name.git")
+conflicts=(ksvg)
+provides=(ksvg)
 sha256sums=('SKIP')
 
 pkgver() {
