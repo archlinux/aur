@@ -1,13 +1,13 @@
 # Maintainer: poly000 <1348292515@qq.com>
 pkgname=doukutsu-save-editor
 _pkgname=doukutsu-save-editor-rs
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Save Editor for Cave Story in rust with egui"
 url="https://github.com/poly000/$_pkgname"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 
-_commit='e42cf90'
+_commit='b26926f'
 source=("git+https://github.com/poly000/$_pkgname.git#commit=$_commit")
 sha256sums=('SKIP')
 
