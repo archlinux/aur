@@ -1,6 +1,6 @@
-# Maintainer: YidaozhanYa <yidaozhan_ya@outlook.com>
+# Maintainer: Kirikaze Chiyuki <me@chyk.ink>
 pkgname=moondust-configpack-a2xt
-pkgver=2022may22
+pkgver=2024feb02
 pkgrel=1
 pkgdesc="Moondust Project's game configuration pack - A Second X Thing"
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = moondust-configpack-a2xt
 	pkgdesc = Moondust Project's game configuration pack - A Second X Thing
-	pkgver = 2022may22
+	pkgver = 2024feb02
 	pkgrel = 1
 	url = http://talkhaus.raocow.com/
 	arch = any
