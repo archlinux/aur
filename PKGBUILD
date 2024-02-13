@@ -1,25 +1,28 @@
-# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Maintainer: João Figueiredo <islandc0der@chaotic.cx>
 
 pkgname=kongress-git
-pkgver=1.0_r162.gf5eceec
+pkgver=24.04.70_r452.g322779d
 pkgrel=1
 pkgdesc="Companion application for conferences"
 arch=($CARCH)
 url="https://github.com/KDE/kongress"
-license=(BSD GPL LGPL)
-depends=(hicolor-icon-theme kcalendarcore-git kdbusaddons-git ki18n-git knotifications-git)
-makedepends=(git extra-cmake-modules kconfig-git kcoreaddons-git kirigami2-git qt5-base qt5-declarative qt5-imageformats qt5-quickcontrols2 qt5-svg qt5-wayland qt5-webengine)
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(gcc-libs glibc kcalendarcore-git kconfig-git kcoreaddons-git kdbusaddons-git ki18n-git kirigami-git knotifications-git qt6-base qt6-declarative)
+makedepends=(git extra-cmake-modules-git python)
 source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  _ver="$(grep -m1 "project(${pkgname%-git} VERSION" CMakeLists.txt | cut -d '"' -f2 | tr - .)"
-  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  _major_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MAJOR' CMakeLists.txt | cut -d '"' -f2)"
+  _minor_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MINOR' CMakeLists.txt | cut -d '"' -f2)"
+  _micro_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MICRO' CMakeLists.txt | cut -d '"' -f2)"
+  echo "${_major_ver}.${_minor_ver}.${_micro_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTING=OFF
   cmake --build build
