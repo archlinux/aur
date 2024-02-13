@@ -2,13 +2,14 @@
 
 pkgname=lite-xl-git
 _pkgname=${pkgname%-git}
-pkgver=v2.1.1.r2256.f996f7a9
+pkgver=v2.1.3.r2313.2e8d59b8
 pkgrel=1
 pkgdesc='A lightweight text editor written in Lua (master branch)'
 arch=('x86_64')
 url="https://lite-xl.github.io/"
 license=('MIT')
 depends=(
+  'glibc'
   'lua'
   'sdl2'
   'freetype2'
