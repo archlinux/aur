@@ -1,12 +1,12 @@
 pkgbase = guitarix.vst-git
-	pkgdesc = A virtual versatile amplification for Jack/Linux - vst3 wrapper
-	pkgver = v0.1.r1.gacbdd19
+	pkgdesc = A versatile (guitar) amplifiier VST3 plugin (git version)
+	pkgver = v0.2.r0.g821480e
 	pkgrel = 1
 	url = https://github.com/brummer10/guitarix.vst
 	arch = x86_64
 	groups = vst3-plugins
 	groups = pro-audio
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = boost
 	makedepends = eigen
@@ -35,6 +35,10 @@ pkgbase = guitarix.vst-git
 	conflicts = guitarix.vst
 	source = guitarix.vst::git+https://github.com/brummer10/guitarix.vst
 	source = guitarix::git+https://github.com/brummer10/guitarix.git
+	source = NAM::git+https://github.com/sdatkinson/NeuralAmpModelerCore.git
+	source = eigen::git+https://gitlab.com/libeigen/eigen.git
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
