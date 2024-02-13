@@ -15,7 +15,7 @@
 		<glob pattern="*.osk"/>
 	</mime-type>
 	<mime-type type="application/x-osu-beatmap">
-		<comment>osu! difficulty</comment>
+		<comment>osu! beatmap</comment>
 		<icon name="osu-lazer"/>
 		<sub-class-of type="text/plain"/>
 		<generic-icon name="text-x-generic"/>
