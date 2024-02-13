@@ -1,7 +1,7 @@
 pkgbase = wine-stable
 	pkgdesc = A compatibility layer for running Windows programs
 	pkgver = 9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.winehq.org/
 	install = wine.install
 	arch = x86_64
@@ -104,7 +104,7 @@ pkgbase = wine-stable
 	optdepends = vulkan-icd-loader
 	optdepends = lib32-vulkan-icd-loader
 	optdepends = wine-gecko
-	optdepends = wine-mono
+	optdepends = wine-stable-mono
 	provides = wine=9.0
 	conflicts = wine
 	options = staticlibs

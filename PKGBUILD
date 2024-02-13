@@ -7,7 +7,7 @@
 pkgname=wine-stable
 _pkgver=9.0
 pkgver=${_pkgver/-/}  # Useful for wine-stable-next
-pkgrel=1
+pkgrel=2
 
 source=(https://dl.winehq.org/wine/source/9.0/wine-$_pkgver.tar.xz{,.sign}
         30-win32-aliases.conf
@@ -88,7 +88,7 @@ optdepends=(
   v4l-utils              lib32-v4l-utils
   vulkan-icd-loader      lib32-vulkan-icd-loader
   wine-gecko
-  wine-mono
+  wine-stable-mono
 )
 
 provides=(wine=$pkgver)
