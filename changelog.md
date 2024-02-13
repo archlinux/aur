@@ -1,3 +1,13 @@
+## GE-Proton8-32
+
+HOTFIX:
+
+- fix wine subcommands not working using ulwgl (winecfg, console, etc)
+
+Protonfixes:
+
+- Add video playback fixes for all Agarest games (Generations of War/Zero/2/Mariage)
+
 ## GE-Proton8-31
 
 Proton:
