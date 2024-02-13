@@ -123,10 +123,10 @@ prepare() {
   printf '%b' "  \e[1;36m->\e[0m\033[1m Starting build...\n"
 
   cat >../mozconfig <<END
-_add_options --enable-application=browser
+ac_add_options --enable-application=browser
 
-_add_options --prefix=/usr
-_add_options --enable-release
+ac_add_options --prefix=/usr
+ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-rust-simd
 ac_add_options --enable-wasm-simd
