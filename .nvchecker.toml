@@ -1,0 +1,4 @@
+[xsd]
+source = 'regex'
+url = 'https://www.codesynthesis.com/products/xsd/download.xhtml'
+regex = 'xsd-([\d.]+)\.[a-z]'
