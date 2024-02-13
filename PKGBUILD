@@ -13,7 +13,7 @@ makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git} kcalcore{,-git})
 provides=(${pkgname%-git} kcalcore{,git})
 replaces=(kcalcore-git)
-groups=(kf5-git)
+groups=(kf6-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
