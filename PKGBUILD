@@ -5,7 +5,7 @@
 _distname='Devel-PartialDump'
 pkgname="perl-${_distname@L}"
 pkgver='0.20'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Partial dumping of data structures, optimized for argument printing."
 arch=('any')
 license=('LicenseRef-GPL-1.0-or-later OR Artistic-1.0-Perl')
@@ -23,19 +23,9 @@ checkdepends=(
 )
 url="https://metacpan.org/release/$_distname"
 _author='ETHER'
-_licensefilename_SPDX_GPL1='GPL-1.0-or-later.txt'
-source=("https://search.cpan.org/CPAN/authors/id/${_author::1}/${_author::2}/$_author/$_distname-$pkgver.tar.gz"
-        "${_distname}-LICENCE-${_licensefilename_SPDX_GPL1}::https://raw.githubusercontent.com/Perl/perl5/perl-5.10.0/Copying")
-sha512sums=('1229fb82c62815eb030ddc3cdf037a877e46a1a00c6b6f6f99a562865649067757fe1e42e8242bdf8107b43197c5e47915da5fb6f502a2c90977022b47579b95'
-            'f3e5cce80bb15147bcb998320e670d2e04ae9cef0425181c4123471b781c6f56bd8b3e71fef2d6ab0f02b5fb8591d7ecb26ddc09ba3d2fb2f9ef7a538f4ac998')
+source=("https://search.cpan.org/CPAN/authors/id/${_author::1}/${_author::2}/$_author/$_distname-$pkgver.tar.gz")
+sha512sums=('1229fb82c62815eb030ddc3cdf037a877e46a1a00c6b6f6f99a562865649067757fe1e42e8242bdf8107b43197c5e47915da5fb6f502a2c90977022b47579b95')
 _distdir="$_distname-$pkgver"
-
-prepare() {
-  cd "$srcdir/$_distdir"
-
-  echo "Preparing license resources..."
-  cp --verbose "../$_distname-LICENCE-$_licensefilename_SPDX_GPL1" "LICENCE-$_licensefilename_SPDX_GPL1"
-}
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
