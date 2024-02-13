@@ -3,7 +3,7 @@
 name=thunar
 pkgname=$name-csd
 pkgver=4.18.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern, fast and easy-to-use file manager for Xfce (Patched with client side decorations)"
 conflicts=($name)
 provides=($name)
@@ -21,10 +21,10 @@ optdepends=('catfish: file searching'
             'thunar-archive-plugin: archive creation and extraction'
             'thunar-media-tags-plugin: view/edit ID3/OGG tags')
 source=(https://archive.xfce.org/src/xfce/$name/${pkgver%.*}/$name-$pkgver.tar.bz2
-        thunar-window.patch)
+        thunar.patch)
 
 sha256sums=('e8308a1f139602d8c125f594bfcebb063b7dac1fbb6e14293bab4cdb3ecf1d08'
-            '8ac3bd4e19cd7ac467722cf50153bab77f559b6e9737373f83da662453344c06')
+            '5fce943462290efe1ad09dad415423e7b8a48e9255a87ed9ba17686e40aef54a')
 
 prepare() {
   cd $name-$pkgver

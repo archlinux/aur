@@ -1,7 +1,7 @@
 pkgbase = thunar-csd
 	pkgdesc = Modern, fast and easy-to-use file manager for Xfce (Patched with client side decorations)
 	pkgver = 4.18.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.xfce.org/xfce/thunar/start
 	arch = x86_64
 	groups = xfce4
@@ -29,8 +29,8 @@ pkgbase = thunar-csd
 	provides = thunar
 	conflicts = thunar
 	source = https://archive.xfce.org/src/xfce/thunar/4.18/thunar-4.18.10.tar.bz2
-	source = thunar-window.patch
+	source = thunar.patch
 	sha256sums = e8308a1f139602d8c125f594bfcebb063b7dac1fbb6e14293bab4cdb3ecf1d08
-	sha256sums = 8ac3bd4e19cd7ac467722cf50153bab77f559b6e9737373f83da662453344c06
+	sha256sums = 5fce943462290efe1ad09dad415423e7b8a48e9255a87ed9ba17686e40aef54a
 
 pkgname = thunar-csd
