@@ -3,22 +3,22 @@ _Pkgname=clash-nyanpasu
 _disname=clash-nyanpasu
 major_version=1
 minor_version=4
-patch_version=4
+patch_version=5
 
 pkgname="${_pkgname}"-appimage
 pkgver="${major_version}.${minor_version}.${patch_version}"
 pkgrel=1
 pkgdesc="A Clash GUI based on tauri. Clash Nyanpasu! (∠・ω< )⌒☆​"
 arch=('x86_64')
-url="https://github.com/keiko233/clash-nyanpasu"
+url="https://github.com/LibNyanpasu/clash-nyanpasu"
 license=('GPL3')
 options=(!strip)
 depends=('zlib' 'hicolor-icon-theme' 'fuse2' 'clash-meta')
 conflicts=('clash-nyanpasu-git' 'clash-nyanpasu-bin')
 provides=('clash-nyanpasu')
 optdepends=('clash-rs: custom protocol network proxy, coding with rust')
-source_x86_64=("${_Pkgname}-${major_version}.${minor_version}.${patch_version}-amd64.AppImage::https://github.com/keiko233/clash-nyanpasu/releases/download/v${major_version}.${minor_version}.${patch_version}/${_Pkgname}_${major_version}.${minor_version}.${patch_version}_amd64.AppImage")
-sha256sums_x86_64=('43c03371f1394033c8db6a964545909c22d4442c177fee6462f81bfa706bafed')
+source_x86_64=("${_Pkgname}-${major_version}.${minor_version}.${patch_version}-amd64.AppImage::https://github.com/LibNyanpasu/clash-nyanpasu/releases/download/v${major_version}.${minor_version}.${patch_version}/${_Pkgname}_${major_version}.${minor_version}.${patch_version}_amd64.AppImage")
+sha256sums_x86_64=('d9c9315fe0cd641551f12f92c685fd6b002db2d9ed5cfb4a68c23d55b4e7c21d')
 
 _appimage="${_Pkgname}-${major_version}.${minor_version}.${patch_version}-amd64.AppImage"
 noextract=("${_appimage}")
