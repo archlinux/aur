@@ -1,0 +1,17 @@
+pkgbase = gvc-git
+	pkgdesc = Provides libgnome-volume-control outside Gnome environment.
+	pkgver = r3.a00aa37
+	pkgrel = 1
+	url = https://github.com/JingMatrix/gvc
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = meson
+	depends = glib2
+	depends = libpulse
+	provides = libgnome-volume-control
+	options = !debug
+	source = gvc::git+https://github.com/JingMatrix/gvc.git
+	b2sums = SKIP
+
+pkgname = gvc-git
