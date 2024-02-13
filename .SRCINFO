@@ -13,6 +13,7 @@ pkgbase = clash-nyanpasu-appimage
 	provides = clash-nyanpasu
 	conflicts = clash-nyanpasu-git
 	conflicts = clash-nyanpasu-bin
+	conflicts = clash-nyanpasu
 	noextract = clash-nyanpasu-1.4.5-amd64.AppImage
 	options = !strip
 	source_x86_64 = clash-nyanpasu-1.4.5-amd64.AppImage::https://github.com/LibNyanpasu/clash-nyanpasu/releases/download/v1.4.5/clash-nyanpasu_1.4.5_amd64.AppImage
