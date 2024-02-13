@@ -1,7 +1,7 @@
 # Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
 _extensionuuid=emoji-selector@maestroschan.fr
 pkgname=gnome-shell-extension-emoji-selector-git
-pkgver=20.r14.gfd72b6a
+pkgver=23.r9.ga011df3
 pkgrel=1
 pkgdesc="Gnome shell emoji picker Extension."
 arch=(any)
