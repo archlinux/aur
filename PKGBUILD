@@ -2,19 +2,18 @@
 # Contributor: Colean <colean@colean.cc>
 _name=ide
 pkgname=bipscript-ide
-pkgver=0.17
+pkgver=0.19
 pkgrel=1
 pkgdesc="IDE for the bipscript language"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'x86_64_v3')
 url="http://www.bipscript.org"
 license=('GPL')
 groups=('pro-audio')
 depends=('jack2' 'liblo' 'qt5-base' 'bipscript')
-makedepends=('git' 'qt5-tools' 'ruby')
+makedepends=('git' 'qt5-tools' 'ruby' 'cmake' 'boost')
 provides=("bipscript-ide")
-conflicts=("bipscript-ide")
 source=("$pkgname-v$pkgver.tar.gz::https://gitlab.domainepublic.net/bipscript/ide/-/archive/v$pkgver/ide-v$pkgver.tar.gz")
-sha256sums=('c18e3e2877aeb13abd233d5b6697dec9ce2326cb34207f5ac6de4aee732d7cae')
+sha256sums=('d309e75d8f6d0e71f49936703402b86326cc4543af444caf75b03d9d80773379')
 
 prepare() {
 	cd "$_name-v$pkgver"
