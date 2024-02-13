@@ -1,0 +1,11 @@
+#! /usr/bin/bash
+
+makepkg -f
+newest_file=$(find . -name "terraform-*.pkg.tar.zst" | sort -n | tail -n 1)
+echo $newest_file  # Prints the filename
+sudo pacman -U "$newest_file"  # Uses the filename in another command
+
+# clean up
+makepkg --check --clean build -f
+rm -f *.tar.zst
+rm -f *.zip

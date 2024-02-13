@@ -1,4 +1,7 @@
-src/
+biscuit*
+Biscuit*
 pkg/
-terraform_*.zip
-terraform-bin-*.pkg.tar.xz
+src/
+*.AppImage
+*.tar.*
+*.zip
