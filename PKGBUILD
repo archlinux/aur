@@ -1,7 +1,7 @@
-# Maintainer: YidaozhanYa <yidaozhan_ya@outlook.com>
+# Maintainer: Kirikaze Chiyuki <me@chyk.ink>
 pkgname=moondust-project-master-bin
-pkgver=20230312
-pkgrel=2
+pkgver=20240212
+pkgrel=1
 pkgdesc="Moondust Project (formerly known as PGE Project) is a free and open-source game engine and development kit for it, giving developers the ability to create platform games. (Binary package - master branch, built by CI)"
 arch=('x86_64')
 url="https://github.com/WohlSoft/Moondust-Project"
@@ -13,9 +13,9 @@ provides=('moondust-project')
 conflicts=('moondust-project-stable-bin' 'moondust-project-git')
 install="moondust-project.install"
 source=(
-"http://builds.wohlsoft.ru/ubuntu-18-04/pge_project-linux-master-64.tar.bz2"
+"https://builds.wohlsoft.ru/ubuntu-18-04/pge_project-linux-master-64.tar.bz2"
 "moondust-engine.png::https://github.com/WohlSoft/Moondust-Project/raw/master/Engine/_resources/icon/cat_256.png"
-"moondust-editor.png::https://github.com/WohlSoft/Moondust-Project/raw/master/Editor/_resources/images/cat_builder/cat_builder_256.png"
+"moondust-editor.png::https://github.com/WohlSoft/Moondust-Project/raw/master/Editor/_resources/appicon/cat_builder_256.png"
 "moondust-calibrator.png::https://github.com/WohlSoft/Moondust-Project/raw/master/PlayableCalibrator/_resources/icon/calibrator_256.png"
 "moondust-musplay.png::https://github.com/WohlSoft/Moondust-Project/raw/master/MusicPlayer/_resources/cat_musplay/cat_musplay_256x256.png"
 "moondust-maintainer.png::https://github.com/WohlSoft/Moondust-Project/raw/master/Maintainer/_resources/icon/maintainer256.png"
@@ -40,7 +40,8 @@ sha512sums=(
 )
 
 pkgver() {
-    date '+%Y%m%d'
+    cd "${srcdir}/PGE_Project/"
+    ls --time-style=+%Y%m%d -l pge_editor | awk '{print $6}'
 }
 
 package() {
