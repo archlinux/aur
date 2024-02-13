@@ -1,0 +1,16 @@
+pkgbase = eudaemon-git
+	pkgdesc = Monitor and log activity, improve awareness and empower user to improve it's habits.
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/danisztls/eudaemon
+	install = eudaemon.install
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = python
+	provides = eudaemon
+	conflicts = eudaemon
+	source = git+https://github.com/danisztls/eudaemon
+	sha512sums = SKIP
+
+pkgname = eudaemon-git

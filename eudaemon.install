@@ -1,0 +1,78 @@
+#!/bin/bash
+
+basename="eudaemon"
+mapfile -t users < <(loginctl --no-legend list-users | awk '{ print $2 }' | sed ':a;N;$!ba')
+
+_refresh_daemon() {
+  su "$1" -s /bin/sh -c XDG_RUNTIME_DIR=/run/user/$UID systemctl --user daemon-reload
+}
+
+_enable_service() {
+  su "$1" -s /bin/sh -c "XDG_RUNTIME_DIR=/run/user/\$UID systemctl --user enable $basename"
+}
+
+_start_service() {
+  su "$1" -s /bin/sh -c "XDG_RUNTIME_DIR=/run/user/\$UID systemctl --user start $basename"
+}
+
+_is_service_active() {
+  if su "$1" -s /bin/sh -c "XDG_RUNTIME_DIR=/run/user/\$UID systemctl --user is-active $basename" &>/dev/null
+  then
+    return 0
+  else
+    return 1
+  fi
+}
+
+_is_service_enabled() {
+  if su "$1" -s /bin/sh -c "XDG_RUNTIME_DIR=/run/user/\$UID systemctl --user is-enabled $basename" &>/dev/null
+  then
+    return 0
+  else
+    return 1
+  fi
+}
+
+_stop_service() {
+  su "$1" -s /bin/sh -c "XDG_RUNTIME_DIR=/run/user/\$UID systemctl --user stop $basename"
+}
+
+# INSTALL 
+# pre_install() {
+# }
+
+post_install() {
+  for user in "${users[@]}"; do
+    _refresh_daemon "$user"
+    _start_service "$user"
+    _enable_service "$user"
+  done
+}
+
+pre_upgrade() {
+  for user in "${users[@]}"; do
+    _stop_service "$user"
+  done
+}
+
+post_upgrade() {
+  for user in "${users[@]}"; do
+    _refresh_daemon "$user"
+    _start_service "$user"
+  done
+}
+
+pre_remove() {
+  for user in "${users[@]}"; do
+    if _is_service_active "$user"; then
+      _stop_service "$user"
+      _disable_service "$user"
+    fi
+  done
+}
+
+post_remove() {
+  for user in "${users[@]}"; do
+    _refresh_daemon "$user"
+  done
+}
