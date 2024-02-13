@@ -3,14 +3,14 @@
 pkgname=quimup
 _pkgepoch=2.0.0
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple Qt6 frontend to MPD"
 arch=('x86_64')
 url="https://sourceforge.net/projects/quimup/"
 license=('GPL2')
 makedepends=()
 depends=('mpd' 'qt6-base' 'taglib')
-source=("quimup-$pkgver-source.tar.gz::https://sourceforge.net/projects/quimup/files/Quimup%20$_pkgepoch/Quimup-$pkgver.source.tar.gz"
+source=("quimup-$pkgver-source.tar.gz::https://master.dl.sourceforge.net/projects/quimup/files/Quimup%20$_pkgepoch/Quimup-$pkgver.source.tar.gz"
         'format-security.patch')
 
 prepare() {
