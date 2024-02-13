@@ -1,0 +1,17 @@
+pkgbase = starsector-mod-manager-rust
+	pkgdesc = A mod manager for the game Starsector
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://atlanticaccent.github.io/starsector-mod-manager-rust/
+	arch = x86_64
+	license = MIT
+	makedepends = cargo-nightly
+	depends = webkit2gtk-4.1
+	depends = zenity
+	optdepends = starsector
+	source = starsector-mod-manager-rust-0.7.2.tar.gz::https://github.com/atlanticaccent/starsector-mod-manager-rust/archive/refs/tags/0.7.2.tar.gz
+	source = starsector_mod_manager.desktop
+	b2sums = d6e1d544fe9dc3b26282db6ee0bdbfabdf464182ce2ab95d54d61e19ed64d987aef0573ad724b8b7d8b35aa2c60416b343736d5a5c375e5a501641d3cddb1591
+	b2sums = c60a680930e64e7eec7f0c5d56ce51fac0c7c517a62c9f34771a786c89d56939e1e1429270dad9342c5af73d1932d5c76bd17eb29efc927fe9ebe5aa43917410
+
+pkgname = starsector-mod-manager-rust

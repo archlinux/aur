@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=starsector_mod_manager
+GenericName=starsector_mod_manager
+Comment=Mod manager for the game Starsector
+Exec=/usr/bin/starsector_mod_manager
+Terminal=false
+StartupNotify=false
+Categories=Game;
