@@ -1,0 +1,14 @@
+pkgbase = cppflow
+	pkgdesc = Run TensorFlow models in C++ without installation and without Bazel
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/serizba/cppflow
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = tensorflow
+	provides = cppflow
+	source = https://github.com/serizba/cppflow/archive/refs/tags/v2.0.0.tar.gz
+	md5sums = 3d29ff93789657bd1e8d49e5ea1dc27c
+
+pkgname = cppflow
