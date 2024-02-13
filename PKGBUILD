@@ -7,7 +7,7 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-cairo-bootstrap
 pkgver=1.18.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="2D graphics library with support for multiple output devices (android bootstrap)"
 depends=("android-${_android_arch}-pixman"
@@ -37,8 +37,6 @@ prepare() {
 build() {
     cd "${srcdir}/cairo-${pkgver}"
     source android-env ${_android_arch}
-
-    export C_INCLUDE_PATH="${ANDROID_PREFIX_INCLUDE}/freetype2:${ANDROID_PREFIX_INCLUDE}/pixman-1:${ANDROID_PREFIX_INCLUDE}/libpng:${ANDROID_PREFIX_INCLUDE}/glib-2.0:${ANDROID_PREFIX_LIB}/glib-2.0/include:${ANDROID_PREFIX_INCLUDE}"
 
     mkdir -p build
     cd build
