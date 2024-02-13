@@ -1,5 +1,5 @@
 pkgname=mingw-w64-kokkos
-pkgver=4.2.00
+pkgver=4.2.01
 pkgrel=1
 pkgdesc="C++ performance portability programming ecosystem (mingw-w64)"
 license=('Apache')
@@ -9,7 +9,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 source=(${url}/archive/${pkgver}.tar.gz)
-sha512sums=('01a27163c34ce09b87ac612e94c09909174bab674051041a0056ddc4587a832b218a0dbb093becb85d28cf6b21ba1987ef86fd8b96692df16bed07934b46d1af')
+sha512sums=('d5696e35f8e2d2c6e7b1c9d4bfe9a41faa0699f5c1e04f8ceffb9272f99a60dc8d7eed5ed7228ab197f15a2c21d00713ed3a26a1c437706ec02f846457e286cb')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
