@@ -1,7 +1,7 @@
 pkgbase = weblate-wlc
 	pkgdesc = Weblate commandline client
 	pkgver = 1.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://weblate.org
 	install = weblate-wlc.install
 	arch = any
