@@ -448,7 +448,7 @@
  typedef  int32_t tlen_t;  // was int16_t, but this results in smaller code and memory use
  typedef  int32_t tlen_t_; // specifically for use in the line_t structure
  
-@@ -351,43 +355,52 @@
+@@ -351,46 +355,55 @@
  #define RS_None                 0
  
  // GET_BGATTR depends on RS_fgShift > RS_bgShift
@@ -522,7 +522,11 @@
 +#define RS_attrMask             ((rend_t) (RS_baseattrMask | RS_fontMask))
  
  #define DEFAULT_RSTYLE  (RS_None | (Color_fg    << RS_fgShift) | (Color_bg     << RS_bgShift))
- #define OVERLAY_RSTYLE  (RS_None | (Color_Black << RS_fgShift) | (Color_Yellow << RS_bgShift))
+-#define OVERLAY_RSTYLE  (RS_None | (Color_Black << RS_fgShift) | (Color_Yellow << RS_bgShift))
++#define OVERLAY_RSTYLE  (RS_None | (Color_White << RS_fgShift) | (Color_Blue << RS_bgShift))
+ 
+ enum {
+   C0_NUL = 0x00,
 @@ -538,7 +551,9 @@
  #endif
  };
