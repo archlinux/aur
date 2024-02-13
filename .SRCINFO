@@ -1,6 +1,6 @@
 pkgbase = ginkgo-hpc-git
 	pkgdesc = Numerical linear algebra software package
-	pkgver = r5861.ca2a213368
+	pkgver = r7339.6176550f4f
 	pkgrel = 1
 	url = https://ginkgo-project.github.io/
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = ginkgo-hpc-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = nlohmann-json
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = texlive-bin

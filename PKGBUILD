@@ -2,7 +2,7 @@
 
 pkgname=ginkgo-hpc-git
 _pkgname=ginkgo
-pkgver=r5861.ca2a213368
+pkgver=r7339.6176550f4f
 pkgrel=1
 pkgdesc="Numerical linear algebra software package"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('BSD')
 # TODO system 'rapidjson' does not work due to some C++ issues
 # (see the 'declared protected here' error in https://github.com/Tencent/rapidjson/issues/1338#issuecomment-449849215 )
 depends=('cuda' 'gflags' 'hwloc' 'numactl' 'openmpi')
-makedepends=('git' 'cmake' 'ninja' 'doxygen' 'graphviz' 'texlive-bin' 'texlive-latexextra' 'gtest')
+makedepends=('git' 'cmake' 'ninja' 'nlohmann-json' 'doxygen' 'graphviz' 'texlive-bin' 'texlive-latexextra' 'gtest')
 checkdepends=('openssh')  # openssh is needed for mpirun to run some tests
 source=("git+https://github.com/ginkgo-project/$_pkgname.git")
 md5sums=('SKIP')
@@ -26,12 +26,13 @@ pkgver() {
 
 build() {
   cmake -B build -S "$_pkgname" -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DGINKGO_CUDA_ARCHITECTURES="All" \
     -DGINKGO_BUILD_REFERENCE=ON \
     -DGINKGO_BUILD_OMP=ON \
     -DGINKGO_BUILD_MPI=ON \
+    -DGINKGO_HAVE_GPU_AWARE_MPI=ON \
     -DGINKGO_BUILD_CUDA=ON \
     -DGINKGO_BUILD_BENCHMARKS=ON \
     -DGINKGO_BUILD_EXAMPLES=ON \
