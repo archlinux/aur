@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-cairo-bootstrap
 	pkgdesc = 2D graphics library with support for multiple output devices (android bootstrap)
 	pkgver = 1.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cairographics.org/
 	arch = any
 	license = LGPL
