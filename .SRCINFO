@@ -1,21 +1,24 @@
 pkgbase = zellij-git
-	pkgdesc = A terminal workspace with batteries included
-	pkgver = r2207.17205793
+	pkgdesc = A terminal multiplexer
+	pkgver = 0.39.2.r41.gb677ffe
 	pkgrel = 1
-	url = https://www.github.com/zellij-org/zellij
-	arch = i686
+	url = https://zellij.dev
 	arch = x86_64
+	arch = i686
 	arch = armv6h
 	arch = armv7h
 	license = MIT
-	makedepends = rustup
 	makedepends = cargo
 	makedepends = git
-	makedepends = binaryen
 	makedepends = mandown
-	provides = zellij
+	makedepends = protobuf
+	depends = curl
+	depends = libcurl.so
+	depends = gcc-libs
+	depends = glibc
+	provides = zellij=0.39.2.r41.gb677ffe
 	conflicts = zellij
-	source = git+https://github.com/zellij-org/zellij
+	source = git+https://www.github.com/zellij-org/zellij.git
 	sha256sums = SKIP
 
 pkgname = zellij-git
