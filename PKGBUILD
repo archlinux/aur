@@ -2,8 +2,8 @@
 
 pkgname=python-outlines
 _pkgname=${pkgname#python-}
-pkgver=0.0.28
-_commit=9c74d7c82ace6df8a24df973ee471371ee79705b
+pkgver=0.0.29
+_commit=29bd1fe0bb1ebb66dffcca1a60900d4135684c5b
 pkgrel=1
 pkgdesc="Guided text generation"
 arch=(any)
@@ -49,7 +49,6 @@ optdepends=(
   'uvicorn: deploy as LLM service'
   'python-llama-cpp: llama.cpp backend'
 )
-
 source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -77,8 +76,7 @@ check() {
   export PYTHONPATH="$PWD/tmp_install/$site_packages"
   # Ignored test requires python-llama-cpp which I'm currently unable to
   # install.
-  pytest \
-    --ignore tests/models/test_llama_cpp.py
+  pytest --ignore tests/models/test_llama_cpp.py
 }
 
 package() {
