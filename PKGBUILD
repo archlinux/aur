@@ -1,5 +1,5 @@
 pkgname=waylyrics
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="the furry way to show desktop lyrics"
 arch=("x86_64")
@@ -14,18 +14,26 @@ makedepends=(
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/waylyrics/waylyrics/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('032b627a14e5111b8feda2382b2a71c487a639caabb390b2cff6843da60a8c32')
+sha256sums=('b3f0c92f38f836f82eb1291047884eb1d5318ee1e4ce86271ed447e0593b83df')
 options=("!lto")
 
+prepare() {
+    cd "$srcdir/$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 build() {
     cd "$srcdir/$pkgname-$pkgver"
     export WAYLYRICS_THEME_PRESETS_DIR="/usr/share/$pkgname/themes"
-    cargo build --release --locked --target-dir target --all-targets
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --release --frozen --all-targets --all-features
 }
 check() {
     cd "$srcdir/$pkgname-$pkgver"
     export WAYLYRICS_THEME_PRESETS_DIR="/usr/share/$pkgname/themes"
-    cargo test --release --locked
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --release --frozen --all-features
 }
 package() {
     cd "$srcdir/$pkgname-$pkgver"
