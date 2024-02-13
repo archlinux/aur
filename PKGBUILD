@@ -1,12 +1,12 @@
-# Maintainer: YidaozhanYa <yidaozhan_ya@outlook.com>
+# Maintainer: Kirikaze Chiyuki <me@chyk.ink>
 pkgname=moondust-project-git
-pkgver=r1151.g1a881ab9b
-pkgrel=3
+pkgver=r1661.gdcb2ca03f
+pkgrel=1
 pkgdesc="Moondust Project (formerly known as PGE Project) is a free and open-source game engine and development kit for it, giving developers the ability to create platform games. (Build from source)"
 arch=('x86_64')
 url="https://github.com/WohlSoft/Moondust-Project"
 license=('GPLv3')
-depends=('ffmpeg' 'sox' 'libtiff' 'desktop-file-utils' 'qt5-base' 'libjpeg-turbo' 'libpng' 'mesa' 'alsa-lib' 'dbus' 'mesa-utils' 'libxrandr' 'libxss' 'libxt' 'libxinerama' 'sndio' 'libxkbcommon' 'libxkbcommon-x11' 'libxcursor' 'libx11' 'libpulse' 'wayland' 'systemd-libs' 'libxv' 'libxxf86vm' 'sdl2' 'freetype2' 'zlib' 'sqlite' 'moondust-configpack')
+depends=('ffmpeg' 'sox' 'libtiff' 'desktop-file-utils' 'qt5-base' 'qt5-tools' 'qt5-declarative' 'qt5-imageformats' 'qt5-wayland' 'libjpeg-turbo' 'libpng' 'mesa' 'alsa-lib' 'dbus' 'mesa-utils' 'libxrandr' 'libxss' 'libxt' 'libxinerama' 'sndio' 'libxkbcommon' 'libxkbcommon-x11' 'libxcursor' 'libx11' 'libpulse' 'wayland' 'systemd-libs' 'libxv' 'libxxf86vm' 'sdl2' 'freetype2' 'zlib' 'sqlite' 'moondust-configpack')
 makedepends=('git' 'bash' 'ccache' 'cmake' 'ninja')
 optdepends=()
 provides=('moondust-project')
@@ -15,7 +15,7 @@ install="moondust-project.install"
 source=(
 "git+$url.git#branch=master"
 "moondust-engine.png::https://github.com/WohlSoft/Moondust-Project/raw/master/Engine/_resources/icon/cat_256.png"
-"moondust-editor.png::https://github.com/WohlSoft/Moondust-Project/raw/master/Editor/_resources/images/cat_builder/cat_builder_256.png"
+"moondust-editor.png::https://github.com/WohlSoft/Moondust-Project/raw/master/Editor/_resources/appicon/cat_builder_256.png"
 "moondust-calibrator.png::https://github.com/WohlSoft/Moondust-Project/raw/master/PlayableCalibrator/_resources/icon/calibrator_256.png"
 "moondust-musplay.png::https://github.com/WohlSoft/Moondust-Project/raw/master/MusicPlayer/_resources/cat_musplay/cat_musplay_256x256.png"
 "moondust-maintainer.png::https://github.com/WohlSoft/Moondust-Project/raw/master/Maintainer/_resources/icon/maintainer256.png"
@@ -65,36 +65,13 @@ package() {
     mkdir -p "${pkgdir}/opt/moondust"
     cp -r "${PGE_BUILD}/"*"" "${pkgdir}/opt/moondust"
     cp -r "${PGE_LIB}/libSDL2_mixer_ext.so"*"" "${pkgdir}/opt/moondust"
-    chmod 0755 "${pkgdir}/opt/moondust/pge_editor"
-    chmod 0755 "${pkgdir}/opt/moondust/pge_engine"
-    chmod 0755 "${pkgdir}/opt/moondust/pge_musplay"
-    chmod 0755 "${pkgdir}/opt/moondust/pge_calibrator"
-    chmod 0755 "${pkgdir}/opt/moondust/GIFs2PNG"
-    chmod 0755 "${pkgdir}/opt/moondust/PNG2GIFs"
-    chmod 0755 "${pkgdir}/opt/moondust/LazyFixTool"
-    chmod 0755 "${pkgdir}/opt/moondust/PaletteFilter"
-    chmod 0755 "${pkgdir}/opt/moondust/pge_maintainer"
 
     mkdir -p "${pkgdir}/usr/bin"
-    printf "#!/bin/bash\ncd /opt/moondust; /opt/moondust/pge_editor" > "${pkgdir}/usr/bin/pge_editor"
-    printf "#!/bin/bash\ncd /opt/moondust; /opt/moondust/pge_engine" > "${pkgdir}/usr/bin/pge_engine"
-    printf "#!/bin/bash\ncd /opt/moondust; /opt/moondust/pge_musplay" > "${pkgdir}/usr/bin/pge_musplay"
-    printf "#!/bin/bash\ncd /opt/moondust; /opt/moondust/pge_calibrator" > "${pkgdir}/usr/bin/pge_calibrator"
-    printf "#!/bin/bash\ncd /opt/moondust; /opt/moondust/GIFs2PNG" > "${pkgdir}/usr/bin/GIFs2PNG"
-    printf "#!/bin/bash\ncd /opt/moondust; /opt/moondust/PNG2GIFs" > "${pkgdir}/usr/bin/PNG2GIFs"
-    printf "#!/bin/bash\ncd /opt/moondust; /opt/moondust/LazyFixTool" > "${pkgdir}/usr/bin/LazyFixTool"
-    printf "#!/bin/bash\ncd /opt/moondust; /opt/moondust/PaletteFilter" > "${pkgdir}/usr/bin/PaletteFilter"
-    printf "#!/bin/bash\ncd /opt/moondust; /opt/moondust/pge_maintainer" > "${pkgdir}/usr/bin/pge_maintainer"
-    chmod 0755 "${pkgdir}/usr/bin/pge_editor"
-    chmod 0755 "${pkgdir}/usr/bin/pge_engine"
-    chmod 0755 "${pkgdir}/usr/bin/pge_musplay"
-    chmod 0755 "${pkgdir}/usr/bin/pge_calibrator"
-    chmod 0755 "${pkgdir}/usr/bin/GIFs2PNG"
-    chmod 0755 "${pkgdir}/usr/bin/PNG2GIFs"
-    chmod 0755 "${pkgdir}/usr/bin/LazyFixTool"
-    chmod 0755 "${pkgdir}/usr/bin/PaletteFilter"
-    chmod 0755 "${pkgdir}/usr/bin/pge_maintainer"
-
+    for executable in pge_editor pge_engine pge_musplay pge_calibrator GIFs2PNG PNG2GIFs LazyFixTool PaletteFilter pge_maintainer; do
+        chmod 0755 "${pkgdir}/opt/moondust/${executable}"
+        printf "#!/bin/bash\ncd /opt/moondust; exec /opt/moondust/${executable}" > "${pkgdir}/usr/bin/${executable}"
+        chmod 0755 "${pkgdir}/usr/bin/${executable}"
+    done
 
     mkdir -p "${pkgdir}/usr/share/licenses"
     cp -r "${pkgdir}/opt/moondust/licenses" "${pkgdir}/usr/share/licenses/moondust"
@@ -109,7 +86,7 @@ package() {
 
     mv "${pkgdir}/usr/share/doc/moondust/GPLv3.md" "${pkgdir}/usr/share/licenses/moondust/GPLv3.md"
 
-    #rm "${pkgdir}/opt/moondust/"*".ini"
+    # rm "${pkgdir}/opt/moondust/"*".ini"
 
     install -Dm0644 "${srcdir}/moondust-editor.png" "${pkgdir}/usr/share/pixmaps/moondust-editor.png"
     install -Dm0644 "${srcdir}/moondust-engine.png" "${pkgdir}/usr/share/pixmaps/moondust-engine.png"
