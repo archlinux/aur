@@ -6,7 +6,7 @@
 
 pkgname=avr-libc-atmega328pb
 pkgver=1.5.362
-pkgrel=2
+pkgrel=3
 epoch=0
 _avrlibcver=2.0.0
 pkgdesc="The C runtime library for the AVR family of microcontrollers with Atmega328pb support"
@@ -14,7 +14,7 @@ arch=('any')
 url="http://packs.download.atmel.com"
 license=('Apache')
 groups=()
-depends=()
+depends=(avr-gcc)
 makedepends=()
 checkdepends=()
 optdepends=()
