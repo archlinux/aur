@@ -1,15 +1,15 @@
 # Maintainer: Xavier R.M. (sapphirus at azorium dot net)
 
 pkgname=('pacwrap' 'pacwrap-dist')
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
-pkgdesc="Facilitates the creation, management, and execution of Arch-baesd unprivileged bubblewrap containers."
+pkgdesc="Facilitates the creation, management, and execution of unprivileged Arch-based bubblewrap containers."
 arch=('x86_64')
 url="https://pacwrap.sapphirus.org/"
 license=('GPLv3-only')
 makedepends=('cargo' 'git' 'fakeroot' 'pacman' 'zstd' 'busybox' 'fakechroot')
 source=("${pkgname}-${pkgver}.tar.zst::https://github.com/pacwrap/pacwrap/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.zst")
-sha512sums=('b79b118be628c506f5d79d747e89172d839847b5610dd62a913deb586b591abe5d58f20c065ccc4a975627637f667b4e35ff63a83857e9226f01156684db9ccb')
+sha512sums=('936e66bb38ab5eab79c6678071ef472ba8135937c5a223271165934b19803410f7876991c428bd7a4a32b77f666380edc37f1d703b1961c5028ef270154d8169')
 options=('!lto')
 
 prepare() {
@@ -20,6 +20,7 @@ prepare() {
 
 build() {
   	cd "${srcdir}"
+	PACWRAP_SCHEMA_BUILT=1 \
 	cargo build --release --frozen
 	./dist/tools/runtime.sh release
 	./target/release/pacwrap --help=all --format=man > ./pacwrap.1
