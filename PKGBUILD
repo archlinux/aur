@@ -1,15 +1,14 @@
 # Maintainer: Gabriele Musco <gabmus@disroot.org>
 
 pkgname=envision-xr-git
-pkgver=r397.7a55c433
-pkgrel=1.2
+pkgver=r398.35b0ab9
+pkgrel=1
 pkgdesc='GUI for Monado'
 arch=(x86_64 aarch64)
 url='https://gitlab.com/gabmus/envision'
 license=(GPL)
 depends=(
     gtk4
-    gtksourceview5
     libadwaita
     openxr
     libgl
@@ -30,11 +29,14 @@ makedepends=(
     meson
     rust
 )
-options=(!lto)
+optdepends=(
+    'libudev0-shim: steamvr_lh lighthouse driver support'
+)
 provides=(envision)
 conflicts=(envision)
 source=("git+${url}.git")
 b2sums=('SKIP')
+options=(!lto)
 
 pkgver() {
     cd envision
