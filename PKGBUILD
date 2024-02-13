@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ccrepe
-_pkgver=1.36.0
+_pkgver=1.38.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="ccrepe_and_nc.score"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -16,11 +16,12 @@ optdepends=(
   r-biocgenerics
   r-biocstyle
   r-knitr
+  r-runit
   r-testthat
 )
-source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e7eede47c35843ca92b83c8069a1d606')
-b2sums=('ae6785751e7397118f5ae9fafbf32870ccfcc9495a6f7219e8a0c7e0a63df43dadd3b2aa9bf8989be8d2fe790f23ba02de6e3f9b2148e254236a3a326a48cb2f')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('151d956c2fbdaaf64fccbea7f4905a2d')
+b2sums=('21fca62d04c74957d32475fa0a66a80a3622e82ac5769de875c18a4c6ebdad879de3d12e6a28b7d2f111e173621364a34bf15570a71ffbf1abaa4081f372c16f')
 
 build() {
   mkdir build
