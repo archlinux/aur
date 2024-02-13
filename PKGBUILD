@@ -2,8 +2,8 @@
 
 pkgname=python-outlines
 _pkgname=${pkgname#python-}
-pkgver=0.0.29
-_commit=29bd1fe0bb1ebb66dffcca1a60900d4135684c5b
+pkgver=0.0.30
+_commit=a33692e070284121934173032c0cfcad5d1a3781
 pkgrel=1
 pkgdesc="Guided text generation"
 arch=(any)
@@ -51,6 +51,7 @@ optdepends=(
 )
 source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
+validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194') # GitHub <noreply@github.com>
 
 _archive="$_pkgname"
 
