@@ -3,8 +3,8 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=scx-scheds
-pkgver=0.1.6
-pkgrel=3
+pkgver=0.1.7
+pkgrel=1
 pkgdesc='Sched_ext schedulers'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -13,10 +13,8 @@ depends=('libbpf' 'bpf' 'libelf' 'zlib')
 makedepends=('python' 'meson' 'clang' 'llvm-libs' 'cargo' 'rust')
 backup=('etc/default/scx')
 options=(!lto)
-source=(https://github.com/sched-ext/scx/archive/refs/tags/v${pkgver}.tar.gz
-       0001-scx-add-one-service-for-all-schedulers-and-config-fi.patch)
-sha512sums=('84dfc711ba9d51cd26c104caca1dcee3ce0be790be5b3a294ed47f4ef5fb20c58524b793d45b0970d61befa33adf8c8f3ca2b2f726d2ef335c80c11eee813387'
-            'a2bc7cd7d736319b6a559f9dd04db4f333f03cabb26bb25a3a13ee0ca8d4cf8160c21dba2a9950f9fcd800dcfcad73e71644eab31b8323a283af887eaaae1b9f')
+source=(https://github.com/sched-ext/scx/archive/refs/tags/v${pkgver}.tar.gz)
+sha512sums=('a1c0f5e279f0c119ac310874fc82ef9247dcb06419fbc6327e8f70d809059924c28637c35d4c2c5bd478fd116f5c8af5c65994fddc95f941b31d0b3929385869')
 
 prepare() {
  cd scx-${pkgver}
