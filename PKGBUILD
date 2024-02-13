@@ -2,14 +2,14 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spatialHeatmap
-_pkgver=2.8.3
+_pkgver=2.8.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Creating spatial heatmaps from R and Shiny"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(Artistic2.0)
+license=('Artistic-2.0')
 depends=(
   r-data.table
   r-dplyr
@@ -97,8 +97,8 @@ optdepends=(
   r-yaml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6de56848314c227f0c08215010dc9681')
-b2sums=('7e82a971ada6fff4b734fcf3a9e9a3b4039051f413274729c0a0313fa139df40bb3bbd8978b7fc26cd18583411604482be308e80c2c2aebdd85640b8c64e5d97')
+md5sums=('70521209d8c691ef6dac895936ee3227')
+b2sums=('90bbaefbe4ec0f1dcc70319b812ca025d07a4263097844eb9ba75623397da72d1574fbff519c1623ca7a23031d0ec1d190a81bf7f934e752977e8238d0f90774')
 
 build() {
   mkdir build
