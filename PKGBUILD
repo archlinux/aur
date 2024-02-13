@@ -3,33 +3,33 @@
 pkgname="superset"
 _pkgname="apache-superset"
 pkgver=3.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A modern, enterprise-ready business intelligence web application"
 url="https://superset.apache.org/"
 license=("Apache-2.0")
 arch=("any")
-options=("!strip")
+provides=("superset")
+conflicts=("superset-venv")
 makedepends=("python-build"
              "python-installer"
              "python-wheel"
              "python-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
-        "superset_config.py::https://raw.githubusercontent.com/apache/$pkgname/master/$pkgname/config.py"
-        "$pkgname.env"
-        "$pkgname.sysusers"
-        "$pkgname.tmpfiles"
-        "$pkgname.service"
-        "$pkgname.socket")
+        "superset.env"
+        "superset.conf"
+        "superset.sysusers"
+        "superset.tmpfiles"
+        "superset.service")
 b2sums=('436e72d5940e9272a98d14e225709fadbd9a44e1c06ffaf8b315ba15d9a5273182c7dee665ecc5b84d66adf710e8a1aa5f8248a78c48e49dd3ec6c85c8fd93f1'
-        'e80f52a1ac56134c0778e1e3910a441ef25e63405c0c80dcc0432e0802888ac350d232d3d8c75f3530fdee52110f610a3cbb55431acc7cb50ad8ae4ef6812269'
-        '337bc95eefa8df30878079ee72d8db576886389e14542f573e7a794d0286e02309a310b17aa5bd8f666e41120bd244f5d63aade68d4412f9b6ee3e6443883e13'
+        '415e3b03382f043685f3080b5adde24cc55cd56da3b767e232673029afb500ec8f23ed7b9b48420cc757e73edfa6c07de00cbd2c9ecafa047645e2dbae017368'
+        '5d99b11cd9ae415d5da4b828a3d1b29686f349cc7d3739f1f7aecef26dab82fb214761733e8f4bc88c1386f75457116ae71c3bf9d722b4e028b0b3eff0a50048'
         '85a1d4232a1901d00becf06ef5cbf139477209b93f3738add436f4243aa58d1b16a99dd6342c9f45f4b4efd2e10db337525d183f7f27c708420df406f31e6e09'
-        '8dbdfb25b18ba216859da758d24a537d07733e4710af5983a26fc38964f56b880a5201b6ea17ffc2c1b3befe4e40244c7bdbbae2b4e94eb1bc110256ac059db3'
-        '979cb488b91c1b9d7dfbb6583096ccf01137dcba58399c4c1d2cc407038b70a76629d2c0d79612caaa29e89f2bb254f4800079bb8d9de69376603e5356e734c9'
-        '8657f36d073ddfa3001a7be35569781975f3ba46b68d299cf67ab7dd258fad4aaa796d6a7dab78d85a77d31049b9a581053027300baefaf126236e5714aed175')
-backup=("etc/$pkgname/env"
-        "etc/$pkgname/superset_config.py")
-install="$pkgname.install"
+        '6580456589b3176aafa30a805fb63afc04401d1fb7e9c2ec9ee9f6b087c69ea54d4f854a5142783ea6a2566a4fe49f1222217071eed0fd2b04b370473d67748a'
+        '6bb93ecf4cb1581c32c92f9140edab86728bc58ce529549c24ae39092e32c582895da09a0c01d6e4ad91ccd198712c183662f45504c7fe915ab89f7d1964ecd6')
+backup=("etc/superset/env"
+        "etc/superset/superset_config.py")
+options=("!strip")
+install="superset.install"
 
 build(){
  cd "$_pkgname-$pkgver"
@@ -39,14 +39,13 @@ build(){
 package(){
  cd "$_pkgname-$pkgver"
  python -m installer --destdir="$pkgdir" dist/*.whl
- install -d -m 750 "$pkgdir/etc/$pkgname"
- install -d -m 750 "$pkgdir/var/lib/$pkgname" 
- install -D -m 640 "$srcdir/$pkgname.env"       "$pkgdir/etc/$pkgname/env"
- install -D -m 640 "$srcdir/superset_config.py" "$pkgdir/etc/$pkgname/superset_config.py"
- install -D -m 644 "$srcdir/$pkgname.sysusers"  "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
- install -D -m 644 "$srcdir/$pkgname.tmpfiles"  "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
- install -D -m 644 "$srcdir/$pkgname.service"   "$pkgdir/usr/lib/systemd/system/$pkgname.service"
- install -D -m 644 "$srcdir/$pkgname.socket"    "$pkgdir/usr/lib/systemd/system/$pkgname.socket"
+ install -d -m 750 "$pkgdir/etc/superset"
+ install -d -m 750 "$pkgdir/var/lib/superset" 
+ install -D -m 640 "$srcdir/superset.env"       "$pkgdir/etc/superset/env"
+ install -D -m 640 "$srcdir/superset.conf"       "$pkgdir/etc/superset/superset_config.py"
+ install -D -m 644 "$srcdir/superset.sysusers"  "$pkgdir/usr/lib/sysusers.d/superset.conf"
+ install -D -m 644 "$srcdir/superset.tmpfiles"  "$pkgdir/usr/lib/tmpfiles.d/superset.conf"
+ install -D -m 644 "$srcdir/superset.service"   "$pkgdir/usr/lib/systemd/system/superset.service"
 }
 
 # automatic dependencycheck:
@@ -105,6 +104,7 @@ depends=(
 "python-flask-wtf"
 "python-func_timeout"
 "python-geopy"
+"python-gevent" # manual add
 "gunicorn" # manual fix
 "python-hashids"
 "python-holidays"
@@ -303,5 +303,4 @@ optdepends=(
 
 # doris
 #"python-pydoris: for doris" # MISSING
-
 )
