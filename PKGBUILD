@@ -7,7 +7,7 @@ pkgdesc="Save Editor for Cave Story in rust with egui"
 url="https://github.com/poly000/$_pkgname"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 
-_commit='b26926f'
+_commit='35ec388'
 source=("git+https://github.com/poly000/$_pkgname.git#commit=$_commit")
 sha256sums=('SKIP')
 
