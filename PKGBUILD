@@ -4,7 +4,7 @@
 
 pkgname=calibre-web
 pkgver=0.6.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Web app for browsing, reading and downloading eBooks stored in a Calibre database"
 arch=('any')
 url="https://github.com/janeczku/calibre-web"
@@ -14,6 +14,7 @@ depends=(
   'python-advocate'
   'python-apscheduler'
   'python-babel'
+  'python-chardet'
   'python-cryptography'
   'python-flask'
   'python-flask-babel'

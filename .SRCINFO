@@ -1,7 +1,7 @@
 pkgbase = calibre-web
 	pkgdesc = Web app for browsing, reading and downloading eBooks stored in a Calibre database
 	pkgver = 0.6.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janeczku/calibre-web
 	arch = any
 	license = GPL3
@@ -9,6 +9,7 @@ pkgbase = calibre-web
 	depends = python-advocate
 	depends = python-apscheduler
 	depends = python-babel
+	depends = python-chardet
 	depends = python-cryptography
 	depends = python-flask
 	depends = python-flask-babel
