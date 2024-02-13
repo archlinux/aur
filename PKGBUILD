@@ -2,7 +2,7 @@
 
 pkgname=mod-desktop-bin
 provides=(${pkgname//-bin/""})
-pkgver=0.0.10
+pkgver=0.0.11
 pkgrel=1
 pkgdesc="MOD Desktop Application"
 arch=('x86_64')
