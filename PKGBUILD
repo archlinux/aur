@@ -12,7 +12,6 @@ license=(LGPL-2.0-or-later)
 depends=()
 makedepends=(extra-cmake-modules-git
              qt6-base)
-groups=(plasma)
 source=(git+https://invent.kde.org/plasma/ocean-sound-theme.git)
 sha256sums=('SKIP')
 

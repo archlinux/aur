@@ -4,7 +4,6 @@ pkgbase = ocean-sound-theme-git
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = any
-	groups = plasma
 	license = LGPL-2.0-or-later
 	makedepends = extra-cmake-modules-git
 	makedepends = qt6-base
