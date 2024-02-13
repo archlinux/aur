@@ -3,14 +3,13 @@
 _pkgname=RCSL
 _pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
-pkgrel=1
-pkgdesc='Rank Constrained Similarity Learning for single cell RNA sequencing data'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Rank Constrained Similarity Learning for single cell RNA sequencing data"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-ggplot2
   r-igraph
   r-nbclust
@@ -22,18 +21,18 @@ depends=(
 optdepends=(
   r-knitr
   r-mclust
-  r-rcppannoy
   r-rmarkdown
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('162605ec54ceafb4fcc2617cb010672034c4514dd42ecb047a3841d356822b91')
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('014987c88b4b2941c8badfc38c37db2c')
+b2sums=('0b445b6f5d9eb345fb443dda312c3b70c825098e2af32bbc34fde98f11fbf9444dead674acebdd98d538401a1fa47f50c013a767f8c637d35ef84f7abc4287ac')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

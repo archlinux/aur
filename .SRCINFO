@@ -1,11 +1,10 @@
 pkgbase = r-rcsl
 	pkgdesc = Rank Constrained Similarity Learning for single cell RNA sequencing data
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/RCSL
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-3.0-only
 	depends = r-ggplot2
 	depends = r-igraph
 	depends = r-nbclust
@@ -15,9 +14,9 @@ pkgbase = r-rcsl
 	depends = r-umap
 	optdepends = r-knitr
 	optdepends = r-mclust
-	optdepends = r-rcppannoy
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RCSL_1.8.0.tar.gz
-	sha256sums = 162605ec54ceafb4fcc2617cb010672034c4514dd42ecb047a3841d356822b91
+	source = https://bioconductor.org/packages/3.17/bioc/src/contrib/RCSL_1.8.0.tar.gz
+	md5sums = 014987c88b4b2941c8badfc38c37db2c
+	b2sums = 0b445b6f5d9eb345fb443dda312c3b70c825098e2af32bbc34fde98f11fbf9444dead674acebdd98d538401a1fa47f50c013a767f8c637d35ef84f7abc4287ac
 
 pkgname = r-rcsl
