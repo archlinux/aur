@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=plasma-framework-git
-pkgver=6.0.80_r17260.g149e059da
+pkgver=r17260.g149e059da
 pkgrel=1
 pkgdesc='Plasma library and runtime components'
 arch=(x86_64)
@@ -50,8 +50,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  _ver="$(grep -m1 'set(PROJECT_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
-  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  echo "r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {

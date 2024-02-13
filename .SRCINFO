@@ -1,6 +1,6 @@
 pkgbase = plasma-framework-git
 	pkgdesc = Plasma library and runtime components
-	pkgver = 6.0.80_r17260.g149e059da
+	pkgver = r17260.g149e059da
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
