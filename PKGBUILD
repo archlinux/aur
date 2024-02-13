@@ -1,14 +1,14 @@
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=pyprland
-pkgver=1.10.2
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="Easy scratchpads, smart monitor placement and more Hyprland tweaks"
+pkgdesc="Customize your Hyprland with scratchpads, menus, easy monitor layout and other extensions"
 arch=(any)
 url="https://github.com/fdev31/pyprland"
 license=('MIT')
 groups=()
-depends=('python')
+depends=('python' 'python-aiofiles')
 makedepends=('git' 'python-build' 'python-installer' 'python-poetry')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
