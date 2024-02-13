@@ -3,14 +3,13 @@
 _pkgname=SEPIRA
 _pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
-pkgrel=1
-pkgdesc='Systems EPigenomics Inference of Regulatory Activity'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Systems EPigenomics Inference of Regulatory Activity"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-corpcor
   r-limma
 )
@@ -20,15 +19,16 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('87804976d95662add92ba81f24140d37dbdb18ca475e6861830e6d99a8a914fa')
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('c7ed46a5810d2e91210561758428a7fb')
+b2sums=('c29ec1fec144374cea25210d248323d1bd3492eae239a20e5f47abc62632b7ecdc4ca9a3dc1bbb8f6394920bf744a7105364af88bcd3ad313b8e02009883518a')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
