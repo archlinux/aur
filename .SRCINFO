@@ -1,0 +1,25 @@
+pkgbase = python-gotranx
+	pkgdesc = A declarative language describing ordinary differential equations
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/finsberg/gotranx
+	arch = any
+	license = MIT
+	checkdepends = python-pytest-cov
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-attrs
+	depends = python-lark-parser
+	depends = python-pint
+	depends = python-structlog
+	depends = python-sympy
+	depends = python-typer
+	optdepends = python-clang-format-docs: for formatter support
+	optdepends = python-black: for formatter support
+	optdepends = python-myokit: for ODE solvers support
+	source = gotranx-0.2.2.tar.gz::https://github.com/finsberg/gotranx/archive/v0.2.2.tar.gz
+	sha512sums = dce74e4136e14a5f4a208d7d1a5a78f5ec815c8fd2d9165be71ea8a88f4c10a15c495ade811222d756b9d87cb709f97144ec75efc5c2a9de65707d05c852b91e
+
+pkgname = python-gotranx
