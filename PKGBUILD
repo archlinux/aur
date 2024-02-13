@@ -21,8 +21,8 @@ depends=(
     'python-toml>=0.10.2'
 )
 makedepends=(python-build python-dulwich python-installer python-poetry python-trove-classifiers python-wheel)
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('f2dec09794767c1f66dc68519bca7053dd05b115ec39b5c4b9067722b892c570bd54e4a99a0da57016ce9305d839e1fa437044d5cc0618eae67154eb352968ae')
+source=("$url/archive/v$pkgver.tar.gz")
+b2sums=('0e1ca526fbd54b5f287cfd0b1d34eddb3c46baf28628210bb788f5e1681ab4b769643536d4002d8afe56bc1ff3bdcd6cbebaeb0514b7e91d49931a29061fdf14')
 
 build() {
     cd $_name-python-$pkgver
