@@ -2,7 +2,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kstatusnotifieritem-git
-pkgver=5.249.0
+pkgver=r202.gb0c774e
 pkgrel=1
 pkgdesc='Implementation of Status Notifier Items'
 arch=(x86_64)
@@ -21,6 +21,11 @@ sha256sums=('SKIP')
 
 conflicts=('kstatusnotifieritem')
 provides=('kstatusnotifieritem')
+
+pkgver() {
+  cd ${pkgname%-git}
+  echo "r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
 
 build() {
   cmake -B build -S kstatusnotifieritem \

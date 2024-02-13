@@ -1,6 +1,6 @@
 pkgbase = kstatusnotifieritem-git
 	pkgdesc = Implementation of Status Notifier Items
-	pkgver = 5.249.0
+	pkgver = r202.gb0c774e
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
