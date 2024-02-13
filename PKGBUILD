@@ -5,7 +5,7 @@
 _distname='Hash-Util-FieldHash-Compat'
 pkgname='perl-hash-util-fieldhash-compat'
 pkgver='0.11'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Use Hash::Util::FieldHash or ties, depending on availability"
 arch=('any')
 license=('LicenseRef-GPL-1.0-or-later OR Artistic-1.0-Perl')
@@ -14,18 +14,9 @@ depends=('perl')
 url="https://metacpan.org/release/$_distname"
 _author='ETHER'
 _licensefilename_SPDX_GPL1='GPL-1.0-or-later.txt'
-source=("https://search.cpan.org/CPAN/authors/id/${_author::1}/${_author::2}/$_author/$_distname-$pkgver.tar.gz"
-        "${_distname}-LICENCE-${_licensefilename_SPDX_GPL1}::https://raw.githubusercontent.com/Perl/perl5/perl-5.10.0/Copying")
-sha512sums=('a38397ba17587d85ed88020c85bd4d7c36798a9e8fa46490017ea84d30c6541f32a621a9ef585d57dbb49f39791d5644f329e956d4be9e0ec01918eb782eae9c'
-            'f3e5cce80bb15147bcb998320e670d2e04ae9cef0425181c4123471b781c6f56bd8b3e71fef2d6ab0f02b5fb8591d7ecb26ddc09ba3d2fb2f9ef7a538f4ac998')
+source=("https://search.cpan.org/CPAN/authors/id/${_author::1}/${_author::2}/$_author/$_distname-$pkgver.tar.gz")
+sha512sums=('a38397ba17587d85ed88020c85bd4d7c36798a9e8fa46490017ea84d30c6541f32a621a9ef585d57dbb49f39791d5644f329e956d4be9e0ec01918eb782eae9c')
 _distdir="$_distname-$pkgver"
-
-prepare() {
-  cd "$srcdir/$_distdir"
-
-  echo "Preparing license resources..."
-  cp --verbose "../$_distname-LICENCE-$_licensefilename_SPDX_GPL1" "LICENCE-$_licensefilename_SPDX_GPL1"
-}
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
