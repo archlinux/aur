@@ -2,14 +2,15 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kdepim-runtime-git
-pkgver=21.11.40_r15147.g4b24843e0
+pkgver=24.04.40_r16517.gacbdea279
 pkgrel=1
 pkgdesc='Extends the functionality of kdepim'
 arch=($CARCH)
 url='https://kontact.kde.org'
-license=(GPL LGPL FDL)
-depends=(libkolabxml kdav-git akonadi-calendar-git knotifyconfig-git kalarmcal-git kmbox-git pimcommon-git akonadi-notes-git akonadi-git qca qt5-networkauth)
-makedepends=(git extra-cmake-modules-git kdoctools-git boost)
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(akonadi-git akonadi-calendar-git akonadi-contacts-git akonadi-mime-git akonadi-notes-git gcc-libs glibc kcalendarcore-git kcmutils-git kcodecs-git kcompletion-git kconfig-git kconfigwidgets-git kcontacts-git kcoreaddons-git kdav-git ki18n-git kidentitymanagement-git kimap-git kio-git kjobwidgets-git kldap-git kmailtransport-git kmime-git kmbox-git knotifications-git knotifyconfig-git kservice-git ktextaddons-git ktextwidgets-git kwallet-git kwidgetsaddons-git kwindowsystem-git libakonadi-git libkgapi-git libkolabxml libsasl qca-qt6-git qt6-base qt6-networkauth qt6-speech qt6-webengine qtkeychain-qt6)
+makedepends=(git boost extra-cmake-modules-git kdoctools-git)
+optdepends=('libetebase: EteSync resource')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kdepim-git)
@@ -25,6 +26,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
