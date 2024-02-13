@@ -9,6 +9,7 @@
 : ${_build_avx:=true}
 : ${_build_git:=true}
 
+unset _pkgtype
 [[ "${_build_instrumented::1}" == "t" ]] && _pkgtype+="-instrumented"
 [[ "${_build_avx::1}" == "t" ]] && _pkgtype+="-avx"
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
@@ -16,7 +17,7 @@
 # basic info
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.7.5545.r0.g56b54e0e
+pkgver=1.7.5556.r0.ge1fc4146
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
@@ -265,14 +266,14 @@ build() {
     _cmake_options+=(-DDISABLE_ADVANCE_SIMD=ON)
   fi
 
-  local _pgo_profile_old="${SRCDEST:-$startdir}/$pkgname.prof"
-  local _pgo_profile="$srcdir/$pkgname.prof"
+  local _pgo_profile_old="${SRCDEST:-$startdir}/$pkgname.profdata"
+  local _pgo_profile="$srcdir/$pkgname.profdata"
   if [[ "${_build_instrumented::1}" == "t" ]] ; then
     # To create profiles:
     #    LLVM_PROFILE_FILE="default_%9m.profraw" pcsx2-qt
     #
     # To process profiles:
-    #    llvm-profdata merge -output=pcsx2-avx-git.prof *.profraw
+    #    llvm-profdata merge -output=pcsx2-avx-git.profdata *.profraw
     #
     echo "Compiling with instrumentation."
     export CFLAGS+=" -fprofile-generate"
