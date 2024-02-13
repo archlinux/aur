@@ -2,12 +2,12 @@
 # Contributor: jerry73204 <jerry73204 at google gmail>
 _base=geoviews
 pkgname=python-${_base}
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="Simple, concise geographical visualization in Python"
 arch=(any)
 url="https://github.com/pyviz/${_base}"
-license=('custom:BSD-3-clause')
+license=(BSD-3-Clause)
 depends=(python-cartopy python-holoviews)
 makedepends=(python-build python-installer python-setuptools python-wheel npm)
 checkdepends=(python-pytest python-geopandas python-spatialpandas) # python-xarray
@@ -18,7 +18,7 @@ checkdepends=(python-pytest python-geopandas python-spatialpandas) # python-xarr
 #   'python-matplotlib: for '
 # )
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('a212a5673c63bec0ec0b22a5af93e2640f0fa59d0d36bc88be4c4f696b891e4843338621ae034166abb1a0dbf455767495301fea97bc6da4732fdf5ab184ccfe')
+sha512sums=('4f2024a47126fbf285dec9189eb7b52a7a1688347d4d6892ab87c3ef1098fb5c86ebde187b03df81215ca4042f624df058d23f8ff69f1c05c5fe2ee2f553b6f6')
 
 build() {
   cd ${_base}-${pkgver}
