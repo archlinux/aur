@@ -1,0 +1,257 @@
+--- a/extm3u.pl	2024-02-13 14:52:35.000000000 +0200
++++ b/extm3u.pl	2024-02-13 14:54:00.348720670 +0200
+@@ -11,8 +11,8 @@
+     $LIST_MP3 = 1;
+ }
+ 
+-if(check_install(module => 'Ogg::Vorbis::Header') ){
+-    Module::Load::load('Ogg::Vorbis::Header');
++if(check_install(module => 'Ogg::Vorbis::Header::PurePerl') ){
++    Module::Load::load('Ogg::Vorbis::Header::PurePerl');
+     $LIST_OGG = 1;
+ }
+ 
+@@ -21,19 +21,25 @@
+     $LIST_FLAC = 1;
+ }
+ 
++if(check_install(module => 'MP4::Info') ){
++    Module::Load::load('MP4::Info');
++    $LIST_MP4 = 1;
++}
++
+ # Function prototypes:
+-sub printFiles($$$$);
+-sub readFiles($$);
+-sub getMP3($);
+-sub getOGG($);
+-sub getFLAC($);
++sub printFiles($$$$$);
++sub readFiles($$$);
++sub getMP3($$);
++sub getMP4($$);
++sub getOGG($$);
++sub getFLAC($$);
+ sub help();
+ 
+ 
+ ############################################################################
+ # Main
+ 
+-getopts('r',\%OPT);
++getopts('ra',\%OPT);
+ 
+ if (@ARGV == 0){
+   help();
+@@ -46,7 +52,7 @@
+     $mp3root =~ s/\/$//; #remove trailing slash
+ 
+ # gather or print the files
+-    push(@all, readFiles($mp3root,$OPT{'r'}));
++    push(@all, readFiles($mp3root,$OPT{'r'},$OPT{'a'}));
+ }
+ 
+ # randomize output
+@@ -62,14 +68,16 @@
+ # prints a short Help text
+ sub help() {
+     my $mp3 = $LIST_MP3 ? 'found' : 'NOT found';
++    my $mp4 = $LIST_MP4 ? 'found' : 'NOT found';
+     my $ogg = $LIST_OGG ? 'found' : 'NOT found';
+     my $fla = $LIST_FLAC ? 'found' : 'NOT found';
+ 
+ print STDERR <<STOP
+ 
+-      Usage: extm3u.pl [-r] <music-dir[s]>
++      Usage: extm3u.pl [-r] [-a] <music-dir[s]>
+ 
+       -r           Randomize playlist order (heavy memory use)
++      -a           Add album name into track name
+       <music-dir>  Search this directory recursivly for audio files
+ 
+       This tool generates a extended .m3u playlist from a given directory
+@@ -84,12 +92,16 @@
+       For running this script you'll need the following Perl modules:
+ 
+       MP3::Info            for .mp3 files   ($mp3)
+-      Ogg::Vorbis::Header  for .ogg files   ($ogg)
++      MP4::Info            for .mp4 files (.mp4, .m4a, .m4b, .m4p, .3gp)   ($mp4)
++      Ogg::Vorbis::Header::PurePerl  for .ogg files   ($ogg)
+       Audio::FLAC::Header  for .flac files  ($fla)
+ 
+       The scripts autodetects which modules are installed. If a module is
+       not installed, the corresponding file type is ignored
+ 
++      ArchLinux users can install deps with one simple command:
++      paru -S perl-audio-flac-header perl-mp3-info perl-mp4-info perl-ogg-vorbis-header-pureperl
++
+       _____________________________________________________________________
+       extm3u.pl - Generates an extended .m3u mp3-Playlist
+       Copyright (C) 2004-2010 Andreas Gohr <andi\@splitbrain.org>
+@@ -106,66 +118,105 @@
+ 
+ ###############################################################################
+ # get a given FLAC
+-sub getFLAC($){
++sub getFLAC($$){
+     my $file = $_[0];
++    my $fetchalbum = $_[1];
+     my $flac = new Audio::FLAC::Header($file);
+ 
+     my $sec = int($flac->{trackTotalLengthSeconds});
+     my $artist = $flac->tags('ARTIST');
++    my $album;
++    if($fetchalbum){
++        $album = $flac->tags('ALBUM');
++    }
+     my $title = $flac->tags('TITLE');
+ 
+-    return [$sec,$artist,$title];
++    return [$sec,$artist,$album,$title];
+ }
+ 
+ ###############################################################################
+ # get a given MP3
+-sub getMP3($){
++sub getMP3($$){
+     my $file = $_[0];
++    my $fetchalbum = $_[1];
+     my $info = MP3::Info::get_mp3info($file);
+     my $tag  = MP3::Info::get_mp3tag($file);
+ 
+     my $sec    = int($info->{SECS});
+     my $artist = $tag->{ARTIST};
++    my $album;
++    if($fetchalbum){
++        $album  = $tag->{ALBUM};
++    }
+     my $title  = $tag->{TITLE};
+ 
+-    return [$sec,$artist,$title];
++    return [$sec,$artist,$album,$title];
++}
++
++###############################################################################
++# get a given MP4
++sub getMP4($$){
++    my $file = $_[0];
++    my $fetchalbum = $_[1];
++    my $info = MP4::Info::get_mp4info($file);
++    my $tag  = MP4::Info::get_mp4tag($file);
++
++    my $sec    = int($info->{SECS});
++    my $artist = $tag->{ARTIST};
++    my $album;
++    if($fetchalbum){
++        $album  = $tag->{ALBUM};
++    }
++    my $title  = $tag->{TITLE};
++
++    return [$sec,$artist,$album,$title];
+ }
+ 
+ ###############################################################################
+ # get a given OGG
+-sub getOGG($){
++sub getOGG($$){
+     my $file = $_[0];
+-    my $ogg  = new Ogg::Vorbis::Header($file);
++    my $fetchalbum = $_[1];
++    my $ogg  = new Ogg::Vorbis::Header::PurePerl($file);
+     return if(!defined($ogg)); # this is no ogg
+ 
+     my $sec = int($ogg->info->{'length'});
+ 
+     # this strange construction is to fetch artist and title regardles
+     # of tag case
+-    my ($artist,$title);
++    my ($artist,$album,$title);
+     my $tags = join("\n",$ogg->comment_tags());
+     if($tags =~ m/^(artist)$/mi){
+         $artist =  ($ogg->comment($1))[0];
+     }
++    if($fetchalbum){
++        if($tags =~ m/^(album)$/mi){
++            $album =  ($ogg->comment($1))[0];
++        }
++    }
+     if($tags =~ m/^(title)$/mi){
+         $title =  ($ogg->comment($1))[0];
+     }
+ 
+-    return [$sec,$artist,$title];
++    return [$sec,$artist,$album,$title];
+ }
+ 
+ ##############################################################################
+ # Print extended file info
+-sub printFile($$$$){
++sub printFile($$$$$){
+     $file   = $_[0];
+     $sec    = $_[1];
+-    $artist = $_[2];
+-    $title  = $_[3];
+-
+-    $base = basename($file,['.mp3','.ogg','.fla','.flac','.wav']);
++    $artist = $_[2] =~ s/-/–/r;
++    $album  = $_[3] =~ s/-/–/r;
++    $title  = $_[4] =~ s/-/–/r;
++    $base = basename($file,['.mp3','.ogg','.fla','.flac','.wav','.mp4','.m4a','.m4b','.m4p','.3gp']);
+ 
+     if ($artist ne '' || $title ne ''){
+-        print ("#EXTINF:$sec,$artist - $title\n");
++        if ($album ne ''){
++            print ("#EXTINF:$sec,$artist - $album - $title\n");
++        }else{
++            print ("#EXTINF:$sec,$artist - $title\n");
++        }
+     }else{
+         print ("#EXTINF:$sec,$base\n");
+     }
+@@ -174,9 +225,10 @@
+ 
+ ##############################################################################
+ # Read a given directory and its subdirectories
+-sub readFiles($$) {
++sub readFiles($$$) {
+     my $path = $_[0];
+     my $rand = $_[1];
++    my $alb = $_[2];
+ 
+     my @files;
+     if($path eq '-') {
+@@ -194,18 +246,20 @@
+         if (-d $file) {
+             # recursion
+             if($path ne '-') {
+-               push(@allfiles,readFiles($file,$rand));
++               push(@allfiles,readFiles($file,$rand,$alb));
+             }
+         } else {
+             # get audio file infos
+             my $info = undef;
+             if ($LIST_MP3 && $file =~ /\.mp3$/i) {
+-                $info = getMP3($file);
++                $info = getMP3($file,$alb);
+             } elsif ($LIST_FLAC && $file =~ /\.flac?$/i) {
+-                $info = getFLAC($file);
++                $info = getFLAC($file,$alb);
+             } elsif ($LIST_OGG && $file =~ /\.ogg$/i) {
+-                $info = getOGG($file);
+-            } elsif ($file =~ /\.(mp3|flac?|ogg|wav)$/i) { # audio file, but we dont understand it
++                $info = getOGG($file,$alb);
++            } elsif ($LIST_MP4 && $file =~ /\.(mp4|m4a|m4b|m4p|3gp)$/i) {
++                $info = getMP4($file,$alb)
++            } elsif ($file =~ /\.(mp3|flac?|ogg|wav|mp4|m4a|m4b|m4p|3gp)$/i) { # audio file, but we dont understand it
+                 $info = [];
+             }
+ 
+@@ -214,7 +268,7 @@
+                 if($rand){
+                     push(@allfiles,[$file,$info]);
+                 }else{
+-                    printFile($file,$$info[0],$$info[1],$$info[2]);
++                    printFile($file,$$info[0],$$info[1],$$info[2],$$info[3]);
+                 }
+             }
+         }

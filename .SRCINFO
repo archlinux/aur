@@ -1,0 +1,18 @@
+pkgbase = extm3u
+	pkgdesc = Generates an extended .m3u playlist from mp3, mp4, ogg and flac files
+	pkgver = 20111201
+	pkgrel = 1
+	url = https://www.splitbrain.org/projects/extm3u
+	arch = any
+	license = GPL-2.0-only
+	depends = perl
+	depends = perl-mp3-info
+	optdepends = perl-audio-flac-header: FLAC files support
+	optdepends = perl-mp4-info: MPEG-4 files support
+	optdepends = perl-ogg-vorbis-header-pureperl: OGG Vorbis files support
+	source = https://github.com/splitbrain/extm3u/archive/8fcb71469ce0ca31fb1ee382842ada36a74de5a7.tar.gz
+	source = extm3u.patch
+	sha256sums = c39cd41953da3430dcb889f5dbc7852c6d3d4d09a2233ce7f57c4b39d84eda4f
+	sha256sums = 02389f5a9301a1faa0949876860f389ad86c59a68e0c45729fdcebdbda371f36
+
+pkgname = extm3u
