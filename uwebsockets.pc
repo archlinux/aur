@@ -1,0 +1,11 @@
+prefix=/usr
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: uWebSockets
+Version: 20.37.0
+Description: Simple, secure & standards compliant web server for the most demanding of applications
+URL: https://github.com/uNetworking/uWebSockets
+
+Cflags: -I${includedir}
+Libs: -L${libdir} -lz
