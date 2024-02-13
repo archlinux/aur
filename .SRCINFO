@@ -1,6 +1,6 @@
 pkgbase = yt-dlp-git
 	pkgdesc = A youtube-dl fork with additional features and fixes (git)
-	pkgver = 2023.12.30.r5.gb695127
+	pkgver = 2023.12.30.r101.gcd0443f
 	pkgrel = 1
 	url = https://github.com/yt-dlp/yt-dlp
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = yt-dlp-git
 	checkdepends = python-pytest
 	makedepends = pandoc
 	makedepends = python-build
+	makedepends = python-hatchling
 	makedepends = python-installer
-	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = git
 	depends = python
