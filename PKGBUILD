@@ -3,14 +3,13 @@
 _pkgname=metagene
 _pkgver=2.31.0
 pkgname=r-${_pkgname,,}
-pkgver=2.31.0
-pkgrel=1
-pkgdesc='A package to produce metagene plots'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="A package to produce metagene plots"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
-  r
   r-biocparallel
   r-data.table
   r-ensdb.hsapiens.v86
@@ -38,15 +37,16 @@ optdepends=(
   r-runit
   r-similarpeak
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e8b2391a7db54ab6b9da01843faaaf8ec1d0fd0d0e8df3cae473f5f0c4c2cd4f')
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('4709f553e306643ec3d37860f4092ddc')
+b2sums=('eea5068082af2b3e785b155c257df1638c3599ddfea17fbb09b59aa995dfbddfa7c801a9f14fad5732d8d927a50ce4747217249c7b939c081c6ada4959f5e2d2')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
