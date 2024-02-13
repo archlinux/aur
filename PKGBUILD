@@ -1,4 +1,4 @@
-# Maintainer: YidaozhanYa <yidaozhan_ya@outlook.com>
+# Maintainer: Kirikaze Chiyuki <me@chyk.ink>
 pkgname=moondust-project-stable-bin
 pkgver=0.4.3
 pkgrel=7
@@ -13,9 +13,9 @@ provides=('moondust-project')
 conflicts=('moondust-project-master-bin' 'moondust-project-git')
 install="moondust-project.install"
 source=(
-"https://wohlsoft.ru/projects/Moondust/_downloads/linux64/pge-project-stable-linux-ubuntu-16.04.tar.bz2"
+"https://wohlsoft.ru/projects/Moondust/_downloads/linux64/pge-project-stable-linux-ubuntu-18.04.tar.bz2"
 "moondust-engine.png::https://github.com/WohlSoft/Moondust-Project/raw/master/Engine/_resources/icon/cat_256.png"
-"moondust-editor.png::https://github.com/WohlSoft/Moondust-Project/raw/master/Editor/_resources/images/cat_builder/cat_builder_256.png"
+"moondust-editor.png::https://github.com/WohlSoft/Moondust-Project/raw/master/Editor/_resources/appicon/cat_builder_256.png"
 "moondust-calibrator.png::https://github.com/WohlSoft/Moondust-Project/raw/master/PlayableCalibrator/_resources/icon/calibrator_256.png"
 "moondust-musplay.png::https://github.com/WohlSoft/Moondust-Project/raw/master/MusicPlayer/_resources/cat_musplay/cat_musplay_256x256.png"
 "moondust-maintainer.png::https://github.com/WohlSoft/Moondust-Project/raw/master/Maintainer/_resources/icon/maintainer256.png"
