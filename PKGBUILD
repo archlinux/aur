@@ -5,7 +5,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-pixman
 pkgver=0.42.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The pixel-manipulation library for X and cairo (android)"
 arch=('any')
 url="http://xorg.freedesktop.org"
@@ -20,8 +20,6 @@ sha512sums=('3476e2676e66756b1af61b1e532cd80c985c191fb7956eb01702b419726cce99e79
 build() {
     cd "${srcdir}/pixman-${pkgver}"
     source android-env ${_android_arch}
-
-    export C_INCLUDE_PATH="${ANDROID_PREFIX_INCLUDE}/libpng:${ANDROID_PREFIX_INCLUDE}"
 
     android-${_android_arch}-meson build \
         -D loongson-mmi=disabled \
