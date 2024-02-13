@@ -1,7 +1,7 @@
 # Maintainer: Simeon Schaub <simeondavidschaub99@gmail.com>
 pkgname=juliaup
 pkgver=1.14.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An experimental Julia version manager"
 arch=('x86_64' 'x86' 'aarch64')
 url="https://github.com/JuliaLang/juliaup"
@@ -25,6 +25,14 @@ package() {
   install -Dm755 "${srcdir}/$pkgname-$pkgver/target/release/juliaup" "${pkgdir}/usr/bin/juliaup"
   install -Dm755 "${srcdir}/$pkgname-$pkgver/target/release/julialauncher" "${pkgdir}/usr/bin/julialauncher"
   ln --relative -s "${pkgdir}/usr/bin/julialauncher" "${pkgdir}/usr/bin/julia"
+
+  # Generate completion files.
+  mkdir -p "$pkgdir/usr/share/bash-completion/completions"
+  "$pkgdir"/usr/bin/juliaup completions bash > "$pkgdir/usr/share/bash-completion/completions/juliaup"
+  mkdir -p "$pkgdir/usr/share/fish/vendor_completions.d"
+  "$pkgdir"/usr/bin/juliaup completions fish > "$pkgdir/usr/share/fish/vendor_completions.d/juliaup.fish"
+  mkdir -p "$pkgdir/usr/share/zsh/site-functions"
+  "$pkgdir"/usr/bin/juliaup completions zsh > "$pkgdir/usr/share/zsh/site-functions/_juliaup"
 }
 
 # vim: ts=2 sw=2 et:
