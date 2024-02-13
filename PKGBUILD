@@ -2,7 +2,7 @@
 # Maintainer: anacrolix <anacrolix@gmail.com>
 pkgname=cove
 pkgver=0.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A combined BitTorrent frontend and DHT indexer for personal use"
 arch=("x86_64" "armv7h" "aarch64")
 url="https://github.com/anacrolix/cove"
