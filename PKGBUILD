@@ -1,6 +1,6 @@
-# Maintainer: YidaozhanYa <yidaozhan_ya@outlook.com>
+# Maintainer: Kirikaze Chiyuki <me@chyk.ink>
 pkgname=moondust-configpack-smbx13
-pkgver=2022may22
+pkgver=2024feb02
 pkgrel=1
 pkgdesc="Moondust Project's game configuration pack - Super Mario Brothers X 1.3 Compatible"
 arch=('any')
