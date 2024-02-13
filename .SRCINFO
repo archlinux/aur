@@ -4,6 +4,7 @@ pkgbase = gimp-plugin-deskew-git
 	pkgrel = 4
 	url = https://github.com/gimp-plugins-justice/gimp-deskew-plugin
 	arch = x86_64
+	arch = x86_64_v3
 	license = GPL
 	makedepends = git
 	makedepends = gcc
@@ -20,4 +21,3 @@ pkgbase = gimp-plugin-deskew-git
 	sha256sums = SKIP
 
 pkgname = gimp-plugin-deskew-git
-
