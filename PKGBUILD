@@ -1,20 +1,27 @@
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname='perl-moosex-blessed-reconstruct'
-pkgver='0.04'
+_distname='MooseX-Blessed-Reconstruct'
+pkgname="perl-${_distname@L}"
+pkgver='1.01'
 pkgrel='1'
-pkgdesc="A Data::Visitor for creating Moose objects"
+pkgdesc="A Data::Visitor for creating Moose objects from blessed placeholders"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('LicenseRef-GPL-1.0-or-later OR Artistic-1.0-Perl')
 options=('!emptydirs')
-depends=('perl-data-visitor>=0.21' 'perl-moose>=1.05' 'perl-namespace-clean')
-makedepends=('perl-test-use-ok')
-url='http://search.cpan.org/dist/MooseX-Blessed-Reconstruct'
-source=('http://search.cpan.org/CPAN/authors/id/N/NU/NUFFIN/MooseX-Blessed-Reconstruct-0.04.tar.gz')
-md5sums=('c0ea62668eb2e6cb558a98a561ce066d')
-sha512sums=('1640a8b4488680b39a2dff4eba41f7c363520d48f0df2c38fb502bd18ad6a81e4641357c3de9f881b90dd3370a10af8c0752004ee23c44c0b26a04445a7e2475')
-_distdir="MooseX-Blessed-Reconstruct-0.04"
+depends=(
+  'perl'
+  'perl-data-visitor'
+  'perl-module-runtime'
+  'perl-moose'
+  'perl-namespace-clean'
+)
+url="https://metacpan.org/release/$_distname"
+_author='YANICK'
+source=("https://search.cpan.org/CPAN/authors/id/${_author::1}/${_author::2}/$_author/$_distname-$pkgver.tar.gz")
+sha512sums=('c81dd1958be1ddd881a4cc112030fa7c69301b17fb3f71313457130f64ea1cb39f7f78a5b7c87dbc889cc62fbd6098d15ecf994162e606dfd88fcb29018be7dc')
+_distdir="$_distname-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,12 +46,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
-}
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
+  install -Dm644 LICENSE* -t "$pkgdir/usr/share/licenses/$pkgname"
+}

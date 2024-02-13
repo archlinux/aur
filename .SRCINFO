@@ -1,19 +1,17 @@
 pkgbase = perl-moosex-blessed-reconstruct
-	pkgdesc = A Data::Visitor for creating Moose objects
-	pkgver = 0.04
+	pkgdesc = A Data::Visitor for creating Moose objects from blessed placeholders
+	pkgver = 1.01
 	pkgrel = 1
-	url = http://search.cpan.org/dist/MooseX-Blessed-Reconstruct
+	url = https://metacpan.org/release/MooseX-Blessed-Reconstruct
 	arch = any
-	license = PerlArtistic
-	license = GPL
-	makedepends = perl-test-use-ok
-	depends = perl-data-visitor>=0.21
-	depends = perl-moose>=1.05
+	license = LicenseRef-GPL-1.0-or-later OR Artistic-1.0-Perl
+	depends = perl
+	depends = perl-data-visitor
+	depends = perl-module-runtime
+	depends = perl-moose
 	depends = perl-namespace-clean
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/N/NU/NUFFIN/MooseX-Blessed-Reconstruct-0.04.tar.gz
-	md5sums = c0ea62668eb2e6cb558a98a561ce066d
-	sha512sums = 1640a8b4488680b39a2dff4eba41f7c363520d48f0df2c38fb502bd18ad6a81e4641357c3de9f881b90dd3370a10af8c0752004ee23c44c0b26a04445a7e2475
+	source = https://search.cpan.org/CPAN/authors/id/Y/YA/YANICK/MooseX-Blessed-Reconstruct-1.01.tar.gz
+	sha512sums = c81dd1958be1ddd881a4cc112030fa7c69301b17fb3f71313457130f64ea1cb39f7f78a5b7c87dbc889cc62fbd6098d15ecf994162e606dfd88fcb29018be7dc
 
 pkgname = perl-moosex-blessed-reconstruct
-
