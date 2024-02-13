@@ -2,7 +2,7 @@
 
 pkgname=envision-xr-git
 pkgver=r397.7a55c433
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc='GUI for Monado'
 arch=(x86_64 aarch64)
 url='https://gitlab.com/gabmus/envision'
@@ -30,6 +30,7 @@ makedepends=(
     meson
     rust
 )
+options=(!lto)
 provides=(envision)
 conflicts=(envision)
 source=("git+${url}.git")
