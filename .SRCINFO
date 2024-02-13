@@ -13,6 +13,7 @@ pkgbase = clash-nyanpasu-bin
 	provides = clash-nyanpasu
 	conflicts = clash-nyanpasu-git
 	conflicts = clash-nyanpasu-appimage
+	conflicts = clash-nyanpasu
 	source = clash-nyanpasu-1.4.5-x86_64.deb::https://github.com/LibNyanpasu/clash-nyanpasu/releases/download/v1.4.5/clash-nyanpasu_1.4.5_amd64.deb
 	sha256sums = 7316aaed19dd7f4cad11aa9cec21908b1e5238076c4cea138f5265863af9c040
 
