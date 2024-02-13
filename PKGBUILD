@@ -3,14 +3,13 @@
 _pkgname=pwrEWAS
 _pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
-pkgrel=1
-pkgdesc='A user-friendly tool for comprehensive power estimation for epigenome wide association studies (EWAS)'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="A user-friendly tool for comprehensive power estimation for epigenome wide association studies (EWAS)"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
-  r
   r-abind
   r-biocmanager
   r-cpgassoc
@@ -32,15 +31,16 @@ optdepends=(
   r-rmarkdown
   r-runit
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0a9599d174af835e6c2640d284285b74b25c41e5b96ed9af763535e5b58023a4')
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('72989b16264534ad1fa6fdadda1ff618')
+b2sums=('b6f186cf7b2c178a58006565bad4e4bc84717c2bc476980492e39bd1ac195d4e5b6f6b26813f4f2f8395936d7df1a76996c8a99c07483266d273ae7377e12960')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
