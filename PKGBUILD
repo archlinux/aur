@@ -3,13 +3,13 @@
 
 pkgname='perl-mousex-types-path-class'
 pkgver='0.07'
-pkgrel='4'
+pkgrel='5'
 pkgdesc="A Path::Class type library for Mouse"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-mouse>=0.39' 'perl-mousex-types>=0.02' 'perl-path-class>=0' 'perl>=5.8.1')
-makedepends=()
+makedepends=('perl-module-install')
 checkdepends=('perl-test-useallmodules>=0')
 url='https://metacpan.org/release/MouseX-Types-Path-Class'
 source=("https://cpan.metacpan.org/authors/id/M/MA/MASAKI/MouseX-Types-Path-Class-$pkgver.tar.gz")
