@@ -1,10 +1,10 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=GE-Proton8-31
-_commit=6fb8c815f261a2773817e2a470918ae39e86691f
+_srctag=GE-Proton8-32
+_commit=749c5cf3059be20f5a145c58f1783e65483c432f
 pkgver=${_srctag//-/.}
-_geckover=2.47.3
+_geckover=2.47.4
 _monover=8.1.0
 pkgrel=1
 epoch=2
@@ -94,6 +94,7 @@ source=(
     0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
     0005-AUR-Strip-binaries-early.patch
     0006-AUR-Fix-hwnd-redefinition.patch
+    gecko-version.patch
 )
 noextract=(
     wine-gecko-${_geckover}-{x86,x86_64}.tar.xz
@@ -167,6 +168,7 @@ prepare() {
     patch -p1 -i "$srcdir"/0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
     patch -p1 -i "$srcdir"/0005-AUR-Strip-binaries-early.patch
     patch -p1 -i "$srcdir"/0006-AUR-Fix-hwnd-redefinition.patch
+    patch -p1 -i "$srcdir"/gecko-version.patch
 }
 
 build() {
@@ -263,13 +265,13 @@ package() {
 }
 
 sha256sums=('SKIP'
-            '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
-            '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
+            '2cfc8d5c948602e21eff8a78613e1826f2d033df9672cace87fed56e8310afb6'
+            'fd88fc7e537d058d7a8abf0c1ebc90c574892a466de86706a26d254710a82814'
             '4e3e8a40729e4c9e3e9e651cebe4f1aed8f9a4d22e991e6cd24608687f0eedd4'
-            '68ac2429b5389437023ff4d994464db6452c80a81585fe9a719333d7b9aff8ee'
-            '2fe2fe1bd6bf72a7b0269a963880da4e62420c7cae749e5e610d2c822c3b50c7'
-            'c9f34ccae6e1d6b478dfb36b445c8c501c5314fd13b3394aa28e757b4ec9635f'
-            '3796ce184ee92b48378526b139e2109c535cb0494ad92e7b85229c26d7629b3f'
-            'f33527282a555bf409d8c3362167da6e37e3a07b07abea5dd79bbd676539325c'
-            '68bee9b8a25ef3cd177845a15eebdd1aa8f68818a114c34d345431a01376b926')
-
+            'b0b75d205b2d696f41d56a525be555bb9e0d4368780c9774579b3b24fa95988d'
+            '759ef54f55a1c0123fab9ecda34caaa69e8bf753529fcbd6ccf6fcb820f963ac'
+            '9bd1c3e0725a034ebbde56327834e9b4b1806571c25c4f3396fdc593203b2429'
+            '655f716c9dd4f29e22448b637b9118b869cc4b67d7126e8983eb2d1ed2b031f6'
+            '0675e014359895a5616a999f9e7d9c69d013644843ab910e7a127e3df0c52807'
+            'ff755d796e490915aa0c9859b84ae15a8b3b17229fe79e8ef6c6630cbede60a8'
+            '7fb23288e5e9c20a349a5578d6a77bfdc62b9d611bca892e665cac4a3b4bf5d9')
