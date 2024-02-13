@@ -6,7 +6,7 @@
 
 _pkgname=chromium
 pkgname=chromium-no-extras
-pkgver=121.0.6167.160
+pkgver=121.0.6167.184
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -38,7 +38,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         drop-flags-unsupported-by-clang16.patch
         compiler-rt-16.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('4586673899383d30e9d95fa3a9c5f8160f32a9d5789e40be82abf3e4dd9cc3df'
+sha256sums=('9fd6b82e7077ac26ec264bfcfc8ac8e0c2a0240378f035c9c0f34ad467aef09d'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'e9113c1ed2900b84b488e608774ce25212d3c60094abdae005d8a943df9b505e'
             '318df8f8662071cebcdf953698408058e17f59f184500b7e12e01a04a4206b50'
