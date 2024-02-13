@@ -3,8 +3,8 @@
 pkgbase=ivre-git
 _pkgname=ivre
 pkgname=('ivre-git' 'ivre-web-git' 'ivre-docs-git' 'python-ivre-git')
-pkgver=0.9.20.dev149
-pkgrel=3
+pkgver=0.9.20.dev164
+pkgrel=1
 pkgdesc='Network recon framework based on Nmap, Masscan, Zgrab2, Nuclei, httpx, Zeek (Bro), Argus, Netflow,... Build your own alternatives to Shodan and GreyNoise, run your Passive DNS service, and much more!'
 arch=('any')
 url='https://ivre.rocks/'
@@ -41,7 +41,7 @@ package_ivre-git() {
 
   cd "$srcdir/$_pkgname"
 
-  python -m installer --destdir="$pkgdir" --compile-bytecode=2 dist/*.whl
+  python -m installer --destdir="$pkgdir" --compile-bytecode=2 "dist/${_pkgname}-${pkgver}-py3-none-any.whl"
 
   rm -r "$pkgdir/usr/lib" \
      "$pkgdir/usr/share/doc" \
@@ -58,7 +58,7 @@ package_ivre-docs-git() {
 
   cd "$srcdir/$_pkgname"
 
-  python -m installer --destdir="$pkgdir" --compile-bytecode=2 dist/*.whl
+  python -m installer --destdir="$pkgdir" --compile-bytecode=2 "dist/${_pkgname}-${pkgver}-py3-none-any.whl"
 
   cp README.md "$pkgdir/usr/share/doc/ivre/"
   mv "$pkgdir/usr/share/ivre/web/static/doc" "$pkgdir/usr/share/doc/ivre/html"
@@ -80,7 +80,7 @@ package_ivre-web-git() {
 
   cd "$srcdir/$_pkgname"
 
-  python -m installer --destdir="$pkgdir" --compile-bytecode=2 dist/*.whl
+  python -m installer --destdir="$pkgdir" --compile-bytecode=2 "dist/${_pkgname}-${pkgver}-py3-none-any.whl"
 
   rm -r "$pkgdir/usr/bin" "$pkgdir/usr/lib" \
      "$pkgdir/usr/share/doc" \
@@ -117,7 +117,7 @@ package_python-ivre-git() {
 
   cd "$srcdir/$_pkgname"
 
-  python -m installer --destdir="$pkgdir" --compile-bytecode=2 dist/*.whl
+  python -m installer --destdir="$pkgdir" --compile-bytecode=2 "dist/${_pkgname}-${pkgver}-py3-none-any.whl"
 
   echo -en "-aur-${pkgrel}" >> "${pkgdir}/usr/lib/"python*"/site-packages/ivre/VERSION"
   sed -ri 's#(VERSION = .*)(['\''"])$#\1-aur-'"${pkgrel}"'\2#' "${pkgdir}/usr/lib/"python*"/site-packages/ivre/__init__.py"
