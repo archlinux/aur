@@ -1,0 +1,25 @@
+pkgbase = python-devito
+	pkgdesc = Finite Difference DSL for symbolic computation
+	pkgver = 4.8.3
+	pkgrel = 1
+	url = https://github.com/devitocodes/devito
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = openmp
+	depends = python-cached-property
+	depends = python-psutil
+	depends = python-py-cpuinfo
+	depends = python-codepy
+	depends = python-multidict
+	depends = python-anytree
+	depends = python-sympy
+	optdepends = python-mpi4py: for parallel support
+	optdepends = python-ipyparallel: for parallel support
+	source = devito-4.8.3.tar.gz::https://github.com/devitocodes/devito/archive/v4.8.3.tar.gz
+	sha512sums = d641d5546fd71a3b1b96358efd388eef1d4fe7d9825217ecd6992674ada2cc67bc32efb0af4361213ac4abc0eef89f10860a03ee5e6ebef8fba5a1951b0ef866
+
+pkgname = python-devito
