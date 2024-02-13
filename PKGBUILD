@@ -8,19 +8,18 @@
 
 _pkgname=ibus-chewing
 pkgname=$_pkgname-git
-pkgver=1.6.1.r14.g8e17848
-pkgrel=2
+pkgver=2.0.0.rc1.r0.g900596e
+pkgrel=1
 pkgdesc='Chinese Chewing Engine for IBus Framework'
 arch=('i686' 'x86_64')
-license=('GPL')
-url='https://github.com/definite/ibus-chewing'
-depends=('ibus' 'libchewing-git' 'gtk3')
-makedepends=('gob2' 'cmake' 'git')
+# "GPLv2+" in https://github.com/chewing/ibus-chewing/blob/1.6.2/CMakeLists.txt#L90
+license=('GPL-2.0-or-later')
+url='https://github.com/chewing/ibus-chewing'
+depends=('ibus' 'libchewing-git' 'gtk4' 'libadwaita')
+makedepends=('cmake' 'git')
 checkdepends=('dbus' 'xorg-server-xvfb')
-source=("git+https://github.com/definite/ibus-chewing.git"
-        "git+https://pagure.io/cmake-fedora.git")
-sha512sums=('SKIP'
-            'SKIP')
+source=("git+https://github.com/definite/ibus-chewing.git")
+sha512sums=('SKIP')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 
@@ -31,26 +30,13 @@ pkgver() {
   )
 }
 
-prepare() {
-  cd $_pkgname
-
-  git submodule init
-  git config submodule.cmake-fedora.url "$srcdir/cmake-fedora"
-  git -c protocol.file.allow=always submodule update
-}
-
 build() {
   cd $_pkgname
 
   cmake -B build -S . \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=None \
-    -DLIBEXEC_DIR=/usr/lib/ibus
-
-  # XXX: updated *.po files contain no translated strings. Maybe because fedora.zanata.org is down
-  # https://github.com/definite/ibus-chewing/issues/150
-  touch build/po/ibus-chewing.pot
-  cp -v po/*.po build/po/
+    -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib/ibus
 
   make -C build
 }
@@ -58,8 +44,10 @@ build() {
 check() {
   cd $_pkgname/build
 
-  # Some tests fail due to a upstream issue https://github.com/definite/ibus-chewing/issues/154#issuecomment-756713451
-  GSETTINGS_SCHEMA_DIR="$srcdir/$_pkgname/build/bin/" xvfb-run --auto-display dbus-run-session make test || true
+  # glib-compile-schemas is needed for tests
+  # https://github.com/chewing/ibus-chewing/blob/v2.0.0-rc1/.github/workflows/ci.yml#L33
+  glib-compile-schemas ../src/setup --targetdir "$srcdir/$_pkgname/build/bin"
+  GSETTINGS_SCHEMA_DIR="$srcdir/$_pkgname/build/bin/" xvfb-run --auto-display dbus-run-session make test
 }
 
 package() {
