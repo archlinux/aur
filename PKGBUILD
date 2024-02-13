@@ -20,10 +20,10 @@
 pkgbase=java17-jetbrains
 pkgname=('jre17-jetbrains' 'jdk17-jetbrains')
 _majorver=17
-_ver=17.0.9
-_hgver=17.0.9
-_jbver1=1166
-_jbver2=2
+_ver=17.0.10
+_hgver=17.0.10
+_jbver1=1186
+_jbver2=1
 pkgrel=1
 pkgver=${_ver}.b${_jbver1}.${_jbver2}
 _hg_tag=jb${_hgver}-b${_jbver1}.${_jbver2}

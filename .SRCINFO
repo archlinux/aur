@@ -1,5 +1,5 @@
 pkgbase = java17-jetbrains
-	pkgver = 17.0.9.b1166.2
+	pkgver = 17.0.10.b1186.1
 	pkgrel = 1
 	url = https://github.com/JetBrains/JetBrainsRuntime
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = java17-jetbrains
 	makedepends = jcef-jetbrains
 	makedepends = git
 	options = !lto
-	source = git+https://github.com/JetBrains/JetBrainsRuntime.git#tag=jb17.0.9-b1166.2
+	source = git+https://github.com/JetBrains/JetBrainsRuntime.git#tag=jb17.0.10-b1186.1
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
@@ -86,7 +86,7 @@ pkgname = jre17-jetbrains
 pkgname = jdk17-jetbrains
 	pkgdesc = JetBrains Java 17 development kit
 	install = install_jdk-jetbrains.sh
-	depends = jre17-jetbrains=17.0.9.b1166.2-1
+	depends = jre17-jetbrains=17.0.10.b1186.1-1
 	depends = java-environment-common=3
 	depends = hicolor-icon-theme
 	depends = libelf
