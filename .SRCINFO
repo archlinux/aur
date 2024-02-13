@@ -16,7 +16,7 @@ pkgbase = openvpn-mbedtls
 	depends = lz4
 	depends = iproute2
 	depends = systemd-libs
-	depends = mbedtls2
+	depends = mbedtls
 	optdepends = easy-rsa: easy CA and certificate handling
 	optdepends = pam: authenticate via PAM
 	provides = openvpn=2.6.9
