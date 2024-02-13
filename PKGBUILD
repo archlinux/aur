@@ -2,7 +2,7 @@
 
 pkgbase=netinstall
 pkgname=(netinstall netinstall-gui)
-pkgver=7.13.3
+pkgver=7.13.4
 pkgrel=1
 pkgdesc='Mikrotik Netinstall for RouterOS'
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ source=("https://download.mikrotik.com/routeros/${pkgver}/netinstall-${pkgver}.z
         'netinstall.desktop'
         'netinstall.sh'
         'netinstall-gui.c')
-sha256sums=('b96b764a2d68bec8db800164ec6e43bea7576a293ac7e00cc9de379d707642e6'
-            'c76d6a603ebf5394f455a515ff6450d6949ec2e42bac147f154b90bf327c2084'
+sha256sums=('efef6c978ea45bbde7920cdda520ef0a557bcbb1b4302144cd223121151f0c77'
+            'c27f26673092db518e41b17d61d98b733aaff5a670e069c391b0ae054e61af0f'
             '285e32e9ba8bad9791cf3d5d3653b6e21bd771adcc32ea2036fe32dc9dafcfe0'
             'd45ecf4585047769ee64957b7066910d8992eb6da4a60b4773328460e912794a'
             'b5efb376a6705c376465bff6f52dc0713c15fbd5cd861fdc39969cbb22c233b4')
