@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-posthog
 _name=posthog-python
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="Integrate PostHog into any python application."
 arch=('any')
@@ -27,7 +27,7 @@ checkdepends=(
   'python-pytest-timeout'
 )
 source=("$_name-$pkgver.tar.gz::https://github.com/PostHog/posthog-python/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('aa80230a7b046fb3728df18e8241ed3dabc785b6879066509ca0fe7efe6fe404')
+sha256sums=('0747b17e141a9e43aeb45930d47724f124d01f2cf4da14024396fc1f2b80d64c')
 
 build() {
   cd "$_name-$pkgver"
