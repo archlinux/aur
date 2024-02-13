@@ -2,10 +2,10 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 
 pkgname=android-meson
-pkgver=1
-pkgrel=3
+pkgver=2
+pkgrel=1
 arch=('any')
-pkgdesc="Meson wrapper for Android (android)"
+pkgdesc="Meson wrapper for Android"
 depends=('meson' 'android-environment' 'android-pkg-config')
 license=("GPL")
 url="https://mesonbuild.com/"
