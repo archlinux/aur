@@ -1,7 +1,7 @@
 pkgbase = android-x86-freetype2-bootstrap
 	pkgdesc = Font rasterization library (android)
 	pkgver = 2.13.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freetype.org/
 	arch = any
 	license = GPL
