@@ -1,26 +1,26 @@
-From d10b62dac4fe677fd00c5d406196b5a212e0de2f Mon Sep 17 00:00:00 2001
+From 3056186c67e1708550d8321843650a106a88d776 Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Wed, 26 Apr 2023 14:22:23 +0300
 Subject: [PATCH 1/6] AUR Pkgbuild changes
 
 ---
- Makefile.in                    | 74 ++++++++++++++++++++++++++--------
+ Makefile.in                    | 75 ++++++++++++++++++++++++++--------
  compatibilitytool.vdf.template |  2 +-
  configure.sh                   |  2 +
  make/rules-autoconf.mk         |  4 +-
  make/rules-cargo.mk            |  4 +-
  make/rules-cmake.mk            |  4 +-
- make/rules-common.mk           | 18 +++++----
+ make/rules-common.mk           | 18 ++++----
  make/rules-configure.mk        |  4 +-
  make/rules-makedep.mk          |  4 +-
  make/rules-meson.mk            |  3 +-
  make/rules-winemaker.mk        |  2 +-
  proton                         |  6 +--
  toolmanifest_runtime.vdf       |  3 --
- 13 files changed, 88 insertions(+), 42 deletions(-)
+ 13 files changed, 89 insertions(+), 42 deletions(-)
 
 diff --git a/Makefile.in b/Makefile.in
-index 7ec939df..32211119 100644
+index 7ec939df..3636f22c 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -50,11 +50,12 @@ else
@@ -164,7 +164,12 @@ index 7ec939df..32211119 100644
    --disable-tests
  
  WINE_CONFIGURE_ARGS32 = \
-@@ -527,6 +564,9 @@ DXVK_MESON_ARGS32 = --bindir=$(DXVK_DST32)/lib/wine/dxvk
+@@ -523,10 +560,14 @@ $(eval $(call rules-makedep,vrclient,64))
+ ## dxvk
+ ##
+ 
++DXVK_MESON_ARGS = --force-fallback-for=libdisplay-info
+ DXVK_MESON_ARGS32 = --bindir=$(DXVK_DST32)/lib/wine/dxvk
  DXVK_MESON_ARGS64 = --bindir=$(DXVK_DST64)/lib64/wine/dxvk
  DXVK_DEPENDS = glslang
  
@@ -174,7 +179,7 @@ index 7ec939df..32211119 100644
  $(eval $(call rules-source,dxvk,$(SRCDIR)/dxvk))
  $(eval $(call rules-meson,dxvk,32,CROSS))
  $(eval $(call rules-meson,dxvk,64,CROSS))
-@@ -554,6 +594,9 @@ $(OBJ)/.dxvk-post-build32:
+@@ -554,6 +595,9 @@ $(OBJ)/.dxvk-post-build32:
  DXVK_NVAPI_MESON_ARGS32 = --bindir=$(DXVK_NVAPI_DST32)/lib/wine/nvapi
  DXVK_NVAPI_MESON_ARGS64 = --bindir=$(DXVK_NVAPI_DST64)/lib64/wine/nvapi
  
@@ -184,7 +189,7 @@ index 7ec939df..32211119 100644
  $(eval $(call rules-source,dxvk-nvapi,$(SRCDIR)/dxvk-nvapi))
  $(eval $(call rules-meson,dxvk-nvapi,32,CROSS))
  $(eval $(call rules-meson,dxvk-nvapi,64,CROSS))
-@@ -628,6 +671,9 @@ ifneq ($(UNSTRIPPED_BUILD),)
+@@ -628,6 +672,9 @@ ifneq ($(UNSTRIPPED_BUILD),)
  	VKD3D_PROTON_MESON_ARGS = -Denable_trace=true
  endif
  
@@ -194,7 +199,7 @@ index 7ec939df..32211119 100644
  $(eval $(call rules-source,vkd3d-proton,$(SRCDIR)/vkd3d-proton))
  $(eval $(call rules-meson,vkd3d-proton,32,CROSS))
  $(eval $(call rules-meson,vkd3d-proton,64,CROSS))
-@@ -924,14 +970,14 @@ $(FONTS_OBJ)/source-han/%.ttf: $$(%.ttf_CIDFONT) $$(%.ttf_FEATURES) $$(%.ttf_SEQ
+@@ -924,14 +971,14 @@ $(FONTS_OBJ)/source-han/%.ttf: $$(%.ttf_CIDFONT) $$(%.ttf_FEATURES) $$(%.ttf_SEQ
  	mkdir -p $(FONTS_OBJ)/source-han
  	# Do not immediately create the target file, so that make is interrupted
  	# it will restart again
@@ -212,7 +217,7 @@ index 7ec939df..32211119 100644
  	mv $@.tmp $@
  
  $(FONTS_OBJ)/ume-gothic/%.ttf: $$(%.ttf_FONT) $$(%.ttf_NAMETABLE_PATCH)
-@@ -941,12 +987,12 @@ $(FONTS_OBJ)/ume-gothic/%.ttf: $$(%.ttf_FONT) $$(%.ttf_NAMETABLE_PATCH)
+@@ -941,12 +988,12 @@ $(FONTS_OBJ)/ume-gothic/%.ttf: $$(%.ttf_FONT) $$(%.ttf_NAMETABLE_PATCH)
  	ttx -o $@ -m $($(notdir $@)_FONT) $(FONTS_OBJ)/ume-gothic/$(notdir $(basename $($(notdir $@)_NAMETABLE_PATCH))).ttx
  
  $(simsun.ttc): $(simsun.ttf) $(nsimsun.ttf)
@@ -228,7 +233,7 @@ index 7ec939df..32211119 100644
  
  $(micross.ttf): $(FONTS)/scripts/merge.py $(noto_sans.ttf) $(noto_sans_arabic.ttf) $(noto_sans_armenian.ttf) $(noto_sans_bengali.ttf) $(noto_sans_coptic.ttf) \
  		$(noto_sans_georgian.ttf) $(noto_sans_gujarati.ttf) $(noto_sans_hebrew.ttf) $(noto_sans_khmer.ttf) $(noto_sans_tamil.ttf) \
-@@ -1072,8 +1118,8 @@ all-dist: $(DIST_OVR32) $(DIST_OVR64)
+@@ -1072,8 +1119,8 @@ all-dist: $(DIST_OVR32) $(DIST_OVR64)
  ##
  
  default_pfx: wine gst_good gst_libav gst_plugins_rs lsteamclient steamexe vrclient wineopenxr dxvk dxvk-nvapi vkd3d-proton
@@ -239,7 +244,7 @@ index 7ec939df..32211119 100644
  	rm -rf $(abspath $(DIST_PREFIX))
  	python3 $(SRCDIR)/default_pfx.py $(abspath $(DIST_PREFIX)) $(abspath $(DST_DIR))
  
-@@ -1205,7 +1251,6 @@ ifeq ($(ENABLE_CCACHE),1)
+@@ -1205,7 +1252,6 @@ ifeq ($(ENABLE_CCACHE),1)
  	export CCACHE_DIR := $(if $(CCACHE_DIR),$(CCACHE_DIR),$(HOME)/.ccache)
  	override DOCKER_OPTS := -v $(CCACHE_DIR):$(CCACHE_DIR)$(CONTAINER_MOUNT_OPTS) $(CCACHE_ENV) -e CCACHE_DIR=$(CCACHE_DIR) $(DOCKER_OPTS)
  else
@@ -247,7 +252,7 @@ index 7ec939df..32211119 100644
  	override DOCKER_OPTS := $(CCACHE_ENV) -e CCACHE_DISABLE=1 $(DOCKER_OPTS)
  endif
  
-@@ -1220,9 +1265,6 @@ ifeq ($(CONTAINER_ENGINE),)
+@@ -1220,9 +1266,6 @@ ifeq ($(CONTAINER_ENGINE),)
  	CONTAINER_ENGINE := docker
  endif
  
