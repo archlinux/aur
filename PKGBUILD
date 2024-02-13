@@ -1,21 +1,41 @@
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname='perl-devel-partialdump'
-pkgver='0.17'
+_distname='Devel-PartialDump'
+pkgname="perl-${_distname@L}"
+pkgver='0.20'
 pkgrel='1'
 pkgdesc="Partial dumping of data structures, optimized for argument printing."
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('LicenseRef-GPL-1.0-or-later OR Artistic-1.0-Perl')
 options=('!emptydirs')
-depends=('perl-class-tiny' 'perl-sub-exporter' 'perl-test-use-ok' 'perl-namespace-clean')
-makedepends=()
-checkdepends=('perl-test-warn')
-url='http://search.mcpan.org/dist/Devel-PartialDump'
-source=('http://search.mcpan.org/CPAN/authors/id/E/ET/ETHER/Devel-PartialDump-0.17.tar.gz')
-md5sums=('c076e685aa184dede1454b3bea3430fa')
-sha512sums=('c473341a7c3e8b26ec56b90fa868cace4f5ebf612176a0bbb3c904ec488c4f6779ac26b8417fa9c18a6b6c98149718f5b7b90d0e8e0ec8cbf4bbdc1de6d279de')
-_distdir="Devel-PartialDump-0.17"
+depends=(
+  'perl'
+  'perl-class-tiny'
+  'perl-namespace-clean'
+  'perl-sub-exporter'
+)
+checkdepends=(
+  'perl-sub-name'
+  'perl-test-warnings'
+  'perl-yaml'
+)
+url="https://metacpan.org/release/$_distname"
+_author='ETHER'
+_licensefilename_SPDX_GPL1='GPL-1.0-or-later.txt'
+source=("https://search.cpan.org/CPAN/authors/id/${_author::1}/${_author::2}/$_author/$_distname-$pkgver.tar.gz"
+        "${_distname}-LICENCE-${_licensefilename_SPDX_GPL1}::https://raw.githubusercontent.com/Perl/perl5/perl-5.10.0/Copying")
+sha512sums=('1229fb82c62815eb030ddc3cdf037a877e46a1a00c6b6f6f99a562865649067757fe1e42e8242bdf8107b43197c5e47915da5fb6f502a2c90977022b47579b95'
+            'f3e5cce80bb15147bcb998320e670d2e04ae9cef0425181c4123471b781c6f56bd8b3e71fef2d6ab0f02b5fb8591d7ecb26ddc09ba3d2fb2f9ef7a538f4ac998')
+_distdir="$_distname-$pkgver"
+
+prepare() {
+  cd "$srcdir/$_distdir"
+
+  echo "Preparing license resources..."
+  cp --verbose "../$_distname-LICENCE-$_licensefilename_SPDX_GPL1" "LICENCE-$_licensefilename_SPDX_GPL1"
+}
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -40,12 +60,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
-}
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
+  install -Dm644 LICENCE* -t "$pkgdir/usr/share/licenses/$pkgname"
+}
