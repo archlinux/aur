@@ -1,25 +1,25 @@
 # Maintainer: Feakster <feakster at posteo dot eu>
 
-# Notes: http://ric.uthscsa.edu/mango/mango.html
-# User guide: http://ric.uthscsa.edu/mango/userguide.html
+# Notes: https://mangoviewer.com/mango.html
+# User guide: https://mangoviewer.com/userguide.html
 
 ### Info ###
 pkgname=java-mango
 _pkgname=${pkgname#java-}
 pkgver=4.1
-pkgrel=7
+pkgrel=8
 pkgdesc='A viewer for medical research images'
 arch=('any')
-url='http://ric.uthscsa.edu/mango/index.html'
+url="https://${_pkgname}viewer.com/${_pkgname}.html"
 license=('custom:RII-UTHSCSA')
 changelog=ChangeLog
 depends=(hicolor-icon-theme jre8-openjdk)
 makedepends=(imagemagick)
 options=(!strip)
-source=("${pkgname}-${pkgver}.zip::http://ric.uthscsa.edu/$_pkgname/downloads/${_pkgname}_unix.zip"
+source=("${pkgname}-${pkgver}.zip::http://${_pkgname}viewer.com/downloads/${_pkgname}_unix.zip"
         "${_pkgname}.sh"
         "${_pkgname}.desktop"
-        "${_pkgname}.png::http://ric.uthscsa.edu/$_pkgname/images/app_icon.png"
+        "${_pkgname}.png::http://${_pkgname}viewer.com/images/app_icon.png"
         'ChangeLog'
         'LICENSE')
 b2sums=('34ed9385f51cc29560a333abd0509bf2a41ef3db73d5b56d73df9ac8a446575f65f403b62daa8e9d589b9fe1dd720dac66fb56e6c345b9929b5b3f725eee7c0e'
