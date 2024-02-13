@@ -3,14 +3,14 @@
 
 _pkgname=ingen
 pkgname=$_pkgname-git
-pkgver=0.5.1.r3006.819fba38
+pkgver=0.5.1.r3029.85ad8074
 pkgrel=1
 pkgdesc='A modular plugin host for JACK and LV2 (git version)'
-arch=(x86_64)
+arch=('x86_64' 'x86_64_v3')
 url='https://drobilla.net/software/ingen.html'
 license=(GPL)
-depends=(gtkmm python-rdflib)
-makedepends=(boost ganv git jack lilv lv2 portaudio raul suil serd sord sratom)
+depends=('gtkmm' 'python-rdflib' 'cython')
+makedepends=('meson' 'boost' 'ganv' 'git' 'jack' 'lilv' 'lv2' 'portaudio' 'raul' 'suil' 'serd' 'sord' 'sratom' 'python-markdown' 'python-pygments' 'webkit2gtk')
 provides=($_pkgname lv2-host)
 conflicts=($_pkgname)
 source=("${_pkgname}::git+https://gitlab.com/drobilla/ingen.git")
@@ -27,7 +27,7 @@ build() {
   if [[ -d $pkgname-builddir ]]; then
     arch-meson --reconfigure $pkgname-builddir $_pkgname
   else
-    arch-meson $pkgname-builddir $_pkgname
+    arch-meson --buildtype=release $pkgname-builddir $_pkgname
   fi
 
   meson compile -C $pkgname-builddir
