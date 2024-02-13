@@ -1,7 +1,7 @@
 pkgbase = fbmirrors
 	pkgdesc = Arch mirror list generator
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bomgar/fbmirrors
 	arch = x86_64
 	license = custom:GPL-3.0
