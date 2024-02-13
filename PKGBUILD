@@ -2,16 +2,16 @@
 # Maintainer: João Figueiredo <jf.mundox@gmail.com>
 
 pkgname=kcalendarcore-git
-pkgver=5.79.0_r1175.g5c5480b54
+pkgver=6.0.0_r1414.ga65a2d114
 pkgrel=1
 pkgdesc="The KDE calendar access library"
 arch=($CARCH)
 url="https://community.kde.org/Frameworks"
-license=(LGPL)
-depends=(libical qt5-base)
-makedepends=(git extra-cmake-modules-git doxygen qt5-tools qt5-doc)
-conflicts=(${pkgname%-git} kcalcore kcalcore-git)
-provides=(${pkgname%-git} kcalcore kcalcore-git)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(gcc-libs glibc libical qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
+conflicts=(${pkgname%-git} kcalcore{,-git})
+provides=(${pkgname%-git} kcalcore{,git})
 replaces=(kcalcore-git)
 groups=(kf5-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
@@ -25,6 +25,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON
   cmake --build build

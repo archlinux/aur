@@ -1,21 +1,24 @@
 pkgbase = kcalendarcore-git
 	pkgdesc = The KDE calendar access library
-	pkgver = 5.79.0_r1175.g5c5480b54
+	pkgver = 6.0.0_r1414.ga65a2d114
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
 	groups = kf5-git
-	license = LGPL
+	license = LGPL-2.0-only
+	license = LGPL-3.0-only
 	makedepends = git
-	makedepends = extra-cmake-modules-git
 	makedepends = doxygen
-	makedepends = qt5-tools
-	makedepends = qt5-doc
+	makedepends = extra-cmake-modules-git
+	makedepends = qt6-doc
+	makedepends = qt6-tools
+	depends = gcc-libs
+	depends = glibc
 	depends = libical
-	depends = qt5-base
+	depends = qt6-base
 	provides = kcalendarcore
 	provides = kcalcore
-	provides = kcalcore-git
+	provides = kcalcoregit
 	conflicts = kcalendarcore
 	conflicts = kcalcore
 	conflicts = kcalcore-git
@@ -24,4 +27,3 @@ pkgbase = kcalendarcore-git
 	sha256sums = SKIP
 
 pkgname = kcalendarcore-git
-
