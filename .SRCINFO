@@ -1,0 +1,13 @@
+pkgbase = clevis-pin-fido2-git
+	pkgdesc = Clevis pin fido2
+	pkgver = r3.acbc254
+	pkgrel = 1
+	url = https://github.com/olastor/clevis-pin-fido2
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	source = git+https://github.com/olastor/clevis-pin-fido2
+	sha512sums = SKIP
+
+pkgname = clevis-pin-fido2-git
