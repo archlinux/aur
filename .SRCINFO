@@ -1,10 +1,10 @@
 pkgbase = python-baidubce
 	pkgdesc = BCE SDK for python
-	pkgver = 0.9.2
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = https://pypi.org/project/bce-python-sdk
 	arch = any
-	license = Apache2
+	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -12,7 +12,7 @@ pkgbase = python-baidubce
 	depends = python-pycryptodome
 	depends = python-future
 	depends = python-six
-	source = https://pypi.org/packages/source/b/bce-python-sdk/bce-python-sdk-0.9.2.tar.gz
-	sha512sums = 87f8469f9d6f02bb76b5d70268d31af0b0afe375654d54acfd5a7b81c40e1c15c08a55e9f3041e19375ab264ed1de34f7d7168df407866080dcdecee8ffbc2ed
+	source = https://pypi.org/packages/source/b/bce-python-sdk/bce-python-sdk-0.9.4.tar.gz
+	sha512sums = 277360f0b69dd9ab42081789e0eb72748e045bc6e814070dc8cb5d6bb57630fd96ae260cac55cfe4228d51ff0659184ea523d41359bff10e69579e50b4ab6b1b
 
 pkgname = python-baidubce
