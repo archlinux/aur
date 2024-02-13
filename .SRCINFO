@@ -1,0 +1,12 @@
+pkgbase = fbmirrors
+	pkgdesc = Arch mirror list generator
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/bomgar/fbmirrors
+	arch = x86_64
+	license = custom:WTFPL
+	makedepends = go
+	source = fbmirrors-0.0.3.tar.gz::https://github.com/bomgar/fbmirrors/archive/v0.0.3.tar.gz
+	sha256sums = 13fbc715d332ed87ae1f00dd768ab36a3e949bafee67c96c4367347db11cebaa
+
+pkgname = fbmirrors
