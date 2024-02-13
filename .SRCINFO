@@ -1,0 +1,13 @@
+pkgbase = neovim-comment-opt-git
+	pkgdesc = Smart and powerful comment plugin for Neovim.
+	pkgver = 220.c804329
+	pkgrel = 1
+	url = https://github.com/numToStr/comment.nvim
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = neovim
+	source = comment::git+https://github.com/numToStr/comment.nvim.git
+	sha256sums = SKIP
+
+pkgname = neovim-comment-opt-git
