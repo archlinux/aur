@@ -5,14 +5,17 @@
 
 pkgname=hearse
 pkgver=1.5
-pkgrel=6
+pkgrel=7
 pkgdesc="Nethack online bones file exchanger"
 arch=('i686' 'x86_64')
 url="http://hearse.krollmark.com/"
 license=('GPL')
 depends=('perl-libwww')
-source=("https://web.archive.org/web/20220524055801/http://www.argon.org/~roderick/hearse/dist/$pkgname-$pkgver.tar.gz"
-        "$pkgname.patch")
+source=(
+        "http://www.argon.org/~roderick/hearse/dist/$pkgname-$pkgver.tar.gz"
+#        "https://web.archive.org/web/20220524055801/http://www.argon.org/~roderick/hearse/dist/$pkgname-$pkgver.tar.gz"
+        "$pkgname.patch"
+)
 options=(!emptydirs)
 install=hearse.install
 md5sums=('4c022342d3f75af3b70a3e07e8e82ee0'
