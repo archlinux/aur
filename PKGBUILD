@@ -3,7 +3,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-truecolor-wide-glyphs
 pkgver=9.31
-pkgrel=5
+pkgrel=6
 pkgdesc="Unicode enabled rxvt-clone terminal emulator (urxvt) with true color, enhanced glyphs and improved font rendering support"
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -45,6 +45,7 @@ source=(
     'urxvt-tabbed.desktop'
     'resize-font'
     'keyboard-select'
+    '7-bit-queries.patch'
     'perl-5.38.patch'
     '24-bit-color.patch'
     'enable-wide-glyphs.patch'
@@ -58,8 +59,9 @@ b2sums=('439a8c33b7260e0f2fd68b8a4409773c06c3bb7623b5dfbbb0742cc198c9fd25e8a2479
         '71072f1f262b0759f0251654b7563e0dc5b3f73bc3705321d4e75230c51692541a8f5aa289657714baeab93a9e7b404a0b3ce0eecafb116c389a640209916916'
         '7f760beda37d781ae5bfff280fb912b3210ed4e60c82d279706feb023e5e10e9c5abe8eaa9bef6d7da460df39808c56de91ee2d5ffc63ea0c2e402810fa3dfb5'
         '9e3c03390d44a53b933fd6e11f3b644c43f377d3848975d9a5d1b964b042aca08995c968ada22b143bdc014691282242c8e718820f16086b35588242eb71a15b'
-        '9e48493ed4138beaf6333339bb421f7531f298d85c45b30799e4c672363a2653e884749c7cd9c98e42665f6f837f69caa3e1429285e9b40798c87b161b6d66c6'
-        '03c250e1aedbe50924b34cc9261921b3bf7af6786ce3fea61cbcf145b79b6eb4e101e63fa08f00baaabe530bb164e6bcfd4c04ddbacf0dcc28fdebef0519b9e0'
+        'fbe0135809c8dbf703c0d44d32def466051dc895b6c1e8e0411ed31ab04295934384e1e900ab030ce97f3f738bd792541750ef5417342865be62af21423ea228'
+        'dcaeac1c3822bf27d0ea4ac3ae6a8852c88420b3b30a5b31ec9022afbf4f65aa29b1e11e0b5e3f6098de057983d886b6a54b5e3ce489ac93320245a6d6f64703'
+        'e62677f91d4d5ba9662dc5c4a41c4a3993a1b7bb45c0746745e4b478b736fbe87505cb067b3f35e4cd46b419f927d66bbdaf47dabca04c63d6479d289cc46651'
         '8d360d8b0cd274b63f3c0c7651b358cf94aa71c39adb15ca5d8f3c8a05d930bf96ac559e6b7eceb6b3706a2caa3bf7002f75f596a1efdb5e54e43d20b9341590'
         '77b2a764558660cbc16325eacca3a2b17d3071d59c7a956a43c796a8d9374f5d202012e13a50ef4d978e2826009d9f1a93fb118d97e27e4cfbf0569e1d781082')
 
@@ -69,7 +71,10 @@ prepare() {
 
     cd "$_archive"
 
-    # locale fix for perl 5.38
+    # workaround: multiple-char sequence for 7-bit queries
+    patch -p0 -i ../7-bit-queries.patch
+
+    # workaround: locale for perl 5.38
     patch -p0 -i ../perl-5.38.patch
 
     ################################################################
