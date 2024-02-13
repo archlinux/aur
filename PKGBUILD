@@ -1,16 +1,15 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scanMiR
-_pkgver=1.8.0
+_pkgver=1.8.2
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='scanMiR'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgdesc="scanMiR"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-biocparallel
   r-biostrings
   r-cowplot
@@ -18,9 +17,9 @@ depends=(
   r-genomeinfodb
   r-genomicranges
   r-ggplot2
-  r-ggseqlogo
   r-iranges
   r-s4vectors
+  r-seqlogo
   r-stringi
 )
 optdepends=(
@@ -30,14 +29,15 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2b4d42e569b32bb091afde6e880833481b9be61c4260b3911329d1d4fb7ae49c')
+md5sums=('7d358cc7346de7793cded5df405fa6a8')
+b2sums=('751a0c13561ad5841122d0546a0600f4b09bc020fee5b37274fba3529620f562292ccee63ee391a307ff91020fc365aebabd25d7290c3a3bd6086ccd0bc0e8eb')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
