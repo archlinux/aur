@@ -2,14 +2,14 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=variancePartition
-_pkgver=1.32.2
+_pkgver=1.32.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Quantify and interpret drivers of variation in multilevel gene expression experiments"
 arch=(any)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL2)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r-aod
   r-biobase
@@ -58,12 +58,12 @@ optdepends=(
   r-zenith
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('75a8e840769ba62b9f175c73aba9c99a')
-sha256sums=('bd6c96ec3d8eebcb0ab387e0754df79fbb00b1557cc37d42f169a4a2d278ac32')
+md5sums=('8a4ece91ac81a08e3f3671f4513caf72')
+b2sums=('95ee41908a1171fb956cff170d316885d5dc6b4cd01c1c85ebd69f4f3bbd21cc4a0b5616d8709d408f76198d0ee14ec74a3ff198ada5b1105cdcea412d2ddbf8')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
