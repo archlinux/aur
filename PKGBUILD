@@ -8,7 +8,7 @@
 
 pkgname=flexget
 _pkgname=Flexget
-pkgver=3.11.17
+pkgver=3.11.18
 pkgrel=1
 pkgdesc="Multipurpose automation tool for downloading media content from different sources"
 arch=(any)
@@ -83,7 +83,7 @@ source=(
   "flexget@.service"
 )
 sha256sums=(
-  '793806c65a104e7133352a75c3eb16a8266edb0d90386b0394659c54c89b6e05'
+  '8174142713ec3d4d293233ab6f19d0a5e850ce5bb95e4e47b1a47afc5d88b6ff'
   '117de8d5cbe0ac53ecd3be3e579f2cfa62ef186ab36e382f857059380447c5aa'
   'aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a'
 )
@@ -99,6 +99,7 @@ build() {
 check() {
   cd "$_archive"
 
+  # Deselect failing tests - not sure why they fail
   pytest \
     --deselect flexget/tests/test_decompress.py::TestExtract::test_delete_rar \
     --deselect flexget/tests/test_decompress.py::TestExtract::test_rar
