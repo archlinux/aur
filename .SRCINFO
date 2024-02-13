@@ -1,0 +1,16 @@
+pkgbase = ocean-sound-theme-git
+	pkgdesc = Ocean Sound Theme for Plasma
+	pkgver = 6.0.80_r98.g4b12a40
+	pkgrel = 1
+	url = https://kde.org/plasma-desktop/
+	arch = any
+	groups = plasma
+	license = LGPL-2.0-or-later
+	makedepends = extra-cmake-modules-git
+	makedepends = qt6-base
+	provides = ocean-sound-theme
+	conflicts = ocean-sound-theme
+	source = git+https://invent.kde.org/plasma/ocean-sound-theme.git
+	sha256sums = SKIP
+
+pkgname = ocean-sound-theme-git
