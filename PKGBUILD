@@ -1,6 +1,6 @@
 pkgname=website-stalker-bin
 pkgver=0.22.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Track changes on websites via git"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/EdJoPaTo/${pkgname/-bin/}"
@@ -22,6 +22,7 @@ sha256sums_armv7h=('9d249ce52133326ec245c1bcf34d8a72c825647faf97d8b855a9bde09906
 
 package() {
 	install -Dm755 "${pkgname/-bin/}" -t "${pkgdir}/usr/bin/"
+	install -Dm644 CHANGELOG.md -t "${pkgdir}/usr/share/doc/${pkgname/-bin/}/"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname/-bin/}/"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/${pkgname/-bin/}/"
 
