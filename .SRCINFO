@@ -1,0 +1,21 @@
+pkgbase = kstatusnotifieritem-git
+	pkgdesc = Implementation of Status Notifier Items
+	pkgver = 5.249.0
+	pkgrel = 1
+	url = https://community.kde.org/Frameworks
+	arch = x86_64
+	license = LGPL-2.0-or-later
+	makedepends = doxygen
+	makedepends = extra-cmake-modules-git
+	makedepends = qt6-doc
+	makedepends = qt6-tools
+	depends = gcc-libs
+	depends = glibc
+	depends = kwindowsystem-git
+	depends = qt6-base
+	provides = kstatusnotifieritem
+	conflicts = kstatusnotifieritem
+	source = git+https://invent.kde.org/frameworks/kstatusnotifieritem.git
+	sha256sums = SKIP
+
+pkgname = kstatusnotifieritem-git
