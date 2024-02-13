@@ -14,7 +14,7 @@ makedepends=('python' 'meson' 'clang' 'llvm-libs' 'cargo' 'rust')
 backup=('etc/default/scx')
 options=(!lto)
 source=(https://github.com/sched-ext/scx/archive/refs/tags/v${pkgver}.tar.gz)
-sha512sums=('a1c0f5e279f0c119ac310874fc82ef9247dcb06419fbc6327e8f70d809059924c28637c35d4c2c5bd478fd116f5c8af5c65994fddc95f941b31d0b3929385869')
+sha512sums=('8137aac898ecce00299dc355a26f4d3565e6bc4ec3ce6dc38667fbee81f379ac62b1437fd289f9e20cfa9fbf82538078dce4c74a3ffe3f8e633306f8a8f6b6fe')
 
 prepare() {
  cd scx-${pkgver}
