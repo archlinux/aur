@@ -1,15 +1,17 @@
-pkgbase = mercury-parser
+pkgbase = postlight-parser
 	pkgdesc = Extract meaningful content from the chaos of a web page (@postlight version)
 	pkgver = 2.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/postlight/parser
 	arch = any
 	license = Apache-2.0
 	makedepends = git
 	makedepends = npm
 	depends = nodejs
-	noextract = mercury-parser-2.2.3.tgz
+	conflicts = mercury-parser
+	replaces = mercury-parser
+	noextract = postlight-parser-2.2.3.tgz
 	source = https://registry.npmjs.org/@postlight/parser/-/parser-2.2.3.tgz
 	sha256sums = 1aeea735458b89956608a0b3231d882cee73a3319f9bc10a6332b9ad553e829b
 
-pkgname = mercury-parser
+pkgname = postlight-parser
