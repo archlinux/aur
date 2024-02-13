@@ -49,7 +49,6 @@ build() {
     --prefix=/usr \
     --sbindir=/usr/bin \
     --with-crypto-library=${crypto_library} \
-    --enable-iproute2 \
     --enable-plugins \
     --enable-systemd
   make
