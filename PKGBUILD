@@ -1,15 +1,15 @@
 # Maintainer: Xavier R.M. (sapphirus at azorium dot net)
 
 pkgname=('pacwrap' 'pacwrap-dist')
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
-pkgdesc="Facilitates the creation, management, and execution of unprivileged Arch-based bubblewrap containers."
+pkgdesc="Facilitates the creation, management, and execution of Arch-baesd unprivileged bubblewrap containers."
 arch=('x86_64')
 url="https://pacwrap.sapphirus.org/"
 license=('GPLv3-only')
 makedepends=('cargo' 'git' 'fakeroot' 'pacman' 'zstd' 'busybox' 'fakechroot')
 source=("${pkgname}-${pkgver}.tar.zst::https://github.com/pacwrap/pacwrap/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.zst")
-sha512sums=('936e66bb38ab5eab79c6678071ef472ba8135937c5a223271165934b19803410f7876991c428bd7a4a32b77f666380edc37f1d703b1961c5028ef270154d8169')
+sha512sums=('eea9177b2d7065915a6e0dd911881242f9690509e710a66eb3114cf9459668c839f983580d87f7d4e161006ca06df1b3572769ccdf52430f84061a20e94302e4')
 options=('!lto')
 
 prepare() {
