@@ -3,13 +3,13 @@
 
 pkgname='perl-mousex-configfromfile'
 pkgver='0.05'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="An abstract Mouse role for setting attributes from a configfile"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-mouse>=0.39' 'perl-mousex-types-path-class>=0.06' 'perl>=5.8.1')
-makedepends=()
+makedepends=('perl-module-install')
 checkdepends=('perl-test-useallmodules>=0')
 url='https://metacpan.org/release/MouseX-ConfigFromFile'
 source=('https://cpan.metacpan.org/authors/id/M/MA/MASAKI/MouseX-ConfigFromFile-0.05.tar.gz')

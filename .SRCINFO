@@ -1,12 +1,13 @@
 pkgbase = perl-mousex-configfromfile
 	pkgdesc = An abstract Mouse role for setting attributes from a configfile
 	pkgver = 0.05
-	pkgrel = 3
+	pkgrel = 4
 	url = https://metacpan.org/release/MouseX-ConfigFromFile
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	checkdepends = perl-test-useallmodules>=0
+	makedepends = perl-module-install
 	depends = perl-mouse>=0.39
 	depends = perl-mousex-types-path-class>=0.06
 	depends = perl>=5.8.1
