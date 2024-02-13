@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-pixman
 	pkgdesc = The pixel-manipulation library for X and cairo (android)
 	pkgver = 0.42.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://xorg.freedesktop.org
 	arch = any
 	license = custom
