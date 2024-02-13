@@ -1,16 +1,22 @@
 pkgbase = pamix-git
-	pkgdesc = PAMix - the pulseaudio terminal mixer
-	pkgver = 1.6.r10.gea4ab3b.0.gea4ab3b
+	pkgdesc = ncurses/curses PulseAudio mixer
+	pkgver = 1.6.r10.gea4ab3b.31.g1609e38
 	pkgrel = 1
 	url = https://github.com/patroclos/PAmix
+	arch = x86_64_v3
 	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = armv7h
+	arch = aarch64
 	license = MIT
 	makedepends = git
 	makedepends = cmake
 	depends = ncurses
-	depends = pulseaudio
-	source = git://github.com/patroclos/PAmix.git
+	depends = libpulse
+	provides = pamix
+	conflicts = pamix
+	source = pamix::git+https://github.com/patroclos/PAmix.git
 	md5sums = SKIP
 
 pkgname = pamix-git
-
