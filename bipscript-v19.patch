@@ -1,0 +1,12 @@
+diff --git a/ext/lufsmeter/bipbuffer.h b/ext/lufsmeter/bipbuffer.h
+index a7f44f1..daf6005 100644
+--- a/ext/lufsmeter/bipbuffer.h
++++ b/ext/lufsmeter/bipbuffer.h
+@@ -20,6 +20,7 @@
+ #include <algorithm>
+ #include <assert.h>
+ #include <math.h>
++#include <cstdint>
+ #include <string.h>
+ #include <string>
+ 

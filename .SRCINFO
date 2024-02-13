@@ -1,10 +1,11 @@
 pkgbase = bipscript
 	pkgdesc = A scripting language for interactive music
-	pkgver = 0.17
+	pkgver = 0.19
 	pkgrel = 1
 	url = http://www.bipscript.org
 	arch = i686
 	arch = x86_64
+	arch = x86_64_v3
 	groups = pro-audio
 	license = GPL
 	makedepends = cmake
@@ -21,6 +22,8 @@ pkgbase = bipscript
 	provides = bipscript
 	conflicts = bipscript
 	source = bipscript::git+https://gitlab.domainepublic.net/bipscript/bipscript.git
+	source = bipscript-v19.patch
 	sha256sums = SKIP
+	sha256sums = 5e0794a2d00ad631e76ac3921058681c0e1df31a61dcdd3574b3097d0ed11cea
 
 pkgname = bipscript
