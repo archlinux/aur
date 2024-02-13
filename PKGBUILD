@@ -5,7 +5,7 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-freetype2-bootstrap
 pkgver=2.13.2
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc='Font rasterization library (android)'
 depends=("android-ndk"
@@ -43,7 +43,6 @@ build() {
     cd "${srcdir}/freetype-${pkgver}"
     source android-env ${_android_arch}
 
-    export C_INCLUDE_PATH="${ANDROID_PREFIX_INCLUDE}/libpng:${ANDROID_PREFIX_INCLUDE}"
     bzip2opt=enabled
 
     # Platform specific patches
