@@ -1,8 +1,8 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 _basename=jicofo
-_tag=1062
-_version=1.0.1062
+_tag=1066
+_version=1.0.1066
 
 pkgname=${_basename}
 pkgver=${_version}
