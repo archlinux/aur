@@ -1,7 +1,7 @@
-# Maintainer: YidaozhanYa <yidaozhan_ya@outlook.com>
+# Maintainer: Kirikaze Chiyuki <me@chyk.ink>
 pkgname=moondust-configpack-smbx38a
-pkgver=2022may22
-pkgrel=2
+pkgver=2024feb02
+pkgrel=1
 pkgdesc="Moondust Project's game configuration pack - Super Mario Brothers X By 38A"
 arch=('any')
 url="http://wohlsoft.ru/forum/viewtopic.php?f=58&t=714"
