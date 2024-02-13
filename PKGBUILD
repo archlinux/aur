@@ -1,5 +1,5 @@
 # Maintainer: Edmundo Sanchez <zomundo at gmail dot com>
-pkgname=terraform
+pkgname=terraform-bin
 pkgbase=terraform-bin
 pkgver=1.7.3
 pkgrel=1.0
