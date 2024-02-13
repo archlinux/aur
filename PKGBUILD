@@ -9,12 +9,12 @@
 
 pkgname=filebot
 pkgver=5.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The ultimate TV and Movie Renamer"
 arch=('i686' 'x86_64' 'aarch64' 'armv7l' 'armv7h')
 url="https://www.filebot.net/"
 license=('Commercial')
-depends=('jre17-openjdk' 'java17-openjfx' 'fontconfig' 'chromaprint')
+depends=('java-runtime' 'fontconfig' 'chromaprint')
 makedepends=()
 checkdepends=()
 
@@ -26,21 +26,19 @@ provides=('filebot')
 
 conflicts=('filebot47' 'filebot-git')
 install=$pkgname.install
-source=(
-    "https://get.filebot.net/filebot/FileBot_${pkgver}/FileBot_${pkgver}-aur.tar.xz"
-    "https://get.filebot.net/filebot/FileBot_${pkgver}/FileBot_${pkgver}-aur.tar.xz.asc"
-    "filebot.sh"
-)
+source=("https://get.filebot.net/filebot/FileBot_${pkgver}/FileBot_${pkgver}-aur.tar.xz"
+        "https://get.filebot.net/filebot/FileBot_${pkgver}/FileBot_${pkgver}-aur.tar.xz.asc"
+        "filebot.sh")
 
 sha256sums=('f8acf7af5d6aa992b6aed1d41caf484cae967ed6cb0d501656ba82d3f22c736a'
             'SKIP'
-            '7876c203315d8f6f59ed4c71ef22594fad19cb0bff7044d0cf724a25ce137d7c')
+            '3c05e7ac0f2268a42dccc9158081022db857c656f8350d33518bc7ad7ac17a3a')
 validpgpkeys=('B0976E51E5C047AD0FD051294E402EBF7C3C6A71')
 
 package() {
   mkdir -p "${pkgdir}/usr/bin"
   mkdir -p "${pkgdir}/usr/share/${pkgname}"
- 
+
   install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
   cp -dpr --no-preserve=ownership "${srcdir}/etc" "${srcdir}/usr" "${pkgdir}"
