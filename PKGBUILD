@@ -1,6 +1,6 @@
 # Maintainer: FineFindus <Finefindusgh@gmail.com>
 pkgname=artem-bin
-pkgver=2.0.2
+pkgver=2.0.6
 pkgrel=1
 pkgdesc='Convert images from multiple formats (jpg, png, webp, etc…) to ASCII art, written in rust'
 url='https://github.com/finefindus/artem'
@@ -9,7 +9,7 @@ arch=('x86_64' 'aarch64')
 provides=('artem')
 conflicts=('artem')
 source=("https://github.com/FineFindus/artem/releases/download/v$pkgver/artem-v$pkgver-$CARCH-unknown-linux-gnu.tar.gz")
-sha256sums=('9764fea8523812900eb9c7e9aba042377da45b762ee84ad8cac9bcb700f806b9')
+sha256sums=('70e19367d6ac8c2077a09dc362d4b11e6f26891265c53c35ee9d491d4d6a9945')
 
 package() {
     install -Dm 755 artem -t "$pkgdir/usr/bin"
