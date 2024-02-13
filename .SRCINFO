@@ -1,0 +1,17 @@
+pkgbase = hoverclock-qt-bin
+	pkgdesc = Hoverclock QT - A simple floating clock for Linux
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/kostoskistefan/hoverclock-qt
+	arch = x86_64
+	license = GPL3
+	provides = hoverclock-qt
+	conflicts = hoverclock-appimage
+	conflicts = hoverclock
+	options = !strip
+	source = Hoverclock-QT.zip::https://github.com/kostoskistefan/hoverclock-qt/releases/download/v1.0.1/Hoverclock-QT.zip
+	source = https://raw.githubusercontent.com/kostoskistefan/hoverclock/main/LICENSE
+	md5sums = e03766ea6076c522252635637ac45f7a
+	md5sums = 1ebbd3e34237af26da5dc08a4e440464
+
+pkgname = hoverclock-qt-bin
