@@ -3,7 +3,7 @@ pkgbase=python-sphinx-book-theme
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A lightweight book theme built off of the pydata sphinx theme"
 arch=('any')
@@ -17,7 +17,7 @@ checkdepends=('python-nose'
               'python-pydata-sphinx-theme')
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/py3/${_pyname:0:1}/${_pyname}/${_pyname//-/_}-${pkgver}-py3-none-any.whl")
-md5sums=('76ca7f747ad9fe5d525e652d6f0f5902')
+md5sums=('c1a4dffe47d0d65a74fe091108e22222')
 
 #build() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -36,7 +36,7 @@ check() {
 }
 
 package_python-sphinx-book-theme() {
-    depends=('python-sphinx' 'python-pydata-sphinx-theme>=0.13.3')
+    depends=('python-sphinx' 'python-pydata-sphinx-theme>=0.14')
 #   optdepends=('python-pre-commit: code_style'
 #               'python-folium: sphinx'
 #               'python-numpy: sphinx'
