@@ -1,1 +1,3 @@
-d %S/traggo 0750 traggo traggo
+d /etc/traggo 0750 traggo traggo
+Z /etc/traggo 0750 traggo traggo
+d %S/traggo   0750 traggo traggo
