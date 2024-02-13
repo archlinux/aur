@@ -1,7 +1,7 @@
 pkgbase = done
 	pkgdesc = Done is a simple to do app that aims to improve on the existing set of features provided to do apps to deliver the ultimate experience.
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://github.com/done-devs/done
 	arch = x86_64
 	license = MPL2
@@ -11,10 +11,10 @@ pkgbase = done
 	makedepends = meson
 	depends = gtk4
 	depends = libadwaita
-	depends = pkg-config
+	depends = libsecret
 	depends = sqlite
-	depends = pango>=1.51.1
-	source = done-0.2.0.tar.gz::https://github.com/done-devs/done/archive/v0.2.0.tar.gz
-	sha256sums = 5d910b11bd1363224469673b07416a638569a98f709bbd74bfee5aa24449a25c
+	depends = pango
+	source = done-0.2.1.tar.gz::https://github.com/done-devs/done/archive/v0.2.1.tar.gz
+	sha256sums = e9e22a82a5ba30ae8cb9c553c02c19a07f4c23df30316e806b67bf0c94aebff7
 
 pkgname = done
