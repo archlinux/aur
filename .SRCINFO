@@ -1,6 +1,6 @@
 pkgbase = cutter-test_framework
 	pkgdesc = cutter is a C/C++ unit test framework.
-	pkgver = 1.2.7
+	pkgver = 1.2.8
 	pkgrel = 1
 	url = http://cutter.sourceforge.net/index.html
 	arch = i686
@@ -20,8 +20,8 @@ pkgbase = cutter-test_framework
 	optdepends = cairo
 	optdepends = pango
 	optdepends = ruby
-	source = https://github.com/clear-code/cutter/releases/download/1.2.7/cutter-1.2.7.tar.gz
-	sha1sums = a6294b713bc4c5574a6cf6f4ba6be1ffeabaa3b2
+	source = https://github.com/clear-code/cutter/archive/refs/tags/1.2.8.tar.gz
+	sha1sums = 06c92b3165b3174cd1ac970efd17a11570db8356
+	sha256sums = af29d3d61076fc03313fc1b8da76aa8b884edf683e684898be5d33ba8440df14
 
 pkgname = cutter-test_framework
-
