@@ -1,11 +1,11 @@
 pkgbase = pfstools
 	pkgdesc = Set of command line programs for reading, writing and manipulating high-dynamic range (HDR) images
 	pkgver = 2.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://pfstools.sourceforge.net/
 	arch = i686
 	arch = x86_64
-	license = LGPL2.1
+	license = LGPL-2.1-or-later
 	makedepends = cmake
 	makedepends = qt5-base
 	makedepends = octave

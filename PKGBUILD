@@ -4,11 +4,11 @@
 # Contributor: Mael Kerbiriou <mael.kerbiriouATfreeDOTfr>
 pkgname=pfstools
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Set of command line programs for reading, writing and manipulating high-dynamic range (HDR) images"
 arch=('i686' 'x86_64')
 url="http://pfstools.sourceforge.net/"
-license=('LGPL2.1')
+license=('LGPL-2.1-or-later')
 depends=('gcc-libs')
 provides=('pfscalibration' 'pfstmo')
 conflicts=('pfscalibration' 'pfstmo')
