@@ -1,7 +1,7 @@
-# Maintainer: Vlad Glagolev <scm(at)vaygr(dot)net>
+# Maintainer: Axel McLaren <scm(at)axml(dot)uk>
 
 pkgname=mangl
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="graphical man page viewer"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('zlib' 'glfw' 'libgl' 'freetype2')
 optdepends=('fontconfig: set custom font')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('a8f69f30d2dbddaffb9c766669739ad0c838d67e95d7806f7cee332bb304dc7b'
+sha256sums=('bd1c41f10b1c5914564d5825e912e2696f787c4b44c7ed55b023b80156a6726e'
             '370e454df24a2bf0bf185988d92083c0ec5bd72548a5fba9c44867e76a1d8d91')
 
 prepare() {
