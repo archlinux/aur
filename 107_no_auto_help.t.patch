@@ -1,0 +1,7 @@
+--- 107_no_auto_help.t	2019-01-26 04:38:13.000000000 +0100
++++ 107_no_auto_help.t	2024-02-13 08:00:47.292823529 +0100
+@@ -63 +63 @@
+-        qr/^usage: [\d\w]+\Q.t [-?] [long options...]\E.\s+\Q-? --\E(\[no-\])?usage --(\[no-\])?\Qhelp\E\s+\QPrints this usage information.\E.\s+--configfile/ms,
++        qr/^usage: [\d\w]+\Q.t [-?] [long options...]\E.\s+(\Q-? --\E(\[no-\])?usage )?--(\[no-\])?\Qhelp\E(\Q (or -?)\E)?\s+\QPrints this usage information.\E.(\s+\Qaka --usage\E.)?\s+--configfile/ms,
+@@ -67,0 +68 @@
++

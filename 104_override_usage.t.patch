@@ -1,0 +1,21 @@
+--- 104_override_usage.t	2019-01-26 04:38:13.000000000 +0100
++++ 104_override_usage.t	2024-02-13 06:53:11.889137356 +0100
+@@ -63,0 +64,2 @@
++         # Note: Getopt::Long::Descriptive 0.106 not supported
++         $Getopt::Long::Descriptive::VERSION < 0.107 ?
+@@ -67,0 +70,13 @@
++        :
++         $Getopt::Long::Descriptive::VERSION < 0.113 ?
++         qq{usage: 104_override_usage.t [-?] [long options...]
++\t--[no-]help (or -?)  Prints this usage information.
++\t             aka --usage
++\t--foo INT    A foo
++}
++        :
++         qq{usage: 104_override_usage.t [-?] [long options...]
++    --[no-]help (or -?)  Prints this usage information.
++                 aka --usage
++    --foo INT    A foo
++}
+@@ -74,0 +90 @@
++

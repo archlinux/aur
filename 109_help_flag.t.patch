@@ -1,0 +1,7 @@
+--- 109_help_flag.t	2019-01-26 04:38:13.000000000 +0100
++++ 109_help_flag.t	2024-02-13 08:01:12.840097318 +0100
+@@ -43 +43 @@
+-        qr/^usage: (?:[\d\w]+)\Q.t [-?] [long options...]\E.^\t\Q-? --\E(\[no-\])?usage --(\[no-\])?help\s+\QPrints this usage information.\E$/ms,
++        qr/^usage: (?:[\d\w]+)\Q.t [-?] [long options...]\E.^\s+(\Q-? --\E(\[no-\])?usage )?--(\[no-\])?help(\Q (or -?)\E)?\s+Prints ?(.\s+)?\Qthis usage information.\E.(\s+\Qaka --usage\E.)?$/ms,
+@@ -50,0 +51 @@
++
