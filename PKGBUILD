@@ -2,7 +2,7 @@
 pkgname=doukutsu-save-editor
 _pkgname=doukutsu-save-editor-rs
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Save Editor for Cave Story in rust with egui"
 url="https://github.com/poly000/$_pkgname"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
