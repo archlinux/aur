@@ -5,7 +5,7 @@
 # https://github.com/TD-Sky/PKGBUILDs
 
 pkgname=satty-bin
-pkgver=0.8.3
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A screenshot annotation tool inspired by Swappy and Flameshot"
 url="https://github.com/gabm/Satty"
@@ -15,7 +15,7 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 depends=('gtk4' 'libadwaita')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('613a9a93e06da732aad850fa184e7c0435035c9870e96187e43de69051ae72c2')
+sha256sums=('1b823ba892d73af5c67058fe776efb1ef0e23e986412b54176d0cc3484d61c56')
 
 package() {
   install -Dm 755 "${pkgname%-bin}" -t "$pkgdir/usr/bin"
