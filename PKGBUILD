@@ -3,7 +3,7 @@
 
 pkgname="paperless-ngx"
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A supercharged version of paperless: scan, index and archive all your physical documents"
 url="https://docs.paperless-ngx.com/"
 license=("GPL3")
@@ -34,8 +34,6 @@ depends=("file"
          "python-brotli"
          "python-celery"
          "python-certifi"
-         "python-django-channels"
-         "python-django-channels-redis"
          "python-chardet"
          "python-click"
          "python-concurrent-log-handler"
@@ -43,8 +41,11 @@ depends=("file"
          "python-daphne"
          "python-dateparser"
          "python-django"
+         "python-django-allauth"
          "python-django-auditlog"
          "python-django-celery-results"
+         "python-django-channels"
+         "python-django-channels-redis"
          "python-django-compression-middleware"
          "python-django-cors-headers"
          "python-django-extensions"
