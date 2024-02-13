@@ -1,15 +1,15 @@
 pkgbase = wine-stable-mono
 	pkgdesc = Wine’s built-in replacement for Microsoft’s .NET Framework (for wine-stable)
-	pkgver = 7.4.1
+	pkgver = 8.1.0
 	pkgrel = 1
 	url = https://wiki.winehq.org/Mono
 	arch = any
 	license = GPL
 	license = LGPL2.1
 	license = MPL
-	provides = wine-mono=7.4.1
+	provides = wine-mono=8.1.0
 	conflicts = wine-mono
-	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-7.4.1/wine-mono-7.4.1-x86.tar.xz
-	b2sums = 28adbcca630698e74e455fbe37b8cd60c3d836c503db6a2df20e4db3e12f549a5d1fae6a4c0ccd6068e2667f700fbfe09858b95f156ad8d660ef3804773179a0
+	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-8.1.0/wine-mono-8.1.0-x86.tar.xz
+	b2sums = 0e0dd83b92016da328547173d25dc396a895a7a161cd54796c9bda34ae958856f1bee342c1bb5fcffcf695b35adf66b2bf83cfa61e01790bf4b0f2d198f84feb
 
 pkgname = wine-stable-mono
