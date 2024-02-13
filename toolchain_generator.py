@@ -49,9 +49,7 @@ class CrossFileGenerator:
         return binaries
 
     def get_properties_section(self):
-        return {'root': "'{}'".format(os.environ['ANDROID_PREFIX']),
-                'sys_root': "'{}'".format(os.environ['ANDROID_SYSROOT']),
-                'c_args': [f for f in self.cflags.split(" ") if f],
+        return {'c_args': [f for f in self.cflags.split(" ") if f],
                 'cpp_args': [f for f in self.cxxflags.split(" ") if f],
                 'c_link_args': [f for f in self.ldflags.split(" ") if f],
                 'cpp_link_args': [f for f in self.ldflags.split(" ") if f],

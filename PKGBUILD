@@ -3,7 +3,7 @@
 
 pkgname=android-meson
 pkgver=2
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Meson wrapper for Android"
 depends=('meson' 'android-environment' 'android-pkg-config')
