@@ -1,6 +1,6 @@
 --- src/rxvtperl.xs
 +++ src/rxvtperl.xs
-@@ -399,7 +399,7 @@ rxvt_perl_interp::init ()
+@@ -399,7 +399,7 @@
  {
    if (!perl)
      {
@@ -9,4 +9,3 @@
  
        {
          perl_environ = rxvt_environ;
-
