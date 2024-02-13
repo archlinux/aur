@@ -2,11 +2,11 @@
 
 pkgname=gsconnect-git
 pkgver=56.r11.g360ccd3
-pkgrel=1
+pkgrel=2
 pkgdesc="GSConnect CLI"
 arch=(any)
 url="https://github.com/GSConnect/gnome-shell-extension-${pkgname%-git}"
-license=(GPL-2.0-or-later OR MPL-2.0)
+license=('GPL-2.0-or-later OR MPL-2.0')
 depends=(gobject-introspection-runtime gjs gvc-git libnautilus-extension python python-gobject)
 makedepends=(appstream flake8 eslint git meson python-black)
 optdepends=('ydotool: generic command-line automation tool'
@@ -15,7 +15,7 @@ optdepends=('ydotool: generic command-line automation tool'
             'waybar: highly customizable Wayland bar'
             'python-pydbus: for fetch gsconnect status for waybar'
             'python-nautilus: Nautilus integration')
-provides=(gnome-shell-extension-${pkgname%-git})
+conflicts=(gnome-shell-extension-${pkgname%-git})
 options=(!debug)
 source=(${pkgname%-git}::git+$url.git
         ${pkgname%-git}-bash
