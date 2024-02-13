@@ -1,6 +1,6 @@
 # Maintainer: Alfonso Reyes <hola@alfon.so>
 pkgname=heynote-git
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="A dedicated scratchpad for developers"
 
@@ -10,11 +10,13 @@ arch=('any')
 url="https://github.com/heyman/heynote"
 license=('MIT')
 
+# build dependencies
+makedepends=('npm')
 depends=('npm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 
 sha256sums=(
-  "bf1836a488006d01140db2c428b9c6802216a4ac3bebe4ab80d2061ce1be1bae"
+  "1f00f56f81685505c6d96729149607fe70a65b3f917aeecb37f94c7dc39c72dd"
 )
 
 build() {
