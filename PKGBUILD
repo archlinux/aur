@@ -1,5 +1,5 @@
 pkgname=website-stalker
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="Track changes on websites via git"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 provides=("${pkgname}")
 
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha256sums=('30104a316b2485fd808ac97a2a70e22a01fccf7a2759495328b29f49c416baea')
+sha256sums=('f6c831264673df27157f76d33162055bd150212cbcb99ad13a8a1c85e9533186')
 
 build() {
 	cd $pkgname-$pkgver
@@ -28,6 +28,10 @@ package() {
 	install -Dm644 "target/completions/${pkgname}.bash" -t "${pkgdir}/usr/share/bash-completion/completions/"
 	install -Dm644 "target/completions/${pkgname}.fish" -t "${pkgdir}/usr/share/fish/vendor_completions.d/"
 	install -Dm644 "target/completions/_${pkgname}" -t "${pkgdir}/usr/share/zsh/site-functions/"
+
+	for man in target/manpages/*; do
+		install -Dm644 "$man" -t "${pkgdir}/usr/share/man/man1/"
+	done
 
 	install -Dm644 "systemd/system/service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 	install -Dm644 "systemd/system/timer" "${pkgdir}/usr/lib/systemd/system/${pkgname}.timer"
