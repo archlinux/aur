@@ -1,19 +1,17 @@
 pkgbase = commitlint
 	pkgdesc = Lint commit messages
-	pkgver = 18.6.0
+	pkgver = 18.6.1
 	pkgrel = 1
 	url = https://github.com/conventional-changelog/commitlint
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	conflicts = nodejs-commitlint
-	replaces = nodejs-commitlint
-	noextract = commitlint-18.6.0.tgz
-	noextract = config-conventional-18.6.0.tgz
-	source = https://registry.npmjs.org/commitlint/-/commitlint-18.6.0.tgz
-	source = https://registry.npmjs.org/@commitlint/config-conventional/-/config-conventional-18.6.0.tgz
-	sha256sums = 0b0b780739539423de54a0d1ac46a3f7e079a01314812fda8705b0a927018ee3
-	sha256sums = cba5907b7d68a0f077e1c8fb2a66e42ede711679b8a673ef6a7350265e877879
+	noextract = commitlint-18.6.1.tgz
+	noextract = config-conventional-18.6.1.tgz
+	source = https://registry.npmjs.org/commitlint/-/commitlint-18.6.1.tgz
+	source = https://registry.npmjs.org/@commitlint/config-conventional/-/config-conventional-18.6.1.tgz
+	sha256sums = 2bd7739a64cfbd671c4c014d44ed479f3fea5124fc4d1629e083a1ddabf0aef4
+	sha256sums = 3dcd0362001b912c8979c05e5495577419e93337d4a80aaa79d373dcc69fe20c
 
 pkgname = commitlint

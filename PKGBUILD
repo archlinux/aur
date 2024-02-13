@@ -3,7 +3,7 @@
 # Contributor: Thiago Almeida <thiagoalmeidasa@gmail.com>
 
 pkgname=commitlint
-pkgver=18.6.0
+pkgver=18.6.1
 pkgrel=1
 pkgdesc="Lint commit messages"
 arch=(any)
@@ -11,9 +11,6 @@ url="https://github.com/conventional-changelog/commitlint"
 license=(MIT)
 depends=(nodejs)
 makedepends=(npm)
-conflicts=(nodejs-commitlint)
-replaces=(nodejs-commitlint)
-
 source=(
   "https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz"
   "https://registry.npmjs.org/@commitlint/config-conventional/-/config-conventional-$pkgver.tgz"
@@ -23,8 +20,8 @@ noextract=(
   "config-conventional-$pkgver.tgz"
 )
 sha256sums=(
-  '0b0b780739539423de54a0d1ac46a3f7e079a01314812fda8705b0a927018ee3'
-  'cba5907b7d68a0f077e1c8fb2a66e42ede711679b8a673ef6a7350265e877879'
+  '2bd7739a64cfbd671c4c014d44ed479f3fea5124fc4d1629e083a1ddabf0aef4'
+  '3dcd0362001b912c8979c05e5495577419e93337d4a80aaa79d373dcc69fe20c'
 )
 
 package() {
