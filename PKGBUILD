@@ -3,12 +3,12 @@
 pkgname=tacentview-bin
 pkgver=1.0.43
 _pkgver=1.0-43
-pkgrel=2
-pkgdesc="An image and texture viewer for tga, png, apng, exr, dds, ktx, ktx2, astc, pkm, qoi, gif, hdr, jpg, tif, ico, webp, and bmp files. Uses Dear ImGui, OpenGL and Tacent (binary release)"
+pkgrel=3
+pkgdesc="Image viewer/editor for tga, png, apng, exr, dds, pvr, ktx, ktx2, astc, pkm, qoi, gif, hdr, jpg, tif, ico, webp, and bmp files (binary release)"
 url="https://github.com/bluescan/tacentview"
 license=('ISC')
 arch=('x86_64')
-depends=('libx11' 'hicolor-icon-theme' 'libxcb')
+depends=('hicolor-icon-theme' 'libx11' 'libxcb')
 provides=("tacentview")
 conflicts=("tacentview")
 source=("$url/releases/download/v$pkgver/tacentview_$_pkgver.deb"
@@ -18,8 +18,7 @@ sha256sums=('0974df7bae147a732c5bf8b1c0d9bbefe259bbac6d9b76ad5c72956ea090fc87'
 
 prepare() {
   tar --use-compress-program=unzstd -xf data.tar.zst
-  cd usr
-  rm bin/.gitignore share/tacentview/Data/.gitignore
+  rm usr/bin/.gitignore usr/share/tacentview/Data/.gitignore
 }
 
 package() {
