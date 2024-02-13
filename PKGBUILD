@@ -3,16 +3,16 @@
 
 pkgbase=usockets
 pkgname=usockets
-pkgver=0.8.5
-pkgrel=4
+pkgver=0.8.8
+pkgrel=1
 pkgdesc="Miniscule cross-platform eventing, networking & crypto for async applications"
 url="https://github.com/uNetworking/uSockets"
 license=('Apache')
 arch=('x86_64')
 source=("https://github.com/uNetworking/uSockets/archive/refs/tags/v${pkgver}.tar.gz"
         "usockets-$pkgver-Makefile.patch")
-sha256sums=('c52c98b7ff2c24534c17ad97d5fea8ca0cb7ff38cc933b8d08bac6e498a2ea6b'
-            'efeac07919bc804d24b10eceaa2145e8cfa5f2e95edec9e47a94bba5a825b55b')
+sha256sums=('d14d2efe1df767dbebfb8d6f5b52aa952faf66b30c822fbe464debaa0c5c0b17'
+            'a10d858c209b34304b7301faa9aea6885c7300f643038f7d356451600c2be4c4')
 depends=( openssl )
 
 prepare() {

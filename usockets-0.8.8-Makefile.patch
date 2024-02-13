@@ -2,13 +2,29 @@ diff --git a/Makefile b/Makefile
 index f6e2c6b..fdce16d 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -1,98 +1,63 @@
+@@ -1,109 +1,68 @@
  # By default we use LTO, but Windows does not support it
  ifneq ($(WITH_LTO),0)
 -	override CFLAGS += -flto
 +CFLAGS += -flto
  endif
  
++DESTDIR ?=
++
++prefix ?= /usr
++exec_prefix ?= $(prefix)
++LIB ?= lib
++libdir ?= $(exec_prefix)/$(LIB)
++includedir ?= $(exec_prefix)/include
++
++PKG_CONFIG ?= pkg-config
++
++VERSION ?= 0.0
++LIBTARGET = libusockets.so.$(VERSION)
++
++REQUIRES =
++COMMON_FLAGS = -Isrc
++
 -# WITH_BORINGSSL=1 enables BoringSSL support, linked statically (preferred over OpenSSL)
 -# You need to call "make boringssl" before
 -ifeq ($(WITH_BORINGSSL),1)
@@ -21,6 +37,10 @@ index f6e2c6b..fdce16d 100644
 -		override CFLAGS += -DLIBUS_USE_OPENSSL
 -		# With problems on macOS, make sure to pass needed LDFLAGS required to find these
 -		override LDFLAGS += -lssl -lcrypto -lstdc++
++ifeq ($(WITH_OPENSSL),1)
++COMMON_FLAGS += -DLIBUS_USE_OPENSSL
++LDFLAGS += -lstdc++
++REQUIRES += libssl libcrypto
 -	else
 -		# WITH_WOLFSSL=1 enables WolfSSL 4.2.0 support (mutually exclusive with OpenSSL)
 -		ifeq ($(WITH_WOLFSSL),1)
@@ -31,19 +51,23 @@ index f6e2c6b..fdce16d 100644
 -			override CFLAGS += -DLIBUS_NO_SSL
 -		endif
 -	endif
--endif
-+DESTDIR ?=
+ endif
  
--# WITH_LIBUV=1 builds with libuv as event-loop
--ifeq ($(WITH_LIBUV),1)
+-# WITH_IO_URING=1 builds with io_uring as event-loop and network implementation
+ ifeq ($(WITH_IO_URING),1)
+-	override CFLAGS += -DLIBUS_USE_IO_URING
+-	# override LDFLAGS += -l
++COMMON_FLAGS += -DLIBUS_USE_IO_URING
++REQUIRES += liburing
+ endif
+ 
+ # WITH_LIBUV=1 builds with libuv as event-loop
+ ifeq ($(WITH_LIBUV),1)
 -	override CFLAGS += -DLIBUS_USE_LIBUV
 -	override LDFLAGS += -luv
--endif
-+prefix ?= /usr
-+exec_prefix ?= $(prefix)
-+LIB ?= lib
-+libdir ?= $(exec_prefix)/$(LIB)
-+includedir ?= $(exec_prefix)/include
++COMMON_FLAGS += -DLIBUS_USE_LIBUV
++REQUIRES += libuv
+ endif
  
 -# WITH_ASIO builds with boot asio event-loop
 -ifeq ($(WITH_ASIO),1)
@@ -51,53 +75,44 @@ index f6e2c6b..fdce16d 100644
 -	override LDFLAGS += -lstdc++ -lpthread
 -	override CXXFLAGS += -pthread -DLIBUS_USE_ASIO
 -endif
-+PKG_CONFIG ?= pkg-config
- 
+-
 -# WITH_GCD=1 builds with libdispatch as event-loop
 -ifeq ($(WITH_GCD),1)
 -	override CFLAGS += -DLIBUS_USE_GCD
 -	override LDFLAGS += -framework CoreFoundation
 -endif
-+VERSION ?= 0.0
-+LIBTARGET = libusockets.so.$(VERSION)
-+
-+REQUIRES =
-+COMMON_FLAGS = -Isrc
- 
+-
 -# WITH_ASAN builds with sanitizers
 -ifeq ($(WITH_ASAN),1)
 -	override CFLAGS += -fsanitize=address -g
 -	override LDFLAGS += -fsanitize=address
-+ifeq ($(WITH_OPENSSL),1)
-+COMMON_FLAGS += -DLIBUS_USE_OPENSSL
-+LDFLAGS += -lstdc++
-+REQUIRES += libssl libcrypto
- endif
- 
+-endif
+-
 -ifeq ($(WITH_QUIC),1)
 -	override CFLAGS += -DLIBUS_USE_QUIC -pthread -std=c11 -Isrc -Ilsquic/include
 -	override LDFLAGS += -pthread -lz -lm uSockets.a lsquic/src/liblsquic/liblsquic.a
 -else
 -	override CFLAGS += -std=c11 -Isrc
 -	override LDFLAGS += uSockets.a
-+# WITH_LIBUV=1 builds with libuv as event-loop
-+ifeq ($(WITH_LIBUV),1)
-+COMMON_FLAGS += -DLIBUS_USE_LIBUV
-+REQUIRES += libuv
- endif
- 
+-endif
+-
+-# Also link liburing for io_uring support
+-ifeq ($(WITH_IO_URING),1)
+-	override LDFLAGS += /usr/lib/liburing.a
+-endif
+-
 -# By default we build the uSockets.a static library
 +CFLAGS += -std=c11 $(COMMON_FLAGS)
 +CXXFLAGS += -std=c++17 $(COMMON_FLAGS)
 +
  default:
 -	rm -f *.o
--	$(CC) $(CFLAGS) -O3 -c src/*.c src/eventing/*.c src/crypto/*.c
+-	$(CC) $(CFLAGS) -O3 -c src/*.c src/eventing/*.c src/crypto/*.c src/io_uring/*.c
++	$(CC) $(CFLAGS) -fPIC -c src/*.c src/eventing/*.c src/crypto/*.c src/io_uring/*.c
 -# Also link in Boost Asio support
 -ifeq ($(WITH_ASIO),1)
 -	$(CXX) $(CXXFLAGS) -Isrc -std=c++14 -flto -O3 -c src/eventing/asio.cpp
 -endif
-+	$(CC) $(CFLAGS) -fPIC -c src/*.c src/eventing/*.c src/crypto/*.c
  
 -# For now we do rely on C++17 for OpenSSL support but we will be porting this work to C11
  ifeq ($(WITH_OPENSSL),1)
@@ -109,15 +124,15 @@ index f6e2c6b..fdce16d 100644
 -endif
 -# Create a static library (try windows, then unix)
 -	lib.exe /out:uSockets.a *.o || $(AR) rvs uSockets.a *.o
++	$(AR) rvs libusockets.a *.o
++	$(CC) -shared -o $(LIBTARGET) *.o -Wl,-soname,$(LIBTARGET) `$(PKG_CONFIG) --libs $(REQUIRES)` $(LDFLAGS)
++	sed -e "s:@PREFIX@:$(prefix):" -e "s:@REQUIRES@:$(REQUIRES):" \
++	-e "s:@LIB@:$(LIB):" -e "s:@VERSION@:$(VERSION):" usockets.pc.in > usockets.pc
 -
 -# BoringSSL needs cmake and golang
 -.PHONY: boringssl
 -boringssl:
 -	cd boringssl && mkdir -p build && cd build && cmake -DCMAKE_BUILD_TYPE=Release .. && make -j8
-+	$(AR) rvs libusockets.a *.o
-+	$(CC) -shared -o $(LIBTARGET) *.o -Wl,-soname,$(LIBTARGET) `$(PKG_CONFIG) --libs $(REQUIRES)` $(LDFLAGS)
-+	sed -e "s:@PREFIX@:$(prefix):" -e "s:@REQUIRES@:$(REQUIRES):" \
-+	-e "s:@LIB@:$(LIB):" -e "s:@VERSION@:$(VERSION):" usockets.pc.in > usockets.pc
  
 -# Builds all examples
 -.PHONY: examples

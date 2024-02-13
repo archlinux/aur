@@ -1,14 +1,14 @@
 pkgbase = usockets
 	pkgdesc = Miniscule cross-platform eventing, networking & crypto for async applications
-	pkgver = 0.8.5
-	pkgrel = 4
+	pkgver = 0.8.8
+	pkgrel = 1
 	url = https://github.com/uNetworking/uSockets
 	arch = x86_64
 	license = Apache
 	depends = openssl
-	source = https://github.com/uNetworking/uSockets/archive/refs/tags/v0.8.5.tar.gz
-	source = usockets-0.8.5-Makefile.patch
-	sha256sums = c52c98b7ff2c24534c17ad97d5fea8ca0cb7ff38cc933b8d08bac6e498a2ea6b
-	sha256sums = efeac07919bc804d24b10eceaa2145e8cfa5f2e95edec9e47a94bba5a825b55b
+	source = https://github.com/uNetworking/uSockets/archive/refs/tags/v0.8.8.tar.gz
+	source = usockets-0.8.8-Makefile.patch
+	sha256sums = d14d2efe1df767dbebfb8d6f5b52aa952faf66b30c822fbe464debaa0c5c0b17
+	sha256sums = a10d858c209b34304b7301faa9aea6885c7300f643038f7d356451600c2be4c4
 
 pkgname = usockets
