@@ -1,0 +1,18 @@
+pkgbase = brewkit
+	pkgdesc = the build infra for PKGX
+	pkgver = 1.13.0
+	pkgrel = 1
+	url = https://github.com/pkgxdev/brewkit
+	arch = x86_64
+	arch = arm
+	license = Apache-2.0
+	makedepends = deno
+	depends = pkgx
+	depends = git
+	provides = brewkit
+	conflicts = brewkit
+	options = !strip
+	source = brewkit.tar.gz::https://github.com/pkgxdev/brewkit/archive/refs/tags/v1.13.0.tar.gz
+	b2sums = 6571e3bcb19fecce2f5a32445c6d7f806b8e7aa54a32e96b1fd6b428fa1fa34c1815a97d6613b31b159d19cdc8e302caed5608c9d095e35bb82d53dd8d146001
+
+pkgname = brewkit
