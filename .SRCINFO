@@ -1,6 +1,6 @@
 pkgbase = r-ggnetwork
 	pkgdesc = Geometries to Plot Networks with 'ggplot2'
-	pkgver = 0.5.12
+	pkgver = 0.5.13
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggnetwork
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-ggnetwork
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/ggnetwork_0.5.12.tar.gz
-	sha256sums = 74368662c1a225cdefc8addf606b398f14dafeff03faac56c15aa5e14819e9cd
+	source = https://cran.r-project.org/src/contrib/ggnetwork_0.5.13.tar.gz
+	sha256sums = 6c297ead19dbd89de3278f3705410b757f2d9744bc466d8175105833a4e1fd46
 
 pkgname = r-ggnetwork
