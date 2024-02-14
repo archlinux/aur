@@ -5,12 +5,13 @@ pkgbase = hoverclock-git
 	url = https://github.com/kostoskistefan/hoverclock
 	arch = x86_64
 	license = MIT
-	makedepends = git
+	makedepends = meson
 	depends = libxcb
 	depends = fontconfig
 	depends = freetype2
 	conflicts = hoverclock-appimage
 	conflicts = hoverclock-qt
+	options = !debug
 	source = git+https://github.com/kostoskistefan/hoverclock.git
 	sha256sums = SKIP
 
