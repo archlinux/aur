@@ -2,12 +2,12 @@
 pkgname=tunslip6-ng
 pkgver=4.9
 _branch=release/v${pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc="tool to establish an IPv6 SLIP tunnel interface"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.contiki-ng.org/"
-license=('BSD')
-depends=()
+license=('BSD-3-Clause')
+depends=('glibc')
 optdepends=()
 conflicts=('tunslip')
 source=(https://raw.githubusercontent.com/contiki-ng/contiki-ng/${_branch}/tools/serial-io/tunslip6.c
