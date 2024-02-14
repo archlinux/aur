@@ -1,5 +1,5 @@
 pkgname='gonchill'
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A CLI tool for streaming content"
 arch=('x86_64')
@@ -11,11 +11,11 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kbwhodat/gonchill/relea
 sha256sums=('SKIP')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   go build -o "$pkgname" main.go
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
