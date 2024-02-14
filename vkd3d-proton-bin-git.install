@@ -1,0 +1,10 @@
+post_install(){
+  echo "Creating symlink to run setup_vkd3d_proton.sh from bin"
+  echo "Running ln -s /usr/share/vkd3d-proton/setup_vkd3d_proton.sh /usr/bin/setup_vkd3d_proton"
+  ln -s /usr/share/vkd3d-proton/setup_vkd3d_proton.sh /usr/bin/setup_vkd3d_proton.sh
+}
+
+post_remove(){
+  echo "Removing symlink of setup_vkd3d_proton.sh"
+  rm -rf /usr/bin/setup_vkd3d_proton.sh
+}

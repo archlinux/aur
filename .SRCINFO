@@ -1,0 +1,23 @@
+pkgbase = vkd3d-proton-bin-git
+	pkgdesc = Direct3D 12 to Vulkan translation library (Windows DLL binary files) (git version)
+	pkgver = 2.11.1.r95.g85a0367
+	pkgrel = 1
+	url = https://github.com/HansKristian-Work/vkd3d-proton
+	install = vkd3d-proton-bin-git.install
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = meson
+	makedepends = glslang
+	makedepends = wine
+	makedepends = xcb-util-keysyms
+	makedepends = xorgproto
+	makedepends = mingw-w64-gcc
+	depends = vulkan-icd-loader
+	provides = vkd3d-proton-bin
+	provides = vkd3d-proton-bin-git
+	options = !buildflags
+	source = git+https://github.com/HansKristian-Work/vkd3d-proton
+	sha256sums = SKIP
+
+pkgname = vkd3d-proton-bin-git
