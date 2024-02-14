@@ -2,7 +2,7 @@
 # Contributor: Grzegorz Koperwas <admin@grzegorzkoperwas.site>
 
 pkgname=swww-git
-pkgver=0.4.0.r250.g01e9cf8
+pkgver=0.4.0.r259.g1eecca7
 pkgrel=1
 pkgdesc='Efficient animated wallpaper daemon for Wayland, controlled at runtime'
 #arch=(x86_64)
@@ -26,25 +26,25 @@ prepare() {
 }
 
 build() {
-  RUSTUP_TOOLCHAIN=stable cargo build --release --manifest-path=$pkgname/Cargo.toml --target-dir=target --all-features
+  RUSTUP_TOOLCHAIN=stable cargo build --release --manifest-path=$pkgname/Cargo.toml --target-dir=$pkgname/target --all-features
 
   # Man pages
   $pkgname/doc/gen.sh
 }
 
 check() {
-  RUSTUP_TOOLCHAIN=stable cargo test --release --manifest-path=$pkgname/Cargo.toml --target-dir=target
+  RUSTUP_TOOLCHAIN=stable cargo test --release --manifest-path=$pkgname/Cargo.toml --target-dir=$pkgname/target
 }
 
 package() {
-  install -Dm755 "target/release/${pkgname%-git}"{,-daemon} -t "$pkgdir/usr/bin"
+  install -Dm755 "$pkgname/target/release/${pkgname%-git}"{,-daemon} -t "$pkgdir/usr/bin"
 
   install -Dm644 $pkgname/*.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
   cp -a $pkgname/example_scripts "$pkgdir/usr/share/doc/${pkgname%-git}"
 
   install -Dm644 $pkgname/doc/generated/*.1 -t "$pkgdir/usr/share/man/man1"
 
-  install -Dm644 $pkgname/completions/_swww "$pkgdir/usr/share/zsh/site-functions/_swww"
+  install -Dm644 $pkgname/completions/_swww -t "$pkgdir/usr/share/zsh/site-functions"
   install -Dm644 $pkgname/completions/swww.bash "$pkgdir/usr/share/bash-completion/completions/swww"
-  install -Dm644 $pkgname/completions/swww.fish "$pkgdir/usr/share/fish/vendor_completions.d/swww.fish"
+  install -Dm644 $pkgname/completions/swww.fish -t "$pkgdir/usr/share/fish/vendor_completions.d"
 }
