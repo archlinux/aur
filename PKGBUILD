@@ -114,6 +114,9 @@ pkgver() {
 }
 
 prepare() {
+  export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$srcdir/xdg}"
+  [ ! -d "$XDG_RUNTIME_DIR" ] && install -dm700 "${XDG_RUNTIME_DIR:?}"
+
   cat >icecat.desktop <<END
 [Desktop Entry]
 Version=1.0
@@ -355,7 +358,6 @@ build() {
 
 package() {
   cd "$_pkgsrc"
-
   DESTDIR="$pkgdir" ./mach install
 
   local vendorjs="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
