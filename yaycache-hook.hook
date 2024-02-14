@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Remove
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = *
+
+[Action]
+Description = Removing old packages from yay cache...
+When = PostTransaction
+Exec = /usr/bin/bash /usr/share/libalpm/scripts/yaycache-hook.sh
