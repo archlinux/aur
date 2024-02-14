@@ -1,6 +1,6 @@
 pkgname=neovim-neodev-opt-git
 _pkgname=neodev
-pkgver=623.b094a66
+pkgver=692.a098813
 pkgrel=1
 pkgdesc='Full signature help, docs, and completion for the nvim lua API.'
 arch=('any')
