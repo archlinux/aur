@@ -1,0 +1,20 @@
+pkgbase = perl-alien-build-plugin-cleanse-builddir
+	pkgdesc = Alien::Build plugin to cleanse the build dir after the build phase
+	pkgver = 0.06
+	pkgrel = 1
+	url = https://metacpan.org/release/Alien-Build-Plugin-Cleanse-BuildDir
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	checkdepends = perl-capture-tiny
+	checkdepends = perl-data-dump
+	checkdepends = perl-test2-suite
+	depends = perl
+	depends = perl-alien-build
+	depends = perl-path-tiny
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/S/SL/SLAFFAN/Alien-Build-Plugin-Cleanse-BuildDir-0.06.tar.gz
+	sha256sums = e0290b4891a18068db109c3001c6c8f1c900a28568dcaaa78d4dd0b69216d666
+
+pkgname = perl-alien-build-plugin-cleanse-builddir
