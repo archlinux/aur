@@ -1,14 +1,14 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname='libbsctools'
 pkgdesc='Common library used by some BSC tools such as folding (from BSC).'
-pkgver='1.0.6.20230111'
+pkgver='1.0.6.20240214'
 pkgrel='2'
 arch=('x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL2.1')
 depends=(boost)
 source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-${pkgver%.*}-src.tar.bz2")
-sha512sums=(547f3a3978772e5aa20762b66478392cebdb58a005714cdeae4431a3a6466d893d3bf72a958cd1438b151fd0db61d7f9b82c4387dbd7b1d20186cee388533e1f)
+sha512sums=(8f2abf43750b557d94ad58546210ace29f145ecbc817864d1a82a7b71e040a0d0f63ba742fc8bccff3047f6211019cddb2ea24edaa35fe0a7e05e9ba6815a58a)
 
 build() {
 	cd "$srcdir/$pkgname-${pkgver%.*}"
