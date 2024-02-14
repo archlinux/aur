@@ -4,16 +4,19 @@
 _pkgname=jwcrypto
 pkgname=python-$_pkgname
 # https://github.com/latchset/jwcrypto/releases
-pkgver=1.5.1
+pkgver=1.5.4
 # curl https://api.github.com/repos/latchset/jwcrypto/git/ref/tags/v$pkgver | jq -r .object.sha
-_tag=88d63086ea90de194e22791b231684b496543355
+_tag=f14859245bfb9c9d773362b141ec1e8496360e36
 pkgrel=1
 pkgdesc='Python implementation of JWK, JWS, JWE specifications'
 arch=(any)
 url='https://github.com/latchset/jwcrypto'
 # setup.py says LGPLv3+ https://github.com/latchset/jwcrypto/blob/v1.5.1/setup.py#L20
 license=('LGPL-3.0-or-later')
-depends=(python python-cryptography python-deprecated)
+# This package uses @typing_extensions.deprecated, which will be available as @warnings.deprecated in Python 3.13
+# https://github.com/latchset/jwcrypto/pull/337
+# https://typing-extensions.readthedocs.io/en/latest/#deprecated
+depends=(python python-cryptography python-typing_extensions)
 makedepends=(git python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=("git+$url?signed#tag=$_tag")
