@@ -1,11 +1,10 @@
 pkgbase = r-mirsm
 	pkgdesc = Inferring miRNA sponge modules in heterogeneous data
 	pkgver = 1.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/miRSM
 	arch = x86_64
-	license = GPL
-	depends = r
+	license = GPL-3.0-only
 	depends = r-bibitr
 	depends = r-bicare
 	depends = r-biclust
@@ -40,7 +39,8 @@ pkgbase = r-mirsm
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/miRSM_1.18.0.tar.gz
-	sha256sums = 33345d8b1a25d09d0b8c441ba15581eefad3edb9b068b72ceb3f0c6d4f498bea
+	source = https://bioconductor.org/packages/3.17/bioc/src/contrib/miRSM_1.18.0.tar.gz
+	md5sums = 2c9037736a60c1bbcd546542c1d70f41
+	b2sums = 4421f08a1ffa59d75acfc7924b3dd1db0039d558371dd97e295a1cbe48b4d0bf5b6ea7801bf7dd727cf9cae908a8b840fd52bf6cb69c09e2b16e153815be018a
 
 pkgname = r-mirsm

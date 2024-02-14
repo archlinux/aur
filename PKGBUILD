@@ -3,14 +3,13 @@
 _pkgname=miRSM
 _pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
-pkgrel=1
-pkgdesc='Inferring miRNA sponge modules in heterogeneous data'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Inferring miRNA sponge modules in heterogeneous data"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-bibitr
   r-bicare
   r-biclust
@@ -48,15 +47,16 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('33345d8b1a25d09d0b8c441ba15581eefad3edb9b068b72ceb3f0c6d4f498bea')
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('2c9037736a60c1bbcd546542c1d70f41')
+b2sums=('4421f08a1ffa59d75acfc7924b3dd1db0039d558371dd97e295a1cbe48b4d0bf5b6ea7801bf7dd727cf9cae908a8b840fd52bf6cb69c09e2b16e153815be018a')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
