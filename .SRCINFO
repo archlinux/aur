@@ -1,0 +1,14 @@
+pkgbase = neovim-plenary-opt-git
+	pkgdesc = All the lua functions (for neovim) I don't want to write twice.
+	pkgver = 326.36aaceb
+	pkgrel = 1
+	url = https://github.com/nvim-lua/plenary.nvim
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = neovim
+	provides = plenary.nvim
+	source = plenary::git+https://github.com/nvim-lua/plenary.nvim.git
+	sha256sums = SKIP
+
+pkgname = neovim-plenary-opt-git
