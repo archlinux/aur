@@ -1,0 +1,16 @@
+post_upgrade() {
+  _newver="$1"
+  _oldver="$2"
+  if [ "${_newver}" != "${_oldver}" ]; then
+    printf '\n'
+    printf '%s\n' "=== MANUAL INTERVENTION NEEDED TO USE NEW VERSION OF MAPERITIVE ==="
+    printf '\n'
+    printf '%s\n' "To use the updated version of Maperitive which was just installed,"
+    printf '%s\n' "update the files in '~/.maperitive/' with the new ones from '/usr/share/maperitive/'."
+    printf '%s\n' "(If '~/.maperitive/' does not exist, no action needs to be taken,"
+    printf '%s\n' "since '/usr/bin/maperitive' will do it automatically in that case.)"
+    printf '\n'
+    printf '%s\n' "=== END OF MAPERITIVE UPDATE MANUAL INTERVENTION REQUIRED NOTE. ==="
+    printf '\n'
+  fi
+}
