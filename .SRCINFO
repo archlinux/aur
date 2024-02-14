@@ -1,4 +1,4 @@
-pkgbase = nginx-mainline
+pkgbase = freenginx-mainline
 	pkgver = 1.25.3
 	pkgrel = 1
 	url = https://freenginx.org
