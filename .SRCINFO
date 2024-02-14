@@ -1,6 +1,6 @@
 pkgbase = rtl8821cu-dkms-git
 	pkgdesc = rtl8821cu chipset driver
-	pkgver = 5.12.0.69a0c1897
+	pkgver = 5.12.0.1785b39398
 	pkgrel = 1
 	url = https://github.com/brektrou/rtl8821CU
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = rtl8821cu-dkms-git
 	makedepends = bc
 	depends = dkms
 	conflicts = rtl8821cu
-	source = git+https://github.com/morrownr/8821cu-20210118#branch=main
+	source = git+https://github.com/morrownr/8821cu-20210916#branch=main
 	sha256sums = SKIP
 
 pkgname = rtl8821cu-dkms-git

@@ -3,7 +3,7 @@
 
 pkgname=rtl8821cu-dkms-git
 _pkgbase=rtl8821cu
-pkgver=5.12.0.155dc9ee6c
+pkgver=5.12.0.1785b39398
 pkgrel=1
 pkgdesc="rtl8821cu chipset driver"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
