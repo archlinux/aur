@@ -1,0 +1,13 @@
+pkgbase = neovim-lspconfig-opt-git
+	pkgdesc = Configs for the neovim LSP client (:help lsp).
+	pkgver = 2449.0011c435
+	pkgrel = 1
+	url = https://github.com/neovim/nvim-lspconfig
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = neovim
+	source = lspconfig::git+https://github.com/neovim/nvim-lspconfig.git
+	sha256sums = SKIP
+
+pkgname = neovim-lspconfig-opt-git
