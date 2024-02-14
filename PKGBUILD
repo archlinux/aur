@@ -3,14 +3,13 @@
 _pkgname=RcisTarget
 _pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
-pkgrel=1
-pkgdesc='RcisTarget Identify transcription factor binding motifs enriched on a list of genes or genomic regions'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="RcisTarget Identify transcription factor binding motifs enriched on a list of genes or genomic regions"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-arrow
   r-aucell
   r-biocgenerics
@@ -28,9 +27,7 @@ optdepends=(
   r-biobase
   r-biocparallel
   r-biocstyle
-  r-domc
   r-doparallel
-  r-dorng
   r-dt
   r-foreach
   r-gplots
@@ -41,17 +38,17 @@ optdepends=(
   r-rtracklayer
   r-testthat
   r-visnetwork
-  r-zoo
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b4db98a76dd45d264cefd74bbfc0436d863f69b71d25f3762e2959570bf2e236')
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('0f7605c0a9396d116b777b4954011027')
+b2sums=('c566bd26dd1a7fbec7628d048d4d5d533c34a893c08eddfdd441ff9cfd57af727d99f31e7993e0e6f6a7cb59bc779e22a7da84cdb7a73cbfe4bc7a00c9b5ba90')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
