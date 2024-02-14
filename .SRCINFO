@@ -1,6 +1,6 @@
 pkgbase = archlinux-tweak-tool-git
 	pkgdesc = Arch Linux Tweak Tool or ATT
-	pkgver = r996.0de8554
+	pkgver = r1054.b51b8d5
 	pkgrel = 1
 	url = https://github.com/arcolinux/archlinux-tweak-tool
 	arch = x86_64
