@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+export ELECTRON_IS_DEV=0
+
+electron /opt/upscayl/app.asar "$@"
