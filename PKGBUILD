@@ -3,7 +3,7 @@
 _name='mausoleum'
 pkgname="$_name"
 pkgver=0.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A Python GUI application, command line interface, and wrapper for Tomb'
 arch=('any')
 url='https://github.com/mandeep/Mausoleum'
