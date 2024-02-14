@@ -1,6 +1,6 @@
 # Maintainer: Alexander Bocken <alexander@bocken.org>
 pkgname=threadwatcher
-pkgver=r37.54a2a05
+pkgver=r38.ec4a3d5%
 pkgrel=1
 pkgdesc="Keep a list of 4chan threads to watch over and continually download media from"
 arch=(any)
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 install="${pkgname}.install"
 pkgver() {
 	cd "$srcdir/$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEADyy)" "$(git rev-parse --short HEAD)"
 }
 package() {
 	#Update from old urlfile location to new
