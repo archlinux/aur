@@ -1,0 +1,13 @@
+pkgbase = neovim-luasnip-opt-git
+	pkgdesc = LuaSnip is a snippet-engine written entirely in lua.
+	pkgver = 1935.bfbd039
+	pkgrel = 1
+	url = https://github.com/L3MON4D3/luasnip
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = neovim
+	source = luasnip::git+https://github.com/L3MON4D3/luasnip.git
+	sha256sums = SKIP
+
+pkgname = neovim-luasnip-opt-git
