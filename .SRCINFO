@@ -1,14 +1,15 @@
 pkgbase = upscayl-bin
 	pkgdesc = Free and Open Source AI Image Upscaler
 	pkgver = 2.9.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/upscayl/upscayl
 	arch = x86_64
-	license = AGPL3
+	license = AGPL-3.0-only
 	makedepends = unzip
 	depends = libvips
 	depends = openjpeg2
 	depends = electron
+	depends = nodejs
 	provides = upscayl
 	conflicts = upscayl
 	noextract = upscayl-2.9.9-linux.zip

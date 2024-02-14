@@ -6,12 +6,12 @@
 _pkgname=upscayl
 pkgname=$_pkgname-bin
 pkgver=2.9.9
-pkgrel=3
+pkgrel=4
 pkgdesc='Free and Open Source AI Image Upscaler'
 url='https://github.com/upscayl/upscayl'
-license=('AGPL3')
+license=('AGPL-3.0-only')
 arch=('x86_64')
-depends=('libvips' 'openjpeg2' 'electron')
+depends=('libvips' 'openjpeg2' 'electron' 'nodejs')
 makedepends=('unzip')
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -37,12 +37,13 @@ prepare() {
 package() {
   cd "$srcdir"
 
-  # Launcher
+  # Launcher script
   install -Dm755 "$_pkgname" "$pkgdir"/usr/bin/$_pkgname
 
+  # Enter the package folder
   cd ${_pkgname}-${pkgver}/resources
 
-  # XDG Launcher
+  # XDG launcher
   install -dm755 "$pkgdir"/usr/share/applications
   install -dm755 "$pkgdir"/usr/share/pixmaps
   mv org.upscayl.Upscayl.desktop "$pkgdir"/usr/share/applications/
