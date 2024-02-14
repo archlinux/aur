@@ -1,0 +1,4 @@
+[sagemath-git]
+source = 'github'
+github = 'sagemath/sage'
+use_max_tag = true
