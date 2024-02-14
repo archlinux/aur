@@ -107,6 +107,9 @@ _main_package() {
 
 # common functions
 prepare() {
+  export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$srcdir/xdg}"
+  [ ! -d "$XDG_RUNTIME_DIR" ] && install -dm700 "${XDG_RUNTIME_DIR:?}"
+
   mkdir -p mozbuild
   cd "$_pkgsrc"
 
