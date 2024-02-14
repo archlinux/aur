@@ -1,7 +1,7 @@
 pkgbase = python-tensorflow-probability
 	pkgdesc = Probabilistic reasoning and statistical analysis in TensorFlow
 	pkgver = 0.23.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tensorflow/probability
 	arch = any
 	license = APACHE
