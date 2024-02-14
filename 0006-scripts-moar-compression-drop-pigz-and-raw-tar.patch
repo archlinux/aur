@@ -1,20 +1,23 @@
-From f7922fae6727af66515123be1e00cb2d72d0852b Mon Sep 17 00:00:00 2001
+From 99a335935b965499d5849c1a9fa0d858ce0fb0ec Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 23 Dec 2023 02:12:21 +0100
 Subject: [PATCH 6/6] scripts: moar compression, drop pigz and raw tar
 
 ---
- scripts/package-airgap | 10 +++++-----
+ scripts/package-airgap | 12 +++++++-----
  scripts/package-cli    |  7 ++++---
- 2 files changed, 9 insertions(+), 8 deletions(-)
+ 2 files changed, 11 insertions(+), 8 deletions(-)
 
 diff --git a/scripts/package-airgap b/scripts/package-airgap
-index 911357181a..4953a9639b 100755
+index 911357181a..2f237c91b5 100755
 --- a/scripts/package-airgap
 +++ b/scripts/package-airgap
-@@ -6,11 +6,11 @@ cd $(dirname $0)/..
+@@ -5,12 +5,14 @@ cd $(dirname $0)/..
+ 
  . ./scripts/version.sh
  
++if [[ -t 0 && -t 1 && -t 2 ]]; then xargs=(xargs -o); else xargs=(xargs); fi
++
  airgap_image_file='scripts/airgap/image-list.txt'
 -images=$(cat "${airgap_image_file}")
 -xargs -n1 docker pull <<< "${images}"
@@ -23,7 +26,7 @@ index 911357181a..4953a9639b 100755
 -pigz -v -c dist/artifacts/k3s-airgap-images-${ARCH}.tar > dist/artifacts/k3s-airgap-images-${ARCH}.tar.gz
 +airgap_tar_file="dist/artifacts/k3s-airgap-images-${ARCH}.tar"
 +readarray -t images <"${airgap_image_file}"
-+printf '%s\0' "${images[@]}" | xargs -0 -n1 -o docker pull
++printf '%s\0' "${images[@]}" | "${xargs[@]}" -0 -n1 docker pull
 +docker save "${images[@]}" -o "${airgap_tar_file}"
 +zstd -T0 --ultra -22 --long=25 --verbose --force --rm "${airgap_tar_file}"
  if [ ${ARCH} = amd64 ]; then
@@ -48,5 +51,5 @@ index c790f04aab..0452d4b4fd 100755
  cp ./build/out/data.tar.zst ./build/data/${HASH}.tar.zst
  
 -- 
-2.43.0
+2.43.1
 

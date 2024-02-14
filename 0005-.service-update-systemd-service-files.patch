@@ -1,4 +1,4 @@
-From 12a02a6d17cc152710956b1ed945f85b3088ab81 Mon Sep 17 00:00:00 2001
+From 1b13d0eed569dc0e14efac3a9cb31ce64667d03a Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 23 Dec 2023 02:10:11 +0100
 Subject: [PATCH 5/6] *.service: update systemd service files
@@ -171,5 +171,5 @@ index 70ce10c1aa..c786114ce0 100644
  Delegate=yes
  # Having non-zero Limit*s causes performance problems due to accounting overhead
 -- 
-2.43.0
+2.43.1
 

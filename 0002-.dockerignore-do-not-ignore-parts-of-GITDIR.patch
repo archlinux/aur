@@ -1,4 +1,4 @@
-From 9eef0195eb032eaa4788661d6d78f8b962848976 Mon Sep 17 00:00:00 2001
+From 83891cc6d077e3d12e27d3a199cd15cfcc00aa93 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 23 Dec 2023 01:07:38 +0100
 Subject: [PATCH 2/6] .dockerignore: do not ignore parts of $GITDIR
@@ -18,5 +18,5 @@ index e1651fd70d..36131d3744 100644
 -./.git/objects/pack
 \ No newline at end of file
 -- 
-2.43.0
+2.43.1
 
