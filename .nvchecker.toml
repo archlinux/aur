@@ -1,0 +1,6 @@
+[kreport]
+source = 'gitlab'
+gitlab = 'libraries/kreport'
+host = 'invent.kde.org'
+use_max_tag = true
+prefix = 'v'
