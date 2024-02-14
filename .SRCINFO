@@ -1,0 +1,22 @@
+pkgbase = tmux-sixel
+	pkgdesc = Terminal multiplexer, with sixel support
+	pkgver = 3.4
+	pkgrel = 1
+	url = https://github.com/tmux/tmux/wiki
+	arch = x86_64
+	license = BSD
+	makedepends = systemd
+	depends = libevent
+	depends = libevent_core-2.1.so
+	depends = libsixel
+	depends = libutempter
+	depends = ncurses
+	depends = libncursesw.so
+	depends = systemd-libs
+	depends = libsystemd.so
+	conflicts = tmux
+	replaces = tmux
+	source = https://github.com/tmux/tmux/releases/download/3.4/tmux-3.4.tar.gz
+	sha256sums = 551ab8dea0bf505c0ad6b7bb35ef567cdde0ccb84357df142c254f35a23e19aa
+
+pkgname = tmux-sixel
