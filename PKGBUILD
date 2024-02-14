@@ -23,8 +23,8 @@ build() {
 }
 
 package() {
-	cd "${_archivedir}/build"
+    cd "${_archivedir}/build"
 
     # from https://github.com/owncloud/client-desktop-shell-integration-nautilus/blob/master/.github/workflows/main.yml
-	env DESTDIR="${pkgdir}/" ninja install
+    env DESTDIR="${pkgdir}/" ninja install
 }
