@@ -2,7 +2,7 @@
 
 pkgname=flightcore
 pkgver=2.19.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Northstar installer, updater, and mod-manager"
 url="https://github.com/R2NorthstarTools/FlightCore"
 license=('MIT')
@@ -40,8 +40,9 @@ Type=Application" > $pkgname.desktop
 }
 
 build() {
-  cd FlightCore
   export CARGO_HOME="$srcdir/CARGO_HOME"
+  export RUSTUP_TOOLCHAIN=stable
+  cd FlightCore
   npm run tauri build
 }
 
