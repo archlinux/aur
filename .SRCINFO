@@ -1,0 +1,27 @@
+pkgbase = perl-alien-proj
+	pkgdesc = Compile the Proj library
+	pkgver = 1.27
+	pkgrel = 1
+	url = https://metacpan.org/release/Alien-proj
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = proj
+	depends = perl
+	depends = perl-alien-build
+	depends = perl-alien-build-plugin-cleanse-builddir
+	depends = perl-alien-build-plugin-pkgconfig-ppwrapper
+	depends = perl-alien-sqlite
+	depends = perl-ffi-checklib
+	depends = perl-file-find-rule
+	depends = perl-file-which
+	depends = perl-path-tiny
+	depends = perl-pkgconfig
+	depends = perl-scalar-list-utils
+	depends = perl-sort-versions
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/S/SL/SLAFFAN/Alien-proj-1.27.tar.gz
+	sha256sums = 2b72b31b5a7386339b57ccc4f897031efea950506414be52516d751ec4adbf0f
+
+pkgname = perl-alien-proj
