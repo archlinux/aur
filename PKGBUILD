@@ -2,7 +2,7 @@
 
 _pkgname=flet
 pkgname=python-${_pkgname}
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='Easily build realtime web, mobile and desktop apps in your favorite language and securely share them with your team.'
 url="https://${_pkgname}.dev/"
@@ -20,7 +20,8 @@ depends=(
 	'python-copier'
 	'gtk3'
 	'gstreamer'
-	'gst-plugins-base-libs')
+	'gst-plugins-base-libs'
+	'mpv')
 makedepends=(
 	'goreleaser'
 	'python-build'
@@ -35,13 +36,13 @@ source=(
 	"flutter::git+https://github.com/flutter/flutter.git"
 	"flutter-engine::git+https://github.com/flutter/engine.git"
 	'flet-linux.patch')
-sha256sums=('feddf8adc5ae12f9beba65453203fbb1cb7ba2edaae9ece5111ac1687614f1d3'
+sha256sums=('4909039b233572712dfb3aa2cba04597895bce930459ba9acec1027905517aef'
             'SKIP'
             'SKIP'
             'af9718b926a07ac8e8689a2c623fe6921d88d0bcd52263f63848d11175e3b828')
 
 _srcdir="${_pkgname}-${pkgver}"
-_engine_version=3.16.7
+_engine_version=3.16.8
 
 prepare() {
 	cd "${_srcdir}"
