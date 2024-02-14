@@ -1,4 +1,6 @@
-# Contributor: Alexander Rødseth <rodseth@gmail.com>
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Alexander RÃ¸dseth <rodseth@gmail.com>
+
 pkgname=nweb
 pkgver=23
 pkgrel=1
