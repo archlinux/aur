@@ -1,15 +1,15 @@
 pkgbase = tradingview
 	pkgdesc = A charting platform for traders and investors
-	pkgver = 2.7.2
+	pkgver = 2.7.4
 	pkgrel = 1
 	url = https://www.tradingview.com/desktop/
 	arch = x86_64
 	license = custom:proprietary
 	makedepends = links
 	makedepends = squashfs-tools
-	noextract = tradingview-2.7.2.snap
-	source = tradingview-2.7.2.snap::https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_49.snap
-	b2sums = d7eb52532ba10731bcd028bdb91e0b08bdd5732c07129e9bf83d88a12e92a57af818b150694f919bf72d68ea89ad87f49ff4468f3fffd65e19fba8bee38434f3
+	noextract = tradingview-2.7.4.snap
+	source = tradingview-2.7.4.snap::https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_50.snap
+	b2sums = 5f9b25a6c0326bf99dc4c182b59b0cf6a4b03cebb56bfa46dcc67fb0cb029309a5dc5a54423671f98ffab58d35b1feeaadba8f00f26aca67ec796c6a00c3d4ef
 
 pkgname = tradingview
 	depends = alsa-lib

@@ -2,7 +2,7 @@
 # Contributor: sukanka <su975853527 at gmail.com>
 
 pkgname=tradingview
-pkgver=2.7.2
+pkgver=2.7.4
 pkgrel=1
 pkgdesc='A charting platform for traders and investors'
 arch=('x86_64')
@@ -11,17 +11,17 @@ license=('custom:proprietary')
 makedepends=('links'
              'squashfs-tools')
 noextract=("$pkgname-$pkgver.snap")
-source=("$pkgname-$pkgver.snap::https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_49.snap")
-b2sums=('d7eb52532ba10731bcd028bdb91e0b08bdd5732c07129e9bf83d88a12e92a57af818b150694f919bf72d68ea89ad87f49ff4468f3fffd65e19fba8bee38434f3')
+source=("$pkgname-$pkgver.snap::https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_50.snap")
+b2sums=('5f9b25a6c0326bf99dc4c182b59b0cf6a4b03cebb56bfa46dcc67fb0cb029309a5dc5a54423671f98ffab58d35b1feeaadba8f00f26aca67ec796c6a00c3d4ef')
 
 prepare() {
     unsquashfs -f -n -q -d "$pkgname-$pkgver/" "$pkgname-$pkgver.snap"
     chmod 755 "$pkgname-$pkgver/"
 
-    ## License
+    # License
     links -width 80 -dump 'https://www.tradingview.com/policies/' | sed -n '/Terms of Use/,/TradingView may update these Rules at any time/p' > "LICENSE.txt"
 
-    ## Convert
+    # Convert
     cd "$pkgname-$pkgver/"
 
     mv "meta/gui/$pkgname.desktop" "$pkgname.desktop"
