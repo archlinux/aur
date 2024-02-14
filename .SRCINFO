@@ -1,0 +1,15 @@
+pkgbase = hexfetch
+	pkgdesc = a simple and fast program that gets simple system information.
+	pkgver = 0.1.r26.cd014e3
+	pkgrel = 1
+	url = https://github.com/hexisXz/hexfetch.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	depends = lsb-release
+	depends = figlet
+	source = git+https://github.com/hexisXz/hexfetch.git
+	sha256sums = SKIP
+
+pkgname = hexfetch
