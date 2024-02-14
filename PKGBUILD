@@ -1,58 +1,44 @@
+# Maintainer: Jeremy Gust <jeremy AT plasticsoup DOT net>
+# Contributor: Hanabishi
 # Contributor: Sergey Vlasov <sergey@vlasov.me>
-
 pkgname=nulloy
-pkgver=0.9.7.1
+pkgver=0.9.8
 pkgrel=1
 pkgdesc='Music player with a waveform progress bar'
-arch=('x86_64')
+arch=(x86_64)
 url='http://nulloy.com/'
-license=('GPLv3')
-
-depends=(
-    'gst-plugins-base'
-    'gst-plugins-base-libs'
-    'gst-plugins-good'
-    'gstreamer'
-    'librsvg'
-    'libx11'
-    'libxcb'
-    'qt5-base'
-    'qt5-script'
-    'qt5-svg'
-    'qt5-x11extras'
-    'taglib1'
-)
-
-makedepends=(
-    'imagemagick'
-    'qt5-tools'
-    'zip'
-)
-
-optdepends=(
-    'gst-plugins-bad: additional codecs'
-    'gst-plugins-ugly: additional codecs'
-)
-
-_snapshot="${pkgname}-${pkgver}"
-source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/${_snapshot}.tar.gz")
-sha256sums=('b958bb217582b9dd279c31ccd91fb3f0095d49b3ae5ec6915e9b7d5cf04f31b8')
+license=(GPL-3.0-only)
+depends=('gcc-libs'
+         'glib2'
+         'gst-plugins-base'
+         'gst-plugins-base-libs'
+         'gst-plugins-good'
+         'gstreamer'
+         'hicolor-icon-theme'
+         'librsvg'
+         'libx11'
+         'libxcb'
+         'qt5-base'
+         'qt5-script'
+         'qt5-svg'
+         'qt5-x11extras'
+         'taglib'
+         'zlib')
+makedepends=('imagemagick'
+             'qt5-tools'
+             'zip')
+optdepends=('gst-plugins-bad: additional codecs'
+            'gst-plugins-ugly: additional codecs')
+source=("https://github.com/$pkgname/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('889a48b9d43b3c2d71078e801d771a3c60977f8e8c00fdef07979413688a0104')
 
 build() {
-    cd "${_snapshot}"
-    export PKG_CONFIG_PATH='/usr/lib/taglib1/lib/pkgconfig'
-
-    ./configure \
-        --prefix /usr \
-        --libdir lib \
-        --gstreamer-tagreader \
-        --no-update-check
-
-    make
+	cd "$pkgname-$pkgver"
+	./configure --gstreamer-tagreader --no-update-check
+	make
 }
 
 package() {
-    cd "${_snapshot}"
-    make INSTALL_ROOT="${pkgdir}/" install
-    install -Dm644 'LICENSE.GPL3' -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	cd "$pkgname-$pkgver"
+	make INSTALL_ROOT="${pkgdir}/" install
 }
