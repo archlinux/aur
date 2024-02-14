@@ -1,7 +1,7 @@
 # Maintainer: bziemons <ben@rs485.network>
 pkgname=ulwgl-git
-pkgver=0.1.RC3.15.g3cb0083
-pkgrel=3
+pkgver=0.1.RC3.34.g4f64389
+pkgrel=1
 pkgdesc="Unified launcher for Windows games on Linux in progress using Steam Runtime Tools, independent of Steam."
 license=('custom')
 arch=('any')
@@ -12,18 +12,33 @@ provides=(ulwgl)
 conflicts=(ulwgl)
 options=(!strip)
 install=ulwgl-git.install
-source=('git+https://github.com/Open-Wine-Components/ULWGL-launcher.git')
-sha512sums=('SKIP')
+source=('git+https://github.com/Open-Wine-Components/ULWGL-launcher.git'
+        'ulwgl-run-cli')
+sha512sums=('SKIP'
+            '9e80d37734a06580eb78ec6eef2f2876c62906b7943f3d2f0259067ccceb6868c30966ffe446e51a0d0e3433219216bb1c4ba730cc7ea5481f835cbf9e7c66eb')
 
 pkgver() {
     cd "ULWGL-launcher"
     printf "%s" $(git describe HEAD | sed 's/-/./g')
 }
 
-check() {
-    cd "ULWGL-launcher"
-    export PYTHONDONTWRITEBYTECODE=1
-    python gamelauncher_test.py
+prepare() {
+    fullver="${pkgver}-${pkgrel}"
+    echo "Replacing ULWGL_LAUNCHER_VER content with ${fullver}"
+    echo -n "${fullver}" > ULWGL-launcher/ULWGL-VERSION
+    sed -i 's/^ULWGL_LAUNCHER_VER=.*$/ULWGL_LAUNCHER_VER='"${fullver}"/ ulwgl-run-cli
+
+    if [[ -r "ULWGL-launcher/ulwgl-run-cli" ]]; then
+        protonver="$(grep -E --color=no '^ULWGL_PROTON_VER=' ULWGL-launcher/ulwgl-run-cli)"
+        if [[ -z "${protonver}" ]]; then
+            echo "Could not determine ULWGL_PROTON_VER!"
+        else
+            echo "Replacing ${protonver}"
+            sed -i 's/^ULWGL_PROTON_VER=.*$/'"${protonver}"/ ulwgl-run-cli
+        fi
+    else
+        echo "Could not read ULWGL-launcher/ulwgl-run-cli. PKGBUILD probably outdated!"
+    fi
 }
 
 build() {
@@ -36,7 +51,13 @@ build() {
         -czf ../ULWGL-launcher.tar.gz *
 }
 
+check() {
+    cd "ULWGL-launcher"
+    export PYTHONDONTWRITEBYTECODE=1
+    python ulwgl_test.py
+}
+
 package() {
     install -Dm 644 "ULWGL-launcher.tar.gz" "${pkgdir}/usr/share/ULWGL/ULWGL-launcher.tar.gz"
-    install -Dm 755 "ULWGL-launcher/ulwgl-run-cli" "${pkgdir}/usr/bin/ulwgl-run-cli"
+    install -Dm 755 "ulwgl-run-cli" "${pkgdir}/usr/bin/ulwgl-run-cli"
 }
