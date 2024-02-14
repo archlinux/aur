@@ -1,0 +1,14 @@
+pkgbase = whatsapp-nativefier-wayland-hook
+	pkgdesc = Pacman hook to change whatsapp-nativefier to start with ozone-platform-hint=auto after install or upgrade.
+	pkgver = 1
+	pkgrel = 1
+	install = whatsapp-nativefier-wayland-hook.install
+	arch = any
+	license = MIT
+	depends = whatsapp-nativefier
+	source = whatsapp-nativefier-wayland.hook
+	source = whatsapp-nativefier-wayland
+	sha1sums = df131cf4b681594db57d928277994df8da81d167
+	sha1sums = 0ff6a011ec86caaf3d3951b0e05d0a1c342c0a3e
+
+pkgname = whatsapp-nativefier-wayland-hook

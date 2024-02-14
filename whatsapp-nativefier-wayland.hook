@@ -1,0 +1,17 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = whatsapp-nativefier
+
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = whatsapp-nativefier-wayland-hook
+
+
+[Action]
+Description = Defaulting to Wayland support for whatsapp-nativefier
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/whatsapp-nativefier-wayland

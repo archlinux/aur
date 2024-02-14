@@ -1,0 +1,6 @@
+#!/bin/bash
+
+rm /usr/bin/whatsapp-nativefier
+echo "/opt/whatsapp-nativefier/WhatsApp --ozone-platform-hint=auto" > /usr/bin/whatsapp-nativefier
+chmod +x /usr/bin/whatsapp-nativefier
+
