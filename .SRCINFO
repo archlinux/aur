@@ -11,6 +11,7 @@ pkgbase = matrix-authentication-service-git
 	makedepends = opa
 	makedepends = npm
 	provides = mas-cli
+	options = !lto
 	source = matrix-authentication-service::git+https://github.com/matrix-org/matrix-authentication-service.git
 	source = sysusers.conf
 	source = tmpfiles.conf
@@ -18,7 +19,7 @@ pkgbase = matrix-authentication-service-git
 	source = systemd-worker.service
 	b2sums = SKIP
 	b2sums = e32a10d979cb385be8191ac29096ff25ea6233f693a5ec0aaf3eff76411aca4bd9298dfe36585da36f2128cf2f2e48878ffcf2c5a44452d86970e57ee77098d3
-	b2sums = ea50947ebff8eb1c174d0037ba11a6b1c9b22caf55025cbe9afb1c9055c2ead02923298e1301a6187eb4484179a88ec630469ebcbdcce0d8da8ae29b2fca1c23
+	b2sums = 42b3ab44075de968dd87668f54044e8215ceb57b77cac1b19b1f012afbc9d10352886c281fd539efa76d972fac1cb5478128240dc6e4565fe51c051d1dc79c84
 	b2sums = fd206cf9fbe26f3509053f3893066c6368024e8569194981085aff7bdbe65ecdcdd4384a5ba8119e1e6114eb576b9c683552c09f865f09e5171feecf3f0254f3
 	b2sums = 39ba8399ca52b5bc5984f4fd426f812d6017a096368b3e63e16c0d9a0a2ec695b02b418b821adc62fb29609803355a1f673da3be7af5d9436e3c49e461d7d049
 
