@@ -1,0 +1,17 @@
+pkgbase = perl-pdl-graphics-colorspace
+	pkgdesc = Image color space conversions
+	pkgver = 0.203
+	pkgrel = 1
+	url = https://metacpan.org/release/PDL-Graphics-ColorSpace
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	checkdepends = perl-test-simple
+	depends = perl
+	depends = perl-pdl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETJ/PDL-Graphics-ColorSpace-0.203.tar.gz
+	sha256sums = 3115044e4eec228894ec1b46b9cda5e89af1f24bb41be453dae2b790216d0511
+
+pkgname = perl-pdl-graphics-colorspace
