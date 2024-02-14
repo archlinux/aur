@@ -47,7 +47,7 @@ prepare() {
   # fix #8293, #9089, sanitize buildsystem, moar compression
   for p in "${source[@]}"; do
     if [[ $p == *.patch ]]; then
-      git apply -3 "$srcdir/$p"
+      git am -3 "$srcdir/$p"
     fi
   done
 }
