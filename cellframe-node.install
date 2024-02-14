@@ -69,6 +69,8 @@ post_install() {
 }
 
 post_upgrade() {
+    systemctl daemon-reload
+    systemctl is-active --quiet cellframe-node.service && systemctl restart cellframe-node.service
     showmsg
 }
 
