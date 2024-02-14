@@ -8,6 +8,7 @@ pkgbase = gonchill
 	makedepends = go
 	makedepends = git
 	depends = peerflix
+	options = !debug
 	source = gonchill-1.0.3.tar.gz::https://github.com/kbwhodat/gonchill/releases/download/1.0.3/gonchill-1.0.3.tar.gz
 	sha256sums = SKIP
 
