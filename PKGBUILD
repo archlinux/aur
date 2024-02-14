@@ -2,7 +2,7 @@
 
 _pkgbasename=connexion
 pkgname=python-connexion
-pkgver=3.0.5
+pkgver=3.0.6
 pkgrel=1
 pkgdesc="Connexion is a modern Python web framework that makes spec-first and api-first development easy"
 arch=(any)
@@ -35,4 +35,4 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-sha256sums=('aa00748e365c327f37e2aedcecf1f82b40b0c7ccd9d8c7930286cc594a42636c')
+sha256sums=('08fe28494cc2a288c58cd1fc2bff69ece9014977ae7dabd0883bee66323532e6')
