@@ -17,13 +17,13 @@ prepare() {
 }
 
 build() {
-  RUSTUP_TOOLCHAIN=stable cargo build --release --manifest-path=$pkgname-$pkgver/Cargo.toml --target-dir=target --all-features
+  RUSTUP_TOOLCHAIN=stable cargo build --release --manifest-path=$pkgname-$pkgver/Cargo.toml --target-dir=$pkgname-$pkgver/target --all-features
 }
 
 check() {
-  RUSTUP_TOOLCHAIN=stable cargo test --release --manifest-path=$pkgname-$pkgver/Cargo.toml --target-dir=target
+  RUSTUP_TOOLCHAIN=stable cargo test --release --manifest-path=$pkgname-$pkgver/Cargo.toml --target-dir=$pkgname-$pkgver/target
 }
 
 package() {
-  install -Dm755 target/release/$pkgname -t "$pkgdir/usr/bin"
+  install -Dm755 $pkgname-$pkgver/target/release/$pkgname -t "$pkgdir/usr/bin"
 }
