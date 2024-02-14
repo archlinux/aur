@@ -1,15 +1,18 @@
 pkgbase = python-setuptools-scm-git-archive
-	pkgdesc = setuptools_scm plugin for git archives
-	pkgver = 1.4
-	pkgrel = 2
+	pkgdesc = [DEPRECATED] setuptools-scm<7.0 plugin for git archives (use setuptools-scm>=7.0 instead)
+	pkgver = 1.4.1
+	pkgrel = 1
 	url = https://github.com/Changaco/setuptools_scm_git_archive
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	checkdepends = python-pytest
 	makedepends = git
-	depends = python
-	depends = python-setuptools-scm
-	source = git+https://github.com/Changaco/setuptools_scm_git_archive.git#tag=1.4
-	md5sums = SKIP
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-setuptools-scm<8
+	source = git+https://github.com/Changaco/setuptools_scm_git_archive.git#commit=cfdcdc68f75621c5808726c15daff9e490ed6d07
+	b2sums = SKIP
 
 pkgname = python-setuptools-scm-git-archive
