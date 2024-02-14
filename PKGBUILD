@@ -3,7 +3,7 @@
 # Contributor: Tony Lambiris <tony@libpcap.net>
 
 pkgname=hex-hx-git
-pkgver=0.4.2.r2.g21b2304
+pkgver=0.6.0.r1.ga708256
 pkgrel=1
 pkgdesc='Futuristic take on hexdump'
 arch=(x86_64)
@@ -25,14 +25,14 @@ prepare() {
 }
 
 build() {
-  RUSTUP_TOOLCHAIN=stable cargo build --release --manifest-path=$pkgname/Cargo.toml --target-dir=target --all-features
+  RUSTUP_TOOLCHAIN=stable cargo build --release --manifest-path=$pkgname/Cargo.toml --target-dir=$pkgname/target --all-features
 }
 
 check() {
-  RUSTUP_TOOLCHAIN=stable cargo test --release --manifest-path=$pkgname/Cargo.toml --target-dir=target
+  RUSTUP_TOOLCHAIN=stable cargo test --release --manifest-path=$pkgname/Cargo.toml --target-dir=$pkgname/target
 }
 
 package() {
-  install -Dm755 target/release/hx -t "$pkgdir/usr/bin"
+  install -Dm755 $pkgname/target/release/hx -t "$pkgdir/usr/bin"
   install -Dm644 $pkgname/LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 }

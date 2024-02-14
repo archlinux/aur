@@ -1,6 +1,6 @@
 pkgbase = hex-hx-git
 	pkgdesc = Futuristic take on hexdump
-	pkgver = 0.4.2.r2.g21b2304
+	pkgver = 0.6.0.r1.ga708256
 	pkgrel = 1
 	url = https://github.com/sitkevij/hex
 	arch = x86_64
