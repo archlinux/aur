@@ -2,23 +2,23 @@
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=nweb
-pkgver=23
+pkgver=25
 pkgrel=1
 pkgdesc='Tiny web server for serving static pages'
 arch=('x86_64' 'i686')
-url='http://www.ibm.com/developerworks/systems/library/es-nweb.html'
+url='https://nmon.sourceforge.io/pmwiki.php?n=Site.Nweb'
 license=('custom')
-makedepends=('lynx')
-source=('http://public.dhe.ibm.com/systems/power/community/aix/nweb/nweb.zip')
-sha256sums=('21cc9941cf8b108d109e93c824ca4b19149d01f31134536bec33b21fc73b57e3')
+depends=(glibc)
+source=(https://sourceforge.net/projects/nmon/files/nweb${pkgver}.c)
+sha256sums=('5f22d4b27854a3a08fed21c46d68f49b3a2ee666cd9c5664705ace3f047b3553')
+
 
 prepare() {
-  lynx --dump 'http://www.ibm.com/developerworks/apps/download/index.jsp?contentid=446318&filename=es-nweb.zip&method=http' \
-    | head -114 | tail -108 > LICENSE
+  curl "https://nmon.sourceforge.io/pmwiki.php?n=Site.Nweb" | grep license > LICENSE
 }
 
 build() {
-  gcc -std=c11 -O3 -DLINUX nweb23.c -o nweb -w
+  gcc -std=c11 -O3 -DLINUX nweb${pkgver}.c -o nweb -w
 }
 
 package() {
