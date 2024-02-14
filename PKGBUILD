@@ -1,7 +1,7 @@
 # Maintainer: tacheometrist <tacheometrist@gmail.com>
 
 pkgname=surrealist-bin
-pkgver=1.11.3
+pkgver=1.11.4
 pkgrel=1
 pkgdesc="Powerful graphical SurrealDB query playground and database explorer"
 arch=("x86_64")
