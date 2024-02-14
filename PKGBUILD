@@ -3,31 +3,29 @@
 _pkgname=farms
 _pkgver=1.52.0
 pkgname=r-${_pkgname,,}
-pkgver=1.52.0
-pkgrel=1
-pkgdesc='FARMS - Factor Analysis for Robust Microarray Summarization'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('LGPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Factor Analysis for Robust Microarray Summarization"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('LGPL-2.1-or-later')
 depends=(
-  r
   r-affy
   r-biobase
 )
 optdepends=(
   r-affydata
-  r-biobase
-  r-utils
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5224e912ed83ab7e094ab398d1f6121d1516282f1ab13dd0d7b232fa16e22bf0')
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('47741e71448e6a0b2b47309b31572a2d')
+b2sums=('1ee08038bc8d2c9e100afede45528f752c9a61bfb9042e685c17473b612f417ce353378dde572c9c186853f4fac26e1a9fe438943393d6cbe952485be6ec6851')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
