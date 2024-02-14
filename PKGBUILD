@@ -2,12 +2,12 @@
 pkgname=qemu-android-cm-x86
 _pkgver="14.1-r5"
 pkgver=14.1.r5
-pkgrel=2
+pkgrel=3
 pkgdesc="Android-x86 environment via QEMU and VirGL"
 arch=("x86_64")
 url="http://www.android-x86.org/"
 license=('Apache' 'GPL2' 'custom:Creative Commons 3.0 Attribution Unported')
-depends=('rxvt-unicode' 'zenity' 'qemu' 'hicolor-icon-theme')
+depends=('rxvt-unicode' 'zenity' 'qemu' 'qemu-ui-sdl' 'hicolor-icon-theme')
 makedepends=('inkscape')
 conflicts=('qemu-android-x86' 'qemu-android-oreo-x86')
 install="qemu-android-cm-x86.install"
