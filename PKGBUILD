@@ -3,8 +3,8 @@
 pkgname=cura-5-beta-bin
 _pkgname=cura-5-beta-bin
 _shortname=cura5
-pkgver=5.6.0
-beta= #-beta.2
+pkgver=5.7.0
+beta=-alpha.0
 subbeta=
 pkgrel=0
 pkgdesc='Cura is an open source slicing application for 3D printers (include betaversion)'
@@ -25,7 +25,7 @@ source=(
     "cura.desktop.patch"
 )
 
-sha256sums=('107896a0da4b2873f3bfaad9aed36012bef2fff89571161e57f4da0a7f10a440'
+sha256sums=('198c8abe3baaf61e8ee933ab658060794c27873a935cdcab490ab945e689a57a'
             'f361bfaa2b63576ba829b3fb608f3f8baf5c25df51ebaba8c3554a7f3108e87d'
             '4b3de38326084d3ae1689596a6bd8673f2e2580d0be5d0710a0a31b4d8dde1f9'
             'ee7ace053a8d8b6ae0fa1be2cc7c9dca9a352d8b190a5e27098acbdc65f0eb8e')
