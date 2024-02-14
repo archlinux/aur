@@ -5,11 +5,11 @@ pkgdesc='A software energy consumption estimation tool'
 arch=("any")
 url="https://git.sr.ht/~whereswaldon/watt-wiser"
 _branch='main'
-pkgver=r118.78be55c
+pkgver=r124.c7a9fd2
 pkgrel=1
 license=("Unlicense")
 makedepends=("git" "go" "gcc" "libx11" "vulkan-headers" "pkgconf" "wayland" "wayland-protocols" "libx11" "libxkbcommon-x11" "libxcursor")
-depends=("watt-wiser-sensors" "xdg-desktop-portal")
+depends=("watt-wiser-sensors-git" "xdg-desktop-portal")
 source=("$pkgname::git+$url#branch=$_branch")
 sha256sums=("SKIP")
 provides=($_pkgname)

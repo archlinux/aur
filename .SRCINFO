@@ -1,6 +1,6 @@
 pkgbase = watt-wiser-git
 	pkgdesc = A software energy consumption estimation tool
-	pkgver = r118.78be55c
+	pkgver = r124.c7a9fd2
 	pkgrel = 1
 	url = https://git.sr.ht/~whereswaldon/watt-wiser
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = watt-wiser-git
 	makedepends = libx11
 	makedepends = libxkbcommon-x11
 	makedepends = libxcursor
-	depends = watt-wiser-sensors
+	depends = watt-wiser-sensors-git
 	depends = xdg-desktop-portal
 	provides = watt-wiser
 	conflicts = watt-wiser
