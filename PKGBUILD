@@ -2,7 +2,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=puppet-lint
-pkgver=4.2.1
+pkgver=4.2.4
 pkgrel=1
 pkgdesc="Check that your Puppet manifests conform to the style guide."
 arch=(any)
@@ -11,8 +11,8 @@ license=('MIT')
 depends=('ruby')
 makedepends=('rubygems' 'ruby-rdoc')
 source=(https://rubygems.org/downloads/$pkgname-$pkgver.gem)
-noextract=($pkgname-$pkgver.gem)
-sha256sums=('08b0419274ae44ef91279a950d064daca28407ee47e802fbdc07a778adf1da95')
+noextract=(puppetlabs-$pkgname-$pkgver.gem)
+sha256sums=('49a0f6277901b7d5227df968c6553ebbd8479479e47075181cc306d9b97357d8')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
@@ -27,5 +27,5 @@ package() {
   rm "$pkgdir/$_gemdir/cache/$pkgname-$pkgver.gem"
 
   install -Dm0644 "$pkgdir/$_gemdir/gems/$pkgname-$pkgver/LICENSE" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+      "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
