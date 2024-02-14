@@ -1,4 +1,5 @@
 # Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
+# Contributor: Julian Haas <archlinux at {first name}-{last name} dot de>
 
 pkgname=i3-gnome-pomodoro-git
 _srcname=i3-gnome-pomodoro
