@@ -1,0 +1,17 @@
+pkgbase = hoverclock-git
+	pkgdesc = A very lightweight and customizable floating clock for Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kostoskistefan/hoverclock
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libxcb
+	depends = fontconfig
+	depends = freetype2
+	conflicts = hoverclock-appimage
+	conflicts = hoverclock-qt
+	source = git+https://github.com/kostoskistefan/hoverclock.git
+	sha256sums = SKIP
+
+pkgname = hoverclock-git
