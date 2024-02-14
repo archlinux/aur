@@ -27,15 +27,14 @@ prepare() {
 }
 
 build() {
-  RUSTUP_TOOLCHAIN=stable cargo build --release --all-features --manifest-path=$pkgname/Cargo.toml --target-dir=target
+  RUSTUP_TOOLCHAIN=stable cargo build --release --all-features --manifest-path=$pkgname/Cargo.toml --target-dir=$pkgname/target
 }
 
 check() {
-  RUSTUP_TOOLCHAIN=stable cargo test --release --manifest-path=$pkgname/Cargo.toml --target-dir=target
+  RUSTUP_TOOLCHAIN=stable cargo test --release --manifest-path=$pkgname/Cargo.toml --target-dir=$pkgname/target
 }
 
 package() {
-  install -Dm755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin"
+  install -Dm755 "$pkgname/target/release/${pkgname%-git}" -t "$pkgdir/usr/bin"
   install -Dm644 $pkgname/res/logo.png "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
 }
-
