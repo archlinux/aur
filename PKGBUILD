@@ -1,4 +1,4 @@
-# Maintainer: Manuel Wiesinger <m@mmap.at>
+# Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
 
 pkgname=i3-gnome-pomodoro-git
 _srcname=i3-gnome-pomodoro
