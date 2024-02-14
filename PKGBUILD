@@ -3,22 +3,21 @@
 # Contributor: dorphell <dorphell@archlinux.org>
 
 pkgname=qstat
-pkgver=2.14
+pkgver=2.17
 pkgrel=1
-pkgdesc="A command line utility that displays the status of internet game servers"
-url="https://github.com/multiplay/qstat"
+pkgdesc="A command-line program that displays information about Internet game servers."
+url="https://github.com/Unity-Technologies/qstat"
 arch=('i686' 'x86_64')
-license=('custom:Artistic')
+license=('Artistic-2.0')
 depends=('glibc')
 conflicts=('qstat-cvs' 'qstat-svn')
 backup=('etc/qstat.cfg')
-source=("https://github.com/multiplay/qstat/archive/v${pkgver}.tar.gz")
-sha256sums=('ae906b74d4cce8057b5a265b76859101da8104c2a07c05f11a51f7c9f033ef8b')
+source=("https://github.com/Unity-Technologies/qstat/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('880549d220a9a9046910bc2e5564b09349870110c77249b66d2ca77143327c83473da31c00e7b70df45f48e6a5bcb3310487f73983d745a69e6aa6278a125278')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
-    sed "s#strndup#strndupz0r#g" -i qstat.c
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc
     make
