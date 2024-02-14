@@ -1,0 +1,17 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = discord-canary
+
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = discord-canary-wayland-hook
+
+
+[Action]
+Description = Defaulting to Wayland support for discord-canary
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/discord-canary-wayland

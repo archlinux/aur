@@ -1,0 +1,14 @@
+pkgbase = discord-canary-wayland-hook
+	pkgdesc = Pacman hook to change discord-canary to start with ozone-platform-hint=auto after install or upgrade.
+	pkgver = 1
+	pkgrel = 1
+	install = discord-canary-wayland-hook.install
+	arch = any
+	license = MIT
+	depends = discord-canary
+	source = discord-canary-wayland.hook
+	source = discord-canary-wayland
+	sha1sums = 6572182ccda6e3f5a413676f91a4d5056f77e5d7
+	sha1sums = 535d0d88d091aa1290ab445ab4f15ada60cba664
+
+pkgname = discord-canary-wayland-hook

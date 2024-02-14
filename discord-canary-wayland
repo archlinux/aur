@@ -1,0 +1,6 @@
+#!/bin/bash
+
+rm /usr/bin/discord-canary
+echo "/opt/discord-canary/DiscordCanary --ozone-platform-hint=auto" > /usr/bin/discord-canary
+chmod +x /usr/bin/discord-canary
+
