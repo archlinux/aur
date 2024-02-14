@@ -1,7 +1,7 @@
 pkgbase = asus-aurora
 	pkgdesc = A utility to control RGB keyboard back-light and charging threshold for Asus TUF-gaming laptops
 	pkgver = 3.5.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/legacyO7/Aurora
 	arch = x86_64
 	license = MIT

@@ -3,7 +3,7 @@
 
 pkgname=asus-aurora
 pkgver=3.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility to control RGB keyboard back-light and charging threshold for Asus TUF-gaming laptops"
 arch=('x86_64')
 url="https://github.com/legacyO7/Aurora"
@@ -16,6 +16,8 @@ prepare() {
 }
 
 package() {
+    echo "Use at your own risk! The app modify system permissions!!"
+    exit -1
     cd "$srcdir"
     cp -dr --no-preserve=ownership opt $pkgdir/opt
     cp -dr --no-preserve=ownership usr $pkgdir/usr
