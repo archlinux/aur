@@ -5,7 +5,7 @@
 _pkgname="joe"
 pkgname="joe-go"
 pkgver="1.1.0"
-pkgrel=2
+pkgrel=3
 pkgdesc="A .gitignore magician in your command line"
 arch=('any')
 url="http://github.com/jeremymreed/joe/"
@@ -25,8 +25,7 @@ build() {
 }
 
 package() {
-  mkdir -p ${pkgdir}/usr/bin
-  cp ${srcdir}/${_pkgname}-${pkgver}/build/joe ${pkgdir}/usr/bin/joe-gitignore
+  install -Dm755 "${srcdir}/${_pkgname}-${pkgver}/build/joe" "${pkgdir}/usr/bin/joe-gitignore"
 }
 
 # vim:set ts=2 sw=2 et:

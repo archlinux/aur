@@ -1,7 +1,7 @@
 pkgbase = joe-go
 	pkgdesc = A .gitignore magician in your command line
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/jeremymreed/joe/
 	install = joe.install
 	arch = any
