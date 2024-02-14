@@ -1,6 +1,6 @@
 pkgbase = bloop-desktop-bin
 	pkgdesc = A fast code search engine written in Rust
-	pkgver = 0.5.11
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/BloopAI/bloop
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = bloop-desktop-bin
 	depends = webkit2gtk
 	depends = qdrant
 	provides = bloop-desktop
-	source = https://github.com/BloopAI/bloop/releases/download/v0.5.11/bloop_0.5.11_amd64.deb
-	sha256sums = ca74ec5436be0fdd626efdb72cea79cb4ffd809fad6094ba2277134464339570
+	source = https://github.com/BloopAI/bloop/releases/download/v0.6.2/bloop_0.6.2_amd64.deb
+	sha256sums = 0e758844e215fc027a92d441d5cd571442868bfbfa71c074a83ae7a09e080680
 
 pkgname = bloop-desktop-bin
