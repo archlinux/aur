@@ -1,14 +1,13 @@
 pkgbase = neovim-surround-opt-git
-	pkgdesc = Provides mappings to easily delete, change, and add paired "surroundings."
-	pkgver = 109.5970688
+	pkgdesc = Add/change/delete surrounding delimiter pairs with ease.
+	pkgver = 215.10b20ca
 	pkgrel = 1
-	url = https://github.com/tpope/vim-surround
+	url = https://github.com/kylechui/nvim-surround
 	arch = any
-	license = custom:vim
+	license = MIT
 	makedepends = git
 	depends = neovim
-	source = surround::git+https://github.com/tpope/vim-surround.git
+	source = surround::git+https://github.com/kylechui/nvim-surround.git
 	sha256sums = SKIP
 
 pkgname = neovim-surround-opt-git
-

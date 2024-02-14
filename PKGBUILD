@@ -1,11 +1,11 @@
 pkgname=neovim-surround-opt-git
-pkgver=113.f51a26d
+pkgver=235.8f2af76
 _pkgname=surround
 pkgrel=1
-pkgdesc='Provides mappings to easily delete, change, and add paired "surroundings."'
+pkgdesc='Add/change/delete surrounding delimiter pairs with ease.'
 arch=('any')
-url="https://github.com/tpope/vim-${_pkgname}"
-license=('custom:vim')
+url="https://github.com/kylechui/nvim-${_pkgname}"
+license=('MIT')
 depends=('neovim')
 makedepends=('git')
 source=("${_pkgname}::git+${url}.git")
@@ -28,6 +28,8 @@ package() {
 
     install -dvm755 "${pkgdir}/${_installpath}"
 
-    cp -rvt "${pkgdir}/${_installpath}" doc plugin
+    cp -rvt "${pkgdir}/${_installpath}" doc lua queries
+
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 }
