@@ -2,7 +2,7 @@
 # Contributor: Sandy Carter <bwrsandman [at] gmail dot com>
 
 pkgname=teslamate
-pkgver=1.28.2
+pkgver=1.28.3
 pkgrel=1
 pkgdesc="A self-hosted data logger for your Tesla 🚘"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=("npm")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/teslamate-org/teslamate/archive/refs/tags/v${pkgver}.tar.gz"
         "teslamate.service"
         "teslamate.install")
-sha256sums=('7987bff05ba4395ae65c41f9692af772f9f6e61fb26ba59ce9026ba254a3f80d'
+sha256sums=('d6743b3f11bab83bc96e32e674b3e441d37e41c15e8c1ce876a9535c4d5abccf'
             '455b9f75b17ee31bfed34fb3b7ab149947e7691b3b1c07c51eb298d0ac4adf67'
             '1f599b27539320c874e55d3430c8375179a69893c38e10d0fed7952450a3f347')
 install=teslamate.install

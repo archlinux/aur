@@ -1,6 +1,6 @@
 pkgbase = teslamate
 	pkgdesc = A self-hosted data logger for your Tesla 🚘
-	pkgver = 1.28.2
+	pkgver = 1.28.3
 	pkgrel = 1
 	url = https://teslamate.org
 	install = teslamate.install
@@ -11,10 +11,10 @@ pkgbase = teslamate
 	depends = nodejs
 	depends = grafana
 	depends = postgresql
-	source = teslamate-1.28.2.tar.gz::https://github.com/teslamate-org/teslamate/archive/refs/tags/v1.28.2.tar.gz
+	source = teslamate-1.28.3.tar.gz::https://github.com/teslamate-org/teslamate/archive/refs/tags/v1.28.3.tar.gz
 	source = teslamate.service
 	source = teslamate.install
-	sha256sums = 7987bff05ba4395ae65c41f9692af772f9f6e61fb26ba59ce9026ba254a3f80d
+	sha256sums = d6743b3f11bab83bc96e32e674b3e441d37e41c15e8c1ce876a9535c4d5abccf
 	sha256sums = 455b9f75b17ee31bfed34fb3b7ab149947e7691b3b1c07c51eb298d0ac4adf67
 	sha256sums = 1f599b27539320c874e55d3430c8375179a69893c38e10d0fed7952450a3f347
 
