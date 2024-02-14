@@ -6,14 +6,14 @@
 #_with_usermode=1
 
 pkgname=mock
-pkgver=5.4
+pkgver=5.5
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
 pkgdesc="A simple chroot build environment manager for building RPMs"
 url="https://github.com/rpm-software-management/$pkgname"
 arch=('any')
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('mock-core-configs>=39' 'python' 'python-backoff' 'python-distro'
          'python-pyroute2' 'python-requests' 'python-templated-dictionary'
          'rpm-tools')
@@ -32,7 +32,7 @@ backup=("etc/$pkgname/logging.ini"
 source=("$url/archive/$_pkgtag.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-sha256sums=('9a58fa5c8b9d0fc73645ac6664ca676a79eeaebfba9119948259c0569ade730d'
+sha256sums=('c5ed11a0a9716a0801ffbf31e764cf6130f6865a13d65e4e74140108a5ef4469'
             'f6cba3f7e7f35c3d811f548af9ff2044764b6b65eb9bd74f035904c0c8463651'
             'a32ef4b3a19490280d3e8fcdebe9dd3348636a97e214850ce6cfc6bffa56a5d3')
 
