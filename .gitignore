@@ -1,0 +1,9 @@
+# build dirs
+/src
+/pkg
+
+# source tarball
+*.tar.gz
+
+# built package
+*.pkg.tar.zst
