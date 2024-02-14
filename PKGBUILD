@@ -2,7 +2,7 @@
 
 pkgname=bbmap
 pkgver=39.06
-pkgrel=1
+pkgrel=3
 pkgdesc="A short read aligner and other bioinformatic tools"
 arch=('x86_64')
 url=https://jgi.doe.gov/data-and-tools/bbtools/
@@ -16,7 +16,7 @@ optdepends=(
 source=("${pkgname}"-"${pkgver}".tar.gz::https://downloads.sourceforge.net/project/"${pkgname}"/BBMap_"${pkgver}".tar.gz)
 sha256sums=('61d45bd59a543b90a143c5c7dbfec0ff6163dce54194b8c4b648fb6aac67d42e')
 
-prepare() {
+build() {
   cd "${srcdir}"/"${pkgname}"/jni
   make -f makefile.linux clean
 }

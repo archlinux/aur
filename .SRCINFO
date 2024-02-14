@@ -1,7 +1,7 @@
 pkgbase = bbmap
 	pkgdesc = A short read aligner and other bioinformatic tools
 	pkgver = 39.06
-	pkgrel = 1
+	pkgrel = 3
 	url = https://jgi.doe.gov/data-and-tools/bbtools/
 	arch = x86_64
 	license = BSD
