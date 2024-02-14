@@ -13,10 +13,8 @@
 : ${_sccache:=}
 
 pkgname=niri-git
-pkgver() {
-  git -C ${pkgname%-git} describe --long --tags --abbrev=7 | sed 's|^v||;s|-[0-9]*-g|.|'
-}
-pkgrel=1
+pkgver=0.1.1
+pkgrel=2
 pkgdesc="Scrollable-tiling Wayland compositor"
 arch=(x86_64 aarch64)
 url="https://github.com/YaLTeR/${pkgname%-git}"
@@ -41,8 +39,7 @@ source=(${pkgname%-git}::git+$url.git)
 b2sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C ${pkgname%-git} describe --long --tags --abbrev=7 | sed 's|^v||;s|-[0-9]*-g|.|'
 }
 
 prepare() {
