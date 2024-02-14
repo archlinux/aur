@@ -1,121 +1,86 @@
-#_                   _ _ _  _ _____ _  _
-#| | _______   ____ _| | | || |___  | || |
-#| |/ / _ \ \ / / _` | | | || |_ / /| || |_
-#|   <  __/\ V / (_| | | |__   _/ / |__   _|
-#|_|\_\___| \_/ \__,_|_|_|  |_|/_/     |_|
+# Maintainer: Lone_Wolf <Lone_Wolf@klaas-de-kat.nl>
+# Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor: Laurent Carlier <lordheavym@gmail.com>
 
-#Maintainer: kevall474 <kevall474@tuta.io> <https://github.com/kevall474>
-#Credits: Laurent Carlier <lordheavym@gmail.com>
-
-#######################################
-
-#Set compiler to build spirv package
-#Set '1' to build with GCC
-#Set '2' to build with CLANG
-#Default is empty. It will build with GCC. To build with different compiler just use : env _compiler=(1 or 2) makepkg -s
-if [ -z ${_compiler+x} ]; then
-  _compiler=
-fi
-
-#######################################
 
 pkgname=lib32-spirv-tools-git
-pkgdesc='API and commands for processing SPIR-V modules. (32-bit) (git version)'
-pkgver=2021.2_dev.2021_05_19.3037.f0d110e30
+pkgver="2023.6".3900.f9184c650
 pkgrel=1
+pkgdesc='API and commands for processing SPIR-V modules (32-bit version)'
+url='https://github.com/KhronosGroup/SPIRV-Tools'
 arch=('i686' 'x86_64')
-url='https://github.com/KhronosGroup/SPIRV-Tools.git'
-license=(Apache-2.0)
-makedepends=('make' 'cmake' 'git' 'extra-cmake-modules' 'python' 'ninja' 'clang' 'llvm' 'llvm-libs' 'gcc' 'gcc-libs'
-             'lib32-clang' 'lib32-llvm' 'lib32-llvm-libs' 'lib32-gcc-libs' 'spirv-tools')
-depends=('lib32-gcc-libs' 'lib32-llvm-libs' 'spirv-tools')
-provides=('lib32-spirv-tools' 'lib32-spirv-tools-git')
-source=('SPIRV-Tools::git+https://github.com/KhronosGroup/SPIRV-Tools.git')
-md5sums=('SKIP')
+license=('Apache-2.0')
+groups=('vulkan-devel')
+source=('git+https://github.com/KhronosGroup/SPIRV-Tools'
+              'git+https://github.com/google/googletest.git'
+              'git+https://github.com/google/effcee.git'
+              'git+https://github.com/google/re2.git'
+              'git+https://github.com/abseil/abseil-cpp.git'
+)
+sha1sums=('SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP')
+depends=(lib32-glibc lib32-gcc-libs spirv-tools-git sh)
+makedepends=(cmake python git spirv-headers-git)
+conflicts=(lib32-spirv-tools)
+provides=(lib32-spirv-tools)
 
-pkgver(){
-  cd SPIRV-Tools
-  echo 2021.2_dev.$(date -I | sed 's/-/_/' | sed 's/-/_/').$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+
+cmake_args=(
+  -G "Unix Makefiles"
+  -D CMAKE_BUILD_TYPE=Release
+  -D CMAKE_INSTALL_PREFIX=/usr
+  -D CMAKE_INSTALL_LIBDIR=lib32
+  -D SPIRV-Headers_SOURCE_DIR=/usr/
+  -D BUILD_SHARED_LIBS=ON
+  -D SPIRV_TOOLS_BUILD_STATIC=OFF
+  -D SPIRV_WERROR=OFF
+)
+
+
+
+
+prepare() {
+  # link external sources so cmake can find them
+  pushd SPIRV-Tools/external
+  ln -s "$srcdir"/googletest
+  ln -s $srcdir/abseil-cpp abseil_cpp
+  ln -s "$srcdir"/effcee
+  ln -s "$srcdir"/re2
+  popd
+  
+  export CC='gcc -m32'
+  export CXX='g++ -m32'
+  export PKG_CONFIG=i686-pc-linux-gnu-pkg-config
+
+  cmake   -S SPIRV-Tools -B _build "${cmake_args[@]}" -Wno-dev
+  make -C _build spirv-tools-build-version
 }
 
-prepare(){
-  cd SPIRV-Tools
-  git clone https://github.com/KhronosGroup/SPIRV-Headers.git external/spirv-headers
-  git clone https://github.com/google/effcee.git external/effcee
-  git clone https://github.com/google/re2.git external/re2
-  #git clone https://github.com/google/googletest.git external/googletest # optional
-  #git clone https://github.com/protocolbuffers/protobuf.git external/protobuf # optional
+pkgver() {
+  local _ver1 _ver2
+  # read fails if only 1 var is used
+  IFS="," read -r _ver1 _ver2 < _build/build-version.inc || [ -n "_ver1" ]
+  
+  cd SPIRV-Tools  
+  echo ${_ver1//v/}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-build(){
-if [[ $_compiler = "1" ]]; then
-  export CC="gcc"
-  export CXX="g++"
-elif [[ $_compiler = "2" ]]; then
-  export CC="clang"
-  export CXX="clang++"
-else
-  export CC="gcc"
-  export CXX="g++"
-fi
-export PKG_CONFIG=/usr/bin/i686-pc-linux-gnu-pkg-config
 
-  cd SPIRV-Tools
 
-  rm -rf build_32-{static,shared}
-
-  # build shared lib
-
-  # to enable SPIRV_BUILD_FUZZER=ON uncomment protobuf in prepare
-
-  #cmake -H. -G Ninja -Bbuild_32-static \
-  #-DCMAKE_C_FLAGS=-m32 \
-  #-DCMAKE_CXX_FLAGS=-m32 \
-  #-DCMAKE_INSTALL_PREFIX=/usr \
-  #-DCMAKE_INSTALL_LIBDIR=lib32 \
-  #-DCMAKE_BUILD_TYPE=Release \
-  #-DSPIRV_WERROR=Off \
-  #-DSPIRV_TOOLS_BUILD_STATIC=ON \
-  #-DSPIRV_ALLOW_TIMERS=ON \
-  #-DSPIRV_COLOR_TERMINAL=ON \
-  #-DSPIRV_LOG_DEBUG=OFF \
-  #-DSPIRV_SKIP_EXECUTABLES=OFF \
-  #-DSPIRV_SKIP_TESTS=OFF \
-  #-DENABLE_SPIRV_TOOLS_INSTALL=ON
-  #-DSPIRV_BUILD_FUZZER=ON
-
-  cmake -H. -G Ninja -Bbuild_32-shared \
-  -DCMAKE_C_FLAGS=-m32 \
-  -DCMAKE_CXX_FLAGS=-m32 \
-  -DCMAKE_INSTALL_PREFIX=/usr \
-  -DCMAKE_INSTALL_LIBDIR=lib32 \
-  -DCMAKE_BUILD_TYPE=Release \
-  -DSPIRV_WERROR=Off \
-  -DSPIRV_TOOLS_BUILD_STATIC=OFF \
-  -DBUILD_SHARED_LIBS=ON \
-  -DSPIRV_ALLOW_TIMERS=ON \
-  -DSPIRV_COLOR_TERMINAL=ON \
-  -DSPIRV_LOG_DEBUG=OFF \
-  -DSPIRV_SKIP_EXECUTABLES=OFF \
-  -DSPIRV_SKIP_TESTS=OFF \
-  -DENABLE_SPIRV_TOOLS_INSTALL=ON
-  #-DSPIRV_BUILD_FUZZER=ON
-
-  #ninja -C build_32-static
-  ninja -C build_32-shared
+build() {
+  make -C _build
 }
 
-package_lib32-spirv-tools-git(){
-  #DESTDIR="$pkgdir" ninja -C SPIRV-Tools/build_32-static/ install
-  DESTDIR="$pkgdir" ninja -C SPIRV-Tools/build_32-shared/ install
+check() {
+    make -C _build test
+}
 
-  rm -rf "${pkgdir}"/usr/{bin,include,share}
-
-  # install licence
-  install -Dm644 "${srcdir}"/SPIRV-Tools/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  cd "${pkgdir}/usr/bin"
-  for i in $(find . -type f); do mv ${i} ${i}-32; done
-  mv spirv-lesspipe.sh-32 spirv-lesspipe-32.sh
-  sed 's|spirv-dis|spirv-dis-32|g' -i spirv-lesspipe-32.sh
+package() {
+  
+  make -C _build DESTDIR="$pkgdir" install
+  rm -r "$pkgdir"/usr/{bin,include}
 }
