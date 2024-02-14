@@ -2,7 +2,7 @@
 
 _pkgname=babi
 pkgname=$_pkgname-git
-pkgver=v0.0.21.r25.g2c200b9
+pkgver=v1.5.6.r8.g661eec0
 pkgrel=1
 pkgdesc="A text editor, eventually..."
 arch=('any')
@@ -28,6 +28,6 @@ build() {
 package() {
 	cd "$srcdir/$pkgname"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
