@@ -3,7 +3,7 @@
 pkgname=('pacwrap' 'pacwrap-dist')
 pkgver=0.7.2
 pkgrel=1
-pkgdesc="Facilitates the creation, management, and execution of Arch-baesd unprivileged bubblewrap containers."
+pkgdesc="Facilitates the creation, management, and execution of unprivileged Arch-based bubblewrap containers."
 arch=('x86_64')
 url="https://pacwrap.sapphirus.org/"
 license=('GPLv3-only')

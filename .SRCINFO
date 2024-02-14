@@ -1,5 +1,5 @@
 pkgbase = pacwrap
-	pkgdesc = Facilitates the creation, management, and execution of Arch-baesd unprivileged bubblewrap containers.
+	pkgdesc = Facilitates the creation, management, and execution of unprivileged Arch-based bubblewrap containers.
 	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://pacwrap.sapphirus.org/
