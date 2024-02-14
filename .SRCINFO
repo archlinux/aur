@@ -1,12 +1,12 @@
 pkgbase = tunslip
 	pkgdesc = tools to establish an IPv6 SLIP tunnel interface
 	pkgver = 3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.contiki-os.org/
 	arch = i686
 	arch = x86_64
 	arch = armv7h
-	license = BSD
+	license = BSD-3-Clause
 	depends = glibc
 	conflicts = tunslip6-ng
 	source = https://raw.githubusercontent.com/contiki-os/contiki/10d54f228b961d3d8a3d33b925ced361aaa4926f/tools/tunslip.c
