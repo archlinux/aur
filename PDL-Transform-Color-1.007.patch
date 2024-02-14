@@ -1,0 +1,28 @@
+diff --unified --recursive --text PDL-Transform-Color-1.007.orig/Makefile.PL PDL-Transform-Color-1.007.new/Makefile.PL
+--- PDL-Transform-Color-1.007.orig/Makefile.PL	2024-02-14 22:19:09.029497089 +1100
++++ PDL-Transform-Color-1.007.new/Makefile.PL	2024-02-14 22:19:59.890206873 +1100
+@@ -14,15 +14,15 @@
+ }
+ 
+ 
+-sub MY::postamble {
+-    my $text = <<'FOO';
+-install ::
+-	@echo "Updating PDL documentation database...";
+-	@$(PERL) -e "exit if $$ENV{DESTDIR}; use PDL::Doc; eval { PDL::Doc::add_module(q{PDL::Trasform::Color}); }; ";
+-
+-FOO
+-    return $text;
+-}
++# sub MY::postamble {
++#     my $text = <<'FOO';
++# install ::
++# 	@echo "Updating PDL documentation database...";
++# 	@$(PERL) -e "exit if $$ENV{DESTDIR}; use PDL::Doc; eval { PDL::Doc::add_module(q{PDL::Trasform::Color}); }; ";
++#
++# FOO
++#     return $text;
++# }
+ 
+ WriteMakefile(
+     NAME                      => 'PDL::Transform::Color',

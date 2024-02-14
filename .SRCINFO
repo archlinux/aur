@@ -1,0 +1,20 @@
+pkgbase = perl-pdl-transform-color
+	pkgdesc = Useful color system conversions for PDL
+	pkgver = 1.007
+	pkgrel = 1
+	url = https://metacpan.org/release/PDL-Transform-Color
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	checkdepends = perl-test-simple
+	depends = perl
+	depends = perl-pdl
+	depends = perl-pdl-graphics-colorspace
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETJ/PDL-Transform-Color-1.007.tar.gz
+	source = PDL-Transform-Color-1.007.patch
+	sha256sums = 992392dd26f8d36ad335004869539d954138e2e8fd296b2696293ff281f9b525
+	sha256sums = e5e6e301854c45c59045952ef8c3fca63b0f7fe17b748e896f4db468e0b3568c
+
+pkgname = perl-pdl-transform-color
