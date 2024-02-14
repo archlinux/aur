@@ -1,10 +1,10 @@
 pkgbase = python-pytensor
 	pkgdesc = Fork of Aesara -- Library for defining, optimizing, and efficiently evaluating mathematical expressions involving multi-dimensional arrays
 	pkgver = 2.18.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pymc-devs/pytensor
 	arch = x86_64
-	license = custom
+	license = LicenseRef-PyTensorLicense
 	checkdepends = python-jax
 	checkdepends = python-numba
 	checkdepends = python-pytest
@@ -12,6 +12,7 @@ pkgbase = python-pytensor
 	checkdepends = python-pytest-mock
 	checkdepends = python-tensorflow-probability
 	makedepends = cython
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-versioneer
@@ -30,11 +31,11 @@ pkgbase = python-pytensor
 	depends = python-setuptools
 	depends = python-typing_extensions
 	optdepends = python-jax: for graph transpilation compilation via JAX
-	optdepends = python-tensorflow-probability: for graph transpilation compilation via JAX
 	optdepends = python-numba: for graph transpilation compilation via Numba
-	source = python-pytensor-2.18.6.tar.gz::https://github.com/pymc-devs/pytensor/archive/refs/tags/rel-2.18.6.tar.gz
+	optdepends = python-tensorflow-probability: for graph transpilation compilation via JAX
+	source = git+https://github.com/pymc-devs/pytensor.git#commit=0666fd564d2d67384051c5bb6e0c09e713e0329c
 	source = remove-bin-package.patch
-	sha256sums = 393815578b527b90bc46dddff0355bf31447e8c3bd8c6c735f7d63532ecda464
+	sha256sums = SKIP
 	sha256sums = 73360d53a5c5e5718a544c69218d3d64adc2390007a9b6781f7b61cc32415e59
 
 pkgname = python-pytensor
