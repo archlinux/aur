@@ -1,6 +1,6 @@
 pkgbase = r-annotationhubdata
 	pkgdesc = Transform public data resources into Bioconductor Data Structures
-	pkgver = 1.32.0
+	pkgver = 1.32.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/AnnotationHubData
 	arch = any
@@ -37,7 +37,7 @@ pkgbase = r-annotationhubdata
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/AnnotationHubData_1.32.0.tar.gz
-	sha256sums = 7fb469b51448ede438fccbcf979d5733abad5a2659df6d5aec6a277a7e317f4a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/AnnotationHubData_1.32.1.tar.gz
+	sha256sums = b59ea2632ce440ef7a3ae7ac1c219b5f10a897b0d2397973147253319cb4a227
 
 pkgname = r-annotationhubdata
