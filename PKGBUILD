@@ -1,21 +1,19 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rols
-_pkgver=2.30.0
+_pkgver=2.30.1
 pkgname=r-${_pkgname,,}
-pkgver=2.30.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='An R interface to the Ontology Lookup Service'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgdesc="An R interface to the Ontology Lookup Service"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
   r-biobase
   r-biocgenerics
-  r-httr
+  r-httr2
   r-jsonlite
-  r-progress
 )
 optdepends=(
   r-biocstyle
@@ -27,14 +25,15 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9de32bf8178d665de13f0b6ebdeb35cd2c2182afd72fa5073afc3d7afe7d904b')
+md5sums=('dae024b25d99cb24428d289e1b629f36')
+b2sums=('a19ab587b84c0450cc411479dc472f427fa598ccebc16c20f2b7841bc84e1c3d9537da5eabb7086fabdf41370f4f894fc704f598d75d8ef67fd189634ac54060')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
