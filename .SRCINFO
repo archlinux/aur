@@ -1,13 +1,13 @@
 pkgbase = pack-cli-bin
 	pkgdesc = CLI for building apps using Cloud Native Buildpacks
-	pkgver = 0.33.1
+	pkgver = 0.33.2
 	pkgrel = 1
 	url = https://buildpacks.io/
 	arch = x86_64
 	license = Apache
 	provides = pack-cli
 	conflicts = pack-cli
-	source = https://github.com/buildpacks/pack/releases/download/v0.33.1/pack-v0.33.1-linux.tgz
-	sha512sums = 5806209fe807ed7ec6ede50d61d374d367348709edaafa97790ba130a456f7e8d7cc7957ce5f1a2dff9f509232cab6caeb907378b22d1504ba156becf41264d9
+	source = https://github.com/buildpacks/pack/releases/download/v0.33.2/pack-v0.33.2-linux.tgz
+	sha512sums = 6e46a2843438200aaec17eafa781bdb2bf7e192bf471c51d243b27064d5cc0be7075607c0fed8e35decfb80821a41a9286405922754daf08cc6d15ad4caf3195
 
 pkgname = pack-cli-bin
