@@ -1,0 +1,20 @@
+pkgbase = neovim-telescope-opt-git
+	pkgdesc = Find, Filter, Preview, Pick. All lua, all the time.
+	pkgver = 1173.776b509f
+	pkgrel = 1
+	url = https://github.com/nvim-telescope/telescope.nvim
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = neovim
+	depends = plenary.nvim
+	optdepends = ripgrep: required for live_grep and grep_string
+	optdepends = fd: finder
+	optdepends = neovim-treesitter: finder and previewer
+	optdepends = neovim-lsp: picker
+	optdepends = devicons: icons
+	provides = neovim-telescope
+	source = telescope::git+https://github.com/nvim-telescope/telescope.nvim.git#branch=0.1.x
+	sha256sums = SKIP
+
+pkgname = neovim-telescope-opt-git
