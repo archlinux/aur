@@ -3,14 +3,13 @@
 _pkgname=crisprseekplus
 _pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
-pkgrel=1
-pkgdesc='crisprseekplus'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="crisprseekplus"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-annotationdbi
   r-biocmanager
   r-bsgenome
@@ -29,15 +28,16 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c83cbc49101db844801b6115a3fd3576805598ab4a05d8327596512e09499fb1')
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('2a26cd0c67eb1679895c3cbc4573e502')
+b2sums=('d408573f89e95cb9ace597c4ad187f40767dfcaeeb9d51a9c3da72a420c3d92d36710be4bffda296470db6670609aefd348a38886bf0e70f94cd288b8486f4e9')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
