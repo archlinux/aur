@@ -1,0 +1,13 @@
+pkgbase = neovim-cmp-opt-git
+	pkgdesc = A completion engine plugin for neovim written in Lua.
+	pkgver = 703.e1f1b40
+	pkgrel = 1
+	url = https://github.com/hrsh7th/nvim-cmp
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = neovim
+	source = cmp::git+https://github.com/hrsh7th/nvim-cmp.git
+	sha256sums = SKIP
+
+pkgname = neovim-cmp-opt-git
