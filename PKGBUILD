@@ -7,7 +7,7 @@ _pkgname=maperitive
 pkgname="${_pkgname}-bin"
 epoch=0
 pkgver=2.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A desktop application which renders maps in real time using OpenStreetMap (OSM) and other sources of data."
 _osmurl="https://wiki.openstreetmap.org/wiki/Maperitive"
 _upstreamurl="http://maperitive.net"
@@ -39,7 +39,7 @@ source=(
 
 sha256sums=(
   "ca1b25463e028d463492f8904c8ef3f0bbd2896be37fb2bcfad0cc780f733449"  # Upstream binary zipfile
-  "bfdab4263e8891e8e7492576bb8660955549aed6ba4bec4834fd316b54383243"  # maperitive.sh
+  "99d577bbea7a28bf0ecea4bd03ce6fb48410fe9c9ccafa78944f5d872648b97b"  # maperitive.sh
   "ef336669dbe7c61e8b12a154dfb8ae1b74fea2053aa355c64b0f046126705a62"  # fake-elinks.sh
 )
 

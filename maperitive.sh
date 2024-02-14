@@ -47,4 +47,4 @@ else
   exit 19
 fi
 
-"${_monoexecutable}" "${_monoptions[@]}" "${_maperitiveexecutable}" "${_maperitiveoptions[@]}"
+"${_monoexecutable}" "${_monoptions[@]}" "${_maperitiveexecutable}" "${_maperitiveoptions[@]}" "$@"
