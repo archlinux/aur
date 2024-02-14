@@ -1,0 +1,18 @@
+commit eebb06b6ea0d5209c34f88d7a7376a3205305675
+Author: Benoit Petit <bpetit@hubblo.org>
+Date:   Mon Feb 12 14:55:44 2024 +0100
+
+    fix: updateed Cargo.toml
+
+diff --git a/Cargo.toml b/Cargo.toml
+index 2074d40..76161b1 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -1,6 +1,6 @@
+ [package]
+ name = "scaphandre"
+-version = "0.5.0"
++version = "1.0.0"
+ authors = ["Benoit Petit <bpetit@hubblo.org>"]
+ edition = "2021"
+ license = "Apache-2.0"

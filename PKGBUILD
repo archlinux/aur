@@ -2,30 +2,30 @@
 # Maintainer: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
 
 pkgname=scaphandre
-pkgver=0.5.0
-pkgrel=2
-pkgdesc="Electrical power consumption metrology agent"
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Energy consumption metrology agent"
 arch=('x86_64')
 url="https://github.com/hubblo-org/scaphandre/"
 license=(Apache)
 depends=('gcc-libs' 'zlib' 'openssl')
 makedepends=('rust')
+options=('!lto')
 source=(
   $pkgname-$pkgver.tar.gz::https://github.com/hubblo-org/scaphandre/archive/v${pkgver}.tar.gz
-  systemd-service
-  conf
+  systemd-service conf version-fix.diff
 )
 sha512sums=(
-  'd6ad365a07d2270f47ee37e05e618c12d8ea66c1f1d8c2e9cab59a5b1790ec44af031729a0fe3c59f8fa5087b457dffe78681d70bc61a9228ff562e6c01af2a9'
-  SKIP SKIP
+  9da49f07dae12e874a9aa7d8b411ab11a7c1bce61eefcd49a9a860d37412584b1452f9cf579b05c5e4a56d39b704bfae5ba5e45d0fc991bafced56c0aaef6032
+  SKIP SKIP SKIP
 )
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
+  patch -p1 <"$OLDPWD/version-fix.diff"
   echo >>Cargo.toml '
   [profile.aur]
   inherits = "release"
-  lto = true
   codegen-units = 1'
 }
 
