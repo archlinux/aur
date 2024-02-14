@@ -13,13 +13,13 @@ conflicts=('fastly')
 optdepends=('viceroy: for running service locally')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fastly/cli/releases/download/v10.8.1/fastly_v10.8.1_linux-arm64.tar.gz")
-sha256sums_aarch64=('f729cc96a0966b3ac2cfb8ba9d2d608011589d9782d30462b5772775d2677da6')
+sha256sums_aarch64=('7ea4cf6e85a6dfca952624b60da5bdbcf988d752d11d9984f2f9b2ffcbc9fa4a')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/fastly/cli/releases/download/v10.8.1/fastly_v10.8.1_linux-386.tar.gz")
-sha256sums_i686=('fd7c63718602d0fb4cc271ffaa8055b99a0abf1869ffb83abc1262fcdfc4300e')
+sha256sums_i686=('a66d562a58fdf19401f7c08a431e41fdfcacef427cdf44a786d9611fa9848d35')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fastly/cli/releases/download/v10.8.1/fastly_v10.8.1_linux-amd64.tar.gz")
-sha256sums_x86_64=('4c5cc4b8ada1b776d29e8d07bf47164dfbce8622edb0327edcc1cd39fc756896')
+sha256sums_x86_64=('51c7062981a5f1e985532a3970e1be38e077687f0da1e2d4c9847bf35e59cc08')
 
 package() {
   install -Dm755 "./fastly" "${pkgdir}/usr/bin/fastly"
