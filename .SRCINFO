@@ -1,7 +1,7 @@
 pkgbase = imgbrd-grabber-bin
 	pkgdesc = Unofficial binary installer for ImgBrd Grabber
 	pkgver = 7.11.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Bionus/imgbrd-grabber
 	arch = x86_64
 	license = Apache-2.0 License
@@ -14,6 +14,6 @@ pkgbase = imgbrd-grabber-bin
 	conflicts = imgbrd-grabber-git
 	options = !strip
 	source = 7.11.2.tar.gz::https://github.com/Bionus/imgbrd-grabber/releases/download/v7.11.2/Grabber_v7.11.2.tar.gz
-	sha256sums = SKIP
+	sha1sums = SKIP
 
 pkgname = imgbrd-grabber-bin
