@@ -8,8 +8,8 @@
 ### Global variables:
 
 _installdir="/usr/share/maperitive"
-_fakedir="${_installdir}/fake"
 _rundir="${HOME}/.maperitive"
+_fakedir="${_rundir}/fake"
 _maperitiveexecutable="${_rundir}/Maperitive.exe"
 _maperitiveoptions=()
 _monoexecutable="mono"
