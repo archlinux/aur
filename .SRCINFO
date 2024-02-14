@@ -1,0 +1,12 @@
+pkgbase = wmenu-dmenu
+	pkgdesc = Symlink for using wmenu as a drop-in replacement to dmenu
+	pkgver = 1
+	pkgrel = 1
+	url = https://sr.ht/~adnano/wmenu
+	arch = any
+	license = MIT
+	depends = wmenu
+	provides = dmenu
+	conflicts = dmenu
+
+pkgname = wmenu-dmenu
