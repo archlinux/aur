@@ -1,6 +1,6 @@
 pkgbase = gonchill
 	pkgdesc = A CLI tool for streaming content
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/kbwhodat/gonchill
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gonchill
 	makedepends = go
 	makedepends = git
 	depends = peerflix
-	source = gonchill-1.0.0.tar.gz::https://github.com/kbwhodat/gonchill/releases/download/1.0.0/gonchill-1.0.0.tar.gz
+	source = gonchill-1.0.1.tar.gz::https://github.com/kbwhodat/gonchill/releases/download/1.0.1/gonchill-1.0.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = gonchill
