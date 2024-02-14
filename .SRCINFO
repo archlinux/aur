@@ -1,0 +1,21 @@
+pkgbase = perl-alien-hdf4
+	pkgdesc = Encapsulate install info for HDF4
+	pkgver = 0.06
+	pkgrel = 1
+	url = https://metacpan.org/release/Alien-HDF4
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	checkdepends = perl-test-simple
+	makedepends = perl-io-all
+	makedepends = perl-extutils-depends
+	depends = hdf4
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETJ/Alien-HDF4-0.06.tar.gz
+	source = Alien-HDF4-0.06.patch
+	sha256sums = 19e143a3692c2c25a595e23834c2b318b912be1a92aa40ccd3e730cd097c152f
+	sha256sums = ca8c5c82eb503113707782ae56488ccee82d24165909fdad892cf0e0750190f3
+
+pkgname = perl-alien-hdf4

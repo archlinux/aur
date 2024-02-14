@@ -1,0 +1,32 @@
+diff --unified --recursive --text Alien-HDF4-0.06.orig/Makefile.PL Alien-HDF4-0.06.new/Makefile.PL
+--- Alien-HDF4-0.06.orig/Makefile.PL	2019-04-27 12:18:12.000000000 +1000
++++ Alien-HDF4-0.06.new/Makefile.PL	2024-02-14 13:35:23.635563187 +1100
+@@ -7,7 +7,7 @@
+ 
+ my ($libpath, $libs) = findlibs();
+ die <<EOF unless defined $libpath;
+-Cannot find hdf library, libdf.a.
++Cannot find hdf library, libdf.$Config{so}.
+ Please add the correct library path to Makefile.PL or install HDF
+ EOF
+ 
+diff --unified --recursive --text Alien-HDF4-0.06.orig/common.pl Alien-HDF4-0.06.new/common.pl
+--- Alien-HDF4-0.06.orig/common.pl	2023-01-28 07:23:33.000000000 +1100
++++ Alien-HDF4-0.06.new/common.pl	2024-02-14 13:35:43.599172154 +1100
+@@ -38,13 +38,13 @@
+     foreach my $libdir ( @HDF_lib_locations ) {
+         return (
+             $libdir, '-lmfhdfalt -ldfalt',
+-        ) if -e "$libdir/libdfalt.a";
++        ) if -e "$libdir/libdfalt.$Config{so}";
+         return (
+             $libdir, '-lmfhdf -ldf',
+-        ) if -e "$libdir/libdf.a";
++        ) if -e "$libdir/libdf.$Config{so}";
+         return (
+             $libdir, '-lmfhdf -lhdf -lxdr',
+-        ) if -e "$libdir/libhdf.a";
++        ) if -e "$libdir/libhdf.$Config{so}";
+     }
+     return;
+ }
