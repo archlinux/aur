@@ -3,11 +3,13 @@
 _pkgname="objectivefs"
 pkgname=objectivefs-bin
 pkgver=7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Scalable High Performance File Storage"
 arch=(aarch64 x86_64)
 url="https://objectivefs.com/"
-license=('custom: ObjectiveFS')
+license=('LicenseRef-ObjectiveFS')
+# requires fusermount binary
+depends=('glibc' 'fuse2')
 source=("https://objectivefs.com/license")
 source_x86_64=("https://objectivefs.com/user/download/ac24htfht/objectivefs_${pkgver}_amd64.deb")
 source_aarch64=("https://objectivefs.com/user/download/ac24htfht/objectivefs_${pkgver}_arm64.deb")
@@ -18,7 +20,7 @@ sha256sums_x86_64=('f8c9531290ce6db60c1517e483e154bb83b4843e8ac7b6ddd3e4a4efa8d1
 package() {
   cd "$srcdir"
   bsdtar -xf ${srcdir}/data.tar.gz -C ${pkgdir}/
-  install -D -m644 license "${pkgdir}/usr/share/licenses/${_pkgname}/license"
+  install -D -m644 license "${pkgdir}/usr/share/licenses/${pkgname}/ObjectiveFS"
   mkdir -p "${pkgdir}/usr/bin/"
   mv "${pkgdir}/sbin/mount.objectivefs" "${pkgdir}/usr/bin"
   rm -rf "${pkgdir}/sbin"

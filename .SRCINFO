@@ -1,11 +1,13 @@
 pkgbase = objectivefs-bin
 	pkgdesc = Scalable High Performance File Storage
 	pkgver = 7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://objectivefs.com/
 	arch = aarch64
 	arch = x86_64
-	license = custom: ObjectiveFS
+	license = LicenseRef-ObjectiveFS
+	depends = glibc
+	depends = fuse2
 	source = https://objectivefs.com/license
 	sha256sums = 31cd1089a1438e5a8d1d3be1bdc67c646a161b6b1fbcd22ac083660ae6ae8f0c
 	source_aarch64 = https://objectivefs.com/user/download/ac24htfht/objectivefs_7.1_arm64.deb
