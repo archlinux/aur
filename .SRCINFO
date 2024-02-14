@@ -1,11 +1,10 @@
 pkgbase = r-mirsponger
-	pkgdesc = Identification and analysis of miRNA sponge interaction networks and modules
+	pkgdesc = Identification and analysis of miRNA sponge regulation
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/miRspongeR
 	arch = x86_64
-	license = GPL
-	depends = r
+	license = GPL-3.0-only
 	depends = r-clusterprofiler
 	depends = r-corpcor
 	depends = r-doparallel
@@ -22,7 +21,8 @@ pkgbase = r-mirsponger
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/miRspongeR_2.4.0.tar.gz
-	sha256sums = 60f6a38bf6a1064b8ad3bb84174827875a8fd2f346b9c707ef6c69512503f0d7
+	source = https://bioconductor.org/packages/3.17/bioc/src/contrib/miRspongeR_2.4.0.tar.gz
+	md5sums = 52c6fe3ed5a289fd16c2e8c549402eb8
+	b2sums = 6e52fe85bd718a33be2fe3b6448b9639a951e44a75b4097cbe35de09fbf53f989b5e12d1f6d06dd2ad1d3657b0cccc812b33e145a14f181beb5845881cf144c5
 
 pkgname = r-mirsponger
