@@ -1,0 +1,6 @@
+[kjots]
+source = 'gitlab'
+gitlab = 'pim/kjots'
+host = 'invent.kde.org'
+use_max_tag = true
+prefix = 'v'
