@@ -1,30 +1,20 @@
 # Contributor: ordoban <dirk.langer@vvovgonik.de>
 
 pkgname='perl-app-prt'
-pkgver='0.20'
+pkgver='0.22'
 pkgrel='1'
-pkgdesc='Command line tool for Perl code refactoring'
+pkgdesc="Command line Perl Refactoring Tool"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=(
-  'perl'
-  'perl-class-load'
-  'perl-file-find-rule'
-  'perl-io-interactive'
-  'perl-path-class'
-  'perl-ppi'
-)
+depends=('perl-capture-tiny>=0.39' 'perl-class-load>=0' 'perl-file-copy-recursive>=0' 'perl-file-find-rule>=0' 'perl-file-pushd>=1.013' 'perl-io-interactive>=0' 'perl-ppi>=0.844' 'perl-path-class>=0' 'perl>=5.10.1')
 makedepends=('perl-module-build')
-checkdepends=(
-  'perl-test-class'
-  'perl-test-mock-guard'
-)
+checkdepends=('perl-test-class>=0' 'perl-test-deep>=0' 'perl-test-fatal>=0' 'perl-test-mock-guard>=0')
 url='https://metacpan.org/release/App-PRT'
-source=('https://cpan.metacpan.org/authors/id/H/HI/HITODE/App-PRT-0.20.tar.gz')
-md5sums=('8719ccd7a7c431014dcf6dbbae87c9fb')
-sha512sums=('d6ca9354610f75cc5dd691c2a8bce988f7b96f487272b68e76c1d75c10ef2f424996cf27541c97a0c305fc791029434002410a5dd301376f317d530d739a976f')
-_distdir="App-PRT-0.20"
+source=("http://search.cpan.org/CPAN/authors/id/H/HI/HITODE/App-PRT-$pkgver.tar.gz")
+md5sums=('2d38c1683b5081ff16acb7ca6db65cc0')
+sha512sums=('31ea87c2f3e8840bab898dd4de5906f2c3a96e5b006fa28872b2182cbba54bb141209f2a57933d2870cb6dac666e65086bab8a6e15eeda1e6d87fcf20f995698')
+_distdir="App-PRT-$pkgver"
 
 build() {
    export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
