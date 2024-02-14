@@ -1,6 +1,6 @@
 pkgname=neovim-telescope-fzf-native-opt-git
 _pkgname=telescope-fzf-native
-pkgver=62.9bc8237
+pkgver=63.6c921ca
 pkgrel=1
 pkgdesc='FZF sorter for neovim-telescope written in C.'
 arch=('any')

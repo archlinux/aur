@@ -1,6 +1,6 @@
 pkgbase = neovim-telescope-fzf-native-opt-git
 	pkgdesc = FZF sorter for neovim-telescope written in C.
-	pkgver = 326.36aaceb
+	pkgver = 62.9bc8237
 	pkgrel = 1
 	url = https://github.com/nvim-telescope/telescope-fzf-native.nvim
 	arch = any
