@@ -1,16 +1,16 @@
 # Maintainer: Carey Metcalfe <carey@[first initial + last name].ca>
 
 pkgname=audiowaveform
-pkgver=1.9.1
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="Generate waveform data and render waveform images from audio files"
 arch=('i686' 'x86_64')
 url="https://github.com/bbc/audiowaveform"
-license=('GPL3')
-depends=('libmad' 'libsndfile' 'libid3tag' 'gd' 'boost-libs')
+license=('GPL-3.0-only')
+depends=('libmad' 'libsndfile' 'libid3tag' 'gd' 'boost-libs' 'gcc-libs' 'glibc')
 makedepends=('git' 'cmake' 'boost')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bbc/audiowaveform/archive/$pkgver.tar.gz")
-sha256sums=('04dabd18c783758d666bc946f58d7d5c8ebfdb8b328048b9a884bc0ac8cdf068')
+sha256sums=('bd283d84dc84fda84f4090fddde9a5bef924c588dd7bf6acaa8f7b946efb42a4')
 
 build() {
 	cd "$pkgname-$pkgver"
