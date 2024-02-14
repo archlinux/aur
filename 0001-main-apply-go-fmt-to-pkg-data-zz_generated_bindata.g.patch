@@ -1,7 +1,7 @@
-From 447968ac1d6fc95ad71b93b400ce519ac740d8e3 Mon Sep 17 00:00:00 2001
+From 175849ddb4d9bb79a161dd32d16d25182ed2e866 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 23 Dec 2023 01:10:59 +0100
-Subject: [PATCH 2/7] main: apply go-fmt to pkg/data/zz_generated_bindata.go
+Subject: [PATCH 1/6] main: apply go-fmt to pkg/data/zz_generated_bindata.go
 
 No reason other than for consistency.
 ---
@@ -21,5 +21,5 @@ index 8857094b87..c004a927bc 100644
  //go:generate go fmt pkg/static/zz_generated_bindata.go
  
 -- 
-2.43.0
+2.43.1
 

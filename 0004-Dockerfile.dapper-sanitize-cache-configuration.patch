@@ -1,7 +1,7 @@
-From 1f17fa5bf080101dddc6ff4100ad38296faa8a4a Mon Sep 17 00:00:00 2001
+From ebff679efbae2daab82edebeded7ac632a3246af Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 23 Dec 2023 01:08:37 +0100
-Subject: [PATCH 5/7] Dockerfile.dapper: sanitize cache configuration
+Subject: [PATCH 4/6] Dockerfile.dapper: sanitize cache configuration
 
 - set $HOME to /root because there is no good reason to keep it in $PWD
 - mount volumes to /go/pkg to cache downloaded Go sources (we'd set it
@@ -23,7 +23,7 @@ index 36131d3744..c7418f3674 100644
  ./.trash-cache
 +./.dapper-cache
 diff --git a/Dockerfile.dapper b/Dockerfile.dapper
-index 5ae64df57b..5c49581a76 100644
+index 6d0c6629c2..fb85c961ff 100644
 --- a/Dockerfile.dapper
 +++ b/Dockerfile.dapper
 @@ -50,8 +50,13 @@ RUN if [ "$(go env GOARCH)" = "amd64" ]; then \
@@ -63,5 +63,5 @@ index 620f899894..50af6aa110 100644
  
  .PHONY: deps
 -- 
-2.43.0
+2.43.1
 

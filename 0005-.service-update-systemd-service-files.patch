@@ -1,7 +1,7 @@
-From 3399f01e871f3a87d01f94841a522b9b8aba352e Mon Sep 17 00:00:00 2001
+From 63613b2da29ba0d7c98dacc1d1dff29b00099195 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 23 Dec 2023 02:10:11 +0100
-Subject: [PATCH 6/7] *.service: update systemd service files
+Subject: [PATCH 5/6] *.service: update systemd service files
 
 ---
  k3s-agent-rootless.service | 47 ++++++++++++++++++++++++++++++++++++++
@@ -144,7 +144,7 @@ index 5879e2f8f2..916af05c6d 100644
  [Install]
  WantedBy=default.target
 diff --git a/k3s.service b/k3s.service
-index 7f8c9ec89c..c786114ce0 100644
+index 70ce10c1aa..c786114ce0 100644
 --- a/k3s.service
 +++ b/k3s.service
 @@ -1,16 +1,16 @@
@@ -162,7 +162,7 @@ index 7f8c9ec89c..c786114ce0 100644
  EnvironmentFile=-/etc/default/%N
  EnvironmentFile=-/etc/sysconfig/%N
 -EnvironmentFile=-/etc/systemd/system/k3s.service.env
--ExecStartPre=/bin/sh -xc '! /usr/bin/systemctl is-enabled --quiet nm-cloud-setup.service'
+-ExecStartPre=/bin/sh -xc '! /usr/bin/systemctl is-enabled --quiet nm-cloud-setup.service 2>/dev/null'
 -ExecStart=/usr/local/bin/k3s server
 +EnvironmentFile=-/etc/systemd/system/%n.env
 +ExecStart=/usr/bin/k3s server $K3S_EXEC
@@ -171,5 +171,5 @@ index 7f8c9ec89c..c786114ce0 100644
  Delegate=yes
  # Having non-zero Limit*s causes performance problems due to accounting overhead
 -- 
-2.43.0
+2.43.1
 
