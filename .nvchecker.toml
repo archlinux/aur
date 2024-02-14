@@ -1,0 +1,6 @@
+[kuickshow]
+source = 'gitlab'
+gitlab = 'graphics/kuickshow'
+host = 'invent.kde.org'
+use_max_tag = true
+prefix = 'v'
