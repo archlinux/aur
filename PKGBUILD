@@ -1,6 +1,6 @@
 # Maintainer: Manuel Wiesinger <m at mmap dot at>
 pkgname=virtme-ng-git
-pkgver=r117.74baf30
+pkgver=r806.c25de2f
 pkgrel=1
 pkgdesc="A tool that allows to easily and quickly recompile and test a Linux kernel, starting from the source code."
 arch=('any')
