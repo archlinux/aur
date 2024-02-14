@@ -1,13 +1,12 @@
 pkgbase = woof
-	pkgdesc = An ad-hoc single file webserver; Web Offer One File
-	pkgver = 20220113
+	pkgdesc = ad-hoc single file webserver; Web Offer One File
+	pkgver = 20220202
 	pkgrel = 1
 	url = http://www.home.unix-ag.org/simon/woof.html
 	arch = any
 	license = GPL2
-	makedepends = git
 	depends = python3
-	source = git+https://github.com/simon-budig/woof
-	md5sums = SKIP
+	source = https://github.com/simon-budig/woof/archive/refs/tags/woof-20220202.tar.gz
+	b2sums = 2fff6fc05b5986787c09df4318ba0fbd20f3c33fd31fa5c054c31fd6131d37c08b9a9a5482a647d7b9b6d26565f85376bad11a638c3cc9c5c13321383c41d880
 
 pkgname = woof
