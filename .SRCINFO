@@ -1,0 +1,24 @@
+pkgbase = gog-rail-route-demo
+	pkgdesc = Design and automate your own railway network. GOG version.
+	pkgver = 1.20.2.2.71008
+	pkgrel = 1
+	url = https://www.gog.com/en/game/rail_route_demo
+	arch = x86_64
+	license = custom
+	makedepends = lgogdownloader
+	depends = bash
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk2
+	depends = pango
+	options = !strip
+	source = rail-route-demo_latest.sh::gogdownloader://rail_route_demo/en3installer0
+	source = gog-rail-route-demo.desktop
+	source = rail-route-demo.bash
+	sha512sums = a9eebbe520868fe7cc46eb16fcfbc78c80e4c9b64e3292e0ed87e1a638871d074fd5006249538963bd61346497b72c0cd551a9937d4cd93c78853071430a3b2d
+	sha512sums = 8a0db945b2b026e9b79976903d075e6e84ce4215be2c0729e6d818f74184149467523def8f6b7baa7ee47d3ab674925c6679ed61c3b6a09ff05b8c6be6d0c95d
+	sha512sums = 524d3b9c42290cb4f24b71331501411410db764826c57de351a8c367e0bbab2a4463af18acbb990fb043a26f7c090edec028f6ad7740c6790592c4a42aee2ad9
+
+pkgname = gog-rail-route-demo

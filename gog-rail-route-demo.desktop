@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Rail Route Demo
+Comment=Design and automate your own railway network. GOG version.
+Exec=rail-route-demo
+Icon=gog-rail-route-demo
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8
