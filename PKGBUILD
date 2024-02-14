@@ -2,8 +2,8 @@
 # Conributor: Daniel Menelkir <dmenelkir@gmail.com>
 
 pkgname=wttrbar-git
-pkgver=0.4.0.r0.gdfa1473
-pkgrel=2
+pkgver=0.7.1.r0.g40a68d0
+pkgrel=1
 pkgdesc='Show the weather in Waybar, using the great wttr.io'
 arch=(x86_64)
 url=https://github.com/bjesus/wttrbar
@@ -24,13 +24,13 @@ prepare() {
 }
 
 build() {
-  RUSTUP_TOOLCHAIN=stable cargo build --release --manifest-path=$pkgname/Cargo.toml --target-dir=target --all-features
+  RUSTUP_TOOLCHAIN=stable cargo build --release --manifest-path=$pkgname/Cargo.toml --target-dir=$pkgname/target --all-features
 }
 
 check() {
-  RUSTUP_TOOLCHAIN=stable cargo test --release --manifest-path=$pkgname/Cargo.toml --target-dir=target
+  RUSTUP_TOOLCHAIN=stable cargo test --release --manifest-path=$pkgname/Cargo.toml --target-dir=$pkgname/target
 }
 
 package() {
-  install -Dm755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin"
+  install -Dm755 "$pkgname/target/release/${pkgname%-git}" -t "$pkgdir/usr/bin"
 }
