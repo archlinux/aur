@@ -1,7 +1,7 @@
 pkgbase = ttf-apple-emoji
 	pkgdesc = Apple Color Emoji is a color typeface used by iOS and macOS to display emoji
 	pkgver = 16.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/samuelngs/apple-emoji-linux
 	arch = any
 	license = custom
@@ -12,8 +12,8 @@ pkgbase = ttf-apple-emoji
 	conflicts = ttf-twemoji-color
 	conflicts = ttf-whatsapp-emoji
 	source = AppleColorEmoji.ttf::https://github.com/samuelngs/apple-emoji-linux/releases/download/v16.4-patch.1/AppleColorEmoji.ttf
-	source = 66-apple-emoji.conf
+	source = 75-apple-color-emoji.conf
 	sha512sums = c91dac619e71832fd5fa36550c94f0cda8fb4554b449e3c30db617654e9680f7c350c1ee76d5d774bab4279478e1d4fa92930e68eebb4ed5455169538301ec98
-	sha512sums = e34f2c1c15b816034f29cc47af470d83e61ad910394bb4463e0e9b6fbcba3f2afef22fd2b58da3abe67c70227aade26d26bb68f19f0761cb4ae01e1d1d42c09c
+	sha512sums = aa7d5960e811cf2d3c61e497372fad4b4bb5e31f31d23b5c0dfd261c4e470279e96d957c38b8da844e1a1a3fbe992f58b74753601bd56bcec815ac308deb5995
 
 pkgname = ttf-apple-emoji
