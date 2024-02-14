@@ -8,10 +8,10 @@ arch=(x86_64)
 url='https://k3s.io'
 license=(Apache)
 makedepends=(
-  git go podman
+  git podman
   # these are (some of) the tools that are installed into the "builder"
   # docker container during the officially blessed build path
-  # curl jq yq zstd pigz
+  # go curl jq yq zstd pigz
 )
 backup=(
   etc/systemd/system/k3s.service.env
