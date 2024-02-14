@@ -2,9 +2,8 @@
 # Contributor: William Aass Dahlen <cznk@protonmail.com>
 
 pkgname=azure-kubelogin
-_name=kubelogin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Kubernetes credential (exec) plugin implementing azure authentication"
 arch=(x86_64)
 url="https://github.com/Azure/kubelogin"
@@ -15,11 +14,9 @@ makedepends=(
   go
 )
 conflicts=(kubelogin)
-
-_commit=0fcd072d45250a50cde855cf50204ad2dc784095 # git rev-parse "$pkgver"
-source=("$pkgname::git+$url.git?signed#commit=$_commit")
+_commit=0fcd072d45250a50cde855cf50204ad2dc784095
+source=("$pkgname::git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
-validpgpkeys=('5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23') # GitHub (web-flow commit signing)
 
 _archive="$pkgname"
 
@@ -38,8 +35,8 @@ build() {
   export CGO_LDFLAGS="$LDFLAGS"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
-  _ld_flags="-linkmode external -X main.gitTag=$pkgver"
-  go build -ldflags "$_ld_flags" .
+  local ld_flags="-linkmode external -X main.gitTag=$pkgver"
+  go build -ldflags "$ld_flags" .
 
   # Completions
   ./kubelogin completion bash > kubelogin.bash
