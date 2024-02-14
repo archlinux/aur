@@ -1,6 +1,7 @@
 # Maintainer: Jiri Pospisil <jiri@jpospisil.com>
+
 pkgname=marcel
-pkgver=0.18.3
+pkgver=0.22.2
 pkgrel=1
 pkgdesc='A modern shell'
 url='https://github.com/geophile/marcel'
@@ -13,11 +14,12 @@ makedepends=(
   'python-wheel'
   'python-setuptools'
 )
-license=('GPL')
-b2sums=('105cfbe34453a9ecd2eed576bb0b157ae9092a04a3ef0fda030d595ede547c2823026ce05e7df1a0d368391d1a5ded5696abe9cfb74927cbe87710b4cac4b632')
+license=('GPL-3.0-only')
+b2sums=('1280fa056b3e16347e260f8f7bcc60ae026295ceea3c14dc0da0bd3a99d79c97cc9df90d7be4c3e01f3c9bfcfc2c9c03cf17d677a12ffe7edd022e568d377334')
 
 build() {
   cd marcel-"$pkgver"
+  rm -rf 'test'
   python -m build --wheel --no-isolation
 }
 
