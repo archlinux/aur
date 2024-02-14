@@ -1,0 +1,13 @@
+pkgbase = neovim-neodev-opt-git
+	pkgdesc = Full signature help, docs, and completion for the nvim lua API.
+	pkgver = 1935.bfbd039
+	pkgrel = 1
+	url = https://github.com/folke/neodev.nvim
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = neovim
+	source = neodev::git+https://github.com/folke/neodev.nvim.git
+	sha256sums = SKIP
+
+pkgname = neovim-neodev-opt-git
