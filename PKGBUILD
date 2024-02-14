@@ -1,17 +1,16 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname='perl-mime-encwords'
-pkgver='1.014.3'
+pkgver='1.015.0'
 pkgrel='1'
 pkgdesc="deal with RFC 2047 encoded words (improved)"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-mime-charset>=1.010.1' 'perl>=5.005')
-makedepends=()
+depends=('perl-mime-charset>=1.10.1' 'perl')
 url='https://metacpan.org/pod/MIME::EncWords'
 source=("https://cpan.metacpan.org/authors/id/N/NE/NEZUMI/MIME-EncWords-${pkgver}.tar.gz")
-sha512sums=('77deed0b9b61101ba67f4d498213af9dc1078738fb0992661aa1b260ef394b84341173e5319579c4651f9b6271be0f80d4e96455c7caa9f81accb3db16601af8')
+sha512sums=('21331a5c45b84f0840d8383a7b049509d565b19c62dd4a2e4abe6e16fe8308716f65b93168fa5884b1886981a15869cd26628c34d2d5588d0212550963f905c7')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
