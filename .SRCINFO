@@ -1,0 +1,14 @@
+pkgbase = lw-comm-server-uk-git
+	pkgdesc = lw.comm-server - unified communications server for LaserWeb4 (Ukrainian language)
+	pkgver = r259.db55bf5
+	pkgrel = 1
+	url = https://github.com/khvalera/lw.comm-server-uk
+	arch = x86_64
+	license = GPL
+	makedepends = npm
+	makedepends = yarn
+	depends = nodejs
+	source = lw-comm-server-uk::git+https://github.com/khvalera/lw.comm-server-uk
+	sha512sums = SKIP
+
+pkgname = lw-comm-server-uk-git
