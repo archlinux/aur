@@ -1,6 +1,6 @@
 pkgbase = babi
 	pkgdesc = A text editor, eventually...
-	pkgver = 1.5.3
+	pkgver = 1.5.6
 	pkgrel = 1
 	url = https://github.com/asottile/babi
 	arch = any
@@ -13,6 +13,6 @@ pkgbase = babi
 	conflicts = babi
 	conflicts = babi-git
 	source = https://files.pythonhosted.org/packages/source/b/babi/babi-1.5.3.tar.gz
-	sha256sums = SKIP
+	sha256sums = b932b47b1fa5d3b92707c8afc4407301c2548337378fd85718e5491d755b358b
 
 pkgname = babi
