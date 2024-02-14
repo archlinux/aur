@@ -2,7 +2,7 @@
 
 pkgname=flightcore-bin
 pkgver=2.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Northstar installer, updater, and mod-manager (binary release)"
 url="https://github.com/R2NorthstarTools/FlightCore"
 license=('MIT')
@@ -36,7 +36,4 @@ package() {
   install -Dm644 icons/32x32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/flightcore.png"
   install -Dm644 icons/128x128.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/flightcore.png"
   install -Dm644 icons/128x128@2x.png "$pkgdir/usr/share/icons/hicolor/128x128@2x/apps/flightcore.png"
-  for i in 30x30 44x44 71x71 89x89 107x107 142x142 150x150 284x284 310x310; do
-    install -Dm644 icons/Square${i}Logo.png "$pkgdir/usr/share/icons/hicolor/$i/apps/flightcore.png"
-  done
 }
