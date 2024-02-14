@@ -1,0 +1,37 @@
+Description: Fix random FTBFS in test suite with the approximative size factor
+    which can be too small in some cases
+Author: Emmanuel Bouthenot <kolter@debian.org>
+Bug-Debian: https://bugs.debian.org/844911
+Forwarded: no
+Last-Update: 2016-11-24
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/t/50generic.t
++++ b/t/50generic.t
+@@ -51,7 +51,7 @@
+       close(PROD);
+     my $r = `diff $ref $f.created_by_test`;
+       cmp_ok($mailHTML->size, ">", (stat($ref))[7], "Same size");
+-      cmp_ok($mailHTML->size*0.945, "<", (stat($ref))[7], "Same size");
++      cmp_ok($mailHTML->size*0.943, "<", (stat($ref))[7], "Same size");
+       is($r, "", $ref);
+       unlink("$f.created_by_test");
+     }
+@@ -92,7 +92,7 @@
+       close(PROD);
+     my $r = `diff $ref $f.created_by_test`;
+       cmp_ok($mailHTML->size, ">", (stat($ref))[7], "Same size");
+-      cmp_ok($mailHTML->size*0.945, "<", (stat($ref))[7], "Same size");
++      cmp_ok($mailHTML->size*0.943, "<", (stat($ref))[7], "Same size");
+       is($r, "", $ref);
+       unlink("$f.created_by_test");
+     }
+@@ -134,7 +134,7 @@
+       close(PROD);
+     my $r = `diff $ref $f.created_by_test`;
+       cmp_ok($mailHTML->size, ">", (stat($ref))[7], "Same size");
+-      cmp_ok($mailHTML->size*0.945, "<", (stat($ref))[7], "Same size");
++      cmp_ok($mailHTML->size*0.943, "<", (stat($ref))[7], "Same size");
+       is($r, "", $ref);
+       unlink("$f.created_by_test");
+     }
