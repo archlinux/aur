@@ -1,7 +1,7 @@
 # Maintainer: eNV25 <env252525@gmail.com>
 
 pkgname=ff2mpv-rust
-pkgver=1.1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Native messaging host for ff2mpv written in Rust"
 arch=('x86_64')
@@ -20,8 +20,8 @@ optdepends=(
 	"microsoft-edge: supported browser"
 	"vivaldi: supported browser"
 )
-makedepends=('cargo' 'jq')
-source=("$pkgname-$pkgver::git+https://github.com/ryze312/ff2mpv-rust#commit=4aa4ca5")
+makedepends=('cargo')
+source=("https://github.com/ryze312/ff2mpv-rust/archive/refs/tags/$pkgver.tar.gz")
 
 export RUSTUP_TOOLCHAIN=stable
 export CARGO_TARGET_DIR=target
@@ -34,10 +34,9 @@ prepare() {
 build() {
 	cargo build --frozen --release --all-features \
 		--manifest-path="./$pkgname-$pkgver/Cargo.toml"
-	"target/release/$pkgname" manifest | jq '.path |= "/usr/bin/ff2mpv-rust"' >manifest.json
-	# add support for chrome extension https://chrome.google.com/webstore/detail/ff2mpv/ephjcajbkgplkjmelpglennepbpmdpjg
-	# https://github.com/DanSM-5/ff2mpv/blob/master/ff2mpv.json
-	jq 'del(.allowed_extensions) | .allowed_origins |= ["chrome-extension://ephjcajbkgplkjmelpglennepbpmdpjg/"]' <manifest.json >manifest-chrome.json
+	local exe="$(realpath "target/release/$pkgname")"
+	"$exe" manifest | awk -v exe="$exe" '{ sub(exe, "/usr/bin/ff2mpv-rust") } 1' >manifest.json
+	"$exe" manifest_chromium | awk -v exe="$exe" '{ sub(exe, "/usr/bin/ff2mpv-rust") } 1' >manifest-chrome.json
 }
 
 check() {
@@ -62,4 +61,4 @@ package() {
 	done
 }
 
-sha256sums=('SKIP')
+sha256sums=('b4a1c4146cf358eeae251e83f1eafe847c9b8401a4ee01bd02ccd7ed2aceacb3')
