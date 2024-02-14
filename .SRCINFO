@@ -1,0 +1,12 @@
+pkgbase = neovim-which-key-opt-git
+	pkgver = 315.e271c28
+	pkgrel = 1
+	url = https://github.com/folke/which-key.nvim
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = neovim
+	source = which-key::git+https://github.com/folke/which-key.nvim.git
+	sha256sums = SKIP
+
+pkgname = neovim-which-key-opt-git
