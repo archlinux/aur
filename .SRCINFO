@@ -1,7 +1,7 @@
 pkgbase = globalplatform
 	pkgdesc = GlobalPlatform libraries
 	pkgver = 7.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kaoh/globalplatform
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = globalplatform
 	depends = glibc
 	depends = pcsclite
 	depends = openssl
-	source = https://github.com/kaoh/globalplatform/archive/8d7587c78a8dac444491eb260edfe542359fb397.zip
-	md5sums = d0c14024fb74203e42ad51e5660f11be
+	source = https://github.com/kaoh/globalplatform/archive/9d89e9fda45286fe66c7ae88a30a950bd5320da8.zip
+	md5sums = 65e27ac6d315ef1369dfd3d62792a0d0
 
 pkgname = globalplatform
