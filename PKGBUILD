@@ -2,13 +2,14 @@
 pkgname=tunslip
 pkgver=3.1
 _branch=10d54f228b961d3d8a3d33b925ced361aaa4926f
-pkgrel=1
+pkgrel=2
 pkgdesc="tools to establish an IPv6 SLIP tunnel interface"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.contiki-os.org/"
 license=('BSD')
 depends=('glibc')
 optdepends=()
+conflicts=('tunslip6-ng')
 source=(https://raw.githubusercontent.com/contiki-os/contiki/${_branch}/tools/tunslip.c
         https://raw.githubusercontent.com/contiki-os/contiki/${_branch}/tools/tunslip6.c
         https://raw.githubusercontent.com/contiki-os/contiki/${_branch}/tools/tools-utils.c
@@ -32,7 +33,7 @@ prepare() {
 }
 
 build() {
-  gcc tools-utils.c tunslip6.c -o tunslip
+  gcc tools-utils.c tunslip.c -o tunslip
   gcc tools-utils.c tunslip6.c -o tunslip6
 }
 
