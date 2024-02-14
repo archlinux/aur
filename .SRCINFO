@@ -6,7 +6,6 @@ pkgbase = k3s-git
 	arch = x86_64
 	license = Apache
 	makedepends = git
-	makedepends = go
 	makedepends = podman
 	provides = k3s
 	conflicts = k3s
