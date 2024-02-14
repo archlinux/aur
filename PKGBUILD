@@ -11,7 +11,7 @@ license=('MIT')
 depends=('libxcb' 'fontconfig' 'freetype2')
 source=("git+https://github.com/kostoskistefan/hoverclock.git")
 conflicts=('hoverclock-appimage' 'hoverclock-qt')
-makedepends=('git' 'meson')
+makedepends=('meson')
 sha256sums=('SKIP')
 options=(!debug)
 
