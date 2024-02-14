@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Tantrix Discovery
+Comment=Tantrix board game client (Discovery puzzles)
+Exec=tantrix-discovery
+Icon=tantrix
+Terminal=false
+StartupNotify=false
+Categories=Game;BoardGame;

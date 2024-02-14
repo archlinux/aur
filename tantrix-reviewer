@@ -1,0 +1,12 @@
+#!/bin/sh -e
+OPTS=(
+	rootname Reviewer
+	reviewonly true 
+	tantrix.classname G:GamePuzzle
+	viewerClass G:GameReviewer
+)
+if [ -f "$1" ]; then
+	OPTS+=(serverfile "file:$1")
+	shift
+fi
+exec /usr/bin/tantrix "${OPTS[@]}" "$@"

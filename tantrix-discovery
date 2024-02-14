@@ -1,0 +1,17 @@
+#!/bin/sh -e
+OPTS=(
+	rootname Discovery
+	tantrix.classname G:GamePuzzle
+	puzzle "serial puzzle 1 10"
+	puzzle1 "puzzleid Discovery_Yellow_ Y loop 6 3 37 33 29 Make a Yellow loop using all 3 tiles!"
+	puzzle2 "puzzleid Discovery_Red_ R loop 8 4 37 33 29 36 Make a Red loop using all 4 tiles!"
+	puzzle3 "puzzleid Discovery_Red_ R loop 10 5 37 33 29 36 32 Make a Red loop using all 5 tiles. All colours must match!"
+	puzzle4 "puzzleid Discovery_Red_ R loop 14 7 37 33 29 36 32 34 42 Make a Red loop using all 7 tiles. All colours must match!"
+	puzzle5 "puzzleid Discovery_Blue_ B loop 16 8 37 33 29 36 32 34 42 41 Make a Blue loop using all 8 tiles. All colours must match!"
+	puzzle6 "puzzleid Discovery_Blue_ B loop 16 8 37 33 29 36 32 34 42 41 Make a Blue loop using all 8 tiles. All colours must match!"
+	puzzle7 "puzzleid Discovery_Yellow_ Y loop 18 9 37 33 29 36 32 34 42 41 35 Make a Yellow loop using all 9 tiles. All colours must match!"
+	puzzle8 "puzzleid Discovery_Red_ R loop 20 10 37 33 29 36 32 34 42 41 35 38 Make a Red loop using all the tiles. All colours must match!"
+	puzzle9 "puzzleid Discovery_Blue_ B loop 20 10 37 33 29 36 32 34 42 41 35 38 Make a Blue loop using all the tiles. All colours must match!"
+	puzzle10 "puzzleid Discovery_Yellow_ Y loop 20 10 37 33 29 36 32 34 42 41 35 38 Make a Yellow loop using all the tiles. All colours must match!"
+)
+exec /usr/bin/tantrix "${OPTS[@]}"
