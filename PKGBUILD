@@ -8,7 +8,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-icu
-pkgver=74.1
+pkgver=74.2
 pkgrel=1
 arch=('any')
 pkgdesc="International Components for Unicode library (android)"
@@ -19,7 +19,7 @@ license=('custom')
 url="https://icu.unicode.org/"
 source=("https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/icu4c-${pkgver//./_}-src.tgz"{,.asc}
         "0001-Unversioned-libs.patch")
-sha256sums=('86ce8e60681972e60e4dcb2490c697463fcec60dd400a5f9bffba26d0b52b8d0'
+sha256sums=('68db082212a96d6f53e35d60f47d38b962e9f9d207a74cfac78029ae8ff5e08c'
             'SKIP'
             '8a49d3231bfb2aff95d1f82c21af8183423692b020a883de7a347c60446d3b36')
 validpgpkeys=("FFA9129A180D765B7A5BEA1C9B432B27D1BA20D7"
