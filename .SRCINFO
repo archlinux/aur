@@ -1,18 +1,14 @@
 pkgbase = bsp-layout
 	pkgdesc = Dynamic layout management for bspwm with tall, wide, even, tiled, monocle
 	pkgver = 0.0.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/phenax/bsp-layout
-	install = .install
 	arch = any
 	license = MIT
-	makedepends = bash
-	makedepends = git
 	depends = bash
 	depends = bc
-	provides = bsp-layout
-	conflicts = bsp-layout
-	source = https://github.com/phenax/bsp-layout/archive/0.0.10.tar.gz
-	md5sums = SKIP
+	depends = bspwm
+	source = bsp-layout-0.0.10.tar.gz::https://github.com/phenax/bsp-layout/archive/0.0.10.tar.gz
+	sha256sums = ec71dd3438ff84ab3dd6d72673500a33158937112e9fcf87c64b02313bc1c1c8
 
 pkgname = bsp-layout
