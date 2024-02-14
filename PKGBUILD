@@ -3,14 +3,13 @@
 _pkgname=eegc
 _pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
-pkgrel=1
-pkgdesc='Engineering Evaluation by Gene Categorization (eegc)'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Engineering Evaluation by Gene Categorization (eegc)"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
-  r
   r-annotationdbi
   r-clusterprofiler
   r-deseq2
@@ -31,15 +30,16 @@ depends=(
 optdepends=(
   r-knitr
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6b61cdb9c22ea4b288adb0aca69b88ecb94591a40d829b4512f37781b5fcc754')
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('898230d2d6431f622202416e172d64e2')
+b2sums=('fb0eb18232a94d8517531151d771fa36a03ed5a52e7ccee64f338a55397f8b3a26ad3a158ff7b0d4a25049e428f15d7fda5a8d839b265b8ccecd2bd081c17307')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
