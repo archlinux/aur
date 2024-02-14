@@ -12,7 +12,21 @@ source=("git+https://github.com/poly000/$_pkgname.git#commit=$_commit")
 sha256sums=('SKIP')
 
 license=('mit')
-depends=('libxcb' 'libspeechd' 'libxkbcommon' 'gtk3' 'at-spi2-core')
+depends=(
+    'libxcb'
+    'libxkbcommon'
+
+    'gtk3'
+    'glib2'
+
+    'gcc-libs'
+    'glibc'
+    
+    'at-spi2-core'
+)
+optdepends=(
+    'libspeechd: Screen Reader'
+)
 makedepends=('cargo' 'openssl')
 
 build() {

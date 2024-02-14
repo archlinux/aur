@@ -14,10 +14,13 @@ pkgbase = doukutsu-save-editor
 	makedepends = cargo
 	makedepends = openssl
 	depends = libxcb
-	depends = libspeechd
 	depends = libxkbcommon
 	depends = gtk3
+	depends = glib2
+	depends = gcc-libs
+	depends = glibc
 	depends = at-spi2-core
+	optdepends = libspeechd: Screen Reader
 	source = git+https://github.com/poly000/doukutsu-save-editor-rs.git#commit=35ec388
 	sha256sums = SKIP
 
