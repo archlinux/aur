@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-noseofyeti
-pkgver=2.4.5
-_commit=0eae47aacf6d9bae88a161afc4ddf6531667fd56
+pkgver=2.4.6
+_commit=08bc8320f60cd45d1d04be3a88e74cc9b8bdad9f
 pkgrel=1
 pkgdesc="A custom pyton codec that provides an RSpec style dsl for python"
 url="https://github.com/delfick/nose-of-yeti"
