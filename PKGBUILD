@@ -4,8 +4,8 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-pixman
-pkgver=0.42.2
-pkgrel=3
+pkgver=0.43.2
+pkgrel=1
 pkgdesc="The pixel-manipulation library for X and cairo (android)"
 arch=('any')
 url="http://xorg.freedesktop.org"
@@ -15,7 +15,7 @@ options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=("android-meson"
              "android-${_android_arch}-libpng")
 source=("http://xorg.freedesktop.org/releases/individual/lib/pixman-${pkgver}.tar.xz")
-sha512sums=('3476e2676e66756b1af61b1e532cd80c985c191fb7956eb01702b419726cce99e79163b7f287f74f66414680e7396d13c3fee525cd663f12b6ac4877070ff4e8')
+sha512sums=('1a1d21b86b3c6784c4c2606b7069723b4dbb747eac9fce95bca86516787840379ffd49abc42d11e7143e85c32c85496f33c2562c7a910ca6f963599affdc3224')
 
 build() {
     cd "${srcdir}/pixman-${pkgver}"
