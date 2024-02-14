@@ -1,6 +1,6 @@
 # Maintainer: Asuka Minato <i at asukaminato dot eu dot org>
 pkgname=flomo-electron
-pkgver=4.24.12
+pkgver=5.24.21
 pkgrel=1
 pkgdesc="浮墨笔记,像发微博一样记笔记,记录你想法的川流.全平台覆盖,还支持微信服务号输入."
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -10,8 +10,8 @@ depends=(electron21 bash hicolor-icon-theme)
 makedepends=(p7zip)
 provides=(flomo)
 conflicts=(flomo-pake)
-source=("local://flomo-${pkgver}-x64.exe" $pkgname.desktop)
-sha256sums=('936d2d4aec64649b0c52d2e9cfe692e498618c548b065c2c32a0640cb9596e31'
+source=("local://flomo-${pkgver}.exe" $pkgname.desktop)
+sha256sums=('a818f8d62f33bf8dbd027e431a9a4981c9218f375303d797d27e0d4da43386f1'
             'ad1d9d71bd7f6765f1caef32532e233def9e09632262b3cfbc909e042b6961ef')
 
 prepare() {
@@ -40,4 +40,7 @@ exec electron21 /opt/$pkgname/app \"\$@\"
 
 	printf "desktop\n"
 	find $srcdir -name "*.desktop" -exec install -vDm644 {} -t $pkgdir/usr/share/applications/ \;
+	find $pkgdir -path "*/node_modules/*/bin/*" -printf "rm %p\n" -type f -delete
+	find $pkgdir \( -name "cli.js" -or -name "bin.js" \) -path "*/node_modules/*" -printf "rm %p\n" -type f -delete
+	find $pkgdir -type d -empty -delete
 }
