@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vpkedit
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="A library and CLI/GUI tool to create, read, and write several pack file formats"
 arch=('x86_64')
