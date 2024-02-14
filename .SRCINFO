@@ -1,11 +1,12 @@
 pkgbase = perl-crypt-smime
 	pkgdesc = S/MIME message signing, verification, encryption and decryption
 	pkgver = 0.28
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Crypt-SMIME
 	arch = any
 	license = GPL
 	license = PerlArtistic
+	checkdepends = perl-test-exception
 	makedepends = perl-extutils-cchecker
 	makedepends = perl-extutils-pkgconfig
 	depends = perl
