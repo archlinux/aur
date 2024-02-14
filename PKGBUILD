@@ -2,7 +2,7 @@
 
 pkgname="aider-chat"
 _pkgname="$pkgname"
-pkgver=0.21.1
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="AI pair programming in your terminal"
 url="https://aider.chat/"
@@ -31,7 +31,7 @@ makedepends=("python-packaging" "python-build" "python-installer" "python-wheel"
 optdepends=("python-sounddevice: portaudio support"
             "python-soundfile: portaudio support")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('44b0dff0aa5bb7bd3b024b7d74469837462a41d81e48394345ba27c3f744f699eccc270c2c4030b3abe407c542d397925da88b1da62b08b42a6c46a338904e45')
+b2sums=('c82a63499c740d7261efd0b216f21ec1a6b1accad0ecaa19d1eb02fbc1475fb47d3c4300fa75654dff3d13f0566f291ec5c580151e893d6d04dd9159c1ef5899')
 options=("!strip")
 
 build(){
