@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=k3s-git
-pkgver=1.29.1+k3s2+r33+g7b2cd609e5
+pkgver=1.29.1+k3s2+r27+gde825845b2
 pkgrel=1
 pkgdesc='Lightweight Kubernetes'
 arch=(x86_64)
@@ -45,12 +45,13 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd k3s
-  git describe --long --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/+/g'
+  git describe --long --tags orig_head | sed 's/^v//;s/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
   cd k3s
 
+  git branch -f orig_head
   # fix #8293, #9089, sanitize buildsystem, moar compression
   for p in "${source[@]}"; do
     if [[ $p == *.patch ]]; then
