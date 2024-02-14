@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Unity Hub Native
+Exec=/usr/bin/UnityHubNative
+Terminal=false
+Type=Application
+Icon=UnityHubNative
+StartupWMClass=UnityHubNative
+Comment=Lightweight C++ / wxWidgets alternative to the official Unity Hub
+Categories=Development;
+TryExec=UnityHubNative

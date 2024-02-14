@@ -1,0 +1,44 @@
+diff --git a/source/activation.cpp b/source/activation.cpp
+index cb5efd8f..c02a9a75 100644
+--- a/source/activation.cpp
++++ b/source/activation.cpp
+@@ -57,11 +57,11 @@ void PersonalActivationDlg::OnCreateHit(wxCommandEvent& evt)
+ void DisplayLicenseOutput(){
+     std::filesystem::path logfile
+ #ifdef __APPLE__
+-    = std::filesystem::path(wxGetHomeDir()) / "Library/Logs/Unity/Editor.log";
++    = std::filesystem::path(wxGetHomeDir().ToStdString()) / "Library/Logs/Unity/Editor.log";
+ #elif defined _WIN32
+     = std::filesystem::path(wxGetHomeDir().ToStdString()) / "AppData"/"Local"/"Unity"/"Editor"/"Editor.log";
+ #else
+-    = std::filesystem::path(wxGetHomeDir()) / ".config/unity3d/Editor.log";
++    = std::filesystem::path(wxGetHomeDir().ToStdString()) / ".config/unity3d/Editor.log";
+ #endif
+     ifstream in(logfile);
+     std::string output;
+@@ -94,9 +94,9 @@ void PersonalActivationDlg::OnActivateHit(wxCommandEvent&)
+ 
+ void PlusProActivationDlg::OnActivateHit(wxCommandEvent&)
+ {
+-	const std::string& username = plusProActivUsernameCtrl->GetValue();
+-    const std::string& password = plusProActivPasswordCtrl->GetValue();
+-    const std::string& serial = plusProActivationSerialCtrl->GetValue();
++	const auto& username = plusProActivUsernameCtrl->GetValue().ToStdString();
++    const auto& password = plusProActivPasswordCtrl->GetValue().ToStdString();
++    const auto& serial = plusProActivationSerialCtrl->GetValue().ToStdString();
+ 
+ 	auto cmd = fmt::format("{} -batchmode -username {} -password {} -serial {} -quit",the_editor.executablePath().string(),username,password,serial);
+ 
+diff --git a/source/interface_derived.cpp b/source/interface_derived.cpp
+index 053545ef..c460fbcc 100644
+--- a/source/interface_derived.cpp
++++ b/source/interface_derived.cpp
+@@ -218,7 +218,7 @@ void MainFrameDerived::Filter(wxKeyEvent &){
+     projects.clear();
+     auto filter = projSearchCtrl->GetValue();
+     transform(filter.begin(), filter.end(), filter.begin(), ::tolower);
+-    LoadProjects(filter);
++    LoadProjects(filter.ToStdString());
+ }
+ 
+ //definitions for the events

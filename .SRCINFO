@@ -1,0 +1,23 @@
+pkgbase = unityhubnative-git
+	pkgdesc = A lightweight C++ / wxWidgets alternative to the official Unity Hub
+	pkgver = 1.53.r9.gbc636ec
+	pkgrel = 1
+	url = https://github.com/Ravbug/UnityHubNative
+	arch = x86_64
+	license = GPL-3.0-only
+	license = custom
+	makedepends = icoutils
+	makedepends = fmt
+	depends = wxwidgets
+	depends = libcurl.so
+	provides = unityhubnative
+	source = unityhubnative::git+https://github.com/Ravbug/UnityHubNative.git
+	source = UnityHubNative.desktop
+	source = fix-cmakelists.patch
+	source = fix-wxwidgets-usage.patch
+	sha256sums = SKIP
+	sha256sums = 89bf2f78b85654a9e2e7f68e82c59ec2327970757a4637058bbacd607064e7df
+	sha256sums = 1f5eb1e514f43c944662e1d3319122622bfa10acb0f50250479f20b411bd2521
+	sha256sums = 2a2a277ef7a5c00a9b06d400e0a4a3c9769c952107639a3527e1c633730f6cc5
+
+pkgname = unityhubnative-git
