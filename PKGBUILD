@@ -2,9 +2,9 @@
 # Contributor: xia0er <xia0er@gmail.com>
 
 pkgname=python-pymc
-_name=${pkgname#python-}
-pkgver=5.10.3
-pkgrel=2
+_pkgname=${pkgname#python-}
+pkgver=5.10.4
+pkgrel=1
 pkgdesc="Markov chain Monte Carlo for Python"
 arch=(any)
 url="https://github.com/pymc-devs/pymc"
@@ -33,11 +33,10 @@ makedepends=(
   python-setuptools
   python-wheel
 )
-
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('786932f6cbd137f100200c9b5230ac6d943578eadf252d74e191941ee9791430')
+sha256sums=('d67679a49e3d4e1827daa9bf02e4999756ca9364bfc277e8128a627dfb804aee')
 
-_archive="$_name-$pkgver"
+_archive="$_pkgname-$pkgver"
 
 build() {
   cd "$_archive"
@@ -48,75 +47,68 @@ build() {
 check() {
   cd "$_archive"
 
-  _ignored_tests=(
+  local ignore_test_args=(
     # Requires https://github.com/pyro-ppl/numpyro which is not yet pacakged.
-    tests/sampling/test_jax.py
-    tests/sampling/test_mcmc_external.py
+    --ignore=tests/sampling/test_jax.py
+    --ignore=tests/sampling/test_mcmc_external.py
 
     # Requires https://aur.archlinux.org/packages/python-numdifftools which
     # currently is broken.
-    tests/logprob/test_transform_value.py
+    --ignore=tests/logprob/test_transform_value.py
 
     # Error during test collection.
-    tests/backends/test_mcbackend.py
+    --ignore=tests/backends/test_mcbackend.py
 
     # Most time-consuming test files, ignore these to make test duration more
     # reasonable.
-    tests/backends/test_arviz.py
-    tests/distributions/test_continuous.py
-    tests/distributions/test_discrete.py
-    tests/distributions/test_distribution.py
-    tests/distributions/test_mixture.py
-    tests/distributions/test_multivariate.py
-    tests/distributions/test_timeseries.py
-    tests/distributions/test_transform.py
-    tests/distributions/test_truncated.py
-    tests/gp/test_cov.py
-    tests/gp/test_gp.py
-    tests/gp/test_hsgp_approx.py
-    tests/logprob/test_mixture.py
-    tests/logprob/test_tensor.py
-    tests/logprob/test_transforms.py
-    tests/model/test_core.py
-    tests/sampling/test_forward.py
-    tests/sampling/test_mcmc.py
-    tests/sampling/test_parallel.py
-    tests/step_methods/hmc/test_nuts.py
-    tests/step_methods/test_metropolis.py
-    tests/test_func_utils.py
-    tests/test_math.py
-    tests/test_pytensorf.py
-    tests/variational/test_inference.py
+    --ignore=tests/backends/test_arviz.py
+    --ignore=tests/distributions/test_continuous.py
+    --ignore=tests/distributions/test_discrete.py
+    --ignore=tests/distributions/test_distribution.py
+    --ignore=tests/distributions/test_mixture.py
+    --ignore=tests/distributions/test_multivariate.py
+    --ignore=tests/distributions/test_timeseries.py
+    --ignore=tests/distributions/test_transform.py
+    --ignore=tests/distributions/test_truncated.py
+    --ignore=tests/gp/test_cov.py
+    --ignore=tests/gp/test_gp.py
+    --ignore=tests/gp/test_hsgp_approx.py
+    --ignore=tests/logprob/test_mixture.py
+    --ignore=tests/logprob/test_tensor.py
+    --ignore=tests/logprob/test_transforms.py
+    --ignore=tests/model/test_core.py
+    --ignore=tests/sampling/test_forward.py
+    --ignore=tests/sampling/test_mcmc.py
+    --ignore=tests/sampling/test_parallel.py
+    --ignore=tests/step_methods/hmc/test_nuts.py
+    --ignore=tests/step_methods/test_metropolis.py
+    --ignore=tests/test_func_utils.py
+    --ignore=tests/test_math.py
+    --ignore=tests/test_pytensorf.py
+    --ignore=tests/variational/test_inference.py
   )
-  _ignored_tests_arg=$(printf " --ignore=%s" "${_ignored_tests[@]}")
-
-  _deselected_tests=(
+  local deselect_test_args=(
     # Fails due to:
     # DeprecationWarning: np.find_common_type is deprecated.  Please use `np.result_type` or `np.promote_types`.
-    tests/backends/test_arviz.py::TestDataPyMC::test_autodetect_coords_from_model
+    --deselect=tests/backends/test_arviz.py::TestDataPyMC::test_autodetect_coords_from_model
 
     # Fails due to:
     # assert (2, 50) == (2, 50, 20)
-    tests/backends/test_arviz.py::TestDataPyMC::test_multivariate_observations
+    --deselect=tests/backends/test_arviz.py::TestDataPyMC::test_multivariate_observations
 
     # Fails due to:
     # pymc.logprob.utils.ParameterValueError or AssertionError
-    tests/distributions/test_mixture.py::TestMixtureSameFamily::test_with_multinomial
-    tests/distributions/test_multivariate.py::TestMatchesScipy::test_multinomial
-    tests/distributions/test_multivariate.py::TestMatchesScipy::test_multinomial_invalid_value
-    tests/distributions/test_multivariate.py::TestMatchesScipy::test_multinomial_vectorized
-    tests/distributions/test_multivariate.py::TestMoments::test_multinomial_moment
+    --deselect=tests/distributions/test_mixture.py::TestMixtureSameFamily::test_with_multinomial
+    --deselect=tests/distributions/test_multivariate.py::TestMatchesScipy::test_multinomial
+    --deselect=tests/distributions/test_multivariate.py::TestMatchesScipy::test_multinomial_invalid_value
+    --deselect=tests/distributions/test_multivariate.py::TestMatchesScipy::test_multinomial_vectorized
+    --deselect=tests/distributions/test_multivariate.py::TestMoments::test_multinomial_moment
 
     # Fails due to:
     # assert array(nan) >= 0
-    tests/distributions/test_multivariate.py::TestMatchesScipy::test_multinomial_zero_probs
+    --deselect=tests/distributions/test_multivariate.py::TestMatchesScipy::test_multinomial_zero_probs
   )
-  _deselected_tests_arg=$(printf " --deselect=%s" "${_deselected_tests[@]}")
-
-  # shellcheck disable=SC2086
-  pytest \
-    $_ignored_tests_arg \
-    $_deselected_tests_arg
+  pytest "${ignore_test_args[@]}" "${deselecte_test_args[@]}"
 }
 
 package() {
