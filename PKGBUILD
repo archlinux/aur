@@ -5,13 +5,13 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=python-dagger-io
 epoch=
-pkgver=0.9.7
+pkgver=0.9.10
 pkgrel=00
 pkgdesc='A client package for running Dagger pipelines in Python.'
 arch=(any)
 url=https://pypi.org/project/dagger-io/
 license=(Apache)
-depends=(python python-anyio python-beartype python-cattrs python-gql python-graphql-core python-httpx python-platformdirs python-rich python-typing_extensions)
+depends=(python python-anyio python-beartype python-cattrs python-gql python-graphql-core python-platformdirs python-rich python-typing_extensions)
 ## EXTRA_DEPENDS ##
 makedepends=(python-pip)
 checkdepends=()
@@ -20,9 +20,9 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/2b/39/d88c988cd0d1aab77b74a88117881529af8b70b5795fd484c368a8da154b/dagger_io-0.9.7-py3-none-any.whl)
-md5sums+=(621fd12ee08dc439cf606a1983b0482e)
-noextract+=(dagger_io-0.9.7-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/70/08/1a64213a6408e9b7942767a865b472bdc596eccf8b39252d35314e2bfb0e/dagger_io-0.9.10-py3-none-any.whl)
+md5sums+=(39795109a3fb8f6b5d03352260f1b8d9)
+noextract+=(dagger_io-0.9.10-py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(8a7b9dc5a7c3b70a2ae96792587eef4a)
 
