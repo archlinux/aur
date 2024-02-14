@@ -1,4 +1,5 @@
 src
 pkg
 *.deb
+*.pkg.tar.zst
 keeper-password-manager-*.pkg.tar.xz

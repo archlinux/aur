@@ -1,7 +1,7 @@
 # Maintainer: Mike Hicklen (hicklemon) <mike@xfs.repair>
 
 pkgname=keeper-password-manager
-pkgver=16.10.11
+pkgver=16.10.12
 pkgrel=1
 pkgdesc="Keeper is the world's #1 most downloaded password keeper and secure digital 
  vault for protecting and managing your passwords and other secret information."
@@ -11,8 +11,8 @@ license=('Custom')
 depends=('libsecret' 'nss' 'libxss' 'gtk3')
 source=("https://keepersecurity.com/desktop_electron/Linux/repo/deb/keeperpasswordmanager_${pkgver}_amd64.deb"
         'LICENSE')
-sha512sums=('fed8809637fa4af236611dc01ba07d4f1220f0eb8b1c905a7642a144fa19ba4f4037b675ed0bbd48e683ad4b2c88d2ae95ddf5ec99f9ef32ec457a3bb7503207'
-            '9bd161a552aba146ee89ab930b8a444442d3cb4bba8cf5e94d1a04bfe2c99fae8372d0d04d5b01fe489578429e9fd020cb567e005b1a267fcb51a0bc4cb2f7b2')
+sha512sums=('d079b21143b46dbe8cdfd411cb6dc97c141abc83d2c3a1773a72a1c067ffaead5f996f5dd3f998051b455048d8713e0f857fc15f71aa15578d12f93e45c54c2c'
+            'SKIP')
         
 package() { 
   bsdtar -xf "$srcdir"/data.tar.xz -C "$pkgdir"   
