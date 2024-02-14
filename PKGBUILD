@@ -6,11 +6,11 @@ pkgname="brother-mfc-j5335dw"
 pkgver="1.0.1_0"
 # required because of unconventional package numbering for brother
 _brother_pkgver="1.0.1-0"
-pkgrel=5
+pkgrel=6
 pkgdesc="LPR and CUPS driver for the Brother MFC-J5335DW"
 arch=('i686' 'x86_64')
 url="http://support.brother.com/g/b/downloadtop.aspx?c=fr&lang=fr&prod=mfcj5335dw_eu"
-license=('custom:Brother commercial license')
+license=('LicenseRef-brother commercial license')
 depends=('cups' 'ghostscript' 'poppler' 'a2ps' 'psutils')
 depends_x86_64=('lib32-glibc' 'lib32-gcc-libs')
 install="$pkgname.install"
