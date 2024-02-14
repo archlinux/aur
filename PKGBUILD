@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=atopile
-pkgver=0.2.11
+pkgver=0.2.12
 pkgrel=1
 pkgdesc="A tool to build electronic circuit boards with code"
 arch=(any)
@@ -33,7 +33,7 @@ makedepends=(
 )
 checkdepends=(python-pytest)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('930ab5f31e0b15350c00bdf4bbfae67f5a33c4241cff04a755073de89135357d')
+sha256sums=('362936b53a64a6bed48007020ca0a606d4a4b09750e856baa73f80a49604e946')
 
 _archive="$pkgname-$pkgver"
 
