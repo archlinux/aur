@@ -2,7 +2,7 @@
 
 pkgname=python-litestar
 _pkgname=${pkgname#python-}
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="Production-ready, Light, Flexible and Extensible ASGI API framework"
 arch=(any)
@@ -88,7 +88,7 @@ optdepends=(
   'python-sqlalchemy: SQLAlchemy integration'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('803fa4407559ff8d0b51f59cd10dfaf336316e16c5b481aafd0d249d32f2e1da')
+sha256sums=('17fc1d4d4ef1013b45e3c2b08ffc031415ca8948154eb5864e1069659bf9390f')
 
 _archive="$_pkgname-$pkgver"
 
@@ -101,48 +101,42 @@ build() {
 check() {
   cd "$_archive"
 
-  local ignored_tests=(
-    tests/examples/
-    tests/unit/test_contrib/
+  local ignore_test_args=(
+    --ignore=tests/examples/
+    --ignore=tests/unit/test_contrib/
 
     # Requires advanced_alchemy which depends on sqlalchemy>=2 which is not
     # available in repositories.
-    tests/e2e/test_advanced_alchemy.py
-    tests/unit/test_app.py
-    tests/unit/test_plugins/test_base.py
-    tests/unit/test_plugins/test_sqlalchemy.py
+    --ignore=tests/e2e/test_advanced_alchemy.py
+    --ignore=tests/unit/test_app.py
+    --ignore=tests/unit/test_plugins/test_base.py
+    --ignore=tests/unit/test_plugins/test_sqlalchemy.py
 
     # Requires mapped_column
-    tests/unit/test_repository/test_generic_mock_repository.py
+    --ignore=tests/unit/test_repository/test_generic_mock_repository.py
 
     # Requires running docker compose
-    tests/unit/test_testing/test_test_client.py
-    tests/unit/test_channels/test_plugin.py
-    tests/unit/test_channels/test_backends.py
-    tests/unit/test_stores.py
+    --ignore=tests/unit/test_testing/test_test_client.py
+    --ignore=tests/unit/test_channels/test_plugin.py
+    --ignore=tests/unit/test_channels/test_backends.py
+    --ignore=tests/unit/test_stores.py
   )
-  local ignored_tests_arg=$(printf " --ignore=%s" "${ignored_tests[@]}")
-
-  local deselected_tests=(
+  local deselect_test_args=(
     # Fails for unkown reason
-    tests/unit/test_middleware/test_middleware_handling.py::test_custom_middleware_processing
-    tests/unit/test_template/test_template.py::test_media_type_inferred
+    --deselect=tests/unit/test_middleware/test_middleware_handling.py::test_custom_middleware_processing
+    --deselect=tests/unit/test_template/test_template.py::test_media_type_inferred
 
     # Requires running docker compose
-    tests/e2e/test_response_caching.py::test_with_stores
-    tests/unit/test_utils/test_version.py::test_formatted
+    --deselect=tests/e2e/test_response_caching.py::test_with_stores
+    --deselect=tests/unit/test_utils/test_version.py::test_formatted
   )
-  local deselected_tests_arg=$(printf " --deselect=%s" "${deselected_tests[@]}")
 
   rm -rf tmp_install
   python -m installer --destdir=tmp_install dist/*.whl
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   export PYTHONPATH="$PWD/tmp_install/$site_packages"
-  # shellcheck disable=SC2086
-  pytest tests/ \
-    $ignored_tests_arg \
-    $deselected_tests_arg
+  pytest tests/ "${ignore_test_args[@]}" "${deselect_test_args[@]}"
 }
 
 package() {
