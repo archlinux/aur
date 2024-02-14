@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
+unset QT_STYLE_OVERRIDE
 /opt/ultimaker-cura/AppRun "$@"
