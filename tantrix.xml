@@ -2,7 +2,7 @@
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
   <mime-type type="application/x-tantrix-sgf">
     <comment>Smart Game Format (Tantrix)</comment>
-		<icon name="tantrix"/>
+    <icon name="tantrix"/>
     <glob pattern="*.sgf"/>
     <magic>
       <match type="string" offset="14:18" value="GM[17]"/>
