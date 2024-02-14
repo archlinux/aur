@@ -1,53 +1,73 @@
+# Contributor: Gesh <gesh@gesh.uni.cx>
 # Maintainer: Julian Hauser <julian at julianhauser.com>
 # PKGBUILD adapted from papis, maintained by JP-Ellis <josh@jpellis.me>
 
 pkgname=papis-git
 _pkgname=papis
-pkgver=0.11.1.r22.g5599763
+pkgver=0.13.r326.g5a0799c9
 pkgrel=1
 pkgdesc="A powerful and highly extensible command-line document and bibliography manager. Git version."
 arch=('any')
 url="https://github.com/papis/papis"
-license=('GPL')
+license=('GPL-3.0+')
 makedepends=('git')
 depends=('python'
-         'python-requests'
-         'python-filetype'
-         'python-pyparsing'
-         'python-arxiv2bib'
-         'python-pyaml'
-         'python-chardet'
+         'python-arxiv'
          'python-beautifulsoup4'
-         'python-colorama'
          'python-bibtexparser'
+         'python-chardet'
          'python-click'
+         'python-colorama'
+         'python-doi'
+         'python-dominate'
+         'python-filetype'
          'python-habanero'
          'python-isbnlib'
-         'python-prompt_toolkit'
-         'python-tqdm'
-         'python-pygments'
-         'python-stevedore'
-         'python-doi'
-         'python-typing_extensions'
          'python-lxml'
+         'python-prompt_toolkit'
+         'python-pyaml'
+         'python-pygments'
+         'python-pyparsing'
+         'python-requests'
          'python-slugify'
-         'python-dominate'
+         'python-stevedore'
+         'python-tqdm'
+         'python-typing_extensions'
         )
-optdepends=('papis-rofi: integration with rofi' 'papis-zotero: imports from zotero' 'python-whoosh: whoosh database backend' 'python-jinja: jinja formatting' 'fzf: fzf picker' 'pdfjs: pdf reader in the web app')
+optdepends=(
+    'fzf: fzf picker'
+    'papis-rofi: integration with rofi'
+    'papis-zotero: imports from zotero'
+    'pdfjs: pdf reader in the web app'
+    'python-jinja: jinja formatting'
+    'python-whoosh: whoosh database backend'
+)
+checkdepends=(
+    flake8
+    mypy
+    python-flake8-bugbear
+    python-flake8-quotes
+    python-pep8-naming
+    python-pylint
+    python-pytest
+    )
 provides=("papis")
 conflicts=("papis")
 source=("git+https://github.com/papis/papis.git")
 sha256sums=('SKIP')
-noextract=()
 
 pkgver() {
   cd "${_pkgname}"
   git describe --long --tags | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+check() {
+  cd "${_pkgname}"
+  make pytest flake8 mypy
+}
+
 build() {
   cd "${_pkgname}"
-  sed -i '/configparser/d' setup.py
   python setup.py build
 }
 
