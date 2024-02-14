@@ -1,18 +1,18 @@
 pkgbase = sst-bin
 	pkgdesc = Deploy anything
-	pkgver = 0.0.91
+	pkgver = 0.0.92
 	pkgrel = 1
 	url = https://github.com/sst/ion
 	conflicts = sst
 	provides = sst
 	arch = aarch64
-	source_aarch64 = https://github.com/sst/ion/releases/download/v0.0.91/sst-linux-arm64.tar.gz
-	sha256sums_aarch64 = ae1a75296637cb32c0f7c88ee5ecd0028075bc991a95a0e8c861157fbd664a5a
+	source_aarch64 = https://github.com/sst/ion/releases/download/v0.0.92/sst-linux-arm64.tar.gz
+	sha256sums_aarch64 = 6f50c2b4a70a0dda4c49a49f868e052259fba442b9179d2e6433d987a202486c
 	arch = i686
-	source_i686 = https://github.com/sst/ion/releases/download/v0.0.91/sst-linux-i386.tar.gz
-	sha256sums_i686 = 1a905addec0f8d332ad7550e0b3a08f7c4b36806ee21fff77391969901140f7a
+	source_i686 = https://github.com/sst/ion/releases/download/v0.0.92/sst-linux-i386.tar.gz
+	sha256sums_i686 = 84b3c73fced000bc5d5a44201a91cbc4fbd8b3fdc7631d93331d00360603e1bc
 	arch = x86_64
-	source_x86_64 = https://github.com/sst/ion/releases/download/v0.0.91/sst-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 8c03ebac36c7be93df3fffb82a4bd210465326cb39e45b1d25d4d9f95971241c
+	source_x86_64 = https://github.com/sst/ion/releases/download/v0.0.92/sst-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 71cd8d02ef405e8e103a1a6424dea76e031c7de3432501d96a4bd4e9e472a9bc
 	
 pkgname = sst-bin
