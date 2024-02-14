@@ -4,18 +4,17 @@
 # https://github.com/phnx47/pkgbuilds
 
 pkgname=oxen-core
-pkgver=10.4.0
+pkgver=10.4.1
 pkgrel=1
-pkgdesc='Oxen core containing oxend and oxen cli wallets '
+pkgdesc='oxend and oxen cli wallets'
 url='https://github.com/oxen-io/oxen-core'
 arch=('x86_64')
 license=('custom')
 options=('!buildflags')
 makedepends=('git' 'cmake' 'boost' 'zeromq' 'sqlite' 'libsodium' 'curl')
-_sha=b309bf8bb65dc28dca8b79f0b0721a4babb1c72a
+_sha='80968bfdedc47dce0dd4c9b32574359833123700'
 source=("${pkgname}-git::git+${url}.git#commit=${_sha}")
 sha512sums=('SKIP')
-
 
 prepare() {
   cd "${pkgname}-git"

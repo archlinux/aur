@@ -1,6 +1,6 @@
 pkgbase = oxen-core
-	pkgdesc = Oxen core containing oxend and oxen cli wallets
-	pkgver = 10.4.0
+	pkgdesc = oxend and oxen cli wallets
+	pkgver = 10.4.1
 	pkgrel = 1
 	url = https://github.com/oxen-io/oxen-core
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = oxen-core
 	makedepends = libsodium
 	makedepends = curl
 	options = !buildflags
-	source = oxen-core-git::git+https://github.com/oxen-io/oxen-core.git#commit=b309bf8bb65dc28dca8b79f0b0721a4babb1c72a
+	source = oxen-core-git::git+https://github.com/oxen-io/oxen-core.git#commit=80968bfdedc47dce0dd4c9b32574359833123700
 	sha512sums = SKIP
 
 pkgname = oxen-core
