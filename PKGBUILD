@@ -1,7 +1,7 @@
 # Maintainer: Gaël PORTAY <gael.portay@gmail.com>
 
 pkgname=iamroot-powerpc64le
-pkgver=17
+pkgver=18
 pkgrel=1
 pkgdesc='Emulating the syscall chroot(2) in an unpriviliged process (powerpc64le)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('powerpc64le-power8-glibc-bleeding-edge-toolchain'
 checkdepends=('shellcheck')
 options=('!strip')
 source=("https://github.com/gportay/${pkgname%-powerpc64le}/archive/v$pkgver.tar.gz")
-sha256sums=('1d78d29eff289407fb3c9c11c3bcb2df7897b047b8b46563b024530e4e49b0be')
+sha256sums=('0a25f1f4558dc8fe4e0992499f913e28151e9805c9e5b4b3de882bdd68bfa20a')
 validpgpkeys=('8F3491E60E62695ED780AC672FA122CA0501CA71')
 
 prepare() {
