@@ -11,7 +11,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium
-pkgver=121.0.6167.139
+pkgver=121.0.6167.184
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -35,13 +35,13 @@ options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
-        REVERT-simplify-blink-NativeValueTraitsBase.patch::https://github.com/chromium/chromium/commit/940af9f2c87b.patch
+        REVERT-simplify-blink-NativeValueTraitsBase.patch
         icu-74.patch
         chromium-121-constexpr.patch
         drop-flags-unsupported-by-clang16.patch
         compiler-rt-16.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('e12cc967bef7a79630828792f02d95297a06eb905c98e4c6e065fd5e74d6f9ff'
+sha256sums=('9fd6b82e7077ac26ec264bfcfc8ac8e0c2a0240378f035c9c0f34ad467aef09d'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'e9113c1ed2900b84b488e608774ce25212d3c60094abdae005d8a943df9b505e'
             '318df8f8662071cebcdf953698408058e17f59f184500b7e12e01a04a4206b50'
@@ -70,13 +70,12 @@ source=("${source[@]}"
         0001-ozone-wayland-implement-text_input_manager_v3.patch
         0001-ozone-wayland-implement-text_input_manager-fixes.patch)
 sha256sums=("${sha256sums[@]}"
-            'a4f389f9159effbbe47a07ade0b8b9b86ebb64a56230ea7a4b43664cd499f829'
+            'feb1039d4d5c13fbeb53736e0f0bbfea09c7d71af81bcc7b52d0fb42fd86a4a1'
             '9a5594293616e1390462af1f50276ee29fd6075ffab0e3f944f6346cb2eb8aec'
             '8ba5c67b7eb6cacd2dbbc29e6766169f0fca3bbb07779b1a0a76c913f17d343f'
             '2a44756404e13c97d000cc0d859604d6848163998ea2f838b3b9bb2c840967e3'
             'd9974ddb50777be428fd0fa1e01ffe4b587065ba6adefea33678e1b3e25d1285'
             'a2da75d0c20529f2d635050e0662941c0820264ea9371eb900b9d90b5968fa6a')
-
  
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -103,7 +102,7 @@ declare -gA _system_libs=(
   #[re2]=re2          # needs libstdc++
   #[snappy]=snappy    # needs libstdc++
   #[woff2]=woff2      # needs libstdc++
-  #[zlib]=minizip
+  [zlib]=minizip
 )
 _unwanted_bundled_libs=(
   $(printf "%s\n" ${!_system_libs[@]} | sed 's/^libjpeg$/&_turbo/')
