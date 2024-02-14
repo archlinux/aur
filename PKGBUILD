@@ -1,5 +1,5 @@
 pkgname='gonchill'
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="A CLI tool for streaming content"
 arch=('x86_64')
