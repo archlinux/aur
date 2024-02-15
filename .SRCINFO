@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-qt6-websockets
 	pkgdesc = Provides WebSocket communication compliant with RFC 6455 (android)
-	pkgver = 6.6.1
+	pkgver = 6.6.2
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = android-aarch64-qt6-websockets
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.6/6.6.1/submodules/qtwebsockets-everywhere-src-6.6.1.tar.xz
-	sha256sums = 787514349876d87e046504e5f64886d886bd2993a53fa795598ea07ecc7b0643
+	source = https://download.qt.io/official_releases/qt/6.6/6.6.2/submodules/qtwebsockets-everywhere-src-6.6.2.tar.xz
+	sha256sums = c0e6ea9bc8db4290bb43e683fb3d639055fe91258f357980eb6ef5abab4438f9
 
 pkgname = android-aarch64-qt6-websockets
