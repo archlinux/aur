@@ -1,7 +1,7 @@
 # Maintainer: Filip Markovic <f12markovic at gmail dot com>
 _pkgname="hyprevents"
 pkgname="$_pkgname-git"
-pkgver=5.51e907a
+pkgver=11.09b54e7
 pkgrel=1
 pkgdesc="Invoke shell functions in response to Hyprland socket2 events."
 arch=(x86_64 aarch64)
@@ -20,4 +20,10 @@ pkgver() {
 package() {
     cd "$srcdir/${_pkgname}"
     make PREFIX="$pkgdir/usr" install
+
+    cd "$pkgdir/usr/share/hyprevents"
+    sed -i 's|^EVENT_HANDLER=.*|EVENT_HANDLER="/usr/share/hyprevents/event_handler"|' event_loader
+
+    cd "$pkgdir/usr/bin"
+    sed -i 's|^EVENT_LOADER=.*|EVENT_LOADER="/usr/share/hyprevents/event_loader"|' hyprevents
 }
