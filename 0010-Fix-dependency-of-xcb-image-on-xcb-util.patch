@@ -1,4 +1,4 @@
-From 13f30391a77138f59308bc2280140aec63e989d6 Mon Sep 17 00:00:00 2001
+From af9caa1b9cc22f2534755d0754404f8b20a0c82c Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 24 Apr 2022 23:49:36 +0200
 Subject: [PATCH 10/13] Fix dependency of xcb-image on xcb-util
@@ -15,7 +15,7 @@ Change-Id: Ic87a94ec664c126a5af1012d31b068d3dc7ec947
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/cmake/3rdparty/extra-cmake-modules/find-modules/FindXCB.cmake b/cmake/3rdparty/extra-cmake-modules/find-modules/FindXCB.cmake
-index dc60289401..3dd06d4cd0 100644
+index 26b9bf8963..0ae21f774c 100644
 --- a/cmake/3rdparty/extra-cmake-modules/find-modules/FindXCB.cmake
 +++ b/cmake/3rdparty/extra-cmake-modules/find-modules/FindXCB.cmake
 @@ -108,6 +108,7 @@ set(XCB_known_components
@@ -34,7 +34,7 @@ index dc60289401..3dd06d4cd0 100644
      XEVIE
      XF86DRI
      XINERAMA
-@@ -142,7 +142,7 @@ endforeach()
+@@ -145,7 +145,7 @@ endforeach()
  set(XCB_XCB_component_deps)
  set(XCB_COMPOSITE_component_deps XCB XFIXES)
  set(XCB_DAMAGE_component_deps XCB XFIXES)
