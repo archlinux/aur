@@ -1,7 +1,7 @@
 pkgbase = tmux-sixel
 	pkgdesc = Terminal multiplexer, with sixel support
 	pkgver = 3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tmux/tmux/wiki
 	arch = x86_64
 	license = BSD
@@ -14,6 +14,7 @@ pkgbase = tmux-sixel
 	depends = libncursesw.so
 	depends = systemd-libs
 	depends = libsystemd.so
+	provides = tmux
 	conflicts = tmux
 	replaces = tmux
 	source = https://github.com/tmux/tmux/releases/download/3.4/tmux-3.4.tar.gz

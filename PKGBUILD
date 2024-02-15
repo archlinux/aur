@@ -4,7 +4,7 @@
 
 pkgname=tmux-sixel
 pkgver=3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Terminal multiplexer, with sixel support'
 url='https://github.com/tmux/tmux/wiki'
 arch=('x86_64')
@@ -17,6 +17,7 @@ depends=('libevent' 'libevent_core-2.1.so'
 makedepends=('systemd')
 conflicts=('tmux')
 replaces=('tmux')
+provides=('tmux')
 source=("https://github.com/tmux/tmux/releases/download/${pkgver/_/}/tmux-${pkgver/_/}.tar.gz")
 sha256sums=('551ab8dea0bf505c0ad6b7bb35ef567cdde0ccb84357df142c254f35a23e19aa')
 
