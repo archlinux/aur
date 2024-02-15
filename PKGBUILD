@@ -3,14 +3,13 @@
 _pkgname=RegEnrich
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
-pkgrel=1
-pkgdesc='Gene regulator enrichment analysis'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Gene regulator enrichment analysis"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-biocparallel
   r-biocset
   r-deseq2
@@ -34,15 +33,16 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0dde07642599f4aaa7238e1ccb2c149dda9935ce94067c2ba8a5033e94adf325')
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('afbd8028754ca907215ba26c3eae83f8')
+b2sums=('51ee19ecda2bc70a0f3a3e458224d4bfd9d963b5a89eb121be06221b1e2ab331b9ca926e8e0bad9dab5212dbdb940b759c881fb22c9a4c635c44bc3d4847c5c6')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
