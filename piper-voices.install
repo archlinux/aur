@@ -35,7 +35,7 @@ You should now be able to run
 
     spd-say "Hello world"
 
-#`################################################################ ADDITIONAL VOICES
+# ################################################################ ADDITIONAL VOICES
     
 By default, only two voices have been installed.
 To download all the available voices or chose which ones,

@@ -1,7 +1,7 @@
 pkgbase = piper-voices
 	pkgdesc = Voices for Piper text to speech system
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://huggingface.co/rhasspy/piper-voices
 	install = piper-voices.install
 	arch = any

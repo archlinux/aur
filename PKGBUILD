@@ -2,7 +2,7 @@
 
 pkgname="piper-voices"
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Voices for Piper text to speech system"
 url="https://huggingface.co/rhasspy/piper-voices"
 license=("MIT")
