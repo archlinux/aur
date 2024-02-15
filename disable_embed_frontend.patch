@@ -1,0 +1,43 @@
+diff -Naur a/ffplayout-api/src/main.rs b/ffplayout-api/src/main.rs
+--- a/ffplayout-api/src/main.rs	2024-02-15 07:49:04.952956416 -0300
++++ b/ffplayout-api/src/main.rs	2024-02-15 08:36:32.201514819 -0300
+@@ -15,6 +15,9 @@
+ #[cfg(feature = "embed_frontend")]
+ use actix_web_static_files::ResourceFiles;
+ 
++#[cfg(any(debug_assertions, not(feature = "embed_frontend")))]
++use std::path::Path;
++
+ use clap::Parser;
+ use lazy_static::lazy_static;
+ use path_clean::PathClean;
+@@ -178,11 +181,27 @@
+                     web_app.service(ResourceFiles::new("/", generated).resolve_not_found_to_root());
+             }
+ 
+-            #[cfg(debug_assertions)]
++            #[cfg(any(debug_assertions, not(feature = "embed_frontend")))]
+             {
++                fn public_path() -> &'static str {
++
++                    if Path::new("./ffplayout-frontend/.output/public/").is_dir() {
++                        return "./ffplayout-frontend/.output/public/";
++                    }
++
++                    if Path::new("/usr/share/ffplayout/public/").is_dir() {
++                        return "/usr/share/ffplayout/public/";
++                    }
++                
++                    if Path::new("./public/").is_dir() {
++                        return "./public/";
++                    }
++                    "./ffplayout-frontend/dist"
++                }
++
+                 // in debug mode get frontend from path
+                 web_app = web_app.service(
+-                    Files::new("/", "./ffplayout-frontend/.output/public/")
++                    Files::new("/", public_path())
+                         .index_file("index.html"),
+                 );
+             }
