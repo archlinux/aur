@@ -3,7 +3,7 @@
 
 pkgname=scorep
 pkgver=8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Highly scalable and easy-to-use tool suite for profiling, event tracing, and online analysis of HPC applications."
 arch=('i686' 'x86_64')
 url="http://www.vi-hps.org/projects/score-p/"
