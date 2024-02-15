@@ -1,6 +1,6 @@
 # Maintainer: <ayedeil at posteo dot com>
 pkgname=bricklink-studio
-pkgver=2.23.12_1
+pkgver=2.24.1_1
 pkgrel=1
 pkgdesc="Lego cad software created by Bricklink"
 arch=('x86_64')
