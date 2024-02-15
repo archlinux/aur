@@ -9,7 +9,7 @@ url=https://github.com/Chlumsky/msdfgen
 arch=(x86_64)
 license=(MIT)
 depends=(tinyxml2 libpng freetype2 zlib)
-makedepends=(git cmake ninja)
+makedepends=(git cmake gcc make)
 provides=(msdfgen=$pkgver)
 conflicts=(msdfgen)
 
@@ -25,7 +25,7 @@ pkgver()
 build()
 {
 	cd $pkgname/
-	cmake -B build -GNinja -DCMAKE_BUILD_TYPE=Release \
+	cmake -B build -G"Unix Makefiles" -DCMAKE_BUILD_TYPE=Release \
 	-DMSDFGEN_USE_SKIA=OFF -DMSDFGEN_USE_VCPKG=OFF \
 	-DMSDFGEN_INSTALL=ON -DCMAKE_INSTALL_PREFIX=/usr
 	cmake --build build
