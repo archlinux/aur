@@ -5,11 +5,12 @@ _rhelver=9.0
 pkgname=mssql-tools
 pkgver=18.2.1.1
 pkgrel=1
-pkgdesc="Microsoft® SQL Server® Tools for Linux"
+pkgdesc="Microsoft SQL Server Tools for Linux"
 arch=('x86_64' 'aarch64')
-url="https://www.microsoft.com/en-us/sql-server/sql-server-vnext-including-Linux"
+url="https://learn.microsoft.com/en-us/sql/linux/sql-server-linux-overview?view=sql-server-ver16"
 license=('custom')
-depends=('msodbcsql' 'mssql-server')
+depends=('msodbcsql')
+optdepends=('mssql-server: Enter T-SQL statements to an SQL Server database')
 options=('!strip')
 install="${pkgname}.install"
 source=("https://packages.microsoft.com/rhel/${_rhelver}/prod/Packages/m/${pkgname}18-${pkgver}-${pkgrel}.${arch}.rpm")
