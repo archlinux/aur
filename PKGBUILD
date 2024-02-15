@@ -1,6 +1,6 @@
 pkgname=ffplayout-git
 pkgver=r1896.21bc66c
-pkgrel=2
+pkgrel=1
 pkgdesc="24/7 playout based on rust and ffmpeg"
 arch=('x86_64')
 url="https://github.com/ffplayout/ffplayout"
@@ -58,6 +58,7 @@ build() {
   cd "${srcdir}/${pkgname}"
   export CARGO_HOME="$srcdir/rust-home"
   export RUSTUP_HOME="$srcdir/rust-home"
+  export RUSTUP_TOOLCHAIN=stable
 
   # Frontend build steps
   cd ffplayout-frontend
