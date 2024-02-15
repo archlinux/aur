@@ -1,4 +1,4 @@
-pkgbase = soundkonverter-git
+pkgbase = soundkonverter
 	pkgdesc = Front-end to various audio converters
 	pkgver = 3.0.1.27.gca95836
 	pkgrel = 3
@@ -58,4 +58,4 @@ pkgbase = soundkonverter-git
 	sha256sums = SKIP
 	sha256sums = 6775198a5c30495ead5cda9756643e7e3c5b767dd5f322f985c9775bb37093e9
 
-pkgname = soundkonverter-git
+pkgname = soundkonverter

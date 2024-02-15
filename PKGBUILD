@@ -7,7 +7,7 @@
 # Contributor: Darwin Bautista <djclue917@gmail.com>
 
 
-pkgname=soundkonverter-git
+pkgname=soundkonverter
 pkgver=3.0.1.27.gca95836
 pkgrel=3
 pkgdesc="Front-end to various audio converters"
