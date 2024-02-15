@@ -19,7 +19,7 @@ install=${pkgname}.install
 license=("EPL/1.1")
 
 source_x86_64=(
-    "https://download.springsource.com/release/STS4/${_pkgver_release}/dist/${_eclipse_pkgver_short}/${pkgname}-4-${_pkgver_release}-${_eclipse_pkgver}-linux.gtk.x86_64.tar.gz"
+    "https://cdn.spring.io/spring-tools/release/STS4/${_pkgver_release}/dist/${_eclipse_pkgver_short}/${pkgname}-4-${_pkgver_release}-${_eclipse_pkgver}-linux.gtk.x86_64.tar.gz"
     "${pkgname}.desktop"
 )
 sha256sums_x86_64=('4b13f1e0ad68e54624d5ba479b8d618f78fc6092d8ac42a02223bd6b7c7a26ff'
