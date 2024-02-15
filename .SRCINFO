@@ -1,0 +1,26 @@
+pkgbase = python-citerus-git
+	pkgdesc = CLI util to retrieve cryptobib citations
+	pkgver = r5.5262430
+	pkgrel = 1
+	url = https://github.com/matteocam/citerus
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-gitpython
+	depends = python-pyperclip
+	depends = python-rich
+	depends = python-textual
+	provides = python-citerus=r5.5262430
+	provides = citerus=r5.5262430
+	provides = citerus-git=r5.5262430
+	conflicts = python-citerus
+	conflicts = citerus
+	source = git+https://github.com/matteocam/citerus
+	sha256sums = SKIP
+
+pkgname = python-citerus-git
