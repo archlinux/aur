@@ -16,6 +16,6 @@ sha512sums_aarch64=('884b43bbcec43eca2623fe434717a8a0ea54e558b032d98c1efb9dd1c9f
 
 package() {
 	cd "${srcdir}"
-    install -Dm755 "dist_linux"*"/$_pkgname"                        "${pkgdir}/usr/bin/${_pkgname}"
-#    install -Dm755 "dist_linux"*"/${_pkgname}-sensor"               "${pkgdir}/usr/bin/${_pkgname}-sensor"
+    install -Dm755 "dist_linux"*"/slim"                        "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 "dist_linux"*"/slim-sensor"                 "${pkgdir}/usr/bin/${_pkgname}-sensor"
 }
