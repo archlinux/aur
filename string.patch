@@ -1,0 +1,12 @@
+diff --git a/trinity-plugins/bamsifter/sift_bam_max_cov.cpp b/trinity-plugins/bamsifter/sift_bam_max_cov.cpp
+index e8ecbcf..ccdbd27 100644
+--- a/trinity-plugins/bamsifter/sift_bam_max_cov.cpp
++++ b/trinity-plugins/bamsifter/sift_bam_max_cov.cpp
+@@ -10,6 +10,7 @@
+ #include <set>
+ #include <utility>
+ #include <vector>
++#include <string>
+ 
+ #include "htslib/sam.h"
+ #include "htslib/bgzf.h"
