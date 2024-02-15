@@ -1,7 +1,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=pwndbg-git
-pkgver=2023.07.17.pkgs.r116.g904624d
+pkgver=2023.07.17.pkgs.r117.ge8f423a
 pkgrel=1
 pkgdesc='Makes debugging with GDB suck less'
 url='https://github.com/pwndbg/pwndbg'
@@ -13,6 +13,7 @@ depends=(
   python
   python-capstone
   python-psutil
+  python-pt
   python-ptrace
   python-pwntools
   python-pycparser

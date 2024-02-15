@@ -1,6 +1,6 @@
 pkgbase = pwndbg-git
 	pkgdesc = Makes debugging with GDB suck less
-	pkgver = 2023.07.17.pkgs.r116.g904624d
+	pkgver = 2023.07.17.pkgs.r117.ge8f423a
 	pkgrel = 1
 	url = https://github.com/pwndbg/pwndbg
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = pwndbg-git
 	depends = python
 	depends = python-capstone
 	depends = python-psutil
+	depends = python-pt
 	depends = python-ptrace
 	depends = python-pwntools
 	depends = python-pycparser
