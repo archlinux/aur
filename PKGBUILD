@@ -2,7 +2,7 @@
 # Contributor: Blackleg <blackleg@openaliasbox.org>
 
 pkgname=ca-certificates-dnie
-pkgver=20230816
+pkgver=20240215
 pkgrel=1
 pkgdesc="Spanish DNIE root certificates"
 arch=('any')
@@ -30,7 +30,7 @@ sha256sums=(
   '7571df00556f41af9b552982f102529c20adb597fafe0865ccee89f735193458'
   '948ca3f851a4fd11483af67761c4d0603036231ec0611fe06d0e93212ac4d172'
   '25588e7328336f999a2650f60041f5fc107f1709960636b4a14b84cd8b866d54'
-  'dbc830986fedb0ea1120c774fb1e0d6446468e6fc114b278acf93a3cfc46fda8'
+  '0e90832d2f2d14a15609122e9f855159eae4ea66e44663f2f6754f44cca7a88d'
 )
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 
