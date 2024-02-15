@@ -8,7 +8,6 @@ exec meson setup \
   --buildtype     plain \
   --auto-features enabled \
   --wrap-mode     nodownload \
-  -D              b_lto=true \
   -D              b_pie=true \
   -D              python.bytecompile=1 \
   "$@"
