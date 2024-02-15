@@ -1,6 +1,6 @@
 pkgbase = jdk17-jetbrains-bin
 	pkgdesc = OpenJDK development kit with some fixes and enhancements by JetBrains
-	pkgver = 17.0.10b1087.17
+	pkgver = 17.0.10b1186.1
 	pkgrel = 1
 	url = https://github.com/JetBrains/JetBrainsRuntime/releases
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = jdk17-jetbrains-bin
 	provides = java-environment-openjdk=17
 	replaces = intellij-jdk
 	replaces = jdk-jetbrains
-	source = jbrsdk_jcef-17.0.10-linux-x64-b1087.17.tar.gz::https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk_jcef-17.0.10-linux-x64-b1087.17.tar.gz
-	sha512sums = 12d36b6354bcc203190c1254047a14efefcaf2f1948746ab798266819b46f4682503419df732a19d63002b85fa2ac30e3cfa951b247809781496affc76f75d6c
+	source = jbrsdk_jcef-17.0.10-linux-x64-b1186.1.tar.gz::https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk_jcef-17.0.10-linux-x64-b1186.1.tar.gz
+	sha512sums = 1746a8d4993086325eb576ef83bc68b5cefc02fc07e0597f7565072b6d41dcb5df7030b0a15b62a343e3fbf6f5b388bff63e93290c5d1f90144b56793ec21fa8
 
 pkgname = jdk17-jetbrains-bin
