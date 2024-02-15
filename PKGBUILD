@@ -1,7 +1,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=yt-dlp-git
-pkgver=2023.12.30.r101.gcd0443f
+pkgver=2023.12.30.r104.gfb44020
 pkgrel=1
 pkgdesc='A youtube-dl fork with additional features and fixes (git)'
 arch=(any)
@@ -41,6 +41,7 @@ prepare() {
 build() {
     cd "${pkgname%-git}"
     make pypi-files
+    python devscripts/make_lazy_extractors.py
     python -m build --wheel --no-isolation
 }
 
