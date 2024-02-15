@@ -3,14 +3,13 @@
 _pkgname=FoldGO
 _pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
-pkgrel=1
-pkgdesc='Package for Fold-specific GO Terms Recognition'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Package for Fold-specific GO Terms Recognition"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-ggplot2
   r-tidyr
   r-topgo
@@ -21,15 +20,16 @@ optdepends=(
   r-knitr
   r-rmarkdown
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d3f3aff453062e6a89500b334e1a3b2c4a3536675698c2ac52944e3fc3f60840')
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('230ddc55d983a828d401eac9e44590d4')
+b2sums=('4ccd80ab4f92ef3772377935aef4d90bd408bb1ff9c0a08f3781d186b75162f1ad1afb8afd806e117e818afeb00add0e3b43c99d3578d4fe93e41cc2f42ea28c')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
