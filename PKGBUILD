@@ -52,6 +52,7 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   export CARGO_HOME="$srcdir/rust-home"
   export RUSTUP_HOME="$srcdir/rust-home"
+  export RUSTUP_TOOLCHAIN=stable
 
   # Frontend build steps
   cd ffplayout-frontend
