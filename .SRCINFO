@@ -1,6 +1,6 @@
 pkgbase = hyprevents-git
 	pkgdesc = Invoke shell functions in response to Hyprland socket2 events.
-	pkgver = 5.51e907a
+	pkgver = 11.09b54e7
 	pkgrel = 1
 	url = https://github.com/vilari-mickopf/hyprevents
 	arch = x86_64
