@@ -1,6 +1,6 @@
 pkgbase = python-dbg
 	pkgdesc = Python 3 interpreter (debug).
-	pkgver = 3.10.2
+	pkgver = 3.11.6
 	pkgrel = 1
 	epoch = 0
 	url = http://www.python.org/
@@ -20,7 +20,7 @@ pkgbase = python-dbg
 	depends = zlib
 	options = !debug
 	options = !strip
-	source = https://www.python.org/ftp/python/3.10.2/Python-3.10.2.tar.xz
+	source = https://www.python.org/ftp/python/3.11.6/Python-3.11.6.tar.xz
 	sha256sums = 17de3ac7da9f2519aa9d64378c603a73a0e9ad58dffa8812e45160c086de64c7
 
 pkgname = python-dbg
