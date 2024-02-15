@@ -2,8 +2,8 @@
 pkgname=tunslip6-ng
 pkgver=4.9
 _branch=release/v${pkgver}
-pkgrel=3
-pkgdesc="tool to establish an IPv6 SLIP tunnel interface"
+pkgrel=4
+pkgdesc="Tool to establish an IPv6 SLIP tunnel interface"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.contiki-ng.org/"
 license=('BSD-3-Clause')
@@ -30,5 +30,6 @@ build() {
 
 package() {
   install -D -m755 tunslip6 "${pkgdir}/usr/bin/tunslip6"
+  install -D -m755 serialdump "${pkgdir}/usr/bin/serialdump"
   install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

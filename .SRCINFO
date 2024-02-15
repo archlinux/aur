@@ -1,7 +1,7 @@
 pkgbase = tunslip6-ng
-	pkgdesc = tool to establish an IPv6 SLIP tunnel interface
+	pkgdesc = Tool to establish an IPv6 SLIP tunnel interface
 	pkgver = 4.9
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.contiki-ng.org/
 	arch = i686
 	arch = x86_64
