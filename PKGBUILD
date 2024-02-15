@@ -2,7 +2,7 @@
 pkgname=numbat-bin
 _pkgname=numbat
 pkgver=1.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A statically typed programming language for scientific computations with first class support for physical dimensions and units"
 arch=('x86_64')
 url="https://github.com/sharkdp/numbat"
@@ -16,7 +16,6 @@ sha256sums=(
   'b8889a1411a23aed32be5436413632fc55f312937475860107f44281dba961a4'
 )
 
-
 package() {
 	cd "$_pkgname-v$pkgver-x86_64-unknown-linux-gnu"
 	install -Dm755 $_pkgname "$pkgdir/usr/bin/$_pkgname"
@@ -25,5 +24,14 @@ package() {
   mkdir "$pkgdir/usr/share/$_pkgname"
 	cp -r "modules" "$pkgdir/usr/share/$_pkgname/modules/"
 	install -Dm644 "README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
+	install -Dm644 "assets/numbat.desktop" "$pkgdir/usr/share/applications/numbat.desktop"
+	install -Dm644 "assets/numbat.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/numbat.svg"
+
+  for icon in $(ls assets/numbat-*.png)
+  do
+    filename_without_prefix=${icon#*-}
+    icon_size=${filename_without_prefix%.*}
+    install -Dm644 "$icon" "$pkgdir/usr/share/icons/hicolor/$icon_size/apps/numbat.png"
+  done
 }
 
