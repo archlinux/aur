@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="A powerful and highly extensible command-line document and bibliography manager. Git version."
 arch=('any')
 url="https://github.com/papis/papis"
-license=('GPL-3.0+')
+license=('GPL-3.0-or-later')
 makedepends=('git')
 depends=('python'
          'python-arxiv'
