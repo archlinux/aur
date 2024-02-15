@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-positioning
-_qtver=6.6.1
+_qtver=6.6.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -19,7 +19,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtpositioning-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('3ddac73f3b12b8516498cb5d2f9ade058a1a9368f74188d48ed27032833816b8')
+sha256sums=('4da7567cc1ed2480b137ac7d8db16be40ee935c52585762a7a44b6a4ef0ec3e2')
 
 build() {
   source android-env ${_android_arch}
