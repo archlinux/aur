@@ -1,12 +1,12 @@
 pkgname=ffplayout-unstable-git
 pkgver=r1893.7920c35
-pkgrel=1
+pkgrel=2
 pkgdesc="24/7 playout based on rust and ffmpeg"
 arch=('x86_64')
 url="https://github.com/jb-alvarado/ffplayout"
 license=('GPL3')
 depends=(
-  'ffmpeg>=5.0'
+  'ffmpeg-ffplayout>=5.0'
   'sudo'
 )
 makedepends=(

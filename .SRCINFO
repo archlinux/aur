@@ -1,7 +1,7 @@
 pkgbase = ffplayout-unstable-git
 	pkgdesc = 24/7 playout based on rust and ffmpeg
 	pkgver = r1893.7920c35
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jb-alvarado/ffplayout
 	install = ffplayout.install
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ffplayout-unstable-git
 	makedepends = nodejs-lts-hydrogen
 	makedepends = npm
 	makedepends = pandoc
-	depends = ffmpeg>=5.0
+	depends = ffmpeg-ffplayout>=5.0
 	depends = sudo
 	provides = ffplayout-unstable-git
 	conflicts = ffplayout
