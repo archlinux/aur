@@ -1,4 +1,4 @@
-From 3ebcd9ac020847406df9bfd6ee55b5f5dc88fc4c Mon Sep 17 00:00:00 2001
+From 4bb764168cc61efd30527be2dc9a6d6a43b7e75d Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 1 Oct 2022 17:43:07 +0200
 Subject: [PATCH] Fix compile flags of resonance-audio for mingw-w64
