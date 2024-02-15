@@ -1,7 +1,7 @@
 # Maintainer: João Freitas <joaj.freitas@gmail.com>
 pkgname=numbat
 _pkgname=numbat-cli
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="A statically typed programming language for scientific computations with first class support for physical dimensions and units"
 arch=('any')
@@ -17,8 +17,8 @@ source=(
 options=(!lto)
 
 sha256sums=(
-  'ad05f5fd9e45efd5b6eff0c847668454c877408ca02d0359bb3d11eebdeca001'
-  '4b32847c1642f66ec41e7f84591765ceb9d3267a3c89db9a603cf03c48f9e8f0'
+  'fa5fe5eb40a7474a71c528b66cbf6003f5713b777ef8cb8a7792763fb8ca6579'
+  'e593983a42fe138bf84a2172537c5c1763a8743c65a952fbfd8df67a17f04526'
 )
 
 prepare() {
@@ -32,19 +32,29 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
+    cargo doc
 }
 
 check() {
     cd $_pkgname-$pkgver
     export RUSTUP_TOOLCHAIN=stable
-    #cargo test --frozen --all-features
+    cargo test --frozen --all-features
 }
 
 package() {
     install -Dm0755 -t "$pkgdir/usr/bin/" "$_pkgname-$pkgver/target/release/$pkgname"
     mkdir -p "$pkgdir/usr/share/$pkgname"
-    cp -r  "$pkgname-$pkgver/$pkgname/modules" "$pkgdir/usr/share/$pkgname"
+    cp -r  "$pkgname-$pkgver/$pkgname/modules" "$pkgdir/usr/share/$pkgname/"
     install -Dm644 "$pkgname-$pkgver/LICENSE-MIT" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE-MIT"
     install -Dm644 "$pkgname-$pkgver/LICENSE-APACHE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE-APACHE"
     install -Dm644 "$pkgname-$pkgver/README.md" "$pkgdir/usr/doc/$pkgname/README.md"
+	  install -Dm644 "$pkgname-$pkgver/assets/numbat.desktop" "$pkgdir/usr/share/applications/numbat.desktop"
+	  install -Dm644 "$pkgname-$pkgver/assets/numbat.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/numbat.svg"
+
+  for icon in $(ls $pkgname-$pkgver/assets/numbat-*x*.png)
+  do
+    filename_without_prefix=${icon#*-}
+    icon_size=${filename_without_prefix%.*}
+    install -Dm644 "$icon" "$pkgdir/usr/share/icons/hicolor/$icon_size/apps/numbat.png"
+  done
 }
