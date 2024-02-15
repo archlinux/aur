@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-location-static
-_qtver=6.6.1
+_qtver=6.6.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -17,7 +17,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtlocation-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('8dbe2b62e37278c83c5acdb536c3e4c313ec0bac5380d020873db692199f9c29')
+sha256sums=('9e25dcfeafecedb288e6011ebd70f6cf68b66204c4acfb97873483a755e5f415')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
