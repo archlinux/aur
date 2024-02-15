@@ -1,5 +1,5 @@
 diff --git a/lib/tmuxinator/config.rb b/lib/tmuxinator/config.rb
-index 9b64b75..d89e835 100644
+index d14eb9a..d4eccaa 100644
 --- a/lib/tmuxinator/config.rb
 +++ b/lib/tmuxinator/config.rb
 @@ -29,7 +29,7 @@ module Tmuxinator
@@ -12,13 +12,13 @@ index 9b64b75..d89e835 100644
  
        def xdg?
 diff --git a/spec/lib/tmuxinator/config_spec.rb b/spec/lib/tmuxinator/config_spec.rb
-index 877cac4..9be2aa3 100644
+index 09ab25f..9d6d7e2 100644
 --- a/spec/lib/tmuxinator/config_spec.rb
 +++ b/spec/lib/tmuxinator/config_spec.rb
 @@ -53,7 +53,8 @@ describe Tmuxinator::Config do
  
          Dir.mktmpdir do |dir|
-           config_parent = "#{dir}/non_existant_parent/s"
+           config_parent = "#{dir}/non_existent_parent/s"
 -          allow(XDG).to receive(:[]).with("CONFIG").and_return config_parent
 +          allow(XDG::Config).to receive_message_chain(:new, :home, :to_s).
 +            and_return config_parent

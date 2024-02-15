@@ -23,7 +23,7 @@ source=(
   "xdg.patch"
 )
 sha256sums=('e9be8001042c735d49ec94398a69e65308d9d0ca6bacc0e9fd947c37d53e250c'
-            '4a120cc210af73190561d2788f2d47c19b11d6f0f129f18fb2614748d5bd9470')
+            '75d32aa7e9e7061a21ecb72bd4d3a76ea8610ec391a6dad1797d511cc8544ffb')
 
 prepare() {
   cd ${pkgname}-${pkgver}
