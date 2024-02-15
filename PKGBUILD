@@ -1,22 +1,19 @@
-# system requirements: clustalo, gs, perl
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=LowMACA
 _pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
-pkgrel=1
-pkgdesc='LowMACA - Low frequency Mutation Analysis via Consensus Alignment'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=3
+pkgdesc="Low frequency Mutation Analysis via Consensus Alignment"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   clustal-omega
   ghostscript
-  perl
   perl-lwp-protocol-https
   perl-xml-simple
-  r
   r-biocparallel
   r-biostrings
   r-cbioportaldata
@@ -35,15 +32,16 @@ optdepends=(
   r-knitr
   r-rmarkdown
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1b37fd41e3a41169d52cd5164972d3455c4d914bedfa5ccc54fcebf8fb18a248')
+source=("https://bioconductor.org/packages/3.16/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('00d852771a79338dfdd5f41318672af1')
+b2sums=('0e4e8ea737873f018fbc49dbf5502b45bde931b9f6fa19fc64cbd03015e627b75e92ed9aab184b43fa4102c65222a26db19145d9555f335f03f0181326640b62')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
