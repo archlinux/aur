@@ -1,7 +1,7 @@
 # Maintainer: Rodolphe Fouquet <vachicorne at pm dot me>
 pkgname=zoom-vmware-plugin
-pkgver=5.16.11
-_subver=24500
+pkgver=5.17.5
+_subver=24630
 pkgrel=1
 pkgdesc="Zoom VDI VMWare plugin "
 arch=('x86_64')
@@ -16,7 +16,7 @@ replaces=()
 
 source=("https://zoom.us/download/vdi/${pkgver}.${_subver}/zoomvdi-universal-plugin-centos_${pkgver}.rpm")
 
-sha512sums=('26e47efc316c349ca4b0f9dc06e0a9e61816bb38834333ac01662699062ab8ebdea8168e76986e5c8940bd882c675af1d4a03f2e3a8ac57b46cd7126c92b89c1')
+sha512sums=('b43926739d1de5b487718ee3975e3dd915ce6aaefedce0969f5680eb8e792182a8613adb71e670d867cc43818ede50603f20bcd759ee130c22644d4edbc56f0a')
 
 package() {
   find $srcdir/ -mindepth 1 -maxdepth 1 -type d | xargs cp -r -t "$pkgdir"
