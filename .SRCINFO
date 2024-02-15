@@ -1,0 +1,21 @@
+pkgbase = android-x86-64-xcb-proto
+	pkgdesc = XML-XCB protocol descriptions (android)
+	pkgver = 1.16.0
+	pkgrel = 1
+	url = https://xcb.freedesktop.org/
+	arch = any
+	license = custom
+	makedepends = python
+	makedepends = android-x86-64-libxml2
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org/archive/individual/proto/xcb-proto-1.16.0.tar.xz
+	source = https://xorg.freedesktop.org/archive/individual/proto/xcb-proto-1.16.0.tar.xz.sig
+	validpgpkeys = 3BB639E56F861FA2E86505690FDD682D974CA72A
+	sha512sums = 54906f379a7aa2cbbfbbe54764c02dbf522ca8f6c54e07d4faae471aac3aee25d0359be38c808c8da887de228aed745582a78b2f56714b023bca8f3513b24972
+	sha512sums = SKIP
+
+pkgname = android-x86-64-xcb-proto
