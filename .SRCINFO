@@ -1,0 +1,15 @@
+pkgbase = nodejs-compose-language-service
+	pkgdesc = Language service for Docker Compose documents
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/microsoft/compose-language-service
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	noextract = compose-language-service-0.2.0.tgz
+	source = https://registry.npmjs.org/@microsoft/compose-language-service/-/compose-language-service-0.2.0.tgz
+	b2sums = a6f813a9d69746567f5de6bae40cd06906e4f8c62442b5ad60b4603a6a1d391b9796c03950f18e4c3234c6141924858e02d5f0f47fa5a36cb5637434b176c0dd
+
+pkgname = nodejs-compose-language-service
