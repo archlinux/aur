@@ -1,12 +1,13 @@
---- base/logging.h	2023-11-17 17:55:03.437368494 +0100
-+++ base/logging.h	2023-11-17 17:56:23.320314373 +0100
-@@ -440,8 +440,7 @@
- // As special cases, we can assume that LOG_IS_ON(FATAL) always holds. Also,
- // LOG_IS_ON(DFATAL) always holds in debug mode. In particular, CHECK()s will
+--- base/logging.h	2024-02-15 14:10:48.799441080 +0100
++++ base/logging.h	2024-02-15 14:14:20.024719767 +0100
+@@ -419,9 +419,7 @@
  // always fire if they fail.
--#define LOG_IS_ON(severity) \
--  (::logging::ShouldCreateLogMessage(::logging::LOGGING_##severity))
+ // FATAL is always enabled and required to be resolved in compile time for
+ // LOG(FATAL) to be properly understood as [[noreturn]].
+-#define LOG_IS_ON(severity)                                     \
+-  (::logging::LOGGING_##severity == ::logging::LOGGING_FATAL || \
+-   ::logging::ShouldCreateLogMessage(::logging::LOGGING_##severity))
 +#define LOG_IS_ON(severity) false
 
- #if !BUILDFLAG(USE_RUNTIME_VLOG)
-
+ // Define a default ENABLED_VLOG_LEVEL if it is not defined. The macros allows
+ // code to enable vlog level at build time without the need of --vmodule

@@ -4,7 +4,7 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=121.0.6167.184
+pkgver=122.0.6261.39
 pkgrel=1
 _manual_clone=0
 _system_clang=1
@@ -21,15 +21,13 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         compiler-rt-16.patch
         abseil-remove-unused-targets.patch
         disable-logging.patch
-        fix-missing-vector.patch
         fix-no-matching-strcat.patch
         fix-numeric_limits.patch
         fix-undeclared-isnan.patch)
-sha256sums=('9fd6b82e7077ac26ec264bfcfc8ac8e0c2a0240378f035c9c0f34ad467aef09d'
-            'e9113c1ed2900b84b488e608774ce25212d3c60094abdae005d8a943df9b505e'
-            '8d1cdf3ddd8ff98f302c90c13953f39cd804b3479b13b69b8ef138ac57c83556'
+sha256sums=('30fc98bdb497d98e63fcb4d8e76acf5201eddf7e65ee907ecf4041cc8e121be3'
+            '1f6acf165578288dc84edc7d9dcfabf7d38f55153b63a37ee5afa929f0e2baad'
+            '53774fd7f807ad42f77d45cab9e5480cc2bcb0a5c5138110a434407521af9607'
             '8a2649dcc6ff8d8f24ddbe40dc2a171824f681c6f33c39c4792b645b87c9dcab'
-            SKIP
             SKIP
             SKIP
             SKIP
@@ -44,26 +42,27 @@ fi
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
-  [absl_algorithm]=
-  [absl_base]=abseil-cpp
-  [absl_cleanup]=
-  [absl_container]=
-  [absl_debugging]=
-  [absl_flags]=
-  [absl_functional]=
-  [absl_hash]=
-  [absl_log]=
-  [absl_log_internal]=
-  [absl_memory]=
-  [absl_meta]=
-  [absl_numeric]=
-  [absl_random]=
-  [absl_status]=
-  [absl_strings]=
-  [absl_synchronization]=
-  [absl_time]=
-  [absl_types]=
-  [absl_utility]=
+  # Abseil needs libstdc++.
+  # [absl_algorithm]=
+  # [absl_base]=abseil-cpp
+  # [absl_cleanup]=
+  # [absl_container]=
+  # [absl_debugging]=
+  # [absl_flags]=
+  # [absl_functional]=
+  # [absl_hash]=
+  # [absl_log]=
+  # [absl_log_internal]=
+  # [absl_memory]=
+  # [absl_meta]=
+  # [absl_numeric]=
+  # [absl_random]=
+  # [absl_status]=
+  # [absl_strings]=
+  # [absl_synchronization]=
+  # [absl_time]=
+  # [absl_types]=
+  # [absl_utility]=
   [brotli]=brotli
   [double-conversion]=double-conversion
   [icu]=icu
@@ -75,26 +74,27 @@ declare -gA _system_make_libs=(
   [jsoncpp]=jsoncpp
 )
 _unwanted_bundled_libs=(
-  third_party/abseil-cpp/absl/algorithm
-  third_party/abseil-cpp/absl/base
-  third_party/abseil-cpp/absl/cleanup
-  third_party/abseil-cpp/absl/container
-  third_party/abseil-cpp/absl/debugging
-  third_party/abseil-cpp/absl/flags
-  third_party/abseil-cpp/absl/functional
-  third_party/abseil-cpp/absl/hash
-  third_party/abseil-cpp/absl/log
-  third_party/abseil-cpp/absl/log/internal
-  third_party/abseil-cpp/absl/memory
-  third_party/abseil-cpp/absl/meta
-  third_party/abseil-cpp/absl/numeric
-  third_party/abseil-cpp/absl/random
-  third_party/abseil-cpp/absl/status
-  third_party/abseil-cpp/absl/strings
-  third_party/abseil-cpp/absl/synchronization
-  third_party/abseil-cpp/absl/time
-  third_party/abseil-cpp/absl/types
-  third_party/abseil-cpp/absl/utility
+  # Abseil needs libstdc++.
+  # third_party/abseil-cpp/absl/algorithm
+  # third_party/abseil-cpp/absl/base
+  # third_party/abseil-cpp/absl/cleanup
+  # third_party/abseil-cpp/absl/container
+  # third_party/abseil-cpp/absl/debugging
+  # third_party/abseil-cpp/absl/flags
+  # third_party/abseil-cpp/absl/functional
+  # third_party/abseil-cpp/absl/hash
+  # third_party/abseil-cpp/absl/log
+  # third_party/abseil-cpp/absl/log/internal
+  # third_party/abseil-cpp/absl/memory
+  # third_party/abseil-cpp/absl/meta
+  # third_party/abseil-cpp/absl/numeric
+  # third_party/abseil-cpp/absl/random
+  # third_party/abseil-cpp/absl/status
+  # third_party/abseil-cpp/absl/strings
+  # third_party/abseil-cpp/absl/synchronization
+  # third_party/abseil-cpp/absl/time
+  # third_party/abseil-cpp/absl/types
+  # third_party/abseil-cpp/absl/utility
   third_party/brotli
   third_party/crc32c
   third_party/dav1d
@@ -159,9 +159,6 @@ prepare() {
 
     # Allow libclang_rt.builtins from compiler-rt 16 to be used
     patch -Np1 -i ../compiler-rt-16.patch
-
-    # Fixes for building with libstdc++ instead of libc++
-    patch -Np1 -i ../chromium-patches-*/chromium-119-clang16.patch
   fi
 
   # Fixes the build crashing with the following error:
@@ -171,14 +168,11 @@ prepare() {
   # Disables logging as it's unconfigurable, which is undesired in a library
   patch -p0 -i ../disable-logging.patch
 
-  # Fixes building with system Abseil
-  patch -p0 -i ../abseil-remove-unused-targets.patch
+  # Fixes building with system Abseil (needs libstdc++)
+  # patch -p0 -i ../abseil-remove-unused-targets.patch
 
   # Fixes `implicit instantiation of undefined template 'std::numeric_limits<unsigned long>'` error
   patch -p0 -i ../fix-numeric_limits.patch
-
-  # Fixes `no template named 'vector' in namespace 'std'`
-  patch -p0 -i ../fix-missing-vector.patch
 
   # Fixes the following error:
   # ../../net/third_party/quiche/src/quiche/web_transport/encapsulated/encapsulated_web_transport.cc:351:16: error: no matching function for call to 'StrCat'
@@ -236,7 +230,7 @@ build() {
     'symbol_level=0' # sufficient for backtraces on x86(_64)
     'treat_warnings_as_errors=false'
     'disable_fieldtrial_testing_config=true'
-    'use_custom_libcxx=false'
+    'use_custom_libcxx=true' # https://github.com/llvm/llvm-project/issues/61705
     'use_sysroot=false'
     'use_system_libffi=true'
     'enable_nacl=false'
