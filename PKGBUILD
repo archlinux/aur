@@ -2,7 +2,7 @@
 
 pkgname=gtkcord4
 _fqpn=so.libdb.${pkgname}
-pkgver=0.0.18
+pkgver=0.0.19
 pkgrel=1
 pkgdesc='Discord client written in go and gtk4'
 arch=('x86_64' 'aarch64')
@@ -38,7 +38,6 @@ package() {
     cd "${pkgname}/build"
     install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    sed -i "s/Chat;/Chat;InstantMessaging;/" "${srcdir}/${pkgname}/nix/${_fqpn}.desktop"
     install -Dm644 "${srcdir}/${pkgname}/nix/${_fqpn}.desktop" "${pkgdir}/usr/share/applications/${_fqpn}.desktop"
     install -Dm644 "${srcdir}/${pkgname}/${_fqpn}.metainfo.xml" "${pkgdir}/usr/share/metainfo/${_fqpn}.metainfo.xml"
     install -Dm644 "${srcdir}/${pkgname}/.github/logo.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/gtkcord4.png"
