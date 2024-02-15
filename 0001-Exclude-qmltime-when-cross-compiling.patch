@@ -1,4 +1,4 @@
-From 6528fef94ab85b5500ffe1faa5732a6489912469 Mon Sep 17 00:00:00 2001
+From 5cf0ff8aafd77691530680b38f4808ade5359cd0 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 5 Feb 2021 02:22:45 +0100
 Subject: [PATCH] Exclude qmltime when cross compiling
