@@ -43,6 +43,9 @@ prepare() {
 
   git submodule update --init
   git submodule update --remote --merge
+
+  cd ffplayout-frontend
+  npm install
 }
 
 build() {
@@ -52,7 +55,6 @@ build() {
 
   # Frontend build steps
   cd ffplayout-frontend
-  npm install
   npm run generate
   cp -vr .output/public "${srcdir}/${pkgname}-${pkgver}/public"
 
