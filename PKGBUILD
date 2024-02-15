@@ -1,14 +1,18 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
-# Updated by https://github.com/Freed-Wu/mutt-language-server/blob/main/.github/workflows/main.yml
+# Updated by https://github.com/neomutt/mutt-language-server/blob/main/.github/workflows/main.yml
 pkgname=mutt-language-server
 pkgver=0.0.3
 pkgrel=1
 pkgdesc="mutt/neomutt's language server"
 arch=(any)
-url=https://github.com/Freed-Wu/mutt-language-server
-depends=(python-pygls python-platformdirs)
-optdepends=(python-pypandoc python-markdown-it-py mutt neomutt)
+url=https://github.com/neomutt/mutt-language-server
+depends=(python-tree-sitter-lsp python-tree-sitter-muttrc)
+optdepends=(
+	'python-pypandoc: generate json schema'
+	'python-markdown-it-py: generate json schema: generate json schema'''
+	'neomutt: generate json schema'
+)
 makedepends=(python-installer)
 license=(GPL3)
 _py=py3
