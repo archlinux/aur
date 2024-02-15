@@ -14,7 +14,7 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgbase=mesa-amdonly-gaming-git
-pkgver=24.1.0_devel.184174.8368a972943.d41d8cd98f00b204e9800998ecf8427e
+pkgver=24.1.0_devel.184820.f55f9272e46.d41d8cd98f00b204e9800998ecf8427e
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 pkgname=(
   'amdonly-gaming-vulkan-mesa-layers-git'
@@ -146,7 +146,7 @@ build() {
     -D b_lto=false
     -D dri3=enabled
     -D egl=enabled
-    -D gallium-drivers=radeonsi,virgl,svga,swrast,crocus,zink,d3d12
+    -D gallium-drivers=radeonsi,virgl,svga,swrast,zink
     -D gallium-extra-hud=true
     -D gallium-nine=true
     -D gallium-omx=bellagio
@@ -160,7 +160,6 @@ build() {
     -D gles2=enabled
     -D glvnd=true
     -D glx=dri
-    -D intel-clc=enabled
     -D libunwind=disabled
     -D llvm=enabled
     -D lmsensors=enabled
@@ -171,7 +170,7 @@ build() {
     -D shared-glapi=enabled
     -D opencl-spirv=true
     -D valgrind=disabled
-    -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc,av1dec,av1enc,vp9dec
+    -D video-codecs=all
     -D vulkan-drivers=amd,swrast,virtio
     -D vulkan-layers=device-select,overlay
     -D vulkan-beta=true

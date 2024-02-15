@@ -1,6 +1,6 @@
 pkgbase = mesa-amdonly-gaming-git
 	pkgdesc = An open-source implementation of the OpenGL specification
-	pkgver = 24.1.0_devel.184174.8368a972943.d41d8cd98f00b204e9800998ecf8427e
+	pkgver = 24.1.0_devel.184820.f55f9272e46.d41d8cd98f00b204e9800998ecf8427e
 	pkgrel = 1
 	url = https://www.mesa3d.org/
 	arch = x86_64
