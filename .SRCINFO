@@ -1,0 +1,18 @@
+pkgbase = vineflower
+	pkgdesc = Modern Java & JVM language decompiler focused on output quality & readability
+	pkgver = 1.9.3
+	pkgrel = 1
+	url = https://vineflower.org
+	arch = any
+	license = Apache-2.0
+	depends = java-runtime>=11
+	depends = sh
+	replaces = quiltflower
+	noextract = vineflower-1.9.3.jar
+	source = https://repo1.maven.org/maven2/org/vineflower/vineflower/1.9.3/vineflower-1.9.3.jar
+	source = https://repo1.maven.org/maven2/org/vineflower/vineflower/1.9.3/vineflower-1.9.3.jar.asc
+	validpgpkeys = 0EBCB16A237726FFB2892E7AA5B7381AF8CBB702
+	sha256sums = 2e563300af223b04772195709539fba69237e61eba14090ee3a44e2992c41cdb
+	sha256sums = SKIP
+
+pkgname = vineflower

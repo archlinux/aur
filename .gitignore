@@ -1,0 +1,7 @@
+pkg/
+src/
+*.jar
+*.jar.asc
+*.log
+*.pkg.tar.zst
+
