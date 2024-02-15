@@ -4,13 +4,13 @@
 
 pkgname=papis-git
 _pkgname=papis
-pkgver=0.13.r328.g72dedcfa
+pkgver=0.13.r333.g1a6fe961
 pkgrel=1
 pkgdesc="A powerful and highly extensible command-line document and bibliography manager. Git version."
 arch=('any')
 url="https://github.com/papis/papis"
 license=('GPL-3.0-or-later')
-makedepends=('git')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 depends=('python'
          'python-arxiv'
          'python-beautifulsoup4'
@@ -76,10 +76,10 @@ check() {
 
 build() {
   cd "${_pkgname}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${_pkgname}"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
