@@ -6,7 +6,6 @@ pkgbase = matm-bin
 	arch = x86_64
 	license = GPL3
 	depends = mpv
-	depends = fzf
 	depends = zathura-cb
 	optdepends = vlc: an alternative video player for movies
 	provides = matm
