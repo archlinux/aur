@@ -57,7 +57,9 @@ fi
 
 if $build_with_gcc; then
 	# libc extricated since it did not build with gcc 13 on last attempt; if it builds for you, let me know
-	additional_build_options="${additional_build_options} -DLLVM_ENABLE_PROJECTS=bolt;clang;clang-tools-extra;libclc;lld;lldb;openmp;polly;pstl;compiler-rt"
+	additional_build_options="${additional_build_options} \
+		-DLLVM_ENABLE_LTO=Full \
+		 -DLLVM_ENABLE_PROJECTS=bolt;clang;clang-tools-extra;libclc;lld;lldb;openmp;polly;pstl;compiler-rt"
 else
 	additional_build_options="${additional_build_options} ${build_with_clang_options}"
 fi
