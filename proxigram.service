@@ -1,0 +1,16 @@
+[Unit]
+Description=A privacy focused and open source front-end for Instagram
+After=network.target
+
+[Service]
+Type=simple
+User=proxigram
+Group=proxigram
+EnvironmentFile=-/etc/proxigram.conf
+WorkingDirectory=/opt/proxigram
+ExecStartPre=/opt/proxigram/node_modules/next/dist/bin/next build
+ExecStart=/opt/proxigram/node_modules/next/dist/bin/next start -p $PORT
+ReadWriteDirectories=-/opt/proxigram
+
+[Install]
+WantedBy=multi-user.target
