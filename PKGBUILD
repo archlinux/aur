@@ -17,7 +17,7 @@ makedepends=(
   'pandoc'
 )
 provides=('ffplayout')
-conflicts=('ffplayout-git')
+conflicts=('ffplayout-git' 'ffplayout-unstable-git')
 backup=('etc/ffplayout/ffplayout.yml')
 install='ffplayout.install'
 source=(
