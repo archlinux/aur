@@ -5,8 +5,8 @@
 
 _pkgname=konsole
 pkgname=$_pkgname-osc52
-pkgver=23.08.4
-pkgrel=2
+pkgver=23.08.5
+pkgrel=1
 arch=(x86_64)
 url='https://apps.kde.org/konsole/'
 pkgdesc='KDE terminal emulator patched with OSC52 copy support'
@@ -19,7 +19,7 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz{,.sig}
         osc52.patch)
-sha256sums=('6c0b5bd0c749615b970adff16be226765ff9200988feaf099cc5ffda51278fb7'
+sha256sums=('c6fb20753ac27a46bce62e31f7b105b6b99497035830b34a7bba1bc60260c1ca'
             'SKIP'
             'e7c2ca3b30e018139a139e99141202a2efc8e4e880e2965b09537f9a97865e53')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
