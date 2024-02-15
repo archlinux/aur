@@ -1,7 +1,7 @@
 # Maintainer: SovietReimu1228 <reimu@hakurei.win>
 
 pkgname=mesa-enable-h264
-realpkgver=24.0.0
+realpkgver=24.0.1
 pkgver=`echo $realpkgver | sed -e 's/-/_/g'`
 pkgrel=1
 pkgdesc="An open-source implementation of the OpenGL specification"
