@@ -3,7 +3,7 @@
 # Contributor: Robert Kubosz <kubosz.robert@gmail.com>
 _base=uqbar
 pkgname=python-${_base}
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Tools for building documentation with Sphinx, Graphviz and LaTeX"
 arch=(any)
@@ -13,7 +13,7 @@ depends=(python-sphinx python-unidecode python-black)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest-cov graphviz)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('78023f79d793763723203f056476181cf2cfe4bd93ceda60efafbc975635c8023d2323c4e7be2fc6700d3b30381c79aa7683f36991d0da6947776f219e0fdfe8')
+sha512sums=('d0e6d870f97a3576244b41cded42485e5fbb62ed10e2a0ed8b2f986f8a6de8fd4df82001958e3b7ea7f29ca6b6482521fc09adc35504f94f5d0296bff484cfce')
 
 prepare() {
   cd ${_base}-${pkgver}
@@ -30,7 +30,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest tests -k 'not find_executable'
+  test-env/bin/python -m pytest tests
 }
 
 package() {
