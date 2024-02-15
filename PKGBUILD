@@ -11,7 +11,7 @@
 pkgname=proxigram-git
 _pkgname=proxigram
 pkgver=r91.bf04c4c
-pkgrel=3
+pkgrel=4
 pkgdesc="A privacy focused and open source front-end for Instagram"
 arch=('any')
 url="https://codeberg.org/ThePenguinDev/Proxigram"
@@ -23,12 +23,14 @@ source=("$_pkgname::git+$url"
 	"$_pkgname.service"
 	"$_pkgname.sysusers"
 	"$_pkgname.tmpfiles"
-	"$_pkgname.conf")
+	"$_pkgname.conf"
+	'0001-Use-custom-port.patch')
 md5sums=('SKIP'
          '6378320dd779a73b31dc64dba4bb3bc2'
          '95be5fd46a8e5a5e832ea135a2fbfee3'
          '0ad916caa947bf33368d4fba3572ebe6'
-         '308016ff3e49dcb48fcff603abc8bb3d')
+         '308016ff3e49dcb48fcff603abc8bb3d'
+         'b0d8a9665020bc77fb6a252e9bb3196d')
 options=(!strip)
 
 pkgver() {
@@ -37,6 +39,11 @@ pkgver() {
 	# printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 	# Git, no tags available
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+
+prepare() {
+	patch --directory="$srcdir/$_pkgname" --forward --strip=1 --input="${srcdir}/0001-Use-custom-port.patch"
 }
 
 build() {

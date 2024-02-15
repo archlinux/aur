@@ -1,0 +1,13 @@
+diff --git a/src/utils/index.ts b/src/utils/index.ts
+index 7c31fb0..0ccd237 100644
+--- a/src/utils/index.ts
++++ b/src/utils/index.ts
+@@ -2,7 +2,7 @@ import axios from "axios";
+ import { readFileSync } from "node:fs";
+ 
+ export const axiosInstance = axios.create({
+-	baseURL: "http://127.0.0.1:3000/api/",
++	baseURL: "http://127.0.0.1:" + process.env.PORT + "/api/",
+ });
+ 
+ export function sleep(ms: number) {
