@@ -1,6 +1,6 @@
 pkgbase = kodi-eggz
-	pkgver = 21.0b2
-	pkgrel = 3
+	pkgver = 21.0b3
+	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
