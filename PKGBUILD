@@ -1,6 +1,6 @@
 # Maintainer: Josh Gwosdz <jgwosdz at redhat dot com>
 pkgname=openshift-client-bin
-pkgver=4.14.10
+pkgver=4.14.11
 pkgrel=1
 pkgdesc="Client tools for OpenShift, binary release"
 arch=("x86_64")
@@ -12,7 +12,7 @@ depends=()
 
 source=("$pkgname-$pkgver.tar.gz::https://mirror.openshift.com/pub/openshift-v4/clients/ocp/${pkgver}/openshift-client-linux.tar.gz")
 
-sha256sums=('44f68301620cac8e39c8750eec7f4019c4b80ad36c3ada080226fa5111f96923')
+sha256sums=('91a79c34c3ef549b733610486a0fe19ddda49851b053829163aac188586ae236')
 
 prepare() {
   # generate completion
