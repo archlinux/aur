@@ -6,15 +6,15 @@
 pkgname=gotosocial-git
 _pkgname=${pkgname%-git}
 pkgver=r1546.c5eced5fd
-pkgrel=2
-pkgdesc='ActivityPub social network server written in Golang'
+pkgrel=3
+pkgdesc='ActivityPub social network server written in Golang (development version)'
 arch=('x86_64')
 url='https://gotosocial.org'
 license=('AGPL3')
 depends=('glibc')
 makedepends=('git' 'go' 'yarn' 'nodejs' 'go-swagger')
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("$_pkgname" "$_pkgname-rc")
 options=('!lto')
 backup=(
   'etc/gotosocial/config.yaml'
