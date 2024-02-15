@@ -68,8 +68,8 @@ source=(
   'git+https://github.com/dfaust/soundkonverter.git'
   'taglib2.diff'
 )
-provides=('soundkonverter')
-conflicts=('soundkonverter')
+provides=('soundkonverter-git')
+conflicts=('soundkonverter-git')
 sha256sums=(
   'SKIP'
   '6775198a5c30495ead5cda9756643e7e3c5b767dd5f322f985c9775bb37093e9'
