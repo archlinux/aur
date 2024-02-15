@@ -1,4 +1,4 @@
-From db2ede6a2e3cb897b4302a4e6474c457a8bdf8f0 Mon Sep 17 00:00:00 2001
+From 8cdb1f8bb457dc5e7d978da3bb8fbfdb7ae37800 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 12 Sep 2022 17:38:47 +0200
 Subject: [PATCH 3/3] Fix compile error about missing QStringView overload
