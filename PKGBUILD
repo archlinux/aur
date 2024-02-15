@@ -1,6 +1,6 @@
 # Maintainer: Diego Parra <diegoparranava@protonmail.com>
 pkgname='waypaper-engine'
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="A pleasant gui frontend for swww with batteries included!"
 arch=('x86_64')
