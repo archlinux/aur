@@ -2,7 +2,7 @@
 # Maintainer: xgjmibzr <xgjmibzr@gmail.com>
 
 pkgname=superslicer-prerelease-bin
-pkgver=2.5.59.7
+pkgver=2.5.59.8
 _pkgtag=$pkgver
 _appimage=SuperSlicer-ubuntu_18.04-$_pkgtag.AppImage
 pkgrel=1
@@ -18,7 +18,7 @@ provides=("superslicer=$epoch:$pkgver")
 conflicts=('superslicer' 'superslicer-git' 'superslicer-prerelease')
 source=("https://github.com/supermerill/SuperSlicer/releases/download/$_pkgtag/$_appimage"
 )
-sha256sums=('f209ec6599575bf45859599e2215a2c792dbb52f089cf6a5bfdc59123ba1f119')
+sha256sums=('1041ef7707525cbbe7b4866c51f7a5b2403acb0a627cefe0541ae2bbbf07dc6f')
 noextract=("${_appimage}")
 
 
