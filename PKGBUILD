@@ -1,7 +1,7 @@
-# Maintainer: Jeffrey Zhang <zhang.lei.fly@gmail.com>
+# Maintainer: Jeffrey Zhang <zhang.lei.fly#gmail.com>
 
 pkgname=ansible-runner
-pkgver=2.2.0
+pkgver=2.3.5
 pkgrel=1
 pkgdesc="A tool and python library that helps when interfacing with Ansible directly"
 arch=("any")
@@ -12,9 +12,9 @@ depends=("python-psutil"
          "python-daemon"
          "python-yaml"
          "python-six")
-makedepends=('python-setuptools' 'python-pip')
-source=("https://files.pythonhosted.org/packages/f3/7b/b1e7e449959d53e37daeb454d0581ebf2aa3f3f23d51aaaa5c9835f7fefa/ansible-runner-${pkgver}.tar.gz")
-sha256sums=('6fafe0bcfdaa51b58bd3ae9c950a382549f4d9c194350ab135421dbbd0184d98')
+makedepends=('python-setuptools' 'python-pbr')
+source=("https://files.pythonhosted.org/packages/e8/c7/c5f3fb32de173ff821554ead3deeeb8ac79b2874fc716341771fc53580da/ansible-runner-${pkgver}.tar.gz")
+sha256sums=('cd9ddd5765870ea3c545b6cb47aaad5f04d9a30a628dd3fcdb4f367a28c22085')
 
 build() {
     cd ${pkgname}-${pkgver}
