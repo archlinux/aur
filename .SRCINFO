@@ -1,6 +1,6 @@
-pkgbase = gotosocial
-	pkgdesc = ActivityPub social network server written in Golang
-	pkgver = 0.13.0
+pkgbase = gotosocial-rc
+	pkgdesc = ActivityPub social network server written in Golang (release candidate)
+	pkgver = 0.13.3
 	pkgrel = 1
 	url = https://gotosocial.org
 	arch = x86_64
@@ -11,6 +11,9 @@ pkgbase = gotosocial
 	makedepends = nodejs
 	makedepends = go-swagger
 	depends = glibc
+	provides = gotosocial
+	conflicts = gotosocial
+	conflicts = gotosocial-git
 	options = !lto
 	backup = etc/gotosocial/config.yaml
 	backup = etc/gotosocial/template/404.tmpl
@@ -35,7 +38,7 @@ pkgbase = gotosocial
 	backup = etc/gotosocial/template/status.tmpl
 	backup = etc/gotosocial/template/tag.tmpl
 	backup = etc/gotosocial/template/thread.tmpl
-	source = gotosocial::git+https://github.com/superseriousbusiness/gotosocial#commit=f4fcffc8b56ef73c184ae17892b69181961c15c7
+	source = gotosocial::git+https://github.com/superseriousbusiness/gotosocial#commit=fb3e3ca10dc44cba841019bee1a8812e746133e9
 	source = sysusers.conf
 	source = tmpfiles.conf
 	source = use-fhs-directories.patch
@@ -48,4 +51,4 @@ pkgbase = gotosocial
 	b2sums = 4f65af952441c0f54bb32049a149675e207f8993678423d369c4095c57476464614ac720eccc64d7a93a81268ad7ca41cae75ca7211bd7b78f9035f6e5341f04
 	b2sums = 9edd4520fb99856feb82d01935588add7f805aa180f2ed0fe169cb26576bc2e1d2c1e6ab11604d977cec6a4ad8f1d5be1413e1a366de59b89c5b869136538f8c
 
-pkgname = gotosocial
+pkgname = gotosocial-rc
