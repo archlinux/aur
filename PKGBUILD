@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=kctrl
 pkgver=0.50.0
-pkgrel=2
+pkgrel=1
 pkgdesc='Continuous delivery and package management for Kubernetes.'
 url='https://carvel.dev/kapp-controller'
 arch=(any)

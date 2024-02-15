@@ -1,7 +1,7 @@
 pkgbase = kctrl
 	pkgdesc = Continuous delivery and package management for Kubernetes.
 	pkgver = 0.50.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://carvel.dev/kapp-controller
 	arch = any
 	license = apache-2.0
