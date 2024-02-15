@@ -1,0 +1,15 @@
+pkgbase = android-x86-64-xtrans
+	pkgdesc = X transport library (android)
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = any
+	license = custom
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org//releases/individual/lib/xtrans-1.5.0.tar.xz
+	sha512sums = e8091f11d4ad2b14e01de3eac56bdf2267ea26687ce66e3056374d0d02e049480c0b27c482f8828a0efd086f1e4c485108ca4dce3f83d66c1896effa3b38b228
+
+pkgname = android-x86-64-xtrans
