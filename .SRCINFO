@@ -1,6 +1,6 @@
 pkgbase = tanka-git
 	pkgdesc = Flexible, reusable and concise configuration for Kubernetes using Jsonnet
-	pkgver = v0.24.0.r4.gaa574ba
+	pkgver = v0.26.0.r44.g072ec44e
 	pkgrel = 1
 	url = https://tanka.dev
 	arch = i686
