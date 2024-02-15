@@ -16,21 +16,3 @@ pkgbase = waypaper-engine
 	md5sums = SKIP
 
 pkgname = waypaper-engine
-pkgbase = waypaper-engine
-	pkgdesc = A pleasant gui frontend for swww with batteries included!
-	pkgver = 1.2.8
-	pkgrel = 1
-	url = https://github.com/0bCdian/Waypaper-Engine
-	arch = x86_64
-	license = GLP
-	makedepends = npm
-	makedepends = git
-	depends = swww
-	depends = nodejs
-	depends = socat
-	depends = hicolor-icon-theme
-	provides = waypaper-engine
-	source = Waypaper-Engine-1.2.8.tar.gz::https://github.com/0bCdian/Waypaper-Engine/archive/refs/tags/v1.2.8.tar.gz
-	md5sums = SKIP
-
-pkgname = waypaper-engine
