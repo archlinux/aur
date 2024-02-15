@@ -1,7 +1,7 @@
 pkgbase = flightradar24
 	pkgdesc = Feeder software for Flightradar24.com (fr24feed)
 	pkgver = 1.0.46
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.flightradar24.com/share-your-data
 	install = flightradar24.install
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = flightradar24
 	license = custom
 	depends = bash
 	depends = dump1090
+	optdepends = dump978: for 978MHz UAT support
 	backup = etc/fr24feed.ini
 	source = fr24feed.service
 	source = flightradar24.sysusers

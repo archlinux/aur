@@ -5,7 +5,7 @@
 pkgname=flightradar24
 _pkgname=fr24feed
 pkgver=1.0.46
-pkgrel=2
+pkgrel=3
 _pkgver=1.0.46-2
 _pkgverarm=1.0.46-2
 pkgdesc='Feeder software for Flightradar24.com (fr24feed)'
@@ -13,6 +13,7 @@ arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url='https://www.flightradar24.com/share-your-data'
 license=('custom')
 depends=('bash' 'dump1090')
+optdepends=('dump978: for 978MHz UAT support')
 backup=(etc/fr24feed.ini)
 install=flightradar24.install
 source=('fr24feed.service'
@@ -41,7 +42,9 @@ prepare() {
 }
 
 package() {
-  install -Dm755 -t "$pkgdir/usr/bin" usr/bin/fr24feed usr/bin/fr24feed-status
+  install -Dm755 -t "$pkgdir/usr/bin" usr/bin/fr24feed
+  install -Dm755 -t "$pkgdir/usr/bin" usr/bin/fr24feed-status usr/bin/fr24uat-feed-status
+  install -Dm755 -t "$pkgdir/usr/bin" usr/bin/fr24feed-signup-adsb usr/bin/fr24feed-signup-uat
   install -Dm644 usr/share/fr24/licences/LICENSE.fr24feed.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 -t "$pkgdir/etc" etc/fr24feed.ini
 
