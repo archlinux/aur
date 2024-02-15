@@ -5,6 +5,7 @@ pkgbase = python-svg2tikz
 	url = http://xyz2tex.github.io/svg2tikz/
 	arch = any
 	license = custom:Other/Proprietary License
+	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python
