@@ -1,0 +1,15 @@
+pkgbase = hexxy-git
+	pkgdesc = A modern and beautiful alternative to xxd and hexdump.
+	pkgver = 17.bc0cb46
+	pkgrel = 1
+	url = https://github.com/sweetbbak/hexxy
+	arch = x86_64
+	arch = aarch64
+	license = custom:unknown
+	makedepends = git
+	makedepends = go
+	conflicts = hexxy
+	source = git+https://github.com/sweetbbak/hexxy.git
+	sha512sums = SKIP
+
+pkgname = hexxy-git
