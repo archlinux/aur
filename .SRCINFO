@@ -1,6 +1,6 @@
 pkgbase = r-bayesplot
 	pkgdesc = Plotting for Bayesian Models
-	pkgver = 1.11.0
+	pkgver = 1.11.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=bayesplot
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = r-bayesplot
 	optdepends = r-survival
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://cran.r-project.org/src/contrib/bayesplot_1.11.0.tar.gz
-	sha256sums = d660b3aa4c1f489374f9c033ffe59eed7850bbee153b21981da1e0f9ac0afe72
+	source = https://cran.r-project.org/src/contrib/bayesplot_1.11.1.tar.gz
+	sha256sums = 4f71e67391e0135acd3e890989b87025f3f8160242f532a8e1a0ed74ed0f3830
 
 pkgname = r-bayesplot
