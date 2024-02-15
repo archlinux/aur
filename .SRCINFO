@@ -1,0 +1,14 @@
+pkgbase = vscodium-git-wayland-hook
+	pkgdesc = Pacman hook to change vscodium-git to start with ozone-platform-hint=auto after install or upgrade.
+	pkgver = 1
+	pkgrel = 1
+	install = vscodium-git-wayland-hook.install
+	arch = any
+	license = MIT
+	depends = vscodium-git
+	source = vscodium-git-wayland.hook
+	source = vscodium-git-wayland
+	sha1sums = fefd5c8357c8067951a18647044a862973f90493
+	sha1sums = a974bd0c730ab33b285f1c594d7b7a86baec5430
+
+pkgname = vscodium-git-wayland-hook

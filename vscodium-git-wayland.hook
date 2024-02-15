@@ -1,0 +1,17 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = vscodium-git
+
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = vscodium-git-wayland-hook
+
+
+[Action]
+Description = Defaulting to Wayland support for vscodium-git
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/vscodium-git-wayland

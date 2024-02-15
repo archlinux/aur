@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo "Running script"
+if [ $(grep -c "ozone-platform-hint" /usr/share/vscodium-git/bin/codium) -eq 0 ]; then
+	\sed -i -E "s/(^ELECTRON.*) \"/\1 --ozone-platform-hint=auto \"/" /usr/share/vscodium-git/bin/codium
+else
+	echo "Wayland already applied"
+fi
