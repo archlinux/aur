@@ -3,12 +3,12 @@
 # -*- sh -*-
 
 pkgname=dasel
-pkgver=2.5.0
-pkgrel=4
+pkgver=2.6.0
+pkgrel=1
 pkgdesc='Select, put and delete data from JSON, TOML, YAML, XML and CSV files with a single command-line tool'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/TomWright/dasel'
-license=('MIT')
+license=('MIT')  # SPDX-License-Identifier: MIT
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
@@ -58,24 +58,34 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
 
-  install -Dm0755 dasel        "$pkgdir/usr/bin/dasel"
-  install -Dm0644 LICENSE      "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -vDm0755 dasel "$pkgdir/usr/bin/dasel"
+  install -vDm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   for _doc in CHANGELOG CODE_OF_CONDUCT README; do
-    install -Dm0644 "$_doc.md" "$pkgdir/usr/share/doc/$pkgname/$_doc.md"
+    install -vDm0644 "$_doc.md" "$pkgdir/usr/share/doc/$pkgname/$_doc.md"
   done
 
   "$pkgdir/usr/bin/dasel" man
 
-  install -dm0755     "$pkgdir/usr/share/man/man1"
-  install -m 0644 *.1 "$pkgdir/usr/share/man/man1/"
+  install -vDm0644 *.1 -t "$pkgdir/usr/share/man/man1/"
+
+  for _shell in bash fish zsh; do
+    "$pkgdir/usr/bin/dasel" completion "$_shell" > "completion.$_shell"
+  done
+
+  install -vDm0644 completion.bash \
+    "$pkgdir/usr/share/bash-completion/completions/dasel"
+  install -vDm0644 completion.fish \
+    "$pkgdir/usr/share/fish/vendor_completions.d/dasel.fish"
+  install -vDm0644 completion.zsh \
+    "$pkgdir/usr/share/zsh/site-functions/_dasel"
 }
 
 sha256sums=(
-  '0e4ec875912a3ede0b84b381b14b64293c218fb9cf1472dd085bcccd1ab097a1'
+  '1428a0ddbe93175215f25d4dea71fb96f654fc60723b276c296ea82eca26b014'
 )
 b2sums=(
-  'd3e48b200e6d595bef6fb6c66da8bc7ba9bbfd99fef28cecd2b4270537dd9c9827a6ce960abfcad1c2229abf6ad965a91da4fe58b9ce0874a2c18064db569bdc'
+  '7f60276adf6e763b29dfbdd3bd1f9ed253386596cf0c875df680a76a7d81aba75f98a1812aac8566dd399750e592d975c931d76b1f2923c8e6a6c41da8186e93'
 )
 
 # eof
