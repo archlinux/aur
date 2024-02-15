@@ -1,8 +1,8 @@
 pkgbase = python-langchain-community
 	pkgdesc = Community contributed LangChain integrations.
 	pkgver = 0.0.20
-	pkgrel = 1
-	url = https://github.com/langchain-ai/langchain
+	pkgrel = 2
+	url = https://pypi.org/project/langchain-community
 	arch = any
 	license = MIT
 	makedepends = python-build
@@ -60,7 +60,7 @@ pkgbase = python-langchain-community
 	depends = python-urllib3
 	depends = python-psutil
 	source = https://files.pythonhosted.org/packages/source/l/langchain-community/langchain_community-0.0.20.tar.gz
-	source = https://raw.githubusercontent.com/langchain-ai/langchain/bb7325114629604b00167f00d49e704a7d477d8d/LICENSE
+	source = https://raw.githubusercontent.com/langchain-ai/langchain/v0.1.7/LICENSE
 	sha256sums = c56c48bc77d24e1fc399a9ee9a637d96e3b2ff952e3a080b5a41820d9d00fb3c
 	sha256sums = 4ec67e4ca6e6721dba849b2ca82261597c86a61ee214bbf21416006b7b2d0478
 
