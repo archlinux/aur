@@ -3,7 +3,7 @@
 
 pkgname=dosbox-staging
 pkgver=0.81.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="DOS/x86 emulator focusing on ease of use. Based on DOSBox"
 arch=('any')
@@ -26,7 +26,7 @@ build() {
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
 
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --destdir "$pkgdir" --skip-subprojects libpng
 
   install -Dm 644 "docs/README.video" "$pkgdir/usr/share/doc/${pkgname}/video.txt"
   install -Dm 644 "README" "$pkgdir/usr/share/doc/${pkgname}/manual.txt"
