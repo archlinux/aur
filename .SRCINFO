@@ -1,6 +1,6 @@
 pkgbase = duckdb
 	pkgdesc = An in-process SQL OLAP database management system
-	pkgver = 0.9.2
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://duckdb.org
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = duckdb
 	makedepends = python-setuptools-scm
 	depends = gcc-libs
 	depends = openssl
-	source = duckdb-0.9.2.tar.gz::https://github.com/duckdb/duckdb/archive/refs/tags/v0.9.2.tar.gz
-	b2sums = 201273e168607d01c8475b8b524bb1cd898ea59333c4f7fee73686915632153fc6a5673ec00a0cca87f1121e1dd99ebf81dca1e6a4cb8c2d4a20807b74782f6c
+	source = duckdb-0.10.0.tar.gz::https://github.com/duckdb/duckdb/archive/refs/tags/v0.10.0.tar.gz
+	b2sums = 49d3f34a09d2fc60b1a65ff546cfeca7a03941e1381f8365c082a56133d5a728c7b0e0f23f9688147ec297e44bc9c56ef584f91b9bd4edf3b8b5f946340a77c5
 
 pkgname = duckdb
 	conflicts = duckdb-git
