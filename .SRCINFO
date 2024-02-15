@@ -1,7 +1,7 @@
 pkgbase = mozillavpn
 	pkgdesc = Fast, secure, and easy to use VPN from the makers of Firefox
-	pkgver = 2.19.0
-	pkgrel = 5
+	pkgver = 2.20.0
+	pkgrel = 1
 	url = https://vpn.mozilla.org
 	install = mozillavpn.install
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = mozillavpn
 	optdepends = qt6-wayland: for Wayland support
 	optdepends = resolvconf: for resolv.conf management
 	options = !lto
-	source = https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/2.19.0-mantic1/mozillavpn_2.19.0.orig.tar.gz
-	sha256sums = 36754d1f0e2f3ff5b08cecf691b7e158981356dc53b55152d93925f1b4d87e03
+	source = https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/2.20.0-mantic1/mozillavpn_2.20.0.orig.tar.gz
+	sha256sums = 86d28df16f40001d24cdf5c2b913c13a09248c8ef405c0981db34c039f95f197
 
 pkgname = mozillavpn
