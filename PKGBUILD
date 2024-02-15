@@ -1,14 +1,14 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 
 pkgname=gameoftrees
-pkgver=0.95
+pkgver=0.96
 pkgrel=1
 pkgdesc='A version control system which prioritizes ease of use and simplicity over flexibility'
 arch=(x86_64)
 url="https://gameoftrees.org"
-license=(custom:ISC)
+license=(ISC)
 conflicts=(gameoftrees-git got got-git got-bin)
-depends=(ncurses util-linux-libs libbsd libevent)
+depends=(ncurses util-linux-libs libbsd libevent zlib)
 makedepends=(pkgconf git)
 source=("$pkgname::git+ssh://anonymous@got.gameoftrees.org/got-portable.git#tag=$pkgver")
 b2sums=(SKIP)
