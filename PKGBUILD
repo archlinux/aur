@@ -1,5 +1,5 @@
 # Maintainer: vmalloc vmalloc@olanfa.de
-pkgname=TinyLock
+pkgname=tinylock
 pkgver=1.20
 pkgrel=1
 pkgdesc="provides a lock function for process locking"

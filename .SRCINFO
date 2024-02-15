@@ -1,4 +1,4 @@
-pkgbase = TinyLock
+pkgbase = tinylock
 	pkgdesc = provides a lock function for process locking
 	pkgver = 1.20
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = TinyLock
 	source = https://jeremy.kister.net/code/File-TinyLock-1.20.tgz
 	sha256sums = b2f61184e51b9a51b7e129fbda289ed49afb7289df8db788318503898782d27e
 
-pkgname = TinyLock
+pkgname = tinylock
