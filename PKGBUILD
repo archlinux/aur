@@ -1,13 +1,13 @@
 # Maintainer: Wolfgang Gehrhardt <gehwolf at freenet dot de>
 
 pkgname=elos
-pkgver=0.53.11
+pkgver=0.54.3
 pkgrel=1
 pkgdesc="An event logging system"
 arch=('x86_64')
 url="https://github.com/Elektrobit/elos"
 license=('MIT')
-depends=('glibc' 'safu' 'samconf' 'libmnl' 'sqlite' 'json-c' 'log4c' 'libesmtp')
+depends=('glibc' 'safu' 'samconf' 'libmnl' 'sqlite' 'json-c')
 makedepends=('cmake' 'jq')
 install='elos.install'
 
@@ -17,10 +17,13 @@ backup=('etc/elos/elosd.json')
 build() {
   cd "$pkgname-$pkgname-$pkgver"
   cmake -B build \
-	-DCMAKE_BUILD_TYPE=Release \
-	-DUNIT_TESTS=off \
-	-DINSTALL_UNIT_TESTS=off \
 	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DELOS_BUILD_DEFAULTS=off \
+	-DINSTALL_UNIT_TESTS=off \
+	-DELOS_DAEMON=on \
+	-DELOS_TOOLS=on \
+	-DELOS_PLUGINS=on \
 	.
   make -C build
 }
@@ -62,4 +65,4 @@ package() {
   _editConfig '.root.elos.Scanner.SyslogScanner.SyslogPath = "/run/elos/dev-log"'
 
 }
-md5sums=('33b0f457b956c24a58fea3ba0bfde392')
+md5sums=('fd31a0a931c746d960f1432e32a104e2')
