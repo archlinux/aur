@@ -7,7 +7,7 @@
 pkgname=ffmpeg-ffplayout
 pkgver=6.1
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video (for ffplayout)'
 arch=(x86_64)
 url=https://ffmpeg.org/
@@ -98,7 +98,6 @@ makedepends=(
 )
 
 provides=('ffmpeg')
-conflicts=('ffmpeg')
 
 optdepends=(
   'avisynthplus: AviSynthPlus support'
