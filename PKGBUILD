@@ -24,7 +24,7 @@ _install_path="/opt/$_pkgname"
 
 prepare() {
     cd "${srcdir}"
-    tar -xf data.tar.xz
+    tar --zstd -xf data.tar.zst
     sed -i '/Version/d' "${srcdir}/usr/share/applications/hiddify.desktop"
 }
 
