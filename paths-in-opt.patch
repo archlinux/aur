@@ -1,16 +1,3 @@
-diff --git a/hydrus/client/gui/ClientGUI.py b/hydrus/client/gui/ClientGUI.py
-index 62a61e1f..34b2506a 100644
---- a/hydrus/client/gui/ClientGUI.py
-+++ b/hydrus/client/gui/ClientGUI.py
-@@ -6213,7 +6213,7 @@ class FrameGUI( CAC.ApplicationCommandProcessorMixin, ClientGUITopLevelWindows.M
-                                 python_executable = python_executable.replace( 'pythonw', 'python' )
-                                 
-                             
--                            server_script_path = os.path.join( HC.BASE_DIR, 'hydrus_server.py' )
-+                            server_script_path = '/opt/hydrus/hydrus_server.py'
-                             
-                             cmd = [ python_executable, server_script_path, db_param ]
-                             
 diff --git a/hydrus/core/HydrusConstants.py b/hydrus/core/HydrusConstants.py
 index d59bf1aa..8cbf8fee 100644
 --- a/hydrus/core/HydrusConstants.py
