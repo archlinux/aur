@@ -3,14 +3,13 @@
 _pkgname=CancerSubtypes
 _pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
-pkgrel=1
-pkgdesc='Cancer subtypes identification, validation and visualization based on multiple genomic data sets'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Cancer subtypes identification, validation and visualization based on multiple genomic data sets"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-consensusclusterplus
   r-impute
   r-limma
@@ -23,15 +22,16 @@ optdepends=(
   r-rmarkdown
   r-rtcga.mrna
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b9ce6665cbf7a813de63009551fa34f5196c8e89e170701029057237c83a9c1a')
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('60441ccfd99126a3727c0621d087d526')
+b2sums=('20e321bbad6b017f1a9916df6844d37b5cf500173fe38e2cccfa136728f913e966271933d2c646e666fbb0de3d3f4a7d9c7025a22bfdf8812594c99bfe3ea702')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
