@@ -1,11 +1,8 @@
 post_install() {
 			
 	systemctl unmask ffpapi.service >/dev/null || true
-	#systemctl enable ffpapi.service >/dev/null || true
 	systemctl unmask ffplayout.service >/dev/null || true
-	#systemctl enable ffplayout.service >/dev/null || true
 	systemctl --system daemon-reload >/dev/null || true
-	#systemctl restart ffpapi.service ffplayout.service >/dev/null || true
 
 	sysUser="ffpu"
 

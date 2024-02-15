@@ -23,12 +23,16 @@ install='ffplayout.install'
 source=(
   "ffplayout-${pkgver}::git+https://github.com/ffplayout/ffplayout.git#tag=v${pkgver}"
   'ffplayout.install'
+  'disable_embed_frontend.patch'
 )
 sha256sums=('SKIP'
-            'SKIP')
+            '91fa57deb966dd5f3f611d0a8213934f200487c64153167a1d9d6f7c9b1b85e8'
+            'cdb28811b27935a97421497877691fefac208f582be6d49445824e4d0ac6d976')
 
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
+
+  patch --forward --strip=1 --input="${srcdir}/disable_embed_frontend.patch"
 
   sed -i 's/default = \["embed_frontend"\]/default = []/' ffplayout-api/Cargo.toml
 
@@ -55,7 +59,7 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   ./scripts/man_create.sh
 
-  cargo build --release --target=x86_64-unknown-linux-musl -p ffplayout --manifest-path=ffplayout-engine/Cargo.toml
+  cargo build --release --target=x86_64-unknown-linux-musl
 }
 
 package() {
@@ -63,28 +67,17 @@ package() {
 
     install -Dm755 target/x86_64-unknown-linux-musl/release/ffplayout "${pkgdir}/usr/bin/ffplayout"
     install -Dm755 target/x86_64-unknown-linux-musl/release/ffpapi "${pkgdir}/usr/bin/ffpapi"
-
     install -Dm644 assets/ffplayout.yml "${pkgdir}/etc/ffplayout/ffplayout.yml"
-
     install -Dm644 assets/ffpapi.service "${pkgdir}/usr/lib/systemd/system/ffpapi.service"
     install -Dm644 assets/ffplayout.service "${pkgdir}/usr/lib/systemd/system/ffplayout.service"
     install -Dm644 assets/ffplayout@.service "${pkgdir}/usr/lib/systemd/system/ffplayout@.service"
-
     install -Dm644 assets/11-ffplayout "${pkgdir}/etc/sudoers.d/11-ffplayout"
-
     install -Dm644 assets/ffpapi.1.gz "${pkgdir}/usr/share/man/man1/ffpapi.1.gz"
     install -Dm644 assets/ffplayout.1.gz "${pkgdir}/usr/share/man/man1/ffplayout.1.gz"
-
     install -Dm644 assets/logo.png "${pkgdir}/usr/share/ffplayout/logo.png"
-
     install -Dm644 assets/ffplayout.yml "${pkgdir}/usr/share/ffplayout/ffplayout.yml.orig"
-
     install -Dm644 assets/ffplayout.conf "${pkgdir}/usr/share/ffplayout/ffplayout.conf.example"
-
     install -Dm644 README.md "${pkgdir}/usr/share/doc/ffplayout/README"
-
     install -Dm644 LICENSE "${pkgdir}/usr/share/doc/ffplayout/copyright"
-
     cp -a public "${pkgdir}/usr/share/ffplayout/"
-    # cp -a public "${pkgdir}/usr/share/${pkgname}/public"
 }
