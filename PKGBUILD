@@ -1,6 +1,6 @@
 pkgname=ffplayout-unstable-git
 pkgver=r1893.7920c35
-pkgrel=1
+pkgrel=0
 pkgdesc="24/7 playout based on rust and ffmpeg"
 arch=('x86_64')
 url="https://github.com/ffplayout/ffplayout"
@@ -44,6 +44,7 @@ prepare() {
   export CARGO_HOME="$srcdir/rust-home"
   export RUSTUP_HOME="$srcdir/rust-home"
   export RUSTUP_TOOLCHAIN=stable
+  rustup default stable
   rustup target add x86_64-unknown-linux-musl
 
   git submodule update --init
@@ -57,6 +58,7 @@ build() {
   cd "${srcdir}/${pkgname}"
   export CARGO_HOME="$srcdir/rust-home"
   export RUSTUP_HOME="$srcdir/rust-home"
+  export RUSTUP_TOOLCHAIN=stable
 
   # Frontend build steps
   cd ffplayout-frontend
