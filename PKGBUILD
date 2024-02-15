@@ -2,20 +2,20 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=argc
-pkgver=1.14.0
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="An elegant command-line options, arguments and sub-commands parser for bash"
 arch=('x86_64')
 url="https://github.com/sigoden/argc"
-license=('MIT' 'Apache')
+license=('MIT' 'Apache-2.0')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('5486895f11f2dd32157257399205dfde220bae06ad81fb960f94eaf57140ae62fc844673a480e1e8a4f2fb9dbf22ab5a4d0f9e7f18d7ae0125396b0d51db7883')
+sha512sums=('5d7170d590dc7e75af864d3936aee62da945485103251903df9a76eb70384ef17bb21dd4b4a9c8d2fae17e6081c78b738f69e305b3b17b1bab4bc33beeabb78a')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
   mkdir -p completions
 }
 
