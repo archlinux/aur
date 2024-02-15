@@ -1,4 +1,5 @@
-# Maintainer: BlackEagle
+# Maintainer: Darius Niminenn <root@dnim.dev>
+# Contributor: BlackEagle
 # Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: ruario
 # Contributor: RobertMe
