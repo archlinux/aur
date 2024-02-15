@@ -1,6 +1,6 @@
 pkgbase = xmpp-dns-git
-	pkgdesc = Command-line tool to check XMPP SRV records (built from latest git commit)
-	pkgver = 0.3.10.r1.geacabf3
+	pkgdesc = Command-line tool to check XMPP SRV records (built from latest commit)
+	pkgver = 0.3.10.r2.g6d91558
 	pkgrel = 1
 	url = https://salsa.debian.org/mdosch/xmpp-dns
 	arch = aarch64
