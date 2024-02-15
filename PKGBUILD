@@ -1,10 +1,10 @@
 # Maintainer: Saurabh Kumar Sharma <imesskayesss@protonmail.com>
 
 pkgname=lolminer
-notagver=1.83
+notagver=1.84
 pkgtag=
 pkgver=${notagver}${pkgtag}
-pkgrel=2
+pkgrel=1
 pkgdesc="Unofficial installer for lolMiner"
 arch=("x86_64")
 url='https://github.com/Lolliedieb/lolMiner-releases'
