@@ -1,7 +1,7 @@
 pkgbase = vineflower-git
 	pkgdesc = Modern Java & JVM language decompiler focused on output quality & readability
 	pkgver = 1.10.0.r1638.59d30884
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vineflower.org
 	arch = any
 	license = Apache-2.0
