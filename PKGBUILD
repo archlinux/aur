@@ -1,9 +1,10 @@
 # Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: yinflying (https://aur.archlinux.org/account/yinflying)
 
 pkgname=bnc-bin
 _debianver=12
 pkgver=2.13.0
-pkgrel=3
+pkgrel=3.01
 pkgdesc="The BKG Ntrip Client(BNC) is an multi-stream client designed for real-time GNSS applications."
 arch=('x86_64')
 url="https://igs.bkg.bund.de/root_ftp/NTRIP/documentation/BNC_BNS_RTNET_Concept.ppt"
