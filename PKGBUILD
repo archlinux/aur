@@ -10,7 +10,7 @@ _proj="hip"
 _pkg="grub"
 _pkgname="arch-${_pkg}"
 pkgname="${_pkgname}-git"
-pkgver=0.1.1.1.r3.g263f802
+pkgver=0.1.1.1.r32.g7317b3b
 pkgrel=1
 _pkgdesc=(
   'Produces a standalone GRUB binary'
@@ -46,6 +46,7 @@ checkdepends=(
 )
 optdepends=(
   'luks-tools: Format LUKS volume in a GRUB compatible format'  
+  'shfmt: Indent mkgrubcfg output'  
 )
 provides=(
   "${_pkgname}=${pkgver}"
