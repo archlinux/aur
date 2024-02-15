@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-epoch-git
-pkgver=r115.cfadb5d
+pkgver=r117.8dec6bd
 pkgrel=1
 pkgdesc="Cosmic desktop environment from System76's Pop!_OS written in Rust utilizing Iced inspired by GNOME"
 arch=('x86_64' 'aarch64')
@@ -35,6 +35,7 @@ makedepends=(
   'intltool'
   'just'
   'mold'
+  'nasm'
 )
 checkdepends=('desktop-file-utils' 'appstream-glib')
 optdepends=('flatpak: Flatpak support for Cosmic Store')
