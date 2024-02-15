@@ -9,13 +9,13 @@
 # Contributor: Jamesjon <universales@protonmail.com>
 
 pkgname=peazip-qt-bin
-pkgver=9.7.0
-pkgrel=2
+pkgver=9.7.1
+pkgrel=1
 pkgdesc='PeaZip file manager and archiver (Qt5, binary release)'
 url='https://github.com/peazip/PeaZip'
 license=('LGPL3')
 arch=('x86_64')
-depends=('libx11' 'qt5pas')
+depends=('brotli' 'hicolor-icon-theme' 'libx11' 'p7zip' 'qt5pas' 'zstd')
 options=('!emptydirs')
 optdepends=('arc: Arc file archiver and compressor'
             'paq8o: PAQ8 series of archivers, resurrected by new maintainers'
@@ -26,20 +26,25 @@ optdepends=('arc: Arc file archiver and compressor'
 provides=('peazip')
 conflicts=('peazip')
 source=("$url/releases/download/$pkgver/peazip-$pkgver.LINUX.Qt5-1.x86_64.rpm")
-sha256sums=('9381794c6904320ba1fbb3b8f0027992d894220afb9356a40ee144461632bb8e')
+sha256sums=('5a08070febfcc5c48ac5ee00d3db1f5e60b67b1033ddaaf57a93c8924b1fad53')
 
 prepare() {
-  rm -r usr/share/peazip/batch/{Windows,'macOS service menus',bat}
-  rm -r usr/share/peazip/batch/freedesktop_integration/KDE-servicemenus/{KDE3*,KDE4*}
-  rm usr/share/peazip/icons/peazip_seven.icl
-  rm -r usr/share/peazip/lang-wincontext
-  rm usr/share/peazip/readme/readme_{Windows,macOS}.txt
-  rm usr/lib/peazip/res/bin/7z/7z.sfx
-  chmod -x usr/lib/peazip/res/bin/7z/Codecs/*.so
+  cd usr
+  rm -r share/peazip/batch/{Windows,'macOS service menus',bat}
+  rm -r share/peazip/batch/freedesktop_integration/KDE-servicemenus/{KDE3*,KDE4*}
+  rm share/peazip/icons/peazip_seven.icl
+  rm -r share/peazip/lang-wincontext
+  rm share/peazip/readme/readme_{Windows,macOS}.txt
+  cd lib/peazip/res/bin
+  ln -sf /usr/bin/7z 7z/7z
+  ln -sf /usr/bin/brotli brotli/brotli
+  ln -sf /usr/bin/zstd zstd/zstd
+  rm 7z/7z.sfx
+  chmod -x 7z/Codecs/*.so
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/"{bin,lib/peazip,share/{doc/peazip,peazip,licenses/peazip}}
+  mkdir -p "$pkgdir/usr/"{bin,lib/peazip,share/{doc/peazip,peazip,licenses/peazip,icons/hicolor/256x256/apps}}
   cd usr
   mv bin/peazip "$pkgdir/usr/bin"
   mv lib/peazip/{peazip,pea,res} "$pkgdir/usr/lib/peazip"
@@ -49,6 +54,7 @@ package() {
   mv peazip/readme/readme_Linux.txt "$pkgdir/usr/share/doc/peazip/readme.txt"
   rm -r "peazip/readme"
   mv peazip "$pkgdir/usr/share"
-  mv pixmaps applications "$pkgdir/usr/share"
+  mv applications "$pkgdir/usr/share"
+  mv pixmaps/* "$pkgdir/usr/share/icons/hicolor/256x256/apps"
   ln -s /usr/lib/peazip/pea "$pkgdir/usr/bin"
 }
