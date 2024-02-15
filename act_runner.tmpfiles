@@ -1,0 +1,2 @@
+d /var/lib/act_runner 0750 act_runner act_runner
+d /etc/act_runner 0755 act_runner act_runner

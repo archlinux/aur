@@ -1,12 +1,15 @@
 # Example configuration file, it's safe to copy this as the default config file without any modification.
 
+# You don't have to copy this file to your instance,
+# just run `./act_runner generate-config > config.yaml` to generate a config file.
+
 log:
   # The level of logging, can be trace, debug, info, warn, error, fatal
   level: info
 
 runner:
   # Where to store the registration result.
-  file: /etc/act_runner/.runner
+  file: .runner
   # Execute how many tasks concurrently at the same time.
   capacity: 1
   # Extra environment variables to run jobs.
@@ -26,6 +29,11 @@ runner:
   fetch_timeout: 5s
   # The interval for fetching the job from the Gitea instance.
   fetch_interval: 2s
+  # The labels of a runner are used to determine which jobs the runner can run, and how to run them.
+  # Like: ["macos-arm64:host", "ubuntu-latest:docker://node:16-bullseye", "ubuntu-22.04:docker://node:16-bullseye"]
+  # If it's empty when registering, it will ask for inputting labels.
+  # If it's empty when execute `deamon`, will use labels in `.runner` file.
+  labels: []
 
 cache:
   # Enable cache server to use actions/cache.
@@ -40,14 +48,42 @@ cache:
   # The port of the cache server.
   # 0 means to use a random available port.
   port: 0
+  # The external cache server URL. Valid only when enable is true.
+  # If it's specified, act_runner will use this URL as the ACTIONS_CACHE_URL rather than start a server by itself.
+  # The URL should generally end with "/".
+  external_server: ""
 
 container:
-  # Which network to use for the job containers. Could be bridge, host, none, or the name of a custom network.
-  network: bridge
+  # Specifies the network to which the container will connect.
+  # Could be host, bridge or the name of a custom network.
+  # If it's empty, act_runner will create a network automatically.
+  network: ""
   # Whether to use privileged mode or not when launching task containers (privileged mode is required for Docker-in-Docker).
   privileged: false
   # And other options to be used when the container is started (eg, --add-host=my.gitea.url:host-gateway).
   options:
   # The parent directory of a job's working directory.
   # If it's empty, /workspace will be used.
+  workdir_parent:
+  # Volumes (including bind mounts) can be mounted to containers. Glob syntax is supported, see https://github.com/gobwas/glob
+  # You can specify multiple volumes. If the sequence is empty, no volumes can be mounted.
+  # For example, if you only allow containers to mount the `data` volume and all the json files in `/src`, you should change the config to:
+  # valid_volumes:
+  #   - data
+  #   - /src/*.json
+  # If you want to allow any volume, please use the following configuration:
+  # valid_volumes:
+  #   - '**'
+  valid_volumes: []
+  # overrides the docker client host with the specified one.
+  # If it's empty, act_runner will find an available docker host automatically.
+  # If it's "-", act_runner will find an available docker host automatically, but the docker host won't be mounted to the job containers and service containers.
+  # If it's not empty or "-", the specified docker host will be used. An error will be returned if it doesn't work.
+  docker_host: ""
+  # Pull docker image(s) even if already present
+  force_pull: false
+
+host:
+  # The parent directory of a job's working directory.
+  # If it's empty, $HOME/.cache/act/ will be used.
   workdir_parent:

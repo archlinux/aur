@@ -1,13 +1,17 @@
 [Unit]
 Description=Act Runner
 After=network.target
+After=docker.service
 
 [Service]
+ExecStart=/usr/bin/act_runner daemon --config /etc/act_runner/act_runner.yaml
+ExecReload=/bin/kill -s HUP $MAINPID
+WorkingDirectory=/var/lib/act_runner
 Type=exec
-Restart=on-failure
-RestartSec=30
-ExecStart=/usr/bin/act_runner -c /etc/act_runner/act_runner.yaml daemon
-PrivateTmp=yes
+Restart=always
+RestartSec=10
+User=act_runner
+Environment="HOME=/var/lib/act_runner"
 
 [Install]
 WantedBy=multi-user.target
