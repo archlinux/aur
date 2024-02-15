@@ -1,0 +1,17 @@
+pkgbase = android-armv7a-eabi-libxdmcp
+	pkgdesc = X11 Display Manager Control Protocol library (android)
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = any
+	license = custom
+	makedepends = android-armv7a-eabi-xorg-util-macros
+	depends = android-armv7a-eabi-xorgproto
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXdmcp-1.1.4.tar.xz
+	sha512sums = 83b384d43bfb034c395f83f97d1c6e73aa3d5faa8f8756b08e697c0b9c3c87189651b51e8213fbd1f5f9cbc2d8136cbf143627481744345d78cfe0ff2ad074a9
+
+pkgname = android-armv7a-eabi-libxdmcp
