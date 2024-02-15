@@ -1,26 +1,25 @@
 #Maintainer: Popolon <popolon @t popolon d.t org>
 
-pkgbase='python-osmpythontools'
-pkgname=('python-osmpythontools')
+pkgname='python-osmpythontools'
 _module='OSMPythonTools'
-pkgver='0.3.6'
-pkgrel=2
+pkgver='0.3.5'
+pkgrel=3
 pkgdesc="A library to access OpenStreetMap related services"
 url="https://github.com/mocnik-science/osm-python-tools"
 depends=('python' 'python-geojson' 'python-ujson')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 license=('unknown')
-arch=('any')
+arch=('i386' 'i686' 'x86_64' 'riscv32' 'riscv64' 'armv7h' 'aarch64')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/${_module/-/_}-$pkgver.tar.gz")
 sha256sums=('13ff721f760fdad5dd78b4d1461d286b78bba96ee151a7301ee8c11a0c258be9')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
