@@ -1,6 +1,6 @@
 pkgbase = grantleetheme5
 	pkgdesc = Library for Grantlee theming support
-	pkgver = 23.08.4
+	pkgver = 23.08.5
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = grantleetheme5
 	depends = grantlee
 	depends = knewstuff5
 	conflicts = grantleetheme<24
-	source = https://download.kde.org/stable/release-service/23.08.4/src/grantleetheme-23.08.4.tar.xz
-	source = https://download.kde.org/stable/release-service/23.08.4/src/grantleetheme-23.08.4.tar.xz.sig
+	source = https://download.kde.org/stable/release-service/23.08.5/src/grantleetheme-23.08.5.tar.xz
+	source = https://download.kde.org/stable/release-service/23.08.5/src/grantleetheme-23.08.5.tar.xz.sig
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
-	sha256sums = d81c9454d86f568218f852dbe31e67d0e547ea6d3ead5b1fe5c7267f20a5c32d
+	sha256sums = 686381b3a0fb0d28e415f9fc9a66633d3c17e75fc2696bf486491bdb3ff242f5
 	sha256sums = SKIP
 
 pkgname = grantleetheme5

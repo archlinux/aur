@@ -2,7 +2,7 @@
 
 _name=grantleetheme
 pkgname=${_name}5
-pkgver=23.08.4
+pkgver=23.08.5
 pkgrel=1
 pkgdesc='Library for Grantlee theming support'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(grantlee knewstuff5)
 makedepends=(extra-cmake-modules)
 conflicts=('grantleetheme<24')
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_name-$pkgver.tar.xz{,.sig})
-sha256sums=('d81c9454d86f568218f852dbe31e67d0e547ea6d3ead5b1fe5c7267f20a5c32d'
+sha256sums=('686381b3a0fb0d28e415f9fc9a66633d3c17e75fc2696bf486491bdb3ff242f5'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
