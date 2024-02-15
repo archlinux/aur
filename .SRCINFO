@@ -1,18 +1,22 @@
 pkgbase = bnc-bin
 	pkgdesc = The BKG Ntrip Client(BNC) is an multi-stream client designed for real-time GNSS applications.
-	pkgver = 2.12.6
+	pkgver = 2.13.0
 	pkgrel = 1
 	url = http://www.rtklib.com/
 	arch = x86_64
 	groups = GNSS
-	license = GPL
-	provides = bnc
-	source = https://igs.bkg.bund.de/root_ftp/NTRIP/software/bnc-2.12.6-debian8-64bit-static.zip
-	source = https://igs.bkg.bund.de/img/ntrip-logo.png
+	license = GPL-3.0-or-later
+	depends = gcc-libs
+	depends = glibc
+	depends = qt5-base
+	depends = qt5-svg
+	provides = bnc=2.13.0
+	conflicts = bnc
+	source = https://igs.bkg.bund.de/root_ftp/NTRIP/software/BNC/bnc-2.13.0-debian12.zip
+	source = ntrip-logo.png::https://software.rtcm-ntrip.org/ntripLogo.png
 	source = bnc.desktop
-	md5sums = 76f1ef2298ebbe11432575fa29d2e6f1
-	md5sums = cec39d8a485b402bccc2955f281db92d
-	md5sums = b14d15a36f293e8f64fe73b9618f7e69
+	sha256sums = dc920787d64bc0ea4af45cce164d7cad4b7262692076af5af3319887d54523da
+	sha256sums = 97a17bead249ff7186992ff9518ce9a30df1ecaf8a7ba075adf783b836beee10
+	sha256sums = 1fe01654d266fce5cd00b48be12cbd5712652e1b1d3830f7bb5d3493657d0605
 
 pkgname = bnc-bin
-
