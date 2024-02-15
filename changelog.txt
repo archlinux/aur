@@ -1,4 +1,7 @@
-* Sun Feb 11 2023 Yvaniak <yvaniak11 at gmail dot com> - 9.7.0-1
+* Fri Feb 15 2024 Yvaniak <yvaniak11 at gmail dot com> - 9.7.1-1
+  9.7.1 release is a bug fix update over the previous version.
+
+* Sun Feb 11 2024 Yvaniak <yvaniak11 at gmail dot com> - 9.7.0-1
   PeaZip 9.7.0 release is primarily meant to update app's foundations: sources are now
   built with Lazarus 3.0, Windows dark mode is now fully supported, and a native Linux
   aarch64 version is now available. The scripting generation engine is improved, and
