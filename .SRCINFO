@@ -1,0 +1,24 @@
+pkgbase = lightlyshaders
+	pkgdesc = Rounded window corners and outline effect for KWin.
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/a-parhom/lightlyshaders
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = base-devel
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	makedepends = ninja
+	depends = kio5
+	depends = knotifications5
+	depends = kinit
+	depends = kwin
+	depends = kcrash5
+	depends = kglobalaccel5
+	depends = qt5-x11extras
+	provides = lightlyshaders-qt5=2.2.1
+	conflicts = lightlyshaders-qt5=2.2.1
+	source = lightlyshaders::git+https://github.com/a-parhom/lightlyshaders.git#tag=v2.2.1
+	sha256sums = SKIP
+
+pkgname = lightlyshaders
