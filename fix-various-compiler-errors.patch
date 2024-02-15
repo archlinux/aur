@@ -1,0 +1,73 @@
+diff -aur ManaPlus-2.1.3.17.orig/src/net/ea/chatrecv.h ManaPlus-2.1.3.17/src/net/ea/chatrecv.h
+--- ManaPlus-2.1.3.17.orig/src/net/ea/chatrecv.h	2021-03-17 18:45:35.000000000 +0100
++++ ManaPlus-2.1.3.17/src/net/ea/chatrecv.h	2024-02-14 23:24:54.580994804 +0100
+@@ -27,6 +27,8 @@
+ #if defined(__GXX_EXPERIMENTAL_CXX0X__)
+ #if defined(__APPLE__)
+ #include <tr1/cstdint>
++#else  // defined(__APPLE__)
++#include <cstdint>
+ #endif  // defined(__APPLE__)
+ #else  // defined(__GXX_EXPERIMENTAL_CXX0X__)
+ #include <stdint.h>
+diff -aur ManaPlus-2.1.3.17.orig/src/net/ea/traderecv.h ManaPlus-2.1.3.17/src/net/ea/traderecv.h
+--- ManaPlus-2.1.3.17.orig/src/net/ea/traderecv.h	2021-03-17 18:45:35.000000000 +0100
++++ ManaPlus-2.1.3.17/src/net/ea/traderecv.h	2024-02-14 23:25:42.095919277 +0100
+@@ -27,6 +27,8 @@
+ #if defined(__GXX_EXPERIMENTAL_CXX0X__)
+ #if defined(__APPLE__)
+ #include <tr1/cstdint>
++#else  // defined(__APPLE__)
++#include <cstdint>
+ #endif  // defined(__APPLE__)
+ #else  // defined(__GXX_EXPERIMENTAL_CXX0X__)
+ #include <stdint.h>
+diff -aur ManaPlus-2.1.3.17.orig/src/progs/dyecmd/client.cpp ManaPlus-2.1.3.17/src/progs/dyecmd/client.cpp
+--- ManaPlus-2.1.3.17.orig/src/progs/dyecmd/client.cpp	2021-03-17 18:45:35.000000000 +0100
++++ ManaPlus-2.1.3.17/src/progs/dyecmd/client.cpp	2024-02-14 23:36:12.162655457 +0100
+@@ -88,9 +88,7 @@
+ #undef ERROR
+ #endif  // WIN32
+ 
+-#ifdef __clang__
+ #include <ctime>
+-#endif  // __clang__
+ 
+ #ifdef ANDROID
+ #ifndef USE_SDL2
+diff -aur ManaPlus-2.1.3.17.orig/src/resources/wallpaper.cpp ManaPlus-2.1.3.17/src/resources/wallpaper.cpp
+--- ManaPlus-2.1.3.17.orig/src/resources/wallpaper.cpp	2021-03-17 18:45:35.000000000 +0100
++++ ManaPlus-2.1.3.17/src/resources/wallpaper.cpp	2024-02-14 22:55:00.321656212 +0100
+@@ -39,9 +39,7 @@
+ #include <sys/time.h>
+ #endif  // WIN32
+ 
+-#ifdef __clang__
+ #include <ctime>
+-#endif  // __clang__
+ 
+ #include "debug.h"
+ 
+diff -aur ManaPlus-2.1.3.17.orig/src/utils/dumplibs.cpp ManaPlus-2.1.3.17/src/utils/dumplibs.cpp
+--- ManaPlus-2.1.3.17.orig/src/utils/dumplibs.cpp	2021-03-17 18:45:35.000000000 +0100
++++ ManaPlus-2.1.3.17/src/utils/dumplibs.cpp	2024-02-14 22:52:54.828979983 +0100
+@@ -140,7 +140,7 @@
+     LIBXML_TEST_VERSION
+ #endif  // LIBXML_TEST_VERSION
+ #ifdef ENABLE_LIBXML
+-    const char **xmlVersion = __xmlParserVersion();
++    const char* const* xmlVersion = __xmlParserVersion();
+     if (xmlVersion != nullptr)
+         logger->log(" libxml2: %s", *xmlVersion);
+ #endif  // ENABLE_LIBXML
+diff -aur ManaPlus-2.1.3.17.orig/src/utils/xml/libxml.inc ManaPlus-2.1.3.17/src/utils/xml/libxml.inc
+--- ManaPlus-2.1.3.17.orig/src/utils/xml/libxml.inc	2021-03-17 18:45:35.000000000 +0100
++++ ManaPlus-2.1.3.17/src/utils/xml/libxml.inc	2024-02-14 23:02:14.077279985 +0100
+@@ -25,6 +25,7 @@
+ #ifdef ENABLE_LIBXML
+ 
+ #include <libxml/xmlwriter.h>
++#include <libxml/parser.h>
+ 
+ __XML_XMLWRITER_H__
+ 
