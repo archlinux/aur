@@ -1,6 +1,6 @@
 pkgbase = clang-prefixed-release
 	pkgver = 18.1.0rc2
-	pkgrel = 1
+	pkgrel = 5
 	url = https://llvm.org/
 	install = clang.install
 	arch = x86_64

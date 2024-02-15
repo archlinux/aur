@@ -11,7 +11,7 @@ if [[ -n ${_pkg_suffix} ]]; then
     _pkgver_dash_suffix=${_pkgver_dash_suffix}-${_pkg_suffix}
 fi
 pkgver=${_pkgver_suffix}
-pkgrel=1
+pkgrel=5
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -42,14 +42,10 @@ shared_library_build_options=" \
 build_with_clang_options=" \
 			-DLLVM_BINUTILS_INCDIR=/usr/include \
             -DLLVM_ENABLE_LLD=ON \
-            -DCMAKE_C_COMPILER=clang \
-            -DCMAKE_CXX_COMPILER=clang++ \
             -DLLVM_ENABLE_MODULES=ON \
             -DLLVM_ENABLE_LTO=Thin \
-            -DCLANG_DEFAULT_PIE_ON_LINUX=ON \
-            -DLLVM_ABI_BREAKING_CHECKS:STRING=FORCE_OFF \
-            -DLLVM_ENABLE_UNWIND_TABLES=OFF \
-            -DLLVM_ENABLE_LIBCXX=ON \
+            -DCMAKE_C_COMPILER=clang \
+            -DCMAKE_CXX_COMPILER=clang++ \
             -DLLVM_ENABLE_PROJECTS=bolt;clang;clang-tools-extra;libc;libclc;lld;lldb;openmp;polly;pstl;compiler-rt \
 	"
 
@@ -73,10 +69,6 @@ _prepare_install_script() {
 }
 
 build() {
-    unset CFLAGS
-    unset CXXFLAGS
-    unset LDFLAGS
-
     rm -rf _build
     mkdir _build
 
@@ -88,11 +80,21 @@ build() {
 	(
 	set -o pipefail
     # https://llvm.org/docs/CMake.html
+	# MinSizeRel
+            #-DCMAKE_BUILD_TYPE=MinSizeRel \
+
+	# we now support makepkg's CFLAGS; be warned that -Os does not successfully build
     cmake   -B _build \
+            -DCLANG_DEFAULT_PIE_ON_LINUX=ON \
+            -DLLVM_ABI_BREAKING_CHECKS:STRING=FORCE_OFF \
+            -DLLVM_ENABLE_UNWIND_TABLES=OFF \
+            -DLLVM_ENABLE_LIBCXX=ON \
+            -DCMAKE_BUILD_TYPE=Release \
+			-DCMAKE_C_FLAGS_RELEASE="${CFLAGS}" \
+			-DCMAKE_CXX_FLAGS_RELEASE="${CXXFLAGS}" \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX:PATH=${install_path} \
             -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" \
-            -DCMAKE_BUILD_TYPE=Release \
 			${additional_build_options} \
             ${srcdir}/llvm-project-${_pkgver_suffix}.src/llvm | tee ${pkgname}-configure.log
 	time ninja -C _build | tee ${pkgname}-build.log
