@@ -1,12 +1,12 @@
 # Maintainer: Filip Markovic <f12markovic at gmail dot com>
 _pkgname="hyprprop"
 pkgname="$_pkgname-git"
-pkgver=6.8fd11f5
+pkgver=16.46d12db
 pkgrel=1
 pkgdesc="xprop for Hyprland"
 arch=(x86_64 aarch64)
 url="https://github.com/vilari-mickopf/$_pkgname"
-depends=('hyprevents-git' 'socat' 'slurp' 'jq')
+depends=('hyprevents-git' 'git' 'socat' 'slurp' 'jq')
 license=('MIT')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -21,4 +21,7 @@ pkgver() {
 package() {
     cd "$srcdir/${_pkgname}"
     make PREFIX="$pkgdir/usr" install
+
+    cd "$pkgdir/usr/bin"
+    sed -i 's|^EVENT_HANDLER=.*|EVENT_HANDLER="/usr/share/hyprprop/event_handler"|' hyprprop
 }

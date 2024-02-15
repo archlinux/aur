@@ -1,12 +1,13 @@
 pkgbase = hyprprop-git
 	pkgdesc = xprop for Hyprland
-	pkgver = 6.8fd11f5
+	pkgver = 16.46d12db
 	pkgrel = 1
 	url = https://github.com/vilari-mickopf/hyprprop
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = hyprevents-git
+	depends = git
 	depends = socat
 	depends = slurp
 	depends = jq
