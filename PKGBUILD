@@ -10,7 +10,6 @@ pkgdesc="YouTube content blocker."
 arch=('any')
 url="https://addons.mozilla.org/en-US/firefox/addon/$_name/"
 license=('GPL3')
-depends=('firefox')
 groups=('firefox-addons')
 source=("$_name-$pkgver.xpi::https://addons.mozilla.org/firefox/downloads/latest/$_name/latest.xpi")
 sha256sums=('09e79457ecf19596570fdef9f90d4374861785738f71d3558b013be7208477d2')
