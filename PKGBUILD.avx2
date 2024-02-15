@@ -10,10 +10,10 @@ fi
 # basic info
 _pkgname="thorium-browser-avx2"
 pkgname="$_pkgname-bin"
-pkgver=119.0.6045.214
+pkgver=120.0.6099.276
 pkgrel=1
 pkgdesc="Chromium fork focused on high performance and security"
-url="https://github.com/Alex313031/Thorium-Other"
+url="https://github.com/Alex313031/Thorium-Linux-AVX2"
 license=('BSD')
 arch=('x86_64')
 
@@ -32,7 +32,7 @@ _main_package() {
 
   options=('!emptydirs' '!strip' '!debug')
 
-  _dl_url="https://github.com/Alex313031/Thorium-Other/releases/download/${_pkgver:?}"
+  _dl_url="$url/releases/download/M${_pkgver:?}"
   _dl_filename="${_pkgname%-avx2}_${_pkgver:?}_AVX2.deb"
   noextract+=("$_dl_filename")
 
@@ -40,7 +40,7 @@ _main_package() {
   sha256sums=('SKIP')
 
   pkgver() {
-    echo "${_pkgver:?}"
+    echo "${_pkgver%M}"
   }
 }
 
@@ -213,7 +213,7 @@ _update_version() {
     _tags=${_tags/$i}
   done
   _tag=$(printf '%s' "$_tags" | sort -rV | head -1)
-  _pkgver_new="${_tag#v.}"
+  _pkgver_new="${_tag#M}"
 
   # update _pkgver
   if [ "$_pkgver" != "${_pkgver_new:?}" ] ; then

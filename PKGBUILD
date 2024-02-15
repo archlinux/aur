@@ -35,7 +35,7 @@ _main_package() {
   options=('!emptydirs' '!strip')
   install="$_pkgname.install"
 
-  _dl_url="https://github.com/Alex313031/Thorium/releases/download/M${_pkgver:?}"
+  _dl_url="$url/releases/download/M${_pkgver:?}"
   _dl_filename="${_pkgname}_${_pkgver:?}_SSE3.deb"
   noextract+=("$_dl_filename")
 
