@@ -1,6 +1,6 @@
 # Maintainer: Cyrusmg <aur@kulovany.net>
 pkgname=eobcanka
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="eObcanka software for Czech Citizen Portal"
 arch=('i686' 'x86_64' 'mips64el' 'armv6h' 'armv7h' 'arm' 'aarch64')
@@ -23,6 +23,6 @@ post_install ()
   echo "If your reader is not being recognized, run systemctl start pcscd.socket and pcscd.service"
 }
 
-sha1sums=('142e5a7965a1e84279e3cb4b77d18cece27353b4')
+sha1sums=('fdf96fee7cb5ee84ef5dbdad1b2ec2c5c0b5eb47')
 
 # vim:set ts=2 sw=2 et:
