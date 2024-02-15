@@ -1,6 +1,6 @@
 pkgbase = xwayland-run-git
 	pkgdesc = Utilities to run headless X/Wayland clients
-	pkgver = 0.0.2.r3.gc5846be
+	pkgver = 0.0.2.r3.gc5846bed
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/ofourdan/xwayland-run
 	arch = x86_64
@@ -8,9 +8,10 @@ pkgbase = xwayland-run-git
 	makedepends = git
 	makedepends = meson
 	depends = python
-	optdepends = cage: Wayland compositor
+	optdepends = cage: Wayland compositor (no headless)
+	optdepends = kwin: Wayland compositor
 	optdepends = mutter: Wayland compositor
-	optdepends = weston: Wayland compositor (recommended)
+	optdepends = weston: Wayland compositor
 	optdepends = xorg-server-xwayland: X11 server
 	provides = wlheadless-run=0.0.2
 	provides = xwfb-run=0.0.2
