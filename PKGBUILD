@@ -12,24 +12,33 @@ _mirthuser='mirthcon'
 _source=()
 if :; then
   _jsch_libname='jsch'
-  _jsch_oldver='0.1.55'
+  _jsch_oldver='0.2.13' # default crypto settings will cause a lot of connectivity issues from 1.5.4 to this version
   if :; then
     _JVM='/usr/lib/jvm/java-17-openjdk';  _JRE='jdk17-openjdk' # needed for all functionality of JSCH-0.2.0
-    _jsch_pkgver='0.2.15'
+    _jsch_pkgver='0.2.16'
     _jsch_srcdir="${_jsch_libname}-${_jsch_libname}-${_jsch_pkgver}"
     #_jsch_srcdir="${_jsch_libname}-${_jsch_srcdir}"
-    _source=("https://github.com/mwiede/jsch/archive/refs/tags/${_jsch_libname}-${_jsch_pkgver}.tar.gz")
+    _source+=("https://github.com/mwiede/jsch/archive/refs/tags/${_jsch_libname}-${_jsch_pkgver}.tar.gz")
     makedepends+=('maven')
     # optdepends+=('bcprov: AEAD cipher chacha20-poly1305') # included in Mirth
   else
     _JVM='/usr/lib/jvm/java-8-openjdk'; _JRE='jdk8-openjdk' # sufficient for JSCH-0.1.55
     _jsch_pkgver='0.1.55'
     _jsch_srcdir="${_jsch_libname}-${_jsch_pkgver}"
-    _source=("https://downloads.sourceforge.net/project/${_jsch_libname}/${_jsch_libname}/${_jsch_pkgver}/${_jsch_srcdir}.zip")
+    _source+=("https://downloads.sourceforge.net/project/${_jsch_libname}/${_jsch_libname}/${_jsch_pkgver}/${_jsch_srcdir}.zip")
     makedepends+=('ant')
   fi
 else
-  _JVM='/usr/lib/jvm/java-8-openjdk/jre'; _JRE='jre8-openjdk-headless'
+  _JVM='/usr/lib/jvm/java-17-openjdk'; _JRE='jdk17-openjdk' # This should match the major version in MCAL About Mirth Connect
+fi
+
+if ! :; then
+  _bc_srcdir=''
+  _bc_pkgver='1.77'
+  _bc_oldver='1.71'
+  _source+=(
+    "https://www.bouncycastle.org/download/"{bcprov,bcprov-ext,bcutil,bcpkix}"-jdk18on-${_bc_pkgver/./}.jar"
+  )
 fi
 
 set -u
@@ -43,15 +52,19 @@ pkgname='mirthconnect'
 #pkgver='4.3.0.b2886'
 #pkgver='4.4.0.b2948'
 #pkgver='4.4.1.b310'
-pkgver='4.4.2.b326'
-pkgrel='2'
+#pkgver='4.4.2.b326'
+pkgver='4.5.0.b3012'
+pkgrel='1'
 pkgdesc='hl7 connector by Nextgen'
-arch=('x86_64')
+arch=('any')
 # JSCH Updates https://github.com/mwiede/jsch/releases
 url='https://www.nextgen.com/products-and-services/integration-engine'
 _giturl='https://github.com/nextgenhealthcare/connect'
-license=('MPL')
-depends=("${_JRE}")
+license=(
+  'MPL-2.0' # Mirth
+  'BSD-3-Clause' # JSCH
+)
+depends=("${_JRE}" 'bash' 'java-runtime')
 optdepends+=(
   {mariadb,postgresql}': alternate database to derby'
 )
@@ -71,18 +84,18 @@ source=(
   '0000b-mirth-disable-SSLv2Hello.patch'
   "${_source[@]}"
 )
-md5sums=('ebfbd7a1f2806e270ae2defcbf6d2351'
+md5sums=('72b2f7a01e81192f6b00fd41b5fa6f3b'
          '426de9435b21e90df7ae044510938270'
          'f1b18ae896b93be65a2e9b276f12c16f'
-         'f9c807d02d216ac4b1e6b56bf0a0acf0'
+         '6cbd1f6b2e61415493adb0ee30722d33'
          'b9e1b8f9395622ba548d7fd07cfd7c26'
-         '6c6ca17a11918aaf0a35a6684ad9db88')
-sha256sums=('303bab13f6defaa0f3af16a474fb91b3c178c10b11a614aff5e78bc739032067'
+         '34d1fb747e51f3db2c433e4d84eca3ee')
+sha256sums=('4e3d91a68550cb30224bbdf93c3ae37417d7999c968f73db13721529c0e1823d'
             '4dc37b7ed9db5c9fcd74f45cd6197f6b631d74d3a30022bda6fda1c5900b7099'
             '254c858572a4949c09726859d3f790d7bee535b8dbea184e4f6679d3b7c3b269'
-            '751d088eb00a2b41a4d320a23805fdbe75466ffb401b4099a8e0dd814adc9587'
+            'e507ebf60a694578004465d8582cc3be8fc77c86af9cee6f6f33dcd899ea4786'
             'f754da4581b5e390e13fc407ab9fc4cdc7f139585081929626be8569dae99ad9'
-            '3c5a01dcebb364c9c7c9d73d91640cad23515573387f473e36dac5ad9393858b')
+            'c76bae24317bc8798923a8042c3ce97291e99035eba9aac1a5ccf0cb92953d6a')
 
 source+=(
   '0000-jsch-disable-md5-3des-cbc-dss-arcfour.patch'
@@ -133,13 +146,27 @@ _jsch_package() {
   else
     cd 'target'
   fi
-  install -m644 "${_jsch_libname}-${_jsch_pkgver}.jar" "${pkgdir}/${_mirthhome}/server-lib/${_jsch_libname}-${_jsch_pkgver}.jar"
+  install -m644 "${_jsch_libname}-${_jsch_pkgver}.jar" -t "${pkgdir}/${_mirthhome}/server-lib/"
   popd > /dev/null
 }
 else
 _jsch_prepare() { :; }
 _jsch_build() { :; }
 _jsch_package() { :; }
+fi
+
+if [ ! -z "${_bc_oldver:-}" ]; then
+_bc_package() {
+  pushd "${srcdir}/${_bc_srcdir}" > /dev/null
+  local _f
+  for _f in 'server-lib'; do
+    rm "${pkgdir}/${_mirthhome}/${_f}/"{bcprov-ext,bcprov,bcpkix,bcutil}"-jdk18on-${_bc_oldver/./}.jar"
+    install -m644 {bcprov-ext,bcprov,bcpkix,bcutil}"-jdk18on-${_bc_pkgver/./}.jar" -t "${pkgdir}/${_mirthhome}/${_f}/"
+  done
+  popd > /dev/null
+}
+else
+_bc_package() { :; }
 fi
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
@@ -225,6 +252,7 @@ package() {
     fi
   fi
   _jsch_package
+  _bc_package
 
   if :; then
     local _f
