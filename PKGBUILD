@@ -6,7 +6,7 @@
 _pkgname=meson
 pkgname=meson-rust
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="High productivity build system (version with improved Rust support)"
 url="https://mesonbuild.com/"
 arch=(any)
@@ -22,6 +22,52 @@ makedepends=(
   python-setuptools
   python-wheel
 )
+checkdepends=(
+  boost
+  clang
+  cmake
+  cuda
+  cython
+  doxygen
+  gcc-fortran
+  gcc-objc
+  git
+  glibc-locales
+  gmock
+  gnustep-base
+  gobject-introspection
+  graphviz
+  gtest
+  gtk-doc
+  gtk-sharp-2
+  gtk3
+  gtkmm3
+  hotdoc
+  itstool
+  java-environment=8
+  ldc
+  libelf
+  libwmf
+  llvm
+  mercurial
+  mono
+  nasm
+  netcdf-fortran
+  openmpi
+  openssh
+  protobuf
+  python-gobject
+  python-pytest-xdist
+  qt5-base
+  qt5-tools
+  rust
+  rust-bindgen
+  sdl2
+  vala
+  valgrind
+  vulkan-validation-layers
+  wxgtk3
+)
 provides=("meson=$pkgver")
 conflicts=(meson)
 source=(
@@ -31,6 +77,8 @@ source=(
   arch-meson
   cross-lib32
   native-clang
+  0001-Skip-broken-tests.patch
+  0002-Limit-unittests-workers.patch
   rustc-rebuild.patch
 )
 b2sums=('72b061598a0cb22517460de4df25394a9dfbddb536c5b8e75b7267ae21292fe2a6a3ec16d64aa81cde63d33022decebcc051cf2d87d677f9b40eb2f4106a40cd'
@@ -40,6 +88,8 @@ b2sums=('72b061598a0cb22517460de4df25394a9dfbddb536c5b8e75b7267ae21292fe2a6a3ec1
         '70f042a7603d1139f6cef33aec028da087cacabe278fd47375e1b2315befbfde1c0501ad1ecc63d04d31b232a04f08c735d61ce59d7244521f3d270e417fb5af'
         '9b16477aa77a706492e26fb3ad42e90674b8f0dfe657dd3bd9ba044f921be12ceabeb0050a50a15caee4d999e1ec33ed857bd3bed9e4444d73bb4a4f06381081'
         '7d88929d5a3b49d91c5c9969f19d9b47f3151706526b889515acaeda0141257d5115875ac84832e9ea46f83a7700d673adcc5db84b331cd798c70ae6e90eac1e'
+        'ebcd0d961bdc00309aa76e93e49c7136c454d1d1838c6bf5a5b168c0a94532353d32364de16c045f14950dd5313c17f33b3d7974317ba94db161638f93de6845'
+        '5847e2f1bf362c9fdaf522f0d3a6c81e67c7ac8c016e0ade5632bf23c1ea591c3659fe40f2139e97805144b3a6db6fe375977735b6fc74a7c7a6f8e581632f24'
         '1cf2521f6ebfdbedf1c58c09abfc0f77fcc0d59d903cca6634443d11cb5998cf51c3bfa61c6b17dca98a87f32c12e59558d6da25c57d8b341ae4c266ecd8857a')
 validpgpkeys=(
   19E2D6D9B46D8DAA6288F877C24E631BABB1FE70  # Jussi Pakkanen <jpakkane@gmail.com>
@@ -47,6 +97,10 @@ validpgpkeys=(
 
 prepare() {
   cd ${_pkgname}-${pkgver}
+
+  # Pass tests
+  patch -Np1 -i ../0001-Skip-broken-tests.patch
+  patch -Np1 -i ../0002-Limit-unittests-workers.patch
 
   # Rebuild targets after a rustc update (https://github.com/mesonbuild/meson/pull/12536)
   # (this should fix Rust project compile issues after a compiler update)
@@ -57,6 +111,12 @@ build() {
   cd ${_pkgname}-${pkgver}
   python -m build --wheel --no-isolation
 }
+
+check() (
+  cd $pkgname-$pkgver
+  export LC_CTYPE=en_US.UTF-8 CPPFLAGS= CFLAGS= CXXFLAGS= LDFLAGS=
+  ./run_tests.py --failfast
+)
 
 package() {
   cd ${_pkgname}-${pkgver}

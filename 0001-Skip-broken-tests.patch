@@ -1,0 +1,56 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Thu, 14 Apr 2022 14:08:15 +0000
+Subject: [PATCH] Skip broken tests
+
+---
+ test cases/frameworks/15 llvm/test.json              | 1 -
+ test cases/linuxlike/13 cmake dependency/meson.build | 2 ++
+ unittests/linuxliketests.py                          | 2 ++
+ 3 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/test cases/frameworks/15 llvm/test.json b/test cases/frameworks/15 llvm/test.json
+index cf8aa3acc7bd..3d70077acd02 100644
+--- a/test cases/frameworks/15 llvm/test.json	
++++ b/test cases/frameworks/15 llvm/test.json	
+@@ -7,7 +7,6 @@
+         { "val": "combination", "skip_on_jobname": ["msys2"] }
+       ],
+       "link-static": [
+-        { "val": true, "skip_on_jobname": ["arch", "opensuse", "linux-gentoo-gcc"] },
+         { "val": false }
+       ]
+     }
+diff --git a/test cases/linuxlike/13 cmake dependency/meson.build b/test cases/linuxlike/13 cmake dependency/meson.build
+index f612e1d52d6d..d0e0d079a069 100644
+--- a/test cases/linuxlike/13 cmake dependency/meson.build	
++++ b/test cases/linuxlike/13 cmake dependency/meson.build	
+@@ -7,6 +7,8 @@ if not cmake.found()
+   error('MESON_SKIP_TEST cmake binary not available.')
+ endif
+ 
++error('MESON_SKIP_TEST flaky, see https://github.com/mesonbuild/meson/issues/10104')
++
+ # Zlib is probably on all dev machines.
+ 
+ dep = dependency('ZLIB', version : '>=1.2', method : 'cmake')
+diff --git a/unittests/linuxliketests.py b/unittests/linuxliketests.py
+index 4fcf52e09f2c..6e07c450aa0a 100644
+--- a/unittests/linuxliketests.py
++++ b/unittests/linuxliketests.py
+@@ -360,6 +360,7 @@ class LinuxlikeTests(BasePlatformTests):
+             raise SkipTest('asan not available on Cygwin')
+         if is_openbsd():
+             raise SkipTest('-fsanitize=address is not supported on OpenBSD')
++        raise SkipTest('cannot run sanitizers in containers without ptrace')
+ 
+         testdir = os.path.join(self.framework_test_dir, '7 gnome')
+         self.init(testdir, extra_args=['-Db_sanitize=address', '-Db_lundef=false'])
+@@ -1030,6 +1031,7 @@ class LinuxlikeTests(BasePlatformTests):
+             raise SkipTest('asan not available on Cygwin')
+         if is_openbsd():
+             raise SkipTest('-fsanitize=address is not supported on OpenBSD')
++        raise SkipTest('cannot run sanitizers in containers without ptrace')
+ 
+         testdir = os.path.join(self.common_test_dir, '13 pch')
+         self.init(testdir, extra_args=['-Db_sanitize=address', '-Db_lundef=false'])
