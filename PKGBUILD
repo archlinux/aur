@@ -4,11 +4,12 @@ basename=trinityrnaseq
 pkgname=('trinityrnaseq' 'trinityrnaseq-doc' 'trinityrnaseq-extra')
 _pkgname=Trinity
 pkgver=2.15.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Transcriptome assembler for RNA-seq reads \
 	 https://doi.org/10.1038%2Fnbt.1883"
 url="https://github.com/Trinotate/Trinotate/wiki"
 license=('BSD-3-Clause')
+arch=('x86_64')
 makedepends=('git' 'cmake' 'make' 'python' 'rsync')
 source=("git+https://github.com/trinityrnaseq/trinityrnaseq.git#tag=$_pkgname-v$pkgver"
 	"string.patch")
@@ -30,7 +31,6 @@ build() {
 package_trinityrnaseq() {
   depends=('perl' 'bash' 'glibc' 'java-runtime' 'python' 'zlib')
   # 'xz' 'bzip2' 'curl'
-  arch=('x86_64')
 
   cd $srcdir/$basename
   mkdir -p $pkgdir/usr/{share/{$pkgname,java},bin}
@@ -76,7 +76,6 @@ done
 }
 
 package_trinityrnaseq-doc(){
-  arch=('any')
   cd $srcdir/$basename
   mkdir -p $pkgdir/usr/share/doc/$basename/wiki
 
@@ -91,7 +90,6 @@ done
 
 package_trinityrnaseq-extra(){
   depends=('bash' 'perl')
-  arch=('x86_64')
 
   cd $srcdir/$basename
   mkdir -p $pkgdir/usr/share/$basename/{trinity_ext_sample_data,sample_data}
