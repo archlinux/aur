@@ -1,0 +1,3 @@
+What the license of 'teqc' is could not be found out by the maintainer of the Arch Linux package. Assume proprietary.
+
+Upstream website is https://www.unavco.org/software/data-processing/teqc/teqc.html.
