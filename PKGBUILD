@@ -1,7 +1,7 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=python-fangfrisch
 _name=${pkgname#python-}
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Freshclam like utility that allows downloading unofficial virus definition files"
 arch=('any')
@@ -16,10 +16,10 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rseichter/fangfrisch/ar
         "${_name}.service"
         "${_name}.timer"
         "${_name}.tmpfiles")
-sha512sums=('b922542787f9cd0b88d1a85a68dee85a62cfb8fdd24d57a91728df626a8a3d29e33ee7418766c02a3ba5c2012c4f8688165f8846eb21c05335c20667db0a9e6f'
-            '8e202fcd167811fe39b81905bc598ab3752bcd225ace5b8df73a6b590f9861cd47c350f2ee4e3c9e1be8fbc5f0d2271fa2516f4c794be42e3f0afab14d496244'
+sha512sums=('5ded17871b8efa65dd529f70965746fb84c5d36cfe608a5bc8edf5ac7542837eb05450a442e45d8afe466b05c5f421381ba19af4287b13b03533653d8c1d223d'
+            'a6387a8320859795cbd0fb44500d753ed17981304e8c68c29eb47ffe3280d0fd6c6fe321ef86673d7ad8ee49b75769dfd89f1d10271ad8d537cb3cd88a9d3638'
             '15bf171bb2f05a97ae41d18f6155b3b9459867404402d199062e431df56d3ac4e3bfaba5382c751cf8ae4f6c932fcbfb90082792c7c49fd9fbc4f599b88e8ced'
-            '5f17b94c2a86ed468ac12f84bd258b915cfaa1858cada3e59293489447c634c6401921d654000d87f8eca970bfba8a9506aced100902771d98efc7d4cdb27cb5'
+            '10534fa180e36be07f46002174341cd348094d9739e0d8c37266ac244c804400bc3d818b4b7399d10f14201847eb0607fee7657c8cfe73b7c2b17dd719f558c5'
             'f421c4f2618422957cd203bf8f50bae1e5656d6208774244092987c07427ca86bf587884510c9180a0cb554200fdc996b0fad382671c913e6729b215b6f8e651')
 backup=('etc/fangfrisch/fangfrisch.conf')
 install=fangfrisch.install

@@ -3,9 +3,11 @@ Description=Download unofficial clamav virus definition files
 Requires=fangfrisch.service
 
 [Timer]
-OnCalendar=hourly
+#OnCalendar=hourly
+#RandomizedDelaySec=10m
+OnCalendar=*:0/10
+RandomizedDelaySec=2m
 Unit=fangfrisch.service
-RandomizedDelaySec=10m
 Persistent=true
 
 [Install]
