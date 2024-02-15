@@ -1,12 +1,12 @@
 pkgname=ffplayout
 pkgver=0.20.4
-pkgrel=1
+pkgrel=2
 pkgdesc="24/7 playout based on rust and ffmpeg"
 arch=('x86_64')
 url="https://github.com/ffplayout/ffplayout"
 license=('GPL3')
 depends=(
-  'ffmpeg>=5.0'
+  'ffmpeg-ffplayout>=5.0'
   'sudo'
 )
 makedepends=(
