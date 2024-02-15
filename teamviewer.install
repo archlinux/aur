@@ -1,6 +1,9 @@
 post_install() {
   echo "The Teamviewer daemon must be running for Teamviewer to work."
   echo "Execute 'sudo systemctl enable teamviewerd' in a terminal."
+  sed -i 's/Exec=/Exec=env QT_QPA_PLATFORM="" /' "opt/teamviewer/tv_bin/desktop/com.teamviewer.TeamViewer.desktop"
+  systemctl enable teamviewerd.service
+  systemctl start teamviewerd.service
 }
 
 post_upgrade() {
