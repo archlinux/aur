@@ -1,7 +1,7 @@
 pkgbase = python-mopidy-tidal
 	pkgdesc = Tidal music service integration
 	pkgver = 0.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tehkillerbee/mopidy-tidal
 	arch = any
 	license = Apache
@@ -11,6 +11,7 @@ pkgbase = python-mopidy-tidal
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-poetry-core
 	depends = mopidy
 	depends = python-pykka
 	depends = python-tidalapi
