@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-activeqt
 	pkgdesc = ActiveX integration framework (mingw-w64)
-	pkgver = 6.6.1
+	pkgver = 6.6.2
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -21,13 +21,13 @@ pkgbase = mingw-w64-qt6-activeqt
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.6/6.6.1/submodules/qtactiveqt-everywhere-src-6.6.1.tar.xz
+	source = https://download.qt.io/official_releases/qt/6.6/6.6.2/submodules/qtactiveqt-everywhere-src-6.6.2.tar.xz
 	source = 0001-Handle-win64-in-dumpcpp-and-MetaObjectGenerator-read.patch
 	source = 0002-Build-tools-for-the-target-platform.patch
 	source = 0003-Fix-compile-error-about-missing-QStringView-overload.patch
-	sha256sums = 9950f17041dce3977da80b4c65adad859952a800569799f25e7b395c1e04cfec
-	sha256sums = c0cabe05e3953456cf330d2c52a3f11a75ae4ec0945a298f8a13671aebd7f2de
-	sha256sums = 6a074d10a419a2df164cf66cfdcb8a3705bc064d6f8c7777d4b4e77ca1a118da
-	sha256sums = a9a6005b05cbe7081314a545d9d2dd10b48fac6264b2e54c7bc8b699266b6096
+	sha256sums = 87fa010302ee5814fa5bbe9aafce6f01f3e60c3001299873c09d37a0c758789b
+	sha256sums = ea4b89818dd07d2fae698d4ecd09bf426c437ab4d0e16ef18722bd6db2c0f6f5
+	sha256sums = c70fe8796dac5ea4bebca1a7b97a509a43a9968524abd1b052ad501201e1afd3
+	sha256sums = d1ad0556750309a13e90e61882ca2c1ada4ef01a9920a12f2a554af53d9b8240
 
 pkgname = mingw-w64-qt6-activeqt
