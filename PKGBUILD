@@ -1,11 +1,11 @@
 # Maintainer: Pavel Pletenev <cpp.create at gmail dot com>
 pkgname=vnlog
 pkgver=1.36
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to manipulate whitespace-separated ASCII logs"
 arch=('x86_64')
 url="https://github.com/dkogan/vnlog"
-license=('GPL')
+license=('LGPL-2.1-or-later')
 depends=('perl' 'python' 'glibc' 'python-numpy')
 makedepends=('mrbuild' 'make')
 provides=('vnlog')
@@ -18,7 +18,7 @@ build() {
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
 
-  make
+  make all doc
 }
 
 package() {
@@ -28,4 +28,12 @@ package() {
   make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
   mkdir "$pkgdir/usr/share/perl5/vendor_perl"
   mv "$pkgdir/usr/share/perl5/Vnlog" "$pkgdir/usr/share/perl5/vendor_perl"
+
+  install -Dm644 README.org "$pkgdir/usr/share/doc/vnlog/README.org"
+  install -Dm644 Changes "$pkgdir/usr/share/doc/vnlog/Changes"
+
+  mkdir -p "$pkgdir/usr/share/zsh/site-functions"
+  mkdir -p "$pkgdir/usr/share/bash-completion/completions"
+  cp completions/zsh/* "$pkgdir/usr/share/zsh/site-functions"
+  cp completions/bash/* "$pkgdir/usr/share/bash-completion/completions"
 }

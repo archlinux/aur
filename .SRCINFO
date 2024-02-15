@@ -1,10 +1,10 @@
 pkgbase = vnlog
 	pkgdesc = Tools to manipulate whitespace-separated ASCII logs
 	pkgver = 1.36
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dkogan/vnlog
 	arch = x86_64
-	license = GPL
+	license = LGPL-2.1-or-later
 	makedepends = mrbuild
 	makedepends = make
 	depends = perl
