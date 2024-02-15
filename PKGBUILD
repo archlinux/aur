@@ -11,7 +11,7 @@
 
 _android_arch=aarch64
 pkgname=android-aarch64-qt6-base
-_qtver=6.6.1
+_qtver=6.6.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -41,20 +41,20 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
         '0011-Allow-using-properties-of-PkgConfig-targets-for-glib.patch'
         '0012-Allow-using-properties-of-PkgConfig-targets-for-Wayl.patch'
         '0013-Allow-overriding-preference-for-shared-libzstd-libra.patch')
-sha256sums=('450c5b4677b2fe40ed07954d7f0f40690068e80a94c9df86c2c905ccd59d02f7'
-            'ccb6fbc145d6d8a14d49381a2bffb14befbd32e565675d10054be6b191056c51'
-            'f6dc1f60ac38f199bac51fd23d76c079ccb9303b2eaf469c8d71113b1b28c8c7'
-            '091c4ad85e5454371598ff12dddf746bccbfe3579d9b74be85236224a675d0ef'
-            '324d4162d09e86cc174a877af3ec50419c239785ab53e4996e96f765f9451ce6'
-            'aa16e0ce44cc2d6604f7f9a97e147b1f954a43ea42de8be6e8b6b43eed59c6eb'
-            '98d713d84bad4479c9ec85bc4e7ff3e8344a968bf8b5aeff540aba28df0238c5'
-            '1b7c2677ab5915c3972157c323095453759c6e97cc84805c9ac6d6e0ce157eb9'
-            '96635148fbc09be5bc50d2f6de2a88675e0aef91bea058108e8d92fa6577b605'
-            '803e6d7e4df781d3245b6ea1d3aa5d948d82f7db627e7e135ce7ff97fb58b4d0'
-            '3e20bf38e4d1c0e640312af4f2e00837199d21a48d4dc7990e942d5575eca59b'
-            'ef21feaa5614661d6a1c131ab4717fda3c5ede394776e07bbdcf9832390f654f'
-            'd3b8a352ef8b9859c001252f632ad0eca6d0577676a8dfdc95e3a3691a9de00b'
-            '037d691ae936b56a38a9f9873b4b3978656fe35baa05e9eb12830f08653f1945')
+sha256sums=('b89b426b9852a17d3e96230ab0871346574d635c7914480a2a27f98ff942677b'
+            '5337bd308d6c6342b1a61cb45a6e435d706c2eb751ab93c9118322165370809a'
+            'f1e013452ca62cccf9d17682701f67886173eb24e53b94ea0fe99a5edcb34d7a'
+            '401d9275e9832c5000dd2b410158289b0cf853319da1a5ee97130598e28c0599'
+            '404dc4efb1bdbdcaee2f0f8d561edf1b55a1050fab8e9a80c8eaf1c8aa816be2'
+            'bfae4a5fb06153204e2b731ade3f169a6f4b5b44769f7b7cd420cf9d492ff830'
+            '6bbf063870a45dd58be5ec849195b553ce8697985cca8441c18e5baccf67d449'
+            '843b63b105767bf26c3d2e0fb65d4a9021aae598b7fbae8f501e848551e6bc6c'
+            'a9c705a909876e20e0da2bf1137020b509e59fa25bb759831ce23f9b46576ffb'
+            '6935ba318b0af86c40fca397e84046d004a23422b0c74187808133e5b1539b8c'
+            'ba9fb48fb7ddeaa665e81136fa33377ba4fbf1efeb787c229cb091c33c1b31c6'
+            '6fd11b4bdd602f0b17cc75f8fc0e999119d2606e16e6ebca5804865a4094c55c'
+            'a589ff90a9be1c4b973e632f4b7419505a89406221a32c432aa9e72d59c8ef8f'
+            '70f35a369aa9ee3d5b69ed036ee1091efc4535d727f6d05dd5737d2b81efe707')
 
 prepare () {
   cd $_pkgfqn
