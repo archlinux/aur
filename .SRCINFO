@@ -1,0 +1,23 @@
+pkgbase = lib32-clang-minimal-git
+	pkgdesc = companion package to lib32-llvm-minimal-git, C language family frontend for LLVM (32-bit)
+	pkgver = 19.0.0_r489812.43b291cbecca
+	pkgrel = 1
+	url = https://clang.llvm.org/
+	arch = x86_64
+	license = custom:Apache 2.0 with LLVM Exception
+	makedepends = lib32-llvm-minimal-git
+	makedepends = cmake
+	makedepends = python
+	makedepends = git
+	makedepends = lib32-llvm-libs<$_major_ver
+	depends = lib32-llvm-libs-minimal-git
+	depends = lib32-glibc
+	depends = lib32-gcc-libs
+	provides = lib32-clang
+	conflicts = lib32-clang
+	source = git+https://github.com/llvm/llvm-project.git
+	source = 75f0d40507ea3f7c99dd3250ff0fbe6dab341910.patch
+	sha256sums = SKIP
+	sha256sums = 47c992064eac25bb897685f4b4dbf48ac002c6960facdfa6e1e9cc460e1e012a
+
+pkgname = lib32-clang-minimal-git
