@@ -4,7 +4,7 @@
 
 pkgname=papis-git
 _pkgname=papis
-pkgver=0.13.r326.g5a0799c9
+pkgver=0.13.r328.g72dedcfa
 pkgrel=1
 pkgdesc="A powerful and highly extensible command-line document and bibliography manager. Git version."
 arch=('any')
@@ -50,6 +50,12 @@ checkdepends=(
     python-pep8-naming
     python-pylint
     python-pytest
+    python-types-beautifulsoup4
+    python-types-pyaml
+    python-types-pygments
+    python-types-requests
+    python-types-setuptools
+    python-types-tqdm
     )
 provides=("papis")
 conflicts=("papis")
@@ -63,7 +69,9 @@ pkgver() {
 
 check() {
   cd "${_pkgname}"
-  make pytest flake8 mypy
+  python -m pytest papis tests
+  python -m flake8 papis tests examples
+  python -m mypy papis
 }
 
 build() {
