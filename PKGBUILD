@@ -1,7 +1,7 @@
 # Maintainer: Duologic <jeroen@simplsitic.be>
 
 pkgname=jrsonnet-git
-pkgver=v0.5.0.pre8.test.r5.g4be0ffe
+pkgver=v0.5.0.pre95.test.r58.gc9696b8
 pkgrel=1
 pkgdesc=""
 arch=('x86_64')
