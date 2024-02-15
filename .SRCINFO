@@ -1,14 +1,14 @@
 pkgbase = mssql-tools
-	pkgdesc = Microsoft® SQL Server® Tools for Linux
+	pkgdesc = Microsoft SQL Server Tools for Linux
 	pkgver = 18.2.1.1
 	pkgrel = 1
-	url = https://www.microsoft.com/en-us/sql-server/sql-server-vnext-including-Linux
+	url = https://learn.microsoft.com/en-us/sql/linux/sql-server-linux-overview?view=sql-server-ver16
 	install = mssql-tools.install
 	arch = x86_64
 	arch = aarch64
 	license = custom
 	depends = msodbcsql
-	depends = mssql-server
+	optdepends = mssql-server: Enter T-SQL statements to an SQL Server database
 	options = !strip
 	source = https://packages.microsoft.com/rhel/9.0/prod/Packages/m/mssql-tools18-18.2.1.1-1.x86_64.rpm
 	sha256sums = 98758f29f1b1aad13c5ce32a5cf1e849d35a97054d030ee5dccdab6aefd2aef9
