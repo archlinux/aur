@@ -4,7 +4,7 @@
 
 pkgname=openlp-git
 _pkgbase=openlp
-pkgver=r17865.8c3d9b574
+pkgver=r17869.ed7561bde
 pkgrel=1
 pkgdesc="Church presentation software."
 arch=('any')
@@ -15,17 +15,23 @@ conflicts=('openlp')
 makedepends=('qt5-tools' 'git' 'python-pip')
 depends=('python>=3.10' 'python<3.12' 'python-pyqt5' 'phonon-qt5'
          'python-pyqt5-webengine' 'python-flask' 'python-flask-cors'
-         'python-pymediainfo' 'python-qrcode' 'python-appdirs'
+         'python-pymediainfo' 'python-qrcode' 'python-platformdirs'
          'python-chardet' 'python-lxml' 'python-six'
          'python-beautifulsoup4' 'python-pyenchant' 'python-dbus'
          'python-alembic' 'mediainfo' 'qt5-multimedia' 'python-zeroconf'
          'qt5-webkit' 'qt5-svg' 'python-webob' 'python-requests' 'vlc'
          'python-waitress' 'python-websockets' 'python-qtawesome' 'python-vlc'
+         'python-pyicu'
         )
 optdepends=('libreoffice-fresh: display impress presentations'
             'python-pymupdf: display pdfs'
             'python-mysql-connector: Use a mysql/mariadb database'
-            'python-psycopg2: Use a postgresql database')
+            'python-psycopg2: Use a postgresql database'
+            'aspell: for aspell based spell checking support'
+            'hspell: for hspell based spell checking support (Hebrew spell-checker)'  
+            'libvoikko: a spelling and grammar checker, hyphenator and collection of related linguistic data for Finnish language'
+            'nuspell: for nuspell based spell checking support (Using hunspell dictionaries'
+            )
 install=openlp.install
 source=('git+https://gitlab.com/openlp/openlp.git' 'openlp.sh')
 sha256sums=('SKIP'
