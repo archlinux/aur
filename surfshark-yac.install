@@ -1,0 +1,123 @@
+post_install() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	PATH="/sbin:/usr/sbin:/bin:/usr/bin"
+
+	ln -sf '/opt/Surfshark/surfshark' '/usr/bin/surfshark'
+
+	chmod 4755 '/opt/Surfshark/chrome-sandbox' || true
+
+	update-mime-database /usr/share/mime || true
+	update-desktop-database /usr/share/applications || true
+
+	mkdir -p /usr/lib/systemd/user || true
+	echo "
+	[Unit]
+	Description=Surfshark Daemon
+
+	[Service]
+	ExecStart=/opt/Surfshark/resources/dist/resources/surfsharkd.js
+	Restart=on-failure
+	RestartSec=5
+	IPAddressDeny=any
+	RestrictRealtime=true
+	ProtectKernelTunables=true
+	ProtectSystem=full
+	RestrictSUIDSGID=true
+
+	[Install]
+	WantedBy=default.target
+	" > /usr/lib/systemd/user/surfsharkd.service || true
+
+	mkdir -p /usr/lib/systemd/system || true
+	echo "
+	[Unit]
+	Description=Surfshark Daemon2
+
+	[Service]
+	ExecStart=/opt/Surfshark/resources/dist/resources/surfsharkd2.js
+	Restart=on-failure
+	RestartSec=5
+	IPAddressDeny=any
+	RestrictRealtime=true
+	ProtectKernelTunables=true
+	ProtectSystem=full
+	RestrictSUIDSGID=true
+
+	[Install]
+	WantedBy=default.target
+	" > /usr/lib/systemd/system/surfsharkd2.service || true
+
+	chmod 644 /usr/lib/systemd/user/surfsharkd.service || true
+	chmod 644 /usr/lib/systemd/system/surfsharkd2.service || true
+
+	chmod 755 '/opt/Surfshark/resources/dist/resources/surfsharkd.js' || true
+
+	chmod 755 '/opt/Surfshark/resources/dist/resources/surfsharkd2.js' || true
+
+	chmod 755 '/opt/Surfshark/resources/dist/resources/update' || true
+	chmod 755 '/opt/Surfshark/resources/dist/resources/diagnostics' || true
+
+	chmod 755 '/etc/init.d/surfshark' || true
+	chmod 755 '/etc/init.d/surfshark2' || true
+
+	case "$(ps -p 1 --no-headers -o '%c' | tr -d '\n')" in
+	    systemd)
+	        systemctl daemon-reload || true
+	        systemctl enable --global surfsharkd.service || true
+	    ;;
+	    init)
+	        update-rc.d surfshark defaults || true
+	        update-rc.d surfshark2 defaults || true
+	        /etc/init.d/surfshark restart || true
+	        /etc/init.d/surfshark2 restart || true
+	    ;;
+	    *)
+	        echo "Unsupported service manager"
+	    ;;
+	esac
+	update-desktop-database -q
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	PATH="/sbin:/usr/sbin:/bin:/usr/bin"
+
+	systemctl disable --global surfsharkd.service || true
+	systemctl disable surfsharkd2.service || true
+
+	systemctl stop surfsharkd2.service || true
+
+	/etc/init.d/surfshark stop || true
+	/etc/init.d/surfshark2 stop || true
+
+	kill -15 $(pidof surfshark) || :
+	kill -15 $(pgrep surfsharkd) || :
+
+	rm -rf /run/surfshark || :
+	rm -f /tmp/surfsharkd.sock || :
+	rm -f /tmp/surfshark-electron.sock || :
+	rm -f $XDG_RUNTIME_DIR/surfsharkd.sock || :
+	rm -f $XDG_RUNTIME_DIR/surfshark-electron.sock || :
+
+	rm -f '/usr/bin/surfshark' || :
+
+	# Surfshark post-remove
+	nmcli connection delete surfshark_ipv6 || true
+	nmcli connection delete surfshark_wg || true
+	nmcli connection delete surfshark_openvpn || true
+
+	shopt -s globstar
+	if [ "$1" = purge ]; then
+	    rm -rf /home/**/.config/Surfshark || true
+	fi
+
+	rm -rf /home/**/.cache/Surfshark || true
+
+	iptables -S | grep surfshark_ks | sed -r '/.*comment.*surfshark_ks*/s/-A/iptables -D/e' || true
+	ip6tables -S | grep surfshark_ks | sed -r '/.*comment.*surfshark_ks*/s/-A/ip6tables -D/e' || true
+	update-desktop-database -q
+}

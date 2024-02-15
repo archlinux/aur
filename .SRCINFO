@@ -1,0 +1,22 @@
+pkgbase = surfshark-yac
+	pkgdesc = Yet another Surfshark VPN GUI Client for the AUR.
+	pkgver = 2.2.0.2835
+	pkgrel = 1
+	url = https://surfshark.com
+	install = surfshark-yac.install
+	arch = x86_64
+	license = custom:surfshark
+	depends = alsa-lib
+	depends = at-spi2-core
+	depends = gjs
+	depends = nss
+	depends = org.freedesktop.secrets
+	depends = wireguard-tools
+	provides = surfshark-yac
+	conflicts = surfshark-yac
+	options = !strip
+	options = !emptydirs
+	source = https://ocean.surfshark.com/debian/pool/main/s/surfshark_2.2.0_amd64.deb
+	sha256sums = c9dc96dbcf7a970e4fe2b4de71e3fb6655f75446ef1dbfc02856ff5de40efb64
+
+pkgname = surfshark-yac
