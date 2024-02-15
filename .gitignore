@@ -1,4 +1,5 @@
 # Ignore makepkg auto-generated stuff
 pkg/
 src/
+volk/
 *.tar* 
