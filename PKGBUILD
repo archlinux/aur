@@ -5,7 +5,7 @@
 pkgname=flightradar24
 _pkgname=fr24feed
 pkgver=1.0.46
-pkgrel=3
+pkgrel=4
 _pkgver=1.0.46-2
 _pkgverarm=1.0.46-2
 pkgdesc='Feeder software for Flightradar24.com (fr24feed)'
@@ -17,6 +17,7 @@ optdepends=('dump978: for 978MHz UAT support')
 backup=(etc/fr24feed.ini)
 install=flightradar24.install
 source=('fr24feed.service'
+        'fr24uat-feed.service'
         'flightradar24.sysusers'
         'fr24feed-status.patch'
         'hostname')
@@ -26,7 +27,8 @@ source_armv6h=("https://repo-feed.flightradar24.com/rpi_binaries/${_pkgname}_${_
 source_armv7h=("https://repo-feed.flightradar24.com/rpi_binaries/${_pkgname}_${_pkgverarm}_armhf.deb")
 source_aarch64=("https://repo-feed.flightradar24.com/rpi_binaries/${_pkgname}_${_pkgverarm}_armhf.deb")
 
-sha256sums=('857383cd88daac429f25579d40cc5c4f3c4468f2af406cba70d3d7e9fe825cd3'
+sha256sums=('247c8d1a3c4e7724c2c1e4caae4e019a448700fadd195ba29b562233d9352e29'
+            '2c53251b0c6051c7c6e30ddfa2fd3f5ee65dcf1465cb3d164a7f31cd9e8d9d9f'
             'a018c751e431fcde72e709917fdfe663a5c74040af80b56d1a4658ba962c95e5'
             'ebcf31ecb62aef650b0984f978318f7e716078f520efb165306dca592c0821bb'
             '32ae61984ae0123690fea0bf67f2b5f1ee1155f6a2b3a9d0ff7c5431d902ddee')
@@ -48,7 +50,7 @@ package() {
   install -Dm644 usr/share/fr24/licences/LICENSE.fr24feed.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 -t "$pkgdir/etc" etc/fr24feed.ini
 
-  install -Dm644 -t "$pkgdir/usr/lib/systemd/system" fr24feed.service
+  install -Dm644 -t "$pkgdir/usr/lib/systemd/system" fr24feed.service fr24uat-feed.service
   install -Dm644 flightradar24.sysusers "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 
   # hostname: invalid option -- 'I'

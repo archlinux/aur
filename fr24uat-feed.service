@@ -1,0 +1,19 @@
+[Unit]
+Description=Flightradar24 UAT Decoder & Feeder
+After=network-online.target
+
+[Service]
+Type=simple
+Restart=on-failure
+ExecStartPre=/usr/bin/fr24feed --validate-config --config-file=/etc/fr24uat-feed.ini
+ExecStart=/usr/bin/fr24feed --monitor-file=/dev/shm/uat-decoder.txt --http-listen-port=8755 --config-file=/etc/fr24uat-feed.ini --logfile=/var/log/fr24feed/fr24uat-feed.log --unit=fr24uat-feed
+User=fr24
+Group=fr24
+ProtectSystem=full
+ProtectHome=yes
+RuntimeDirectory=fr24feed
+LogsDirectory=fr24feed
+Environment=PATH=/usr/lib/flightradar24:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+
+[Install]
+WantedBy=multi-user.target
