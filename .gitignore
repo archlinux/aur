@@ -1,0 +1,4 @@
+*.log
+unidump/
+*.zst
+*.gz
