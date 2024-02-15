@@ -1,15 +1,16 @@
 # Maintainer: Douglas Creager <dcreager@dcreager.net>
 pkgname=md2roff-git
-pkgver=r98.45c380d
+epoch=2
+pkgver=r3.e39b1c2
 pkgrel=1
 pkgdesc="Convert markdown to groff / troff"
 arch=("x86_64")
-url="https://github.com/nereusx/md2roff"
+url="https://codeberg.org/nereusx/md2roff"
 license=('GPL-3.0')
 makedepends=('git' 'gzip')
 provides=('md2roff')
 conflicts=('md2roff')
-source=("${pkgname}::git+https://github.com/nereusx/md2roff")
+source=("${pkgname}::git+https://codeberg.org/nereusx/md2roff.git")
 md5sums=('SKIP')
 
 pkgver() {
