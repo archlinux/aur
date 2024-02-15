@@ -1,6 +1,6 @@
 pkgbase = matm-git
 	pkgdesc = A tool to watch anime, movies, tv shows and read manga from the comfort of the cli!
-	pkgver = 1.1
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/crolbar/matm
 	arch = x86_64
