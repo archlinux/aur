@@ -1,13 +1,13 @@
 pkgbase = bricklink-studio
 	pkgdesc = Lego cad software created by Bricklink
 	pkgver = 2.24.1_1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.bricklink.com/v3/studio/download.page
 	arch = x86_64
 	license = custom
 	makedepends = innoextract
 	depends = wine
-	noextract = Studio+2.0.exe
+	noextract = bricklink-studio-2.24.1_1.exe
 	options = !strip
 	source = bricklink-studio-2.24.1_1.exe::https://s3.amazonaws.com/blstudio/Studio2.0/Archive/2.24.1_1/Studio+2.0.exe
 	source = bricklink-studio.sh
