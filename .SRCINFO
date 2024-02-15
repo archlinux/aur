@@ -1,6 +1,6 @@
 pkgbase = msdfgen-git
-	pkgdesc = Multi-channel signed distance field generator
-	pkgver = 1.10.r15.g0eaeb51
+	pkgdesc = Multi-channel signed distance field generator binary and library
+	pkgver = 1.11.r2.g2357140
 	pkgrel = 1
 	url = https://github.com/Chlumsky/msdfgen
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = msdfgen-git
 	depends = libpng
 	depends = freetype2
 	depends = zlib
-	provides = msdfgen=1.10.r15.g0eaeb51
+	provides = msdfgen=1.11.r2.g2357140
 	conflicts = msdfgen
 	source = msdfgen-git::git+https://github.com/Chlumsky/msdfgen.git
 	sha256sums = SKIP

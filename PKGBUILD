@@ -1,35 +1,39 @@
 # Maintainer: Maki <maki@hotmilk.space>
+# Maintainer: SuicideCatt <fr7g31@gmail.com>
 
 pkgname=msdfgen-git
-pkgdesc="Multi-channel signed distance field generator"
-pkgver=1.10.r15.g0eaeb51
+pkgver=1.11.r2.g2357140
 pkgrel=1
-arch=(x86_64)
+pkgdesc="Multi-channel signed distance field generator binary and library"
 url=https://github.com/Chlumsky/msdfgen
+arch=(x86_64)
 license=(MIT)
 depends=(tinyxml2 libpng freetype2 zlib)
 makedepends=(git cmake ninja)
-optdepends=()
 provides=(msdfgen=$pkgver)
 conflicts=(msdfgen)
-source=($pkgname::git+https://github.com/Chlumsky/msdfgen.git)
+
+source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
-pkgver() {
+pkgver()
+{
 	cd $pkgname/
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
+build()
+{
 	cd $pkgname/
-	cmake -B build -GNinja \
-	-DCMAKE_BUILD_TYPE=Release \
-	-DMSDFGEN_USE_SKIA=OFF \
-	-DMSDFGEN_USE_VCPKG=OFF
+	cmake -B build -GNinja -DCMAKE_BUILD_TYPE=Release \
+	-DMSDFGEN_USE_SKIA=OFF -DMSDFGEN_USE_VCPKG=OFF \
+	-DMSDFGEN_INSTALL=ON -DCMAKE_INSTALL_PREFIX=/usr
 	cmake --build build
 }
 
-package() {
-	install -Dm755 "$srcdir/$pkgname/build/msdfgen" "$pkgdir/usr/bin/msdfgen"
-	install -Dm644 "$srcdir/$pkgname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+package()
+{
+	cd $pkgname/
+	install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	DESTDIR="$pkgdir" cmake --install build
 }
