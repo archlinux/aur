@@ -3,14 +3,13 @@
 _pkgname=flowMap
 _pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
-pkgrel=1
-pkgdesc='Mapping cell populations in flow cytometry data for cross-sample comparisons using the Friedman-Rafsky Test'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Mapping cell populations in flow cytometry data for cross-sample comparisons using the Friedman-Rafsky Test"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-abind
   r-ade4
   r-doparallel
@@ -21,15 +20,16 @@ optdepends=(
   r-biocstyle
   r-knitr
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b2ffa3e58ecb99a27c43322162165765c99b3f56051aabc5e8cfe0f258295bd6')
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('1c8039dc003c35a4c0dbb45e03f7c8aa')
+b2sums=('87129d33702810e692c5838e6f704f6c87dded0bf6b251763765eb4f05e2ae74f38b292e5aa15735791991d3cba9f208664176b13b6bc9ef8323b5d6a6e5970e')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

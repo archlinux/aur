@@ -1,11 +1,10 @@
 pkgbase = r-flowmap
 	pkgdesc = Mapping cell populations in flow cytometry data for cross-sample comparisons using the Friedman-Rafsky Test
 	pkgver = 1.38.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/flowMap
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-2.0-or-later
 	depends = r-abind
 	depends = r-ade4
 	depends = r-doparallel
@@ -13,7 +12,8 @@ pkgbase = r-flowmap
 	depends = r-scales
 	optdepends = r-biocstyle
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowMap_1.38.0.tar.gz
-	sha256sums = b2ffa3e58ecb99a27c43322162165765c99b3f56051aabc5e8cfe0f258295bd6
+	source = https://bioconductor.org/packages/3.17/bioc/src/contrib/flowMap_1.38.0.tar.gz
+	md5sums = 1c8039dc003c35a4c0dbb45e03f7c8aa
+	b2sums = 87129d33702810e692c5838e6f704f6c87dded0bf6b251763765eb4f05e2ae74f38b292e5aa15735791991d3cba9f208664176b13b6bc9ef8323b5d6a6e5970e
 
 pkgname = r-flowmap
