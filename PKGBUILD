@@ -1,16 +1,17 @@
 # Maintainer: Douglas Creager <dcreager@dcreager.net>
 pkgname=nereusx-notes-git
-pkgver=r131.a4f0a4e
+epoch=2
+pkgver=r6.2947cc5
 pkgrel=1
-pkgdesc="Plane-text notes manager, CLI and TUI"
+pkgdesc="Plain-text notes manager, CLI and TUI"
 arch=("x86_64")
-url="https://github.com/nereusx/notes"
+url="https://codeberg.org/nereusx/notes"
 license=('GPL-3.0')
 depends=('ncurses')
 makedepends=('git' 'gzip' 'md2roff')
 provides=('nereusx-notes')
 conflicts=('nereusx-notes')
-source=("${pkgname}::git+https://github.com/nereusx/notes")
+source=("${pkgname}::git+https://codeberg.org/nereusx/notes.git")
 md5sums=('SKIP')
 
 pkgver() {

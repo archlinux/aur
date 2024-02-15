@@ -1,8 +1,9 @@
 pkgbase = nereusx-notes-git
-	pkgdesc = Plane-text notes manager, CLI and TUI
-	pkgver = r131.a4f0a4e
+	pkgdesc = Plain-text notes manager, CLI and TUI
+	pkgver = r6.2947cc5
 	pkgrel = 1
-	url = https://github.com/nereusx/notes
+	epoch = 2
+	url = https://codeberg.org/nereusx/notes
 	arch = x86_64
 	license = GPL-3.0
 	makedepends = git
@@ -11,7 +12,7 @@ pkgbase = nereusx-notes-git
 	depends = ncurses
 	provides = nereusx-notes
 	conflicts = nereusx-notes
-	source = nereusx-notes-git::git+https://github.com/nereusx/notes
+	source = nereusx-notes-git::git+https://codeberg.org/nereusx/notes.git
 	md5sums = SKIP
 
 pkgname = nereusx-notes-git
