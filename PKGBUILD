@@ -1,6 +1,6 @@
 # Maintainer: Falko Galperin <dr (dot) asasteghof (at) gmail (dot) com>
 pkgname=python-pdfplumber
-pkgver=0.10.3
+pkgver=0.10.4
 pkgrel=1
 pkgdesc="Plumb a PDF for detailed information about each char, rectangle, line, et cetera."
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 changelog=$pkgname.changelog.md
 _name=${pkgname#python-}
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=("4dd78ff1c62b99da8139daf5b62747613f6f0e970f225a3e911862e296599375")
+sha256sums=("1c83a4e1fe75525ce1f161fa55a8142209a2da69b45542ce2c45be879e804fd6")
 
 prepare() {
 	# Somewhat of an ugly hack, but see here: https://aur.archlinux.org/packages/python-pdfplumber#comment-864370

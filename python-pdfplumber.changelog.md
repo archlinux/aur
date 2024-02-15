@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [0.10.4] - 2024-02-10
+
+### Added
+
+- Add `x_tolerance_ratio` parameter to `extract_text` and similar functions, to account for text size when spacing characters (instead of a fixed number of pixels) (h/t @afriedman412). ([#1041](https://github.com/jsvine/pdfplumber/pulls/1041))
+- Add support for PDF 1.3 logical structure via `Page.structure_tree` (h/t @dhdaines). ([#963](https://github.com/jsvine/pdfplumber/pulls/963))
+- Add "gswin64c" as another possible Ghostscript executable in `repair.py` (h/t @echedey-ls). ([#1032](https://github.com/jsvine/pdfplumber/issues/1030))
+- Re-add `Page.close()` method, have `PDF.close()` close all pages as well, and improve relevant documentation (h/t @luketudge). ([#1042](https://github.com/jsvine/pdfplumber/issues/1042))
+- Add `force_mediabox` parameter to `Page.to_image(...)`. ([#1054](https://github.com/jsvine/pdfplumber/issues/1054))
+
+### Fixed
+
+- Standardize handling of cropbox, fixing various issues with PageImage. ([#1054](https://github.com/jsvine/pdfplumber/issues/1054))
+- Fix `Page.get_textmap` caching to allow for `extra_attrs=[...]`, by preconverting list kwargs to tuples. ([#1030](https://github.com/jsvine/pdfplumber/issues/1030))
+- Explicitly close `pypdfium2.PdfDocument` in `get_page_image` (h/t @dhdaines). ([#1090](https://github.com/jsvine/pdfplumber/pull/1090))
+- In `PDFPageAggregatorWithMarkedContent.tag_cur_item`, check `self.cur_item._objs` length before trying to access `[-1]`. ([4f39d03](https://github.com/jsvine/pdfplumber/commit/4f39d03))
+
 ## [0.10.3] - 2023-10-26
 
 ### Added
