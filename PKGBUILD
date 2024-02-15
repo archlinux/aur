@@ -4,13 +4,18 @@
 
 pkgname=papis-git
 _pkgname=papis
-pkgver=0.13.r333.g1a6fe961
+pkgver=0.13.r334.g3a4d9d8e
 pkgrel=1
-pkgdesc="A powerful and highly extensible command-line document and bibliography manager. Git version."
+pkgdesc="Command-line document and bibliography manager"
 arch=('any')
 url="https://github.com/papis/papis"
 license=('GPL-3.0-or-later')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('git'
+    'python-build'
+    'python-installer'
+    'python-wheel'
+    'python-sphinx-click'
+    )
 depends=('python'
          'python-arxiv'
          'python-beautifulsoup4'
@@ -46,10 +51,13 @@ checkdepends=(
     flake8
     mypy
     python-flake8-bugbear
+    python-flake8-polyfill
     python-flake8-quotes
     python-pep8-naming
     python-pylint
     python-pytest
+    python-pytest-cov
+    python-pytest-mypy
     python-types-beautifulsoup4
     python-types-pyaml
     python-types-pygments
