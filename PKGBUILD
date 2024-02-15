@@ -4,13 +4,13 @@
 
 pkgname='offpunk-git'
 _pkgname='offpunk'
-pkgver=2.1.r8.gcf459e5
+pkgver=2.2.r0.g4a3ec61
 pkgrel=1
-epoch=4
+epoch=5
 pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities (development snapshot)'
 arch=('any')
 url='https://git.sr.ht/~lioploum/offpunk'
-license=('AGPL-3.0-or-later')
+license=('AGPL-3.0-or-later')  # SPDX-License-Identifier: AGPL-3.0-or-later
 depends=(
   'file'
   'less'
@@ -61,9 +61,10 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  test -f man/offpunk.1 && \
-  install -vDm0644 man/offpunk.1 "$pkgdir/usr/share/man/man1/offpunk.1"
-  install -vDm0644 README.md     "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -vDm0644 man/*.1 -t "$pkgdir/usr/share/man/man1/"
+  for _doc in CHANGELOG CONTRIBUTORS README.md; do
+    install -vDm0644 "$_doc" "$pkgdir/usr/share/doc/$pkgname/$_doc"
+  done
 }
 
 # eof
