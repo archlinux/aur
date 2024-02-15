@@ -1,6 +1,6 @@
 pkgbase = matm-bin
 	pkgdesc = A tool to watch anime, movies, tv shows and read manga from the comfort of the cli!
-	pkgver = 1.1
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/crolbar/matm
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = matm-bin
 	optdepends = vlc: an alternative video player for movies
 	provides = matm
 	conflicts = matm-git
-	source = https://github.com/crolbar/matm/releases/download/v1.1/matm-1.1.tar.gz
+	source = https://github.com/crolbar/matm/releases/download/v2.0/matm-2.0.tar.gz
 	md5sums = SKIP
 
 pkgname = matm-bin

@@ -1,7 +1,7 @@
 # Maintainer: crolbar <crolbar@crolbar.com>
 _pkgname="matm"
 pkgname="matm-bin"
-pkgver=1.1
+pkgver=2.0
 pkgrel=1
 pkgdesc="A tool to watch anime, movies, tv shows and read manga from the comfort of the cli!"
 arch=('x86_64')
