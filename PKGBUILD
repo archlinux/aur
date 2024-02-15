@@ -1,6 +1,6 @@
 # Maintainer: Antony Kellermann <antony@aokellermann.dev>
 pkgname=bananacakepop-beta-bin
-pkgver=15.0.0_insider.2
+pkgver=15.0.0_insider.4
 _pkgver=$(echo $pkgver | tr '_' '-')
 pkgrel=1
 pkgdesc="A powerful GraphQL IDE that joins you and your team on your GraphQL journey."
@@ -9,7 +9,7 @@ arch=("x86_64")
 license=("custom:ChilliCreamLicense1.0")
 source=("https://cdn.bananacakepop.com/app/BananaCakePop-$_pkgver-linux-$CARCH.AppImage"
         "LICENSE")
-b2sums=("245239c18382248d8f9f651182588ef0ad26710557668cc01beb416f9cecf595780c3a447d881e63c21e2dd8b3059c06760f10bfd5fac79ff50095ae1d65e170"
+b2sums=("898e111d082c435920c5948e0fe8b29b72d09a9f3a180885c032d4f11041c93002db4c9e05e5c351ef6d67256c04c050dda59faed8afebea11cbfb9d548115a5"
         "65c1186762988ba427d42dc746f97aa9a7ceabc245570aeab701752e675ffec82c4f3718f4f4a116cc92e967bc38cae5df1baf5eb053da045bf2a122de2aeaf6")
 options+=('!strip')
 
