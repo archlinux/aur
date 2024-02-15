@@ -1,7 +1,7 @@
 # Maintainer: Wolfgang Gehrhardt <gehwolf at freenet dot de>
 
 pkgname=samconf
-pkgver=0.50.2
+pkgver=0.51.0
 pkgrel=1
 pkgdesc="A c library to manage confiugrations form differnt verified sources"
 arch=('x86_64')
@@ -29,4 +29,4 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   chmod o+r "$pkgdir/usr/bin/signature.sh"
 }
-md5sums=('975e92527467874227f25b4d2762c1a4')
+md5sums=('c43ed5fba5cdd2f26470e597f6fb5a81')

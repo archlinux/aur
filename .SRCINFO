@@ -1,15 +1,17 @@
 pkgbase = samconf
 	pkgdesc = A c library to manage confiugrations form differnt verified sources
-	pkgver = 0.50.2
+	pkgver = 0.51.0
 	pkgrel = 1
 	url = https://github.com/Elektrobit/samconf
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	depends = glibc
+	depends = bash
 	depends = json-c
 	depends = safu
 	depends = openssl
-	source = samconf-0.50.2.tar.gz::https://github.com/Elektrobit/samconf/archive/refs/tags/samconf-0.50.2.tar.gz
-	md5sums = 975e92527467874227f25b4d2762c1a4
+	source = samconf-0.51.0.tar.gz::https://github.com/Elektrobit/samconf/archive/refs/tags/samconf-0.51.0.tar.gz
+	md5sums = c43ed5fba5cdd2f26470e597f6fb5a81
 
 pkgname = samconf
