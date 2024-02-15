@@ -1,0 +1,17 @@
+pkgbase = huxdemp-git
+	pkgdesc = Highly advanced and colored version of hexdump.
+	pkgver = 1.0.0.r5.g18e1535
+	pkgrel = 1
+	url = https://github.com/kiedtl/huxdemp
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = lua
+	makedepends = scdoc
+	depends = less
+	conflicts = huxdemp
+	source = git+https://github.com/kiedtl/huxdemp.git
+	b2sums = SKIP
+
+pkgname = huxdemp-git
