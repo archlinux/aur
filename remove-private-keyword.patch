@@ -1,0 +1,20 @@
+--- storage/mroonga/CMakeLists.txt.orig	2024-02-15 11:57:43.391429429 +0000
++++ storage/mroonga/CMakeLists.txt	2024-02-15 11:57:59.043475238 +0000
+@@ -284,7 +284,7 @@ else()
+     set_property(TARGET mysqld PROPERTY ENABLE_EXPORTS TRUE)
+     list(APPEND MRN_LIBRARIES mysqld)
+   endif()
+-  target_link_libraries(mroonga PRIVATE ${MRN_LIBRARIES})
++  target_link_libraries(mroonga ${MRN_LIBRARIES})
+ 
+   option(WITH_DEBUG "Enable debug options" OFF)
+   if(WITH_DEBUG)
+@@ -358,7 +358,7 @@ else()
+   include(FindPkgConfig)
+   pkg_check_modules(GROONGA REQUIRED IMPORTED_TARGET
+     "groonga >= ${REQUIRED_GROONGA_VERSION}")
+-  target_link_libraries(mroonga PRIVATE PkgConfig::GROONGA)
++  target_link_libraries(mroonga PkgConfig::GROONGA)
+   pkg_check_modules(GROONGA_NORMALIZER_MYSQL
+     "groonga-normalizer-mysql >= ${REQUIRED_GROONGA_NORMALIZER_MYSQL_VERSION}")
+ endif()

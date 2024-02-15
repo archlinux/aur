@@ -18,10 +18,14 @@ source=(http://packages.groonga.org/source/mroonga/mroonga-$pkgver.tar.gz
         https://rsync.osuosl.org/pub/mariadb/${MYSQL_VERSION}/source/${MYSQL_VERSION}.tar.gz
         mariadb.service
         mariadb-post.sh
-        mariadb-tmpfile.conf)
-makedepends=('cmake' 'openssl' 'systemd' 'zlib' 'zstd' 'libaio' 'libxml2' 'pcre' 'jemalloc' 'lz4' 'boost' 'snappy')
+        mariadb-tmpfile.conf
+        remove-private-keyword.patch
+)
+makedepends=('boost' 'bzip2' 'cmake' 'cracklib' 'curl' 'jemalloc' 'judy' 'krb5' 'liburing'
+             'libxcrypt' 'libxml2' 'lz4' 'openssl' 'pcre2' 'systemd' 'zlib' 'zstd' 'xz' 'pkg-config')
 conflicts=('libmariadbclient' 'mariadb-clients' 'mytop' 'mariadb' 'mysql' 'libmysqlclient' 'mysql-clients')
-depends=('perl' 'inetutils' 'libaio' 'libxml2' 'pcre' 'groonga' 'groonga-normalizer-mysql')
+depends=('liburing' 'libxcrypt' 'libcrypt.so' 'openssl' 'pcre2' 'zlib' 'zstd'
+         'perl' 'inetutils' 'libaio' 'libxml2' 'groonga' 'groonga-normalizer-mysql')
 optdepends=('cutter-test_framework' 'ruby' 'snowball-c')
 
 prepare() {
@@ -30,6 +34,10 @@ prepare() {
     cd $srcdir
     mkdir -p $srcdir/mariadb-$mariadbver/storage/mroonga
     mv $srcdir/mroonga-${pkgver}/* $srcdir/mariadb-$mariadbver/storage/mroonga
+
+    (cd $srcdir/mariadb-$mariadbver
+      patch -p0 < $srcdir/remove-private-keyword.patch
+    )
 }
 
 build() {
@@ -80,7 +88,7 @@ build() {
         -DWITH_EXTRA_CHARSETS=complex
         -DWITH_JEMALLOC=ON
         -DWITH_LIBWRAP=OFF
-        -DWITH_PCRE=bundled
+        -DWITH_PCRE2=system
         -DWITH_READLINE=ON
         -DWITH_SSL=system
         -DWITH_SYSTEMD=yes
@@ -114,9 +122,11 @@ sha1sums=('1f7082d586ff4b6e46a7d70857c8dd4c72a6ecf3'
           'f7f2df7b593f76935851859e01c3dc21c250392c'
           '4bc34244fc4b578c155c8cd569d952a97a476f10'
           '206e9f7ba5357027becc2491e0987442f684d63e'
-          'c2a86c745002923234f9d6d79b3b462d5ab55e8d')
+          'c2a86c745002923234f9d6d79b3b462d5ab55e8d'
+          '125ea01196b1c4461509f937248610ee2dd15574')
 sha256sums=('8e918d40129c6c09b47eb0c56c7548f82c37d5569318e4bf11e94364786817cd'
             '5239a245ed90517e96396605cd01ccd8f73cd7442d1b3076b6ffe258110e5157'
             '2c60dfdc866078a8402d6e18d538e6a1deaa70e1b2410bee5eb209a314d7daa7'
             '368f9fd2454d80eb32abb8f29f703d1cf9553353fb9e1ae4529c4b851cb8c5dd'
-            '2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd')
+            '2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd'
+            'a18931f61b544211cecdca6ccd5110d7790d389cfa04130373167b498aa1ac99')
