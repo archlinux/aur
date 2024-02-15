@@ -1,7 +1,7 @@
 pkgbase = cellframe-dashboard
 	pkgdesc = Super application for managing Cellframe node
-	pkgver = 2.13.5
-	pkgrel = 7
+	pkgver = 2.13.32
+	pkgrel = 1
 	url = https://cellframe.net
 	install = cellframe-dashboard.install
 	arch = x86_64
@@ -20,9 +20,8 @@ pkgbase = cellframe-dashboard
 	depends = libxcrypt-compat
 	conflicts = cellframe-node
 	conflicts = cellframe-wallet
-	options = !makeflags
-	options = !buildflags
-	source = git+https://gitlab.demlabs.net/cellframe/cellframe-dashboard.git#commit=de2175fe2f5dcd5d0132e66c95601f115d65dacc
+	options = !debug
+	source = git+https://gitlab.demlabs.net/cellframe/cellframe-dashboard.git#commit=f7188c3688627caf70b233ab6a8fedd781bdc91e
 	source = cellframe-node.logrotate
 	source = cellframe-node-logrotate.timer
 	source = cellframe-node-logrotate.service
