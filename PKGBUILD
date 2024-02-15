@@ -40,9 +40,11 @@ prepare() {
 	# Force the newest version of electron-to-chromium
 	sed -E -i 's|(.*)("electron": ")|\1"electron-to-chromium": "'"$(npm view 'electron-to-chromium@latest' version)"'",\n\1\2|' 'packages/compass/package.json'
 
-	# Use a new version of os-dns-native
-	sed -E -i "s|(.*)\"os-dns-native\": \".*\",|\1\"os-dns-native\": \"1\.2\.1\",|" 'packages/compass/package.json'
-	patch --forward -p1 < "$srcdir/hadron-build-os-dns-native.diff"
+	if [[ ! "$_target" =~ -beta$ ]]; then
+		# Use a new version of os-dns-native
+		sed -E -i "s|(.*)\"os-dns-native\": \".*\",|\1\"os-dns-native\": \"1\.2\.1\",|" 'packages/compass/package.json'
+		patch --forward -p1 < "$srcdir/hadron-build-os-dns-native.diff"
+	fi
 
 	# Don't use the bundled ffmpeg
 	patch --forward -p1 < "$srcdir/hadron-build-ffmpeg.diff"
