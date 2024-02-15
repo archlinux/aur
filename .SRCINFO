@@ -6,7 +6,6 @@ pkgbase = firefox-blocktube
 	arch = any
 	groups = firefox-addons
 	license = GPL3
-	depends = firefox
 	source = blocktube-0.3.38.xpi::https://addons.mozilla.org/firefox/downloads/latest/blocktube/latest.xpi
 	sha256sums = 09e79457ecf19596570fdef9f90d4374861785738f71d3558b013be7208477d2
 
