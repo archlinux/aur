@@ -1,4 +1,4 @@
-From b83084b3bbd07fbed4017a78d3464ace6187a86f Mon Sep 17 00:00:00 2001
+From 6a3ba9e734570288c5a6127c201524c92149dff9 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 26 Jun 2021 22:24:12 +0200
 Subject: [PATCH 08/13] Fix crashes in rasterization code using setjmp
@@ -28,7 +28,7 @@ Change-Id: I01937d13569dd01ab4cb1f608020544c93bc343c
  rename src/gui/painting/{qgrayraster.c => qgrayraster.cpp} (98%)
 
 diff --git a/src/gui/CMakeLists.txt b/src/gui/CMakeLists.txt
-index c2c9b96465..7aaf007c8f 100644
+index dded14bb31..820b943f16 100644
 --- a/src/gui/CMakeLists.txt
 +++ b/src/gui/CMakeLists.txt
 @@ -174,7 +174,7 @@ qt_internal_add_module(Gui
@@ -235,7 +235,7 @@ index 3c222c49e1..813cfc08dc 100644
          *araster = 0;
          return ErrRaster_Memory_Overflow;
 diff --git a/src/gui/painting/qt_attribution.json b/src/gui/painting/qt_attribution.json
-index 59c03053e9..43d9033d38 100644
+index 33ed2fd5c7..658547ce4a 100644
 --- a/src/gui/painting/qt_attribution.json
 +++ b/src/gui/painting/qt_attribution.json
 @@ -4,7 +4,7 @@
