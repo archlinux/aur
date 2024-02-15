@@ -1,0 +1,16 @@
+pkgbase = android-aarch64-xorg-util-macros
+	pkgdesc = X.Org Autotools macros
+	pkgver = 1.20.0
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = any
+	license = custom
+	makedepends = android-configure
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org//releases/individual/util/util-macros-1.20.0.tar.xz
+	sha512sums = 76caefb118bf1675d7b2b96e1bbb04eb9a320b02e120839e55a22ef98538ecf00d0e686a67186fc8fdc8492d277ffe3125ae8b7ac61ce4739edc0de3f468d2eb
+
+pkgname = android-aarch64-xorg-util-macros
