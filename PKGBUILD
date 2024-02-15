@@ -2,29 +2,30 @@
 # Contributor: brokenpip3 <brokenpip3[at]gmail[dot]com>
 
 pkgname=gpt-engineer
-pkgver=0.2.6
-pkgrel=2
+pkgver=0.2.8
+pkgrel=1
 pkgdesc="Specify what you want it to build, the AI asks for clarification, and then builds it."
 arch=('any')
-url="https://github.com/AntonOsika/gpt-engineer"
+url="https://github.com/gpt-engineer-org/gpt-engineer"
 license=('MIT')
-depends=(python python-openai python-termcolor python-typer python-langchain
-        python-backoff python-tiktoken python-dotenv python-dataclasses-json
-        python-langchain-community python-tabulate python-toml)
+depends=('python>=3.10' python-openai python-termcolor python-typer
+        python-langchain python-backoff python-tiktoken python-dotenv
+        python-dataclasses-json python-langchain-community python-tabulate
+        python-toml)
 makedepends=(python-build python-installer python-wheel python-poetry-core)
 #checkdepends=(python-pytest python-protonvpn-nm-lib)
 install=gpt-engineer.install
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver-python3.8-11-compatible.tar.gz")
-sha256sums=('9d1afc264387976cae65aa5b55936eaeb336db8938d7c3248cdf591cf1bb9986')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('8f014eef4b4c4cdf8e6cccc3ac45d2e7817bbd43c0197cf724ce1bbd696d3d8c')
 
 
 build() {
-    cd "$pkgname-$pkgver-python3.8-11-compatible"
+    cd "$pkgname-$pkgver"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$pkgname-$pkgver-python3.8-11-compatible"
+    cd "$pkgname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
