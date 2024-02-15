@@ -1,0 +1,26 @@
+From fd68c60d664fd67ef8a63c332067f186c70d0785 Mon Sep 17 00:00:00 2001
+From: Robert Manner <robert.manner@quest.com>
+Date: Thu, 15 Feb 2024 13:13:21 +0100
+Subject: [PATCH] osmscoutgpx/Import.cpp: fix signature of
+ StructuredErrorHandler
+
+---
+ libosmscout-gpx/src/osmscoutgpx/Import.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libosmscout-gpx/src/osmscoutgpx/Import.cpp b/libosmscout-gpx/src/osmscoutgpx/Import.cpp
+index 49ba6353d..20d1c6af0 100644
+--- a/libosmscout-gpx/src/osmscoutgpx/Import.cpp
++++ b/libosmscout-gpx/src/osmscoutgpx/Import.cpp
+@@ -335,7 +335,7 @@ public:
+     return xmlGetPredefinedEntity(name);
+   }
+ 
+-  static void StructuredErrorHandler(void* data, xmlErrorPtr error)
++  static void StructuredErrorHandler(void* data, const _xmlError * error)
+   {
+     auto* parser=static_cast<GpxParser*>(data);
+     parser->Error("XML error, line " + std::to_string(error->line) + ": " + error->message);
+-- 
+2.43.1
+
