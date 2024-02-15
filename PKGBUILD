@@ -3,14 +3,13 @@
 _pkgname=multiOmicsViz
 _pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
-pkgrel=1
-pkgdesc='Plot the effect of one omics data on other omics data along the chromosome'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('LGPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Plot the effect of one omics data on other omics data along the chromosome"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('LGPL-2.0-or-later')
 depends=(
-  r
   r-doparallel
   r-foreach
   r-summarizedexperiment
@@ -18,15 +17,16 @@ depends=(
 optdepends=(
   r-biocgenerics
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3a53cb2abad8e3314e430a10dc2509179dbed5fa37ce318be003105a49023389')
+source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('a051b5e32c72385f4463cbe1751c1484')
+b2sums=('640ba46dbe596ee7d58ea4be34fa5a08408c0f369d0830429b70416909873dcffe39d25b08c38745e4816562aca4b7eee6f991db536c724a6acfbf98d1f76161')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
