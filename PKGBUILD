@@ -3,18 +3,18 @@
 
 _pkgname='ov'
 pkgname="${_pkgname}-git"
-pkgver=0.33.1.r0.g06feaa0
-pkgrel=2
+pkgver=0.33.2.r0.g9735f61
+pkgrel=1
 epoch=1
-pkgdesc='Feature-rich terminal-based text pager (built from latest git commit)'
+pkgdesc='Feature-rich terminal-based text pager (built from latest commit)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/noborus/ov'
-license=('MIT')
+license=('MIT')  # SPDX-License-Identifier: MIT
 provides=('ov')
 conflicts=('ov')
 depends=('glibc')
 makedepends=('git' 'go')
-source=('git+https://github.com/noborus/ov.git')
+source=("git+$url.git")
 options=('lto')
 sha256sums=('SKIP')
 
