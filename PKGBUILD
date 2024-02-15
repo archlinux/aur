@@ -11,7 +11,7 @@
 pkgname=proxigram-git
 _pkgname=proxigram
 pkgver=r91.bf04c4c
-pkgrel=1
+pkgrel=2
 pkgdesc="A privacy focused and open source front-end for Instagram"
 arch=('any')
 url="https://codeberg.org/ThePenguinDev/Proxigram"
@@ -27,7 +27,7 @@ md5sums=('SKIP'
          '6378320dd779a73b31dc64dba4bb3bc2'
          '95be5fd46a8e5a5e832ea135a2fbfee3'
          '0ad916caa947bf33368d4fba3572ebe6'
-         '586e6f4a9a3725fcf867f9556e96525d')
+         '308016ff3e49dcb48fcff603abc8bb3d')
 options=(!strip)
 
 pkgver() {
