@@ -1,6 +1,6 @@
 pkgbase = cervisia
 	pkgdesc = CVS Frontend
-	pkgver = 23.08.4
+	pkgver = 23.08.5
 	pkgrel = 1
 	url = https://apps.kde.org/cervisia/
 	arch = x86_64
@@ -15,12 +15,12 @@ pkgbase = cervisia
 	depends = kparts5
 	depends = hicolor-icon-theme
 	depends = kinit
-	source = https://download.kde.org/stable/release-service/23.08.4/src/cervisia-23.08.4.tar.xz
-	source = https://download.kde.org/stable/release-service/23.08.4/src/cervisia-23.08.4.tar.xz.sig
+	source = https://download.kde.org/stable/release-service/23.08.5/src/cervisia-23.08.5.tar.xz
+	source = https://download.kde.org/stable/release-service/23.08.5/src/cervisia-23.08.5.tar.xz.sig
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
-	sha256sums = 41be442b11e0a2eda27709c76a167f752620f5efe33ff1649a591483946c9ed6
+	sha256sums = 608946f590f2b6efb994c0809fecbcbab03574d318a3d5973de3d4839eb17f1f
 	sha256sums = SKIP
 
 pkgname = cervisia
