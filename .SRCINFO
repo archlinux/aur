@@ -1,12 +1,13 @@
 pkgbase = proxigram-git
 	pkgdesc = A privacy focused and open source front-end for Instagram
 	pkgver = r91.bf04c4c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/ThePenguinDev/Proxigram
 	arch = any
 	license = AGPL-3.0
 	makedepends = npm
 	depends = nodejs
+	optdepends = redis: used for caching purposes
 	options = !strip
 	source = proxigram::git+https://codeberg.org/ThePenguinDev/Proxigram
 	source = proxigram.service
