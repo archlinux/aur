@@ -1,13 +1,16 @@
 pkgbase = nyalcf-bin
 	pkgdesc = Nya LoCyanFrp! Launcher | 乐青映射启动器
-	pkgver = 0.1.6
-	pkgrel = 1
+	pkgver = 0.1.7
+	pkgrel = 2
 	url = https://github.com/Muska-Ami/NyaLCF
 	arch = x86_64
 	license = MIT
 	depends = gtk3
 	depends = libayatana-appindicator
-	source = https://github.com/Muska-Ami/NyaLCF/releases/download/v0.1.6/nyalcf-0.1.6+0.1.6-linux.deb
-	sha256sums = 83f4f6af575117f793fbd5446d106981312f3577e0d9d11b05efb1b08984e753
+	optdepends = frpc: builtin frpc support
+	source = https://github.com/Muska-Ami/NyaLCF/releases/download/v0.1.7+rc2/nyalcf-0.1.7+rc2-linux.deb
+	source = nyanana.sh
+	sha256sums = ea7746f200c421f197669d31dbfe2305f4eca1fde2044a0d2184ec5785438b4a
+	sha256sums = SKIP
 
 pkgname = nyalcf-bin
