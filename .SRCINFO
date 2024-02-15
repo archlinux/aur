@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-charts-static
 	pkgdesc = Provides a set of easy to use chart components (mingw-w64)
-	pkgver = 6.6.1
+	pkgver = 6.6.2
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = mingw-w64-qt6-charts-static
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.6/6.6.1/submodules/qtcharts-everywhere-src-6.6.1.tar.xz
-	sha256sums = 1156caa94526b7e1bc30da800a7503d19744b10afc7c1f702da6dedfaa2a31b6
+	source = https://download.qt.io/official_releases/qt/6.6/6.6.2/submodules/qtcharts-everywhere-src-6.6.2.tar.xz
+	sha256sums = b1486262ee07b4420b8cdd1525c01800186b15d4fee0669cf544fdd5e941f5f4
 
 pkgname = mingw-w64-qt6-charts-static
