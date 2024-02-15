@@ -1,0 +1,19 @@
+pkgbase = android-armv7a-eabi-libxau
+	pkgdesc = X11 authorisation library (android)
+	pkgver = 1.0.11
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = any
+	license = custom
+	depends = android-armv7a-eabi-xorgproto
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXau-1.0.11.tar.xz
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXau-1.0.11.tar.xz.sig
+	validpgpkeys = 3BB639E56F861FA2E86505690FDD682D974CA72A
+	sha512sums = f56abba3bef3fdd4739dfa69367a4251b5fab7c89194c9aece9efa66b9ebbf0736690cc9bd654aab19d9db377e4b9a5268c9c020b3d293bb5351bff5fe75a4dd
+	sha512sums = SKIP
+
+pkgname = android-armv7a-eabi-libxau
