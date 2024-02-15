@@ -5,7 +5,7 @@
 
 pkgname='offpunk'
 _pkgname='offpunk'
-pkgver=2.0
+pkgver=2.2
 pkgrel=1
 pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities'
 arch=('any')
@@ -61,6 +61,8 @@ package() {
   test -f man/offpunk.1 && \
   install -Dm0644 man/offpunk.1 "$pkgdir/usr/share/man/man1/offpunk.1"
   install -Dm0644 README.md     "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm0644 CHANGELOG     "$pkgdir/usr/share/doc/$pkgname/CHANGELOG"
+  install -Dm0644 CONTRIBUTORS  "$pkgdir/usr/share/doc/$pkgname/CONTRIBUTORS"
 }
 
 # eof
