@@ -2,7 +2,7 @@
 # Contributor: robertfoster
 
 pkgname=webplotdigitizer-bin
-pkgver=4.6
+pkgver=4.7
 _name=WebPlotDigitizer-$pkgver
 pkgrel=1
 pkgdesc='Tool to extract numerical data from plot images'
@@ -12,7 +12,7 @@ license=('AGPL3')
 depends=('gtk3' 'libxss' 'nss')
 source=("https://automeris.io/downloads/${_name}-linux-x64.zip"
         "${pkgname%%-bin}.desktop")
-sha512sums=('635e3c040a42d13c1ac4a83d7e76f5e20b3329dbd375c2177446a4b4232a0edfb3de725c912efc072a9ae5c0bae8ffcb4d6998be40ede554fec8a105f9e654d9'
+sha512sums=('264eae05f8087b1533480a1b31b9de330287b0be8761413ac13de09b1df1d115f2acc7170a2785fc8102ded78b231962728318972a71b1f076f39e6d4f894881'
             '043bf1361524d9cc1f89c7305adc9fae0327665431cf9dae4e66cb2de3679843b28c94a9f79bfc6459f5f9eb56a02e154321a6a1ba88824e6b19340627aff9ee')
 
 package() {
