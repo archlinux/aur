@@ -10,8 +10,9 @@ pkgbase = rehex
 	makedepends = busted
 	depends = jansson
 	depends = capstone
-	depends = wxwidgets-gtk3
+	depends = wxgtk3
 	depends = lua>=5.3
+	depends = botan2
 	source = rehex-0.61.0::git+https://github.com/solemnwarning/rehex.git#tag=0.61.0
 	source = rehex.patch
 	sha256sums = SKIP
