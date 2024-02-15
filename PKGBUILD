@@ -11,10 +11,11 @@
 pkgname=proxigram-git
 _pkgname=proxigram
 pkgver=r91.bf04c4c
-pkgrel=4
+pkgrel=5
 pkgdesc="A privacy focused and open source front-end for Instagram"
 arch=('any')
 url="https://codeberg.org/ThePenguinDev/Proxigram"
+backup=("etc/$_pkgname.conf")
 license=('AGPL-3.0')
 depends=('nodejs')
 makedepends=('npm')
