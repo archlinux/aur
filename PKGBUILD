@@ -14,6 +14,7 @@ optdepends=(
   'fzf: find notes'
   'bat: render notes in terminal'
   'tree: tree of notes'
+  'ripgrep: find notes by content'
 )
 conflicts=('note-manager')
 source=("$pkgname::git+https://github.com/thek4n/note.git#tag=v$pkgver")
