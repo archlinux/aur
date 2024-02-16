@@ -1,13 +1,13 @@
 # Maintainer: Siyia <eutychios23@gmail.com>
 pkgname=bulk-rename-plus
-pkgver=1.1.9
-pkgrel=3
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='Tiny and powerfull cmd tool for bulk renaming recursively paths, written in C++'
 arch=('x86_64')
 url="https://github.com/siyia2/bulk-rename-plus"
 license=('GPL3')
 depends=('bash' 'coreutils')
-md5sums=('07300f697e5cdf0f1ed556ef56e1e3af')
+md5sums=('e23e5ec19d7c913e926dff203a865c75')
 
 source=("https://github.com/siyia2/bulk-rename-plus/archive/v${pkgver}.tar.gz")
 
