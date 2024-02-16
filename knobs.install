@@ -6,7 +6,7 @@
 ### arg 1: the new package version
 post_install() {
   echo "create symlinks to subcommands:"
-  for SUBCMD in amd-pstate cpu cpufreq drm drm-i915 intel-pstate intel-uncore intel-rapl ryzen; do
+  for SUBCMD in amd-pstate cpu cpufreq drm drm-amdgpu drm-i915 intel-pstate intel-uncore intel-rapl ryzen; do
     if [ -e /usr/bin/$SUBCMD ]; then
       echo "- /usr/bin/$SUBCMD: skip"
     else
@@ -27,7 +27,7 @@ post_install() {
 ### arg 2: the old package version
 post_upgrade() {
   echo "update symlinks to subcommands:"
-  for SUBCMD in amd-pstate cpu cpufreq drm drm-i915 intel-pstate intel-uncore intel-rapl ryzen; do
+  for SUBCMD in amd-pstate cpu cpufreq drm drm-amdgpu drm-i915 intel-pstate intel-uncore intel-rapl ryzen; do
     if [ -e /usr/bin/$SUBCMD ]; then
       echo "- /usr/bin/$SUBCMD: skip"
     else
@@ -46,7 +46,7 @@ post_upgrade() {
 ### arg 1: the old package version
 post_remove() {
   echo "remove symlinks to knobs subcommands:"
-  for SUBCMD in amd-pstate cpu cpufreq drm drm-i915 intel-pstate intel-uncore intel-rapl ryzen; do
+  for SUBCMD in amd-pstate cpu cpufreq drm drm-amdgpu drm-i915 intel-pstate intel-uncore intel-rapl ryzen; do
     if [ -L /usr/bin/$SUBCMD ]; then
       TARGET=$(basename $(readlink /usr/bin/$SUBCMD))
       if [ "$TARGET" = "knobs" ]; then
