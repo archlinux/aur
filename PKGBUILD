@@ -4,9 +4,10 @@
 _beta=''
 pkgname='s5cmd'
 pkgver='2.2.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Parallel S3 and local filesystem execution tool'
 arch=('x86_64' 'i686' 'aarch64')
+options=(!lto)
 _uri="github.com/peak"
 url="https://${_uri}/${pkgname}"
 license=('MIT')
