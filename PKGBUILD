@@ -22,7 +22,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest -k 'mesh[pmap] and not lax_scan_with_kmap[pmap] and not conv2d[pmap] and not and_time_conv2d and not and_time_patch'
+  test-env/bin/python -m pytest -k 'not mesh[pmap] and not lax_scan_with_kmap[pmap] and not conv2d[pmap] and not and_time_conv2d and not and_time_patch'
 }
 
 package() {
