@@ -1,7 +1,7 @@
 pkgbase = local-aur
 	pkgdesc = Download the AUR packages you trust and use pacman to install them.
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rpkak/local-aur
 	install = local-aur.install
 	arch = any

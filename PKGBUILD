@@ -1,7 +1,7 @@
 # Maintainer: rpkak <rpkak@users.noreply.github.com>
 pkgname='local-aur'
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Download the AUR packages you trust and use pacman to install them."
 arch=('any')
