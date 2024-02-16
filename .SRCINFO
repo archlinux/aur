@@ -1,6 +1,6 @@
 pkgbase = python-gs-quant
 	pkgdesc = A python toolkit for quantitative finance developped at Goldman Sachs
-	pkgver = 1.0.50
+	pkgver = 1.0.57
 	pkgrel = 1
 	url = https://developer.gs.com/discover/products/gs-quant
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = python-gs-quant
 	depends = python-certifi
 	depends = python-dataclasses-json
 	depends = python-dateutil
+	depends = python-deprecation
 	depends = python-httpx
 	depends = python-inflection
 	depends = python-lmfit
@@ -28,7 +29,7 @@ pkgbase = python-gs-quant
 	depends = python-statsmodels
 	depends = python-tqdm
 	depends = python-websockets
-	source = https://files.pythonhosted.org/packages/source/g/gs_quant/gs_quant-1.0.50.tar.gz
-	sha256sums = 752862b84377a4d4758390cd48bccc4439f2e0ece3aaa4cbf5d59eb494264fe2
+	source = https://files.pythonhosted.org/packages/source/g/gs_quant/gs_quant-1.0.57.tar.gz
+	sha256sums = 98886131cfd751681c72e227e3d69a1f62bb1f75d386b3ab1f6868244d18b246
 
 pkgname = python-gs-quant
