@@ -3,7 +3,7 @@
 
 _pkgname='traefik'
 pkgname="${_pkgname}-bin"
-pkgver=2.10.7
+pkgver=2.11.0
 pkgrel=1
 pkgdesc='A modern reverse proxy'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -28,12 +28,12 @@ source_aarch64=("${_pkgname}_aarch64_${pkgver}"::"https://github.com/containous/
 sha256sums=('da59d047177cae773d248684e8484d91c71201f5bc07fe72452efdf9bed1a7f4'
             '95a06c5379332d05f6f783019ab0276ed1a2ec2fcf5e87a5933e08e9e0dcca62'
             'abfcfe24e742bf8968749ea79e2c0425bef3d37d16eb60311b5a994312a1e54d'
-            'bff185bf46b54f7723a6931e2acd4e62b0e2acdc22228159a79d0e5f4ab7226f')
-sha256sums_i686=('8df698a44b46ff4b54d848971e2d9b06b152f36c7f45c28933011776575e96f1')
-sha256sums_x86_64=('c65813ad79ad8b719fbd2526f91098578849611d6ce1160260dd03bed1314d9a')
-sha256sums_armv6h=('4694c5133e4a9321f68df65fb794c148ad98c6b0fbe39d924e5d864807b39d01')
-sha256sums_armv7h=('b1c45add94c5782ea8d5863efb89971b30a342ab32ed5fd5a37f5b3a99f34275')
-sha256sums_aarch64=('9e89fb68adcdf976405dd01dfbf3ebf7347267451317d475724be96f5b46adda')
+            'fa73ed6b0680768b0362d5d9b66086f49d053313f3743439f9982a5f6ac68b3c')
+sha256sums_i686=('f62dd49c88d03ffb265be544747b84529fe17dab33936e8b9fd5846ca5e38e1e')
+sha256sums_x86_64=('7f31f1cc566bd094f038579fc36e354fd545cf899523eb507c3cfcbbdb8b9552')
+sha256sums_armv6h=('beefc6681a54d4320367f6ebc77cc227b09020ac44f41c5b5cbd3fd4dd19a785')
+sha256sums_armv7h=('54c489c18f37f2ca6317a34894dacdf6845a991fea437fa1a400b7c216c418cd')
+sha256sums_aarch64=('159a7901ddd38ea9078e3fe4ac4e0653006ca840e990945449c82731566a9086')
 
 package() {
   install -d -m755 "${pkgdir}/var/log/traefik"
