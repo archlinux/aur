@@ -1,7 +1,7 @@
 pkgbase = auxilium-git
 	pkgdesc = Tool for parse args in many shell (bash, ksh,zsh)
-	pkgver = 0.0.10
-	pkgrel = 2
+	pkgver = 0.0.11
+	pkgrel = 1
 	url = https://salsa.debian.org/openstack-team/third-party/auxilium
 	arch = any
 	license = Apache-2
