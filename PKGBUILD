@@ -3,14 +3,13 @@
 _pkgname=rbokeh
 _pkgver=0.5.2
 pkgname=r-${_pkgname,,}
-pkgver=0.5.2
-pkgrel=4
-pkgdesc='R Interface for Bokeh'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="R Interface for Bokeh"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
 license=('MIT')
 depends=(
-  r
   r-digest
   r-gistr
   r-hexbin
@@ -25,25 +24,26 @@ depends=(
 optdepends=(
   r-data.table
   r-knitr
-  r-lattice
   r-latticeextra
   r-lintr
   r-markdown
   r-rmarkdown
   r-roxygen2
-  r-shiny
   r-testthat
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d8c47dbd978efce04e5676a3a91d511517a9bb8fe1859c404bfc9ee0f0bf4ec0')
+source=("https://cran.r-project.org/src/contrib/Archive/$_pkgname/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('08b834ae99835c679c717c7c8537e196')
+b2sums=('69bb6adb62b4e05bbffb5247423b6cbcffaeae09eefc150bcf888e8e1a5b027733ce80972e03a9aed95ab605cdcf3768bb9f366f36ef9c77269b5e75e1d58167')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:

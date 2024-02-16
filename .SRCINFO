@@ -1,11 +1,10 @@
 pkgbase = r-rbokeh
 	pkgdesc = R Interface for Bokeh
 	pkgver = 0.5.2
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=rbokeh
 	arch = any
 	license = MIT
-	depends = r
 	depends = r-digest
 	depends = r-gistr
 	depends = r-hexbin
@@ -18,15 +17,14 @@ pkgbase = r-rbokeh
 	depends = r-scales
 	optdepends = r-data.table
 	optdepends = r-knitr
-	optdepends = r-lattice
 	optdepends = r-latticeextra
 	optdepends = r-lintr
 	optdepends = r-markdown
 	optdepends = r-rmarkdown
 	optdepends = r-roxygen2
-	optdepends = r-shiny
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/rbokeh_0.5.2.tar.gz
-	sha256sums = d8c47dbd978efce04e5676a3a91d511517a9bb8fe1859c404bfc9ee0f0bf4ec0
+	source = https://cran.r-project.org/src/contrib/Archive/rbokeh/rbokeh_0.5.2.tar.gz
+	md5sums = 08b834ae99835c679c717c7c8537e196
+	b2sums = 69bb6adb62b4e05bbffb5247423b6cbcffaeae09eefc150bcf888e8e1a5b027733ce80972e03a9aed95ab605cdcf3768bb9f366f36ef9c77269b5e75e1d58167
 
 pkgname = r-rbokeh
