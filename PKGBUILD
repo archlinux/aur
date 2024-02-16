@@ -1,21 +1,28 @@
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname='perl-data-dpath'
-pkgver='0.50'
+_distname='Data-DPath'
+pkgname="perl-${_distname@L}"
+pkgver='0.59'
 pkgrel='1'
-pkgdesc="DPath is not XPath!"
+pkgdesc="A library that provides data structures inspired by XPath"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('LicenseRef-GPL-1.0-or-later OR Artistic-1.0-Perl')
 options=('!emptydirs')
-depends=('perl-class-xsaccessor' 'perl-iterator-util' 'perl-list-moreutils' 'perl-sub-exporter' 'perl-aliased')
-makedepends=()
+depends=(
+  'perl'
+  'perl-aliased'
+  'perl-class-xsaccessor'
+  'perl-iterator-util'
+  'perl-sub-exporter'
+)
 checkdepends=('perl-test-deep')
-url='http://search.mcpan.org/dist/Data-DPath'
-source=('http://search.mcpan.org/CPAN/authors/id/S/SC/SCHWIGON/Data-DPath-0.50.tar.gz')
-md5sums=('e3fdba9f6d88988b7e85c0d558acb0e3')
-sha512sums=('34b956296f1495cc496c56863b7a381ac539c1304a9da48d67b161596d9bf1d43b027a510ce845b0f55dc2c72945bac35cf57acc58d83ee7d671da37cc2b774b')
-_distdir="Data-DPath-0.50"
+url="https://metacpan.org/release/$_distname"
+_author='SCHWIGON'
+source=("https://search.cpan.org/CPAN/authors/id/${_author::1}/${_author::2}/$_author/$_distname-$pkgver.tar.gz")
+sha512sums=('1020402bf810ef2c0f84ca002819b5235090df1ea83f70f4c846afa4e485868cd8d6583268cfeaf4c77a6ea37fdee803c98aa77d74c4df70b543c35e87ad1e0b')
+_distdir="$_distname-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -40,12 +47,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
-}
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
+  install -Dm644 LICENSE* -t "$pkgdir/usr/share/licenses/$pkgname"
+}
