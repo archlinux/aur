@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="chromium uBlock Origin extension"
 arch=('any')
 url="https://github.com/gorhill/uBlock"
-license=('GPL3')
+license=('GPL-3.0-only')
 makedepends=('chromium' 'openssl' 'jq')
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/${pkgver}/uBlock0_${pkgver}.chromium.zip"
         "uBlock0.chromium.pem")
