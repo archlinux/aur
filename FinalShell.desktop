@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=FinalShell
+Comment=FinalShell
+Exec=FinalShell
+Icon=/usr/share/icons/hicolor/scalable/apps/FinalShell.png
+Terminal=false
+Type=Application
+Categories=Development;
