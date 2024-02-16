@@ -1,6 +1,6 @@
 pkgbase = v8-r
 	pkgdesc = Google's open source JavaScript and WebAssembly engine
-	pkgver = 12.3.150
+	pkgver = 12.3.206
 	pkgrel = 1
 	url = https://v8.dev
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = v8-r
 	conflicts = v8-6.7-static
 	conflicts = v8-static-gyp
 	conflicts = v8-static-gyp-5.4
+	options = !debug
 	source = depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	source = v8.pc
 	source = v8_libbase.pc
