@@ -13,6 +13,7 @@ pkgbase = ungoogled-chromium-xdg
 	makedepends = gperf
 	makedepends = nodejs
 	makedepends = pipewire
+	makedepends = rust
 	makedepends = qt5-base
 	makedepends = java-runtime-headless
 	makedepends = git
