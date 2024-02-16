@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HDF5Array
-_pkgver=1.30.0
+_pkgver=1.30.1
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.30.1
 pkgrel=1
 pkgdesc='HDF5 backend for DelayedArray objects'
 arch=('x86_64')
@@ -35,7 +35,7 @@ optdepends=(
   r-zellkonverter
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0bf1483bdc9bb37979a17d3dd034669158a27b81ab6a1ff0fd1a375f4db2a25c')
+sha256sums=('a0e1927a7f7b1a1d9425329566282fd054463c2f21992a2f037296bb1e95929d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
