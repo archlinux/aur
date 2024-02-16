@@ -2,7 +2,7 @@
 # Contributor: BrinkerVII <brinkervii@gmail.com>
 
 pkgname=luau
-pkgver=0.612
+pkgver=0.613
 pkgrel=1
 pkgdesc="A fast, small, safe, gradually typed embeddable scripting language derived from Lua"
 arch=(x86_64)
@@ -18,7 +18,7 @@ source=(
   "Luau.pc"
 )
 sha256sums=(
-  'b2a954873b21d5bc94266f7bb2224a943692bebaba654268ace15da8fbc70ae1'
+  'f6d6811ad03f49d46f57d700ea182839e7971b515400c332635a7d1cc62ddc6b'
   'f65bc28fd66aac60cc8c7a33c7e64bec7ed296a69628dce57d2dfa57ba7ebab4'
 )
 
@@ -46,7 +46,7 @@ check() {
 package() {
   cd "$_archive"
 
-  _executables=(
+  local executables=(
     luau
     luau-analyze
     luau-ast
@@ -54,11 +54,11 @@ package() {
     luau-compile
     luau-reduce
   )
-  for executable in "${_executables[@]}"; do
+  for executable in "${executables[@]}"; do
     install -Dm755 -t "$pkgdir/usr/bin" "build/$executable"
   done
 
-  _libraries=(
+  local libraries=(
     libLuau.Analysis.a
     libLuau.Ast.a
     libLuau.CodeGen.a
@@ -67,11 +67,11 @@ package() {
     libLuau.VM.a
     libisocline.a
   )
-  for library in "${_libraries[@]}"; do
+  for library in "${libraries[@]}"; do
     install -Dm644 -t "$pkgdir/usr/lib/Luau" "build/$library"
   done
 
-  _headers=(
+  local headers=(
     ./Analysis/include/Luau/*.h
     ./Ast/include/Luau/*.h
     ./CodeGen/include/*.h
@@ -83,7 +83,7 @@ package() {
     ./VM/include/*.h
     ./extern/isocline/include/*.h
   )
-  for header in "${_headers[@]}"; do
+  for header in "${headers[@]}"; do
     install -Dm644 -t "$pkgdir/usr/include/Luau" "$header"
   done
 
