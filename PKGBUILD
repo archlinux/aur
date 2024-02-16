@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('webkit2gtk' 'clash-geoip' 'libayatana-appindicator' "clash-meta-is-mihomo")
 makedepends=('yarn' 'cargo-tauri' 'jq' 'moreutils' 'rust' 'quickjs' 'git' 'pnpm' 'clang')
 optdepends=('clash' 'clash-rs')
-source=("git+https://github.com/keiko233/clash-nyanpasu.git#branch=dev"
+source=("git+https://github.com/keiko233/clash-nyanpasu.git"
 	"${_pkgname}.desktop"
 )
 provides=(clash-nyanpasu-git clash-nyanpasu)
