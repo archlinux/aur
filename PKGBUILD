@@ -1,4 +1,4 @@
-# Maintainer: John Reese <john@noswap.com>
+# Contributor: John Reese <john@noswap.com>
 # Upstream URL: https://github.com/iBaa/PlexConnect
 #
 # For improvements/fixes to this package, please send a pull request:
@@ -6,8 +6,8 @@
 
 
 pkgname=plexconnect-git
-pkgver=20140218
-pkgrel=2
+pkgver=20230328
+pkgrel=1
 pkgdesc="Integration layer between Apple TV and Plex"
 arch=('any')
 url="https://github.com/iBaa/PlexConnect"
@@ -17,7 +17,7 @@ makedepends=('git')
 conflicts=('plexconnect')
 install='plexconnect-git.install'
 
-_gitroot="git://github.com/iBaa/PlexConnect"
+_gitroot="git+https://github.com/iBaa/PlexConnect"
 _gitname="PlexConnect"
 
 source=("$_gitroot"

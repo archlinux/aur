@@ -1,7 +1,7 @@
 pkgbase = plexconnect-git
 	pkgdesc = Integration layer between Apple TV and Plex
-	pkgver = 20140218
-	pkgrel = 2
+	pkgver = 20230328
+	pkgrel = 1
 	url = https://github.com/iBaa/PlexConnect
 	install = plexconnect-git.install
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = plexconnect-git
 	depends = python2
 	depends = openssl
 	conflicts = plexconnect
-	source = git://github.com/iBaa/PlexConnect
+	source = git+https://github.com/iBaa/PlexConnect
 	source = plexconnect.service
 	source = plexconnect-git.install
 	sha1sums = SKIP
@@ -18,4 +18,3 @@ pkgbase = plexconnect-git
 	sha1sums = 86b1c6b71a0dd271a1e5ae073070c870ff73c07d
 
 pkgname = plexconnect-git
-
