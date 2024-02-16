@@ -1,6 +1,6 @@
 pkgbase = gcc-hentai-git
 	pkgdesc = 让你的 GCC 变得更可爱！
-	pkgver = r25.4df5b09
+	pkgver = r27.d2f9707
 	pkgrel = 1
 	url = https://github.com/Mosklia/gcc-hentai
 	arch = any
