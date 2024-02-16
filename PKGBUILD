@@ -10,7 +10,7 @@ pkgrel=1
 
 pkgdesc="Exports Discord chat logs to a file"
 url="https://github.com/Tyrrrz/$_apkgname"
-license=(GPL3)
+license=(MIT)
 arch=(any)
 
 source=(
@@ -34,6 +34,10 @@ build() {
 
 package() {
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-  cd "$_apkgname-$pkgver/$_apkgname.Cli/bin/Release/net8.0/publish"
+
+  cd "$_apkgname-$pkgver"
+  install -Dm644 License.txt "$pkgdir/usr/share/licenses/$pkgname/License.txt"
+
+  cd "$_apkgname.Cli/bin/Release/net8.0/publish"
   find . -type f -exec install -Dm644 "{}" "$pkgdir/usr/lib/$pkgname/{}" \;
 }
