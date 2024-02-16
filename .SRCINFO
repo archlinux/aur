@@ -1,5 +1,5 @@
 pkgbase = linux-amd
-	pkgver = 6.7.v.4
+	pkgver = 6.7.v.5
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -14,12 +14,12 @@ pkgbase = linux-amd
 	makedepends = lzop
 	makedepends = gcc>=10.3
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v6.7.4
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v6.7.5
 	source = config.x86_64
 	source = linux-amd.preset
 	source = https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/20230105/more-uarches-for-kernel-5.17+.patch
 	sha256sums = SKIP
-	sha256sums = 601e01e4d8f51e66828efde92960066354f4c9dd745a9ec22d3d864774d21713
+	sha256sums = 09e80614ea8f9d2855a22ecae17ce12f13809c260aa2913c65a6dc6177707ceb
 	sha256sums = 60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c
 	sha256sums = 81ad663925a0aa5b5332a69bae7227393664bb81ee2e57a283e7f16e9ff75efe
 
