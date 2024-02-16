@@ -230,7 +230,7 @@ build() {
     'symbol_level=0' # sufficient for backtraces on x86(_64)
     'treat_warnings_as_errors=false'
     'disable_fieldtrial_testing_config=true'
-    'use_custom_libcxx=true' # https://github.com/llvm/llvm-project/issues/61705
+    'use_custom_libcxx=true' # Fixes `excess elements in struct initializer` error
     'use_sysroot=false'
     'use_system_libffi=true'
     'enable_nacl=false'
