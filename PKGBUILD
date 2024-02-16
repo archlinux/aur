@@ -2,8 +2,8 @@
 
 pkgname=python-outlines
 _pkgname=${pkgname#python-}
-pkgver=0.0.30
-_commit=a33692e070284121934173032c0cfcad5d1a3781
+pkgver=0.0.31
+_commit=c548a8a2d0b5446a1b7ee7bd34f7fa79c3920ee0
 pkgrel=1
 pkgdesc="Guided text generation"
 arch=(any)
