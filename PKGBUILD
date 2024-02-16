@@ -2,28 +2,43 @@
 
 pkgname=python-dash
 _pkgname=dash
-pkgver=2.14.0
+pkgver=2.15.0
 pkgrel=1
 pkgdesc="A python framework for building analytical web applications"
 arch=('any')
 url="https://plot.ly/products/dash/"
 license=('MIT')
-depends=('python' 'python-flask' 'python-flask-compress' 'python-flask-seasurf' 'python-future' 'python-plotly' 'python-requests')
-optdepends=()
-makedepends=('python-setuptools')
+depends=(
+  python
+  python-flask
+  python-importlib-metadata
+  python-nest-asyncio
+  python-plotly
+  python-requests
+  python-retrying
+  python-setuptools
+  python-yaml
+  python-werkzeug
+)
+optdepends=(python-flask-compress)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 provides=('python-dash-core-components' 'python-dash-html-components' 'python-dash-renderer' 'python-dash-table')
 conflicts=('python-dash-core-components' 'python-dash-html-components' 'python-dash-renderer' 'python-dash-table')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('bd28be70be24ae1d1f764b8217a03da35e9ed895406686d24dfb6ed4e331e5a9')
+sha256sums=('d38891337fc855d5673f75e5346354daa063c4ff45a8a6a21f25e858fcae41c2')
 
 build(){
   cd "$_pkgname-$pkgver"
-  python setup.py build
+  python -m build -wn
 }
 
 package(){
   cd "$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  mkdir -p "${pkgdir}/etc/xdg"
+  mv "${pkgdir}/usr/etc/jupyter" "${pkgdir}/etc/xdg"
+  rmdir "${pkgdir}/usr/etc"
 }
 
 ## vim:ts=2:sw=2:et:
