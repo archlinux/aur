@@ -1,7 +1,7 @@
 pkgbase = iceshrimp.net-git
 	pkgdesc = The Iceshrimp .NET rewrite. Caution: This is alpha software, do not use with production database
-	pkgver = v2024.1.alpha+f95e79b
-	pkgrel = 1
+	pkgver = v2024.1.alpha+c7f8fdf
+	pkgrel = 2
 	url = https://iceshrimp.dev/iceshrimp/iceshrimp.net
 	install = iceshrimp.net.install
 	arch = x86_64
@@ -14,8 +14,6 @@ pkgbase = iceshrimp.net-git
 	makedepends = npm
 	depends = aspnet-runtime>=8.0
 	depends = aspnet-runtime<9.0
-	depends = redis
-	depends = postgresql
 	optdepends = ffmpeg: for video transcoding
 	provides = iceshrimp.net
 	conflicts = iceshrimp.net
@@ -34,3 +32,7 @@ pkgbase = iceshrimp.net-git
 	sha512sums = fe5bc19c5f84e77954a023d054414f355b21918465f11ffcd09c139d1ce9de6258b12d4be5a0a6123844bc0f1458a9b45e49d2619440b3124f30d3dea3a7c6fb
 
 pkgname = iceshrimp.net-git
+	depends = aspnet-runtime>=8.0
+	depends = aspnet-runtime<9.0
+	depends = redis
+	depends = postgresql
