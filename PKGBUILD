@@ -2,7 +2,7 @@
 pkgname=sk-chos-addon
 _basename=sk-chos-tool
 _reponame=sk-holoiso-config
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
