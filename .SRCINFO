@@ -1,7 +1,7 @@
 pkgbase = fritzing
 	pkgdesc = PCB layout prototyping application
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fritzing.org
 	install = fritzing.install
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = fritzing
 	license = GPL3
 	makedepends = boost
 	makedepends = git
+	makedepends = qt6-tools
 	depends = libgit2
 	depends = polyclipping
 	depends = qt6-serialport
