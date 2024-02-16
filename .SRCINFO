@@ -1,7 +1,7 @@
 pkgbase = last
 	pkgdesc = Genomic aligner for short reads https://doi.org/10.1093/nar/gkq010
 	pkgver = 1541
-	pkgrel = 0
+	pkgrel = 2
 	url = https://gitlab.com/mcfrith/last
 	arch = x86_64
 	license = GPL-3.0-only
