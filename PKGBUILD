@@ -3,11 +3,11 @@
 pkgname=python-bumps
 _name=${pkgname#python-}
 pkgver=0.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Data fitting with uncertainty analysis"
 arch=(any)
 url="https://github.com/bumps/bumps"
-license=('custom')
+license=('LicenseRef-Public Domain')
 depends=(python-scipy
          python-matplotlib
          python-wxpython
