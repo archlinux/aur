@@ -1,6 +1,6 @@
 pkgbase = cursor-appimage
 	pkgdesc = Write, edit, and chat about your code with GPT. (AppImage)
-	pkgver = 0.27.0
+	pkgver = 0.27.1
 	pkgrel = 1
 	url = https://cursor.so
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = cursor-appimage
 	depends = hicolor-icon-theme
 	depends = zlib
 	options = !strip
-	source = cursor-0.27.0.AppImage::https://download.cursor.sh/linux/appImage/x64
-	sha256sums = 6613cbd8fbfa12fc7a6383c4c85e5a6459333a4b023d230064d7d3004b18f643
+	source = cursor-0.27.1.AppImage::https://download.cursor.sh/linux/appImage/x64
+	sha256sums = 9a770bc03ecee07ed032cae122c8e36e71f9450d4bb7ce3b6d7e91f40aa2937b
 
 pkgname = cursor-appimage
