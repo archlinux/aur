@@ -1,15 +1,15 @@
 # Maintainer: zotan <aur@zotan.email>
 
 pkgname=iceshrimp.net-git
-pkgver=v2024.1.alpha+f95e79b
-pkgrel=1
+pkgver=v2024.1.alpha+c7f8fdf
+pkgrel=2
 pkgdesc="The Iceshrimp .NET rewrite. Caution: This is alpha software, do not use with production database"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp.net"
 license=(AGPL3)
 
 makedepends=('dotnet-sdk>=8.0' 'aspnet-targeting-pack>=8.0' 'aspnet-targeting-pack<9.0' nodejs npm)
-depends=('aspnet-runtime>=8.0' 'aspnet-runtime<9.0' redis postgresql)
+depends=('aspnet-runtime>=8.0' 'aspnet-runtime<9.0')
 optdepends=(
   "ffmpeg: for video transcoding"
 )
@@ -66,6 +66,9 @@ build() {
 }
 
 package() {
+  # Add runtime-only dependencies
+  depends+=(redis postgresql)
+
   install -dm 755 "${pkgdir}/usr/share/iceshrimp.net"
   install -dm 755 "${pkgdir}/etc/iceshrimp.net"
 
