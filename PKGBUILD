@@ -48,11 +48,11 @@ package() {
 
     # etc system
     install -dm755 "${pkgdir}/etc/systemd/system"
-    install -m644 -t "${pkgdir}/etc/systemd/system" "${source_dir}/etc/systemd/system"/*
+    install -m644 -t "${pkgdir}/etc/systemd/system" "${source_dir}/etc/systemd/system"/*.*
 
     # lib service
     install -dm755 "${pkgdir}/usr/lib/systemd/system"
-    install -m644 -t "${pkgdir}/usr/lib/systemd/system" "${source_dir}/systemd/system"/*
+    install -m644 -t "${pkgdir}/usr/lib/systemd/system" "${source_dir}/systemd/system"/*.*
 
     # user service
     install -dm755 "${pkgdir}/usr/lib/systemd/user"
