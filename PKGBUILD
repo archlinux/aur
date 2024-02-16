@@ -1,7 +1,7 @@
 # Maintainer: replydev <commoncargo@tutanota.com>
 
 pkgname=cotp-bin
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc='Trustworthy, encrypted, command-line TOTP/HOTP authenticator app with import functionality.'
 arch=('x86_64')
