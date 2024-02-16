@@ -44,7 +44,7 @@ package() {
 
     # etc systemd
     install -dm755 "${pkgdir}/etc/systemd"
-    install -m644 -t "${pkgdir}/etc/systemd" "${source_dir}/etc/systemd"/*
+    install -m644 -t "${pkgdir}/etc/systemd" "${source_dir}/etc/systemd"/*.*
 
     # etc system
     install -dm755 "${pkgdir}/etc/systemd/system"
