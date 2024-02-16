@@ -1,0 +1,15 @@
+pkgbase = carpd-git
+	pkgdesc = Small tool that prints a count of total pending updates for Arch
+	pkgver = r1.7aac36c
+	pkgrel = 1
+	url = https://git.sr.ht/~amolith/carpd
+	arch = any
+	license = Unlicense
+	makedepends = git
+	makedepends = go
+	provides = carpd
+	conflicts = carpd
+	source = carpd-git::git+https://git.sr.ht/~amolith/carpd#branch=main
+	sha256sums = SKIP
+
+pkgname = carpd-git
