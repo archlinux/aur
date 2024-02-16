@@ -1,0 +1,12 @@
+pkgbase = pdfannots2json-bin
+	pkgdesc = Extracts annotations from PDF and converts them to a JSON list
+	pkgver = 1.0.16
+	pkgrel = 1
+	url = https://github.com/mgmeyers/pdfannots2json
+	arch = x86_64
+	license = AGPL-3.0-only
+	options = !debug
+	source = pdfannots2json.Linux.x64.tar.gz::https://github.com/mgmeyers/pdfannots2json/releases/download/1.0.16/pdfannots2json.Linux.x64.tar.gz
+	sha512sums = 04b7feeb2ce9a9b16baa6e895cda8f8114209dd98e14e2db17ab9bd3d9b1006a70acbb91e478bef551c877417fb7194eae669b1b762a49a4e560aeeaf9147a33
+
+pkgname = pdfannots2json-bin
