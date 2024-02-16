@@ -2,15 +2,16 @@
 # Modified based on hyprland-nvidia-nosystemd-git
 
 pkgname=hyprland-nosystemd-git
-pkgver=0.33.1.r3.g62a8d0be
+pkgver=0.35.0.r38.gfbf5ba87
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (w/o systemd)"
-arch=(any)
+arch=(x86_64 aarch64)
 url="https://github.com/hyprwm/Hyprland"
-license=(BSD)
+license=('BSD')
 depends=(
     cairo
     gcc-libs
+    glib2
     glibc
     glslang
     libdisplay-info
@@ -29,6 +30,7 @@ depends=(
     pixman
     polkit
     seatd
+    tomlplusplus
     vulkan-icd-loader
     vulkan-validation-layers
     wayland
@@ -42,19 +44,37 @@ depends=(
     xorg-xinput
     xorg-xwayland
 )
+depends+=(libdisplay-info.so)
 makedepends=(
     cmake
     gdb
     git
+    jq
     meson
     ninja
     vulkan-headers
+    pkgconf
     xorgproto
 )
-provides=(hyprland)
+provides=("hyprland=${pkgver%%.r*}")
 conflicts=(hyprland)
-source=("$pkgname::git+https://github.com/hyprwm/Hyprland.git")
-sha256sums=('SKIP')
+source=("$pkgname::git+https://github.com/hyprwm/Hyprland.git"
+  "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
+  "git+https://github.com/hyprwm/hyprland-protocols.git"
+  "git+https://github.com/canihavesomecoffee/udis86.git"
+  "git+https://github.com/wolfpld/tracy.git"
+)
+b2sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+)
+
+pick_mr() {
+    git pull origin pull/$1/head --no-edit
+}
 
 pkgver() {
     cd "$srcdir/$pkgname"
@@ -66,60 +86,52 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/$pkgname"
-    git submodule update --init
-    sed -E -i -e 's/(soversion = 13)([^032]|$$)/soversion = 13032/g' ./subprojects/wlroots/meson.build
-    rm -rf ./subprojects/wlroots/build
-    sed -i -e '/^release:/{n;s/-D/-DCMAKE_SKIP_RPATH=ON -D/}' Makefile
+    cd hyprland-nosystemd-git
+    git submodule init
+    git config submodule.wlroots.url "$srcdir/wlroots"
+    git config submodule.subprojects/hyprland-protocols.url "$srcdir/hyprland-protocols"
+    git config submodule.subprojects/udis86.url "$srcdir/udis86"
+    git config submodule.subprojects/tracy.url "$srcdir/tracy"
+    git -c protocol.file.allow=always submodule update
+
+    git -C subprojects/wlroots reset --hard
+    sed -E -i -e "s/(soversion = .*$)/soversion = 13032/g" subprojects/wlroots/meson.build
 }
 
 build() {
-    # Build wlroots
-    cd "$srcdir/$pkgname/subprojects/wlroots"
-    meson build/ --prefix="$srcdir/tmpwlr" --buildtype=release
-    ninja -C build/
-    mkdir -p "$srcdir/tmpwlr"
-    ninja -C build/ install
+    cd hyprland-nosystemd-git
 
-    # Build udis86
-    cd "$srcdir/$pkgname/subprojects/udis86"
-    cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -G Ninja
-    cmake --build build --config Release --target all
+    meson setup build \
+      --prefix     /usr \
+      --libexecdir lib \
+      --sbindir    bin \
+      --buildtype  release \
+      --wrap-mode  nodownload \
+      -D           b_lto=true \
+      -D           b_pie=true \
+      -D           default_library=shared \
+      -D           xwayland=enabled \
+      -D           systemd=disabled
 
-    # Build hyprland
-    cd "$srcdir/$pkgname"
-    make protocols
-    mkdir -p build
-    cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DNO_SYSTEMD:STRING=true -H./ -B./build -G Ninja
-    cmake --build ./build --config Release --target all -j $(nproc)
-    make -C hyprctl all
+    meson compile -C build
 }
 
 package() {
-    # Install hyprland headers
-    cd "$srcdir/$pkgname"
-    find src -name '*.h*' -exec install -Dm644 {} "$pkgdir/usr/include/hyprland/{}" \;
+    cd hyprland-nosystemd-git
 
-    # Fix $srcdir reference
-    sed -i -e "/ICONDIR/ s,$srcdir/tmpwlr,/usr," "$srcdir/$pkgname/subprojects/wlroots/build/include/config.h"
+    meson install -C build \
+      --destdir "$pkgdir" \
+      --skip-subprojects hyprland-protocols
+    mv "$pkgdir/usr/include/wlr" "$pkgdir/usr/include/hyprland/wlroots"
 
-    # Install wlroots headers
-    cd "$srcdir/$pkgname/subprojects/wlroots/include"
-    find . -name '*.h' -exec install -Dm644 {} "$pkgdir/usr/include/hyprland/wlroots/{}" \;
-    cd "$srcdir/$pkgname/subprojects/wlroots/build/include"
-    find . -name '*.h' -exec install -Dm644 {} "$pkgdir/usr/include/hyprland/wlroots/{}" \;
+    # resolve conflicts with system wlr
+    rm -f "$pkgdir/usr/lib/libwlroots.so"
+    rm -rf "$pkgdir/usr/lib/pkgconfig"
 
-    # Install hyprland
-    cd "$srcdir/$pkgname/build"
-    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-    cd "$srcdir/$pkgname"
-    install -Dm755 -t "$pkgdir/usr/bin" build/Hyprland
-    install -Dm755 -t "$pkgdir/usr/bin" hyprctl/hyprctl
-    install -Dm644 -t "$pkgdir/usr/include/hyprland/protocols" protocols/*-protocol.h
-    install -Dm644 -t "$pkgdir/usr/share/hyprland" assets/*.png
-    install -Dm644 -t "$pkgdir/usr/share/hyprland" example/hyprland.conf
-    install -Dm644 -t "$pkgdir/usr/share/licenses/hyprland" LICENSE
-    install -Dm644 -t "$pkgdir/usr/share/pkgconfig" build/hyprland.pc
-    install -Dm644 -t "$pkgdir/usr/share/wayland-sessions" example/hyprland.desktop
-    install -Dm755 -t "$pkgdir/usr/lib" "$srcdir/tmpwlr/lib/libwlroots.so.13032"
+    # FIXME: remove after xdg-desktop-portal-hyprland disowns hyprland-portals.conf
+
+    rm -rf "$pkgdir/usr/share/xdg-desktop-portal"
+
+    # license
+    install -Dm0644 -t "$pkgdir/usr/share/licenses/${pkgname}" LICENSE
 }
