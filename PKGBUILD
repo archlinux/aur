@@ -2,18 +2,19 @@
 # Contributor: Bryan Malyn <bim9262@gmail.com>
 
 pkgname=i3status-rust-git
-pkgver=0.32.3.r3432.g4a048bb1
-pkgrel=3
+pkgver=0.32.3.r3445.g88cfdbe7
+pkgrel=1
 pkgdesc='Very resourcefriendly and feature-rich replacement for i3status to use with bar programs (like i3bar and swaybar), written in pure Rust'
 arch=('x86_64')
 url='https://github.com/greshake/i3status-rust'
-license=('GPL3')
-depends=('libpulse' 'lm_sensors')
-makedepends=('git' 'rust' 'pandoc')
+license=('GPL-3.0-only')
+depends=('libpulse' 'lm_sensors' 'libpipewire')
+makedepends=('git' 'rust' 'pandoc' 'clang')
 optdepends=('alsa-utils: for the volume block'
             'bluez: for the bluetooth block'
             'fakeroot: for the pacman block to show pending updates'
             'kdeconnect: for the kdeconnect block'
+            'pipewire: for the privacy block'
             'powerline-fonts: for all themes using the powerline arrow char'
             'pulseaudio: for the volume block'
             'speedtest-cli: for the speedtest block'
@@ -39,7 +40,7 @@ build() {
   cd "${pkgname%-*}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --release --features 'pulseaudio maildir'
+  cargo build --release --features 'pulseaudio maildir pipewire'
   cargo xtask generate-manpage
 }
 
