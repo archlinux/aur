@@ -1,10 +1,10 @@
 pkgbase = python-fmpy
 	pkgdesc = Simulate Functional Mockup Units (FMUs) in Python
-	pkgver = 0.3.19
+	pkgver = 0.3.20
 	pkgrel = 1
 	url = https://github.com/CATIA-Systems/FMPy
 	arch = x86_64
-	license = custom:BSD-2-clause
+	license = BSD-2-clause
 	checkdepends = python-pytest
 	checkdepends = python-dask
 	checkdepends = python-scipy
@@ -23,7 +23,6 @@ pkgbase = python-fmpy
 	depends = python-lxml
 	depends = python-msgpack
 	depends = python-numpy
-	depends = python-pytz
 	depends = sundials
 	optdepends = python-matplotlib: for plot results
 	optdepends = python-kaleido: for SVG export
@@ -31,7 +30,7 @@ pkgbase = python-fmpy
 	optdepends = python-plotly: for plot results
 	optdepends = python-dash-bootstrap-components: for webapp support
 	optdepends = python-pyqtgraph: for graphical user interface
-	source = git+https://github.com/CATIA-Systems/FMPy.git#commit=8945636e85f09e6267b2b4ee101b99c81982530a
+	source = git+https://github.com/CATIA-Systems/FMPy.git#commit=04aa5fd1aa86af25caa37b7f9a710d240890ca4e
 	source = git+https://github.com/ludocode/mpack.git
 	source = git+https://github.com/modelica/Reference-FMUs.git
 	sha512sums = SKIP

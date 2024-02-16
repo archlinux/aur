@@ -2,14 +2,14 @@
 # Contributor: Michel Zou <xantares09@hotmail.com>
 _base=FMPy
 pkgname=python-${_base,,}
-_gitcommit=8945636e85f09e6267b2b4ee101b99c81982530a
-pkgver=0.3.19
+_gitcommit=04aa5fd1aa86af25caa37b7f9a710d240890ca4e
+pkgver=0.3.20
 pkgrel=1
 pkgdesc="Simulate Functional Mockup Units (FMUs) in Python"
 url="https://github.com/CATIA-Systems/${_base}"
 arch=(x86_64)
-license=('custom:BSD-2-clause')
-depends=(python-attrs python-jinja python-lark-parser python-lxml python-msgpack python-numpy python-pytz sundials) # rpclib
+license=(BSD-2-clause)
+depends=(python-attrs python-jinja python-lark-parser python-lxml python-msgpack python-numpy sundials) # rpclib
 makedepends=(python-build python-installer python-setuptools python-wheel python-requests cmake git)
 checkdepends=(python-pytest python-dask python-scipy python-plotly jupyter-nbformat)
 optdepends=('python-matplotlib: for plot results'
@@ -22,8 +22,8 @@ source=(git+${url}.git#commit=${_gitcommit}
   git+https://github.com/ludocode/mpack.git
   git+https://github.com/modelica/Reference-FMUs.git)
 sha512sums=('SKIP'
-  'SKIP'
-  'SKIP')
+            'SKIP'
+            'SKIP')
 
 prepare() {
   cd ${_base}
