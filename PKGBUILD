@@ -2,8 +2,8 @@
 # Maintained at https://github.com/rixx/pkgbuilds, feel free to submit patches
 
 pkgname=python313
-pkgver=3.13.0a3
-pkgrel=5
+pkgver=3.13.0a4
+pkgrel=1
 _pyver=3.13.0
 _pybasever=3.13
 _pymajver=3
@@ -15,7 +15,7 @@ depends=('bzip2' 'expat' 'gdbm' 'libffi' 'libnsl' 'libxcrypt' 'openssl' 'zlib')
 makedepends=('bluez-libs' 'mpdecimal' 'gdb')
 optdepends=('sqlite' 'mpdecimal: for decimal' 'xz: for lzma' 'tk: for tkinter')
 source=(https://www.python.org/ftp/python/${_pyver}/Python-${pkgver}.tar.xz)
-sha256sums=('20784c8304eb1c69c80f966ebdf0775be2e37e23df3b62461eec12a85dcf7ead')
+sha256sums=('bcbd6daae3de381d64a84e9ac50889dce71c5fdff2b680b676537b09907425f6')
 validpgpkeys=(
     '0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D'  # Ned Deily (Python release signing key) <nad@python.org>
     'E3FF2839C048B25C084DEBE9B26995E310250568'  # Łukasz Langa (GPG langa.pl) <lukasz@langa.pl>
