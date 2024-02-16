@@ -1,0 +1,24 @@
+pkgbase = python-k3d
+	pkgdesc = 3D visualization library
+	pkgver = 2.16.1
+	pkgrel = 1
+	url = https://github.com/K3D-tools/K3D-jupyter
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatch-nodejs-version
+	makedepends = python-hatch-jupyter-builder
+	makedepends = python-wheel
+	makedepends = jupyterlab
+	makedepends = nodejs-lts-hydrogen
+	makedepends = npm
+	depends = python-traittypes
+	depends = python-msgpack
+	depends = python-ipywidgets
+	optdepends = jupyterlab: for notebook support
+	source = K3D-jupyter-2.16.1.tar.gz::https://github.com/K3D-tools/K3D-jupyter/archive/v2.16.1.tar.gz
+	sha512sums = 7e121b93d1d5529d7fb7b88de6c2a46da1608bdcd3c1e677746756698adb30229a0a138b27124a8f51d38d48255dffd869e7d54aec23d581429fb867349e2d76
+
+pkgname = python-k3d
