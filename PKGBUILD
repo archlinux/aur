@@ -2,13 +2,6 @@
 #
 # Applying patches controls via enviroment variables:
 #
-# Select branch to build
-# CLANGD_BRANCH:
-#   'main' - trunk (default value)
-#   'release/17.x' - LLVM17
-#   'release/16.x' - LLVM16
-#   'release/15.x' - LLVM15 (like curently system version)
-#
 # Toggle all below patches
 # CLANGD_DEFAULT_PATCH_STATE:
 #   'n' - disable all patches
@@ -104,7 +97,6 @@
 #   'y' - apply this patch
 
 
-: ${CLANGD_BRANCH:=main}
 : ${CLANGD_DEFAULT_PATCH_STATE:=n}
 : ${CLANGD_DOXYGEN:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_RESOLVEFWDPARAMS:=$CLANGD_DEFAULT_PATCH_STATE}
@@ -125,8 +117,8 @@
 : ${CLANGD_HOVERRECORDPAD:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt
-pkgver=17.0.0.r19.g4b414e52ac10
-pkgrel=41
+pkgver=19.r2558.g3d81d48398f0
+pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
 url="https://llvm.org/"
@@ -134,14 +126,12 @@ license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=('cmake' 'ninja' 'zlib' 'zstd' 'libffi' 'libedit' 'ncurses'
              'libxml2' 'python-setuptools' 'python-psutil' 'python-sphinx')
 options=('!strip')
-source=("git+https://github.com/llvm/llvm-project.git#branch=$CLANGD_BRANCH"
-        'hover-doxygen.patch'
+source=("git+https://github.com/llvm/llvm-project.git#branch=main"
         'hover-doxygen-trunk.patch'
         'doxygen-extra-render-trunk.patch'
         'doxygen-more-fields.patch'
         'hover-resolve-forward-params.patch'
         'lsp-codelens.patch'
-        'postfix-completion.patch' # release/17.x and older
         'postfix-completion-trunk.patch'
         'refactor-extract-function.patch'
         'inlay-hints-paddings.patch'
@@ -157,13 +147,11 @@ source=("git+https://github.com/llvm/llvm-project.git#branch=$CLANGD_BRANCH"
         'lsp-remove-files-from-cdb.patch'
         'hover-record-paddings.patch')
 sha256sums=('SKIP'
-            '3f6eb5c99f5e6c13d1275f8adf3e4acfa4319ff5199cde4c610e0ceffc7ceca2'  # hover-doxygen
             '75b331257caa768c16687fd668ec2b8be62feb283892d601476c3e039f298a54'  # hover-doxygen-trunk
             '614dd012009facb502a7d44e07fc819aa95383c8917537c57968f76ba7881a94'  # doxygen-extra-render-trunk
             'b42d27929fcec3825711c13baf0c5a4ea0da33b8ff5e6f60c3c61d2f1f9525af'  # doxygen-more-fields
             '9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7'  # hover-resolve-forward-params
             'faf5c8b2a5a345be59c33f5de591f39dd35b1a2b97ca067e21023e311610bc0d'  # lsp-codelens
-            'd048d7a6db9fec3667d472a7aa559ceea2006366e805f0d633f85bc5b9a248bc'  # postfix-completion
             '221e6439df2ee1ca55f5925f9cc3133cb9fb5a256bdc68743e8d46747e7e85b7'  # postfix-completion-trunk
             'f719fb52edee98f54ba40786d2ecac6ef63f56797c8f52d4d7ce76a3825966eb'  # refactor-extract-function
             '2db1f319f850858ecebdcda1c1600d6dd523f171c5b019740298d43607d5fa00'  # inlay-hints-paddings
@@ -191,12 +179,8 @@ prepare() {
 
     # Hover patches
     if [ "$CLANGD_DOXYGEN" != "n" ]; then
-        if [ "$CLANGD_BRANCH" = "main" ]; then
-            patch -p1 -i ${srcdir}/hover-doxygen-trunk.patch
-            patch -p1 -i ${srcdir}/doxygen-extra-render-trunk.patch
-        else
-        patch -p1 -i ${srcdir}/hover-doxygen.patch
-        fi
+        patch -p1 -i ${srcdir}/hover-doxygen-trunk.patch
+        patch -p1 -i ${srcdir}/doxygen-extra-render-trunk.patch
         patch -p1 -i ${srcdir}/doxygen-more-fields.patch
     fi
     if [ "$CLANGD_RESOLVEFWDPARAMS" != "n" ]; then
@@ -234,11 +218,7 @@ prepare() {
 
     # Code-completion patches
     if [ "$CLANGD_POSTFIXCOMPLETION" != "n" ]; then
-        if [ "$CLANGD_BRANCH" = "main" ]; then
-            patch -p1 -i ${srcdir}/postfix-completion-trunk.patch
-        else
-            patch -p1 -i ${srcdir}/postfix-completion.patch
-        fi
+        patch -p1 -i ${srcdir}/postfix-completion-trunk.patch
     fi
 
     # Refactoring patches
@@ -251,11 +231,7 @@ prepare() {
         patch -p1 -i ${srcdir}/inlay-hints-paddings.patch
     fi
     if [ "$CLANGD_INLAYHINTSBLOCKEND" != "n" ]; then
-        if [ "$CLANGD_BRANCH" = "main" ]; then
-            patch -p1 -i ${srcdir}/inlay-hints-blockend-linelimit10.patch
-        else
-            echo "Skip inlay-hints-blockend-linelimit10.patch (CLANGD_INLAYHINTSBLOCKEND)"
-        fi
+        patch -p1 -i ${srcdir}/inlay-hints-blockend-linelimit10.patch
     fi
 
     # Resolve patches
