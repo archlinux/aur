@@ -1,4 +1,4 @@
-From 01cdbc8fd84c722993903eebfbaf1c4cd3ac94bf Mon Sep 17 00:00:00 2001
+From ab4ee8a9590a7eea7c36a2cc4c1be205c90abf1f Mon Sep 17 00:00:00 2001
 From: "Thomas H.P. Andersen" <phomes@gmail.com>
 Date: Thu, 8 Dec 2022 00:00:52 +0100
 Subject: [PATCH] nvk: implement EXT_memory_budget
@@ -17,7 +17,7 @@ Passes dEQP-VK.info.device_memory_budget
  3 files changed, 39 insertions(+)
 
 diff --git a/src/nouveau/vulkan/nvk_device_memory.c b/src/nouveau/vulkan/nvk_device_memory.c
-index 055a868393b..5e948b4c239 100644
+index a645b073c67..7830d6329fd 100644
 --- a/src/nouveau/vulkan/nvk_device_memory.c
 +++ b/src/nouveau/vulkan/nvk_device_memory.c
 @@ -12,6 +12,7 @@
@@ -28,7 +28,7 @@ index 055a868393b..5e948b4c239 100644
  
  #include <inttypes.h>
  #include <sys/mman.h>
-@@ -153,6 +154,15 @@ nvk_GetMemoryFdPropertiesKHR(VkDevice device,
+@@ -143,6 +144,15 @@ nvk_GetMemoryFdPropertiesKHR(VkDevice device,
     return VK_SUCCESS;
  }
  
@@ -44,7 +44,7 @@ index 055a868393b..5e948b4c239 100644
  VKAPI_ATTR VkResult VKAPI_CALL
  nvk_AllocateMemory(VkDevice device,
                     const VkMemoryAllocateInfo *pAllocateInfo,
-@@ -244,6 +254,9 @@ nvk_AllocateMemory(VkDevice device,
+@@ -234,6 +244,9 @@ nvk_AllocateMemory(VkDevice device,
        close(fd_info->fd);
     }
  
@@ -54,7 +54,7 @@ index 055a868393b..5e948b4c239 100644
     *pMem = nvk_device_memory_to_handle(mem);
  
     return VK_SUCCESS;
-@@ -269,6 +282,10 @@ nvk_FreeMemory(VkDevice device,
+@@ -259,6 +272,10 @@ nvk_FreeMemory(VkDevice device,
     if (mem->map)
        nouveau_ws_bo_unmap(mem->bo, mem->map);
  
@@ -66,18 +66,18 @@ index 055a868393b..5e948b4c239 100644
  
     vk_device_memory_destroy(&dev->vk, pAllocator, &mem->vk);
 diff --git a/src/nouveau/vulkan/nvk_physical_device.c b/src/nouveau/vulkan/nvk_physical_device.c
-index 6e9411c3f62..9fde4a7ee6e 100644
+index 086a72fd33b..de91d699d00 100644
 --- a/src/nouveau/vulkan/nvk_physical_device.c
 +++ b/src/nouveau/vulkan/nvk_physical_device.c
-@@ -123,6 +123,7 @@ nvk_get_device_extensions(const struct nv_device_info *info,
-       .EXT_inline_uniform_block = true,
+@@ -177,6 +177,7 @@ nvk_get_device_extensions(const struct nvk_instance *instance,
        .EXT_line_rasterization = true,
        .EXT_load_store_op_none = true,
+       .EXT_map_memory_placed = true,
 +      .EXT_memory_budget = true,
        .EXT_multi_draw = true,
        .EXT_mutable_descriptor_type = true,
        .EXT_non_seamless_cube_map = true,
-@@ -942,6 +943,26 @@ nvk_GetPhysicalDeviceMemoryProperties2(
+@@ -1165,6 +1166,26 @@ nvk_GetPhysicalDeviceMemoryProperties2(
     vk_foreach_struct(ext, pMemoryProperties->pNext)
     {
        switch (ext->sType) {
@@ -105,10 +105,10 @@ index 6e9411c3f62..9fde4a7ee6e 100644
           nvk_debug_ignored_stype(ext->sType);
           break;
 diff --git a/src/nouveau/vulkan/nvk_physical_device.h b/src/nouveau/vulkan/nvk_physical_device.h
-index 738ffcfbe08..f8b43d88041 100644
+index d5c4bac91d9..67e3d524aca 100644
 --- a/src/nouveau/vulkan/nvk_physical_device.h
 +++ b/src/nouveau/vulkan/nvk_physical_device.h
-@@ -31,6 +31,7 @@ struct nvk_physical_device {
+@@ -39,6 +39,7 @@ struct nvk_physical_device {
     // TODO: add mapable VRAM heap if possible
     VkMemoryHeap mem_heaps[2];
     VkMemoryType mem_types[2];
@@ -117,5 +117,5 @@ index 738ffcfbe08..f8b43d88041 100644
     uint8_t mem_type_count;
  
 -- 
-2.42.0
+2.43.1
 
