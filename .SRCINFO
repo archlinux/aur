@@ -1,15 +1,15 @@
 pkgbase = rvasm-git
 	pkgdesc = A risc-v assembler in rust
-	pkgver = r19.625e76c
-	pkgrel = 3
-	url = https://github.com/phanen/rvasm
+	pkgver = r19.b38f1a6
+	pkgrel = 1
+	url = https://github.com/eigenraven/rvasm
 	arch = x86_64
 	license = Apache
 	makedepends = cargo
 	makedepends = git
 	provides = rvasm
 	conflicts = rvasm
-	source = rvasm-git::git+https://github.com/phanen/rvasm#branch=fix-removal-of-box-syntax
+	source = rvasm-git::git+https://github.com/eigenraven/rvasm
 	sha256sums = SKIP
 
 pkgname = rvasm-git

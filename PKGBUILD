@@ -2,17 +2,14 @@
 
 _pkgname=rvasm
 pkgname=${_pkgname}-git
-pkgver=r19.625e76c
-pkgrel=3
+pkgver=r19.b38f1a6
+pkgrel=1
 pkgdesc="A risc-v assembler in rust"
 arch=('x86_64')
-# waiting for merging into upstream
-# url="https://github.com/eigenraven/rvasm"
-url="https://github.com/phanen/rvasm"
-_fragment="branch=fix-removal-of-box-syntax"
+url="https://github.com/eigenraven/rvasm"
 license=('Apache')
 makedepends=('cargo' 'git')
-source=("${pkgname}::git+${url}#${_fragment}")
+source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 conflicts=('rvasm')
 provides=('rvasm')
