@@ -1,15 +1,21 @@
 pkgbase = python-asv
 	pkgdesc = A simple benchmarking tool with web-based reporting.
-	pkgver = 0.4.2
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://asv.readthedocs.io
 	arch = x86_64
 	license = BSD-3
 	checkdepends = python-pytest
-	checkdepends = python-virtualenv
+	checkdepends = python-selenium
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = cython
-	source = python-asv-0.4.2.tar.gz::https://github.com/airspeed-velocity/asv/archive/v0.4.2.tar.gz
-	sha256sums = af5c83d4a5048be8147668564eb6da75a8e8284d5d0372cf956f880acfc09670
+	depends = python-asv-runner
+	depends = python-tabulate
+	depends = python-virtualenv
+	depends = python-tomli
+	depends = python-json5
+	source = python-asv-0.6.2.tar.gz::https://github.com/airspeed-velocity/asv/archive/v0.6.2.tar.gz
+	sha256sums = 0e71d7642ba853913cd29d44d2b195bd19f979608fdd0b9b65b2b21c5fbf23f3
 
 pkgname = python-asv
-
