@@ -1,0 +1,4 @@
+[magpie-wm]
+source = "git"
+git = "https://github.com/BuddiesOfBudgie/magpie"
+prefix = "v"
