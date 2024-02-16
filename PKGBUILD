@@ -10,7 +10,7 @@
 # for when that actually happens. PKGREL=0 because not-yet-functional.
 
 pkgname=zed-editor
-pkgver=0.121.5
+pkgver=0.122.2
 pkgrel=0
 pkgdesc='high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
@@ -18,13 +18,16 @@ url=https://zed.dev
 _url="https://github.com/zed-industries/zed"
 license=(GPL-3.0-or-later)
 depends=()
-makedepends=(cargo
+makedepends=(alsa-lib
+             cargo
              clang
              gcc-objc
-             libdispatch)
+             libdispatch
+             protobuf
+             wasmtime)
 _archive="zed-$pkgver"
 source=("$_url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('80e95faca5188e894c8b34394ba7e6a7677908829b83e2299cfac9bf7ad432b2')
+sha256sums=('1d7f54ffc8836692ba57ae007cf3bdd56883e86364d0ce31e0c145cc658e5bb8')
 
 prepare() {
 	cd "$_archive"
