@@ -1,7 +1,7 @@
 # Maintainer: Schorsch <wsixcde+aur at gmail dot com>
 # Thanks to <mti at tillenius dot com> whose packages the ps7 packages were based on
 pkgname=ps7_libps3000a
-pkgver=2.1.129_6r5632
+pkgver=2.1.130_6r5654
 pkgrel=1
 pkgdesc="Library for PicoScope 3000a series in PicoScope 7"
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=(!strip)
 install=$pkgname.install
 changelog=
 source=("https://labs.picotech.com/picoscope7/debian/pool/main/libp/libps3000a/libps3000a_${pkgver//_/-}_amd64.deb")
-md5sums=('2affd5972cab7f1aa5fe5508ca37484b')
+md5sums=('11702f088b89e4679033f6e41b623355')
 
 package() {
   tar -xf data.tar.xz -C "${pkgdir}"
