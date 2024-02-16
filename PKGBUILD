@@ -3,7 +3,7 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=nomacs-qt6-git
-pkgver=r3974.645eaaf
+pkgver=3.17.2287.r32.g645eaaf
 pkgrel=1
 pkgdesc="A Qt image viewer"
 arch=(x86_64)
@@ -25,7 +25,7 @@ export GIT_LFS_SKIP_SMUDGE=1
 
 pkgver() {
   cd "$srcdir/nomacs"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
