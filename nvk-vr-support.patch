@@ -1,0 +1,107 @@
+From 87972e7738b340f85b1d5e0d74490011b8afba5c Mon Sep 17 00:00:00 2001
+From: "Echo J." <aidas957@gmail.com>
+Date: Fri, 16 Feb 2024 15:12:42 +0200
+Subject: [PATCH] nvk: Implement the VR-related display extensions
+
+xrgears in Monado direct mode seems to work (I haven't tried running
+CTS tests though)
+---
+ src/nouveau/vulkan/nvk_instance.c        | 7 +++++++
+ src/nouveau/vulkan/nvk_physical_device.c | 8 ++++++++
+ src/nouveau/vulkan/nvk_physical_device.h | 1 +
+ src/nouveau/vulkan/nvk_wsi.c             | 2 +-
+ 4 files changed, 17 insertions(+), 1 deletion(-)
+
+diff --git a/src/nouveau/vulkan/nvk_instance.c b/src/nouveau/vulkan/nvk_instance.c
+index dc72f5020e44a..71230f3a28bbd 100644
+--- a/src/nouveau/vulkan/nvk_instance.c
++++ b/src/nouveau/vulkan/nvk_instance.c
+@@ -41,6 +41,13 @@ static const struct vk_instance_extension_table instance_extensions = {
+ #ifdef VK_USE_PLATFORM_XLIB_XRANDR_EXT
+    .EXT_acquire_xlib_display = true,
+ #endif
++#ifdef VK_USE_PLATFORM_DISPLAY_KHR
++   .KHR_display = true,
++   .KHR_get_display_properties2 = true,
++   .EXT_direct_mode_display = true,
++   .EXT_display_surface_counter = true,
++   .EXT_acquire_drm_display = true,
++#endif
+ #ifndef VK_USE_PLATFORM_WIN32_KHR
+    .EXT_headless_surface = true,
+ #endif
+diff --git a/src/nouveau/vulkan/nvk_physical_device.c b/src/nouveau/vulkan/nvk_physical_device.c
+index acdacf67e16b8..35e7c5f4c7155 100644
+--- a/src/nouveau/vulkan/nvk_physical_device.c
++++ b/src/nouveau/vulkan/nvk_physical_device.c
+@@ -21,6 +21,7 @@
+ #include "vulkan/runtime/vk_shader_module.h"
+ #include "vulkan/wsi/wsi_common.h"
+ 
++#include <fcntl.h>
+ #include <sys/stat.h>
+ #include <sys/sysmacros.h>
+ #include <xf86drm.h>
+@@ -917,6 +918,7 @@ nvk_create_drm_physical_device(struct vk_instance *_instance,
+ {
+    struct nvk_instance *instance = (struct nvk_instance *)_instance;
+    VkResult result;
++   int master_fd = -1;
+ 
+    if (!(drm_device->available_nodes & (1 << DRM_NODE_RENDER)))
+       return VK_ERROR_INCOMPATIBLE_DRIVER;
+@@ -1024,6 +1026,10 @@ nvk_create_drm_physical_device(struct vk_instance *_instance,
+       properties.drmHasPrimary = true;
+       properties.drmPrimaryMajor = major(st.st_rdev);
+       properties.drmPrimaryMinor = minor(st.st_rdev);
++
++      /* TODO: Test if the FD is usable? */
++      if (instance->vk.enabled_extensions.KHR_display)
++         master_fd = open(drm_device->nodes[DRM_NODE_PRIMARY], O_RDWR | O_CLOEXEC);
+    }
+ 
+    result = vk_physical_device_init(&pdev->vk, &instance->vk,
+@@ -1035,6 +1041,7 @@ nvk_create_drm_physical_device(struct vk_instance *_instance,
+       goto fail_alloc;
+ 
+    pdev->render_dev = render_dev;
++   pdev->master_fd = master_fd;
+    pdev->info = info;
+    pdev->debug_flags = debug_flags;
+ 
+@@ -1129,6 +1136,7 @@ nvk_physical_device_destroy(struct vk_physical_device *vk_pdev)
+    nvk_finish_wsi(pdev);
+    nvk_physical_device_free_disk_cache(pdev);
+    nak_compiler_destroy(pdev->nak);
++   if (pdev->master_fd >= 0) close(pdev->master_fd);
+    vk_physical_device_finish(&pdev->vk);
+    vk_free(&pdev->vk.instance->alloc, pdev);
+ }
+diff --git a/src/nouveau/vulkan/nvk_physical_device.h b/src/nouveau/vulkan/nvk_physical_device.h
+index d5c4bac91d91e..a6894d3c25d6f 100644
+--- a/src/nouveau/vulkan/nvk_physical_device.h
++++ b/src/nouveau/vulkan/nvk_physical_device.h
+@@ -31,6 +31,7 @@ struct nvk_physical_device {
+    enum nvk_debug debug_flags;
+    dev_t render_dev;
+    dev_t primary_dev;
++   int master_fd;
+    struct nak_compiler *nak;
+    struct wsi_device wsi_device;
+ 
+diff --git a/src/nouveau/vulkan/nvk_wsi.c b/src/nouveau/vulkan/nvk_wsi.c
+index 761b5a11812cf..91efd72c84d81 100644
+--- a/src/nouveau/vulkan/nvk_wsi.c
++++ b/src/nouveau/vulkan/nvk_wsi.c
+@@ -24,7 +24,7 @@ nvk_init_wsi(struct nvk_physical_device *pdev)
+    result = wsi_device_init(&pdev->wsi_device,
+                             nvk_physical_device_to_handle(pdev),
+                             nvk_wsi_proc_addr, &pdev->vk.instance->alloc,
+-                            -1, &nvk_physical_device_instance(pdev)->dri_options, &wsi_options);
++                            pdev->master_fd, &nvk_physical_device_instance(pdev)->dri_options, &wsi_options);
+    if (result != VK_SUCCESS)
+       return result;
+ 
+-- 
+GitLab
+
