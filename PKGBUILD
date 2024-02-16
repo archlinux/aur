@@ -12,7 +12,6 @@ _cachy_config=${_cachy_config-y}
 ### Selecting the CPU scheduler
 # ATTENTION - only one of the following values can be selected:
 # 'bore' - select 'Burst-Oriented Response Enhancer'
-# 'tt' - select 'Task Type Scheduler by Hamad Marri'
 # 'hardened' - select 'BORE Scheduler hardened' ## kernel with hardened config and hardening patches with the bore scheduler
 # 'cachyos' - select 'EEVDF-BORE Variant Scheduler'
 # 'eevdf' - select 'EEVDF Scheduler'
@@ -20,7 +19,6 @@ _cachy_config=${_cachy_config-y}
 # 'rt-bore' - select Burst-Oriented Response Enhancer, but includes a series of realtime patches
 # 'sched-ext' - select 'sched-ext' Scheduler, based on EEVDF
 _cpusched=${_cpusched-hardened}
-
 
 ### Tweak kernel options prior to a build via nconfig
 _makenconfig=${_makenconfig-}
@@ -37,6 +35,7 @@ _makegconfig=${_makegconfig-}
 # NUMA is optimized for multi-socket motherboards.
 # A single multi-core CPU actually runs slower with NUMA enabled.
 # See, https://bugs.archlinux.org/task/31187
+# It seems that in 2023 this is not really a huge regression anymore
 _NUMAdisable=${_NUMAdisable-}
 
 # Compile ONLY used modules to VASTLYreduce the number of modules built
@@ -107,11 +106,10 @@ _hugepage=${_hugepage-always}
 ## Enable DAMON
 _damon=${_damon-}
 
-## Enable Linux Random Number Generator
-_lrng_enable=${_lrng_enable-}
+
 
 # CPU compiler optimizations - Defaults to prompt at kernel config if left empty
-# AMD CPUs : "k8" "k8sse3" "k10" "barcelona" "bobcat" "jaguar" "bulldozer" "piledriver" "steamroller" "excavator" "zen" "zen2" "zen3"
+# AMD CPUs : "k8" "k8sse3" "k10" "barcelona" "bobcat" "jaguar" "bulldozer" "piledriver" "steamroller" "excavator" "zen" "zen2" "zen3" "zen4"
 # Intel CPUs : "mpsc"(P4 & older Netburst based Xeon) "atom" "core2" "nehalem" "westmere" "silvermont" "sandybridge" "ivybridge" "haswell" "broadwell" "skylake" "skylakex" "cannonlake" "icelake" "goldmont" "goldmontplus" "cascadelake" "cooperlake" "tigerlake" "sapphirerapids" "rocketlake" "alderlake"
 # Other options :
 # - "native_amd" (use compiler autodetection - Selecting your arch manually in the list above is recommended instead of this option)
@@ -135,7 +133,8 @@ _use_llvm_lto=${_use_llvm_lto-none}
 
 # Use suffix -lto only when requested by the user
 # Enabled by default.
-# If you do not want the suffix -lto remove the "y" sign next to the flag.
+# y - enable -lto suffix
+# n - disable -lto suffix
 # https://github.com/CachyOS/linux-cachyos/issues/36
 _use_lto_suffix=${_use_lto_suffix-y}
 
@@ -156,19 +155,16 @@ _build_zfs=${_build_zfs-}
 # This does replace the requirement of nvidia-dkms
 _build_nvidia=${_build_nvidia-}
 
-# Enable bcachefs
-_bcachefs=${_bcachefs-}
-
-if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] && [ -n "$_use_lto_suffix" ]; then
+if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] && [ "$_use_lto_suffix" = "y"  ]; then
     pkgsuffix=cachyos-${_cpusched}-lto
     pkgbase=linux-$pkgsuffix
 
-else
+elif [ -n "$_use_llvm_lto" ]  ||  [[ "$_use_lto_suffix" = "n" ]]; then
     pkgsuffix=cachyos-${_cpusched}
     pkgbase=linux-$pkgsuffix
 fi
-_major=6.6
-_minor=14
+_major=6.7
+_minor=5
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -177,8 +173,8 @@ _stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
-pkgdesc='Linux hardenened BORE scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=2
+pkgdesc='Linux EEVDF-BORE scheduler hardened Kernel by CachyOS with other patches and improvements'
+pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -194,6 +190,10 @@ if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_k
         LLVM=1
         LLVM_IAS=1
     )
+fi
+
+if [[ "$_cpusched" = "sched-ext" || "$_cpusched" = "cachyos" ]]; then
+    depends+=(scx-scheds)
 fi
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
@@ -213,19 +213,20 @@ fi
 # ZFS support
 if [ -n "$_build_zfs" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=d38565b5ac3ecbf9dde7e8f7d71f4620a9cea9f9")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=2d940c7c29a0ba5f84f50ea9773dea237e27bb08")
 fi
 
 # NVIDIA pre-build module support
 if [ -n "$_build_nvidia" ]; then
     source+=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${_nv_ver}/${_nv_pkg}.run"
-             "$_patchsource/misc/nvidia/nvidia-drm-hotplug-workqueue.patch")
+             "$_patchsource/misc/nvidia/nvidia-drm-hotplug-workqueue.patch"
+             "$_patchsource/misc/nvidia/nvidia-drivers-470.223.02-gpl-pfn_valid.patch")
 fi
 
-## ToDo: Adjust for new Scheduler Changes
+## List of CachyOS schedulers
 case "$_cpusched" in
-    cachyos) # CachyOS Scheduler (EEVDF + BORE)
-        source+=("${_patchsource}/sched/0001-bore-cachy.patch");;
+    cachyos|sched-ext) ## SCHED-EXT
+        source+=("${_patchsource}/sched/0001-sched-ext.patch");;
     bore) ## BORE Scheduler
         source+=("${_patchsource}/sched/0001-bore-cachy.patch");;
     rt) ## EEVDF with RT patches
@@ -238,19 +239,9 @@ case "$_cpusched" in
     hardened) ## Hardened Patches with BORE Scheduler
         source+=("${_patchsource}/sched/0001-bore-cachy.patch"
                  "${_patchsource}/misc/0001-hardened.patch");;
-    sched-ext) ## Sched-ext with BORE
-        source+=("${_patchsource}/sched/0001-sched-ext.patch"
-                 "${_patchsource}/sched/0001-bore-cachy-ext.patch");;
 esac
 
-## bcachefs Support
-if [ -n "$_bcachefs" ]; then
-    source+=("${_patchsource}/misc/0001-bcachefs.patch")
-fi
-## lrng patchset
-if [ -n "$_lrng_enable" ]; then
-    source+=("${_patchsource}/misc/0001-lrng.patch")
-fi
+
 
 export KBUILD_BUILD_HOST=cachyos
 export KBUILD_BUILD_USER=$pkgbase
@@ -272,6 +263,7 @@ prepare() {
         src="${src##*/}"
         src="${src%.zst}"
         [[ $src = nvidia-drm-hotplug-workqueue.patch ]] && continue
+        [[ $src = nvidia-drivers-470.223.02-gpl-pfn_valid.patch ]] && continue
         [[ $src = *.patch ]] || continue
         echo "Applying patch $src..."
         patch -Np1 < "../$src"
@@ -303,11 +295,11 @@ prepare() {
     [ -z "$_cpusched" ] && _die "The value is empty. Choose the correct one again."
 
     case "$_cpusched" in
-        bore|hardened|cachyos) scripts/config -e SCHED_BORE;;
+        cachyos|sched-ext) scripts/config -e SCHED_CLASS_EXT;;
+        bore|hardened) scripts/config -e SCHED_BORE;;
         eevdf) ;;
         rt) scripts/config -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -e PREEMPT_RT -d PREEMPT_DYNAMIC -d PREEMPT_BUILD;;
         rt-bore) scripts/config -e SCHED_BORE -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -e PREEMPT_RT -d PREEMPT_DYNAMIC -d PREEMPT_BUILD;;
-        sched-ext) scripts/config -e SCHED_BORE -e SCHED_CLASS_EXT;;
         *) _die "The value $_cpusched is invalid. Choose the correct one again.";;
     esac
 
@@ -481,84 +473,12 @@ prepare() {
             -e DAMON_LRU_SORT
     fi
 
-    ### Enable LRNG
-    if [ -n "$_lrng_enable" ]; then
-        echo "Enabling Linux Random Number Generator ..."
-        scripts/config -d RANDOM_DEFAULT_IMPL \
-            -e LRNG \
-            -e LRNG_SHA256 \
-            -e LRNG_COMMON_DEV_IF \
-            -e LRNG_DRNG_ATOMIC \
-            -e LRNG_SYSCTL \
-            -e LRNG_RANDOM_IF \
-            -e LRNG_AIS2031_NTG1_SEEDING_STRATEGY \
-            -m LRNG_KCAPI_IF \
-            -m LRNG_HWRAND_IF \
-            -e LRNG_DEV_IF \
-            -e LRNG_RUNTIME_ES_CONFIG \
-            -e LRNG_IRQ_DFLT_TIMER_ES \
-            -d LRNG_SCHED_DFLT_TIMER_ES \
-            -e LRNG_TIMER_COMMON \
-            -d LRNG_COLLECTION_SIZE_256 \
-            -d LRNG_COLLECTION_SIZE_512 \
-            -e LRNG_COLLECTION_SIZE_1024 \
-            -d LRNG_COLLECTION_SIZE_2048 \
-            -d LRNG_COLLECTION_SIZE_4096 \
-            -d LRNG_COLLECTION_SIZE_8192 \
-            --set-val LRNG_COLLECTION_SIZE 1024 \
-            -e LRNG_HEALTH_TESTS \
-            --set-val LRNG_RCT_CUTOFF 31 \
-            --set-val LRNG_APT_CUTOFF 325 \
-            -e LRNG_IRQ \
-            -e LRNG_CONTINUOUS_COMPRESSION_ENABLED \
-            -d LRNG_CONTINUOUS_COMPRESSION_DISABLED \
-            -e LRNG_ENABLE_CONTINUOUS_COMPRESSION \
-            -e LRNG_SWITCHABLE_CONTINUOUS_COMPRESSION \
-            --set-val LRNG_IRQ_ENTROPY_RATE 256 \
-            -e LRNG_JENT \
-            --set-val LRNG_JENT_ENTROPY_RATE 16 \
-            -e LRNG_CPU \
-            --set-val LRNG_CPU_FULL_ENT_MULTIPLIER 1 \
-            --set-val LRNG_CPU_ENTROPY_RATE 8 \
-            -e LRNG_SCHED \
-            --set-val LRNG_SCHED_ENTROPY_RATE 4294967295 \
-            -e LRNG_DRNG_CHACHA20 \
-            -m LRNG_DRBG \
-            -m LRNG_DRNG_KCAPI \
-            -e LRNG_SWITCH \
-            -e LRNG_SWITCH_HASH \
-            -m LRNG_HASH_KCAPI \
-            -e LRNG_SWITCH_DRNG \
-            -m LRNG_SWITCH_DRBG \
-            -m LRNG_SWITCH_DRNG_KCAPI \
-            -e LRNG_DFLT_DRNG_CHACHA20 \
-            -d LRNG_DFLT_DRNG_DRBG \
-            -d LRNG_DFLT_DRNG_KCAPI \
-            -e LRNG_TESTING_MENU \
-            -d LRNG_RAW_HIRES_ENTROPY \
-            -d LRNG_RAW_JIFFIES_ENTROPY \
-            -d LRNG_RAW_IRQ_ENTROPY \
-            -d LRNG_RAW_RETIP_ENTROPY \
-            -d LRNG_RAW_REGS_ENTROPY \
-            -d LRNG_RAW_ARRAY \
-            -d LRNG_IRQ_PERF \
-            -d LRNG_RAW_SCHED_HIRES_ENTROPY \
-            -d LRNG_RAW_SCHED_PID_ENTROPY \
-            -d LRNG_RAW_SCHED_START_TIME_ENTROPY \
-            -d LRNG_RAW_SCHED_NVCSW_ENTROPY \
-            -d LRNG_SCHED_PERF \
-            -d LRNG_ACVT_HASH \
-            -d LRNG_RUNTIME_MAX_WO_RESEED_CONFIG \
-            -d LRNG_TEST_CPU_ES_COMPRESSION \
-            -e LRNG_SELFTEST \
-            -d LRNG_SELFTEST_PANIC \
-            -d LRNG_RUNTIME_FORCE_SEEDING_DISABLE
-    fi
+
 
     ### Disable DEBUG
     # Doesn't work with sched-ext
     # More infos here: https://github.com/CachyOS/linux-cachyos/issues/187
-    if [[ "$_cpusched" != "sched-ext" &&  -n "$_disable_debug" ]]; then
+    if [[ "$_cpusched" != "sched-ext" || "$_cpusched" != "cachyos" ]] && [ -n "$_disable_debug" ]; then
         scripts/config -d DEBUG_INFO \
             -d DEBUG_INFO_BTF \
             -d DEBUG_INFO_DWARF4 \
@@ -639,6 +559,8 @@ prepare() {
         # Temporary fix for fbdev=1
         # https://forums.developer.nvidia.com/t/545-29-06-18-1-flip-event-timeout-error-on-startup-shutdown-and-sometimes-suspend-wayland-unusable/274788/21
         patch -Np0 -i "${srcdir}/nvidia-drm-hotplug-workqueue.patch" -d "${srcdir}/${_nv_pkg}"
+        # Temporary fix for nvidia module build
+        patch -Np2 --no-backup-if-mismatch -i "${srcdir}/nvidia-drivers-470.223.02-gpl-pfn_valid.patch" -d "${srcdir}/${_nv_pkg}/kernel"
     fi
 }
 
@@ -823,9 +745,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('d4c804f804562db0439e75d0a9605e0da55f80103d11087ced20486cc0813e4840ec928dc55e33ae654509e593236d6a62fc1a0d4b911a1d943b5e13b525267e'
-        '20f42891e01b248b0df74e0f395e58314052af1d0f364e93a67180cdae63d13299316d37f61002f13ab11b73f8cf52de91a4f49a3038c965a3cd120625d461e3'
+b2sums=('91e5abb3905ba9e8b5cdf26b89758f4454b4e573f148fb08340c60852115d95068e44420d73373a406cb47fb011fc14ee65294489f197a3f7f39d3d8e24b2f2d'
+        'b7e0db188b4c3ee2fc74fc41e13c3b5cd5daed3b6777747477dddca9b8a3c848abca9cb8e5926e0bdef2f245baf0aaaaeca2d15fee43529ee95fb208d006a688'
         '43ef7a347878592740d9eb23b40a56083fa747f7700fa1e2c6d039d660c0b876d99bf1a3160e15d041fb13d45906cdb5defef034d4d0ae429911864239c94d8d'
-        'd4bb4969dd86eb99b3659294fa5a1ef477fa9c9e05e7d36c673061f9f3acc658c26543d910d851057683426fce0844644cf1e150f60c611774cc95b0e32322ed'
-        '31bf236711a802403bb686cace4c48601a24eb9cc8ec6c1d0a864fedd2dd321c6b52c55443c9d0437b383881e0673bfc64565134c5000fa347727fe401a99aa4'
-        'c4d3542c6c1eb08a7fc3cb152037ed252cde7c80d1c91889c50e7bd3fb49979550cfeb80520c496ffe307956af57f0d7f72c7b82a74fc6f765ffa8362a6d6646')
+        '72412dc5e291e70000d44f666ad332386e27870e832eb37375cfc13013eeffe01a9e417fa15dfa1008c96108db8ccec301a42f21174ee9957f1127b2db92e6ff'
+        'fb67415ea31cac08825f482691fcfa188a4912e4fe0ec2189c5124999dcf2ee7f9cc16cf42a1b45ccbdb245ef64e5260cbe22c5c85727ebd4b0d9adf98cba987'
+        'd603702cb37da26deec2f4cbbde4cdc99edaa528130f9657d33e7dfff2e4472fb90c4730b431be0fce4dabeaa353c2a8bc48ed8173c546a3be0c50ab997dc3a9')
