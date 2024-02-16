@@ -1,7 +1,7 @@
 pkgbase = python-kernex
 	pkgdesc = Stencil computations in JAX
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ASEM000/kernex
 	arch = any
 	license = MIT
