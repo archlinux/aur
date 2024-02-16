@@ -1,7 +1,7 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 # Contributor:anon at sansorgan.es
 pkgname=awx
-pkgver=23.8.0
+pkgver=23.8.1
 pkgrel=1
 pkgdesc="AWX provides a web-based user interface, REST API, and task engine built on top of Ansible."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'gettext')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/ansible/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('389017d59f7ca6846b22a91be4facc77e32c407600d299a30600e812ec639a0d')
+sha256sums=('55a56b4ef8a8214c1ca939e142c99d9be244e1d0085668314aded2d02abb8bc0')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
