@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=libpldm-git
-pkgver=0.7.0.r40.ga065ecc
+pkgver=0.7.0.r45.gdc7d3b5
 pkgrel=1
 epoch=
 pkgdesc="This is a library which deals with the encoding and decoding of PLDM messages."
@@ -9,7 +9,7 @@ arch=(aarch64
     riscv64
     x86_64)
 url="https://github.com/openbmc/libpldm"
-license=('Apache')
+license=('Apache-2.0')
 groups=()
 depends=(glibc)
 makedepends=(
@@ -46,7 +46,7 @@ prepare()
 }
 
 build() {
-    arch-meson ${pkgname} build
+    arch-meson ${pkgname} build -Dabi=deprecated,stable,testing
     ninja -C build
 }
 

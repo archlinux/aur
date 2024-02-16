@@ -1,12 +1,12 @@
 pkgbase = libpldm-git
 	pkgdesc = This is a library which deals with the encoding and decoding of PLDM messages.
-	pkgver = 0.7.0.r40.ga065ecc
+	pkgver = 0.7.0.r45.gdc7d3b5
 	pkgrel = 1
 	url = https://github.com/openbmc/libpldm
 	arch = aarch64
 	arch = riscv64
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = git
 	makedepends = gtest
 	makedepends = meson
