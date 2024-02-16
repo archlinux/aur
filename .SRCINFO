@@ -1,7 +1,7 @@
 pkgbase = iceshrimp
 	pkgdesc = YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023
-	pkgver = v2023.12.3
-	pkgrel = 2
+	pkgver = v2023.12.4
+	pkgrel = 1
 	url = https://iceshrimp.dev/iceshrimp/iceshrimp
 	install = iceshrimp.install
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = iceshrimp
 	depends = nodejs
 	optdepends = ffmpeg: for video transcoding
 	backup = etc/iceshrimp/configuration.yml
-	source = iceshrimp::git-lfs+https://iceshrimp.dev/iceshrimp/iceshrimp.git#tag=v2023.12.3
+	source = iceshrimp::git-lfs+https://iceshrimp.dev/iceshrimp/iceshrimp.git#tag=v2023.12.4
 	source = iceshrimp.service
 	source = iceshrimp.sysusers
 	source = iceshrimp.tmpfiles
