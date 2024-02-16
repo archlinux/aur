@@ -1,4 +1,7 @@
-ocis
+ocis-*
+pkg
+src
 
+*.tar.gz
 *.log
 *.pkg.tar.zst
