@@ -7,9 +7,9 @@
 #_qmake_args="CONFIG+=debug"
 _building=true
 pkgname=qtcreator-prerelease
-_pkgvermajmin=12.0
-_pkgver=${_pkgvermajmin}.2
-_verpostfix=""
+_pkgvermajmin=13.0
+_pkgver=${_pkgvermajmin}.0
+_verpostfix="beta1"
 pkgver="${_pkgver}${_verpostfix}"
 pkgrel=1
 _urlbase="https://download.qt.io/official_releases"
@@ -24,7 +24,7 @@ url='http://qt.io/ide'
 license=('GPL')
 provides=('qtcreator')
 conflicts=('qtcreator' 'litehtml')
-depends=('python-beautifulsoup4' 'qt6-base' 'qt6-tools' 'qt6-declarative' 'qt6-quickcontrols2' 'clang' 'llvm' 'lld')
+depends=('python-beautifulsoup4' 'qt6-base' 'qt6-tools' 'qt6-declarative' 'qt6-quickcontrols2' 'gcc')
 install=qtcreator-prerelease.install
 optdepends=('qt6-doc: integrated Qt documentation'
             'qt6-examples: welcome page examples'
@@ -38,7 +38,7 @@ optdepends=('qt6-doc: integrated Qt documentation'
             'valgrind: analyze support')
 makedepends=('clang' 'qt6-base' 'patchelf')
 source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_source_archive_name}.tar.xz")
-sha512sums=('cb28405aa632b390be0dbee6995f553d5663f69dafba14a338275e9ea7408bf97a132f6ff17a961fc82a9cabfb57f28a03680d994fe038696da10fe131d5d7d1')
+sha512sums=('55d907cd9112733600edb5fe1a2ef0d8df975899465ee771a88313c5941c64641774a091696ff22a613997954835e277618db44802f63bd937b75b88a62c0cfc')
 
 prepare() {
   local working_dir=${srcdir}/${_source_archive_name}
