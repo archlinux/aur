@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=toolong
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A terminal application to view, tail, merge, and search log files (plus JSONL)"
 arch=(any)
@@ -22,7 +22,7 @@ makedepends=(
   python-wheel
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('254491a0ce9fcc7e8ccce9ee697fe42af93400c547815908bbd907332a3eb543')
+sha256sums=('1f128ffb6461c401aa1b6bc98caf79967e6832c08990a9758b31678efef24dbb')
 
 _archive="$pkgname-$pkgver"
 
