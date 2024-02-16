@@ -4,8 +4,8 @@
 # Contributor: Wael Nasreddine <wael.nasreddine@gmail.com>
 
 pkgname=kubetail
-pkgver=1.6.18
-pkgrel=2
+pkgver=1.6.19
+pkgrel=1
 pkgdesc="Tail Kubernetes logs from multiple pods"
 arch=(any)
 url="https://github.com/johanhaleby/kubetail"
@@ -14,8 +14,8 @@ depends=(
   bash
   kubectl
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('62ba29b3a869bba5b2ddf8c0fbbd307330dfe8cf8f3d47ae459c327b66afbb93')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('441e0ff5bb1e7884d6458366d72e848f1088825c5d615bbfe96d953990606d9a')
 
 _archive="$pkgname-$pkgver"
 
