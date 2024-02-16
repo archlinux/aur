@@ -1,6 +1,6 @@
 pkgbase = yuzu-mainline-git
 	pkgdesc = An experimental open-source emulator for the Nintendo Switch (newest features)
-	pkgver = 1699.r0.g14cba4a
+	pkgver = 1716.r0.g9b60294
 	pkgrel = 1
 	url = https://github.com/yuzu-emu/yuzu-mainline
 	install = yuzu-mainline-git.install
@@ -11,6 +11,7 @@ pkgbase = yuzu-mainline-git
 	makedepends = glslang
 	makedepends = llvm
 	makedepends = gcc
+	makedepends = clang
 	makedepends = ninja
 	makedepends = catch2
 	makedepends = cmake

@@ -2,7 +2,7 @@
 # Co-Maintainer: Brendan Szymanski <hello@bscubed.dev>
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=1699.r0.g14cba4a
+pkgver=1716.r0.g9b60294
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -45,6 +45,7 @@ makedepends=('boost'
              'glslang'
              'llvm'
              'gcc'
+             'clang'
              'ninja'
              'catch2'
              'cmake'
