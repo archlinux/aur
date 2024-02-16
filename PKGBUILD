@@ -7,7 +7,7 @@
 # Contributor: Drew DeVault
 
 _pkgbase=nginx
-pkgbase=nginx-mainline
+pkgbase=freenginx-mainline
 pkgname=(freenginx-mainline freenginx-mainline-src)
 pkgver=1.25.3
 pkgrel=1
