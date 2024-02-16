@@ -30,6 +30,6 @@ pkgbase = python-solara
 	depends = python-websockets
 	noextract = solara-1.26.1-py2.py3-none-any.whl
 	source = https://files.pythonhosted.org/packages/py2.py3/s/solara/solara-1.26.1-py2.py3-none-any.whl
-	sha256sums = b5c8547f0e7a650f018b37d95f8e0c73c8925ed3775129b6b9b89d48d7531f5f
+	sha256sums = f3aca56b6ff316f94d7b69bce9563f3c9c4a6e20abd1a6ae4ac70b9fd431c6c1
 
 pkgname = python-solara
