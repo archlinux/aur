@@ -1,14 +1,14 @@
 # Maintainer: fubarhouse
 pkgname=skpr
 provides=("skpr-rsh")
-pkgver=0.26.0
+pkgver=0.26.1
 pkgrel=1.6
 pkgdesc="CLI tool for managing web applications on the platform."
 arch=('x86_64')
 url="https://github.com/skpr/cli"
 license=('MIT')
 source=("skpr_v${pkgver}.deb::http://packages.skpr.io/apt/pool/main/skpr/skpr_${pkgver}_linux_amd64.deb")
-sha512sums=('d5a88e5053ac097c33dd87a5eef3a76c45c4df9fa9f2186393c10b2d87b3ba49296ba577a1f7603bf1f7702ed3427870ac8cdaa168a1cd23c3e104eda0002d42')
+sha512sums=('3f0a1894121702113d4a92bb142289144da70caaa15b278ed26e1de65b0ad8d6376079432e2764cb7e40eca39084ef486b9e115bf0463135bbbe60542468677e')
 provides=(skpr skpr-rsh)
 
 package() {
