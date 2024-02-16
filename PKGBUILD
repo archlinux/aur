@@ -3,8 +3,8 @@
 _pkgname=bibliasacra
 pkgname=${_pkgname}-appimage
 pkgver=1.0.4
-pkgrel=2
-pkgdesc="A Bible application written in Flutter and packaged in AppImage"
+pkgrel=3
+pkgdesc="A Flutter Bible application with English and Latin versions"
 arch=('x86_64')
 license=('GPLv3')
 depends=('xdg-utils')
