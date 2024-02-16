@@ -2,7 +2,7 @@
 
 pkgname=unisec
 _gemname=$pkgname
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc='Unicode Security Toolkit.'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('ruby' 'ctf-party' 'ruby-dry-cli' 'ruby-paint' 'ruby-twitter_cldr'
          'ruby-unicode-confusable')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-sha512sums=('0af55315aaf6997ab971e4cf1b8467ecb8a9f33e8d11ff76764d08137ef740aba0b166eba964e9443fd9ad1c1f2424990eaaff342f5fb983e213d1c121c83175')
+b2sums=('5e323a59654ee9edcbd92aa31692ec0465f4c9548cf86e4eca9b9f160ba7bfade13545141fa6ceedaf7a9945c3fef89dab462cc24dda1ff2f3473d82ee0fadd5')
 
 package() {
   _gemhome="$(gem env home)"
