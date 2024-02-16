@@ -3,9 +3,10 @@
 
 pkgname='nginx-vts-exporter'
 pkgver='0.10.8'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Prometheus exporter for Nginx vts stats'
 arch=('x86_64' 'aarch64')
+options=(!lto)
 _uri='github.com/hnlq715'
 url="https://${_uri}/${pkgname}"
 license=('MIT')
@@ -39,8 +40,6 @@ build() {
 }
 
 package() {
-  pushd "${GOPATH}/src/${_uri}/${pkgname}"
-  install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  popd
+  install -Dm755 "${GOPATH}/src/${_uri}/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 }
