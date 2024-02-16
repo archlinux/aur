@@ -1,7 +1,7 @@
 pkgbase = codetantra-sea
 	pkgdesc = Platform for online teaching.
 	pkgver = 3.0.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://www.codetantra.com
 	arch = x86_64
 	depends = alsa-lib
