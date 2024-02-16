@@ -775,3 +775,14 @@ Fixes:
 - Notion and Linear integrations can now be used on the Morgen free plan until the end of the Beta. Before tasks did not appear on the free plan, which was not intended.
 - A problem causing an unnecessary event update when the Notes field was on focus (even without content changes) has been rectified.
 - We fixed smaller UI issues and made sure the Notion icon is responsive to the light/dark theme during the onboarding.
+
+=== Morgen 3.2.4
+Improvements:
+- Performance: The rendering performance of task labels has been significantly improved. In our tests, rendering a list of tasks with many labels is up to 2x faster (and we plan to keep improving on this).
+- Tasks UX: The width of grouped labels in the task sidebar has been increased for better readability.
+- Keyboard accessibility: We implemented general keyboard accessibility improvements on the task/event details panel and fixed some inconsistencies between its fields.
+
+Fixes:
+- On our Microsoft ToDo integration, we have fixed an authentication issue and restored the possibility to organize tasks by task lists. This was accidentally disabled.
+- Additionally, we fixed some UX edge cases that could cause an error with certain actions.
+- Finally, a problem causing the context menu of an event to appear behind other elements has been rectified.
