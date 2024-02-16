@@ -1,14 +1,14 @@
 # Maintainers: kobe-koto <admin[at]koto.cc>, Ketal_Q_ray <k[at]ketal.icu>
 pkgname="liteloader-qqnt-git"
 _pkgname="LiteLoaderQQNT"
-pkgver=1.0.3.r1.ge570e4b
-pkgrel=2
+pkgver=latest
+pkgrel=1
 pkgdesc="轻量, 简洁, 开源的 QQNT 插件加载器"
 arch=('any')
 url="https://github.com/LiteLoaderQQNT/LiteLoaderQQNT"
 license=('MIT')
 depends=("linuxqq")
-makedepends=("npm")
+makedepends=("npm" "git")
 conflicts=("linuxqq-appimage" "liteloader-qqnt")
 provides=("liteloader-qqnt")
 source=(
