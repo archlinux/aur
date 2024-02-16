@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="A VNC server for DRM/KMS capable GNU/Linux devices"
 arch=('x86_64')
 url='https://github.com/isjerryxiao/kmsvnc'
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 depends=('libvncserver' 'libxkbcommon' 'libdrm' 'libva')
 makedepends=('git' 'cmake')
 
