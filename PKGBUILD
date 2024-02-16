@@ -1,8 +1,8 @@
 # Maintainer: zotan <aur@zotan.email>
 
 pkgname=iceshrimp-git
-pkgver=v2023.12.3
-pkgrel=3
+pkgver=v2023.12.4.r0.g20ae0829a
+pkgrel=1
 pkgdesc="YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp"
