@@ -2,11 +2,11 @@
 _base=felupe
 pkgname=python-${_base}
 pkgdesc="Finite Element Analysis"
-pkgver=7.17
+pkgver=7.18.0
 pkgrel=1
 arch=(any)
 url="https://github.com/adtzlr/${_base}"
-license=(GPL3)
+license=(GPL-3.0-or-later)
 depends=(python-scipy python-tensortrax)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-meshio python-h5py-openmpi python-tensortrax
@@ -18,7 +18,7 @@ optdepends=('python-einsumt: for parallel assembly'
   'python-pyvista: for interactive visualizations'
   'python-tqdm: for showing progress bars during job evaluation')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('0c8fd8ce420c5518de576cd635723eeb333d5e6a352302a8def819f75a1d55ed6ff092b7eaecd0ed34eab16c45e565036479921de7ebc687b699e5d266345c33')
+sha512sums=('1a0c18e365637ff251ad290395a1ca71607e2c17ee4a69f57f92a5be168e04d9b03a0da5733113727c67c48d9a8270a863f371172257805eda09a4555c4c400b')
 
 build() {
   cd ${_base}-${pkgver}
