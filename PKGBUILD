@@ -3,7 +3,7 @@
 
 pkgname=single-file
 _pkgname=single-file-cli
-pkgver=1.1.51
+pkgver=1.1.54
 pkgrel=1
 pkgdesc="CLI tool for saving a faithful copy of a complete web page in a single HTML file"
 arch=(x86_64)
@@ -17,7 +17,7 @@ optdepends=(
 )
 source=("https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
 noextract=("$_pkgname-$pkgver.tgz")
-sha256sums=('14f94e91a6fb59f853de1d862230763bfbc43c3625570d254c708ce9f56c271a')
+sha256sums=('4a09745784b6ee3d11d931ab04e7f50172e75e1b4ada72a6b4e484c74f05847f')
 
 package() {
   npm install -g \
