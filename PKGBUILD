@@ -12,7 +12,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("https://github.com/ct-code/sea/releases/download/v${pkgver}/${pkgname}_${pkgver}_amd64.deb"
         "sea.sh")
-sha256sums=('7334f689c12391781c27dae2e6fef7a0f9ec91be9bfe23e6161cd491eb2af743'
+sha256sums=('b1e9a8ca714c6f66b1c3784f6135afbb956874aa4a5fe59784ae4a8c0d67e72a'
             'c18de58a189eb3d3e581e2f61c2db911cc988369e2cdef3403c3ead2c8594abd')
 
 package() {
