@@ -9,7 +9,7 @@
 
 pkgname=soundkonverter
 pkgver=3.0.1.27.gca95836
-pkgrel=3
+pkgrel=4
 pkgdesc="Front-end to various audio converters"
 arch=('i686' 'x86_64')
 url="https://store.kde.org/p/1126634"
@@ -43,6 +43,7 @@ makedepends=(
   'extra-cmake-modules'
   'cmake'
   'kdesignerplugin'
+  'kinit'
 )
 optdepends=(
   'cdrkit: cdda2wav backend'
@@ -74,7 +75,7 @@ sha256sums=(
   'SKIP'
   '6775198a5c30495ead5cda9756643e7e3c5b767dd5f322f985c9775bb37093e9'
 )
-options=('debug')
+# options=('debug')
 
 pkgver() {
   cd "$srcdir/soundkonverter"
