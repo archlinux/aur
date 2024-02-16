@@ -1,7 +1,7 @@
 # Maintainer: zocker_160 <zocker1600 at posteo dot net>
 
 pkgname=keyboard-center
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Application to map G-keys on (some) Logitech Gaming Keyboards"
 arch=('x86_64')
