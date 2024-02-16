@@ -1,6 +1,6 @@
 pkgbase = btor2tools-git
 	pkgdesc = A generic parser and tool package for the BTOR2 format.
-	pkgver = r79.6ba194b
+	pkgver = r83.037f1fa
 	pkgrel = 1
 	url = https://github.com/Boolector/btor2tools
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = btor2tools-git
 	makedepends = cmake
 	depends = gcc-libs
 	provides = btor2tools
-	source = git://github.com/Boolector/btor2tools.git
+	source = git+https://github.com/Boolector/btor2tools.git
 	sha256sums = SKIP
 
 pkgname = btor2tools-git
