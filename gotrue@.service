@@ -1,0 +1,34 @@
+[Unit]
+Description=JWT based API (using %i.conf)
+Documentation=https://github.com/supabase/gotrue
+After=network-online.target
+
+[Service]
+User=gotrue
+Group=gotrue
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ProtectKernelTunables=true
+ProtectHostname=true
+ProtectClock=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+NoNewPrivileges=true
+PrivateDevices=true
+DeviceAllow=/dev/syslog
+RestrictSUIDSGID=true
+ProtectKernelModules=true
+MemoryDenyWriteExecute=true
+RestrictNamespaces=true
+RestrictRealtime=true
+LockPersonality=true
+TimeoutStopSec=7s
+KillMode=mixed
+KillSignal=SIGTERM
+Restart=on-failure
+RestartPreventExitStatus=2
+ExecStart=/usr/bin/nv /etc/gotrue/%i.env /usr/bin/gotrue
+
+[Install]
+WantedBy=multi-user.target
