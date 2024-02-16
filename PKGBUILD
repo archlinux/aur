@@ -3,21 +3,19 @@
 _pkgname=corncob
 _pkgver=0.4.1
 pkgname=r-${_pkgname,,}
-pkgver=0.4.1
-pkgrel=1
-pkgdesc='Count Regression for Correlated Observations with the Beta-Binomial'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Count Regression for Correlated Observations with the Beta-Binomial"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-detectseparation
   r-dplyr
   r-ggplot2
   r-magrittr
   r-numderiv
-  r-optimr
-  r-phyloseq
+  r-rlang
   r-scales
   r-trust
   r-vgam
@@ -26,20 +24,23 @@ optdepends=(
   r-covr
   r-knitr
   r-limma
+  r-optimx
+  r-phyloseq
   r-r.rsp
   r-rmarkdown
   r-slam
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9658ee516843ed7e229e24e77df3f7c0e361c428f1700818209c21e3d24f5089')
+md5sums=('050e514bd0806ade62b58aba13f15cf1')
+b2sums=('a3e6617f76b8fe23d037a04d47114c0547b03fa5160d345fc99d43267c8767815573d291ffa8f12b7fae97fde51fdadd89d77f0e49326c3511ab2310023918e0')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

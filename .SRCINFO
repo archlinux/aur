@@ -1,29 +1,30 @@
 pkgbase = r-corncob
 	pkgdesc = Count Regression for Correlated Observations with the Beta-Binomial
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=corncob
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-2.0-or-later
 	depends = r-detectseparation
 	depends = r-dplyr
 	depends = r-ggplot2
 	depends = r-magrittr
 	depends = r-numderiv
-	depends = r-optimr
-	depends = r-phyloseq
+	depends = r-rlang
 	depends = r-scales
 	depends = r-trust
 	depends = r-vgam
 	optdepends = r-covr
 	optdepends = r-knitr
 	optdepends = r-limma
+	optdepends = r-optimx
+	optdepends = r-phyloseq
 	optdepends = r-r.rsp
 	optdepends = r-rmarkdown
 	optdepends = r-slam
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/corncob_0.4.1.tar.gz
-	sha256sums = 9658ee516843ed7e229e24e77df3f7c0e361c428f1700818209c21e3d24f5089
+	md5sums = 050e514bd0806ade62b58aba13f15cf1
+	b2sums = a3e6617f76b8fe23d037a04d47114c0547b03fa5160d345fc99d43267c8767815573d291ffa8f12b7fae97fde51fdadd89d77f0e49326c3511ab2310023918e0
 
 pkgname = r-corncob
