@@ -1,26 +1,19 @@
 pkgbase = emercoin-bin
 	pkgdesc = Emercoin is a digital currency and blockchain service platform.
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = http://emercoin.com/
 	install = emercoin.install
 	arch = x86_64
 	license = GPL3
-	depends = libevent>=2.1.8
-	depends = qt5-base
-	depends = dbus>=1.10.14
-	depends = miniupnpc>=2.0.20170509
-	depends = expat>=2.2.0
-	depends = freetype2>=2.7.1
-	depends = protobuf
 	provides = emercoin
 	conflicts = emercoin
-	source_x86_64 = https://github.com/emercoin/emercoin/releases/download/v0.8.3emc/emercoin-0.8.3-x86_64-linux-gnu.tar.xz
+	source_x86_64 = https://github.com/emercoin/emercoin/releases/download/v0.8.4emc/emercoin-0.8.4-x86_64-linux-gnu.tar.xz
 	source_x86_64 = emercoin.install
 	source_x86_64 = emercoind.service
 	source_x86_64 = emc48.png
 	source_x86_64 = com.emercoin.Emercoin.desktop
-	sha256sums_x86_64 = def1278a4fddbc6960f3cc4cf5757b72b6c269a99afaa6e0a4ac1317f0055cf9
+	sha256sums_x86_64 = f26b4c0b323ece8923626b47a9781a87559081cf70addde219b3a6d9adcb6ed3
 	sha256sums_x86_64 = 9d430f8bc61ce2f7c4e1f4b297065b5b6adad92d7dd4088e9a3bb7ba7751feff
 	sha256sums_x86_64 = 9e0832225a161a0c2694890e4d1791eedf943f96556db153e3cd5e40906ef5ed
 	sha256sums_x86_64 = 99d13ec06eb0d09662632e9eb6309ee38e03162f09513b23747f189602552132

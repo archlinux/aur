@@ -1,11 +1,10 @@
 pkgname=emercoin-bin
 _pkgname=emercoin
 _githuborg=emercoin
-pkgver=0.8.3
-pkgrel=1
+pkgver='0.8.4'
+pkgrel='1'
 pkgdesc="Emercoin is a digital currency and blockchain service platform."
 arch=('x86_64')
-depends=("libevent>=2.1.8" "qt5-base" "dbus>=1.10.14" "miniupnpc>=2.0.20170509" "expat>=2.2.0" "freetype2>=2.7.1" "protobuf")
 provides=('emercoin')
 conflicts=('emercoin')
 url="http://emercoin.com/"
@@ -17,7 +16,7 @@ source_x86_64=("https://github.com/emercoin/emercoin/releases/download/v${pkgver
 "emercoind.service"
 "emc48.png"
 "com.emercoin.Emercoin.desktop")
-sha256sums_x86_64=('def1278a4fddbc6960f3cc4cf5757b72b6c269a99afaa6e0a4ac1317f0055cf9'
+sha256sums_x86_64=('f26b4c0b323ece8923626b47a9781a87559081cf70addde219b3a6d9adcb6ed3'
                    '9d430f8bc61ce2f7c4e1f4b297065b5b6adad92d7dd4088e9a3bb7ba7751feff'
                    '9e0832225a161a0c2694890e4d1791eedf943f96556db153e3cd5e40906ef5ed'
                    '99d13ec06eb0d09662632e9eb6309ee38e03162f09513b23747f189602552132'
@@ -36,5 +35,5 @@ _package() {
 		install -Dm755 ${_archive}/emercoind ${_pkgdir}/usr/bin/emercoind
 		install -Dm755 ${_archive}/emercoin-qt ${_pkgdir}/usr/bin/emercoin-qt
 		install -Dm755 ${_archive}/emercoin-cli ${_pkgdir}/usr/bin/emercoin-cli
-    chmod +x ${_pkgdir}/usr/bin/*
+    chmod +x ${_pkgdir}/usr/bin/emercoind ${_pkgdir}/usr/bin/emercoin-qt ${_pkgdir}/usr/bin/emercoin-cli
 }
