@@ -1,7 +1,7 @@
 # Maintainer: vmalloc vmalloc@olanfa.de
 pkgname=tinylock
 pkgver=1.20
-pkgrel=2
+pkgrel=1
 pkgdesc="provides a lock function for process locking"
 arch=('i686' 'x86_64')
 url="https://jeremy.kister.net/code/File-TinyLock-1.20/README"

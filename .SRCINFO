@@ -1,7 +1,7 @@
 pkgbase = tinylock
 	pkgdesc = provides a lock function for process locking
 	pkgver = 1.20
-	pkgrel = 2
+	pkgrel = 1
 	url = https://jeremy.kister.net/code/File-TinyLock-1.20/README
 	arch = i686
 	arch = x86_64
