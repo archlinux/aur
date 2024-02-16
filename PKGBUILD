@@ -7,27 +7,20 @@
 
 pkgbase=uv
 pkgname=($pkgbase python-$pkgbase)
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='An extremely fast Python package installer and resolver, written in Rust'
 arch=(x86_64)
 url="https://github.com/astral-sh/$pkgbase"
 license=(MIT Apache)
-depends=(
-  gcc-libs
-  glibc
-)
-makedepends=(
-  cargo
-  maturin
-  python-installer
-  cmake
-)
+depends=(gcc-libs glibc)
+makedepends=(cargo maturin python-installer cmake)
+checkdepends=(python python-zstandard libxcrypt-compat clang)
 options=(!lto)
 _archive="$pkgbase-$pkgver"
 source=($url/archive/refs/tags/$pkgver/$_archive.tar.gz)
-sha512sums=('77e345f90af2e50158b7def786469602316128124bedd10e98bab9494985402114d3415eeefeb2b6c2059d1f97f4e89cde033c787228d1eba5434277d99dffc8')
-b2sums=('1aefb4d2e53e07f10829c50c31d7837d2f809feb323e3c128af66eb679d7a0ed04a0ba91fac2e529c5502ee621ce039d2ae96a1f6a41828b3154492eee9b6d65')
+sha512sums=('db2d235ac9d33e69595d86bc608d99435567f149ad03493ae7a5c156bc3f395973feda4e566f9ae672fae686ea47dd967b0b9e1ec1bf1cf1fa71a9f5901939c7')
+b2sums=('a929b2f3b4e504b4417d9ecc1b9d7ebc213c31c53ddf3a9cbf11ec1ddd3f928acbcbd8320dcb7e17d8700fb1015b3031765228ef9edd9552b537426952e6ea7a')
 
 prepare() {
   cd "$_archive"
@@ -40,9 +33,8 @@ build() {
 }
 
 check() {
-  # disable for now since it requires python3.12
-  return 0
   cd "$_archive"
+  python3 ./scripts/bootstrap/install.py
   cargo test -p uv --frozen --all-features
 }
 
