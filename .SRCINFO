@@ -1,0 +1,22 @@
+pkgbase = android-x86-64-libgpg-error
+	pkgdesc = Support library for libgcrypt (android)
+	pkgver = 1.47
+	pkgrel = 1
+	url = https://www.gnupg.org
+	arch = any
+	license = LGPL
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.47.tar.bz2
+	source = https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.47.tar.bz2.sig
+	source = 0001-Unversioned-libs.patch
+	validpgpkeys = 6DAA6E64A76D2840571B4902528897B826403ADA
+	validpgpkeys = AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD
+	sha256sums = 9e3c670966b96ecc746c28c2c419541e3bcb787d1a73930f5e5f5e1bcbbb9bdb
+	sha256sums = SKIP
+	sha256sums = d109aec757f631d3cda57d396f473338df4d74ee69d940445d474208efc38f17
+
+pkgname = android-x86-64-libgpg-error
