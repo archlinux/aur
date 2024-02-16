@@ -1,6 +1,6 @@
 pkgbase = sk-chos-addon-git
 	pkgdesc = Addon for sk-chimeros
-	pkgver = r325.e21072d
+	pkgver = r331.590a8c9
 	pkgrel = 1
 	url = https://github.com/honjow/sk-holoiso-config.git
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = sk-chos-addon-git
 	makedepends = git
 	depends = expect
 	depends = efibootmgr
+	depends = zram-generator
 	provides = sk-chos-addon
 	conflicts = sk-chos-addon
 	replaces = sk-chos-addon
