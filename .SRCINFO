@@ -1,0 +1,14 @@
+pkgbase = python-asv-runner
+	pkgdesc = Core Python benchmark code for ASV.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://asv.readthedocs.io/projects/asv-runner
+	arch = x86_64
+	license = BSD-3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pdm
+	source = python-asv-runner-0.2.1.tar.gz::https://github.com/airspeed-velocity/asv_runner/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 555eb3387f64e21cda4d82e0a67dd3e3c1618a4998815195200e2baecb21a73f
+
+pkgname = python-asv-runner
