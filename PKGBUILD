@@ -3,7 +3,7 @@
 # Contributor: Vincent Bernardoff <vb at luminar dot eu dot org>
 
 pkgname=clingo
-pkgver=5.6.2
+pkgver=5.7.1
 pkgrel=1
 pkgdesc='Grounding tools for (disjunctive) logic programs'
 arch=('i686' 'x86_64' 'pentium4')
