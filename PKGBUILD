@@ -2,8 +2,8 @@
 # Contributor: Philippe.seraphin <philippe(dot)seraphin(at)infomaniak(dot)com>
 _pkgname=auxilium
 pkgname=$_pkgname-git
-pkgver=0.0.9
-pkgrel=1
+pkgver=0.0.10
+pkgrel=2
 pkgdesc="Tool for parse args in many shell (bash, ksh,zsh)"
 arch=(any)
 url="https://salsa.debian.org/openstack-team/third-party/auxilium"
