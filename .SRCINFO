@@ -1,0 +1,15 @@
+pkgbase = bibliasacra-appimage
+	pkgdesc = A Bible application written in Flutter and packaged in AppImage
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/ika/Biblia_Sacra/releases/download/v1.0.4
+	arch = x86_64
+	license = GPLv3
+	depends = xdg-utils
+	provides = bibliasacra
+	conflicts = bibliasacra
+	options = !strip
+	source = https://github.com/ika/Biblia_Sacra/releases/download/v1.0.4/bibliasacra-v1.0.4-x86_64.AppImage
+	md5sums = 921898117020560c888b04841699419d
+
+pkgname = bibliasacra-appimage
