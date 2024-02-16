@@ -1,0 +1,18 @@
+pkgbase = android-aarch64-libxslt
+	pkgdesc = XML stylesheet transformation library (android)
+	pkgver = 1.1.39
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/libxslt/-/wikis/home
+	arch = any
+	license = custom:MIT
+	depends = android-aarch64-libgcrypt
+	depends = android-aarch64-libxml2
+	depends = android-aarch64-xz
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://gitlab.gnome.org/GNOME/libxslt/-/archive/v1.1.39/libxslt-v1.1.39.tar.gz
+	md5sums = 8058ddbcae9bc4a6ab75327e748561de
+
+pkgname = android-aarch64-libxslt
