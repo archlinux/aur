@@ -4,9 +4,10 @@
 pkgbase='s3_exporter'
 pkgname='prometheus-s3-exporter'
 pkgver='0.6.1'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Exports Prometheus metrics about S3 buckets and objects'
 arch=('x86_64' 'aarch64')
+options=(!lto)
 _uri='github.com/qaoru'
 url="https://${_uri}/${pkgbase}"
 license=('Apache 2.0')

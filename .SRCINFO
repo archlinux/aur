@@ -1,12 +1,13 @@
 pkgbase = s3_exporter
 	pkgdesc = Exports Prometheus metrics about S3 buckets and objects
 	pkgver = 0.6.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/qaoru/s3_exporter
 	arch = x86_64
 	arch = aarch64
 	license = Apache 2.0
 	makedepends = go
+	options = !lto
 	backup = etc/conf.d/prometheus-s3-exporter
 	source = https://github.com/qaoru/s3_exporter/archive/refs/tags/v0.6.1.tar.gz
 	source = prometheus-s3-exporter
