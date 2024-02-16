@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=NiaAML
 pkgname=python-${_base,,}
-pkgver=1.1.12
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Python automated machine learning framework"
 url="https://github.com/lukapecnik/${_base}"
@@ -11,7 +11,7 @@ depends=(python-niapy python-scikit-learn)
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('4b30c6a3902a67dfb15216653db2403bef876ae00e6a2e0144d586cdb25535ab280e1c8af7ec88446cd2fcc99a2d3fefdd8874eb05cb8d083783a23014dadd5b')
+sha512sums=('277550856057c5f61fefb7618c9cde9335062f2ee91f69de8028b20284a4c771886363f273f6fb1f6ea619faef6f97bbb36413ee2ed0cf327fc66f46a394be2c')
 
 build() {
   cd ${_base}-${pkgver}
@@ -20,7 +20,7 @@ build() {
 
 check() {
   cd ${_base}-${pkgver}
-  python -m pytest -k 'not pipeline_run_works_fine'
+  python -m pytest #-k 'not pipeline_run_works_fine'
 }
 
 package() {
