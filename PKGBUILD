@@ -2,11 +2,11 @@
 
 pkgname='tropy-bin'
 pkgver='1.16.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='Explore your research photos'
 arch=('x86_64')
 url='https://tropy.org'
-license=('AGPL3' 'custom')
+license=('AGPL-3.0-or-later')
 depends=(
   'electron28'
   'gcc-libs'
