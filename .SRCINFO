@@ -1,7 +1,7 @@
 pkgbase = iceshrimp-git
 	pkgdesc = YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023
-	pkgver = v2023.11.3.r59.ge5276e276
-	pkgrel = 2
+	pkgver = v2023.12.3
+	pkgrel = 3
 	url = https://iceshrimp.dev/iceshrimp/iceshrimp
 	install = iceshrimp.install
 	arch = x86_64
@@ -10,8 +10,6 @@ pkgbase = iceshrimp-git
 	makedepends = makepkg-git-lfs-proto
 	makedepends = npm
 	depends = nodejs
-	depends = redis
-	depends = postgresql
 	optdepends = ffmpeg: for video transcoding
 	provides = iceshrimp
 	conflicts = iceshrimp
@@ -30,3 +28,6 @@ pkgbase = iceshrimp-git
 	sha512sums = fab724bc864e74b1eab21941171beaa70b1c17b7719bb9a63aea1ad0f0c3e84e9b73260ad93bddd2e2f23ed6464a4d156b1659b4a7c0a032c1a31ff3e4113f7d
 
 pkgname = iceshrimp-git
+	depends = nodejs
+	depends = redis
+	depends = postgresql
