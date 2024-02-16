@@ -1,11 +1,11 @@
-# Maintainer: Jonas Kalsvik <jonaskalsvik@gmail.com>
+# Maintainer: Jonas Kalsvik <jonas@kalsvik.no>
 pkgname="epicmickeylauncher"
-pkgver="0.4.0"
-pkgrel=4
+pkgver="0.4.1"
+pkgrel=5
 epoch=
 pkgdesc="Mod Installer, Level Loader & Launcher for every Epic Mickey game."
 arch=('x86_64')
-url="https://eml.memerdev.com"
+url="https://eml.kalsvik.no"
 license=('MIT')
 groups=()
 depends=("pacman")
