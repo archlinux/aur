@@ -9,9 +9,10 @@
 
 # The pkgver will still be updated when new versions come out so that players get updates.
 
+# Note: apparently there IS an endpoint to get a specific version's jar. Will update soon-ish.
 pkgname=labymod-appimage
 _pkgname=labymodlauncher
-pkgver=2.0.9
+pkgver=2.0.10
 pkgrel=1
 pkgdesc='A minecraft Launcher & modpack that optimizes the game and adds a bunch of useful features ! (1.8->1.20.1)'
 url=https://www.labymod.net
