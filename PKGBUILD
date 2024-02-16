@@ -12,7 +12,7 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=121.0.6167.160
+pkgver=121.0.6167.184
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -42,7 +42,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch
         index.html)
-sha256sums=('4586673899383d30e9d95fa3a9c5f8160f32a9d5789e40be82abf3e4dd9cc3df'
+sha256sums=('9fd6b82e7077ac26ec264bfcfc8ac8e0c2a0240378f035c9c0f34ad467aef09d'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'e9113c1ed2900b84b488e608774ce25212d3c60094abdae005d8a943df9b505e'
             '8d1cdf3ddd8ff98f302c90c13953f39cd804b3479b13b69b8ef138ac57c83556'
@@ -74,7 +74,7 @@ source=(${source[@]}
         0001-ozone-wayland-implement-text_input_manager_v3.patch
         0001-ozone-wayland-implement-text_input_manager-fixes.patch)
 sha256sums=(${sha256sums[@]}
-            'ac6b04003f23f3aabb08b478eb9b3eb7d79b518dc632f48d1f24dc38d5d3eba7'
+            'feb1039d4d5c13fbeb53736e0f0bbfea09c7d71af81bcc7b52d0fb42fd86a4a1'
             '9a5594293616e1390462af1f50276ee29fd6075ffab0e3f944f6346cb2eb8aec'
             '8ba5c67b7eb6cacd2dbbc29e6766169f0fca3bbb07779b1a0a76c913f17d343f'
             '2a44756404e13c97d000cc0d859604d6848163998ea2f838b3b9bb2c840967e3'
