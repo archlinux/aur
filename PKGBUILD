@@ -12,7 +12,7 @@ makedepends=('npm' 'git' 'zip' 'unzip' 'perl' 'python>=3' 'curl' 'wget' 'rsync' 
 _tag=5350a60c9aeb14480372b552e59df4386ad10b7d  # git rev-parse $pkgver
 source=("zotero.desktop"
         "zotero-client::git+https://github.com/zotero/zotero.git#tag=${_tag}"
-        "zotero-build::git+https://github.com/zotero/zotero-build.git"
+        "zotero-build::git+https://github.com/zotero/zotero-build.git#tag=5cec38cd40361d939e32eb0b6e0fd18ac7b78a56"
         "zotero-standalone-build::git+https://github.com/zotero/zotero-standalone-build.git#tag=6.0.30"
         "zotero-translators::git+https://github.com/zotero/translators.git"
         "zotero-styles::git+https://github.com/zotero/bundled-styles.git"
