@@ -2,7 +2,7 @@
 
 pkgname=azure-dev-cli
 _pkgname=azure-dev
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Developer CLI that reduces the time it takes for you to get started on Azure"
 arch=(x86_64)
@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/azure-dev-cli_$pkgver.tar.gz")
-sha256sums=('45057c97416eb2f9ea0874350df33757a8ced5d686cf18091d12beaf93b47778')
+sha256sums=('e7850b9f163bbba4e47a58e42c76b902ecf847ca3595ba492cc8b0cfddd3606e')
 
 _archive="$_pkgname-azure-dev-cli_$pkgver"
 
@@ -49,7 +49,7 @@ check() {
   cd "$_archive"
 
   # Skip failing tests - not sure why they fail.
-  _unit_tests=$(
+  local unit_tests=$(
     go list -buildvcs=false ./... \
       | grep -v 'github.com/azure/azure-dev/cli/azd/internal/scaffold' \
       | grep -v 'github.com/azure/azure-dev/cli/azd/test/cmdrecord' \
@@ -57,7 +57,7 @@ check() {
       | sort
   )
   # shellcheck disable=SC2086
-  go test $_unit_tests
+  go test -v $unit_tests
 }
 
 package() {
@@ -69,7 +69,7 @@ package() {
   install -Dm644 azd.fish "$pkgdir/usr/share/fish/vendor_completions.d/azd.fish"
   install -Dm644 azd.zsh "$pkgdir/usr/share/zsh/site-functions/_azd"
 
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md docs/*
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
   cp -a -t "$pkgdir/usr/share/doc/$pkgname" docs
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
