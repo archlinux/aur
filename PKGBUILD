@@ -7,7 +7,7 @@
 
 pkgbase=uv
 pkgname=($pkgbase python-$pkgbase)
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='An extremely fast Python package installer and resolver, written in Rust'
 arch=(x86_64 aarch64)
@@ -19,8 +19,8 @@ checkdepends=(python python-zstandard libxcrypt-compat clang)
 options=(!lto)
 _archive="$pkgbase-$pkgver"
 source=($url/archive/refs/tags/$pkgver/$_archive.tar.gz)
-sha512sums=('db2d235ac9d33e69595d86bc608d99435567f149ad03493ae7a5c156bc3f395973feda4e566f9ae672fae686ea47dd967b0b9e1ec1bf1cf1fa71a9f5901939c7')
-b2sums=('a929b2f3b4e504b4417d9ecc1b9d7ebc213c31c53ddf3a9cbf11ec1ddd3f928acbcbd8320dcb7e17d8700fb1015b3031765228ef9edd9552b537426952e6ea7a')
+sha512sums=('e0fafad759f17fe7f3b11997416c01a9f03919696d4b8fe845b6f61577ad7c87e25da54c321e2e225930deea859f7d1add68dbbc9b8ca2dbe9d30b7ab98189e7')
+b2sums=('807d862c322cb0cc226b3683e2fe6592c2cbf52b031036be05ff3b1298fca404066e1b032fa0dfa480ad80bb964f0082430ac4392d3f76dc15c73612e5b9ec9f')
 
 prepare() {
   cd "$_archive"
