@@ -1,8 +1,8 @@
 #Maintainer: Shakakibara <aryan.1843@disroot.org>
 
 pkgname='codetantra-sea'
-pkgver=3.0.2
-pkgrel=3
+pkgver=3.0.3
+pkgrel=1
 pkgdesc='Platform for online teaching.'
 arch=('x86_64')
 url='https://www.codetantra.com'
