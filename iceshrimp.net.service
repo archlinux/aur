@@ -23,6 +23,7 @@ ReadOnlyPaths=/usr/share/iceshrimp.net
 ReadOnlyPaths=/etc/iceshrimp.net/configuration.ini
 ReadWritePaths=/var/lib/iceshrimp.net/files
 ReadWritePaths=/var/lib/iceshrimp.net/cache
+ReadWritePaths=-/var/lib/iceshrimp/iceshrimp.net.sock
 NoExecPaths=/var/lib/iceshrimp.net/cache
 NoExecPaths=/var/lib/iceshrimp.net/files
 
