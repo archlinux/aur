@@ -1,0 +1,12 @@
+pkgbase = nv
+	pkgdesc = Lightweight utility to load context specific environment variables
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/jcouture/nv
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = nv-2.2.1.tar.gz::https://github.com/jcouture/nv/archive/refs/tags/2.2.1.tar.gz
+	b2sums = 93488c9174420a6d9115f5cb640b9b6c3e680b71d1ded3a240801cb08f47e6ad36ea98ae93602000834e4156d2887203ea80ccd93ae5d1c98d7b9572998fd1b2
+
+pkgname = nv
