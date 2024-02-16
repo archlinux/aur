@@ -4,6 +4,7 @@ pkgbase = uv
 	pkgrel = 1
 	url = https://github.com/astral-sh/uv
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	license = Apache
 	checkdepends = python
