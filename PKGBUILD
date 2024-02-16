@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=segmented
-_pkgver=2.0-2
+_pkgver=2.0-3
 pkgname=r-${_pkgname,,}
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc='Regression Models with Break-Points / Change-Points Estimation'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9858b0512343ed7372b5e062c3ba8954df98a60973b0d358d01bcf67bff8a57a')
+sha256sums=('e7a88ae270ecb853067fbe26e21477dd369b47cefc443c3af486f2bebed909b9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

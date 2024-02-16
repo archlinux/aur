@@ -1,12 +1,12 @@
 pkgbase = r-segmented
 	pkgdesc = Regression Models with Break-Points / Change-Points Estimation
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=segmented
 	arch = any
 	license = GPL
 	depends = r
-	source = https://cran.r-project.org/src/contrib/segmented_2.0-2.tar.gz
-	sha256sums = 9858b0512343ed7372b5e062c3ba8954df98a60973b0d358d01bcf67bff8a57a
+	source = https://cran.r-project.org/src/contrib/segmented_2.0-3.tar.gz
+	sha256sums = e7a88ae270ecb853067fbe26e21477dd369b47cefc443c3af486f2bebed909b9
 
 pkgname = r-segmented
