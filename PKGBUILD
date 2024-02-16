@@ -2,7 +2,7 @@
 
 pkgname=iceshrimp-pre
 pkgver=v2023.12.3
-pkgrel=2
+pkgrel=3
 pkgdesc="YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp"
@@ -11,7 +11,7 @@ license=(AGPL3)
 _pkgver=$(echo "$pkgver" | sed s/.0$//)
 
 makedepends=(makepkg-git-lfs-proto npm)
-depends=(nodejs redis postgresql)
+depends=(nodejs)
 optdepends=(
   "ffmpeg: for video transcoding"
 )
@@ -55,6 +55,9 @@ build() {
 }
 
 package() {
+  # Add runtime-only dependencies
+  depends+=(redis postgresql)
+
   install -dm 755 "${pkgdir}/usr/share/iceshrimp"
   install -dm 755 "${pkgdir}/etc/iceshrimp"
   install -Dm 644 "${srcdir}/iceshrimp/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
