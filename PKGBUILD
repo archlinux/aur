@@ -10,7 +10,7 @@ arch=('any')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "${_pkgname}-hardlinks")
 url="https://github.com/archlinux-jerry/pkgbuilds/tree/master/kernel-modules-hook-bindmount"
-license=('GPL-3-or-later')
+license=('GPL-3.0-only')
 source=("linux-modules-cleanup.conf"
         "10-linux-modules-pre.hook"
         "61-linux-modules-post.hook"
