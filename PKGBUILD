@@ -1,9 +1,9 @@
-# Mantainer: ObserverOfTime <chronobserver@disroot.org>
+# Maintainer: killab33z <killab33z @ protonmail-dot-com>
+# Previous Mantainer: ObserverOfTime <chronobserver@disroot.org>
 # based on lib32-numactl
-
 _basename=numactl
 pkgname=lib32-libnuma
-pkgver=2.0.17
+pkgver=2.0.18
 pkgrel=1
 pkgdesc='Simple NUMA policy support 32-bit version. Libraries only'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('perl' 'numactl' 'lib32-gcc-libs')
 conflicts=('lib32-numactl')
 provides=("lib32-numactl=${pkgver}")
 source=("$_basename-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('af22829cda8b5bdee3d280e61291697bbd3f9bd372afdf119c9348b88369d40b')
+sha256sums=('8cd6c13f3096e9c2293c1d732f56e2aa37a7ada1a98deed3fac7bd6da1aaaaf6')
 
 prepare() {
   cd "${_basename}-${pkgver}"
