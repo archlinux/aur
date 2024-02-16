@@ -3,7 +3,7 @@
 
 pkgname=lib32-vulkan-nouveau-git
 pkgdesc="Nouveau Vulkan (NVK) EXPERIMENTAL Mesa driver with some additions (32-bit Git version)"
-pkgver=24.0.branchpoint.r1743.g876db91
+pkgver=24.0.branchpoint.r1744.g876db91
 pkgrel=1
 arch=('x86_64')
 depends=('lib32-libdrm' 'lib32-libxshmfence' 'lib32-libx11' 'lib32-systemd' 'lib32-vulkan-icd-loader' 'lib32-wayland')
@@ -111,7 +111,8 @@ build() {
     -D shared-glapi=disabled \
     -D microsoft-clc=disabled \
     -D valgrind=disabled \
-    -D android-libbacktrace=disabled
+    -D android-libbacktrace=disabled \
+    -D intel-rt=disabled
 
   meson compile -C build
 }
