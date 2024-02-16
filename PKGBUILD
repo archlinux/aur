@@ -300,7 +300,16 @@ build() {
       'clang_base_path="/usr"'
       'clang_use_chrome_plugins=false'
       "clang_version=\"$_clang_version\""
-      #'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
+      'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
+    )
+
+    # Allow the use of nightly features with stable Rust compiler
+    # https://github.com/ungoogled-software/ungoogled-chromium/pull/2696#issuecomment-1918173198
+    export RUSTC_BOOTSTRAP=1
+
+    _flags+=(
+      'rust_sysroot_absolute="/usr"'
+      "rustc_version=\"$(rustc --version)\""
     )
   fi
 
