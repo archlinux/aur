@@ -1,0 +1,25 @@
+--- a/src/xcb_io.c
++++ b/src/xcb_io.c
+@@ -24,6 +24,11 @@
+ #include <sys/select.h>
+ #endif
+ 
++struct _LockInfoRec;
++typedef struct _LockInfoRec *LockInfoPtr;
++extern LockInfoPtr *_Xglobal_lock_p;
++#define _Xglobal_lock (*_Xglobal_lock_p)
++
+ #define xcb_fail_assert(_message, _var) { \
+ 	unsigned int _var = 1; \
+ 	fprintf(stderr, "[xcb] Aborting, sorry about that.\n"); \
+--- a/src/XlibInt.c
++++ b/src/XlibInt.c
+@@ -132,6 +132,8 @@
+ 
+ #define POLLFD_CACHE_SIZE 5
+ 
++#define FIONREAD 0x541B
++
+ /* initialize the struct array passed to poll() below */
+ Bool _XPollfdCacheInit(
+     Display *dpy)
