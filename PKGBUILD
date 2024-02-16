@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('python' 'python-click' 'python-tqdm' 'python-onnxruntime' 'python-numpy' 'python-tabulate' 'python-dotenv')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://github.com/google/magika/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('a0f6b9c6f59d1372e17d3b71dc7b77206d66ed3f87c53eb1bd15904c2c6095ee')
 
 build() {
   cd "${srcdir}/magika-${pkgver}/python"
