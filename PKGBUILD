@@ -1,8 +1,9 @@
-# Maintainer: Deian Stefan
+# Maintainer: Áron Ricardo Perez-Lopez <perez.aron@gmail.com>
+# Contributor: Deian Stefan
 
 _pkgname=btor2tools
 pkgname=btor2tools-git
-pkgver=r79.6ba194b
+pkgver=r83.037f1fa
 pkgrel=1
 pkgdesc="A generic parser and tool package for the BTOR2 format."
 arch=('x86_64')
@@ -11,7 +12,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'cmake')
 provides=("$_pkgname")
-source=("git://github.com/Boolector/btor2tools.git")
+source=("git+https://github.com/Boolector/btor2tools.git")
 sha256sums=('SKIP')
 
 pkgver() {
