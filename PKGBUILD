@@ -2,8 +2,8 @@
 
 pkgname=python-outlines
 _pkgname=${pkgname#python-}
-pkgver=0.0.31
-_commit=c548a8a2d0b5446a1b7ee7bd34f7fa79c3920ee0
+pkgver=0.0.32
+_commit=e99d92d024dbf6f6bff10a9c3954f326cf4a0cd3
 pkgrel=1
 pkgdesc="Guided text generation"
 arch=(any)
@@ -77,7 +77,9 @@ check() {
   export PYTHONPATH="$PWD/tmp_install/$site_packages"
   # Ignored test requires python-llama-cpp which I'm currently unable to
   # install.
-  pytest --ignore tests/models/test_llama_cpp.py
+  pytest \
+    --ignore tests/models/test_llama_cpp.py \
+    --ignore tests/generate/test_integration_llamacpp.py
 }
 
 package() {
