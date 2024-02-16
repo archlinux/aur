@@ -1,6 +1,6 @@
 #Maintainer: Jeremy Gust <jeremy AT plasticsoup DOT net>
 pkgname=moar-bin
-pkgver=1.23.4
+pkgver=1.23.5
 pkgrel=1
 pkgdesc="A pager designed to just do the right thing without any configuration."
 arch=(x86_64)
@@ -9,8 +9,8 @@ license=(BSD-2-Clause-Views)
 source=("$url/releases/download/v$pkgver/${pkgname%-bin}-v$pkgver-linux-386"
         "${pkgname%-bin}-$pkgver.tar.gz"::"$url/archive/v$pkgver.tar.gz")
 noextract=(${pkgname%-bin}-$pkgver.tar.gz)
-sha256sums=('40bfb4194d212ec0687bf9ca824f30c1cfe764864ee3cc776b37545cadfcc163'
-            '3d516721e6545e4ca670291505535107d880dc3b38b0cd38aead52bc45a0a0f4')
+sha256sums=('be51ff34060e00f4c2044864d51a982e7ad963e05d59a48fba3752b3f6e33d31'
+            'f3c1c88545afde91d685943db20be1ae003b15c855faed9db61377f2dc768f4f')
 
 prepare() {
 	bsdtar -xvf ${pkgname%-bin}-$pkgver.tar.gz \
