@@ -1,0 +1,4 @@
+nzbget-git/
+pkg/
+src/
+*.zst
