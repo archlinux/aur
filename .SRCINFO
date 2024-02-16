@@ -1,7 +1,7 @@
 pkgbase = airshipper
 	pkgdesc = The official launcher for Veloren - an open-world, open-source multiplayer voxel RPG
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/veloren/airshipper
 	install = airshipper.install
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = airshipper
 	optdepends = vulkan-driver: GUI support
 	noextract = airshipper.desktop
 	noextract = veloren.png
-	source = airshipper-0.11.0.zip::https://github.com/veloren/Airshipper/releases/download/v0.11.0/airshipper-linux.tar.gz
+	source = airshipper-0.11.0::https://github.com/veloren/Airshipper/releases/download/v0.11.0/airshipper-linux.tar.gz
 	source = airshipper.desktop
 	source = airshipper.install
 	source = veloren.png
