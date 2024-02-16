@@ -12,11 +12,11 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=121.0.6167.184
+pkgver=122.0.6261.39
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
-_system_clang=0
+_system_clang=1
 pkgdesc="A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory"
 arch=('x86_64')
 url="https://github.com/ungoogled-software/ungoogled-chromium"
@@ -36,18 +36,30 @@ options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
+        support-ICU-74-in-LazyTextBreakIterator.patch
+        REVERT-simplify-blink-NativeValueTraitsBase.patch
+        REVERT-use-v8-Array-Iterate-for-converting-script-wrappables.patch
+        chromium-constexpr.patch
         drop-flags-unsupported-by-clang16.patch
-        icu-74.patch
-        use-oauth2-client-switches-as-default.patch
+        compiler-rt-16.patch
+        use-oauth2-client-switches-as-default.patch)
+sha256sums=('30fc98bdb497d98e63fcb4d8e76acf5201eddf7e65ee907ecf4041cc8e121be3'
+            '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
+            '1f6acf165578288dc84edc7d9dcfabf7d38f55153b63a37ee5afa929f0e2baad'
+            '8c256b2a9498a63706a6e7a55eadbeb8cc814be66a75e49aec3716c6be450c6c'
+            '318df8f8662071cebcdf953698408058e17f59f184500b7e12e01a04a4206b50'
+            '00e06b889e4face0ef41293233ce55bd52064ab040f1fdd84aa19525f8ac3601'
+            'a061f83e2b628927feb4dbc441eb54f8b8c3d81348e447cf3b90755d7cda5f54'
+            '53774fd7f807ad42f77d45cab9e5480cc2bcb0a5c5138110a434407521af9607'
+            '8a2649dcc6ff8d8f24ddbe40dc2a171824f681c6f33c39c4792b645b87c9dcab'
+            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
+
+# ungoogled-chromium-xdg patches
+source=(${source[@]}
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch
         index.html)
-sha256sums=('9fd6b82e7077ac26ec264bfcfc8ac8e0c2a0240378f035c9c0f34ad467aef09d'
-            '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            'e9113c1ed2900b84b488e608774ce25212d3c60094abdae005d8a943df9b505e'
-            '8d1cdf3ddd8ff98f302c90c13953f39cd804b3479b13b69b8ef138ac57c83556'
-            'ff9ebd86b0010e1c604d47303ab209b1d76c3e888c423166779cefbc22de297f'
-            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
+sha256sums=(${sha256sums[@]}
             'f97e6cd3c4d2e04f5d9a0ea234fe768d6ba0fa9f4ecd5c7b2ca91030a1249078'
             'ff1591fa38e0ede7e883dc7494b813641b7a1a7cb1ded00d9baaee987c1dbea8'
             'a4cdd2b86f32d5302c2792be841ff40d982b19bb58a4e63df9d77f4c706b8665')
@@ -143,19 +155,27 @@ prepare() {
   # runtime -- this allows signing into Chromium without baked-in values
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
-  # Upstream fixes
+   # Upstream fixes
+  patch -Np1 -i ../support-ICU-74-in-LazyTextBreakIterator.patch
 
-  # Fix build with ICU 74
-  patch -Np1 -i ../icu-74.patch
+  # Fix "error: defaulted definition of equality comparison operator cannot
+  # be declared constexpr because it invokes a non-constexpr comparison
+  # function" (patch for Chromium 121 from Fedora, later extended for 122)
+  patch -Np1 -i ../chromium-constexpr.patch
+
+  # Revert usage of C++20 features which likely need newer clang
+  patch -Rp1 -i ../REVERT-use-v8-Array-Iterate-for-converting-script-wrappables.patch
+  patch -Rp1 -i ../REVERT-simplify-blink-NativeValueTraitsBase.patch
 
   # Drop compiler flags that need newer clang
-  #patch -Np1 -i ../drop-flags-unsupported-by-clang16.patch
+  patch -Np1 -i ../drop-flags-unsupported-by-clang16.patch
+
+  # Allow libclang_rt.builtins from compiler-rt 16 to be used
+  patch -Np1 -i ../compiler-rt-16.patch
 
   # Fixes for building with libstdc++ instead of libc++
-  #patch -Np1 -i ../chromium-patches-*/chromium-114-ruy-include.patch
-  #patch -Np1 -i ../chromium-patches-*/chromium-117-material-color-include.patch
-  #patch -Np1 -i ../chromium-patches-*/chromium-119-clang16.patch
-
+  patch -Np1 -i ../chromium-patches-*/chromium-114-ruy-include.patch
+  patch -Np1 -i ../chromium-patches-*/chromium-117-material-color-include.patch
 
 
   # Custom Patches
@@ -188,15 +208,19 @@ prepare() {
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
   ln -s /usr/bin/java third_party/jdk/current/bin/
 
-  # Use prebuilt rust as system rust cannot be used due to the error:
-  #   error: the option `Z` is only accepted on the nightly compiler
-  ./tools/rust/update_rust.py
+  if (( !_system_clang )); then
+    # Use prebuilt rust as system rust cannot be used due to the error:
+    #   error: the option `Z` is only accepted on the nightly compiler
+    ./tools/rust/update_rust.py
 
-  # To link to rust libraries we need to compile with prebuilt clang
-  ./tools/clang/scripts/update.py
+    # To link to rust libraries we need to compile with prebuilt clang
+    ./tools/clang/scripts/update.py
+  fi
+
 
   # Ungoogled Chromium changes
-_ungoogled_repo="$srcdir/ungoogled-chromium-update"
+  # _ungoogled_repo="$srcdir/ungoogled-chromium-update"
+  _ungoogled_repo="$srcdir/$pkgname-$_uc_ver"
 
   _utils="${_ungoogled_repo}/utils"
   msg2 'Pruning binaries'
@@ -281,7 +305,8 @@ build() {
   fi
 
   # Append ungoogled chromium flags to _flags array
-  _ungoogled_repo="$srcdir/ungoogled-chromium-update"
+  # _ungoogled_repo="$srcdir/ungoogled-chromium-update"
+  _ungoogled_repo="$srcdir/$pkgname-$_uc_ver"
   readarray -t -O ${#_flags[@]} _flags < "${_ungoogled_repo}/flags.gn"
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
