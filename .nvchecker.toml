@@ -1,0 +1,3 @@
+[python-pymemcache]
+source = "pypi"
+pypi = "pymemcache"

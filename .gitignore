@@ -1,10 +1,6 @@
-pkg
-src
-*.tar
-*.gz
-*.xz
-*.zst
-*.zip
-*.lz4
-*.lzo
-*.bz
+*
+!.gitignore
+!.nvchecker.toml
+!.SRCINFO
+!PKGBUILD
+!dont-install-tests.patch

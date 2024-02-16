@@ -1,53 +1,66 @@
 # Maintainer: BigfootACA <bigfoot@classfun.cn>
 
-_pyname=pymemcache
-pkgbase=python-$_pyname
-pkgname=(python-$_pyname)
-pkgver=3.5.2
+pkgname=python-pymemcache
+_pkgname=${pkgname#python-}
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="A comprehensive, fast, pure Python memcached client"
 arch=(any)
 url="https://github.com/pinterest/pymemcache"
-license=(Apache)
+license=(Apache-2.0)
+depends=(python)
 makedepends=(
-	python
-	python-six
-	python-setuptools
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
 )
 checkdepends=(
-	python-future
-	python-mock
-	python-pytest
-	python-pytest-cov
-	python-gevent
-	python-pylibmc
-	python-memcached
+  memcached
+  python-faker
+  python-gevent
+  python-memcached
+  python-pylibmc
+  python-pytest
+  python-zstd
 )
-source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('6fa634ad18b317cab0721427fc7ea6b7')
-sha256sums=('8923ab59840f0d5338f1c52dba229fa835545b91c3c2f691c118e678d0fb974e')
-sha512sums=('7089b3fdf424735a1922685022a30f7984686f13401a13101e4745ea1c38a3888b1c380f859653da85889e95829f3b7c6226c3c55f838baf783465321433fda5')
+source=(
+  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+  "dont-install-tests.patch"
+)
+sha256sums=(
+  '824b62cb1f099537345abf399a8f419138e9e86b0cf59d3b5c105e8c3ee9828f'
+  '04085134ced763386e28b1302d39a05bd15b738d1b61e946f427a535c18860b3'
+)
 
-build(){
-	pushd $_pyname-$pkgver
-	python setup.py build
-	popd
+_archive="$_pkgname-$pkgver"
+
+prepare() {
+  cd "$_archive"
+
+  patch --strip=1 --input="$srcdir/dont-install-tests.patch"
 }
 
-check(){
-	pushd $_pyname-$pkgver
-	python -m pytest
-	popd
+build() {
+  cd "$_archive"
+
+  python -m build --wheel --no-isolation
 }
 
-_package_python(){
-	depends=(
-		python
-		python-six
-	)
-	cd $_pyname-$pkgver
-	python setup.py install --root "$pkgdir" --optimize=1
-	install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+check() {
+  cd "$_archive"
+
+  memcached --daemon --port 49152 --pidfile "$PWD/memcached.pid"
+  trap 'kill $(cat '"$PWD/memcached.pid"')' EXIT
+  # Deselected tests failing due to:
+  #   TypeError: 'dict' object is not an iterator
+  pytest --override-ini="addopts=" pymemcache/test/ \
+    --port 49152 \
+    --deselect pymemcache/test/test_benchmark.py::test_bench_delete
 }
 
-eval "package_python-${_pyname}(){ _package_python; }"
+package() {
+  cd "$_archive"
+
+  python -m installer --destdir="$pkgdir" dist/*.whl
+}

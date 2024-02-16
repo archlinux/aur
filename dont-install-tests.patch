@@ -1,0 +1,11 @@
+diff --unified --recursive --text --new-file pymemcache-4.0.0.orig/setup.py pymemcache-4.0.0/setup.py
+--- pymemcache-4.0.0.orig/setup.py	2024-02-16 19:08:22.833537446 +0100
++++ pymemcache-4.0.0/setup.py	2024-02-16 19:08:02.456846625 +0100
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python
+ 
+-from setuptools import setup
++from setuptools import setup, find_packages
+ 
+-setup()
++setup(packages=find_packages(exclude=["pymemcache.test", "pymemcache.test.*"]))
