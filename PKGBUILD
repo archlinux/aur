@@ -33,6 +33,7 @@ package() {
     install -m755 -t "${pkgdir}/usr/share/${pkgname}/scripts" "${source_dir}/main/scripts"/*.*
 
     # 主程序入口
+    install -dm755 "${pkgdir}/usr/bin"
     ln -s "/usr/share/${pkgname}/sk-chos-tool.py" "${pkgdir}/usr/bin/sk-chos-tool"
 
     # 程序图标
