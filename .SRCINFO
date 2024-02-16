@@ -1,0 +1,18 @@
+pkgbase = sk-chos-addon-git
+	pkgdesc = Addon for sk-chimeros
+	pkgver = r325.e21072d
+	pkgrel = 1
+	url = https://github.com/honjow/sk-holoiso-config.git
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = expect
+	depends = efibootmgr
+	provides = sk-chos-addon
+	conflicts = sk-chos-addon
+	replaces = sk-chos-addon
+	options = !strip
+	source = git+https://github.com/honjow/sk-holoiso-config.git
+	sha256sums = SKIP
+
+pkgname = sk-chos-addon-git
