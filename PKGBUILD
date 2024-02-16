@@ -1,7 +1,7 @@
 # Maintainer: Parham Alvani <parham.alvani@gmail.com>
 
 pkgname=natscli
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="The NATS Command Line Interface"
 arch=(x86_64)
@@ -15,7 +15,7 @@ provides=('nats')
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('67d91f34c4e87095762b693070cdadad68872f3b2bbdaa7e3c3e6f2a361dbb7c')
+sha256sums=('53e42beca25a7dec978b4e87bed8a1eac025ef4a0bd0542e9a9cf042e4bcf9c2')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}/nats"
