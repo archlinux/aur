@@ -3,31 +3,30 @@
 _pkgname=qlcMatrix
 _pkgver=0.9.7
 pkgname=r-${_pkgname,,}
-pkgver=0.9.7
-pkgrel=4
-pkgdesc='Utility Sparse Matrix Functions for Quantitative Language Comparison'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Utility Sparse Matrix Functions for Quantitative Language Comparison"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-docopt
   r-slam
   r-sparsesvd
 )
 optdepends=(
   r-knitr
-  r-mass
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1ef5e0350cfbdb07fca761fc7251584d39d3da2958ea813498b467e4f7661347')
+source=("https://cran.r-project.org/src/contrib/Archive/$_pkgname/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('3b0734cb96c9cae62f760de1d4a4a8a7')
+b2sums=('4985f5c329070efa2565f0d531938b0d5be653757ba9d62082d3b98294b389f3c5d0394a6fda8a8cf21aad94d0bb53bbbadeaf7ff3c66627787fc2052de47080')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
