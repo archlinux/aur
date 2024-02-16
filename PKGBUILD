@@ -8,7 +8,7 @@
 ## basic info
 _pkgname=libreoffice
 pkgname="${_pkgname}-dev-bin"
-pkgver=24.2.0.3
+pkgver=24.2.1.1
 pkgrel=1
 pkgdesc="LibreOffice development branch"
 url="https://www.libreoffice.org/"
@@ -27,7 +27,7 @@ provides=(
 )
 
 _pkgnamefmt=LibreOffice
-_LOver=24.2.0.3
+_LOver=24.2.1.1
 
 _dl_url="https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64"
 source=("$_dl_url/${_pkgnamefmt}_${_LOver}_Linux_x86-64_rpm.tar.gz")
