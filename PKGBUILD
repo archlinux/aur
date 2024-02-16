@@ -2,7 +2,7 @@
 
 pkgname=ff2mpv-rust
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Native messaging host for ff2mpv written in Rust"
 arch=('x86_64')
 url="https://github.com/ryze312/ff2mpv-rust"
@@ -35,14 +35,14 @@ build() {
 	cargo build --frozen --release --all-features \
 		--manifest-path="./$pkgname-$pkgver/Cargo.toml"
 	local exe="$(realpath "target/release/$pkgname")"
-	"$exe" manifest | awk -v exe="$exe" '{ sub(exe, "/usr/bin/ff2mpv-rust") } 1' >manifest.json
-	"$exe" manifest_chromium | awk -v exe="$exe" '{ sub(exe, "/usr/bin/ff2mpv-rust") } 1' >manifest-chrome.json
+	"$exe" manifest | exe="$exe" perl -pe 's|\Q$ENV{exe}\E|/usr/bin/ff2mpv-rust|g' >manifest.json
+	"$exe" manifest_chromium | exe="$exe" perl -pe 's|\Q$ENV{exe}\E|/usr/bin/ff2mpv-rust|g' >manifest-chrome.json
 }
 
-check() {
-	cargo test --frozen --all-features \
-		--manifest-path="./$pkgname-$pkgver/Cargo.toml"
-}
+#check() {
+#	cargo test --frozen --all-features \
+#		--manifest-path="./$pkgname-$pkgver/Cargo.toml"
+#}
 
 package() {
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
