@@ -78,8 +78,8 @@ _uc_ver="$pkgver-$_uc_rel"
 optdepends=("${optdepends[@]}"
             'chromium-extension-web-store: Web Store Functionality')
 source=(${source[@]}
-        # ${pkgname%-*}-$_uc_ver.zip::https://github.com/noahvogt/${pkgname%-*}/archive/refs/heads/update.zip
-        ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz
+        ${pkgname%-*}-$_uc_ver.zip::https://github.com/noahvogt/${pkgname%-*}/archive/refs/heads/update.zip
+        # ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz
         0001-vaapi-flag-ozone-wayland.patch
         0001-adjust-buffer-format-order.patch
         0001-enable-linux-unstable-deb-target.patch
@@ -219,8 +219,8 @@ prepare() {
 
 
   # Ungoogled Chromium changes
-  # _ungoogled_repo="$srcdir/ungoogled-chromium-update"
-  _ungoogled_repo="$srcdir/$pkgname-$_uc_ver"
+  _ungoogled_repo="$srcdir/ungoogled-chromium-update"
+  # _ungoogled_repo="$srcdir/$pkgname-$_uc_ver"
 
   _utils="${_ungoogled_repo}/utils"
   msg2 'Pruning binaries'
@@ -305,8 +305,8 @@ build() {
   fi
 
   # Append ungoogled chromium flags to _flags array
-  # _ungoogled_repo="$srcdir/ungoogled-chromium-update"
-  _ungoogled_repo="$srcdir/$pkgname-$_uc_ver"
+  _ungoogled_repo="$srcdir/ungoogled-chromium-update"
+  # _ungoogled_repo="$srcdir/$pkgname-$_uc_ver"
   readarray -t -O ${#_flags[@]} _flags < "${_ungoogled_repo}/flags.gn"
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
