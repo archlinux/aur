@@ -3,7 +3,7 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=nomacs-qt6-git
-pkgver=r3918.1b955ec
+pkgver=r3974.645eaaf
 pkgrel=1
 pkgdesc="A Qt image viewer"
 arch=(x86_64)
@@ -14,13 +14,11 @@ conflicts=("nomacs")
 depends=(exiv2 gcc-libs glibc libraw libtiff opencv qt6-base qt6-svg qt6-5compat)
 makedepends=(cmake git git-lfs qt6-tools python)
 optdepends=('qt6-imageformats: support additional image formats')
-source=("git+https://github.com/v-tyrtov/nomacs.git"
+source=("git+https://github.com/nomacs/nomacs.git"
         "git+https://github.com/v-tyrtov/nomacs-plugins.git"
-        "https://github.com/nomacs/nomacs/files/11703502/nomacs-fix-exiv2-0.28.patch.txt"
 )
 b2sums=('SKIP'
         'SKIP'
-        '7144b3e3391047bf89df4da8b78cf0b9273ff7cb2db8637f719ac4b926290901ba3f6f2dee4ba342f8dac4939b4d60be3d80a45dd2481d25408e712160a1bb78'
 )
 
 export GIT_LFS_SKIP_SMUDGE=1
@@ -32,8 +30,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/nomacs"
-  # https://github.com/nomacs/nomacs/issues/951
-  patch -Np1 -i ../nomacs-fix-exiv2-0.28.patch.txt
   # copy plugin sources into place
   cp -av "${srcdir}/nomacs-plugins/"* "ImageLounge/plugins"
 }
