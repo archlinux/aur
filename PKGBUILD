@@ -3,7 +3,7 @@
 
 pkgname=vulkan-nouveau-git
 pkgdesc="Nouveau Vulkan (NVK) EXPERIMENTAL Mesa driver with some additions (Git version)"
-pkgver=24.0.branchpoint.r1017.g2085d60
+pkgver=24.0.branchpoint.r1735.g7009f00
 pkgrel=1
 arch=('x86_64')
 depends=('libdrm' 'libxshmfence' 'libx11' 'systemd-libs' 'vulkan-icd-loader' 'wayland')
@@ -18,10 +18,14 @@ license=('MIT AND BSD-3-Clause AND SGI-B-2.0')
 source=("git+${url}.git"
         nak-iadd3-imad.patch
         nvk-memory-budget.patch
+        nvk-memory-placed.patch
+        nvk-vr-support.patch
         LICENSE)
 sha512sums=('SKIP'
             '6c4ed4c9c7dce79debb77cd9b828f628088101936c4e2b2994e56723f86e61799b278a9333f08813082d0a4153ac41870669da8ac47106aa20c7fc7dee8812e8'
             '6bb223fb4c4e799c71bca2b4e8f290cda94fe712a9d378e9b4a43280831b7e96f8ef9d94d6c1fa1a29c39e123ead3ef573bc54e3ae4484070fff2bd1cf316e3f'
+            '60c192b9a48ac20f69edc6ddb6228f4f7025c07cfc975059957de5510e1dbee991a03d370d7b35142b402cc7bd074ccf9c8a796c2b754ff9f1ec1c8838fc8734'
+            '162fa3e52ba52ef0433a7d210879434a6825bd96c8d476b44d287241aa88514e80bf9907cfeedd6060580ead458c9677cb3477872874f53dc896131e33f3cfc7'
             'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7')
 install="${pkgname}.install"
 
@@ -55,6 +59,14 @@ prepare() {
   # Add imad/iadd3 support (https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/27159)
   # (improves performance greatly in certain cases)
   patch ${_patch_opts} ../nak-iadd3-imad.patch
+
+  # Add EXT_map_memory_placed (https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/27599)
+  # (improves Vulkan support in WoW64 Wine once the Wine part is done)
+  patch ${_patch_opts} ../../nvk-memory-placed.patch
+
+  # Add support for VR-related extensions (https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/27654)
+  # (seems to work with xrgears and Monado direct mode)
+  patch ${_patch_opts} ../../nvk-vr-support.patch
 
   # Add ESO/GPL support (https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/27024)
   # (enables shader precompile in DXVK and some Vulkan games; helps greatly in Overwatch 2)
