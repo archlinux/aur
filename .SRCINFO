@@ -1,6 +1,6 @@
 pkgbase = citip-git
 	pkgdesc = Information Theoretic Inequality Prover (CLI)
-	pkgver = 2015_05_09..6d5860d
+	pkgver = 2020_07_23..6e46631
 	pkgrel = 1
 	url = https://github.com/coldfix/Citip
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = citip-git
 	makedepends = flex
 	depends = glpk
 	provides = citip
-	source = citip::git+git://github.com/coldfix/citip
+	source = citip::git+https://github.com/coldfix/citip
 	md5sums = SKIP
 
 pkgname = citip-git
-

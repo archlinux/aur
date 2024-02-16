@@ -1,7 +1,7 @@
 # Maintainer: Thomas Gläßle <t_glaessle@gmx.de>
 _pkgname=citip
 pkgname=citip-git
-pkgver=2015_05_27..945a822
+pkgver=2020_07_23..6e46631
 pkgrel=1
 pkgdesc="Information Theoretic Inequality Prover (CLI)"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('glpk' )
 makedepends=('glpk' 'bison' 'flex')
 
 provides=("$_pkgname")
-source=("$_pkgname::git+git://github.com/coldfix/${_pkgname}")
+source=("$_pkgname::git+https://github.com/coldfix/${_pkgname}")
 md5sums=('SKIP')
 
 pkgver() {
