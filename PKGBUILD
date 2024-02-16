@@ -3,17 +3,16 @@
 pkgname=php70-apcu
 _pkgbase="${pkgname#php70-}"
 _phpbase="${pkgname/-apcu}"
-pkgver=5.1.22
+pkgver=5.1.23
 pkgrel=1
 pkgdesc="A userland caching module for php70"
 arch=('i686' 'x86_64')
 url="https://pecl.php.net/package/APCu"
 license=('PHP')
 depends=('php70>=7.0.15')
-provides=("php-${_pkgbase}=${pkgver}-${pkgrel}")
 backup=("etc/php70/conf.d/apcu.ini")
 source=("https://pecl.php.net/get/${_pkgbase}-${pkgver}.tgz")
-md5sums=('2e1fb1f09725ada616e873c4e4012ff6')
+md5sums=('c6ed350a587cf2b376c1efeb31f68907')
 
 build() {
 	cd "${srcdir}/${_pkgbase}-${pkgver}"
