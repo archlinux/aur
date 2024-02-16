@@ -3,14 +3,15 @@
 _pkgbase=rdnstun
 _srcname=rdnstun
 pkgname=${_pkgbase}-git
-pkgver=r6.dc660ef
+pkgver=r23.e5cb910
 pkgrel=1
 pkgdesc="ICMP Path Faker"
 arch=('x86_64')
 url="https://github.com/yangfl/rdnstun"
-license=('WTFPL2')
+license=('WTFPL')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
+makedepends=("git")
 source=(
   "${_srcname}::git+https://github.com/yangfl/rdnstun.git#branch=master"
 )
