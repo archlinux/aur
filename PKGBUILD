@@ -1,14 +1,14 @@
 # Maintainer: Sylvester Keil <sylvester@keil.or.at>
 
 pkgname='tropy'
-pkgver='1.15.2'
+pkgver='1.16.0'
 pkgrel=1
 pkgdesc='Explore your research photos'
 arch=('x86_64')
 url='https://tropy.org'
-license=('AGPL3' 'custom')
+license=('AGPL-3.0-or-later')
 depends=(
-  'electron25'
+  'electron28'
   'gcc-libs'
   'glib2'
   'glibc'
@@ -31,8 +31,8 @@ source=(
   'tropy.sh'
   "https://github.com/tropy/tropy/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('0fdf0fcaa4676bc3a2835a7ef6b4a9f6b809a37e48775f62d9f4fab52da43901'
-            '25fb399b7b0470ccb7a30b2b2e93eac91691997ab8d6099602ce7f8298ebdfeb')
+sha256sums=('33a0ee41a99156cf8986b3771ba8fea38b0d23d75fc09bef0f1254fe4fb47952'
+            '0501adb3469ef342b0904645ad700644445f3060fd92d04eb19d78336ef79287')
 
 build() {
   cd "${srcdir}/tropy-${pkgver}"
