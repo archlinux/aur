@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-# This script defines functions for the PKGBUILD.
-
-post_upgrade()
-{
-    cd /usr/share/webapps/farmos/ || exit 1
-    sudo -u http bash -c "./vendor/drush/drush/drush updb"
-    sudo -u http bash -c "./vendor/drush/drush/drush cr"
-}

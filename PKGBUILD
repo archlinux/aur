@@ -15,7 +15,7 @@ arch=("any")
 url="https://github.com/farmOS/${_pkgname}"
 license=("GPL-2.0-only")
 depends=("bash" "perl" "php" "php-fpm" "php-gd" "php-sodium")
-makedepends=("composer" "sudo")
+makedepends=("composer")
 optdepends=("apache: HTTP server"
     "certbot: Creates SSL certificates."
     "mariadb: Database"
@@ -25,7 +25,6 @@ optdepends=("apache: HTTP server"
     "php-sqlite: Database support for SQLite"
     "postgresql: Database"
     "sqlite: Database")
-install="${pkgname}.install"
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
     "override-${pkgname}.conf")
 sha256sums=("407f6890723d5334c38866196939a705b518075e7d90bc588cfb62117232ef7e"
