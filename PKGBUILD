@@ -11,9 +11,9 @@
 
 ## basic info
 pkgname=icecat
-pkgver=115.7.0
-pkgrel=2
-_commit=dbe6da400cf4f28e5e893d0acb5022e23cf3afcf
+pkgver=115.8.0
+pkgrel=1
+_commit=7e2ff1ad7e03d2bfe0b2daf3f25961b06cab8848
 pkgdesc="GNU version of the Firefox browser."
 arch=(x86_64)
 license=(MPL-2.0)
@@ -72,7 +72,7 @@ options=(
 source=(https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-${_commit}.tar.gz
         icecat.desktop icecat-safe.desktop)
 
-sha256sums=('5aa10b4d7d886730e236a2289e32479322d336b96fe650842fad478f69596c9c'
+sha256sums=('1880b13c1d7079d6a66adb4fafdd0dcc943e0f25a85fca3af897d2ad982d9810'
             'e00dbf01803cdd36fd9e1c0c018c19bb6f97e43016ea87062e6134bdc172bc7d'
             '33dd309eeb99ec730c97ba844bf6ce6c7840f7d27da19c82389cdefee8c20208')
 
