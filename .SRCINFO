@@ -1,0 +1,15 @@
+pkgbase = ruby-nkf
+	pkgdesc = Ruby extension for Network Kanji Filter
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/ruby/nkf
+	arch = any
+	license = Ruby
+	license = BSD-2-Clause
+	depends = ruby
+	noextract = nkf-0.2.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/nkf-0.2.0.gem
+	sha256sums = fbc151bda025451f627fafdfcb3f4f13d0b22ae11f58c6d3a2939c76c5f5f126
+
+pkgname = ruby-nkf
