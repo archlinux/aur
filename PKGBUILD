@@ -5,8 +5,8 @@
 
 _arch=x64v1
 _pkgbase=linux-xanmod
-_major=6.6
-_minor=16
+_major=6.7
+_minor=5
 _branch=6.x
 _xanmodrel=1
 _xanmodrev=
@@ -59,8 +59,8 @@ validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('89f61e261cfb2d7858c41182fce19fac7c45ae1d5cc1ad12c44cbb2ee39a9e7f'
-            'f3e9bf24bebcc57a05b79b149d908e8c448816345609a6e641f33c8e1dd4c4d5')
+sha256sums=('a6555834e0a37326ee9c73ee617ebac0358cfe91e6c449c1f1158343ce5259bd'
+            'fd5e29b76a5fe6d83bc2d801e2020945d088f1d986c81b7110616e4cf801f840')
 
 _package() {
   pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (MAIN) - Prebuilt version - ${_arch}"
@@ -114,7 +114,7 @@ _package-headers() {
   mkdir -p "${pkgdir}"/usr/share/doc "${pkgdir}"/usr/src "${pkgdir}/usr/lib/modules/${kernver}"
   cp -r usr/share/doc/linux-headers-* "${pkgdir}/usr/share/doc/"
   cp -r usr/src/linux-headers-${kernver} "${builddir}"
-  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
+  ln -sr "${builddir}" "${pkgdir}/usr/src/${pkgbase}"
 }
 
 eval "package_${pkgname[0]}() { _package \"\$@\"; }"
