@@ -20,7 +20,7 @@ build() {
 
 check() {
   cd ${_base}-${pkgver}
-  python -m pytest #-k 'not pipeline_run_works_fine'
+  python -m pytest
 }
 
 package() {
