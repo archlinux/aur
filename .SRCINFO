@@ -1,6 +1,6 @@
 pkgbase = aylurs-gtk-shell
 	pkgdesc = Aylurs's Gtk Shell (AGS), An eww inspired gtk widget system.
-	pkgver = 1.7.4
+	pkgver = 1.7.6
 	pkgrel = 1
 	url = https://github.com/Aylur/ags
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = aylurs-gtk-shell
 	optdepends = upower: required for battery service
 	conflicts = aylurs-gtk-shell-git
 	backup = etc/pam.d/ags
-	source = aylurs-gtk-shell-1.7.4.tar.gz::https://github.com/Aylur/ags/releases/download/v1.7.4/ags-v1.7.4.tar.gz
-	sha256sums = 437618de6e75e032d887a3958d7e2eac1986381b634e9c9130813ba3089f55df
+	source = aylurs-gtk-shell-1.7.6.tar.gz::https://github.com/Aylur/ags/releases/download/v1.7.6/ags-v1.7.6.tar.gz
+	sha256sums = be009fa188552be44a0ae309a8e697f331db59e4ae8b137d4834b37218ea8207
 
 pkgname = aylurs-gtk-shell
