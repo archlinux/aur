@@ -1,0 +1,26 @@
+pkgbase = python-loopy
+	pkgdesc = A code generator for array-based code on CPUs and GPUs
+	pkgver = 2024.1
+	pkgrel = 1
+	url = https://github.com/inducer/loopy
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-pytools
+	depends = python-pymbolic
+	depends = python-genpy
+	depends = python-cgen
+	depends = python-islpy
+	depends = python-codepy
+	depends = python-colorama
+	depends = python-mako
+	depends = python-pyrsistent
+	depends = python-immutables
+	optdepends = python-pyopencl: for PyOpenCL support
+	source = loopy-2024.1.tar.gz::https://github.com/inducer/loopy/archive/v2024.1.tar.gz
+	sha512sums = 29c7dab05c96f49ac6de2f6bab95fa9ac2fa7c78486a72362e914ed89eacecf20fce64ec411cee73a65d2d4badb4489d5ebe90c1d297b923227630503e447e64
+
+pkgname = python-loopy
