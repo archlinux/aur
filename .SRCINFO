@@ -1,0 +1,25 @@
+pkgbase = android-aarch64-libxcb
+	pkgdesc = X11 client-side library (android)
+	pkgver = 1.16
+	pkgrel = 1
+	url = https://xcb.freedesktop.org/
+	arch = any
+	license = custom
+	makedepends = python
+	makedepends = android-aarch64-libxslt
+	makedepends = android-aarch64-xorg-util-macros
+	makedepends = android-aarch64-xorgproto
+	depends = android-aarch64-xcb-proto
+	depends = android-aarch64-libxdmcp
+	depends = android-aarch64-libxau
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org/archive/individual/lib/libxcb-1.16.tar.xz
+	source = https://xorg.freedesktop.org/archive/individual/lib/libxcb-1.16.tar.xz.sig
+	validpgpkeys = 3BB639E56F861FA2E86505690FDD682D974CA72A
+	sha512sums = 002fbc126c6f09eb7db5e4197cd0572d495f64b6de714a76d9a024fe3e13122c1cfc7c55207c0dee76cc63fcccf87b37db513223eadaf760af2bd2a926443bf8
+	sha512sums = SKIP
+
+pkgname = android-aarch64-libxcb
