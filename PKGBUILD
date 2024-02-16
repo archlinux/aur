@@ -2,7 +2,7 @@
 
 pkgname=iceshrimp-bin
 pkgver=v2023.12.3
-pkgrel=1
+pkgrel=2
 pkgdesc="YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023"
 arch=(x86_64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp"
@@ -11,7 +11,7 @@ license=(AGPL3)
 conflicts=(iceshrimp)
 provides=(iceshrimp)
 
-depends=(nodejs redis postgresql)
+depends=()
 optdepends=(
   "ffmpeg: for video transcoding"
   "sonic: efficient full text search backend"
@@ -31,6 +31,9 @@ sha512sums=('2dab16ae6c589d88352e33e6cbb10f3cf50c76f940990473db48b70abe5a4c3f9ef
             '91c456bda5c14b01cbf770a2e9e57425ac5e82226799d39e11cc6e83b219a0559eeed8693c5eb051fffb28cdd23d4682ee40f46372117880aeeddb00ecb8726f')
 
 package() {
+  # Add runtime only dependencies
+  depends+=(nodejs redis postgresql)
+
   cp -dpTr --no-preserve=ownership "${srcdir}/" "${pkgdir}"
   rm -f "${pkgdir}"/.{BUILDINFO,INSTALL,MTREE,PKGINFO}
 
