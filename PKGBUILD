@@ -5,7 +5,7 @@
 # Contributor: Fredrick Brennan <copypaste@kittens.ph>
 
 pkgname=mastodon
-pkgver=4.2.6
+pkgver=4.2.7
 pkgrel=1
 pkgdesc='Your self-hosted, globally interconnected microblogging community'
 arch=(any)
@@ -36,7 +36,7 @@ source=(https://github.com/mastodon/mastodon/archive/v$pkgver.tar.gz
         mastodon.target
         mastodon.sysusers.d
         mastodon.tmpfiles.d)
-sha512sums=('d23ca3b49054ba63bb95780419e1af932b1d1b0e74116b783754a8d6d8d78b08e793559b985db0798b1a8dbb897efd351233d203e805ac55d702fdc59fda0bb5'
+sha512sums=('fcbd23e6fed4cb4cfda9b05824fd6bdd488440248fa476db2d1561f678d4646fbcef24f2031e969dc87da6a25732d44847ffa3eec5fc3ec890c458c5ae9e06e1'
             'c9820c2a83d08bd5d842a78e924682db97ebd5c7291b682603ad30dafcdcc5816c13e717ad39554f042b9d9ed71ab902ce3f604952264a900a72612ee8060acb'
             '4ee4210bde391e6dc782cb7c14f2cb968c95ad541aa0efcf843a811f8cc5f0d1067ee3c8346bb412aa9fd1dd5a8bd05a4524df7dc4a106957009853dd237074a'
             '27c4eb01d462c525b59e5808a3b2501b63a34425752128388fbde82f7eb5944b20d2f8d8b1be8ed8adb165cab4cfb8e13f90215f20989ca671a0422ffa37001f')
