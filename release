@@ -28,8 +28,8 @@ SUM=$(wget -q "https://download.opensuse.org/repositories/home:/selmf/Debian_Uns
 sed -r "s/sha256sums_x86_64=\([\"'][^\"']+[\"']\)$/sha256sums_x86_64=(\"$SUM\")/" PKGBUILD -i
 
 # regenerate .SRCINFO
-makepkg -f && makepkg --printsrcinfo > .SRCINFO
-rm -r src pkg *.tar* *.deb
+makepkg -f && makepkg --printsrcinfo >.SRCINFO
+rm -r src pkg *.tar* *.deb 2>/dev/null
 
 git --no-pager diff PKGBUILD
 git status -s

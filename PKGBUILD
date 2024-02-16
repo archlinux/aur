@@ -5,8 +5,8 @@
 # Contributor: <ar@nullsum.net>
 
 pkgname=yacreader-bin
-pkgver="9.13.1"
-pkgrel=5
+pkgver="9.14.2"
+pkgrel=1
 pkgdesc="Comic reader for cross-platform reading and managing your digital comic collection, binary version."
 arch=(x86_64)
 url="https://www.yacreader.com/"
@@ -14,8 +14,8 @@ license=(GPL3)
 depends=(poppler-qt5 libunarr qt5-multimedia)
 conflicts=(yacreader)
 provides=(yacreader)
-source_x86_64=("https://download.opensuse.org/repositories/home:/selmf/Debian_Unstable/amd64/yacreader_${pkgver}-2_amd64.deb")
-sha256sums_x86_64=("f5f30cb7dc7c5e5ea9350efb8212337d8b1ba9c9316df81e8865c663cd55ccd2")
+source_x86_64=("https://download.opensuse.org/repositories/home:/selmf/Debian_Unstable/amd64/yacreader_${pkgver}-1_amd64.deb")
+sha256sums_x86_64=("9e7008059f4d8a0678891fef2d8f056483505f313b21bec6068e5b22c0ac8a01")
 
 package() {
   bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
