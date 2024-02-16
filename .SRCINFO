@@ -1,0 +1,12 @@
+pkgbase = xfwm4-theme-generator
+	pkgdesc = XFWM theme generator from Client Side Decorations - provides Adwaita light / dark themes
+	pkgver = git
+	pkgrel = 1
+	url = https://github.com/andreldm/xfwm4-theme-generator
+	arch = x86_64
+	arch = arm64
+	license = GPL
+	makedepends = xfwm4
+	makedepends = git
+
+pkgname = xfwm4-theme-generator
