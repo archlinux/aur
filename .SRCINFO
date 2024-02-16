@@ -1,7 +1,7 @@
 pkgbase = discord-chat-exporter-plus-cli
 	pkgdesc = Exports Discord chat logs to a file (without the political bloat)
 	pkgver = 2.42.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nulldg/DiscordChatExporterPlus
 	arch = any
 	license = MIT
