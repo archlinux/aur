@@ -1,7 +1,7 @@
 # Maintainer: rpkak <rpkak@users.noreply.github.com>
 pkgname='local-aur'
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.6.1
+pkgrel=1
 epoch=
 pkgdesc="Download the AUR packages you trust and use pacman to install them."
 arch=('any')
@@ -21,7 +21,7 @@ install=local-aur.install
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rpkak/local-aur/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('fb28634391c6bdcbd120f98842aaab9c8c2cc28bda3cfa79738e1be658921994')
+sha256sums=('3ad5dba9f9a4d60e7f7a6b75eabba608cee33b64a44ef6d7a1c4d281b37e1c05')
 validpgpkeys=()
 
 package() {
