@@ -16,7 +16,7 @@ optdepends=(
   'tree: tree of notes'
 )
 conflicts=('note-manager')
-source=("$pkgname::git+https://github.com/thek4n/note.git#branch=master")
+source=("$pkgname::git+https://github.com/thek4n/note.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 package() {

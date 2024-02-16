@@ -10,7 +10,7 @@ pkgbase = note-manager
 	optdepends = bat: render notes in terminal
 	optdepends = tree: tree of notes
 	conflicts = note-manager
-	source = note-manager::git+https://github.com/thek4n/note.git#branch=master
+	source = note-manager::git+https://github.com/thek4n/note.git#tag=v1.19.1
 	sha256sums = SKIP
 
 pkgname = note-manager
