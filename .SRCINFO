@@ -1,0 +1,11 @@
+pkgbase = vim-file-line-git
+	pkgdesc = Plugin for Vim to enable opening files with the file:line:column syntax
+	pkgver = r72.9233f66
+	pkgrel = 1
+	url = https://github.com/patnr/file-line
+	arch = any
+	license = GPL3
+	source = git+https://github.com/patnr/file-line.git
+	md5sums = SKIP
+
+pkgname = vim-file-line-git
