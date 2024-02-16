@@ -69,16 +69,17 @@ post_install() {
 }
 
 post_upgrade() {
+    echo "==> Reloading systemd unit files..."
     systemctl daemon-reload
-    systemctl is-active --quiet cellframe-node.service && systemctl restart cellframe-node.service
+    systemctl is-active --quiet cellframe-node.service && systemctl restart cellframe-node.service && echo "==> Restarted cellframe-node.service"
     showmsg
 }
 
 pre_remove() {
-    systemctl is-active --quiet cellframe-node.service && systemctl stop cellframe-node.service
-    systemctl is-active --quiet cellframe-node-logrotate.timer && systemctl stop cellframe-node-logrotate.timer
-    systemctl is-enabled --quiet cellframe-node.service && systemctl disable cellframe-node.service
-    systemctl is-enabled --quiet cellframe-node-logrotate.timer && systemctl disable cellframe-node-logrotate.timer
+    systemctl is-active --quiet cellframe-node.service && systemctl stop cellframe-node.service && echo "==> Stopped cellframe-node.service"
+    systemctl is-active --quiet cellframe-node-logrotate.timer && systemctl stop cellframe-node-logrotate.timer && echo "==> Stopped cellframe-node-logrotate.timer"
+    systemctl is-enabled --quiet cellframe-node.service && systemctl disable cellframe-node.service && "==> Disabled cellframe-node.service"
+    systemctl is-enabled --quiet cellframe-node-logrotate.timer && systemctl disable cellframe-node-logrotate.timer && "==> Disabled cellframe-node-logrotate.timer"
     systemctl daemon-reload
 }
 
