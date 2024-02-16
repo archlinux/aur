@@ -1,12 +1,13 @@
 pkgbase = ovirt_exporter
 	pkgdesc = Exporter for oVirt engine metrics
 	pkgver = 0.10.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/czerwonk/ovirt_exporter
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
+	options = !lto
 	backup = etc/conf.d/prometheus-ovirt-exporter
 	source = https://github.com/czerwonk/ovirt_exporter/archive/refs/tags/0.10.1.tar.gz
 	source = prometheus-ovirt-exporter

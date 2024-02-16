@@ -4,9 +4,10 @@
 pkgbase='ovirt_exporter'
 pkgname='prometheus-ovirt-exporter'
 pkgver='0.10.1'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Exporter for oVirt engine metrics'
 arch=('x86_64' 'aarch64')
+options=(!lto)
 _uri='github.com/czerwonk'
 url="https://${_uri}/${pkgbase}"
 license=('MIT')
