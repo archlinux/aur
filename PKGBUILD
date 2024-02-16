@@ -3,8 +3,8 @@
 
 _name=slider
 pkgname=python-$_name
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="Utilities for working with osu! files and data."
 arch=(any)
 url="https://github.com/llllllllll/slider"
@@ -18,9 +18,16 @@ depends=(
 )
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
-conflicts=($pkgname-git)
 source=("$url/archive/v$pkgver.tar.gz")
-b2sums=('aabe931dca8b99a7dcbe40412a803f4394aa458ee51dab8db52e3f712a9b6bd23d67bcd25113b2eeb088f5724ae7a99c64eb99061b7194e6b310168da9b1e1f5')
+b2sums=('f0c79c4c5dc91734268dff22781f605af46fb46b832e1ccacf54c51f7698385fac89ad5906e5b91e057381823938f24d418fa01df6cc7385f6fba14d6c1ae348')
+
+# prepare() {
+#     cd $_name-$pkgver
+#     rm setup.py
+#     cp ../../pyproject.toml .
+#     cp ../../beatmaps.py slider/example_data/beatmaps/__init__.py
+#     cp ../../collections.py slider/example_data/collections/__init__.py
+# }
 
 build() {
     cd $_name-$pkgver
