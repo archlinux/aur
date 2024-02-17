@@ -1,14 +1,19 @@
 pkgbase = comby
 	pkgdesc = A tool for structural code search and replace that supports ~every language.
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://comby.dev/
 	arch = x86_64
 	license = Apache
 	makedepends = opam
 	makedepends = dune
+	makedepends = ocamlbuild
 	depends = pkgconf
 	depends = pcre
+	depends = glibc
+	depends = libev
+	depends = zlib
+	depends = sqlite
 	source = https://github.com/comby-tools/comby/archive/1.8.1.tar.gz
 	sha256sums = 04d51cf742bbbf5e5fda064a710be44537fac49bff598d0e9762a3a799d666e2
 
