@@ -1,0 +1,19 @@
+pkgbase = snowflake-pt
+	pkgdesc = Pluggable Transport for Tor using WebRTC, inspired by Flashproxy
+	pkgver = 2.9.0
+	pkgrel = 1
+	url = https://snowflake.torproject.org/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	makedepends = go
+	depends = glibc
+	provides = snowflake
+	options = !lto
+	source = https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/-/archive/v2.9.0/snowflake-v2.9.0.tar.gz
+	sha256sums = 7a58e8006e6716249741917e0d58a70d07e15a8b3d7f10737c8bb4a1134b5e8c
+
+pkgname = snowflake
