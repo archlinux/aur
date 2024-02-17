@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#fix brightness on Wayland
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    export SDL_VIDEODRIVER=wayland
+fi
+
+exec quake3e \
+    +set cl_title OpenArena \
+    +set fs_basegame baseoa \
+    +set fs_steampath /usr/share/openarena \
+    +set protocol 71-compat \
+    +set sv_master1 dpmaster.deathmask.net \
+    +set com_homepath .openarena \
+    "$@"
+
