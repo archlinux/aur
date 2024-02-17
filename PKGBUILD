@@ -1,7 +1,7 @@
 # Maintainer: Humble Penguin <humblepenguinn@gmail.com>
 
 pkgname=envio-bin
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A Modern And Secure CLI Tool For Managing Environment Variables"
 url="https://envio-cli.github.io/home"
