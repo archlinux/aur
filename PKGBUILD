@@ -2,13 +2,13 @@
 
 pkgname=notion-app-nativefier
 pkgver=2024.02.17
-pkgrel=1
+pkgrel=2
 pkgdesc='Notion in shared Electron runtime'
 arch=('x86_64')
 url='https://www.notion.so'
 license=('MIT')
 _nativefier=52
-_electron=25
+_electron=28
 depends=("electron${_electron}")
 makedepends=(
   'gendesk'
