@@ -1,14 +1,15 @@
 # Maintainer: k1f0 <generic at k1f0.mozmail.com>
 
 pkgname=rwpspread-git
-pkgver=r22.b1bc022
+pkgver=r290.9a222ca
 pkgrel=1
 pkgdesc='Multi-Monitor Wallpaper Utility'
 arch=('x86_64')
 url='https://github.com/0xk1f0/rwpspread'
 license=('GPL3')
-depends=('wpaperd-git')
 makedepends=('cargo' 'git')
+optdepends=('wpaperd: wallpaper setter backend'
+            'swaybg: wallpaper setter backend')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname}::git+${url}.git")
