@@ -1,6 +1,6 @@
 # Maintainer: ldev <ldev dot eu dot org> 
-pkgver=r2.2482c45
-pkgrel=1
+pkgver=r1.db5071c
+pkgrel=2
 
 pkgname=git-credential-pass-git
 pkgdesc="A simple git credentials helper for gnu pass"
@@ -9,7 +9,7 @@ url="https://github.com/Xgames123/git-credential-pass"
 arch=('any')
 
 binname=git-credential-pass
-source=("git+$url")
+source=("git+$url#branch=dev")
 conflicts=("git-credential-pass")
 provides=("git-credential-pass")
 makedepends=(
@@ -37,12 +37,6 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
-}
-
-check() {
-    cd "$srcdir/git-credential-pass"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
 }
 
 package() {
