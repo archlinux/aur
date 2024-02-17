@@ -1,6 +1,7 @@
 # Maintainer: BadBoy <luckmelove2@gmail.com>
 
-pkgname='orange'
+pkgname='orange-bin'
+_pkgname='orange'
 pkgver='0.6.5'
 pkgrel='1'
 pkgdesc='Cross-platform local file search engine'
