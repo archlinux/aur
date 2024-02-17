@@ -1,0 +1,19 @@
+pkgbase = android-x86-libpsl
+	pkgdesc = Public Suffix List library (android)
+	pkgver = 0.21.5
+	pkgrel = 1
+	url = https://github.com/rockdaboot/libpsl
+	arch = any
+	license = MIT
+	makedepends = android-meson
+	makedepends = android-x86-libxslt
+	depends = android-x86-libidn2
+	depends = android-x86-libunistring
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/rockdaboot/libpsl/releases/download/0.21.5/libpsl-0.21.5.tar.gz
+	sha512sums = c14d575cecc0f1693894dd79565b6b9220084ddfa43b908a1cefe16d147cdd5ec47796eb0c2135e2f829a951abaf39d8a371ab5c1352f57b36e610e25adf91f5
+
+pkgname = android-x86-libpsl
