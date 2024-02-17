@@ -2,18 +2,18 @@
 
 _pkgname=audius-client
 pkgname=$_pkgname-bin
-pkgver=1.5.53
+pkgver=1.5.55
 pkgrel=1
 pkgdesc="The Decentralized Audius.co Client (binary release, system Electron)"
 url="https://github.com/AudiusProject/audius-protocol/tree/main/packages/web"
+license=('Apache-2.0')
 arch=('x86_64')
-license=('Apache2')
 depends=('electron')
 makedepends=('fuse2')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("https://download.audius.co/Audius-$pkgver.AppImage")
-sha256sums=('37c838a2dde96ac06806967e9b56189a99349377a7f5cff0dd2a1859a3e656a4')
+sha256sums=('97cd3b9abd9322da7f9f41c7184fa42d40fcdf504b59e389e012782b16f71f45')
 
 prepare() {
 # Create an exec file
@@ -36,7 +36,7 @@ exec electron /usr/lib/$_pkgname/app.asar \$@" > $_pkgname
 }
 
 package() {
-# Create a folder
+# Create a directory
   mkdir -p "$pkgdir/usr/lib/$_pkgname"
 # Install
   install -Dm755 $_pkgname -t "$pkgdir/usr/bin"

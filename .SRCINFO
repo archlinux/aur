@@ -1,15 +1,15 @@
 pkgbase = audius-client-bin
 	pkgdesc = The Decentralized Audius.co Client (binary release, system Electron)
-	pkgver = 1.5.53
+	pkgver = 1.5.55
 	pkgrel = 1
 	url = https://github.com/AudiusProject/audius-protocol/tree/main/packages/web
 	arch = x86_64
-	license = Apache2
+	license = Apache-2.0
 	makedepends = fuse2
 	depends = electron
 	provides = audius-client
 	conflicts = audius-client
-	source = https://download.audius.co/Audius-1.5.53.AppImage
-	sha256sums = 37c838a2dde96ac06806967e9b56189a99349377a7f5cff0dd2a1859a3e656a4
+	source = https://download.audius.co/Audius-1.5.55.AppImage
+	sha256sums = 97cd3b9abd9322da7f9f41c7184fa42d40fcdf504b59e389e012782b16f71f45
 
 pkgname = audius-client-bin
