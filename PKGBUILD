@@ -1,3 +1,4 @@
+# Maintainer: Villager <villager@disroot.org>
 pkgname=webtunnel-git
 pkgver=r30.ae511e2
 pkgrel=1
