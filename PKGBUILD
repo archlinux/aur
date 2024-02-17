@@ -3,7 +3,7 @@
 # Maintainer: Simon Hafner <hanfersimon@gmail.com>
 
 pkgname=libao-git
-pkgver=1.2.2.r2.1f998f5
+pkgver=1.2.2.r8.cafce90
 pkgrel=1
 pkgdesc='Cross-platform audio output library and plugins'
 url='http://xiph.org/ao/'
@@ -14,7 +14,7 @@ makedepends=('libpulse' 'git')
 provides=("libao=${pkgver}-${pkgrel}")
 conflicts=('libao')
 backup=('etc/libao.conf')
-source=("git+https://github.com/xiph/libao.git"
+source=("git+https://gitlab.xiph.org/xiph/libao.git"
         'libao.conf')
 sha1sums=('SKIP'
           '603f5e6715e7e50e1c8e8c1935c45a897c46e9af')
