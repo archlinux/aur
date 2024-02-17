@@ -150,8 +150,8 @@ build() {
   for manfile in *; do
     sed \
       "s/${_pkg}/${_pkg}2/g;s/PIP/PIP2/g" \
-        "${manfile}" > \
-      ../"man-${_pkg}2/${manfile/pip/pip2}"
+      "${manfile}" > \
+      "../man-${_pkg}2/${manfile/pip/pip2}"
   done
 }
 
@@ -195,10 +195,13 @@ check() {
 package() {
   local \
     _pshare="${pkgdir}/usr/share" \
-    _bash_completions="${_pshare}/bash-completion/completions" \
-    _fish_completions="${_pshare}/fish/vendor_completions.d" \
+    _bash_completions \
+    _fish_completions= \
     _spc="import site; print(site.getsitepackages()[0])" \
     _site_packages
+  _pshare="${pkgdir}/usr/share" \
+  _bash_completions="${_pshare}/bash-completion/completions" \
+  _fish_completions="${_pshare}/fish/vendor_completions.d" \
   _site_packages=$( \
     "${_py}" \
       -c \
