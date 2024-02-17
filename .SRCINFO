@@ -1,6 +1,6 @@
 pkgbase = android-platform
 	pkgdesc = Android SDK Platform, latest API
-	pkgver = 34_r02
+	pkgver = 34_r03
 	pkgrel = 1
 	url = http://developer.android.com/sdk/index.html
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = android-platform
 	provides = android-platform-34
 	conflicts = android-platform-34
 	options = !strip
-	source = https://dl.google.com/android/repository/platform-34-ext7_r02.zip
+	source = https://dl.google.com/android/repository/platform-34-ext7_r03.zip
 	source = package.xml
-	sha256sums = 5323311cc3e4ad614f0b8053c72b651726f3422448cedd39e48f00737cda8ad0
-	sha256sums = 273711677d9e1f110a6ba9205fafb1a0e199b1c354ff095d1bb4472fb8acf281
+	sha256sums = 16fdb74c55e59ae3ef52def135aec713508467bd56d7dabcd8c9be31fa8b20f3
+	sha256sums = ca0589a9b89c09d678b48a9b041decd486106e309da98186a58b2e7e30fef3fd
 
 pkgname = android-platform
 	depends = android-sdk
