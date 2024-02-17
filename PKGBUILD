@@ -1,12 +1,12 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=qimgv-light-git
-pkgver=1.0.3alpha.r15.g48dd2ea3
+pkgver=1.0.3alpha.r105.g70dc0ef9
 pkgrel=1
 pkgdesc='Qt6 image viewer (git, without any optional features)'
 arch=(x86_64 i686 armv6h armv7h aarch64)
 url=https://github.com/easymodo/qimgv
-license=(GPL3)
+license=(GPL-3.0-or-later)
 depends=(qt6-base qt6-imageformats qt6-svg qt6-5compat)
 makedepends=(cmake qt6-tools git)
 provides=("${pkgname%-light-git}")
