@@ -19,11 +19,11 @@ source=(
 )
 # shellcheck disable=SC2059
 source_i686=(
-    "$(printf "${_url}" 20231130000133 i386)"
+    "eID_klient_${pkgver}_i386.tar.gz::$(printf "${_url}" 20231130000133 i386)"
 )
 # shellcheck disable=SC2059
 source_x86_64=(
-    "$(printf "${_url}" 20231129171710 x86_64)"
+    "eID_klient_${pkgver}_x86_64.tar.gz::$(printf "${_url}" 20231129171710 x86_64)"
 )
 sha256sums=(
     SKIP
