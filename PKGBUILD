@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gDRcore
-_pkgver=1.0.0
+_pkgver=1.0.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Processing functions and interface to process and analyze drug dose-response data"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(Artistic2.0)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('Artistic-2.0')
 depends=(
   r-biocparallel
   r-bumpymatrix
@@ -41,12 +41,12 @@ optdepends=(
   r-yaml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('76f729e9fce669107120d0ec73c32bfc')
-sha256sums=('8eb4527eac26056bed31d02e29703623c11f69505c4224674abe7fa8b6bf05a1')
+md5sums=('c6f8d5e650506c1da3a8372f16f690da')
+b2sums=('c3fcf3165910dbe3e1819afb10a12bd267a59b026e4cd009016d6c8c64c80885835c6fb10a65e10d16704e814e8aa73e53dfc84dc95c00269e570613abe4f81f')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
