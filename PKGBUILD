@@ -48,7 +48,7 @@ depends=('fluidsynth' 'giflib' 'gst-plugins-good' 'gst-plugins-ugly'
   'ocaml-vorbis'
   'ocaml-xmlplaylist'
 )
-makedepends=('camlp4' 'libxml-perl' 'ocaml-findlib' 'ocaml-menhir' 'ocaml-pcre' 'ocaml-sedlex' 'perl-xml-dom')
+makedepends=('libxml-perl' 'ocaml-findlib' 'ocaml-menhir' 'ocaml-pcre' 'ocaml-sedlex' 'perl-xml-dom')
 optdepends=('curl')
 options=('!makeflags')
 source=("https://github.com/savonet/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"

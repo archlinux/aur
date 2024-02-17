@@ -7,7 +7,6 @@ pkgbase = liquidsoap
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = camlp4
 	makedepends = libxml-perl
 	makedepends = ocaml-findlib
 	makedepends = ocaml-menhir
