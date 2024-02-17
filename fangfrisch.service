@@ -9,6 +9,12 @@ Type=simple
 User=clamav
 WorkingDirectory=/var/lib/fangfrisch
 ExecStart=/usr/bin/fangfrisch --conf /etc/fangfrisch/fangfrisch.conf refresh
+# Lowering priority
+OOMScoreAdjust=1000
+Nice=19
+CPUSchedulingPolicy=idle
+IOSchedulingClass=idle
+IOSchedulingPriority=7
 
 [Install]
 WantedBy=multi-user.target
