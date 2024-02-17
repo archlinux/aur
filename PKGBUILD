@@ -3,7 +3,7 @@
 pkgname=emulationstation-de
 pkgver=3.0.0
 pkgrel=1
-pkgdesc="EmulationStation Desktop Edition (ES-DE) is a frontend for browsing and launching games from your multi-platform game collection"
+pkgdesc="ES-DE (EmulationStation Desktop Edition) is a frontend for browsing and launching games from your multi-platform game collection"
 arch=('x86_64')
 url="https://es-de.org"
 license=('MIT')
