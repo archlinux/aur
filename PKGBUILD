@@ -2,22 +2,14 @@
 
 _pkgname="hypridle"
 pkgname="${_pkgname}-git"
-pkgver=0.1.0.r0.gcd592840
+pkgver=0.1.0.r1.gf6dd1ef9
 pkgrel=1
 pkgdesc="Hyprland's idle daemon"
 arch=(any)
 url="https://github.com/hyprwm/hypridle"
 license=('BSD')
-depends=(wayland hyprland)
-makedepends=(
-	git
-	cmake
-	ninja
-	gcc
-	gdb
-	meson
-	wayland-protocols
-	xorgproto)
+depends=('wayland' 'hyprlang>=0.4.0')
+makedepends=('git' 'cmake' 'ninja' 'gcc' 'gdb' 'meson' 'wayland-protocols' 'xorgproto')
 source=("${_pkgname}::git+https://github.com/hyprwm/hypridle.git")
 conflicts=("${_pkgname}")
 provides=(hypridle)
