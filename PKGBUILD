@@ -2,13 +2,17 @@
 
 pkgname='gotrue'
 pkgver=2.142.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A JWT based API for managing users and issuing JWT tokens'
 arch=('x86_64')
 url='https://github.com/supabase/gotrue'
 license=('MIT')
-depends=('postgresql' 'nv')
+depends=()
 makedepends=('go')
+optdepends=(
+  'nv: Systemd service support'
+  'postgresql: PostgreSQL support'
+)
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/supabase/gotrue/archive/refs/tags/v${pkgver}.tar.gz"
   'gotrue.service'

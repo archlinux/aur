@@ -1,13 +1,13 @@
 pkgbase = gotrue
 	pkgdesc = A JWT based API for managing users and issuing JWT tokens
 	pkgver = 2.142.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/supabase/gotrue
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	depends = postgresql
-	depends = nv
+	optdepends = nv: Systemd service support
+	optdepends = postgresql: PostgreSQL support
 	backup = etc/gotrue/config.env
 	source = gotrue-2.142.0.tar.gz::https://github.com/supabase/gotrue/archive/refs/tags/v2.142.0.tar.gz
 	source = gotrue.service
