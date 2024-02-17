@@ -17,8 +17,8 @@ sha256sums=('1cbf903ba97d3206d716a93ed7886bb7fa6937037e00a0f61e5fdbd25a6187d2'
 
 build() {
   gcc amd-ucodegen.c -o amd-ucodegen
-  ./amd-ucodegen "CPUMicrocodes-${_commit}"/AMD/cpu??8??F??_* # Family=0x17: Base Family=0x8 + Extended Family=0xF
-  ./amd-ucodegen "CPUMicrocodes-${_commit}"/AMD/cpu??A??F??_* # Family=0x19: Base Family=0xA + Extended Family=0xF
+  ./amd-ucodegen "CPUMicrocodes-${_commit}"/AMD/cpu??8??F??_* # Family=0x17: Base Family=0xF + Extended Family=0x8
+  ./amd-ucodegen "CPUMicrocodes-${_commit}"/AMD/cpu??A??F??_* # Family=0x19: Base Family=0xF + Extended Family=0xA
 
   mkdir -p kernel/x86/microcode
   cat microcode_amd*.bin > kernel/x86/microcode/AuthenticAMD.bin
