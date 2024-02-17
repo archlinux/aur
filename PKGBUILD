@@ -1,38 +1,18 @@
-# Maintainer: Joar Heimonen <joarheimonen@live.no>
-# Note: This is only an install script for Yuma123, not the actual project itself.
+# Maintainer: Ramazan Umut ramazxn@proton.me
 
-pkgname=yuma123-git
-pkgver=latest
+pkgname="rfetch-git"
+pkgver=0.1
 pkgrel=1
-pkgdesc="Open-source YANG API in C and CLI (yangcli) and server (netconfd)"
-arch=('x86_64')
-url="https://github.com/vlvassilev/yuma123"
-license=('BSD')
-depends=('git' 'autoconf' 'automake' 'make' 'gcc')
-makedepends=('libtool') # Add libtool as a build dependency
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-pkgbase=yuma123-git
-
-source=("git+https://github.com/vlvassilev/yuma123")
-
-prepare() {
-  cd "$srcdir/yuma123"
-  libtoolize
-  autoreconf -i -f
-}
-
-build() {
-  cd "$srcdir/yuma123"
-  ./configure CFLAGS='-g -O0' CXXFLAGS='-g -O0' --prefix=/usr
-  make
-}
+pkgdesc="Simple neofetch alternative."
+arch=('any')
+depends=('bash')
+license=('GPL-3.0')
+source=("rfetch.sh")
+sha256sums=('SKIP')
 
 package() {
-  cd "$srcdir/yuma123"
-  make DESTDIR="${pkgdir}" install
-  mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
+				mkdir -p "${pkgdir}/usr/bin"
+				cp "${srcdir}/rfetch.sh" "${pkgdir}/usr/bin/rfetch"
+				chmod +x "${pkgdir}/usr/bin/rfetch"
 }
 
-
-sha256sums=('SKIP') 
