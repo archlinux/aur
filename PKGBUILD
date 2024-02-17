@@ -39,4 +39,6 @@ package() {
 	install -Dm755 snowflake-server -t "${pkgdir}/usr/bin/"
 
 	install -Dm644 doc/*.1 -t "${pkgdir}/usr/share/man/man1/"
+
+	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
