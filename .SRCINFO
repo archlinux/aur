@@ -1,6 +1,6 @@
 pkgbase = resvg
 	pkgdesc = SVG rendering library and CLI
-	pkgver = 0.38.0
+	pkgver = 0.40.0
 	pkgrel = 1
 	url = https://github.com/RazrFalcon/resvg
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = resvg
 	optdepends = qt5-base: For the Qt backend
 	optdepends = cairo: For the cairo backend
 	optdepends = kio5: For the dolphin thumbnailer
-	source = https://github.com/RazrFalcon/resvg/archive/v0.38.0/resvg-0.38.0.tar.gz
-	sha256sums = cdb306f62c55e06aa1071323e7dcd72e5f5d63210af108dd74549937a22bd2d2
+	source = https://github.com/RazrFalcon/resvg/archive/v0.40.0/resvg-0.40.0.tar.gz
+	sha256sums = 82d1cac871a60071e963749228ef8d52954bd0549d0ee2358092b8115fb4915b
 
 pkgname = resvg
