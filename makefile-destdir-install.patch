@@ -1,0 +1,14 @@
+diff -rauN a/Makefile b/Makefile
+--- a/Makefile	2024-02-17 12:35:52.185006673 +0100
++++ b/Makefile	2024-02-17 12:40:05.221682034 +0100
+@@ -148,8 +148,8 @@
+ all: $(EMU86_PROG) $(PCAT_PROG)
+ 
+ install: $(EMU86_PROG) $(PCAT_PROG)
+-	install -m 755 -s $(EMU86_PROG) $(PREFIX)/bin/$(EMU86_PROG)
+-	install -m 755 -s $(PCAT_PROG) $(PREFIX)/bin/$(PCAT_PROG)
++	install -D -m 755 -s $(EMU86_PROG) $(DESTDIR)$(PREFIX)/bin/$(EMU86_PROG)
++	install -D -m 755 -s $(PCAT_PROG) $(DESTDIR)$(PREFIX)/bin/$(PCAT_PROG)
+ 
+ clean:
+ 	rm -f *.o $(EMU86_PROG) $(PCAT_PROG) emu86.pts

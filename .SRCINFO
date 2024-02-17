@@ -1,0 +1,14 @@
+pkgbase = emu86-git
+	pkgdesc = Intel IA16 emulator for embedded development
+	pkgver = r197.429971f
+	pkgrel = 1
+	url = https://github.com/mfld-fr/emu86
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	source = git+https://github.com/mfld-fr/emu86.git
+	source = makefile-destdir-install.patch
+	sha256sums = SKIP
+	sha256sums = 9a20c1ad58fcb26228d03a878f3fc602ac6c66c59714968436363bd0880dc6e3
+
+pkgname = emu86-git
