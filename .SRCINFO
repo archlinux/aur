@@ -1,0 +1,13 @@
+pkgbase = python-mdbuilder
+	pkgdesc = A tool to generate markdown easily
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/mill413/mdBuilder
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	source = python-mdbuilder-1.0.7.tar.gz::https://github.com/mill413/mdBuilder/archive/refs/tags/v1.0.7.tar.gz
+	sha512sums = SKIP
+
+pkgname = python-mdbuilder
+	depends = python
