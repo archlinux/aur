@@ -5,5 +5,5 @@ exec quake3e.ded \
     +set fs_steampath /usr/share/openarena \
     +set protocol 71-compat \
     +set sv_master1 dpmaster.deathmask.net \
-    "$@"
+    $@
 

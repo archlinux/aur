@@ -12,5 +12,5 @@ exec quake3e \
     +set protocol 71-compat \
     +set sv_master1 dpmaster.deathmask.net \
     +set com_homepath .openarena \
-    "$@"
+    $@
 
