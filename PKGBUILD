@@ -5,16 +5,12 @@
 
 # shellcheck disable=SC2034
 _git=true
-_offline=true
+_offline=false
 _proj="hip"
 _pkg="grub"
 _pkgname="arch-${_pkg}"
 pkgname="${_pkgname}-git"
-<<<<<<< HEAD
 pkgver=0.1.1.1.1.1
-=======
-pkgver=0.1.1.1.r32.g7317b3b
->>>>>>> a102265ca377f97cb95cf1b59edab159000b0fbc
 pkgrel=1
 _pkgdesc=(
   'Produces a standalone GRUB binary'
