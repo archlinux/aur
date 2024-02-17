@@ -5,12 +5,14 @@
 _pkgname=uriparser
 pkgname=$_pkgname-git
 pkgver=r1053.70383a4
-pkgrel=1
+pkgrel=2
 pkgdesc='uriparser is a strictly RFC 3986 compliant URI parsing library. uriparser is cross-platform, fast, supports Unicode'
 url='https://github.com/uriparser/uriparser'
 makedepends=('cmake')
 arch=('x86_64')
 license=('custom')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 
