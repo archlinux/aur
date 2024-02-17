@@ -2,9 +2,9 @@
 # shellcheck shell=bash disable=SC2034
 
 pkgname=vinegar
-pkgver=1.6.1
+pkgver=1.7.3
 pkgrel=1
-pkgdesc="A transparent wrapper for Roblox Player and Roblox Studio"
+pkgdesc="A weirdo launcher for Roblox Player and Studio"
 arch=("x86_64")
 url="https://github.com/vinegarhq/vinegar"
 license=("GPL-3.0-only")
@@ -16,7 +16,15 @@ optdepends=("gamemode: Gamemode integration"
             "wine: A required dependency (made optional for flexbility)")
 conflicts=("vinegar-git")
 source=("${url}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.xz")
-sha256sums=("dbef5a918171607633080ebb2d9fa499ace72138e784c0e2dd18c10d91911221")
+sha256sums=("6d8cf5f4fea17560c7cca601ad4da6ed305318e27d00d8e9589d0a9407632aeb")
+install="${pkgname}.install"
+
+prepare() {
+  cd "${pkgname}-v${pkgver}"
+
+  # Disable a malicious feature
+  sed -i 's/_, err := os.Stat(dirs.Prefix); err == nil/false/' cmd/vinegar/main.go
+}
 
 build() {
   cd "${pkgname}-v${pkgver}"
