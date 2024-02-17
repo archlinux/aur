@@ -70,12 +70,6 @@ prepare() {
     ./"${_appimage}" --appimage-extract
 }
 
-pkgver() {
-    : "${srcdir:?}"
-
-    strings "${srcdir}/squashfs-root/eID_Client" | grep -Pom1 '^eID_klient_v\K[0-9.]+'
-}
-
 package() {
     depends=(
         ccid
