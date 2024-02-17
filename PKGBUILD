@@ -1,9 +1,9 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
-_buildnum=07027855
+_buildnum=07028387
 pkgname=niri-bin
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Scrollable-tiling Wayland compositor"
 arch=(aarch64 x86_64)
 url="https://github.com/YaLTeR/${pkgname%-bin}"
@@ -21,10 +21,10 @@ optdepends=('fuzzel: application launcher similar to rofi drun mode'
             'polkit-gnome: when apps need to ask for root permissions')
 conflicts=(${pkgname%-bin}-git ${pkgname%-bin})
 options=(!debug)
-source_aarch64=(https://download.copr.fedorainfracloud.org/results/yalter/${pkgname%-bin}/fedora-40-${CARCH}/${_buildnum}-${pkgname%-bin}/${pkgname%-bin}-${pkgver}-1.fc40.${CARCH}.rpm)
-source_x86_64=(https://download.copr.fedorainfracloud.org/results/yalter/${pkgname%-bin}/fedora-40-${CARCH}/${_buildnum}-${pkgname%-bin}/${pkgname%-bin}-${pkgver}-1.fc40.${CARCH}.rpm)
-b2sums_aarch64=('3fccdd2b103ba74517f1585e65677cd5cf9af5fcfb82423a47241fddd49a0b1f6d2e377a446b515373a644859eed197d6c26a5dfc4b786830775bfdf6c8468e6')
-b2sums_x86_64=('e4b99e7a1acd8853aa2049cdb8c4d75d74150f009bf7383c25b9375dcf8fe3e1b57e29c356989542190da3147b7a5b763d695ba58f126042fe870d2ef66aee5d')
+source_aarch64=(https://download.copr.fedorainfracloud.org/results/yalter/${pkgname%-bin}/fedora-40-${CARCH}/${_buildnum}-${pkgname%-bin}/${pkgname%-bin}-${pkgver}-2.fc40.${CARCH}.rpm)
+source_x86_64=(https://download.copr.fedorainfracloud.org/results/yalter/${pkgname%-bin}/fedora-40-${CARCH}/${_buildnum}-${pkgname%-bin}/${pkgname%-bin}-${pkgver}-2.fc40.${CARCH}.rpm)
+b2sums_aarch64=('29460b00864d25f2ef86825c6a8a87bb583111f8addc402be97b1a802194fe1038281b1e5a8e06a8905661d305d290ce9bb84f5e2388da690163bf87563ae789')
+b2sums_x86_64=('9a87d2c3abe5d5276d51ad288225812d24501a51cde9eee7dd9c5227ec1fd2e239e366a40316d398ae32eb43cedc0fb863a8e8c9b5f01f43ac494f8de764192f')
 
 package() {
   install -Dm755 usr/bin/${pkgname%-bin}{,-session}                        -t ${pkgdir}/usr/bin/
