@@ -3,9 +3,9 @@
 
 _pkgname=vinegar
 pkgname=vinegar-git
-pkgver=1.7.3.r8.gcd7faa4
+pkgver=1.7.3.r9.gcd7faa4
 pkgrel=1
-pkgdesc="A weirdo launcher for Roblox Player and Studio (Git version)"
+pkgdesc="A launcher for Roblox Player and Studio (Git version)"
 arch=("x86_64")
 url="https://github.com/vinegarhq/vinegar"
 license=("GPL-3.0-only")
@@ -18,7 +18,6 @@ optdepends=("gamemode: Gamemode integration"
 conflicts=("vinegar")
 source=("git+${url}")
 sha256sums=("SKIP")
-install="${pkgname}.install"
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
