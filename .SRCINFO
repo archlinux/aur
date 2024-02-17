@@ -1,7 +1,7 @@
 pkgbase = ps3-zstd
 	pkgdesc = Zstandard - Fast real-time compression algorithm
-	pkgver = 1.5.4
-	pkgrel = 2
+	pkgver = 1.5.5
+	pkgrel = 1
 	url = https://www.zlib.net/
 	arch = x86_64
 	arch = aarch64
@@ -15,7 +15,7 @@ pkgbase = ps3-zstd
 	options = !emptydirs
 	options = !strip
 	options = staticlibs
-	source = https://github.com/facebook/zstd/releases/download/v1.5.4/zstd-1.5.4.tar.zst
-	sha256sums = 6925880b84aca086308c27036ef1c16e76817372301ead7c37f90e23567f704e
+	source = https://github.com/facebook/zstd/releases/download/v1.5.5/zstd-1.5.5.tar.zst
+	sha256sums = ce264bca60eb2f0e99e4508cffd0d4d19dd362e84244d7fc941e79fa69ccf673
 
 pkgname = ps3-zstd
