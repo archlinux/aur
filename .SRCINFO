@@ -8,6 +8,7 @@ pkgbase = bare-server-go-git
 	makedepends = git
 	depends = make
 	depends = go
+	depends = upx
 	provides = bare-server-go
 	conflicts = bare-server-go
 	source = git+https://github.com/tomphttp/bare-server-go
