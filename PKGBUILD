@@ -3,7 +3,7 @@
 pkgname=jupyterlab-quarto
 pkgdesc="Quarto JupyterLab extension"
 url="https://github.com/quarto-dev/jupyterlab-quarto"
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 license=(BSD-3-Clause)
 arch=(any)
@@ -23,7 +23,7 @@ makedepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "install.json")
-sha256sums=('b5e967ca75d9d02c3e9242f18a0e296a4b8ea548eb2549c9719c7139388442f4'
+sha256sums=('e3605eaf9a01d05ae52e4a164e9aba1ff2e7bfcc8dcad1e5ce33b42d1a067cdc'
             'c49c59e589a7ddd777edc3011ced74d9631114b682b6ad7695eef750e5af797b')
 
 prepare() {
