@@ -4,14 +4,14 @@
 # Contributor: Dhananjay Balan <mail@dbalan.in>
 
 pkgname=minio-client
-pkgver=2024.02.14
-_timever=T21-19-52Z
+pkgver=2024.02.16
+_timever=T11-05-48Z
 _pkgver="${pkgver//./-}${_timever//:/-}"
 pkgrel=1
 pkgdesc='Replacement for ls, cp, mkdir, diff and rsync commands for filesystems and object storage'
 arch=('x86_64')
 url='https://minio.io/downloads/#minio-client'
-license=('Apache')
+license=('AGPL-3.0-or-later')
 makedepends=('go' 'git')
 depends=('glibc')
 install=minio-client.install
