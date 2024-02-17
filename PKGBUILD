@@ -1,7 +1,7 @@
 # Maintainer: Alec Mev <alec@mev.earth>
 
 pkgname=notion-app-nativefier
-pkgver=2023.10.11
+pkgver=2024.02.17
 pkgrel=1
 pkgdesc='Notion in shared Electron runtime'
 arch=('x86_64')
@@ -43,7 +43,7 @@ build() {
     --user-agent safari \
     --single-instance \
     --verbose \
-    https://www.notion.so
+    "${url}"
 }
 
 package() {
