@@ -2,7 +2,7 @@
 
 _name=pytest-metadata
 pkgname=python-pytest-metadata
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Plugin for accessing test session metadata"
 arch=(any)
@@ -21,8 +21,8 @@ makedepends=(
   python-wheel
 )
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
-sha512sums=('336e7f96569ca65fa7ad2dd04fb17071b5565813785e0446ad10d1e15fde6e5414aac7210aaa81e3d8d36f7960a7d448ece537a58aaacc0d3affacffcedbbc86')
-b2sums=('86c7c6813295fa731b12a2d11e610813d612851ab16315f1b0dfcf48ad58f388617d9459a7c4bce59ee00e57b9b354f1f5be9d7d07bf03729e3ff77914f6d552')
+sha512sums=('bd6b0539158224ea2d21943e3a33bec81acafbe5a5d41ba5366f7b7342a728150511ab008f89ad3cb81ba886dc7f864fba809fcee209fe6e2a2ca322d2dc9db8')
+b2sums=('bb29b4be24fbd2711daafb4a658aa244c8469e819fa596afc174680b2b444833dd0a2d29e3b56cb59f33fd76246fe019af61f87157eb7b155fc3f7c4bae69f2b')
 
 build() {
   cd $_name-$pkgver
