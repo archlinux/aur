@@ -1,6 +1,6 @@
 # Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
 pkgname=gcc-ia16
-pkgver=20230219
+pkgver=20231009
 pkgrel=1
 epoch=
 pkgdesc="IA-16 (Intel 16-bit x86) port of GNU Gcc"
@@ -11,7 +11,7 @@ depends=(binutils-ia16 glibc zlib)
 checkdepends=(dejagnu bc)
 options=(staticlibs !distcc !ccache)
 source=("https://github.com/tkchia/gcc-ia16/archive/refs/tags/$pkgver.tar.gz")
-md5sums=('59d21ab0837f3d8a6f239e4a38c62c7f')
+md5sums=('a21df058b213522f6d95753683773717')
 
 build() {
 	mkdir -p build-gcc

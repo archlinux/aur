@@ -1,6 +1,6 @@
 pkgbase = gcc-ia16
 	pkgdesc = IA-16 (Intel 16-bit x86) port of GNU Gcc
-	pkgver = 20230219
+	pkgver = 20231009
 	pkgrel = 1
 	url = https://github.com/tkchia/gcc-ia16
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = gcc-ia16
 	options = staticlibs
 	options = !distcc
 	options = !ccache
-	source = https://github.com/tkchia/gcc-ia16/archive/refs/tags/20230219.tar.gz
-	md5sums = 59d21ab0837f3d8a6f239e4a38c62c7f
+	source = https://github.com/tkchia/gcc-ia16/archive/refs/tags/20231009.tar.gz
+	md5sums = a21df058b213522f6d95753683773717
 
 pkgname = gcc-ia16
