@@ -1,0 +1,11 @@
+pkgbase = makeenv
+	pkgdesc = Run make(1) with environment loaded from .makeenv
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://codeberg.org/maandree/makeenv
+	arch = any
+	license = custom:ISC
+	source = makeenv-1.0.tar.gz::https://codeberg.org/maandree/makeenv/archive/1.0.tar.gz
+	sha512sums = 5556490f697cf1a38051d2da2e218f7b1c99d5262affe9f4e68aef483157e1255efdc3fe0001cf2c593d6248e8c9ab4a46e10bc5d7e999a7b9ffd1e05b5c0301
+
+pkgname = makeenv
