@@ -25,6 +25,8 @@ build() {
 	ninja -C 'build/'
 }
 
+# The testsuite depends on python2 and a bunch of abandoned software, which I wasn't able to get working
+
 package() {
 	cd "$srcdir/$_sourcedirectory/"
 	DESTDIR="$pkgdir" ninja -C 'build/' install
