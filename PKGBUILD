@@ -2,7 +2,7 @@
 
 _pkgname="hypridle"
 pkgname="${_pkgname}-git"
-pkgver=0.0.1.r15.39b8afb
+pkgver=0.1.0.r0.gcd592840
 pkgrel=1
 pkgdesc="Hyprland's idle daemon"
 arch=(any)
@@ -25,11 +25,9 @@ sha256sums=('SKIP')
 options=(!makeflags !buildflags !strip)
 
 pkgver() {
-	cd "$_pkgname"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "0.0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  	cd ${_pkgname}
+    git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
+      | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 
