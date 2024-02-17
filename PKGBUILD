@@ -7,7 +7,7 @@
 _pkg="grub"
 _pkgname="arch-${_pkg}"
 pkgname="${_pkgname}-git"
-pkgver="0.1.r1.g3f11904"
+pkgver=0.1.1.1.1.1
 pkgrel=1
 _pkgdesc=(
   'Produces a standalone GRUB binary'
