@@ -36,7 +36,7 @@ build() {
 }
 
 package() {
-  mkdir -pvm644 $pkgdir/usr/share/{,pixmaps,applications}  $pkgdir/usr/bin/
+  mkdir -pvm755 $pkgdir/usr/share/{,pixmaps,applications}  $pkgdir/usr/bin/
   install -Dvm 644 $srcdir/openarena{,-server}.png $pkgdir/usr/share/pixmaps/
   install -Dvm 644 $srcdir/openarena{,-server}.desktop $pkgdir/usr/share/applications/
   install -Dvm 755 $srcdir/openarena{,-server} $pkgdir/usr/bin/
