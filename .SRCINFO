@@ -1,10 +1,10 @@
 pkgbase = r-dapar
 	pkgdesc = Tools for the Differential Analysis of Proteins Abundance with R
-	pkgver = 1.34.5
+	pkgver = 1.34.6
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DAPAR
 	arch = any
-	license = Artistic2.0
+	license = Artistic-2.0
 	checkdepends = r-testthat
 	depends = r-annotationdbi
 	depends = r-apcluster
@@ -51,8 +51,8 @@ pkgbase = r-dapar
 	depends = r-vsn
 	optdepends = r-biocstyle
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DAPAR_1.34.5.tar.gz
-	md5sums = e9299f03622ae4be4f5dc9f9cc7c8454
-	b2sums = cd0cc399ec1cd6cd3594eec742d139af83a0bfb840c484ca76e4d3fc8ca095954bacfdf8f8e3cb3a6bdbba14e3c7301327965bc57e714e6960f4048c25cd59c3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DAPAR_1.34.6.tar.gz
+	md5sums = 24ecc0e3b05c61098ccc42488ec3b6ba
+	b2sums = 91412ecb020321dac40251421df0e84d2afadf37c48ccec66598aff068ec2c46b09aba8a9ef18d430813d8f7bb966d9dc30024c1a5769b13ebd97d1ab2fd117c
 
 pkgname = r-dapar
