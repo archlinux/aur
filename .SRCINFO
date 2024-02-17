@@ -1,6 +1,6 @@
 pkgbase = android-studio-canary
 	pkgdesc = The Official Android IDE (Canary branch)
-	pkgver = 2023.3.1.9
+	pkgver = 2023.3.1.10
 	pkgrel = 1
 	url = http://tools.android.com/
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = android-studio-canary
 	options = !strip
 	source = https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2023.3.1.9/android-studio-2023.3.1.9-linux.tar.gz
 	source = android-studio-canary.desktop
-	sha256sums = c67f38b2876961c26020bc06062c6ec21ba0f6166ea6a7e2cc6f7c2982d21ecc
+	sha256sums = 34345accf393459c292eae4a9f1c08b20c77d4f8755e87db0dd4841d997eb564
 	sha256sums = 12ff377490cff386ba7b3ab9c94adfc2ca99515fdfad4773813268217dcd56b7
 
 pkgname = android-studio-canary
