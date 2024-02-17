@@ -10,7 +10,6 @@ pkgbase = falsedotnet
 	depends = dotnet-runtime
 	optdepends = nasm: for assembling false programs
 	source = https://github.com/MixusMinimax/falsedotnet/archive/v1.0.0-alpha.1.tar.gz
-	sha256sums = fadcc64f35b824bfb9c71d88b66de8899052cdca419924868af1ecf3488ec2c4,
-	sha256sums = SKIP
+	sha256sums = fadcc64f35b824bfb9c71d88b66de8899052cdca419924868af1ecf3488ec2c4
 
 pkgname = falsedotnet

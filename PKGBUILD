@@ -12,7 +12,7 @@ depends=('git' 'dotnet-runtime')
 makedepends=('dotnet-sdk')
 optdepends=('nasm: for assembling false programs')
 source=("$url/archive/v$_pkgver.tar.gz")
-sha256sums=('fadcc64f35b824bfb9c71d88b66de8899052cdca419924868af1ecf3488ec2c4', 'SKIP')
+sha256sums=('fadcc64f35b824bfb9c71d88b66de8899052cdca419924868af1ecf3488ec2c4')
 
 build() {
   cd "$pkgname-$_pkgver/FalseDotNet.Cli"
@@ -20,7 +20,7 @@ build() {
     --configuration Release \
     --self-contained true \
     --runtime linux-x64 \
-    -p:PublishTrimmed=true \
+    -p:Version=$_pkgver \
     --output ../$pkgname \
     ./FalseDotNet.Cli.csproj
 }
