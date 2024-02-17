@@ -1,13 +1,12 @@
 pkgbase = barony
 	pkgdesc = Barony is the premier first-person roguelike with cooperative play
 	pkgver = 4.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/TurningWheel/Barony
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
-	makedepends = libfmod
 	makedepends = libnfd
 	makedepends = sdl2_image
 	makedepends = sdl2_net
