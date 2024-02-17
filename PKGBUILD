@@ -2,7 +2,7 @@
 
 pkgbase=angie
 pkgname=(angie angie-src)
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 arch=('x86_64')
 url='https://angie.software'
@@ -25,12 +25,12 @@ source=(https://download.angie.software/files/$pkgbase-$pkgver.tar.gz{,.asc}
 validpgpkeys=(
   'EB8EAF3D4EF1B1ECF34865A2617AB978CB849A76' # Angie (Signing Key) <devops@tech.wbsrv.ru>
 )
-sha512sums=('d6c074381728260ec3d17ebe771f9486bc30752e269de237c80df13982c459c5b3210f146b3dca490a160f8ee4f732898e7c688cf5d8ab5ff2dc43d8fa006123'
+sha512sums=('569c26185d6ba80d7ec59a34e86470a490dfd30a6f73994af0f25a27e6c6e32e0e25f50105071fdb1fc2ef7405c0c831972170c3151dabebe4ec9df3bc26294e'
             'SKIP'
             '65e3ba379411c638db6ac506b08efc118c975b00f65ed43c8af9d45d564711d55520bf56524e787df31a9b7dc65af4c7454b3b9baf2f8f013a44d9087be53a51'
             '2f4dfcfa711b8bcbc5918ba635f5e430ef7132e66276261ade62bb1cba016967432c8dce7f84352cb8b07dc7c6b18f09177aa3eb92c8e358b2a106c8ca142fe9'
             'f3e2b68cfae760fd04ad4829834bf562bb65a9204e2c83798550b4e53a12f532c878148b2c675370f9fef069b58b68e5b99b3b6fe6fe4f4e046ad61bab538c74')
-b2sums=('57f717c39d3e92d55f6d837236836ba088b94797431d826774dd40e621b147030cb6ce377bdd3b09b204d0bf960f1ba8729501fa9fe16f2ad1a08826efdca394'
+b2sums=('0aa05450e816172352cc5a69b42d37dcebea99034cdcb1ef01f427fe5ffcfb1becd437d45263f41b1149f0e144e40ab365d54310414eef4f01f8143a1e5e25ac'
         'SKIP'
         '27619a4a3ca0c1b977c54c8ba99fa19abebef37e8eff7c211567e47a98b80ce038f7ec20b7ec936aa0f8945a16fe064cf1fe58d68db3d493f4f63d057d5bf007'
         'e1755f61b4eaece83c6c22e48f9e5e316851d1dc35f8d770f837c7d3c8bdc894af1b697c25f1788ac50cd597085c22fb9bf8096a55ecf7659d63185f68ba2d8a'
@@ -129,6 +129,7 @@ package_angie() {
 
   install -Dm644 ../logrotate "$pkgdir"/etc/logrotate.d/nginx
   install -Dm644 ../angie.service "$pkgdir"/usr/lib/systemd/system/angie.service
+  ln -s "$pkgdir"/usr/lib/systemd/system/angie.service "$pkgdir"/usr/lib/systemd/system/nginx.service
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgbase/LICENSE
 
   rmdir "$pkgdir"/run
