@@ -1,7 +1,7 @@
 # Maintainer: atomicfs
 
 pkgname=mdbook-pagetoc
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="A preprocessor for mdbook to render a table of contents for each page"
 url="https://github.com/slowsage/mdbook-pagetoc"
@@ -9,7 +9,7 @@ arch=(x86_64)
 license=(MPL)
 makedepends=(rust cargo)
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('18af9255054f85039f168989236e3ee1985b60ef5fc377b2552ea0188c951b8e')
+sha256sums=('ad8096e4ba49d4b6c8b2c1b815e21b109ac720af83a27d804a4a13b211604079')
 
 build() {
   cd "${pkgname}-${pkgver}"
