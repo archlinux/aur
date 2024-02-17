@@ -6,11 +6,11 @@
 ### arg 1: the new package version
 post_install() {
   echo "create symlinks to subcommands:"
-  for SUBCMD in amd-pstate cpu cpufreq drm drm-amdgpu drm-i915 intel-pstate intel-uncore intel-rapl ryzen; do
+  for SUBCMD in amd-pstate amdgpu cpu cpufreq drm i915 intel-pstate intel-uncore intel-rapl ryzen; do
     if [ -e /usr/bin/$SUBCMD ]; then
-      echo "- /usr/bin/$SUBCMD: skip"
+      echo "/usr/bin/$SUBCMD: skip (exists)"
     else
-      echo "- /usr/bin/$SUBCMD: create"
+      echo "/usr/bin/$SUBCMD: create"
       ln -s /usr/bin/knobs /usr/bin/$SUBCMD
     fi
   done
@@ -26,15 +26,8 @@ post_install() {
 ### arg 1: the new package version
 ### arg 2: the old package version
 post_upgrade() {
-  echo "update symlinks to subcommands:"
-  for SUBCMD in amd-pstate cpu cpufreq drm drm-amdgpu drm-i915 intel-pstate intel-uncore intel-rapl ryzen; do
-    if [ -e /usr/bin/$SUBCMD ]; then
-      echo "- /usr/bin/$SUBCMD: skip"
-    else
-      echo "- /usr/bin/$SUBCMD: create"
-      ln -s /usr/bin/knobs /usr/bin/$SUBCMD
-    fi
-  done
+  post_remove "$2" >/dev/null
+  post_install "$1"
   systemctl daemon-reload
 }
 
@@ -46,17 +39,17 @@ post_upgrade() {
 ### arg 1: the old package version
 post_remove() {
   echo "remove symlinks to knobs subcommands:"
-  for SUBCMD in amd-pstate cpu cpufreq drm drm-amdgpu drm-i915 intel-pstate intel-uncore intel-rapl ryzen; do
+  for SUBCMD in amd-pstate amdgpu cpu cpufreq drm i915 intel-pstate intel-uncore intel-rapl ryzen drm-amdgpu drm-i915; do
     if [ -L /usr/bin/$SUBCMD ]; then
       TARGET=$(basename $(readlink /usr/bin/$SUBCMD))
       if [ "$TARGET" = "knobs" ]; then
-        echo "- /usr/bin/$SUBCMD: delete"
+        echo "/usr/bin/$SUBCMD: delete"
         rm -f /usr/bin/$SUBCMD
       else
-        echo "- /usr/bin/$SUBCMD: skip (does not link to knobs binary)"
+        echo "/usr/bin/$SUBCMD: skip (not a knobs symlink)"
       fi
     else
-      echo "- /usr/bin/$SUBCMD: not found"
+      echo "/usr/bin/$SUBCMD: not found"
     fi
   done
   systemctl daemon-reload
