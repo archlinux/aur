@@ -2,7 +2,7 @@
 # Co-Maintainer: Sondre Nilsen <echo "bmlsc2VuLnNvbmRyZUBnbWFpbC5jb20K" | base64 -d>
 
 pkgname=git-ignore
-pkgver=1.2.1
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Quickly and easily list and fetch .gitignore templates from gitignore.io"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('cargo')
 options=('!lto')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('893061fa27b3a970fada4642f64eebed3a8c0c28a6a8b82c2eb8da6b68257710')
+sha256sums=('6a8813ddda4758e4cb8d8b0333e2c05e65d0205617811d8760f481a61366c2b0')
 
 prepare() {
 	cd "$pkgname-$pkgver"

@@ -1,3 +1,51 @@
+## v1.3.1
+> 2024-02-17
+
+## Summary
+
+Bugfix for miscompilation on Windows.
+
+### Commits
+- [[`6f1d657`](https://github.com/sondr3/git-ignore/commit/6f1d657)] Fix project_dirs failing on Windows
+- [[`31382f3`](https://github.com/sondr3/git-ignore/commit/31382f3)] Fix commit links in changelog [ci skip]
+
+## v1.3.0
+> 2024-02-17
+
+## Summary
+
+Mostly dependency updates and an internal refactor on how the automatic detector 
+works. Now we fetch and parse the [starship](https://starship.rs/) matchers for
+their prompt and use those to automatically recognize files, folders and extensions.
+
+### Commits
+- [[`62684c2`](https://github.com/sondr3/git-ignore/commit/62684c2)] Fix stray println that could mess up redirecting output
+- [[`2a4cdeb`](https://github.com/sondr3/git-ignore/commit/2a4cdeb)] Handle both new and old config existing
+- [[`ff6a284`](https://github.com/sondr3/git-ignore/commit/ff6a284)] Update CONTRIBUTING.md
+- [[`03503a1`](https://github.com/sondr3/git-ignore/commit/03503a1)] Create detectors at build time
+- [[`eba8aa7`](https://github.com/sondr3/git-ignore/commit/eba8aa7)] Warn if using old config path, add migration to init command
+- [[`942df26`](https://github.com/sondr3/git-ignore/commit/942df26)] Minor clippy lint fixes
+- [[`af01c72`](https://github.com/sondr3/git-ignore/commit/af01c72)] Move away from directories, use etcetera instead
+- [[`2a88bc6`](https://github.com/sondr3/git-ignore/commit/2a88bc6)] Bump dependencies
+- [[`ad99c31`](https://github.com/sondr3/git-ignore/commit/ad99c31)] Merge Dependabot GA PRs
+- [[`c39e4c8`](https://github.com/sondr3/git-ignore/commit/c39e4c8)] Bump actions/upload-artifact from 3 to 4
+- [[`1bd59fd`](https://github.com/sondr3/git-ignore/commit/1bd59fd)] Bump actions/download-artifact from 3 to 4
+- [[`5b8f177`](https://github.com/sondr3/git-ignore/commit/5b8f177)] Bump webpki from 0.22.0 to 0.22.2
+- [[`6c6fddf`](https://github.com/sondr3/git-ignore/commit/6c6fddf)] Bump actions/checkout from 3 to 4
+- [[`39b4eac`](https://github.com/sondr3/git-ignore/commit/39b4eac)] Bump bumpalo from 3.11.0 to 3.12.0
+- [[`f294e79`](https://github.com/sondr3/git-ignore/commit/f294e79)] Fix clippy lints
+- [[`53d424c`](https://github.com/sondr3/git-ignore/commit/53d424c)] Update rust-cache action to v2
+
+## v1.2.2
+> 2022-10-21
+
+## Summary
+
+Quick bugfix for bash completion panicking when generated from the CLI.
+
+### Commits
+- [[`aa96e7a`](https://github.com/sondr3/git-ignore/commit/aa96e7a)] Fix completion panicking when generated from binary
+
 ## v1.2.1
 
 > 2022-10-01
@@ -8,21 +56,21 @@ Minor patch release with a single bug fix, with mostly behind the scenes package
 updates and upgrades.
 
 ### Commits
-- [[`8d5a8cb`](https://github.com/sondr3/git-ignore)] Upgrade dependencies, clap to v4
-- [[`214f364`](https://github.com/sondr3/git-ignore)] Move to dtolnay/rust-toolchain for CI
-- [[`7e366f4`](https://github.com/sondr3/git-ignore)] Remove dependabot crates updates, upgrade packages
-- [[`46cc220`](https://github.com/sondr3/git-ignore)] Upgrade packages
-- [[`58a2ab8`](https://github.com/sondr3/git-ignore)] Upgrade packages
-- [[`8b0b4e0`](https://github.com/sondr3/git-ignore)] And release CI copying wrong assets
-- [[`f5d295e`](https://github.com/sondr3/git-ignore)] Add git-ignore AUR package
-- [[`e1c3c78`](https://github.com/sondr3/git-ignore)] Update CI versions
-- [[`79b10e5`](https://github.com/sondr3/git-ignore)] Add clap_mangen to build man pages, update build.rs
-- [[`40e8d11`](https://github.com/sondr3/git-ignore)] Update packages, fix deprecations
-- [[`684c360`](https://github.com/sondr3/git-ignore)] Add dependabot for GitHub Actions, Rust packages
-- [[`25bb013`](https://github.com/sondr3/git-ignore)] Fix wrong extension for Zig
-- [[`6e1d4e0`](https://github.com/sondr3/git-ignore)] Mention @sestrella in CHANGELOG [ci skip]
-- [[`584325b`](https://github.com/sondr3/git-ignore)] Unfuck publish pipeline
-- [[`df3ff6a`](https://github.com/sondr3/git-ignore)] Fix the release action, whoops
+- [[`8d5a8cb`](https://github.com/sondr3/git-ignore/commit/8d5a8cb)] Upgrade dependencies, clap to v4
+- [[`214f364`](https://github.com/sondr3/git-ignore/commit/214f364)] Move to dtolnay/rust-toolchain for CI
+- [[`7e366f4`](https://github.com/sondr3/git-ignore/commit/7e366f4)] Remove dependabot crates updates, upgrade packages
+- [[`46cc220`](https://github.com/sondr3/git-ignore/commit/46cc220)] Upgrade packages
+- [[`58a2ab8`](https://github.com/sondr3/git-ignore/commit/58a2ab8)] Upgrade packages
+- [[`8b0b4e0`](https://github.com/sondr3/git-ignore/commit/8b0b4e0)] And release CI copying wrong assets
+- [[`f5d295e`](https://github.com/sondr3/git-ignore/commit/f5d295e)] Add git-ignore AUR package
+- [[`e1c3c78`](https://github.com/sondr3/git-ignore/commit/e1c3c78)] Update CI versions
+- [[`79b10e5`](https://github.com/sondr3/git-ignore/commit/79b10e5)] Add clap_mangen to build man pages, update build.rs
+- [[`40e8d11`](https://github.com/sondr3/git-ignore/commit/40e8d11)] Update packages, fix deprecations
+- [[`684c360`](https://github.com/sondr3/git-ignore/commit/684c360)] Add dependabot for GitHub Actions, Rust packages
+- [[`25bb013`](https://github.com/sondr3/git-ignore/commit/25bb013)] Fix wrong extension for Zig
+- [[`6e1d4e0`](https://github.com/sondr3/git-ignore/commit/6e1d4e0)] Mention @sestrella in CHANGELOG [ci skip]
+- [[`584325b`](https://github.com/sondr3/git-ignore/commit/584325b)] Unfuck publish pipeline
+- [[`df3ff6a`](https://github.com/sondr3/git-ignore/commit/df3ff6a)] Fix the release action, whoops
 
 ## 1.2.0
 
