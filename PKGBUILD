@@ -20,6 +20,11 @@ build() {
 	python setup.py build
 }
 
+build() {
+	cd "$srcdir/$_sourcedirectory/"
+	python test.py
+}
+
 package() {
 	cd "$srcdir/$_sourcedirectory/"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
