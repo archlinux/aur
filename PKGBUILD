@@ -2,13 +2,13 @@
 
 pkgname=turbo-scanner-git
 pkgver=0.1.0
-pkgrel=1
+pkgrel=3
 pkgdesc="A port scanner and service detection tool that uses 1000 goroutines at once to scan any hosts's ip or fqdn with the sole purpose of testing your own network to ensure there are no malicious services running."
 arch=(aarch64
     riscv64
     x86_64)
 url="https://github.com/mytechnotalent/turbo-scanner"
-license=('Apache')
+license=('Apache-2.0')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
@@ -19,7 +19,7 @@ makedepends=(git
     go)
 checkdepends=()
 backup=()
-options=('!strip')
+options=()
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
