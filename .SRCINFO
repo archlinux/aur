@@ -1,0 +1,13 @@
+pkgbase = cubature
+	pkgdesc = multi-dimensional adaptive integration in C
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/stevengj/cubature
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	depends = eigen
+	source = https://github.com/stevengj/cubature/archive/refs/tags/v1.0.4.tar.gz
+	sha256sums = cd4899de0b047a9d220cfb751a8bdbb8fd0c97c1c894d07523b75168e6426f60
+
+pkgname = cubature
