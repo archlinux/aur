@@ -1,6 +1,6 @@
 pkgbase = falsedotnet
 	pkgdesc = An interpreter and compiler for the esoteric programming language False, implemented using .NET Core
-	pkgver = 1.0.0alpha1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/MixusMinimax/falsedotnet
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = falsedotnet
 	depends = git
 	depends = dotnet-runtime
 	optdepends = nasm: for assembling false programs
-	source = https://github.com/MixusMinimax/falsedotnet/archive/v1.0.0-alpha.1.tar.gz
-	sha256sums = fadcc64f35b824bfb9c71d88b66de8899052cdca419924868af1ecf3488ec2c4
+	source = https://github.com/MixusMinimax/falsedotnet/archive/v1.0.0.tar.gz
+	sha256sums = 27a36bd5613811ea64e912ed5c4d69566d96d82921958bc8028370d6e1404433
 
 pkgname = falsedotnet
