@@ -11,12 +11,12 @@
 # Contributor: Tim Zebulla <amon at faumrahrer dot de>
 
 pkgname=weechat-git
-pkgver=4.2.0.r25.g5c86972
+pkgver=4.2.0.r57.g4858d88
 pkgrel=1
 pkgdesc='Fast, light and extensible IRC client (curses UI). Development version.'
 arch=(i686 x86_64 armv7h aarch64)
 url=https://weechat.org
-license=(GPL)
+license=(GPL-3.0-or-later)
 depends=(gnutls curl libgcrypt)
 makedepends=(asciidoctor cmake aspell enchant guile lua perl python ruby tcl cjson git)
 optdepends=('aspell: spellchecker support'

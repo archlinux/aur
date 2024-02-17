@@ -1,13 +1,13 @@
 pkgbase = weechat-git
 	pkgdesc = Fast, light and extensible IRC client (curses UI). Development version.
-	pkgver = 4.2.0.r25.g5c86972
+	pkgver = 4.2.0.r57.g4858d88
 	pkgrel = 1
 	url = https://weechat.org
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
-	license = GPL
+	license = GPL-3.0-or-later
 	makedepends = asciidoctor
 	makedepends = cmake
 	makedepends = aspell
@@ -32,7 +32,7 @@ pkgbase = weechat-git
 	optdepends = ruby: support for ruby scripts
 	optdepends = tcl: support for tcl scripts
 	optdepends = cjson: support for relay api
-	provides = weechat=4.2.0.r25.g5c86972
+	provides = weechat=4.2.0.r57.g4858d88
 	conflicts = weechat
 	source = git+https://github.com/weechat/weechat.git
 	sha512sums = SKIP
