@@ -1,55 +1,42 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=nvidia-vpf-git
-pkgver=1.1.1.r1.g869316d
+pkgver=2.0.0.r12.g82b51e7
 pkgrel=1
 pkgdesc='NVIDIA Video Processing Framework (git version)'
 arch=('x86_64')
 url='https://github.com/NVIDIA/VideoProcessingFramework/'
-license=('Apache')
-depends=('cuda' 'nvidia-utils' 'ffmpeg' 'python' 'python-pytorch-cuda')
-makedepends=('git' 'cmake' 'nvidia-sdk' 'python-setuptools')
+license=('Apache-2.0')
+depends=('cuda' 'nvidia-utils' 'ffmpeg' 'python' 'python-numpy')
+optdepends=('python-pytorch-cuda: for Torch extension (PytorchNvCodec)')
+makedepends=('git' 'cmake' 'python-build' 'python-scikit-build' 'python-fsspec'
+             'python-installer' 'python-pytorch-cuda' 'python-setuptools' 'python-wheel')
 provides=('nvidia-vpf')
 conflicts=('nvidia-vpf')
-options=('!emptydirs')
 source=('git+https://github.com/NVIDIA/VideoProcessingFramework.git'
-        '010-nvidia-vpf-fix-pytorch-extension.patch')
+        '010-nvidia-vpf-remove-unwanted-pip-build-deps.patch')
 sha256sums=('SKIP'
-            '65630bb49c2180c0c8a42baf56d5ca3af502c32cd49e83dabff3b54abfd870eb')
+            'ad1dcb990b59946f699c1fcfd201c995c0ff8b5800557710e874a0bae2fbfa85')
 
 prepare() {
-    patch -d VideoProcessingFramework -Np1 -i "${srcdir}/010-nvidia-vpf-fix-pytorch-extension.patch"
+    patch -d VideoProcessingFramework -Np1 -i "${srcdir}/010-nvidia-vpf-remove-unwanted-pip-build-deps.patch"
 }
 
 pkgver() {
-    git -C VideoProcessingFramework describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^ver_//'
+    git -C VideoProcessingFramework describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^ver_//;s/^v//'
 }
 
 build() {
-    export CUDA_HOME='/opt/cuda'
-    export CXXFLAGS+=' -I/opt/cuda/include'
-    export  LDFLAGS+=' -L/opt/cuda/lib64'
-    cmake -B build -S VideoProcessingFramework \
-        -DCMAKE_BUILD_TYPE:STRING='None' \
-        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DCMAKE_CUDA_COMPILER:FILEPATH='/opt/cuda/bin/nvcc' \
-        -DCMAKE_SKIP_RPATH:BOOL='YES' \
-        -DGENERATE_PYTHON_BINDINGS:BOOL='TRUE' \
-        -DGENERATE_PYTORCH_EXTENSION:BOOL='TRUE' \
-        -DVIDEO_CODEC_SDK_INCLUDE_DIR:PATH='/usr/include/nvidia-sdk' \
-        -Wno-dev
-    make -C build
+    export CMAKE_GENERATOR='Unix Makefiles'
+    
+    cd VideoProcessingFramework
+    python -m build --wheel --no-isolation
+
+    cd src/PytorchNvCodec
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    make -C build DESTDIR="$pkgdir" install
-    
-    local _sitepkg
-    _sitepkg="$(python -c 'import site; print(site.getsitepackages()[0])')"
-    install -d -m755 "$pkgdir"{"$_sitepkg",/usr/share/nvidia-vpf/samples}
-    mv "${pkgdir}/usr/bin"/Py{,torch}NvCodec"$(python-config --extension-suffix)" "${pkgdir}${_sitepkg}"
-    mv "${pkgdir}/usr/bin"/*.so* "${pkgdir}/usr/lib"
-    mv "${pkgdir}/usr/bin"/*.py "${pkgdir}/usr/share/nvidia-vpf/samples"
-    rm "${pkgdir}/usr/bin"/*.mp4
-    chmod a+x "${pkgdir}/usr/share/nvidia-vpf/samples"/*.py
+    python -m installer --destdir="$pkgdir" VideoProcessingFramework/dist/*.whl
+    python -m installer --destdir="$pkgdir" VideoProcessingFramework/src/PytorchNvCodec/dist/*.whl
 }
