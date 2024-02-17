@@ -1,0 +1,16 @@
+pkgbase = python-latex-ocr-server
+	pkgdesc = A protobuf-based service to generate latex equations from image files
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/lucasvanmol/latex-ocr-server
+	arch = x86_64
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python-huggingface-hub
+	source = latex_ocr_server-0.1.0.tar.gz::https://github.com/lucasvanmol/latex-ocr-server/releases/download/0.1.0/latex_ocr_server-0.1.0.tar.gz
+	sha512sums = 44a40bc4cc175233da9fdb23cbd4e7f4ac7eae15f94a39a4cd93e66a034c1a58122db23b953af28cad83df4f38eb6c4ad35c5a0d5a3a296f7a925c9cbd11d2f8
+
+pkgname = python-latex-ocr-server
