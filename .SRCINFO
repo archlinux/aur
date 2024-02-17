@@ -1,21 +1,33 @@
 pkgbase = hostapd-git
-	pkgdesc = IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator
-	pkgver = 20170315.6c2056abe
+	pkgdesc = User space daemon for access point and authentication servers
+	pkgver = 2.10.r1929.g87120a5b6
 	pkgrel = 1
-	url = http://w1.fi/hostapd/
+	url = https://w1.fi/hostapd/
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = BSD-3-Clause
 	makedepends = git
-	depends = openssl
+	depends = glibc
 	depends = libnl
-	provides = hostapd
+	depends = openssl
+	depends = sqlite
+	provides = hostapd=2.10.r1929.g87120a5b6
 	conflicts = hostapd
-	options = emptydirs
+	options = staticlibs
+	backup = etc/hostapd/hostapd.accept
+	backup = etc/hostapd/hostapd.conf
+	backup = etc/hostapd/hostapd.deny
+	backup = etc/hostapd/hostapd.eap_user
+	backup = etc/hostapd/hostapd.radius_clients
+	backup = etc/hostapd/hostapd.vlan
+	backup = etc/hostapd/hostapd.wpa_psk
 	source = git://w1.fi/hostap.git
-	source = service
+	source = config::https://gitlab.archlinux.org/archlinux/packaging/packages/hostapd/-/raw/main/config?ref_type=heads
+	source = hostapd.service::https://gitlab.archlinux.org/archlinux/packaging/packages/hostapd/-/raw/main/hostapd.service?ref_type=heads
+	source = hostapd@.service::https://gitlab.archlinux.org/archlinux/packaging/packages/hostapd/-/raw/main/hostapd@.service?ref_type=heads
 	sha256sums = SKIP
-	sha256sums = 989bc6855f44c0b360e3d4cd4a146c35b7c12f8a0ced627b4b033f58edcade8e
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = hostapd-git
-
