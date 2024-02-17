@@ -1,0 +1,16 @@
+pkgbase = scrolltext
+	pkgdesc = Simple terminal application for scrolling text.
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/jimdeekepler/python-scrolltext
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/s/scrolltext/scrolltext-0.0.6.tar.gz
+	sha256sums = a2c13abf8ed3d9198458dfcb1f10244b3749ef7420edae800f4e88963e1faac2
+
+pkgname = scrolltext
