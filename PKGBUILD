@@ -2,8 +2,8 @@
 
 _pkgname=flet
 pkgname=python-${_pkgname}
-pkgver=0.20.0
-pkgrel=2
+pkgver=0.20.1
+pkgrel=1
 pkgdesc='Easily build realtime web, mobile and desktop apps in your favorite language and securely share them with your team.'
 url="https://${_pkgname}.dev/"
 license=('Apache')
@@ -36,7 +36,7 @@ source=(
 	"flutter::git+https://github.com/flutter/flutter.git"
 	"flutter-engine::git+https://github.com/flutter/engine.git"
 	'flet-linux.patch')
-sha256sums=('4909039b233572712dfb3aa2cba04597895bce930459ba9acec1027905517aef'
+sha256sums=('76c53e2bdcec645e6e9af02982e0eae5cc1076eb7cd954ae5d4c77c1f145f215'
             'SKIP'
             'SKIP'
             'af9718b926a07ac8e8689a2c623fe6921d88d0bcd52263f63848d11175e3b828')
