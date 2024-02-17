@@ -1,7 +1,7 @@
 pkgbase = python-uv-latest-bin
 	pkgdesc = An extremely fast Python package installer and resolver, written in Rust (latest binary from PyPI)
 	pkgver = 0.1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/uv/
 	arch = aarch64
 	arch = armv7l
