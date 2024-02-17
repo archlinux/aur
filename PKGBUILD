@@ -3,11 +3,11 @@
 
 pkgname=lan-mouse-bin
 _pkgname=lan-mouse
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Software KVM Switch / mouse & keyboard sharing software for Local Area Networks"
 url="https://github.com/feschber/lan-mouse"
-license=("GPL3")
+license=("GPL-3.0-only")
 arch=(any)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -17,7 +17,7 @@ source=(
   "de.feschber.LanMouse.svg"
   "LICENSE"
 )
-sha512sums=('6afcc42da39ae020bc09d4380fdbedc04940bfa91aac4c56eb2bf913af88329c0de099de48b920dc5f4cf300eebaaa73d744659d9e49a84ef1345691448f669b'
+sha512sums=('ba544d4403681f2fd661178e612961079fd779161520375f7ab9349bb18709d04fbd10e135e920eaa17d2ab3164867d775b96f1ae6499f4dc25ad30fde178374'
             '4e9995e6dc3967a8cba3b8034144ff375131c7670916f5929253f21da32ea0bd2ff1e823ee53d8a83584a32ed8a47395fdfce65b01b70322dcb849f07223bb66'
             '92d2f7e6d88ff318b4629ff753049235db928ca5168dc21218f5b56f1574c759528f0ec7ea464fd0c18bcc78b3c2d9f08b6cc358983fc71c65f8aad0c210d545'
             'd361e5e8201481c6346ee6a886592c51265112be550d5224f1a7a6e116255c2f1ab8788df579d9b8372ed7bfd19bac4b6e70e00b472642966ab5b319b99a2686')
