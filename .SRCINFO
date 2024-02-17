@@ -1,16 +1,14 @@
 pkgbase = nvidia-vpf
 	pkgdesc = NVIDIA Video Processing Framework
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NVIDIA/VideoProcessingFramework/
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = cmake
-	makedepends = ninja
 	makedepends = python-build
 	makedepends = python-scikit-build
 	makedepends = python-installer
-	makedepends = python-ninja
 	makedepends = python-pytorch-cuda
 	makedepends = python-setuptools
 	makedepends = python-wheel
@@ -23,6 +21,6 @@ pkgbase = nvidia-vpf
 	source = https://github.com/NVIDIA/VideoProcessingFramework/archive/v2.0.0/nvidia-vpf-2.0.0.tar.gz
 	source = 010-nvidia-vpf-remove-unwanted-pip-build-deps.patch
 	sha256sums = 09f50b12413caa0941c116bd507bb1bd5c0716d46138db7aff941226966bd6d0
-	sha256sums = 334a11a45d2085b89a0780510ff2e26c6a57afc78fab7299ba1fee3e826b66a1
+	sha256sums = 1188222edb0534e9385059a31c3c4f669223435b2a400ceadd28beadab0da3c5
 
 pkgname = nvidia-vpf

@@ -1,11 +1,13 @@
 --- a/pyproject.toml
 +++ b/pyproject.toml
-@@ -33,7 +33,7 @@ requires = [
+@@ -33,8 +33,8 @@ requires = [
    "setuptools>=42",
    "scikit-build",
    ## out-comment not install cmake/ninja via pip
 -  "cmake>=3.21",
+-  "ninja; platform_system!='Windows'"
 +  #"cmake>=3.21",
-   "ninja; platform_system!='Windows'"
++  #"ninja; platform_system!='Windows'"
  ]
  build-backend = "setuptools.build_meta"
+ 
