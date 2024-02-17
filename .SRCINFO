@@ -1,14 +1,14 @@
 pkgbase = qimgv-light
 	pkgdesc = Qt6 image viewer (without any optional features)
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/easymodo/qimgv
 	arch = x86_64
 	arch = i686
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = cmake
 	makedepends = qt6-tools
 	depends = qt6-base

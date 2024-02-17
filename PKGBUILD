@@ -3,11 +3,11 @@
 
 pkgname=qimgv-light
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Qt6 image viewer (without any optional features)'
 arch=(x86_64 i686 armv6h armv7h aarch64)
 url=https://github.com/easymodo/qimgv
-license=(GPL3)
+license=(GPL-3.0-or-later)
 depends=(qt6-base qt6-imageformats qt6-svg qt6-5compat)
 makedepends=(cmake qt6-tools)
 provides=("${pkgname%-light}")
