@@ -2,7 +2,7 @@
 # Contributor: Alex D'Andrea <alex at dandrea dot io>
 
 pkgname=zx
-pkgver=7.2.2
+pkgver=7.2.3
 _commit=483cc88041feed8df4224860fdca1f76753eebf8 # tags/7.2.3
 pkgrel=1
 pkgdesc='A tool for writing better scripts'
