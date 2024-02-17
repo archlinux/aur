@@ -1,8 +1,9 @@
-# Maintainer: Sin Kim <kimsin98@gmail.com>
+# Maintainer: Nicolas Lorin <androw95220@gmail.com>
+# Contributor: Sin Kim <kimsin98@gmail.com>
 
 pkgname=webchanges
-pkgver=3.15
-pkgrel=1
+pkgver=3.17.2
+pkgrel=0
 pkgdesc='Check web content for changes and notify'
 arch=('any')
 url='https://github.com/mborsetti/webchanges'
@@ -14,9 +15,8 @@ depends=('python-cssselect'
          'python-msgpack'
          'python-platformdirs'
          'python-yaml'
-         'python-requests'
          'python-urllib3')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=('python-playwright: option to use browser'
             'python-psutil: option to use browser'
             'google-chrome: option to use browser'
@@ -36,7 +36,7 @@ optdepends=('python-playwright: option to use browser'
             'python-redis: redis database'
             'python-keyring: password keyring storage')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('8a79076af803f75608144f06958570763ec5f58b4c768e86c8fa665039a6e249')
+sha256sums=('ebecf52df553e32b84309dee8c45cea4bb1f9bf21fb85da58d002d3b5f8ce7f4')
 
 build() {
     cd "$pkgname-$pkgver"
