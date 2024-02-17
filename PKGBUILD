@@ -2,7 +2,7 @@
 
 pkgname='appflowy-cloud'
 pkgver=0.1.28
-pkgrel=1
+pkgrel=2
 pkgdesc='Note, project and knowledge management'
 arch=('x86_64')
 url='https://github.com/AppFlowy-IO/AppFlowy-Cloud'
@@ -12,7 +12,6 @@ makedepends=('cargo')
 optdepends=(
   'minio: MinIO support'
   'postgresql: PostgreSQL support'
-  'pgadmin: PostgreSQL management'
   'redis: Redis support'
 )
 source=(
