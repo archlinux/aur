@@ -1,7 +1,7 @@
 # Maintainer: irmluity <45vw4yz8g@mozmail.com>
 
 pkgname=warp-terminal
-pkgver=0.2024.02.14.15.46.stable_00
+pkgver=0.2024.02.16.17.24.stable_00
 pkgrel=1
 pkgdesc="Warp is a modern, Rust-based terminal with AI built in so you and your team can build great software, faster"
 arch=(x86_64)
@@ -14,7 +14,7 @@ source=(
     "LICENSE::https://raw.githubusercontent.com/warpdotdev/Warp/main/LICENSE"
 )
 sha256sums=(
-    "260da2ed585d8090f569841fdb0bb327923d5cfe0bb57f61d3b0c413d5d634c2"
+    "e6a19ed45b4df2e2db978749b8cf927ca8333eb78e5466dca452a8cd83756d86"
     "SKIP"
 )
 
