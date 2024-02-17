@@ -6,7 +6,7 @@ _pkgname=blockbench
 provides=(blockbench)
 conflicts=(blockbench)
 pkgname_orig=Blockbench
-pkgver=4.9.3
+pkgver=4.9.4
 pkgrel=1
 pkgdesc="A low-poly 3D model editor"
 arch=('x86_64')
@@ -15,7 +15,7 @@ license=('GPL3')
 depends=('gtk3' 'nss' 'giblib' 'at-spi2-core' 'alsa-lib')
 makedepends=('gzip')
 source=("https://github.com/JannisX11/blockbench/releases/download/v${pkgver}/Blockbench_${pkgver}.deb")
-sha512sums=('840ba2323d016e995bb52cbe12a141d9dac21dab1ede72659a8978f0e350c8a99e5eccbe67fbde519284d0d45a95b8c1047467846f7aebb13bc93ceae9ed5973')
+sha512sums=('46f4cadc8fa6794f90a9704a3d43b43c265687ab1ba9cfdb614f525c5a17c037b602198930efef47ad1fa34cab353504f4b19a8fbcec09adbb0281380a91b369')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
