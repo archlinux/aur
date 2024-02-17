@@ -1,7 +1,7 @@
 # Maintainer: Filip Parag <filip@parag.rs>
 
 pkgname=mergetb-cli-bin
-pkgver=1.1.11
+pkgver=1.1.19
 pkgrel=1
 pkgdesc="Command-line tool used to interact and manage a Merge testbed and experiments"
 arch=('x86_64' 'i686' 'aarch64')
@@ -13,9 +13,9 @@ depends=()
 source_x86_64=("mrg_${pkgver}_amd64.tar.gz::https://gitlab.com/mergetb/portal/cli/-/releases/v${pkgver}/downloads/mrg_${pkgver}_linux_amd64.tar.gz")
 source_i686=("mrg_${pkgver}_i386.tar.gz::https://gitlab.com/mergetb/portal/cli/-/releases/v${pkgver}/downloads/mrg_${pkgver}_linux_386.tar.gz")
 source_aarch64=("mrg_${pkgver}_arm64.tar.gz::https://gitlab.com/mergetb/portal/cli/-/releases/v${pkgver}/downloads/mrg_${pkgver}_linux_arm64.tar.gz")
-sha1sums_x86_64=('ea90078b257f4e9a7dde921f990d7373a8101b64')
-sha1sums_i686=('f5cc425ee7b812ed1402590de7c60f8311992a6c')
-sha1sums_aarch64=('d84c80d415d1b8d32b6eb2f76b643179e1f28a39')
+sha1sums_x86_64=('480ae880c12554779108a1cc798365c7134c636b')
+sha1sums_i686=('edfddc8411f63f06303b340248ba374d02b44930')
+sha1sums_aarch64=('5dd27ea86f360c37e8d404c2d00797a430848bb8')
 
 package()
 {

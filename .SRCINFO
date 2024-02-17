@@ -1,16 +1,16 @@
 pkgbase = mergetb-cli-bin
 	pkgdesc = Command-line tool used to interact and manage a Merge testbed and experiments
-	pkgver = 1.1.11
+	pkgver = 1.1.19
 	pkgrel = 1
 	url = https://gitlab.com/mergetb/portal/cli/
 	arch = x86_64
 	arch = i686
 	arch = aarch64
-	source_x86_64 = mrg_1.1.11_amd64.tar.gz::https://gitlab.com/mergetb/portal/cli/-/releases/v1.1.11/downloads/mrg_1.1.11_linux_amd64.tar.gz
-	sha1sums_x86_64 = ea90078b257f4e9a7dde921f990d7373a8101b64
-	source_i686 = mrg_1.1.11_i386.tar.gz::https://gitlab.com/mergetb/portal/cli/-/releases/v1.1.11/downloads/mrg_1.1.11_linux_386.tar.gz
-	sha1sums_i686 = f5cc425ee7b812ed1402590de7c60f8311992a6c
-	source_aarch64 = mrg_1.1.11_arm64.tar.gz::https://gitlab.com/mergetb/portal/cli/-/releases/v1.1.11/downloads/mrg_1.1.11_linux_arm64.tar.gz
-	sha1sums_aarch64 = d84c80d415d1b8d32b6eb2f76b643179e1f28a39
+	source_x86_64 = mrg_1.1.19_amd64.tar.gz::https://gitlab.com/mergetb/portal/cli/-/releases/v1.1.19/downloads/mrg_1.1.19_linux_amd64.tar.gz
+	sha1sums_x86_64 = 480ae880c12554779108a1cc798365c7134c636b
+	source_i686 = mrg_1.1.19_i386.tar.gz::https://gitlab.com/mergetb/portal/cli/-/releases/v1.1.19/downloads/mrg_1.1.19_linux_386.tar.gz
+	sha1sums_i686 = edfddc8411f63f06303b340248ba374d02b44930
+	source_aarch64 = mrg_1.1.19_arm64.tar.gz::https://gitlab.com/mergetb/portal/cli/-/releases/v1.1.19/downloads/mrg_1.1.19_linux_arm64.tar.gz
+	sha1sums_aarch64 = 5dd27ea86f360c37e8d404c2d00797a430848bb8
 
 pkgname = mergetb-cli-bin
