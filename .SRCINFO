@@ -1,6 +1,6 @@
 pkgbase = r-omicrexposome
 	pkgdesc = Exposome and omic data associatin and integration analysis
-	pkgver = 1.24.2
+	pkgver = 1.24.3
 	pkgrel = 1
 	url = https://bioconductor.org/packages/omicRexposome
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-omicrexposome
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-snpstats
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/omicRexposome_1.24.2.tar.gz
-	sha256sums = ddb606db5ea879d126f46a5ee0150595bc2dc240ff6a91e26883af5ea0bd151a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/omicRexposome_1.24.3.tar.gz
+	sha256sums = caab86763588b594a31452278190317f42b18e3d42ae9fbfc4c26d7659c3f75b
 
 pkgname = r-omicrexposome
