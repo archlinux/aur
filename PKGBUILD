@@ -1,8 +1,8 @@
 # Package maintainer: Leonid B <leonid dot bloch at esrf dot fr>
 # Upstream contact: silx at esrf dot fr
 pkgname=python-pyfai
-pkgver=2023.09
-pkgrel=2
+pkgver=2024.02
+pkgrel=1
 pkgdesc="Fast Azimuthal Integration in Python."
 arch=('any')
 url="http://www.silx.org"
@@ -14,7 +14,7 @@ optdepends=('python-silx: for additional functionality, like pyFAI-calib2')
 makedepends=('cython' 'meson-python' 'python-build' 'python-installer'
              'python-wheel')
 source=("https://github.com/silx-kit/pyFAI/archive/v${pkgver}.tar.gz")
-sha256sums=('d6cdd92a165d2b2c098095a1ddf7424cd77aeb52a1c36e730c2bf792d8d65fec')
+sha256sums=('249b23007f28d0d93514b706f11c9721884375621749a037b158ca8ea40acb02')
 
 build() {
     cd "pyFAI-${pkgver}"
@@ -22,6 +22,8 @@ build() {
     # Remove ninja dependency, as it is brought with meson, and python-ninja
     # is not in the official repos
     sed -i "/^requires =/,/^\]/{/^[[:space:]]*'ninja',[[:space:]]*$/d}" pyproject.toml
+    # Remove non-existing package name from requirements
+    sed -i "/^requires =/,/^\]/{/^[[:space:]]*'oldest-supported-numpy',[[:space:]]*$/d}" pyproject.toml
 
     python -m build --wheel --no-isolation
 }
