@@ -1,13 +1,13 @@
 pkgbase = google-calendar-nativefier
 	pkgdesc = Google Calendar in shared Electron runtime
 	pkgver = 2024.02.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://calendar.google.com
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
 	makedepends = yarn
-	depends = electron25
+	depends = electron28
 	source = google-calendar-nativefier.png::https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Calendar_icon_%282020%29.svg/512px-Google_Calendar_icon_%282020%29.svg.png
 	sha256sums = 7f82a67540628f9811f188a1fe174bc6dbb6bcefee1f5121ce51c7d450d5c5b7
 
