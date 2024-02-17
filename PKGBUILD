@@ -1,7 +1,7 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=dotool-git
-pkgver=1.3.r14.ga169e2e
+pkgver=1.4.r1.gb5812c0
 pkgrel=1
 pkgdesc="Command to simulate input anywhere"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 provides=('dotool')
 conflicts=('dotool')
 depends=('libxkbcommon')
-makedepends=('go' 'scdoc')
+makedepends=('git' 'go' 'scdoc')
 source=("$pkgname::git+$url"
         "dotoold.service")
 sha256sums=('SKIP'
