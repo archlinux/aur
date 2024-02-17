@@ -4,7 +4,7 @@
 pkgbase=alice-vision
 pkgname=('alice-vision') # 'alice-vision-cuda'
 pkgver=3.2.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('x86_64')
 url="https://alicevision.github.io/"
