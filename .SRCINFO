@@ -1,10 +1,10 @@
 pkgbase = glances-git
 	pkgdesc = CLI curses-based monitoring tool (git)
-	pkgver = 3.4.0.r351.g36ed96b
+	pkgver = 3.4.0.r447.g4ab96a7
 	pkgrel = 1
 	url = https://github.com/nicolargo/glances
 	arch = any
-	license = LGPL
+	license = LGPL-3.0-only
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
