@@ -1,7 +1,8 @@
+# Maintainer: sg3des <sg3des@gmail.com>
 # Contributor: sg3des <sg3des@gmail.com>
 
 pkgname=goatee
-pkgver=0.9
+pkgver=0.9.1
 pkgrel=4
 pkgdesc='lightwieght gtk2 text/hex editor written on Go'
 arch=('i686' 'x86_64')
@@ -9,33 +10,17 @@ url='https://github.com/sg3des/goatee'
 license=('GPL')
 depends=('gtk2' 'gtksourceview2')
 makedepends=('git' 'go')
-source=("git://github.com/sg3des/goatee.git")
+source=("git+https://github.com/sg3des/goatee.git")
 md5sums=('SKIP')
 
+
 build() {
-	echo $srcdir
-
-	export GOPATH="$srcdir"
-	mkdir -p $GOPATH/src/github.com/sg3des
-	rm -rf $GOPATH/src/github.com/sg3des/$pkgname
-	mv $srcdir/$pkgname $GOPATH/src/github.com/sg3des/
-
-
-
-	cd $GOPATH/src/github.com/sg3des/$pkgname
-
-	mkdir -p vendor/github.com/mattn
-	cd vendor/github.com/mattn
-	git clone https://github.com/sg3des/go-gtk
-
-	cd $GOPATH/src/github.com/sg3des/$pkgname
-
-	go get -v ./...
-	go build -v -o $pkgname
+	cd $srcdir/$pkgname
+	go build -v -o $pkgname -ldflags="-s -w" -trimpath 
 }
 
 package() {
-	cd "$GOPATH/src/github.com/sg3des/$pkgname"
+	cd $srcdir/$pkgname
 	install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
 	install -Dm755 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
