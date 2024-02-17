@@ -4,21 +4,22 @@
 # Contributor: Joel Pedraza
 # Contributor: Jakub Schmidtke
 
-pkgname=android-platform-33
 _apilevel=33
-_rev=r02
-pkgver=${_apilevel}_${_rev}
-pkgrel=4
+_rev=r03
+_ext=ext3
+pkgname=android-platform-${_apilevel}
+pkgver=${_apilevel}_${_ext}_${_rev}
+pkgrel=1
 pkgdesc="Android SDK Platform, latest API"
 arch=('any')
 url="http://developer.android.com/sdk/index.html"
 license=('custom')
-provides=("${pkgname}-${_apilevel}")
-conflicts=("${pkgname}-${_apilevel}")
+provides=("android-platform=${_apilevel}")
+conflicts=("android-platform=${_apilevel}")
 options=('!strip')
-source=("https://dl.google.com/android/repository/platform-${_apilevel}_${_rev}.zip"
+source=("https://dl.google.com/android/repository/platform-${_apilevel}-${_ext}_${_rev}.zip"
          "package.xml")
-sha256sums=('f851b13fe89f8510a1250df5e8593e86176b2428f4f3cbe0e304a85818c07bc8'
+sha256sums=('b32b10f787867987f03ae8e101d217e053a9065b7136379fb353b388379aed1d'
             '7cf97324916132f88a5ae817f8dec0353b52bbf64c457394c8a52cd3cb9460a8')
 
 package() {
