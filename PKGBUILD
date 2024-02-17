@@ -3,7 +3,7 @@
 
 pkgname=vulkan-nouveau-git
 pkgdesc="Nouveau Vulkan (NVK) EXPERIMENTAL Mesa driver with some additions (Git version)"
-pkgver=24.0.branchpoint.r1743.g876db91
+pkgver=24.0.branchpoint.r1759.gf933536
 pkgrel=1
 arch=('x86_64')
 depends=('libdrm' 'libxshmfence' 'libx11' 'systemd-libs' 'vulkan-icd-loader' 'wayland')
@@ -18,12 +18,10 @@ license=('MIT AND BSD-3-Clause AND SGI-B-2.0')
 source=("git+${url}.git"
         nak-iadd3-imad.patch
         nvk-memory-budget.patch
-        nvk-vr-support.patch
         LICENSE)
 sha512sums=('SKIP'
             '6c4ed4c9c7dce79debb77cd9b828f628088101936c4e2b2994e56723f86e61799b278a9333f08813082d0a4153ac41870669da8ac47106aa20c7fc7dee8812e8'
             '4da33481cf0c4ccab193ff4fff652a98ef7940b10d12c0e3a69280236ddc9463c7813d390c5461af0478f98a6f223736a1eec14986d72a4b0f51edb28e713d95'
-            'dd4c1cd059fa103b2effb3d835cf6485fb4e294c1217a94482052f803a7e88d63f452db7e1cc2d86656bf7b3340606ab685578d346f157d19e35f1b283bd04f3'
             'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7')
 install="${pkgname}.install"
 
@@ -57,10 +55,6 @@ prepare() {
   # Add imad/iadd3 support (https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/27159)
   # (improves performance greatly in certain cases)
   patch ${_patch_opts} ../nak-iadd3-imad.patch
-
-  # Add support for VR-related extensions (https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/27654)
-  # (seems to work with xrgears and Monado direct mode)
-  patch ${_patch_opts} ../nvk-vr-support.patch
 
   # Add ESO/GPL support (https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/27024)
   # (enables shader precompile in DXVK and some Vulkan games; helps greatly in Overwatch 2)
