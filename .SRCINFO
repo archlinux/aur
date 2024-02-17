@@ -1,0 +1,23 @@
+pkgbase = jupyterlab-quarto
+	pkgdesc = Quarto JupyterLab extension
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/quarto-dev/jupyterlab-quarto
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-hatch-nodejs-version
+	makedepends = python-hatch-jupyter-builder
+	makedepends = python-jupyter-packaging
+	makedepends = npm
+	depends = jupyterlab
+	source = jupyterlab-quarto-0.3.2.tar.gz::https://github.com/quarto-dev/jupyterlab-quarto/archive/refs/tags/v0.3.2.tar.gz
+	source = install.json
+	sha256sums = b5e967ca75d9d02c3e9242f18a0e296a4b8ea548eb2549c9719c7139388442f4
+	sha256sums = c49c59e589a7ddd777edc3011ced74d9631114b682b6ad7695eef750e5af797b
+
+pkgname = jupyterlab-quarto
