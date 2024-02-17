@@ -1,5 +1,5 @@
 [Unit]
-Description=Download unofficial clamav virus definition files
+Description=Update and verify unofficial Clam Anti-Virus signatures
 ConditionPathExists=/var/lib/fangfrisch/db.sqlite
 After=network-online.target
 Wants=network-online.target

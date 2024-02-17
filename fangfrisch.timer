@@ -1,12 +1,12 @@
 [Unit]
-Description=Download unofficial clamav virus definition files
+Description=Update unofficial ClamAV signatures
 Requires=fangfrisch.service
 
 [Timer]
-#OnCalendar=hourly
-#RandomizedDelaySec=10m
+# If you change the run frequency, make sure to match the settings
+# in /etc/fangfrisch/fangfrisch.conf. See detailed comments there.
 OnCalendar=*:0/10
-RandomizedDelaySec=2m
+RandomizedDelaySec=90
 Unit=fangfrisch.service
 Persistent=true
 
