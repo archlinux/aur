@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-v4l2-request-git
 	pkgdesc = FFmpeg with v4l2-request and drmprime
-	pkgver = 6.0.r329749
-	pkgrel = 2
+	pkgver = 6.1.1.r112629.71a1f3f
+	pkgrel = 1
 	epoch = 2
 	url = https://ffmpeg.org/
 	arch = armv7h
@@ -85,9 +85,7 @@ pkgbase = ffmpeg-v4l2-request-git
 	provides = libswscale.so
 	provides = ffmpeg
 	conflicts = ffmpeg
-	source = git+https://github.com/jernejsk/FFmpeg
-	source = add-av_stream_get_first_dts-for-chromium.patch
-	sha256sums = SKIP
+	source = git+https://github.com/Kwiboo/FFmpeg#branch=v4l2-request-n6.1.1
 	sha256sums = SKIP
 
 pkgname = ffmpeg-v4l2-request-git
