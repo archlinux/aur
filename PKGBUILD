@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=python-stanio
 _name=stanio
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A package to prepare inputs to Stan and reading its outputs"
 arch=('any')
@@ -19,7 +19,7 @@ checkdepends=(
     'python-pytest-cov'
 )
 source=("${_name}-${pkgver}.tar.gz::https://github.com/WardBrian/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('6d3b596fa4c2006b171482959b328ddcb49f74536958c48044b139b413a9a5748985528b4d6814cd7484df363c80d1cbbe24ff16e2e05f9eb181ff3e55b65270')
+b2sums=('f5edc41c4b80bb6b7a5a9c7bd71e4d901ba4a893a56b7b281e0923250698238c5a96dd87e90044d3d420e341443683656b08759c4df8191ee9c809d0046cd967')
 
 build() {
     cd "${_name}-${pkgver}"
