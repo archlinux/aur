@@ -56,7 +56,7 @@ _busybox_ver=1.32.0             # (Jun 2020) old! FIXME
 _crypt_ver=1.7.5                # (Apr 2017) old! FIXME for veritysetup
 _lunzip_ver=1.11                # (Jan 2019) old! FIXME
 _wimboot_ver=2.7.3              # (Apr 2021) old! FIXME
-pkgrel=1
+pkgrel=2
 pkgdesc="A new bootable USB solution"
 arch=(x86_64)
 url="https://www.ventoy.net/"
@@ -113,6 +113,7 @@ source=(
   https://busybox.net/downloads/busybox-"$_busybox_ver".tar.bz2
   https://mirrors.edge.kernel.org/pub/linux/utils/cryptsetup/v"${_crypt_ver%.*}"/cryptsetup-"$_crypt_ver".tar.xz
   wimboot-"$_wimboot_ver".tar.gz::https://github.com/ipxe/wimboot/archive/v"$_wimboot_ver".tar.gz
+  wimboot-binutils-2.42-fix.patch
 )
 noextract=(
   grub-"$_grub_ver".tar.xz
@@ -148,7 +149,8 @@ sha256sums=('ad00cd7be3c17e1f39c53b96243e1bc249aa2125fab16e70062c247907ea21b1'
             '19577e9f68a2d4e08bb5564e3946e35c6323276cb6749c101c86e26505e3bf0e'
             'c35d87f1d04b2b153d33c275c2632e40d388a88f19a9e71727e0bbbff51fe689'
             '2b30cd1d0dd606a53ac77b406e1d37798d4b0762fa89de6ea546201906a251bd'
-            '3cf04ca4a5b4466e624570d980638f8ab72feaed9b94106dd6ed2bed674a4cdf')
+            '3cf04ca4a5b4466e624570d980638f8ab72feaed9b94106dd6ed2bed674a4cdf'
+            '8121a64145ff317693de80148fbdca6cb73d3f2ed92f66b946949750ab71afe9')
 
 # Some components below are notated as follows:
 #
@@ -262,13 +264,19 @@ prepare() {
     cd wimboot
     # Some *.S files are missing from the bundled source. We will grab them from the tarball.
     tar -xf "$srcdir"/wimboot-$_wimboot_ver.tar.gz --xform "s|\(wimboot-$_wimboot_ver\)|\1.orig|"
+
     if ((_DIFF)); then
       diff -ur wimboot-$_wimboot_ver{.orig,}/src > ventoy-$pkgver-wimboot-$_wimboot_ver.patch || :
     fi
+
+    # Fix build with recent binutils.
+    cd wimboot-$_wimboot_ver.orig
+    patch -Np1 -i "$srcdir"/wimboot-binutils-2.42-fix.patch
   )
 }
 
 _build_grub() (
+  echo ":: grub"
   # Refer "GRUB2/buildgrub.sh"
   cd Ventoy-$pkgver/GRUB2
   local _VT_GRUB_DIR=$PWD
@@ -319,6 +327,7 @@ _build_grub() (
 )
 
 _build_ipxe() (
+  echo ":: ipxe"
   # Refer "IPXE/buildipxe.sh"
   cd Ventoy-$pkgver/IPXE/ipxe-$_ipxe_ver/src
 
@@ -327,6 +336,7 @@ _build_ipxe() (
 )
 
 _build_edk2() (
+  echo ":: edk2"
   # Refer "EDK2/buildedk.sh"
   cd Ventoy-$pkgver/EDK2
 
@@ -341,6 +351,7 @@ _build_edk2() (
 )
 
 _build_dietlibc() (
+  echo ":: dietlibc"
   # Refer "DOC/installdietlibc.sh"
   cd dietlibc-$_diet_ver
   make
@@ -348,6 +359,7 @@ _build_dietlibc() (
 )
 
 _build_musl32() (
+  echo ":: musl32"
   # Refer "DOC/BuildVentoyFromSource.txt" Section 2.3
   (
     cd musl-$_musl_ver
@@ -365,6 +377,7 @@ _build_musl32() (
 
 # IMG/USB
 _build_vtoytool() (
+  echo ":: vtoytool"
   # Refer "VtoyTool/build.sh"
   cd Ventoy-$pkgver/VtoyTool
 
@@ -381,6 +394,7 @@ _build_vtoytool() (
 
 # HOST
 _build_vtoycli() (
+  echo ":: vtoycli"
   # Refer "vtoycli/fat_io_lib/buildlib.sh" and "vtoycli/build.sh"
   #
   # Upstream builds small and static here, but this is a "host" binary so we
@@ -422,6 +436,7 @@ _build_vtoycli() (
 
 # IMG/USB
 _build_fuseiso() (
+  echo ":: fuseiso"
   # Refer "FUSEISO/build.sh"
   cd Ventoy-$pkgver/FUSEISO
 
@@ -470,6 +485,7 @@ _build_fuseiso() (
 
 # HOST
 _build_exfat() (
+  echo ":: exfat"
   # Refer "ExFAT/buidexfat.sh"
   #
   # This is the FUSE based pkg. The version in the repo "exfat-utils" is going
@@ -505,6 +521,7 @@ _build_exfat() (
 
 # IMG/USB
 _build_unsquashfs() (
+  echo ":: unsquashfs"
   # Refer "SQUASHFS/build.txt"
   cd Ventoy-$pkgver/SQUASHFS/SRC
   CFLAGS=-Os
@@ -663,6 +680,7 @@ _build_unsquashfs() (
 
 # IMG/USB
 _build_vblade() (
+  echo ":: vblade"
   # Refer "VBLADE/vblade-master/build.sh"
   cd Ventoy-$pkgver/VBLADE/vblade-master
   rm -fv vblade_*
@@ -676,6 +694,7 @@ _build_vblade() (
 
 # IMG/USB
 _build_dmsetup() (
+  echo ":: dmsetup"
   # Refer "DMSETUP/build.txt"
   cd Ventoy-$pkgver/DMSETUP
   rm -fv dmsetup*
@@ -716,6 +735,7 @@ _EOF_
 
 # IMG/USB
 _build_zstdcat() (
+  echo ":: zstdcat"
   # Refer "ZSTD/build.txt"
   cd Ventoy-$pkgver/ZSTD
   rm -fv zstdcat*
@@ -758,6 +778,7 @@ _build_zstdcat() (
 
 # IMG/USB
 _build_xzminidec() (
+  echo ":: xzminidec"
   # Refer "DOC/BuildVentoyFromSource.txt" Section(s) 4.15 and 4.16
   cd Ventoy-$pkgver/Ventoy2Disk/Ventoy2Disk/xz-embedded-20130513/userspace
 
@@ -782,6 +803,7 @@ _build_xzminidec() (
 
 # IMG/USB
 _build_busybox() (
+  echo ":: busybox"
   # Refer "BUSYBOX/build.txt"
   cd Ventoy-$pkgver/BUSYBOX
   mkdir -pv ../IMG/cpio_x86/ventoy/busybox
@@ -845,6 +867,7 @@ _build_busybox() (
 
 # IMG/USB
 _build_lunzip() (
+  echo ":: lunzip"
   # Refer "DOC/BuildVentoyFromSource.txt" Section 4.19
   # The bundled lunzip tarball (ver 1.11 Jan 2019) has been independently
   # verified as being identical to the one available on [1].
@@ -881,6 +904,7 @@ _build_lunzip() (
 
 # IMG/USB
 _build_verity() (
+  echo ":: verity"
   # Refer "cryptsetup/cryptsetup-build.txt"
   # Needed for *experimental* FydeOS/CloudReady support.
 
@@ -918,6 +942,7 @@ _build_verity() (
 
 # IMG/USB
 _build_wimboot() (
+  echo ":: wimboot"
   # Refer "wimboot/build.sh"
   cd Ventoy-$pkgver/wimboot/wimboot-$_wimboot_ver/src
 
@@ -932,6 +957,7 @@ _build_wimboot() (
 )
 
 _pack_ventoy() (
+  echo ":: pack"
   # Refer "INSTALL/ventoy_pack.sh"
   # 3RD PARTY BINARIES ALERT! FIXME
 
@@ -1082,6 +1108,7 @@ _pack_ventoy() (
 )
 
 _create_img() (
+  echo ":: image"
   # Refer "INSTALL/ventoy_pack.sh"
   mkdir -pv Ventoy-$pkgver/INSTALL
   cd Ventoy-$pkgver/INSTALL
