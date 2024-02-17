@@ -80,14 +80,12 @@ optdepends=("${optdepends[@]}"
 source=(${source[@]}
         ${pkgname%-*}-$_uc_ver.zip::https://github.com/noahvogt/${pkgname%-*}/archive/refs/heads/update.zip
         # ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz
-        0001-vaapi-flag-ozone-wayland.patch
         0001-adjust-buffer-format-order.patch
         0001-enable-linux-unstable-deb-target.patch
         0001-ozone-wayland-implement-text_input_manager_v3.patch
         0001-ozone-wayland-implement-text_input_manager-fixes.patch)
 sha256sums=(${sha256sums[@]}
             '7459a9c23da61f4f9ccda65182d1dd96283ffe916bbb15e5d6d168a140a7ab7b'
-            '9a5594293616e1390462af1f50276ee29fd6075ffab0e3f944f6346cb2eb8aec'
             '8ba5c67b7eb6cacd2dbbc29e6766169f0fca3bbb07779b1a0a76c913f17d343f'
             '2a44756404e13c97d000cc0d859604d6848163998ea2f838b3b9bb2c840967e3'
             'd9974ddb50777be428fd0fa1e01ffe4b587065ba6adefea33678e1b3e25d1285'
@@ -192,7 +190,7 @@ prepare() {
   # https://git.launchpad.net/~chromium-team/chromium-browser/+git/snap-from-source/
   # patch -Np1 -i ../0001-enable-linux-unstable-deb-target.patch
   patch -Np1 -i ../0001-adjust-buffer-format-order.patch
-  patch -Np1 -i ../0001-vaapi-flag-ozone-wayland.patch
+  # patch -Np1 -i ../0001-vaapi-flag-ozone-wayland.patch
 
   # move ~/.pki directory to ${XDG_DATA_HOME:-$HOME/.local}/share/pki
   patch -p1 -i ../xdg-basedir.patch
