@@ -1,10 +1,10 @@
 # vim:ts=2:sw=2:expandtab
 # Maintainer: peelz <peelz.dev+arch@gmail.com>
 
-_commit="5c48a44497ad8df8e1e7c71aebec5a9cbfe413ef"
+_commit="c3fdca263ed2588d7443443ebc911ead88426281"
 pkgname="uwsm"
-pkgver="0.14.4"
-pkgrel=1
+pkgver="0.14.5"
+pkgrel="1"
 pkgdesc="A standalone Wayland session manager"
 url="https://github.com/Vladimir-csp/uwsm"
 arch=("any")
@@ -31,12 +31,12 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgbase}"
+  cd "${srcdir}/${pkgname}"
   meson setup --prefix=/usr build
 }
 
 package() {
-  cd "${srcdir}/${pkgbase}"
+  cd "${srcdir}/${pkgname}"
   meson install -C build --destdir "${pkgdir}"
   python3 -m compileall -fq \
     -s "${pkgdir}" \
