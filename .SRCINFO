@@ -13,7 +13,6 @@ pkgbase = vengi-voxel-git
 	makedepends = cmake
 	depends = sdl2
 	depends = lua
-	provides = vengi-voxel
 	source = git+https://github.com/vengi-voxel/vengi.git
 	sha256sums = SKIP
 

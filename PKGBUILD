@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd vengi
-  make
+  make release
 }
 
 package() {
