@@ -3,21 +3,21 @@
 _target="powerpc64-ps3-elf"
 _target_alias="ppu"
 _newlib_pkgver="1.20.0"
-_gmp_pkgver="6.1.0"
-_isl_pkgver="0.18"
-_mpc_pkgver="1.0.3"
-_mpfr_pkgver="3.1.4"
+_gmp_pkgver="6.2.1"
+_isl_pkgver="0.24"
+_mpc_pkgver="1.2.1"
+_mpfr_pkgver="4.1.0"
 _pkgname="gcc"
 pkgname="ps3-${_target_alias}-${_pkgname}"
-pkgver="9.5.0"
-pkgrel=4
+pkgver="13.2.0"
+pkgrel=1
 pkgdesc="GCC for cross-compiling to ${_target_alias} (PS3 GameOS)"
 arch=(x86_64 aarch64 powerpc64le powerpc64 powerpc riscv64)
 url='https://gcc.gnu.org/'
 license=(GPL3 LGPL FDL custom)
 makedepends=(patch python)
 checkdepends=(dejagnu expect inetutils python-pytest tcl)
-depends=(ps3-env ps3-ppu-binutils)
+depends=(ps3-env "ps3-ppu-binutils>=2.42")
 options=(!emptydirs !strip staticlibs !lto)
 source=(
 	"https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.xz"
@@ -30,14 +30,14 @@ source=(
 	"http://ftp.gnu.org/gnu/mpfr/mpfr-${_mpfr_pkgver}.tar.bz2"
 )
 sha256sums=(
-	'27769f64ef1d4cd5e2be8682c0c93f9887983e6cfd1a927ce5a0a2915a95cf8f'
-	'86d3dca49e0a8cf0d0b56619c19da2047c5b6bda939e4856f4de78e4866fd55b'
+	'e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da'
+	'a19523a965bc412598df0d0b41e8dbb83ad6e28ea229150125622df55ddc4057'
 	'c644b2847244278c57bec2ddda69d8fab5a7c767f3b9af69aa7aa3da823ff692'
 	'9ffcdfc74871b267d53b66e525162467ce248d89b77506bb8db2409f3d0b51ae'
-	'498449a994efeba527885c10405993427995d3f86b8768d8cdf8d9dd7c6b73e8'
-	'6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
-	'617decc6ea09889fb08ede330917a00b16809b8db88c29c31bfbb49cbf88ecc3'
-	'd3103a80cdad2407ed581f3618c4bed04e0c92d1cf771a65ead662cc397f7775'
+	'eae9326beb4158c386e39a356818031bd28f3124cf915f8c5b1dc4c7a36b4d7c'
+	'fcf78dd9656c10eb8cf9fbd5f59a0b6b01386205fe1934b3b287a0a1898145c0'
+	'17503d2c395dfcf106b622dc142683c1199431d095367c6aacba6eec30340459'
+	'feced2d430dd5a97805fa289fed3fc8ff2b094c02d05287fd6133e7f1f0ec926'
 )
 
 source /opt/ps3dev/ps3toolchain.sh

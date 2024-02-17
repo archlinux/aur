@@ -1,9 +1,44 @@
 # Original from https://github.com/ps3dev/ps3toolchain
 # Updated to gcc 9.5.0 by Darjan Krijan [https://disc-kuraudo.eu]
-diff '--color=auto' -urN a/gcc/config/rs6000/cell64lv2.h b/gcc/config/rs6000/cell64lv2.h
---- a/gcc/config/rs6000/cell64lv2.h	1970-01-01 01:00:00.000000000 +0100
-+++ b/gcc/config/rs6000/cell64lv2.h	2023-01-01 17:58:23.274094209 +0100
-@@ -0,0 +1,587 @@
+# Updated to gcc 13.2.0 by luizfernandonb
+diff --git a/Makefile.in b/Makefile.in
+index 06a9398e172..7419f7ed67a 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -28118,7 +28118,6 @@ check-libiberty:
+ .PHONY: install-libiberty maybe-install-libiberty
+ maybe-install-libiberty:
+ @if libiberty
+-maybe-install-libiberty: install-libiberty
+ 
+ install-libiberty: installdirs
+ 	@: $(MAKE); $(unstage)
+diff --git a/gcc/config.gcc b/gcc/config.gcc
+index 648b3dc2110..650d65fe28d 100644
+--- a/gcc/config.gcc
++++ b/gcc/config.gcc
+@@ -2863,6 +2863,15 @@ pdp11-*-*)
+ #	tmake_file="${tmake_file} rs6000/t-fprules"
+ #	extra_headers=
+ #	;;
++powerpc64-ps3-elf)
++	tm_file="${tm_file} elfos.h gnu-user.h usegas.h freebsd-spec.h newlib-stdint.h rs6000/sysv4.h rs6000/default64.h"
++	tm_file="rs6000/biarch64.h ${tm_file} rs6000/cell64lv2.h"
++	if test x${enable_secureplt} = xyes; then
++		tm_file="rs6000/secureplt.h ${tm_file}"
++	fi
++	extra_options="${extra_options} rs6000/sysv4.opt"
++	tmake_file="rs6000/t-fprules rs6000/t-fprules-fpbit rs6000/t-ppcgas rs6000/t-ppccomm"
++	;;
+ powerpc-*-darwin*)
+ 	extra_options="${extra_options} ${cpu_type}/darwin.opt"
+ 	case ${target} in
+diff --git a/gcc/config/rs6000/cell64lv2.h b/gcc/config/rs6000/cell64lv2.h
+new file mode 100644
+index 00000000000..79a09605757
+--- /dev/null
++++ b/gcc/config/rs6000/cell64lv2.h
+@@ -0,0 +1,583 @@
 +/* Definitions of target machine for GNU compiler,
 +   for 64 bit PowerPC linux.
 +   Copyright (C) 2000-2017 Free Software Foundation, Inc.
@@ -298,11 +333,9 @@ diff '--color=auto' -urN a/gcc/config/rs6000/cell64lv2.h b/gcc/config/rs6000/cel
 +/* PowerPC64 Linux word-aligns FP doubles when -malign-power is given.  */
 +#undef  ADJUST_FIELD_ALIGN
 +#define ADJUST_FIELD_ALIGN(FIELD, TYPE, COMPUTED) \
-+  (rs6000_special_adjust_field_align_p ((TYPE), (COMPUTED))		\
-+   ? 128								\
-+   : (TARGET_64BIT							\
-+      && TARGET_ALIGN_NATURAL == 0					\
-+      && TYPE_MODE (strip_array_types (TYPE)) == DFmode)		\
++  ((TARGET_64BIT							\
++    && TARGET_ALIGN_NATURAL == 0					\
++    && TYPE_MODE (strip_array_types (TYPE)) == DFmode)			\
 +   ? MIN ((COMPUTED), 32)						\
 +   : (COMPUTED))
 +
@@ -564,8 +597,6 @@ diff '--color=auto' -urN a/gcc/config/rs6000/cell64lv2.h b/gcc/config/rs6000/cel
 +#define TARGET_THREAD_SSP_OFFSET	(TARGET_64BIT ? -0x7010 : -0x7008)
 +#endif
 +
-+#define POWERPC_CELL64LV2
-+
 +#define POINTERS_EXTEND_UNSIGNED 1
 +
 +/* ppc{32,64} linux has 128-bit long double support in glibc 2.4 and later.  */
@@ -591,63 +622,43 @@ diff '--color=auto' -urN a/gcc/config/rs6000/cell64lv2.h b/gcc/config/rs6000/cel
 +   enabling the __float128 keyword.  */
 +#undef	TARGET_FLOAT128_ENABLE_TYPE
 +#define TARGET_FLOAT128_ENABLE_TYPE 1
-diff '--color=auto' -urN a/gcc/config/rs6000/rs6000.c b/gcc/config/rs6000/rs6000.c
---- a/gcc/config/rs6000/rs6000.c	2022-05-27 09:21:11.000000000 +0200
-+++ b/gcc/config/rs6000/rs6000.c	2023-01-01 18:00:32.742783224 +0100
-@@ -1424,6 +1424,10 @@
- static bool rs6000_keep_leaf_when_profiled () __attribute__ ((unused));
- static tree rs6000_fold_builtin (tree, int, tree *, bool);
+\ No newline at end of file
+diff --git a/gcc/config/rs6000/rs6000.cc b/gcc/config/rs6000/rs6000.cc
+index e5ceff3a61b..152b1191490 100644
+--- a/gcc/config/rs6000/rs6000.cc
++++ b/gcc/config/rs6000/rs6000.cc
+@@ -1762,6 +1762,17 @@ static const struct attribute_spec rs6000_attribute_table[] =
+ #define TARGET_UPDATE_IPA_FN_TARGET_INFO rs6000_update_ipa_fn_target_info
+ 
  
-+#ifdef POWERPC_CELL64LV2
 +static bool rs6000_cell64lv2_valid_pointer_mode(scalar_int_mode);
-+#endif
-+
- /* Hash table stuff for keeping track of TOC entries.  */
- 
- struct GTY((for_user)) toc_hash_struct
-@@ -39732,7 +39736,18 @@
-   return id;
- }
- 
--
-+#ifdef POWERPC_CELL64LV2
-+#undef TARGET_VALID_POINTER_MODE
-+#define TARGET_VALID_POINTER_MODE rs6000_cell64lv2_valid_pointer_mode
 +
 +static bool
 +rs6000_cell64lv2_valid_pointer_mode(scalar_int_mode mode)
 +{
-+	return (mode == SImode || (TARGET_64BIT && mode == DImode) || mode == ptr_mode || mode == Pmode);
++  return (mode == SImode || (TARGET_64BIT && mode == DImode) || mode == ptr_mode || mode == Pmode);
 +}
 +
-+#endif
++#undef TARGET_VALID_POINTER_MODE
++#define TARGET_VALID_POINTER_MODE rs6000_cell64lv2_valid_pointer_mode
 +
- struct gcc_target targetm = TARGET_INITIALIZER;
- 
- #include "gt-rs6000.h"
-diff '--color=auto' -urN a/gcc/config.gcc b/gcc/config.gcc
---- a/gcc/config.gcc	2022-05-27 09:21:10.000000000 +0200
-+++ b/gcc/config.gcc	2023-01-01 14:28:35.684278963 +0100
-@@ -2587,6 +2587,15 @@
- #	tmake_file="${tmake_file} rs6000/t-fprules"
- #	extra_headers=
- #	;;
-+powerpc64-ps3-elf)
-+	tm_file="${tm_file} dbxelf.h elfos.h gnu-user.h usegas.h freebsd-spec.h newlib-stdint.h rs6000/sysv4.h rs6000/default64.h"
-+	tm_file="rs6000/biarch64.h ${tm_file} rs6000/cell64lv2.h"
-+	if test x${enable_secureplt} = xyes; then
-+		tm_file="rs6000/secureplt.h ${tm_file}"
-+	fi
-+	extra_options="${extra_options} rs6000/sysv4.opt"
-+	tmake_file="rs6000/t-fprules rs6000/t-fprules-fpbit rs6000/t-ppcgas rs6000/t-ppccomm"
-+	;;
- powerpc-*-darwin*)
- 	extra_options="${extra_options} ${cpu_type}/darwin.opt"
- 	case ${target} in
-diff '--color=auto' -urN a/gcc/configure b/gcc/configure
---- a/gcc/configure	2022-05-27 09:21:46.000000000 +0200
-+++ b/gcc/configure	2023-01-01 14:52:19.312078588 +0100
-@@ -28944,12 +28944,12 @@
+ /* Processor table.  */
+ struct rs6000_ptt
+ {
+@@ -3491,7 +3502,7 @@ rs6000_linux64_override_options ()
+     {
+       if (TARGET_PROFILE_KERNEL)
+ 	{
+-	  profile_kernel = 0;
++	  //profile_kernel = 0; Why???
+ 	  error (INVALID_32BIT, "profile-kernel");
+ 	}
+       if (OPTION_SET_P (rs6000_current_cmodel))
+diff --git a/gcc/configure b/gcc/configure
+index dec2eca1a45..bcfdcffb950 100755
+--- a/gcc/configure
++++ b/gcc/configure
+@@ -30853,12 +30853,12 @@ $as_echo "#define HAVE_LD_PPC_GNU_ATTR_LONG_DOUBLE 1" >>confdefs.h
  esac
  
  case "$target:$tm_file" in
@@ -662,28 +673,11 @@ diff '--color=auto' -urN a/gcc/configure b/gcc/configure
       emul_name="-melf64ppc"
        ;;
       *le-*-freebsd*)
-diff '--color=auto' -urN a/gcc/configure.ac b/gcc/configure.ac
---- a/gcc/configure.ac	2022-05-27 09:21:11.000000000 +0200
-+++ b/gcc/configure.ac	2023-01-01 14:51:42.742384668 +0100
-@@ -5671,12 +5671,12 @@
- esac
- 
- case "$target:$tm_file" in
--  powerpc64*-*-freebsd* | powerpc64*-*-linux* | powerpc*-*-linux*rs6000/biarch64.h*)
-+  powerpc64*-*-freebsd* | powerpc64*-*-linux* | powerpc64-ps3-elf* | powerpc*-*-linux*rs6000/biarch64.h*)
-   case "$target" in
-      *le-*-linux*)
-      emul_name="-melf64lppc"
-       ;;
--     *-*-linux*)
-+     *-*-linux* | *-ps3-elf*)
-      emul_name="-melf64ppc"
-       ;;
-      *le-*-freebsd*)
-diff '--color=auto' -urN a/libgcc/config.host b/libgcc/config.host
---- a/libgcc/config.host	2022-05-27 09:21:12.000000000 +0200
-+++ b/libgcc/config.host	2023-01-01 14:29:07.913987821 +0100
-@@ -1134,6 +1134,8 @@
+diff --git a/libgcc/config.host b/libgcc/config.host
+index 9d7212028d0..c2b3bb8ac28 100644
+--- a/libgcc/config.host
++++ b/libgcc/config.host
+@@ -1224,6 +1224,8 @@ powerpc-*-rtems*)
  	tmake_file="${tmake_file} rs6000/t-ppccomm rs6000/t-savresfgpr rs6000/t-crtstuff t-crtstuff-pic t-fdpbit"
  	extra_parts="$extra_parts crtbeginS.o crtendS.o crtbeginT.o ecrti.o ecrtn.o ncrti.o ncrtn.o"
  	;;
@@ -692,14 +686,3 @@ diff '--color=auto' -urN a/libgcc/config.host b/libgcc/config.host
  powerpc*-*-linux*)
  	tmake_file="${tmake_file} rs6000/t-ppccomm rs6000/t-savresfgpr rs6000/t-crtstuff rs6000/t-linux t-dfprules rs6000/t-ppc64-fp t-slibgcc-libgcc"
  	tmake_file="${tmake_file} t-stack rs6000/t-stack-rs6000"
-diff '--color=auto' -urN a/Makefile.in b/Makefile.in
---- a/Makefile.in	2022-05-27 09:21:10.000000000 +0200
-+++ b/Makefile.in	2023-01-01 14:54:20.241067239 +0100
-@@ -27294,7 +27294,6 @@
- .PHONY: install-libiberty maybe-install-libiberty
- maybe-install-libiberty:
- @if libiberty
--maybe-install-libiberty: install-libiberty
- 
- install-libiberty: installdirs
- 	@: $(MAKE); $(unstage)
