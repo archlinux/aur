@@ -1,6 +1,16 @@
+2024-02-17 Christopher Arndt <aur -at- chrisarndt -dot- de>
+	* 1.23.0.r138.gdef6ad4742
+	- Removed 'axtls' sub-module (mbedtls is now default)
+	- Added 'glibc' to depends
+	- Removed 'micropython-lib' from optdepends
+	- Added 'mpremote' to optdepends
+	- Changd pkgdesc slightly
+	- Changed project URL to HTTPS
+	- Strip '-preview' from pkgver
+
 2022-10-23 Christopher Arndt <aur -at- chrisarndt -dot- de>
 	* 1.19.1.r560.g68f166dae9:
-	- Add new necessary sub-modules; remove i686 arch
+	- Added new necessary sub-modules; remove i686 arch
 	- Added `check()` function and excluded some failing tests
 
 2019-09-21 Christopher Arndt <aur -at- chrisarndt -dot- de>

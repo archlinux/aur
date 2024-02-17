@@ -2,22 +2,21 @@
 # Contributor: wenLiangcan <boxeed at gmail dot com>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
-_pkgname='micropython'
+_pkgname=micropython
 pkgname=$_pkgname-git
-pkgver=1.20.0.r450.g3637252b7b
+pkgver=1.23.0.r138.gdef6ad4742
 pkgrel=1
 epoch=1
-pkgdesc='A Python 3 implementation for microcontrollers and constrained environments (Unix version)'
+pkgdesc='A Python implementation for microcontrollers and constrained systems (UNIX git version)'
 arch=(x86_64)
-url='http://micropython.org/'
+url='https://micropython.org/'
 license=(MIT)
-depends=(libffi)
+depends=(glibc libffi)
 makedepends=(git python)
 provides=($_pkgname)
 conflicts=($_pkgname mpy-cross)
-optdepends=('micropython-lib: for MicroPython standard library')
+optdepends=('mpremote: to install micropython-lib and third-party modules')
 source=("$_pkgname::git+https://github.com/micropython/$_pkgname.git"
-        'axtls::git+https://github.com/pfalcon/axtls.git'
         'berkeley-db-1.xx::git+https://github.com/pfalcon/berkeley-db-1.xx.git'
         'libffi::git+https://github.com/atgreen/libffi.git'
         'mbedtls::git+https://github.com/ARMmbed/mbedtls.git'
@@ -28,20 +27,16 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
             'SKIP')
-
 
 pkgver() {
   cd $_pkgname
-
-  git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//"
+  git describe --long --tags | sed "s/-preview//;s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//"
 }
 
 prepare() {
   cd $_pkgname
-
-  for submodule in axtls berkeley-db-1.xx libffi mbedtls micropython-lib; do
+  for submodule in berkeley-db-1.xx libffi mbedtls micropython-lib; do
     git submodule init lib/$submodule
     git config submodule.$submodule.url "$srcdir"/$submodule
     git -c protocol.file.allow=always submodule update lib/$submodule
@@ -49,8 +44,10 @@ prepare() {
 }
 
 build() {
-  ( cd $_pkgname/mpy-cross; make; )
-  ( cd $_pkgname/ports/unix; make; )
+  cd $_pkgname/mpy-cross
+  make
+  cd ../ports/unix
+  make
 }
 
 check() {
@@ -64,10 +61,12 @@ check() {
 
 package() {
   cd $_pkgname
-  ( cd ports/unix; make PREFIX="$pkgdir"/usr install; )
-  install mpy-cross/build/mpy-cross "$pkgdir"/usr/bin
   # Install documentation
   install -Dm644 README.md -t "$pkgdir"/usr/share/doc/$pkgname
   # Install license
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+  # Install binaries
+  install -Dm 755 mpy-cross/build/mpy-cross -t "$pkgdir"/usr/bin
+  cd ports/unix
+  make PREFIX="$pkgdir"/usr install
 }
