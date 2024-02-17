@@ -1,14 +1,14 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=lfp
-pkgver=4.1.7
+pkgver=4.2.0
 pkgrel=1
 pkgdesc='A wrapper for the lf file manager with in-terminal media previews, on-exit directory changing and much more'
 license=('MIT')
 arch=('x86_64')
 install="lfp.install"
 url="https://gitlab.com/a4to/lfp"
-depends=(lf zsh ffmpeg graphicsmagick openslide ghostscript bat fzf dunst dialog xsel lolcat python3 python-docopt python-pillow python-attrs libxres python-setuptools python-pip)
+depends=(lf zsh ffmpeg graphicsmagick openslide ghostscript bat fzf dunst dialog xsel lolcat python3 python-docopt python-pillow python-attrs libxres python-setuptools python-pip tesseract tesseract-data-eng)
 conflicts=(lfp-git)
 optdepends=(
   'nodejs: to make use of lfps built in node actions manager'
@@ -18,10 +18,10 @@ source=(
   "https://software.concise.cc/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
 )
 sha512sums=(
-  'c9ab01811ae4c6c51dbd1a4b5562037d00294fe95b8d0c197cb437d7f17af13f2fd61a2d637271f1f45b1fb6c6a3656c3d032e560fa918f6807d5e4c260dbe30'
+  'fddccb0da53f5ac606856ed4699d1b5b3afbce59a3c7f27f82ec7aba1076a36bbe45a3fd76950c7173d43d95f84d902870fdc37a7adc14ea4a9393d27174ce42'
 )
 md5sums=(
-  '38efa1b0cb71d12c7f1ee3d2aac3d624'
+  '5d75195ff6eb38eec40b4fcf089ae7af'
 )
 validpgpkeys=(
   '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
