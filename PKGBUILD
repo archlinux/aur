@@ -1,6 +1,6 @@
 # Maintainer: Shantanu Tushar <shantanu@kde.org>
 pkgname=ruqola-git
-pkgver=2.0.80beta1
+pkgver=2.1.0
 pkgrel=1
 epoch=
 pkgdesc="Rocket.Chat client for the KDE desktop"
@@ -13,7 +13,7 @@ makedepends=('cmake' 'extra-cmake-modules' 'git')
 provides=(ruqola)
 conflicts=(ruqola)
 _name=ruqola
-source=("git+https://invent.kde.org/network/$_name.git")
+source=("git+https://invent.kde.org/network/$_name.git#tag=v2.1.0")
 md5sums=('SKIP')
 
 build() {
