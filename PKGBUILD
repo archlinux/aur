@@ -2,7 +2,7 @@
 
 pkgname="python-textual-textarea"
 _pkgname="${pkgname/python-/}"
-pkgver=0.7.3
+pkgver=0.11.3
 pkgrel=1
 pkgdesc="A text area (multi-line input) with syntax highlighting for Textual"
 url="https://pypi.org/project/textual-textarea/"
@@ -18,7 +18,7 @@ makedepends=("python-build"
              "python-wheel")
 options=("!strip")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname/-/_}-${pkgver}.tar.gz")
-b2sums=('f2a86a1470ded94018e17d828d9c658a08cd03e3699c7658ce0f3c6271783f179056a8cef9f7754a833f461854b4b5ef36718e0a823d998ef453993347bc527a')
+b2sums=('342832e4eb178c9f952318ca381488d841e53e2fe74da960fb7ceacbf881149aae4a7a10f993cbbd95ec52cd139d7994481b82c3f42bd1b51892c3abc8ef9daa')
 
 build(){
  cd "${_pkgname/-/_}-$pkgver"
