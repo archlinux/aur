@@ -1,0 +1,20 @@
+pkgbase = android-x86-zstd
+	pkgdesc = Zstandard - Fast real-time compression algorithm (android)
+	pkgver = 1.5.5
+	pkgrel = 1
+	url = http://www.zstd.net/
+	arch = any
+	license = BSD
+	license = GPL2
+	makedepends = android-cmake
+	depends = android-x86-zlib
+	depends = android-x86-xz
+	depends = android-x86-lz4
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/facebook/zstd/archive/refs/tags/v1.5.5.tar.gz
+	sha256sums = 98e9c3d949d1b924e28e01eccb7deed865eefebf25c2f21c702e5cd5b63b85e1
+
+pkgname = android-x86-zstd
