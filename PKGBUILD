@@ -28,19 +28,19 @@ package() {
   install -m755 -t "$pkgdir/usr/bin" "$srcdir/build/bamd/bamd"
   install -m755 -t "$pkgdir/usr/bin" "$srcdir/build/bacon/bacon"
 
-  install -m755 -d "$pkgdir/usr/share/$pkgname"
-  install -m755 -d "$pkgdir/usr/share/$pkgname/doc"
-  install -m644 -t "$pkgdir/usr/share/$pkgname/doc" "$srcdir/bam/README.md"
-  install -m644 -t "$pkgdir/usr/share/$pkgname/doc" "$srcdir/bam/CHANGELOG"
+  install -m755 -d "$pkgdir/usr/share/bam"
+  install -m755 -d "$pkgdir/usr/share/bam/doc"
+  install -m644 -t "$pkgdir/usr/share/bam/doc" "$srcdir/bam/README.md"
+  install -m644 -t "$pkgdir/usr/share/bam/doc" "$srcdir/bam/CHANGELOG"
 
-  install -m755 -d "$pkgdir/usr/share/$pkgname/config"
-  install -m644 -t "$pkgdir/usr/share/$pkgname/config" "$srcdir/bam/etc/config.bam"
-  install -m644 -t "$pkgdir/usr/share/$pkgname/config" "$srcdir/bam/etc/bam/client_config"
+  install -m755 -d "$pkgdir/usr/share/bam/config"
+  install -m644 -t "$pkgdir/usr/share/bam/config" "$srcdir/bam/etc/config.bam"
+  install -m644 -t "$pkgdir/usr/share/bam/config" "$srcdir/bam/etc/bam/client_config"
 
-  install -m755 -d "$pkgdir/usr/share/$pkgname/modules"
-  rm -rf  "$pkgdir/usr/share/$pkgname/modules/*"
-  cp -dR "$srcdir/bam/builtin-modules" "$pkgdir/usr/share/$pkgname/modules"
+  install -m755 -d "$pkgdir/usr/share/bam/modules"
+  rm -rf  "$pkgdir/usr/share/bam/modules/*"
+  cp -dR "$srcdir/bam/builtin-modules" "$pkgdir/usr/share/bam/modules"
 
-  install -m755 -d "$pkgdir/usr/share/licenses/$pkgname"
-  install -m644 -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/bam/LICENSE"
+  install -m755 -d "$pkgdir/usr/share/licenses/bam"
+  install -m644 -t "$pkgdir/usr/share/licenses/bam" "$srcdir/bam/LICENSE"
 }
