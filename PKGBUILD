@@ -3,10 +3,10 @@
 
 pkgname='python-uv-latest-bin'
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An extremely fast Python package installer and resolver, written in Rust (latest binary from PyPI)'
 arch=('aarch64' 'armv7l' 'i686' 'x86_64')
-url='https://github.com/astral-sh/uv'
+url='https://pypi.org/project/uv/'
 #license=(
 #  'Apache-2.0'  # SPDX-License-Identifier: Apache-2.0
 #  'MIT'         # SPDX-License-Identifier: MIT
