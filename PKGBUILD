@@ -2,7 +2,7 @@
 
 _gitname='LogDoctor'
 pkgname='logdoctor'
-pkgver='3.00'
+pkgver='4.00'
 pkgrel='1'
 pkgdesc="Apache2/Nginx/IIS access logs analyzer to view dynamically generated statistics"
 arch=('x86_64')
@@ -20,7 +20,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/elB4RTO/LogDoctor/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('7de1103c558c99802b1dc346fcf2692c1b9d850d53913611472718d2db0920f9')
+sha256sums=('0f9ad8bb5a0e2caaaa08d94d2232f9104977a539d4bc6e98b95efd9e7775671f')
 validpgpkeys=('EF88B042FB649B22A9F19DBE1719E976DB2D4E71')
 
 
@@ -30,7 +30,7 @@ build() {
   test -e build && rm -r build
   mkdir build && cd build
 
-  cmake --fresh ../logdoctor -DCMAKE_BUILD_TYPE=MinSizeRel
+  cmake --fresh ../logdoctor -DCMAKE_BUILD_TYPE=Release
   cmake --build ./ --target all -j$(nproc)
 
   mv "$_gitname" "$pkgname"
