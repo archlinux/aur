@@ -1,6 +1,6 @@
 pkgbase = r-teachingdemos
 	pkgdesc = Demonstrations for Teaching and Learning
-	pkgver = 2.12.1
+	pkgver = 2.13
 	pkgrel = 1
 	url = https://cran.r-project.org/package=TeachingDemos
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-teachingdemos
 	optdepends = r-tcltk
 	optdepends = r-tcltk2
 	optdepends = r-tkrplot
-	source = https://cran.r-project.org/src/contrib/TeachingDemos_2.12.1.tar.gz
-	sha256sums = f5b189c767b76594808ae678b7e4b1e0e6bf0cee80c70df9e41edfb81aaaf3a8
+	source = https://cran.r-project.org/src/contrib/TeachingDemos_2.13.tar.gz
+	sha256sums = f80eb952b7d1a0cde3bed8152f9c4e9eceaa3f635209b2af9a11e785e8c0fbcc
 
 pkgname = r-teachingdemos
