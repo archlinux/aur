@@ -5,11 +5,9 @@
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Jason Chu <jason@archlinux.org>
 
-shopt -s extglob
-
 pkgname=python310
 pkgver=3.10.13
-pkgrel=1
+pkgrel=2
 _pymajver=3
 _pybasever=${pkgver%.*}
 pkgdesc="Next generation of the python high-level scripting language, version 3.10"
@@ -17,19 +15,16 @@ arch=('x86_64')
 license=('custom')
 url="https://www.python.org/"
 depends=('bzip2' 'expat' 'gdbm' 'libffi' 'libnsl' 'libxcrypt' 'openssl' 'zlib')
-makedepends=('tk' 'sqlite' 'bluez-libs' 'mpdecimal' 'llvm' 'gdb' 'xorg-server-xvfb' 'ttf-font')
+makedepends=('tk' 'sqlite' 'bluez-libs' 'mpdecimal' 'llvm' 'gdb')
 optdepends=('python-setuptools'
               'python-pip'
               'sqlite'
               'mpdecimal: for decimal'
               'xz: for lzma'
               'tk: for tkinter')
-source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz"{,.asc})
-b2sums=('d9a8edf89d0ccd665fd5ed444a144af240e078fcab1876fea8b44586c23651a08cf5833fc54c39e8471fd9e66ea0ded11fcaa5d215bc025acaf4504a15c5846d'
-        'SKIP')
-validpgpkeys=('0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D'  # Ned Deily (Python release signing key) <nad@python.org>
-              'E3FF2839C048B25C084DEBE9B26995E310250568'  # Łukasz Langa (GPG langa.pl) <lukasz@langa.pl>
-              'A035C8C19219BA821ECEA86B64E628F8D684696D') # Pablo Galindo Salgado <pablogsal@gmail.com>
+source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz")
+sha256sums=('5c88848668640d3e152b35b4536ef1c23b2ca4bd2c957ef1ecbb053f571dd3f6')
+validpgpkeys=('A035C8C19219BA821ECEA86B64E628F8D684696D') # Pablo Galindo Salgado <pablogsal@gmail.com>
 provides=("python=$pkgver")
 
 prepare() {
@@ -66,11 +61,7 @@ build() {
               --without-ensurepip \
               --with-tzpath=/usr/share/zoneinfo
 
-  # Obtain next free server number for xvfb-run; this even works in a chroot environment.
-  export servernum=99
-  while ! xvfb-run -a -n "$servernum" /bin/true 2>/dev/null; do servernum=$((servernum+1)); done
-
-  LC_CTYPE=en_US.UTF-8 xvfb-run -s "-screen 0 1920x1080x16 -ac +extension GLX" -a -n "$servernum" make EXTRA_CFLAGS="$CFLAGS"
+  make EXTRA_CFLAGS="$CFLAGS"
 }
 
 

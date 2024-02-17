@@ -1,7 +1,7 @@
 pkgbase = python310
 	pkgdesc = Next generation of the python high-level scripting language, version 3.10
 	pkgver = 3.10.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.python.org/
 	arch = x86_64
 	license = custom
@@ -11,8 +11,6 @@ pkgbase = python310
 	makedepends = mpdecimal
 	makedepends = llvm
 	makedepends = gdb
-	makedepends = xorg-server-xvfb
-	makedepends = ttf-font
 	depends = bzip2
 	depends = expat
 	depends = gdbm
@@ -29,11 +27,7 @@ pkgbase = python310
 	optdepends = tk: for tkinter
 	provides = python=3.10.13
 	source = https://www.python.org/ftp/python/3.10.13/Python-3.10.13.tar.xz
-	source = https://www.python.org/ftp/python/3.10.13/Python-3.10.13.tar.xz.asc
-	validpgpkeys = 0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D
-	validpgpkeys = E3FF2839C048B25C084DEBE9B26995E310250568
 	validpgpkeys = A035C8C19219BA821ECEA86B64E628F8D684696D
-	b2sums = d9a8edf89d0ccd665fd5ed444a144af240e078fcab1876fea8b44586c23651a08cf5833fc54c39e8471fd9e66ea0ded11fcaa5d215bc025acaf4504a15c5846d
-	b2sums = SKIP
+	sha256sums = 5c88848668640d3e152b35b4536ef1c23b2ca4bd2c957ef1ecbb053f571dd3f6
 
 pkgname = python310
