@@ -15,6 +15,7 @@ pkgbase = hypridle-git
 	makedepends = xorgproto
 	depends = wayland
 	depends = hyprlang>=0.4.0
+	depends = sdbus-cpp
 	provides = hypridle
 	conflicts = hypridle
 	options = !makeflags

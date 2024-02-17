@@ -8,7 +8,7 @@ pkgdesc="Hyprland's idle daemon"
 arch=(any)
 url="https://github.com/hyprwm/hypridle"
 license=('BSD')
-depends=('wayland' 'hyprlang>=0.4.0')
+depends=('wayland' 'hyprlang>=0.4.0' 'sdbus-cpp')
 makedepends=('git' 'cmake' 'ninja' 'gcc' 'gdb' 'meson' 'wayland-protocols' 'xorgproto')
 source=("${_pkgname}::git+https://github.com/hyprwm/hypridle.git")
 conflicts=("${_pkgname}")
