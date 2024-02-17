@@ -1,7 +1,7 @@
 # Maintainer: Chewing_Bever
 # Contributor: Slacker
 pkgname=cronicle
-pkgver=0.9.40
+pkgver=0.9.41
 pkgrel=1
 pkgdesc="A simple, distributed task scheduler and runner"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/jhuckaby/Cronicle"
 license=('MIT')
 depends=('nodejs' 'npm')
 source=("https://github.com/jhuckaby/Cronicle/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1be3315a0f39d301d3624e1bc3a1dd9e0c028c55fa4cdb9ecb647cb3d397ef7d')
+sha256sums=('90d614f58da45d79066445a40383e26802e0cbf285787f2e1aacd3f7ca021041')
 
 prepare() {
     cd "$srcdir/Cronicle-$pkgver"
