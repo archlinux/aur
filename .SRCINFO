@@ -1,8 +1,8 @@
 pkgbase = rtl-sdr-git
-	pkgdesc = Driver for Realtek RTL2832U, allowing general purpose software defined radio (SDR).
-	pkgver = 0.8.0.r2.gfe22586
+	pkgdesc = Driver for Realtek RTL2832U, allowing general purpose software defined radio (SDR)
+	pkgver = 2.0.1.4.gaf33886
 	pkgrel = 1
-	url = https://github.com/librtlsdr/librtlsdr
+	url = https://osmocom.org/projects/rtl-sdr/wiki
 	install = rtl-sdr.install
 	arch = i686
 	arch = x86_64
@@ -10,12 +10,15 @@ pkgbase = rtl-sdr-git
 	license = GPL
 	makedepends = git
 	makedepends = cmake
-	depends = libusb>=1.0
+	depends = glibc
+	depends = libusb
 	provides = rtl-sdr
 	conflicts = rtl-sdr
-	source = rtl-sdr::git+https://github.com/librtlsdr/librtlsdr
-	source = rtlsdr.conf
+	source = rtl-sdr::git+https://gitea.osmocom.org/sdr/rtl-sdr
+	source = fix-udev-directory.patch
+	source = rtl-sdr.sysusers
 	sha256sums = SKIP
-	sha256sums = 678ecf05c85e79f29048c7093aee18c90e0e50dcd47ca61d842938b608ef3215
+	sha256sums = a0acd270f017e11d32450ad33ef21794b5052f29f4086099995680373308aeb9
+	sha256sums = e408f25fb51e9d53326c5548dbe8d53ae701602398fc68538243065488a89056
 
 pkgname = rtl-sdr-git
