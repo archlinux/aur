@@ -4,10 +4,12 @@
 # Maintainer:  Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: Marcell Meszaros (MarsSeed) <marcell.meszaros@runbox.eu>
 
+_git=false
+_local=false
 _proj="hip"
 _pkgname=aspe
 pkgname="${_pkgname}-git"
-pkgver=v1.1.1.r0.g4c41078
+pkgver="v1.1.1".r1.g"5ec40b469866666b80c5db747e90692851300120"
 pkgrel=1
 _pkgdesc=(
   "Arch Linux build source"
@@ -23,6 +25,7 @@ _host="https://${_gh}"
 _ns='themartiancompany'
 _local="${HOME}/${_pkgname}"
 url="${_host}/${_ns}/${_pkgname}"
+_gh_api="https://api.${_gh}/repos/${_ns}/${_pkgname}"
 license=(
   AGPL3
 )
@@ -31,10 +34,11 @@ depends=(
   git
 )
 makedepends=(
-  git
 )
 checkdepends=(
   shellcheck
+)
+optdepends=(
 )
 provides=(
   "${_pkgname}=${pkgver}"
@@ -46,13 +50,33 @@ groups=(
  "${_proj}"
  "${_proj}-git"
 )
-source=(
-  "git+${url}"
-  # "git+${_local}"
-)
-sha256sums=(
-  SKIP
-)
+_url="${url}"
+[[ "${_local}" == true ]] && \
+  _url="${_local}"
+source=()
+sha256sums=()
+_branch="master"
+[[ "${_git}" == true ]] && \
+  makedepends+=(
+    git
+  ) && \
+  source+=(
+    "${_pkgname}-${_branch}::git+${_url}#branch=${_branch}"
+  ) && \
+  sha256sums+=(
+    SKIP
+  )
+[[ "${_git}" == false ]] && \
+  makedepends+=(
+    curl
+    jq
+  ) && \
+  source+=(
+    "${_pkgname}.tar.gz::${_url}/archive/refs/heads/${_branch}.tar.gz"
+  ) && \
+  sha256sums+=(
+    '85c9b02b1118b466cb78c934bbfbcfaaee1a1e560e3eee3c2a8153b5a50d50a5'
+  )
 
 _nth() {
   local \
@@ -63,6 +87,42 @@ _nth() {
     awk \
       -F '+' \
       '{print $'"${_n}"'}'
+}
+
+_jq_pkgver() {
+  local \
+    _version \
+    _rev \
+    _commit
+  _version="$( \
+    curl \
+      --silent \
+      "${_gh_api}/tags" | \
+      jq \
+        '.[0].name')"
+  _version_commit="$( \
+    curl \
+      --silent \
+      "${_gh_api}/tags" | \
+      jq \
+        '.[0].commit.sha')"
+  _rev="$( \
+    curl \
+      --silent \
+      "${_gh_api}/commits" | \
+      jq \
+        'map(.sha == '${_version_commit}' ) | index(true)')"
+  _commit="$( \
+    curl \
+      --silent \
+      "${_gh_api}/commits" | \
+      jq \
+        '.[0].sha')"
+  printf \
+    "%s.r%s.g%s" \
+    "${_version}" \
+    "${_rev}" \
+    "${_commit}"
 }
 
 _parse_ver() {
@@ -85,21 +145,17 @@ _parse_ver() {
       "${_pkgver}" \
       "3")"
   _out=${_ver}
-  if [[ "${_rev}" != "" ]]; then
+  [[ "${_rev}" != "" ]] && \
     _out+=".r${_rev}"
-  fi
-  if [[ "${_commit}" != "" ]]; then
+  [[ "${_commit}" != "" ]] && \
     _out+=".${_commit}"
-  fi
   echo \
     "${_out}"
 }
 
-pkgver() {
+_git_pkgver() {
   local \
     _pkgver
-  cd \
-    "${_pkgname}"
   _pkgver="$( \
     git \
       describe \
@@ -111,11 +167,20 @@ pkgver() {
     "${_pkgver}"
 }
 
+pkgver() {
+  cd \
+    "${_pkgname}-${_branch}"
+  if [[ "${_git}" == true ]]; then
+    _git_pkgver
+  elif [[ "${_git}" == false ]]; then
+    _jq_pkgver
+  fi
+}
+
 package() {
   cd \
-    "${_pkgname}"
+    "${_pkgname}-${_branch}"
   make \
-    PREFIX="/usr" \
     DESTDIR="${pkgdir}" \
     install
 }

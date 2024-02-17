@@ -1,6 +1,6 @@
 pkgbase = aspe-git
 	pkgdesc = Arch Linux build source file clone tool
-	pkgver = v1.1.1.r0.g4c41078
+	pkgver = v1.1.1.r1.g5ec40b469866666b80c5db747e90692851300120
 	pkgrel = 1
 	url = https://github.com/themartiancompany/aspe
 	arch = any
@@ -8,12 +8,13 @@ pkgbase = aspe-git
 	groups = hip-git
 	license = AGPL3
 	checkdepends = shellcheck
-	makedepends = git
+	makedepends = curl
+	makedepends = jq
 	depends = bash
 	depends = git
-	provides = aspe=v1.1.1.r0.g4c41078
+	provides = aspe=v1.1.1.r1.g5ec40b469866666b80c5db747e90692851300120
 	conflicts = aspe
-	source = git+https://github.com/themartiancompany/aspe
-	sha256sums = SKIP
+	source = aspe.tar.gz::https://github.com/themartiancompany/aspe/archive/refs/heads/master.tar.gz
+	sha256sums = 85c9b02b1118b466cb78c934bbfbcfaaee1a1e560e3eee3c2a8153b5a50d50a5
 
 pkgname = aspe-git
