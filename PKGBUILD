@@ -14,7 +14,7 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgbase=mesa-amdonly-gaming-git
-pkgver=24.1.0_devel.184820.f55f9272e46.d41d8cd98f00b204e9800998ecf8427e
+pkgver=24.1.0_devel.184875.893780b3625.d41d8cd98f00b204e9800998ecf8427e
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 pkgname=(
   'amdonly-gaming-vulkan-mesa-layers-git'
@@ -22,7 +22,6 @@ pkgname=(
   'amdonly-gaming-opencl-rusticl-mesa-git'
   'amdonly-gaming-vulkan-radeon-git'
   'amdonly-gaming-vulkan-swrast-git'
-  'amdonly-gaming-vulkan-virtio-git'
   'amdonly-gaming-libva-mesa-driver-git'
   'amdonly-gaming-mesa-vdpau-git'
   'amdonly-gaming-mesa-git'
@@ -146,7 +145,7 @@ build() {
     -D b_lto=false
     -D dri3=enabled
     -D egl=enabled
-    -D gallium-drivers=radeonsi,virgl,svga,swrast,zink
+    -D gallium-drivers=radeonsi,swrast,zink
     -D gallium-extra-hud=true
     -D gallium-nine=true
     -D gallium-omx=bellagio
@@ -154,12 +153,13 @@ build() {
     -D gallium-rusticl=true
     -D gallium-va=enabled
     -D gallium-vdpau=enabled
-    -D gallium-xa=enabled
+    -D gallium-xa=disabled
     -D gbm=enabled
     -D gles1=disabled
     -D gles2=enabled
     -D glvnd=true
     -D glx=dri
+    -D intel-rt=disabled
     -D libunwind=disabled
     -D llvm=enabled
     -D lmsensors=enabled
@@ -171,7 +171,7 @@ build() {
     -D opencl-spirv=true
     -D valgrind=disabled
     -D video-codecs=all
-    -D vulkan-drivers=amd,swrast,virtio
+    -D vulkan-drivers=amd,swrast
     -D vulkan-layers=device-select,overlay
     -D vulkan-beta=true
     --wrap-mode=nofallback
@@ -358,31 +358,6 @@ package_amdonly-gaming-vulkan-swrast-git() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
-package_amdonly-gaming-vulkan-virtio-git() {
-  pkgdesc="Venus Vulkan mesa driver for Virtual Machines"
-  depends=(
-    'libdrm'
-    'libx11'
-    'libxshmfence'
-    'systemd'
-    'wayland'
-    'xcb-util-keysyms'
-    'zstd'
-  )
-  optdepends=('vulkan-mesa-layers: additional vulkan layers')
-  provides=(
-    'vulkan-driver'
-    'vulkan-virtio'
-  )
-  conflicts=('vulkan-virtio')
-  replaces=('vulkan-virtio')
-
-  _install fakeinstall/usr/share/vulkan/icd.d/virtio_icd*.json
-  _install fakeinstall/$_libdir/libvulkan_virtio.so
-
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-}
-
 package_amdonly-gaming-libva-mesa-driver-git() {
   pkgdesc="VA-API drivers"
   depends=(
@@ -469,7 +444,9 @@ package_amdonly-gaming-mesa-git() {
   _install fakeinstall/$_libdir/d3d
   _install fakeinstall/$_libdir/lib{gbm,glapi}.so*
   _install fakeinstall/$_libdir/libOSMesa.so*
-  _install fakeinstall/$_libdir/libxatracker.so*
+
+  # only needed when gallium-xa is enabled
+  #_install fakeinstall/$_libdir/libxatracker.so*
 
   _install fakeinstall/usr/include
   _install fakeinstall/$_libdir/pkgconfig

@@ -1,6 +1,6 @@
 pkgbase = mesa-amdonly-gaming-git
 	pkgdesc = An open-source implementation of the OpenGL specification
-	pkgver = 24.1.0_devel.184820.f55f9272e46.d41d8cd98f00b204e9800998ecf8427e
+	pkgver = 24.1.0_devel.184875.893780b3625.d41d8cd98f00b204e9800998ecf8427e
 	pkgrel = 1
 	url = https://www.mesa3d.org/
 	arch = x86_64
@@ -134,21 +134,6 @@ pkgname = amdonly-gaming-vulkan-swrast-git
 	conflicts = vulkan-swrast
 	replaces = vulkan-mesa
 	replaces = vulkan-swrast
-
-pkgname = amdonly-gaming-vulkan-virtio-git
-	pkgdesc = Venus Vulkan mesa driver for Virtual Machines
-	depends = libdrm
-	depends = libx11
-	depends = libxshmfence
-	depends = systemd
-	depends = wayland
-	depends = xcb-util-keysyms
-	depends = zstd
-	optdepends = vulkan-mesa-layers: additional vulkan layers
-	provides = vulkan-driver
-	provides = vulkan-virtio
-	conflicts = vulkan-virtio
-	replaces = vulkan-virtio
 
 pkgname = amdonly-gaming-libva-mesa-driver-git
 	pkgdesc = VA-API drivers
