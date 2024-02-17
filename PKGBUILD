@@ -2,11 +2,11 @@
 
 pkgname=pcspkr-git
 pkgver=r18.f0b68bc
-pkgrel=1
+pkgrel=2
 pkgdesc='listen to pcm sound over the internal pc speaker'
 arch=(x86_64)
 url=https://github.com/xdsopl/pcspkr
-license=('custom:CC0 1.0')
+license=('custom:CC0-1.0')
 depends=(glibc)
 makedepends=(git)
 provides=("${pkgname%-git}")
