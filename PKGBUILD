@@ -6,7 +6,7 @@
 
 pkgname=etcd
 pkgver=3.5.12
-pkgrel=1
+pkgrel=2
 pkgdesc='A highly-available key value store for shared configuration and service discovery.'
 arch=('x86_64' 'armv6h' 'armv7h')
 url='https://github.com/etcd-io/etcd'
@@ -27,8 +27,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GO_BUILD_FLAGS="-trimpath -buildmode=pie -mod=readonly -modcacherw"
-  export GO_LDFLAGS="-linkmode=external -extldflags=${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   cd "${srcdir}"/"${pkgname}"-"${pkgver}"
 

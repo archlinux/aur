@@ -1,7 +1,7 @@
 pkgbase = etcd
 	pkgdesc = A highly-available key value store for shared configuration and service discovery.
 	pkgver = 3.5.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/etcd-io/etcd
 	install = etcd.install
 	arch = x86_64
