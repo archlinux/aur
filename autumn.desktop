@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec=autumn %f
+GenericName=WIP 3D Land stage editor
+Icon=autumn
+Name=Autumn
+StartupNotify=true
+Type=Application
+Terminal=false
+Keywords=3dl;3d land;stage editor;
+Categories=Development;

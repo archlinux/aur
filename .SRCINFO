@@ -1,6 +1,6 @@
 pkgbase = autumn-git
 	pkgdesc = A WIP 3D Land stage editor.
-	pkgver = r186.17c8787
+	pkgver = r187.8f5d05e
 	pkgrel = 1
 	url = https://github.com/Jenrikku/Autumn
 	arch = x86_64
@@ -10,6 +10,10 @@ pkgbase = autumn-git
 	depends = dotnet-runtime-8.0
 	options = !strip
 	source = git+https://github.com/Jenrikku/Autumn.git
+	source = autumn.desktop
+	source = autumn.svg
 	sha256sums = SKIP
+	sha256sums = b4aab3c4c51b1b4940ca8dcdc7eadca0a85be47f538a6b0bf1edf4486808bf25
+	sha256sums = 20e9908698469cdd00e397fe4b0858f854f6611589b5f935f6dc208b59530e98
 
 pkgname = autumn-git
