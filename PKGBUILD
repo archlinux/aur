@@ -20,8 +20,9 @@
 pkgname=ffmpeg-v4l2-request-git
 # pkgname=ffmpeg
 _srcname=FFmpeg
-pkgver=6.0.r329749
-pkgrel=2
+_version='6.1.1'
+pkgver=6.1.1.r112629.71a1f3f
+pkgrel=1
 epoch=2
 pkgdesc='FFmpeg with v4l2-request and drmprime'
 arch=('armv7h' 'aarch64')
@@ -115,46 +116,15 @@ conflicts=(
   ffmpeg
 )
 source=(
-  'git+https://github.com/jernejsk/FFmpeg'
-  add-av_stream_get_first_dts-for-chromium.patch
+  'git+https://github.com/Kwiboo/FFmpeg#branch=v4l2-request-n'$_version
 )
 sha256sums=(
   SKIP
-  SKIP
 )
-
- #_version='5.1.2'
-_version='6.0'
-_branch1='v4l2-request-n'$_version
-_branch2='v4l2-drmprime-n'$_version
-_branch3='vf-deinterlace-v4l2m2m-n'$_version
-
-prepare() {
-  cd ${_srcname}
-
-  git reset --hard
-  git checkout $_branch1
-  if [ ! -z $_branch2 ]; then
-    git -c "user.name=Your Name" -c "user.email=you@example.com" \
-      merge --no-edit origin/$_branch2
-  fi
-  if [ ! -z $_branch3 ]; then
-    git -c "user.name=Your Name" -c "user.email=you@example.com" \
-      merge --no-edit origin/$_branch3
-  fi
-
-  patch -Np1 -i ../add-av_stream_get_first_dts-for-chromium.patch # https://crbug.com/1251779
-}
 
 pkgver() {
   cd ${_srcname}
-  (
-    set -o pipefail
-    _cnt1=$(git rev-list --count origin/$_branch1)
-    [ ! -z $_branch2 ] && _cnt2=$(git rev-list --count origin/$_branch2) || _cnt2="0"
-    [ ! -z $_branch3 ] && _cnt3=$(git rev-list --count origin/$_branch3) || _cnt3="0"
-    printf '%s.r%s' "$_version" "$(( $_cnt1 + $_cnt2 + $_cnt3 ))"
-  )
+  printf '%s.r%s.%s' "$_version" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
