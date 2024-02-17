@@ -1,0 +1,39 @@
+diff --unified --recursive --text a/ddcutil-service.c b/ddcutil-service.c
+--- a/ddcutil-service.c	2024-02-15 15:54:15.000000000 -0700
++++ b/ddcutil-service.c	2024-02-16 17:36:27.936586680 -0700
+@@ -1642,7 +1642,7 @@
+                 break;
+             }
+             g_dbus_method_invocation_return_error(invocation, service_error_quark,
+-                service_broken_error, message);
++                service_broken_error, "%s", message);
+             return;
+         }
+     }
+@@ -1812,7 +1812,7 @@
+              DDCUTIL_SERVICE_CONFIGURATION_LOCKED,
+              "Failed to set %s property: configuration locked by --lock command line argument.",
+              property_name);
+-        g_warning((*error)->message);
++        g_warning("%s", (*error)->message);
+         return FALSE;
+     }
+     if (g_strcmp0(property_name, "DdcutilVerifySetVcp") == 0) {
+@@ -1872,7 +1872,7 @@
+              service_error_quark,
+              DDCUTIL_SERVICE_INVALID_POLL_SECONDS,
+              "Invalid polling interval %u, interval must be at least %d seconds", secs, MIN_POLL_SECONDS);
+-            g_warning((*error)->message);
++            g_warning("%s", (*error)->message);
+             return FALSE;
+         }
+         else {
+@@ -1888,7 +1888,7 @@
+              DDCUTIL_SERVICE_INVALID_POLL_CASCADE_SECONDS,
+              "Invalid poll cascade interval %5.3f, valid range is %5.3f to %5.3f",
+              secs, MIN_POLL_CASCADE_INTERVAL_SECONDS, poll_interval_micros / 1000000.0);
+-            g_warning((*error)->message);
++            g_warning("%s", (*error)->message);
+             return FALSE;
+         }
+         else {

@@ -1,14 +1,25 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ddcutil-service
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Dbus ddcutil server for control of DDC Monitors/VDUs"
 arch=('x86_64')
 url="https://github.com/digitaltrails/ddcutil-service"
 license=('GPL-2.0-or-later')
 depends=('ddcutil')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f108d1a3a378fd18e9b37a52f6d9b1914650d3cb6bca6df8bea88568da0054dc')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+        'fix-Werror=format-security-errors.patch')
+sha256sums=('f108d1a3a378fd18e9b37a52f6d9b1914650d3cb6bca6df8bea88568da0054dc'
+            'da879e9a458668bb81175d38473aba31272e71f6dbed76d1807c6e9c4f42c22b')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  make clean
+
+  # Use system CFLAGS
+  sed -i 's/CFLAGS =/CFLAGS+ =/g' Makefile
+  patch -Np1 -i ../fix-Werror=format-security-errors.patch
+}
 
 build() {
   cd "$pkgname-$pkgver"
