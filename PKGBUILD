@@ -1,7 +1,7 @@
 # Maintainer: Alec Mev <alec@mev.earth>
 
 pkgname=todoist-nativefier
-pkgver=2023.09.10
+pkgver=2024.02.17
 pkgrel=1
 pkgdesc='Todoist in shared Electron runtime'
 arch=('x86_64')
@@ -43,7 +43,7 @@ build() {
     --user-agent safari \
     --single-instance \
     --verbose \
-    https://todoist.com
+    "${url}"
 }
 
 package() {
