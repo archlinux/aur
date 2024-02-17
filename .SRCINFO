@@ -1,7 +1,7 @@
 pkgbase = librewolf
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 122.0
-	pkgrel = 1
+	pkgver = 122.0.1
+	pkgrel = 2
 	url = https://librewolf.net/
 	install = librewolf.install
 	arch = x86_64
@@ -53,11 +53,11 @@ pkgbase = librewolf
 	options = !makeflags
 	backup = usr/lib/librewolf/librewolf.cfg
 	backup = usr/lib/librewolf/distribution/policies.json
-	source = https://gitlab.com/api/v4/projects/32320088/packages/generic/librewolf-source/122.0-1/librewolf-122.0-1.source.tar.gz
+	source = https://gitlab.com/api/v4/projects/32320088/packages/generic/librewolf-source/122.0.1-2/librewolf-122.0.1-2.source.tar.gz
 	source = librewolf.desktop
 	source = default192x192.png
 	validpgpkeys = 034F7776EF5E0C613D2F7934D29FBD5F93C0CFC3
-	sha256sums = 2eb19f6bc010f654c8b1224b84c9c149ceef8af10edfd9465a9aa898af4908a0
+	sha256sums = 0085bf14ce96c737d2944cfe89a9cccb243ba5935c38e9ff9c4197a11b1e2b40
 	sha256sums = 7d01d317b7db7416783febc18ee1237ade2ec86c1567e2c2dd628a94cbf2f25d
 	sha256sums = 959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1
 
