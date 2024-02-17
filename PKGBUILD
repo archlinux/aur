@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=stable-diffusion.cpp-git
-pkgver=master.0e64238
+pkgver=r92.349439f
 pkgrel=1
 pkgdesc="Stable Diffusion in pure C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -19,8 +19,7 @@ prepare() {
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-
-  printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {

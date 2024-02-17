@@ -1,6 +1,6 @@
 pkgbase = stable-diffusion.cpp-git
 	pkgdesc = Stable Diffusion in pure C/C++
-	pkgver = master.0e64238
+	pkgver = r92.349439f
 	pkgrel = 1
 	url = https://github.com/leejet/stable-diffusion.cpp
 	arch = armv7h
