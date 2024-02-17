@@ -1,12 +1,12 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=gallery-dl-git
-pkgver=1.25.4.r0.g306e13a
+pkgver=1.26.7.r60.g7033cc1
 pkgrel=1
 pkgdesc='Command-line program to download image-galleries and collections from several image hosting sites (git)'
 arch=(any)
 url=https://github.com/mikf/gallery-dl
-license=(GPL2)
+license=(GPL-2.0-or-later)
 depends=(python python-requests)
 makedepends=(python-build python-installer python-setuptools python-wheel git)
 optdepends=('ffmpeg: Pixiv Ugoira conversion'
