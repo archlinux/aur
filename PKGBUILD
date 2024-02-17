@@ -2,14 +2,14 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Prostar
-_pkgver=1.34.5
+_pkgver=1.34.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Provides a GUI for DAPAR"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
-license=(Artistic2.0)
+license=('Artistic-2.0')
 depends=(
   r-colourpicker
   r-dapar
@@ -51,8 +51,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e98dfb92b8e5e4c4bdac5b66cd6232c7')
-b2sums=('1190b2cbfb244cc2d940c212666b4323f366ffc00b4d3884d9e8e2a178b171d76a69861688009edb639d6ba7ca0d52e3138e3adb03bd8e3680b9c7da77e97330')
+md5sums=('9225eef1d1b01fb3a112281edf262491')
+b2sums=('5808252df13f4d307f3eeaf8e893a25d9e86dacab1ea1bb27aec194e607df36d2d7c4a47f9cd4a9cfa9df575e951b2120bb810ecf224606e74d77c13767db7eb')
 
 build() {
   mkdir build
