@@ -24,7 +24,7 @@ url='http://qt.io/ide'
 license=('GPL')
 provides=('qtcreator')
 conflicts=('qtcreator' 'litehtml')
-depends=('python-beautifulsoup4' 'qt6-base' 'qt6-tools' 'qt6-declarative' 'qt6-quickcontrols2' 'gcc')
+depends=('python-beautifulsoup4' 'qt6-base' 'qt6-tools' 'qt6-declarative' 'qt6-quickcontrols2')
 install=qtcreator-prerelease.install
 optdepends=('qt6-doc: integrated Qt documentation'
             'qt6-examples: welcome page examples'
@@ -36,7 +36,7 @@ optdepends=('qt6-doc: integrated Qt documentation'
             'mercurial: mercurial support'
             'bzr: bazaar support'
             'valgrind: analyze support')
-makedepends=('clang' 'qt6-base' 'patchelf')
+makedepends=('gcc' 'mold' 'qt6-base' 'patchelf')
 source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_source_archive_name}.tar.xz")
 sha512sums=('55d907cd9112733600edb5fe1a2ef0d8df975899465ee771a88313c5941c64641774a091696ff22a613997954835e277618db44802f63bd937b75b88a62c0cfc')
 
