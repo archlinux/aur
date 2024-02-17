@@ -8,6 +8,7 @@ pkgdesc="chromium web store extension (for ungoogled-chromium)"
 arch=('any')
 url="https://github.com/NeverDecaf/chromium-web-store"
 license=('MIT')
+optdepends=("ungoogled-chromium")
 source=("${pkgname}-${pkgver}.crx::${url}/releases/download/v${pkgver}/Chromium.Web.Store.crx")
 noextract=("${pkgname}-${pkgver}.crx")
 sha256sums=('4ca47bdf8daf8f0ffa1ef79dabf23516a2c5eb4436d5271b86c07f6eb2d17260')
