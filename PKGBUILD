@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=boxbuddy
 _app_id=io.github.dvlv.boxbuddyrs
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A Graphical Interface for Distrobox"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 checkdepends=('appstream-glib')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('405340d92304e19f7844f22cbf47f2c5f5421bf720419f80b07ac7260c1af0a7')
+sha256sums=('5da670913cb3424dc61d2e5a5b5abe563c5c570beed873d5a666081042083361')
 
 prepare() {
   cd "BoxBuddyRS-$pkgver"
@@ -39,6 +39,7 @@ package() {
   cd "BoxBuddyRS-$pkgver"
   install -Dm755 "target/release/$pkgname-rs" -t "$pkgdir/usr/bin/"
   install -Dm644 "${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "${_app_id}.gschema.xml" -t "$pkgdir/usr/share/glib-2.0/schemas/"
   install -Dm644 "${_app_id}.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
   install -Dm644 "icons/${_app_id}.svg" -t \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
