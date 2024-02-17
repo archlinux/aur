@@ -3,8 +3,8 @@
 # Contributor: Anatoly Bashmakov anatoly at posteo dot net
 
 pkgname=asciidoctor-pdf
-_name=$pkgname
-pkgver=2.3.12
+_pkgname=$pkgname
+pkgver=2.3.13
 pkgrel=1
 pkgdesc="Translate asciidoctor directly to pdf"
 arch=(any)
@@ -33,17 +33,16 @@ checkdepends=(
 )
 optdepends=('ruby-coderay: for syntax highlighting')
 options=(!emptydirs)
-
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fe2c6421b216335f7541702dd92204d94395c1c3a13c56b97d7fe5c7b9bbb7f7')
+sha256sums=('07dfcc932a2edc4fc69031fb150a3db88aaa3f5f80aee6e273c6e05b11d1d8ee')
 
-_archive="$_name-$pkgver"
+_archive="$_pkgname-$pkgver"
 
 prepare() {
   cd "$_archive"
 
   # update gemspec/Gemfile to allow newer version of the dependencies
-  sed --in-place --regexp-extended 's|~>|>=|g' "$_name.gemspec"
+  sed --in-place --regexp-extended 's|~>|>=|g' "$_pkgname.gemspec"
 
   # Remove failing tests - not sure why they fail
   rm ./spec/image_spec.rb
@@ -52,26 +51,26 @@ prepare() {
 build() {
   cd "$_archive"
 
-  _gemdir="$(gem env gemdir)"
+  local gemdir="$(gem env gemdir)"
 
-  gem build "$_name.gemspec"
+  gem build "$_pkgname.gemspec"
 
   gem install \
     --local \
     --verbose \
     --ignore-dependencies \
     --no-user-install \
-    --install-dir "tmp_install/$_gemdir" \
+    --install-dir "tmp_install/$gemdir" \
     --bindir "tmp_install/usr/bin" \
-    "$_name-$pkgver.gem"
+    "$_pkgname-$pkgver.gem"
 
   # remove unrepreducible files
   rm --force --recursive --verbose \
-    "tmp_install/$_gemdir/cache/" \
-    "tmp_install/$_gemdir/gems/$_name-$pkgver/vendor/" \
-    "tmp_install/$_gemdir/doc/$_name-$pkgver/ri/ext/"
+    "tmp_install/$gemdir/cache/" \
+    "tmp_install/$gemdir/gems/$_pkgname-$pkgver/vendor/" \
+    "tmp_install/$gemdir/doc/$_pkgname-$pkgver/ri/ext/"
 
-  find "tmp_install/$_gemdir/gems/" \
+  find "tmp_install/$gemdir/gems/" \
     -type f \
     \( \
     -iname "*.o" -o \
@@ -83,7 +82,7 @@ build() {
     \) \
     -delete
 
-  find "tmp_install/$_gemdir/extensions/" \
+  find "tmp_install/$gemdir/extensions/" \
     -type f \
     \( \
     -iname "mkmf.log" -o \
@@ -95,14 +94,13 @@ build() {
 check() {
   cd "$_archive"
 
-  _gemdir="$(gem env gemdir)"
-  GEM_HOME="tmp_install/$_gemdir" rspec
+  GEM_HOME="tmp_install/$(gem env gemdir)" rspec
 }
 
 package() {
   cd "$_archive"
 
-  cp --archive --verbose tmp_install/* "$pkgdir"
+  cp -a -t "$pkgdir" tmp_install/*
 
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.adoc
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
