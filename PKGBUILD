@@ -8,6 +8,8 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 options=('!lto')
+provides=('webtunnel')
+conflicts=('webtunnel')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
