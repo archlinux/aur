@@ -1,5 +1,5 @@
 [Unit]
-Description=A JWT based API for managing users and issuing JWT tokens
+Description=JWT based API
 Documentation=https://github.com/supabase/gotrue
 After=network-online.target
 
