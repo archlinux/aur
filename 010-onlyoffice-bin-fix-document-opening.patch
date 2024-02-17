@@ -1,0 +1,11 @@
+--- a/usr/share/applications/onlyoffice-desktopeditors.desktop
++++ b/usr/share/applications/onlyoffice-desktopeditors.desktop
+@@ -6,7 +6,7 @@ GenericName[ru]=Редактор док�
+ Comment=Edit office documents
+ Comment[ru]=Редактировать офисные документы
+ Type=Application
+-Exec=/usr/bin/onlyoffice-desktopeditors %U
++Exec=/usr/bin/onlyoffice-desktopeditors %F
+ Terminal=false
+ Icon=onlyoffice-desktopeditors
+ Keywords=Text;Document;OpenDocument Text;Microsoft Word;Microsoft Works;odt;doc;docx;rtf;
