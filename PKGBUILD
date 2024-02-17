@@ -1,13 +1,12 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=falltergeist-git
-pkgver=0.3.1.r169.g39a6cee8
+pkgver=0.4.0.r48.g32cbee70
 pkgrel=1
 pkgdesc='Opensource Fallout game engine written in C++ and SDL (git)'
 arch=(x86_64)
 url=https://falltergeist.org
-license=(GPL3)
-groups=()
+license=(GPL-3.0-or-later)
 depends=(sdl2 sdl2_image sdl2_mixer zlib glew glm)
 makedepends=(cmake git)
 provides=("${pkgname%-git}")

@@ -1,10 +1,10 @@
 pkgbase = falltergeist-git
 	pkgdesc = Opensource Fallout game engine written in C++ and SDL (git)
-	pkgver = 0.3.1.r169.g39a6cee8
+	pkgver = 0.4.0.r48.g32cbee70
 	pkgrel = 1
 	url = https://falltergeist.org
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = cmake
 	makedepends = git
 	depends = sdl2
