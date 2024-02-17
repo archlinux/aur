@@ -1,0 +1,36 @@
+[Unit]
+Description=Note, project and knowledge management (using %i.conf)
+Documentation=https://github.com/AppFlowy-IO/AppFlowy-Cloud
+After=network-online.target
+
+[Service]
+User=appflowy
+Group=appflowy
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ProtectKernelTunables=true
+ProtectHostname=true
+ProtectClock=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+NoNewPrivileges=true
+PrivateDevices=true
+DeviceAllow=/dev/syslog
+RestrictSUIDSGID=true
+ProtectKernelModules=true
+MemoryDenyWriteExecute=true
+RestrictNamespaces=true
+RestrictRealtime=true
+LockPersonality=true
+TimeoutStopSec=7s
+KillMode=mixed
+KillSignal=SIGTERM
+Restart=on-failure
+RestartPreventExitStatus=2
+ExecStartPre=/usr/bin/nv /etc/appflowy/%i.env /usr/bin/sqlx database create
+ExecStartPre=/usr/bin/nv /etc/appflowy/%i.env /usr/bin/sqlx migrate run --source /usr/share/appflowy-cloud/migrations
+ExecStart=/usr/bin/nv /etc/appflowy/%i.env /usr/bin/appflowy-cloud
+
+[Install]
+WantedBy=multi-user.target

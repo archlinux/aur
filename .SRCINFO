@@ -1,0 +1,26 @@
+pkgbase = appflowy-cloud
+	pkgdesc = Note, project and knowledge management
+	pkgver = 0.1.28
+	pkgrel = 1
+	url = https://github.com/AppFlowy-IO/AppFlowy-Cloud
+	arch = x86_64
+	license = AGPL 3.0
+	makedepends = cargo
+	depends = sqlx-cli
+	depends = nv
+	optdepends = minio: MinIO support
+	optdepends = postgresql: PostgreSQL support
+	optdepends = pgadmin: PostgreSQL management
+	optdepends = redis: Redis support
+	options = !lto
+	backup = etc/appflowy/config.env
+	source = appflowy-cloud-0.1.28.tar.gz::https://github.com/AppFlowy-IO/AppFlowy-Cloud/archive/refs/tags/0.1.28.tar.gz
+	source = appflowy-cloud.service
+	source = appflowy-cloud@.service
+	source = appflowy.sysusers
+	b2sums = 15ce521dee69b325e9d5070cdd3a378c1cc4a083ef7c566e36a135323078af820e2528dc6863fc62cf2ed54f2d6beac9cf15cedc76b3a00c0816ccd3659e9bc5
+	b2sums = 20125987d80de0f5d0bbf7b83e9b98aa8d6b171d093e1f4d50529b39ff0fb8516e6b0556cd1fc72af9c253adeb4a4dc248a9ee9ddf4bc461b3985898cdf4fe3b
+	b2sums = f2dbffb9216e5feff4fb36ca0c79e65a17f19bd17b0f5f63fc504245aff9534a1c2324e1843eda3365a0ec20ff00c34984793710b747cec73da0568aee19f1b4
+	b2sums = e57e1b59e78c97f35d5c6d72dd2b3b343e0955c4983d93c26ecaeab44a7bdea6d202bd36c666f77061b5381f26727e5fcd0d08e47441907b767219d9dc4f2afe
+
+pkgname = appflowy-cloud
