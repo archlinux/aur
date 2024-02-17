@@ -1,12 +1,12 @@
 pkgbase = ps3libraries
 	pkgdesc = Meta package for libraries used in the creation of homebrew software for the Sony PlayStation 3 videogame system.
-	pkgver = 20230409
+	pkgver = 20240217
 	pkgrel = 1
 	url = https://github.com/ps3dev/libraries
 	arch = any
 	license = MIT
-	depends = ps3toolchain>=20230409
-	depends = ps3-zlib>=1.2.13
+	depends = ps3toolchain>=20240217
+	depends = ps3-zlib>=1.3.1
 	depends = ps3-zstd>=1.5.4
 	optdepends = ps3-ffmpeg-libs
 
