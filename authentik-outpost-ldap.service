@@ -1,0 +1,15 @@
+[Unit]
+Description=authentik outpost LDAP Service
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+Restart=on-failure
+RestartSec=5s
+
+ExecStart=/usr/bin/authentik-outpost-ldap
+EnvironmentFile=/etc/authentik-outpost-ldap.env
+
+[Install]
+WantedBy=multi-user.target

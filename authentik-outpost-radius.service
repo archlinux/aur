@@ -1,0 +1,15 @@
+[Unit]
+Description=authentik outpost radius Service
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+Restart=on-failure
+RestartSec=5s
+
+ExecStart=/usr/bin/authentik-outpost-radius
+EnvironmentFile=/etc/authentik-outpost-radius.env
+
+[Install]
+WantedBy=multi-user.target

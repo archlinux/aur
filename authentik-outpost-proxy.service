@@ -1,0 +1,15 @@
+[Unit]
+Description=authentik outpost proxy Service
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+Restart=on-failure
+RestartSec=5s
+
+ExecStart=/usr/bin/authentik-outpost-proxy
+EnvironmentFile=/etc/authentik-outpost-proxy.env
+
+[Install]
+WantedBy=multi-user.target
