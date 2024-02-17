@@ -1,7 +1,7 @@
 pkgbase = buckets-bin
 	pkgdesc = Private budgeting with the envelope budgeting method
-	pkgver = 0.72.1
-	pkgrel = 2
+	pkgver = 0.72.2
+	pkgrel = 1
 	url = https://www.budgetwithbuckets.com/
 	arch = x86_64
 	license = custom: commercial
@@ -9,8 +9,8 @@ pkgbase = buckets-bin
 	depends = gtk3
 	depends = libxss
 	depends = nss
-	noextract = Buckets-ubuntu-22.04-amd64-0.72.1.deb
-	source = https://github.com/buckets/application/releases/download/v0.72.1/Buckets-ubuntu-22.04-amd64-0.72.1.deb
-	sha256sums = 690b3e322176c3b97e0eb4625e915fa2fd402330f1e4b4cf98ead5a99f336980
+	noextract = Buckets-ubuntu-22.04-amd64-0.72.2.deb
+	source = https://github.com/buckets/application/releases/download/v0.72.2/Buckets-ubuntu-22.04-amd64-0.72.2.deb
+	sha256sums = b54eb297f151dc37adc05524dbb69a6b94b8729a2719e22b8c5a5f315c79a4df
 
 pkgname = buckets-bin
