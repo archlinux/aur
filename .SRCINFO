@@ -43,7 +43,6 @@ pkgbase = liquidsoap
 	depends = ocaml-magic
 	depends = ocaml-menhir
 	depends = ocaml-mm
-	depends = ocaml-ocamlsdl
 	depends = ocaml-ogg
 	depends = ocaml-opus
 	depends = ocaml-pulseaudio
