@@ -1,0 +1,14 @@
+pkgbase = python-systemdunitparser
+	pkgdesc = Parser for systemd unit files
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/sgallagher/systemdunitparser
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-pytest
+	makedepends = python-setuptools
+	provides = python-systemdunitparser=0.2
+	source = https://github.com/sgallagher/systemdunitparser/archive/0.2.tar.gz
+	sha512sums = d2cfce480fcb67dd6026f9c7b3ba4733d541c04fee4e9afdfb7cca48573a467039ef9d23f29be283de762e1b39366979e0b14a9626079f88a929f417f6cceb23
+
+pkgname = python-systemdunitparser
