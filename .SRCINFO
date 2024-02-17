@@ -1,0 +1,21 @@
+pkgbase = kakoune-lsp-git
+	pkgdesc = Kakoune Language Server Protocol Client
+	pkgver = v15.0.1+r37+g117db92
+	pkgrel = 1
+	url = https://github.com/kakoune-lsp/kakoune-lsp
+	install = kakoune-lsp-git.install
+	arch = x86_64
+	license = custom:unlicense
+	makedepends = git
+	makedepends = rust
+	depends = kakoune
+	provides = kak-lsp
+	provides = kakoune-lsp
+	provides = kak-lsp-git
+	conflicts = kak-lsp
+	conflicts = kakoune-lsp
+	conflicts = kak-lsp-git
+	source = kakoune-lsp-git::git+https://github.com/kakoune-lsp/kakoune-lsp
+	md5sums = SKIP
+
+pkgname = kakoune-lsp-git

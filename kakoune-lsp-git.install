@@ -1,0 +1,3 @@
+post_install() {
+	echo 'To customize settings, copy the kak-lsp.toml configuration file in /usr/share/kak-lsp-git/examples/ to $HOME/.config/kak-lsp/'
+}
