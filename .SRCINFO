@@ -1,13 +1,13 @@
 pkgbase = ps3toolchain
 	pkgdesc = Meta package for tools used in the creation of homebrew software for the Sony PlayStation 3 videogame system.
-	pkgver = 20230409
-	pkgrel = 2
+	pkgver = 20240217
+	pkgrel = 1
 	url = https://github.com/ps3dev/ps3toolchain
 	arch = any
 	license = MIT
 	depends = ps3-env>=20230409
-	depends = ps3-ppu-binutils>=2.40
-	depends = ps3-ppu-gcc>=9.5.0
+	depends = ps3-ppu-binutils>=2.42
+	depends = ps3-ppu-gcc>=13.2.0
 	depends = ps3-spu-binutils>=2.22
 	depends = ps3-spu-gcc>=9.5.0
 	depends = ps3-psl1ght=20230214
