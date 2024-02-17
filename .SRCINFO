@@ -1,7 +1,7 @@
 pkgbase = natapp
 	pkgdesc = High speed intranet penetration tools in Chinese based on ngrok.
-	pkgver = 2_4_0
-	pkgrel = 1
+	pkgver = 2.4.0
+	pkgrel = 2
 	url = https://natapp.cn
 	arch = x86_64
 	arch = aarch64
