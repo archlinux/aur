@@ -4,12 +4,12 @@
 
 pkgname=hunspell-sv
 pkgver=2.42
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Swedish dictionaries for Hunspell'
 arch=(any)
 url='https://extensions.libreoffice.org/en/extensions/show/swedish-spelling-dictionary-den-stora-svenska-ordlistan'
-license=(LGPL3)
+license=(LGPL-3.0-only)
 source=(https://extensions.libreoffice.org/assets/downloads/z/ooo-swedish-dict-"${pkgver/./-}".oxt)
 sha256sums=('6f8c62461eb4c2cfe81628094c74ab6511918520047742f14e23dd440b99f45f')
 
