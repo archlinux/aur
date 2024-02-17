@@ -8,6 +8,7 @@ pkgbase = python-magika
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-poetry
 	depends = python
 	depends = python-click
 	depends = python-tqdm
