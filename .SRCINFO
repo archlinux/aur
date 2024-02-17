@@ -1,11 +1,10 @@
 pkgbase = android-x86-64-xorgproto
 	pkgdesc = combined X.Org X11 Protocol headers (android)
 	pkgver = 2023.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xorg.freedesktop.org/
 	arch = any
 	license = custom
-	checkdepends = python-libevdev
 	makedepends = android-meson
 	makedepends = android-x86-64-xorg-util-macros
 	depends = android-ndk

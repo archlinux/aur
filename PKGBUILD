@@ -7,7 +7,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-xorgproto
 pkgver=2023.2
-pkgrel=1
+pkgrel=2
 pkgdesc="combined X.Org X11 Protocol headers (android)"
 arch=('any')
 url="https://xorg.freedesktop.org/"
@@ -16,7 +16,6 @@ depends=('android-ndk')
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-meson'
              "android-${_android_arch}-xorg-util-macros")
-checkdepends=('python-libevdev')
 source=("https://xorg.freedesktop.org/archive/individual/proto/xorgproto-$pkgver.tar.xz"{,.sig})
 sha512sums=('af0a8c8094fc6a490a886a8c048175762b6334798f2e48b6f6e19a7bb39ddbef05fa1237c4e9d9f1d870d24f5ca7a7c463044c41ceebd108f8ab0816677a582d'
             'SKIP')
