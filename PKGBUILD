@@ -4,18 +4,26 @@
 # Contributor: Charles Pigott <charlespigott@googlemail.com>
 # Contributor: Andrei "Garoth" Thorp <garoth "at the nice" gmail "dot" com>
 
+## options
+: ${_build_git:=false}
+
+unset _pkgtype
+[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
+
+## basic info
 _pkgname="debhelper"
-pkgname="$_pkgname"
-pkgver=13.11.10
+pkgname="$_pkgname${_pkgtype:-}"
+pkgver=13.13
 pkgrel=1
 pkgdesc="A collection of programs that can be used in a debian/rules file to automate common tasks"
 url="https://salsa.debian.org/debian/debhelper"
-license=('GPL2' 'GPL3')
+license=('GPL-2.0-or-later')
 arch=('any')
 
 _url_dh_strip_nondeterminism="https://salsa.debian.org/reproducible-builds/strip-nondeterminism"
 
 depends=(
+  'dpkg'
   'perl-pod-parser'
 )
 makedepends=(
@@ -26,8 +34,8 @@ optdepends=(
   'dh-make: convert source archives into Debian package source'
 )
 
-if [ x"$pkgname" == x"$_pkgname" ] ; then
-  # normal package
+if [ "${_build_git::1}" != "t" ] ; then
+  # stable package
   _pkgsrc="$_pkgname"
   source=("git+$url.git#tag=debian/${pkgver%%.r*}")
   sha256sums=('SKIP')
@@ -56,6 +64,13 @@ conflicts+=("dh-strip-nondeterminism")
 source+=("dh_strip_nondeterminism"::"$_url_dh_strip_nondeterminism/-/raw/master/bin/dh_strip_nondeterminism")
 sha256sums+=('SKIP')
 
+prepare() {
+  cd "$_pkgsrc"
+
+  # prevent unicode error
+  rm "man/po4a/po"/*.po
+}
+
 build() {
   cd "$_pkgsrc"
   make
@@ -64,10 +79,9 @@ build() {
 package() {
   depends+=(
     'binutils'
-    'dpkg'
     'file'
-    'html2text'
     'man-db'
+    'python-html2text'
     'strip-nondeterminism'
 
     # AUR
@@ -75,8 +89,8 @@ package() {
   )
 
   cd "$_pkgsrc"
-  make DESTDIR="${pkgdir:?}" install
-  install -Dm755 "${srcdir:?}/dh_strip_nondeterminism" -t "${pkgdir:?}/usr/bin"
+  make DESTDIR="$pkgdir" install
+  install -Dm755 "$srcdir/dh_strip_nondeterminism" -t "$pkgdir/usr/bin"
 }
 
 # vim:set ts=2 sw=2 et:
