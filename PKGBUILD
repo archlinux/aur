@@ -37,7 +37,7 @@ fi
 ## Set variable "_use_tracers" to: n to disable (possibly increase performance, XanMod default)
 ##                                y to enable  (Archlinux default)
 if [ -z ${_use_tracers+x} ]; then
-  _use_tracers=n
+  _use_tracers=y
 fi
 
 # Unique compiler supported upstream is GCC
@@ -99,8 +99,8 @@ fi
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-xanmod-bore
-_major=6.6
-pkgver=${_major}.16
+_major=6.7
+pkgver=${_major}.5
 _branch=6.x
 xanmod=1
 _revision=
@@ -138,14 +138,14 @@ _patches=()
 for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
-sha256sums=('d926a06c63dd8ac7df3f86ee1ffc2ce2a3b81a2d168484e76b5b389aba8e56d0' # kernel
+sha256sums=('ef31144a2576d080d8c31698e83ec9f66bf97c677fa2aaf0d5bbb9f3345b1069' # kernel
             'SKIP'                                                             # kernel signature
-            '75a5a020c7a152a8962fc27c8e19b70187b223263b4cc490b293cb741a5e1c68' # xanmod patch
+            'e0ce221aafb37c494083215cbbafd3f3515f9b72bcfd9cb056a6a9088ba114cd' # xanmod patch
             '5c84bfe7c1971354cff3f6b3f52bf33e7bbeec22f85d5e7bfde383b54c679d30' # choose-gcc-optimization.sh
-            '0fc624e645adb73b0852e55e28ecde3abbd0f57cd6af54224d8d2c5878a7bcbb' # 0001-bore.patch
+            'f8e21f14bdf2f90f37ab03e9b67cee83b999547bbfc9e0c67d1942c4dc3e40fb' # 0001-bore.patch
             '02be008f054a44322a74f0615e8a0d3ad7d6c5bc80182472a9cefbded959ce61' # 0002-glitched-cfs.patch
-            '8742ddd644e47585d183209bc1f484503c011ade288c92484f6ff4c3e2d39641' # 0003-glitched-eevdf-additions.patch
-            '30dc69c13d6bb0492ff61e9fdbd3b198eb0bb5b33845726c8008822e9162d667' # 0004-o3-optimization.patch
+            '73d4dfd63744a7a510354a66255067ae9aebc4a5c538df32eab852cf7691c835' # 0003-glitched-eevdf-additions.patch
+            'f4384ffedc2f3585229a669b127f1759db92125e3d0068be9040df5952f56466' # 0004-o3-optimization.patch
 )
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
@@ -271,12 +271,10 @@ prepare() {
 
   # User set. See at the top of this file
   if [ "$_use_tracers" = "y" ]; then
-    echo "Enabling CONFIG_FTRACE only if we are not compiling with clang..."
-    if [ "${_compiler}" = "gcc" ]; then
-      scripts/config --enable CONFIG_FTRACE \
-                     --enable CONFIG_FUNCTION_TRACER \
-                     --enable CONFIG_STACK_TRACER
-    fi
+    echo "Enabling CONFIG_FTRACE..."
+    scripts/config --enable CONFIG_FTRACE \
+                   --enable CONFIG_FUNCTION_TRACER \
+                   --enable CONFIG_STACK_TRACER
   fi
 
   # Disabling NUMA
@@ -301,9 +299,6 @@ prepare() {
   # Disabling Debug
   if [ "$_disable_debug" = "y" ]; then
     echo "Disabling debugging..."
-    scripts/config --disable EXPERT
-    scripts/config --disable DEBUG_KERNEL
-    scripts/config --disable DEBUG_INFO
     scripts/config --disable DEBUG_INFO_BTF
     scripts/config --disable DEBUG_INFO_DWARF4
     scripts/config --disable DEBUG_INFO_DWARF5
