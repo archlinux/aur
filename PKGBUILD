@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=at32-ide-bin
-pkgver=1.0.08
-pkgrel=2
+pkgver=1.0.09
+pkgrel=1
 # epoch=1
 pkgdesc="AT32 IDE 是个跨平台 ARM 嵌入式系统的软件开发环境。 它包含一系列的 Eclipse 插件和工具。该插件可让用户在 AT32 IDE 开发环境下创建、建置和调试 AT32
 MCU。"
@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://www.arterytek.com/cn/support/index.jsp"
 license=('Commercial')
 provides=(at32-ide AT32IDE)
-conflicts=()
+conflicts=(at32-ide AT32IDE)
 replaces=()
 depends=(
 #   java-runtime
@@ -19,14 +19,17 @@ depends=(
   hidapi)
 makedepends=(libarchive
   sed)
-optdepends=('artery-isp-console-bin: Artery ISP Console 是一款基于 MCU Bootloader 的命令行应用程序。使用该应用程序,用户可以通过 UART 端口或者 USB 端口配置操作 Artery 的 MCU 设备。'
-            'jlink-software-and-documentation: Segger JLink software & documentation pack for Linux')
+optdepends=('artery-isp-console: Artery ISP Console 是一款基于 MCU Bootloader 的命令行应用程序。使用该应用程序,用户可以通过 UART 端口或者 USB 端口配置操作 Artery 的 MCU 设备。'
+    'at32-ide-project-generate: AT32 IDE 是个跨平台 ARM 嵌入式系统的软件开发环境。 它包含一系列的 Eclipse 插件和工具。该插件可让用户在 AT32 IDE 开发环境下创建、建置和调试 AT32 MCU。'
+    'at-link-console: Artery AT LINK Console 是一款基于 MCU Bootloader 的命令行应用程序。支持AT32 MCU「在电路编程」Console工具'
+    'at32-work-bench: AT32 MCU 图形化配置软件，生成初始化 C 代码(目前仅支持 AT32F421 系列)'
+    'jlink-software-and-documentation: Segger JLink software & documentation pack for Linux')
 backup=()
-options=()
+# options=(!strip)
 install=${pkgname}.install
 _pkg_file_name=AT32_IDE_V${pkgver}_Linux-${arch}
 source=("${_pkg_file_name}.zip::https://www.arterytek.com/download/TOOL/${_pkg_file_name}.zip")
-sha256sums=('38fe8e199efc2109a449821d63d94a90ee3dc86242c62d898965d021eaff15ee')
+sha256sums=('5402b0bac18842067a6c154080c0ee8c9a41f15484a901c98ab89951a9566332')
 noextract=()
 
 package() {
