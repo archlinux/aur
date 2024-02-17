@@ -1,0 +1,23 @@
+pkgbase = mingw-w64-cppwinrt
+	pkgdesc = Common C++ classes and routines such as argument parser, IO and conversion utilities (mingw-w64)
+	pkgver = 2.0.240111.5
+	pkgrel = 1
+	url = https://aka.ms/cppwinrt
+	arch = any
+	license = spdx:MIT
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-wine
+	makedepends = ninja
+	makedepends = git
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/microsoft/cppwinrt/archive/2.0.240111.5/cppwinrt-2.0.240111.5.tar.gz
+	source = https://github.com/microsoft/windows-rs/archive/0.52.0/windows-rs-0.52.0.tar.gz
+	sha256sums = 5ec49e9de3467161ef93185f0c627be6ed37200f19e18ac79e29e47fbeb69d0d
+	sha256sums = fa6f1ad3677ee46ded34ad8811fc365a783d9aa414206a60b52dff261db85ef3
+
+pkgname = mingw-w64-cppwinrt
