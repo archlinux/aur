@@ -1,0 +1,15 @@
+pkgbase = tdl-git
+	pkgdesc = A Telegram downloader/tools written in Golang
+	pkgver = r665.f46f64c
+	pkgrel = 1
+	url = https://github.com/iyear/tdl
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = go
+	makedepends = git
+	provides = tdl
+	conflicts = tdl
+	source = git+https://github.com/iyear/tdl.git
+	sha256sums = SKIP
+
+pkgname = tdl-git
