@@ -3,7 +3,7 @@
 pkgname='terabox-bin'
 _pkgname="$(echo $pkgname |cut -d - -f 1 | tr 'tb' 'TB')"
 pkgver='1.2.0'
-pkgrel='0'
+pkgrel=''
 pkgdesc='Baidu netdisc international version'
 arch=('x86_64')
 license=('custom')
