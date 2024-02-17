@@ -3,7 +3,7 @@
 pkgname='terabox-bin'
 _pkgname="$(echo $pkgname |cut -d - -f 1 | tr 'tb' 'TB')"
 pkgver='1.2.0'
-pkgrel=''
+pkgrel='1'
 pkgdesc='Baidu netdisc international version'
 arch=('x86_64')
 license=('custom')
@@ -11,9 +11,9 @@ url='https://www.terabox.com/chinese/'
 
 depends=(
     'gtkmm3'
-    'libappindicator-gtk3'
     'nitrogen'
 )
+#'libappindicator-gtk3'
 
 # DEB package
 source=("https://data.nephobox.com/issue/terabox/Linux/${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
