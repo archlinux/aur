@@ -1,0 +1,20 @@
+pkgbase = taglib1
+	pkgdesc = A Library for reading and editing the meta-data of several popular audio formats - version 1
+	pkgver = 1.13.1
+	pkgrel = 1
+	url = https://taglib.org/
+	arch = x86_64
+	license = LGPL-2.1-only
+	license = MPL-1.1
+	checkdepends = cppunit
+	makedepends = cmake
+	makedepends = utf8cpp
+	depends = gcc-libs
+	depends = glibc
+	depends = sh
+	depends = zlib
+	source = https://github.com/taglib/taglib/releases/download/v1.13.1/taglib-1.13.1.tar.gz
+	sha512sums = 986231ee62caa975afead7e94630d58acaac25a38bc33d4493d51bd635d79336e81bba60586d7355ebc0670e31f28d32da3ecceaf33292e4bc240c64bf00f35b
+	b2sums = 36cf9b59ded95c9996d04a86055a36a7b74a2a01c13f75826d4907abca0b982c5f9b0e4bcd6648707013108f8eaf424ab95f07c383130452aa169e2cab33f466
+
+pkgname = taglib1

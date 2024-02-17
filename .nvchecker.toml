@@ -1,0 +1,5 @@
+[taglib1]
+source = "git"
+git = "https://github.com/taglib/taglib"
+prefix = "v"
+include_regex = "v1.*"
