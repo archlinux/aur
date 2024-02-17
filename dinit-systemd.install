@@ -1,0 +1,14 @@
+post_install() {
+    echo ">>> Reloading systemd daemon"
+    systemctl daemon-reload
+}
+
+post_upgrade() {
+    echo ">>> Reloading systemd daemon"
+    systemctl daemon-reload
+}
+
+post_remove() {
+    echo ">>> Reloading systemd daemon"
+    systemctl daemon-reload
+}

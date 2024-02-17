@@ -3,5 +3,6 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
+!dinit-systemd.install
 !dinit.service
 !dinit-user.service
