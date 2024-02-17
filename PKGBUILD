@@ -3,12 +3,12 @@
 # Contributor: kngfr <9bcfbc1ca230857ba09584697f20708a@kngfr.de>
 pkgname=spotify_dl
 pkgver=8.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Downloads songs from your Spotify Playlist"
 arch=('any')
 url="https://github.com/SathyaBhat/spotify-dl"
 license=('MIT')
-depends=('python-spotipy' 'python-google-api-python-client' 'youtube-dl')
+makedepends=('python-setuptools')
 depends=('python-sentry_sdk' 'yt-dlp' 'python-spotipy' 'python-mutagen' 'python-rich')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('71392ed45f8a7c6ffb674ecdf47acad08738ad63376eacb88f72ed35869372a7')
