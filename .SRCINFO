@@ -1,6 +1,6 @@
 pkgbase = emulationstation-de
 	pkgdesc = EmulationStation Desktop Edition (ES-DE) is a frontend for browsing and launching games from your multi-platform game collection
-	pkgver = 2.2.1
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://es-de.org
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = emulationstation-de
 	depends = sdl2
 	conflicts = emulationstation
 	conflicts = emulationstation-git
-	source = emulationstation-de-stable-2.2-AUR_2.2.1-1.tar.gz::https://gitlab.com/es-de/emulationstation-de/-/archive/stable-2.2-AUR/emulationstation-de-stable-2.2-AUR.tar.gz
-	md5sums = 5ada17b8f4fd0ef563c7d075e052dab4
+	source = emulationstation-de-stable-3.0-AUR_3.0.0-1.tar.gz::https://gitlab.com/es-de/emulationstation-de/-/archive/stable-3.0-AUR/emulationstation-de-stable-3.0-AUR.tar.gz
+	md5sums = 3a1408f2f3b78a946f58f8daffa23002
 
 pkgname = emulationstation-de
