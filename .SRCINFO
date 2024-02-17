@@ -1,13 +1,13 @@
 pkgbase = todoist-nativefier
 	pkgdesc = Todoist in shared Electron runtime
 	pkgver = 2024.02.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://todoist.com
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
 	makedepends = yarn
-	depends = electron25
+	depends = electron28
 	source = todoist-nativefier.png::https://d3ptyyxy2at9ui.cloudfront.net/todoist_apple_touch_icon-4b89ad.png
 	sha256sums = 355ad7dec904255d24750a22d440b913c971c15be664ec699b1b158dcdcd3bcd
 
