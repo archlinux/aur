@@ -2,7 +2,7 @@
 # Contributor: akaessens
 
 pkgname=google-calendar-nativefier
-pkgver=2023.09.10
+pkgver=2024.02.17
 pkgrel=1
 pkgdesc='Google Calendar in shared Electron runtime'
 arch=('x86_64')
@@ -44,7 +44,7 @@ build() {
     --user-agent safari \
     --single-instance \
     --verbose \
-    https://calendar.google.com
+    "${url}"
 }
 
 package() {
