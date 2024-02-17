@@ -1,14 +1,14 @@
 pkgbase = moar-bin
 	pkgdesc = A pager designed to just do the right thing without any configuration.
-	pkgver = 1.23.5
+	pkgver = 1.23.6
 	pkgrel = 1
 	url = https://github.com/walles/moar
 	arch = x86_64
 	license = BSD-2-Clause-Views
-	noextract = moar-1.23.5.tar.gz
-	source = https://github.com/walles/moar/releases/download/v1.23.5/moar-v1.23.5-linux-386
-	source = moar-1.23.5.tar.gz::https://github.com/walles/moar/archive/v1.23.5.tar.gz
-	sha256sums = be51ff34060e00f4c2044864d51a982e7ad963e05d59a48fba3752b3f6e33d31
-	sha256sums = f3c1c88545afde91d685943db20be1ae003b15c855faed9db61377f2dc768f4f
+	noextract = moar-1.23.6.tar.gz
+	source = https://github.com/walles/moar/releases/download/v1.23.6/moar-v1.23.6-linux-386
+	source = moar-1.23.6.tar.gz::https://github.com/walles/moar/archive/v1.23.6.tar.gz
+	sha256sums = 13fe1f29c6c6b0b7b15e4786c494faf14ca542428d377f20c615d7719072bd3a
+	sha256sums = a4ff5cdf18b9ae787a3a8f6253f363b9fdf6c0965f3ff276493b456fff2081cf
 
 pkgname = moar-bin
