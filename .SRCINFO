@@ -1,0 +1,21 @@
+pkgbase = composefs
+	pkgver = v1.0.3
+	pkgrel = 1
+	url = https://github.com/containers/composefs
+	arch = x86_64
+	makedepends = git
+	makedepends = go-md2man
+	makedepends = fuse3
+	source = git+https://github.com/containers/composefs.git?signed#tag=41bf41bda3f950dd094077dc887af948df2819c2
+	validpgpkeys = 6A2B067FB5E17A1A3FC8A0DAEB6216DDB76C70E9
+	sha256sums = SKIP
+
+pkgname = composefs
+	pkgdesc = Tools to handle creating and mounting composefs images
+	license = GPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0
+	depends = libcomposefs
+
+pkgname = libcomposefs
+	pkgdesc = Libraries for composefs
+	license = LGPL-2.1-or-later AND (GPL-2.0-only OR Apache-2.0)
+	depends = openssl
