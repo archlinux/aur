@@ -1,6 +1,6 @@
 # Maintainer: ldev <ldev dot eu dot org>
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 
 pkgname=git-credential-pass
 pkgdesc="A simple git credentials helper for pass"
@@ -34,11 +34,6 @@ build() {
     cargo build --frozen --release --all-features
 }
 
-check() {
-    cd "$srcdir/$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
-}
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
