@@ -8,7 +8,7 @@
 pkgbase=nvidia-470xx-utils
 pkgname=('nvidia-470xx-utils' 'opencl-nvidia-470xx' 'nvidia-470xx-dkms')
 pkgver=470.223.02
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -53,7 +53,7 @@ prepare() {
 #    patch -p1 -i "$srcdir/kernel-6.4.patch"
 #    patch -p1 -i "$srcdir/kernel-6.5.patch"
 #    patch -p1 -i "$srcdir/kernel-6.6.patch"
-    patch -p1 -i "$srcdir/kernel-6.1.76_6.6.15_6.7.3.patch"
+#    patch -p1 -i "$srcdir/kernel-6.1.76_6.6.15_6.7.3.patch"
 
     sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
     sed -i 's/__JOBS/`nproc`/' dkms.conf
