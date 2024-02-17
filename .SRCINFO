@@ -1,0 +1,21 @@
+pkgbase = another-swayrst
+	pkgdesc = Restore workspaces, layout and window size in sway to displays
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/afaul/another-swayrst
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pdm-backend
+	depends = python
+	depends = python-i3ipc
+	depends = python-click
+	depends = python-psutil
+	depends = python-pydantic
+	provides = another-swayrst=1.0.2
+	conflicts = another-swayrst
+	source = another-swayrst-1.0.2.tar.gz::https://github.com/afaul/another-swayrst/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 70cfa2fc0dc807371e4b4d6622b5a91237118d961a1f099648fa9bbbe98aab97
+
+pkgname = another-swayrst
