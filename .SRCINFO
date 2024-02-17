@@ -1,8 +1,9 @@
 pkgbase = vinegar-git
-	pkgdesc = A transparent wrapper for Roblox Player and Roblox Studio (Git version)
-	pkgver = 1.6.1.r0.g6545e22
+	pkgdesc = A weirdo launcher for Roblox Player and Studio (Git version)
+	pkgver = 1.7.3.r8.gcd7faa4
 	pkgrel = 1
 	url = https://github.com/vinegarhq/vinegar
+	install = vinegar-git.install
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = git

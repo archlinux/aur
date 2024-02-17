@@ -3,9 +3,9 @@
 
 _pkgname=vinegar
 pkgname=vinegar-git
-pkgver=1.6.1.r0.g6545e22
+pkgver=1.7.3.r8.gcd7faa4
 pkgrel=1
-pkgdesc="A transparent wrapper for Roblox Player and Roblox Studio (Git version)"
+pkgdesc="A weirdo launcher for Roblox Player and Studio (Git version)"
 arch=("x86_64")
 url="https://github.com/vinegarhq/vinegar"
 license=("GPL-3.0-only")
@@ -18,6 +18,7 @@ optdepends=("gamemode: Gamemode integration"
 conflicts=("vinegar")
 source=("git+${url}")
 sha256sums=("SKIP")
+install="${pkgname}.install"
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
@@ -25,6 +26,9 @@ prepare() {
   # HACK (FIXME): Don't rebuild the icons when installing them
   # (upstream repo has them anyway and building them causes race conditions)
   sed -i 's/install-icons: icons/install-icons:/' Makefile
+
+  # Disable a malicious feature
+  sed -i 's/_, err := os.Stat(dirs.Prefix); err == nil/false/' cmd/vinegar/main.go
 }
 
 pkgver() {
