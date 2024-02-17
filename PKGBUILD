@@ -87,5 +87,5 @@ package() {
 
 	# install the license
 	echo "PKGDIR: $pkgdir"
-	sudo install -Dm644 "$pkgdir/LICENSE" "/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$pkgdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
