@@ -1,0 +1,25 @@
+pkgbase = gcad3d-bin
+	pkgdesc = Parametric 3D CAD with viewer, import, export, NC
+	pkgver = 2.60.04
+	pkgrel = 1
+	url = https://www.gcad3d.org
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = at-spi2-core
+	depends = cairo
+	depends = fontconfig
+	depends = freetype2
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glu
+	depends = gtk2
+	depends = gtkglarea
+	depends = harfbuzz
+	depends = libglvnd
+	depends = pango
+	optdepends = xorg-xwayland: run under Wayland
+	options = !debug
+	source = https://www.gcad3d.org/download/gCAD3D-2.60.04-bin-amd64.deb
+	b2sums = 502f8501faf4464fa303a03cba90f07c6cb1f4ae4e56e8cdae0cc5b05f6b6aa6b869864942e1b6fb86302438af6fd0f64e9c7a7f1f96ede2ba393ffc2d21f89b
+
+pkgname = gcad3d-bin
