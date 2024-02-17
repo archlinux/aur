@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Resonate
+Comment=Lightweight subsonic music player powered by Rust and React.
+Type=Application
+Exec=/usr/bin/resonate
+Icon=resonate
+Categories=Network;Audio;Music
+Keywords=Music;Resonate

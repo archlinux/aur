@@ -1,0 +1,26 @@
+pkgbase = resonate-git
+	pkgdesc = Lightweight subsonic music player powered by Rust and React.
+	pkgver = 660e220
+	pkgrel = 1
+	url = https://git.usesarchbtw.lol/resonate/resonate
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	makedepends = nodejs
+	makedepends = pnpm
+	depends = cairo
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libsoup3
+	depends = openssl
+	depends = webkit2gtk
+	source = git+https://git.usesarchbtw.lol/resonate/resonate.git
+	source = resonate.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = resonate-git
