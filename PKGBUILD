@@ -2,14 +2,14 @@
 # Contributor: Hu Butui <hot123tea123@gmail.com>
 
 _pkgname=performance
-_pkgver=0.10.8
+_pkgver=0.10.9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Assessment of Regression Models Performance"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-bayestestr
   r-datawizard
@@ -91,6 +91,7 @@ optdepends=(
   r-pscl
   r-psych
   r-qqplotr
+  r-quantreg
   r-randomforest
   r-rempsyc
   r-rmarkdown
@@ -105,8 +106,8 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c6ef5ecfa32d0aa3026f0096f8747a35')
-sha256sums=('523402f323381a49f454e454b9bf542b9fbf300fcbe8f0982cc333bcfe02727f')
+md5sums=('07a07184ab81c70c92646ab990e0fd5f')
+b2sums=('029a8b72203e719ac7520d903f3eb510de573fd16a3efc2249a16b22dd11223f25a5e0680a4a114cd87fff4dd0e08504a4f7449e031cea683873059ac7823933')
 
 prepare() {
   # skip failing tests
@@ -117,8 +118,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
