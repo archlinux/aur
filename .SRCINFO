@@ -1,9 +1,8 @@
 pkgbase = vinegar
-	pkgdesc = A weirdo launcher for Roblox Player and Studio
+	pkgdesc = A launcher for Roblox Player and Studio
 	pkgver = 1.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vinegarhq/vinegar
-	install = vinegar.install
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = git
