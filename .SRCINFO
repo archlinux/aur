@@ -1,13 +1,13 @@
 pkgbase = appflowy-cloud
 	pkgdesc = Note, project and knowledge management
 	pkgver = 0.1.28
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AppFlowy-IO/AppFlowy-Cloud
 	arch = x86_64
 	license = AGPL 3.0
 	makedepends = cargo
 	depends = sqlx-cli
-	depends = nv
+	optdepends = nv: Systemd service support
 	optdepends = minio: MinIO support
 	optdepends = postgresql: PostgreSQL support
 	optdepends = redis: Redis support

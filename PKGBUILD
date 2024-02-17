@@ -2,14 +2,15 @@
 
 pkgname='appflowy-cloud'
 pkgver=0.1.28
-pkgrel=2
+pkgrel=3
 pkgdesc='Note, project and knowledge management'
 arch=('x86_64')
 url='https://github.com/AppFlowy-IO/AppFlowy-Cloud'
 license=('AGPL 3.0')
-depends=('sqlx-cli' 'nv')
+depends=('sqlx-cli')
 makedepends=('cargo')
 optdepends=(
+  'nv: Systemd service support'
   'minio: MinIO support'
   'postgresql: PostgreSQL support'
   'redis: Redis support'
