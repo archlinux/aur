@@ -1,7 +1,7 @@
 pkgbase = librime
 	pkgdesc = Rime input method engine
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/rime/librime
 	arch = x86_64
@@ -25,10 +25,12 @@ pkgbase = librime
 	source = git+https://github.com/hchunhui/librime-lua.git#commit=7f3eca2ce659fc2401b8acb52bd2182b433e12b1
 	source = git+https://github.com/rime/librime-charcode.git#commit=3709ca7a39a7c14f9e02fa00489a9850fd5a907b
 	source = git+https://github.com/lotem/librime-proto.git#commit=657a923cd4c333e681dc943e6894e6f6d42d25b4
+	source = glog-0.7.patch
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
+	sha512sums = 3319b861c520abd68359f3e6e19db7e7d35464911c7b3798298de71fa920215b621e1cb2668ed35d68d7bfd0814e24604860a3ed3b071496943f00919b99473e
 
 pkgname = librime
