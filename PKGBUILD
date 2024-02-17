@@ -1,6 +1,6 @@
 # Maintainer: Aakash Hemadri <aakashhemadri123@gmail.com>
 pkgname=gk6x-bin
-pkgver=1.19
+pkgver=1.21
 _pkgname=gk6x
 pkgrel=1
 epoch=
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("$url/releases/download/${_pkgname^^}-v${pkgver}/${_pkgname^^}-v${pkgver}-GUI.zip" "gk6x")
 noextract=()
-md5sums=('b2993a53acc26fbf32ba2ae7ca8d7134'
+md5sums=('3e2e94441d056f01db539b5abe295f6e'
          'f0611a521786c9ca1fc5c075d7bd8aeb')
 validpgpkeys=()
 
