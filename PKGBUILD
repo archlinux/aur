@@ -11,6 +11,7 @@ makedepends=('cargo')
 optdepends=('maa-assistant-arknights: for preinstalled maa core')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 md5sums=('758145b908291652437ac162e3f04b8a')
+options=(!lto)
 
 prepare() {
 	cd "$srcdir/maa-cli-$pkgver"
