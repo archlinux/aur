@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rols
-_pkgver=2.30.1
+_pkgver=2.30.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('dae024b25d99cb24428d289e1b629f36')
-b2sums=('a19ab587b84c0450cc411479dc472f427fa598ccebc16c20f2b7841bc84e1c3d9537da5eabb7086fabdf41370f4f894fc704f598d75d8ef67fd189634ac54060')
+md5sums=('110adcc1a5828a39f693a67d92f08b9e')
+b2sums=('84b3415051d752781cd81e939583f6235c6b271052778e6899a1a56af8e794c7bcdff588e0cc8d52fdaf5b4985790745ca0d9d495743fcbe526dc87db1e81bfd')
 
 build() {
   mkdir build
