@@ -1,15 +1,13 @@
 pkgbase = ranet
 	pkgdesc = ranet, acronym for redundant array of networks, forms full mesh IPSec VPN
-	pkgver = 0.8.1
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/NickCao/ranet
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	checkdepends = cargo
-	makedepends = git
 	makedepends = cargo
-	source = https://github.com/NickCao/ranet/archive/refs/tags/v0.8.1.tar.gz
-	sha512sums = bdac310110b5c64370d7c28b999ca919461ec118b92b4997551f1803b5713f50ad489f9323fb62ab753656e48a90cd1b96bf45a49e1c405590b8561e392f3903
+	source = https://github.com/NickCao/ranet/archive/refs/tags/v0.10.0.tar.gz
+	sha512sums = baacd93d240bbd12f1b3d99f312004e16eafddc7017ee22e1bbabd6caaa91fe059065e45ef6ec936ec67b1e8b3257ba902ccb887a9a475a2e1738df0d670e05d
 
 pkgname = ranet
