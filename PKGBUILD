@@ -21,10 +21,14 @@ depends=()
 makedepends=(alsa-lib
              cargo
              clang
+             fontconfig
              gcc-objc
              libdispatch
+             libxkbcommon
              protobuf
-             wasmtime)
+             vulkan-validation-layers
+             wasmtime
+             wayland)
 _archive="zed-$pkgver"
 source=("$_url/archive/v$pkgver/$_archive.tar.gz")
 sha256sums=('1d7f54ffc8836692ba57ae007cf3bdd56883e86364d0ce31e0c145cc658e5bb8')
