@@ -1,7 +1,7 @@
 pkgbase = ruby-taglib-ruby
 	pkgdesc = Ruby interface for the taglib C++ library
 	pkgver = 1.1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://robinst.github.io/taglib-ruby/
 	arch = i686
 	arch = x86_64

@@ -5,7 +5,7 @@
 _gemname=taglib-ruby
 pkgname=ruby-$_gemname
 pkgver=1.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Ruby interface for the taglib C++ library'
 arch=(i686 x86_64)
 url='http://robinst.github.io/taglib-ruby/'
@@ -18,9 +18,8 @@ noextract=($_gemname-$pkgver.gem)
 sha256sums=('2b13af2bb4649c1ea84bacb5b294872e9a1d323c429974c0f9f46a2007866c7b')
 
 package() {
-  export TAGLIB_DIR='/usr/lib/taglib1'
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  env CONFIGURE_ARGS="--with-tag-include=/usr/include/taglib1 --with-tag-lib=/usr/lib/taglib1" gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   # remove unrepreducible files
   rm --force --recursive --verbose \
     "${pkgdir}/${_gemdir}/cache/" \
