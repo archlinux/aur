@@ -66,6 +66,7 @@ package() {
     "${pkgname}-${pkgver}"
   make \
     DESTDIR="${pkgdir}" \
+    PREFIX="/usr" \
     install
 }
 
