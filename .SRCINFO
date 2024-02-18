@@ -1,6 +1,6 @@
 pkgbase = ssh-utils-git
 	pkgdesc = A collection of SSH related scripts.
-	pkgver = 0.1.1.r0.ge7e693c
+	pkgver = 0.1.1.r0.ge7e693c58e4e4cab4f65b8fe47a87e46c8d8a0bc
 	pkgrel = 1
 	url = https://github.com/themartiancompany/ssh-utils
 	arch = any
@@ -8,13 +8,14 @@ pkgbase = ssh-utils-git
 	groups = hip-git
 	license = AGPL3
 	checkdepends = shellcheck
-	makedepends = git
+	makedepends = curl
+	makedepends = jq
 	depends = bash
-	provides = ssh-utils=0.1.1.r0.ge7e693c
-	provides = mksshconfig=0.1.1.r0.ge7e693c
+	provides = ssh-utils=0.1.1.r0.ge7e693c58e4e4cab4f65b8fe47a87e46c8d8a0bc
+	provides = mksshconfig=0.1.1.r0.ge7e693c58e4e4cab4f65b8fe47a87e46c8d8a0bc
 	conflicts = ssh-utils
 	conflicts = mksshconfig
-	source = git+https://github.com/themartiancompany/ssh-utils#branch=master
+	source = ssh-utils.tar.gz::https://github.com/themartiancompany/ssh-utils/archive/refs/heads/master.tar.gz
 	sha256sums = SKIP
 
 pkgname = ssh-utils-git
