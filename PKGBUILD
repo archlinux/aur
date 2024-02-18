@@ -2,7 +2,6 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=tomlq-git
-_pkg="${pkgname%-git}"
 pkgver=r5.66b1ee6
 pkgrel=1
 pkgdesc='Tool for getting data from TOML files'
@@ -12,7 +11,7 @@ license=(MIT)
 makedepends=(cargo git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-options=('!lto')
+options=(!lto)
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
@@ -25,14 +24,14 @@ prepare() {
 }
 
 build() {
-  RUSTUP_TOOLCHAIN=stable cargo build --release --manifest-path=$pkgname/Cargo.toml --target-dir=target --all-features
+  RUSTUP_TOOLCHAIN=stable cargo build --release --manifest-path=$pkgname/Cargo.toml --target-dir=$pkgname/target --all-features
 }
 
 check() {
-  RUSTUP_TOOLCHAIN=stable cargo test --release --manifest-path=$pkgname/Cargo.toml --target-dir=target
+  RUSTUP_TOOLCHAIN=stable cargo test --release --manifest-path=$pkgname/Cargo.toml --target-dir=$pkgname/target
 }
 
 package() {
-  install -Dm755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin"
-  install -Dm644 $pkgname/LICENSE -t "$pkgdir/usr/share/licenses/{pkgname%-git}"
+  install -Dm755 "$pkgname/target/release/${pkgname%-git}" -t "$pkgdir/usr/bin"
+  install -Dm644 $pkgname/LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 }
