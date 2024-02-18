@@ -1,42 +1,59 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=kicad-allegro
-pkgver=0.1.0
+pkgver=r9.4968f13
 pkgrel=1
 pkgdesc="Converter from Allegro to KiCad, and Allegro extract viewer "
-arch=('any')
+arch=('aarch64'
+    'riscv64'
+    'x86_64')
 url="https://github.com/system76/kicad-allegro"
 license=("unkown")
 provides=(${pkgname})
-conflicts=(${pkgname}-git)
+conflicts=(${pkgname})
 #replaces=(${pkgname})
-depends=('cargo')
-makedepends=('git' 'rust')
+depends=(glibc
+    gcc-libs)
+makedepends=(cargo
+    git)
+optdepends=('kicad')
 backup=()
-options=('!strip')
+options=()
 #install=${pkgname}.install
 source=("${pkgname}::git+https://github.com/system76/kicad-allegro.git")
 sha256sums=('SKIP')
 
-build() {
-# build crm
-    cd "${srcdir}/${pkgname}/"
-    cargo build --release
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    ( set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
 }
 
-# check() {
-#     cd "${srcdir}/${pkgname}/"
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
+}
+
+build() {
+    cd "${srcdir}/${pkgname}/"
+
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --release --all-features
+}
+
+check() {
+    cd "${srcdir}/${pkgname}/"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo fix --bin "kicad-allegro" --tests
 #     cargo test --release
-# }
+}
 
 package() {
-# install crm
-    install -Dm0755 "${srcdir}/${pkgname}/target/release/${pkgname}" "${pkgdir}/usr/share/${pkgname}/${pkgname}"
-
-    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" << EOF
-#!/bin/env bash
-cd /usr/share/${pkgname}/
-./${pkgname} "\$@"
-EOF
-
+    cd "${srcdir}/${pkgname}/"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
 }
