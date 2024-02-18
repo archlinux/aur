@@ -3,12 +3,11 @@ pkgbase = nginx-mainline-mod-vts
 	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/vozlt/nginx-module-vts
-	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = nginx-mainline-src
+	depends = nginx-mainline
 	source = nginx-module-vts-0.2.2.tar.gz::https://github.com/vozlt/nginx-module-vts/archive/v0.2.2.tar.gz
-	sha256sums = 9353035331cfc5eec6c129eb8b348dab77f525329d4d60680a76e0c13c085f41
+	b2sums = 07c24eb62feeb145705ef07dc08feaa06b6b68f80b08e43ff8435bcd1ddbce2ce2d9adffd33efe635678eb787e39d9532f5fb0c22cedd2cb58445b2df14f96f5
 
 pkgname = nginx-mainline-mod-vts
-	depends = nginx-mainline

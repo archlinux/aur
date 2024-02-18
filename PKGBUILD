@@ -1,45 +1,33 @@
-# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
-# Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# Maintainer: Giovanni Harting <539@idlegandalf.com>
 
 pkgname=nginx-mainline-mod-vts
 pkgver=0.2.2
 pkgrel=1
-
-_modname="nginx-module-${pkgname#nginx-mainline-mod-}"
-
+_modname="nginx-module-vts"
 pkgdesc='Nginx virtual host traffic status module (module for mainline nginx)'
-arch=('i686' 'x86_64')
-depends=()  # the build process doesn't require or use installed nginx, so add the dependency in package() to break the cycle
-makedepends=('nginx-mainline-src')
+arch=(x86_64)
+depends=(nginx-mainline)
+makedepends=(nginx-mainline-src)
 url="https://github.com/vozlt/nginx-module-vts"
-license=('BSD')
-
-source=(
-	$_modname-$pkgver.tar.gz::https://github.com/vozlt/nginx-module-vts/archive/v$pkgver.tar.gz
-)
-
-sha256sums=('9353035331cfc5eec6c129eb8b348dab77f525329d4d60680a76e0c13c085f41')
-
-prepare() {
-	mkdir -p build
-	cd build
-	ln -sf /usr/src/nginx/auto
-	ln -sf /usr/src/nginx/src
-}
+license=(BSD-2-Clause)
+source=("$_modname-$pkgver.tar.gz::https://github.com/vozlt/nginx-module-vts/archive/v$pkgver.tar.gz")
+b2sums=('07c24eb62feeb145705ef07dc08feaa06b6b68f80b08e43ff8435bcd1ddbce2ce2d9adffd33efe635678eb787e39d9532f5fb0c22cedd2cb58445b2df14f96f5')
 
 build() {
-	cd build
-	/usr/src/nginx/configure --with-compat --add-dynamic-module=../$_modname-$pkgver
-	make modules
+  cp -r /usr/src/nginx .
+
+  cd nginx
+  ./configure --with-compat --add-dynamic-module=../$_modname-$pkgver
+  make modules
 }
 
 package() {
-	depends=("nginx-mainline")
-	install -Dm644 "$srcdir"/$_modname-$pkgver/LICENSE \
-	               "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm0644 "$_modname-$pkgver"/LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
 
-	cd build/objs
-	for mod in *.so; do
-		install -Dm755 $mod "$pkgdir"/usr/lib/nginx/modules/$mod
-	done
+  cd nginx/objs
+  for mod in *.so; do
+      install -Dm755 $mod "$pkgdir"/usr/lib/nginx/modules/$mod
+  done
 }
+
+# vim:set ts=2 sw=2 et:
