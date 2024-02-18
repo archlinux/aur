@@ -4,7 +4,7 @@
 _name=PaulXStretch
 pkgname=${_name,,}
 pkgver=1.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Extreme time stretching tool (standalone, VST3 and CLAP plugin)'
 arch=(aarch64 x86_64)
 url='https://sonosaurus.com/paulxstretch/'
@@ -19,7 +19,7 @@ groups=(clap-plugins pro-audio vst3-plugins)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/essej/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
         'fix-juce-x11.patch::https://github.com/juce-framework/JUCE/commit/4f9a9c7b.patch')
 sha256sums=('460b569c64dc5be57a963b863adc1b2606dc14a264701d8c983df3d3b6f7944d'
-            '0786e34ce5b3db2047a6999dbe22d722df9344da9f0719d725beec9501d93d48')
+            '4dd7ce8eaba1f90c514c9689b63729db8ecc482f6fba087cef9a960792ce3a3b')
 
 prepare() {
   cd $pkgname-$pkgver/deps/juce
