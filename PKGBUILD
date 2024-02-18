@@ -1,11 +1,11 @@
 # Maintainer: neeshy <neeshy@tfwno.gf>
 pkgname=psf-unifont
 pkgver=15.1.04
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Unifont Glyphs (PSF version)"
 arch=('any')
 url="https://unifoundry.com/unifont/index.html"
-license=('GPL2' 'custom:OFL')
+license=('OFL-1.1 OR GPL-2.0-or-later WITH Font-exception-2.0')
 source=("https://ftp.gnu.org/gnu/unifont/unifont-$pkgver/Unifont-APL8x16-$pkgver.psf.gz"{,.sig}
         "https://unifoundry.com/LICENSE.txt")
 sha256sums=('f6845bb729ac22845398925b93932469b32a25cf9450c071683808b7b8db6fd6'
