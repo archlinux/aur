@@ -5,7 +5,7 @@
 pkgname=dutree-git
 pkgver=0.2.18.r0.g44e877d
 pkgrel=1
-pkgdesc='A tool to analyze file system usage written in Rust'
+pkgdesc='Tool to analyze file system usage written in Rust'
 arch=(x86_64)
 url=https://github.com/nachoparker/dutree
 license=(GPL3)
@@ -20,23 +20,15 @@ pkgver() {
 }
 
 prepare() {
-  cd $pkgname
-  export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target="$CARCH-unknown-linux-gnu"
+  RUSTUP_TOOLCHAIN=stable cargo fetch --locked --manifest-path=$pkgname/Cargo.toml --target="$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd $pkgname
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  RUSTUP_TOOLCHAIN=stable cargo build --release --manifest-path=$pkgname/Cargo.toml --target-dir=$pkgname/target --all-features
 }
 
 check() {
-  cd $pkgname
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cargo test --frozen --all-features
+  RUSTUP_TOOLCHAIN=stable cargo test --release --manifest-path=$pkgname/Cargo.toml --target-dir=$pkgname/target
 }
 
 package() {
