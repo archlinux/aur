@@ -17,7 +17,7 @@ pkgbase = mintmenu
 	optdepends = mint-translations: translations files
 	optdepends = mate-screensaver: lock screen button
 	optdepends = pamac: package manager button
-	source = mintmenu-6.1.2::git+https://github.com/linuxmint/mintmenu#commit=905b9b1a94379242ed09011d57526a3c16f40fea
+	source = mintmenu-6.1.2::git+https://github.com/linuxmint/mintmenu#commit=7c034738de085f319a8d87bfe7d459f82f3a70b8
 	source = arch-compat.patch
 	sha256sums = SKIP
 	sha256sums = ad3b5267206782ea5631d030dc827b7f24c5eb6d5b71964d432e3ccb19266a9f
