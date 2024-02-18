@@ -1,13 +1,13 @@
 pkgbase = z80dasm
 	pkgdesc = Disassembler for the Zilog Z80 microprocessor
 	pkgver = 1.1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/ubuntu/+source/z80dasm/1.1.6-1
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/z80dasm/1.1.6-1/z80dasm_1.1.6-1.debian.tar.xz
-	md5sums = 4c0ec1111d71ea4280ebb2c517a532d3
-	sha256sums = 9b1aff60e589daf2dcad57c0840d025473a4dfaf05a737199810f2676b14dbaf
+	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/z80dasm/1.1.6-1/z80dasm_1.1.6.orig.tar.gz
+	md5sums = 2b20ebc6d712ff7393030a6d35c20c4b
+	sha256sums = 76d3967bb028f380a0c4db704a894c2aa939951faa5c5630b3355c327c0bd360
 
 pkgname = z80dasm
