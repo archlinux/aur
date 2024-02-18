@@ -3,10 +3,11 @@ pkgname=wenger-local-fs-mount-bind
 pkgdesc="Local Filesystem Mount Bind Service"
 
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 
 arch=('any')
 
+url="https://github.com/wengerbinning/wenger-local-fs-mount-bind.git"
 license=('GPL')
 
 # ============================================================================ #
