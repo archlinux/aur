@@ -53,7 +53,7 @@ while read line; do
 	msrc=$(echo $line | cut -d' ' -f1)
 	mdst=$(echo $line | cut -d' ' -f2)
 	#
-	mount_check $mdst && mount_bind $msrc $mdst
+	mount_check $mdst && mount_bind $msrc $mdst || exit 0
 	#
 done < $config
 
