@@ -3,7 +3,7 @@
 pkgname=taglib1
 _name=taglib
 pkgver=1.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Library for reading and editing the meta-data of several popular audio formats - version 1"
 arch=(x86_64)
 url="https://taglib.org/"
