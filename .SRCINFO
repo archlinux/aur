@@ -1,6 +1,6 @@
 pkgbase = python-django-saml2
 	pkgdesc = A Django application that builds a Fully Compliant SAML2 Service Provider
-	pkgver = 1.9.1
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = https://github.com/IdentityPython/djangosaml2
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-django-saml2
 	makedepends = python-setuptools
 	depends = python-django
 	depends = python-pysaml2
-	source = python-django-saml2-1.9.1.tar.gz::https://github.com/IdentityPython/djangosaml2/archive/v1.9.1.tar.gz
-	sha256sums = 9c17a21b47a0f6530cb4770731385dd26929a4470f7eda2898168470530bbae8
+	source = python-django-saml2-1.9.2.tar.gz::https://github.com/IdentityPython/djangosaml2/archive/v1.9.2.tar.gz
+	sha256sums = 7c1dc5573cba1ab16a4bed5fd5e619d0d6605a79a434fda4ce3c8429e3cf033e
 
 pkgname = python-django-saml2
