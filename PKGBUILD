@@ -1,6 +1,6 @@
 # Maintainer: ldev <ldev dot eu dot org> 
-pkgver=r1.db5071c
-pkgrel=2
+pkgver=r2.cbac2cb
+pkgrel=1
 
 pkgname=git-credential-pass-git
 pkgdesc="A simple git credentials helper for gnu pass"

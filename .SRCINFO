@@ -1,7 +1,7 @@
 pkgbase = git-credential-pass-git
 	pkgdesc = A simple git credentials helper for gnu pass
-	pkgver = r1.db5071c
-	pkgrel = 2
+	pkgver = r2.cbac2cb
+	pkgrel = 1
 	url = https://github.com/Xgames123/git-credential-pass
 	arch = any
 	license = MIT
