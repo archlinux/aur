@@ -10,7 +10,7 @@ arch=(any)
 url="https://github.com/Ajatt-Tools/impd"
 license=("GPL3")
 source=("${pkgname}::git+${url}")
-depends=('bash' 'gawk' 'ffmpeg' 'mpd' 'xdg-user-dirs')
+depends=('bash' 'file' 'gawk' 'ffmpeg' 'mpd' 'xdg-user-dirs')
 makedepends=('git')
 optdepends=(
 	'mpc: interaction with mpd'

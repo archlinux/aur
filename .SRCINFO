@@ -7,6 +7,7 @@ pkgbase = impd-git
 	license = GPL3
 	makedepends = git
 	depends = bash
+	depends = file
 	depends = gawk
 	depends = ffmpeg
 	depends = mpd
