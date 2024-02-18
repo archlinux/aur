@@ -3,8 +3,8 @@
 # Contributor: Grogi <roman@algofacil.info>
 
 pkgname=netlogo
-pkgver=6.3.0
-pkgrel=2
+pkgver=6.4.0
+pkgrel=1
 pkgdesc="A multi-agent programmable modeling environment."
 arch=('i686' 'x86_64')
 [ "$CARCH" = "i686"  ] && _NARCH=32
@@ -17,8 +17,8 @@ optdepends=('alsa-lib' 'libnet' 'gtk2' 'gcc-libs-multilib')
 install=$pkgname.install
 source=(http://ccl.northwestern.edu/netlogo/$pkgver/NetLogo-$pkgver-$_NARCH.tgz
         netlogo.png)
-[[ $_NARCH = 32 ]] && md5sums=('a27b68942bea414637efb89c2fb910f4' 'SKIP')
-[[ $_NARCH = 64 ]] && md5sums=('e66b20e33fc2eeea3c2542c6a08e6ecd' 'SKIP')
+[[ $_NARCH = 32 ]] && md5sums=('a9178c595689b456f3ec67b3d803932e' 'SKIP')
+[[ $_NARCH = 64 ]] && md5sums=('77de5796bcb428352bf3bc70e4116d03' 'SKIP')
 
 prepare() {
     gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='NetLogo' --exec='/opt/netlogo/bin/NetLogo'
