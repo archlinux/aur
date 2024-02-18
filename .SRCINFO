@@ -1,13 +1,13 @@
 pkgbase = ethq
 	pkgdesc = Ethernet NIC Queue stats viewer
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/isc-projects/ethq
 	arch = x86_64
 	arch = aarch64
 	license = MPL
 	depends = ncurses
-	source = https://github.com/isc-projects/ethq/archive/refs/tags/v0_6_2.tar.gz
-	md5sums = 426489b4fb1cb218b967accc89acdece
+	source = https://github.com/isc-projects/ethq/archive/refs/tags/v0_6_3.tar.gz
+	md5sums = 68a62b6269998a7761c2f9d83a0138ce
 
 pkgname = ethq
