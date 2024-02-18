@@ -1,7 +1,7 @@
 # Maintainer: Voxel <voxel.aur@gmail.com>
 pkgname=panelcleaner
 _module='PanelCleaner'
-pkgver='2.2.0'
+pkgver='2.3.0'
 pkgrel=1
 pkgdesc="An AI-powered tool to clean manga panels. Provides both a CLI (pcleaner) and GUI (Qt-based)"
 url="https://github.com/VoxelCubes/PanelCleaner"
