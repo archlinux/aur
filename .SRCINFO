@@ -1,6 +1,6 @@
 pkgbase = cargo-chef
 	pkgdesc = A cargo-subcommand to speed up Rust Docker builds using Docker layer caching
-	pkgver = 0.1.62
+	pkgver = 0.1.63
 	pkgrel = 1
 	url = https://github.com/LukeMathWalker/cargo-chef
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = cargo-chef
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = cargo-chef-0.1.62.tar.gz::https://github.com/LukeMathWalker/cargo-chef/archive/v0.1.62.tar.gz
-	sha512sums = 9f59941d704ee9707652513724dc19e8825418b3bd2b5f2b241dfbc9422eef72b0658503526170280c379765bc23f308459708f9764baec182610426c86b6b58
+	source = cargo-chef-0.1.63.tar.gz::https://github.com/LukeMathWalker/cargo-chef/archive/v0.1.63.tar.gz
+	sha512sums = c14618090b03d6a521d4ccf719998f5080943061bc39360fbf27c0c9d9a47db1d28c7d1902710a4e212fc3681d32aabc72c96f9b8e75a446f41bc6a9fe9b74d2
 
 pkgname = cargo-chef
