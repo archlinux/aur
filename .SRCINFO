@@ -1,12 +1,15 @@
 pkgbase = rime-sbxlm
 	pkgdesc = 声笔系列码配置
-	pkgver = 20231216
+	pkgver = 20240131
 	pkgrel = 1
+	url = https://gitee.com/sbxlm/sbxlm
 	install = rime-sbxlm.install
 	arch = any
 	groups = sbxlm
+	license = CC-BY-NC-4.0
 	makedepends = jq
 	makedepends = unzip
+	depends = bash
 	optdepends = librime-sbxlm-git
 	optdepends = fcitx5-rime
 	replaces = rime-sbxlm-sbfm
@@ -16,6 +19,6 @@ pkgbase = rime-sbxlm
 	source = fetch-release.sh
 	source = sbxlm-init
 	sha256sums = 8a63e188b5f0601d881503d7d058362eda5fcfdfcf88fa6b4010c8f063c5689e
-	sha256sums = 496953ce12837de3f575c913a5317996002bcbf8ba2337f697b2efe15d2e0e5e
+	sha256sums = 38115af55a8cbe99901d9cdc187659cdcb8010d8f24cbe509a26eac24dffec85
 
 pkgname = rime-sbxlm
