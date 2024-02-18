@@ -3,7 +3,7 @@
 
 pkgname=python312
 pkgver=3.12.2
-pkgrel=1
+pkgrel=2
 _pybasever=3.12
 _pymajver=3
 pkgdesc="Major release 3.12 of the Python high-level programming language"
@@ -36,7 +36,8 @@ build() {
   cd "${srcdir}/Python-${pkgver}"
 
   CFLAGS="${CFLAGS} -fno-semantic-interposition -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer"
-  ./configure --prefix=/usr \
+  ./configure ax_cv_c_float_words_bigendian=no \
+              --prefix=/usr \
               --enable-shared \
               --with-computed-gotos \
               --with-lto \
