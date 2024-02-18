@@ -1,7 +1,7 @@
 # Maintaner: Sergey A. <murlakatamenka@disroot.org>
 
 pkgname=rust-parallel
-pkgver=1.14.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='Fast parallel command runner, written in Rust'
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 conflicts=("${pkgname}-bin" "${pkgname}-git")
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f4a889608d1985367febb0c1112e46cad8d66ab67487a05f96c7bd4f300b1e85')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('0f8bfb69a277cef123a56b05baeaf9fdbb65f936a1dfe056457c58ea6afacb7c')
 
 
 prepare() {
