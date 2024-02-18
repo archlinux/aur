@@ -5,7 +5,7 @@ pkgname=pycharm-professional
 pkgver=2023.3.3
 pkgrel=1
 pkgdesc="Python IDE for Professional Developers. Professional Edition"
-arch=('x86_64' 'aarch64')
+arch=('x86_64' 'x86_64_v3' 'aarch64')
 url='https://www.jetbrains.com/pycharm/'
 conflicts=('pycharm' 'pycharm-community-edition' 'pycharm-community-jre' 'pycharm-community-eap' 'pycharm-eap' 'pycharm-community-jre-aarch64')
 provides=('pycharm')
@@ -15,12 +15,14 @@ backup=("opt/${pkgname}/bin/pycharm64.vmoptions"
 depends=('giflib' 'glibc' 'sh' 'libxtst' 'libxslt' 'libxss' 'nss' 'python' 'libdbusmenu-glib' 'python-setuptools' 'cython')
 options=('!strip')
 source_x86_64=("https://download-cf.jetbrains.com/python/${pkgname}-${pkgver}.tar.gz")
+source_x86_64_v3=($source_x86_64)
 source_aarch64=("https://download-cf.jetbrains.com/python/${pkgname}-${pkgver}-aarch64.tar.gz")
 source=("pycharm-professional.desktop"
         "ltedit.desktop")
 sha256sums=('a75264959b06a45ea0801729bc1688bfbd52da3c5fbf3d5b1ad9267860439291'
             '41f0e64dc7ec5ab85e7b0df1dc8237b56c94ccf9e4f2fa033eaadcc7756df3d3')
 sha256sums_x86_64=('29c4955410b2ea26f0cd0f44e02c8fe2b1b7dad075f0739652051faa6f84797b')
+sha256sums_x86_64_v3=($sha256sums_x86_64)
 sha256sums_aarch64=('bf0d8935b316ca2ce2b27a8ee98042f50a0b69ab1a7bb7bb1278941178d54fcf')
 # makedepends=('python-setuptools' 'cython')
 optdepends=('ipython: For enhanced interactive Python shell inside Pycharm'
