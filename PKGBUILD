@@ -9,7 +9,7 @@ _proj="hip"
 _pkg="ssh"
 _pkgname="${_pkg}-utils"
 pkgname="${_pkgname}-git"
-pkgver="0.1.1".r0.g"e7e693c58e4e4cab4f65b8fe47a87e46c8d8a0bc"
+pkgver="0.1.1.r4.gf8b4019e13d8a066cf1af561bdd6596b77442689"
 pkgrel=1
 _pkgdesc=(
   "A collection of SSH"
@@ -69,7 +69,7 @@ _branch="master"
     jq
   ) && \
   source+=(
-    "${_pkgname}.tar.gz::${_url}/archive/refs/heads/${_branch}.tar.gz"
+    "${_pkgname}-${_branch}.tar.gz::${_url}/archive/refs/heads/${_branch}.tar.gz"
   ) && \
   sha256sums+=(
     '85c9b02b1118b466cb78c934bbfbcfaaee1a1e560e3eee3c2a8153b5a50d50a5'
