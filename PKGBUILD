@@ -1,7 +1,7 @@
 # Maintainer: Kars Wang <jaklsy AT gmail.com>
 
 pkgname='perl-datetime-incomplete'
-pkgver=0.07
+pkgver=0.08
 pkgrel=1
 pkgdesc='Incomplete DateTime objects'
 _dist='DateTime-Incomplete'
@@ -14,7 +14,7 @@ makedepends=('perl-extutils-makemaker>=0')
 provides=()
 options=('!emptydirs' 'purge')
 source=("http://search.cpan.org/CPAN/authors/id/F/FG/FGLOCK/$_dist-$pkgver.tar.gz")
-sha256sums=('086a2442801637abc01e431ef5cdf13b022e7c9b04ab85bba7fc49266fe645c5')
+sha256sums=('b1e852e5cd3f8d5c38aa2e7fa5f8521ba22a52515936eb09597047288272b3ec')
 
 build() (
   cd "$srcdir/$_dist-$pkgver"

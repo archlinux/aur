@@ -1,6 +1,6 @@
 pkgbase = perl-datetime-incomplete
 	pkgdesc = Incomplete DateTime objects
-	pkgver = 0.07
+	pkgver = 0.08
 	pkgrel = 1
 	url = https://metacpan.org/release/DateTime-Incomplete
 	arch = any
@@ -13,8 +13,7 @@ pkgbase = perl-datetime-incomplete
 	depends = perl-test-simple>=0
 	options = !emptydirs
 	options = purge
-	source = http://search.cpan.org/CPAN/authors/id/F/FG/FGLOCK/DateTime-Incomplete-0.07.tar.gz
-	sha256sums = 086a2442801637abc01e431ef5cdf13b022e7c9b04ab85bba7fc49266fe645c5
+	source = http://search.cpan.org/CPAN/authors/id/F/FG/FGLOCK/DateTime-Incomplete-0.08.tar.gz
+	sha256sums = b1e852e5cd3f8d5c38aa2e7fa5f8521ba22a52515936eb09597047288272b3ec
 
 pkgname = perl-datetime-incomplete
-
