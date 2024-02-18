@@ -1,8 +1,7 @@
-diff --git a/lib/tmuxinator/config.rb b/lib/tmuxinator/config.rb
-index d14eb9a..d4eccaa 100644
---- a/lib/tmuxinator/config.rb
-+++ b/lib/tmuxinator/config.rb
-@@ -29,7 +29,7 @@ module Tmuxinator
+diff -BurN tmuxinator-3.1.2.orig/lib/tmuxinator/config.rb tmuxinator-3.1.2/lib/tmuxinator/config.rb
+--- tmuxinator-3.1.2.orig/lib/tmuxinator/config.rb	2024-02-16 15:37:37.000000000 -0800
++++ tmuxinator-3.1.2/lib/tmuxinator/config.rb	2024-02-17 21:25:24.745199728 -0800
+@@ -29,7 +29,7 @@
        # a custom value. (e.g. if $XDG_CONFIG_HOME is set to ~/my-config, the
        # return value will be ~/my-config/tmuxinator)
        def xdg
@@ -11,11 +10,10 @@ index d14eb9a..d4eccaa 100644
        end
  
        def xdg?
-diff --git a/spec/lib/tmuxinator/config_spec.rb b/spec/lib/tmuxinator/config_spec.rb
-index 09ab25f..9d6d7e2 100644
---- a/spec/lib/tmuxinator/config_spec.rb
-+++ b/spec/lib/tmuxinator/config_spec.rb
-@@ -53,7 +53,8 @@ describe Tmuxinator::Config do
+diff -BurN tmuxinator-3.1.2.orig/spec/lib/tmuxinator/config_spec.rb tmuxinator-3.1.2/spec/lib/tmuxinator/config_spec.rb
+--- tmuxinator-3.1.2.orig/spec/lib/tmuxinator/config_spec.rb	2024-02-16 15:37:37.000000000 -0800
++++ tmuxinator-3.1.2/spec/lib/tmuxinator/config_spec.rb	2024-02-17 21:25:24.745199728 -0800
+@@ -53,7 +53,8 @@
  
          Dir.mktmpdir do |dir|
            config_parent = "#{dir}/non_existent_parent/s"
@@ -25,7 +23,7 @@ index 09ab25f..9d6d7e2 100644
            expect(described_class.directory).
              to eq "#{config_parent}/tmuxinator"
            expect(File.directory?("#{config_parent}/tmuxinator")).to be true
-@@ -134,7 +135,8 @@ describe Tmuxinator::Config do
+@@ -134,7 +135,8 @@
  
    describe "#xdg" do
      it "is $XDG_CONFIG_HOME/tmuxinator" do
@@ -35,11 +33,10 @@ index 09ab25f..9d6d7e2 100644
      end
    end
  
-diff --git a/tmuxinator.gemspec b/tmuxinator.gemspec
-index df933d8..f8e9fe7 100644
---- a/tmuxinator.gemspec
-+++ b/tmuxinator.gemspec
-@@ -41,7 +41,7 @@ Gem::Specification.new do |s|
+diff -BurN tmuxinator-3.1.2.orig/tmuxinator.gemspec tmuxinator-3.1.2/tmuxinator.gemspec
+--- tmuxinator-3.1.2.orig/tmuxinator.gemspec	2024-02-16 15:37:37.000000000 -0800
++++ tmuxinator-3.1.2/tmuxinator.gemspec	2024-02-17 21:25:24.745199728 -0800
+@@ -41,7 +41,7 @@
  
    s.add_dependency "erubis", "~> 2.6"
    s.add_dependency "thor", "~> 1.3.0"

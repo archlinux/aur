@@ -1,6 +1,6 @@
 pkgbase = tmuxinator
 	pkgdesc = Manage complex tmux sessions easily
-	pkgver = 3.1.1
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://github.com/aziz/tmuxinator
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = tmuxinator
 	depends = ruby-xdg5
 	optdepends = zsh-completions: for ZSH completion
 	options = !emptydirs
-	source = tmuxinator-3.1.1.tar.gz::https://github.com/aziz/tmuxinator/archive/v3.1.1.tar.gz
+	source = tmuxinator-3.1.2.tar.gz::https://github.com/aziz/tmuxinator/archive/v3.1.2.tar.gz
 	source = xdg.patch
-	sha256sums = e9be8001042c735d49ec94398a69e65308d9d0ca6bacc0e9fd947c37d53e250c
-	sha256sums = 75d32aa7e9e7061a21ecb72bd4d3a76ea8610ec391a6dad1797d511cc8544ffb
+	sha256sums = f173d3481f01ad6321e639fa07473715c5f2210dad4b073bd0d1d87087f80785
+	sha256sums = bf91cc99026b1b465b00085512138df4717123ebb841acfb935c80162d14b0ba
 
 pkgname = tmuxinator

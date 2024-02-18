@@ -3,7 +3,7 @@
 # Contributor: Luca Cesari < luca AT cesari DOT me>
 
 pkgname=tmuxinator
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="Manage complex tmux sessions easily"
 arch=(any)
@@ -22,8 +22,8 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
   "xdg.patch"
 )
-sha256sums=('e9be8001042c735d49ec94398a69e65308d9d0ca6bacc0e9fd947c37d53e250c'
-            '75d32aa7e9e7061a21ecb72bd4d3a76ea8610ec391a6dad1797d511cc8544ffb')
+sha256sums=('f173d3481f01ad6321e639fa07473715c5f2210dad4b073bd0d1d87087f80785'
+            'bf91cc99026b1b465b00085512138df4717123ebb841acfb935c80162d14b0ba')
 
 prepare() {
   cd ${pkgname}-${pkgver}
