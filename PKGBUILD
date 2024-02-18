@@ -1,7 +1,7 @@
 # Maintainer: Laura Demkowicz-Duffy <laura@demkowiczduffy.co.uk>
 pkgname=packer-builder-arm-image
 _pkgname=packer-plugin-arm-image
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="Packer plugin for ARM images"
 url="https://github.com/solo-io/${_pkgname}"
@@ -10,7 +10,7 @@ license=('APACHE')
 depends=('glibc' 'multipath-tools' 'qemu-user-static')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/solo-io/${_pkgname}/archive/v${pkgver}.tar.gz")
-b2sums=('d34a7cdb00263ebcbfc78fcf32cf47d7d4880f525747feef6177ceb320c93c9745dcb8e443d406b141bfc3389f52fc60cb14e616c6b02b8d38ebc1b2c3d40c1c')
+b2sums=('320a2d54644a61e1c3e02caccea3ff1833e0ad411ec329edcbce94fb68f6fb4ac83e09c3120055ebf8eeccafac89e775bfab529924f05eadd8bcfa7c189c2c9e')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
