@@ -1,0 +1,11 @@
+pkgbase = atomdis-git
+	pkgdesc = AtomBIOS disassembler + data structure dumper
+	pkgver = r55.de3760c
+	pkgrel = 1
+	url = https://cgit.freedesktop.org/~mhopf/AtomDis/
+	arch = x86_64
+	license = GPL-2.0
+	source = git://people.freedesktop.org/~mhopf/AtomDis
+	sha256sums = SKIP
+
+pkgname = atomdis-git
