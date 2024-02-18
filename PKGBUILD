@@ -14,7 +14,7 @@ pkgbase="${_pkgbase}-git"
 pkgname=(
   "${pkgbase}"
 )
-pkgver="1.1.3.1.1".r3.g"31babec5a5ea9ec80e23dffd8bbba672acc862c5"
+pkgver="1.1.3.1.1.r4.g28097d0efd99dacf634a5f2b253a5ac004470eed"
 pkgrel=1
 pkgdesc="Simple SSH wrapper"
 arch=(
@@ -70,7 +70,7 @@ _branch="master"
     jq
   ) && \
   source+=(
-    "${_pkgname}.tar.gz::${_url}/archive/refs/heads/${_branch}.tar.gz"
+    "${_pkgname}-${_branch}.tar.gz::${_url}/archive/refs/heads/${_branch}.tar.gz"
   ) && \
   sha256sums+=(
     '85c9b02b1118b466cb78c934bbfbcfaaee1a1e560e3eee3c2a8153b5a50d50a5'
