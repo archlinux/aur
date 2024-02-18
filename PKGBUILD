@@ -23,7 +23,7 @@
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.7.4
+pkgver=6.7.5
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -53,7 +53,7 @@ source+=(
   "config-$pkgver"::https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/main/config
 )
 sha256sums+=(
-  'f68d9f5ffc0a24f850699b86c8aea8b8687de7384158d5ed3bede37de098d60c'
+  '29f6464061b8179cbb77fc5591e06a2199324e018c9ed730ca3e6dfb145539ff'
   'SKIP'
   'SKIP'
 )
