@@ -1,14 +1,14 @@
 # Maintainer: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 
 pkgname=yaml-bindings-git
-pkgver=r635.ba55f96
-pkgrel=2
+pkgver=r873.4548397
+pkgrel=1
 pkgdesc='Tooling for devicetree validation using YAML and jsonschema'
 arch=(any)
 url="https://github.com/devicetree-org/dt-schema"
 license=('BSD')
 depends=('python' 'python-ruamel-yaml' 'python-jsonschema' 'python-rfc3987' 'dtc')
-makedepends=('python-setuptools' 'python-pip')
+makedepends=('python-setuptools' 'python-setuptools-scm' 'python-build' 'python-installer' 'python-wheel')
 source=('yaml-bindings::git+https://github.com/devicetree-org/dt-schema.git')
 sha1sums=('SKIP')
 
@@ -19,10 +19,10 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${pkgname%-git}"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
