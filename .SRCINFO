@@ -9,6 +9,7 @@ pkgbase = vrc-get
 	makedepends = dotnet-sdk
 	depends = gcc-libs
 	depends = glibc
+	noextract = LiteDB-for-1.6.0.tar.gz
 	options = !lto
 	source = vrc-get-1.6.0.tar.gz::https://github.com/anatawa12/vrc-get/archive/refs/tags/v1.6.0.tar.gz
 	source = LiteDB-for-1.6.0.tar.gz::https://github.com/anatawa12/LiteDB/archive/7e7ceac241aceb60369e955374ff1353e4b4a22c.tar.gz
