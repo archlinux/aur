@@ -4,17 +4,17 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libidn2
-pkgver=2.3.4
+pkgver=2.3.7
 pkgrel=1
 arch=('any')
-pkgdesc="A free software implementation of IDNA2008 (mingw-w64)"
+pkgdesc="A free software implementation of IDNA2008 (android)"
 url="http://www.gnu.org/software/libidn"
 license=("GPL3, LGPL3")
 depends=("android-${_android_arch}-libunistring")
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://ftp.gnu.org/pub/gnu/libidn/libidn2-${pkgver}.tar.gz")
-sha256sums=('93caba72b4e051d1f8d4f5a076ab63c99b77faee019b72b9783b267986dbb45f')
+sha256sums=('4c21a791b610b9519b9d0e12b8097bf2f359b12f8dd92647611a929e6bfd7d64')
 
 build() {
     cd "${srcdir}/libidn2-${pkgver}"
