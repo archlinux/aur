@@ -1,6 +1,6 @@
 pkgbase = mongodb-compass-isolated
 	pkgdesc = The official GUI for MongoDB - Isolated Edition
-	pkgver = 1.42.0
+	pkgver = 1.42.1
 	pkgrel = 1
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
@@ -17,13 +17,11 @@ pkgbase = mongodb-compass-isolated
 	depends = lsb-release
 	depends = nodejs>=16.15.1
 	optdepends = org.freedesktop.secrets
-	source = mongodb-compass-isolated-1.42.0.tar.gz::https://github.com/mongodb-js/compass/archive/v1.42.0.tar.gz
+	source = mongodb-compass-isolated-1.42.1.tar.gz::https://github.com/mongodb-js/compass/archive/v1.42.1.tar.gz
 	source = hadron-build-ffmpeg.diff
-	source = hadron-build-os-dns-native.diff
 	source = fix-argv.diff
-	sha512sums = 6f4790df777d0c04580a661a51de903ef18b7891b965ca440548faed7ee7a9544a7fd338601e401d6df67f737d8e31a23c269bc7cc36afd8f8d0aa0899a927c3
+	sha512sums = dee3946302c713923403a91990c9395afaa017b27608ac2e25c78f71ce56ac3ac5409396b38ca858824c9de1fddca3438615071702ff532d64e6bdd68b240f98
 	sha512sums = 6338626b9c957c79cd761f19a3d17d856ff88ce96d38c5507269b8dbaf3f20bef00012d035e5e1bde6493db495e2cfce172bcd021a5a8ae1c37dcb5f7a46a875
-	sha512sums = 084dfe4feae0ac1997a141ac92294b4d132301bd493162abfe0a5acdff2f997928e5b24f21c27bcbce6c74b6b1d1014738d43a387074d7a3b5296279bbb15f6c
 	sha512sums = 375142120fd97a3fd9e24d19c864ee3b24e50a5e6b0b224b7ce74742dc5bde185056a9b6f1add63d5ce66e3f0a9309e03873096540e5697547d60a2bc9e769ae
 
 pkgname = mongodb-compass-isolated
