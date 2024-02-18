@@ -6,7 +6,8 @@
 _py="python"
 _py2="${_py}2"
 _proj="hip"
-_pkgname=ssh-utils
+_pkg="ssh"
+_pkgname="${_pkg}-utils"
 pkgname="${_pkgname}-git"
 pkgver=0.1.1.r0.ge7e693c
 pkgrel=1
@@ -40,9 +41,11 @@ optdepends=(
 )
 provides=(
   "${_pkgname}=${pkgver}"
+  "mk${_pkg}config=${pkgver}"
 )
 conflicts=(
   "${_pkgname}"
+  "mk${_pkg}config"
 )
 groups=(
  "${_proj}"
