@@ -1,13 +1,13 @@
 # Maintainer: allencch <allencch at hotmail dot com>
 pkgname=gapwm
 pkgver=1.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Genetic Algorithm Method for Optimizing a Position Weight Matrix"
 arch=('i686' 'x86_64')
-url="http://www.niehs.nih.gov/research/resources/software/biostatistics/gapwm/index.cfm"
+url="https://www.niehs.nih.gov/research/resources/software/biostatistics/gapwm"
 license=('gpl')
 depends=("sh")
-source=("${pkgname}10r1.tar.gz::http://www.niehs.nih.gov/research/resources/assets/docs/${pkgname}10r1targz.gz")
+source=("${pkgname}10r1.tar.gz::https://www.niehs.nih.gov/sites/default/files/2024-02/gapwm10r1.tar.gz")
 md5sums=('bae6e6202f8ac12765f58e5b442d0f97')
 
 package() {
