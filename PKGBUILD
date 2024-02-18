@@ -2,7 +2,7 @@
 _target='compass-readonly'
 _edition=' Readonly'
 pkgname="mongodb-$_target"
-_pkgver='1.42.0'
+_pkgver='1.42.1'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition'
@@ -18,12 +18,10 @@ optdepends=('org.freedesktop.secrets')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
 	'hadron-build-ffmpeg.diff'
-	'hadron-build-os-dns-native.diff'
 	'fix-argv.diff'
 )
-sha512sums=('6f4790df777d0c04580a661a51de903ef18b7891b965ca440548faed7ee7a9544a7fd338601e401d6df67f737d8e31a23c269bc7cc36afd8f8d0aa0899a927c3'
+sha512sums=('dee3946302c713923403a91990c9395afaa017b27608ac2e25c78f71ce56ac3ac5409396b38ca858824c9de1fddca3438615071702ff532d64e6bdd68b240f98'
             '6338626b9c957c79cd761f19a3d17d856ff88ce96d38c5507269b8dbaf3f20bef00012d035e5e1bde6493db495e2cfce172bcd021a5a8ae1c37dcb5f7a46a875'
-            '084dfe4feae0ac1997a141ac92294b4d132301bd493162abfe0a5acdff2f997928e5b24f21c27bcbce6c74b6b1d1014738d43a387074d7a3b5296279bbb15f6c'
             '375142120fd97a3fd9e24d19c864ee3b24e50a5e6b0b224b7ce74742dc5bde185056a9b6f1add63d5ce66e3f0a9309e03873096540e5697547d60a2bc9e769ae')
 
 _sourcedirectory="compass-$_pkgver"
@@ -39,12 +37,6 @@ prepare() {
 
 	# Force the newest version of electron-to-chromium
 	sed -E -i 's|(.*)("electron": ")|\1"electron-to-chromium": "'"$(npm view 'electron-to-chromium@latest' version)"'",\n\1\2|' 'packages/compass/package.json'
-
-	if [[ ! "$_target" =~ -beta$ ]]; then
-		# Use a new version of os-dns-native
-		sed -E -i "s|(.*)\"os-dns-native\": \".*\",|\1\"os-dns-native\": \"1\.2\.1\",|" 'packages/compass/package.json'
-		patch --forward -p1 < "$srcdir/hadron-build-os-dns-native.diff"
-	fi
 
 	# Don't use the bundled ffmpeg
 	patch --forward -p1 < "$srcdir/hadron-build-ffmpeg.diff"
