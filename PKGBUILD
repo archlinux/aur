@@ -2,7 +2,7 @@
 _base=innerscope
 pkgname=python-${_base}
 pkgdesc="Expose the inner scope of functions"
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 arch=(any)
 url="https://github.com/eriknw/${_base}"
@@ -11,7 +11,7 @@ depends=(python-toolz)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('a1eebb3445cdeabe7b85594c43e22ed762fbd58a8fd181eeded94a5d5a79dcd22e96012c005e66e36da08917a08ce3f07fa5ed73224ec344a6313d54a71d7d49')
+sha512sums=('34d7ba7ffa587399e917e830a6d81aedd79699395ac6c7bfeb1c8f4a4aa4701c06e8c76955a4a0c001f187e80bbc3de5eabb46bc3a4353888de77650ebe89a1a')
 
 build() {
   cd ${_base}-${pkgver}
