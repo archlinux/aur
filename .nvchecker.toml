@@ -1,0 +1,5 @@
+[zola]
+source = "github"
+github = "getzola/zola"
+prefix = "v"
+use_max_tag = true
