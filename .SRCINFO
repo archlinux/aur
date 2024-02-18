@@ -1,0 +1,19 @@
+pkgbase = python-csdr-eti-git
+	pkgdesc = Python bindings for csdr-eti
+	pkgver = r12.676663b
+	pkgrel = 1
+	url = https://github.com/jketterl/pycsdr-eti
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = csdr-eti
+	provides = python-csdr-eti
+	provides = pycsdr-eti
+	conflicts = python-csdr-eti
+	conflicts = pycsdr-eti
+	source = python-csdr-eti-git::git+https://github.com/jketterl/pycsdr-eti.git
+	md5sums = SKIP
+
+pkgname = python-csdr-eti-git
