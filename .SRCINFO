@@ -1,6 +1,6 @@
 pkgbase = vinegar-git
-	pkgdesc = A launcher for Roblox Player and Studio (Git version)
-	pkgver = 1.7.3.r9.gcd7faa4
+	pkgdesc = Fast and robust bootstrapper for Roblox that has many ease-of-use features.
+	pkgver = 1.7.3.r11.g6f40d4d
 	pkgrel = 1
 	url = https://github.com/vinegarhq/vinegar
 	arch = x86_64

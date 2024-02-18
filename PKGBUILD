@@ -3,9 +3,9 @@
 
 _pkgname=vinegar
 pkgname=vinegar-git
-pkgver=1.7.3.r9.gcd7faa4
+pkgver=1.7.3.r11.g6f40d4d
 pkgrel=1
-pkgdesc="A launcher for Roblox Player and Studio (Git version)"
+pkgdesc="Fast and robust bootstrapper for Roblox that has many ease-of-use features."
 arch=("x86_64")
 url="https://github.com/vinegarhq/vinegar"
 license=("GPL-3.0-only")
@@ -26,25 +26,17 @@ prepare() {
   # (upstream repo has them anyway and building them causes race conditions)
   sed -i 's/install-icons: icons/install-icons:/' Makefile
 
-  # Disable a malicious feature
-  sed -i 's/_, err := os.Stat(dirs.Prefix); err == nil/false/' cmd/vinegar/main.go
-}
-
-pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  make clean
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
 
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -modcacherw"
-
-  # Needed for RELRO support (which is a security feature)
   export CGO_LDFLAGS="${LDFLAGS}"
-
-  # Make sure Vinegar rebuilds
-  make clean
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
 
   make DESTDIR="${pkgdir}" PREFIX="/usr" all
 }
@@ -52,9 +44,6 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  # This does all the work (except for the optional LICENSE file)
   make DESTDIR="${pkgdir}" PREFIX="/usr" install
-
-  # Install GPLv3 license (just in case)
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
