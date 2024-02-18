@@ -1,13 +1,13 @@
 # SPDX-License-Identifier: AGPL-3.0
 #
-# Maintainer: Truocolo <truocolo@aol.com>
-# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Maintainer:  Truocolo <truocolo@aol.com>
+# Maintainer:  Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: Marcell Meszaros (MarsSeed) <marcell.meszaros@runbox.eu>
 
 _proj="hip"
 _pkgbase=dynssh
 pkgname="${_pkgbase}-git"
-pkgver=0.1.2.1.r1.gfc370eb
+pkgver=1.1.2.1.1.r5.gd8f63b4
 pkgrel=1
 pkgdesc="Simple SSH wrapper"
 arch=(
@@ -20,7 +20,8 @@ _ns='themartiancompany'
 _local="${HOME}/${_pkgbase}"
 url="${_host}/${_ns}/${_pkgbase}"
 license=(
-  AGPL3)
+  AGPL3
+)
 depends=(
   openssh
   net-tools
@@ -105,6 +106,14 @@ pkgver() {
         's/-/+/g')"
   _parse_ver \
     "${_pkgver}"
+}
+
+check() {
+  cd \
+    "${_pkgbase}"
+  make \
+    -k \
+    check
 }
 
 package() {
