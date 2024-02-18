@@ -1,6 +1,6 @@
 pkgbase = perl-test-api
 	pkgdesc = Test a list of subroutines provided by a module
-	pkgver = 0.005
+	pkgver = 0.010
 	pkgrel = 1
 	url = https://metacpan.org/release/Test-API
 	arch = any
@@ -16,8 +16,7 @@ pkgbase = perl-test-api
 	depends = perl-test-simple>=0.86
 	options = !emptydirs
 	options = purge
-	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Test-API-0.005.tar.gz
-	sha256sums = fde638cf0055a570586ca1afd2b56e750a907203f094a704548cf90b2c197d61
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Test-API-0.010.tar.gz
+	sha256sums = 7e6034f0eb29314d31d3354828106ace2745f2160cd3c1443a29b68f53ca2313
 
 pkgname = perl-test-api
-

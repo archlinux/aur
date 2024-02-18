@@ -1,7 +1,7 @@
 # Maintainer: Kars Wang <jaklsy AT gmail.com>
 
 pkgname='perl-test-api'
-pkgver=0.005
+pkgver=0.010
 pkgrel=1
 pkgdesc='Test a list of subroutines provided by a module'
 _dist='Test-API'
@@ -14,7 +14,7 @@ makedepends=()
 provides=()
 options=('!emptydirs' 'purge')
 source=("http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/$_dist-$pkgver.tar.gz")
-sha256sums=('fde638cf0055a570586ca1afd2b56e750a907203f094a704548cf90b2c197d61')
+sha256sums=('7e6034f0eb29314d31d3354828106ace2745f2160cd3c1443a29b68f53ca2313')
 
 build() (
   cd "$srcdir/$_dist-$pkgver"
