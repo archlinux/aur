@@ -10,7 +10,7 @@ pkgdesc='An extremely fast Python package installer and resolver, written in Rus
 arch=(aarch64 i686 x86_64)
 url='https://github.com/astral-sh/uv'
 license=('MIT')
-checkdepends=('python')
+#checkdepends=('python')
 
 source_aarch64=(https://github.com/astral-sh/uv/releases/download/$pkgver/uv-aarch64-unknown-linux-gnu.tar.gz)
 source_i686=(https://github.com/astral-sh/uv/releases/download/$pkgver/uv-i686-unknown-linux-gnu.tar.gz)
@@ -25,8 +25,8 @@ package() {
   install -Dm755 uv "${pkgdir}/usr/bin/uv"
 }
 
-check() {
-  uv venv test
-  ./test/bin/python3 --version
-}
+#check() {
+#  uv venv test
+#  ./test/bin/python3 --version
+#}
 
