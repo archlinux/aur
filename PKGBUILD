@@ -2,7 +2,7 @@
 
 _name='awatcher'
 pkgname="$_name-git"
-pkgver=r48.9f89fdb
+pkgver=r85.cba6687
 pkgrel=1
 pkgdesc="Activity and idle watchers"
 arch=('x86_64')
@@ -42,10 +42,11 @@ build() {
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release
 
+    mv ./target/release/${_name} ./target/release/aw-${_name} 
 }
 
 package() {
     cd "${_name}"
-    install -Dm0755 ./target/release/awatcher -t "${pkgdir}/usr/bin/"
+    install -Dm0755 ./target/release/aw-${_name} -t "${pkgdir}/usr/bin"
 }
 
