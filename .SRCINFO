@@ -1,6 +1,6 @@
 pkgbase = progeek-loading-plymouth-theme-git
 	pkgdesc = Progeek loading animation theme for plymouth
-	pkgver = 1.0.0
+	pkgver = d29e42d
 	pkgrel = 1
 	arch = any
 	license = GPL
