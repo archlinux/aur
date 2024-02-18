@@ -1,60 +1,164 @@
-# Maintainer: Marco Rubin <marco.rubin@protonmail.com>
+# Maintainer:
+# Contributor: Marco Rubin <marco.rubin@protonmail.com>
 
-# check $srcdir/$_name-$pkgver/global.json for the dotnet (SDK and runtime) version required
-_name=Ryujinx
-pkgname=ryujinx
-pkgver=1.1.1151
+## options
+if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ] ; then
+  : ${_autoupdate:=false}
+else
+  : ${_autoupdate:=true}
+fi
+
+: ${_build_git:=false}
+
+unset _pkgtype
+[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
+
+## basic info
+_pkgname="ryujinx"
+pkgname="$_pkgname${_pkgtype:-}"
+pkgver=1.1.1202
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
-arch=(x86_64)
 url="https://github.com/Ryujinx/Ryujinx"
 license=('MIT')
-depends=('dotnet-runtime-8.0')
-makedepends=('dotnet-sdk-8.0')
-options=(!strip)
-install=ryujinx.install
-source=("$url/archive/$pkgver.tar.gz"
-		"ryujinx.install")
-b2sums=('24ac908a648dafe368d2cac0baa2e35aaeb46b890deb70d69b4af701c02e3e5d502b75bb06af9c172d6e001abe2f52552383f549553b27f9fa2097c02f3cac95'
-        '5e7013a31c2163a8baa71bfc36ef2da3d7580b31966abb13b54271f23f3eda9e591d56c7d448a6c18933e1f21560bbd4d3db62f38f2aae37220ffb4318edfe49')
+arch=(x86_64)
 
+# main package
+_main_package() {
+  makedepends=(
+    'desktop-file-utils'
+    'dotnet-sdk-8.0' # check global.json
+  )
+
+  options=('!strip')
+  install="$_pkgname.install"
+
+  if [ "${_build_git::1}" != "t" ] ; then
+    _main_stable
+  else
+    _main_git
+  fi
+}
+
+# stable package
+_main_stable() {
+  _update_version
+
+  _pkgsrc="Ryujinx-$_pkgver"
+  _pkgext="tar.gz"
+  source=("$_pkgname-$_pkgver.$_pkgext"::"$url/archive/$_pkgver.$_pkgext")
+  sha256sums=('SKIP')
+
+  pkgver() {
+    echo "${_pkgver:?}"
+  }
+}
+
+# git package
+_main_git() {
+  makedepends+=('git')
+
+  provides+=("$_pkgname=${pkgver%%.r*}")
+  conflicts+=("$_pkgname")
+
+  _pkgsrc="$_pkgname"
+  source+=("$_pkgsrc"::"git+$url.git")
+  sha256sums+=('SKIP')
+
+  pkgver() {
+    cd "$_pkgsrc"
+
+    git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
+      | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+  }
+}
+
+# common functions
 build() {
-	cd $_name-$pkgver
+  cd "$_pkgsrc"
 
-	export DOTNET_CLI_TELEMETRY_OPTOUT=1
-	
-	dotnet clean
-	dotnet nuget locals all -c
+  export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
-	_args="-c Release \
-		--nologo \
-		-p:DebugType=embedded \
-		-p:ExtraDefineConstants=DISABLE_UPDATER%2CFORCE_EXTERNAL_BASE_DIR \
-		-p:Version=$pkgver \
-		-r linux-x64 \
-		--self-contained true"
-	dotnet publish $_args -o publish     src/Ryujinx
-	dotnet publish $_args -o publish_ava src/Ryujinx.Ava
+  dotnet clean
+  dotnet nuget locals all -c
+
+  local _args=(
+    -c Release
+    -r linux-x64
+    --nologo
+    --self-contained true
+    -p:DebugType=embedded
+    -p:ExtraDefineConstants=DISABLE_UPDATER%2CFORCE_EXTERNAL_BASE_DIR
+    -p:Version=${pkgver%%.r*}
+  )
+
+  dotnet publish "${_args[@]}" -o publish     src/Ryujinx
+  dotnet publish "${_args[@]}" -o publish_ava src/Ryujinx.Ava
 }
 
 package() {
-	cd $_name-$pkgver
+  cd "$_pkgsrc"
 
-	mkdir -p "$pkgdir/opt/ryujinx"
-	cp -R publish/*     "$pkgdir/opt/ryujinx/"
-	cp -R publish_ava/* "$pkgdir/opt/ryujinx/"
-	chmod 755 "$pkgdir/opt/ryujinx/Ryujinx"
-	chmod 755 "$pkgdir/opt/ryujinx/Ryujinx.Ava"
-	chmod +x  "$pkgdir/opt/ryujinx/Ryujinx.sh"
+  # program
+  install -dm755 "$pkgdir/opt/ryujinx"
+  cp --reflink=auto -r publish/*     "$pkgdir/opt/ryujinx/"
+  cp --reflink=auto -r publish_ava/* "$pkgdir/opt/ryujinx/"
 
-	install -dm755 "$pkgdir/usr/bin"
-	ln -s "/opt/ryujinx/Ryujinx"     "$pkgdir/usr/bin/Ryujinx"
-	ln -s "/opt/ryujinx/Ryujinx.Ava" "$pkgdir/usr/bin/Ryujinx.Ava"
-	ln -s "/opt/ryujinx/Ryujinx.sh"  "$pkgdir/usr/bin/Ryujinx.sh"
+  # symlinks
+  install -dm755 "$pkgdir/usr/bin"
+  ln -s "/opt/ryujinx/Ryujinx"     "$pkgdir/usr/bin/ryujinx"
+  ln -s "/opt/ryujinx/Ryujinx.Ava" "$pkgdir/usr/bin/ryujinx.ava"
 
-	install -Dm644 distribution/linux/Ryujinx.desktop  "$pkgdir/usr/share/applications/Ryujinx.desktop"
-	install -Dm644 distribution/misc/Logo.svg          "$pkgdir/usr/share/icons/hicolor/scalable/apps/Ryujinx.svg"
-	install -Dm644 distribution/linux/mime/Ryujinx.xml "$pkgdir/usr/share/mime/packages/Ryujinx.xml"
+  # .desktop
+  install -Dm644 distribution/linux/Ryujinx.desktop  "$pkgdir/usr/share/applications/ryujinx.desktop"
 
-	install -dm777 "$pkgdir/opt/ryujinx/Logs" # create writable logs directory
+  # icon
+  install -Dm644 distribution/misc/Logo.svg          "$pkgdir/usr/share/pixmaps/ryujinx.svg"
+
+  # mimetype
+  install -Dm644 distribution/linux/mime/Ryujinx.xml "$pkgdir/usr/share/mime/packages/ryujinx.xml"
+
+  # license
+  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/"
+
+  # fix permissions
+  #chmod -R u=rwX,go=rX "$pkgdir"
+  find "$pkgdir" -type d -exec chmod 755 {} \;
+  find "$pkgdir" -type f -exec chmod 644 {} \;
+  chmod 755 "$pkgdir/opt/ryujinx/Ryujinx"
+  chmod 755 "$pkgdir/opt/ryujinx/Ryujinx.Ava"
+  chmod 755 "$pkgdir/opt/ryujinx/Ryujinx.sh"
+
+  # writable log directory
+  install -dm777 "$pkgdir/opt/ryujinx/Logs"
+
+  # fix desktop file
+  desktop-file-edit --set-key="Exec" --set-value="ryujinx %f" "$pkgdir/usr/share/applications/ryujinx.desktop"
+  desktop-file-edit --set-icon="ryujinx" "$pkgdir/usr/share/applications/ryujinx.desktop"
 }
+
+# update version
+_update_version() {
+  : ${_pkgver:=${pkgver%%.r*}}
+
+  if [[ "${_autoupdate::1}" != "t" ]] ; then
+    return
+  fi
+
+  local _response=$(curl -Ssf "$url/releases.atom")
+  local _tag=$(
+    printf '%s' "$_response" \
+      | grep '"https://.*/releases/tag/.*"' \
+      | sed -E 's@^.*/releases/tag/(.*)".*$@\1@' \
+      | grep -Ev '[a-z]{2}' | sort -rV | head -1
+  )
+  local _pkgver_new="${_tag#v}"
+
+  # update _pkgver
+  if [ "$_pkgver" != "${_pkgver_new:?}" ] ; then
+    _pkgver="${_pkgver_new:?}"
+  fi
+}
+
+# execute
+_main_package
