@@ -1,6 +1,6 @@
 pkgbase = awatcher-git
 	pkgdesc = Activity and idle watchers
-	pkgver = r48.9f89fdb
+	pkgver = r85.cba6687
 	pkgrel = 1
 	url = https://github.com/2e3s/awatcher
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = awatcher-git
 	depends = activitywatch
 	provides = awatcher
 	conflicts = awatcher
+	conflicts = aw-awatcher
 	source = awatcher::git+https://github.com/2e3s/awatcher
 	sha256sums = SKIP
 
