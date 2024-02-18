@@ -1,10 +1,10 @@
 # Maintainer: neeshy <neeshy@tfwno.gf>
 pkgname=mem-suspend
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="A script for suspending to memory"
 arch=('x86_64')
-license=('custom:WTFPL')
+license=('MIT')
 source=("mem-suspend.c")
 sha256sums=('42f0e60edacf574e2f542fea746c4c59a558a2f816d7c37c30bb5fb6cc03d364')
 
