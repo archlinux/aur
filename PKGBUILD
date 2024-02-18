@@ -4,7 +4,7 @@
 
 pkgname=qstat
 pkgver=2.17
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line program that displays information about Internet game servers."
 url="https://github.com/Unity-Technologies/qstat"
 arch=('i686' 'x86_64')
@@ -18,6 +18,7 @@ sha512sums=('880549d220a9a9046910bc2e5564b09349870110c77249b66d2ca77143327c83473
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
+    export QSTAT_VERSION="${pkgver}"
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc
     make

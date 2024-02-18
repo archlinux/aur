@@ -1,7 +1,7 @@
 pkgbase = qstat
 	pkgdesc = A command-line program that displays information about Internet game servers.
 	pkgver = 2.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Unity-Technologies/qstat
 	arch = i686
 	arch = x86_64
