@@ -1,48 +1,59 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=kicad-allegro-git
-pkgver=4968f13
+pkgver=r9.4968f13
 pkgrel=1
 pkgdesc="Converter from Allegro to KiCad, and Allegro extract viewer "
-arch=('any')
+arch=('aarch64'
+    'riscv64'
+    'x86_64')
 url="https://github.com/system76/kicad-allegro"
 license=("unkown")
-provides=(${pkgname})
-conflicts=(${pkgname} ${pkgname%-git})
-#replaces=(${pkgname})
-depends=('cargo')
-makedepends=('git' 'rust')
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
+#replaces=()
+depends=(glibc
+    gcc-libs)
+makedepends=(git
+    cargo)
+optdepends=('kicad')
 backup=()
-options=('!strip')
+options=()
 #install=${pkgname}.install
-source=("${pkgname%-git}::git+https://github.com/system76/kicad-allegro.git")
+source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${pkgname%-git}/"
-#     git describe --long --tags | sed 's/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
-    git describe --always --tags | sed 's/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${srcdir}/${pkgname}"
+    ( set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {
-# build crm
-    cd "${srcdir}/${pkgname%-git}/"
-    cargo build --release
+    cd "${srcdir}/${pkgname}/"
+
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --release --all-features
 }
 
-# check() {
-#     cd "${srcdir}/${pkgname%-git}/"
+check() {
+    cd "${srcdir}/${pkgname}/"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo fix --bin "kicad-allegro" --tests
 #     cargo test --release
-# }
+}
 
 package() {
-# install crm
-    install -Dm0755 "${srcdir}/${pkgname%-git}/target/release/${pkgname%-git}" "${pkgdir}/usr/share/${pkgname%-git}/${pkgname%-git}"
-
-    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-git}" << EOF
-#!/bin/env bash
-cd /usr/share/${pkgname%-git}/
-./${pkgname%-git} "\$@"
-EOF
-
+    cd "${srcdir}/${pkgname}/"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
 }
