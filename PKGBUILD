@@ -2,7 +2,7 @@
 pkgname=progeek-loading-plymouth-theme-git
 pkgver="1.0.0"
 pkgrel=1
-pkgdesc="PROGEEK loading animation plymouth theme"
+pkgdesc="Progeek loading animation theme for plymouth"
 arch=("any")
 url=""
 license=('GPL')
