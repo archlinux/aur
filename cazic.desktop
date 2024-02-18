@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Audio;Music;
+Comment=Another music player created with Tauri!
+Exec=cazic
+Icon=cazic
+Name=Cazic
+Terminal=false
+Type=Application
