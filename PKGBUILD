@@ -1,10 +1,10 @@
 # SPDX-License-Identifier: AGPL-3.0
 #
-# Maintainer: Truocolo <truocolo@aol.com>
-# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Maintainer:  Truocolo <truocolo@aol.com>
+# Maintainer:  Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
-_py="python"
-_py2="${_py}2"
+_git=false
+_local=false
 _proj="hip"
 _pkg="ssh"
 _pkgname="${_pkg}-utils"
@@ -25,6 +25,7 @@ _host="https://${_gh}"
 _ns='themartiancompany'
 _local="${HOME}/${_pkgname}"
 url="${_host}/${_ns}/${_pkgname}"
+_gh_api="https://api.${_gh}/repos/${_ns}/${_pkgname}"
 license=(
   AGPL3
 )
@@ -32,7 +33,6 @@ depends=(
   bash
 )
 makedepends=(
-  git
 )
 checkdepends=(
   shellcheck
@@ -51,13 +51,31 @@ groups=(
  "${_proj}"
  "${_proj}-git"
 )
+_url="${url}"
+[[ "${_local}" == true ]] && \
+  _url="${_local}"
+source=()
 _branch="master"
-source=(
-  "git+${url}#branch=${_branch}"
-  # "git+${_local}"
-)
+[[ "${_git}" == true ]] && \
+  makedepends+=(
+    git
+  ) && \
+  source+=(
+    "${_pkgname}-${_branch}::git+${_url}#branch=${_branch}"
+  )
+[[ "${_git}" == false ]] && \
+  makedepends+=(
+    curl
+    jq
+  ) && \
+  source+=(
+    "${_pkgname}.tar.gz::${_url}/archive/refs/heads/${_branch}.tar.gz"
+  ) && \
+  sha256sums+=(
+    '85c9b02b1118b466cb78c934bbfbcfaaee1a1e560e3eee3c2a8153b5a50d50a5'
+  )
 sha256sums=(
-  SKIP
+    SKIP
 )
 
 _nth() {
@@ -69,6 +87,42 @@ _nth() {
     awk \
       -F '+' \
       '{print $'"${_n}"'}'
+}
+
+_jq_pkgver() {
+  local \
+    _version \
+    _rev \
+    _commit
+  _version="$( \
+    curl \
+      --silent \
+      "${_gh_api}/tags" | \
+      jq \
+        '.[0].name')"
+  _version_commit="$( \
+    curl \
+      --silent \
+      "${_gh_api}/tags" | \
+      jq \
+        '.[0].commit.sha')"
+  _rev="$( \
+    curl \
+      --silent \
+      "${_gh_api}/commits" | \
+      jq \
+        'map(.sha == '${_version_commit}' ) | index(true)')"
+  _commit="$( \
+    curl \
+      --silent \
+      "${_gh_api}/commits" | \
+      jq \
+        '.[0].sha')"
+  printf \
+    "%s.r%s.g%s" \
+    "${_version}" \
+    "${_rev}" \
+    "${_commit}"
 }
 
 _parse_ver() {
@@ -99,11 +153,9 @@ _parse_ver() {
     "${_out}"
 }
 
-pkgver() {
+_git_pkgver() {
   local \
     _pkgver
-  cd \
-    "${_pkgname}"
   _pkgver="$( \
     git \
       describe \
@@ -115,6 +167,16 @@ pkgver() {
     "${_pkgver}"
 }
 
+pkgver() {
+  cd \
+    "${_pkgname}-${_branch}"
+  if [[ "${_git}" == true ]]; then
+    _git_pkgver
+  elif [[ "${_git}" == false ]]; then
+    _jq_pkgver
+  fi
+}
+
 check() {
   cd "${_pkgname}"
   make -k check
@@ -122,7 +184,7 @@ check() {
 
 package() {
   cd \
-    "${_pkgname}"
+    "${_pkgname}-${_branch}"
   make \
     DESTDIR="${pkgdir}" \
     install
