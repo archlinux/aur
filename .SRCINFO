@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-libnghttp2
-	pkgdesc = Framing layer of HTTP/2 is implemented as a reusable C library (mingw-w64)
+	pkgdesc = Framing layer of HTTP/2 is implemented as a reusable C library (android)
 	pkgver = 1.58.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nghttp2.org/
 	arch = any
 	license = MIT
