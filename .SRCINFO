@@ -1,7 +1,7 @@
 pkgbase = vinegar
 	pkgdesc = A launcher for Roblox Player and Studio
 	pkgver = 1.7.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vinegarhq/vinegar
 	arch = x86_64
 	license = GPL-3.0-only
