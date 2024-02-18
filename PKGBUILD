@@ -2,7 +2,7 @@
 # Contributor: Ashwin <ashwinvis+arch_@t_Pr0t0nM4il_c0m>
 _base=fluiddyn
 pkgname=python-${_base}
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="A framework for studying fluid dynamics using Python"
 arch=(any)
@@ -13,7 +13,7 @@ optdepends=('python-pyfftw: Calculate FFT')
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-scipy ipython)
 source=(${url}/-/archive/${pkgver}/${_base}-${pkgver}.tar.gz)
-sha512sums=('4d4857c18df261ec2d8bdd3dc136d05ba1ec765401c46bf924c4e4bbd11e32265a3151f311ade51e299663a0636247333fb7194a8d456c77f2b8f973d89196c4')
+sha512sums=('1a9e4b7085aeceb54f87ae03bffe8dc13a307176b9279a00e70ec9fa2a3bc1599e4025599d9eb4e161daadf3eead2add40037d41e826df15c2f69791c6681b3a')
 
 build() {
   cd ${_base}-${pkgver}
