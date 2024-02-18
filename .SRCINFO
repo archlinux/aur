@@ -1,6 +1,6 @@
 pkgbase = bacnet-stack
 	pkgdesc = BACnet protocol stack and diagnostic tools (bacrp, bacwp, etc.)
-	pkgver = 1.0.0
+	pkgver = 1.3.3
 	pkgrel = 1
 	url = https://sourceforge.net/projects/bacnet/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = bacnet-stack
 	license = GPL
 	provides = bacnet-stack
 	conflicts = bacnet-stack
-	source = https://sourceforge.net/projects/bacnet/files/bacnet-stack/bacnet-stack-1.0.0/bacnet-stack-1.0.0.tgz
-	md5sums = 20cff7406566be1ab498f1bfeb68e1f9
-	sha256sums = 2a73d0b6b687604fb3d001fbd97538665202ffd1b7913b76faddb061e714c115
+	source = https://sourceforge.net/projects/bacnet/files/bacnet-stack/bacnet-stack-1.3.3/bacnet-stack-1.3.3.tgz
+	md5sums = e15f6f8c375cd76086661da69e7420e6
+	sha256sums = d06f17964b4630f5d43947340b0ba57e03ec2af68e4bbc691500005f3ad58e1f
 
 pkgname = bacnet-stack
