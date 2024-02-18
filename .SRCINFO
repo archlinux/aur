@@ -1,0 +1,17 @@
+pkgbase = gpdconfig-git
+	pkgdesc = Configuration tool for GPD Win devices.
+	pkgver = r335.5816c96
+	pkgrel = 1
+	url = https://github.com/pelrun/pyWinControls.git
+	arch = x86_64
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-setuptools
+	source = git+https://github.com/pelrun/pyWinControls.git
+	sha512sums = SKIP
+
+pkgname = gpdconfig-git
