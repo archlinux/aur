@@ -19,6 +19,7 @@ makedepends=(
 provides=(${_name})
 conflicts=(
     ${_name}
+    aw-${_name}
 )
 
 source=("${_name}::git+$url")
