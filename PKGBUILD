@@ -2,7 +2,7 @@
 
 pkgbase=un-lock-git
 pkgname=un-lock-git
-pkgver=1.4.7.r0.ge4bd8ff
+pkgver=r57.5661338
 pkgrel=1
 pkgdesc="un-lock developed to retrieve encryptData(token) for Xiaomi devices for unlocking bootloader"
 arch=(any)
@@ -12,7 +12,6 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
 _pydeps=(requests
-#     pyshorteners
     urllib3
     pycryptodomex
     termcolor)
@@ -32,8 +31,11 @@ sha256sums=('SKIP'
             '155ed2934db9f99cf14c7df7e72f8e1f0ff062d8e1708739f6a838179f96ace6')
 
 pkgver() {
-    cd "${srcdir}/${pkgname}/"
-    git describe --long --tags | sed 's/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${srcdir}/${pkgname}"
+    ( set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
 }
 
 prepare()
