@@ -33,5 +33,5 @@ build() {
 package() {
 	cd "$srcdir/moonshine-$pkgver"
 	install -Dm755 target/release/moonshine "$pkgdir/usr/bin/moonshine"
-	install -Dm755 "$srcdir/moonshine.service" "$pkgdir/usr/lib/systemd/user/moonshine.service"
+	install -Dm644 "$srcdir/moonshine.service" "$pkgdir/usr/lib/systemd/user/moonshine.service"
 }
