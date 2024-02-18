@@ -10,7 +10,8 @@
 # for when that actually happens. PKGREL=0 because not-yet-functional.
 
 pkgname=zed-editor
-pkgver=0.122.2
+pkgver=0.123.1
+_pkgver=$pkgver-pre
 pkgrel=0
 pkgdesc='high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
@@ -29,9 +30,9 @@ makedepends=(alsa-lib
              vulkan-validation-layers
              wasmtime
              wayland)
-_archive="zed-$pkgver"
-source=("$_url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('1d7f54ffc8836692ba57ae007cf3bdd56883e86364d0ce31e0c145cc658e5bb8')
+_archive="zed-$_pkgver"
+source=("$_url/archive/v$_pkgver/$_archive.tar.gz")
+sha256sums=('a35ee0d6147c8a52926bdefcd7e8f7dab3089acc4657abb18978a9fe97aac697')
 
 prepare() {
 	cd "$_archive"
@@ -46,12 +47,12 @@ _srcenv() {
 
 build() {
 	_srcenv
-	cargo build --frozen --all-features
+	cargo build --frozen --all-features -p zed
 }
 
 check() {
 	_srcenv
-	cargo test --frozen --all-features
+	cargo test --frozen --all-features -p zed
 }
 
 package() {
