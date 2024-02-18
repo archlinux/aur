@@ -1,16 +1,16 @@
 # Maintainer: Einhard Leichtfuß <archer@respiranto.de>
 pkgname=freesweep
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="a console minesweeper-style game written in C for *nix"
 arch=('x86_64' 'i686')
-url="http://freecode.com/projects/freesweep"
+url="https://github.com/rwestlund/freesweep"
 license=('GPL')
 depends=('ncurses')
 backup=('etc/sweeprc' "var/games/$pkgname/sweeptimes")
 install=$pkgname.install
-source=("https://github.com/rwestlund/freesweep/archive/v${pkgver}.tar.gz")
-sha512sums=('8270c77940225c8ebf0912ac896eaaaabd81775a82877650f3b9c2e0cf3b6a296b73f02ebc26e8fe526fc56f3807d9a2809f46e44b3d8507f011f9cf2c794099')
+source=("freesweep-${pkgver}.tar.gz::https://github.com/rwestlund/freesweep/archive/v${pkgver}.tar.gz")
+sha512sums=('1695bb29efbaed5e6baf5faadcbd685e8e6b4ccb5d52567a833b5f5eeb69200fc220579fea7d6907bffc92a06e9b220bca494e8597394820a421f81f0af1d3aa')
 
 # Scores do not really work currently; They are saved,
 # but for some reason not read / parsed correctly by the program,
@@ -30,6 +30,7 @@ prepare()
 	ln -sf /usr/share/libtool/build-aux/config.guess .
 	sed -i "s/0.8/$pkgver/" sweeprc
 	sed -i "s@mkstr(SCORESDIR)@\"$_scoresdir\"@" pbests.c
+	sed -Ei s/'^VERSION\s*=\s*1\.0\.1$'/"VERSION = ${pkgver}"/ Makefile.in
 }
 
 build()
