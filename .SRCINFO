@@ -1,9 +1,9 @@
-pkgbase = frog-ocr
-	pkgdesc = Intuitive text extraction tool (OCR) for GNOME.
+pkgbase = frog-ocr-no-telemetry
+	pkgdesc = Intuitive text extraction tool (OCR) for GNOME. Patched to remove telemetry.
 	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://getfrog.app
-	install = frog-ocr.install
+	install = frog-ocr-no-telemetry.install
 	arch = any
 	license = MIT
 	checkdepends = appstream-glib
@@ -20,11 +20,14 @@ pkgbase = frog-ocr
 	depends = python-loguru
 	depends = python-nanoid
 	depends = python-pillow
-	depends = python-posthog
 	depends = python-pydbus
 	depends = python-pytesseract
 	depends = pyzbar
+	provides = frog-ocr
+	conflicts = frog-ocr
 	source = git+https://github.com/TenderOwl/Frog.git#commit=18959b465b5bb7a060d2afd7dd848b56df8b8286
+	source = no-telemetry.patch::https://github.com/barraponto/Frog/commit/7d499d6a88f23f52df0b3b1d781d6d60fde07fe8.patch
 	sha256sums = SKIP
+	sha256sums = 7500e593cdd065997a1f42e552e99923f3cd9c89aebef7d5bee6f05d8c545eb8
 
-pkgname = frog-ocr
+pkgname = frog-ocr-no-telemetry
