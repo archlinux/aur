@@ -1,0 +1,9 @@
+[Unit]
+Description=Local Firesystem Bind Service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/mount-bind
+
+[Install]
+WantedBy=local-fs.target
