@@ -37,6 +37,10 @@ _stop_service() {
   su "$1" -s /bin/sh -c "XDG_RUNTIME_DIR=/run/user/\$UID systemctl --user stop $basename"
 }
 
+_disable_service() {
+  su "$1" -s /bin/sh -c "XDG_RUNTIME_DIR=/run/user/\$UID systemctl --user disable $basename"
+}
+
 # INSTALL 
 # pre_install() {
 # }

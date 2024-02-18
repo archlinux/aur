@@ -4,8 +4,8 @@ _gitauthor="danisztls"
 _gitbranch="main"
 
 pkgname="${_pkgname}-git"
-pkgver=v0.1.r6.g61bfcd0
-pkgrel=3
+pkgver=v0.1.r15.gb84c050
+pkgrel=1
 pkgdesc="Terminates Steam on Linux when certain conditions are met."
 arch=('any')
 url="https://github.com/danisztls/steam-killer"
