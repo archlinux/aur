@@ -38,5 +38,5 @@ package() {
 	install -Dm644 cazic.desktop "$pkgdir/usr/share/applications/cazic.desktop"
 	install -Dm644 32x32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/cazic.png"
 	install -Dm644 128x128.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/cazic.png"
-	install -Dm644 128x128@2x.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/cazic.png"
+	install -Dm644 128x128%402x.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/cazic.png"
 }
