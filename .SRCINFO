@@ -1,5 +1,5 @@
 pkgbase = ruff-bin
-	pkgdesc = An extremely fast Python package installer and resolver, written in Rust. Designed as a drop-in replacement for pip and pip-compile.
+	pkgdesc = An extremely fast Python linter and code formatter, written in Rust.
 	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/astral-sh/ruff
