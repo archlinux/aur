@@ -5,7 +5,7 @@
 _name=gaphor
 pkgname=python-${_name}
 pkgver=2.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('any')
 url="https://github.com/gaphor/${_name}"
@@ -54,7 +54,7 @@ build() {
 
 check() {
 	cd "${srcdir}/${_name}-${pkgver}"
-	python -m pytest -s tests
+	xvfb-run python -m pytest -s tests
 }
 
 prepare() {
