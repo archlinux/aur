@@ -1,18 +1,36 @@
 [Unit]
-Description=A Matrix-Signal puppeting bridge
-After=network-online.target
-Requires=network-online.target
+Description=mautrix-signal bridge
 
 [Service]
+Type=exec
 User=mautrix-signal
-WorkingDirectory=~
-ExecStart=python -m mautrix_signal -c /etc/mautrix-signal/config.yaml -r /etc/mautrix-signal/registration.yaml
-
+WorkingDirectory=/var/lib/mautrix-signal
+ExecStart=/usr/bin/mautrix-signal --config=/etc/mautrix-signal/config.yaml
 Restart=on-failure
 RestartSec=30s
 
-# ProtectSystem=on
-# ProtectHome=on
+# Optional hardening to improve security
+ReadWritePaths=/var/lib/mautrix-signal
+NoNewPrivileges=yes
+MemoryDenyWriteExecute=true
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=strict
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+LockPersonality=true
+ProtectKernelLogs=true
+ProtectKernelTunables=true
+ProtectHostname=true
+ProtectKernelModules=true
+PrivateUsers=true
+ProtectClock=true
+SystemCallArchitectures=native
+SystemCallErrorNumber=EPERM
+SystemCallFilter=@system-service
 
 [Install]
 WantedBy=multi-user.target
+

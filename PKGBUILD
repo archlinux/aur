@@ -1,35 +1,20 @@
 # Maintainer: Mark Collins < tera_1225 hat hotmail dote com>
 # Contributor: Frédéric Tobias Christ <dev+mautrix-signal@ntr.li> <ftchrist:matrix.org>
 pkgname='mautrix-signal'
-pkgver=0.4.3
-pkgrel=3
-pkgdesc="A Matrix-Signal puppeting bridge"
+_name='signal'
+pkgver=0.5.0
+pkgrel=1
+pkgdesc="A Matrix-Signal puppeting bridge (go rewrite)"
 arch=('any')
 url="https://github.com/mautrix/signal"
 license=('AGPL')
-depends=(
-  'python-aiohttp'
-  'python-asyncpg'
-  'python-attrs'
-  'python-commonmark'
-  'python-mautrix'
-  'python-magic'
-  'python-ruamel-yaml'
-  'python-yarl' 
-  'signald'
+depends=()
+makedepends=(
+  'go'
+  'libolm'
+  'libsignal-ffi' # AUR
 )
-makedepends=('python-setuptools')
-optdepends=(
-  'python-aiosqlite: Support for SQLite-Database '
-  'python-olm: end-to-bridge encryption support'
-  'python-phonenumbers: Formatted phone numbers'
-  'python-pillow: webp conversion and qr code login'
-  'python-prometheus_client: metrics upload'
-  'python-pycryptodome'
-  'python-qrcode: qr code login'
-  'python-signalstickers-client: stickers'
-  'python-unpaddedbase64: end-to-bridge encryption support'
-)
+optdepends=()
 backup=(
   "etc/${pkgname}/config.yaml"
   "etc/${pkgname}/registration.yaml"
@@ -41,37 +26,39 @@ source=(
   "${pkgname}.sysusers"
   "${pkgname}.tmpfiles"
 )
-sha256sums=('e75636e845d4b9d84070efec510b7358b93a4fb0d6ffe4300dbdb9260725ba53'
-            '8990ebe7df080cd6eddd5af17b49dbf4c4b5e5216b8211b5afc9cf096f38cd5f'
-            '3203dcff48579a2420eff4289a03ea1b3a9f47031c39f514e8c9a2d119625725'
+sha256sums=('b41195f29d615d26a8d572c4b4cc331cff6f225dc3c200f3cf603ce101e29fa8'
+            'fcdda5af56e07faa8b0ff127ccb560ae97e60945531b7bcf696100825d824324'
+            'b47c0829a9f285e0a4bd7852e601f325e1fa8385ea96eaa92cad204c0e583adf'
             '5badc8727dfbf4531f93e86ae475c64753952ee60090a043be22b9dd9a124ca5')
 
 prepare() {
-  mv "${srcdir}/signal-${pkgver}" "${srcdir}/${pkgname}-${pkgver}"
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  touch registration.yaml
-    
-  # Adapt signald paths for convenience
-  sed -i "s|~/.config/signald/avatars|/var/lib/signald/avatars|g" mautrix_signal/example-config.yaml
-  sed -i "s|~/.config/signald/data|/var/lib/signald/data|g" mautrix_signal/example-config.yaml
+  cd "${srcdir}/${_name}-${pkgver}"
+  go mod tidy
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py build
+  cd "${srcdir}/${_name}-${pkgver}"
+  export LIBRARY_PATH="${LIBRARY_PATH}:/usr/lib/"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  MAUTRIX_VERSION=$(cat go.mod | grep 'maunium.net/go/mautrix ' | awk '{ print $2 }')
+  GO_LDFLAGS="-X main.Tag=$pkgver -X 'main.BuildTime=`date '+%b %_d %Y, %H:%M:%S'`' -X 'maunium.net/go/mautrix.GoModVersion=$MAUTRIX_VERSION'"
+  go build -gcflags="$GO_GCFLAGS" -ldflags="$GO_LDFLAGS" -o mautrix-signal "$@"
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_name}-${pkgver}"
 
-  _shared_dir="/usr/share/${pkgname}"
-
-  python setup.py install --optimize=1 --skip-build --root="${pkgdir}/" --prefix="/usr" --install-data="${_shared_dir}"
+  install -Dm755 "$pkgname" "${pkgdir}/usr/bin/$pkgname"
 
   install -Dvm 644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dvm 644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   install -Dvm 644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
-  install -Dvm 640 "${pkgdir}${_shared_dir}/example-config.yaml" "${pkgdir}/etc/${pkgname}/config.yaml"
-  install -Dvm 640 registration.yaml "${pkgdir}/etc/${pkgname}/registration.yaml"
+  install -Dvm 640 "example-config.yaml" "${pkgdir}/etc/${pkgname}/config.yaml"
+  touch 'registration.yaml'
+  install -Dvm 640 'registration.yaml' "${pkgdir}/etc/${pkgname}/registration.yaml"
 }
