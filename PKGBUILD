@@ -5,9 +5,9 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-wow64-for-wechat
-_pkgver=9.1
+_pkgver=9.2
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://www.winehq.org"
 license=(LGPL)
@@ -76,7 +76,7 @@ source=(
   "0001-winex11.drv-Update-a-candidate-window-s-position-wit.patch"
   "0002-wine-wechat.patch"
 )
-sha256sums=('01b3b91b6fc35cabe93b28f190a237ba95c8ac70c436d919586deaa3da258fff'
+sha256sums=('8281c5a082cc47ac3c2c91ceaade5f17396553b39adcb32e741253865b658162'
             '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
             '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4'
             'd62ea49462e4f6cf40ec37d34c6690cf81b7cf0816c0464257910acab57dd416'
