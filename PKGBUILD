@@ -2,8 +2,8 @@
 # Contributor: sukanka<su975853527 AT gmail dot com>
 
 pkgname=clash-verge
-pkgver=1.4.10
-pkgrel=4
+pkgver=1.5.1
+pkgrel=2
 pkgdesc="A Clash Meta GUI based on Tauri, Continuation of Clash Verge"
 arch=('x86_64' 'aarch64')
 url="https://github.com/clash-verge-rev/clash-verge-rev"
@@ -28,18 +28,14 @@ makedepends=('cargo-tauri'
              'rust')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	    "${pkgname}.desktop"
-	    "001-disable-updater.patch"
 )
-sha512sums=('9fe6676545d63768b156270d17e1bf75fef6c3d27202962faed5016d22fd237f6f223e7a917a8bd4fc6d200ea4db7614a687c930d478bdd02c1f7b0fb058ae6f'
-            '2066dacf2e5e0135e6403cbfb825efcdf08bbcdc781407e6bb1fbb85143817b2b1abef641d20390ff7e5b3e91a509933e9eb17a64f9de7671445ac6d5363a44a'
-            'd1e8992cc0de168930002adccf7953416dfac199ea11886043de58b0df366e4337d5ec548fa3bf8be30575596a5e71dd31960db72f9e067ff131feb756bc96c1')
+sha512sums=('a1c59b197fc0b6a91f37d47b1f71933334addc68eb06eda3277cde3bcc2593169eda08e5033edfd4901607d5011cd0373465866e8dbb09fc08e96fe6649dfbcc'
+            '2066dacf2e5e0135e6403cbfb825efcdf08bbcdc781407e6bb1fbb85143817b2b1abef641d20390ff7e5b3e91a509933e9eb17a64f9de7671445ac6d5363a44a')
 options=(!lto)
 
 prepare() {
 	mv ${pkgname}-rev-${pkgver} ${pkgname}-${pkgver}
 	cd $srcdir/${pkgname}-${pkgver}
-	patch --strip=1 <../001-disable-updater.patch
-
 	install -d src-tauri/sidecar
 	install -d src-tauri/resources
 	# empty files as placeholders
@@ -52,8 +48,6 @@ prepare() {
 	cd src-tauri
 	# only build the excutable
 	jq '.tauri.bundle.active = false' tauri.conf.json | sponge tauri.conf.json
-	# disable updater
-	jq '.tauri.updater.active = false' tauri.conf.json | sponge tauri.conf.json
 }
 
 build() {
