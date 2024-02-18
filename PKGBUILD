@@ -2,7 +2,7 @@
 # Maintainer:  Elmar Klausmeier <Elmar.Klausmeier@gmail.com>
 
 pkgname=rr-bin
-pkgver=5.6.0
+pkgver=5.7.0
 pkgrel=1
 pkgdesc="Binary record and replay framework: lightweight recording and deterministic debugging"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('custom')
 depends=('gdb')
 source=("https://github.com/rr-debugger/rr/releases/download/$pkgver/rr-$pkgver-Linux-x86_64.tar.gz"
 	"https://raw.githubusercontent.com/rr-debugger/rr/$pkgver/LICENSE")
-sha256sums=('57b696666e5e2b0f47db676a1ec6d1373bb752233ecc3918bc32fe15815125e7'
+sha256sums=('37d5108ef1a7acfb84660387392bb495ee6cbc2aae2ec64c5fadb178d006a91f'
             'fa03106ff7c9018337f1b489bdec8763a1a19b857466055f77637a0af7181f32')
 provides=('rr')
 conflicts=('rr' 'rr-git')
