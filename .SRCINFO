@@ -1,14 +1,14 @@
 pkgbase = artwork-breath
-	pkgver = 21.2.0
-	pkgrel = 2
+	pkgver = 23.0.0
+	pkgrel = 1
 	url = https://gitlab.manjaro.org/artwork/themes/breath
 	arch = any
 	license = LGPL
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = git
-	makedepends = plasma-framework
-	source = git+https://gitlab.manjaro.org/artwork/themes/breath.git#commit=cb3a79366ac13dddd4454fdc5511b8d374e71de9
+	makedepends = plasma-framework5
+	source = git+https://gitlab.manjaro.org/artwork/themes/breath.git#commit=98822e7d
 	sha256sums = SKIP
 
 pkgname = plasma5-themes-breath-migration
