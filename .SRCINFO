@@ -1,6 +1,6 @@
 pkgbase = python-pygwinc
 	pkgdesc = Gravitational Wave Interferometer Noise Calculator
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://git.ligo.org/gwinc/pygwinc
 	arch = any
