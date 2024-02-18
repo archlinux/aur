@@ -13,7 +13,7 @@ optdepends=('mint-translations: translations files'
             'mate-screensaver: lock screen button'
             'pamac: package manager button'
 )
-source=("$pkgname-$pkgver::git+$url#commit=905b9b1a94379242ed09011d57526a3c16f40fea"
+source=("$pkgname-$pkgver::git+$url#commit=7c034738de085f319a8d87bfe7d459f82f3a70b8"
         'arch-compat.patch')
 sha256sums=('SKIP'
             'ad3b5267206782ea5631d030dc827b7f24c5eb6d5b71964d432e3ccb19266a9f')
