@@ -1,7 +1,7 @@
 # Maintainer: Antonin Godard <antonin dot godard at pm dot me>
 
 pkgname='systemdlint'
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Linter for systemd unit files'
 url='https://github.com/priv-kweihmann/systemdlint'
@@ -16,7 +16,7 @@ makedepends=(
 )
 provides=("${pkgname}=${pkgver}")
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('5fd7f6501ad19cfa1ee25e6b7481f85ef4d154a837711209da182ddf22e8b704b3f6a892a8d4527332bd14be70b55e7e562a2d510d888d4cdd39722834ad6779')
+sha512sums=('4bddbf44a05006e8937568c3da64056403de0df24f96eed1e4e85c2bcde1e12510b4a497ecc8cb5af6ef1348eedf022190a2d26aa489f8f1c93ad96e77b9127b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}/systemdlint"
