@@ -3,7 +3,7 @@
 pkgname=libsignal-client
 _pkgname=libsignal
 _libname=libsignal_jni
-pkgver=0.36.1
+pkgver=0.39.2
 pkgrel=1
 pkgdesc='Library for the Signal Protocol.'
 url="https://github.com/signalapp/${_pkgname}"
@@ -12,12 +12,12 @@ checkdepends=('cargo')
 makedepends=('cargo' 'gradle' 'git' 'zip' 'protobuf' 'cmake' 'clang' 'java-environment')
 options=(!lto)
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-license=('GPL3')
+license=('AGPL-3.0-only')
 source=(
     "${_pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/refs/tags/v$pkgver.tar.gz"
 )
 
-sha512sums=('1131c101c8899258078f8a55a1754e0bda72b2a2551cd77bd1444a51cb8cc1f3b1d06aeb0ddaaefc628f8c9635378b8348ffc6c531b40cba1facaeb48399dd33')
+sha512sums=('c2307782a68c695c990ea620b3d0f07eea699fa8f30af8d57b068ffc96e9203718073224426859aab2f2bfa21f136ebe07b0feed387647c9ca5c39e284e502a2')
 
 prepare() {
   tar xf "${_pkgname}-$pkgver.tar.gz"
