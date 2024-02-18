@@ -5,7 +5,7 @@
 # Contributor: ssfdust <ssfdust@gmail.com>
 
 pkgname=cairo-dock-core-wayland-git
-pkgver=3.5.99.alpha1.20240204.7d32a4d4
+pkgver=3.5.99.alpha1.20240211.9e301cdf
 pkgrel=1
 pkgdesc='Light eye-candy fully themable animated dock with wayland support'
 arch=('i686' 'x86_64')
@@ -21,11 +21,9 @@ conflicts=("${pkgname%-git}" "cairo-dock")
 options=(debug)
 source=(
     "${pkgname}::git+https://github.com/dkondor/cairo-dock-core.git#branch=wayland_new3"
-    "0001-egl-set-a-zero-swap-interval-on-Wayland.patch"
 )
 sha256sums=(
     'SKIP'
-    '1af64c4dea950b6b8a696c767b924f585c3a085e35ee775723dee95d4b4cf208'
 )
 
 _builddir="build"
@@ -38,7 +36,9 @@ pkgver () {
 
 prepare() {
     cd "${srcdir}/${pkgname}"
-    for patch in "${srcdir}"/*.patch; do
+    
+    # if patches are present, apply them
+    for patch in $(ls "${srcdir}"/*.patch); do
         msg2 "Applying $(basename "$patch")"
         patch -Np1 -i "$patch"
     done
