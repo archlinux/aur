@@ -4,7 +4,7 @@ pkgbase=sunxi-livesuite-git
 pkgname=($pkgbase sunxi-livesuite-dkms-git)
 epoch=1
 pkgver=r5.20140913.1a0b52a
-pkgrel=9
+pkgrel=10
 arch=('x86_64' 'i686')
 url="https://github.com/linux-sunxi/sunxi-livesuite"
 license=('GPL-2.0-only')
@@ -114,8 +114,4 @@ ATTR{idVendor}=="1F3A", ATTR{idProduct}=="EFE8", MODE="666"
 
 LABEL="aw_usb_rules_end"
 EOF
-
-    install -dm0755 "${pkgdir}/etc/udev/rules.d"
-    ln -sf "/usr/lib/udev/rules.d/99-aw_usb.rules" "${pkgdir}/etc/udev/rules.d/99-aw_usb.rules"
-
 }
