@@ -1,7 +1,7 @@
 # Maintainer: Erik Bročko <erik.brocko@letemsvetemapplem.eu>
 
 pkgname=owrx_connector-luarvique
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="Connectors used by OpenWebRX to interface with SDR hardware."
 arch=('x86_64')
@@ -16,9 +16,7 @@ optdepends=(
 provides=('owrx_connector')
 conflicts=('owrx_connector')
 
-# The source don't have the tag for 0.6.4
-#source=("$pkgname"::"git+https://github.com/luarvique/owrx_connector#tag=${pkgver}")
-source=("$pkgname"::"git+https://github.com/luarvique/owrx_connector#commit=8bc8c17f235326ba25dbb9f1015dc649e91faa75")
+source=("$pkgname"::"git+https://github.com/luarvique/owrx_connector#tag=${pkgver}")
 md5sums=('SKIP')
 
 build() {
