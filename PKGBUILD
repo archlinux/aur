@@ -1,6 +1,6 @@
 # Maintainer: John Bernard <loqusion@gmail.com>
 pkgname=hyprshade
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Hyprland shade configuration tool"
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=('systemd: activate shader on schedule')
 provides=($pkgname)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
 		"https://raw.githubusercontent.com/loqusion/$pkgname/$pkgver/examples/config.toml")
-sha256sums=('6cc8e1c2fc0bf68eebb7bf9feaa376df56f53625085670140c1a7a930b855f9e'
+sha256sums=('09284e0c686f0657c7733761b3bf18e28c3e252a9882e784692564e593798a26'
             '411517f06dc484fb8aad729d73d66cb5b91982ac0c5908184ec9343974392f0a')
 
 _get_wheel() {
