@@ -5,9 +5,9 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-libnghttp2
 pkgver=1.58.0
-pkgrel=1
+pkgrel=2
 arch=('any')
-pkgdesc='Framing layer of HTTP/2 is implemented as a reusable C library (mingw-w64)'
+pkgdesc='Framing layer of HTTP/2 is implemented as a reusable C library (android)'
 url='https://nghttp2.org/'
 license=('MIT')
 depends=('android-ndk')
