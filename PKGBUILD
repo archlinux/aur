@@ -1,17 +1,17 @@
 # Maintainer: allencch <allencch at hotmail dot com>
 pkgname=motifsampler
-pkgver=3.1
-pkgrel=3
+pkgver=3.2
+pkgrel=1
 pkgdesc="The Gibbs Motif Sampler for identifying motifs, conserved regions, in DNA or protein sequences"
 arch=('i686' 'x86_64')
-url="http://ccmbweb.ccv.brown.edu/gibbs/gibbs.html"
+url="https://homes.esat.kuleuven.be/~sistawww/bioi/thijs/download.html"
 license=('GPL')
 
-source_i686=("Linux-32.${pkgver}.tar.gz::http://ccmbweb.ccv.brown.edu/cgi-bin/download_3_1_3.pl?download_file=Linux-32-${pkgver}.tar.gz&name=researcher&institution=research&address=research@research.com")
+source_i686=("Linux-32.${pkgver}.tar.gz::https://homes.esat.kuleuven.be/~sistawww/bioi/thijs/download/linux_3.2/MotifSampler")
 
-source_x86_64=("Linux-64.${pkgver}.tar.gz::http://ccmbweb.ccv.brown.edu/cgi-bin/download_3_1_3.pl?download_file=Linux-64-${pkgver}.tar.gz&name=researcher&institution=research&address=research@research.com")
-md5sums_i686=('4cb5376a7fc40049d0506b2b9463fb9b')
-md5sums_x86_64=('d64e9e62ef6d1b8442abccdd94ef6a73')
+source_x86_64=("Linux-64.${pkgver}.tar.gz::https://homes.esat.kuleuven.be/~sistawww/bioi/thijs/download/linux_x86-64/MotifSampler")
+md5sums_i686=('c2867739e66744c43d6d0005f6d1d6c7')
+md5sums_x86_64=('8555341389cee01efde2a3b2c2d475c7')
 
 package() {
     mkdir -p "${pkgdir}/usr/bin"
