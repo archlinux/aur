@@ -1,0 +1,23 @@
+pkgbase = android-aarch64-libssh2
+	pkgdesc = Library for accessing ssh client services through C libraries (android)
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://www.libssh2.org/
+	arch = any
+	groups = android-libssh2
+	license = LGPL
+	makedepends = android-cmake
+	depends = android-aarch64-zlib
+	depends = android-aarch64-openssl
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://www.libssh2.org/download/libssh2-1.11.0.tar.gz
+	source = https://www.libssh2.org/download/libssh2-1.11.0.tar.gz.asc
+	validpgpkeys = 27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2
+	validpgpkeys = 914C533DF9B2ADA2204F586D78E11C6B279D5C91
+	md5sums = a01d543fd891ca48fe47726540d50b17
+	md5sums = SKIP
+
+pkgname = android-aarch64-libssh2
