@@ -1,6 +1,6 @@
 pkgbase = dynssh-git
 	pkgdesc = Simple SSH wrapper
-	pkgver = 0.1.2.1.r1.gfc370eb
+	pkgver = 1.1.2.1.1.r6.g87eed0ad6e6f0caee65a4fb30296ad75aad896a4
 	pkgrel = 1
 	url = https://github.com/themartiancompany/dynssh
 	arch = any
@@ -8,12 +8,14 @@ pkgbase = dynssh-git
 	groups = hip-git
 	license = AGPL3
 	checkdepends = shellcheck
-	makedepends = git
+	makedepends = curl
+	makedepends = jq
 	depends = openssh
 	depends = net-tools
-	provides = dynssh=0.1.2.1.r1.gfc370eb
+	depends = ssh-utils
+	provides = dynssh=1.1.2.1.1.r6.g87eed0ad6e6f0caee65a4fb30296ad75aad896a4
 	conflicts = dynssh
-	source = git+https://github.com/themartiancompany/dynssh
+	source = dynssh.tar.gz::https://github.com/themartiancompany/dynssh/archive/refs/heads/master.tar.gz
 	sha256sums = SKIP
 
 pkgname = dynssh-git

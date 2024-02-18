@@ -4,10 +4,17 @@
 # Maintainer:  Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: Marcell Meszaros (MarsSeed) <marcell.meszaros@runbox.eu>
 
+_git=false
+_local=false
 _proj="hip"
-_pkgbase=dynssh
-pkgname="${_pkgbase}-git"
-pkgver=1.1.2.1.1.r5.gd8f63b4
+_pkg="ssh"
+_pkgname="dyn${_pkg}"
+_pkgbase="${_pkgname}"
+pkgbase="${_pkgbase}-git"
+pkgname=(
+  "${pkgbase}"
+)
+pkgver="1.1.2.1.1".r6.g"87eed0ad6e6f0caee65a4fb30296ad75aad896a4"
 pkgrel=1
 pkgdesc="Simple SSH wrapper"
 arch=(
@@ -17,36 +24,57 @@ _gl="gitlab.com"
 _gh="github.com"
 _host="https://${_gh}"
 _ns='themartiancompany'
-_local="${HOME}/${_pkgbase}"
-url="${_host}/${_ns}/${_pkgbase}"
+_local="${HOME}/${_pkgname}"
+url="${_host}/${_ns}/${_pkgname}"
+_gh_api="https://api.${_gh}/repos/${_ns}/${_pkgname}"
 license=(
   AGPL3
 )
 depends=(
-  openssh
+  "open${_pkg}"
   net-tools
+  "${_pkg}-utils"
 )
 makedepends=(
-  git
 )
 checkdepends=(
   shellcheck
 )
+optdepends=(
+)
 provides=(
-  "${_pkgbase}=${pkgver}"
+  "${_pkgname}=${pkgver}"
 )
 conflicts=(
-  "${_pkgbase}"
+  "${_pkgname}"
 )
 groups=(
  "${_proj}"
  "${_proj}-git"
 )
-_url="file://${HOME}/${_pkgbase}"
-source=(
-  "git+${url}"
-  # "git+${_url}"
-)
+_url="${url}"
+[[ "${_local}" == true ]] && \
+  _url="${_local}"
+source=()
+_branch="master"
+[[ "${_git}" == true ]] && \
+  makedepends+=(
+    git
+  ) && \
+  source+=(
+    "${_pkgname}-${_branch}::git+${_url}#branch=${_branch}"
+  )
+[[ "${_git}" == false ]] && \
+  makedepends+=(
+    curl
+    jq
+  ) && \
+  source+=(
+    "${_pkgname}.tar.gz::${_url}/archive/refs/heads/${_branch}.tar.gz"
+  ) && \
+  sha256sums+=(
+    '85c9b02b1118b466cb78c934bbfbcfaaee1a1e560e3eee3c2a8153b5a50d50a5'
+  )
 sha256sums=(
   SKIP
 )
@@ -60,6 +88,42 @@ _nth() {
     awk \
       -F '+' \
       '{print $'"${_n}"'}'
+}
+
+_jq_pkgver() {
+  local \
+    _version \
+    _rev \
+    _commit
+  _version="$( \
+    curl \
+      --silent \
+      "${_gh_api}/tags" | \
+      jq \
+        '.[0].name')"
+  _version_commit="$( \
+    curl \
+      --silent \
+      "${_gh_api}/tags" | \
+      jq \
+        '.[0].commit.sha')"
+  _rev="$( \
+    curl \
+      --silent \
+      "${_gh_api}/commits" | \
+      jq \
+        'map(.sha == '${_version_commit}' ) | index(true)')"
+  _commit="$( \
+    curl \
+      --silent \
+      "${_gh_api}/commits" | \
+      jq \
+        '.[0].sha')"
+  printf \
+    "%s.r%s.g%s" \
+    "${_version}" \
+    "${_rev}" \
+    "${_commit}"
 }
 
 _parse_ver() {
@@ -82,21 +146,17 @@ _parse_ver() {
       "${_pkgver}" \
       "3")"
   _out=${_ver}
-  if [[ "${_rev}" != "" ]]; then
+  [[ "${_rev}" != "" ]] && \
     _out+=".r${_rev}"
-  fi
-  if [[ "${_commit}" != "" ]]; then
+  [[ "${_commit}" != "" ]] && \
     _out+=".${_commit}"
-  fi
   echo \
     "${_out}"
 }
 
-pkgver() {
+_git_pkgver() {
   local \
     _pkgver
-  cd \
-    "${_pkgbase}"
   _pkgver="$( \
     git \
       describe \
@@ -108,9 +168,19 @@ pkgver() {
     "${_pkgver}"
 }
 
+pkgver() {
+  cd \
+    "${_pkgname}-${_branch}"
+  if [[ "${_git}" == true ]]; then
+    _git_pkgver
+  elif [[ "${_git}" == false ]]; then
+    _jq_pkgver
+  fi
+}
+
 check() {
   cd \
-    "${_pkgbase}"
+    "${_pkgname}-${_branch}"
   make \
     -k \
     check
@@ -118,7 +188,7 @@ check() {
 
 package() {
   cd \
-    "${_pkgbase}"
+    "${_pkgname}-${_branch}"
   make \
     PREFIX="/usr" \
     DESTDIR="${pkgdir}" \
