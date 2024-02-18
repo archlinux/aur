@@ -1,12 +1,13 @@
 pkgbase = httpdirfs
 	pkgdesc = A filesystem which allows you to mount HTTP directory listings
 	pkgver = 1.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fangfufu/httpdirfs
 	arch = x86_64
 	license = GPL
 	makedepends = help2man
 	makedepends = doxygen
+	makedepends = graphviz
 	depends = gumbo-parser
 	depends = fuse2
 	depends = curl

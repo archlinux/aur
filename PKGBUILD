@@ -2,13 +2,13 @@
 
 pkgname=httpdirfs
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A filesystem which allows you to mount HTTP directory listings"
 arch=('x86_64')
 url="https://github.com/fangfufu/httpdirfs"
 license=('GPL')
 depends=('gumbo-parser' 'fuse2' 'curl' 'expat')
-makedepends=('help2man' 'doxygen')
+makedepends=('help2man' 'doxygen' 'graphviz')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fangfufu/$pkgname/archive/$pkgver.tar.gz")
 md5sums=("77910de057b196ed7b3714f7a0698203")
 
