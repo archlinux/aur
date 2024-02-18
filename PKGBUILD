@@ -21,14 +21,14 @@ license=(GPL-3.0-or-later)
 depends=()
 makedepends=(alsa-lib
              cargo
-             clang
+             # clang
              fontconfig
-             gcc-objc
-             libdispatch
+             # gcc-objc
+             # libdispatch
              libxkbcommon
-             protobuf
+             # protobuf
              vulkan-validation-layers
-             wasmtime
+             # wasmtime
              wayland)
 _archive="zed-$_pkgver"
 source=("$_url/archive/v$_pkgver/$_archive.tar.gz")
