@@ -2,9 +2,9 @@
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 
 _pkgname=splus2R
-_pkgver=1.3-4
+_pkgver=1.3-5
 pkgname=r-${_pkgname,,}
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc='Supplemental S-PLUS Functionality in R'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5652bcc121172124e3175079a8d8da833904c9b2ed588cd8f8f46019d71a219b')
+sha256sums=('e7b0ea5672c5480424b056f3c30edc7858f868d3e2d7f5a3593e17fed5bfeb24')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
