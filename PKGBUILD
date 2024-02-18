@@ -9,7 +9,7 @@ pkgver=1.37.0.dev.r3.gc3dfce54
 pkgrel=1
 pkgdesc="Applet for managing network connections"
 arch=('i686' 'x86_64')
-license=('GPL-2.0-or-later)
+license=('GPL-2.0-or-later')
 url="http://www.gnome.org/projects/NetworkManager/"
 makedepends=(meson libsecret libnotify gtk3 libnm libnma libnma-gtk4 gtk-doc libmm-glib
             gobject-introspection git libayatana-appindicator gcr iso-codes mobile-broadband-provider-info)
