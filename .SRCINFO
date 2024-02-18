@@ -1,16 +1,15 @@
 pkgbase = emacs-exwm-git
 	pkgdesc = Use emacs as windowmanager
-	pkgver = r425.786c2b4
+	pkgver = r621.1821027
 	pkgrel = 1
-	url = https://github.com/ch11ng/exwm.git
+	url = https://github.com/emacs-exwm/exwm.git
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = emacs-xelb
+	depends = emacs-xelb-git
 	provides = emacs-exwm
 	conflicts = emacs-exwm
-	source = git+https://github.com/ch11ng/exwm.git
+	source = git+https://github.com/emacs-exwm/exwm.git
 	md5sums = SKIP
 
 pkgname = emacs-exwm-git
-
