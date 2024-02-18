@@ -1,0 +1,13 @@
+pkgbase = python-pokebase
+	pkgdesc = A Python wrapper for the friendly PokeAPI database
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/PokeAPI/pokebase
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python
+	makedepends = python-pip
+	depends = python
+	depends = python-requests
+
+pkgname = python-pokebase
