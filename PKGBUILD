@@ -5,11 +5,11 @@
 # Contributor: Jakob Nixdorf <flocke [swirly thing] shadowice [dot] org>
 pkgname=conspy
 pkgver=1.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote control of Linux virtual consoles"
 arch=('x86_64')
 url="https://conspy.sourceforge.net/"
-license=('AGPL3')
+license=('AGPL-3.0-or-later')
 depends=('ncurses')
 source=("https://downloads.sourceforge.net/project/conspy/conspy-$pkgver-$pkgrel/conspy-$pkgver.tar.gz")
 sha256sums=('ee5ef648ea08d20d9062db22e7bf62a7b7261af02053f916016d1b80a66a5609')
