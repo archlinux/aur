@@ -190,6 +190,7 @@ package() {
     "${_pkgname}-${_branch}"
   make \
     DESTDIR="${pkgdir}" \
+    PREFIX="/usr" \
     install
 }
 
