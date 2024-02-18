@@ -1,7 +1,7 @@
 # Maintainer: Tricia, `creyon` <gtcreyon@gmail.com>
 pkgname=python-flash-patcher
 _name=flash-patcher
-pkgver=6.0.0
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="Adobe Flash SWF file patching tool"
 arch=('any')
