@@ -2,7 +2,7 @@
 
 pkgname=plover_plugins_manager
 pkgdesc="Plugins manager for Plover."
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 arch=('any')
 license=('GPL2')
@@ -26,10 +26,10 @@ makedepends=(
   'python-build'
   'python-installer'
 )
-url="https://github.com/benoit-pierre/plover_plugins_manager"
+url="https://github.com/openstenoproject/plover_plugins_manager"
 _pkgdist="$pkgname-$pkgver"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/benoit-pierre/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('5d385b92d5df94fd71ae5a16d9dbae6ef3fe9636935d0bcd4a09d01993891189')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/openstenoproject/$pkgname/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('cf827c31fb2d907f1927cdd1858fb45a0a8cf4be530f65332f8f61c455f7ea57')
 
 build() {
   cd "$_pkgdist"
