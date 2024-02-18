@@ -1,11 +1,11 @@
 # Maintainer: neeshy <neeshy@tfwno.gf>
 pkgname=legacyfox
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Legacy bootstrapped extensions for Firefox 65 and beyond"
 arch=('any')
 url="https://gir.st/blog/legacyfox.htm"
-license=('MPL')
+license=('MPL-2.0')
 depends=('firefox')
 _commit=fc77a6a
 source=("https://git.gir.st/LegacyFox.git/snapshot/v$pkgver.tar.gz")
