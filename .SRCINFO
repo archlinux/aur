@@ -1,12 +1,12 @@
 pkgbase = geminicommit-bin
 	pkgdesc = A CLI that writes your git commit messages for you with Google Gemini AI
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tfkhdyt/geminicommit
 	arch = x86_64
 	license = GPL3
 	depends = git
 	source = geminicommit-bin-v0.0.1.tar.gz::https://github.com/tfkhdyt/geminicommit/releases/download/v0.0.1/geminicommit-v0.0.1-linux-amd64.tar.gz
-	md5sums = SKIP
+	md5sums = ed00a68f72a6bc0aff855921da919650
 
 pkgname = geminicommit-bin
