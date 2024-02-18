@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-git
-pkgver=2.4.0.r53.gad5546c
+pkgver=6.0.2.r106.g697df721
 pkgrel=1
 pkgdesc='The Pantheon Control Center'
 arch=('x86_64')
@@ -9,8 +9,8 @@ url='https://github.com/elementary/switchboard'
 license=('GPL3')
 groups=('pantheon-unstable')
 depends=('clutter-gtk' 'glib2' 'glibc' 'gtk3' 'libgee'
-         'libgranite.so' 'libhandy')
-makedepends=('git' 'granite-git' 'intltool' 'meson' 'vala')
+         'granite7' 'libhandy' 'libadwaita')
+makedepends=('git' 'intltool' 'meson' 'vala' 'sassc')
 optdepends=('switchboard-plug-about-git: About plug'
             'switchboard-plug-default-applications-git: Default applications plug'
             'switchboard-plug-elementary-tweaks-git: Elementary tweaks plug'
@@ -29,8 +29,7 @@ pkgver() {
 }
 
 build() {
-  arch-meson switchboard build \
-    -Dlibunity='false'
+  arch-meson switchboard build
   ninja -C build
 }
 
