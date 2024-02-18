@@ -1,0 +1,3 @@
+[molecule-plugins]
+source = "pypi"
+pypi = "molecule-plugins"
