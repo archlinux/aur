@@ -4,8 +4,8 @@
 pkgname=swayosd-percentage-display-git
 _pkgname="${pkgname%-percentage-display-git}"
 _reponame=SwayOSD
-pkgver=r56.9e12cd5
-pkgrel=2
+pkgver=r59.c9b6d0d
+pkgrel=1
 pkgdesc="A GTK based on screen display for keyboard shortcuts that shows percentages"
 arch=('x86_64' 'aarch64' 'i686')
 url="https://github.com/Ferdi265/SwayOSD"
