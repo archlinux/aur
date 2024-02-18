@@ -30,6 +30,7 @@ post_upgrade() {
 }
 
 pre_remove() {
+  # no filebot/openjfx workaround
   echo -e "\e[1;33m==>\e[0m Removing OpenJFX symlinks leftover"
-  rm /usr/share/filebot/openjfx
+  rm /usr/share/filebot/openjfx 2>/dev/null
 }
