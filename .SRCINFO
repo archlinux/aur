@@ -1,12 +1,12 @@
 pkgbase = flyingcarpet-cli
-	pkgdesc = Wireless, encrypted file transfer over automatically configured ad hoc networking
-	pkgver = 4.1
+	pkgdesc = Cross-platform AirDrop
+	pkgver = 6.0
 	pkgrel = 1
 	url = https://github.com/spieglt/FlyingCarpet
 	arch = x86_64
 	license = BSD
-	noextract = flyingCarpetLinuxCLI
-	source = https://github.com/spieglt/FlyingCarpet/releases/download/v4.1/flyingCarpetLinuxCLI
-	md5sums = 7433b0a5ae2fb405791b4532c7bee178
+	noextract = flyingcarpet_cli_linux
+	source = https://github.com/spieglt/FlyingCarpet/releases/download/v6.0/flyingcarpet_cli_linux
+	md5sums = 1019ba7298571456475f1b71f88ff6be
 
 pkgname = flyingcarpet-cli
