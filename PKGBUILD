@@ -7,7 +7,7 @@ _local=false
 _git=false
 _proj="hip"
 pkgname=dynssh
-pkgver=1.1.2.1.1
+pkgver=1.1.3.1.1
 pkgrel=1
 pkgdesc="Small SSH wrapper"
 arch=(
@@ -50,7 +50,7 @@ _url="${url}"
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
   ) && \
   sha256sums+=(
-    e7855d3aa3197d9896747948bc6ef41652d6570dd2dde52bb4291aa4fe179b16
+    e8d2d1dcb0e1a7f807e005916724b120322ac9ff11f702c2cc6310b6818f32c2
   )
 
 check() {
