@@ -1,13 +1,13 @@
 # Maintainer: allencch <allencch at hotmail dot com>
 pkgname=gadem
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Genetic Algorithm Guided Formation of Spaced Dyads Coupled with an EM Algorithm for Motif Discovery"
 arch=('i686' 'x86_64')
 url="http://www.niehs.nih.gov/research/resources/software/biostatistics/gadem/index.cfm"
 license=('gpl')
 depends=("sh")
-source=("${pkgname}_v131.tar.gz::http://www.niehs.nih.gov/research/resources/assets/docs/${pkgname}_v131targz.gz")
+source=("${pkgname}_v131.tar.gz::https://www.niehs.nih.gov/sites/default/files/2024-02/${pkgname}_v${pkgver}.tar.gz")
 md5sums=('d0e35bea408c2b1a147c8e9f4db72260')
 
 package() {
