@@ -3,7 +3,7 @@
 
 pkgname='openwebrx-plus'
 _pkgname='openwebrx'
-pkgver='1.2.46'
+pkgver='1.2.48'
 pkgrel='1'
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
@@ -31,9 +31,12 @@ optdepends=(
     'multimon-ng: decode FLEX, POCSAG, and several other digital modes'
     'mbelib: Voice codecs for P25, ProVoice, Half Rate'
     'redsea: decode RDS information from FM broadcasts'
+    'python-csdr-eti: decode DAB broadcast signals'
+    'dablin: decode DAB broadcast signals'
     # tools
     'imagemagick: automatically convert received images to the PNG format'
     'sox: sound processing tools'
+
     # device support
     'soapyremote: allows the usage of remote SDR devices using the SoapySDRServer'
     'soapyrtlsdr: provides additional support for rtl-sdr devices, such as the direct sampling mod'
@@ -53,7 +56,7 @@ source=(
     'openwebrx-plus.tmpfiles'
 )
 sha256sums=(
-    '5fd59e4cd36b771ee21631dc0314cde17c2132ef82c423109ff7b6a35a20b3f1'
+    '67ba7d1ce939802cfdcf45d3d1a578d4ef399c66f764c0e7eae26b12ee2e124f'
     '4ec6dec1df40a1f3db62a2add760f97cf870d65a2c1d5b63cd9b22704754f997'
     'eea488bd3f4c76b46bffbf3c88691818f93ad73db98c18659856d1690b0deade'
 )
