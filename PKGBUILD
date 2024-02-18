@@ -9,7 +9,7 @@ _proj="hip"
 _pkg="ssh"
 _pkgname="${_pkg}-utils"
 pkgname="${_pkgname}-git"
-pkgver=0.1.1.r0.ge7e693c
+pkgver="0.1.1".r0.g"e7e693c58e4e4cab4f65b8fe47a87e46c8d8a0bc"
 pkgrel=1
 _pkgdesc=(
   "A collection of SSH"
@@ -178,8 +178,11 @@ pkgver() {
 }
 
 check() {
-  cd "${_pkgname}"
-  make -k check
+  cd \
+    "${_pkgname}-${_branch}"
+  make \
+    -k \
+    check
 }
 
 package() {
