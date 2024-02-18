@@ -1,55 +1,21 @@
 post_install() {
-	cd /usr/local/installers/crowdsec/crowdsec
-	sh ./wizard.sh --install --unattended
-	echo  -ne "\n"
-	echo "Crowdsec installer files have been saved to /usr/local/installers/crowdsec"
-	echo "It's recommended to keep these in place for proper package removal"
+    cscli capi register --error
+    cscli machines add --auto --force --error
+    cscli hub update
+}
+
+pre_upgrade() {
+    cscli config backup /var/lib/crowdsec/backup
 }
 
 post_upgrade() {
-	# Version check is needed. Minor revs need a different options
-	cd /usr/local/installers/crowdsec/crowdsec
-	CSCLI=`which cscli` # Find CSCLI
-	current_ver="$(${CSCLI} version 2>&1 |grep version | awk '{print $4}' 2>&1 | sed -e 's/[varch-]//g')" # Query existing 1.x.y revision
-	new_ver="$(./cmd/crowdsec-cli/cscli version | grep version | awk '{print $4}' 2>&1| sed -e 's/[varch\-]//g')" # Fetch new 1.x.y revision
-	
-	# Check the 1.x revision 
-	IFS="." read -r -a current_ver_rev  <<< "$current_ver"
-	IFS="." read -r -a new_ver_rev  <<< "$new_ver"
-
-	# If new version is newer (1.2 versus 1.3) then run the upgrade
-	# Otherwise, only upgrade the binary files.
-	# Both options should keep exising configurations. 
-	if [[ ${current_ver_rev[1]} -eq 3 ]]; then
-	  # Moving from 1.3 to 1.4 is not considered a major upgrade apparently and the wizard complains and errors out.
-	  # Keeping this in place just in case older installs still exist.
-		sh ./wizard.sh --upgrade
-	elif [[ ${current_ver_rev[1]} -eq 4 ]]; then
-	  # Moving from 1.4 to 1.5 is not considered a major upgrade apparently and the wizard complains and errors out.
-		sh ./wizard.sh --upgrade
-	elif [[ ${current_ver_rev[1]} -eq 5 ]] && [[ ${current_ver_rev[2]} -eq 4 ]]; then
-	  # For some reason version 1.5.4 is considered a major upgrade
-		sh ./wizard.sh --upgrade 
-	elif [[ ${current_ver_rev[1]} -lt ${new_ver_rev[1]} ]]; then
-		sh ./wizard.sh --upgrade
-	else
-		sh ./wizard.sh --binupgrade
-	fi
-
-	# Check if old AUR installer files still exist. 
-	# I set this keep installers in same dir. the wizard.sh actually removes the /var/lib/crowdsec directory
-	# So they had to move.
-
-	[[ -d "/var/lib/crowdsec/installers/crowdsec/" ]] && rm -rf /var/lib/crowdsec/installers/crowdsec/
-
-	echo  -ne "\n"
-	echo "Crowdsec installer files have been saved to /usr/local/installers/crowdsec"
-	echo "It's recommended to keep these in place for proper package removal"
+    if [[ -d /var/lib/crowdsec/backup ]]; then
+        cscli config restore /var/lib/crowdsec/backup && rm -rf /var/lib/crowdsec/backup
+    fi
+    cscli hub update
+    cscli hub upgrade
 }
 
-pre_remove(){
-	echo "Removing CrowdSec installation"
-	cd /usr/local/installers/crowdsec/crowdsec
-	sh ./wizard.sh --uninstall
+pre_remove() {
+    cscli dashboard remove --force --yes --error || true
 }
-

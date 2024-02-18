@@ -1,48 +1,58 @@
-# Maintainer: Michael Asher < michael at we solve everything dot com> 
+# Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
+# Contributor: Michael Asher < michael at we solve everything dot com>
 # Contributers: Stephen304
 
 pkgname=crowdsec
-pkgver=1.5.5
+pkgver=1.6.0
 pkgrel=1
-pkgdesc="The open-source and collaborative IPS"
-arch=('any')
-url="https://crowdsec.net"
+pkgdesc="The open-source and collaborative security suite"
+arch=('x86_64')
+url="https://www.crowdsec.net"
 license=('MIT')
+depends=('bash' 'gcc-libs' 'glibc' 're2')
+makedepends=('go')
 install=crowdsec.install
-source=(
-	"$pkgname-v${pkgver}.tgz"::https://github.com/crowdsecurity/crowdsec/archive/refs/tags/v${pkgver}.tar.gz
-	crowdsec.install
-)
-depends=(
-	'jq'
-	'libnewt'
-	're2'
-)
-makedepends=(
-	'jq'
-	'libnewt'
-	'go'
-)
-optdepends=(
-	'docker: Used to run metabase container for statistics'
-)
-
-provides=('crowdsec')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crowdsecurity/crowdsec/archive/refs/tags/v${pkgver}.tar.gz"
+        'crowdsec.install')
+sha256sums=('6d79d67383c7faed6c5b2019e4f01c6ed84334c8c45cd1736ff18a03167aa192'
+            '7075e4f867c984aff1703e6cbfd73e3c25d60a303e155b8b9458b5506944d307')
 
 build(){
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	# Adjust the Makefile to show the proper build version
-        sed -ie "s/^BUILD_VERSION.*$/BUILD_VERSION = v${pkgver}/g" mk/platform/unix_common.mk
-	sed -ie "s/^BUILD_TAG.*$/BUILD_TAG = arch/g" mk/platform/unix_common.mk 
+    cd "${pkgname}-${pkgver}"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    make BUILD_VERSION="v${pkgver}" release
 
-	make -f Makefile -s build
-	make -f Makefile -s package
+    sed -i 's|/usr/local/bin|/usr/bin|' "${pkgname}-v${pkgver}/config/crowdsec.service"
 }
 
 package() {
-	mkdir -p ${pkgdir}/usr/local/installers/crowdsec/crowdsec
-	cp -R ${srcdir}/${pkgname}-${pkgver}/* ${pkgdir}/usr/local/installers/crowdsec/crowdsec
-}
+    cd "${pkgname}-${pkgver}"
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 
-sha256sums=('ec7b2815405be4c3a1c9c3dcb1110030c29b7408dbf2a82d25537843c8831329'
-            '65229b23856f03bd84a0dce59f29287d66b2f8bdaf6ccaa983671e67a65d6f27')
+    cd "${pkgname}-v${pkgver}"
+    install -Dm755 -t "${pkgdir}/usr/bin" cmd/crowdsec/crowdsec cmd/crowdsec-cli/cscli
+    install -Dm755 -t "${pkgdir}/usr/share/${pkgname}" wizard.sh
+    install -Dm644 -t "${pkgdir}/usr/lib/systemd/system" config/crowdsec.service
+    install -Dm644 -t "${pkgdir}/etc/${pkgname}" config/{acquis,config,console,profiles,simulation}.yaml
+    install -Dm600 -t "${pkgdir}/etc/${pkgname}" config/{local_api_credentials,online_api_credentials}.yaml
+    install -Dm644 -t "${pkgdir}/etc/${pkgname}/console" config/context.yaml
+    install -Dm644 -t "${pkgdir}/etc/${pkgname}/patterns" config/patterns/*
+
+    install -Dm751 -t "${pkgdir}/usr/lib/${pkgname}/plugins" cmd/notification-email/notification-email
+    install -Dm751 -t "${pkgdir}/usr/lib/${pkgname}/plugins" cmd/notification-http/notification-http
+    install -Dm751 -t "${pkgdir}/usr/lib/${pkgname}/plugins" cmd/notification-sentinel/notification-sentinel
+    install -Dm751 -t "${pkgdir}/usr/lib/${pkgname}/plugins" cmd/notification-slack/notification-slack
+    install -Dm751 -t "${pkgdir}/usr/lib/${pkgname}/plugins" cmd/notification-splunk/notification-splunk
+
+    install -Dm644 -t "${pkgdir}/etc/${pkgname}/notitications" cmd/notification-email/email.yaml
+    install -Dm644 -t "${pkgdir}/etc/${pkgname}/notitications" cmd/notification-http/http.yaml
+    install -Dm644 -t "${pkgdir}/etc/${pkgname}/notitications" cmd/notification-sentinel/sentinel.yaml
+    install -Dm644 -t "${pkgdir}/etc/${pkgname}/notitications" cmd/notification-slack/slack.yaml
+    install -Dm644 -t "${pkgdir}/etc/${pkgname}/notitications" cmd/notification-splunk/splunk.yaml
+
+    install -dm755 "${pkgdir}/var/lib/${pkgname}/data" "${pkgdir}/etc/${pkgname}/hub/"
+}
