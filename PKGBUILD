@@ -15,7 +15,7 @@ provides=()
 options=('!emptydirs' 'purge')
 source=(
     "http://search.cpan.org/CPAN/authors/id/J/JJ/JJORE/$_dist-$pkgver.tar.gz"
-    'fix-25.patch::https://rt.cpan.org/Public/Ticket/Attachment/1728436/929353/UNIVERSAL-ref-0.14-Fix-building-with-Perl-5.25.1.patch'
+    'fix-25.patch'
 )
 sha256sums=(
     '35d815c49090d57b7051806ae1c4844879131791de1b861613c55a90a46b28ab'
