@@ -1,0 +1,13 @@
+pkgbase = pog-appimage
+	pkgdesc = A Kmk firmware flashing and configuration tool
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/JanLunge/pog
+	arch = x86_64
+	license = MIT
+	noextract = pog-appimage-1.2.2.AppImage
+	options = !strip
+	source_x86_64 = pog-appimage-1.2.2.AppImage::https://github.com/JanLunge/pog/releases/download/v1.2.2/pog-1.2.2-x86_64.AppImage
+	sha512sums_x86_64 = db1d9fe70d98a34b867ff0ab975055be3f35c01430ea23f027437c4ae2b3557f7476a423325fd102ba1b2baa6e1c9a2d6a222fd932ae2837d032547368cacb8e
+
+pkgname = pog-appimage
