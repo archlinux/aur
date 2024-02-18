@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Gauvrit <guillaume@gauvr.it>
 pkgname=rustaman-git
-pkgver=0.1.2.r0.e334141
+pkgver=0.2.0.r0.d61af30
 # DO NOT FORGET TO RUN / makepkg --printsrcinfo > .SRCINFO
 pkgrel=1
 pkgdesc="Template based HTTP client"
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/mardiros/rustaman"
 license=('BSD')
 makedepends=('cargo' 'git')
-depends=('gtk3' 'gtksourceview3' 'openssl')
+depends=('gtk4' 'gtksourceview5' 'openssl')
 options=('!emptydirs' '!strip')
 source=("$pkgname::git+https://github.com/mardiros/rustaman.git")
 sha1sums=('SKIP')
