@@ -1,0 +1,9 @@
+*
+*/
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!bluej-preview.install
+!bluej-preview
+!bluej-preview.desktop
+!bluej-preview.xml

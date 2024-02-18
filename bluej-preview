@@ -1,14 +1,19 @@
 #!/bin/sh
-if [ -e /usr/lib/jvm/java-11-openjfx/lib ]; then
-        JAVAFX_HOME=/usr/lib/jvm/java-11-openjfx/lib
+unset JFXPATH
+
+if [ -e /usr/lib/jvm/java-17-openjfx/lib/javafx.base.jar ]; then
+        JFXPATH=/usr/lib/jvm/java-17-openjfx/lib
 else
-        JAVAFX_HOME=/usr/lib/jvm/java-11-openjdk/lib
+        JFXPATH=/usr/lib/jvm/java-17-openjdk/lib
 fi
 
-JAVAFX_CP="$JAVAFX_HOME/javafx.base.jar:$JAVAFX_HOME/javafx.controls.jar:$JAVAFX_HOME/javafx.fxml.jar:$JAVAFX_HOME/javafx.graphics.jar:$JAVAFX_HOME/javafx.media.jar:$JAVAFX_HOME/javafx.swing.jar:$JAVAFX_HOME/javafx-swt.jar:$JAVAFX_HOME/javafx.web.jar"
+CP="/opt/bluej-preview/boot.jar"
+JAVAFXJARS=`ls -1 $JFXPATH/javafx* | paste -sd ":" -`
+#JAVAFXJARS=`ls -1 /opt/bluej/javafx* | paste -sd ":" -`
+CP="$CP:$JAVAFXJARS"
 
-archlinux-java-run -a 11 -b 11 -- -Djavafx.embed.singleThread=true \
-        -Dawt.useSystemAAFontSettings=on \
-        -cp /opt/bluej-preview/bluej.jar:$JAVAFX_CP bluej.Boot \
-        -javafxpath=$JAVAFX_CP \
+archlinux-java-run -a 17 -b 17 -- \
+	-Djdk.gtk.version=2 \
+        -Dawt.useSystemAAFontSettings=on -Xmx512M \
+        -cp "$CP" bluej.Boot \
         "$@"
