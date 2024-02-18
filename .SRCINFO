@@ -1,7 +1,7 @@
 pkgbase = r-pscbs
 	pkgdesc = Analysis of Parent-Specific DNA Copy Numbers
-	pkgver = 0.66.0
-	pkgrel = 4
+	pkgver = 0.67.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=PSCBS
 	arch = any
 	license = GPL
@@ -19,7 +19,7 @@ pkgbase = r-pscbs
 	optdepends = r-hmisc
 	optdepends = r-r.devices
 	optdepends = r-r.rsp
-	source = https://cran.r-project.org/src/contrib/PSCBS_0.66.0.tar.gz
-	sha256sums = 58805636e55e0fd3f57bd4a0e296a8bb3d57a7bdd0fdd5868a73ddc83d173a93
+	source = https://cran.r-project.org/src/contrib/PSCBS_0.67.0.tar.gz
+	sha256sums = 2695d18d197a3bd729cca0940248ddc1880e4f54da95b9ecc5eda002a715cdbe
 
 pkgname = r-pscbs

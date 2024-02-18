@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PSCBS
-_pkgver=0.66.0
+_pkgver=0.67.0
 pkgname=r-${_pkgname,,}
-pkgver=0.66.0
-pkgrel=4
+pkgver=0.67.0
+pkgrel=1
 pkgdesc='Analysis of Parent-Specific DNA Copy Numbers'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -28,7 +28,7 @@ optdepends=(
   r-r.rsp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('58805636e55e0fd3f57bd4a0e296a8bb3d57a7bdd0fdd5868a73ddc83d173a93')
+sha256sums=('2695d18d197a3bd729cca0940248ddc1880e4f54da95b9ecc5eda002a715cdbe')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
