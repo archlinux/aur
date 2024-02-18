@@ -4,7 +4,7 @@
 # Contributor: Wang Jiajun <amesists@gmail.com>
 
 pkgname=kdesrc-build-git
-pkgver=22.07.r580.g6513976
+pkgver=22.07.r615.g479326d
 pkgrel=1
 pkgdesc="A script to build KDE software from KDE's source repositories"
 url="https://apps.kde.org/kdesrc_build"
@@ -33,5 +33,4 @@ package() {
   DESTDIR="${pkgdir}" cmake --install build
   mkdir "${pkgdir}/usr/bin"
   ln -sfv "/usr/share/kdesrc-build/kdesrc-build" "${pkgdir}/usr/bin/kdesrc-build"
-  ln -sfv "/usr/share/kdesrc-build/kdesrc-run" "${pkgdir}/usr/bin/kdesrc-run"
 }
