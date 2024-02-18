@@ -1,0 +1,16 @@
+pkgbase = python-poetry-multiproject-plugin
+	pkgdesc = A Poetry plugin that makes it possible to use relative package includes.
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/DavidVujic/poetry-multiproject-plugin
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-cleo
+	depends = python-poetry
+	source = https://codeload.github.com/DavidVujic/poetry-multiproject-plugin/tar.gz/refs/tags/v1.3.2
+	sha256sums = 5871be50809a1fb915f04c2918b73ac3710b647372f7a5434fca2de6fb2b68de
+
+pkgname = python-poetry-multiproject-plugin
