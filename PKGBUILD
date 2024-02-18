@@ -1,8 +1,8 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=python-instructor
-_name=${pkgname#python-}
-pkgver=0.5.2
+_pkgname=${pkgname#python-}
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
@@ -12,6 +12,7 @@ depends=(
   python
   python-aiohttp
   python-docstring-parser
+  python-httpx
   python-openai
   python-pydantic
   python-regex
@@ -27,11 +28,10 @@ makedepends=(
   python-wheel
 )
 checkdepends=(python-pytest)
-
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('7a238c42e31ad59cc0320bb48e34e7030fec691a8bde6b0cde023d1bca8bf38b')
+sha256sums=('fa280682aa1e0688be29e518e29371963308749cd5683249967226592bc09439')
 
-_archive="$_name-$pkgver"
+_archive="$_pkgname-$pkgver"
 
 build() {
   cd "$_archive"
@@ -42,8 +42,8 @@ build() {
 check() {
   cd "$_archive"
 
-  # Tests in test/sopenapi/ interacts with OpenAI's API and requires a valid
-  # API key
+  # Tests in test/openapi/ interact with OpenAI's API and requires a valid API
+  # key
   export OPENAI_API_KEY=sk-dBAe8c5a9bc4294cca9bed292cd61e0ff9030bB94647adfb
   pytest --ignore=tests/openai
 }
