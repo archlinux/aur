@@ -4,8 +4,8 @@
 
 _pkgname=pandoc
 pkgname=$_pkgname-sile-git
-_pkgver=3.1.12
-pkgver=3.1.12.r11.gde2b0a3
+_pkgver=3.1.12.1
+pkgver=3.1.12.1.r11.g64f4f62
 pkgrel=1
 pkgdesc='Conversion between markup formats (sile fork, static build)'
 url='https://pandoc.org'
