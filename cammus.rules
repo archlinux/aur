@@ -1,0 +1,13 @@
+### Dumping all subsystems for now until further test
+
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3416", ATTRS{idProduct}=="1018", MODE="0666", ENV{ID_INPUT_JOYSTICK}="1", ENV{ID_CLASS}="joystick", TAG+="uaccess"
+SUBSYSTEM=="input", ATTRS{idVendor}=="3416", ATTRS{idProduct}=="1018", MODE="0666", ENV{ID_INPUT_JOYSTICK}="1", ENV{ID_CLASS}="joystick", TAG+="uaccess"
+SUBSYSTEM=="event", ATTRS{idVendor}=="3416", ATTRS{idProduct}=="1018", MODE="0666", ENV{ID_INPUT_JOYSTICK}="1", ENV{ID_CLASS}="joystick", TAG+="uaccess"
+SUBSYSTEM=="js", ATTRS{idVendor}=="3416", ATTRS{idProduct}=="1018", MODE="0666", ENV{ID_INPUT_JOYSTICK}="1", ENV{ID_CLASS}="joystick", TAG+="uaccess"
+
+### Calibrate pedals axis for jsdev #TODO
+#ACTION=="add", KERNEL=="js[0-9]*", ENV{ID_VENDOR_ID}=="3416", ENV{ID_MODEL_ID}=="1018", RUN+="/usr/bin/jscal -u 3,1,2,3,0 -s 3,1,0,3056,3056,-517200,-516703,1,0,1423,1423,377269,377269,0,0 /dev/input/js%n"
+
+### Calibrate pedals axis for evdev
+ACTION=="add", ENV{ID_VENDOR_ID}=="3416", ENV{ID_MODEL_ID}=="1018", RUN+="/usr/bin/cp5-pedal.sh"
+

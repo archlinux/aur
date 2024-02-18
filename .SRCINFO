@@ -1,0 +1,19 @@
+pkgbase = cammus-ff-dkms
+	pkgdesc = Enable Force Feedback for Cammus C5 Direct Drive Wheel
+	pkgver = r28.2a2be93
+	pkgrel = 2
+	url = https://github.com/spikerguy/cammus-ff
+	install = cammus-ff-dkms.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = joyutils
+	depends = dkms
+	source = cammus-ff::git+https://github.com/spikerguy/cammus-ff.git#branch=master
+	source = cammus.rules
+	source = cp5-pedal.sh
+	b2sums = SKIP
+	b2sums = 2f2982dea2cd2ec565ed59175188660da96a0bda68808270b0d78b85ac6860d6d11f11dabaa6cd653f0753a1ff502065cc504ecf4c5c1417008cbe6b6be3c02d
+	b2sums = ec4dfd2fd6872ff16bd73fcf01e78d3e54413f3da6fcf5c0e0c686cec6e0eee0f302ee63d25bbd2e67622e3d85605ad48e6fae212037297b5b8483fd693859aa
+
+pkgname = cammus-ff-dkms
