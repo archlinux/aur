@@ -2,7 +2,7 @@
 
 pkgname=resonate-git
 pkgdesc="Lightweight subsonic music player powered by Rust and React."
-pkgver=19fd1d8
+pkgver=3be5f5a
 pkgrel=1
 arch=("x86_64")
 url="https://git.usesarchbtw.lol/resonate/resonate"
@@ -10,7 +10,7 @@ depends=(cairo gcc-libs gdk-pixbuf2 glib2 glibc gstreamer gst-plugins-good gtk3 
 makedepends=(cargo git nodejs pnpm)
 source=("git+https://git.usesarchbtw.lol/resonate/resonate.git" "resonate.desktop")
 sha256sums=("SKIP" "SKIP")
-license=("GPL-3.0-only")
+license=("AGPL-3.0-only")
 
 prepare() {
   cd resonate
