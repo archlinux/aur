@@ -1,7 +1,7 @@
 # Maintainer: Marco Sternini <mkarko01@gmail.com>
 # Maintainer: Danilo Pianini <danilo.pianini@unibo.it>
 pkgname=alchemist
-pkgver=30.1.11
+pkgver=31.0.0
 pkgrel=1
 pkgdesc="An extensible simulator for pervasive computing"
 arch=('x86_64')
@@ -26,8 +26,8 @@ depends=(
 #    'zlib'
 )
 makedepends=()
-source=("https://github.com/AlchemistSimulator/Alchemist/releases/download/30.1.11/alchemist-30.1.11-1.$CARCH.rpm")
-md5sums=('28b286774643504d9ac6a952add357f2')
+source=("https://github.com/AlchemistSimulator/Alchemist/releases/download/31.0.0/alchemist-31.0.0-1.$CARCH.rpm")
+md5sums=('5edfb1bcf7918abe0793eced49614520')
 
 package() {
     mkdir -p "${pkgdir}/usr/share/${pkgname}"
@@ -35,8 +35,8 @@ package() {
     mkdir -p "${pkgdir}/usr/bin/"
 
     # Copy the application in usr/lib
-    cp -r "${srcdir}/usr/share/licenses/" "${pkgdir}/usr/share/alchemist/"
-    cp -r "${srcdir}/opt/${pkgname}/" "${pkgdir}/usr/lib/"
+    # cp -r "${srcdir}/usr/share/licenses/" "${pkgdir}/usr/share/alchemist/"
+    cp -r "${srcdir}/usr/lib/${pkgname}/" "${pkgdir}/usr/lib/"
 
     # Create a soft link from usr/bin to the application launcher
     ln -s "/usr/lib/${pkgname}/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
