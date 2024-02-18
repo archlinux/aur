@@ -1,0 +1,20 @@
+pkgbase = fetchcord-next
+	pkgdesc = FetchCord grabs your OS info and displays it as Discord Rich Presence
+	pkgver = 2.7.8
+	pkgrel = 22
+	url = https://github.com/fetchcord/fetchcord/tree/next/
+	install = fetchcord.install
+	arch = any
+	license = MIT
+	depends = python
+	depends = neofetch
+	depends = python-psutil
+	depends = python-setuptools
+	depends = python-pypresence
+	optdepends = systemd: Systemd user service
+	optdepends = python-pyqt5: GUI
+	provides = fetchcord
+	source = fetchcord::git+https://github.com/fetchcord/fetchcord/#branch=next
+	sha256sums = SKIP
+
+pkgname = fetchcord-next

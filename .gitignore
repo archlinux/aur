@@ -1,0 +1,6 @@
+.git
+*.tar.gz
+*.pkg.tar.zst
+fetchcord/
+pkg/
+src/
