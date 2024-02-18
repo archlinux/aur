@@ -1,6 +1,6 @@
 pkgbase = kde-builder-git
 	pkgdesc = A script to build KDE software
-	pkgver = r57.87f183f
+	pkgver = r55.cc6cc86
 	pkgrel = 1
 	url = https://invent.kde.org/ashark/kde-builder
 	arch = any
@@ -9,8 +9,6 @@ pkgbase = kde-builder-git
 	depends = python-pipenv
 	source = git+https://invent.kde.org/ashark/kde-builder.git
 	source = kde-builder-wrapper.sh
-	source = kde-builder-launch-wrapper.sh
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 

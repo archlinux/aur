@@ -2,7 +2,7 @@
 
 pkgname=kde-builder-git
 _basename="${pkgname%-git}"
-pkgver=r57.87f183f
+pkgver=r55.cc6cc86
 pkgrel=1
 pkgdesc="A script to build KDE software"
 url="https://invent.kde.org/ashark/kde-builder"
@@ -17,10 +17,8 @@ depends=(python312 python-pipenv)
 # )
 
 source=("git+https://invent.kde.org/ashark/kde-builder.git"
-        "kde-builder-wrapper.sh"
-        "kde-builder-launch-wrapper.sh")
+        "kde-builder-wrapper.sh")
 sha256sums=("SKIP"
-            "SKIP"
             "SKIP")
 
 pkgver() {
@@ -39,7 +37,6 @@ pkgver() {
 package() {
   mkdir -p "${pkgdir}/usr/share" "${pkgdir}/usr/bin"
   install -D -m755  kde-builder-wrapper.sh "${pkgdir}/usr/bin/kde-builder"
-  install -D -m755  kde-builder-launch-wrapper.sh "${pkgdir}/usr/bin/kde-builder-launch"
   cp -r "${srcdir}/${_basename}" "${pkgdir}/usr/share/${_basename}"
   cd "${pkgdir}/usr/share/${_basename}"
   PIPENV_VENV_IN_PROJECT=1 pipenv install --dev
