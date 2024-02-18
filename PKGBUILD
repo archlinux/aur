@@ -4,12 +4,12 @@
 pkgname=spectrwm
 pkgver=3.5.1
 _ghver=3_5_1
-pkgrel=4
+pkgrel=5
 pkgdesc="A minimalistic automatic tiling window manager that tries to stay out of the way."
 arch=('x86_64')
 url="http://www.spectrwm.org"
 _watch="https://github.com/conformal/spectrwm/releases"
-license=('custom:ISC')
+license=('ISC')
 depends=('dmenu' 'xcb-util' 'xcb-util-wm' 'xcb-util-keysyms' 'libxrandr' 'libxft' 'libxcursor' 'terminus-font')
 replaces=('scrotwm')
 makedepends=('libxt')
