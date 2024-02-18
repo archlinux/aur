@@ -1,6 +1,6 @@
 pkgbase = rustaman-git
 	pkgdesc = Template based HTTP client
-	pkgver = 0.2.0.r0.d61af30
+	pkgver = 0.2.0.r0.3c83174
 	pkgrel = 1
 	url = https://github.com/mardiros/rustaman
 	arch = i686
