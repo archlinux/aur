@@ -5,12 +5,11 @@ _pkgname=${pkgname%-bin}
 conflicts=('uv')
 provides=('uv')
 pkgver=0.1.4
-pkgrel=3
+pkgrel=4
 pkgdesc='An extremely fast Python package installer and resolver, written in Rust. Designed as a drop-in replacement for pip and pip-compile.'
 arch=(aarch64 i686 x86_64)
 url='https://github.com/astral-sh/uv'
 license=('MIT')
-#checkdepends=('python')
 
 source_aarch64=(https://github.com/astral-sh/uv/releases/download/$pkgver/uv-aarch64-unknown-linux-gnu.tar.gz)
 source_i686=(https://github.com/astral-sh/uv/releases/download/$pkgver/uv-i686-unknown-linux-gnu.tar.gz)
@@ -20,13 +19,14 @@ sha256sums_aarch64=('d0341732b39688b2464cceecaf617af40898eb80b1093ced778e91d1383
 sha256sums_i686=('a3d55664de30d58ba26d34106fea81f2532d73afb47d6812efa884d0726dae39')
 sha256sums_x86_64=('1eb2f8ba39c231a310e41784980c8085eb747711ad59e430e75975a61a0a7fbf')
 
+check () {
+  cd "${_pkgname}-${CARCH}-unknown-linux-gnu"
+  ./uv --version
+  ./uv venv test
+  ./test/bin/python3 --version
+}
+
 package() {
   cd "${_pkgname}-${CARCH}-unknown-linux-gnu"
   install -Dm755 uv "${pkgdir}/usr/bin/uv"
 }
-
-#check() {
-#  uv venv test
-#  ./test/bin/python3 --version
-#}
-
