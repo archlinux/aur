@@ -1,6 +1,6 @@
 pkgbase = perl-datetimex-auto
 	pkgdesc = use DateTime without needing to call constructors
-	pkgver = 0.008
+	pkgver = 0.009
 	pkgrel = 1
 	url = https://metacpan.org/release/DateTimeX-Auto
 	arch = any
@@ -11,16 +11,15 @@ pkgbase = perl-datetimex-auto
 	depends = perl-exporter-tiny>=0
 	depends = perl-datetime-format-strptime>=0
 	depends = perl-datetime>=0
-	provides = perl-datetimex-auto-duration=0.008
-	provides = perl-datetimex-auto-datetime=0.008
-	provides = perl-datetimex-auto-duration=0.008
-	provides = perl-datetimex-auto-datetime=0.008
-	provides = perl-datetimex-auto-duration=0.008
-	provides = perl-datetimex-auto-datetime=0.008
+	provides = perl-datetimex-auto-duration=0.009
+	provides = perl-datetimex-auto-datetime=0.009
+	provides = perl-datetimex-auto-duration=0.009
+	provides = perl-datetimex-auto-datetime=0.009
+	provides = perl-datetimex-auto-duration=0.009
+	provides = perl-datetimex-auto-datetime=0.009
 	options = !emptydirs
 	options = purge
-	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/DateTimeX-Auto-0.008.tar.gz
-	sha256sums = 269192b9e78e530525d9528258378d7ba82a5f2164d6c58bffab628dbede04d4
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/DateTimeX-Auto-0.009.tar.gz
+	sha256sums = d21720bab08573f57651c597760b21f2388b15e654b8a2ed18d6a07c89cfdbdc
 
 pkgname = perl-datetimex-auto
-

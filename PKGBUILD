@@ -1,7 +1,7 @@
 # Maintainer: Kars Wang <jaklsy AT gmail.com>
 
 pkgname='perl-datetimex-auto'
-pkgver=0.008
+pkgver=0.009
 pkgrel=1
 pkgdesc='use DateTime without needing to call constructors'
 _dist='DateTimeX-Auto'
@@ -14,7 +14,7 @@ makedepends=()
 provides=("perl-datetimex-auto-duration=$pkgver" "perl-datetimex-auto-datetime=$pkgver" "perl-datetimex-auto-duration=$pkgver" "perl-datetimex-auto-datetime=$pkgver" "perl-datetimex-auto-duration=$pkgver" "perl-datetimex-auto-datetime=$pkgver")
 options=('!emptydirs' 'purge')
 source=("http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/$_dist-$pkgver.tar.gz")
-sha256sums=('269192b9e78e530525d9528258378d7ba82a5f2164d6c58bffab628dbede04d4')
+sha256sums=('d21720bab08573f57651c597760b21f2388b15e654b8a2ed18d6a07c89cfdbdc')
 
 build() (
   cd "$srcdir/$_dist-$pkgver"
