@@ -3,13 +3,16 @@
 # Maintainer: Truocolo <truocolo@aol.com>
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
+_local=false
+_git=false
 _proj="hip"
 pkgname=dynssh
-_pkgver=0.1.2.1
-pkgver="${_pkgver}"
+pkgver=1.1.2.1.1
 pkgrel=1
 pkgdesc="Small SSH wrapper"
-arch=(any)
+arch=(
+  any
+)
 _host='https://github.com'
 _ns='themartiancompany'
 url="${_host}/${_ns}/${pkgname}"
@@ -19,8 +22,7 @@ depends=(
   openssh
   net-tools
 )
-makedepends=(
- # git 
+makedepends=( 
 )
 groups=(
   "${_proj}"
@@ -28,19 +30,40 @@ groups=(
 checkdepends=(
   shellcheck
 )
-_url="file://${HOME}/${pkgname}"
-source=(
-  # "${_url}#tag="${pkgver}"
-  "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
-)
-sha256sums=(
-  # "SKIP"
-  "361cb9cea01287ac9ab16da17d13b86692dc67800754c5550e0b188e56fd0c78"
-)
+source=()
+sha256sums=()
+_url="${url}"
+[[ "${_local}" == true ]] && \
+  _url="file://${HOME}/${pkgname}"
+[[ "${_git}" == true ]] && \
+  makedepends+=(
+    git 
+  ) && \
+  source+=(
+    "${_pkgname}-${pkgver}::git+${_url}#tag=${pkgver}"
+  ) && \
+  sha256sums+=(
+    "SKIP"
+  )
+[[ "${_git}" == false ]] && \
+  source+=(
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+  ) && \
+  sha256sums+=(
+    e7855d3aa3197d9896747948bc6ef41652d6570dd2dde52bb4291aa4fe179b16
+  )
+
+check() {
+  cd \
+    "${pkgname}-${pkgver}"
+  make \
+    -k \
+    check
+}
 
 package() {
   cd \
-    "${pkgname}-${_pkgver}"
+    "${pkgname}-${pkgver}"
   make \
     DESTDIR="${pkgdir}" \
     install
