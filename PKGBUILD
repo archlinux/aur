@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=autobrr
-pkgver=1.34.1
+pkgver=1.38.1
 pkgrel=1
 pkgdesc='The modern download automation tool for torrents'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=(
   'lidarr'
 )
 options=('!lto')
-_commit='fc0bf33412803a7178ba19963dd0d53233bf3ad8'
+_commit='c97becb4e3b1d6b9182396b2867b9d76e27159a8'
 source=(
   "$pkgname::git+https://github.com/autobrr/autobrr#commit=$_commit"
   'systemd.service'
