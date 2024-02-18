@@ -15,11 +15,11 @@ conflicts=('ZCentral_RB-bin')
 #makedepends=('')
 options=('emptydirs')
 noextract=()
-source=("file://RGS_Linux_64_Receiver_v7.7.2_M27900-001.tar.gz")
-md5sums=('c521b72fbb79610a7e985b7629aea73d')
+source=("RGS_Linux_64_Sender_and_Receiver_v7.7_L64934-001.tar.gz")
+md5sums=('3bb5751a61424f2fff3d5e43a1578eb8')
 
 prepare() {
-bsdtar xf RGS_Linux_64_Receiver_v7.7.2_M27900-001.tar.gz
+bsdtar xf RGS_Linux_64_Sender_and_Receiver_v7.7_L64934-001.tar.gz
 bsdtar xf rhel7-sled12/receiver/*.rpm
 }
 
@@ -28,15 +28,6 @@ cd "${srcdir}"
 
 # install licence
 install -m644 -D rhel7-sled12/receiver/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-# hack needed to register advance features 
-# N.B. rgsmbiosreader does not work under KVM/QEMU/OVMF bios, nor kernel greater than 4.4.44
-# next 4 lines replace rgsmbioreader
-mkdir opt/hpremote/registration
-sudo dmidecode -t 1 | grep UUID | tr A-z a-z | tr -d - | cut -c8-80 > opt/hpremote/registration/H264
-mv opt/hpremote/rgreceiver/rgsmbiosreader opt/hpremote/rgreceiver/rgsmbiosreader.old
-echo '#!/bin/sh' > opt/hpremote/rgreceiver/rgsmbiosreader
-echo 'cat /opt/hpremote/registration/H264' >> opt/hpremote/rgreceiver/rgsmbiosreader
 
 chmod 6755 opt/hpremote/rgreceiver/rgsmbiosreader
 chmod a+w etc/opt
@@ -63,6 +54,18 @@ cp -rpf ./source/ $pkgdir
 }
 
 post-install() {
+# hack needed to register advance features 
+# N.B. rgsmbiosreader does not work under KVM/QEMU/OVMF bios, nor kernel greater than 4.4.44
+# next lines replace rgsmbioreader
+if [ -f ./opt/hpremote/registration ] ; then
+echo ./opt/hpremote/registration
+ else
+  mkdir ./opt/hpremote/registration
+fi
+dmidecode -t 1 | grep UUID | tr A-z a-z | tr -d - | cut -c8-80 > opt/hpremote/registration/H264
+mv opt/hpremote/rgreceiver/rgsmbiosreader opt/hpremote/rgreceiver/rgsmbiosreader.old
+echo '#!/bin/sh' > opt/hpremote/rgreceiver/rgsmbiosreader
+echo 'cat /opt/hpremote/registration/H264' >> opt/hpremote/rgreceiver/rgsmbiosreader
 
 /sbin/ldconfig
 
