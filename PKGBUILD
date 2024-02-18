@@ -1,7 +1,7 @@
 # Maintainer: Kars Wang <jaklsy AT gmail.com>
 
 pkgname='perl-types-xsd-lite'
-pkgver=0.005
+pkgver=0.007
 pkgrel=1
 pkgdesc='type constraints based on a subset of XML schema datatypes'
 _dist='Types-XSD-Lite'
@@ -9,12 +9,18 @@ arch=('any')
 url="https://metacpan.org/release/$_dist"
 license=('PerlArtistic')
 depends=('perl' 'perl-type-tiny>=0.004')
-checkdepends=('perl-test-simple>=0.96' 'perl-test-fatal>=0' 'perl-test-requires>=0' 'perl-type-tiny>=0.004')
+checkdepends=(
+    perl-moo
+    perl-test-fatal
+    perl-test-requires
+    perl-test-simple
+    perl-type-tiny
+)
 makedepends=()
 provides=()
 options=('!emptydirs' 'purge')
 source=("http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/$_dist-$pkgver.tar.gz")
-sha256sums=('a2e4490f730a437650c088c0cc9310d9ddecb7ff519b6623262675249aa0e566')
+sha256sums=('8c396c4e9d9665b740d12f384903b54c8de13d8b7280257f3ec23c5db16540ad')
 
 build() (
   cd "$srcdir/$_dist-$pkgver"
