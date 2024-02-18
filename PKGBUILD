@@ -4,11 +4,11 @@
 # Contributor: Link Dupont <link@subpop.net>
 pkgname=libdbus-minimal
 pkgver=1.14.10
-pkgrel=1
+pkgrel=2
 pkgdesc="DBus library"
 arch=('x86_64')
 url="https://wiki.freedesktop.org/www/Software/dbus/"
-license=('GPL' 'custom')
+license=('AFL-2.1 OR GPL-2.0-or-later')
 provides=('libdbus' 'libdbus-1.so')
 conflicts=('libdbus')
 source=("https://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.xz"{,.asc})
