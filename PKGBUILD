@@ -3,11 +3,11 @@
 pkgname=rlvm
 _pkgver=38c808e33acb7f6273ecd764c6ad948424eb7626
 pkgver=0.14.r79.38c808e3
-pkgrel=1
+pkgrel=2
 pkgdesc="RealLive clone for Linux and OSX"
 arch=('x86_64')
 url="https://github.com/eglaysher/rlvm"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('boost-libs>=1.46' 'glew' 'libmad' 'libogg' 'libvorbis' 'libpng'
          'sdl_mixer' 'sdl_image' 'sdl_ttf' 'guichan' 'gtk2')
 makedepends=('scons' 'boost')

@@ -1,10 +1,10 @@
 pkgbase = rlvm
 	pkgdesc = RealLive clone for Linux and OSX
 	pkgver = 0.14.r79.38c808e3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eglaysher/rlvm
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-or-later
 	makedepends = scons
 	makedepends = boost
 	depends = boost-libs>=1.46
