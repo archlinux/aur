@@ -4,7 +4,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com
 pkgname=('pidgin-hg') #'libpurple-hg' 'finch-hg')
 _hgname=pidgin
-pkgver=3.r42589.8627951788d1
+pkgver=3.r42590.452ba49e16d4
 pkgrel=1
 provides=("pidgin" "libpurple" "finch")
 conflicts=("pidgin" "libpurple" "finch")
@@ -40,8 +40,12 @@ pkgver() {
 }
 
 build() {
+   export CC=clang
+   export CXX=clang++
+   export CC_LD=lld
    arch-meson pidgin build \
      -Dkwallet=enabled \
+     -Dlibsecret=enabled \
      -Ddoc=true \
      -Dunity-integration=disabled \
      -Davahi=enabled \
