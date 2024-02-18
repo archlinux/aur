@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=variancePartition
-_pkgver=1.32.4
+_pkgver=1.32.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -58,8 +58,8 @@ optdepends=(
   r-zenith
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('78d2f9997029b9ddd7729c31bbbbf8b4')
-b2sums=('1f96feecf4fdc6e09cf4e6fdb8736169d44c57c858890a539d61b7e3c86a9356e25ed7757f431aaeba6383f3fb6001338b05f567ab3cda5907b0ed7319fefe7b')
+md5sums=('cd02e6e3024f4f5bbb5d8c1dcb471d15')
+b2sums=('c7e03d37c1afd7886acb61c0a6fa71166b2cd3eaf46f57e036a81526444100065a2254cd220dca2ba0aeac2412a1a5d2e6a265c6ec84b09f0c1a8879bb6447d3')
 
 build() {
   mkdir build
