@@ -2,3 +2,5 @@ src
 pkg
 *.zip
 *.pkg.tar.zst
+.SRCINFO
+.code-workspace
