@@ -2,7 +2,7 @@
 
 _pkgname=hiddify-next
 pkgname=${_pkgname}-bin
-pkgver=0.15.15.dev
+pkgver=0.16.0.dev
 pkgrel=1
 pkgdesc="Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH etc. It’s an open-source, secure and ad-free"
 arch=(x86_64)
@@ -18,7 +18,7 @@ source=(
     "$_pkgname-$pkgver.deb::https://github.com/hiddify/hiddify-next/releases/download/v${pkgver}/Hiddify-Debian-x64.deb"
 )
 sha256sums=(
-    "121dd3020638e94e83cf19712af87495cc477c0357961df48e9a65db59d4b47a"
+    "bc1259e256923bee8b7b4f469d21c9ffb1cb1ebe18fb00e2ff51b833b1c761fb"
 )
 _install_path="/opt/$_pkgname"
 
