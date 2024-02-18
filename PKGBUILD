@@ -1,25 +1,26 @@
-# Maintainer: Antoni Kepinski <a[at]kepinski[dot]me>
+# Contributor: Antoni Kepinski <a[at]kepinski[dot]me>
 pkgname=archfetch
 pkgver=1.0.8
-pkgrel=6
+pkgrel=7
+_commit=47ee3d8c3d9ad4c8585347a39d021f395cabaecb # pick last commit
 pkgdesc="Simple CLI system information tool for Arch Linux."
 url="https://github.com/xxczaki/archfetch/"
-arch=('i686' 'x86_64')
+arch=('any')
 license=('MIT')
 makedepends=('git')
-_gitroot="git://github.com/xxczaki/archfetch.git"
-_gitname="archfetch"
+source=("git+https://github.com/xxczaki/archfetch#commit=$_commit")
+sha256sums=('SKIP')
+
+prepare() {
+    cd $pkgname
+    # use systemd's hostnamectl instead of inetutils
+    sed -i 's/(hostname)/(hostnamectl hostname)/' archfetch
+    # fix awk warning
+    sed -i 's/\\"/"/g' archfetch
+}
 
 package() {
-	cd "${PKGMK_SOURCE_DIR}"
-
-	if cd "${pkgname}"; then
-		git fetch -q
-		git reset --hard origin/master
-	else
-		git clone ${_gitroot} ${_gitname}
-		cd "${pkgname}"
-	fi
-
-	sudo make install
+    cd $pkgname
+    install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
