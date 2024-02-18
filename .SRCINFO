@@ -11,5 +11,5 @@ pkgbase = zcentral_rb-bin
 	options = emptydirs
 	source = file://ZCentral_RB_22.1_Linux_Receiver_M39127-009.tar.gz
 	md5sums = 21c0d1f76e2ba732269e64c666400a51
-
+	
 pkgname = zcentral_rb-bin
