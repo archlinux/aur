@@ -1,11 +1,15 @@
+#Maintainer Solomon Choina <shlomochoina@gmail.com>
 pkgname=kvirc-git
-pkgver=5.0.0.r90.g6d6d54752
+pkgver=5.2.0.r10.g6b57a7bef
 pkgrel=1
 pkgdesc="Qt5 based IRC-Client, compiled with kde5 support - Git Version"
 arch=('i686' 'x86_64')
 url="http://www.kvirc.net"
-license=('GPL')
-depends=('qt5-base' 'glibc' 'openssl' 'zlib' 'perl' 'qt5-multimedia' 'qt5-svg' 'qt5-x11extras' 'qt5-webkit' 'phonon-qt5' 'enchant' 'kcoreaddons' 'ki18n' 'kxmlgui' 'kwindowsystem' 'knotifications' 'kservice' 'audiofile' 'libxss')
+license=('GPL-2.0-only')
+depends=('qt5-base' 'glibc' 'openssl' 'zlib' 'perl' 'qt5-multimedia' 'qt5-svg'
+         'qt5-x11extras' 'qt5-webkit' 'phonon-qt5' 'enchant' 'kcoreaddons5'
+         'ki18n5' 'kxmlgui5' 'kwindowsystem5' 'knotifications5'
+         'kservice5' 'audiofile' 'libxss' 'qt5-webengine')
 makedepends=('python' 'ninja' 'gettext' 'doxygen' 'extra-cmake-modules' 'zsh' 'cmake' 'git'  'gettext')
 conflicts=('kvirc4' 'kvirc')
 provides=('kvirc')
