@@ -3,6 +3,7 @@
 pkgname=uv-bin
 _pkgname=${pkgname%-bin}
 conflicts=('uv')
+provides=('uv')
 pkgver=0.1.4
 pkgrel=1
 pkgdesc='An extremely fast Python package installer and resolver, written in Rust. Designed as a drop-in replacement for pip and pip-compile.'
