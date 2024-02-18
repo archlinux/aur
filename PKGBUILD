@@ -1,12 +1,12 @@
 pkgname=waylyrics
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="the furry way to show desktop lyrics"
 arch=("x86_64")
 url="https://waylyrics.github.io/waylyrics/waylyrics/"
 license=("MIT")
 depends=(
-    "openssl" "hicolor-icon-theme" "dbus" "gcc-libs" "glibc" "glib2" "cairo" "dconf" "gtk4"
+    "openssl" "dbus" "gcc-libs" "glibc" "glib2" "cairo" "dconf" "gtk4"
 )
 makedepends=(
     "rust>=1.73.0"
@@ -14,7 +14,7 @@ makedepends=(
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/waylyrics/waylyrics/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('b3f0c92f38f836f82eb1291047884eb1d5318ee1e4ce86271ed447e0593b83df')
+sha256sums=('77962cb8dfe6de9248a2f78b33fa0da277dd9d4b89e83d6bb4358988a8ca132c')
 options=("!lto")
 
 prepare() {
@@ -36,6 +36,7 @@ check() {
     cargo test --release --frozen --all-features
 }
 package() {
+    depends+=("hicolor-icon-theme")
     cd "$srcdir/$pkgname-$pkgver"
     install -Dm755 target/release/$pkgname "$pkgdir/usr/bin/$pkgname"
     install -Dm644 io.poly000.waylyrics.desktop \
