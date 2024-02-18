@@ -1,0 +1,13 @@
+pkgbase = python-pathtools
+	pkgdesc = Pattern matching and various utilities for file systems paths
+	pkgver = 0.1.2
+	pkgrel = 12
+	url = https://pypi.python.org/pypi/pathtools/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.python.org/packages/source/p/pathtools/pathtools-0.1.2.tar.gz
+	sha256sums = 7c35c5421a39bb82e58018febd90e3b6e5db34c5443aaaf742b3f33d4655f1c0
+
+pkgname = python-pathtools
