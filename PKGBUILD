@@ -8,13 +8,13 @@ pkgname=(
     'plasma5-themes-breath-extra'
     'breath-wallpapers'
     'sddm-breath-theme')
-pkgver=21.2.0
-pkgrel=2
-_commit=cb3a79366ac13dddd4454fdc5511b8d374e71de9
+pkgver=23.0.0
+pkgrel=1
+_commit=98822e7d
 arch=('any')
 url="https://gitlab.manjaro.org/artwork/themes/breath"
 license=('LGPL')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'plasma-framework')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'plasma-framework5')
 source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
