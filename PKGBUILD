@@ -2,8 +2,8 @@
 pkgname=wenger-local-fs-mount-bind
 pkgdesc="Local Filesystem Mount Bind Service"
 
-pkgver=0.1
-pkgrel=2
+pkgver=0.2
+pkgrel=1
 
 arch=('any')
 
