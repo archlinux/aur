@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=R.rsp
-_pkgver=0.45.0
+_pkgver=0.46.0
 pkgname=r-${_pkgname,,}
-pkgver=0.45.0
-pkgrel=4
+pkgver=0.46.0
+pkgrel=1
 pkgdesc='Dynamic Generation of Scientific Reports'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -26,7 +26,7 @@ optdepends=(
   r-tcltk
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a58046d448b2fca15fb1bf5b5eec4da37b29175270c07e46d740066537435da4')
+sha256sums=('1a9f680ffe563abdaa91add6ebf5e6c0ecbe57f0d39687bcb272ff2a987c33bb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
