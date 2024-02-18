@@ -1,11 +1,11 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-zen
-_pkgver=6.7.4.zen1
-_kernver=6.7.4
+_pkgver=6.7.5.zen1
+_kernver=6.7.5
 _zenver=zen1
 _pkgrel=1
 pkgbase="${_pkgname}-versioned-bin"
-_KERNNAME=6.7.4-zen1-1-zen
+_KERNNAME=6.7.5-zen1-1-zen
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}-zen"
 pkgname=("${_pkgname}-versioned-bin"
          "${_pkgname}-versioned-headers-bin"
@@ -44,9 +44,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('638496f947b87ac7263886e5b2f54192d3de05e1cab9f0baabeeffe88b573d2a'
-            '706a5f7bb72e1f14e33dfcb2198c4c4269c847e245daf799281532542e5c436a'
-            '24dda2938719a7b4919f267f0e8c64112227ad2b1f215ee6406fd83237a1d80d')
+sha256sums=('5685887b04f88a62726e5ea2a7b14f0c57cb2ee63e205b125c921571ac8d4924'
+            '8f6b3f92cc814414ada05a5a4d163f37135b5cbd9c7edeafe24942be03fac18f'
+            'cd2f92a68b1c4f980cc96978105d437e7863fc450e7f9b395175471736183584')
 
 package_linux-zen-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -64,7 +64,7 @@ package_linux-zen-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux6.7.4.zen1-1-zen-bin() {
+package_linux6.7.5.zen1-1-zen-bin() {
   pkgdesc="The Linux ZEN kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -82,7 +82,7 @@ package_linux6.7.4.zen1-1-zen-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux6.7.4.zen1-1-zen-headers-bin() {
+package_linux6.7.5.zen1-1-zen-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux ZEN kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -91,7 +91,7 @@ package_linux6.7.4.zen1-1-zen-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux6.7.4.zen1-1-zen-docs-bin() {
+package_linux6.7.5.zen1-1-zen-docs-bin() {
   pkgdesc="Documentation for the Linux ZEN kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
