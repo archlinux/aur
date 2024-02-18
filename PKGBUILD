@@ -8,7 +8,8 @@ _local=false
 _py="python"
 _py2="${_py}2"
 _proj="hip"
-pkgname=ssh-utils
+_pkg="ssh"
+pkgname="${_pkg}-utils"
 pkgver=0.1.1
 pkgrel=1
 _pkgdesc=(
@@ -30,6 +31,9 @@ license=(
 )
 depends=(
   bash
+)
+provides=(
+  "mk${_pkg}config=${pkgver}"
 )
 makedepends=()
 [[ "${_git}" == true ]] && \

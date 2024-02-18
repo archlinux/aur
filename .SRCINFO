@@ -8,6 +8,7 @@ pkgbase = ssh-utils
 	license = AGPL3
 	checkdepends = shellcheck
 	depends = bash
+	provides = mksshconfig=0.1.1
 	source = ssh-utils-0.1.1.tar.gz::https://github.com/themartiancompany/ssh-utils/archive/refs/tags/0.1.1.tar.gz
 	sha256sums = 3de8a8372de2864621db642ffe1eb8130ef5e34aed46bc10254b8b2c0e56e134
 
