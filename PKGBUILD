@@ -1,7 +1,7 @@
 # Maintainer: Francisco Salces Carcoba <pacosalces@gmail.com>
 pkgname=python-pygwinc
 _name=pygwinc
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Gravitational Wave Interferometer Noise Calculator"
 license=("Unlicense")
