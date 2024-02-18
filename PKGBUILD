@@ -3,7 +3,7 @@
 pkgname=(composefs libcomposefs)
 pkgbase=composefs
 pkgver=v1.0.3
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/containers/composefs"
 makedepends=(git go-md2man fuse3)
@@ -38,6 +38,10 @@ package_libcomposefs() {
 	
 	cd "$pkgbase/$pkgname"
 	make DESTDIR="$pkgdir/" install
+
+	# Copy .pc file
+	install -d -m 755 "$pkgdir/usr/lib/pkgconfig"
+	install -m 644 "$srcdir/$pkgbase/composefs.pc" "$pkgdir/usr/lib/pkgconfig/"
 }
 
 package_composefs() {
@@ -55,8 +59,4 @@ package_composefs() {
 	install -m 644 "$srcdir/$pkgbase/man/mkcomposefs.1" "$pkgdir/usr/share/man/man1/"
 	install -m 644 "$srcdir/$pkgbase/man/composefs-info.1" "$pkgdir/usr/share/man/man1/"
 	install -m 644 "$srcdir/$pkgbase/man/composefs-dump.5" "$pkgdir/usr/share/man/man5/"
-	
-	# Copy .pc file
-	install -d -m 755 "$pkgdir/usr/lib/pkgconfig"
-	install -m 644 "$srcdir/$pkgbase/composefs.pc" "$pkgdir/usr/lib/pkgconfig/"
 }

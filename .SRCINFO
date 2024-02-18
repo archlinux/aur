@@ -1,6 +1,6 @@
 pkgbase = composefs
 	pkgver = v1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/containers/composefs
 	arch = x86_64
 	makedepends = git
