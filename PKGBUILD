@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ILoReg
-_pkgver=1.10.0
+_pkgver=1.12.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="a tool for high-resolution cell population identification from scRNA-Seq data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -35,12 +35,13 @@ depends=(
   r-umap
 )
 optdepends=(
+  r-biocstyle
   r-knitr
   r-rmarkdown
 )
-source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5b4425d7d9a6bc0201dcd9c1d0b1c98c')
-b2sums=('bcffc5e3e0e453858d6d98ab5edac1063df56f3419ece1926ab5c1ebea83c5c09e124a802dc109c4c9efe4c23bb0851dbbda7a6e1cd6d8cfe8b4a501f8e0a791')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('a1f0a2d1222e84e1e0d0100600cf98b1')
+b2sums=('aba392206e806cf0d5caf257c93869107537e232f3360843b73ac93f5d2a160b02d8d0e10ad4fc782cb162277041d6ecd97e0036d882ed6f6afcab1fb02901f6')
 
 build() {
   mkdir build
