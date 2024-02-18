@@ -3,10 +3,10 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=11.9.0
-_floorp_core_commit=cefaa9a0352456c45be6a917e6664f8ef054a68f
-_floorp_l10n_commit=6915ae0005fdb1684f3b6b0731bdec1a0596f7e8
-pkgrel=5
+pkgver=11.10.0
+_floorp_core_commit="4ccfea5cd12b920a810eeb9a7d4ef843b1c97403"
+_floorp_l10n_commit="1770680bedf6a1520dab5736663f7b5a98bf7945"
+pkgrel=1
 epoch=1
 pkgdesc="Floorp fork build using custom branding & settings"
 url='http://dr460nf1r3.org'
@@ -76,7 +76,7 @@ source=(https://github.com/Floorp-Projects/Floorp/archive/refs/tags/v"${pkgver}"
     "common::git+https://gitlab.com/garuda-linux/firedragon/common.git"
     "settings::git+https://gitlab.com/garuda-linux/firedragon/settings.git"
     "${pkgname}.desktop")
-sha256sums=('11a7b2bfc2582220e0e0f0be90b9575249f52856fe21b55cbce9b72c516d654e'
+sha256sums=('0b69d37ec427adedaa8f5fe5c6d399ccf55b35492539f227cc026e8386bbd487'
             'SKIP'
             'SKIP'
             'SKIP'
