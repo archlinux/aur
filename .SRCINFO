@@ -1,11 +1,11 @@
 pkgbase = yt-dlp-drop-in
 	pkgdesc = Provide both youtube-dl command and python imports using yt-dlp
-	pkgver = 2023.10.13
-	pkgrel = 2
+	pkgver = 2023.12.30
+	pkgrel = 1
 	arch = any
 	license = Unlicense
 	makedepends = python
-	provides = youtube-dl=2023.10.13
+	provides = youtube-dl=2023.12.30
 	conflicts = youtube-dl
 	source = youtube-dl.py
 	sha256sums = 4b3d042525b05d84bb892a864a3ae832cc923bd630ea7e8b4d91ae9c4ec555db
