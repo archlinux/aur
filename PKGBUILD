@@ -3,24 +3,25 @@
 _pkgname=DrugVsDiseasedata
 _pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
-pkgrel=1
-pkgdesc='Drug versus Disease Data'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Drug versus Disease Data"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b1d9719fe34b792236ac2b378362712e37f3ac00bc40ab456669a745a3d7e60d')
+md5sums=('40b800653aab57e822a18afe5bd1a2e7')
+b2sums=('08af6fa392a729127a2df520a992baf0808bcfeff8b9bbc8eb2d1db8c429b08a5f4a7a5d5eca9dc74c5a99ec6d687778b370fd43b7b7ddcc979af426e72a1bc6')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
