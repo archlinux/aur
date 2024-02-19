@@ -10,7 +10,8 @@ arch=('any')
 url="http://search.cpan.org/dist/${cpaname}/"
 license=('unknown')
 options=('!emptydirs')
-depends=('perl' 'perl-test-fatal')
+depends=('perl')
+checkdepends=('perl-test-fatal')
 source=("http://www.cpan.org/authors/id/${cpanauthor::1}/${cpanauthor::2}/${cpanauthor}/${cpaname}-${pkgver}.tar.gz")
 sha256sums=('5caeaada66ab4afdfdae56c023e099880543a9a7c1f931f20a834d5881c15ecb')
 
