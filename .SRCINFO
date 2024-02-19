@@ -1,6 +1,6 @@
 pkgbase = note-manager
 	pkgdesc = Simple CLI notes manager
-	pkgver = 1.19.2
+	pkgver = 1.19.3
 	pkgrel = 1
 	url = https://github.com/thek4n/note
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = note-manager
 	optdepends = tree: tree of notes
 	optdepends = ripgrep: find notes by content
 	conflicts = note-manager
-	source = note-manager::git+https://github.com/thek4n/note.git#tag=v1.19.2
+	source = note-manager::git+https://github.com/thek4n/note.git#tag=v1.19.3
 	sha256sums = SKIP
 
 pkgname = note-manager
