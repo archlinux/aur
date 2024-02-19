@@ -1,13 +1,12 @@
 pkgbase = dict-gcide
 	pkgdesc = GNU version of the Collaborative International Dictionary of English for dictd et al.
 	pkgver = 0.53
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gcide.gnu.org.ua/
 	install = dict-gcide.install
 	arch = any
 	license = GPL3
 	makedepends = dictd
-	makedepends = sed
 	makedepends = libmaa
 	optdepends = dictd: dict client and server
 	provides = dictd-gcide

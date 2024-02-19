@@ -30,17 +30,14 @@ s`(<qau>[^<]*)(<book>|<publ>)([^<]*)(</book>|</publ>)`\1\3`g
 }
 
 
-## CIDE.F
-
-s`measurments`measurements`g
-
-
 ## CIDE.L
 
 s`\<(province)w\>`\1`g
 
 
 ## S
+
+s`measurments`measurements`g
 
 # If one wanted to fix more than necessary (Debian does):
 #\`^<hw>Ses\*quip"li\*cate</hw>` {
