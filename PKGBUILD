@@ -47,6 +47,6 @@ package() {
                  "$pkgdir/usr/share/bash-completion/wpg"
   install -Dm644 "$srcdir/$_gitname/completions/zsh/_wpg" \
                  "$pkgdir/usr/share/zsh/site-functions/_wpg"
-  install -Dm644 "$srcdir/$_gitname/$_gitname/misc/wpg-install.sh" \
+  install -Dm655 "$srcdir/$_gitname/$_gitname/misc/wpg-install.sh" \
                  "$pkgdir/usr/bin/wpg-install.sh"
 }
