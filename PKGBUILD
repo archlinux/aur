@@ -10,7 +10,7 @@ pkgname=(
   "${pkgbase}-gtk4"
 )
 pkgver="0.2.2"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A hack to prevent GTK programs from interacting with the primary clipboard"
 url="https://github.com/notpeelz/gtkclipblock"
 arch=("x86_64")
