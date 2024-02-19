@@ -3,14 +3,17 @@
 _pkgname=blockmodeling
 _pkgver=1.1.5
 pkgname=r-${_pkgname,,}
-pkgver=1.1.5
-pkgrel=1
-pkgdesc='Generalized and Classical Blockmodeling of Valued Networks'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Generalized and Classical Blockmodeling of Valued Networks"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
+)
+makedepends=(
+  gcc-fortran
 )
 optdepends=(
   r-doparallel
@@ -18,18 +21,16 @@ optdepends=(
   r-foreach
   r-sna
 )
-makedepends=(
-  gcc-fortran
-)
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3b6f910078c29b801651e3a686112e41e456c517e1b99fcda11bb12681bb1503')
+md5sums=('58c7580702e7f216874c71bcb94cbdce')
+b2sums=('f0dec0f1401d8c97e194fd6452955e3285948c3bfd3a20fd2e7a62b5286f5ec3217e3a4f707c844395203ded18d32cbfc2e012482ebba08e36d0c8322f4f17ae')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

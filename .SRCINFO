@@ -1,10 +1,10 @@
 pkgbase = r-blockmodeling
 	pkgdesc = Generalized and Classical Blockmodeling of Valued Networks
 	pkgver = 1.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=blockmodeling
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = gcc-fortran
 	depends = r
 	optdepends = r-doparallel
@@ -12,6 +12,7 @@ pkgbase = r-blockmodeling
 	optdepends = r-foreach
 	optdepends = r-sna
 	source = https://cran.r-project.org/src/contrib/blockmodeling_1.1.5.tar.gz
-	sha256sums = 3b6f910078c29b801651e3a686112e41e456c517e1b99fcda11bb12681bb1503
+	md5sums = 58c7580702e7f216874c71bcb94cbdce
+	b2sums = f0dec0f1401d8c97e194fd6452955e3285948c3bfd3a20fd2e7a62b5286f5ec3217e3a4f707c844395203ded18d32cbfc2e012482ebba08e36d0c8322f4f17ae
 
 pkgname = r-blockmodeling
