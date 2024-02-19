@@ -1,6 +1,6 @@
 pkgbase = pinner
 	pkgdesc = A Geany plugin that enables pinning documents to a sidebar tab
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/andy5995/pinner
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = pinner
 	makedepends = meson
 	makedepends = ninja
 	depends = geany
-	source = https://github.com/andy5995/pinner/releases/download/v0.1.0/pinner-0.1.0.tar.xz
-	sha256sums = 7ed57538fda2760b4c753e0c77c4b56f82d6750efef3076a3f427e49f1180e68
+	source = https://github.com/andy5995/pinner/releases/download/v0.1.1/pinner-0.1.1.tar.xz
+	sha256sums = 591f3cba61cdc96747bf8a6f134f9b977567e6c28583ef2fa61d5433498ff54b
 
 pkgname = pinner
