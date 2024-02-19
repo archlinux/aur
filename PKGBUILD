@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=aroma.core
-_pkgver=3.3.0
+_pkgver=3.3.1
 pkgname=r-${_pkgname,,}
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Core Methods and Classes Used by 'aroma.*' Packages Part of the Aroma Framework"
 arch=('any')
@@ -40,7 +40,7 @@ optdepends=(
   r-sfit
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7b6ab7cc6079f6783b0eaa2c10a29492e53cfb3f05b7a298588491b35a472188')
+sha256sums=('fa26bca509750eb44e85cae2d78b03870c003d4f7e0360977e924a7838805e44')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
