@@ -26,7 +26,7 @@ pkgbase = hedgewars-client-hg
 	provides = hedgewars-client
 	conflicts = hedgewars
 	conflicts = hedgewars-hg
-	source = hedgewars-client-hg::hg+https://hg.hedgewars.org/hedgewars/
+	source = hedgewars-client-hg::hg+https://hedgewars.org:8443/hedgewars/
 	sha512sums = SKIP
 
 pkgname = hedgewars-client-hg

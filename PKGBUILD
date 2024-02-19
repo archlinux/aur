@@ -1,19 +1,19 @@
 # Maintainer: Vekhir <vekhir AT yahoo DOT com>
 
 pkgname=hedgewars-client-hg
-pkgver=r15983+.2c92499daa67+
+pkgver=r15991.00bf5adba849
 pkgrel=1
 pkgdesc="Turn-based strategy artillery game similiar to Worms (Client component)"
 arch=('x86_64')
 url="https://hedgewars.org"
 license=('GPL' 'custom')
-depends=('qt5-base' 'sdl2' 'sdl2_mixer' 'sdl2_image' 'sdl2_net' 'sdl2_ttf' 'lua51' 'ffmpeg4.4' 'glut'
-         'physfs')
+depends=('qt5-base' 'sdl2' 'sdl2_mixer' 'sdl2_image' 'sdl2_net' 'sdl2_ttf' 'lua51' 'ffmpeg4.4' 'physfs')
 makedepends=('mercurial' 'fpc' 'cmake' 'qt5-tools' 'imagemagick' 'mesa')
 optdepends=('hedgewars-server')
 provides=('hedgewars-client')
 conflicts=('hedgewars' 'hedgewars-hg')
-source=("$pkgname::hg+https://hg.hedgewars.org/hedgewars/")
+#source=("$pkgname::hg+https://hg.hedgewars.org/hedgewars/")
+source=("$pkgname::hg+https://hedgewars.org:8443/hedgewars/")
 sha512sums=('SKIP')
 
 pkgver() {
