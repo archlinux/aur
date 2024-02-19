@@ -9,7 +9,7 @@ pkgbase = python-tree-sitter-zathurarc
 	arch = aarch64
 	license = GPL3
 	makedepends = python-installer
-	depends = python
+	depends = python-tree-sitter
 	source = https://files.pythonhosted.org/packages/cp311/t/tree_sitter_zathurarc/tree_sitter_zathurarc-0.0.6-cp311-cp311-manylinux_2_17_x86_64.manylinux_2_5_x86_64.manylinux1_x86_64.manylinux2014_x86_64.whl
 	sha256sums = f2452cccf67f461532734d2746aff11b2696331fd564ab6da7ab16f8894e61fa
 
