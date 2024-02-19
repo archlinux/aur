@@ -6,9 +6,10 @@ pkgrel=1
 pkgdesc='Web-based management tool for Homebridge'
 arch=('any')
 url='https://github.com/oznu/homebridge-config-ui-x'
+provides=('hb-service' 'homebridge-config-ui-x')
 license=('MIT')
 depends=('homebridge' 'nodejs')
-makedepends=('npm')
+makedepends=('npm' 'jq')
 options=('!emptydirs' '!strip')
 source=(
   "https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz"
@@ -32,8 +33,10 @@ package() {
   npm install \
     --global \
     --prefix "$pkgdir/usr" \
-    "${NPM_FLAGS[@]}" \
-    "$pkgname-$pkgver.tgz"
+    --no-audit \
+    --no-fund \
+    --no-update-notifier \
+    "$srcdir/$pkgname-$pkgver.tgz"
 
   # npm gives ownership of ALL FILES to build user
   # https://bugs.archlinux.org/task/63396
@@ -41,6 +44,23 @@ package() {
 
   # remove a non-runtime file that kills the packaging step
   rm -r "$pkgdir/usr/lib/node_modules/$pkgname/node_modules/@fastify/send/test/fixtures/snow ☃/"
+
+  # Remove references to $pkgdir
+  find "$pkgdir" -type f -name package.json -print0 | xargs -0 sed -i "/_where/d"
+
+  # Remove references to $srcdir
+  local tmppackage="$(mktemp)"
+  local pkgjson="$pkgdir/usr/lib/node_modules/$_pkgname/package.json"
+  jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
+  mv "$tmppackage" "$pkgjson"
+  chmod 644 "$pkgjson"
+
+  find "$pkgdir" -type f -name package.json | while read pkgjson; do
+    local tmppackage="$(mktemp)"
+    jq 'del(.man)' "$pkgjson" > "$tmppackage"
+    mv "$tmppackage" "$pkgjson"
+    chmod 644 "$pkgjson"
+  done
 
   # license
   install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" \
