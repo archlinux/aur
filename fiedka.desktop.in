@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.5.2
+Type=Application
+Name=Fiedka
+Exec=fiedka
+Icon=fiedka
+Categories=Network;
+Comment=A visual toolkit for exploring and editing firmware images
+StartupWMClass=fiedka
