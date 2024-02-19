@@ -9,6 +9,7 @@ url='https://github.com/oznu/homebridge-config-ui-x'
 license=('MIT')
 depends=('homebridge' 'nodejs')
 makedepends=('npm')
+options=('!emptydirs' '!strip')
 source=(
   "https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz"
   'systemd.service'
