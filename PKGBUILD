@@ -2,14 +2,14 @@
 
 pkgname=silentdragon
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='HUSH desktop full node GUI wallet that supports z-addresses'
 url='https://git.hush.is/hush/SilentDragon'
 arch=('x86_64')
 license=('GPL3')
 depends=('libsodium' 'qt5-websockets' 'qt5-base' 'qt5-tools')
 makedepends=('qtcreator' 'rust' 'wget')
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz"
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz"
         'silentdragon.png'
         'silentdragon.desktop')
 sha512sums=('62684bad8158f191fc4adde579d383233c24d5318cf0cab4ac2b08c364bc1d4106c3c0228a9d8f808153114e735d2ba07e9344da448fc7692d58c8218d5c49b9'
