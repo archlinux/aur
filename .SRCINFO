@@ -1,0 +1,13 @@
+pkgbase = fortune-mod-xkcdb
+	pkgdesc = fortune file with #xkcd quotes taken from xkcdb.com
+	pkgver = 2024.02.19
+	pkgrel = 1
+	url = xkcdb.com
+	arch = any
+	groups = fortune-mods
+	license = MIT
+	depends = fortune-mod
+	source = https://raw.githubusercontent.com/rabe-/fortune-mod-xkcdb/main/xkcdb.txt
+	sha256sums = 5436659054dfe258747a9b8bc3bacca6047e421dbd19aa5decd0bfa882c80937
+
+pkgname = fortune-mod-xkcdb
