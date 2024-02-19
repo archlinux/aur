@@ -1,12 +1,13 @@
 [Unit]
 After=network.target
+ConditionPathIsDirectory=/var/lib/automx2
 Description=MUA configuration service
 Documentation=https://rseichter.github.io/automx2/
 
 [Service]
 Environment=FLASK_APP=automx2.server:app
 Environment=FLASK_CONFIG=production
-ExecStart=/srv/www/automx2/bin/flask run --host=127.0.0.1 --port=4243
+ExecStart=/usr/bin/flask run --host=127.0.0.1 --port=4243
 Restart=always
 User=automx2
 WorkingDirectory=/var/lib/automx2

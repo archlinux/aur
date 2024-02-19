@@ -1,31 +1,51 @@
+# Maintainer: Morbius <archlinux@seichter.de>
+
 pkgname=automx2
-pkgver=2023.0
-pkgrel=3
-pkgdesc="Email client configuration made easy"
-arch=('any')
-license=('GPL3')
-backup=('etc/automx2/automx2.conf')
-url='https://github.com/HLFH/automx2'
-depends=('python' 'python-hatchling' 'python-flask' 'python-flask-migrate' 'python-flask-sqlalchemy' 'python-ldap3' 'python-werkzeug' 'python-sqlalchemy' 'python-alembic' 'python-lxml')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-pytest' 'python-pytest-flask' 'python-coverage')
-optdepends=('python-mysqlclient')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
-        'automx2.conf'
-        'automx2.service')
-b2sums=('cfa5128602e1d4119590c34094e4b984d3970c1df33dd32ea35bc8e954ef1d6f8a16bdb25764a81ad01b15f9303cddd1218f34b8867d84ed81d0b633ba359d36'
-        'aa90ba9f0d8ed7764027a263f22010e4af0060fad28a771c4dd84b4270eeb3e7b5b78b3cab3c8d50d8a7b6beef7bf567b2cabbb8579ca87b419904c9f4ecbc46'
-        '44056a40b51d74f02fe36751701568316620e3fceff118992cb359c61e9f1079ecc6c6f5a2a6e0e3ae8482548cfa14a5c3496dd7985153ee0cca6b24080e305c')
+pkgver=2022.1
+pkgrel=1
+pkgdesc="Mail User Agent (email client) configuration made easy"
+backup=("etc/automx2/automx2.conf")
+install="install.sh"
+depends=("python" "python-flask" "python-flask-migrate" "python-flask-sqlalchemy" "python-ldap3")
+# depends=("python" "python-hatchling" "python-flask" "python-flask-migrate" "python-flask-sqlalchemy" "python-ldap3" "python-werkzeug" "python-sqlalchemy" "python-alembic" "python-lxml")
+makedepends=("python-build" "python-installer" "python-wheel")
+# makedepends=("python-build" "python-installer" "python-wheel" "python-pytest" "python-pytest-flask" "python-coverage")
+# optdepends=("python-mysqlclient")
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+        "automx2.conf"
+        "automx2.service")
+b2sums=('691ff333188d104f93f7cf9ee45d15d99212464a125bb4190341dda6b8165bd564d5b26b1e997ece8139606177e74caf24afe70a06786695c3f7fa21bec74c57'
+        'e7afbacc9166556323f1c46f7bf65a906725cfce31f774f5bd47a5ab32102dacfd318c65c8524cf963918178097f8643b597c72db9514e131ee35d21e05240ce'
+        'add8bc242881dcb65f44c3d3c88f32818da01b6a1cec4e99f4c7665d9e7a36c59443a5cc6a8a04d70500d232d09be09eeb544c4da9fa70ec40be945ee0257be9')
+arch=("any")
+license=("GPL3")
+url="https://github.com/rseichter/automx2"
+documentation="https://rseichter.github.io/automx2/"
 
 build() {
-	cd $pkgname-$pkgver || exit
+	pushd >/dev/null "${pkgname}-${pkgver}" || exit 1
 	python -m build --wheel --no-isolation
+	popd >/dev/null || exit 1
 }
 
 # shellcheck disable=SC2154
 package() {
-	cd $pkgname-$pkgver || exit
+	pushd >/dev/null "${pkgname}-${pkgver}" || exit 1
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	mkdir -p "$pkgdir/etc/automx2"
 	install -Dm644 "${srcdir}/automx2.conf" "${pkgdir}/etc/automx2/automx2.conf"
 	install -Dm644 "${srcdir}/automx2.service" "${pkgdir}/usr/lib/systemd/system/automx2.service"
+	popd >/dev/null || exit 1
 }
+
+post_install() {
+	cat <<EOT
+The default configuration expects an unprivileged user "automx2"
+which is used to run ${pkgname} in a safe manner. If this user does
+not exist on your machine, either modify the configuration files
+accordingly, or create said user via the following command:
+
+	sudo useradd --system --home-dir /var/lib/automx2
+EOT
+}
+
