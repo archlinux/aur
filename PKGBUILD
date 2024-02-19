@@ -3,19 +3,18 @@
 _pkgname=corrgram
 _pkgver=1.14
 pkgname=r-${_pkgname,,}
-pkgver=1.14
-pkgrel=4
-pkgdesc='Plot a Correlogram'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Plot a Correlogram"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r
 )
 optdepends=(
   r-gridbase
   r-knitr
-  r-matrix
   r-psych
   r-rmarkdown
   r-seriation
@@ -23,14 +22,15 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('619f72c3319f6d10f30da032e8d3fab5a5d4d9581a715166efbfb67c15dfb089')
+md5sums=('a8bf8378b6eecabc911e4d7ca35c573c')
+b2sums=('a1c1c94cf3c445226674bc9242924eb68a913cb0203236d46986890f41347e0ca27419e8b744a865e1505e4ae79a2bcf2d5b63b6919baee22cbf0f9093be5c82')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
