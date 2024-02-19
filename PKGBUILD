@@ -1,6 +1,6 @@
 # Maintainer: Ilyas Turki <turki.ilyass@gmail.com>
 pkgname=prayer-times
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 makedepends=('cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -25,4 +25,5 @@ package() {
 
     install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 "assets/mosque-svgrepo-com.png" "$pkgdir/usr/share/icons/mosque-svgrepo-com.png"
 }
