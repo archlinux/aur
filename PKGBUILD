@@ -1,4 +1,5 @@
-# Maintainer: Visne
+# Maintainer: Visne <visne2 at proton dot me>
+# Contributor: Aria Moradi <aria.moradi007 at gmail dot com>
 
 pkgname=rsiedit-bin
 pkgver=0.6.5
