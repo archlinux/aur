@@ -1,6 +1,6 @@
 pkgbase = vscodium-insiders
 	pkgdesc = Binary releases of Code Insiders without branding/telemetry/licensing (git build from latest release)
-	pkgver = 1.86.0.24039
+	pkgver = 1.86.2.24050
 	pkgrel = 1
 	url = https://github.com/VSCodium/vscodium.git
 	arch = x86_64
@@ -34,9 +34,9 @@ pkgbase = vscodium-insiders
 	conflicts = vscodium-insiders-git
 	source = vscodium-insiders.desktop
 	source = vscodium-insiders-uri-handler.desktop
-	source = https://github.com/VSCodium/vscodium-insiders/releases/download/1.86.0.24039-insider/VSCodium-1.86.0.24039-insider-src.tar.gz
+	source = https://github.com/VSCodium/vscodium-insiders/releases/download/1.86.2.24050-insider/VSCodium-1.86.2.24050-insider-src.tar.gz
 	sha256sums = 9d17eb0074bcd7b75ffd8c56718254c96108c01f857570f951d1e9a109269405
 	sha256sums = ca34047d62b5b433c2039151b9d55674a8aacdd1af57041d54387b76e44cd442
-	sha256sums = 86a7aa9590a527865275a51059dd6593edb5e20624e6cf9d63a436e80a9ae8fd
+	sha256sums = b804eb45555dc167106bab4209831e7bfda2b70b7ee03a0936cf29f21d8b9819
 
 pkgname = vscodium-insiders
