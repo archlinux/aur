@@ -1,7 +1,7 @@
 pkgbase = h2ogames
 	pkgdesc = Game management client for h2o games.
 	pkgver = 0.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/mattmoore/h2o
 	arch = x86_64
 	license = Apache-2.0
@@ -9,6 +9,6 @@ pkgbase = h2ogames
 	depends = glibc
 	depends = gcc-libs
 	source = https://github.com/mattmoore/h2o/releases/download/v0.1.0/h2o-0.1.0.tar.xz
-	sha512sums = 0aaa690fb36583e5b77103f91f5d8e99f76004cb97f53145d041321f15b1711166973fe0ae2cb064c37c97bdaa8d33eae70e4ccecdeef2e964394a9459cc06fb
+	sha512sums = bc8a8206d143f236164fc75b2a99c9ecdd0daae3bc1a67c80968df1c57e32174a4410a98ed64acfa790566d6998658e8e29227603179e0acbcf5b22f503e2974
 
 pkgname = h2ogames
