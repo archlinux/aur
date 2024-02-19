@@ -1,6 +1,6 @@
 pkgbase = r-workflows
 	pkgdesc = Modeling Workflows
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=workflows
 	arch = any
@@ -24,8 +24,8 @@ pkgbase = r-workflows
 	optdepends = r-recipes
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/workflows_1.1.3.tar.gz
-	md5sums = d646ec2abe7014fa31ccf569139dbf4c
-	sha256sums = baa26a876b56e61bd3339a44297e3c5b719a92c9316495fb17836dfa8caf4181
+	source = https://cran.r-project.org/src/contrib/workflows_1.1.4.tar.gz
+	md5sums = 6e78b96d1969bfd9f87c841a8a36464d
+	b2sums = 2da077bdf6b6e3f66eccc7e43b62b6e4ef3f164a5a5bccf3726b4d9d254aeb37ef3af6217b076baa20944ce689fd6e83951685d07485fb4876615daa8c65c6e0
 
 pkgname = r-workflows
