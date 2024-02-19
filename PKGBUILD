@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggforce
-_pkgver=0.4.1
+_pkgver=0.4.2
 pkgname=r-${_pkgname,,}
-pkgver=0.4.1
-pkgrel=3
+pkgver=0.4.2
+pkgrel=1
 pkgdesc="Accelerating 'ggplot2'"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -36,7 +36,7 @@ optdepends=(
   r-units
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b44219fb63c45fa003c64bca323452f16dcace635204bc0127d3244c0f451873')
+sha256sums=('c145b0e6ed6847d409ed2fe103b81234855bc0661cde2bfb4410fb23680e51a8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
