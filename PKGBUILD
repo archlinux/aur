@@ -4,7 +4,7 @@
 pkgname='python-asv'
 _pkgname='asv'
 pkgver=0.6.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple benchmarking tool with web-based reporting."
 arch=('x86_64')
 url="https://asv.readthedocs.io"
@@ -19,7 +19,8 @@ sha256sums=('0e71d7642ba853913cd29d44d2b195bd19f979608fdd0b9b65b2b21c5fbf23f3')
 prepare(){
   cd "${_pkgname}-${pkgver}"
   # Only include the source in the wheel, no test, docs, benchmarks
-  sed -i -e '/\[tool.setuptools.packages.find\]/a \include = \[\"asv\"\]' pyproject.toml
+#  sed -i -e '/\[tool.setuptools\]/a \package-dir = \{\"asv\" = \"asv\"\}' pyproject.toml
+  sed -i 's/recursive-include asv /recursive-include asv *.json /' MANIFEST.in
 }
 
 build(){
@@ -48,6 +49,10 @@ package(){
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -D -m644 LICENSE.rst "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.rst"
+
+  # Remove test, docs and benchmarks
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  find "${pkgdir}$site_packages"  -mindepth 1 -maxdepth 1 -type d \( ! -name "asv*" \) -exec rm -rf {} \;
 }
 
 # vim:ts=2:sw=2:et:
