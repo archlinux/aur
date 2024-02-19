@@ -8,7 +8,7 @@ pkgrel=2
 pkgdesc="Adobe Flash Player"
 arch=('x86_64')
 url="https://get.adobe.com/flashplayer/"
-license=('custom' 'LGPL-3.0-or-later')
+license=('custom')
 options=('!strip')
 source=("flash_player_npapi_linux_$pkgver.x86_64.tar.gz::https://web.archive.org/web/20210126102538if_/https://fpdownload.adobe.com/get/flashplayer/pdc/$pkgver/flash_player_npapi_linux.x86_64.tar.gz"
         "flash_player_ppapi_linux_$pkgver.x86_64.tar.gz::https://web.archive.org/web/20210116212416if_/https://fpdownload.adobe.com/get/flashplayer/pdc/$pkgver/flash_player_ppapi_linux.x86_64.tar.gz")
@@ -38,7 +38,7 @@ package_flashplugin() {
 
   cd "$srcdir/npapi"
   install -Dm644 -t "$pkgdir/usr/lib/mozilla/plugins" libflashplayer.so
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" license.pdf LGPL/notice.txt
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" license.pdf
 
   install -Dm755 -t "$pkgdir/usr/bin" usr/bin/flash-player-properties
   cp -a usr/share/{applications,icons} "$pkgdir/usr/share"
@@ -51,5 +51,5 @@ package_pepper-flash() {
 
   cd "$srcdir/ppapi"
   install -Dm644 -t "$pkgdir/usr/lib/PepperFlash" manifest.json libpepflashplayer.so
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" license.pdf LGPL/notice.txt
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" license.pdf
 }

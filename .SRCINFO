@@ -5,7 +5,6 @@ pkgbase = flashplugin
 	url = https://get.adobe.com/flashplayer/
 	arch = x86_64
 	license = custom
-	license = LGPL-3.0-or-later
 	noextract = flash_player_npapi_linux_32.0.0.465.x86_64.tar.gz
 	noextract = flash_player_ppapi_linux_32.0.0.465.x86_64.tar.gz
 	options = !strip
