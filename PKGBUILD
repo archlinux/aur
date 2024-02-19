@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-rtsp-server
-pkgver=1.22.8
+pkgver=1.22.10
 pkgrel=1
 pkgdesc="RTSP server library based on GStreamer (mingw-w64)"
 arch=(any)
@@ -11,7 +11,7 @@ options=('!strip' '!buildflags' 'staticlibs')
 makedepends=('mingw-w64-meson')
 
 source=("${url}src/gst-rtsp-server/gst-rtsp-server-${pkgver}.tar.xz")
-sha256sums=('705177051c229976f171adcd7ab9762ae6bcc4bb77dc308a0bd80a63da6c337f')
+sha256sums=('60eb4f80b5a7ca929c21a61d50be9813a3413787959a5875de56a8ad5ca25f35')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -20,6 +20,7 @@ build() {
   for _arch in $_architectures; do
     mkdir -p "build-${_arch}" && pushd build-${_arch}
     ${_arch}-meson \
+      -D strip=true \
       -D package-name="GStreamer (Arch Linux)" \
       -D package-origin="http://www.archlinux.org/" ..
     ninja
