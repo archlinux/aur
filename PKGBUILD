@@ -19,8 +19,6 @@ package() {
   install -Dm755 "$srcdir/Editor_Linux/Editor"			-t "$pkgdir/opt/RSIEdit"
   install -Dm644 "$srcdir/Editor_Linux/libHarfBuzzSharp.so"	-t "$pkgdir/opt/RSIEdit"
   install -Dm644 "$srcdir/Editor_Linux/libSkiaSharp.so"		-t "$pkgdir/opt/RSIEdit"
-  install -Dm644 "$srcdir/Editor_Linux/Editor.pdb"		-t "$pkgdir/opt/RSIEdit"
-  install -Dm644 "$srcdir/Editor_Linux/Importer.pdb"		-t "$pkgdir/opt/RSIEdit"
 
   install -Dm644 "RSIEdit.desktop" 				-t "$pkgdir/usr/share/applications"
   install -Dm644 "RSIEdit.png" 					-t "$pkgdir/usr/share/pixmaps"
