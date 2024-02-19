@@ -1,10 +1,10 @@
 # Maintainer: Xavier (sapphirus at azorium dot net)
-# Original Contributor: Mikael Eriksson <mikael_eriksson@miffe.org>
+# Contributor: Mikael Eriksson <mikael_eriksson@miffe.org>
 
 _pkgbase=ocp
 pkgname=('ocp' 'ocp-sdl2')
-pkgver=0.2.106
-pkgrel=2
+pkgver=0.2.107
+pkgrel=1
 pkgdesc="Open Cubic Player"
 arch=('i686' 'x86_64')
 url="https://stian.cubic.org/project-ocp.php"
