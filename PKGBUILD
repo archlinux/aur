@@ -1,8 +1,8 @@
-# Maintainer: Keith Plant <kplantjr at gmail dot com>
+# Maintainer: Simon Tunnat <simon at tunn dot at>
 
 pkgname="wlroots0.16-nvidia"
 pkgver="0.16.2"
-pkgrel="2"
+pkgrel="1"
 pkgdesc="Modular Wayland compositor library, with fix for nvidia flickering, downgraded to version 0.16"
 license=("MIT")
 
