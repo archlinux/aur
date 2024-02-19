@@ -1,6 +1,6 @@
 pkgbase = python-fmpy-sundials6
 	pkgdesc = Simulate Functional Mockup Units (FMUs) in Python
-	pkgver = 0.3.19
+	pkgver = 0.3.20
 	pkgrel = 1
 	url = https://github.com/CATIA-Systems/FMPy
 	arch = x86_64

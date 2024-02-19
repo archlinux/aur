@@ -1,7 +1,7 @@
 _base=FMPy
 pkgname=python-${_base,,}-sundials6
 _gitcommit=8945636e85f09e6267b2b4ee101b99c81982530a
-pkgver=0.3.19
+pkgver=0.3.20
 pkgrel=1
 pkgdesc="Simulate Functional Mockup Units (FMUs) in Python"
 url="https://github.com/CATIA-Systems/${_base}"
