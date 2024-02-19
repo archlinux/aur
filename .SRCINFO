@@ -1,9 +1,12 @@
 pkgbase = siera
-        pkgdesc = A CLI tool for Aries written in Rust
-        pkgver = 0.2.0
-        pkgrel = 1
-        arch = x86_64
-        license = MIT
-        provides = siera
+	pkgdesc = CLI tool to interact with an Aries agent
+	pkgver = 0.2.0
+	pkgrel = 2
+	url = https://github.com/animo/siera-cli
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	source = siera-0.2.0.tar.gz::https://github.com/animo/siera-cli/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = d4315c22d10219771d40be80c463d66eaa6bbc00e165d7302ac1fb96a38b5847
 
 pkgname = siera
