@@ -1,0 +1,11 @@
+[Unit]
+Description=LubeLogger Server
+
+[Service]
+Type=simple
+WorkingDirectory=/usr/share/webapps/lubelogger
+User=lubelogger
+ExecStart=/usr/share/webapps/lubelogger/CarCareTracker
+
+[Install]
+WantedBy=multi-user.target
