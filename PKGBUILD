@@ -9,7 +9,7 @@ pkgrel=7
 pkgdesc="A video editing, animation, and playback library for C++, Python, and Ruby"
 arch=(x86_64)
 url="https://github.com/openshot/libopenshot"
-license=(LGPL3)
+license=(LGPL-3.0-or-later)
 # TODO: package cppzmq and resvg
 depends=(
   babl
