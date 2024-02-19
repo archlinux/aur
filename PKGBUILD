@@ -29,7 +29,7 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}"
   git apply "${startdir}/fix_build.patch"
-  env PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig:/usr/lib/taglib1/lib/pkgconfig" \
+  env PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig:/usr/lib/taglib1/pkgconfig" \
       cmake -DDISABLE_GTK2:BOOL=ON -DDISABLE_QT5:BOOL=ON --log-level=VERBOSE .
   make
 }
