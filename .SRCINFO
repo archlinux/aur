@@ -1,6 +1,6 @@
 pkgbase = sh3eb-elf-binutils
 	pkgdesc = GNU binary utilities for the sh3eb-elf target.
-	pkgver = 2.36.1
+	pkgver = 2.42
 	pkgrel = 1
 	url = https://www.gnu.org/software/binutils/
 	arch = i686
@@ -10,8 +10,7 @@ pkgbase = sh3eb-elf-binutils
 	depends = flex
 	options = !libtool
 	options = !buildflags
-	source = https://ftp.gnu.org/gnu/binutils/binutils-2.36.1.tar.bz2
-	sha256sums = 5b4bd2e79e30ce8db0abd76dd2c2eae14a94ce212cfc59d3c37d23e24bc6d7a3
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.42.tar.bz2
+	sha256sums = aa54850ebda5064c72cd4ec2d9b056c294252991486350d9a97ab2a6dfdfaf12
 
 pkgname = sh3eb-elf-binutils
-
