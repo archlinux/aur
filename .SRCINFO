@@ -1,6 +1,6 @@
 pkgbase = python-finesse
 	pkgdesc = Python based frequency domain interferometer simulation software
-	pkgver = 3.0
+	pkgver = 3.0a21
 	pkgrel = 1
 	url = https://finesse.ifosim.org/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-finesse
 	depends = python-deprecated
 	depends = python-quantiphy
 	optdepends = gnuplot: for test_plot.kat example
-	source = git+https://gitlab.com/ifosim/finesse/finesse3.git#branch=master
-	sha256sums = SKIP
+	source = https://files.pythonhosted.org/packages/source/f/finesse/finesse-3.0a21.tar.gz
+	sha256sums = 8dae28db4565ab8554dfd473c6d291625956de2a2d1615b4783b79f9ecd5bd0d
 
 pkgname = python-finesse
