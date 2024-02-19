@@ -2,7 +2,7 @@
 
 pkgname=python-poetry-plugin-dotenv
 _pkgname=poetry_plugin_dotenv
-pkgver=0.6.12
+pkgver=0.6.15
 pkgrel=1
 pkgdesc='Automatically loads a dotenv file before poetry commands'
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(python python-cleo python-poetry)
 makedepends=(python-build python-installer)
 source=("https://files.pythonhosted.org/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.gz")
-b2sums=('21fe439b5d14e00c0f2c5ac8617296fa2e0abe2bede78191bfbf3ab4d445de85699e81b457e56fd13a232a5d6cca53aac32fe6d8c2f3e739ed8d01d108e57bd6')
+b2sums=('574e2f58fb9845055ebc962940e7ccfb28c0d43bc03345f98c07117a68a8ad9a0d19eb863ebf5479da90b40cd09da4ec218933b8f3ce75bccf995cc273ef741e')
 
 build() {
     cd "$_pkgname-$pkgver"
