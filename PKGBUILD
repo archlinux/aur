@@ -1,6 +1,6 @@
 # Maintainer: Luke Kuza <luke.kuza@gmail.com>
 pkgname=lubelogger
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A self-hosted, open-source vehicle service records and maintainence tracker."
 arch=('any')
@@ -25,7 +25,7 @@ source=(
     'tmpfiles'
 )
 noextract=()
-sha256sums=('a9de70efc3708e41e30880eed4f6680d1f3711f9f13f16edaeb1ea0ad092c431'
+sha256sums=('9eb4e4635aa3ee571bca3a3db29fae3b926801404ff82ccfc0d98400d324b0e9'
             '37b77224dd7e98cf3bb73a606a12da4990143e37ba78109f87706003cfdf427f'
             'a638ea4b0652e78b2f1cbdb46f160c9d5b10e31f09fdd0a64ed80cbf6fb8209d'
             'ca5a4b6b6c2bf761b5e7b767e401e9bf99452eaba078affff8ab65e73ce5baae')
