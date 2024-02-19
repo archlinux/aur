@@ -1,6 +1,6 @@
 pkgbase = htop-git
 	pkgdesc = Interactive text-mode process viewer
-	pkgver = 3.2.1.1.g611ea460
+	pkgver = 3.3.0.23.g4abe9f4c
 	pkgrel = 1
 	epoch = 1
 	url = https://htop.dev
@@ -13,6 +13,7 @@ pkgbase = htop-git
 	depends = libnl
 	optdepends = lsof: list open files for running process
 	optdepends = strace: attach to running process
+	optdepends = lm_sensors: temperature monitoring
 	provides = htop
 	conflicts = htop
 	options = !emptydirs

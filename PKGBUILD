@@ -2,7 +2,7 @@
 
 gitname=htop
 pkgname=${gitname}-git
-pkgver=3.2.1.1.g611ea460
+pkgver=3.3.0.23.g4abe9f4c
 pkgrel=1
 epoch=1
 pkgdesc="Interactive text-mode process viewer"
@@ -12,7 +12,8 @@ arch=('i686' 'x86_64')
 depends=(ncurses libnl)
 makedepends=('git' 'python')
 optdepends=('lsof: list open files for running process'
-            'strace: attach to running process')
+            'strace: attach to running process'
+           'lm_sensors: temperature monitoring')
 provides=('htop')
 conflicts=('htop')
 options=('!emptydirs')
