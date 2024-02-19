@@ -1,0 +1,21 @@
+pkgbase = hhd-ui
+	pkgdesc = Configurator interface for Handheld Daemon.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://hhd.dev
+	arch = x86_64
+	license = MIT
+	makedepends = asar
+	makedepends = libxss
+	makedepends = npm
+	depends = electron28
+	provides = hhd-ui
+	conflicts = hhd-ui
+	source = https://github.com/hhd-dev/hhd-ui/archive/refs/tags/v1.0.3.tar.gz
+	source = hhd-ui.desktop
+	source = hhd-ui.sh
+	sha512sums = 60f7712b0c158a7c3bb99e3236e02f2c6de4344197ebcaea7ffbce67385bc8d3361a0820e6afdad94232b565a5cf71ce255c9d558f1888230a66320c18e7a2b3
+	sha512sums = 598e77e42769adf69b78b39e784c24bb53202039316309c216ab1bb17d55f1820dadd453234085118aa3563d1593105b6287d793e58c5246bb71ec260103da28
+	sha512sums = 3f3a0b215d241b2c9f37efa3ce66adf1f1f58dc651853c924ac44c597b6b6b813548af4aba58c3c030ccbb56264bf4bb5e3d2b5a7be5098650e2581adf70645a
+
+pkgname = hhd-ui

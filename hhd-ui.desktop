@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Handheld Daemon
+GenericName=Controller Settings
+Comment="Configurator interface for Handheld Daemon."
+Exec=hhd-ui
+Terminal=false
+Type=Application
+Icon=hhd-ui
+Categories=Gaming;
