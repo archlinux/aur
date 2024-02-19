@@ -5,7 +5,9 @@
 pkgname=mingw-w64-winpthreads-git
 pkgdesc="MinGW-w64 winpthreads library (git version)"
 
-pkgver=11.0.0.r548.gdddccbc
+_targets="i686-w64-mingw32 x86_64-w64-mingw32"
+
+pkgver=11.0.0.r643.g57f796c
 pkgrel=1
 
 arch=(any)
@@ -23,8 +25,6 @@ source=("git+https://git.code.sf.net/p/mingw-w64/mingw-w64")
 md5sums=("SKIP")
 
 options=("staticlibs" "!strip" "!buildflags" "!emptydirs")
-
-_targets="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgver() {
     # move to the source directory
@@ -47,7 +47,7 @@ build() {
         
         # build the library
         make
-  done
+    done
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-winpthreads-git
 	pkgdesc = MinGW-w64 winpthreads library (git version)
-	pkgver = 11.0.0.r548.gdddccbc
+	pkgver = 11.0.0.r643.g57f796c
 	pkgrel = 1
 	url = http://mingw-w64.sourceforge.net
 	arch = any
