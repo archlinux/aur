@@ -20,6 +20,10 @@ build() {
 	make
 }
 
+check() {
+	"$srcdir/$_sourcedirectory/$pkgname" | tee '/dev/stderr' | grep -q "^$pkgname v$pkgver$"
+}
+
 package() {
 	cd "$srcdir/$_sourcedirectory/"
 	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
