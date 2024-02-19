@@ -2,7 +2,7 @@
 # Maintainer: Christian Winther <dottie at jippi dot dev>
 
 pkgname='dottie-bin'
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Makes working with .env files easy'
 url='https://github.com/jippi/dottie'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('dottie')
 conflicts=('dottie')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jippi/dottie/releases/download/v0.8.0/dottie_Linux_arm64.tar.gz")
-sha256sums_aarch64=('a89cc279ed9298c2e8a52ad004b7b6bba8e7ef268505c092602b9339a71908e4')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jippi/dottie/releases/download/v0.9.0/dottie_Linux_arm64.tar.gz")
+sha256sums_aarch64=('9fdbe343a6a1d5648065437a3fafd595813bd2af12a7aa0d429bb9e3496ea607')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jippi/dottie/releases/download/v0.8.0/dottie_Linux_armv7.tar.gz")
-sha256sums_armv7h=('8010b6c0dd9b4cd0ff0d8987f05c8844f150486a35b390c8d3004709bab8d8d3')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jippi/dottie/releases/download/v0.9.0/dottie_Linux_armv7.tar.gz")
+sha256sums_armv7h=('afdab65eae12d8a6e7ea5de7c38786725170999ee84e7d4e421c8c2030fc173f')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/jippi/dottie/releases/download/v0.8.0/dottie_Linux_i386.tar.gz")
-sha256sums_i686=('b88a6e01d78043d449136d2bf621f105817701df91cea5a718c9eb4d1fadfe68')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/jippi/dottie/releases/download/v0.9.0/dottie_Linux_i386.tar.gz")
+sha256sums_i686=('841b09db0a8c6b086b4c156c29a9fce8a8de9bef90d5a24c6bfd2d95eb830e75')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jippi/dottie/releases/download/v0.8.0/dottie_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('f7010ac227e92915c94f2237622eeba480a673e58007b724ac997a2ab11f3e51')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jippi/dottie/releases/download/v0.9.0/dottie_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('0fc4e5fd1fb3ebe39a5022c33cc34e3f5ae492932214bcc473d1257fe872d833')
 
 package() {
   # bin
