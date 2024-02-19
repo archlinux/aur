@@ -1,0 +1,16 @@
+pkgbase = python-tree-sitter-hlsplaylist
+	pkgdesc = hlsplaylist grammar for tree-sitter
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Freed-Wu/tree-sitter-hlsplaylist
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = GPL3
+	makedepends = python-installer
+	depends = python-tree-sitter
+	source = https://files.pythonhosted.org/packages/cp311/t/tree_sitter_hlsplaylist/tree_sitter_hlsplaylist-0.0.1-cp311-cp311-manylinux_2_17_x86_64.manylinux_2_5_x86_64.manylinux1_x86_64.manylinux2014_x86_64.whl
+	sha256sums = 2ade6450a4f488d9392adde3069051319c53e8704e9eb49a43b29bb3d4faa926
+
+pkgname = python-tree-sitter-hlsplaylist
