@@ -1,13 +1,13 @@
 pkgbase = mycfetch
 	pkgdesc = Small neofetch in C
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://git.nakidai.ru/nakidai/mycfetch
 	arch = x86_64
 	license = BSD-2-Clause
 	makedepends = gcc
 	depends = glibc
-	source = https://git.nakidai.ru/nakidai/mycfetch/archive/v1.1.tar.gz
-	sha256sums = 78ef8bc03714af31c46669969344e0b00a2c3d2e99a64ed686ed9cd445eeab70
+	source = https://git.nakidai.ru/nakidai/mycfetch/archive/v1.2.tar.gz
+	sha256sums = afd758df7330ff6a0ca17a7d021f7fed5746455f4861fcdd4520731dbaca6a1b
 
 pkgname = mycfetch

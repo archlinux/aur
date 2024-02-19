@@ -5,7 +5,7 @@ pkgdesc="Small neofetch in C"
 url="https://git.nakidai.ru/nakidai/mycfetch"
 license=("BSD-2-Clause")
 
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 
 arch=("x86_64")
@@ -13,7 +13,7 @@ depends=("glibc")
 makedepends=("gcc")
 
 source=("https://git.nakidai.ru/nakidai/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('78ef8bc03714af31c46669969344e0b00a2c3d2e99a64ed686ed9cd445eeab70')
+sha256sums=('afd758df7330ff6a0ca17a7d021f7fed5746455f4861fcdd4520731dbaca6a1b')
 
 build() {
     cd "$pkgname"
