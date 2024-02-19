@@ -1,11 +1,11 @@
 # Maintainer: Jguer <pkgbuilds at jguer.space>
 pkgname=yay-bin
-pkgver=12.2.0
+pkgver=12.3.0
 pkgrel=1
 pkgdesc="Yet another yogurt. Pacman wrapper and AUR helper written in go. Pre-compiled."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/Jguer/yay"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
   'pacman>5'
   'git'
@@ -21,9 +21,9 @@ source_x86_64=("https://github.com/Jguer/yay/releases/download/v${pkgver}/${pkgn
 source_aarch64=("https://github.com/Jguer/yay/releases/download/v${pkgver}/${pkgname/-bin/}_${pkgver}_aarch64.tar.gz")
 source_armv7h=("https://github.com/Jguer/yay/releases/download/v${pkgver}/${pkgname/-bin/}_${pkgver}_armv7h.tar.gz")
 
-sha256sums_x86_64=('57a69ffe3259173acb2b28603301e23519b9770b0041d63fe716562b6b6be91e')
-sha256sums_aarch64=('d7e064d9a64b30790a272d5e69eb811461ba9adf2f1ab354bd672ac4ae1eef4d')
-sha256sums_armv7h=('7cda360dffed7d8f05e4b4666e881347ffc05ac18fefa7a1dcb3d13920270829')
+sha256sums_x86_64=('9f8fe071b373fa77fa58a4b1198fa39185e83081ea3458a450471d7f2d786c09')
+sha256sums_aarch64=('6b88b2f44889e625f6f18fe642bbd04101e4feb1b8c74405931bcf4f3dfe5fff')
+sha256sums_armv7h=('2a5e9aaa428c634f9f2d67e9b8c3e6a3be081cfc0c89631a3322fb84bc601f67')
 
 package() {
   _output="${srcdir}/${pkgname/-bin/}_${pkgver}_${CARCH}"
