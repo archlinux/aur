@@ -1,0 +1,4 @@
+[libopenshot]
+source = "git"
+git = "https://github.com/openshot/libopenshot"
+prefix = "v"
