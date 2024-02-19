@@ -10,6 +10,12 @@ license=('GPL-3.0-only')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
 sha512sums=('db07ca1c535bd901c7ccb6909d1738377372349d472297cb726aff9b79baa2cf66489edb82b0cf4a068c7ca2a26c8ca992d1f1b5aa76af55344417cc8b49121f')
 
+_sourcedirectory="$pkgname-$_commit"
+
+check() {
+	"$srcdir/$_sourcedirectory/$pkgname.sh" | tee '/dev/stderr' | grep -q 'the backup destination root directory$'
+}
+
 package() {
-	install -Dm755 "$srcdir/$pkgname-$_commit/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+	install -Dm755 "$srcdir/$_sourcedirectory/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 }
