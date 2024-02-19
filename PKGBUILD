@@ -4,12 +4,15 @@ pkgname=ruff-bin
 _pkgname=${pkgname%-bin}
 conflicts=('ruff')
 provides=('ruff')
-pkgver=0.2.2
+_pkgver=v0.2.2
+pkgver=${_pkgver#v}
 pkgrel=2
-pkgdesc=' An extremely fast Python linter and code formatter, written in Rust.'
+pkgdesc='An extremely fast Python linter and code formatter, written in Rust.'
 arch=(aarch64 i686 x86_64)
 url='https://github.com/astral-sh/ruff'
 license=('MIT')
+
+_release_url='https://api.github.com/repos/astral-sh/ruff/releases/latest'
 
 source_aarch64=(https://github.com/astral-sh/ruff/releases/download/v$pkgver/ruff-$pkgver-aarch64-unknown-linux-gnu.tar.gz)
 source_i686=(https://github.com/astral-sh/ruff/releases/download/v$pkgver/ruff-$pkgver-i686-unknown-linux-gnu.tar.gz)
