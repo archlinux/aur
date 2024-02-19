@@ -2,8 +2,8 @@
 # Contributor: akaessens
 
 pkgname=google-calendar-nativefier
-pkgver=2024.02.17
-pkgrel=2
+pkgver=2024.02.19
+pkgrel=1
 pkgdesc='Google Calendar in shared Electron runtime'
 arch=('x86_64')
 url='https://calendar.google.com'
@@ -16,7 +16,7 @@ makedepends=(
   'yarn'
 )
 source=("${pkgname}.png::https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Calendar_icon_%282020%29.svg/512px-Google_Calendar_icon_%282020%29.svg.png")
-sha256sums=('9540319d363d87d6278218325136164ab5639d94bad152f988811697da630755')
+sha256sums=('SKIP') # Wiki doesn't have a stable URL for the latest edition
 
 _name='Google Calendar'
 
