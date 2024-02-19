@@ -6,8 +6,8 @@ pkgbase = tmux-language-server
 	arch = any
 	license = GPL3
 	makedepends = python-installer
-	depends = python-pygls
-	depends = python-platformdirs
+	depends = python-tree-sitter-lsp
+	depends = python-tree-sitter-tmux
 	source = https://files.pythonhosted.org/packages/py3/t/tmux_language_server/tmux_language_server-0.0.2-py3-none-any.whl
 	sha256sums = 158a42cbf377d97159f789cc79baeb2fb6a71ca149c261b8e15fca39e31f5ba5
 
