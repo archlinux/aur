@@ -2,7 +2,7 @@
 _pkgname=h2o
 pkgname=h2ogames
 pkgver=0.1.0
-pkgrel=5
+pkgrel=6
 epoch=
 pkgdesc="Game management client for h2o games."
 arch=("x86_64")
@@ -25,7 +25,7 @@ options=()
 install=
 changelog=
 source=("https://github.com/mattmoore/h2o/releases/download/v0.1.0/$_pkgname-$pkgver.tar.xz")
-sha512sums=("bc8a8206d143f236164fc75b2a99c9ecdd0daae3bc1a67c80968df1c57e32174a4410a98ed64acfa790566d6998658e8e29227603179e0acbcf5b22f503e2974")
+sha512sums=("c1b766ddc441a149f8b1a4f1370e793acc333afe5fc02f87319e9813cb36e8c64421b7dda3594bab1d1eb13f720b852ba517c8bf8fecd0bf28cb4fdac757ffc0")
 validpgpkeys=()
 
 package() {
