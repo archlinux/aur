@@ -7,7 +7,7 @@
 
 pkgbase=uv
 pkgname=($pkgbase python-$pkgbase)
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='An extremely fast Python package installer and resolver, written in Rust'
 arch=(x86_64 aarch64)
@@ -19,11 +19,15 @@ checkdepends=(python python-zstandard libxcrypt-compat clang)
 options=(!lto)
 _archive="$pkgbase-$pkgver"
 source=($url/archive/refs/tags/$pkgver/$_archive.tar.gz)
-sha512sums=('bb8c8ee81e6850f02169bde54ef3119510d07ddb7fbbbdc024c4883c7b0695ac2f79df7dab69e2b33ae2d1983a611efac6af3b381644c215ece5ae4be1d114f7')
-b2sums=('f4faeb37c2b38386b2358e0f946fb8e4e6db207b030614f49a08304178306e0be8ef363de37a4f21339f459e3e69b12b834a8243563c15c3bfd3d88810056308')
+sha512sums=('236aacb50faf140e014621e96f1ddff451c10f83f3662c9c8b40582b5959cec6e40410f4b1d84b6fe6fc10823e9b68da4278f16807359f9e52ec7bea1f425130')
+b2sums=('e3d801b26c5dce5fdc2aab2d6be93f3a119f31185ba56a46d463c01fef76a04848a828e0cd2af6b6169684b565365902a293d42b0e46ce778d5282a114ad2c09')
 
 prepare() {
   cd "$_archive"
+  cat >rust-toolchain.toml <<__EOF__
+[toolchain]
+channel = "stable"
+__EOF__
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
