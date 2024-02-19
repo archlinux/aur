@@ -37,7 +37,12 @@ build() {
 
 check() {
 	cd "$srcdir/$_sourcedirectory/"
+
+	# Run tests
 	go test -v './...'
+
+	# Verify that the basic functionality works
+	"$srcdir/$_bindir/$pkgname" --version | tee '/dev/stderr' | grep -q "^$pkgname version v$pkgver"
 }
 
 package() {
