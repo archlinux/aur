@@ -12,12 +12,11 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=24.1.0_devel.184054.f66055a6a67.d41d8cd
+pkgver=24.1.0_devel.184903.c6635c09d0d.d41d8cd
 pkgrel=1
 arch=('x86_64')
-makedepends=('git' 'python-mako' 'xorgproto'
-              'libxml2' 'libvdpau' 'libva' 'elfutils' 'libxrandr'
-              'wayland-protocols' 'meson' 'ninja' 'glslang' 'directx-headers'
+makedepends=('git' 'python-mako' 'xorgproto' 'libxml2' 'libvdpau' 'libva' 'elfutils' 'libxrandr'
+                            'wayland-protocols' 'meson' 'ninja' 'glslang' 'directx-headers' 'python-ply'
 )
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
          'libomxil-bellagio' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 
@@ -58,7 +57,7 @@ fi
 case $MESA_WHICH_LLVM in
     1)
         # aur llvm-minimal-git
-        makedepends+=('llvm-minimal-git')
+        makedepends+=('llvm-minimal-git' 'libclc-minimal-git' 'spirv-llvm-translator-minimal-git' 'clang-minimal-git' 'clang-opencl-headers-minimal-git')
         depends+=('llvm-libs-minimal-git')
         ;;
     2)
@@ -70,13 +69,13 @@ case $MESA_WHICH_LLVM in
         ;;
     3)
         # mesa-git/llvm-git (lordheavy unofficial repo)
-        makedepends+=('llvm-git' 'clang-git')
+        makedepends+=('llvm-git' 'clang-git' 'libclc-git' 'spirv-tools' 'spirv-llvm-translator-git')
         depends+=('llvm-libs-git')
         optdepends+=('clang-git: opencl' 'compiler-rt: opencl')
         ;;
     4)
         # extra/llvm
-        makedepends+=(llvm=16.0.6 clang=16.0.6)
+        makedepends+=(llvm=16.0.6 clang=16.0.6 libclc spirv-llvm-translator)
         depends+=(llvm-libs=16.0.6)
         optdepends+=('clang: opencl' 'compiler-rt: opencl')
         ;;
