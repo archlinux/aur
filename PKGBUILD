@@ -1,7 +1,7 @@
 # Maintainer: Aleksandr Beliaev <trap000d at gmail dot com>
 
 pkgname=quarto-cli-pre-release
-pkgver=1.5.14
+pkgver=1.5.15
 pkgrel=1
 _pkgbasename=quarto-cli
 _denodomver="0.1.35-alpha-artifacts"
@@ -20,7 +20,7 @@ source=("${_pkgbasename}-${pkgver}.tar.gz::https://github.com/quarto-dev/quarto-
         "https://github.com/b-fuze/deno-dom/archive/refs/tags/v${_denodomver}.tar.gz"
        )
 
-sha256sums=('f69aa995c281c8dfc0f0cb1b6346358079dc8a81f79e1a6561df160d99f07658'
+sha256sums=('dcad5106facd3d2d6aa295272c47e7e8d589c9606ff994bd7fe2e1e02d3fa06e'
             '14fb042a6912041b9fda91fd643cf278764d075bc9539aa1e107475915cd896c')
 
 build() {
@@ -29,6 +29,7 @@ build() {
   source "${srcdir}/${_pkgbasename}-${pkgver}/package/src/set_package_paths.sh"
   export QUARTO_VERSION=${pkgver}
   export QUARTO_VENDOR_BINARIES='false'
+  export QUARTO_NO_SYMLINK='true'
   export DENO_DOM_PLUGIN="${srcdir}/deno-dom-${_denodomver}/target/release/libplugin.so"
   if [ -z "$QUARTO_DENO" ]; then
     export QUARTO_DENO=$SCRIPT_PATH/../dist/bin/tools/deno
@@ -71,9 +72,6 @@ package() {
   ln -sfT /usr/bin/sass package/pkg-working/bin/tools/${arch}/dart-sass/sass
   ln -sfT /usr/bin/esbuild package/pkg-working/bin/tools/${arch}/esbuild
   ln -sfT /usr/bin/typst package/pkg-working/bin/tools/${arch}/typst
-  ## 2. Remove symlinks created by build script in ~/bin and ~/.local/bin directories
-  rm -f "$HOME/.local/bin/quarto"
-  rm -f "$HOME/bin/quarto"
 
   install -d ${pkgdir}/usr/{bin,lib/${_pkgbasename}/{bin,share}}
   cp -R package/pkg-working/* "${pkgdir}/usr/lib/${_pkgbasename}"
