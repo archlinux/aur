@@ -4,7 +4,7 @@
 # Contributor: Renato Silva <br.renatosilva@gmail.com>
 # Contributor: Martchus <martchus@gmx.net>
 pkgname=mingw-w64-glib2
-pkgver=2.78.3
+pkgver=2.78.4
 pkgrel=1
 arch=(any)
 pkgdesc="Low level core library (mingw-w64)"
@@ -15,7 +15,7 @@ options=(!strip !buildflags staticlibs !emptydirs)
 url="https://wiki.gnome.org/Projects/GLib"
 source=("https://download.gnome.org/sources/glib/${pkgver%.*}/glib-${pkgver}.tar.xz"
   "0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch")
-sha256sums=('609801dd373796e515972bf95fc0b2daa44545481ee2f465c4f204d224b2bc21'
+sha256sums=('24b8e0672dca120cc32d394bccb85844e732e04fe75d18bb0573b2dbc7548f63'
             '508faf9bafc7426dc35b7574187efeb98a3513e465fc32d507c04d8dab988287')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -34,11 +34,13 @@ build() {
 
     cd "${srcdir}/glib-${pkgver}/build-${_arch}-static"
     ${_arch}-meson \
+      -D strip=true \
       --default-library static ..
     ninja
 
     cd "${srcdir}/glib-${pkgver}/build-${_arch}-shared"
     ${_arch}-meson \
+      -D strip=true \
       --default-library shared ..
     ninja
   done
