@@ -2,16 +2,17 @@ pkgbase = zenity-git
 	pkgdesc = Display graphical dialog boxes from shell scripts
 	pkgver = 4.0.0.r6.g43468b64
 	pkgrel = 1
-	url = https://gitlab.gnome.org/GNOME/zenity
+	url = https://gitlab.gnome.org/GNOME/zenity.git
 	arch = x86_64
 	license = LGPL
 	makedepends = meson
 	makedepends = yelp-tools
 	makedepends = help2man
-	depends = libnotify
+	depends = gtk4
+	depends = libadwaita
 	provides = zenity
 	conflicts = zenity
-	source = zenity::git+https://gitlab.gnome.org/GNOME/zenity#branch=master
+	source = zenity::git+https://gitlab.gnome.org/GNOME/zenity.git#branch=master
 	sha256sums = SKIP
 
 pkgname = zenity-git

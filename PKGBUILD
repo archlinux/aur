@@ -8,10 +8,10 @@
 # shellcheck disable=SC2034
 _pkgname="zenity"
 pkgname="${_pkgname}-git"
-pkgver=4.0.0.r6.g43468b64
+pkgver=4.0.1.r11.gb19fa274
 pkgrel=1
 pkgdesc="Display graphical dialog boxes from shell scripts"
-url="https://gitlab.gnome.org/GNOME/${_pkgname}"
+url="https://gitlab.gnome.org/GNOME/${_pkgname}.git"
 arch=(x86_64)
 license=(LGPL)
 provides=("${_pkgname}")
