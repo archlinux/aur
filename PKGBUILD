@@ -37,15 +37,3 @@ package() {
 	install -Dm644 "${srcdir}/automx2.service" "${pkgdir}/usr/lib/systemd/system/automx2.service"
 	popd >/dev/null || exit 1
 }
-
-post_install() {
-	cat <<EOT
-The default configuration expects an unprivileged user "automx2"
-which is used to run ${pkgname} in a safe manner. If this user does
-not exist on your machine, either modify the configuration files
-accordingly, or create said user via the following command:
-
-	sudo useradd --system --home-dir /var/lib/automx2
-EOT
-}
-
