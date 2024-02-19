@@ -1,7 +1,7 @@
 pkgbase = iraf-bin
 	pkgdesc = IRAF - Image Reduction and Analysis Facility
 	pkgver = 2.17.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iraf-community/iraf
 	arch = x86_64
 	license = custom
@@ -11,7 +11,7 @@ pkgbase = iraf-bin
 	optdepends = xgterm: to start irafcl in xgterm
 	provides = iraf
 	conflicts = iraf
-	source = https://ftp.debian.org/debian/pool/main/i/iraf/iraf_2.17.1-3_amd64.deb
-	sha256sums = ddaebe21fd0676fd6bcc43c1e8cd285db57bcd5af10c3c032f69c2d42bee3a9e
+	source = https://ftp.debian.org/debian/pool/main/i/iraf/iraf_2.17.1-5_amd64.deb
+	sha256sums = 72122b4274fe2db881f3ac0a9da226ba0498570311dc83efe571fd44a7df0226
 
 pkgname = iraf-bin
