@@ -4,7 +4,7 @@ pkgbase = rlvm
 	pkgrel = 2
 	url = https://github.com/eglaysher/rlvm
 	arch = x86_64
-	license = GPL-3.0-or-later
+	license = GPL-3.0-only
 	makedepends = scons
 	makedepends = boost
 	depends = boost-libs>=1.46
