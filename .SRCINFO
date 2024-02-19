@@ -1,8 +1,8 @@
 pkgbase = chatgpt.sh
-	pkgdesc = Shell wrapper for text and chat completions, DALL-E, Whisper, and awesome-chatgpt-prompts(-zh).
-	pkgver = 0.15.9
+	pkgdesc = Shell wrapper for OpenAI's ChatGPT, DALL-E, Whisper, and TTS. Features LocalAI, Ollama, and Google Gemini integration.
+	pkgver = 0.52
 	pkgrel = 1
-	url = https://github.com/mountaineerbr/shellChatGPT
+	url = https://gitlab.com/fenixdragao/shellchatgpt
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -10,15 +10,14 @@ pkgbase = chatgpt.sh
 	depends = curl
 	depends = jq
 	optdepends = imagemagick: edit input images
-	optdepends = sox: audio record
-	optdepends = ffmpeg: audio record
-	optdepends = coreutils: wrap output at spaces (fold)
 	optdepends = xdg-utils: open images (xdg-open, open)
-	optdepends = xsel: copy output to clipboard
-	optdepends = xclip: copy output to clipboard
+	optdepends = sox: audio recorder (arecod, ffmpeg)
+	optdepends = mpv: audio player (sox, vlc, ffmpeg, afplay, play-audio)
+	optdepends = xsel: copy output to clipboard (xclip)
 	optdepends = python: count input tokens (tiktoken)
-	provides = chatgpt.sh
-	source = chatgpt.sh-0.15.9::git+https://github.com/mountaineerbr/shellChatGPT.git#commit=6a6b9d5bf9b5bf722726f4d099929515d8b89948
+	optdepends = bat: render markdown (pygmentize, glow, mdcat, mdless)
+	optdepends = w3m: dump url text (lynx, elinks, links)
+	source = chatgpt.sh-0.52::git+https://gitlab.com/fenixdragao/shellchatgpt.git#commit=0ede2529c5da84bd62b8000b9a420234bc9f5f08
 	sha256sums = SKIP
 
 pkgname = chatgpt.sh
