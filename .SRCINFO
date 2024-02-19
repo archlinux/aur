@@ -1,0 +1,18 @@
+pkgbase = trurl-git
+	pkgdesc = Command line tool for URL parsing and manipulation
+	pkgver = 0.9.r16.g1518a4b
+	pkgrel = 1
+	url = https://curl.se/trurl/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	checkdepends = python
+	makedepends = git
+	depends = glibc
+	depends = curl
+	provides = trurl=0.9.r16.g1518a4b
+	conflicts = trurl
+	source = git+https://github.com/curl/trurl.git
+	sha256sums = SKIP
+
+pkgname = trurl-git
