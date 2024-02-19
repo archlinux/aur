@@ -17,7 +17,7 @@ sha256sums=('78ef8bc03714af31c46669969344e0b00a2c3d2e99a64ed686ed9cd445eeab70')
 
 build() {
     cd "$pkgname"
-    make
+    make clean all
 }
 package() {
     cd "$pkgname"
