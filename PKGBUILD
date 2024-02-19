@@ -1,9 +1,9 @@
 # Maintainer: Keith Plant <kplantjr at gmail dot com>
 
-pkgname="wlroots-nvidia"
+pkgname="wlroots0.16-nvidia"
 pkgver="0.16.2"
 pkgrel="2"
-pkgdesc="Modular Wayland compositor library, with fix for nvidia flickering"
+pkgdesc="Modular Wayland compositor library, with fix for nvidia flickering, downgraded to version 0.16"
 license=("MIT")
 
 wl_pkgname="wlroots"
@@ -15,8 +15,10 @@ provides=(
 	"libwlroots.so"
 )
 conflicts=(
-	"wlroots"
+  "wlroots"
+	"wlroots0.16"
 	"wlroots-git"
+  "wlroots-nvidia"
 )
 depends=(
 	'libglvnd'
