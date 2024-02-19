@@ -1,0 +1,15 @@
+pkgbase = python-vertica
+	pkgdesc = Official native Python client for the Vertica Analytics Database.
+	pkgver = 1.3.8
+	pkgrel = 1
+	url = https://github.com/vertica/vertica-python
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	source = vertica-python-1.3.8.tar.gz::https://github.com/vertica/vertica-python/archive/refs/tags/1.3.8.tar.gz
+	sha256sums = 40bd5894e2380958a52f774537f8ee3b4b26a094207835a3212a586eb4b7d075
+
+pkgname = python-vertica
