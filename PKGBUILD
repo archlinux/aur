@@ -26,10 +26,6 @@ sha256sums=(
   "SKIP"
 )
 
-prepare() {
-  cd "${srcdir}/${pkgname}"
-}
-
 build() {
   cd "${srcdir}/${pkgname}"
   meson setup --prefix=/usr build
