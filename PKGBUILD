@@ -3,7 +3,7 @@
 
 _extension='privacybadger'
 pkgname="chromium-extension-$_extension"
-pkgver=2023.12.1
+pkgver=2024.2.6
 pkgrel=1
 pkgdesc="Block third party tracking in your browser"
 license=('GPL3')
@@ -12,7 +12,7 @@ url="https://privacybadger.org/"
 depends=('chromium')
 source=("$pkgname-$pkgver::https://github.com/EFForg/privacybadger/archive/refs/tags/release-$pkgver.tar.gz"
         "$_extension.pem")
-sha256sums=('795a25b7451c7ac2e9ccc69c14895e9f8fdd14bc9c036239438a40f5a6f9bd61'
+sha256sums=('e38c88f74236ef2549933603403428c43b45dabbf384964064d124135d5a0cfc'
             '0f6e6fa1bb901480be99d24d26104f4ff67b41b9d748595f01f1779b7fc2a642')
 
 build() {
