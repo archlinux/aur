@@ -23,7 +23,7 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_gitname"
-    git submodule update --init --recursive
+    git submodule update --init --recursive --depth=1
 }
 
 build() {
