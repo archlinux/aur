@@ -1,15 +1,18 @@
 pkgbase = nautilus-send-to-bluetooth
 	pkgdesc = Adds 'Send to bluetooth device' to nautilus right-click menu
 	pkgver = 2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alireza6677/nautilus-send-to-bluetooth
-	arch = any
-	license = GPL3
+	arch = x86_64
+	license = GPL-3.0-or-later
 	depends = python
 	depends = nautilus>=44
 	depends = blueman
 	depends = python-nautilus
 	depends = bluez-obex
 	provides = nautilus-send-to-bluetooth
+	noextract = SendToBluetooth.py
+	source = https://raw.githubusercontent.com/TheWeirdDev/nautilus-send-to-bluetooth/master/SendToBluetooth.py
+	b2sums = SKIP
 
 pkgname = nautilus-send-to-bluetooth
