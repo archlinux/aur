@@ -29,7 +29,7 @@ build() {
 }
 
 check() {
-	"$srcdir/$_sourcedirectory/target/$_cargotarget/release/$pkgname" --help | grep -q 'RAW HID and VIA commandline'
+	"$srcdir/$_sourcedirectory/target/$_cargotarget/release/$pkgname" --version | tee '/dev/stderr' | grep -q "^$pkgname $pkgver$"
 }
 
 package() {
