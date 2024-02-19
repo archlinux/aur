@@ -2,7 +2,7 @@
 # Contributor: Jonathan Duck <duckbrain30@gmail.com>
 
 pkgname=typora
-pkgver=1.8.9
+pkgver=1.8.10
 pkgrel=1
 pkgdesc="A minimal markdown editor and reader."
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=(
 	'pandoc: Import/export for extra file formats')
 _filename="${pkgname}_${pkgver}_amd64.deb"
 source=("https://typora.io/linux/$_filename" "$pkgname.sh")
-sha512sums=('22b7a4154ec21dec55235cab321221b9ca3c45d1449bb0eb5a3043faf623c3b93f9adf6a0edb857deadc1c284995a9fd38bd73e04a1c308c4ced227dfadf14bc'
+sha512sums=('6560774e283129fa556a916d412903893388194625472062a36dd84d771ae261974b0c6a3b4642b081e8e19a7bb9477720e00f39efa4934aa8301001127e69a6'
             'de9c883c63f3ea35bd551c8761e605f8e1a3468943e000abcbf94bb0c5cbb5f0f6c7fa4d49ab39c177f167e0e3d0b061c861bf828627b4a34f7f1589119c3d04')
 
 package() {
@@ -33,6 +33,7 @@ package() {
 	rmdir --ignore-fail-on-non-empty "$pkgdir/usr/share/doc/$pkgname" "$pkgdir/usr/share/doc"
 	# remove change log from application comment
 	sed -i '/Change Log/d' "$pkgdir/usr/share/applications/typora.desktop"
-	# fix dir permissions
+	# fix permissions
+	chmod 644 "$pkgdir/usr/share/applications/typora.desktop"
 	find "$pkgdir" -type d -exec chmod 755 {} \;
 }
