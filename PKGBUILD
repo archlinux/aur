@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Perl AWS::Signature4 CPAN module"
 arch=('any')
 url="http://search.cpan.org/dist/${cpaname}/"
-license=('unknown')
+license=('Artistic-2.0')
 options=('!emptydirs')
 depends=(
    'perl'
