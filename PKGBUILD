@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=homebridge
-pkgver=1.6.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='HomeKit support for the impatient'
 arch=('any')
@@ -11,30 +11,13 @@ depends=('nodejs')
 makedepends=('npm')
 optdepends=('homebridge-config-ui-x: for web-based management tool')
 options=('!emptydirs' '!strip')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('0e5b5d5109abd0643250b2b60e563e74649472a21b81bb38daaa93b7163f0d2503e52964dc84a41e6b7e10481fef414c5af4a867709c8f3dea9e7e52ffedd92a')
-b2sums=('becc11d1d7d262a6eff9a1a086d3f2925bf6d34b9f5ef77d71c8a29feb0db44b6c254afbea205ee999c10bf6688d79611e574a21025e29236d8f1a8446af4f0c')
-
-build() {
-  cd "$pkgname-$pkgver"
-
-  # NOTE: package is built this way because the dist/ directory is not
-  # included in the source, only in npm source due to a prepublish script
-  # which does not get installed correctly if the npm source is used.
-  export NPM_FLAGS=(--no-audit --no-fund --no-update-notifier)
-
-  # install dependencies
-  npm install "${NPM_FLAGS[@]}"
-
-  # generate dist dir
-  npm run build "${NPM_FLAGS[@]}"
-
-  # generate tarball
-  npm pack "${NPM_FLAGS[@]}"
-}
+source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
+noextract=("$pkgname-$pkgver.tgz")
+sha512sums=('d908a45e79a99c57b6b37dd0f13798139fac5f2287519fbd97959f0e6a6eba91dd72de87fc6e9beb3dc70a3fb6ae531128a6391252efe57b4ba3139c69f9cbd2')
+b2sums=('9b2c32af7c0317c931950d9b6b060ecb349afbdc486a8220a8fcb9ed43ad290ff93dc9a0b24925f6771b268ef3143b15e0e502d169818310ace337d0ef27ec51')
 
 package() {
-  cd "$pkgname-$pkgver"
+  export NPM_FLAGS=(--no-audit --no-fund --no-update-notifier)
   npm install \
     --global \
     --prefix "$pkgdir/usr" \
