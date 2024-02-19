@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=transport
-_pkgver=0.14-6
+_pkgver=0.14-7
 pkgname=r-${_pkgname,,}
-pkgver=0.14.6
+pkgver=0.14.7
 pkgrel=1
 pkgdesc='Computation of Optimal Transport Plans and Wasserstein Distances'
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
   r-wsgeometry
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c6119b577df7c8748b35c74ad4613627a3efa0b758e6cfd046d216658de10620')
+sha256sums=('c01ed03509dee22b58b39da176a6427c2026efd901e9b0fb9f42ab022fd58716')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
