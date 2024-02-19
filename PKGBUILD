@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-plugins-bad
-pkgver=1.22.8
+pkgver=1.22.10
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Bad Plugins (mingw-w64)"
 arch=(any)
@@ -27,7 +27,7 @@ optdepends=(
 options=('!strip' '!buildflags' 'staticlibs')
 
 source=(${url}src/gst-plugins-bad/gst-plugins-bad-${pkgver}.tar.xz)
-sha256sums=('458783f8236068991e3e296edd671c8eddb8be6fac933c1c2e1503462864ea0f')
+sha256sums=('dabcd60c762165bb043eba753d599212514c94684e4db9a2e25484cb6508ebbf')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -37,6 +37,7 @@ build() {
   for _arch in $_architectures; do
     mkdir -p "build-${_arch}" && pushd build-${_arch}
     ${_arch}-meson \
+      -D strip=true \
       -D package-name="GStreamer (Arch Linux)" \
       -D package-origin="http://www.archlinux.org/" \
       -D tests=disabled \
