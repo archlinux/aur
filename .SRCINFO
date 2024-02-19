@@ -1,16 +1,16 @@
 pkgbase = vdhcoapp-bin
 	pkgdesc = Companion application for Video DownloadHelper browser add-on, precompiled binary version
-	pkgver = 2.0.17
+	pkgver = 2.0.19
 	pkgrel = 1
 	url = https://github.com/aclap-dev/vdhcoapp
 	arch = x86_64
 	license = GPL2
 	depends = ffmpeg
 	depends = orc
-	provides = vdhcoapp=2.0.17
+	provides = vdhcoapp=2.0.19
 	conflicts = vdhcoapp
 	options = !strip
-	source = vdhcoapp-2.0.17-linux-x86_64.deb::https://github.com/aclap-dev/vdhcoapp/releases/download/v2.0.17/vdhcoapp-linux-x86_64.deb
+	source = vdhcoapp-2.0.19-linux-x86_64.deb::https://github.com/aclap-dev/vdhcoapp/releases/download/v2.0.19/vdhcoapp-linux-x86_64.deb
 	source = vdhcoapp-install.hook
 	source = vdhcoapp-remove.hook
 	source = vdhcoapp-user-install.hook
