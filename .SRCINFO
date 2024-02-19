@@ -1,0 +1,17 @@
+pkgbase = unqlite-git
+	pkgdesc = Embeddable NoSQL DB Engine library
+	pkgver = 1.1.9.r35.g057067a
+	pkgrel = 1
+	url = http://unqlite.org
+	arch = i686
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	provides = unqlite=1.1.9-1
+	conflicts = unqlite
+	source = unqlite-git::git+https://github.com/symisc/unqlite
+	md5sums = SKIP
+
+pkgname = unqlite-git
