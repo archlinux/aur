@@ -26,6 +26,10 @@ build() {
 	make
 }
 
+check() {
+	"$srcdir/$_sourcedirectory/$_pkgname" | tee '/dev/stderr' | grep -q "^$_pkgname v"
+}
+
 package() {
 	cd "$srcdir/$_sourcedirectory/"
 	install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
