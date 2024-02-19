@@ -3,7 +3,7 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Chris Kitching <chriskitching@linux.com>
 
-declare -Iir LIB32GST_DISABLE_AV LIB32GST_DISABLE_BAD
+declare -Ii LIB32GST_DISABLE_AV LIB32GST_DISABLE_BAD
 
 pkgbase=lib32-gst-bad-ugly
 pkgname=(lib32-gst-plugins-ugly)
@@ -13,9 +13,10 @@ pkgname=(lib32-gst-plugins-ugly)
 	lib32-gst-plugins-bad-libs
 	lib32-gst-plugins-bad
 )
+readonly LIB32GST_DISABLE_{AV,BAD}
 
-pkgver=1.22.7
-pkgrel=2
+pkgver=1.22.10
+pkgrel=1
 pkgdesc="Multimedia graph framework (32-bit)"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)

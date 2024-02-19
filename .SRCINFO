@@ -1,7 +1,7 @@
 pkgbase = lib32-gst-bad-ugly
 	pkgdesc = Multimedia graph framework (32-bit)
-	pkgver = 1.22.7
-	pkgrel = 2
+	pkgver = 1.22.10
+	pkgrel = 1
 	url = https://gstreamer.freedesktop.org/
 	arch = x86_64
 	license = LGPL
@@ -12,7 +12,7 @@ pkgbase = lib32-gst-bad-ugly
 	makedepends = lib32-gst-plugins-base
 	makedepends = lib32-gst-plugins-good
 	makedepends = wayland-protocols
-	makedepends = lib32-gst-plugins-base-libs>=1.22.7
+	makedepends = lib32-gst-plugins-base-libs>=1.22.10
 	makedepends = lib32-a52dec
 	makedepends = lib32-libcdio
 	makedepends = lib32-libdvdread
@@ -79,7 +79,7 @@ pkgbase = lib32-gst-bad-ugly
 	makedepends = lib32-json-glib
 	makedepends = lib32-ffmpeg
 	options = !debug
-	source = git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git?signed#tag=1.22.7
+	source = git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git?signed#tag=1.22.10
 	source = 0001-Allow-disabling-gstreamer.patch
 	source = 0002-HACK-meson-Disable-broken-tests.patch
 	validpgpkeys = D637032E45B8C6585B9456565D2EEE6F6F349D7C
@@ -89,7 +89,7 @@ pkgbase = lib32-gst-bad-ugly
 
 pkgname = lib32-gst-plugins-ugly
 	pkgdesc = Multimedia graph framework (32-bit) - ugly plugins
-	depends = lib32-gst-plugins-base-libs>=1.22.7
+	depends = lib32-gst-plugins-base-libs>=1.22.10
 	depends = lib32-a52dec
 	depends = lib32-libcdio
 	depends = lib32-libdvdread
@@ -100,14 +100,14 @@ pkgname = lib32-gst-plugins-ugly
 
 pkgname = lib32-gst-libav
 	pkgdesc = Multimedia graph framework (32-bit) - libav plugin
-	depends = lib32-gst-plugins-base-libs>=1.22.7
+	depends = lib32-gst-plugins-base-libs>=1.22.10
 	depends = lib32-ffmpeg
-	provides = lib32-gst-ffmpeg=1.22.7
+	provides = lib32-gst-ffmpeg=1.22.10
 	replaces = lib32-gst-libav-latest
 
 pkgname = lib32-gst-plugins-bad-libs
 	pkgdesc = Multimedia graph framework (32-bit) - bad
-	depends = lib32-gst-plugins-base-libs>=1.22.7
+	depends = lib32-gst-plugins-base-libs>=1.22.10
 	depends = lib32-libdrm
 	depends = lib32-libgudev
 	depends = lib32-libusb
@@ -119,7 +119,7 @@ pkgname = lib32-gst-plugins-bad-libs
 
 pkgname = lib32-gst-plugins-bad
 	pkgdesc = Multimedia graph framework (32-bit) - bad plugins
-	depends = lib32-gst-plugins-bad-libs>=1.22.7
+	depends = lib32-gst-plugins-bad-libs>=1.22.10
 	depends = lib32-aom
 	depends = lib32-bzip2
 	depends = lib32-curl
