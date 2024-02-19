@@ -1,7 +1,7 @@
 pkgbase = ttf-misans
 	pkgdesc = MiSans Global is a global language font customization project led by Xiaomi and co-created with Mona font and Han Yi font.
 	pkgver = 4.003
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hyperos.mi.com/font/download
 	arch = any
 	license = custom
