@@ -7,7 +7,7 @@
 pkgname=mullvad-vpn-beta
 _pkgver=2024.1
 _channel=beta
-_rel=1
+_rel=2
 pkgver=${_pkgver}.${_channel}${_rel}  # beta
 #pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
@@ -15,13 +15,13 @@ pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64')
 url="https://www.mullvad.net"
 license=('GPL-3.0-or-later')
-depends=('alsa-lib' 'gtk3' 'iputils' 'libnotify' 'nss')
+depends=('alsa-lib' 'gtk3' 'iputils' 'libnftnl' 'libnotify' 'nss')
 makedepends=('cargo' 'git' 'go' 'libxcrypt-compat' 'nodejs>=16' 'npm>=8.3' 'protobuf')
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 options=('!lto')
 install="${pkgname%-beta}.install"
-_tag=97e1e7c7d5d3f3fbb1820de19ced3b62e861b178  # tags/2024.1-beta1^0
+_tag=d10d9226cac118180cafcf1fa2b160b2f772f032  # tags/2024.1-beta2^0
 _commit=d5772339cee9c1a0d7671968746f02499b78e245
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#commit=${_tag}"  # signed by Oskar Nyberg (raksooo), public key not uploaded yet
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
