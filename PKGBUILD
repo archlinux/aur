@@ -2,7 +2,7 @@
 
 _pkgname="hyprlock"
 pkgname="${_pkgname}-git"
-pkgver=0.1.0.r10.5e4eea3
+pkgver=0.1.0.r14.641563e
 pkgrel=1
 pkgdesc=" Hyprland's GPU-accelerated screen locking utility "
 arch=(any)
