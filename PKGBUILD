@@ -1,6 +1,6 @@
 # Maintainer: alba4k <blaskoazzolaaaron@gmail.com>
 pkgname=albafetch-git
-pkgver=4.1.r30.aa1b169
+pkgver=4.1.r63.gd2a67463
 pkgrel=1
 pkgdesc="Neofetch, but written in C; both faster and worse than the original (latest commit)"
 arch=(x86_64 aarch64)
@@ -14,8 +14,9 @@ source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "${_pkgname}"
-    printf "4.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd albafetch
+    git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
+      | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
