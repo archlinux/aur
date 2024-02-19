@@ -1,7 +1,7 @@
 # Maintainer: MaryJaneInChain <maryjaneinchain@gmail.com>
 
 pkgname=tic-80-git
-pkgver=r1996.06fde12
+pkgver=r2883.3cf27c5e
 pkgrel=1
 pkgdesc='TIC-80 tiny computer emulator'
 arch=('any')
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$_gitname/build"
-    cmake -DBUILD_PRO=true ..
+    cmake -DBUILD_PRO=true -DBUILD_TOUCH_INPUT=true ..
     make -j4
 }
 
@@ -39,5 +39,9 @@ package() {
     install -Dm755 bin/bin2txt "${pkgdir}/usr/bin/bin2txt"
     install -Dm644 linux/tic80.desktop -t "${pkgdir}/usr/share/applications/"
     install -Dm644 linux/tic80.png -t "${pkgdir}/usr/share/icons/"
+    install -Dm755 bin/cart2prj "${pkgdir}/usr/bin/cart2prj"
+    install -Dm755 bin/prj2cart "${pkgdir}/usr/bin/prj2cart"
+    install -Dm755 bin/wasmp2cart "${pkgdir}/usr/bin/wasmp2cart"
+    install -Dm755 bin/xplode "${pkgdir}/usr/bin/xplode"
 }
 
