@@ -1,17 +1,18 @@
 pkgbase = perl-css-inliner
 	pkgdesc = Perl CSS::Inliner CPAN module
-	pkgver = 4014
+	pkgver = 4018
 	pkgrel = 1
 	url = http://search.cpan.org/dist/CSS-Inliner/
 	arch = any
 	license = unknown
+	checkdepends = perl-test-pod
 	depends = perl
 	depends = perl-html-query
 	depends = perl-html-treebuilder-xpath
 	depends = perl-libwww
 	depends = perl-uri
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/K/KA/KAMELKEV/CSS-Inliner-4014.tar.gz
-	sha256sums = 1e0ab0538574c5c144c81092e4ef95f11d9429a143c0896719ef7a45374dc0bf
+	source = http://search.cpan.org/CPAN/authors/id/K/KA/KAMELKEV/CSS-Inliner-4018.tar.gz
+	sha256sums = 4b849dfaf7e42576d2adb5a674feb345a8a27a5a303f412e10dac531a3061183
 
 pkgname = perl-css-inliner
