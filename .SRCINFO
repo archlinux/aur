@@ -9,7 +9,7 @@ pkgbase = python-tree-sitter-muttrc
 	arch = aarch64
 	license = GPL3
 	makedepends = python-installer
-	depends = python
+	depends = python-tree-sitter
 	source = https://files.pythonhosted.org/packages/cp311/t/tree_sitter_muttrc/tree_sitter_muttrc-0.0.3-cp311-cp311-manylinux_2_17_x86_64.manylinux_2_5_x86_64.manylinux1_x86_64.manylinux2014_x86_64.whl
 	sha256sums = c39db4855d6887136303aabd375b87b15658c781735911ab6774b15fd7226d5d
 
