@@ -19,6 +19,10 @@ build() {
 	python setup.py build
 }
 
+check() {
+	python "$srcdir/$_sourcedirectory/absolutely_proprietary/__init__.py" --help | tee '/dev/stderr' | grep -q '^Find proprietary packages$'
+}
+
 package() {
 	cd "$srcdir/$_sourcedirectory/"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
