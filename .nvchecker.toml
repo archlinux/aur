@@ -1,0 +1,4 @@
+[pc-ble-driver]
+source = "git"
+git = "https://github.com/NordicSemiconductor/pc-ble-driver"
+prefix = "v"
