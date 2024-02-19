@@ -1,7 +1,7 @@
-# Maintainer: Aria Moradi <aria.moradi007 at gmail dot com>
+# Maintainer: Visne
 
 pkgname=rsiedit-bin
-pkgver=0.2.5
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="C# GUI application for manipulation of RSI files used in SS14."
 arch=("x86_64")
@@ -11,7 +11,7 @@ options=("!strip")
 source=("Editor_Linux_$pkgver.zip::$url/releases/download/v$pkgver/Editor_Linux.zip"
         "RSIEdit.desktop"
 	"RSIEdit.png")
-sha256sums=('97b122f15225dda41c9a6d2814df59caf93c6c8b5a8da3b64fd957a6a03ff405'
+sha256sums=('5c0edc669baa5e0e3aefe5f59fd59e319f30fa321e1dfc3a9ef180797407c4b8'
             '58c4554c6ada6b33d16f82a87301a2975f8ef2ca6247b3bab6bd8b8d76b92898'
             '56b7069383f1e839ce9aa14c8ca5e00bd089e3da85dd3ca774788d214c1fedea')
 
