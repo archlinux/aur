@@ -1,0 +1,16 @@
+pkgbase = python-finesse
+	pkgdesc = Python based frequency domain interferometer simulation software
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://finesse.ifosim.org/
+	arch = any
+	license = GPL3
+	depends = suitesparse
+	depends = python-pyspellchecker
+	depends = python-deprecated
+	depends = python-quantiphy
+	optdepends = gnuplot: for test_plot.kat example
+	source = git+https://gitlab.com/ifosim/finesse/finesse3.git#branch=master
+	sha256sums = SKIP
+
+pkgname = python-finesse
