@@ -7,7 +7,12 @@ pkgdesc="Rofi-wayland frontend for ZX2C4 pass project."
 arch=('any')
 url="https://github.com/Seme4eg/rofi-pass-wayland"
 license=('GPL-3.0-or-later')
-depends=('rofi-lbonn-wayland-git' 'pass' 'wtype' 'wl-clipboard')
+depends=(
+  # official repositories:
+  'pass' 'wtype' 'wl-clipboard'
+  # AUR:
+  'rofi-lbonn-wayland-git'
+)
 optdepends=('qrencode: qrcode functionality'
 						'pass-otp: one time passwords generation')
 makedepends=('git')
