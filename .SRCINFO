@@ -1,6 +1,6 @@
 pkgbase = python-polars
 	pkgdesc = Blazingly fast DataFrames library using Apache Arrow Columnar Format as memory model
-	pkgver = 0.20.9
+	pkgver = 0.20.10
 	pkgrel = 1
 	url = https://www.pola.rs/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = python-polars
 	optdepends = python-pyarrow: for interoperability with arrow types
 	optdepends = python-pytz: to enable conversion to python datetimes with timezones
 	optdepends = python-fsspec: to transparently open files locally or remotely
-	source = https://github.com/pola-rs/polars/archive/refs/tags/py-0.20.9.tar.gz
-	b2sums = ef82f689d816301e9f9788677599601088863741dc839d2ce28af245165830d3b3d9c99228ddf45368fa249e8111889987eb595ebd89005f7664ed53c3298526
+	source = https://github.com/pola-rs/polars/archive/refs/tags/py-0.20.10.tar.gz
+	b2sums = 49e6eeb8fa256c3a8b2e2635949bee41f082c357dd556a0578b00d93bd3d7bf7bcf761f82984f5a089f09589acecc256eb6cc546e3483f4249058d00443ebece
 
 pkgname = python-polars
