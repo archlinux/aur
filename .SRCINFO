@@ -1,7 +1,7 @@
 pkgbase = xf86-input-joystick
 	pkgdesc = X.Org input driver that translates joystick input to mouse and keyboard events. (Do not use for games with native joystick support or XI2 applications. See manpage.)
 	pkgver = 1.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.x.org/wiki/
 	arch = i686
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = xf86-input-joystick
 	conflicts = X-ABI-XINPUT_VERSION>=25
 	source = https://www.x.org/releases/individual/driver/xf86-input-joystick-1.6.4.tar.xz
 	source = https://www.x.org/releases/individual/driver/xf86-input-joystick-1.6.4.tar.xz.sig
-	source = 50-joystick.conf
+	source = 50-joystick-example.conf
 	validpgpkeys = 3C2C43D9447D5938EF4551EBE23B7E70B467F0BF
 	sha256sums = 905ec485fabc699b1cb21518cbd152246776fa83570e09c5822ca0973733ccd2
 	sha256sums = 63cfdfc31bc549fdb5b489bd9e0adaa1077f9fbb83d771d6ced2640bec177c72
-	sha256sums = 20f922c666491465493022ff7022bdac67691fcd03e9c746da6abb17ceddebf1
+	sha256sums = b516eb15d4d37149a4710cf70f1a9c9ca6b5d03ea4b68f43f923571384adf09c
 
 pkgname = xf86-input-joystick

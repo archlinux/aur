@@ -5,7 +5,7 @@
 _pkgname='xf86-input-joystick'
 pkgname="${_pkgname}"
 pkgver=1.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="X.Org input driver that translates joystick input to mouse and keyboard events. (Do not use for games with native joystick support or XI2 applications. See manpage.)"
 arch=(
   'i686'
@@ -35,12 +35,12 @@ validpgpkeys=(
 source=(
   "https://www.x.org/releases/individual/driver/xf86-input-joystick-${pkgver}.tar.xz"
   "https://www.x.org/releases/individual/driver/xf86-input-joystick-${pkgver}.tar.xz.sig"
-  '50-joystick.conf'
+  '50-joystick-example.conf'
 )
 sha256sums=(
   '905ec485fabc699b1cb21518cbd152246776fa83570e09c5822ca0973733ccd2'
   '63cfdfc31bc549fdb5b489bd9e0adaa1077f9fbb83d771d6ced2640bec177c72'
-  '20f922c666491465493022ff7022bdac67691fcd03e9c746da6abb17ceddebf1'
+  'b516eb15d4d37149a4710cf70f1a9c9ca6b5d03ea4b68f43f923571384adf09c'
 )
 
 build() {
@@ -57,7 +57,7 @@ package() {
 
   make DESTDIR="${pkgdir}" install
 
-  install -Dvm644 "${srcdir}/50-joystick.conf" "${pkgdir}/usr/share/doc/${_pkgname}/example/xorg.conf.d/50-joystick.conf"
+  install -Dvm644 "${srcdir}/50-joystick-example.conf" "${pkgdir}/usr/share/doc/${_pkgname}/example/xorg.conf.d/50-joystick-example.conf"
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" ChangeLog INSTALL README.md
 
   install -Dvm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
