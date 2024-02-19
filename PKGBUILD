@@ -1,5 +1,8 @@
+# Maintainer: Cody P Schafer <dev@codyps.com>
+# Maintainer: Michał Wojdyła <micwoj9292@gmail.com>
+# Contributor: Pablo Lezaeta <prflr88@gmail.com>
 pkgname=hfsutils
-pkgver=3.2.6_p14
+pkgver=3.2.6_p15
 pkgrel=1
 pkgdesc="HFS Access utils"
 arch=('x86_64')
@@ -11,7 +14,7 @@ source=(
 	"https://deb.debian.org/debian/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver/_p/-}.debian.tar.xz"
 	)
 sha256sums=('bc9d22d6d252b920ec9cdf18e00b7655a6189b3f34f42e58d5bb152957289840'
-            '855cbdad4fead0e3e37a994d4a2b82f872eda4fe5ed7703d9a3e1de398dbc7ac')
+            '1477221ab2e563198f111e2b9f6564e9af3ce4c5ae7f9fccd983ec41c70a15d9')
 
 prepare() {
 	for file in $(cat ./debian/patches/series); do

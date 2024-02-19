@@ -1,15 +1,14 @@
 pkgbase = hfsutils
 	pkgdesc = HFS Access utils
-	pkgver = 3.2.6_p14
+	pkgver = 3.2.6_p15
 	pkgrel = 1
 	url = https://www.mars.org/home/rob/proj/hfs/
 	arch = x86_64
 	license = GPL2
 	depends = glibc
 	source = https://deb.debian.org/debian/pool/main/h/hfsutils/hfsutils_3.2.6.orig.tar.gz
-	source = https://deb.debian.org/debian/pool/main/h/hfsutils/hfsutils_3.2.6-14.debian.tar.xz
+	source = https://deb.debian.org/debian/pool/main/h/hfsutils/hfsutils_3.2.6-15.debian.tar.xz
 	sha256sums = bc9d22d6d252b920ec9cdf18e00b7655a6189b3f34f42e58d5bb152957289840
-	sha256sums = 855cbdad4fead0e3e37a994d4a2b82f872eda4fe5ed7703d9a3e1de398dbc7ac
+	sha256sums = 1477221ab2e563198f111e2b9f6564e9af3ce4c5ae7f9fccd983ec41c70a15d9
 
 pkgname = hfsutils
-
