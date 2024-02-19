@@ -1,11 +1,11 @@
 pkgbase = networkmanager-iodine-git
-	pkgdesc = Iodine plugin for NetworkManager - git version
-	pkgver = r170.d0e5d85
-	pkgrel = 2
+	pkgdesc = Iodine plugin for NetworkManager (git build)
+	pkgver = 1.2.0.r72.g53f5069
+	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/network-manager-iodine
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = intltool
 	depends = at-spi2-core
@@ -22,6 +22,8 @@ pkgbase = networkmanager-iodine-git
 	depends = networkmanager
 	depends = pango
 	depends = zlib
+	provides = networkmanager-iodine=1.2.0
+	conflicts = networkmanager-iodine
 	source = networkmanager-iodine-git::git+https://gitlab.gnome.org/GNOME/network-manager-iodine.git
 	b2sums = SKIP
 
