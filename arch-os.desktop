@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Arch OS
+Exec=arch-os
+Icon=/opt/arch-os-app/docs/logo.svg
+Type=Application
+Terminal=false
+StartupWMClass=arch-os
