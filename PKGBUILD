@@ -1,5 +1,5 @@
 pkgname=kalc
-pkgver=0.9.3
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="a complex numbers, 2d/3d graphing, arbitrary precision, vector, cli calculator with real-time output"
 arch=('any')
@@ -7,7 +7,7 @@ url="https://github.com/bgkillas/kalc"
 license=('GPL3')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bgkillas/kalc/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('8e061cc13741112d73bb4c1e94896ccd48434871a478c5a1adf72dd39a93fded0a8660c1870adbd95d5081125c2367e9273141cc635648e415c812901d875bac')
+sha512sums=('0ce65d76a9fbe07f3e3987cd3c70b8ca58e2634f8933425a46c5227746a14b436da389306f606092d32e97ddbad23fe13e5cd94519d1ad16e98dfa8eaf92c5f7')
 build()
 {
   cd "$srcdir/$pkgname-$pkgver"
