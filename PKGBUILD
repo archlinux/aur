@@ -9,13 +9,13 @@ url='https://github.com/oznu/homebridge-config-ui-x'
 license=('MIT')
 depends=('homebridge' 'nodejs')
 makedepends=('npm')
-options=('!emptydirs' '!strip')
 source=(
   "https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz"
   'systemd.service'
   'tmpfiles.conf'
   'sysusers.conf'
 )
+noextract=("$pkgname-$pkgver.tgz")
 install="$pkgname.install"
 sha512sums=('5e88f008e101e8bb09798b7a3456a45c6088b3d58503fc62ada5610b5475fbffdb40f9afd53d45dec66facfc69d544c12cac68c53dfb48c76dab4bacf294726b'
             '6a758eeea0cee8e262e9209226b3c4ff5e8982f8d3671bfb18287656eca71309694f3f9f11317ce80696991640fa277771ec21536546ea46d2565f64e08fff44'
@@ -34,12 +34,12 @@ package() {
     "${NPM_FLAGS[@]}" \
     "$pkgname-$pkgver.tgz"
 
-  # remove a non-runtime file that kills the packaging step
-  rm -r "$pkgdir/usr/lib/node_modules/$pkgname/node_modules/@fastify/send/test/fixtures/snow ☃/"
-
   # npm gives ownership of ALL FILES to build user
   # https://bugs.archlinux.org/task/63396
   chown -R root:root "$pkgdir"
+
+  # remove a non-runtime file that kills the packaging step
+  rm -r "$pkgdir/usr/lib/node_modules/$pkgname/node_modules/@fastify/send/test/fixtures/snow ☃/"
 
   # license
   install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" \
