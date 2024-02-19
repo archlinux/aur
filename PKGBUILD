@@ -44,13 +44,18 @@ prepare() {
 }
 
 build() {
-  cmake -B build -S $pkgname-$pkgver \
-      -DCMAKE_BUILD_TYPE='None' \
-      -DCMAKE_INSTALL_PREFIX='/usr' \
-      -DCMAKE_C_FLAGS="$CFLAGS -ffat-lto-objects" \
-      -DCMAKE_CXX_FLAGS="$CXXFLAGS -ffat-lto-objects" \
-      -Wno-dev
-  cmake --build build
+  local cmake_options=(
+    -B build
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_C_FLAGS="$CFLAGS -ffat-lto-objects"
+    -D CMAKE_CXX_FLAGS="$CXXFLAGS -ffat-lto-objects"
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -S $pkgname-$pkgver
+    -W no-dev
+  )
+
+  cmake "${cmake_options[@]}"
+  cmake --build build --verbose
 }
 
 check() {
