@@ -6,11 +6,14 @@ conflicts=('uv')
 provides=('uv')
 _pkgver=0.1.5
 pkgver=${_pkgver#v}
-pkgrel=4
+pkgrel=5
 pkgdesc='An extremely fast Python package installer and resolver, written in Rust. Designed as a drop-in replacement for pip and pip-compile.'
 arch=(aarch64 i686 x86_64)
 url='https://github.com/astral-sh/uv'
-license=('MIT')
+license=('Apache-2.0 OR MIT')
+depends=('zlib')
+source=(https://raw.githubusercontent.com/astral-sh/uv/$pkgver/README.md)
+sha256sums=(SKIP)
 
 _release_url='https://api.github.com/repos/astral-sh/uv/releases/latest'
 
@@ -30,6 +33,6 @@ check() {
 }
 
 package() {
-  cd "${_pkgname}-${CARCH}-unknown-linux-gnu"
-  install -Dm755 uv "${pkgdir}/usr/bin/uv"
+  install -Dm644 ./README.md "${pkgdir}/usr/share/doc/$pkgname/README.md"
+  install -Dm755 "${_pkgname}-${CARCH}-unknown-linux-gnu/uv" "${pkgdir}/usr/bin/uv"
 }
