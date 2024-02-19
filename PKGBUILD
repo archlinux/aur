@@ -25,6 +25,10 @@ build() {
 	make
 }
 
+check() {
+	"$srcdir/$_sourcedirectory/build/src/$pkgname" -v | tee '/dev/stderr' | grep -q "^$pkgname $pkgver$"
+}
+
 package() {
 	cd "$srcdir/$_sourcedirectory/build/"
 	make DESTDIR="$pkgdir" install
