@@ -6,14 +6,14 @@ check_option "debug" "y" && BUILD_TYPE=Debug || BUID_TYPE=Release
 ## Configuration env vars:
 _BUILD_CUDA="${BUILD_CUDA:-ON}"
 _CUDA_ARCH="${CUDA_ARCH:-native}"
-_fragment=${FRAGMENT:-#tag=3.8}
+_fragment=${FRAGMENT:-#tag=3.9}
 # Use CMAKE_FLAGS=xxx:yyy:zzz to define extra CMake flags
 [[ -v CMAKE_FLAGS ]] && mapfile -t -d: _CMAKE_FLAGS < <(echo -n "$CMAKE_FLAGS")
 
 _name=colmap
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
 pkgname=${_name}
-pkgver=3.8
+pkgver=3.9
 pkgrel=1
 pkgdesc="General-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
 arch=('i686' 'x86_64')
@@ -23,25 +23,21 @@ groups=()
 depends=('cgal' 'ceres-solver' 'gflags' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'freeimage' 'libjpeg' 'boost-libs' 'qt5-base' 'metis' 'flann')
 makedepends=('boost' 'cmake' 'eigen' 'git' 'ninja' 'python-sphinx')
 if [ "$_BUILD_CUDA" == "ON" ] ; then 
-  makedepends+=('cuda<12')
+  makedepends+=('cuda')
   optdepends+=('libcudart.so: required for dense reconstruction')
 fi
 source=("${pkgname}::git+https://github.com/colmap/colmap.git${_fragment}"
-        "gcc9.patch"
-        "cuda11_gcc11.patch"
         "vocabulary-tree-32K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words32K.bin"
         "vocabulary-tree-256K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words256K.bin"
         "vocabulary-tree-1M.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words1M.bin"
         )
 sha256sums=('SKIP'
-            '531181351f30cfcb531fc961439152840048ff4fa71a27b1efae46421f1ab686'
-            '4b76da280b2c81ddb760e813d2c27c6b932790cc9aabaadbd0a917a6b57cfdfd'
             'd37d8f19ee0a49705c4c0b06967a08cedfed5cf86519eada3271497256732bc2'
             'd2055600452a531b5b0a62aa5943e1a07195273dc4eeebcf23d3a924d881d53a'
             'fb60f7ba8081ee5c278f03c62329a374d1b24136b374a49393b453db1529a8c6')
 
 prepare() {
-  git -C "$pkgname" apply -v "$srcdir"/*.patch
+: # git -C "$pkgname" apply -v "$srcdir"/*.patch
 }
 
 
