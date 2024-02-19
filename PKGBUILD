@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-plugins-good
-pkgver=1.22.8
+pkgver=1.22.10
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Good Plugins (mingw-w64)"
 arch=(any)
@@ -25,7 +25,7 @@ optdepends=(
 options=('!strip' '!buildflags' 'staticlibs')
 
 source=(${url}src/gst-plugins-good/gst-plugins-good-${pkgver}.tar.xz)
-sha256sums=('e305b9f07f52743ca481da0a4e0c76c35efd60adaf1b0694eb3bb021e2137e39')
+sha256sums=('f748feae922cad62f20102a84ade8f42b78e1e44a34866aa3ea766f9172e1c7f')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -36,6 +36,7 @@ build() {
   for _arch in $_architectures; do
     mkdir -p "build-${_arch}" && pushd build-${_arch}
     ${_arch}-meson \
+      -D strip=true \
       -D package-name="GStreamer (Arch Linux)" \
       -D package-origin="http://www.archlinux.org/" ..
     ninja
