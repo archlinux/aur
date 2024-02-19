@@ -58,6 +58,10 @@ prepare() {
 	sed -i -e "s/%%PKGNAME%%/$_pkgname/g" -e "s/%%PROJECTNAME%%/$_projectname/g" "$srcdir/electron-launcher.sh"
 }
 
+check() {
+	DISPLAY='' WAYLAND_DISPLAY='' "$srcdir/$_projectname" --version | tee '/dev/stderr' | grep -q "v$pkgver"
+}
+
 package() {
 	cd "$srcdir/"
 	install -dm755 "$pkgdir/usr/lib/$_pkgname/"
