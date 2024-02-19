@@ -1,6 +1,6 @@
 pkgbase = chr-editor-git
-	pkgdesc = Console-based editor designed for simplified use like gedit
-	pkgver = r652.b3a4c07
+	pkgdesc = Retro-style terminal-based text editor with desktop-like shortcuts utilizing Tui Widgets and integration with KDE's syntax highlighting engine.
+	pkgver = r932.9c3c094
 	pkgrel = 1
 	url = https://github.com/istoph/editor
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = chr-editor-git
 	depends = qt5-base
 	depends = icu
 	depends = gcc-libs
+	depends = syntax-highlighting5
 	provides = chr-editor
 	conflicts = chr-editor
-	options = strip
 	source = git+https://github.com/istoph/editor.git
 	sha512sums = SKIP
 
