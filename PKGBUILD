@@ -9,7 +9,7 @@ url='https://www.navicat.com/en/navicat-16-highlights'
 license=('GPL3')
 source=(
     # The download url always download latest version
-    "navicat16-premium-cs-${pkgver}.AppImage::http://download.navicat.com.cn/download/navicat16-premium-cs.AppImage"
+    "navicat16-premium-cs-${pkgver}.AppImage::https://dn.navicat.com/download/navicat16-premium-cs.AppImage"
     'navicat16.desktop'
 )
 sha256sums=(
