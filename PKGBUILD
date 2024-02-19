@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-plugins-ugly
-pkgver=1.22.8
+pkgver=1.22.10
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Ugly Plugins (mingw-w64)"
 arch=(any)
@@ -16,7 +16,7 @@ optdepends=(
 options=('!strip' '!buildflags' 'staticlibs')
 
 source=(${url}src/gst-plugins-ugly/gst-plugins-ugly-${pkgver}.tar.xz)
-sha256sums=('0761d96ba508e01c0271881b26828c2bffd7d8afd50872219f088f755b252ca7')
+sha256sums=('cc80a81a22c0b3b31ab7f1b8bf18dda23c72d2791b86cc6264923a68336329ea')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -26,6 +26,7 @@ build() {
   for _arch in $_architectures; do
     mkdir -p "build-${_arch}" && pushd build-${_arch}
     ${_arch}-meson \
+      -D strip=true \
       -D package-name="GStreamer (Arch Linux)" \
       -D package-origin="http://www.archlinux.org/" ..
     ninja
