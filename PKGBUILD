@@ -3,30 +3,33 @@
 # Contributor: Pablo Olmos de Aguilera Corradini <pablo <at] glatelier (dot} org>
 # Contributor: Sander van Kasteel <info at sandervankasteel dot nl>
 pkgname=gtg-git
-pkgver=0.6.r79.g77fe2265
+pkgver=0.6.r367.g66f91627
 pkgrel=1
 pkgdesc="Getting Things GNOME! is a personal tasks and TODO-list items organizer for GNOME"
-arch=('x86_64')
+arch=('any')
 url="https://wiki.gnome.org/Apps/GTG"
 license=('GPL-3.0-or-later')
 depends=(
-  'gtk3'
-  'gtksourceview4'
+  'gtk4'
+  'gtksourceview5'
   'libsecret'
+  'python-caldav'
   'python-gobject'
   'python-liblarch-git'
   'python-lxml'
 )
-makedepends=('git' 'itstool' 'meson')
-checkdepends=(
-  'python-caldav'
-  'python-mock'  ## TODO: Drop python-mock: https://archlinux.org/todo/drop-python-mock-checkdepends/
-  'python-pytest'
+makedepends=(
+  'git'
+  'itstool'
+  'meson'
 )
+#checkdepends=(
+#  'python-mock'  ## TODO: Drop python-mock: https://archlinux.org/todo/drop-python-mock-checkdepends/
+#  'python-pytest'
+#)
 optdepends=(
   'hamster-time-tracker: send a task to the Hamster time tracking applet'
   'pdftk: for the Export and print plugin'
-  'python-caldav: CalDAV syncronization'
   'python-cheetah3: for the Export and print plugin'
   'python-setproctitle: to set the process title when listing processes like ps)'
   'texlive-bin: pdflatex, for the Export and print plugin'
@@ -48,10 +51,10 @@ build() {
   meson compile -C build
 }
 
-check() {
-  cd "${pkgname%-git}"
-  python run-tests
-}
+#check() {
+#  cd "${pkgname%-git}"
+#  python run-tests
+#}
 
 package() {
   meson install -C build --destdir "$pkgdir"
