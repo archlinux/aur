@@ -1,5 +1,5 @@
-pkgbase = wlroots-nvidia
-	pkgdesc = Modular Wayland compositor library, with fix for nvidia flickering
+pkgbase = wlroots0.16-nvidia
+	pkgdesc = Modular Wayland compositor library, with fix for nvidia flickering, downgraded to version 0.16
 	pkgver = 0.16.2
 	pkgrel = 2
 	url = https://gitlab.freedesktop.org/wlroots/wlroots
@@ -30,7 +30,9 @@ pkgbase = wlroots-nvidia
 	provides = wlroots=0.16.2
 	provides = libwlroots.so
 	conflicts = wlroots
+	conflicts = wlroots0.16
 	conflicts = wlroots-git
+	conflicts = wlroots-nvidia
 	source = wlroots-0.16.2.tar.gz::https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/0.16.2/downloads/wlroots-0.16.2.tar.gz
 	source = https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/0.16.2/downloads/wlroots-0.16.2.tar.gz.sig
 	source = nvidia.patch
@@ -43,4 +45,4 @@ pkgbase = wlroots-nvidia
 	sha256sums = 83cbb8211265fed66b4320e6fd986606731b8f5f04bf6cabe7280e8f5fdba783
 	sha256sums = 7d6690e2d59c17830b7e3a8004b58d07b03be50f50e1e8190430ebf8c1971353
 
-pkgname = wlroots-nvidia
+pkgname = wlroots0.16-nvidia
