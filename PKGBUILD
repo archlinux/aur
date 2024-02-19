@@ -15,7 +15,13 @@ optdepends=(
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 sha512sums=('b6c96946de9b1104652ed489ff200c6ac8185ae98ec516ca4ce583707b8e0cebbb1a8321bb4c81057bcc8103dc6cab8d41a5a7a2d774d60b1a8a0c4df48e29fe')
 
+_sourcedirectory="$pkgname-$pkgver"
+
+check() {
+	"$srcdir/$_sourcedirectory/$pkgname.sh" version | tee '/dev/stderr' | grep -q "^$pkgver$"
+}
+
 package() {
-	cd "$srcdir/$pkgname-$pkgver/"
+	cd "$srcdir/$_sourcedirectory/"
 	make install DESTDIR="$pkgdir" PREFIX='/usr'
 }
