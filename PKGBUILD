@@ -1,7 +1,7 @@
 # Maintainer: Aston <astonbitecode at gmail dot com>
 
 pkgname="rust-keylock-ui"
-pkgver="0.14.0"
+pkgver="0.15.0"
 pkgrel=1
 epoch=
 pkgdesc="Password manager with goals to be Secure, Simple to use, Portable and Extensible"
@@ -10,7 +10,7 @@ url="https://rust-keylock.github.io/"
 license=("GPL")
 groups=()
 depends=("openssl" "java-runtime>=11" "libxfixes" "libxrender")
-makedepends=("gendesk" "rust" "maven" "libxcb" "python")
+makedepends=("gendesk" "java-runtime>=11" "rust" "maven" "libxcb" "python")
 checkdepends=()
 optdepends=()
 provides=()
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/rust-keylock/$pkgname/archive/v$pkgver.tar.gz")
 noextract=()
-sha512sums=("0bc3c06d40c4a0a6783cb7e0f1d7be05ffd0a4ca0aa4afbedf044539b1b5e616a0be8a7831f5be0767a4a8dea1a357557b3be26d36d581de8cc0457a9ae0a0eb")
+sha512sums=("f83895730025d16bc9419cf6c27b9ba7513112d1af3ac4dccdbae98b8be01b5f495cf2ac0ac3f0fd63a70ec87ff739e1c84bc47db7d41581682509a05a709597")
 validpgpkeys=()
 
 prepare() {
