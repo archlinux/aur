@@ -20,7 +20,7 @@ build() {
 	python setup.py build
 }
 
-build() {
+check() {
 	cd "$srcdir/$_sourcedirectory/"
 	python test.py
 }
