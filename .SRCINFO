@@ -1,7 +1,7 @@
 pkgbase = squidanalyzer
 	pkgdesc = Squid proxy native log analyser and reports generator
 	pkgver = 6.7b
-	pkgrel = 3
+	pkgrel = 4
 	url = http://squidanalyzer.darold.net/
 	install = squidanalyzer.install
 	arch = any
