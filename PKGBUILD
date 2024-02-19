@@ -1,6 +1,6 @@
 # Maintainer: Eloy Garcia Almaden <eloy.garcia.pca@gmail.com>
 pkgname=buttermanager
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 epoch=
 pkgdesc="Graphical tool to create BTRFS snapshots, balance filesystems and upgrade the system safetly"
@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=('https://github.com/egara/buttermanager/archive/2.5.0.tar.gz')
+source=('https://github.com/egara/buttermanager/archive/2.5.1.tar.gz')
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
