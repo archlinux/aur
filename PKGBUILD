@@ -16,7 +16,7 @@ source=("${pkgname}_v${pkgver}.zip::https://sourceforge.net/projects/${pkgname}/
         "subsretimer.desktop"
         "90-avoid-microsoft-sans-serif.conf")
 sha256sums=('b6731c6c02b63315669f1ad28587052af39dff3e7aba9dd6bcb49a9667b075d1'
-            '8283d2835de5fb67908b654524a131cf61f46195eb8cd17f5b866422ff4c676b'
+            'e47c9f7e1216230fecf316591b182a8fe65b13f4781564accfdae2911098425c'
             '3b66602d3be448b2305f3bb8908f2f8ee814fd40e1594c74520a383d79d69175'
             '9fb5d61ad017cecd536b6d1ab76ad8e4488f82a34b28306aadce9ff0ccb9735c'
             '763763709426ae8a0969616f06c7fda557b9324883a3c84c42d9d9431d8569f9')
