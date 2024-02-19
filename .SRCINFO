@@ -1,7 +1,7 @@
 pkgbase = r-empiricalbrownsmethod
 	pkgdesc = Uses Brown's method to combine p-values from dependent tests
 	pkgver = 1.30.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/EmpiricalBrownsMethod
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = r-empiricalbrownsmethod
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/EmpiricalBrownsMethod_1.30.0.tar.gz
-	sha256sums = ef6c792f67abc45ca4ad4bf3bc1e7c3dfa7dd4368a33ddc3ae32635243043a0f
+	md5sums = cde2165928019f9c13982d640a1303c5
+	b2sums = 0aee514c5fad85792f9de62e9338c4a7df042d02b47ae95fa4a5a00d5b35935dc47891ec4fb47f0e86eaaef634aca7ed77bca4d1e5db85a83da61950ab782980
 
 pkgname = r-empiricalbrownsmethod

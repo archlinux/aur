@@ -3,11 +3,11 @@
 _pkgname=EmpiricalBrownsMethod
 _pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
-pkgrel=1
+pkgver=${_pkgver//-/.}
+pkgrel=2
 pkgdesc="Uses Brown's method to combine p-values from dependent tests"
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
   r
@@ -19,15 +19,18 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ef6c792f67abc45ca4ad4bf3bc1e7c3dfa7dd4368a33ddc3ae32635243043a0f')
+md5sums=('cde2165928019f9c13982d640a1303c5')
+b2sums=('0aee514c5fad85792f9de62e9338c4a7df042d02b47ae95fa4a5a00d5b35935dc47891ec4fb47f0e86eaaef634aca7ed77bca4d1e5db85a83da61950ab782980')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
