@@ -1,12 +1,13 @@
 pkgbase = ipwebcam-gst-git
-	pkgdesc = Use Android smartphone as webcam and/or microphone
-	pkgver = r118.e993f58
+	pkgdesc = Allows usage of an Android phone to be used as a webcam and/or microphone
+	pkgver = r141.5a02ffa
 	pkgrel = 1
 	url = https://github.com/bluezio/ipwebcam-gst
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = git
 	depends = android-tools
+	depends = bash
 	depends = gst-plugins-good
 	depends = gstreamer
 	depends = pulseaudio
@@ -20,4 +21,3 @@ pkgbase = ipwebcam-gst-git
 	sha256sums = SKIP
 
 pkgname = ipwebcam-gst-git
-
