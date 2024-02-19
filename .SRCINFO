@@ -1,7 +1,7 @@
 pkgbase = r-callr
 	pkgdesc = Call R from R
-	pkgver = 3.7.3
-	pkgrel = 5
+	pkgver = 3.7.4
+	pkgrel = 1
 	url = https://cran.r-project.org/package=callr
 	arch = any
 	license = MIT
@@ -16,8 +16,8 @@ pkgbase = r-callr
 	optdepends = r-spelling
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/callr_3.7.3.tar.gz
-	md5sums = 12151339c31433137a1534c2f5656206
-	sha256sums = 567bfedf073a1d4c5785f0553341608a214938110567b9a6495ff20ebb2fd04e
+	source = https://cran.r-project.org/src/contrib/callr_3.7.4.tar.gz
+	md5sums = 097ed5fd9d9981a2f38348cba75737a5
+	b2sums = 661bced1802e58e120a7878634fc449b5cdce521e27b28ed26bbd73b5db37716ff52cd3b9051742e84c08bceb7baf41f1f1601747ecb1631c646ec9b16f93313
 
 pkgname = r-callr
