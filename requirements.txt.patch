@@ -1,4 +1,0 @@
-2c2
-< Mastodon.py==1.5.0
----
-> Mastodon.py>=1.5.0

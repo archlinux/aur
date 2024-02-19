@@ -1,0 +1,46 @@
+From 32041df30c838a75bc2863a36eb1442bfaba3e70 Mon Sep 17 00:00:00 2001
+From: Craig Maloney <craig@decafbad.net>
+Date: Wed, 30 Aug 2023 11:21:44 -0400
+Subject: [PATCH] Fix for later versions of colored to use underline instead of
+ underlined
+
+---
+ src/tootstream/toot.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/tootstream/toot.py b/src/tootstream/toot.py
+index 941dcf2..a41a3c1 100644
+--- a/src/tootstream/toot.py
++++ b/src/tootstream/toot.py
+@@ -1053,7 +1053,7 @@ def help(mastodon, rest):
+             if new_section:
+                 cprint(
+                     "{section}:".format(section=section),
+-                    fg("white") + attr("bold") + attr("underlined"),
++                    fg("white") + attr("bold") + attr("underline"),
+                 )
+                 new_section = False
+ 
+@@ -1104,11 +1104,11 @@ def toot(mastodon, rest):
+             cprint("You tooted: ", fg("white") + attr("bold"), end="\n")
+             if resp["sensitive"]:
+                 cprint("CW: " + resp["spoiler_text"], fg("red"))
+-            cprint(text, fg("magenta") + attr("bold") + attr("underlined"))
++            cprint(text, fg("magenta") + attr("bold") + attr("underline"))
+             posted = True
+         except Exception as e:
+             cprint("Received error: ", fg("red") + attr("bold"), end="")
+-            cprint(e, fg("magenta") + attr("bold") + attr("underlined"))
++            cprint(e, fg("magenta") + attr("bold") + attr("underline"))
+ 
+         # If we're streaming then we can't edit the toot, so assume that we posted.
+         if is_streaming is True:
+@@ -1271,7 +1271,7 @@ def boost(mastodon, rest):
+         cprint(msg, attr("dim"))
+     except Exception as e:
+         cprint("Received error: ", fg("red") + attr("bold"), end="")
+-        cprint(e, fg("magenta") + attr("bold") + attr("underlined"))
++        cprint(e, fg("magenta") + attr("bold") + attr("underline"))
+ 
+ 
+ @command("<id>", "Toots")
