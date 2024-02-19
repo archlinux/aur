@@ -136,6 +136,10 @@ prepare() {
 	convert "usr/share/icons/$_pkgname.xbm" "usr/share/icons/$_pkgname.png"
 }
 
+check() {
+	printf 'NO' | "$srcdir/usr/local/bin/$_pkgname" 2>&1 | tee '/dev/stderr' | grep -q "^${_pkgname^^} TERMS$"
+}
+
 package() {
 	cd "$srcdir/"
 
