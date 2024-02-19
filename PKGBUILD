@@ -34,6 +34,9 @@ prepare() {
 
 	# Replace go-zydis checksum, as we don't use the default proxy
 	patch --forward -p1 < "$srcdir/fix-go-zydis-sum.diff"
+
+	# Make sure Git LFS is initialized
+	git lfs install
 }
 
 build() {
@@ -47,6 +50,10 @@ build() {
 	# Use GOPRIVATE for the go-zydis dependency, as the default proxy doesn't support LFS
 	export GOPRIVATE='github.com/jpap/go-zydis'
 	go build -v -o "$srcdir/$_bindir/" './...'
+}
+
+check() {
+	"$srcdir/$_bindir/$pkgname" --help 2>&1 | tee '/dev/stderr' | grep -q '^Usage of'
 }
 
 package() {
