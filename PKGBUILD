@@ -30,6 +30,6 @@ package() {
   install -Dm644 ../wpgtk.png "$pkgdir/usr/share/pixmaps/wpgtk.png"
   install -Dm644 completions/bash/wpg "$pkgdir/usr/share/bash-completion/wpg"
   install -Dm644 completions/zsh/_wpg "$pkgdir/usr/share/zsh/site-functions/_wpg"
-  install -Dm644 wpgtk/misc/wpg-install.sh "$pkgdir/usr/bin/wpg-install.sh"
+  install -Dm655 wpgtk/misc/wpg-install.sh "$pkgdir/usr/bin/wpg-install.sh"
 }
 
