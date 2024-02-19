@@ -2,8 +2,9 @@
 
 pkgname='zapzap-linux'
 _pkgname='com.rtosta.zapzap'
-pkgver='5.1.3'
-pkgrel='2'
+pkgver='5.2'
+_pkgver='5.2-fix'
+pkgrel='1'
 pkgdesc='WhatsApp desktop application for Linux'
 arch=('x86_64')
 url="https://github.com/$pkgname/${pkgname%-linux}" 
@@ -12,7 +13,7 @@ depends=('python-pyqt6' 'python-pyqt6-webengine' 'dbus-python' 'qt6-wayland' 'py
 makedepends=('git' 'python3' 'python-setuptools>=40.8.0' 'desktop-file-utils')
 conflicts=('zapzap')
 optdepends=('hunspell: spell check')
-source=("git+$url#tag=$pkgver")
+source=("git+$url#tag=$_pkgver")
 b2sums=('SKIP')
 
 build() {
