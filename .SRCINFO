@@ -1,16 +1,16 @@
 pkgbase = czkawka-cli-bin
 	pkgdesc = Find and manage duplicate files, empty folders, similar images, and other "lint" (CLI)
-	pkgver = 6.1.0
-	pkgrel = 2
+	pkgver = 7.0.0
+	pkgrel = 1
 	url = https://github.com/qarmin/czkawka
 	arch = x86_64
 	license = MIT
 	depends = gcc-libs
 	provides = czkawka-cli
 	conflicts = czkawka-cli
-	source = czkawka-cli-bin-6.1.0::https://github.com/qarmin/czkawka/releases/download/6.1.0/linux_czkawka_cli
+	source = czkawka-cli-bin-7.0.0::https://github.com/qarmin/czkawka/releases/download/7.0.0/linux_czkawka_cli
 	source = LICENSE::https://github.com/qarmin/czkawka/raw/master/czkawka_cli/LICENSE
-	sha256sums = 0b29ae52f7072e76f083715e145a78500e738860597496a09ae334cc6ddde567
-	sha256sums = a998a6643ddefa0514738c641d9a6e5b3e3ddfd06c5381b8da836545d4b9156b
+	sha256sums = 72adf315beac47a421cb5663816d900d630910f5f69c717cc1deca3d910bef7d
+	sha256sums = de1d794af7529bc9abb6a1aef6ec2af21fa2bfa4284742144bc30246005b4212
 
 pkgname = czkawka-cli-bin
