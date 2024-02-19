@@ -21,9 +21,6 @@ build() {
 }
 package() {
     cd "$pkgname"
-    echo $pkgdir
-    mkdir -p "$pkgdir/bin/"
-    make  PREFIX="$pkgdir" install
-    mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm555 mycfetch "$pkgdir/bin/mycfetch"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
