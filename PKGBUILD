@@ -33,6 +33,10 @@ prepare() {
 	patch  --forward -p1 < "../$pkgname-$pkgver-fix-w-bug.diff"
 }
 
+check() {
+	"$srcdir/$_sourcedirectory/$pkgname" -h | tee '/dev/stderr' | grep -q 'Generate a config file$'
+}
+
 package() {
 	cd "$srcdir/$_sourcedirectory/"
 	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
