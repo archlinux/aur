@@ -1,6 +1,6 @@
 pkgbase = waylyrics-git
 	pkgdesc = the furry way to show desktop lyrics (git version)
-	pkgver = 0.2.2_r6.g3cbd52e7
+	pkgver = 0.2.7_r3.g03de3725
 	pkgrel = 1
 	url = https://github.com/waylyrics/waylyrics
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = waylyrics-git
 	depends = cairo
 	depends = dconf
 	depends = gtk4
+	depends = sh
 	provides = waylyrics
 	conflicts = waylyrics
 	options = !lto
