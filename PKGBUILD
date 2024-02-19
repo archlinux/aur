@@ -1,21 +1,20 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 # Project: nwg-shell for sway, https://github.com/nwg-piotr/nwg-shell
 pkgname=('nwg-menu')
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.3
+pkgrel=1
 pkgdesc="MenuStart for sway and other wlroots-based compositors"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/nwg-piotr/nwg-menu"
 license=('MIT')
 provides=('nwg-menu')
-conflicts=('nwg-menu-git' 'nwg-menu-bin')
 makedepends=('go')
 depends=('gtk3' 'gtk-layer-shell')
-optdepends=('alacritty: to open .desktop files with Terminal=true'
+optdepends=('foot: to open .desktop files with Terminal=true'
             'thunar: to open files and directories')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-menu/archive/v"$pkgver".tar.gz")
 
-md5sums=('47a4d4fc41cb69a05ab3232097432605')
+md5sums=('542ffe1db1cc93dc2791f431d8b5d132')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
