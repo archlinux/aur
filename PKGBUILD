@@ -1,8 +1,8 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 # Project: nwg-shell for sway, https://github.com/nwg-piotr/nwg-shell
 pkgname=('nwg-menu-bin')
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.3
+pkgrel=1
 pkgdesc="MenuStart for sway and other wlroots-based compositors"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/nwg-menu"
@@ -14,7 +14,7 @@ optdepends=('foot: to open .desktop files with Terminal=true'
             'thunar: to open files and directories')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-menu/releases/download/v"$pkgver"/nwg-menu-v"$pkgver"_x86_64.tar.gz")
 
-md5sums=('7ee9f8f70222e87150ca089a87735188')
+md5sums=('5fa85bd97be135e7a65905e41adc7469')
 
 package() {
   cd "$srcdir"
