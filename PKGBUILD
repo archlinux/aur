@@ -5,7 +5,7 @@
 _pkgname='xf86-input-joystick'
 pkgname="${_pkgname}"
 pkgver=1.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc="X.Org input driver that translates joystick input to mouse and keyboard events. (Do not use for games with native joystick support or XI2 applications. See manpage.)"
 arch=(
   'i686'
@@ -30,7 +30,8 @@ conflicts=(
   'X-ABI-XINPUT_VERSION>=25'
 )
 validpgpkeys=(
-  '3C2C43D9447D5938EF4551EBE23B7E70B467F0BF' # Peter Hutterer (Who-T) <office@who-t.net>
+  '4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E'
+  'CFDF148828C642A7' # Subkey of the above. Alan Coopersmith <alan.coopersmith@oracle.com>
 )
 source=(
   "https://www.x.org/releases/individual/driver/xf86-input-joystick-${pkgver}.tar.xz"
