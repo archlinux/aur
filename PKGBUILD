@@ -30,6 +30,10 @@ sha512sums_x86_64=('315a4ccae40ed25482091cf599a0bdbd78b1aa4b46725e8e9f9a046dac41
 sha512sums_aarch64=('b3ee9bceb31b3f1319e8b515c6c3d86d167e45d0743ab55e4c962568736bb1f46bf4d33f3708ce627049899660b1eda3ccb3922107883fa62573b0a01500c799'
                     '6385681ccd6884478d05f7e855f053e2780f3ced564055ddfd7d9fbc967e6c226eeb3ccc4a2fa632f05ffb86a15f2513be01c0b1b4f8c4ddfd98d2e969df0913')
 
+check() {
+	"$srcdir/$_pkgname/$_pkgname" --version | tee '/dev/stderr' | grep -q "version $pkgver$"
+}
+
 package() {
 	cd "$srcdir/"
 
