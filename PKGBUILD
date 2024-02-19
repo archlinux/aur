@@ -6,14 +6,14 @@ check_option "debug" "y" && BUILD_TYPE=Debug || BUID_TYPE=Release
 ## Configuration env vars:
 _BUILD_CUDA="${BUILD_CUDA:-ON}"
 _CUDA_ARCH="${CUDA_ARCH:-native}"
-_fragment=${FRAGMENT:-#tag=3.9}
+_fragment=${FRAGMENT:-#tag=3.9.1}
 # Use CMAKE_FLAGS=xxx:yyy:zzz to define extra CMake flags
 [[ -v CMAKE_FLAGS ]] && mapfile -t -d: _CMAKE_FLAGS < <(echo -n "$CMAKE_FLAGS")
 
 _name=colmap
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
 pkgname=${_name}
-pkgver=3.9
+pkgver=3.9.1
 pkgrel=1
 pkgdesc="General-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ sha256sums=('SKIP'
             'fb60f7ba8081ee5c278f03c62329a374d1b24136b374a49393b453db1529a8c6')
 
 prepare() {
-: # git -C "$pkgname" apply -v "$srcdir"/*.patch
+  git -C "$pkgname" cherry-pick -n 71cebde85b5ce290c93f67326eea7c1b1c0cea97
 }
 
 

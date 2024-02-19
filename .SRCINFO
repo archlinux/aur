@@ -1,6 +1,6 @@
 pkgbase = colmap
 	pkgdesc = General-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface.
-	pkgver = 3.9
+	pkgver = 3.9.1
 	pkgrel = 1
 	url = https://colmap.github.io/
 	arch = i686
@@ -27,7 +27,7 @@ pkgbase = colmap
 	depends = metis
 	depends = flann
 	optdepends = libcudart.so: required for dense reconstruction
-	source = colmap::git+https://github.com/colmap/colmap.git#tag=3.9
+	source = colmap::git+https://github.com/colmap/colmap.git#tag=3.9.1
 	source = vocabulary-tree-32K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words32K.bin
 	source = vocabulary-tree-256K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words256K.bin
 	source = vocabulary-tree-1M.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words1M.bin
