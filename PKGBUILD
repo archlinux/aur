@@ -1,7 +1,7 @@
 # Maintainer: honjow
 
 pkgname=ryujinx-ava-bin
-pkgver=1.1.1202
+pkgver=1.1.1203
 pkgrel=1
 pkgdesc='Experimental Nintendo Switch Emulator written in C# (master build channel release, test ava build)'
 arch=(x86_64)
@@ -16,7 +16,7 @@ source=("${url}/releases/download/${pkgver}/test-ava-ryujinx-${pkgver}-linux_x64
         'https://raw.githubusercontent.com/Ryujinx/Ryujinx/master/distribution/misc/Logo.svg')
 
 b2sums=('SKIP'
-        'ed7edb44c1b6ace90c00738754577b8779b34847e286662971ecc148871b1995698adcc4a0841b4bd7d804d1b0aee960565f9c68680abb9ade55f46fd89b1863'
+        'aaf7e9ddc24bc0068d75a4136262ab2e7f669acda91b7abc66ac5c8d6332804af45b5f9eec43d1d5541dc8e7944001362fbb67bec873fffde496c6c46d6500fc'
         'f96fe6146018fd869c55e413b2cc6cf12f17c5257af52df14f57978133792c7fb76e8526b15a5120dbf12a9fed7b8e4723a3ff9f2e45b613b10ee1017ba0b996')
 
 package() {
