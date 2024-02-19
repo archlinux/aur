@@ -1,6 +1,6 @@
 pkgname=d2launcher
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Launcher for Diablo 2, Median XL and D2 Stats"
 arch=('x86_64')
 url="https://github.com/murkl/d2launcher"

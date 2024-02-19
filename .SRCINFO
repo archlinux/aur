@@ -1,7 +1,7 @@
 pkgbase = d2launcher
 	pkgdesc = Launcher for Diablo 2, Median XL and D2 Stats
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/murkl/d2launcher
 	arch = x86_64
 	license = unknown

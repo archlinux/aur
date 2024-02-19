@@ -3,3 +3,5 @@ Name=Diablo II
 Icon=/opt/d2launcher/res/icon.svg
 Exec=d2launcher
 Type=Application
+Terminal=false
+StartupWMClass=zenity
