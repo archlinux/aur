@@ -1,14 +1,15 @@
 pkgbase = r-fftwtools
 	pkgdesc = Wrapper for 'FFTW3' Includes: One-Dimensional, Two-Dimensional, Three-Dimensional, and Multivariate Transforms
 	pkgver = 0.9.11
-	pkgrel = 3
+	pkgrel = 8
 	url = https://cran.r-project.org/package=fftwtools
 	arch = x86_64
-	license = GPL
-	depends = r
+	license = GPL-2.0-or-later
 	depends = fftw
+	depends = r
 	optdepends = r-fftw
 	source = https://cran.r-project.org/src/contrib/fftwtools_0.9-11.tar.gz
-	sha256sums = f1f0c9a9086c7b2f72c5fb0334717cc917213a004eaef8448eab4940c9852c7f
+	md5sums = 00731a7e2b23d9f9cff0953b5aeae5f5
+	b2sums = 6bf281d4ed8c92a1c356628cc8b0ee6f25b63cfbbebeae5b5d59a5659d6c9ab405c3b6da40903c693e8a5dbcacd1e17e7eab3c1a9b8704205d78380547a9d615
 
 pkgname = r-fftwtools
