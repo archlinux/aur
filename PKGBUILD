@@ -1,16 +1,16 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-replay-source
-pkgver=1.6.13
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Plugin to (slow motion) instant replay sources from memory"
-arch=("i686" "x86_64" "aarch64")
+arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/replay-source.686/"
-license=("GPL2")
+license=(GPL-2.0-or-later)
 depends=("obs-studio>=30" "glibc")
 makedepends=("cmake" "git")
 options=('debug')
-source=("$pkgname::git+https://github.com/exeldro/$pkgname#tag=$pkgver")
+source=("$pkgname::git+https://github.com/exeldro/$pkgname#commit=6590fde1c8e4f8c733016646a8165d52e28d094b")
 sha256sums=("SKIP")
 
 build() {
