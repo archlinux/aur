@@ -2,9 +2,9 @@
 # Contributor: Hao Long <aur@esd.cc>
 
 pkgname=archivebox
-_name=ArchiveBox
+_pkgname=ArchiveBox
 pkgver=0.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source self-hosted web archiving"
 arch=(any)
 url="https://github.com/ArchiveBox/ArchiveBox"
@@ -13,8 +13,8 @@ depends=(
   chromium
   curl
   git
-  mercury-parser
   nodejs
+  postlight-parser
   python
   python-asgiref
   python-chardet
@@ -43,12 +43,11 @@ checkdepends=(
   python-bottle
   python-pytest
 )
-
-_commit=315c9f3844d63f897e1c73c3bbbab7bf9f3e0c11 # git rev-parse "$pkgver"
+_commit=315c9f3844d63f897e1c73c3bbbab7bf9f3e0c11
 _django_version=3.1.14
 _django_extensions_version=3.1.5
 source=(
-  "git+$url.git?signed#commit=$_commit"
+  "git+$url.git#commit=$_commit"
   "git+https://github.com/jbittel/base32-crockford.git"
   "git+https://github.com/jazzband/django-taggit.git"
   "git+https://github.com/tapanpandita/pocket.git"
@@ -65,9 +64,8 @@ sha256sums=(
   'fe5a93c64d37f4dec49b7535ae405c0b87c1eb3d40979a33955a3631b5a6a00a'
   'a29b022fb6728678ec5f769d78eff4d8b0c0f4beb15f9b8392726d4f0bda9031'
 )
-validpgpkeys=('5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23') # GitHub (web-flow commit signing)
 
-_archive="$_name"
+_archive="$_pkgname"
 
 prepare() {
   cd "$_archive"

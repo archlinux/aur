@@ -1,7 +1,7 @@
 pkgbase = archivebox
 	pkgdesc = Open source self-hosted web archiving
 	pkgver = 0.7.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ArchiveBox/ArchiveBox
 	arch = any
 	license = MIT
@@ -15,8 +15,8 @@ pkgbase = archivebox
 	depends = chromium
 	depends = curl
 	depends = git
-	depends = mercury-parser
 	depends = nodejs
+	depends = postlight-parser
 	depends = python
 	depends = python-asgiref
 	depends = python-chardet
@@ -33,14 +33,13 @@ pkgbase = archivebox
 	depends = single-file
 	depends = wget
 	depends = yt-dlp
-	source = git+https://github.com/ArchiveBox/ArchiveBox.git?signed#commit=315c9f3844d63f897e1c73c3bbbab7bf9f3e0c11
+	source = git+https://github.com/ArchiveBox/ArchiveBox.git#commit=315c9f3844d63f897e1c73c3bbbab7bf9f3e0c11
 	source = git+https://github.com/jbittel/base32-crockford.git
 	source = git+https://github.com/jazzband/django-taggit.git
 	source = git+https://github.com/tapanpandita/pocket.git
 	source = git+https://github.com/untitaker/python-atomicwrites.git
 	source = django-3.1.14::https://github.com/django/django/archive/refs/tags/3.1.14.tar.gz
 	source = django-extensions-3.1.5::https://github.com/django-extensions/django-extensions/archive/refs/tags/3.1.5.tar.gz
-	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
