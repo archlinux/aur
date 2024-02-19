@@ -2,14 +2,14 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=epiR
-_pkgver=2.0.67
+_pkgver=2.0.68
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Tools for the Analysis of Epidemiological Data"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL)
+license=('GPL-2.0-or-later')
 depends=(
   r-biasedurn
   r-flextable
@@ -34,8 +34,8 @@ optdepends=(
   r-tidyr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4351b6186ed0150cf4e7daef835a7e0b')
-b2sums=('a56c411afc7991377379d72d97c01a201664203294a3e442aae57ffcb5828653235b986e0eb8b4180bb91602c180b23a2ae155434e6a3d24bb9c6cb04d1a0562')
+md5sums=('e6089bd440752fa0a94ae9c3bc02029f')
+b2sums=('f97b9221e54eab85c3fa1901d26bbe817049acdaa9dfa1cc57d0edb4408ab1df93f19b182501b4ef511653f81849b28ebac9d39f61995dc48d6c51ce6b83e419')
 
 build() {
   mkdir build
