@@ -21,6 +21,10 @@ pkgver() {
 	printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+check() {
+	"$srcdir/$_sourcedirectory/secret_storage_import_export.py" | tee '/dev/stderr' | grep -q '^See source code for usage instructions$'
+}
+
 package() {
 	cd "$srcdir/$_sourcedirectory/"
 	install -Dm755 'secret_storage_import_export.py' "$pkgdir/usr/bin/secret-storage-import-export"
