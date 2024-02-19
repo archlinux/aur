@@ -1,5 +1,0 @@
---- /dev/null
-+++ MANIFEST.in
-@@ -0,0 +1,2 @@
-+include tractor/SampleBridges
-+
