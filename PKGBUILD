@@ -4,21 +4,20 @@
 # Contributor: Krut Patel <kroot.patel@gmail.com>
 
 pkgname=sioyek-git
-pkgver=2.0.0.r117.gf83606c
-pkgrel=2
+pkgver=2.0.0.r815.gbb0dd3b
+pkgrel=1
 pkgdesc="PDF viewer for research papers and technical books."
 arch=(x86_64)
 license=(GPL3)
 url="https://github.com/ahrm/sioyek"
-depends=(qt5-base libmupdf)
-makedepends=(git qt5-3d mujs)
+depends=(libmupdf qt6-speech qt6-declarative)
+optdepends=(qt6-wayland)
+makedepends=(git mujs qt6-3d qt6-svg)
 provides=(sioyek)
 conflicts=(sioyek)
-source=("git+https://github.com/ahrm/sioyek.git"
-        "sioyek-mupdf-1.23.patch"
+source=("git+https://github.com/ahrm/sioyek.git#branch=development"
         "standard-path-mupdf-build.patch")
 sha256sums=('SKIP'
-            '30021646fda45c40af4579067ccb098bff4b2934ff42ace7b02a61fd1c8bc573'
             '3f781450b34cf06bb3d9f5499c197f8be1fb6b9d25a77f98b03a226149a096c1')
 
 pkgver() {
@@ -30,12 +29,11 @@ prepare() {
   cd "sioyek"
 
   patch --forward --strip=1 --input="${srcdir}/standard-path-mupdf-build.patch"
-  patch --forward --strip=1 --input="${srcdir}/sioyek-mupdf-1.23.patch"
 }
 
 build() {
   cd sioyek
-  qmake "CONFIG+=linux_app_image" pdf_viewer_build_config.pro
+  qmake6 "CONFIG+=linux_app_image" pdf_viewer_build_config.pro
   make
 }
 
