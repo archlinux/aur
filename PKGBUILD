@@ -33,6 +33,10 @@ build() {
 	cargo build --frozen --release --all-features
 }
 
+check() {
+	"$srcdir/$_sourcedirectory/target/release/$pkgname" --help | tee '/dev/stderr' | grep -q "$pkgname"
+}
+
 package() {
 	cd "$srcdir/$_sourcedirectory/"
 	install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
