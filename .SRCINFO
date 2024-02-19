@@ -1,7 +1,7 @@
 pkgbase = 8188eu-aircrack-dkms-git
 	pkgdesc = Realtek RTL8188EUS and RTL8188ETV Wi-Fi driver with monitor mode & frame injection support
 	pkgver = 5.3.9.r196.3fae723
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aircrack-ng/rtl8188eus
 	arch = x86_64
 	arch = i686
