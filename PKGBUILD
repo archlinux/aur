@@ -1,7 +1,7 @@
 # Maintainer: honjow
 pkgname=sk-chos-tool
 _reponame=sk-holoiso-config
-pkgver=1.0.12
+pkgver=1.0.13
 pkgrel=1
 pkgdesc="A custom configs tool for sk-chimeros"
 arch=('any')
@@ -35,6 +35,7 @@ package() {
     # 主程序入口
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/usr/share/${pkgname}/sk-chos-tool.py" "${pkgdir}/usr/bin/sk-chos-tool"
+    install -Dm755 "${source_dir}/bin/sk-chos-tool-command" "${pkgdir}/usr/bin/sk-chos-tool-command"
 
     # 程序图标
     install -Dm644 "${source_dir}/sk-chos-tool-command.desktop" "${pkgdir}/usr/share/applications/sk-chos-tool-command.desktop"
