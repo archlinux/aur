@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-ffmpeg-minimal
 	pkgdesc = Complete solution to record, convert and stream audio and video (mingw-w64)
-	pkgver = 6.1
+	pkgver = 6.1.1
 	pkgrel = 1
 	epoch = 1
 	url = http://ffmpeg.org/
@@ -18,7 +18,7 @@ pkgbase = mingw-w64-ffmpeg-minimal
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=3cdfac27d3ea06f8719faed48b4ae2e75e94a463
+	source = git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=6f4048827982a8f48f71f551a6e1ed2362816eec
 	validpgpkeys = DD1EC9E8DE085C629B3E1846B18E8928B3948D64
 	sha256sums = SKIP
 
