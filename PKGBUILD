@@ -3,24 +3,25 @@
 _pkgname=CDFt
 _pkgver=1.2
 pkgname=r-${_pkgname,,}
-pkgver=1.2
-pkgrel=4
-pkgdesc='Downscaling and Bias Correction via Non-Parametric CDF-Transform'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Downscaling and Bias Correction via Non-Parametric CDF-Transform"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c1a88b31fb2ad2e174bdfcd1ab980ee5581920f3a555e5b4d5ea25b886535da5')
+md5sums=('22c933028acbd9614ee76885c6cab648')
+b2sums=('0f97abba49412ff04bd86308107e62939225d4384c359ab03ec79ba0a7475425c0f776d3ce0d195036a07bcd70a3eb744dbd67196a399d661c33d7d8aefc5d86')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
