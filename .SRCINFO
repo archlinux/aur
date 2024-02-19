@@ -1,6 +1,6 @@
 pkgbase = suwayomi-server-preview-bin
 	pkgdesc = A free and open source manga reader that runs extensions built for Tachiyomi
-	pkgver = 0.7.0_r1487
+	pkgver = 0.7.0_r1488
 	pkgrel = 1
 	url = https://github.com/Suwayomi/Suwayomi-Server-preview
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = suwayomi-server-preview-bin
 	provides = tachidesk
 	provides = tachidesk-server
 	conflicts = tachidesk
-	noextract = Suwayomi-Server-v0.7.0-r1487.jar
-	source = https://github.com/Suwayomi/Suwayomi-Server-preview/releases/download/v0.7.0-r1487/Suwayomi-Server-v0.7.0-r1487.jar
-	source = https://github.com/Suwayomi/Suwayomi-Server-preview/releases/download/v0.7.0-r1487/Suwayomi-Server-v0.7.0-r1487-linux-assets.tar.gz
+	noextract = Suwayomi-Server-v0.7.0-r1488.jar
+	source = https://github.com/Suwayomi/Suwayomi-Server-preview/releases/download/v0.7.0-r1488/Suwayomi-Server-v0.7.0-r1488.jar
+	source = https://github.com/Suwayomi/Suwayomi-Server-preview/releases/download/v0.7.0-r1488/Suwayomi-Server-v0.7.0-r1488-linux-assets.tar.gz
 	sha256sums = SKIP
 	sha256sums = SKIP
 
