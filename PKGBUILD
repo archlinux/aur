@@ -28,7 +28,7 @@ sha256sums=(
 
 build() {
   cd "${srcdir}/${pkgname}"
-  meson setup --prefix=/usr build
+  arch-meson build
 }
 
 package() {
