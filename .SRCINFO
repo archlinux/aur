@@ -1,0 +1,11 @@
+pkgbase = adrgen
+	pkgdesc = A command-line tool for generating and managing Architecture Decision Records
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/asiermarques/adrgen
+	arch = x86_64
+	license = MIT
+	source = https://github.com/asiermarques/adrgen/releases/download/v0.4.1-beta/adrgen_Linux_x86_64.tar.gz
+	sha256sums = 36b29d5c9d84789d889b722b62c95a0d651473490a865e7bd04b36b09fb57b65
+
+pkgname = adrgen
