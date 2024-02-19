@@ -1,6 +1,6 @@
 pkgbase = perl-match-simple
 	pkgdesc = Perl match::simple CPAN module
-	pkgver = 0.011
+	pkgver = 0.012
 	pkgrel = 1
 	url = http://search.cpan.org/dist/match-simple/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = perl-match-simple
 	depends = perl-sub-infix
 	depends = perl-test-fatal
 	options = !emptydirs
-	source = http://www.cpan.org/authors/id/T/TO/TOBYINK/match-simple-0.011.tar.gz
-	sha256sums = 6d15dc09f479fe6aa2658a9e7bef811ee22bd755465b8f138e4289b9a46b61b8
+	source = http://www.cpan.org/authors/id/T/TO/TOBYINK/match-simple-0.012.tar.gz
+	sha256sums = b7349a9fa926d503472998d1e0b8c3a7fcae0edc7ce30ada4ee756cdb252a37c
 
 pkgname = perl-match-simple

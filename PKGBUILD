@@ -3,7 +3,7 @@
 cpaname=match-simple
 cpanauthor=TOBYINK
 pkgname=perl-match-simple
-pkgver=0.011
+pkgver=0.012
 pkgrel=1
 pkgdesc="Perl match::simple CPAN module"
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
    'perl-test-fatal'
 )
 source=("http://www.cpan.org/authors/id/${cpanauthor::1}/${cpanauthor::2}/${cpanauthor}/${cpaname}-${pkgver}.tar.gz")
-sha256sums=('6d15dc09f479fe6aa2658a9e7bef811ee22bd755465b8f138e4289b9a46b61b8')
+sha256sums=('b7349a9fa926d503472998d1e0b8c3a7fcae0edc7ce30ada4ee756cdb252a37c')
 
 build() {
 	 cd "${srcdir}/${cpaname}-${pkgver}"
