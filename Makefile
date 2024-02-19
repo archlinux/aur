@@ -4,21 +4,15 @@ PKG:=$(lastword $(subst /, ,$(dir $(abspath $(lastword $(MAKEFILE_LIST))))))
 
 all: src
 
-clean:
-	rm -rf .SRCINFO \
-	  ${PKG}.git    \
-	  PKGBUILD      \
-	  src
+clean: .SRCINFO ${PKG}.git PKGBUILD src
+	rm -Rf $^
 
 upload: .${PKG}.git .SRCINFO
-	rm -f .git
-	ln -s $</.git .
-	git commit -am 'bump'
-	git push origin master
-	rm .git
+	GIT_DIR=$< GIT_WORK_TREE=$(@D) git commit -a
+	GIT_DIR=$< GIT_WORK_TREE=$(@D) git push origin master
 
 .%.git:
-	git clone ssh://aur@aur.archlinux.org/$* $@
+	git clone --bare ssh://aur@aur.archlinux.org/$* $@
 
 src: PKGBUILD
 	makepkg -do

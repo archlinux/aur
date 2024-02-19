@@ -20,6 +20,7 @@ pkgbase = quassel
 	makedepends = qt5-tools
 	makedepends = qt5-webengine
 	makedepends = boost
+	makedepends = rsync
 	source = git+https://github.com/quassel/quassel.git
 	source = git+https://github.com/quassel/quassel-i18n.git
 	md5sums = SKIP

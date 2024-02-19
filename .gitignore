@@ -1,3 +1,6 @@
 *
-!PKGBUILD
+!.gitignore
 !.SRCINFO
+!Makefile
+!PKGBUILD
+!PKGBUILD.in
