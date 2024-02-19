@@ -1,7 +1,7 @@
 # Contributor: Alex Suykov <axs@ukr.net>
 
 pkgname=ttf-code2000
-pkgver=1.175
+pkgver=1.176
 pkgrel=1
 pkgdesc="Unicode TT font with extensive glyph coverage"
 arch=('any')

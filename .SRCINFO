@@ -1,6 +1,6 @@
 pkgbase = ttf-code2000
 	pkgdesc = Unicode TT font with extensive glyph coverage
-	pkgver = 1.175
+	pkgver = 1.176
 	pkgrel = 1
 	url = https://www.code2001.com/
 	arch = any
