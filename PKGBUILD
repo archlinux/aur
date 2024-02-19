@@ -48,6 +48,11 @@ build() {
 package_gtkclipblock() {
   pkgdesc="${pkgdesc} (GTK 2/3/4)"
   install="${pkgbase}.install"
+  provides=(
+    "${pkgbase}-gtk2"
+    "${pkgbase}-gtk3"
+    "${pkgbase}-gtk4"
+  )
   conflicts=(
     "${pkgbase}-gtk2"
     "${pkgbase}-gtk3"
