@@ -8,6 +8,7 @@
 ## options
 : ${_build_pgo:=true}
 : ${_build_pgo_reuse:=true}
+: ${_build_pgo_xvfb:=false}
 
 : ${_build_git:=true}
 
@@ -16,7 +17,7 @@
 ## basic info
 _pkgname="midori"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=11.2.r84.gd26e7523
+pkgver=11.2.2.r0.g33eb9ded
 pkgrel=1
 pkgdesc="Web browser based on Floorp"
 url="https://github.com/goastian/midori-desktop"
@@ -77,10 +78,17 @@ _main_package() {
   )
 
   if [[ "${_build_pgo::1}" == "t" ]] ; then
-    makedepends+=(
-      weston
-      xwayland-run # AUR
-    )
+    if [[ "${_build_pgo_xvfb::1}" == "t" ]] ; then
+      makedepends+=(
+        xorg-server-xvfb
+      )
+    else
+      makedepends+=(
+        weston
+        xorg-xwayland
+        xwayland-run # AUR
+      )
+    fi
   fi
 
   provides=("$_pkgname=${pkgver%%.r*}")
@@ -90,6 +98,7 @@ _main_package() {
     !debug
     !emptydirs
     !lto
+    !makeflags
     !strip
   )
 
@@ -121,10 +130,11 @@ pkgver() {
 
 prepare() {
   mkdir -p mozbuild
+  cd "$_pkgsrc"
 
   # submodules
   (
-    cd "$_pkgsrc"
+    cd "$srcdir/$_pkgsrc"
     local -A _submodules=(
       ['goastian.l10n-central']='l10n-central'
     )
@@ -138,17 +148,16 @@ prepare() {
 
   # prepare google breakpad
   local _lss_path="toolkit/crashreporter/google-breakpad/src/third_party/lss"
-  mkdir -p "$_pkgsrc/$_lss_path"
-  bsdtar -xf "lss-${_lssver}.tar.gz" -C "$_pkgsrc/$_lss_path"
+  mkdir -p "$_lss_path"
+  bsdtar -xf "$srcdir/lss-${_lssver}.tar.gz" -C "$_lss_path"
 
   # clear forced startup pages
-  sed -E 's&^\s*pref\("startup\.homepage.*$&&' -i "$_pkgsrc/browser/branding/official/pref/firefox-branding.js"
+  sed -E 's&^\s*pref\("startup\.homepage.*$&&' -i "browser/branding/official/pref/firefox-branding.js"
 
   # prepare api keys
-  cp "$_pkgsrc/floorp/apis"/api-*-key "$_pkgsrc/"
+  cp "floorp/apis"/api-*-key ./
 
   # configure
-  cd "$_pkgsrc"
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
 ac_add_options --disable-artifact-builds
@@ -164,8 +173,6 @@ ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
-ac_add_options --enable-default-toolkit=cairo-gtk3-x11-wayland
-export MOZ_ENABLE_WAYLAND=1
 
 # Branding
 ac_add_options --with-app-basename=$_pkgname
@@ -176,7 +183,6 @@ ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZILLA_OFFICIAL=1
-export NIGHTLY_BUILD=1
 export MOZ_APP_REMOTINGNAME=$_pkgname
 
 # Floorp Upstream
@@ -246,6 +252,11 @@ END
 build() {
   cd "$_pkgsrc"
 
+  export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$srcdir/xdg-runtime}"
+  [ ! -d "$XDG_RUNTIME_DIR" ] && install -dm700 "${XDG_RUNTIME_DIR:?}"
+
+  export LIBGL_ALWAYS_SOFTWARE=true
+
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
@@ -298,16 +309,29 @@ build() {
     # Make new profile
     if [[ "${_build_pgo_reuse::1}" != "t" ]] || [[ ! -s merged.profdata ]] ; then
       echo "Building instrumented browser..."
-      cat >.mozconfig ../mozconfig
-      echo >>.mozconfig "ac_add_options --enable-profile-generate=cross"
+      cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-profile-generate=cross
+export MOZ_ENABLE_FULL_SYMBOLS=1
+END
       ./mach build
 
       echo "Profiling instrumented browser..."
       ./mach package
 
+      if [[ "${_build_pgo_xvfb::1}" == "t" ]] ; then
+        local _headless_run=(
+          xvfb-run
+          -s "-screen 0 1920x1080x24 -nolisten local"
+        )
+      else
+        local _headless_run=(
+          wlheadless-run
+          -c weston --width=1920 --height=1080
+        )
+      fi
+
       LLVM_PROFDATA=llvm-profdata JARLOG_FILE=${PWD@Q}/jarlog \
-        wlheadless-run -c weston --width=1920 --height=1080 \
-        -- ./mach python build/pgo/profileserver.py
+        "${_headless_run[@]}" -- ./mach python build/pgo/profileserver.py
 
       echo "Removing instrumented browser..."
       ./mach clobber
@@ -318,8 +342,10 @@ build() {
 
     if [[ -s merged.profdata ]] ; then
       stat -c "Profile data found (%s bytes)" merged.profdata
-      echo >>.mozconfig "ac_add_options --enable-profile-use=cross"
-      echo >>.mozconfig "ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata"
+      cat >>.mozconfig - <<END
+ac_add_options --enable-profile-use=cross
+ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
+END
 
       # save profdata for reuse
       cp --reflink=auto -f merged.profdata "$_old_profdata"
@@ -329,7 +355,9 @@ build() {
 
     if [[ -s jarlog ]] ; then
       stat -c "Jar log found (%s bytes)" jarlog
-      echo >>.mozconfig "ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog"
+      cat >>.mozconfig - <<END
+ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+END
 
       # save jarlog for reuse
       cp --reflink=auto -f jarlog "$_old_jarlog"
