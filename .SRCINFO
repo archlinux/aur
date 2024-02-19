@@ -1,7 +1,7 @@
 pkgbase = mycfetch
 	pkgdesc = Small neofetch in C
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.nakidai.ru/nakidai/mycfetch
 	arch = x86_64
 	license = BSD-2-Clause

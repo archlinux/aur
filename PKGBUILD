@@ -6,7 +6,7 @@ url="https://git.nakidai.ru/nakidai/mycfetch"
 license=("BSD-2-Clause")
 
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 
 arch=("x86_64")
 depends=("glibc")
