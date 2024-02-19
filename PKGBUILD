@@ -59,7 +59,7 @@ prepare() {
 package() {
     cd "${srcdir}"
 
-    tar -xzf data.tar.gz -C "${pkgdir}"
+    tar -xf data.tar.xz -C "${pkgdir}"
 
     install -Dm644 "$srcdir"/datadog-agent.sysusers "$pkgdir"/usr/lib/sysusers.d/datadog-agent.conf
     install -Dm644 "$srcdir"/datadog-agent.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/datadog-agent.conf
