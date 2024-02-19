@@ -7,10 +7,7 @@ pkgdesc="Mail User Agent (email client) configuration made easy"
 backup=("etc/automx2/automx2.conf")
 install="install.sh"
 depends=("python" "python-flask" "python-flask-migrate" "python-flask-sqlalchemy" "python-ldap3")
-# depends=("python" "python-hatchling" "python-flask" "python-flask-migrate" "python-flask-sqlalchemy" "python-ldap3" "python-werkzeug" "python-sqlalchemy" "python-alembic" "python-lxml")
 makedepends=("python-build" "python-installer" "python-wheel")
-# makedepends=("python-build" "python-installer" "python-wheel" "python-pytest" "python-pytest-flask" "python-coverage")
-# optdepends=("python-mysqlclient")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "automx2.conf"
         "automx2.service")
@@ -31,9 +28,9 @@ build() {
 # shellcheck disable=SC2154
 package() {
 	pushd >/dev/null "${pkgname}-${pkgver}" || exit 1
-	python -m installer --destdir="$pkgdir" dist/*.whl
-	mkdir -p "$pkgdir/etc/automx2"
-	install -Dm644 "${srcdir}/automx2.conf" "${pkgdir}/etc/automx2/automx2.conf"
-	install -Dm644 "${srcdir}/automx2.service" "${pkgdir}/usr/lib/systemd/system/automx2.service"
+	python -m installer --destdir="${pkgdir}" dist/*.whl
+	mkdir -p "${pkgdir}/etc/automx2"
+	install -D -m 0644 "${srcdir}/automx2.conf" "${pkgdir}/etc/automx2/automx2.conf"
+	install -D -m 0644 "${srcdir}/automx2.service" "${pkgdir}/usr/lib/systemd/system/automx2.service"
 	popd >/dev/null || exit 1
 }
