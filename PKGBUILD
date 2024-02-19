@@ -18,6 +18,10 @@ build() {
 	python -m build --wheel --no-isolation
 }
 
+check() {
+	python "$srcdir/$_sourcedirectory/cli.py" --version | tee '/dev/stderr' | grep -q "^$pkgver$"
+}
+
 package() {
 	cd "$srcdir/$_sourcedirectory/"
 	python -m installer --destdir="$pkgdir" 'dist/'*'.whl'
