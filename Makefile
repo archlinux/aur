@@ -1,35 +1,36 @@
 # vim: ts=4 sw=4 noet
 
-PKG = $(shell awk -F = '/^pkgname/ {print $$2}' PKGBUILD)
+PKG		= $(shell awk -F '"' '/^pkgname/ {print $$2}' PKGBUILD)
+BUILD	= makepkg --log --syncdeps --rmdeps --check
 
 define usage
 
 Available make targets:
 
   build    Build $(PKG) but do not install
-  check    Check shell scripts
   clean    Cleanup build artifacts
   help     Display this text
   install  Build and install $(PKG)
   janitor  Housekeeping
   remove   Print command to uninstall $(PKG) and its orphaned dependencies
+  schk     Check shell scripts
 
 endef
 
-.PHONY:	build check clean help janitor remove
+.PHONY:	build clean help janitor remove schk
 
 help:
 	$(info $(usage))
 	@exit 0
 
 clean:
-	rm -fr pkg src $(PKG)-*{log,gz,zst}*
+	rm -fr pkg src $(PKG)-*{log,zst}*
 
 build:	.SRCINFO
-	makepkg --force --log --syncdeps --rmdeps
+	$(BUILD)
 
-install:	.SRCINFO
-	makepkg --force --log --syncdeps --rmdeps --install
+install:
+	$(BUILD) --install
 
 remove:
 	@echo -e "# Run the following only if you are certain:\nsudo pacman -Rs $(PKG)"
@@ -37,7 +38,7 @@ remove:
 janitor:
 	sort -o .gitignore .gitignore
 
-check:
+schk:
 	shellcheck -s bash -e SC2034 PKGBUILD *.sh
 
 .SRCINFO:	PKGBUILD
