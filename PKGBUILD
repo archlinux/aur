@@ -3,11 +3,11 @@
 # Contributor: Graziano Giuliani <graziano.giuliani@gmail.com>
 
 pkgname=nco
-pkgver=5.1.9
+pkgver=5.2.1
 pkgrel=1
 pkgdesc="netCDF Operators allow users to manipulate and analyse data stored in NetCDF files"
 url="http://nco.sourceforge.net/"
-license=("GPL")
+license=('BSD-3-Clause')
 depends=('netcdf' 'udunits' 'gsl' 'curl' 'ccr')
 makedepends=('antlr2')
 arch=('x86_64')
@@ -17,8 +17,8 @@ source=(
   'use_antlr2.patch'
 )
 sha256sums=(
-  '9cd90345c1e3860a690b53fd6c08b721d631a646d169431927884c99841c34e9'
-  '95c3d0bd0e77d4a0f173215976a6c8ae939044344c2347392d9db8618ac9aeef'
+  'd3975f9e3ee659ed53690a887be8e950c90fc1faed71f2969896427907557ac3'
+  'db3e62369ab803d6aad302ff4327b081963dfb2641c82aad51d2f800b0c3db4c'
 )
 
 prepare() {
@@ -43,5 +43,6 @@ check() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install install-html
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
 # vim:set ts=2 sw=2 et:

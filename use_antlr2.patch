@@ -1,7 +1,7 @@
 --- configure
 +++ configure
 
-@@ -20460,5 +20460,5 @@
+@@ -20840,5 +20840,5 @@
  # AC_CHECK_PROGS (variable, progs-to-check-for, [value-if-not-found], [path]
  # Check for antlr executable installed as runantlr (runantlr ~= java antlr.Tool)
 -for ac_prog in runantlr antlr
