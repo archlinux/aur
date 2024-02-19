@@ -7,8 +7,19 @@ pkgdesc="C/C++ libraries for Bluetooth Low Energy nRF5 SoftDevice serialization"
 arch=(x86_64)
 url="https://github.com/NordicSemiconductor/pc-ble-driver"
 license=(LicenseRef-Five-Clause-Nordic-License)
-depends=(gcc-libs glibc)
-makedepends=(asio catch2-v2 cmake fmt git spdlog systemd)
+depends=(
+  gcc-libs
+  glibc
+)
+makedepends=(
+  asio
+  catch2-v2
+  cmake
+  fmt
+  git
+  spdlog
+  systemd
+)
 provides=(
   libnrf-ble-driver-sd_api_v2.so
   libnrf-ble-driver-sd_api_v3.so
@@ -47,7 +58,11 @@ check() {
 }
 
 package() {
-  depends+=(libfmt.so libspdlog.so libudev.so)
+  depends+=(
+    fmt libfmt.so
+    spdlog libspdlog.so
+    systemd-libs libudev.so
+  )
 
   DESTDIR="$pkgdir" cmake --install build
   install -vDm 644 $pkgname-$pkgver/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
