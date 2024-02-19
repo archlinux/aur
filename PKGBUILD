@@ -4,7 +4,7 @@
 _commit="c3fdca263ed2588d7443443ebc911ead88426281"
 pkgname="uwsm"
 pkgver="0.14.5"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A standalone Wayland session manager"
 url="https://github.com/Vladimir-csp/uwsm"
 arch=("any")

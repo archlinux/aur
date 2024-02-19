@@ -1,7 +1,7 @@
 pkgbase = uwsm
 	pkgdesc = A standalone Wayland session manager
 	pkgver = 0.14.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Vladimir-csp/uwsm
 	arch = any
 	license = MIT
