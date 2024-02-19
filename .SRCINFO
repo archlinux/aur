@@ -1,7 +1,7 @@
 pkgbase = wlroots0.16-nvidia
 	pkgdesc = Modular Wayland compositor library, with fix for nvidia flickering, downgraded to version 0.16
 	pkgver = 0.16.2
-	pkgrel = 2
+	pkgrel = 1
 	url = https://gitlab.freedesktop.org/wlroots/wlroots
 	arch = x86_64
 	license = MIT
