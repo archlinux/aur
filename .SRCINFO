@@ -1,7 +1,7 @@
 pkgbase = sklauncher-bin
 	pkgdesc = Secure and modern Minecraft Launcher
 	pkgver = 3.2.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://skmedix.pl
 	install = sklauncher.install
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = sklauncher-bin
 	conflicts = sklauncher
 	conflicts = sklauncher-git
 	noextract = SKlauncher-3.2.5.jar
-	source = https://skmedix.pl/bin/skl/3.2.5/SKlauncher-3.2.5.jar
+	source = https://skmedix.pl/binaries/skl/3.2.5/SKlauncher-3.2.5.jar
 	source = sklauncher
 	source = LICENSE
 	md5sums = 7454d24ae19035309ab3eea108fbb777
