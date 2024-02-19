@@ -38,8 +38,8 @@ pkgver() {
 package() {
   cd "${srcdir}/${_pkgname}"
   # required to make the modified alternatives for libraries such as gzip to be
-  # loaded and used with python 3.10
-  cp -R pyglossary/plugin_lib/py39 pyglossary/plugin_lib/py310 
+  # loaded and used with python 3.10 // this is no longer required
+  #cp -R pyglossary/plugin_lib/py39 pyglossary/plugin_lib/py310 
   python setup.py install --root="${pkgdir}/" --prefix=/usr --optimize=1
   cp config.json ${pkgdir}/usr/share/pyglossary
 }
