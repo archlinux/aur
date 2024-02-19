@@ -2,8 +2,8 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=wmnd
-pkgver=0.4.17
-pkgrel=3
+pkgver=0.4.18
+pkgrel=1
 pkgdesc="Dockapp for monitoring network interfaces."
 url="http://www.thregr.org/~wavexx/software/wmnd/"
 license=("GPL")
@@ -22,4 +22,4 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-md5sums=('dbf6d6c42ab3e036388d261d2e7bea16')
+md5sums=('729d0208a7acc5ff185735f51020eefe')
