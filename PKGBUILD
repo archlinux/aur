@@ -10,7 +10,13 @@ license=('unknown')
 source=("$pkgname-$pkgver.zip::https://www.techpowerup.com/forums/attachments/amdvbflash4-104e-linux-zip.314661/")
 sha512sums=('56eace73c377f9c57344618a168155a2af3a8895f343717a70decdd1fb4beb2a6c367f02e7a7f7e334e332d234df3cee61d022c65962fb3dcf061f382bdbbc2b')
 
+_binaryname='amdvbflash4-104E'
+
+check() {
+	"$srcdir/$_binaryname" --version | tee '/dev/stderr' | grep -q 'Application requires administrative privileges.$'
+}
+
 package() {
 	cd "$srcdir/"
-	install -Dm755 'amdvbflash4-104E' "$pkgdir/usr/bin/$pkgname"
+	install -Dm755 "$_binaryname" "$pkgdir/usr/bin/$pkgname"
 }
