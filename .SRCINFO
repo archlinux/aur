@@ -1,0 +1,30 @@
+pkgbase = hyprlock-git
+	pkgdesc = Hyprland's GPU-accelerated screen locking utility
+	pkgver = 0.1.0.r10.5e4eea3
+	pkgrel = 1
+	url = https://github.com/hyprwm/hyprlock
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gcc
+	makedepends = gdb
+	makedepends = meson
+	makedepends = wayland-protocols
+	makedepends = xorgproto
+	depends = wayland
+	depends = hyprlang>=0.4.0
+	depends = cairo
+	depends = pango
+	depends = pam
+	depends = libxkbcommon
+	provides = hyprlock
+	conflicts = hyprlock
+	options = !makeflags
+	options = !buildflags
+	options = !strip
+	source = hyprlock::git+https://github.com/hyprwm/hyprlock.git
+	sha256sums = SKIP
+
+pkgname = hyprlock-git
