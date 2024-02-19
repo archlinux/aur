@@ -1,7 +1,7 @@
 pkgbase = i3wsr
 	pkgdesc = A small program to change the name of an i3 workspace based on its contents.
-	pkgver = 2.1.1
-	pkgrel = 2
+	pkgver = 3.0.0
+	pkgrel = 1
 	url = https://github.com/roosta/i3wsr
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = i3wsr
 	makedepends = cargo
 	makedepends = python
 	depends = i3-wm
-	source = i3wsr-2.1.1.tar.gz::https://github.com/roosta/i3wsr/archive/v2.1.1.tar.gz
-	b2sums = 594a1ac1e11d31eea01011574ed5cbdd56b16ae28e4d358cc86dbe11657c533b04d6b204e67c2110f25b536012fc2a6a10f754adb33d13e9edfe62d6c99d4180
+	source = i3wsr-3.0.0.tar.gz::https://github.com/roosta/i3wsr/archive/v3.0.0.tar.gz
+	b2sums = b42d4eb6c32d85c300823700a455408bb784f507479c01f00849b138b8249be64c7d28f17933cbf4f5013496dcafabd2a1365db5fb687ef0f6a52e3b5d69c88d
 
 pkgname = i3wsr
