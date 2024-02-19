@@ -5,7 +5,7 @@
 # Contributor: Jakob Nixdorf <flocke [swirly thing] shadowice [dot] org>
 pkgname=conspy
 pkgver=1.16
-pkgrel=2
+pkgrel=1
 pkgdesc="Remote control of Linux virtual consoles"
 arch=('x86_64')
 url="https://conspy.sourceforge.net/"
