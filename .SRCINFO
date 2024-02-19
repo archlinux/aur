@@ -1,7 +1,7 @@
 pkgbase = pc-ble-driver
 	pkgdesc = C/C++ libraries for Bluetooth Low Energy nRF5 SoftDevice serialization
 	pkgver = 4.1.4
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/NordicSemiconductor/pc-ble-driver
 	arch = x86_64
 	license = LicenseRef-Five-Clause-Nordic-License
