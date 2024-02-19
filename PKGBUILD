@@ -13,7 +13,7 @@ depends=(
 )
 makedepends=(
   asio
-  catch2-v2
+  catch2
   cmake
   fmt
   git
@@ -30,15 +30,20 @@ options=(staticlibs)
 source=(
   $pkgname-$pkgver.tar.gz::https://github.com/NordicSemiconductor/$pkgname/archive/refs/tags/v$pkgver.tar.gz
   $pkgname-4.1.4-gcc_11.2.patch::https://github.com/NordicSemiconductor/pc-ble-driver/commit/37258e65bdbcd0b4369ae448faf650dd181816ec.patch
+  $pkgname-4.1.4-catch2_3.patch
 )
 sha256sums=('a883c4913510822da938b782362b6ec77b807e46d23ef838765217e05a3090ec'
-            '7588865671b302946be3ed4bc9b4e56820214b026dd823c4c650323bff0e246a')
+            '7588865671b302946be3ed4bc9b4e56820214b026dd823c4c650323bff0e246a'
+            '130253335691f239927bc7881f3d3b6eacc2003023a57ed6b49dff4aba717472')
 b2sums=('7e31b05aaffaef4936f4794b527016dc3d550c8ce8fa6b1c89b8d73a71388aa38d8e30a4a44c1c6174587bd74de8c9028e4280a528f017c57b6f4e0be36bdd1b'
-        '81e82f4257399d303f71595da9b66185a8669387d8fbb85cfc00bc97a2d8c2d9c3132633be29babcae752bd901a30ab2b48f08d200492878f2dbcdad31a7a2c0')
+        '81e82f4257399d303f71595da9b66185a8669387d8fbb85cfc00bc97a2d8c2d9c3132633be29babcae752bd901a30ab2b48f08d200492878f2dbcdad31a7a2c0'
+        '8e0b9f96b5d6ca2b4b8e907e05622a367e08d33a3a6e4ef0a0f928003529cbe318da85fe10c72eef845eb83491d948aa2ef85cc8f3d1940e08240e1f2b4be996')
 
 prepare() {
   # add missing include for thread
   patch -Np1 -d $pkgname-$pkgver -i ../$pkgname-4.1.4-gcc_11.2.patch
+  # fix build against catch2 >= 3
+  patch -Np1 -d $pkgname-$pkgver -i ../$pkgname-4.1.4-catch2_3.patch
   # set project version properly, as it is used by all sorts of downstream projects
   sed -e "s/0.0.0/$pkgver/g" -i $pkgname-$pkgver/CMakeLists.txt
 }

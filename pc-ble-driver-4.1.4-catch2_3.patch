@@ -1,0 +1,165 @@
+diff --git i/test/CMakeLists.txt w/test/CMakeLists.txt
+index 502b22c..ed830e9 100644
+--- i/test/CMakeLists.txt
++++ w/test/CMakeLists.txt
+@@ -88,7 +88,7 @@ function(setup_test)
+         nrf_ble_driver_sd_api_v${SOFTDEVICE_API_VER}_static
+         Threads::Threads
+         spdlog::spdlog
+-        Catch2::Catch2
++        Catch2::Catch2WithMain
+     )
+ 
+     if(NOT ${TEST_NAME} STREQUAL "test_uart_boost_v2")
+diff --git i/test/softdevice_api/test.cpp w/test/softdevice_api/test.cpp
+index d6bce03..67fa87b 100644
+--- i/test/softdevice_api/test.cpp
++++ w/test/softdevice_api/test.cpp
+@@ -12,7 +12,7 @@ std::ostream &nrfLogStream(std::cout);
+ std::mutex nrfLogMutex;
+ 
+ #define CATCH_CONFIG_RUNNER
+-#include "catch2/catch.hpp"
++#include "catch2/catch_all.hpp"
+ 
+ int main(int argc, char *argv[])
+ {
+@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
+     auto hardwareInfo = std::string{};
+     auto baudRate     = defaultBaudRate;
+ 
+-    using namespace Catch::clara;
++    using namespace Catch::Clara;
+ 
+     std::vector<spdlog::sink_ptr> sinks;
+     sinks.push_back(std::make_shared<spdlog::sinks::stdout_color_sink_mt>());
+diff --git i/test/softdevice_api/testcase_advertising.cpp w/test/softdevice_api/testcase_advertising.cpp
+index bf8dbf9..63c61a6 100644
+--- i/test/softdevice_api/testcase_advertising.cpp
++++ w/test/softdevice_api/testcase_advertising.cpp
+@@ -36,7 +36,7 @@
+  */
+ 
+ // Test framework
+-#include "catch2/catch.hpp"
++#include "catch2/catch_all.hpp"
+ 
+ // Logging support
+ #include "logging.h"
+diff --git i/test/softdevice_api/testcase_driver_open_close.cpp w/test/softdevice_api/testcase_driver_open_close.cpp
+index 1b1e26a..ffb2211 100644
+--- i/test/softdevice_api/testcase_driver_open_close.cpp
++++ w/test/softdevice_api/testcase_driver_open_close.cpp
+@@ -36,7 +36,7 @@
+  */
+ 
+ // Test framework
+-#include "catch2/catch.hpp"
++#include "catch2/catch_all.hpp"
+ 
+ // Logging support
+ #include <logging.h>
+diff --git i/test/softdevice_api/testcase_issue_128bit_uuid.cpp w/test/softdevice_api/testcase_issue_128bit_uuid.cpp
+index 515202b..d7d1f9f 100644
+--- i/test/softdevice_api/testcase_issue_128bit_uuid.cpp
++++ w/test/softdevice_api/testcase_issue_128bit_uuid.cpp
+@@ -39,7 +39,7 @@
+ #if NRF_SD_BLE_API >= 5
+ 
+ // Test framework
+-#include "catch2/catch.hpp"
++#include "catch2/catch_all.hpp"
+ 
+ // Logging support
+ #include "logging.h"
+diff --git i/test/softdevice_api/testcase_issue_gh_112.cpp w/test/softdevice_api/testcase_issue_gh_112.cpp
+index 55935cb..04df0a2 100644
+--- i/test/softdevice_api/testcase_issue_gh_112.cpp
++++ w/test/softdevice_api/testcase_issue_gh_112.cpp
+@@ -39,7 +39,7 @@
+ #if NRF_SD_BLE_API >= 3
+ 
+ // Test framework
+-#include "catch2/catch.hpp"
++#include "catch2/catch_all.hpp"
+ 
+ // Logging support
+ #include "logging.h"
+diff --git i/test/softdevice_api/testcase_issue_stuck_in_scan_mode.cpp w/test/softdevice_api/testcase_issue_stuck_in_scan_mode.cpp
+index a1881fa..071ac74 100644
+--- i/test/softdevice_api/testcase_issue_stuck_in_scan_mode.cpp
++++ w/test/softdevice_api/testcase_issue_stuck_in_scan_mode.cpp
+@@ -36,7 +36,7 @@
+  */
+ 
+ // Test framework
+-#include "catch2/catch.hpp"
++#include "catch2/catch_all.hpp"
+ 
+ // Logging support
+ #include <logging.h>
+diff --git i/test/softdevice_api/testcase_phy_update.cpp w/test/softdevice_api/testcase_phy_update.cpp
+index 86842aa..de8d86a 100644
+--- i/test/softdevice_api/testcase_phy_update.cpp
++++ w/test/softdevice_api/testcase_phy_update.cpp
+@@ -36,7 +36,7 @@
+  */
+ 
+ // Test framework
+-#include "catch2/catch.hpp"
++#include "catch2/catch_all.hpp"
+ 
+ #if NRF_SD_BLE_API >= 6
+ 
+diff --git i/test/softdevice_api/testcase_rssi.cpp w/test/softdevice_api/testcase_rssi.cpp
+index 9ee99d5..cd5720e 100644
+--- i/test/softdevice_api/testcase_rssi.cpp
++++ w/test/softdevice_api/testcase_rssi.cpp
+@@ -36,7 +36,7 @@
+  */
+ 
+ // Test framework
+-#include "catch2/catch.hpp"
++#include "catch2/catch_all.hpp"
+ 
+ // Logging support
+ #include "logging.h"
+diff --git i/test/softdevice_api/testcase_security.cpp w/test/softdevice_api/testcase_security.cpp
+index c5a5bbe..a4380b3 100644
+--- i/test/softdevice_api/testcase_security.cpp
++++ w/test/softdevice_api/testcase_security.cpp
+@@ -36,7 +36,7 @@
+  */
+ 
+ // Test framework
+-#include "catch2/catch.hpp"
++#include "catch2/catch_all.hpp"
+ 
+ // Logging support
+ #include "logging.h"
+diff --git i/test/softdevice_api/testcase_util.cpp w/test/softdevice_api/testcase_util.cpp
+index 7e04b41..92bd925 100644
+--- i/test/softdevice_api/testcase_util.cpp
++++ w/test/softdevice_api/testcase_util.cpp
+@@ -36,7 +36,7 @@
+  */
+ 
+ // Test framework
+-#include "catch2/catch.hpp"
++#include "catch2/catch_all.hpp"
+ 
+ // Test support
+ #include <test_environment.h>
+diff --git i/test/transport/test_serial_port_enum.cpp w/test/transport/test_serial_port_enum.cpp
+index 09ec87a..82eafd3 100644
+--- i/test/transport/test_serial_port_enum.cpp
++++ w/test/transport/test_serial_port_enum.cpp
+@@ -37,7 +37,7 @@
+ 
+ // Test framework
+ #define CATCH_CONFIG_MAIN
+-#include "catch2/catch.hpp"
++#include "catch2/catch_all.hpp"
+ 
+ // Logging support
+ #define NRF_LOG_SETUP
