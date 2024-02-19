@@ -29,7 +29,7 @@ prepare() {
 build() {
     cd "$srcdir/$_gitname/build"
     cmake -DBUILD_PRO=true -DBUILD_TOUCH_INPUT=true ..
-    make -j4
+    make -j
 }
 
 package() {
