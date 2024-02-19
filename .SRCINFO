@@ -14,8 +14,10 @@ pkgbase = 8188eu-aircrack-dkms-git
 	conflicts = 8188eu-dkms
 	conflicts = 8188eu-dkms-git
 	source = 8188eu::git+https://github.com/aircrack-ng/rtl8188eus#branch=v5.3.9
+	source = https://github.com/aircrack-ng/rtl8188eus/pull/275.patch
 	source = blacklist-r8188eu.conf
 	md5sums = SKIP
+	md5sums = 33a174beef5993a80abaf8a42d1ac994
 	md5sums = 8af5df9ed717b3bb48df59dac0c8a9c8
 
 pkgname = 8188eu-aircrack-dkms-git
