@@ -1,0 +1,5 @@
+[ruff-lsp]
+source = "github"
+github = "astral-sh/ruff-lsp"
+prefix = "v"
+use_max_tag = true
