@@ -40,7 +40,10 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgbase}"
   for version in hybrid 2 3 4; do
-    meson setup --prefix=/usr "build-${version}" -Dgtk-version="${version}"
+    arch-meson \
+      --auto-features auto \
+      -Dgtk-version="${version}" \
+      "build-${version}"
     meson compile -C "build-${version}"
   done
 }
