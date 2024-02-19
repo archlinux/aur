@@ -5,7 +5,7 @@
 _pkgname='xf86-input-joystick'
 pkgname="${_pkgname}-git"
 pkgver=1.6.4+1.r299.20231001.c8d19c8
-pkgrel=2
+pkgrel=3
 pkgdesc="X.Org input driver that translates joystick input to mouse and keyboard events. (Do not use for games with native joystick support or XI2 applications. See manpage.) Latest git checkout."
 arch=(
   'i686'
@@ -34,11 +34,11 @@ conflicts=(
 )
 source=(
   "${_pkgname}::git+https://gitlab.freedesktop.org/xorg/driver/xf86-input-joystick.git"
-  '50-joystick.conf'
+  '50-joystick-example.conf'
 )
 sha256sums=(
   'SKIP'
-  '20f922c666491465493022ff7022bdac67691fcd03e9c746da6abb17ceddebf1'
+  'b516eb15d4d37149a4710cf70f1a9c9ca6b5d03ea4b68f43f923571384adf09c'
 )
 
 prepare() {
@@ -79,7 +79,7 @@ package() {
 
   make DESTDIR="${pkgdir}" install
 
-  install -Dvm644 "${srcdir}/50-joystick.conf" "${pkgdir}/usr/share/doc/${_pkgname}/example/xorg.conf.d/50-joystick.conf"
+  install -Dvm644 "${srcdir}/50-joystick-example.conf" "${pkgdir}/usr/share/doc/${_pkgname}/example/xorg.conf.d/50-joystick-example.conf"
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" git.log README.md
 
   install -Dvm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
