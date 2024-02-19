@@ -38,6 +38,11 @@ build() {
 	make
 }
 
+check() {
+	# Not using -V, as it doesn't match the real version
+	"$srcdir/$_sourcedirectory/src/$pkgname" -h | tee '/dev/stderr' | grep -q 'Increase brightness by value$'
+}
+
 package() {
 	cd "$srcdir/$_sourcedirectory/"
 	make install DESTDIR="$pkgdir" PREFIX='/usr'
