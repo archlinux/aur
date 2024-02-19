@@ -35,7 +35,12 @@ build() {
 
 check() {
 	cd "$srcdir/$_sourcedirectory/"
+
+	# Run tests
 	./runtests.sh "bin/$pkgname"
+
+	# Verify that the basic functionality works
+	"$srcdir/$_sourcedirectory/bin/$pkgname" --version | tee '/dev/stderr' | grep -q "version $pkgver$"
 }
 
 package() {
