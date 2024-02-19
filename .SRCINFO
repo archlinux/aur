@@ -1,7 +1,7 @@
 pkgbase = python-asv
 	pkgdesc = A simple benchmarking tool with web-based reporting.
 	pkgver = 0.6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://asv.readthedocs.io
 	arch = x86_64
 	license = BSD-3
