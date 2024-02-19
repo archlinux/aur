@@ -4,7 +4,7 @@
 _pkgbase=ocp
 pkgname=('ocp' 'ocp-sdl2')
 pkgver=0.2.107
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Cubic Player"
 arch=('i686' 'x86_64')
 url="https://stian.cubic.org/project-ocp.php"
@@ -36,8 +36,7 @@ makedepends=('alsa-lib'
 	     'libvorbis')
 
 prepare() {
-        cd $_pkgbase
-	git checkout 24ae3d0 -q # Fixes build problem without X11&SDL for ocp-curses
+    cd $_pkgbase
 	git submodule init
 	git submodule update --init --recursive
 }

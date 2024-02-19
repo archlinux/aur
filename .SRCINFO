@@ -1,7 +1,7 @@
 pkgbase = ocp
 	pkgdesc = Open Cubic Player
 	pkgver = 0.2.107
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stian.cubic.org/project-ocp.php
 	arch = i686
 	arch = x86_64
