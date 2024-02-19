@@ -1,7 +1,7 @@
 pkgbase = python-asv-runner
 	pkgdesc = Core Python benchmark code for ASV.
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://asv.readthedocs.io/projects/asv-runner
 	arch = x86_64
 	license = BSD-3

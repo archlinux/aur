@@ -4,7 +4,7 @@
 pkgname='python-asv-runner'
 _pkgname='asv_runner'
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Core Python benchmark code for ASV."
 arch=('x86_64')
 url="https://asv.readthedocs.io/projects/asv-runner"
@@ -18,7 +18,8 @@ sha256sums=('555eb3387f64e21cda4d82e0a67dd3e3c1618a4998815195200e2baecb21a73f')
 
 prepare(){
   cd "${_pkgname}-${pkgver}"
-#  sed -i -e '/\[tool.setuptools_scm\]/a \fallback_version = \"'"${pkgver}"'\"' pyproject.toml
+  ## Compat with python>3.7
+  sed -i 's/importlib_metadata/importlib.metadata/' asv_runner/benchmarks/__init__.py
 }
 
 build(){
