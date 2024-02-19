@@ -1,0 +1,5 @@
+[riff]
+source = "github"
+github = "DeterminateSystems/riff"
+prefix = "v"
+use_max_tag = true
