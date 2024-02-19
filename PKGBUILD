@@ -2,8 +2,8 @@
 
 pkgname=kde-builder-git
 _basename="${pkgname%-git}"
-pkgver=r55.cc6cc86
-pkgrel=1
+pkgver=r54.4340456
+pkgrel=2
 pkgdesc="A script to build KDE software"
 url="https://invent.kde.org/ashark/kde-builder"
 arch=("any")

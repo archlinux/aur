@@ -1,7 +1,7 @@
 pkgbase = kde-builder-git
 	pkgdesc = A script to build KDE software
-	pkgver = r55.cc6cc86
-	pkgrel = 1
+	pkgver = r54.4340456
+	pkgrel = 2
 	url = https://invent.kde.org/ashark/kde-builder
 	arch = any
 	license = GPL
