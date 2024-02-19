@@ -1,0 +1,21 @@
+diff --git a/./CMakeLists.txt.bak b/./CMakeLists.txt
+index 9487ab9..c48c90f 100644
+--- a/./CMakeLists.txt.bak
++++ b/./CMakeLists.txt
+@@ -61,11 +61,11 @@ SET(LIBS )
+ 
+ TARGET_LINK_LIBRARIES(loudgain
+   ${EBUR128_LIBRARY}
+-  ${LAVC_LIBRARIES}
+-  ${LAVF_LIBRARIES}
+-  ${LAVR_LIBRARIES}
+-  ${LAVU_LIBRARIES}
+-  ${LTAG_LIBRARIES}
++  ${LAVC_LINK_LIBRARIES}
++  ${LAVF_LINK_LIBRARIES}
++  ${LAVR_LINK_LIBRARIES}
++  ${LAVU_LINK_LIBRARIES}
++  ${LTAG_LINK_LIBRARIES}
+ )
+ 
+ SET_TARGET_PROPERTIES(loudgain PROPERTIES
