@@ -1,7 +1,7 @@
 pkgbase = czkawka-gui-bin
 	pkgdesc = Find and manage duplicate files, empty folders, similar images, and other "lint" (GUI, with HEIF support)
-	pkgver = 6.1.0
-	pkgrel = 2
+	pkgver = 7.0.0
+	pkgrel = 1
 	url = https://github.com/qarmin/czkawka
 	arch = x86_64
 	license = MIT
@@ -9,11 +9,11 @@ pkgbase = czkawka-gui-bin
 	depends = gtk4
 	provides = czkawka-gui
 	conflicts = czkawka-gui
-	source = czkawka-gui-bin-6.1.0::https://github.com/qarmin/czkawka/releases/download/6.1.0/linux_czkawka_gui_heif
+	source = czkawka-gui-bin-7.0.0::https://github.com/qarmin/czkawka/releases/download/7.0.0/linux_czkawka_gui_libraw_heif
 	source = LICENSE::https://github.com/qarmin/czkawka/raw/master/czkawka_gui/LICENSE
 	source = czkawka-gui.png
-	sha256sums = e311dd7efd3db8a699b3a27eadae84897b0778540e2c893afb76ce3faee65164
-	sha256sums = fb89cb6b3ae375f493e6d52b6b28ca279f91446975e66cf0836c441f1cbca3fa
+	sha256sums = 184f049d040d93a9b16a96c2e6c53a1b17e8590c5dc03a7f6bdb36d3b75f09fb
+	sha256sums = de1d794af7529bc9abb6a1aef6ec2af21fa2bfa4284742144bc30246005b4212
 	sha256sums = 1614565bc6f143b4bb4fc80c71cb1fe0b2ba2719037046719d5a3a89c3f5905e
 
 pkgname = czkawka-gui-bin
