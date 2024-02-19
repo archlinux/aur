@@ -1,0 +1,34 @@
+pkgbase = python-pytest-plugins
+	pkgver = 1.7.0
+	pkgrel = 9
+	url = https://github.com/manahl/pytest-plugins
+	arch = any
+	license = BSD
+	makedepends = python-pytest
+	makedepends = python-setuptools-git
+	makedepends = python-pypandoc
+	makedepends = python-execnet
+	makedepends = python-path.py
+	makedepends = python-mock
+	makedepends = python-virtualenv
+	makedepends = python-termcolor
+	source = python-pytest-plugins-1.7.0.tar.gz::https://github.com/manahl/pytest-plugins/archive/v1.7.0.tar.gz
+	sha512sums = 6ce64f554359ae8b4e8b1cdab9908226501bad1d6bcdec9d7968133bbf0b3530842883cf3ea7ef14e09372fd1454d685d4b1bf4e8d95498b69a8b0f20177e2be
+
+pkgname = python-pytest-fixture-config
+	pkgdesc = Fixture configuration utils for py.test
+	depends = python-pytest
+
+pkgname = python-pytest-shutil
+	pkgdesc = A goodie-bag of unix shell and environment tools for py.test
+	depends = python-pytest
+	depends = python-execnet
+	depends = python-path.py
+	depends = python-mock
+	depends = python-termcolor
+
+pkgname = python-pytest-virtualenv
+	pkgdesc = Virtualenv fixture for py.test
+	depends = python-pytest-fixture-config
+	depends = python-pytest-shutil
+	depends = python-virtualenv
