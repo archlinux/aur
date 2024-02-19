@@ -29,6 +29,10 @@ build() {
 	make
 }
 
+check() {
+	"$srcdir/$_sourcedirectory/$pkgname" --version | tee '/dev/stderr' | grep -q "^RenRot version $pkgver"
+}
+
 package() {
 	cd "$srcdir/$_sourcedirectory/"
 
