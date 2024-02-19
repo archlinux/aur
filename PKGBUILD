@@ -1,7 +1,7 @@
 # Maintainer: Vekhir <vekhir AT yahoo DOT com>
 
 pkgname=hedgewars-server-hg
-pkgver=r15983+.2c92499daa67+
+pkgver=r15991+.00bf5adba849+
 pkgrel=1
 pkgdesc="Turn-based strategy artillery game similiar to Worms (Server component)"
 arch=('x86_64')
@@ -13,10 +13,8 @@ depends=('ghc-libs' 'haskell-entropy' 'haskell-sha' 'haskell-random' 'haskell-re
 makedepends=('mercurial' 'ghc' 'uusi')
 provides=('hedgewars-server')
 conflicts=('hedgewars' 'hedgewars-hg')
-source=("$pkgname::hg+https://hg.hedgewars.org/hedgewars"
-        "hedgewars-cabal.patch")
-sha512sums=('SKIP'
-            '09b6dad1f1fa03e2e24775542135407c0b861519e3fbef08e968abaf59011b54609db64514c841af9e3ee588b1c7e0bbf13c971fa46758aecafb399ac7e30e13')
+source=("$pkgname::hg+https://hedgewars.org:8443/hedgewars/")
+sha512sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
@@ -25,7 +23,6 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-  patch -p1 < ../hedgewars-cabal.patch
   cd gameServer
   gen-setup
   uusi --nb checker

@@ -23,9 +23,7 @@ pkgbase = hedgewars-server-hg
 	provides = hedgewars-server
 	conflicts = hedgewars
 	conflicts = hedgewars-hg
-	source = hedgewars-server-hg::hg+https://hg.hedgewars.org/hedgewars
-	source = hedgewars-cabal.patch
+	source = hedgewars-server-hg::hg+https://hedgewars.org:8443/hedgewars/
 	sha512sums = SKIP
-	sha512sums = 09b6dad1f1fa03e2e24775542135407c0b861519e3fbef08e968abaf59011b54609db64514c841af9e3ee588b1c7e0bbf13c971fa46758aecafb399ac7e30e13
 
 pkgname = hedgewars-server-hg
