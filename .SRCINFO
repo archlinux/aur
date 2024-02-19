@@ -1,6 +1,6 @@
 pkgbase = nwg-readme-browser
 	pkgdesc = nwg-shell WebKitGTK-based README file browser
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-readme-browser
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = nwg-readme-browser
 	depends = python-markdown2
 	depends = python-docutils
 	provides = nwg-readme-browser
-	source = nwg-readme-browser-0.1.4.tar.gz::https://github.com/nwg-piotr/nwg-readme-browser/archive/v0.1.4.tar.gz
-	md5sums = 3b4b766f5db1a6160976da921cb3ecb9
+	source = nwg-readme-browser-0.1.5.tar.gz::https://github.com/nwg-piotr/nwg-readme-browser/archive/v0.1.5.tar.gz
+	md5sums = a80417f566023a44d0e10d188e47597f
 
 pkgname = nwg-readme-browser
