@@ -1,13 +1,13 @@
 pkgbase = presenterm-bin
-	pkgdesc = A terminal slideshow tool
-	pkgver = 0.4.1
-	pkgrel = 1
-	url = https://github.com/mfontanini/presenterm
-	arch = x86_64
-	license = BSD 2-Clause
-	provides = presenterm
-	conflicts = presenterm
-	source = presenterm-bin-0.4.1.tar.gz::https://github.com/mfontanini/presenterm/releases/download/v0.4.1/presenterm-0.4.1-x86_64-unknown-linux-gnu.tar.gz
-	sha512sums = 1bf7659fd6787e6a4ebfa74d6db71a088beba4364ba297250b0dc671656ad69fd3c94ec49aa782f1b7d3dff1d86d5e95d16a655aa9266f0f8626f1344cd855a5
+        pkgdesc = A terminal slideshow tool
+        pkgver = 0.6.1
+        pkgrel = 1
+        url = https://github.com/mfontanini/presenterm
+        arch = x86_64
+        license = BSD 2-Clause
+        provides = presenterm
+        conflicts = presenterm
+        source = presenterm-bin-0.6.1.tar.gz::https://github.com/mfontanini/presenterm/releases/download/v0.6.1/presenterm-0.6.1-x86_64-unknown-linux-gnu.tar.gz
+        sha512sums = 5d418c8bdf031b6572367bd5cb738fd56b31ace0c0eb2a9734e513be4ea5ad5bf55d52fb2719d69e28d228d3e0dc39f5fd585a509863f85cd3b147fe514aa734
 
 pkgname = presenterm-bin
