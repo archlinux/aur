@@ -2,12 +2,12 @@
 
 pkgname='rumqttd'
 pkgver=0.19.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A high performance, embeddable MQTT broker'
 arch=('x86_64')
 url='https://github.com/bytebeamio/rumqtt'
-license=('Apache 2.0')
-depends=()
+license=('Apache-2.0')
+depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/bytebeamio/rumqtt/archive/refs/tags/rumqttd-${pkgver}.tar.gz"
