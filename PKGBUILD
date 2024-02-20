@@ -1,14 +1,14 @@
 # Maintainer: Anton Reshetov
 pkgname=masscode-bin
 _pkgname=massCode
-pkgver=3.10.0
+pkgver=3.11.0
 _electronversion=16
-pkgrel=3
+pkgrel=1
 pkgdesc="A free and open source code snippets manager for developers"
 arch=('x86_64')
 url="https://masscode.io/"
 _ghurl="https://github.com/massCodeIO/massCode"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -16,14 +16,13 @@ depends=(
 )
 makedepends=(
     'gendesk'
-    'squashfs-tools'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.snap::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.snap"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d4e9aebeabac38aba5180a89083c25ea2e53028ce39a44d57a058d8d76232d6d'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+sha256sums=('72df12e9b5a5a7afef0d31c75f5c56994bbbe3bd8c2c87b5dee9baa919a9591f'
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
