@@ -11,7 +11,7 @@ post_install() {
 	also modify /etc/sudoers. It is also capable of installing an
 	alternative binary of Node.js. It is recommended to *never* use it.
 
-	2) Installing or upgrading plugins from the web ui invokes `npm install`
+	2) Installing or upgrading plugins from the web ui invokes npm install
 	globally (/usr/lib/node_modules). You can alternatively package plugins as AUR
 	packages. Sticking with verified plugins can also provide a higher level of
 	security.
@@ -26,7 +26,7 @@ post_install() {
 	You have been warned. (@bret: Still true?)
 
 	5) It is recommended to run homebridge with a supported Node.js version.
-	Currently `nodejs-lts-iron` (Node.js 20) is the recommended version.
+	Currently nodejs-lts-iron (Node.js 20) is the recommended version.
 
 	6) To use systemd-resolved as the mDNS resolver, set up systemd-resolved mDNS
 	and then follow these instructions:

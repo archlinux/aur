@@ -1,7 +1,7 @@
 pkgbase = homebridge-config-ui-x
 	pkgdesc = Web-based management tool for Homebridge
 	pkgver = 4.55.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/oznu/homebridge-config-ui-x
 	install = homebridge-config-ui-x.install
 	arch = any
