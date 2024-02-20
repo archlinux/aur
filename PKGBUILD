@@ -1,7 +1,7 @@
 pkgname=hostapd-wifi6
 pkgdesc='hostapd than enabled AC/AX and ACS support and applied intel lar patch, provide useful service unit hostapd@.service and hostapd-ACS@.service'
 pkgver=2.10
-pkgrel=12
+pkgrel=13
 arch=('x86_64' 'aarch64')
 url=https://w1.fi/hostapd
 license=('BSD')
@@ -35,7 +35,7 @@ sha512sums=(
   '647460d47cf960b88836c8913fb154daf4745dc194ed991c8b61ec0c08757c26c2399ccb10da76d6dfa14d3a75b5fa54ed10f37f7fc373ef63c94dd5b840019e'
   'f39d06516c27de58cc9c3ca98f7b367ec41b8fddd9c568876c93c5f505445980495aaf13b0ea07460fc55e0093ff61014a9b48548b264067515a341b8e82e3ac'
   'cbc9c01bc264142a270af3d1cbacc53a01211cb14cb38d9a5907c3e18049dbfdad0b3048724c97fce3f2c4faf49754cc693467d19aec7c5220c959b0d13a424e'
-  '6b3c3abff34a26081ec9cf8ebf1e69b99f8bb13b94b70797e764a912e294f1c8e9df6600eef629a6fe4f3f1a8b1eb1feefeb7eaa96105d4372f26a32a06bef99'
+  'ba9014c70be893945acf57ae7417502634cf605ec119acf737b69c5a6368ff1aa3bd65686a20f87fbf2300fa30a816f557b6b49080dcab25059818178935a771'
 )
 prepare() {
   cd "hostapd-${pkgver}"

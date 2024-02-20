@@ -8,7 +8,7 @@
 
 # physical wireless interface name
 # default is '$(get_wireless_interface)'
-# 'get_wireless_interface' is defined in /usr/share/bin/hostapd-preferred.sh
+# 'get_wireless_interface' is defined in /usr/lib/systemd/scripts/hostapd-preferred.sh
 #phys_wl0=$(get_wireless_interface)
 
 # found physical wireless interface will set to this name
