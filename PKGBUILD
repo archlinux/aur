@@ -5,7 +5,7 @@
 pkgname=ftequake
 pkgver=20231031
 gitver=eb6b127d9ce10949f00bcad8c5953b7092c92d12
-pkgrel=1
+pkgrel=2
 pkgdesc="FTE QuakeWorld, idTech engine for Quake 1, 2, 3 and Hexen 2"
 arch=('i686' 'x86_64')
 url="https://fteqw.org"

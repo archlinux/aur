@@ -1,7 +1,7 @@
 pkgbase = ftequake
 	pkgdesc = FTE QuakeWorld, idTech engine for Quake 1, 2, 3 and Hexen 2
 	pkgver = 20231031
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fteqw.org
 	arch = i686
 	arch = x86_64
