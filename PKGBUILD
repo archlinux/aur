@@ -1,7 +1,7 @@
 # Maintainer: Anysets<anysets@qq.com>
 pkgname=cn.flamescion.bookworm-compatibility-mode
-pkgver=12.4.8
-pkgrel=2
+pkgver=12.4.9
+pkgrel=1
 pkgdesc="a container app packaging and distributing solution."
 arch=('aarch64' 'x86_64')
 url="https://gitee.com/amber-compatability-environment/bookworm-compatibility-mode"
@@ -17,7 +17,7 @@ depends=('bubblewrap'
 install=cn.flamescion.bookworm-compatibility-mode.install
 
 source=("$pkgname-$pkgver.tar.gz::https://gitee.com/amber-compatability-environment/bookworm-compatibility-mode/repository/archive/${pkgver}.tar.gz")
-sha256sums=('98fe8445c66041cb9c1b80bec6949d7fc0de30de7fea92977a3cc893761e7a9e')
+sha256sums=('fd708c275c096f1f40f7036235da7b8c6d57d633a4950fa15c801965b98c58c8')
 
 package() {
 	cp -rf ${srcdir}/bookworm-compatibility-mode-${pkgver}/src/opt ${pkgdir}/
