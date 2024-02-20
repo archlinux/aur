@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='Chip music tracker based on AHX'
 arch=('x86_64')
 url='http://hivelytracker.co.uk/'
-license=('GPL')
+license=('BSD-3-Clause')
 depends=(
   'sdl12-compat'
   'sdl_image'
