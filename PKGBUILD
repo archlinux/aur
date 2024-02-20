@@ -14,7 +14,7 @@ options=('!lto')
 provides=("pgvecto.rs=$pkgver")
 conflicts=('pgvecto.rs')
 source=("${_pkgbase}-${pkgver}.tar.gz::https://github.com/tensorchord/pgvecto.rs/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('db1dfa32b44a42fb3759c8a2798d9052a1073de57222e91f97da4ba04178864f')
+sha256sums=('671bfe39a3b87d5dfa5229ab0beffff1bd09686b53779dc511248e79aa4b2646')
 
 # https://github.com/tensorchord/pgvecto.rs/blob/main/docs/installation.md
 
