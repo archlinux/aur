@@ -1,0 +1,12 @@
+pkgbase = ksplang
+	pkgdesc = An interpreter for ksplang
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ksp/ksplang
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = ksplang-0.1.0.tar.gz::https://github.com/ksp/ksplang/archive/refs/tags/0.1.0.tar.gz
+	sha512sums = b8978d79729e3fef3b79edbccf3ce97a835ce04e81eea4e181917c8d88d8cfa0379e7297a1e32d9c079f0e9883cdb25b5affeeda059f027c8aab4b4400c4ab79
+
+pkgname = ksplang
