@@ -1,0 +1,21 @@
+pkgbase = ory-kratos
+	pkgdesc = Ory Kratos identity server written in Go
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ory/kratos
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	backup = etc/ory/kratos/config.yaml
+	backup = etc/ory/kratos/identity-schema.json
+	source = ory-kratos-1.0.0.tar.gz::https://github.com/ory/kratos/archive/refs/tags/v1.0.0.tar.gz
+	source = ory-kratos.service
+	source = ory-kratos@.service
+	source = ory-kratos.sysusers
+	b2sums = b0c7e66ba377e3949aa4c42bf7e7ae0dd757279ab307cf736b0e650b5f3a9a2cb2b5355a73d0759eb847fea81c9b2c2bc4445ff5e55a5297e59141fff83bba7d
+	b2sums = 47cdf1267cfcb91c4c03f5ee88e3d971c893b6f21e6e46db3b415b56047df9b31ee55b3c41fd28eca1e9ff456d8c18ef6c85f4385bc85506e903268a6c1d3421
+	b2sums = c8f344d7a3a669a74e321828a2e0187d9b14bea4a035559776cede8f4aff8523669f3d4bf07e2393be71b84e9578c7f555d1d8fdd06a0ce1377626879ad33caf
+	b2sums = 7b4b96566de1d375990c1ef5e4248fd04010641d8790c5579ffbc6d1bc2740b5b34012dd8c763ce59cea42526eaa63f979537ab91e85b87e0cf0411c3590e266
+
+pkgname = ory-kratos
