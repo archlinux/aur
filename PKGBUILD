@@ -12,7 +12,6 @@ depends=(
   'cage'
   'fontconfig'
   'greetd'
-  'gtk3'
   'gtk4'
   'libinput'
   'libglvnd'
