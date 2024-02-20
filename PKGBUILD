@@ -10,7 +10,7 @@ pkgrel=2
 pkgdesc='The Linux-native asynchronous I/O facility (aio) library'
 arch=(x86_64)
 url="https://pagure.io/libaio"
-license=(LGPL2.1)
+license=(LGPL-2.0-or-later)
 depends=(
   lib32-glibc
   $_name=$pkgver
