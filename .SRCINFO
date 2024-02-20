@@ -1,6 +1,6 @@
 pkgbase = dorion-bin
 	pkgdesc = An alternative Discord client aimed and lower-spec or storage-sensitive PCs that supports themes, plugins, and more!
-	pkgver = 4.1.1
+	pkgver = 4.1.2
 	pkgrel = 2
 	url = https://spikehd.github.io/projects/dorion/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = dorion-bin
 	depends = gtk3
 	provides = dorion
 	conflicts = dorion
-	source = https://github.com/SpikeHD/Dorion/releases/download/v4.1.1/dorion_4.1.1_amd64.deb
-	sha256sums = 1feaf9f933d9d58ca7d271383091a537d5849f5de703c7e42356667c5a2be4b9
+	source = https://github.com/SpikeHD/Dorion/releases/download/v4.1.1/Dorion_4.1.2_amd64.deb
+	sha256sums = 869645f3740f45c46a234c029c8bba0ac3417bc6fd1f42ab0f2a7a08362439f4
 
 pkgname = dorion-bin
