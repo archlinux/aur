@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=edencommon
-pkgver=2024.02.12.00
+pkgver=2024.02.19.00
 pkgrel=1
 pkgdesc="Shared library for Watchman and Eden projects"
 arch=(x86_64)
@@ -28,7 +28,7 @@ source=(
   "build-shared-library.patch"
 )
 sha256sums=(
-  '1d166d1270c74a073f164128a962e5179fc2709b328beaa77665f0512e780058'
+  'a56cf747710f5c30b2559c8de42f62f42d05699d03c3e64cdbc35c5cdd979e89'
   '000dfb9e316e486cb047fe4c5547b716033a99bb78a9eef0e7e4d860d017a092'
 )
 
@@ -38,6 +38,11 @@ prepare() {
   cd "$_archive"
 
   patch --forward --strip=1 --input="$srcdir/build-shared-library.patch"
+
+  # Use system CMake config instead of bundled module, incompatible with glog
+  # v0.7.0+
+  sed -i 's/find_package(Glog MODULE REQUIRED)/find_package(Glog CONFIG REQUIRED)/' \
+    CMakeLists.txt
 }
 
 build() {
