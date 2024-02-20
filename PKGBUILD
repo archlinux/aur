@@ -6,7 +6,7 @@
 _name=libaio
 pkgname=lib32-libaio
 pkgver=0.3.113
-pkgrel=3
+pkgrel=4
 pkgdesc='The Linux-native asynchronous I/O facility (aio) library'
 arch=(x86_64)
 url="https://pagure.io/libaio"
@@ -16,6 +16,8 @@ depends=(
   $_name=$pkgver
 )
 provides=(libaio.so)
+# LTO is not supported: https://pagure.io/libaio/issue/10
+options=(!lto)
 source=(
   $url/archive/$_name-$pkgver/$_name-$_name-$pkgver.tar.gz
   $pkgname-0.3.113-fix_test_case_23.patch
@@ -40,10 +42,6 @@ build() {
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-  # AIO library is a thin wrapper around kernel syscalls, it does not use stdlib
-  # and other helpers like stack protection libraries
-  export CFLAGS='-march=x86-64 -mtune=generic -O2 -pipe'
-
   make -C $_name-$_name-$pkgver
 }
 
