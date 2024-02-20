@@ -1,6 +1,6 @@
 # Mantenedor: Felipe Alfonso Gonzalez <f.alfonso@res-ear.ch>
 pkgname=term-pdf
-pkgver=0.0.4.4
+pkgver=0.0.4.5
 pkgrel=1
 pkgdesc="TermPDF Viewer is an open-source PDF file viewer designed to run in the terminal."
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/felipealfonsog/TermPDFViewer"
 license=('MIT')
 depends=('gcc' 'python-pip' 'python-pymupdf' 'python-termcolor')
 source=("https://github.com/felipealfonsog/TermPDFViewer/archive/refs/tags/v.${pkgver}.tar.gz")
-sha256sums=('7111ba0d04ae16d01fc590e3838edf22e2afef69db2be522775e2ede0659f76a')
+sha256sums=('a7da1cbb677b87122c6dd252de83e8f8088ec9d4a443ce83c1cff3ac9f3b592a')
 
 prepare() {
   tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
