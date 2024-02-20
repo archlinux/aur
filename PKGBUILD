@@ -1,7 +1,7 @@
 # Maintainer: Essem <smswessem@gmail.com>
 
 pkgname=gtultra-git
-pkgver=1.4.2
+pkgver=r149.45b8e3a
 pkgrel=1
 pkgdesc='Extensively modified GoatTracker Stereo (2.76) version with many new features'
 arch=('x86_64')
@@ -15,6 +15,11 @@ depends=(
 makedepends=('gendesk')
 source=("git+https://github.com/jpage8580/GTUltra.git" "fix-format-warnings.patch")
 sha512sums=('SKIP' '1f1d9f431585b841ad0a163915ed0fd0923c9690d58448faf6f61c5b4393c035fabdc03aa92852e2043dee25ee565ede74d318c86da2b9f0cb37426f0ef39f6e')
+
+pkgver() {
+  cd GTUltra
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
   cd GTUltra/src
