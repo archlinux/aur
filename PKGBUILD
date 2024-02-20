@@ -1,6 +1,8 @@
 #!/bin/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
+check_option "debug" "y" && BUILD_TYPE=Debug || BUID_TYPE=Release
+
 ## Configuration env vars:
 _BUILD_CUDA="${BUILD_CUDA:-ON}"
 _CUDA_ARCHITECTURES="${CUDA_ARCH:-native}"
@@ -60,7 +62,7 @@ build() {
     fi
 
   _CMAKE_FLAGS+=( -DTESTS_ENABLED=OFF
-                  -DCMAKE_BUILD_TYPE=Release
+                  -DCMAKE_BUILD_TYPE=${BUILD_TYPE}
                   -DCMAKE_INSTALL_PREFIX=/usr )
   cmake "${_CMAKE_FLAGS[@]}" -G Ninja -S "$pkgname" -B build
 # shellcheck disable=SC2046 # allow MAKEFLAGS to carry multiple flags.
