@@ -2,7 +2,7 @@
 _pgver=16  # postgresql version
 _pkgbase=pgvecto.rs
 pkgname=${_pkgbase}-immich
-pkgver=0.1.11
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Postgres extension that provides vector similarity search functions. It is written in Rust and based on pgrx. Version required for Immich."
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 makedepends=('cargo-nightly' 'clang' "postgresql>=${_pgver}" 'openssl' 'readline'  'libxml2' 'libxslt' 'zlib' 'ccache' 'git')
 # build fails with LTO enabled
 options=('!lto')
-provides=('pgvecto.rs=0.1.11')
+provides=("pgvecto.rs=$pkgver")
 conflicts=('pgvecto.rs')
 source=("${_pkgbase}-${pkgver}.tar.gz::https://github.com/tensorchord/pgvecto.rs/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('db1dfa32b44a42fb3759c8a2798d9052a1073de57222e91f97da4ba04178864f')
