@@ -22,7 +22,7 @@ depends=('openssl' 'hicolor-icon-theme'
     'gettext'
     'mimalloc')
 makedepends=('rust' 'git' 'jq')
-optdepends=()
+optdepends=('breeze-icons: better tray-icon icons')
 
 source=("git+${url}.git")
 

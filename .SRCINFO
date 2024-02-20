@@ -21,6 +21,7 @@ pkgbase = waylyrics-git
 	depends = sh
 	depends = gettext
 	depends = mimalloc
+	optdepends = breeze-icons: better tray-icon icons
 	provides = waylyrics
 	conflicts = waylyrics
 	options = !lto
