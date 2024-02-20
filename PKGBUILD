@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=circlize
-_pkgver=0.4.15
+_pkgver=0.4.16
 pkgname=r-${_pkgname,,}
-pkgver=0.4.15
-pkgrel=4
+pkgver=0.4.16
+pkgrel=1
 pkgdesc='Circular Visualization'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -27,7 +27,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d602d55313fe7c675109153d6ed3b99bdba5292e1deefed71d5a21e0db595cc7')
+sha256sums=('16dc32c7704906d13a9e5281bb396e92fb89a6b17fa5e201953240726b650b67')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
