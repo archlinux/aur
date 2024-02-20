@@ -1,17 +1,16 @@
 # Maintainer: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 
 pkgname=pdudaemon-git
-pkgver=r205.17eeacb
+pkgver=r229.09d06a7
 pkgrel=1
 pkgdesc='Daemon for controlling PDUs (Power Distribution Units)'
 arch=(any)
 url="https://github.com/pdudaemon/pdudaemon"
 license=('GPL2')
-depends=('python' 'python-requests' 'python-pexpect'
+depends=('python' 'python-aiohttp' 'python-requests' 'python-pexpect'
          'python-systemd' 'python-paramiko' 'python-pyserial'
-         'python-hidapi' 'python-pysnmp' 'python-pycryptodomex'
-         'python-pyusb' 'python-aiohttp')
-makedepends=('python-setuptools')
+         'python-hidapi' 'python-pysnmp' 'python-pyasn1' 'python-pyusb')
+makedepends=('python-setuptools' 'git' 'python-build' 'python-installer' 'python-wheel')
 conflicts=('pdudaemon')
 provides=('pdudaemon')
 backup=('etc/pdudaemon/pdudaemon.conf')
@@ -29,13 +28,13 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${pkgname%-git}"
 
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -D -m755 "pduclient" "${pkgdir}/usr/bin/pduclient"
   install -D -m644 "share/pdudaemon.conf" "${pkgdir}/etc/pdudaemon/pdudaemon.conf"
