@@ -13,12 +13,12 @@
 : ${_sccache:=}
 
 pkgname=niri-git
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="Scrollable-tiling Wayland compositor"
 arch=(x86_64 aarch64)
 url="https://github.com/YaLTeR/${pkgname%-git}"
-license=(GPL3-3.0-or-later)
+license=(GPL-3.0-or-later)
 depends=(cairo glib2 libinput libpipewire libxkbcommon mesa pango pixman seatd)
 makedepends=(clang rust git)
 [[ -n ${_sccache} ]] && makedepends+=(sccache)
