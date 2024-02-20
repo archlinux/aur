@@ -2,14 +2,14 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GENLIB
-_pkgver=1.1.9
+_pkgver=1.1.10
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Genealogical Data Analysis"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r-bootstrap
   r-doparallel
@@ -22,12 +22,12 @@ makedepends=(
   r-bh
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e3eaea81d1ef60d4e3e48a45007d4d29')
-sha256sums=('eed03324362afbe81138144342256ea036f8201cb1ec923d9bc63f508221b09b')
+md5sums=('92679de1dd67a40d2dd704b886d5c779')
+b2sums=('90e8be47dd0187096fcf39ade2fb59f9143fb48a881bffb816e81609ab40ba65cd2b5c842953479545005582c87b04bfba7d62f5ae0c2d0dfcac7c57bf2fdc28')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {

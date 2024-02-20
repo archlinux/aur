@@ -1,10 +1,10 @@
 pkgbase = r-genlib
 	pkgdesc = Genealogical Data Analysis
-	pkgver = 1.1.9
-	pkgrel = 3
+	pkgver = 1.1.10
+	pkgrel = 1
 	url = https://cran.r-project.org/package=GENLIB
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = r-bh
 	depends = r-bootstrap
 	depends = r-doparallel
@@ -12,8 +12,8 @@ pkgbase = r-genlib
 	depends = r-kinship2
 	depends = r-quadprog
 	depends = r-rcpp
-	source = https://cran.r-project.org/src/contrib/GENLIB_1.1.9.tar.gz
-	md5sums = e3eaea81d1ef60d4e3e48a45007d4d29
-	sha256sums = eed03324362afbe81138144342256ea036f8201cb1ec923d9bc63f508221b09b
+	source = https://cran.r-project.org/src/contrib/GENLIB_1.1.10.tar.gz
+	md5sums = 92679de1dd67a40d2dd704b886d5c779
+	b2sums = 90e8be47dd0187096fcf39ade2fb59f9143fb48a881bffb816e81609ab40ba65cd2b5c842953479545005582c87b04bfba7d62f5ae0c2d0dfcac7c57bf2fdc28
 
 pkgname = r-genlib
