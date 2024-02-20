@@ -3,7 +3,7 @@
 # Manitor: Bot-wxt1221 <3264117476@qq.com>
 
 pkgname=hmcl-bin
-_ver=3.5.5.235
+_ver=3.5.5.236
 pkgver=${_ver}
 pkgrel=1
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
