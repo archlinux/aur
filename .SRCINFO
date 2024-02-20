@@ -1,0 +1,17 @@
+pkgbase = obkey-python3
+	pkgdesc = graphical tool for configuring Openbox keybindings
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/MX-Linux/obkey
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python
+	depends = python-gobject
+	depends = python-gettext
+	conflicts = obkey
+	conflicts = obkey-git
+	source = git+https://github.com/MX-Linux/obkey.git
+	md5sums = SKIP
+
+pkgname = obkey-python3
