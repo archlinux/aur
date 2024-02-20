@@ -1,0 +1,17 @@
+pkgbase = nook-desktop-electron-bin
+	pkgdesc = Desktop version of Nook, since Chrome MV3 will render it unusable
+	pkgver = 1.0.10
+	pkgrel = 1
+	url = https://github.com/mn6/nook-desktop
+	arch = any
+	license = unknown
+	makedepends = asar
+	depends = electron
+	depends = bash
+	provides = nook
+	source = https://github.com/mn6/nook-desktop/releases/download/v1.0.10/nook-desktop-1.0.10-x64.nsis.7z
+	source = nook-desktop-electron.desktop
+	sha256sums = cb157650d60b52bacaea2c31142a3303dfdbb43b1e61ccae40993713b2911397
+	sha256sums = 57c31e3d47a7615c8ebad5d277137be00469601e58aa29326d656a3c498ce815
+
+pkgname = nook-desktop-electron-bin

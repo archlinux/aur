@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=nook
+Comment=Desktop version of Nook, since Chrome MV3 will render it unusable 
+Exec=nook
+Icon=nook
+Terminal=false
+StartupNotify=false
+Categories=Application;Graphics;Music;
