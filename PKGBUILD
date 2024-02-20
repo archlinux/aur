@@ -1,6 +1,7 @@
-# Maintainer: Julius Michaelis <gitter@liftm.de.de>
-# Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 # Maintainer: cosmo <aur@dawnson.is>
+# Maintainer: FreeFull <jazz2rulez@gmail.com>
+# Contributor: Julius Michaelis <gitter@liftm.de.de>
+# Contributor: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 ## The following variable can be customized at build time.
 ## Use env or export to change at your wish
@@ -13,8 +14,8 @@
 : ${_sccache:=}
 
 pkgname=niri-git
-pkgver=0.1.2
-pkgrel=3
+pkgver=0.1.2.r7.gc4c0784
+pkgrel=1
 pkgdesc="Scrollable-tiling Wayland compositor"
 arch=(x86_64 aarch64)
 url="https://github.com/YaLTeR/${pkgname%-git}"
@@ -39,7 +40,8 @@ source=(${pkgname%-git}::git+$url.git)
 b2sums=('SKIP')
 
 pkgver() {
-  git -C ${pkgname%-git} describe --long --tags --abbrev=7 | sed 's|^v||;s|-[0-9]*-g|.|'
+  cd ${pkgname%-git}
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
