@@ -1,7 +1,7 @@
 pkgbase = archiver
 	pkgdesc = Easily create & extract archives, and compress & decompress files of various formats
 	pkgver = 3.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mholt/archiver
 	arch = x86_64
 	license = MIT
