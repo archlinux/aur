@@ -1,44 +1,37 @@
-# Maintainer: Kevin Slagle <kjslag at gmail dot com>
+# Maintainer:  Andrew O'Neill <andrew at haunted dot sh>
+# Contributor: Kevin Slagle <kjslag at gmail dot com>
 
 pkgname=regina-normal
-pkgver=5.1
+pkgver=7.3
 pkgrel=1
-pkgdesc='software for low-dimensional topology'
+pkgdesc='Software for low-dimensional topology'
 arch=('x86_64')
-url='https://regina-normal.github.io/'
-license=('GPL')
-# hicolor-icon-theme desktop-file-utils were suggested by namcap
-depends=(gmp libxml2 jansson tokyocabinet popt boost qt5-svg python2 hicolor-icon-theme desktop-file-utils)
-optdepends=('doxygen: C++/Python API docs'
-            'graphviz: drawing graphs'
-            'libxslt: user handbook'
-            'openmpi: MPI-enabled utilities'
-            'cppunit: test suite')
-source=("https://github.com/regina-normal/regina/releases/download/regina-$pkgver/regina-$pkgver.tar.gz")
-md5sums=('76ea01d700618325c3f0cbaa6acff159')
+url='https://regina-normal.github.io'
+license=('GPL-2.0-or-later')
+depends=('gmp' 'graphviz' 'jansson' 'libxml2' 'popt' 'python3' 'qt6-base' 'qt6-svg' 'tokyocabinet' 'zlib')
+makedepends=('cmake')
+optdepends=('doxygen: Generate C++/Python API docs'
+	          'cppunit: Build full test suite'
+            'libxslt: Generate the user handbook')
+source=("https://github.com/${pkgname}/regina/archive/regina-${pkgver}.tar.gz")
+sha256sums=('aaa2e2f1b6b5c3a8dc9417ff3ad515efb104863c680ca2337029a81f72d2bfd0')
 
 prepare() {
-    cd "regina-$pkgver"
-    
-    # add a missing header file to fix a compile error
-    sed -i '45i#include <functional>' engine/triangulation/dim3/triangulation3.h
+  cd "regina-regina-${pkgver}"
+
+  sed -i '45 i #include <stdint.h>' engine/utilities/stringutils.h
+  sed -i '44 i #include <stdint.h>' engine/triangulation/facepair.h
 }
 
 build() {
-    cd "regina-$pkgver"
-    mkdir build
-    cd build
-    
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON_EXECUTABLE=/bin/python2 -DBoost_PYTHON_VERSION=2.7 ..
-    make
+  cd "regina-regina-${pkgver}"
+
+  cmake -DCMAKE_INSTALL_PREFIX=/usr .
+  make
 }
 
 package() {
-    cd "regina-$pkgver/build"
-    make DESTDIR="$pkgdir/" install
-    
-    # regina-python seems to assume that the build directory will still be around after the install.
-    # Since the build directory is temporary, we copy the engine source files to usr/share/regina/ (since regina-python also makes use of /usr/share/regina/examples/) and update the regina-python to use this location.
-    cp -R ../engine $pkgdir/usr/share/regina/
-    sed -i "s|my \$srcdir = \".*src/regina-$pkgver\";|my \$srcdir = \"/usr/share/regina/\";|" $pkgdir/usr/bin/regina-python
+  cd "regina-regina-${pkgver}"
+
+  make DESTDIR="${pkgdir}" install
 }
