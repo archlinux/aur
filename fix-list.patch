@@ -1,0 +1,17 @@
+diff -u a/bk b/bk
+--- a/bk	2024-02-20 14:10:28.914716923 +0530
++++ b/bk	2024-02-20 14:11:44.642008620 +0530
+@@ -7,8 +7,11 @@
+   echo "  $0 <command> [args]" >&2
+   echo >&2
+   echo available commands: >&2
+-  for x in $(ls "$d"/cmd); do
+-    echo "  $x" >&2
++  for x in $(ls "$d"); do
++    if [[ "$x" =~ ^bk- ]]; then
++      # Strip the prefix and print the remaining filename with tab padding
++      echo "  ${x:3}" >&2
++    fi
+   done
+   echo >&2
+   echo • some commands provide \`--help\` >&2
