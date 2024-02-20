@@ -1,0 +1,5 @@
+[lib32-libaio]
+source = "git"
+git = "https://pagure.io/libaio"
+prefix = "libaio-"
+include_regex = "(libaio)-([\\d.*]+)"
