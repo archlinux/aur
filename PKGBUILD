@@ -18,7 +18,7 @@ source=("LICENSE-$pkgver.html::https://easyeda.com/page/legal"
         "$pkgname.install")
 source_x86_64=("$_pkgname-x86_64-$pkgver.zip::https://image.easyeda.com/files/easyeda-pro-linux-x64-$pkgver.zip")
 source_aarch64=("$_pkgname-aarch64-$pkgver.zip::https://image.easyeda.com/files/easyeda-pro-linux-arm64-$pkgver.zip")
-sha256sums=('fdbff98b4c8166bf2ba88df6693ed8cf2dd447766765f843cc253c51c167ff1a'
+sha256sums=('SKIP'
             'ab64abe7821e4ea37a0e4d1f77c94f37d6a51c7df2038ba7b609c640adf8e51d')
 sha256sums_x86_64=('63dd7f10eae63b49afd7409b4f4e4abf3ef00f98b8b9e7785a39c4ad50082d6f')
 sha256sums_aarch64=('8900dc7917dd8e062808378ede09ecc886ba0105a28fc87a3de7582c467fbfcb')
