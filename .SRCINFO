@@ -1,10 +1,10 @@
 pkgbase = r-ggvenndiagram
 	pkgdesc = A 'ggplot2' Implement of Venn Diagram
-	pkgver = 1.5.0
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggVennDiagram
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	depends = r-aplot
 	depends = r-dplyr
 	depends = r-forcats
@@ -15,10 +15,12 @@ pkgbase = r-ggvenndiagram
 	optdepends = r-knitr
 	optdepends = r-plotly
 	optdepends = r-rcolorbrewer
+	optdepends = r-rmarkdown
 	optdepends = r-shiny
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/ggVennDiagram_1.5.0.tar.gz
-	md5sums = e225a0b374c62445bff961725fbdd9c0
-	b2sums = ca20a5c335c2c34776ca5a7d9894b25eb05960408a9f6f4334a8ed026edb1813d6ec2a69fe3c2bc5ca51a6f0d07451d858245cf136f1a664b1f72778d26534c8
+	optdepends = r-tidyr
+	source = https://cran.r-project.org/src/contrib/ggVennDiagram_1.5.2.tar.gz
+	md5sums = 25718bbd19e6bf11b4dea69609664d64
+	b2sums = dad9a840703a87b479075655f264f8b4a2cb6b87502111c173437a47f21b47157cf1dcee922f1f924e06bbc76707cda3cd8a6017cb39f8e60abe6889844553db
 
 pkgname = r-ggvenndiagram

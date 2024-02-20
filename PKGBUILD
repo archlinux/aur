@@ -1,14 +1,14 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=ggVennDiagram
-_pkgver=1.5.0
+_pkgver=1.5.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="A 'ggplot2' Implement of Venn Diagram"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL3)
+license=('GPL-3.0-only')
 depends=(
   r-aplot
   r-dplyr
@@ -22,12 +22,14 @@ optdepends=(
   r-knitr
   r-plotly
   r-rcolorbrewer
+  r-rmarkdown
   r-shiny
   r-testthat
+  r-tidyr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e225a0b374c62445bff961725fbdd9c0')
-b2sums=('ca20a5c335c2c34776ca5a7d9894b25eb05960408a9f6f4334a8ed026edb1813d6ec2a69fe3c2bc5ca51a6f0d07451d858245cf136f1a664b1f72778d26534c8')
+md5sums=('25718bbd19e6bf11b4dea69609664d64')
+b2sums=('dad9a840703a87b479075655f264f8b4a2cb6b87502111c173437a47f21b47157cf1dcee922f1f924e06bbc76707cda3cd8a6017cb39f8e60abe6889844553db')
 
 build() {
   mkdir build
