@@ -9,7 +9,7 @@ pkgbase = wps-office-cn
 	options = !emptydirs
 	source = fix-wps-python-parse.patch
 	sha1sums = f3713481edf04ffb08be8d24dce66554dd5a4f13
-	source_x86_64 = wps-office_11.1.0.11711_amd64.deb::https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2019/11711/wps-office_11.1.0.11711_amd64.deb?t=1708431620&k=b0c6e69a721a36ba4abaf0a6382ccfed
+	source_x86_64 = https://mirrors.163.com/ubuntukylin/pool/partner/wps-office_11.1.0.11711_amd64.deb
 	sha1sums_x86_64 = 61e0ca79b7ef506fd7470fad1d9b63f325bb5c57
 	source_aarch64 = wps-office_11.1.0.11711_arm64.deb::https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2019/11711/wps-office_11.1.0.11711_arm64.deb?t=1708431853&k=03f54f3eb111777ea5a952ed28e97ef6
 	sha1sums_aarch64 = d5f3f074649f780d87ba872edaa456297558deca
