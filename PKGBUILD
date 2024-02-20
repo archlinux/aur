@@ -4,13 +4,13 @@
 _pkgname=gimp
 pkgname=${_pkgname}-devel-noconflict
 pkgver=2.99.18
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Image Manipulation Program (Development version, doesn't conflict with gimp 2.0)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://www.gimp.org/"
 license=('GPL' 'LGPL')
 depends=('gtk3' 'lcms2' 'libwmf' 'icu' 'enchant' 'libgexiv2' 'librsvg' 'desktop-file-utils'
-         'libexif' 'libgudev' 'openjpeg2' 'poppler-glib' 'poppler-data' 'openexr' 'mypaint-brushes1'
+         'libexif' 'libgudev' 'openjpeg2' 'poppler-glib' 'poppler-data' 'openexr' 'mypaint-brushes1' 'cfitsio'
          'babl>=0.1.98' 'gegl>=0.4.48' 'cairo' 'python-gobject' 'appstream-glib' 'libxmu' 'graphviz')
 makedepends=('appstream' 'intltool' 'libxslt' 'glib-networking'
              'alsa-lib' 'curl' 'ghostscript' 'libxpm'
