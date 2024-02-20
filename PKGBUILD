@@ -4,7 +4,7 @@
 _commit="566353c6a7640864d3c36000d23220c62dc41df1"
 pkgname="wlclipblock"
 pkgver="0.1.2"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A hack to prevent Wayland compositors from advertising support for the primary clipboard"
 url="https://github.com/notpeelz/wlclipblock"
 arch=("x86_64")
