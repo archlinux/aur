@@ -1,6 +1,6 @@
 pkgbase = chatgpt.sh
 	pkgdesc = Shell wrapper for OpenAI's ChatGPT, DALL-E, Whisper, and TTS. Features LocalAI, Ollama, and Google Gemini integration.
-	pkgver = 0.52
+	pkgver = 0.52.1
 	pkgrel = 1
 	url = https://gitlab.com/fenixdragao/shellchatgpt
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = chatgpt.sh
 	optdepends = python: count input tokens (tiktoken)
 	optdepends = bat: render markdown (pygmentize, glow, mdcat, mdless)
 	optdepends = w3m: dump url text (lynx, elinks, links)
-	source = chatgpt.sh-0.52::git+https://gitlab.com/fenixdragao/shellchatgpt.git#commit=0ede2529c5da84bd62b8000b9a420234bc9f5f08
+	source = chatgpt.sh-0.52.1::git+https://gitlab.com/fenixdragao/shellchatgpt.git#commit=8f4abac2f5c3df527094f0a743b10b2cab04f7dd
 	sha256sums = SKIP
 
 pkgname = chatgpt.sh
