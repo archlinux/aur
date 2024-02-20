@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=musicpod-git
 _app_id=org.feichtmeier.Musicpod
-pkgver=1.0.1.r18.g07da393
+pkgver=1.0.2.r3.g0fdc2b5
 pkgrel=1
 _flutter_ver=3.19.0
 pkgdesc="Music, radio, television and podcast player"
@@ -27,6 +27,7 @@ build() {
   cd "${pkgname%-git}"
   export FLUTTER_HOME="$srcdir/flutter"
   export PATH="${PATH}:${FLUTTER_HOME}/bin:"
+  flutter --disable-analytics
   flutter pub get
   flutter build linux
 }
