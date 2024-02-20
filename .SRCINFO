@@ -1,7 +1,7 @@
 pkgbase = postgresql13
 	pkgdesc = Sophisticated object-relational DBMS
-	pkgver = 13.13
-	pkgrel = 2
+	pkgver = 13.14
+	pkgrel = 1
 	url = https://www.postgresql.org/
 	arch = x86_64
 	license = custom:PostgreSQL
@@ -16,12 +16,11 @@ pkgbase = postgresql13
 	makedepends = icu
 	makedepends = systemd
 	makedepends = libldap
-	makedepends = llvm15
-	makedepends = clang15
+	makedepends = llvm<19
+	makedepends = clang<19
 	makedepends = libxslt
 	options = debug
-	source = https://ftp.postgresql.org/pub/source/v13.13/postgresql-13.13.tar.bz2
-	source = compile-with-newer-libxml2.patch
+	source = https://ftp.postgresql.org/pub/source/v13.14/postgresql-13.14.tar.bz2
 	source = postgresql-run-socket.patch
 	source = postgresql-perl-rpath.patch
 	source = postgresql.pam
@@ -30,8 +29,7 @@ pkgbase = postgresql13
 	source = postgresql-check-db-dir
 	source = postgresql.sysusers
 	source = postgresql.tmpfiles
-	md5sums = d0c2efc0a6996421129c43e5b8baa075
-	md5sums = f14da933fe32e107bbe614a329129eed
+	md5sums = ed4b42c9b53c04d7d601327eacfcd231
 	md5sums = 0f96c09cb07cb5bf7c0f74b399128f33
 	md5sums = 21816c9949ab9766c409421314045d2e
 	md5sums = 96f82c38f3f540b53f3e5144900acf17
@@ -40,8 +38,7 @@ pkgbase = postgresql13
 	md5sums = 38fe206c794e2eff95556947af0e5ce5
 	md5sums = 2050d34e4dfa05f3c6fe4cd7615eaa4b
 	md5sums = 02d017978f0bba21f455feceb3f0a45a
-	sha256sums = 8af69c2599047a2ad246567d68ec4131aef116954d8c3e469e9789080b37a474
-	sha256sums = 03c99bb791e83f42f847e6c3ff893f7118fa6c61399fa75638f60b39ab6a8443
+	sha256sums = b8df078551898960bd500dc5d38a177e9905376df81fe7f2b660a1407fa6a5ed
 	sha256sums = 02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a
 	sha256sums = af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb
 	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
@@ -50,8 +47,7 @@ pkgbase = postgresql13
 	sha256sums = 7db9626c322928b2465aa126b48ba7f0eebd366bf2aa19c9c0a92b488cb469c5
 	sha256sums = 7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12
 	sha256sums = 4a4c0bb9ceb156cc47e9446d8393d1f72b4fe9ea1d39ba17213359df9211da57
-	b2sums = ee4b2d022c1b3003dc9c4da96e5900878a2fc70b3033470d0fb972131e063a047895e86d5d1e36297885f2821f0ef3af966cabe32941efba4bd11bdd0557e44f
-	b2sums = 7a61d390037eae8c70778def53b9ab491d9de9ae952bf79591e313757df21e54d9f0b8bbdd38c3dcc0a444f257c7d39bfc610975a495bae20013a1415664b05b
+	b2sums = 67b1c85cac910f445a393060646e901e03eccf9c00d3b4d41b12acc9d94254697c46060f09a4c6ed57ec33b202c18916b03f8b322c3be0f195e0315e7a874933
 	b2sums = 71dc1b4e41294fd235db05317c991d42de082c49d38a2f97d1394572a93a4aa77f42ec29b4e6cf0a17adb3a4471afcb1e2464870f2b9e847906bf49541763a53
 	b2sums = 5135c5f9dafe427de8d3740d4a67c6dba2869be47dc52b4190b8aa1148e702992fde1821371b68e93b224f5805f697d490ea28ec80d7ce55e5a224551b0a6247
 	b2sums = 3eab84d332d96678fe6e435ee243c8f1a82b838f601d61d3604d11e918aed7a62202edca5e476c4b9031ed284570e6fcd6c659cfdbd9624aa0019d3233755f81
@@ -69,7 +65,7 @@ pkgname = postgresql13-libs
 	depends = zlib
 	depends = libldap
 	provides = postgresql-client
-	provides = postgresql-libs=13.13
+	provides = postgresql-libs=13.14
 	provides = libpq.so
 	provides = libecpg.so
 	provides = libecpg_compat.so
@@ -79,7 +75,7 @@ pkgname = postgresql13-libs
 
 pkgname = postgresql13-docs
 	pkgdesc = HTML documentation for PostgreSQL
-	provides = postgresql-docs=13.13
+	provides = postgresql-docs=13.14
 	conflicts = postgresql-docs
 	options = debug
 	options = docs
@@ -87,7 +83,7 @@ pkgname = postgresql13-docs
 pkgname = postgresql13
 	pkgdesc = Sophisticated object-relational DBMS
 	install = postgresql.install
-	depends = postgresql-libs>=13.13
+	depends = postgresql-libs>=13.14
 	depends = krb5
 	depends = libxml2
 	depends = readline>=6.0
@@ -96,7 +92,7 @@ pkgname = postgresql13
 	depends = icu
 	depends = systemd-libs
 	depends = libldap
-	depends = llvm15-libs
+	depends = llvm-libs<19
 	depends = libxslt
 	depends = libicui18n.so=74
 	depends = libicuuc.so=74
@@ -106,7 +102,7 @@ pkgname = postgresql13
 	optdepends = tcl: for PL/Tcl support
 	optdepends = postgresql-old-upgrade: upgrade from previous major version using pg_upgrade
 	optdepends = logrotate: rotates system logs automatically
-	provides = postgresql=13.13
+	provides = postgresql=13.14
 	conflicts = postgresql
 	options = debug
 	options = staticlibs

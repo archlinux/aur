@@ -5,18 +5,17 @@
 
 pkgbase=postgresql13
 pkgname=($pkgbase-libs $pkgbase-docs $pkgbase)
-pkgver=13.13
+pkgver=13.14
 _majorver=${pkgver%.*}
-pkgrel=2
+pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
 license=('custom:PostgreSQL')
 makedepends=('krb5' 'libxml2' 'python' 'perl' 'tcl>=8.6.0' 'openssl>=1.0.0'
-             'pam' 'zlib' 'icu' 'systemd' 'libldap' 'llvm15' 'clang15' 'libxslt')
+             'pam' 'zlib' 'icu' 'systemd' 'libldap' 'llvm<19' 'clang<19' 'libxslt')
 options=('debug')
 source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2
-        compile-with-newer-libxml2.patch
         postgresql-run-socket.patch
         postgresql-perl-rpath.patch
         postgresql.pam
@@ -25,8 +24,7 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         postgresql-check-db-dir
         postgresql.sysusers
         postgresql.tmpfiles)
-md5sums=('d0c2efc0a6996421129c43e5b8baa075'
-         'f14da933fe32e107bbe614a329129eed'
+md5sums=('ed4b42c9b53c04d7d601327eacfcd231'
          '0f96c09cb07cb5bf7c0f74b399128f33'
          '21816c9949ab9766c409421314045d2e'
          '96f82c38f3f540b53f3e5144900acf17'
@@ -35,8 +33,7 @@ md5sums=('d0c2efc0a6996421129c43e5b8baa075'
          '38fe206c794e2eff95556947af0e5ce5'
          '2050d34e4dfa05f3c6fe4cd7615eaa4b'
          '02d017978f0bba21f455feceb3f0a45a')
-sha256sums=('8af69c2599047a2ad246567d68ec4131aef116954d8c3e469e9789080b37a474'
-            '03c99bb791e83f42f847e6c3ff893f7118fa6c61399fa75638f60b39ab6a8443'
+sha256sums=('b8df078551898960bd500dc5d38a177e9905376df81fe7f2b660a1407fa6a5ed'
             '02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a'
             'af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
@@ -45,8 +42,7 @@ sha256sums=('8af69c2599047a2ad246567d68ec4131aef116954d8c3e469e9789080b37a474'
             '7db9626c322928b2465aa126b48ba7f0eebd366bf2aa19c9c0a92b488cb469c5'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
             '4a4c0bb9ceb156cc47e9446d8393d1f72b4fe9ea1d39ba17213359df9211da57')
-b2sums=('ee4b2d022c1b3003dc9c4da96e5900878a2fc70b3033470d0fb972131e063a047895e86d5d1e36297885f2821f0ef3af966cabe32941efba4bd11bdd0557e44f'
-        '7a61d390037eae8c70778def53b9ab491d9de9ae952bf79591e313757df21e54d9f0b8bbdd38c3dcc0a444f257c7d39bfc610975a495bae20013a1415664b05b'
+b2sums=('67b1c85cac910f445a393060646e901e03eccf9c00d3b4d41b12acc9d94254697c46060f09a4c6ed57ec33b202c18916b03f8b322c3be0f195e0315e7a874933'
         '71dc1b4e41294fd235db05317c991d42de082c49d38a2f97d1394572a93a4aa77f42ec29b4e6cf0a17adb3a4471afcb1e2464870f2b9e847906bf49541763a53'
         '5135c5f9dafe427de8d3740d4a67c6dba2869be47dc52b4190b8aa1148e702992fde1821371b68e93b224f5805f697d490ea28ec80d7ce55e5a224551b0a6247'
         '3eab84d332d96678fe6e435ee243c8f1a82b838f601d61d3604d11e918aed7a62202edca5e476c4b9031ed284570e6fcd6c659cfdbd9624aa0019d3233755f81'
@@ -58,7 +54,6 @@ b2sums=('ee4b2d022c1b3003dc9c4da96e5900878a2fc70b3033470d0fb972131e063a047895e86
 
 prepare() {
   cd postgresql-${pkgver}
-  patch -p0 < ../compile-with-newer-libxml2.patch
   patch -p1 < ../postgresql-run-socket.patch
   patch -p1 < ../postgresql-perl-rpath.patch
 }
@@ -96,7 +91,6 @@ build() {
   # so I don't know why this was added, but I can't keep this
   #CFLAGS+=" -ffat-lto-objects"
 
-  LLVM_CONFIG=llvm-config-15 CLANG=/usr/lib/llvm15/bin/clang \
   ./configure "${configure_options[@]}"
   make world
 }
@@ -178,7 +172,7 @@ package_postgresql13() {
   pkgdesc='Sophisticated object-relational DBMS'
   backup=('etc/pam.d/postgresql' 'etc/logrotate.d/postgresql')
   depends=("postgresql-libs>=${pkgver}" 'krb5' 'libxml2' 'readline>=6.0'
-           'openssl>=1.0.0' 'pam' 'icu' 'systemd-libs' 'libldap' 'llvm15-libs' 'libxslt')
+           'openssl>=1.0.0' 'pam' 'icu' 'systemd-libs' 'libldap' 'llvm-libs<19' 'libxslt')
   optdepends=('python: for PL/Python 3 support'
               'perl: for PL/Perl support'
               'tcl: for PL/Tcl support'
