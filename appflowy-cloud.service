@@ -6,6 +6,7 @@ After=network-online.target
 [Service]
 User=appflowy
 Group=appflowy
+EnvironmentFile=/etc/appflowy/config.env
 PrivateTmp=true
 ProtectHome=true
 ProtectSystem=strict
@@ -28,9 +29,9 @@ KillMode=mixed
 KillSignal=SIGTERM
 Restart=on-failure
 RestartPreventExitStatus=2
-ExecStartPre=/usr/bin/nv /etc/appflowy/config.env /usr/bin/sqlx database create
-ExecStartPre=/usr/bin/nv /etc/appflowy/config.env /usr/bin/sqlx migrate run --source /usr/share/appflowy-cloud/migrations
-ExecStart=/usr/bin/nv /etc/appflowy/config.env /usr/bin/appflowy-cloud
+ExecStartPre=/usr/bin/sqlx database create
+ExecStartPre=/usr/bin/sqlx migrate run --source /usr/share/appflowy-cloud/migrations
+ExecStart=/usr/bin/appflowy-cloud
 
 [Install]
 WantedBy=multi-user.target
