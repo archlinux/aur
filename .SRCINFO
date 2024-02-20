@@ -1,7 +1,7 @@
 pkgbase = bunsen-openbox-pipemenus-git
 	pkgdesc = Collection of Openbox pipemenus from BunsenLabs Linux
-	pkgver = r189.7885b20
-	pkgrel = 5
+	pkgver = r448.c1c32f8
+	pkgrel = 1
 	url = https://github.com/BunsenLabs/bunsen-pipemenus
 	arch = any
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = bunsen-openbox-pipemenus-git
 	depends = zenity
 	depends = wget
 	depends = curl
-	depends = compton
+	depends = picom
 	depends = tar
 	depends = python
 	depends = python-paramiko
@@ -24,8 +24,7 @@ pkgbase = bunsen-openbox-pipemenus-git
 	depends = bunsen-utilities-git
 	provides = bunsen-openbox-pipemenus
 	conflicts = bunsen-openbox-pipemenus
-	source = bunsen-openbox-pipemenus-git::git+https://github.com/BunsenLabs/bunsen-pipemenus.git#branch=master
+	source = bunsen-openbox-pipemenus-git::git+https://github.com/BunsenLabs/bunsen-pipemenus.git#branch=boron
 	md5sums = SKIP
 
 pkgname = bunsen-openbox-pipemenus-git
-
