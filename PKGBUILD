@@ -29,7 +29,7 @@ _fragment=${FRAGMENT:-#branch=main}
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.4'); }
 
 pkgname=blender-develop-git
-pkgver=4.2.r132961.g76b09765002
+pkgver=4.2.r133163.g99673edd853
 pkgrel=1
 pkgdesc="Development version of Blender (non-conflicting version)"
 changelog=blender.changelog
@@ -62,7 +62,6 @@ source=("blender::git+https://github.com/blender/blender${_fragment}"
         blender-sycl-path.patch
         force-draco1.patch
         force-draco2.patch
-        openpgl6.patch
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -72,8 +71,7 @@ sha256sums=('SKIP'
             '60ac315c873a3842dd46393ed351c008255911a8fa352d39587a5eede3983e3a'
             '05e83a1c06790594fcd96f86bac7912d67c91ce9076cfc7088203b37f65949b1'
             'e3ff41269ab26f34e7762ee2754d238af375761131178917f61a97763f60ee0d'
-            'a7c809d2b979e097a1853d42ad0edb6d9fa2ef51c99424257e5ec083ef76bb03'
-            '3b1cdb2d18eb5852e72e031dc9b184b8ee695f858361967ef56953b1ffcf58b9')
+            'a7c809d2b979e097a1853d42ad0edb6d9fa2ef51c99424257e5ec083ef76bb03')
 
 pkgver() {
   blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
@@ -92,7 +90,6 @@ prepare() {
   fi
   ((DISABLE_DRACO)) || git -C "$srcdir/blender" apply -v "${srcdir}"/force-draco1.patch
   ((DISABLE_DRACO)) || git -C "$srcdir/blender/scripts/addons" apply -v "${srcdir}"/force-draco2.patch
-  git -C "$srcdir/blender" apply -v "${srcdir}"/openpgl6.patch
 }
 
 build() {

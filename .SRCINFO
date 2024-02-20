@@ -1,6 +1,6 @@
 pkgbase = blender-develop-git
 	pkgdesc = Development version of Blender (non-conflicting version)
-	pkgver = 4.2.r132961.g76b09765002
+	pkgver = 4.2.r133163.g99673edd853
 	pkgrel = 1
 	url = https://blender.org/
 	changelog = blender.changelog
@@ -61,7 +61,6 @@ pkgbase = blender-develop-git
 	source = blender-sycl-path.patch
 	source = force-draco1.patch
 	source = force-draco2.patch
-	source = openpgl6.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -71,6 +70,5 @@ pkgbase = blender-develop-git
 	sha256sums = 05e83a1c06790594fcd96f86bac7912d67c91ce9076cfc7088203b37f65949b1
 	sha256sums = e3ff41269ab26f34e7762ee2754d238af375761131178917f61a97763f60ee0d
 	sha256sums = a7c809d2b979e097a1853d42ad0edb6d9fa2ef51c99424257e5ec083ef76bb03
-	sha256sums = 3b1cdb2d18eb5852e72e031dc9b184b8ee695f858361967ef56953b1ffcf58b9
 
 pkgname = blender-develop-git
