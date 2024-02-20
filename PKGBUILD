@@ -33,8 +33,6 @@ build() {
 	cargo auditable build --frozen --release --bin download_from_google_storage
 }
 
-
-
 check() {
 	cd "${_srcname}"
 	cargo check
