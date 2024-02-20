@@ -4,13 +4,22 @@
 # https://icecatbrowser.org/
 # https://www.gnu.org/software/gnuzilla/
 # https://git.savannah.gnu.org/cgit/gnuzilla.git
-# https://software.classictetris.net/icecat/
+# https://software.classictetris.net/icecat/last_version_check
+# https://codeberg.org/chippy/gnuzilla
 
 ## options
-: ${_autoupdate:=false}
+: ${_build_prepatched:=false}
+: ${_build_repatch:=false}
 
 : ${_build_pgo:=true}
 : ${_build_pgo_reuse:=true}
+: ${_build_pgo_xvfb:=false}
+
+if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ] || [ "${_build_prepatched::1}" != "t" ] ; then
+  : ${_autoupdate:=false}
+else
+  : ${_autoupdate:=true}
+fi
 
 : ${_build_browser:=true}
 
@@ -19,10 +28,9 @@
 ## basic info
 _pkgname="icecat"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=115.7.0
+pkgver=115.8.0
 pkgrel=1
 pkgdesc="GNU version of the Firefox browser"
-url="https://icecatbrowser.org"
 license=('MPL-2.0')
 arch=('x86_64')
 
@@ -78,11 +86,29 @@ _main_package() {
     'xdg-desktop-portal: Screensharing with Wayland'
   )
 
-  if [[ "${_build_pgo::1}" == "t" ]] ; then
+  if [ "${_build_prepatched::1}" != "t" ] ; then
     makedepends+=(
-      weston
-      xwayland-run # AUR
+      git
+      m4
+      python-jsonschema
+      python-psutil
+      python-setuptools
+      wget
     )
+  fi
+
+  if [[ "${_build_pgo::1}" == "t" ]] ; then
+    if [[ "${_build_pgo_xvfb::1}" == "t" ]] ; then
+      makedepends+=(
+        xorg-server-xvfb
+      )
+    else
+      makedepends+=(
+        weston
+        xorg-xwayland
+        xwayland-run # AUR
+      )
+    fi
   fi
 
   if [ -n "$_pkgtype" ] ; then
@@ -94,29 +120,113 @@ _main_package() {
     !debug
     !emptydirs
     !lto
+    !makeflags
     !strip
   )
 
-  _pkgsrc="$_pkgname-$_pkgver"
-  _pkgext="tar.bz2"
-  source=("https://software.classictetris.net/icecat/${_pkgver}esr/$_pkgsrc-gnu1.$_pkgext")
+  if [[ "${_build_prepatched::1}" == "t" ]] ; then
+    url="https://icecatbrowser.org/"
+    _update_version
 
-  if [ "${_autoupdate::1}" != 't' ] ; then
-    sha256sums=('3ed95f0d7810494a1da4657adb67c446819eb39e6333d1f9bb0afe7305284ff3')
+    _pkgsrc="$_pkgname-$_pkgver"
+    _pkgext="tar.bz2"
+    source+=("https://software.classictetris.net/icecat/${_pkgver}esr/$_pkgsrc-gnu1.$_pkgext")
+    sha256sums+=('SKIP')
   else
-    sha256sums=('SKIP')
+    url="https://git.savannah.gnu.org/cgit/gnuzilla.git"
+
+    noextract=("firefox-${pkgver}esr.source.tar.xz")
+    _commit=7e2ff1ad7e03d2bfe0b2daf3f25961b06cab8848
+    _pkgsrc="$_pkgname-$pkgver"
+    _pkgsrc_gnuzilla="gnuzilla-$_commit"
+    _pkgext="tar.gz"
+    source+=(
+      "https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/$_pkgsrc_gnuzilla.$_pkgext"
+      https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz{,.asc}
+    )
+    sha256sums+=(
+      'SKIP'
+      'af8086f23efc8492d286671f6035b1a915de6f4ed5c7897e40be0e1cb6b895ea'
+      'SKIP'
+    )
+
+    validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
+
+    _languages=(
+      ach af an ar ast az be bg bn br bs ca ca-valencia cak cs cy da de dsb
+      el en-CA en-GB eo es-AR es-CL es-ES es-MX et eu fa ff fi fr fur fy-NL
+      ga-IE gd gl gn gu-IN he hi-IN hr hsb hu hy-AM ia id is it ja ja-JP-mac
+      ka kab kk km kn ko lij lt lv mk mr ms my nb-NO ne-NP nl nn-NO oc
+      pa-IN pl pt-BR pt-PT rm ro ru sc sco si sk sl son sq sr sv-SE szl
+      ta te tg th tl tr trs uk ur uz vi xh zh-CN zh-TW 
+    )
+
+    for _locale in "${_languages[@]}"; do
+      source+=("l10n-central-$pkgver-$pkgrel-$_locale.zip"::"https://hg.mozilla.org/l10n-central/$_locale/archive/tip.zip")
+      sha256sums+=('SKIP')
+      noextract+=("l10n-central-$pkgver-$pkgrel-$_locale.zip")
+    done
   fi
 }
 
-# common functions
-pkgver() {
-  echo "${_pkgver:?}"
+_make_icecat() {
+  if [[ "${_build_prepatched::1}" == "t" ]] ; then
+    return
+  fi
+
+  if [ ${_build_repatch::1} != "t" ] && [ -e "$SRCDEST/$_pkgsrc.tar.zst" ] ; then
+    echo "Restoring previously patched sources..."
+    rm -rf "$srcdir/$_pkgsrc"
+    bsdtar -xf "$SRCDEST/$_pkgsrc.tar.zst"
+    return
+  fi
+
+  pushd "$_pkgsrc_gnuzilla"
+
+  # uncomment if there are problems with gpg
+  #sed -e 's/^verify_sources$//g' -i makeicecat
+
+  # clean output in case there is already an old build
+  mkdir output || rm -rf output/*
+  mkdir output/l10n
+
+  echo "Preparing Firefox ESR..."
+  cp --reflink=auto -f "$srcdir"/firefox-${pkgver}esr.source.tar.xz{,.asc} output/
+
+  echo "Preparing translations..."
+  local L10N_PREFS_DIR="browser/chrome/browser/preferences"
+  local L10N_DTD_FILE="advanced-scripts.dtd"
+
+  for _locale in "${_languages[@]}"; do
+    mkdir "output/l10n/$_locale"
+    bsdtar -C "output/l10n/$_locale" --strip-components 1 -xf "$srcdir/l10n-central-$pkgver-$pkgrel-$_locale.zip"
+    mkdir -p "output/l10n/$_locale/$L10N_PREFS_DIR"
+    touch "output/l10n/$_locale/$L10N_PREFS_DIR/$L10N_DTD_FILE"
+    rm -rf "output/l10n/$_locale"/.hg*
+  done
+
+  echo "Patching sources..."
+
+  # avoid redownloading firefox
+  sed -e '/rm -rf output/d' -i makeicecat
+  sed -e 's/wget -N/wget -nv -Nc/g' -i makeicecat
+
+  # don't make source tarball
+  sed '/^finalize_sourceball$/d' -i makeicecat
+
+  # produce icecat sources
+  bash makeicecat
+  popd
+
+  echo "Saving patched sources..."
+  [ -e "$SRCDEST/$_pkgsrc.tar.zst" ] && rm -rf "$SRCDEST/$_pkgsrc.tar.zst"
+  mv "$_pkgsrc_gnuzilla/output/$_pkgsrc" "$srcdir/"
+  bsdtar -a -cf "$_pkgsrc.tar.zst" --options zstd:compression-level=9 "$_pkgsrc"
+  cp --reflink=auto -r "$_pkgsrc.tar.zst" "$SRCDEST/"
 }
 
+# common functions
 prepare() {
-  export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$srcdir/xdg}"
-  [ ! -d "$XDG_RUNTIME_DIR" ] && install -dm700 "${XDG_RUNTIME_DIR:?}"
-
   cat >icecat.desktop <<END
 [Desktop Entry]
 Version=1.0
@@ -147,6 +257,8 @@ Exec=icecat --private-window %u
 Name=Safe Mode
 Exec=icecat -safe-mode %u
 END
+
+  _make_icecat
 
   mkdir -p mozbuild
   cd "$_pkgsrc"
@@ -180,8 +292,6 @@ ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
-ac_add_options --enable-default-toolkit=cairo-gtk3-x11-wayland
-export MOZ_ENABLE_WAYLAND=1
 
 # Branding
 ac_add_options --with-app-basename=$_pkgname
@@ -192,8 +302,8 @@ ac_add_options --with-distribution-id=org.gnu
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZILLA_OFFICIAL=1
-export NIGHTLY_BUILD=1
 export MOZ_APP_REMOTINGNAME=$_pkgname
+MOZ_REQUIRE_SIGNING=
 
 # System Libraries
 ac_add_options --with-system-jpeg
@@ -210,9 +320,11 @@ ac_add_options --enable-av1
 #ac_add_options --enable-eme=widevine
 ac_add_options --enable-jack
 ac_add_options --enable-jxl
+ac_add_options --enable-proxy-bypass-protection
 ac_add_options --enable-pulseaudio
 ac_add_options --enable-raw
 ac_add_options --enable-sandbox
+ac_add_options --enable-unverified-updates
 ac_add_options --enable-webrtc
 ac_add_options --disable-crashreporter
 ac_add_options --disable-default-browser-agent
@@ -251,6 +363,11 @@ END
 build() {
   cd "$_pkgsrc"
 
+  export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$srcdir/xdg-runtime}"
+  [ ! -d "$XDG_RUNTIME_DIR" ] && install -dm700 "${XDG_RUNTIME_DIR:?}"
+
+  export LIBGL_ALWAYS_SOFTWARE=true
+
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
@@ -270,18 +387,18 @@ build() {
     )
 
     # new profile for new major version
-    if [ "${_pkgver_prof%%.*}" != "${_pkgver%%.*}" ] ; then
+    if [ "${_pkgver_prof%%.*}" != "${pkgver%%.*}" ] ; then
       _build_pgo_reuse=false
-      _pkgver_prof="$_pkgver"
+      _pkgver_prof="$pkgver"
     fi
 
     # new profile for minor version + 3
     _tmp_old=$(echo "${_pkgver_prof}" | cut -d'-' -f2 | cut -d'.' -f2)
-    _tmp_new=$(echo "${_pkgver}" | cut -d'-' -f2 | cut -d'.' -f2)
+    _tmp_new=$(echo "${pkgver}" | cut -d'-' -f2 | cut -d'.' -f2)
 
     if [ "${_tmp_new:-0}" -ge "$((_tmp_old + 3))" ] ; then
       _build_pgo_reuse=false
-      _pkgver_prof="$_pkgver"
+      _pkgver_prof="$pkgver"
     fi
 
     local _old_profdata="${SRCDEST:-$startdir}/$_pkgname-$_pkgver_prof-merged.profdata"
@@ -303,16 +420,29 @@ build() {
     # Make new profile
     if [[ "${_build_pgo_reuse::1}" != "t" ]] || [[ ! -s merged.profdata ]] ; then
       echo "Building instrumented browser..."
-      cat >.mozconfig ../mozconfig
-      echo >>.mozconfig "ac_add_options --enable-profile-generate=cross"
+      cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-profile-generate=cross
+export MOZ_ENABLE_FULL_SYMBOLS=1
+END
       ./mach build
 
       echo "Profiling instrumented browser..."
       ./mach package
 
+      if [[ "${_build_pgo_xvfb::1}" == "t" ]] ; then
+        local _headless_run=(
+          xvfb-run
+          -s "-screen 0 1920x1080x24 -nolisten local"
+        )
+      else
+        local _headless_run=(
+          wlheadless-run
+          -c weston --width=1920 --height=1080
+        )
+      fi
+
       LLVM_PROFDATA=llvm-profdata JARLOG_FILE=${PWD@Q}/jarlog \
-        wlheadless-run -c weston --width=1920 --height=1080 \
-        -- ./mach python build/pgo/profileserver.py
+        "${_headless_run[@]}" -- ./mach python build/pgo/profileserver.py
 
       echo "Removing instrumented browser..."
       ./mach clobber
@@ -323,8 +453,10 @@ build() {
 
     if [[ -s merged.profdata ]] ; then
       stat -c "Profile data found (%s bytes)" merged.profdata
-      echo >>.mozconfig "ac_add_options --enable-profile-use=cross"
-      echo >>.mozconfig "ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata"
+      cat >>.mozconfig - <<END
+ac_add_options --enable-profile-use=cross
+ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
+END
 
       # save profdata for reuse
       cp --reflink=auto -f merged.profdata "$_old_profdata"
@@ -334,7 +466,9 @@ build() {
 
     if [[ -s jarlog ]] ; then
       stat -c "Jar log found (%s bytes)" jarlog
-      echo >>.mozconfig "ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog"
+      cat >>.mozconfig - <<END
+ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+END
 
       # save jarlog for reuse
       cp --reflink=auto -f jarlog "$_old_jarlog"
@@ -449,5 +583,4 @@ _update_version() {
 }
 
 # execute
-_update_version
 _main_package
