@@ -1,0 +1,90 @@
+From 2aa72e8dfd3b3d051fdec6b2d05c5635adcfb57b Mon Sep 17 00:00:00 2001
+From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
+Date: Fri, 8 Dec 2023 16:07:58 +0800
+Subject: [PATCH 2/3] chore: fractal scale handle
+
+---
+ include/sway/input/text_input.h |  1 +
+ sway/desktop/output.c           | 23 +++++++++++++++++++++++
+ sway/input/text_input.c         |  4 ++++
+ 3 files changed, 28 insertions(+)
+
+diff --git a/include/sway/input/text_input.h b/include/sway/input/text_input.h
+index a01ddf55..f583af7a 100644
+--- a/include/sway/input/text_input.h
++++ b/include/sway/input/text_input.h
+@@ -4,6 +4,7 @@
+ #include <wlr/types/wlr_text_input_v3.h>
+ #include <wlr/types/wlr_input_method_v2.h>
+ #include <wlr/types/wlr_compositor.h>
++#include <wlr/types/wlr_fractional_scale_v1.h>
+ 
+ /**
+  * The relay structure manages the relationship between text-input and
+diff --git a/sway/desktop/output.c b/sway/desktop/output.c
+index 2ccb8020..871578b5 100644
+--- a/sway/desktop/output.c
++++ b/sway/desktop/output.c
+@@ -15,6 +15,7 @@
+ #include <wlr/types/wlr_output.h>
+ #include <wlr/types/wlr_presentation_time.h>
+ #include <wlr/types/wlr_compositor.h>
++#include <wlr/types/wlr_fractional_scale_v1.h>
+ #include <wlr/util/region.h>
+ #include "config.h"
+ #include "log.h"
+@@ -971,6 +972,27 @@ static void update_output_scale_iterator(struct sway_output *output,
+ 	surface_update_outputs(surface);
+ }
+ 
++static void update_im_scale(struct sway_output *output) {
++	struct sway_seat* im_seat = input_manager_current_seat();
++	if (im_seat == NULL) {
++		return;
++	}
++	struct sway_input_method_relay* relay = &im_seat->im_relay;
++	struct sway_input_popup *popup;
++	wl_list_for_each(popup, &relay->input_popups, link) {
++		struct wl_list current_outputs = popup->popup_surface->surface->current_outputs;
++		struct wlr_surface_output *current_output;
++		wl_list_for_each(current_output, &current_outputs, link) {
++			if (current_output->output == output->wlr_output) {
++				double scale = current_output->output->scale;
++				wlr_fractional_scale_v1_notify_scale(popup->popup_surface->surface, scale);
++				wlr_surface_set_preferred_buffer_scale(popup->popup_surface->surface, ceil(scale));
++				break;
++			}
++		}
++	}
++}
++
+ static void handle_commit(struct wl_listener *listener, void *data) {
+ 	struct sway_output *output = wl_container_of(listener, output, commit);
+ 	struct wlr_output_event_commit *event = data;
+@@ -982,6 +1004,7 @@ static void handle_commit(struct wl_listener *listener, void *data) {
+ 	if (event->state->committed & WLR_OUTPUT_STATE_SCALE) {
+ 		output_for_each_container(output, update_textures, NULL);
+ 		output_for_each_surface(output, update_output_scale_iterator, NULL);
++		update_im_scale(output);
+ 	}
+ 
+ 	if (event->state->committed & (
+diff --git a/sway/input/text_input.c b/sway/input/text_input.c
+index 05c867d6..fec11e77 100644
+--- a/sway/input/text_input.c
++++ b/sway/input/text_input.c
+@@ -169,7 +169,11 @@ static void input_popup_update(struct sway_input_popup *popup) {
+ static void surface_send_enter_iterator(struct wlr_surface *surface,
+ 		int x, int y, void *data) {
+ 	struct wlr_output *wlr_output = data;
++	float scale = wlr_output->scale;
+ 	wlr_surface_send_enter(surface, wlr_output);
++
++	wlr_fractional_scale_v1_notify_scale(surface, scale);
++	wlr_surface_set_preferred_buffer_scale(surface, ceil(scale));
+ }
+ 
+ static void surface_send_leave_iterator(struct wlr_surface *surface,
+-- 
+2.43.2
+

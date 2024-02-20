@@ -1,0 +1,27 @@
+From 0789c12a8edf46fbc1c7024e153f3e8f8f35fe12 Mon Sep 17 00:00:00 2001
+From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
+Date: Fri, 8 Dec 2023 22:04:48 +0800
+Subject: [PATCH 3/3] chore: left_pt on method popup
+
+this keep cusor the same action with qt and gtk im module
+---
+ sway/input/cursor.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/sway/input/cursor.c b/sway/input/cursor.c
+index 4b6a9835..fa9d5b33 100644
+--- a/sway/input/cursor.c
++++ b/sway/input/cursor.c
+@@ -144,6 +144,9 @@ struct sway_node *node_at_coords(
+ 
+ 	if ((*surface = input_popup_surface_at(output,
+ 			&seat->im_relay, ox, oy, sx, sy))) {
++		struct sway_cursor* cursor = seat->cursor;
++		// set cursot to left_ptr
++		cursor_set_image(cursor, "left_ptr", NULL);
+ 		return NULL;
+ 	}
+ 	// check for unmanaged views
+-- 
+2.43.2
+
