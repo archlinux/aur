@@ -1,7 +1,7 @@
 pkgbase = nv
 	pkgdesc = Lightweight utility to load context specific environment variables
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jcouture/nv
 	arch = x86_64
 	license = MIT

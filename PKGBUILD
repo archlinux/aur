@@ -2,7 +2,7 @@
 
 pkgname='nv'
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight utility to load context specific environment variables'
 arch=('x86_64')
 url='https://github.com/jcouture/nv'
@@ -14,11 +14,11 @@ b2sums=('93488c9174420a6d9115f5cb640b9b6c3e680b71d1ded3a240801cb08f47e6ad36ea98a
 
 build() {
     cd "${pkgname}-${pkgver}"
-    export GO_ENABLED='0'
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -ldflags=-linkmode=external -trimpath -mod=readonly -modcacherw"
 
     go mod download && go mod verify
     go build -ldflags="-w -s" -v -x -o nv ./cmd/nv
