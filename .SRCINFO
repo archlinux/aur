@@ -1,6 +1,6 @@
 pkgbase = linux-kelvie-fw-git
 	pkgdesc = Linux kernel for Kelvie's AMD Framework 13 laptop
-	pkgver = 6.7.4.r11.4e73fa4bc52a
+	pkgver = 6.7.5.r11.02ce437afc26
 	pkgrel = 1
 	url = https://www.kernel.org
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = linux-kelvie-fw-git
 	makedepends = tar
 	makedepends = xz
 	options = !strip
-	source = linux-stable::git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/stable/linux#tag=v6.7.4
+	source = linux-stable::git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/stable/linux#tag=v6.7.5
 	source = config
 	source = modprobed.db
 	source = v12_20231205_li_meng_amd_pstate_preferred_core.mbx
