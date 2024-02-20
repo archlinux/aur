@@ -28,7 +28,7 @@ source=("https://github.com/tudace/${_pkgname}/archive/v${pkgver}/${pkgver}-${_p
 b2sums=('1a8adb9291a2123c4bbd7c8aec0b88befbed4300633a8ae025ba0a94ad741e5146255e31b8e527f10fe4b98f2ba45c8c9b7c7b1fbc3528af81b8b8d69300655a')
 
 prepare() {
-  chmod +x ${_pkgname}-${pkgver}/{addlicense,prepare_tuda}.sh
+  chmod +x ${_pkgname}-${pkgver}/prepare_tuda.sh
 }
 
 build() {
