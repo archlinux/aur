@@ -1,0 +1,18 @@
+pkgbase = lib32-libaio
+	pkgdesc = The Linux-native asynchronous I/O facility (aio) library
+	pkgver = 0.3.113
+	pkgrel = 3
+	url = https://pagure.io/libaio
+	arch = x86_64
+	license = LGPL-2.0-or-later
+	depends = lib32-glibc
+	depends = libaio=0.3.113
+	provides = libaio.so
+	source = https://pagure.io/libaio/archive/libaio-0.3.113/libaio-libaio-0.3.113.tar.gz
+	source = lib32-libaio-0.3.113-fix_test_case_23.patch
+	sha512sums = 8058c927de0b5f7079fc232d2be23272537694bf271488af1dc0330b58afc307931792ab138512c5e00aa3ea921935a6d862f575fb0cc2bf323de63d8df208cd
+	sha512sums = cd9cc15be3ab2c7fcb9bd0c5efafb3cdfbc6f3ad82da959d50ec9ad200fc7b51c7d7484f485687ab7ac57349d4d58a1a07ca6b335aedbe8aa2a8769c457aeb15
+	b2sums = e06c1c1cc118c15f6bed1abfa97368d7ccc0d2e716a233cd4141936fb382e40909c340a6c882b18ee9461aaa23dd77a6644a38bdb5a00c1444538a2e0ab816d4
+	b2sums = bfc44befde111e8bb845df2fed9b3dfd06ab1d3dddbc1313d0974cd1cae9a7659df4dd28e637ed222951c0ba7d76e047bd3656d96adb37a8e667b37ed080630a
+
+pkgname = lib32-libaio
