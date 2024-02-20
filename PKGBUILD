@@ -33,7 +33,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  meson setup --prefix=/usr build
+  arch-meson build
   meson compile -C build
 }
 
