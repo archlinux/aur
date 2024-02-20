@@ -5,7 +5,7 @@
 # Contributor: Michael Louis Thaler <michael.louis.thaler@gmail.com>
 
 pkgname=watchman
-pkgver=2024.02.12.00
+pkgver=2024.02.19.00
 pkgrel=1
 pkgdesc="Watches files and records, or triggers actions, when they change"
 url="https://github.com/facebook/watchman"
@@ -39,7 +39,7 @@ source=(
   "watchman.socket"
 )
 sha256sums=(
-  '0ef064f8163a53cfacac714dd94dbd339a71f9f046b7c1954b000c88a650a82c'
+  'd0b98a50509ab8ee54535411104c8b00178fbe601186bbd85e8c28b6d493add3'
   'd40feab6aa7dc6522c648660e88642fdf721ee1f9d80c23f6891a6381067a38b'
   '3ebc93cb91ec9b9603969e222fd3ffd9baa4a1d07a7b3bd7aabf956ec2e177c8'
   'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356'
@@ -53,6 +53,11 @@ prepare() {
   cd "$_archive"
 
   patch --forward --strip=1 --ignore-whitespace --fuzz=3 --input="$srcdir/watchman-destdir.patch"
+
+  # Use system CMake config instead of bundled module, incompatible with glog
+  # v0.7.0+
+  sed -i 's/find_package(Glog REQUIRED)/find_package(Glog CONFIG REQUIRED)/' \
+    CMakeLists.txt
 }
 
 build() {
@@ -64,7 +69,6 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -Wno-dev \
-    -DBUILD_TESTS=ON \
     -DBUILD_SHARED_LIBS=ON \
     -DWATCHMAN_STATE_DIR=/var/run/watchman \
     -DUSE_SYS_PYTHON=ON \

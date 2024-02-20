@@ -4,9 +4,6 @@
 !.SRCINFO
 !PKGBUILD
 !watchman.conf
-!watchman.install
-!watchman.json.default
+!watchman.json
 !watchman.service
 !watchman.socket
-!watchman.tmpfiles
-!0001-Fix-build-with-fmt-10.patch
