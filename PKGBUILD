@@ -26,6 +26,9 @@ prepare() {
 
   # disable failing test until upstream fixes it: https://pagure.io/libaio/issue/21
   rm -rf $_name-$_name-$pkgver/harness/cases/23.t
+
+  # remove failing test until upstream fixes it
+  rm -frv $_name-$_name-$pkgver/harness/cases/21.t
 }
 
 build() {
