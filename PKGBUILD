@@ -29,7 +29,7 @@ build() {
 
 	make m-rel FTE_TARGET=SDL2 CFLAGS="-DFTE_LIBRARY_PATH=/usr/lib/fteqw"
 
-	make plugins-rel NATIVE_PLUGINS="ezhud ffmpeg hl2 ode quake3" AV_BASE=/usr/include/ffmpeg4.4/ AV_LDFLAGS="-l:libavcodec.so.58 -l:libavformat.so.58 -l:libavutil.so.56 -l:libswscale.so.5"
+	make plugins-rel NATIVE_PLUGINS="ezhud ffmpeg hl2 quake3" AV_BASE=/usr/include/ffmpeg4.4/ AV_LDFLAGS="-l:libavcodec.so.58 -l:libavformat.so.58 -l:libavutil.so.56 -l:libswscale.so.5"
 
 }
 
@@ -41,7 +41,6 @@ package() {
 	install -Dm755 fteplug_ezhud_amd64.so "$pkgdir/usr/lib/fteqw/fteplug_ezhud_amd64.so"
 	install -Dm755 fteplug_ffmpeg_amd64.so "$pkgdir/usr/lib/fteqw/fteplug_ffmpeg_amd64.so"
 	install -Dm755 fteplug_hl2_amd64.so "$pkgdir/usr/lib/fteqw/fteplug_hl2_amd64.so"
-	install -Dm755 fteplug_ode_amd64.so "$pkgdir/usr/lib/fteqw/fteplug_ode_amd64.so"
 	install -Dm755 fteplug_quake3_amd64.so "$pkgdir/usr/lib/fteqw/fteplug_quake3_amd64.so"
 
 	cd "$srcdir/fteqw-$gitver"
