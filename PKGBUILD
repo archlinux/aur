@@ -3,29 +3,25 @@
 _pluginname=dvds3
 pkgname=obs-$_pluginname
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Will it hit the corner? OBS Studio plugin, which adds a dvd screen saver source type"
-arch=("i686" "x86_64" "aarch64")
+arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/dvd-screensaver.762/"
-license=("GPL2")
-depends=("obs-studio")
-makedepends=("cmake" "libxcomposite")
+license=(GPL-2.0-or-later)
+depends=("obs-studio>=28", "glibc")
+makedepends=("git" "meson")
 provides=("obs-dvd-screensaver")
 options=('debug')
-# Use a commit hash to backport a fix and a recent CMakeLists.txt
-source=("$_pluginname::git+https://github.com/univrsal/dvds3.git#commit=6bad0d4ac2dc908d18416256a6780967b8cdfeb0")
+# Use a fork with a up to date buildsystem
+source=("$_pluginname-meson::git+https://gitlab.archlinux.org/tytan652/dvds3.git#commit=41a399434a39c6087eb5c89f079e789105a03232")
 sha256sums=("SKIP")
 
 build() {
-  cd $_pluginname
-  cmake -B build \
-  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-  -DCMAKE_INSTALL_PREFIX='/usr' \
-  -DGLOBAL_INSTALLATION=ON
-  make -C build
+  arch-meson "$_pluginname-meson" build
+  meson compile -C build
 }
 
 package() {
-  cd $_pluginname
-  make -C build DESTDIR="$pkgdir/" install
+  meson install -C build --destdir "$pkgdir"
 }
+

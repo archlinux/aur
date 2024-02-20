@@ -1,18 +1,18 @@
 pkgbase = obs-dvds3
 	pkgdesc = Will it hit the corner? OBS Studio plugin, which adds a dvd screen saver source type
 	pkgver = 1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://obsproject.com/forum/resources/dvd-screensaver.762/
-	arch = i686
 	arch = x86_64
 	arch = aarch64
-	license = GPL2
-	makedepends = cmake
-	makedepends = libxcomposite
-	depends = obs-studio
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = meson
+	depends = obs-studio>=28,
+	depends = glibc
 	provides = obs-dvd-screensaver
 	options = debug
-	source = dvds3::git+https://github.com/univrsal/dvds3.git#commit=6bad0d4ac2dc908d18416256a6780967b8cdfeb0
+	source = dvds3-meson::git+https://gitlab.archlinux.org/tytan652/dvds3.git#commit=41a399434a39c6087eb5c89f079e789105a03232
 	sha256sums = SKIP
 
 pkgname = obs-dvds3
