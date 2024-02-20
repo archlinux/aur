@@ -1,7 +1,7 @@
 # Maintainer: eckso <eckso@eckso.io>
 
 pkgname=knobs
-pkgver=0.9.15
+pkgver=0.9.16
 pkgrel=1
 pkgdesc='Manage system clock frequencies, power limits, and related values.'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'clang' 'cmake' 'git')
 optdepends=()
 depends=('systemd')
 conflicts=('knobs')
-_commit='f18f53905a05456e3fa90fd62bf0d77a78a96715'
+_commit='97fbff611bf9928fef7654ef0aa368e76f0c4d81'
 source=("$pkgname::git+https://git.sr.ht/~eckso/knobs#commit=$_commit")
 sha1sums=('SKIP')
 install=$pkgname.install
@@ -36,5 +36,5 @@ package() {
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/doc/${pkgname}/LICENSE"
   install -Dm644 "doc/CHANGELOG.md" "$pkgdir/usr/share/doc/${pkgname}/CHANGELOG.md"
-  install -Dm644 "doc/KNOBS-VS-RYZENADJ.md" "$pkgdir/usr/share/doc/${pkgname}/KNOBS-VS-RYZENADJ.md"
+  install -Dm644 "doc/VS-RYZENADJ.md" "$pkgdir/usr/share/doc/${pkgname}/KNOBS-VS-RYZENADJ.md"
 }
