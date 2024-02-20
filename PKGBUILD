@@ -3,8 +3,8 @@
 
 pkgname=easyeda-bin
 _pkgname=${pkgname%-bin}
-pkgver=6.5.39
-pkgrel=3
+pkgver=6.5.40
+pkgrel=1
 pkgdesc="A Simple and Powerful Electronic Circuit Design Tool"
 arch=('x86_64')
 url="https://easyeda.com/"
@@ -15,8 +15,8 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}.zip::https://image.easyeda.com/files/${_pkgname}-linux-x64-${pkgver}.zip"
         "LICENSE-$pkgver.html::https://easyeda.com/page/legal")
-sha256sums=('26e0b64ee12fc8504a4ae604105f297cbdb2f07f879c7445acb227b515db1437'
-            'SKIP')
+sha256sums=('4b9c082bb366b2d7f03cda7514316c8179150b6fd44f6eff29058ff09f03795c'
+            'e554a2743bdcc8838a56c425e19913de48e40b46375ac5f517e3c98481ac9dc1')
 
 package() {
     install -dm755 ${pkgdir}/opt/${_pkgname}
