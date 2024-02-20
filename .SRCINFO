@@ -1,6 +1,6 @@
 pkgbase = gpdconfig-git
 	pkgdesc = Configuration tool for GPD Win devices.
-	pkgver = r335.5816c96
+	pkgver = r30.ce2f1b2
 	pkgrel = 1
 	url = https://github.com/pelrun/pyWinControls.git
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Antheas Kapenekakis <aur at antheas dot dev>
 pkgname=gpdconfig-git
 _repo=pyWinControls
-pkgver=r335.5816c96
+pkgver=r30.ce2f1b2
 pkgrel=1
 pkgdesc="Configuration tool for GPD Win devices."
 arch=('x86_64')
