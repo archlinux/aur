@@ -3,24 +3,25 @@
 _pkgname=survivalROC
 _pkgver=1.0.3.1
 pkgname=r-${_pkgname,,}
-pkgver=1.0.3.1
-pkgrel=1
-pkgdesc='Time-dependent ROC curve estimation from censored survival data'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=3
+pkgdesc="Time-Dependent ROC Curve Estimation from Censored Survival Data"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8174afebaf239dfda979c8c7e1e219624576d577c983ae787fbd2785b4ccd15c')
+md5sums=('f902d8d1d91cbed98b43ca3cfb9cddaa')
+b2sums=('b81a3a9b002fe63c793757bfd2f582c1a24257b0731290334c88751e9d03691f56031c87008c28675bb21ecb93c4775f2dd76c6b83411736e729307e2d13e44a')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
