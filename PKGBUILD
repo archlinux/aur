@@ -11,7 +11,7 @@ _use_suffix=1
 pkgver=24.8.8
 _chromiumver=112.0.5615.204
 # shellcheck disable=SC2034
-pkgrel=3
+pkgrel=4
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
@@ -52,7 +52,7 @@ options=('!lto') # Electron adds its own flags for ThinLTO
 # shellcheck disable=SC2034
 source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#branch=main'
-        "chromium-mirror::git+https://github.com/chromium/chromium.git#tag=$_chromiumver"
+        #"chromium-mirror::git+https://github.com/chromium/chromium.git#tag=$_chromiumver" 40+GB download
         "electron-launcher.sh"
         "electron.desktop"
         'default_app-icon.patch'
@@ -83,7 +83,7 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
 # shellcheck disable=SC2034
 sha256sums=('SKIP'
             'SKIP'
-            'SKIP'
+            #'SKIP'
             'b0ac3422a6ab04859b40d4d7c0fd5f703c893c9ec145c9894c468fbc0a4d457c'
             '4484200d90b76830b69eea3a471c103999a3ce86bb2c29e6c14c945bf4102bae'
             'dd2d248831dd4944d385ebf008426e66efe61d6fdf66f8932c963a12167947b4'
@@ -171,7 +171,6 @@ EOF
   export VPYTHON_BYPASS='manually managed python not supported by chrome operations'
 
   echo "Linking chromium from sources..."
-  ln -s chromium-mirror src
 
   depot_tools/gclient.py sync -D \
       --nohooks \
