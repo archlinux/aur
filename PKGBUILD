@@ -8,8 +8,12 @@ pkgrel=1
 pkgdesc="A music player forked from YesPlayMusic。高颜值的第三方网易云播放器，支持 Windows / macOS / Linux"
 arch=('any')
 url="https://github.com/Sherlockouo/music"
-license=('AGPL3')
-conflicts=("${pkgname%-git}" "yesplaymusic" "r3play")
+license=('AGPL-3.0-only')
+conflicts=(
+    "${pkgname%-git}"
+    "yesplaymusic"
+    "r3play"
+)
 provides=("yesplaymusic")
 depends=(
     "electron${_electronversion}"
