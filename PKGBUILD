@@ -34,7 +34,6 @@ prepare() {
 build() {
   cd ${_pkgname}-${pkgver}
   export TEXINPUTS=".:${srcdir}/${_pkgname}-${pkgver}/tex:${TEXINPUTS}"
-  ./addlicense.sh
   ./prepare_tuda.sh
 }
 
