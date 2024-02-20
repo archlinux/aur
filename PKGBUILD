@@ -41,7 +41,7 @@ pkgver() {
 }
 
 prepare() {
-  git -C "$pkgname" apply -v "$srcdir"/*.patch
+: #  git -C "$pkgname" apply -v "$srcdir"/*.patch
 }
 
 build() {
