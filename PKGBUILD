@@ -1,7 +1,7 @@
 # Maintainer: Lex Black <autumn-wind@web.de>
 
 pkgname=louvre 
-pkgver=1.2.0_2
+pkgver=1.2.1_2
 pkgrel=1
 pkgdesc="C++ library for building Wayland compositors"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('libsrm' 'wayland' 'libglvnd' 'libxcursor' 'libxkbcommon' 'pixman' 'libdrm' 'mesa' 'libinput' 'seatd' 'glibc' 'freeimage' 'fontconfig' 'freetype2' 'icu' 'systemd-libs')
 makedepends=('meson')
 source=(${pkgname}-${pkgver/_/-}.tar.gz::${url}/archive/refs/tags/v${pkgver/_/-}.tar.gz)
-sha256sums=('fb16f3d4c034da9d17a5a1aee5674c7ab6b64e1a1ee1da5ac202fa83ae076f9f')
+sha256sums=('c216b9c48484d9e15473e00e7c2274a9606f5e6714f663c001078f893c35f24e')
 
 
 build() {
