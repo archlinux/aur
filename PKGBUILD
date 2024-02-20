@@ -8,7 +8,7 @@ pkgrel="1"
 pkgdesc="A hack to prevent Wayland compositors from advertising support for the primary clipboard"
 url="https://github.com/notpeelz/wlclipblock"
 arch=("x86_64")
-license=("LGPL3")
+license=("LGPL-3.0-or-later")
 depends=("glibc")
 makedepends=(
   "git"
