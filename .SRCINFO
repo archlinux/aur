@@ -1,7 +1,7 @@
 pkgbase = bareos
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced
 	pkgver = 23.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.bareos.org
 	arch = i686
 	arch = x86_64
@@ -27,13 +27,11 @@ pkgbase = bareos
 	source = 0003-version.patch
 	source = 0004-sqlspam.patch
 	source = 0005-httpd.patch
-	source = bootstrap-table-locale-all.min.js
 	md5sums = SKIP
 	md5sums = 419b0c64af750aa3e8ea668edf464d3e
 	md5sums = 5bf1233d94dfecc9060746bfb39b9d2b
 	md5sums = ca4c929a2462cafaead8d0b49e3cebed
 	md5sums = a6a260808e46c20b1c22aa2efebc3fe1
-	md5sums = e78b88f897cfc3e60129eec360521e3d
 
 pkgname = bareos-bconsole
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Admin Tool (CLI)

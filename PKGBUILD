@@ -46,7 +46,7 @@ pkgname=("bareos-bconsole"
 
 pkgver=23.0.1
 pkgmajor=${pkgver%%.*}
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64 armv7h aarch64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving Recovery Open Sourced"
@@ -57,15 +57,13 @@ source=("git+https://github.com/bareos/bareos.git#tag=Release/${pkgver}"
         "0001-distver.patch"
         "0003-version.patch"
         "0004-sqlspam.patch"
-        "0005-httpd.patch"
-        "bootstrap-table-locale-all.min.js")
+        "0005-httpd.patch")
 
 md5sums=('SKIP'
          '419b0c64af750aa3e8ea668edf464d3e'
          '5bf1233d94dfecc9060746bfb39b9d2b'
          'ca4c929a2462cafaead8d0b49e3cebed'
          'a6a260808e46c20b1c22aa2efebc3fe1'
-         'e78b88f897cfc3e60129eec360521e3d'
          )
 
 python3_ver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))");#"
@@ -284,7 +282,6 @@ package_bareos-database-common() {
   depends=("bareos-common=${pkgver}" "bareos-database-postgresql=${pkgver}" 'libcap' 'lzo' 'zlib' 'openssl' 'bash' 'jansson')
   for f in \
      usr/lib/bareos/libbareossql.so* \
-     usr/lib/bareos/libbareoscats.so* \
      usr/lib/bareos/scripts/create_bareos_database \
      usr/lib/bareos/scripts/drop_bareos_database \
      usr/lib/bareos/scripts/drop_bareos_tables \
@@ -303,8 +300,8 @@ package_bareos-database-postgresql() {
   provides=("bareos-database=${pkgver}")
   depends=("bareos-database-common=${pkgver}" "postgresql-libs")
   install=bareos-database-postgresql.install
+
   for f in \
-     usr/lib/bareos/backends/libbareoscats-postgresql.so* \
      usr/lib/bareos/scripts/ddl/*/postgresql*.sql \
   ; do
     cp_pkgdir "$f" "$srcdir/install"
@@ -344,7 +341,6 @@ package_bareos-director() {
      etc/logrotate.d/bareos-dir \
      usr/lib/bareos/scripts/delete_catalog_backup \
      usr/lib/bareos/scripts/make_catalog_backup \
-     usr/lib/bareos/scripts/make_catalog_backup.pl \
      usr/lib/bareos/scripts/query.sql \
      usr/share/bareos/config/bareos-dir.d/catalog/MyCatalog.conf \
      usr/share/bareos/config/bareos-dir.d/client/bareos-fd.conf \
@@ -461,7 +457,6 @@ package_bareos-filedaemon-ldap-python-plugin() {
 
   for f in \
      usr/lib/bareos/plugins/bareos-fd-ldap.py* \
-     usr/lib/bareos/plugins/BareosFdPluginLDAP.py* \
      usr/share/bareos/config/bareos-dir.d/fileset/plugin-ldap.conf.example \
      usr/share/bareos/config/bareos-dir.d/job/backup-ldap.conf.example \
      usr/share/bareos/config/bareos-dir.d/job/restore-ldap.conf.example \
@@ -495,7 +490,6 @@ package_bareos-filedaemon-mariabackup-python-plugin() {
            "mariadb")
   for f in \
      usr/lib/bareos/plugins/bareos-fd-mariabackup.py* \
-     usr/lib/bareos/plugins/BareosFdPluginMariabackup.py* \
   ; do
     cp_pkgdir "$f" "$srcdir/install"
   done
@@ -509,7 +503,6 @@ package_bareos-filedaemon-percona-xtrabackup-python-plugin() {
            "xtrabackup")
   for f in \
      usr/lib/bareos/plugins/bareos-fd-percona-xtrabackup.py* \
-     usr/lib/bareos/plugins/BareosFdPluginPerconaXtraBackup.py* \
   ; do
     cp_pkgdir "$f" "$srcdir/install"
   done
@@ -523,7 +516,7 @@ package_bareos-filedaemon-postgresql-python-plugin() {
            "postgresql")
   for f in \
      usr/lib/bareos/plugins/bareos-fd-postgres.py* \
-     usr/lib/bareos/plugins/BareosFdPluginPostgres.py* \
+     usr/lib/bareos/plugins/bareos-fd-postgresql.py* \
   ; do
     cp_pkgdir "$f" "$srcdir/install"
   done
@@ -537,9 +530,9 @@ package_bareos-filedaemon-python-plugins-common() {
   for f in \
      usr/lib/bareos/plugins/bareos-fd-local-fileset.py* \
      usr/lib/bareos/plugins/BareosFdPluginBaseclass.py* \
-     usr/lib/bareos/plugins/BareosFdPluginLocalFileset.py* \
      usr/lib/bareos/plugins/BareosFdPluginLocalFilesBaseclass.py* \
      usr/lib/bareos/plugins/BareosFdWrapper.py* \
+     usr/lib/bareos/scripts/bareos_encode_string.py \
   ; do
     cp_pkgdir "$f" "$srcdir/install"
   done
@@ -760,7 +753,6 @@ package_bareos-vmware-plugin() {
   depends=("bareos-vadp-dumper=${pkgver}" "bareos-common=${pkgver}" )
   optdepends=("bareos-filedaemon-python3-plugin=${pkgver}")
   for f in \
-     usr/lib/bareos/plugins/BareosFdPluginVMware.py \
      usr/lib/bareos/plugins/bareos-fd-vmware.py \
      -usr/bin/vmware_cbt_tool.py \
      +usr/bin \
@@ -793,7 +785,6 @@ package_bareos-webui() {
   ; do
     cp_pkgdir "$f" "$srcdir/install"
   done
-  #cp ${srcdir}/bootstrap-table-locale-all.min.js ${pkgdir}/usr/share/bareos-webui/public/js/bootstrap-table-locale-all.min.js
   install -Dm644 ${srcdir}/bareos/webui/{README.md,LICENSE,doc/README-TRANSLATION.md} "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
