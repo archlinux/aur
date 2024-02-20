@@ -1,6 +1,6 @@
 pkgbase = bunsen-common-git
 	pkgdesc = Shared shell scripts commonly used in BunsenLabs Linux projects
-	pkgver = r39.cd8ff41
+	pkgver = r143.1f382a8
 	pkgrel = 1
 	url = https://github.com/BunsenLabs/bunsen-common
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = bunsen-common-git
 	depends = ncurses
 	provides = bunsen-common
 	conflicts = bunsen-common
-	source = git+https://github.com/BunsenLabs/bunsen-common.git#branch=master
+	source = git+https://github.com/BunsenLabs/bunsen-common.git#branch=boron
 	md5sums = SKIP
 
 pkgname = bunsen-common-git
-
