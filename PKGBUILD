@@ -6,13 +6,13 @@
 pkgname=hmcl-new
 _pkgname=HMCL
 _ver=3.5.5
-_build=235
-_pkgver=ffeabbf1f144ba14462e27c2ac9d46e231c1482e
+_build=236
+_pkgver=$_ver.$_build
 pkgver=$_ver.$_build
 pkgrel=1
 pkgdesc='An unofficial build of HMCL that trying to compile and run HMCL with the latest LTS version of java. (with HMCL-Clean changes)'
 arch=('any')
-url='https://github.com/huanghongxun/HMCL'
+url='https://github.com/HMCL-dev/HMCL'
 license=('GPL3')
 depends=('java-runtime>=17' 'java-openjfx>=17' 'hicolor-icon-theme')
 makedepends=('java-environment>=17' 'gradle')
@@ -20,17 +20,16 @@ provides=('hmcl')
 conflicts=('hmcl')
 source=('hmcl.desktop'
   'hmcl-launch-script'
-  'craft_table.png'
-  "${_pkgname}-${_pkgver}.tar.gz::${url}/archive/${_pkgver}.tar.gz"
+  "${url}/raw/v${_pkgver}/HMCL/image/hmcl.png"
+  "${_pkgname}-v${_pkgver}.tar.gz::${url}/archive/v${_pkgver}.tar.gz"
   "0001-Target-Java-17.patch"
-  "0002-Cleanup.patch"
-)
+  "0002-Cleanup.patch")
 sha256sums=('b4e8aa0f349bb3f5dd15a31c5a13ac3e10e5a5bcd2f97cf390041924275e43ef'
   '4fcd4bf8f8d2ca39cf25a8d59daeb53ffa54fbca0356bd55aa17a5ee31d59a95'
-  '2989a1b5301b8c7b9afdae5696c6a4e5246afa2d4f1f3d3dad5c192f036a9b4c'
-  '1e152212e1507d49c867fe8715c4ec337972795cd9f4947e285677a56257cb3d'
-  'c650fa0d34f22f9700dd047fbe243a63528c629312b94f499d4aa341b9b5193f'
-  '3eb85d8b6f1affcf33fb1e5ec12127eac4962d0c980e2884ccf954578e12a131')
+  'd4e56ae2e8c0d991dba01ef3124ef4d38918825f58728338a8bab5e78319306a'
+  'c5bbb74809e1d66684f8370816b5e15dae149337eaadac0ae30f246ccfc80dd1'
+  'c395ad622cf81a07d5738f6c20b845b51c900fd1aa0e9b87fd8ea415b8fac646'
+  'f723aebb63bd414bdd86e41c9795686fa0b409ddb339b5bc953b3c9097a76b02')
 
 prepare() {
   cd "$_pkgname-$_pkgver"
@@ -63,6 +62,6 @@ package() {
   install -Dm755 'hmcl-launch-script' "$pkgdir/usr/bin/$pkgname"
   install -Dm644 'hmcl.desktop' "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 "$_pkgname-$_pkgver/HMCL/build/libs/$_pkgname-$pkgver.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
-  install -Dm644 'craft_table.png' "$pkgdir/usr/share/icons/hicolor/48x48/apps/$pkgname.png"
+  install -Dm644 'hmcl.png' "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
   install -Dm644 "$_pkgname-$_pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
