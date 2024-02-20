@@ -1,6 +1,6 @@
-# Maintainer: 2ion <dev@2ion.de>
+# Contributor: 2ion <dev@2ion.de>
 pkgname=bunsen-utilities-git
-pkgver=r141.e1caa5d
+pkgver=r739.4031ae1
 pkgrel=1
 pkgdesc="Collection of utility scripts"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=(\
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+https://github.com/BunsenLabs/bunsen-utilities.git#branch=master")
+source=("${pkgname%-git}::git+https://github.com/BunsenLabs/bunsen-utilities.git#branch=boron")
 md5sums=(SKIP)
 
 pkgver() {
@@ -25,5 +25,4 @@ package() {
   cd "$srcdir/${pkgname%-git}"
   install -d "${pkgdir}/usr/bin"
   install -t "${pkgdir}/usr/bin" bin/bl-*
-  install -Dm644 bl-exitrc "${pkgdir}/etc/bl-exit/bl-exitrc"
 }
