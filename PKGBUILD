@@ -15,8 +15,31 @@ license=('custom')
 url="https://linux.wps.cn"
 options=('!emptydirs')
 DLAGENTS=("https::/usr/bin/curl -e https://www.wps.cn/product/wpslinux -o %o %u")
+
+# https://gitlab.com/cwittlut/wps-tsk/-/blob/main/tsk.sh?ref_type=heads by Ryan Tsien
+# https://pastebin.com/29TeRUMj by Asuka Minato
+#_get_source_url_amd64() {
+#    url="https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2019/${pkgver##*.}/wps-office_${pkgver}_amd64.deb"
+#    uri="${url#https://wps-linux-personal.wpscdn.cn}"
+#    secrityKey='7f8faaaa468174dc1c9cd62e5f218a5b'
+#    timestamp10=$(date '+%s')
+#    md5hash=$(echo -n "${secrityKey}${uri}${timestamp10}" | md5sum)
+#    url+="?t=${timestamp10}&k=${md5hash%% *}"
+#    echo "$url"
+#}
+
+_get_source_url_arm64() {
+    url="https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2019/${pkgver##*.}/wps-office_${pkgver}_arm64.deb"
+    uri="${url#https://wps-linux-personal.wpscdn.cn}"
+    secrityKey='7f8faaaa468174dc1c9cd62e5f218a5b'
+    timestamp10=$(date '+%s')
+    md5hash=$(echo -n "${secrityKey}${uri}${timestamp10}" | md5sum)
+    url+="?t=${timestamp10}&k=${md5hash%% *}"
+    echo "$url"
+}
+
 source_x86_64=("https://mirrors.163.com/ubuntukylin/pool/partner/wps-office_${pkgver}_amd64.deb")
-source_aarch64=("wps-office_${pkgver}_arm64.deb::https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2019/${pkgver##*.}/wps-office_${pkgver}_arm64.deb?t=1708431853&k=03f54f3eb111777ea5a952ed28e97ef6")
+source_aarch64=("wps-office_${pkgver}_arm64.deb::$(_get_source_url_arm64)")
 source=('fix-wps-python-parse.patch')
 sha1sums=('f3713481edf04ffb08be8d24dce66554dd5a4f13')
 sha1sums_x86_64=('61e0ca79b7ef506fd7470fad1d9b63f325bb5c57')
