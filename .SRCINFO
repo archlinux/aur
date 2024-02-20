@@ -1,13 +1,13 @@
 pkgbase = pennywise-bin
 	pkgdesc = Cross-platform application to open any website or media in a floating window
 	pkgver = 0.8.0
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/kamranahmedse/pennywise
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = hicolor-icon-theme
-	depends = electron5
+	depends = electron5-bin
 	optdepends = chromium: for Open with Pennywise Chrome extension
 	optdepends = google-chrome: for Open with Pennywise Chrome Extension
 	optdepends = firefox: for Open with Pennywise Firefox Add-on

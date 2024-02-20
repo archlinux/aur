@@ -4,7 +4,7 @@ pkgname=pennywise-bin
 _pkgname=Pennywise
 pkgver=0.8.0
 _electronversion=5
-pkgrel=9
+pkgrel=10
 pkgdesc="Cross-platform application to open any website or media in a floating window"
 arch=(
 	'i686'
@@ -16,7 +16,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
 	'hicolor-icon-theme'
-	"electron${_electronversion}"
+	"electron${_electronversion}-bin"
 )
 optdepends=(
 	'chromium: for Open with Pennywise Chrome extension'
