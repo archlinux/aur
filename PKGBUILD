@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=arm-preprocessing
 pkgname=python-${_base}
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Implementation of several preprocessing techniques for Association Rule Mining"
 url="https://github.com/firefly-cpp/${_base}"
@@ -11,7 +11,7 @@ depends=(python-niaarm python-scikit-learn)
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('007c463b70ca6836ba7a2677771e4dae94b9c3a3e618715d5c2a8dc374988328c9b7914f648a2dd430578480028a75bfe9fade09a21e1be1391c3db902fb49a5')
+sha512sums=('8822a28daefe4c188bdecffa420ed92d213b1ce4c89de721d1724f9977b235b6d66b5e0cfe8215f8837cb4d2345cd40a79a9c05d1cc09f73674826d126821378')
 
 build() {
   cd ${_base}-${pkgver}
