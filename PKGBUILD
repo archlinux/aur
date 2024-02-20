@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-data-validate-struct'
-pkgver='0.1'
+pkgver='0.12'
 pkgrel='1'
 pkgdesc="Validate recursive Hash Structures"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl-data-validate>=0.06' 'perl-data-validate-ip>=0.18' 'perl-regexp-common>=0')
 makedepends=()
 url='https://metacpan.org/release/Data-Validate-Struct'
-source=('http://search.cpan.org/CPAN/authors/id/T/TL/TLINDEN/Data-Validate-Struct-0.1.tar.gz')
-md5sums=('a66c8c5cbadc0c9742e7c0cb3eb5bc41')
-sha512sums=('c85b1352aec2fb0822e1502ed7b89d5bf8aebb931e74497b2a46f680acce4ab5316f242028734fd7ff262f3eb741d7edc638c5557c50a79addbb35333816d617')
-_distdir="Data-Validate-Struct-0.1"
+source=('http://search.cpan.org/CPAN/authors/id/T/TL/TLINDEN/Data-Validate-Struct-0.12.tar.gz')
+sha512sums=('4e0e4f7f6e3292f2ad8ea296a7821417f875d3a1985f93028554c06b82b2507b2835f0a2a7f42dbd81c40d2a58088aa165088b25ccbb91c148d62fb292b39850')
+
+_distdir="Data-Validate-Struct-0.12"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
