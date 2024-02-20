@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=imagefanreloaded-avalonia-bin
 _pkgname=ImageFanReloaded
-pkgver=1.2024.02.04
+pkgver=1.2024.02.18
 pkgrel=1
 pkgdesc="ImageFan Reloaded is a light-weight image viewer, supporting multi-core processing."
 arch=(
@@ -30,14 +30,14 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/releases/download
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/releases/download/${pkgver}/${_pkgname}_Linux_x64.zip")
 source=("${pkgname%-bin}.sh")
 sha256sums=('d3b2ddcfffdc2b9fc916caadae8c04449e230a6c03afb46470b8300a97071e7d')
-sha256sums_aarch64=('f171bce9bee6e3f1c544a803972bae9a59e9849d61f29cf2a0d50b0e3c564512')
-sha256sums_x86_64=('195fd896d0c319177ddbe223b9b4ca6547eafa10de7f17583153755c6c546705')
+sha256sums_aarch64=('cc8549b8329a43f1999b039c01d075074ed6f371230d0533099e9c080078aae9')
+sha256sums_x86_64=('0218f416ae4349b1a8cfe60ad6fc43fcf64b26095128e5dc33e103e5d7459f5f')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     convert "${srcdir}/${_pkgname}_Linux_"*/ApplicationIcon.ico "${srcdir}/${pkgname%-bin}.png"
-    gendesk -q -f -n --categories "Graphics" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
+    gendesk -q -f -n --categories="Graphics" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
