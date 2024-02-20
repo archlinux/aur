@@ -1,0 +1,14 @@
+[Unit]
+Description=peer management for qBittorrent
+Wants=network-online.target
+After=qbittorrent-nox.service
+
+[Service]
+Type=simple
+Restart=always
+User=%i
+WorkingDirectory=/etc/qbittorrent-clientblocker/%i/
+ExecStart=/usr/bin/qbittorrent-clientblocker
+
+[Install]
+WantedBy=multi-user.target
