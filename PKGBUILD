@@ -1,11 +1,11 @@
-# Maintainer: Falke Carlsen "cogitantium" <falke.cs@gmail.com>
+# Maintainer: Falke Carlsen "falkecarlsen" <falke.cs@gmail.com>
 _pkgname=chwifi
 pkgname=${_pkgname}-git
 pkgver=r186.aacddbb
 pkgrel=1
 pkgdesc="network profile manager for wireless networks with rolling password systems"
 arch=('any')
-url="https://github.com/cogitantium/chwifi"
+url="https://github.com/falkecarlsen/chwifi"
 license=('GPL3')
 depends=('sudo'
     'netctl>=1.20'
