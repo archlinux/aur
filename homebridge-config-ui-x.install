@@ -11,9 +11,11 @@ post_install() {
 	also modify /etc/sudoers. It is also capable of installing an
 	alternative binary of Node.js. It is recommended to *never* use it.
 
-	2) Installing or upgrading plugins from the web ui invokes npm install
-	globally, which is terrible opsec. It is recommended to instead package
-	any plugins and make them available on the AUR.
+	2) Installing or upgrading plugins from the web ui invokes `npm install`
+	globally (/usr/lib/node_modules). You can alternatively package plugins as AUR
+	packages. Sticking with verified plugins can also provide a higher level of
+	security.
+	See: https://github.com/homebridge/homebridge/wiki/Verified-Plugins
 
 	3) To give permissions to the web ui to poweroff/reboot the machine,
 	create a drop-in file in /etc/sudoers.d similar to:
@@ -21,8 +23,14 @@ post_install() {
 	homebridge ALL=(ALL) NOPASSWD:SETENV: /usr/bin/shutdown
 
 	4) The web ui runs commands with sudo in various places.
+	You have been warned. (@bret: Still true?)
 
-	You have been warned.
+	5) It is recommended to run homebridge with a supported Node.js version.
+	Currently `nodejs-lts-iron` (Node.js 20) is the recommended version.
+
+	6) To use systemd-resolved as the mDNS resolver, set up systemd-resolved mDNS
+	and then follow these instructions:
+	https://github.com/homebridge/homebridge/wiki/mDNS-Options#systemd-resolved-linux-only-experimental
 
 	EOF
 }
