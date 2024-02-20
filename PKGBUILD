@@ -1,14 +1,22 @@
 # Maintainer: Mark Wagie <mark at proton dot me>
 # Co-Maintainer: soloturn <soloturn@gmail.com>
 pkgname=cosmic-edit-git
-pkgver=r243.586dd8f
+pkgver=r359.f1f7106
 pkgrel=1
 pkgdesc="COSMIC Text Editor"
 arch=('x86_64')
 url="https://github.com/pop-os/cosmic-edit"
 license=('GPL-3.0-or-later')
-depends=('cosmic-icons' 'gtk3' 'libxkbcommon' 'wayland')
-makedepends=('cargo' 'git' 'just')
+depends=(
+  'cosmic-icons-git'
+  'libxkbcommon'
+  'wayland'
+)
+makedepends=(
+  'cargo'
+  'git' 
+  'just'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'cosmic-text-editor')
 replaces=('cosmic-text-editor-git')
