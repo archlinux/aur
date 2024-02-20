@@ -7,13 +7,13 @@ pkgver=0.3.1
 pkgrel=2
 pkgdesc="A local-first, encrypted, note taking application with tree-like structures, all written and saved in markdown"
 arch=('x86_64')
-url="https://gitlab.com/treedome"
+url="https://codeberg.org/solver-orgz/treedome/"
 license=('GPL3')
 groups=('')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk')
 options=('!strip' '!emptydirs')
-install=${pkgname}.install
-source=("https://codeberg.org/solver-orgz/treedome/releases/download/"${pkgver}"/deb%20package")
+install="${pkgname}".install
+source=(${url}"/releases/download/"${pkgver}"/deb%20package")
 sha512sums=('41bbee9bd63bf632b3807c592909fb2d59edce61099608e7d44ca66762aef1819578b96f0ed1055f89d8b6e16f001720acf7d181301345d9464f1bd70c26ad89')
 
 package(){
