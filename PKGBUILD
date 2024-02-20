@@ -6,7 +6,7 @@
 pkgname=sway-im-git
 _pkgname=sway
 pkgver=r7292.d19810eba895
-pkgrel=2
+pkgrel=3
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager (git version with input method popups)'
 arch=(x86_64)
 url='https://swaywm.org/'
@@ -51,7 +51,7 @@ conflicts=("sway")
 install=sway.install
 sha512sums=('SKIP'
             'd5f9aadbb4bbef067c31d4c8c14dad220eb6f3e559e9157e20e1e3d47faf2f77b9a15e52519c3ffc53dc8a5202cb28757b81a4b3b0cc5dd50a4ddc49e03fe06e'
-            'ceccd10bfd33651b8538f7d237a6ec0b46804d4525cf96a60d87d67c5c52ab0e7ca626c5b6cbb4b62c563b55a05f873aa57869e5b90b15aaa3dae3f6155135e9'
+            '36c5881d9fb61d49b55301b253afd8da873f590a81aa20706d1a2cffbeaa0fffbedfc73824a74280b7850a8f9fe439dd3ba23651198290459335a473d829b2e7'
             'b9e708c775825c8124d8e154e523c90b8a32715050ba06f6dbcdd08d109eed484d128ccc8dcd6a49dc9cd51a0c9035779c2706b4d7a139115e85c4f54226b775')
 
 pkgver() {

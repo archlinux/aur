@@ -1,7 +1,7 @@
 From d3cd3f01696158e1c0c9f2e7519c2fef1c1d7406 Mon Sep 17 00:00:00 2001
 From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
 Date: Wed, 3 May 2023 14:21:27 +0800
-Subject: [PATCH 01/19] text_input: Implement input-method popups
+Subject: [PATCH 01/21] text_input: Implement input-method popups
 
 origin one is the pr by tadeokondrak in pr 5890
 
@@ -315,7 +315,7 @@ index 58911c2de4..caf09f06d3 100644
 From 04d8ede33f34c58df7b43a403bca9a9c53643b00 Mon Sep 17 00:00:00 2001
 From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
 Date: Sun, 21 Jan 2024 17:01:33 +0800
-Subject: [PATCH 02/19] fix: coredump when popup exist and close window
+Subject: [PATCH 02/21] fix: coredump when popup exist and close window
 
 ---
  sway/input/text_input.c | 12 ++++++++----
@@ -383,7 +383,7 @@ index caf09f06d3..2436130edd 100644
 From c3e59098a8467c7f0e4bad251b3eb145403b5701 Mon Sep 17 00:00:00 2001
 From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
 Date: Sun, 21 Jan 2024 21:17:56 +0800
-Subject: [PATCH 03/19] fix: popup should always be the top
+Subject: [PATCH 03/21] fix: popup should always be the top
 
 ---
  sway/input/text_input.c | 32 +++++++++++++++-----------------
@@ -472,7 +472,7 @@ index 2436130edd..80b334e6d0 100644
 From be9a30d55513dd12d32098de00d4579ee4cc0da7 Mon Sep 17 00:00:00 2001
 From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
 Date: Sun, 21 Jan 2024 21:25:36 +0800
-Subject: [PATCH 04/19] Revert "fix: coredump when popup exist and close
+Subject: [PATCH 04/21] Revert "fix: coredump when popup exist and close
  window"
 
 since the popup is under root top, so the node will always exist, so
@@ -545,7 +545,7 @@ index 80b334e6d0..901d85fec5 100644
 From 06b73e175c6e86c49b8d78a668df7a9ae5228739 Mon Sep 17 00:00:00 2001
 From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
 Date: Sun, 21 Jan 2024 21:43:43 +0800
-Subject: [PATCH 05/19] chore: destory scene when popup damaged
+Subject: [PATCH 05/21] chore: destory scene when popup damaged
 
 ---
  sway/input/text_input.c | 3 +++
@@ -569,7 +569,7 @@ index 901d85fec5..817ac34d07 100644
 From 47d0c48ab510df25274ce55872aabe3e759f98f2 Mon Sep 17 00:00:00 2001
 From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
 Date: Tue, 23 Jan 2024 11:21:36 +0800
-Subject: [PATCH 06/19] chore: remove unused code
+Subject: [PATCH 06/21] chore: remove unused code
 
 ---
  include/sway/input/text_input.h |  1 -
@@ -630,7 +630,7 @@ index 817ac34d07..a0315f5b14 100644
 From f817c80779a3cf2f049e2b76f14a988972a41198 Mon Sep 17 00:00:00 2001
 From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
 Date: Tue, 23 Jan 2024 11:40:24 +0800
-Subject: [PATCH 07/19] chore: bind to root->layer_tree instead
+Subject: [PATCH 07/21] chore: bind to root->layer_tree instead
 
 ---
  sway/input/text_input.c | 15 ++++++---------
@@ -695,7 +695,7 @@ index a0315f5b14..c471ea5584 100644
 From b09db5b7a4d04a56db23d7ad48a4b1ff33083224 Mon Sep 17 00:00:00 2001
 From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
 Date: Tue, 23 Jan 2024 11:47:22 +0800
-Subject: [PATCH 08/19] chore: assign SWAY_SCENE_DESC_VIEW to popup scene
+Subject: [PATCH 08/21] chore: assign SWAY_SCENE_DESC_VIEW to popup scene
 
 ---
  sway/input/text_input.c | 16 +++++++++++++++-
@@ -747,7 +747,7 @@ index c471ea5584..f46bd06c5b 100644
 From 14f6847cc067f369fccf7976802865123988fd5e Mon Sep 17 00:00:00 2001
 From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
 Date: Tue, 13 Feb 2024 10:05:59 +0800
-Subject: [PATCH 09/19] chore: use popup desc to place popup
+Subject: [PATCH 09/21] chore: use popup desc to place popup
 
 ---
  include/sway/input/text_input.h       | 15 -------
@@ -929,7 +929,7 @@ index f46bd06c5b..8641e67b03 100644
 From 2093f372123a3b80b30c61ae09476f0ea86dd653 Mon Sep 17 00:00:00 2001
 From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
 Date: Tue, 13 Feb 2024 10:24:03 +0800
-Subject: [PATCH 10/19] chore: tidy up the position of popup
+Subject: [PATCH 10/21] chore: tidy up the position of popup
 
 ---
  include/sway/input/text_input_popup.h |  2 --
@@ -1015,7 +1015,7 @@ index 8641e67b03..d4a9546cf5 100644
 From 6ce09d0fa94da54f1decc0bf86bf652b53f7f2cf Mon Sep 17 00:00:00 2001
 From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
 Date: Tue, 13 Feb 2024 11:10:25 +0800
-Subject: [PATCH 11/19] fix: coredump on layershell
+Subject: [PATCH 11/21] fix: coredump on layershell
 
 ---
  sway/input/text_input.c | 40 +++++++++++++++++++++++++++++++++++++---
@@ -1098,7 +1098,7 @@ index d4a9546cf5..53ac6ea0b7 100644
 From 5725d3a170d63d4006f2861146f8405d68919952 Mon Sep 17 00:00:00 2001
 From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
 Date: Tue, 13 Feb 2024 12:47:38 +0800
-Subject: [PATCH 12/19] chore: tidy up code
+Subject: [PATCH 12/21] chore: tidy up code
 
 ---
  sway/input/text_input.c | 55 ++++++++++++++++++++++++-----------------
@@ -1210,7 +1210,7 @@ index 53ac6ea0b7..fff5f7e29f 100644
 From 77343fde2b922cbd6282cb13846795dc06192fe5 Mon Sep 17 00:00:00 2001
 From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
 Date: Tue, 13 Feb 2024 12:57:57 +0800
-Subject: [PATCH 13/19] chore: handle memory leaking
+Subject: [PATCH 13/21] chore: handle memory leaking
 
 ---
  sway/input/text_input.c | 12 ++++++------
@@ -1246,7 +1246,7 @@ index fff5f7e29f..42f3160d2d 100644
 From 9122372efb6227e8360af7e3155656cbbe7e3c05 Mon Sep 17 00:00:00 2001
 From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
 Date: Fri, 16 Feb 2024 13:31:33 +0800
-Subject: [PATCH 14/19] chore: check bottom layershell as well
+Subject: [PATCH 14/21] chore: check bottom layershell as well
 
 ---
  sway/input/text_input.c | 6 +++++-
@@ -1280,7 +1280,7 @@ index 42f3160d2d..c3d7da7f16 100644
 From e236ea4d1ba038ec2b6781626a70492a810502a5 Mon Sep 17 00:00:00 2001
 From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
 Date: Fri, 16 Feb 2024 21:00:03 +0800
-Subject: [PATCH 15/19] fix: popup cannot adjust with output size
+Subject: [PATCH 15/21] fix: popup cannot adjust with output size
 
 ---
  sway/input/text_input.c | 24 +++++++++++-------------
@@ -1338,7 +1338,7 @@ index c3d7da7f16..bdfa5a705c 100644
 From 329c2a74e9d9632565d4e14bd851bb6c7f6364e2 Mon Sep 17 00:00:00 2001
 From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
 Date: Sat, 17 Feb 2024 21:50:39 +0800
-Subject: [PATCH 16/19] chore: use `data` to find sway_layer_surface
+Subject: [PATCH 16/21] chore: use `data` to find sway_layer_surface
 
 ---
  sway/desktop/layer_shell.c |  3 +++
@@ -1430,7 +1430,7 @@ index bdfa5a705c..2c32cdd5ff 100644
 From 4790391a027c5868652b0af0a63370d937a6a2be Mon Sep 17 00:00:00 2001
 From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
 Date: Sat, 17 Feb 2024 21:55:40 +0800
-Subject: [PATCH 17/19] chore: remove unused listener when im destoryed
+Subject: [PATCH 17/21] chore: remove unused listener when im destoryed
 
 ---
  sway/input/text_input.c | 1 +
@@ -1452,7 +1452,7 @@ index 2c32cdd5ff..a2ab21db49 100644
 From 3f4c0aff134c79daff8ac57284784b777ca68547 Mon Sep 17 00:00:00 2001
 From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
 Date: Sat, 17 Feb 2024 22:09:45 +0800
-Subject: [PATCH 18/19] chore: apply the destory scene way suggested
+Subject: [PATCH 18/21] chore: apply the destory scene way suggested
 
 ---
  sway/input/text_input.c | 12 ++++++++++--
@@ -1486,7 +1486,7 @@ index a2ab21db49..e6b321131d 100644
 From d7ee56eee26722ff8729f4a087216c60a1639727 Mon Sep 17 00:00:00 2001
 From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
 Date: Sat, 17 Feb 2024 22:11:07 +0800
-Subject: [PATCH 19/19] chore: tidy up the code style
+Subject: [PATCH 19/21] chore: tidy up the code style
 
 ---
  sway/input/text_input.c | 3 +--
@@ -1513,3 +1513,118 @@ index e6b321131d..29a855f501 100644
  	} else {
  		struct sway_view *view = view_from_wlr_surface(focused_surface);
  		relative = wlr_scene_tree_create(view->scene_tree);
+
+From ed5674ed0c2043d612b30711252443d8beef7520 Mon Sep 17 00:00:00 2001
+From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
+Date: Tue, 20 Feb 2024 09:45:59 +0800
+Subject: [PATCH 20/21] chore: tidy up scene logic and fix position
+
+---
+ sway/input/text_input.c | 17 +++++++----------
+ 1 file changed, 7 insertions(+), 10 deletions(-)
+
+diff --git a/sway/input/text_input.c b/sway/input/text_input.c
+index 29a855f501..c5efdd2b26 100644
+--- a/sway/input/text_input.c
++++ b/sway/input/text_input.c
+@@ -304,7 +304,8 @@ static void input_popup_update(struct sway_input_popup *popup) {
+ 	struct wlr_box parent;
+ 	struct wlr_layer_surface_v1 *layer_surface =
+ 		wlr_layer_surface_v1_try_from_wlr_surface(focused_surface);
+-	struct wlr_scene_tree *relative;
++	struct wlr_scene_tree *relative_parent;
++
+ 	if (layer_surface != NULL) {
+ 		struct sway_layer_surface *layer =
+ 			layer_surface->data;
+@@ -312,10 +313,7 @@ static void input_popup_update(struct sway_input_popup *popup) {
+ 			return;
+ 		}
+ 
+-		relative = wlr_scene_tree_create(layer->scene->tree);
+-		if (relative == NULL) {
+-			return;
+-		}
++		relative_parent = layer->scene->tree;
+ 		struct wlr_output *output = layer->layer_surface->output;
+ 		wlr_output_layout_get_box(root->output_layout, output, &output_box);
+ 		int lx, ly;
+@@ -326,10 +324,7 @@ static void input_popup_update(struct sway_input_popup *popup) {
+ 		popup->desc.view = NULL;
+ 	} else {
+ 		struct sway_view *view = view_from_wlr_surface(focused_surface);
+-		relative = wlr_scene_tree_create(view->scene_tree);
+-		if (relative == NULL) {
+-			return;
+-		}
++		relative_parent = view->scene_tree;
+ 		int lx, ly;
+ 		wlr_scene_node_coords(&view->scene_tree->node, &lx, &ly);
+ 		struct wlr_output *output = wlr_output_layout_output_at(root->output_layout,
+@@ -345,6 +340,8 @@ static void input_popup_update(struct sway_input_popup *popup) {
+ 		popup->desc.view = view;
+ 	}
+ 
++	struct wlr_scene_tree *relative = wlr_scene_tree_create(relative_parent);
++
+ 	popup->desc.relative = &relative->node;
+ 	if (!scene_descriptor_assign(&popup->scene_tree->node,
+ 			SWAY_SCENE_DESC_POPUP, &popup->desc)) {
+@@ -381,7 +378,7 @@ static void input_popup_update(struct sway_input_popup *popup) {
+ 		y = y1 - popup_height;
+ 	}
+ 
+-	wlr_scene_node_set_position(&relative->node, x, y);
++	wlr_scene_node_set_position(&relative->node, x - parent.x, y - parent.y);
+ 	if (cursor_rect) {
+ 		struct wlr_box box = {
+ 			.x = x1 - x,
+
+From 259fce7b7e3472888a7cab7ae9be72ae76be84a8 Mon Sep 17 00:00:00 2001
+From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
+Date: Tue, 20 Feb 2024 15:07:46 +0800
+Subject: [PATCH 21/21] fix: position adjust with view's geo
+
+---
+ sway/input/text_input.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/sway/input/text_input.c b/sway/input/text_input.c
+index c5efdd2b26..0a40bae4f0 100644
+--- a/sway/input/text_input.c
++++ b/sway/input/text_input.c
+@@ -306,6 +306,8 @@ static void input_popup_update(struct sway_input_popup *popup) {
+ 		wlr_layer_surface_v1_try_from_wlr_surface(focused_surface);
+ 	struct wlr_scene_tree *relative_parent;
+ 
++	struct wlr_box geo = {0};
++
+ 	if (layer_surface != NULL) {
+ 		struct sway_layer_surface *layer =
+ 			layer_surface->data;
+@@ -325,6 +327,7 @@ static void input_popup_update(struct sway_input_popup *popup) {
+ 	} else {
+ 		struct sway_view *view = view_from_wlr_surface(focused_surface);
+ 		relative_parent = view->scene_tree;
++		geo = view->geometry;
+ 		int lx, ly;
+ 		wlr_scene_node_coords(&view->scene_tree->node, &lx, &ly);
+ 		struct wlr_output *output = wlr_output_layout_output_at(root->output_layout,
+@@ -378,7 +381,7 @@ static void input_popup_update(struct sway_input_popup *popup) {
+ 		y = y1 - popup_height;
+ 	}
+ 
+-	wlr_scene_node_set_position(&relative->node, x - parent.x, y - parent.y);
++	wlr_scene_node_set_position(&relative->node, x - parent.x - geo.x, y - parent.y - geo.y);
+ 	if (cursor_rect) {
+ 		struct wlr_box box = {
+ 			.x = x1 - x,
+@@ -389,7 +392,7 @@ static void input_popup_update(struct sway_input_popup *popup) {
+ 		wlr_input_popup_surface_v2_send_text_input_rectangle(
+ 			popup->popup_surface, &box);
+ 	}
+-	wlr_scene_node_set_position(&popup->scene_tree->node, x, y);
++	wlr_scene_node_set_position(&popup->scene_tree->node, x - geo.x, y - geo.y);
+ }
+ 
+ static void input_popup_set_focus(struct sway_input_popup *popup,
