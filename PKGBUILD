@@ -3,7 +3,7 @@
 
 pkgname=cargo-information
 _pkgname=cargo-info
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="A tool to provide a detailed information about a Rust package"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('gcc-libs' 'curl' 'zlib' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('009c1b5edf3346b4be977890f4f2a4162576d9338d01a4e3f79cbe25a4877ac782737c4416a2274dd45f38cda80c635bffad2da7f64c5ee6ccf90848cddd28dd')
+sha512sums=('101d064a4057aa206ba1fe6fd3037576ff41cde52b565d20ffe4a85991eb33fac6570e1b517e41ab2cb1e937f5691412129b435bcdb5c54fb4e1781bd14ece82')
 options=('!lto')
 
 prepare() {
