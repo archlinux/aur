@@ -6,13 +6,13 @@
 # Contributor: Adam Rustler
 pkgname=prepros-bin
 _pkgname=Prepros
-pkgver=7.17.0
+pkgver=7.22.0
 _electronversion=25
-pkgrel=4
+pkgrel=1
 pkgdesc="Prepros compiles your files, transpiles your JavaScript, reloads your browsers and makes it really easy to develop & test your websites so you can focus on making them perfect."
 arch=('x86_64')
 url="https://prepros.io"
-license=('custom:proprietary')
+license=('LicenseRef-custom')
 depends=(
     "electron${_electronversion}"
     'lib32-gcc-libs'
@@ -28,12 +28,12 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::https://downloads.prepros.io/v7/${pkgver}/${_pkgname}-${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('59d8f34ac6769dd991125afadfe7e490527b55f9d9b33e928241d0e2ce9a9fe5'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+sha256sums=('cf0b777df08b66173911a326d90d032d06b614189aae08c42c5c6bcee6d62cd7'
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.zst"
 }
