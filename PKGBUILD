@@ -89,5 +89,5 @@ package() {
   xdg-mime default "${launcher_path}" "application/uppaal-ta" 
 
   # symlink startup script to bin 
-  ln -s "${pkgdir}/opt/${pkgname}/uppaal" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
