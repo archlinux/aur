@@ -23,7 +23,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  go build -buildmode=pie -trimpath -ldflags="-linkmode=external -s -w -X 'git.asdf.cafe/abs3nt/${_pkgname}/src/components/cli.Version=v${pkgver}'" -mod=readonly -modcacherw .
+  go build -buildmode=pie -trimpath -ldflags="-linkmode=external -s -w -X 'git.asdf.cafe/abs3nt/${_pkgname}/src/components/cli.Version=v${pkgver}'" -mod=readonly -modcacherw ./cmd/gspot
 }
 
 package() {

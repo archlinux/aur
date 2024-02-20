@@ -1,6 +1,6 @@
 pkgbase = gspot-git
 	pkgdesc = Spotify TUI And CLI written in Go
-	pkgver = 0.0.1
+	pkgver = 0.0.17.r0.g86c2c38
 	pkgrel = 1
 	url = https://git.asdf.cafe/abs3nt/gspot
 	arch = x86_64
