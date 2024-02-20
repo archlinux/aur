@@ -1,3 +1,5 @@
 /*.pkg.*
+/pkg
+/src
 /ULWGL-launcher
 /ULWGL-launcher.tar.gz

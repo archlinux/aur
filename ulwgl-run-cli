@@ -63,5 +63,8 @@ else
   export PROTONPATH="$PROTONPATH"
 fi
 
-# use ulwgl-run-posix for compatibility reasons, for now.
-"$ulwgl_dir/ulwgl-run-posix" "$@"
+if [[ "${ULWGL_NO_PYTHON:+1}" == "1" ]]; then
+  "$ulwgl_dir/ulwgl-run-posix" "$@"
+else
+  "$ulwgl_dir/ulwgl-run" "$@"
+fi
