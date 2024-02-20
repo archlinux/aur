@@ -14,7 +14,7 @@ epoch=1
 pkgdesc="Rime input method engine"
 arch=('x86_64')
 url="https://github.com/rime/librime"
-license=('GPL3')
+license=('BSD-3-Clause')
 depends=('boost-libs' 'capnproto' 'opencc' 'yaml-cpp' 'leveldb' 'librime-data' 'lua' 'google-glog' 'marisa')
 makedepends=('git' 'cmake' 'boost' 'gtest' 'ninja')
 source=("git+https://github.com/rime/librime.git#commit=$_commit"
@@ -56,4 +56,5 @@ check() {
 package() {
   cd librime/build
   DESTDIR="$pkgdir" ninja install
+  install -vDm 644 ../LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
