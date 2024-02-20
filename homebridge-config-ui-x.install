@@ -17,13 +17,13 @@ post_install() {
 	security.
 	See: https://github.com/homebridge/homebridge/wiki/Verified-Plugins
 
-	3) To give permissions to the web ui to poweroff/reboot the machine,
-	create a drop-in file in /etc/sudoers.d similar to:
+	3) To give permissions to the web ui to poweroff/reboot the machine and
+	install plugins, create a drop-in file in /etc/sudoers.d similar to:
 
-	homebridge ALL=(ALL) NOPASSWD:SETENV: /usr/bin/shutdown
+	homebridge ALL=(ALL) NOPASSWD:SETENV: /usr/bin/npm, /usr/bin/shutdown, /usr/local/bin/npm
 
 	4) The web ui runs commands with sudo in various places.
-	You have been warned. (@bret: Still true?)
+	You have been warned.
 
 	5) It is recommended to run homebridge with a supported Node.js version.
 	Currently nodejs-lts-iron (Node.js 20) is the recommended version.
