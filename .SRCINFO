@@ -1,12 +1,14 @@
 pkgbase = amdgpu-opengl-switcher-git
 	pkgdesc = Select needed OpenGL implementation with gl_mesa, gl_zink or gl_pro prefix
 	pkgver = 1.0.r9.g7fcbd69
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CosmicFusion/amdgpu-opengl-switcher
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = bash
+	provides = amdgpu-opengl-switcher=1.0.r9.g7fcbd69
+	conflicts = amdgpu-opengl-switcher
 	source = git+https://github.com/CosmicFusion/amdgpu-opengl-switcher.git
 	sha256sums = SKIP
 
