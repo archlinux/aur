@@ -4,13 +4,13 @@
 pkgname=orfeo-toolbox
 pkgver=8.1.2
 _pkgver=8.0
-pkgrel=2
+pkgrel=5
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
 arch=(x86_64 i686)
 url="http://www.orfeo-toolbox.org"
 license=('CeCILL')
 groups=()
-depends=('gdal' 'agg' 'freeglut' 'curl' 'fftw' 'tinyxml' 'muparser' 'fltk' 'python' 'openthreads' 'boost' 'ossim'
+depends=('gdal' 'freeglut' 'curl' 'fftw' 'tinyxml' 'muparser' 'fltk' 'python' 'openthreads' 'boost'
 		'hdf5'  'insight-toolkit4' 'libsvm' 'qwt' 'opencv>=3' 'glfw' 'openmpi' 'glew')
 makedepends=('git' 'swig' 'cmake' 'qt5-base')
 optdepends=()
