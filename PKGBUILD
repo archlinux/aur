@@ -1,4 +1,4 @@
-# Maintainer: Severen Redwood <me@severen.dev>
+# Maintainer: Severen Redwood <sev@severen.dev>
 # Contributor: Federico Squartini <federico.squartini at gmail dot com>
 
 pkgname=exercism
