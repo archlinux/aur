@@ -44,7 +44,7 @@ pkgname=("bareos-bconsole"
 #         "bareos-vadp-dumper"
 #         "bareos-vmware-vix-disklib"
 
-pkgver=22.1.0
+pkgver=23.0.1
 pkgmajor=${pkgver%%.*}
 pkgrel=1
 arch=(i686 x86_64 armv7h aarch64)
@@ -55,7 +55,6 @@ license=('AGPL3')
 makedepends=('cmake' 'gcc' 'libmariadbclient' 'postgresql-libs' 'python' 'python-setuptools' 'rpcsvc-proto' 'git' 'lsb-release' 'qt5-base' 'glusterfs' 'jansson' 'pam_wrapper')
 source=("git+https://github.com/bareos/bareos.git#tag=Release/${pkgver}"
         "0001-distver.patch"
-        "0002-logspam.patch"
         "0003-version.patch"
         "0004-sqlspam.patch"
         "0005-httpd.patch"
@@ -63,7 +62,6 @@ source=("git+https://github.com/bareos/bareos.git#tag=Release/${pkgver}"
 
 md5sums=('SKIP'
          '419b0c64af750aa3e8ea668edf464d3e'
-         '39724df5903b712fb8d34209c7ac8f1e'
          '5bf1233d94dfecc9060746bfb39b9d2b'
          'ca4c929a2462cafaead8d0b49e3cebed'
          'a6a260808e46c20b1c22aa2efebc3fe1'
