@@ -1,0 +1,20 @@
+pkgbase = ory-oathkeeper
+	pkgdesc = Ory Oatheeper identity and access proxy written in Go
+	pkgver = 0.40.6
+	pkgrel = 1
+	url = https://github.com/ory/oathkeeper
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	backup = etc/ory/oathkeeper/config.yaml
+	source = ory-oathkeeper-0.40.6.tar.gz::https://github.com/ory/oathkeeper/archive/refs/tags/v0.40.6.tar.gz
+	source = ory-oathkeeper.service
+	source = ory-oathkeeper@.service
+	source = ory-oathkeeper.sysusers
+	b2sums = 33332b7c10854e5490da941c1de6b60ef9fad3fb87a7df7000b9759678a21e32305260e451b9c58bd277e0a2394e58e476a8f1c666a2a706cfcee5679997e9fb
+	b2sums = 2da6632b323dd99b92286e2374f6f5776c0053c3164fff3a8b7cecfb53fe7e36c7adb4c80485b554f8a6ab62c610261598d9e9f7f4955fda4dea4607a404224b
+	b2sums = caab99a71d92687dce5538ae9bb6e14d8b54b10b0d0769b8f02f5aa5090a60ea70090d6b6aff71dd23b82ef133295703c12b8d9654f39c062500c2221ee9e29f
+	b2sums = 28fe1e8aceb95887a18f0d0b2e4c0e37ea6664987639d3777e8d30c9deff8e712a9a46c823c04e3a21afe5f3459eef71f433b1d0a226529317b57df60360cc6d
+
+pkgname = ory-oathkeeper
