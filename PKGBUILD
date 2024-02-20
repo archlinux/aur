@@ -1,0 +1,1 @@
+../../uppaal-packaging/PKGBUILD

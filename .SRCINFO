@@ -1,0 +1,16 @@
+pkgbase = uppaal
+	pkgdesc = Verify timed automata models and learn strategies.
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://uppaal.org/
+	arch = any
+	license = custom
+	makedepends = unzip
+	depends = jre17-openjdk
+	depends = xdg-utils
+	provides = uppaal-5.0.0
+	noextract = uppaal-5.0.0-linux64.zip
+	source = https://download.uppaal.org/uppaal-5.0/uppaal-5.0.0/uppaal-5.0.0-linux64.zip
+	sha512sums = e7fceddd699ebbe1a0120209bbe59fe7ef61b0c3b671bc453028e46e68310c3e96e3c5be7d9aec8cd5c85d065b3a4c7d6f9c68e7e5578d410efec7a6d9407543
+
+pkgname = uppaal
