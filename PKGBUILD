@@ -7,8 +7,8 @@ pkgdesc='Bo neni cas pyco'
 arch=('x86_64' 'i486' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/tkohout/$_reponame"
 license=('unknown')
-depends=('java-runtime')
-makedepends=('java-environment' 'maven')
+depends=('java-runtime<20')
+makedepends=('java-environment<20' 'maven')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
 	"fix-lib-paths.diff"
