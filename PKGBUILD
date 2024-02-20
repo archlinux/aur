@@ -24,7 +24,10 @@ depends=('glibc>=2.33'
          'libraw'
          'double-conversion>=3.1.5'
          'systemd'
-         'freeimage')
+         'freeimage'
+         'qt5-graphicaleffects'
+         'qt5-quickcontrols2'
+         'qt5-quickcontrols')
 optdepends=('sni-qt: fix systray issue on KDE and LXQt')
 source=("https://mega.nz/linux/repo/Arch_Extra/x86_64/megasync-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 sha256sums=('3f70bfa42b53c8f45ffdf6d64401ad3c294a1c0aa63284d49156993f13dc6adf')

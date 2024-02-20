@@ -21,6 +21,9 @@ pkgbase = megasync-bin
 	depends = double-conversion>=3.1.5
 	depends = systemd
 	depends = freeimage
+	depends = qt5-graphicaleffects
+	depends = qt5-quickcontrols2
+	depends = qt5-quickcontrols
 	optdepends = sni-qt: fix systray issue on KDE and LXQt
 	provides = megasync=4.12.2
 	conflicts = megasync
