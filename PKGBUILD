@@ -2,6 +2,7 @@
 # Contributor: Asuka Minato
 # Contributor: elementh <hello@lucasmarino.me>
 # Contributor: Ash Price <eisleggje@gmail.com>
+# Contributor: Adrian Perez <aperez@igalia.com>
 #
 # WARNING WARNING WARNING WARNING WARNING    
 # IMPORTANT: MIGRATION
