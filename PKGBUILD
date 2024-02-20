@@ -8,7 +8,7 @@
 pkgbase=uv
 pkgname=($pkgbase python-$pkgbase)
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='An extremely fast Python package installer and resolver, written in Rust'
 arch=(x86_64 aarch64)
 url="https://github.com/astral-sh/$pkgbase"
@@ -24,20 +24,19 @@ b2sums=('e3d801b26c5dce5fdc2aab2d6be93f3a119f31185ba56a46d463c01fef76a04848a828e
 
 prepare() {
   cd "$_archive"
-  cat >rust-toolchain.toml <<__EOF__
-[toolchain]
-channel = "stable"
-__EOF__
+  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "$_archive"
+  export RUSTUP_TOOLCHAIN=stable
   maturin build --locked --release --all-features --target "$(rustc -vV | sed -n 's/host: //p')" --strip
 }
 
 check() {
   cd "$_archive"
+  export RUSTUP_TOOLCHAIN=stable
   python3 ./scripts/bootstrap/install.py
   cargo test -p uv --frozen --all-features
 }
