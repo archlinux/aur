@@ -11,17 +11,17 @@ url="https://github.com/oven-sh/bun"
 license=('MIT')
 provides=('bun')
 conflicts=('bun')
-sha256sums_x86_64=('6bdba90d7c25826bc5f7dba552996bb1c5abb06a7fec0b0b4dfc7514f618e35b')
+sha256sums_x86_64=('6bdba90d7c25826bc5f7dba552996bb1c5abb06a7fec0b0b4dfc7514f618e35b'
 	'002c2696d92b5c8cf956c11072baa58eaf9f6ade995c031ea635c6a1ee342ad1'
 )
-sha256sums_aarch64=('789af7996bac48dac3a8f1d5e4fc15b1f18ae28e7b5c3b011e8ce93c913b1ec5')
+sha256sums_aarch64=('789af7996bac48dac3a8f1d5e4fc15b1f18ae28e7b5c3b011e8ce93c913b1ec5'
 	'002c2696d92b5c8cf956c11072baa58eaf9f6ade995c031ea635c6a1ee342ad1'
 )
 _baseline=''
 _baseline_sha256sums='93dab689daf8ccc83e8166a724c952b33d90710140870ded4acdb305feb8f7a1'
-if [[ $CARCH == 'x86_64' && $(cat /proc/cpuinfo | grep avx2) = '' ]];then
-  _baseline='-baseline'
-  sha256sums_x86_64=${_baseline_sha256sums}
+if [[ $CARCH == 'x86_64' && $(cat /proc/cpuinfo | grep avx2) = '' ]]; then
+	_baseline='-baseline'
+	sha256sums_x86_64=${_baseline_sha256sums}
 fi
 source_x86_64=(
 	"bun-x64-${pkgver}.zip::https://github.com/oven-sh/bun/releases/download/bun-v${pkgver}/bun-linux-x64${_baseline}.zip"
@@ -32,30 +32,30 @@ source_aarch64=(
 	"LICENSE"
 )
 build() {
-  if [ "${CARCH}" == "aarch64" ]; then
-    cd "bun-linux-aarch64"
-  else
-    cd "bun-linux-x64${_baseline}"
-  fi
-  install -dm755 "completions"
-  SHELL=zsh "./bun" completions > "completions/bun.zsh"
-  SHELL=bash "./bun" completions > "completions/bun.bash"
-  SHELL=fish "./bun" completions > "completions/bun.fish"
+	if [ "${CARCH}" == "aarch64" ]; then
+		cd "bun-linux-aarch64"
+	else
+		cd "bun-linux-x64${_baseline}"
+	fi
+	install -dm755 "completions"
+	SHELL=zsh "./bun" completions >"completions/bun.zsh"
+	SHELL=bash "./bun" completions >"completions/bun.bash"
+	SHELL=fish "./bun" completions >"completions/bun.fish"
 }
 package() {
-  if [ "${CARCH}" == "aarch64" ]; then
-    cd "bun-linux-aarch64"
-    install -Dm755 "./bun" "${pkgdir}/usr/bin/bun"
-  else
-    cd "bun-linux-x64${_baseline}"
-    install -Dm755 "./bun" "${pkgdir}/usr/bin/bun"
-  fi
-  # simlink as bunx as in the official install.sh
-  ln -s bun "${pkgdir}/usr/bin/bunx"
+	if [ "${CARCH}" == "aarch64" ]; then
+		cd "bun-linux-aarch64"
+		install -Dm755 "./bun" "${pkgdir}/usr/bin/bun"
+	else
+		cd "bun-linux-x64${_baseline}"
+		install -Dm755 "./bun" "${pkgdir}/usr/bin/bun"
+	fi
+	# simlink as bunx as in the official install.sh
+	ln -s bun "${pkgdir}/usr/bin/bunx"
 
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  
-  install -Dm644 completions/bun.zsh "${pkgdir}/usr/share/zsh/site-functions/_bun"
-  install -Dm644 completions/bun.bash "${pkgdir}/usr/share/bash-completion/completions/bun"
-  install -Dm644 completions/bun.fish "${pkgdir}/usr/share/fish/vendor_completions.d/bun.fish"
+	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+	install -Dm644 completions/bun.zsh "${pkgdir}/usr/share/zsh/site-functions/_bun"
+	install -Dm644 completions/bun.bash "${pkgdir}/usr/share/bash-completion/completions/bun"
+	install -Dm644 completions/bun.fish "${pkgdir}/usr/share/fish/vendor_completions.d/bun.fish"
 }
