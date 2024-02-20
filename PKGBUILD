@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fotoluks-manager-git
 _pkgname="Fotoluks Manager"
-pkgver=2.0.1.r0.ge8a462f
+pkgver=2.1.0.r0.ge434cf6
 _electronversion=22
 _nodeversion=18
 pkgrel=1
 pkgdesc="Application for managing orders, setting tasks and mini-applications for working with MoySklad."
 arch=('any')
 url="https://github.com/Evernayt/fotoluks-manager"
-license=('LicenseRef-custom')
+license=('MIT')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 depends=(
@@ -24,8 +24,10 @@ makedepends=(
 )
 source=(
     "${pkgname%-git}.git::git+${url}.git"
+    "${pkgname%-git}.sh"
 )
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -37,8 +39,12 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-git}|g" \
+        -e "s|@runname@|app|g" \
+        -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories "Development" --name "${_pkgname}" --exec "${pkgname%-git} --no-sandbox %U"
+    gendesk -q -f -n --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -54,14 +60,16 @@ build() {
     mv src/components/ui/Table src/components/ui/table
     mv src/components/ui/Search src/components/ui/search
     mv src/components/ui/Pagination src/components/ui/pagination
+    sed "s|preload: app.isPackaged|preload: !app.isPackaged|g;s|icon.ico|icon.png|g" -i src/main/main.ts
     npm install
     npm run package
     cp release/build/.icon-set/icon_256.png release/build/.icon-set/icon_256x256.png
+    install -Dm644 release/build/.icon-set/icon_32x32.png release/build/linux-*/resources/assets/icon.png
 }
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-git}",usr/bin}
-    cp -r "${srcdir}/${pkgname%-git}.git/release/build/linux-"*/* "${pkgdir}/opt/${pkgname%-git}"
-    ln -sf "/opt/${pkgname%-git}/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
+    install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/release/build/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -r "${srcdir}/${pkgname%-git}.git/release/build/linux-"*/resources/assets "${pkgdir}/usr/lib/${pkgname%-git}"
     for _icons in 16x16 32x32 48x48 64x64 128x128 256x256;do
         install -Dm644 "${srcdir}/${pkgname%-git}.git/release/build/.icon-set/icon_${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
