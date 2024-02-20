@@ -1,0 +1,21 @@
+pkgbase = ory-hydra
+	pkgdesc = Ory Hydra OpenID Connect and OAuth Provider written in Go
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/ory/hydra
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	optdepends = postgresql: PostgreSQL support
+	backup = etc/ory/hydra/config.yaml
+	source = ory-hydra-2.2.0.tar.gz::https://github.com/ory/hydra/archive/refs/tags/v2.2.0.tar.gz
+	source = ory-hydra.service
+	source = ory-hydra@.service
+	source = ory-hydra.sysusers
+	b2sums = 4a4a92362123f98829d298c3c87195968fdb7f598ed08ee4932b981eb7cdaf15890f6a274e194d53736390431ea736a5482e0727e5d54d31279b9e8759a84bb0
+	b2sums = 1b92812c4f065ce7f4e57c7d4708fce32a88264e97f2f03de1724c77e7fd17c559122ad530a97452da2c80ba8f8b6b0a010c1067da347f5c62ab5e6e13687c81
+	b2sums = 6c1b12d82576f9ca752772fa51ead9915783cb3287be6678e8cab51239b98d415994e6f0639e6c9f5d1f5d0d5e2a0cc8540038cdb936738bb7a35c1d4b82fbf4
+	b2sums = c3ecc3967092945a23a553d984523402c2fd9278b0d8388f102203439843927c7bdec824dbcf0cbb950521859cc2ed95ac974eab0b08bc864edc598620715650
+
+pkgname = ory-hydra
