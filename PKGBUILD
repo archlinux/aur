@@ -1,7 +1,7 @@
 # Maintainer: Kazuya Yokogawa <mapk0y at gmail.com>
 
 pkgname='cfn-guard'
-pkgver=3.0.1
+pkgver=3.0.3
 pkgrel=1
 pkgdesc='Guard offers a policy-as-code domain-specific language (DSL) to write rules and validate JSON- and YAML-formatted data such as CloudFormation Templates, K8s configurations, and Terraform JSON plans/configurations against those rules.'
 url='https://github.com/aws-cloudformation/cloudformation-guard'
