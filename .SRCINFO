@@ -1,6 +1,6 @@
 pkgbase = samora-lang
 	pkgdesc = Samora Lang - A Simple Interpreted Programming Language just for Educational Purposes.
-	pkgver = 1.20.4.r4.10b471e
+	pkgver = 0.2.0.r6.7fc9c7b
 	pkgrel = 1
 	url = https://github.com/GraHms/Samora-Lang
 	arch = x86_64

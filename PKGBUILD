@@ -1,7 +1,10 @@
 # Maintainer: Ailton Baúque <ailtonbauque@outlook.com>
 
+latest_tag=$(curl -s "https://api.github.com/repos/GraHms/Samora-Lang/tags" | jq -r '.[0].name')
+latest_tag=${latest_tag#v}
+
+pkgver="${latest_tag}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 pkgname=samora-lang
-pkgver=1.20.4.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 pkgrel=1
 pkgdesc="Samora Lang - A Simple Interpreted Programming Language just for Educational Purposes."
 arch=('x86_64' 'i686')
@@ -25,8 +28,6 @@ noextract=()
 md5sums=('SKIP')
 
 #pkgver(){
-#  cd "${srcdir}"
-#  printf "1.20.4.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 #}
 
 prepare() {
