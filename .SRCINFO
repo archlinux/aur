@@ -1,6 +1,6 @@
 pkgbase = python-catppuccin
 	pkgdesc = Soothing pastel theme for Python
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://catppuccin-website.vercel.app
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = python-catppuccin
 	depends = python
 	optdepends = python-pygments: For pygments integration
 	optdepends = python-rich: For rich integration
-	source = python-catppuccin-2.0.0.tar.gz::https://github.com/catppuccin/python/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = e2c8a8c6b2d3814f389972f24449ab3dfe6bcd9d891772c2cb3f467314aacbc2
-	b2sums = 4f2030d29467feb929099c64dec5ccdb7cc04ba74aee4fa69ae61acd754cef09f67ae3c1da7a59d39c7ae46bfb4aa8e5d3a93390495cc7c91029e804d7b12d6a
+	source = python-catppuccin-2.1.0.tar.gz::https://github.com/catppuccin/python/archive/refs/tags/v2.1.0.tar.gz
+	sha256sums = 85ec2c4f553ea7199f187941cbf95fa415106de270f57f2e6ba3f7e84f7024f0
+	b2sums = 338280f308068bba9cd27e2fdf646071a6a47f68c238d2611f3660e489bbbe8f5ebab853c4e5fcbe929f3629ae0e05bca5ea80adca9f3738e763309ad5144c88
 
 pkgname = python-catppuccin
