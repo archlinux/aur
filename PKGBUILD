@@ -4,7 +4,7 @@
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=folly
-pkgver=2024.02.12.00
+pkgver=2024.02.19.00
 pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
@@ -44,11 +44,13 @@ provides=(
 options=(!lto)
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-  "fix-test-definitions.patch"
+  "fix-cmake-find-glog.patch"
+  "fix-missing-include.patch"
 )
 sha256sums=(
-  '678db01d22e0525168dba33b4eb1c35f0e340f77cad5ee941c05eb25f173519d'
-  'a7f15a6706d652e550bd415342c3027abd9afbb86ec04c764be3a96644efc46e'
+  '4e59f3f95dcccb503f87e677a231c107e7595c610a3f4f2e81d768436e47012f'
+  '7655b9d6fd926770dae4d26f67b6aedf8fb6ff03927782bcfeffa09b5138b87c'
+  '19cc8b4190e3c7d4ef9d1d9842a2def99bb261711ae85cb03e63787c4995e286'
 )
 
 _archive="$pkgname-$pkgver"
@@ -56,7 +58,8 @@ _archive="$pkgname-$pkgver"
 prepare() {
   cd "$_archive"
 
-  patch --forward --strip=1 --input="$srcdir/fix-test-definitions.patch"
+  patch --forward --strip=1 --input="$srcdir/fix-cmake-find-glog.patch"
+  patch --forward --strip=1 --input="$srcdir/fix-missing-include.patch"
 }
 
 build() {

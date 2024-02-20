@@ -1,0 +1,12 @@
+diff --git a/folly/experimental/symbolizer/Elf.cpp b/folly/experimental/symbolizer/Elf.cpp
+index 6a7f74fa4..33b44b4dd 100644
+--- a/folly/experimental/symbolizer/Elf.cpp
++++ b/folly/experimental/symbolizer/Elf.cpp
+@@ -21,6 +21,7 @@
+ #include <sys/types.h>
+ #include <cstring>
+ #include <string>
++#include <unistd.h>
+ 
+ #include <glog/logging.h>
+ 

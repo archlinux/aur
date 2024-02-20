@@ -3,4 +3,5 @@
 !.nvchecker.toml
 !.SRCINFO
 !PKGBUILD
-!fix-test-definitions.patch
+!fix-cmake-find-glog.patch
+!fix-missing-include.patch
