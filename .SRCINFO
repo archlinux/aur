@@ -1,11 +1,12 @@
 pkgbase = zelus
 	pkgdesc = Ory Kratos user interface written in Go
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://git.sr.ht/~mekyt/zelus
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	depends = glibc
 	backup = etc/zelus/config.env
 	source = zelus-v1.0.0.tar.gz::https://git.sr.ht/~mekyt/zelus/archive/v1.0.0.tar.gz
 	source = zelus.sysusers

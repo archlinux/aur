@@ -2,12 +2,12 @@
 
 pkgname='zelus'
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Ory Kratos user interface written in Go'
 arch=('x86_64')
 url='https://git.sr.ht/~mekyt/zelus'
 license=('MIT')
-depends=()
+depends=('glibc')
 makedepends=('go')
 source=(
   "${pkgname}-v${pkgver}.tar.gz::https://git.sr.ht/~mekyt/zelus/archive/v${pkgver}.tar.gz"
@@ -21,11 +21,11 @@ backup=('etc/zelus/config.env')
 
 build() {
     cd "${pkgname}-v${pkgver}"
-    export GO_ENABLED='0'
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -ldflags=-linkmode=external -trimpath -mod=readonly -modcacherw"
 
     go build
 }
