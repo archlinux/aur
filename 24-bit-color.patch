@@ -120,7 +120,7 @@
      }
  #endif
  }
-@@ -3415,7 +3415,7 @@
+@@ -3424,7 +3424,7 @@
    if (str[0] == '?' && !str[1])
      {
        rgba c;
@@ -129,7 +129,7 @@
        char rgba_str[32];
  
  #if XFT
-@@ -3924,7 +3924,7 @@
+@@ -3933,7 +3933,7 @@
  {
    unsigned int i;
    short rendset;
@@ -138,7 +138,7 @@
  
    if (nargs == 0)
      {
-@@ -4030,6 +4030,20 @@
+@@ -4039,6 +4039,20 @@
              break;
  
            case 38: // set fg color, ISO 8613-6
@@ -159,7 +159,7 @@
            case 48: // set bg color, ISO 8613-6
              {
                unsigned int fgbg = arg[i] == 38 ? Color_fg : Color_bg;
-@@ -4042,6 +4056,14 @@
+@@ -4051,6 +4065,14 @@
  
                    scr_color (idx, fgbg);
                  }
@@ -527,7 +527,7 @@
  
  enum {
    C0_NUL = 0x00,
-@@ -538,7 +551,9 @@
+@@ -544,7 +557,9 @@
  #endif
  };
  
@@ -538,7 +538,7 @@
  # define Color_Bits      9 // 0 .. maxTermCOLOR24
  #else
  # define Color_Bits      8 // 0 .. maxTermCOLOR24
-@@ -674,21 +689,21 @@
+@@ -680,21 +695,21 @@
  #define ROW(n) ROW_of (this, n)
  
  /* how to build & extract colors and attributes */
@@ -571,7 +571,7 @@
  
  #define PIXCOLOR_NAME(idx)      rs[Rs_color + (idx)]
  #define ISSET_PIXCOLOR(idx)     (!!rs[Rs_color + (idx)])
-@@ -1488,7 +1503,12 @@
+@@ -1494,7 +1509,12 @@
    void scr_swap_screen () noexcept;
    void scr_change_screen (int scrn);
    void scr_color (unsigned int color, int fgbg) noexcept;
