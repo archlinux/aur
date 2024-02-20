@@ -64,6 +64,10 @@ prepare() {
 build() {
   cd "${srcdir}/cef_binary_${_cefbranch}_linux_${CARCH}"
 
+  # this uses malloc_usable_size, which is incompatible with fortification level 3
+  export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+  export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DPROJECT_ARCH=$CARCH .
