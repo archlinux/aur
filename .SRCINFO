@@ -1,7 +1,7 @@
 pkgbase = wemeet-bin
 	pkgdesc = Tencent Video Conferencing, tencent meeting 腾讯会议
 	pkgver = 3.19.0.401
-	pkgrel = 2
+	pkgrel = 3
 	url = https://source.meeting.qq.com/download-center.html
 	arch = x86_64
 	arch = aarch64
@@ -29,6 +29,7 @@ pkgbase = wemeet-bin
 	depends = qt5-base
 	depends = systemd-libs
 	depends = libxdamage
+	depends = qt5-svg
 	optdepends = qt5-wayland: Wayland support
 	optdepends = bubblewrap: Fix abnormal text color in dark mode and prevent messing files.
 	provides = wemeet
