@@ -5,12 +5,12 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=falkon-git
-pkgver=24.04.70_r6233.g422a998ff
+pkgver=24.04.70_r6236.ge04e077a2
 pkgrel=1
 pkgdesc="Cross-platform QtWebEngine browser"
 arch=($CARCH)
 url="https://www.falkon.org/"
-license=(GPL-2.0-or-later3)
+license=(GPL-2.0-or-later)
 depends=(gcc-libs glibc karchive-git libxcb openssl qt6-5compat qt6-base qt6-declarative qt6-webchannel qt6-webengine)
 makedepends=(git extra-cmake-modules-git kio-git libgnome-keyring purpose-git pyside6 qt6-tools shiboken6)
 optdepends=('kcoreaddons-git: KDE integration'

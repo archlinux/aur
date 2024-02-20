@@ -1,12 +1,12 @@
 pkgbase = falkon-git
 	pkgdesc = Cross-platform QtWebEngine browser
-	pkgver = 24.04.70_r6233.g422a998ff
+	pkgver = 24.04.70_r6236.ge04e077a2
 	pkgrel = 1
 	url = https://www.falkon.org/
 	arch = x86_64
 	groups = kde-applications-git
 	groups = kde-network-git
-	license = GPL-2.0-or-later3
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = extra-cmake-modules-git
 	makedepends = kio-git
