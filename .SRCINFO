@@ -1,0 +1,20 @@
+pkgbase = android-x86-nspr
+	pkgdesc = Netscape Portable Runtime (android)
+	pkgver = 4.35
+	pkgrel = 1
+	url = https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSPR
+	arch = any
+	license = MPL-2.0
+	makedepends = android-configure
+	makedepends = zip
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v4.35/src/nspr-4.35.tar.gz
+	source = 0001-Fix-configure-file.patch
+	sha256sums = 7ea3297ea5969b5d25a5dd8d47f2443cda88e9ee746301f6e1e1426f8a6abc8f
+	sha256sums = 1d83aad5546f7ee9f5e06f36e7ce9e49613edb2e3609e4e01c84a604f9195106
+
+pkgname = android-x86-nspr
