@@ -1,6 +1,6 @@
 pkgbase = conky-cairo
 	pkgdesc = Lightweight system monitor for X, Wayland, console, or file/HTTP output (with Cairo/Cairo-Lua support)
-	pkgver = 1.19.6
+	pkgver = 1.19.7
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/brndnmtthws/conky
@@ -27,7 +27,7 @@ pkgbase = conky-cairo
 	conflicts = conky
 	replaces = torsmo
 	replaces = conky
-	source = https://github.com/brndnmtthws/conky/archive/v1.19.6.tar.gz
+	source = https://github.com/brndnmtthws/conky/archive/v1.19.7.tar.gz
 	md5sums = SKIP
 
 pkgname = conky-cairo
