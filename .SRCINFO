@@ -2,7 +2,7 @@ pkgbase = chwifi-git
 	pkgdesc = network profile manager for wireless networks with rolling password systems
 	pkgver = r186.aacddbb
 	pkgrel = 1
-	url = https://github.com/cogitantium/chwifi
+	url = https://github.com/falkecarlsen/chwifi
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -17,4 +17,3 @@ pkgbase = chwifi-git
 	md5sums = SKIP
 
 pkgname = chwifi-git
-
