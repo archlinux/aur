@@ -57,8 +57,8 @@ pkgbase = proton
 	makedepends = lib32-gst-plugins-base-libs
 	makedepends = vulkan-icd-loader
 	makedepends = lib32-vulkan-icd-loader
-	makedepends = sdl2>=2.0.16
-	makedepends = lib32-sdl2>=2.0.16
+	makedepends = sdl2
+	makedepends = lib32-sdl2
 	makedepends = rust
 	makedepends = lib32-rust-libs
 	makedepends = libgphoto2
@@ -87,8 +87,8 @@ pkgbase = proton
 	depends = lib32-libxkbcommon
 	depends = libvpx
 	depends = lib32-libvpx
-	depends = sdl2>=2.0.16
-	depends = lib32-sdl2>=2.0.16
+	depends = sdl2
+	depends = lib32-sdl2
 	depends = libsoup
 	depends = lib32-libsoup
 	depends = libgudev
