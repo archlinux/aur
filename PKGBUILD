@@ -17,7 +17,7 @@ _fragment="${FRAGMENT:-#branch=main}"
 [[ -v CUDA_ARCH ]] && _CMAKE_FLAGS+=(-DCYCLES_CUDA_BINARIES_ARCH="${CUDA_ARCH}")
 
 pkgname=blender-git
-pkgver=4.2.r132989.gd9d9ff1dcd2
+pkgver=4.2.r133162.g447bb9a4b9c
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
@@ -55,7 +55,6 @@ source=("blender::git+https://github.com/blender/blender${_fragment}"
         # Patches...
         '0001-Use-github.com-for-make-update-git.patch'
         '0004-fix-opencollada-pcre.patch' #fix broken search for opencollada pcre
-        '0005-openpgl6.patch'
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -64,8 +63,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '52da80b721efb6a6d579adf531640becfac1955a88857ca46ca16030a52c3b1c'
-            '6beedc541e33288a282f57cd2bd09860f333154027b6175e9f61cce49b8db5df'
-            '3b1cdb2d18eb5852e72e031dc9b184b8ee695f858361967ef56953b1ffcf58b9')
+            '6beedc541e33288a282f57cd2bd09860f333154027b6175e9f61cce49b8db5df')
 
 pkgver() {
   blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
