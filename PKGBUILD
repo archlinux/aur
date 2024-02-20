@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=string-file-manager-bin
-pkgver=1.0.71
+pkgver=1.0.72
 _electronversion=26
 pkgrel=1
 pkgdesc="File manager for Linux - Built with Electron"
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgname%-bin}-v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c2dedb0f0530866a72c6b5ff7669e6f5876c380112c8d2d4828de76ee74b147b'
+sha256sums=('7c22b55e959a723c6e5d9b62ef08ad4043d3f2aa591c3e66656ea3f657088a03'
             '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
