@@ -1,7 +1,7 @@
 pkgbase = localchat-bin
 	pkgdesc = Chat with generative language models locally on your computer with zero setup.
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nathanlesage.github.io/local-chat/
 	arch = aarch64
 	arch = x86_64
