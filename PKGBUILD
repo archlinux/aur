@@ -3,7 +3,7 @@
 
 pkgname=cargo-information-git
 _pkgname=cargo-info
-pkgver=0.4.1.r0.gc3bf214
+pkgver=0.4.2.r0.ged30fc3
 pkgrel=1
 pkgdesc="A tool to provide a detailed information about a Rust package (git)"
 arch=('x86_64')
