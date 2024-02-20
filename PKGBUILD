@@ -45,7 +45,12 @@ build() {
 
 check() {
 	cd "$srcdir/$_sourcedirectory/"
+
+	# Run tests
 	go test -v './...'
+
+	# Verify that the basic functionality works
+	"$srcdir/$_bindir/$_pkgname" help 2>&1 | tee '/dev/stderr' | grep -q 'fetch the latest data from the server$'
 }
 
 package() {
