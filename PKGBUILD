@@ -1,21 +1,20 @@
-# system requirements: C++11
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=edgeR
 _pkgver=4.0.16
 pkgname=r-${_pkgname,,}
-pkgver=4.0.16
-pkgrel=1
-pkgdesc='Empirical Analysis of Digital Gene Expression Data in R'
-arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Empirical Analysis of Digital Gene Expression Data in R"
+arch=(x86_64)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
+  blas
+  lapack
   r-limma
   r-locfit
   r-rcpp
-  gcc
 )
 optdepends=(
   r-annotationdbi
@@ -23,23 +22,22 @@ optdepends=(
   r-biocstyle
   r-jsonlite
   r-knitr
-  r-matrix
   r-org.hs.eg.db
   r-readr
   r-rhdf5
   r-seuratobject
-  r-splines
   r-summarizedexperiment
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d145e4f8423632dbea1cf1c2e53ae72ea05a937924090f3c4aff6bcd035cd449')
+md5sums=('8fb1c6c67e29d299c991d16d0f6c5f5b')
+b2sums=('535ad59062196733724e9bbeca903a99f4de3201b807baa851b4a68c58240ec340439ea305e43e22951cd40d907453e7c7c4e08a27d69bd02d3444e9a0aae637')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
