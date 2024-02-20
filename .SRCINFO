@@ -1,0 +1,20 @@
+pkgbase = ory-keto
+	pkgdesc = Ory Keto Global Authorization System written in Go
+	pkgver = 0.12.0_alpha.0
+	pkgrel = 1
+	url = https://github.com/ory/keto
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	backup = etc/ory/keto/config.yaml
+	source = ory-keto-0.12.0-alpha.0.tar.gz::https://github.com/ory/keto/archive/refs/tags/v0.12.0-alpha.0.tar.gz
+	source = ory-keto.service
+	source = ory-keto@.service
+	source = ory-keto.sysusers
+	b2sums = 65098bea4f2c87699ca2480eac793a0a10b7eff3dbdb90361c80c6985c564560b871d46e8e3f1191a302b9728ac6e7940c86486f49fec78db082e4785c8b9335
+	b2sums = a4cb78d7fec5a3432c98b654956e607f08a0dfc5fc59a852177dc1305dbf8f322e4dea6da28caf6ddb652a6f0d838be1a0655f8f8e6922b4afbd0e35fbe8f57a
+	b2sums = 7db66950add76f1697347376ad9106a17043f890fd11eb56f12fd6d5aae8cebe87ee557ab6c4ba3e2df7bbd9c08db2cfda40d3f4dc190939b44184631a54490d
+	b2sums = af4e0abd13212d81f32ad76b3d169248155af0a4bbe20cdaa8ca7a91c6b268a435275866a1a3c1be9de8e67dd2a3d029248b7a246172e8c9a035eebd1efe23c1
+
+pkgname = ory-keto
