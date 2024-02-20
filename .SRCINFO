@@ -1,31 +1,48 @@
 pkgbase = czkawka
 	pkgdesc = Multi functional app to find duplicates, empty folders, similar images etc.
-	pkgver = 6.1.0
+	pkgver = 7.0.0
 	pkgrel = 0.1
 	url = https://github.com/qarmin/czkawka
 	arch = aarch64
 	arch = armv7h
 	arch = i686
 	arch = x86_64
-	license = MIT
+	license = LicenseRef-MIT
 	checkdepends = xorg-server-xvfb
 	makedepends = cargo
 	makedepends = git
 	makedepends = rust
+	makedepends = cairo
+	makedepends = gdk-pixbuf2
+	makedepends = glib2
+	makedepends = gtk4
+	makedepends = hicolor-icon-theme
+	makedepends = pango
 	depends = bzip2
-	depends = cairo
-	depends = gdk-pixbuf2
-	depends = gtk4
-	depends = hicolor-icon-theme
+	depends = gcc-libs
+	depends = glibc
 	depends = libheif
-	depends = pango
-	source = git+https://github.com/qarmin/czkawka.git#commit=44400e08af3c8f030493b8ec6fa965c7d42e560e
+	source = git+https://github.com/qarmin/czkawka.git#commit=8109a826b9a24289aa9f9f7f77445d478a33d739
 	sha512sums = SKIP
 
 pkgname = czkawka-cli
 	pkgdesc = Multi functional app to find duplicates, empty folders, similar images etc. (CLI)
-	depends = bzip2
-	depends = libheif
+	license = LicenseRef-MIT
 
 pkgname = czkawka-gui
 	pkgdesc = Multi functional app to find duplicates, empty folders, similar images etc. (Desktop App)
+	license = LicenseRef-MIT AND CC-BY-4.0
+	depends = bzip2
+	depends = gcc-libs
+	depends = glibc
+	depends = libheif
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = pango
+
+pkgname = krokiet
+	pkgdesc = Multi functional app to find duplicates, empty folders, similar images etc. (Desktop App, Slint frontend)
+	license = LicenseRef-MIT AND GPL-3.0-only
