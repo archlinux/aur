@@ -21,7 +21,7 @@ source=("LICENSE-$pkgver.html::https://lceda.cn/page/legal"
 source_x86_64=("${_pkgname}-x86_64-${pkgver}.zip::https://image.lceda.cn/files/lceda-pro-linux-x64-${pkgver}.zip")
 source_aarch64=("${_pkgname}-aarch64-${pkgver}.zip::https://image.lceda.cn/files/lceda-pro-linux-arm64-${pkgver}.zip")
 source_loong64=("${_pkgname}-loong64-${pkgver}.zip::https://image.lceda.cn/files/lceda-pro-linux-loong64-${pkgver}.zip")
-sha256sums=('8f7457734d411f8db599360ed600d7b8f2e06f4a710f27491a5f14fc3cc25ba2'
+sha256sums=('SKIP'
             'afba3c6712227a37c08783b3cc1a97ae71e90dc2f575409213d2773372220697')
 sha256sums_x86_64=('87b70157f59b089a045b7245e31b33a85535d33cc753aa2f74dfe9bbcdead8fe')
 sha256sums_aarch64=('e5edc4342fe40fc9a694ecbb8e6bba0e69b03a6985419518204e7e2dbab5d7b7')
