@@ -1,0 +1,15 @@
+[Unit]
+Description=Cron alternative with a Web UI
+Documentation=https://github.com/dagu-dev/dagu
+After=network.target
+
+[Service]
+TimeoutStopSec=7s
+KillMode=mixed
+KillSignal=SIGTERM
+Restart=on-failure
+RestartPreventExitStatus=2
+ExecStart=/usr/bin/dagu start-all
+
+[Install]
+WantedBy=multi-user.target
