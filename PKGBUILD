@@ -3,9 +3,9 @@
 
 _pkgname='ferdium'
 pkgname="ferdium-git"
-_electron='electron27'
-_electronpackage='electron27'
-pkgver=6.7.1.nightly.21.r6694.a7581f372
+_electron='electron29'
+_electronpackage='electron29'
+pkgver=6.7.1.nightly.21.r6695.622d2209e
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest commit).'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
