@@ -1,0 +1,16 @@
+pkgbase = teapot-tools
+	pkgdesc = Replacement for depot_tools (gclient) and luci-go (cipd)
+	pkgver = 0.4.3
+	pkgrel = 1
+	arch = any
+	license = Apache-2.0
+	depends = git
+	depends = python
+	provides = depod-tools
+	provides = luci-go
+	conflicts = depot-tools
+	conflicts = depot-tools-git
+	source = teapot-tools-0.4.3.tar.xz::https://codeberg.org/selfisekai/teapot_tools/archive/v0.4.3.tar.gz
+	sha256sums = 21a690e1c3a705b9b44a8612e5210e0717b26e1c5639bc0a82db735a45eeb933
+
+pkgname = teapot-tools
