@@ -1,12 +1,12 @@
 pkgbase = plasma6-applets-window-title
 	pkgdesc = Plasma 6 applet that shows the application title and icon for active window
-	pkgver = 0.7.1
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/dhruv8sh/plasma6-window-title-applet
 	arch = any
 	license = GPL
 	depends = plasma-workspace
-	source = git+https://github.com/dhruv8sh/plasma6-window-title-applet
-	sha512sums = SKIP
+	source = https://github.com/dhruv8sh/plasma6-window-title-applet/archive/refs/tags/v0.3.tar.gz
+	sha256sums = a37e131ac103665df9268251d73a9c4db02e6a44d68bcdb9b1d66394fd328a08
 
 pkgname = plasma6-applets-window-title
