@@ -1,17 +1,18 @@
 pkgbase = qatlib
 	pkgdesc = User space library for Intel(R) QuickAssist Technology
-	pkgver = 23.11.0
-	pkgrel = 2
+	pkgver = 24.02.0
+	pkgrel = 1
 	url = https://github.com/intel/qatlib
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = nasm
 	makedepends = systemd
+	depends = bash
 	depends = glibc
 	depends = libcrypto.so
-	source = qatlib-23.11.0.tar.gz::https://github.com/intel/qatlib/archive/refs/tags/23.11.0.tar.gz
+	source = qatlib-24.02.0.tar.gz::https://github.com/intel/qatlib/archive/refs/tags/24.02.0.tar.gz
 	source = qatlib.sysusers
-	sha256sums = f649613c243df98c2b005e58af7e0c9bb6d9638e0a12d2757d18d4930bf893cd
+	sha256sums = ffef9a3a2bd6024b188977411944ec6267da34d40a0c6c1d42c4f59165991176
 	sha256sums = 67ccaef8fc91484bf103ee6e321d03f820f633cc2a8d73926b568bd9a358bd8f
 
 pkgname = qatlib
