@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=znote-bin
-pkgver=2.4.5
+pkgver=2.4.6
 _electronversion=28
 pkgrel=1
 pkgdesc="A Beautiful markdown editor inspired by Jupyter."
@@ -16,12 +16,6 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
-)
-makedepends=(
-    'squashfuse'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.AppImage")
@@ -29,10 +23,10 @@ source=(
     "LICENSE-${pkgver}.html::${url}/cgu.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d99c71829c8ef581236de84e94b61d57f9b89f907f8787e15cee1456a2921777'
+sha256sums=('445718a1932af51623b268a406ca16f05fc77764d2761d6aebc191463dda049c'
             '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
-sha256sums_aarch64=('cb698a5ea985319c6295bab202c8d23ecf27f1e1d62afc7ebd6dbe88d99a7654')
-sha256sums_x86_64=('1a4344f8a2696fcb017a3a6009697930b6ff4f7259df12e1eb4d27e36e02b501')
+sha256sums_aarch64=('3bfc6b2ffcee5e164b64afb7e15a01e3dbf2fba57e215a7e92113a0106c33229')
+sha256sums_x86_64=('f061ce4ebddb389f19a2502df509b7ebb621bb7da0d834119b74fdbfa2e4a318')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -47,7 +41,6 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -r "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     for icons in 8x8 32x32 64x64 128x128 256x256;do
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${icons}/apps"

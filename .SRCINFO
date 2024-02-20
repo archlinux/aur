@@ -1,26 +1,22 @@
 pkgbase = znote-bin
 	pkgdesc = A Beautiful markdown editor inspired by Jupyter.
-	pkgver = 2.4.5
+	pkgver = 2.4.6
 	pkgrel = 1
 	url = https://znote.io
 	arch = aarch64
 	arch = x86_64
 	license = LicenseRef-custom
-	makedepends = squashfuse
 	depends = electron28
 	depends = hicolor-icon-theme
-	depends = dbus-glib
-	depends = libdbusmenu-glib
-	depends = gtk2
-	provides = znote=2.4.5
+	provides = znote=2.4.6
 	conflicts = znote
-	source = LICENSE-2.4.5.html::https://znote.io/cgu.html
+	source = LICENSE-2.4.6.html::https://znote.io/cgu.html
 	source = znote.sh
-	sha256sums = d99c71829c8ef581236de84e94b61d57f9b89f907f8787e15cee1456a2921777
+	sha256sums = 445718a1932af51623b268a406ca16f05fc77764d2761d6aebc191463dda049c
 	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
-	source_aarch64 = znote-2.4.5-aarch64.AppImage::https://github.com/alagrede/znote-app/releases/download/v2.4.5/znote-2.4.5-arm64.AppImage
-	sha256sums_aarch64 = cb698a5ea985319c6295bab202c8d23ecf27f1e1d62afc7ebd6dbe88d99a7654
-	source_x86_64 = znote-2.4.5-x86_64.AppImage::https://github.com/alagrede/znote-app/releases/download/v2.4.5/znote-2.4.5.AppImage
-	sha256sums_x86_64 = 1a4344f8a2696fcb017a3a6009697930b6ff4f7259df12e1eb4d27e36e02b501
+	source_aarch64 = znote-2.4.6-aarch64.AppImage::https://github.com/alagrede/znote-app/releases/download/v2.4.6/znote-2.4.6-arm64.AppImage
+	sha256sums_aarch64 = 3bfc6b2ffcee5e164b64afb7e15a01e3dbf2fba57e215a7e92113a0106c33229
+	source_x86_64 = znote-2.4.6-x86_64.AppImage::https://github.com/alagrede/znote-app/releases/download/v2.4.6/znote-2.4.6.AppImage
+	sha256sums_x86_64 = f061ce4ebddb389f19a2502df509b7ebb621bb7da0d834119b74fdbfa2e4a318
 
 pkgname = znote-bin
