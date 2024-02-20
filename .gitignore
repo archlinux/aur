@@ -1,0 +1,5 @@
+*.pkg.tar.zst
+*.log
+pkg/
+src/
+hivelytracker/

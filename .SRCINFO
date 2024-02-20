@@ -1,0 +1,16 @@
+pkgbase = hivelytracker-git
+	pkgdesc = Chip music tracker based on AHX
+	pkgver = r119.f393ca7
+	pkgrel = 1
+	url = http://hivelytracker.co.uk/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = sdl12-compat
+	depends = sdl_image
+	depends = sdl_ttf
+	depends = gtk3
+	source = git+https://github.com/pete-gordon/hivelytracker.git
+	sha512sums = SKIP
+
+pkgname = hivelytracker-git
