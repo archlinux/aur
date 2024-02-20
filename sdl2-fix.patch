@@ -1,0 +1,13 @@
+--- Makefile	2024-02-19 13:35:32.805521861 -0800
++++ Makefile	2024-02-19 13:35:28.628855142 -0800
+@@ -709,9 +709,7 @@
+ # that can only make one assumption: SDL/AL are installed.
+ # Dependencies like libjpeg9 don't exist everywhere.
+ ifeq ($(FTE_TARGET),SDL2)
+-	IMAGELDFLAGS:= libs-$(ARCH)/libpng.a libs-$(ARCH)/libjpeg.a
+-	OGGVORBISLDFLAGS:= libs-$(ARCH)/libvorbisfile.a libs-$(ARCH)/libvorbis.a libs-$(ARCH)/libogg.a
+-	BASE_CFLAGS+=-DLIBJPEG_STATIC -DLIBJPEG_STATIC -DLIBPNG_STATIC -DOPUS_STATIC -DSPEEX_STATIC -DFREETYPE_STATIC -DLIBVORBISFILE_STATIC
++
+ endif
+ 
+ VPATH := $(BASE_DIR) : $(CLIENT_DIR) : $(GL_DIR) : $(SW_DIR) : $(COMMON_DIR) : $(SERVER_DIR) : $(HTTP_DIR) : $(QUX_DIR) : $(PROGS_DIR) : $(D3D_DIR) : $(VK_DIR) : $(BASE_DIR)/web
