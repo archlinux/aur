@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=drawio-desktop-git
-pkgver=23.0.2.r1.g4696c1a
+pkgver=23.1.5.r1.g7f1d16d
 _electronversion=28
 _nodeversion=20
 pkgrel=1
@@ -22,6 +22,9 @@ makedepends=(
     'yarn'
     'npm'
     'nvm'
+    'libicns'
+    'imagemagick'
+    'xz'
 )
 provides=("${pkgname%-git}=${pkgver}")
 conflicts=("${pkgname%-git}")
@@ -30,7 +33,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -44,23 +47,24 @@ _ensure_local_nvm() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname "${pkgname%-git}" --categories "Graphics" --exec "${pkgname%-git}"
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --categories="Graphics" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     sed "s|--publish always|--publish never|g" -i package.json
     sed '50,59d' -i electron-builder-linux-mac.json
     git submodule update --depth=1 --init --recursive
     yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn sync
-    yarn release-linux
+    yarn run sync
+    yarn run release-linux
 }
 package() {
     case "${CARCH}" in
