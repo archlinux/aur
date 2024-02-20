@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-green
-pkgver=4.0.0
-_commit=b4a8e40938a268dcde2152d0b4286ed292297adf
+pkgver=4.0.1
+_commit=9e9e5cfe8b0a213899df78d3e06db4f592bbc84b
 pkgrel=1
 pkgdesc="Green is a clean, colorful, fast python test runner"
 url="https://github.com/CleanCut/green"
