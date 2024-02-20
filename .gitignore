@@ -1,0 +1,6 @@
+*
+!*.service
+!*.timer
+!.SRCINFO
+!.gitignore
+!PKGBUILD
