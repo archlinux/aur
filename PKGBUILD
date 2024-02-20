@@ -23,6 +23,9 @@
 # target wayland only
 : ${_build_wayland:=false}
 
+# profile with xvfb-run, if possible
+: ${_build_pgo_xvfb:=false}
+
 # modify package name
 : ${_build_hg:=true}
 
@@ -33,7 +36,7 @@
 ## basic info
 pkgname="firefox${_pkgtype:-}"
 _pkgname=firefox-nightly
-pkgver=124.0a1+20240202.1+h36c0f999f668
+pkgver=125.0a1+20240220.1+hef9cbc0f26f8
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 url="https://www.mozilla.org/firefox/channel/#nightly"
@@ -87,10 +90,16 @@ optdepends=(
 )
 
 if [[ "${_build_pgo::1}" == "t" ]] ; then
-  makedepends+=(
-    weston
-    xwayland-run # AUR
-  )
+  if [[ "${_build_pgo_xvfb::1}" == "t" ]] && [ "${_build_wayland::1}" != "t" ] ; then
+    makedepends+=(
+      xorg-server-xvfb
+    )
+  else
+    makedepends+=(
+      weston
+      xwayland-run # AUR
+    )
+  fi
 fi
 
 if [[ "${_build_nightly::1}" == "t" ]] ; then
@@ -221,13 +230,12 @@ prepare() {
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
+ac_add_options --disable-artifact-builds
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-hardening
-ac_add_options --enable-optimize=-O3
-ac_add_options --enable-lto=cross,full
 ac_add_options --enable-rust-simd
 ac_add_options --enable-wasm-simd
 ac_add_options --enable-linker=lld
@@ -243,8 +251,9 @@ ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZILLA_OFFICIAL=1
-export NIGHTLY_BUILD=1
 export MOZ_APP_REMOTINGNAME=${_pkgname//-/}
+export NIGHTLY_BUILD=1
+export MOZ_REQUIRE_SIGNING=
 
 # Keys
 ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key
@@ -252,23 +261,40 @@ ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/google-api-key
 ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 
 # System Libraries
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-libevent
 ac_add_options --with-system-libvpx
 ac_add_options --with-system-webp
-ac_add_options --with-system-libevent
 ac_add_options --with-system-zlib
-ac_add_options --with-system-jpeg
 
 # Features
 ac_add_options --enable-alsa
-ac_add_options --enable-jack
+ac_add_options --enable-av1
 ac_add_options --enable-crashreporter
-ac_add_options --disable-updater
+ac_add_options --enable-eme=widevine
+ac_add_options --enable-jack
+ac_add_options --enable-jxl
+ac_add_options --enable-proxy-bypass-protection
+ac_add_options --enable-pulseaudio
+ac_add_options --enable-raw
+ac_add_options --enable-sandbox
+ac_add_options --enable-unverified-updates
+ac_add_options --enable-webrtc
+ac_add_options --disable-default-browser-agent
+ac_add_options --disable-parental-controls
 ac_add_options --disable-tests
+ac_add_options --disable-updater
 
 # Disables Telemetry by Default
 mk_add_options MOZ_DATA_REPORTING=0
 mk_add_options MOZ_SERVICES_HEALTHREPORT=0
 mk_add_options MOZ_TELEMETRY_REPORTING=0
+
+# Optimization
+ac_add_options --enable-optimize=-O3
+ac_add_options --enable-lto=cross,full
+ac_add_options OPT_LEVEL="3"
+ac_add_options RUSTC_OPT_LEVEL="3"
 
 # Other
 export AR=llvm-ar
@@ -295,6 +321,11 @@ END
 build() {
   cd "${_repo##*/}"
 
+  export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$srcdir/xdg-runtime}"
+  [ ! -d "$XDG_RUNTIME_DIR" ] && install -dm700 "${XDG_RUNTIME_DIR:?}"
+
+  export LIBGL_ALWAYS_SOFTWARE=true
+
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
@@ -305,8 +336,8 @@ build() {
   # LTO/PGO needs more open files
   ulimit -n 4096
 
+  # Do 3-tier PGO
   if [[ "${_build_pgo::1}" == "t" ]] ; then
-    # Do 3-tier PGO
     local _old_profdata="${SRCDEST:-$startdir}/merged.profdata"
     local _old_jarlog="${SRCDEST:-$startdir}/jarlog"
 
@@ -333,9 +364,20 @@ build() {
       echo "Profiling instrumented browser..."
       ./mach package
 
-      LLVM_PROFDATA=llvm-profdata JARLOG_FILE="$PWD/jarlog" \
-        wlheadless-run -c weston --width=1920 --height=1080 \
-        -- ./mach python build/pgo/profileserver.py
+      if [[ "${_build_pgo_xvfb::1}" == "t" ]] ; then
+        local _headless_run=(
+          xvfb-run
+          -s "-screen 0 1920x1080x24 -nolisten local"
+        )
+      else
+        local _headless_run=(
+          wlheadless-run
+          -c weston --width=1920 --height=1080
+        )
+      fi
+
+      LLVM_PROFDATA=llvm-profdata JARLOG_FILE=${PWD@Q}/jarlog \
+        "${_headless_run[@]}" -- ./mach python build/pgo/profileserver.py
 
       echo "Removing instrumented browser..."
       ./mach clobber
