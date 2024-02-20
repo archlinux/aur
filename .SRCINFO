@@ -1,25 +1,25 @@
 pkgbase = kwok-bin
 	pkgdesc = Kubernetes WithOut Kubelet - Simulates thousands of Nodes and Clusters.
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://kwok.sigs.k8s.io/
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = Apache-2.0
-	provides = kwok=0.5.0
+	provides = kwok=0.5.1
 	conflicts = kwok
-	source_aarch64 = kwok-0.5.0-aarch64::https://github.com/kubernetes-sigs/kwok/releases/download/v0.5.0/kwok-linux-arm64
-	source_aarch64 = kwokctl-0.5.0-aarch64::https://github.com/kubernetes-sigs/kwok/releases/download/v0.5.0/kwokctl-linux-arm64
-	sha256sums_aarch64 = 3be27942b6ab49a9408feed7d4c08f9c35bbadbb822deb0b19c2afc536f44abd
-	sha256sums_aarch64 = 0b00ce5c3e339670be154d296e561a8f0d0dc8d21e428dfcb21ef7d134328130
-	source_armv7h = kwok-0.5.0-armv7h::https://github.com/kubernetes-sigs/kwok/releases/download/v0.5.0/kwok-linux-arm64
-	source_armv7h = kwokctl-0.5.0-armv7h::https://github.com/kubernetes-sigs/kwok/releases/download/v0.5.0/kwokctl-linux-arm64
-	sha256sums_armv7h = 3be27942b6ab49a9408feed7d4c08f9c35bbadbb822deb0b19c2afc536f44abd
-	sha256sums_armv7h = 0b00ce5c3e339670be154d296e561a8f0d0dc8d21e428dfcb21ef7d134328130
-	source_x86_64 = kwok-0.5.0-x86_64::https://github.com/kubernetes-sigs/kwok/releases/download/v0.5.0/kwok-linux-amd64
-	source_x86_64 = kwokctl-0.5.0-x86_64::https://github.com/kubernetes-sigs/kwok/releases/download/v0.5.0/kwokctl-linux-amd64
-	sha256sums_x86_64 = 5575549e4dd4702259e74f05b53470ab8dcf291d3f5aaefc2c660db4b2a88f50
-	sha256sums_x86_64 = 034566e10138ef72c8ddd789402d76729686d09be84a353ad1633e4c1aa60be0
+	source_aarch64 = kwok-0.5.1-aarch64::https://github.com/kubernetes-sigs/kwok/releases/download/v0.5.1/kwok-linux-arm64
+	source_aarch64 = kwokctl-0.5.1-aarch64::https://github.com/kubernetes-sigs/kwok/releases/download/v0.5.1/kwokctl-linux-arm64
+	sha256sums_aarch64 = f829cb91302f00aababf7af0442f26a25d88084a14f29285990a98244256b307
+	sha256sums_aarch64 = 942db43d07d3e052d3cc18a10cbb4301652ae890d9d111fb1380395354918224
+	source_armv7h = kwok-0.5.1-armv7h::https://github.com/kubernetes-sigs/kwok/releases/download/v0.5.1/kwok-linux-arm64
+	source_armv7h = kwokctl-0.5.1-armv7h::https://github.com/kubernetes-sigs/kwok/releases/download/v0.5.1/kwokctl-linux-arm64
+	sha256sums_armv7h = f829cb91302f00aababf7af0442f26a25d88084a14f29285990a98244256b307
+	sha256sums_armv7h = 942db43d07d3e052d3cc18a10cbb4301652ae890d9d111fb1380395354918224
+	source_x86_64 = kwok-0.5.1-x86_64::https://github.com/kubernetes-sigs/kwok/releases/download/v0.5.1/kwok-linux-amd64
+	source_x86_64 = kwokctl-0.5.1-x86_64::https://github.com/kubernetes-sigs/kwok/releases/download/v0.5.1/kwokctl-linux-amd64
+	sha256sums_x86_64 = dcbee0c4a066545ffdc46d06a9e3bec941413354953a05774becd6c546fb26c4
+	sha256sums_x86_64 = 1883901c77a4835002e1bb97699756c28afcea56507c3cf56c0ff36fc3f5f673
 
 pkgname = kwok-bin
