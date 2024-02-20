@@ -1,11 +1,11 @@
 pkgbase = readpe
 	pkgdesc = PE file analysis toolkit
 	pkgver = 0.84
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mentebinaria/readpe
 	arch = x86_64
-	license = GPL
-	license = custom:OpenSSL
+	license = GPL-2.0-or-later
+	license = OpenSSL
 	makedepends = git
 	depends = openssl
 	conflicts = pev
