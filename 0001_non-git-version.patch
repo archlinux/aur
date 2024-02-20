@@ -1,0 +1,12 @@
+--- a/prosody-filer-1.0.3/build.sh
++++ bprosody-filer-1.0.3/build.sh
+@@ -1,7 +1,7 @@
+ #!/bin/bash
+ 
+ ### get VERSIONSTRING
+-VERSIONSTRING="$(git describe --tags --exact-match || git rev-parse --short HEAD)"
++VERSIONSTRING="1.0.3"
+ 
+ echo "Building version ${VERSIONSTRING} of Prosody-Filer ..."
+ 
+
