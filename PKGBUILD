@@ -13,7 +13,7 @@ epoch=1
 pkgdesc="Chromium Embedded Framework minimal release needed by OBS Studio release in /opt/cef-obs"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/cef/tree/5060-shared-textures"
-license=("BSD")
+license=(BSD-3-Clause)
 depends=(
   "alsa-lib" "at-spi2-core" "dbus" "expat" "gcc-libs" "glib2"
   "glibc" "libcups" "libdrm" "libx11" "libxcb" "libxcomposite"
