@@ -1,14 +1,13 @@
 pkgbase = exercism
 	pkgdesc = Command line tool for exercism.io
-	pkgver = 3.1.0
+	pkgver = 3.3.0
 	pkgrel = 3
 	url = https://github.com/exercism/cli
-	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = https://github.com/exercism/cli/archive/v3.1.0.tar.gz
-	sha256sums = 34653a6a45d49daef10db05672c9b4e36c3c30e09d57c3c0f737034d071ae4f6
+	source = https://github.com/exercism/cli/archive/v3.3.0.tar.gz
+	sha256sums = 65f960c23a2c423cd8dfa2d8fcc1a083c3d5bc483717c96b5c71d3549fbc0fb7
 
 pkgname = exercism

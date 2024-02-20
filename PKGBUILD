@@ -2,16 +2,16 @@
 # Contributor: Federico Squartini <federico.squartini at gmail dot com>
 
 pkgname=exercism
-pkgver=3.1.0
+pkgver=3.3.0
 pkgrel=3
 pkgdesc="Command line tool for exercism.io"
-arch=("i686" "x86_64")
+arch=("x86_64")
 url="https://github.com/exercism/cli"
 license=("MIT")
 depends=("glibc")
 makedepends=("go")
 source=("https://github.com/exercism/cli/archive/v${pkgver}.tar.gz")
-sha256sums=('34653a6a45d49daef10db05672c9b4e36c3c30e09d57c3c0f737034d071ae4f6')
+sha256sums=('65f960c23a2c423cd8dfa2d8fcc1a083c3d5bc483717c96b5c71d3549fbc0fb7')
 
 prepare() {
   export GOPATH="$srcdir/.gopath"
