@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=r3playx-git
 _pkgname=R3PLAYX
-pkgver=2.7.4.r2.gfcaedd4
+pkgver=2.7.4.r25.g15ee92d
 _electronversion=28
 _nodeversion=18
 pkgrel=1
@@ -30,7 +30,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -44,25 +44,24 @@ _ensure_local_nvm() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories "AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
-    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export ELECTRONVERSION="${_electronversion}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
     pnpm config set store-dir "${srcdir}/.pnpm_store"
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
     pnpm config set link-workspace-packages true
     cp .env.example .env
     cd "${srcdir}/${pkgname//-/.}"
     sed '87d;78,84d' -i packages/desktop/.electron-builder.config.js
-    #sed -e '106,120d' \
-    #    -e '92,94d' \
-    #    -e '91i\    this.sqlite = new SQLite3(this.dbFilePath)' \
-    #    -i packages/desktop/main/db.ts
     pnpm install
     pnpm run package
 }
