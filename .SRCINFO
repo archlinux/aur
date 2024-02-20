@@ -1,6 +1,6 @@
 pkgbase = boxes
 	pkgdesc = Text mode box and comment drawing filter
-	pkgver = 2.2.1
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = http://boxes.thomasjensen.com/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = boxes
 	license = GPL2
 	depends = bison
 	depends = flex
-	source = https://github.com/ascii-boxes/boxes/archive/ref/tags/v2.2.1.zip
-	md5sums = 51059a0b120a3f8c2d9af61b88d9be8d
+	source = https://github.com/ascii-boxes/boxes/archive/ref/tags/v2.3.0.zip
+	md5sums = 3ce79f2c1bca6128c1d668d1d3831b43
 
 pkgname = boxes
