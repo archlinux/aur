@@ -12,6 +12,8 @@ pkgdesc="Standalone web browser from mozilla.org, with appmenu patch."
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64)
 license=(MPL-2.0)
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 depends=(
   dbus
   ffmpeg
@@ -21,6 +23,7 @@ depends=(
   libxt
   mime-types
   nss
+  icu
   ttf-font)
 makedepends=(
   cbindgen
@@ -58,7 +61,9 @@ options=(
 source=(
   "https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz"{,.asc}
   assert.patch
-  unity-menubar.patch)
+  unity-menubar.patch
+  fix_csd_window_buttons.patch
+  firefox-115.4.0-icu-74.patch)
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
   # https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
@@ -66,11 +71,15 @@ validpgpkeys=(
 sha256sums=('36f19c9a748eec2fd6d3a1594d0f1d7b715eaa1d9ed6d7eeda9db8478dcf36d6'
             'SKIP'
             'ed84a17fa4a17faa70a0528556dbafeeb6ee59697451325881cb064b0ee8afec'
-            '74440d292e76426ac5cba9058a6f86763c37a9aa61b7afc47771140f1f53870b')
+            '74440d292e76426ac5cba9058a6f86763c37a9aa61b7afc47771140f1f53870b'
+            'e08d0bc5b7e562f5de6998060e993eddada96d93105384960207f7bdf2e1ed6e'
+            'b07223e5928a5a0d4cb53e5c1a80cd93289f2f69a622c08e76d41a2434277ecc')
 b2sums=('ea4346b88c7f3e7e2126eed6b0f4b1460e70fa430944a7263d42ac762e10c8440967ebbae25ceff15e7afb451e1a890ab7e97ff60619a465152e9ff6a7691653'
         'SKIP'
         'bbc69752492649f288e0ceef6ce4a1703030cc98abd2442b7ebfba2be786eea643f594af5dc237a6e3c04fd0c8b147f529fd9e790f04c64b9f10abb3c826827f'
-        '4b3837b398c5391ac036a59c8df51f9ad170b2d8c3d5d2011a63bacd9e24a81de4505ddf7ef722a0a6920b02bb8dbc2bb7b6f151e2aa7843baccec0572cc56c0')
+        '4b3837b398c5391ac036a59c8df51f9ad170b2d8c3d5d2011a63bacd9e24a81de4505ddf7ef722a0a6920b02bb8dbc2bb7b6f151e2aa7843baccec0572cc56c0'
+        'd5ec87260288d18718a3751c3cd9593cf00f64eabb0fc1285291bfca53fd7f2280d17607558ed4364667aef053f8d4917deec7a8dffab0f040634c8a27fa2754'
+        '94992ee197bbb5ce73a8187981aa1a6a2951219c08a7f5940dec7a7c2fcc053751843785f3edcbac97cec7977262ad8b31631a16357aac84215f90650cbc40cf')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -91,7 +100,7 @@ prepare() {
   for patch in "${source[@]}"; do
     if [[ $patch == *.patch ]]; then
       msg2 "applying $patch"
-      patch -d "$_pkgname" -Np1 < "$patch"
+      patch -Np1 < "$srcdir/$patch"
     fi
   done
 
@@ -130,6 +139,7 @@ ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 # System libraries
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
+ac_add_options --with-system-icu
 
 # Features
 ac_add_options --enable-alsa
@@ -138,6 +148,10 @@ ac_add_options --enable-crashreporter
 ac_add_options --disable-updater
 ac_add_options --disable-tests
 END
+
+if [[ -n $_SCCACHE ]]; then
+  echo 'ac_add_options --with-ccache=sccache' >> ../mozconfig
+fi
 }
 
 build() {
@@ -185,7 +199,7 @@ END
 
   echo "Building optimized browser..."
   cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-lto=cross,full
+ac_add_options --enable-lto=cross
 ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
@@ -205,7 +219,6 @@ package() {
 
   # Distribution
   install -Dvm644 -t "$vendordir" taskcluster/docker/firefox-flatpak/default-preferences.js
-  install -Dvm644 -t "$distdir" taskcluster/docker/firefox-flatpak/policies.json
   install -Dvm644 /dev/stdin "$distdir/distribution.ini" <<END
 [Global]
 id=archlinux
@@ -218,10 +231,6 @@ app.distributor=archlinux
 app.distributor.channel=$pkgname
 app.partner.archlinux=archlinux
 mozilla.partner.id="archlinux"
-
-# Use LANG environment variable to choose locale
-intl.locale.matchOS=true
-intl.regional_prefs.use_os_locales=true
 
 # Don't disable extensions in the application directory
 extensions.autoDisableScopes=11
@@ -243,6 +252,7 @@ END
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$desktopid.png"
   done
   for i in 16 32 48 64 128; do
+    install -dvm755 "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/"
     ln -svf "/usr/lib/$_pkgname/browser/chrome/icons/default/default$i.png" \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$desktopid.png"
   done
@@ -254,7 +264,7 @@ END
 
   install -Dvm644 browser/branding/$theme/content/about-logo.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/$desktopid.svg"
-  install -Dvm644 taskcluster/docker/firefox-flatpak/$desktopid-symbolic.svg \
+  install -Dvm644 taskcluster/docker/firefox-flatpak/$_pkgname-symbolic.svg \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$desktopid-symbolic.svg"
 
   # Desktop
@@ -267,14 +277,14 @@ END
   )
   
   # Install a wrapper to avoid confusion about binary path
-  install -Dvm644 /dev/stdin "$pkgdir/usr/bin/$_pkgname" < <(\
-    sed "s|/app/lib/firefox/firefox|/usr/lib/$_pkgname/firefox-bin|" \
+  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" < <(\
+    sed "s|/app/lib/firefox/firefox|/usr/lib/$_pkgname/$_pkgname-bin|" \
       taskcluster/docker/firefox-flatpak/launch-script.sh\
   )
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srfv "$pkgdir/usr/lib/$_pkgname/$_pkgname" "$pkgdir/usr/lib/$_pkgname/firefox-bin"
+  ln -srfv "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin" "$pkgdir/usr/lib/$_pkgname/$_pkgname"
 
   # Use system certificates
   if [[ -e $nssckbi ]]; then
