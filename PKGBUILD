@@ -2,7 +2,7 @@
 _pkgname=butterfly
 pkgname="linwood-${_pkgname}-bin"
 _appname="dev.linwood.${_pkgname}"
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Powerful, minimalistic, cross-platform, opensource note-taking app"
 arch=("x86_64")
@@ -20,13 +20,12 @@ depends=(
     'hicolor-icon-theme'
     'libsecret'
 )
-options=('!strip')
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/LinwoodDev/Butterfly/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5a6b356ac55cfc2805c468b42a721aeb677b5cb6cb0a7b9e93a660f28218ccb2'
+sha256sums=('0d9b640994ee951e110fffac4d6090e87e324b204a2978ae6ff6d0e27055509d'
             '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef'
             '1e338ff128b2be2b0d484ea2d00814db6709a5e2cc455a373428d21f8ed690d5')
 build() {
