@@ -1,13 +1,15 @@
 pkgbase = homebridge
 	pkgdesc = HomeKit support for the impatient
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/homebridge/homebridge
 	arch = any
 	license = Apache
 	makedepends = npm
-	depends = nodejs-lts-iron
+	makedepends = jq
+	depends = nodejs
 	optdepends = homebridge-config-ui-x: for web-based management tool
+	noextract = homebridge-1.7.0.tgz
 	options = !emptydirs
 	options = !strip
 	source = https://registry.npmjs.org/homebridge/-/homebridge-1.7.0.tgz
