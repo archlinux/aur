@@ -1,33 +1,26 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
+# Maintainer:
+# Contributor: Michael Hauser-Raspe
 
-# The following guidelines are specific to BZR, GIT, HG and SVN packages.
-# Other VCS sources are not natively supported by makepkg yet.
-
-# Maintainer: Michael Hauser-Raspe
-pkgname=git-standup-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r99.5ae7d15
+pkgname=git-standup-git
+pkgver=2.3.2.r8.g77051be
 pkgrel=1
 pkgdesc="Recall what you did on the last working day."
 arch=('any')
 url="https://github.com/kamranahmedse/git-standup"
 license=('MIT')
-depends=('bash')
-makedepends=('git' 'make') # 'bzr', 'git', 'mercurial' or 'subversion'
+depends=('bash' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git-standup::git+https://github.com/kamranahmedse/git-standup')
+source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-# Git, no tags available
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "${pkgname%-git}"
+	git describe --tags | sed 's/-/.r/;s/-/./g'
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	sudo make install
+	cd "${pkgname%-git}"
+	install -Dm755 -t "$pkgdir/usr/bin" git-standup
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
