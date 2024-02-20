@@ -10,6 +10,7 @@ pkgbase = python-arm-preprocessing
 	makedepends = python-installer
 	makedepends = python-poetry-core
 	depends = python-niaarm
+	depends = python-sport-activities-features
 	depends = python-scikit-learn
 	source = arm-preprocessing-0.2.1.tar.gz::https://github.com/firefly-cpp/arm-preprocessing/archive/0.2.1.tar.gz
 	sha512sums = 8822a28daefe4c188bdecffa420ed92d213b1ce4c89de721d1724f9977b235b6d66b5e0cfe8215f8837cb4d2345cd40a79a9c05d1cc09f73674826d126821378
