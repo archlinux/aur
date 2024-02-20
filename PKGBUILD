@@ -13,12 +13,12 @@ depends=(
 	'boost-libs' 'curl' 'opencascade>=7.2' 'openmpi' 'xerces-c' 'libspnav' 'glew' 'netcdf' 'utf8cpp'
 	'shared-mime-info' 'hicolor-icon-theme' 'jsoncpp' 'qt5-base' 'qt5-declarative'
 	'qt5-svg' 'qt5-tools' 'qt5-x11extras' 'qt5-xmlpatterns' 'qt5-webview' 'med'
-	'python-pivy' 'pyside2' 'python-matplotlib' 'pyside2-tools' 'shiboken2' 'fmt'
+	'python-pivy' 'pyside2' 'python-matplotlib' 'pyside2-tools' 'shiboken2'
 )
 
 ## BEGIN generated variables
-pkgver=20240123stable.r9.gd95a6318ab
-sha1sums=('398afc6b7ff58cb83ea3944d745caec8fab68ba3')
+pkgver=20240123stable.r0.g0c0f69ad48
+sha1sums=('ca721bf3d521983be7599400f26685f05665141f')
 
 ## END generated variables
 
