@@ -2,7 +2,7 @@
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 pkgname=ezra-bible-app
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A user-friendly Bible study tool focussing on topical study based on keywords/tags"
 arch=('x86_64')
 url="https://github.com/ezra-bible-app/ezra-bible-app"
@@ -29,7 +29,7 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 
   # Use latest version of Electron
-  sed -i "s/17.1.0/28.1.4/g" package.json
+  sed -i "s/17.1.0/28.2.3/g" package.json
 }
 
 build() {
