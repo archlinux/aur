@@ -1,6 +1,6 @@
 pkgbase = paswitch-rs
 	pkgdesc = List and swap to pulse sinks by name
-	pkgver = 0.3.10
+	pkgver = 0.3.11
 	pkgrel = 1
 	url = https://github.com/RobertPlant/paswitch-rs
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = paswitch-rs
 	depends = pulseaudio
 	depends = paswitch
 	provides = paswitch-rs
-	source = paswitch-rs-0.3.10.tar.gz::https://crates.io/api/v1/crates/paswitch-rs/0.3.10/download
-	sha512sums = 7b69db047a48aaa757f50539d18fe2704dff0bcced17ef4cc4c119f021e166d53e8d22616b6712afe96b2d88b0456c4af94ccbba6415ffde7cbe31d510b8e401
+	source = paswitch-rs-0.3.11.tar.gz::https://crates.io/api/v1/crates/paswitch-rs/0.3.11/download
+	sha512sums = 6eab2b13b924d714b854178223b0241eb5042fca05e91cad0aad7745f69463ffb3d183b4be3072c639c2010ac6a080db58e9467c177c2d8398dda3f320a73935
 
 pkgname = paswitch-rs
