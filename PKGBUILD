@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rickrack-bin
 _pkgname=Rickrack
-pkgver=2.8.42
-pkgrel=2
+pkgver=2.9.9
+pkgrel=1
 pkgdesc="Generate harmonious colors freely.焰火十二卷(实时色彩工具箱)是一款免费且实用的色彩编辑器."
 arch=('x86_64')
 url="https://eigenmiao.com/rickrack/"
 _ghurl="https://github.com/eigenmiao/Rickrack"
-license=("GPL3")
+license=("GPL-3.0-only")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 options=('!strip')
@@ -35,12 +35,21 @@ depends=(
     'qt5-quickcontrols2'
     'qt6-multimedia'
     'qt6-declarative'
+    'libpng12'
+    'tcl'
+    'postgresql-libs'
+    'openssl-1.0'
+    'tk'
+    'libxss'
+    'fcitx-qt5'
+    'libidn11'
+    'unixodbc'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/Rickrack_v${pkgver}_en_linux_x86_64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('155927c68542214a7a697a3893a640ec0b9ef082a83f1a1de38c5d1bc426cdc9'
+sha256sums=('a329e4b2f97cf2329fd8f4b1ba4bb821f3594df7ff347c2cf9c121ebfc33a2eb'
             '0a4aadc3fc8c25b2e7c2ae610a1a23101c96072d3192d3f4fb1529aeb9707aca')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
