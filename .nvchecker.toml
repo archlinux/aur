@@ -1,0 +1,6 @@
+[electron26]
+source = "github"
+github = "electron/electron"
+prefix = "v"
+include_regex = "v26\\.\\d+\\.\\d+"
+use_max_tag = true
