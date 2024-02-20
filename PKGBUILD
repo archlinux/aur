@@ -2,14 +2,13 @@
 
 pkgname=homebridge-config-ui-x
 pkgver=4.55.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Web-based management tool for Homebridge'
 arch=('any')
 url='https://github.com/oznu/homebridge-config-ui-x'
-provides=('hb-service' 'homebridge-config-ui-x')
 license=('MIT')
 depends=('homebridge' 'nodejs')
-makedepends=('npm' 'jq')
+makedepends=('npm')
 options=('!emptydirs' '!strip')
 source=(
   "https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz"
@@ -29,38 +28,15 @@ b2sums=('e9021bd2ca6306da4ac0d2a8a1d9eda6530e4d5b3950aa95fb177d2191ac3dc00898e29
         '17039410c1e7aa8efd781a6a9acd31084a632998f0ea57f0df40fa028d12527b24bec71fdf28691b8e23fbfdef10c9b327875477ee113ffa9ad022d84a35552e')
 
 package() {
-  local NPM_FLAGS=(--no-audit --no-fund --no-update-notifier)
   npm install \
     --global \
+    --cache "${srcdir}/npm-cache" \
     --prefix "$pkgdir/usr" \
-    --no-audit \
-    --no-fund \
-    --no-update-notifier \
+    --no-audit --no-fund --no-update-notifier \
     "$srcdir/$pkgname-$pkgver.tgz"
-
-  # npm gives ownership of ALL FILES to build user
-  # https://bugs.archlinux.org/task/63396
-  chown -R root:root "$pkgdir"
 
   # remove a non-runtime file that kills the packaging step
   rm -r "$pkgdir/usr/lib/node_modules/$pkgname/node_modules/@fastify/send/test/fixtures/snow ☃/"
-
-  # Remove references to $pkgdir
-  find "$pkgdir" -type f -name package.json -print0 | xargs -0 sed -i "/_where/d"
-
-  # Remove references to $srcdir
-  local tmppackage="$(mktemp)"
-  local pkgjson="$pkgdir/usr/lib/node_modules/$_pkgname/package.json"
-  jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
-  mv "$tmppackage" "$pkgjson"
-  chmod 644 "$pkgjson"
-
-  find "$pkgdir" -type f -name package.json | while read pkgjson; do
-    local tmppackage="$(mktemp)"
-    jq 'del(.man)' "$pkgjson" > "$tmppackage"
-    mv "$tmppackage" "$pkgjson"
-    chmod 644 "$pkgjson"
-  done
 
   # license
   install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" \
@@ -73,4 +49,21 @@ package() {
     "$pkgdir/usr/lib/tmpfiles.d/homebridge.conf"
   install -vDm644 "$srcdir/systemd.service" \
     "$pkgdir/usr/lib/systemd/system/homebridge.service"
+
+  # Clean up srcdir references
+  # https://wiki.archlinux.org/title/Node.js_package_guidelines#Package_contains_reference_to_$srcdir/$pkgdir
+  find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+
+  local tmppackage="$(mktemp)"
+  local pkgjson="$pkgdir/usr/lib/node_modules/$pkgname/package.json"
+  jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
+  mv "$tmppackage" "$pkgjson"
+  chmod 644 "$pkgjson"
+
+  find "$pkgdir" -type f -name package.json | while read pkgjson; do
+    local tmppackage="$(mktemp)"
+    jq 'del(.man)' "$pkgjson" > "$tmppackage"
+    mv "$tmppackage" "$pkgjson"
+    chmod 644 "$pkgjson"
+  done
 }
