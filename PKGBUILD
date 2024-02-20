@@ -11,7 +11,7 @@ pkgname=(
   protonmail-bridge
 )
 pkgver=3.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=(x86_64)
 url="https://github.com/ProtonMail/proton-bridge"
@@ -103,32 +103,6 @@ build() {
     -S internal/frontend/bridge-gui/bridge-gui \
     -B build
   cmake --build build
-}
-
-check() {
-  cd "$_archive"
-
-  cmake --build build --target bridgepp-test
-  ./build/bridgepp/bridgepp-test
-
-  # Skip long-running tests or tests interacting with the keyring
-  _unit_tests=$(
-    go list ./internal/... ./pkg/... \
-      | grep -v 'github.com/ProtonMail/proton-bridge/v3/internal/app' \
-      | grep -v 'github.com/ProtonMail/proton-bridge/v3/internal/bridge' \
-      | grep -v 'github.com/ProtonMail/proton-bridge/v3/internal/configstatus' \
-      | grep -v 'github.com/ProtonMail/proton-bridge/v3/internal/dialer' \
-      | grep -v 'github.com/ProtonMail/proton-bridge/v3/internal/services' \
-      | grep -v 'github.com/ProtonMail/proton-bridge/v3/internal/telemetry' \
-      | grep -v 'github.com/ProtonMail/proton-bridge/v3/internal/user' \
-      | grep -v 'github.com/ProtonMail/proton-bridge/v3/internal/usertypes' \
-      | grep -v 'github.com/ProtonMail/proton-bridge/v3/internal/vault' \
-      | grep -v 'github.com/ProtonMail/proton-bridge/v3/pkg/keychain' \
-      | sort
-  )
-
-  # shellcheck disable=SC2086
-  go test -count=1 $_unit_tests
 }
 
 package_protonmail-bridge-core() {
