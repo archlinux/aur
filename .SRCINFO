@@ -1,0 +1,13 @@
+pkgbase = profile-sync-daemon-edge-stable
+	pkgdesc = Microsoft Edge Stable support for profile-sync-daemon
+	pkgver = 2024.02.21
+	pkgrel = 1
+	url = https://github.com/graysky2/profile-sync-daemon/issues/279
+	arch = any
+	license = unlicense
+	depends = profile-sync-daemon
+	optdepends = microsoft-edge-stable-bin: the target browser
+	source = microsoft-edge
+	md5sums = 19f1f55d59e55334b9c61f12b94f35ee
+
+pkgname = profile-sync-daemon-edge-stable
