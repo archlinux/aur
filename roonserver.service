@@ -1,16 +1,14 @@
 [Unit]
 Description=RoonServer
-After=network-online.target sound.target
-Wants=network-online.target
+After=network-online.target
 
 [Service]
 Type=simple
-User=roon
+User=root
 Environment=ROON_DATAROOT=/var/roon
 Environment=ROON_ID_DIR=/var/roon
 ExecStart=/opt/RoonServer/start.sh
 Restart=on-abort
-MemoryMax=6G
 
 [Install]
 WantedBy=multi-user.target
