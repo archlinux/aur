@@ -48,6 +48,7 @@ phrases=("haaaaaaaa"
 "hey $(whoami) you should come to #trivia more often"
 "Olá gurizinho, vamos falar português cara"
 "Buna $(whoami)!"
+"Hello this is gasconheart"
 )
 
 echo -e "$BROWN" 
