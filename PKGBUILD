@@ -2,7 +2,7 @@
 
 pkgname=python-instructor
 _pkgname=${pkgname#python-}
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
@@ -29,7 +29,7 @@ makedepends=(
 )
 checkdepends=(python-pytest)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('fa280682aa1e0688be29e518e29371963308749cd5683249967226592bc09439')
+sha256sums=('972529991759d5c3cabfb2f96074e0633204535864a888a7f3b31f2db01136eb')
 
 _archive="$_pkgname-$pkgver"
 
@@ -42,7 +42,7 @@ build() {
 check() {
   cd "$_archive"
 
-  # Tests in test/openapi/ interact with OpenAI's API and requires a valid API
+  # Tests in tests/openapi/ interact with OpenAI's API and requires a valid API
   # key
   export OPENAI_API_KEY=sk-dBAe8c5a9bc4294cca9bed292cd61e0ff9030bB94647adfb
   pytest --ignore=tests/openai
