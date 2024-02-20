@@ -1,0 +1,17 @@
+pkgbase = python-zxing-cpp-bin
+	pkgdesc = Python bindings for zxing-cpp
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/zxing-cpp/zxing-cpp
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = zxing-cpp
+	provides = python-zxing-cpp
+	conflicts = python-zxing-cpp
+	source = https://files.pythonhosted.org/packages/cp311/z/zxing_cpp/zxing_cpp-2.2.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	sha256sums = 8602d7cad833007df497b8db7c1216fc7d21e077eb02206b45f4fc061b082913
+
+pkgname = python-zxing-cpp-bin
