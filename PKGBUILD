@@ -1,6 +1,6 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=pinstall
-pkgver=1.10.1
+pkgver=1.11
 pkgrel=1
 pkgdesc="Installer Tool for Python Programs"
 url="https://github.com/bulletmark/$pkgname"
@@ -10,7 +10,7 @@ depends=("python>=3.11" "sudo" "python-packaging")
 makedepends=(python-setuptools python-build python-installer
              python-wheel python-setuptools-scm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha1sums=('0e9f6a2fefd5c0f2bb66fe5a25a2c49299b0e7e7')
+sha1sums=('cea752e88dbfaf5803867dfb9f4b1f831001abef')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
