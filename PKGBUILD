@@ -2,9 +2,9 @@
 
 pkgname=blender-lts-bin
 pkgdesc='LTS blender version'
-pkgver='3.6.8'
-#USA Mirror
-_mirror="https://mirrors.ocf.berkeley.edu/"
+pkgver='3.6.9'
+#Official Mirror(Direct Link)
+_mirror="https://mirrors.dotsrc.org"
 
 ##Alternate Mirrors##
 #China
@@ -20,12 +20,12 @@ _mirror="https://mirrors.ocf.berkeley.edu/"
 
 _pkgfile=${pkgname%-lts-bin}-$pkgver-linux-x64.tar.xz
 source=("${_mirror}/blender/release/Blender${pkgver%.*}/$_pkgfile" 'blender.sh')
-pkgrel=2
+pkgrel=1
 license=('GPL')
 arch=('x86_64')
 url='https://www.blender.org'
 
-b2sums=('0dc62f4c86a869d648f6462db10b5efcb390a09e15ad091a3d74dcbba6c3c37346ace84e9210019a1ffa6fa95faed3a23805d548fbbd3e12dcbcf6c7e2c61519'
+b2sums=('1114a0d950d3130ce3a91be02baaca81aa33c5757aa8ecb0c32d416099aa64d6d3a25d7316a1cc615372198353cf55a3fea6133ac95850d3ec48ec27b9bc4696'
 '903039ab42d250063286fa6a5e3687e84c9c6018a0e6654423e7649542d8394c19e6ed8ccaa549bd373ad66bc8e5b7b65203781cde26420f4e00183935e766f3')
 
 _setvars() {
