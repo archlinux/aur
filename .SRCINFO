@@ -1,0 +1,18 @@
+pkgbase = qcustomplot-qt6
+	pkgdesc = Qt C++ widget for plotting and data visualization (built with Qt6)
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://www.qcustomplot.com/
+	arch = x86_64
+	license = GPL3
+	makedepends = graphviz
+	makedepends = qt6-base
+	optdepends = qcustomplot: header file
+	source = qcustomplot-qt6-2.1.1.tar.bz2::https://gitlab.com/ecme2/QCustomPlot/-/archive/v2.1.1/QCustomPlot-v2.1.1.tar.bz2
+	source = qcustomplot-qt6-2.1.1-source.tar.gz::https://www.qcustomplot.com/release/2.1.1/QCustomPlot-source.tar.gz
+	sha512sums = a9c0fe0c2393858b5de66e78606ef96e57b00e405e0417df7d59d5e93a89f706a1d4767316bf015c76514aedd69553229fd347569b9d68e387103486ee29988f
+	sha512sums = 1feb4f45ef90d7709edb26c9964f0ec85ef4aa30f0a7e9fcd803fae586875e8d6744dbcfe08b21f461816ca426c8a6612f8e9c7ef9d3f5a7150c3de8fa5ee57d
+
+pkgname = qcustomplot-qt6
+	depends = qt6-base
+	provides = libqcustomplot-qt6.so
