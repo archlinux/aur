@@ -4,7 +4,7 @@
 _commit="3c4163e30896c9a22e996815d5e0f7876b3fc64f"
 pkgname="readpe"
 pkgver="0.84"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="PE file analysis toolkit"
 arch=("x86_64")
 url="https://github.com/mentebinaria/readpe"
