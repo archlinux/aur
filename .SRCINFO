@@ -14,11 +14,11 @@ pkgbase = hmcl-stable-bin
 	source = hmcl-launch-script
 	source = craft_table.png
 	source = LICENSE::https://raw.githubusercontent.com/HMCL-dev/HMCL/javafx/LICENSE
-	source = hmcl-stable-bin-3.5.5-2.jar::https://github.com/HMCL-dev/HMCL/releases/download/v3.5.5/HMCL-3.5.5.jar
+	source = hmcl-stable-bin-3.5.5-2.jar::https://github.com/HMCL-dev/HMCL/releases/download/release-3.5.5/HMCL-3.5.5.jar
 	sha256sums = a367a2d222dc86b3e3a60af0727192aa461922735825bf2ccab72a1d95c60325
-	sha256sums = ae7e1f29c5d74cc1e9d841e55c62068a74d4c933bca8e57bd00528816f97b3aa
+	sha256sums = 369a321795e5048d09df08441ec979163741b22d0cd4d69bfb256a24f73881b6
 	sha256sums = 2989a1b5301b8c7b9afdae5696c6a4e5246afa2d4f1f3d3dad5c192f036a9b4c
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
-	sha256sums = 86946bbb52194786f37b3ea25a50baaa8edefed0ab78cdef22b213ded16a1702
+	sha256sums = 6d7645dfca5df08f1c45eb8336b6730e3d61a750ab93e3f6e893628a45028388
 
 pkgname = hmcl-stable-bin
