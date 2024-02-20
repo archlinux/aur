@@ -1,38 +1,97 @@
-# Maintainer: Ary Kleinerman <kleinerman at gmail dot com>
-#
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=yubico-authenticator
-pkgver=6.1.0
-pkgdesc="Yubico Authenticator 6 is a cross-platform application for managing your YubiKey's second factor credentials.\
-Yubico Authenticator 6 is a complete rewrite of the application using the Flutter framework."
+_app_id=com.yubico.yubioath
+pkgdesc="Yubico Authenticator for Desktop"
+pkgver=6.4.0
+pkgrel=1
+_flutter_ver=3.19.0
 arch=('x86_64')
-url="https://developers.yubico.com/yubioath-desktop/"
-license=('GPL')
-depends=('ccid')
-pkgrel=3
-
-source=(
-    "https://developers.yubico.com/yubioath-flutter/Releases/yubico-authenticator-${pkgver}-linux.tar.gz"{,.sig}
+url="https://github.com/Yubico/yubioath-flutter"
+license=('Apache-2.0')
+depends=(
+  'ccid'
+  'gtk3'
+  'libayatana-appindicator'
+  'libnotify'
+  'pcsclite'
+  'python-mss'
+  'python-pillow'
+  'python-zxing-cpp'
+  'yubikey-manager'
 )
-
-validpgpkeys=(
-    '20EE325B86A81BCBD3E56798F04367096FBA95E8'
+makedepends=(
+  'chrpath'
+  'clang'
+  'cmake'
+  'git'
+  'ninja'
+  'python-build'
+  'python-installer'
+  'python-poetry-core'
+  'python-wheel'
 )
-
-sha256sums=('be686148475d642027d6126ea0984578aa2c22a179a565dc24b81b72ea457417'
-            'SKIP')
+_commit=c44d65eb6efc9e82b74eb44f228c3937bdc1e071  # tags/6.4.0^0
+source=("git+https://github.com/Yubico/yubioath-flutter.git#commit=${_commit}?signed"
+        "flutter-${_flutter_ver}.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${_flutter_ver/.hotfix/+hotfix}-stable.tar.xz")
+validpgpkeys=('AF511D2CBC0F973E5D308054325C8E4AE2E6437D'  # Adam Velebil <adam.velebil@yubico.com>
+              '20EE325B86A81BCBD3E56798F04367096FBA95E8')  # Dain Nilsson <dain@yubico.com>
+sha256sums=('SKIP'
+            '4cc1706fbd6e2a5c0ee34a6f8de875aae20904c9f47e18c88d2fcb25d9ea1a79')
 
 prepare() {
-     echo -e "\n\033[0;32mINSTALLATION NOTE:\n"
-     echo -e "If installation fails with 'One or more PGP signatures could not be verified', then install the key with:\n"
-     echo -e "  gpg --recv-keys 20EE325B86A81BCBD3E56798F04367096FBA95E8\n"
-     echo -e "Then retry the installation.\033[0m\n"
-    sed -i 's|\(Exec="\)@EXEC_PATH|\1/opt/yubico-authenticator|' "${srcdir}"/yubico-authenticator-"${pkgver}"-linux/linux_support/com.yubico.authenticator.desktop
-    sed -i 's|\(Icon=\)@EXEC_PATH/linux_support/|\1|' "${srcdir}"/yubico-authenticator-"${pkgver}"-linux/linux_support/com.yubico.authenticator.desktop
+  cd yubioath-flutter
+  desktop-file-edit --set-key=Exec --set-value="authenticator" --set-icon="${_app_id}" \
+    resources/linux/linux_support/com.yubico.authenticator.desktop
+
+  # Don't copy the Helper since we're not using Pyinstaller
+  sed -i '/build\/linux\/helper/d' linux/CMakeLists.txt
+}
+
+build() {
+  cd yubioath-flutter
+
+  pushd helper
+  GIT_DIR='.' python -m build --wheel --no-isolation
+  popd
+
+  export FLUTTER_HOME="$srcdir/flutter"
+  export PATH="${PATH}:${FLUTTER_HOME}/bin:"
+  flutter pub get
+  flutter build linux
+}
+
+check() {
+  cd yubioath-flutter
+  export FLUTTER_HOME="$srcdir/flutter"
+  export PATH="${PATH}:${FLUTTER_HOME}/bin:"
+  flutter test
 }
 
 package() {
-    mkdir -p "$pkgdir/opt/yubico-authenticator"
-    ls -1 "${srcdir}"/yubico-authenticator-"${pkgver}"-linux | grep -v "linux_support\|desktop_integration.sh\|README.adoc" | xargs -I{} cp -r "${srcdir}"/yubico-authenticator-"${pkgver}"-linux/{} "$pkgdir/opt/yubico-authenticator"
-    install -Dm644 "${srcdir}"/yubico-authenticator-"${pkgver}"-linux/linux_support/com.yubico.authenticator.desktop "${pkgdir}"/usr/share/applications/com.yubico.authenticator.desktop
-    install -Dm644 "${srcdir}"/yubico-authenticator-"${pkgver}"-linux/linux_support/com.yubico.yubioath.png "${pkgdir}"/usr/share/pixmaps/com.yubico.yubioath.png
+  cd yubioath-flutter
+
+  pushd helper
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm755 authenticator-helper.py "$pkgdir/opt/$pkgname/helper/authenticator-helper"
+  install -Dm755 shell.py -t "$pkgdir/opt/$pkgname/helper/"
+  popd
+
+  install -Dm755 build/linux/x64/release/bundle/authenticator -t \
+    "$pkgdir/opt/$pkgname/"
+  cp -r build/linux/x64/release/bundle/{data,lib} "$pkgdir/opt/$pkgname"
+
+  install -d "$pkgdir/usr/bin"
+  ln -s "/opt/$pkgname/authenticator" "$pkgdir/usr/bin/"
+
+  install -Dm644 "resources/icons/${_app_id}.png" -t \
+    "$pkgdir/usr/share/icons/hicolor/128x128/apps/"
+  install -Dm644 "resources/icons/${_app_id}-32x32.png" -t \
+    "$pkgdir/usr/share/icons/hicolor/32x32/apps/"
+  install -Dm644 "resources/icons/${_app_id}-1000x1000.png" -t \
+    "$pkgdir/usr/share/icons/hicolor/1000x1000/apps/"
+  install -Dm644 resources/linux/linux_support/com.yubico.authenticator.desktop -t \
+    "$pkgdir/usr/share/applications/"
+
+  # Remove insecure RUNPATH pointing to build dir
+  chrpath --delete "$pkgdir/opt/$pkgname"/lib/*.so
 }
