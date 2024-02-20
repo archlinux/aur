@@ -1,0 +1,13 @@
+pkgbase = ory-cli
+	pkgdesc = Ory command line interface
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/ory/cli
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	source = cli-0.3.4.tar.gz::https://github.com/ory/cli/archive/refs/tags/v0.3.4.tar.gz
+	b2sums = fb7ab0ce3f27c4681f16a386cc4150cf5e6ba3dd7d816faefb5054bcf41d8bb12d93c6d04d5246d71cb0aa12627d07b2de4c440bd68682768048f2cf10e62684
+
+pkgname = ory-cli
