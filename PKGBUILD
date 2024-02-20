@@ -2,7 +2,7 @@
 _pkgname=binggpt
 pkgname="${_pkgname}-ee-bin"
 _appname=BingGPT
-pkgver=0.4.6
+pkgver=0.4.7
 _electronversion=26
 pkgrel=1
 pkgdesc="BingGPT Enhanced Editon - Desktop application of new Bing's AI-powered chat.A rewritten version."
@@ -27,8 +27,8 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
-sha256sums_aarch64=('1b8ebab0893b7cebca710660d9d486c81fccaf9f0f438e945dc159f9a66798e2')
-sha256sums_x86_64=('291d31f6dbeee811192b1a3380f6227ceb4239aac4542bebede7adcbb86f795c')
+sha256sums_aarch64=('c51a2fd6705dc5bfe7b3cdebf6fd6daedade8be00fc5e8cbd0abc3ddbda20b16')
+sha256sums_x86_64=('01dafcd9a29abc8e1960ce0a405bbaa7ca7612f353d9a0bac3ab439eec564839')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
