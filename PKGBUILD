@@ -1,20 +1,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=walc-bin
 _pkgname=WALC
-pkgver=0.3.2
+pkgver=0.3.3
 _electronversion=20
-pkgrel=2
+pkgrel=1
 pkgdesc="An unofficial WhatsApp Desktop client for linux systems."
 arch=('x86_64')
 url="https://github.com/WAClient/WALC"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'libdbusmenu-glib'
-    'gtk2'
-    'dbus-glib'
     'nodejs'
     'lib32-glibc'
 )
@@ -27,12 +24,12 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('602e7dfa87bf0bd22f0711575fa3e6e654a216fb5ff347e5cd4e7132e6e3b8c5'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+sha256sums=('186276bd9806c0ae9e93d733990f50375b02cc480164a94ee067ede56934e55e'
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
@@ -47,7 +44,6 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -r "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
 }
