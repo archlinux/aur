@@ -1,10 +1,10 @@
 pkgbase = cpeditor-bin
 	pkgdesc = The IDE for competitive programming Fetch, Code, Compile, Run, Check, Submit
-	pkgver = 6.10.3
-	pkgrel = 5
+	pkgver = 7.0.1
+	pkgrel = 1
 	url = https://cpeditor.org/
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	depends = qt5-base
 	depends = libgpg-error
 	depends = freetype2
@@ -13,18 +13,19 @@ pkgbase = cpeditor-bin
 	depends = fontconfig
 	depends = libglvnd
 	depends = libxcb
+	depends = syntax-highlighting5
 	optdepends = cf-tool: submit to Codeforces
 	optdepends = clang: C++ format and language server
 	optdepends = java-environment: compile Java
 	optdepends = java-runtime: execute Java
 	optdepends = python: execute Python
 	optdepends = wakatime: track coding stats
-	provides = cpeditor=6.10.3
+	provides = cpeditor=7.0.1
 	conflicts = cpeditor
 	options = !strip
-	source = cpeditor-6.10.3.deb::https://github.com/cpeditor/cpeditor/releases/download/6.10.3/cpeditor-6.10.3-linux-amd64.deb
+	source = cpeditor-7.0.1.deb::https://github.com/cpeditor/cpeditor/releases/download/7.0.1/cpeditor-7.0.1-linux-amd64.deb
 	source = cpeditor.sh
-	sha256sums = 47ce8cd065753557d04270dcd32d2bc8b737e3ce8a9a48e59017c0e0f4786a33
+	sha256sums = 30303f0c7bcac3ae9cc6550ed9e86e5be8c4c1d49e09542dca18f17a2561b0a6
 	sha256sums = b4eae24229532b482599a1aeeba095b536f403a91f99a86a78918d4cebfb6fde
 
 pkgname = cpeditor-bin
