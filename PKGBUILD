@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simple-icons
-pkgver=11.4.0
+pkgver=11.5.0
 pkgrel=1
 pkgdesc="Free SVG icons for popular brands"
 arch=('any')
