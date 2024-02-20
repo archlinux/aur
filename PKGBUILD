@@ -2,7 +2,7 @@
 
 pkgname=cromite-bin
 pkgver=121.0.6167.164
-pkgrel=1
+pkgrel=2
 _cromite_commit='0543a8a30b898b6a8c92b197b3f798ecd71dce6f'
 _launcher_ver=8
 pkgdesc='Cromite a Bromite fork with ad blocking and privacy enhancements (binary release)'
@@ -45,8 +45,7 @@ build() {
 package() {
 	cd chromium-launcher-$_launcher_ver
   make PREFIX=/usr DESTDIR="$pkgdir" CHROMIUM_NAME=cromite install
-  install -Dm644 LICENSE \
-		"$pkgdir/usr/share/licenses/chromium/LICENSE.launcher"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/cromite/LICENSE.launcher"
 
 	cd ../chrome-lin
 

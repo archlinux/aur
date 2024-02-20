@@ -1,7 +1,7 @@
 pkgbase = cromite-bin
 	pkgdesc = Cromite a Bromite fork with ad blocking and privacy enhancements (binary release)
 	pkgver = 121.0.6167.164
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uazo/cromite
 	arch = x86_64
 	license = GPL3
