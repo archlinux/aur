@@ -11,7 +11,7 @@ _apngver=1.6.40
 pkgrel=1
 pkgdesc="A collection of routines used to create PNG format graphics files"
 arch=('x86_64')
-url="http://www.libpng.org/pub/png/libpng.html"
+url="https://sourceforge.net/projects/libpng-apng/"
 license=('custom')
 depends=('zlib' 'sh')
 provides=(libpng=$pkgver)
