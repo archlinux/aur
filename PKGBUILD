@@ -3,12 +3,12 @@
 _pkgname=JASPAR2018
 _pkgver=1.1.1
 pkgname=r-${_pkgname,,}
-pkgver=1.1.1
-pkgrel=4
-pkgdesc='Data package for JASPAR 2018'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Data package for JASPAR 2018"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r
 )
@@ -16,14 +16,15 @@ optdepends=(
   r-tfbstools
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('87a22b2549eb6cd2f6db8692542fbb2a4aa1dc8bde9bd01b63022a9f435905c7')
+md5sums=('d91fce6ea0dc9fa6a3be6ebc05c1af5d')
+b2sums=('679990b0931d4e9e76f4dd4bc14fadb183caf8e9da225a86cebfeaf7d85954e3deb9d7d55ff1e8c0a6c21bd0941ebb86aa5f7c12b2a73508f907247e3f4c9eaf')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
