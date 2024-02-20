@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=goovpn-bin
-pkgver=1.0.4
-pkgrel=3
+pkgver=1.0.6
+pkgrel=1
 pkgdesc="Cross-platform gui (use wails) openvpn client."
 arch=('x86_64')
 url="https://github.com/Vai3soh/goovpn"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -17,7 +17,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
 )
-sha256sums=('899fe424d78e34ba4fb7fff6e095d2968cba5f0d8f4d9d507bf0cf05f7b2bc8b')
+sha256sums=('fd114f121a5a417ca3b12090d47214b7de013d26c4f6f61316dd9f9f29144b53')
 build() {
     bsdtar -xf "${srcdir}/data.tar.gz"
     sed "s|/usr/share/icons/hicolor/128x128/apps/${pkgname%-bin}.png|${pkgname%-bin}|g" \
