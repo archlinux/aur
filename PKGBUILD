@@ -2,7 +2,7 @@
 pkgname=waveterm
 _pkgname=Wave
 _appname="${_pkgname} Terminal"
-pkgver=0.6.2
+pkgver=0.6.3
 _electronversion=28
 pkgrel=1
 pkgdesc="An open-source, cross-platform terminal for seamless workflows"
