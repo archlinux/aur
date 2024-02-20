@@ -16,7 +16,7 @@ conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}.zip::https://image.easyeda.com/files/${_pkgname}-linux-x64-${pkgver}.zip"
         "LICENSE-$pkgver.html::https://easyeda.com/page/legal")
 sha256sums=('4b9c082bb366b2d7f03cda7514316c8179150b6fd44f6eff29058ff09f03795c'
-            'e554a2743bdcc8838a56c425e19913de48e40b46375ac5f517e3c98481ac9dc1')
+            'SKIP')
 
 package() {
     install -dm755 ${pkgdir}/opt/${_pkgname}

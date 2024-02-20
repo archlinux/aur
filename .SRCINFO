@@ -14,6 +14,6 @@ pkgbase = easyeda-bin
 	source = easyeda-6.5.40.zip::https://image.easyeda.com/files/easyeda-linux-x64-6.5.40.zip
 	source = LICENSE-6.5.40.html::https://easyeda.com/page/legal
 	sha256sums = 4b9c082bb366b2d7f03cda7514316c8179150b6fd44f6eff29058ff09f03795c
-	sha256sums = e554a2743bdcc8838a56c425e19913de48e40b46375ac5f517e3c98481ac9dc1
+	sha256sums = SKIP
 
 pkgname = easyeda-bin
