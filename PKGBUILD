@@ -57,7 +57,7 @@ build() {
   export FLUTTER_HOME="$srcdir/flutter"
   export PATH="${PATH}:${FLUTTER_HOME}/bin:"
   flutter pub get
-  flutter build linux
+  flutter build linux --suppress-analytics
 }
 
 check() {
