@@ -8,7 +8,10 @@ pkgrel=1
 pkgdesc="PE file analysis toolkit"
 arch=("x86_64")
 url="https://github.com/mentebinaria/readpe"
-license=("GPL" "custom:OpenSSL")
+license=(
+  "GPL-2.0-or-later"
+  "OpenSSL"
+)
 conflicts=("pev")
 depends=("openssl")
 makedepends=("git")
