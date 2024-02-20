@@ -85,10 +85,10 @@ package() {
 
   install -Dm644 "resources/icons/${_app_id}.png" -t \
     "$pkgdir/usr/share/icons/hicolor/128x128/apps/"
-  install -Dm644 "resources/icons/${_app_id}-32x32.png" -t \
-    "$pkgdir/usr/share/icons/hicolor/32x32/apps/"
-  install -Dm644 "resources/icons/${_app_id}-1000x1000.png" -t \
-    "$pkgdir/usr/share/icons/hicolor/1000x1000/apps/"
+  install -Dm644 "resources/icons/${_app_id}-32x32.png" \
+    "$pkgdir/usr/share/icons/hicolor/32x32/apps/${_app_id}.png"
+  install -Dm644 "resources/icons/${_app_id}-1000x1000.png" \
+    "$pkgdir/usr/share/icons/hicolor/1000x1000/apps/${_app_id}.png"
   install -Dm644 resources/linux/linux_support/com.yubico.authenticator.desktop -t \
     "$pkgdir/usr/share/applications/"
 
