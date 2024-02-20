@@ -20,6 +20,7 @@ pkgbase = waylyrics-git
 	depends = dconf
 	depends = gtk4
 	depends = sh
+	depends = gettext
 	provides = waylyrics
 	conflicts = waylyrics
 	options = !lto

@@ -18,6 +18,8 @@ depends=('openssl' 'hicolor-icon-theme'
     'glib2' 'cairo' 'dconf' 'gtk4'
     # restart task
     'sh'
+    # i18n
+    'gettext'
     )
 makedepends=('rust' 'git' 'jq' 'mimalloc')
 optdepends=()
