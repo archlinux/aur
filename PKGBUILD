@@ -30,6 +30,11 @@ sha512sums=('SKIP'
             'SKIP'
             '3319b861c520abd68359f3e6e19db7e7d35464911c7b3798298de71fa920215b621e1cb2668ed35d68d7bfd0814e24604860a3ed3b071496943f00919b99473e')
 
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
   cd librime/plugins
   ln -sf "$srcdir"/librime-octagram
