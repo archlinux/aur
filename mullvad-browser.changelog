@@ -1,3 +1,38 @@
+Mullvad Browser 13.0.10 - February 20 2024
+ * All Platforms
+   * Updated Firefox to 115.8.0esr
+   * Updated mullvad-browser-extension to 0.8.5
+   * Bug 267: Rebase Mullvad Browser Stable onto  Firefox 115.8.0esr [mullvad-browser]
+   * Bug 42374: spoof english leaks via numberingSystem: numbers (non-latn) or decimal separator (latn) [tor-browser]
+ * Build System
+   * All Platforms
+     * Bug 41037: Set time on signing machine before starting signing [tor-browser-build]
+     * Bug 41067: Use Capture::Tiny instead of IO::CaptureOutput [tor-browser-build]
+     * Bug 40068: Switch from IO::CaptureOutput to Capture::Tiny [rbm]
+     * Bug 40069: Make stdout and stderr utf8 [rbm]
+
+Mullvad Browser 13.5a4 - January 29 2024
+ * All Platforms
+   * Updated Firefox to 115.7.0esr
+   * Updated uBlock Origin to 1.55.0
+   * Bug 261: Rebase Mullvad Browser Alpha onto Firefox 115.7.0esr [mullvad-browser]
+   * Bug 41917: Make the appearance of letterboxing look more intentional [tor-browser]
+   * Bug 42374: spoof english leaks via numberingSystem: numbers (non-latn) or decimal separator (latn) [tor-browser]
+ * Build System
+   * All Platforms
+     * Bug 42337: Enable GeckoDriver for all desktop platforms [tor-browser]
+     * Bug 41037: Set time on signing machine before starting signing [tor-browser-build]
+     * Bug 41045: Dump more information about build times on Firefox [tor-browser-build]
+     * Bug 41056: Make it possible to use templates in var/torbrowser_incremental_from [tor-browser-build]
+     * Bug 41057: make fetch is not fetching mullvad repo [tor-browser-build]
+     * Bug 41059: Update keyring/torbrowser.gpg with updated key [tor-browser-build]
+   * Windows
+     * Bug 40606: Use Clang to compile NSIS [tor-browser-build]
+     * Bug 40900: Update NSIS to 3.09 [tor-browser-build]
+     * Bug 41065: Do a cleanup of the NSIS script [tor-browser-build]
+   * Linux
+     * Bug 41046: Use the final path for Linux debug symbols [tor-browser-build]
+
 Mullvad Browser 13.0.9 - January 23 2024
  * All Platforms
    * Updated Firefox to 115.7.0esr
