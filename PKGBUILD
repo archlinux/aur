@@ -3,7 +3,7 @@
 pkgname=waylyrics-git
 _pkgname=waylyrics
 _appname="io.poly000.${_pkgname}"
-pkgver=0.2.7_r3.g03de3725
+pkgver=0.2.7_r22.g24e0857d
 pkgrel=1
 pkgdesc="the furry way to show desktop lyrics (git version)"
 url="https://github.com/waylyrics/waylyrics"
@@ -20,8 +20,8 @@ depends=('openssl' 'hicolor-icon-theme'
     'sh'
     # i18n
     'gettext'
-    )
-makedepends=('rust' 'git' 'jq' 'mimalloc')
+    'mimalloc')
+makedepends=('rust' 'git' 'jq')
 optdepends=()
 
 source=("git+${url}.git")
@@ -80,6 +80,16 @@ package() {
     install -vdm755 "${pkgdir}/usr/share/${_pkgname}/themes"
     cp -arv themes/* "${pkgdir}/usr/share/${_pkgname}/themes/"
     cp -arv res/* "${pkgdir}/usr/share/"
+    
+    # Locale files
+    (
+        cd locales
+        for po in $(find . -type f -name '*.po')
+        do
+            mkdir -p "${pkgdir}/usr/share/locale/${po#/*}" 
+            msgfmt -o "${pkgdir}/usr/share/locale/${po%.po}.mo" ${po}
+        done
+    )
 
     # License
     install -vDm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
