@@ -3,7 +3,7 @@
 # Manitor: Bot-wxt1221<3264117476@qq.com>
 
 pkgname=hmcl-stable-bin
-_ver=3.5.5.235
+_ver=3.5.5
 pkgver=${_ver}
 pkgrel=2
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
@@ -29,7 +29,7 @@ noextract=("${pkgname}-${pkgver}-${pkgrel}.jar")
 package() {
   install -Dm755 "hmcl-launch-script" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "hmcl.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -Dm644 "${pkgname}-${pkgver}-${pkgrel}.jar" "${pkgdir}/usr/share/java/hmcl-bin/hmcl-bin.jar"
+  install -Dm644 "${pkgname}-${pkgver}-${pkgrel}.jar" "${pkgdir}/usr/share/java/hmcl-stable-bin/hmcl-bin.jar"
   install -Dm644 "craft_table.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/${pkgname}.png"
   install -Dm644 "LICENSE" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
