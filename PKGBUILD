@@ -21,8 +21,9 @@ sha256sums=('671bfe39a3b87d5dfa5229ab0beffff1bd09686b53779dc511248e79aa4b2646')
 prepare() {
     cd ${_pkgbase}-${pkgver}
     # _pgrxver=$(cat Cargo.toml | grep "pgrx =" | awk -F'rev = "' '{print $2}' | cut -d'"' -f1)
-    _pgrxver=7c30e2023876c1efce613756f5ec81f3ab05696b
-    cargo install cargo-pgrx --git https://github.com/tensorchord/pgrx.git --rev "$_pgrxver"
+    # _pgrxver=7c30e2023876c1efce613756f5ec81f3ab05696b
+    # cargo install cargo-pgrx --git https://github.com/tensorchord/pgrx.git --rev "$_pgrxver"
+    cargo install cargo-pgrx --git https://github.com/tensorchord/pgrx.git --version 0.11.2
 }
 
 build() {
