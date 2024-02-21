@@ -22,9 +22,6 @@ build() {
     npm --prefix webui install
     npm --prefix webui run build
     find webui/dist -name '*.map' -exec rm ./{} \;
-    gzip webui/dist/*
-    go mod tidy
-    go generate ./...
     go build -trimpath -ldflags="$ldflags" -o "${pkgname}" .
     strip "${pkgname}"
     rice append --exec "${pkgname}"
