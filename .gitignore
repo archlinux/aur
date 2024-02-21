@@ -1,0 +1,10 @@
+*.rpm
+*.src.tar.*
+*.pkg.tar.*
+*.orig
+*.rej
+*.swp
+*.part
+*.tar.gz
+src
+pkg

@@ -1,0 +1,24 @@
+pkgbase = virtnbdbackup
+	pkgdesc = Backup utility for Libvirt / qemu / kvm
+	pkgver = 1.9.55
+	pkgrel = 1
+	url = https://github.com/abbbi/virtnbdbackup
+	arch = any
+	license = GPL-3.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-colorlog
+	depends = python-typing-extensions
+	depends = libvirt-python
+	depends = python-lxml
+	depends = python-tqdm
+	depends = python-paramiko
+	depends = python-lz4
+	depends = libnbd
+	source = https://github.com/abbbi/virtnbdbackup/releases/download/v1.9.55/virtnbdbackup-1.9.55.tar.gz
+	sha256sums = 710647a3320e0a3685f46485de4abd3c3b976eaa2a196937ac6d20bedea64752
+
+pkgname = virtnbdbackup
