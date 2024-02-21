@@ -1,20 +1,20 @@
 # vim: ts=4 sw=4 noet
 
-PKG		= $(shell awk -F '"' '/^pkgname/ {print $$2}' PKGBUILD)
 BUILD	= makepkg --log --syncdeps --rmdeps --check
+NAME	= $(shell awk -F '"' '/^pkgname=/ {print $$2}' PKGBUILD)
 
 define usage
 
 Available make targets:
 
-  build     Build $(PKG) but do not install.
+  build     Build $(NAME), but do not install.
   clean     Cleanup build artifacts and logs.
   help      Display this text.
-  install   Build and install $(PKG).
+  install   Build and install $(NAME).
   janitor   Housekeeping jobs.
   mrproper  Cleanup thoroughly, including downloaded files.
   push      Push to all configured Git remotes.
-  remove    Print command to uninstall $(PKG) and its orphaned dependencies.
+  remove    Print command to uninstall $(NAME) and its orphaned dependencies.
   schk      Check shell scripts.
 
 endef
@@ -26,10 +26,10 @@ help:
 	@exit 0
 
 clean:
-	rm -fr pkg src $(PKG)-*.{log,zst}*
+	rm -fr pkg src $(NAME)-*.{log,zst}*
 
 mrproper:	clean
-	rm -f pkg src $(PKG)-*.gz
+	rm -f pkg src $(NAME)-*.gz
 
 .SRCINFO:	PKGBUILD
 	makepkg --printsrcinfo >$@
@@ -41,13 +41,13 @@ install:	PKGBUILD
 	$(BUILD) --install
 
 remove:
-	@echo -e "# Run the following only if you are certain:\nsudo pacman -Rs $(PKG)"
+	@echo -e "# Run the following only if you are certain:\nsudo pacman -Rs $(NAME)"
 
 janitor:	.gitignore .SRCINFO
 	sort -o $< $<
 
 push:
-	@for _r in $(shell git remote); do git push $$_r; done
+	for _r in $(shell git remote); do git push $$_r; done; unset _r
 
 schk:
 	shellcheck -s bash -e SC2034 PKGBUILD *.sh
