@@ -1,12 +1,12 @@
 pkgbase = gnome-shell-extension-quick-settings-audio-panel
 	pkgdesc = Quick Settings Audio Panel GNOME Extension
 	pkgver = 44
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Rayzeq/quick-settings-audio-panel
 	arch = any
 	license = GPL3
 	depends = gnome-shell
-	source = https://github.com/Rayzeq/quick-settings-audio-panel/releases/download/v44/quick-settings-audio-panel@rayzeq.github.io.shell-extension.zip
+	source = gnome-shell-extension-quick-settings-audio-panel-v44.zip::https://github.com/Rayzeq/quick-settings-audio-panel/releases/download/v44/quick-settings-audio-panel@rayzeq.github.io.shell-extension.zip
 	sha256sums = f123b22b90ddd604832cd60daa754f84f0f8f5a29445e377f875786b0228ef75
 
 pkgname = gnome-shell-extension-quick-settings-audio-panel
