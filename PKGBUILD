@@ -2,7 +2,8 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-pkgname=libkscreen
+_name=libkscreen
+pkgname=${_name}5
 pkgver=5.27.10
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
@@ -10,10 +11,10 @@ pkgdesc='KDE screen management software'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(qt5-x11extras kwayland5 kconfig5)
+depends=(qt5-x11extras kwayland5 kconfig5 'libkscreen>=5.90')
 makedepends=(extra-cmake-modules doxygen qt5-tools qt5-doc plasma-wayland-protocols)
 groups=(plasma)
-source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+source=(https://download.kde.org/stable/plasma/$_dirver/$_name-$pkgver.tar.xz{,.sig})
 sha256sums=('27f59f088929bc7fb560c353fb9da98832dde5b58fde88d9c694c98fdf3aff98'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
@@ -22,7 +23,7 @@ validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
 
 build() {
-  cmake -B build -S $pkgname-$pkgver \
+  cmake -B build -S $_name-$pkgver \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON
@@ -31,4 +32,11 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+
+  # Remove the unneeded daemon and files that conflict with KF6 libkscreen
+  rm -r "${pkgdir}"/usr/bin/
+  rm -r "${pkgdir}"/usr/lib/kf5/kscreen_backend_launcher
+  rm -r "${pkgdir}"/usr/lib/systemd/
+  rm -r "${pkgdir}"/usr/share/dbus-1/
+  rm -r "${pkgdir}"/usr/share/zsh/
 }
