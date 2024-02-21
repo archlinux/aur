@@ -4,7 +4,7 @@ _pkgorg=gitlab.com/mipimipi
 pkgname=muserv-git
 _pkgname=muserv
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="muserv (UPnP server for music)"
 arch=(
   aarch64
@@ -23,6 +23,10 @@ makedepends=(
   make
 )
 provides=(muserv)
+options=(
+  !debug
+)
+
 source=("git+https://${_pkgorg}/${_pkgname}.git")
 sha256sums=('SKIP')
 
