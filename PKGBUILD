@@ -1,4 +1,5 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Marcell Pardavi <marcell.pardavi@gmail.com>
 
 # I saw upstream "closed" the Linux support issue and made the code repository
 # public and open sourced it, so I thought "Yay"!. It turns out that was
@@ -9,15 +10,20 @@
 # port it to other platforms. As such I'll leave this up and keep working on it
 # for when that actually happens. PKGREL=0 because not-yet-functional.
 
+# git submodules with vendored dependencies
+declare -gA _tags=(
+    [protocol]="8645a138fb2ea72c4dab13e739b1f3c9ea29ac84"
+)
+
 pkgname=zed-editor
-pkgver=0.123.1
+pkgver=0.123.2
 _pkgver=$pkgver-pre
 pkgrel=0
 pkgdesc='high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
 url=https://zed.dev
 _url="https://github.com/zed-industries/zed"
-license=(GPL-3.0-or-later)
+license=(GPL-3.0-or-later AGPL-3.0-or-later Apache-2.0)
 depends=()
 makedepends=(alsa-lib
              cargo
@@ -31,11 +37,17 @@ makedepends=(alsa-lib
              # wasmtime
              wayland)
 _archive="zed-$_pkgver"
-source=("$_url/archive/v$_pkgver/$_archive.tar.gz")
-sha256sums=('a35ee0d6147c8a52926bdefcd7e8f7dab3089acc4657abb18978a9fe97aac697')
+source=("$_url/archive/v$_pkgver/$_archive.tar.gz"
+        "protocol-${_tags[protocol]}.tar.gz::https://github.com/livekit/protocol/archive/${_tags[protocol]}.tar.gz")
+sha256sums=('4c6785fa94031c7ad5dbdd6b3d7dcfe254603371434a0598b9b4006f8a1dab89'
+            'cd26bc1015fa0b79154c23a385441ae81e9a4385211cf2989eb939ae83d0e414')
 
 prepare() {
 	cd "$_archive"
+
+	rm -r crates/live_kit_server/protocol
+	ln -sT "$srcdir/protocol-${_tags[protocol]}" crates/live_kit_server/protocol
+
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 

@@ -1,17 +1,21 @@
 pkgbase = zed-editor
 	pkgdesc = high-performance, multiplayer code editor from the creators of Atom and Tree-sitter
-	pkgver = 0.123.1
+	pkgver = 0.123.2
 	pkgrel = 0
 	url = https://zed.dev
 	arch = x86_64
 	license = GPL-3.0-or-later
+	license = AGPL-3.0-or-later
+	license = Apache-2.0
 	makedepends = alsa-lib
 	makedepends = cargo
 	makedepends = fontconfig
 	makedepends = libxkbcommon
 	makedepends = vulkan-validation-layers
 	makedepends = wayland
-	source = https://github.com/zed-industries/zed/archive/v0.123.1-pre/zed-0.123.1-pre.tar.gz
-	sha256sums = a35ee0d6147c8a52926bdefcd7e8f7dab3089acc4657abb18978a9fe97aac697
+	source = https://github.com/zed-industries/zed/archive/v0.123.2-pre/zed-0.123.2-pre.tar.gz
+	source = protocol-8645a138fb2ea72c4dab13e739b1f3c9ea29ac84.tar.gz::https://github.com/livekit/protocol/archive/8645a138fb2ea72c4dab13e739b1f3c9ea29ac84.tar.gz
+	sha256sums = 4c6785fa94031c7ad5dbdd6b3d7dcfe254603371434a0598b9b4006f8a1dab89
+	sha256sums = cd26bc1015fa0b79154c23a385441ae81e9a4385211cf2989eb939ae83d0e414
 
 pkgname = zed-editor
