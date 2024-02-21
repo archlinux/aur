@@ -1,5 +1,6 @@
 [Unit]
 Description=Update unofficial ClamAV signatures
+Documentation=https://rseichter.github.io/fangfrisch/
 Requires=fangfrisch.service
 
 [Timer]
