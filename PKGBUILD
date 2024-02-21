@@ -9,7 +9,7 @@
 
 pkgname=libselinux
 pkgver=3.6
-pkgrel=2
+pkgrel=3
 pkgdesc="SELinux library and simple utilities"
 arch=('i686' 'x86_64' 'armv6h' 'aarch64')
 url='https://github.com/SELinuxProject/selinux'
@@ -49,6 +49,10 @@ build() {
 }
 
 package() {
+  provides=(
+    libselinux.so
+  )
+
   cd "${pkgname}-${pkgver}"
 
   export DISABLE_RPM=y
