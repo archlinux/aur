@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kopete
-pkgver=23.08.5
+pkgver=24.02.0
 pkgrel=1
 pkgdesc='Instant Messenger'
 url='https://apps.kde.org/kopete/'
