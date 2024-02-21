@@ -4,6 +4,7 @@
 : ${_build_git:=false}
 : ${_nodeversion:=18}
 
+unset _pkgtype
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
 # basic info
