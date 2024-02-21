@@ -1,6 +1,6 @@
 # Mantenedor: Felipe Alfonso Gonzalez <f.alfonso@res-ear.ch>
 pkgname=upd8all
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Upd8All: Simplify package updates on Arch Linux with one command. Supports Pacman, Yay, and Homebrew."
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/felipealfonsog/Upd8All"
 license=('BSD 3-Clause')
 depends=('gcc' 'python3')
 source=("https://github.com/felipealfonsog/Upd8All/archive/refs/tags/v.${pkgver}.tar.gz")
-sha256sums=('b3c4442d3b021dda161ca3342fc78a892d084bb9e5ceee0076feb5f3ef3a052e')
+sha256sums=('ef1ef13b3100945830fc01bdb478f5a4aa5eb35ca7d231da6152754f6c0318db')
 
 prepare() {
   tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
