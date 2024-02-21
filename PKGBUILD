@@ -39,7 +39,7 @@ package() {
 	install -D -m 0644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 	local x
 	for x in README* docs/*; do
-		install -D -m 0644 "${x}" "${pkgdir}/usr/share/doc/${pkgname}/$(basename ${x})"
+		install -D -m 0644 "${x}" "${pkgdir}/usr/share/doc/${pkgname}/$(basename "${x}")"
 	done
 	popd >/dev/null || exit 1
 }
