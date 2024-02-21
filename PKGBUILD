@@ -1,19 +1,19 @@
 # Maintainer: OSAMC <https://github.com/osam-cologne/archlinux-proaudio>
 # Contributor: Nils Hilbricht <nils@hilbricht.net>
+# Contributor: Christopher Arndt <osam -at- chrisarndt -dot- de>
 
 pkgname=audiowmark
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.6.2
+pkgrel=1
 pkgdesc='Audio and video watermarking'
 arch=(x86_64 aarch64)
 url='https://uplex.de/audiowmark/'
-license=(GPL3)
-#depends=(fftw libsndfile libgcrypt zita-resampler mpg123 ffmpeg) #explicit from README
-depends=(zita-resampler fftw ffmpeg mpg123) #as namcap sees them
+license=(GPL-3.0-or-later)
+depends=(bash gcc-libs glibc libgcrypt)
+makedepends=(ffmpeg fftw libsndfile mpg123 zita-resampler)
 groups=(pro-audio)
-checkdepends=(bash)
-source=("$url/releases/$pkgname-$pkgver.tar.gz")
-sha256sums=('0b22c4364e111f6a70dac0118a1f67319bce25e57c501d5e55918cdb0c2577fb')
+source=("https://github.com/swesterfeld/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.zst")
+sha256sums=('aacc80be9fca2c9462be51b1cf34d9194946876ae08c7bbb13c5c3b2d9621437')
 
 build() {
   cd $pkgname-$pkgver
@@ -27,6 +27,16 @@ check() {
 }
 
 package() {
+  depends+=(
+    libsndfile.so
+    libfftw3f.so
+    libmpg123.so
+    libavcodec.so
+    libavformat.so
+    libavutil.so
+    libswresample.so
+    libzita-resampler.so
+  )
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
   install -Dm644 README.adoc -t "$pkgdir"/usr/share/doc/$pkgname
