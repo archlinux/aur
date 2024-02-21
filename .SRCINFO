@@ -1,0 +1,21 @@
+pkgbase = cosmic-randr-git
+	pkgdesc = Library and utility for displaying and configuring Wayland outputs
+	pkgver = r15.88c570c
+	pkgrel = 1
+	url = https://github.com/pop-os/cosmic-randr
+	arch = x86_64
+	arch = aarch64
+	groups = cosmic
+	license = MPL-2.0
+	makedepends = cargo
+	makedepends = clang
+	makedepends = git
+	makedepends = just
+	makedepends = mold
+	depends = wayland
+	provides = cosmic-randr
+	conflicts = cosmic-randr
+	source = git+https://github.com/pop-os/cosmic-randr.git
+	sha256sums = SKIP
+
+pkgname = cosmic-randr-git
