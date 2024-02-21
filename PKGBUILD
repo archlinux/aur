@@ -1,3 +1,5 @@
+# Maintainer: Diptesh Choudhuri <ignisda2001@gmail.com>
+
 pkgname=devpod
 pkgver=0.5.3
 pkgrel=1
