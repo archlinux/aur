@@ -10,7 +10,7 @@ license=(GPL3)
 depends=(python-numpy python-scipy python-six boost)
 makedepends=(python-setuptools cython)
 source=(https://github.com/astra-toolbox/astra-toolbox/archive/refs/tags/v${pkgver}.tar.gz
-	0001-fix-python-install-prefix.patch)
+	fix-python-install-prefix.patch)
 sha512sums=('676d5bfa24f40c855cce6333052a829339a84b83665d432f7942d05e81f87c943bb10ed34c3b02903e35c0e039e103a4f18679306f51e24528c965ab5d806375'
             '5c21c3d293d2ae140d7216f3c52c9a4a31b4c39047da0a3c97e954a17678446556d508b4e3020bc426f0591af6323929843d4d32c585058ffd2285a32f65f84f')
 prepare() {
