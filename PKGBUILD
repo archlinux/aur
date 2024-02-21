@@ -6,11 +6,11 @@ _pkgname_base="mediawiki-extension-${_extensionname_lowercase}"
 
 pkgname=${_pkgname_base}-git
 pkgver=0.4.3.r6.gadfc1d9
-pkgrel=1
+pkgrel=2
 pkgdesc='EditCountNeue MediaWiki extension allows wikis to display the number of edits of a user, via a special page or a parser function.'
 arch=('any')
 url='https://www.mediawiki.org/wiki/Extension:EditCountNeue'
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('mediawiki')
 makedepends=('git')
 source=("git+https://github.com/AlPha5130/mediawiki-extensions-EditCountNeue.git")
