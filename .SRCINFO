@@ -1,0 +1,15 @@
+pkgbase = compose
+	pkgdesc = Search for a Unicode codepoint to scaffold a line for your Compose file
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/claui/compose
+	arch = any
+	license = Apache-2.0
+	depends = bash
+	depends = jq
+	depends = uni
+	options = !strip
+	source = compose-0.1.0.tar.gz::https://github.com/claui/compose/archive/v0.1.0.tar.gz
+	sha512sums = 8a02c3bc3681b8f354e2fa19b62a8fdab16b793a612d2a9c3582c33de8a4ccd448f943ed97a864e1be09bb3e7f46f84f3d95086c447aa8b4e6886025496dc97b
+
+pkgname = compose
