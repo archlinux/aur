@@ -10,8 +10,8 @@ pkgname=(
   protonmail-bridge-core
   protonmail-bridge
 )
-pkgver=3.8.2
-pkgrel=2
+pkgver=3.9.1
+pkgrel=1
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=(x86_64)
 url="https://github.com/ProtonMail/proton-bridge"
@@ -31,7 +31,6 @@ makedepends=(
   qt6-svg
   sentry-native
 )
-
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   "protonmail-bridge.desktop"
@@ -39,7 +38,7 @@ source=(
   "remove-vcpkg-dependency.patch"
 )
 sha256sums=(
-  '3d844fa74c06767283a73305737e82b9ec7c59cc35d08fcb8a5bd68a128735e2'
+  'b802d6d9cd96c7ba78ed3dc6a07b04ff9a19b37f6611562aab5745658b5e0a49'
   '404db600803b9be875365d84e0726c3f7aedceaf122a795ca2248ee9f005753b'
   'd51fb6efde22354d84b894b979a685d06fcc9cf3040d999d1cd6ebf5242a5043'
   '436a9a293424fb7d48a8fd61fff7d63985dec56d6170cd2fbae24fe03ef98136'
@@ -63,10 +62,9 @@ prepare() {
 build() {
   cd "$_archive"
 
-  (
-    cd ./utils/
-    ./credits.sh bridge
-  )
+  pushd utils/
+  ./credits.sh bridge
+  popd
 
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -74,7 +72,7 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
-  _ld_flags=" \
+  local ld_flags=" \
     -X github.com/ProtonMail/proton-bridge/v3/internal/constants.Version=$pkgver \
     -X github.com/ProtonMail/proton-bridge/v3/internal/constants.Revision=NOGIT \
     -X github.com/ProtonMail/proton-bridge/v3/internal/constants.Tag=$pkgver \
@@ -82,9 +80,8 @@ build() {
     -X 'github.com/ProtonMail/proton-bridge/v3/internal/constants.FullAppName=Proton Mail Bridge' \
     -X 'github.com/ProtonMail/proton-bridge/v3/internal/constants.BuildEnv=Arch Linux' \
   "
-
   go build -v -buildvcs=false \
-    -ldflags "$_ld_flags" \
+    -ldflags "$ld_flags" \
     -o bridge \
     ./cmd/Desktop-Bridge/
 
