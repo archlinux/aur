@@ -5,7 +5,7 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-hardened-cf
-pkgver=6.7.3.hardened1
+pkgver=6.7.5.hardened1
 pkgrel=1
 pkgdesc='Security-Hardened Linux with Cloudflare Patches'
 url='https://github.com/anthraxx/linux-hardened'
@@ -35,12 +35,12 @@ validpgpkeys=(
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
   E240B57E2C4630BA768E2F26FC1B547C8D8172C8  # Levente Polyak
 )
-b2sums=('2dea0685e5c9b279beb7661f4efa91ccd662d55eb7c5a69aff52fc74bbb574fcb490a9abcc44d895583ca21b3e6860b3c5e9c35daae66b22c4fe97cab44b2a75'
+b2sums=('91e5abb3905ba9e8b5cdf26b89758f4454b4e573f148fb08340c60852115d95068e44420d73373a406cb47fb011fc14ee65294489f197a3f7f39d3d8e24b2f2d'
         'SKIP'
-        '64b7a697d32582e725125d32303983d2d32bfb8591848be8e1ce7971ce0118d464264c2d3e154cb088bf4f0c614facb07c368aade40f22886d7351cec5c929b1'
+        '7bba80632051317106ef933f98dce02869ffb9780f232d72ee4d7e5d1d53b173cd9ca20069c5d6cec998ae72d5ed13a3a3a83d2aa348727f4dc4ff7293724325'
         'SKIP'
-        '081ec108ab46a710ef715c4881f29b347e405369e5bff7e204c700c0a1428022aaeb609600b432100625c84807ab8e2e84c1141cf0fc5c4942549b2ade2e22b6'
-        'ca79cea706454ee6aab3bfbc01d3067cef4fdfd49413c8bca52480596ec394d932a4e252b4bbcc3a605bd3a56b4b73493c47a7cdd3e984a5b42767fce0f1c025')
+        '6e5fe748f756eaaf26cf0d6608efed8c9c84f7fd51832635e80c70eba9d554d849fc4fb44b46d87a09c0e2368b6a8b66f7507243f699fd4c4428d0c82864feb8'
+        'SKIP')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -72,6 +72,11 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
+
+  # remove CONFIG_DEBUG_VIRTUAL
+  # https://github.com/anthraxx/linux-hardened/issues/91
+  sed -i '/CONFIG_DEBUG_VIRTUAL/d' .config
+  
   make -j$(nproc) olddefconfig
   diff -u ../config .config || :
 
