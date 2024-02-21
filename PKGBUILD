@@ -4,13 +4,14 @@ _pkgname=${pkgname%-bin}
 pkgdesc="A software energy consumption estimation tool"
 _repo="watt-wiser"
 pkgver=v0.0.6
-pkgrel=1
+pkgrel=2
 arch=("any")
 url="https://github.com/wattwisegames/$_repo"
 source=("${_repo}-${pkgver}-linux.tar.xz"::"${url}/releases/download/${pkgver}/${_repo}-${pkgver}-linux.tar.xz")
 license=("Unlicense")
 provides=($_pkgname)
 conflicts=("$_pkgname" "watt-wiser-git" "watt-wiser-sensors-git")
+depends=("watt-wiser-sensors" "xdg-desktop-portal")
 
 sha256sums=('63706f77013f1aeb6b48230e3fa9ed4b67c943f9fc21035cc4d02efd12cbe32a')
 sha512sums=('4341f618578ae7a32b381bf16032081727bf5bbdd4c24a595c84b53871b4faa5c00e7f60816ffe2690d062ed68cddb6263dfc792f7c6d5df9807e4aef2ba7165')
