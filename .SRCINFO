@@ -13,6 +13,7 @@ pkgbase = ruffle-bin
 	depends = zlib
 	depends = libxcb
 	depends = alsa-lib
+	depends = libxkbcommon-x11
 	conflicts = ruffle-git
 	source_x86_64 = https://gitlab.com/ruffle-linux/binaries/ruffle-2024.02.19/-/raw/main/ruffle-2024.02.19-x64.tar.xz
 	source_x86_64 = https://gitlab.com/ruffle-linux/ruffle/-/archive/ruffle-2024.02.19/ruffle-ruffle-2024.02.19.tar.bz2
