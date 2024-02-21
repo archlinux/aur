@@ -5,8 +5,7 @@ pkgbase = upd8all
 	url = https://github.com/felipealfonsog/Upd8All
 	arch = x86_64
 	license = BSD 3-Clause
-	depends = gcc
-	depends = python3
+	depends = python
 	source = https://github.com/felipealfonsog/Upd8All/archive/refs/tags/v.0.0.3.tar.gz
 	sha256sums = ef1ef13b3100945830fc01bdb478f5a4aa5eb35ca7d231da6152754f6c0318db
 

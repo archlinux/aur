@@ -6,21 +6,23 @@ pkgdesc="Upd8All: Simplify package updates on Arch Linux with one command. Suppo
 arch=('x86_64')
 url="https://github.com/felipealfonsog/Upd8All"
 license=('BSD 3-Clause')
-depends=('gcc' 'python3')
+depends=('python')
+
 source=("https://github.com/felipealfonsog/Upd8All/archive/refs/tags/v.${pkgver}.tar.gz")
 sha256sums=('ef1ef13b3100945830fc01bdb478f5a4aa5eb35ca7d231da6152754f6c0318db')
 
 prepare() {
   tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
-  # cp "$srcdir"/upd8all-wrp.c "$srcdir"/Upd8All-v."$pkgver"/src/
-}
-build() {
-  cd "$srcdir"/Upd8All-v."${pkgver}"
-  gcc -o upd8all-wrp "$srcdir"/Upd8All-v."${pkgver}"/src/upd8all-wrp.c
-}
-package() {
-  install -Dm755 "$srcdir"/Upd8All-v."${pkgver}"/src/upd8all-wrp "${pkgdir}/usr/local/bin/upd8all"
-  install -Dm755 "$srcdir"/Upd8All-v."${pkgver}"/src/upd8all_updater.py "${pkgdir}/usr/local/bin/upd8all.py"
 }
 
+package() {
+  # Instalar el script Python
+  install -Dm755 "$srcdir"/Upd8All-v."${pkgver}"/src/upd8all_updater.py "${pkgdir}/usr/local/bin/upd8all.py"
+  
+  # Crear un script shell para ejecutar upd8all.py y copiarlo a /usr/local/bin
+  echo '#!/bin/bash' > upd8all
+  echo 'python /usr/local/bin/upd8all.py "$@"' >> upd8all
+  chmod +x upd8all
+  install -Dm755 upd8all "${pkgdir}/usr/local/bin/upd8all"
+}
 
