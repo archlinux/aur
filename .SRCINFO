@@ -1,19 +1,19 @@
 pkgbase = borg-explorer-bin
 	pkgdesc = An electron-based UI for exploring Borg Backup repositories
-	pkgver = 0.0.8
-	pkgrel = 7
+	pkgver = 0.0.9
+	pkgrel = 1
 	url = https://github.com/Netruk44/borg-repository-explorer
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
 	depends = electron22
-	provides = borg-explorer-0.0.8
+	provides = borg-explorer-0.0.9
 	conflicts = borg-explorer
-	source = borg-explorer-0.0.8.zip::https://github.com/Netruk44/borg-repository-explorer/releases/download/v0.0.8/Borg.Explorer-linux-x64-0.0.8.zip
-	source = LICENSE-0.0.8.md::https://raw.githubusercontent.com/Netruk44/borg-repository-explorer/v0.0.8/license.md
+	source = borg-explorer-0.0.9.zip::https://github.com/Netruk44/borg-repository-explorer/releases/download/v0.0.9/Borg.Explorer-linux-x64-0.0.9.zip
+	source = LICENSE-0.0.9.md::https://raw.githubusercontent.com/Netruk44/borg-repository-explorer/v0.0.9/license.md
 	source = borg-explorer.sh
-	sha256sums = af6cc3b6689ffafe8a3a8abebabe5d04d351a23aa9fb3bb6567f2f12b65f1353
+	sha256sums = 53a8d5ca6567f6cbd371d8685e071ef14a4683823344f95e4c1ff8ca740b6046
 	sha256sums = 71d8ae0fab83a418158860542b02d9df28ef74b599b75e57ac2057bdf478aaaa
-	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = borg-explorer-bin
