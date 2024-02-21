@@ -3,13 +3,13 @@
 # This file is generated automatically by CI job at https://github.com/openscopeproject/TrguiNG
 pkgname=trgui-ng
 pkgver='1.2.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='Remote GUI for Transmission torrent daemon'
 url="https://github.com/openscopeproject/TrguiNG"
 arch=('x86_64')
 license=('AGPL-3.0')
 depends=('alsa-lib' 'cairo' 'desktop-file-utils' 'fontconfig' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libayatana-appindicator' 'libsoup' 'openssl' 'webkit2gtk')
-makedepends=('rust>=1.69.0' 'nodejs>=16.0.0' 'npm')
+makedepends=('rust>=1.69.0' 'nodejs>=16.0.0' 'npm' 'git')
 source=("git+https://github.com/openscopeproject/TrguiNG#tag=v$pkgver"
         "https://github.com/openscopeproject/TrguiNG/releases/download/v$pkgver/dbip.mmdb"
         "TrguiNG.desktop"::"https://raw.githubusercontent.com/flathub/org.openscopeproject.TrguiNG/master/org.openscopeproject.TrguiNG.desktop")
@@ -17,6 +17,7 @@ noextract=('dbip.mmdb')
 sha256sums=('SKIP'
             'd00f5b2c18bba6eb6d779b667e53168f9af0be01b693bb6de9ebca4f408c0d1a'
             '21bef47c8cddae5365a7af8867d43c25e80db53ec8dbb1940138ad26d02a401a')
+options=('!lto')
 
 prepare() {
    cd "$srcdir/TrguiNG"
