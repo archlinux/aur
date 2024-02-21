@@ -1,0 +1,15 @@
+pkgbase = devpod
+	pkgdesc = Codespaces but open-source, client-only, and unopinionated - unofficial package
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/loft-sh/devpod
+	arch = x86_64
+	license = MPL-2.0
+	depends = fuse2
+	options = !strip
+	source = devpod-0.5.3.AppImage::https://github.com/loft-sh/devpod/releases/download/v0.5.3/DevPod_linux_amd64.AppImage
+	source = LICENSE::https://github.com/loft-sh/devpod/blob/main/LICENSE?raw=true
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = devpod
