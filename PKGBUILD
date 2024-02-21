@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=horen-git
-pkgver=0.9.0.r21.gda52aa2
+pkgver=0.9.0.r22.gf999c97
 _electronversion=28
 pkgrel=1
 pkgdesc="A music player by Electron"
