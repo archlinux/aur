@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=brs-desktop-bin
 _pkgname="BrightScript Simulator"
-pkgver=1.0.0
+pkgver=1.1.0
 _electronversion=25
 pkgrel=1
 pkgdesc="Roku device simulator as a desktop app "
@@ -18,15 +18,15 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/lvcabral/brs-desktop/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0ab4127095a213b9dece1a59032f6964bc68b28abe85255d3c58ea8ba225dd5a'
+sha256sums=('84e9051ef69f88807608d102cb5d9a93d3d7523b7ebfb0d91234412eb3bb4596'
             '2a22abb3fe5e373c8bc269cc5f61321ca9ece31084b86e3b093bd7bf37427c23'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\"|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
