@@ -1,0 +1,18 @@
+pkgbase = numbat-git
+	pkgdesc = A statically typed programming language for scientific computations with first class support for physical dimensions and units
+	pkgver = 1.10.1.r12.g1fbf8a0
+	pkgrel = 1
+	url = https://numbat.dev/
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	provides = numbat=1.10.1.r12.g1fbf8a0
+	conflicts = numbat
+	source = git+https://github.com/sharkdp/numbat.git
+	sha256sums = SKIP
+
+pkgname = numbat-git
