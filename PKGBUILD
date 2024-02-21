@@ -14,7 +14,7 @@ pkgrel=1
 arch=('x86_64')
 url='https://freenginx.org'
 license=('custom')
-makedepends=(mercurial pcre2 zlib openssl geoip mailcap libxcrypt)
+makedepends=(pcre2 zlib openssl geoip mailcap libxcrypt)
 checkdepends=(perl perl-gd perl-io-socket-ssl perl-fcgi perl-cache-memcached
               memcached ffmpeg)
 backup=('etc/nginx/fastcgi.conf'
