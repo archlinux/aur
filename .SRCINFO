@@ -1,6 +1,6 @@
 pkgbase = command-circle-git
 	pkgdesc = Circle UI Desktop Application Launcher
-	pkgver = 0.0.7.r0.g488191c
+	pkgver = 0.0.12.r2.g1a0d908
 	pkgrel = 1
 	url = https://github.com/nekobato/CommandCircle
 	arch = any
