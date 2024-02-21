@@ -4,9 +4,9 @@
 pkgname=firefox-nightly-de-bin
 pkgdesc='Standalone Web Browser from Mozilla — Nightly build (de-DE)'
 url='https://www.mozilla.org/de-DE/firefox/nightly'
-pkgver=124.0a1.20240123
+pkgver=125.0a1.20240221
 pkgrel=1
-_version=124.0a1
+_version=125.0a1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 
