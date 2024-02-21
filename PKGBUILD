@@ -110,7 +110,7 @@ build() {
 package_freenginx-mainline-hg() {
   pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
   depends=('pcre2' 'zlib' 'openssl' 'geoip' 'mailcap' 'libxcrypt')
-  provides=($_pkgbase-mainline)
+  provides=($_pkgbase)
   conflicts=($_pkgbase)
 
   cd $_pkgbase

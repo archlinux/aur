@@ -48,7 +48,7 @@ pkgname = freenginx-mainline-hg
 	depends = geoip
 	depends = mailcap
 	depends = libxcrypt
-	provides = nginx-mainline
+	provides = nginx
 	conflicts = nginx
 
 pkgname = freenginx-mainline-hg-src
