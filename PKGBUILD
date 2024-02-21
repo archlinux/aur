@@ -2,16 +2,16 @@
 
 pkgname=ttf-code2002
 epoch=1
-pkgver=0.920
+pkgver=0.922
 pkgrel=1
 pkgdesc="beta test font for Plane Two"
 arch=('any')
 url="https://www.code2001.com/"
 license=('custom')
-source=('http://www.code2001.com/CODE2002.ZIP')
-md5sums=('48ed770b31da150f09b3fda45729c7c4')
-sha256sums=('e6f0bb3f0681642cc18b83599bd345160841ae208db938a771509ad06871c8c2')
-sha512sums=('5862e794c8a69db76723f00f70428a78aa0bc2b6e057828f560d2985e5237ac100647d4305b0b248a8907313e7efd1fbe8c43414e19ae0762f62fbf5ef2527e3')
+source=("CODE2002-$pkgver.ZIP::http://www.code2001.com/CODE2002.ZIP")
+md5sums=('b3bbbd97bb503b9428eb020c1ed36e88')
+sha256sums=('eea3069c4349eacff6c0fddeff221e125e8faecd3098f8babfc6c2492b48ec3c')
+sha512sums=('4d4e10d9889d53006e04d56fb06d7a893777d951d23a469ea7b42a2d38c831e8fd06ca07d73d8b81bf868620ef30678612f9139f8cf94ca1611a49343c40e4be')
 
 package() {
   install -D -m644 CODE2002.TTF "$pkgdir/usr/share/fonts/TTF/Code2002.ttf"
