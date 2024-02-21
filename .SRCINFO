@@ -12,6 +12,8 @@ pkgbase = lazycat-cloud-client
 	depends = zenity
 	noextract = lzc-client-desktop_v1.0.54.tar.zst
 	source = https://dl.lazycat.cloud/client/desktop/stable/lzc-client-desktop_v1.0.54.tar.zst
+	source = lzc-client-desktop
 	sha256sums = 0fa65c7d64de0b77ef0e88cb0b4f596f43b72d10add02e262d8dbef264e925d7
+	sha256sums = 666c44ac630426290fe6061e73194a78eeb112625b353c9615fe175d0b30547e
 
 pkgname = lazycat-cloud-client
