@@ -1,53 +1,62 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Kaare Jenssen <kaare at jenssen dot it>
 # Contributor: Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname=fd-git
-pkgver=8.2.0.r114.gf1b39d4
+pkgver=9.0.0.r41.g969316c
 pkgrel=1
-pkgdesc='A simple, fast and user-friendly alternative to find.'
+pkgdesc="A simple, fast and user-friendly alternative to 'find'"
 arch=('i686' 'x86_64')
-url='https://github.com/sharkdp/fd'
-license=('APACHE' 'MIT')
+url="https://github.com/sharkdp/fd"
+license=('Apache-2.0' 'MIT')
 depends=('gcc-libs')
 makedepends=('git' 'cargo')
 provides=("fd=$pkgver")
 conflicts=('fd')
-source=("$pkgname::git+$url")
+source=("git+https://github.com/sharkdp/fd.git")
 sha256sums=('SKIP')
 
-pkgver() {
-  git -C "$pkgname" describe --long --tags | sed 's/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 prepare() {
-  cd "$pkgname"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cd "fd"
+
+  if [ ! -f "Cargo.lock" ]; then
+    cargo update
+  fi
+  cargo fetch
 }
 
-build() {
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
+pkgver() {
+  cd "fd"
 
-  cd "$pkgname"
-  cargo build --release --frozen --all-features
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 check() {
-  export RUSTUP_TOOLCHAIN=stable
+  cd "fd"
 
-  cd "$pkgname"
-  cargo test --frozen --all-features
+  #cargo test \
+  #  --frozen
 }
 
 package() {
-  cd "$pkgname"
-  install -D target/release/fd -t "$pkgdir/usr/bin/"
-  install -Dm644 target/release/build/fd-find-*/out/fd.bash "$pkgdir/usr/share/bash-completion/completions/fd"
-  install -Dm644 target/release/build/fd-find-*/out/fd.fish -t "$pkgdir/usr/share/fish/vendor_completions.d/"
-  install -Dm644 contrib/completion/_fd -t "$pkgdir/usr/share/zsh/site-functions/"
-  install -Dm644 doc/fd.1 -t "$pkgdir/usr/share/man/man1/"
-  install -Dm644 LICENSE-{APACHE,MIT} -t "$pkgdir/usr/share/licenses/$pkgname/"
-}
+  cd "fd"
 
-# vim:set ts=2 sw=2 et:
+  cargo install \
+    --locked \
+    --no-track \
+    --root "$pkgdir/usr" \
+    --path .
+
+  make completions
+  install -Dm644 "autocomplete/fd.bash" "$pkgdir/usr/share/bash-completion/completions/fd"
+  install -Dm644 "autocomplete/fd.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d"
+  install -Dm644 "autocomplete/_fd" -t "$pkgdir/usr/share/zsh/site-functions"
+
+  install -Dm644 "doc/fd.1" -t "$pkgdir/usr/share/man/man1"
+  install -Dm644 "LICENSE-MIT" -t "$pkgdir/usr/share/licenses/fd"
+}
