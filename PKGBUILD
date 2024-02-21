@@ -5,13 +5,14 @@
 
 pkgname=tuned
 pkgver=2.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Daemon that performs monitoring and adaptive configuration of devices in the system'
 arch=('any')
 url="https://github.com/redhat-performance/${pkgname}"
 license=('GPL')
 depends=('dbus-glib' 'ethtool' 'gawk' 'hdparm' 'polkit' 'python-configobj' 'python-dbus' 'python-gobject' 'python-linux-procfs' 'python-perf' 'python-pyudev')
-optdepends=('virt-what: For use with virtual machines' 'systemtap: Disk and net statistic monitoring systemtap scripts')
+optdepends=('virt-what: virtual machine detection'
+	'systemtap: detailed system monitoring')
 makedepends=('desktop-file-utils')
 backup=('etc/tuned/active_profile')
 install="${pkgname}.install"
@@ -29,7 +30,7 @@ prepare() {
 package() {
 	cd "${pkgname}-${pkgver}"
 
-	make DESTDIR="${pkgdir}" install
+	make DESTDIR="${pkgdir}" install install-ppd
 	rm -r "${pkgdir}"/{run,var}
 
 	python -m compileall -d /usr/lib "${pkgdir}/usr/lib"
