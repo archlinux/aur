@@ -2,9 +2,9 @@
 # Contributor: lsf
 
 pkgname=briar-desktop
-pkgver=0.6.0.beta
+pkgver=0.6.1.beta
 pkgrel=1
-_bin_ver=0.6.0
+_bin_ver=0.6.1
 _build_type=beta
 pkgdesc='Prototyping the next generation for Briar on desktop devices'
 
@@ -17,7 +17,7 @@ makedepends=('git' 'java-environment=17')
 
 source=(
 	"${pkgname}::git+https://code.briarproject.org/briar/briar-desktop.git#tag=${_bin_ver}-${_build_type}"
-    "briar::git+https://code.briarproject.org/briar/briar.git#commit=fbf0f63ff7c81d8379cd0c376aa7a348af094d5e"
+    "briar::git+https://code.briarproject.org/briar/briar.git#commit=f16875c6025701498ef8a1a988be8dd86dba7c38"
     "briar16.png" "briar32.png" "briar48.png" "briar64.png" "briar128.png" "briar192.png"
     "${pkgname}.desktop"
 )
