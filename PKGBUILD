@@ -1,7 +1,7 @@
 pkgname='pip2pkgbuild'
 _module='pip2pkgbuild'
-_src_folder='pip2pkgbuild-0.3.8'
-pkgver='0.3.8'
+_src_folder='pip2pkgbuild-0.3.9'
+pkgver='0.3.9'
 pkgrel=1
 pkgdesc="Generate PKGBUILD file for a Python module from PyPI"
 url="https://github.com/wenLiangcan/pip2pkgbuild"
@@ -9,8 +9,8 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/cb/88/5a2145cb54ddea56ac421125f9da03810f76fc6a101b63d85b730b797fef/pip2pkgbuild-0.3.8.tar.gz")
-sha256sums=('daf72e21c9d07e4f687bc638fe8af059875683045b87b25301b7efc0411415ee')
+source=("https://files.pythonhosted.org/packages/9e/df/2216a70204e6e4a4aff6a709361816f5510eb211f96a21ae9bb30a1d3f9d/pip2pkgbuild-0.3.9.tar.gz")
+sha256sums=('0d88cac992472bf51505744db15cfd39dc7492e2ba2780fc04debe9c47084451')
 
 build() {
     cd "${srcdir}/${_src_folder}"
