@@ -188,6 +188,18 @@ Comment=Ferdium is your messaging app / former heir to the throne of Austria-Hun
 MimeType=x-scheme-handler/ferdium;
 Categories=Network;InstantMessaging;
 EOF
+	cat << EOF > "$pkgdir/usr/share/applications/$_pkgname-wayland.desktop"
+[Desktop Entry]
+Name=${_pkgname^} - Wayland
+Exec=/usr/bin/$_pkgname --enable-features=WaylandWindowDecorations --ozone-platform-hint=wayland %U
+Terminal=falseparu
+Type=Application
+Icon=ferdium
+StartupWMClass=Ferdium
+Comment=Ferdium is your messaging app / former heir to the throne of Austria-Hungary and combines chat & messaging services into one application. Ferdium currently supports Slack, WhatsApp, Gmail, Facebook Messenger, Telegram, Google Hangouts, GroupMe, Skype and many more. You can download Ferdium for free for Mac, Windows, and Linux.
+MimeType=x-scheme-handler/ferdium;
+Categories=Network;InstantMessaging;
+EOF
 
 	# Install the icons
 	for _size in 16 24 32 48 64 96 128 256 512 1024; do
