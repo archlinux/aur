@@ -2,13 +2,13 @@
 
 pkgname="shot-scraper"
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line utility for taking automated screenshots of websites"
 url="https://shot-scraper.datasette.io/"
 license=("Apache-2.0")
 arch=("any")
-depends=("playwright"
-         "python"
+depends=("python"
+         "python-click-default-group"
          "python-playwright")
 makedepends=("python-build"
              "python-installer"
