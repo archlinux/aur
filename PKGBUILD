@@ -3,8 +3,8 @@
 
 _pkgname='ferdium'
 pkgname="ferdium-nightly"
-_electron='electron27'
-_electronpackage='electron27'
+_electron='electron29'
+_electronpackage='electron29-bin'
 pkgver=6.7.1.nightly.22
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest nightly release).'
@@ -187,6 +187,18 @@ EOF
 [Desktop Entry]
 Name=${_pkgname^}
 Exec=/usr/bin/$_pkgname %U
+Terminal=falseparu
+Type=Application
+Icon=ferdium
+StartupWMClass=Ferdium
+Comment=Ferdium is your messaging app / former heir to the throne of Austria-Hungary and combines chat & messaging services into one application. Ferdium currently supports Slack, WhatsApp, Gmail, Facebook Messenger, Telegram, Google Hangouts, GroupMe, Skype and many more. You can download Ferdium for free for Mac, Windows, and Linux.
+MimeType=x-scheme-handler/ferdium;
+Categories=Network;InstantMessaging;
+EOF
+	cat << EOF > "$pkgdir/usr/share/applications/$_pkgname-wayland.desktop"
+[Desktop Entry]
+Name=${_pkgname^} - Wayland
+Exec=/usr/bin/$_pkgname --enable-features=WaylandWindowDecorations --ozone-platform-hint=wayland %U
 Terminal=falseparu
 Type=Application
 Icon=ferdium
