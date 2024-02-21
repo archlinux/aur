@@ -26,7 +26,7 @@ source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${_pkgve
 sha512sums=('6c0adcf6e4057de8fb1dcd062845d14d725833d23d8e1362cbccab176931f55600a3971f01690179b795ff3feca0af9141b16dee4d4159755596cc9c904bf099')
 install=clang.install
 static_build=false
-build_with_gcc=false
+build_with_gcc=true
 
 prefix_path="/opt/clang"
 install_path="${prefix_path}/${pkgver}"
