@@ -15,7 +15,7 @@
 ## basic info
 _pkgname="icecat"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=115.7.0
+pkgver=115.8.0
 pkgrel=1
 pkgdesc="GNU version of the Firefox browser"
 url="https://icecatbrowser.org"
@@ -25,13 +25,13 @@ arch=('x86_64')
 provides=('icecat')
 conflicts=('icecat')
 
-_dl_url="https://icecatbrowser.org/assets/uploads/2024/01"
+_dl_url="https://icecatbrowser.org/assets/icecat/$pkgver"
 _dl_file="icecat-$pkgver.en-US.linux-$CARCH.tar.bz2"
 
 noextract=("$_dl_file")
 
 source=("$_dl_url/$_dl_file")
-sha256sums=('e75aa834cc010cd1f7d9dffad98c638cd3476bd7402df14f23f5bd19ac41620c')
+sha256sums=('31ca47c909c52e2a963ef8795b4be87a62b478316bfbb8feba9905fd27fab392')
 
 prepare() {
   cat >icecat.desktop <<END
