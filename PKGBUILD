@@ -1,17 +1,17 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=kana-gtk4-git
-pkgver=1.3.r0.gc5a171f
+pkgver=1.4.r0.gf8b479e
 pkgrel=1
 pkgdesc="Learn Japanese characters (latest commit)"
 url="https://gitlab.gnome.org/fkinoshita/kana"
-arch=('x86_64' 'aarch64')
 license=('GPL3')
+arch=('x86_64' 'aarch64')
 depends=('gst-plugins-bad-libs' 'libadwaita')
 makedepends=('cargo' 'git' 'meson')
 checkdepends=('appstream-glib')
 provides=("kana-gtk4")
-conflicts=("kana")
+conflicts=("kana-gtk4")
 source=("git+$url.git") #tag=v$pkgver
 sha256sums=('SKIP')
 
