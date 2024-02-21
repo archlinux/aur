@@ -1,6 +1,6 @@
 pkgbase = standardnotes-desktop
 	pkgdesc = An end-to-end encrypted notes app for digitalists and professionals.
-	pkgver = 3.187.3
+	pkgver = 3.191.4
 	pkgrel = 1
 	url = https://standardnotes.com
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = standardnotes-desktop
 	makedepends = yarn
 	depends = electron27
 	depends = libsecret
-	source = standardnotes-3.187.3.tar.gz::https://github.com/standardnotes/app/archive/refs/tags/@standardnotes/desktop@3.187.3.tar.gz
+	source = standardnotes-3.191.4.tar.gz::https://github.com/standardnotes/app/archive/refs/tags/@standardnotes/desktop@3.191.4.tar.gz
 	source = standard-notes.desktop
 	source = standard-notes.sh
-	sha256sums = ad4330f283a05a18dd2129417bbab99a08f5c28906157d8792e7a2fdbd07aa7d
+	sha256sums = 350d41522808185a652fc19bd44b254ff2717a543cb136f2fd28464ab9634ef0
 	sha256sums = 274cd3914ff2a6a0999485a26cbded3ad597763482a90eee8ee34490ddffda00
 	sha256sums = 3ef9a5d2b4f2ba2e5b210a492c7398073f3cdd472d989e5ce2d4c6105d905666
 
