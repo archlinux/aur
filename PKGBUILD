@@ -8,12 +8,13 @@
 
 : ${_build_git:=true}
 
+unset _pkgtype
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
 # basic info
 _pkgname=sigil
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.0.2.r50.gd3016cd17
+pkgver=2.0.2.r66.gafab2835
 pkgrel=1
 pkgdesc='multi-platform EPUB2/EPUB3 ebook editor'
 url="https://github.com/Sigil-Ebook/Sigil"
@@ -54,16 +55,12 @@ _main_package() {
 
   options=(!debug)
 
-  if [ x"$pkgname" == x"$_pkgname" ] ; then
+  if [ "${_build_git::1}" != "t" ] ; then
     _main_stable
   else
     _main_git
   fi
 
-  _source_patches
-}
-
-_source_patches() {
   source+=(
     '0001-modify-default-navigation-css.patch'
     '0002-skip-epub-version-check.patch'
@@ -75,23 +72,17 @@ _source_patches() {
     '7d213fa2b5eae33723b1e1a17f0ed28a518e9edcc0496e2a67afc8d0e5cb36e3'
     '820e012907c70260af2cc2be6d1697037e1527f346727f3b4378ea215038b0d6'
   )
-
-  _prepare_patches() (
-    cd "${srcdir:?}/$_pkgsrc"
-    apply-patch "${srcdir:?}/0001-modify-default-navigation-css.patch"
-    apply-patch "${srcdir:?}/0002-skip-epub-version-check.patch"
-    apply-patch "${srcdir:?}/0003-don-t-write-version-and-modified-tags.patch"
-  )
 }
 
 # stable package
 _main_stable() {
+  : ${_pkgver:=${pkgver%%.r*}}
+
   _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git#tag=${pkgver%%.r*}")
+  source+=("$_pkgsrc"::"git+$url.git#tag=$_pkgver")
   sha256sums+=('SKIP')
 
   pkgver() {
-    local _pkgver="${pkgver%%.r*}"
     echo "${_pkgver:?}"
   }
 }
@@ -105,15 +96,11 @@ _main_git() {
   source+=("$_pkgsrc"::"git+$url.git")
   sha256sums+=('SKIP')
 
-  pkgver() (
+  pkgver() {
     cd "$_pkgsrc"
-    local _pkgver=$(
-      git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' 2>/dev/null \
-        | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
-    )
-
-    echo "${_pkgver:?}"
-  )
+    git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' 2>/dev/null \
+      | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  }
 }
 
 # common funtions
@@ -123,9 +110,12 @@ prepare() {
     patch -Np1 -F100 -i "$1"
   }
 
-  _prepare_patches
-
   cd "$_pkgsrc"
+
+  apply-patch "$srcdir/0001-modify-default-navigation-css.patch"
+  apply-patch "$srcdir/0002-skip-epub-version-check.patch"
+  apply-patch "$srcdir/0003-don-t-write-version-and-modified-tags.patch"
+
   # Set _localepurge to disable or keep translations.
   # Specify the two-letter language code of the translation to keep.
   # If language does not exist, all languages will be purged.
@@ -151,9 +141,8 @@ build() {
     -DDISABLE_UPDATE_CHECK=1
     -DINSTALL_BUNDLED_DICTS=0
     -DINSTALL_HICOLOR_ICONS=1
-    -DCMAKE_CXX_FLAGS="$CXXFLAGS"
-    -DCMAKE_C_FLAGS="$CFLAGS"
     -DCMAKE_SKIP_RPATH=ON
+    -Wno-dev
   )
 
   cmake "${_cmake_config[@]}"
@@ -161,11 +150,11 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir:?}" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 
   # Compile python bytecode
   python -m compileall "${pkgdir:?}/usr/share/sigil/"{plugin_launchers/python/,python3lib}
-  python -O -m compileall "${pkgdir:?}/usr/share/sigil/"{plugin_launchers/python/,python3lib}
+  python -O -m compileall "$pkgdir/usr/share/sigil/"{plugin_launchers/python/,python3lib}
 }
 
 # execute
