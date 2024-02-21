@@ -1,0 +1,21 @@
+pkgbase = cosmic-workspaces-git
+	pkgdesc = WIP COSMIC Workspaces
+	pkgver = r161.7e81c9c
+	pkgrel = 1
+	url = https://github.com/pop-os/cosmic-workspaces-epoch
+	arch = x86_64
+	arch = aarch64
+	groups = cosmic
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = libinput
+	depends = libxkbcommon
+	depends = mesa
+	depends = wayland
+	provides = cosmic-workspaces
+	conflicts = cosmic-workspaces
+	source = git+https://github.com/pop-os/cosmic-workspaces-epoch.git
+	sha256sums = SKIP
+
+pkgname = cosmic-workspaces-git
