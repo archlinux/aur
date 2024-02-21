@@ -1,6 +1,6 @@
 pkgbase = ocaml-intrinsics
 	pkgdesc = Library of intrinsics for OCaml
-	pkgver = 0.16.0
+	pkgver = 0.16.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/janestreet/ocaml_intrinsics
@@ -10,7 +10,7 @@ pkgbase = ocaml-intrinsics
 	depends = ocaml>=4.14.0
 	depends = dune>=2.0.0
 	options = !strip
-	source = ocaml-intrinsics-0.16.0.tar.gz::https://github.com/janestreet/ocaml_intrinsics/archive/v0.16.0.tar.gz
-	sha512sums = 86bf6ac7cb1da5de03224cc053e174ec22af766b6c5ab4ca1fde3c028405858cb97feeae6968d9054a7d6994491b9f2cdb8e198ee837ad4242f9cd812873ceaa
+	source = ocaml-intrinsics-0.16.1.tar.gz::https://github.com/janestreet/ocaml_intrinsics/archive/v0.16.1.tar.gz
+	sha512sums = 62986ffbcac6822ada73ae187c667de1059c398b1c64234d6a887111509e92159a20a560b1846577aced07e82adbb34ef0e8bfd46919f6a2ba79fce45ecf1849
 
 pkgname = ocaml-intrinsics

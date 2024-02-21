@@ -2,7 +2,7 @@
 # Maintainer: Lance Roy <ldr709@gmail.com>
 _projectname='ocaml_intrinsics'
 pkgname='ocaml-intrinsics'
-pkgver='0.16.0'
+pkgver='0.16.1'
 pkgrel='1'
 epoch='1'
 pkgdesc='Library of intrinsics for OCaml'
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('ocaml>=4.14.0' 'dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('86bf6ac7cb1da5de03224cc053e174ec22af766b6c5ab4ca1fde3c028405858cb97feeae6968d9054a7d6994491b9f2cdb8e198ee837ad4242f9cd812873ceaa')
+sha512sums=('62986ffbcac6822ada73ae187c667de1059c398b1c64234d6a887111509e92159a20a560b1846577aced07e82adbb34ef0e8bfd46919f6a2ba79fce45ecf1849')
 
 _sourcedirectory="$_projectname-$pkgver"
 
@@ -20,6 +20,8 @@ build() {
 	cd "$srcdir/$_sourcedirectory/"
 	dune build --release --verbose
 }
+
+# Tests currently don't run with runtest (https://github.com/janestreet/ocaml_intrinsics/issues/9)
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
