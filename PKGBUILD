@@ -5,7 +5,7 @@
 
 pkgname=ulauncher-git
 pkgver=DEV
-pkgrel=2
+pkgrel=3
 pkgdesc='Application launcher for Linux'
 arch=('any')
 url="http://ulauncher.io"
@@ -23,7 +23,7 @@ sha256sums=('SKIP')
 
 build() {
   cd ulauncher
-  python setup.py build_prefs
+  make prefs
   env PATH=$(getconf PATH) python setup.py build
 }
 
