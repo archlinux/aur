@@ -1,0 +1,20 @@
+pkgbase = cosmic-osd-git
+	pkgdesc = WIP COSMIC OSD
+	pkgver = r63.bc35c94
+	pkgrel = 1
+	url = https://github.com/pop-os/cosmic-osd
+	arch = x86_64
+	arch = aarch64
+	groups = cosmic
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = libxkbcommon
+	depends = systemd-libs
+	depends = wayland
+	provides = cosmic-osd
+	conflicts = cosmic-osd
+	source = git+https://github.com/pop-os/cosmic-osd.git
+	sha256sums = SKIP
+
+pkgname = cosmic-osd-git
