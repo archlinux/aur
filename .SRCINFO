@@ -1,6 +1,6 @@
 pkgbase = candy-git
 	pkgdesc = Another virtual private network that supports peer-to-peer connections
-	pkgver = 3.9.1.r3.gd7936c3
+	pkgver = 3.9.1.r11.gca36bcc
 	pkgrel = 1
 	url = https://github.com/lanthora/candy
 	arch = x86_64
@@ -25,5 +25,7 @@ pkgbase = candy-git
 	backup = etc/candy.conf
 	source = candy-git::git+https://github.com/lanthora/candy.git
 	sha256sums = SKIP
+	depends_aarch64 = spdlog
+	depends_armv7h = spdlog
 
 pkgname = candy-git
