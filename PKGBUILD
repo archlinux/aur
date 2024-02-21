@@ -5,12 +5,12 @@ _pkgname0=${pkgname[0]}
 _pkgname1=${pkgname[1]}
 _githuborg="DiscreetNetwork"
 pkgdesc="Discreet Cryptocurrency Wallet. discreet.net"
-pkgver=0.2.23
-_guiver="${pkgver}-3"
-_daemonver=0.0.28-2
-pkgrel=2
+pkgver=1.0.0
+_guiver="${pkgver}"
+_daemonver="${pkgver}"
+pkgrel=1
 arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
-makedepends=('dotnet-sdk')
+makedepends=('dotnet-sdk-6.0-bin')
 url="https://${_pkgpath}"
 source=(
 "git+https://github.com/DiscreetNetwork/DiscreetCore"
@@ -22,16 +22,20 @@ sha256sums=('SKIP'
             'SKIP')
 
 build() {
-	cd ${srcdir}/discreet-gui/Discreet-GUI/
+  msg2 'building discreet core'
+  cd ${srcdir}/DiscreetCore/DiscreetCore/
+  rm ../linux/*
+  sed -i "12s/.*/BOOST=\/usr\/include\/boost/" Makefile | awk 'NR==12{ print; exit }' Makefile  || exit 1
+  sed -i "13s/.*/BOOST_LIB=\/usr\/lib/" Makefile | awk 'NR==13{ print; exit }' Makefile  || exit 1
+  make core
+  msg2 'building discreet daemon'
+  cd ${srcdir}/discreet/Discreet/
 	dotnet restore
-   dotnet publish --configuration Release --runtime linux-x64 --self-contained true -p:Version=0.0.28
-#   cd ${srcdir}/DiscreetCore/DiscreetCore/
- #  sed -i "12s/.*/BOOST=\/usr\/include\/boost/" $_i | awk 'NR==12{ print; exit }' Makefile  || exit 1
-  # sed -i "13s/.*/BOOST_LIB=\/usr\/lib/" $_i | awk 'NR==13{ print; exit }' Makefile  || exit 1
-  # make core
-   	cd ${srcdir}/discreet
-	dotnet restore
-	dotnet publish --configuration Release --runtime linux-x64 --self-contained true
+	dotnet publish --configuration Release --runtime linux-x64 --self-contained true --framework net6.0
+  msg2 'building discreet-gui'
+  cd ${srcdir}/discreet-gui/Discreet-GUI
+  dotnet restore
+  dotnet publish --configuration Release --runtime linux-x64 --self-contained true -p:Version=0.0.28 --framework net6.0
 }
 
 package_discreet-gui() {
@@ -48,7 +52,8 @@ package_discreet-daemon() {
 	cd ${pkgdir}
 	mkdir -p ${pkgdir}/usr/lib/discreet/ ${pkgdir}/usr/bin
 	cp -a ${srcdir}/discreet/Discreet/bin/Release/net6.0/linux-x64/publish/* ${pkgdir}/usr/lib/discreet
-	install -Dm644 ${srcdir}/DiscreetCore/linux/DiscreetCore.so ${pkgdir}/usr/lib/discreet/Discreet
+	install -Dm644 ${srcdir}/DiscreetCore/linux/DiscreetCore.so ${pkgdir}/usr/lib/discreet
 	ln -rTsf ${pkgdir}/usr/lib/discreet/Discreet ${pkgdir}/usr/bin/discreetd
+  chmod +x ${pkgdir}/usr/bin/discreetd
 	ln -rTsf ${pkgdir}/usr/lib/libdl.so.2 ${pkgdir}/usr/lib/discreet/libdl.so
 }
