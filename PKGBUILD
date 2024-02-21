@@ -1,7 +1,7 @@
 # Maintainer: Evine Deng <evinedeng@hotmail.com>
 
 pkgname=iyuuplus
-pkgver=20230812.180113
+pkgver=20240205.034109
 pkgrel=1
 pkgdesc="IYUU Auto Reseed Plus | IYUU 自动辅种工具"
 arch=("any")
