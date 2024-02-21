@@ -27,7 +27,7 @@ build() {
 
 check() {
 	pushd >/dev/null "${pkgname}-${pkgver}" || exit 1
-	RUN_LDAP_TESTS=0 AUTOMX2_CONF=tests/unittest.conf python -m unittest discover -v tests/
+	AUTOMX2_CONF=tests/unittest.conf python -m unittest discover -v tests/
 	popd >/dev/null || exit 1
 }
 
