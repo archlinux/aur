@@ -1,6 +1,6 @@
 pkgbase = redpanda-cpp
 	pkgdesc = A fast, lightweight, open source, and cross platform C/C++/GNU Assembly IDE
-	pkgver = 2.25
+	pkgver = 2.26
 	pkgrel = 1
 	url = https://github.com/royqh1979/RedPanda-CPP
 	arch = i686
@@ -18,7 +18,15 @@ pkgbase = redpanda-cpp
 	depends = gcc
 	depends = gdb
 	optdepends = clang: C/C++ compiler (alternative)
-	source = RedPanda-CPP-2.25.tar.gz::https://github.com/royqh1979/RedPanda-CPP/archive/refs/tags/2.25.tar.gz
-	sha256sums = 8e655b1522695618de7d973df6e732c853b4f8eabdc3efbea15a8820d97acc32
+	source = RedPanda-CPP-2.26.tar.gz::https://github.com/royqh1979/RedPanda-CPP/archive/refs/tags/2.26.tar.gz
+	source = compiler_hint.lua
+	sha256sums = 8f8a5d131c4155c0af23bf2a1faa9ad1899d092b598010d43ebb2d8f0604942c
+	sha256sums = 65647471f5360648800aaa6027a8d8be3e2121ce0c470b99b8cace6f1654f20d
+	optdepends_x86_64 = mingw-w64-gcc: Windows C/C++ compiler
+	optdepends_x86_64 = wine: run Windows executable
+	optdepends_x86_64 = aarch64-linux-gnu-gcc: AArch64 C/C++ compiler
+	optdepends_x86_64 = qemu-user-static: run AArch64 executable
+	optdepends_x86_64 = qemu-user-static-binfmt: run AArch64 executable
+	makedepends_x86_64 = mingw-w64-gcc
 
 pkgname = redpanda-cpp
