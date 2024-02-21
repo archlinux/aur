@@ -1,7 +1,7 @@
 pkgbase = star-system
 	pkgdesc = STAR-System is the new driver and API system provided with all new and future STAR-Dundee interface and router devices.
 	pkgver = 5.04
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.star-dundee.com
 	install = star-system.install
 	arch = x86_64
@@ -16,5 +16,12 @@ pkgbase = star-system
 	source = 99-star_spw_usb.rules
 	source = 99-star_spw_pci.rules
 	source = 99-star_ultra_pcie.rules
+	md5sums = fa97e3cdb841592b41de26340d6f994b
+	md5sums = 27cdc9e2194c607bd3dddd836436d1b5
+	md5sums = ff68ba2ba6f66417be61b665ee9c640c
+	md5sums = a199b4efd164a0624069a890af16e919
+	md5sums = bf755f1b4bf51a6f21084627ce0160ee
+	md5sums = 93aade04088f34ae486ff6dc131b4e43
+	md5sums = c41c13d299012654ff431500e12febca
 
 pkgname = star-system
