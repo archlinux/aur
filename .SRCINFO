@@ -1,0 +1,19 @@
+pkgbase = cosmic-files-git
+	pkgdesc = WIP COSMIC file manager
+	pkgver = r130.4f19123
+	pkgrel = 1
+	url = https://github.com/pop-os/cosmic-files
+	arch = x86_64
+	arch = aarch64
+	groups = cosmic
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = just
+	depends = glibc
+	provides = cosmic-files
+	conflicts = cosmic-files
+	source = git+https://github.com/pop-os/cosmic-files.git
+	sha256sums = SKIP
+
+pkgname = cosmic-files-git
