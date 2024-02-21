@@ -1,6 +1,6 @@
 # Maintainer: Will Foran <willforan+aur@gmail.com>
 pkgname=strfry-git
-pkgver=r103.e5ec135
+pkgver=r236.c0dec7c
 pkgrel=1
 pkgdesc="a nostr relay w/filesystem LMDB and merkle-tree reconcilliation"
 arch=(x86_64)
@@ -8,7 +8,7 @@ url="https://github.com/hoytech/strfry"
 license=('GPL')
 groups=()
 depends=()
-makedepends=('git' 'flatbuffers'  'libsecp256k1-git' 'perl-template-toolkit')
+makedepends=('git' 'flatbuffers'  'libsecp256k1' `# -git` 'perl-template-toolkit' 'perl-yaml')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
@@ -36,5 +36,5 @@ build() {
 
 package() {
    install -D -m 0755 "$srcdir/${pkgname%-git}/strfry" "$pkgdir/usr/bin/strfry"
-   install -D  "$srcdir/${pkgname%-git}/strfry.conf" "$pkgdir/etc/strfy.conf.example"
+   install -D  "$srcdir/${pkgname%-git}/strfry.conf" "$pkgdir/etc/strfry.conf.example"
 }
