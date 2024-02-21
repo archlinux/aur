@@ -3,11 +3,11 @@
 
 pkgname=obs-advanced-masks
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced Masking Plugin for OBS"
 arch=('x86_64')
 url="https://github.com/FiniteSingularity/obs-advanced-masks"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('gcc-libs' 'glibc' 'obs-studio')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
