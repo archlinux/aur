@@ -1,7 +1,7 @@
 # Maintainer: earthian <418@duck.com>
 
 pkgname=rofi-pass-wayland-git
-pkgver=v2.1.0.r14.g946b1ff
+pkgver=2.1.2.r6.g1124ac1
 pkgrel=1
 pkgdesc="Rofi-wayland frontend for ZX2C4 pass project."
 arch=('any')
@@ -28,5 +28,7 @@ pkgver() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR="$pkgdir" PREFIX="/usr" install
+	install -Dm755 rofi-pass "${pkgdir}/bin/rofi-pass"
+	install -Dm644 config.example "${pkgdir}/share/rofi-pass/config.example"
+	install -Dm644 README.org "${pkgdir}/share/doc/rofi-pass/README.org"
 }
