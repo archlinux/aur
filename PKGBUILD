@@ -3,7 +3,7 @@
 pkgname=('clang-prefixed-release')
 #pkgver=15.0.7
 _pkgver=18.1.0
-_pkg_suffix=rc2
+_pkg_suffix=rc3
 _pkgver_suffix=${_pkgver}
 _pkgver_dash_suffix=${_pkgver}
 if [[ -n ${_pkg_suffix} ]]; then
@@ -11,7 +11,7 @@ if [[ -n ${_pkg_suffix} ]]; then
     _pkgver_dash_suffix=${_pkgver_dash_suffix}-${_pkg_suffix}
 fi
 pkgver=${_pkgver_suffix}
-pkgrel=5
+pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -23,10 +23,10 @@ checkdepends=("python-psutil")
 # stable
 #source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz")
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${_pkgver_dash_suffix}/llvm-project-${_pkgver_suffix}.src.tar.xz")
-sha512sums=('b595bb5d029723fee4e8f8edeaddd6fdcd48d668f66f4239e3208fd19d3a3622e8e4f90ae3fa4b1216fca1621d6c6b6ebf4d99dec7febff2457d0ceb79e8617a')
+sha512sums=('6c0adcf6e4057de8fb1dcd062845d14d725833d23d8e1362cbccab176931f55600a3971f01690179b795ff3feca0af9141b16dee4d4159755596cc9c904bf099')
 install=clang.install
 static_build=false
-build_with_gcc=true
+build_with_gcc=false
 
 prefix_path="/opt/clang"
 install_path="${prefix_path}/${pkgver}"
@@ -38,6 +38,7 @@ shared_library_build_options=" \
             -DCLANG_LINK_CLANG_DYLIB=ON \
 	"
 
+enable_all_projects="-DLLVM_ENABLE_PROJECTS=bolt;clang;clang-tools-extra;libc;libclc;lld;lldb;openmp;polly;pstl;compiler-rt"
 # both modules and thinlto barf with gcc
 build_with_clang_options=" \
 			-DLLVM_BINUTILS_INCDIR=/usr/include \
@@ -46,7 +47,7 @@ build_with_clang_options=" \
             -DLLVM_ENABLE_LTO=Thin \
             -DCMAKE_C_COMPILER=clang \
             -DCMAKE_CXX_COMPILER=clang++ \
-            -DLLVM_ENABLE_PROJECTS=bolt;clang;clang-tools-extra;libc;libclc;lld;lldb;openmp;polly;pstl;compiler-rt \
+			${enable_all_projects} \
 	"
 
 additional_build_options=""
@@ -58,8 +59,8 @@ fi
 if $build_with_gcc; then
 	# libc extricated since it did not build with gcc 13 on last attempt; if it builds for you, let me know
 	additional_build_options="${additional_build_options} \
-		-DLLVM_ENABLE_LTO=Full \
-		 -DLLVM_ENABLE_PROJECTS=bolt;clang;clang-tools-extra;libclc;lld;lldb;openmp;polly;pstl;compiler-rt"
+		-DLLVM_ENABLE_PROJECTS=bolt;clang;clang-tools-extra;libclc;lld;lldb;openmp;polly;pstl;compiler-rt \
+	"
 else
 	additional_build_options="${additional_build_options} ${build_with_clang_options}"
 fi
