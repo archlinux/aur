@@ -2,7 +2,7 @@
 # Old Maintainer: David Runge <dvzrv@archlinux.org>
 
 pkgname=jfrog-cli
-pkgver=2.52.10
+pkgver=2.53.1
 pkgrel=1
 pkgdesc="Simple interface to Artifactory, Bintray and Mission Control"
 arch=('x86_64')
@@ -12,8 +12,17 @@ depends=('glibc')
 conflicts=('jfrog-cli-go')
 replaces=('jfrog-cli-go')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/jfrog/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('31cff4edee47db867d974d2eb208dd75ff9e0e2adce28c076783cfad6006fb305a626ea24784f550eaa7816d35fe4002a531c1320ab91cb9c645a0fb747128e8')
+source=(
+	"$pkgname-$pkgver.tar.gz::https://github.com/jfrog/${pkgname}/archive/v${pkgver}.tar.gz"
+	"mod.patch"
+)
+sha512sums=('178f781b07371e794ab9131cb2dabad4676c6f2eee611644229565aa6b52629e04616e42f8e94ca9fa1e5772d15581be035864a5c9ebc8084798202e7f5ea2db'
+            '2556b4d981913f01e7e543a371d4fd6da6820fb0da2064d1434bbf9eeabca9807528612baf8f16bb07de3147f611bdfec77d039127f671838ef35b5044311ae3')
+
+prepare() {
+	cd "${pkgname}-${pkgver}"
+	patch --forward --strip=1 --input="$srcdir/mod.patch"
+}
 
 _cli_name=jf
 build() {
