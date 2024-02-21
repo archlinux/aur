@@ -14,7 +14,7 @@ depends=('zlib' 'libjpeg' 'libssh' 'avahi' 'vte3'
 	'libsecret' 'webkit2gtk-4.1' 'libsodium')
 makedepends=('git' 'intltool' 'pkgconfig' 'cmake' 'avahi'
     'libxkbfile' 'freerdp' 'gobject-introspection'
-    'spice' 'spice-gtk' 'spice-protocol' 'gnome-keyring' 'kwallet5' 'gtk-vnc'
+    'spice' 'spice-gtk' 'spice-protocol' 'kwallet5' 'gtk-vnc'
     'docbook-xsl' 'libpulse' 'libappindicator-gtk3')
 optdepends=('avahi' 'libxkbfile' 'gobject-introspection' 'spice' 'spice-gtk' 'spice-protocol' 'pyhoca-cli')
 provides=('remmina' 'grdc' "grdc=${pkgver}" 'remmina-plugins')
