@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: zhuangzhuang <xufengyuan20080802@outlook.com>
 pkgname=rubick-bin
-pkgver=4.2.1
+pkgver=4.2.2
 _electronversion=26
-pkgrel=2
+pkgrel=1
 pkgdesc="Electron based open source toolbox, free integration of rich plug-ins. 基于 electron 的开源工具箱，自由集成丰富插件。"
 arch=('x86_64')
 url="https://rubickcenter.github.io/rubick/"
@@ -19,7 +19,7 @@ source=(
 	"LICENSE-${pkgver}::https://raw.githubusercontent.com/rubickCenter/rubick/v${pkgver}/LICENSE"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('bd8252c8ce5a5c4ddae98d4fbe0a6e3c4b295d6776fcdbbef0cd79066a3c85bb'
+sha256sums=('1a989143bfef9b0837ac2a0bda5fabb667f322e6b960db601ee7d386f4dfcca3'
             '98ec3482acc93db8661b6a794744e5eaca088cf75312d15f196abb5db7e52b77'
             '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
@@ -27,7 +27,7 @@ build() {
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-	bsdtar -xf "${srcdir}/data.tar.xz"
+	bsdtar -xf "${srcdir}/data."*
 	sed "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package(){
