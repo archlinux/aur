@@ -1,0 +1,4 @@
+pkg/
+src/
+ulauncher/
+*.pkg.tar.zst
