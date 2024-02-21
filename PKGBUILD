@@ -4,11 +4,11 @@ pkgname=python-wyoming-faster-whisper
 _pkgname=wyoming-faster-whisper
 pkgdesc="Wyoming Server for Faster Whisper"
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 arch=(any)
 url="https://github.com/rhasspy/wyoming-faster-whisper"
 license=('MIT')
-depends=(python python-wyoming==1.5.2 ctranslate2 python-tokenizers)
+depends=(python 'python-wyoming>=1.5.2' ctranslate2 python-tokenizers)
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://github.com/rhasspy/wyoming-faster-whisper/archive/refs/tags/v${pkgver}.tar.gz"
         wyoming-faster-whisper.conf

@@ -1,7 +1,7 @@
 pkgbase = python-wyoming-faster-whisper
 	pkgdesc = Wyoming Server for Faster Whisper
 	pkgver = 1.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/rhasspy/wyoming-faster-whisper
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = python-wyoming-faster-whisper
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	depends = python-wyoming==1.5.2
+	depends = python-wyoming>=1.5.2
 	depends = ctranslate2
 	depends = python-tokenizers
 	source = https://github.com/rhasspy/wyoming-faster-whisper/archive/refs/tags/v1.1.0.tar.gz
