@@ -1,6 +1,6 @@
 pkgbase = arch-os-app
 	pkgdesc = Arch OS App - System & Update Manager
-	pkgver = r18.371e4e5
+	pkgver = r19.f3b8bd6
 	pkgrel = 1
 	url = https://github.com/murkl/arch-os-app
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = arch-os-app
 	makedepends = git
 	depends = kitty
 	depends = gum
+	depends = libnotify
 	depends = ttf-firacode-nerd
 	depends = paru
 	depends = flatpak
