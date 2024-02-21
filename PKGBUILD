@@ -25,12 +25,12 @@ backup=('etc/fangfrisch/fangfrisch.conf')
 install=fangfrisch.install
 
 build() {
-    cd "$_name-$pkgver"
+    cd "$_name-$pkgver" || exit 1
     python -m build --wheel --no-isolation
 }
 
 check() {
-    cd "$_name-$pkgver"
+    cd "$_name-$pkgver" || exit 1
     rm -rf tmp_unittest
     mkdir -p tmp_unittest
     sed -i -e "s,/tmp/fangfrisch/unittest,$srcdir/$_name-$pkgver/tmp_unittest," tests/tests.conf tests/__init__.py
@@ -40,7 +40,7 @@ check() {
 }
 
 package() {
-    cd "$_name-$pkgver"
+    cd "$_name-$pkgver" || exit 1
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 -t "${pkgdir}/etc/fangfrisch" "${srcdir}/${_name}.conf"
     install -Dm644 -t "${pkgdir}/usr/lib/systemd/system" "${srcdir}/${_name}".{service,timer}
