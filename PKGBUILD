@@ -16,14 +16,8 @@ makedepends=(
   'git'
   'just'
 )
-checkdepends=()
-optdepends=()
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=()
-install=
 source=('git+https://github.com/pop-os/cosmic-panel.git')
 sha256sums=('SKIP')
 
