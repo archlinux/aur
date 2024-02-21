@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc='A generic satellite processing software'
 arch=('x86_64')
 license=('GPL-3.0-only')
+conflicts=('satdump-git')
 url='https://github.com/altillimity/SatDump'
 depends=('airspy' 'fftw' 'glfw' 'hackrf' 'jemalloc' 'libad9361' 'libpng' 'libvolk' 'nng' 'ocl-icd' 'portaudio' 'rtl-sdr' 'zstd')
 makedepends=('boost' 'cmake' 'opencl-headers')
