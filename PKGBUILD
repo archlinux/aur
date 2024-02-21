@@ -1,7 +1,7 @@
 # Maintainer: N/A <N/A>
 pkgname=tcgui-git
 _pkgname=tcgui
-pkgver=4cde123
+pkgver=1a5196e
 pkgrel=1
 pkgdesc="A lightweight Python-based Web-GUI for Linux traffic control (tc) to set, view and delete traffic shaping rules."
 arch=('any')
@@ -20,13 +20,13 @@ pkgver() {
 }
 
 package() {
-    # init dirs 
+    # init dirs
     install -d ${pkgdir}/usr/bin
     install -d ${pkgdir}/opt/tcgui
-    
+
     # copy all files to package
     cp -a ${srcdir}/${_pkgname}/* ${pkgdir}/opt/${_pkgname}
-    
+
     # make startup script and fix permissions
     echo '#!/bin/bash' > ${pkgdir}/usr/bin/${_pkgname}
     echo "python3 /opt/${_pkgname}/main.py" >> ${pkgdir}/usr/bin/${_pkgname}
