@@ -1,0 +1,18 @@
+pkgbase = automapaper-git
+	pkgdesc = based GLSL wallpaper that can run automatons using shaders for WLRoots compositors
+	pkgver = r.
+	pkgrel = 1
+	url = https://github.com/itepastra/automapaper
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = wayland
+	depends = libegl
+	depends = glibc
+	provides = automapaper
+	source = git+https://github.com/itepastra/automapaper
+	sha256sums = SKIP
+
+pkgname = automapaper-git
