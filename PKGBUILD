@@ -3,8 +3,8 @@
 # Contributor: vryali@gmail.com
 pkgname=google-chat-linux
 _pkgname="Google Chat Linux"
-pkgver=5.27.23_6
-_electronversion=27
+pkgver=5.29.23_1
+_electronversion=29
 _nodeversion=18
 pkgrel=1
 pkgdesc='Unofficial electron-based desktop client for Google Chat, electron not included'
@@ -39,7 +39,7 @@ build() {
       -e "s|@runname@|app.asar|g" \
       -i "${srcdir}/${pkgname}.sh"
   _ensure_local_nvm
-  gendesk -q -f -n --categories "Network" --name "${pkgname}" --exec "${pkgname} %U"
+  gendesk -q -f -n --categories="Network" --name="${pkgname}" --exec="${pkgname} %U"
   cd "${srcdir}/${pkgname}.git"
   export npm_config_build_from_source=true
   export npm_config_cache="${srcdir}/.npm_cache"
@@ -63,4 +63,5 @@ package() {
   cp -r "${srcdir}/${pkgname}.git/dist/linux-"*/resources/icon "${pkgdir}/usr/lib/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.git/build/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+  install -Dm644 "${srcdir}/${pkgname}.git/dist/linux-"*/LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
