@@ -1,11 +1,11 @@
 # Contributor: Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname=createrepo_c
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="A C implementation of createrepo, a tool to create yum repositories"
 arch=('i686' 'x86_64')
-license=('GPL2')
+license=('GPL-2.0-or-later')
 url="https://github.com/rpm-software-management/$pkgname"
 depends=('bzip2' 'curl' 'drpm>=0.4.0' 'glib2' 'libmodulemd>=2.3.0'
          'libxml2' 'openssl' 'rpm-tools' 'sqlite>=3.6.18' 'xz' 'zchunk' 'zlib' 'zstd')
@@ -13,7 +13,7 @@ makedepends=('bash-completion' 'cmake>=3.13' 'doxygen'
              'pkg-config' 'python' 'python-setuptools' 'python-sphinx')
 optdepends=('python: for python bindings')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('4f549ad1209c1b17973a805afc9b976c622769d4fc500fc2bb0bab4f2d2f07a0')
+sha256sums=('faa9535644be62bb607b4e6e66228aa7cd57375b11df1c815d0f94a140cc03a5')
 
 build() {
 	cd "$pkgname-$pkgver"
