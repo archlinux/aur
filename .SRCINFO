@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-google-glog
 	pkgdesc = Logging library for C++ (mingw-w64)
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/google/glog
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = mingw-w64-google-glog
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = glog-0.6.0.tar.gz::https://github.com/google/glog/archive/v0.6.0.tar.gz
-	sha512sums = fd2c42583d0dd72c790a8cf888f328a64447c5fb9d99b2e2a3833d70c102cb0eb9ae874632c2732424cc86216c8a076a3e24b23a793eaddb5da8a1dc52ba9226
+	source = glog-0.7.0.tar.gz::https://github.com/google/glog/archive/v0.7.0.tar.gz
+	sha512sums = 7222bb432c2b645238018233b2d18f254156617ef2921d18d17364866a7a3a05533fff1d63fd5033e1e5d3746a11806d007e7a36efaff667a0d3006dee45c278
 
 pkgname = mingw-w64-google-glog
