@@ -13,6 +13,7 @@ provides=('matm')
 conflicts=('matm-bin')
 optdepends=('vlc: an alternative video player for movies')
 source=("git+$url")
+options=(!lto)
 md5sums=('SKIP')
 prepare() {
     cd "${srcdir}/${_pkgname}"
