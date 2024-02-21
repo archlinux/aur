@@ -2,7 +2,7 @@
 # Maintainer: Biell <biell@pobox.com>
 
 pkgname=vile
-pkgver=9.8_y
+pkgver=9.8_z
 _basever=${pkgver//_/}
 pkgrel=1
 pkgdesc="vi like emacs"
@@ -11,7 +11,7 @@ url="http://invisible-island.net/vile/vile.html"
 depends=('ncurses')
 license=('custom')
 source=( https://invisible-island.net/archives/vile/current/vile-${_basever}.tgz )
-sha256sums=( 1b67f1ef34f5f2075722ab46184bb149735e8538fa912fc07c985c92f78fe381 )
+sha256sums=( 0b3286c327b70a939f21992d22e42b5c1f8a6e953bd9ab9afa624ea2719272f7 )
 
 build() {
   cd "$srcdir"/$pkgname-${_basever}
@@ -20,16 +20,9 @@ build() {
 }
 
 package() {
-  cd "$srcdir"/$pkgname-${_basever}
-  mkdir -p "$pkgdir"/usr/lib/vile
-  make install DESTDIR="$pkgdir"
-  mkdir -p "$pkgdir"/usr/share/licenses/$pkgname
-  cat <<EOF >"$pkgdir"/usr/share/licenses/$pkgname/license
-Copyright
+  cd ${srcdir}/$pkgname-${_basever}
 
-Vile is copyrighted by Paul G. Fox, Thomas E. Dickey and Kevin Buettner with some
-files (e.g., visvile) copyright by Clark Morgan.
-We distribute it under the terms of the GNU Public License, Version 2.
-EOF
+  make DESTDIR=${pkgdir} install
+  install -D -m 644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
 }
 
