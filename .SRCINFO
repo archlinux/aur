@@ -1,6 +1,6 @@
 pkgbase = casr
 	pkgdesc = Collect crash (or UndefinedBehaviorSanitizer error) reports, triage, and estimate severity.
-	pkgver = 2.10.1
+	pkgver = 2.11.1
 	pkgrel = 1
 	url = https://github.com/ispras/casr
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = casr
 	depends = gcc-libs
 	depends = gdb
 	depends = lsb-release
-	source = casr-2.10.1.tar.gz::https://static.crates.io/crates/casr/casr-2.10.1.crate
-	b2sums = 6f2ad46bb77927ec2eeffab31ce14df862b1e9da1548cb31ca6524442f59dfc3d81355f3de9642ba625a071b4ec9b70988d5867e2dd363d50f2fce7c4ed24e80
+	source = casr-2.11.1.tar.gz::https://static.crates.io/crates/casr/casr-2.11.1.crate
+	b2sums = 25bb2752665b1d2cd4cab5582b0e9eac6665e962ee70a11345916859c8dacfbfaed50f11638b2c32dd04bc186f8bde834c890cebe81a9bc218f1c79731a0221b
 
 pkgname = casr
