@@ -1,0 +1,20 @@
+pkgbase = cosmic-panel-git
+	pkgdesc = WIP COSMIC Panel
+	pkgver = r352.98f6180
+	pkgrel = 1
+	url = https://github.com/pop-os/cosmic-panel
+	arch = x86_64
+	arch = aarch64
+	groups = cosmic
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = just
+	depends = libxkbcommon
+	depends = wayland
+	provides = cosmic-panel
+	conflicts = cosmic-panel
+	source = git+https://github.com/pop-os/cosmic-panel.git
+	sha256sums = SKIP
+
+pkgname = cosmic-panel-git
