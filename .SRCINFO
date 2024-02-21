@@ -1,10 +1,10 @@
 pkgbase = cpeditor-bin
 	pkgdesc = The IDE for competitive programming Fetch, Code, Compile, Run, Check, Submit
 	pkgver = 7.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cpeditor.org/
 	arch = x86_64
-	license = GPL-3.0-only
+	license = GPL-3.0-or-later
 	depends = qt5-base
 	depends = libgpg-error
 	depends = freetype2

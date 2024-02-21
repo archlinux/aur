@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cpeditor-bin
 pkgver=7.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The IDE for competitive programming Fetch, Code, Compile, Run, Check, Submit"
 arch=("x86_64")
 url="https://cpeditor.org/"
 _ghurl="https://github.com/cpeditor/cpeditor"
-license=("GPL-3.0-only")
+license=("GPL-3.0-or-later")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 options=('!strip')
