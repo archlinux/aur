@@ -2,13 +2,13 @@
 
 _pkgname=louvre 
 pkgname="$_pkgname-git"
-pkgver=1.2.1.2.r0.ge516ddd
+pkgver=1.2.1.2.r3.gfbd8c89
 pkgrel=1
 pkgdesc="A high-performance C++ library designed for building Wayland compositors with a strong emphasis on ease of development."
 arch=('x86_64')
 url="https://github.com/CuarzoSoftware/Louvre"
 license=('GPL3')
-depends=('srm' 'wayland' 'libglvnd' 'libxcursor' 'libxkbcommon' 'pixman' 'libdrm' 'mesa' 'libinput' 'seatd' 'glibc' 'freeimage' 'fontconfig' 'freetype2' 'icu' 'systemd-libs')
+depends=('libsrm' 'wayland' 'libglvnd' 'libxcursor' 'libxkbcommon' 'pixman' 'libdrm' 'mesa' 'libinput' 'seatd' 'glibc' 'freeimage' 'fontconfig' 'freetype2' 'icu' 'systemd-libs')
 makedepends=('git' 'meson' 'ninja')
 optdepends=()
 provides=("$_pkgname")
