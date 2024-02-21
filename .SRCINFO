@@ -1,10 +1,11 @@
 pkgbase = highway-git
-	pkgdesc = A C++ library for SIMD (Single Instruction, Multiple Data) (git version)
-	pkgver = 1.0.4.r1.gd8fa48e
+	pkgdesc = A C++ library that provides portable SIMD/vector intrinsics (git version)
+	pkgver = 1.1.0.r5.gaa4ba087
 	pkgrel = 1
 	url = https://github.com/google/highway/
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
+	license = BSD-3-Clause
 	makedepends = git
 	makedepends = cmake
 	makedepends = gtest

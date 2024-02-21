@@ -1,12 +1,12 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=highway-git
-pkgver=1.0.4.r1.gd8fa48e
+pkgver=1.1.0.r5.gaa4ba087
 pkgrel=1
-pkgdesc='A C++ library for SIMD (Single Instruction, Multiple Data) (git version)'
+pkgdesc='A C++ library that provides portable SIMD/vector intrinsics (git version)'
 arch=('x86_64')
 url='https://github.com/google/highway/'
-license=('Apache')
+license=('Apache-2.0' 'BSD-3-Clause')
 depends=('gcc-libs')
 makedepends=('git' 'cmake' 'gtest')
 provides=('highway')
@@ -35,4 +35,5 @@ check() {
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
+    install -D -m644 highway/LICENSE-BSD3 -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
