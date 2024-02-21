@@ -2,14 +2,15 @@
 
 pkgname=pol-git
 _pkgname=poline
-pkgver=r23.465d3bf
+pkgver=r112.1c5aef5
 pkgrel=1
 pkgdesc='Awk-like one-liners for Python'
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/riolet/poline"
 license=('MIT')
-depends=('python2')
-makedepends=('git' 'python2')
+depends=('python' 'python-setuptools')
+makedepends=('git')
+options=(!emptydirs)
 source=("$_pkgname::git+https://github.com/riolet/poline.git")
 sha256sums=('SKIP')
 
@@ -21,14 +22,10 @@ pkgver () {
   )
 }
 
-build() {
-  cd "$srcdir/$_pkgname"
-  make
-}
-
 package() {
   cd "$srcdir/$_pkgname"
-  make DESTDIR="$pkgdir" PREFIX='/usr' install
+  install -D -m 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  python setup.py install --root="$pkgdir/" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
