@@ -45,7 +45,7 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  make prefix='/usr' VENDOR='1'
+  make prefix='/usr' VENDOR='1' all
 }
 
 package() {
