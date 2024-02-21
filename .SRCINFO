@@ -1,7 +1,7 @@
 pkgbase = fim
 	pkgdesc = FIM (Fbi IMproved) is a highly customizable and scriptable image viewer.
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nongnu.org/fbi-improved/
 	arch = i686
 	arch = x86_64
@@ -18,6 +18,6 @@ pkgbase = fim
 	optdepends = libtiff: TIFF support
 	optdepends = sdl: X support
 	source = http://download.savannah.gnu.org/releases/fbi-improved/fim-0.7-trunk.tar.gz
-	sha256sums = fe9edb8de64ce3a0c9390f6c82d79b86436904f8f6449618ddd3178731e73668
+	sha256sums = f5b2442c67d0111bfefc06ee8a00c923fe9b992efd62b9c070e191f7d83c07ea
 
 pkgname = fim
