@@ -2,8 +2,6 @@
 # Maintainer: Seppia <seppia@seppio.fish>
 # Maintainer: JustKidding <jk@vin.ovh>
 
-# Based on extra/chromium, with ungoogled-chromium patches
-
 # Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
@@ -12,7 +10,7 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=122.0.6261.39
+pkgver=122.0.6261.57
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -43,7 +41,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         drop-flags-unsupported-by-clang16.patch
         compiler-rt-16.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('30fc98bdb497d98e63fcb4d8e76acf5201eddf7e65ee907ecf4041cc8e121be3'
+sha256sums=('1594635f8c2db05c8d17f9f2e591b554eaf821a1a2249c271e91926db49fa7cd'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '1f6acf165578288dc84edc7d9dcfabf7d38f55153b63a37ee5afa929f0e2baad'
             '8c256b2a9498a63706a6e7a55eadbeb8cc814be66a75e49aec3716c6be450c6c'
@@ -85,7 +83,7 @@ source=(${source[@]}
         0001-ozone-wayland-implement-text_input_manager_v3.patch
         0001-ozone-wayland-implement-text_input_manager-fixes.patch)
 sha256sums=(${sha256sums[@]}
-            '7459a9c23da61f4f9ccda65182d1dd96283ffe916bbb15e5d6d168a140a7ab7b'
+            '7757586338790c8ee795371b00d5cebad5481caaf5b0dcd5aad4490632a5b318'
             '8ba5c67b7eb6cacd2dbbc29e6766169f0fca3bbb07779b1a0a76c913f17d343f'
             '2a44756404e13c97d000cc0d859604d6848163998ea2f838b3b9bb2c840967e3'
             'd9974ddb50777be428fd0fa1e01ffe4b587065ba6adefea33678e1b3e25d1285'
@@ -116,7 +114,7 @@ declare -gA _system_libs=(
   #[re2]=re2          # needs libstdc++
   #[snappy]=snappy    # needs libstdc++
   #[woff2]=woff2      # needs libstdc++
-  #[zlib]=minizip
+  [zlib]=minizip
 )
 _unwanted_bundled_libs=(
   $(printf "%s\n" ${!_system_libs[@]} | sed 's/^libjpeg$/&_turbo/')
@@ -153,7 +151,7 @@ prepare() {
   # runtime -- this allows signing into Chromium without baked-in values
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
-   # Upstream fixes
+  # Upstream fixes
   patch -Np1 -i ../support-ICU-74-in-LazyTextBreakIterator.patch
 
   # Fix "error: defaulted definition of equality comparison operator cannot
