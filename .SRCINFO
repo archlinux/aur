@@ -1,6 +1,6 @@
 pkgbase = repman-git
 	pkgdesc = Manage (remote) custom repositories for Arch Linux packages
-	pkgver = 0.7.2
+	pkgver = 0.7.4
 	pkgrel = 1
 	url = https://gitlab.com/mipimipi/repman
 	arch = aarch64
@@ -22,6 +22,7 @@ pkgbase = repman-git
 	optdepends = google-cloud-cli: support of Google Cloud Platform
 	provides = repman
 	conflicts = repman
+	options = !debug
 	backup = etc/repman.conf
 	source = git+https://gitlab.com/mipimipi/repman.git
 	validpgpkeys = 11ECD6695134183B3E7AF1C2223AAA374A1D59CE
