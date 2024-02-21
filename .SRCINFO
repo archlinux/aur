@@ -1,7 +1,7 @@
 pkgbase = gimp-devel
 	pkgdesc = GNU Image Manipulation Program (Development version)
 	pkgver = 2.99.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gimp.org/
 	arch = i686
 	arch = x86_64
@@ -35,6 +35,7 @@ pkgbase = gimp-devel
 	makedepends = highway
 	makedepends = meson
 	makedepends = qoi-headers
+	makedepends = cfitsio
 	depends = gtk3
 	depends = lcms2
 	depends = libwmf
@@ -73,6 +74,7 @@ pkgbase = gimp-devel
 	optdepends = gjs: JavaScript scripting support
 	optdepends = luajit: LUA scripting support
 	optdepends = lua51-lgi: LUA scripting support
+	optdepends = cfitsio: FITS support
 	provides = gimp=2.99.18
 	conflicts = gimp
 	source = https://download.gimp.org/pub/gimp/v2.99/gimp-2.99.18.tar.xz
