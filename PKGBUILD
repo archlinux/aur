@@ -9,7 +9,7 @@ _local=false
 _proj="hip"
 _pkgname=aspe
 pkgname="${_pkgname}-git"
-pkgver="v1.1.1".r1.g"5ec40b469866666b80c5db747e90692851300120"
+pkgver="1.1.1.1.r0.g5ec40b469866666b80c5db747e90692851300120"
 pkgrel=1
 _pkgdesc=(
   "Arch Linux build source"
@@ -182,6 +182,7 @@ package() {
     "${_pkgname}-${_branch}"
   make \
     DESTDIR="${pkgdir}" \
+    PREFIX="/usr" \
     install
 }
 
