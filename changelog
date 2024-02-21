@@ -1,3 +1,15 @@
+2024-02-21 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.5.3.4-1:
+    Added support for private games. ASF will now detect and skip private games from farming, as per your privacy preferences (@JustArchi #3109).
+    Added built-in crash protection. The process will now freeze by default with an error if it detects constant crashing upon each restart (@JustArchi)
+    Added slight delay upon receiving new items notification during farming, to fight with potential cache issues - this might help ASF not detecting updated cards remaining right away (@JustArchi).
+    Our docker containers now include main ASF binary files in /asf rather than /app. There is no change in usage for the users, since /app is still being used as a working directory through ASF_PATH like before (@JustArchi).
+    Slightly improved load-balancing in STD module to avoid excessive work right after login (@JustArchi).
+    Slightly improved security against IPCPassword side-channel attempts (@LRFLEW #3142).
+    Removed deprecated in the previous release functions and mappings (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2024-02-01 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.5.2.3-1:
     Refactored and unified selected bot config properties into new FarmingPreferences setting: Paused, ShutdownOnFarmingFinished, SendOnFarmingFinished, FarmPriorityQueueOnly, SkipRefundableGames, EnableRiskyCardsDiscovery, AutoSteamSaleEvent. ASF will automatically convert your existing bot configs into new format, and if you're using --no-config-migrate then you'll need to migrate manually (@JustArchi).
