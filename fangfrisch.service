@@ -1,5 +1,6 @@
 [Unit]
 Description=Update and verify unofficial Clam Anti-Virus signatures
+Documentation=https://rseichter.github.io/fangfrisch/
 ConditionPathExists=/var/lib/fangfrisch/db.sqlite
 After=network-online.target
 Wants=network-online.target
