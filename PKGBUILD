@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=HiCDOC
-_pkgver=1.4.0
+_pkgver=1.4.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="A/B compartment detection and differential analysis"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(LGPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('LGPL-3.0-only')
 depends=(
   r-biocgenerics
   r-biocparallel
@@ -40,12 +40,12 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('334df180a7e5e2851bbf6724e8537ffd')
-sha256sums=('237724013ba999d39bc69394adc52b83bb29e9618b552bae00114aaa4653edf8')
+md5sums=('59d58d99e24dccaa4affca286d29b2cb')
+b2sums=('752ac1384874401d710f88951307c67751a1f83f599c29bb837fc92a218dd97a63491bd5111425a07124c1fbf3a1718e19c46b67b57ba96d8b91d2cd025553d4')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

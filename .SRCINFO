@@ -1,10 +1,10 @@
 pkgbase = r-hicdoc
 	pkgdesc = A/B compartment detection and differential analysis
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/HiCDOC
 	arch = x86_64
-	license = LGPL3
+	license = LGPL-3.0-only
 	checkdepends = r-testthat
 	depends = r-biocgenerics
 	depends = r-biocparallel
@@ -29,8 +29,8 @@ pkgbase = r-hicdoc
 	optdepends = r-rhdf5
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/HiCDOC_1.4.0.tar.gz
-	md5sums = 334df180a7e5e2851bbf6724e8537ffd
-	sha256sums = 237724013ba999d39bc69394adc52b83bb29e9618b552bae00114aaa4653edf8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HiCDOC_1.4.1.tar.gz
+	md5sums = 59d58d99e24dccaa4affca286d29b2cb
+	b2sums = 752ac1384874401d710f88951307c67751a1f83f599c29bb837fc92a218dd97a63491bd5111425a07124c1fbf3a1718e19c46b67b57ba96d8b91d2cd025553d4
 
 pkgname = r-hicdoc
