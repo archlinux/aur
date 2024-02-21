@@ -5,9 +5,9 @@
 
 pkgbase=ddccontrol
 pkgname=(ddccontrol gddccontrol)
-pkgver=0.6.1
+pkgver=1.0.3
 pkgrel=1
-pkgdesc="Control your monitor by software using the DDC/CI protocol"
+pkgdesc="DDCcontrol is a software used to control monitor parameters, like brightness, contrast, RGB color levels and others."
 arch=('i686' 'x86_64')
 url="https://github.com/ddccontrol/ddccontrol"
 license=('GPL')
@@ -15,7 +15,7 @@ depends=('pciutils' 'ddccontrol-db-git' 'perl-xml-parser' 'libxml2' 'icu' 'glib2
 makedepends=('gtk2' 'autoconf' 'automake' 'intltool' 'python')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/ddccontrol/ddccontrol/archive/${pkgver}.tar.gz")
 options=('!libtool')
-sha512sums=('abc8940dcd651c25e1030bd4f5ae59774cfa08b22352a653140ec924cbcaa93855473385575636ec0cd51ea5f1871e2331ade592846eafddb7eae99f55ff1164')
+sha512sums=('5e49217c8560245d53d5a2dc71cda5683698e798bd1f75ca69e445b68b33d2fb826ff05dced1c0a40f2baf8fd26396c78d1c1bf6f95f30287da6d5b149bb98e2')
 
 prepare() {
 	cd "${srcdir}"/${pkgbase}-${pkgver}
