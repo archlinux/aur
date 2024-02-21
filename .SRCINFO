@@ -1,0 +1,24 @@
+pkgbase = mate-wayland-session-git
+	pkgver = 0.01
+	pkgrel = 2
+	url = https://github.com/mate-desktop/mate-desktop
+	install = matewayland.install
+	arch = x86_64
+	license = GNU GENERAL PUBLIC LICENSE Version 2
+	makedepends = mate-common-git
+	makedepends = yelp-tools
+	makedepends = gtk-doc
+	makedepends = gobject-introspection
+	makedepends = autoconf-archive
+	makedepends = meson
+	depends = dconf
+	depends = gtk3
+	depends = startup-notification
+	depends = wayfire
+	source = git+https://github.com/mate-desktop/mate-wayland-session
+	source = wayfire.ini.sample
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mate-wayland-session-git
+	pkgdesc = Builds the experimental mate wayland session
