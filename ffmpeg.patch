@@ -16,20 +16,6 @@ diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated'
  SET(_base_dir
      ${RV_DEPS_BASE_DIR}/${_target}
  )
-@@ -51,6 +59,13 @@
- SET(_configure_command
-     sh ./configure
- )
-+SET(_patch_command
-+    git cherry-pick -n 988f2e9eb063db7c1a678729f58aab6eba59a55b &&
-+    git cherry-pick -n 031f1561cd286596cdb374da32f8aa816ce3b135 &&
-+    git cherry-pick -n effadce6c756247ea8bae32dc13bb3e6f464f0eb &&
-+    git cherry-pick -n 03823ac0c6a38bd6ba972539e3203a592579792f &&
-+    git cherry-pick -n d2b46c1ef768bc31ba9180f6d469d5b8be677500
-+)
- 
- IF(${RV_OSX_EMULATION})
-   SET(_darwin_x86_64
 @@ -254,14 +270,16 @@
  EXTERNALPROJECT_ADD(
    ${_target}
@@ -48,8 +34,7 @@ diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated'
 +  GIT_REPOSITORY ${_git_repository}
 +  GIT_TAG ${_git_tag}
    SOURCE_DIR ${RV_DEPS_BASE_DIR}/${_target}/src
--  ${RV_FFMPEG_PATCH_COMMAND_STEP}
-+  PATCH_COMMAND ${_patch_command}
+   PATCH_COMMAND ${RV_FFMPEG_PATCH_COMMAND_STEP}
    CONFIGURE_COMMAND
      ${CMAKE_COMMAND} -E env "PKG_CONFIG_PATH=$PKG_CONFIG_PATH:${_ffmpeg_david_cmake_lib_dir_path}/pkgconfig" ${_configure_command} --prefix=${_install_dir}
      ${RV_FFMPEG_COMMON_CONFIG_OPTIONS} ${RV_FFMPEG_CONFIG_OPTIONS} ${RV_FFMPEG_EXTRA_C_OPTIONS} ${RV_FFMPEG_EXTRA_LIBPATH_OPTIONS} ${RV_FFMPEG_EXTERNAL_LIBS}

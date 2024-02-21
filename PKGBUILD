@@ -1,7 +1,7 @@
 # Maintainer: Robert Zhou <meep dot aur at meepzh dot com>
 
 pkgname=openrv-git
-pkgver=1.0.0.r171.c5ba738
+pkgver=2.0.0.r199.f3754ee
 pkgrel=1
 pkgdesc="aka Open RV, an image and sequence viewer for VFX and animation artists"
 arch=('x86_64')
@@ -33,9 +33,12 @@ source=('git+https://github.com/AcademySoftwareFoundation/OpenRV.git'
         'qt5.patch'
         'pyside2-build_scripts.patch')
         # 'manual://gcc_64.tar')  # Uncomment to pass Qt5 to chroot
-b2sums=('SKIP' 'SKIP' 'SKIP' 'SKIP'
-        'b1424b55833ddc227f67a04897d416dd942405352e1b92ab8be8f7bc07ba059f6cb997b551d4fb7347f55fa4d809d3242db402bb19c028570447dc5955a782db' 
-        '1a09ccede75b3b6c57d19f7378c73a3a732dfe726c0bf6a70c168fe2b0aa92ea7c71d65e01020990f887d67a9a23232be2d71da97717248cb2d68ae8fc34d338'
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'b1424b55833ddc227f67a04897d416dd942405352e1b92ab8be8f7bc07ba059f6cb997b551d4fb7347f55fa4d809d3242db402bb19c028570447dc5955a782db'
+        'a8d92602acb5ee29ba78512f604c8f33b1e78f7764970ac5c45d8fa6e49f57c429013bd6b4e3574f792a988645b4ef6a0e0d5b679f908e699f2c8e0842d86ffe'
         '521af5eb255ad0280bfb364e3a8710ae4450a5f0d0943cfb844053ff5058865265e790c132197f6003f14a6724b498b30fa8db013298ec5e55526a9eefc5486e'
         'f5d463d66fadff1d8d9fc7fadd04f5b723bc24a5530dce916e881e812d5e5d701bcbfbcaff6331ef94612028a82b3275fb309dfee292d12800ba4118ddd8c6eb'
         '03cd706fb027ee46aaa86c744800190f797da9a879e95c5f6e7ac830c7f4b0cb5bd9e2c66f6924664bb633e4552ba63b9c82cb4318ffea66b44e6b86fd13e59f'
@@ -79,6 +82,7 @@ prepare() {
   sed -i 's/pip install --user/pip install/' rvcmds.sh
   sed -i -E 's/alias (\w+)="(.+)"/\1() { \2; };/' rvcmds.sh  # Allow commands to run in PKGBUILD
   sed -i 's,\\"${CMAKE_GENERATOR}\\","${CMAKE_GENERATOR}",' rvcmds.sh
+  sed -i "s/{WIN_PERL};/{WIN_PERL} "'"'"-DRV_FFMPEG_PATCH_COMMAND_STEP=git cherry-pick -n 988f2e9eb063db7c1a678729f58aab6eba59a55b 031f1561cd286596cdb374da32f8aa816ce3b135 effadce6c756247ea8bae32dc13bb3e6f464f0eb 03823ac0c6a38bd6ba972539e3203a592579792f d2b46c1ef768bc31ba9180f6d469d5b8be677500"'"'";/" rvcmds.sh
   sed -i 's/--target ;/--target $1;/' rvcmds.sh
   sed -i 's/ctest /ctest --exclude-regex ".*(ALSASafe|io_oiio).*" /' rvcmds.sh  # ALSASafe uses Rv::Option, removed OpenVDB from OIIO
   # sed -i 's/--parallel=8/--parallel=1/' rvcmds.sh  # May help with debugging
