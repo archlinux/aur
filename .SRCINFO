@@ -1,0 +1,26 @@
+pkgbase = watt-wiser
+	pkgdesc = A software energy consumption estimation tool
+	pkgver = v0.0.4
+	pkgrel = 1
+	url = https://git.sr.ht/~whereswaldon/watt-wiser
+	arch = any
+	license = Unlicense
+	makedepends = go
+	makedepends = gcc
+	makedepends = vulkan-headers
+	makedepends = pkgconf
+	makedepends = wayland
+	makedepends = wayland-protocols
+	makedepends = libx11
+	makedepends = libxkbcommon-x11
+	makedepends = libxcursor
+	depends = watt-wiser-sensors
+	depends = xdg-desktop-portal
+	provides = watt-wiser
+	conflicts = watt-wiser
+	source = watt-wiser-v0.0.4.tar.gz::https://git.sr.ht/~whereswaldon/watt-wiser/archive/v0.0.4.tar.gz
+	sha256sums = 1e03f78d148ceb5909d877c883130dcafeb260e298c7ad9ae0d9ad80ae0d8980
+	sha512sums = 82a7712fb90d636cafd18e56257a713714dbceebf07740413a8c0023db9bf098a66899a851942dd9ea2ad909232a2f1f88a7164a708ba2bd764c995b40968e63
+	b2sums = 88dfe0a2f1492feeaf0ac4bc364459147c77a4fb22082f5b223468338a635f7f309d91eb7afd842a1915b26d16aee5466d5043677609821236ac6be1ba1a0fb2
+
+pkgname = watt-wiser
