@@ -1,19 +1,19 @@
 pkgbase = kubedb-bin
 	pkgdesc = Painlessly work with Kubernetes databases
-	pkgver = 1.9.1
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = https://github.com/clevyr/kubedb
 	license = GPL-3.0
 	conflicts = kubedb
 	provides = kubedb
 	arch = aarch64
-	source_aarch64 = https://github.com/clevyr/kubedb/releases/download/v1.9.1/kubedb_1.9.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = ebe15bf107cc42a39b2033e2a2547be1191905125d8ff197b31c989d8ad28e74
+	source_aarch64 = https://github.com/clevyr/kubedb/releases/download/v1.9.2/kubedb_1.9.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = bd238d749ca9dd0ecffbdb84acd70f8fdb15681fffc242d399cbce00d817aa04
 	arch = armv7h
-	source_armv7h = https://github.com/clevyr/kubedb/releases/download/v1.9.1/kubedb_1.9.1_linux_armv7.tar.gz
-	sha256sums_armv7h = f7c3e7214d2b065357e0b5d6a1dac893018910d8609f175563b7639eb0b9a614
+	source_armv7h = https://github.com/clevyr/kubedb/releases/download/v1.9.2/kubedb_1.9.2_linux_armv7.tar.gz
+	sha256sums_armv7h = ef3e2e88af3dfa51a818d9f127140bad7813cacdba5762ea134e1f6448927df9
 	arch = x86_64
-	source_x86_64 = https://github.com/clevyr/kubedb/releases/download/v1.9.1/kubedb_1.9.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = bd32d865241294a1c35986360540b67c159fcd7667657bb0661c80884a1036d4
+	source_x86_64 = https://github.com/clevyr/kubedb/releases/download/v1.9.2/kubedb_1.9.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 9db9a84cf712e617b3bd307b79fd8961db928181e800f8564c7191e8f18cbd34
 	
 pkgname = kubedb-bin
