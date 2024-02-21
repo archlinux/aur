@@ -12,6 +12,8 @@ source=("https://github.com/oauth2-proxy/oauth2-proxy/archive/refs/tags/v${pkgve
 sha512sums=('de7574ae6ecf0da0b9962e4601fdc5b7f742fa0d4a55a0e5844256a2aa10170973c324b1041c490b2be0023b954a53d9b78ed488dcd238a2a047e25ab5ba7667')
 backup=(etc/oauth2-proxy.cfg)
 prepare() {
+  #secure oauth2-proxy version
+  sed -i "s/^VERSION.*/VERSION ?= arch-secured/" "${srcdir}/${pkgname}-${pkgver}/Makefile"
   sed -i -e 's|/usr/local/bin/oauth2-proxy|/usr/bin/oauth2-proxy|' -e 's/www-data/http/' -e '/^#/d' "${srcdir}/${pkgname}-${pkgver}/contrib/${pkgname}.service.example"
 }
 build() {
