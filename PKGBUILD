@@ -3,11 +3,11 @@
 
 pkgname=otti
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="The one-time password manager for the terminal, with interactive and fancy TUI"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/dnaka91/otti"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
