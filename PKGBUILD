@@ -46,6 +46,8 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
+  export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTUP_TOOLCHAIN=stable
   make prefix='/usr' VENDOR='1' all
 }
 
