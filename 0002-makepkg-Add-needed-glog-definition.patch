@@ -1,0 +1,24 @@
+From d2971e834dd807ed6f560a23e776a03f32291ff4 Mon Sep 17 00:00:00 2001
+From: KokaKiwi <kokakiwi+git@kokakiwi.net>
+Date: Wed, 21 Feb 2024 15:51:36 +0100
+Subject: [PATCH 2/2] makepkg: Add needed glog definition
+
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ff86d0e..f76d084 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -323,6 +323,7 @@ set(THRIFT_COMPILER_ONLY
+ add_compile_definitions(FOLLY_CFG_NO_COROUTINES)
+ 
+ add_compile_definitions(GLOG_NO_ABBREVIATED_SEVERITIES NOMINMAX NOGDI)
++add_compile_definitions(GLOG_USE_GLOG_EXPORT)
+ 
+ set(
+   CXX_STD "gnu++20"
+-- 
+2.43.1
+
