@@ -1,30 +1,23 @@
 # Maintainer: Snowstorm64
 
 pkgname=ares-emu-git
-pkgver=133.r30.g9fb87dc0c
+pkgver=135.r47.g5cdefb088
 pkgrel=1
 pkgdesc="Cross-platform, open source, multi-system emulator by Near and Ares team, focusing on accuracy and preservation. (git version)"
 arch=(x86_64 i686)
 url="https://ares-emu.net/"
 license=("ISC")
-depends=(gtk3 libao libgl libpulse libudev.so=1-64 libxv openal sdl2 vulkan-driver vulkan-icd-loader)
+depends=(gtk3 libao libgl libpulse libudev.so=1-64 libxv openal sdl2 vulkan-driver vulkan-icd-loader) #TODO: require librashader soon
 makedepends=(mesa git clang lld)
 provides=(ares-emu)
 conflicts=(ares-emu)
 install=ares.install
-source=("git+https://github.com/ares-emulator/ares.git"
-        "ares-paths.patch")
-sha256sums=("SKIP"
-           "60e6c9424680a16868098721a8238c8407a0e1a6cc5437a8306d36d66ec6a3ce")
+source=("git+https://github.com/ares-emulator/ares.git")
+sha256sums=("SKIP")
 
 pkgver() {
   cd "${srcdir}/ares"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  # For time being patch Ares so that it copies settings.bml, if applicable, from old location to default location
-  patch -Np1 -i "${srcdir}/ares-paths.patch"
 }
 
 build() {
@@ -41,5 +34,6 @@ package() {
   # Also install shaders and databases in Ares' shared data directory
   install -dm 755 "${pkgdir}/usr/share/ares"
   cp -dr --no-preserve=ownership "${srcdir}/ares/ares/Shaders/" "${pkgdir}/usr/share/ares/Shaders/"
+  #cp -dr --no-preserve=ownership "${srcdir}/ares/thirdparty/slang-shaders/" "${pkgdir}/usr/share/ares/Shaders/"
   cp -dr --no-preserve=ownership "${srcdir}/ares/mia/Database/" "${pkgdir}/usr/share/ares/Database/"
 }
