@@ -30,7 +30,6 @@ makedepends=(
   'git'
   'just'
 )
-checkdepends=()
 optdepends=(
   'cosmic-edit-git: COSMIC text editor'
   'cosmic-files-git: COSMIC file manager'
@@ -39,10 +38,6 @@ optdepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=()
-install=
 source=('git+https://github.com/pop-os/cosmic-session.git')
 sha256sums=('SKIP')
 
