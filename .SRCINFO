@@ -1,0 +1,25 @@
+pkgbase = dooble-git
+	pkgdesc = Web browser based on QtWebEngine
+	pkgver = 2024.01.25.r7.gaa2dfc1b
+	pkgrel = 1
+	url = https://textbrowser.github.io/dooble
+	arch = x86_64
+	license = LicenseRef-custom
+	makedepends = findutils
+	makedepends = base-devel
+	makedepends = qt6-base
+	makedepends = qt6-charts
+	makedepends = gcc
+	makedepends = fakeroot
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = gpgme
+	depends = qt5-webengine
+	provides = dooble
+	conflicts = dooble
+	source = dooble.git::git+https://github.com/textbrowser/dooble.git
+	source = dooble.sh
+	sha256sums = SKIP
+	sha256sums = cf538a21b1ba4fbdde585c2b0334790bb0929f890542a6323de66bac3dbfa028
+
+pkgname = dooble-git
