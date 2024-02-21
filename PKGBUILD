@@ -20,7 +20,7 @@ optdepends=(
   'vulkan-radeon: 1st best vulkan driver for AMD'
   'vulkan-amdgpu-pro: 2nd best vulkan driver for AMD'
   'amdvlk: 3rd best vulkan driver for AMD'
-  'vulkan-intel: Includes vulkan driver for NVIDIA'
+  'vulkan-intel: Includes vulkan driver for Intel'
 )
 makedepends=('cmake' 'boost' 'vulkan-headers' 'stb')
 

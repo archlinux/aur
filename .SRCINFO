@@ -22,7 +22,7 @@ pkgbase = raytracinginvulkan-git
 	optdepends = vulkan-radeon: 1st best vulkan driver for AMD
 	optdepends = vulkan-amdgpu-pro: 2nd best vulkan driver for AMD
 	optdepends = amdvlk: 3rd best vulkan driver for AMD
-	optdepends = vulkan-intel: Includes vulkan driver for NVIDIA
+	optdepends = vulkan-intel: Includes vulkan driver for Intel
 	provides = raytracinginvulkan=7.r16.g5316859
 	conflicts = raytracinginvulkan
 	source = raytracinginvulkan::git+https://github.com/GPSnoopy/RayTracingInVulkan.git
