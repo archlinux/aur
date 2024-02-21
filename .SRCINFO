@@ -1,0 +1,39 @@
+pkgbase = papers
+	pkgdesc = Document viewer (PDF, PostScript, XPS, djvu, dvi, tiff, cbr, cbz, cb7, cbt)
+	pkgver = 45.0+r474+g66e0ad81
+	pkgrel = 1
+	url = https://apps.gnome.org/Papers/
+	arch = x86_64
+	license = GPL
+	makedepends = appstream-glib
+	makedepends = gi-docgen
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = yelp-tools
+	makedepends = rust
+	depends = dconf
+	depends = djvulibre
+	depends = gsettings-desktop-schemas
+	depends = gsfonts
+	depends = gst-plugins-base-libs
+	depends = gtk4
+	depends = gvfs
+	depends = libarchive
+	depends = libgxps
+	depends = libadwaita
+	depends = libsecret
+	depends = libspectre
+	depends = exempi
+	depends = poppler-glib
+	source = git+https://gitlab.gnome.org/GNOME/Incubator/papers.git#branch=main
+	b2sums = SKIP
+
+pkgname = papers
+	groups = gnome
+	provides = libppsdocument-4.0.so
+	provides = libppsview-4.0.so
+
+pkgname = papers-lib-docs
+	pkgdesc = Document viewer (PDF, PostScript, XPS, djvu, dvi, tiff, cbr, cbz, cb7, cbt) (library API documentation)
+	depends = 
