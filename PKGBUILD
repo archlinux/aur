@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi@kokakiwi.net>
 
 pkgname=elixir-ls
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='A frontend-independent Language Server Protocol for Elixir'
 url='https://github.com/elixir-lsp/elixir-ls'
@@ -10,8 +10,8 @@ arch=('any')
 depends=('elixir' 'erlang-nox')
 makedepends=('git' 'rebar3')
 source=("elixir-ls-$pkgver.tar.gz::https://github.com/elixir-lsp/elixir-ls/archive/v$pkgver.tar.gz")
-sha256sums=('f030df6f655044339004f1abf5d6aea8c35a2a4e4c8eb8b7e9657cdc3ed5b7e7')
-b2sums=('1b27c832b9d32f255508ce40a3cc1159861add60ad631a9638fe829a169700ee4411d4c7ea7729a754632de4002053ab7da02ce44b5250760975a2ce76581d5d')
+sha256sums=('f03f1bb0eb28d60dc9aa2f4d5114018943573f344a0e4df076760aaeb246bd67')
+b2sums=('45e74dd6e6710ddc73efb7ceedfe2de7419ab818ac358389b625953e49de2884b9dc149e1e3458044d21f93d925620c415944f642e3f135ce335a115d6309247')
 
 build() {
   cd "$pkgname-$pkgver"
