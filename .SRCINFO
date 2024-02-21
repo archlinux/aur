@@ -1,23 +1,22 @@
 pkgbase = sonixd
-	pkgdesc = A full-featured Subsonic/Jellyfin compatible desktop music player
+	pkgdesc = A full-featured Subsonic/Jellyfin compatible desktop client
 	pkgver = 0.15.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jeffvli/sonixd
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = yarn
-	makedepends = asar
-	makedepends = python3
+	makedepends = nvm
+	makedepends = npm
+	makedepends = python>=3
 	makedepends = git
-	makedepends = node-gyp
+	makedepends = base-devel
+	makedepends = gendesk
 	depends = electron22
-	conflicts = sonixd-bin
-	replaces = sonixd-bin
-	source = sonixd-0.15.5.tar.gz::https://github.com/jeffvli/sonixd/archive/refs/tags/v0.15.5.tar.gz
-	source = sonixd
-	source = sonixd.desktop
-	sha256sums = 1de05c325a0e86c24f1c917c33f577645481e898d842134e7d5f8e6650916d5e
-	sha256sums = cd44df72a8c0cbe961150bf449a5676f2b34bb7608c4c81e7b92f1a288ad4da0
-	sha256sums = 9e2e1cce47b594b75b8df7a1cf3a5a6da340dda9d0cfdf2aa305d097fc0bbc7a
+	conflicts = sonixd
+	source = sonixd.git::git+https://github.com/jeffvli/sonixd#tag=v0.15.5
+	source = sonixd.sh
+	sha256sums = SKIP
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = sonixd
