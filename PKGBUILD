@@ -1,11 +1,11 @@
 pkgname=arch-os-app
-pkgver=r7.4f38a1b
+pkgver=r18.371e4e5
 pkgrel=1
-pkgdesc="Arch OS App"
+pkgdesc="Arch OS App - System & Update Manager"
 arch=('any')
 url="https://github.com/murkl/arch-os-app"
 license=('GPL2')
-depends=('paru' 'kitty' 'gum' 'ttf-firacode-nerd')
+depends=('kitty' 'gum' 'ttf-firacode-nerd' 'paru' 'flatpak')
 makedepends=('git')
 source=(arch-os.desktop $pkgname::git+$url.git)
 sha256sums=('SKIP' 'SKIP')
