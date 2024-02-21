@@ -23,7 +23,8 @@ md5sums_aarch64=('0f24a3ebabb49f0f84d102124d92f032')
 package () {
   mkdir -p "${pkgdir}/usr/lib/"
   rm libcurl-impersonate*.tar.gz
-  install -Dm755 libcurl-impersonate-* "${pkgdir}/usr/lib/"
+  cp -a libcurl-impersonate-* "${pkgdir}/usr/lib/"
+  chown -R root:root "${pkgdir}/usr/lib/"
 }
 md5sums_x86_64=('34092fa12033c53a5bd681246e334c8a')
 md5sums_aarch64=('0f24a3ebabb49f0f84d102124d92f032')
