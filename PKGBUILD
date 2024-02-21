@@ -3,12 +3,12 @@ _pkgname=lmstudio
 pkgname="${_pkgname}"-appimage
 _basever="0.2.14"
 pkgver="${_basever}.beta.1"
-pkgrel=1
+pkgrel=2
 pkgdesc="Discover, download, and run local LLMs"
 arch=('x86_64')
 url="https://lmstudio.ai/"
 license=('custom')
-depends=('zlib' 'hicolor-icon-theme' 'fuse2')
+depends=('zlib' 'hicolor-icon-theme' 'fuse2' 'clblast')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://releases.lmstudio.ai/linux/${_basever}/beta/LM_Studio-${pkgver/\.beta\./-beta-}.AppImage")
@@ -49,4 +49,10 @@ package() {
     # Symlink license
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
     ln -s "/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+
+    # add clblast symlinks
+    mkdir -p "$pkgdir/usr/local/lib"
+    ln -s "/usr/lib/libclblast.so.1" "$pkgdir/usr/local/lib"
+    ln -s "/usr/lib/libclblast.so" "$pkgdir/usr/local/lib"
 }
+
