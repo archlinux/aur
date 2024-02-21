@@ -1,33 +1,11 @@
 pkgbase = the-deeps
 	pkgdesc = A text-based adventure game written in C++.
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oicleevan/the-deeps
 	arch = any
 	license = MIT
-	source = https://github.com/oicleevan/the-deeps/archive/refs/tags/1.2.1.zip
-	sha1sums = 8e236600c6e1d0dea83da0a07d64f329a09a4215
-
-pkgname = the-deeps
-pkgbase = the-deeps
-	pkgdesc = A text-based adventure game written in C++.
-	pkgver = 1.2.1
-	pkgrel = 1
-	url = https://github.com/oicleevan/the-deeps
-	arch = any
-	license = MIT
-	source = https://github.com/oicleevan/the-deeps/archive/refs/tags/1.2.1.zip
-	sha1sums = SKIP
-
-pkgname = the-deeps
-pkgbase = the-deeps
-	pkgdesc = A text-based adventure game written in C++.
-	pkgver = 1.2.1
-	pkgrel = 1
-	url = https://github.com/oicleevan/the-deeps
-	arch = any
-	license = MIT
-	source = https://github.com/oicleevan/the-deeps/archive/refs/tags/1.2.1.zip
+	source = the-deeps-1.2.1.tar.gz::https://github.com/oicleevan/the-deeps/archive/refs/tags/1.2.1.zip
 	sha256sums = d5a6fe6631f0dadc60fe06d3da6da54cb7792cdd69788b8166a65bb3cf2bc93a
 
 pkgname = the-deeps
