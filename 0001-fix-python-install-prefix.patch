@@ -1,0 +1,25 @@
+From 338e2fada63d9be3991754dd0bbd5be952bfb2d2 Mon Sep 17 00:00:00 2001
+From: Christian Holme <holme@tugraz.at>
+Date: Wed, 21 Feb 2024 11:21:33 +0100
+Subject: [PATCH] fix python install prefix
+
+---
+ build/linux/Makefile.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/build/linux/Makefile.in b/build/linux/Makefile.in
+index f478bb7..7c1c0b3 100644
+--- a/build/linux/Makefile.in
++++ b/build/linux/Makefile.in
+@@ -505,7 +505,7 @@ install-python: py
+ 
+ install-python-site-packages: py
+ # Note: setting CC to CXX is intentional. Python uses CC for compilation even if input is C++.
+-	cd $(srcdir)/../../python; ASTRA_INSTALL_LIBRARY_AS_DATA=$(PYPKGDATA) CXX="${CXX}" CC="${CXX}" CPPFLAGS="${PYCPPFLAGS}" LDFLAGS="${PYLDFLAGS}" $(PYTHON) builder.py build --build-base=$(abs_top_builddir)/python/build install
++	cd $(srcdir)/../../python; ASTRA_INSTALL_LIBRARY_AS_DATA=$(PYPKGDATA) CXX="${CXX}" CC="${CXX}" CPPFLAGS="${PYCPPFLAGS}" LDFLAGS="${PYLDFLAGS}" $(PYTHON) builder.py build --build-base=$(abs_top_builddir)/python/build install --prefix=$(prefix)
+ else
+ install-python-site-packages:
+ install-python:
+-- 
+2.43.2
+
