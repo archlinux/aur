@@ -1,7 +1,7 @@
 pkgbase = r-ontologyplot
 	pkgdesc = Visualising Sets of Ontological Terms
-	pkgver = 1.6
-	pkgrel = 4
+	pkgver = 1.7
+	pkgrel = 1
 	url = https://cran.r-project.org/package=ontologyPlot
 	arch = any
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = r-ontologyplot
 	depends = r-rgraphviz
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/ontologyPlot_1.6.tar.gz
-	sha256sums = 41a601e2201f32673c6830adc770a877be1ba4003b7352d4c09c8c50a3e8a158
+	source = https://cran.r-project.org/src/contrib/ontologyPlot_1.7.tar.gz
+	sha256sums = d508b861cfd596555f1b7bea681de71c9674fa7b708bb00b7a55744fb2cfd61b
 
 pkgname = r-ontologyplot

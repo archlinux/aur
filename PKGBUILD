@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ontologyPlot
-_pkgver=1.6
+_pkgver=1.7
 pkgname=r-${_pkgname,,}
-pkgver=1.6
-pkgrel=4
+pkgver=1.7
+pkgrel=1
 pkgdesc='Visualising Sets of Ontological Terms'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,7 +20,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('41a601e2201f32673c6830adc770a877be1ba4003b7352d4c09c8c50a3e8a158')
+sha256sums=('d508b861cfd596555f1b7bea681de71c9674fa7b708bb00b7a55744fb2cfd61b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
