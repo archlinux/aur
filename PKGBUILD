@@ -7,13 +7,13 @@ arch=("any")
 url="https://git.sr.ht/~whereswaldon/$_repo"
 _branch='main'
 pkgver=r155.3f4d719
-pkgrel=2
+pkgrel=3
 license=("Unlicense")
 makedepends=("git" "go" "gcc" "lm_sensors")
 source=("$_repo::git+$url#branch=$_branch")
 sha256sums=("SKIP")
 provides=($pkgname)
-conflicts=("$pkgname" "watt-wiser-sensors" "watt-wiser")
+conflicts=("watt-wiser-sensors" "watt-wiser")
 
 pkgver() {
   cd "$_repo"
