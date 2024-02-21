@@ -14,7 +14,7 @@
 #  - https://packages.cloud.google.com/apt/pool/google-cloud-cli_455.0.0-0_all_568366af2c266f73f44b302536eb2b7e143d67d783aaf0f89452dbd8ca805410.deb
 _extractedName="google-cloud-sdk"
 pkgname="google-cloud-cli"
-pkgver=464.0.0
+pkgver=465.0.0
 pkgrel=1
 pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
 url="https://cloud.google.com/cli/"
@@ -39,7 +39,7 @@ source=(
 conflicts=('google-cloud-sdk')
 provides=('google-cloud-sdk')
 replaces=('google-cloud-sdk')
-sha256sums=('21e6feb531ac61652a92483f0a73412edb2a242f4bdf9630b20ebf7f2ae817e6'
+sha256sums=('66fec21c7e4df4e1bdd13f9372f0866456984155410dfc5ba60d9a754f7eafd9'
             'e03ffb8a534b175dc497621a0396bcc29884279daa519e2cb90bd98c61d6530a'
             'c19dbe916e6fd18d9b17b3309ee60c5d389035c5520822d2c14c045d8b853924')
 
