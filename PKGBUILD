@@ -1,6 +1,6 @@
 # Maintainer: OmegaRogue <omegarogue@omegavoid.codes>
 pkgname=material-companion
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='MaterialCompanion'
 arch=('x86_64')
@@ -13,14 +13,14 @@ conflicts=('material-companion')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MaterialFoundry/MaterialCompanion/archive/${pkgver}.tar.gz"
 		material-companion.desktop
 		material-companion
-		pipx-fix.patch)
-sha256sums=('b05b33f603e8632eaba47203457935dd728bd2d5223462e699dbe4add37d9538'
+		#pipx-fix.patch
+	)
+sha256sums=('d7f62d7eefd58b8d1b03f9ef7f32e4c323a29df81d058f771f264a96115a155d'
             'ffd52de96b51e26aef5044413c311d19f829514f5463342eebcf3fdcef03f41d'
-            '1ccb8679f88551b552c08a8cf11c24fa46d80d9fd6f890722861b59bce210387'
-            '1d695effd893e102a13fa528884e1b6bbbe511f7eeac42e701e7ecf6d1a01f92')
+            '1ccb8679f88551b552c08a8cf11c24fa46d80d9fd6f890722861b59bce210387')
 prepare() {
   cd "MaterialCompanion-$pkgver"
-  patch -p1 -i "$srcdir/pipx-fix.patch"
+  #patch -p1 -i "$srcdir/pipx-fix.patch"
   npm update
   npm install
 }
