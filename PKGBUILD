@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Bruce Zhang
 pkgname=rubick
-pkgver=4.2.1
+pkgver=4.2.2
 _electronversion=26
 _nodeversion=16
-pkgrel=2
+pkgrel=1
 pkgdesc="Electron based open source toolbox, free integration of rich plug-ins. 基于 electron 的开源工具箱，自由集成丰富插件。"
 arch=('x86_64')
 url="https://rubick.vip/"
@@ -25,6 +25,7 @@ makedepends=(
 	'graphicsmagick'
 	'xz'
 	'git'
+	'base-devel'
 )
 source=(
 	"${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
@@ -44,7 +45,7 @@ build() {
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
 	_ensure_local_nvm
-	gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
+	gendesk -q -f -n --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
 	cd "${srcdir}/${pkgname}.git"
 	export npm_config_build_from_source=true
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -56,7 +57,7 @@ build() {
 	sed -e '5i\  "homepage": "https://github.com/rubickCenter/rubick",' \
 		-e '5i\  "repository": "https://github.com/rubickCenter/rubick",' \
 		-i package.json
-	sed -e "42,98d" -e "s|deb|AppImage|g" -i vue.config.js
+	sed -e "43,103d" -e "s|deb|AppImage|g" -i vue.config.js
 	yarn install --cache-folder "${srcdir}/.yarn_cache"
 	yarn global add xvfb-maybe @vue/cli
 	cd "${srcdir}/${pkgname}.git/feature"
