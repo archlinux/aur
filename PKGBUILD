@@ -2,7 +2,7 @@
 # Maintainer: pzl <alsoelp at gmail dot com>
 
 pkgname=jlink-software-and-documentation
-pkgver=7.94j
+pkgver=7.94k
 pkgrel=0
 epoch=59
 pkgdesc="Segger JLink software & documentation pack for Linux"
@@ -37,10 +37,10 @@ desktops=(
         "JTAGLoadExe.desktop"
 )
 source+=(${desktops[@]})
-md5sums_x86_64=('0c08f248c33c7caae04b5e2bde0a5624')
-md5sums_i686=('f490633c8747499a8154b9a935bf7800')
-md5sums_aarch64=('f490633c8747499a8154b9a935bf7800')
-md5sums_armv7h=('c20ab1d18f29791a794b1dec201a57b3')
+md5sums_x86_64=('d0bef55e96b1314e012eec1201d944c3')
+md5sums_i686=('6343011e9c4217156c55e09437833dc9')
+md5sums_aarch64=('e95e3312012b184e6560c39733e9bcf0')
+md5sums_armv7h=('96c3e3a96fb7ecdeb410e243d6ce1b8d')
 
 md5sums=("a57d93b791581c1f36e4c672303bb85d"
          "02c4941650a2bd345b03dd958313d4c5"
