@@ -15,14 +15,8 @@ makedepends=(
   'just'
   'mold'
 )
-checkdepends=()
-optdepends=()
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=()
-install=
 source=('git+https://github.com/pop-os/cosmic-randr.git')
 sha256sums=('SKIP')
 
