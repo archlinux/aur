@@ -1,20 +1,23 @@
-# Maintainer: Paramjit Singh <contact at paramjit dot org>
+# Maintainer: AlphaJack <alphajack at tuta dot io>
+# Contributor: Paramjit Singh <contact at paramjit dot org>
 # Contributor: George Rawlinson <george@rawlinson.net.nz>
 
-pkgname=playwright
-pkgver=1.33.0
+pkgname="playwright"
+pkgver=1.41.2
 pkgrel=1
 pkgdesc="Node.js library to automate Chromium, Firefox and WebKit with a single API"
-arch=('any')
+arch=("any")
 url="https://playwright.dev"
-license=('Apache')
-depends=('nodejs')
-makedepends=('npm')
+license=("Apache-2.0")
+depends=("nodejs")
+makedepends=("npm")
+provides=("playwright")
+conflics=("python-playwright")
 source=("$pkgname-$pkgver.tar.gz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tar.gz")
-sha512sums=('fb3cd4dd5d93b25457d844c146040ab0acad60190978b676c73523e09a219d99f14278afa14bcebcd6d10585926329104ced18e336fc37065360550ef84a4f05')
+b2sums=("99b29fb692f397137d8fb70f3db4e894fdb6b096bd5aada5c384aff4476c16392d9a6b76c44e99b41119b7df539a63b656bb258a42d1deea682efb3973c13225")
 
-package() {
+package(){
   local NPM_FLAGS=(--no-audit --no-fund --no-update-notifier)
   npm install \
     --global \

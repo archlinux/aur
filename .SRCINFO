@@ -1,14 +1,15 @@
 pkgbase = playwright
 	pkgdesc = Node.js library to automate Chromium, Firefox and WebKit with a single API
-	pkgver = 1.33.0
+	pkgver = 1.41.2
 	pkgrel = 1
 	url = https://playwright.dev
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	makedepends = npm
 	depends = nodejs
-	noextract = playwright-1.33.0.tar.gz
-	source = playwright-1.33.0.tar.gz::https://registry.npmjs.org/playwright/-/playwright-1.33.0.tgz
-	sha512sums = fb3cd4dd5d93b25457d844c146040ab0acad60190978b676c73523e09a219d99f14278afa14bcebcd6d10585926329104ced18e336fc37065360550ef84a4f05
+	provides = playwright
+	noextract = playwright-1.41.2.tar.gz
+	source = playwright-1.41.2.tar.gz::https://registry.npmjs.org/playwright/-/playwright-1.41.2.tgz
+	b2sums = 99b29fb692f397137d8fb70f3db4e894fdb6b096bd5aada5c384aff4476c16392d9a6b76c44e99b41119b7df539a63b656bb258a42d1deea682efb3973c13225
 
 pkgname = playwright
