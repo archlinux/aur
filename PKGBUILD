@@ -50,7 +50,7 @@ _disable_debug=y
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20240206.r0.gac139fc7db67
+pkgver=20240221.r0.g4893c639cc36
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -199,6 +199,7 @@ build() {
   cd $_srcname
 
   make all
+  make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
 }
 
 _package() {
@@ -237,7 +238,7 @@ _package-headers() {
 
   echo "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
-    localversion.* version vmlinux
+    localversion.* version vmlinux tools/bpf/bpftool/vmlinux.h
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
@@ -323,4 +324,4 @@ done
 sha512sums=('SKIP'
             'ced0e91e2e8293fa838589bb3fe3cc53f12a608297713d20a3b32793fdbfb4524d0b37e79e6ad5c9e63bce8e9ba7560f21cae17ae3b386a55c293446ef217846'
             'baa07e7b440af857ec32449ef570f50793a96da8e0b4aa6f905b048b9626ac6c10ceb9df97b42a02c550a029906efbc584eeafa30dd6faa22959bdf649ee2639'
-            '37a47b4d2efea4a51d7d050ecc5dc784f192be83f7ed10e5121969b93049af18a2f0c9df3f49969ed9cbc10dc536d3ffd133017dee0fecfdb89f6906542ea16d')
+            'c059ce01c11e7bee186aae7c0e203d73f37c79531c6dd3c92ce9b8ed882779a4ae92bda3bdbf7eb1d00f93904c9e294695af96bb6686457e1a207f9b6b75fd12')
