@@ -3,8 +3,8 @@
 pkgbase=linux-slim
 _srcname=linux
 gitver=v6.7.5
-patchver=20230105
-patchname=more-uarches-for-kernel-5.17+.patch
+patchver=20240221.2
+patchname=more-uarches-for-kernel-5.8-5.14.patch
 pkgver=6.7.v.5
 pkgrel=1
 arch=('x86_64')
@@ -29,7 +29,7 @@ sha256sums=('SKIP'
             #.preset file
             'e60d58e60c809d5bd6bc2c258bce0e811a818b6a4b9ccb928902e519e90ab6d5'
             #grayskypatch
-            '81ad663925a0aa5b5332a69bae7227393664bb81ee2e57a283e7f16e9ff75efe'
+            '2f99d9e37f372925e054115bfead4723a328ffbdb7bf958753aab2ac48dc5673'
            )
 
 _kernelname=${pkgbase#linux}
