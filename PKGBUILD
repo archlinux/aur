@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-epoch-git
-pkgver=r117.8dec6bd
+pkgver=r118.5f2fd33
 pkgrel=1
 pkgdesc="Cosmic desktop environment from System76's Pop!_OS written in Rust utilizing Iced inspired by GNOME"
 arch=('x86_64' 'aarch64')
@@ -132,9 +132,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "$srcdir/cosmic-epoch"
-  just clean
-
+  cd cosmic-epoch
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
 
@@ -171,6 +169,9 @@ prepare() {
     xdg-desktop-portal-cosmic/Makefile
   sed -i 's|libexec|lib|g' cosmic-osd/Makefile cosmic-session/{Justfile,src/main.rs}
   sed -i 's|libexec|lib/polkit-1|g' cosmic-osd/src/subscriptions/polkit_agent_helper.rs
+
+  # Upstream completely broke the justfile
+  git revert -n 5f2fd3324b997142fa10c8170fd6b53feb5f2673
 }
 
 build() {
