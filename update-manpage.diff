@@ -1,0 +1,13 @@
+diff --git a/light.1 b/light.1
+index e3481e7..fecd4de 100644
+--- a/light.1
++++ b/light.1
+@@ -38,6 +38,8 @@ List available devices
+ Increase brightness by value
+ .It Fl U
+ Decrease brightness by value
++.It Fl T
++Multiply brightness by value (can be non-integer)
+ .It Fl S
+ Set brightness to value
+ .It Fl G
