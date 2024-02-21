@@ -1,5 +1,5 @@
 # Maintainer: Amolith <amolith@secluded.site>
-pkgname=watt-wiser-git
+pkgname="watt-wiser-git"
 _pkgname=${pkgname%-git}
 pkgdesc='A software energy consumption estimation tool'
 arch=("any")
@@ -8,7 +8,7 @@ _branch='main'
 pkgver=r137.336cc55
 pkgrel=1
 license=("Unlicense")
-makedepends=("git" "go" "gcc" "libx11" "vulkan-headers" "pkgconf" "wayland" "wayland-protocols" "libx11" "libxkbcommon-x11" "libxcursor")
+makedepends=("git" "go" "gcc" "vulkan-headers" "pkgconf" "wayland" "wayland-protocols" "libx11" "libxkbcommon-x11" "libxcursor")
 depends=("watt-wiser-sensors-git" "xdg-desktop-portal")
 source=("$pkgname::git+$url#branch=$_branch")
 sha256sums=("SKIP")

@@ -8,7 +8,6 @@ pkgbase = watt-wiser-git
 	makedepends = git
 	makedepends = go
 	makedepends = gcc
-	makedepends = libx11
 	makedepends = vulkan-headers
 	makedepends = pkgconf
 	makedepends = wayland
