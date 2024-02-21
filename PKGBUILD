@@ -3,12 +3,13 @@
 _name=purpose
 pkgname=${_name}5
 pkgver=5.115.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Framework for providing abstractions to get the developers purposes fulfilled'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(kaccounts-integration kirigami2 accounts-qml-module)
+depends=(kio5
+         kirigami2)
 makedepends=(extra-cmake-modules intltool)
 optdepends=('kdeconnect: sharing to smartphone via KDE Connect'
             'telegram-desktop: sharing via Telegram'
