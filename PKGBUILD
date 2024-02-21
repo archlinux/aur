@@ -9,7 +9,7 @@ _local=false
 _proj="hip"
 _pkgname=aspe
 pkgname="${_pkgname}-git"
-pkgver="1.1.1.1.r0.g5ec40b469866666b80c5db747e90692851300120"
+pkgver="1.1.1.1.r1.g2cd7bc8640842f7d1e87fc6d3f6d64077df798a3"
 pkgrel=1
 _pkgdesc=(
   "Arch Linux build source"
@@ -54,7 +54,6 @@ _url="${url}"
 [[ "${_local}" == true ]] && \
   _url="${_local}"
 source=()
-sha256sums=()
 _branch="master"
 [[ "${_git}" == true ]] && \
   makedepends+=(
@@ -62,9 +61,6 @@ _branch="master"
   ) && \
   source+=(
     "${_pkgname}-${_branch}::git+${_url}#branch=${_branch}"
-  ) && \
-  sha256sums+=(
-    SKIP
   )
 [[ "${_git}" == false ]] && \
   makedepends+=(
@@ -73,10 +69,10 @@ _branch="master"
   ) && \
   source+=(
     "${_pkgname}.tar.gz::${_url}/archive/refs/heads/${_branch}.tar.gz"
-  ) && \
-  sha256sums+=(
-    '85c9b02b1118b466cb78c934bbfbcfaaee1a1e560e3eee3c2a8153b5a50d50a5'
   )
+sha256sums=(
+  SKIP
+)
 
 _nth() {
   local \
