@@ -1,0 +1,6 @@
+/src/
+/pkg/
+/funiculi/
+*.log
+*.pkg.*
+*.tar.*
