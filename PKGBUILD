@@ -61,8 +61,20 @@ _submodules=(
   xdg-desktop-portal-cosmic
 )
 
-provides=('cosmic-epoch' 'cosmic-icons' 'cosmic-store' "${_submodules[@]}")
-conflicts=('cosmic-epoch' 'cosmic-icons' 'cosmic-store' "${_submodules[@]}")
+provides=(
+  'cosmic-epoch'
+  'cosmic-icons'
+  'cosmic-store'
+  'cosmic-workspaces'
+  "${_submodules[@]}"
+)
+conflicts=(
+  'cosmic-epoch'
+  'cosmic-icons'
+  'cosmic-store'
+  'cosmic-workspaces'
+  "${_submodules[@]}"
+)
 backup=('etc/cosmic-comp/config.ron')
 options=('!lto')
 source=(
@@ -121,6 +133,8 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/cosmic-epoch"
+  just clean
+
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
 
