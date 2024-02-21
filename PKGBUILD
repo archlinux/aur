@@ -3,14 +3,14 @@
 
 pkgname=weasis-bin
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Weasis is a free medical DICOM viewer used in healthcare by hospitals, health networks, multicenter research trials, and patients."
 arch=('any')
 url="https://nroduit.github.io/"
 license=('EPL-2.0')
 options=('!strip' '!emptydirs')
 source=("https://github.com/nroduit/Weasis/releases/download/v${pkgver}/weasis_${pkgver}-1_amd64.deb")
-sha512sums=('f0b0272f638c32afd1dbbb7d779b749eec8852fd5c86f92e1d4d999d1d885b274ea67f3d4ff5c7c5c0de90b5f52d4ab43e743a5ef8aa579e5daddef696acbabf')
+sha512sums=('a68fd4ae6a06b567172346210ef9aca3c995966bacedc3ec636b323ddeebc108ddb0a28568daa2f905c94ef70179549e7427f8023a97dc3508547c78d9479aeb')
 
 package(){
         tar --zstd -xC "${pkgdir}" -f data.tar.zst
