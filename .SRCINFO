@@ -8,7 +8,9 @@ pkgbase = devpod
 	depends = fuse2
 	options = !strip
 	source = devpod-0.5.3.AppImage::https://github.com/loft-sh/devpod/releases/download/v0.5.3/DevPod_linux_amd64.AppImage
-	source = LICENSE::https://github.com/loft-sh/devpod/blob/main/LICENSE?raw=true
+	source = LICENSE::https://github.com/loft-sh/devpod/raw/v0.5.3/LICENSE
+	source = devpod.png::https://github.com/loft-sh/devpod/raw/v0.5.3/desktop/devpod.png
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
