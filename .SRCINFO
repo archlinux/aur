@@ -1,4 +1,4 @@
-pkgbase = alvr
+pkgbase = alvr-nvidia
 	pkgdesc = Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi.
 	pkgver = 20.6.1
 	pkgrel = 1
@@ -20,10 +20,16 @@ pkgbase = alvr
 	depends = libdrm
 	depends = x264
 	depends = alsa-lib
+	depends = libva.so
+	depends = libva-drm.so
+	depends = libva-x11.so
+	depends = bash
+	depends = hicolor-icon-theme
+	depends = cuda
 	provides = alvr
 	conflicts = alvr
 	options = !lto
 	source = alvr::git+https://github.com/alvr-org/ALVR.git#tag=v20.6.1
 	md5sums = SKIP
 
-pkgname = alvr
+pkgname = alvr-nvidia

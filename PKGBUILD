@@ -1,22 +1,18 @@
-# Maintainer: Łukasz Mariański <lmarianski at protonmail dot com>
+# Maintainer: m00nw4tch3r <m00nwtchr at duck dot com>
 
-function _nvidia_check() {
-	pacman -Qi nvidia &>/dev/null
-}
-
-pkgname=alvr
+pkgname=alvr-nvidia
+_pkgname=${pkgname%-nvidia}
 pkgver=20.6.1
 pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
 license=('MIT')
-groups=()
-depends=('vulkan-icd-loader' 'libunwind' 'libdrm' 'x264' 'alsa-lib')
+depends=('vulkan-icd-loader' 'libunwind' 'libdrm' 'x264' 'alsa-lib' 'libva.so' 'libva-drm.so' 'libva-x11.so' 'bash' 'hicolor-icon-theme' 'cuda')
 makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack' 'libxrandr' 'nasm' 'unzip' 'ffnvcodec-headers')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
-source=("${pkgname}"::"git+https://github.com/alvr-org/ALVR.git#tag=v$pkgver")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${_pkgname}"::"git+https://github.com/alvr-org/ALVR.git#tag=v$pkgver")
 md5sums=('SKIP')
 options=('!lto')
 
@@ -26,7 +22,7 @@ export RUSTUP_TOOLCHAIN=stable
 export CARGO_TARGET_DIR=target
 
 prepare() {
-	cd "$srcdir/${pkgname}"
+	cd "$srcdir/${_pkgname}"
 
 	sed -i 's:../../../lib64/libalvr_vulkan_layer.so:libalvr_vulkan_layer.so:' alvr/vulkan_layer/layer/alvr_x86_64.json
 
@@ -34,7 +30,7 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/${pkgname}"
+	cd "$srcdir/${_pkgname}"
 
 	export ALVR_ROOT_DIR=/usr
 	export ALVR_LIBRARIES_DIR="$ALVR_ROOT_DIR/lib"
@@ -42,12 +38,8 @@ build() {
 	export ALVR_VRCOMPOSITOR_WRAPPER_DIR="$ALVR_LIBRARIES_DIR/alvr/"
 	export FIREWALL_SCRIPT_DIR="$ALVR_ROOT_DIR/share/alvr/"
 
-	if _nvidia_check; then
-		 export CC=gcc-12 CXX=g++-12
-		cargo run --release --frozen -p alvr_xtask -- prepare-deps --platform linux
-	else
-		cargo run --release --frozen -p alvr_xtask -- prepare-deps --platform linux --no-nvidia
-	fi
+	# export CC=gcc-12 CXX=g++-12
+	cargo run --release --frozen -p alvr_xtask -- prepare-deps --platform linux
 
 	cargo build \
 		--frozen \
@@ -64,8 +56,8 @@ build() {
 }
 
 package() {
-	cd "$srcdir/${pkgname}"
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	cd "$srcdir/${_pkgname}"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
 	install -Dm755 target/release/alvr_dashboard -t "$pkgdir/usr/bin/"
 
 	# vrcompositor wrapper
@@ -81,7 +73,7 @@ package() {
 	install -Dm644 alvr/vulkan_layer/layer/alvr_x86_64.json -t "$pkgdir/usr/share/vulkan/explicit_layer.d/"
 
 	# Desktop
-	install -Dm644 "alvr/xtask/resources/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
+	install -Dm644 "alvr/xtask/resources/$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
 
 	# Icons
 	install -d $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256}/apps/
