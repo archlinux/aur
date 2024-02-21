@@ -1,16 +1,16 @@
 # Maintainer: Sýlvan Heuser <sylvan.heuser@gmx.net>
 
 pkgname=pol-git
-_pkgname=pol
+_pkgname=poline
 pkgver=r23.465d3bf
 pkgrel=1
 pkgdesc='Awk-like one-liners for Python'
 arch=('i686' 'x86_64')
-url="https://github.com/gkdr/lurch"
+url="https://github.com/riolet/poline"
 license=('MIT')
 depends=('python2')
 makedepends=('git' 'python2')
-source=("$_pkgname::git+https://github.com/riolet/pol.git")
+source=("$_pkgname::git+https://github.com/riolet/poline.git")
 sha256sums=('SKIP')
 
 pkgver () {
