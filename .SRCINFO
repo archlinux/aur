@@ -1,6 +1,6 @@
 pkgbase = planify
 	pkgdesc = Task manager with Todoist support
-	pkgver = 4.4
+	pkgver = 4.5
 	pkgrel = 1
 	url = https://github.com/alainm23/planify
 	arch = x86_64
@@ -13,12 +13,13 @@ pkgbase = planify
 	depends = evolution-data-server
 	depends = granite7
 	depends = gtksourceview5
+	depends = gxml
 	depends = libadwaita
 	depends = libportal-gtk4
 	depends = webkitgtk-6.0
 	conflicts = elementary-planner
 	replaces = elementary-planner
-	source = git+https://github.com/alainm23/planify.git#commit=1471e0db85b806e4dd5a58b17459f38a35d7543b
+	source = git+https://github.com/alainm23/planify.git#commit=892661c421fc81d8c685395c3342265ff073b285
 	sha256sums = SKIP
 
 pkgname = planify
