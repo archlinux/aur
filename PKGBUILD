@@ -9,7 +9,7 @@ url="https://buildpacks.io/"
 license=('Apache')
 makedepends=('go-pie')
 source=("https://github.com/buildpacks/pack/archive/v0.33.2.tar.gz")
-sha512sums=("3334334f16de66f7f44694f2b02fe213cea3d6100f3d414811fd3052207d7d88a22c2a9229cb640586cbf8775bf0c140d8c6fdcd8f06e28c759fd873dbf257f1")
+sha512sums=("d416527ffbc24b2343c6b5964973a9141d028af3bb5dd7fc6b65beccff44238c4a7299c4ce970d4a529952d37c7cee15ad71e46d4b3036107526fd0ab739fcfb")
 build() {
 	export GOPATH="${srcdir}/go"
 	cd "${srcdir}/pack-${pkgver}"
