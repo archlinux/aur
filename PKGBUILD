@@ -8,7 +8,7 @@
 
 pkgname=libsepol
 pkgver=3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux binary policy manipulation library"
 arch=('i686' 'x86_64' 'armv6h' 'aarch64')
 url='https://github.com/SELinuxProject/selinux'
@@ -36,6 +36,10 @@ build() {
 }
 
 package() {
+  provides=(
+    libsepol.so
+  )
+
   cd "${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" SHLIBDIR=/usr/lib install
 }
