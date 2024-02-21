@@ -12,6 +12,7 @@ WorkingDirectory=/var/lib/wyoming-faster-whisper
 
 EnvironmentFile=/etc/conf.d/wyoming-faster-whisper
 ExecStart=python3 -m wyoming_faster_whisper \
+    --device $DEVICE \
     --model $MODEL \
     --uri $URI \
     --beam-size $BEAM_SIZE \

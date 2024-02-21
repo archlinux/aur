@@ -1,7 +1,7 @@
 pkgbase = python-wyoming-faster-whisper
 	pkgdesc = Wyoming Server for Faster Whisper
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rhasspy/wyoming-faster-whisper
 	arch = any
 	license = MIT
