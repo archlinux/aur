@@ -2,7 +2,7 @@
 # Contributor: Pylogmon <pylogmon@outlook.com>
 _pkgname=pot
 pkgname="${_pkgname}-translation-git"
-pkgver=2.7.4.r18.gf2f1536
+pkgver=2.7.6.r7.g1773df5
 _nodeversion=18
 pkgrel=1
 pkgdesc="一个跨平台的划词翻译软件 | A cross-platform software for text translation."
@@ -53,7 +53,7 @@ _ensure_local_nvm() {
 build() {
     sed "s|@runname@|${_pkgname}|g" -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname "${_pkgname}-translation-git" --categories "Office" --name "${pkgname%-git}" --exec "${pkgname%-git} %U"
+    gendesk -q -f -n --pkgname="${_pkgname}-translation-git" --categories="Office" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
     HOME="${srcdir}/.electron-gyp"
     pnpm config set store-dir "${srcdir}/.pnpm_store"
