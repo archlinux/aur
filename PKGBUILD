@@ -46,9 +46,9 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-sched-ext-git
-pkgver=6.7.0.r1236012.g6eb6c92567b1
+pkgver=6.8.0.r1251075.g384c4bce5006
 _srcname=sched_ext
-pkgrel=5
+pkgrel=1
 pkgdesc='Linux Kernel based on the sched_ext branch'
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -61,6 +61,7 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver
 
 source=("git+https://github.com/sched-ext/sched_ext.git#branch=sched_ext"
         "${_lucjanpath}/arch-patches-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-sep/0002-arch-Kconfig-Default-to-maximum-amount-of-ASLR-bits.patch"
          # the main kernel config files
         'config')
 
@@ -180,6 +181,7 @@ build() {
   cd $_srcname
 
   make all
+  make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
 }
 
 _package() {
@@ -218,7 +220,7 @@ _package-headers() {
 
   echo "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
-    localversion.* version vmlinux
+    localversion.* version vmlinux tools/bpf/bpftool/vmlinux.h
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
@@ -302,5 +304,6 @@ for _p in "${pkgname[@]}"; do
 done
 
 b2sums=('SKIP'
-        'efe75d4575d6b788a36a1e90d1e0e0325a134a254b31e6b82da911579252f661a01b21a5b36aceb0e5f2f617dfd17915ddcb8fbf4fce36a327607533815a334e'
-        'a7afc12f5600bfbaa23e14d4f78a77261aba2efc2e1f3133abc21ce7f951629d5f1a97c1732d7ff81a19cddc73fe7621a44be8c0dcc8ab1532083b21f6c40100')
+        'fb48a58e7aaa8f79723b999ecc83c7ecf50b126881a6b299d80da0424160bddc715dd7cd7c87c07d4aa7cbcc9ea6f405c11b0c4ad1a109e750dcc97bda4c9c78'
+        '38afff5ca38dcfdba13fb077a5e3df32fbbbb97c8cb9b55e8c674f3cadcc5dd163e2c6472f8365ef10bfeb5bcc11d64b78ee0366bddea124d3f61b21314a5468'
+        'daefde1bb65c26847d236ff3b35b9eac59fb2b15f691b021ae6639b04e6a7ed266f1c6f87f653dc494b53b631851cfbf94f9eb8a0560767e4f4d48cef1069b71')
