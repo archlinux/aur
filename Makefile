@@ -34,17 +34,17 @@ mrproper:	clean
 .SRCINFO:	PKGBUILD
 	makepkg --printsrcinfo >$@
 
-build:	.SRCINFO
+build:	PKGBUILD
 	$(BUILD)
 
-install:
+install:	PKGBUILD
 	$(BUILD) --install
 
 remove:
 	@echo -e "# Run the following only if you are certain:\nsudo pacman -Rs $(PKG)"
 
-janitor:
-	sort -o .gitignore .gitignore
+janitor:	.gitignore .SRCINFO
+	sort -o $< $<
 
 push:
 	@for _r in $(shell git remote); do git push $$_r; done
