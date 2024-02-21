@@ -2,7 +2,7 @@
 
 pkgname=pev2-electron
 _pkgname=pev2
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Postgres Explain Visualizer 2, using the system Electron package"
 arch=(any)
@@ -17,7 +17,7 @@ source=(
   "remove-demo-notice.patch"
 )
 sha256sums=(
-  '1d71082b05b2833eeca5b59346d840b0a54d33a5428b1e42c556d0b842d45556'
+  '3fee4341fc999375cb22b6c00a4ffd7b7ecd77b7a4bf7440d5d702fa49da48b4'
   'd4361d563a1c199b5887154ac5f4d8009dc2c882b409c8f4bbf00281a2e910e4'
   '219229650df88bf6f8ffc0bb53bf2986a479d0144c0fa93949996b58ed4e7d8e'
   '4e6d2bf9298e95e63e7bba7f2e96cfef031c0b77da88ed2e7bf0106b880f283b'
