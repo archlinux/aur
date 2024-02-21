@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=lobtui
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="TUI for lobste.rs"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('6b9681f7f3792e82a5d0286deef402bb60d3d197ed0225696fccb12db515885a0985e3377cca305acadf1543abbc148f5674ab21a65d26eb83a60bcb16d14f2e')
+sha512sums=('b04732abc2d878c648a857225dac1444c3c966af9a7c90e9df6198e32254c15ebc633bb1eba0ba9e6156b4f96e8b4128f8e5d4008510ec9727f75ca6261c0f7b')
 options=('!lto')
 
 prepare() {
