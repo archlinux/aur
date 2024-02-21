@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fsolauncher
 _pkgname="FreeSO Launcher"
-pkgver=1.10.1_prod.3
+pkgver=1.10.1_prod.4
 _electronversion=22
 _nodeversion=16
 pkgrel=1
@@ -38,7 +38,7 @@ build() {
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -f -n -q --categories "Game" --name "${_pkgname}" --exec "${pkgname} %U"
+    gendesk -f -n -q --categories="Game" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git/src"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
