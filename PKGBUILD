@@ -1,10 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Co-maintainer: Edu4rdSHL <edu4rdshl@protonmail.com>
 pkgname=waveterm
 _pkgname=Wave
 _appname="${_pkgname} Terminal"
 pkgver=0.6.3
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source, cross-platform terminal for seamless workflows"
 arch=('any')
 url="https://www.waveterm.dev/"
@@ -23,8 +24,7 @@ makedepends=(
     'git'
     'go>=1.18'
     'scripthaus'
-    'make'
-    'gcc'
+    'base-devel'
     'zip'
 )
 source=(
@@ -38,7 +38,7 @@ build() {
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname}.sh"
-    gendesk -f -n -q --categories "Utility" --name "${_appname}" --exec "${pkgname} %U"
+    gendesk -f -n -q --categories="Utility" --name="${_appname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export CGO_ENABLED=1
     export GOCACHE="${srcdir}/go-build"
