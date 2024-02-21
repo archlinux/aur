@@ -1,7 +1,7 @@
 pkgbase = raytracinginvulkan-git
 	pkgdesc = Implementation of Peter Shirley's Ray Tracing In One Weekend book
 	pkgver = 7.r16.g5316859
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/GPSnoopy/RayTracingInVulkan
 	arch = x86_64
 	license = BSD
@@ -12,20 +12,22 @@ pkgbase = raytracinginvulkan-git
 	depends = boost-libs
 	depends = glfw-x11
 	depends = glm
-	depends = imgui
+	depends = imgui=1.89.9
 	depends = tinyobjloader
 	depends = vulkan-icd-loader
 	depends = glslang
 	depends = freetype2
 	depends = mangohud
-	optdepends = amdvlk: Standalone driver for radeon gpus
+	optdepends = nvidia-utils: Includes vulkan driver for NVIDIA
+	optdepends = vulkan-radeon: 1st best vulkan driver for AMD
+	optdepends = vulkan-amdgpu-pro: 2nd best vulkan driver for AMD
+	optdepends = amdvlk: 3rd best vulkan driver for AMD
+	optdepends = vulkan-intel: Includes vulkan driver for NVIDIA
 	provides = raytracinginvulkan=7.r16.g5316859
 	conflicts = raytracinginvulkan
 	source = raytracinginvulkan::git+https://github.com/GPSnoopy/RayTracingInVulkan.git
 	source = glslang.patch
-	source = http://nhameh.ovh/packages/x86_64/imgui-1.89.9-2-x86_64.pkg.tar.zst
 	sha256sums = SKIP
 	sha256sums = 4cd8b72df0816b2d0140c0f840e8e619ea48101ad01636dfa9ff3ab0b65ce99a
-	sha256sums = d3a53fc7a1ada9995d5cdece050847abf856fee29c22eba45f5677a057504bfb
 
 pkgname = raytracinginvulkan-git
