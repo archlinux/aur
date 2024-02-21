@@ -4,7 +4,7 @@ pkgver=1
 pkgrel=3
 pkgdesc="A script for suspending to memory"
 arch=('x86_64')
-license=('MIT')
+license=('0BSD')
 source=("mem-suspend.c")
 sha256sums=('42f0e60edacf574e2f542fea746c4c59a558a2f816d7c37c30bb5fb6cc03d364')
 
