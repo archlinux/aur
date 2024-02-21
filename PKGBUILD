@@ -2,14 +2,14 @@
 
 pkgname=showmidi
 _pkgname=ShowMIDI
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Multi-platform GUI application to effortlessly visualize MIDI activity"
 arch=("i686" "x86_64")
 license=('GPLv3')
 url="https://github.com/gbevin/ShowMIDI"
 depends=('alsa-lib' 'freetype2' 'libxrandr' 'libxinerama' 'libxcursor')
-makedepends=('pkg-config' 'cmake')
+makedepends=('pkg-config' 'cmake' 'git')
 source=("$_pkgname::git+https://github.com/gbevin/$_pkgname.git#tag=$pkgver")
 md5sums=('SKIP')
 
