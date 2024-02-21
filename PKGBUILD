@@ -9,11 +9,11 @@ pkgver=r155.3f4d719
 pkgrel=1
 license=("Unlicense")
 makedepends=("git" "go" "gcc" "vulkan-headers" "pkgconf" "wayland" "wayland-protocols" "libx11" "libxkbcommon-x11" "libxcursor")
-depends=("watt-wiser-sensors" "xdg-desktop-portal")
+depends=("watt-wiser-sensors-git" "xdg-desktop-portal")
 source=("$pkgname::git+$url#branch=$_branch")
 sha256sums=("SKIP")
-provides=($_pkgname)
-conflicts=($_pkgname)
+provides=($pkgname)
+conflicts=("$pkgname" "watt-wiser" "watt-wiser-sensors")
 
 pkgver() {
   cd "$pkgname"
