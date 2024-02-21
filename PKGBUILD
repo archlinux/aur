@@ -6,14 +6,14 @@ function _nvidia_check() {
 
 pkgname=alvr-git
 _pkgname=${pkgname%-git}
-pkgver=21.0.0_dev00.r2737.41be267b
+pkgver=21.0.0_dev00.r2802.3bfbd8fe
 pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
 license=('MIT')
 groups=()
-depends=('vulkan-driver' 'libunwind' 'libdrm')
+depends=('vulkan-icd-loader' 'libunwind' 'libdrm' 'x264' 'alsa-lib' 'libva.so' 'libva-drm.so' 'libva-x11.so' 'bash' 'hicolor-icon-theme')
 makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack' 'libxrandr' 'nasm' 'unzip' 'ffnvcodec-headers' 'jq')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -52,7 +52,6 @@ build() {
 	export FIREWALL_SCRIPT_DIR="$ALVR_ROOT_DIR/share/alvr/"
 
 	if _nvidia_check; then
-		export CC=gcc-12 CXX=g++-12
 		cargo run --release --frozen -p alvr_xtask -- prepare-deps --platform linux
 	else
 		cargo run --release --frozen -p alvr_xtask -- prepare-deps --platform linux --no-nvidia
