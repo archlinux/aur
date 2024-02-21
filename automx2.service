@@ -9,6 +9,7 @@ Environment=FLASK_APP=automx2.server:app
 Environment=FLASK_CONFIG=production
 ExecStart=/usr/bin/flask run --host=127.0.0.1 --port=4243
 Restart=always
+UMask=0027
 User=automx2
 WorkingDirectory=/var/lib/automx2
 
