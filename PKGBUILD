@@ -3,18 +3,18 @@
 
 pkgname=mingw-w64-highway
 _pkgname=highway
-pkgver=1.0.7
+pkgver=1.1.0
 pkgrel=1
-pkgdesc='A C++ library for SIMD (Single Instruction, Multiple Data) (mingw-w64)'
+pkgdesc='A C++ library that provides portable SIMD/vector intrinsics (mingw-w64)'
 arch=('any')
 url='https://github.com/google/highway/'
-license=('Apache')
+license=('Apache-2.0' 'BSD-3-Clause')
 depends=('mingw-w64-crt')
 options=(!strip !buildflags staticlibs)
 #makedepends=('mingw-w64-cmake' 'mingw-w64-gtest' 'mingw-w64-gcc')
 makedepends=('mingw-w64-cmake' 'mingw-w64-gcc')
 source=("https://github.com/google/highway/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('5434488108186c170a5e2fca5e3c9b6ef59a1caa4d520b008a9b8be6b8abe6c5')
+sha256sums=('354a8b4539b588e70b98ec70844273e3f2741302c4c377bcc4e81b3d1866f7c9')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
@@ -66,5 +66,6 @@ package() {
   for _arch in ${_architectures}; do
     DESTDIR="$pkgdir" cmake --install build-${_arch}-static
     DESTDIR="$pkgdir" cmake --install build-${_arch}
+    install -D -m644 "${_pkgname}-${pkgver}/LICENSE-BSD3" -t "${pkgdir}/usr/${_arch}/share/licenses/${pkgname}"
   done
 }
