@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=siyuan-git
-pkgver=2.12.7.r0.gb35b38dcd
+pkgver=3.0.0.r0.g71e830b69
 _electronversion=28
 _nodeversion=18
 pkgrel=1
@@ -26,8 +26,7 @@ makedepends=(
     'npm'
     'go>=1.21'
     'pnpm'
-    'gcc'
-    'make'
+    'base-devel'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
