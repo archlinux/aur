@@ -1,0 +1,17 @@
+pkgbase = rs-git-fsmonitor-git
+	pkgdesc = A fast git core.fsmonitor hook written in Rust
+	pkgver = 0.2.0.20200831.39a9cb0
+	pkgrel = 1
+	url = https://github.com/jgavris/rs-git-fsmonitor
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	depends = watchman
+	provides = rs-git-fsmonitor
+	conflicts = rs-git-fsmonitor
+	source = rs-git-fsmonitor-git::git+https://github.com/jgavris/rs-git-fsmonitor.git
+	sha1sums = SKIP
+
+pkgname = rs-git-fsmonitor-git
