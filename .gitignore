@@ -1,6 +1,9 @@
 *.tar
 *.tar.*
 *.rpm
+*.deb
+
+.idea
 
 src/
 pkg/
