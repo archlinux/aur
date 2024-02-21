@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-osd-git
 pkgver=r63.bc35c94
-pkgrel=1
+pkgrel=2
 pkgdesc="WIP COSMIC OSD"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-osd"
@@ -41,6 +41,7 @@ prepare() {
 
   # # libexec > lib
   sed -i 's|libexec|lib|g' Makefile
+  sed -i 's|libexec|lib/polkit-1|g' src/subscriptions/polkit_agent_helper.rs
 }
 
 build() {
