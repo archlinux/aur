@@ -14,7 +14,7 @@
 : ${_sccache:=}
 
 pkgname=niri-git
-pkgver=0.1.2.r7.gc4c0784
+pkgver=0.1.2.r23.gd1fe693
 pkgrel=1
 pkgdesc="Scrollable-tiling Wayland compositor"
 arch=(x86_64 aarch64)
@@ -70,7 +70,7 @@ package() {
   cd ${pkgname%-git}
   install -Dm755 target/release/${pkgname%-git}                       -t ${pkgdir}/usr/bin/
   install -Dm755 resources/${pkgname%-git}-session                    -t ${pkgdir}/usr/bin/
-  install -Dm755 resources/default-config.kdl                         -t ${pkgdir}/etc/xdg/niri/
+  install -Dm644 resources/default-config.kdl                         -t ${pkgdir}/usr/share/doc/niri
   install -Dm644 resources/${pkgname%-git}.desktop                    -t ${pkgdir}/usr/share/wayland-sessions/
   install -Dm644 resources/${pkgname%-git}-portals.conf               -t ${pkgdir}/usr/share/xdg-desktop-portal/
   install -Dm644 resources/${pkgname%-git}{.service,-shutdown.target} -t ${pkgdir}/usr/lib/systemd/user/
