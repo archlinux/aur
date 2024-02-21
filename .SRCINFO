@@ -1,0 +1,13 @@
+pkgbase = upd8all
+	pkgdesc = Upd8All: Simplify package updates on Arch Linux with one command. Supports Pacman, Yay, and Homebrew.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/felipealfonsog/Upd8All
+	arch = x86_64
+	license = BSD 3-Clause
+	depends = gcc
+	depends = python3
+	source = https://github.com/felipealfonsog/Upd8All/archive/refs/tags/v.0.0.1.tar.gz
+	sha256sums = 158d4ae7412badbfeb687c866014ebac544882f28a61cb13010f2f81c3196ba9
+
+pkgname = upd8all
