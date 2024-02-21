@@ -3,7 +3,7 @@ pkgname=frappe-books-bin
 _pkgname="Frappe Books"
 pkgver=0.21.2
 _electronversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern desktop accounting for freelancers and small-businesses."
 arch=('x86_64')
 url="https://frappebooks.com/"
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('4d1004552528005e2eda881dc0353fead565a8b9c4cc194f9a045f820d39ae86'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '4e61e7cfc13404def7b48f257a0a0dfc4aec3ec2edb6e33a01eeb43020afa74f')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \

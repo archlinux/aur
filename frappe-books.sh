@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 _APPDIR="/usr/lib/@appname@"
-_RUNNAME="${_APPDIR}/@runname@"
+_RUNNAME="${_APPDIR}/resources/@runname@"
 export PATH="${_APPDIR}:${PATH}"
 export LD_LIBRARY_PATH="${_APPDIR}/swiftshader:${_APPDIR}/lib:${LD_LIBRARY_PATH}"
 export ELECTRON_IS_DEV=0
