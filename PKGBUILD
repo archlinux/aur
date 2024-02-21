@@ -45,6 +45,8 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
+  export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTUP_TOOLCHAIN=stable
   # note, consider rust build time optimisations: 
   # https://matklad.github.io/2021/09/04/fast-rust-builds.html, 
   # later. for now, ignore warnings, and build with lower priority 
