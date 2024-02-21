@@ -6,8 +6,8 @@ BUILDENV+=(!check)
 
 pkgname=texpresso-git
 _pkgname=${pkgname%-git}
-pkgver=r34.eae4844
-pkgrel=2
+pkgver=r146.a24ca48
+pkgrel=1
 pkgdesc='Live rendering and error reporting for LaTeX'
 url="https://github.com/let-def/$_pkgname"
 arch=(x86_64)
@@ -41,6 +41,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
+options=(!lto)
 
 pkgver() {
 	cd "${pkgname%-git}"
@@ -61,7 +62,6 @@ prepare() {
 
 build() {
 	cd "${pkgname%-git}"
-	CFLAGS+=" -ffat-lto-objects"
 	export CARGO_BUILD_FLAGS="--frozen --release"
 	make config
 	make all
