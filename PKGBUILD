@@ -1,4 +1,4 @@
-# Maintainer: Łukasz Mariański <lmarianski at protonmail dot com>
+# Maintainer: m00nw4tch3r <m00nwtchr at duck dot com>
 
 function _nvidia_check() {
 	pacman -Qi nvidia &>/dev/null
