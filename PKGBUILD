@@ -3,11 +3,11 @@
 
 pkgname=ffprog
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="FFmpeg with nice progress visualization"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/dnaka91/ffprog"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 depends=('ffmpeg' 'gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
