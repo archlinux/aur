@@ -6,14 +6,14 @@ arch=("any")
 url="https://git.sr.ht/~whereswaldon/watt-wiser"
 _branch='main'
 pkgver=r155.3f4d719
-pkgrel=1
+pkgrel=2
 license=("Unlicense")
 makedepends=("git" "go" "gcc" "vulkan-headers" "pkgconf" "wayland" "wayland-protocols" "libx11" "libxkbcommon-x11" "libxcursor")
 depends=("watt-wiser-sensors-git" "xdg-desktop-portal")
 source=("$pkgname::git+$url#branch=$_branch")
 sha256sums=("SKIP")
 provides=($pkgname)
-conflicts=("$pkgname" "watt-wiser" "watt-wiser-sensors")
+conflicts=("watt-wiser" "watt-wiser-sensors")
 
 pkgver() {
   cd "$pkgname"
