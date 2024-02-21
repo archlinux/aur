@@ -1,7 +1,7 @@
 pkgbase = accounts-qml-module
 	pkgdesc = Expose the Online Accounts API to QML applications
 	pkgver = 0.7
-	pkgrel = 5
+	pkgrel = 6
 	url = https://gitlab.com/accounts-sso/accounts-qml-module
 	arch = x86_64
 	license = LGPL
