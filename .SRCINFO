@@ -10,6 +10,7 @@ pkgbase = arduino-ide-src
 	makedepends = yarn
 	makedepends = python
 	makedepends = go
+	makedepends = npm
 	depends = libxkbfile
 	depends = libxss
 	depends = nss

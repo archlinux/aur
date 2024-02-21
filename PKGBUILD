@@ -10,7 +10,7 @@ arch=(x86_64)
 url="https://github.com/arduino/arduino-ide"
 license=(AGPL3)
 depends=(libxkbfile libxss nss libsecret git)
-makedepends=(electron27 nodejs-lts-hydrogen yarn python go)
+makedepends=(electron27 nodejs-lts-hydrogen yarn python go npm)
 optdepends=('libusb: Needed for some libraries or boards'
             'usbutils: Needed for stm32 boards using st-link'
             'libusb-compat: Needed for the `micronucleus` cli utility'
