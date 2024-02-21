@@ -1,0 +1,11 @@
+--- setup.py	2024-01-24 04:41:47.000000000 +0100
++++ setup.py.new	2024-02-21 14:25:35.018175220 +0100
+@@ -23,7 +23,7 @@
+ # -----------------------------------------------------------------------------
+ 
+ setup(
+-    name=module_dir,
++    name=module_name,
+     version=version,
+     description="Wyoming Server for Faster Whisper",
+     url="http://github.com/rhasspy/wyoming-faster-whisper",

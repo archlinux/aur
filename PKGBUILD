@@ -1,27 +1,27 @@
 # Maintainer: hrdl <aur@hrdl.eu>
 
 pkgname=python-wyoming-faster-whisper
-_pkgname=wyoming_faster_whisper
+_pkgname=wyoming-faster-whisper
 pkgdesc="Wyoming Server for Faster Whisper"
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 arch=(any)
-url="http://github.com/rhasspy/rhasspy3"
+url="https://github.com/rhasspy/wyoming-faster-whisper"
 license=('MIT')
-depends=(python python-wyoming ctranslate2 python-tokenizers)
+depends=(python python-wyoming==1.5.2 ctranslate2 python-tokenizers)
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/w/$_pkgname/$_pkgname-$pkgver.tar.gz"
+source=("https://github.com/rhasspy/wyoming-faster-whisper/archive/refs/tags/v${pkgver}.tar.gz"
         wyoming-faster-whisper.conf
         wyoming-faster-whisper.service
-	0001-python311-enum-value.patch)
-sha256sums=('c28eb69bc8083fd8578a191df23da1695bf3dd3949bf79b9596b614cf1707ac9'
+        0001-fix-setup.patch)
+sha256sums=('b7eed249299c6da59b015aff81af171578d3cbd2a133254ccac63b14c6ac16ee'
             '0d54c89a46c4c1b907565ba2901ee6bfb2b07702cb8f8ecab5279342beba7ddd'
             '4d9d274dc9d58db5db274be03adf81fd9fae0ad3d7258f479eeada341059dafc'
-            'c61aa218cecfc12fe62fb9d6bb50c561c8c97b9acb085877bd8df6755921e43f')
+            'a04fea323539a46da3e7e90e8bf04a6974317005a6ea470bf8335f73d97ca351')
 
 prepare() {
   cd $_pkgname-$pkgver
-  patch -p1 -i "${srcdir}/0001-python311-enum-value.patch"
+  patch -i "${srcdir}/0001-fix-setup.patch"
 }
 
 build() {
