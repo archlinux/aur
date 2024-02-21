@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=('mpv')
 makedepends=('cargo')
 source=("https://github.com/neeshy/mpvc/archive/v$pkgver.tar.gz")
-sha256sums=('9979493422ce4faa06257ce4ef8ced6f1334d389887ca56117411c7c25bcef92')
+sha256sums=('591fdeefafbe73e3cbc7f63af6fb500022debf4eca742c93262fd72ead231f4e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
