@@ -32,7 +32,7 @@ build() {
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     asar e "${srcdir}/usr/lib/${pkgname%-bin}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     sed "s|(!a.app.isPackaged){const|(a.app.isPackaged){const|g" -i "${srcdir}/app.asar.unpacked/.webpack/main/index.js"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
