@@ -1,0 +1,21 @@
+pkgbase = cosmic-store-git
+	pkgdesc = WIP COSMIC app store
+	pkgver = r64.01eb413
+	pkgrel = 1
+	url = https://github.com/pop-os/cosmic-store
+	arch = x86_64
+	arch = aarch64
+	groups = cosmic
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = just
+	depends = flatpak
+	provides = cosmic-store
+	conflicts = cosmic-store
+	source = git+https://github.com/pop-os/cosmic-store.git
+	source = git+https://github.com/jackpot51/appstream.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = cosmic-store-git
