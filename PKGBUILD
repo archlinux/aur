@@ -3,8 +3,8 @@
 
 _pkgname=yazi
 pkgname=yazi-git
-pkgver=0.1.4.r57.gcb13de9
-pkgrel=2
+pkgver=0.2.3.r30.g0cb572a
+pkgrel=1
 pkgdesc="Blazing fast terminal file manager written in Rust, based on async I/O."
 url="https://github.com/sxyazi/yazi"
 arch=("x86_64")
@@ -38,7 +38,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  cargo build --release --frozen
+  VERGEN_GIT_SHA="Arch Linux" YAZI_GEN_COMPLETIONS=true cargo build --release --frozen
 }
 
 check() {
@@ -48,7 +48,19 @@ check() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-}
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENCE"
+  install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 "assets/yazi.desktop" "$pkgdir/usr/share/applications/yazi.desktop"
 
+  local r
+  for r in 16 24 32 48 64 128 256; do
+    install -dm755 "$pkgdir/usr/share/icons/hicolor/${r}x${r}/apps"
+    convert assets/logo.png -resize "${r}x${r}" "$pkgdir/usr/share/icons/hicolor/${r}x${r}/apps/yazi.png"
+  done
+
+  cd "$_pkgname-config/completions"
+  install -Dm644 "$_pkgname.bash" "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
+  install -Dm644 "$_pkgname.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+  install -Dm644 "_$_pkgname" -t "$pkgdir/usr/share/zsh/site-functions/"
+}
