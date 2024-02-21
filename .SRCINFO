@@ -1,5 +1,5 @@
 pkgbase = serve-bin
-	pkgdesc = A quick solution to serving static folder
+	pkgdesc = A quick solution to serving static folder, minux npx
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/tabbybox/serve
