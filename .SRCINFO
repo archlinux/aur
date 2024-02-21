@@ -1,6 +1,6 @@
 pkgbase = kubeadm-bin
 	pkgdesc = Kubernetes.io kubeadm binary
-	pkgver = 1.29.1
+	pkgver = 1.29.2
 	pkgrel = 1
 	url = http://kubernetes.io
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = kubeadm-bin
 	provides = kubeadm
 	conflicts = kubeadm
 	source = 10-kubeadm.conf
-	source = kubeadm-bin-1.29.1-amd64::https://storage.googleapis.com/kubernetes-release/release/v1.29.1/bin/linux/amd64/kubeadm
+	source = kubeadm-bin-1.29.2-amd64::https://storage.googleapis.com/kubernetes-release/release/v1.29.2/bin/linux/amd64/kubeadm
 	b2sums = 074744d327227c32661befcff7651209438090fbd75890ad3b5a32ada1fbdf8901dbd132c7093ed353901f1ea7505c97089a5a89a104f57cb7f53a342eecc7e8
-	b2sums = 0d2d44f3a6dcdff8410d0aa989f284c378edc82ae45bb46bf7934047400f3086aef06fa18e5c6f06f7dceb5f3cf0177f50ecabe13e59ec4c23392b6989ff8280
+	b2sums = 2d032d61dc09aa34d29d7dca73b6fcdaa5780e1500bf315664c392334bb7ef24fd9f07a63f2b8a60ddcfb0226ebcffd6bd55865fbe4fd33ec47288c0c74f70de
 
 pkgname = kubeadm-bin
