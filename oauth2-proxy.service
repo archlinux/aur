@@ -1,0 +1,17 @@
+# Systemd service file for oauth2-proxy daemon
+#
+# Date: Feb 9, 2016
+# Author: Srdjan Grubor <sgnn7@sgnn7.org>
+
+[Unit]
+Description=oauth2-proxy daemon service
+
+[Service]
+User=oauth2-proxy
+Group=oauth2-proxy
+
+ExecStart=/usr/bin/oauth2-proxy --config /etc/oauth2-proxy.cfg
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
