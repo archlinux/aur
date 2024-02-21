@@ -4,7 +4,7 @@ pkgname=python-wyoming-faster-whisper
 _pkgname=wyoming-faster-whisper
 pkgdesc="Wyoming Server for Faster Whisper"
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 arch=(any)
 url="https://github.com/rhasspy/wyoming-faster-whisper"
 license=('MIT')
@@ -15,8 +15,8 @@ source=("https://github.com/rhasspy/wyoming-faster-whisper/archive/refs/tags/v${
         wyoming-faster-whisper.service
         0001-fix-setup.patch)
 sha256sums=('b7eed249299c6da59b015aff81af171578d3cbd2a133254ccac63b14c6ac16ee'
-            '0d54c89a46c4c1b907565ba2901ee6bfb2b07702cb8f8ecab5279342beba7ddd'
-            '4d9d274dc9d58db5db274be03adf81fd9fae0ad3d7258f479eeada341059dafc'
+            '9b4a794ebcfbed17849adae53ce5a70ca354d8522693ca721a3938aad150a97d'
+            'a3d8484cc0483deea2cc2097229d48911bd22e84ce30cabbfac4704399454502'
             'a04fea323539a46da3e7e90e8bf04a6974317005a6ea470bf8335f73d97ca351')
 
 prepare() {
