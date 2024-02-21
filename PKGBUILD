@@ -1,5 +1,4 @@
 # Maintainer: Bronya <kotone[dot]olin1010[at]gmail[dot]com>
-# Maintainer: xiota / aur.chaotic.cx
 
 ## useful links
 # http://floorp.app/
@@ -7,7 +6,7 @@
 
 _pkgname="floorp"
 pkgname="$_pkgname-bin"
-pkgver=11.9.0
+pkgver=11.10.2
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="http://floorp.app/"
@@ -39,10 +38,10 @@ sha256sums=(
   '853ba77377f296d3bf52f191131883702dd96d38084f78ea5ddb29821ac253d1'
 )
 
-source_x86_64=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/floorp-${pkgver}.linux-${arch}.tar.bz2")
-source_aarch64=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/floorp-${pkgver}.linux-${arch}.tar.bz2")
-sha256sums_x86_64=('83d51280f3d3a08f0fe272aefad0f29d70b0581c65019bbec4020fbc42dc5009')
-sha256sums_aarch64=('603021fd64d3d6229b435b6e2a0b79af81325a1bd75485532189ca9737e9c5a8')
+source_x86_64=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/floorp-${pkgver}.linux-x86_64.tar.bz2")
+source_aarch64=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/floorp-${pkgver}.linux-aarch64.tar.bz2")
+sha256sums_x86_64=('7287848d9d84134ab2ffd7cc7c078cf0d07a4ef91cb36bce009db0ad92df5e42')
+sha256sums_aarch64=('d300faf96967d9c041c92a83eaced2e2a64ad0a384ccc1e6510c0040308b52d7')
 
 package() {
   depends=(
