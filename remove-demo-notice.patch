@@ -1,6 +1,6 @@
-diff --unified --recursive --text pev2-1.8.0.orig/example/src/views/HomeView.vue pev2-1.8.0/example/src/views/HomeView.vue
---- pev2-1.8.0.orig/example/src/views/HomeView.vue	2023-03-21 08:12:20.000000000 +0100
-+++ pev2-1.8.0/example/src/views/HomeView.vue	2023-06-06 23:53:35.489859399 +0200
+diff --unified --recursive --text --new-file pev2-1.9.0.orig/example/src/views/HomeView.vue pev2-1.9.0/example/src/views/HomeView.vue
+--- pev2-1.9.0.orig/example/src/views/HomeView.vue	2024-02-21 09:23:54.139036603 +0100
++++ pev2-1.9.0/example/src/views/HomeView.vue	2024-02-21 09:24:18.785733368 +0100
 @@ -154,15 +154,6 @@
  <template>
    <main-layout>
@@ -14,6 +14,6 @@ diff --unified --recursive --text pev2-1.8.0.orig/example/src/views/HomeView.vue
 -        <a href="https://explain.dalibo.com">explain.dalibo.com</a> instead if
 -        you want to save or share your plans.
 -      </div>
-       <div class="row">
+       <div class="row mb-3">
          <div class="col d-flex">
            <div class="text-muted">
