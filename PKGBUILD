@@ -2,7 +2,7 @@
 # Contributor: Ashwin <ashwinvis+arch_@t_Pr0t0nM4il_c0m>
 _base=transonic
 pkgname=python-${_base}
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Make your Python code fly at transonic speeds!"
 arch=(any)
@@ -17,7 +17,7 @@ optdepends=('python-pythran: compiler backend'
   'python-rich: colourful logs')
 provides=(${_base})
 source=(${_base}-${pkgver}.tar.gz::${url}/-/archive/${pkgver}/${_base}-${pkgver}.tar.gz)
-sha512sums=('deeb570aa02a9af4f0ea1c5196842944b9060cbb5c465ea468cade2518b7530b64523eb830c2c7136c74ca6f402bbf8aac090449cd234db9e7797b7faf7a2e1f')
+sha512sums=('452606279c4c0d38ccd688a2db5801a3eab0808dab18570a4963d7a4224dc7cc437585f68822e966bd4618ce0b577619388d359895d4547c032a7606b5a05566')
 build() {
   cd ${_base}-${pkgver}
   python -m build --wheel --skip-dependency-check --no-isolation
