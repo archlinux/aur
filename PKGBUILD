@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pixelviewer-bin
 _pkgname=PixelViewer
-pkgver=3.0.2.104
-pkgrel=2
+pkgver=3.0.5.214
+pkgrel=1
 pkgdesc="A cross-platform image viewer which supports reading raw Luminance/YUV/RGB/ARGB/Bayer pixels data from file and rendering it."
 arch=(
     'aarch64'
@@ -29,20 +29,21 @@ source=(
 )
 sha256sums=('4b023d792eb6b929311286a207c6493e18875bd9d320db8f7a996dd5d5716fea'
             '46c44290e51c6b3f146c244fab112aaa1ff6f5ce4f26415f85820e5eee6a2d11')
-sha256sums_aarch64=('a466953765db4ee574b8135e3645ae4b2ae19c9bcd803fa4ebe6d1a02b094fbc')
-sha256sums_x86_64=('16afd0649e662b5c3f1f5a59ca9340f0b9c3adb37d89f1e7ef892f07d13345fb')
+sha256sums_aarch64=('300682e7d37195868f2a2f8d5cc6a1f5fd44799103a68d5d8430c6868f65f806')
+sha256sums_x86_64=('d44ce2a2af25b5cbb3686fe4f852eecf4527638629b711ae35c8e52c67aa88de')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories "Graphics" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
-    install -Dm755 -d "${srcdir}/${pkgname%-bin}"
-    bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.zip" -C "${srcdir}/${pkgname%-bin}"
+    gendesk -q -f -n --categories="Graphics" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    install -Dm755 -d "${srcdir}/opt/${pkgname%-bin}"
+    bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.zip" -C "${srcdir}/opt/${pkgname%-bin}"
+    chmod 644 "${srcdir}/opt/${pkgname%-bin}/"*
+    chmod 755 "${srcdir}/opt/${pkgname%-bin}/"{createdump,"${_pkgname}"}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname%-bin}/"*.* -t "${pkgdir}/opt/${pkgname%-bin}"
-    install -Dm755 "${srcdir}/${pkgname%-bin}/"{createdump,"${_pkgname}"} -t "${pkgdir}/opt/${pkgname%-bin}"
+    cp -r "${srcdir}/opt" "${pkgdir}"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
     install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
