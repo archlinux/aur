@@ -2,11 +2,11 @@
 
 pkgname=znapzupport
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Collection of CLI helpers for ZnapZend'
 arch=('any')
 url='https://github.com/claui/znapzupport'
-license=('custom:ISC')
+license=('ISC')
 depends=('coreutils' 'procmail' 'sudo' 'zfs')
 optdepends=('znapzend')
 options=('!strip')
@@ -19,42 +19,37 @@ sha512sums=(
   'a092458cefb548da288ef306b562df6c4f4ff2a0e3296800903c7f88b608f570a973e5d1b43116eafcc527ba82ba3958997d98636e8f74f5c42057b000eae088'
 )
 
-noextract=("${pkgname}-${pkgver}.tar.gz")
-
 prepare() {
-  mkdir -p "${srcdir}/${pkgname}-${pkgver}"
-  tar -x \
-    -f "${srcdir}/${pkgname}-${pkgver}.tar.gz" -z \
-    -C "${srcdir}/${pkgname}-${pkgver}" \
-    --strip-components=1
-}
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  echo >&2 'Removing unneeded files'
+  for dir in 'bin' 'libexec'; do
+    find "${dir?}" -name '.*' -exec rm -fv '{}' +
+  done
 
-build() {
-  # Prepare binstub
-  mkdir -p "${srcdir}"
-  # shellcheck disable=SC2016
-  printf '#!/bin/bash\nexec "/usr/lib/%s/bin/$(basename "${0}")" "$@"\n' \
-    "${pkgname}" > "${srcdir}/binstub"
+  echo >&2 'Preparing the binstub'
+  # shellcheck disable=SC2016  # This isn’t supposed to expand at build time
+  printf > 'binstub' \
+    '#!/bin/bash\nexec "/usr/lib/%s/bin/$(basename "${0}")" "$@"\n' \
+    "${pkgname}"
 }
 
 package() {
-  echo >&2 'Installing the license'
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  echo >&2 'Packaging the license'
   install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
-    "${srcdir}/${pkgname}-${pkgver}/LICENSE.md"
+    'LICENSE.md'
 
-  echo >&2 'Installing package files'
+  echo >&2 'Packaging library files and internal binstubs'
   mkdir -p "${pkgdir}/usr/lib/${pkgname}"
   cp -r --preserve=mode -t "${pkgdir}/usr/lib/${pkgname}" \
-    "${srcdir}/${pkgname}-${pkgver}/"{bin,libexec}
+    'bin' 'libexec'
 
-  echo >&2 'Installing binstubs'
-  export srcdir pkgdir
-  find "${srcdir}/${pkgname}-${pkgver}/bin" \
-    -mindepth 1 \
-    -exec bash -c 'install -D -m 755 -T "${srcdir}"/binstub \
-      "${pkgdir}"/usr/bin/$(basename "$1")' _ '{}' ';'
+  echo >&2 'Packaging external binstubs'
+  find 'bin' -mindepth 1 -exec bash -c \
+    'install -D -m 755 -T "${1}" "${2}/$(basename "${3}")"' \
+    _ 'binstub' "${pkgdir}/usr/bin" '{}' ';'
 
-  echo >&2 'Installing documentation'
+  echo >&2 'Packaging documentation'
   install -D -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
-    "${srcdir}/${pkgname}-${pkgver}/README.md"
+    'README.md'
 }
