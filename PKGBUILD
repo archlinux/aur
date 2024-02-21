@@ -11,11 +11,11 @@ pkgname=('graphite-grub-theme-default-1080p'
          'graphite-grub-theme-nord-4k')
 pkgver=2023.12.31
 _pkgver="${pkgver//./-}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphite grub theme"
 arch=('any')
 url="https://github.com/vinceliuice/Graphite-gtk-theme"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('grub')
 makedepends=()
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/$_pkgver.tar.gz")

@@ -1,10 +1,10 @@
 pkgbase = graphite-grub-theme
 	pkgdesc = Graphite grub theme
 	pkgver = 2023.12.31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vinceliuice/Graphite-gtk-theme
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	depends = grub
 	source = graphite-grub-theme-2023.12.31.tar.gz::https://github.com/vinceliuice/Graphite-gtk-theme/archive/2023-12-31.tar.gz
 	b2sums = 87a495852e13d302a3cdafa2428cb79750151b0a2cdeb91453a5ab77ecc4e020512224cbc6460ea9abab30bf2ab86d0ccf5023b0bb4e7409b4d8a50cb5fa4557
