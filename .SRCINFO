@@ -1,0 +1,23 @@
+pkgbase = cosmic-greeter-git
+	pkgdesc = WIP libcosmic greeter for greetd, which can be run inside cosmic-comp
+	pkgver = r66.8fb7b9b
+	pkgrel = 1
+	url = https://github.com/pop-os/cosmic-greeter
+	arch = x86_64
+	arch = aarch64
+	groups = cosmic
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = clang
+	makedepends = git
+	makedepends = just
+	depends = greetd
+	depends = libxkbcommon
+	depends = pam
+	depends = wayland
+	provides = cosmic-greeter
+	conflicts = cosmic-greeter
+	source = git+https://github.com/pop-os/cosmic-greeter.git
+	sha256sums = SKIP
+
+pkgname = cosmic-greeter-git
