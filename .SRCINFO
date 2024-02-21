@@ -1,0 +1,20 @@
+pkgbase = python-astra-toolbox-git
+	pkgdesc = MATLAB and Python toolbox of high-performance GPU primitives for 2D and 3D tomography
+	pkgver = 2.1.3.g2935d56
+	pkgrel = 1
+	url = https://github.com/astra-toolbox/astra-toolbox
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = cython
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-six
+	depends = boost
+	source = astra-toolbox::git+https://github.com/astra-toolbox/astra-toolbox.git
+	source = fix-python-install-prefix.patch
+	sha512sums = SKIP
+	sha512sums = c16dacf023917958888c58ff0220398ae7fe4ac0b634c2e74c0f67ffdf48dda8c09b30c679d6e80a570d8fd86e3fa25084f4fe94bc247af7383a4987fc371629
+
+pkgname = python-astra-toolbox-git

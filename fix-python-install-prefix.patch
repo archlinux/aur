@@ -1,0 +1,25 @@
+From f6de46b47e8ec455f4ab6d6e3f60e254336b2d82 Mon Sep 17 00:00:00 2001
+From: Christian Holme <holme@tugraz.at>
+Date: Wed, 21 Feb 2024 14:24:07 +0100
+Subject: [PATCH] fix-python-install-prefix
+
+---
+ build/linux/Makefile.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/build/linux/Makefile.in b/build/linux/Makefile.in
+index c33d33b..b77db4c 100644
+--- a/build/linux/Makefile.in
++++ b/build/linux/Makefile.in
+@@ -503,7 +503,7 @@ install-python-site-packages: py
+ 	set_dist_dir --dist-dir=$(abs_top_builddir)/python/dist \
+ 	build $(PYBUILDER_BUILD_FLAGS) \
+ 	egg_info --egg-base=$(abs_top_builddir)/python \
+-	install
++	install --prefix=$(prefix)
+ else
+ install-python-site-packages:
+ install-python:
+-- 
+2.43.2
+
