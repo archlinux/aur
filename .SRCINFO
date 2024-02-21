@@ -1,0 +1,24 @@
+pkgbase = potatoalert
+	pkgdesc = A statistics companion app for World Of Warships
+	pkgver = 3.1.16
+	pkgrel = 1
+	url = https://github.com/razaqq/PotatoAlert
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = rust
+	makedepends = python
+	makedepends = ninja
+	makedepends = gendesk
+	depends = qt6-base
+	depends = qt6-svg
+	depends = openssl
+	options = strip
+	options = !libtool
+	options = !debug
+	options = !lto
+	options = buildflags
+	source = https://github.com/razaqq/PotatoAlert/archive/refs/tags/3.1.16.tar.gz
+	sha256sums = 8760116883f14493a1a873da10fec912b7e7286d3de619fe3785b7d5ae6adc57
+
+pkgname = potatoalert
