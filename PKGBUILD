@@ -1,5 +1,5 @@
 pkgname=115pc
-pkgver=2.0.6.6
+pkgver=2.0.7.9
 pkgrel=1
 epoch=
 pkgdesc="115.com PC client"
@@ -13,7 +13,7 @@ source=(
     "115.desktop"
     "115pc"
 )
-sha256sums=('ca6ffd1f6bea3ce15f9b1dbcc43e32cf3bc726af5343108cde92c01cb8168603'
+sha256sums=('a754b3ce7424f13521bb91982534907e2b9c55e47338abb87727e02384c9cf92'
             'd18207d8f111d5dbd894a17782f421d611262b823bc9e303e7de603ee762181d'
             '810658fc9cd43dc238b0572f071c10b784b9abd4e291e9a691d1b8880f651673')
 
