@@ -16,14 +16,8 @@ makedepends=(
   'cargo'
   'git'
 )
-checkdepends=()
-optdepends=()
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=()
-install=
 source=('git+https://github.com/pop-os/cosmic-osd.git')
 sha256sums=('SKIP')
 
