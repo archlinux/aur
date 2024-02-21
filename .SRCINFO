@@ -1,8 +1,8 @@
 pkgbase = hmcl-java-run
 	pkgdesc = An unofficial build of HMCL that use aur/archlinux-java-run to select java version with javaFX (with aur/hmcl-new changes)
-	pkgver = 3.5.5.235
+	pkgver = 3.5.5.236
 	pkgrel = 1
-	url = https://github.com/huanghongxun/HMCL
+	url = https://github.com/HMCL-dev/HMCL
 	arch = any
 	license = GPL3
 	makedepends = java-environment>=17
@@ -13,15 +13,11 @@ pkgbase = hmcl-java-run
 	depends = archlinux-java-run
 	provides = hmcl
 	conflicts = hmcl
-	source = hmcl.desktop
-	source = hmcl-launch-script
-	source = HMCL-ffeabbf1f144ba14462e27c2ac9d46e231c1482e.tar.gz::https://github.com/huanghongxun/HMCL/archive/ffeabbf1f144ba14462e27c2ac9d46e231c1482e.tar.gz
+	source = HMCL-v3.5.5.236.tar.gz::https://github.com/HMCL-dev/HMCL/archive/v3.5.5.236.tar.gz
 	source = 0001-Target-Java-17.patch
 	source = 0002-Cleanup.patch
-	sha256sums = 6a6f664c3569bd398528dbc3e50b78519d765f1ef8a32f98e1efbf514185cce3
-	sha256sums = 505c335bce8685fff97f6fbd0c4b916fa697dfc73ff22735d7c188b3811bc422
-	sha256sums = 1e152212e1507d49c867fe8715c4ec337972795cd9f4947e285677a56257cb3d
-	sha256sums = c650fa0d34f22f9700dd047fbe243a63528c629312b94f499d4aa341b9b5193f
-	sha256sums = 3eb85d8b6f1affcf33fb1e5ec12127eac4962d0c980e2884ccf954578e12a131
+	sha256sums = c5bbb74809e1d66684f8370816b5e15dae149337eaadac0ae30f246ccfc80dd1
+	sha256sums = c395ad622cf81a07d5738f6c20b845b51c900fd1aa0e9b87fd8ea415b8fac646
+	sha256sums = f723aebb63bd414bdd86e41c9795686fa0b409ddb339b5bc953b3c9097a76b02
 
 pkgname = hmcl-java-run
