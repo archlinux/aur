@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=media-hoarder-bin
 _pkgname="Media Hoarder"
-pkgver=1.3.3
+pkgver=1.3.4
 _electronversion=13
 pkgrel=1
 pkgdesc="The media frontend for data hoarders and movie lovers"
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/theMK2k/Media-Hoarder/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e08ceeb33a25f3cfd2e0e35d291255722d328d3ecbba260fced071953a508d44'
+sha256sums=('b190b12fc40a476488ce68e479b73546ad1927c65d7e581cf2ec6f083e06d9a1'
             '3c67fce0428a3d133bb589cd1db329789ec235049af1412511f89420c99ae9a6'
             '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
@@ -33,7 +33,7 @@ build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\"|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    sed "s|data\/media-hoarder.db_initial|..\/..\/media-hoarder\/data/media-hoarder.db_initial|g" -i "${srcdir}/app.asar.unpacked/js/app.6fe6a6b5.js"
+    sed "s|data\/${pkgname%-bin}.db_initial|..\/..\/${pkgname%-bin}\/data/${pkgname%-bin}.db_initial|g" -i "${srcdir}/app.asar.unpacked/js/app."*.js
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
