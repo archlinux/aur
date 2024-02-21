@@ -23,7 +23,7 @@ prepare() {
     # _pgrxver=$(cat Cargo.toml | grep "pgrx =" | awk -F'rev = "' '{print $2}' | cut -d'"' -f1)
     # _pgrxver=7c30e2023876c1efce613756f5ec81f3ab05696b
     # cargo install cargo-pgrx --git https://github.com/tensorchord/pgrx.git --rev "$_pgrxver"
-    cargo install cargo-pgrx --git https://github.com/tensorchord/pgrx.git --version 0.11.2
+    cargo install cargo-pgrx --git https://github.com/tensorchord/pgrx.git --version 0.11.3
 }
 
 build() {
