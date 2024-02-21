@@ -11,6 +11,7 @@ pkgbase = cosmic-greeter-git
 	makedepends = clang
 	makedepends = git
 	makedepends = just
+	depends = cosmic-comp-git
 	depends = greetd
 	depends = libxkbcommon
 	depends = pam

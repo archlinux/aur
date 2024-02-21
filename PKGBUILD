@@ -8,7 +8,7 @@ url="https://github.com/pop-os/cosmic-greeter"
 license=('GPL-3.0-or-later')
 groups=('cosmic')
 depends=(
-#  'cosmic-comp-git'
+  'cosmic-comp-git'
   'greetd'
   'libxkbcommon'
   'pam'
