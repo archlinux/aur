@@ -1,7 +1,7 @@
 pkgbase = watt-wiser-sensors
 	pkgdesc = A software energy consumption estimation tool
 	pkgver = v0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~whereswaldon/watt-wiser
 	arch = any
 	license = Unlicense
@@ -10,6 +10,8 @@ pkgbase = watt-wiser-sensors
 	makedepends = lm_sensors
 	provides = watt-wiser-sensors
 	conflicts = watt-wiser-sensors
+	conflicts = watt-wiser-git
+	conflicts = watt-wiser-sensors-git
 	source = watt-wiser-v0.0.4.tar.gz::https://git.sr.ht/~whereswaldon/watt-wiser/archive/v0.0.4.tar.gz
 	sha256sums = 1e03f78d148ceb5909d877c883130dcafeb260e298c7ad9ae0d9ad80ae0d8980
 	sha512sums = 82a7712fb90d636cafd18e56257a713714dbceebf07740413a8c0023db9bf098a66899a851942dd9ea2ad909232a2f1f88a7164a708ba2bd764c995b40968e63
