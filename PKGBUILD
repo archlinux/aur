@@ -4,7 +4,7 @@ pkgbase=postgresql15
 pkgver=15.6
 _majorver=${pkgver%.*}
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
-pkgrel=1
+pkgrel=2
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
@@ -64,6 +64,8 @@ build() {
 
   # Fix static libs (will not link if not set)
   CFLAGS+=" -ffat-lto-objects"
+  # Add RUNPATH to locate libraries
+  LDFLAGS="-Wl,-rpath,/opt/${pkgbase}/lib"
 
   # build
   ./configure "${options[@]}"
