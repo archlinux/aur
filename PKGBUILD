@@ -6,10 +6,11 @@
 # Contributor: Sébastien Luttringer
 # Contributor: Drew DeVault
 
+_freenginx=freenginx
 _pkgbase=nginx
 pkgbase=freenginx-mainline
 pkgname=(freenginx-mainline freenginx-mainline-src)
-pkgver=1.25.3
+pkgver=1.25.4
 pkgrel=1
 arch=('x86_64')
 url='https://freenginx.org'
@@ -26,7 +27,7 @@ backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/uwsgi_params'
         'etc/nginx/win-utf'
         'etc/logrotate.d/nginx')
-source=($url/download/nginx-$pkgver.tar.gz{,.asc}
+source=($url/download/freenginx-$pkgver.tar.gz{,.asc}
         nginx.service
         logrotate)
 # https://nginx.org/en/pgp_keys.html
@@ -35,7 +36,7 @@ validpgpkeys=(
   'D6786CE303D9A9022998DC6CC8464D549AF75C0A' # Sergey Kandaurov <s.kandaurov@f5.com>
   '13C82A63B603576156E30A4EA0EA981B66B0D967' # Konstantin Pavlov <thresh@nginx.com>
 )
-sha512sums=('46fcbf6b540a2e47f192453b9686a701e3abe5a41a3275e36c9fca6c3f9ef0aa8d705cc5ad63257d662a5432109e4ce125d330cdeb547914bceac19e885dba1f'
+sha512sums=('337bd8b6116f61422afb4e91bfe068cd991e5f09d838d40834d0a5f9bea9acc2258826a8ebc779df8c7bdc42013645c6e6fe6aba52ce3b31d008bca183982926'
             'SKIP'
             'ca7d8666177d31b6c4924e9ab44ddf3d5b596b51da04d38da002830b03bd176d49354bbdd2a496617d57f44111ad59833296af87d03ffe3fca6b99327a7b4c3c'
             '2f4dfcfa711b8bcbc5918ba635f5e430ef7132e66276261ade62bb1cba016967432c8dce7f84352cb8b07dc7c6b18f09177aa3eb92c8e358b2a106c8ca142fe9')
@@ -77,11 +78,11 @@ _mainline_flags=(
 )
 
 prepare() {
-  cp -r $_pkgbase-$pkgver{,-src}
+  cp -r $_freenginx-$pkgver{,-src}
 }
 
 build() {
-  cd $_pkgbase-$pkgver
+  cd $_freenginx-$pkgver
   ./configure \
     --prefix=/etc/nginx \
     --conf-path=/etc/nginx/nginx.conf \
@@ -111,7 +112,7 @@ package_freenginx-mainline() {
   provides=($_pkgbase)
   conflicts=($_pkgbase)
 
-  cd $_pkgbase-$pkgver
+  cd $_freenginx-$pkgver
   make DESTDIR="$pkgdir" install
 
   sed -e 's|\<user\s\+\w\+;|user http;|g' \
@@ -150,5 +151,5 @@ package_freenginx-mainline-src() {
   conflicts=($_pkgbase-src)
 
   install -d "$pkgdir/usr/src"
-  cp -r $_pkgbase-$pkgver-src "$pkgdir/usr/src/nginx"
+  cp -r $_freenginx-$pkgver-src "$pkgdir/usr/src/nginx"
 }
