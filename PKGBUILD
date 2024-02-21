@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=canceR
-_pkgver=1.36.2
+_pkgver=1.36.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7d3c7532e79982ee5db6e3aa3788381e')
-b2sums=('1684e18f87b95f7650924a48df3c2263d3ab7f610b5718d3d8429311b08ca50cb87044cb837e34bf6269e377aaf1d93c50aebd4b72118385601681c9a72f1b13')
+md5sums=('2e044cafedb167227aa757d494a7cb1f')
+b2sums=('9790eed0be76ac4838847ed45ae25d1181d886232f4b9a7b4181fbd42c0923af649c1c90cd8f54d4941d6e35eb4e78edd61626bb8029534fc67de891b6606337')
 
 build() {
   mkdir build
