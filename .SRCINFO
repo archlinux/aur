@@ -1,28 +1,21 @@
 pkgbase = envkey-bin
 	pkgdesc = Secure, human-friendly, cross-platform secrets and config.
-	pkgver = 1.5.10
-	pkgrel = 6
+	pkgver = 2.4.18
+	pkgrel = 1
 	url = https://www.envkey.com/
-	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = squashfuse
-	depends = electron24
+	depends = electron13
 	depends = hicolor-icon-theme
-	depends = dbus-glib
-	depends = libdbusmenu-glib
-	depends = gtk2
-	provides = envkey=1.5.10
+	depends = nodejs
+	depends = libsecret
+	provides = envkey=2.4.18
 	conflicts = envkey
+	source = envkey-2.4.18.AppImage::https://envkey-releases.s3.amazonaws.com/desktop/release_artifacts/2.4.18/EnvKey-2.4.18.AppImage
+	source = LICENSE-2.4.18::https://raw.githubusercontent.com/envkey/envkey/desktop-v2.4.18/LICENSE
 	source = envkey.sh
-	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
-	source_i686 = envkey-1.5.10-i686.AppImage::https://github.com/envkey/envkey-app/releases/download/linux-ia32-prod-v1.5.10/EnvKey-1.5.10-i386.AppImage
-	source_i686 = LICENSE-i686-1.5.10::https://raw.githubusercontent.com/envkey/envkey-app/linux-ia32-prod-v1.5.10/LICENSE
-	sha256sums_i686 = 906006984188184a967a81474dd03d29e0bff2559a32396c66a2d4f3ee476745
-	sha256sums_i686 = 09b057e89473140a66ebb115d2c45af606ae7a7a3f1a8debad96f49bbea74ddd
-	source_x86_64 = envkey-1.5.10-x86_64.AppImage::https://github.com/envkey/envkey-app/releases/download/linux-x64-prod-v1.5.10/EnvKey-1.5.10.AppImage
-	source_x86_64 = LICENSE-x86_64-1.5.10::https://raw.githubusercontent.com/envkey/envkey-app/linux-x64-prod-v1.5.10/LICENSE
-	sha256sums_x86_64 = 6d05c4672560e2785a1dc6141cabfcb4fdfe0025c58096ab471bf4ad48b65cc9
-	sha256sums_x86_64 = 09b057e89473140a66ebb115d2c45af606ae7a7a3f1a8debad96f49bbea74ddd
+	sha256sums = ad009fa2339c4ecde7fd7371a0dafa3a9ae0f85aa08df9d6b832298f0cb5aa72
+	sha256sums = d3e78cbc2e92dfabac2dc9c8a5cd22e702cba2a65455c265e5bed3a1d447a704
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = envkey-bin

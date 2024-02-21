@@ -1,63 +1,49 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=envkey-bin
-_appname=EnvKey
-pkgver=1.5.10
-_electronversion=24
-pkgrel=6
+_pkgname=EnvKey
+pkgver=2.4.18
+_electronversion=13
+pkgrel=1
 pkgdesc="Secure, human-friendly, cross-platform secrets and config."
-arch=(
-    'i686'
-    'x86_64'
-)
+arch=('x86_64')
 url="https://www.envkey.com/"
-_ghurl="https://github.com/envkey/envkey-app"
+_ghurl="https://github.com/envkey/envkey"
+_dlurl="https://envkey-releases.s3.amazonaws.com/desktop"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
-)
-makedepends=(
-    'squashfuse'
-)
-source_i686=(
-    "${pkgname%-bin}-${pkgver}-i686.AppImage::${_ghurl}/releases/download/linux-ia32-prod-v${pkgver}/${_appname}-${pkgver}-i386.AppImage"
-    "LICENSE-i686-${pkgver}::https://raw.githubusercontent.com/envkey/envkey-app/linux-ia32-prod-v${pkgver}/LICENSE"
-)
-source_x86_64=(
-    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/linux-x64-prod-v${pkgver}/${_appname}-${pkgver}.AppImage"
-    "LICENSE-x86_64-${pkgver}::https://raw.githubusercontent.com/envkey/envkey-app/linux-x64-prod-v${pkgver}/LICENSE"
+    'nodejs'
+    'libsecret'
 )
 source=(
+    "${pkgname%-bin}-${pkgver}.AppImage::${_dlurl}/release_artifacts/${pkgver}/${_pkgname}-${pkgver}.AppImage"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/envkey/envkey/desktop-v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
-sha256sums_i686=('906006984188184a967a81474dd03d29e0bff2559a32396c66a2d4f3ee476745'
-                 '09b057e89473140a66ebb115d2c45af606ae7a7a3f1a8debad96f49bbea74ddd')
-sha256sums_x86_64=('6d05c4672560e2785a1dc6141cabfcb4fdfe0025c58096ab471bf4ad48b65cc9'
-                   '09b057e89473140a66ebb115d2c45af606ae7a7a3f1a8debad96f49bbea74ddd')
+sha256sums=('ad009fa2339c4ecde7fd7371a0dafa3a9ae0f85aa08df9d6b832298f0cb5aa72'
+            'd3e78cbc2e92dfabac2dc9c8a5cd22e702cba2a65455c265e5bed3a1d447a704'
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
-    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
 }
 package() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/swiftshader"
-    install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/squashfs-root/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
     for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512;do
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/LICENSE-${CARCH}-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
