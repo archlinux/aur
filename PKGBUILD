@@ -2,11 +2,11 @@
 
 pkgname=vsearch
 pkgver=2.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Versatile open-source tool for microbiome analysis"
 arch=('x86_64' 'aarch64' 'ppc64le')
 url="https://github.com/torognes/vsearch"
-license=('BSD-2-Clause OR GPL-3.0-only')
+license=('BSD-2-Clause OR GPL-3.0-only WITH Autoconf-exception-3.0')
 depends=('zlib' 'bzip2')
 makedepends=('ghostscript')
 source=("https://github.com/torognes/vsearch/archive/refs/tags/v$pkgver.tar.gz")
