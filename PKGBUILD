@@ -4,13 +4,13 @@ _gitauthor="danisztls"
 _gitbranch="main"
 
 pkgname="${_pkgname}-git"
-pkgver=v0.1.r15.gb84c050
+pkgver=v0.1.r17.g0bf0cd5
 pkgrel=1
 pkgdesc="Terminates Steam on Linux when certain conditions are met."
 arch=('any')
 url="https://github.com/danisztls/steam-killer"
 license=('GPLv3')
-depends=('python' 'python-psutil' 'python-watchdog' 'python-apscheduler')
+depends=('python' 'python-psutil' 'python-watchdog' 'python-dateutil')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
