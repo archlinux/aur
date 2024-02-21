@@ -1,6 +1,6 @@
 # Maintainer: David Grimm < david[dot]grimm [replace this with the swirly a sign] vegri[dot]net >
 pkgname=ov-client
-pkgver="0.20.14"
+pkgver="0.21.1"
 pkgrel=1
 epoch=
 pkgdesc="Client to share and receive spatial realtime Audio"
@@ -71,17 +71,19 @@ prepare() {
 		cd ..
 	fi
 	cd ov-client
-	git checkout -q a36e38e65faa9f9280b7f568f3be3f5dc5ca0dc1
+	git checkout -q 442a95c5f5f62332eee251bafc04531219e074d9
 	git submodule update --init --recursive
 }
 
 build() {
 	cd ov-client
+	# the make routine only works on a clean repository
+	make clean
 	make -j
 	rm build/*.*
 }
 
-# cmake fails to detect a working c++ compiler and
+# cmake fails to detect a working c++ compiler and is needed by google test
 #check() {
 #	cd ov-client
 #	make libtest
