@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=localchat-bin
-pkgver=0.8.0
+pkgver=0.9.0
 _electronversion=28
-pkgrel=2
+pkgrel=1
 pkgdesc="Chat with generative language models locally on your computer with zero setup. "
 arch=(
     'aarch64'
@@ -25,8 +25,8 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
-sha256sums_aarch64=('c67445a3afb9bb192b9b58f2890dbf60c4f0a113a901c126489327600ededf4d')
-sha256sums_x86_64=('8ebfb42c5403743ae43d918bdd5da7eab572c6f16c90419620edb0b0f73781cb')
+sha256sums_aarch64=('0509c2c3d13702b1518cc8795581a19826e75eff9fd6f3d20de5eb8c7da5b3cf')
+sha256sums_x86_64=('22ab5cf20a267ed68886f3e9e09f2a66ee480d3db2f23b5d84bb4698d3dc06ff')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
