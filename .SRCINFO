@@ -1,14 +1,14 @@
 pkgbase = icd
 	pkgdesc = Powerful `cd` command with fuzzy-search tool.
-	pkgver = 0.2.0
-	pkgrel = 3
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://github.com/g-plane/icd
 	arch = any
 	license = MIT
 	depends = fzf
 	optdepends = ripgrep
 	optdepends = grep
-	source = https://github.com/g-plane/icd/archive/v0.2.0.tar.gz
-	sha256sums = ffe97aa6ea1e73901934e726b927d63331a7e846a3bb32dea0791505af37e802
+	source = https://github.com/g-plane/icd/archive/v0.2.1.tar.gz
+	sha256sums = 9757f5e809c7a34ffe6865fe59f6d7437fe047f53f410dfe4d7874f5a17b12b0
 
 pkgname = icd
