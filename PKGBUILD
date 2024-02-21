@@ -6,7 +6,7 @@ _pkgname=FireDragon
 pkgver=11.10.2
 _floorp_core_commit="588aa1666d1d1ff2002bd340b5bab69d675c5f2e"
 _floorp_l10n_commit="6a9a5a51e045a3a2c2d4a401eaa38a7aa0f7d9ef"
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Floorp fork build using custom branding & settings"
 url='http://dr460nf1r3.org'
@@ -77,11 +77,11 @@ source=(https://github.com/Floorp-Projects/Floorp/archive/refs/tags/v"${pkgver}"
     "settings::git+https://gitlab.com/garuda-linux/firedragon/settings.git"
     "${pkgname}.desktop")
 sha256sums=('5b228de39257fd0abd07f29d1edb789efd9b6cb1634c8e93451273825ff86613'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560')
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560')
 install="${pkgname}.install"
 
 prepare() {
@@ -108,15 +108,12 @@ ac_add_options --disable-elf-hack
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
 ac_add_options --enable-hardening
 ac_add_options --enable-linker=mold
-ac_add_options --enable-lto=cross,full
-ac_add_options --enable-optimize="-O3"
 ac_add_options --enable-release
 ac_add_options --enable-rust-simd
 ac_add_options --enable-wasm-simd
 ac_add_options --prefix=/usr
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 export MOZ_INCLUDE_SOURCE_INFO=1
-export RUSTC_OPT_LEVEL=2
 
 # Branding
 ac_add_options --allow-addon-sideload
@@ -153,17 +150,26 @@ ac_add_options --disable-parental-controls # (Disable local/OS MTIM)
 ac_add_options --disable-rust-tests
 ac_add_options --disable-synth-speechd
 ac_add_options --disable-tests
-# ac_add_options --disable-update-agent # (Might have to wait for a more recent version of Firefox. The setting is not availabe on v115)
 ac_add_options --disable-updater
 ac_add_options --disable-warnings-as-errors
 ac_add_options --disable-webspeech
 ac_add_options --disable-webspeechtestbackend
 ac_add_options --enable-alsa
-ac_add_options --enable-bundled-fonts # (CSS system fonts are normalized, to hide any customization at the OS level, or the defaults that different locales might have)
+ac_add_options --enable-av1
+ac_add_options --enable-eme=widevine
 ac_add_options --enable-jack
 ac_add_options --enable-jxl
 ac_add_options --enable-proxy-bypass-protection
+ac_add_options --enable-pulseaudio
+ac_add_options --enable-raw
+ac_add_options --enable-sandbox
 ac_add_options --enable-strip
+
+# Optimization
+ac_add_options --enable-optimize=-O3
+ac_add_options --enable-lto=cross,full
+ac_add_options OPT_LEVEL="3"
+ac_add_options RUSTC_OPT_LEVEL="3"
 
 # Other
 export AR=llvm-ar
@@ -193,7 +199,7 @@ END
     # Assorted patches
     _patch "${_floorp_patches_dir}"/urlbarprovider-interventions.patch
 
-    # Allow uBlockOrigin to run in private mode by default, without user intervention.
+    # Allow uBlockOrigin to run in private mode by default, without user intervention
     _patch "${_floorp_patches_dir}"/allow-ubo-private-mode.patch
 
     # Add custom uBO assets (on first launch only)
@@ -208,7 +214,7 @@ END
     cp "${_patches_dir}/pref-pane/firedragon.css" browser/themes/shared/preferences/firedragon.css
     cp "${_patches_dir}/pref-pane/firedragon.inc.xhtml" browser/components/preferences/firedragon.inc.xhtml
     cp "${_patches_dir}/pref-pane/firedragon.js" browser/components/preferences/firedragon.js
-    cat < "${_patches_dir}/pref-pane/preferences.ftl" >> browser/locales/en-US/browser/preferences/preferences.ftl
+    cat <"${_patches_dir}/pref-pane/preferences.ftl" >>browser/locales/en-US/browser/preferences/preferences.ftl
 
     # Update privacy preferences -- DISABLED to test UI changes and allow user to easily change the setting
     # _patch "${_patches_dir}"/custom/privacy-preferences.patch
@@ -225,6 +231,9 @@ build() {
     export MOZ_ENABLE_FULL_SYMBOLS=1
     export MOZ_NOSPAM=1
     export MOZ_PROFILER_STARTUP=1 # Starts the profiler is started as early as possible during startup.
+
+    # Fix DRI/zink issues during compilation
+    export LIBGL_ALWAYS_SOFTWARE=true
 
     # Malloc_usable_size is used in various parts of the codebase
     CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
