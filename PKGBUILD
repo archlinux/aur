@@ -12,8 +12,8 @@ fi
 # basic info
 _pkgname="thorium-browser"
 pkgname="$_pkgname-bin"
-pkgver=120.0.6099.235
-pkgrel=2
+pkgver=121.0.6167.204
+pkgrel=1
 pkgdesc="Chromium fork focused on high performance and security"
 url="https://github.com/Alex313031/Thorium"
 license=('BSD')
@@ -53,13 +53,9 @@ prepare() {
 #!/usr/bin/env bash
 
 # check microprocessor architecture level
-if /usr/lib/ld-linux-x86-64.so.2 --help | grep -qsE '^\s+x86-64-v3.*supported.*\$' ; then
+if grep -qE '\bpni\b' /proc/cpuinfo ; then
   _message=''
   _message+=\$'The fastest browser on Earth.'
-elif grep -qE '\bpni\b' /proc/cpuinfo ; then
-  _message=''
-  _message+=\$'Your processor does not support x86-64-v3 instructions.\n'
-  _message+=\$'You may want to use thorium-browser-sse3-bin.'
 else
   _message=''
   _message+=\$'Your processor does not support SSE3 instructions.\n'

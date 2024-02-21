@@ -10,7 +10,7 @@ fi
 # basic info
 _pkgname="thorium-browser-avx"
 pkgname="$_pkgname-bin"
-pkgver=120.0.6099.235
+pkgver=121.0.6167.204
 pkgrel=1
 pkgdesc="Chromium fork focused on high performance and security"
 url="https://github.com/Alex313031/Thorium"
@@ -33,7 +33,7 @@ _main_package() {
   options=('!emptydirs' '!strip' '!debug')
 
   _dl_url="$url/releases/download/M${_pkgver:?}"
-  _dl_filename="${_pkgname%-avx}_${_pkgver:?}_amd64.deb"
+  _dl_filename="${_pkgname%-avx}_${_pkgver:?}_AVX.deb"
   noextract+=("$_dl_filename")
 
   source=("$_dl_url/$_dl_filename")

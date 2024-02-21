@@ -10,10 +10,10 @@ fi
 # basic info
 _pkgname="thorium-browser-avx2"
 pkgname="$_pkgname-bin"
-pkgver=120.0.6099.276
+pkgver=121.0.6167.204
 pkgrel=1
 pkgdesc="Chromium fork focused on high performance and security"
-url="https://github.com/Alex313031/Thorium-Linux-AVX2"
+url="https://github.com/Alex313031/Thorium"
 license=('BSD')
 arch=('x86_64')
 
@@ -55,7 +55,7 @@ if grep -qE '\bavx2\b' /proc/cpuinfo ; then
   _message+=\$'The fastest browser on Earth.'
 else
   _message=''
-  _message+=\$'Your processor does not support SSE3 instructions.\n'
+  _message+=\$'Your processor does not support AVX2 instructions.\n'
   _message+=\$'thorium-browser may not work on your computer.'
 fi
 
