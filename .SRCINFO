@@ -1,0 +1,16 @@
+pkgbase = juliaup-bin
+	pkgdesc = An experimental Julia version manager
+	pkgver = 1.14.5
+	pkgrel = 1
+	url = https://github.com/JuliaLang/juliaup
+	arch = x86_64
+	license = MIT
+	makedepends = tar
+	provides = julia
+	conflicts = juliaup
+	conflicts = julia
+	conflicts = julia-bin
+	source = https://github.com/JuliaLang/juliaup/releases/download/v1.14.5/juliaup-1.14.5-x86_64-unknown-linux-musl-portable.tar.gz
+	sha256sums = b03b72c8189d87151a08eef72e66c6f9ce3023e461b20f91f50aa8125b9804da
+
+pkgname = juliaup-bin

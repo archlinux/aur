@@ -1,0 +1,5 @@
+*.json
+*.tar.gz
+*.tar.zst
+src/
+pkg/
