@@ -4,7 +4,7 @@ _gitauthor="danisztls"
 _gitbranch="main"
 
 pkgname="${_pkgname}-git"
-pkgver=v0.1.r17.g0bf0cd5
+pkgver=v0.1.r20.g376caeb
 pkgrel=1
 pkgdesc="Terminates Steam on Linux when certain conditions are met."
 arch=('any')
