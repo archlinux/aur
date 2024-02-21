@@ -1,10 +1,10 @@
 pkgbase = obs-stroke-glow-shadow
 	pkgdesc = OBS plugin to provide efficient Stroke, Glow, and Shadow effects on masked sources
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FiniteSingularity/obs-stroke-glow-shadow
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = cmake
 	depends = gcc-libs
 	depends = glibc

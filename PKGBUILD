@@ -3,11 +3,11 @@
 
 pkgname=obs-stroke-glow-shadow
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="OBS plugin to provide efficient Stroke, Glow, and Shadow effects on masked sources"
 arch=('x86_64')
 url="https://github.com/FiniteSingularity/obs-stroke-glow-shadow"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('gcc-libs' 'glibc' 'obs-studio')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
