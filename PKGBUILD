@@ -34,12 +34,8 @@ makedepends=(cargo
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git+$url.git"
-        "$_pkgname-tonic::git+${url%/$_pkgname}/tectonic.git"
-        'harfbuzz::git+https://github.com/harfbuzz/harfbuzz.git'
-        'tectonic-staging::git+https://github.com/tectonic-typesetting/tectonic-staging.git')
+        "$_pkgname-tonic::git+${url%/$_pkgname}/tectonic.git")
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP')
 options=(!lto)
 
@@ -53,16 +49,15 @@ prepare() {
 	sed -i -e 's/fPIC"/fPIC -Wl,-z,now"/' Makefile
 	git submodule init
 	git config submodule.tectonic.url "$srcdir/$_pkgname-tonic"
-	git -C tectonic config submodule.crates/bridge_harfbuzz/harfbuzz.url "$srcdir/harfbuzz"
 	git -C tectonic config submodule.reference_sources.url "$srcdir/tectonic-staging" 
-	git -c protocol.file.allow=always submodule update --init --recursive
+	git -c protocol.file.allow=always submodule update --init
 	pushd tectonic
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
 	cd "${pkgname%-git}"
-	export CARGO_BUILD_FLAGS="--frozen --release"
+	export CARGO_BUILD_FLAGS="--frozen --release --features external-harfbuzz"
 	make config
 	make all
 }
