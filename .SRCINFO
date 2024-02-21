@@ -1,7 +1,7 @@
 pkgbase = libsemanage
 	pkgdesc = SELinux binary policy manipulation library
 	pkgver = 3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SELinuxProject/selinux
 	install = libsemanage.install
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = libsemanage
 	depends = audit
 	optdepends = python: python bindings
 	optdepends = ruby: ruby bindings
-	provides = selinux-usr-libsemanage=3.6-1
+	provides = selinux-usr-libsemanage=3.6-2
 	conflicts = selinux-usr-libsemanage
 	options = !emptydirs
 	source = https://github.com/SELinuxProject/selinux/releases/download/3.6/libsemanage-3.6.tar.gz
@@ -31,3 +31,4 @@ pkgbase = libsemanage
 	sha256sums = 5b0e6929428e095b561701ccdfa9c8b0c3d70dad3fc46e667eb46a85b246a4a0
 
 pkgname = libsemanage
+	provides = libsemanage.so

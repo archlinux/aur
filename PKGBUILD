@@ -8,7 +8,7 @@
 
 pkgname=libsemanage
 pkgver=3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux binary policy manipulation library"
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/SELinuxProject/selinux'
@@ -43,6 +43,10 @@ build() {
 }
 
 package() {
+  provides=(
+    libsemanage.so
+  )
+
   cd "${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" LIBEXECDIR=/usr/lib SHLIBDIR=/usr/lib install
   make DESTDIR="${pkgdir}" PYTHON=/usr/bin/python3 LIBEXECDIR=/usr/lib SHLIBDIR=/usr/lib install-pywrap
