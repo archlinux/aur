@@ -16,7 +16,8 @@ license=('LGPL2.1')
 groups=('selinux')
 makedepends=('flex')
 depends=('glibc')
-options=(staticlibs)
+# Disable LTO as it is incompatible with the static library
+options=(staticlibs '!lto')
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
 validpgpkeys=(
