@@ -1,0 +1,25 @@
+From ccb15ce38ae68d3776864bdaf1275b7c6ac1a25a Mon Sep 17 00:00:00 2001
+From: Davide Depau <davide@depau.eu>
+Date: Tue, 20 Feb 2024 22:28:59 +0100
+Subject: [PATCH] Fix SIGSEGV when initializing libnotify
+
+---
+ src/notifications.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/notifications.c b/src/notifications.c
+index 58ac818..215e2d5 100644
+--- a/src/notifications.c
++++ b/src/notifications.c
+@@ -80,9 +80,9 @@ mmgui_notifications_t mmgui_notifications_new(mmgui_libpaths_cache_t libcache, G
+ 						notifications->supportsaction = TRUE;					
+ 						break;
+ 					}					
+-					g_list_foreach(capabilities, (GFunc)g_free, NULL);
+-					g_list_free(capabilities);
+ 				}
++				g_list_foreach(capabilities, (GFunc)g_free, NULL);
++				g_list_free(capabilities);
+ 			}
+ 			/*Icon for notifications*/
+ 			notifications->notifyicon = icon;

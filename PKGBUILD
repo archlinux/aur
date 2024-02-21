@@ -6,7 +6,7 @@ pkgname='modem-manager-gui-hg'
 _pkgname="${pkgname%-hg}"
 pkgver=r85+.3f6d6c4ee74c+
 arch=('x86_64')
-pkgrel=1
+pkgrel=2
 license=('GPL3')
 
 conflicts=(modem-manager-gui)
@@ -26,9 +26,11 @@ depends=(
 )
 
 source=("${_pkgname}::hg+http://hg.code.sf.net/p/modem-manager-gui/code"
+        "fix_notification_segfault.patch"
         "fix_segfault_on_DNS_entries.patch")
 
 sha256sums=('SKIP'
+            '593ba269cef6168c14e4bdd5098753b3603a78fe702cd20bd634cdd213198114'
             '2a21a7ab4ae78e4296a28e46a337eee042a8d7855a8af5d116ebcfcd989e9892')
 
 pkgver() {
@@ -39,6 +41,7 @@ pkgver() {
 prepare() {
  cd "${_pkgname}"
  patch --forward --strip=1 --input="${srcdir}/fix_segfault_on_DNS_entries.patch"
+ patch --forward --strip=1 --input="${srcdir}/fix_notification_segfault.patch"
 }
 
 build() {
