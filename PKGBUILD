@@ -64,11 +64,11 @@ build() {
         --enable-nls \
         --prefix=/usr \
         --sysconfdir=/etc
-
     make
 }
 
 package() {
     cd "${srcdir}/${pkgname}"
     make DESTDIR="$pkgdir" install
+    install -Dm0644 data/${pkgname%-git}.desktop -t ${pkgdir}/usr/share/applications/
 }
