@@ -1,19 +1,19 @@
 # Maintainer: Kain Huang <iblader@gmail.com>
 pkgname=netbeans-bin
-pkgver=20
-pkgrel=2
+pkgver=21
+pkgrel=1
 pkgdesc='IDE for Java, HTML5, PHP, Groovy, C and C++'
 arch=('any')
 url='https://netbeans.apache.org/'
 license=('Apache')
-source=('https://downloads.apache.org/netbeans/netbeans/20/netbeans-20-bin.zip')
+source=('https://downloads.apache.org/netbeans/netbeans/21/netbeans-21-bin.zip')
 makedepends=('gendesk')
 depends=('ttf-font' 'which' 'java-environment>=11')
 optdepends=('php: for developing programs in php'
             'groovy: for developing programs in groovy'
             'lib32-glibc')
-#sha512sums from ('https://downloads.apache.org/netbeans/netbeans/20/netbeans-20-bin.zip.sha512')
-sha512sums=('59eb2b0e7887f0d962d180c4004a81cf752f12a2b9456c59417daf90a312877f697500580c53566a220bde2a49df2b95ba1e4dedb4cf59b49bdacdc47c98745f')
+#sha512sums from ('https://downloads.apache.org/netbeans/netbeans/21/netbeans-21-bin.zip.sha512')
+sha512sums=('1bd5695755eb9547d88a5539a6e43884d787dba4da6ecadc1b261e07c1dda56d0a03986a66755c5d3a358216711c0393ac8fdd649e15c953bdfe380cb564ca65')
 
 build(){
 	gendesk -f -n \
