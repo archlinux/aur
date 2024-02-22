@@ -5,7 +5,7 @@
 
 pkgname=qnapi
 pkgver=0.2.3
-pkgrel=6
+pkgrel=7
 pkgdesc='Qt client for downloading movie subtitles from NapiProjekt, OpenSubtitles, Napisy24'
 arch=('x86_64')
 url='https://qnapi.github.io/'
@@ -34,5 +34,5 @@ build() {
 package() {
   cd $pkgname-$pkgver
   make INSTALL_ROOT="$pkgdir" install
-  install -Dm644 -t "$pkgdir/usr/share/kservices5/ServiceMenus/" doc/qnapi-{download,scan}.desktop
+  install -Dm644 -t "$pkgdir/usr/share/kio/servicemenus/" doc/qnapi-{download,scan}.desktop
 }
