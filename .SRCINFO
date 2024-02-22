@@ -1,0 +1,32 @@
+pkgbase = xmm7360-pci-git
+	pkgdesc = Driver for the Fibocom L850-GL / Intel XMM7360 LTE modem
+	pkgver = r229.cf6625a
+	pkgrel = 1
+	url = https://github.com/xmm7360/xmm7360-pci
+	arch = x86_64
+	license = BSD
+	license = GPL
+	makedepends = python
+	source = git+https://github.com/xmm7360/xmm7360-pci
+	source = dkms.conf
+	source = xmm7360.service
+	source = nodbus-exit-code.patch
+	source = dns-priority.patch
+	sha256sums = SKIP
+	sha256sums = 7471249a65fa1cb1c41a5a33c3a7d368d74f61ba91d4dc3e39be6afafc7ec6c0
+	sha256sums = 2da4f2905390604b6dd0881cf874f2ee2c3898a24f86d380d1d403b2bb74c50d
+	sha256sums = b5e98c712fff07040426f632e45c594c288e6adb2ecda06b31e2387d6284fa82
+	sha256sums = 8389a09554df2e87f3b9df921e018bcb46585bde31e47699999b8576510e19f0
+
+pkgname = xmm7360-pci-dkms-git
+	pkgdesc = Driver for the Fibocom L850-GL / Intel XMM7360 LTE modem – module sources
+	depends = dkms
+	provides = XMM7360-PCI-MODULE
+
+pkgname = xmm7360-pci-utils-git
+	pkgdesc = Driver for the Fibocom L850-GL / Intel XMM7360 LTE modem – utilities only
+	depends = XMM7360-PCI-MODULE
+	depends = dbus-python
+	depends = python-pyroute2
+	depends = python-configargparse
+	backup = etc/xmm7360
