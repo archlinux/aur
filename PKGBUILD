@@ -5,8 +5,8 @@
 
 pkgname=gotosocial-git
 _pkgname=${pkgname%-git}
-pkgver=r1546.c5eced5fd
-pkgrel=3
+pkgver=r1622.5aca09b59
+pkgrel=2
 pkgdesc='ActivityPub social network server written in Golang (development version)'
 arch=('x86_64')
 url='https://gotosocial.org'
@@ -30,7 +30,7 @@ backup=(
   'etc/gotosocial/template/email_test.tmpl'
   'etc/gotosocial/template/error.tmpl'
   'etc/gotosocial/template/finalize.tmpl'
-  'etc/gotosocial/template/frontend.tmpl'
+  'etc/gotosocial/template/settings.tmpl'
   'etc/gotosocial/template/index.tmpl'
   'etc/gotosocial/template/index_apps.tmpl'
   'etc/gotosocial/template/oob.tmpl'
