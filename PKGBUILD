@@ -63,7 +63,7 @@ package()
         exit 1
     fi
 
-    sudo sed -i "s/^# \\\$settings\['trusted_host_patterns'\] = \[\];/\$settings['trusted_host_patterns'] = ['^127\\\.0\\\.0\\\.1$', '^localhost$'];/g" "${pkgdir}"/usr/share/webapps/"${pkgname}"/web/sites/default/default.settings.php
+    sed -i "s/^# \\\$settings\['trusted_host_patterns'\] = \[\];/\$settings['trusted_host_patterns'] = ['^127\\\.0\\\.0\\\.1$', '^localhost$'];/g" "${pkgdir}"/usr/share/webapps/"${pkgname}"/web/sites/default/default.settings.php
 
     if ! grep -Eq "^\\\$settings\['trusted_host_patterns'\] = \['\^127\\\.0\\\.0\\\.1\\\$', '\^localhost\\\$'\];$" "${pkgdir}"/usr/share/webapps/"${pkgname}"/web/sites/default/default.settings.php; then
         echo "String not found!" >&2
