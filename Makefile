@@ -42,4 +42,4 @@ remove:
 	@echo -e "# Run the following only if you are certain:\nsudo pacman -Rs $(NAME)"
 
 schk:
-	shellcheck -s bash -e SC2034,SC2154 PKGBUILD
+	shellcheck -s bash -e SC2034,SC2154 PKGBUILD *.install
