@@ -1,8 +1,9 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: desbma
 
 pkgname=zoxide
-pkgver=0.9.2
+pkgver=0.9.4
 pkgrel=1
 pkgdesc='A smarter cd command for your terminal'
 arch=('x86_64')
@@ -14,7 +15,7 @@ optdepends=(
   'fzf: for interactive selection'
 )
 options=('!lto')
-_commit='1bfcdfacf22fe22ff05ad2813aac7c0d14dfba36'
+_commit='418a78d348445ddca0e15b1e95c4f17e4c628b19'
 source=("$pkgname::git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 
