@@ -34,7 +34,7 @@ package_xmm7360-pci-spat-dkms() {
   pkgdesc+=" – module sources"
   depends=(dkms)
   provides=(XMM7360-PCI-SPAT-MODULE)
-  cd ${_pkgbase}
+  cd ${__pkgbase}
   install -Dm644 "${srcdir}"/dkms.conf xmm7360.c Makefile -t "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
 }
 
