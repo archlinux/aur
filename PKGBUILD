@@ -3,7 +3,7 @@
 _name=akonadi-contacts
 pkgname=${_name}5
 pkgver=23.08.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Libraries and daemons to implement Contact Management in Akonadi'
 arch=(x86_64)
 url='https://kontact.kde.org'
