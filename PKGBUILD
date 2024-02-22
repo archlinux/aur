@@ -1,7 +1,7 @@
 # Maintainer: bziemons <ben@rs485.network>
 pkgname=ulwgl-git
-pkgver=0.1.RC3.89.g33bd828
-pkgrel=1
+pkgver=0.1.RC3.113.gb97c9af
+pkgrel=2
 pkgdesc="Unified launcher for Windows games on Linux in progress using Steam Runtime Tools, independent of Steam."
 license=('custom')
 arch=('any')
@@ -22,27 +22,26 @@ pkgver() {
     printf "%s" $(git describe HEAD | sed 's/-/./g')
 }
 
-prepare() {
+build() {
+    cd "ULWGL-launcher"
+
     fullver="${pkgver}-${pkgrel}"
     echo "Replacing ULWGL_LAUNCHER_VER content with ${fullver}"
-    echo -n "${fullver}" > ULWGL-launcher/ULWGL-VERSION
-    sed -i 's/^ULWGL_LAUNCHER_VER=.*$/ULWGL_LAUNCHER_VER='"${fullver}"/ ulwgl-run-cli
+    echo -n "${fullver}" > ULWGL-VERSION
+    sed -i 's/^ULWGL_LAUNCHER_VER=.*$/ULWGL_LAUNCHER_VER='"${fullver}"/ ../ulwgl-run-cli
 
-    if [[ -r "ULWGL-launcher/ulwgl-run-cli" ]]; then
-        protonver="$(grep -E --color=no '^ULWGL_PROTON_VER=' ULWGL-launcher/ulwgl-run-cli)"
+    if [[ -r "ulwgl-run-cli" ]]; then
+        protonver="$(grep -E --color=no '^ULWGL_PROTON_VER=' ulwgl-run-cli)"
         if [[ -z "${protonver}" ]]; then
             echo "Could not determine ULWGL_PROTON_VER!"
         else
             echo "Replacing ${protonver}"
-            sed -i 's/^ULWGL_PROTON_VER=.*$/'"${protonver}"/ ulwgl-run-cli
+            sed -i 's/^ULWGL_PROTON_VER=.*$/'"${protonver}"/ ../ulwgl-run-cli
         fi
     else
         echo "Could not read ULWGL-launcher/ulwgl-run-cli. PKGBUILD probably outdated!"
     fi
-}
 
-build() {
-    cd "ULWGL-launcher"
     echo "Packing ULWGL-launcher.tar.gz"
     tar --sort=name \
         --mtime="@${SOURCE_DATE_EPOCH:-$(date +%s)}" \
