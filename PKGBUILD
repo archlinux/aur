@@ -1,18 +1,18 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='dscheck'
 pkgname="ocaml-$_projectname"
-pkgver='0.3.0'
+pkgver='0.4.0'
 pkgrel='1'
 pkgdesc='Experimental model checker for testing concurrent algorithms'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-multicore/$_projectname"
 license=('ISC')
-depends=('ocaml>=5.0.0' 'ocaml-cmdliner' 'ocaml-containers' 'ocaml-oseq' 'ocaml-tsort')
-makedepends=('dune>=2.9.0')
+depends=('ocaml>=4.12.0' 'ocaml-cmdliner' 'ocaml-containers' 'ocaml-oseq' 'ocaml-tsort')
+makedepends=('dune>=3.9.0')
 checkdepends=('ocaml-alcotest>=1.6.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('8f745c9e42b14e04d217c1039ce013c0268d640abe75f70002032a43f8de7a3c73758ccead65d0dfeb2ea504868aa0ed1a5753e72eac8c8be339edb9c3d7ba5a')
+sha512sums=('4aa711269e8082419ec2d37a3b7be99cc61df4dcd2d449070caeefdc617c60cd3e64f30971e28bba90a3ad1fe99ff3ea7a5ddc6440e18421740d987c6aa22a1c')
 
 _sourcedirectory="$_projectname-$pkgver"
 
