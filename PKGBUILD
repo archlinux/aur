@@ -26,7 +26,7 @@ b2sums=('d158d39c824c0fb1626b1c5c1378f0df64e6cddebd85ca6b508f11141c179fa07a85a06
 
 prepare() {
   cd $pkgname-v$pkgver
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
