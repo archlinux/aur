@@ -1,7 +1,7 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=python-langchain
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc='Build context-aware reasoning applications'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/langchain-ai/langchain'
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/langchain-ai/langchain/archive/refs/tags/v${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/langchain-ai/langchain/v${pkgver}/LICENSE")
-sha256sums=('84931699967a11e84a96395bcc21b6ca7b319cc6d99dbd62a9ab9657b2477d1e'
+sha256sums=('1c1823fa4d443871bfc7290c5d5942a8ccdaf7c7b9851c4fa48d4416961cbf32'
             '4ec67e4ca6e6721dba849b2ca82261597c86a61ee214bbf21416006b7b2d0478')
 depends=(python
     python-aiohttp
