@@ -55,7 +55,7 @@ build() {
   popd
 
   export FLUTTER_HOME="$srcdir/flutter"
-  export PATH="${PATH}:${FLUTTER_HOME}/bin:"
+  export PATH="${PATH}:${FLUTTER_HOME}/bin"
   flutter --disable-analytics
   flutter pub get
   flutter build linux
@@ -64,7 +64,7 @@ build() {
 check() {
   cd yubioath-flutter
   export FLUTTER_HOME="$srcdir/flutter"
-  export PATH="${PATH}:${FLUTTER_HOME}/bin:"
+  export PATH="${PATH}:${FLUTTER_HOME}/bin"
   flutter test
 }
 
