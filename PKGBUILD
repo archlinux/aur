@@ -1,7 +1,7 @@
 # Maintainer: Stefan Swerk <stefan_aur@swerk.priv.at>
 pkgname=rubanetra
 pkgver=0.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A rule-based network traffic analysis Java framework."
 arch=('any')
 url="https://gitea.swerk.priv.at/stefan/rubanetra.git"
