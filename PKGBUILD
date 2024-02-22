@@ -15,10 +15,13 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
 depends=(
+    cairo
     glibc
     fribidi
+    glib2
     libpng
     libjpeg-turbo
+    librsvg
     libx11
     libxext
     libxrender
@@ -31,7 +34,8 @@ makedepends=(
     automake
     coreutils
     gettext
-    git)
+    git
+    sed)
 checkdepends=()
 optdepends=()
 source=("${pkgname}::git+${url}.git")
@@ -54,12 +58,8 @@ prepare()
 build() {
     cd "${srcdir}/${pkgname}"
 
-#     make distclean
     autoupdate
-#     autoreconf -fi
     ./autogen.sh
-
-#     sed -i 's|gettext-tools|gettext|g' po/Makefile
     ./configure \
         --enable-nls \
         --prefix=/usr \
