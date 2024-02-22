@@ -2,11 +2,11 @@
 
 pkgname=('mod_tile' 'renderd')
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A daemon and apache module for rendering and serving Mapnik raster tiles'
 arch=('i686' 'x86_64')
 url='https://github.com/openstreetmap/mod_tile'
-license=('GPL2')
+license=('GPL-2.0-or-later')
 optdepends=('ceph-libs: RADOS tile storage support'
             'libmemcached: Memcached tile storage support')
 makedepends=('apache' 'apr' 'boost' 'cairo' 'cmake' 'glib2' 'iniparser' 'mapnik')
@@ -61,8 +61,9 @@ package_mod_tile() {
   install -dm755 "$pkgdir"/usr/share/renderd
   cp -av "$srcdir"/mod_tile/utils/example-map "$pkgdir"/usr/share/renderd/example-map
 
-  # "/etc/renderd.conf", "/usr/bin", "/usr/share/man" & "/var" are contained in/handled by "renderd" package
-  rm -rf "$pkgdir"/etc/renderd.conf "$pkgdir"/usr/bin "$pkgdir"/usr/share/man "$pkgdir"/var
+  # "/etc/renderd.conf", "/usr/bin", "/usr/share/man", "/var/cache/renderd/tiles" & "/var/run/renderd" are contained in "renderd" package
+  cd "$pkgdir" || return
+  rm -rf etc/renderd.conf usr/bin usr/share/man var
 }
 
 package_renderd() {
@@ -81,9 +82,8 @@ package_renderd() {
   # License
   install -Dm644 "$srcdir"/mod_tile/COPYING "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 
-  # The creation of "/var/cache/renderd/tiles" & "/var/run/renderd" will be handled by "renderd.tmpfiles"
-  rm -rf "$pkgdir"/var
-
+  # "/var/cache/renderd/tiles" & "/var/run/renderd" will be handled by "renderd.tmpfiles"
   # "/etc/httpd" & "/usr/lib/httpd" are contained in "mod_tile" package
-  rm -rf "$pkgdir"/etc/httpd "$pkgdir"/usr/lib/httpd
+  cd "$pkgdir" || return
+  rm -rf var etc/httpd usr/lib/httpd
 }
