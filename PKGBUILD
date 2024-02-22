@@ -55,7 +55,7 @@ build() {
   popd
 
   export FLUTTER_HOME="$srcdir/flutter"
-  export PATH="${PATH}:${FLUTTER_HOME}/bin"
+  export PATH="${FLUTTER_HOME}/bin:${PATH}"
   flutter --disable-analytics
   flutter pub get
   flutter build linux
