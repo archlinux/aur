@@ -2,7 +2,7 @@
 pkgname=python-flash-patcher
 _name=flash-patcher
 pkgver=6.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Adobe Flash SWF file patching tool"
 arch=('any')
 url="https://github.com/rayyaw/flash-patcher"
@@ -10,7 +10,7 @@ license=('AGPL3')
 depends=('ffdec' 'python' 'python-antlr4')
 makedepends=('python-installer' 'python-hatch' 'antlr4')
 source=("https://github.com/rayyaw/flash-patcher/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('ed8e2578b7a61496781d09485bedeb506b61f90b939bff82789fa642f936722d83a6836999711339aa0e5e2bb4b2e37538d8c5de65c183bc776623b06a698d4b')
+b2sums=('146e5277ca57e25522d49872777f6943f4fde939dccb4af4a0faaec0ab92a420a9ddd7bd3936471439cc43dd1368ea85b620b4b6fd9e62b353d9a02bc9d18fa3')
 
 prepare() {
     rm "${_name}-${pkgver}/flash_patcher/antlr_source/.gitkeep"
