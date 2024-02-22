@@ -28,7 +28,7 @@ KillMode=mixed
 KillSignal=SIGTERM
 Restart=on-failure
 RestartPreventExitStatus=2
-ExecStart=/usr/bin/ory-hydra --config /etc/ory/hydra/%i.yaml
+ExecStart=/usr/bin/ory-hydra serve --config /etc/ory/hydra/%i.yaml
 
 [Install]
 WantedBy=multi-user.target
