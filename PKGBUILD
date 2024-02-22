@@ -2,7 +2,7 @@
 # Contributor: Hanabishi
 # Contributor: Sergey Vlasov <sergey@vlasov.me>
 pkgname=nulloy
-pkgver=0.9.8
+pkgver=0.9.8.7
 pkgrel=1
 pkgdesc='Music player with a waveform progress bar'
 arch=(x86_64)
@@ -30,7 +30,7 @@ makedepends=('imagemagick'
 optdepends=('gst-plugins-bad: additional codecs'
             'gst-plugins-ugly: additional codecs')
 source=("https://github.com/$pkgname/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('889a48b9d43b3c2d71078e801d771a3c60977f8e8c00fdef07979413688a0104')
+sha256sums=('b524cf137125a2466099567d037362fd638494e4920dcbad381dc8957dcb1843')
 
 build() {
 	cd "$pkgname-$pkgver"
