@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Gust <jeremy AT plasticsoup DOT net>
 # Contributer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=apple-music-desktop
-pkgver=2.0.5
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="An Electron app that provides a native Apple Music experience for Linux & Windows."
 arch=('x86_64')
@@ -36,7 +36,7 @@ makedepends=('npm' 'nvm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('c0777633074d1f45c244e8d588f77ee6f82c1179c97a2f789a8f68e7df6b2556'
+sha256sums=('d0517a6d806641989b61cff84d80b3db127bad1fc91b0946310be2a11673c1f0'
             '336945e159e2d00c497bfcfef4d31af3b6f620a2fd6b62bc2ad92c7afadd8110'
             'e0bf199faf01e3ea79b845214408ad3852e260d73a2e0f5be437989646c2f169')
 
@@ -65,7 +65,7 @@ build() {
 }
 
 package() {
-	install -Dm755 "$pkgname.sh" "${pkgdir}/usr/bin/$pkgname"
+	install -Dm755 "$pkgname.sh" "${pkgdir}/usr/bin/$pkgname.sh"
 	install -Dm644 "$pkgname.desktop" "${pkgdir}/usr/share/applications/$pkgname.desktop"
 	install -Dm644 "$pkgname-$pkgver/LICENSE.md" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 "$pkgname-$pkgver/assets/README.txt" "${pkgdir}/usr/share/doc/$pkgname/README.txt"
