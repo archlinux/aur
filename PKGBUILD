@@ -7,8 +7,9 @@
 
 pkgname=signal-desktop-beta
 _pkgname=Signal-Desktop
+_sticker_creator="sticker-creator"
 pkgver=7.0.0beta2
-pkgrel=1
+pkgrel=2
 pkgdesc='Signal Private Messenger for Linux - Beta version.'
 license=('GPL3')
 conflicts=('signal-desktop-beta-bin')
@@ -23,11 +24,9 @@ makedepends_aarch64=('fpm')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/v${pkgver//beta*}-beta.${pkgver##*beta}.tar.gz"
   "${pkgname}.desktop"
-  "signal-desktop-wrapper.sh"
   )
 sha512sums=('05908bd01079dfdfc58de4442688bbefeaf3145c9a6663e3cdef9932677b7c9c70323e7b19e971fce57d1ff9190a30031c5d60c2d5ee466c39367cde98d8e50d'
-            '7b25b98de8db36af1a9da49cd214d6ced45f123f098e5665b563e462b979e67d9d570fce8fbee89776a95dc5108696da64bfbe0bd1eaf748360dfcb333483dbb'
-            '457c1bd044f4e17810a7f1b284ca38809a0c1f8fed4bdb52184a169e2996e683c4c96c1cc86a013feb7b8833557245397decdcec01dbc82bb2b12b0d80424e25')
+            'b2959b4232c730f662ff542c48837dcbd4923b571e12138ec68df4585904149adc1b7e8be46ee46485b47386a517b2065cd7381c766858fd6c3fd61166c4c800')
 
 prepare() {
   cd "${_pkgname}-${pkgver//beta*}-beta.${pkgver##*beta}"
@@ -37,6 +36,10 @@ prepare() {
   # Allow higher Node versions
   sed 's#"node": "#&>=#' -i package.json
 
+  cd ${_sticker_creator}
+  yarn install
+
+  cd ..
   yarn install --ignore-engines
 }
 
@@ -46,9 +49,12 @@ build() {
   # temporary fix for openssl3
   export NODE_OPTIONS=--openssl-legacy-provider
 
+  cd ${_sticker_creator}
+  USE_SYSTEM_FPM=$([ $(uname -m) == "aarch64" ] && echo true || echo false) bash -c 'yarn build'
+
+  cd ..
   yarn generate
   yarn prepare-beta-build
-
   USE_SYSTEM_FPM=$([ $(uname -m) == "aarch64" ] && echo true || echo false) bash -c 'yarn build:esbuild:prod && yarn build:release --linux dir'
 }
 
