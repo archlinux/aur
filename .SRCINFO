@@ -1,0 +1,21 @@
+pkgbase = r-tbrdist
+	pkgdesc = Rearrangement Distances Between Unrooted Phylogenetic Trees
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=TBRDist
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-ape
+	depends = r-bh
+	depends = r-rcpp
+	depends = r-rdpack
+	depends = r-treedist
+	depends = r-treetools
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/TBRDist_1.0.2.tar.gz
+	sha256sums = a
+
+pkgname = r-tbrdist
