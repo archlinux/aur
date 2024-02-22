@@ -7,13 +7,13 @@
 
 pkgbase=wps-office
 pkgname=('wps-office' 'wps-office-mime')
-pkgver=11.1.0.11711
+pkgver=11.1.0.11719
 #_pkgver=8372
 pkgrel=1
 #_pkgrel=1
 pkgdesc="Kingsoft Office (WPS Office) - an office productivity suite"
 arch=('x86_64')
-license=('custom')
+license=('LicenseRef-WPS-EULA')
 url="http://wps-community.org"
 options=('!emptydirs')
 #[[ "$CARCH" = "i686" ]] && _archext=x86 || _archext=x86_64
@@ -24,7 +24,7 @@ source=("https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/${pkg
         'fix-wps-python-parse.patch')
 #sha1sums_i686=('60b1c9e33ee6fc1edcefe40dc9ec529d4a668825'
 #               'dd8b5283ee17a88a3eb0531976abccd6e5e08c48')
-sha1sums=('e3e08aadf12a87cd045ae46e499c53b0ab0a1bca'
+sha1sums=('576be9de62fdf8715a77b955526cb457b75c4a10'
           'f3713481edf04ffb08be8d24dce66554dd5a4f13')
 
 prepare() {
