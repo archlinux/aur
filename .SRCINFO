@@ -1,0 +1,19 @@
+pkgbase = arch-os-manager
+	pkgdesc = Arch OS System Manager
+	pkgver = r27.b7ba867
+	pkgrel = 1
+	url = https://github.com/murkl/arch-os-manager
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = paru
+	depends = kitty
+	depends = gum
+	depends = libnotify
+	depends = ttf-firacode-nerd
+	source = arch-os.desktop
+	source = arch-os-manager::git+https://github.com/murkl/arch-os-manager.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = arch-os-manager
