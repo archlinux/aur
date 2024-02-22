@@ -5,12 +5,13 @@
 _base=green-tunnel
 pkgname=${_base}-bin
 pkgver=1.8.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Anti-censorship utility that bypasses ISPs' deep packet inspection"
 arch=('x86_64')
 url="https://github.com/SadeghHayeri/GreenTunnel"
 license=('MIT')
 provides=('green-tunnel')
+conflicts=('green-tunnel')
 depends=('nss' 'gtk3' 'libxss')
 options=('!emptydirs')
 source=("$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/$_base-debian.zip")

@@ -1,7 +1,7 @@
 pkgbase = green-tunnel-bin
 	pkgdesc = Anti-censorship utility that bypasses ISPs' deep packet inspection
 	pkgver = 1.8.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/SadeghHayeri/GreenTunnel
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = green-tunnel-bin
 	depends = gtk3
 	depends = libxss
 	provides = green-tunnel
+	conflicts = green-tunnel
 	options = !emptydirs
 	source = green-tunnel-bin-1.8.3.zip::https://github.com/SadeghHayeri/GreenTunnel/releases/download/v1.8.3/green-tunnel-debian.zip
 	sha256sums = d00a6f4e43993a4b8c96546a3a8afbe04a5d11d0d65ab9dcc5137b0b6857f3dc
