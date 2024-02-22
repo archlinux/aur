@@ -2,14 +2,14 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CellBarcode
-_pkgver=1.8.0
+_pkgver=1.8.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Cellular DNA Barcode Analysis toolkit"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(MIT)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('MIT')
 depends=(
   r-biostrings
   r-ckmeans.1d.dp
@@ -19,6 +19,7 @@ depends=(
   r-magrittr
   r-plyr
   r-rcpp
+  r-rsamtools
   r-s4vectors
   r-seqinr
   r-shortread
@@ -38,12 +39,12 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d219d9d5c998fda5f5c02f817361c56a')
-sha256sums=('97b7ac8b8a031d17f58cd4c96f4e67ade0741784a515b5f1b75252b5dd569ab5')
+md5sums=('17e78449fe21396c431d8e541a169864')
+b2sums=('789af20a6ed95950cabb36b2b29d73e202a1aa02d620a1818823aedc4a1d8765e8adfe4302537c2af8b79c9789c0069ae11a50bed2966debe0d519ecc5f00e6f')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
