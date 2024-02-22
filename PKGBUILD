@@ -2,7 +2,7 @@
 pkgname=python-fangfrisch
 _name=${pkgname#python-}
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Freshclam like utility that allows downloading unofficial virus definition files"
 arch=('any')
 license=('GPL')
@@ -30,13 +30,17 @@ build() {
 }
 
 check() {
-    cd "$_name-$pkgver" || exit 1
-    rm -rf tmp_unittest
-    mkdir -p tmp_unittest
-    sed -i -e "s,/tmp/fangfrisch/unittest,$srcdir/$_name-$pkgver/tmp_unittest," tests/tests.conf tests/__init__.py
-    sqlite3 tmp_unittest/db.sqlite < tests/tests.sql
-    python -m unittest discover tests/
-    rm -rf tmp_unittest
+    local tmp
+    pushd >/dev/null "$_name-$pkgver" || exit 1
+    tmp="$(pwd -P)/unittest.tmp"
+    rm >/dev/null -fr "${tmp}"
+    mkdir "${tmp}" || exit 1
+    # shellcheck disable=SC2064
+    trap "rm -fr ${tmp}" EXIT
+    sed -i -e "s,/tmp/fangfrisch/unittest,${tmp},g" tests/*
+    sqlite3 "${tmp}"/db.sqlite < tests/tests.sql
+    python -m unittest discover -v tests/
+    popd >/dev/null || exit 1
 }
 
 package() {
