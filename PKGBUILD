@@ -1,10 +1,10 @@
-# Maintainer: Lili1228 <aur at gramywpsl dot pl>
+# Maintainer: Lili1228 <aur at lili dot lgbt>
 pkgname=86box
 _pkgname=86Box
-pkgver=4.0.1
+pkgver=4.1
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones'
-arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
+arch=('pentium4' 'x86_64' 'armv7h' 'aarch64')
 url='https://86box.net/'
 license=('GPL2')
 depends=('fluidsynth' 'hicolor-icon-theme' 'libslirp' 'openal' 'qt6-base' 'rtmidi' 'sdl2' # explicit
@@ -17,15 +17,15 @@ optdepends=(
 )
 options=('!buildflags')
 source=(
-    "86Box.tgz::https://github.com/${_pkgname}/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}_$pkgver.tgz::https://github.com/${_pkgname}/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha512sums=('b06a8c50558276f35f98795e0513b5bd39eed3a0d3a8d61bf79b373501cd823ab3ab12fb943e879a240292bca39c507a1a42b1b6f3f9ae596499b685a03acf98')
+sha512sums=('bfc1267b333dd738e5935b0c6b9eec3d84863bda22ba52d4d51e59e72f6bcaa78b6e9c656699eef3c3e436072b18c32d11f8d57a5bb578fc0334430fbdb48b35')
 
 build() {
     case "$CARCH" in
         pentium4) _NDR=off; _TOOLCHAIN=cmake/flags-gcc-i686.cmake ;;
         x86_64)   _NDR=off; _TOOLCHAIN=cmake/flags-gcc-x86_64.cmake ;;
-        arm7h)    _NDR=on;  _TOOLCHAIN=cmake/flags-gcc-armv7.cmake ;;
+        armv7h)    _NDR=on;  _TOOLCHAIN=cmake/flags-gcc-armv7.cmake ;;
         aarch64)  _NDR=on;  _TOOLCHAIN=cmake/flags-gcc-aarch64.cmake ;;
     esac
     LDFLAGS='-z now' cmake -S"$_pkgname-$pkgver" -Bbuild --preset regular --toolchain "$_TOOLCHAIN" -DCMAKE_INSTALL_PREFIX=/usr -DUSE_QT6=on -DNEW_DYNAREC="$_NDR"
