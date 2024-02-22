@@ -1,38 +1,23 @@
 # Maintainer: irmluity <45vw4yz8g@mozmail.com>
 
 pkgname=warp-terminal
-pkgver=0.2024.02.16.17.24.stable_00
+pkgver=0.2024.02.20.08.01.stable_01
 pkgrel=1
-pkgdesc="Warp is a modern, Rust-based terminal with AI built in so you and your team can build great software, faster"
+pkgdesc="Warp, the Rust-based terminal for developers and teams"
 arch=(x86_64)
 url='https://warp.dev'
-license=('LicenseRef-warp')
-depends=('hicolor-icon-theme' 'zlib' 'glibc' 'fuse2')
-options=(!strip)
-source=(
-    "${pkgname}-${pkgver}-$CARCH.AppImage::https://releases.warp.dev/stable/v${pkgver}/Warp-$CARCH.AppImage"
-    "LICENSE::https://raw.githubusercontent.com/warpdotdev/Warp/main/LICENSE"
+license=('custom')
+depends=('curl' 'fontconfig' 'libegl' 'libx11' 'libxcb' 'libxcursor' 'libxi' 'libxkbcommon-x11' 'xdg-utils' 'zlib')
+optdepends=(
+    'zenity: for file dialogs in Gnome'
+    'kdialog: for file dialogs in KDE'
+    'org.freedesktop.secrets: for securely storing passwords'
 )
-sha256sums=(
-    "e6a19ed45b4df2e2db978749b8cf927ca8333eb78e5466dca452a8cd83756d86"
-    "SKIP"
-)
-
-prepare() {
-    cd "${srcdir}"
-    chmod a+x "${pkgname}-${pkgver}-$CARCH.AppImage"
-    "./${pkgname}-${pkgver}-$CARCH.AppImage" --appimage-extract >/dev/null
-    cd ${srcdir}/squashfs-root/usr/share/applications
-    sed -i 's/Exec=warp/Exec=warp-terminal/' dev.warp.Warp.desktop
-}
+source=("${pkgname}-${pkgver}-$CARCH.pkg.tar.zst::https://releases.warp.dev/stable/v${pkgver}/warp-terminal-v${pkgver}-${pkgrel}-$CARCH.pkg.tar.zst")
+sha256sums=('2fc6a59ea484e1caeb0e8cd17cf68000c90b73ee7ef1df5704a77975db31983d')
 
 package() {
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}-$CARCH.AppImage" "$pkgdir/opt/${pkgname}/${pkgname}.AppImage"
-    cd ${srcdir}/squashfs-root/usr/share/icons
-    find . -type f -exec install -Dm 644 {} "$pkgdir/usr/share/icons"/{} \;
-    cd ${srcdir}/squashfs-root/usr/share/applications
-    find . -type f -exec install -Dm 644 {} "$pkgdir/usr/share/applications"/{} \;
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "$srcdir/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd $srcdir
+    rm -f .BUILDINFO .MTREE .PKGINFO ${pkgname}-${pkgver}-$CARCH.pkg.tar.zst
+    cp -a "$srcdir/"* "$pkgdir/"
 }
