@@ -1,0 +1,3 @@
+# Give write access to the PC speaker only to the "input" group
+ACTION=="add", SUBSYSTEM=="input", ATTR{dev}=="13:*", ATTRS{name}=="AlsaBeep", RUN+="/usr/bin/alsabeep-helper -r $DEVNAME"
+ACTION=="remove", SUBSYSTEM=="input", ATTRS{name}=="AlsaBeep", RUN+="/bin/rm -f /dev/input/by-path/platform-pcspkr-event-spkr"

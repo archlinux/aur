@@ -1,0 +1,16 @@
+Some new cheap PCs do not have a pc-speaker device. That means the traditional
+terminal beep will not work. As an ancient sem-deaf nerd I like the beep that
+a terminal will produce when I do somethng wrong. GVim also has beeps :) yay
+
+This package provides
+  1) a kernel module suitable for dkms building. When installed using
+     modprobe alsabeep it provides an event device that can be used
+     to initiate a beep. 
+  2) a helper bash script, alsabeep-helper and associated config
+     file, alsabeep-helper.config that is configured to start a
+     userspace daemon.
+  3) a userspace daemon, alsabeep-daemon, that can make a beep
+     noise using alsa. When started the daemon attempts to set
+     its pid into /sys/module/alsabeep/parameters/helper_pid
+     and als0 create a link /dev/input/by-path/platform-pcspkr-event-spkr
+     that can be used by the beep command.

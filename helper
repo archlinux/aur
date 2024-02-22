@@ -1,0 +1,23 @@
+#!/usr/bin/bash
+. /etc/@_PKGBASE@-helper.conf
+
+if [ -n "$LOG" -a -w "$(dirname "${LOG}")" ]; then
+	LFLAG="-l"
+	if [ -x /usr/bin/stdbuf -a -x /usr/bin/iofilt ]; then
+		PROG="$(basename $0)"
+		exec &> >(stdbuf -i0 -o0 -e0 /usr/bin/iofilt -f'%FT%T' -p "$PROG" -z'Europe/London' > "${LOG}")
+	else
+		exec &> "${LOG}"
+	fi
+else
+	LFLAG=""
+fi
+
+echo "##### env start"
+env
+echo "##### env end"
+
+echo "# about to exec
+${exe} $LFLAG"
+
+eval "exec $exe $LFLAG"
