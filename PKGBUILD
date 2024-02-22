@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=kwt
 pkgver=0.0.8
-pkgrel=3
+pkgrel=4
 pkgdesc='Kubernetes Workstation Tools CLI'
 url='https://github.com/carvel-dev/kwt'
 arch=(any)
@@ -23,7 +23,8 @@ build ()
     export CGO_CXXFLAGS="${CXXFLAGS}";
     export CGO_LDFLAGS="${LDFLAGS}";
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw";
-    ./hack/build.sh "$pkgver"
+    sed -i "s/CGO_ENABLED=0/CGO_ENABLED=1/" hack/build.sh;
+    hack/build.sh "$pkgver"
 }
 package () 
 { 
