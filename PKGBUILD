@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tiledb
-_pkgver=0.23.0
+_pkgver=0.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Modern Database Engine for Multi-Modal Data via Sparse and Dense Multidimensional Arrays"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -38,8 +38,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d2e37cbdcdaad5ba2d6d3cd93aa97dcb')
-b2sums=('30b1e7066ac5a9ef4a091b17cff0350f91bc74cb6b2d48cdcb26668ffdcddef006026382b72e76db2d2ed4e790392ec59e3f46a21a54b7994442becafc94a37d')
+md5sums=('514305a1b7933bc52631a767816633c7')
+b2sums=('52ebc8b697f99cac14abef3706d8506f6d7afdd75b6294785377a89ff41e0d1f80db75e8bfba3d95f81c0fcde71162f98f94af599c1f4771c506bb98e0266f8d')
 
 build() {
   mkdir build
