@@ -9,7 +9,7 @@
 
 pkgname=ytt
 pkgver=0.48.0
-pkgrel=1
+pkgrel=2
 pkgdesc='YAML templating tool that works on YAML structure instead of text'
 url='https://carvel.dev/ytt'
 arch=(any)
@@ -33,7 +33,8 @@ build ()
     export CGO_CXXFLAGS="${CXXFLAGS}";
     export CGO_LDFLAGS="${LDFLAGS}";
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw";
-    ./hack/build.sh "$pkgver"
+    sed -i "s/CGO_ENABLED=0/CGO_ENABLED=1/" hack/build.sh;
+    hack/build.sh "$pkgver"
 }
 package () 
 { 
