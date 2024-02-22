@@ -1,0 +1,21 @@
+pkgbase = hunspell-lb
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://spellchecker.lu
+	arch = any
+	license = EUPL
+	makedepends = hunspell
+	makedepends = git
+	makedepends = qt6-webengine
+	source = hunspell-lb-2.1-1.tar.gz::https://github.com/spellchecker-lu/dictionary-lb-lu/archive/4b75d78d12a67afe6111814da034acb83a732d95.tar.gz
+	sha256sums = be13a518987d35b68769cc398d1b17137e23e24ba7a1253e86e3b221f0b8cf29
+
+pkgname = hunspell-lb
+	pkgdesc = Luxembourguish hunspell dictionary
+	depends = hunspell
+	optdepends = hunspell: the spell checking libraries and apps
+	provides = hunspell-dictionary
+
+pkgname = mythes-lb
+	pkgdesc = Luxembourguish thesaurus
+	optdepends = libmythes: offers thesaurus library functions
