@@ -2,7 +2,7 @@
 
 pkgname='zelus'
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Ory Kratos user interface written in Go'
 arch=('x86_64')
 url='https://git.sr.ht/~mekyt/zelus'
@@ -36,7 +36,7 @@ package() {
     cd "${pkgname}-v${pkgver}"
 
     install -Dm 755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm 644 .env.default -t "${pkgdir}/etc/${pkgname}/config.env"
+    install -Dm 644 .env.default "${pkgdir}/etc/${pkgname}/config.env"
     install -Dm 644 systems/zelus.service -t "${pkgdir}/usr/lib/systemd/system/"
     install -Dm 644 systems/zelus@.service -t "${pkgdir}/usr/lib/systemd/system/"
     install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
