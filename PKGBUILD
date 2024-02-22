@@ -22,7 +22,7 @@ options=(!strip)
 _debname=HUB-Young.deb
 
 source=(https://bce.mondadorieducation.it/media_educar/contenuti/appdilettura/younglinux.zip)
-sha256sums=('f8aa7732db9f6d28fd89d585c550164e2c7e9431d3fe55b89b48f70dd035f6b5')
+sha256sums=('9ba1c38f89c0677590dd7de48fcaa21767bddd401e8548e7db9b0f28e49c00d4')
 
 prepare() {
   cd "$srcdir"
