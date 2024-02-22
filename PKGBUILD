@@ -12,7 +12,7 @@ _itkver=5.2.1
 _vtkver=9.2.6
 pkgname=itk-snap
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A software application used to segment structures in 3D medical images"
 arch=('x86_64')
 url="https://www.itksnap.org"
@@ -111,28 +111,9 @@ package() {
   # make install is not working in a clean chroot
   # make DESTDIR=${pkgdir} -C ${srcdir}/build install
 
-  # we install all the files manaully
-  install -dm755 "${pkgdir}/usr/bin"
-  install -dm755 "${pkgdir}/usr/lib/snap-${pkgver}"
-
-  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/GUI/Qt/Resources/logo_square.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-
-  install -Dm755 "${srcdir}/build/ITK-SNAP" "${pkgdir}/usr/lib/snap-${pkgver}/ITK-SNAP"
-  install -Dm755 "${srcdir}/build/Submodules/c3d/c2d" "${pkgdir}/usr/bin/c2d"
-  install -Dm755 "${srcdir}/build/Submodules/c3d/c3d" "${pkgdir}/usr/bin/c3d"
-  install -Dm755 "${srcdir}/build/Submodules/c3d/c3d_affine_tool" "${pkgdir}/usr/bin/c3d_affine_tool"
-  install -Dm755 "${srcdir}/build/Submodules/c3d/c4d" "${pkgdir}/usr/bin/c4d"
-  install -Dm755 "${srcdir}/build/Submodules/greedy/greedy" "${pkgdir}/usr/bin/greedy"
-  install -Dm755 "${srcdir}/build/Submodules/greedy/greedy_template_average" "${pkgdir}/usr/bin/greedy_template_average"
-  install -Dm755 "${srcdir}/build/Utilities/Forwarding/itksnap" "${pkgdir}/usr/bin/itksnap"
-  install -Dm755 "${srcdir}/build/Utilities/Workspace/itksnap-wt" "${pkgdir}/usr/bin/itksnap-wt"
-
-  # staticlibs and headers if you need
-  # install -dm755 "${pkgdir}/usr/include"
-  # install -Dm644 "${srcdir}/build/Submodules/c3d/libcnd_maxflow.a" "${pkgdir}/usr/lib/libcnd_maxflow.a"
-  # install -Dm644 "${srcdir}/build/Submodules/c3d/libcnd_driver.a" "${pkgdir}/usr/lib/libcnd_driver.a"
-  # install -Dm644 "${srcdir}/build/Submodules/c3d/libcnd_api.a" "${pkgdir}/usr/lib/libcnd_api.a"
-  # install -Dm644 "${srcdir}/${pkgname}-${pkgver}/Submodules/c3d/api/ConvertAPI.h" "${pkgdir}/usr/include/ConvertAPI.h"
+  # we install all the files manaully by extracting the tarball to destdir
+  make -C ${srcdir}/build package
+  mkdir -p ${pkgdir}/usr
+  tar xfv ${srcdir}/build/*.tar.gz -C ${pkgdir}/usr --strip-components 1
 }
 # vim:set ts=2 sw=2 et:
