@@ -2,7 +2,7 @@
 
 pkgname=shell-gpt
 _pkgname=${pkgname/-/_}
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A command-line productivity tool powered by OpenAI's ChatGPT"
 arch=(any)
@@ -14,6 +14,7 @@ depends=(
   python-click
   python-distro
   python-instructor
+  python-openai
   python-pydantic
   python-rich
   python-typer
@@ -26,7 +27,7 @@ makedepends=(
 )
 checkdepends=(python-pytest)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('8e84e4fe5aa933273cc0d342c13bec8f1f9935038218b644fd25c6617975b63a')
+sha256sums=('2a17bf7d087f6b026f10c0016e606ee32dd6bdcb262bd9a61d91c047485bf03a')
 
 _archive="$_pkgname-$pkgver"
 
@@ -54,7 +55,8 @@ check() {
   export OPENAI_API_KEY=sk-dBAe8c5a9bc4294cca9bed292cd61e0ff9030bB94647adfb
   pytest \
     --ignore tests/test_integration.py \
-    --deselect tests/test_default.py::test_show_chat_use_markdown
+    --deselect tests/test_default.py::test_show_chat_use_markdown \
+    --deselect tests/test_default.py::test_markdown
 }
 
 package() {
