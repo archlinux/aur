@@ -1,15 +1,16 @@
 pkgname="carapace"
-pkgver=0.30.1
+pkgver=0.30.2
 pkgrel=1
 pkgdesc="multi-shell multi-command argument completer"
 arch=("x86_64")
 url="https://rsteube.github.io/carapace-bin/"
 license=("MIT")
+depends=("glibc")
 makedepends=("go")
 source=(
     "https://github.com/rsteube/carapace-bin/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('ffccf041d14e7eb633750539f00c0cc81e3ca7d3da3b86db4f5798cde63a8b5f')
+sha256sums=('7985ef38c32f3d53f426c40ea15ea7b8b0a61292ab500f60ebb84cf9f84b00d9')
 
 build(){
     cd "${srcdir}/carapace-bin-${pkgver}"
@@ -30,4 +31,6 @@ package(){
     cd "${srcdir}/carapace-bin-${pkgver}"
     install -Dm755 carapace \
         "${pkgdir}/usr/bin/carapace"
+    install -Dm644 LICENSE \
+        "${pkgdir}/usr/share/licenses/carapace/LICENSE"
 }
