@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=kbld
 pkgver=0.39.0
-pkgrel=1
+pkgrel=2
 pkgdesc='kbld seamlessly incorporates image building and image pushing into your development and deployment workflows'
 url='https://carvel.dev/kbld'
 arch=(any)
@@ -29,7 +29,8 @@ build ()
     export CGO_CXXFLAGS="${CXXFLAGS}";
     export CGO_LDFLAGS="${LDFLAGS}";
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw";
-    ./hack/build.sh "$pkgver"
+    sed -i "s/CGO_ENABLED=0/CGO_ENABLED=1/" hack/build.sh;
+    hack/build.sh "$pkgver"
 }
 package () 
 { 
