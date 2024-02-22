@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='Automated auditing, performance metrics, and best practices for the web'
 arch=(any)
 url='https://github.com/GoogleChrome/lighthouse'
-license=(Apache)
+license=('Apache-2.0')
 
 depends=(nodejs)
 makedepends=(npm jq)
