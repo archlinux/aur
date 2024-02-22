@@ -5,7 +5,7 @@ pkgdesc="Yubico Authenticator for Desktop"
 pkgver=6.4.0
 pkgrel=1
 _flutter_ver=3.19.0
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/Yubico/yubioath-flutter"
 license=('Apache-2.0')
 depends=(
@@ -71,15 +71,21 @@ check() {
 package() {
   cd yubioath-flutter
 
+  if [ $CARCH == "aarch64" ]; then
+    FLUTTER_ARCH=arm64
+  else
+    FLUTTER_ARCH=x64
+  fi
+
   pushd helper
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm755 authenticator-helper.py "$pkgdir/opt/$pkgname/helper/authenticator-helper"
   install -Dm755 shell.py -t "$pkgdir/opt/$pkgname/helper/"
   popd
 
-  install -Dm755 build/linux/x64/release/bundle/authenticator -t \
+  install -Dm755 build/linux/${FLUTTER_ARCH}/release/bundle/authenticator -t \
     "$pkgdir/opt/$pkgname/"
-  cp -r build/linux/x64/release/bundle/{data,lib} "$pkgdir/opt/$pkgname"
+  cp -r build/linux/${FLUTTER_ARCH}/release/bundle/{data,lib} "$pkgdir/opt/$pkgname"
 
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/$pkgname/authenticator" "$pkgdir/usr/bin/"

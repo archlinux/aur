@@ -4,6 +4,7 @@ pkgbase = yubico-authenticator
 	pkgrel = 1
 	url = https://github.com/Yubico/yubioath-flutter
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0
 	makedepends = chrpath
 	makedepends = clang
