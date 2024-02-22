@@ -1,0 +1,20 @@
+pkgbase = tlrc-git
+	pkgdesc = Official tldr client written in Rust.
+	pkgver = v1.8.0.r40.g2a197f2
+	pkgrel = 1
+	url = https://github.com/tldr-pages/tlrc
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	provides = tldr
+	conflicts = tldr
+	conflicts = tealdeer
+	conflicts = tlrc
+	conflicts = tlrc-bin
+	options = !lto
+	source = git+https://github.com/tldr-pages/tlrc.git
+	b2sums = SKIP
+
+pkgname = tlrc-git
