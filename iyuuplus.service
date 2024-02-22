@@ -1,7 +1,7 @@
 [Unit]
-Description = IYUU Auto Reseed Plus.
-Wants = network-online.target
-After = network-online.target
+Description = IYUU Auto Reseed Plus Daemon.
+Wants = network-online.target php-fpm.service
+After = network-online.target php-fpm.service
 
 [Service]
 User = iyuuplus

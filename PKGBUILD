@@ -2,7 +2,7 @@
 
 pkgname=iyuuplus
 pkgver=20240205.034109
-pkgrel=1
+pkgrel=2
 pkgdesc="IYUU Auto Reseed Plus | IYUU 自动辅种工具"
 arch=("any")
 url="https://github.com/ledccn/IYUUPlus"
@@ -13,7 +13,7 @@ source=("${pkgname}::git+${url}"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
 sha256sums=('SKIP'
-            '58d088afbc7692caec812a59247a0cf649b236bc211aa69b9ae472d70b2f24cc'
+            '6e1e437b71fcfe19e542254181d39eb479e16fea5fcaf5d1179d7ec8cd176520'
             'c27f0a22e15483e44ae48001e0f8e9564574115ec7688488f2f2e6265745be1f'
             '3b954e17e81121da378921b29e86eed4aea77e0788e13c9c28d202340eb6d0c6')
 
