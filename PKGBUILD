@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vpkedit
-pkgver=4.0.1
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="A library and CLI/GUI tool to create, read, and write several pack file formats"
 arch=('x86_64')
@@ -10,14 +10,19 @@ depends=('gcc-libs' 'glibc' 'qt6-base' 'hicolor-icon-theme')
 makedepends=('cmake' 'git' 'gcc')
 optdepends=('qt6-wayland: Wayland support')
 source=("$pkgname::git+$url.git#tag=v${pkgver}"
-		"argparse::git+https://github.com/p-ranav/argparse"
+		"argparse::git+https://github.com/p-ranav/argparse.git"
 		"vtflib::git+https://github.com/StrataSource/VTFLib.git"
 		"saap::git+https://github.com/Trico-Everfire/SteamAppPathProvider.git"
 		"speedykeyv::git+https://github.com/ozxybox/SpeedyKeyV.git"
-		"studiomodelpp::git+https://github.com/craftablescience/studiomodelpp.git"
 		"bufferstream::git+https://github.com/craftablescience/BufferStream.git"
-		"minizip-ng::git+https://github.com/zlib-ng/minizip-ng.git")
+		"minizip-ng::git+https://github.com/zlib-ng/minizip-ng.git"
+		"sourcepp::git+https://github.com/craftablescience/sourcepp.git"
+		"miniaudio::git+https://github.com/mackron/miniaudio.git"
+		#Submodule for submodules
+		"bufferstream::git+https://github.com/craftablescience/BufferStream.git")
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -30,7 +35,7 @@ sha256sums=('SKIP'
 prepare() {
 	cd "$srcdir/$pkgname"
 	git submodule init
-	for submodule in {vtflib,saap,speedykeyv,studiomodelpp};
+	for submodule in {vtflib,saap,speedykeyv,sourcepp,miniaudio};
 	do
 		git config submodule.src/gui/thirdparty/$submodule.url "$srcdir/${submodule}"
 	done
@@ -38,8 +43,7 @@ prepare() {
 	git config submodule.src/lib/thirdparty/minizip-ng.url "$srcdir/minizip-ng"
 	git -c protocol.file.allow=always submodule update
 
-
-	cd "$srcdir/$pkgname/src/gui/thirdparty/studiomodelpp/"
+	cd "$srcdir/$pkgname/src/gui/thirdparty/sourcepp"
 	git submodule init
 	git config submodule.src/thirdparty/bufferstream.url "$srcdir/bufferstream"
 	git -c protocol.file.allow=always submodule update
