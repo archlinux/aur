@@ -2,7 +2,6 @@
 
 pkgname=rye-bin
 pkgver=0.25.0
-_pkgname="${pkgname%-bin}"
 pkgrel=3
 pkgdesc="An experimental alternative to poetry, pip, pipenv, venv, virtualenv, pdm, hatch, …"
 arch=('x86_64')
