@@ -4,7 +4,7 @@
 # Contributor: Daichi Shinozaki <dsdseg at gmail dot com>
 
 pkgname=wangle
-pkgver=2024.02.12.00
+pkgver=2024.02.19.00
 pkgrel=1
 pkgdesc="C++ networking library providing client/server abstractions for building services"
 arch=(x86_64)
@@ -28,9 +28,18 @@ makedepends=(
 )
 provides=(libwangle.so)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c67148260bed7d401ae4798b1daf638d74dde41a0278fd575463c1da00a43b41')
+sha256sums=('26a8c9b7027c140f4984cd2416a6f72513ab1f1f80e570dbb9009214498d5868')
 
 _archive="$pkgname-$pkgver"
+
+prepare() {
+  cd "$_archive/wangle"
+
+  # Use system CMake config instead of bundled module, incompatible with glog
+  # v0.7.0+
+  sed -i 's/find_package(Glog REQUIRED)/find_package(Glog CONFIG REQUIRED)/' \
+    CMakeLists.txt
+}
 
 build() {
   cd "$_archive/wangle"
