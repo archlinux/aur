@@ -1,0 +1,26 @@
+pkgbase = apple-sf-script-extension-fonts
+	pkgdesc = Apple SF Script Extensions, containing SF Arabic, SF Armenian, SF Georgian and SF Hebrew, designed to fit with SF Pro for multilingual typesetting
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://developer.apple.com/fonts/
+	arch = any
+	license = custom
+	makedepends = p7zip
+	optdepends = apple-fonts: Apple San Francisco, New York fonts
+	noextract = SF-Arabic.dmg
+	noextract = SF-Armenian.dmg
+	noextract = SF-Georgian.dmg
+	noextract = SF-Hebrew.dmg
+	noextract = LICENSE.THE-APPLE-SAN-FRANCISCO-FONT
+	source = https://devimages-cdn.apple.com/design/resources/download/SF-Arabic.dmg
+	source = https://devimages-cdn.apple.com/design/resources/download/SF-Armenian.dmg
+	source = https://devimages-cdn.apple.com/design/resources/download/SF-Georgian.dmg
+	source = https://devimages-cdn.apple.com/design/resources/download/SF-Hebrew.dmg
+	source = LICENSE.THE-APPLE-SAN-FRANCISCO-FONT
+	sha256sums = 56f7e5f41c8ac30e79944dd14c8c784ce11fbb256410d08c6c72d81462e1a76a
+	sha256sums = a0948fea06a60cbb080a47aa380fb7472d8213e94eccdc9db25119953c75d794
+	sha256sums = 0d60f262edb2ee4b80a8a3c33520981b0f48a7a21dbdd18c752002bac8842f91
+	sha256sums = 2266990808ad3602277c1a278cf2119ba5c580dc12cf7d4bcc8b26be8c49d340
+	sha256sums = d01bdb70f65b7c4df3da4dc2edd9ba1e65c4fb72cb5b39c226e19e2b1c44c178
+
+pkgname = apple-sf-script-extension-fonts
