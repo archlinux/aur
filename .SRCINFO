@@ -1,7 +1,7 @@
 pkgbase = kio5-extras
 	pkgdesc = Additional components to increase the functionality of KIO
-	pkgver = 24.01.90
-	pkgrel = 4
+	pkgver = 24.02.0
+	pkgrel = 1
 	url = https://www.kde.org/
 	arch = x86_64
 	license = LGPL-2.0-or-later
@@ -44,12 +44,12 @@ pkgbase = kio5-extras
 	optdepends = kactivities-stats5: recently used kioslave
 	optdepends = qt5-imageformats: thumbnails for additional image formats
 	optdepends = taglib: audio file thumbnails
-	source = https://download.kde.org/unstable/release-service/24.01.90/src/kio-extras-kf5-24.01.90.tar.xz
-	source = https://download.kde.org/unstable/release-service/24.01.90/src/kio-extras-kf5-24.01.90.tar.xz.sig
+	source = https://download.kde.org/unstable/release-service/24.02.0/src/kio-extras-kf5-24.02.0.tar.xz
+	source = https://download.kde.org/unstable/release-service/24.02.0/src/kio-extras-kf5-24.02.0.tar.xz.sig
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
-	sha256sums = d5305bac1d400137c074a6f3afabdf383fd7896b46c644d0d41c23c99e530971
+	sha256sums = 2f1364f17175ad1ce191bc3f221685457f5864a547d46ccb72a616283d80ac53
 	sha256sums = SKIP
 
 pkgname = kio5-extras
