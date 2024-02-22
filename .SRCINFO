@@ -1,0 +1,25 @@
+pkgbase = r-ternary
+	pkgdesc = Create Ternary and Holdridge Plots
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=Ternary
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-plottools
+	depends = r-rcpphungarian
+	depends = r-shiny
+	depends = r-sp
+	depends = r-viridislite
+	optdepends = r-colourpicker
+	optdepends = r-knitr
+	optdepends = r-readxl
+	optdepends = r-rmarkdown
+	optdepends = r-shinyjs
+	optdepends = r-spelling
+	optdepends = r-testthat
+	optdepends = r-vdiffr
+	source = https://cran.r-project.org/src/contrib/Ternary_2.3.1.tar.gz
+	sha256sums = a
+
+pkgname = r-ternary
