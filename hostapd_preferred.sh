@@ -24,6 +24,7 @@ get_wireless_interface() {
 }
 
 br='br-wl'
+dual_band='disable'
 phys_wl0=$(get_wireless_interface)
 #virt_wl1=$(echo "$wl0" | grep -o -E '^[^0-9]+')$(( ${wl0//[^0-9]/} + 1 ))
 wl0='wlan0'
@@ -35,7 +36,6 @@ addr='192.168.1.1/24'
 . /etc/hostapd/preferred_config
 
 [ "$phys_wl0" == "$wl0" ] || $ip link set dev "$phys_wl0" name "$wl0"
-$iw dev $wl0 interface add $wl1 type __ap
 $ip link add name $br type bridge
 $ip link set $br up
 $ip address add $addr dev $br
@@ -44,6 +44,10 @@ $ip address add $addr dev $br
 while [ $(systemctl is-active hostapd-ACS@"$wl0_conf".service) == 'activating' ]; do sleep 1; done
 $systemctl is-active hostapd-ACS@"$wl0_conf".service --quiet || $systemctl start hostapd@"$wl0_conf".service
 
-while [ $(systemctl is-active hostapd-ACS@"$wl1_conf".service) == 'activating' ]; do sleep 1; done
-$systemctl is-active hostapd-ACS@"$wl1_conf".service --quiet || $systemctl start hostapd@"$wl1_conf".service
+if [ "$dual_band" = 'enable' ]; then
+  $iw dev $wl0 interface add $wl1 type __ap
+
+  while [ $(systemctl is-active hostapd-ACS@"$wl1_conf".service) == 'activating' ]; do sleep 1; done
+  $systemctl is-active hostapd-ACS@"$wl1_conf".service --quiet || $systemctl start hostapd@"$wl1_conf".service
+fi
 
