@@ -2,7 +2,7 @@
 
 pkgname=funiculi-git
 _gitpkgname=funiculi
-pkgver=0.1.3.r7.c5a8945
+pkgver=0.1.3.r11.9cae3cf
 pkgrel=1
 pkgdesc='Control your Denon AVR amplifier from the command line'
 arch=('any')
@@ -18,7 +18,9 @@ makedepends=(
   'git'
   'python-build'
   'python-installer'
+  'python-myst-parser'
   'python-poetry'
+  'python-sphinx'
   'python-wheel'
 )
 provides=('funiculi')
@@ -43,7 +45,11 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_gitpkgname}"
+  echo >&2 'Building wheel'
   python -m build --wheel --no-isolation
+
+  echo >&2 'Generating man page'
+  sphinx-build -aqEW -b man doc/sphinx build/man
 }
 
 package() {
@@ -59,4 +65,8 @@ package() {
   echo >&2 'Packaging the license'
   install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
     'LICENSE'
+
+  echo >&2 'Packaging the man page'
+  install -D -m 644 -t "${pkgdir}/usr/share/man/man1" \
+    build/man/*.1
 }
