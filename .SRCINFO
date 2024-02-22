@@ -1,4 +1,4 @@
-pkgbase = xmm7360-pci-spat-dkms
+pkgbase = xmm7360-pci-spat-dkms-git
 	pkgdesc = Driver for the Fibocom L850-GL / Intel XMM7360 LTE modem
 	pkgver = 1
 	pkgrel = 1
