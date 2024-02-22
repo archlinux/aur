@@ -1,16 +1,16 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="mate-indicator-applet"
-pkgver="1.27.0"
+pkgver="1.28.0"
 pkgrel="1"
 pkgdesc="Applet to display information from various applications consistently in the MATE panel (Built with Ayatana support)"
 arch=("i686" "x86_64" "pentium4")
 url="http://www.mate-desktop.org/"
 license=("LGPL2.1" "GPL3")
 makedepends=("autoconf-archive" "intltool" "libxml2" "mate-common")
-depends=("mate-panel" "ayatana-ido" "libayatana-indicator" "gtk3" "hicolor-icon-theme" "glib2" "at-spi2-core" "libx11")
+depends=("mate-panel" "ayatana-ido" "libayatana-indicator" "gtk3" "hicolor-icon-theme" "glib2" "at-spi2-core" "libx11" "glibc")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mate-desktop/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=("763f34609b8fd3ad9d52766bbba7eae6")
+md5sums=("21cd423c82afd569beee4168dd2a0631")
 
 prepare()
 {
