@@ -1,14 +1,14 @@
 # Maintainer: Erica Marigold <hi@devcomp.xyz>
 
 pkgname=rojo-git
-pkgver=7.4.0.r9.g5c4260f3
-pkgrel=2
+pkgver=7.4.1.r0.gaf9629c5
+pkgrel=1
 pkgdesc="[Latest Git Commit] Rojo enables Roblox developers to use professional-grade software engineering tools"
 arch=(x86_64 aarch64)
 conflicts=(rojo rojo-bin)
 url="https://rojo.space/"
 license=(MPL2)
-depends=(gcc glibc)
+depends=(gcc-libs glibc)
 makedepends=(cargo git)
 provides=(rojo)
 options=(!lto)
