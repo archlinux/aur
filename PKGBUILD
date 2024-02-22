@@ -2,14 +2,14 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=lwgeom
-_pkgver=0.2-13
+_pkgver=0.2-14
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Bindings to Selected 'liblwgeom' Functions for Simple Features"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(GPL2)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   geos
   proj
@@ -27,12 +27,12 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9bf0d8b96f4e19f2a042d50cb66d7989')
-sha256sums=('f0822888c029af48bf0238e3d20d82d3c75018e7e63728765a6220a6a0151c67')
+md5sums=('bc5ae945234a1296750b5466360a8e03')
+b2sums=('02708ba4c688aab3433be9228aace870cf37e91be79d3aafe8b426e78a8aaff0f6040ec82cbf69f280a6b964fa6eab42fc442dd69c12234e8781577f3b0d459f')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
