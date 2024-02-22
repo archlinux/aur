@@ -1,16 +1,13 @@
 pkgbase = simplest-file-renamer-bin
 	pkgdesc = Rename your files directly or with your favorite text editor, making use of all your 1337 keyboard shortcuts
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/whyboris/Simplest-File-Renamer
 	arch = x86_64
 	license = MIT
 	makedepends = squashfuse
 	depends = hicolor-icon-theme
 	depends = electron8
-	depends = dbus-glib
-	depends = libdbusmenu-glib
-	depends = gtk2
 	provides = simplest-file-renamer
 	conflicts = simplest-file-renamer
 	source = simplest-file-renamer-1.0.0.AppImage::https://github.com/whyboris/Simplest-File-Renamer/releases/download/v1.0.0/Simplest.File.Renamer-1.0.0.AppImage
@@ -18,6 +15,6 @@ pkgbase = simplest-file-renamer-bin
 	source = simplest-file-renamer.sh
 	sha256sums = ee8d258a22da54055a6fb851884664ecbe4ca01234e6e81faf61eb9b2ba3c044
 	sha256sums = 52debcb7a9763131668b36c7a61730979cb67975b8b4004a12c62915221e836f
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = simplest-file-renamer-bin
