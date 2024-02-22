@@ -1,0 +1,29 @@
+pkgbase = xmm7360-pci-spat-dkms
+	pkgdesc = Driver for the Fibocom L850-GL / Intel XMM7360 LTE modem
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/SimPilotAdamT/xmm7360-pci-SPAT
+	arch = x86_64
+	license = BSD
+	license = GPL
+	makedepends = python
+	source = git+https://github.com/SimPilotAdamT/xmm7360-pci-SPAT
+	source = dkms.conf
+	source = xmm7360.service
+	source = lte.sh
+	sha512sums = SKIP
+	sha512sums = c6bef2f9be2502354455982cf499d474184a12ea02e5decf55814a27e82942a565a167bc728974e9a32d500c59c15660e0f07b3227af45c665a050c3b7c0175d
+	sha512sums = 032253dbd0eb18ad7df730da90b3f899bd0c48c06c85a379f48591fabd82368f5a678f5216d039a7bf51d6a3e12eae3159146ae62bafe671ddafa34319439781
+	sha512sums = 51cc3e1a492204c0c1bf1bc752572a1361fb030bc47f9cd412e1ce7595d7578c540f492ab7d933231dc0f20c74bc92ef5e6fcda3c060cee8806e45a7fc7cec06
+
+pkgname = xmm7360-pci-spat-dkms
+	pkgdesc = Driver for the Fibocom L850-GL / Intel XMM7360 LTE modem – module sources
+	depends = dkms
+	provides = XMM7360-PCI-SPAT-MODULE
+
+pkgname = xmm7360-pci-spat-utils
+	pkgdesc = Driver for the Fibocom L850-GL / Intel XMM7360 LTE modem – utilities only
+	depends = XMM7360-PCI-SPAT-MODULE
+	depends = dbus-python
+	depends = python-pyroute2
+	depends = python-configargparse
