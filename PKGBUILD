@@ -4,7 +4,7 @@
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=proxygen
-pkgver=2024.02.12.00
+pkgver=2024.02.19.00
 pkgrel=1
 pkgdesc="A collection of C++ HTTP libraries including an easy to use HTTP server"
 arch=(x86_64)
@@ -42,9 +42,18 @@ provides=(
   libproxygenhttpserver.so
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b16277cb1517610851ed4f1fce50ad7d34b78a17983abc5db2e26be99dbcd4d8')
+sha256sums=('8177cb16c1159a582b1d997d03121c90f44d4fc742dffeb0ec3ef4abe491c706')
 
 _archive="$pkgname-$pkgver"
+
+prepare() {
+  cd "$_archive"
+
+  # Use system CMake config instead of bundled module, incompatible with glog
+  # v0.7.0+
+  sed -i '/find_package(fmt REQUIRED)/a find_package(Glog CONFIG REQUIRED)' \
+    CMakeLists.txt
+}
 
 build() {
   cd "$_archive"
