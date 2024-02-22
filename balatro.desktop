@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Balatro
+GenericName=Balatro
+Comment=A deck-building roguelite where you must play poker hands and earn chips to defeat enemy blinds
+Icon=balatro
+Exec=balatro
+Terminal=false
+StartupNotify=false
+Type=Application
+Categories=Game;
