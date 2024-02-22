@@ -8,9 +8,9 @@ pkgdesc="Discreet Cryptocurrency Wallet. discreet.net"
 pkgver=1.0.0
 _guiver="${pkgver}"
 _daemonver="${pkgver}"
-pkgrel=1
+pkgrel=2
 arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
-makedepends=('dotnet-sdk-6.0-bin')
+makedepends=('dotnet-sdk')
 url="https://${_pkgpath}"
 source=(
 "git+https://github.com/DiscreetNetwork/DiscreetCore"
@@ -35,7 +35,7 @@ build() {
   msg2 'building discreet-gui'
   cd ${srcdir}/discreet-gui/Discreet-GUI
   dotnet restore
-  dotnet publish --configuration Release --runtime linux-x64 --self-contained true -p:Version=0.0.28 --framework net6.0
+  dotnet publish --configuration Release --runtime linux-x64 --self-contained true --framework net6.0
 }
 
 package_discreet-gui() {

@@ -1,7 +1,7 @@
 pkgbase = discreet
 	pkgdesc = Discreet Cryptocurrency Wallet. discreet.net
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = discreet
 	arch = armhf
 	arch = armel
 	arch = arm
-	makedepends = dotnet-sdk-6.0-bin
+	makedepends = dotnet-sdk
 	source = git+https://github.com/DiscreetNetwork/DiscreetCore
 	source = git+https://github.com/DiscreetNetwork/discreet-gui
 	source = git+https://github.com/DiscreetNetwork/discreet
