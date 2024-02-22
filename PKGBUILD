@@ -4,7 +4,7 @@
 
 pkgname=netlogo
 pkgver=6.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-agent programmable modeling environment."
 arch=('i686' 'x86_64')
 [ "$CARCH" = "i686"  ] && _NARCH=32
@@ -29,7 +29,7 @@ package() {
     install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
     mkdir -p "$pkgdir/usr/bin" "$pkgdir/opt/$pkgname"
-    cd "$srcdir/NetLogo $pkgver" || exit
+    cd "$srcdir/NetLogo-$pkgver-$_NARCH" || exit
     cp -r ./* "$pkgdir/opt/$pkgname"
 
     for file in {NetLogo,NetLogo3D,HubNetClient,Behaviorsearch}; do
