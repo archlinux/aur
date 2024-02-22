@@ -3,12 +3,12 @@ pkgname=live2d-kanban-desktop
 pkgver=2.8.0
 _electronversion=22
 _nodeversion=16
-pkgrel=2
+pkgrel=3
 pkgdesc="An AI Based live2d Kanban for Desktop Users Using Electron.基于Electron制作的桌面看板娘，支持日程提醒、小窗模式、ChatGPT集成、网页搜索、本地moc模型加载与独立设置界面等"
-arch=('x86_64')
+arch=('any')
 url="http://studio.zerolite.cn/post/338/waifuproject2-live2d-kanban-desktop/"
 _ghurl="https://github.com/JimHans/live2d-kanban-desktop"
-license=('GPL3')
+license=('GPL-3.0-only')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
@@ -27,7 +27,7 @@ source=(
 )
 sha256sums=('SKIP'
             '942783587666a3a1bddea93afd349e26f798ed19dcd7a52449d0ae3322fcff7c'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -37,24 +37,27 @@ _ensure_local_nvm() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
-    #_ensure_local_nvm
-    gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
+    _ensure_local_nvm
+    gendesk -q -f -n --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
     cp assets/applogo256.png assets/applogo.png
     npm install --no-package-lock
     npm run pack-linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}.git/dist/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${pkgname}.git/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
     install -Dm755 "${srcdir}/live2dcubismcore.min-${pkgver}.js" "${pkgdir}/usr/lib/${pkgname}/live2dcubismcore.min.js"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}.git/assets/app.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
