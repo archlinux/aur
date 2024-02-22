@@ -4,12 +4,13 @@
 
 pkgname=sddm
 pkgver=0.20.0
-pkgrel=4
+pkgrel=5
 pkgdesc='QML based X11 and Wayland display manager'
 arch=(x86_64)
 url='https://github.com/sddm/sddm'
 license=(GPL-2.0-only)
-depends=(gcc-libs
+depends=(bash
+         gcc-libs
          glibc
          libxau
          libxcb
@@ -31,12 +32,15 @@ backup=('usr/share/sddm/scripts/Xsetup'
         'etc/pam.d/sddm-greeter')
 provides=(display-manager)
 source=(https://github.com/$pkgname/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz
-        https://github.com/sddm/sddm/commit/b002d02b.patch)
+        https://github.com/sddm/sddm/commit/b002d02b.patch
+        https://github.com/sddm/sddm/commit/60ed7435.patch)
 sha256sums=('467c8bd91e0d4f76d4bc4e57ab334f1f48a33478482ba9476d93b0b3d7ace9fb'
-            'b57c5e2fec316116dc09aa5c11700c79b36e2e2c82fb21c10a3e10a7bf8c2cdd')
+            'b57c5e2fec316116dc09aa5c11700c79b36e2e2c82fb21c10a3e10a7bf8c2cdd'
+            'a495c142de9a1422c8445f3dd59c7caa60e03a9063b0370d8e148fde34bc1a07')
 
 prepare() {
   patch -d $pkgname-$pkgver -p1 < b002d02b.patch # Prevent systemd from removing old xauth files
+  patch -d $pkgname-$pkgver -p1 < 60ed7435.patch # Fix build with Qt 6.7
 }
 
 build() {
