@@ -40,5 +40,5 @@ package() {
 		mv "$_folder" "$pkgdir/usr/share/doc/ocaml-$(basename "$_folder")"
 	done
 
-	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/BSD-2-Clause"
+	install -Dm644 '../LICENSE' "$pkgdir/usr/share/licenses/$pkgname/BSD-2-Clause"
 }
