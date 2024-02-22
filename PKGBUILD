@@ -3,10 +3,10 @@
 # Submitter:  not_anonymous <nmlibertarian@gmail.com>
 
 pkgname=not1mm
-pkgver=24.2.19
+pkgver=24.2.21
 pkgrel=1
 pkgdesc="Ham Radio Contest Logger - Blatant ripoff of N1MM - Numbered Release"
-license=('GPL')
+license=('GPL-3.0-only')
 arch=('any')
 url="https://pypi.org/project/not1mm/"
 depends=('python' 'python-pyqt5' 'python-requests' 'python-dicttoxml' 'python-xmltodict' 'python-psutil' \
@@ -34,5 +34,5 @@ package() {
 #	install -Dm755 "not1mm/data/k6gte.not1mm.svg" "$pkgdir/usr/share/pixmaps/k6gte-not1mm.svg"
 	install -Dm755 "not1mm/data/k6gte.not1mm-128.png" "$pkgdir/usr/share/pixmaps/k6gte-not1mm.png"
 }
-md5sums=('77a554d165d53e4845ed38d729e57d43')
-sha256sums=('cb61a51ad86022c2e330678a4e36822eca3135324b564b1ad38b833f6be085c8')
+md5sums=('231fedaba101951161480c43b4bc7463')
+sha256sums=('c01f52c9c3db6cf3b3fc95c5c44f02a47d6f9a2e5634c825b990eaf060919bd2')
