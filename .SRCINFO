@@ -1,7 +1,7 @@
 pkgbase = cyberchef-web
 	pkgdesc = The Cyber Swiss Army Knife - a web app for encryption, encoding, compression and data analysis
-	pkgver = 10.8.1
-	pkgrel = 2
+	pkgver = 10.8.2
+	pkgrel = 1
 	url = https://gchq.github.io/CyberChef/
 	arch = any
 	license = Apache-2.0
@@ -9,9 +9,9 @@ pkgbase = cyberchef-web
 	makedepends = libarchive
 	conflicts = cyberchef-html
 	replaces = cyberchef-html
-	noextract = cyberchef-web-10.8.1.zip
+	noextract = cyberchef-web-10.8.2.zip
 	options = !strip
-	source = cyberchef-web-10.8.1.zip::https://github.com/gchq/CyberChef/releases/download/v10.8.1/CyberChef_v10.8.0.zip
-	b2sums = 5095a22c1c5b4fe320878f89d7b29d8ad908905fad78093f1e3ab2ccade97f4a36a5a3685485681966432923b6ceaf377793b68e91400eacd39c60b57b240e7b
+	source = cyberchef-web-10.8.2.zip::https://github.com/gchq/CyberChef/releases/download/v10.8.2/CyberChef_v10.8.2.zip
+	b2sums = 77018cbfb036f5d9e56a78dbf76b9ec1da7004c9de26f036feef34f91a8f06e295ff1fa1771311c7da25b52f0f0bb9a7bdd507de1fecf179ad9313c768ed360a
 
 pkgname = cyberchef-web
