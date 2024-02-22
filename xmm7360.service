@@ -7,7 +7,7 @@ Requires=multi-user.target systemd-user-sessions.service dev-ttyXMM2.device
 Type=oneshot
 ExecStart=/usr/lib/xmm7360-pci-spat/rpc/open_xdatachannel.py -c /etc/xmm7360
 RemainAfterExit=yes
-TimeoutSec=60
+TimeoutSec=300
 
 
 [Install]
