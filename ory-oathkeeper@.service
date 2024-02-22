@@ -28,7 +28,7 @@ KillMode=mixed
 KillSignal=SIGTERM
 Restart=on-failure
 RestartPreventExitStatus=2
-ExecStart=/usr/bin/ory-oathkeeper --config /etc/ory/oathkeeper/%i.yaml
+ExecStart=/usr/bin/ory-oathkeeper serve --config /etc/ory/oathkeeper/%i.yaml
 
 [Install]
 WantedBy=multi-user.target
