@@ -1,6 +1,6 @@
 pkgbase = anytype-electron-bin
 	pkgdesc = Operating environment for the new internet. Anytype is a next generation software that breaks down barriers between applications, gives back privacy and data ownership to users.
-	pkgver = 0.38.20
+	pkgver = 0.38.21
 	pkgrel = 1
 	url = https://anytype.io/
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = anytype-electron-bin
 	provides = anytype
 	conflicts = anytype
 	conflicts = anytype-legacy
-	source = https://github.com/anyproto/anytype-ts/releases/download/v0.38.20-alpha/anytype_0.38.20-alpha_amd64.deb
-	sha256sums = b8d6a205cb25df43f4924021868c7e7c578f47bb4d1558a650a281708ad90162
+	source = https://github.com/anyproto/anytype-ts/releases/download/v0.38.21-alpha/anytype_0.38.21-alpha_amd64.deb
+	sha256sums = 94de1276e6a55497179a005b0654276a44c1aaa79fc7ebf7df3f10dd989ad6f0
 
 pkgname = anytype-electron-bin
