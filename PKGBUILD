@@ -5,7 +5,7 @@ pkgver=1.0.2.r3.g0fdc2b5
 pkgrel=1
 _flutter_ver=3.19.0
 pkgdesc="Music, radio, television and podcast player"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/ubuntu-flutter-community/musicpod"
 license=('GPL-3.0-or-later')
 depends=('gstreamer' 'gtk3' 'mpv')
@@ -40,9 +40,16 @@ check() {
 
 package() {
   cd "${pkgname%-git}"
-  install -Dm755 "build/linux/x64/release/bundle/${pkgname%-git}" -t \
+
+  if [ $CARCH == "aarch64" ]; then
+    FLUTTER_ARCH=arm64
+  else
+    FLUTTER_ARCH=x64
+  fi
+
+  install -Dm755 "build/linux/${FLUTTER_ARCH}/release/bundle/${pkgname%-git}" -t \
     "$pkgdir/opt/${pkgname%-git}/"
-  cp -r build/linux/x64/release/bundle/{data,lib} "$pkgdir/opt/${pkgname%-git}"
+  cp -r build/linux/${FLUTTER_ARCH}/release/bundle/{data,lib} "$pkgdir/opt/${pkgname%-git}"
 
   for i in 64 128; do
     install -Dm644 "flatpak/icon${i}.png" \
