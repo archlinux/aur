@@ -1,24 +1,21 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 # Contributor: Maik Broemme <mbroemme@libmpq.org>
 
-_repouser=arkadi
-_reponame=asterisk-g72x
 _rev=3855cec2ef2667f3e9224006dbaf179575752218
-_shortrev=${_rev:0:12}
 pkgname=asterisk-g729
 pkgdesc="G.729 codec for Asterisk open source PBX"
 epoch=1
-pkgver=1.4.3.r4.${_shortrev}
-pkgrel=6
+pkgver=1.4.3.r5.${_rev:0:10}
+pkgrel=1
 arch=(x86_64)
-url="http://asterisk.hosting.lv/"
-license=(IPP)
-depends=('asterisk<22.0.0' 'bcg729')
-source=("${_reponame}-${pkgver}.tar.bz2"::"https://bitbucket.org/${_repouser}/${_reponame}/get/${_rev}.tar.bz2")
-sha256sums=('25f46b332bec3dfb51e7a44dcfb3b0aa04cdf2fd50caea44f0eeca4e1c83a9b0')
+url=http://asterisk.hosting.lv
+license=(GPL-3.0-only)
+depends=('asterisk<22.0.0' bcg729)
+source=(https://github.com/arkadijs/asterisk-g72x/archive/${_rev}.tar.gz)
+sha256sums=('b5830c002d1529f91c55c1513c8e9661287503203129cb68e219ddcb3a9d5a97')
 
 build() {
-	cd "${_repouser}-${_reponame}-${_shortrev}"
+	cd asterisk-g72x-${_rev}
 
 	./autogen.sh
 	./configure \
@@ -29,8 +26,7 @@ build() {
 }
 
 package() {
-	cd "${_repouser}-${_reponame}-${_shortrev}"
+	cd asterisk-g72x-${_rev}
 
 	make DESTDIR="${pkgdir}" install
 }
-
