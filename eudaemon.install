@@ -4,7 +4,7 @@ basename="eudaemon"
 mapfile -t users < <(loginctl --no-legend list-users | awk '{ print $2 }' | sed ':a;N;$!ba')
 
 _refresh_daemon() {
-  su "$1" -s /bin/sh -c XDG_RUNTIME_DIR=/run/user/$UID systemctl --user daemon-reload
+  su "$1" -s /bin/sh -c "XDG_RUNTIME_DIR=/run/user/\$UID systemctl --user daemon-reload"
 }
 
 _enable_service() {
