@@ -5,7 +5,7 @@ pkgname=(
 	superconductor
 	tsr-bridge
 )
-pkgver=0.11.2
+pkgver=0.11.3
 pkgrel=1
 _appname="SuperConductor-$pkgver"
 arch=('x86_64')
@@ -20,7 +20,7 @@ options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	'superconductor.desktop'
 	'tsr-bridge.desktop')
-sha256sums=('5e8dc4f1b2fc86886b8394a4d2d33ca7863b1b6e9ac1ca5e6cd48a8ce69f0802'
+sha256sums=('b3ce1cfaca92a21bdd20ff20b5ec32a109f5a9f93e7ffdcd29a87c2ab0a18590'
             'e11ebb8fab5d344b103cccb1b4547f66e742d55f59d8add32476f947beb23069'
             '7e3f99900f3feb6f4d9bae385adaa42a6aae46a8ac8ebcd2bd69b9dfac5e93ea')
 
