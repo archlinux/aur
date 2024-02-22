@@ -1,31 +1,27 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Michael Straube <straubem@gmx.de>
 
 pkgname=latte-dock
-pkgver=0.6.0
-pkgrel=1
-pkgdesc='A dock based on plasma frameworks'
-arch=('i686' 'x86_64')
-url='https://github.com/psifidotos/Latte-Dock'
-license=('GPL')
-depends=('qt5-base' 'qt5-declarative' 'qt5-x11extras' 'kiconthemes' 'kdbusaddons'
-         'kxmlgui' 'kdeclarative' 'plasma-framework' 'plasma-desktop')
-makedepends=('cmake' 'extra-cmake-modules' 'python')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/psifidotos/Latte-Dock/archive/v$pkgver.tar.gz")
-sha256sums=('ecc573e999e0551e96baaae1ccf5fce7093281f958554e2e42195a1a57dc07af')
+pkgver=0.10.9
+pkgrel=3
+pkgdesc='A dock based on Plasma Frameworks'
+arch=(x86_64)
+url='https://store.kde.org/p/1169519/'
+license=(GPL)
+depends=(knewstuff5
+         plasma-framework5)
+makedepends=(extra-cmake-modules)
+source=(https://download.kde.org/stable/$pkgname/$pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('32d1e554d095414db60102f19fc8ae955123e45f2ff3bde3bf38b67e390a487e'
+            'SKIP')
+validpgpkeys=(325E97C32E601F5D4EADCF3A55999050A2D9110E  # Michail Vourlakos (mvourlakos) <mvourlakos@gmail.com>
+              E0A3EB202F8E57528E13E72FD7574483BB57B18D) # Jonathan Esk-Riddell <jr@jriddell.org>
 
 build() {
-  cd Latte-Dock-$pkgver
-
-  mkdir build && cd build
-
-  cmake .. \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release
-  make
+  cmake -B build -S $pkgname-$pkgver
+  cmake --build build
 }
 
 package() {
-  cd Latte-Dock-$pkgver/build
-
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
