@@ -2,8 +2,8 @@
 # Contributor: Marcel Campello <marcel@prafrentex.com.br>
 
 pkgname=opentofu
-pkgver=1.6.1
-pkgrel=2
+pkgver=1.6.2
+pkgrel=1
 pkgdesc="Lets you declaratively manage your cloud infrastructure"
 arch=(x86_64)
 url="https://github.com/opentofu/opentofu"
@@ -15,7 +15,7 @@ source=(
   "tofu.fish"
 )
 sha256sums=(
-  '7c355deadd8abbf5671efee2217a97243ec1059884db4c87f66841612c0a5263'
+  '3bf0fc807004ba26305331ecf1334ff2160f8c131ee53c107292d60069400da6'
   '312fe00a97ed3098fa141a54dfc0694c13766957acedec19f10347b80f813ce8'
 )
 
@@ -55,5 +55,5 @@ package() {
   install -Dm644 "$srcdir/tofu.fish" "$pkgdir/usr/share/fish/completions/tofu.fish"
 
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
-  cp --archive -t "$pkgdir/usr/share/doc/$pkgname" docs
+  cp -a -t "$pkgdir/usr/share/doc/$pkgname" docs
 }
