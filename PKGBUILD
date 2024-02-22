@@ -7,29 +7,19 @@
 
 pkgbase=wps-office-cn
 pkgname=('wps-office-cn' 'wps-office-mime-cn' 'wps-office-mui-zh-cn')
-pkgver=11.1.0.11711
+pkgver=11.1.0.11719
 pkgrel=1
 pkgdesc="Kingsoft Office (WPS Office) CN version - an office productivity suite"
 arch=('x86_64' 'aarch64')
-license=('custom')
+license=('LicenseRef-WPS-EULA')
 url="https://linux.wps.cn"
 options=('!emptydirs')
-DLAGENTS=("https::/usr/bin/curl -e https://www.wps.cn/product/wpslinux -o %o %u")
+#DLAGENTS=("https::/usr/bin/curl -e https://www.wps.cn/product/wpslinux -o %o %u")
 
 # https://gitlab.com/cwittlut/wps-tsk/-/blob/main/tsk.sh?ref_type=heads by Ryan Tsien
 # https://pastebin.com/29TeRUMj by Asuka Minato
-#_get_source_url_amd64() {
-#    url="https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2019/${pkgver##*.}/wps-office_${pkgver}_amd64.deb"
-#    uri="${url#https://wps-linux-personal.wpscdn.cn}"
-#    secrityKey='7f8faaaa468174dc1c9cd62e5f218a5b'
-#    timestamp10=$(date '+%s')
-#    md5hash=$(echo -n "${secrityKey}${uri}${timestamp10}" | md5sum)
-#    url+="?t=${timestamp10}&k=${md5hash%% *}"
-#    echo "$url"
-#}
-
-_get_source_url_arm64() {
-    url="https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2019/${pkgver##*.}/wps-office_${pkgver}_arm64.deb"
+_get_source_url() {
+    url="https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2019/${pkgver##*.}/wps-office_${pkgver}_$1.deb"
     uri="${url#https://wps-linux-personal.wpscdn.cn}"
     secrityKey='7f8faaaa468174dc1c9cd62e5f218a5b'
     timestamp10=$(date '+%s')
@@ -38,12 +28,13 @@ _get_source_url_arm64() {
     echo "$url"
 }
 
-source_x86_64=("https://mirrors.163.com/ubuntukylin/pool/partner/wps-office_${pkgver}_amd64.deb")
-source_aarch64=("wps-office_${pkgver}_arm64.deb::$(_get_source_url_arm64)")
+#source_x86_64=("https://mirrors.163.com/ubuntukylin/pool/partner/wps-office_${pkgver}_amd64.deb")
+source_x86_64=("wps-office_${pkgver}_amd64.deb::$(_get_source_url amd64)")
+source_aarch64=("wps-office_${pkgver}_arm64.deb::$(_get_source_url arm64)")
 source=('fix-wps-python-parse.patch')
 sha1sums=('f3713481edf04ffb08be8d24dce66554dd5a4f13')
-sha1sums_x86_64=('61e0ca79b7ef506fd7470fad1d9b63f325bb5c57')
-sha1sums_aarch64=('d5f3f074649f780d87ba872edaa456297558deca')
+sha1sums_x86_64=('31651fdf617b55d22aef19783182e969f8f1e222')
+sha1sums_aarch64=('990c3dcc276118d31907e6d17ac3c1d3f304b6c1')
 
 prepare() {
     bsdtar -xpf data.tar.xz
