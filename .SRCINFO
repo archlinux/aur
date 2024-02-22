@@ -1,6 +1,6 @@
 pkgbase = mylibrary
 	pkgdesc = Home librarian
-	pkgver = 2.3.1
+	pkgver = 3.0
 	pkgrel = 1
 	url = https://github.com/ProfessorNavigator/mylibrary
 	arch = x86_64
@@ -9,14 +9,13 @@ pkgbase = mylibrary
 	makedepends = pkgconf
 	makedepends = gcc
 	depends = gtkmm-4.0
-	depends = libzip
 	depends = icu
 	depends = libgcrypt
 	depends = poppler
 	depends = djvulibre
 	depends = libarchive
 	provides = mylibrary
-	source = https://github.com/ProfessorNavigator/mylibrary/archive/refs/tags/v2.3.1.tar.gz
-	sha256sums = af55ebcd5eb93860d0986f6910369a3fa42af1cd621a79e213a43fff49175e7d
+	source = https://github.com/ProfessorNavigator/mylibrary/archive/refs/tags/v3.0.tar.gz
+	sha256sums = 48e2dbe88227f7f76b74321c3770305b6f4e2991a1e8c17a3665e8621f66e357
 
 pkgname = mylibrary
