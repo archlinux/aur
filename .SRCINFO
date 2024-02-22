@@ -1,7 +1,7 @@
 pkgbase = ledfx-cc-bin
 	pkgdesc = Network based LED effect controller with support for advanced real-time audio effects
 	pkgver = 2.0.92
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LedFx/LedFx
 	arch = x86_64
 	license = GPL3

@@ -3,7 +3,7 @@
 pkgname=ledfx-cc-bin
 _pkgname="${pkgname%-bin}"
 pkgver=2.0.92
-pkgrel=1
+pkgrel=2
 pkgdesc="Network based LED effect controller with support for advanced real-time audio effects"
 arch=('x86_64')
 url="https://github.com/LedFx/LedFx"
@@ -41,7 +41,7 @@ package() {
         "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     # Copy icons
     install -Dm 0644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/ledfx.png" \
-        "${pkgdir}/usr/share/icons/hicolor/0x0/apps/ledfx.png"
+        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/ledfx.png"
     # Symlink executable
     install -dm 0755 "${pkgdir}/usr/bin"
     ln -s "/opt/${_pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_pkgname}"
