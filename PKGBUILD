@@ -32,7 +32,7 @@ check() {
   cd "${pkgname%-git}"
   desktop-file-validate "src/${pkgname%-git}/data/share/applications/${pkgname%-git}.desktop"
   desktop-file-validate "src/${pkgname%-git}/data/share/applications/${pkgname%-git}-launch.desktop"
-  appstreamcli validate "data/com.github.Matoking.${pkgname%-git}.metainfo.xml"
+  appstreamcli validate --no-net "data/com.github.Matoking.${pkgname%-git}.metainfo.xml"
 }
 
 package() {
