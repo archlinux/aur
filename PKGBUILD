@@ -36,7 +36,7 @@ _fragment=${FRAGMENT:-#branch=main}
   _CMAKE_FLAGS+=( -DWITH_PYTHON_INSTALL=ON )
 
 pkgname=blender-develop-git
-pkgver=4.2.r133163.g99673edd853
+pkgver=4.2.r133264.g9cc19621207
 pkgrel=1
 pkgdesc="Development version of Blender (non-conflicting version)"
 changelog=blender.changelog
