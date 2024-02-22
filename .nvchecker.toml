@@ -1,0 +1,5 @@
+[zoxide]
+source = "github"
+github = "ajeetdsouza/zoxide"
+prefix = "v"
+use_max_tag = true
