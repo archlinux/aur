@@ -28,7 +28,7 @@ KillMode=mixed
 KillSignal=SIGTERM
 Restart=on-failure
 RestartPreventExitStatus=2
-ExecStart=/usr/bin/ory-kratos --config /etc/ory/kratos/%i.yaml
+ExecStart=/usr/bin/ory-kratos serve --config /etc/ory/kratos/%i.yaml
 
 [Install]
 WantedBy=multi-user.target
