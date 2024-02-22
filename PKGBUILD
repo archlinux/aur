@@ -2,30 +2,27 @@
 pkgname=aniship-bin
 pkgver=0.0.4.2
 _electronversion=16
-pkgrel=5
+pkgrel=6
 pkgdesc="A convenient and functional unofficial client that allows for easy viewing of anime on PCs and laptops."
 arch=('x86_64')
 url="https://t.me/aniship"
 _ghurl="https://github.com/progzone122/AniShip"
-license=('custom')
+license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-)
-makedepends=(
-    'squashfuse'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}night/setup-${pkgver//.2/-2}.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1fbe0e6388982d71268c4f4f04bf7c3f82ac0a6dee8310f8599d93be565525d2'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
