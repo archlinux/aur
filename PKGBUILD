@@ -8,7 +8,7 @@
 
 pkgname=kapp
 pkgver=0.60.0
-pkgrel=2
+pkgrel=3
 pkgdesc='kapp is a simple deployment tool focused on the concept of "Kubernetes application" — a set of resources with the same label'
 url='https://carvel.dev/kapp'
 arch=(any)
@@ -26,7 +26,8 @@ build ()
     export CGO_CXXFLAGS="${CXXFLAGS}";
     export CGO_LDFLAGS="${LDFLAGS}";
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw";
-    ./hack/build.sh "$pkgver"
+    sed -i "s/CGO_ENABLED=0/CGO_ENABLED=1/" hack/build.sh;
+    hack/build.sh "$pkgver"
 }
 package () 
 { 
