@@ -7,6 +7,7 @@ _fragment=${FRAGMENT:-#branch=main}
 [[ -v CMAKE_FLAGS ]] && mapfile -t -d: CMAKE_FLAGS < <(echo -n "$CMAKE_FLAGS")
 # shellcheck disable=SC2206
 [[ -v CUDA_ARCH ]] && _cuda_capability=(${CUDA_ARCH})
+[[ -v HIP_ARCH  ]] && _CMAKE_FLAGS+=("-DCYCLES_HIP_BINARIES_ARCH=${HIP_ARCH}")
 
 #some extra, unofficially supported stuff goes here:
 ((TRAVIS)) && _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75) # Travis memory limit is not enough to build for arch 3.x.
@@ -27,6 +28,10 @@ _fragment=${FRAGMENT:-#branch=main}
 ((DISABLE_NINJA)) || { makedepends+=('ninja'); : ${MAKEFLAGS:--j1}; }
 #shellcheck disable=SC2015
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.4'); }
+((DISABLE_HIP)) || {
+  makedepends+=('hip-runtime-amd')
+  _CMAKE_FLAGS+=( -DHIP_ROOT_DIR=/opt/rocm )
+}
 
 pkgname=blender-develop-git
 pkgver=4.2.r133163.g99673edd853
