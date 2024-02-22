@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-nexus-nightly
-pkgver=20240221_nextpnr_0.7_10_gaa26ba7e
+pkgver=20240222_nextpnr_0.7_11_g05ed9308
 pkgrel=1
 epoch=1
 pkgdesc="nextpnr portable FPGA place and route tool - for nexus"
@@ -25,7 +25,7 @@ conflicts=(
 )
 replaces=()
 source=(
-	"nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=aa26ba7e"
+	"nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=05ed9308"
 )
 sha256sums=(
 	"SKIP"
