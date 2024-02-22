@@ -1,25 +1,18 @@
 pkgbase = latte-dock
-	pkgdesc = A dock based on plasma frameworks
-	pkgver = 0.6.0
-	pkgrel = 1
-	url = https://github.com/psifidotos/Latte-Dock
-	arch = i686
+	pkgdesc = A dock based on Plasma Frameworks
+	pkgver = 0.10.9
+	pkgrel = 3
+	url = https://store.kde.org/p/1169519/
 	arch = x86_64
 	license = GPL
-	makedepends = cmake
 	makedepends = extra-cmake-modules
-	makedepends = python
-	depends = qt5-base
-	depends = qt5-declarative
-	depends = qt5-x11extras
-	depends = kiconthemes
-	depends = kdbusaddons
-	depends = kxmlgui
-	depends = kdeclarative
-	depends = plasma-framework
-	depends = plasma-desktop
-	source = latte-dock-0.6.0.tar.gz::https://github.com/psifidotos/Latte-Dock/archive/v0.6.0.tar.gz
-	sha256sums = ecc573e999e0551e96baaae1ccf5fce7093281f958554e2e42195a1a57dc07af
+	depends = knewstuff5
+	depends = plasma-framework5
+	source = https://download.kde.org/stable/latte-dock/latte-dock-0.10.9.tar.xz
+	source = https://download.kde.org/stable/latte-dock/latte-dock-0.10.9.tar.xz.sig
+	validpgpkeys = 325E97C32E601F5D4EADCF3A55999050A2D9110E
+	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
+	sha256sums = 32d1e554d095414db60102f19fc8ae955123e45f2ff3bde3bf38b67e390a487e
+	sha256sums = SKIP
 
 pkgname = latte-dock
-
