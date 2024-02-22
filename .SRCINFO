@@ -1,6 +1,6 @@
 pkgbase = python-pytorch3d
 	pkgdesc = Provides efficient, reusable components for 3D Computer Vision research with PyTorch.
-	pkgver = 0.7.5
+	pkgver = 0.7.6
 	pkgrel = 1
 	url = https://pytorch3d.org/
 	arch = x86_64
@@ -8,11 +8,9 @@ pkgbase = python-pytorch3d
 	makedepends = python-setuptools
 	depends = python-fvcore
 	depends = python-iopath
-	source = python-pytorch3d-0.7.5.tar.gz::https://github.com/facebookresearch/pytorch3d/archive/v0.7.5.tar.gz
+	source = python-pytorch3d-0.7.6.tar.gz::https://github.com/facebookresearch/pytorch3d/archive/v0.7.6.tar.gz
 	source = setup-py_extensions_relative_paths.patch
-	source = 6b8766080d2c331a05abbddbf3c7332dbb9df791.patch
-	md5sums = ad0e7a15dc263cc40ac522e3acbe002b
+	md5sums = 66bece60c411256ea463d5f632a747ab
 	md5sums = 506f83849dd3afab00501fc2442473fb
-	md5sums = aafcfe22e3d825f980df67fe06734c61
 
 pkgname = python-pytorch3d
