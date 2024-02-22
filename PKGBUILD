@@ -1,6 +1,6 @@
 # Maintainer: Jeremiah Ticket <seashellpromises@gmail.com>
 pkgname=('teamtalk-client')
-pkgver=5.14
+pkgver=5.15
 pkgrel=1
         pkgdesc='a software conferencing system client which enables a group of people to collaborate and share information using voice and video'
 arch=('x86_64')
@@ -11,7 +11,7 @@ url='http://www.bearware.dk'
 _dlname='teamtalk'
 source=("https://bearware.dk/${_dlname}/v${pkgver}/${_dlname}-v${pkgver}-ubuntu22-${arch}.tgz"
         "${pkgname}.install" "TeamTalk.desktop" "teamtalk")
-sha256sums=('ea4c3473c4b6c958f324864b50dac2c08cf1155fb3c9919872201dd13d3ed7eb'
+sha256sums=('2ccf928b41cff2f611a6a7cde25db13d2cfd1bb1a7afa5d8b257f2f44a989418'
             '6a2e562a3eab75d51a7f8c26b892914c3f163575598c7891901cfe78a215d813'
             '7b025ff93113a4b6b957155c56b4c10b62d193d001d3b8ae755e3c830037609e'
             'a7df5f7a6503d7ee32351fda207bcac6996d98f25b027f72aa26a20eb6702fa5')
