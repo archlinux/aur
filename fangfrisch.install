@@ -1,11 +1,11 @@
 post_install() {
-    echo 'NOTE: Create database structure by running:'
-    echo '  sudo -u clamav /usr/bin/fangfrisch --conf /etc/fangfrisch/fangfrisch.conf initdb'
-    echo
-    echo 'NOTE: Enable fangfrisch.timer for regular automatic updates.'
-}
-post_upgrade() {
-    if (( $(vercmp $2 1.1.0) < 0 )); then
-        sudo -u clamav /usr/bin/fangfrisch --conf /etc/fangfrisch/fangfrisch.conf --force initdb
-    fi
+	cat <<EOT
+
+NOTE: Create database structure by running:
+  sudo -u clamav /usr/bin/fangfrisch --conf /etc/fangfrisch/fangfrisch.conf initdb
+
+NOTE: After creating the database, enable fangfrisch.timer for regular automatic updates:
+  sudo systemctl enable fangfrisch.timer
+
+EOT
 }
