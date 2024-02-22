@@ -15,7 +15,7 @@ _fragment=${FRAGMENT:-#branch=main}
   _CMAKE_FLAGS+=( -DWITH_USD=OFF )
 } || {
   _CMAKE_FLAGS+=( -DWITH_USD=ON
-                -DUSD_ROOT=/usr )
+                  -DUSD_ROOT=/usr )
   depends+=( "usd>=23.11" )
 }
 ((DISABLE_MATERIALX)) && {
@@ -23,7 +23,6 @@ _fragment=${FRAGMENT:-#branch=main}
 } || {
   _CMAKE_FLAGS+=( -DWITH_MATERIALX=ON )
   depends+=( materialx )
-  export PATH+=":/opt/materialx"
 }
 ((DISABLE_NINJA)) || { makedepends+=('ninja'); : ${MAKEFLAGS:--j1}; }
 #shellcheck disable=SC2015
