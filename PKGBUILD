@@ -1,7 +1,7 @@
 #Maintainer: SimPilotAdamT <adam_tazul@outlook.com>
 
-_pkgbase=xmm7360-pci-SPAT
-pkgbase=xmm7360-pci-spat
+_pkgbase=xmm7360-pci-spat
+pkgbase=xmm7360-pci-spat-dkms
 pkgname=(xmm7360-pci-spat-dkms xmm7360-pci-spat-utils)
 pkgver=1
 pkgrel=1
@@ -34,15 +34,15 @@ package_xmm7360-pci-spat-dkms() {
   depends=(dkms)
   provides=(XMM7360-PCI-SPAT-MODULE)
   cd ${_pkgbase}
-  install -Dm644 "${srcdir}"/dkms.conf xmm7360.c Makefile -t "${pkgdir}"/usr/src/${pkgbase}-${pkgver}/
+  install -Dm644 "${srcdir}"/dkms.conf xmm7360.c Makefile -t "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
 }
 
 package_xmm7360-pci-spat-utils() {
   pkgdesc+=" – utilities only"
   depends=(XMM7360-PCI-SPAT-MODULE dbus-python python-pyroute2 python-configargparse)
   cd ${_pkgbase}
-  install -d "${pkgdir}"/usr/lib/${pkgbase}
-  cp --preserve=mode -R rpc "${pkgdir}"/usr/lib/${pkgbase}
+  install -d "${pkgdir}"/usr/lib/${_pkgbase}
+  cp --preserve=mode -R rpc "${pkgdir}"/usr/lib/${_pkgbase}
   install -Dm644 "$srcdir"/xmm7360.service -t "${pkgdir}"/usr/lib/systemd/system
   install -Dm644 xmm7360.ini "${pkgdir}"/etc/xmm7360
   install -Dm755 "$srcdir"/lte.sh "${pkgdir}"/usr/bin/lte
