@@ -3,7 +3,7 @@
 pkgname=rye-bin
 pkgver=0.25.0
 _pkgname="${pkgname%-bin}"
-pkgrel=2
+pkgrel=3
 pkgdesc="An experimental alternative to poetry, pip, pipenv, venv, virtualenv, pdm, hatch, …"
 arch=('x86_64')
 url="https://github.com/mitsuhiko/rye"
@@ -26,10 +26,10 @@ package() {
   install -Dm755 "rye-$pkgver-x86_64-linux" "$pkgdir/usr/bin/rye"
   install -Dm644 "rye-$pkgver/CHANGELOG.md" -t "$pkgdir/usr/share/doc/rye"
   install -Dm644 "rye-$pkgver/README.md" -t "$pkgdir/usr/share/doc/rye"
-  install -Dm644 "rye-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/rye"
+  install -Dm644 "rye-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 
   cd "rye-$pkgver/docs"
-  local docs="$pkgdir/usr/share/doc/rye/docs"
+  local docs="$pkgdir/usr/share/doc/$pkgname/docs"
   find ./ -type f -type f -name \*.md -exec install -Dm644 "{}" "$docs/{}" \;
 }
 
