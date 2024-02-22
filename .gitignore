@@ -3,3 +3,4 @@ pkg
 *x86_64.pkg.tar.zst
 *any.pkg.tar.zst
 python-fangfrisch-*.tar.gz
+*.log
