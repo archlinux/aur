@@ -1,0 +1,16 @@
+pkgbase = garli
+	pkgdesc = Phylogenetic analysis of molecular sequence data using the maximum-likelihood criterion
+	pkgver = 2.1
+	pkgrel = 4
+	url = https://github.com/zwickl/garli
+	arch = x86_64
+	license = GPL2
+	makedepends = make
+	makedepends = autoconf
+	makedepends = git
+	depends = gcc-libs
+	depends = ncl
+	source = git+https://github.com/zwickl/garli.git
+	sha256sums = SKIP
+
+pkgname = garli
