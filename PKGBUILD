@@ -4,7 +4,7 @@ pkgver=0.0.6
 pkgrel=1
 pkgdesc="A rule-based network traffic analysis Java framework."
 arch=('any')
-url="https://gitlab.swerk.priv.at/stefan/rubanetra"
+url="https://gitea.swerk.priv.at/stefan/rubanetra.git"
 license=('GPL3')
 groups=()
 depends=('jdk8-openjdk'
@@ -30,20 +30,20 @@ backup=('etc/rubanetra/rubanetra.conf'
         )
 options=()
 changelog=
-source=("https://gitlab.swerk.priv.at/stefan/$pkgname/repository/archive.tar.gz?ref=$pkgver"
+source=("https://gitea.swerk.priv.at/stefan/$pkgname/archive/$pkgver.tar.gz"
         "$pkgname-$pkgver.usr.install.patch")
 noextract=()
-sha256sums=('3cb868a63202f4cb305634c0b285a398a6c2311b77741821f1217d3fac0e3bd5'
+sha256sums=('7eefa18258c9800203639b6c16b1715e2db416af2629c9c2cd76a2642ffd1ff4'
             'e588ef2d33c32055927f106b5cc7320eaf8fc502228f572450519feb6d768000')
 validpgpkeys=()
 
 prepare() {
-	cd "$pkgname-$pkgver-7cb1137e7afe3d674eee9f0f68683e59b1911c38"
+	cd "$pkgname"
 	patch -p1 -i "$srcdir/$pkgname-$pkgver.usr.install.patch"
 }
 
 build() {
-	cd "$pkgname-$pkgver-7cb1137e7afe3d674eee9f0f68683e59b1911c38"
+	cd "$pkgname"
 	MAVEN_OPTS=-Xmx128m mvn package
     mkdir -p "./tmp"
     unzip -o -d "./tmp" "./target/rubanetra-0.0.6-distribution.zip"
@@ -51,7 +51,7 @@ build() {
 
 
 package() {
-    mv "$srcdir/$pkgname-$pkgver-7cb1137e7afe3d674eee9f0f68683e59b1911c38/tmp" "$pkgdir/tmp"
+    mv "$srcdir/$pkgname-$pkgver/tmp" "$pkgdir/tmp"
     mkdir -p "$pkgdir/usr/lib"
     mkdir -p "$pkgdir/usr/bin"
 
