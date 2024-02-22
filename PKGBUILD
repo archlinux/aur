@@ -1,20 +1,21 @@
-# Maintainer: Ckat <ckat@teknik.io>
-pkgname=chatterino2-git
+# Maintainer: Fijxu <fijxu [at] nadeko [dot] net>
+# Contributor: Ckat <ckat@teknik.io>
+pkgname=chatterino2-forserino-git
 _pkgname=chatterino2
-pkgver=2.4.5.r152.g25add89
+pkgver=r4763.1c553930
 pkgrel=1
-pkgdesc='Second installment of the Twitch chat client series "Chatterino", dev/git version'
+pkgdesc='Another fork of Chatterino2 with features (or fixes) that are not accepted into the upstream repo (7tv emotes included)'
 arch=('any')
-url=https://chatterino.com
+url=https://github.com/felyp7/Forserino
 license=('MIT')
 depends=('qt6-base' 'qt6-tools' 'boost-libs' 'openssl' 'qt6-imageformats' 'qtkeychain-qt6' 'qt6-5compat' 'qt6-svg')
 makedepends=('git' 'boost' 'cmake')
 optdepends=('streamlink: For piping streams to video players'
-            'pulseaudio: For audio output')
+            'pipewire: For audio output')
 provides=('chatterino')
 conflicts=('chatterino')
 install=$pkgname.install
-source=("git+https://github.com/Chatterino/chatterino2"
+source=("$_pkgname::git+https://github.com/felyp7/Forserino"
         "git+https://github.com/arsenm/sanitizers-cmake"
         "git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake"
         "git+https://github.com/pajlada/settings"
@@ -39,7 +40,7 @@ md5sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/chatterino2"
-    git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare () {

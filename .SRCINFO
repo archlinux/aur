@@ -1,9 +1,9 @@
-pkgbase = chatterino2-git
-	pkgdesc = Second installment of the Twitch chat client series "Chatterino", dev/git version
-	pkgver = 2.4.5.r152.g25add89
+pkgbase = chatterino2-forserino-git
+	pkgdesc = Another fork of Chatterino2 with features (or fixes) that are not accepted into the upstream repo (7tv emotes included)
+	pkgver = r4763.1c553930
 	pkgrel = 1
-	url = https://chatterino.com
-	install = chatterino2-git.install
+	url = https://github.com/felyp7/Forserino
+	install = chatterino2-forserino-git.install
 	arch = any
 	license = MIT
 	makedepends = git
@@ -18,10 +18,10 @@ pkgbase = chatterino2-git
 	depends = qt6-5compat
 	depends = qt6-svg
 	optdepends = streamlink: For piping streams to video players
-	optdepends = pulseaudio: For audio output
+	optdepends = pipewire: For audio output
 	provides = chatterino
 	conflicts = chatterino
-	source = git+https://github.com/Chatterino/chatterino2
+	source = chatterino2::git+https://github.com/felyp7/Forserino
 	source = git+https://github.com/arsenm/sanitizers-cmake
 	source = git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake
 	source = git+https://github.com/pajlada/settings
@@ -44,4 +44,4 @@ pkgbase = chatterino2-git
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = chatterino2-git
+pkgname = chatterino2-forserino-git
