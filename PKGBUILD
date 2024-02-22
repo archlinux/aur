@@ -2,8 +2,8 @@
 
 _plug=bestsource
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r59.3be2958
-pkgrel=2
+pkgver=r110.c85e198
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?p=1972253'
@@ -26,25 +26,29 @@ sha256sums=('SKIP'
 options=('debug')
 
 pkgver() {
-  cd "${_plug}"
+  cd "$_plug"
 #   echo "$(git describe --long --tags | tr - .)"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   mkdir -p build
-  ln -s "${srcdir}/libp2p" "${srcdir}/${_plug}/libp2p"
+  
+  cd "$_plug"
+  git submodule init
+  git config submodule.libp2p.url "$srcdir/libp2p"
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
   cd build
-  arch-meson "../${_plug}" \
+  arch-meson "../$_plug" \
     --libdir /usr/lib/vapoursynth
 
   ninja
 }
 
 package(){
-  DESTDIR="${pkgdir}" ninja -C build install
-  install -Dm644 "${srcdir}/bestsource/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  DESTDIR="$pkgdir" ninja -C build install
+  install -Dm644 "${srcdir}/bestsource/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
