@@ -28,7 +28,7 @@ KillMode=mixed
 KillSignal=SIGTERM
 Restart=on-failure
 RestartPreventExitStatus=2
-ExecStart=/usr/bin/ory-keto --config /etc/ory/keto/config.yaml
+ExecStart=/usr/bin/ory-keto serve --config /etc/ory/keto/config.yaml
 
 [Install]
 WantedBy=multi-user.target
