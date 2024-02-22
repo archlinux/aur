@@ -1,10 +1,11 @@
 #Maintainer: SimPilotAdamT <adam_tazul@outlook.com>
 
+__pkgbase=xmm7360-pci-SPAT
 _pkgbase=xmm7360-pci-spat
 pkgbase=xmm7360-pci-spat-dkms-git
 pkgname=(xmm7360-pci-spat-dkms xmm7360-pci-spat-utils)
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Driver for the Fibocom L850-GL / Intel XMM7360 LTE modem'
 arch=('x86_64')
 url="https://github.com/SimPilotAdamT/xmm7360-pci-SPAT"
@@ -20,12 +21,12 @@ sha512sums=('SKIP'
             '51cc3e1a492204c0c1bf1bc752572a1361fb030bc47f9cd412e1ce7595d7578c540f492ab7d933231dc0f20c74bc92ef5e6fcda3c060cee8806e45a7fc7cec06')
 
 pkgver() {
-  cd ${_pkgbase}
+  cd ${__pkgbase}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd ${_pkgbase}
+  cd ${__pkgbase}
   python -m compileall -o1 rpc
 }
 
@@ -40,7 +41,7 @@ package_xmm7360-pci-spat-dkms() {
 package_xmm7360-pci-spat-utils() {
   pkgdesc+=" – utilities only"
   depends=(XMM7360-PCI-SPAT-MODULE dbus-python python-pyroute2 python-configargparse)
-  cd ${_pkgbase}
+  cd ${__pkgbase}
   install -d "${pkgdir}"/usr/lib/${_pkgbase}
   cp --preserve=mode -R rpc "${pkgdir}"/usr/lib/${_pkgbase}
   install -Dm644 "$srcdir"/xmm7360.service -t "${pkgdir}"/usr/lib/systemd/system
