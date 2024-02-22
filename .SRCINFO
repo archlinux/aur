@@ -1,6 +1,6 @@
 pkgbase = atopile
 	pkgdesc = A tool to build electronic circuit boards with code
-	pkgver = 0.2.18
+	pkgver = 0.2.19
 	pkgrel = 1
 	url = https://github.com/atopile/atopile
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = atopile
 	depends = python-semver
 	depends = python-toolz
 	depends = python-yaml
-	source = atopile-0.2.18.tar.gz::https://github.com/atopile/atopile/archive/refs/tags/v0.2.18.tar.gz
-	sha256sums = 1dcf63d507aef33f5c4230132d6f2140d949812b3fde44f7659141830635bdd3
+	source = atopile-0.2.19.tar.gz::https://github.com/atopile/atopile/archive/refs/tags/v0.2.19.tar.gz
+	sha256sums = 350dfffb4a85d8fea3ccf14efdb2fbcb5bd70e30b32d1f98f85960a8f45155bc
 
 pkgname = atopile
