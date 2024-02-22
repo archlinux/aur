@@ -1,11 +1,15 @@
 pkgbase = python-btrfs-git
 	pkgdesc = Python Btrfs module
-	pkgver = 12.r3.ga4f7697
+	pkgver = 13.r6.g59c8dac
 	pkgrel = 1
 	url = https://github.com/knorrie/python-btrfs
 	arch = any
 	license = LGPL3
 	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	provides = python-btrfs
 	conflicts = python-btrfs

@@ -3,14 +3,14 @@
 
 _pkgname=python-btrfs
 pkgname=python-btrfs-git
-pkgver=12.r3.ga4f7697
+pkgver=13.r6.g59c8dac
 pkgrel=1
 pkgdesc="Python Btrfs module"
 arch=('any')
 url="https://github.com/knorrie/python-btrfs"
 license=('LGPL3')
 depends=('python')
-makedepends=('git')
+makedepends=('git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 provides=('python-btrfs')
 conflicts=('python-btrfs')
 source=("git+https://github.com/knorrie/python-btrfs.git#branch=develop")
@@ -23,12 +23,12 @@ pkgver() {
 
 build() {
     cd python-btrfs
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd python-btrfs
-    python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm755 bin/btrfs-* -t "$pkgdir/usr/bin"
     install -Dm644 man/*.1 -t "$pkgdir/usr/share/man/man1"
     install -Dm644 examples/*.py -t "$pkgdir/usr/share/doc/$_pkgname/examples"
