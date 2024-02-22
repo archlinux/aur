@@ -5,7 +5,7 @@ Requires=multi-user.target systemd-user-sessions.service dev-ttyXMM2.device
 
 [Service]
 Type=oneshot
-ExecStart=/usr/lib/xmm7360-pci-spat/rpc/open_xdatachannel.py -c /etc/xmm7360
+ExecStart=/usr/bin/lte up
 RemainAfterExit=yes
 TimeoutSec=120
 
