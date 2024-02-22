@@ -2,7 +2,7 @@
 # Contributor: n0vember <n0vember at half-9 dot net>
 
 pkgname=bash_unit
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="bash unit testing enterprise edition framework for professionals"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/pgrange/bash_unit"
 license=('GPL')
 depends=('bash')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pgrange/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('51b2c9c906c414efb403b6fbf02cfb77d97b442043b29e39c1d6fddc8806972f')
+sha256sums=('c601ec2bcf3465bd46c15ea32674062c991e7a53975582dba4a51c805d94b054')
 
 package() {
   install -Dm755 ${pkgname}-${pkgver}/bash_unit "$pkgdir/usr/bin/bash_unit"
