@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=mvfst
-pkgver=2024.02.12.00
+pkgver=2024.02.19.00
 pkgrel=1
 pkgdesc="An implementation of the QUIC transport protocol"
 arch=(x86_64)
@@ -67,7 +67,7 @@ provides=(
   libmvfst_transport_settings_functions.so
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('72e1d9fc98e90bf74fe06f61f925a5238139f97b22b1bffbb9e51e76925c0d52')
+sha256sums=('e871d9149dd91bb2c760fa4ce1e24e462ca39082876087d9a916981d406c8ee6')
 
 _archive="$pkgname-$pkgver"
 
@@ -77,6 +77,11 @@ prepare() {
   # Remove tests that doesn't compile due to what I think is an incompatibility
   # with gtest
   sed -i '/QuicServerTest.cpp/d' quic/server/test/CMakeLists.txt
+
+  # Use system CMake config instead of bundled module, incompatible with glog
+  # v0.7.0+
+  sed -i 's/find_package(Glog REQUIRED)/find_package(Glog CONFIG REQUIRED)/' \
+    CMakeLists.txt
 }
 
 build() {
