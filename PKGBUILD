@@ -1,7 +1,7 @@
 # Maintainer: George Tsiamasiotis <gtsiam@windowslive.com>
 
 pkgname=carburetor
-pkgver=4.5.0
+pkgver=4.5.1
 pkgrel=1
 pkgdesc='Graphical settings app for tractor in GTK'
 arch=(any)
@@ -22,7 +22,7 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://framagit.org/tractor/carburetor/-/archive/$pkgver/carburetor-$pkgver.tar.gz")
-sha256sums=('1756061cc19b1a19dc2a66b8186013630eddc539f0bb34673600786df79508cf')
+sha256sums=('138656a73c75e8619970a029112d2419168dbda4c112b33d356b0ecf11ab1d3e')
 
 build() {
   cd "$pkgname-$pkgver"

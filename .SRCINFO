@@ -1,6 +1,6 @@
 pkgbase = carburetor
 	pkgdesc = Graphical settings app for tractor in GTK
-	pkgver = 4.5.0
+	pkgver = 4.5.1
 	pkgrel = 1
 	url = https://framagit.org/tractor/carburetor
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = carburetor
 	depends = gtk4
 	depends = libadwaita
 	depends = tractor
-	source = carburetor-4.5.0.tar.gz::https://framagit.org/tractor/carburetor/-/archive/4.5.0/carburetor-4.5.0.tar.gz
-	sha256sums = 90a9de9cafac4d7e2e444f17b5a79413eaa1a63d06bdfc8cebdda6a4441b22b2
+	source = carburetor-4.5.1.tar.gz::https://framagit.org/tractor/carburetor/-/archive/4.5.1/carburetor-4.5.1.tar.gz
+	sha256sums = 138656a73c75e8619970a029112d2419168dbda4c112b33d356b0ecf11ab1d3e
 
 pkgname = carburetor
