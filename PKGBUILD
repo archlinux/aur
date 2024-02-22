@@ -1,7 +1,7 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=superconductor-appimage
-pkgver=0.11.2
+pkgver=0.11.3
 pkgrel=1
 pkgdesc="A playout client for Windows/Linux/macOS that will let you control CasparCG Server, BMD ATEM, OBS Studio, vMix, OSC-compatible devices, HTTP (REST)-compatible devices, and more"
 arch=(x86_64)
@@ -13,7 +13,7 @@ provides=(superconductor)
 conflicts=(superconductor)
 options=(!strip)
 source=("${url}/releases/download/v${pkgver}/SuperConductor-${pkgver}-Linux-Executable.AppImage")
-sha256sums=('a2dc75701c4f4733a1aea4a6a14ec58551cd4d4fc529c44c8092943100c70863')
+sha256sums=('62e3ab5446d39fa0cd84ff90f1d9cfff983c4e7f07c3f2e8b4afd723849334f7')
 _file="SuperConductor-Linux-Executable.AppImage"
 _install_path="/opt/appimages/${_file}"
 
