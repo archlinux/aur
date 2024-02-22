@@ -1,7 +1,7 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=tsr-bridge-appimage
-pkgver=0.11.2
+pkgver=0.11.3
 pkgrel=1
 pkgdesc="The TSR-bridge is the application which handles the actual playout and control of the connected devices. By default, an instance of TSR-bridge runs internally in SuperConductor, so devices can be controlled directly from the application"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('tsr-bridge')
 conflicts=('tsr-bridge')
 options=(!strip)
 source=("${url}/releases/download/v${pkgver}/TSR-Bridge-${pkgver}-Linux-Executable.AppImage")
-sha256sums=('545461f6a068f8365b946e2e18191e0fd665a89111da879f36988da71ab6f37e')
+sha256sums=('94456d87c77fa74158f2571f08a3c15c0a507431c905e3ef8aec6852d2584941')
 _file="TSR-Bridge-Linux-Executable.AppImage"
 _install_path="/opt/appimages/${_file}"
 
