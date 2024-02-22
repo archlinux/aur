@@ -1,4 +1,5 @@
-# Maintainer: jbpratt <jbpratt78 at gmail dot com>
+# Maintainer: Emanuel Bennici <emanuel at l0nax dot org>
+# Contributor: jbpratt <jbpratt78 at gmail dot com>
 
 pkgname=src-cli-bin
 pkgver=5.0.3
