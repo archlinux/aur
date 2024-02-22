@@ -3,7 +3,7 @@
 _name=kontactinterface
 pkgname=${_name}5
 pkgver=23.08.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Kontact Plugin Interface Library'
 arch=(x86_64)
 url='https://kontact.kde.org'
