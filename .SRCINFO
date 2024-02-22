@@ -1,7 +1,7 @@
 pkgbase = deepqt
 	pkgdesc = Harness the power of the DeepL API with this friendly user interface. Translate plain text and epub files.
 	pkgver = 1.1.7
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/VoxelCubes/DeepQt
 	arch = any
 	license = GPL
@@ -9,9 +9,15 @@ pkgbase = deepqt
 	makedepends = python-pip
 	depends = python>=3.10.0
 	depends = python-pipx
+	depends = pyside6
+	depends = python-beautifulsoup4
+	depends = python-pyxdg
 	source = https://github.com/VoxelCubes/DeepQt/archive/refs/tags/v1.1.7.tar.gz
 	sha256sums = SKIP
 
 pkgname = deepqt
 	depends = python>=3.10.0
 	depends = python-pipx
+	depends = pyside6
+	depends = python-beautifulsoup4
+	depends = python-pyxdg
