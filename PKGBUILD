@@ -3,14 +3,14 @@
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 
 _pkgname=unix
-_pkgver=1.5.6
+_pkgver=1.5.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="POSIX System Utilities"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   apparmor
   r
@@ -22,12 +22,12 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ea966ea9fb4f59ef99cb6cfa09432fa7')
-sha256sums=('576172d667598245413374121bdcefe6445773aedbb6ce3baf0be2ad5a9a19b9')
+md5sums=('8dec8e89e5276cb5310c4ae23b4fe3ef')
+b2sums=('bf9168727682e4ab1a8f5d3862afb2411041f7b319ed0dc2ee88eb8aa62ab931b8109e418daa2683461b0522fa7cc32fba3e78ee68ce9b50f4bccaadc872ffc2')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build \
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname" \
       --configure-vars=FORCE_APPARMOR=1
 }
 
