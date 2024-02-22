@@ -3,7 +3,7 @@ pkgname=quicknote
 pkgver=2.0.1
 _electronversion=22
 _nodeversion=18
-pkgrel=3
+pkgrel=4
 pkgdesc="Helps to paste some random text or take some notes right from your taskbar!"
 arch=('any')
 url="https://srilakshmikanthanp.github.io/quicknote/"
@@ -25,7 +25,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -35,15 +35,18 @@ _ensure_local_nvm() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
-        -e "s|@appasar@|app|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
+    gendesk -q -f -n --categories="Utility" --name="${pkgname}" --exec="${pkgname}"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
     yarn install --no-lockfile --cache-folder "${srcdir}/.yarn_cache"
     yarn package
     cp -r "${srcdir}/${pkgname}.git/assets" "${srcdir}/${pkgname}.git/out/quicknote-linux-x64/resources/app"
