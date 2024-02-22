@@ -1,14 +1,14 @@
 # Maintainer: Robert Hamblin <hamblingreen@hotmail.com>
 pkgname=dynstr
 pkgver=0.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Minimal library that provides dynamic strings using plain C99"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://gitea.privatedns.org/xavi/dynstr"
 license=('Apache')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('6fed0197ed1da1d37acc1622654dabb1242f6b961f601d26d7713b3b5f04b50e176dbc9d233a55dec5ce92ffb382e192d5882fb15624fa6555eb12d000556cfd')
+sha512sums=('92047c0db21d5320b1b496f90ddf34a4fd487604a9ac4a7fce52a1cb31f3c930124fe48a1af5dde918dc4fc1cf9624d2b99886287b2ae3b2ce6002546b0e718a')
 
 build() {
   cd "$pkgname"
@@ -19,6 +19,6 @@ build() {
 package() {
   cd "$pkgname"
 
-  sudo make install prefix=/usr
+  make prefix="$pkgdir/usr" install  
 }
 
