@@ -31,6 +31,9 @@ _fragment=${FRAGMENT:-#branch=main}
   makedepends+=('hip-runtime-amd')
   _CMAKE_FLAGS+=( -DHIP_ROOT_DIR=/opt/rocm )
 }
+((DISABLE_PYTHON_INSTALL)) && \
+  _CMAKE_FLAGS+=( -DWITH_PYTHON_INSTALL=OFF ) || \
+  _CMAKE_FLAGS+=( -DWITH_PYTHON_INSTALL=ON )
 
 pkgname=blender-develop-git
 pkgver=4.2.r133163.g99673edd853
@@ -121,7 +124,6 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DWITH_INSTALL_PORTABLE=OFF \
-        -DWITH_PYTHON_INSTALL=OFF \
         -DXR_OPENXR_SDK_ROOT_DIR=/usr \
         -DPYTHON_VERSION="${_pyver}" \
         "${_CMAKE_FLAGS[@]}"
