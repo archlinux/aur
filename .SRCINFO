@@ -11,7 +11,7 @@ pkgbase = e2-sat-editor
 	depends = curl
 	provides = e2-sat-editor
 	conflicts = e2-sat-editor
-	source = e2-sat-editor-1.2.1.tar.gz::https://github.com/ctlcltd/e2-sat-editor/archive/v1.2.0.tar.gz
+	source = e2-sat-editor-1.2.0.tar.gz::https://github.com/ctlcltd/e2-sat-editor/archive/v1.2.0.tar.gz
 	sha256sums = 7a9c13c5c6e997b3af556d4f791b03c080971870b3f3c69774e244412bd468bf
 
 pkgname = e2-sat-editor
