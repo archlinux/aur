@@ -64,7 +64,7 @@ build() {
 check() {
   cd yubioath-flutter
   export FLUTTER_HOME="$srcdir/flutter"
-  export PATH="${PATH}:${FLUTTER_HOME}/bin"
+  export PATH="${FLUTTER_HOME}/bin:${PATH}"
   flutter test
 }
 
