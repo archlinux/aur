@@ -1,0 +1,36 @@
+From 2a0555799d7e52b8939a55e4d1391d91e6442e0f Mon Sep 17 00:00:00 2001
+From: Butui Hu <hot123tea123@gmail.com>
+Date: Wed, 21 Feb 2024 10:55:26 +0800
+Subject: [PATCH 3/5] fix building for gcc 13, add cstdint
+
+see also https://gcc.gnu.org/gcc-13/porting_to.html
+---
+ third_party/com_google_audio_tools_fixes.diff | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/third_party/com_google_audio_tools_fixes.diff b/third_party/com_google_audio_tools_fixes.diff
+index 290dd7a9..4438bc9f 100644
+--- a/third_party/com_google_audio_tools_fixes.diff
++++ b/third_party/com_google_audio_tools_fixes.diff
+@@ -21,4 +21,16 @@ index e906d2d..753c286 100644
+ +#include <algorithm>
+  #include <cfloat>
+  #include <cstdarg>
+- 
+\ No newline at end of file
++ 
++diff --git a/audio/dsp/porting.h b/audio/dsp/porting.h
++index 56e45d2..e3296be 100644
++--- a/audio/dsp/porting.h
+++++ b/audio/dsp/porting.h
++@@ -20,6 +20,7 @@
++ #include <iostream>
++ #include <cmath>
++ #include <string>
+++#include <cstdint>
++ 
++ using std::string;
++ 
+-- 
+2.43.2
+

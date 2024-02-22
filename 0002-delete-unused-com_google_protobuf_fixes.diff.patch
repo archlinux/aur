@@ -1,0 +1,29 @@
+From da22b13bd45cbee707d12238ac53b651dec50555 Mon Sep 17 00:00:00 2001
+From: Butui Hu <hot123tea123@gmail.com>
+Date: Wed, 21 Feb 2024 22:30:48 +0800
+Subject: [PATCH 2/5] delete unused com_google_protobuf_fixes.diff
+
+---
+ WORKSPACE | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/WORKSPACE b/WORKSPACE
+index 26987a9f..27f3ae5c 100644
+--- a/WORKSPACE
++++ b/WORKSPACE
+@@ -58,12 +58,6 @@ http_archive(
+     sha256 = "87407cd28e7a9c95d9f61a098a53cf031109d451a7763e7dd1253abf8b4df422",
+     strip_prefix = "protobuf-3.19.1",
+     urls = ["https://github.com/protocolbuffers/protobuf/archive/v3.19.1.tar.gz"],
+-    patches = [
+-        "@//third_party:com_google_protobuf_fixes.diff"
+-    ],
+-    patch_args = [
+-        "-p1",
+-    ],
+ )
+ 
+ http_archive(
+-- 
+2.43.2
+

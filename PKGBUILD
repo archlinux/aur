@@ -1,75 +1,92 @@
 # Maintainer: Premysl Srubar <premysl.srubar at gmail com>
+# Maintainer: Hu Butui <hot123tea123@gmail.com>
+
 pkgname=python-mediapipe-git
-pkgver=v0.10.9.r42.g8609e5fae
+pkgver=0.10.9.r331.377f7d77b
 pkgrel=1
-pkgdesc="MediaPipe offers cross-platform, customizable ML solutions for live and streaming media."
-arch=('any')
+pkgdesc="A cross-platform, customizable ML solutions for live and streaming media"
+arch=('x86_64')
 url="https://github.com/google/mediapipe"
-license=("Apache")
-depends=('ffmpeg' 'absl-py' 'python-attrs' 'python-matplotlib' 'python-numpy' 'python-opencv' 'python-protobuf' 'python-six' 'python-wheel')
-#gcc-8 g++-8
-makedepends=('git' 'python-setuptools' 'bazel' 'gcc')
+license=("Apache-2.0")
+depends=(
+  absl-py
+  gcc-libs
+  glibc
+  libglvnd
+  opencv
+  opengl-driver
+  python-attrs
+  python-flatbuffers
+  python-matplotlib
+  python-numpy
+  python-opencv
+  python-pillow
+  python-protobuf
+  python-scipy
+  python-six
+  python-sounddevice
+  python-tensorflow
+)
+makedepends=(
+  bazel
+  git
+  patchelf
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
-source=("${pkgname}::git+${url}.git")
-
-sha256sums=('SKIP')
-
-# To compile with GPU support, replace
-# --define MEDIAPIPE_DISABLE_GPU=1
-# with
-# --copt -DMESA_EGL_NO_X11_HEADERS --copt -DEGL_NO_X11
-# mesa-common-dev libegl1-mesa-dev libgles2-mesa-dev
+source=("${pkgname}::git+https://github.com/google/mediapipe.git"
+        "0001-update-rules_apple.patch"
+        "0002-delete-unused-com_google_protobuf_fixes.diff.patch"
+        "0003-fix-building-for-gcc-13-add-cstdint.patch"
+        "0004-use-opencv4-headers.patch"
+        "0005-add-arg-experimental_allow_proto3_optional-to-protoc.patch"
+)
+sha256sums=('SKIP'
+            'a6b63bd50d32e2d8ac50a84173931d0d1ad66f3f4e5f9017cc43ffdda2369de8'
+            '1c1577095c85a24e491292aab7cccda98632297c732147a80ba1d8a30d398674'
+            '213bd6cf43516a83b40af1dedfd8010b80284ea917f13ca797f4fbc9ea201559'
+            '0f05849960ae21db7d3c1059f2c27a3358ba992f634a03b58b75b61f5031d345'
+            '827ed2dc593f2659b6092c22c13fa4fb4d3b72ae6a3a08b7e3fcacbbcc3be7bd')
 
 pkgver() {
-  cd "$srcdir/${pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${srcdir}/${pkgname}"
+  printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g' | sed 's/^v//')"
 }
 
 prepare() {
- 
-    cd "$srcdir/${pkgname}"
-    # upstream requires 3.7.0 currently. But using 4.0.0 seems to build just fine. Use whatever bazel version is installed
-    bazel --version | sed 's/bazel //' >.bazelversion
-    #Patch old abseil lib?: https://github.com/grpc/grpc/issues/25114  (seems ok with gcc10)
-    
-    #Uncommend opencv4 includes
-    #https://google.github.io/mediapipe/getting_started/install.html
-    sed -i 's!#"include/opencv4/!"include/opencv4/!g' third_party/opencv_linux.BUILD
-    formatted_version=$(echo $pkgver | sed 's/^v//; s/r\([0-9]*\)\./post\1+/')
-    sed -i "s/^__version__ = .*/__version__ = '$formatted_version'/" setup.py
-    
-
-    #python setup.py gen_protos #Without this the cleanup after the build would fail on non-existing files
+  bazel --version | sed 's/bazel //' > "${srcdir}/${pkgname}/.bazelversion"
+  cd "${srcdir}/${pkgname}"
+  patch -p1 -i "${srcdir}/0001-update-rules_apple.patch"
+  patch -p1 -i "${srcdir}/0002-delete-unused-com_google_protobuf_fixes.diff.patch"
+  patch -p1 -i "${srcdir}/0003-fix-building-for-gcc-13-add-cstdint.patch"
+  patch -p1 -i "${srcdir}/0004-use-opencv4-headers.patch"
+  patch -p1 -i "${srcdir}/0005-add-arg-experimental_allow_proto3_optional-to-protoc.patch"
+  # set __version__
+  formatted_version=$(echo $pkgver | sed 's/^v//; s/r\([0-9]*\)\./post\1+/')
+  sed -i "s/^__version__ = .*/__version__ = '$formatted_version'/" setup.py
+  # sed -i "s/__version__ = 'dev'/__version__ = '$pkgver'/" setup.py
+  # set link_opencv to True
+  sed -i "s/self.link_opencv = False/self.link_opencv = True/g" setup.py
 }
 
-#build() {
-  #https://google.github.io/mediapipe/getting_started/install
-#  cd "$srcdir/${pkgname}"
-  #CC=gcc-10 CXX=g++-10 bazel build --compilation_mode=opt --copt=-DNDEBUG --define=MEDIAPIPE_DISABLE_GPU=1 --action_env=PYTHON_BIN_PATH=/bin/python mediapipe/modules/face_detection/face_detection_short_range_cpu --define=OPENCV=source
-  #CC=gcc-10 CXX=g++-10 bazel build --compilation_mode=opt --copt=-DNDEBUG --define=MEDIAPIPE_DISABLE_GPU=1 --action_env=PYTHON_BIN_PATH=/bin/python //mediapipe/python:_framework_bindings.so --define=OPENCV=source
- 
-  # https://wiki.archlinux.org/index.php/Python_package_guidelines
-  #CC=gcc-10 CXX=g++-10 python setup.py build  --install-option="--link_opencv"
-  #python setup.py build --link-opencv
-#}
-
-#check() {
-#  cd "$srcdir/${pkgname}"
-  #bazel run --define MEDIAPIPE_DISABLE_GPU=1 mediapipe/examples/desktop/hello_world:hello_world
-#}
+build() {
+  cd "${srcdir}/${pkgname}"
+  # enable building with GPU support, using opengl-driver
+  # opengl-driver is provided by mesa or nvidia-utils
+  MEDIAPIPE_DISABLE_GPU=0 \
+  python -m build --wheel --no-isolation
+}
 
 package() {
-    # https://google.github.io/mediapipe/getting_started/troubleshooting.html#missing-python-binary-path
-    # /tmp/bazel/_bazel_${USER}/
-
-    cd "$srcdir/${pkgname}"
- 
-    python setup.py gen_protos #Without this the cleanup after the install would fail on non-existing files
-    echo python setup.py install --root="${pkgdir}" --optimize=1 --link-opencv
-   
-    python setup.py install --root="${pkgdir}" --optimize=1 --link-opencv
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${srcdir}/${pkgname}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  # remove rpath and fix permission
+  find ${pkgdir} -type f -name "*.so" -exec patchelf --remove-rpath {} \;
+  find ${pkgdir} -type f -name "*.so" -exec chmod 755 {} \;
 }
-
+# vim:set ts=2 sw=2 et:
