@@ -3,7 +3,7 @@
 # Maintainer: David Hummel <david dot hummel at gmail point com>
 
 pkgname=('mod_tile-git' 'renderd-git')
-pkgver=0.7.0.r21.g22a13e8
+pkgver=0.7.0.r27.gc31d526
 pkgrel=1
 pkgdesc='A daemon and apache module for rendering and serving Mapnik raster tiles'
 arch=('i686' 'x86_64')
@@ -65,7 +65,7 @@ package_mod_tile-git() {
   install -dm755 "$pkgdir"/usr/share/renderd
   cp -av "$srcdir"/mod_tile/utils/example-map "$pkgdir"/usr/share/renderd/example-map
 
-  # "/etc/renderd.conf", "/usr/bin", "/usr/share/man" & "/var" are contained in "renderd" package
+  # "/etc/renderd.conf", "/usr/bin", "/usr/share/man", "/var/cache/renderd/tiles" & "/var/run/renderd" are contained in "renderd" package
   cd "$pkgdir" || return
   rm -rf etc/renderd.conf usr/bin usr/share/man var
 }
