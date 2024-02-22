@@ -1,6 +1,6 @@
 pkgbase = tractor
 	pkgdesc = Setup an onion routing proxy
-	pkgver = 4.5.0
+	pkgver = 4.5.1
 	pkgrel = 1
 	url = https://framagit.org/tractor/tractor/
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = tractor
 	depends = python-stem
 	depends = tor
 	optdepends = carburetor: Graphical settings app using GTK
-	source = tractor-4.5.0.tar.gz::https://framagit.org/tractor/tractor/-/archive/4.5.0/tractor-4.5.0.tar.gz
-	sha256sums = df112b8ddba6626fecf0514f0c16cea242b143aaacf95f8aed91e5f10653a785
+	source = tractor-4.5.1.tar.gz::https://framagit.org/tractor/tractor/-/archive/4.5.1/tractor-4.5.1.tar.gz
+	sha256sums = 0f27211ec9da2842134d28a43139bff77bc9d7e8b1cba33a6133c92acf556fda
 
 pkgname = tractor
