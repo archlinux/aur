@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='mdx'
 pkgname="ocaml-$_projectname"
-pkgver='2.3.1'
+pkgver='2.4.0'
 pkgrel='1'
 pkgdesc='Executable code blocks inside markdown files for OCaml'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('dune>=3.5.0' 'cppo>=1.1.0')
 checkdepends=('ocaml-alcotest' 'ocaml-lwt')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('cbecad52b652a8fc099c676c5ec0ad03e010f9c31e7a8f41850ba75bc4d11f8312026d5e9340acd3a0778714c8b915a96a84f123c16b8ef5d70ada1ffbf4aad7')
+sha512sums=('9136e4597f4e909c34b32c569ee0f99cf005758a8f6de82a8719bf367dd72683fc15f85b3f282f44f585cf62573cfe90b9a97603360e719aaf2c160495fc4766')
 
 _sourcedirectory="$_projectname-$pkgver"
 
