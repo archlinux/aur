@@ -1,7 +1,7 @@
 # Maintainer: Hmgle <dustgle@gmail.com>
 
 pkgname=graftcp
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="A flexible tool for redirecting a given program's TCP traffic to SOCKS5 or HTTP proxy."
 arch=('x86_64')
@@ -12,8 +12,8 @@ makedepends=('go' 'gcc' 'make')
 backup=('etc/graftcp-local/graftcp-local.conf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hmgle/${pkgname}/archive/v${pkgver}.tar.gz"
 	"graftcp-local.service")
-sha256sums=('3a1b262fa0fe74b0e1b685a99f3070592fc9d809b23f5d5d53c2bc876f140b68'
-         '756bd3f9bf7202b599d77a09bd08fdd3c7a44ef20e055744d1dc20d16ef1920c')
+sha256sums=('f33467d5169ed2b8574e2f5fdcfc4f867ad1318a29734b77bc299cb609a969ed'
+            '756bd3f9bf7202b599d77a09bd08fdd3c7a44ef20e055744d1dc20d16ef1920c')
 
 build() {
         cd "$srcdir/$pkgname-$pkgver"
