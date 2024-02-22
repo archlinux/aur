@@ -1,0 +1,15 @@
+pkgbase = slstatus
+	pkgdesc = A status monitor for window managers that use WM_NAME or stdin to fill the status bar
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://tools.suckless.org/slstatus/
+	arch = any
+	license = ISC
+	depends = libx11
+	conflicts = slstatus-git
+	source = https://dl.suckless.org/tools/slstatus-1.0.tar.gz
+	source = config.h
+	sha256sums = 6d6d0a16c08dd9d211172c30c4720701267a3f40cdc938db3f386f6a2b6cff54
+	sha256sums = SKIP
+
+pkgname = slstatus
