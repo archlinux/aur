@@ -1,0 +1,4 @@
+post_install()
+{
+  echo "Restart your mssql-server instance: systemctl restrat mssql-server"
+}
