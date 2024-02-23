@@ -36,6 +36,7 @@ prepare() {
     patch -p1 -i "${REPO}/patches/ui-canonical-0003-Update-certificate-generation.patch"
     patch -p1 -i "${REPO}/patches/ui-canonical-0004-Remove-external-links.patch"
     patch -p1 -i "${REPO}/patches/ui-canonical-0005-Remove-Canonical-image-servers.patch"
+    patch -p1 -i "${REPO}/patches/ui-canonical-0006-Remove-version-check.patch"
 
     # Generic renaming
     sed -i "s/LXD/Incus/g" src/*/*.ts* src/*/*/*.ts* src/*/*/*/*.ts*
