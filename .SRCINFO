@@ -1,13 +1,13 @@
 pkgbase = imunes
 	pkgdesc = Integrated Multiprotocol Network Emulator/Simulator
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://imunes.net/
 	arch = any
 	license = custom
 	makedepends = make
 	depends = tk
-	depends = tcl
+	depends = tcllib
 	depends = wireshark-qt
 	depends = imagemagick
 	depends = docker

@@ -6,12 +6,12 @@
 
 pkgname=imunes
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrated Multiprotocol Network Emulator/Simulator"
 arch=(any)
 url="http://imunes.net/"
 license=('custom')
-depends=('tk' 'tcl' 'wireshark-qt' 'imagemagick' 'docker' 'openvswitch' 'xterm')
+depends=('tk' 'tcllib' 'wireshark-qt' 'imagemagick' 'docker' 'openvswitch' 'xterm')
 makedepends=('make')
 provides=('imunes')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/imunes/${pkgname}/archive/v${pkgver}.tar.gz"
