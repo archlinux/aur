@@ -1,7 +1,7 @@
 pkgbase = cotp-bin
 	pkgdesc = Trustworthy, encrypted, command-line TOTP/HOTP authenticator app with import functionality.
 	pkgver = 1.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/replydev/cotp
 	arch = x86_64
 	license = GPL3
@@ -10,6 +10,6 @@ pkgbase = cotp-bin
 	provides = cotp
 	conflicts = cotp
 	source = https://github.com/replydev/cotp/releases/download/v1.4.5/cotp-1.4.5-x86_64-linux.tar.xz
-	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+	sha256sums = 0191538cfe09d8411b9e9f0fa01ae8b4e59f61ecd012de4f7116c16e30791fde
 
 pkgname = cotp-bin
