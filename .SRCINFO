@@ -1,0 +1,24 @@
+pkgbase = nethermind-ethereum-bin
+	pkgdesc = A robust execution client for Ethereum node operators. Binary distribution.
+	pkgver = 1.25.4
+	pkgrel = 1
+	url = https://docs.nethermind.io/
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-3.0-only
+	depends = zlib
+	depends = base-devel
+	provides = nethermind
+	provides = nethermind-cli
+	provides = nethermind-launcher
+	provides = Nethermind.Runner
+	conflicts = nethermind
+	conflicts = nethermind-cli
+	conflicts = nethermind-launcher
+	conflicts = Nethermind.Runner
+	source_x86_64 = https://github.com/NethermindEth/nethermind/releases/download/1.25.4/nethermind-1.25.4-20b10b35-linux-x64.zip
+	sha256sums_x86_64 = b843bff5bc7199561aec3e3237caf111a0be6fed6ba386bb879e7a4cee2c6d36
+	source_aarch64 = https://github.com/NethermindEth/nethermind/releases/download/1.25.4/nethermind-1.25.4-20b10b35-linux-arm64.zip
+	sha256sums_aarch64 = 726c00ef09ef4e890c742d351657d257b9dd70c8cce91e77ec5d47b1bf5b09b2
+
+pkgname = nethermind-ethereum-bin
