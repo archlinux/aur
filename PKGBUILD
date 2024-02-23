@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=helioslauncher-bin
 _appname=Helios-Launcher
-pkgver=2.1.1
-_electronversion=27
-pkgrel=2
+pkgver=2.2.0
+_electronversion=29
+pkgrel=1
 pkgdesc="Custom launcher for modded minecraft written in Electron and Node.js"
 arch=('x86_64')
 url="https://github.com/dscalzi/HeliosLauncher"
@@ -17,16 +17,13 @@ depends=(
     'libdbusmenu-glib'
     'gtk2'
 )
-makedepends=(
-    'squashfuse'
-)
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_appname}-setup-${pkgver}.AppImage"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/dscalzi/HeliosLauncher/v${pkgver}/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('161dd2d1765c5cd3b1ba13f5235b4eeb7597c28b87402fa6596d9edf822f4146'
-            '4ffd6e4c132ebc4ecde76d809f9f88e151ee0eb2175e7ea0f0b0b51a9d48539e'
+sha256sums=('9f324cde1955c573e619329453a2ba9a40acc52bc95a62507ee9729b578bb806'
+            'aa4751961333eaac4a07a1d7c0aef6d806f43f4a2c640838cd0f107b8e53add2'
             '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
