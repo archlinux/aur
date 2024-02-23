@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("md-tui")
 conflicts=("md-tui")
 source=("https://github.com/henriklovhaug/md-tui/releases/download/v$pkgver/md-tui-$pkgver-x86_64.tar.gz")
-sha256sums=("36de8c1d33cb8355559aa3f06efdb93342f58bdd37dcf840e75337d9e92b6918")
+sha256sums=("8d8d99f506aa1644817fa9eb47cbe055246be92a158d4b0351c3de08cbcbaa65")
 
 package() {
     install -Dm755 mdt -t "$pkgdir/usr/bin"
