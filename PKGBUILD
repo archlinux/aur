@@ -7,9 +7,17 @@ _pkgname=zfs
 _git_repo=https://github.com/openzfs/zfs.git
 _git_branch="$(/usr/bin/git ls-remote -h --sort=-v:refname "${_git_repo}" 'zfs-*-staging' | head -n 1)"
 _git_branch=${_git_branch##*/}
+_staging_ver=${_git_branch#zfs-}
+_staging_ver=${_staging_ver%-staging}
+
+if git ls-remote -t --exit-code "${_git_repo}" "zfs-${_staging_ver}" > /dev/null; then
+    _git_branch="tag=zfs-${_staging_ver}"
+else
+    _git_branch="branch=${_git_branch}"
+fi
 
 pkgname=${_pkgname}-utils-staging-git
-pkgver=2.2.2.r73.ge6ca28c970
+pkgver=2.2.3.r0.gc883088df8
 pkgrel=1
 pkgdesc="Userspace utilities for the Zettabyte File System (release staging branch)."
 arch=("i686" "x86_64" "aarch64")
@@ -17,7 +25,7 @@ url="https://zfsonlinux.org/"
 license=('CDDL-1.0')
 optdepends=('python: for arcstat/arc_summary/dbufstat')
 conflicts=("${_pkgname}-utils")
-source=("${_pkgname}::git+${_git_repo}#branch=${_git_branch}"
+source=("${_pkgname}::git+${_git_repo}#${_git_branch}"
         "zfs-node-permission.conf"
         "zfs.initcpio.install"
         "zfs.initcpio.hook")
