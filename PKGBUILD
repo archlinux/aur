@@ -2,12 +2,11 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts-bnx2x-2.5g
-pkgver=6.6.17
+pkgver=6.6.18
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
 arch=(x86_64)
-license=(GPL2)
 makedepends=(
   bc
   cpio
@@ -37,22 +36,22 @@ validpgpkeys=(
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('ee7650996ba75aa29fe66f309b413097f249a03e7001f2a41128c7c95205226a'
+sha256sums=('4e43d8c5fba14f7c82597838011648056487b7550fd83276ad534559e8499b1d'
             'SKIP'
             'd655669179109ae8e801a259c35dbe442ca67a49b9ceb6ca3ef0e56f48149a7d'
             '21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889'
             '2f23be91455e529d16aa2bbf5f2c7fe3d10812749828fc752240c21b2b845849'
             '6400a06e6eb3a24b650bc3b1bba9626622f132697987f718e7ed6a5b8c0317bc'
             '17d8a31e96dfbf5225b12efc35dc757cc129d4d00741b9781b9cd24b1d57f2ab'
-            '12878cccad92eb418bb872375f689cbee656ad8c785ef3e2f1cd9edd6a4d4187')
-b2sums=('6713c390edf4a91fea8a50202bb0204e372673b66cf4987dd52412e7a63a90a09807f23363afbc4b52b11d2df2969e5e950d8d27dbb19bf2b1ac0bb5cbb6b456'
+            '26b55bd9f0704615c15a994fdd61f0df8c99d26f9ee97f605155df4d070eba34')
+b2sums=('516f2b4d1c3023265a844b632cd4246bc99ed07b69d01d9d9366ded1001170f2b41f07d199d470d24dce9519148a52943b8bbc2d9c7797f6a2716d85ca85c91d'
         'SKIP'
         '94fd2e2fa31da0ce9d04e639b0fafc37128ad2f01f8ee38708c7128fdc1568e491aca9a8296316b0736f134dc7697b573e8203018d92c1e9b6ff40648501607a'
         '02a10396c92ab93124139fc3e37b1d4d8654227556d0d11486390da35dfc401ff5784ad86d0d2aa7eacac12bc451aa2ff138749748c7e24deadd040d5404734c'
         '5dc21a7a6f0b840e6a671dcf09a865e42f0e2c000d5e45d3f3202c02946a8ab2207858d0b2ef1004648b8c2963efb428298b263c8494be806dfc9b6af66d5413'
         'ba6ebe349b3757411364a9ba2deaa30a8d71a247d518c159385977c2b4782771bda4edfc96bd954808617c9ba984d832471b63c11f5bd6003369bfe4051df31f'
         '55a20d84c052c9de3e36514a36689238f970f7956e679a425efbff6ef668fbc56ea096ff2b000f3629ea8ec32cdbcbafc44acd27e4a9dffaa885237811ddc558'
-        '21bdb260305bb2a5896b3860784c91f59a76644a200c6811ac64ae86ef72b0c0e3130a3fb32145b423ea232ddfc6cb2e4ca6dd1ef7624da3af25de71ae714ba4')
+        '282ca8bae3c266f2a69861c272bc084825f51c71bf6e1684d7e8362c402bb38e00ae4e02c693303e335d69c832851159ca45f4d37926fccb1b600e313161fce7')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -91,6 +90,50 @@ build() {
 
 _package() {
   pkgdesc="The $pkgdesc kernel and modules with 2.5G patch for bnx2x module"
+  license=(
+    'Apache-2.0 OR MIT'
+
+    'BSD-2-Clause OR GPL-2.0-or-later'
+
+    BSD-3-Clause
+    'BSD-3-Clause OR GPL-2.0-only'
+    'BSD-3-Clause OR GPL-2.0-or-later'
+    BSD-3-Clause-Clear
+
+    GPL-1.0-or-later
+    'GPL-1.0-or-later OR BSD-3-Clause'
+
+    GPL-2.0-only
+    'GPL-2.0-only OR Apache-2.0'
+    'GPL-2.0-only OR BSD-2-Clause'
+    'GPL-2.0-only OR BSD-3-Clause'
+    'GPL-2.0-only OR CDDL-1.0'
+    'GPL-2.0-only OR Linux-OpenIB'
+    'GPL-2.0-only OR MIT'
+    'GPL-2.0-only OR MPL-1.1'
+    'GPL-2.0-only OR X11'
+    'GPL-2.0-only WITH Linux-syscall-note'
+
+    GPL-2.0-or-later
+    'GPL-2.0-or-later OR BSD-2-Clause'
+    'GPL-2.0-or-later OR BSD-3-Clause'
+    'GPL-2.0-or-later OR MIT'
+    'GPL-2.0-or-later OR X11'
+    'GPL-2.0-or-later WITH GCC-exception-2.0'
+
+    ISC
+
+    LGPL-2.0-or-later
+    'LGPL-2.1-only'
+    'LGPL-2.1-only OR BSD-2-Clause'
+
+    LGPL-2.1-or-later
+
+    MIT
+    MPL-1.1
+    X11
+    Zlib
+  )
   depends=(
     coreutils
     initramfs
@@ -126,10 +169,67 @@ _package() {
 
   # remove build link
   rm "$modulesdir"/build
+
+  # licenses
+  install -vDm 644 LICENSES/deprecated/{GPL-1.0,ISC,Linux-OpenIB,X11,Zlib} -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -vDm 644 LICENSES/preferred/{BSD,MIT}* -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -vDm 644 LICENSES/exceptions/* -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel with 2.5G patch for bnx2x module"
+  license=(
+    BSD-3-Clause
+    'BSD-3-Clause OR GPL-2.0-only'
+
+    GPL-1.0-or-later
+    'GPL-1.0-or-later WITH Linux-syscall-note'
+
+    GPL-2.0-only
+    'GPL-2.0-only OR Apache-2.0'
+    'GPL-2.0-only OR BSD-2-Clause'
+    'GPL-2.0-only OR BSD-3-Clause'
+    'GPL-2.0-only OR CDDL-1.0'
+    'GPL-2.0-only OR Linux-OpenIB'
+    'GPL-2.0-only OR Linux-OpenIB OR BSD-2-Clause'
+    'GPL-2.0-only OR MIT'
+    'GPL-2.0-only OR MPL-1.1'
+    'GPL-2.0-only OR X11'
+    'GPL-2.0-only WITH Linux-syscall-note'
+    '(GPL-2.0-only WITH Linux-syscall-note) AND MIT'
+    '(GPL-2.0-only WITH Linux-syscall-note) OR BSD-2-Clause'
+    '(GPL-2.0-only WITH Linux-syscall-note) OR BSD-3-Clause'
+    '(GPL-2.0-only WITH Linux-syscall-note) OR CDDL-1.0'
+    '(GPL-2.0-only WITH Linux-syscall-note) OR Linux-OpenIB'
+    '(GPL-2.0-only WITH Linux-syscall-note) OR MIT'
+
+    GPL-2.0-or-later
+    'GPL-2.0-or-later OR BSD-2-Clause'
+    'GPL-2.0-or-later OR BSD-3-Clause'
+    'GPL-2.0-or-later OR MIT'
+    'GPL-2.0-or-later WITH Linux-syscall-note'
+    '(GPL-2.0-or-later WITH Linux-syscall-note) OR BSD-3-Clause'
+    '(GPL-2.0-or-later WITH Linux-syscall-note) OR MIT'
+    'LGPL-2.0-or-later OR BSD-2-Clause'
+    'LGPL-2.0-or-later WITH Linux-syscall-note'
+
+    ISC
+
+    'LGPL-2.0-or-later WITH Linux-syscall-note'
+    'LGPL-2.0-or-later OR BSD-2-Clause'
+
+    LGPL-2.1-only
+    'LGPL-2.1-only OR BSD-2-Clause'
+    'LGPL-2.1-only OR MIT'
+    'LGPL-2.1-only WITH Linux-syscall-note'
+
+    LGPL-2.1-or-later
+    'LGPL-2.1-or-later OR BSD-2-Clause'
+    'LGPL-2.1-or-later WITH Linux-syscall-note'
+
+    MIT
+    Zlib
+  )
   depends=(pahole)
 
   cd $_srcname
@@ -208,6 +308,11 @@ _package-headers() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
+
+  # licenses
+  install -vDm 644 LICENSES/deprecated/{ISC,Linux-OpenIB,X11,Zlib} -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -vDm 644 LICENSES/preferred/{BSD*,MIT} -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -vDm 644 LICENSES/exceptions/* -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 
