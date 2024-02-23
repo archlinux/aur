@@ -4,6 +4,13 @@
 ## Unreleased
 
 
+## 1.3.0
+### Added
+- python 3.10 and 3.11
+### Removed
+- python 3.6 and 3.7
+
+
 ## 1.2.1
 ### Changed
 - reverted pinning of click version, now pinned again at >= 5
