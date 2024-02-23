@@ -4,11 +4,11 @@
 pkgname=cotp-git
 _pkgname=${pkgname%-git}
 pkgver=1.4.5.r1.g16963ad
-pkgrel=1
+pkgrel=2
 pkgdesc='Trustworthy, encrypted, command-line TOTP/HOTP authenticator app with import functionality'
 arch=(x86_64)
 url="https://github.com/replydev/$_pkgname"
-license=(GPL3)
+license=(GPL-3.0-only)
 depends=(gcc-libs # libgcc_s.so
          glibc) # libc.so libm.so
 makedepends=(cargo
