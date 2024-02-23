@@ -1,0 +1,14 @@
+pkgbase = grub-theme-bsol-git
+	pkgdesc = Grub2 blue-screen-of-life theme
+	pkgver = 0+7.g998cb90
+	pkgrel = 1
+	url = https://github.com/harishnkr/bsol
+	install = grub-bsol-theme.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = sh
+	source = git+https://github.com/harishnkr/bsol
+	md5sums = SKIP
+
+pkgname = grub-theme-bsol-git
