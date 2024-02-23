@@ -1,7 +1,7 @@
 pkgbase = libkscreen5
 	pkgdesc = KDE screen management software
 	pkgver = 5.27.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	groups = plasma
@@ -16,7 +16,6 @@ pkgbase = libkscreen5
 	depends = kconfig5
 	depends = libkscreen>=6.0
 	conflicts = libkscreen<6.0
-	replaces = libkscreen<6.0
 	source = https://download.kde.org/stable/plasma/5.27.10/libkscreen-5.27.10.tar.xz
 	source = https://download.kde.org/stable/plasma/5.27.10/libkscreen-5.27.10.tar.xz.sig
 	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
