@@ -1,0 +1,26 @@
+pkgbase = nitroshare
+	pkgdesc = LAN file sender application, designed to make transferring files from one device to another extremely simple
+	pkgver = 0.3.4
+	pkgrel = 6
+	url = https://nitroshare.net
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt5-tools
+	depends = hicolor-icon-theme
+	depends = python
+	depends = qhttpengine
+	depends = qmdnsengine
+	depends = qt5-svg
+	optdepends = nemo-python: integration with Nemo
+	optdepends = python-caja: integration with Caja
+	optdepends = python-nautilus: integration with Nautilus
+	source = https://github.com/nitroshare/nitroshare-desktop/archive/0.3.4/nitroshare-0.3.4.tar.gz
+	source = nitroshare.appdata.xml
+	source = qt-5.11.patch
+	sha256sums = 29874e5909c29211a3c9e13f8c0f49b901ec2996e5d60d80af80d2fb80c3d7ec
+	sha256sums = 199d7b6d510e15483ca3c995083d764762a88144a2d6230467496e5e6b28bba5
+	sha256sums = e2a8417f36a5df37c5fb34c1a371f86b0059f48bf6dd588fc776ca7c38a67cd5
+
+pkgname = nitroshare
