@@ -100,6 +100,6 @@ done
   chmod 600 "${pkgdir}/var/lib/setroubleshoot/email_alert_recipients"
   chmod 750 "${pkgdir}/etc/audit/plugins.d/"
   
-  # SETroubleshootD requires an audit event socket to function
-  sudo sed -i 's/active = no/active = yes/g' /etc/audit/plugins.d/af_unix.conf
+  echo SETroubleshootD requires an audit event socket to function, you might want to execute the following command to enable it
+  echo sudo sed -i 's/active = no/active = yes/g' /etc/audit/plugins.d/af_unix.conf
 }
