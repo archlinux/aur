@@ -2,7 +2,7 @@
 _base=astra-toolbox
 pkgname=python-${_base}
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="MATLAB and Python toolbox of high-performance GPU primitives for 2D and 3D tomography"
 arch=(x86_64)
 url="https://github.com/astra-toolbox/astra-toolbox"
@@ -10,13 +10,16 @@ license=(GPL3)
 depends=(python-numpy python-scipy python-six boost)
 makedepends=(python-setuptools cython)
 source=(https://github.com/astra-toolbox/astra-toolbox/archive/refs/tags/v${pkgver}.tar.gz
-	fix-python-install-prefix.patch)
+	fix-python-install-prefix.patch
+	Fix-numpy.int-deprecation.patch)
 sha512sums=('676d5bfa24f40c855cce6333052a829339a84b83665d432f7942d05e81f87c943bb10ed34c3b02903e35c0e039e103a4f18679306f51e24528c965ab5d806375'
-            '5c21c3d293d2ae140d7216f3c52c9a4a31b4c39047da0a3c97e954a17678446556d508b4e3020bc426f0591af6323929843d4d32c585058ffd2285a32f65f84f')
+            '5c21c3d293d2ae140d7216f3c52c9a4a31b4c39047da0a3c97e954a17678446556d508b4e3020bc426f0591af6323929843d4d32c585058ffd2285a32f65f84f'
+            '9eb08ac40f04926df019e3bd65cf1ba34f86c02f0af7ad0f6bf1dca758eec1b9c884f402b13288f0ed8e9d11c573f80778caa178517db7a64c5226ad06f10592')
 prepare() {
   cd ${_base}-${pkgver}
 # astra does not honor the installation prefix by default
   patch -p1 -i ../fix-python-install-prefix.patch
+  patch -p1 -i ../Fix-numpy.int-deprecation.patch
 }
 
 build() {

@@ -1,0 +1,28 @@
+From c597f99ed3036d5a2b74469e59534fc27f040f7e Mon Sep 17 00:00:00 2001
+From: Alexander Skorikov <alexander.skorikov@gmail.com>
+Date: Tue, 15 Aug 2023 14:25:19 +0200
+Subject: [PATCH] Fix numpy.int deprecation
+
+Fixes #396
+---
+ python/astra/matrix_c.pyx | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/python/astra/matrix_c.pyx b/python/astra/matrix_c.pyx
+index d23349d..577607f 100644
+--- a/python/astra/matrix_c.pyx
++++ b/python/astra/matrix_c.pyx
+@@ -72,8 +72,8 @@ cdef int csr_matrix_to_astra(data,CSparseMatrix *mat) except -1:
+         mat.m_pfValues[i] = csrD.data[i]
+ 
+ cdef astra_to_csr_matrix(CSparseMatrix *mat):
+-    indptr = np.zeros(mat.m_iHeight+1,dtype=np.int)
+-    indices = np.zeros(mat.m_plRowStarts[mat.m_iHeight],dtype=np.int)
++    indptr = np.zeros(mat.m_iHeight+1,dtype=int)
++    indices = np.zeros(mat.m_plRowStarts[mat.m_iHeight],dtype=int)
+     data = np.zeros(mat.m_plRowStarts[mat.m_iHeight])
+     for i in range(mat.m_iHeight+1):
+         indptr[i] = mat.m_plRowStarts[i]
+-- 
+2.43.2
+
