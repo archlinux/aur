@@ -3,7 +3,7 @@
 
 pkgname=('ocis')
 pkgver=4.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A file sync & share platform designed to scale"
 arch=('aarch64' 'x86_64')
 url="https://github.com/owncloud/ocis"
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('go' 'pnpm')
 backup=('etc/ocis.env')
 
-source=("https://github.com/owncloud/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/owncloud/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
         "go.mk.patch"
         "Makefile.patch"
         "ocis.env"

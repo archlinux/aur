@@ -1,17 +1,16 @@
 pkgbase = ocis
 	pkgdesc = A file sync & share platform designed to scale
 	pkgver = 4.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/owncloud/ocis
 	arch = aarch64
 	arch = x86_64
 	license = APACHE
-	makedepends = git
 	makedepends = go
 	makedepends = pnpm
 	depends = glibc
 	backup = etc/ocis.env
-	source = https://github.com/owncloud/ocis/archive/refs/tags/v4.0.6.tar.gz
+	source = ocis-4.0.6.tar.gz::https://github.com/owncloud/ocis/archive/refs/tags/v4.0.6.tar.gz
 	source = go.mk.patch
 	source = Makefile.patch
 	source = ocis.env
@@ -27,4 +26,3 @@ pkgbase = ocis
 	sha512sums = bfe32b2f19afd84bf6d3048ca9aadba758372bf8ec0b73cf6abdcd2e4dfe059c8e84a9db1cc7c0d1a5a88742f2c4445e268abcbc55a479670842cfd945c8d096
 
 pkgname = ocis
-
