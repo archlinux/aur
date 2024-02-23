@@ -4,7 +4,7 @@ _pkgname=Tithree
 pkgver=1.3.2
 _electronversion=25
 _nodeversion=18
-pkgrel=1
+pkgrel=2
 pkgdesc="Tutor's Time Tally.An app for tallying tutor's time spent on tutoring"
 arch=('any')
 url="https://github.com/wpwwhimself/tithree"
@@ -13,10 +13,9 @@ conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
-    'python'
+    'python>=3'
     'python-setuptools'
     'nodejs'
-    'make'
 )
 makedepends=(
     'gendesk'
@@ -24,6 +23,7 @@ makedepends=(
     'npm'
     'git'
     'gcc'
+    'base-devel'
 )
 options=('!strip')
 source=(
@@ -31,7 +31,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -41,7 +41,7 @@ _ensure_local_nvm() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -f -n -q --categories "Utility" --name "${_pkgname}" --exec "${pkgname} %U"
@@ -50,7 +50,10 @@ build() {
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
     sed "4i\  \"homepage\": \"${url}\"," -i package.json
     sed "s|target: 'deb',|target: 'appImage'|g" -i .electron-builder.config.js
     convert "${srcdir}/${pkgname}.git/packages/renderer/src/assets/t3_color.svg" "${srcdir}/${pkgname}.git/buildResources/icon.png"
