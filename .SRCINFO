@@ -1,15 +1,15 @@
 pkgbase = r-strap
 	pkgdesc = Stratigraphic Tree Analysis for Palaeontology
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=strap
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-2.0-or-later
 	depends = r-ape
 	depends = r-geoscale
 	depends = r-pbapply
 	source = https://cran.r-project.org/src/contrib/strap_1.6-0.tar.gz
-	sha256sums = a
+	md5sums = f1d88fdaaff0570774ddc741b35a0f4e
+	b2sums = cd6dacede41922d2c8de9812ffdb011a50ac3a6de70e8a0c2bdcf7013e0b58df11e84c646313826f22f3d11622e7d0200991282b6541e2ba4cdb2d4395c0bfc2
 
 pkgname = r-strap
