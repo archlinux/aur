@@ -1,31 +1,35 @@
 # Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 # Contributor: Martin Kostolný <clearmartin at zoho dot com>
 
 pkgname=plasma5-applets-active-window-control
 _pkgname=plasma-applet-active-window-control
-pkgver=1.7.0
-pkgrel=1
-pkgdesc='Plasma 5 applet for controlling currently active window'
-url="https://github.com/kotelnik/${_pkgname}"
+pkgver=1.7.3
+pkgrel=4
+pkgdesc="Plasma applet for controlling the currently active window"
 arch=(i686 x86_64)
+url="https://github.com/kotelnik/${_pkgname}"
 license=(GPL2)
 depends=(plasma-workspace qt5-graphicaleffects)
 makedepends=(extra-cmake-modules)
-conflicts=("${_pkgname-*}" plasma-applet-active-window-control-git plasma5-applets-active-window-control-git)
-source=("https://github.com/kotelnik/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('d31317c6a3a7a4c89b46271194ba3d6abdaf93f8c0627da27f0a0223d8b12b74')
+source=($pkgname-$pkgver.tar.gz::"https://github.com/kotelnik/${_pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('f4662560bffd57155081fb8bb0d82c118204f578c7c681b442e365b6c7d169a9')
+
+prepare() {
+  mkdir -p build
+}
 
 build() {
-  cd "${_pkgname}-${pkgver}"
-
-  cmake \
+  cd build
+  cmake ../"${_pkgname}-${pkgver}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DBUILD_TESTING=OFF
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
-  make install DESTDIR="${pkgdir}"
+  cd build
+  make DESTDIR="$pkgdir" install
 }
