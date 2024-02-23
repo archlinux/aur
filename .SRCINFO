@@ -1,7 +1,7 @@
 pkgbase = python-inltk
 	pkgdesc = Natural Language Toolkit for Indic Languages aims to provide out of the box support for various NLP tasks for Indic languages.
 	pkgver = 0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/goru001/inltk
 	arch = x86_64
 	license = MIT
@@ -12,6 +12,9 @@ pkgbase = python-inltk
 	depends = python
 	depends = python-pytorch
 	depends = python-fastai
+	depends = python-sentencepiece
+	depends = python-aiohttp
+	depends = python-scikit-learn
 	source = https://github.com/goru001/inltk/archive/refs/tags/0.9.tar.gz
 	sha256sums = 8f58a354fc68179465c86b3fb2dbbe1d0a6e35213eb789321a22ed39ffbf9a8d
 
