@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=hoverfly-bin
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight service virtualization/API simulation tool for developers and testers"
 arch=(
     'aarch64'
@@ -11,7 +11,7 @@ arch=(
 )
 url='https://hoverfly.io'
 _ghurl="https://github.com/SpectoLabs/hoverfly"
-license=('Apache')
+license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_bundle_linux_arm64.zip")
