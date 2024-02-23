@@ -2,13 +2,13 @@
 
 pkgname="monado-vulkan-layers-git"
 _dirname="vulkan-layers"
-pkgver=0.9.0.9.git.cb3f7fe
+pkgver=0.9.0.29.git.ae43cdc
 pkgrel=1
 pkgdesc='Optional Vulkan Layers for Monado.'
 arch=('i686' 'x86_64')
 url='https://gitlab.freedesktop.org/monado/utilities/vulkan-layers'
 depends=('gcc-libs')
-makedepends=('vulkan-headers' 'cmake')
+makedepends=('vulkan-headers' 'cmake' 'git' 'ninja')
 optdepends=()
 provides=("monado-vulkan-layers")
 
