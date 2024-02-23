@@ -1,7 +1,7 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
-pkgver=6.0.50
+pkgver=6.0.70
 pkgrel=1
 pkgdesc="A proprietary music streaming service"
 arch=('any')
@@ -15,15 +15,13 @@ source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/art
     deezer
     remove-kernel-version-from-user-agent.patch
     avoid-change-default-texthtml-mime-type.patch
-    fix-isDev-usage.patch
     start-hidden-in-tray.patch
     quit.patch)
-sha256sums=('ce54b12254ba86db6ab1041920de4c94c2952fc5e1b90686707f1cfb44dc4322'
+sha256sums=('90e13fdcd8776e9463fcfa3dab7e5801c3ee1d805ae6942ff7e32a286800b1c3'
             'c16cf96707c6c047e5f2ec336ce3c639ecf2fc207ff9db365b17363d13380d2c'
             'b464dbfc0d426730259ce2abc660960ecc6a73bbef838b8fbbd15deb2f5dce53'
             'ec87bbcc5a615c61c78bf117889d5b697a2174150722b1318205ad1c903286f2'
             '3566f3aa580b35a5af7f31831c36d579576a47286103a9b621051a8a38ac3180'
-            '36352e7ecb03c5a3ae7e6dde01e8033b28ae8d22529b5bc53cca0a05b75b97ac'
             '505bc0363443f8a921361efb5f204a15afa7773e57fa386c2221ba1609b896c8'
             '78d26c08c234594eeba0ac68c95612a8c01ea4026f34e0141e8a997287b0af1b')
 
