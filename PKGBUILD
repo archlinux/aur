@@ -2,7 +2,7 @@
 
 pkgname=kjots
 pkgver=5.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A note taking application for KDE'
 url='https://www.kde.org/applications/utilities/kjots/'
 arch=(x86_64)
@@ -29,6 +29,7 @@ depends=(akonadi
          libakonadi5
          qt5-base)
 makedepends=(extra-cmake-modules
+             kcmutils5
              kdoctools5)
 source=(https://download.kde.org/stable/$pkgname/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
 sha256sums=('0f10f26aa1967ff99eaf247fdfd890971052e75fe2598eb6384cc89cd4b36092'

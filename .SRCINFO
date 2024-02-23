@@ -1,11 +1,12 @@
 pkgbase = kjots
 	pkgdesc = A note taking application for KDE
 	pkgver = 5.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.kde.org/applications/utilities/kjots/
 	arch = x86_64
 	license = GPL
 	makedepends = extra-cmake-modules
+	makedepends = kcmutils5
 	makedepends = kdoctools5
 	depends = akonadi
 	depends = akonadi-notes5
