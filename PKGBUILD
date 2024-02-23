@@ -1,7 +1,7 @@
 # Maintainer: Snowstorm64
 
 pkgname=ares-emu
-pkgver=135
+pkgver=136
 pkgrel=1
 pkgdesc="Cross-platform, open source, multi-system emulator by Near and Ares team, focusing on accuracy and preservation."
 arch=(x86_64 i686)
@@ -13,7 +13,7 @@ provides=(ares-emu)
 conflicts=(ares-emu)
 install=ares.install
 source=("https://github.com/ares-emulator/ares/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("efcba1a953879438d26e673496602802168920988f7618239143234a5d5267cf")
+sha512sums=("6b7637d2c441dce8f321c57b6b52a9640b24e8a9762257c479dfd358f4e1d510ea5c5388e6946479d7f2c0afb5fac5ed1461bd52aae08b56b48d03618012e87b")
 
 build() {
   # If you want to build with gcc, edit to use g++ instead of clang++
