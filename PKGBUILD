@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=akuse
 _pkgname=Akuse
-pkgver=0.5.0
+pkgver=0.6.0
 _electronversion=25
 pkgrel=1
 pkgdesc="Simple and easy to use anime streaming desktop app without ads."
