@@ -9,7 +9,7 @@ url="https://github.com/XandrCopyrighted/Cazic/"
 license=('MIT')
 
 source=(
-	"https://github.com/XandrCopyrighted/Cazic/releases/download/0.0.6/cazic.tar.gz"
+	"https://github.com/XandrCopyrighted/Cazic/releases/download/0.0.6/Cazic_Linux.tar.gz"
 	"https://raw.githubusercontent.com/XandrCopyrighted/Cazic/main/LICENSE"
 	"cazic.desktop"
 	"https://raw.githubusercontent.com/XandrCopyrighted/Cazic/main/assets/app-icon/32x32.png"
