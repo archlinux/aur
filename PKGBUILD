@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=horen
-pkgver=0.9.1
+pkgver=0.9.5
 _electronversion=28
 pkgrel=1
 pkgdesc="A music player by Electron"
@@ -20,7 +20,7 @@ makedepends=(
     'imagemagick'
 )
 source=(
-    "${pkgname}.git::git+${url}.git#tag=beta"
+    "${pkgname}.git::git+${url}.git#tag=perfect-lyric"
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'

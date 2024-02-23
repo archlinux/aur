@@ -1,6 +1,6 @@
 pkgbase = horen
 	pkgdesc = A music player by Electron
-	pkgver = 0.9.1
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = https://github.com/horenjs/horen
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = horen
 	makedepends = imagemagick
 	depends = electron28
 	conflicts = horen
-	source = horen.git::git+https://github.com/horenjs/horen.git#tag=beta
+	source = horen.git::git+https://github.com/horenjs/horen.git#tag=perfect-lyric
 	source = horen.sh
 	sha256sums = SKIP
 	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
