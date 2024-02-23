@@ -5,11 +5,7 @@ pkgbase = live-plus-plus-bin
 	url = https://github.com/dipelta/live-plus-plus
 	arch = x86_64
 	license = MIT
-	makedepends = squashfuse
 	depends = electron24
-	depends = gtk2
-	depends = dbus-glib
-	depends = libdbusmenu-glib
 	provides = live-plus-plus=2.3.6
 	conflicts = live-plus-plus
 	conflicts = live++
@@ -17,7 +13,7 @@ pkgbase = live-plus-plus-bin
 	source = LICENSE-2.3.6::https://raw.githubusercontent.com/dipelta/live-plus-plus/v2.3.6/LICENSE
 	source = live-plus-plus.sh
 	sha256sums = a8ca3c43067a4b9c7e9daaa612e11af380906efca6f14bd2bb99cbcd16f4d5c6
-	sha256sums = 8c66ee49d3a6ff7eb085eb7d896bdea56da0cac5c97bd60735847901d006f748
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = f44595b913c3d20e62170b0f5fb4ea1467345ec5e6ca1d8041ad536554adfe78
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = live-plus-plus-bin
