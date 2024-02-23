@@ -1,0 +1,17 @@
+pkgbase = waywe
+	pkgdesc = Dynamic wallpaper on wayland, based on wallpaper engine
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ZreXoc/waywe
+	arch = any
+	license = GPL3
+	makedepends = npm
+	depends = nodejs
+	depends = tmux
+	depends = mpvpaper-git
+	depends = socat
+	noextract = waywe-0.1.0.tgz
+	source = https://registry.npmjs.org/waywe/-/waywe-0.1.0.tgz
+	sha256sums = cb249edd8ed54ba3903a106fde0078e31a7b2b4cc2fdd46bc2709c312f2a2e62
+
+pkgname = waywe
