@@ -1,7 +1,7 @@
-# Maintainer: snowiemischief <clairdesoleil123@gmail.com>
+# Maintainer: Lift <clairdesoleil123@gmail.com>
 
 pkgname=aqua-eap
-pkgver=233.13135.75
+pkgver=233.14475.33
 pkgrel=1
 epoch=1
 pkgdesc="A powerful IDE for test automation by JetBrains."
@@ -13,7 +13,7 @@ optdepends=()
 
 source=("https://download-cdn.jetbrains.com/aqua/aqua-${pkgver}.tar.gz"
 	"aqua-eap.desktop")
-sha256sums=('2831fa44927f3ac3a88e6161ca6a410c65bc91548fb6135756e217b954c5acfa'
+sha256sums=('7fbc5565208acd0f4428c10823778c0d2bfd192e4cfce74ee2788477dacad5e0'
 	        'f246e1ca271a49160a31107491c8b6b09a93ae4352ca928df3b16663967aa599')
 
 package() {
