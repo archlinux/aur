@@ -1,7 +1,7 @@
 pkgbase = monkey
 	pkgdesc = Lightweight and powerful web server
 	pkgver = 1.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/monkey/monkey
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = monkey
 	depends = mbedtls
 	options = !emptydirs
 	source = monkey-1.7.3.tar.gz::https://github.com/monkey/monkey/archive/refs/tags/v1.7.3.tar.gz
+	source = 0001-fix_include.patch
 	sha1sums = 3ffb76235aec734188fbc41f97ef661cf05cf9ab
+	sha1sums = 9346e0c2ad44a9019e461b42f4a2ab860584236a
 
 pkgname = monkey
