@@ -9,6 +9,7 @@ url="https://github.com/QuantStack/ipysheet"
 license=('MIT')
 checkdepends=()
 depends=('python-ipywidgets')
+makedepends=(python-jupyter-packaging python-setuptools)
 optdepends=('python-pandas')
 options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
