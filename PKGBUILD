@@ -34,5 +34,4 @@ package() {
   cd "lcms2-${pkgver}"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/lcms2/COPYING"
 }
