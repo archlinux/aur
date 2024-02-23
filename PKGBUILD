@@ -19,7 +19,7 @@ depends=(
   'python-typing_extensions>=4.8.0'
   )
 makedepends=(
-	'python-pdm'
+  'python-pdm'
   'python-hatchling'
   'python-build'
   'python-installer'
