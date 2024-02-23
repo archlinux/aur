@@ -2,8 +2,8 @@
 # Contributor: Rudy Matela <rudy@matela.com.br>
 
 pkgname=python-crepes
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.6.2
+pkgrel=1
 pkgdesc='Python support for conformal classifiers, regressors, and predictive systems'
 arch=(any)
 url='https://crepes.readthedocs.io/'
@@ -21,7 +21,7 @@ makedepends=(
 )
 _archive="${pkgname#python-}-$pkgver"
 source=("${_url}/archive/v${pkgver}/${_archive}.tar.gz")
-sha256sums=('71bda04e598f2ed3e0053ff308595d6bc96b353b110ab316bc18db0ab8e2b880')
+sha256sums=('c2bf25f8dbfbadc6c8b0770f2fb6d1ffadb99afab7a14ea8c62f0e0d6a001a8c')
 
 package() {
 	cd $_archive
