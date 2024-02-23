@@ -1,7 +1,7 @@
 pkgbase = wxwidgets-light
 	pkgdesc = wxWidgets suite for Base, Qt5 and GTK3 toolkits (GNOME/GStreamer free!)
-	pkgver = 3.2.2.1
-	pkgrel = 5
+	pkgver = 3.2.4
+	pkgrel = 2
 	url = http://wxwidgets.org
 	arch = x86_64
 	license = custom:wxWindows
@@ -34,8 +34,9 @@ pkgbase = wxwidgets-light
 	makedepends = cairo
 	makedepends = gdk-pixbuf2
 	makedepends = wayland
+	makedepends = cython
 	options = debug
-	source = wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v3.2.2.1
+	source = wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v3.2.4
 	source = git+https://github.com/wxWidgets/nanosvg.git
 	sha256sums = SKIP
 	sha256sums = SKIP

@@ -7,8 +7,8 @@ pkgname=(
 #   'wxwidgets-gtk4-light'
   'wxwidgets-qt5-light'
 )
-pkgver=3.2.2.1
-pkgrel=5
+pkgver=3.2.4
+pkgrel=2
 pkgdesc="wxWidgets suite for Base, Qt5 and GTK3 toolkits (GNOME/GStreamer free!)"
 arch=('x86_64')
 url='http://wxwidgets.org'
@@ -44,6 +44,7 @@ makedepends=(
   'cairo'
   'gdk-pixbuf2'
   'wayland'
+  'cython'
 )
 source=(
   "wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v${pkgver}"
@@ -58,12 +59,8 @@ options=('debug')
 prepare() {
   cd wxwidgets
 
-  # Fix https://github.com/wxWidgets/wxWidgets/issues/22750
-  git cherry-pick 19100f63ca0e19234010230bcd854b53d4989f7b -m 1
-  # Fix undefined symbols in Qt build
-  git cherry-pick ed510012bac97f6ad1f3b776d1b13c37a987e83e -m 1
-  # Fix use grep -F instead egrap
-  git cherry-pick 418f3083f04f2d3a1a095ef1e8f650c1de57e128 -m 1
+  git cherry-pick ed510012bac97f6ad1f3b776d1b13c37a987e83e -m 1 # Fix undefined symbols in Qt build
+  git cherry-pick 8ea22b5e92bf46add0b20059f6e39a938858ff97 -m 1 # Avoid crash with GTK3 if console program is using a GUI wxApp
 
   git config submodule.3rdparty/nanosvg.url "${srcdir}/nanosvg"
   git -c protocol.file.allow=always submodule update --init \
@@ -179,10 +176,10 @@ pkgdesc="wxWidgets Qt5 Toolkit (GNOME/GStreamer free!)"
     'sdl2'
     'gcc-libs'
     'wxwidgets-common-light' 'libwx_baseu-3.2.so' 'libwx_baseu_xml-3.2.so'
-    'libglvnd'               'libOpenGL.so'
-    'libjpeg-turbo'          'libjpeg.so'
-    'libmspack'              'libmspack.so'
-    'libtiff'                'libtiff.so'
+    'libglvnd' 'libOpenGL.so'
+    'libjpeg-turbo' 'libjpeg.so'
+    'libmspack' 'libmspack.so'
+    'libtiff' 'libtiff.so'
   )
   provides=(
     'wxwidgets-qt5'
@@ -201,7 +198,7 @@ pkgdesc="wxWidgets Qt5 Toolkit (GNOME/GStreamer free!)"
   )
   conflicts=('wxwidgets-qt5')
 
-  make -C build-qt5 DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build-qt5
 
   mv "${pkgdir}/usr/bin/wx-config" "${pkgdir}/usr/bin/wx-config-qt"
   rm -fr "${pkgdir}/usr/bin/"wxrc{,-3*}
@@ -229,19 +226,19 @@ package_wxwidgets-gtk3-light() {
     'libxtst'
     'sdl2'
     'wxwidgets-common-light' 'libwx_baseu-3.2.so' 'libwx_baseu_xml-3.2.so'
-    'libglvnd'               'libEGL.so' 'libOpenGL.so'
-    'cairo'                  'libcairo.so'
-    'fontconfig'             'libfontconfig.so'
-    'gtk3'                   'libgdk-3.so' 'libgtk-3.so'
-    'gdk-pixbuf2'            'libgdk_pixbuf-2.0.so'
-    'glib2'                  'libgio-2.0.so' 'libglib-2.0.so' 'libgobject-2.0.so'
-    'gspell'                 'libgspell-1.so'
-    'libjpeg-turbo'          'libjpeg.so'
-    'libmspack'              'libmspack.so'
-    'libnotify'              'libnotify.so'
-    'pango'                  'libpango-1.0.so' 'libpangocairo-1.0.so' 'libpangoft2-1.0.so'
-    'libtiff'                'libtiff.so'
-    'wayland'                'libwayland-client.so' 'libwayland-egl.so'
+    'libglvnd' 'libEGL.so' 'libOpenGL.so'
+    'cairo'  'libcairo.so'
+    'fontconfig'  'libfontconfig.so'
+    'gtk3' 'libgdk-3.so' 'libgtk-3.so'
+    'gdk-pixbuf2' 'libgdk_pixbuf-2.0.so'
+    'glib2' 'libgio-2.0.so' 'libglib-2.0.so' 'libgobject-2.0.so'
+    'gspell' 'libgspell-1.so'
+    'libjpeg-turbo' 'libjpeg.so'
+    'libmspack' 'libmspack.so'
+    'libnotify' 'libnotify.so'
+    'pango' 'libpango-1.0.so' 'libpangocairo-1.0.so' 'libpangoft2-1.0.so'
+    'libtiff' 'libtiff.so'
+    'wayland' 'libwayland-client.so' 'libwayland-egl.so'
   )
   provides=(
     'wxwidgets'
@@ -262,7 +259,7 @@ package_wxwidgets-gtk3-light() {
   optdepends=('webkit2gtk: for webview support')
   conflicts=('wxwidgets-gtk3')
 
-  make -C build-gtk3 DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build-gtk3
 
   ln -s wx-config "${pkgdir}/usr/bin/wx-config-gtk3"
   rm -fr "${pkgdir}/usr/bin/"wxrc{,-3*}
@@ -284,11 +281,11 @@ package_wxwidgets-gtk4-light() {
   depends=(
     'sdl2'
     'wxwidgets-common-light' 'libwx_baseu-3.2.so' 'libwx_baseu_xml-3.2.so'
-    'gspell'                 'libgspell-1.so'
-    'gtk4'                   'libgtk-4.so'
-    'libmspack'              'libmspack.so'
-    'libnotify'              'libnotify.so'
-    'libtiff'                'libtiff.so'
+    'gspell' 'libgspell-1.so'
+    'gtk4' 'libgtk-4.so'
+    'libmspack' 'libmspack.so'
+    'libnotify' 'libnotify.so'
+    'libtiff'  'libtiff.so'
 )
   optdepends=('webkit2gtk: for webview support')
   provides=(
@@ -297,7 +294,7 @@ package_wxwidgets-gtk4-light() {
   )
   conflicts=('wxwidgets-gtk4')
 
-  make -C build-gtk4 DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build-gtk4
 
   ln -s wx-config "${pkgdir}/usr/bin/wx-config-gtk4"
   rm -fr "${pkgdir}/usr/bin/"wxrc{,-4*}
@@ -321,11 +318,11 @@ package_wxwidgets-common-light() {
     'bash'
     'zlib'
     'xz'
-    'curl'      'libcurl.so'
-    'expat'     'libexpat.so'
-    'glib2'     'libglib-2.0.so' 'libgobject-2.0.so'
-    'xz'        'liblzma.so'
-    'pcre2'     'libpcre2-32.so'
+    'curl' 'libcurl.so'
+    'expat' 'libexpat.so'
+    'glib2' 'libglib-2.0.so' 'libgobject-2.0.so'
+    'xz' 'liblzma.so'
+    'pcre2' 'libpcre2-32.so'
     'libsecret' 'libsecret-1.so'
   )
   provides=(
@@ -341,10 +338,10 @@ package_wxwidgets-common-light() {
     'wxwidgets-common'
   )
 
-  make -C build-qt5 DESTDIR="${pkgdir}" install
-  make -C build-gtk3 DESTDIR="${pkgdir}" install
-#   make -C build-gtk4 DESTDIR="${pkgdir}" install
-  make -C build-base DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build-qt5
+  DESTDIR="${pkgdir}" cmake --install build-gtk3
+#   DESTDIR="${pkgdir}" cmake --install build-gtk4
+  DESTDIR="${pkgdir}" cmake --install build-base
 
   mv "${pkgdir}/usr/bin/wx-config" "${pkgdir}/usr/bin/wx-config-base"
   rm -fr "${pkgdir}/usr/lib/"*qt*.so*
