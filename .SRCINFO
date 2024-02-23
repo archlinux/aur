@@ -16,9 +16,11 @@ pkgbase = tripwire-git
 	backup = etc/tripwire/twpol.txt
 	backup = etc/tripwire/twcfg.txt
 	source = tripwire-open-source::git+https://github.com/Tripwire/tripwire-open-source.git#branch=master
+	source = 0001-Fix-build-issue-on-latest-Arch.patch
 	source = twpol.txt
 	source = twcfg.txt
 	sha256sums = SKIP
+	sha256sums = 3c8168bebe40e6f28db65929dbaa0891dfb43271b8fc6b7eee7f95e029e3ca67
 	sha256sums = 4da49a185fee570e0a7bdc7acaadc0d2bf7f4c488057e93e60b2a2819807cd9d
 	sha256sums = 3aaa567f7a0a4efce3ac127344a9b795c5494c9d011e27a7d454d632ba3d533d
 

@@ -18,9 +18,11 @@ conflicts=('tripwire')
 backup=('etc/tripwire/twpol.txt' 'etc/tripwire/twcfg.txt')
 install=$pkgname.install
 source=($_name::git+https://github.com/Tripwire/tripwire-open-source.git#branch=master
+        0001-Fix-build-issue-on-latest-Arch.patch
         twpol.txt
         twcfg.txt)
 sha256sums=('SKIP'
+            '3c8168bebe40e6f28db65929dbaa0891dfb43271b8fc6b7eee7f95e029e3ca67'
             '4da49a185fee570e0a7bdc7acaadc0d2bf7f4c488057e93e60b2a2819807cd9d'
             '3aaa567f7a0a4efce3ac127344a9b795c5494c9d011e27a7d454d632ba3d533d')
 
@@ -32,6 +34,10 @@ pkgver() {
 
 prepare() {
   cd ${_name}
+
+  # Include commit https://github.com/fleminga/tripwire-open-source/commit/b5222a243ca7f69e4eb0da7349cc3a1c9911fe41
+  #git am "${srcdir}"/0001-Fix-build-issue-on-latest-Arch.patch
+  patch -Np1 -i "${srcdir}"/0001-Fix-build-issue-on-latest-Arch.patch
 
   # adjust paths
   sed -i 's#./install/install.cfg#./install.cfg#' installer/install.sh
