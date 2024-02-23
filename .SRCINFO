@@ -1,0 +1,14 @@
+pkgbase = rename-gru-git
+	pkgdesc = A cli tool to batch rename all the files in the provided directory written in rust
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/G1ya777/GRU
+	arch = any
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	provides = rename-gru
+	source = git+https://github.com/G1ya777/GRU
+	sha256sums = SKIP
+
+pkgname = rename-gru-git
