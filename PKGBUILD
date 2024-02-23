@@ -24,7 +24,7 @@ build(){
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    make BUILD_VERSION="v${pkgver}" release
+    make -j1 BUILD_VERSION="v${pkgver}" release
 
     sed -i 's|/usr/local/bin|/usr/bin|' "${pkgname}-v${pkgver}/config/crowdsec.service"
 }
