@@ -2,7 +2,7 @@
 
 _pkgname="hypridle"
 pkgname="${_pkgname}-git"
-pkgver=0.1.0.r1.gf6dd1ef9
+pkgver=0.1.0.r12.gb85722e4
 pkgrel=1
 pkgdesc="Hyprland's idle daemon"
 arch=(any)
@@ -14,7 +14,6 @@ source=("${_pkgname}::git+https://github.com/hyprwm/hypridle.git")
 conflicts=("${_pkgname}")
 provides=(hypridle)
 sha256sums=('SKIP')
-options=(!makeflags !buildflags !strip)
 
 pkgver() {
   	cd ${_pkgname}
@@ -26,7 +25,7 @@ pkgver() {
 build() {
 	cd "${srcdir}/${_pkgname}"
 	cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -S . -B ./build
-    cmake --build ./build --config Release --target hypridle -j`nproc 2>/dev/null || getconf NPROCESSORS_CONF`
+    cmake --build ./build --config Release --target hypridle
 }
 
 package() {
