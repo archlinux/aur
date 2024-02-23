@@ -3,7 +3,7 @@
 # Contributor: Myles English <myles at rockhead dot biz>
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgver=3.20.4
-pkgrel=2
+pkgrel=3
 pkgname=petsc
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
@@ -91,10 +91,11 @@ check() {
   cd ${srcdir}/${pkgname}-${pkgver}
 
   export OMPI_MCA_plm_rsh_agent=sh
-  if [ -z "$(ldconfig -p | grep libcuda.so.1)" ]; then
-    PYTHONPATH=${srcdir}/tmp/${_install_dir}/lib:${PYTHONPATH} make check
+  export OMPI_MCA_opal_warn_on_missing_libcuda=0
+  if [ -z "$(ldconfig -p | grep libamdhip64.so)" ] || [ -z "$(ldconfig -p | grep libucc.so)" ]; then
+    echo "skipping tests"
   else
-    export OMPI_MCA_opal_warn_on_missing_libcuda=0
+    PYTHONPATH=${srcdir}/tmp/${_install_dir}/lib:${PYTHONPATH} make check
   fi
 }
 
