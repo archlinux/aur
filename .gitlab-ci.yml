@@ -14,7 +14,7 @@ stages:
 find_release_job:
   stage: find_release
   script: 
-    -su -c "cd ${CI_PROJECT_DIR} && ./find_release.sh" - builduser
+    - su -c "cd ${CI_PROJECT_DIR} && ./find_release.sh" - builduser
   artifacts:
     paths:
       - PKGBUILD
@@ -25,7 +25,7 @@ find_release_job:
 test_job:
   stage: test
   script: 
-    - -su -c "cd ${CI_PROJECT_DIR} && ./test" - builduser
+    - su -c "cd ${CI_PROJECT_DIR} && ./test" - builduser
   dependencies:
     - find_release_job
   only:
