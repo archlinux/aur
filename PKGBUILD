@@ -1,44 +1,47 @@
-# Maintainer: Meow King <mr.meowking@anche.no>
-_pkgname='hiddify-next'
+# Maintainer: Aryan Ghasemi <t.me/gnuphile>
 pkgname="hiddify-next-appimage"
-pkgver="0.13.6"
+pkgver="0.16.4.dev"
+_pkgname='hiddify'
+_archive="$_pkgname-$pkgver"
 pkgrel=1
-pkgdesc="Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH etc. It’s an open-source, secure and ad-free. "
+pkgdesc="Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH etc. It’s open-source, secure and ad-free. "
 arch=('any')
 # Appimage should contains exclude "strip" option
 options=(!strip)
 url="https://github.com/hiddify/hiddify-next"
 license=('custom:CC-BY-NC-SA-4.0')
 conflicts=('hiddify-next')
-source=("https://github.com/hiddify/hiddify-next/releases/download/v${pkgver}/hiddify-linux-x64.zip"
-        "hiddify-next-appimage.desktop"
+noextract=( "${_archive}.AppImage" )
+source=(
+        "${_archive}.AppImage::https://github.com/hiddify/hiddify-next/releases/download/v${pkgver}/Hiddify-Linux-x64.AppImage"
+        "hiddify.desktop"
         "LICENSE.md")
-sha256sums=('eb1493185e386923ca940078d3b7175d24e8fe860bb87615a3da3d077400cc45'
-            '480389ec46cb38845fda0430c8bd4732732722b1ec62681f608b240ede1e0aea'
+sha256sums=('a2d37e6c4f0775c630f8bfa5008648847b100cb5066955bf006c047a708bb805'
+            '10412d168e2aeec3ab1c4c34b0ca8e480ea4ebb124b12f63580b677e5fb8859b'
             'f609d73370ca62925ba8c796afeeb7fb42f4a1569124f84cb25b7026c026d78a')
 
 prepare() {
-    sed -i "s/VERSION_PLACEHOLDER/${pkgver}/" hiddify-next-appimage.desktop
-    mv ./hiddify-linux-x64.AppImage "./${_pkgname}.AppImage"
-    ./"${_pkgname}".AppImage --appimage-extract
+    chmod +x "${_archive}.AppImage"
+    ./"${_archive}".AppImage --appimage-extract
 }
 
 package() {
     # License
-    install -Dm644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
     
+    # desktop file
+    install -Dm644 "${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+
     # Appimage
-    install -Dm755 "${srcdir}/${_pkgname}.AppImage" "${pkgdir}/opt/${pkgname}/${_pkgname}.AppImage"
+    install -Dm755 "${srcdir}/${_archive}.AppImage" "${pkgdir}/opt/${_pkgname}/${_pkgname}.AppImage"
     
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
-    ln -sf "/opt/${pkgname}/${_pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+    ln -s "/opt/${_pkgname}/${_pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
     
     # logo
-    mkdir -p ${pkgdir}/usr/share/icons/
-    chmod 755 ${pkgdir}/usr/share/icons
-    cp -r "${srcdir}/squashfs-root/usr/share/icons/hicolor" "${pkgdir}/usr/share/icons/"
+    cd "${srcdir}/squashfs-root"
+    cp -r --parent "usr/share/icons/hicolor" "${pkgdir}/"
+#    find "${srcdir}/squashfs-root/usr/share/icons/ -type f -exec install -Dm644 {} test/{} \;
     
-    # desktop file
-    install -Dm644 "${srcdir}/hiddify-next-appimage.desktop" -t "${pkgdir}/usr/share/applications/hiddify-next-appimage.desktop"
 }
