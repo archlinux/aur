@@ -16,7 +16,7 @@ sha512sums=('676d5bfa24f40c855cce6333052a829339a84b83665d432f7942d05e81f87c943bb
 prepare() {
   cd ${_base}-${pkgver}
 # astra does not honor the installation prefix by default
-  patch -p1 -i ../0001-fix-python-install-prefix.patch
+  patch -p1 -i ../fix-python-install-prefix.patch
 }
 
 build() {
