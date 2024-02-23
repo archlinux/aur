@@ -10,7 +10,7 @@ arch=(
     riscv64
     x86_64)
 url="https://gitee.com/xinligg/xwm"
-license=('GPL-2.0-only')
+license=('GPL-2.0-or-later')
 groups=()
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
@@ -38,7 +38,11 @@ makedepends=(
     git
     sed)
 checkdepends=()
-optdepends=()
+optdepends=(
+    'gnome-terminal: The GNOME Terminal Emulator'
+    'rxvt-unicode: Unicode enabled rxvt-clone terminal emulator (urxvt)'
+    'konsole: KDE terminal emulator'
+)
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 options=()
