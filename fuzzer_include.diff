@@ -1,0 +1,12 @@
+diff --git a/test/fuzzer/fuzzer.cc b/test/fuzzer/fuzzer.cc
+index 4d0d2ca3ebe..a639a340bdd 100644
+--- a/test/fuzzer/fuzzer.cc
++++ b/test/fuzzer/fuzzer.cc
+@@ -8,6 +8,7 @@
+ #include <stdlib.h>
+ 
+ #include <vector>
++#include <cstring>
+ 
+ extern "C" int LLVMFuzzerInitialize(int* argc, char*** argv);
+ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size);
