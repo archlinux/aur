@@ -4,7 +4,7 @@ _electronversion=28
 _pkgname=hhd-ui
 pkgname=$_pkgname
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Configurator interface for Handheld Daemon."
 arch=('x86_64')
 # provides=("${_pkgname}")
@@ -15,16 +15,14 @@ depends=("electron$_electronversion")
 optdepends=('hhd: a version of Handheld Daemon to connect to (also works over the network).')
 makedepends=('asar' 'libxss' 'npm')
 _srcname=hhd-ui-$pkgver
-source=("https://github.com/hhd-dev/hhd-ui/archive/refs/tags/v${pkgver}.tar.gz" "hhd-ui.desktop" "hhd-ui.sh")
-sha512sums=('68114c667d6b5aad5e77b2679709480402f5538bff79ff9f770aacbf45ec1b1133112e6b969ba494417ca0691f4f1084b5c0db22b36500ce8216dd15866d2bfd'
-            '598e77e42769adf69b78b39e784c24bb53202039316309c216ab1bb17d55f1820dadd453234085118aa3563d1593105b6287d793e58c5246bb71ec260103da28'
-            '3f3a0b215d241b2c9f37efa3ce66adf1f1f58dc651853c924ac44c597b6b6b813548af4aba58c3c030ccbb56264bf4bb5e3d2b5a7be5098650e2581adf70645a')
+source=("https://github.com/hhd-dev/hhd-ui/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('68114c667d6b5aad5e77b2679709480402f5538bff79ff9f770aacbf45ec1b1133112e6b969ba494417ca0691f4f1084b5c0db22b36500ce8216dd15866d2bfd')
 
 prepare() {
 	export ELECTRONVERSION=$_electronversion
-	sed -i "s|@electronversion@|${ELECTRONVERSION}|" "$srcdir/hhd-ui.sh"
 
   cd $_srcname
+	sed -i "s|@electronversion@|${ELECTRONVERSION}|" "./aur/hhd-ui.sh"
   npm ci
 	sed -i "s|"version": "1.0.0"|"version": "${pkgver}"|" "package.json"
   cd ./electron
@@ -45,13 +43,13 @@ build() {
 
 package() {
   # Install the app
-  cd $_srcname/electron
+  cd $srcdir/$_srcname/electron
 	install -vDm644 ./dist/linux-unpacked/resources/app.asar -t "${pkgdir}/usr/lib/${_pkgname}"
 	install -vDm644 ./package.json -t "${pkgdir}/usr/lib/${_pkgname}"
 	install -vDm644 ./icon/android-chrome-512x512.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
 
   # Install the icons
-  cd $_srcname
+  cd $srcdir/$_srcname
 	install -vDm644 ./art/library_capsule.png "${pkgdir}/usr/share/applications/${pkgname}/library_capsule.png"
 	install -vDm644 ./art/library_hero.png "${pkgdir}/usr/share/applications/${pkgname}/library_hero.png"
 	install -vDm644 ./art/library_logo.png "${pkgdir}/usr/share/applications/${pkgname}/library_logo.png"
