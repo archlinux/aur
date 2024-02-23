@@ -1,7 +1,7 @@
 image: manjarolinux/base:latest
 
 before_script:
-  - pamac checkupdates -a && pamac install --no-confirm sed jq pacman
+  - pamac checkupdates -a && pamac install --no-confirm sed jq pacman binutils
   - useradd -m builduser
   - passwd -d builduser
   - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
