@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=blockcluster
-_pkgver=4.5.4
+_pkgver=4.5.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ makedepends=(
   r-rcpp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('770f2c4c8c69a0d5b560138a3cb1d9e3')
-b2sums=('948a3a023e0f39686c37e0dcbb1c21ce67eb03f60164c959c11d7ba6a537da5397b7f01b5fbf320d897dd34b46c1a832d55c90ad790540d95bb6fb56932d4e26')
+md5sums=('229a6a56d3653a9c8cdbb7837da8a561')
+b2sums=('5cc00e76666906771c730b3008533097fc9a40b3c1944735ad444ba93d01dcc819c32495bb4785ca9d1fe52c09ae542850ac1dcfc119a206b01c482e90a4372f')
 
 build() {
   mkdir build
