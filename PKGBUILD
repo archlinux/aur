@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=watchman-bin
-pkgver=2024.01.15.00
+pkgver=2024.02.12.00
 pkgrel=1
 pkgdesc="An inotify-based file watching and job triggering command line utility"
 url="https://facebook.github.io/watchman/"
@@ -15,8 +15,12 @@ options=(!strip)
 install=watchman.install
 
 # https://github.com/facebook/watchman/releases
-source=("https://github.com/facebook/watchman/releases/download/v$pkgver/watchman-v$pkgver-linux.zip")
-b2sums=('f4a1ec28a361fdc1e4c05128fdf110839d5785ed26abc8d8cf5c8b032e01f273fa9c6dfb0cffebebd4d484cf69ed80e49d720c7d37d007567c8cbbf9b7b80f20')
+source=(
+  "https://github.com/facebook/watchman/releases/download/v$pkgver/watchman-v$pkgver-linux.zip"
+  "watchman-LICENSE::https://github.com/facebook/watchman/raw/v$pkgver/LICENSE"
+)
+b2sums=('59d8dce013a9d9be29380bb0c4263780b3301fa240fb7e1e18983394d8abda5c727b32882ffff700ff7baa18ea2a89ab1ebf228fa34a2f625c012c3a1b5ba104'
+        'b9c1c046dc0cd3c6bbf977f3e6d3f448a5fa26ac4d27aa3e2bf1c1a2f6bf97484a79f76c19bf5d5b3cf92400f951015a5036dfd8e183a2fdb0634ce992b12469')
 
 prepare() {
   cd watchman-v$pkgver-linux
@@ -86,6 +90,8 @@ StandardError=inherit
 [Install]
 WantedBy=default.target
 END
+
+  install -Dm644 ../watchman-LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set sw=2 et:
