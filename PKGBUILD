@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tiny-rdm
 _pkgname="Tiny RDM"
-pkgver=1.1.8
+pkgver=1.1.9
 _nodeversion=18
 pkgrel=1
 pkgdesc="A modern lightweight cross-platform Redis desktop manager"
@@ -18,8 +18,7 @@ makedepends=(
     'nvm'
     'npm'
     'git'
-    'go'
-    'wails'
+    'go>=1.21'
     'gcc'
 )
 options=(
@@ -38,6 +37,13 @@ _ensure_local_nvm() {
 build() {
     _ensure_local_nvm
     cd "${srcdir}/${pkgname}.git"
+    export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/.npm_cache"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
     npm install --prefix ./frontend
     export CGO_ENABLED=1
     export GOCACHE="${srcdir}/go-build"
