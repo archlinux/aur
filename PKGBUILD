@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=elephicon
-pkgver=2.9.0
+pkgver=2.9.1
 _electronversion=29
 _nodeversion=18
 pkgrel=1
