@@ -1,0 +1,16 @@
+pkgbase = scu-git
+	pkgdesc = System fetch utility is aimed at informativeness
+	pkgver = 1.4.0.r7.ga29c401
+	pkgrel = 1
+	url = https://gitlab.com/omnitix/scu
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = rust
+	options = !debug
+	options = !lto
+	source = scu::git+https://gitlab.com/omnitix/scu.git
+	b2sums = SKIP
+
+pkgname = scu-git
