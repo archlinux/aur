@@ -1,10 +1,10 @@
 pkgbase = southweather-bin
 	pkgdesc = Open weather app for linux
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://southweather.wlorigin.cf/
 	arch = x86_64
-	license = custom:ISC
+	license = ISC
 	depends = electron27
 	provides = southweather=1.0.2
 	conflicts = southweather
@@ -13,6 +13,6 @@ pkgbase = southweather-bin
 	source = southweather.sh
 	sha256sums = 9ca4dfb7463140774ad7e816909da4a4699d1cd21c2933e3e4edf6bdd5988457
 	sha256sums = d3c7942b781e1616c13d183bf30ccb1e52837b11d53a7f97ae4b65d85fcd3bac
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = southweather-bin
