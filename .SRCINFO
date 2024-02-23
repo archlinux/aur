@@ -1,0 +1,14 @@
+pkgbase = python-attrdict3
+	pkgdesc = A dict with attribute-style access
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/pirofti/AttrDict3
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-six
+	source = https://files.pythonhosted.org/packages/source/a/attrdict3/attrdict3-2.0.2.tar.gz
+	sha256sums = 004c171ca1120cc1755701db99d7fa4944afb1e68950434efdaa542513335fe8
+
+pkgname = python-attrdict3
