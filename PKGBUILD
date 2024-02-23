@@ -43,7 +43,7 @@ build() {
 }
 
 package() {
-  provides=(
+  provides+=(
     libsemanage.so
   )
 

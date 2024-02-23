@@ -31,4 +31,5 @@ pkgbase = libsemanage
 	sha256sums = 5b0e6929428e095b561701ccdfa9c8b0c3d70dad3fc46e667eb46a85b246a4a0
 
 pkgname = libsemanage
+	provides = selinux-usr-libsemanage=3.6-2
 	provides = libsemanage.so
