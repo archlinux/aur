@@ -2,14 +2,14 @@
 
 pkgname=nghttp3-git
 pkgver=r777.36579fd
-pkgrel=3
+pkgrel=4
 pkgdesc="HTTP/3 library written in C"
 arch=('x86_64')
 url="https://github.com/ngtcp2/nghttp3"
 license=('MIT')
 makedepends=('git')
 checkdepends=('cunit')
-provides=('nghttp3' 'libnghttp3.so')
+provides=('nghttp3' 'libnghttp3' 'libnghttp3.so')
 conflicts=('nghttp3' 'libnghttp3')
 source=('git+https://github.com/ngtcp2/nghttp3')
 md5sums=('SKIP')
