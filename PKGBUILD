@@ -17,9 +17,9 @@ sha256sums=(SKIP)
 
 _release_url='https://api.github.com/repos/astral-sh/uv/releases/latest'
 
-source_aarch64=(https://github.com/astral-sh/uv/releases/download/$pkgver/uv-aarch64-unknown-linux-gnu.tar.gz)
-source_i686=(https://github.com/astral-sh/uv/releases/download/$pkgver/uv-i686-unknown-linux-gnu.tar.gz)
-source_x86_64=(https://github.com/astral-sh/uv/releases/download/$pkgver/uv-x86_64-unknown-linux-gnu.tar.gz)
+source_aarch64=($pkgname-aarch64-$pkgver.tar.gz::https://github.com/astral-sh/uv/releases/download/$pkgver/uv-aarch64-unknown-linux-gnu.tar.gz)
+source_i686=($pkgname-i686-$pkgver.tar.gz::https://github.com/astral-sh/uv/releases/download/$pkgver/uv-i686-unknown-linux-gnu.tar.gz)
+source_x86_64=($pkgname-x86_64-$pkgver.tar.gz::https://github.com/astral-sh/uv/releases/download/$pkgver/uv-x86_64-unknown-linux-gnu.tar.gz)
 
 sha256sums_aarch64=('51e3791eff68824daf1360631aa2f11f98f3728d5d342cadef191f53e9321c61')
 sha256sums_i686=('3fed572fce343c86737e3912f86dce47a26611b07c86b2ff3be0f4936861a1d3')
