@@ -2,7 +2,7 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-pip-api
-pkgver=0.0.31
+pkgver=0.0.33
 pkgrel=1
 pkgdesc="An unofficial, importable pip API"
 url="https://github.com/di/pip-api"
@@ -28,7 +28,7 @@ source=(
 )
 
 sha512sums=(
-  '2ebace64e4ca0fbd0c38cdfa39e34655ce45fc209e73bf76b8eb605389ea48893ae891b1a136b6ce29ac7c6291b5192a49cf69b298d909d91ca19c77e385ac0e'
+  '4f711de7a05209b0aa57ef39fa1e507a171f8b807de0915fdacaef9b0a943e3ba03edb190d6b0a804c3a54e2575c501abe4ab3f27ad50b4b912c7703cb0144e3'
   '41e55d61912e6f010d1087f8883cc2ed1796caaf11a54be950afc5b409ad3ce1f99d7fa9980b83e6b1a4725f9fc402cc213a8f42d71e6f824f9a8fa0442c8d79'
 )
 
