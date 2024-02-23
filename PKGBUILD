@@ -6,7 +6,7 @@ pkgbase=linux-firmware-git
 pkgname=(linux-firmware-whence-git linux-firmware-git amd-ucode-git
          linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}-git
 )
-pkgver=20231215.c156e6be
+pkgver=20240220.97b693d2
 pkgrel=1
 pkgdesc="Firmware files for Linux"
 url="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
@@ -81,6 +81,8 @@ package_linux-firmware-git() {
   rm usr/lib/firmware/mrvl/prestera/mvsw_prestera_fw_arm64-v4.1.img.zst
 
   # split
+  _pick amd-ucode usr/lib/firmware/amd-ucode
+
   _pick linux-firmware-nfp usr/lib/firmware/netronome
   _pick linux-firmware-nfp usr/share/licenses/${pkgname%-git}/LICENCE.Netronome
 
@@ -106,6 +108,8 @@ package_amd-ucode-git() {
   provides=("${pkgname%-git}=$pkgver")
   pkgdesc="Microcode update image for AMD CPUs"
   license=(custom)
+
+  mv -v amd-ucode/* "${pkgdir}"
 
   install -Dt "${pkgdir}/boot" -m644 amd-ucode.img
 
