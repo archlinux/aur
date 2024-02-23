@@ -2,14 +2,14 @@
 
 pkgname=libnexus
 pkgver=4.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="libnexus provides functionality for loading/saving the nexus file format for scientific data"
 url="http://www.nexusformat.org/"
 arch=('x86_64' 'i686')
 license=('GPL')
 depends=('hdf5-cpp-fortran')
 optdepends=('hdf4: hdf4 file format support')
-source=("$pkgname::git://github.com/nexusformat/code.git#tag=v${pkgver}")
+source=("$pkgname::git+https://github.com/nexusformat/code.git#tag=v${pkgver}")
 sha1sums=('SKIP')
 
 build() {
