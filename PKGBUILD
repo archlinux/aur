@@ -1,4 +1,5 @@
-# Maintainer: azk <aphexv@gmail.com>
+# Maintainer: Tristan Kenis <k7p2k9eeb@mozmail.com>
+# Contributor: azk <aphexv@gmail.com>
 # Contributor: Andreas Wagner <andreas.wagner@lowfatcomputing.org>
 
 pkgname=teensy-loader-cli-git
