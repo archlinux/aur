@@ -4,7 +4,7 @@
 # Contributor: hagabaka
 
 pkgname='peazip-qt5'
-pkgver=9.7.0
+pkgver=9.7.1
 pkgrel=1
 pkgdesc='Free file archiver utility, open, extract RAR TAR ZIP archives'
 license=('GPL3')
@@ -16,10 +16,8 @@ makedepends=('lazarus' 'git')
 provides=('peazip')
 conflicts=('peazip')
 options=('!strip')
-source=("git+https://github.com/peazip/PeaZip.git#tag=$pkgver"
-"help-$pkgver.pdf::https://github.com/peazip/PeaZip/releases/download/$pkgver/peazip_help.pdf")
-sha512sums=('SKIP'
-            'ea5addcd29c8fdf71e79e8a4338044ef21a20bbf65fa2067db779d1974ee61546c6e531a40da606c1775ae10a74d77fb71b40d3960f9b120e73e90394da61ee3')
+source=("git+https://github.com/peazip/PeaZip.git#tag=$pkgver")
+sha512sums=('SKIP')
 
 build() {
   cd "$srcdir/PeaZip/peazip-sources/dev"
@@ -43,9 +41,8 @@ package() {
   install -Dm644 peazip.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
   install -Dm644 peazip.desktop -t "$pkgdir/usr/share/applications"
 
-  # help & res
+  # res
   install -d "$pkgdir/usr/share/peazip"
-  install -Dm644 "$srcdir/help-$pkgver.pdf" "$pkgdir/usr/share/peazip/peazip_help.pdf"
   cd "$srcdir/PeaZip/peazip-sources/res/share"
   cp -r icons lang themes "$pkgdir/usr/share/peazip/"
   install -d "$pkgdir/usr/lib/peazip/res"
