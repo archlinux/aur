@@ -1,6 +1,6 @@
 pkgbase = opendeck-git
 	pkgdesc = OpenDeck is a desktop application that provides Stream Deck-like functionality, implementing the Elgato Stream Deck SDK for cross-compatibility.
-	pkgver = r33.c318407
+	pkgver = r35.779f82a
 	pkgrel = 1
 	url = https://github.com/ninjadev64/OpenDeck
 	arch = x86_64
@@ -10,8 +10,11 @@ pkgbase = opendeck-git
 	makedepends = npm
 	makedepends = cargo-tauri
 	makedepends = dpkg
+	depends = hidapi
+	depends = webkit2gtk
 	provides = opendeck
 	conflicts = opendeck
+	options = !lto
 	source = opendeck::git+https://github.com/ninjadev64/OpenDeck#branch=tauri-rewrite
 	source = 50-elgato.rules
 	sha256sums = SKIP
