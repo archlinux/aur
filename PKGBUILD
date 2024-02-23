@@ -44,7 +44,7 @@ check() {
 
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer ${_base}-${pkgver}/python/dist/*.whl
-  mpirun -n 3 test-env/bin/python -m pytest ${_base}-${pkgver}/python/test/unit \
+  mpirun --oversubscribe -n 3 test-env/bin/python -m pytest ${_base}-${pkgver}/python/test/unit \
     -k 'not coordinate_derivative and not dofmap and not finite_element and not test_form and not local_assembler and not function and not vector and not parameters and not local_solver_dg[shared_facet] and not solve_local[shared_facet] and not elliptic_eqn_on_intersecting_surface and not bcs and not incremental_assembly[mesh_factory0] and not incremental_assembly[mesh_factory1] and not lu_solver[PETSc] and not layout_and_pattern_interface[PETSc-element0] and not layout_and_pattern_interface[PETSc-element1] and not layout_and_pattern_interface[PETSc-element2] and not layout_and_pattern_interface[PETSc-element3] and not shared_entities[shared_vertex-mesh_factory8] and not snes_solver[5-PETSc] and not newton_solver[5-PETSc] and not computed_norms_against_references and not lu_solver_reuse[PETSc] and not matrix' \
     --ignore=${_base}-${pkgver}/python/test/unit/la/test_vector.py \
     --ignore=${_base}-${pkgver}/python/test/unit/function/test_function_space.py \
