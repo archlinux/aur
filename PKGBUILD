@@ -8,14 +8,14 @@ _rlottie_commit=8c69fc20cf2e150db304311f1233a4b55a8892d7
 _lz4_commit=5ff839680134437dbf4678f3d0c7b371d84f4964
 _lib_crl_commit=078006d29af0002e6cd8c61a405cdeaf65b37142
 _lib_rpl_commit=8b1015d1bd57ef03fcd07a3eeddd3f5a9b688ade
-_lib_base_commit=bc78a03b12b40ee6264ad2235465197b89588288
+_lib_base_commit=888a19075b569eda3d18a977543320823b984ae0
 _codegen_commit=afed06a4c04d1a1cf7cfce4faca273e1f574462e
-_lib_ui_commit=48565bd5633aa448d6fef600c50eed950ec91e10
+_lib_ui_commit=2d3938788255619ca885a3828dee75aa2d4dd04d
 _lib_lottie_commit=1a700e5a0d7c3e2f617530354ff2a47c5c72bb4a
 _lib_tl_commit=11c8ae47ff9c9d69b0470700fff9ed924a97acd3
 _lib_spellcheck_commit=96543c1716d3790ef12bdec6b113958427710441
 _lib_storage_commit=0971b69ca90f1697ef81276d9820dcd6d26de4ac
-_cmake_helpers_commit=a32690808bd91c15206524eb7fd3a346bf51b149
+_cmake_helpers_commit=a46279fcfe69ebcc806bb31679ccece5f7c07508
 _cmake_cppgir_commit=748a04795616f792f6fe91edf24620f78a2ef65c
 _cmake_cppgir_expected_lite_commit=95b9cb015fa17baa749c2b396b335906e1596a9e
 _cmake_implib_so_commit=0ddaa715d2572b100f8248c0fa4450fbf895be14
@@ -29,7 +29,7 @@ _hime_commit=9b3e6f9ab59d1fe4d9de73d3bf0fed7789f921c5
 _fcitx5_qt_commit=413747e761b13bacc5ebd01e20810c64c2f3b6dc
 _lib_webrtc_commit=5493af61df5cb90a30b686296521961763a009e0
 _tgcalls_commit=b9fa8b84d8abe741183f157218ac038c596a54a5
-_lib_webview_commit=75cc4c04d28a09172b1df596913c09161aaede35
+_lib_webview_commit=4fce8b1971721da739619acf36da0fe79d614a23
 _swift_corelibs_libdispatch_commit=ee39300b12a77efd3f2f020e009e42d557adbb29
 _plasma_wayland_protocols_commit=78fc6ee77334a147986f01c6d3c6e1b99af1a333
 _wayland_protocols_commit=4624cfaaf563cd7be5e2e2087c8de6d3a48ea867
@@ -40,7 +40,7 @@ _wayland_commit=b2649cb3ee6bd70828a17e50beb16591e6066288
 _libprisma_commit=adf35ba88160777ce5b8d122630852394c58279f
 
 pkgname=ayugram-desktop
-pkgver=4.14.13
+pkgver=4.15
 pkgrel=1
 pkgdesc="Desktop Telegram client with good customization and Ghost mode."
 arch=("x86_64")
@@ -102,13 +102,13 @@ source=(
     "wayland-protocols-$_wayland_protocols_commit.tar.gz::https://github.com/gitlab-freedesktop-mirrors/wayland-protocols/archive/$_wayland_protocols_commit.tar.gz"
     "xxHash-$_xxhash_commit.tar.gz::https://github.com/Cyan4973/xxHash/archive/$_xxhash_commit.tar.gz"
 )
-sha256sums=('7a2e7498585f59ddaca07645523bce300e1eaedfe15e0eed1c9f07cf0df06d01'
-            'ab608aa53f089f76dc806673d6d3300d72849a598d1df4e5fdaa1a6f77e894cd'
+sha256sums=('c1fc388e43328e9b4728a99b1dcd62100e331a9aff718a09fbd6880a606d7d38'
+            '3699666503ea841b3d1ea511d4f431dcdba3a821eb91919c86df3addf4f70ef6'
             '15a9981ab5e6a01f301609017aee11e000c22880d38b3be4e3da58c338f9b2fc'
             '47e0816b744e7aa4dfbd5862676110773737f7ecab3afdbb4f33af223ad50e32'
             '7238a966ee6b93fdbf2669736ddd35a6103967eb9d5369af8b740bff2401615c'
             'c7083f7621d873d0734b1a68c8370faf45b44c04aa7465c63a3b1a48ff536057'
-            '09895518ce0c0449f6f3a486832284c9e4dbf91f5906639671b11eec380e8131'
+            '8244838549aa6180b47e9ae8b498fbf5ce8ec54369c88e21090d0182d00719b4'
             '4fed49839e82c934def32d5890770d34815f0a94a87868ba6848379cc841f110'
             'c9aa4e32eb5e475d0826154055ff4749c07bb46d83b12f1641d31557e944a16f'
             '855997c49f5f7263b8270662d03c8a1d5ba1868664a150e0f837679e2629a5ab'
@@ -116,9 +116,9 @@ sha256sums=('7a2e7498585f59ddaca07645523bce300e1eaedfe15e0eed1c9f07cf0df06d01'
             '63cdb4f69550921320ecc3bd1ec88080ff081b3a11f62ba00148dbbb5bb5e7b4'
             '22a1bfb607c1f6475834e774d9030f54161371dfbcc86108511bc63cbaaae24e'
             '996fdbcc6f99f44963c867a701bf8ab4179f32f3536ed32895a009ab569a4d66'
-            '98a8ad561c034038aa4dc2bf0843e4ec0db62fed35507bdef164d9556ac92591'
+            '743a0a4ec2c3cc11a5a614ee2a12191dd7a78c80e6de8858116c245c74827568'
             'a8f696fcf6bc85b0e9bfa898f85db94267c1e3c17ee80e5d857d9fe10efec3c2'
-            '52b98bde90a7bfff79f631d1a778ab2a7a311ca1c62036e1c3142cb8e3deae01'
+            '7735beba2c8cbbc1bb4671cf94e8ae72feabb3b27c8d568ad8df5bf56e623508'
             '29bcc3c359378b83fda299ef1a0930886cb7937b893856ca476c47f90002ffa7'
             'd80795686f3e58448c7b76830bb5c40847b7eaae1996c28f0422a029b66c2bb0'
             'd0d4ea2fddcbc7d10ace2c37309feb09da87e8ce7ced6ce73592da1359f4765f'
