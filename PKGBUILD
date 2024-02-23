@@ -1,7 +1,7 @@
 # Maintainer: huggy <arch@huggy.moe>
 
 pkgname=authentik-outpost-bin
-pkgver=2023.10.7
+pkgver=2024.2.1
 pkgrel=1
 pkgdesc="authentik is an open-source Identity Provider that emphasizes flexibility and versatility."
 arch=('x86_64' 'aarch64')
@@ -12,9 +12,9 @@ license=('MIT')
 if [ "$CARCH" == "x86_64" ]; then
     _arch="amd64"
     sha512sums=(
-      4ac41c24448532a866311996deb815f2ee81e9dc2099a4b22396ec98a059ce03dd4b42a6448371e786932a90e60cc74797dbf96aa70d73f6713901c6c674a099
-      98760442ff0389af8db19d9b20c52f564d2b31171e8106f792a4ad344d3ee2126b57259d6c5a744257c2e1b932968486b7e5ba23067c73bc42b40bd05b031198
-      2f2fa87f5958219e0e85e65a97f8878673f44928b396d239f016dca2039698782496840c64cf03556d88c03c181b9f05b2111c40d2ac0dbdea3e0caf44478b02
+      af0e7fa32b61b723d97b93502f837c0f7e8bb4f691a2c4d0fd6089dfa7e08c2105078d109542d86526becaf89a296e9d653420b7b78c265849149cc52613703a
+      4facd5ad722339a270204a8ded40de035af147c4e2ac3313dec7a05158b1e4b003fcc7a30383917ea02abfaefcedb678e4fd6eaaa46eb8850d73373c72ddd30c
+      8d8fea9eed245ef9c21d9103a395bbcb88aebe72aad8aec398ebafa086a0dc115758c822efdc3599a7828c09eca1391bb37f5cd7ab88c9005031841b0e20eab3
       SKIP
       SKIP
       SKIP
@@ -23,9 +23,9 @@ if [ "$CARCH" == "x86_64" ]; then
 elif [ "$CARCH" == "aarch64" ]; then
     _arch="arm64"
     sha512sums=(
-      9672198e86560101abe65cd195b9b79172ea46c27e3a3dca55c58901f4b4c6fe225e640eb2eb16ebd79416d15b6d71ccd367e894231ed903d7056145bce4db7f
-      0ddab5e7b3a518c3c821bdaf0513122fe88f2c43cf486687a8474f38e8cf64cf5726ac65491dd572c67750a8e41ad8545b8d08911ea00c4bbd6d2cd87f21620f
-      c090da86d7393bcedfdda2c35f532a7432697298fcb190a7c5d81c74c1f60a81e318782d82723af45fcc85d61a3f7dada208bfa3b06400d46c2091337d7524dc
+      0c7baf5f2758853060ad401c6ee61bc885a344a5fe91b99f98c397a62cfc0830561cc4c0aea5233b67f05d8a07a741f8824958108ff265ab984e4f30bcbbb857
+      6b203987fc9c75356d9987027ac10614dcfa2445a519bf7932dfe7ab8ee9f90797d329c0e5c3390e2bd0204170fe12a130a9e6f553fb8bef07409e0cfa72e2ca
+      85ec4ebea124514265aea9a7a37dfd53e490f2d3832b9ba3389b460cf46fcdae4a8b5bd9a2a2d82d0b37cb6d164c8caf1e042e346753101ec221514ba2ea4637
       SKIP
       SKIP
       SKIP
@@ -37,9 +37,9 @@ else
 fi
 
 source=(
-  https://github.com/goauthentik/authentik/releases/download/version%2F${pkgver}/authentik-outpost-ldap_linux_${_arch}
-  https://github.com/goauthentik/authentik/releases/download/version%2F${pkgver}/authentik-outpost-proxy_linux_${_arch}
-  https://github.com/goauthentik/authentik/releases/download/version%2F${pkgver}/authentik-outpost-radius_linux_${_arch}
+  https://github.com/goauthentik/authentik/releases/download/version/${pkgver}/authentik-outpost-ldap_linux_${_arch}
+  https://github.com/goauthentik/authentik/releases/download/version/${pkgver}/authentik-outpost-proxy_linux_${_arch}
+  https://github.com/goauthentik/authentik/releases/download/version/${pkgver}/authentik-outpost-radius_linux_${_arch}
   authentik-outpost-ldap.service
   authentik-outpost-proxy.service
   authentik-outpost-radius.service
