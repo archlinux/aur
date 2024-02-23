@@ -3,28 +3,39 @@
 
 pkgname=x262-git
 pkgver=0.142.2633.bb887aa
-pkgrel=1
+pkgrel=2
 pkgdesc="x264 with MPEG-2 video support (GIT version)"
 arch=('x86_64')
 license=('GPL')
-depends=('zlib'
-         'bzip2'
-         'xz'
-         'sdl'
-         )
-makedepends=('git'
-             'yasm'
-             )
+depends=(
+  'gcc-libs' # libgcc_s.so libstdc++.so
+  'glibc' # libc.so libm.so
+  'zlib' 'libz.so'
+  'bzip2' 'libbz2.so'
+  'xz' 'liblzma.so'
+  'sdl12-compat' # libSDL-1.2.so
+  'libx11' # libX11.so
+  'libxcb' # libxcb-shape.so libxcb-shm.so libxcb-xfixes.so libxcb.so 
+)
+makedepends=(
+  'git'
+  'yasm'
+)
 url="https://www.videolan.org/developers/x262.html"
-source=('git+https://git.videolan.org/git/x262.git'
-        'git+https://github.com/ffmpeg/ffmpeg.git#tag=n2.7.7'
-        'git+https://github.com/FFMS/ffms2.git#tag=2.20')
+source=(
+  'git+https://git.videolan.org/git/x262.git'
+  'git+https://github.com/ffmpeg/ffmpeg.git#tag=n2.7.7'
+  'git+https://github.com/FFMS/ffms2.git#tag=2.20'
+  'mathops_fix.patch'
+)
 provides=('x262')
 conflicts=('x262')
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            )
+sha256sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'a50d7da9870a3fd801ad3a4d13d5c9b260acb094cf8bfa4afd95a54741173a7f'
+)
 
 pkgver() {
   cd x262
@@ -33,6 +44,8 @@ pkgver() {
 
 prepare() {
   mkdir -p build-{ffmpeg,ffms2}
+
+  patch -d ffmpeg -p1 -i "${srcdir}/mathops_fix.patch"
 }
 
 build() {

@@ -1,24 +1,32 @@
 pkgbase = x262-git
 	pkgdesc = x264 with MPEG-2 video support (GIT version)
 	pkgver = 0.142.2633.bb887aa
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.videolan.org/developers/x262.html
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = yasm
+	depends = gcc-libs
+	depends = glibc
 	depends = zlib
+	depends = libz.so
 	depends = bzip2
+	depends = libbz2.so
 	depends = xz
-	depends = sdl
+	depends = liblzma.so
+	depends = sdl12-compat
+	depends = libx11
+	depends = libxcb
 	provides = x262
 	conflicts = x262
 	source = git+https://git.videolan.org/git/x262.git
 	source = git+https://github.com/ffmpeg/ffmpeg.git#tag=n2.7.7
 	source = git+https://github.com/FFMS/ffms2.git#tag=2.20
+	source = mathops_fix.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = a50d7da9870a3fd801ad3a4d13d5c9b260acb094cf8bfa4afd95a54741173a7f
 
 pkgname = x262-git
-
