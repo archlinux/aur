@@ -1,0 +1,12 @@
+pkgbase = mockgen
+	pkgdesc = GoMock is a mocking framework for the Go programming language.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/uber-go/mock
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	source = https://github.com/uber-go/mock//archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 30f28caf179b14a3a4f0ed28135904728e1bf61d78ba5fc4b89a36e301dd621b
+
+pkgname = mockgen
