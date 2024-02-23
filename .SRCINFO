@@ -1,6 +1,6 @@
 pkgbase = python-eth-utils
 	pkgdesc = Common utility functions for python code that interacts with Ethereum
-	pkgver = 3.0.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/ethereum/eth-utils
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = python-eth-utils
 	depends = python-eth-hash
 	depends = python-eth-typing
 	depends = python-cytoolz
-	source = eth-utils-3.0.0.tar.gz::https://github.com/ethereum/eth-utils/archive/v3.0.0.tar.gz
-	sha512sums = 8e30abafad7e2052b88d6fac6d641e9d31f693cd775774e5d88d2711e1df3fccc18ea11e53afa6e810063b7df47f4937ecd5a57b56c63311b3b0c0f8676e660b
+	source = eth-utils-4.0.0.tar.gz::https://github.com/ethereum/eth-utils/archive/v4.0.0.tar.gz
+	sha512sums = f5404417a013b7a5590ced5fdfeae82923b2af349eb7c77d5f225a814fb65db7fa785f7a97101ef559f8138142cdb1205814be86109aff3bc9492099dd946448
 
 pkgname = python-eth-utils
