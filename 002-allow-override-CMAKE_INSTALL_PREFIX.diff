@@ -1,0 +1,13 @@
+--- gpt4all-2.7.1.orig/gpt4all-chat/CMakeLists.txt	2024-02-22 05:05:49.000000000 +0800
++++ gpt4all-2.7.1.patched/gpt4all-chat/CMakeLists.txt	2024-02-23 19:49:29.552629184 +0800
+@@ -184,7 +184,9 @@
+     PRIVATE llmodel)
+ 
+ set(COMPONENT_NAME_MAIN ${PROJECT_NAME})
+-set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/install)
++if (NOT DEFINED CMAKE_INSTALL_PREFIX)
++  set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/install)
++endif()
+ 
+ install(TARGETS chat DESTINATION bin COMPONENT ${COMPONENT_NAME_MAIN})
+ install(TARGETS llmodel DESTINATION lib COMPONENT ${COMPONENT_NAME_MAIN})

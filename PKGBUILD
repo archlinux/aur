@@ -1,8 +1,8 @@
 _kompute_hash=d1e3b0953cf66acc94b2e29693e221427b2c1f3f
-_llama_cpp_hash=315102f89109f1b67c8f89f12d98ab646685e333
+_llama_cpp_hash=b61ee89fca2038e9937317a794e28e08391b7888
 pkgname=gpt4all-chat
-pkgver=2.7.0
-pkgrel=1
+pkgver=2.7.1
+pkgrel=2
 pkgdesc="open-source LLM chatbots that you can run anywhere"
 arch=("x86_64")
 url="https://github.com/nomic-ai/gpt4all"
@@ -13,12 +13,16 @@ depends=(
 makedepends=("cmake" "shaderc" "vulkan-tools" "vulkan-headers")
 source=(
     "https://github.com/nomic-ai/gpt4all/archive/refs/tags/v$pkgver.tar.gz"
+    "001-change-binary-name.diff"
+    "002-allow-override-CMAKE_INSTALL_PREFIX.diff"
     "kompute-$_kompute_hash.tar.gz::https://github.com/nomic-ai/kompute/archive/$_kompute_hash.tar.gz"
     "llama.cpp-$_llama_cpp_hash.tar.gz::https://github.com/nomic-ai/llama.cpp/archive/$_llama_cpp_hash.tar.gz"
 )
-sha256sums=('1c44454812fd276dddbf3ead7d5cdff88de5136b80f0273d8e95386c55c1dd87'
+sha256sums=('54373cd1a83ab94626e7ebaea04b180b25d4a56d7f89f81da57d441032d6997a'
+            'd9198b1ee584becf5b06622038619511dd5b0f78a71441d034dbf7324dd1439b'
+            '4ed3904195fc4a281a016ec611d43630c44fc1aee06916f7a7fb8bc0a19905b5'
             'b47b1d8154a99304a406d564dfaad6dc91332b8bccc4ef15f1b2d2cce332b84b'
-            'af77834345ed7e8a9ca2024e59098de032060491049ef850cdc5a37be97558d4')
+            '823a3f2bcf0131a8849e72fa3cddd42844b0c9a7a3d7b31b52cd5f8eeec81e73')
 
 prepare() {
     cd "$srcdir/gpt4all-$pkgver"
@@ -39,6 +43,8 @@ prepare() {
         echo "Copying $module from $target..."
         cp -a "$srcdir/$target/"* "$module"
     done
+    patch -Np1 -i ../001-change-binary-name.diff
+    patch -Np1 -i ../002-allow-override-CMAKE_INSTALL_PREFIX.diff
 }
 build() {
     cmake -B build-chat -S "$srcdir/gpt4all-$pkgver/gpt4all-chat" \
@@ -49,12 +55,12 @@ build() {
         -DKOMPUTE_OPT_USE_BUILT_IN_FMT=OFF \
         -DKOMPUTE_OPT_USE_BUILT_IN_VULKAN_HEADER=OFF \
         -DKOMPUTE_OPT_USE_BUILT_IN_SPDLOG=OFF \
+        -DLLAMA_LTO=ON \
         -Wno-dev 
     cmake --build build-chat
 }
 package_gpt4all-chat() {
-    DESTDIR="$pkgdir" cmake --install build-chat --prefix "/usr"
-    mv "$pkgdir/usr/bin/"{,gpt4all-}chat
+    DESTDIR="$pkgdir" cmake --install build-chat
     install -Dm644 "$srcdir/gpt4all-$pkgver/gpt4all-chat/flatpak-manifest/io.gpt4all.gpt4all.desktop" \
         "$pkgdir/usr/share/applications/io.gpt4all.gpt4all.desktop"
     sed -i 's/Exec=chat/Exec=gpt4all-chat/' "$pkgdir/usr/share/applications/io.gpt4all.gpt4all.desktop"
