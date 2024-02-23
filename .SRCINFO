@@ -1,17 +1,15 @@
 pkgbase = zfs-linux-rt
-	pkgver = 2.2.2_6.6.5.16.realtime1.3
+	pkgver = 2.2.3_6.7.0.6.realtime1.1
 	pkgrel = 1
 	url = https://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-rt-headers=6.6.5.16.realtime1-3
+	makedepends = linux-rt-headers=6.7.0.6.realtime1-1
 	depends = kmod
-	depends = zfs-utils=2.2.2
-	depends = linux-rt=6.6.5.16.realtime1-3
-	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-2.2.2/zfs-2.2.2.tar.gz
-	source = linux-6.7-compat.patch
-	sha256sums = 76bc0547d9ba31d4b0142e417aaaf9f969072c3cb3c1a5b10c8738f39ed12fc9
-	sha256sums = 43bca1a6717bfc77d42a4c51656c38674c6be8d7ec46f04c7febcdafd9295916
+	depends = zfs-utils=2.2.3
+	depends = linux-rt=6.7.0.6.realtime1-1
+	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-2.2.3/zfs-2.2.3.tar.gz
+	sha256sums = 30a512f34ec5c841b8b2b32cc9c1a03fd49391b26c9164d3fb30573fb5d81ac3
 
 pkgname = zfs-linux-rt
 	pkgdesc = Kernel modules for the Zettabyte File System.

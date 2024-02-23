@@ -8,8 +8,8 @@
 #
 pkgbase="zfs-linux-rt"
 pkgname=("zfs-linux-rt" "zfs-linux-rt-headers")
-_zfsver="2.2.2"
-_kernelver="6.6.5.16.realtime1-3"
+_zfsver="2.2.3"
+_kernelver="6.7.0.6.realtime1-1"
 _extramodules="${_kernelver}-rt"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
@@ -17,16 +17,10 @@ pkgrel=1
 makedepends=("linux-rt-headers=${_kernelver}")
 arch=("x86_64")
 url="https://zfsonlinux.org/"
-# zfs-linux-lts 6.6.16-1 uses kernel patch 6.7, so we do so too
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz" "linux-6.7-compat.patch")
-sha256sums=('76bc0547d9ba31d4b0142e417aaaf9f969072c3cb3c1a5b10c8738f39ed12fc9' '43bca1a6717bfc77d42a4c51656c38674c6be8d7ec46f04c7febcdafd9295916')
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz")
+sha256sums=('30a512f34ec5c841b8b2b32cc9c1a03fd49391b26c9164d3fb30573fb5d81ac3')
 license=("CDDL")
 depends=("kmod" "zfs-utils=${_zfsver}" "linux-rt=${_kernelver}")
-
-prepare() {
-    cd "${srcdir}/zfs-${_zfsver}"
-    patch -Np1 -i ${srcdir}/linux-6.7-compat.patch
-}
 
 build() {
     cd "${srcdir}/zfs-${_zfsver}"
