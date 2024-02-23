@@ -1,0 +1,16 @@
+pkgbase = heart-of-darkness-demo
+	pkgdesc = Heart of Darkness Demo running under hode engine
+	pkgver = 1.3_kelloggs_en
+	pkgrel = 1
+	url = https://heartofdarkness.ca/
+	arch = any
+	license = custom:All rights reserved
+	depends = hode-git
+	noextract = Heart Of Darkness Mini-Game.7z
+	noextract = hod_demo.paf.7z
+	source = Heart Of Darkness Mini-Game.7z::https://archive.org/download/hode_demo/Heart%20Of%20Darkness%20Mini-Game.7z
+	source = https://archive.org/download/hode_demo/hod_demo.paf.7z
+	md5sums = d28eccfb80c4e568635ae2e0e4c70b21
+	md5sums = deea00e4197732661c6bc705bff862b2
+
+pkgname = heart-of-darkness-demo
