@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=1.38.11.r0.gfc413532
+pkgver=1.38.19.r0.gfc55a17a
 _electronversion=26
 pkgrel=1
 pkgdesc="Terminal/ssh/telnet/serialport/sftp client(linux, mac, win)"
@@ -10,9 +10,7 @@ _ghurl="https://github.com/electerm/electerm"
 license=('MIT')
 depends=(
     "electron${_electronversion}"
-    'lib32-glibc'
-    'lib32-gcc-libs'
-    'python'
+    'python>=3'
     'java-runtime'
 )
 makedepends=(
@@ -39,7 +37,7 @@ build() {
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
-    gendesk -q -f -n --categories "System" --name "${pkgname%-git}" --exec "${pkgname%-git} %U"
+    gendesk -q -f -n --categories="System" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -49,9 +47,7 @@ build() {
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
-    sed -e "61s|snap|tar.gz|g" -e '58,60d' -i electron-builder.json
-    sed '10,21d' -i build/bin/build-linux-deb-tar.js
-    rm -rf build/bin/build-linux-rpm-snap.js
+    sed -e "61s|snap|AppImage|g" -e '58,60d' -i electron-builder.json
     yarn install --cache-folder "${srcdir}/.yarn_cache" --no-lockfile
     yarn run prepare-build
     npx node build/bin/build-linux-deb-tar
