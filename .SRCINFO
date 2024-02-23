@@ -1,12 +1,15 @@
 pkgbase = vapoursynth-plugin-vsrife-git
 	pkgdesc = Plugin for Vapoursynth: vsrife (GIT version)
-	pkgver = 3.1.0.0.g91e894f
+	pkgver = 3.1.0.1.gc6c0c3a
 	pkgrel = 1
 	url = https://github.com/HolyWu/vs-rife
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-pytorch-tensorrt
 	depends = vapoursynth
 	depends = python-numpy
