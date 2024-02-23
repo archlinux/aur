@@ -1,7 +1,7 @@
 # Maintainer: Peltoche <contact@duckcloud.fr>
 pkgname=duckcloud
 pkgver=24.02.01
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="A cloud for your family"
 arch=(x86_64 i686 armv6h armv7h aarch64)
@@ -39,9 +39,11 @@ build() {
 	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 	go build -v \
 		-ldflags "-linkmode external \
-    -X github.com/theduckcompany/duckcloud/internal/tools/buildinfos.Version=${pkgver} \
-    -X github.com/theduckcompany/duckcloud/internal/tools/buildinfos.BuildTime=$(date --utc -Iseconds)" \
-		-o ${pkgname} ./cmd/duckcloud
+    -X github.com/theduckcompany/duckcloud/internal/tools/buildinfos.version=${pkgver} \
+    -X github.com/theduckcompany/duckcloud/internal/tools/buildinfos.buildTime=$(date --utc -Iseconds) \
+    -X github.com/theduckcompany/duckcloud/internal/tools/buildinfos.isRelease=true"
+
+	-o ${pkgname} ./cmd/duckcloud
 }
 
 package() {

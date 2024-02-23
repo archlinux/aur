@@ -1,7 +1,7 @@
 pkgbase = duckcloud
 	pkgdesc = A cloud for your family
 	pkgver = 24.02.01
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://duckcloud.fr
 	install = duckcloud.install
