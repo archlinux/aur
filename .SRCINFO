@@ -1,4 +1,4 @@
-pkgbase = Le-Phonk-git
+pkgbase = le-phonk-git
 	pkgdesc = The distortion plugin you will ever own
 	pkgver = r45.c68985a
 	pkgrel = 1
@@ -7,9 +7,9 @@ pkgbase = Le-Phonk-git
 	license = MIT
 	makedepends = git
 	makedepends = cmake
-	provides = Le-Phonk
-	conflicts = Le-Phonk
+	provides = le-phonk
+	conflicts = le-phonk
 	source = git+https://github.com/Speechrezz/Le-Phonk
 	md5sums = SKIP
 
-pkgname = Le-Phonk-git
+pkgname = le-phonk-git

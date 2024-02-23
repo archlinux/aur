@@ -1,6 +1,7 @@
 # Maintainer: Apoorv <apoorvs569@gmail.com>
 
-pkgname=Le-Phonk-git
+_pkgname=Le-Phonk
+pkgname=le-phonk-git
 pkgver=r45.c68985a
 pkgrel=1
 pkgdesc="The distortion plugin you will ever own"
@@ -14,26 +15,26 @@ source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${_pkgname}"
 
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${_pkgname}"
 
   git submodule update --init --recursive
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${_pkgname}"
 
   cmake -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_POSITION_INDEPENDENT_CODE=ON
   make -C build
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${_pkgname}"
 
   mkdir -p "${pkgdir}/usr/bin/"
   mkdir -p "${pkgdir}/usr/lib/vst3/"
