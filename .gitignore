@@ -1,0 +1,9 @@
+# packages
+*.pkg.tar.zst
+
+# source code
+*.tar.gz
+
+# build temporary files
+/pkg
+/src
