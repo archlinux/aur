@@ -11,15 +11,16 @@ _itkver=5.2.1
 # _vtkver=9.1.0
 _vtkver=9.2.6
 pkgname=itk-snap
-pkgver=4.0.2
-pkgrel=2
+pkgver=4.2.0alpha.3
+pkgrel=1
 pkgdesc="A software application used to segment structures in 3D medical images"
 arch=('x86_64')
 url="https://www.itksnap.org"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=(
   curl
   expat
+  gcc-libs
   glibc
   hdf5
   libglvnd
@@ -41,12 +42,12 @@ makedepends=(
   gtest
 )
 options=(!emptydirs)
-# upstream did not create a git tag for 4.0.2
-# but according to the git log message, this commit should be release 4.0.2
+# upstream did not create a git tag for 4.2.0alpha.3
+# but according to the git log message, this commit should be release 4.2.0alpha.3
 source=(
   "vtk-${_vtkver}.tar.gz::https://github.com/Kitware/VTK/archive/refs/tags/v${_vtkver}.tar.gz"
   "itk-${_itkver}.tar.gz::https://github.com/InsightSoftwareConsortium/ITK/archive/refs/tags/v${_itkver}.tar.gz"
-  "${pkgname}-${pkgver}::git+https://github.com/pyushkevich/itksnap.git#commit=38c577fd3571139e0182c86719bdb5fd581a7b75"
+  "${pkgname}-${pkgver}::git+https://github.com/pyushkevich/itksnap.git#commit=b534d3066cb885062a3cb8d16d48f3835ac273e0"
 )
 sha512sums=('3ccb19cd98e691828e285d2d85aef890c4796d91588e02c401102feefb26c120f9d5195a79d1e7a04b037bf0bf0898b9791a341e0733d92234ca644e62da19b0'
             'cccb64766acaebe49ee2dd8b82b7b5aaa6a35e97f2cc7738ad7f3cd65006b73b880ac59341cd640abd64c2ac665633f01504760071f5492e40aa97e7ba6db2a9'
@@ -105,6 +106,7 @@ build() {
     -DVTK_DIR=${srcdir}/build-vtk \
     -S ${pkgname}-${pkgver}
   make -C ${srcdir}/build
+  make -C ${srcdir}/build package
 }
 
 package() {
@@ -112,8 +114,11 @@ package() {
   # make DESTDIR=${pkgdir} -C ${srcdir}/build install
 
   # we install all the files manaully by extracting the tarball to destdir
-  make -C ${srcdir}/build package
-  mkdir -p ${pkgdir}/usr
-  tar xfv ${srcdir}/build/*.tar.gz -C ${pkgdir}/usr --strip-components 1
+  mkdir -p ${srcdir}/destdir
+  tar xfv ${srcdir}/build/*.tar.gz -C ${srcdir}/destdir --strip-components 1
+  cp -r ${srcdir}/destdir ${pkgdir}/usr
+
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/GUI/Qt/Resources/logo_square.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
 # vim:set ts=2 sw=2 et:
