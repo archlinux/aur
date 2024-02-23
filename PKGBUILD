@@ -5,7 +5,7 @@
 
 
 pkgname=minetest-game-cdb
-pkgver=5.8.0
+pkgver=20240223
 pkgrel=1
 pkgdesc='Latest version of “Minetest Game” from the Minetest Content Database, but installed system-wide as a regular Arch package.'
 
@@ -30,7 +30,7 @@ prepare() {
 }
 
 pkgver() {
-    echo $releases | jq -r '.[0].title'
+    echo $releases | jq -r '.[0].release_date' | date +%Y%m%d
 }
 
 build() {
@@ -42,5 +42,5 @@ build() {
 package() {
     location='usr/share/minetest/games'
     install -d "${pkgdir}/${location}"
-    cp -r "${srcdir}/minetest_game" "${pkgdir}/${location}/minetest_game_cdb"
+    cp -r "${srcdir}/minetest_game" "${pkgdir}/${location}/minetest_game"
 }

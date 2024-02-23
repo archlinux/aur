@@ -1,6 +1,6 @@
 pkgbase = minetest-game-cdb
 	pkgdesc = Latest version of “Minetest Game” from the Minetest Content Database, but installed system-wide as a regular Arch package.
-	pkgver = 5.8.0
+	pkgver = 20240223
 	pkgrel = 1
 	url = https://content.minetest.net/packages/Minetest/minetest_game/
 	arch = any
