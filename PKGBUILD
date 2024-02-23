@@ -7,7 +7,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-nspr
 pkgver=4.35
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Netscape Portable Runtime (android)"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSPR"
@@ -17,15 +17,18 @@ makedepends=('android-configure'
              'zip')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v${pkgver}/src/nspr-${pkgver}.tar.gz"
-        '0001-Fix-configure-file.patch')
+        '0001-Fix-configure-file.patch'
+        '0002-Fix-array-with-negative-size.patch')
 sha256sums=('7ea3297ea5969b5d25a5dd8d47f2443cda88e9ee746301f6e1e1426f8a6abc8f'
-            '1d83aad5546f7ee9f5e06f36e7ce9e49613edb2e3609e4e01c84a604f9195106')
+            '1d83aad5546f7ee9f5e06f36e7ce9e49613edb2e3609e4e01c84a604f9195106'
+            'b56d9e08577418ba2622aa0d0fe69beb06d253b762831f3fad23bc5ca4ad0f74')
 
 prepare() {
     cd "${srcdir}/nspr-${pkgver}"
     source android-env ${_android_arch}
 
     patch -Np1 -i ../0001-Fix-configure-file.patch
+    patch -Np1 -i ../0002-Fix-array-with-negative-size.patch
 
     sed -i "s|@ANDROID_CC@|${ANDROID_CC}|g" nspr/configure
     sed -i "s|@ANDROID_CXX@|${ANDROID_CXX}|g" nspr/configure
