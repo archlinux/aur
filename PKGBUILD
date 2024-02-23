@@ -2,7 +2,7 @@
 
 _base=fastecdsa
 pkgname=python-${_base}
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Fast elliptic curve digital signatures"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(python gmp)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('5dd11407ac3cd20fd686709857934c480a625774a9fdb67c5064daf975f0d82a4dd84fa3b8c12f95ec93bfba4577a836f0bfaf8e5f6899f2d7c62bb0acffca63')
+sha512sums=('6cf085bfe0869b489ed2f62afef2f7e9a9d5d8afbb1323106ffbf3368a249af173bf5056f967b987c3b11e975e236d6b0e8a756e8ec0ed4b9b37955fc70378fa')
 # validpgpkeys=('67C1C1178894F9017D47AC0E15AB0E7C8A4019BF')
 
 prepare() {
