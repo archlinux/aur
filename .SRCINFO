@@ -1,0 +1,13 @@
+pkgbase = python-macaddress
+	pkgdesc = handling hardware identifiers like MAC addresses
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/mentalisttraceur/python-macaddress
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/m/macaddress/macaddress-2.0.2.tar.gz
+	sha256sums = 1400ccdc28d747102d57ae61e5b78d8985872930810ceb8860cd49abd1e1fa37
+
+pkgname = python-macaddress
