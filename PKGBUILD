@@ -3,7 +3,7 @@
 
 pkgname=ddnet
 pkgver=18.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Teeworlds modification with a unique cooperative gameplay."
 arch=('x86_64')
 url="https://ddnet.org"
@@ -30,6 +30,8 @@ sha256sums=('68d62635194a87f35c16077f3b65dd0b56877b74bd0776f4c3f3196fa79b87c8'
 build() {
     mkdir -p build
     cd build
+    # https://bbs.archlinux.org/viewtopic.php?id=293078
+    CXXFLAGS+=' -ffat-lto-objects'
     cmake ../DDNet-$pkgver          \
         -DCMAKE_BUILD_TYPE=Release  \
         -DCMAKE_INSTALL_PREFIX=/usr \

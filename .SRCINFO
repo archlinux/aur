@@ -1,7 +1,7 @@
 pkgbase = ddnet
 	pkgdesc = A Teeworlds modification with a unique cooperative gameplay.
 	pkgver = 18.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ddnet.org
 	arch = x86_64
 	license = CC-BY-SA-3.0
