@@ -1,6 +1,6 @@
 pkgbase = notepadnext-bin
 	pkgdesc = A cross-platform, reimplementation of Notepad++ (binary release)
-	pkgver = 0.6.4
+	pkgver = 0.7
 	pkgrel = 1
 	url = https://github.com/dail8859/NotepadNext
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = notepadnext-bin
 	provides = notepadnext
 	conflicts = notepadnext
 	options = !strip
-	source = https://github.com/dail8859/NotepadNext/releases/download/v0.6.4/NotepadNext-v0.6.4-x86_64.AppImage
-	sha256sums = b26e2d5208bce3b70847f1b7c5f863cd7567bd476dd3df68ad433c700564a089
+	source = https://nightly.link/dail8859/NotepadNext/actions/runs/8009956505/NotepadNext-Linux-Qt6.6-AppImage.zip
+	sha256sums = 7b3f0802f4a3dd16afcb66cbd71f1a1f62458003fae324ddc93c2e116d7ce652
 
 pkgname = notepadnext-bin
