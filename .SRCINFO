@@ -1,6 +1,6 @@
 pkgbase = qt-inspector-git
 	pkgdesc = A tool to visualize tree of widgets in a Qt application
-	pkgver = r64.b16fb85
+	pkgver = r70.0e538d3
 	pkgrel = 1
 	url = https://github.com/robertknight/Qt-Inspector
 	arch = i686
@@ -10,8 +10,7 @@ pkgbase = qt-inspector-git
 	makedepends = cmake
 	depends = qt4>=4.5
 	depends = protobuf
-	source = git://github.com/robertknight/Qt-Inspector
+	source = git+https://github.com/robertknight/Qt-Inspector
 	sha1sums = SKIP
 
 pkgname = qt-inspector-git
-
