@@ -1,7 +1,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="ayatana-indicator-session"
-pkgver="23.10.3"
+pkgver="24.2.0"
 pkgrel="1"
 pkgdesc="Ayatana Indicator showing session management, status and user switching"
 arch=("i686" "x86_64" "pentium4")
@@ -10,7 +10,7 @@ license=("GPL2" "GPL3")
 makedepends=("cmake-extras" "intltool")
 depends=("glib2" "systemd" "dconf" "libayatana-common>=0.9.5" "hicolor-icon-theme" "librda")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("fbc6700d7af19d149440fad4f52b0261")
+md5sums=("965fa9036aa89615e5ef3bfb8b20b86b")
 
 build()
 {
