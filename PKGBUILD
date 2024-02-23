@@ -4,20 +4,20 @@
 # Contributor: Mark Dixon <mark@markdixon.name>
 
 pkgname=neo4j-community
-_name=neo4j
-pkgver=5.16.0
+_pkgname=neo4j
+pkgver=5.17.0
 pkgrel=1
-_java=17
+_java_version=17
 pkgdesc="A fully transactional graph database implemented in Java"
 arch=(any)
 url="https://github.com/neo4j/neo4j"
 license=(GPL-3.0-only)
 depends=(
-  "java-runtime=$_java"
+  "java-runtime=$_java_version"
   "scala"
 )
 makedepends=(
-  "java-environment=$_java"
+  "java-environment=$_java_version"
   "maven"
 )
 conflicts=(neo4j-enterprise)
@@ -27,7 +27,6 @@ backup=(
   etc/neo4j/server-logs.xml
   etc/neo4j/user-logs.xml
 )
-
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
   "neo4j.executable-template"
@@ -37,7 +36,7 @@ source=(
   "use-system-scala.patch"
 )
 sha256sums=(
-  '93e7934d32df8707a83f55b2fb3e389ab32cf8818d1db6c25b5442f84ba8d539'
+  '13f43f099978ac639fd9008decaa783f04e3bd3d6957dd5109539e894dad879b'
   '152e35d949fe9090c890e7a213da917c09bc087a060119a1c32541821f91781f'
   '090e9ced1708e22592f775490360762d973e81061a0170b4150b087b1751e142'
   'a1d3dd94aecf80289e8d9b6381d4393ed60b7a5dec3cae436e721be676c15f3a'
@@ -45,7 +44,7 @@ sha256sums=(
   'f0ec370a01d479459c44c096730396524a86c7c04b706ff6094120accc17d6de'
 )
 
-_archive="$_name-$pkgver"
+_archive="$_pkgname-$pkgver"
 
 prepare() {
   cd "$_archive"
