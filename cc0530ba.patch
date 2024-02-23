@@ -1,0 +1,31 @@
+From cc0530ba4671a7e2b6ac4a6c00cd097f4114fd22 Mon Sep 17 00:00:00 2001
+From: Dan Church <amphetamachine@gmail.com>
+Date: Sun, 19 Nov 2023 11:05:21 -0600
+Subject: [PATCH] Fix Botan 2/3 include
+
+Botan::secure_scrub_memory -> defined in mem_ops.h
+Botan::secure_vector -> defined in secmem.h
+
+The reason only including secmem.h worked in previous (<3.0) versions of
+Botan was because secmem.h included mem_ops.h. This is no longer the
+case since commit
+randombit/botan@49dbbcb2bfda05ef9d3f09848c9ba22fcbcd5066 (2023-10-11;
+"Split out allocator helpers to allocator.h")
+
+Fixes #10038
+---
+ src/keys/FileKey.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/keys/FileKey.h b/src/keys/FileKey.h
+index 795f03bdbc..65cd955a7c 100644
+--- a/src/keys/FileKey.h
++++ b/src/keys/FileKey.h
+@@ -19,6 +19,7 @@
+ #ifndef KEEPASSX_FILEKEY_H
+ #define KEEPASSX_FILEKEY_H
+ 
++#include <botan/mem_ops.h>
+ #include <botan/secmem.h>
+ 
+ #include "keys/Key.h"

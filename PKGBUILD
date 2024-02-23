@@ -1,9 +1,10 @@
+# Maintainer: Noah Vogt (noahvogt) <noah@noahvogt.com>
 # Maintainer: Balló György <ballogyor+arch at gmail dot com>
 # Maintainer: Bruno Pagani <archange@archlinux.org>
 
 pkgname=keepassxc-allow-aur-extension-origin
 pkgver=2.7.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform community-driven port of Keepass password manager"
 arch=(x86_64)
 url="https://keepassxc.org/"
@@ -17,8 +18,10 @@ checkdepends=(xclip xorg-server-xvfb)
 provides=(org.freedesktop.secrets keepassxc)
 conflicts=(keepassxc)
 source=(https://github.com/keepassxreboot/keepassxc/releases/download/$pkgver/keepassxc-$pkgver-src.tar.xz
+        https://github.com/keepassxreboot/keepassxc/commit/cc0530ba.patch
         add-aur-extension-build-to-allowed-origins.patch)
 sha256sums=('a58074509fa8e90f152c6247f73e75e126303081f55eedb4ea0cbb6fa980d670'
+            '7884a0425a5bf7e67d389d6b2545b06ee28b6d77e9164df13a8e78b5719d11ce'
             'a150f3ce0d9d8827b6c767aa673be4af298aafd6f46ddd10373e32b832dd2017')
 # List of signing keys can be found at https://keepassxc.org/verifying-signatures/
 # validpgpkeys=(BF5A669F2272CF4324C1FDA8CFB4C2166397D0D2
@@ -28,6 +31,9 @@ sha256sums=('a58074509fa8e90f152c6247f73e75e126303081f55eedb4ea0cbb6fa980d670'
 
 prepare() {
     cd keepassxc-"$pkgver"
+    # Fix build with botan 3.3
+    patch -p1 -i ../cc0530ba.patch
+
     patch -p1 -i ../add-aur-extension-build-to-allowed-origins.patch
 }
 
