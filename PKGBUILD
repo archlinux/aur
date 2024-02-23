@@ -25,7 +25,7 @@ prepare() {
 }
 
 build() {
-    export RUS_BACTRACE=full
+    export RUST_BACKTRACE=full
     # https://docs.pgvecto.rs/getting-started/installation.html
     cd ${_pkgbase}-${pkgver}
     # desired postgresql version only
