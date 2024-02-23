@@ -1,17 +1,17 @@
 pkgbase = r-rcpphungarian
 	pkgdesc = Solves Minimum Cost Bipartite Matching Problems
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=RcppHungarian
 	arch = x86_64
-	license = GPL
-	depends = r
+	license = GPL-2.0-or-later
 	depends = r-rcpp
 	optdepends = r-ggplot2
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/RcppHungarian_0.3.tar.gz
-	sha256sums = a
+	md5sums = 1ca77b7707cb433d5ce9a0fa1f58b8cf
+	b2sums = dc9781e5764311517dd56c5ceff48029001149dd2f21284de4eea79e183897b3ac08caf1e09034764aa41de5a3889097edee1cb725495c5031a6dc1b80b55f60
 
 pkgname = r-rcpphungarian
