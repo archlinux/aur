@@ -1,5 +1,5 @@
 pkgbase = duckcloud
-	pkgdesc = A cloud for your family
+	pkgdesc = A full featured DAVx server
 	pkgver = 24.02.01
 	pkgrel = 4
 	epoch = 1

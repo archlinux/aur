@@ -1,9 +1,9 @@
 # Maintainer: Peltoche <contact@duckcloud.fr>
 pkgname=duckcloud
 pkgver=24.02.01
-pkgrel=4
+pkgrel=5
 epoch=1
-pkgdesc="A cloud for your family"
+pkgdesc="A full featured DAVx server"
 arch=(x86_64 i686 armv6h armv7h aarch64)
 url=https://duckcloud.fr
 license=(AGPL3)
@@ -42,7 +42,6 @@ build() {
     -X github.com/theduckcompany/duckcloud/internal/tools/buildinfos.version=${pkgver} \
     -X github.com/theduckcompany/duckcloud/internal/tools/buildinfos.buildTime=$(date --utc -Iseconds) \
     -X github.com/theduckcompany/duckcloud/internal/tools/buildinfos.isRelease=true"
-
 	-o ${pkgname} ./cmd/duckcloud
 }
 
