@@ -2,7 +2,7 @@
 
 pkgname=python-types-pillow
 _name=types-Pillow
-pkgver=10.2.0.20240111
+pkgver="10.2.0.20240213"
 pkgrel=1
 pkgdesc="Typing stubs for Pillow"
 arch=('any')
@@ -10,8 +10,9 @@ url="https://pypi.org/project/${_name}/"
 license=('Apache-2.0')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/83/eb/e17f537e893676979918c1272f15d7ae3609decbf474a0d591d0c02918cb/${_name}-${pkgver}.tar.gz")
-sha256sums=('e8d359bfdc5a149a3c90a7e153cb2d0750ddf7fc3508a20dfadabd8a9435e354')
+_source_hash="f73564af763d92b7c2178c2fb0e3269bf3ba83ac06f8d1cbd615d7483c405ce2"
+source=("https://files.pythonhosted.org/packages/${_source_hash::2}/${_source_hash:2:2}/${_source_hash:4:60}/${_name}-${pkgver}.tar.gz")
+sha256sums=("4800b61bf7eabdae2f1b17ade0d080709ed33e9f26a2e900e470e8b56ebe2387")
 
 build() {
   cd "$_name-$pkgver"
