@@ -1,7 +1,7 @@
 image: manjarolinux/base:latest
 
 before_script:
-  - pacman -Syu --noconfirm sed jq binutils
+  - pacman -Syu --noconfirm sed jq binutils gtk3 libxss libindicator-gtk2 nss dbus-glib libdbusmenu-gtk2
   - useradd -m builduser
   - passwd -d builduser
   - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
