@@ -1,36 +1,80 @@
-# Maintainer: Kingkor Roy Tirtho <krtirho@gmail.com>
-pkgname=spotube
-pkgver=1.1.0
-pkgrel=1
-epoch=
-pkgdesc="A lightweight free Spotify desktop-client which handles playback manually, streams music using Youtube & no Spotify premium account is needed"
-arch=(x86_64)
-url="https://github.com/KRTirtho/spotube/"
-license=('BSD 4-Clause')
-groups=()
-depends=('libkeybinder3')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://github.com/KRTirtho/spotube/releases/download/v${pkgver}/Spotube-linux-x86_64.tar.xz")
-noextract=()
-md5sums=(0db87627ddf753bc7f09ebbb282184ee)
-validpgpkeys=()
+# Use MAKEPKG_SPOTUBE_SPOTIFY_SECRETS, MAKEPKG_SPOTUBE_LASTFM_API_KEY and MAKEPKG_SPOTUBE_LASTFM_API_SECRET
+# to provide required infomation. See https://github.com/KRTirtho/spotube/blob/master/.env.example for more info
 
-package(){
-  install -dm755 "${pkgdir}/usr/share/icons/${pkgname}"
-  install -dm755 "${pkgdir}/usr/share/applications"
-  install -dm755 "${pkgdir}/usr/share/${pkgname}"
-  install -dm755 "${pkgdir}/usr/bin"
-  cp -ra ./ "${pkgdir}/usr/share/${pkgname}"
-  cp ./spotube.desktop "${pkgdir}/usr/share/applications"
-  cp ./spotube-logo.png "${pkgdir}/usr/share/icons/${pkgname}"
-  ln -s "/usr/share/${pkgname}/spotube" "${pkgdir}/usr/bin/${pkgname}"
+# Get Spotify API secrets at https://developer.spotify.com/, set callback url to http://localhost:4304/auth/spotify/callback
+# Get Last.fm API key and secret at https://www.last.fm/api/account/create
+
+pkgname=spotube
+pkgver=3.4.1
+pkgrel=2
+pkgdesc="Open source Spotify client that doesn't require Premium nor uses Electron! Available for both desktop & mobile!"
+arch=("x86_64" "aarch64")
+url="https://spotube.krtirtho.dev/"
+license=("BSD-4-Clause")
+depends=("mpv" "libappindicator-gtk3" "libsecret" "libnotify" "at-spi2-core" "libepoxy")
+makedepends=("flutter>=3.16.0" "clang" "cmake" "ninja" "pkgconf" "gtk3" "imagemagick" "jsoncpp")
+source=(
+    "spotube-$pkgver.tar.gz::https://github.com/KRTirtho/spotube/archive/refs/tags/v$pkgver.tar.gz"
+    # See https://github.com/olivier2/spotube/tree/proxy-setting for more info
+    "001-oliver2-proxy-settings.diff::https://github.com/KRTirtho/spotube/compare/v$pkgver...olivier2:spotube:proxy-setting.diff"
+)
+sha256sums=('d130691e67c682978d15800b9618032035a75de28658b5055bfaa98206791787'
+            '931bebf7fdcbb74740ca88c906cd0678a0c0c615b0759e776c08084aa51e6bda')
+
+_release_date=2024-01-28
+
+prepare() {
+    cd "$srcdir/spotube-$pkgver"
+    patch -Np1 -i "$srcdir/001-oliver2-proxy-settings.diff"
+    {
+        echo "SPOTIFY_SECRETS=$MAKEPKG_SPOTUBE_SPOTIFY_SECRETS"
+        echo "ENABLE_UPDATE_CHECK=0"
+        echo "LASTFM_API_KEY=$MAKEPKG_SPOTUBE_LASTFM_API_KEY"
+        echo "LASTFM_API_SECRET=$MAKEPKG_SPOTUBE_LASTFM_API_SECRET"
+    } > .env
+    cp -r /opt/flutter "$srcdir"
+    export PATH="$srcdir/flutter/bin:$PATH"
+    flutter config --no-analytics
+    flutter config --enable-linux-desktop
+    flutter pub get
+}
+build() {
+    cd "$srcdir/spotube-$pkgver"
+    export PATH="$srcdir/flutter/bin:$PATH"
+    dart run build_runner build --delete-conflicting-outputs --enable-experiment=records,patterns
+    flutter build linux --release
+    # This file is 509x509...
+    convert -resize 512x512 assets/spotube-logo.png spotube-logo.png
+}
+package() {
+    depends+=("hicolor-icon-theme")
+    case "$CARCH" in
+        x86_64)
+            declare -r _arch=x64
+            ;;
+        aarch64)
+            declare -r _arch=arm64
+            ;;
+        *)
+            # Cannot deploy to other platforms on Linux, but still keep this as a fallback
+            # https://docs.flutter.dev/reference/supported-platforms
+            declare -r _arch=$CARCH
+            ;;
+    esac
+    cd "$srcdir/spotube-$pkgver"
+    mkdir -p "$pkgdir/usr/bin" "$pkgdir/opt"
+    cp -rdp --no-preserve=ownership "build/linux/$_arch/release/bundle" "$pkgdir/opt/spotube"
+    ln -s ../../opt/spotube/spotube "$pkgdir/usr/bin/spotube"
+    install -Dm644 linux/spotube.desktop "$pkgdir/usr/share/applications/com.github.KRTirtho.Spotube.desktop"
+    sed -i '
+            s@Exec=/usr/bin/spotube@Exec=spotube@;
+            s@Icon=/usr/share/icons/spotube/spotube-logo.png@Icon=com.github.KRTirtho.Spotube@;
+           ' "$pkgdir/usr/share/applications/com.github.KRTirtho.Spotube.desktop"
+    install -Dm644 linux/com.github.KRTirtho.Spotube.appdata.xml \
+        "$pkgdir/usr/share/metainfo/com.github.KRTirtho.Spotube.appdata.xml"
+    sed -i "s|%{{APPDATA_RELEASE}}%|<release version=\"$pkgver\" date=\"$_release_date\"/>|" \
+        "$pkgdir/usr/share/metainfo/com.github.KRTirtho.Spotube.appdata.xml"
+    install -Dm644 assets/spotube-logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.github.KRTirtho.Spotube.svg"
+    install -Dm644 spotube-logo.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/com.github.KRTirtho.Spotube.png"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/spotube/LICENSE"
 }
