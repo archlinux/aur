@@ -1,18 +1,17 @@
 pkgbase = python-confu
 	pkgdesc = Configuration file validation and generation
-	pkgver = 1.8.0
-	pkgrel = 2
+	pkgver = 1.9.0
+	pkgrel = 1
 	url = https://github.com/20c/confu
 	changelog = CHANGELOG.md
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	checkdepends = python-pytest
-	checkdepends = python-click
-	makedepends = python-poetry-core
 	makedepends = python-build
 	makedepends = python-installer
-	depends = python
-	source = python-confu-1.8.0.tar.gz::https://github.com/20c/confu/archive/1.8.0.tar.gz
-	sha256sums = e981f0f48374c01f2ffbfc0c043000a0168a6fce023c7068e594bf95f1b3647b
+	makedepends = python-poetry-core
+	depends = python-munge
+	source = confu-1.9.0.tar.gz::https://github.com/20c/confu/archive/1.9.0.tar.gz
+	sha512sums = a0943cb496cd9816ca6060ed527123f479b0cafc5f2c01e7c747f5845d99840bdb77727bfc5d158a8febad278cc49b64f0b0060fcd8425c2c428a5652bac9afd
 
 pkgname = python-confu

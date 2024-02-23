@@ -1,30 +1,34 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-
-pkgname=python-confu
-pkgver=1.8.0
-pkgrel=2
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
+_base=confu
+pkgname=python-${_base}
+pkgver=1.9.0
+pkgrel=1
 pkgdesc="Configuration file validation and generation"
-arch=('any')
-url="https://github.com/20c/confu"
-license=('Apache')
-depends=('python')
-makedepends=('python-poetry-core' 'python-build' 'python-installer')
-checkdepends=('python-pytest' 'python-click')
+arch=(any)
+url="https://github.com/20c/${_base}"
+license=(Apache-2.0)
+depends=(python-munge)
+makedepends=(python-build python-installer python-poetry-core)
+checkdepends=(python-pytest)
 changelog=CHANGELOG.md
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('e981f0f48374c01f2ffbfc0c043000a0168a6fce023c7068e594bf95f1b3647b')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
+sha512sums=('a0943cb496cd9816ca6060ed527123f479b0cafc5f2c01e7c747f5845d99840bdb77727bfc5d158a8febad278cc49b64f0b0060fcd8425c2c428a5652bac9afd')
 
 build() {
-	cd "confu-$pkgver"
-	python -m build --wheel --no-isolation
+  cd ${_base}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
-	cd "confu-$pkgver"
-	PYTHONPATH=./src pytest -x
+  cd ${_base}-${pkgver}
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest tests
 }
 
 package() {
-	cd "confu-$pkgver"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
