@@ -10,8 +10,14 @@ _git_branch=${_git_branch##*/}
 _staging_ver=${_git_branch#zfs-}
 _staging_ver=${_staging_ver%-staging}
 
+if git ls-remote -t --exit-code "${_git_repo}" "zfs-${_staging_ver}" > /dev/null; then
+    _git_branch="tag=zfs-${_staging_ver}"
+else
+    _git_branch="branch=${_git_branch}"
+fi
+
 pkgname=${_pkgname}-dkms-staging-git
-pkgver=2.2.2.r73.ge6ca28c970
+pkgver=2.2.3.r0.gc883088df8
 pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System (release staging branch)."
 arch=('any')
@@ -20,7 +26,7 @@ license=('CDDL-1.0')
 provides=("ZFS-MODULE" "SPL-MODULE" "zfs-dkms")
 conflicts=("zfs-dkms")
 makedepends=("git")
-source=("${_pkgname}::git+${_git_repo}#branch=${_git_branch}"
+source=("${_pkgname}::git+${_git_repo}#${_git_branch}"
         "0001-only-build-the-module-in-dkms.conf.patch")
 sha256sums=('SKIP'
             '8d5c31f883a906ab42776dcda79b6c89f904d8f356ade0dab5491578a6af55a5')
