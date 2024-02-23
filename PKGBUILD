@@ -8,26 +8,27 @@ arch=(any)
 url='https://github.com/nathom/streamrip'
 license=('GPL3')
 depends=(python
-         python-mutagen
-         python-tomlkit
-         python-pathvalidate
-         python-simple-term-menu
-         python-pillow
-         python-deezer-py
-         python-pycryptodomex
-         python-appdirs
-         python-m3u8
+         python-aiodns
          python-aiofiles
          python-aiohttp
-         python-aiodns
-         python-aiolimiter
-         python-pytest-mock
+         python-aiolimiter # AUR
+         python-appdirs
+         python-click-help-colors
+         python-deezer-py # AUR
+         python-m3u8 # AUR
+         python-mutagen
+         python-pathvalidate # AUR
+         python-pillow
+         python-pycryptodomex
          python-pytest-asyncio
+         python-pytest-mock
          python-rich
-         python-click-help-colors)
-makedepends=(python-poetry
-             python-{build,installer}
-             git)
+         python-simple-term-menu
+         python-tomlkit)
+makedepends=(git
+             python-build
+             python-installer
+             python-poetry)
 optdepends=('ffmpeg: Additional functionality')
 source=(git+https://github.com/nathom/streamrip.git#tag=v$pkgver)
 sha256sums=('SKIP')
