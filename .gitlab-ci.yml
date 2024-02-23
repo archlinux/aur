@@ -5,7 +5,6 @@ before_script:
   - useradd -m builduser
   - passwd -d builduser
   - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
-  - su -c "cd ${CI_PROJECT_DIR} && makepkg" - builduser
 
 stages:
   - find_release
@@ -14,16 +13,19 @@ stages:
 
 find_release_job:
   stage: find_release
-  script: ./find_release.sh
+  script: 
+    -su -c "cd ${CI_PROJECT_DIR} && ./find_release.sh" - builduser
   artifacts:
     paths:
       - PKGBUILD
+      - .SRCINFO
   only:
     - schedules
 
 test_job:
   stage: test
-  script: ./test
+  script: 
+    - -su -c "cd ${CI_PROJECT_DIR} && ./test" - builduser
   dependencies:
     - find_release_job
   only:
