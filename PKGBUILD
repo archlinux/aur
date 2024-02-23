@@ -1,7 +1,7 @@
 # Maintainer: Christof Zlabinger <stoffi05@pm.me>
 pkgname='notion-calendar-electron'
 pkgver=1.119.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A Electron-based Notion Calendar client'
 arch=('x86_64')
 url=https://www.notion.so/product/calendar
@@ -26,8 +26,11 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    mkdir -p "$pkgdir/usr/share/notion-calendar-electron"
-    mkdir -p "$pkgdir/usr/bin"
-    cp -r "dist/linux-unpacked"/* "$pkgdir/usr/share/notion-calendar-electron"
-    cp -P "${srcdir}/${pkgname}-${pkgver}/notion-calendar-electron" "$pkgdir/usr/bin/"
+    mkdir -p "${pkgdir}/usr/share/notion-calendar-electron"
+    mkdir -p "${pkgdir}/usr/bin"
+    mkdir -p "${pkgdir}/usr/share/applications"
+    cp -r "dist/linux-unpacked"/* "${pkgdir}/usr/share/notion-calendar-electron"
+    cp -P "${srcdir}/${pkgname}-${pkgver}/notion-calendar-electron" "${pkgdir}/usr/bin/"
+    cp "${srcdir}/${pkgname}-${pkgver}/notion-calendar-electron.desktop" "${pkgdir}/usr/share/applications/"
+    
 }
