@@ -4,7 +4,7 @@ pkgname=uv-bin
 _pkgname=${pkgname%-bin}
 conflicts=('uv')
 provides=('uv')
-_pkgver=0.1.9
+_pkgver=0.1.10
 pkgver=${_pkgver#v}
 pkgrel=1
 pkgdesc='An extremely fast Python package installer and resolver, written in Rust. Designed as a drop-in replacement for pip and pip-compile.'
@@ -21,9 +21,9 @@ source_aarch64=($pkgname-aarch64-$pkgver.tar.gz::https://github.com/astral-sh/uv
 source_i686=($pkgname-i686-$pkgver.tar.gz::https://github.com/astral-sh/uv/releases/download/$pkgver/uv-i686-unknown-linux-gnu.tar.gz)
 source_x86_64=($pkgname-x86_64-$pkgver.tar.gz::https://github.com/astral-sh/uv/releases/download/$pkgver/uv-x86_64-unknown-linux-gnu.tar.gz)
 
-sha256sums_aarch64=('51e3791eff68824daf1360631aa2f11f98f3728d5d342cadef191f53e9321c61')
-sha256sums_i686=('3fed572fce343c86737e3912f86dce47a26611b07c86b2ff3be0f4936861a1d3')
-sha256sums_x86_64=('4c6305655fba53bd68dcecebc622e172c9de369543539428a5449b4c6ee53ec0')
+sha256sums_aarch64=('88d6b781dfaef6676eb1aae170a8dd18dc0935bb49e6ef4fff0cb33733d3b7ac')
+sha256sums_i686=('665208a455b369b36af3558a2bc75248eb357d54eeaf84b6aa06673c69b7e5ee')
+sha256sums_x86_64=('94c6a8bdde7151ea9587f866f47f5d376acedd90606c546bac9585d3ad5b4426')
 
 check() {
   cd "${_pkgname}-${CARCH}-unknown-linux-gnu"
