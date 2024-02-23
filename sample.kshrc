@@ -11,11 +11,7 @@ set -o emacs -o notify -o globstar
 FPATH=/usr/share/ksh/functions:~/.func
 
 # Optional: Autoload functions installed with ksh
-#autoload autocd
-#autoload man
-#autoload dirs
-#autoload pushd
-#autoload popd
+#autoload autocd cd dirs man mcd popd pushd
 
 # Optional: Set the precision of the time keyword to six and use %C
 #((.sh.version >= 20220606)) && TIMEFORMAT=$'\nreal\t%6lR\ncpu\t%6lC'

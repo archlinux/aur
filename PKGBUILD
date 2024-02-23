@@ -4,7 +4,7 @@
 
 _pkgname='ksh93'
 pkgname="${_pkgname}-git"
-pkgver=r1578.5948b420
+pkgver=r1602.6b624629
 pkgrel=1
 pkgdesc="KornShell 93u+m, fork based on ksh 93u+"
 arch=('x86_64')
@@ -18,7 +18,7 @@ install='ksh93.install'
 source=("${_pkgname}::git+http://github.com/ksh93/ksh#branch=dev"
 	'sample.kshrc')
 sha512sums=('SKIP'
-	'fbd5721696d08f429a999676340c9e84322517c4c1c519ac58009c00d61fc3b5ef42dfda1b2a385c6950d51df8e79de5fc6a36d9b393e1b2ace19e6b27a83495')
+	'd201874dc09457457a544c8d5d4ddd193ee3384a3af0716daa786fd7dc5aa0660765a42361353e9e828c6b8414af463bc14f3c7398333bb6c6cc19549b7855ac')
 
 pkgver() {
 	cd "${_pkgname}"
@@ -71,7 +71,7 @@ package() {
 	done
 
 	# Install various ksh functions like autocd
-	for _fun in 'autocd' 'man' 'dirs' 'popd' 'pushd'; do
+	for _fun in 'autocd' 'cd' 'dirs' 'man' 'mcd' 'popd' 'pushd'; do
 		install -Dm0644 "src/cmd/${_pkgname}/fun/${_fun}" "${pkgdir}/usr/share/ksh/functions/${_fun}"
 	done
 
