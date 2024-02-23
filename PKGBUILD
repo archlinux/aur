@@ -8,7 +8,8 @@ pkgdesc="Postgres extension that provides vector similarity search functions. It
 arch=(x86_64)
 url="https://github.com/tensorchord/pgvecto.rs"
 license=('Apache-2.0')
-makedepends=('cargo-nightly' 'clang' "postgresql>=${_pgver}" 'openssl' 'readline'  'libxml2' 'libxslt' 'zlib' 'ccache' 'git')
+makedepends=('bison' 'ccache' 'flex' 'gcc' 'git' 'gnupg' 'readline' 'libxml2' 'libxslt' 'lsb-release' 'pkgconf' 'tzdata' 'zlib' "postgresql>=${_pgver}" 'clang>=16' 'rustup')
+# makedepends=('cargo-nightly' 'clang' "postgresql>=${_pgver}" 'openssl' 'readline'  'libxml2' 'libxslt' 'zlib' 'ccache' 'git' 'cargo-pgrx==0.11.2')
 # build fails with LTO enabled
 options=('!lto')
 provides=("pgvecto.rs=$pkgver")
@@ -20,11 +21,8 @@ sha256sums=('671bfe39a3b87d5dfa5229ab0beffff1bd09686b53779dc511248e79aa4b2646')
 
 prepare() {
     cd ${_pkgbase}-${pkgver}
-    # _pgrxver=$(cat Cargo.toml | grep "pgrx =" | awk -F'rev = "' '{print $2}' | cut -d'"' -f1)
-    # _pgrxver=7c30e2023876c1efce613756f5ec81f3ab05696b
-    # _pgrxver=2244e62456390bc10faae99cae3801dc3b05e640
-    # cargo install cargo-pgrx --git https://github.com/tensorchord/pgrx.git --rev "$_pgrxver"
-    cargo install cargo-pgrx --version 0.11.2
+    _pgrxver=$(cat Cargo.toml | grep "pgrx =" | awk -F'version = "' '{print $2}' | cut -d'"' -f1)
+    cargo install cargo-pgrx@${_pgrxver}
 }
 
 build() {
