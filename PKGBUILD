@@ -1,7 +1,7 @@
 # Maintainer: Peltoche <contact@duckcloud.fr>
 pkgname=duckcloud
 pkgver=24.02.01
-pkgrel=5
+pkgrel=6
 epoch=1
 pkgdesc="A full featured DAVx server"
 arch=(x86_64 i686 armv6h armv7h aarch64)
@@ -41,8 +41,8 @@ build() {
 		-ldflags "-linkmode external \
     -X github.com/theduckcompany/duckcloud/internal/tools/buildinfos.version=${pkgver} \
     -X github.com/theduckcompany/duckcloud/internal/tools/buildinfos.buildTime=$(date --utc -Iseconds) \
-    -X github.com/theduckcompany/duckcloud/internal/tools/buildinfos.isRelease=true"
-	-o ${pkgname} ./cmd/duckcloud
+    -X github.com/theduckcompany/duckcloud/internal/tools/buildinfos.isRelease=true" \
+		-o ${pkgname} ./cmd/duckcloud
 }
 
 package() {
