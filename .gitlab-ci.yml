@@ -5,7 +5,7 @@ before_script:
   - useradd -m builduser
   - passwd -d builduser
   - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
-  - su -c "makepkg" - builduser
+  - su -c "cd ${CI_PROJECT_DIR} && makepkg" - builduser
 
 stages:
   - find_release
