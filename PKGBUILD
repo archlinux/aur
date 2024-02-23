@@ -2,43 +2,45 @@
 # Contributor: Dan Vratil <vratil@progdansoft.com>
 
 pkgname=k3b-git
-pkgver=24.01.75.r7102.2719b0d28
+pkgver=24.04.70.r7146.0e1739a97
 pkgrel=1
 pkgdesc="Feature-rich and easy to handle CD burning application. (Git version)"
 arch=('x86_64')
 license=('GPL')
-url='https://kde.org/applications/en/multimedia/org.kde.k3b'
+url='https://apps.kde.org/k3b'
 depends=(
   'gcc-libs' # libstdc++.so
   'glibc' # libm.so
-  'qt5-base' # libQt5Core.so libQt5DBus.so libQt5Gui.so libQt5Network.so libQt5Widgets.so libQt5Xml.so
-  'qt5-webengine' # libQt5Xml.so
-  'karchive5' # libKF5Archive.so
-  'kauth5' # libKF5AuthCore.so
-  'kbookmarks5' # libKF5Bookmarks.so
-  'kcompletion5' # libKF5Completion.so
-  'kconfig5' # ibKF5ConfigCore.so
-  'kconfigwidgets5' # libKF5ConfigWidgets.so
-  'kxmlgui5' # libKF5XmlGui.so
-  'kcoreaddons5' # libKF5CoreAddons.so
-  'kiconthemes5' # libKF5IconThemes.so
-  'kio5' # libKF5KIOCore.so libKF5KIOFileWidgets.so libKF5KIOGui.so libKF5KIOWidgets.so
-  'kjobwidgets5' # libKF5JobWidgets.so
-  'knewstuff5' # 'libKF5NewStuffWidgets.so
-  'knotifications5' # libKF5Notifications.so
-  'kfilemetadata5' # libKF5FileMetaData.so
-  'ki18n5' # libKF5I18n.so
-  'knotifyconfig5' # libKF5NotifyConfig.so
-  'kcmutils5' # libKF5KCMUtils.so
-  'kwidgetsaddons5' # libKF5WidgetsAddons.so
-  'libkcddb5' # libKF5Cddb.so
-  'solid5' # libKF5Solid.so
+  'qt6-base' # libQt6Core.so libQt6DBus.so libQt6Gui.so libQt6Network.so libQt6Widgets.so libQt6Xml.so
+  'qt6-5compat' # libQt6Core5Compat.so
+  'qt6-webengine' # libQt5Xml.so
+  'karchive' # libKF6Archive.so
+  'kauth' # libKF6AuthCore.so
+  'kbookmarks' # libKF6Bookmarks.so
+  'kcompletion' # libKF6Completion.so
+  'kconfig' # ibKF6ConfigCore.so
+  'kconfigwidgets' # libKF6ConfigWidgets.so
+  'kxmlgui' # libKF6XmlGui.so
+  'kcoreaddons' # libKF6CoreAddons.so
+  'kiconthemes' # libKF6IconThemes.so
+  'kio' # libKF6KIOCore.so libKF6KIOFileWidgets.so libKF6KIOGui.so libKF6KIOWidgets.so
+  'kcolorscheme' # libKF6ColorScheme.so
+#   'kjobwidgets' # libKF6JobWidgets.so
+  'knewstuff' # 'libKF6NewStuffWidgets.so
+  'knotifications' # libKF6Notifications.so
+  'kfilemetadata' # libKF6FileMetaData.so
+  'ki18n' # libKF6I18n.so
+  'knotifyconfig' # libKF6NotifyConfig.so
+  'kcmutils' # libKF6KCMUtils.so
+  'kwidgetsaddons' # libKF6WidgetsAddons.so
+  'libkcddb' # libKF6Cddb.so
+  'solid' # libKF6Solid.so
   'taglib' # libtag.so
   'ffmpeg' 'libavcodec.so' 'libavformat.so' 'libavutil.so'
   'flac' 'libFLAC++.so'
   'lame' 'libmp3lame.so'
-  'libdvdread' 'libdvdread.so'
-  'libmpcdec' 'libmpcdec.so'
+  'libdvdread' # libdvdread.so
+  'libmpcdec' # libmpcdec.so
   'libogg' 'libogg.so'
   'libsamplerate' 'libsamplerate.so'
   'libsndfile' 'libsndfile.so'
@@ -50,9 +52,11 @@ makedepends=(
   'git'
   'cmake'
   'extra-cmake-modules'
-  'kdoctools5'
+  'kdoctools'
+  'qt6-tools'
   'python'
 )
+checkdepends=('appstream')
 optdepends=(
   'cdrdao: for CD DAO mode burning support'
   'libburn: for CD, DVD & BluRay burning support'
@@ -84,6 +88,7 @@ prepare() {
       -i k3b/cmake/modules/FindSndfile.cmake \
       -i k3b/CMakeLists.txt
 
+  # Silence cmake warning
   sed 's|MUSE |Muse |g' -i k3b/cmake/modules/FindMuse.cmake
 }
 
@@ -93,6 +98,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_LIBEXECDIR=/usr/lib/k3b \
+    -DK3B_BUILD_API_DOCS=ON \
+    -DBUILD_WITH_QT6=ON \
     -DBUILD_TESTING=ON
 
   cmake --build build
