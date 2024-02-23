@@ -2,7 +2,7 @@
 # Contributor: Doommsatic <keniscoolu@gmail.com>
 
 pkgname=nba
-pkgver=1.7.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="highly accurate Nintendo Game Boy Advance emulator"
 arch=('x86_64')
