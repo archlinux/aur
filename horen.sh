@@ -4,7 +4,6 @@ _APPDIR="/usr/lib/@appname@"
 _RUNNAME="${_APPDIR}/@runname@"
 export PATH="${_APPDIR}:${PATH}"
 export LD_LIBRARY_PATH="${_APPDIR}/swiftshader:${_APPDIR}/lib:${LD_LIBRARY_PATH}"
-export APPDATA="${HOME}"
 export ELECTRON_IS_DEV=0
 export NODE_ENV=production
 cd "${_APPDIR}"

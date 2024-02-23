@@ -25,7 +25,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '2b6beb02b2fa71df94f273429b26ef0ec18c7057189289b5cf0fd74e43a76d42')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -47,11 +47,12 @@ build() {
     pnpm config set store-dir "${srcdir}/.pnpm_store"
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
     pnpm config set link-workspace-packages true
+    convert preview/${pkgname%-git}.ico preview/${pkgname%-git}.png
     sed '34,37d' -i forge.config.js
+    sed "s|process.env.APPDATA|'/home/${USER}'|g" -i app/main/src/constant.ts
     pnpm install
     pnpm run build
     pnpm run make
-    convert preview/${pkgname%-git}.ico preview/${pkgname%-git}.png
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
