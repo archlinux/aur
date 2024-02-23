@@ -32,4 +32,5 @@ pkgbase = libselinux
 	sha256sums = afe23890fb2e12e6756e5d81bad3c3da33f38a95d072731c0422fbeb0b1fa1fc
 
 pkgname = libselinux
+	provides = selinux-usr-libselinux=3.6-3
 	provides = libselinux.so

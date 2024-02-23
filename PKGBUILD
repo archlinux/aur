@@ -49,7 +49,7 @@ build() {
 }
 
 package() {
-  provides=(
+  provides+=(
     libselinux.so
   )
 
