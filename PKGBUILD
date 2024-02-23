@@ -1,17 +1,17 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=succulent
 pkgname=python-${_base}
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Collect POST requests easily"
 arch=(x86_64)
 url="https://github.com/firefly-cpp/${_base}"
 license=(MIT)
-depends=(python-pandas python-yaml python-flask)
+depends=(python-pandas python-yaml python-flask python-xmltodict python-lxml)
 makedepends=(python-build python-installer python-poetry-core python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('e0e9b28543c3e72cd689d9da8f5fe4a8205238bac7f3e6735f8f6a8d4c38905f61bb24581248c06fd4629567b5257a79a3c9fa956ace4347d6f081496070d2c5')
+sha512sums=('e3063f4484a3d2ae7b1fc919b0c9a181c9ad94d3b09db7a43038d39b6a8c6fbc785247e6c5d3b3e63b429405a979cdbf418956e2123c8e29327e87a1cb0dcae5')
 
 build() {
   cd ${_base}-${pkgver}
