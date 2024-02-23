@@ -1,7 +1,7 @@
 # Contributor: dmidge <quelque_ri1 at caramail point fr>
 
 pkgname=ktechlab-git
-pkgver=0.51.0.82.g041fd565
+pkgver=0.51.0.150.g1fd5a2bc
 pkgrel=1
 pkgdesc="IDE for microcontrollers and electronic circuit simulation. (GIT version)"
 arch=('x86_64')
@@ -32,8 +32,11 @@ depends=(
 makedepends=(
   'git'
   'cmake'
+  'extra-cmake-modules'
   'qt5-tools'
 )
+provides=('ktechlab')
+conflicts=('ktechlab')
 source=('git+https://invent.kde.org/sdk/ktechlab.git')
 sha256sums=('SKIP')
 options=('debug')
