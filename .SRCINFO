@@ -1,7 +1,7 @@
 pkgbase = python-wrapt-timeout-decorator
 	pkgdesc = Powerful Timeout Decorator that can be used safely on classes, methods, class methods
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bitranox/wrapt_timeout_decorator
 	arch = any
 	license = MIT

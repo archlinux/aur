@@ -2,7 +2,7 @@
 pkgname=python-wrapt-timeout-decorator
 _name=wrapt_timeout_decorator
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful Timeout Decorator that can be used safely on classes, methods, class methods"
 url="https://github.com/bitranox/wrapt_timeout_decorator"
 depends=(
@@ -24,7 +24,12 @@ test() {
 	make test
 }
 
+build() {
+  cd "$srcdir/$_name-$pkgver"
+  python -m build --wheel --no-isolation
+}
+
 package() {
-	cd "$srcdir/$_name-$pkgver"
-	make install
+  cd "$srcdir/$_name-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
