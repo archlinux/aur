@@ -1,0 +1,15 @@
+pkgbase = plasma5-applets-active-window-control
+	pkgdesc = Plasma applet for controlling the currently active window
+	pkgver = 1.7.3
+	pkgrel = 4
+	url = https://github.com/kotelnik/plasma-applet-active-window-control
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = extra-cmake-modules
+	depends = plasma-workspace
+	depends = qt5-graphicaleffects
+	source = plasma5-applets-active-window-control-1.7.3.tar.gz::https://github.com/kotelnik/plasma-applet-active-window-control/archive/v1.7.3.tar.gz
+	sha256sums = f4662560bffd57155081fb8bb0d82c118204f578c7c681b442e365b6c7d169a9
+
+pkgname = plasma5-applets-active-window-control
