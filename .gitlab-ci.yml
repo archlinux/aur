@@ -1,0 +1,33 @@
+before_script:
+  - apt-get update -y && apt-get install -y sed jq
+
+
+stages:
+  - find_release
+  - test
+  - release
+
+find_release_job:
+  stage: find_release
+  script: ./find_release.sh
+  artifacts:
+    paths:
+      - PKGBUILD
+  only:
+    - schedules
+
+test_job:
+  stage: test
+  script: ./test
+  dependencies:
+    - find_release_job
+  only:
+    - schedules
+
+release_job:
+  stage: release
+  script: ./release
+  dependencies:
+    - find_release_job
+  only:
+    - schedules
