@@ -1,7 +1,7 @@
 pkgbase = nghttp3-git
 	pkgdesc = HTTP/3 library written in C
 	pkgver = r777.36579fd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ngtcp2/nghttp3
 	arch = x86_64
 	license = MIT
