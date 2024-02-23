@@ -3,7 +3,7 @@
 
 pkgname="cyberchef-web"
 pkgver=10.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Cyber Swiss Army Knife - a web app for encryption, encoding, compression and data analysis"
 url="https://gchq.github.io/CyberChef/"
 license=("Apache-2.0")
@@ -19,7 +19,7 @@ options=("!strip")
 package(){
  install -d "$pkgdir/usr/share/webapps/cyberchef"
  install -d "$pkgdir/usr/share/licenses/cyberchef"
- bsdtar --extract --file "$pkgname-$pkgver.zip" --directory "$pkgdir/usr/share/webapps/cyberchef"
+ bsdtar --extract --file "$pkgname-$pkgver.zip" --directory "$pkgdir/usr/share/webapps/cyberchef" --no-same-permissions
  mv "$pkgdir/usr/share/webapps/cyberchef/CyberChef_v$pkgver.html" "$pkgdir/usr/share/webapps/cyberchef/index.html"
  find "$pkgdir/usr/share/webapps/cyberchef/" -type f -name "*LICENSE*" -exec mv {} "$pkgdir/usr/share/licenses/cyberchef" \;
 }

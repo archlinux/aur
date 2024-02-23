@@ -1,7 +1,7 @@
 pkgbase = cyberchef-web
 	pkgdesc = The Cyber Swiss Army Knife - a web app for encryption, encoding, compression and data analysis
 	pkgver = 10.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gchq.github.io/CyberChef/
 	arch = any
 	license = Apache-2.0
