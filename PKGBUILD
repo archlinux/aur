@@ -3,29 +3,34 @@
 # For Issues, Pull Requests
 # https://github.com/phnx47/pkgbuilds
 
-_pkgbin=ledger-live-desktop
+_appname=ledger-live-desktop
 _pkgname=ledger-live
 pkgname="${_pkgname}-git"
 pkgdesc="Maintain your Ledger devices (git-main)"
-pkgver=2.71.0.r0.g0e5d619
+_electron='electron28'
+pkgver=2.77.2.r0.g264cacb
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
 license=('MIT')
-depends=('ledger-udev' 'electron27')
+depends=('ledger-udev' "${_electron}")
 makedepends=('git' 'node-gyp' 'fnm' 'pnpm')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${pkgname}::git+${url}#branch=main"
-        "${_pkgbin}.sh")
+        "${_appname}.sh")
 sha512sums=('SKIP'
-            '9ff546c1becdc64fdb90fde4813386e95da97354a261530a13df7cc4d860e3cac15e65b5abd3e135e1e791d7af643cb6b684eb8a593e4641fba60619dcc9c346')
+            '70effe952d7007e79e43523f5e8d868228eedb5049465c2ebea017f9c8b0b25f82e0c6f56cef59e40479d29149969cde8e7098edf8a0cad7b23a9a123e5f0755')
 
 _fnm_use() {
   export FNM_DIR="${srcdir}/.fnm"
   eval "$(fnm env --shell bash)"
   version="$(awk -F "=" '/node/ {print $2}' .prototools | xargs)"
   fnm use "${version}" --install-if-missing
+}
+
+prepare() {
+  sed -i "s~@ELECTRON@~${_electron}~" "${_appname}.sh"
 }
 
 build() {
@@ -37,21 +42,21 @@ build() {
   pnpm build:lld
 
   # Correct .desktop
-  sed -e "s/AppRun --no-sandbox/${_pkgbin}/g" -i "apps/${_pkgbin}/dist/__appImage-x64/${_pkgbin}.desktop"
-  sed -e "/X-AppImage-Version/d" -i "apps/${_pkgbin}/dist/__appImage-x64/${_pkgbin}.desktop"
+  sed -e "s/AppRun --no-sandbox/${_appname}/g" -i "apps/${_appname}/dist/__appImage-x64/${_appname}.desktop"
+  sed -e "/X-AppImage-Version/d" -i "apps/${_appname}/dist/__appImage-x64/${_appname}.desktop"
 }
 
 package() {
-  install -Dm 755 "${_pkgbin}.sh" "${pkgdir}/usr/bin/${_pkgbin}"
+  install -Dm 755 "${_appname}.sh" "${pkgdir}/usr/bin/${_appname}"
 
-  cd "${pkgname}/apps/${_pkgbin}"
+  cd "${pkgname}/apps/${_appname}"
 
-  install -Dm 644 "dist/__appImage-x64/${_pkgbin}.desktop" "${pkgdir}/usr/share/applications/${_pkgbin}.desktop"
-  install -Dm 755 "dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${_pkgbin}"
+  install -Dm 644 "dist/__appImage-x64/${_appname}.desktop" "${pkgdir}/usr/share/applications/${_appname}.desktop"
+  install -Dm 755 "dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${_appname}"
 
-  install -Dm 644 "build/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${_pkgbin}.png"
+  install -Dm 644 "build/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${_appname}.png"
   for i in 128 256 512 1024; do
-    install -Dm 644 "build/icons/icon@${i}x${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${_pkgbin}.png"
+    install -Dm 644 "build/icons/icon@${i}x${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${_appname}.png"
   done
 
   install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec electron27 /usr/lib/ledger-live-desktop/app.asar "$@"
+exec @ELECTRON@ /usr/lib/ledger-live-desktop/app.asar "$@"
