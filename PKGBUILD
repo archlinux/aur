@@ -39,7 +39,7 @@ build() {
 	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 	go build -v \
 		-ldflags "-linkmode external \
-    -X github.com/theduckcompany/duckcloud/internal/tools/buildinfosj.Version=${pkgver} \
+    -X github.com/theduckcompany/duckcloud/internal/tools/buildinfos.Version=${pkgver} \
     -X github.com/theduckcompany/duckcloud/internal/tools/buildinfos.BuildTime=$(date --utc -Iseconds)" \
 		-o ${pkgname} ./cmd/duckcloud
 }
