@@ -1,0 +1,15 @@
+pkgbase = vitott-git
+	pkgdesc = Multiband compressor from famous spectral warping synthesizer
+	pkgver = r50.fa5f455
+	pkgrel = 1
+	url = https://github.com/edgjj/vitOTT
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	provides = vitott
+	conflicts = vitott
+	source = git+https://github.com/edgjj/vitOTT
+	md5sums = SKIP
+
+pkgname = vitott-git
