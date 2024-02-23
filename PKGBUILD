@@ -11,6 +11,8 @@ provides=('tldr')
 conflicts=('tldr')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 b2sums=('f7e4b8941dd7c3bc9adecd05af4f4ba2536db6bade784dc6dadabdbf09200cda6df75f389c58ced777be962716db3154fa28c1a62522e86c8687805a7295d2af')
+# This is needed for `ring` to compile. See https://github.com/briansmith/ring/issues/1444
+options=('!lto')
 
 prepare() {
     cd "$pkgname-$pkgver"
