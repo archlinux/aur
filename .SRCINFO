@@ -1,0 +1,24 @@
+pkgbase = zswap-cli-git
+	pkgdesc = Command-line tool to control ZSwap Linux kernel module
+	pkgver = 0.9.1.r14.g224fdea
+	pkgrel = 1
+	url = https://github.com/xvitaly/zswap-cli
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	makedepends = ninja
+	makedepends = pandoc
+	depends = boost
+	depends = sdbus-cpp
+	depends = systemd
+	optdepends = fmt: Open-source formatting library for C++
+	optdepends = semver: Semantic versioning for C++
+	provides = zswap-cli
+	conflicts = zswap-cli
+	backup = etc/zswap-cli/zswap-cli.conf
+	source = zswap-cli::git+https://github.com/xvitaly/zswap-cli
+	sha512sums = SKIP
+
+pkgname = zswap-cli-git
