@@ -13,7 +13,7 @@
 
 pkgname=ros2-humble-base
 pkgver=2024.02.22
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of software libraries and tools for building robot applications (base variant)"
 url="https://index.ros.org/p/ros_base/#humble"
 arch=('any')
@@ -58,7 +58,6 @@ prepare() {
     printf "Patching sources\n"
 
     # Missing cstdint includes
-    git -C "$srcdir/ros2/src/ros2/rcpputils" cherry-pick -n f96811a9047fa6a084a885219c88b415bc544487
     git -C "$srcdir/ros2/src/eProsima/Fast-DDS" cherry-pick -n add29f42591fe3d785df727aea128f250040834f
     git -C "$srcdir/ros2/src/ros-tooling/libstatistics_collector" cherry-pick -n 1c340c97c731019d0c7b40f8c167b0ef666bcf75
     git -C "$srcdir/ros2/src/ros2/rclcpp/rclcpp/include/rclcpp" cherry-pick -n 86c77143c96d85711a87f2a5adcc4d7f0fb0dbeb
