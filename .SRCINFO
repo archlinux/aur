@@ -1,0 +1,15 @@
+pkgbase = lofio-git
+	pkgdesc = Lofi hip-hop radio player
+	pkgver = 0.3.0.ad619fca10
+	pkgrel = 1
+	url = https://codeberg.org/dikey0ficial/lofio
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = go
+	conflicts = lofio
+	conflicts = lofio-bin
+	source = git+https://codeberg.org/dikey0ficial/lofio
+	sha256sums = SKIP
+
+pkgname = lofio-git
