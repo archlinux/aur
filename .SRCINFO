@@ -1,6 +1,6 @@
 pkgbase = nghttp3-git
 	pkgdesc = HTTP/3 library written in C
-	pkgver = r152.34a21bf
+	pkgver = r777.36579fd
 	pkgrel = 1
 	url = https://github.com/ngtcp2/nghttp3
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = nghttp3-git
 	md5sums = SKIP
 
 pkgname = nghttp3-git
-

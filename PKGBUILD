@@ -1,7 +1,7 @@
-# Maintainer: Dave Reisner <d@falconindy.com>
+# Maintainer: Atle Solbakken <atle@goliathdns.no>
 
 pkgname=nghttp3-git
-pkgver=r152.34a21bf
+pkgver=r777.36579fd
 pkgrel=1
 pkgdesc="HTTP/3 library written in C"
 arch=('x86_64')
@@ -13,6 +13,26 @@ provides=('nghttp3' 'libnghttp3.so')
 conflicts=('nghttp3')
 source=('git+https://github.com/ngtcp2/nghttp3')
 md5sums=('SKIP')
+
+prepare() {
+  cd nghttp3
+
+  # Download sfparse
+  if [ -f lib/sfparse/sfparse.h ]; then
+    git submodule update lib/sfparse || rm -rf lib/sfparse
+  fi
+  if ! [ -d lib/sfparse ]; then
+    git submodule update --init lib/sfparse
+  fi
+
+  # Download munit
+  if [ -f tests/munit/munit.h ]; then
+    git submodule update tests/munit || rm -rf tests/munit
+  fi
+  if ! [ -d tests/munit ]; then
+    git submodule update --init tests/munit
+  fi
+}
 
 pkgver() {
   cd nghttp3
