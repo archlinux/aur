@@ -1,0 +1,5 @@
+# .gitignore
+pkg/
+src/
+*.pkg.tar.*
+venn-abers-*.tar.gz

@@ -1,0 +1,18 @@
+pkgbase = python-venn-abers
+	pkgdesc = Venn-ABERS calibration for binary and multiclass classification problems
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://pypi.org/project/venn-abers/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-scikit-learn
+	depends = python-catboost
+	source = https://files.pythonhosted.org/packages/51/18/e048732debc82755ce6349a3c4a212092008530a665f454984c51613862c/venn-abers-1.4.1.tar.gz
+	sha256sums = f091c994948dace6e800dc4e072c3e2b74f3e015c644702fbdabc597bebc3788
+
+pkgname = python-venn-abers
