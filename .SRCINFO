@@ -1,0 +1,17 @@
+pkgbase = rexi
+	pkgdesc = Terminal UI for Regex Testing
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/royreznik/rexi
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-typer
+	depends = python-textual
+	depends = python-colorama
+	source = rexi-1.1.2.tar.gz::https://github.com/royreznik/rexi/archive/refs/tags/v1.1.2.tar.gz
+	sha512sums = b6a1eba0c394d6e2abbc8aec85ca420adf024ee5a5cfefeb678a853968ee12ca78e8a4bbda9e43651e846da13dda78e740c2815e6bbc315ab18479975d780f9d
+
+pkgname = rexi
