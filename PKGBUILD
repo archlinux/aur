@@ -17,9 +17,10 @@ pkgrel=1
 pkgdesc="A software application used to segment structures in 3D medical images"
 arch=('x86_64')
 url="https://www.itksnap.org"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=(
   curl
+  gcc-libs
   expat
   glibc
   hdf5
@@ -121,7 +122,11 @@ package() {
   # make DESTDIR=${pkgdir} -C ${srcdir}/build install
 
   # we install all the files manaully by extracting the tarball to destdir
-  mkdir -p ${pkgdir}/usr
-  tar xfv ${srcdir}/build/*.tar.gz -C ${pkgdir}/usr --strip-components 1
+  mkdir -p ${srcdir}/destdir
+  tar xfv ${srcdir}/build/*.tar.gz -C ${srcdir}/destdir --strip-components 1
+  cp -r ${srcdir}/destdir ${pkgdir}/usr
+
+  install -Dm644 "${srcdir}/${pkgname}/GUI/Qt/Resources/logo_square.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+  install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
 # vim:set ts=2 sw=2 et:
