@@ -1,6 +1,6 @@
 pkgbase = ddcui
 	pkgdesc = Graphical user interface for ddcutil - control monitor settings
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/rockowitz/ddcui
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = ddcui
 	depends = glib2
 	depends = hicolor-icon-theme
 	depends = qt5-base
-	source = ddcui-0.5.3.tar.gz::https://github.com/rockowitz/ddcui/archive/refs/tags/v0.5.3.tar.gz
-	sha256sums = 82a6765714620a2bcc8300d62d000d57dbbcb9b364ef1751fd529c62e6bcfc96
+	source = ddcui-0.5.4.tar.gz::https://github.com/rockowitz/ddcui/archive/refs/tags/v0.5.4.tar.gz
+	sha256sums = a20a0f6014c1125392b0da2b3c7f756c3f20f39552d5ae6d64f6256fcdd78242
 
 pkgname = ddcui
