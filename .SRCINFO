@@ -1,7 +1,7 @@
 pkgbase = qdirstat
 	pkgdesc = Qt-based directory statistics (KDirStat/K4DirStat without any KDE - from the original KDirStat author)
 	pkgver = 1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shundhammer/qdirstat
 	install = qdirstat.install
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = qdirstat
 	depends = xdg-utils
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
+	optdepends = perl: For use with scripts
 	conflicts = qdirstat-git
 	source = qdirstat-1.9.tar.gz::https://github.com/shundhammer/qdirstat/archive/1.9.tar.gz
 	sha256sums = 5a9abda2dbdca3d012d1d9ce7a601abf89e2af77d677f1e5d613f53fb7ad19ff
