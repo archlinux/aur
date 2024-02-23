@@ -42,7 +42,7 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # NOTE: check() with `pdm run test` deliberately not included. Too much of a
