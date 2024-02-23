@@ -2,13 +2,13 @@
 pkgbase=vpkedit
 pkgname=(vpkedit libvpkeditc)
 pkgver=4.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A library and CLI/GUI tool to create, read, and write several pack file formats"
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKEdit"
 license=('MIT')
 depends=('gcc-libs' 'glibc')
-makedepends=('cmake' 'git' 'gcc')
+makedepends=('cmake' 'git' 'gcc' 'qt6-tools')
 source=("$pkgname::git+$url.git#tag=v${pkgver}"
 		"argparse::git+https://github.com/p-ranav/argparse.git"
 		"vtflib::git+https://github.com/StrataSource/VTFLib.git"
