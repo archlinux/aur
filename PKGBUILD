@@ -1,11 +1,12 @@
 pkgname=arch-os-manager
-pkgver=r27.b7ba867
+pkgver=r37.dad8e0e
 pkgrel=1
 pkgdesc="Arch OS System Manager"
 arch=('any')
 url="https://github.com/murkl/arch-os-manager"
 license=('GPL2')
-depends=('paru' 'kitty' 'gum' 'libnotify' 'ttf-firacode-nerd')
+depends=('paru' 'pacman-contrib' 'kitty' 'gum' 'libnotify' 'ttf-firacode-nerd')
+optdepends=('downgrade: Add support for downgrading packages' 'flatpak: Add support for flatpak')
 makedepends=('git')
 source=(arch-os.desktop $pkgname::git+$url.git)
 sha256sums=('SKIP' 'SKIP')
