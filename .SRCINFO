@@ -1,0 +1,18 @@
+pkgbase = cotp-git
+	pkgdesc = Trustworthy, encrypted, command-line TOTP/HOTP authenticator app with import functionality
+	pkgver = 1.4.5.r1.g16963ad
+	pkgrel = 1
+	url = https://github.com/replydev/cotp
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	makedepends = python
+	depends = libxcb
+	depends = libxkbcommon-x11
+	provides = cotp=1.4.5.r1.g16963ad
+	conflicts = cotp
+	source = git+https://github.com/replydev/cotp.git
+	sha256sums = SKIP
+
+pkgname = cotp-git
