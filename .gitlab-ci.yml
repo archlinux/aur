@@ -1,5 +1,7 @@
+image: manjarolinux/base:latest
+
 before_script:
-  - apt-get update -y && apt-get install -y sed jq pacman
+  - pamac checkupdates -a && pamac install --no-confirm sed jq pacman
 
 
 stages:
