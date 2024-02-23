@@ -3,7 +3,7 @@ pkgname=batch-explorer-bin
 _pkgname=BatchExplorer
 pkgver=2.20.0_stable.966
 _electronversion=26
-pkgrel=1
+pkgrel=2
 pkgdesc="A client tool to help create, debug and monitor Azure Batch Applications"
 arch=("x86_64")
 url="https://azure.github.io/BatchExplorer/"
@@ -13,43 +13,22 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'nspr'
-    'libxfixes'
-    'libxcb'
     'alsa-lib'
-    'at-spi2-core'
-    'readline'
-    'libxshmfence'
-    'libdrm'
     'hicolor-icon-theme'
-    'pango'
-    'cairo'
     'gtk3'
-    'gdk-pixbuf2'
-    'libxkbcommon'
-    'util-linux-libs'
-    'expat'
-    'libcups'
-    'libxext'
-    'libxrandr'
-    'bzip2'
-    'openssl-1.1'
-    'mesa'
-    'libx11'
     'nss'
-    'libxcomposite'
-    'xz'
-    'libxdamage'
-    'python'
+    'python>=3'
     'libsecret'
+    'openssl-1.1'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/-}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Azure/BatchExplorer/v${pkgver//_/-}/LICENSE"
 )
 sha256sums=('2d4a1b57f8c3d83e47233f533d71340aeaac11c3e03be0beea0fd6a49c7acb60'
-            '0b9ebab8a849f3ae8ed5bd7a35022bff9dce901efeeb53e855e91c02c8500ab0')
+            'dc29d357de1062b08fc17550d1e2a2eb75557a14cf996ca4c81c3fc828c96967')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin} --no-sandbox %U|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
