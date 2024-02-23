@@ -1,6 +1,6 @@
 # Maintainer: sunplan
 pkgname=hotdog
-pkgver=20230813
+pkgver=20240222
 pkgrel=1
 pkgdesc='X11 Window Manager with Windows 3.1 Hot Dog Stand, Amiga Workbench, Atari ST GEM, Mac Classic and Aqua UI'
 arch=('x86_64')
@@ -16,8 +16,8 @@ optdepends=(
 	'feh: Aqua mode wallpaper'
 )
 source=("https://hotdoglinux.com/download/HOTDOGbuntu_${pkgver}_amd64.deb")
-md5sums=('e3e8eb5e1cb03be3aec07bf2b54a328f')
-sha256sums=('d3e12d9cafc49b036c5252a7caed23559d671801baefaf295b5a50598f2cb631')
+md5sums=($(curl "https://hotdoglinux.com/download/HOTDOGbuntu_${pkgver}_amd64.deb.md5" | cut -f1 -d' '))
+sha256sums=('56ce2f715daedcbef03b332d87963763bf44db8bc44fb8726829162b2548a353')
 
 package() {
 	tar xf data.tar.xz
