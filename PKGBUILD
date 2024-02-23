@@ -4,13 +4,17 @@
 
 pkgname=crowdsec
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source and collaborative security suite"
 arch=('x86_64')
 url="https://www.crowdsec.net"
 license=('MIT')
 depends=('bash' 'gcc-libs' 'glibc' 're2')
 makedepends=('go')
+backup=(etc/crowdsec/{acquis,config,console,profiles,simulation}.yaml
+        etc/crowdsec/{local_api_credentials,online_api_credentials}.yaml
+        etc/crowdsec/console/context.yaml
+        etc/crowdsec/notitications/{email,http,sentinel,slack,splunk}.yaml)
 install=crowdsec.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crowdsecurity/crowdsec/archive/refs/tags/v${pkgver}.tar.gz"
         'crowdsec.install')
