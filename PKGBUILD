@@ -1,6 +1,6 @@
 pkgname=gspot-git
 _pkgname=gspot
-pkgver=0.0.17.r0.g86c2c38
+pkgver=0.0.20.r0.gdc2c74d
 pkgrel=1
 pkgdesc='Spotify TUI And CLI written in Go'
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
+  cd "${_pkgname}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -23,7 +23,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  go build -buildmode=pie -trimpath -ldflags="-linkmode=external -s -w -X 'git.asdf.cafe/abs3nt/${_pkgname}/src/components/cli.Version=v${pkgver}'" -mod=readonly -modcacherw ./cmd/gspot
+  go build -buildmode=pie -trimpath -ldflags="-linkmode=external -s -w -X 'git.asdf.cafe/abs3nt/${_pkgname}/src/components/cli.Version=v${pkgver}'" -mod=readonly -modcacherw .
 }
 
 package() {
