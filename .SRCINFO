@@ -1,0 +1,18 @@
+pkgbase = krokiet-bin
+	pkgdesc = Find and manage duplicate files, empty folders, similar images, and other "lint" (Slint GUI of Czkawka, with HEIF support)
+	pkgver = 7.0.0
+	pkgrel = 1
+	url = https://github.com/qarmin/czkawka
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	provides = krokiet
+	conflicts = krokiet
+	source = krokiet-bin-7.0.0::https://github.com/qarmin/czkawka/releases/download/7.0.0/linux_krokiet_libraw_heif
+	source = LICENSE-7.0.0::https://github.com/qarmin/czkawka/raw/7.0.0/krokiet/LICENSE
+	source = krokiet-bin-7.0.0.png::https://raw.githubusercontent.com/qarmin/czkawka/7.0.0/krokiet/icons/logo.png
+	sha256sums = 8ba83b45a739dd2173eabe8939d03f04f65e4253320bf73eca79acdd52084435
+	sha256sums = 21053c41478ede01bcacd3e2306410b4555a236d189aa0492d9387dee70ff4e0
+	sha256sums = b95b69cf799b047fa9a234c28236afc0bbef4d90327034a5de9ead3d60ea0e9a
+
+pkgname = krokiet-bin
