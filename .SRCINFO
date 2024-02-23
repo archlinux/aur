@@ -23,4 +23,5 @@ pkgbase = libsepol
 	sha256sums = SKIP
 
 pkgname = libsepol
+	provides = selinux-usr-libsepol=3.6-2
 	provides = libsepol.so

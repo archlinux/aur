@@ -36,7 +36,7 @@ build() {
 }
 
 package() {
-  provides=(
+  provides+=(
     libsepol.so
   )
 
