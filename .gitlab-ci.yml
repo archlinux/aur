@@ -1,5 +1,5 @@
 before_script:
-  - apt-get update -y && apt-get install -y sed jq
+  - apt-get update -y && apt-get install -y sed jq pacman
 
 
 stages:
