@@ -28,6 +28,6 @@ package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     mkdir -p "$pkgdir/usr/share/notion-calendar-electron"
     mkdir -p "$pkgdir/usr/bin"
-    cp -r "dist/linux-unpacked" "$pkgdir/usr/share/notion-calendar-electron"
-    ln -s "$pkgdir/usr/share/notion-calendar-electron/linux-unpacked/notion-calendar-electron" "$pkgdir/usr/bin/"
+    cp -r "dist/linux-unpacked"/* "$pkgdir/usr/share/notion-calendar-electron"
+    cp -P "${srcdir}/${pkgname}-${pkgver}/notion-calendar-electron" "$pkgdir/usr/bin/"
 }
