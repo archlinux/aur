@@ -79,8 +79,8 @@ _subarch=
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
 
-pkgbase=linux-bcachefs-git
-pkgver=6.7.0.rc7.1.bcachefs.git.00190.gf3608cbdfd42.dirty
+pkgbase=linux-custom-bcachefs-git
+pkgver=6.8.0.rc1.1.custom.bcachefs.git.00128.g28567b4f9a1b
 pkgrel=1
 pkgdesc="Linux"
 url="https://github.com/koverstreet/bcachefs"
@@ -110,7 +110,7 @@ _srcname="linux-bcachefs"
 _src_url="https://github.com/koverstreet/bcachefs.git"
 _srcname_kernel_patch="kernel_compiler_patch"
 _src_url_kernel_patch="https://github.com/graysky2/${_srcname_kernel_patch}.git"
-_kernel_patch_name="more-uarches-for-kernel-5.17+.patch"
+_kernel_patch_name="more-uarches-for-kernel-6.1.79-6.8-rc3.patch"
 
 _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 
@@ -132,15 +132,15 @@ source=(
 validpgpkeys=(
     ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
     647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
-    A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
+    83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
 sha256sums=('SKIP'
             'SKIP'
-            '192c694a31f30052fd41450d02330873d368adab981eacb724c4348a556ecd6d')
+            'f4479dfcb2c0e6661d3fbd466e44f016bda1668deb6a396072abfd9c3994d8dc')
 b2sums=('SKIP'
         'SKIP'
-        'aaa980d95fd19960ab8e6ee7aad0d3f379952bb2286ee46f42db03087c1434bfe614f73b4147dca7939a013850796eff678aa7ed632417a2f68aaeb294373e4f')
+        'dae82c5455fdc948c31e5ed3521c828ba6b8e78745b84e02a63a0a26c5a6379a9aef26b6a974946a767ff1d3597a70a1bb2a247db85c18170f20bbd3bb780501')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -153,14 +153,14 @@ prepare() {
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
-    FullPatchesArray=(
-        $_srcname_kernel_patch/$_kernel_patch_name
-    )
-    for MyPatch in "${FullPatchesArray[@]}"
-    do
-        msg2 "Applying patch $MyPatch..."
-        patch -Np1 -i "$srcdir/$MyPatch"
-    done
+    #FullPatchesArray=(
+    #    $_srcname_kernel_patch/$_kernel_patch_name
+    #)
+    #for MyPatch in "${FullPatchesArray[@]}"
+    #do
+    #    msg2 "Applying patch $MyPatch..."
+    #    patch -Np1 -i "$srcdir/$MyPatch"
+    #done
 
     msg2 "Setting config..."
     cp ../config .config
