@@ -8,6 +8,7 @@ pkgdesc="Typewolf's curated collection of the 40 best fonts from the Google Font
 arch=('any')
 url='https://www.typewolf.com/google-fonts'
 license=('OFL-1.1-no-RFN' 'OFL-1.1-RFN')
+checkdepends=('fontconfig')
 provides=(
 	'ttf-alegreya' # OFL-1.1-no-RFN
 	'ttf-alegreya-sans' # OFL-1.1-no-RFN
@@ -80,8 +81,15 @@ _ignore=(
 source=("$pkgname-$pkgver.tar.gz::https://github.com/google/fonts/archive/$_commit.tar.gz")
 sha512sums=('df2467e8a863c5132f73f3233290c0ed1d00c037e36dc10bbafbd97836860705ad7138b473287d44d1cc3e39821ace7a4ebc416a7e8afe93ab792ef84ae66049')
 
+_sourcedirectory="fonts-$_commit"
+
+check() {
+	# Test one font
+	fc-scan "$srcdir/$_sourcedirectory/ofl/alegreya/Alegreya[wght].ttf" | tee '/dev/stderr' | grep -q 'family: "Alegreya"'
+}
+
 package() {
-	cd "$srcdir/fonts-$_commit/"
+	cd "$srcdir/$_sourcedirectory/"
 
 	install -Dm644 'ofl/alegreya/OFL.txt' "$pkgdir/usr/share/licenses/$pkgname/OFL-1.1-no-RFN"
 	install -Dm644 'ofl/ibmplexsans/OFL.txt' "$pkgdir/usr/share/licenses/$pkgname/OFL-1.1-RFN"

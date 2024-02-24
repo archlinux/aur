@@ -6,6 +6,7 @@ pkgbase = ttf-google-fonts-typewolf
 	arch = any
 	license = OFL-1.1-no-RFN
 	license = OFL-1.1-RFN
+	checkdepends = fontconfig
 	provides = ttf-alegreya
 	provides = ttf-alegreya-sans
 	provides = ttf-archivo-narrow
