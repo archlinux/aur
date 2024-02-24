@@ -1,12 +1,14 @@
 pkgbase = eudaemon-git
 	pkgdesc = Monitor and log activity, improve awareness and empower user to improve it's habits.
-	pkgver = r48.9142a17
+	pkgver = r52.899bac4
 	pkgrel = 1
 	url = https://github.com/danisztls/eudaemon
 	install = eudaemon.install
 	arch = any
 	license = GPLv3
 	makedepends = git
+	makedepends = python-poetry
+	makedepends = python-setuptools
 	depends = python
 	depends = dbus-python
 	provides = eudaemon

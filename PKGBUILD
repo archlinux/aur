@@ -4,14 +4,14 @@ _gitauthor="danisztls"
 _gitbranch="main"
 
 pkgname="${_pkgname}-git"
-pkgver=r48.9142a17
+pkgver=r52.899bac4
 pkgrel=1
 pkgdesc="Monitor and log activity, improve awareness and empower user to improve it's habits."
 arch=('any')
 url="https://github.com/danisztls/eudaemon"
 license=('GPLv3')
 depends=('python' 'dbus-python')
-makedepends=('git')
+makedepends=('git' 'python-poetry' 'python-setuptools')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 install="${_pkgname}.install"
@@ -27,9 +27,14 @@ pkgver() {
   )
 }
 
+build() {
+  cd "$srcdir/$_pkgname"
+  poetry build 
+}
+
 package() {
   cd "$srcdir/$_pkgname"
-  install -Dm  755 "${_pkgname}/__init__.py" "${pkgdir}/usr/bin/${_pkgname}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -vDm 644 "${_pkgname}.service" "${pkgdir}/usr/lib/systemd/user/${_pkgname}.service"
   install -vDm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   install -vDm 644 "README.md" -t "${pkgdir}/usr/share/doc/${_pkgname}"
