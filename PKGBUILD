@@ -1,7 +1,7 @@
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=pyprland
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="Customize your Hyprland with scratchpads, menus, easy monitor layout and other extensions"
 arch=(any)
