@@ -1,0 +1,11 @@
+# Copy, move or symlink this file in /etc/pacman.d/hooks to force a restart when audiobookshelf is updated.
+
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = audiobookshelf-git
+
+[Action]
+Description = Restarting audiobookshelf...
+When = PostTransaction
+Exec = /usr/bin/systemctl try-restart audiobookshelf.service
