@@ -4,7 +4,7 @@
 # Bruno Pagani <archange@archlinux.org>
 # Caleb Maclennan <caleb@alerque.com>
 
-pkgver=28
+pkgver=29
 pkgrel=1
 pkgname=electron-bin
 pkgdesc='Meta package, always depends on the latest stable Electron binary build'
