@@ -1,13 +1,13 @@
 pkgbase = k6-bin
 	pkgdesc = A modern load testing tool, using Go and JavaScript (precompiled)
-	pkgver = 0.47.0
+	pkgver = 0.49.0
 	pkgrel = 1
 	url = https://github.com/k6io/k6
 	arch = x86_64
 	license = AGPL3
-	provides = k6={0.47.0}
+	provides = k6={0.49.0}
 	options = !emptydirs
-	source = https://github.com/k6io/k6/releases/download/v0.47.0/k6-v0.47.0-linux-amd64.tar.gz
-	sha256sums = 596775ba04aa1ea0fa1a50dae465747d47e198f74721f561d4e38f87a700a3ca
+	source = https://github.com/k6io/k6/releases/download/v0.49.0/k6-v0.49.0-linux-amd64.tar.gz
+	sha256sums = dfd2aa17447af748cde3a536deaa989f43ab672af589fac00fb542e82b17c361
 
 pkgname = k6-bin
