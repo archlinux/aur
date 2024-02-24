@@ -1,6 +1,6 @@
 pkgbase = xmcl-launcher-bin
 	pkgdesc = X Minecraft Launcher - Modern Minecraft Launcher
-	pkgver = 0.39.14
+	pkgver = 0.41.2
 	pkgrel = 1
 	url = https://xmcl.app/
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = xmcl-launcher-bin
 	optdepends = jre8-openjdk: For old versions of minecraft
 	optdepends = jre11-openjdk: Recommended for Minecraft 1.12(17w13a)-1.17(21w18a)
 	optdepends = jre17-openjdk: Recommended for Minecraft above 1.17(21w19a)
-	source = https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.39.14/app-0.39.14-linux.asar
+	source = https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.41.2/app-0.41.2-linux.asar
 	source = xmcl.png
 	source = xmcl.desktop
-	sha256sums = c516910aa788dc01b59e42d9ec1890e9df93e39e5220de116677a4514e52c6dd
+	sha256sums = ac9f48fe6062047037702da98231b8c216fbc0a55a0a5ea6b8a206d701593cc9
 	sha256sums = 7292bbcf951bba1e34d265925c1ca5f786198a3b289a081e134e0e59b743e742
 	sha256sums = 7504507abe2efdd4e103c12efa028a093852d7c17e85377e1f07efe93fd52de2
 
