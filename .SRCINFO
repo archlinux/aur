@@ -1,0 +1,13 @@
+pkgbase = dbrest-bin
+	pkgdesc = Spin up a REST API for any Major Database
+	pkgver = 0.0.68
+	pkgrel = 1
+	url = https://flarco.gitbook.io/dbrest
+	arch = x86_64
+	license = GPL
+	provides = dbrest
+	conflicts = dbrest
+	source = dbrest-bin-0.0.68.tgz::https://github.com/dbrest-io/dbREST/releases/download/v0.0.68/dbrest_linux_amd64.tar.gz
+	sha256sums = 303466ab6484ce53a174626961ab00c3ca37087e05f04e0e7cb63e1d16ae7925
+
+pkgname = dbrest-bin
