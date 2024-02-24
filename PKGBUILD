@@ -2,8 +2,8 @@
 
 _gitname=waylogout
 pkgname="$_gitname-git"
-pkgver=r31.8470e0a
-pkgrel=2
+pkgver=r33.2ab8b21
+pkgrel=1
 pkgdesc="A lock/logout/suspend/reboot/poweroff dialog for Wayland."
 arch=('x86_64')
 url="https://github.com/loserMcloser/$_gitname"
