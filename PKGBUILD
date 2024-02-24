@@ -2,7 +2,7 @@
 
 pkgname=fav-git
 _pkgname="${pkgname%-git}"
-pkgver=v0.1.13.r14.g289bf7f
+pkgver=v0.2.4.r0.g87f9127
 # _tag="$(git -C "$_pkgname" describe --tags --abbrev=0)"
 _commit="$(git -C "$_pkgname" log -1 --pretty=format:%H)"
 pkgrel=1
