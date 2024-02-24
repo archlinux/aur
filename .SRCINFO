@@ -1,6 +1,6 @@
 pkgbase = spotify-edge
 	pkgdesc = A proprietary music streaming service. Edge version.
-	pkgver = 1.2.26.1187
+	pkgver = 1.2.31.1205
 	pkgrel = 1
 	url = https://www.spotify.com
 	arch = x86_64
@@ -24,10 +24,10 @@ pkgbase = spotify-edge
 	source = spotify.sh
 	source = spotify.protocol
 	source = LICENSE
-	source = https://api.snapcraft.io/api/v1/snaps/download/pOBIoZ2LrCB3rDohMxoYGnbN14EHOgD7_74.snap
+	source = https://api.snapcraft.io/api/v1/snaps/download/pOBIoZ2LrCB3rDohMxoYGnbN14EHOgD7_75.snap
 	sha512sums = da48b628a4ea925dd8521133ebf364b261b11aed252d264dde6605d915cdb631919ffe672c58534bcdb60869e5d87a49a60a8198780b99517123f0031e83fdb1
 	sha512sums = 999abe46766a4101e27477f5c9f69394a4bb5c097e2e048ec2c6cb93dfa1743eb436bde3768af6ba1b90eaac78ea8589d82e621f9cbe7d9ab3f41acee6e8ca20
 	sha512sums = 2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615
-	sha512sums = 32ebab9f88a1e78a154ef2c6b917d33c280649122613c3b44b993b819e14b60af3dd32a056bb6163d01795d3fcbfea8b71f22bad8c22c49cb6586baeafd1348e
+	sha512sums = a3888b71b36a6ecc68f5824ccb44973bb51dbf808c86105cb1fe7752ea9628515663f8ca54df8b6fe741ec97fdf94a30a666eb3f8e30f7b3a2f9d9db7c55d88d
 
 pkgname = spotify-edge
