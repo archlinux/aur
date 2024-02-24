@@ -1,7 +1,7 @@
 pkgbase = hypridle
 	pkgdesc = Hyprland's idle daemon
 	pkgver = 0.1.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/hyprwm/hypridle
 	arch = any
 	license = BSD
@@ -20,6 +20,6 @@ pkgbase = hypridle
 	provides = hypridle
 	conflicts = hypridle-git
 	source = hypridle-0.1.0.tar.gz::https://github.com/hyprwm/hypridle/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 142cceacd91bf7f0bf6ae0e4e298f7375a5c6d38216756062e415dbf93f3b317
 
 pkgname = hypridle

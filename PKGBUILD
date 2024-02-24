@@ -3,7 +3,7 @@
 
 pkgname="hypridle"
 pkgver=0.1.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Hyprland's idle daemon"
 arch=(any)
 url="https://github.com/hyprwm/hypridle"
@@ -14,7 +14,7 @@ _archive="${pkgname}-$pkgver"
 source=("$_archive.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 conflicts=("${pkgname}-git")
 provides=(hypridle)
-sha256sums=('SKIP')
+sha256sums=('142cceacd91bf7f0bf6ae0e4e298f7375a5c6d38216756062e415dbf93f3b317')
 
 build() {
 	cd "$_archive"
