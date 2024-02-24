@@ -1,7 +1,7 @@
 # Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=nym-wallet
-pkgver=1.2.9
+pkgver=1.2.12
 pkgrel=1
 pkgdesc='The next generation of privacy infrastructure (Nym Wallet)'
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('libappindicator-gtk3: system tray support')
 makedepends=('git' 'cargo' 'nodejs' 'npm' 'yarn' 'patchelf')
 source=()
 sha512sums=()
-_datadir="target/release/bundle/deb/nym-wallet_${pkgver}_amd64/data"
+_datadir="src-tauri/target/release/bundle/deb/nym-wallet_${pkgver}_amd64/data"
 
 prepare() {
     # NOTE: Build process requires cloned git repo
