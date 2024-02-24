@@ -1,7 +1,7 @@
 pkgbase = audiobookshelf
 	pkgdesc = Self-hosted audiobook server for managing and playing audiobooks
 	pkgver = v2.8.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/advplyr/audiobookshelf
 	arch = any
 	license = GPL3
@@ -21,10 +21,10 @@ pkgbase = audiobookshelf
 	source = audiobookshelf.sysusers
 	source = audiobookshelf.tmpfiles
 	md5sums = SKIP
-	md5sums = de5fab845f7f96b49956c7dc21268593
-	md5sums = 749322fc2b48a839a79a638d879e77a4
-	md5sums = ce89e5d2ce27de70b5e6b53cbaf595f0
-	md5sums = 63619dfc5bb5b2dbecfb1d6037095338
-	md5sums = 90e34ac4e5a79f71af3eaab8cebf1198
+	md5sums = 4832a71a50f33831b6b4be53555e05f5
+	md5sums = 3c4d1ab715f9221cb625b8248e3023df
+	md5sums = ed4711d3ce7d76fc173fb0e10915b80c
+	md5sums = f8a4833710760dd16a89906052dff322
+	md5sums = b741beeaf0fc232734c9d20ee5b988aa
 
 pkgname = audiobookshelf

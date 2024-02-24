@@ -2,7 +2,7 @@
 # Based on PKGBUILD by Kevin S <aur@eldenring.mozmail.com>
 pkgname=audiobookshelf
 pkgver=v2.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Self-hosted audiobook server for managing and playing audiobooks"
 arch=('any')
 url="https://github.com/advplyr/audiobookshelf"
@@ -16,7 +16,7 @@ backup=('etc/conf.d/audiobookshelf')
 options=(!strip)
 
 source=(
-    "git+${url}#tag=${pkgver}"
+	"git+${url}#tag=${pkgver}"
 	'audiobookshelf.conf.d'
 	'audiobookshelf.hook'
 	'audiobookshelf.service'
@@ -26,11 +26,11 @@ source=(
 
 md5sums=(
 	'SKIP'
-	'de5fab845f7f96b49956c7dc21268593'
-	'749322fc2b48a839a79a638d879e77a4'
-	'ce89e5d2ce27de70b5e6b53cbaf595f0'
-    '63619dfc5bb5b2dbecfb1d6037095338'
-    '90e34ac4e5a79f71af3eaab8cebf1198'
+	'4832a71a50f33831b6b4be53555e05f5'
+	'3c4d1ab715f9221cb625b8248e3023df'
+	'ed4711d3ce7d76fc173fb0e10915b80c'
+	'f8a4833710760dd16a89906052dff322'
+	'b741beeaf0fc232734c9d20ee5b988aa'
 )
 
 prepare() {    
@@ -60,7 +60,7 @@ build() {
 package() {
 	cd "${srcdir}/${pkgname}"
 
-    install -d -m 755 "${pkgdir}/usr/bin"
+	install -d -m 755 "${pkgdir}/usr/bin"
 	"${srcdir}/${pkgname}"/node_modules/.bin/pkg -t node16-linux -o "${pkgdir}/usr/share/audiobookshelf/audiobookshelf" . 
 	install -D -m 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -D -m 644 "${srcdir}/audiobookshelf.conf.d" "${pkgdir}/etc/conf.d/audiobookshelf"

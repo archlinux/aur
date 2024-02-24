@@ -5,8 +5,8 @@ Requires=network.target
 [Service]
 Type=simple
 EnvironmentFile=/etc/conf.d/audiobookshelf
-WorkingDirectory=/usr/share/audiobookshelf
-ExecStart=/usr/share/audiobookshelf/audiobookshelf
+WorkingDirectory=/var/lib/audiobookshelf
+ExecStart=/usr/bin/audiobookshelf
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=always
 User=audiobookshelf

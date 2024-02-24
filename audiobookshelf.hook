@@ -3,7 +3,7 @@
 [Trigger]
 Operation = Upgrade
 Type = Package
-Target = audiobookshelf-git
+Target = audiobookshelf
 
 [Action]
 Description = Restarting audiobookshelf...
