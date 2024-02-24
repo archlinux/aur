@@ -26,7 +26,7 @@ check() {
 	python -m unittest discover --verbose
 
 	# Verify that the basic functionality works
-	python -m "$_projectname" -h | tee '/dev/stderr' | grep -q 'show this help message and exit$'
+	python -B -m "$_projectname" -h | tee '/dev/stderr' | grep -q 'show this help message and exit$'
 }
 
 package() {
