@@ -1,9 +1,10 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="libcorecrypto"
-# curl -s https://developer.apple.com/security/ | grep 'rel="/file/?file=security&agree=Yes"' | cut -d "(" -f2 | cut -d ")" -f1 | grep -o '[0-9]\+'
+# when apple breaks the checksum, run 
+#    curl -s https://developer.apple.com/security/ | grep 'rel="/file/?file=security&agree=Yes"' | cut -d "(" -f2 | cut -d ")" -f1 | grep -o '[0-9]\+'
 pkgver=2022
-pkgrel=2
+pkgrel=3
 pkgdesc="Library implementing Apple low-level cryptographic primitives"
 url="https://developer.apple.com/security/"
 license=("custom")
@@ -47,6 +48,10 @@ prepare(){
  b2sum --check --quiet "corecrypto.zip.b2" || return 1
  echo "    corecrypto.zip. ... Passed"
  bsdtar --extract --file "corecrypto.zip"
+ # avoid errors, as per https://github.com/NyaMisty/AltServer-Linux/ 
+ sed '/corecrypto_perf\|corecrypto_test/d' -i "corecrypto/build/CMakeFiles/Makefile2"
+ # avoid errror, as per https://aur.archlinux.org/packages/libcorecrypto-git
+ sed 's|CC_MARK_MEMORY_PUBLIC|//&|' -i "corecrypto/ccrng/src/ccrng_entropy.c"
 }
 
 build(){
@@ -59,9 +64,7 @@ build(){
         -DCMAKE_BUILD_TYPE="Release" \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_INSTALL_LIBDIR="lib" \
-        -Wno-dev \
- # avoid errors, as per https://github.com/NyaMisty/AltServer-Linux/ 
- sed '/corecrypto_perf\|corecrypto_test/d' -i "build/CMakeFiles/Makefile2"
+        -Wno-dev
  cmake --build "build" -j "$(nproc)"
 }
 

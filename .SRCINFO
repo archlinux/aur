@@ -1,7 +1,7 @@
 pkgbase = libcorecrypto
 	pkgdesc = Library implementing Apple low-level cryptographic primitives
 	pkgver = 2022
-	pkgrel = 2
+	pkgrel = 3
 	url = https://developer.apple.com/security/
 	arch = x86_64
 	arch = armv7h
