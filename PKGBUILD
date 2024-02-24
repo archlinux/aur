@@ -2,13 +2,13 @@
 
 _pkgname=backintime
 pkgname=($_pkgname-git $_pkgname-cli-git)
-pkgver=1.4.1.r24.g2f7b6099
+pkgver=1.4.3.r18.g61e4a4b0
 pkgrel=1
 url=https://github.com/bit-team/backintime
 license=(GPL)
 arch=(any)
 makedepends=(git openssh python-dbus python-keyring rsync systemd xorg-xdpyinfo)
-checkdepends=(python-pyfakefs python-pylint python-pyqt5)
+checkdepends=(python-pyfakefs python-pylint python-pyqt6)
 source=($_pkgname::git+$url.git)
 sha256sums=('SKIP')
 
@@ -45,9 +45,9 @@ package_backintime-cli-git() {
 }
 
 package_backintime-git() {
-  pkgdesc='Simple backup/snapshot system inspired by Flyback and TimeVault. Qt5 GUI version.'
-  #depends=(backintime-cli    libnotify polkit python-dbus python-pyqt5 xorg-xdpyinfo)
-  depends=(backintime-cli-git libnotify polkit python-dbus python-pyqt5 xorg-xdpyinfo)
+  pkgdesc='Simple backup/snapshot system inspired by Flyback and TimeVault. Qt6 GUI version.'
+  #depends=(backintime-cli    libnotify polkit python-dbus python-pyqt6 xorg-xdpyinfo)
+  depends=(backintime-cli-git libnotify polkit python-dbus python-pyqt6 xorg-xdpyinfo)
   optdepends=('kompare: diff tool'
               'meld: diff tool'
               'python-secretstorage: store passwords')
