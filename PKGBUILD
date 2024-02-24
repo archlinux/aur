@@ -4,7 +4,7 @@ _pkgname=diceR
 _pkgver=2.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Diverse Cluster Ensemble in R"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -32,6 +32,7 @@ depends=(
 )
 checkdepends=(
   r-apcluster
+  r-blockcluster
   r-dbscan
   r-e1071
   r-kernlab
