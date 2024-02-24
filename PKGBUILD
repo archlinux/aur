@@ -1,12 +1,12 @@
 pkgname=waylyrics
 pkgver=0.2.11
-pkgrel=1
+pkgrel=2
 pkgdesc="the furry way to show desktop lyrics"
 arch=("x86_64")
 url="https://waylyrics.github.io/waylyrics/waylyrics/"
 license=("MIT")
 depends=(
-    "openssl" "dbus" "gcc-libs" "glibc" "glib2" "cairo" "dconf" "gtk4"
+    "openssl" "dbus" "gcc-libs" "glibc" "glib2" "cairo" "dconf" "gtk4" "gettext"
 )
 makedepends=(
     "rust>=1.73.0"
@@ -43,9 +43,18 @@ package() {
         "$pkgdir/usr/share/applications/io.poly000.waylyrics.desktop"
     install -Dm644 io.poly000.waylyrics.gschema.xml \
         "$pkgdir/usr/share/glib-2.0/schemas/io.poly000.waylyrics.gschema.xml"
-    for theme in default-dark default
+    for theme in themes/*.css
     do
-        install -Dm644 themes/$theme.css "$pkgdir/usr/share/$pkgname/themes/$theme.css"
+        echo "Installing theme $theme..."
+        install -Dm644 "$theme" "$pkgdir/usr/share/$pkgname/$theme"
+    done
+    for locale in locales/*/LC_MESSAGES/waylyrics.po
+    do
+        echo "Installing locale $locale..."
+        mo=${locale/#locales\/} # */LC_MESSAGES/waylyrics.po
+        mo=${mo/%.po/.mo} # */LC_MESSAGES/waylyrics.mo
+        msgfmt "$locale" -o - | install -Dm644 /dev/stdin \
+            "$pkgdir/usr/share/locale/$mo"
     done
     install -Dm644 res/icons/hicolor/scalable/apps/io.poly000.waylyrics.svg \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.poly000.waylyrics.svg"
