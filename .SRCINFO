@@ -1,6 +1,6 @@
 pkgbase = electron28-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
-	pkgver = 28.2.3
+	pkgver = 28.2.4
 	pkgrel = 1
 	url = https://electronjs.org
 	arch = x86_64
@@ -19,16 +19,16 @@ pkgbase = electron28-bin
 	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)
-	provides = electron28=28.2.3
-	provides = electron=28.2.3
+	provides = electron28=28.2.4
+	provides = electron=28.2.4
 	conflicts = electron28
-	source_x86_64 = electron28-bin-chromedriver-28.2.3-x86_64.zip::https://github.com/electron/electron/releases/download/v28.2.3/chromedriver-v28.2.3-linux-x64.zip
-	source_x86_64 = electron28-bin-28.2.3-x86_64.zip::https://github.com/electron/electron/releases/download/v28.2.3/electron-v28.2.3-linux-x64.zip
-	sha256sums_x86_64 = 4b716bb6a735df7b20512a2a2651e9f3f7e6c4759935bc8013b728994061fdbd
-	sha256sums_x86_64 = e6b511165cba4b6b614efda1bd5b1192b067d2f3bfcd8685f46544ae835ab931
-	source_aarch64 = electron28-bin-chromedriver-28.2.3-aarch64.zip::https://github.com/electron/electron/releases/download/v28.2.3/chromedriver-v28.2.3-linux-arm64.zip
-	source_aarch64 = electron28-bin-28.2.3-aarch64.zip::https://github.com/electron/electron/releases/download/v28.2.3/electron-v28.2.3-linux-arm64.zip
-	sha256sums_aarch64 = cf7b0e4d391a0b4502abe689a29824315ab18f6fc8edde037717bf88e53c44fc
-	sha256sums_aarch64 = e0d5e2b3d823a820583d24b100dbd9d72eeb37b4246fa9e36b3bde64b2616dc1
+	source_x86_64 = electron28-bin-chromedriver-28.2.4-x86_64.zip::https://github.com/electron/electron/releases/download/v28.2.4/chromedriver-v28.2.4-linux-x64.zip
+	source_x86_64 = electron28-bin-28.2.4-x86_64.zip::https://github.com/electron/electron/releases/download/v28.2.4/electron-v28.2.4-linux-x64.zip
+	sha256sums_x86_64 = 2c5daf66b00ecf0d8288ca1200386eb986f9baae9c1ec721137d1d209b25b369
+	sha256sums_x86_64 = ec6bbaf92d3948d02743e165c4f535e855585c612e048dfa040a1c77c13b3c50
+	source_aarch64 = electron28-bin-chromedriver-28.2.4-aarch64.zip::https://github.com/electron/electron/releases/download/v28.2.4/chromedriver-v28.2.4-linux-arm64.zip
+	source_aarch64 = electron28-bin-28.2.4-aarch64.zip::https://github.com/electron/electron/releases/download/v28.2.4/electron-v28.2.4-linux-arm64.zip
+	sha256sums_aarch64 = 757962fcbbf8bdfbfdc3cb4416c6eb6bdecd675352607798c0fbaf545824d103
+	sha256sums_aarch64 = 88ab9c3db420c146af7e92a46c47bad42698ef74af23ff8b2c5a0ab24aad7feb
 
 pkgname = electron28-bin
