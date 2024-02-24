@@ -1,10 +1,10 @@
 pkgbase = wfdlogger
 	pkgdesc = Ham Radio - WINTER Field Day logger GUI
-	pkgver = 24.1.27.2
+	pkgver = 24.2.19
 	pkgrel = 1
 	url = https://pypi.org/project/wfdlogger
 	arch = any
-	license = GPL
+	license = GPL-3.0-only
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -20,11 +20,11 @@ pkgbase = wfdlogger
 	conflicts = fdcurses
 	conflicts = fdlogger-git
 	conflicts = wfdlogger-git
-	source = https://files.pythonhosted.org/packages/source/w/wfdlogger/wfdlogger-24.1.27.2.tar.gz
+	source = https://files.pythonhosted.org/packages/source/w/wfdlogger/wfdlogger-24.2.19.tar.gz
 	source = wfdlogger.1
-	md5sums = 2f4448cf446c59772ed8b65b08899cdd
+	md5sums = f6c37e495fb1823c1728a1cc50622aaf
 	md5sums = 931867e6bb8f23afa30142f80fa2c5a1
-	sha256sums = fcd1babe7db32e08a4dd07fe948ec8800e49ef64f6df29e5196658f8ca9384c5
+	sha256sums = 15254139aa305213a85a89dcf4984d77b723c5837db71971b2188763290bfec1
 	sha256sums = 6e1ca820758f1ad3a82e7b616180d66f17d4e49615f7c8f553a8ca8f5f5df4f7
 
 pkgname = wfdlogger

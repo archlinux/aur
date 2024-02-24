@@ -2,10 +2,10 @@
 # Submitter:  not_anonymous <nmlibertarian@gmail.com>
 
 pkgname=wfdlogger
-pkgver=24.1.27.2
+pkgver=24.2.19
 pkgrel=1
 pkgdesc="Ham Radio - WINTER Field Day logger GUI"
-license=(GPL)
+license=(GPL-3.0-only)
 arch=(any)
 url="https://pypi.org/project/$pkgname"
 depends=(python python-dicttoxml python-xmltodict python-pyqt5 python-requests sqlite hamradio-menus)
@@ -32,7 +32,7 @@ package() {
 	install -Dm755 $pkgname/data/k6gte-$pkgname.desktop $pkgdir/usr/share/applications/k6gte-$pkgname.desktop
 	install -Dm755 $pkgname/data/k6gte-$pkgname.png $pkgdir/usr/share/pixmaps/k6gte-$pkgname.png
 }
-md5sums=('2f4448cf446c59772ed8b65b08899cdd'
+md5sums=('f6c37e495fb1823c1728a1cc50622aaf'
          '931867e6bb8f23afa30142f80fa2c5a1')
-sha256sums=('fcd1babe7db32e08a4dd07fe948ec8800e49ef64f6df29e5196658f8ca9384c5'
+sha256sums=('15254139aa305213a85a89dcf4984d77b723c5837db71971b2188763290bfec1'
             '6e1ca820758f1ad3a82e7b616180d66f17d4e49615f7c8f553a8ca8f5f5df4f7')
