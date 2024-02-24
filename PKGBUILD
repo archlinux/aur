@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=LACE
-_pkgver=2.6.0
+_pkgver=2.6.1
 pkgname=r-${_pkgname,,}
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc='Longitudinal Analysis of Cancer Evolution (LACE)'
 arch=('any')
@@ -56,7 +56,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('497779de92bb0a13eebbc80057152f46a49a7ebb3830fb1038466753b51fa660')
+sha256sums=('b82af6d6f2e2581e43a0ede116ab886840f5e34edc59e37a6def9b8f2870bd0b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
