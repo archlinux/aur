@@ -1,14 +1,15 @@
 # Maintainer: Posi<posi1981@gmail.com>
 pkgname=betterbird-bin
 _pkgname=betterbird
-pkgver=115.7.0
-_build=bb23
+pkgver=115.8.0
+_build=bb24
 pkgrel=1
 pkgdesc="EN-US // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
 arch=('x86_64')
 url="https://www.betterbird.eu/index.html"
 license=('MPL2')
-depends=('dbus-glib')
+depends=('dbus-glib' 'hunspell')
+optdepends=('hunspell-en_US')
 provides=("betterbird=${pkgver}")
 conflicts=()
 source=(
@@ -17,6 +18,7 @@ source=(
 #    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}-build2.en-US.linux-x86_64.tar.bz2"
     "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}.en-US.linux-x86_64.tar.bz2"
     "betterbird.desktop"
+    "vendor-prefs.js"
 )
 
 package() {
@@ -26,7 +28,9 @@ package() {
 
     cp -r "${srcdir}/${_pkgname}/" "${pkgdir}/opt/${_pkgname}"
     install -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -m644 "${srcdir}/vendor-prefs.js" -t "${pkgdir}/opt/${_pkgname}/defaults/pref"
     ln -s /opt/$_pkgname/betterbird "$pkgdir"/usr/bin/$_pkgname
+    ln -s /usr/share/hunspell "${pkgdir}/opt/${_pkgname}/dictionaries"
 
     echo     "
 
@@ -42,5 +46,6 @@ package() {
             "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png
     done
 }
-sha256sums=('d7e6c4bbebc99619ea2a1b8448bab7393e9ee787de9375a0cdf59c4c0745df6f'
-            'b664d5453512ba1c8a58699d106fb1248991dbae0ee44464484be0886278945b')
+sha256sums=('693b2a834c16d7be75649d4feee3826a2aa590baba8e700e4a4927512a620477'
+            'b664d5453512ba1c8a58699d106fb1248991dbae0ee44464484be0886278945b'
+            'SKIP')
