@@ -5,8 +5,8 @@
 # Contributor: Philipp 'TamCore' B. <philipp [at] tamcore [dot] eu>
 
 pkgname=crossover
-pkgver=23.7.1
-pkgrel=2
+pkgver=24.0.0
+pkgrel=1
 _pkgdebrel=1
 pkgdesc="Run Windows Programs on Linux"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ makedepends=('tar')
 install=${pkgname}.install
 
 source=("https://media.codeweavers.com/pub/${pkgname}/cxlinux/demo/${pkgname}_${pkgver}-${_pkgdebrel}.deb")
-sha256sums=('69311a918f4888f777a0b9ae57e7fc79ccaaae3fbd63cff4c8d242742d87eb81')
+sha256sums=('1e32da4ca9edf505fb0ccfc20765dcda3754b8b29a1f0d12055a316277fa78c1')
 
 depends=( 
     'python' 'desktop-file-utils' 'python-gobject' 'vte3' 'python-cairo'
