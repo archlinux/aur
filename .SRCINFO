@@ -1,7 +1,7 @@
 pkgbase = waylogout-git
 	pkgdesc = A lock/logout/suspend/reboot/poweroff dialog for Wayland.
-	pkgver = r16.72c5f4b
-	pkgrel = 1
+	pkgver = r31.8470e0a
+	pkgrel = 2
 	url = https://github.com/loserMcloser/waylogout
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,8 @@ pkgbase = waylogout-git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = scdoc
+	makedepends = wayland
+	makedepends = wayland-protocols
 	depends = libxkbcommon
 	depends = cairo
 	depends = gdk-pixbuf2
@@ -17,4 +19,3 @@ pkgbase = waylogout-git
 	md5sums = SKIP
 
 pkgname = waylogout-git
-
