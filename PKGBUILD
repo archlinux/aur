@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggiraph
-_pkgver=0.8.8
+_pkgver=0.8.9
 pkgname=r-${_pkgname,,}
-pkgver=0.8.8
+pkgver=0.8.9
 pkgrel=1
 pkgdesc="Make 'ggplot2' Graphics Interactive"
 arch=('x86_64')
@@ -41,7 +41,7 @@ optdepends=(
   r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('82bf721cbfc4b2640bf9efb18184b9cc48f89105c0ba15850e625687f5ed8a13')
+sha256sums=('ab717cf3c245931d94cf61acfaa60ae927d456ff927e09ba79f9dd3f799b0d11')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
