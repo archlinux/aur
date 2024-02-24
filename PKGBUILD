@@ -2,20 +2,20 @@
 
 _dirent_commit=c885633e126a3a949ec0497273ec13e2c03e862c
 _ImGuiColorTextEdit_commit=0a88824f7de8d0bd11d8419066caa7d3469395c4
-_glm_commit=2929ad5a663597139276c10ef905d91e568fdc48
-_imgui_commit=0850b46c88daa92443dedf8609a80dbc1da52558
+_glm_commit=da9a21d7e3a2a3a32354a7d9da362d5738b113b6
+_imgui_commit=5503c0a12e0c929e84b3f61b2cb4bb9177ea3da1
 _link_commit=14f6cc99ac41466d52ce780aa37e432fe92c289b
-_stb_commit=f54acd4e13430c5122cab4ca657705c84aa61b08
+_stb_commit=f4a71b13373436a2866c5d68f8f80ac6f0bc1ffe
 _tinyfiledialogs_commit=2681e426ddaebc8e2764a7823b4b9d69564d1684
 _asio_commit=01b4e87c04abd4daec58e40463bcdc150085b269
 
 pkgname=vimix
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Live video editor"
 url="https://brunoherbelin.github.io/vimix/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('glfw' 'gst-plugins-base-libs' 'gtk3' 'tinyxml2')
 makedepends=('cmake' 'git' 'ninja')
 optdepends=('gst-libav: Extra media codecs'
@@ -23,6 +23,7 @@ optdepends=('gst-libav: Extra media codecs'
             'gst-plugins-bad: Extra media codecs'
             'gst-plugins-good: Extra media codecs'
             'gst-plugins-ugly: Extra media codecs')
+options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/brunoherbelin/vimix/archive/refs/tags/$pkgver.tar.gz"
 	"dirent-${_dirent_commit}.tar.gz::https://github.com/tronkko/dirent/archive/${_dirent_commit}.tar.gz"
         "ImGuiColorTextEdit-${_ImGuiColorTextEdit_commit}.tar.gz::https://github.com/BalazsJako/ImGuiColorTextEdit/archive/${_ImGuiColorTextEdit_commit}.tar.gz"
@@ -32,7 +33,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/brunoherbelin/vimix/archive
         "stb-${_stb_commit}.tar.gz::https://github.com/nothings/stb/archive/${_stb_commit}.tar.gz"
         "tinyfiledialogs::git+https://git.code.sf.net/p/tinyfiledialogs/code#commit=${_tinyfiledialogs_commit}"
 	"asio-${_asio_commit}.tar.gz::https://github.com/chriskohlhoff/asio/archive/${_asio_commit}.tar.gz")
-b2sums=('5087be362c88d2898b24fd54516237a8d993b749aaa86686cbf9c182e92adf51ff25f26cab2a5feeb1da101b49a42ba1c7ac0d6cd9324b6c80d81f621c711732'
+b2sums=('fab60f7dc1fddaddee5e6620653396bd36fa96c8ed71013d6b83ed2d920dd49a795e5a5b23bd02d133b5fb25a448cdc9c1cdc2f3532eaf1949a8c5a7551ccc6d'
         'SKIP'
         'SKIP'
         'SKIP'
