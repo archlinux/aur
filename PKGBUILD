@@ -4,7 +4,7 @@ pkgname="libcorecrypto"
 # when apple breaks the checksum, run 
 #    curl -s https://developer.apple.com/security/ | grep 'rel="/file/?file=security&agree=Yes"' | cut -d "(" -f2 | cut -d ")" -f1 | grep -o '[0-9]\+'
 pkgver=2022
-pkgrel=3
+pkgrel=4
 pkgdesc="Library implementing Apple low-level cryptographic primitives"
 url="https://developer.apple.com/security/"
 license=("custom")
@@ -12,10 +12,11 @@ arch=("x86_64" "armv7h" "aarch64")
 makedepends=("clang" "cmake" "curl" "python")
 source=("LICENSE"
         "corecrypto.zip.b2"
-        "code-coverage.cmake")
+        #"code-coverage.cmake"
+        )
 b2sums=('571233903371c819e99b2e39f4b32013b37e3c8a618d54ee27d98b0c61bfb50f702780f597e096df9d8e8e4d0ad0a4e3fcaf6949b7035796ecb5be274c1894d0'
-        '97e9b6d5e586bdd53ed81db49af3da6dee10ca3e2007f2043555eaebab8aa6136d5679b1f4c30132bdbb87f869c3f27b7283a24bad0c6b610c04be8f13930a2b'
-        'd934a8493da900214c10781bfdf58e6a4c776ac15030ba8ab6b4ab51ab505acffc4eb9050482471f347e2efae1118824aa52d32af2fc6bcad67475ab4e0d2cd2')
+        '97e9b6d5e586bdd53ed81db49af3da6dee10ca3e2007f2043555eaebab8aa6136d5679b1f4c30132bdbb87f869c3f27b7283a24bad0c6b610c04be8f13930a2b')
+        #'d934a8493da900214c10781bfdf58e6a4c776ac15030ba8ab6b4ab51ab505acffc4eb9050482471f347e2efae1118824aa52d32af2fc6bcad67475ab4e0d2cd2')
 provides=("libcorecrypto")
 conflicts=("libcorecrypto-git")
 
@@ -48,16 +49,12 @@ prepare(){
  b2sum --check --quiet "corecrypto.zip.b2" || return 1
  echo "    corecrypto.zip. ... Passed"
  bsdtar --extract --file "corecrypto.zip"
- # avoid errors, as per https://github.com/NyaMisty/AltServer-Linux/ 
- sed '/corecrypto_perf\|corecrypto_test/d' -i "corecrypto/build/CMakeFiles/Makefile2"
- # avoid errror, as per https://aur.archlinux.org/packages/libcorecrypto-git
- sed 's|CC_MARK_MEMORY_PUBLIC|//&|' -i "corecrypto/ccrng/src/ccrng_entropy.c"
-}
-
-build(){
  cd "corecrypto"
  install -d "scripts"
- install -D "$srcdir/code-coverage.cmake" "scripts/code-coverage.cmake"
+ # not needed if removing all coverage entries
+ #install -D "$srcdir/code-coverage.cmake" "scripts/code-coverage.cmake"
+ sed '/coverage/d' -i "CMakeLists.txt"
+ # run cmake
  # https://wiki.archlinux.org/title/CMake_package_guidelines
  # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=cpprestsdk
  CC=clang CXX=clang++ cmake -B "build" -S . \
@@ -65,6 +62,17 @@ build(){
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_INSTALL_LIBDIR="lib" \
         -Wno-dev
+ # avoid errors, as per https://github.com/NyaMisty/AltServer-Linux/ 
+ sed '/corecrypto_perf\|corecrypto_test/d' -i "build/CMakeFiles/Makefile2"
+ # avoid error, as per https://aur.archlinux.org/packages/libcorecrypto-git
+ sed 's|CC_MARK_MEMORY_PUBLIC|//&|' -i "ccrng/src/ccrng_entropy.c"
+ # not needed if removing all coverage entries
+ # avoid "error: expected expression"
+ #sed 's|^;|{};|g' -i "build/gen/corecrypto_test/include/cc_generated_test_vectors.h"
+}
+
+build(){
+ cd "corecrypto"
  cmake --build "build" -j "$(nproc)"
 }
 
