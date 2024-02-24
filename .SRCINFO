@@ -1,5 +1,5 @@
 pkgbase = guitarix.vst-git
-	pkgdesc = A versatile (guitar) amplifiier VST3 plugin (git version)
+	pkgdesc = A versatile (guitar) amplifier VST3 plugin (git version)
 	pkgver = v0.2.r0.g821480e
 	pkgrel = 1
 	url = https://github.com/brummer10/guitarix.vst
