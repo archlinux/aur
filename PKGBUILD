@@ -35,14 +35,14 @@ build() {
 	cd "$pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release --all-features --package fend
+	cargo build --frozen --release --no-default-features --features native-tls --package fend
 	./documentation/build.sh
 }
 
 check() {
 	cd "$pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo test --frozen --all-features --package fend --package fend-core -- -q
+	cargo test --frozen --no-default-features --features native-tls --package fend --package fend-core -- -q
 }
 
 package() {
