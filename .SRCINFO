@@ -1,7 +1,7 @@
 pkgbase = armagetronad-git
 	pkgdesc = A Tron Clone in 3D.
 	pkgver = r5722.6185dae5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.armagetronad.org
 	arch = x86_64
 	license = GPL
@@ -13,6 +13,7 @@ pkgbase = armagetronad-git
 	depends = boost-libs
 	depends = protobuf
 	depends = hicolor-icon-theme
+	options = !buildflags
 	optdepends = python: language updater
 	optdepends = glew: Graphics on X11
 	optdepends = glew-wayland: Graphics on Wayland

@@ -8,11 +8,12 @@
 _pkgname=armagetronad
 pkgname=${_pkgname}-git
 pkgver=r5722.6185dae5
-pkgrel=1
+pkgrel=2
 pkgdesc='A Tron Clone in 3D.'
 arch=('x86_64')
 url='https://www.armagetronad.org'
 license=('GPL')
+options=('!buildflags')
 depends=('sdl2_image' 'libxml2' 'sdl2_mixer' 'ftgl' 'boost-libs' 'protobuf' 'hicolor-icon-theme')
 optdepends=('python: language updater' 'glew: Graphics on X11' 'glew-wayland: Graphics on Wayland')
 makedepends=('boost')
