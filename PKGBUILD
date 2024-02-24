@@ -1,13 +1,14 @@
 # Maintainer: Alexey Mukovnin <alexey.1983@gmail.com>
 pkgname=psfiles
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A CLI tool to monitor file system activity of a Linux process"
 url='https://github.com/mukovnin/psfiles'
 source=("https://github.com/mukovnin/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('a787c545bcb592559a7674a3db8eec78190f36c3a98e542d01a87cb26f6fa05a')
+sha256sums=('d447ffef5a1f8760ff1baf320fad3e93a2abb5975b14d2ad071dc60ca2e3d111')
 arch=('x86_64' 'aarch64')
 license=('MIT')
+options=('zipman')
 makedepends=('cmake')
 
 build() {
@@ -22,4 +23,5 @@ package() {
     DESTDIR="$pkgdir" cmake --install build
     cd "$pkgname-$pkgver"
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -D -m644 psfiles.1 -t "$pkgdir/usr/share/man/man1"
 }
