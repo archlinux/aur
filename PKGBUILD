@@ -1,11 +1,11 @@
 # Maintainer: Gimmeapill <gimmeapill at gmail dot com>
 # Contributor: Christopher Arndt <aur at chrisarndt dot de>
- 
+
 _pkgname=guitarix.vst
 pkgname=$_pkgname-git
 pkgver=v0.2.r0.g821480e
 pkgrel=1
-pkgdesc='A versatile (guitar) amplifiier VST3 plugin (git version)'
+pkgdesc='A versatile (guitar) amplifier VST3 plugin (git version)'
 arch=(x86_64)
 url='https://github.com/brummer10/guitarix.vst'
 license=(GPL-3.0-or-later)
