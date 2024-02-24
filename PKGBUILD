@@ -1,12 +1,12 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=dpsprep-git
-_gitname=dpsprep
 pkgver=r89.3d4c8c3
-pkgrel=1
+pkgrel=3
 pkgdesc='A DjVu to PDF converter with a focus on small output size and the ability to preserve document outlines and text layers'
 url='https://github.com/kcroker/dpsprep'
 arch=('any')
 license=('GPL3')
+checkdepends=(python ruff mypy python-pytest)
 makedepends=(git python-build python-installer python-wheel)
 depends=(python python-click python-djvulibre python-fpdf2 python-loguru
          python-pillow python-pdfrw)
@@ -14,23 +14,20 @@ optdepends=('ocrmypdf: Optional OCR and advanced PDF optimization')
 source=('git+https://github.com/kcroker/dpsprep.git')
 md5sums=('SKIP')
 
-pkgver() {
-    cd "${srcdir}/${_gitname}/"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    git -C "${srcdir}/${_gitname}" clean -fdx
+check() {
+    cd "${srcdir}/dpsprep"
+    make lint
+    make test
 }
 
 build() {
-    cd "${srcdir}/${_gitname}/"
+    cd "${srcdir}/dpsprep"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_gitname}/"
-    /usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
+    cd "${srcdir}/dpsprep"
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -D -m755 bin/dpsprep "$pkgdir/usr/bin/dpsprep"
-    install -D -m755 dpsprep.1 "$pkgdir/usr/share/man/man1/dpsprep.1"
+    install -D -m644 dpsprep.1 "$pkgdir/usr/share/man/man1/dpsprep.1"
 }
