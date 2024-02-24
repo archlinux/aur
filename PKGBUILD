@@ -2,10 +2,10 @@
 # Submitter:  not_anonymous <nmlibertarian@gmail.com>
 
 pkgname=wfdserver
-pkgver=23.2.1
+pkgver=24.2.19
 pkgrel=1
 pkgdesc="Ham Radio - WINTER Field Day - Multi-user Server for clients using the fdlogger package"
-license=(GPL)
+license=(GPL-3.0-only)
 arch=(any)
 url="https://pypi.org/project/$pkgname/"
 depends=(python python-xmltodict python-requests sqlite hamradio-menus wfdlogger)
@@ -32,7 +32,7 @@ package() {
 	install -Dm755 $pkgname/data/k6gte-$pkgname.desktop $pkgdir/usr/share/applications/k6gte-$pkgname.desktop
 	install -Dm755 $pkgname/data/k6gte.$pkgname.svg $pkgdir/usr/share/pixmaps/k6gte-$pkgname.svg
 }
-md5sums=('3df9d0e87bb4f4a248f76883907ac4b8'
+md5sums=('612510fea41782c82fd9cff7c3a3f0e7'
          '191d01a89f8e62ba1ca70fc7448747a6')
-sha256sums=('b1b70aea6354ec5a38c767163acb08f6461648f7705a0b0ec73a9ae3b69f51cb'
+sha256sums=('7e5cbaa7f4e3d123188a80083fb41ce671ecbaa4bf11ba57f57745198bcfaa7d'
             '0bd8dc5a342bb333660ec73a54f3f92e9dc8900ce01810fb17d58f3b3a5ccca3')
