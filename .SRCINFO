@@ -1,0 +1,12 @@
+pkgbase = python-split
+	pkgdesc = Functions to split or partition sequences
+	pkgver = 0.4
+	pkgrel = 8
+	url = https://bitbucket.org/astanin/python-split
+	arch = any
+	license = MIT
+	depends = python
+	source = https://pypi.io/packages/source/s/split/split-0.4.zip
+	sha256sums = c4be970a857d605d94999da18779bc10c34a34f937dede983268de3877b81faa
+
+pkgname = python-split
