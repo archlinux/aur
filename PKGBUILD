@@ -1,18 +1,18 @@
 # Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 
-_pkgname=QPrompt
-pkgname=${_pkgname,,}
+_pkgname=QPrompt-Teleprompter
+pkgname=${_pkgname,,} ; pkgname=${pkgname%-*}
 pkgver=1.1.6
 pkgrel=2
 arch=('x86_64')
 pkgdesc="Teleprompter software for video creators"
 url="https://qprompt.app/"
-_url="https://github.com/Cuperino/QPrompt"
-license=('GPL3' 'LGPL3')
+_url_github="https://github.com/Cuperino/${_pkgname}"
+license=('GPL-3.0-only')
 depends=('hicolor-icon-theme' 'kcrash5' 'ki18n5')
 makedepends=('extra-cmake-modules' 'kiconthemes5' 'kirigami2' 'ninja')
-source=("$_pkgname-$pkgver.tar.gz::$_url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('ba2003b803209f38e59ac97f19b33e01fa61bf6fb9a4ed625ea16396063361c5d4edfaa1439ae812071275b053dedbfe0d152a70f2bb7ffcc8c7b9d65b10b936')
+source=("$_pkgname-$pkgver.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=('fd5b2946e5f5abe48c9b7d0a681caee6673963c62b3d4f43337d40ecadc21940bb05a5f2dc81d818f323a9aab5f080e9d0a580a1edcae7fca47acc1a7f38687d')
 
 prepare() {
   # Change docs directory to "/usr/share/doc"
