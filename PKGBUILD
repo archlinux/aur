@@ -13,7 +13,7 @@ optdepends=('python-h5py-openmpi'
   'python-netcdf4-openmpi'
   'python-scipy'
   'python-pyfftw'
-  'python-mkl_fft')
+  'python-mkl-fft')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
 sha512sums=('447cbbf9feb468d843f2a8d5e32f2ea44536952c5e53701a6737521e29cca9cfbc1c700954dd2cecf8d8dc9fff4fc4f5cf01a7c8f1939a02e90552a22e77cc0e')
 

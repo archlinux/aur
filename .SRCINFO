@@ -17,7 +17,7 @@ pkgbase = python-mpi4py-fft
 	optdepends = python-netcdf4-openmpi
 	optdepends = python-scipy
 	optdepends = python-pyfftw
-	optdepends = python-mkl_fft
+	optdepends = python-mkl-fft
 	source = mpi4py-fft-2.0.5.tar.gz::https://github.com/mpi4py/mpi4py-fft/archive/2.0.5.tar.gz
 	sha512sums = 447cbbf9feb468d843f2a8d5e32f2ea44536952c5e53701a6737521e29cca9cfbc1c700954dd2cecf8d8dc9fff4fc4f5cf01a7c8f1939a02e90552a22e77cc0e
 
