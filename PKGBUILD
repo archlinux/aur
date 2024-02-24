@@ -21,7 +21,6 @@ pkgver() {
 }
 
 build() {
-  cd $srcdir/src
   if [ "$backend" == "clang" ]
   then
     export CC=clang
@@ -30,7 +29,6 @@ build() {
 }
 
 package() {
-  cd $srcdir/src
   mkdir -p "$pkgdir/opt/voc"
   cp -Rfp install/* "$pkgdir/opt/voc"
   mkdir -p "$pkgdir/usr/bin"
