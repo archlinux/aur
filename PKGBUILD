@@ -35,6 +35,8 @@ prepare() {
 	sed -i -e "s/%%PKGNAME%%/$pkgname/g" -e "s/%%ELECTRON%%/$_electronpkg/g" -e "s/%%FLAGFILENAME%%/bks/g" 'electron-launcher.sh'
 }
 
+# No functionality to test, as the binary has no --help or --version
+
 package() {
 	cd "$srcdir/$_sourcedirectory/"
 
