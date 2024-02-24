@@ -3,7 +3,7 @@
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 # Contributor: x-demon
 pkgname=nicotine-plus-git
-_appdata_id=org.nicotine_plus.Nicotine
+_app_id=org.nicotine_plus.Nicotine
 pkgver=3.3.1.r0.gf7f1f3f3b
 pkgrel=1
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
@@ -20,27 +20,27 @@ source=('git+https://github.com/Nicotine-Plus/nicotine-plus.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
 
   # Tests requiring an Internet connection are disabled
   pytest --deselect=test/unit/test_version.py
 
-  desktop-file-validate "data/${_appdata_id}.desktop"
-  appstream-util validate-relax --nonet "data/${_appdata_id}.appdata.xml"
+  desktop-file-validate "data/${_app_id}.desktop"
+  appstream-util validate-relax --nonet "data/${_app_id}.appdata.xml"
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   cd po
