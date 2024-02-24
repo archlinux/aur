@@ -4,11 +4,11 @@
 
 pkgname=transcode
 pkgver=1.1.7
-pkgrel=43
+pkgrel=44
 pkgdesc='A video/DVD ripper and encoder for the terminal/console'
 arch=(x86_64)
 url="https://sources.archlinux.org/other/packages/$pkgname"
-license=(GPL)
+license=('GPL-2.0-or-later')
 depends=(
 	a52dec
 	alsa-lib
