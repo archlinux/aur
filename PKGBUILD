@@ -4,21 +4,21 @@
 
 pkgbase=ntsync
 pkgname=(ntsync-dkms ntsync-header ntsync-common)
-pkgver=6.8.2
+pkgver=6.8.3
 pkgrel=1
 pkgdesc="NT synchronization primitive driver"
 arch=(x86_64)
 url='https://repo.or.cz/linux/zf.git/shortlog/refs/heads/ntsync5'
 license=('GPL2')
-_commit=e4690b31f999c4317df5955c6ee4a77044e6c4a9
+_commit=67ecf76b95fcaf9a70e54b0d25b485f4e135e439
 source=("ntsync.c-$_commit::https://repo.or.cz/linux/zf.git/blob_plain/$_commit:/drivers/misc/ntsync.c"
         "ntsync.h-$_commit::https://repo.or.cz/linux/zf.git/blob_plain/$_commit:/include/uapi/linux/ntsync.h"
         'ntsync.conf'
         '99-ntsync.rules'
         'Makefile'
         'dkms.conf')
-sha256sums=('acc5c24f2a769e83ccdad55d02b82aa2d21b240c2b1ca630314e07b4ede1c4b2'
-            '7b47801aa0bec3395a2509efebe5cea005994fca7868130d4b6fec3bb8738f71'
+sha256sums=('8292a99ced2750c6dca31cb24c7ea087c70ab14c355a4902150ca8cd7453aa50'
+            '5319abf8ed063f83bbdaa739c72b1077c28f89f00698a2ffc073b0dd9ec3967e'
             'c19771ae86e7df179f6b2f4a2837d3f0cbbbba7b32baef41a3c27120c760d78f'
             'ce5221146a19206ba043211db8f27143a82f9224c0aff24a0b584b7268fcb994'
             '834a7b4c9a67a44f2cf593bf259918ea12b0c0eeee7862ed4f9fd268076171cf'
