@@ -2,14 +2,14 @@
 
 _gitname=waylogout
 pkgname="$_gitname-git"
-pkgver=r16.72c5f4b
+pkgver=r31.8470e0a
 pkgrel=1
 pkgdesc="A lock/logout/suspend/reboot/poweroff dialog for Wayland."
 arch=('x86_64')
 url="https://github.com/loserMcloser/$_gitname"
 license=('MIT')
 depends=('libxkbcommon' 'cairo' 'gdk-pixbuf2' 'otf-font-awesome')
-makedepends=('git' 'meson' 'ninja' 'scdoc')
+makedepends=('git' 'meson' 'ninja' 'scdoc' 'wayland' 'wayland-protocols')
 source=("git+https://github.com/loserMcloser/$_gitname.git")
 md5sums=('SKIP')
 
