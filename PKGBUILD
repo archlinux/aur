@@ -20,6 +20,8 @@ _sourcedirectory="$_reponame-$pkgver"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
+
+	# Patch lib paths
 	patch --forward -p1 < "$srcdir/fix-lib-paths.diff"
 }
 
@@ -27,6 +29,10 @@ build() {
 	cd "$srcdir/$_sourcedirectory/"
 	mvn --batch-mode clean
 	mvn --batch-mode install
+}
+
+check() {
+	java -jar "$srcdir/$_sourcedirectory/target/$_reponame-1.0-SNAPSHOT.jar" compile | tee '/dev/stderr' | grep -q '^kaj moznosti muzu byt: $'
 }
 
 package() {
