@@ -95,11 +95,10 @@ _gitname='gstreamer'
 source=('git+https://gitlab.freedesktop.org/gstreamer/gstreamer'
         "https://gstreamer.freedesktop.org/src/gstreamer-docs/gstreamer-docs-${_pkgver%%+*}.tar.xz"
         "0002-qt-Unbreak-build-with-qt-egl-enabled-but-viv_fb-miss.patch::https://gitlab.freedesktop.org/gstreamer/gstreamer/-/commit/03d8ef0b7c6e70eb936de0514831c1aafc763dcf.patch"
-        "0001-arch-has-liblc3-as-lc3.patch::https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/5151.patch")
+)
 md5sums=('SKIP'
          '75946c02fe05b952464b86c4a1d35f60'
-         'afa1f8644b0765d7ab15961e7367d5e3'
-         '5b1a29c86d6075269fd7ec5e57d46ae8')
+         'afa1f8644b0765d7ab15961e7367d5e3')
 
 pkgver() {
   cd $_gitname
@@ -109,7 +108,6 @@ pkgver() {
 prepare() {
   cd $_gitname
   git apply -3 ../0002-qt-Unbreak-build-with-qt-egl-enabled-but-viv_fb-miss.patch
-  git apply -3 ../0001-arch-has-liblc3-as-lc3.patch
 
 }
 build() {
