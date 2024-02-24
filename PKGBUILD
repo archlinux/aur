@@ -11,8 +11,8 @@ makedepends=('fuse2')
 conflicts=("notepadnext")
 provides=("notepadnext")
 options=(!strip)
-source=("https://nightly.link/dail8859/NotepadNext/actions/runs/8009956505/NotepadNext-Linux-Qt6.6-AppImage.zip")
-sha256sums=('7b3f0802f4a3dd16afcb66cbd71f1a1f62458003fae324ddc93c2e116d7ce652')
+source=("$url/releases/download/v$pkgver/NotepadNext-v$pkgver-x86_64.AppImage")
+sha256sums=('cb70f183a9e25e40ccc7612011110ef695a0aa37cbdeb8ccd53dfee1d005872c')
 
 prepare() {
 # Extract the AppImage

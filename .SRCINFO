@@ -9,7 +9,7 @@ pkgbase = notepadnext-bin
 	provides = notepadnext
 	conflicts = notepadnext
 	options = !strip
-	source = https://nightly.link/dail8859/NotepadNext/actions/runs/8009956505/NotepadNext-Linux-Qt6.6-AppImage.zip
-	sha256sums = 7b3f0802f4a3dd16afcb66cbd71f1a1f62458003fae324ddc93c2e116d7ce652
+	source = https://github.com/dail8859/NotepadNext/releases/download/v0.7/NotepadNext-v0.7-x86_64.AppImage
+	sha256sums = cb70f183a9e25e40ccc7612011110ef695a0aa37cbdeb8ccd53dfee1d005872c
 
 pkgname = notepadnext-bin
