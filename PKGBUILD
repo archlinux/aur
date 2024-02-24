@@ -44,7 +44,7 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
         shared-skia-deps.patch
         optional-pixman.patch)
 noextract=("${source[0]##*/}" "${source[1]##*/}") # Don't extract Aseprite sources or Skia at the root
-sha256sums=('0246b18ff77d4c4e813c7f40207bfbd1387813b82d57900cde869dab370a26cc'
+sha256sums=('93e87272cc5159ff695650d05d3c52a37074a97a630769910a84b71e914456a2'
             '66293c15aa773a96121afb01f09109d3e5d455a6fd51944e0bb8bdc0829913ea'
             '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
             'e42675504bfbc17655aef1dca957041095026cd3dd4e6981fb6df0a363948aa7'
