@@ -5,7 +5,7 @@ _gitbranch="main"
 
 pkgname="${_pkgname}-git"
 pkgver=r52.899bac4
-pkgrel=1
+pkgrel=2
 pkgdesc="Monitor and log activity, improve awareness and empower user to improve it's habits."
 arch=('any')
 url="https://github.com/danisztls/eudaemon"
@@ -29,13 +29,11 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  poetry build 
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/$_pkgname"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -vDm 644 "${_pkgname}.service" "${pkgdir}/usr/lib/systemd/user/${_pkgname}.service"
-  install -vDm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  install -vDm 644 "README.md" -t "${pkgdir}/usr/share/doc/${_pkgname}"
 }
