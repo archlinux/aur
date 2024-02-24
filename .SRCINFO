@@ -1,11 +1,11 @@
 pkgbase = docker-slim
 	pkgdesc = Minify and Secure Docker containers
-	pkgver = 1.40.3
+	pkgver = 1.40.11
 	pkgrel = 1
 	url = https://github.com/docker-slim/docker-slim
 	arch = x86_64
 	license = apache
-	source = 1.40.3.tar.gz::https://downloads.dockerslim.com/releases/1.40.3/dist_linux.tar.gz
-	sha256sums = 97fe422d65a3df56d5105f05ef7f781e64bf4ebb1694bb0cfb75c56473db23d1
+	source = 1.40.11.tar.gz::https://downloads.dockerslim.com/releases/1.40.11/dist_linux.tar.gz
+	sha256sums = 5c83bfddbb130709a21dd6f4d02bb8d82b4347c0e9dce25a8eece98eb34763bc
 
 pkgname = docker-slim
