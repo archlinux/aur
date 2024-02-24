@@ -25,8 +25,6 @@ build() {
 	cd "$srcdir/${pkgname}-${pkgver}"
 	export RUSTUP_TOOLCHAIN="stable"
   export CARGO_BUILD_DIR="target/release"
-  mkdir "release"
-  #mkdir "$RELEASE_DIR"/{bin,share,share/completions}
   cargo build --locked --profile "release" --features "release"
 }
 
