@@ -1,7 +1,7 @@
 pkgbase = iptvnator
 	pkgdesc = Cross-platform IPTV player application with multiple features, such as support of m3u and m3u8 playlists, favorites, TV guide, TV archive/catchup and more
 	pkgver = 0.15.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/4gray/iptvnator
 	arch = x86_64
 	license = MIT
@@ -20,6 +20,7 @@ pkgbase = iptvnator
 	depends = snappy
 	depends = libnotify
 	depends = libappindicator-gtk3
+	depends = libxcrypt-compat
 	optdepends = mpv: a free, open source, and cross-platform media player
 	optdepends = vlc: Multi-platform MPEG, VCD/DVD, and DivX player
 	provides = iptvnator

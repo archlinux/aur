@@ -2,7 +2,7 @@
 
 pkgname=iptvnator
 pkgver=0.15.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Cross-platform IPTV player application with multiple features, such as support of m3u and m3u8 playlists, favorites, TV guide, TV archive/catchup and more"
 arch=('x86_64')
 url="https://github.com/4gray/iptvnator"
@@ -22,6 +22,7 @@ depends=(
 	'snappy'
 	'libnotify'
 	'libappindicator-gtk3'
+	'libxcrypt-compat'
 )
 makedepends=('npm')
 optdepends=(
