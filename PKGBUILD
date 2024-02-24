@@ -53,7 +53,7 @@ build() {
 
     # fetch sqlite3 binary blob
     cd node_modules/sqlite3
-    ./node_modules/.bin/node-pre-gyp install --fallback-to-build
+    ./node_modules/.bin/prebuild-install -r napi || node-gyp rebuild
 }
 
 package() {
