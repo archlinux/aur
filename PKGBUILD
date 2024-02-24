@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Pytest plugin providing fixtures and code to help with running shell commands on tests"
 arch=(any)
 url="https://github.com/saltstack/pytest-shell-utilities"
-license=(Apache)
+license=(Apache-2.0)
 depends=(
   python
   python-attrs
