@@ -2,10 +2,10 @@
 # Submitter:  not_anonymous <nmlibertarian@gmail.com>
 
 pkgname=wfdcurses
-pkgver=24.1.27
+pkgver=24.2.19
 pkgrel=1
 pkgdesc="Ham Radio - WINTER Field Day logger - CURSES"
-license=(GPL)
+license=(GPL-3.0-only)
 arch=(any)
 url="https://pypi.org/project/$pkgname/"
 depends=(python python-xmltodict python-requests python-pyperclip sqlite hamradio-menus)
@@ -31,7 +31,7 @@ package() {
 	install -Dm755 $pkgname/data/k6gte-$pkgname.desktop $pkgdir/usr/share/applications/k6gte-$pkgname.desktop
 	install -Dm755 $pkgname/data/k6gte.$pkgname-128.png $pkgdir/usr/share/pixmaps/k6gte-$pkgname.png
 }
-md5sums=('d8f2d31b983e653c0e2cbea47cd4ef88'
+md5sums=('3c23b9e965962c605ff5e9a65930c966'
          'fb9a1d8255a7283cf3e2036a6cfd8c22')
-sha256sums=('ac032995f8688897b87a625d235046a5dd5c2b30e9762976f19dc7c5830d8574'
+sha256sums=('4d306482c5c6b45af0fdc973b23728b94afe4ed82ab1216597b83a9ed4d57fe2'
             'f5bbc97e391802124a24094a42b565087cfab32888babba4c26719fc049d5c6b')
