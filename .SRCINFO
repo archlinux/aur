@@ -1,11 +1,11 @@
 pkgbase = ttf-sudo
 	pkgdesc = A font for programmers and command line users
-	pkgver = 0.81
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://www.kutilek.de/sudo-font/
 	arch = any
 	license = OFL-1.1
-	source = https://github.com/jenskutilek/sudo-font/releases/download/v0.81/sudo.zip
-	sha256sums = 7cb85250db95899ce9f894ff5559c71fe77ba8c6c7abbfaabec869d847963764
+	source = https://github.com/jenskutilek/sudo-font/releases/download/v1.0/sudo.zip
+	sha256sums = e95efe89a6e5627f9eb875c91eb22e80e704a20ad2725894c3169655a4bff57e
 
 pkgname = ttf-sudo
