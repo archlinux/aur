@@ -27,6 +27,7 @@ makedepends=(
 )
 optdepends=(
     'gstreamer: Video support'
+    'gst-plugin-gtk: Video support'
     'exiv2: Embedded metadata support'
     'libjpeg-turbo: Jpeg writing support'
     'libtiff: Tiff writing support'

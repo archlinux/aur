@@ -1,6 +1,6 @@
 pkgbase = pix-git
 	pkgdesc = Image viewer and browser based on gthumb. X-Apps Project (git version).
-	pkgver = 3.0.2.r0.g855a547
+	pkgver = 3.2.0.r0.gc958d63
 	pkgrel = 1
 	url = https://github.com/linuxmint/pix
 	arch = i686
@@ -22,6 +22,7 @@ pkgbase = pix-git
 	depends = webkit2gtk
 	depends = xapp
 	optdepends = gstreamer: Video support
+	optdepends = gst-plugin-gtk: Video support
 	optdepends = exiv2: Embedded metadata support
 	optdepends = libjpeg-turbo: Jpeg writing support
 	optdepends = libtiff: Tiff writing support
