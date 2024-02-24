@@ -3,23 +3,22 @@
 
 pkgbase=eww
 pkgname=(eww-{wayland,x11})
-pkgver=0.4.0
-pkgrel=5
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="Standalone widget system made in Rust"
 url='https://github.com/elkowar/eww'
 arch=(x86_64)
 license=(MIT)
-makedepends=(cargo-nightly git)
+makedepends=(cargo git)
 depends=(gtk3 gtk-layer-shell)
 provides=(eww)
 conflicts=(eww)
 install=$pkgbase.install
-source=("git+$url?signed#commit=d58d91de78d2b9984a1bbb8314be197bc0e283dc")
+source=("git+$url?signed#commit=387d344690903949121040f8a892f946e323c472")
 b2sums=('SKIP')
 validpgpkeys=(
-	'B558974128820CB473BD9807E321AD71B1D1F27F' # Leon Kowarschick <5300871+elkowar@users.noreply.github.com>
-	'94E8F34BCE4F4BA8ED9B29BD50E76B4711E4C3E4' # Leon Kowarschick <5300871+elkowar@users.noreply.github.com>
-	'5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23' # GitHub (web-flow commit signing) <noreply@github.com>
+	'9EFD181455D31DD0F42DA932862BA3D7D7760F13' # Leon Kowarschick <5300871+elkowar@users.noreply.github.com>
+	'968479A1AFF927E37D1A566BB5690EEEBB952194' # GitHub (web-flow commit signing) <noreply@github.com>
 )
 
 prepare() {
