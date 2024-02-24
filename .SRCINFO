@@ -1,0 +1,12 @@
+pkgbase = uwu-qwq
+	pkgdesc = uwu for terminal
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/qsqcqs/uwu
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	depends = python3
+	source = https://github.com/qsqcqs/uwu/blob/main/uwu
+
+pkgname = uwu-qwq
