@@ -12,7 +12,11 @@ sha512sums=('068f26d83ee68e6e1b71954add4a9df740426596f3f6301cb5f24b898e17d41f70f
 
 _sourcedirectory="$_projectname-$pkgver"
 
+check() {
+	cat "$srcdir/$_sourcedirectory/release/50-framework-inputmodule.rules" | tee '/dev/stderr' | grep -q 'ATTRS{idVendor}=="32ac"'
+}
+
 package() {
-	install -Dm644 "$srcdir/$_projectname-$pkgver/release/50-framework-inputmodule.rules" "$pkgdir/usr/lib/udev/rules.d/50-framework-inputmodule.rules"
-	install -Dm644 "$srcdir/$_projectname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/MIT"
+	install -Dm644 "$srcdir/$_sourcedirectory/release/50-framework-inputmodule.rules" "$pkgdir/usr/lib/udev/rules.d/50-framework-inputmodule.rules"
+	install -Dm644 "$srcdir/$_sourcedirectory/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/MIT"
 }
