@@ -1,18 +1,17 @@
-# Maintainer:
+# Maintainer: Jakub Szczerbowski <jakub.szczerbowski@wpia.uni.lodz.pl>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Maciej Sitarz <macieks@freesco.pl>
 
 pkgname=hyphen-pl
 pkgver=20081206
-pkgrel=3
+pkgrel=4
 pkgdesc='Polish hyphenation rules'
 arch=('any')
-url='http://extensions.services.openoffice.org/en/project/pl-dict'
+url='https://wiki.documentfoundation.org/Development/Dictionaries'
 license=('LGPL')
 optdepends=('hyphen: offers hyphenation library functions')
-source=('https://downloads.sourceforge.net/project/aoo-extensions/806/4/pl-dict.oxt')
-md5sums=('a69f9221864b1360e38ff3f0b0cc9222')
-sha1sums=('d5704efc735f5492284e8b9cd2ea717a700033c3')
+source=("https://github.com/LibreOffice/dictionaries/blob/master/pl_PL/hyph_pl_PL.dic")
+md5sums=('0f21dd3193825e1a5b7a40dc03a6190b')
 
 package() {
   install -Dm644 hyph_pl_PL.dic "$pkgdir"/usr/share/hyphen/hyph_pl_PL.dic

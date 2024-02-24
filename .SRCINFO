@@ -1,13 +1,12 @@
 pkgbase = hyphen-pl
 	pkgdesc = Polish hyphenation rules
 	pkgver = 20081206
-	pkgrel = 3
-	url = http://extensions.services.openoffice.org/en/project/pl-dict
+	pkgrel = 4
+	url = https://wiki.documentfoundation.org/Development/Dictionaries
 	arch = any
 	license = LGPL
 	optdepends = hyphen: offers hyphenation library functions
-	source = https://downloads.sourceforge.net/project/aoo-extensions/806/4/pl-dict.oxt
-	md5sums = a69f9221864b1360e38ff3f0b0cc9222
-	sha1sums = d5704efc735f5492284e8b9cd2ea717a700033c3
+	source = https://github.com/LibreOffice/dictionaries/blob/master/pl_PL/hyph_pl_PL.dic
+	md5sums = 0d9863c4b3a2e593593ae9d4de099aa3
 
 pkgname = hyphen-pl
