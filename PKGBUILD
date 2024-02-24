@@ -1,7 +1,7 @@
 # Maintainer: eckso <eckso@eckso.io>
 
 pkgname=knobs
-pkgver=0.9.17
+pkgver=0.9.18
 pkgrel=1
 pkgdesc='Manage system clock frequencies, power limits, and related values.'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'clang' 'cmake' 'git')
 optdepends=()
 depends=('systemd')
 conflicts=('knobs')
-_commit='65a48d0e657f952b830f94b4c0a8d927e7ddc5bc'
+_commit='782cafcd5c32eb278dbef12c899313230e027064'
 source=("$pkgname::git+https://git.sr.ht/~eckso/knobs#commit=$_commit")
 sha1sums=('SKIP')
 install=$pkgname.install
