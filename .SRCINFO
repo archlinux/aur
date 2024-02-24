@@ -1,0 +1,13 @@
+pkgbase = python-sysv_ipc
+	pkgdesc = System V IPC primitives (semaphores, shared memory and message queues) for Python
+	pkgver = 1.1.0
+	pkgrel = 3
+	url = http://semanchuk.com/philip/sysv_ipc/
+	arch = x86_64
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = http://semanchuk.com/philip/sysv_ipc/sysv_ipc-1.1.0.tar.gz
+	sha512sums = 30615c7fcd2ce45b5602fbd61bc2061f5fd44eb7d8ec0bcfd2979e2e750b0f7093bad938cb715ba65dac306c576f76973d462ecc52785fc8f7bacc70a84d79ff
+
+pkgname = python-sysv_ipc
