@@ -6,14 +6,14 @@
 # Contributor: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgname='wenger-libreswan'
+pkgdesc='IPsec implementation with IKEv1 and IKEv2 keying protocols'
+url='https://libreswan.org/'
+license=('GPL' 'MPL')
+arch=('i686' 'x86_64')
+arch+=('aarch64')
 
 pkgver='4.12'
 pkgrel='1'
-pkgdesc='IPsec implementation with IKEv1 and IKEv2 keying protocols'
-arch=('i686' 'x86_64')
-arch+=('aarch64') # yjun naumovitch
-url='https://libreswan.org/'
-license=('GPL' 'MPL')
 
 depends=('systemd' 'unbound' 'nss' 'libcap-ng' 'curl' 'inetutils')
 depends+=('python3')
@@ -39,6 +39,7 @@ md5sums=('016de87292719819b46b19e7bf8aa6f9'
          '77399a739ee99f8bc54837684d7c39d5')
 sha256sums=('0c0b113b1119f95d63d46e0abd9bdfbda3705a25e71c76d6088ef9bb2f0a2b27'
             '78265c690d58228c3bcc1a8793456172c39d493d268e9d9b1816288d0a47f573')
+
 
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
@@ -138,5 +139,3 @@ EOF
   fi
   set +u
 }
-set +u
-# vim:set ts=2 sw=2 et:

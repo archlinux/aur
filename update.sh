@@ -7,9 +7,11 @@
 
 set -e
 
-rm -rf libreswan-*.pkg.tar.zst
+rm -rf *.pkg.tar.zst
 updpkgsums
 makepkg -s
+
 makepkg --printsrcinfo > .SRCINFO
 newversion=$(grep pkgver .SRCINFO | awk -F= '{print $2}' | sed -e 's/ //g')
+
 git commit -am "Updated to ${newversion}."
