@@ -1,6 +1,6 @@
 pkgbase = csvlens
 	pkgdesc = A command line CSV file viewer. It is like less but made for CSV.
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/YS-L/csvlens
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = csvlens
 	depends = gcc-libs
 	provides = csvlens
 	conflicts = csvlens
-	source = csvlens-0.6.0.tar.gz::https://static.crates.io/crates/csvlens/csvlens-0.6.0.crate
+	source = csvlens-0.7.0.tar.gz::https://static.crates.io/crates/csvlens/csvlens-0.7.0.crate
 	source = license.txt
-	sha1sums = 741a628cee7ca5e2bb4dca56aa58e59553b97254
+	sha1sums = db1c4c33ad9ab8171af1f82025dd1f074fbe7cd4
 	sha1sums = 178e8165b4c57b6a2c126d3440209427264e6bcb
 
 pkgname = csvlens
