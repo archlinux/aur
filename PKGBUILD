@@ -27,13 +27,13 @@ makedepends=(
   python-wheel
 )
 checkdepends=(python-pytest-subtests)
-source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('7f9a1aac43fad962da11e0ba1ae771eb3b84b73fc4bee94a8f563159231e1920')
-b2sums=('240104a95deefddc68f4c563d52184a0a9068b28748beadf7dbe25ade31d9cc8745bf535d05d8df0165fa28ab9f0313fb37fd6cd4ca09db8709e6b9a27264089')
+source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
+sha256sums=('15990e9af65a5b43a9f205b716e1c8eff597b503bd67541fe7884d4914a6b707')
+b2sums=('830e481996347a45aac357da8f98c8e9ee091a2bfd84af01a853abacde7fb9e10c451742cc8aa60cb8fed71e8176e43d95e17fbdd870f3f490334f5f6860e936')
 
 build() {
   cd $_name-$pkgver
-  python -m build --wheel --no-isolation
+  SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver python -m build --wheel --no-isolation
 }
 
 check() {
