@@ -1,14 +1,14 @@
 pkgname=gnome-shell-extension-app-icons-taskbar
 _pkgbase=aztaskbar
-pkgver=21
+pkgver=22
 pkgrel=1
 pkgdesc="A simple app icon taskbar extension for GNOME"
 arch=('any')
 url="https://gitlab.com/AndrewZaech/aztaskbar"
 license=('GPL3')
-depends=('dconf' 'gnome-shell>=1:41')
+depends=('dconf' 'gnome-shell>=1:45')
 source=("${url}/-/archive/v${pkgver}/${_pkgbase}-v${pkgver}.tar.gz")
-sha256sums=('0ab28797bbb09602500dbcd41029ab443d9157ae60eb50555d283180ad38fa8a')
+sha256sums=('4e672777eaf9700764ce8ec2072551200ce4dbdbaf80c9e07c73777590321822')
 
 build() {
   cd "${_pkgbase}-v${pkgver}"
