@@ -3,14 +3,13 @@
 
 pkgname=brave-dev-bin
 pkgver=1.61.87
-pkgrel=1
+pkgrel=2
 pkgdesc='Web browser that blocks ads and trackers by default (dev binary release).'
 arch=(x86_64 aarch64)
 url='https://brave.com/download-dev'
 license=('MPL2')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'ttf-font')
 optdepends=('cups: Printer support'
-            'pepper-flash: Adobe Flash support'
             'mesa: Hardware accelerated rendering'
             'libglvnd: Support multiple different OpenGL drivers at any given time'
             'libgnome-keyring: gnome keyring support')
@@ -22,7 +21,7 @@ options=(!strip)
 source_x86_64=("https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-dev_${pkgver}_amd64.deb")
 source_aarch64=("https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-dev_${pkgver}_arm64.deb")
 sha512sums=('b8823586fead21247c8208bd842fb5cd32d4cb3ca2a02339ce2baf2c9cb938dfcb8eb7b24c95225ae625cd0ee59fbbd8293393f3ed1a4b45d13ba3f9f62a791f'
-            'a133f9ea4bd1f50f375a6039187fa886c380d77f1e47528f8350e1f9fbc6e1e7a1c8baaa40f6126c32ad3b9df57c456374564d1e7d7cd4c027b5ff2e96aa358e')
+            'd7d0cb581bd91227bff47a6b072a4c3da7d232383d6d207560c41bd5bb46eba7d1506dbf2a1da064ddda0194dfa35baec304db9f3fe81790734887d983c2e080')
 
 sha512sums_x86_64=('8f89fb675e37c228b7e6ca7ddff1df8b6ee920e24590b4d849b1207fd83b31da0772e60cbc2d86f2ef1b29adff0ab166590258ddf122668908715cafcc5fe355')
 sha512sums_aarch64=('351cf68988a229b9eacd0886337130bd7627385d4d1734f10b64002d3b8e76e84bcad6e2d73b9df7de9af3908c60e9cbfa152a2e0576ada9e5231b1ddbdbe18a')
