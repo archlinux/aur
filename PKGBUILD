@@ -20,6 +20,11 @@ build() {
 	python -m build --wheel --no-isolation
 }
 
+check() {
+	cd "$srcdir/$_sourcedirectory/"
+	python -B -m 'inputmodule.cli' --help | tee '/dev/stderr' | grep -q 'Display a string on the LCD Display$'
+}
+
 package() {
 	cd "$srcdir/$_sourcedirectory/"
 	python -m installer --destdir="$pkgdir" 'dist/'*'.whl'
