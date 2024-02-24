@@ -3,7 +3,7 @@
 pkgname="libcorecrypto"
 # curl -s https://developer.apple.com/security/ | grep 'rel="/file/?file=security&agree=Yes"' | cut -d "(" -f2 | cut -d ")" -f1 | grep -o '[0-9]\+'
 pkgver=2022
-pkgrel=1
+pkgrel=2
 pkgdesc="Library implementing Apple low-level cryptographic primitives"
 url="https://developer.apple.com/security/"
 license=("custom")
@@ -51,7 +51,6 @@ prepare(){
 
 build(){
  cd "corecrypto"
- #
  install -d "scripts"
  install -D "$srcdir/code-coverage.cmake" "scripts/code-coverage.cmake"
  # https://wiki.archlinux.org/title/CMake_package_guidelines
@@ -61,7 +60,6 @@ build(){
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_INSTALL_LIBDIR="lib" \
         -Wno-dev \
-        -Wimplicit-function-declaration
  # avoid errors, as per https://github.com/NyaMisty/AltServer-Linux/ 
  sed '/corecrypto_perf\|corecrypto_test/d' -i "build/CMakeFiles/Makefile2"
  cmake --build "build" -j "$(nproc)"
