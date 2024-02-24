@@ -4,8 +4,8 @@ _gitauthor="danisztls"
 _gitbranch="main"
 
 pkgname="${_pkgname}-git"
-pkgver=r52.899bac4
-pkgrel=2
+pkgver=r53.2957f24
+pkgrel=1
 pkgdesc="Monitor and log activity, improve awareness and empower user to improve it's habits."
 arch=('any')
 url="https://github.com/danisztls/eudaemon"

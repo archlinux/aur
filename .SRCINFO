@@ -1,7 +1,7 @@
 pkgbase = eudaemon-git
 	pkgdesc = Monitor and log activity, improve awareness and empower user to improve it's habits.
-	pkgver = r52.899bac4
-	pkgrel = 2
+	pkgver = r53.2957f24
+	pkgrel = 1
 	url = https://github.com/danisztls/eudaemon
 	install = eudaemon.install
 	arch = any
