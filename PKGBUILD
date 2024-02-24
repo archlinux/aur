@@ -5,7 +5,7 @@
 
 pkgname=glib2-patched-thumbnailer
 pkgver=2.78.4
-pkgrel=1
+pkgrel=1.1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
 arch=(x86_64)
@@ -33,7 +33,7 @@ source=(
 b2sums=('SKIP'
         'SKIP'
         '94c73ca7070c239494873dd52d6ee09382bbb5b1201f7afd737cfa140b1a2fb0744b2c2831baf3943d1d072550c35888d21ce6f19f89481ff9d1a60d9a0b30e0'
-        '7f6bc830e8ccf0ef8d1afa178af5141f2ff6b9387efd6675a27627ff90548b854c68bfc928b680833352b055de316f92726391909884f89c7a042825a942c03b'
+        '5eed57eccc15fa9994228815874200135e9ee682b9bd718dae4b486eb3a65f2efb8121f45afedd4dd33208297738b5f1f489cb9a798a896540a505b32a37cc08'
         '14c9211c0557f6d8d9a914f1b18b7e0e23f79f4abde117cb03ab119b95bf9fa9d7a712aa0a29beb266468aeb352caa3a9e4540503cfc9fe0bbaf764371832a96'
         'd30d349b4cb4407839d9074ce08f5259b8a5f3ca46769aabc621f17d15effdb89c4bf19bd23603f6df3d59f8d1adaded0f4bacd0333afcab782f2d048c882858')
 
@@ -77,10 +77,9 @@ build() {
   meson compile -C build
 }
 
-#skip this; test fails
-#check() {
-#   meson test -C build --no-suite flaky --no-suite slow --print-errorlogs
-#}
+check() {
+   meson test -C build --no-suite flaky --no-suite slow --print-errorlogs
+}
 
 package() {
   meson install -C build --destdir "$pkgdir"
