@@ -8,7 +8,7 @@ arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/timothyye/godns'
 license=('Apache')
 provides=('godns')
-makedepends=('go')
+makedepends=('go' 'make' 'npm')
 backup=(etc/conf.d/godns.json)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/TimothyYe/godns/archive/v${pkgver}.tar.gz")
 sha256sums=('41e1b61f7512160612d122c867beb406ab8fe0876eda18f5cb8677fc1792bb54')
@@ -17,16 +17,7 @@ build() {
 	export GOPATH="$srcdir"/gopath
 
 	cd "$srcdir/$pkgname-$pkgver"
-	go mod download \
-		golang.org/x/crypto \
-		golang.org/x/net
-	CGO_ENABLED=0 GOOS=linux \
-		go build \
-		-gcflags "all=-trimpath=$srcdir" \
-		-asmflags "all=-trimpath=$srcdir" \
-		-ldflags "-extldflags ${LDFLAGS}" \
-		cmd/godns/godns.go
-	go clean -modcache
+	make build
 }
 
 package() {
