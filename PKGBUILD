@@ -4,13 +4,13 @@ _gitauthor="danisztls"
 _gitbranch="main"
 
 pkgname="${_pkgname}-git"
-pkgver=r53.2957f24
+pkgver=r56.93186f6
 pkgrel=1
 pkgdesc="Monitor and log activity, improve awareness and empower user to improve it's habits."
 arch=('any')
 url="https://github.com/danisztls/eudaemon"
 license=('GPLv3')
-depends=('python' 'dbus-python')
+depends=('python' 'python-dbus-fast')
 makedepends=('git' 'python-poetry' 'python-setuptools')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
