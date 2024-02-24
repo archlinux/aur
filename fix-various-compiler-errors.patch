@@ -1,0 +1,49 @@
+diff -aur a/src/progs/dyecmd/client.cpp b/src/progs/dyecmd/client.cpp
+--- a/src/progs/dyecmd/client.cpp	2021-03-17 18:45:35.000000000 +0100
++++ b/src/progs/dyecmd/client.cpp	2024-02-14 23:36:12.162655457 +0100
+@@ -88,9 +88,7 @@
+ #undef ERROR
+ #endif  // WIN32
+ 
+-#ifdef __clang__
+ #include <ctime>
+-#endif  // __clang__
+ 
+ #ifdef ANDROID
+ #ifndef USE_SDL2
+diff -aur a/src/resources/wallpaper.cpp b/src/resources/wallpaper.cpp
+--- a/src/resources/wallpaper.cpp	2021-03-17 18:45:35.000000000 +0100
++++ b/src/resources/wallpaper.cpp	2024-02-14 22:55:00.321656212 +0100
+@@ -39,9 +39,7 @@
+ #include <sys/time.h>
+ #endif  // WIN32
+ 
+-#ifdef __clang__
+ #include <ctime>
+-#endif  // __clang__
+ 
+ #include "debug.h"
+ 
+diff -aur a/src/utils/dumplibs.cpp b/src/utils/dumplibs.cpp
+--- a/src/utils/dumplibs.cpp	2021-03-17 18:45:35.000000000 +0100
++++ b/src/utils/dumplibs.cpp	2024-02-14 22:52:54.828979983 +0100
+@@ -140,7 +140,7 @@
+     LIBXML_TEST_VERSION
+ #endif  // LIBXML_TEST_VERSION
+ #ifdef ENABLE_LIBXML
+-    const char **xmlVersion = __xmlParserVersion();
++    const char* const* xmlVersion = __xmlParserVersion();
+     if (xmlVersion != nullptr)
+         logger->log(" libxml2: %s", *xmlVersion);
+ #endif  // ENABLE_LIBXML
+diff -aur a/src/utils/xml/libxml.inc b/src/utils/xml/libxml.inc
+--- a/src/utils/xml/libxml.inc	2021-03-17 18:45:35.000000000 +0100
++++ b/src/utils/xml/libxml.inc	2024-02-14 23:02:14.077279985 +0100
+@@ -25,6 +25,7 @@
+ #ifdef ENABLE_LIBXML
+ 
+ #include <libxml/xmlwriter.h>
++#include <libxml/parser.h>
+ 
+ __XML_XMLWRITER_H__
+ 
