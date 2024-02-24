@@ -1,7 +1,7 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=imibrowser
-pkgver=14.5.4750
+pkgver=14.5.4751
 pkgrel=1
 pkgdesc="iReasoning MIB browser tool for SNMP API."
 url="https://www.ireasoning.com/mibbrowser.shtml"
@@ -11,7 +11,7 @@ depends=('jre-openjdk')
 makedepends=('imagemagick')
 source=("$pkgname-$pkgver.zip::https://www.ireasoning.com/download/mibfree/mibbrowser.zip"
 	"iMIBrowser.desktop")
-sha256sums=('5b7128829d539ed141bfe2d4a8e5f7e09cadb9b3cff08271bc4a541bf86634de'
+sha256sums=('dd441e6ebdb4aa929b027fb1a52f65d545865d90db1fd38d575c5c63902cb5e2'
             '5d2ca5f1199f429a09f700476753bfdabd111acbf4fdaf7ea43ae8ed3879aa29')
 
 prepare() {
