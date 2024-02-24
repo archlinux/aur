@@ -5,6 +5,7 @@ pkgbase = python-rapidtables
 	url = https://github.com/alttch/rapidtables
 	arch = any
 	license = MIT
+	checkdepends = python-termcolor
 	makedepends = python-setuptools
 	depends = python
 	source = python-rapidtables-0.1.11.tar.gz::https://github.com/alttch/rapidtables/archive/da2737da6c210518e3044782d72de031c53d9a7e.tar.gz
