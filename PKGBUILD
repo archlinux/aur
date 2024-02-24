@@ -2,7 +2,7 @@
 # Contributor: Jonathan Dönszelmann <jonabent@gmail.com>
 
 pkgname=pointless
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="An endless drawing canvas desktop app made with Tauri (Rust) and React"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('cairo' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'pango' 'webkit
 makedepends=('cargo' 'libsoup' 'npm' 'yarn')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('f7b1713f2ff1f1292fde098b2a8c5edeb4fe7ee1c7e593374262627d67eca959'
+sha256sums=('816b4db063d2ef4b127a0908819719fcbac8b8fa15cba2c1d05bf1dd68cd6343'
             '2c348298c7b16f82ce5c2dd4db87131e427036506f62af8af92d1c84b30644a5')
 
 prepare() {
@@ -27,9 +27,8 @@ build() {
 }
 
 package() {
-    install -Dm644 -t "${pkgdir}/usr/share/applications/" "${pkgname}.desktop"
-
     cd "${pkgname}-${pkgver}/src-tauri"
     install -Dm755 -t "${pkgdir}/usr/bin/" "target/release/${pkgname}"
     install -Dm644 icons/icon.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 -t "${pkgdir}/usr/share/applications/" "${srcdir}/${pkgname}.desktop"
 }
