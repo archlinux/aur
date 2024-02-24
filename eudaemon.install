@@ -7,17 +7,24 @@ _refresh_daemon() {
   su "$1" -s /bin/sh -c "XDG_RUNTIME_DIR=/run/user/\$UID systemctl --user daemon-reload"
 }
 
-_enable_service() {
-  su "$1" -s /bin/sh -c "XDG_RUNTIME_DIR=/run/user/\$UID systemctl --user enable $basename"
-}
-
 _start_service() {
   su "$1" -s /bin/sh -c "XDG_RUNTIME_DIR=/run/user/\$UID systemctl --user start $basename"
 }
 
+_stop_service() {
+  su "$1" -s /bin/sh -c "XDG_RUNTIME_DIR=/run/user/\$UID systemctl --user stop $basename"
+}
+
+_enable_service() {
+  su "$1" -s /bin/sh -c "XDG_RUNTIME_DIR=/run/user/\$UID systemctl --user enable $basename"
+}
+
+_disable_service() {
+  su "$1" -s /bin/sh -c "XDG_RUNTIME_DIR=/run/user/\$UID systemctl --user disable $basename"
+}
+
 _is_service_active() {
-  if su "$1" -s /bin/sh -c "XDG_RUNTIME_DIR=/run/user/\$UID systemctl --user is-active $basename" &>/dev/null
-  then
+  if su "$1" -s /bin/sh -c "XDG_RUNTIME_DIR=/run/user/\$UID systemctl --user is-active $basename" &>/dev/null; then
     return 0
   else
     return 1
@@ -25,21 +32,16 @@ _is_service_active() {
 }
 
 _is_service_enabled() {
-  if su "$1" -s /bin/sh -c "XDG_RUNTIME_DIR=/run/user/\$UID systemctl --user is-enabled $basename" &>/dev/null
-  then
+  if su "$1" -s /bin/sh -c "XDG_RUNTIME_DIR=/run/user/\$UID systemctl --user is-enabled $basename" &>/dev/null; then
     return 0
   else
     return 1
   fi
 }
 
-_stop_service() {
-  su "$1" -s /bin/sh -c "XDG_RUNTIME_DIR=/run/user/\$UID systemctl --user stop $basename"
+pre_install() {
+  : # noop
 }
-
-# INSTALL 
-# pre_install() {
-# }
 
 post_install() {
   for user in "${users[@]}"; do
@@ -51,7 +53,9 @@ post_install() {
 
 pre_upgrade() {
   for user in "${users[@]}"; do
-    _stop_service "$user"
+    if _is_service_active "$user"; then
+      _stop_service "$user"
+    fi
   done
 }
 
