@@ -11,7 +11,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=f7ff742417ae29b283ddd342193a314a73f44019
+_mozc_commit=48dc6d13ac655601733170fad27380e6e01ec8f1
 _branch=fcitx
 # Ut Dictionary
 _utdicdate=20230115
@@ -30,10 +30,10 @@ _sudachidict_date=20240109
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.29.5374.102
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
-license=('custom')
+license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND NAIST-2003 AND Unicode-3.0')
 makedepends=('qt6-base' 'fcitx5' 'fcitx5-qt' 'bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'mesa' 'clang' 'ibus' 'rustup')
 options=(!lto)
 source=("git+$url.git#commit=${_mozc_commit}"
@@ -183,6 +183,7 @@ build() {
   #echo $BAZEL_CXXOPTS
   #BAZEL_COPTS=$(echo $CFLAGS | xargs -n1 echo "--copt")
   #BAZEL_CXXOPTS=$(echo $CXXFLAGS | xargs -n1 echo "--cxxopt")
+  bazel clean
   if [[ $CC =~ gcc ]];then
     bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so
   else
@@ -268,6 +269,7 @@ package_ibus-mozc-with-jp-dict() {
 
 package_emacs-mozc-with-jp-dict() {
   pkgdesc="Emacs engine module for Mozc with UT dictionary"
+  license=('BSD-3-Clause')
   depends=(gcc-libs "emacs")
   replaces=('emacs-mozc')
   conflicts=('emacs-mozc')
