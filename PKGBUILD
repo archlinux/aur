@@ -4,12 +4,12 @@
 # Contributor: yochananmarqos
 
 pkgname=notepadnext
-pkgver=0.6.4
+pkgver=0.7
 pkgrel=1
 pkgdesc="Cross-platform reimplementation of Notepad++"
 arch=('x86_64')
 url="https://github.com/dail8859/NotepadNext"
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('qt6-5compat' 'hicolor-icon-theme')
 makedepends=('git' 'qt6-tools')
 source=("$pkgname::git+$url#tag=v$pkgver"
