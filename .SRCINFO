@@ -1,7 +1,7 @@
 pkgbase = brave-beta-bin
 	pkgdesc = Web browser that blocks ads and trackers by default (beta binary release).
 	pkgver = 1.64.83
-	pkgrel = 1
+	pkgrel = 2
 	url = https://brave.com/download-beta
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,6 @@ pkgbase = brave-beta-bin
 	depends = libxss
 	depends = ttf-font
 	optdepends = cups: Printer support
-	optdepends = pepper-flash: Adobe Flash support
 	optdepends = mesa: Hardware accelerated rendering
 	optdepends = libglvnd: Support multiple different OpenGL drivers at any given time
 	optdepends = libgnome-keyring: gnome keyriung support
