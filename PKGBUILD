@@ -6,7 +6,7 @@
 
 pkgname="affine$_pkgtype"
 pkgver=0.13.0_canary.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Auto get the latest version(maybe canary maybe not) of AFFiNE(A privacy-focussed, local-first, open-source, and ready-to-use alternative for Notion & Miro.)"
 arch=("x86_64")
 license=('MPL2')
