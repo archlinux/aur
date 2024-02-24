@@ -8,9 +8,16 @@ pkgdesc='Material Design webfont icons from materialdesignicons.com'
 arch=('any')
 url='https://materialdesignicons.com'
 license=('Apache-2.0')
+checkdepends=('fontconfig')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Templarian/$_projectname/archive/v$pkgver.tar.gz")
 sha512sums=('31f3494be5fcde45a3a0138948b1ec0a73b56f8a999449cfd96c7eacd8d1dbae0fdc7e76f7da4b61b1e53e3b28fd21a9369ab190317067f62c1e643b908eec61')
 
+_sourcedirectory="$_projectname-$pkgver"
+
+check() {
+	fc-scan "$srcdir/$_sourcedirectory/fonts/materialdesignicons-webfont.ttf" | tee '/dev/stderr' | grep -q 'family: "Material Design Icons"'
+}
+
 package() {
-	install -Dm644 "$srcdir/$_projectname-$pkgver/fonts/materialdesignicons-webfont.ttf" "$pkgdir/usr/share/fonts/TTF/materialdesignicons-webfont.ttf"
+	install -Dm644 "$srcdir/$_sourcedirectory/fonts/materialdesignicons-webfont.ttf" "$pkgdir/usr/share/fonts/TTF/materialdesignicons-webfont.ttf"
 }
