@@ -1,0 +1,17 @@
+pkgbase = bikecad-bin
+	pkgdesc = Bicycle design software
+	pkgver = 17.5
+	pkgrel = 1
+	url = https://www.bikecad.ca/
+	arch = x86_64
+	license = custom:commercial
+	makedepends = libicns
+	depends = java-runtime
+	source = https://www.bikecad.ca/BikeCADFreeMac17.5.zip
+	source = bikecad.desktop
+	source = bikecad.sh
+	sha256sums = fca4e1422b15e642f05f7c1e4f1beb71931dda4e8dbfb4d1b733843fcb071bc4
+	sha256sums = 5b50d81cc4eac3150eef78f8ed7d6c08e413231280befe606723630c56128297
+	sha256sums = 0840c06b3b065dd8404c2a15a8d1a45e3bf3a4c3c07c7833729174f6c0663a55
+
+pkgname = bikecad-bin

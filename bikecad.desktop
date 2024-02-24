@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=BikeCAD
+Comment=Bicycle design software
+Exec=java -jar /usr/share/java/bikecad/bikeCADPro.jar
+Icon=bikecad
+Terminal=false
+StartupWMClass=bikecad
+Type=Application
+Categories=Education
