@@ -12,18 +12,14 @@ _snapshot="${pkgname}-${pkgver}"
 source=("${_snapshot}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('daddc0f2b86824409c7554541aab2a03c68eb40722578bf1d1e3d444af68a068')
 
-export RUSTUP_TOOLCHAIN=stable
-export CARGO_BUILD_TARGET="${CARCH}-unknown-linux-gnu"
-
 prepare() {
     cd "${_snapshot}"
-    cargo fetch --locked --target "${CARGO_BUILD_TARGET}"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "${_snapshot}"
-    export CARGO_TARGET_DIR="${srcdir}"
-    cargo build --frozen --release
+    cargo build --frozen --release --target-dir "${srcdir}"
 }
 
 check() {
@@ -32,5 +28,5 @@ check() {
 }
 
 package() {
-    install -Dm0755 -t "${pkgdir}/usr/bin" "${CARGO_BUILD_TARGET}/release/${pkgname}"
+    install -Dm0755 "release/${pkgname}" -t "${pkgdir}/usr/bin"
 }
