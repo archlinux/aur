@@ -1,6 +1,6 @@
 # Maintainer: Mario Ray Mahardhika <leledumbo_cool@yahoo.co.id>
 pkgname=voc-git
-pkgver=2.1.0.r31.g1bd70f3
+pkgver=v2.1.2.r9.ge376e59f
 pkgrel=1
 pkgdesc="A free and open source implementation of the Oberon-2 language and libraries."
 arch=('i686' 'x86_64')
@@ -17,12 +17,11 @@ install=$pkgname.install
 # backend=clang
 
 pkgver() {
-  cd src
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd src
+  cd $srcdir/src
   if [ "$backend" == "clang" ]
   then
     export CC=clang
@@ -31,7 +30,7 @@ build() {
 }
 
 package() {
-  cd src
+  cd $srcdir/src
   mkdir -p "$pkgdir/opt/voc"
   cp -Rfp install/* "$pkgdir/opt/voc"
   mkdir -p "$pkgdir/usr/bin"
