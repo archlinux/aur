@@ -1,0 +1,18 @@
+pkgbase = 1panel-bin
+	pkgdesc = 1Panel 是一个现代化、开源的 Linux 服务器运维管理面板。
+	pkgver = 1.9.6
+	pkgrel = 1
+	url = https://1panel.cn
+	install = 1panel-bin.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = docker
+	depends = docker-compose
+	optdepends = ufw
+	optdepends = firewalld
+	source = 1panel-bin-1.9.6.tar.gz::https://resource.fit2cloud.com/1panel/package/stable/v1.9.6/release/1panel-v1.9.6-linux-amd64.tar.gz
+	source = 1pctl::https://raw.githubusercontent.com/sengedev/1panel-bin/main/1pctl
+	sha256sums = 5c33d3b882d4eebf1f3dbf1e91c791ec962dc382cb08120c25b03946b6085798
+	sha256sums = SKIP
+
+pkgname = 1panel-bin
