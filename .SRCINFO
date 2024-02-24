@@ -1,11 +1,15 @@
 pkgbase = ocrodjvu-python3-git
 	pkgdesc = Python 3 port of ocrodjvu. ocrodjvu is a wrapper for OCR systems, that allows you to perform OCR on DjVu files.
 	pkgver = 0.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rmast/ocrodjvu/tree/python3
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = git
+	makedepends = coreutils
+	makedepends = sed
+	makedepends = make
 	depends = python
 	depends = python-lxml
 	depends = python-djvulibre
