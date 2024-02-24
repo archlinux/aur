@@ -1,6 +1,6 @@
 # Maintainer: alba4k <blaskoazzolaaaron@gmail.com>
 pkgname=albafetch-git
-pkgver=4.1.r63.gd2a67463
+pkgver=4.1.r64.g98c31a91
 pkgrel=1
 pkgdesc="Neofetch, but written in C; both faster and worse than the original (latest commit)"
 arch=(x86_64 aarch64)
@@ -29,6 +29,6 @@ package() {
     install -Dm644 MANUAL.md "$pkgdir/usr/share/doc/${pkgname}/MANUAL.md"
 
     mkdir -p "$pkgdir/etc/xdg"
-    cat ../../template.conf albafetch.conf > "$pkgdir/etc/xdg/albafetch.conf.example"
+    cp "../../template.conf" "$pkgdir/etc/xdg/albafetch.conf.example"
 }
 
