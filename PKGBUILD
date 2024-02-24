@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=arrow
-_pkgver=14.0.0.2
+_pkgver=14.0.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Integration to 'Apache' 'Arrow'"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -62,10 +62,10 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-build.patch")
-md5sums=('84cefe34da6af43984b308ca2a57d7bd'
-         '3c7ea1780d1a7eff30d0243e161534ce')
-b2sums=('5d234175981bde6b094593856e8286048ca05308eb00d591c96a68826e43e78c2cf8d594316c50946b374e6e872ff065aeb191c36d0ba0b1104f31cc94ae6102'
-        '1926311b6ec30259adcfcfa94cfff8cbe55bf3a87c324112fba5e601bd1daa404efd79e7b78a21eb72982686e12614f33c17421a59cc07858734d58676edd70c')
+md5sums=('aaf2deb867c78ca49e5cb4e5931a42b4'
+         '583d52743ac4b0c6fc0d9b9dd3ebce49')
+b2sums=('db02956a4fca2bf7218d6f580cafaf2cacf27650a602cc04b72a3c6d1cfecb6951b9becce01fc88723fa6175b80d851fcaeae80346ed1bf1f23909b41463e432'
+        '8d44a056f4885e03bf97b30066302d6ccfef738baeb761ba7e6c32ec547b83c5a3d202ff8e44e98de4afa786240e937e9a0bd9eb2dcaa3992226607953939e2d')
 
 prepare() {
   # fix build with system arrow, skip failing tests
@@ -74,7 +74,8 @@ prepare() {
 
 build() {
   mkdir build
-  R CMD INSTALL -l build "$_pkgname"
+  R CMD INSTALL -l build "$_pkgname" \
+      --configure-vars=ARROW_R_ALLOW_CPP_VERSION_MISMATCH=true
 }
 
 check() {

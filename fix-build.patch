@@ -1,8 +1,8 @@
 diff --git a/arrow/src/r_to_arrow.cpp b/arrow/src/r_to_arrow.cpp
-index 19c2397..d9bf848 100644
+index 302c61e..a81210f 100644
 --- a/arrow/src/r_to_arrow.cpp
 +++ b/arrow/src/r_to_arrow.cpp
-@@ -1051,10 +1051,15 @@ struct RConverterTrait;
+@@ -1054,7 +1054,7 @@ struct RConverterTrait;
  template <typename T>
  struct RConverterTrait<
      T, enable_if_t<!is_nested_type<T>::value && !is_interval_type<T>::value &&
@@ -11,14 +11,6 @@ index 19c2397..d9bf848 100644
    using type = RPrimitiveConverter<T>;
  };
  
-+template <typename T>
-+struct RConverterTrait<T, enable_if_binary_view_like<T>> {
-+  // not implemented
-+};
-+
- template <typename T>
- struct RConverterTrait<T, enable_if_list_like<T>> {
-   using type = RListConverter<T>;
 diff --git a/arrow/tests/testthat/test-dplyr-filter.R b/arrow/tests/testthat/test-dplyr-filter.R
 index 724b93c..dccc41a 100644
 --- a/arrow/tests/testthat/test-dplyr-filter.R
@@ -44,23 +36,15 @@ index 0889fff..7e507ff 100644
    # that need to be forced to fail because they error ambiguously
  
 diff --git a/arrow/tools/check-versions.R b/arrow/tools/check-versions.R
-index 3d8cbf0..920a7ef 100644
+index 34b2ef6..53e1bba 100644
 --- a/arrow/tools/check-versions.R
 +++ b/arrow/tools/check-versions.R
-@@ -49,16 +49,6 @@ check_versions <- function(r_version, cpp_version) {
-         r_version
-       )
-     )
--  } else if (r_version != cpp_version) {
--    cat(
--      sprintf(
--        "**** Not using: C++ library version (%s) does not match R package (%s)\n",
--        cpp_version,
--        r_version
--      )
--    )
--    stop("version mismatch")
--    # Add ALLOW_VERSION_MISMATCH env var to override stop()? (Could be useful for debugging)
-   } else {
-     # OK
-     cat(sprintf("**** C++ and R library versions match: %s\n", cpp_version))
+@@ -30,7 +30,7 @@ release_version_supported <- function(r_version, cpp_version) {
+   # If we allow a version mismatch we still need to cover the minimum version (13.0.0 for now)
+   # we don't allow newer C++ versions as new features without additional feature gates are likely to
+   # break the R package
+-  version_valid <- cpp_version >= minimum_cpp_version && major(cpp_version) <= major(r_version)
++  version_valid <- cpp_version >= minimum_cpp_version
+   allow_mismatch && version_valid || major(r_version) == major(cpp_version)
+ }
+ 
