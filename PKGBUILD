@@ -17,8 +17,8 @@
 
 pkgbase=llvm-minimal-git
 pkgname=(llvm-minimal-git llvm-libs-minimal-git clang-minimal-git clang-libs-minimal-git clang-opencl-headers-minimal-git)
-pkgver=19.0.0_r488574.cba1b64099a0
-pkgrel=1
+pkgver=19.0.0_r490673.1901f442ca63
+pkgrel=2
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -154,7 +154,7 @@ check() {
 
 package_llvm-minimal-git() {
     pkgdesc="Collection of modular and reusable compiler and toolchain technologies"
-    depends=(llvm-libs-minimal-git="$pkgver-$pkgrel" clang-libs-minimal-git="$pkgver-$pkgrel")
+    depends=(llvm-libs-minimal-git="$pkgver-$pkgrel")
     provides=('llvm')
     conflicts=('llvm')
     optdepends=('python: for using lit (LLVM Integrated Tester)'
@@ -177,7 +177,7 @@ package_llvm-minimal-git() {
     mkdir -p "$srcdir"{/llvm-libs/usr/lib,/clang-libs/usr/lib,/clang-opencl-headers/usr/{lib/clang/$_major_ver/include,include/clang/Basic}}
     
     # The llvm runtime libraries go into llvm-libs-minimal-git
-    mv -f "$pkgdir"/usr/lib/lib{LLVM-*.so,LTO.so.*,Remarks.so.*} "$srcdir"/llvm-libs/usr/lib
+    mv -f "$pkgdir"/usr/lib/{libLLVM*.so*,libLTO.so.*,libRemarks.so.*} "$srcdir"/llvm-libs/usr/lib
 
     # The clang runtime libraries go into clang-libs-minimal-git
     mv -f "$pkgdir"/usr/lib/libclang{,-cpp}.so* "$srcdir"/clang-libs/usr/lib
@@ -199,14 +199,13 @@ package_llvm-minimal-git() {
     mv -f "$pkgdir"/usr/share/{clang,man,opt-viewer,scan-build,scan-view} "$srcdir"/clang/usr/share/
     
     install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE.TXT
-    
 }
 
 package_llvm-libs-minimal-git() {
     pkgdesc="LLVM runtime libraries, trunk version"
-    depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses' 'libxml2' 'llvm-libs')
+    depends=(gcc-libs zlib libffi libedit ncurses libxml2 llvm-libs)
     # some applications expect llvmgold.so to be present and fail badly if it isn't.
-    # adding llvm-libs as depend is the easiest solution
+    # adding repo llvm-libs as depend is the easiest solution
 
     cp --preserve --recursive "$srcdir"/llvm-libs/* "$pkgdir"/
 
@@ -246,7 +245,6 @@ package_clang-minimal-git(){
     install -Dm644 "$srcdir"/llvm-project/compiler-rt/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/compiler-rt-LICENSE.TXT
     install -Dm644 "$srcdir"/llvm-project/clang-tools-extra/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-tools-extra-LICENSE.TXT
     install -Dm644 "$srcdir"/llvm-project/clang/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-LICENSE.TXT
-
 }
 
 package_clang-libs-minimal-git() {
