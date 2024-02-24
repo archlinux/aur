@@ -7,6 +7,7 @@ url="https://openmodelica.org"
 license=('OSMC-PL')
 _giturl="https://github.com/OpenModelica/OpenModelica.git"
 groups=(openmodelica)
+conflicts=(openmodelica)
 depends=('lapack' 'java-environment')
 makedepends=('gcc-fortran' 'cmake' 'git' 'boost')
 source=("git+${_giturl}#tag=v${pkgver}")
@@ -22,14 +23,13 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/OpenModelica/OMCompiler"
-  autoreconf -vfi
-  ./configure --prefix=/usr/ --without-omc
-  make
+  cd "$srcdir/OpenModelica"
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DOM_USE_CCACHE=OFF -DOM_ENABLE_GUI_CLIENTS=OFF -B build .
+  make -C build
 }
 
 package() {
-  cd "$srcdir/OpenModelica/OMCompiler"
-  make install DESTDIR="${pkgdir}"
-  chmod go+rx "${pkgdir}"/usr/share/omc/runtime/c/fmi/buildproject/config.*
+  cd "$srcdir/OpenModelica"
+  make install -C build DESTDIR="${pkgdir}"
+  rm -r "${pkgdir}"/usr/share/zmq
 }
