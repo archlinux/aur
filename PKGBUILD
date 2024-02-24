@@ -57,6 +57,8 @@ prepare() {
 	sed -i -e "s/%%PKGNAME%%/$_pkgname/g" -e "s/%%PROJECTNAME%%/$_projectname/g" "$srcdir/electron-launcher.sh"
 }
 
+# Unable to test functionality, as this version of Electron requires an active X11 session to call --version
+
 package() {
 	cd "$srcdir/"
 	install -dm755 "$pkgdir/usr/lib/$_pkgname/"
