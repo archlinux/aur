@@ -1,0 +1,24 @@
+pkgbase = python-mpi4py-fft
+	pkgdesc = Parallel Fast Fourier Transforms (FFTs) using MPI for Python
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = https://github.com/mpi4py/mpi4py-fft
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = cython0
+	depends = python-mpi4py
+	depends = python-numpy
+	depends = fftw
+	optdepends = python-h5py-openmpi
+	optdepends = python-netcdf4-openmpi
+	optdepends = python-scipy
+	optdepends = python-pyfftw
+	optdepends = python-mkl_fft
+	source = mpi4py-fft-2.0.5.tar.gz::https://github.com/mpi4py/mpi4py-fft/archive/2.0.5.tar.gz
+	sha512sums = 447cbbf9feb468d843f2a8d5e32f2ea44536952c5e53701a6737521e29cca9cfbc1c700954dd2cecf8d8dc9fff4fc4f5cf01a7c8f1939a02e90552a22e77cc0e
+
+pkgname = python-mpi4py-fft
