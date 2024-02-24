@@ -1,6 +1,6 @@
 pkgbase = arxiv-latex-cleaner
 	pkgdesc = Easily clean the LaTeX code of your paper to submit to arXiv
-	pkgver = 1.0.1
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/google-research/arxiv-latex-cleaner
 	arch = any
