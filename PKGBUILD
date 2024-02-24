@@ -22,6 +22,8 @@ sha512sums=('9157c982f272d7b033bab36f42b378deead0b40a31c062f4a067198028022035ecb
 
 _sourcedirectory="$pkgname-$_commit"
 
+# No functionality to test without the script sending data to auditors
+
 package() {
 	cd "$srcdir/"
 
