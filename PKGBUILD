@@ -1,10 +1,10 @@
-# Maintainer: Harm Endres <harm[DOT]mueller[AT]gmail[DOT]com>
+# Maintainer:
 pkgname='perl-rex'
-pkgver='1.14.2'
+pkgver='1.14.3'
 pkgrel='1'
 pkgdesc="(R)?ex, the friendly automation framework"
 arch=('any')
-license=('Apache')
+license=('Apache-2.0')
 options=('!emptydirs')
 depends=(
   #'perl-aws-signature4' # doesn't build, no time to check what is wrong atm.
@@ -43,10 +43,10 @@ optdepends=(
 )
 makedepends=()
 url='https://www.rexify.org/'
-source=('https://cpan.metacpan.org/authors/id/F/FE/FERKI/Rex-1.14.2.tar.gz')
-md5sums=('6820ccd382bec82493e3911e67c950f3')
-sha256sums=('21daa951da747f0053afd7ad946fce2feb2c08ddb1cc2bfe00ee46601a8cab56')
-_distdir="Rex-1.14.2"
+source=('https://cpan.metacpan.org/authors/id/F/FE/FERKI/Rex-1.14.3.tar.gz')
+md5sums=('3e07630f51108e93d8866e4f3501fb4e')
+sha256sums=('027d3042ef940b67590e5989e96f22ae1e67ba744895c5dd3db569c05137025c')
+_distdir="Rex-1.14.3"
 
 build()
 (

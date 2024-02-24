@@ -1,10 +1,10 @@
 pkgbase = perl-rex
 	pkgdesc = (R)?ex, the friendly automation framework
-	pkgver = 1.14.2
+	pkgver = 1.14.3
 	pkgrel = 1
 	url = https://www.rexify.org/
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	depends = perl-data-validate-ip
 	depends = perl-devel-caller
 	depends = perl-digest-hmac
@@ -37,8 +37,8 @@ pkgbase = perl-rex
 	optdepends = perl-string-escape
 	optdepends = perl-xml-libxml
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/F/FE/FERKI/Rex-1.14.2.tar.gz
-	md5sums = 6820ccd382bec82493e3911e67c950f3
-	sha256sums = 21daa951da747f0053afd7ad946fce2feb2c08ddb1cc2bfe00ee46601a8cab56
+	source = https://cpan.metacpan.org/authors/id/F/FE/FERKI/Rex-1.14.3.tar.gz
+	md5sums = 3e07630f51108e93d8866e4f3501fb4e
+	sha256sums = 027d3042ef940b67590e5989e96f22ae1e67ba744895c5dd3db569c05137025c
 
 pkgname = perl-rex
