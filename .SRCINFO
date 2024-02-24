@@ -1,7 +1,7 @@
 pkgbase = dbrest-bin
 	pkgdesc = Spin up a REST API for any Major Database
 	pkgver = 0.0.68
-	pkgrel = 1
+	pkgrel = 2
 	url = https://flarco.gitbook.io/dbrest
 	arch = x86_64
 	license = GPL
