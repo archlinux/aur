@@ -9,7 +9,7 @@ url="https://github.com/jwlodek/$_projectname"
 license=('BSD-3-Clause')
 depends=('python>=3.6.0')
 makedepends=('python-setuptools' 'python-wheel')
-checkdepends=('python-pytest' 'python-pytest-cov')
+checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('95cf3df28525d7429e2e0fb2bcdce607d3ae2f3ea24d85112e8e4f38fb7944bcab9f992c55b093c23a154f4ae4aa50bcb20ce0377f2af1830397e2effa10eb1e')
 
@@ -22,7 +22,12 @@ build() {
 
 check() {
 	cd "$srcdir/$_sourcedirectory/"
+
+	# Run tests
 	pytest
+
+	# Verify that the basic functionality works
+	printf 'q' | python -B 'examples/hello_py_cui.py'
 }
 
 package() {

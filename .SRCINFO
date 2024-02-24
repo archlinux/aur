@@ -6,7 +6,6 @@ pkgbase = python-py_cui
 	arch = any
 	license = BSD-3-Clause
 	checkdepends = python-pytest
-	checkdepends = python-pytest-cov
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python>=3.6.0
