@@ -5,16 +5,16 @@
 # Contributor: Alexandre BIQUE <bique.alexandre@gmail.com>
 # Contributor: Patrick Burroughs (Celti) <celti@celti.name>
 
-set -u
-pkgname='libreswan'
-#pkgname+='-git'
+pkgname='wenger-libreswan'
+
 pkgver='4.12'
-pkgrel='2'
+pkgrel='1'
 pkgdesc='IPsec implementation with IKEv1 and IKEv2 keying protocols'
 arch=('i686' 'x86_64')
 arch+=('aarch64') # yjun naumovitch
 url='https://libreswan.org/'
 license=('GPL' 'MPL')
+
 depends=('systemd' 'unbound' 'nss' 'libcap-ng' 'curl' 'inetutils')
 depends+=('python3')
 optdepends=(
@@ -22,20 +22,27 @@ optdepends=(
   'networkmanager-l2tp: L2TP support for NetworkManager using libreswan for IPSec'
 )
 makedepends=('docbook-xsl' 'xmlto' 'flex' 'bison')
+
 conflicts=('freeswan' 'openswan' 'strongswan' 'ipsec-tools')
+
 backup=('etc/ipsec.conf' 'etc/ipsec.secrets' 'etc/pam.d/pluto')
-install="${pkgname}.install"
-_srcdir="${pkgname}-${pkgver}"
+
+install="libreswan.install"
+_srcdir="libreswan-${pkgver}"
+
 source=(
-  "https://download.libreswan.org/${pkgname}-${pkgver%%.r*}.tar.gz"
+  "https://github.com/libreswan/libreswan/archive/refs/tags/v${pkgver%%.r*}.tar.gz"
   'tmpfiles.conf'
 )
-md5sums=('a8dea4d464e1cc58a25cb00fa0298fc4'
+
+md5sums=('016de87292719819b46b19e7bf8aa6f9'
          '77399a739ee99f8bc54837684d7c39d5')
-sha256sums=('ae85abe415f7becf4b6a2b9897e1712f27e5aac9c35dfbdddbcce0ad7dfd99f7'
+sha256sums=('0c0b113b1119f95d63d46e0abd9bdfbda3705a25e71c76d6088ef9bb2f0a2b27'
             '78265c690d58228c3bcc1a8793456172c39d493d268e9d9b1816288d0a47f573')
 
+
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
+
   _srcdir="${pkgname}"
   source[0]="${_srcdir}::git://github.com/libreswan/libreswan.git"
   #source[0]+="#branch=release-${pkgver%%.r*}"
@@ -44,16 +51,20 @@ if [ "${pkgname%-git}" != "${pkgname}" ]; then
   sha256sums[0]='SKIP'
   provides=("${pkgname%-*}=${pkgver%%.r*}")
   conflicts=("${pkgname%-*}")
-pkgver() {
-  set -u
-  cd "${_srcdir}"
-  git describe --long | sed -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g' -e 's:^v::g'
-  set +u
-}
+
+  pkgver() {
+    set -u
+    cd "${_srcdir}"
+    git describe --long | sed -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g' -e 's:^v::g'
+    set +u
+  }
+
 elif [ "${pkgver%%.r*}" != "${pkgver}" ]; then
-pkgver() {
-  printf '%s' "${pkgver%.r*}"
-}
+
+  pkgver() {
+    printf '%s' "${pkgver%.r*}"
+  }
+
 fi
 
 # https://git.centos.org/rpms/libreswan/blob/c8s/f/SPECS/libreswan.spec
