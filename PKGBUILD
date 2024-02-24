@@ -100,27 +100,34 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-xanmod-bore
 _major=6.7
-pkgver=${_major}.5
+pkgver=${_major}.6
 _branch=6.x
 xanmod=1
 _revision=
+_sf_branch=main
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod (Stable) with BORE CPU scheduler and tickrate customizations'
 url="http://www.xanmod.org/"
 arch=('x86_64')
 license=(GPL2)
 makedepends=(
-  bc cpio kmod libelf perl tar xz
+  bc
+  cpio
+  gettext
+  libelf
+  pahole
+  perl
+  python
+  tar
+  xz
 )
-_jobs=$(nproc)
-_core=$(nproc --all)
 if [ "${_compiler}" = "clang" ]; then
-  makedepends+=(clang llvm lld python)
+  makedepends+=(clang llvm lld)
 fi
 options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
-        "patch-${pkgver}-xanmod${xanmod}${_revision}.xz::https://sourceforge.net/projects/xanmod/files/releases/main/${pkgver}-xanmod${xanmod}${_revision}/patch-${pkgver}-xanmod${xanmod}.xz"
+        "patch-${pkgver}-xanmod${xanmod}${_revision}.xz::https://sourceforge.net/projects/xanmod/files/releases/${_sf_branch}/${pkgver}-xanmod${xanmod}${_revision}/patch-${pkgver}-xanmod${xanmod}.xz"
         choose-gcc-optimization.sh
         "https://raw.githubusercontent.com/micros24/linux-xanmod-bore/${_major}/0001-bore.patch"
         "https://raw.githubusercontent.com/micros24/linux-xanmod-bore/${_major}/0002-glitched-cfs.patch"
@@ -140,7 +147,7 @@ for _patch in ${_patches[@]}; do
 done
 sha256sums=('ef31144a2576d080d8c31698e83ec9f66bf97c677fa2aaf0d5bbb9f3345b1069' # kernel
             'SKIP'                                                             # kernel signature
-            'e0ce221aafb37c494083215cbbafd3f3515f9b72bcfd9cb056a6a9088ba114cd' # xanmod patch
+            'd1b5a00c1babc53d40ea85dbba281fa9f05669b36117e1d937fc849f64336743' # xanmod patch
             '5c84bfe7c1971354cff3f6b3f52bf33e7bbeec22f85d5e7bfde383b54c679d30' # choose-gcc-optimization.sh
             'f8e21f14bdf2f90f37ab03e9b67cee83b999547bbfc9e0c67d1942c4dc3e40fb' # 0001-bore.patch
             '02be008f054a44322a74f0615e8a0d3ad7d6c5bc80182472a9cefbded959ce61' # 0002-glitched-cfs.patch
@@ -176,147 +183,157 @@ prepare() {
   cp -vf CONFIGS/xanmod/gcc/${_config} .config
 
   # enable LTO_CLANG_FULL
+  echo "Enabling LTO_CLANG_FULL..."
   if [ "${_compiler}" = "clang" ]; then
-    scripts/config --enable LTO
-    scripts/config --enable LTO_CLANG
-    scripts/config --enable ARCH_SUPPORTS_LTO_CLANG
-    scripts/config --enable ARCH_SUPPORTS_LTO_CLANG_THIN
-    scripts/config --disable LTO_NONE
-    scripts/config --enable HAS_LTO_CLANG
-    scripts/config --enable LTO_CLANG_FULL
-    scripts/config --disable LTO_CLANG_THIN
+    scripts/config --disable LTO_CLANG_THIN \
+                   --disable LTO_NONE \
+                   --enable LTO \
+                   --enable LTO_CLANG \
+                   --enable ARCH_SUPPORTS_LTO_CLANG \
+                   --enable ARCH_SUPPORTS_LTO_CLANG_THIN \
+                   --enable HAS_LTO_CLANG \
+                   --enable LTO_CLANG_FULL
+
   fi
+
+  # Disable features not needed for desktop use
+  scripts/config --disable X86_EXTENDED_PLATFORM \
+                 --disable BLK_DEBUG_FS \
+                 --disable MEMORY_HOTPLUG
 
   # Setting HZ tick rate
   echo "Setting Tickrate HZ..."
   if [ "$_tickrate_HZ" = "1000" ]; then
-    scripts/config --disable HZ_250
-    scripts/config --enable HZ_1000
+    scripts/config --disable HZ_250 \
+                   --enable HZ_1000
   elif [ "$_tickrate_HZ" = "500" ]; then
-    scripts/config --disable HZ_250
-    scripts/config --enable HZ_500
+    scripts/config --disable HZ_250 \
+                   --enable HZ_500
   elif [ "$_tickrate_HZ" = "250" ]; then
-    scripts/config --disable HZ_250
-    scripts/config --enable HZ_300
+    scripts/config --disable HZ_250 \
+                   --enable HZ_300
   elif [ "$_tickrate_HZ" = "100" ]; then
-    scripts/config --disable HZ_250
-    scripts/config --enable HZ_100
+    scripts/config --disable HZ_250 \
+                   --enable HZ_100
   fi
 
   # Selecting tick type
   echo "Setting tick type..."
   if [ "$_tickrate" = "tickless" ]; then
-    scripts/config --disable HZ_PERIODIC
-    scripts/config --disable NO_HZ_IDLE
-    scripts/config --disable CONTEXT_TRACKING_FORCE
-    scripts/config --enable NO_HZ_FULL_NODEF
-    scripts/config --enable NO_HZ_FULL
-    scripts/config --enable NO_HZ
-    scripts/config --enable NO_HZ_COMMON
-    scripts/config --enable CONTEXT_TRACKING
+    scripts/config --disable HZ_PERIODIC \
+                   --disable NO_HZ_IDLE \
+                   --disable CONTEXT_TRACKING_FORCE \
+                   --enable NO_HZ_FULL_NODEF \
+                   --enable NO_HZ_FULL \
+                   --enable NO_HZ \
+                   --enable NO_HZ_COMMON \
+                   --enable CONTEXT_TRACKING
   elif [ "$_tickrate" = "idle" ]; then
-    scripts/config --disable HZ_PERIODIC
-    scripts/config --disable NO_HZ_FULL
-    scripts/config --enable NO_HZ_IDLE
-    scripts/config --enable NO_HZ
-    scripts/config --enable NO_HZ_COMMON
+    scripts/config --disable HZ_PERIODIC \
+                   --disable NO_HZ_FULL \
+                   --enable NO_HZ_IDLE \
+                   --enable NO_HZ \
+                   --enable NO_HZ_COMMON
   elif [ "$_tickrate" = "constant" ]; then
-    scripts/config --disable NO_HZ_IDLE
-    scripts/config --disable NO_HZ_FULL
-    scripts/config --disable NO_HZ
-    scripts/config --disable NO_HZ_COMMON
-    scripts/config --enable HZ_PERIODIC
+    scripts/config --disable NO_HZ_IDLE \
+                   --disable NO_HZ_FULL \
+                   --disable NO_HZ \
+                   --disable NO_HZ_COMMON \
+                   --enable HZ_PERIODIC
   fi
 
   # Selecting Preemption model
   echo "Setting preemption model..."
   if [ "$_preemptmodel" = "preemptible" ]; then
-    scripts/config --disable PREEMPT_NONE
-    scripts/config --disable PREEMPT_VOLUNTARY
-    scripts/config --enable PREEMPT_BUILD
-    scripts/config --enable PREEMPT
-    scripts/config --enable PREEMPT_COUNT
-    scripts/config --enable PREEMPTION
-    scripts/config --enable PREEMPT_DYNAMIC
+    scripts/config --disable PREEMPT_NONE \
+                   --disable PREEMPT_VOLUNTARY \
+                   --enable PREEMPT_BUILD \
+                   --enable PREEMPT \
+                   --enable PREEMPT_COUNT \
+                   --enable PREEMPTION \
+                   --enable PREEMPT_DYNAMIC
   elif [ "$_preemptmodel" = "voluntary" ]; then
-    scripts/config --disable PREEMPT_NONE
-    scripts/config --disable PREEMPT
-    scripts/config --disable PREEMPT_DYNAMIC
-    scripts/config --enable PREEMPT_BUILD
-    scripts/config --enable PREEMPT_VOLUNTARY
-    scripts/config --enable PREEMPT_COUNT
-    scripts/config --enable PREEMPTION
+    scripts/config --disable PREEMPT_NONE \
+                   --disable PREEMPT \
+                   --disable PREEMPT_DYNAMIC \
+                   --enable PREEMPT_BUILD \
+                   --enable PREEMPT_VOLUNTARY \
+                   --enable PREEMPT_COUNT \
+                   --enable PREEMPTION
   elif [ "$_preemptmodel" = "server" ]; then
-    scripts/config --disable PREEMPT_VOLUNTARY
-    scripts/config --disable PREEMPT
-    scripts/config --disable PREEMPTION
-    scripts/config --disable PREEMPT_DYNAMIC
-    scripts/config --enable PREEMPT_NONE_BUILD
-    scripts/config --enable PREEMPT_NONE
+    scripts/config --disable PREEMPT_VOLUNTARY \
+                   --disable PREEMPT \
+                   --disable PREEMPTION \
+                   --disable PREEMPT_DYNAMIC \
+                   --enable PREEMPT_NONE_BUILD \
+                   --enable PREEMPT_NONE
   fi
 
   # Setting O3
   if [ "$_use_O3" = "y" ]; then
     echo "Enabling O3..."
-    scripts/config --disable CC_OPTIMIZE_FOR_PERFORMANCE
-    scripts/config --enable CC_OPTIMIZE_FOR_PERFORMANCE_O3
+    scripts/config --disable CC_OPTIMIZE_FOR_PERFORMANCE \
+                   --enable CC_OPTIMIZE_FOR_PERFORMANCE_O3
   fi
 
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
-  scripts/config --enable CONFIG_STACK_VALIDATION
+  scripts/config --enable STACK_VALIDATION
 
   # Enable IKCONFIG following Arch's philosophy
-  scripts/config --enable CONFIG_IKCONFIG \
-                 --enable CONFIG_IKCONFIG_PROC
+  scripts/config --enable IKCONFIG \
+                 --enable IKCONFIG_PROC
+
+  # Requested by Alexandre Frade to fix issues in python-gbinder
+  scripts/config --enable ANDROID_BINDERFS
+  scripts/config --enable ANDROID_BINDER_IPC
 
   # User set. See at the top of this file
   if [ "$_use_tracers" = "y" ]; then
     echo "Enabling CONFIG_FTRACE..."
-    scripts/config --enable CONFIG_FTRACE \
-                   --enable CONFIG_FUNCTION_TRACER \
-                   --enable CONFIG_STACK_TRACER
+    scripts/config --enable FTRACE \
+                   --enable FUNCTION_TRACER \
+                   --enable STACK_TRACER
   fi
 
   # Disabling NUMA
   if [ "$_use_numa" = "n" ]; then
     echo "Disabling NUMA..."
-    scripts/config --disable CONFIG_NUMA
-    scripts/config --disable NUMA
-    scripts/config --disable AMD_NUMA
-    scripts/config --disable X86_64_ACPI_NUMA
-    scripts/config --disable NODES_SPAN_OTHER_NODES
-    scripts/config --disable NUMA_EMU
-    scripts/config --disable USE_PERCPU_NUMA_NODE_ID
-    scripts/config --disable ACPI_NUMA
-    scripts/config --disable ARCH_SUPPORTS_NUMA_BALANCING
-    scripts/config --disable NODES_SHIFT
-    scripts/config --undefine NODES_SHIFT
-    scripts/config --disable NEED_MULTIPLE_NODES
-    scripts/config --disable NUMA_BALANCING
-    scripts/config --disable NUMA_BALANCING_DEFAULT_ENABLED
+    scripts/config --disable NUMA \
+                   --disable AMD_NUMA \
+                   --disable X86_64_ACPI_NUMA \
+                   --disable NODES_SPAN_OTHER_NODES \
+                   --disable NUMA_EMU \
+                   --disable USE_PERCPU_NUMA_NODE_ID \
+                   --disable ACPI_NUMA \
+                   --disable ARCH_SUPPORTS_NUMA_BALANCING \
+                   --disable NODES_SHIFT \
+                   --undefine NODES_SHIFT \
+                   --disable NEED_MULTIPLE_NODES \
+                   --disable NUMA_BALANCING \
+                   --disable NUMA_BALANCING_DEFAULT_ENABLED
   fi
 
   # Disabling Debug
   if [ "$_disable_debug" = "y" ]; then
     echo "Disabling debugging..."
-    scripts/config --disable DEBUG_INFO_BTF
-    scripts/config --disable DEBUG_INFO_DWARF4
-    scripts/config --disable DEBUG_INFO_DWARF5
-    scripts/config --disable PAHOLE_HAS_SPLIT_BTF
-    scripts/config --disable DEBUG_INFO_BTF_MODULES
-    scripts/config --disable SLUB_DEBUG
-    scripts/config --disable PM_DEBUG
-    scripts/config --disable PM_ADVANCED_DEBUG
-    scripts/config --disable PM_SLEEP_DEBUG
-    scripts/config --disable ACPI_DEBUG
-    scripts/config --disable SCHED_DEBUG
-    scripts/config --disable LATENCYTOP
-    scripts/config --disable DEBUG_PREEMPT
+    scripts/config --disable DEBUG_INFO_BTF \
+                   --disable DEBUG_INFO_DWARF4 \
+                   --disable DEBUG_INFO_DWARF5 \
+                   --disable PAHOLE_HAS_SPLIT_BTF \
+                   --disable DEBUG_INFO_BTF_MODULES \
+                   --disable SLUB_DEBUG \
+                   --disable PM_DEBUG \
+                   --disable PM_ADVANCED_DEBUG \
+                   --disable PM_SLEEP_DEBUG \
+                   --disable ACPI_DEBUG \
+                   --disable SCHED_DEBUG \
+                   --disable LATENCYTOP \
+                   --disable DEBUG_PREEMPT
   fi
 
   # Compress modules by default (following Arch's kernel)
   if [ "$_compress_modules" = "y" ]; then
-    scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
+    scripts/config --enable MODULE_COMPRESS_ZSTD
   fi
 
   # Let's user choose microarchitecture optimization in GCC
@@ -372,36 +389,48 @@ prepare() {
 
 build() {
   cd linux-${_major}
-  make ${_compiler_flags} all
+  make ${_compiler_flags} -j$(nproc) all
 }
 
 _package() {
   pkgdesc="Linux Xanmod (Stable) with BORE CPU scheduler and tickrate customizations"
-  depends=(coreutils kmod initramfs)
-  optdepends=('crda: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES
-            WIREGUARD-MODULE
-            KSMBD-MODULE
-            NTFS3-MODULE)
+  depends=(
+    coreutils
+    initramfs
+    kmod
+  )
+  optdepends=(
+    'wireless-regdb: to set the correct wireless channels of your country'
+    'linux-firmware: firmware images needed for some devices'
+  )
+  provides=(
+    KSMBD-MODULE
+    VIRTUALBOX-GUEST-MODULES
+    WIREGUARD-MODULE
+    NTFS3-MODULE
+  )
+  replaces=(
+    virtualbox-guest-modules-arch
+    wireguard-arch
+  )
 
   cd linux-${_major}
-  local _kernver="$(<version)"
-  local _modulesdir="$pkgdir/usr/lib/modules/$_kernver"
+  local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(make -s image_name)" "$_modulesdir/vmlinuz"
+  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
-  echo "$pkgbase" | install -Dm644 /dev/stdin "$_modulesdir/pkgbase"
+  echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+  ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build link
-  rm "$_modulesdir"/build
+  rm "$modulesdir"/build
 }
 
 _package-headers() {
@@ -409,64 +438,64 @@ _package-headers() {
   depends=(pahole)
 
   cd linux-${_major}
-  local _builddir="$pkgdir/usr/lib/modules/$(<version)/build"
+  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   echo "Installing build files..."
-  install -Dt "$_builddir" -m644 .config Makefile Module.symvers System.map \
+  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
     localversion.* version vmlinux
-  install -Dt "$_builddir/kernel" -m644 kernel/Makefile
-  install -Dt "$_builddir/arch/x86" -m644 arch/x86/Makefile
-  cp -t "$_builddir" -a scripts
+  install -Dt "$builddir/kernel" -m644 kernel/Makefile
+  install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
+  cp -t "$builddir" -a scripts
 
   # required when STACK_VALIDATION is enabled
-  install -Dt "$_builddir/tools/objtool" tools/objtool/objtool
+  install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
   # required when DEBUG_INFO_BTF_MODULES is enabled
-  if [ -f "tools/bpf/resolve_btfids/resolve_btfids" ]; then install -Dt "$_builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids ; fi
+  if [ -f "tools/bpf/resolve_btfids/resolve_btfids" ]; then install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids ; fi
 
   echo "Installing headers..."
-  cp -t "$_builddir" -a include
-  cp -t "$_builddir/arch/x86" -a arch/x86/include
-  install -Dt "$_builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
+  cp -t "$builddir" -a include
+  cp -t "$builddir/arch/x86" -a arch/x86/include
+  install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
 
-  install -Dt "$_builddir/drivers/md" -m644 drivers/md/*.h
-  install -Dt "$_builddir/net/mac80211" -m644 net/mac80211/*.h
+  install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
+  install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
   # https://bugs.archlinux.org/task/13146
-  install -Dt "$_builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
+  install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
   # https://bugs.archlinux.org/task/20402
-  install -Dt "$_builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
-  install -Dt "$_builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
-  install -Dt "$_builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+  install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
+  install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
+  install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
 
   # https://bugs.archlinux.org/task/71392
-  install -Dt "$_builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
   echo "Installing KConfig files..."
-  find . -name 'Kconfig*' -exec install -Dm644 {} "$_builddir/{}" \;
+  find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
   echo "Removing unneeded architectures..."
   local arch
-  for arch in "$_builddir"/arch/*/; do
+  for arch in "$builddir"/arch/*/; do
     [[ $arch = */x86/ ]] && continue
     echo "Removing $(basename "$arch")"
     rm -r "$arch"
   done
 
   echo "Removing documentation..."
-  rm -r "$_builddir/Documentation"
+  rm -r "$builddir/Documentation"
 
   echo "Removing broken symlinks..."
-  find -L "$_builddir" -type l -printf 'Removing %P\n' -delete
+  find -L "$builddir" -type l -printf 'Removing %P\n' -delete
 
   echo "Removing loose objects..."
-  find "$_builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
+  find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
 
   echo "Stripping build tools..."
   local file
   while read -rd '' file; do
-    case "$(file -bi "$file")" in
+    case "$(file -Sib "$file")" in
       application/x-sharedlib\;*)      # Libraries (.so)
         strip -v $STRIP_SHARED "$file" ;;
       application/x-archive\;*)        # Libraries (.a)
@@ -476,14 +505,14 @@ _package-headers() {
       application/x-pie-executable\;*) # Relocatable binaries
         strip -v $STRIP_SHARED "$file" ;;
     esac
-  done < <(find "$_builddir" -type f -perm -u+x ! -name vmlinux -print0)
+  done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
   echo "Stripping vmlinux..."
-  strip -v $STRIP_STATIC "$_builddir/vmlinux"
-  
+  strip -v $STRIP_STATIC "$builddir/vmlinux"
+
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
-  ln -sr "$_builddir" "$pkgdir/usr/src/$pkgbase"
+  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
 pkgname=("${pkgbase}" "${pkgbase}-headers")
