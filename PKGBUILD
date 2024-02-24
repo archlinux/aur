@@ -13,8 +13,8 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-rusticl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=24.1.0_devel.184875.893780b3625
-pkgrel=1
+pkgver=24.1.0_devel.185149.642b12baef6
+pkgrel=2
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
                             wayland-protocols glslang llvm-minimal-git libdrm libclc-minimal-git clang-minimal-git
@@ -34,7 +34,7 @@ md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a')
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
-options=(!emptydirs)
+options=(!emptydirs !lto)
 
 # ninja grabs all available cores and leaves almost nothing for other processes.
 # this package uses the environment variable NINJAFLAGS to allow the user to change this behaviour
@@ -52,7 +52,7 @@ build() {
     
     meson setup mesa _build \
        -D b_ndebug=true \
-       -D b_lto=true \
+       -D b_lto=false \
        -D b_pie=true \
        -D buildtype=plain \
        --wrap-mode=nofallback \
