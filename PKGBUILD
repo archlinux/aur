@@ -4,7 +4,7 @@
 # Contributor: x-demon
 pkgname=nicotine-plus-git
 _appdata_id=org.nicotine_plus.Nicotine
-pkgver=3.3.1.dev1.r10541.2bf25fb39
+pkgver=3.3.1.r0.gf7f1f3f3b
 pkgrel=1
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
 arch=('any')
@@ -21,8 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  printf "%s.r%s.%s" "$(python setup.py --version)" \
-    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
