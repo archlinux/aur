@@ -18,7 +18,7 @@ optdepends=(
   "slurp: support for interactive mode for the screenshot portal; one of the built-in chooser options for the screencast portal"
   "hyprland: the Hyprland compositor"
 )
-source=("${_pkgname}::git+https://github.com/hyprwm/xdg-desktop-portal-hyprland.git")
+source=("${_pkgname}::git+$url.git")
 sha256sums=('SKIP')
 
 backup=("etc/xdg/xdg-desktop-portal/hyprland-portals.conf")
@@ -37,20 +37,17 @@ prepare() {
 build() {
 	cd "${srcdir}/${_pkgname}"
 
-	cmake --no-warn-unused-cli -DCMAKE_INSTALL_LIBEXECDIR:STRING=${pkgdir}/usr/lib -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH="${pkgdir}/usr" -S . -B ./build
-	cmake --build ./build --config Release --target all
+	cmake -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -S . -B build -Wno-dev
+	cmake --build build --config Release --target all
 }
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	cmake --install build
 
-	# Remove ${pkgdir} from Exec paths
-	sed -i -e "s|${pkgdir}||g" "${pkgdir}/usr/share/dbus-1/services/org.freedesktop.impl.portal.desktop.hyprland.service"
-	sed -i -e "s|${pkgdir}||g" "${pkgdir}/usr/lib/systemd/user/xdg-desktop-portal-hyprland.service"
+	DESTDIR="${pkgdir}" cmake --install build
 
-	mkdir -p "${pkgdir}/etc/xdg/xdg-desktop-portal"
 	# https://github.com/hyprwm/xdg-desktop-portal-hyprland/issues/171#issuecomment-1898969439
+	install -dm755 "$pkgdir/etc/xdg/xdg-desktop-portal"
 	echo -e "[preferred]\ndefault=gtk;hyprland" > "$pkgdir/etc/xdg/xdg-desktop-portal/hyprland-portals.conf"
 
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
