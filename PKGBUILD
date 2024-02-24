@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.0.65.r6.gca01e923
+pkgver=2.0.66.r0.ga63678c1
 pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
@@ -11,11 +11,11 @@ depends=(
 	'discord-rpc'
 	'gcc-libs'
 	'glibc'
+	'glslang>=14'
 	'hicolor-icon-theme'
 	'libx11'
 	'pugixml'
 	'sdl2'
-	'spirv-tools'
 	'wxwidgets-gtk3>=3.2'
 )
 makedepends=(
@@ -27,7 +27,6 @@ makedepends=(
 	'git'
 	'glib2'
 	'glm'
-	'glslang'
 	'glu'
 	'gtk3'
 	'hidapi'
@@ -69,7 +68,7 @@ prepare() {
 	sed -i '/CMAKE_INTERPROCEDURAL_OPTIMIZATION/d' CMakeLists.txt
 	sed -i '/discord-rpc/d' CMakeLists.txt
 	sed -i '/FMT_HEADER_ONLY/d' src/Common/precompiled.h
-	# https://github.com/KhronosGroup/glslang/pull/3487
+	# https://gitlab.archlinux.org/archlinux/packaging/packages/glslang/-/merge_requests/2
 	sed -i '/glslang REQUIRED/i find_package(SPIRV-Tools-opt)' CMakeLists.txt
 }
 
@@ -79,7 +78,6 @@ build() {
 		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
 		-DENABLE_VCPKG=OFF \
-		-DPORTABLE=OFF \
 		-Wno-dev
 	cmake --build build
 }
