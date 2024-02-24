@@ -1,0 +1,15 @@
+pkgbase = st-xres-git
+	pkgdesc = st with xresources patch applied
+	pkgver = 0.r1167.9dd13f2
+	pkgrel = 1
+	url = https://github.com/cdown/st
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = libxft
+	provides = st
+	conflicts = st
+	source = git+https://github.com/cdown/st.git
+	md5sums = SKIP
+
+pkgname = st-xres-git
