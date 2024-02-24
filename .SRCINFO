@@ -1,10 +1,10 @@
 pkgbase = rwpspread-git
 	pkgdesc = Multi-Monitor Wallpaper Utility
-	pkgver = r290.9a222ca
+	pkgver = r302.5e3fc0e
 	pkgrel = 1
 	url = https://github.com/0xk1f0/rwpspread
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = cargo
 	makedepends = git
 	optdepends = wpaperd: wallpaper setter backend

@@ -1,12 +1,12 @@
 # Maintainer: k1f0 <generic at k1f0.mozmail.com>
 
 pkgname=rwpspread-git
-pkgver=r290.9a222ca
+pkgver=r302.5e3fc0e
 pkgrel=1
 pkgdesc='Multi-Monitor Wallpaper Utility'
 arch=('x86_64')
 url='https://github.com/0xk1f0/rwpspread'
-license=('GPL3')
+license=('GPL-3.0-only')
 makedepends=('cargo' 'git')
 optdepends=('wpaperd: wallpaper setter backend'
             'swaybg: wallpaper setter backend')
@@ -34,5 +34,13 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}"
+  # binary
   install -Dm0755 -t "${pkgdir}/usr/bin" "target/release/${pkgname%-git}"
+  # shell completions
+  mv "completions/${pkgname%-git}.bash" "completions/${pkgname%-git}"
+  install -Dm0644 -t "${pkgdir}/usr/share/bash-completion/completions" "completions/${pkgname%-git}"
+  install -Dm0644 -t "${pkgdir}/usr/share/zsh/site-functions" "completions/_${pkgname%-git}"
+  install -Dm0644 -t "${pkgdir}/usr/share/fish/vendor_completions.d" "completions/${pkgname%-git}.fish"
+  # license
+  install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname%-git}" "LICENSE"
 }
