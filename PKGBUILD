@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A discretization module providing an implementation of mathematical abstractions to solve PDEs on parallel computers including local grid adaptivity, dynamic load balancing, and higher order discretization schemes"
 arch=(x86_64)
 url="https://dune-project.org/modules/${pkgname}"
-license=('GPL2')
+license=(GPL-2.0-or-later)
 depends=("dune-alugrid>=${pkgver::5}" "dune-istl>=${pkgver::5}" "dune-localfunctions>=${pkgver::5}" python-matplotlib python-scipy python-fenics-ufl)
 makedepends=(doxygen graphviz python-scikit-build)
 optdepends=('doxygen: Generate the class documentation from C++ sources'
