@@ -1,7 +1,7 @@
 pkgbase = python-betterproto-git
 	pkgdesc = Clean, modern, Python 3.6+ code generator & library for Protobuf 3 and async gRPC
-	pkgver = r372.e7f07fa
-	pkgrel = 2
+	pkgver = r403.5666393
+	pkgrel = 1
 	url = https://github.com/danielgtaylor/python-betterproto
 	arch = any
 	license = MIT
@@ -17,6 +17,7 @@ pkgbase = python-betterproto-git
 	depends = python-jinja
 	depends = python-dateutil
 	depends = python-isort
+	optdepends = python-black: support for protoc -- python_betterproto_out
 	source = git+https://github.com/danielgtaylor/python-betterproto.git
 	sha256sums = SKIP
 
