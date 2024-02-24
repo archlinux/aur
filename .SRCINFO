@@ -1,6 +1,6 @@
 pkgbase = nym
 	pkgdesc = The next generation of privacy infrastructure (Nym Mixnet)
-	pkgver = 2023.5
+	pkgver = 2024.1
 	pkgrel = 1
 	url = https://nymtech.net/
 	install = nym.install
