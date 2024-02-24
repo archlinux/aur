@@ -43,8 +43,8 @@ package() {
 
     _app_name=`ls | grep AFFiNE | head -n 1 | sed 's/\..*//g'`
 
-    install -Dm755 "AppRun" -t "$pkgdir/usr/bin/$_app_name"
-    install -Dm644 "$_app_name.png" "$pkgdir/usr/share/pixmaps/$_app_name.png"
+    install -Dm755 "AppRun" "$pkgdir/usr/bin/$_app_name"
+    install -Dm644 "$_app_name.png" "$pkgdir/usr/share/pixmaps"
     install -Dm644 "$_app_name.desktop" -t "$pkgdir/usr/share/applications"
     install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/$_app_name"
     mkdir -p "$pkgdir/opt/$_app_name"
