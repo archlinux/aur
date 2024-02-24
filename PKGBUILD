@@ -79,8 +79,8 @@ _subarch=
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
 
-pkgbase=linux-custom-bcachefs-git
-pkgver=6.8.0.rc1.1.custom.bcachefs.git.00128.g28567b4f9a1b
+pkgbase=linux-bcachefs-git
+pkgver=6.8.0.rc1.1.bcachefs.git.00128.g28567b4f9a1b
 pkgrel=1
 pkgdesc="Linux"
 url="https://github.com/koverstreet/bcachefs"

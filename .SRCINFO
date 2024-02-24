@@ -1,6 +1,6 @@
-pkgbase = linux-custom-bcachefs-git
+pkgbase = linux-bcachefs-git
 	pkgdesc = Linux
-	pkgver = 6.8.0.rc1.1.custom.bcachefs.git.00128.g28567b4f9a1b
+	pkgver = 6.8.0.rc1.1.bcachefs.git.00128.g28567b4f9a1b
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = linux-custom-bcachefs-git
 	b2sums = SKIP
 	b2sums = dae82c5455fdc948c31e5ed3521c828ba6b8e78745b84e02a63a0a26c5a6379a9aef26b6a974946a767ff1d3597a70a1bb2a247db85c18170f20bbd3bb780501
 
-pkgname = linux-custom-bcachefs-git
+pkgname = linux-bcachefs-git
 	pkgdesc = The Linux kernel and modules ~ featuring Kent Overstreet's bcachefs filesystem
 	depends = coreutils
 	depends = initramfs
@@ -47,6 +47,6 @@ pkgname = linux-custom-bcachefs-git
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
-pkgname = linux-custom-bcachefs-git-headers
+pkgname = linux-bcachefs-git-headers
 	pkgdesc = Headers and scripts for building modules for the Linux kernel ~ featuring Kent Overstreet's bcachefs filesystem
 	depends = pahole
