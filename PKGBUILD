@@ -2,27 +2,57 @@
 
 _name="cclib"
 pkgname="python-${_name}-git"
-pkgver=1.7.2.r3755.5a881638
+pkgver=1.8.1.r4748.6832e465
 pkgrel=1
 pkgdesc="A library for parsing and interpreting the results of computational chemistry packages. (git version)"
 arch=("any")
 url="http://cclib.github.io"
 license=("BSD-3-Clause")
-makedepends=("python-setuptools" "git")
+makedepends=("git"
+             "python-build"
+             "python-installer"
+             "python-setuptools"
+             "python-wheel")
+checkdepends=("psi4"
+              "python-biopython"
+              "python-iodata"
+              "python-pyquante2"
+              "python-pyscf"
+              "python-pytest")
 depends=("python-packaging" "python-periodictable" "python-scipy")
-optdepends=('python-openbabel: for generating `OBMol`s of results'
+optdepends=('psi4: for Psi4 bridge'
+            'python-ase: for ASE bridge'
             'python-biopython: for generating `BioPython.Atom`s of parsed results'
-            'python-pandas: for generating DataFrames of parsed results')
+            'python-iodata: for reading proatom densities from horton'
+            'python-openbabel: for generating `OBMol`s of results'
+            'python-pandas: for generating DataFrames of parsed results'
+            'python-pyquante2: for computing grid-based quantities with cube output'
+            'python-pyscf: for PySCF bridge')
 provides=("python-${_name}")
 conflicts=("python-${_name}")
 source=("git+https://github.com/${_name}/${_name}")
 sha256sums=('SKIP')
 
+prepare() {
+  git -C "${srcdir}/${_name}" clean -dfx
+}
+
+build() {
+  cd "${srcdir}/${_name}"
+  python -m build --wheel --no-isolation
+}
+
 package() {
   cd "${srcdir}/${_name}"
-  python setup.py install --root="${pkgdir}" --optimize=1
-  install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
+
+# Requires many heavy dependencies
+# check() {
+#   cd "${srcdir}/${_name}"
+#   python -m pytest
+# }
 
 pkgver() {
   cd "${srcdir}/${_name}"
