@@ -1,22 +1,65 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 827dd91..d197d89 100644
+index 827dd91..a651337 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -26,7 +26,7 @@ include_directories(
-     "${CMAKE_CURRENT_SOURCE_DIR}/src/Plugins/CrtMaker"
-     "${CMAKE_CURRENT_SOURCE_DIR}/src/Plugins/DNDK"
-     "${CMAKE_CURRENT_SOURCE_DIR}/src/Plugins/Commando"
--    "${CMAKE_CURRENT_SOURCE_DIR}/src/Plugins/ShowPic"
-+#    "${CMAKE_CURRENT_SOURCE_DIR}/src/Plugins/ShowPic"
-     "${CMAKE_CURRENT_SOURCE_DIR}/src/Plugins/GoatTracker"
-     "${CMAKE_CURRENT_SOURCE_DIR}/src/Plugins/GoatTracker/gt2"
-     "${CMAKE_CURRENT_SOURCE_DIR}/src/Plugins/GoatTracker/gt2/asm"
-@@ -1430,7 +1430,7 @@ target_link_libraries(retrodebugger
+@@ -1246,8 +1246,8 @@ add_executable(retrodebugger
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/DebugInterface/Symbols/CDebugSymbolsSegment.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/DebugInterface/Symbols/CDebugAsmSource.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/DebugInterface/Symbols/CDebugSymbols.cpp"
+-    "${CMAKE_CURRENT_SOURCE_DIR}/src/DebugInterface/Symbols/CDebugMemoryMapCell.cpp"
+-    "${CMAKE_CURRENT_SOURCE_DIR}/src/DebugInterface/Symbols/CDebugMemoryMap.cpp"
++    "${CMAKE_CURRENT_SOURCE_DIR}/src/DebugInterface/Symbols/CDebugMemory.cpp"
++    "${CMAKE_CURRENT_SOURCE_DIR}/src/DebugInterface/Symbols/CDebugMemoryCell.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/DebugInterface/C64/CDebugInterfaceC64.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/DebugInterface/C64/CDiskImageD64.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/DebugInterface/MenuItems/CDebugInterfaceMenuItem.cpp"
+@@ -1256,13 +1256,18 @@ add_executable(retrodebugger
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/DebugInterface/CDebugDataAdapter.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/DebugInterface/CDebuggerEmulatorPlugin.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/DebugInterface/CDebugInterface.cpp"
++    "${CMAKE_CURRENT_SOURCE_DIR}/src/DebugInterface/CDebugEventsHistory.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Screens/CViewC64.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Screens/CViewMainMenu.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Views/CViewMemoryMap.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Views/CViewEmulationState.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Views/CViewEmulationCounters.cpp"
++    "${CMAKE_CURRENT_SOURCE_DIR}/src/Views/CViewFileBrowser.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Views/CViewDataDump.cpp"
++    "${CMAKE_CURRENT_SOURCE_DIR}/src/Views/CViewDataMonitor.cpp"
++    "${CMAKE_CURRENT_SOURCE_DIR}/src/Views/CViewDataPlot.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Views/CViewDataWatch.cpp"
++    "${CMAKE_CURRENT_SOURCE_DIR}/src/Views/CViewDebugEventsHistory.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Views/CViewMonitorConsole.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Views/CViewDisassembly.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Views/CViewSourceCode.cpp"
+@@ -1338,11 +1343,12 @@ add_executable(retrodebugger
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Views/C64/CViewC64ColorRamScreen.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Views/C64/CViewC64StateSID.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Views/C64/CViewC64Disassembly.cpp"
+-    "${CMAKE_CURRENT_SOURCE_DIR}/src/Views/C64/CViewDrive1541FileD64.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Views/C64/CViewC64SidTrackerHistory.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Views/C64/CViewDrive1541StateCPU.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Views/C64/CViewDrive1541StateVIA.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Views/C64/CViewDrive1541Led.cpp"
++    "${CMAKE_CURRENT_SOURCE_DIR}/src/Views/C64/CViewDrive1541Browser.cpp"
++    "${CMAKE_CURRENT_SOURCE_DIR}/src/Views/C64/CViewDrive1541DiskData.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Views/C64/CViewC64StateVIC.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Views/C64/CViewC64SidPianoKeyboard.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Views/C64/CViewC64EmulationCounters.cpp"
+@@ -1410,6 +1416,7 @@ add_executable(retrodebugger
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Tools/libpsid64/libpsid-reloc65.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Tools/libpsid64/libpsid-theme.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Tools/libpsid64/libpsid-screen.cpp"
++    "${CMAKE_CURRENT_SOURCE_DIR}/src/Tools/C64SIDDump.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Tools/C64SIDFrequencies.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Tools/CGuiLockableList.cpp"
+ 
+@@ -1430,7 +1437,7 @@ target_link_libraries(retrodebugger
      gobject-2.0
      gio-2.0
      dbus-1
 -    /usr/lib/x86_64-linux-gnu/libsndio.so
-+    /usr/lib/libsndio.so
++    sndio
      dl
      m
      pthread
