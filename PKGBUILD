@@ -11,6 +11,7 @@ license=(Apache-2.0)
 depends=(
   python
   python-attrs
+  python-packaging  # direct dependency but pulled in via python-pytest
   python-pytest
   python-pytest-helpers-namespace
   python-pytest-skip-markers
