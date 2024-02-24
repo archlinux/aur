@@ -1,6 +1,6 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=dune-fem
-_tarver=v2.9.0.2
+_tarver=v2.9.1
 _tar=${_tarver}/${pkgname}-${_tarver}.tar.gz
 pkgver=${_tarver/v/}
 pkgrel=1
@@ -15,9 +15,10 @@ optdepends=('doxygen: Generate the class documentation from C++ sources'
   'eigen: Lightweight C++ template library for vector and matrix math'
   'papi: for events supported'
   'dune-spgrid: for implement structured, parallel grid'
-  'dune-polygongrid: for implement DUNE grid consisting of polygons')
+  'dune-polygongrid: for implement DUNE grid consisting of polygons'
+  'dune-p4estgrid: for implement grid interface using p4est')
 source=(https://gitlab.dune-project.org/${pkgname}/${pkgname}/-/archive/${_tar})
-sha512sums=('ea4555dcc6743da34c7babf24bd6d6897d01c25fb09aa0d9e35086572759d01466eefde04510d472ed190d690f0e69afa63dc7e5b75eb257a54370027c20e0a2')
+sha512sums=('265e34d7ce4d906dc8519b024261496b6d8891462d189c7491413906f59f06d1ef56f9a466ac3c856ed037645be2f25dc6e440ab1e537a608a245cc242a2d1af')
 
 prepare() {
   export _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
@@ -25,7 +26,6 @@ prepare() {
   # https://gitlab.dune-project.org/dune-fem/dune-fem/-/issues/111
   sed -i '/  FindPThreads.cmake/d' ${pkgname}-${_tarver}/cmake/modules/CMakeLists.txt
   sed -i '/  FindSIONlib.cmake/d' ${pkgname}-${_tarver}/cmake/modules/CMakeLists.txt
-  sed -i 's/^Version: '"${pkgver::3}"'/Version: '"${pkgver}"'/' ${pkgname}-${_tarver}/dune.module
   python -m venv --system-site-packages _skbuild/linux-${CARCH}-${_pyversion}/cmake-build/dune-env
 }
 
