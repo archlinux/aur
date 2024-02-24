@@ -22,6 +22,10 @@ _betaprefix="$([[ "$_pkgname" =~ -beta$ ]] && printf 'beta/' || printf '')"
 source=("$pkgname-$pkgver.rpm::https://downloads.mongodb.com/compass/$_betaprefix$_pkgname-$_pkgver.x86_64.rpm")
 sha512sums=('9bc9968c77d3c257507de292d76a9ecbd271da516ef5bc44f2432fa066062d4057c2a666535b9b50316185a249d2da958ab933ab8595b8b6999f110149bb62c4')
 
+check() {
+	"$srcdir/usr/lib/$_pkgname/MongoDB Compass$_edition" --version | tee '/dev/stderr' | grep -q "^MongoDB Compass$_edition $pkgver$"
+}
+
 package() {
 	cd "$srcdir/"
 
