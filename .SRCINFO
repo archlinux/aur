@@ -15,6 +15,7 @@ pkgbase = faircamp-git
 	depends = poppler-glib
 	provides = faircamp
 	conflicts = faircamp
+	options = !lto
 	source = faircamp-git::git+https://codeberg.org/simonrepp/faircamp.git
 	md5sums = SKIP
 

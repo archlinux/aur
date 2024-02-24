@@ -16,6 +16,7 @@ makedepends=('cmake' 'git' 'rust')
 url='https://simonrepp.com/faircamp'
 conflicts=('faircamp')
 provides=('faircamp')
+options=('!lto')
 source=('faircamp-git::git+https://codeberg.org/simonrepp/faircamp.git')
 md5sums=('SKIP')
 
