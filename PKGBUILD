@@ -6,7 +6,7 @@
 
 pkgname="affine$_pkgtype"
 pkgver=0.13.0_canary.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Auto get the latest version(maybe canary maybe not) of AFFiNE(A privacy-focussed, local-first, open-source, and ready-to-use alternative for Notion & Miro.)"
 arch=("x86_64")
 license=('MPL2')
@@ -43,12 +43,14 @@ package() {
 
     _app_name=`ls | grep AFFiNE | head -n 1 | sed 's/\..*//g'`
 
+    sed -i "0,/path=.*/{s@path=.*@path=\"/opt/$_app_name\"@}" AppRun
     install -Dm755 "AppRun" "$pkgdir/usr/bin/$_app_name"
     install -Dm644 "$_app_name.png" -t "$pkgdir/usr/share/pixmaps"
     install -Dm644 "$_app_name.desktop" -t "$pkgdir/usr/share/applications"
     install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/$_app_name"
     mkdir -p "$pkgdir/opt/$_app_name"
     mv * $pkgdir/opt/$_app_name/
+    chmod -R 0755 $pkgdir/opt/$_app_name
 }
 
 _main
