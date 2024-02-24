@@ -1,0 +1,17 @@
+pkgbase = python-yg.lockfile
+	pkgdesc = Lockfile object with timeouts and context manager
+	pkgver = 2.3
+	pkgrel = 6
+	url = https://github.com/yougov/yg.lockfile
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-setuptools-scm
+	depends = python-zc.lockfile
+	depends = python-tempora
+	depends = python-jaraco.functools
+	source = git+https://github.com/yougov/yg.lockfile.git#commit=b5755e50ba78c7e5ba90bc1679d75bba6e74d754
+	sha512sums = SKIP
+
+pkgname = python-yg.lockfile
