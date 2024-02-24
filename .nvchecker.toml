@@ -1,0 +1,3 @@
+[python-pytest-shell-utilities]
+source = "pypi"
+pypi = "pytest-shell-utilities"
