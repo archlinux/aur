@@ -3,26 +3,26 @@
 
 _pkgname=eww
 pkgname="$_pkgname-git"
-pkgver=0.4.0.r47.ga9a35c1
+pkgver=0.5.0.r2.g7bfd47e
 pkgrel=1
 pkgdesc="ElKowar's wacky widgets"
 arch=(x86_64)
 url="https://github.com/elkowar/$_pkgname"
 license=(MIT)
 depends=(gtk3 gtk-layer-shell)
-makedepends=(cargo-nightly git)
+makedepends=(cargo git)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git?signed")
 b2sums=('SKIP')
 validpgpkeys=(
-	'94E8F34BCE4F4BA8ED9B29BD50E76B4711E4C3E4' # Leon Kowarschick <5300871+elkowar@users.noreply.github.com>
-	'5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23' # GitHub (web-flow commit signing) <noreply@github.com>
+	'9EFD181455D31DD0F42DA932862BA3D7D7760F13' # Leon Kowarschick <5300871+elkowar@users.noreply.github.com>
+	'968479A1AFF927E37D1A566BB5690EEEBB952194' # GitHub (web-flow commit signing) <noreply@github.com>
 )
 
 prepare() {
 	cd $_pkgname
-	export RUSTUP_TOOLCHAIN=nightly
+	export RUSTUP_TOOLCHAIN=stable
 	cargo update
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
@@ -33,7 +33,7 @@ pkgver() {
 
 build() {
 	cd $_pkgname
-	export RUSTUP_TOOLCHAIN=nightly
+	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	cargo build --frozen --release
 }
