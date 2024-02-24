@@ -1,0 +1,22 @@
+#!/bin/bash
+set -ex
+
+TMPFILE=$(mktemp)
+trap "rm -f ${TMPFILE}" EXIT
+
+REPO=TimothyYe/godns
+curl --silent "https://api.github.com/repos/${REPO}/releases/latest" -o "${TMPFILE}"
+
+LATEST=$(jq ".. .tag_name? // empty" "${TMPFILE}")
+LATEST=${LATEST:2:-1}
+
+RELEASE_BODY=$(jq -r ".body" "${TMPFILE}")
+RELEASE_BODY=$(printf "${RELEASE_BODY}")
+
+sed -i 's/^\(pkgver=\)[0-9.]*$/\1'"${LATEST}"'/' PKGBUILD
+updpkgsums
+makepkg -s
+makepkg --printsrcinfo > .SRCINFO
+
+git diff
+git commit PKGBUILD .SRCINFO -m "Upgrade to ${LATEST}" -m "${RELEASE_BODY}"
