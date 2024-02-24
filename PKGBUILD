@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gprofiler2
-_pkgver=0.2.2
+_pkgver=0.2.3
 pkgname=r-${_pkgname,,}
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Interface to the 'g:Profiler' Toolset"
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b90094f8de25c2953fc14839ac2461d94012bcbf445ff06fdc46624cd6dd6efd')
+sha256sums=('b02ea814a7024aa8f2a01761c964b53f98607df0f7bbf7db3026cf223f7895ce')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
