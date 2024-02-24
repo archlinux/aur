@@ -2,7 +2,7 @@
 
 pkgname=freekill
 _upper_pkgname=FreeKill
-pkgver=0.4.2
+pkgver=0.4.7
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/Notify-ctrl/FreeKill'
@@ -13,7 +13,7 @@ depends=('qt6-declarative' 'qt6-multimedia' 'qt6-5compat'
   'readline' )
 makedepends=('cmake' 'qt6-tools' 'swig' 'clang')
 source=("${url}/releases/download/v${pkgver}/FreeKill-${pkgver}-source.tar.gz")
-sha256sums=('44dab2f47e567afaf4d44e15aad33080e99457bef7f717b5225004a6742288ba')
+sha256sums=('854707236a2aeb3f6c07ba04ae6a2dd7f13e6d573a6320e5a3f2282d1a01e764')
 
 prepare() {
   cd ${srcdir}/${_upper_pkgname}-${pkgver}
@@ -36,7 +36,7 @@ package() {
   cd ${srcdir}/${_upper_pkgname}-${pkgver}
   cmake --install build --prefix ${pkgdir}/usr --config Release
 
-  cp -r audio fonts image lua packages Fk server fk_ver build/zh_CN.qm \
+  cp -r audio fonts image lua packages Fk server fk_ver build/zh_CN.qm build/en_US.qm \
     ${pkgdir}/usr/share/${_upper_pkgname}
   install -Dm644 image/icon.png ${pkgdir}/usr/share/icons/freekill_logo.png
   install -Dm644 freekill.desktop ${pkgdir}/usr/share/applications/freekill.desktop
