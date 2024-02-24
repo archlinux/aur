@@ -1,10 +1,10 @@
 pkgbase = textext
 	pkgdesc = Re-editable LaTeX graphics for Inkscape
-	pkgver = 1.10.1
+	pkgver = 1.10.2
 	pkgrel = 1
 	url = https://textext.github.io/textext
 	arch = any
-	license = custom:BSD-3-clause
+	license = BSD-3-clause
 	makedepends = git
 	depends = inkscape
 	depends = texlive-latexextra
@@ -13,7 +13,7 @@ pkgbase = textext
 	depends = python-gobject
 	depends = python-cssselect
 	optdepends = typst: for typst compiler support
-	source = git+https://github.com/textext/textext.git?signed#tag=1.10.1
+	source = git+https://github.com/textext/textext.git?signed#tag=1.10.2
 	validpgpkeys = 32746E27876C1E5418BBBF7F7A9964831E98EED5
 	sha512sums = SKIP
 

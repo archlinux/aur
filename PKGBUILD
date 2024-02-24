@@ -4,11 +4,11 @@
 # Contributor: Joel Schaerer <joel.schaerer@laposte.net>
 
 pkgname=textext
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="Re-editable LaTeX graphics for Inkscape"
 arch=(any)
-license=('custom:BSD-3-clause')
+license=(BSD-3-clause)
 url="https://${pkgname}.github.io/${pkgname}"
 depends=(inkscape texlive-latexextra pdf2svg python-lxml python-gobject python-cssselect)
 makedepends=(git)
