@@ -1,58 +1,32 @@
-# Maintainer: urain39 <hexiedeshijie@gmail.com>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: a821
+# Contributor: urain39 <hexiedeshijie@gmail.com>
 
 pkgname=myget
-pkgver=0.1.1
+_commit=796185db5557f48e729e33d9a803fd5b38d0bfc0 # last commit
+pkgver=1.1.2.r13.g796185d
 pkgrel=1
-pkgdesc="Mytget is a muti-thread downloader accelerator for GNU/Linux."
-arch=('i686' 'x86_64' 'aarch64')
-url="http://myget.sourceforge.net"
-license=('GPLv2')
-depends=()
-optdepends=()
-makedepends=(
-    'cmake'
-    'doxygen'
-)
+pkgdesc="Multi-thread downloader accelerator for GNU/Linux (fork)"
+arch=('x86_64')
+url="https://myget.sourceforge.net"
+license=('GPL-2.0-only')
+depends=('openssl' 'gcc-libs')
+makedepends=('cmake' 'git')
+source=("git+https://github.com/lytsing/mytget.git#commit=$_commit")
+sha256sums=('SKIP')
 
-source=('git+https://github.com/lytsing/mytget.git')
-md5sums=('SKIP')
-
-install=${pkgname}.install
-
-build() {
-    cd ${srcdir}/mytget
-    cmake ./ -DCMAKE_INSTALL_PREFIX=/usr
-    make
+pkgver() {
+    cd mytget
+    git describe --tags | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
-vote_package() {
-    echo "===> Vote for this package?(Y/n)"; read option
-    case $option in
-    N|n)
-        return
-        ;;
-    *)
-        if [ ! -e /usr/bin/aurvote ]; then
-            sudo pacman -S aurvote 2> /dev/null
-            #echo "y" | sudo pacman -S aurvote
-        fi
-
-        echo "===> NOTE: Please login your account"
-        aurvote --configure
-        aurvote -v myget
-
-        echo "===> Thanks ! ^_^"
-        ;;
-    esac
+build() {
+    cmake -B build -S mytget -DCMAKE_INSTALL_PREFIX=/usr
+    cmake --build build
 }
 
 package() {
-    cd ${srcdir}/mytget
-    
-    make install DESTDIR=${pkgdir}
-    #install -Dm0755 ${srcdir}/src/mytget ${pkgdir}/usr/bin/mytget
-    
-    echo "All done!" && vote_package
+    DESTDIR="${pkgdir}" cmake --install build
 }
 
 # vim: set ts=4 tw=60 sw=4 et:
