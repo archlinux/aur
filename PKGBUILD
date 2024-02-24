@@ -3,8 +3,8 @@
 _electronversion=28
 _pkgname=hhd-ui
 pkgname=$_pkgname
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="Configurator interface for Handheld Daemon."
 arch=('x86_64')
 # provides=("${_pkgname}")
@@ -14,9 +14,9 @@ license=('MIT')
 depends=("electron$_electronversion")
 optdepends=('hhd: a version of Handheld Daemon to connect to (also works over the network).')
 makedepends=('asar' 'libxss' 'npm')
-_srcname=hhd-ui-$pkgver
-source=("https://github.com/hhd-dev/hhd-ui/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('68114c667d6b5aad5e77b2679709480402f5538bff79ff9f770aacbf45ec1b1133112e6b969ba494417ca0691f4f1084b5c0db22b36500ce8216dd15866d2bfd')
+_srcname=hhd-ui
+source=("git+https://github.com/hhd-dev/hhd-ui.git#tag=${pkgver}")
+sha512sums=('SKIP')
 
 prepare() {
 	export ELECTRONVERSION=$_electronversion
@@ -46,7 +46,6 @@ package() {
   cd $srcdir/$_srcname/electron
 	install -vDm644 ./dist/linux-unpacked/resources/app.asar -t "${pkgdir}/usr/lib/${_pkgname}"
 	install -vDm644 ./package.json -t "${pkgdir}/usr/lib/${_pkgname}"
-	install -vDm644 ./icon/android-chrome-512x512.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
 
   # Install the icons
   cd $srcdir/$_srcname
@@ -54,6 +53,7 @@ package() {
 	install -vDm644 ./art/library_hero.png "${pkgdir}/usr/share/applications/${pkgname}/library_hero.png"
 	install -vDm644 ./art/library_logo.png "${pkgdir}/usr/share/applications/${pkgname}/library_logo.png"
 	install -vDm644 ./art/main_capsule.png "${pkgdir}/usr/share/applications/${pkgname}/main_capsule.png"
+	install -vDm644 ./art/icon.png "${pkgdir}/usr/share/applications/${pkgname}/icon.png"
 
   # Install scripts
 	install -vDm644 "./aur/hhd-ui.desktop" -t "${pkgdir}"/usr/share/applications
