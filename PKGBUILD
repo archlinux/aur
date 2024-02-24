@@ -28,6 +28,5 @@ build() {
 package() {
         cd "${pkgname}"
         make install -C build DESTDIR=${pkgdir}
-        # Correct ownership of files, otherwise FMU export fails
-        chmod go+rx "${pkgdir}"/usr/share/omc/runtime/c/fmi/buildproject/config.*
+        rm -r "${pkgdir}"/usr/share/zmq
 }
