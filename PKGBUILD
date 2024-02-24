@@ -2,11 +2,12 @@
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Sinyria < sinyria ad speed dod at >
 
 _pkgbase=nvidia-settings
 pkgbase=nvidia-470xx-settings
 pkgname=('nvidia-470xx-settings' 'libxnvctrl-470xx')
-pkgver=470.223.02
+pkgver=470.239.06
 pkgrel=1
 pkgdesc='Tool for configuring the NVIDIA graphics driver'
 url='https://github.com/NVIDIA/nvidia-settings'
@@ -16,8 +17,8 @@ makedepends=('inetutils' 'jansson' 'gtk2' 'gtk3' 'libxv' 'libvdpau' 'nvidia-470x
 options=('staticlibs')
 source=(${pkgbase}-${pkgver}.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/${pkgver}.tar.gz
         libxnvctrl_so.patch)
-sha512sums=('29d2fbbbf75fb56010b44a7ed183de53e2c41dbf0a3cde4d6e44bec3ac3957471495eab3498b5565930e97a3e07bb0348917b8664426254122377b8d1ea1f259'
-            '91ff94736063b911c83b8876fe3e3778db82e0ffe0102036d81a3a6e872ca44a585914646fcbbbe399cd63aa17685fc7f73263ec4f4084f48768ca4d704037fa')
+sha512sums=('50640b790e96c4e76cb91983b23d7be8d906f96ebd517b2b7f24445e164c6444b3c686c914b86a3a6198b23082a02165b9e87eba238dfbbd2c74b949e1355c13' #github
+            '91ff94736063b911c83b8876fe3e3778db82e0ffe0102036d81a3a6e872ca44a585914646fcbbbe399cd63aa17685fc7f73263ec4f4084f48768ca4d704037fa') #patch
 
 prepare() {
   cd ${_pkgbase}-${pkgver}
