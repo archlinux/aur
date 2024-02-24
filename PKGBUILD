@@ -3,19 +3,32 @@
 _name="QCEngine"
 _pkgname="qcengine"
 pkgname="python-${_pkgname}"
-pkgver=0.26.0
-pkgrel=2
+pkgver=0.29.0
+pkgrel=1
 pkgdesc="Quantum chemistry program executor and IO standardizer (QCSchema) for quantum chemistry"
 arch=("any")
 url="http://docs.qcarchive.molssi.org/projects/QCEngine/en/stable/"
 license=("MIT")
+makedepends=("python-setuptools")
 depends=("python-qcelemental" "python-py-cpuinfo" "python-psutil")
-checkdepends=("python-pytest")
+optdepends=(
+  "dftd3"
+  "dftd4"
+  "gamess"
+  "mopac"
+  "mrchem"
+  "nwchem"
+  "openmm"
+  "psi4"
+  "rdkit"
+  "xtb"
+)
+checkdepends=("python-msgpack" "python-pytest")
 source=("https://github.com/MolSSI/${_name}/archive/v${pkgver}.tar.gz")
-sha256sums=('0659fc6e92d0b8bd2252e4d0290543fdbf6fd5361943b4a43d429fe3074ab2dc')
+sha256sums=('7d84cff53077345282cdf438e8ddfef8d006ed722a3fd0d2c25e2d7ff4e69cf9')
 
 build() {
-  cd "${srcdir}"/"${_name}"-"${pkgver}"
+  cd "${srcdir}/${_name}-${pkgver}"
   python setup.py build
 }
 
@@ -27,5 +40,5 @@ package() {
 
 check() {
   cd "${srcdir}/${_name}-${pkgver}"
-  pytest -rsx -v ${_pkgname}/
+  python -m pytest -v
 }
