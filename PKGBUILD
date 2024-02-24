@@ -1,11 +1,11 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname=river-bsp-layout
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Binary space partitioned layout for the tiling Wayland compositor River"
 arch=('x86_64')
 url="https://github.com/areif-dev/river-bsp-layout"
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=(
   'gcc-libs'
 )
@@ -19,7 +19,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 b2sums=(
-  '21becbfc35e59aabd61df100ae9f6c963f0b64b598c5a62f720a0ca1754bffd907b815ac44bdad998101712a975f17439c7cbfad36a9996c3025c4b362c64636'
+  'e776ba5464aa016f007971f5bde17d2eb5daff821a1d8610a4004ae942064fe7fa7054441720ae20cd6a5e2c4ea1b589a203ff461d27f3d4a439ffce7b51ac87'
 )
 
 prepare() {
