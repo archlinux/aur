@@ -2,13 +2,14 @@
 
 pkgname=flightcore
 pkgver=2.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Northstar installer, updater, and mod-manager"
 url="https://github.com/R2NorthstarTools/FlightCore"
 license=('MIT')
 arch=('x86_64')
 depends=('webkit2gtk')
 makedepends=('cargo' 'git' 'npm')
+options+=('!lto')
 source=("git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
