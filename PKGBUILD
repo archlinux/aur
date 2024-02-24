@@ -1,4 +1,4 @@
-# Maintainer: thorou <thorio.git@gmail.com>
+# Maintainer: thorou <thorou@chirality.de>
 
 _pkgname=sunset-cursors
 pkgname=sunset-cursors-git
