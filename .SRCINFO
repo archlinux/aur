@@ -1,7 +1,7 @@
 pkgbase = audiobookshelf
 	pkgdesc = Self-hosted audiobook server for managing and playing audiobooks
 	pkgver = v2.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/advplyr/audiobookshelf
 	arch = any
 	license = GPL3
