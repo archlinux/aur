@@ -12,7 +12,7 @@ pkgbase = voc-git
 	depends = make
 	depends = diffutils
 	optdepends = clang
-	source = src::git+https://github.com/vishaps/voc
+	source = voc-git::git+https://github.com/vishaps/voc
 	md5sums = SKIP
 
 pkgname = voc-git

@@ -9,7 +9,7 @@ license=('GPL3')
 makedepends=('git')
 depends=('gcc' 'make' 'diffutils')
 optdepends=('clang')
-source=('src::git+https://github.com/vishaps/voc')
+source=("$pkgname::git+https://github.com/vishaps/voc")
 md5sums=('SKIP')
 install=$pkgname.install
 
@@ -17,10 +17,12 @@ install=$pkgname.install
 # backend=clang
 
 pkgver() {
+  cd $pkgname
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
+  cd $pkgname
   if [ "$backend" == "clang" ]
   then
     export CC=clang
@@ -29,6 +31,7 @@ build() {
 }
 
 package() {
+  cd $pkgname
   mkdir -p "$pkgdir/opt/voc"
   cp -Rfp install/* "$pkgdir/opt/voc"
   mkdir -p "$pkgdir/usr/bin"
