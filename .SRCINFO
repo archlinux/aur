@@ -1,12 +1,12 @@
 pkgbase = hyphen-pl
 	pkgdesc = Polish hyphenation rules
 	pkgver = 20081206
-	pkgrel = 4
+	pkgrel = 5
 	url = https://wiki.documentfoundation.org/Development/Dictionaries
 	arch = any
 	license = LGPL
 	optdepends = hyphen: offers hyphenation library functions
 	source = https://github.com/LibreOffice/dictionaries/blob/master/pl_PL/hyph_pl_PL.dic
-	md5sums = 0d9863c4b3a2e593593ae9d4de099aa3
+	md5sums = SKIP
 
 pkgname = hyphen-pl
