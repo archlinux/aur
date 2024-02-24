@@ -27,8 +27,12 @@ build() {
 }
 
 check() {
-  # Set HOME to isolate some tests, which accesses files in ~/.ssh/, etc.
-  HOME=tmp make -C $_pkgname/common test
+  # Isolate some tests, accessing files in ~/.ssh/, etc.
+  HOME=$srcdir/tmp
+  export XDG_CACHE_HOME=$HOME/.cache
+  mkdir -p $XDG_CACHE_HOME
+
+  make -C $_pkgname/common test
   rm -rf $_pkgname/common/tmp
 }
 
