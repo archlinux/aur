@@ -29,14 +29,7 @@ prepare() {
 	mv "$srcdir/$pkgname-$pkgver-Cargo.lock" 'Cargo.lock'
 	mv "$srcdir/$pkgname-$pkgver-Cargo.toml" 'Cargo.toml'
 
-	# Prepare correct target for our architecture
-	_cargotarget="$CARCH-unknown-linux-gnu"
-
-	if [ "$CARCH" = 'armv7h' ]; then
-		_cargotarget='armv7-unknown-linux-gnueabihf'
-	fi
-
-	cargo fetch --locked --target "$_cargotarget"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -45,6 +38,8 @@ build() {
 	export CARGO_TARGET_DIR='target'
 	cargo build --frozen --release --all-features
 }
+
+# No functionality to test, as the binary has no --help or --version
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
