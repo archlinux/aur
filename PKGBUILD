@@ -1,8 +1,8 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=dwarfs
-pkgver=0.9.5
-pkgrel=2
+pkgver=0.9.6
+pkgrel=1
 pkgdesc="A fast high compression read-only file system"
 url='https://github.com/mhx/dwarfs'
 arch=('x86_64' 'aarch64')
@@ -20,20 +20,16 @@ makedepends=(
   'gtest'
 )
 source=("$pkgname-$pkgver.tar.xz::https://github.com/mhx/dwarfs/releases/download/v$pkgver/dwarfs-$pkgver.tar.xz"
-        0001-makepkg-Disable-faulty-test.patch
-        0002-makepkg-Add-needed-glog-definition.patch)
-sha256sums=('6f578af60bc5696fb51bde22de1a47513cf8befc5944cb561003beb8f4612a32'
-            '0b2cbcda28a2043f20e78efd20b7ce3db14b0d2022cf72f933c2c70b5c999406'
-            '9ed95cae05c0c2f901665b42db0814889690d6a4d41d55b3b47d88253e081032')
-b2sums=('90c0c35f28773f3af6399ca3c3aabaf366770315197adc9c4168bf37f7c88fdbc4c3c93e647132f6a36812b1bf9d27636736682376f9b821086f8793b05feed9'
-        '25b6f7c606dc404665a6f81575f699599a6f841560726e2b59b514a93b400280d9153c3128ae34bba7ebe2777952b3b2166e476bd6af2e0883f83650ce7b56c9'
-        '4de66b97e5c45b9bdc497a67e02ed886180412195b2b80799e0c6925296fdbda14dc3f8dbdb63250adcaa26eedc9e27cca0f5142224c45927d76ec250b865e17')
+0001-makepkg-Disable-faulty-test.patch)
+sha256sums=('62568927b086b26abe8e812cc7484f9686b509fec83248619ec60b5e4cfa752e'
+            '9b16db168518a4130f6f3e05475daee2195df40e10a0f56e8aa0b5062f0a529d')
+b2sums=('305587de0e31390f4d3c2701cc1b0fe9f29d2a37a363f575ae770c0037d69b77685bd593f900c71e4e9fe8dbfdf4644f1ea3158f9fdc3596583eda89d0040e88'
+        '81115c6d69d201095d5207b7d878619a6f43f9f03933824e28e7cd85a164786bef1388d6a5369052c8be25db47da588a22249152ac58c78baea2cf60fcfec4a7')
 
 prepare() {
   cd "$pkgname-$pkgver"
 
   patch -Np1 -i "$srcdir/0001-makepkg-Disable-faulty-test.patch"
-  patch -Np1 -i "$srcdir/0002-makepkg-Add-needed-glog-definition.patch"
 }
 
 build() {
