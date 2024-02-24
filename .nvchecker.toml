@@ -1,0 +1,4 @@
+[sequoia-wot]
+source = "git"
+git = "https://gitlab.com/sequoia-pgp/sequoia-wot"
+prefix = "v"
