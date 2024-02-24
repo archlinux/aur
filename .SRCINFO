@@ -14,6 +14,6 @@ pkgbase = betterbird-bin
 	source = vendor-prefs.js
 	sha256sums = 693b2a834c16d7be75649d4feee3826a2aa590baba8e700e4a4927512a620477
 	sha256sums = b664d5453512ba1c8a58699d106fb1248991dbae0ee44464484be0886278945b
-	sha256sums = SKIP
+	sha256sums = b11745416d2b2f8bac1ccd3dcb99411c7239b067adf9eb973903c448f8747d09
 
 pkgname = betterbird-bin
