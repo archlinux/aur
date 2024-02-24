@@ -2,7 +2,7 @@
 
 pkgname=flightcore-bin
 pkgver=2.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Northstar installer, updater, and mod-manager (binary release)"
 url="https://github.com/R2NorthstarTools/FlightCore"
 license=('MIT')
@@ -32,8 +32,8 @@ package() {
   cd FlightCore-main
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/flightcore"
   cd src-tauri
-  install -Dm644 icons/32x32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
-  install -Dm644 icons/128x128.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
-  install -Dm644 icons/128x128@2x.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
-  install -Dm644 icons/icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
+  install -Dm644 icons/32x32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/flightcore.png"
+  install -Dm644 icons/128x128.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/flightcore.png"
+  install -Dm644 icons/128x128@2x.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/flightcore.png"
+  install -Dm644 icons/icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/flightcore.png"
 }
