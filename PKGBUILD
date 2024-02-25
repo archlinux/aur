@@ -3,7 +3,7 @@
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
 pkgrel=1
-pkgver=1.95.0
+pkgver=1.95.1
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('MIT')
@@ -41,7 +41,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
         'https://download.geonames.org/export/dump/cities500.zip'
         'https://download.geonames.org/export/dump/admin1CodesASCII.txt'
         'https://download.geonames.org/export/dump/admin2Codes.txt')
-sha256sums=('ac5bd18ea92d94088113cc8f7723ea54ab99003ef95ed3cd80e81c4c295d8096'
+sha256sums=('8eca6fd0a45a2e3754ada4e7ca6a7b6e701c101700fd800e3e4e70df14afb76a'
             '0a9d7fffe3c301190cc8581ee7e11417eb0661937a2c03d76c8b8bc39710205b'
             'dc1a3d7baf2ec4f00a4a80f88a1f28dc1092eb7a08195544cc37b6532777f5d7'
             'd20455349cdb9409adb42cdbde48c30a176d2a5337ad148c6d2227ecc523c88a'
@@ -126,7 +126,7 @@ package_immich-server() {
     # dependencies generated from base-images repository
     # https://github.com/immich-app/base-images/blob/main/server/Dockerfile
     depends=('redis' 'postgresql' 'nodejs' 'nginx'
-        'pgvecto.rs=0.1.11'  # aur
+        'pgvecto.rs=0.2.0'  # aur
         'zlib'
         'glib2'
         'expat'
@@ -238,7 +238,7 @@ package_immich-cli() {
     cp -r LICENSE "${pkgdir}/usr/lib/immich/cli/LICENSE"
 
     # setup symlink to allow immich command to be run from shell
-    chmod +x "${pkgdir}/usr/lib/immich/cli/dist/src/index.js"
+    chmod +x "${pkgdir}/usr/lib/immich/cli/dist/index.js"
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s ../lib/immich/cli/dist/src/index.js "${pkgdir}/usr/bin/immich"
+    ln -s ../lib/immich/cli/dist/index.js "${pkgdir}/usr/bin/immich"
 }
