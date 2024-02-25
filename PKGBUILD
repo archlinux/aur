@@ -2,15 +2,15 @@
 # Contributor: Retro Gamer <https://github.com/eGax>
 
 pkgname=trenchbroom-git
-pkgver=main_branch
+pkgver=v2024.1.RC2.r19.gce15d1158
 pkgrel=1
-pkgdesc="TrenchBroom is a modern cross-platform level editor for Quake-engine based games."
+pkgdesc="TrenchBroom is a modern cross-platform level editor for Quake-engine based games. This will build/install TrenchBroom from the current commits to the main branch of it's GitHub"
 arch=("i686" "x86_64")
 url="https://trenchbroom.github.io/"
 license=("GPLv3")
 
-makedepends=("git" "pandoc" "qt5-base" "cmake" "ninja" "qt5-svg" "libxcb" "zip")
-depends=("freeimage" "freetype2" "mesa" "libgl" "freeglut" "libxxf86vm" "glew" "glm")
+makedepends=("git" "pandoc" "qt5-base" "cmake" "ninja" "qt5-svg" "libxcb" "zip" "unzip")
+depends=("freeimage" "freetype2" "mesa" "libgl" "freeglut" "libxxf86vm" "glew" "glm" "tinyxml2")
 conflicts=("trenchbroom")
 provides=("trenchbroom")
 
