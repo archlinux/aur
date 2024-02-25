@@ -1,23 +1,22 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=dune-fem-dg
-_tarver=v2.9.0.2
+_tarver=v2.9.1
 _tar=${_tarver}/${pkgname}-${_tarver}.tar.gz
 pkgver=${_tarver/v/}
 pkgrel=1
 pkgdesc="Implementation of Discontinuous Galerkin schemes using the DUNE-FEM framework"
 arch=(x86_64)
 url="https://dune-project.org/modules/${pkgname}"
-license=(GPL2)
+license=(GPL-2.0-or-later)
 depends=("dune-fem>=${pkgver}")
 makedepends=(doxygen graphviz python-scikit-build)
 optdepends=('doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software')
 source=(https://gitlab.dune-project.org/${pkgname/-dg/}/${pkgname}/-/archive/${_tar})
-sha512sums=('6052a7de1ea767ab04cf6ebecdf7902757e335b912f46295d6054025be28a119ea87883377126fd0a50281512530790e9118bc121f1a050907a0bc9da75b83ed')
+sha512sums=('c8c0726bb38ea9e2a6fa11a956a72f1ac7cb454de566d4db445e2200fc917d7fba8454a294514ebcc58e4d77ec33e65e6ee4b468da2ebc8e06484a6abe71b21d')
 
 prepare() {
   export _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
-  sed -i 's/^Version: '"${pkgver::3}"'/Version: '"${pkgver}"'/' ${pkgname}-${_tarver}/dune.module
   python -m venv --system-site-packages _skbuild/linux-${CARCH}-${_pyversion}/cmake-build/dune-env
 }
 
