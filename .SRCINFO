@@ -3,7 +3,7 @@ pkgbase = twmn-git
 	pkgver = 190.861a323
 	pkgrel = 1
 	url = https://github.com/sboli/twmn
-	arch = any
+	arch = x86_64
 	license = LGPL3
 	makedepends = git
 	makedepends = pkg-config
@@ -19,4 +19,3 @@ pkgbase = twmn-git
 	sha256sums = SKIP
 
 pkgname = twmn-git
-
