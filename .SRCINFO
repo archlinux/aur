@@ -1,6 +1,6 @@
 pkgbase = colorpick-git
 	pkgdesc = Color picker and contrast checker
-	pkgver = r90.8d0efbf
+	pkgver = 0.1.0.r0.g8d0efbf
 	pkgrel = 1
 	url = https://github.com/qtilities/colorpick
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = colorpick-git
 	provides = colorpick
 	conflicts = colorpick
 	source = colorpick::git+https://github.com/qtilities/colorpick.git
+	source = colorpick/resources::git+https://github.com/qtilities-i18n/colorpick
+	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = colorpick-git

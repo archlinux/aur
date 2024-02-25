@@ -2,7 +2,7 @@
 
 _pkgname=colorpick
 pkgname=$_pkgname-git
-pkgver=r90.8d0efbf
+pkgver=0.1.0.r0.g8d0efbf
 pkgrel=1
 pkgdesc="Color picker and contrast checker"
 url=https://github.com/qtilities/$_pkgname
@@ -19,9 +19,14 @@ makedepends=(
 )
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=($_pkgname::git+$url.git)
-sha512sums=('SKIP')
-
+source=(
+  $_pkgname::git+$url.git
+  $_pkgname/resources::git+https://github.com/qtilities-i18n/$_pkgname
+)
+sha512sums=(
+  'SKIP'
+  'SKIP'
+)
 pkgver() {
   cd "$srcdir/$_pkgname"
   ( set -o pipefail
