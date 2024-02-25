@@ -9,4 +9,4 @@ license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Classes for audio, video, radio and camera functionality (android)'
 depends=(<%== qt6deps qw(base) %>)
 optdepends=(<%== qt6optdeps declarative => 'QML bindings' %>)
-makedepends=('android-cmake<%== $static_suffix %>' <%== qt6deps qw(declarative shadertools) %> 'qt6-declarative' 'qt6-shadertools' 'ninja' 'java-environment-openjdk>=11')
+makedepends=('android-cmake<%== $static_suffix %>' <%== qt6deps qw(declarative shadertools) %> 'qt6-declarative' 'qt6-shadertools' 'ninja' 'java-environment-openjdk=17')

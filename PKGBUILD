@@ -14,7 +14,7 @@ license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Classes for audio, video, radio and camera functionality (android)'
 depends=('android-aarch64-qt6-base')
 optdepends=('android-aarch64-qt6-declarative: QML bindings')
-makedepends=('android-cmake' 'android-aarch64-qt6-declarative' 'android-aarch64-qt6-shadertools' 'qt6-declarative' 'qt6-shadertools' 'ninja' 'java-environment-openjdk>=11')
+makedepends=('android-cmake' 'android-aarch64-qt6-declarative' 'android-aarch64-qt6-shadertools' 'qt6-declarative' 'qt6-shadertools' 'ninja' 'java-environment-openjdk=17')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtmultimedia-everywhere-src-${_qtver}"
@@ -34,6 +34,7 @@ prepare () {
 }
 
 build() {
+  export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
   source android-env ${_android_arch}
   android-${_android_arch}-cmake -G Ninja -B build-$_android_arch -S $_pkgfqn \
     -DCMAKE_FIND_ROOT_PATH="${ANDROID_PREFIX}" \
