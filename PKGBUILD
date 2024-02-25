@@ -36,7 +36,7 @@ _fragment=${FRAGMENT:-#branch=main}
   _CMAKE_FLAGS+=( -DWITH_PYTHON_INSTALL=ON )
 
 pkgname=blender-develop-git
-pkgver=4.2.r133264.g9cc19621207
+pkgver=4.2.r133387.g7f43699ebf5
 pkgrel=1
 pkgdesc="Development version of Blender (non-conflicting version)"
 changelog=blender.changelog
@@ -49,7 +49,7 @@ depends+=('openimagedenoise')
 depends+=('libdecor' 'libepoxy')
 depends+=('openpgl')
 depends+=('shaderc')
-makedepends+=('git' 'cmake' 'clang' 'boost' 'mesa' 'llvm' wayland{,-protocols} 'vulkan-headers' 'libxkbcommon')
+makedepends+=('git' 'git-lfs' 'cmake' 'clang' 'boost' 'mesa' 'llvm' wayland{,-protocols} 'vulkan-headers' 'libxkbcommon')
 makedepends+=('wayland-protocols')
 makedepends+=('cython')
 provides=("blender=${pkgver%%.r*}")
