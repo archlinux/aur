@@ -13,7 +13,7 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Qt module for keyframe-based timeline construction (android)'
 depends=('android-aarch64-qt6-declarative')
-makedepends=('android-cmake' 'qt6-declarative' 'ninja' 'java-environment-openjdk>=11')
+makedepends=('android-cmake' 'qt6-declarative' 'ninja' 'java-environment-openjdk=17')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtquicktimeline-everywhere-src-${_qtver}"
@@ -21,6 +21,7 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
 sha256sums=('8c4e5273c85a23e93da3375ce5e97261707fe9800076aaf164e7e00cc14d9919')
 
 build() {
+  export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
   source android-env ${_android_arch}
   android-${_android_arch}-cmake -G Ninja -B build-$_android_arch -S $_pkgfqn \
     -DCMAKE_FIND_ROOT_PATH="${ANDROID_PREFIX}" \
