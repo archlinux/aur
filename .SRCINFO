@@ -1,6 +1,6 @@
 pkgbase = plug
 	pkgdesc = Software for the Fender Mustang series of guitar amplifiers.
-	pkgver = 1.4.3
+	pkgver = 1.4.5
 	pkgrel = 1
 	url = https://github.com/offa/plug
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = plug
 	makedepends = cmake
 	depends = qt5-base
 	depends = libusb
-	source = plug-1.4.3.tar.gz::https://github.com/offa/plug/archive/v1.4.3.tar.gz
-	sha256sums = 502ab23dbbf9ee0d19e9c12bb45f6a917d4a8d587105f5d2d848507df032b969
+	source = plug-1.4.3.tar.gz::https://github.com/offa/plug/archive/v1.4.5.tar.gz
+	sha256sums = 714ba2786de4e501b19285207ab43ecb6283a6a7f2816c1efb9ddcfca7579779
 
 pkgname = plug
