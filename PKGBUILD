@@ -3,8 +3,8 @@
 _electronversion=28
 _pkgname=hhd-ui
 pkgname=$_pkgname
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Configurator interface for Handheld Daemon."
 arch=('x86_64')
 # provides=("${_pkgname}")
