@@ -1,7 +1,7 @@
 
 pkgname='lockbook-desktop'
 _pkgname="lockbook-desktop"
-pkgver=0.8.4
+pkgver=0.9.0
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/lockbook/lockbook"
@@ -16,17 +16,17 @@ sha256sums=('SKIP' 'SKIP')
 groups=('lockbook')
 
 pkgver() {
-  echo "0.8.4"
+  echo "0.9.0"
 }
 
 build() {
   echo $_pkgname
-  cd $srcdir/lockbook/clients/egui
+  cd $srcdir/lockbook/clients/linux
   cargo build --release --locked
 }
 
 package() {
-  install -D -m755 "$srcdir/lockbook/target/release/lockbook-egui" "$pkgdir/usr/bin/lockbook-desktop"
+  install -D -m755 "$srcdir/lockbook/target/release/lockbook-linux" "$pkgdir/usr/bin/lockbook-desktop"
   install -D -m644 "$srcdir/aur-lockbook-desktop/light-1-transparent.png" "$pkgdir/usr/share/pixmaps/light-1-transparent.png"
   install -D -m644 "$srcdir/aur-lockbook-desktop/lockbook-desktop.desktop" "$pkgdir/usr/share/applications/lockbook-desktop.desktop"
 }
