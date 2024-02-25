@@ -1,0 +1,10 @@
+--- libpurple/protocols/irc/irc.c	2016-06-03 01:44:50.000000000 +0800
++++ libpurple/protocols/irc/irc.c	2017-08-10 02:33:41.704448371 +0800
+@@ -744,6 +744,7 @@
+ 	struct irc_conn *irc = gc->proto_data;
+ 	const char *args[2];
+ 
++	g_usleep(500000);
+ 	args[0] = g_hash_table_lookup(data, "channel");
+ 	args[1] = g_hash_table_lookup(data, "password");
+ 	irc_cmd_join(irc, "join", NULL, args);
