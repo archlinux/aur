@@ -1,7 +1,7 @@
 # Maintainer: kyngs <aurmail at kyngs dot xyz>
 pkgname=miru-kyngs-git
 pkgrel=1
-pkgver=1.2.0
+pkgver=1.3.0
 pkgdesc="A fork of Miru which aims to improve the Linux experience (e.g. disabling the auto-updater) and to improve privacy"
 arch=("any")
 url="https://github.com/kyngs/miru"
@@ -19,15 +19,15 @@ pkgver() {
 }
 
 build() {
-    cd "miru"
+    cd "miru/electron"
     rm -rf node_modules # In case of an existing src/ dir, keeping old node modules could break things
-    pnpm install
+    pnpm install --frozen-lockfile
     echo "**Webpack takes a long time (even up to ten minutes) to build, while providing no console output. Do not cancel the build unless it takes more than ten minutes.**"
     pnpm run build
 }
 
 package() {
-    cd "miru/dist"
+    cd "miru/electron/dist"
     debs=(*.deb)
     ar vx "${debs[0]}"
 
