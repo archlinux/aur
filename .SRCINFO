@@ -1,0 +1,17 @@
+pkgbase = android-aarch64-nettle
+	pkgdesc = A low-level cryptographic library (android)
+	pkgver = 3.9.1
+	pkgrel = 1
+	url = http://www.lysator.liu.se/~nisse/nettle
+	arch = any
+	license = GPL2
+	makedepends = android-configure
+	depends = android-aarch64-gmp
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://ftp.gnu.org/gnu/nettle/nettle-3.9.1.tar.gz
+	sha256sums = ccfeff981b0ca71bbd6fbcb054f407c60ffb644389a5be80d6716d5b550c6ce3
+
+pkgname = android-aarch64-nettle
