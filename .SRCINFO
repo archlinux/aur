@@ -1,6 +1,6 @@
 pkgbase = vrc-get
 	pkgdesc = Open Source command line client of VRChat Package Manager
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://github.com/anatawa12/vrc-get
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = vrc-get
 	makedepends = dotnet-sdk
 	depends = gcc-libs
 	depends = glibc
-	noextract = LiteDB-for-1.6.0.tar.gz
+	noextract = LiteDB-for-1.6.1.tar.gz
 	options = !lto
-	source = vrc-get-1.6.0.tar.gz::https://github.com/anatawa12/vrc-get/archive/refs/tags/v1.6.0.tar.gz
-	source = LiteDB-for-1.6.0.tar.gz::https://github.com/anatawa12/LiteDB/archive/7e7ceac241aceb60369e955374ff1353e4b4a22c.tar.gz
-	sha256sums = a5974b0b1b4c91a1bcf39050f14de93523f832a05f49a23b660de7b30a5cb359
+	source = vrc-get-1.6.1.tar.gz::https://github.com/anatawa12/vrc-get/archive/refs/tags/v1.6.1.tar.gz
+	source = LiteDB-for-1.6.1.tar.gz::https://github.com/anatawa12/LiteDB/archive/7e7ceac241aceb60369e955374ff1353e4b4a22c.tar.gz
+	sha256sums = 814f1af23261799ceda4f301cfd062b4e1c05b66464389b2de18865ecf4e3bbb
 	sha256sums = 75a6444ff08e18fcebdcc61f8a121216927dcb75004f7b658642031b0f7b83d7
 
 pkgname = vrc-get
