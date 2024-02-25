@@ -1,0 +1,15 @@
+pkgbase = similar-sort-git
+	pkgdesc = sort strings according to edit distance
+	pkgver = r48.166a8d8
+	pkgrel = 1
+	url = https://git.bytes.zone/brian/similar-sort
+	arch = x86_64
+	license = CC-BY-SA-4.0
+	makedepends = git
+	makedepends = cargo
+	provides = similar-sort
+	conflicts = similar-sort
+	source = similar-sort::git+https://git.bytes.zone/brian/similar-sort.git
+	sha256sums = SKIP
+
+pkgname = similar-sort-git
