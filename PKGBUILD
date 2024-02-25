@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.3.beta7.r0.g0c390a06f72
+pkgver=10.3.rc0.r0.gacbe15dcd87
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -134,10 +134,12 @@ conflicts=(sagemath)
 provides=(sagemath)
 source=(git+https://github.com/sagemath/sage#branch=develop
         latte-count.patch
-        sagemath-tdlib-0.9.patch)
+        sagemath-tdlib-0.9.patch
+        singular-4.4.patch)
 sha256sums=('SKIP'
             '5cd2f88965d7ebab9dfab6f5c2040d363a4a5ae41230219cc7070b907381da5a'
-            '56a83abecf2ff5a500442adc7a50abbb70006037dd39c39dcdb04b3ca9fb51e2')
+            '56a83abecf2ff5a500442adc7a50abbb70006037dd39c39dcdb04b3ca9fb51e2'
+            '2fd97d454a15f3ef0a974418189fdc1345d7ebb4394fab11caf2e3723f6efb02')
 _pkgs=(standard
        bliss
        coxeter3
@@ -158,6 +160,8 @@ prepare(){
   patch -p1 -i ../latte-count.patch
 # update to tdlib 0.9 (Fedora)
   patch -p1 -i ../sagemath-tdlib-0.9.patch
+# Adapt to Singular changes
+  patch -p1 -i ../singular-4.4.patch
 
   ./bootstrap
 }
