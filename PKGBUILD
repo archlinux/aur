@@ -3,7 +3,7 @@
 
 _pkgname=vinegar
 pkgname=vinegar-git
-pkgver=1.7.3.r11.g6f40d4d
+pkgver=1.7.4.r1.g837cda9
 pkgrel=1
 pkgdesc="Fast and robust bootstrapper for Roblox that has many ease-of-use features."
 arch=("x86_64")
