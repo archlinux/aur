@@ -1,7 +1,7 @@
 pkgbase = sequoia-octopus-librnp
 	pkgdesc = A Sequoia-based OpenPGP Backend for Thunderbird
-	pkgver = 1.5.0
-	pkgrel = 2
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://gitlab.com/sequoia-pgp/sequoia-octopus-librnp
 	install = sequoia-octopus-librnp.install
 	arch = i686
@@ -13,10 +13,11 @@ pkgbase = sequoia-octopus-librnp
 	license = GPL2
 	makedepends = cargo
 	makedepends = clang
+	makedepends = libgit2
 	depends = thunderbird
-	source = sequoia-octopus-librnp-1.5.0.tar.gz::https://gitlab.com/sequoia-pgp/sequoia-octopus-librnp/-/archive/v1.5.0/sequoia-octopus-librnp-v1.5.0.tar.gz
+	source = sequoia-octopus-librnp-1.8.0.tar.gz::https://gitlab.com/sequoia-pgp/sequoia-octopus-librnp/-/archive/v1.8.0/sequoia-octopus-librnp-v1.8.0.tar.gz
 	source = sequoia-octopus-librnp.hook
-	sha256sums = f802392300a4fa3b6d69bae60920ab5c80542a7177520edd5d1fa3687bd26590
+	sha256sums = c65decf33b62e0e3fd39b33fd9d83cb0494a7af192947033828b64cf81281b93
 	sha256sums = aa2bda370a1e9b4a880e275291caac486db65095c34d013561d6127777589709
 
 pkgname = sequoia-octopus-librnp
