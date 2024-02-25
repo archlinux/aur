@@ -1,7 +1,4 @@
 post_install() {
-  echo 'Your user needs to be a member of the "input" group.'
-  echo 'https://wiki.archlinux.org/title/Users_and_groups#Group_management'
-  echo
   echo 'To turn off the “Would you like to integrate ….AppImage with your system?”'
   echo 'notifications on every launch of Wootility, see:'
   echo 'https://github.com/AppImage/AppImageSpec/blob/master/draft.md#desktop-integration'
