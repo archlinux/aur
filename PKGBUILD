@@ -3,20 +3,24 @@
 _pkgbasename=openjpeg2
 pkgname="lib32-${_pkgbasename}"
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source JPEG 2000 codec, version ${pkgver}"
 arch=('x86_64')
 license=('BSD')
 url="http://www.openjpeg.org"
-makedepends=('cmake'
-    'lib32-jbigkit')
-depends=("${_pkgbasename}>=${pkgver}"
-    'lib32-gcc-libs'
-    'lib32-libpng' 
-    'lib32-libtiff'
-    'lib32-lcms2'
-    'lib32-zlib')
-source=("https://github.com/uclouvain/openjpeg/archive/v${pkgver}.tar.gz")
+makedepends=(
+  'cmake'
+)
+depends=(
+  "${_pkgbasename}>=${pkgver}"
+  'lib32-gcc-libs'
+  'lib32-glibc'
+  'lib32-libpng' 
+  'lib32-libtiff'
+  'lib32-lcms2'
+  'lib32-zlib'
+)
+source=("$_pkgbasename-$pkgver.tar.gz::https://github.com/uclouvain/openjpeg/archive/v${pkgver}.tar.gz")
 sha256sums=('0333806d6adecc6f7a91243b2b839ff4d2053823634d4f6ed7a59bc87409122a')
 
 prepare() {
