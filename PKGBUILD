@@ -9,7 +9,7 @@
 
 pkgname=popcorntime
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=(i686 x86_64)
 url="https://popcorn-time.site/"
@@ -55,7 +55,7 @@ prepare() {
 
     # Some dependencies in the yarn.lock file use "git+ssh", which is unavailable.
     # Use "git+https" instead.
-    echo "--> Apply Gulpfile fixes ..."
+    echo "--> Apply Yarn lockfile fixes ..."
     git apply "$srcdir/yarn_lock-fixes.patch"
 
     # Thanks to Eschwartz for the tip! yarn edition
@@ -70,18 +70,18 @@ prepare() {
     echo "--> Installing normal dependencies"
     yarn install
 
-    echo "-->Install missing dependencies, if any ..."
+    echo "--> Install missing dependencies, if any ..."
     # Here specific version of the packages will be installed
     for package in $_missing_deps
     do
-        echo "-->Installing missing dependency $package"
+        echo "--> Installing missing dependency $package"
         yarn install "$package"
     done
 
     # Change NW.js version, if defined
     if [ -n "$_nwjs" ]
     then
-        echo "-->Changing NW.js version to $_nwjs ..."
+        echo "--> Changing NW.js version to $_nwjs ..."
         sed -i "s|\(const nwVersion = '\)[0-9.]\+|\1$_nwjs|" gulpfile.js
     fi
 }
@@ -96,17 +96,23 @@ build() {
 }
 
 package() {
+    echo "--> Create required directories ..."
     cd "${srcdir}/${_bpath}"
 
     mkdir -p "${pkgdir}/usr/share/${pkgname}"
     mkdir -p "${pkgdir}/usr/bin"
 
+    echo "--> Fix permissions of the package files ..."
+    find -type f -perm -u+r -exec chmod a+r {} \;
+    find -type f -perm -u+x -exec chmod a+x {} \;
+
+    echo "--> Installing required files ..."
     cp -a . "${pkgdir}/usr/share/${pkgname}"
 
-    install -Dm644 "${srcdir}/${_srcdir}/src/app/images/icon.png" "${pkgdir}/usr/share/pixmaps/popcorntime.png"
-    chmod +x "${pkgdir}/usr/share/${pkgname}/Popcorn-Time"
-
+    echo "--> Create symlink in \$PATH ..."
     ln -s "/usr/share/${pkgname}/Popcorn-Time" "${pkgdir}/usr/bin/${pkgname}"
 
+    echo "--> Install .destkop file ..."
+    install -Dm644 "${srcdir}/${_srcdir}/src/app/images/icon.png" "${pkgdir}/usr/share/pixmaps/popcorntime.png"
     install -Dm644 "${srcdir}/popcorntime.desktop" "${pkgdir}/usr/share/applications/popcorntime.desktop"
 }
