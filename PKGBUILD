@@ -29,7 +29,7 @@ package() {
         *.pf2
     install -v -Dm644 -t "$pkgdir/usr/share/grub/themes/bsol" \
         theme.txt
-    install -v -Dm644 -t "$pkgdir/usr/share/grub/themes/bsol" \
+    install -v -Dm644 -t "$pkgdir/usr/share/grub/themes/bsol/icons" \
         icons/*.png
 
 }
