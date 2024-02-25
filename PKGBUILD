@@ -2,7 +2,7 @@
 pkgname=dune-polygongrid
 _tarver=v2.9.1
 _tar=${_tarver}/${pkgname}-${_tarver}.tar.gz
-pkgver="${_tarver}"
+pkgver=${_tarver/v/}
 pkgrel=2
 pkgdesc="PolygonGrid implements a DUNE grid consisting of polygons"
 arch=(x86_64)
