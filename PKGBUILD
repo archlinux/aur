@@ -1,7 +1,7 @@
 # Maintainer: zaps166 <spaz16@wp.pl>
 
 pkgname=qmplay2-git
-pkgver=23.10.22.r0.gda603637
+pkgver=23.10.22.r37.g0787be63
 pkgrel=1
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -50,7 +50,8 @@ build() {
         -DUSE_LINK_TIME_OPTIMIZATION=OFF \
         -DUSE_PCH=ON \
         -DUSE_GLSLC=ON \
-        -DUSE_GIT_VERSION=ON
+        -DUSE_GIT_VERSION=ON \
+        -DBUILD_WITH_QT6=OFF
     time ninja
 }
 
