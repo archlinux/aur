@@ -1,7 +1,7 @@
 pkgbase = kmozillahelper-bin
 	pkgdesc = KDE mozilla integration
 	pkgver = 5.0.6
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/openSUSE/kmozillahelper
 	arch = x86_64
 	arch = pentium4
@@ -17,7 +17,7 @@ pkgbase = kmozillahelper-bin
 	depends = kwindowsystem5
 	provides = kmozillahelper
 	conflicts = kmozillahelper
-	source = https://download.opensuse.org/repositories/mozilla/openSUSE_Tumbleweed/x86_64/kmozillahelper-5.0.6-19.2.x86_64.rpm
+	source = https://download.opensuse.org/repositories/mozilla/openSUSE_Tumbleweed/x86_64/kmozillahelper-5.0.6-22.3.x86_64.rpm
 	sha256sums = SKIP
 
 pkgname = kmozillahelper-bin

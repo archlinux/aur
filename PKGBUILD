@@ -4,7 +4,7 @@
 _pkgname=kmozillahelper
 pkgname=$_pkgname-bin
 pkgver=5.0.6
-pkgrel=3
+pkgrel=1
 pkgdesc="KDE mozilla integration"
 arch=(x86_64 pentium4 i686 aarch64 armv7h)
 url="https://github.com/openSUSE/kmozillahelper"
