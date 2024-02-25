@@ -2,7 +2,7 @@
 # Contributor: Cillian Berragan <cjberragan@gmail.com>
 pkgname=python-stanza
 _name=${pkgname#python-}
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Stanford NLP Python library for tokenization, sentence segmentation, NER, and parsing of many human languages"
 arch=('any')
@@ -18,9 +18,14 @@ depends=(
   'python-toml'
   'python-tqdm'
 )
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 source=("$_name-$pkgver.tar.gz::https://github.com/stanfordnlp/stanza/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d9efb477ed8d461b5bf53475a971cbcc01bc42db6e672babd24d4963852d6702')
+sha256sums=('3975dc84f10dd27296b7029e3b09ef2d5fedddffacf81465e14255a2231ae381')
 
 build() {
   cd "$_name-$pkgver"
