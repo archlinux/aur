@@ -1,0 +1,45 @@
+From 63a51d8dc13ad219b56ba1f6adae92a8c90b25c7 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sat, 17 Feb 2024 21:39:39 +0100
+Subject: [PATCH 16/17] Link corelib correctly against runtimeobject when
+ compiling for Windows
+
+This library is included by mingw-w64 and also needs to be linked against
+for code in `qlocale_win.cpp` enabled via the `cpp_winrt` feature flag.
+
+Change-Id: Ie3bd0290bb2f1c0d227c60a6cf6580efddd837fd
+---
+ src/corelib/CMakeLists.txt                                     | 3 +--
+ .../networkinformation/networklistmanager/CMakeLists.txt       | 2 +-
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/src/corelib/CMakeLists.txt b/src/corelib/CMakeLists.txt
+index 1296ff0408..31030159f2 100644
+--- a/src/corelib/CMakeLists.txt
++++ b/src/corelib/CMakeLists.txt
+@@ -779,8 +779,7 @@ qt_internal_extend_target(Core CONDITION WIN32
+         text/qlocale_win.cpp
+ )
+ 
+-# On MS-Win, clang has two flavors, one of which immitates MSVC (so claims to be it)
+-qt_internal_extend_target(Core CONDITION WIN32 AND MSVC AND NOT CLANG
++qt_internal_extend_target(Core CONDITION WIN32
+     LIBRARIES
+         runtimeobject
+ )
+diff --git a/src/plugins/networkinformation/networklistmanager/CMakeLists.txt b/src/plugins/networkinformation/networklistmanager/CMakeLists.txt
+index a9acc465f3..acd3754f4e 100644
+--- a/src/plugins/networkinformation/networklistmanager/CMakeLists.txt
++++ b/src/plugins/networkinformation/networklistmanager/CMakeLists.txt
+@@ -14,7 +14,7 @@ qt_internal_add_plugin(QNLMNIPlugin
+         Qt::NetworkPrivate
+ )
+ 
+-qt_internal_extend_target(QNLMNIPlugin CONDITION WIN32 AND MSVC AND NOT CLANG
++qt_internal_extend_target(QNLMNIPlugin CONDITION WIN32
+     LIBRARIES
+         runtimeobject
+         oleaut32
+-- 
+2.43.2
+

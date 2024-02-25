@@ -1,0 +1,87 @@
+From 1bcb7df3e6d7027df3cc242acb14c036b0df1ad5 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sat, 17 Feb 2024 23:11:18 +0100
+Subject: [PATCH 17/17] Workaround linker error about missing symbol
+ `__sync_bool_compare_and_swap_16`
+
+This error only happens when compiling for the x86_64-w64-mingw32 target
+with the `cpp_winrt` feature enabled. Adding the `-mcx16c` flag helps to
+avoid it. This means the `CMPXCHG16B` instruction is required but this
+code will only run on newer systems anyway (considering Qt requires Windows
+10).
+
+Change-Id: I02c47c386d80e5f8a21bb2a4cee83e2141dee481
+---
+ src/corelib/CMakeLists.txt                                   | 5 +++++
+ .../networkinformation/networklistmanager/CMakeLists.txt     | 5 +++++
+ src/plugins/platforms/direct2d/CMakeLists.txt                | 5 +++++
+ src/plugins/platforms/windows/CMakeLists.txt                 | 5 +++++
+ 4 files changed, 20 insertions(+)
+
+diff --git a/src/corelib/CMakeLists.txt b/src/corelib/CMakeLists.txt
+index 31030159f2..5390f1e5e4 100644
+--- a/src/corelib/CMakeLists.txt
++++ b/src/corelib/CMakeLists.txt
+@@ -779,6 +779,11 @@ qt_internal_extend_target(Core CONDITION WIN32
+         text/qlocale_win.cpp
+ )
+ 
++# workaround undefined reference to `__sync_bool_compare_and_swap_16'
++if (QT_FEATURE_cpp_winrt AND MINGW AND CMAKE_SIZEOF_VOID_P EQUAL 8 AND CMAKE_SYSTEM_PROCESSOR MATCHES "(x86.*)|(X86.*)|(amd64)|(AMD64)")
++    set_property(SOURCE text/qlocale_win.cpp APPEND PROPERTY COMPILE_FLAGS "-mcx16")
++endif ()
++
+ qt_internal_extend_target(Core CONDITION WIN32
+     LIBRARIES
+         runtimeobject
+diff --git a/src/plugins/networkinformation/networklistmanager/CMakeLists.txt b/src/plugins/networkinformation/networklistmanager/CMakeLists.txt
+index acd3754f4e..0557c60afd 100644
+--- a/src/plugins/networkinformation/networklistmanager/CMakeLists.txt
++++ b/src/plugins/networkinformation/networklistmanager/CMakeLists.txt
+@@ -20,6 +20,11 @@ qt_internal_extend_target(QNLMNIPlugin CONDITION WIN32
+         oleaut32
+ )
+ 
++# workaround undefined reference to `__sync_bool_compare_and_swap_16'
++if (QT_FEATURE_cpp_winrt AND MINGW AND CMAKE_SIZEOF_VOID_P EQUAL 8 AND CMAKE_SYSTEM_PROCESSOR MATCHES "(x86.*)|(X86.*)|(amd64)|(AMD64)")
++    target_compile_options(QNLMNIPlugin PRIVATE -mcx16)
++endif ()
++
+ # Don't repeat the target name in AUTOGEN_BUILD_DIR to work around issues with overlong paths.
+ set_property(TARGET QNLMNIPlugin PROPERTY
+     AUTOGEN_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/autogen")
+diff --git a/src/plugins/platforms/direct2d/CMakeLists.txt b/src/plugins/platforms/direct2d/CMakeLists.txt
+index e21b230cd7..e44587af74 100644
+--- a/src/plugins/platforms/direct2d/CMakeLists.txt
++++ b/src/plugins/platforms/direct2d/CMakeLists.txt
+@@ -82,6 +82,11 @@ qt_internal_add_plugin(QWindowsDirect2DIntegrationPlugin
+         runtimeobject
+ )
+ 
++# workaround undefined reference to `__sync_bool_compare_and_swap_16'
++if (QT_FEATURE_cpp_winrt AND MINGW AND CMAKE_SIZEOF_VOID_P EQUAL 8 AND CMAKE_SYSTEM_PROCESSOR MATCHES "(x86.*)|(X86.*)|(amd64)|(AMD64)")
++    target_compile_options(QWindowsDirect2DIntegrationPlugin PRIVATE -mcx16)
++endif ()
++
+ # Resources:
+ set_source_files_properties("../windows/openglblacklists/default.json"
+     PROPERTIES QT_RESOURCE_ALIAS "default.json"
+diff --git a/src/plugins/platforms/windows/CMakeLists.txt b/src/plugins/platforms/windows/CMakeLists.txt
+index 16fd2cd2be..2521707dda 100644
+--- a/src/plugins/platforms/windows/CMakeLists.txt
++++ b/src/plugins/platforms/windows/CMakeLists.txt
+@@ -70,6 +70,11 @@ qt_internal_add_plugin(QWindowsIntegrationPlugin
+         runtimeobject
+ )
+ 
++# workaround undefined reference to `__sync_bool_compare_and_swap_16'
++if (QT_FEATURE_cpp_winrt AND MINGW AND CMAKE_SIZEOF_VOID_P EQUAL 8 AND CMAKE_SYSTEM_PROCESSOR MATCHES "(x86.*)|(X86.*)|(amd64)|(AMD64)")
++    target_compile_options(QWindowsIntegrationPlugin PRIVATE -mcx16)
++endif ()
++
+ # Resources:
+ set_source_files_properties("openglblacklists/default.json"
+     PROPERTIES QT_RESOURCE_ALIAS "default.json"
+-- 
+2.43.2
+

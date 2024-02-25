@@ -1,7 +1,7 @@
 From ef17546b4c93fdc922db5655586149af8137e99c Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 8 Nov 2020 00:33:12 +0100
-Subject: [PATCH 06/13] Support finding static MariaDB client library
+Subject: [PATCH 06/17] Support finding static MariaDB client library
 
 We need to reverse the order to look for mariadb first (and only then
 for mysql) because otherwise it would pick up the static library
@@ -34,5 +34,5 @@ index b61d0107f2..6fb26e51f1 100644
  endif()
  
 -- 
-2.43.0
+2.43.2
 
