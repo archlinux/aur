@@ -4,7 +4,7 @@
 _pkgname=wootility3
 pkgname=${_pkgname}-appimage
 pkgver=3.6.16
-pkgrel=1
+pkgrel=2
 pkgdesc='Utility for configuring Wooting pre-Lekker keyboards (binary AppImage version)'
 arch=('x86_64' 'x86_64_v3')
 url='https://wooting.io/wootility'
@@ -36,6 +36,7 @@ prepare() {
 build() {
     sed -i -E "s|Exec=AppRun|Exec=${_pkgname}|" squashfs-root/${_pkgname}.desktop
     sed -i -E "s|Name=.*$|Name=Wootility 3|" squashfs-root/${_pkgname}.desktop
+    sed -i -E "s|^Icon=.*$|Icon=${_pkgname}|" squashfs-root/${_pkgname}.desktop
 }
 
 package() {
