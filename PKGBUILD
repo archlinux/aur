@@ -8,8 +8,8 @@ _noguipkgname="$_projectname-emu-nogui"
 _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
-pkgver='5.0.r21108.gaa66842172'
-pkgrel='2'
+pkgver='5.0.r21148.g5090a028e6'
+pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
 arch=('x86_64' 'aarch64')
@@ -24,6 +24,7 @@ depends=(
 	'libudev.so' 'libusb-1.0.so' 'libxxhash.so'
 )
 makedepends=('cmake' 'git' 'miniupnpc' 'ninja' 'python' 'qt6-base' 'qt6-svg')
+checkdepends=('gtest')
 optdepends=('pulseaudio: PulseAudio backend')
 options=('!lto')
 source=(
@@ -88,7 +89,6 @@ build() {
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
 		-DDISTRIBUTOR='aur.archlinux.org/packages/dolphin-emu-git' \
-		-DENABLE_TESTS=OFF \
 		-DENABLE_AUTOUPDATE=OFF \
 		-DUSE_SYSTEM_LIBS=ON \
 		-DUSE_SYSTEM_LIBMGBA=OFF \
@@ -96,6 +96,19 @@ build() {
 		-DUSE_SYSTEM_MINIZIP=OFF \
 		-Wno-dev
 	cmake --build 'build/'
+}
+
+check() {
+	# Get git version to compare
+	cd "$srcdir/$_sourcedirectory/"
+	_checkversion="${_projectname^} $(git describe --long --tags | sed -E 's/^([0-9.]+-[0-9]+)-g.+$/\1/')"
+
+	# Run tests
+	cd "$srcdir/$_sourcedirectory/build/"
+	ninja unittests
+
+	# Verify that the basic functionality works
+	"$srcdir/$_sourcedirectory/build/Binaries/$_mainpkgname" --version | tee '/dev/stderr' | grep -q "^$_checkversion$"
 }
 
 package_dolphin-emu-git() {
@@ -110,8 +123,6 @@ package_dolphin-emu-git() {
 
 	rm -rf "$pkgdir/usr/bin/$_noguipkgname"
 	rm -rf "$pkgdir/usr/bin/$_projectname-tool"
-	rm -rf "$pkgdir/usr/include"
-	rm -rf "$pkgdir/usr/lib/libdiscord-rpc.a"
 	rm -rf "$pkgdir/usr/share/man/man6/$_noguipkgname.6"
 }
 
