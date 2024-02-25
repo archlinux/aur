@@ -3,7 +3,7 @@
 
 pkgname=bindiff
 pkgver=8
-pkgrel=1
+pkgrel=2
 pkgdesc="A comparison tool for binary files that assists vulnerability researchers and engineers to quickly find differences and similarities in disassembled code."
 arch=('x86_64')
 url="https://www.zynamics.com/bindiff.html"

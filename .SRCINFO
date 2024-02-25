@@ -1,7 +1,7 @@
 pkgbase = bindiff
 	pkgdesc = A comparison tool for binary files that assists vulnerability researchers and engineers to quickly find differences and similarities in disassembled code.
 	pkgver = 8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.zynamics.com/bindiff.html
 	arch = x86_64
 	license = Apache-2.0
