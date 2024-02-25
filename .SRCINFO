@@ -1,4 +1,4 @@
-pkgbase = bin32-firefox
+pkgbase = bin32-firefox-bin
 	pkgdesc = Standalone web browser from mozilla.org - 32bit version for 64bit systems
 	pkgver = 123.0
 	pkgrel = 1
@@ -20,4 +20,4 @@ pkgbase = bin32-firefox
 	sha256sums = 21fb022928f0f7cabde7721162ccbda2bceaadb5f6d921ac807163988e7a1846
 	sha256sums = 8477bb0a22be7fc39fcad1daad444862fac359b74662b447954811fdae1a5bf2
 
-pkgname = bin32-firefox
+pkgname = bin32-firefox-bin

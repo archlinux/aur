@@ -7,7 +7,7 @@
 # Contributor: magedon <magedon.zt@gmail.com>
 # Contributor: Ali Akbar
 
-pkgname=bin32-firefox
+pkgname=bin32-firefox-bin
 pkgver=123.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - 32bit version for 64bit systems"
