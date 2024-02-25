@@ -12,7 +12,7 @@
 _fragment="${FRAGMENT:-#branch=master}"
 
 pkgname=upbge-git
-pkgver=137410.f523c32ec73
+pkgver=139557.c3f0186638c
 pkgrel=1
 pkgdesc="Uchronia Project Blender Game Engine fork of Blender Game Engine"
 arch=('i686' 'x86_64')
@@ -49,7 +49,6 @@ source=("upbge::git+https://github.com/UPBGE/upbge${_fragment}"
         upbge.desktop
         # Patches...
         '0001-use-github.com-for-make-update-git.patch'
-        '0003-usd-python.patch' #add missing python headers when building against python enabled usd.
         '0004-fix-opencollada-pcre.patch' #fix broken search for opencollada pcre
         )
 sha256sums=('SKIP'
@@ -60,7 +59,6 @@ sha256sums=('SKIP'
             'SKIP'
             'b5c9bf4fa265389db4b3f23e96d74cc86c51d908b8943eb80967614d8af1ea1a'
             '0bb8ac4cba0ac00999790087c51e601d185b78a96081f08a7c7afb8c0f4b0d7c'
-            'c2db51a83a8d573aa76c760f10e541c84b108d64d05c9647681c4e633b3d0397'
             '6beedc541e33288a282f57cd2bd09860f333154027b6175e9f61cce49b8db5df')
 
 pkgver() {
