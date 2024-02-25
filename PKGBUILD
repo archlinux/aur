@@ -1,5 +1,5 @@
-# Maintainer: M Hickford <mirth.hickford@gmail.com>
 # Maintainer: Brainos <brainos233@gmail.com>
+# Maintainer: M Hickford <mirth.hickford@gmail.com>
 _pkgbase=git-credential-oauth
 pkgname=git-credential-oauth-git
 pkgver=0.11.0.r2.gad4bb3d
