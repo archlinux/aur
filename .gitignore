@@ -1,0 +1,5 @@
+*.pkg.tar.zst
+Makefile
+src
+pkg
+*.tar.gz
