@@ -1,0 +1,12 @@
+pkgbase = python-salsa20
+	pkgdesc = Bindings for the NaCL implementation of Salsa20 and XSalsa20 by D. J. Bernstein
+	pkgver = 0.3.0
+	pkgrel = 10
+	url = https://github.com/keybase/python-salsa20
+	arch = x86_64
+	license = BSD
+	depends = python
+	source = https://pypi.python.org/packages/source/s/salsa20/salsa20-0.3.0.tar.gz
+	sha512sums = 3d899744aca4f96fa1d0fb244988dc1bfc04fcbe93036c1cc643640cd6229976b9161ab1e197ca7f1cc098af622ddfc7a1a9e43da7d66915adce6247802d5736
+
+pkgname = python-salsa20
