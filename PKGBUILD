@@ -4,7 +4,7 @@
 pkgname=lpm-git
 _pkgname=lpm
 _gitname=lite-xl-plugin-manager
-pkgver=1.0.14.r6.g8a1e790
+pkgver=1.2.0.r0.gad23c29
 pkgrel=1
 pkgdesc='A lite-xl plugin manager.'
 arch=('x86_64' 'aarch64')
@@ -20,11 +20,6 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${_gitname}"
   git describe --tags --long --exclude continuous --exclude latest | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
-}
-
-prepare() {
-  cd "${_gitname}"
-  git submodule update --init --depth 1 lib/microtar
 }
 
 build() {
