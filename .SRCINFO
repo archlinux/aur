@@ -1,6 +1,6 @@
 pkgbase = sov
 	pkgdesc = Overview application for sway
-	pkgver = 0.93
+	pkgver = 0.94
 	pkgrel = 1
 	url = https://github.com/milgra/sov
 	arch = i686
@@ -15,9 +15,9 @@ pkgbase = sov
 	depends = libpng
 	depends = libxkbcommon
 	depends = wayland
-	source = https://github.com/milgra/sov/releases/download/0.93/sov-0.93.tar.xz
-	source = https://github.com/milgra/sov/releases/download/0.93/sov-0.93.tar.xz.sha256sum
-	sha256sums = ee6218915bcac2b7a6ea9314e4fa6fd6e9fd3f3d62513ddc9334b130b36262f2
-	sha256sums = SKIP
+	source = https://github.com/milgra/sov/releases/download/0.94/sov-0.94.tar.xz
+	source = https://github.com/milgra/sov/releases/download/0.94/sov-0.94.tar.xz.sha256sum
+	sha256sums = ba5ab965093ead9e549c1e92e943a3eb3e9fe431d4859e1d2f840cc700eba34f
+	sha256sums = e2f59931c66563d729722eef4dc3ef26a500efe37f52f818c220da96805da28b
 
 pkgname = sov
