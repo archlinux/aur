@@ -1,6 +1,5 @@
 post_install() {
     setcap cap_sys_admin+ep usr/bin/gsr-kms-server
-    setcap cap_sys_nice+ep usr/bin/gpu-screen-recorder
 }
 
 post_upgrade() {
