@@ -4,7 +4,7 @@
 # Contributor: Gordin <9ordin @t gmail>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 pkgname='flow'
-pkgver='0.229.1'
+pkgver='0.229.2'
 pkgrel='1'
 pkgdesc='A static type checker for JavaScript'
 # If you're running on aarch64, you have to add it to the arch array of some AUR ocaml dependencies
@@ -16,7 +16,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/facebook/$pkgname/archive/v$pkgver.tar.gz"
 	'add-streams-dep.diff'
 )
-sha512sums=('0cebd539cf44bc7e74ac0a0c7804c396a6e99accfc4c7f8f9603e8d76ddc1a61cad678b03776624eb40ad7596dc5f3b63aca80c3e6ceb4c08bc3e312039a22af'
+sha512sums=('53908ba838b26d3d8cbfc7459c3d45b7fd84d221f321cc18b8876bc59682eac092193b27cc2ac068fc239d5505af818f5349ff26f8c72523ba2952ce4e624339'
             'd31ccf6d3f7dcd31b421659eb46d8cbb428dd9e5ce8521b6f0d66e5d37f40498a5a9ac6e3db0428bd845f3efcebf73c63ceef07d5bcf02b96dbe10370735638c')
 
 _sourcedirectory="$pkgname-$pkgver"
