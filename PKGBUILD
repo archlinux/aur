@@ -1,25 +1,23 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=dune-polygongrid
-_tarver=2.9.0
-_tar="${_tarver}/${pkgname}-${_tarver}.tar.gz"
+_tarver=v2.9.1
+_tar=${_tarver}/${pkgname}-${_tarver}.tar.gz
 pkgver="${_tarver}"
 pkgrel=2
 pkgdesc="PolygonGrid implements a DUNE grid consisting of polygons"
 arch=(x86_64)
 url="https://dune-project.org/modules/${pkgname}"
-license=('GPL2')
+license=(GPL-2.0-or-later)
 depends=("dune-grid>=${pkgver}")
 makedepends=(doxygen graphviz python-scikit-build)
 optdepends=('doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software')
-source=(https://dune-project.org/download/${_tar}{,.asc})
-sha512sums=('3a7176268fda4c36bad2598a3a7a0946ede5f3bb838f5b76f34f7d47f5f569320ecd97cd81e60aabe4c9e603a314a296be55bd8fe3ac50bc3d34b51038489fd1' 'SKIP')
-validpgpkeys=('E5B47782DE09813BCC3518E159DA94F1FC8FD313') # Andreas Dedner <a.s.dedner@warwick.ac.uk>
+source=(https://gitlab.dune-project.org/extensions/${pkgname}/-/archive/${_tar})
+sha512sums=('2c9365531b1e681bae6377c81b892eccc6497bbd0ac171d40a7b6f568d424fa8635684ec2378516d4fcc4b5e26a05418e48d6a099ae80b2fac9d360db83eb4da')
 
 prepare() {
   cd ${pkgname}-${pkgver}
   export _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
-  sed -i 's/^Version: '"${pkgver%%.0}"'-git/Version: '"${pkgver}"'/' dune.module
   python -m venv --system-site-packages _skbuild/linux-${CARCH}-${_pyversion}/cmake-build/dune-env
 }
 

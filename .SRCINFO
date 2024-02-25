@@ -1,20 +1,17 @@
 pkgbase = dune-polygongrid
 	pkgdesc = PolygonGrid implements a DUNE grid consisting of polygons
-	pkgver = 2.9.0
+	pkgver = v2.9.1
 	pkgrel = 2
 	url = https://dune-project.org/modules/dune-polygongrid
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = python-scikit-build
-	depends = dune-grid>=2.9.0
+	depends = dune-grid>=v2.9.1
 	optdepends = doxygen: Generate the class documentation from C++ sources
 	optdepends = graphviz: Graph visualization software
-	source = https://dune-project.org/download/2.9.0/dune-polygongrid-2.9.0.tar.gz
-	source = https://dune-project.org/download/2.9.0/dune-polygongrid-2.9.0.tar.gz.asc
-	validpgpkeys = E5B47782DE09813BCC3518E159DA94F1FC8FD313
-	sha512sums = 3a7176268fda4c36bad2598a3a7a0946ede5f3bb838f5b76f34f7d47f5f569320ecd97cd81e60aabe4c9e603a314a296be55bd8fe3ac50bc3d34b51038489fd1
-	sha512sums = SKIP
+	source = https://gitlab.dune-project.org/extensions/dune-polygongrid/-/archive/v2.9.1/dune-polygongrid-v2.9.1.tar.gz
+	sha512sums = 2c9365531b1e681bae6377c81b892eccc6497bbd0ac171d40a7b6f568d424fa8635684ec2378516d4fcc4b5e26a05418e48d6a099ae80b2fac9d360db83eb4da
 
 pkgname = dune-polygongrid
