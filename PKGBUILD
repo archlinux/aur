@@ -1,7 +1,7 @@
 # Maintainer: Glenn O. Larsen <glenn dot larsen at gmail dot com>
 pkgname=warp-terminal-bin
 pkgver=0.2024.02.20.08.01.stable.02
-pkgrel=1
+pkgrel=2
 pkgdesc="Warp is a modern, Rust-based terminal with AI built in so teams can
  build great software, faster. Bringing collaboration to the command line,
  Warp lets teams save and share commands for streamlined onboarding and

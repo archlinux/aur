@@ -13,8 +13,7 @@ blue="${bold}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
 
 post_install() {
-	# note "Custom flags should be put directly in: ~/.config/microsoft-edge-stable-flags.conf"
-	note "The launcher is called: 'microsoft-edge-stable'"
+	note "The launcher is called: 'warp-terminal'"
 }
 
 post_upgrade() {
