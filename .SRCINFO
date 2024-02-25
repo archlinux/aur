@@ -2,7 +2,7 @@ pkgbase = soundkonverter-dark-theme-git
 	pkgdesc = Front-end to various audio converters (Git - with custom colors for dark themes)
 	pkgver = 3.0.1.31.g0329d90
 	pkgrel = 1
-	url = https://www.linux-apps.com/content/show.php?content=29024
+	url = https://store.kde.org/p/1126634
 	arch = x86_64
 	license = GPL
 	makedepends = extra-cmake-modules

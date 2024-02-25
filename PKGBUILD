@@ -6,7 +6,7 @@ pkgver=3.0.1.31.g0329d90
 pkgrel=1
 pkgdesc="Front-end to various audio converters (Git - with custom colors for dark themes)"
 arch=(x86_64)
-url="https://www.linux-apps.com/content/show.php?content=29024"
+url="https://store.kde.org/p/1126634"
 license=(GPL)
 depends=(hicolor-icon-theme cdparanoia kdelibs4support libkcddb5 kdbusaddons5 taglib phonon-qt5)
 makedepends=(extra-cmake-modules kdesignerplugin kdoctools5 kinit git)
