@@ -1,0 +1,25 @@
+diff --git a/cargo-pgrx/src/command/schema.rs b/cargo-pgrx/src/command/schema.rs
+index 96a76bdd..631e3540 100644
+--- a/cargo-pgrx/src/command/schema.rs
++++ b/cargo-pgrx/src/command/schema.rs
+@@ -528,10 +528,16 @@ fn create_stub(
+     let mut so_rustc_invocation = crate::env::rustc();
+     so_rustc_invocation.stderr(Stdio::inherit());
+ 
+-    if let Some(rustc_flags_str) = std::env::var("RUSTFLAGS").ok() {
+-        let rustc_flags = rustc_flags_str.split(' ').collect::<Vec<_>>();
+-        so_rustc_invocation.args(rustc_flags);
+-    }
++    let so_rustc_invocation_str0 = format!("{:?}", so_rustc_invocation);
++    tracing::debug!(command = %so_rustc_invocation_str0, "Running");
++
++    // if let Some(rustc_flags_str) = std::env::var("RUSTFLAGS").ok() {
++    //     let rustc_flags = rustc_flags_str.split(' ').collect::<Vec<_>>();
++    //     so_rustc_invocation.args(rustc_flags);
++    // }
++
++    let so_rustc_invocation_str1 = format!("{:?}", so_rustc_invocation);
++    tracing::debug!(command = %so_rustc_invocation_str1, "Running");
+ 
+     so_rustc_invocation.args([
+         "--crate-type",
