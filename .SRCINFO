@@ -1,10 +1,11 @@
 pkgbase = wootility-appimage
 	pkgdesc = Utility for configuring Wooting keyboards (binary AppImage version)
 	pkgver = 3.6.16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wooting.io/wootility
 	install = wootility-appimage.install
 	arch = x86_64
+	arch = x86_64_v3
 	license = unknown
 	makedepends = p7zip
 	depends = fuse2
