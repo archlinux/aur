@@ -1,0 +1,5 @@
+kcm-polkit-kde-git
+pkg
+src
+*.pkg.tar.*
+*.log
