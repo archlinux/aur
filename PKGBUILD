@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A comparison tool for binary files that assists vulnerability researchers and engineers to quickly find differences and similarities in disassembled code."
 arch=('x86_64')
 url="https://www.zynamics.com/bindiff.html"
-license=('Apache')  # NOTE: Despite being released as open source, the GUI can't be built from source as it depends on a proprietary graph visualization library.
+license=('Apache-2.0')  # NOTE: Despite being released as open source, the GUI can't be built from source as it depends on a proprietary graph visualization library.
 depends=('java-runtime>=11')
 options=('!strip')
 backup=("etc/opt/${pkgname}/bindiff.json")
