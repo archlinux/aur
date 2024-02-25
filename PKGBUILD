@@ -8,9 +8,8 @@ pkgdesc="A comparison tool for binary files that assists vulnerability researche
 arch=('x86_64')
 url="https://www.zynamics.com/bindiff.html"
 license=('Apache')  # NOTE: Despite being released as open source, the GUI can't be built from source as it depends on a proprietary graph visualization library.
-depends=('desktop-file-utils' 'java-runtime>=11')
+depends=('java-runtime>=11')
 options=('!strip')
-install=${pkgname}.install
 backup=("etc/opt/${pkgname}/bindiff.json")
 source=("https://github.com/google/bindiff/releases/download/v${pkgver}/bindiff_${pkgver}_amd64.deb"{,.asc})
 sha256sums=('821990e3974a9df6733794370e485486ac276ba5d777a06b4ebe575f092f4dda'

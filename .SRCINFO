@@ -3,10 +3,8 @@ pkgbase = bindiff
 	pkgver = 8
 	pkgrel = 1
 	url = https://www.zynamics.com/bindiff.html
-	install = bindiff.install
 	arch = x86_64
 	license = Apache
-	depends = desktop-file-utils
 	depends = java-runtime>=11
 	options = !strip
 	backup = etc/opt/bindiff/bindiff.json
