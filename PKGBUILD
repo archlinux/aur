@@ -4,7 +4,7 @@ _pgver=16  # postgresql version
 _pkgbase=pgvecto.rs
 pkgname=${_pkgbase}
 pkgver=0.2.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Postgres extension that provides vector similarity search functions. It is written in Rust and based on pgrx."
 arch=(x86_64)
 url="https://github.com/tensorchord/pgvecto.rs"
@@ -31,8 +31,12 @@ prepare() {
 
     cd ${srcdir}/${_pkgbase}-${pkgver}
 
+    # workaround to 0.0.0 version number in Cargo.toml
+    # TODO report to upstream
+    sed -i -e "s/version = \"0.0.0\"/version = \"${pkgver}\"/" Cargo.toml
+
     # determine required version of cargo-pgrx
-    _pgrxver=$(cat Cargo.toml | grep "pgrx =" | awk -F'version = "' '{print $2}' | cut -d'"' -f1)
+    _pgrxver=$(grep 'pgrx = {' Cargo.toml | cut -d '"' -f 2)
     
     # specifying toolchain version is not strictly necessary since cargo will do it automatically
     # although can bt overwritten easily with environment variables, e.g. RUSTUP_TOOLCHAIN=stable
@@ -69,8 +73,12 @@ build() {
 }
 
 package() {
-    cd "${_pkgbase}-${pkgver}/target/release/vectors-pg${_pgver}"
+    cd "${srcdir}/${_pkgbase}-${pkgver}/target/release/vectors-pg${_pgver}"
     install -Dm0755 usr/lib/postgresql/vectors.so "${pkgdir}/usr/lib/postgresql/vectors.so"
-    install -Dm0644 usr/share/postgresql/extension/vectors--0.0.0.sql "${pkgdir}/usr/share/postgesql/extension/vectors--0.0.0.sql"
+    install -Dm0644 usr/share/postgresql/extension/vectors--0.2.0.sql "${pkgdir}/usr/share/postgesql/extension/vectors--0.2.0.sql"
     install -Dm0644 usr/share/postgresql/extension/vectors.control "${pkgdir}/usr/share/postgresql/extension/vectors.control"
+
+    cd "${srcdir}/${_pkgbase}-${pkgver}/sql/upgrade"
+    # upgrade scripts
+    cp -r vectors--*.sql "${pkgdir}/usr/share/postgresql/extension"
 }
