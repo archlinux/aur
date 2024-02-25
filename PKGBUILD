@@ -13,7 +13,7 @@
 # You can pass parameters to `ninja` via MAKEFLAGS
 
 pkgname=telegram-desktop-dev
-pkgver=4.14.4
+pkgver=4.15.0
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -40,144 +40,22 @@ _commit="tag=v$pkgver"
 # An easy way to clone the repo since the last update is:
 # git clone --recurse-submodules --shallow-submodules --shallow-since=vOLDVER --branch=vNEWVER https://github.com/telegramdesktop/tdesktop WORKDIR
 source=(
-    "tdesktop::git+https://github.com/telegramdesktop/tdesktop#$_commit"
+    # Old approach, with many Git repos
+    #"tdesktop::git+https://github.com/telegramdesktop/tdesktop#$_commit"
     # Here are all the submodule repos.
     # Use the nearby Python script for generating the list
-    "submodule_GSL::git+https://github.com/desktop-app/GSL.git"
-    "submodule_Implib.so::git+https://github.com/yugr/Implib.so.git"
-    "submodule_QR-Code-generator::git+https://github.com/nayuki/QR-Code-generator"
-    "submodule_cld3::git+https://github.com/google/cld3.git"
-    "submodule_cmake_helpers::git+https://github.com/desktop-app/cmake_helpers.git"
-    "submodule_codegen::git+https://github.com/desktop-app/codegen.git"
-    "submodule_cppgir::git+https://gitlab.com/mnauw/cppgir.git"
-    "submodule_expected::git+https://github.com/TartanLlama/expected"
-    "submodule_expected-lite::git+https://github.com/martinmoene/expected-lite.git"
-    "submodule_fcitx5-qt::git+https://github.com/fcitx/fcitx5-qt.git"
-    "submodule_hime::git+https://github.com/hime-ime/hime.git"
-    "submodule_hunspell::git+https://github.com/hunspell/hunspell"
-    "submodule_kcoreaddons::git+https://github.com/KDE/kcoreaddons.git"
-    "submodule_kimageformats::git+https://github.com/KDE/kimageformats.git"
-    "submodule_lib_base::git+https://github.com/desktop-app/lib_base.git"
-    "submodule_lib_crl::git+https://github.com/desktop-app/lib_crl.git"
-    "submodule_lib_lottie::git+https://github.com/desktop-app/lib_lottie.git"
-    "submodule_lib_qr::git+https://github.com/desktop-app/lib_qr.git"
-    "submodule_lib_rpl::git+https://github.com/desktop-app/lib_rpl.git"
-    "submodule_lib_spellcheck::git+https://github.com/desktop-app/lib_spellcheck"
-    "submodule_lib_storage::git+https://github.com/desktop-app/lib_storage.git"
-    "submodule_lib_tl::git+https://github.com/desktop-app/lib_tl.git"
-    "submodule_lib_ui::git+https://github.com/desktop-app/lib_ui.git"
-    "submodule_lib_webrtc::git+https://github.com/desktop-app/lib_webrtc.git"
-    "submodule_lib_webview::git+https://github.com/desktop-app/lib_webview.git"
-    "submodule_libprisma::git+https://github.com/desktop-app/libprisma.git"
-    "submodule_libtgvoip::git+https://github.com/telegramdesktop/libtgvoip"
-    "submodule_lz4::git+https://github.com/lz4/lz4.git"
-    "submodule_nimf::git+https://github.com/hamonikr/nimf.git"
-    "submodule_plasma-wayland-protocols::git+https://github.com/KDE/plasma-wayland-protocols.git"
-    "submodule_range-v3::git+https://github.com/ericniebler/range-v3.git"
-    "submodule_rlottie::git+https://github.com/desktop-app/rlottie.git"
-    "submodule_swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch"
-    "submodule_tgcalls::git+https://github.com/TelegramMessenger/tgcalls.git"
-    "submodule_wayland::git+https://github.com/gitlab-freedesktop-mirrors/wayland.git"
-    "submodule_wayland-protocols::git+https://github.com/gitlab-freedesktop-mirrors/wayland-protocols.git"
-    "submodule_xxHash::git+https://github.com/Cyan4973/xxHash.git"
+    # ...
+    # New approach: source tarball, same as the stable Arch package
+    "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
 )
-sha512sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+sha512sums=('95aa5f14a9a88b9c6421049445f59f1c5c5d7ab4ca4e8b8f4ab7389bdb8f3cc6b29fea270574881633035acec769ba271261f84ec269010c63af28a03719da98')
 
 prepare() {
     # Magic submodule configuration, thanks to the Python script
-    git -C "$srcdir/tdesktop" submodule init
-    git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/GSL.url "$srcdir/submodule_GSL"
-    git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/QR.url "$srcdir/submodule_QR-Code-generator"
-    git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/cld3.url "$srcdir/submodule_cld3"
-    git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/dispatch.url "$srcdir/submodule_swift-corelibs-libdispatch"
-    git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/expected.url "$srcdir/submodule_expected"
-    git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/fcitx5-qt.url "$srcdir/submodule_fcitx5-qt"
-    git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/hime.url "$srcdir/submodule_hime"
-    git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/hunspell.url "$srcdir/submodule_hunspell"
-    git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/kcoreaddons.url "$srcdir/submodule_kcoreaddons"
-    git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/kimageformats.url "$srcdir/submodule_kimageformats"
-    git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/libprisma.url "$srcdir/submodule_libprisma"
-    git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/libtgvoip.url "$srcdir/submodule_libtgvoip"
-    git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/lz4.url "$srcdir/submodule_lz4"
-    git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/nimf.url "$srcdir/submodule_nimf"
-    git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/plasma-wayland-protocols.url "$srcdir/submodule_plasma-wayland-protocols"
-    git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/range-v3.url "$srcdir/submodule_range-v3"
-    git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/rlottie.url "$srcdir/submodule_rlottie"
-    git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/tgcalls.url "$srcdir/submodule_tgcalls"
-    git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/wayland.url "$srcdir/submodule_wayland"
-    git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/wayland-protocols.url "$srcdir/submodule_wayland-protocols"
-    git -C "$srcdir/tdesktop" config src.Telegram/ThirdParty/xxHash.url "$srcdir/submodule_xxHash"
-    git -C "$srcdir/tdesktop" config src.Telegram/codegen.url "$srcdir/submodule_codegen"
-    git -C "$srcdir/tdesktop" config src.Telegram/lib_base.url "$srcdir/submodule_lib_base"
-    git -C "$srcdir/tdesktop" config src.Telegram/lib_crl.url "$srcdir/submodule_lib_crl"
-    git -C "$srcdir/tdesktop" config src.Telegram/lib_lottie.url "$srcdir/submodule_lib_lottie"
-    git -C "$srcdir/tdesktop" config src.Telegram/lib_qr.url "$srcdir/submodule_lib_qr"
-    git -C "$srcdir/tdesktop" config src.Telegram/lib_rpl.url "$srcdir/submodule_lib_rpl"
-    git -C "$srcdir/tdesktop" config src.Telegram/lib_spellcheck.url "$srcdir/submodule_lib_spellcheck"
-    git -C "$srcdir/tdesktop" config src.Telegram/lib_storage.url "$srcdir/submodule_lib_storage"
-    git -C "$srcdir/tdesktop" config src.Telegram/lib_tl.url "$srcdir/submodule_lib_tl"
-    git -C "$srcdir/tdesktop" config src.Telegram/lib_ui.url "$srcdir/submodule_lib_ui"
-    git -C "$srcdir/tdesktop" config src.Telegram/lib_webrtc.url "$srcdir/submodule_lib_webrtc"
-    git -C "$srcdir/tdesktop" config src.Telegram/lib_webview.url "$srcdir/submodule_lib_webview"
-    git -C "$srcdir/tdesktop" config src.cmake.url "$srcdir/submodule_cmake_helpers"
-    git -C "$srcdir/tdesktop" submodule update
-
-    git -C "$srcdir/tdesktop/Telegram/ThirdParty/libtgvoip" submodule init
-    git -C "$srcdir/tdesktop/Telegram/ThirdParty/libtgvoip" config src.cmake.url "$srcdir/submodule_cmake_helpers"
-    git -C "$srcdir/tdesktop/Telegram/ThirdParty/libtgvoip" submodule update
-
-    git -C "$srcdir/tdesktop/Telegram/ThirdParty/range-v3" submodule init
-    git -C "$srcdir/tdesktop/Telegram/ThirdParty/range-v3" config src.doc/gh-pages.url "$srcdir/submodule_range-v3"
-    git -C "$srcdir/tdesktop/Telegram/ThirdParty/range-v3" submodule update
-
-    git -C "$srcdir/tdesktop/cmake" submodule init
-    git -C "$srcdir/tdesktop/cmake" config src.external/Implib.so.url "$srcdir/submodule_Implib.so"
-    git -C "$srcdir/tdesktop/cmake" config src.external/glib/cppgir.url "$srcdir/submodule_cppgir"
-    git -C "$srcdir/tdesktop/cmake" submodule update
-
-    git -C "$srcdir/tdesktop/cmake/external/glib/cppgir" submodule init
-    git -C "$srcdir/tdesktop/cmake/external/glib/cppgir" config src.expected-lite.url "$srcdir/submodule_expected-lite"
-    git -C "$srcdir/tdesktop/cmake/external/glib/cppgir" submodule update
+    # ...
 
     # Normal preparation here
-    cd "$srcdir/tdesktop"
+    cd "$srcdir/tdesktop-$pkgver-full"
 
     # Magic is over!
     # We need the extra flag for this vulnerability:
@@ -203,13 +81,14 @@ build() {
     # Turns out we're allowed to use the official API key that telegram uses for their snap builds:
     # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
     # Thanks @primeos!
-    cmake -B build -S tdesktop -G Ninja \
+    #cmake -B build -S tdesktop -G Ninja \
+    cmake -B build -S "tdesktop-$pkgver-full" -G "Unix Makefiles" \
+        -DCMAKE_VERBOSE_MAKEFILE=ON \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_ID=611335 \
         -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
-        # Removed flag as useless:
-        # -DCMAKE_VERBOSE_MAKEFILE=ON \
+
     cmake --build build -- $MAKEFLAGS
 }
 
