@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ClassifyR
-_pkgver=3.6.3
+_pkgver=3.6.4
 pkgname=r-${_pkgname,,}
-pkgver=3.6.3
+pkgver=3.6.4
 pkgrel=1
 pkgdesc='A framework for cross-validated classification problems, with applications to differential variability and differential distribution testing'
 arch=('x86_64')
@@ -53,7 +53,7 @@ optdepends=(
   r-xgboost
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('908eb32ce211fb21a28dd716fd70839c6fc956557f89fdfbbf157943d8d93ee1')
+sha256sums=('1b8a04e3e24ea39ab2dfb80cbbd5aa6354e1699fca7e4038ed7f714b5171975e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
