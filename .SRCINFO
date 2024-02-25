@@ -1,0 +1,12 @@
+pkgbase = mkgit
+	pkgdesc = A CLI tool for generating GitHub repositories and corresponding local repositories.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/cosmicwanderer7/mkgit
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	source = mkgit-1.0.0.tar.gz::https://github.com/cosmicwanderer7/mkgit/archive/v1.0.0.tar.gz
+	sha256sums = 3363db2026f30bc656e71a188e9cf7577f4941fec8155198de1cad9d90b61cbc
+
+pkgname = mkgit
