@@ -1,0 +1,29 @@
+pkgbase = android-x86-64-nss
+	pkgdesc = Network Security Services
+	pkgver = 3.98
+	pkgrel = 1
+	url = https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS
+	arch = any
+	license = MPL-2.0
+	makedepends = clang
+	makedepends = perl
+	makedepends = python
+	makedepends = zip
+	depends = android-x86-64-nspr>=4.35
+	depends = android-x86-64-p11-kit>=0.23.19
+	depends = android-x86-64-sqlite
+	depends = android-x86-64-zlib
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_98_RTM/src/nss-3.98.tar.gz
+	source = Linux.mk.patch
+	source = FreeblMakefile.patch
+	source = mpcpucache.c.patch
+	sha256sums = f549cc33d35c0601674bfacf7c6ad683c187595eb4125b423238d3e9aa4209ce
+	sha256sums = 79d959a1af5f00e4515e930121eb12cc8927d3ee8730b0cbfb3fd005c1075f7f
+	sha256sums = 957675d7a34c56c388057348941d2ab814ba9e94648c79c4285bc19de8ddd6fc
+	sha256sums = 7e0eaf3111942f46e503464957f25b2d36a1b24b91adc6a6a858e209e0c0e27f
+
+pkgname = android-x86-64-nss
