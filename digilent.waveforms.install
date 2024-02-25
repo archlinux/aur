@@ -1,20 +1,9 @@
 post_install() {
   ldconfig
-  update-mime-database usr/share/mime > /dev/null
-  xdg-icon-resource install --context mimetypes --mode system --novendor --size 32 /usr/share/digilent/waveforms/pixmaps/32.png application-x-dwf3work
-  xdg-icon-resource install --context mimetypes --mode system --novendor --size 32 /usr/share/digilent/waveforms/pixmaps/32.png application-x-dwf3project
-  update-desktop-database -q
 }
 
 post_upgrade() {
   post_install
-}
-
-pre_remove() {
-  update-mime-database usr/share/mime > /dev/null
-  xdg-icon-resource uninstall --context mimetypes --mode system --size 32 application-x-dwf3work
-  xdg-icon-resource uninstall --context mimetypes --mode system --size 32 application-x-dwf3project
-  update-desktop-database -q
 }
 
 post_remove() {

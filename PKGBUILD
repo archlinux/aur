@@ -2,12 +2,12 @@
 
 pkgname=digilent.waveforms
 pkgver=3.21.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Digilent WaveForms Application, Runtime and SDK"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://digilent.com/reference/software/waveforms/waveforms-3/start"
 license=('custom')
-depends=('desktop-file-utils' 'digilent.adept.runtime' 'qt5-multimedia' 'qt5-script' 'qt5-serialport' 'shared-mime-info' 'xdg-utils')
+depends=('digilent.adept.runtime' 'qt5-multimedia' 'qt5-script' 'qt5-serialport')
 options=('!strip')
 install=${pkgname}.install
 source_aarch64=("https://digilent.s3.amazonaws.com/Software/Waveforms2015/${pkgver}/${pkgname}_${pkgver}_arm64.deb")
@@ -28,4 +28,11 @@ package() {
   # Install license file
   install -dm 755 "${pkgdir}/usr/share/licenses/${pkgname}"
   ln -s "/usr/share/doc/${pkgname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/copyright"
+
+  # Install icons
+  for _size in 32 256; do
+    for _mimetype in application-x-dwf3project application-x-dwf3work; do
+      install -Dm 644 "${pkgdir}/usr/share/digilent/waveforms/pixmaps/${_size}.png" "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/mimetypes/${_mimetype}.png"
+    done
+  done
 }
