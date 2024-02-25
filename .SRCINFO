@@ -1,6 +1,6 @@
 pkgbase = serious-engine-git
 	pkgdesc = A game engine developed by Croteam for the classic Serious Sam games.
-	pkgver = r428.253d2b9
+	pkgver = r480.698af6d
 	pkgrel = 1
 	url = https://github.com/ptitSeb/Serious-Engine
 	arch = i686
@@ -10,6 +10,9 @@ pkgbase = serious-engine-git
 	makedepends = make
 	makedepends = sed
 	makedepends = git
+	makedepends = flex
+	makedepends = bison
+	makedepends = libogg
 	depends = sdl2
 	depends = python
 	depends = bash
@@ -17,4 +20,3 @@ pkgbase = serious-engine-git
 	sha512sums = SKIP
 
 pkgname = serious-engine-git
-
