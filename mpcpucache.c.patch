@@ -1,0 +1,53 @@
+--- a/nss/lib/freebl/mpi/mpcpucache.c
++++ b/nss/lib/freebl/mpi/mpcpucache.c
+@@ -84,7 +84,7 @@
+      * Also, GCC isn't smart enough to save the ebx PIC register on its own
+      * in this case, so do it by hand. Use edi to store ebx and pass the
+      * value returned in ebx from cpuid through edi. */
+-    __asm__("xor %%ecx, %%ecx\n\t"
++/*    __asm__("xor %%ecx, %%ecx\n\t"
+             "mov %%ebx,%%edi\n\t"
+             "cpuid\n\t"
+             "xchgl %%ebx,%%edi\n\t"
+@@ -92,7 +92,8 @@
+               "=D"(*ebx),
+               "=c"(*ecx),
+               "=d"(*edx)
+-            : "0"(op));
++            : "0"(op));*/
++    *eax = *ebx = *ecx = *edx = 0;
+ }
+ 
+ /*
+@@ -101,22 +102,23 @@
+ static unsigned long
+ changeFlag(unsigned long flag)
+ {
+-    unsigned long changedFlags, originalFlags;
+-    __asm__("pushfl\n\t" /* get the flags */
++/*    unsigned long changedFlags, originalFlags;
++    __asm__("pushfl\n\t" // get the flags
+             "popl %0\n\t"
+-            "movl %0,%1\n\t" /* save the original flags */
+-            "xorl %2,%0\n\t" /* flip the bit */
+-            "pushl %0\n\t"   /* set the flags */
++            "movl %0,%1\n\t" // save the original flags
++            "xorl %2,%0\n\t" // flip the bit
++            "pushl %0\n\t"   // set the flags
+             "popfl\n\t"
+-            "pushfl\n\t" /* get the flags again (for return) */
++            "pushfl\n\t" // get the flags again (for return)
+             "popl %0\n\t"
+-            "pushl %1\n\t" /* restore the original flags */
++            "pushl %1\n\t" // restore the original flags
+             "popfl\n\t"
+             : "=r"(changedFlags),
+               "=r"(originalFlags),
+               "=r"(flag)
+             : "2"(flag));
+-    return changedFlags ^ originalFlags;
++    return changedFlags ^ originalFlags;*/
++    return flag;
+ }
+ 
+ #elif defined(_MSC_VER)
