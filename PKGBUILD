@@ -36,8 +36,6 @@ backup=(
   etc/sway/config.d/50-systemd-user.conf
 )
 optdepends=(
-  'bemenu: Wayland-native alternative to dmenu'
-  'dmenu: Application launcher used in default config'
   'grim: Screenshot utility'
   'foot: Terminal emulator used in the default configuration'
   'i3status: Status line generation'
@@ -45,10 +43,12 @@ optdepends=(
   'polkit: System privilege control. Required if not using seatd service'
   'slurp: Select a region'
   'swaybg: Wallpaper tool for sway'
+  'sway-contrib: Collection of user-contributed scripts for sway'
   'swayidle: Idle management daemon'
   'swaylock: Screen locker'
   'wallutils: Timed wallpapers'
   'waybar: Highly customizable bar'
+  'wmenu: Application launcher used in default config'
   'xorg-xwayland: X11 support'
   'xdg-desktop-portal-gtk: Default xdg-desktop-portal for file picking'
   'xdg-desktop-portal-wlr: xdg-desktop-portal backend'
