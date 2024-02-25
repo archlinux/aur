@@ -3,13 +3,14 @@
 
 pkgname=openttd-jgrpp-git
 _installname=openttd
-pkgver=1.6.1+r27675+p0.15.1+r21.1cede84
+pkgver=14.0+20240224+gddb3914074+528aae3f3b
 pkgrel=1
 pkgdesc="OpenTTD with JGR's patch pack"
 arch=('i686' 'x86_64')
 url='http://www.tt-forums.net/viewtopic.php?f=33&t=73469'
 license=('GPL')
 depends=('libpng' 'sdl' 'icu' 'fontconfig' 'lzo' 'hicolor-icon-theme' 'desktop-file-utils' 'xz')
+makedepends=('go-yq' 'ninja')
 conflicts=('openttd')
 install=openttd-jgrpp.install
 optdepends=('openttd-opengfx: free graphics' 
@@ -21,47 +22,61 @@ _gitname=OpenTTD-patches
 # _fragment="#tag=jgrpp-0.15.1"
 
 source=("git+https://github.com/JGRennison/$_gitname.git$_fragment"
-        "http://finger.openttd.org/tags.txt")
-sha256sums=(SKIP SKIP)
+        "http://cdn.openttd.org/latest.yaml")
+sha256sums=('SKIP'
+            '05825a0a2fb0336203b67a4cb93d3e9d25e16fe7c0734ec3b399ed4a6077a95c')
 
 pkgver() {
     cd "$_gitname"
-    _openttdrev="$(./findversion.sh | cut -f2)"
-    _openttdver="$(cat "$srcdir"/tags.txt |
-                   awk '$1<='"$_openttdrev"' {print $3; exit}' |
-                   sed -e 's/[^0-9a-z.]//ig' -e 's/./\L&/g')"
-    rm -f {"$srcdir","$startdir"}/tags.txt  # make sure it is re-downloaded next time the package is built
-    _patchtag="$(git describe --abbrev=0 --tags)"
-    _patchver="$(echo $_patchtag  | sed -e 's/^[a-z-]*//')"
-    _patchcommits="$(git log "$_patchtag".. --pretty=oneline | wc -l)"
-    _patchrev=$(LC_ALL=C git log -1 --format="%h")
-    _patchsuffix=""
-    [[ $_patchcommits -ne 0 ]] && _patchsuffix="+r$_patchcommits.$_patchrev"
-    echo "$_openttdver+r$_openttdrev+p$_patchver$_patchsuffix"
+
+    # This may not be the final method of version string construction.
+    #---
+
+    # Extract the 'testing' version string and the nightly revision string from latest.yaml
+    
+    # Please note that, since the JGRPP patches' trunk version may not be the
+    # same as OpenTTD's official 'testing' version, the actual version string
+    # may be an inaccurate reflection of the actual current version of JGRPP;
+    # although it may indirectly indicate the time period of this version,
+    # using the 'then latest' OpenTTD testing version as a reference point.
+    _openttdver="$(yq '.latest[] | select(.category == "openttd" and .name == "testing").version' $srcdir/latest.yaml)" # eg 14.0-RC1
+    _openttdrev="$(yq '.latest[] | select(.category == "openttd" and .name == "master").version' $srcdir/latest.yaml)" # eg 20240224-master-gddb3914074
+
+    # Take only the base of the version string, without suffixes like '-RCx'
+    _basever="$(sed 's/-.*//' <<<$_openttdver)" # e.g. 14.0
+
+    # Take the date part of the nightly revision string, as well as the commit SHA1
+    _datever="$(sed 's/-.*//' <<<$_openttdrev)" # e.g. 20240224
+    _commitsha="$(sed 's/.*-//g' <<<$_openttdrev)" # e.g. gddb39140747
+
+    # Take the latest JGRPP revision string
+    _patchrev=$(LC_ALL=C git log -1 --format="%h") # e.g. 528aae3f3b
+
+    # Construct the full package version string
+    echo "$_basever+$_datever+$_commitsha+$_patchrev" # e.g. 14.0+20240224+gddb3914074+528aae3f3b
 }
 
 build() {
     cd $_gitname
-    
-    ./configure \
-        --prefix-dir=/usr \
-        --binary-name=$_installname \
-        --binary-dir=bin \
-        --data-dir=share/$_installname \
-        --install-dir=$pkgdir \
-        --doc-dir=share/doc/$_installname \
-        --menu-name="OpenTTD" \
-        --personal-dir=.$_installname # \
-        # --without-libbfd
 
-    make
+    cmake \
+        -B build \
+        -D BINARY_NAME="$pkgname" \
+        -D CMAKE_INSTALL_BINDIR="bin" \
+        -D CMAKE_INSTALL_DATADIR="/usr/share" \
+        -D CMAKE_INSTALL_PREFIX="/usr" \
+        -D PERSONAL_DIR=".$pkgname" \
+        -D CMAKE_BUILD_TYPE="None" \
+        -G Ninja
+    
+    ninja -C build
 }
 
 package() {
     cd $_gitname
     mkdir -p "$pkgdir"/usr/share/$_installname/{data,game}
 
-    make install
+    DESTDIR="$pkgdir" ninja -C build install
 
     cp -rT bin/game "$pkgdir"/usr/share/$_installname/game
 }
