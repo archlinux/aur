@@ -12,7 +12,7 @@ pkgbase = android-aarch64-qt6-charts
 	makedepends = android-cmake
 	makedepends = qt6-declarative
 	makedepends = ninja
-	makedepends = java-environment-openjdk>=11
+	makedepends = java-environment-openjdk=17
 	depends = android-aarch64-qt6-declarative
 	options = !strip
 	options = !buildflags

@@ -8,4 +8,4 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Provides a set of easy to use chart components (android)'
 depends=(<%== qt6deps qw(declarative) %>)
-makedepends=('android-cmake<%== $static_suffix %>' 'qt6-declarative' 'ninja' 'java-environment-openjdk>=11')
+makedepends=('android-cmake<%== $static_suffix %>' 'qt6-declarative' 'ninja' 'java-environment-openjdk=17')
