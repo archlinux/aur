@@ -4,10 +4,10 @@
 
 _pkgname='ksh93'
 pkgname="${_pkgname}-git"
-pkgver=r1602.6b624629
+pkgver=r1611.40c217ac
 pkgrel=1
 pkgdesc="KornShell 93u+m, fork based on ksh 93u+"
-arch=('x86_64')
+arch=('x86_64' 'i686' 'pentium4' 'powerpc64le' 'powerpc64' 'powerpc' 'riscv64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/ksh93/ksh/'
 license=('EPL')
 depends=('glibc')
@@ -59,7 +59,7 @@ package() {
 	for _man in 'ksh93' 'rksh' 'rksh93'; do
 		ln -srf "${pkgdir}/usr/share/man/man1/ksh.1" "${pkgdir}/usr/share/man/man1/${_man}.1"
 	done
-	for _astdoc in ./arch/linux.i386-64/man/man3/*; do
+	for _astdoc in ./arch/linux.*/man/man3/*; do
 		# To avoid clashes with man pages from other packages, the libast and libshell
 		# man pages are installed to a '3ast' section. The default filenames in the
 		# repo only have a .3 filename extension, so this is changed to .3ast.
@@ -76,9 +76,9 @@ package() {
 	done
 
 	# Install the ksh and shcomp binaries
-	install -Dm0755 "arch/linux.i386-64/bin/ksh" "${pkgdir}/usr/bin/ksh"
+	install -Dm0755 arch/linux.*/bin/ksh "${pkgdir}/usr/bin/ksh"
 	for _exe in 'ksh93' 'rksh' 'rksh93'; do
 		ln -srf "${pkgdir}/usr/bin/ksh" "${pkgdir}/usr/bin/${_exe}"
 	done
-	install -Dm0755 "arch/linux.i386-64/bin/shcomp" "${pkgdir}/usr/bin/shcomp"
+	install -Dm0755 arch/linux.*/bin/shcomp "${pkgdir}/usr/bin/shcomp"
 }
