@@ -8,7 +8,7 @@ url="https://billy.wolfe.casa/fortunes/confucius"
 license=('WTFPL')
 depends=('fortune-mod')
 source=("${url}")
-md5sums=('1690845af5bb55b1193715b729556abc')
+md5sums=('6220f31873850dafc72e849dab15b682')
 
 build()
 {
