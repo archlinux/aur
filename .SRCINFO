@@ -1,6 +1,6 @@
 pkgbase = python-dataprep
 	pkgdesc = A low code data preparation library in python.
-	pkgver = 0.4.4
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://github.com/sfu-db/dataprep
 	arch = any
@@ -11,9 +11,11 @@ pkgbase = python-dataprep
 	makedepends = python-wheel
 	makedepends = python-poetry
 	makedepends = python-nose
-	makedepends = python-jsonschema4.17
+	makedepends = python-jsonschema
 	depends = python
-	source = python-dataprep-0.4.4.tar.gz::https://github.com/sfu-db/dataprep/archive/refs/tags/v0.4.4.tar.gz
-	sha512sums = e7ef684dba568ed4a19bfcd4459bc0d241f378219440e01da5544e4229b99c2dd474a03a55491fa5f967247af31b216f13fa9ff0a8653df5a7fbdb294d357ec9
+	source = https://files.pythonhosted.org/packages/py3/d/dataprep/dataprep-0.4.5-py3-none-any.whl
+	source = https://raw.githubusercontent.com/sfu-db/dataprep/master/LICENSE
+	sha512sums = ce7eaaacf376d4d5044dfac83fef371ddf831349a2469d83732f4b6665bfa6a4f48f64e46ed6ccf1fe28dd5d428b12051a74e617045bc0d67722d97e2e74dec6
+	sha512sums = 0aafa9562a7846461c3c3a3ac5bad9db713d1ed86a781d086e6a55d1e846e43741f306c001ddbaae87d350ab18cc5fcc39579b9b9d46d0b21c3781e5dc9a84b8
 
 pkgname = python-dataprep
