@@ -2,7 +2,7 @@
 
 pkgname="frp-panel"
 pkgver=0.0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi node frp webui and for frp server and client management"
 arch=("any")
 url="https://github.com/VaalaCat/${pkgname}"
@@ -20,14 +20,14 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}@.service")
 sha256sums=('229c698e68b94ab19dbcfe042b7c66e4ebb8c64167accb9677a39c0f4e6bdd33'
             'd909eac5b51218404824363ce35886fcd2a8065773ffecde8f64855a107369a0'
-            'a82a0d6fb9498a283137a90862a4bf65486368cfe88c25f7b901d4d914da7ca4')
+            '430b38fb5de8ea2bdd03ef65d376b5aae7acad88cfffd5031d05b45e8ae1040b')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
 
     local file_setting="conf/settings.go"
     local n1 n2 element
-    for element in App Master Server DB; do
+    for element in App Master Server DB Client; do
         n1=$(grep -nP "^\s${element} struct \{" "$file_setting" | awk -F: '{print $1}')
         n2=$(grep -nP "env-prefix:\"${element^^}_\"" "$file_setting" | awk -F: '{print $1}')
         awk -v n1="${n1}" -v n2="${n2}" -F '"' '{if(NR>n1 && NR<n2){print "##"$3" "$4","$5" "$6"\n#""'${element^^}_'"$2"=\"\"\n"}}' "$file_setting" >> ../master.env
@@ -35,10 +35,7 @@ prepare() {
     sed -i 's|,`||' ../master.env
 
     for element in client server; do
-        grep -C1 -P "#APP_SECRET=|#MASTER_RPC_HOST=|#MASTER_RPC_PORT=|#MASTER_API_PORT=" ../master.env > "../${element}.env"
-        echo "## For ${element} nodes, need append clientSecret and clientID after start command, such as: " >> "../${element}.env"
-        echo "#START_PARAMS=\"-s 'b16379b1-349c-421f-83b2-78c45b5c6de2' -i '${element}'\"" >> "../${element}.env"
-        echo "START_PARAMS=\"\"" >> "../${element}.env"
+        grep -C1 -P "#APP_SECRET=|#MASTER_RPC_HOST=|#MASTER_RPC_PORT=|#MASTER_API_PORT=|#CLIENT_ID=|#CLIENT_SECRET=" ../master.env > "../${element}.env"
         sed -i '/--/d' "../${element}.env"
     done
 }
@@ -57,7 +54,7 @@ build() {
         -trimpath \
         -ldflags="$ldflags" \
         -o "${pkgname}" \
-        ./cmd/*.go
+        ./cmd/frpp/*.go
     
     ./"${pkgname}" completion zsh > ../completion.zsh
     ./"${pkgname}" completion bash > ../completion.bash
