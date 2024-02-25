@@ -1,10 +1,10 @@
 pkgbase = python-ginga
 	pkgdesc = A viewer for astronomical data FITS (Flexible Image Transport System) files.
-	pkgver = 4.1.1
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://ejeschke.github.io/ginga
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	checkdepends = python-pytest-astropy-header
 	checkdepends = python-photutils
 	checkdepends = python-regions
@@ -14,28 +14,33 @@ pkgbase = python-ginga
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/g/ginga/ginga-4.1.1.tar.gz
-	md5sums = 25068309d325f2d35895269255b06f96
+	source = https://files.pythonhosted.org/packages/source/g/ginga/ginga-5.0.0.tar.gz
+	md5sums = 10e1e7300c179302a385b29881d66fd0
 
 pkgname = python-ginga
-	depends = python-astropy>=3.2
+	depends = python-astropy>=5.0
 	depends = python-qtpy>=2.0.1
-	depends = python-pillow>=6.2.1
-	depends = python-importlib-metadata
+	depends = python-pillow>=9.2
+	depends = python-yaml>=6.0
+	depends = python-tomli>=2.0.1
+	depends = hicolor-icon-theme
 	optdepends = python-scipy>=0.18.1: required by Pick, some built-in auto cuts algorithms used when you load an image
-	optdepends = python-matplotlib>=2.1: required by Pick, Cuts, Histogram, LineProfile
+	optdepends = python-matplotlib>=3.4: required by Pick, Cuts, Histogram, LineProfile
+	optdepends = python-magic>=0.4.15: aids in identifying files when opening them
 	optdepends = python-opencv>=4.5.4.58: speeds up rotation, mosaicing and some transformations
 	optdepends = python-exifread>=2.3.2: recommended
 	optdepends = python-beautifulsoup4>=4.3.2
 	optdepends = python-astroquery>=0.3.5: required by Catalogs
-	optdepends = python-docutils: to display help for plugins
+	optdepends = python-dateuil: to display help for plugins
 	optdepends = python-photutils
 	optdepends = python-fitsio: for opening FITS files
 	optdepends = python-astlib: for WCS resolution
 	optdepends = python-starlink-pyast: for WCS resolution
-	optdepends = python-cairo: for gtk3 backend
+	optdepends = python-cairo: for gtk3, web, tk backend
 	optdepends = python-gobject: for gtk3 backend
 	optdepends = python-pyqt5: for qt5 backend
-	optdepends = python-aggdraw: for tk backend
+	optdepends = python-pyqt6: for qt6 backend
+	optdepends = pyside2: for pyside2 backend
+	optdepends = pyside6: for pyside6 backend
 	optdepends = python-tornado: for web backend
 	optdepends = python-ginga-doc: Documentation for Python-ASDF

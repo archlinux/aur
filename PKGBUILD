@@ -3,12 +3,12 @@
 
 pkgname=python-ginga
 _pyname=${pkgname#python-}
-pkgver=4.1.1
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="A viewer for astronomical data FITS (Flexible Image Transport System) files."
 arch=('any')
 url="https://ejeschke.github.io/ginga"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
@@ -19,7 +19,7 @@ checkdepends=('python-pytest-astropy-header'
               'python-astlib'
               'python-starlink-pyast')  # pillow <- matplotlib, scipy required by astlib
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('25068309d325f2d35895269255b06f96')
+md5sums=('10e1e7300c179302a385b29881d66fd0')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -40,25 +40,30 @@ check() {
 }
 
 package() {
-    depends=('python-astropy>=3.2'
+    depends=('python-astropy>=5.0'
              'python-qtpy>=2.0.1'
-             'python-pillow>=6.2.1'
-             'python-importlib-metadata')
+             'python-pillow>=9.2'
+             'python-yaml>=6.0'
+             'python-tomli>=2.0.1'
+             'hicolor-icon-theme')
     optdepends=('python-scipy>=0.18.1: required by Pick, some built-in auto cuts algorithms used when you load an image'
-                'python-matplotlib>=2.1: required by Pick, Cuts, Histogram, LineProfile'
+                'python-matplotlib>=3.4: required by Pick, Cuts, Histogram, LineProfile'
+                'python-magic>=0.4.15: aids in identifying files when opening them'
                 'python-opencv>=4.5.4.58: speeds up rotation, mosaicing and some transformations'
                 'python-exifread>=2.3.2: recommended'
                 'python-beautifulsoup4>=4.3.2'
                 'python-astroquery>=0.3.5: required by Catalogs'
-                'python-docutils: to display help for plugins'
+                'python-dateuil: to display help for plugins'
                 'python-photutils'
                 'python-fitsio: for opening FITS files'
                 'python-astlib: for WCS resolution'
                 'python-starlink-pyast: for WCS resolution'
-                'python-cairo: for gtk3 backend'
+                'python-cairo: for gtk3, web, tk backend'
                 'python-gobject: for gtk3 backend'
                 'python-pyqt5: for qt5 backend'
-                'python-aggdraw: for tk backend'
+                'python-pyqt6: for qt6 backend'
+                'pyside2: for pyside2 backend'
+                'pyside6: for pyside6 backend'
                 'python-tornado: for web backend'
                 'python-ginga-doc: Documentation for Python-ASDF')
     cd ${srcdir}/${_pyname}-${pkgver}
