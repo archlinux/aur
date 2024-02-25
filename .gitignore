@@ -1,6 +1,6 @@
 /*.git
 /Rack
-/pkg
-/src
+pkg/
+src/
 *.tar.*
 *.zip

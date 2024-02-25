@@ -1,13 +1,14 @@
-# Maintainer: Phil A. <flying-sheep@web.de>
-# Maintainer: Florian Hülsmann <fh@cbix.de>
+# Maintainer: OSAMC <https://github.com/osam-cologne/archlinux-proaudio>
+# Contributor: Phil A. <flying-sheep@web.de>
 # Contributor: David Runge <dave@sleepmap.de>
 # Contributor: Adrain Sinclair <adrian at adrusi dot com>
 # Contributor: Miroslav Koškár <http://mkoskar.com/>
+# Contributor: Florian Hülsmann <fh@cbix.de>
 
 _name=Rack
 pkgname=vcvrack
 pkgver=2.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Open-source Eurorack modular synthesizer simulator'
 url='https://vcvrack.com/'
 license=(custom CCPL GPL3)
