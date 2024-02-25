@@ -1,14 +1,14 @@
 # Maintainer: Marco Buzzanca <marco dot bzn at gmail dot com>
 pkgname=ibm-fonts
-pkgver=0.1
+pkgver=0.2.0
 pkgrel=2
 pkgdesc='IBM system and text mode bitmap fonts'
 arch=('any')
 url='https://farsil.github.io/ibmfonts/'
-license=('MIT, custom:CC BY-SA 4.0')
+license=('MIT, CC-BY-SA-4.0')
 makedepends=('xorg-bdftopcf')
-source=("https://github.com/farsil/ibmfonts/archive/$pkgver.tar.gz")
-sha256sums=('86f6d295561947f7e0a42e6e2bd405f63625095353468c6a6e752c0cba727dc9')
+source=("https://github.com/farsil/ibmfonts/archive/v$pkgver.tar.gz")
+sha256sums=('0f9d9d668c304916b0ab2601564ff303720526d090b5929ab712d777420a653')
 
 build() {    
     cd "$srcdir/ibmfonts-$pkgver"
