@@ -13,7 +13,7 @@ pkgbase = android-aarch64-qt6-serialbus
 	makedepends = qt6-base
 	makedepends = qt6-serialbus
 	makedepends = ninja
-	makedepends = java-environment-openjdk>=11
+	makedepends = java-environment-openjdk=17
 	depends = android-aarch64-qt6-serialport
 	options = !strip
 	options = !buildflags

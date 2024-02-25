@@ -13,7 +13,7 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Qt module for general purpose serial bus access (android)'
 depends=('android-aarch64-qt6-serialport')
-makedepends=('android-cmake' 'qt6-base' 'qt6-serialbus' 'ninja' 'java-environment-openjdk>=11')
+makedepends=('android-cmake' 'qt6-base' 'qt6-serialbus' 'ninja' 'java-environment-openjdk=17')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtserialbus-everywhere-src-${_qtver}"
@@ -21,6 +21,7 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
 sha256sums=('9cffaa49e1b742e315990c2cf9179f9419ad23c1f0591b6f14b9ac4c03eafa3c')
 
 build() {
+  export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
   source android-env ${_android_arch}
   android-${_android_arch}-cmake -G Ninja -B build-$_android_arch -S $_pkgfqn \
     -DCMAKE_FIND_ROOT_PATH="${ANDROID_PREFIX}" \
