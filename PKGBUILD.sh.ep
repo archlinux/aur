@@ -9,4 +9,4 @@ license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Provides WebSocket communication compliant with RFC 6455 (android)'
 depends=(<%== qt6deps qw(base) %>)
 optdepends=(<%== qt6optdeps declarative => 'QML bindings' %>)
-makedepends=('android-cmake<%== $static_suffix %>' <%== qt6deps qw(declarative) %> 'qt6-declarative' 'ninja' 'java-environment-openjdk>=11')
+makedepends=('android-cmake<%== $static_suffix %>' <%== qt6deps qw(declarative) %> 'qt6-declarative' 'ninja' 'java-environment-openjdk=17')
