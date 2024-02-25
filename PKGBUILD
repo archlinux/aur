@@ -13,7 +13,7 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Virtual keyboard framework (android)'
 depends=('android-aarch64-qt6-declarative' 'android-aarch64-qt6-svg')
-makedepends=('android-cmake' 'qt6-declarative' 'qt6-shadertools' 'ninja' 'java-environment-openjdk>=11')
+makedepends=('android-cmake' 'qt6-declarative' 'qt6-shadertools' 'ninja' 'java-environment-openjdk=17')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtvirtualkeyboard-everywhere-src-${_qtver}"
@@ -21,6 +21,7 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
 sha256sums=('6142fddb88eb3ed03a97e0d86f7b3121207845b3ec84a92522a78b97886ed81e')
 
 build() {
+  export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
   source android-env ${_android_arch}
   android-${_android_arch}-cmake -G Ninja -B build-$_android_arch -S $_pkgfqn \
     -DCMAKE_FIND_ROOT_PATH="${ANDROID_PREFIX}" \
