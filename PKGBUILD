@@ -5,7 +5,7 @@ pkgname=i3-gnome-pomodoro-git
 _srcname=i3-gnome-pomodoro
 
 pkgver=r92.7fe1895
-pkgrel=1
+pkgrel=3
 pkgdesc="Integrate gnome-pomodoro into i3"
 arch=('any')
 url="https://github.com/kantord/i3-gnome-pomodoro"
