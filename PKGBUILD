@@ -1,23 +1,22 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=dune-vem
-_tarver=v2.9.0.2
+_tarver=v2.9.1
 _tar=${_tarver}/${pkgname}-${_tarver}.tar.gz
 pkgver=${_tarver/v/}
 pkgrel=1
 pkgdesc="Implementation of a number of virtual element spaces and bilinear forms"
 arch=(x86_64)
 url="https://gitlab.dune-project.org/dune-fem/${pkgname}"
-license=(GPL2)
+license=(GPL-2.0-or-later)
 depends=("dune-fem>=${pkgver}" python-sortedcontainers python-triangle)
 makedepends=(doxygen graphviz python-scikit-build)
 optdepends=('doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software')
 source=(https://gitlab.dune-project.org/${pkgname/v/f}/${pkgname}/-/archive/${_tar})
-sha512sums=('b8194b88c1e03b45bc1349aaf72e8605b2644eb6cc6518349bfba12b93e126c6f6e76363d48a1f2744ee56e4b62c6f1388f1bc28609bf00b219e4392b7d30b32')
+sha512sums=('a75c39846a6043a6a7bd1c9d295de85bde5b5e16c424a615599697aa170f8a140bcdce6c27bd83b4f0a4778b70ed92fde42cd2836122b1641fc90a26f8a2a0fc')
 
 prepare() {
   export _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
-  sed -i 's/^Version: '"${pkgver::3}"'/Version: '"${pkgver}"'/' ${pkgname}-${_tarver}/dune.module
   python -m venv --system-site-packages _skbuild/linux-${CARCH}-${_pyversion}/cmake-build/dune-env
 }
 
