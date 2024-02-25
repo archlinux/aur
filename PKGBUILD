@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gedit-plugin-markdown_preview
-pkgver=2.0
-pkgrel=3
+pkgver=3.0
+pkgrel=1
 pkgdesc="A gedit plugin previewing markdown (.md) documents"
 arch=('any')
 url="https://github.com/maoschanz/gedit-plugin-markdown_preview"
@@ -13,7 +13,7 @@ optdepends=('pymdown-extensions: extra Python Markdown extensions'
             'texlive-bin: export to PDF with pandoc (pdflatex)'
             'texlive-fontsextra: export to PDF with pandoc (lmodern)')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('2fa757bb87d8b63fc206e307f6b963c9a2013d487f33fe7f564c9f0f2bc53a07')
+sha256sums=('fcdb6e0624d6b2e92df2c65f357c17931ad65f8d883b8a668bb52fae95c70728')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -28,7 +28,7 @@ package() {
   cp -r markdown_preview "$pkgdir/usr/lib/gedit/plugins"
   install -Dm644 example.css -t "$pkgdir/usr/share/doc/$pkgname/"
 
-  for lang in fr nl; do
+  for lang in de fr nl pt_BR; do
     install -Dm644 "markdown_preview/locale/${lang}/LC_MESSAGES/gedit-plugin-markdown-preview.mo" -t \
       "$pkgdir/usr/share/locale/${lang}/LC_MESSAGES/"
   done
