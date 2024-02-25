@@ -2,7 +2,7 @@
 # Contributor: osch <oliver@luced.de>
 
 pkgname=audacity-local-git
-pkgver=3.5.0.0.r18368
+pkgver=3.5.0.0.r18499
 pkgrel=1
 pkgdesc="Record and edit audio files - Built with mostly system libraries, except for xwWidgets and PortMidi"
 arch=('x86_64')
@@ -52,7 +52,7 @@ prepare() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DAUDACITY_BUILD_LEVEL=2 \
-        -Daudacity_has_vst3=off \
+        -Daudacity_has_vst3=on \
         -Daudacity_use_jpeg=system \
         -Daudacity_has_networking=off \
         -Daudacity_lib_preference=system \

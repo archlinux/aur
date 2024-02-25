@@ -1,6 +1,6 @@
 pkgbase = audacity-local-git
 	pkgdesc = Record and edit audio files - Built with mostly system libraries, except for xwWidgets and PortMidi
-	pkgver = 3.5.0.0.r18368
+	pkgver = 3.5.0.0.r18499
 	pkgrel = 1
 	url = https://audacityteam.org
 	arch = x86_64
