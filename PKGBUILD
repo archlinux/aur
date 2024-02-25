@@ -1,8 +1,8 @@
 # Maintainer: littzhch <2371050115@qq.com>
 _pkgname=ustcwakeup
 pkgname=$_pkgname-git
-pkgver=r22.cb4d5bb
-pkgrel=1
+pkgver=r27.72c3a12
+pkgrel=2
 epoch=
 pkgdesc="将USTC教务系统中的课程表导出为WakeUp备份文件"
 arch=('any')
@@ -34,7 +34,7 @@ build() {
 	cd "$srcdir/$_pkgname"
 	python -m py_compile *.py
 	echo "#!/bin/sh
-python /usr/share/$_pkgname/main.py
+python /usr/share/$_pkgname/main.py \"\$@\"
 " > ustcwakeup
 }
 
