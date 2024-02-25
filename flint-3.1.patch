@@ -1,0 +1,117 @@
+diff --git a/src/sage/doctest/control.py b/src/sage/doctest/control.py
+index 2973e9f6c64..58d4d53dbb9 100644
+--- a/src/sage/doctest/control.py
++++ b/src/sage/doctest/control.py
+@@ -58,14 +58,6 @@ from .parsing import parse_optional_tags, parse_file_optional_tags, unparse_opti
+ 
+ auto_optional_tags = set()
+ 
+-try:
+-    from sage.libs.arb.arb_version import version as arb_vers
+-    arb_tag = 'arb2' + arb_vers().split('.')[1]
+-    auto_optional_tags.add(arb_tag)
+-except ImportError:
+-    pass
+-
+-
+ class DocTestDefaults(SageObject):
+     """
+     This class is used for doctesting the Sage doctest module.
+diff --git a/src/sage/libs/flint/flint_wrap.h b/src/sage/libs/flint/flint_wrap.h
+index fcfe660a1f6..1302973779e 100644
+--- a/src/sage/libs/flint/flint_wrap.h
++++ b/src/sage/libs/flint/flint_wrap.h
+@@ -136,8 +136,6 @@
+ #include <flint/hypgeom.h>
+ #include <flint/long_extras.h>
+ #include <flint/mag.h>
+-#include <flint/mpf_mat.h>
+-#include <flint/mpf_vec.h>
+ #include <flint/mpfr_mat.h>
+ #include <flint/mpfr_vec.h>
+ #include <flint/mpn_extras.h>
+diff --git a/src/sage/libs/flint/fmpq.pxd b/src/sage/libs/flint/fmpq.pxd
+index 41f075326fe..61ebabac2b0 100644
+--- a/src/sage/libs/flint/fmpq.pxd
++++ b/src/sage/libs/flint/fmpq.pxd
+@@ -41,14 +41,12 @@ cdef extern from "flint_wrap.h":
+     void fmpq_height(fmpz_t height, const fmpq_t x) noexcept
+     flint_bitcnt_t fmpq_height_bits(const fmpq_t x) noexcept
+     void fmpq_set_fmpz_frac(fmpq_t res, const fmpz_t p, const fmpz_t q) noexcept
+-    void fmpq_get_mpz_frac(mpz_t a, mpz_t b, fmpq_t c) noexcept
+     void fmpq_set_si(fmpq_t res, slong p, ulong q) noexcept
+     void _fmpq_set_si(fmpz_t rnum, fmpz_t rden, slong p, ulong q) noexcept
+     void fmpq_set_ui(fmpq_t res, ulong p, ulong q) noexcept
+     void _fmpq_set_ui(fmpz_t rnum, fmpz_t rden, ulong p, ulong q) noexcept
+     void fmpq_set_mpq(fmpq_t dest, const mpq_t src) noexcept
+     int fmpq_set_str(fmpq_t dest, const char * s, int base) noexcept
+-    void fmpq_init_set_mpz_frac_readonly(fmpq_t z, const mpz_t p, const mpz_t q) noexcept
+     double fmpq_get_d(const fmpq_t f) noexcept
+     void fmpq_get_mpq(mpq_t dest, const fmpq_t src) noexcept
+     int fmpq_get_mpfr(mpfr_t dest, const fmpq_t src, mpfr_rnd_t rnd) noexcept
+diff --git a/src/sage/symbolic/ginac/useries-flint.h b/src/sage/symbolic/ginac/useries-flint.h
+index 7ecd4d50107..08847273e2e 100644
+--- a/src/sage/symbolic/ginac/useries-flint.h
++++ b/src/sage/symbolic/ginac/useries-flint.h
+@@ -27,9 +27,6 @@
+ #include "flint/fmpq_poly.h"
+ #include "flint/fmpq.h"
+ 
+-extern "C" void fmpq_get_mpz_frac(mpz_t a, mpz_t b, fmpq_t c);
+-extern "C" void fmpq_init_set_mpz_frac_readonly(fmpq_t z, const mpz_t p, const mpz_t q);
+-
+ #include <stdexcept>
+ 
+ 
+diff --git a/src/sage/symbolic/ginac/useries.cpp b/src/sage/symbolic/ginac/useries.cpp
+index b9a8b867648..7649e36b49a 100644
+--- a/src/sage/symbolic/ginac/useries.cpp
++++ b/src/sage/symbolic/ginac/useries.cpp
+@@ -550,14 +550,16 @@ void power::useries(flint_series_t& fp, int order) const
+                         mpz_t cnum, cden;
+                         mpz_init(cnum);
+                         mpz_init(cden);
+-                        fmpq_get_mpz_frac(cnum, cden, c);
++                        fmpz_get_mpz(cnum, fmpq_numref(c));
++                        fmpz_get_mpz(cden, fmpq_denref(c));
+                         if (not mpz_perfect_square_p(cnum)
+                             or not mpz_perfect_square_p(cden))
+                                 throw flint_error();
+                         mpz_sqrt(cnum, cnum);
+                         mpz_sqrt(cden, cden);
+                         fmpq_t cc;
+-                        fmpq_init_set_mpz_frac_readonly(cc, cnum, cden);
++                        fmpz_init_set_readonly(fmpq_numref(cc), cnum);
++                        fmpz_init_set_readonly(fmpq_denref(cc), cden);
+                         mpz_clear(cnum);
+                         mpz_clear(cden);
+ 
+diff --git a/src/sage/libs/arb/arb_version.pyx b/src/sage/libs/arb/arb_version.pyx
+deleted file mode 100644
+index b8ab4d725e5..00000000000
+--- a/src/sage/libs/arb/arb_version.pyx
++++ /dev/null
+@@ -1,23 +0,0 @@
+-# -*- coding: utf-8
+-from sage.cpython.string cimport char_to_str
+-
+-
+-cdef extern from "arb_wrap.h":
+-    char * arb_version
+-
+-
+-def version():
+-    """
+-    Get arb version
+-
+-    TESTS::
+-
+-        sage: from sage.libs.arb.arb_version import version
+-        sage: version().split('.')[0]
+-        '2'
+-    """
+-    try:
+-        py_string = char_to_str(arb_version)
+-    finally:
+-        pass
+-    return py_string
