@@ -19,7 +19,7 @@ provides=("kibana=$pkgver")
 conflicts=('kibana')
 backup=('etc/kibana/kibana.yml' 'etc/kibana/node.options')
 options=('!strip' 'emptydirs')
-source=(https://artifacts.elastic.co/downloads/$_relpkgname/$_relpkgname-${pkgver}-linux-x86_64.tar.gz
+source=(https://github.com/elastic/${_relpkgname}/archive/v${pkgver}.tar.gz
         kibana.service
         tmpfile.conf
         user.conf)
