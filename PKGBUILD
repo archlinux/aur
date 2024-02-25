@@ -1,7 +1,7 @@
 # Maintainer: lisuke <1657787678@qq.com>
 pkgname=xx-net
-pkgver=5.9.0
-pkgrel=8
+pkgver=5.9.9
+pkgrel=1
 
 pkgdesc="XX-Net, a web proxy tool."
 arch=('any')
@@ -19,7 +19,7 @@ source=(
 	"xx-net.service"
 		)
 noextract=()
-md5sums=('95c987136555cce4ad9fb186880e3047'
+md5sums=('d8938d86ad7141b7fdeb07831188274a'
          'c0a4e9d6f4c8fcee0e8a26f3018dfe4f')
 install=$pkgname.install
 validpgpkeys=()
