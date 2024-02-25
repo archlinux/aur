@@ -1,17 +1,17 @@
 pkgbase = dolphin-tabopts
 	pkgdesc = KDE File Manager - with extended tab options
-	pkgver = 23.08.4
+	pkgver = 23.08.5
 	pkgrel = 1
 	url = https://invent.kde.org/xiota/dolphin/-/merge_requests/1
 	arch = i686
 	arch = x86_64
-	license = LGPL
+	license = GPL-2.0-or-later
 	makedepends = extra-cmake-modules
 	makedepends = kdoctools5
 	depends = baloo-widgets
-	depends = kio-extras
 	depends = kactivities5
 	depends = kcmutils5
+	depends = kio-extras
 	depends = knewstuff5
 	depends = kparts5
 	depends = kuserfeedback5
@@ -21,11 +21,11 @@ pkgbase = dolphin-tabopts
 	optdepends = kio-admin: for managing files as administrator
 	optdepends = konsole: terminal panel
 	optdepends = purpose5: share context menu
-	provides = dolphin=23.08.4
+	provides = dolphin=23.08.5
 	conflicts = dolphin
-	source = dolphin-23.08.4.tar.xz::https://download.kde.org/stable/release-service/23.08.4/src/dolphin-23.08.4.tar.xz
+	source = dolphin-23.08.5.tar.xz::https://download.kde.org/stable/release-service/23.08.5/src/dolphin-23.08.5.tar.xz
 	source = dolphin-tabopts-1.patch::https://invent.kde.org/xiota/dolphin/-/merge_requests/1.patch
-	sha256sums = 6a630b78018f3344b70131ff2c9deaae5e626295e512ce2741958d5197888585
+	sha256sums = 6309abda566dfe890f6a3790f101198ed0f274728896054f21e24bdfc3e1f1f3
 	sha256sums = a50de534a6049ec4e232b6bddb8b39a105287bd0f6eac934e4eaac50df6f0004
 
 pkgname = dolphin-tabopts
