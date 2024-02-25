@@ -1,6 +1,6 @@
 pkgbase = soundkonverter-dark-theme-git
 	pkgdesc = Front-end to various audio converters (Git - with custom colors for dark themes)
-	pkgver = 3.0.1.r31.g0329d90
+	pkgver = 3.0.1.31.g0329d90
 	pkgrel = 1
 	url = https://www.linux-apps.com/content/show.php?content=29024
 	arch = x86_64
@@ -36,6 +36,8 @@ pkgbase = soundkonverter-dark-theme-git
 	provides = soundkonverter
 	conflicts = soundkonverter
 	source = git+https://github.com/nphantasm/soundkonverter.git
+	source = taglib2.diff
 	sha256sums = SKIP
+	sha256sums = 6775198a5c30495ead5cda9756643e7e3c5b767dd5f322f985c9775bb37093e9
 
 pkgname = soundkonverter-dark-theme-git
