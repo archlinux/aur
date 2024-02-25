@@ -3,7 +3,7 @@
 pkgbase=mkdocs-git-committers-plugin-2
 _pyname=${pkgbase}
 pkgname=("${_pyname}")
-pkgver=2.2.3
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="An MkDocs plugin to create a list of contributors on the page"
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('python-setuptools-scm')
 #checkdepends=('python-pytest')
 checkdepends=('python-nose')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('966fbd9ad7df944663eca2e85f973486')
+md5sums=('b4ed23c5efb836a63ff23e19b14c8517')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
