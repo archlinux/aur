@@ -51,6 +51,16 @@ build() {
 	DEBUG='*' NODE_OPTIONS='--openssl-legacy-provider' yarn run vue-cli-service electron:build
 }
 
+check() {
+	cd "$srcdir/$_sourcedirectory/apps/studio/"
+
+	# Run unit tests
+	yarn run test:unit --ci
+
+	# Not running tests, as they are currently not repeatable and the sqlserver test suite does not work
+	# yarn run test:integration --runInBand --ci --testPathIgnorePatterns=sqlserver.spec.js
+}
+
 package() {
 	# Electron resources
 	cd "$srcdir/$_sourcedirectory/apps/studio/dist_electron/"
