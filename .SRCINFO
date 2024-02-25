@@ -13,7 +13,7 @@ pkgbase = colorpick-git
 	provides = colorpick
 	conflicts = colorpick
 	source = colorpick::git+https://github.com/qtilities/colorpick.git
-	source = colorpick/resources::git+https://github.com/qtilities-i18n/colorpick
+	source = colorpick/resources::git+https://github.com/qtilities-i18n/colorpick.git
 	sha512sums = SKIP
 	sha512sums = SKIP
 

@@ -21,7 +21,7 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 source=(
   $_pkgname::git+$url.git
-  $_pkgname/resources::git+https://github.com/qtilities-i18n/$_pkgname
+  $_pkgname/resources::git+https://github.com/qtilities-i18n/$_pkgname.git
 )
 sha512sums=(
   'SKIP'
