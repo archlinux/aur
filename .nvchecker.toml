@@ -1,0 +1,6 @@
+[git-credential-oauth]
+source = "github"
+github = "hickford/git-credential-oauth"
+prefix = "v"
+include_prereleases = false
+use_max_tag = true
