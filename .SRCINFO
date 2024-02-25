@@ -1,24 +1,31 @@
 pkgbase = pgvecto.rs-immich
 	pkgdesc = Postgres extension that provides vector similarity search functions. It is written in Rust and based on pgrx. Version required for Immich.
-	pkgver = 0.1.11
-	pkgrel = 1
+	pkgver = 0.2.0
+	pkgrel = 4
 	url = https://github.com/tensorchord/pgvecto.rs
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = cargo-nightly
-	makedepends = clang
-	makedepends = postgresql>=16
-	makedepends = openssl
+	makedepends = rustup
+	makedepends = bison
+	makedepends = ccache
+	makedepends = flex
+	makedepends = gcc
+	makedepends = git
+	makedepends = gnupg
 	makedepends = readline
 	makedepends = libxml2
 	makedepends = libxslt
+	makedepends = lsb-release
+	makedepends = pkgconf
+	makedepends = tzdata
 	makedepends = zlib
-	makedepends = ccache
-	makedepends = git
-	provides = pgvecto.rs=0.1.11
+	makedepends = postgresql>=16
+	makedepends = clang>=16
+	makedepends = rustup
+	provides = pgvecto.rs=0.2.0
 	conflicts = pgvecto.rs
 	options = !lto
-	source = pgvecto.rs-0.1.11.tar.gz::https://github.com/tensorchord/pgvecto.rs/archive/refs/tags/v0.1.11.tar.gz
-	sha256sums = db1dfa32b44a42fb3759c8a2798d9052a1073de57222e91f97da4ba04178864f
+	source = pgvecto.rs-0.2.0.tar.gz::https://github.com/tensorchord/pgvecto.rs/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 671bfe39a3b87d5dfa5229ab0beffff1bd09686b53779dc511248e79aa4b2646
 
 pkgname = pgvecto.rs-immich
