@@ -1,12 +1,12 @@
 # Maintainer: Zeal Wierslee <zeal@wierslee.me>
 pkgname=sugarjar
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A git/github helper inspired by arcanist (and others)"
 arch=('x86_64')
 url="https://github.com/jaymzh/sugarjar"
 license=('Apache')
-depends=('git' 'hub' 'libxcrypt-compat' 'ruby' 'rubygems' 'ruby-mixlib-log' 'ruby-mixlib-shellout' 'ruby-pastel')
+depends=('git' 'hub' 'libxcrypt-compat' 'ruby' 'rubygems' 'ruby-mixlib-log' 'ruby-mixlib-shellout' 'ruby-pastel' 'ruby-deep_merge')
 source=("https://github.com/jaymzh/sugarjar/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=("27dcadee28327585cf26d1285a0a4806352c3d118131d9efde3729d7956510bd")
 
