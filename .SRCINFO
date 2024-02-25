@@ -1,7 +1,7 @@
 pkgbase = python-strenum
 	pkgdesc = A Python Enum that inherits from str.
 	pkgver = 0.4.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/irgeek/StrEnum
 	arch = any
 	license = MIT
@@ -10,7 +10,6 @@ pkgbase = python-strenum
 	checkdepends = python-pytest-pylint
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-pytest-runner
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
