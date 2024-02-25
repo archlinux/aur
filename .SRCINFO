@@ -1,21 +1,22 @@
 pkgbase = qupath
 	pkgdesc = Bioimage analysis & digital pathology
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qupath/qupath
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = gendesk
 	makedepends = gradle
 	makedepends = java-environment=17
 	depends = freetype2
 	depends = gcc-libs
+	depends = glibc
 	depends = giflib
 	depends = harfbuzz
 	depends = lcms2
 	depends = libjpeg-turbo
 	depends = libpng
-	depends = libxml2
+	depends = zlib
 	optdepends = ttf-droid: font for CJK characters
 	options = !strip
 	source = qupath-0.5.0.tar.gz::https://github.com/qupath/qupath/archive/v0.5.0.tar.gz
