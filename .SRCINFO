@@ -12,7 +12,7 @@ pkgbase = android-aarch64-qt6-shadertools
 	makedepends = android-cmake
 	makedepends = qt6-shadertools
 	makedepends = ninja
-	makedepends = java-environment-openjdk>=11
+	makedepends = java-environment-openjdk=17
 	depends = android-aarch64-qt6-base
 	optdepends = qt6-shadertools: development tools
 	options = !strip

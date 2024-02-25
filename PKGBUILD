@@ -13,7 +13,7 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Experimental module providing APIs and a host tool to host tool to perform graphics and compute shader conditioning for the upcoming Qt graphics abstraction layer (android)'
 depends=('android-aarch64-qt6-base')
-makedepends=('android-cmake' 'qt6-shadertools' 'ninja' 'java-environment-openjdk>=11')
+makedepends=('android-cmake' 'qt6-shadertools' 'ninja' 'java-environment-openjdk=17')
 optdepends=('qt6-shadertools: development tools')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
@@ -22,6 +22,7 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
 sha256sums=('628bead7ff4e7f42cb910f47d2adefbdea0d8c71a0234baef8ca709bf467b92f')
 
 build() {
+  export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
   source android-env ${_android_arch}
   android-${_android_arch}-cmake -G Ninja -B build-$_android_arch -S $_pkgfqn \
     -DCMAKE_FIND_ROOT_PATH="${ANDROID_PREFIX}" \
