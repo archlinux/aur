@@ -1,7 +1,7 @@
 # Maintainer: K Harishankar <hari2menon1234 at gmail dot com>
 
 pkgname=grub-theme-bsol-git
-pkgver=0+7.g998cb90
+pkgver=0+8.gc185560
 pkgrel=1
 pkgdesc="Grub2 blue-screen-of-life theme"
 url=https://github.com/harishnkr/bsol
@@ -29,7 +29,7 @@ package() {
         *.pf2
     install -v -Dm644 -t "$pkgdir/usr/share/grub/themes/bsol" \
         theme.txt
-    install -v -Dm644 -t "$pkgdir/usr/share/grub/themes/bsol/icons" \
+    install -v -Dm644 -t "$pkgdir/usr/share/grub/themes/bsol" \
         icons/*.png
 
 }
