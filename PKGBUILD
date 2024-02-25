@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/sfu-db/${_base}"
 license=('MIT')
 depends=('python')
-makedepends=('git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-poetry' 'python-nose' 'python-jsonschema4.17')
+makedepends=('git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-poetry' 'python-nose' 'python-jsonschema')
 source=("git+${url}.git")
 sha512sums=('SKIP')
 
