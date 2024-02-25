@@ -8,11 +8,11 @@
 # Contributor: Ricardo Band <me [at] xengi [dot] de>
 
 pkgname=popcorntime
-pkgver=0.4.9
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=(i686 x86_64)
-url="https://popcorntime.app/"
+url="https://popcorn-time.site/"
 license=(GPL3)
 depends=(gtk3 libxss nss ttf-font)
 makedepends=(git npm yarn)
@@ -40,18 +40,23 @@ _bpath="${_srcdir}/build/Popcorn-Time/${_platform}"
 source=(
     "${_pkgname}::git+https://github.com/popcorn-official/${_pkgname}/#${_commit_hash}"
     "popcorntime.desktop"
-    "gulp-fixes.patch"
+    "yarn_lock-fixes.patch"
 )
-sha256sums=('SKIP'
-            '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334'
-            '99c485d7b00ae1f4820e43149d6c93aff7c9b1f40d407beef369bc757688144a')
+sha512sums=('SKIP'
+            '7e6538a7b39465439a62cb089510b6d85a65ad4bfa74d21b692363d1176ee94165ab7b5fef5f3470bf821cfc9f3b3a23763b8e3d8530420d7fa97c66083c3adb'
+            '1cb54fbc2690f4a473e50e786b12f5fcfffffb805cfd421e996bc0b278c13fd1252ab63cde576078eb1d7df060b5763a308a0dec9ffba8a0b568f78a6a326f8b')
 
 # Building the package
 prepare() {
     cd "${srcdir}/${_srcdir}"
 
+    # echo "--> Apply Gulpfile fixes ..."
+    # git apply "$srcdir/gulp-fixes.patch"
+
+    # Some dependencies in the yarn.lock file use "git+ssh", which is unavailable.
+    # Use "git+https" instead.
     echo "--> Apply Gulpfile fixes ..."
-    git apply "$srcdir/gulp-fixes.patch"
+    git apply "$srcdir/yarn_lock-fixes.patch"
 
     # Thanks to Eschwartz for the tip! yarn edition
     export YARN_CACHE_FOLDER="$srcdir/npm_cache"
