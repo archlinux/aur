@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=('qtscrcpy' 'qtscrcpy-docs')
 pkgbase=qtscrcpy
 pkgver=2.1.2
