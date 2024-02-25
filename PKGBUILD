@@ -1,11 +1,11 @@
 # Maintainer: Alexey Mukovnin <alexey.1983@gmail.com>
 pkgname=psfiles
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A CLI tool to monitor file system activity of a Linux process"
 url='https://github.com/mukovnin/psfiles'
 source=("https://github.com/mukovnin/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('d447ffef5a1f8760ff1baf320fad3e93a2abb5975b14d2ad071dc60ca2e3d111')
+sha256sums=('1334cebe27141b890bb28d56cefea47d8dc06829191496e40055e5c37426b3c4')
 arch=('x86_64' 'aarch64')
 license=('MIT')
 options=('zipman')
