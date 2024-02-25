@@ -1,0 +1,11 @@
+pkgbase = discord-wakatime
+	pkgdesc = BetterDiscord plugin for automatic time tracking and stats about your Discord usage
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/wakatime/discord-wakatime
+	arch = any
+	license = BSD 3-Clause
+	source = https://github.com/wakatime/discord-wakatime/archive/refs/tags/1.0.1.tar.gz
+	sha256sums = f0f2b942832d0e831e534640b6db83fd0b55d54bf905aabcc1eda968126428a5
+
+pkgname = discord-wakatime
