@@ -9,4 +9,4 @@ license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Static and runtime integration of SCXML models into Qt6 code (android)'
 depends=(<%== qt6deps qw(base) %>)
 optdepends=(<%== qt6optdeps declarative => 'QML bindings' %>)
-makedepends=('android-cmake<%== $static_suffix %>' <%== qt6deps qw(declarative) %> 'qt6-declarative' 'qt6-scxml' 'ninja' 'java-environment-openjdk>=11')
+makedepends=('android-cmake<%== $static_suffix %>' <%== qt6deps qw(declarative) %> 'qt6-declarative' 'qt6-scxml' 'ninja' 'java-environment-openjdk=17')

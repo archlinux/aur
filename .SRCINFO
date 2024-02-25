@@ -14,7 +14,7 @@ pkgbase = android-aarch64-qt6-scxml
 	makedepends = qt6-declarative
 	makedepends = qt6-scxml
 	makedepends = ninja
-	makedepends = java-environment-openjdk>=11
+	makedepends = java-environment-openjdk=17
 	depends = android-aarch64-qt6-base
 	optdepends = android-aarch64-qt6-declarative: QML bindings
 	options = !strip
