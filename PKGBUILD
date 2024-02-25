@@ -3,17 +3,17 @@
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=dcmtk
-pkgver=3.6.7
-pkgrel=2
+pkgver=3.6.8
+pkgrel=1
 pkgdesc="A collection of libraries and applications implementing large parts the DICOM standard"
 arch=('i686' 'x86_64')
 url="http://dicom.offis.de/dcmtk"
 license=('other')
-depends=('libpng' 'libtiff' 'libxml2' 'openssl' 'zlib')
+depends=('libpng' 'libtiff' 'libxml2' 'openssl' 'openjpeg2' 'zlib')
 optdepedns=('libiconv' 'libicu')
 makedepends=('cmake' 'make')
-source=("https://dicom.offis.de/download/dcmtk/dcmtk367/${pkgname}-${pkgver}.tar.gz");
-sha512sums=('b9c227f496de65424256636fa7ad266affc6593f72c6849271da94837b68c93a5b8e056ecd09d46550b6ac0530c406ab9f71751d317a5fd4171a222f9fc9ca45')
+source=("https://dicom.offis.de/download/dcmtk/dcmtk368/${pkgname}-${pkgver}.tar.gz");
+sha512sums=('1bb2aad1aa63e0a1b79d92d7c932a969deccde03fdb484dbd44198effb58d50de44a2b0cda150ce7df63e4e986af5bc1f694c8a7988b4c049c578d83ba81184a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -41,10 +41,6 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}/" install
 
-  # Move configuration files from /usr/etc to /etc
-  mv "${pkgdir}/usr/etc/" "${pkgdir}/"
-
   # Remove empty files (0 length)
   find "${pkgdir}" -type f -empty -exec rm -v {} \;
 }
-
