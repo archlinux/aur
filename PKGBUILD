@@ -7,7 +7,7 @@
 pkgname=libstrangle
 pkgdesc="Simple FPS Limiter"
 pkgver=0.1.1
-pkgrel=3
+pkgrel=4
 url='https://gitlab.com/torkel104/libstrangle'
 arch=('x86_64' 'x86_64_v3' 'x86_64_v4')
 depends=('lib32-gcc-libs' 'lib32-glibc' 'libglvnd')
