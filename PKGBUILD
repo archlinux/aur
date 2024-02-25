@@ -1,35 +1,76 @@
 # Maintainer: pikl <me@pikl.uk>
+
 _pgver=16  # postgresql version
-pkgname=pgvecto.rs
-pkgver=0.1.13
-pkgrel=2
+_pkgbase=pgvecto.rs
+pkgname=${_pkgbase}
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Postgres extension that provides vector similarity search functions. It is written in Rust and based on pgrx."
 arch=(x86_64)
 url="https://github.com/tensorchord/pgvecto.rs"
 license=('Apache-2.0')
-makedepends=('cargo-nightly' 'clang' "postgresql>=${_pgver}" 'openssl' 'readline'  'libxml2' 'libxslt' 'zlib' 'ccache' 'git')
+# make deps determined from here - https://docs.pgvecto.rs/developers/development.html
+makedepends=('rustup' 'bison' 'ccache' 'flex' 'gcc' 'git' 'gnupg' 'readline' 'libxml2' 'libxslt' 'lsb-release' 'pkgconf' 'tzdata' 'zlib' "postgresql>=${_pgver}" 'clang>=16' 'rustup')
 # build fails with LTO enabled
 options=('!lto')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tensorchord/pgvecto.rs/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e78105b94b20f072d1330c9e5dead1f91b3e210f9f824afe858f2b10d5a9d2a6')
+provides=("pgvecto.rs=$pkgver")
+conflicts=('pgvecto.rs')
+source=(
+    "${_pkgbase}-${pkgver}.tar.gz::https://github.com/tensorchord/pgvecto.rs/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('671bfe39a3b87d5dfa5229ab0beffff1bd09686b53779dc511248e79aa4b2646')
 
-# https://github.com/tensorchord/pgvecto.rs/blob/main/docs/installation.md
+_gettcstr() {
+    cd ${srcdir}/${_pkgbase}-${pkgver}
+    _toolchain=$(cat rust-toolchain.toml | grep ^channel | cut -d" " -f 3 | tr -d '"')
+    echo "$_toolchain-$CARCH-unknown-linux-gnu"
+}
 
 prepare() {
-    cd $pkgname-$pkgver
-    cargo install cargo-pgrx --git https://github.com/tensorchord/pgrx.git --rev $(cat Cargo.toml | grep "pgrx =" | awk -F'rev = "' '{print $2}' | cut -d'"' -f1)
+
+    # https://docs.pgvecto.rs/developers/development.html
+
+    cd ${srcdir}/${_pkgbase}-${pkgver}
+
+    # determine required version of cargo-pgrx
+    _pgrxver=$(cat Cargo.toml | grep "pgrx =" | awk -F'version = "' '{print $2}' | cut -d'"' -f1)
+    
+    # specifying toolchain version is not strictly necessary since cargo will do it automatically
+    # although can bt overwritten easily with environment variables, e.g. RUSTUP_TOOLCHAIN=stable
+    # so most probably best to install is explicitly with this command
+    rustup toolchain install "$(_gettcstr)"
+    
+    # an alternative method for installing cargo-pgrx for debug is to clone the repo direct using
+    # sources, however:
+    #    * ensure https://github.com/tensorchord/pgrx.git fork is cloned
+    #    * often the version number is not tagged, so use the commit hash to checkout the correct version
+    #    * only build the cargo-pgrx sub-module using `cargo build --release --locked -p cargo-pgrx`
+    cargo install --locked --version ${_pgrxver} cargo-pgrx
 }
 
 build() {
-    cd ${pkgname}-${pkgver}
-    cargo pgrx init "--pg${_pgver}=/usr/bin/pg_config"
-    # `cargo pgrx install --release` without installing
+
+    # https://docs.pgvecto.rs/developers/development.html
+    # https://docs.pgvecto.rs/getting-started/installation.html
+
+    rustup toolchain install "$(_gettcstr)"
+    cd ${srcdir}/${_pkgbase}-${pkgver}
+
+    # workaround problem in pgrx.git cargo-pgrx/src/command/schema.rs:531 where an empty argument
+    # to the rustc compiler command is generated if RUSTFLAGS environment variable is defined but
+    # empty - as is typical in arch build environment
+    # TODO report upstream
+    unset RUSTFLAGS
+
+    # desired postgresql version only
+    cargo pgrx init --pg16=/usr/bin/pg_config
+    
+    # equivalent to `cargo pgrx install --release` without installing
     cargo pgrx package
 }
 
 package() {
-    cd "${pkgname}-${pkgver}/target/release/vectors-pg${_pgver}"
+    cd "${_pkgbase}-${pkgver}/target/release/vectors-pg${_pgver}"
     install -Dm0755 usr/lib/postgresql/vectors.so "${pkgdir}/usr/lib/postgresql/vectors.so"
-    install -Dm0644 "usr/share/postgresql/extension/vectors--${pkgver}.sql" "${pkgdir}/usr/share/postgresql/extension/vectors--${pkgver}.sql"
+    install -Dm0644 usr/share/postgresql/extension/vectors--0.0.0.sql "${pkgdir}/usr/share/postgesql/extension/vectors--0.0.0.sql"
     install -Dm0644 usr/share/postgresql/extension/vectors.control "${pkgdir}/usr/share/postgresql/extension/vectors.control"
 }
