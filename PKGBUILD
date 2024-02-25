@@ -1,24 +1,27 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=sudo-rs
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=0
 pkgdesc="A safety oriented and memory safe implementation of sudo and su written in Rust."
-arch=('any')
+arch=('x86_64'
+    'aarch64'
+    'riscv64')
 url="https://github.com/memorysafety/sudo-rs"
-license=('Apache 2.0', 'MIT')
+license=('Apache-2.0' 'MIT')
 provides=(${pkgname})
 conflicts=(${pkgname})
 replaces=()
-depends=()
+depends=(gcc-libs
+     glibc
+     pam)
 makedepends=(cargo
-    clang
-    pam)
+    clang)
 backup=()
-options=('!strip')
+options=()
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('67469b5402375cd6f2d76d00bbce170238e2b7be9ff83bc1de88d14535288a38')
+sha256sums=('d4ce461f8206b36035a82197a477657afeb8a795b3378e604fe921e03c38ec5d')
 
 # Use LTO
 export CARGO_PROFILE_RELEASE_LTO=true CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
@@ -48,8 +51,6 @@ package() {
 
     cd "${srcdir}/${pkgname}-${pkgver}/"
     cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
-    install -Dm0644 "${srcdir}/${pkgname}-${pkgver}/"LICENSE* -t "$pkgdir/usr/share/licenses/${pkgname}/"
-    install -Dm0644 "${srcdir}/${pkgname}-${pkgver}/"COPYRIGHT* -t "$pkgdir/usr/share/licenses/${pkgname}/"
 
 # Rename it to end in `-rs` to eliminate conflicts with `sudo` `util-linux`.
     directory="$pkgdir/usr/bin"
@@ -58,9 +59,9 @@ package() {
 
     for file in *; do
         if [ -x "$file" ]; then
-            if [ "$file" = "sudo" ] || [ "$file" = "su" ]; then
-                # Add setuid
-                chmod u+s "$file"
+            if [ -f "$file" = "sudo" ] || [ -f "$file" = "su" ]; then
+                # Add setuid setgid
+                chmod u+s,g+s "$file"
             fi
             new_name="${file}-rs"
             mv "$file" "$new_name"
