@@ -17,6 +17,7 @@ _deps=(
         'setuptools'
         'tomli'
         'lxml'
+        'livereload'
 )
 depends=("${_deps[@]/#/python-}")
 makedepends=(
