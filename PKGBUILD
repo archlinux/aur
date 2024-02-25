@@ -19,6 +19,7 @@ depends=(
   'libevdev.so'
   'libinput'
   'libjson-c.so'
+  'libpixman-1.so'
   'libudev.so'
   'libwayland-server.so'
   'libwlroots.so=11'
@@ -27,6 +28,7 @@ depends=(
   'pango'
   'pcre2'
   'ttf-font'
+  'xcb-util-wm'
 )
 makedepends=(meson ninja scdoc setconf wayland-protocols)
 backup=(
