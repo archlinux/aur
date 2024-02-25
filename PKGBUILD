@@ -2,7 +2,7 @@
 
 pkgname="frp-panel"
 pkgver=0.0.14
-pkgrel=2
+pkgrel=1
 pkgdesc="A multi node frp webui and for frp server and client management"
 arch=("any")
 url="https://github.com/VaalaCat/${pkgname}"
