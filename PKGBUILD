@@ -7,6 +7,7 @@
 
 ## options
 : ${_debugfast:=false}
+: ${_build_unittests:=false}
 
 : ${_build_clang:=true}
 : ${_build_mold:=false}
@@ -15,6 +16,7 @@
 : ${_build_avx:=false}
 : ${_build_git:=true}
 
+unset _pkgtype
 [[ "${_build_debugfast::1}" == "t" ]] && _pkgtype+="-debugfast"
 [[ "${_build_avx::1}" == "t" ]] && _pkgtype+="-avx"
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
@@ -22,7 +24,7 @@
 # basic info
 _pkgname="dolphin-emu"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=5.0.r21108.gaa668421
+pkgver=5.0.r21148.g5090a028
 pkgrel=1
 pkgdesc='A Gamecube and Wii emulator'
 url="https://github.com/dolphin-emu/dolphin"
@@ -77,8 +79,17 @@ _main_package() {
   makedepends+=(
     cmake
     git
+    ninja
     python
   )
+
+  if [[ "${_build_unittests::1}" == "t" ]] ; then
+    checkdepends=('gtest')
+
+    check() {
+      ninja -C build unittests
+    }
+  fi
 
   options=(!emptydirs)
 
@@ -233,10 +244,6 @@ prepare() {
     -e 's@\n\s+execute_process\([^\(\)]+\bdescribe [^\(\)]*--dirty\b[^\(\)]+\)@\n\nset(DOLPHIN_WC_DESCRIBE "'"${_pkgver:?}"'")@' \
     -i "$srcdir/$_pkgsrc/CMake/ScmRevGen.cmake"
 
-  # Fix minizip-ng name for Arch
-  #sed -E -e 's@(pkgconfig\(MINIZIP minizip)([^a-z]+)@\1-ng\2@' \
-  #  -i "$srcdir/$_pkgsrc/CMakeLists.txt"
-
   # Delete gcc specific options
   sed '/_ARCHIVE_/d' -i "$srcdir/$_pkgsrc/CMakeLists.txt"
 }
@@ -244,8 +251,8 @@ prepare() {
 build() {
   local _cmake_options=(
     -B build
-    -S "$_pkgname"
-
+    -S "$_pkgsrc"
+    -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DDISTRIBUTOR='aur.archlinux.org'
@@ -259,13 +266,17 @@ build() {
     -DUSE_SYSTEM_MINIZIP=OFF
     -DUSE_SYSTEM_XXHASH=OFF
     -DUSE_SYSTEM_ZLIB=OFF
-
-    -DENABLE_TESTS=OFF
     -Wno-dev
   )
 
   if [ "${_debugfast::1}" == "t" ] ; then
     _cmake_options+=(-DFASTLOG=ON)
+  fi
+
+  if [[ "${_build_unittests::1}" == "t" ]] ; then
+    _cmake_options+=(-DENABLE_TESTS=ON)
+  else
+    _cmake_options+=(-DENABLE_TESTS=OFF)
   fi
 
   if [[ "${_build_clang::1}" == "t" ]] ; then
