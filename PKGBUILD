@@ -4,14 +4,14 @@
 
 pkgname=hyphen-pl
 pkgver=20081206
-pkgrel=5
+pkgrel=6
 pkgdesc='Polish hyphenation rules'
 arch=('any')
 url='https://wiki.documentfoundation.org/Development/Dictionaries'
 license=('LGPL')
 optdepends=('hyphen: offers hyphenation library functions')
-source=("https://github.com/LibreOffice/dictionaries/blob/master/pl_PL/hyph_pl_PL.dic")
-md5sums=('SKIP')
+source=("https://raw.githubusercontent.com/LibreOffice/dictionaries/master/pl_PL/hyph_pl_PL.dic")
+md5sums=('a9ec853d1bf09f7989826500064384e1')
 
 package() {
   install -Dm644 hyph_pl_PL.dic "$pkgdir"/usr/share/hyphen/hyph_pl_PL.dic
