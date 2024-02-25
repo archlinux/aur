@@ -1,13 +1,14 @@
 pkgbase = converternow-bin
 	pkgdesc = The Unit Converter app: easy, immediate and multi-platform (binary release)
-	pkgver = 4.2.0
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = https://github.com/ferraridamiano/ConverterNOW
 	arch = x86_64
 	license = GPL3
+	depends = gtk3
 	provides = converternow
 	conflicts = converternow
-	source = converternow-linux-x64-4.2.0.tar.gz::https://github.com/ferraridamiano/ConverterNOW/releases/download/v4.2.0/converternow-linux-x64.tar.gz
-	sha256sums = 045c2a0ce2d794344a02e13a4d4f4b8c44ee13870b887b5783f5b49f102b0e89
+	source = converternow-linux-x64-4.2.1.tar.gz::https://github.com/ferraridamiano/ConverterNOW/releases/download/v4.2.1/converternow-linux-x64.tar.gz
+	sha256sums = 9d36e53abefbd6ce18aca16f0a883f5ec6d4082c7dff7280d5317086a19b3af7
 
 pkgname = converternow-bin
