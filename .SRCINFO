@@ -1,0 +1,111 @@
+pkgbase = lsp-plugins
+	pkgdesc = Collection of open-source plugins
+	pkgver = 1.2.14.r13.ga2f8342d
+	pkgrel = 1
+	url = https://lsp-plug.in
+	arch = x86_64
+	license = LGPL-3.0-or-later
+	checkdepends = jq
+	checkdepends = lv2lint
+	makedepends = cairo
+	makedepends = gcc-libs
+	makedepends = glibc
+	makedepends = hicolor-icon-theme
+	makedepends = libglvnd
+	makedepends = libx11
+	makedepends = libxrandr
+	makedepends = jack
+	makedepends = ladspa
+	makedepends = libsndfile
+	makedepends = lv2
+	makedepends = php
+	source = git+https://github.com/lsp-plugins/lsp-plugins#branch=devel
+	sha512sums = SKIP
+	b2sums = SKIP
+
+pkgname = lsp-plugins-git
+	depends = lsp-plugins-clap
+	depends = lsp-plugins-ladspa
+	depends = lsp-plugins-lv2
+	depends = lsp-plugins-standalone
+	depends = lsp-plugins-vst
+	optdepends = lsp-plugins-docs: for documentation
+
+pkgname = lsp-plugins-clap-git
+	pkgdesc = Collection of open-source plugins - CLAP
+	groups = clap-plugins
+	depends = cairo
+	depends = clap-host
+	depends = freetype2
+	depends = gcc-libs
+	depends = glibc
+	depends = liblsp-r3d-glx-lib=1.2.14.r13.ga2f8342d
+	depends = libsndfile
+	depends = libsndfile.so
+	depends = libx11
+	depends = libxrandr
+
+pkgname = lsp-plugins-docs-git
+	pkgdesc = Collection of open-source plugins (documentation)
+
+pkgname = lsp-plugins-ladspa-git
+	pkgdesc = Collection of open-source plugins - LADSPA
+	groups = ladspa-plugins
+	depends = gcc-libs
+	depends = glibc
+	depends = ladspa-host
+	depends = liblsp-r3d-glx-lib=1.2.14.r13.ga2f8342d
+	depends = libsndfile
+	depends = libsndfile.so
+
+pkgname = lsp-plugins-lv2-git
+	pkgdesc = Collection of open-source plugins - LV2
+	groups = lv2-plugins
+	depends = cairo
+	depends = freetype2
+	depends = gcc-libs
+	depends = glibc
+	depends = lv2-host
+	depends = liblsp-r3d-glx-lib=1.2.14.r13.ga2f8342d
+	depends = libsndfile
+	depends = libsndfile.so
+	depends = libx11
+	depends = libxrandr
+
+pkgname = lsp-plugins-standalone-git
+	pkgdesc = Collection of open-source plugins - JACK standalone
+	groups = pro-audio
+	depends = cairo
+	depends = freetype2
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = jack
+	depends = libjack.so
+	depends = liblsp-r3d-glx-lib=1.2.14.r13.ga2f8342d
+	depends = libsndfile
+	depends = libsndfile.so
+	depends = libx11
+	depends = libxrandr
+
+pkgname = lsp-plugins-vst-git
+	pkgdesc = Collection of open-source plugins - VST2
+	groups = vst-plugins
+	depends = cairo
+	depends = freetype2
+	depends = gcc-libs
+	depends = glibc
+	depends = liblsp-r3d-glx-lib=1.2.14.r13.ga2f8342d
+	depends = libsndfile
+	depends = libsndfile.so
+	depends = libx11
+	depends = libxrandr
+	depends = vst-host
+
+pkgname = liblsp-r3d-glx-lib-git
+	pkgdesc = GLX-based 3D backend library for rendering scenes
+	depends = gcc-libs
+	depends = glibc
+	depends = libglvnd
+	depends = libGL.so
+	depends = libx11
