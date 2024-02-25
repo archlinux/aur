@@ -1,25 +1,23 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=dune-spgrid
-_tarver=2.9.0
-_tar="${_tarver}/${pkgname}-${_tarver}.tar.gz"
+_tarver=v2.9.1
+_tar=${_tarver}/${pkgname}-${_tarver}.tar.gz
 pkgver="${_tarver}"
-pkgrel=2
+pkgrel=1
 pkgdesc="An efficient structured, parallel implementation of the DUNE grid interface"
 arch=(x86_64)
 url="https://dune-project.org/modules/${pkgname}"
-license=('GPL')
+license=(GPL-2.0-or-later)
 depends=("dune-grid>=${pkgver}")
 makedepends=(doxygen graphviz python-scikit-build)
 optdepends=('doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software')
-source=(https://dune-project.org/download/${_tar}{,.asc})
-sha512sums=('a9f973820009fba589b258f109499dd5b456673779fa66909e1de5b6caf8e767b9451fb490dd32ddb6436ef26abafa1c3219e3127b88abd5eea6dcc3b70b7e13' 'SKIP')
-validpgpkeys=('E5B47782DE09813BCC3518E159DA94F1FC8FD313') # Andreas Dedner <a.s.dedner@warwick.ac.uk>
+source=(https://gitlab.dune-project.org/extensions/${pkgname}/-/archive/${_tar})
+sha512sums=('a0ff201fdfdcc5434b0aa509acd65914cb5744b8c9cc29456e4b4ca8a817429590694bc829bf0b9d56158eceefd779fae014b3c50a833a4d2b7c823a6d162020')
 
 prepare() {
   cd ${pkgname}-${pkgver}
   export _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
-  sed -i 's/^Version: '"${pkgver%%.0}"'-git/Version: '"${pkgver}"'/' dune.module
   python -m venv --system-site-packages _skbuild/linux-${CARCH}-${_pyversion}/cmake-build/dune-env
 }
 
