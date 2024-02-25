@@ -1,13 +1,13 @@
 # Maintainer: Snowstorm64
 
 pkgname=ares-emu-git
-pkgver=135.r47.g5cdefb088
+pkgver=136.r6.g71302c093
 pkgrel=1
 pkgdesc="Cross-platform, open source, multi-system emulator by Near and Ares team, focusing on accuracy and preservation. (git version)"
 arch=(x86_64 i686)
 url="https://ares-emu.net/"
 license=("ISC")
-depends=(gtk3 libao libgl libpulse libudev.so=1-64 libxv openal sdl2 vulkan-driver vulkan-icd-loader) #TODO: require librashader soon
+depends=(gtk3 libao libgl libpulse libudev.so=1-64 librashader libxv openal sdl2 vulkan-driver vulkan-icd-loader)
 makedepends=(mesa git clang lld)
 provides=(ares-emu)
 conflicts=(ares-emu)
@@ -33,7 +33,6 @@ package() {
 
   # Also install shaders and databases in Ares' shared data directory
   install -dm 755 "${pkgdir}/usr/share/ares"
-  cp -dr --no-preserve=ownership "${srcdir}/ares/ares/Shaders/" "${pkgdir}/usr/share/ares/Shaders/"
-  #cp -dr --no-preserve=ownership "${srcdir}/ares/thirdparty/slang-shaders/" "${pkgdir}/usr/share/ares/Shaders/"
+  cp -dr --no-preserve=ownership "${srcdir}/ares/thirdparty/slang-shaders/" "${pkgdir}/usr/share/ares/Shaders/"
   cp -dr --no-preserve=ownership "${srcdir}/ares/mia/Database/" "${pkgdir}/usr/share/ares/Database/"
 }

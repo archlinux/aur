@@ -3,9 +3,9 @@ post_upgrade() {
 ********************************************************************************
 * Wanting to be as close as possible to Ares vanilla, the location             *
 * of settings files has been changed from                                      *
-* $XDG_CONFIG_HOME                                                             *
+* $XDG_CONFIG_HOME/ares/
 * to the default                                                               *
-* $XDG_DATA_HOME .                                                             *
+* $XDG_DATA_HOME/ares/
 * Should you read this message, please move the file settings.bml to the new   *
 * location. Once done, only then ares can start with your customized settings. *
 ********************************************************************************

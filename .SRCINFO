@@ -1,6 +1,6 @@
 pkgbase = ares-emu-git
 	pkgdesc = Cross-platform, open source, multi-system emulator by Near and Ares team, focusing on accuracy and preservation. (git version)
-	pkgver = 135.r47.g5cdefb088
+	pkgver = 136.r6.g71302c093
 	pkgrel = 1
 	url = https://ares-emu.net/
 	install = ares.install
@@ -16,6 +16,7 @@ pkgbase = ares-emu-git
 	depends = libgl
 	depends = libpulse
 	depends = libudev.so=1-64
+	depends = librashader
 	depends = libxv
 	depends = openal
 	depends = sdl2
