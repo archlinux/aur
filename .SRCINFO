@@ -1,0 +1,9 @@
+pkgbase = ncmdump-latest-bin
+	pkgdesc = Convert ncm files to mp3 or flac.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/taurusxin/ncmdump
+	arch = x86_64
+	license = MIT
+
+pkgname = ncmdump-latest-bin
