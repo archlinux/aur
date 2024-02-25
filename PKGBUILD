@@ -5,7 +5,7 @@
 
 pkgname=sway-rc
 _pkgname=${pkgname%-rc}
-_pkgver=1.9-rc4
+_pkgver=1.9
 pkgver=${_pkgver/-/}
 pkgrel=1
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager (pre-release version)'
@@ -20,6 +20,7 @@ depends=(
   'libevdev.so'
   'libinput'
   'libjson-c.so'
+  'libpixman-1.so'
   'libudev.so'
   'libwayland-server.so'
   'libwlroots.so'
@@ -28,6 +29,7 @@ depends=(
   'pango'
   'pcre2'
   'ttf-font'
+  'xcb-util-wm'
 )
 makedepends=(meson ninja scdoc setconf wayland-protocols)
 backup=(
@@ -35,16 +37,16 @@ backup=(
   etc/sway/config.d/50-systemd-user.conf
 )
 optdepends=(
-  'wmenu: Application launcher used in default config'
   'foot: Terminal emulator used in the default configuration'
   'i3status: Status line generation'
   'mako: Lightweight notification daemon'
   'polkit: System privilege control. Required if not using seatd service'
   'swaybg: Wallpaper tool for sway'
+  'sway-contrib: Collection of user-contributed scripts for sway'
   'swayidle: Idle management daemon'
   'swaylock: Screen locker'
   'waybar: Highly customizable bar'
-  'sway-contrib: Collection of user-contributed scripts for sway'
+  'wmenu: Application launcher used in default config'
   'xorg-xwayland: X11 support'
   'xdg-desktop-portal-gtk: Default xdg-desktop-portal for file picking'
   'xdg-desktop-portal-wlr: xdg-desktop-portal backend'
@@ -54,7 +56,7 @@ source=("https://github.com/swaywm/sway/releases/download/$_pkgver/sway-$_pkgver
         "50-systemd-user.conf"
         "sway-portals.conf")
 install=sway.install
-sha512sums=('d54de3052b7f9acec807fc221ce135e826266c558e2e992926917f65f6bcc2ebd93c04343bf9f5f28393847a86e339f32f18117b257fd5178cf2b6b203671369'
+sha512sums=('1d2a47bb8b838573a32f3719a7329fd744119c2c7efc5e5a4168b2bacfb09a3901a569177e5e10c129141fafe00e823ab78c04b76b502d23caa7621bbccd5919'
             'SKIP'
             'd5f9aadbb4bbef067c31d4c8c14dad220eb6f3e559e9157e20e1e3d47faf2f77b9a15e52519c3ffc53dc8a5202cb28757b81a4b3b0cc5dd50a4ddc49e03fe06e'
             'b9e708c775825c8124d8e154e523c90b8a32715050ba06f6dbcdd08d109eed484d128ccc8dcd6a49dc9cd51a0c9035779c2706b4d7a139115e85c4f54226b775')
