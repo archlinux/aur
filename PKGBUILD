@@ -2,7 +2,7 @@
 # Maintainer: M Hickford <mirth.hickford@gmail.com>
 _pkgbase=git-credential-oauth
 pkgname=git-credential-oauth-git
-pkgver=0.11.0.r2.gad4bb3d
+pkgver=0.11.1.r0.g2e2b2af
 pkgrel=1
 pkgdesc='Git credential helper that securely authenticates to GitHub, GitLab, BitBucket, Gerrit and other forges using OAuth (Git version)'
 arch=('any')
