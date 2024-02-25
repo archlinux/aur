@@ -3,6 +3,8 @@
 pkgbase=python-opentelemetry
 _pkgbase=opentelemetry-python
 pkgname=(
+  # python-opentelemetry-opencensus-shim
+  python-opentelemetry-opentracing-shim
   python-opentelemetry-api
   # python-opentelemetry-exporter-opencensus
   python-opentelemetry-exporter-otlp
@@ -20,8 +22,8 @@ pkgname=(
   python-opentelemetry-semantic-conventions
   python-opentelemetry-test-utils
 )
-pkgver=1.22.0
-pkgrel=3
+pkgver=1.23.0
+pkgrel=1
 pkgdesc="OpenTelemetry Python API and SDK"
 url="https://github.com/open-telemetry/opentelemetry-python"
 license=(Apache-2.0)
@@ -40,6 +42,7 @@ checkdepends=(
   python-googleapis-common-protos
   python-grpcio
   python-importlib-metadata
+  python-opentracing
   python-prometheus_client
   python-protobuf
   python-pytest
@@ -48,12 +51,14 @@ checkdepends=(
   python-responses
   python-typing_extensions
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3b5b9020dec944e6f307786d018355e7bee7d9a09c7c9ccbb080c465c854594d')
+source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('f4d97e5ea8a907e8dcc064bc2c62701262f592d6a98e0b320defc88a8236855f')
 
 _archive="$_pkgbase-$pkgver"
 
 _pkgpaths=(
+  # shim/opentelemetry-opencensus-shim
+  shim/opentelemetry-opentracing-shim
   opentelemetry-api
   # exporter/opentelemetry-exporter-opencensus
   exporter/opentelemetry-exporter-otlp
@@ -107,6 +112,28 @@ check() {
 _package() {
   local path="$1"
   python -m installer --destdir="$pkgdir" "$_archive/$path/dist/"*.whl
+}
+
+# package_python-opentelemetry-opencensus-shim() {
+#   depends=(
+#     python
+#     python-opencesus
+#     python-opentelemetry-api
+#     python-wrapt
+#   )
+#   pkgdesc="OpenCensus Shim for OpenTelemetry"
+#   _package shim/opentelemetry-opencensus-shim
+# }
+
+package_python-opentelemetry-opentracing-shim() {
+  depends=(
+    python
+    python-deprecated
+    python-opentelemetry-api
+    python-opentracing
+  )
+  pkgdesc="OpenTracing Shim for OpenTelemetry"
+  _package shim/opentelemetry-opentracing-shim
 }
 
 package_python-opentelemetry-api() {

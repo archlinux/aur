@@ -1,7 +1,7 @@
 pkgbase = python-opentelemetry
 	pkgdesc = OpenTelemetry Python API and SDK
-	pkgver = 1.22.0
-	pkgrel = 3
+	pkgver = 1.23.0
+	pkgrel = 1
 	url = https://github.com/open-telemetry/opentelemetry-python
 	arch = any
 	license = Apache-2.0
@@ -11,6 +11,7 @@ pkgbase = python-opentelemetry
 	checkdepends = python-googleapis-common-protos
 	checkdepends = python-grpcio
 	checkdepends = python-importlib-metadata
+	checkdepends = python-opentracing
 	checkdepends = python-prometheus_client
 	checkdepends = python-protobuf
 	checkdepends = python-pytest
@@ -22,8 +23,15 @@ pkgbase = python-opentelemetry
 	makedepends = python-hatchling
 	makedepends = python-installer
 	makedepends = python-wheel
-	source = python-opentelemetry-api-1.22.0.tar.gz::https://github.com/open-telemetry/opentelemetry-python/archive/refs/tags/v1.22.0.tar.gz
-	sha256sums = 3b5b9020dec944e6f307786d018355e7bee7d9a09c7c9ccbb080c465c854594d
+	source = python-opentelemetry-1.23.0.tar.gz::https://github.com/open-telemetry/opentelemetry-python/archive/v1.23.0.tar.gz
+	sha256sums = f4d97e5ea8a907e8dcc064bc2c62701262f592d6a98e0b320defc88a8236855f
+
+pkgname = python-opentelemetry-opentracing-shim
+	pkgdesc = OpenTracing Shim for OpenTelemetry
+	depends = python
+	depends = python-deprecated
+	depends = python-opentelemetry-api
+	depends = python-opentracing
 
 pkgname = python-opentelemetry-api
 	pkgdesc = OpenTelemetry Python API
