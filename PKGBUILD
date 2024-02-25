@@ -1,5 +1,5 @@
 pkgname=lapack-static
-pkgver=3.11.0
+pkgver=3.12.0
 pkgrel=1
 url='https://www.netlib.org/lapack'
 pkgdesc='Linear Algebra PACKage'
@@ -7,11 +7,11 @@ makedepends=(gcc-fortran cmake)
 arch=(x86_64)
 license=(custom)
 source=(https://github.com/Reference-LAPACK/lapack/archive/v$pkgver/lapack-$pkgver.tar.gz)
-sha256sums=('4b9ba79bfd4921ca820e83979db76ab3363155709444a787979e81c22285ffa9')
+sha256sums=('eac9570f8e0ad6f30ce4b963f4f033f0f643e7c3912fc9ee6cd99120675ad48b')
 
 build() {
   cmake -B build -S lapack-$pkgver \
-    -DBUILD_SHARED_LIBS=OFF \
+    -DBUILD_SHARED_LIBS=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
     -DBUILD_TESTING=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_Fortran_COMPILER=gfortran \
