@@ -3,8 +3,8 @@
 
 pkgname=pidgin-smol
 pkgver=2.14.13
-pkgrel=1
-pkgdesc="minimal Pidgin (XMPP/IRC), includes custom patch that fixes: https://issues.imfreedom.org/issue/PIDGIN-17568/hangs-when-typing-beyond-visible-input-box"
+pkgrel=2
+pkgdesc="minimal Pidgin (XMPP/IRC), with exclusive fix for input-box bug."
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
