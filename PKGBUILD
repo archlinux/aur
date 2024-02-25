@@ -3,38 +3,43 @@
 _name=PyMCTranslate
 pkgname=python-${_name,,}
 pkgver=1.2.22
-pkgrel=1
+_commit=c50c2671d0fa63e0c3fedaac39e36f30ceaa51a2
+pkgrel=2
 pkgdesc='A library of block mappings that can be used to convert from any Minecraft format into any other Minecraft format'
 arch=('any')
 url="https://github.com/gentlegiantJGC/$_name"
-license=('custom')
+license=('LicenseRef-Amulet-Team-1.0.0')
 depends=('python' 'python-amulet-nbt' 'python-numpy')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-versioneer' 'python-wheel')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-versioneer' 'python-wheel')
 # tests directory isn't in pypi sdist
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('bac61b0b01f38cba5c69210c86ce1843e66da6de622997fab850f00694d6f380')
+# github tarball has unstable hash due to https://github.com/gentlegiantJGC/PyMCTranslate/blob/45024a6ca12592913e6249269d8a180b2940f6aa/PyMCTranslate/_version.py#L25
+source=("git+$url.git#commit=$_commit")
+sha256sums=('SKIP')
 
 prepare() {
-  cd "$_name-$pkgver"
+  cd "$_name"
+
+  # expand placeholders
+  git archive --format tar HEAD PyMCTranslate/_version.py | tar -x
 
   # use current versioneer
   sed -Ei 's/(versioneer)-518/\1/' pyproject.toml
 }
 
 build() {
-  cd "$_name-$pkgver"
+  cd "$_name"
 
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$_name-$pkgver"
+  cd "$_name"
 
   python -m unittest discover -s tests
 }
 
 package() {
-  cd "$_name-$pkgver"
+  cd "$_name"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
