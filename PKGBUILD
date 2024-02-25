@@ -2,16 +2,16 @@
 # Contributor: Ezekiel Bethel <mctinfoilball@gmail.com>
 
 pkgname=unrpyc
-pkgver=1.1.5.r63.g105b6f6
+pkgver=2.0.0.r0.g79895a1
 pkgrel=1
 epoch=2
-pkgdesc="A ren'py script decompiler (madeddy fork)"
+pkgdesc="A ren'py script decompiler"
 arch=("any")
-url="https://github.com/madeddy/unrpyc/tree/py3_v1.2.0_dev"
+url="https://github.com/CensoredUsername/unrpyc"
 license=('MIT')
 depends=("python")
 makedepends=("python-setuptools")
-source=("git+https://github.com/madeddy/unrpyc.git#branch=py3_v1.2.0_dev")
+source=("git+https://github.com/CensoredUsername/unrpyc.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -21,7 +21,7 @@ pkgver() {
 
 prepare () {
     cd "${srcdir}/${pkgname}"
-    sed -i "/scripts=/s/]/, 'deobfuscate.py', '_unrpyc_ver.py']/" setup.py
+    sed -i "/scripts=/s/]/, 'deobfuscate.py']/" setup.py
 }
 
 package() {

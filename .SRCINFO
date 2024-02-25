@@ -1,14 +1,14 @@
 pkgbase = unrpyc
-	pkgdesc = A ren'py script decompiler (madeddy fork)
-	pkgver = 1.1.5.r63.g105b6f6
+	pkgdesc = A ren'py script decompiler
+	pkgver = 2.0.0.r0.g79895a1
 	pkgrel = 1
 	epoch = 2
-	url = https://github.com/madeddy/unrpyc/tree/py3_v1.2.0_dev
+	url = https://github.com/CensoredUsername/unrpyc
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = git+https://github.com/madeddy/unrpyc.git#branch=py3_v1.2.0_dev
+	source = git+https://github.com/CensoredUsername/unrpyc.git
 	sha256sums = SKIP
 
 pkgname = unrpyc
