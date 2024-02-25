@@ -13,7 +13,7 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='A cross-platform application and UI framework (Translations, android)'
 depends=('android-aarch64-qt6-base')
-makedepends=('android-cmake' 'android-aarch64-qt6-tools' 'qt6-tools' 'ninja' 'java-environment-openjdk>=11')
+makedepends=('android-cmake' 'android-aarch64-qt6-tools' 'qt6-tools' 'ninja' 'java-environment-openjdk=17')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qttranslations-everywhere-src-${_qtver}"
@@ -21,6 +21,7 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
 sha256sums=('ca3ac090ef3aa12566c26b482c106f1f986c5a3444e7003f379726a550530c77')
 
 build() {
+  export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
   source android-env ${_android_arch}
   android-${_android_arch}-cmake -G Ninja -B build-$_android_arch -S $_pkgfqn \
     -DCMAKE_FIND_ROOT_PATH="${ANDROID_PREFIX}" \
