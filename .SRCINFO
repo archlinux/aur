@@ -1,6 +1,6 @@
 pkgbase = dune-spgrid
 	pkgdesc = An efficient structured, parallel implementation of the DUNE grid interface
-	pkgver = v2.9.1
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = https://dune-project.org/modules/dune-spgrid
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = dune-spgrid
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = python-scikit-build
-	depends = dune-grid>=v2.9.1
+	depends = dune-grid>=2.9.1
 	optdepends = doxygen: Generate the class documentation from C++ sources
 	optdepends = graphviz: Graph visualization software
 	source = https://gitlab.dune-project.org/extensions/dune-spgrid/-/archive/v2.9.1/dune-spgrid-v2.9.1.tar.gz

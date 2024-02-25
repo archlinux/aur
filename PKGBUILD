@@ -2,7 +2,7 @@
 pkgname=dune-spgrid
 _tarver=v2.9.1
 _tar=${_tarver}/${pkgname}-${_tarver}.tar.gz
-pkgver="${_tarver}"
+pkgver=${_tarver/v/}
 pkgrel=1
 pkgdesc="An efficient structured, parallel implementation of the DUNE grid interface"
 arch=(x86_64)
