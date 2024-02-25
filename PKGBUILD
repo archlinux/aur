@@ -1,41 +1,49 @@
 # Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
+# Contributor: Shayne Hartford <shayneehartford@gmail.com>
+
 _pkgname=wootility
 pkgname=${_pkgname}-appimage
 pkgver=3.6.16
-pkgrel=4
+pkgrel=5
 pkgdesc='Utility for configuring Wooting keyboards (binary AppImage version)'
 arch=('x86_64' 'x86_64_v3')
 url='https://wooting.io/wootility'
 license=('unknown')
 depends=('fuse2')
-makedepends=('p7zip')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=(!strip)
 _appimage="${_pkgname}-${pkgver}.AppImage"
 install=$pkgname.install
 source=("https://s3.eu-west-2.amazonaws.com/wooting-update/wootility-linux-latest/${_appimage}"
-        'wooting.rules')
-noextract=("${_appimage}")
+        '70-wooting.rules')
 b2sums=('79a32462cb3f375344ace2a4785c950854b8a7dd027d9c1e7c24696135f641d1d88f56ccbc2dfadc53d278e291bf11735d81d860e57b83cb981366d4930bf641'
-        '32611a6c0eafc122862b97693d402d8b6111ccccb1b920119c9bbd550833dccb14201cff8121487d2de1114f1a3de45163b22f4e6fb77b342562a3c441c72efc')
+        '80b4a516f8aafb6eada36cdde59295f2358b22e6cc28b1a21b0b5f22a59bcfabc63bba956d23544faca5fd76a1c4b4c1ff98ada41e7c9ad015d48c7c436dbac1')
 
 prepare() {
-	7z x "${_appimage}" 'wootility.desktop' 'usr/share/icons' > /dev/null
+    # Copying AppImage in case $SRCDEST is mounted with noexec
+    cp ${_appimage} ${_appimage}.copy
+    chmod +x ${_appimage}.copy
+    ./${_appimage}.copy --appimage-extract ${_pkgname}.desktop
+    ./${_appimage}.copy --appimage-extract ${_pkgname}.png
+    ./${_appimage}.copy --appimage-extract usr/share/icons
+    rm ${_appimage}.copy
 }
 
 build() {
-	sed -i -E "s|Exec=AppRun|Exec=${_pkgname}|" wootility.desktop
-	# Fix permissions; .AppImage permissions are 700 for all directories
-	chmod -R a-x+rX usr
+    sed -i -E "s|Exec=AppRun|Exec=${_pkgname}|" squashfs-root/${_pkgname}.desktop
+    sed -i -E "s|Name=.*$|Name=Wootility|" squashfs-root/${_pkgname}.desktop
 }
 
 package() {
-	install -Dpm755 "${_appimage}" "${pkgdir}/opt/${_pkgname}/${_appimage}"
-	install -d "${pkgdir}/usr/bin"
-	ln -s "../../opt/${_pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_pkgname}"
-	install -Dpm644 'wootility.desktop' "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-	install -d "${pkgdir}/usr/share/icons"
-	cp -a usr/share/icons/hicolor "${pkgdir}/usr/share/icons/hicolor"
-	install -Dpm644 'wooting.rules' "${pkgdir}/usr/lib/udev/rules.d/wooting.rules"
+    install -Dpm755 "${_appimage}" "${pkgdir}/opt/${_pkgname}/${_appimage}"
+    install -d "${pkgdir}/usr/bin"
+    ln -s "../../opt/${_pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_pkgname}"
+
+    # Install desktop entry and icon
+    install -Dpm644 "squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dpm644 "squashfs-root/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
+
+    # Install udev rules
+    install -Dpm644 "70-wooting.rules" "${pkgdir}/usr/lib/udev/rules.d/70-wooting.rules"
 }
