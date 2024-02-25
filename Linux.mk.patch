@@ -1,0 +1,32 @@
+--- a/nss/coreconf/Linux.mk
++++ b/nss/coreconf/Linux.mk
+@@ -142,10 +142,6 @@
+ endif
+ OS_LIBS			= $(OS_PTHREAD) -ldl -lc
+ 
+-ifeq ($(OS_TARGET),Android)
+-	OS_LIBS		+= -llog
+-endif
+-
+ ifdef USE_PTHREADS
+ 	DEFINES		+= -D_REENTRANT
+ endif
+@@ -157,8 +153,8 @@
+ # we don't use -z defs there.
+ # Also, -z defs conflicts with Address Sanitizer, which emits relocations
+ # against the libsanitizer runtime built into the main executable.
+-ZDEFS_FLAG		= -Wl,-z,defs
+-DSO_LDOPTS     += $(if $(findstring 2.11.90.0.8,$(shell $(LD) -v)),,$(ZDEFS_FLAG))
++# ZDEFS_FLAG		= -Wl,-z,defs
++# DSO_LDOPTS     += $(if $(findstring 2.11.90.0.8,$(shell $(LD) -v)),,$(ZDEFS_FLAG))
+ LDFLAGS		   += $(ARCHFLAG) -z noexecstack
+ 
+ # On Maemo, we need to use the -rpath-link flag for even the standard system
+@@ -206,6 +202,7 @@
+ ifdef MAPFILE
+ 	MKSHLIB += -Wl,--version-script,$(MAPFILE)
+ endif
++MKSHLIB += -Wl,--undefined-version
+ PROCESS_MAP_FILE = grep -v ';-' $< | \
+         sed -e 's,;+,,' -e 's; DATA ;;' -e 's,;;,,' -e 's,;.*,;,' > $@
+ 

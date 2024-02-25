@@ -1,0 +1,50 @@
+--- a/nss/lib/freebl/Makefile
++++ b/nss/lib/freebl/Makefile
+@@ -136,47 +136,6 @@
+         endif
+     endif
+ endif
+-ifeq ($(CPU_ARCH),aarch64)
+-    ifdef CC_IS_CLANG
+-        DEFINES += -DUSE_HW_AES -DUSE_HW_SHA1 -DUSE_HW_SHA2
+-        EXTRA_SRCS += aes-armv8.c gcm-aarch64.c sha1-armv8.c sha256-armv8.c
+-    else ifeq (1,$(CC_IS_GCC))
+-        # GCC versions older than 4.9 don't support ARM AES. The check
+-        # is done in two parts, first allows "major.minor" == "4.9",
+-        # and then rejects any major versions prior to 5. Note that
+-        # there has been no GCC 4.10, as it was renamed to GCC 5.
+-        ifneq (,$(filter 4.9,$(word 1,$(GCC_VERSION)).$(word 2,$(GCC_VERSION))))
+-            DEFINES += -DUSE_HW_AES -DUSE_HW_SHA1 -DUSE_HW_SHA2
+-            EXTRA_SRCS += aes-armv8.c gcm-aarch64.c sha1-armv8.c sha256-armv8.c
+-        endif
+-        ifeq (,$(filter 0 1 2 3 4,$(word 1,$(GCC_VERSION))))
+-            DEFINES += -DUSE_HW_AES -DUSE_HW_SHA1 -DUSE_HW_SHA2
+-            EXTRA_SRCS += aes-armv8.c gcm-aarch64.c sha1-armv8.c sha256-armv8.c
+-        endif
+-    endif
+-endif
+-ifeq ($(CPU_ARCH),arm)
+-ifndef NSS_DISABLE_ARM32_NEON
+-    EXTRA_SRCS += gcm-arm32-neon.c
+-endif
+-    ifdef CC_IS_CLANG
+-        DEFINES += -DUSE_HW_AES -DUSE_HW_SHA1 -DUSE_HW_SHA2
+-        EXTRA_SRCS += aes-armv8.c sha1-armv8.c sha256-armv8.c
+-    else ifeq (1,$(CC_IS_GCC))
+-        # GCC versions older than 4.9 don't support ARM AES. The check
+-        # is done in two parts, first allows "major.minor" == "4.9",
+-        # and then rejects any major versions prior to 5. Note that
+-        # there has been no GCC 4.10, as it was renamed to GCC 5.
+-        ifneq (,$(filter 4.9,$(word 1,$(GCC_VERSION)).$(word 2,$(GCC_VERSION))))
+-            DEFINES += -DUSE_HW_AES -DUSE_HW_SHA1 -DUSE_HW_SHA2
+-            EXTRA_SRCS += aes-armv8.c sha1-armv8.c sha256-armv8.c
+-        endif
+-        ifeq (,$(filter 0 1 2 3 4,$(word 1,$(GCC_VERSION))))
+-            DEFINES += -DUSE_HW_AES -DUSE_HW_SHA1 -DUSE_HW_SHA2
+-            EXTRA_SRCS += aes-armv8.c sha1-armv8.c sha256-armv8.c
+-        endif
+-    endif
+-endif
+ 
+ ifeq (OS2,$(OS_TARGET))
+     ASFILES  = mpi_x86_os2.s
