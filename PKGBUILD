@@ -3,7 +3,7 @@
 pkgname=sdrangel-bin
 pkgver=7.18.1
 _subver=2462
-pkgrel=1
+pkgrel=2
 conflicts=(sdrangel-git)
 pkgdesc='Qt5/OpenGL SDR and signal analyzer frontend.'
 url="https://github.com/f4exb/sdrangel"
@@ -33,7 +33,9 @@ sha256sums=('098d708a04711a9b761424407471f5f92c5c7bb6fdfd2e26a37b3baed4278e6a')
 prepare() {
     cd "sdrangel-${_subver}-master"
     # extract .deb data
-    ar p sdrangel_${pkgver}-1_amd64.deb data.tar.zst | tar x --zstd
+    # ar p sdrangel_${pkgver}-1_amd64.deb data.tar.zst | tar x --zstd
+    # HOTFIX for wrong naming
+    ar p sdrangel_7.18.0-1_amd64.deb data.tar.zst | tar x --zstd
 }
 
 package() {
