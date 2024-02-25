@@ -1,7 +1,7 @@
 # Maintainer: Marco Buzzanca <marco dot bzn at gmail dot com>
 pkgname=ibm-fonts
 pkgver=0.2.0
-pkgrel=2
+pkgrel=1
 pkgdesc='IBM system and text mode bitmap fonts'
 arch=('any')
 url='https://farsil.github.io/ibmfonts/'
