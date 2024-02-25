@@ -1,0 +1,13 @@
+diff --git a/Cargo.lock b/Cargo.lock
+index 981cee8..9c1c01e 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -126,7 +126,7 @@ checksum = "1fd0f2584146f6f2ef48085050886acf353beff7305ebd1ae69500e27c67f64b"
+ 
+ [[package]]
+ name = "cargo-i18n"
+-version = "0.2.12"
++version = "0.2.13"
+ dependencies = [
+  "anyhow",
+  "clap",
