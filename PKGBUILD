@@ -4,33 +4,38 @@ _name=Amulet-NBT
 _lowername=${_name,,}
 _pyname=${_lowername/-/_}
 pkgname=python-$_lowername
-pkgver=2.1.2
+pkgver=2.1.3
+_commit=06f49526d9a4425205941471b5d614f687c42756
 pkgrel=1
 pkgdesc='A Python and Cython library for reading and writing binary NBT and stringified NBT'
 arch=('x86_64')
 url="https://github.com/Amulet-Team/$_name"
-license=('custom')
+license=('LicenseRef-Amulet-Team-1.0.0')
 depends=('python' 'python-mutf8' 'python-numpy')
-makedepends=('cython' 'python-build' 'python-installer' 'python-setuptools' 'python-versioneer' 'python-wheel')
+makedepends=('cython' 'git' 'python-build' 'python-installer' 'python-setuptools' 'python-versioneer' 'python-wheel')
 # tests directory isn't in pypi sdist
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('efefff4b3d29e44c9fee6b30c37d7f68c22c397f88bcd8a6bb671a19add038fd')
+# github tarball has unstable hash due to https://github.com/Amulet-Team/Amulet-NBT/blob/61cb6fe0c614b95ee75868ff85677284e2b3cb74/amulet_nbt/_version.py#L27
+source=("git+$url.git#commit=$_commit")
+sha256sums=('SKIP')
 
 prepare() {
-  cd "$_name-$pkgver"
+  cd "$_name"
+
+  # expand placeholders
+  git archive --format tar HEAD amulet_nbt/_version.py | tar -x
 
   # use current versioneer
   sed -Ei 's/(versioneer)-518/\1/' pyproject.toml
 }
 
 build() {
-  cd "$_name-$pkgver"
+  cd "$_name"
 
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$_name-$pkgver"
+  cd "$_name"
 
   # based on https://wiki.archlinux.org/title/Python_package_guidelines#Check
   # build directory needs to be before script directory
@@ -38,7 +43,7 @@ check() {
 }
 
 package() {
-  cd "$_name-$pkgver"
+  cd "$_name"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
