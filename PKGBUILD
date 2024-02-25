@@ -1,6 +1,6 @@
 pkgbase=ninfs-git
 pkgname=(ninfs-git ninfs-gui-git)
-pkgver=1.6.1.r1.g219b33a
+pkgver=2.0.r0.g017935b
 pkgrel=1
 pkgdesc="FUSE filesystem Python scripts for Nintendo console files"
 arch=($CARCH)
@@ -22,18 +22,19 @@ build() {
 }
 
 package_ninfs-git() {
-	depends=("python>=3.6.1" "python-setuptools" "python-pycryptodomex" "fuse2" "openssl>=1.1")
+	depends=("python>=3.8" "python-setuptools" "python-pycryptodomex" "python-pyctr" "python-pypng" "python-haccrypto" "fuse2" "openssl>=1.1")
 	conflicts=("fuse-3ds-git" "fuse-3ds" "ninfs")
 	replaces=("fuse-3ds-git" "fuse-3ds")
 	provides=("fuse-3ds-git" "fuse-3ds" "ninfs=$pkgver-$pkgrel")
 	cd "${srcdir}/ninfs"
 	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 	rm -f "$pkgdir/usr/bin/ninfs"
+	rm -f "$pkgdir/usr/bin/ninfsw"
 	rm -rf "$pkgdir/usr/share"
 }
 
 package_ninfs-gui-git() {
-	depends=("ninfs-git=$pkgver-$pkgrel" "python-setuptools" "python-appjar" "tk")
+	depends=("ninfs-git=$pkgver-$pkgrel" "python-setuptools" "tk")
 	conflicts=("fuse-3ds-gui-git" "fuse-3ds-gui" "ninfs-gui")
 	replaces=("fuse-3ds-gui-git" "fuse-3ds-gui")
 	provides=("fuse-3ds-gui-git" "fuse-3ds-gui" "ninfs-gui=$pkgver-$pkgrel")
