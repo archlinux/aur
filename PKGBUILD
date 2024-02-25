@@ -14,7 +14,7 @@ license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Provides access to sensor hardware and motion gesture recognition (android)'
 depends=('android-aarch64-qt6-connectivity')
 optdepends=('android-aarch64-qt6-declarative: QML bindings')
-makedepends=('android-cmake' 'android-aarch64-qt6-declarative' 'qt6-declarative' 'ninja' 'java-environment-openjdk>=11')
+makedepends=('android-cmake' 'android-aarch64-qt6-declarative' 'qt6-declarative' 'ninja' 'java-environment-openjdk=17')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtsensors-everywhere-src-${_qtver}"
@@ -22,6 +22,7 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
 sha256sums=('4a6f9fcee6d23dd0f7e8b84b0faa12153ad779f09a266bbb6fb657eb16287c28')
 
 build() {
+  export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
   source android-env ${_android_arch}
   android-${_android_arch}-cmake -G Ninja -B build-$_android_arch -S $_pkgfqn \
     -DCMAKE_FIND_ROOT_PATH="${ANDROID_PREFIX}" \
