@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=4ktokkit
-pkgver=2.4.0.0800
+pkgver=2.6.0.0880
 pkgrel=1
 pkgdesc="One easy way to download everything off TikTok"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("${pkgname}_${pkgver}_amd64.tar.bz2"::"https://dl.4kdownload.com/app/${p
         "${pkgname}.desktop"
         "${pkgname}.svg"
         "fix_symlink_path.patch")
-sha256sums=('bdddef58e71a29de6978c81053abe41a92fb353cb756b0efe6fcfbbe7e5a98aa'
+sha256sums=('7a824fe6136f85cf328b45522e63eaca4f56eb0514efeac4f0d3fef8ab0cc9b0'
             '90e05b74832db592397583f7f3ec8a22493884a870de1e113e7b136b2ce3b142'
             '2e043e2eeb29fb58ab9b7ccf6aa049256046354abead9019c592b2f409ed24f8'
             'd6ce743a9c564094a2a3c98272b530e461b286de6ca6f20bf09a12cfdbd69672')
