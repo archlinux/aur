@@ -36,6 +36,7 @@ sha256sums=(
   'SKIP'
   'a50d7da9870a3fd801ad3a4d13d5c9b260acb094cf8bfa4afd95a54741173a7f'
 )
+options=('debug')
 
 pkgver() {
   cd x262
@@ -49,6 +50,9 @@ prepare() {
 }
 
 build() {
+  export CFLAGS="${CFLAGS/-march=x86-64 -mtune=generic/-march=native}"
+  export CXXFLAGS="${CXXFLAGS/-march=x86-64 -mtune=generic/-march=native}"
+
   msg2 "Build FFmpeg"
   cd "${srcdir}/build-ffmpeg"
   ../ffmpeg/configure \

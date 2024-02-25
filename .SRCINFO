@@ -20,6 +20,7 @@ pkgbase = x262-git
 	depends = libxcb
 	provides = x262
 	conflicts = x262
+	options = debug
 	source = git+https://git.videolan.org/git/x262.git
 	source = git+https://github.com/ffmpeg/ffmpeg.git#tag=n2.7.7
 	source = git+https://github.com/FFMS/ffms2.git#tag=2.20
