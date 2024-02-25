@@ -101,7 +101,7 @@ build() {
 check() {
 	# Get git version to compare
 	cd "$srcdir/$_sourcedirectory/"
-	_checkversion="${_projectname^} $(git describe --long --tags | sed -E 's/^([0-9.]+-[0-9]+)-g.+$/\1/')"
+	_checkversion="${_projectname^}.*$(git describe --long --tags | sed -E 's/^([0-9.]+-[0-9]+)-g.+$/\1/')"
 
 	# Run tests
 	cd "$srcdir/$_sourcedirectory/build/"
