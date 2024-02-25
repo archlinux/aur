@@ -1,12 +1,12 @@
 pkgbase = sugarjar
 	pkgdesc = A git/github helper inspired by arcanist (and others)
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jaymzh/sugarjar
 	arch = x86_64
 	license = Apache
 	depends = git
-	depends = hub
+	depends = github-cli
 	depends = libxcrypt-compat
 	depends = ruby
 	depends = rubygems
