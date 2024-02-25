@@ -13,7 +13,7 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='A cross-platform application and UI framework (tools, android)'
 depends=('android-aarch64-qt6-base')
-makedepends=('android-cmake' 'android-aarch64-qt6-declarative' 'qt6-declarative' 'qt6-tools' 'ninja' 'java-environment-openjdk>=11')
+makedepends=('android-cmake' 'android-aarch64-qt6-declarative' 'qt6-declarative' 'qt6-tools' 'ninja' 'java-environment-openjdk=17')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qttools-everywhere-src-${_qtver}"
@@ -33,6 +33,7 @@ prepare () {
 }
 
 build() {
+  export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
   source android-env ${_android_arch}
   android-${_android_arch}-cmake -G Ninja -B build-$_android_arch -S $_pkgfqn \
     -DCMAKE_FIND_ROOT_PATH="${ANDROID_PREFIX}" \
