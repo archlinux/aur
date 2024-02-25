@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="A notification system for tiling window managers"
 arch=('x86_64')
 url="https://github.com/sboli/twmn"
-license=('LGPL3')
+license=('LGPL-3.0-or-later')
 provides=('notification-daemon')
 depends=('qt5-base' 'qt5-x11extras' 'boost-libs>=1.46' 'libxext' 'libxkbcommon-x11')
 makedepends=('git' 'pkg-config' 'boost>=1.46')
