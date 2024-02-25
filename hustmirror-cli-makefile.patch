@@ -1,0 +1,50 @@
+From be03a68c6e9bafdce5220d772fc543bc6902f599 Mon Sep 17 00:00:00 2001
+From: TurtleRuss <tttturtleruss@gmail.com>
+Date: Sun, 25 Feb 2024 18:38:30 +0800
+Subject: [PATCH] s
+
+---
+ Makefile                      |  4 ++++
+ hustmirror-cli-makefile.patch | 15 +++++++++++++++
+ 2 files changed, 19 insertions(+)
+ create mode 100644 hustmirror-cli-makefile.patch
+
+diff --git a/Makefile b/Makefile
+index fe7b8fb..59699cd 100644
+--- a/Makefile
++++ b/Makefile
+@@ -18,6 +18,10 @@ all: $(OUT_FILE)
+ test: $(OUT_FILE)
+ 	@tests/test.sh
+ 
++install: $(OUT_FILE)
++	@mkdir -p $(DESTDIR)usr/local/bin
++	@cp $(OUT_FILE) $(DESTDIR)usr/local/bin
++
+ $(OUT_FILE): $(TEMPLATE_FILE) $(OUT_MIRROR_FILES) $(INCLUDE_FILES) $(OTHER_FILES)
+ 	@mkdir -p $(OUT_DIR)
+ 	@echo "Process $<"
+diff --git a/hustmirror-cli-makefile.patch b/hustmirror-cli-makefile.patch
+new file mode 100644
+index 0000000..ddfccba
+--- /dev/null
++++ b/hustmirror-cli-makefile.patch
+@@ -0,0 +1,15 @@
++diff --git a/Makefile b/Makefile
++index fe7b8fb..59699cd 100644
++--- a/Makefile
+++++ b/Makefile
++@@ -18,6 +18,10 @@ all: $(OUT_FILE)
++ test: $(OUT_FILE)
++ 	@tests/test.sh
++ 
+++install: $(OUT_FILE)
+++	@mkdir -p $(DESTDIR)usr/local/bin
+++	@cp $(OUT_FILE) $(DESTDIR)usr/local/bin
+++
++ $(OUT_FILE): $(TEMPLATE_FILE) $(OUT_MIRROR_FILES) $(INCLUDE_FILES) $(OTHER_FILES)
++ 	@mkdir -p $(OUT_DIR)
++ 	@echo "Process $<"
+-- 
+2.44.0
+
