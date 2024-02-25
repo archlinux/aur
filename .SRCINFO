@@ -1,13 +1,14 @@
 pkgbase = jd-tool
 	pkgdesc = JSON diff and patch
-	pkgver = 1.7.1
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/josephburnett/jd
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = jd-tool-1.7.1.tar.gz::https://github.com/josephburnett/jd/archive/refs/tags/v1.7.1.tar.gz
-	sha256sums = 3d0b693546891bab41ca5c3be859bc760631608c9add559aa561fb751cdd1c92
+	depends = glibc
+	source = jd-tool-1.8.1.tar.gz::https://github.com/josephburnett/jd/archive/refs/tags/v1.8.1.tar.gz
+	sha256sums = 40635f27543f91e656b902b94a2d6e9f4ed627b940484ad59b18fc7fe458f4a9
 
 pkgname = jd-tool
