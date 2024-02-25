@@ -1,7 +1,6 @@
 # Maintainer: xihale <xihale.top@qq.com>
 
 ## options
-: ${_autoupdate:=true}
 : ${_pkgtype:=-latest-bin}
 
 pkgname="ncmdump$_pkgtype"
@@ -14,31 +13,31 @@ url="https://github.com/taurusxin/ncmdump"
 
 _main(){
 
-    _json=`curl -s "https://api.github.com/repos/taurusxin/ncmdump/releases?per_page=1"`
-    
-    _pkgver=`echo "$_json" | sed -n '/"tag_name"/p' | head -n 1 | awk -F'"' '{print $4}'`
+  _json=`curl -s "https://api.github.com/repos/taurusxin/ncmdump/releases?per_page=1"`
+  
+  _pkgver=`echo "$_json" | sed -n '/"tag_name"/p' | head -n 1 | awk -F'"' '{print $4}'`
 
-    _zip_url=`echo "$_json" | sed -n '/browser_download_url.*linux.*\.zip/p' | awk -F'"' '{print $4}'`
+  _zip_url=`echo "$_json" | sed -n '/browser_download_url.*linux.*\.zip/p' | awk -F'"' '{print $4}'`
     
 }
 
 pkgver(){
 
-    printf "%s" "$_pkgver"
+  printf "%s" "$_pkgver"
 
 }
 
 package() {
 
-    # get the package
-    filename=`basename $_zip_url`
-    echo $_zip_url $filename
-    curl -L -o $filename -C - $_zip_url # continuous transmission on the breakpoint if file exist.
+  # get the package
+  filename=`basename $_zip_url`
+  echo $_zip_url $filename
+  curl -L -o $filename -C - $_zip_url # continuous transmission on the breakpoint if file exist.
 
-    # extract
-    bsdtar -xf $filename
+  # extract
+  bsdtar -xf $filename
 
-    install -Dm755 "ncmdump" -t "$pkgdir/usr/bin/"
+  install -Dm755 "ncmdump" -t "$pkgdir/usr/bin/"
 }
 
 _main
