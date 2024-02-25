@@ -1,9 +1,9 @@
 # Maintainer: Aaron Cottle <aaron@aaroncottle.au>
 
 pkgname=plasma-activities-stats-git
-pkgver=6.0.80_r486.g5f7ec2d
+pkgver=6.0.80_r489.g6fba8de
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=2
+pkgrel=1
 pkgdesc='A library for accessing the usage data collected by the activities system'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -11,14 +11,14 @@ license=(LGPL-2.0-or-later)
 depends=(gcc-libs
          glibc
          plasma-activities-git
-         kconfig
+         kconfig-git
          qt6-base)
 makedepends=(doxygen
              extra-cmake-modules-git
              qt6-doc
              qt6-tools)
-conflicts=(kactivities-stats kactivities-stats-git)
-provides=(kactivities-stats kactivities-stats-git)
+conflicts=(kactivities-stats kactivities-stats-git plasma-activities-stats)
+provides=(kactivities-stats kactivities-stats-git plasma-activities-stats)
 source=(git+https://invent.kde.org/plasma/plasma-activities-stats.git)
 sha256sums=('SKIP')
 

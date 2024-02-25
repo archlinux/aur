@@ -1,7 +1,7 @@
 pkgbase = plasma-activities-stats-git
 	pkgdesc = A library for accessing the usage data collected by the activities system
-	pkgver = 6.0.80_r486.g5f7ec2d
-	pkgrel = 2
+	pkgver = 6.0.80_r489.g6fba8de
+	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	license = LGPL-2.0-or-later
@@ -12,12 +12,14 @@ pkgbase = plasma-activities-stats-git
 	depends = gcc-libs
 	depends = glibc
 	depends = plasma-activities-git
-	depends = kconfig
+	depends = kconfig-git
 	depends = qt6-base
 	provides = kactivities-stats
 	provides = kactivities-stats-git
+	provides = plasma-activities-stats
 	conflicts = kactivities-stats
 	conflicts = kactivities-stats-git
+	conflicts = plasma-activities-stats
 	source = git+https://invent.kde.org/plasma/plasma-activities-stats.git
 	sha256sums = SKIP
 
