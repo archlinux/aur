@@ -1,24 +1,22 @@
 pkgbase = ninfs
 	pkgdesc = FUSE filesystem Python scripts for Nintendo console files
-	pkgver = 1.6.1
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/ihaveamac/ninfs
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = unzip
-	noextract = ninfs-1.6.1-src.zip
 	options = !strip
-	source = ninfs-1.6.1-src.zip::https://github.com/ihaveamac/ninfs/releases/download/v1.6.1/ninfs-1.6.1-src.zip
-	source = ninfs-1.6.1-src.zip.asc::https://github.com/ihaveamac/ninfs/releases/download/v1.6.1/ninfs-1.6.1-src.zip.asc
-	validpgpkeys = E6284E1064CC2199B304B68990725113CA578EAA
-	sha256sums = b3ed8c14657e86a2c660086ade9b48726b0be37e77550f406c14091dae336593
-	sha256sums = SKIP
+	source = ninfs-2.0.tar.gz::https://github.com/ihaveamac/ninfs/archive/refs/tags/v2.0.tar.gz
+	sha256sums = 89403ebb535d2a5b7ce0f0b954c95a93c03f0cc31907452e36260744a0e3e926
 
 pkgname = ninfs
-	depends = python>=3.6.1
+	depends = python>=3.8
 	depends = python-setuptools
 	depends = python-pycryptodomex
+	depends = python-pyctr
+	depends = python-pypng
+	depends = python-haccrypto
 	depends = fuse2
 	depends = openssl>=1.1
 	provides = fuse-3ds
@@ -29,13 +27,11 @@ pkgname = ninfs
 
 pkgname = ninfs-gui
 	install = NinFSGUI.install
-	depends = ninfs=1.6.1-1
+	depends = ninfs=2.0-1
 	depends = python-setuptools
-	depends = python-appjar
 	depends = tk
 	provides = fuse-3ds-gui
 	conflicts = fuse-3ds-gui-git
 	conflicts = fuse-3ds-gui
 	conflicts = ninfs-gui-git
 	replaces = fuse-3ds-gui
-
