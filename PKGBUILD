@@ -3,7 +3,7 @@
 _pkgname=tacentview
 pkgname=${_pkgname}-git
 pkgver=1.0.43.9.gdfff366
-pkgrel=2
+pkgrel=3
 pkgdesc="An image and texture viewer for tga, png, apng, exr, dds, ktx, ktx2, astc, pkm, qoi, gif, hdr, jpg, tif, ico, webp, and bmp files. Uses Dear ImGui, OpenGL and Tacent."
 arch=('any')
 url="https://github.com/bluescan/${_pkgname}"
@@ -34,15 +34,24 @@ build() {
 }
 
 package() {
+	DEB_TEMPLATE="${_pkgname}/Linux/deb_template/usr"
+
 	# Installing the program's binaries
-	install -Dm755 build/ViewerInstall/${_pkgname} -t "${pkgdir}/usr/bin"
+	install -D -m755 build/ViewerInstall/${_pkgname} -t "${pkgdir}/usr/bin/"
 	
 	# Installing the program's data
-	install -Dm644 build/ViewerInstall/Data/* -t "${pkgdir}/usr/share/${_pkgname}/Data"
+	install -D -m644 build/ViewerInstall/Data/* -t "${pkgdir}/usr/share/${_pkgname}/Data/"
+    
+	# Installing the desktop file
+    install -D -m644 ${DEB_TEMPLATE}/share/applications/* -t "${pkgdir}/usr/share/applications/"
 	
 	# Installing the docs
-	install -Dm644 ${_pkgname}/docs/* -t "${pkgdir}/usr/share/doc/${_pkgname}"
+	install -D -m644 ${_pkgname}/docs/* -t "${pkgdir}/usr/share/doc/${_pkgname}"
 	
 	# Installing the licenses
-	install -Dm644 ${_pkgname}/LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+	install -D -m644 ${_pkgname}/LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
+	
+	# Installing the icon files (quick and dirty solution due to the complex structure)
+	cd ${DEB_TEMPLATE}/share/icons/
+	find ./* -type f -exec install -D -m644 "{}" "${pkgdir}/usr/share/icons/{}" \;
 }
