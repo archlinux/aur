@@ -1,17 +1,17 @@
 # Maintainer: Mikhail felixoid Shiryaev mr<dot>felixoid<at>gmail<dot>com
 
-_name='git-prompt.zsh'
+_name=git-prompt.zsh
 pkgname="${_name}"
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='A fast, pure-shell, single-file Git prompt for Zsh.'
-arch=('any')
+arch=(any)
 url="https://github.com/woefe/${_name}"
-license=('MIT')
+license=(MIT)
 source=("https://github.com/woefe/git-prompt.zsh/archive/v${pkgver}.tar.gz")
-depends=('git' 'zsh')
-conflicts=('git-prompt.zsh-git')
-sha256sums=('783ca5efc8327727216f5e1ab9793f5d1ffcd629770a9d43c62dbc0237b72ba8')
+depends=(git zsh)
+conflicts=(git-prompt.zsh-git)
+sha256sums=(675f942d315a7750e591ef8d084c227dcbd2052b6751e2858c1b6ecafd8fa8f7)
 
 package() {
   cd "${srcdir}/${_name}-${pkgver}"
