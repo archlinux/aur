@@ -1,6 +1,6 @@
 pkgbase = fiv-git
 	pkgdesc = Image browser and viewer
-	pkgver = r552.1eee183
+	pkgver = r610.a5ebc69
 	pkgrel = 1
 	url = https://git.janouch.name/p/fiv
 	install = fiv.install

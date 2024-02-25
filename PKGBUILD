@@ -1,7 +1,7 @@
 # Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=fiv-git
 _pkgname=fiv
-pkgver=r552.1eee183
+pkgver=r610.a5ebc69
 pkgrel=1
 pkgdesc="Image browser and viewer"
 url="https://git.janouch.name/p/fiv"
@@ -50,7 +50,8 @@ prepare() {
 
 build() {
   # resvg is unstable and needs to be enabled explicitly
-  arch-meson --wrap-mode default "$srcdir/$_pkgname" "$srcdir/$_pkgname-build"
+  arch-meson --auto-features auto --wrap-mode default \
+	"$srcdir/$_pkgname" "$srcdir/$_pkgname-build"
   meson compile -C "$srcdir/$_pkgname-build"
 }
 
