@@ -1,19 +1,19 @@
 pkgbase = teapot
-	pkgdesc = Table Editor and Planner. A 3D curses based spreadsheet for mathy people.
+	pkgdesc = Table Editor and Planner: a 3D curses based spreadsheet for mathy people
 	pkgver = 2.3.0
-	pkgrel = 2
-	url = http://www.syntax-k.de/projekte/teapot/
+	pkgrel = 3
+	url = https://www.syntax-k.de/projekte/teapot
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
+	makedepends = fltk
+	makedepends = libtirpc
 	depends = ncurses
 	optdepends = fltk: for gui
-	conflicts = mesa-demos
-	source = http://www.syntax-k.de/projekte/teapot/teapot-2.3.0.tar.gz
-	source = http://www.syntax-k.de/projekte/teapot/Teapot-2.3.0-win32.zip
-	md5sums = ae59f90a5f70971703abccf0991dbd58
-	md5sums = e2a7a7efccc3478c3993325bc02275b3
+	source = https://www.syntax-k.de/projekte/teapot/teapot-2.3.0.tar.gz
+	source = https://www.syntax-k.de/projekte/teapot/Teapot-2.3.0-win32.zip
+	b2sums = e22e22573e0ca3b55718a12bed933b14e18ddf078a26a4fe9d782e62d28b2a6fe1603ff4c024f760dd4f5a4b31ac540086de6681f1db81bf64941018067c25ae
+	b2sums = dccb09c32a68211790edc85468b48389f66e69f312f3b033f83a833cb005ae6122a493ebaa73ec4f6873564cc446c3d26ed8fe0e26ad34953c484f7e2b551fb4
 
 pkgname = teapot
-
