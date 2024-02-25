@@ -5,7 +5,7 @@
 
 pkgname="ncmdump$_pkgtype"
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert ncm files to mp3 or flac."
 arch=("x86_64")
 license=('MIT')
@@ -23,7 +23,12 @@ _main(){
 
 pkgver(){
 
-  printf "%s" "$_pkgver"
+  if [ -z "$_pkgver" ]; then
+    echo "Can't get the package info from https://api.github.com/repos/taurusxin/ncmdump/releases?per_page=1"
+    exit
+  else
+    echo "$_pkgver"
+  fi
 
 }
 
