@@ -1,0 +1,16 @@
+pkgbase = shockolate-git
+	pkgdesc = Source port of the original System Shock
+	pkgver = v0.6.0.r743.ae36cec2
+	pkgrel = 1
+	url = https://github.com/Interrupt/systemshock
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = sdl2
+	depends = sdl2_mixer
+	depends = fluidsynth
+	source = git+https://github.com/Interrupt/systemshock.git
+	md5sums = SKIP
+
+pkgname = shockolate-git
