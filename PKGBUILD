@@ -2,10 +2,10 @@
 # Submitter:  not_anonymous <nmlibertarian@gmail.com>
 
 pkgname=fdserver
-pkgver=23.6.12
+pkgver=24.2.19
 pkgrel=1
 pkgdesc="Ham Radio - ARRL Field Day - Multi-user Server for clients using the fdlogger package"
-license=('GPL')
+license=('GPL-3.0-only')
 arch=('any')
 url="https://pypi.org/project/$pkgname/"
 depends=('python' 'python-xmltodict' 'python-requests' 'sqlite' 'hamradio-menus' 'fdlogger')
@@ -32,7 +32,7 @@ package() {
 	install -Dm755 $pkgname/data/k6gte-$pkgname.desktop $pkgdir/usr/share/applications/k6gte-$pkgname.desktop
 	install -Dm755 $pkgname/data/k6gte.$pkgname.svg $pkgdir/usr/share/pixmaps/k6gte-$pkgname.svg
 }
-md5sums=('a33d78434aedf3cee92ab9c324df3457'
+md5sums=('61b08b90e3a77164ea3f60346d50c29a'
          '22feefc9c03eeddd86785a77b4a5bc4e')
-sha256sums=('c68d6a916b4cce179e70872af43f6a0660bd732e0ae8ba47c7c72be2467b1314'
+sha256sums=('cd9a9131fb9f0d1190c9018b95a5a6ef6b0999e0ea6eca73f677ddd29c498f4a'
             '88bc2d01839d6d3d5aaf98aec4ddad69824e1976ca0aab48ba3341da89dacd57')
