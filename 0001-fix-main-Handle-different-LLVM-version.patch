@@ -1,14 +1,14 @@
-From 460ae24e289f8c10696b88a468a94100b2a39965 Mon Sep 17 00:00:00 2001
+From be234084019fef70a7cb45e4f6208e340fc2d5f0 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Sun, 31 Dec 2023 13:29:36 +0100
-Subject: [PATCH 2/2] fix(main): Handle different LLVM version
+Subject: [PATCH] fix(main): Handle different LLVM version
 
 ---
  main/gui/source/crash_handlers.cpp | 6 ++++++
  1 file changed, 6 insertions(+)
 
 diff --git a/main/gui/source/crash_handlers.cpp b/main/gui/source/crash_handlers.cpp
-index 2ddf766c..2ff85621 100644
+index 4b013d9e..9dfdebdc 100644
 --- a/main/gui/source/crash_handlers.cpp
 +++ b/main/gui/source/crash_handlers.cpp
 @@ -14,6 +14,8 @@
@@ -33,5 +33,5 @@ index 2ddf766c..2ff85621 100644
              handleCrash(exceptionStr);
              log::fatal("Program terminated with uncaught exception: {}", exceptionStr);
 -- 
-2.43.0
+2.44.0
 

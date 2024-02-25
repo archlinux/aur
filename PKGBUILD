@@ -3,8 +3,8 @@
 
 _pkgname=ImHex
 pkgname=${_pkgname,,}
-pkgver=1.32.2
-pkgrel=2
+pkgver=1.33.0
+pkgrel=1
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://imhex.werwolv.net'
 license=('GPL-2.0-or-later')
@@ -20,23 +20,19 @@ provides=('imhex-patterns')
 conflicts=('imhex-patterns-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/WerWolv/ImHex/releases/download/v$pkgver/Full.Sources.tar.gz"
         "imhex-patterns-$pkgver.tar.gz::https://github.com/WerWolv/ImHex-Patterns/archive/refs/tags/ImHex-v$pkgver.tar.gz"
-        0001-fix-cmake-Fix-when-multiple-.NET-packages-are-instal.patch
-        0002-fix-main-Handle-different-LLVM-version.patch)
-sha256sums=('44564e7326e056f9ee698ae972bb0fb624716052466f0f504404e3f366c4c9ed'
-            'c2bf92cf468498ccc8a27ff6c3284f59946b0cc064fe41c37885a31018360ad0'
-            '3b27f99abc4040630f53cb098b67d4a8086d87c9c2c6e0a6a29afd83dcd6ec3a'
-            '6cd6297b2269a7299f81781e9f4bcaa4b78bc69d757d2eafab10433daee6ed48')
-b2sums=('75d595e5acb05429b114f4d4c61981080797f7b88d41a219c93f6512c4b204dd164a8886c00af4ee539cb7d6f7baaa49084b349806357fb872a1ebb30e82cfba'
-        'b171669c17c0a7aef0ba65b66c2f68f7581a8e11d61365363fd28cfedfa2658c8833181d5e8a4c789ff011c5afadafec8149b43852319cae161c9bb5c26be2ec'
-        '4c1c0451e3c4033ed331f6339342926f1ee25b6097cc9bf540f6944f089a3db2eaa42237a673522dbcfe37540b9be9563a12b5aa146d5c5e873cce36ca637b99'
-        '0e6fdf7cb14df8c2983822c5bc52c080d68fbc57d995cc9e24c6a84589e2dd904e48e4657a27155dcab9048a720f5d60e8fc2d70ab5d8d42b3186703a878a960')
+        0001-fix-main-Handle-different-LLVM-version.patch)
+sha256sums=('60f354ed3f2ef96c26496680cacae7b215422ca01669daf7513f20e5a2916026'
+            'f5af93edd9b60b08ece6a5856f8d6db1e616ca9f2eebb299c81b29c5cbd40cda'
+            'c0ba479d827bac8cd013c6d537ebb2f47e88092c37155f08ae3dc578cc56dae1')
+b2sums=('12ea429fe41849d756020bc2f98176e8aaad54c78447f42ae3f5b333cf2cae43370228f37fae8168df90c116d91a932490b0730b31e71b5bc3495a1fce8d7fbd'
+        '33493fc825882e4ed08e5a682cb20ba76866aacbbb7568e856619b6821e191a6e6ac37bfc2dc77474df9385a05464240c0b255e9221a01ec348c813ae7c507db'
+        'df471cd0ac06d066161811b37c87e9fc755134477b916f9b0db83b427ec647a432c4c64e936bde20677e67377b3a64cf8aaa4d40ed52cca32312439824bde7fe')
 options=(!lto !strip)
 
 prepare() {
   cd "$_pkgname"
 
-  patch -Np1 -i "$srcdir/0001-fix-cmake-Fix-when-multiple-.NET-packages-are-instal.patch"
-  patch -Np1 -i "$srcdir/0002-fix-main-Handle-different-LLVM-version.patch"
+  patch -Np1 -i "$srcdir/0001-fix-main-Handle-different-LLVM-version.patch"
 }
 
 build() {
