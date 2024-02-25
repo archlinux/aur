@@ -1,17 +1,17 @@
 # Maintainer: Aaron Cottle <aaron@aaroncottle.au>
 
 pkgname=plasma-activities-git
-pkgver=6.0.80_r1477.gbe3dd91c
+pkgver=6.0.80_r1478.g8f90ae8b
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=3
+pkgrel=1
 pkgdesc='Core components for KDE Activities'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL-2.0-or-later)
 depends=(gcc-libs
          glibc
-         kconfig
-         kcoreaddons
+         kconfig-git
+         kcoreaddons-git
          qt6-base)
 makedepends=(boost
              doxygen
@@ -20,8 +20,8 @@ makedepends=(boost
              qt6-doc
              qt6-tools)
 optdepends=('qt6-declarative: QML bindings')
-conflicts=(kactivities kactivities-git)
-provides=(kactivities kactivities-git)
+conflicts=(kactivities kactivities-git plasma-activities)
+provides=(kactivities kactivities-git plasma-activities)
 source=(git+https://invent.kde.org/plasma/plasma-activities.git)
 sha256sums=('SKIP')
 
