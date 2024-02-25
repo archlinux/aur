@@ -14,7 +14,7 @@ license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Provides access to position, satellite and area monitoring classes (android)'
 depends=('android-aarch64-qt6-base')
 optdepends=('android-aarch64-qt6-declarative: QML bindings' 'android-aarch64-qt6-serialport: NMEA plugin')
-makedepends=('android-cmake' 'android-aarch64-qt6-serialport' 'android-aarch64-qt6-declarative' 'qt6-serialbus' 'qt6-declarative' 'ninja' 'java-environment-openjdk>=11')
+makedepends=('android-cmake' 'android-aarch64-qt6-serialport' 'android-aarch64-qt6-declarative' 'qt6-serialbus' 'qt6-declarative' 'ninja' 'java-environment-openjdk=17')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtpositioning-everywhere-src-${_qtver}"
@@ -22,6 +22,7 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
 sha256sums=('4da7567cc1ed2480b137ac7d8db16be40ee935c52585762a7a44b6a4ef0ec3e2')
 
 build() {
+  export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
   source android-env ${_android_arch}
   android-${_android_arch}-cmake -G Ninja -B build-$_android_arch -S $_pkgfqn \
     -DCMAKE_FIND_ROOT_PATH="${ANDROID_PREFIX}" \
