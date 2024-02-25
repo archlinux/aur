@@ -3,7 +3,7 @@
 
 pkgname=wesnoth-devel
 #XXX: when changing major version (i.e. 1.17 to 1.1X) remeber to updated the occurences in build() and package()
-pkgver=1.17.25
+pkgver=1.17.26
 pkgrel=1
 pkgdesc="development version of a turn-based strategy game on a fantasy world"
 arch=('i486' 'i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -39,7 +39,7 @@ source=("https://downloads.sourceforge.net/sourceforge/wesnoth/wesnoth-$pkgver.t
         "wesnoth-devel.appdata.xml"
         "scons_patch.diff")
 
-sha256sums=('6d438dbf8939861f35bc2dc70fa2b19d1120483a4de8ed081bff387daa0428e5'
+sha256sums=('1d8edb7909d0723adfa9fb87aad0dab0ccef50f0e57281e97f6b6ee887796aa7'
          '3631b4c1eda6c2099e43272f2a26a8a3e897b9541a395ebeb9a1b8b3753a647d'
          '196cd09c73c6503b9caef7c47bb61d0243c10e9b15daa6b3aff437f7ad03448a'
          '98fbd8bafff165c45d0a1eb23a500108e4ce7c8ed32b9abc9bf1c3179e1d3491'
@@ -57,7 +57,7 @@ prepare() {
 
   #How to apply a patch
   #patch -p1 < ../../patch_name.patch
-  patch -p1 < ../../scons_patch.diff
+  #patch -p1 < ../../scons_patch.diff
 }
 
 check() {
