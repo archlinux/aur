@@ -1,16 +1,30 @@
 pkgbase = mlibc
 	pkgdesc = A portable C standard library
-	pkgver = 2.3.0
+	pkgver = 4.0.0_rc1
 	pkgrel = 1
 	url = https://github.com/managarm/mlibc
 	arch = x86_64
 	license = MIT
 	checkdepends = meson
 	checkdepends = ninja
+	makedepends = binutils
+	makedepends = gcc
+	makedepends = git
+	makedepends = libisl
+	makedepends = libmpc
+	makedepends = libxcrypt
 	makedepends = meson
 	makedepends = ninja
-	depends = bash
-	source = mlibc-2.3.0.tar.gz::https://github.com/managarm/mlibc/archive/refs/tags/2.3.0.tar.gz
-	md5sums = f056060e76bb343c9c8adef23da69446
+	makedepends = python
+	makedepends = zstd
+	options = staticlibs
+	source = mlibc-4.0.0.tar.gz::https://github.com/managarm/mlibc/archive/refs/tags/4.0.0-rc1.tar.gz
+	source = gcc-13.2.0::git+https://github.com/managarm/gcc.git#commit=e5a5732020128cc6814cdfe65b05d6bb0f262e09
+	source = ftp://ftp.gnu.org/gnu/binutils/binutils-2.42.tar.gz
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.7.6.tar.xz
+	md5sums = 3c41fea991ff084f2df7cad8ae0c5363
+	md5sums = SKIP
+	md5sums = d7569f3604d986c7d7c36a15176db89d
+	md5sums = 8b4a23ce33184bcd4e9c4b9ff0e5ddb0
 
 pkgname = mlibc
