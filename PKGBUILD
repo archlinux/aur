@@ -1,7 +1,7 @@
 # Maintainer: Darjan Krijan [https://disc-kuraudo.eu]
 
 pkgname=disc-kuraudo-home
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Disc Kuraudo - The Disc Cloud"
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ provides=('disc-kuraudo')
 conflicts=('disc-kuraudo')
 source_x86_64=("https://disc-kuraudo.eu/releases/${pkgname}-linux-x86_64-${pkgver}.tar.xz")
 source_aarch64=("https://disc-kuraudo.eu/releases/${pkgname}-linux-aarch64-${pkgver}.tar.xz")
-sha256sums_x86_64=('21747f5da9081e1d05d2c3329644fa976d40131d9b6ef07313dd5746c03302ce')
-sha256sums_aarch64=('0c8645da7abb08735e1340cb079cc7029cdd788b1dbe84873fab1caa8b21af37')
+sha256sums_x86_64=('bc9f0ee1f989f3873ef260783de5103b7ba67fc4955e5298184a049f47d7e0b6')
+sha256sums_aarch64=('d03c0b9ff3f7c6cec397d67db30bd64b7cba519a55ac0f4c033cc8bcaa1b67b4')
 
 package() {
 	cd "${srcdir}/${pkgname}-linux-${CARCH}-${pkgver}"
