@@ -1,7 +1,7 @@
 # Maintainer: BOEHM Guillaume <aur@sl.gboehm.com>
 
 pkgname=simplex-desktop-appimage
-pkgver=5.4.3
+pkgver=5.5.5
 pkgrel=1
 pkgdesc="The latest release of Simplex Desktop, the first messaging platform operating without user identifiers of any kind - 100% private by design!"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('AGPLv3')
 depends=()
 options=(!strip) # necessary otherwise the AppImage file in the package is truncated
 
-_appimage_sum="af87a3ed039c4aee7b576c31c3cc48a96383151b668a47b514b81a2ab71b1676ade899b88cc2bb62ee4f536a86d0e0ac23f357aeb50abd906b1dfc2ea37f6bb4"
+_appimage_sum="c9e9e037d4ee921fb1188f644d6786558ee9c60e3946a4343583dcb02563c1abd8797f7f0ceda9f6a3da01a35e358816dd74c6a5305a44cb1649cfd92ad4c1a6"
 _filename="simplex-desktop-${arch}-${pkgver}-${_appimage_sum}.AppImage"
 _squashfs_desktop_file="chat.simplex.app.desktop"
 _desktop_file="/usr/share/applications/simplex-desktop.desktop"
