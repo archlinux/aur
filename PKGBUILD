@@ -1,7 +1,8 @@
 # Maintainer: AdrianoML <com gmail adriano.lols>
 # Contributor: script from the official package: David Runge <dvzrv@archlinux.org>
 
-pkgbase=lsp-plugins
+pkgbase=lsp-plugins-git
+_gitname=lsp-plugins
 pkgname=(lsp-plugins-git lsp-plugins-{clap,docs,ladspa,lv2,standalone,vst}-git liblsp-r3d-glx-lib-git)
 pkgver=1.2.14.r13.ga2f8342d
 pkgrel=1
@@ -32,7 +33,7 @@ sha512sums=('SKIP')
 b2sums=('SKIP')
 
 pkgver() {
-    cd "$pkgbase"
+    cd "$_gitname"
 	git describe --long --tags | sed 's/^sdk-//; s/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
@@ -53,13 +54,13 @@ build() {
     ARTIFACT_EXPORT_HEADERS=1
     FEATURES='clap doc lv2 vst2 jack ladspa xdg'
     PREFIX=/usr
-    -C $pkgbase
+    -C $_gitname
   )
 
-  make clean -C $pkgbase
+  make clean -C $_gitname
   make "${config_options[@]}"
-  make fetch -C $pkgbase
-  make VERBOSE=1 -C $pkgbase
+  make fetch -C $_gitname
+  make VERBOSE=1 -C $_gitname
 }
 
 check() {
@@ -67,21 +68,21 @@ check() {
   local _lv2_uri="http://lsp-plug.in/plugins/lv2/"
 
   # install to temporary location
-  make FEATURES=lv2 DESTDIR="$PWD/test" install -C $pkgbase
+  make FEATURES=lv2 DESTDIR="$PWD/test" install -C $_gitname
 
-  for _plugin in $(jq -r '.plugins[].id' $pkgbase/.build/target/lsp-plugin-fw/plugins.json); do
+  for _plugin in $(jq -r '.plugins[].id' $_gitname/.build/target/lsp-plugin-fw/plugins.json); do
     printf "Testing plugin %s\n" "$_plugin"
     lv2lint -Mpack -I "$PWD/test/usr/lib/lv2/$pkgname.lv2/" $_lv2_uri$_plugin
   done
 }
 
 package_lsp-plugins-git() {
-  depends=($pkgbase-{clap,ladspa,lv2,standalone,vst})
+  depends=($_gitname-{clap,ladspa,lv2,standalone,vst})
   optdepends=(
     'lsp-plugins-docs: for documentation'
   )
 
-  make PREFIX=/usr DESTDIR="$pkgdir" install -C $pkgbase
+  make PREFIX=/usr DESTDIR="$pkgdir" install -C $_gitname
   printf "successfully installed to pkgdir\n"
 
   (
@@ -89,17 +90,17 @@ package_lsp-plugins-git() {
     _pick liblsp-r3d-glx-lib-git usr/include/*
     _pick liblsp-r3d-glx-lib-git usr/lib/liblsp*
     _pick liblsp-r3d-glx-lib-git usr/lib/pkgconfig/*
-    _pick $pkgbase-clap-git usr/lib/clap/*
-    _pick $pkgbase-docs-git usr/share/doc/*
-    _pick $pkgbase-ladspa-git usr/lib/ladspa/*
-    _pick $pkgbase-lv2-git usr/lib/lv2/*
-    _pick $pkgbase-standalone-git etc/*
-    _pick $pkgbase-standalone-git usr/bin/*
-    _pick $pkgbase-standalone-git usr/lib/$pkgbase/*
-    _pick $pkgbase-standalone-git usr/share/applications/*
-    _pick $pkgbase-standalone-git usr/share/desktop-directories/*
-    _pick $pkgbase-standalone-git usr/share/icons/*
-    _pick $pkgbase-vst-git usr/lib/vst/*
+    _pick $_gitname-clap-git usr/lib/clap/*
+    _pick $_gitname-docs-git usr/share/doc/*
+    _pick $_gitname-ladspa-git usr/lib/ladspa/*
+    _pick $_gitname-lv2-git usr/lib/lv2/*
+    _pick $_gitname-standalone-git etc/*
+    _pick $_gitname-standalone-git usr/bin/*
+    _pick $_gitname-standalone-git usr/lib/$_gitname/*
+    _pick $_gitname-standalone-git usr/share/applications/*
+    _pick $_gitname-standalone-git usr/share/desktop-directories/*
+    _pick $_gitname-standalone-git usr/share/icons/*
+    _pick $_gitname-vst-git usr/lib/vst/*
   )
 }
 

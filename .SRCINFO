@@ -1,4 +1,4 @@
-pkgbase = lsp-plugins
+pkgbase = lsp-plugins-git
 	pkgdesc = Collection of open-source plugins
 	pkgver = 1.2.14.r13.ga2f8342d
 	pkgrel = 1
