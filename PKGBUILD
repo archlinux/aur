@@ -1,7 +1,7 @@
 # Maintainer: SandaruKasa <sandarukasa plus aur at ya dot ru>
 
 pkgname=kani-verifier
-pkgver=0.46.0
+pkgver=0.47.0
 pkgrel=1
 pkgdesc='Bit-precise model checker for Rust'
 arch=('x86_64' 'aarch64')
@@ -12,11 +12,12 @@ depends=(gcc-libs glibc)
 provides=(kani cargo-kani)
 conflicts=(kani cargo-kani)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('5bfc685aa7ce9475363968b4fb63b077774cd7412ee3f92a41e2da04c1a7774f')
+sha256sums=('afd43d4541626d4354e408f81f3c6662e9aaa54619695cbb63f30fd8cbd40a68')
 _src="${pkgname}-${pkgver}"
 
 prepare() {
   cd "${_src}"
+  rm -f rust-toolchain.toml
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
