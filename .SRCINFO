@@ -12,7 +12,7 @@ pkgbase = android-aarch64-qt6-networkauth
 	makedepends = android-cmake
 	makedepends = qt6-base
 	makedepends = ninja
-	makedepends = java-environment-openjdk>=11
+	makedepends = java-environment-openjdk=17
 	depends = android-aarch64-qt6-base
 	options = !strip
 	options = !buildflags

@@ -13,7 +13,7 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Network authentication module (android)'
 depends=('android-aarch64-qt6-base')
-makedepends=('android-cmake' 'qt6-base' 'ninja' 'java-environment-openjdk>=11')
+makedepends=('android-cmake' 'qt6-base' 'ninja' 'java-environment-openjdk=17')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtnetworkauth-everywhere-src-${_qtver}"
@@ -21,6 +21,7 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
 sha256sums=('32bdd5550ba893b5fb7d07ea2a3adc1729ed8b4565dc4aa963fa21b978d332d2')
 
 build() {
+  export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
   source android-env ${_android_arch}
   android-${_android_arch}-cmake -G Ninja -B build-$_android_arch -S $_pkgfqn \
     -DCMAKE_FIND_ROOT_PATH="${ANDROID_PREFIX}" \
