@@ -10,7 +10,7 @@ url="https://github.com/coreymwamba/estonta"
 license=('GPL')
 optdepends=('yad:	graphical interface')
 makedepends=('git')
-source=('git://github.com/coreymwamba/estonta')
+source=('git+https://github.com/coreymwamba/estonta')
 install='estonta-git.install'
 md5sums=('SKIP')
 pkgver() {
