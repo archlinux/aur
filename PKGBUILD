@@ -4,7 +4,7 @@
 _pkgname=wootility
 pkgname=${_pkgname}-appimage
 pkgver=4.6.14
-pkgrel=1
+pkgrel=2
 pkgdesc='Utility for configuring Wooting keyboards (binary AppImage version)'
 arch=('x86_64' 'x86_64_v3')
 url='https://wooting.io/wootility'
@@ -48,5 +48,5 @@ package() {
     install -Dpm644 "squashfs-root/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
 
     # Install udev rules
-    install -Dpm644 "70-wooting.rules" "${pkgdir}/usr/lib/udev/rules.d/70-wooting.rules"
+    install -Dpm644 "70-wooting.rules" "${pkgdir}/usr/lib/udev/rules.d/70-${_pkgname}.rules"
 }
