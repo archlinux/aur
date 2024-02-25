@@ -4,13 +4,13 @@
 
 _pkgname=bitwarden-cli
 pkgname="$_pkgname-git"
-pkgver=2023.5.0.r8.2d9fdd68da2
+pkgver=2024.2.2.r100.b37ba717122
 pkgrel=1
 pkgdesc='Bitwarden Command-line Interface'
 arch=(x86_64)
-url='https://github.com/bitwarden/clients/apps/cli'
+url='https://github.com/bitwarden/clients/tree/master/apps/cli'
 license=(GPL3)
-depends=(nodejs-lts-gallium)
+depends=(nodejs-lts-hydrogen)
 makedepends=(git npm modclean)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
