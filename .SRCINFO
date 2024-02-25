@@ -14,7 +14,7 @@ pkgbase = android-aarch64-qt6-declarative
 	makedepends = qt6-shadertools
 	makedepends = ninja
 	makedepends = python
-	makedepends = java-environment-openjdk>=11
+	makedepends = java-environment-openjdk=17
 	depends = android-aarch64-qt6-base
 	optdepends = qt6-declarative: development tools
 	provides = android-aarch64-qt6-quickcontrols2

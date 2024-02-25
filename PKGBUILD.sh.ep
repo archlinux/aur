@@ -8,7 +8,7 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Classes for QML and JavaScript languages (android)'
 depends=(<%== qt6deps qw(base) %>)
-makedepends=('android-cmake<%== $static_suffix %>' 'qt6-declarative' 'qt6-shadertools' 'ninja' 'python' 'java-environment-openjdk>=11')
+makedepends=('android-cmake<%== $static_suffix %>' 'qt6-declarative' 'qt6-shadertools' 'ninja' 'python' 'java-environment-openjdk=17')
 optdepends=('qt6-declarative: development tools')
 conflicts=(<%== qt6deps qw(quickcontrols2) %>)
 provides=(<%== qt6deps qw(quickcontrols2) %>)

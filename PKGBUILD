@@ -13,7 +13,7 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Classes for QML and JavaScript languages (android)'
 depends=('android-aarch64-qt6-base')
-makedepends=('android-cmake' 'qt6-declarative' 'qt6-shadertools' 'ninja' 'python' 'java-environment-openjdk>=11')
+makedepends=('android-cmake' 'qt6-declarative' 'qt6-shadertools' 'ninja' 'python' 'java-environment-openjdk=17')
 optdepends=('qt6-declarative: development tools')
 conflicts=('android-aarch64-qt6-quickcontrols2')
 provides=('android-aarch64-qt6-quickcontrols2')
@@ -37,6 +37,7 @@ prepare () {
 }
 
 build() {
+  export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
   source android-env ${_android_arch}
   android-${_android_arch}-cmake -G Ninja -B build-$_android_arch -S $_pkgfqn \
     -DCMAKE_FIND_ROOT_PATH="${ANDROID_PREFIX}" \
