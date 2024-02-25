@@ -1,0 +1,27 @@
+pkgbase = sqlchat
+    pkgdesc = Chat-based SQL Client and Editor for the next decade
+    pkgver = 1.0.0
+    pkgrel = 1
+    url = https://github.com/sqlchat/sqlchat
+    arch = x86_64
+    license = MIT
+    depends = webkit2gtk
+    depends = xdotool
+    depends = libayatana-appindicator
+    depends = glibc
+    depends = libx11
+    depends = gtk3
+    depends = dbus
+    depends = hicolor-icon-theme
+    depends = openssl
+    depends = pango
+    depends = glib2
+    depends = gcc-libs
+    depends = libxtst
+    depends = cairo
+    depends = gdk-pixbuf2
+    provides = releasehub
+    source = https://github.com/CorrectRoadH/Pake/releases/download/V7.0.0/SQLChat_x86_64.deb
+    sha256sums = SKIP
+
+pkgname = sqlchat
