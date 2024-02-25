@@ -12,7 +12,7 @@ pkgdesc='Browser based analytics and search dashboard for Elasticsearch'
 url='https://www.elastic.co/products/kibana'
 arch=('x86_64')
 license=('custom:Elastic2')
-depends=('nodejs-lts-gallium')
+depends=('nodejs')
 optdepends=('elasticsearch'
             'nss: screenshotting plugin')
 provides=("kibana=$pkgver")
@@ -30,13 +30,6 @@ sha512sums=('692ee8d0282c49a7a2b5f335eb59bd6479c81908fc8e3833ee31907a1737b27c9dd
             'afed49c164561f3c658a6d2423519adcf4d5293c416cd93fa5c9d12421416c1e9cb4287e832009049cfd014b365dc1cd93d9cf879117c701cce4caad3b772a8e'
             '9085884430c656cc68b855c3d6740e5fd0854a8785930341b29e15e201deacc1870d8223255d9ebe096cb111319bea9bf4faa03d0760d5819976ebf912221c7d')
 validpgpkeys=('46095ACC8548582C1A2699A9D27D666CD88E42B4') # Elasticsearch (Elasticsearch Signing Key) <dev_ops@elasticsearch.org>
-
-prepare() {
-  cd $_relpkgname-${pkgver}
-
-  # remove nodejs strict version requirements
-  sed "s@^require('./node_version_validator');@// \0@" -i src/setup_node_env/no_transpilation_dist.js
-}
 
 package() {
   cd $_relpkgname-${pkgver}
