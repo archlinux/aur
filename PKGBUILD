@@ -2,7 +2,7 @@
 
 pkgname=hush3
 pkgver=3.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='HUSH (Privacy Cryptocurrency and Messenger) full node that supports z-addresses'
 url='http://git.hush.is/hush/hush3'
 arch=('x86_64')
@@ -29,6 +29,8 @@ package() {
   install -Dm755 "${srcdir}/$pkgname/src/hushd" "${pkgdir}/opt/$pkgname/hushd"
   install -Dm755 "${srcdir}/$pkgname/src/hush-smart-chain" "${pkgdir}/opt/$pkgname/hush-smart-chain"
   install -Dm755 "${srcdir}/$pkgname/src/hush-tx" "${pkgdir}/opt/$pkgname/hush-tx"
+  install -Dm755 "${srcdir}/$pkgname/src/dragonxd" "${pkgdir}/opt/$pkgname/dragonxd"
+  install -Dm755 "${srcdir}/$pkgname/src/dragonx-cli" "${pkgdir}/opt/$pkgname/dragonx-cli"
 
   # install required sapling files and asmap.dat
   install -Dm644 "${srcdir}/$pkgname/sapling-output.params" "${pkgdir}/opt/$pkgname/sapling-output.params"
@@ -46,6 +48,8 @@ package() {
   ln -s /opt/${pkgname}/hushd "${pkgdir}/usr/bin"
   ln -s /opt/${pkgname}/hush-smart-chain "${pkgdir}/usr/bin"
   ln -s /opt/${pkgname}/hush-tx "${pkgdir}/usr/bin"
+  ln -s /opt/${pkgname}/dragonx-cli "${pkgdir}/usr/bin"
+  ln -s /opt/${pkgname}/dragonxd "${pkgdir}/usr/bin"
 
   install -d "${pkgdir}/usr/share/hush"
   ln -s /opt/${pkgname}/sapling-output.params "${pkgdir}/usr/share/hush"
