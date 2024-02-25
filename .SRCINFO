@@ -1,15 +1,15 @@
 pkgbase = python-ginga-doc
 	pkgdesc = Documentation for Ginga
-	pkgver = 4.1.1
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://ejeschke.github.io/ginga/
 	arch = any
-	license = BSD
-	makedepends = python-ginga=4.1.1
+	license = BSD-3-Clause
+	makedepends = python-ginga=5.0.0
 	makedepends = python-sphinx-astropy
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/g/ginga/ginga-4.1.1.tar.gz
-	md5sums = 25068309d325f2d35895269255b06f96
+	source = https://files.pythonhosted.org/packages/source/g/ginga/ginga-5.0.0.tar.gz
+	md5sums = 10e1e7300c179302a385b29881d66fd0
 
 pkgname = python-ginga-doc
