@@ -6,7 +6,7 @@ url="https://www.openmodelica.org"
 _giturl="https://github.com/OpenModelica/OpenModelica.git"
 license=('OSMC-PL')
 arch=('x86_64')
-depends=('java-environment' 'lapack' 'lapack-static' 'openscenegraph' 'omniorb' 'libcurl-gnutls'
+depends=('java-environment' 'lapack' 'openscenegraph' 'omniorb' 'libcurl-gnutls'
          'lpsolve' 'boost-libs' 'qt5-webengine' 'qt5-xmlpatterns' 'qt5-svg' 'qt5-tools'
          'expat' 'antlr4-runtime')
 makedepends=('gcc-fortran' 'cmake' 'git' 'boost')
