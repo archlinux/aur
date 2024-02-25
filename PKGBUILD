@@ -1,19 +1,20 @@
 # Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 # Contributor: Shayne Hartford <shayneehartford@gmail.com>
 
-_pkgname=wootility
+_pkgname=wootility3
 pkgname=${_pkgname}-appimage
 pkgver=3.6.16
-pkgrel=5
-pkgdesc='Utility for configuring Wooting keyboards (binary AppImage version)'
+pkgrel=1
+pkgdesc='Utility for configuring Wooting pre-Lekker keyboards (binary AppImage version)'
 arch=('x86_64' 'x86_64_v3')
 url='https://wooting.io/wootility'
 license=('unknown')
 depends=('fuse2')
+makedepends=('findutils' 'util-linux')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=(!strip)
-_appimage="${_pkgname}-${pkgver}.AppImage"
+_appimage="${_pkgname%3}-${pkgver}.AppImage"
 install=$pkgname.install
 source=("https://s3.eu-west-2.amazonaws.com/wooting-update/wootility-linux-latest/${_appimage}"
         '70-wooting.rules')
@@ -24,15 +25,17 @@ prepare() {
     # Copying AppImage in case $SRCDEST is mounted with noexec
     cp ${_appimage} ${_appimage}.copy
     chmod +x ${_appimage}.copy
-    ./${_appimage}.copy --appimage-extract ${_pkgname}.desktop
-    ./${_appimage}.copy --appimage-extract ${_pkgname}.png
+    ./${_appimage}.copy --appimage-extract ${_pkgname%3}.desktop
+    ./${_appimage}.copy --appimage-extract ${_pkgname%3}.png
     ./${_appimage}.copy --appimage-extract usr/share/icons
     rm ${_appimage}.copy
+    find squashfs-root/ \! -type d -exec rename ${_pkgname%3} ${_pkgname} \{\} \;
+    find squashfs-root/ -type l -exec rename --symlink ${_pkgname%3} ${_pkgname} \{\} \;
 }
 
 build() {
     sed -i -E "s|Exec=AppRun|Exec=${_pkgname}|" squashfs-root/${_pkgname}.desktop
-    sed -i -E "s|Name=.*$|Name=Wootility|" squashfs-root/${_pkgname}.desktop
+    sed -i -E "s|Name=.*$|Name=Wootility 3|" squashfs-root/${_pkgname}.desktop
 }
 
 package() {
@@ -45,5 +48,5 @@ package() {
     install -Dpm644 "squashfs-root/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
 
     # Install udev rules
-    install -Dpm644 "70-wooting.rules" "${pkgdir}/usr/lib/udev/rules.d/70-wooting.rules"
+    install -Dpm644 "70-wooting.rules" "${pkgdir}/usr/lib/udev/rules.d/70-${_pkgname}.rules"
 }
