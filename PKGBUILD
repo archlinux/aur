@@ -2,7 +2,7 @@
 pkgname=python-wrapt-timeout-decorator
 _name=wrapt_timeout_decorator
 pkgver=1.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Powerful Timeout Decorator that can be used safely on classes, methods, class methods"
 url="https://github.com/bitranox/wrapt_timeout_decorator"
 depends=(
@@ -13,7 +13,7 @@ depends=(
     'python-psutil'
     'python-wrapt'
 )
-makedepends=('python-setuptools')
+makedepends=(python-build python-installer python-wheel)
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
