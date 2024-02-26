@@ -17,6 +17,7 @@ pkgbase = mongodb-compass-readonly
 	depends = lsb-release
 	depends = nodejs>=16.15.1
 	optdepends = org.freedesktop.secrets
+	backup = etc/mongodb-compass.conf
 	source = mongodb-compass-readonly-1.42.1.tar.gz::https://github.com/mongodb-js/compass/archive/v1.42.1.tar.gz
 	source = hadron-build-ffmpeg.diff
 	source = fix-argv.diff
