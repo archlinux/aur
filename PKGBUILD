@@ -4,7 +4,7 @@
 # Contributor: RemiliaForever <remilia at koumakan dot cc>
 
 pkgname=mingw-w64-glfw
-pkgver=3.3.8
+pkgver=3.4
 pkgrel=1
 pkgdesc="A free, open source, portable framework for OpenGL application development (mingw-w64)"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-cmake')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(https://github.com/glfw/glfw/releases/download/${pkgver}/glfw-${pkgver}.zip)
-sha256sums=('4d025083cc4a3dd1f91ab9b9ba4f5807193823e565a5bcf4be202669d9911ea6')
+sha256sums=('b5ec004b2712fd08e8861dc271428f048775200a2df719ccf575143ba749a3e9')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
