@@ -18,8 +18,8 @@
 ## basic info
 _pkgname="quaternion"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=0.0.96
-pkgrel=2
+pkgver=0.0.96.1
+pkgrel=1
 pkgdesc='Qt-based IM client for the Matrix protocol'
 url="https://github.com/quotient-im/Quaternion"
 license=('GPL-3.0-or-later' 'LGPL-2.1-or-later')
