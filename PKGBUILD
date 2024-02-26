@@ -1,7 +1,7 @@
 # Maintainer: Daniele Basso <d dot bass 05 at proton dot me>
 pkgname=bun
-pkgver=1.0.26
-#_zigver=0.12.0-dev.1604+caae40c21 #https://github.com/oven-sh/bun/blob/bun-v1.0.18/build.zig#L9
+pkgver=1.0.29
+#_zigver=0.12.0-dev.1828+225fe6ddb #https://github.com/oven-sh/bun/blob/bun-v1.0.28/build.zig#L9
 pkgrel=1
 pkgdesc="Bun is a fast JavaScript all-in-one toolkit. This PKGBUILD builds from source, resulting into a smaller and faster binary depending on your CPU."
 arch=(x86_64)
@@ -14,14 +14,15 @@ conflicts=(bun-bin)
 source=(git+$url.git#tag=bun-v$pkgver
         bun-linux-x64-$pkgver.zip::https://github.com/oven-sh/bun/releases/download/bun-v$pkgver/bun-linux-x64-baseline.zip)
 b2sums=('SKIP'
-        'ba3df8e4d8a3f5b72c61cd8a510da6b1e16bd03ec5eb8d4b38228c587aba9c02fc28f332ab54b7ce315d3e50b4e45d8d2dcf30a801533eb237c044a63ba4abe4')
+        '9da09ad3981579847228fdde4e95a5b39fb84f4cbd973865dbf0bdd4499e550b7943a1418c42e4e1084b55e3c23f5b5ab7110e86aef3e679d0f81f6fc0fd7b50')
 
 _j=$(($(nproc)/2)) #change for your system
 
 prepare() {
+  export PATH="${srcdir}/bun-linux-x64-baseline:$PATH"
+
   cd "$pkgname"
 
-  export PATH="${srcdir}/bun-linux-x64-baseline:$PATH"
 # 
 #   export PATH="$PATH":$srcdir/zig-linux-x86_64-$_zigver
 # 
@@ -31,19 +32,29 @@ prepare() {
   git -c submodule.src/javascript/jsc/WebKit.update=checkout submodule update --init --recursive --depth=1 --progress
 
   bun i
+  #cd test; bun i; cd ..
+  
   bash ./scripts/all-dependencies.sh
   bash ./scripts/download-zig.sh
-  make runtime_js fallback_decoder bun_error node-fallbacks
 }
 
 build() {
-  # Copied from https://github.com/oven-sh/WebKit/blob/main/Dockerfile#L60
+  export PATH="${srcdir}/bun-linux-x64-baseline:$PATH"
+
+  cd $srcdir/bun/
+
+  make runtime_js fallback_decoder bun_error node-fallbacks
+
+  cd src/bun.js/WebKit/
+
+  # Adapted from https://github.com/oven-sh/WebKit/blob/main/Dockerfile#L60
   #export CFLAGS="$CFLAGS -ffat-lto-objects"
   #export CXXFLAGS="$CXXFLAGS -ffat-lto-objects"
 
   CC="clang" CXX="clang++" cmake \
-      -S $srcdir/bun/src/bun.js/WebKit/ \
-      -B $srcdir/bun/src/bun.js/WebKit/build \
+      -S . \
+      -DCMAKE_CXX_FLAGS="-fuse-ld=lld" \
+      -B ./build \
       -DPORT="JSCOnly" \
       -DENABLE_STATIC_JSC=ON \
       -DENABLE_BUN_SKIP_FAILING_ASSERTIONS=ON \
@@ -57,25 +68,27 @@ build() {
       -GNinja
 
 
-  ninja -C $srcdir/bun/src/bun.js/WebKit/build jsc -j$_j
+  ninja -C ./build jsc -j$_j
 
-  mkdir -p $srcdir/bun/src/bun.js/WebKit/output/{lib,include/JavaScriptCore,Source/JavaScriptCore}
+  mkdir -p ./output/{lib,include/JavaScriptCore,Source/JavaScriptCore}
 
-  cp -r $srcdir/bun/src/bun.js/WebKit/build/lib/*.a $srcdir/bun/src/bun.js/WebKit/output/lib
-  cp $srcdir/bun/src/bun.js/WebKit/build/*.h $srcdir/bun/src/bun.js/WebKit/output/include
-  find $srcdir/bun/src/bun.js/WebKit/build/JavaScriptCore/Headers/JavaScriptCore/ -name "*.h" -exec cp {} $srcdir/bun/src/bun.js/WebKit/output/include/JavaScriptCore/ \;
-  find $srcdir/bun/src/bun.js/WebKit/build/JavaScriptCore/PrivateHeaders/JavaScriptCore/ -name "*.h" -exec cp {} $srcdir/bun/src/bun.js/WebKit/output/include/JavaScriptCore/ \;
-  cp -r $srcdir/bun/src/bun.js/WebKit/build/WTF/Headers/wtf/ $srcdir/bun/src/bun.js/WebKit/output/include
-  cp -r $srcdir/bun/src/bun.js/WebKit/build/bmalloc/Headers/bmalloc/ $srcdir/bun/src/bun.js/WebKit/output/include
-  cp -r $srcdir/bun/src/bun.js/WebKit/Source/JavaScriptCore/Scripts $srcdir/bun/src/bun.js/WebKit/output/Source/JavaScriptCore
-  cp $srcdir/bun/src/bun.js/WebKit/Source/JavaScriptCore/create_hash_table $srcdir/bun/src/bun.js/WebKit/output/Source/JavaScriptCore
+  cp -r ./build/lib/*.a ./output/lib
+  cp ./build/*.h ./output/include
+  find ./build/JavaScriptCore/Headers/JavaScriptCore/ -name "*.h" -exec cp {} ./output/include/JavaScriptCore/ \;
+  find ./build/JavaScriptCore/PrivateHeaders/JavaScriptCore/ -name "*.h" -exec cp {} ./output/include/JavaScriptCore/ \;
+  cp -r ./build/WTF/Headers/wtf/ ./output/include
+  cp -r ./build/bmalloc/Headers/bmalloc/ ./output/include
+  cp -r ./Source/JavaScriptCore/Scripts ./output/Source/JavaScriptCore
+  cp ./Source/JavaScriptCore/create_hash_table ./output/Source/JavaScriptCore
 
-  ln -sf /lib/libicudata.so $srcdir/bun/src/bun.js/WebKit/output/lib/libicudata.a
-  ln -sf /lib/libicui18n.so $srcdir/bun/src/bun.js/WebKit/output/lib/libicui18n.a
-  ln -sf /lib/libicuuc.so $srcdir/bun/src/bun.js/WebKit/output/lib/libicuuc.a
+  ln -sf /lib/libicudata.so ./output/lib/libicudata.a
+  ln -sf /lib/libicui18n.so ./output/lib/libicui18n.a
+  ln -sf /lib/libicuuc.so ./output/lib/libicuuc.a
 
-  cmake -B $pkgname/build -S $pkgname -DCMAKE_BUILD_TYPE=Release -GNinja -DUSE_STATIC_LIBATOMIC=OFF -DWEBKIT_DIR=$srcdir/bun/src/bun.js/WebKit/output -DUSE_DEBUG_JSC=ON -DZIG_OPTIMIZE=ReleaseFast
-  ninja -C $pkgname/build -j$_j
+  # make jsc
+
+  cmake -B $srcdir/$pkgname/build -S $srcdir/$pkgname -DCMAKE_BUILD_TYPE=Release -GNinja -DUSE_STATIC_LIBATOMIC=OFF -DWEBKIT_DIR=$srcdir/bun/src/bun.js/WebKit/output -DUSE_DEBUG_JSC=OFF -DZIG_OPTIMIZE=ReleaseFast
+  ninja -C $srcdir/$pkgname/build -j$_j
 }
 
 package() {
