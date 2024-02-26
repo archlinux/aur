@@ -1,0 +1,31 @@
+pkgbase = linux-rkbsp-joshua-git
+	pkgver = 6.1.25.r1256322.b9b3be430754
+	pkgrel = 1
+	url = https://github.com/Joshua-Riek
+	arch = aarch64
+	license = GPL2
+	makedepends = cpio
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = git
+	makedepends = dtc
+	options = !strip
+	source = git+https://github.com/Joshua-Riek/linux-rockchip.git#branch=rk-6.1-rkr1
+	source = linux.preset
+	sha512sums = SKIP
+	sha512sums = 2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf
+
+pkgname = linux-rkbsp-joshua-git
+	pkgdesc = The linux-rockchip based on rkbsp kernel, with patches picked by Joshua Riek focusing on RK3588
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	backup = etc/mkinitcpio.d/linux-rkbsp-joshua-git.preset
+
+pkgname = linux-rkbsp-joshua-git-headers
+	pkgdesc = Headers and scripts for building modules for the linux-rockchip kernel, with patches picked by Joshua Riek focusing on RK3588
+	depends = python
