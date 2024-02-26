@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='WPE launcher and webapp container'
 pkgname=cog
-pkgver=0.18.2
+pkgver=0.18.3
 pkgrel=1
 url=https://github.com/Igalia/cog
 arch=(i686 x86_64 aarch64 armv7l armv7h)
@@ -12,13 +12,13 @@ makedepends=(meson wayland-protocols libxcb libxkbcommon-x11 gtk4 weston)
 optdepends=('libxcb: x11 platform support'
             'libxkbcommon-x11: x11 platform support'
 			'gtk4: gtk4 platform support')
-license=(custom:MIT)
+license=(MIT)
 source=("https://wpewebkit.org/releases/${pkgname}-${pkgver}.tar.xz"
         "https://wpewebkit.org/releases/${pkgname}-${pkgver}.tar.xz.asc")
 validpgpkeys=('5AA3BC334FD7E3369E7C77B291C559DBE4C9123B')
-md5sums=('7fbfc2e19304132be0d73f5e5512151c' 'SKIP')
-sha1sums=('045294f7fa878db86e4b8a617ee4ac056a71cb75' 'SKIP')
-sha256sums=('3c4237cff6323b8c3eaf52c6f3f6415b898a22c0127c6c396c1eaa6eef46c279' 'SKIP')
+md5sums=('e457de5b5ac8994ae9971c0a5a22b8a2' 'SKIP')
+sha1sums=('21df2a84c651b45e78d08e45e71631250a0078c3' 'SKIP')
+sha256sums=('cd4ec937175a290ccd7c8ec398e4569aec04084cd94b11b2d83518778ba9d055' 'SKIP')
 
 build () {
 	rm -rf _build
