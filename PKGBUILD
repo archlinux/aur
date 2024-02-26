@@ -2,12 +2,12 @@
 pkgname=chieapp-bin
 _pkgname=Chie
 pkgver=0.2.11
-pkgrel=4
+pkgrel=5
 pkgdesc="An extensible desktop app for large language models like ChatGPT and Bing Chat."
 arch=('x86_64')
 url="https://chie.app/"
 _ghurl="https://github.com/chieapp/chie"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 options=('!strip')
@@ -36,7 +36,7 @@ build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
+    gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
