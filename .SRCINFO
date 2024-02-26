@@ -1,7 +1,7 @@
 pkgbase = libportal-inputcapture
 	pkgdesc = GIO-style async APIs for most Flatpak portals with patches to support input capture for input-leap
 	pkgver = 0.7.1+r8+g1add346
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/flatpak/libportal
 	arch = x86_64
 	license = LGPL3
@@ -19,7 +19,7 @@ pkgbase = libportal-inputcapture
 	makedepends = qt5-x11extras
 	makedepends = vala
 	makedepends = xdg-desktop-portal
-	source = git+https://github.com/flatpak/libportal#commit=1add346fc9ebea5ca144e244bcb3b6b9ee90fddf
+	source = git+https://github.com/flatpak/libportal
 	b2sums = SKIP
 
 pkgname = libportal-inputcapture

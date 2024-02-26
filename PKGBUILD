@@ -9,7 +9,7 @@ pkgname=(
   libportal-inputcapture-docs
 )
 pkgver=0.7.1+r8+g1add346
-pkgrel=2
+pkgrel=3
 pkgdesc="GIO-style async APIs for most Flatpak portals with patches to support input capture for input-leap"
 url="https://github.com/flatpak/libportal"
 arch=(x86_64)
@@ -32,8 +32,8 @@ checkdepends=(
   python-pytest
   xorg-server-xvfb
 )
-_commit=1add346fc9ebea5ca144e244bcb3b6b9ee90fddf  # tags/0.7.1^0
-source=("git+https://github.com/flatpak/libportal#commit=$_commit")
+#_commit=1add346fc9ebea5ca144e244bcb3b6b9ee90fddf  # tags/0.7.1^0
+source=("git+https://github.com/flatpak/libportal")
 b2sums=('SKIP')
 
 pkgver() {
