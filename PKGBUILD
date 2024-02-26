@@ -2,12 +2,12 @@
 
 _realname='g3k'
 pkgname="$_realname-git"
-pkgver=0.16.0.1331.50cabc0
+pkgver=0.16.0.r1353.d237a16
 pkgrel=1
 pkgdesc='A 3DUI widget toolkit.'
 arch=('i686' 'x86_64')
 url='https://gitlab.freedesktop.org/xrdesktop/g3k'
-depends=('gxr-git')
+depends=('gxr-git' 'libcanberra' 'shaderc' 'cairo' 'dconf' 'gcc-libs' 'json-glib' 'vulkan-icd-loader' 'graphene' 'gtk3' 'gdk-pixbuf2' 'pango' 'glib2' 'glibc' 'gulkan-git')
 provides=("$_realname="$pkgver)
 conflicts=("$_realname")
 makedepends=('meson' 'git' 'glslang' 'gtk-doc' 'vulkan-headers')
@@ -23,15 +23,13 @@ ver() {
 }
 
 pkgver() {
-  cd $_realname
-  hash=$(git log --pretty=format:'%h' -n 1)
-  revision=$(git rev-list --count HEAD)
-  echo $(ver).$revision.$hash
+  cd "$_realname"
+  printf "$(ver).r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
   rm -rf build
-  arch-meson $_realname build --libdir=lib --buildtype release #-Dapi_doc=true
+  arch-meson "$_realname" build --libdir=lib --buildtype release #-Dapi_doc=true
   ninja -C build
 }
 
