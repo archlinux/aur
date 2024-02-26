@@ -4,24 +4,27 @@
 
 # TODO: Update Readme.txt with github links, new versions and improved command lines
 # TODO: Can we get multiple STUN servers for redundancy?
-# TODO: The routing patch sucks. What is the correct patch?
-# +TODO: Need fax call log without all the riffraff
-# +TODO: Quiet option to reduce OPAL chatter
+#+TODO: The routing patch 0001 sucks. What is the correct patch?. Routing fixed.
+#+TODO: Need fax call log without all the riffraff, patched away noisy lines
+#+TODO: Quiet option to reduce OPAL chatter, patched away
 # TODO: Do we get disconnect and reconnect on Internet failover?
-# TODO: Do not show password on command line
-# +TODO: Do not show password on screen in systemd log
+#+TODO: Do not show password on command line, patched to show length
+#+TODO: Do not show password on screen in systemd log, patched to read from file
 # TODO: How to set up redundant connections
-# +TODO: Delete /dev/ttyT* on exit
+#+TODO: Delete /dev/ttyT* on exit, handled by watchdog
 # TODO: --rtp-max must always be odd number
 
-_sipsvr='sip.t38fax.com:5080'; _sipext=''
+_sipext=''
+#_sipsvr='sip.t38fax.com:5080'; _sipext=''
 #_sipsvr='voip.itsp.net:5060'; _sipext='ttyAC'
 #@SIPSVR@
 
 # Until patch 0001 is fixed, we need a separate package for each service
+# Patch 0001 is now fixed. No more need for separate package.
 
 # Edit /etc/t38modem.sh with service parameters
 # Passwords should not have any special characters that interfere with sed !#_-= are ok
+# Password is gone, no longer removed by sed.
 
 # For first service
 # systemctl enable --now t38modem
@@ -48,10 +51,11 @@ pkgrel=1
 pkgdesc='t.38 SIP VoIP fax modem for Hylafax'
 arch=('x86_64')
 #url="https://github.com/T38Modem/${_pkgname}"
-url='https://github.com/hehol/t38modem'
-#url='http://t38modem.sourceforge.net/'
+url='https://github.com/hehol/t38modem' # Henning Holtschneider
+#url='http://t38modem.sourceforge.net/' # Pete Davidson
 license=('MPL-1.0')
 depends=('gcc-libs' 'bash' 'glibc' "opal>=${_opalver}" 'ca-certificates-utils' 'procps-ng' 'ptlib')
+depends+=('curl')
 # opal will determine the required version of ptlib
 makedepends=('pkg-config')
 backup=('etc/t38modem.sh')
@@ -62,21 +66,27 @@ source=(
   "${_srcdir}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
   '0000-t38modem-perms-uucp.patch'
   # Error: Call failed due to a transport error https://github.com/hehol/t38modem/issues/6
-  '0001-t38modem-t38fax-routing-support.patch'
+  #'0001-t38modem-t38fax-routing-support.patch'
   # Patch 0002-opensuse-0001 was modified to remove an invalid code change.
   '0002-opensuse-0001-build-resolve-compiler-warnings-and-errors-with-ptli.patch' # https://build.opensuse.org/package/show/openSUSE:Factory/t38modem
+  #'0003-disable-log-password.patch'
+  '0004-password-from-file.patch'
+  #'0005-privileges-uucp.patch' # Patch doesn't work
+  '0006-quiet-output.patch'
   't38modem.sh'
 )
 md5sums=('ca9e2ceb352c70c99aa0defda2b9075a'
          '6dff05fdc3dec8b4461cd87ad115814c'
-         'a8c81c4a32e7b6a908847a0ac7536ed1'
          'ff9e1a8aa228a442be46b41ceb0b9e42'
-         'be2936fec6378052f466a4dd320edd9e')
+         '5532b59034c3e3c84057baa205fef98d'
+         '11c092eeb9a04e0fe481a656c8b869bc'
+         '82e781af4df81864a84e21d725eac562')
 sha256sums=('d44069fa0e10fda9d91c79c5a74db1b26926c60b88a39553398a1c79b2ae412f'
             '22d84d09399fb89925c006b0c17a4b80d56c7ba4f60a27e4c206d6280ef6b064'
-            'd7224d12bbdfb40506b9c7dd3492fa628505e498eeb146561c1f5bccfc876022'
             'b6166a32a57a006181b3951dc83b3dbbbffebd11bc57983e6dc2a7d341c26f97'
-            'fac96f16d9a497e3107332a33cbda40a28ea5d316cf2d3faf8ce3048cf611929')
+            'ada520832077f6f9a8d107e3abce9f8cab754c89e59bdabd9c9c4dc7f267e97e'
+            '73c4c20d47a763c45dce442f2844b22246e2bf1eccfa846e10fd7ea8bf2379e4'
+            '10bcd8799f62ba47efe79f3221767da8fca6921d7b298ce72ab79ddca7de7596')
 
 _g_uid='uucp'
 _g_gid='uucp'
@@ -132,7 +142,7 @@ prepare() {
 
   local _seds=(
     -e "s:@UUCP@:$(getent group "${_g_gid}" | cut --delimiter ':' --fields 3):g"
-    -e "s/@SIPSVR@/${_sipsvr}/g"
+    #-e "s/@SIPSVR@/${_sipsvr}/g"
   )
 
   local _f
@@ -147,6 +157,9 @@ prepare() {
   #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; cd "${_srcdir}"; false
   # diff -pNaru5 'a' 'b' > 'new.patch'
 
+  # Disable H323 compile which is no longer used
+  sed -e 's:opal/h323ep.o::g' -i 'Makefile'
+
   bash -n "${srcdir}/t38modem.sh"
 
   set +u
@@ -156,7 +169,7 @@ build() {
   set -u
   cd "${_srcdir}"
   CFLAGS+=' -Wno-narrowing'
-  CFLAGS+=' -Wno-deprecated-declarations' # Need this until auto_ptr fixed in opal
+  #CFLAGS+=' -Wno-deprecated-declarations' # Need this until auto_ptr fixed in opal
   CXXFLAGS+=' -std=c++17'
   #CXXFLAGS+=' -std=c++03'
   nice make # -j1 # CXX='g++-9' CC='gcc-9' # too small, debugging is easier with -j1

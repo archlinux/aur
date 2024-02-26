@@ -1,0 +1,39 @@
+# This patch is partly disabled. This does drop privileges
+# but within a few seconds the pty disappears and the symlink
+# goes bad. In the disabled state it only prints the privs.
+
+diff -pNaru5 a/opal/manager.cxx b/opal/manager.cxx
+--- a/opal/manager.cxx	2024-02-02 07:43:58.000000000 -0500
++++ b/opal/manager.cxx	2024-02-23 15:22:59.395026731 -0500
+@@ -320,11 +320,11 @@ bool MyManager::PreInitialise(PArgList &
+   return true;
+ }
+ 
+ bool MyManager::Initialise(PArgList & args, bool verbose, const PString &defaultRoute)
+ {
+-  const PProcess & process = PProcess::Current();
++  PProcess & process = PProcess::Current();
+ 
+   if (!PreInitialise(args, verbose))
+     return false;
+ 
+   LockedStream lockedOutput(*this);
+@@ -688,10 +688,18 @@ bool MyManager::Initialise(PArgList & ar
+   if (!epSIP->Initialise(args,verbose,""))
+     return false;
+   if (!epFAX->Initialise(args,verbose,""))
+     return false;
+ 
++  output << "Privileges: " << process.GetUserName() << ":" << process.GetGroupName();
++  if (0 && process.GetUserName() == "root") {
++    process.SetGroupName("uucp",false);
++    process.SetUserName("uucp",false);
++    output << " -> " << process.GetUserName() << ":" << process.GetGroupName();
++  }
++  output << endl;
++
+   output << "---------------------------------\n\n";
+   output << "Route table:" << endl;
+ 
+   const RouteTable &routeTable = GetRouteTable();
+ 

@@ -1,0 +1,23 @@
+diff -pNaru5 a/opal/manager.cxx b/opal/manager.cxx
+--- a/opal/manager.cxx	2024-02-02 07:43:58.000000000 -0500
++++ b/opal/manager.cxx	2024-02-24 03:18:14.780578367 -0500
+@@ -757,19 +757,17 @@ void MyManager::OnClearedCall(OpalCall &
+ 
+ PBoolean MyManager::OnOpenMediaStream(OpalConnection & connection, OpalMediaStream & stream)
+ {
+   OpalCall &call = connection.GetCall();
+ 
+-  cout << "Open " << stream << " for Call[" << call.GetToken() << "]" << endl;
+   return OpalManager::OnOpenMediaStream(connection, stream);
+ }
+ 
+ void MyManager::OnClosedMediaStream(const OpalMediaStream & stream)
+ {
+   OpalCall &call = stream.GetConnection().GetCall();
+ 
+-  cout << "Close " << stream << " for Call[" << call.GetToken() << "]" << endl;
+   OpalManager::OnClosedMediaStream(stream);
+ }
+ 
+ PString MyManager::ApplyRouteTable(const PString & proto, const PString & addr, PINDEX & routeIndex)
+ {

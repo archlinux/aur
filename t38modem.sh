@@ -34,6 +34,7 @@ case "${g_opt_T}" in
 # https://community.fortinet.com/t5/FortiGate/Technical-Tip-FortiGate-VIP-responds-to-telnet-on-port-5060-and/ta-p/195354
 # Remove ALG and other SIP trash until nmap shows that the Fortiate ALG is no longer listening on ports 5060,2000
 # Debug SIP registration problems with WireShark or tcpdump -v
+  g_sip_ping="${g_sip_ip%%:*}"
   g_sip_expires='300'            # need router TTL adjustment to +60 seconds, 423 Interval Too Brief: find this value with tcpdump -v
   g_ctty=1
   ;;
@@ -49,25 +50,41 @@ case "${g_opt_T}" in
 
   g_opt_Tx="${g_opt_T}"
   g_sip_ip='sip.example.com:5060'
+  g_sip_ping="${g_sip_ip%%:*}"
   g_sip_expires='3600'
   g_lan_ip+=":${g_pub_port}"
   ;;
 *) printf '%s not supported by %s\n' "${g_opt_T}" "$0"; exit 1;;
 esac
 
+g_dnsa=('api.ipify.org' 'ifconfig.me' 'icanhazip.com' 'ipinfo.io/ip' 'ident.me' 'ipecho.net/plain') # https://opensource.com/article/18/5/how-find-ip-address-linux
 # https://stackoverflow.com/questions/5533569/simple-method-to-shuffle-the-elements-of-an-array-in-bash-shell
 shuffle() {
   local i tmp size max rand
 
   # $RANDOM % (i+1) is biased because of the limited range of $RANDOM
   # Compensate by using a range which is a multiple of the array size.
-  size="${#dnsa[*]}"
+  size="${#g_dnsa[*]}"
   max="$(( 32768 / size * size ))"
 
   for ((i=size-1; i>0; i--)); do
     while (( (rand="$RANDOM") >= max )); do :; done
     rand="$(( rand % (i+1) ))"
-    tmp="${dnsa[i]}" dnsa[i]="${dnsa[rand]}" dnsa[rand]="${tmp}"
+    tmp="${g_dnsa[i]}" g_dnsa[i]="${g_dnsa[rand]}" g_dnsa[rand]="${tmp}"
+  done
+}
+
+_fn_dnstest() {
+  local pub_ip2
+  for dns in "${g_dnsa[@]}"; do
+    set +e
+    pub_ip2="$(curl -4 -s "${dns}")"
+    set -e
+    if [[ "${pub_ip2}" =~ ^[0-9.]{8,15}$ ]]; then
+      printf 'Success: %s %s\n' "${pub_ip2}" "${dns}"
+    else
+      printf 'Fail: %s\n' "${dns}"
+    fi
   done
 }
 
@@ -83,9 +100,16 @@ g_gid='uucp'
 g_watchdog="${g_tmp}/t38modem.watchdog.${g_opt_T}.txt"
 g_restarts='Assertion fail|Call failed security check|has no compatible listener|failed .403'
 
+# 0 - create shadow symlinks in g_tmp. Use this when systemd sets User=uucp Group=uucp
+# 1 - no shadow links. Use with 0005-privileges-uucp.patch or if running as root
+_opt_ShadowTMP=0
+
 _fn_cleantty() {
   if [ "${EUID}" -eq 0 ]; then
-    rm -f "${g_ptty[@]/#/${g_tmp}/}" "${g_ptty[@]/#//dev/}"
+    if [ "${_opt_ShadowTMP}" -eq 0 ]; then
+      rm -f "${g_ptty[@]/#/${g_tmp}/}"
+    fi
+    rm -f "${g_ptty[@]/#//dev/}"
   fi
 }
 
@@ -98,14 +122,24 @@ mvwatchdog() {
 _fn_watchdog() {
   if [ "${EUID}" -eq 0 ]; then
     if [ -s "${g_watchdog}" ]; then
-      if ping -w '2' -q -n -c '1' 'sip.t38fax.com' > /dev/null; then
-        systemctl stop 't38modem.service'
+      if ping -w '2' -q -n -c '1' "${g_sip_ping}" > /dev/null; then
+        local wd='t38modem'
+        if [ ! -z "${g_opt_Tx}" ]; then
+          wd+="@${g_opt_Tx}"
+        fi
+        systemctl stop "${wd}.service"
         mvwatchdog
-        printf 'Restarting t38modem due to crash'
-        systemctl start 't38modem.service'
-        systemctl restart "${g_ptty[@]/#/faxgetty@}"
+        printf 'Restarting %s due to crash' "${wd}"
+        systemctl start "${wd}.service"
+        local pt
+        for pt in "${g_ptty[@]}"; do
+          pt="faxgetty@${pt}.service"
+          if systemctl -q 'is-enabled' "${pg}"; then
+            systemctl restart "${pt}"
+          fi
+        done
       fi
-    elif ! pgrep -c -u "root,${g_uid}" 't38modem$' > /dev/null; then
+    elif ! pgrep -f -c -u "root,${g_uid}" "t38modem .+/${g_opt_T}" > /dev/null; then
       _fn_cleantty
     fi
   fi
@@ -121,15 +155,21 @@ _fn_prep() {
     mkdir -p "${g_tmp}"
     chown -R "${g_uid}:${g_gid}" "${g_tmp}"
     chmod 750 "${g_tmp}"
-    cd '/dev'
-    local p
-    for p in "${g_ptty[@]}"; do
-      ln -sf "${g_tmp}/${p}"
-    done
+    if [ "${_opt_ShadowTMP}" -eq 0 ]; then
+      cd '/dev'
+      local p
+      for p in "${g_ptty[@]}"; do
+        ln -sf "${g_tmp}/${p}"
+      done
+    fi
   fi
 }
 
 _fn_t38fax() {
+  local pwfile="${g_tmp}/t38modem.pw.${g_opt_T}.txt"
+  umask 077
+  printf '%s' "${g_pw}" > "${pwfile}"
+  umask 022
   local topts=()
   topts+=(
     # A registration is sent for every found interface so only enable the used interfaces.
@@ -144,23 +184,29 @@ _fn_t38fax() {
     --rtp-max  "$((g_pub_port+2+g_ctty*2))" # 2 RTP ports per line
     --Use-ECM
     #--sip-proxy "${g_udid}:${g_pw}@${g_sip_ip}" # supported but not necessary
-    "${g_ptty[@]/#/--ptty=+${g_tmp}/}"
-    --route $'modem:.*\t'"sip.*=sip:<dn>@${g_sip_ip}" # Hylafax send fax routes to sip.
-    --route $'sip:.*\t.*=modem:<dn>'                  # Receive fax routes to Hylafax receive.
+    --route={fax:,t38:,modem:}$'.*\t'".*=sip:<dn>@${g_sip_ip}"
+    #--route={fax:,t38:,modem:}".*=sip:<dn>@${g_sip_ip}"
+    --route='sip:.*\t.*=modem:<dn>'                  # Receive fax routes to Hylafax receive.
     --jitter   '80,80'
     --ssl-ca   '/etc/ssl/certs/ca-certificates.crt'
     --ssl-cert "${g_tmp}/t38modem_opal_certificate-${g_opt_T}.pem"
     --ssl-key  "${g_tmp}/t38modem_opal_private_key-${g_opt_T}.pem"
-    --sip-register "${g_udid}@${g_sip_ip},${g_pw},,,,${g_sip_expires},public"
+    #--sip-register "${g_udid}@${g_sip_ip},${g_pw},,,,${g_sip_expires},public"
+    --sip-register "${g_udid}@${g_sip_ip},@@@${pwfile},,,,${g_sip_expires},public"
     #-u "${g_udid}"
     #-p "${g_pw}"
   )
+  if [ "${_opt_ShadowTMP}" -eq 0 ]; then
+    topts+=("${g_ptty[@]/#/--ptty=+${g_tmp}/}")
+  else
+    topts+=("${g_ptty[@]/#/--ptty=+/dev/}")
+  fi
 
   # Without one of these NAT handlers return connections fail and you get error: Call cleared due to loss of media flow.
   if :; then
-    local dns dnsa=('api.ipify.org' 'ifconfig.me' 'icanhazip.com' 'ipinfo.io/ip' 'ident.me' 'ipecho.net/plain') # https://opensource.com/article/18/5/how-find-ip-address-linux
-    shuffle # dnsa
-    for dns in "${dnsa[@]}"; do
+    local dns
+    shuffle # g_dnsa
+    for dns in "${g_dnsa[@]}"; do
       local pub_ip2="$(curl -4 -s "${dns}")"
       if [[ "${pub_ip2}" =~ ^[0-9.]{8,15}$ ]]; then
         printf '%s %s\n' "${pub_ip2}" "${dns}"
@@ -177,6 +223,7 @@ _fn_t38fax() {
     topts+=(--stun 'stun.ekiga.net')
   fi
 
+  local g_opt_Tx=''
   if [ "${EUID}" -eq "$(id -u "${g_uid}")" ]; then
     # topts+=(-t -o "/var/log/t38modem/t38modem-trace-${g_opt_T}-$(date +'%+4Y-%m-%d_%H-%M-%S').log")
     # Run with systemd
@@ -188,13 +235,14 @@ _fn_t38fax() {
     local pwfake="$(printf '%*s' "${#g_pw}" '')"
     pwfake="${pwfake// /A}"
     local seds=(
-      -e '/^Open / d' -e '/^Close / d'
+      #-e '/^Open / d' -e '/^Close / d'
       #-e 's/Password: .*$/Password: /g'
-      -e "s:${g_pw}:${pwfake}:g"
+      #-e "s:${g_pw}:${pwfake}:g"
       #-e "/^Call/! w ${g_watchdog}"
       #-e "/${g_restarts//|/\\|}/I w ${g_watchdog}"
       -E -e "/${g_restarts}/I w ${g_watchdog}"
     )
+    g_pw=''
     exec "t38modem${g_opt_Tx}" "${topts[@]}" 2>&1 | sed --unbuffered "${seds[@]}"
   elif pgrep -c -u "root,${g_uid}" "t38modem${g_opt_Tx}$" > /dev/null; then
     printf "t38modem${g_opt_Tx} is already running" 1>&2
