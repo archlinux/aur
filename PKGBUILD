@@ -31,6 +31,6 @@ package() {
     mkdir -p "${pkgdir}/usr/share/applications"
     cp -r "dist/linux-unpacked"/* "${pkgdir}/usr/share/notion-calendar-electron"
     cp -P "${srcdir}/${pkgname}-${pkgver}/notion-calendar-electron" "${pkgdir}/usr/bin/"
-    cp "${srcdir}/${pkgname}-${pkgver}/notion-calendar-electron.desktop" "${pkgdir}/usr/share/applications/"
-    
+    cp "${srcdir}/${pkgname}-${pkgver}/icon.png" "${pkgdir}/usr/share/notion-calendar-electron/"
+    cp "${srcdir}/${pkgname}-${pkgver}/notion-calendar-electron.desktop" "${pkgdir}/usr/share/applications/"   
 }
