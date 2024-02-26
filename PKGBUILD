@@ -3,7 +3,7 @@ pkgname=affine-bin
 _appname=AFFiNE
 pkgver=0.12.0
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="There can be more than Notion and Miro. AFFiNE is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use."
 arch=('x86_64')
 url="https://affine.pro/"
@@ -25,7 +25,7 @@ source=(
 )
 sha256sums=('fc89da7b1fb89252fc5439ba61a4ca6b0c29bd24c2c3f27574b651180536e4ac'
             'b266795bb7f2dd32b76ef8f05788bbd63da556629265cca13217167cfc4d9cde'
-            'b67790c8940fae72af15fdaf105f051123eb9598291ca4f0079aa47615e62d85'
+            'b54bb7aa14dd5725bc268921eeea9dee973dacbc13e0cea30e7d2adb5cd5a53f'
             '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
