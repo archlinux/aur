@@ -1,6 +1,6 @@
 # Maintainer: Simon <simon at gamersi dot at>
 pkgname=lrcget-bin
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 options=(!strip)
 pkgdesc="Utility for mass-downloading LRC synced lyrics for your offline music library."
@@ -19,7 +19,6 @@ prepare() {
 }
 
 package() {
-  # install AppImage
   mkdir -p "${pkgdir}${install_path}"
   echo "Installing ${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage to ${pkgdir}${install_path}"
   cp ${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage ${pkgdir}${install_path}/${pkgname%-appimage}-${pkgver}.AppImage
