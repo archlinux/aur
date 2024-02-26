@@ -48,25 +48,56 @@ export WINEDEBUG=-all
 # wine gecko and mono
 export WINEDLLOVERRIDES="mscoree,mshtml="
 
-wine="wine"
-wine64="wine64"
-wineboot="wineboot"
+wineserver="wineserver"
 
 # $PATH is the way for user to control where wine is located (including custom Wine versions).
-# Pure 64-bit Wine (non Wow64) requries skipping 32-bit steps.
+# Pure 64-bit Wine (non Wow64) requires skipping 32-bit steps.
 # In such case, wine64 and winebooot will be present, but wine binary will be missing,
 # however it can be present in other PATHs, so it shouldn't be used, to avoid versions mixing.
-wine_path=$(dirname "$(which $wineboot)")
-wow64=true
-if ! [ -f "$wine_path/$wine" ]; then
-   wine=$wine64
-   wow64=false
+wine_path=$(dirname "$(which $wineserver)")
+wine="$wine_path/wine"
+wine64="$wine_path/wine64"
+wineboot="$wine_path/wineboot"
+
+# Thank you winetricks!
+get_file_arch()
+{
+  _W_file="$1"
+  # Assume ELF binaries for everything else
+  _W_ob_output="$(od -An -t x1 -j 0x12 -N 1 "${_W_file}" | tr -d "[:space:]")"
+  case "${_W_ob_output}" in
+      "3e")      _W_file_arch="x86_64" ;;
+      "03"|"06") _W_file_arch="i386" ;;
+      *)         _W_file_arch="" ;;
+  esac
+
+  echo "${_W_file_arch}"
+}
+
+if [ -z "$WINEARCH" ]; then
+  wine_arch=$(get_file_arch "$wine")
+  wine64_arch=$(get_file_arch "$wine64")
+  if [ "$wine_arch" == "x86_64" ] || [ "$wine64_arch" == "x86_64" ]; then
+    arch=win64
+  elif [ "$wine_arch" == "i386" ] && [ "$wine64_arch" == "" ]; then
+    arch=win32
+  fi
+else
+  arch="$WINEARCH"
+fi
+
+if ! [ -f "$wine64" ]; then
+   wine64="$wine"
+fi
+
+if [ "$arch" == "win32" ]; then
+  wine64="$wine"
 fi
 
 # resolve 32-bit and 64-bit system32 path
-winever="$($wine --version | grep wine)"
-if [ -z "$winever" ]; then
-  echo "$wine:"' Not a wine executable. Check your $wine.' >&2
+wine_ver="$($wineserver --version 2>&1 >/dev/null | grep Wine)"
+if [ -z "$wine_ver" ]; then
+  echo "$wineserver:"' Not a wine executable. Check your wine install.' >&2
   exit 1
 fi
 
@@ -74,25 +105,19 @@ fi
 # if they are missing
 $wineboot -u
 
-win64_sys_path=$($wine winepath -u 'C:\windows\system32' 2> /dev/null)
-win64_sys_path="${win64_sys_path/$'\r'/}"
-win32_sys_path=$($wine winepath -u 'C:\windows\syswow64' 2> /dev/null)
-win32_sys_path="${win32_sys_path/$'\r'/}"
+system32_path=$($wine64 winepath.exe -u 'C:\windows\system32' 2> /dev/null)
+system32_path="${system32_path/$'\r'/}"
+syswow64_path=$($wine64 winepath.exe -u 'C:\windows\syswow64' 2> /dev/null)
+syswow64_path="${syswow64_path/$'\r'/}"
 
-# if syswow64 for the prefix doesn't exist, treat it as a win32 prefix
-if ! [ -d "$win32_sys_path" ]; then
-  win32_sys_path="$win64_sys_path"
-fi
-
-if [ -z "$win32_sys_path" ] && [ -z "$win64_sys_path" ]; then
+if [ -z "$syswow64_path" ] && [ -z "$system32_path" ]; then
   echo 'Failed to resolve C:\windows\system32.' >&2
   exit 1
 fi
 
 # create native dll override
 overrideDll() {
-  $wine reg add 'HKEY_CURRENT_USER\Software\Wine\DllOverrides' /v "$1" /d native /f >/dev/null 2>&1
-  if [ $? -ne 0 ]; then
+  if ! $wine64 reg add 'HKEY_CURRENT_USER\Software\Wine\DllOverrides' /v "$1" /d native /f >/dev/null 2>&1; then
     echo -e "Failed to add override for $1"
     exit 1
   fi
@@ -100,8 +125,7 @@ overrideDll() {
 
 # remove dll override
 restoreDll() {
-  $wine reg delete 'HKEY_CURRENT_USER\Software\Wine\DllOverrides' /v "$1" /f > /dev/null 2>&1
-  if [ $? -ne 0 ]; then
+  if ! $wine64 reg delete 'HKEY_CURRENT_USER\Software\Wine\DllOverrides' /v "$1" /f >/dev/null 2>&1; then
     echo "Failed to remove override for $1"
   fi
 }
@@ -160,34 +184,38 @@ uninstallFile() {
 }
 
 install() {
-  installFile "$win64_sys_path" "$dxvk_nvapi_lib64" "${1}64"
-  inst64_ret="$?"
-  if (( (inst64_ret == 0) )); then
-    overrideDll "${1}64"
+  if [ "$arch" == "win32" ]; then
+    lib="$dxvk_nvapi_lib32"
+    dll="${1}"
+  else
+    lib="$dxvk_nvapi_lib64"
+    dll="${1}64"
+  fi
+  if installFile "$system32_path" "$lib" "$dll"; then
+    overrideDll "$dll"
   fi
 
-  inst32_ret=-1
-  if $wow64; then
-    installFile "$win32_sys_path" "$dxvk_nvapi_lib32" "$1"
-    inst32_ret="$?"
-    if (( (inst32_ret == 0) )); then
+  if [ -d "$syswow64_path" ]; then
+    if installFile "$syswow64_path" "$dxvk_nvapi_lib32" "$1"; then
       overrideDll "$1"
     fi
   fi
 }
 
 uninstall() {
-  uninstallFile "$win64_sys_path" "$dxvk_nvapi_lib64" "${1}64"
-  uninst64_ret="$?"
-  if (( (uninst64_ret == 0) )); then
-    restoreDll "${1}64"
+  if [ "$arch" == "win32" ]; then
+    lib="$dxvk_nvapi_lib32"
+    dll="${1}"
+  else
+    lib="$dxvk_nvapi_lib64"
+    dll="${1}64"
+  fi
+  if uninstallFile "$system32_path" "$lib" "$dll"; then
+    restoreDll "$dll"
   fi
 
-  uninst32_ret=-1
-  if $wow64; then
-    uninstallFile "$win32_sys_path" "$dxvk_nvapi_lib32" "$1"
-    uninst32_ret="$?"
-    if (( (uninst32_ret == 0) )); then
+  if [ -d "$syswow64_path" ]; then
+    if uninstallFile "$syswow64_path" "$dxvk_nvapi_lib32" "$1"; then
       restoreDll "$1"
     fi
   fi
