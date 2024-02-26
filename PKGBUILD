@@ -4,7 +4,7 @@ pkgname="frp-panel"
 pkgver=0.0.14
 pkgrel=2
 pkgdesc="A multi node frp webui and for frp server and client management"
-arch=("any")
+arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/VaalaCat/${pkgname}"
 backup=(
     "etc/${pkgname}/client.env"
