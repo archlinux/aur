@@ -1,11 +1,11 @@
 pkgbase = vesktop-bin
 	pkgdesc = A cross platform electron-based desktop app aiming to give you a snappier Discord experience with Vencord pre-installed
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Vencord/Vesktop
 	arch = aarch64
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	depends = electron28
 	depends = hicolor-icon-theme
 	provides = vesktop=1.5.0
@@ -13,7 +13,7 @@ pkgbase = vesktop-bin
 	conflicts = vesktop
 	conflicts = vencord-desktop
 	source = vesktop.sh
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 	source_aarch64 = vesktop-1.5.0-aarch64.deb::https://github.com/Vencord/Vesktop/releases/download/v1.5.0/vesktop_1.5.0_arm64.deb
 	sha256sums_aarch64 = cab6b72a969c759e305d6d7b4d499a30cb03df0da16e878393e71937fe1894b4
 	source_x86_64 = vesktop-1.5.0-x86_64.deb::https://github.com/Vencord/Vesktop/releases/download/v1.5.0/vesktop_1.5.0_amd64.deb
