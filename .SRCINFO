@@ -1,6 +1,6 @@
 pkgbase = r-rseis
 	pkgdesc = Seismic Time Series Analysis Tools
-	pkgver = 4.1.6
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=RSEIS
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = r-rseis
 	depends = r-rpmg
 	depends = r-rwave
 	optdepends = r-stats
-	source = https://cran.r-project.org/src/contrib/RSEIS_4.1-6.tar.gz
-	sha256sums = 6a4a3e57fb4935676a3105597e879ff79839bba86349fca35aba7bab13e87aed
+	source = https://cran.r-project.org/src/contrib/RSEIS_4.2-0.tar.gz
+	sha256sums = 93ec391f69660fffdeee79a16b312522dada399a83a35758e69422145e682d14
 
 pkgname = r-rseis
