@@ -1,6 +1,6 @@
 pkgbase = python-impacket-git
 	pkgdesc = Collection of classes for working with network protocols
-	pkgver = impacket_0_10_0.r129.g8b3f9eff
+	pkgver = impacket_0_11_0.r28.g337d50d0
 	pkgrel = 1
 	url = https://github.com/SecureAuthCorp/impacket
 	arch = any
@@ -17,6 +17,8 @@ pkgbase = python-impacket-git
 	depends = python-ldap3
 	depends = python-flask
 	depends = python-pcapy
+	depends = python-charset-normalizer
+	depends = python-ldapdomaindump
 	provides = impacket
 	conflicts = impacket
 	source = git+https://github.com/SecureAuthCorp/impacket.git
