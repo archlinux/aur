@@ -1,0 +1,14 @@
+pkgbase = straw
+	pkgdesc = CLI tool to easily go-to projects all over your desktop and open a new tmux session in it
+	pkgver = v0.1.alpha4
+	pkgrel = 1
+	url = https://github.com/siddhantmadhur/straw
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = straw
+	source = straw::git+https://github.com/siddhantmadhur/straw.git
+	sha256sums = SKIP
+
+pkgname = straw
