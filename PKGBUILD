@@ -3,7 +3,8 @@ pkgname=spotbar
 _pkgname=Spotbar
 pkgver=1.0.0
 _electronversion=24
-pkgrel=4
+_nodeversion=16
+pkgrel=5
 pkgdesc="Small applications that provides Spotify media controls in a window that runs in your macOS/Windows/Linux menu bar"
 arch=('any')
 url="https://github.com/levarr/Spotbar"
@@ -15,7 +16,7 @@ depends=(
 makedepends=(
     'gendesk'
     'npm'
-    'nodejs'
+    'nvm'
     'git'
 )
 source=(
@@ -25,19 +26,29 @@ source=(
 )
 sha256sums=('SKIP'
             '71223174d5542c21fae43d3a237be929f13acb70bed52c43e3a870328e698f97'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
+}
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
-    gendesk -f -n -q --categories "AudioVideo" --name "${_pkgname}" --exec "${pkgname} %U"
+    _ensure_local_nvm
+    gendesk -f -n -q --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
     sed '/- snap/d;/- deb/d' -i electron-builder.yml
     npm install --force
     npm run build:linux
