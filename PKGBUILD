@@ -4,7 +4,7 @@
 pkgname=lpm-git
 _pkgname=lpm
 _gitname=lite-xl-plugin-manager
-pkgver=1.2.0.r0.gad23c29
+pkgver=1.2.0.r5.g45d1d50
 pkgrel=1
 pkgdesc='A lite-xl plugin manager.'
 arch=('x86_64' 'aarch64')
@@ -32,4 +32,6 @@ build() {
 
 package() {
   install -D "${srcdir}/${_gitname}/build/${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
+  install -D -t "${pkgdir}/usr/share/licenses/lpm/" "${srcdir}/${_gitname}/LICENSE"
+  install -D -t "${pkgdir}/usr/share/doc/lpm/" "${srcdir}/${_gitname}/"{README,SPEC}.md
 }
