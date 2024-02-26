@@ -1,0 +1,19 @@
+pkgbase = firefox-extension-adguard
+	pkgdesc = AdGuard browser extension.
+	pkgver = 4.3.13
+	pkgrel = 1
+	url = https://adguard.com/adguard-browser-extension/overview.html
+	arch = any
+	groups = firefox-addons
+	license = GPL-3.0-only
+	makedepends = npm
+	makedepends = yarn
+	makedepends = nodejs-lts-hydrogen
+	makedepends = git
+	makedepends = jq
+	options = !strip
+	source = adguard-4.3.13.tar.gz::https://github.com/AdguardTeam/AdguardBrowserExtension/archive/refs/tags/v4.3.13.tar.gz
+	sha256sums = 96b3dc457e1c61432541638d3352708e1c5c73670a52a3e51dd1aee3ef80273d
+
+pkgname = firefox-extension-adguard
+	depends = firefox
