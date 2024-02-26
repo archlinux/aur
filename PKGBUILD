@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: AGPL-3.0
 #
 # Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+# Maintainer: Truocolo <truocolo@aol.com>
 # Contributor: Ignacy Kuchciński (ignapk) <ignacykuchcinski@gmail.com>
 # Contributor: Simon Gardling <titaniumtown@gmail.com>
 # Contributor: Ricardo Liang (rliang) <ricardoliang@gmail.com>
@@ -11,7 +12,10 @@ _ns="GNOME"
 _pkg="shell"
 _Pkg="Shell"
 _pkgname="${_proj}-${_pkg}"
-pkgname="${_pkgname}-git"
+pkgbase="${_pkgname}-git"
+pkgname=(
+  "${pkgbase}"
+)
 pkgver=44.1.r116.gace8676ad
 pkgrel=1
 epoch=1
@@ -30,7 +34,7 @@ license=(
 )
 depends=(
   accountsservice
-  gcr-4-git
+  gcr-4
   "gjs-git>=1.76.0"
   "${_proj}-autoar"
   "${_proj}-session"
@@ -105,7 +109,8 @@ pkgver() {
   _pkgver="$( \
     git \
       describe \
-        --tags | \
+        --tags \
+        --long | \
       sed \
         's/-/+/g')"
   _parse_rev \
@@ -122,21 +127,21 @@ _parse_ver() {
   _ver="$( \
     echo \
       "${_pkgver}" | \
-          awk \
-            -F '+' \
-            '{print $1}')"
+        awk \
+          -F '+' \
+          '{print $1}')"
   _rev="$( \
     echo \
       "${_pkgver}" | \
-          awk \
-            -F '+' \
-            '{print $2}')"
+        awk \
+          -F '+' \
+          '{print $2}')"
   _commit="$( \
     echo \
       "${_pkgver}" | \
-          awk \
-            -F '+' \
-            '{print $3}')"
+        awk \
+          -F '+' \
+          '{print $3}')"
   _out=${_ver}
   [[ "${_rev}" != "" ]] && \
     _out+=".r${_rev}"
@@ -149,7 +154,6 @@ _parse_ver() {
 prepare() {
   cd \
     "${_pkgname}"
-
   git \
     submodule \
       init
@@ -170,10 +174,8 @@ build() {
   meson_options=(
     -D gtk_doc=true
   )
-
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
   LDFLAGS+=" -Wl,-Bsymbolic-functions"
-
   arch-meson \
     "${_pkgname}" \
       build \
@@ -211,7 +213,9 @@ check() {
 }
 
 package() {
-  depends+=("libmutter-12.so")
+  depends+=(
+    "libmutter-13.so"
+  )
   meson \
     install \
     -C build \
