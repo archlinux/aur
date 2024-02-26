@@ -1,3 +1,4 @@
+# Maintainer: Siddhant Madhur <siddhant.madhur@gmail.com>
 pkgname=straw
 pkgver=v0.1.alpha4
 pkgrel=1
