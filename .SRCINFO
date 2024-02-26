@@ -1,13 +1,13 @@
 pkgbase = gophercap
 	pkgdesc = Accurate, modular, scalable PCAP manipulation tool written in Go.
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/StamusNetworks/gophercap
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	makedepends = libpcap
-	source = https://github.com/StamusNetworks/gophercap/archive/v0.3.1.tar.gz
-	sha256sums = a737c825dcef1b125432827be4f8ee9f3f2705d370125bc0289205005b47edd6
+	source = https://github.com/StamusNetworks/gophercap/archive/v0.3.2.tar.gz
+	sha256sums = 8c5cdfd8b37d19dc3623c97accbe099a5a12b624e35d6fa4936caabdb54cbe58
 
 pkgname = gophercap
