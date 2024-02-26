@@ -21,7 +21,15 @@ pkgrel=1
 pkgdesc="XML C parser and toolkit"
 _url="https://gitlab.gnome.org/GNOME/${_pkgname}"
 url="${_url}/-/wikis/home"
-arch=(x86_64)
+arch=(
+  x86_64
+  aarch64
+  arm
+  armv7h
+  i686
+  pentium4
+  powerpc
+)
 license=(custom:MIT)
 depends=(
   icu
