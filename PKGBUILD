@@ -20,7 +20,8 @@ build() {
 
 check() {
   cd editdistance-s-$pkgver
-  PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-311" pytest
+  local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+  PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-$python_version" pytest
 }
 
 package() {
