@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-dektec
 	pkgdesc = FFmpeg Integration for DekTec Devices
 	pkgver = 2023.09.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.dektec.com/products/SDK/ffmpeg/
 	arch = x86_64
 	license = custom: nonfree and unredistributable

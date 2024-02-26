@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-dektec
 pkgver=2023.09.0
-pkgrel=3
+pkgrel=4
 _sdkver=2024.01.0
 pkgdesc="FFmpeg Integration for DekTec Devices"
 arch=(x86_64)
@@ -35,14 +35,15 @@ build() {
 	export PKG_CONFIG_PATH="${srcdir}/LinuxSDK/DTAPI/Lib/GCC7.5.0/pkgconfig"
 	# Build
 	./configure \
-	--prefix='/usr' \
-	--disable-shared \
-	--disable-doc \
-	--disable-asm \
-	--enable-static \
-	--enable-small \
-	--enable-dektec \
-	--enable-nonfree
+		--prefix='/usr' \
+		--disable-shared \
+		--disable-doc \
+		--disable-asm \
+		--disable-vulkan \
+		--enable-static \
+		--enable-small \
+		--enable-dektec \
+		--enable-nonfree
 	make
 	# Fasttools
 	#make tools/qt-faststart
@@ -55,6 +56,6 @@ package() {
 	install -Dvm 755 ${pkgname}-${pkgver}/ffprobe "$pkgdir"/usr/bin/ffprobe-dektec
 
 	# Standard installation method
-	#make DESTDIR="$pkgdir" -C ${pkgname}-${pkgver} install install-man
-	#install -Dm 755 ${pkgname}-${pkgver}/tools/qt-faststart "$pkgdir"/usr/bin/
+	#make -C "${pkgname}-${pkgver}" DESTDIR="$pkgdir" install install-man
+	#install -Dvm755 "${pkgname}-${pkgver}/tools/qt-faststart" -t "${pkgdir}/usr/bin"
 }
