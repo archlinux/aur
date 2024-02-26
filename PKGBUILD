@@ -1,6 +1,8 @@
 # Maintainer: <me at auoeke dot net>
+_tag=`curl -s https://api.github.com/repos/lapce/lapce/releases/tags/nightly`
+
 _get() {
-    curl -s https://api.github.com/repos/lapce/lapce/releases/tags/nightly | awk -F '"' /\"$1'":/{print $4}'
+    awk -F '"' /\"$1'":/{print $4}' <<< "$_tag"
 }
 
 pkgname=lapce-nightly-bin
@@ -18,10 +20,11 @@ depends=(
     gtk3
     libxcb
     libxkbcommon
+    openssl-1.1
 )
 options=('!lto')
 source=(
-    lapce-$pkgver.tar.gz::https://github.com/lapce/lapce/releases/download/nightly/Lapce-linux.tar.gz
+    lapce-$pkgver.tar.gz::https://github.com/lapce/lapce/releases/download/nightly/lapce-linux-amd64.tar.gz
     https://raw.githubusercontent.com/lapce/lapce/$(_get target_commitish)/extra/{images/logo.png,linux/dev.lapce.lapce.{desktop,metainfo.xml}}
 )
 sha256sums=(
