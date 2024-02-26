@@ -26,7 +26,11 @@ build() {
   if [[ "$CARCH" == "armv7h" ]]; then
     _arch=armv7
   elif [[ "$CARCH" == "aarch64" ]]; then
-    _arch=armv8
+    if grep -wq asimddp /proc/cpuinfo; then
+      _arch=armv8-dotprod
+    else
+      _arch=armv8
+    fi
   elif [[ "$CARCH" == "i686" ]]; then
     _arch=x86-32
   elif grep -wq avx512dq /proc/cpuinfo && grep -wq avx512vl /proc/cpuinfo && grep -wq avx512_vnni /proc/cpuinfo; then
