@@ -31,7 +31,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('d56414d857b97c0001b1974b1cf8bc0e25b2354d116d86ba7a3e5c77c93ec819'
-            'c48661e43cf15aa91216ab0fe0521445d090f07d458e19a9d4234479c90415b1')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
