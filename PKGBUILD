@@ -10,47 +10,40 @@ pkgname=(
 )
 
 _opts=(
-	-DCMAKE_INSTALL_PREFIX=/usr 
-	-DCMAKE_INSTALL_LIBDIR=lib
-	-DCMAKE_INSTALL_LIBEXECDIR=lib
+	--prefix=/usr
+	--libdir=lib
+	--libexecdir=lib
+	-Dauto_features=disabled
 )
 
-makedepends=('cmake' 'vala' 'gtk3' 'libpeas')
+makedepends=('meson' 'vala' 'gtk3')
 
 if (("${_disable_mate}" == 0));then
-	_opts+=(-DENABLE_MATE=ON)
+	_opts+=(-Dmate=enabled)
 	pkgname+=('mate-panel-genmon-git')
 	makedepends+=('mate-panel')
 #	msg "Mate applet enabled"
-else
-	_opts+=(-DENABLE_MATE=OFF)
 fi
 
 if (("${_disable_xfce}" == 0));then
-	_opts+=(-DENABLE_XFCE=ON)
+	_opts+=(-Dxfce=enabled)
 	pkgname+=('xfce4-panel-genmon-ng-git')
 	makedepends+=('xfce4-panel>=4.11.2')
 #	msg "Xfce applet enabled"
-else
-	_opts+=(-DENABLE_XFCE=OFF)
 fi
 
 if (("${_disable_vala}" == 0));then
-	_opts+=(-DENABLE_VALAPANEL=ON)
+	_opts+=(-Dvalapanel=enabled)
 	pkgname+=('vala-panel-genmon-git')
 	makedepends+=('vala-panel>=0.4.60')
 #	msg "Vala Panel applet enabled"
-else
-	_opts+=(-DENABLE_VALAPANEL=OFF)
 fi
 
 if (("${_disable_budgie}" == 0));then
-	_opts+=(-DENABLE_BUDGIE=ON)
+	_opts+=(-Dbudgie=enabled)
 	pkgname+=('budgie-genmon-git')
-	makedepends+=('budgie-desktop')
+	makedepends+=('budgie-desktop' 'gobject-introspection' 'libpeas')
 #	msg "Budgie applet enabled"
-else
-	_opts+=(-DENABLE_BUDGIE=OFF)
 fi
 
 
@@ -58,18 +51,14 @@ fi
 
 pkgbase=generic-monitor-plugin-git
 _pkgbase=xfce4-genmon-plugin
-_cmakename=cmake-vala
-_dbusmenuname=vala-dbusmenu
-pkgver=5.0.0
-pkgrel=3
+pkgver=5.1.0.r41.gd8f2540
+pkgrel=1
 pkgdesc="Cyclically spawns a script/program, captures its output and displays the resulting string in the panel"
 url="https://gitlab.com/vala-panel-project/xfce4-genmon-plugin"
 arch=('i686' 'x86_64')
 license=('LGPL')
-source=("git+https://gitlab.com/vala-panel-project/${_pkgbase}.git"
-        "git+https://gitlab.com/vala-panel-project/${_cmakename}.git")
-sha256sums=('SKIP'
-            'SKIP')
+source=("git+https://gitlab.com/vala-panel-project/${_pkgbase}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgbase}"
@@ -79,79 +68,42 @@ pkgver() {
   )
 }
 
-prepare() {
-  cd "${srcdir}/${_cmakename}"
-  cp -r . "${srcdir}/${_pkgbase}/cmake"
-}
-
-build(){
-	cd "${srcdir}/${_pkgbase}"
-	cmake ./ "${_opts[@]}"
-	make
+build() {
+  meson "${_opts[@]}" build "${srcdir}/${_pkgbase}"
+  meson compile -C build
 }
 
 package_xfce4-panel-genmon-ng-git(){
 	pkgdesc="Cyclically spawns a script/program, captures its output and displays the resulting string in the panel"
 	depends=('gtk3' 'xfce4-panel>=4.11.2' 'genmon-plugin-common-git')
-	cd "${srcdir}/${_pkgbase}"
-	make -C "src" DESTDIR="${pkgdir}" install
-	make -C "data" DESTDIR="${pkgdir}" install
-	rm -rf "${pkgdir}/usr/lib/genmon-scripts"
-	rm -rf "${pkgdir}/usr/lib/vala-panel"
-	rm -rf "${pkgdir}/usr/share/mate-panel"
-	rm -rf "${pkgdir}/usr/share/vala-panel"
-	rm -rf "${pkgdir}/usr/lib/mate-panel"
-	rm -rf "${pkgdir}/usr/lib/budgie-desktop"
-	rm -rf "${pkgdir}/usr/share/glib-2.0"
-	rm -rf "${pkgdir}/usr/share/dbus-1"
+	DESTDIR="${pkgdir}" meson install -C build
+	rm -rf ${pkgdir}/usr/share/{genmon,vala-panel,glib-2.0,locale,mate-panel,vala-panel-appmenu,doc,licenses}
+	rm -rf ${pkgdir}/usr/lib/{mate-panel,vala-panel,budgie-desktop}
 }
 
 package_mate-panel-genmon-git(){
 	pkgdesc="Cyclically spawns a script/program, captures its output and displays the resulting string in the panel"
 	depends=('gtk3' 'mate-panel' 'genmon-plugin-common-git')
-	cd "${srcdir}/${_pkgbase}"
-	make -C "src" DESTDIR="${pkgdir}" install
-	make -C "data" DESTDIR="${pkgdir}" install
-	rm -rf "${pkgdir}/usr/lib/genmon-scripts"
-	rm -rf "${pkgdir}/usr/lib/vala-panel"
-	rm -rf "${pkgdir}/usr/lib/xfce4"
-	rm -rf "${pkgdir}/usr/share/xfce4"
-	rm -rf "${pkgdir}/usr/share/vala-panel"
-	rm -rf "${pkgdir}/usr/lib/budgie-desktop"
-	rm -rf "${pkgdir}/usr/share/glib-2.0"
+	DESTDIR="${pkgdir}" meson install -C build
+	rm -rf ${pkgdir}/usr/share/{genmon,vala-panel,glib-2.0,locale,xfce4,vala-panel-appmenu,doc,licenses}
+	rm -rf ${pkgdir}/usr/lib/{xfce4,vala-panel,budgie-desktop}
 }
 
 package_vala-panel-genmon-git(){
 	pkgdesc="Cyclically spawns a script/program, captures its output and displays the resulting string in the panel"
 	depends=('gtk3' 'vala-panel>=0.4.60' 'genmon-plugin-common-git')
-	cd "${srcdir}/${_pkgbase}"
-	make -C "src" DESTDIR="${pkgdir}" install
-	make -C "data" DESTDIR="${pkgdir}" install
-	rm -rf "${pkgdir}/usr/lib/genmon-scripts"
-	rm -rf "${pkgdir}/usr/lib/xfce4"
-	rm -rf "${pkgdir}/usr/share/xfce4"
-	rm -rf "${pkgdir}/usr/share/mate-panel"
-	rm -rf "${pkgdir}/usr/lib/mate-panel"
-	rm -rf "${pkgdir}/usr/lib/budgie-desktop"
-	rm -rf "${pkgdir}/usr/share/glib-2.0"
-	rm -rf "${pkgdir}/usr/share/dbus-1"
+	DESTDIR="${pkgdir}" meson install -C build
+	rm -rf ${pkgdir}/usr/share/{genmon,xfce4,glib-2.0,locale,mate-panel,vala-panel-appmenu,doc,licenses}
+	rm -rf ${pkgdir}/usr/lib/{mate-panel,xfce4,budgie-desktop}
 }
 
 package_budgie-genmon-git(){
 	pkgdesc="Cyclically spawns a script/program, captures its output and displays the resulting string in the panel"
 	depends=('budgie-desktop' 'gtk3' 'libpeas' 'genmon-plugin-common-git')
   	cd "${srcdir}/${_pkgbase}"
-  	make -C "src" DESTDIR="${pkgdir}" install
-  	make -C "data" DESTDIR="${pkgdir}" install
-	rm -rf "${pkgdir}/usr/lib/genmon-scripts"
-	rm -rf "${pkgdir}/usr/lib/xfce4"
-	rm -rf "${pkgdir}/usr/share/xfce4"
-	rm -rf "${pkgdir}/usr/share/mate-panel"
-	rm -rf "${pkgdir}/usr/share/vala-panel"
-	rm -rf "${pkgdir}/usr/lib/mate-panel"
-	rm -rf "${pkgdir}/usr/lib/vala-panel"
-	rm -rf "${pkgdir}/usr/share/glib-2.0"
-	rm -rf "${pkgdir}/usr/share/dbus-1"
+	DESTDIR="${pkgdir}" meson install -C build
+	rm -rf "${pkgdir}/usr/share/"
+	rm -rf ${pkgdir}/usr/lib/{mate-panel,vala-panel,xfce4}
 }
 
 package_genmon-plugin-common-git(){
@@ -159,15 +111,7 @@ package_genmon-plugin-common-git(){
 	depends=('bash' 'perl')	
 	optdepends=('xfce4-panel-genmon-git' 'mate-panel-genmon-git' 'vala-panel-genmon-git' 'budgie-genmon-git')
 	arch=('any')
-	cd "${srcdir}/${_pkgbase}"
-	make -C "po" DESTDIR="${pkgdir}" install
-	make -C "data" DESTDIR="${pkgdir}" install
-	rm -rf "${pkgdir}/usr/share/xfce4"
-	rm -rf "${pkgdir}/usr/share/mate-panel"
-	rm -rf "${pkgdir}/usr/share/vala-panel"
-	rm -rf "${pkgdir}/usr/share/dbus-1"
-	rm -rf "${pkgdir}/usr/lib/mate-panel"
-	rm -rf "${pkgdir}/usr/lib/vala-panel"
-	rm -rf "${pkgdir}/usr/lib/budgie-desktop"
-	rm -rf "${pkgdir}/usr/lib/xfce4"
+	DESTDIR="${pkgdir}" meson install -C build
+	rm -rf ${pkgdir}/usr/share/{vala-panel,xfce4,mate-panel}
+	rm -rf ${pkgdir}/usr/lib
 }
