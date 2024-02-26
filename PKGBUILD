@@ -33,7 +33,7 @@ depends=(
   python-pyserial
   python-ruamel-yaml
   python-sly
-  python-typing-extensions
+  python-typing_extensions
 )
 makedepends=(
   python-build
