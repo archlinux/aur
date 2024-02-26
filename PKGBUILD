@@ -1,7 +1,7 @@
 # Maintainer: Pavel Poronko <warzgibz at gmail dot com>
 
 pkgname='marten'
-pkgver='0.3.4'
+pkgver='0.4.1'
 pkgrel=1
 pkgdesc='A Crystal command-line tool for working with Marten web framework applications'
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('crystal' 'shards')
 makedepends=('git')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('050ffa9722a4cfce0c8fc032e6754a1a7aa318f1746565eafa1974e0e9774789')
+sha256sums=('daa0b2b8032f4803a0dc5fae354c3d0ed4eafb210c8b50007af2707b808858cf')
 provides=('marten')
 build() {
   cd "marten-${pkgver}"
