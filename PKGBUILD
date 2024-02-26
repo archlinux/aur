@@ -13,13 +13,13 @@
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
-pkgver=7.1.1.28
+pkgver=7.1.1.29
 pkgrel=1
 arch=('x86_64')
 _qdepth='32'
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all possible features)"
 url='https://www.imagemagick.org/'
-license=('custom')
+license=('LicenseRef-custom')
 makedepends=(
     # official repositories:
         'perl' 'jbigkit' 'opencl-headers' 'glu' 'ghostpcl' 'ghostxps'
@@ -34,7 +34,7 @@ makedepends=(
 )
 source=("https://imagemagick.org/archive/releases/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.xz"{,.asc}
         'arch-fonts.diff')
-sha256sums=('ee4b6cdaaf2fa6020b6a3c6e055d993e970361a2fadf2bf2f984308b35c61915'
+sha256sums=('f140465fbeb0b4724cba4394bc6f6fb32715731c1c62572d586f4f1c8b9b0685'
             'SKIP'
             '290c6a87845b419459fb552c0e7dcd81fbeafcecc370818d442fedf4d315b7fb')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A')  # Lexie Parsimoniae
