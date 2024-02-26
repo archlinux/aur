@@ -2,14 +2,14 @@
 # Co-Maintainer: Lukas Grossar <lukasgrossar@gmail.com>
 
 pkgname=k0s-bin
-pkgver=1.29.1+k0s.1
+pkgver=1.29.2+k0s.0
 pkgrel=1
 pkgdesc="k0s - Zero Friction Kubernetes"
 arch=('x86_64')
 url="https://github.com/k0sproject/k0s"
 license=('Apache')
 source=("https://github.com/k0sproject/k0s/releases/download/v${pkgver}/k0s-v${pkgver}-amd64")
-sha256sums=('04bd97d399c3d47b577263505c30bb930eecb8fda69e5d47abad5bace7f82ac6')
+sha256sums=('3511344dcf63e56d5286b230b7993965cb05b27bdb721780c2037339ccd8fcbd')
 options=(!strip)
 
 package() {
