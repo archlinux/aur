@@ -20,6 +20,7 @@ pkgbase = mongodb-compass-readonly-beta-bin
 	optdepends = org.freedesktop.secrets
 	provides = mongodb-compass-readonly-beta
 	conflicts = mongodb-compass-readonly-beta
+	backup = etc/mongodb-compass.conf
 	source = mongodb-compass-readonly-beta-bin-1.42.2.beta.4.rpm::https://downloads.mongodb.com/compass/beta/mongodb-compass-readonly-beta-1.42.2-beta.4.x86_64.rpm
 	source = mongodb-compass.conf
 	sha512sums = 1ce9cba0bdb91f536b95c835611844358ad80b64ac07c92343790c4e3e5fed3f99f9596de62c5422810d12afd3154f9e2fd81330fe3bc306ac63b31765c1320a
