@@ -20,6 +20,7 @@ pkgbase = mongodb-compass-readonly-git
 	optdepends = org.freedesktop.secrets
 	provides = mongodb-compass-readonly
 	conflicts = mongodb-compass-readonly
+	backup = etc/mongodb-compass.conf
 	source = mongodb-compass-readonly-git::git+https://github.com/mongodb-js/compass
 	source = hadron-build-ffmpeg.diff
 	source = fix-argv.diff

@@ -18,6 +18,7 @@ makedepends=('git' 'npm>=8.19.4' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+backup=('etc/mongodb-compass.conf')
 source=(
 	"$pkgname::git+https://github.com/mongodb-js/compass"
 	'hadron-build-ffmpeg.diff'
