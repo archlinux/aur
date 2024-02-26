@@ -1,8 +1,8 @@
 # Maintainer: Cebtenzzre <cebtenzzre (at) gmail (dot) com>
 
 pkgname=thinlinc-server
-pkgver=4.15.0
-pkgrel=2
+pkgver=4.16.0
+pkgrel=1
 pkgdesc="Cendio ThinLinc Linux remote desktop server"
 arch=('x86_64')
 url="http://www.cendio.com/"
@@ -31,7 +31,7 @@ source=("${_archive_name}.zip::https://www.cendio.com/downloads/server/tl-${pkgv
         'tlwebadm.service'
         'vsmagent.service'
         'vsmserver.service')
-sha256sums=('a0d19a66b53e9015e81acab8add05157410efe3b73637e9588cf894db21c7826'
+sha256sums=('17d6380acd0768a337c67f6f8804a969fb610a7ecfaf16c5945f263f2eda58b0'
             '179583f1e2f61a9a75a99bbe8bb988e35a0216fc2ddcbd4c85ad8bdc70c3149e'
             '3d59ff1c0db479fc4266d67916c9f64050e061b874ccca79a2ac3894f4ba6e25'
             'ff22ea3833eedb4338eeab6d5ce10fa823b9c78ebab1d47152c073075a6ddeb1'
