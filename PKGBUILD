@@ -17,7 +17,7 @@ conflicts=("$_pkgname")
 replaces=()
 backup=()
 install=
-source=("${_pkgname}::git+https://salsa.debian.org/openstack-team/third-party/${_pkgname}.git#commit=6fcd3733dc726385df2a7a636cbcc29f69a6014f")
+source=("${_pkgname}::git+https://salsa.debian.org/openstack-team/third-party/${_pkgname}.git#commit=c532e77a452108d0cfc6a4ee64d7dff6bbe07f37")
 md5sums=('SKIP')
 
 build()
