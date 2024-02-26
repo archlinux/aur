@@ -106,8 +106,6 @@ _hugepage=${_hugepage-always}
 ## Enable DAMON
 _damon=${_damon-}
 
-
-
 # CPU compiler optimizations - Defaults to prompt at kernel config if left empty
 # AMD CPUs : "k8" "k8sse3" "k10" "barcelona" "bobcat" "jaguar" "bulldozer" "piledriver" "steamroller" "excavator" "zen" "zen2" "zen3" "zen4"
 # Intel CPUs : "mpsc"(P4 & older Netburst based Xeon) "atom" "core2" "nehalem" "westmere" "silvermont" "sandybridge" "ivybridge" "haswell" "broadwell" "skylake" "skylakex" "cannonlake" "icelake" "goldmont" "goldmontplus" "cascadelake" "cooperlake" "tigerlake" "sapphirerapids" "rocketlake" "alderlake"
@@ -120,9 +118,6 @@ _damon=${_damon-}
 _processor_opt=${_processor_opt-}
 
 _use_auto_optimization=${_use_auto_optimization-y}
-
-# disable debug to lower the size of the kernel
-_disable_debug=${_disable_debug-}
 
 # Clang LTO mode, only available with the "llvm" compiler - options are "none", "full" or "thin".
 # ATTENTION - one of three predefined values should be selected!
@@ -166,7 +161,7 @@ fi
 _major=6.8
 _minor=0
 #_minorc=$((_minor+1))
-_rcver=rc5
+_rcver=rc6
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 #_stable=${_major}
@@ -197,7 +192,7 @@ if [[ "$_cpusched" = "sched-ext" || "$_cpusched" = "cachyos" ]]; then
 fi
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=545.29.06
+_nv_ver=550.54.14
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 source=(
     "https://github.com/torvalds/linux/archive/refs/tags/v${_major}-${_rcver}.tar.gz"
@@ -213,14 +208,12 @@ fi
 # ZFS support
 if [ -n "$_build_zfs" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=06e25f9c4b0841e450e411bf270c7aa92c04c573")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=c883088df83ced3a2b8b38e6d89a5e63fb153ee4")
 fi
 
 # NVIDIA pre-build module support
 if [ -n "$_build_nvidia" ]; then
-    source+=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${_nv_ver}/${_nv_pkg}.run"
-             "$_patchsource/misc/nvidia/nvidia-drm-hotplug-workqueue.patch"
-             "$_patchsource/misc/nvidia/nvidia-drivers-470.223.02-gpl-pfn_valid.patch")
+    source+=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${_nv_ver}/${_nv_pkg}.run")
 fi
 
 ## List of CachyOS schedulers
@@ -265,8 +258,6 @@ prepare() {
         src="${src%%::*}"
         src="${src##*/}"
         src="${src%.zst}"
-        [[ $src = nvidia-drm-hotplug-workqueue.patch ]] && continue
-        [[ $src = nvidia-drivers-470.223.02-gpl-pfn_valid.patch ]] && continue
         [[ $src = *.patch ]] || continue
         echo "Applying patch $src..."
         patch -Np1 < "../$src"
@@ -477,28 +468,6 @@ prepare() {
             -e DAMON_LRU_SORT
     fi
 
-
-
-    ### Disable DEBUG
-    # Doesn't work with sched-ext
-    # More infos here: https://github.com/CachyOS/linux-cachyos/issues/187
-    if [[ "$_cpusched" != "sched-ext" || "$_cpusched" != "cachyos" ]] && [ -n "$_disable_debug" ]; then
-        scripts/config -d DEBUG_INFO \
-            -d DEBUG_INFO_BTF \
-            -d DEBUG_INFO_DWARF4 \
-            -d DEBUG_INFO_DWARF5 \
-            -d PAHOLE_HAS_SPLIT_BTF \
-            -d DEBUG_INFO_BTF_MODULES \
-            -d SLUB_DEBUG \
-            -d PM_DEBUG \
-            -d PM_ADVANCED_DEBUG \
-            -d PM_SLEEP_DEBUG \
-            -d ACPI_DEBUG \
-            -d SCHED_DEBUG \
-            -d LATENCYTOP \
-            -d DEBUG_PREEMPT
-    fi
-
     echo "Enable USER_NS_UNPRIVILEGED"
     scripts/config -e USER_NS
 
@@ -559,18 +528,13 @@ prepare() {
     if [ -n "$_build_nvidia" ]; then
         cd "${srcdir}"
         sh "${_nv_pkg}.run" --extract-only
-
-        # Temporary fix for fbdev=1
-        # https://forums.developer.nvidia.com/t/545-29-06-18-1-flip-event-timeout-error-on-startup-shutdown-and-sometimes-suspend-wayland-unusable/274788/21
-        patch -Np0 -i "${srcdir}/nvidia-drm-hotplug-workqueue.patch" -d "${srcdir}/${_nv_pkg}"
-        # Temporary fix for nvidia module build
-        patch -Np2 --no-backup-if-mismatch -i "${srcdir}/nvidia-drivers-470.223.02-gpl-pfn_valid.patch" -d "${srcdir}/${_nv_pkg}/kernel"
     fi
 }
 
 build() {
     cd ${srcdir}/${_srcname}
     make ${BUILD_FLAGS[*]} -j$(nproc) all
+    make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
 
     if [ -n "$_build_nvidia" ]; then
         cd "${srcdir}/${_nv_pkg}/kernel"
@@ -639,7 +603,7 @@ _package-headers() {
 
     echo "Installing build files..."
     install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
-        localversion.* version vmlinux
+        localversion.* version vmlinux tools/bpf/bpftool/vmlinux.h
     install -Dt "$builddir/kernel" -m644 kernel/Makefile
     install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
     cp -t "$builddir" -a scripts
@@ -752,9 +716,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('6554f27d53b37092d60bd6893b4b063458eb3a5c43091d60d2fec087b5ffb872218335fc7ea92aa3792ab0b8e5ab08d24881650570ed7a18993aedd2f9eea0fa'
+b2sums=('41ed01e847c7a58fa38c315adcf6a5fdf51d7a98feb73eb7351b3c22a79813e43d47f8a088d75f7b69deb0057958b581dc7feab77d015536b7ee58195da82336'
         '7ba475efac88ca247605db21d7cc86eacf377ded3e51595c2abfd15f10ab4478b922fb3fad9f44d59e0e8f56f98152913f67201e38ecbccf46e51136b1b0edb9'
         '43ef7a347878592740d9eb23b40a56083fa747f7700fa1e2c6d039d660c0b876d99bf1a3160e15d041fb13d45906cdb5defef034d4d0ae429911864239c94d8d'
-        '263dc3d5d3e2ae2757c31c9fb7a37e29006b7afcac321160e59d80eb1b6bf0e51e13c3b43178710935a14cd43a9b603db5432642d2404a9226a3ba6aafc856e3'
+        '1132e64ff0b247431c2e1b6318b30e7ff0670cbe7ac8471952afe4079b9e99d54d2c44f10d7453dbca6bed4b42c382b9c9de98e86433aed3f07c3fba589d02d4'
         '9fb2c6b3ff051641f11143471391f6f60ec6bdf705037ac5d76eb80734a0d248d3b500f1cbb0255c783dc453d4d5729df2952caeb095e37b8e4d1bc9ff92e6e3'
-        'a6ec64f40dd8fbca57b6b83a4c4d7584c8446d872aa689407772f9c62e033cd7b15a3dc8c9bbfc8d0fa7f58de7eac0143010aa2114f66d331248d198a2da1d78')
+        '736176a57c59634222f3bfa4b0e4a30856fddc722089a7044fa91e030b3f092cfac31de0256889643b66ebeea7dbeb29ae06195a63319a31296de5cf61421a7a')
