@@ -12,7 +12,7 @@ makedepends=('git' 'nodejs' 'postgresql' 'postgresql-libs' 'python-virtualenv' '
 provides=("tandoor-recipes")
 conflicts=("tandoor-recipes")
 replaces=()
-backup=("etc/tandoor/tandoor.conf")
+backup=("etc/tandoor/tandoor.conf" "etc/nginx/sites-available/tandoor.conf")
 options=(!strip)
 install=tandoor.install
 source=(
@@ -24,7 +24,14 @@ source=(
     'tandoor-nginx.conf'
 )
 noextract=()
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha1sums=(
+    'SKIP' 
+    '41c89d999f0dd6b4707229554ac615ebdd389049'
+    'b564ef5c07d98c9983cb891e1e974dbf678e5c73'
+    '431a88a4ab33ec118961d80c00e3a5944d2c5691'
+    'be84e44daa8b553653c690e582eb34957c235a3a'
+    'd97eedbb1e58a98e3bd4c34ed124542e20758b80'
+)
 
 pkgver() {
 	cd "$srcdir/recipes"
@@ -57,9 +64,4 @@ package() {
 	mkdir -p "$pkgdir/usr/share/tandoor"
 	rm -rf "$srcdir/recipes/vue/node_modules/.cache"
 	cp -r manage.py vue recipes cookbook "$pkgdir/usr/share/tandoor"
-
-	# cd "$pkgdir/usr/share/tandoor"
-	# export $(cat $srcdir/recipes/.env.template |grep "^[^#]" | xargs)
-	# python manage.py collectstatic --no-input
-	# python manage.py collectstatic_js_reverse
 }
