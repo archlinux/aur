@@ -1,0 +1,41 @@
+From b5f6065d3ae4b7f611b1537ef9faa35fba10d972 Mon Sep 17 00:00:00 2001
+From: Dmitry Shachnev <mitya57@gmail.com>
+Date: Fri, 3 Nov 2023 00:04:50 +0300
+Subject: [PATCH] Fix ImportError in tests with Sphinx 7.2
+
+The `path` class in `sphinx.testing.util` was a re-export from
+`sphinx.testing.path`, but that re-export was removed in
+https://github.com/sphinx-doc/sphinx/commit/49d830467098cc14.
+
+In the same commit, `sphinx.testing.path` was deprecated in favor
+of pathlib. So instead of switching to `sphinx.testing.path`,
+switch directly to `pathlib` for new Sphinx versions.
+
+This fixes the following error:
+
+    tests/test_basic.py:7: in <module>
+        from sphinx.testing.util import path as Path
+    E   ImportError: cannot import name 'path' from 'sphinx.testing.util'
+---
+ tests/test_basic.py | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_basic.py b/tests/test_basic.py
+index 90264cc..39f7007 100644
+--- a/tests/test_basic.py
++++ b/tests/test_basic.py
+@@ -3,8 +3,13 @@
+ import os
+ import sys
+ from pkgutil import walk_packages
++
++import sphinx
+ from sphinx.testing.fixtures import make_app, test_params
+-from sphinx.testing.util import path as Path
++if sphinx.version_info >= (7, 2):
++    from pathlib import Path
++else:
++    from sphinx.testing.util import path as Path
+ 
+ if sys.version_info[:2] > (3, 8):
+     import collections

@@ -14,8 +14,10 @@ depends=(python python-docutils python-jinja python-sphinx)
 makedepends=(git python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
 # tests are no longer included in PyPI source tarballs after upstream switched to poetry
-source=("git+https://github.com/tardyp/sphinx-jinja.git?signed#tag=$_tag")
-sha256sums=('SKIP')
+source=("git+https://github.com/tardyp/sphinx-jinja.git?signed#tag=$_tag"
+        "sphinx-7.2.patch")
+sha256sums=('SKIP'
+            '7d28a6d234a64d4de5998869478f001d71d0cf74b7649ebbb780104936a54901')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # https://github.com/tardyp.gpg
 )
@@ -23,6 +25,12 @@ validpgpkeys=(
 pkgver() {
   cd sphinx-jinja
   git describe --tags | sed 's/^v//'
+}
+
+prepare() {
+  cd sphinx-jinja
+  # Backport a fix for sphinx 7.2 from https://github.com/tardyp/sphinx-jinja/pull/40 (looks good, but not merged yet)
+  patch -Np1 -i ../sphinx-7.2.patch
 }
 
 build() {

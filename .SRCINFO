@@ -1,0 +1,23 @@
+pkgbase = python-sphinx-jinja
+	pkgdesc = A sphinx extension to include jinja based templates based documentation into a sphinx doc
+	pkgver = 2.0.2
+	pkgrel = 3
+	url = https://github.com/tardyp/sphinx-jinja
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-docutils
+	depends = python-jinja
+	depends = python-sphinx
+	source = git+https://github.com/tardyp/sphinx-jinja.git?signed#tag=7faac8c23bf523f39c5386524a733c12d8c25dfd
+	source = sphinx-7.2.patch
+	validpgpkeys = 390EB159056ED56F66AB1092AECD456B4D2531FC
+	sha256sums = SKIP
+	sha256sums = 7d28a6d234a64d4de5998869478f001d71d0cf74b7649ebbb780104936a54901
+
+pkgname = python-sphinx-jinja
