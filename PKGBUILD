@@ -7,9 +7,9 @@
 
 pkgname=virtualbox-kvm
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use (KVM backend)'
-pkgver=20240208
+pkgver=20240226
 _pkgver=dev-${pkgver}
-pkgrel=2
+pkgrel=1
 conflicts=('virtualbox' 'virtualbox-ose')
 depends=('curl' 'gcc-libs' 'glibc' 'liblzf' 'libpng' 'libtpms' 'libvpx' 'libx11' 'libxcursor'
             'libxext' 'libxinerama' 'libxml2' 'libxmu' 'libxt' 'openssl' 'procps-ng' 'python'
@@ -51,7 +51,7 @@ source=("${url}/archive/refs/tags/${_pkgver}.tar.gz"
         '013-support-building-from-dkms.patch'
         '018-upate-xclient-script.patch'
         '019-libxml-2-12.patch')
-sha256sums=('47eeca358ad07781d5816c9f51121c8359812190f60812a68cc6d84c89ee3598'
+sha256sums=('cf972ecd351ed073ac29289bd8d524097020057ba9af0a010dd8296f15417eee'
             '76d98ea062fcad9e5e3fa981d046a6eb12a3e718a296544a68b66f4b65cb56db'
             '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
             'da4c49f6ca94e047e196cdbcba2c321199f4760056ea66e0fbc659353e128c9e'
