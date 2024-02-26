@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ytdownloader-gui-bin
 _pkgname=YTDownloader
-pkgver=3.17.1
+pkgver=3.17.2
 _electronversion=27
 pkgrel=1
 pkgdesc="A modern GUI App for downloading Videos and Audios from hundreds of sites."
@@ -18,16 +18,17 @@ depends=(
 )
 options=('!strip')
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_Linux.rpm"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_Linux.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('353a10a28ef15cba9aace83a8f836566a277312e800ab4151e5a3f7d41273478'
+sha256sums=('558c14241a875987f57c1a3c216040e3179369d15d1226226d6a2e134fb3ed99'
             '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-gui-bin}|${pkgname%-bin}|g;s|Icon=${pkgname%-gui-bin}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-gui-bin}.desktop"
 }
