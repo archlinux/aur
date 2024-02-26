@@ -17,6 +17,7 @@ pkgbase = mongodb-compass-beta
 	depends = lsb-release
 	depends = nodejs>=16.15.1
 	optdepends = org.freedesktop.secrets
+	backup = etc/mongodb-compass.conf
 	source = mongodb-compass-beta-1.42.2.beta.4.tar.gz::https://github.com/mongodb-js/compass/archive/v1.42.2-beta.4.tar.gz
 	source = hadron-build-ffmpeg.diff
 	source = fix-argv.diff
