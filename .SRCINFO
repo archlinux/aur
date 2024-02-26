@@ -1,7 +1,7 @@
 pkgbase = ocaml-cryptokit
 	pkgdesc = Cryptographic primitives for OCaml
-	pkgver = 1.161
-	pkgrel = 2
+	pkgver = 1.19
+	pkgrel = 1
 	url = http://pauillac.inria.fr/~xleroy/software.html#cryptokit
 	arch = i686
 	arch = x86_64
@@ -13,8 +13,7 @@ pkgbase = ocaml-cryptokit
 	depends = zlib
 	depends = ocaml-zarith
 	options = staticlibs
-	source = https://github.com/xavierleroy/cryptokit/archive/release1161.tar.gz
-	md5sums = 18591fc3f467bc33681be2cede36b8f1
-	sha256sums = 2c183579f7edbc18f5b3ec8d60e2dfe566d032988a475c22b6c9d450c89cf84f
+	source = https://github.com/xavierleroy/cryptokit/archive/release119.tar.gz
+	sha256sums = a7e203aac7fb86fa26fbcc5e7243c8e0f46f0d084bfaf06767d0b816fc12ccb1
 
 pkgname = ocaml-cryptokit

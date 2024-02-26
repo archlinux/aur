@@ -2,23 +2,20 @@
 # former maintainer: Taylor Venable <taylor@metasyntax.net>
 
 pkgname="ocaml-cryptokit"
-pkgver='1.161'
-pkgrel=2
+pkgver='1.19'
+pkgrel=1
 pkgdesc='Cryptographic primitives for OCaml'
 arch=('i686' 'x86_64')
 url="http://pauillac.inria.fr/~xleroy/software.html#cryptokit"
 license=('LGPL')
-depends=('ocaml' 'zlib' 'ocaml-zarith') # OCaml as depend, or only makedepends?
+depends=('ocaml' 'zlib' 'ocaml-zarith')
 makedepends=('ocaml' 'ocaml-findlib' 'dune')
 _srcname="release${pkgver//./}"
 source=("https://github.com/xavierleroy/cryptokit/archive/${_srcname}.tar.gz")
-md5sums=('18591fc3f467bc33681be2cede36b8f1')
-
-sha256sums=('2c183579f7edbc18f5b3ec8d60e2dfe566d032988a475c22b6c9d450c89cf84f')
+sha256sums=('a7e203aac7fb86fa26fbcc5e7243c8e0f46f0d084bfaf06767d0b816fc12ccb1')
 options=('staticlibs')
 
 build() {
-
     #tar -xzvf release1161.tar.gz
     cd cryptokit-"${_srcname}"
     ./configure
@@ -28,7 +25,7 @@ build() {
 
 package() {
     cd cryptokit-"${_srcname}"
-    DESTDIR="$pkgdir" dune install --prefix "/usr" --libdir "lib/ocaml" -p cryptokit
+    DESTDIR="$pkgdir" dune install --prefix "/usr" --libdir "$(ocamlfind printconf destdir)" -p cryptokit
     install -dm755 "${pkgdir}/usr/share"
     mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share"
 }
