@@ -4,7 +4,6 @@ pkgbase = ocamlfuse
 	pkgrel = 13
 	url = https://github.com/astrada/ocamlfuse/
 	arch = x86_64
-	arch = i686
 	license = GPL2
 	makedepends = dune
 	makedepends = fuse
