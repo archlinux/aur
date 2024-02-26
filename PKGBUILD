@@ -8,10 +8,10 @@ pkgname=tass64
 pkgver=1.59.3120
 pkgrel=1
 epoch=
-pkgdesc="tass64 is cross (turbo) assembler targeting the MOS 65xx series of micro processors (6502/65C02/R65C02/W65C02/65CE02/65816/DTV/65EL02)"
-arch=('i686' 'x86_64')
+pkgdesc="Cross assembler (TASS/TASM) targeting the MOS 65xx series of micro processors (6502/6510/65C02/R65C02/W65C02/65CE02/65816/DTV/65EL02/4510)"
+arch=("x86_64" "i686")
 url="https://tass64.sourceforge.net/"
-license=('GPL2')
+license=("GPL-2.0-or-later")
 _pkgname=64tass
 _pkgver=${pkgver}
 groups=()
@@ -53,6 +53,9 @@ package()
 {
   cd "${srcdir}/${_pkgname}-${pkgver}-src"
   make prefix=/usr DESTDIR="${pkgdir}" install
+  ln -s "${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "${_pkgname}" "${pkgdir}/usr/share/doc/${pkgname}"
+  ln -s "${_pkgname}.1.gz" "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
 }
 
 #
