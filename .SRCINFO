@@ -1,5 +1,5 @@
 pkgbase = markdown-oxide-git
-	pkgdesc = A Markdown parser written in Rust
+	pkgdesc = A markdown language server with Obsidian syntax support.
 	pkgver = r250.a9ed72a
 	pkgrel = 1
 	url = https://github.com/Feel-ix-343/markdown-oxide
