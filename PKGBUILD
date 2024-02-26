@@ -1,23 +1,36 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=turtle
 _app_id="de.philippun1.$pkgname"
-pkgver=0.6.1
+pkgver=0.7
 pkgrel=1
 pkgdesc="Manage your git repositories with easy-to-use dialogs in Nautilus."
 arch=('any')
 url="https://gitlab.gnome.org/philippun1/turtle"
 license=('GPL-3.0-or-later')
-depends=('libadwaita' 'meld' 'python-gobject' 'python-pygit2')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-#checkdepends=('appstream-glib' 'python-pytest')
+depends=(
+  'libadwaita'
+  'meld'
+  'python-dbus'
+  'python-gobject'
+  'python-pygit2'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 checkdepends=('appstream-glib')
-optdepends=('python-nautilus: Nautilus plugin'
-            'thunarx-python: Thunar plugin'
-            'nemo-python: Nemo plugin'
-            'python-caja: Caja plugin')
+#checkdepends+=('python-pytest')
+optdepends=(
+  'python-nautilus: Nautilus plugin'
+  'thunarx-python: Thunar plugin'
+  'nemo-python: Nemo plugin'
+  'python-caja: Caja plugin'
+)
 conflicts=('turtlegit')
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('2172f657161edc9de4d66f44beeac37bdf8f266267858f170746168784db84fe')
+sha256sums=('627880abe88f138066e91ade27e09101596506d621abef82e023d4199f662d54')
 
 build() {
   cd "$pkgname-$pkgver"
