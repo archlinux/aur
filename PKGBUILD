@@ -2,11 +2,11 @@
 pkgname=vgmtrans-bin
 _pkgname=VGMTrans
 pkgver=1.1_preview
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to convert proprietary, sequenced videogame music to industry-standard formats"
 arch=('x86_64')
 url="https://github.com/vgmtrans/vgmtrans"
-license=('libpng')
+license=('Libpng')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -17,9 +17,6 @@ depends=(
     'libsm'
     'fontconfig'
 )
-makedepends=(
-    'squashfuse'
-)
 options=("!strip")
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver%_preview}/${pkgname%-bin}-preview-v${pkgver%_preview}.AppImage"
@@ -28,7 +25,7 @@ source=(
 )
 sha256sums=('a9d94aedde9992602fb1b93093783d236a8310a71227b2dd0597914deb4a89bc'
             '3204441b667402c3720e32139a48fcb32d4c5dc7c2e464de415b24b9185adb7c'
-            'ebbda89f7ae9af354c4e54f363321d288f991e64b2659c28a6ab69a348ea47e4')
+            '8198e0aa11e6c73f6e57584b3a52b025d438b15be9b16a5def5d140fb9990926')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
