@@ -3,7 +3,7 @@
 
 pkgbase=linux-amd-color
 pkgver=6.8rc6
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux with experimental AMD color management enabled'
 url='https://github.com/archlinux/linux'
 arch=(x86_64)
@@ -30,6 +30,7 @@ _srcname=linux-${pkgver/rc/-rc}
 source=(
   https://git.kernel.org/torvalds/t/${_srcname}.tar.gz
   config  # the main kernel config file
+  oled_vrr.patch
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
@@ -40,10 +41,12 @@ validpgpkeys=(
 sha256sums=(
   '1a1baf80be207cc07a38d2fc348e3c59624900f0584feeaf152f0ec0690acfbe'
   'd0e840aa2ae6d9552e741b195b8bb3c1830cc227e8e2a601419f9530c65ff3ba'
+  '8bc4397bf114c5a2b17b36eb11f3ceda338fe7cbd2310c8e22ac02a79ebe730d'
 )
 b2sums=(
   '41ed01e847c7a58fa38c315adcf6a5fdf51d7a98feb73eb7351b3c22a79813e43d47f8a088d75f7b69deb0057958b581dc7feab77d015536b7ee58195da82336'
   '6a247b934eb2c177ea1d7f62d5e882c9820cfb9988a2d7a14d9efba44fd2182d800e681325ed07a21277f208f3678a9ff91f5b9252af2da39528311fe550d772'
+  'cd6b48d1d4b228fbbe5d9e7dca077e5447e19e748d69d05d060d69238bc67362e212a66cfae3621b327b771dc37591fb07963e744bf72a25ef0e068effc1b464'
 )
 
 

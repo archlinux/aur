@@ -1,0 +1,80 @@
+From 0d4253cf37d601a6c09340bd7d56422e6e8a1f06 Mon Sep 17 00:00:00 2001
+From: Joshua Ashton <joshua@froggi.es>
+Date: Wed, 6 Sep 2023 22:00:26 +0100
+Subject: [PATCH] drm/amd/display: Don't consider vblank passed if currently in
+ vertical front porch time
+
+Changing refresh rates on OLED displays works differently to typical
+LCD panels in that instead of changing the clock, the vertical porch
+is extended significantly for lower rates.
+
+This can mean that the vertical porch can be incredibly large for
+non-base refresh rates eg. 60Hz on a 90Hz display.
+
+This isn't an issue for X11/typical compositors as their present slop
+is 1/2th of the refresh interval so the issue never manifests.
+
+However in Gamescope, the present slop very small and tuned to be
+optimal in real-time to try and reduce display latency significantly.
+This results in us queueing up the atomic commit inside the vertical
+porch region which, due to legacy X11/sync control reasons, means that
+AMDGPU must target the next vblank.
+
+This patch changes that behaviour to make FRR displays match what occurs
+on VRR/Freesync displays where the vertical porch time is not included
+in determining what vblank to target and solves the issue.
+
+This means that smarter compositors can get large input latency
+reductions when using OLED displays at lower than base refresh rates.
+
+For upstreaming this patch, it will need to be considered what the best
+solution is to enable this behaviour from the userspace side.
+Obviously the X11/legacy stuff probably cannot change here -- so we
+either need to enable this new behaviour globally for all DRM atomic
+clients (ie. basically Wayland compositors) or have a
+new DRM_MODE_ATOMIC flag.
+
+Signed-off-by: Joshua Ashton <joshua@froggi.es>
+---
+ drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+index a0d98cee521ca..1693286654058 100644
+--- a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
++++ b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+@@ -449,7 +449,7 @@ static void dm_pflip_high_irq(void *interrupt_params)
+ 
+ 	WARN_ON(!e);
+ 
+-	vrr_active = amdgpu_dm_crtc_vrr_active_irq(amdgpu_crtc);
++	vrr_active = true;//amdgpu_dm_crtc_vrr_active_irq(amdgpu_crtc);
+ 
+ 	/* Fixed refresh rate, or VRR scanout position outside front-porch? */
+ 	if (!vrr_active ||
+@@ -546,11 +546,11 @@ static void dm_vupdate_high_irq(void *interrupt_params)
+ 		 * page-flip completion events that have been queued to us
+ 		 * if a pageflip happened inside front-porch.
+ 		 */
+-		if (vrr_active) {
++		if (true) {
+ 			amdgpu_dm_crtc_handle_vblank(acrtc);
+ 
+ 			/* BTR processing for pre-DCE12 ASICs */
+-			if (acrtc->dm_irq_params.stream &&
++			if (vrr_active && acrtc->dm_irq_params.stream &&
+ 			    adev->family < AMDGPU_FAMILY_AI) {
+ 				spin_lock_irqsave(&adev_to_drm(adev)->event_lock, flags);
+ 				mod_freesync_handle_v_update(
+@@ -8226,7 +8226,7 @@ static void amdgpu_dm_commit_planes(struct drm_atomic_state *state,
+ 	int planes_count = 0, vpos, hpos;
+ 	unsigned long flags;
+ 	u32 target_vblank, last_flip_vblank;
+-	bool vrr_active = amdgpu_dm_crtc_vrr_active(acrtc_state);
++	bool vrr_active = true;//amdgpu_dm_crtc_vrr_active(acrtc_state);
+ 	bool cursor_update = false;
+ 	bool pflip_present = false;
+ 	bool dirty_rects_changed = false;
+-- 
+GitLab
+
