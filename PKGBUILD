@@ -42,9 +42,9 @@ package() {
   fi
 
   # LD_PRELOAD profile.d script
-  mkdir -p "$pkgdir/etc/profile.d"
-  echo "export LD_PRELOAD=/usr/lib/hax11/\\\$LIB/hax11.so" > "$pkgdir/etc/profile.d/hax11.sh"
-  chmod 755 "$pkgdir/etc/profile.d/hax11.sh"
+  mkdir -p "$pkgdir/usr/share/doc/hax11/profile.d"
+  echo "export LD_PRELOAD=/usr/lib/hax11/\\\$LIB/hax11.so" > "$pkgdir/usr/share/doc/hax11/profile.d/hax11.sh"
+  chmod 755 "$pkgdir/usr/share/doc/hax11/profile.d/hax11.sh"
 
   # License
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
