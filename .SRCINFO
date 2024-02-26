@@ -1,7 +1,7 @@
 pkgbase = catcat-dm-react
 	pkgdesc = catcat弹幕姬.哔哩哔哩直播弹幕姬： 查看直播间弹幕。
 	pkgver = 1.9.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/kokolokksk/catcat-dm-react
 	arch = any
 	license = MIT
@@ -10,11 +10,14 @@ pkgbase = catcat-dm-react
 	makedepends = gendesk
 	makedepends = yarn
 	makedepends = git
-	makedepends = make
+	makedepends = base-devel
 	makedepends = gcc
+	depends = electron23
 	depends = hicolor-icon-theme
 	conflicts = catcat-dm-react
 	source = catcat-dm-react.git::git+https://github.com/kokolokksk/catcat-dm-react.git#tag=v1.9.6
+	source = catcat-dm-react.sh
 	sha256sums = SKIP
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = catcat-dm-react
