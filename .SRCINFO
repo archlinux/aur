@@ -1,9 +1,9 @@
 pkgbase = wx-read
 	pkgdesc = A simple Electron application for Weixin Read.一个极简版微信读书桌面客户端
 	pkgver = 0.2.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/estepona/wx-read-desktop
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = gendesk
 	makedepends = npm
@@ -14,6 +14,6 @@ pkgbase = wx-read
 	source = wx-read.git::git+https://github.com/estepona/wx-read-desktop.git#tag=v0.2.2
 	source = wx-read.sh
 	sha256sums = SKIP
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = wx-read
