@@ -2,7 +2,7 @@
 pkgname=nativefier-gui-bin
 pkgver=0.9.0
 _electronversion=26
-pkgrel=4
+pkgrel=5
 pkgdesc="Graphical user interface for nativefier. Make any web page a desktop application."
 arch=(
     "aarch64"
@@ -11,12 +11,13 @@ arch=(
 )
 url="https://mattruzzi.github.io/nativefier-gui/"
 _ghurl="https://github.com/mattruzzi/nativefier-gui"
-license=('custom')
+license=('LicenseRef-custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'java-runtime'
+    'nodejs'
 )
 makedepends=(
     'gendesk'
@@ -25,16 +26,16 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/downl
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.zip::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-linux-armv7l.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-linux-x64.zip")
 source=("${pkgname%-bin}.sh")
-sha256sums=('d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+sha256sums=('0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 sha256sums_aarch64=('7e0f3055aab320dd7b337dc1cf8f222c3b023e7495265b90bc9e0b4d5834cb26')
 sha256sums_armv7h=('d4b35c11f7e27e96fa8602c05eb70df7a86829b72799a9da6b949ea656872c79')
 sha256sums_x86_64=('646a5400588a25186361eeab27282e6a4a28edc400e1585a5dee48a8c72c6360')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f --categories "Development" --name "${pkgname%-bin}" --exec "${pkgname%-bin} %U"
+    gendesk -q -f --categories="Development" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
