@@ -1,12 +1,13 @@
 pkgname=fmilib
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="open-source implementation of the FMI open standard"
 arch=('x86_64')
 url="http://www.jmodelica.org/FMILibrary"
-makedepends=('cmake')
-depends=('minizip' 'expat')
 license=('BSD')
+makedepends=('cmake')
+depends=('glibc')
+options=(!lto)
 source=("https://github.com/modelon-community/fmi-library/archive/${pkgver}.tar.gz")
 sha256sums=('8199d3e9423494b714b9c4e42f055248457a7c9162df3d4652000aa9a10b8316')
 
@@ -23,7 +24,7 @@ prepare() {
 build() {
   cd "$srcdir"/fmi-library-${pkgver}
   mkdir -p build && cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DFMILIB_BUILD_TESTS=OFF ..
   make
 }
 
