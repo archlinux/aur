@@ -1,0 +1,13 @@
+pkgbase = libpractrand
+	pkgdesc = C++ library of pseudo-random number generators and statistical tests for RNGs
+	pkgver = pre0.95
+	pkgrel = 1
+	url = https://pracrand.sourceforge.net/
+	arch = x86_64
+	license = custom
+	source = https://downloads.sourceforge.net/project/pracrand/PractRand-pre0.95.zip
+	source = https://pracrand.sourceforge.net/license.txt
+	sha256sums = 5738c322ccb983b63fbe693f305afa2a7c73e64a80b303c9139278c453ce27b4
+	sha256sums = 32f7a58d75eb3b6720653823c8493ccb5cdeb93d342780a66779a98a2621b6e9
+
+pkgname = libpractrand
