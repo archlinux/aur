@@ -5,11 +5,11 @@
 
 pkgname=openvino
 pkgver=2023.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications'
 arch=('x86_64')
 url='https://docs.openvinotoolkit.org/'
-license=('Apache')
+license=('Apache-2.0')
 depends=('pugixml' 'onetbb')
 optdepends=('intel-compute-runtime: for Intel GPU plugin'
             'ocl-icd: for Intel GPU plugin'
@@ -129,6 +129,9 @@ prepare() {
 }
 
 build() {
+    export CFLAGS+=' -march=x86-64-v3'
+    export CXXFLAGS+=' -march=x86-64-v3'
+    
     # note: does not accept 'None' build type
     cmake -B build -S openvino \
         -G 'Unix Makefiles' \
