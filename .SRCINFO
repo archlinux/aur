@@ -1,7 +1,7 @@
 pkgbase = my-yesplaymusic-bin
 	pkgdesc = A third party music player for Netease Music.高颜值的第三方网易云播放器，支持本地音乐播放、离线歌单、桌面歌词、Touch Bar歌词、Mac状态栏歌词显示。
 	pkgver = 0.4.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://my-yesplaymusic-five.vercel.app/
 	arch = aarch64
 	arch = armv7h
@@ -17,7 +17,7 @@ pkgbase = my-yesplaymusic-bin
 	conflicts = r3playx
 	source = LICENSE-0.4.14::https://raw.githubusercontent.com/stark81/my_yesplaymusic/v0.4.14/LICENSE
 	source = my-yesplaymusic.sh
-	sha256sums = 58ca0d87d53ea8afd6fed7b393eaf30060034debe576c44ce7a9e4111668dd65
+	sha256sums = c33378c6fd12e6d040cedd06dc0d1bedfca74fd66bc46cc2cf10cc10e0906be6
 	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 	source_aarch64 = my-yesplaymusic-0.4.14-aarch64.deb::https://github.com/stark81/my_yesplaymusic/releases/download/v0.4.14/yesplaymusic_0.4.14_arm64.deb
 	sha256sums_aarch64 = 2c1366c944eacd09be5b9dc18017ba56a3bafd536942c272b056c2d2b8e1c668

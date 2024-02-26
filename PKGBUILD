@@ -4,7 +4,7 @@ pkgname="my-${_pkgname}-bin"
 _appname=YesPlayMusic
 pkgver=0.4.14
 _electronversion=13
-pkgrel=1
+pkgrel=2
 pkgdesc="A third party music player for Netease Music.高颜值的第三方网易云播放器，支持本地音乐播放、离线歌单、桌面歌词、Touch Bar歌词、Mac状态栏歌词显示。"
 arch=(
     'aarch64'
@@ -35,7 +35,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/stark81/my_yesplaymusic/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('58ca0d87d53ea8afd6fed7b393eaf30060034debe576c44ce7a9e4111668dd65'
+sha256sums=('c33378c6fd12e6d040cedd06dc0d1bedfca74fd66bc46cc2cf10cc10e0906be6'
             '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 sha256sums_aarch64=('2c1366c944eacd09be5b9dc18017ba56a3bafd536942c272b056c2d2b8e1c668')
 sha256sums_armv7h=('50c9336fa6832bbcdc71507d3777e5e439ee680cf57e5dc8c70258b7718e3927')
