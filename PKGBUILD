@@ -24,15 +24,12 @@ depends=(
 )
 
 build () {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
     python3 setup.py build
 }
 
 package () {
-    cd "$srcdir"
-    pushd "$pkgname-$pkgver"
-        python3 setup.py install --root="$pkgdir" -O1
-    popd
-    install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "$pkgname-$pkgver"
+    python3 setup.py install --root="$pkgdir" -O1
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
