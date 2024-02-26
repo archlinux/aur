@@ -1,0 +1,6 @@
+[Unit]
+BindsTo=zephyr-node-on-demand.service
+After=zephyr-node-on-demand.service
+
+[Service]
+ExecStart=/lib/systemd/systemd-socket-proxyd 127.0.0.1:47767

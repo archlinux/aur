@@ -1,0 +1,8 @@
+[Unit]
+Description=Start Zephyr node when its RPC port gets contacted.
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/zephyrd --non-interactive --rpc-bind-port 47767
+Restart=always
+RestartSec=30

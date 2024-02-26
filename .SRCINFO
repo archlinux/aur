@@ -1,0 +1,21 @@
+pkgbase = zephyr-node-bin
+	pkgdesc = This package provides the Zephyr protocol node software and a cli wallet.
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/ZephyrProtocol/zephyr
+	arch = x86_64
+	license = custom:Monero
+	makedepends = curl
+	makedepends = unzip
+	provides = zephyr-node-bin
+	conflicts = zephyr-node-bin
+	source = zephyr-node.service
+	source = zephyr-node-on-demand.service
+	source = zephyr-node-proxy.service
+	source = zephyr-node-proxy.socket
+	md5sums = d6158cac6dc7552f7c3e864f2e158021
+	md5sums = d9765fb9192464798806ee36d2cd46b4
+	md5sums = 5327ef74c270df1d11a6f453da76f126
+	md5sums = f764c67dbf2525f602af9eb7d69ec799
+
+pkgname = zephyr-node-bin
