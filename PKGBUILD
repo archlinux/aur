@@ -8,6 +8,7 @@
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: John Proctor <jproctor@prium.net>
 
+_git=false
 _pkg="libxml"
 _pkgname="${_pkg}2"
 pkgbase="${_pkgname}-2.9"
