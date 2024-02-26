@@ -1,17 +1,18 @@
 
-# Maintainer: W9HDG <travis@talenet.us
+# Maintainer: W9HDG <travis@talenet.us>
+# Co-Maintainer: stanis64 <info@sf-it.cz>
 # Contributor: Wayne Lai <abev66@gmail.com>
 
 pkgname="synochat"
-pkgver="1.2.1_0207"
+pkgver="1.2.2_0222"
 pkgrel="1"
 pkgdesc="Synology Chat Client is the desktop client software of Synology Chat."
 arch=('x86_64')
 url="https://www.synology.com/dsm/feature/chat"
 license=('non-free')
 depends=('desktop-file-utils' 'hicolor-icon-theme' 'libappindicator-gtk2' 'scrot' 'alsa-lib' 'nss' 'libxtst' 'libxss' 'harfbuzz' 'pango')
-source=(https://global.download.synology.com/download/Utility/ChatClient/1.2.1-0207/Ubuntu/x86_64/Synology%20Chat%20Client-1.2.1-0207.deb)
-sha512sums=('e05929fce106aef8a52427df46861d29a0b0767e3cc1e4cebf5d60822d3f2ae04e1505700560ef7733683164ebe661c8e698d8e8165df6d5ddf37d2842c7eade')
+source=(https://global.download.synology.com/download/Utility/ChatClient/1.2.2-0222/Ubuntu/x86_64/Synology%20Chat%20Client-1.2.2-0222.deb)
+sha512sums=('5f2f5c6bb27111df23115a76702d5e72d4975466a71e0416c434ad9d41c024e60afcdb49b442c7e0b6715a762d533bd8a944fb4b61b05a42af57feb849d440f0')
 
 package() {
 	cd "${srcdir}"
