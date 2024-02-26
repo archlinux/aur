@@ -25,7 +25,7 @@ depends=(
   python-pyusb
   python-pyyaml
   python-six
-  python-typing-extensions
+  python-typing_extensions
 )
 makedepends=(
   python-build
@@ -37,7 +37,7 @@ makedepends=(
 )
 checkdepends=(
   python-pytest
-  python-typing-extensions
+  python-typing_extensions
 )
 optdepends=(
   'python-setuptools: for plugin support'
