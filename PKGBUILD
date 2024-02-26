@@ -4,7 +4,7 @@
 
 pkgname=sddm
 pkgver=0.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc='QML based X11 and Wayland display manager'
 arch=(x86_64)
 url='https://github.com/sddm/sddm'
@@ -23,7 +23,11 @@ depends=(bash
          xorg-xauth)
 makedepends=(extra-cmake-modules
              python-docutils
+             qt5-base
+             qt5-declarative
+             qt5-tools
              qt6-tools)
+optdepends=('qt5-declarative: for using Qt5 themes')
 backup=('usr/share/sddm/scripts/Xsetup'
         'usr/share/sddm/scripts/Xstop'
         'etc/pam.d/sddm'
@@ -43,10 +47,15 @@ build() {
         -DBUILD_MAN_PAGES=ON \
         -DUID_MAX=60513
   cmake --build build
+
+  cmake -B build5 -S $pkgname-$pkgver \
+        -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build5/src/greeter
 }
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build5/src/greeter
 
   install -d "$pkgdir"/usr/lib/sddm/sddm.conf.d
   "$pkgdir"/usr/bin/sddm --example-config > "$pkgdir"/usr/lib/sddm/sddm.conf.d/default.conf
