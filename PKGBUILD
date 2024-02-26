@@ -3,7 +3,7 @@ pkgname=interactive-data-editor-bin
 _pkgname="Interactive Data Editor"
 pkgver=2.13.1
 _electronversion=17
-pkgrel=4
+pkgrel=5
 pkgdesc="A Software to interactively edit data in a graphical manner"
 arch=('x86_64')
 url="https://koushikphy.github.io/Interactive_Data_Editor/"
@@ -13,35 +13,19 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'gtk3'
-    'expat'
-    'libxcb'
     'nspr'
-    'libxext'
-    'gdk-pixbuf2'
-    'libxfixes'
-    'pango'
-    'libxrandr'
     'nss'
-    'at-spi2-core'
-    'libxcomposite'
-    'libxkbcommon'
-    'mesa'
-    'cairo'
-    'libxdamage'
-    'libdrm'
     'hicolor-icon-theme'
-    'libx11'
     'alsa-lib'
-    'libcups'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Koushikphy/Interactive_Data_Editor/v${pkgver}/LICENSE"
 )
-sha256sums=('1ad6a7387c06572f600f4fbbbac65f6f30589c8cc00c54dc85b068e729d2a882'
+sha256sums=('84b3e63a4b6d66b1672a3b8f3223259590eabe6b8ebb51793a470518600eff34'
             'd728fec9e20c7c6b1528b62e2525c7f98d2f99061e5b8e3bbd33d27f27271265')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\"|${pkgname%-bin} --no-sandbox|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
