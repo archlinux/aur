@@ -5,7 +5,7 @@ pkgname=1panel-bin
 pkgver=1.9.6
 pkgrel=1
 pkgdesc="1Panel 是一个现代化、开源的 Linux 服务器运维管理面板。"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://1panel.cn"
 license=('GPL-3.0-or-later')
 install=1panel-bin.install
@@ -17,10 +17,16 @@ optdepends=(
     'ufw'
     'firewalld'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://resource.fit2cloud.com/1panel/package/stable/v${pkgver}/release/1panel-v${pkgver}-linux-amd64.tar.gz"
-"1pctl::https://raw.githubusercontent.com/sengedev/${pkgname}/main/1pctl")
-sha256sums=("5c33d3b882d4eebf1f3dbf1e91c791ec962dc382cb08120c25b03946b6085798"
-"SKIP")
+conflicts=('1panel-dev-bin')
+source_aarch64=("${pkgname}-${pkgver}-arm64.tar.gz::https://resource.fit2cloud.com/1panel/package/stable/v${pkgver}/release/1panel-v${pkgver}-linux-arm64.tar.gz"
+"1pctl::https://gitee.com/sengedev/${pkgname}/raw/main/1pctl")
+
+source_x86_64=("${pkgname}-${pkgver}-amd64.tar.gz::https://resource.fit2cloud.com/1panel/package/stable/v${pkgver}/release/1panel-v${pkgver}-linux-amd64.tar.gz"
+"1pctl::https://gitee.com/sengedev/${pkgname}/raw/main/1pctl")
+sha256sums_x86_64=("5c33d3b882d4eebf1f3dbf1e91c791ec962dc382cb08120c25b03946b6085798"
+"949f4427f8f3d21232245c7511182d6bd3fa2f76eff366026ebcfc758549a940")
+sha256sums_aarch64=("b1bb9e078bd31e084f1887b4314a7dfd15ddacbc0eef8bdad82c28042c0742c1"
+"949f4427f8f3d21232245c7511182d6bd3fa2f76eff366026ebcfc758549a940")
 
 package() {
     install -vd ${pkgdir}/opt/1panel
