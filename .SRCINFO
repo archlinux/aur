@@ -1,16 +1,22 @@
 pkgbase = kwin-effect-xrdesktop-git
 	pkgdesc = xrdesktop effect for KWin.
-	pkgver = 0.16.0.r0.gf0ad888
+	pkgver = 0.16.0.r15.gd10c341
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/xrdesktop/kwin-effect-xrdesktop
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = extra-cmake-modules
 	makedepends = git
 	makedepends = vulkan-headers
 	depends = kwin
 	depends = libinputsynth-git
 	depends = xrdesktop-git
+	depends = gcc-libs
+	depends = glibc
+	depends = g3k-git
+	depends = gxr-git
+	depends = graphene
+	depends = gulkan-git
 	source = git+https://gitlab.freedesktop.org/xrdesktop/kwin-effect-xrdesktop.git#branch=main
 	md5sums = SKIP
 
