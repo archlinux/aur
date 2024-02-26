@@ -1,0 +1,55 @@
+diff '--color=auto' --new-file --text --unified --recursive wmenu-0.1.6.orig/meson.build wmenu-0.1.6.new/meson.build
+--- wmenu-0.1.6.orig/meson.build	2024-02-26 16:10:40.116773860 -0300
++++ wmenu-0.1.6.new/meson.build	2024-02-26 16:11:38.250466476 -0300
+@@ -33,6 +33,8 @@
+ subdir('protocols')
+ subdir('docs')
+ 
++install_data('wmenu_run', install_dir: get_option('bindir'))
++
+ executable(
+ 	'wmenu',
+ 	files(
+diff '--color=auto' --new-file --text --unified --recursive wmenu-0.1.6.orig/wmenu_run wmenu-0.1.6.new/wmenu_run
+--- wmenu-0.1.6.orig/wmenu_run	1969-12-31 21:00:00.000000000 -0300
++++ wmenu-0.1.6.new/wmenu_run	2024-02-26 16:12:29.227035337 -0300
+@@ -0,0 +1,39 @@
++#!/bin/sh
++
++cache_dir="${XDG_CACHE_HOME:-"$HOME/.cache"}"
++cache="$cache_dir/wmenu_run"
++
++uptodate()
++{
++	IFS=:
++	for path  in $PATH
++	do
++		test "$path" -nt "$cache" &&
++			return 1
++	done
++
++	return 0
++}
++
++get_bin()
++{
++	IFS=:
++	for path in $PATH
++	do
++		for bin in "$path"/*
++		do
++			[ -x "$bin" ] &&
++				echo "${bin##*/}"
++		done
++	done
++}
++
++[ -d "$cache_dir" ] ||
++	mkdir -p "$cache_dir"
++
++if [ -f "$cache" ] && uptodate
++then
++	wmenu "$@" < "$cache" | ${SHELL:-"/bin/sh"} &
++else
++	get_bin | sort -u | tee "$cache" | wmenu "$@" | ${SHELL:-"/bin/sh"} &
++fi
