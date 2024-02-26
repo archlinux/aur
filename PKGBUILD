@@ -11,7 +11,6 @@ license=('BSD')
 depends=('wayland' 'hyprlang>=0.4.0' 'sdbus-cpp')
 makedepends=('git' 'cmake' 'ninja' 'gcc' 'gdb' 'meson' 'wayland-protocols' 'xorgproto')
 source=("${_pkgname}::git+https://github.com/hyprwm/hypridle.git")
-conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 sha256sums=('SKIP')
 
@@ -20,7 +19,6 @@ pkgver() {
     git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
       | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
-
 
 build() {
 	cd "${srcdir}/${_pkgname}"

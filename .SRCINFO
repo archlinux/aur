@@ -17,7 +17,6 @@ pkgbase = hypridle-git
 	depends = hyprlang>=0.4.0
 	depends = sdbus-cpp
 	provides = hypridle
-	conflicts = hypridle
 	source = hypridle::git+https://github.com/hyprwm/hypridle.git
 	sha256sums = SKIP
 
