@@ -1,12 +1,12 @@
 # Maintainer: Nick G. <wirlaburla@worlio.com>
 
 pkgname=trakker-git
-pkgver=0.3.0.r1.ge275e29
+pkgver=0.4.2.r0.gc82038a
 pkgrel=1
 pkgdesc='A terminal-based tracker interface for libxmp.'
 arch=('x86_64')
-url='https://codeberg.org/Wirlaburla/trakker'
-license=(GPL3)
+url='https://git.worlio.com/Wirlaburla/trakker'
+license=('GPL3')
 depends=('alsa-lib' 'libxmp' 'ncurses')
 makedepends=('git' 'cmake')
 provides=('trakker')
