@@ -1,6 +1,6 @@
 pkgbase = rickrack-bin
 	pkgdesc = Generate harmonious colors freely.焰火十二卷(实时色彩工具箱)是一款免费且实用的色彩编辑器.
-	pkgver = 2.9.9
+	pkgver = 2.9.10
 	pkgrel = 1
 	url = https://eigenmiao.com/rickrack/
 	arch = x86_64
@@ -37,12 +37,12 @@ pkgbase = rickrack-bin
 	depends = fcitx-qt5
 	depends = libidn11
 	depends = unixodbc
-	provides = rickrack=2.9.9
+	provides = rickrack=2.9.10
 	conflicts = rickrack
 	options = !strip
-	source = rickrack-2.9.9.deb::https://github.com/eigenmiao/Rickrack/releases/download/v2.9.9/Rickrack_v2.9.9_en_linux_x86_64.deb
+	source = rickrack-2.9.10.deb::https://github.com/eigenmiao/Rickrack/releases/download/v2.9.10/Rickrack_v2.9.10_en_linux_x86_64.deb
 	source = rickrack.sh
-	sha256sums = a329e4b2f97cf2329fd8f4b1ba4bb821f3594df7ff347c2cf9c121ebfc33a2eb
+	sha256sums = 928b9562eaff7aaabd18e021de2ca4dd4be8684cda2c9c361aed99e40cf14230
 	sha256sums = 0a4aadc3fc8c25b2e7c2ae610a1a23101c96072d3192d3f4fb1529aeb9707aca
 
 pkgname = rickrack-bin
