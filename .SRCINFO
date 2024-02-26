@@ -1,16 +1,17 @@
-pkgbase = kdeplasma-applets-xrdesktop-git
+pkgbase = plasma5-applets-xrdesktop-git
 	pkgdesc = xrdesktop applet for KDE Plasma
-	pkgver = 26.61bafae
+	pkgver = 0.14.0.r2.gb4eda0a
 	pkgrel = 1
-	url = https://gitlab.freedesktop.org/xrdesktop
+	url = https://gitlab.freedesktop.org/xrdesktop/kdeplasma-applets-xrdesktop
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	depends = plasma-desktop
 	depends = kwin-effect-xrdesktop-git
-	source = kdeplasma-applets-xrdesktop-git::git+https://gitlab.freedesktop.org/xrdesktop/kdeplasma-applets-xrdesktop.git
+	depends = qt6-declarative
+	replaces = kdeplasma-applets-xrdesktop-git
+	source = plasma5-applets-xrdesktop-git::git+https://gitlab.freedesktop.org/xrdesktop/kdeplasma-applets-xrdesktop.git
 	md5sums = SKIP
 
-pkgname = kdeplasma-applets-xrdesktop-git
-
+pkgname = plasma5-applets-xrdesktop-git
