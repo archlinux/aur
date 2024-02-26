@@ -52,7 +52,7 @@ fi
 
 pkgname=ffmpeg-obs
 pkgver=6.1.1
-pkgrel=6
+pkgrel=7
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -62,7 +62,7 @@ license=(GPL-3.0-only)
 _aomver=3
 _dav1dver=1.3.0
 _ffnvcodecver=12.0.16.0
-_libjxlver=0.9.0
+_libjxlver=0.10.0
 _libplacebover=6
 _libristver=0.2.7
 _libvpxver=1.14
@@ -79,15 +79,17 @@ depends=(
   "srt>=$_srtver"
   alsa-lib
   bzip2
-  "dav1d>=$_dav1dver"
   cairo
+  "dav1d>=$_dav1dver"
   fontconfig
+  freetype2
   fribidi
   glib2
   glibc
   gmp
   gnutls
   gsm
+  harfbuzz
   jack
   lame
   libass
@@ -95,9 +97,7 @@ depends=(
   libbluray
   libbs2b
   libdrm
-  freetype2
   libgl
-  harfbuzz
   libiec61883
   "libjxl>=$_libjxlver"
   libmodplug
@@ -106,13 +106,11 @@ depends=(
   libpulse
   libraw1394
   librsvg
-  rubberband
   libsoxr
   libssh
   libtheora
   libva
   libvdpau
-  "vid.stab>=$_vidstabver"
   libvorbis
   libvpl
   "libvpx>=$_libvpxver"
@@ -127,11 +125,13 @@ depends=(
   openjpeg2
   opus
   "rav1e>=$_rav1ever"
+  rubberband
   sdl2
   snappy
   speex
   v4l-utils
   vapoursynth
+  "vid.stab>=$_vidstabver"
   vulkan-icd-loader
   "x264>=$_x264ver"
   "x265>=$_x265ver"
@@ -356,7 +356,7 @@ fi
 
 if [[ $FFMPEG_OBS_VULKAN == 'ON' ]]; then
   depends+=(glslang spirv-tools)
-  _args+=(--enable-libglslang)
+  _args+=(--enable-libglslang --disable-libshaderc)
   provides+=(ffmpeg-vulkan)
 fi
 
@@ -416,6 +416,11 @@ prepare() {
   if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     # Fix lensfun detection
     git cherry-pick -n e1c1dc8347f13104bc21e4100fcf4d4dddf5e5d8
+  fi
+  
+  if [[ $FFMPEG_OBS_VULKAN == 'ON' ]]; then
+    # Fix compilation with glslang
+    git cherry-pick -n e43615fc2ab27d562ed7e087803f4a364a7d1175
   fi
 
   ### Arch Linux changes
