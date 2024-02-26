@@ -3,7 +3,7 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=11.10.3
+pkgver=11.10.5
 _floorp_core_commit="db75341a765d0c1a53ccbc21513d61d82e877314"
 _floorp_l10n_commit="4c2c1ca3e907d8ce170be6770d892d17e08c0e56"
 pkgrel=1
@@ -76,7 +76,7 @@ source=(https://github.com/Floorp-Projects/Floorp/archive/refs/tags/v"${pkgver}"
     "common::git+https://gitlab.com/garuda-linux/firedragon/common.git"
     "settings::git+https://gitlab.com/garuda-linux/firedragon/settings.git"
     "${pkgname}.desktop")
-sha256sums=('a31beb9aba18d9a2fb31b5b8053e331a8bc5d07ad5e6b9cb959feaa25aa3299a'
+sha256sums=('d0cbd91d4a2e490441177476dd3c7d21b173878950d363e3a35dae151134de7d'
             'SKIP'
             'SKIP'
             'SKIP'
