@@ -172,6 +172,9 @@ prepare() {
 
   # Upstream completely broke the justfile
   git revert -n 5f2fd3324b997142fa10c8170fd6b53feb5f2673
+
+  # Fix cosmic-screenshot .desktop file installation from justfile
+  sed -i 's/Dm-644/Dm0644/g' cosmic-screenshot/justfile
 }
 
 build() {
@@ -220,10 +223,6 @@ check() {
 
 package() {
   cd cosmic-epoch
-
-  # Fix cosmic-screenshot desktop file
-  cp -f cosmic-screenshot/resources/com.system76.CosmicScreenshot.desktop cosmic-sysext/usr/share/applications/
-
   cp -r cosmic-sysext/* "$pkgdir/"
 
   # Keybinding config
