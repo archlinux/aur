@@ -1,5 +1,6 @@
-description = "Stub generator"
-version = "1.06"
+description = "Stub generator from IDL description"
+version = "1.12"
 directory = "^"
 archive(byte) = "com.cma"
+archive(byte,plugin) = "com.cma"
 archive(native) = "com.cmxa"
