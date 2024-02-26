@@ -2,7 +2,7 @@
 
 pkgname=moment
 pkgver=0.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A customizable, keyboard-operable Matrix client. Fork of Mirage'
 arch=('x86_64' 'i686' 'aarch64')
 url='https://mx-moment.xyz/'
@@ -50,13 +50,14 @@ depends=(
 )
 makedepends=('cmake' 'git')
 conflicts=("${pkgname}-git")
-source=('git+https://gitlab.com/mx-moment/moment.git')
-sha256sums=('SKIP')
+source=('git+https://gitlab.com/mx-moment/moment.git' 'fix-html-sanitizer.patch')
+sha256sums=('SKIP' 'a5c65370bbd40810a2f0053917072f2cdf17a563de50a5d6f2cf7c9ee30fbcc5')
 
 prepare() {
 	cd "${srcdir}/${pkgname}"
 	git checkout "v${pkgver}"
 	git submodule update --init --recursive
+	patch -p1 < "${srcdir}/fix-html-sanitizer.patch"
 }
 
 build() {
