@@ -20,6 +20,7 @@ pkgbase = mongodb-compass-isolated-bin
 	optdepends = org.freedesktop.secrets
 	provides = mongodb-compass-isolated
 	conflicts = mongodb-compass-isolated
+	backup = etc/mongodb-compass.conf
 	source = mongodb-compass-isolated-bin-1.42.1.rpm::https://downloads.mongodb.com/compass/mongodb-compass-isolated-1.42.1.x86_64.rpm
 	source = mongodb-compass.conf
 	sha512sums = 7f3eb8086eeaff859083bf36851f2f2f2a685188e8b017b5ffbef0522da30e6e2484e232621b3348d71d45b65e796b4cde2e6dcb07d530f86420e72f93029bca
