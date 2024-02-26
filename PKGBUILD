@@ -39,7 +39,7 @@ build() {
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
     gendesk -q -f -n --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
-    #_ensure_local_nvm
+    _ensure_local_nvm
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -50,8 +50,8 @@ build() {
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     sed "s|app.isPackaged|!app.isPackaged|g" -i src/main/main.ts
-    #npm run post-clone
-    #npm run package
+    npm run post-clone
+    npm run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
