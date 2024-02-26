@@ -2,7 +2,7 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgname=wails
-pkgver=2.7.1
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Create desktop apps using Go and Web Technologies"
 arch=(x86_64)
@@ -16,8 +16,8 @@ makedepends=(
 )
 optdepends=('docker')
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha512sums=('9881bd05675d46280c40dd1a8d64f547a88519f248826437f6db8b29d53ed5ac8bf1874144af72923d3956e6369e7b44d5dc1a0680226f6e17ee4adc3de5d0d4')
-b2sums=('b9364ce76dabb4e22ba0059a691be6bf0037f301ca2d9b70a9570c83d0cb8bf92bf426f8253309a737d12ba72c3942a56efa3942c8f2279468d6b3c3b52eb00e')
+sha512sums=('dd959217dda939b56b16abcb7e4375c90b2a4f47ce2663fc9567dde17be956b347e94dee498d034c518e8b15f800a113255b00c425e6260eb3db1a60c12883d7')
+b2sums=('3534da4ee8c069e6bb9bdbd0bab22b4660113ef24cc60c5b816fa7a39f02eeb0227d0e71cf8aa624d7949d593fd6117d4875a5de6b8e8751466cf02392daf9ac')
 
 prepare() {
   mkdir -vp $pkgname-$pkgver/build
