@@ -1,37 +1,37 @@
-diff -c -r pgmodeler-0.9.4-alpha1-orig/assets/conf/defaults/general.conf pgmodeler-0.9.4-alpha1/assets/conf/defaults/general.conf
-*** pgmodeler-0.9.4-alpha1-orig/assets/conf/defaults/general.conf	2021-07-22 11:59:37.184473344 +0200
---- pgmodeler-0.9.4-alpha1/assets/conf/defaults/general.conf	2021-07-22 12:00:24.371236247 +0200
+diff -c -r pgmodeler-1.1.0/assets/conf/defaults/general.conf pgmodeler-1.1.0-new/assets/conf/defaults/general.conf
+*** pgmodeler-1.1.0/assets/conf/defaults/general.conf	2024-02-23 14:31:35.000000000 +0100
+--- pgmodeler-1.1.0-new/assets/conf/defaults/general.conf	2024-02-26 10:27:14.174593458 +0100
 ***************
-*** 22,28 ****
-                 code-tab-width="4"
+*** 15,21 ****
+                 hide-ext-attribs="false"
                  canvas-corner-move="true"
                  invert-rangesel-trigger="false"
 !                check-update="true"
                  check-versions="all"                 
                  save-last-position="true"
                  show-main-menu="false"
---- 22,28 ----
-                 code-tab-width="4"
+--- 15,21 ----
+                 hide-ext-attribs="false"
                  canvas-corner-move="true"
                  invert-rangesel-trigger="false"
-!                check-update="false"
+!                falsecheck-update="false"
                  check-versions="all"                 
                  save-last-position="true"
                  show-main-menu="false"
-diff -c -r pgmodeler-0.9.4-alpha1-orig/assets/conf/general.conf pgmodeler-0.9.4-alpha1/assets/conf/general.conf
-*** pgmodeler-0.9.4-alpha1-orig/assets/conf/general.conf	2021-07-22 11:59:37.184473344 +0200
---- pgmodeler-0.9.4-alpha1/assets/conf/general.conf	2021-07-22 12:00:38.354598103 +0200
+diff -c -r pgmodeler-1.1.0/assets/conf/general.conf pgmodeler-1.1.0-new/assets/conf/general.conf
+*** pgmodeler-1.1.0/assets/conf/general.conf	2024-02-23 14:31:35.000000000 +0100
+--- pgmodeler-1.1.0-new/assets/conf/general.conf	2024-02-26 10:27:27.152735838 +0100
 ***************
-*** 22,28 ****
-                 code-tab-width="4"
+*** 15,21 ****
+                 hide-ext-attribs="false"
                  canvas-corner-move="true"
                  invert-rangesel-trigger="false"
 !                check-update="true"
                  check-versions="all"                 
                  save-last-position="true"
                  show-main-menu="false"
---- 22,28 ----
-                 code-tab-width="4"
+--- 15,21 ----
+                 hide-ext-attribs="false"
                  canvas-corner-move="true"
                  invert-rangesel-trigger="false"
 !                check-update="false"
