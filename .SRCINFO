@@ -1,23 +1,17 @@
 pkgbase = appimagepool-bin
 	pkgdesc = A simple, modern AppImageHub Client, powered by flutter.
 	pkgver = 5.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.pling.com/p/1547076/
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	depends = gtk3
-	depends = cairo
 	depends = hicolor-icon-theme
-	depends = gdk-pixbuf2
-	depends = libepoxy
-	depends = harfbuzz
-	depends = at-spi2-core
-	depends = pango
 	provides = appimagepool=5.1.0
 	conflicts = appimagepool
 	source = appimagepool-5.1.0.tar.gz::https://github.com/prateekmedia/appimagepool/releases/download/5.1.0/appimagepool-5.1.0-x86_64.tar.gz
 	source = appimagepool.sh
 	sha256sums = 265d503d064f92334a5c7f4a90988931dee9451f4831c3751b49eeea7a016769
-	sha256sums = f7a7e14ccf1242147568dcee5550d92ea2363f5f8cd486cb5408066db2020375
+	sha256sums = 87aad073913a72e5fa1c7f4e0f6f695dafc5ba8ea675a62be03c532c701c243a
 
 pkgname = appimagepool-bin
