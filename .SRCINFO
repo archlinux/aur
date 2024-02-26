@@ -1,0 +1,16 @@
+pkgbase = markdown-oxide-git
+	pkgdesc = A Markdown parser written in Rust
+	pkgver = r250.a9ed72a
+	pkgrel = 1
+	url = https://github.com/Feel-ix-343/markdown-oxide
+	arch = x86_64
+	license = CC0
+	makedepends = cargo
+	makedepends = git
+	makedepends = rustup
+	provides = markdown-oxide
+	conflicts = markdown-oxide
+	source = markdown-oxide::git+https://github.com/Feel-ix-343/markdown-oxide.git
+	sha256sums = SKIP
+
+pkgname = markdown-oxide-git
