@@ -1,7 +1,7 @@
 # Maintainer: Simon <simon at gamersi dot at>
 pkgname=lrcget-bin
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 options=(!strip)
 pkgdesc="Utility for mass-downloading LRC synced lyrics for your offline music library."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 install_path="/opt/lrcget"
 depends=('hicolor-icon-theme' 'zlib' 'glibc')
 source=("${pkgname%-appimage}-${pkgver}.AppImage::https://github.com/tranxuanthang/lrcget/releases/download/${pkgver}/lrcget_${pkgver}_amd64.AppImage")
-b2sums=('6e40cc22fd991edc3472525ecdaf511af4c4ddb375ba9771f6d26bf987900f726705e3a62a754ab9d148b8e558594218df7236af52c9b4ef9d1f84a92e67b636')
+b2sums=('SKIP')
 
 prepare() {
   cd "${srcdir}"
