@@ -1,6 +1,6 @@
 pkgbase = supersonic-desktop
 	pkgdesc = A lightweight cross-platform desktop client for Subsonic music servers
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/dweymouth/supersonic
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = supersonic-desktop
 	depends = mpv
 	optdepends = libappindicator-gtk3: Systray indicator support
 	optdepends = org.freedesktop.secrets: Keyring password store support
-	source = supersonic-desktop-0.9.0.tar.gz::https://github.com/dweymouth/supersonic/archive/refs/tags/v0.9.0.tar.gz
-	sha256sums = 72284757454830e0a20c803ef156f9a8c3f932c705c4d07c61aea4dbb2aa03ed
+	source = supersonic-desktop-0.9.1.tar.gz::https://github.com/dweymouth/supersonic/archive/refs/tags/v0.9.1.tar.gz
+	sha256sums = 4911901c92883a9912a5b34fdaf524969d959ef9f7fdca19fb9647ace68d7301
 
 pkgname = supersonic-desktop
