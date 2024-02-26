@@ -2,12 +2,12 @@
 pkgname=paketkoll
 _pkgver=0.1.2
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast integrity check for files installed by pacman"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/VorpalBlade/paketkoll"
 license=('MPL-2.0')
-makedepends=('cargo')
+makedepends=('cargo' 'cmake')
 options=('!lto')
 source=("$pkgname-$_pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-${_pkgver}.crate")
 sha256sums=('a534d8ff5d676b6acaf222838f463e71b9d6c0efdf8d2e887c311722eab45947')

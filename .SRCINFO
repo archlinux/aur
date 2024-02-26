@@ -1,7 +1,7 @@
 pkgbase = paketkoll
 	pkgdesc = Fast integrity check for files installed by pacman
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VorpalBlade/paketkoll
 	arch = x86_64
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = paketkoll
 	arch = aarch64
 	license = MPL-2.0
 	makedepends = cargo
+	makedepends = cmake
 	options = !lto
 	source = paketkoll-0.1.2.tar.gz::https://static.crates.io/crates/paketkoll/paketkoll-0.1.2.crate
 	sha256sums = a534d8ff5d676b6acaf222838f463e71b9d6c0efdf8d2e887c311722eab45947
