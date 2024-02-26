@@ -11,8 +11,7 @@ license=('BSD')
 depends=('wayland' 'hyprlang>=0.4.0' 'cairo' 'pango' 'pam' 'libxkbcommon' 'libglvnd' 'libdrm' 'mesa')
 makedepends=('git' 'cmake' 'ninja' 'gcc' 'gdb' 'meson' 'wayland-protocols' 'xorgproto')
 source=("${_pkgname}::git+https://github.com/hyprwm/hyprlock.git")
-conflicts=("${_pkgname}")
-provides=(hyprlock)
+provides=("${_pkgname}")
 sha256sums=('SKIP')
 
 pkgver() {
