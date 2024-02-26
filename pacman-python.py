@@ -28,14 +28,21 @@ if len(sys.argv) == 1:
 
 pkgs = [sys.argv[1]]
 
+# The -r option is not fully compatible with the pip Requirements File Format:
+# https://pip.pypa.io/en/stable/reference/requirements-file-format/
 if sys.argv[1] == "-r":
     with open(sys.argv[2], 'r') as r:
         pkgs = r.readlines()
 
 for pkg in pkgs:
+    if pkg.replace(" ", "").startswith("#"):
+        continue
     for repo in URLS:
         for name in NAMES:
-            pkg = pkg.replace('\n', '')
+            pkg = pkg \
+                .replace('\n', '') \
+                .split(" ")[0] \
+                .split("=")[0]
             name = name.replace("$", pkg)
             url = URLS[repo].replace("$", name)
             req = requests.get(url)
