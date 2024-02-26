@@ -1,11 +1,10 @@
 pkgbase = markdown-oxide-git
 	pkgdesc = A markdown language server with Obsidian syntax support.
-	pkgver = r250.a9ed72a
+	pkgver = r255.3ea0b15
 	pkgrel = 1
 	url = https://github.com/Feel-ix-343/markdown-oxide
 	arch = x86_64
 	license = CC0
-	makedepends = cargo
 	makedepends = git
 	makedepends = rustup
 	provides = markdown-oxide

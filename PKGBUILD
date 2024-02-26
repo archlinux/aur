@@ -1,13 +1,13 @@
 # Maintainer: sQVe <oskargrunning@gmail.com>
 pkgname=markdown-oxide-git
 _pkgname=markdown-oxide
-pkgver=r250.a9ed72a
+pkgver=r255.3ea0b15
 pkgrel=1
 pkgdesc="A markdown language server with Obsidian syntax support."
 arch=('x86_64')
 url="https://github.com/Feel-ix-343/markdown-oxide"
 license=('CC0')
-makedepends=('cargo' 'git' 'rustup')
+makedepends=('git' 'rustup')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/Feel-ix-343/markdown-oxide.git")
