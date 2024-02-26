@@ -22,6 +22,8 @@ depends=(
 	'libpango-1.0.so'
 	'libwayland-client.so'
 )
+provides=('wmenu')
+conflicts=('wmenu')
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://git.sr.ht/~adnano/wmenu/archive/$pkgver.tar.gz"
 	"add-wmenu-run.patch"
