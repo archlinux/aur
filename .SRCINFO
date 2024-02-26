@@ -1,7 +1,7 @@
 pkgbase = python-wyoming-piper
 	pkgdesc = Wyoming Server for Piper
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgver = 1.5.0
+	pkgrel = 1
 	url = https://github.com/rhasspy/wyoming-piper
 	arch = any
 	license = MIT
@@ -13,10 +13,10 @@ pkgbase = python-wyoming-piper
 	depends = python-wyoming
 	depends = piper-tts
 	backup = etc/conf.d/wyoming-piper
-	source = https://github.com/rhasspy/wyoming-piper/archive/refs/tags/v1.4.0.tar.gz
+	source = https://github.com/rhasspy/wyoming-piper/archive/refs/tags/v1.5.0.tar.gz
 	source = wyoming-piper.conf
 	source = wyoming-piper.service
-	sha256sums = b10a423d2a8afe57af97ff97db48c2319eed05e3d6b148a6c9c65055c693aae8
+	sha256sums = 7e3c73ba1ee582109c49f55762f9fcf01984bc7918873a6ffe44c62dcc530ec7
 	sha256sums = dc68021f9b7cb96e85195e9925229cc49954c18917292e3e881f270f5f2623ee
 	sha256sums = 0c8852bb4380ef9b246718de2a5e9a78a9c56cd6598c3f3975c61cfa544a3e52
 
