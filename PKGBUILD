@@ -15,7 +15,7 @@ depends=(
   'python-domdf-python-tools'
   'python-packaging'
   'python-platformdirs'
-  'python-typing-extensions'
+  'python-typing_extensions'
 )
 makedepends=(
   'git'
