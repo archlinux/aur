@@ -1,32 +1,44 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Luis Martinez <luis dot martinez at tuta dot io>
 # Contributor: Bumsik Kim <k.bumsik@gmail.com>
 
+_distname=VirtScreen
 pkgname=virtscreen
-pkgver=0.3.1
-pkgrel=2
-pkgdesc="Make your iPad/tablet/computer as a secondary monitor on Linux"
+pkgver=0.3.2
+pkgrel=1
+pkgdesc="Use your iPad/tablet/computer as a secondary monitor on Linux (dderjoel's continuation fork)"
 arch=('any')
-url="https://github.com/kbumsik/VirtScreen"
-license=('GPL3')
-depends=('xorg-xrandr' 'x11vnc' 'python-pyqt5' 'qt5-quickcontrols2' 'python-quamash' 'python-netifaces')
-makedepends=('python-setuptools')
+url="https://github.com/dderjoel/${_distname}"
+license=('GPL-3.0-only')
+depends=(
+  'python'
+  'python-netifaces'
+  'python-pyqt5'
+  'python-qasync'
+  'qt5-declarative'
+  'qt5-quickcontrols'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 optdepends=('arandr: for display settings option')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
-        '001-remove-pyqt5.patch')
-sha256sums=('345c9333a0129db660d07687fbfa479fd69bf9fe387510b987207463c7a55257'
-            '95772f671ff329e3e7ef791999dc9f131647bc0f92c3a23e43813399659c62c9')
-
-prepare() {
-	cd "VirtScreen-$pkgver"
-	patch -p1 < "$srcdir/001-remove-pyqt5.patch"
-}
+_tarname="${_distname}-${pkgver}"
+source=("${_tarname}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+b2sums=('2c9480f0cb96401628dd67f8e3d143d6cb386421106e6e42d7dc4793ad61d12df33c8f31bdc33e222952241f07fd100d6738d8aa754b751ae98bcb4439f08340')
 
 build() {
-	cd "VirtScreen-$pkgver"
-	python setup.py build
+  cd "${_tarname}"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "VirtScreen-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  depends+=(
+    'x11vnc'
+    'xorg-xrandr'
+  )
+  cd "${_tarname}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
