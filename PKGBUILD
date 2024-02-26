@@ -14,7 +14,7 @@ conflicts=('gama-platform')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://github.com/gama-platform/gama/releases/download/1.9.3/GAMA_1.9.3_Linux_with_JDK.deb")
-sha512sums_x86_64=('0433c2a086fdaa153c511e6f8143857d8b4cd5de23f3275d2b5c5a799944f7c22de4c2f3d0484cfee42cbbb78445905d771092224a2707bd93e413042d72572f')
+sha512sums_x86_64=('49a5ec721e8162564880b4a2b9e5fb3f0a7cf45633aa26440fad3d5684c4ea6325a6e13874a0916c06e8417260d1b27cf4f335fc16367cd93cab7bd3ad7199de')
 
 package(){
 
