@@ -2,12 +2,14 @@
 
 pkgname=gssg-git
 _pkgname=gssg
-pkgver=0.1.747b6b41
+pkgver=0.1.fc755f28
 pkgrel=1
 pkgdesc='Gemini static site generator'
 url='https://git.sr.ht/~gsthnz/gssg'
 arch=('x86_64')
 license=('GPL3')
+provides=('gssg')
+conflicts=('gssg')
 makedepends=('go' 'git')
 source=("git+$url")
 sha256sums=('SKIP')
