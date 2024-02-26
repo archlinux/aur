@@ -1,6 +1,6 @@
 pkgbase = python-inquirer
 	pkgdesc = Collection of common interactive command line user interfaces, based on Inquirer.js
-	pkgver = 3.1.3
+	pkgver = 3.2.4
 	pkgrel = 1
 	url = https://github.com/magmax/python-inquirer
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-inquirer
 	depends = python-blessed
 	depends = python-editor
 	depends = python-readchar
-	source = python-inquirer-3.1.3.tar.gz::https://files.pythonhosted.org/packages/source/i/inquirer/inquirer-3.1.3.tar.gz
-	sha256sums = aac309406f5b49d4b8ab7c6872117f43bf082a552dc256aa16bc95e16bb58bec
+	source = python-inquirer-3.2.4.tar.gz::https://files.pythonhosted.org/packages/source/i/inquirer/inquirer-3.2.4.tar.gz
+	sha256sums = 33b09efc1b742b9d687b540296a8b6a3f773399673321fcc2ab0eb4c109bf9b5
 
 pkgname = python-inquirer
