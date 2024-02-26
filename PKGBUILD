@@ -18,18 +18,11 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pyname}"
-	git describe --long --tags 2>/dev/null |
-		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" \
-			"$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-pkgver() {
-	cd "${srcdir}/${_pyname}"
-  	( set -o pipefail
+	(
+		set -o pipefail
 		git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-   		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-  	)
+			printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	)
 }
 
 prepare() {
