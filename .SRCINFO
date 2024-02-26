@@ -3,7 +3,6 @@ pkgbase = ocaml-cryptokit
 	pkgver = 1.19
 	pkgrel = 1
 	url = http://pauillac.inria.fr/~xleroy/software.html#cryptokit
-	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = ocaml

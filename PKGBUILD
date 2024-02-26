@@ -1,11 +1,11 @@
-# Maintainer: oliver < a t >  first . in-berlin . de
-# former maintainer: Taylor Venable <taylor@metasyntax.net>
-
+# Maintainer: Christopher Price <pricechrispy at gmail dot com>
+# Contributor: oliver < a t >  first . in-berlin . de
+# Contributor: Taylor Venable <taylor@metasyntax.net>
 pkgname="ocaml-cryptokit"
 pkgver='1.19'
 pkgrel=1
 pkgdesc='Cryptographic primitives for OCaml'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://pauillac.inria.fr/~xleroy/software.html#cryptokit"
 license=('LGPL')
 depends=('ocaml' 'zlib' 'ocaml-zarith')
