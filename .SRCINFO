@@ -1,14 +1,14 @@
 pkgbase = r-rpart.plot
 	pkgdesc = Plot 'rpart' Models: An Enhanced Version of 'plot.rpart'
-	pkgver = 3.1.1
-	pkgrel = 6
+	pkgver = 3.1.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=rpart.plot
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	depends = r
 	optdepends = r-earth
-	source = https://cran.r-project.org/src/contrib/rpart.plot_3.1.1.tar.gz
-	md5sums = 5107258efdc312dfe709fa98babc1629
-	b2sums = 66ccb9562cbadd1352d44728d884dee6ff2aaec165d5bb9afe08f32bc04fb700c2c273a587b9f460be66ab419cc074e55479bbe852d3befc8cb0229af1883026
+	source = https://cran.r-project.org/src/contrib/rpart.plot_3.1.2.tar.gz
+	md5sums = bd2caffcc8ee77b846b87a90d59b88ca
+	b2sums = d5c81ab46767dacfcadc18873ecd5ccbb9fd4e836da30cbea21fb88b1ef73d3b4bc1ecac824b5ae082c057b7a4a0248846f69ed557abedf2f401672ff00d15f1
 
 pkgname = r-rpart.plot

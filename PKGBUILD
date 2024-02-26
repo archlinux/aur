@@ -1,14 +1,14 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rpart.plot
-_pkgver=3.1.1
+_pkgver=3.1.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=6
+pkgrel=1
 pkgdesc="Plot 'rpart' Models: An Enhanced Version of 'plot.rpart'"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(GPL3)
+license=('GPL-3.0-only')
 depends=(
   r
 )
@@ -16,8 +16,8 @@ optdepends=(
   r-earth
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5107258efdc312dfe709fa98babc1629')
-b2sums=('66ccb9562cbadd1352d44728d884dee6ff2aaec165d5bb9afe08f32bc04fb700c2c273a587b9f460be66ab419cc074e55479bbe852d3befc8cb0229af1883026')
+md5sums=('bd2caffcc8ee77b846b87a90d59b88ca')
+b2sums=('d5c81ab46767dacfcadc18873ecd5ccbb9fd4e836da30cbea21fb88b1ef73d3b4bc1ecac824b5ae082c057b7a4a0248846f69ed557abedf2f401672ff00d15f1')
 
 build() {
   mkdir build
