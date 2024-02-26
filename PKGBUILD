@@ -7,7 +7,7 @@
 _gitname="webkit2gtk"
 _pkgname="$_gitname-unstable"
 pkgname="$_pkgname"
-pkgver=2.43.3
+pkgver=2.43.4
 pkgrel=1
 pkgdesc="Web content engine for GTK"
 url="https://webkitgtk.org/"
@@ -91,12 +91,12 @@ options=('!emptydirs')
 _pkgsrc="webkitgtk-$pkgver"
 source=(
   "$url/releases/$_pkgsrc.tar.xz"{,.asc}
-  "GTK-Disable-DMABuf-renderer-for-NVIDIA-proprietary-drivers.patch"
+  #"GTK-Disable-DMABuf-renderer-for-NVIDIA-proprietary-drivers.patch"
 )
 sha256sums=(
-  '738564bf3af6d96af91b644c84f7c5aaf499fdefddc435a2734fa7f2d45adb09'
+  '80545ddc4edbb249f302d7235c54d0a0823b6f61ddf96a80f2f334e89a35caeb'
   'SKIP'
-  'e315919f2901e6eea70f6d29bccd22be7d76b5109f3f2487385b405911878f8f'
+  #'e315919f2901e6eea70f6d29bccd22be7d76b5109f3f2487385b405911878f8f'
 )
 
 validpgpkeys=(
@@ -111,8 +111,9 @@ prepare() {
   cd "$_pkgsrc"
 
   # https://bugs.archlinux.org/task/79783
+  # https://bugs.webkit.org/show_bug.cgi?id=262607
   # https://github.com/WebKit/WebKit/pull/18614
-  patch -Np1 -F100 -i ../GTK-Disable-DMABuf-renderer-for-NVIDIA-proprietary-drivers.patch
+  #patch -Np1 -F100 -i ../GTK-Disable-DMABuf-renderer-for-NVIDIA-proprietary-drivers.patch
 }
 
 build() {
