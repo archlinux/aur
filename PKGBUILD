@@ -3,16 +3,15 @@ pkgname=tailchat-desktop
 pkgver=1.10.0
 _electronversion=18
 _nodeversion=16
-pkgrel=2
+pkgrel=3
 pkgdesc="Next generation noIM application in your own workspace, not only another Slack/Discord/Rocket.chat"
 arch=('any')
 url="https://tailchat.msgbyte.com/"
 _ghurl="https://github.com/msgbyte/tailchat"
-license=('Apache')
+license=('Apache-2.0')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
-    'libxcb'
 )
 makedepends=(
     'gendesk'
@@ -26,7 +25,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -36,15 +35,18 @@ _ensure_local_nvm() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories "Network" --name "${pkgname}" --exec "${pkgname} %U"
+    gendesk -q -f -n --categories="Network" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git/client/desktop"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
     yarn install --cache-folder "${srcdir}/.yarn_cache"
     yarn run build
     yarn run electron-builder --linux
