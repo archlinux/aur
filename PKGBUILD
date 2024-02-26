@@ -1,8 +1,8 @@
 # Maintainer: Craig McLure <craig@mclure.net>
 pkgname=goxlr-utility-ui
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
-pkgdesc="A UI for the GoXLR Utility"
+pkgdesc="A UI Wrapper for the GoXLR Utility"
 arch=('x86_64')
 url="https://github.com/frostycoolslug/goxlr-utility-ui"
 license=('MIT')
@@ -22,7 +22,7 @@ depends=(
 )
 makedepends=('cargo' 'pkgconf' 'clang')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/frostycoolslug/goxlr-utility-ui/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('a25e67322dec03a6424742851a68cd66f9515e4efc320440c17d36c832ee69b544586e6843680026c4e530c70e6a461d76618965421c40e5ef5e374ec55054df')
+sha512sums=('52c4667c574729d4b1f2f883358741944baff0a6d4c062eb5516d824030863d103ae883e34b2fd3b529418276d8c4123b8b7f0257a5b1a0108a99df24b3a1a06')
 
 prepare() {
     cd "$pkgname-$pkgver/src-tauri"
