@@ -21,9 +21,10 @@ source=(
 	'tandoor.socket'
 	'tandoor-sysuser.conf'
 	'tandoor-directory.conf'
+    'tandoor-nginx.conf'
 )
 noextract=()
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd "$srcdir/recipes"
@@ -49,6 +50,7 @@ package() {
 	install -Dm644 -t "$pkgdir/usr/lib/systemd/system/" tandoor.service tandoor.socket
 	install -Dm644 tandoor-sysuser.conf "$pkgdir/usr/lib/sysusers.d/tandoor.conf"
 	install -Dm644 tandoor-directory.conf "$pkgdir/usr/lib/tmpfiles.d/tandoor.conf"
+	install -Dm644 tandoor-nginx.conf "$pkgdir/etc/nginx/sites-available/tandoor.conf"
 
 	cd recipes
 	install -Dm644 .env.template "$pkgdir/etc/tandoor/tandoor.conf"
