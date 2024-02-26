@@ -8,8 +8,16 @@ pkgdesc="ReplayGain 2.0 loudness normalizer"
 arch=('x86_64')
 url="https://github.com/complexlogic/rsgain"
 license=('custom')
-depends=('fmt' 'libebur128' 'taglib' 'ffmpeg' 'libinih')
-makedepends=('cmake')
+depends=(
+  'libebur128'
+  'libavcodec.so'
+  'libavformat.so'
+  'libavutil.so'
+  'libswresample.so'
+  'libinih'
+  'taglib'
+  )
+makedepends=(cmake fmt)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/complexlogic/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha512sums=('a6a2d90cd7024abe776b55102ba0fb90ae12ea66bbd180d8b7d7f4927d84d51dafeca7594ad9b9890bcf9fff1b7b2a5b7cafa3dbb3930fb009d14951c0423d6a')
 
