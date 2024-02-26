@@ -2,14 +2,14 @@
 # Contributor: iFlygo
 pkgname=figma-linux-git
 _pkgname=Figma-linux
-pkgver=0.11.2.r10.gda70945
+pkgver=0.11.3.r1.g4ff0fea
 _electronversion=27
 _nodeversion=18
 pkgrel=1
 arch=("any")
 pkgdesc="The collaborative interface design tool. Unofficial Figma desktop client for Linux"
 url="https://github.com/Figma-Linux/figma-linux"
-license=("GPL2")
+license=("GPL-2.0-only")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 depends=(
@@ -29,7 +29,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -44,17 +44,21 @@ _ensure_local_nvm() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -f -n -q --categories "Utility" --name "${_pkgname}" --exec "${pkgname} %U"
+    gendesk -f -n -q --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
-    sed '62,73d;s|"output": "build/installers"|"output": "build"|g' -i config/builder.json
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
+    sed "s|--config=config/builder.json -l|--config=config/builder.json -l AppImage|g" -i package.json
+    sed 's|"output": "build/installers"|"output": "build"|g' -i config/builder.json
     npm install --no-frozen-lockfile
     npm run package
 }
