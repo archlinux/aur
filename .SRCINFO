@@ -1,0 +1,16 @@
+pkgbase = python-hwmon
+	pkgdesc = Hwmon is a collection of Python 3 scripts which are a native Python solution for obtaining information from Linux system sensors.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Guillermo-C-A/Hwmon-python
+	arch = any
+	license = custom:GNU General Public License v3 (GPLv3)
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/3d/3c/d1f552e63b2c1f4ea462c1f788801f88a64a22f3c59275a8596564abb5fe/hwmon-1.0.tar.gz
+	sha256sums = fc55b08e45e8897797b8af2f7bc7acee9fd33941af10fe2ee43b6b31fca2437c
+
+pkgname = python-hwmon
+	depends = python
