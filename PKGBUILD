@@ -3,11 +3,11 @@ pkgname=seven-waves
 _pkgname=7-Waves
 pkgver=1.2.0
 _electronversion=9
-pkgrel=4
+pkgrel=5
 pkgdesc="A dodging game with 7 levels of increasing difficulty"
 arch=('any')
 url="https://github.com/Togohogo1/7-Waves"
-license=("custom:CC0-1.0")
+license=("CC0-1.0")
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
@@ -25,18 +25,21 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
-    gendesk -q -f -n --categories "Game" --name "${_pkgname}" --exec "${pkgname} %U"
+    gendesk -q -f -n --categories="Game" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
     sed "s|builder build|builder --linux AppImage|g" -i package.json
     yarn install --cache-folder "${srcdir}/.yarn_cache"
     yarn run dist
