@@ -2,6 +2,7 @@ pkgbase = lrcget-bin
 	pkgdesc = Utility for mass-downloading LRC synced lyrics for your offline music library.
 	pkgver = 0.3.0
 	pkgrel = 3
+	options = !debug
 	url = https://github.com/tranxuanthang/lrcget
 	arch = x86_64
 	license = MIT

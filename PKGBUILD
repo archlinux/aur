@@ -2,6 +2,7 @@
 pkgname=lrcget-bin
 pkgver=0.3.0
 pkgrel=3
+options=(!debug)
 pkgdesc="Utility for mass-downloading LRC synced lyrics for your offline music library."
 arch=('x86_64')
 url="https://github.com/tranxuanthang/lrcget"
