@@ -4,13 +4,13 @@
 
 pkgname=python-matplotlib-git
 
-pkgver=r49400.d0575d486f
+pkgver=r49602.5e34777719
 pkgrel=1
 pkgdesc="A python plotting library for making publication quality plots, master git branch"
 arch=('i686' 'x86_64')
 url='http://matplotlib.org'
 license=('custom')
-checkdepends=('python-nose' 'python-mock' 'xorg-server-xvfb'
+checkdepends=('python-mock' 'xorg-server-xvfb'
               'texlive-core' 'texlive-latexextra' 'imagemagick' 'ffmpeg' 'mencoder' 'inkscape'
               'python-pycodestyle' 'python-pandas' )
 makedepends=('rsync' 'git' 'python-pytz' 'python-numpy'
@@ -61,7 +61,6 @@ package() {
    depends=('python-kiwisolver' 'python-pytz' 'python-numpy' 'python-pyqt5' 'python-dateutil' 'python-pyparsing' 'python-cycler' 'libxkbcommon-x11')
    optdepends=('python-gobject: for GTK3Agg/GTK3Cairo backend'
                'python-cairocffi: for GTK3Agg/GTK3Cairo backend'
-               'python-pyqt4: for Qt4Agg backend'
                'tk: used by the TkAgg backend'
                'ghostscript: usetex dependencies'
                'texlive-bin: usetex dependencies'
@@ -74,5 +73,5 @@ package() {
    python -m installer --destdir="$pkgdir" dist/*.whl
 
    install -dm755 "${pkgdir}"/usr/share/licenses/python-matplotlib
-   install -m 644 doc/users/project/license.rst "${pkgdir}"/usr/share/licenses/python-matplotlib
+   install -m 644 doc/project/license.rst "${pkgdir}"/usr/share/licenses/python-matplotlib
 }
