@@ -2,8 +2,8 @@
 # Maintainer: Lucas Melo <luluco250 at gmail dot com>
 
 pkgname=clonehero-ptb
-pkgver=v1.0.0.4080
-pkgrel=2
+pkgver=v1.1.0.4261
+pkgrel=0
 pkgdesc=\
 'Clone Hero is a free rhythm game, which can be played with any 5 or 6 button '\
 'guitar controller, game controllers, or just your standard computer keyboard.'
@@ -18,13 +18,13 @@ optdepends=(
 )
 conflicts=('clonehero')
 source=(
-	"clonehero-linux_$pkgver.tar.xz::https://pubdl.clonehero.net/clonehero-$pkgver-final/clonehero-linux.tar.xz"
+	"clonehero-linux_$pkgver.tar.xz::https://github.com/clonehero-game/releases/releases/download/$pkgver-PTB/clonehero-linux.tar.xz"
 	'clonehero.desktop'
 	'clonehero.install'
 	'clonehero'
 )
 sha256sums=(
-	'6162d5fb0810f517ca45249687fc743cc8c1ead140e18a476fd5ad60e3a06592'
+	'61f6ddf13a93674218c4c218e539acc537c3fc1cff6a75747603f5bf5ddd7abb'
 	'6d6d3e8e08ba65fedcc07a2d4ef8d5f6eabd4aec20dbc7e0febc6d58faff72bf'
 	'ed18ad9cc13b7a4b9b15a68ed9d2e0cb0a689bb85fecc33307b1c6da3ef1bbc0'
 	'e152f18dc38f47c0b0c52ff4227c7daa2fa5251fdf7f86683df1cd8274b24cb6'
