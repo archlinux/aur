@@ -6,8 +6,8 @@ pkgrel=1
 pkgdesc="This package provides the Zephyr protocol node software and a cli wallet."
 arch=('x86_64')
 url='https://github.com/ZephyrProtocol/zephyr'
+#TODO: Add dependencies and maybe add the license from Zephyr's git repo
 license=('custom:Monero')
-# ADD DEPENDENCIES
 makedepends=('curl' 'unzip')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
@@ -34,9 +34,11 @@ package() {
 	install -Dm644 "${srcdir}/zephyr-node-on-demand.service" "${pkgdir}/usr/lib/systemd/user/zephyr-node-on-demand.service"
 	install -Dm644 "${srcdir}/zephyr-node-proxy.service" "${pkgdir}/usr/lib/systemd/user/zephyr-node-proxy.service"
 	install -Dm644 "${srcdir}/zephyr-node-proxy.socket" "${pkgdir}/usr/lib/systemd/user/zephyr-node-proxy.socket"
+	# A service that shuts the node down when not in use should be added
+	# Otherwise the on demand starting is pretty useless
 }
 
 md5sums=('d6158cac6dc7552f7c3e864f2e158021'
-         'd9765fb9192464798806ee36d2cd46b4'
-         '5327ef74c270df1d11a6f453da76f126'
-         'f764c67dbf2525f602af9eb7d69ec799')
+	'd9765fb9192464798806ee36d2cd46b4'
+	'5327ef74c270df1d11a6f453da76f126'
+	'f764c67dbf2525f602af9eb7d69ec799')
