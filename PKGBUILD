@@ -12,7 +12,10 @@ makedepends=('git' 'nodejs' 'postgresql' 'postgresql-libs' 'python-virtualenv' '
 provides=("tandoor-recipes")
 conflicts=("tandoor-recipes")
 replaces=()
-backup=("etc/tandoor/tandoor.conf" "etc/nginx/sites-available/tandoor.conf")
+backup=(
+    'etc/tandoor/tandoor.conf'
+    'etc/nginx/sites-available/tandoor.conf'
+)
 options=(!strip)
 install=tandoor.install
 source=(
@@ -26,7 +29,7 @@ source=(
 noextract=()
 sha1sums=(
     'SKIP' 
-    '41c89d999f0dd6b4707229554ac615ebdd389049'
+    '2477c21bff44ed1051281dd66a6f13a296db11ca'
     'b564ef5c07d98c9983cb891e1e974dbf678e5c73'
     '431a88a4ab33ec118961d80c00e3a5944d2c5691'
     'be84e44daa8b553653c690e582eb34957c235a3a'
