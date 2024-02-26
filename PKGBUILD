@@ -17,7 +17,7 @@ depends=(
   'python-packaging'
   'python-shippinglabel'
   'python-toml'
-  'python-typing-extensions'
+  'python-typing_extensions'
 )
 makedepends=(
   'git'
