@@ -1,0 +1,17 @@
+pkgbase = android-x86-libksba
+	pkgdesc = A CMS and X.509 access library (android)
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://www.gnupg.org/related_software/libksba/index.html
+	arch = any
+	license = GPL
+	makedepends = android-configure
+	depends = android-x86-libgpg-error
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://gnupg.org/ftp/gcrypt/libksba/libksba-1.5.0.tar.bz2
+	sha256sums = ae4af129216b2d7fdea0b5bf2a788cd458a79c983bb09a43f4d525cc87aba0ba
+
+pkgname = android-x86-libksba
