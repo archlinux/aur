@@ -1,13 +1,14 @@
+# Maintainer: Christopher Price <pricechrispy at gmail dot com>
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 # Contributor: Jakob Nixdorf <flocke@shadowice.org>
 # Contributor: Bertram Felgenhauer <int-e@gmx.de>
-# Maintainer: Simon Legner <Simon.Legner@gmail.com>
+# Contributor: Simon Legner <Simon.Legner@gmail.com>
 pkgname=camlidl
 pkgver=1.12
 _pkgver=${pkgver/\./}
 pkgrel=1
 pkgdesc="A stub code generator and COM binding for Objective Caml (OCaml)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/xavierleroy/camlidl"
 license=(LGPL2.1)
 depends=('ocaml')
