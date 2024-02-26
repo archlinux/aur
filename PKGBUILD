@@ -16,7 +16,7 @@ declare -gA _tags=(
 )
 
 pkgname=zed-editor
-pkgver=0.123.2
+pkgver=0.124.5
 _pkgver=$pkgver-pre
 pkgrel=0
 pkgdesc='high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
@@ -31,7 +31,8 @@ makedepends=(alsa-lib
              fontconfig
              # gcc-objc
              # libdispatch
-             libxkbcommon
+             libxkbcommon-x11
+             openssl
              # protobuf
              vulkan-validation-layers
              # wasmtime
@@ -39,7 +40,7 @@ makedepends=(alsa-lib
 _archive="zed-$_pkgver"
 source=("$_url/archive/v$_pkgver/$_archive.tar.gz"
         "protocol-${_tags[protocol]}.tar.gz::https://github.com/livekit/protocol/archive/${_tags[protocol]}.tar.gz")
-sha256sums=('4c6785fa94031c7ad5dbdd6b3d7dcfe254603371434a0598b9b4006f8a1dab89'
+sha256sums=('83ae0b530b9d8a0b8802ea4ae20f97257eb83eb1b4554b9f2767be167e490240'
             'cd26bc1015fa0b79154c23a385441ae81e9a4385211cf2989eb939ae83d0e414')
 
 prepare() {
@@ -59,12 +60,12 @@ _srcenv() {
 
 build() {
 	_srcenv
-	cargo build --frozen --all-features -p zed
+	cargo build --frozen --all-features
 }
 
 check() {
 	_srcenv
-	cargo test --frozen --all-features -p zed
+	cargo test --frozen --all-features
 }
 
 package() {
