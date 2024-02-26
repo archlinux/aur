@@ -24,6 +24,10 @@ md5sums=() #autofill using updpkgsums
 
 package() {
   echo "Installing..."
+<<<<<<< HEAD
+=======
+  tar funcmd-1.0.0.tar.gz
+>>>>>>> 51b5476 (fix PKGBUILD)
   mkdir -p "${pkgdir}/usr/bin"
   cp "${srcdir}/funcmd" "${pkgdir}/usr/bin/funcmd" 
   chmod +x "${pkgdir}/usr/bin/funcmd"
