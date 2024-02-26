@@ -1,15 +1,15 @@
 # Maintainer: Yuri Iozzelli <y.iozzelli@gmail.com>
 pkgname=cheerp-git
 pkgver=3.0.r251.gc245c83
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A C++ compiler for the Web"
 arch=("x86_64")
 url="https://labs.leaningtech.com/cheerp"
 license=('Apache-2.0')
 groups=()
-depends=("python" "gcc-libs")
-makedepends=("cmake" "ninja" "clang" "lld")
+depends=()
+makedepends=("cmake" "ninja" "clang" "lld" "python")
 checkdepends=()
 optdepends=()
 provides=("cheerp")
