@@ -68,6 +68,7 @@ b2sums=(
   'e8f886757d1e4fe690de583de007bfec812a19e87c91a7349e84eb94b0ef6f4bb9a9d71c81045164efdb680e23cf4d47e24f6f706dd9c1ee2f0385a9d12f3432'
 )
 
+install=gamescope.install
 
 prepare() {
   cd gamescope

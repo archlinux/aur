@@ -3,6 +3,7 @@ pkgbase = gamescope-amd-color
 	pkgver = 3.14.2
 	pkgrel = 2
 	url = https://github.com/ValveSoftware/gamescope
+	install = gamescope.install
 	arch = x86_64
 	license = BSD
 	makedepends = benchmark
