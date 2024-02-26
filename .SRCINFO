@@ -1,7 +1,7 @@
 pkgbase = snsdeck-bin
 	pkgdesc = SNS Viewer like TweetDeck
 	pkgver = 0.0.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/meganii/snsdeck
 	arch = x86_64
 	license = MIT
@@ -13,6 +13,6 @@ pkgbase = snsdeck-bin
 	source = snsdeck.sh
 	sha256sums = 8f77c42da4d97e5bb19c20a52184c6ab71c1e03434808ac8fbd80776af1c9392
 	sha256sums = 2e219a81b7fc05809c9301bd7c759388e69a1e70540517abf1b41f3cfd19e717
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = snsdeck-bin
