@@ -1,7 +1,7 @@
 pkgbase = r-plotmo
 	pkgdesc = Plot a Model's Residuals, Response, and Partial Dependence Plots
-	pkgver = 3.6.2
-	pkgrel = 3
+	pkgver = 3.6.3
+	pkgrel = 1
 	url = https://cran.r-project.org/package=plotmo
 	arch = any
 	license = GPL
@@ -21,7 +21,7 @@ pkgbase = r-plotmo
 	optdepends = r-pre
 	optdepends = r-rpart
 	optdepends = r-rpart.plot
-	source = https://cran.r-project.org/src/contrib/plotmo_3.6.2.tar.gz
-	sha256sums = cde33a8ec558b12d8e11d7d0531e73f6678a25ee589b79897d2fc425a3fd353c
+	source = https://cran.r-project.org/src/contrib/plotmo_3.6.3.tar.gz
+	sha256sums = 6917cd8185325f1f2998fb14def9e6a8d93f1b708cf70d7c443d3960c9189b7b
 
 pkgname = r-plotmo
