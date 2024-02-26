@@ -1,8 +1,6 @@
 # Maintainer: Jean-Michaël Celerier <jeanmichael.celerier at gmail dot com>
 pkgname=ossia-score
 pkgver=3.1.13
-_pkgver=3.1.13
-release_tag=v3.1.13
 pkgrel=2
 pkgdesc="ossia score, an interactive sequencer for the intermedia arts"
 arch=('x86_64')
@@ -14,15 +12,14 @@ optdepends=('pipewire' 'faust' 'lilv' 'suil' 'lv2' 'sdl2' 'libfreenect2' 'ysfx' 
 provides=("$pkgname=$pkgver")
 conflicts=('ossia-score-git')
 replaces=('i-score')
-source=("https://github.com/ossia/score/releases/download/v${_pkgver}/ossia.score-${_pkgver}-src.tar.xz")
+source=("https://github.com/ossia/score/releases/download/v${pkgver}/ossia.score-${pkgver}-src.tar.xz")
 sha512sums=('14b25c34fe4a37c2347cd1aea517cb548eb5091066d01b6e3e955d66dc5ba59929cce2b04e9ccad3c159498d95f30cb68889193a4a86ec8705291d8603dda259')
+
 build() {
-  cd "$srcdir"
-
-  mkdir -p "$srcdir/build"
-  cd "$srcdir/build"
-
-  cmake -Wno-dev \
+  cmake \
+  -S "$srcdir/ossia-score-$pkgver" \
+  -B "$srcdir/build" \
+  -Wno-dev \
   -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ \
   -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=lld" \
   -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" \
@@ -33,10 +30,9 @@ build() {
   -DSCORE_FHS_BUILD=1 \
   -DSCORE_DEPLOYMENT_BUILD=1 \
   -DCMAKE_SKIP_RPATH=ON \
-  -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
-  "$srcdir"
+  -DCMAKE_INSTALL_PREFIX="$pkgdir/usr"
 
-  cmake --build .
+  cmake --build "$srcdir/build"
 }
 
 package() {
@@ -44,5 +40,5 @@ package() {
   cmake -DCMAKE_INSTALL_DO_STRIP=1 -DCOMPONENT=OssiaScore -P cmake_install.cmake
   rm -rf "$pkgdir/usr/share/faust"
 
-  install -D -m644 "$srcdir/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 "$srcdir/ossia-score-$pkgver/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
