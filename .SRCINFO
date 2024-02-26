@@ -5,12 +5,10 @@ pkgbase = virtua-racing
 	url = https://en.wikipedia.org/wiki/Virtua_Racing
 	arch = any
 	license = custom
-	makedepends = p7zip
 	depends = kronos
-	source = virtua-racing.7z::https://archive.org/download/SegaSaturnChampionCollection/V.zip/Virtua%20Racing.7z
 	source = saturn-template.desktop
 	source = com.sega.VirtuaRacing.png
-	sha256sums = 0ddf863a7e3c0cef646a06543ca82b02dc1435336d7f4436d79fb52d873255c7
+	sha256sums = SKIP
 	sha256sums = cddae03b9321eecd3d2db2b23d09494eca063b01ddb3661d9e5a61689a2eba6d
 	sha256sums = 3ac6338d2c974c39b0a5b0df450bb46d55af336ad719b237fcb61a0b2309f4a1
 
