@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bluestone
 _pkgname=Bluestone
-pkgver=0.13.1
+pkgver=0.14.1
 _electronversion=22
 _nodeversion=18
 pkgrel=1
 pkgdesc="A WYSIWYG Markdown editor, improve reading and editing experience."
 arch=('x86_64')
 url="https://github.com/1943time/bluestone"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 conflicts=("${pkgname}")
 depends=(
     'alsa-lib'
@@ -35,7 +35,7 @@ _ensure_local_nvm() {
 }
 build() {
     _ensure_local_nvm
-    gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname} --no-sandbox %U"
+    gendesk -q -f -n --categories="Utility" --name="${pkgname}" --exec="${pkgname} --no-sandbox %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
