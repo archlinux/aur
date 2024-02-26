@@ -1,0 +1,17 @@
+pkgbase = android-aarch64-libassuan
+	pkgdesc = IPC library used by some GnuPG related software (android)
+	pkgver = 2.5.6
+	pkgrel = 1
+	url = http://www.gnupg.org/related_software/libassuan/
+	arch = any
+	license = GPL
+	makedepends = android-configure
+	depends = android-aarch64-libgpg-error
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://gnupg.org/ftp/gcrypt/libassuan/libassuan-2.5.6.tar.bz2
+	sha256sums = e9fd27218d5394904e4e39788f9b1742711c3e6b41689a31aa3380bd5aa4f426
+
+pkgname = android-aarch64-libassuan
