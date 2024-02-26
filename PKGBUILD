@@ -3,7 +3,7 @@ pkgname=planes-bin
 _pkgname=Planes
 _runname="${_pkgname}GraphicsScene"
 pkgver=0.4.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Variant of battleships game"
 arch=('x86_64')
 url="https://github.com/xxxcucus/planes"
@@ -11,9 +11,6 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=()
-makedepends=(
-    'squashfuse'
-)
 options=('!strip')
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-Multiplayer-${pkgver}-${CARCH}.AppImage"

@@ -1,11 +1,10 @@
 pkgbase = planes-bin
 	pkgdesc = Variant of battleships game
 	pkgver = 0.4.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xxxcucus/planes
 	arch = x86_64
 	license = MIT
-	makedepends = squashfuse
 	provides = planes=0.4.1.1
 	conflicts = planes
 	options = !strip
