@@ -8,7 +8,7 @@ pkgdesc="Discreet Cryptocurrency Wallet. discreet.net"
 pkgver=1.0.0
 _guiver="${pkgver}"
 _daemonver="${pkgver}"
-pkgrel=2
+pkgrel=3
 arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
 makedepends=('dotnet-sdk')
 url="https://${_pkgpath}"
@@ -22,6 +22,8 @@ sha256sums=('SKIP'
             'SKIP')
 
 build() {
+  echo -e "\e[1;31mThe maintainer of this package refuses to support\nthe toxic community that has evolved in the discreet telegram channel.\nI take this opportunity to warn fellow arch users against this project.\nIf this assesment should change, the build shall be fixed and this warning recinded.\e[0m"
+  exit 0
   msg2 'building discreet core'
   cd ${srcdir}/DiscreetCore/DiscreetCore/
   rm ../linux/*
