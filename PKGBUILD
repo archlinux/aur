@@ -1,10 +1,10 @@
 pkgname=mqttui-bin
 pkgver=0.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Subscribe to a MQTT Topic or publish something quickly from the terminal"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/EdJoPaTo/${pkgname/-bin/}"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gcc-libs')
 provides=("${pkgname/-bin/}")
 conflicts=("${pkgname/-bin/}")
@@ -21,10 +21,15 @@ sha256sums_armv7h=('b99d861a3e0006ba2ea93e7b1819f16585ffff5e3b0584c48002413a9c30
 
 package() {
 	install -Dm755 "${pkgname/-bin/}" -t "${pkgdir}/usr/bin/"
+	install -Dm644 CHANGELOG.md -t "${pkgdir}/usr/share/doc/${pkgname/-bin/}/"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname/-bin/}/"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/${pkgname/-bin/}/"
 
 	install -Dm644 "completions/${pkgname/-bin/}.bash" -t "${pkgdir}/usr/share/bash-completion/completions/"
 	install -Dm644 "completions/${pkgname/-bin/}.fish" -t "${pkgdir}/usr/share/fish/vendor_completions.d/"
 	install -Dm644 "completions/_${pkgname/-bin/}" -t "${pkgdir}/usr/share/zsh/site-functions/"
+
+	for man in manpages/*; do
+		install -Dm644 "$man" -t "${pkgdir}/usr/share/man/man1/"
+	done
 }
