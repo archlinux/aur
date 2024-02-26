@@ -4,7 +4,7 @@
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 _projectname='utop'
 pkgname="ocaml-$_projectname"
-pkgver='2.13.1'
+pkgver='2.14.0'
 pkgrel='1'
 pkgdesc='Universal toplevel for OCaml'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ depends=('ocaml>=4.11.0' 'dune>=3.9.0' 'cppo>=1.1.2' 'ocaml-findlib>=1.7.2' 'oca
 checkdepends=('ocaml-alcotest')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('a84a6a96767a3ffa3eaf45495f132536fcc4c81028cfb4f68e823266d0d6e2945d114ca6e8a0760eab93e830500004101499e13669edf1f59a7af06f44b33fd2')
+sha512sums=('16c724c0d54cd14d2126060f00e8b86fe3b886cffd7ff306a825d7f9e045b74ffc5830f659ccb151dfaa36c41c2966c26bc2c2e7567f9e1d725b33e9f677d19e')
 
 _sourcedirectory="$_projectname-$pkgver"
 
