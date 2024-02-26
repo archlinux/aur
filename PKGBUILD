@@ -13,16 +13,19 @@ sha256sums=(SKIP)
 
 pkgver () {
     cd straw
+    git checkout release
     git describe --tags --abbrev=0
 }
 
 
 build() {
     cd straw
+    git checkout release
     go build -ldflags="-X 'main.version=${pkgver}'" -o straw 
 }
 
 package() {
     cd straw
+    git checkout release
     install -Dm755 straw -t "${pkgdir}/usr/bin" 
 }
