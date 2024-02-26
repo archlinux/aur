@@ -10,7 +10,7 @@ license=('MIT')
 depends=()
 makedepends=('git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3363db2026f30bc656e71a188e9cf7577f4941fec8155198de1cad9d90b61cbc')
+sha256sums=('181ab19d414b2ce12524599a3eb419484e758db28411d69aff17edc8f7ffc18d')
 
 
 package() {
