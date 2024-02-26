@@ -6,7 +6,7 @@
 
 pkgname=mautrix-signal-bin
 provides=('mautrix-signal')
-pkgver="r12724.717e58cb"
+pkgver="0.5.0"
 pkgrel=1
 pkgdesc="A Matrix-Signal puppeting bridge (Golang version)"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ license=('AGPL')
 makedepends=('unzip')
 url="https://github.com/mautrix/signal"
 _ci_job_url="https://mau.dev/mautrix/signal/-/jobs"
-source_x86_64=("$pkgname-x86_64-$pkgver.zip"::"${_ci_job_url}/41535/artifacts/download")
-source_aarch64=("$pkgname-aarch64-$pkgver.zip"::"${_ci_job_url}/41536/artifacts/download")
+source_x86_64=("$pkgname-x86_64-$pkgver.zip"::"${_ci_job_url}/44140/artifacts/download")
+source_aarch64=("$pkgname-aarch64-$pkgver.zip"::"${_ci_job_url}/44141/artifacts/download")
 source=(
           "sysusers-${pkgname/-bin}.conf"
           "${pkgname/-bin}.tmpfiles"
@@ -25,8 +25,8 @@ backup=("etc/${pkgname/-bin}/config.yaml")
 sha256sums=('3384dd44aa72937047f03f4a524efdf92162029ab85e830f5c7d4747b40359d8'
             'f086d8c1c187e22faced78fb885607c4fb11e99960958e54b884983158d8ec0e'
             'a6c23d8bb6ca5bd36853a954ee30fa75302ce2a9c3e03897169869743dad2cc6')
-sha256sums_x86_64=('38336b309e278e24f7ad40eeb901e4597553a26aaef06e49bc6ec448ed8e0040')
-sha256sums_aarch64=('a19a827921e56064144a4f9be7432f4a0f0e61bf915bc11a4c69b6d1a15dbf32')
+sha256sums_x86_64=('79567d473a10f7ffb1801ef4e8853989931cc6272a18edba376128f3dcfd66e5')
+sha256sums_aarch64=('e603c4e15507dd00527bb80b3771e6598a9bd39c995ceb6694af4e8bfb02d53f')
 
 prepare() {
   unzip "$srcdir/$pkgname-$CARCH-$pkgver.zip"
