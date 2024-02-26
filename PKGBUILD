@@ -112,5 +112,5 @@ package() {
 
 sha256sums=('SKIP'
             'dff5ecd1a35a94a4dc1fa5fd08c10b5c88703797520d6b315207124ff1adeef8'
-            'b40b67bdc1bbe9bf103737824c53e1f7dcbaa78345e8df5b767bd72bff7c78c4'
+            'b03eb366daaf893ac633405b81516d4d16d0a5735c72729c293bb036886c0587'
             '1f4934c5bfcf208e288a0eda2f385f82acc9e78a4b0ac2a77b5af14c64c8e21e')
