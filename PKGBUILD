@@ -3,14 +3,28 @@
 
 _pkgbase="sddm"
 pkgname="$_pkgbase-git"
-pkgver=0.19.0.170.g3e48649
+pkgver=0.21.0.0.g63780fc
 pkgrel=1
 pkgdesc="The Simple Desktop Display Manager"
 arch=("x86_64")
 url="https://github.com/sddm/sddm"
 license=("GPL")
-depends=('qt5-declarative' 'xorg-xauth' 'xorg-server')
-makedepends=('extra-cmake-modules' 'python-docutils' 'qt5-tools' 'git')
+depends=(bash
+         gcc-libs
+         glibc
+         libxau
+         libxcb
+         pam
+         qt6-base
+         qt6-declarative
+         systemd-libs
+         ttf-font
+         xorg-server
+         xorg-xauth)
+makedepends=(extra-cmake-modules
+             python-docutils
+             qt6-tools
+             git)
 provides=("$_pkgbase" 'display-manager')
 conflicts=("$_pkgbase")
 backup=('usr/share/sddm/scripts/Xsetup'
@@ -35,6 +49,7 @@ build() {
   cmake -B build -S $_pkgbase \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib/sddm \
+        -DBUILD_WITH_QT6=ON \
         -DDBUS_CONFIG_DIR=/usr/share/dbus-1/system.d \
         -DDBUS_CONFIG_FILENAME=sddm_org.freedesktop.DisplayManager.conf \
         -DBUILD_MAN_PAGES=ON \
@@ -52,6 +67,4 @@ package() {
   "$pkgdir"/usr/bin/sddm --example-config > "$pkgdir"/usr/lib/sddm/sddm.conf.d/default.conf
   # Don't set PATH in sddm.conf
   sed -r 's|DefaultPath=.*|DefaultPath=/usr/local/sbin:/usr/local/bin:/usr/bin|g' -i "$pkgdir"/usr/lib/sddm/sddm.conf.d/default.conf
-  # Unset InputMethod https://github.com/sddm/sddm/issues/952
-  sed -e "/^InputMethod/s/qtvirtualkeyboard//" -i "$pkgdir"/usr/lib/sddm/sddm.conf.d/default.conf
 }
