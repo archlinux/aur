@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=orature-bin
 _pkgname=Orature
-pkgver=1.9.2
-_subver=8557
+pkgver=1.9.3
+_subver=8693
 pkgrel=1
 pkgdesc="An application for creating Narrations and Translations of Audio Bibles, Books, Resources, Commentaries, etc."
 arch=("x86_64")
@@ -12,7 +12,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'alsa-lib'
-    'java-runtime'
     'libxtst'
     'libxrender'
 )
@@ -23,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-linux-${pkgver//_/-}+${_subver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a82bfb1ea9e8f32614e5a753bcc8bb7ed7d1d39a3a4665699781f3a3f07f96fc'
+sha256sums=('c7b80629fc7fff701cf728923fec66f7bbb6def70d3720aeb59757aa1efcd8e6'
             '231754c2d14734679c40adcc321ea5413c6406f9ce2cf883a2c53c951dc1e491')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
