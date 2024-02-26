@@ -4,29 +4,36 @@
 
 pkgbase=kitty-git
 pkgname=(kitty-git kitty-terminfo-git kitty-shell-integration-git)
-pkgver=r11076.gc03af4d29
+pkgver=0.32.2.r373.ge9c4e7310
 pkgrel=2
 epoch=1
 pkgdesc="Modern, hackable, featureful, OpenGL based terminal emulator"
 arch=(i686 x86_64)
 url="https://sw.kovidgoyal.net/kitty/"
 license=(GPL3)
-depends=(python freetype2 fontconfig wayland libx11 libxi libgl libcanberra dbus lcms2
-         libxkbcommon-x11 librsync python-pygments)
+depends=(python wayland libx11 dbus lcms2 fontconfig
+         libxkbcommon-x11 librsync xxhash) #python-pygments
 makedepends=(git python-setuptools libxinerama libxcursor libxrandr libxkbcommon mesa
              wayland-protocols python-sphinx python-sphinx-copybutton
+             ttf-roboto freetype2 libxi libgl libcanberra simde
              python-sphinx-inline-tabs python-sphinxext-opengraph python-sphinx-furo go)
 source=("git+https://github.com/kovidgoyal/kitty.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  #printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --exclude nightly | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd "${srcdir}/${pkgname%-git}"
-  python3 setup.py linux-package --update-check-interval=0 
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  python setup.py linux-package --update-check-interval=0
 }
 
 package_kitty-git() {
