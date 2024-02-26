@@ -1,14 +1,14 @@
 # Maintainer: tPenguinLTG <tpenguinltg@disroot.org>
 pkgname=oed
-pkgver=7.1
-pkgrel=2
+pkgver=7.4
+pkgrel=1
 pkgdesc="OpenED: Portable OpenBSD ed(1) editor."
 arch=(x86_64 i686)
 url="https://github.com/ibara/oed"
 license=('BSD' 'ISC')
 depends=()
 source=("https://github.com/ibara/${pkgname}/archive/refs/tags/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('227ad4e6e9d2adb3a4b743c8ad3a50bcda63dea146d41bd6cbd8b79f495b057b')
+sha256sums=('94e75d5af9b56565d76623fd480ceb2a2facd279989ce3366e34013f0abcdaf3')
 
 build() {
 	local f

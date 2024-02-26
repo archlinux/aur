@@ -1,13 +1,13 @@
 pkgbase = oed
 	pkgdesc = OpenED: Portable OpenBSD ed(1) editor.
-	pkgver = 7.1
-	pkgrel = 2
+	pkgver = 7.4
+	pkgrel = 1
 	url = https://github.com/ibara/oed
 	arch = x86_64
 	arch = i686
 	license = BSD
 	license = ISC
-	source = https://github.com/ibara/oed/archive/refs/tags/oed-7.1.tar.gz
-	sha256sums = 227ad4e6e9d2adb3a4b743c8ad3a50bcda63dea146d41bd6cbd8b79f495b057b
+	source = https://github.com/ibara/oed/archive/refs/tags/oed-7.4.tar.gz
+	sha256sums = 94e75d5af9b56565d76623fd480ceb2a2facd279989ce3366e34013f0abcdaf3
 
 pkgname = oed
