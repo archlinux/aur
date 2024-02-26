@@ -1,7 +1,7 @@
 # Maintainer: Radosław Kintzi <r.kintzi@gobytes.dev>
 pkgname=statusbar
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A feature complete, customizable and extendable swaybar/i3bar content generator'
 arch=('x86_64')
 url="https://gobytes.dev/$pkgname"
@@ -28,5 +28,7 @@ check() {
 
 package() {
   cd "$pkgname-v$pkgver"
-  DESTDIR=${pkgdir} make install
+  DESTDIR=${pkgdir} PREFIX=/usr make install
+  install -d ${pkgdir}/usr/share/statusbar
+  install README.md ${pkgdir}/usr/share/statusbar
 }
