@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Neidel <aur at jneidel dot com>
 
 pkgname=ain-bin
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A HTTP API client for the terminal. An alternative to postman, paw or insomnia."
 arch=(x86_64 aarch64 i386)
@@ -14,9 +14,9 @@ provides=(ain)
 source_aarch64=("https://github.com/jonaslu/ain/releases/download/v${pkgver}/ain_${pkgver}_linux_arm64.tar.gz")
 source_x86_64=("https://github.com/jonaslu/ain/releases/download/v${pkgver}/ain_${pkgver}_linux_x86_64.tar.gz")
 source_i386=("https://github.com/jonaslu/ain/releases/download/v${pkgver}/ain_${pkgver}_linux_i386.tar.gz")
-sha256sums_aarch64=("4d4552d39bb96d13f725cbd0331991369f8cbce8764321571f44b36b06f01f68")
-sha256sums_x86_64=("f5e80b7b9c72b6d9411215935261528afa559f57040bba87d8511b0a5d548ded")
-sha256sums_i386=("6152c6696c3fe2c091c8fa8565f2b8b9eff5178cb4da751c3d801ffc6680c769")
+sha256sums_aarch64=("6b559930f183f5e448b68d4b6ab62b39d04cf3c232029c1d848125e7560b65f5")
+sha256sums_x86_64=("3471e96382210086fa19810cfb93011a28ee5dfb72bef61966d58cd775737ef0")
+sha256sums_i386=("688f740fcdd3f5015d099f162b9acbd6268f277cc3be8cdaeeada2985fb7ff71")
 
 package() {
   case $CARCH in
