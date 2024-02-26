@@ -1,13 +1,13 @@
 pkgbase = treq-bin
 	pkgdesc = A Cli client to make HTTP requests for Hacker Users
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/talis-fb/TReq
 	arch = x86_64
 	license = GPL-3.0
 	provides = treq
 	conflicts = treq
-	source = https://github.com/talis-fb/TReq/releases/download/v1.1.0/treq-1.1.0-x86_64.tar.gz
-	sha256sums = a7735eb5cf425c50bfbb34af8da2587aed5edbb6e79f265d5afbb2c79c6cec35
+	source = https://github.com/talis-fb/TReq/releases/download/v1.2.0/treq-1.2.0-x86_64.tar.gz
+	sha256sums = a93512c9fd369499b8678dce9bb0be4878ce6c99500eaf8dba9be2c5a2fbd042
 
 pkgname = treq-bin
