@@ -1,7 +1,7 @@
 pkgbase = statusbar
 	pkgdesc = A feature complete, customizable and extendable swaybar/i3bar content generator
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gobytes.dev/statusbar
 	arch = x86_64
 	license = Apache 2.0
