@@ -5,7 +5,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libgpg-error
-pkgver=1.47
+pkgver=1.48
 pkgrel=1
 arch=('any')
 pkgdesc="Support library for libgcrypt (android)"
@@ -16,7 +16,7 @@ options=(!strip !buildflags staticlibs !emptydirs)
 source=(https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-${pkgver}.tar.bz2{,.sig}
         '0001-Unversioned-libs.patch')
 # https://www.gnupg.org/download/integrity_check.html
-sha256sums=('9e3c670966b96ecc746c28c2c419541e3bcb787d1a73930f5e5f5e1bcbbb9bdb'
+sha256sums=('89ce1ae893e122924b858de84dc4f67aae29ffa610ebf668d5aa539045663d6f'
             'SKIP'
             'd109aec757f631d3cda57d396f473338df4d74ee69d940445d474208efc38f17')
 validpgpkeys=('6DAA6E64A76D2840571B4902528897B826403ADA') # Werner Koch (dist signing 2020)
@@ -65,7 +65,7 @@ package() {
     source android-env ${_android_arch}
 
     make DESTDIR="${pkgdir}/" install
-    rm -rf "$pkgdir/${ANDROID_PREFIX_BIN}"
+    rm -rf "$pkgdir/${ANDROID_PREFIX_BIN}/gpg-error"
     rm -f "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so.*
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
     ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
