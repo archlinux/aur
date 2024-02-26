@@ -16,7 +16,7 @@ depends=(
   python-pytest-helpers-namespace
   python-pytest-skip-markers
   python-psutil
-  python-typing-extensions
+  python-typing_extensions
 )
 makedepends=(
   python-build
