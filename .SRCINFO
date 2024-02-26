@@ -11,7 +11,6 @@ pkgbase = libxml2-2.9
 	depends = readline
 	depends = xz
 	depends = zlib
-	source = libxml2-2.9.10.tar.gz::https://gitlab.gnome.org/GNOME/libxml2/-/archive/41a34e1f4ffae2ce401600dbb5fe43f8fe402641/libxml2-41a34e1f4ffae2ce401600dbb5fe43f8fe402641.tar.gz
 	source = libxml2-2.9.8-python3-unicode-errors.patch
 	source = fix-relaxed-approach-to-nested-documents.patch
 	source = libxml2-2.9.10-CVE-2019-20388.patch
@@ -21,7 +20,6 @@ pkgbase = libxml2-2.9
 	source = libxml2-2.9.10-fix-integer-overflow.patch
 	source = libxml2-2.9.10-icu68.patch
 	source = https://www.w3.org/XML/Test/xmlts20130923.tar.gz
-	sha256sums = 9a95947bd868900c203382769e54fdb99cedf50e39851cc33bc4e87cbf2785d1
 	sha256sums = 37eb81a8ec6929eed1514e891bff2dd05b450bcf0c712153880c485b7366c17c
 	sha256sums = 50f04807b86a179d051fb86755e82f55ba7aac9d0c005eefea93d2599a911d01
 	sha256sums = cfe1b3e0f026df6f979dbd77c1dcd1268e60acf3d7a8ff3f480b4e67bfcc19d6
@@ -33,6 +31,7 @@ pkgbase = libxml2-2.9
 	sha256sums = 9b61db9f5dbffa545f4b8d78422167083a8568c59bd1129f94138f936cf6fc1f
 
 pkgname = libxml2-2.9
+	optdepends = python2: Python 2 bindings
 	optdepends = python: Python bindings
 	provides = libxml2=2.9.10
 	provides = libxml2.so=2.9.10
