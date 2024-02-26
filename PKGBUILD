@@ -2,7 +2,10 @@
 # Contributor: Justin Vreeland <vreeland.justin@gmail.com>
 # Contributor: Antoine Lubineau <antoine@lubignon.info>
 # Contributor: Charles Pigott <charlespigott@googlemail.com>
-# Contributor: Andrei "Garoth" Thorp <garoth "at the nice" gmail "dot" com>
+
+## useful links:
+# https://salsa.debian.org/debian/debhelper
+# https://salsa.debian.org/reproducible-builds/strip-nondeterminism
 
 ## options
 : ${_build_git:=false}
@@ -13,15 +16,14 @@ unset _pkgtype
 ## basic info
 _pkgname="debhelper"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=13.13
+pkgver=13.14.1
 pkgrel=1
 pkgdesc="A collection of programs that can be used in a debian/rules file to automate common tasks"
 url="https://salsa.debian.org/debian/debhelper"
 license=('GPL-2.0-or-later')
 arch=('any')
 
-_url_dh_strip_nondeterminism="https://salsa.debian.org/reproducible-builds/strip-nondeterminism"
-
+# main package
 depends=(
   'dpkg'
   'perl-pod-parser'
@@ -45,7 +47,7 @@ if [ "${_build_git::1}" != "t" ] ; then
   }
 else
   # git package
-  provides=("$_pkgname")
+  provides=("$_pkgname=${pkgver%%.r*}")
   conflicts=("$_pkgname")
 
   _pkgsrc="$_pkgname"
@@ -54,14 +56,17 @@ else
 
   pkgver() {
     cd "$_pkgsrc"
-    git describe --long --tags | sed 's/^debian\///;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=8 | sed 's/^debian\///;s/\([^-]*-g\)/r\1/;s/-/./g'
   }
 fi
 
 provides+=("dh-strip-nondeterminism")
 conflicts+=("dh-strip-nondeterminism")
 
-source+=("dh_strip_nondeterminism"::"$_url_dh_strip_nondeterminism/-/raw/master/bin/dh_strip_nondeterminism")
+# dh_strip_nondeterminism
+_dh_strip_nondeterminism_url="https://salsa.debian.org/reproducible-builds/strip-nondeterminism"
+_dh_strip_nondeterminism_script="dh_strip_nondeterminism-dh_${pkgver%%.r*}"
+source+=("$_dh_strip_nondeterminism_script"::"$_dh_strip_nondeterminism_url/-/raw/master/bin/dh_strip_nondeterminism")
 sha256sums+=('SKIP')
 
 prepare() {
@@ -90,7 +95,7 @@ package() {
 
   cd "$_pkgsrc"
   make DESTDIR="$pkgdir" install
-  install -Dm755 "$srcdir/dh_strip_nondeterminism" -t "$pkgdir/usr/bin"
+  install -Dm755 "$srcdir/$_dh_strip_nondeterminism_script" -t "$pkgdir/usr/bin/dh_strip_nondeterminism"
 }
 
 # vim:set ts=2 sw=2 et:
