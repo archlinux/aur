@@ -22,7 +22,7 @@ build() {
 	make
 
 	# Extract licenses from files
-	mkdir ../licenses
+	mkdir -p ../licenses
 	for f in *.c *.h; do
 		license_file="../licenses/${f}.LICENSE"
 		sed '/Copyright/!d; :a; s/ \* \{0,1\}//; n; /\*\//d; $!ba' "$f" >"$license_file"
