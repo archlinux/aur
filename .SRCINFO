@@ -1,7 +1,7 @@
 pkgbase = python-wimpy
-	pkgdesc = Anti-copy-pasta
+	pkgdesc = Personal Python libraries of @wimglenn
 	pkgver = 0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/wimglenn/wimpy
 	arch = any
 	license = MIT
@@ -11,4 +11,3 @@ pkgbase = python-wimpy
 	sha256sums = 014d21a31980eab48b92c4210e9fdba643b79f7081c64ea9bc97f2be9db9bd58
 
 pkgname = python-wimpy
-
