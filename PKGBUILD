@@ -3,21 +3,15 @@ _appname=habit_tracker
 pkgname="${_appname//_/-}-bin"
 _pkgname=HabitTracker
 pkgver=0.0.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Cross platform habit tracker"
 arch=('x86_64')
 url="https://github.com/accountability-tracker/habit_tracker"
-license=('custom')
+license=('LicenseRef-custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'pango'
-    'libepoxy'
-    'gdk-pixbuf2'
     'gtk3'
-    'at-spi2-core'
-    'cairo'
-    'harfbuzz'
 )
 makedepends=(
     'gendesk'
@@ -29,12 +23,12 @@ source=(
 )
 sha256sums=('f3410365ea1b1b96a2778df526509c983af8bea0e7502dc9d2ff146cff3f8cc4'
             '90c1ffebcd4b680811b4ded5aaedccd21b1b5d86b79144584c979815940a0f0f'
-            '810844dac159a0c6d46da58e10d57f1b4c958749efa8c6776515240823076074')
+            'd0d51013ae1b90ca721c0f8a6ee1715b4556a5870e495755dc86d45d36e9cd47')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_appname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --pkgname="${_appname//_/-}-bin" --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
+    gendesk -q -f -n --pkgname="${_appname//_/-}-bin" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" -t "${pkgdir}/usr/bin/${pkgname%-bin}"
