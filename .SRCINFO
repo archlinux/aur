@@ -1,35 +1,18 @@
 pkgbase = cutechess
 	pkgdesc = Tools for working with chess engines
-	pkgver = 1.2.0
+	pkgver = 1.3.1
 	pkgrel = 1
-	url = http://cutechess.com
+	url = https://github.com/cutechess/cutechess
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
+	makedepends = cmake
 	makedepends = doxygen
+	makedepends = git
 	depends = qt5-svg
-	source = https://github.com/cutechess/cutechess/archive/1.2.0.tar.gz
-	sha256sums = d0e1b2c9c2eaccf0f8c4d5e5fe7e169358f5de9606bd27de3f9d1ce4ddcdb0bc
+	provides = cutechess-cli=1.3.1
+	conflicts = cutechess-cli
+	source = cutechess-1.3.1.tar.gz::https://github.com/cutechess/cutechess/archive/refs/tags/v1.3.1.tar.gz
+	sha256sums = b6b76f11a53b89ba38e2d21ed180a51ce95e963e1ae2054a352563cad075e2f8
 
 pkgname = cutechess
-	pkgdesc = A graphical interface for chess
-	license = GPL3
-	license = MIT
-
-pkgname = cutechess-cli
-	pkgdesc = A command-line tool to automate chess engine tournaments
-	depends = qt5-base
-
-pkgname = libcutechess
-	pkgdesc = A static library for chess
-	license = GPL3
-	license = MIT
-	depends = 
-	options = staticlibs
-
-pkgname = libcutechess-docs
-	pkgdesc = API documentation for libcutechess
-	arch = any
-	depends = 
-	options = docs
-

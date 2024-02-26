@@ -1,74 +1,53 @@
-# Maintainer: archlinux.info:tdy
+# Maintainer:
+# Contributor: archlinux.info:tdy
 
-pkgbase=cutechess
-pkgname=(cutechess cutechess-cli libcutechess libcutechess-docs)
-pkgver=1.2.0
+_pkgname="cutechess"
+pkgname="$_pkgname"
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Tools for working with chess engines"
+url="https://github.com/cutechess/cutechess"
+license=('GPL-3.0-or-later')
 arch=(i686 x86_64)
-url=http://cutechess.com
-license=(GPL3)
-depends=(qt5-svg)
-makedepends=(doxygen)
-source=(https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz)
-sha256sums=('d0e1b2c9c2eaccf0f8c4d5e5fe7e169358f5de9606bd27de3f9d1ce4ddcdb0bc')
 
-prepare() {
-  cd $pkgbase-$pkgver/projects
-  sed -n '2,23s:^[ ]*::p' gui/components/pgnhighlighter/src/pgnhighlighter.h > COPYING.gui
-  sed -n '2,23s:^[ ]*::p' lib/components/json/src/jsonparser.h > COPYING.lib
-}
+depends=(
+  qt5-svg
+
+  ## implicit
+  # qt5-base
+)
+makedepends=(
+  cmake
+  doxygen
+  git
+)
+
+provides=("cutechess-cli=${pkgver%%.r*}")
+conflicts=("cutechess-cli")
+
+_pkgsrc="$_pkgname-$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
+sha256sums=('b6b76f11a53b89ba38e2d21ed180a51ce95e963e1ae2054a352563cad075e2f8')
 
 build() {
-  cd $pkgbase-$pkgver
-  qmake
-  make
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
-package_cutechess() {
-  pkgdesc="A graphical interface for chess"
-  license=(GPL3 MIT)
+package() {
+  DESTDIR="$pkgdir" cmake --install build
 
-  cd $pkgbase-$pkgver/projects
-  install -Dm755 gui/$pkgname "$pkgdir"/usr/bin/$pkgname
-  install -Dm644 COPYING.gui "$pkgdir"/usr/share/licenses/$pkgname/COPYING
-  install -Dm644 gui/res/icons/${pkgname}_32x32.xpm \
-    "$pkgdir"/usr/share/pixmaps/${pkgname}_32x32.xpm
-  install -Dm644 ../dist/linux/$pkgname.desktop \
-    "$pkgdir"/usr/share/applications/$pkgname.desktop
-}
-
-package_cutechess-cli() {
-  pkgdesc="A command-line tool to automate chess engine tournaments"
-  depends=(qt5-base)
-
-  cd $pkgbase-$pkgver
-  install -Dm755 projects/cli/$pkgname "$pkgdir"/usr/bin/$pkgname
-  install -Dm644 docs/$pkgname.6 "$pkgdir"/usr/share/man/man6/$pkgname.6
-  install -Dm644 docs/engines.json.5 "$pkgdir"/usr/share/man/man5/engines.json.5
-}
-
-package_libcutechess() {
-  pkgdesc="A static library for chess"
-  license=(GPL3 MIT)
-  depends=()
-  options=(staticlibs)
-
-  cd $pkgbase-$pkgver/projects
-  install -Dm644 lib/$pkgname.a "$pkgdir"/usr/lib/$pkgname.a
-  install -Dm644 COPYING.lib "$pkgdir"/usr/share/licenses/$pkgname/COPYING
-}
-
-package_libcutechess-docs() {
-  pkgdesc="API documentation for libcutechess"
-  arch=(any)
-  depends=()
-  options=(docs)
-
-  cd $pkgbase-$pkgver
-  make doc-api
-  install -dm755 "$pkgdir"/usr/share/doc/${pkgname%-*}/html/
-  install -m644 docs/api/html/* "$pkgdir"/usr/share/doc/${pkgname%-*}/html/
-  sed -i "s:$srcdir/$pkgbase-gui-$pkgver/docs/api:/usr/share/${pkgname%-*}/html:g" \
-    -s "$pkgdir"/usr/share/doc/${pkgname%-*}/html/*.html
+  # fix icon
+  install -Dm644 "$pkgdir/usr/share/icons/application/256x256/apps/cutechess.png" -t "$pkgdir/usr/share/pixmaps/"
+  rm -rf "$pkgdir/usr/share/icons/"
 }
