@@ -2,7 +2,7 @@
 _pkgname='mongodb-compass-readonly-beta'
 _edition=' Readonly Beta'
 pkgname="$_pkgname-bin"
-_pkgver='1.42.1-beta.3'
+_pkgver='1.42.2-beta.4'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - beta version - binary version'
@@ -19,8 +19,12 @@ optdepends=('org.freedesktop.secrets')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 _betaprefix="$([[ "$_pkgname" =~ -beta$ ]] && printf 'beta/' || printf '')"
-source=("$pkgname-$pkgver.rpm::https://downloads.mongodb.com/compass/$_betaprefix$_pkgname-$_pkgver.x86_64.rpm")
-sha512sums=('9bc9968c77d3c257507de292d76a9ecbd271da516ef5bc44f2432fa066062d4057c2a666535b9b50316185a249d2da958ab933ab8595b8b6999f110149bb62c4')
+source=(
+	"$pkgname-$pkgver.rpm::https://downloads.mongodb.com/compass/$_betaprefix$_pkgname-$_pkgver.x86_64.rpm"
+	'mongodb-compass.conf'
+)
+sha512sums=('1ce9cba0bdb91f536b95c835611844358ad80b64ac07c92343790c4e3e5fed3f99f9596de62c5422810d12afd3154f9e2fd81330fe3bc306ac63b31765c1320a'
+            'f09a6026e8b963f4821454fa8c2da8c750c765f26010fbf54dfbecfd7451dda5466464bb15fada1252545366c94bf448dc0529c8bd8114f6f3834ae00176d3f1')
 
 check() {
 	"$srcdir/usr/lib/$_pkgname/MongoDB Compass$_edition" --version | tee '/dev/stderr' | grep -q "^MongoDB Compass$_edition $pkgver$"
@@ -36,6 +40,8 @@ package() {
 
 	install -dm755 "$pkgdir/usr/bin/"
 	ln -sf "/opt/$_pkgname/MongoDB Compass$_edition" "$pkgdir/usr/bin/$_pkgname"
+
+	install -Dm644 "$srcdir/mongodb-compass.conf" "$pkgdir/etc/mongodb-compass.conf"
 
 	install -Dm644 "usr/share/applications/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 	install -Dm644 "usr/share/pixmaps/$_pkgname.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
