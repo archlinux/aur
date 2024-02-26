@@ -1,7 +1,7 @@
 pkgbase = frontimer
 	pkgdesc = Desktop timer application always displayed in the forefront of the screen
 	pkgver = 0.1.17
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/seita1996/frontimer
 	arch = any
 	license = MIT

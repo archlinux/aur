@@ -3,7 +3,7 @@ pkgname=frontimer
 pkgver=0.1.17
 _electronversion=25
 _nodeversion=20
-pkgrel=3
+pkgrel=4
 pkgdesc="Desktop timer application always displayed in the forefront of the screen"
 arch=('any')
 url="https://github.com/seita1996/frontimer"
@@ -34,15 +34,18 @@ _ensure_local_nvm() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -f -n -q --categories "Utility" --name "${pkgname}" --exec "${pkgname} %U"
+    gendesk -f -n -q --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
     yarn install --cache-folder "${srcdir}/.yarn_cache"
     yarn run build
     yarn run ebuilder:linux
