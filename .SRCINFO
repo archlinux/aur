@@ -1,7 +1,7 @@
 pkgbase = cheerp-git
 	pkgdesc = A C++ compiler for the Web
 	pkgver = 3.0.r251.gc245c83
-	pkgrel = 1
+	pkgrel = 2
 	url = leaningtech.com/cheerp
 	arch = x86_64
 	license = Apache-2.0
@@ -11,6 +11,8 @@ pkgbase = cheerp-git
 	makedepends = lld
 	depends = python
 	depends = gcc-libs
+	provides = cheerp
+	conflicts = cheerp
 	source = git+https://github.com/leaningtech/cheerp-compiler.git
 	source = git+https://github.com/leaningtech/cheerp-utils.git
 	source = git+https://github.com/leaningtech/cheerp-musl.git
