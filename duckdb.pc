@@ -5,6 +5,6 @@ libdir=${exec_prefix}/lib
 
 Name: duckdb
 Description: An in-process SQL OLAP database management system
-Version: 0.9.2
+Version: 0.10.0
 Libs: -L${libdir} -lduckdb
 Cflags: -I${includedir}
