@@ -2,7 +2,7 @@
 
 _pkgname="hypridle"
 pkgname="${_pkgname}-git"
-pkgver=0.1.0.r12.gb85722e4
+pkgver=0.1.0.r13.gb9c94ed8
 pkgrel=1
 pkgdesc="Hyprland's idle daemon"
 arch=(any)
@@ -12,11 +12,11 @@ depends=('wayland' 'hyprlang>=0.4.0' 'sdbus-cpp')
 makedepends=('git' 'cmake' 'ninja' 'gcc' 'gdb' 'meson' 'wayland-protocols' 'xorgproto')
 source=("${_pkgname}::git+https://github.com/hyprwm/hypridle.git")
 conflicts=("${_pkgname}")
-provides=(hypridle)
+provides=("${_pkgname}")
 sha256sums=('SKIP')
 
 pkgver() {
-  	cd ${_pkgname}
+	cd ${_pkgname}
     git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
       | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
