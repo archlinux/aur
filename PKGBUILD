@@ -43,7 +43,7 @@ license=(
   "custom"
 )
 _dmca_exemption="https://archive.org/about/dmca.php"
-source=(
+source+=(
   "saturn-template.desktop"
   "${_app_id}.png"
 )
