@@ -1,0 +1,13 @@
+pkgbase = cxxtest
+	pkgdesc = Unit testing framework for C++
+	pkgver = 4.4
+	pkgrel = 10
+	url = https://cxxtest.com/
+	arch = any
+	license = LGPL
+	makedepends = git
+	depends = python
+	source = git+https://github.com/CxxTest/cxxtest#tag=4.4
+	md5sums = SKIP
+
+pkgname = cxxtest
