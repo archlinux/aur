@@ -1,17 +1,19 @@
 pkgbase = python-ansiwrap
 	pkgdesc = textwrap, but savvy to ANSI colors and styles
 	pkgver = 0.8.4
-	pkgrel = 1
+	pkgrel = 6
 	url = https://github.com/jonathaneunice/ansiwrap
 	arch = any
-	license = Python
+	license = Apache
+	checkdepends = python-pytest
+	checkdepends = python-ansicolors
 	makedepends = python-setuptools
 	depends = python
-	depends = python-textwrap3
-	source = https://files.pythonhosted.org/packages/source/a/ansiwrap/ansiwrap-0.8.4.zip
-	md5sums = 0e24741bda593b7bd2162c3e3bd3b8ba
+	source = https://github.com/jonathaneunice/ansiwrap/archive/20e2e8c78a54bdce947e38c069c5eb9c115423ae/python-ansiwrap-20e2e8c78a54bdce947e38c069c5eb9c115423ae.tar.gz
+	source = python-ansiwrap-no-textwrap3.patch::https://github.com/jonathaneunice/ansiwrap/pull/16.patch
+	source = python-ansiwrap-python3.11.patch::https://github.com/jonathaneunice/ansiwrap/pull/19.patch
+	sha512sums = a01f1f1f79c7a84ca63013f6d05e2abeb00135905d1763f1b5d9fe430613c6bb10fbd2e345074e0001a8e7e40f1916d4c3a946da4dbb02fa288277ad441fab00
+	sha512sums = 54064900875534263a11ddfd013928383dbb2f00f6e3e6b098940bb1159c485439191667b6c742214c10ec84aca8e3cc62cdc3a5d9ea39cb3e2b74f13ad3a4a4
+	sha512sums = f3c623594e609582dffe28b9bfb0159935c538fce1b31c23c8ae07829b7678cc6b1c53e3ee89c44c5720158b6ecb516648f10c1d62805102772933871d0ad8e6
 
 pkgname = python-ansiwrap
-	depends = python
-	depends = python-textwrap3
-
