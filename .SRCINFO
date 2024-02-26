@@ -1,18 +1,18 @@
 pkgbase = sleek-bin
 	pkgdesc = todo.txt manager for Linux, Windows and MacOS, free and open-source (FOSS)
-	pkgver = 2.0.9
+	pkgver = 2.0.11
 	pkgrel = 1
 	url = https://github.com/ransome1/sleek
 	arch = x86_64
 	license = MIT
 	depends = electron28
 	depends = hicolor-icon-theme
-	provides = sleek-2.0.9
+	provides = sleek-2.0.11
 	conflicts = sleek
-	source = sleek-2.0.9.deb::https://github.com/ransome1/sleek/releases/download/v2.0.9/sleek_2.0.9_amd64.deb
-	source = LICENSE-2.0.9::https://raw.githubusercontent.com/ransome1/sleek/v2.0.9/LICENSE
+	source = sleek-2.0.11.deb::https://github.com/ransome1/sleek/releases/download/v2.0.11/sleek_2.0.11_amd64.deb
+	source = LICENSE-2.0.11::https://raw.githubusercontent.com/ransome1/sleek/v2.0.11/LICENSE
 	source = sleek.sh
-	sha256sums = f89719b4bf73d9cbf1a9465ca1aa61e330fac75efece9715ec0b4dbb1e6567f8
+	sha256sums = 102246fbd3ad264049e8e9b61e1bc892db11e0ca389c7f7704ac32e76ce4a402
 	sha256sums = dd26afa1adbe2d1321c4f80b45dcc0b6e5e9b986bcb8062f08c01086b7b52008
 	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
