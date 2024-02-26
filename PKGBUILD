@@ -1,12 +1,12 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=earthly
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc='A build automation tool that executes in containers'
 arch=('x86_64')
 url='https://earthly.dev/'
-license=('MPL2')
+license=('MPL-2.0')
 depends=('docker')
 makedepends=('git' 'go')
 BUILDENV+=('!check')
