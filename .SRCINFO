@@ -1,7 +1,7 @@
 pkgbase = b-step-git
 	pkgdesc = The MonoPlugs b-step sequencer
-	pkgver = r30.dba71e4
-	pkgrel = 1
+	pkgver = r80.3e7d24f
+	pkgrel = 2
 	url = https://github.com/surge-synthesizer/b-step
 	arch = x86_64
 	license = GPL3

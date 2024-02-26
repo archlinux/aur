@@ -1,8 +1,8 @@
 # Maintainer: Apoorv <apoorvs569@gmail.com>
 
 pkgname=b-step-git
-pkgver=r30.dba71e4
-pkgrel=1
+pkgver=r80.3e7d24f
+pkgrel=2
 pkgdesc="The MonoPlugs b-step sequencer"
 arch=('x86_64')
 url="https://github.com/surge-synthesizer/b-step"
@@ -21,6 +21,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/${pkgname%-git}"
   git submodule update --init --recursive
+  git -C libs/JUCE checkout 6.1.2
 }
 
 build() {
