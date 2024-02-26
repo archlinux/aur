@@ -4,7 +4,7 @@
 pkgname=1panel-dev-bin
 pkgver=1.10.0_alpha.5
 pkgrel=1
-pkgdesc="1Panel 是一个现代化、开源的 Linux 服务器运维管理面板。"
+pkgdesc="1Panel 是一个现代化、开源的 Linux 服务器运维管理面板。（本包为开发板，不建议在生产环境安装）"
 arch=('x86_64' 'aarch64')
 url="https://1panel.cn"
 license=('GPL-3.0-or-later')
