@@ -4,12 +4,12 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Contributor: Julian Schacher <jspp@posteo.net>
 
-_electron=electron24
-_nodeversion=16
+_electron=electron28
+_nodeversion=18
 pkgname=schildichat-desktop-git
 _pkgname=schildichat-desktop
-pkgver=1.11.30.sc.2.r1.0ba494e
-pkgrel=2
+pkgver=1.11.36.sc.2.r0.48fb860
+pkgrel=1
 pkgdesc="A Matrix client based on Element with a more traditional instant messaging experience"
 arch=(x86_64)
 url="https://schildi.chat"
