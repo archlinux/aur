@@ -1,6 +1,6 @@
 pkgbase = paketkoll-git
 	pkgdesc = Fast integrity check for files installed by pacman
-	pkgver = 3.0.0.r10.b9b08b7
+	pkgver = 0.1.2.r0.0962eb8
 	pkgrel = 1
 	url = https://github.com/VorpalBlade/paketkoll
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = paketkoll-git
 	arch = aarch64
 	license = MPL-2.0
 	makedepends = cargo
+	makedepends = cmake
 	makedepends = git
 	provides = paketkoll
 	conflicts = paketkoll
