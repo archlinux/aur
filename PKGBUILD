@@ -24,42 +24,11 @@ arch=('x86_64')
 url='https://github.com/cyberus-technology/virtualbox-kvm'
 license=('GPL' 'custom:CDDL')
 
-makedepends=('alsa-lib'
-             'cdrkit'
-             'curl'
-             'device-mapper'
-             'git'
-             'glu'
-             'gsoap'
-             'glslang'
-             'iasl'
-             'jdk8-openjdk'
-             'libidl2'
-             'liblzf'
-             'libpulse'
-             'libtpms'
-             'libvncserver'
-             'libvpx'
-             'libxcomposite'
-             'libxcursor'
-             'libxinerama'
-             'libxml2'
-             'libxmu'
-             'libxrandr'
-             'libxslt'
-             'libxtst'
-             'linux-headers'
-             'mesa'
-             'python'
-             'qt5-base'
-             'qt5-tools'
-             'qt5-x11extras'
-             'sdl'
-             'sdl_ttf'
-             'vde2'
-             'xorgproto'
-             'xorg-server-devel'
-             'yasm')
+makedepends=('alsa-lib' 'cdrkit' 'curl' 'device-mapper' 'git' 'glu' 'gsoap' 'glslang' 'iasl'
+                'jdk8-openjdk' 'libidl2' 'liblzf' 'libpulse' 'libtpms' 'libvncserver' 'libvpx'
+                'libxcomposite' 'libxcursor' 'libxinerama' 'libxml2' 'libxmu' 'libxrandr' 'libxslt'
+                'libxtst' 'linux-headers' 'mesa' 'python' 'qt5-base' 'qt5-tools' 'qt5-x11extras'
+                'sdl' 'sdl_ttf' 'vde2' 'xorgproto' 'xorg-server-devel' 'yasm')
 
 source=("${url}/archive/refs/tags/${_pkgver}.tar.gz"
         'virtualbox-host-dkms.conf'
@@ -107,7 +76,7 @@ sha256sums=('47eeca358ad07781d5816c9f51121c8359812190f60812a68cc6d84c89ee3598'
 prepare() {
     cd "virtualbox-kvm-${_pkgver}"
 
-    # apply patch from the source array (should be a pacman feature)
+    # apply patches from the source array
     local filename
     for filename in "${source[@]}"; do
         if [[ "${filename}" =~ \.patch$ ]]; then
@@ -157,7 +126,7 @@ package() {
     install -m0755 *.so -t "${pkgdir}/usr/lib/virtualbox"
     install -m0644 *.r0 VBoxEFI*.fd -t "${pkgdir}/usr/lib/virtualbox"
 
-    ## binaries
+    # binaries (in /usr/lib/virtualbox)
     install -m0755 \
         VirtualBoxVM \
         VBoxSDL \
@@ -193,25 +162,18 @@ package() {
     install -d -m0755 "${pkgdir}/usr/lib/virtualbox/components"
     install -m0755 components/* -t "${pkgdir}/usr/lib/virtualbox/components"
 
-    # extensions packs
-    ## as virtualbox install itself stuff in this directory, move it to /var and
-    ## trick it with a symlink
-    ## FIXME: trick is disabled for now
-    #install -d -m0755 "${pkgdir}/var/lib/virtualbox/extensions"
-    #install -d -m0755 "${pkgdir}/usr/share/virtualbox/extensions"
-    #ln -s ../../../var/lib/virtualbox/extensions "${pkgdir}/usr/lib/virtualbox/ExtensionPacks"
+    # extension packs
     install -d -m0755 "${pkgdir}/usr/lib/virtualbox/ExtensionPacks"
 
     # languages
     install -d -m0755 "${pkgdir}/usr/share/virtualbox/nls"
     install -m0755 nls/*.qm -t "${pkgdir}/usr/share/virtualbox/nls"
 
-    # useless scripts
+    # scripts
     install -m0755 VBoxCreateUSBNode.sh VBoxSysInfo.sh -t "${pkgdir}/usr/share/virtualbox"
 
     # icons
     install -D -m0644 VBox.png "${pkgdir}/usr/share/pixmaps/VBox.png"
-
     pushd icons >/dev/null
     for i in *; do
         install -d "${pkgdir}/usr/share/icons/hicolor/${i}/mimetypes"
@@ -219,27 +181,26 @@ package() {
     done
     popd >/dev/null
 
-    #desktop
+    # desktop
     install -D -m0644 virtualbox.desktop "${pkgdir}/usr/share/applications/virtualbox.desktop"
     install -D -m0644 virtualbox.xml "${pkgdir}/usr/share/mime/packages/virtualbox.xml"
 
-    #install configuration
+    # install configuration
     install -d -m0755 "${pkgdir}/etc/vbox"
     echo 'INSTALL_DIR=/usr/lib/virtualbox' > "${pkgdir}/etc/vbox/vbox.cfg"
 
-    # back to srcdir
     cd "${srcdir}"
 
-    #licence
+    # licence
     install -D -m0644 virtualbox-kvm-${_pkgver}/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -D -m0644 virtualbox-kvm-${_pkgver}/COPYING.CDDL "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.CDDL"
 
-    # install systemd stuff
+    # systemd
     install -D -m0644 60-vboxdrv.rules "${pkgdir}/usr/lib/udev/rules.d/60-vboxdrv.rules"
     install -D -m0644 vboxweb.service "${pkgdir}/usr/lib/systemd/system/vboxweb.service"
     install -D -m0644 virtualbox.sysusers "${pkgdir}/usr/lib/sysusers.d/virtualbox.conf"
 
-    # install module reloading shortcut (with a symlink with default helper)
+    # module reloading shortcut (with a symlink with default helper)
     install -D -m0755 vboxreload "${pkgdir}/usr/bin"
     ln -s vboxreload "${pkgdir}/usr/bin/rcvboxdrv"
 }
