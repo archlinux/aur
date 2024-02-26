@@ -1,0 +1,22 @@
+From 9d93abccabbadbc2a236b8efd80ef1c8f906e35f Mon Sep 17 00:00:00 2001
+From: Andrew O'Neil <andy@andyofniall.net>
+Date: Mon, 26 Feb 2024 20:34:24 +1100
+Subject: [PATCH] Only use system OpenVR if it's at least version 2
+
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 04bd47208..0952faff3 100644
+--- a/meson.build
++++ b/meson.build
+@@ -45,7 +45,7 @@ dep_wayland = dependency('wayland-client')
+ vulkan_dep = dependency('vulkan')
+ 
+ if get_option('enable_openvr_support')
+-  openvr_dep = dependency('openvr', required : false)
++  openvr_dep = dependency('openvr', version: '>= 2', required : false)
+   if not openvr_dep.found()
+     cmake = import('cmake')
+     openvr_var = cmake.subproject_options()
