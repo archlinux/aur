@@ -6,8 +6,14 @@ pkgbase = gnome-disk-utility-3.4.1
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = intltool
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
 	depends = gtk3
-	depends = intltool
+	depends = hicolor-icon-theme
+	depends = pango
 	depends = udisks2
 	provides = gnome-disk-utility=3.4.1
 	conflicts = gnome-disk-utility
@@ -15,4 +21,3 @@ pkgbase = gnome-disk-utility-3.4.1
 	md5sums = c5ff303fdc99d6bf85b9fa8e886a99dd
 
 pkgname = gnome-disk-utility-3.4.1
-
