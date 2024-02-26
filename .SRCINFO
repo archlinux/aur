@@ -1,0 +1,18 @@
+pkgbase = android-aarch64-gdbm
+	pkgdesc = GNU database library (android)
+	pkgver = 1.19
+	pkgrel = 1
+	url = http://www.gnu.org/software/gdbm/gdbm.html
+	arch = any
+	license = GPL
+	makedepends = android-configure
+	depends = android-aarch64-gettext
+	depends = android-aarch64-libiconv
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://ftp.gnu.org/gnu/gdbm/gdbm-1.19.tar.gz
+	sha256sums = 37ed12214122b972e18a0d94995039e57748191939ef74115b1d41d8811364bc
+
+pkgname = android-aarch64-gdbm
