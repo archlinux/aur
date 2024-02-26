@@ -6,7 +6,7 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-libgpg-error
 pkgver=1.48
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Support library for libgcrypt (android)"
 url="https://www.gnupg.org"
@@ -56,7 +56,8 @@ build() {
     android-${_android_arch}-configure \
         --disable-doc \
         --disable-tests \
-        --host "${host}"
+        --host "${host}" \
+        --enable-install-gpg-error-config
     make $MAKEFLAGS
 }
 
