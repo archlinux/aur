@@ -2,7 +2,7 @@
 pkgname=ldtk-appimage
 _pkgname=LDtk
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern and efficient 2D level editor with a strong focus on user-friendliness"
 arch=('x86_64')
 url="https://ldtk.io/"
@@ -22,7 +22,7 @@ options=("!strip")
 _install_path="/opt/appimages"
 source=(
   "${pkgname%-appimage}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/ubuntu-distribution.zip"
-  "LICENSE::https://raw.githubusercontent.com/deepnight/ldtk/v${pkgver}/LICENSE"
+  "LICENSE-${pkgver}::https://raw.githubusercontent.com/deepnight/ldtk/v${pkgver}/LICENSE"
 )
 sha256sums=('8bb1c870ab35d2cadfbf08a119d3049e7986a2a80558d2610babc67fcd502566'
             'f409a37a40e823efefddac3140d991141633d4db3cec4f8667bc23b846dcc335')
@@ -42,5 +42,5 @@ package() {
   done
   install -Dm644 "${srcdir}/squashfs-root/usr/share/mime/${pkgname%-appimage}.xml" -t "${pkgdir}/usr/share/mime"
   install -Dm644 "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop" -t "${pkgdir}/usr/share/applications"
-  install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

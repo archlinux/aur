@@ -1,7 +1,7 @@
 pkgbase = ldtk-appimage
 	pkgdesc = Modern and efficient 2D level editor with a strong focus on user-friendliness
 	pkgver = 1.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ldtk.io/
 	arch = x86_64
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = ldtk-appimage
 	conflicts = ldtk
 	options = !strip
 	source = ldtk-1.5.3.zip::https://github.com/deepnight/ldtk/releases/download/v1.5.3/ubuntu-distribution.zip
-	source = LICENSE::https://raw.githubusercontent.com/deepnight/ldtk/v1.5.3/LICENSE
+	source = LICENSE-1.5.3::https://raw.githubusercontent.com/deepnight/ldtk/v1.5.3/LICENSE
 	sha256sums = 8bb1c870ab35d2cadfbf08a119d3049e7986a2a80558d2610babc67fcd502566
 	sha256sums = f409a37a40e823efefddac3140d991141633d4db3cec4f8667bc23b846dcc335
 
