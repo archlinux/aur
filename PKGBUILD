@@ -4,7 +4,7 @@
 _pkgbase="sddm"
 pkgname="$_pkgbase-git"
 pkgver=0.21.0.0.g63780fc
-pkgrel=1
+pkgrel=2
 pkgdesc="The Simple Desktop Display Manager"
 arch=("x86_64")
 url="https://github.com/sddm/sddm"
@@ -32,11 +32,8 @@ backup=('usr/share/sddm/scripts/Xsetup'
         'etc/pam.d/sddm'
         'etc/pam.d/sddm-autologin'
         'etc/pam.d/sddm-greeter')
-source=("git+https://github.com/sddm/sddm.git#branch=develop"
-sddm.sysusers sddm.tmpfiles)
-sha256sums=('SKIP'
-            '9fce66f325d170c61caed57816f4bc72e9591df083e89da114a3bb16b0a0e60f'
-            'db625f2a3649d6d203e1e1b187a054d5c6263cadf7edd824774d8ace52219677')
+source=("git+https://github.com/sddm/sddm.git#branch=develop")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd $_pkgbase
@@ -59,9 +56,6 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-
-  install -Dm644 sddm.sysusers "$pkgdir"/usr/lib/sysusers.d/sddm.conf
-  install -Dm644 sddm.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/sddm.conf
 
   install -d "$pkgdir"/usr/lib/sddm/sddm.conf.d
   "$pkgdir"/usr/bin/sddm --example-config > "$pkgdir"/usr/lib/sddm/sddm.conf.d/default.conf
