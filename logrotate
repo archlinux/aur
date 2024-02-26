@@ -1,0 +1,10 @@
+/var/log/freenginx/*log {
+  missingok
+  notifempty
+  create 640 http root
+  sharedscripts
+  compress
+  postrotate
+    [[ -f /run/freenginx.pid ]] && kill -USR1 $(cat /run/freenginx.pid)
+  endscript
+}
