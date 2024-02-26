@@ -3,7 +3,7 @@ pkgname=agendapp
 _pkgname=Agendapp
 pkgver=1.4.0
 _electronversion=20
-pkgrel=1
+pkgrel=2
 pkgdesc="One of the best software to simplify school calendar management and facilitate classroom notes."
 arch=('x86_64')
 url="https://github.com/johan-perso/agendapp"
@@ -23,19 +23,22 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname} %U"
+    gendesk -q -f -n --categorie="Utility" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
     sed "s|-exe|-linux|g;s|win32|linux|g;s|icon.ico|icon.png|g;s|release-builds|dist|g" -i package.json
     npm install
     npm run build-linux-x64
