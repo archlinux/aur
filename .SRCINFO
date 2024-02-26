@@ -20,6 +20,7 @@ pkgbase = mongodb-compass-git
 	optdepends = org.freedesktop.secrets
 	provides = mongodb-compass
 	conflicts = mongodb-compass
+	backup = etc/mongodb-compass.conf
 	source = mongodb-compass-git::git+https://github.com/mongodb-js/compass
 	source = hadron-build-ffmpeg.diff
 	source = fix-argv.diff
