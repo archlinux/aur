@@ -4,7 +4,7 @@ pkgname="${_pkgname}-sql-bin"
 _appname=Antares
 pkgver=0.7.21
 _electronversion=22
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern, fast and productivity driven SQL client with a focus in UX."
 arch=(
     "aarch64"
@@ -27,7 +27,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/antares-sql/antares/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('99b00c37ea6d7b39d445097d8024f9156f9c3cf82e86f44db745a3b2cf5114b6'
+sha256sums=('7b960bb0bed7d2228b6a8a879558c97906cc041ab14ab1d1089959902f386613'
             '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 sha256sums_aarch64=('3d819dec84b94ef2914fd5e56263576055c53bd29a58d499d59cbfbb31a06b5f')
 sha256sums_armv7h=('5657abae22d4c8aa9a2f8432cec0a17c5bfc69c10528298f1af647a49d8468a4')
