@@ -4,11 +4,11 @@ _appname=dl-desktop
 _pkgname=ro.go.hmlendea.DL-Desktop
 pkgver=4.0.0
 _electronversion=25
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop client for the Duolingo language learning application"
 arch=("x86_64")
 url="https://github.com/hmlendea/dl-desktop"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${_appname}" "${pkgname%-bin}")
 depends=(
@@ -21,11 +21,11 @@ source=(
 )
 sha256sums=('eb24471528136eb1157cbdd6afe0fa4d1c2cf2ba9b5d61bafd053c3ef49d6120'
             '67642cd03a241ff097a83800f39e442c533e8b7a92a9235c0375ef866a708f0e'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     sed "s|/opt/${_appname}/${_appname}|${pkgname%-bin}|g;s|${_pkgname}|${pkgname%-bin}|g" -i "${srcdir}/${_pkgname}.desktop"
 }
