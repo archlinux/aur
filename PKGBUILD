@@ -4,12 +4,12 @@ _appname=Glyphr-Studio
 pkgname="${_pkgname}-nativefier"
 pkgver=1.14.0
 _electronversion=25
-pkgrel=1
+pkgrel=2
 pkgdesc="Glyphr Studio is a free, web based font designer."
 arch=("x86_64")
 url="http://glyphrstudio.com/"
 _ghurl="https://github.com/glyphr-studio/Glyphr-Studio-1"
-license=("GPL3")
+license=("GPL-3.0-only")
 depends=(
     "electron${_electronversion}"
 )
@@ -23,13 +23,13 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
-        -e "s|@appasar@|app|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname}.sh"
-    gendesk -q -f -n --pkgname "${_pkgname}"  --categories "Utility" --icon "${_pkgname}.png" --name "${_appname}" --exec "${pkgname} %U"
+    gendesk -q -f -n --pkgname="${_pkgname}"  --categories="Utility" --icon="${_pkgname}.png" --name="${_appname}" --exec="${pkgname} %U"
     cp "${srcdir}/${pkgname}.git/dist/${_appname//-/_}_-_${pkgver}.html" "${srcdir}/${_pkgname}.git.html"
     cp "${srcdir}/${pkgname}.git/${_pkgname//-/_}_logo.png" "${srcdir}/${_pkgname}.png"
     nativefier "file:///usr/lib/${pkgname}/${_pkgname}.git.html" \
