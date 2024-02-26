@@ -14,7 +14,7 @@ depends=(
   'python-deprecation-alias'
   'python-domdf-python-tools'
   'python-mistletoe'
-  'python-typing-extensions'
+  'python-typing_extensions'
 )
 makedepends=(
   'git'
