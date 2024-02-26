@@ -12,7 +12,7 @@
 ## basic info
 _pkgname="floorp"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=11.10.3
+pkgver=11.10.4
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -107,7 +107,7 @@ _main_package() {
   )
 
   sha256sums=(
-    'a31beb9aba18d9a2fb31b5b8053e331a8bc5d07ad5e6b9cb959feaa25aa3299a'
+    'c98d62e5375ca299ba73a1e0d3c9b30b553fc0e3977c5f9c473bd4e0d449a7a1'
     'SKIP'
     'SKIP'
     '07a63f189beaafe731237afed0aac3e1cfd489e432841bd2a61daa42977fb273'
