@@ -1,3 +1,5 @@
+# Maintainer: Christopher Price <pricechrispy at gmail dot com>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Eric Fung <loseurmarbles[AT]gmail[DOT]com>
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: Tambet Arak <tambetarak+nospam@gmail.com>
@@ -7,13 +9,13 @@
 
 pkgname=ocaml-sqlite3
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('MIT')
 pkgdesc='SQLite3 bindings for OCaml'
 url='https://mmottl.github.io/sqlite3-ocaml/'
 depends=('ocaml' 'ocaml-stdio' 'sqlite>=3')
-makedepends=('dune')
+makedepends=('dune' 'ocaml-findlib')
 provides=('sqlite3-ocaml')
 replaces=('sqlite3-ocaml')
 conflicts=('sqlite3-ocaml')
@@ -33,8 +35,9 @@ package() {
         "${pkgdir}/usr/share/licenses/${pkgname}" \
         "${pkgdir}/$(ocamlfind -printconf destdir)"
 
-    dune install --prefix "${pkgdir}/usr/share" \
-                 --libdir "${pkgdir}$(ocamlfind printconf destdir)"
+    dune install --destdir "$pkgdir" \
+                 --prefix "/usr/share" \
+                 --libdir "$(ocamlfind printconf destdir)"
 
     mv "${pkgdir}/usr/share/doc/sqlite3" "${pkgdir}/usr/share/doc/${pkgname}"
 
