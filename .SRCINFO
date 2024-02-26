@@ -1,6 +1,6 @@
 pkgbase = seabird
 	pkgdesc = Native Kubernetes desktop client
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://getseabird.github.io
 	arch = i686
@@ -17,9 +17,9 @@ pkgbase = seabird
 	depends = vte4
 	options = !emptydirs
 	options = !lto
-	source = seabird-0.1.1.tar.gz::https://github.com/getseabird/seabird/archive/v0.1.1.tar.gz
+	source = seabird-0.1.2.tar.gz::https://github.com/getseabird/seabird/archive/v0.1.2.tar.gz
 	source = seabird.desktop
-	b2sums = d17b0c521177abf75103c4ebbdfe3f6b83ed82c6b0976f3bf065f159cc095a0dc73a027d1dea3fdddd3a412302d5f11cec09517fa240ce36f439ef6af98548cd
+	b2sums = a344f7c39e7ea41a3ef7aa00e69a0908b7cd633df5625b5a7153d445c8ddc56f8ff58ea6805c2ca2043049ce36ee29e64ef703382e4bdad0377060fa13f41f37
 	b2sums = c8e36b0ac8dd4c1b1b47802926fa52ae03d699b245c78a7b47a6652dc62d9e943eecf94af2a901c9801de71d12d47adf14b024b9f7446e4cd3bef426ba47a119
 
 pkgname = seabird

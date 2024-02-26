@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=seabird
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Native Kubernetes desktop client'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('git' 'go' 'gobject-introspection')
 options=('!emptydirs' '!lto')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/get${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop")
-b2sums=('d17b0c521177abf75103c4ebbdfe3f6b83ed82c6b0976f3bf065f159cc095a0dc73a027d1dea3fdddd3a412302d5f11cec09517fa240ce36f439ef6af98548cd'
+b2sums=('a344f7c39e7ea41a3ef7aa00e69a0908b7cd633df5625b5a7153d445c8ddc56f8ff58ea6805c2ca2043049ce36ee29e64ef703382e4bdad0377060fa13f41f37'
         'c8e36b0ac8dd4c1b1b47802926fa52ae03d699b245c78a7b47a6652dc62d9e943eecf94af2a901c9801de71d12d47adf14b024b9f7446e4cd3bef426ba47a119')
 
 build() {
@@ -20,9 +20,11 @@ build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  _LDFLAGS="-X main.version=${pkgver} -X main.branch=master -linkmode=external"
   go generate ./...
-  go build -o seabird .
+  go build -o seabird -ldflags="${_LDFLAGS}" .
 }
 
 package() {
@@ -31,7 +33,7 @@ package() {
     "${pkgdir}/usr/bin/seabird"
 
   # icon
-  install -D -m644 "${srcdir}/${pkgname}-${pkgver}/icon/${pkgname}.svg" \
+  install -D -m644 "${srcdir}/${pkgname}-${pkgver}/internal/icon/${pkgname}.svg" \
     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 
   # desktop file
