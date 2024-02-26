@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-libgpg-error
 	pkgdesc = Support library for libgcrypt (android)
 	pkgver = 1.48
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnupg.org
 	arch = any
 	license = LGPL
