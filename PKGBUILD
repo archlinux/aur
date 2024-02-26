@@ -7,7 +7,7 @@ pkgdesc="Discreet Cryptocurrency Wallet. discreet.net"
 pkgver=0.2.23
 _guiver="${pkgver}-3"
 _daemonver=0.0.28-2
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 #depends=('dotnet-sdk')
 url="https://discreet.net"
@@ -20,6 +20,8 @@ noextract=("${_pkgname}-gui_${_guiver}_amd64.deb"
 "${_pkgname1}_${_daemonver}_amd64.deb")
 
 package_discreet-gui-bin() {
+  echo -e "\e[1;31mThe maintainer of this package refuses to support\nthe toxic community that has evolved in the discreet telegram channel.\nI take this opportunity to warn fellow arch users against this project.\nIf this assesment should change, the build shall be fixed and this warning recinded.\e[0m"
+  exit 0
 	depends=("discreet-daemon-bin")
 	provides=("discreet-gui")
 	conflicts=("discreet-gui")

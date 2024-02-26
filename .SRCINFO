@@ -1,7 +1,7 @@
 pkgbase = discreet-bin
 	pkgdesc = Discreet Cryptocurrency Wallet. discreet.net
 	pkgver = 0.2.23
-	pkgrel = 4
+	pkgrel = 5
 	url = https://discreet.net
 	arch = x86_64
 	noextract = -gui_0.2.23-3_amd64.deb
