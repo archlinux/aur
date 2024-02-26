@@ -8,7 +8,6 @@ url="https://github.com/siddhantmadhur/straw"
 license=(MIT)
 makedepends=(git go)
 provides=(straw)
-conflicts=(straw)
 source=("straw::git+https://github.com/siddhantmadhur/straw.git")
 sha256sums=(SKIP)
 
