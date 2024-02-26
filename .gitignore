@@ -1,0 +1,5 @@
+/pkg
+/src
+/git-of-theseus*pkg.tar.zst
+/git-of-theseus
+/*.log
