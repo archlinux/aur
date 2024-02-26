@@ -1,7 +1,7 @@
 pkgbase = creamplayer
 	pkgdesc = Netease music and QQ music downloader and player.网易云播放/下载器,QQ音乐批量下载工具
 	pkgver = 4.0.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Beadd/Creamplayer
 	arch = any
 	license = MIT
@@ -12,9 +12,9 @@ pkgbase = creamplayer
 	depends = electron13
 	provides = creamplayer
 	conflicts = creamplayer
-	source = creamplayer-4.0.2::git+https://github.com/Beadd/Creamplayer.git#tag=v4.0.2
+	source = creamplayer.git::git+https://github.com/Beadd/Creamplayer.git#tag=v4.0.2
 	source = creamplayer.sh
 	sha256sums = SKIP
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = creamplayer
