@@ -1,0 +1,14 @@
+pkgbase = python-editdistance-s
+	pkgdesc = Fast implementation of the edit distance (Levenshtein distance)
+	pkgver = 1.0.0
+	pkgrel = 5
+	url = https://github.com/asottile/editdistance-s
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-cffi
+	source = https://github.com/asottile/editdistance-s/archive/v1.0.0/python-editdistance-s-1.0.0.tar.gz
+	sha512sums = 148234a38f54f70a2d6bc64f6a166a8954c79fb89d5f5c0bf3f041fe60056332901484a0626e218a72ae992f476305cbb662dfa0acdda794727fc682c569d718
+
+pkgname = python-editdistance-s
