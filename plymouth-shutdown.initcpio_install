@@ -4,6 +4,7 @@ build() {
   # get default theme settings
   local PLYMOUTH_THEME_NAME=$(plymouth-set-default-theme)
   local PLYMOUTH_THEME_DIR="/usr/share/plymouth/themes/$PLYMOUTH_THEME_NAME"
+    local PLYMOUTH_IMAGE_DIR=$(sed -n "s/^ *ImageDir *= *//p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth")
   local PLYMOUTH_FONT_NAME=$(sed -n "s/^ *Font *= *//p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth" | sed -e 's/ [0-9]\+ *$//' -e 's/ \(Regular\|Bold\|Italic\|Bold Italic\|Oblique\|Bold Oblique\|Thin\|Light\|Extra Bold\) *$/:style=\1/')
   local PLYMOUTH_FONT_PATH=$(fc-match -f %{file} "$PLYMOUTH_FONT_NAME")
     local PLYMOUTH_TITLE_FONT_NAME=$(sed -n "s/^ *TitleFont *= *//p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth" | sed -e 's/ [0-9]\+ *$//' -e 's/ \(Regular\|Bold\|Italic\|Bold Italic\|Oblique\|Bold Oblique\|Thin\|Light\|Extra Bold\) *$/:style=\1/')
@@ -34,6 +35,16 @@ build() {
   if [ -n "$PLYMOUTH_MONOSPACE_FONT_PATH" ]; then
     add_file "$PLYMOUTH_MONOSPACE_FONT_PATH"
     add_file "$PLYMOUTH_MONOSPACE_BOLD_FONT_PATH"
+  fi
+
+  # copy configured theme
+  if [ -d "$PLYMOUTH_THEME_DIR" ]; then
+    add_full_dir "$PLYMOUTH_THEME_DIR"
+  fi
+
+  # copy images for the configured theme
+  if [ "$PLYMOUTH_IMAGE_DIR" != "$PLYMOUTH_THEME_DIR" -a -d "$PLYMOUTH_IMAGE_DIR" ]; then
+    add_full_dir "$PLYMOUTH_IMAGE_DIR"
   fi
 }
 
