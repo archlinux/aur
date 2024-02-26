@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Nepogodin <nepogodin.vlad@gmail.com>
 
 pkgname=contour-git
-pkgver=0.4.1.r4233.59c748ff
+pkgver=0.4.4.r4421.df4a80b5
 pkgrel=1
 pkgdesc="Modern C++ Terminal Emulator"
 arch=(x86_64 aarch64)
@@ -10,7 +10,8 @@ license=('Apache-2.0')
 depends=('harfbuzz' 'fontconfig' 'yaml-cpp' 'qt6-base' 'qt6-declarative' 'qt6-multimedia'
          'qt6-shadertools' 'qt6-wayland' 'qt6-5compat' 'libutempter')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'libxml2'
-             'python' 'range-v3' 'fmt' 'microsoft-gsl' 'catch2')
+             'python' 'range-v3' 'fmt' 'microsoft-gsl' 'catch2'
+             'clang' 'llvm')
 source=("${pkgname}::git+https://github.com/contour-terminal/contour.git")
 sha512sums=('SKIP')
 provides=('contour')
@@ -25,6 +26,14 @@ pkgver() {
 }
 
 build() {
+  export AR=llvm-ar
+  export CC=clang
+  export CXX=clang++
+  export NM=llvm-nm
+  export RANLIB=llvm-ranlib
+
+  export XDG_STATE_HOME="$PWD"
+
   _cpuCount=$(grep -c -w ^processor /proc/cpuinfo)
 
   CFLAGS=${CFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
@@ -54,6 +63,12 @@ check() {
 }
 
 package() {
+  export AR=llvm-ar
+  export CC=clang
+  export CXX=clang++
+  export NM=llvm-nm
+  export RANLIB=llvm-ranlib
+
   cd "${srcdir}/build"
   DESTDIR="${pkgdir}" cmake --build . --target install
 
