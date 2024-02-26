@@ -4,31 +4,16 @@ pkgname=issie
 pkgver=4.1.0
 _electronversion=24
 _nodeversion=18
-pkgrel=4
+pkgrel=5
 pkgdesc="An intuitive cross-platform hardware design application."
 arch=('any')
 url="https://tomcl.github.io/issie"
 _ghurl="https://github.com/tomcl/issie"
-license=('GPL3')
+license=('GPL-3.0-only')
 conflicts=("${pkgname}")
 depends=(
-    'expat'
-    'at-spi2-core'
     'nspr'
-    'pango'
     'nss'
-    'cairo'
-    'libxkbcommon'
-    'libxcomposite'
-    'libcups'
-    'libxfixes'
-    'libxdamage'
-    'libx11'
-    'libxext'
-    'libdrm'
-    'mesa'
-    'libxrandr'
-    'libxcb'
     'alsa-lib'
     'gtk3'
 )
@@ -51,13 +36,18 @@ _ensure_local_nvm() {
 }
 build() {
     _ensure_local_nvm
-    gendesk -q -f -n --categories "Development" --name "${pkgname}" --exec "${pkgname} --no-sandbox %U"
+    gendesk -q -f -n --categories="Development" --name="${pkgname}" --exec="${pkgname} --no-sandbox %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
-    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export ELECTRONVERSION="${_electronversion}"
+    export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/.npm_cache"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
     dotnet tool restore
     dotnet paket install
     npm install
