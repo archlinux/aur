@@ -9,7 +9,7 @@
 
 pkgname=bin32-firefox-bin
 pkgver=123.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org - 32bit version for 64bit systems"
 arch=('x86_64')
 _arch=i686
@@ -32,11 +32,11 @@ package() {
   cp -r ${srcdir}/firefox usr/lib32/${pkgname}
   mv usr/lib32/${pkgname}/firefox usr/lib32/${pkgname}/firefox32
   mv usr/lib32/${pkgname}/firefox-bin usr/lib32//${pkgname}/firefox32-bin
-  cat <<EOF > usr/bin/${pkgname}
+  cat <<EOF > usr/bin/bin32-firefox
 #!/bin/bash
 MOZ_PLUGIN_PATH="/opt/mozilla/lib/plugins:/usr/lib32/mozilla/plugins" /usr/lib32/${pkgname}/firefox32 \$*
 EOF
-  chmod +x usr/bin/${pkgname}
+  chmod +x usr/bin/bin32-firefox
 
   # desktop icons
   cd ${srcdir}
