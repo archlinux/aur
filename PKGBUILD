@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deltachat-desktop-bin
 _pkgname=DeltaChat
-pkgver=1.42.2
-_electronversion=26
-pkgrel=2
+pkgver=1.43.1
+_electronversion=28
+pkgrel=1
 pkgdesc="Email-based instant messaging for Desktop."
 arch=('x86_64')
 url="https://delta.chat/"
 _ghurl="https://github.com/deltachat/deltachat-desktop"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=(
     "${pkgname%-desktop-bin}=${pkgver}"
     "${pkgname%-bin}=${pkgver}"
@@ -30,12 +30,12 @@ source=(
     "${pkgname%-bin}-${pkgver}.pacman::https://download.delta.chat/desktop/v${pkgver}/${pkgname%-bin}-${pkgver}.pacman"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('94f8b3ce275fd550bdc05b1443b3b1740d4e19c1f5feac284beb321e0b35a5b2'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+sha256sums=('d56414d857b97c0001b1974b1cf8bc0e25b2354d116d86ba7a3e5c77c93ec819'
+            'c48661e43cf15aa91216ab0fe0521445d090f07d458e19a9d4234479c90415b1')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
@@ -48,4 +48,5 @@ package() {
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
+    install -Dm644 "${srcdir}/usr/share/mime/packages/${pkgname%-bin}.xml" -t "${pkgdir}/usr/share/mime/packages"
 }
