@@ -6,8 +6,8 @@ pkgname=(
     mtgpu-dkms
 )
 
-pkgver=2.1.2
-pkgrel=4
+pkgver=2.5.0
+pkgrel=1
 
 pkgdesc='MooreThreads MUSA'
 arch=('x86_64')
@@ -24,19 +24,21 @@ source=(
     # # https://www.mthreads.com/pes/drivers/driver-info?productType=DESKTOP&productModel=DESKTOP_MTT_S80&osVersion=MTT_S80_Ubuntu
     # "musa_${pkgver}-Ubuntu_amd64.deb"::"invalid://musa_${pkgver}-Ubuntu_amd64.deb"
     # https://developer.mthreads.com/sdk/download/musa?equipment=&os=&driverVersion=&version=
-    "MUSA+Toolkits-rc1.4.1+Intel+CPU_Ubuntu.zip::https://developer.mthreads.com/sdk/download/musa?equipment=&os=&driverVersion=&version="
-    "00-port-ti-img-rouge-newer-sources.diff::https://github.com/dixyes/mtgpu-drv/commit/2b3f0f09bd1acf1cf66d479827a3ba8d331cac73.diff"
-    "01-disable-cursor_set-things.diff::https://github.com/dixyes/mtgpu-drv/commit/eb252e36927d8a6ff4bcd575e91972991d163583.diff"
-    "02-avoid-redefine.diff::https://github.com/dixyes/mtgpu-drv/commit/8d996e13b388aa56974208cd610861c9556dc22b.diff"
+    "MUSA+Toolkits-v1.5.2+Intel+CPU_Ubuntu.zip::https://developer.mthreads.com/sdk/download/musa?equipment=&os=&driverVersion=&version="
+    "00-port-ti-img-rouge-newer-sources.diff::https://github.com/dixyes/mtgpu-drv/commit/5f747fbfd28b25f230d4487be1a8fd6217715ba3.diff"
+    "01-disable-cursor_set-things.diff::https://github.com/dixyes/mtgpu-drv/commit/17170659d9fcf6b1591ac539e7a7dae71ca01924.diff"
+    "02-avoid-redefine.diff::https://github.com/dixyes/mtgpu-drv/commit/3d84942c3b1070054aafb089f48bbb57c88d643e.diff"
+    "03-fake-ubuntu.diff::https://github.com/dixyes/mtgpu-drv/commit/f05b21697014645f2bb6470c9d8d7cb91af1bcb0.diff"
 )
-sha512sums=('74d49e14538c3430bd9c21d5be4eb3bd5b726be3e40e53ba780303e8bb1cc350986e6ab5109034f59fc7623650f21089e5fdd4068bb20463abea22e1cd6a2313'
-            'b81a6c31e8ea94dcefb4b8b531d8e1392660c25bf4655fdae9c95b799ec9ca20e64011ab43cd2ab07c003a8b72d6e3e6bb408ea53866bc246eea64acd3260954'
-            '77bbb7bd82bd9289f7d13ccdd60a04ec3f097f4ad2d55aafe6aa9b7cb285e8297ffc9b126cfdd4cf4541cc3bb7d8d9dd01acc202a9df32f2658fbf39e70f410b'
-            '21f4b395462f1e3af0178427931caae7dca139eceda16e65943e4989b8aa73acb36bfebd076ab3d80936942f16b94892d28b10e68bbbead015a2de68d4ba2629')
+sha512sums=('a1749d95fa617d1974376aa8321ac71f0e4d3e3a5d9d8b07ea4904b48d6271e5d06f36c46a787127803b3fce7568c85e2d6cb9c3f44641c8b24d627318ba0f75'
+            'dff8983f4abe3a6bd12ff8490ef8964753388b26d333c84083365c20a98bc761973c956bc4b87f37d981683eff25dcc0346714c59f9e00afe3a24da7717c7216'
+            'd9ade66f27c9afe43343191ed671a18740a2543dab95c12f11187f3bff57ded4b0a8ef56f383413e0ba98447c851f07f591a3a128cc21df4780c699107447427'
+            '21f4b395462f1e3af0178427931caae7dca139eceda16e65943e4989b8aa73acb36bfebd076ab3d80936942f16b94892d28b10e68bbbead015a2de68d4ba2629'
+            'cd448b8909afe31260e2e34b402a41b1b5e4a34e5dabc413a0d154ed89de039001d115945403c560ea8b137786c7926038b1e4e25bf921b4956f6662daa27621')
 
 prepare()
 {
-    ar x musa_2.1.2-Ubuntu-dev_amd64.deb
+    ar x Driver/musa_2.5.0-server-Ubuntu_amd64.deb
     rm control.tar.gz debian-binary
     tar -xf data.tar.gz
     rm data.tar.gz
@@ -44,16 +46,20 @@ prepare()
     install -d -m0755 usr/local/musa
 
     # install packages
-    tar -xf mudnn_rtm2.1.1.tar -C usr/local/musa --strip-components 2 \
-        ./mudnn/lib \
-        ./mudnn/include
-    tar -xf mccl_rc1.2.0.tar.gz -C usr/local/musa --strip-components 2 \
+    # TODO: split quyuan and chunxiao
+    tar -xf muDNN/mudnn_rtm2.3.1-quyuan.tar.gz -C usr/local/musa --strip-components 1 \
+        mudnn/lib \
+        mudnn/include \
+        mudnn/docs
+    tar -xf MCCL/mccl_rtm1.3.0-quyuan.tar.gz -C usr/local/musa --strip-components 1 \
         ./mccl/lib \
         ./mccl/include \
+        ./mccl/cmake \
         ./mccl/LICENSE.txt
-    tar -xf musa_toolkits_rc1.4.1.tar.gz -C usr/local/musa --strip-components 1 \
-        musa_toolkits_1.4.1 \
-        --exclude='musa_toolkits_1.4.1/install.sh'
+    tar -xf MUSA\ Toolkits/musa_toolkits_rtm1.5.2-quyuan.tar.gz -C usr/local/musa --strip-components 1 \
+        musa_toolkits_1.5.2 \
+        --exclude='musa_toolkits_1.5.2/install.sh' \
+        --exclude='musa_toolkits_1.5.2/version.json'
 
     # dkms sources
     mv usr/src/mtgpu-1.0.0 "usr/src/mtgpu-${pkgver}"
@@ -82,7 +88,7 @@ package_musa-userspace()
     # ldconfig
     install -d -m0755 "${pkgdir}/etc/ld.so.conf.d"
     cat > "${pkgdir}/etc/ld.so.conf.d/musa.conf" <<EOF
-/usr/lib/x86_64-linux-gnu/musa
+/usr/lib/musa
 /usr/local/musa/lib
 EOF
 
@@ -94,8 +100,14 @@ EOF
     install -D -m0644 etc/musa.ini "${pkgdir}/etc/musa.ini"
 
     # binaries and libraries
-    install -d -m0755 "${pkgdir}/usr/lib/x86_64-linux-gnu/musa"
-    cp -r --no-preserve='ownership' usr/bin usr/lib usr/local usr/share "${pkgdir}/usr/"
+    install -d -m0755 "${pkgdir}/usr"
+    cp -r --no-preserve='ownership' usr/bin usr/local usr/share "${pkgdir}/usr/"
+    install -d -m0755 "${pkgdir}/usr/lib/musa"
+    cp -r --no-preserve='ownership' usr/lib/x86_64-linux-gnu/musa/* "${pkgdir}/usr/lib/musa"
+    install -d -m0755 "${pkgdir}/usr/lib/dri"
+    cp -r --no-preserve='ownership' usr/lib/x86_64-linux-gnu/dri/* "${pkgdir}/usr/lib/dri"
+    install -d -m0755 "${pkgdir}/usr/lib/gbm"
+    cp -r --no-preserve='ownership' usr/lib/x86_64-linux-gnu/gbm/* "${pkgdir}/usr/lib/gbm"
 
     # ucm2
     install -d -m0755 "${pkgdir}/usr/share/alsa/ucm2"
