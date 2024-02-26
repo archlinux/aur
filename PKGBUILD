@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=localsend
-pkgver=1.13.1
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='An open source cross-platform alternative to AirDrop.'
 url='https://localsend.org/'
@@ -13,7 +13,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 	"flutter::git+https://github.com/flutter/flutter.git"
 	"flutter-engine::git+https://github.com/flutter/engine.git")
-sha256sums=('5824fab0bdf094135dc1fa6d1a89a62e0d01ce3e4692a0490dd72f158d0a7b65'
+sha256sums=('06dab4ced0c434d617e355dbe64f4cd793ddedd86939fd65b308590d122b3a06'
             'SKIP'
             'SKIP')
 
