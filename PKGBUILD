@@ -19,7 +19,7 @@ source=(
 )
 sha256sums=('18876b9db94cbe854f6a39cd8856b067581fd9c6ed0ba533de18dd84d86acf41'
             '1e81694af5e5793ffbe17076d953c0b585cc9a3baf9b7c2d9c21e1297e9caf23'
-            'e4d39861991ab573509c2b57afc23bfaf2d0b6b4e62d04cecce77d7e35667a58')
+            'ff68db46301feeff0e192907afd1100194482fbc285881c13e3780b05c01d20a')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_runname}|g" \
