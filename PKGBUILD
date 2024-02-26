@@ -1,15 +1,15 @@
 # Maintainer: lstnbl <jialanxin1996@hotmail.com>
 
 pkgname=vaspkit-bin
-pkgver=1.4.0
+pkgver=1.5.1
 _swname=vaspkit.${pkgver}
 pkgrel=1
 pkgdesc="VASPKIT is a postprocessing tool for VASP code.(Warning! May overwrite your .vaspkit and utilities dir!)"
 arch=('x86_64')
 licence=('unknown')
 url=https://sourceforge.net/projects/vaspkit/files/
-source=('https://downloads.sourceforge.net/vaspkit/vaspkit.1.4.0.linux.x64.tar.gz')
-sha1sums=(5f4a917e319e12238c5b662e71c194e52e49653b)
+source=('https://downloads.sourceforge.net/vaspkit/vaspkit.1.5.1.linux.x64.tar.gz')
+sha1sums=(cd580116464e0b26b2e36f83aa4f26404ddfe8f3)
 
 package(){
   install -d "${pkgdir}/usr/bin/${_swname}"
@@ -17,7 +17,7 @@ package(){
   cp -r "${srcdir}/${_swname}/"*  "${pkgdir}/usr/bin/${_swname}" -R
   cd "${pkgdir}/usr/bin/${_swname}"
   if [[ ! -e ~/.vaspkit ]]; then
-   cp how_to_set_environment_variable ~/.vaspkit
+   cp "${srcdir}/${_swname}/how_to_set_environment_variables" ~/.vaspkit
    echo "| The ~/.vaspkit file for vaspkit code has been added.                   |"
    echo "| Please modify ~/.vaspkit based on your account settings!               |"
   else
