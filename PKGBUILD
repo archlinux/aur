@@ -44,13 +44,10 @@ _use_current=
 ### Running with a 1000 HZ tick rate
 _1k_HZ_ticks=
 
-# Disable debug to lower the size of the kernel
-_disable_debug=y
-
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20240223.r0.g33e1d31873f8
+pkgver=20240226.r0.g8552c902efe7
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -146,25 +143,6 @@ prepare() {
                            -d NEED_MULTIPLE_NODES \
                            -d NUMA_BALANCING \
                            -d NUMA_BALANCING_DEFAULT_ENABLED
-        fi
-
-    ### Disable DEBUG
-        if [ -n "$_disable_debug" ]; then
-            echo "Disabling DEBUG kernel config..."
-            scripts/config -d DEBUG_INFO \
-                           -d DEBUG_INFO_BTF \
-                           -d DEBUG_INFO_DWARF4 \
-                           -d DEBUG_INFO_DWARF5 \
-                           -d PAHOLE_HAS_SPLIT_BTF \
-                           -d DEBUG_INFO_BTF_MODULES \
-                           -d SLUB_DEBUG \
-                           -d PM_DEBUG \
-                           -d PM_ADVANCED_DEBUG \
-                           -d PM_SLEEP_DEBUG \
-                           -d ACPI_DEBUG \
-                           -d SCHED_DEBUG \
-                           -d LATENCYTOP \
-                           -d DEBUG_PREEMP
         fi
 
     ### Optionally load needed modules for the make localmodconfig
