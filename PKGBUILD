@@ -2,38 +2,22 @@
 _pkgname=iron
 pkgname="srware-${_pkgname}-bin"
 pkgver=120.0.6100.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SRWare Iron Browser is a light-weight browser,based on Chromium"
 arch=(
     "aarch64"
     "x86_64"
 )
 url="https://www.srware.net"
-license=('GPL2')
+license=('GPL-2.0-only')
 conflicts=("${pkgname%-bin}")
-provides=("SRWare")
+provides=("${_pkgname}")
 depends=(
     'gtk2'
     'alsa-lib'
     'qt5-base'
     'nss'
-    'at-spi2-core'
-    'libx11'
-    'libxcb'
-    'libxfixes'
-    'cairo'
-    'libxcomposite'
-    'libdrm'
-    'libxext'
-    'libxdamage'
-    'gdk-pixbuf2'
-    'pango'
     'nspr'
-    'mesa'
-    'libxrandr'
-    'libcups'
-    'libxkbcommon'
-    'expat'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/downloads/${_pkgname}arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/downloads/${_pkgname}64.deb")
@@ -44,7 +28,7 @@ sha256sums=('a29953afc386e2a9a95906cfa0de4bf58a332260d7199a5f99d3e15db9381022')
 sha256sums_aarch64=('ee23a9f6d580ca71cbd655bac05272cf75ed9a24701908acbf4e38edffd9c013')
 sha256sums_x86_64=('0f8ba0b02022af1d3f7e8e26fbda1c0da2d0647d5abdfbe80816a1c6a1ac49f6')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/usr/share/${_pkgname}/chrome-wrapper|${pkgname%-bin}|g;s|${_pkgname}_product_logo|${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
     sed "s|/usr/share/${_pkgname}/IronConfigBackup|${pkgname%-bin}-configbackup|g;s|${_pkgname}_product_logo|${pkgname%-bin}|g" \
