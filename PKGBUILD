@@ -2,8 +2,8 @@
 # Contributor: Yann Büchau <nobodyinperson@posteo.de>
 
 pkgname=hledger-utils
-pkgver=1.13.2
-pkgrel=2
+pkgver=1.14.0
+pkgrel=1
 pkgdesc='Utilities extending the hledger plaintextaccounting tool'
 arch=(any)
 url="https://gitlab.com/nobodyinperson/$pkgname"
@@ -24,7 +24,7 @@ makedepends=(python-{build,installer,wheel}
              python-setuptools-scm)
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('646bae1537383f1c5946323beca8be48616dcadd641acce36f1bbc95107ad548')
+sha256sums=('d4fcd345ccae05ef62d3d21337cd6173af9ef3d919ffd9e7650a10ba31392486')
 
 build () {
 	cd "$_archive"
