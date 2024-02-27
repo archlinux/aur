@@ -1,0 +1,25 @@
+pkgbase = wayland-asan-git
+	pkgdesc = A computer display server protocol (git version, with address sanitizer)
+	pkgver = 1.22.0.r54.g47de872
+	pkgrel = 1
+	url = https://wayland.freedesktop.org/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = libxslt
+	makedepends = doxygen
+	makedepends = xmlto
+	makedepends = graphviz
+	makedepends = docbook-xsl
+	depends = glibc
+	depends = libffi
+	depends = expat
+	depends = libxml2
+	source = git+https://gitlab.freedesktop.org/wayland/wayland.git
+	sha256sums = SKIP
+
+pkgname = wayland-asan-git
+	provides = wayland-asan=1.22.0.r54.g47de872
+	conflicts = wayland
