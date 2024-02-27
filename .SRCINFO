@@ -1,19 +1,23 @@
 pkgbase = angie-mod-modsecurity
 	pkgdesc = ModSecurity v3 Nginx Connector (module for angie)
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SpiderLabs/ModSecurity-nginx
+	install = angie-mod-modsecurity.install
 	arch = x86_64
 	license = GPL3
 	makedepends = angie-src
 	depends = angie
 	depends = libmodsecurity
+	backup = etc/nginx/modsecurity.conf
 	source = https://github.com/SpiderLabs/ModSecurity-nginx/releases/download/v1.0.3/modsecurity-nginx-v1.0.3.tar.gz
 	source = https://github.com/SpiderLabs/ModSecurity-nginx/releases/download/v1.0.3/modsecurity-nginx-v1.0.3.tar.gz.asc
+	source = https://raw.githubusercontent.com/owasp-modsecurity/ModSecurity/v3/master/modsecurity.conf-recommended
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
 	validpgpkeys = 190EFACCA1E9FA466A8ECD9CE6DFB08CE8B11277
 	validpgpkeys = F126692E9BA86B3958E73ED2F2FC4E45883BCBA4
 	sha256sums = ae811c7208ac029cb7a99d6f63e03d3971797607517187f47620df39c1f78add
 	sha256sums = SKIP
+	sha256sums = d9e164c508218202eba13d37cf661baacb8600706e618ce93ccc91c74c51449e
 
 pkgname = angie-mod-modsecurity

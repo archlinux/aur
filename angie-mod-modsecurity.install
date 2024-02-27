@@ -1,0 +1,11 @@
+post_install() {
+echo -n "
+Now you need to change your /etc/nginx/nginx.conf like:
+
+load_module /usr/lib/nginx/modules/ngx_http_modsecurity_module.so;
+http {
+    modsecurity on;
+    modsecurity_rules_file /etc/nginx/modsecurity.conf;
+    }
+"
+}
