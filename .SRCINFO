@@ -1,0 +1,15 @@
+pkgbase = syncthingctl-bin
+	pkgdesc = CLI application for Syncthing without Syncthingtray - binary
+	pkgver = 1.4.13
+	pkgrel = 1
+	url = https://github.com/Martchus/syncthingtray
+	arch = x86_64
+	license = GPL
+	provides = syncthingctl
+	conflicts = syncthingctl
+	source = https://github.com/Martchus/syncthingtray/releases/download/v1.4.13/syncthingctl-1.4.13-x86_64-pc-linux-gnu.tar.xz
+	source = https://raw.githubusercontent.com/Martchus/syncthingtray/master/LICENSE
+	sha512sums = 8ab3ff383ae7737dd8ed3e6eaa4a3f18f03c28e2244bcc2e0fe7e7b9d8b5f5950cef4a56f91ef55a97d61e909f16ebe1fa3ba9b6dd023423bb0745a8921fb68e
+	sha512sums = 5aef077e354d83b47c06ec311a9fcfbabaa95bd1016084cacda7078f96c5f9f0f7db0204592890b5e12677e5a1ca7f87208e6879d09afce19dd353884f0ab042
+
+pkgname = syncthingctl-bin
