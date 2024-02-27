@@ -16,6 +16,7 @@ pkgbase = xwm-git
 	makedepends = sed
 	makedepends = pkgconf
 	depends = cairo
+	depends = bash
 	depends = glib2
 	depends = glibc
 	depends = fribidi

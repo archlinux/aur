@@ -17,6 +17,7 @@ conflicts=(${pkgname%-git})
 replaces=()
 depends=(
     cairo
+    bash
     glib2
     glibc
     fribidi
