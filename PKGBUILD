@@ -1,5 +1,4 @@
 # Maintainer: That One Seong <ThatOneSeong@protonmail.com>
-# Contributor: Parker Reed <parker.l.reed@gmail.com>
 
 _name=QMamehook
 pkgname=qmamehook
