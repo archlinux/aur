@@ -50,7 +50,7 @@ optdepends=(
     'jupyter-server: For Jupyter notebooks and apps'
 )
             
-if [[ "${CARCH}" == "x86_64" ]]; then
+if [[ "${CARCH}" == "x86_64" ]] ||  [[ "${CARCH}" == "x86_64_v3" ]] ; then
     install=pycharm-professional_x86_64.install
 elif [ "${CARCH}" == "aarch64" ]; then
     install=pycharm-professional_aarch64.install
