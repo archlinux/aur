@@ -2,7 +2,7 @@
 pkgname=fcitx5-skin-fluentlight-git
 _pkgname=fcitx5-skin-fluentlight-git
 pkgver=v0.4.r2.g4a65a9b
-pkgrel=1
+pkgrel=2
 pkgdesc="A Fluent-Design light theme with blur effect and shadow."
 arch=('x86_64')
 url="https://github.com/Reverier-Xu/Fluent-fcitx5"
@@ -12,7 +12,7 @@ makedepends=()
 provides=()
 source=('git+https://github.com/Reverier-Xu/Fluent-fcitx5.git')
 md5sums=('SKIP')
-_name=FluentLight-fcitx5
+_name=Fluent-fcitx5
 prepare() {
   cd $_name
 }
