@@ -1,17 +1,18 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=clamav-desktop-bin
+_appname=clamav
+pkgname="${_appname}-desktop-bin"
 _pkgname="ClamAV Desktop"
 pkgver=0.3.24
 _electronversion=17
-pkgrel=3
+pkgrel=4
 pkgdesc="Cross-platform Desktop GUI for ClamAV antivirus."
 arch=('x86_64')
 url="https://github.com/ivangabriele/clamav-desktop"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    'clamav'
+    "${_appname}"
     "electron${_electronversion}"
 )
 makedepends=(
@@ -22,13 +23,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c1bc5128d3c1c678347418ef195a81197e53af05157cb57d247f9f396078d568'
-            '8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     rm -rf "${srcdir}/app.asar.unpacked/packages/main/dist/vendor/"*.exe
     sed -e "s|C:/Program Files/ClamAV/clamd.exe|/usr/bin/clamd|g" -e "s|clamd.exe|clamd|g" \

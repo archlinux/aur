@@ -1,10 +1,10 @@
 pkgbase = clamav-desktop-bin
 	pkgdesc = Cross-platform Desktop GUI for ClamAV antivirus.
 	pkgver = 0.3.24
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ivangabriele/clamav-desktop
 	arch = x86_64
-	license = AGPL3
+	license = AGPL-3.0-only
 	makedepends = asar
 	depends = clamav
 	depends = electron17
@@ -13,6 +13,6 @@ pkgbase = clamav-desktop-bin
 	source = clamav-desktop-0.3.24.deb::https://github.com/ivangabriele/clamav-desktop/releases/download/v0.3.24/clamav-desktop-0.3.24.linux.amd64.deb
 	source = clamav-desktop.sh
 	sha256sums = c1bc5128d3c1c678347418ef195a81197e53af05157cb57d247f9f396078d568
-	sha256sums = 8915ca75d453698df81f7f3305cce6869f4261d754d90f0c3724b73c7b24ca84
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = clamav-desktop-bin
