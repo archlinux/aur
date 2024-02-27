@@ -1,10 +1,10 @@
 pkgbase = raw2ometiff
 	pkgdesc = Raw format to OME-TIFF converter
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/glencoesoftware/raw2ometiff
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = gradle
 	makedepends = java-environment
