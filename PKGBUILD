@@ -3,7 +3,7 @@
 
 pkgname=edrawproject-cn
 _pkgname=EdrawProj-3
-pkgver=3.3.1
+pkgver=3.4.0
 pkgrel=0
 arch=('x86_64')
 options=(!strip)
@@ -12,7 +12,7 @@ pkgdesc="可用于甘特图绘制、项目计划、资源分配和预算管理�
 license=('Commercial')
 url="https://www.edrawsoft.cn/edrawproject/"
 source_x86_64=("${pkgname}_${pkgver}.deb::https://cc-download.edrawsoft.cn/archives/edrawproject_cn_full5376.deb")
-sha256sums_x86_64=('e332ac6bb3e78a35884158eeec76f29a2620eefb9972427c6a67cf26233e316a')
+sha256sums_x86_64=('2eaee3a80d2c89be5c9abd72ca647d1586c6e91277aca7e91e8a635c62e0e8bb')
 
 prepare() {
 #     ar -x *.deb
