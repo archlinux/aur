@@ -86,7 +86,7 @@ sha256sums=(
 )
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${_pkgname}"
   (git describe --always --tags | tr "-" ".")
 }
 
