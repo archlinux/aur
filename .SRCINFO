@@ -1,7 +1,7 @@
 pkgbase = whalebird
 	pkgdesc = Single-column Fediverse client for desktop
-	pkgver = 6.0.1
-	pkgrel = 3
+	pkgver = 6.0.2
+	pkgrel = 1
 	url = https://whalebird.social
 	arch = x86_64
 	license = GPL3
@@ -10,15 +10,15 @@ pkgbase = whalebird
 	makedepends = nodejs>=20.0.0
 	makedepends = node-gyp
 	makedepends = git
-	depends = electron26>=26.0.0
-	depends = electron26<27.0.0
+	depends = electron27>=27.0.0
+	depends = electron27<28.0.0
 	provides = whalebird
 	conflicts = whalebird-bin
 	conflicts = whalebird-desktop-git
-	source = https://github.com/h3poteto/whalebird-desktop/archive/refs/tags/v6.0.1.tar.gz
+	source = https://github.com/h3poteto/whalebird-desktop/archive/refs/tags/v6.0.2.tar.gz
 	source = whalebird.desktop
 	source = electron-builder.yml
-	md5sums = 87d9cc5bb55ee228ce8b03b5a56f4770
+	md5sums = 1d9225abd69991292711f6dcf02bde65
 	md5sums = 6ab525c54c6e91871d0d6f05a76f5289
 	md5sums = 480286196dc0614fd14b0d906c00b228
 
