@@ -1,7 +1,7 @@
 pkgbase = lib32-qt3
 	pkgdesc = A cross-platform application and UI framework
 	pkgver = 3.3.8b
-	pkgrel = 19
+	pkgrel = 20
 	epoch = 1
 	url = http://qt.io
 	arch = i686
@@ -25,7 +25,6 @@ pkgbase = lib32-qt3
 	depends = lib32-libnsl
 	depends = lib32-libtirpc
 	depends = lib32-libxi
-	optdepends = qtchooser: set the default Qt toolkit
 	optdepends = unixodbc: ODBC driver
 	options = !docs
 	source = https://download.qt.io/archive/qt/3/qt-x11-free-3.3.8b.tar.gz
