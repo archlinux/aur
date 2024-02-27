@@ -4,12 +4,12 @@
 pkgname=spotiflyer-bin
 _pkgname=SpotiFlyer
 pkgver=3.6.3
-pkgrel=6
+pkgrel=7
 pkgdesc="Kotlin Multiplatform Music Downloader, Supports Spotify / Gaana / Youtube Music / Jio Saavn / SoundCloud."
 arch=('x86_64')
 url="https://soundbound.shabinder.in/install"
 _ghurl="https://github.com/Shabinder/SpotiFlyer"
-license=('GPL3')
+license=('GPL-3.0-only')
 conflicts=("${pkgname%-bin}")
 depends=(
     'alsa-lib'
@@ -32,7 +32,7 @@ build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${pkgname%-bin}/bin/${_pkgname}|${pkgname%-bin}|g;s|/opt/${pkgname%-bin}/lib/${_pkgname}.png|${pkgname%-bin}|g;s|Unknown|AudioVideo;|g" \
         -i "${srcdir}/opt/${pkgname%-bin}/lib/${pkgname%-bin}-${_pkgname}.desktop"
 }
