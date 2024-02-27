@@ -1,20 +1,23 @@
 pkgbase = python-torchtext
 	pkgdesc = Data loaders and abstractions for text and NLP
-	pkgver = 0.17.0
+	pkgver = 0.17.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/pytorch/text
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = cmake
 	makedepends = git
-	makedepends = ninja
 	makedepends = numactl
+	makedepends = patchelf
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-sympy
 	makedepends = python-wheel
+	depends = glibc
+	depends = gcc-libs
+	depends = python-filelock
 	depends = python-numpy
 	depends = python-pytorch
 	depends = python-requests
@@ -23,7 +26,9 @@ pkgbase = python-torchtext
 	optdepends = python-revtok
 	optdepends = python-sacremoses: Moses tokenizer port in SacreMoses
 	optdepends = python-spacy: English tokenizer from SpaCy
-	source = text::git+https://github.com/pytorch/text.git#tag=v0.17.0
+	source = text::git+https://github.com/pytorch/text.git#tag=v0.17.1
+	source = 0001-add-GLOG_USE_GLOG_EXPORT-definition.patch
 	sha512sums = SKIP
+	sha512sums = 8d5faf99d3e82039ebf0daffb1f15e5e6195141a79e1809006d75597bd322bfd6495ae63d4396dbe9ec7a007b0986bf92e66b87cf2f4e062f5732d3675343b5f
 
 pkgname = python-torchtext
