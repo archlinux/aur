@@ -2,7 +2,7 @@
 pkgname=cloudflarespeedtest-bin
 _appname=CloudflareST
 pkgver=2.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="自选优选IP测试Cloudflare CDN延迟和速度,获取最快IP(IPv4/IPv6)!另外也支持其他CDN/网站 IP"
 arch=(
     'aarch64'
@@ -11,7 +11,7 @@ arch=(
     'x86_64'
 )
 url="https://github.com/XIU2/CloudflareSpeedTest"
-license=("GPL3")
+license=("GPL-3.0-only")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=()
