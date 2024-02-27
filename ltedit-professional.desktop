@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
 Name=Pycharm Light Edit
-Icon=pycharm
-Exec=ltedit %f
+Icon=pycharm-professional
+Exec=/usr/bin/ltedit-professional %f
 MimeType=text/x-python;application/x-ipynb+json
 NoDisplay=true
 Terminal=false

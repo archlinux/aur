@@ -1,9 +1,9 @@
 [Desktop Entry]
 Type=Application
 Name=PyCharm Professional Edition
-Icon=pycharm
+Icon=pycharm-professional
 Comment=Python IDE for Professional Developers.
-Exec=pycharm %f
+Exec=/usr/bin/pycharm-professional %f
 Terminal=false
 Categories=Development;IDE;Python;
 StartupNotify=true
