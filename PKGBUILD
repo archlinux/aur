@@ -36,5 +36,5 @@ package_wayland-asan-git() {
     DESTDIR="$pkgdir" ninja -C build install
     mkdir -p docs/share
     mv "${pkgdir}/usr/share/"{doc,man} docs/share
-    install -D -m644 wayland/COPYING "$p{kgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 wayland/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
