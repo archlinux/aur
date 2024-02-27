@@ -1,7 +1,7 @@
 pkgbase = gorss
 	pkgdesc = Go Terminal Feed Reader
 	pkgver = 0.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Lallassu/gorss
 	arch = x86_64
 	license = MIT
