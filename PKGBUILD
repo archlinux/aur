@@ -109,7 +109,7 @@ build() {
     -D           b_pie=true \
     -D           b_sanitize=address \
     -D           default_library=shared \
-    -D           xwayland=enabled 
+    -D           xwayland=enabled
 
   meson compile -C build
 }
