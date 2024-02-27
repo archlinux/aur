@@ -10,7 +10,11 @@ provides=(potctl potd potui)
 makedepends=(ncurses)
 arch=('x86_64')
 license=('GPL3')
-optdepends=('libnotify: sending notifications on event')
+optdepends=(
+  'libnotify: sending notifications on event'
+  # AUR
+  'herbe: sending notifications on event'
+)
 
 source=(
   "${pkgname}.tar.gz::https://github.com/nimaaskarian/${_gitname}/archive/refs/tags/${pkgver}.zip"
