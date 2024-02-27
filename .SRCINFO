@@ -11,6 +11,6 @@ pkgbase = super-mario-bros
 	source = com.nintendo.SuperMarioBros.png::https://upload.wikimedia.org/wikipedia/en/0/03/Super_Mario_Bros._box.png
 	sha256sums = f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de
 	sha256sums = e021676ce1a72920536fad3733b4d5beb703f27da88f3418a517c675f0572a24
-	sha256sums = 3ac6338d2c974c39b0a5b0df450bb46d55af336ad719b237fcb61a0b2309f4a1
+	sha256sums = a12e6080d1395c195af0a56197f434b15885ba3cab9a488c51acd1b0ef598a8c
 
 pkgname = super-mario-bros
