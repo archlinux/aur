@@ -2,7 +2,7 @@
 
 pkgname=cromite-bin
 pkgver=122.0.6261.64
-pkgrel=1
+pkgrel=2
 _cromite_commit='26d88dcdf588ee60b5ba96d512cbfec525fb3d66'
 _launcher_ver=8
 pkgdesc='Cromite a Bromite fork with ad blocking and privacy enhancements (binary release)'
@@ -49,17 +49,23 @@ package() {
 
 	cd ../chrome-lin
 
+	strip --strip-unneeded chrome
 	install -D chrome "$pkgdir/usr/lib/cromite/cromite"
 
 	local toplevel_files=(
 		chrome_100_percent.pak
 		chrome_200_percent.pak
-		chrome_crashpad_handler
-		libqt5_shim.so
-		libqt6_shim.so
 		resources.pak
 		snapshot_blob.bin
 		icudtl.dat
+	)
+
+	local toplevel_binaries=(
+		chrome_crashpad_handler
+
+		# LibQt
+		libqt5_shim.so
+		libqt6_shim.so
 
 		# ANGLE
 		libEGL.so
@@ -71,6 +77,9 @@ package() {
 		# SwiftShader ICD
 		libvk_swiftshader.so
 	)
+
+	strip --strip-unneeded "${toplevel_binaries[@]/#/}"
+	cp -a "${toplevel_binaries[@]/#/}" "$pkgdir/usr/lib/cromite/"
 
 	cp -a "${toplevel_files[@]/#/}" "$pkgdir/usr/lib/cromite/"
 	install -Dm644 -t "$pkgdir/usr/lib/cromite/locales" locales/*.pak
