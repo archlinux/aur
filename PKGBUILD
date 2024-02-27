@@ -4,7 +4,7 @@
 
 pkgname=vcluster
 pkgdesc='Create fully functional virtual Kubernetes clusters'
-pkgver=0.19.1
+pkgver=0.19.2
 pkgrel=1
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="https://vcluster.com"
@@ -63,5 +63,5 @@ package() {
 }
 
 sha256sums=(
-    aecae67010bdd6e7503ae7947d693f0febd4ed0a392509fa0d73f6231580c8ad
+    c8aa2b662e35a317c0b15a8c4f3409116a7b958493f849d9b7b897598c0e59e1
 )
