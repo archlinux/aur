@@ -2,13 +2,16 @@
 
 pkgname=libbtc-git
 _pkgname=libbtc
-_commit=07933995e
-pkgver=0.1
+pkgver=0.1.07933995e
 pkgrel=1
 pkgdesc='Tiny Bitcoin Library written in C with bitcointool CLI tool'
 url='https://github.com/libbtc/libbtc'
 arch=('x86_64')
 license=('MIT')
+makedepends=('git')
+depends=('glibc' 'libevent')
+provides=('libbtc')
+conflicts=('libbtc')
 source=("git+$url.git"
         "https://raw.githubusercontent.com/jahway603/libbtc/master/LICENSE")
 sha256sums=('SKIP'
@@ -16,8 +19,6 @@ sha256sums=('SKIP'
 
 build() {
   cd ${_pkgname}
-  git checkout ${_commit}
-  echo "this will take some time so be patient..."
   echo "starting autogen..."
   ./autogen.sh
   echo "starting configure..."
