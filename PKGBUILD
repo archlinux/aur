@@ -12,7 +12,7 @@ makedepends=()
 provides=()
 source=('git+https://github.com/Reverier-Xu/Fluent-fcitx5.git')
 md5sums=('SKIP')
-_name=FluentDark-fcitx5
+_name=Fluent-fcitx5
 prepare() {
   cd $_name
 }
