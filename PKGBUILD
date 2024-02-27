@@ -3,10 +3,10 @@
 pkgname=play-in-mpv
 _pkgname="${pkgname//-/}"
 pkgver=1.0.4
-pkgrel=5
+pkgrel=6
 pkgdesc='Play Bilibili video in mpv player.'
 arch=('x86_64')
-license=('unknown')
+license=('LicenseRef-unknown')
 url='https://github.com/diannaojiang/Bilibili-Playin-Mpv'
 provides=("${pkgname}=${pkgver}")
 conflicts=(
@@ -29,7 +29,7 @@ source=(
 )
 sha256sums=('681505428d5703f91c414dfd8e6aab45221c96e072853bdfece6eaafa4f7b461')
 build() {
-	gendesk -q -f -n --categories "AudioVideo" --name "${_appname}" --exec "${pkgname}"
+	gendesk -q -f -n --categories="AudioVideo" --name="${pkgname}" --exec="${pkgname} %U" --mimetypes="x-scheme-handler/mpv;"
 }
 package() {
 	install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
