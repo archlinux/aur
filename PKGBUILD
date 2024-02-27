@@ -3,13 +3,13 @@
 
 pkgname=qtrans
 pkgver=0.3.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc='QTrans is a word translator for Qt5/KF5. It uses Babylon (*.dic) dictionaries and translates many languages.'
 arch=('i686' 'x86_64')
 #url='https://www.opendesktop.org/s/Apps/p/1127419/'
 url="https://www.linux-apps.com/p/1127419/"
 license=('GPL')
-depends=('qt5-base' 'kconfig' 'ki18n' 'ktextwidgets' 'qt5-webkit' 'kcoreaddons' 'python' 'kxmlgui' 'kwidgetsaddons' 'zlib' 'hicolor-icon-theme' 'extra-cmake-modules')
+depends=('qt5-base' 'kconfig5' 'ki18n5' 'ktextwidgets5' 'qt5-webkit' 'kcoreaddons5' 'python' 'kxmlgui5' 'kwidgetsaddons5' 'zlib' 'hicolor-icon-theme' 'extra-cmake-modules')
 #depends=('qt5-webkit' 'kxmlgui' 'hicolor-icon-theme')
 #optdepends=('')
 makedepends=('git')
