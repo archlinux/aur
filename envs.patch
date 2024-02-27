@@ -6,7 +6,7 @@ index e1f43ad0..ef2b74be 100644
      setenv("_JAVA_AWT_WM_NONREPARENTING", "1", 1);
      setenv("MOZ_ENABLE_WAYLAND", "1", 1);
      setenv("XDG_CURRENT_DESKTOP", "Hyprland", 1);
-+    setenv("ASAN_OPTIONS", "detect_odr_violation=0", 1);
++    setenv("ASAN_OPTIONS", "detect_odr_violation=0,log_path=asan.log", 1);
 +    setenv("LD_PRELOAD", "/usr/lib/libasan.so.8.0.0", 1);
  
      // parse some args
