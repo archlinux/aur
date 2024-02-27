@@ -1,10 +1,10 @@
 pkgbase = python-openapi3
 	pkgdesc = A Python3 OpenAPI 3 Spec Parser
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/Dorthu/openapi3
 	arch = any
-	license = BSD3
+	license = BSD-3-Clause
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -12,7 +12,7 @@ pkgbase = python-openapi3
 	depends = python
 	depends = python-pyyaml
 	depends = python-requests
-	source = python-openapi3-1.8.1.tar.gz::https://github.com/Dorthu/openapi3/archive/refs/tags/1.8.1.tar.gz
-	sha512sums = 30e9ca405d36cefd68be4c8c9761e3e1d63c552e29fdfcefbec97646713631df656055e4dded9fdaf510140b1f4f731edecee8ef45a0092e0644a2701fda0872
+	source = python-openapi3-1.8.2.tar.gz::https://github.com/Dorthu/openapi3/archive/refs/tags/1.8.2.tar.gz
+	sha512sums = 5555ef0495f7d459fabef98c56da4b1b9d758aa06c4dc83adf1388c044dd0f6b09b933e105ef8665737359fbf98b9699ca2d7127ead2aa86e3f99682b29dbf1e
 
 pkgname = python-openapi3
