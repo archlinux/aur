@@ -1,10 +1,11 @@
 pkgbase = arrpc
 	pkgdesc = Open Discord RPC server for atypical setups
 	pkgver = 3.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://arrpc.openasar.dev/
 	install = arrpc.install
 	arch = x86_64
+	arch = x86_64_v3
 	license = MIT
 	makedepends = npm
 	makedepends = git

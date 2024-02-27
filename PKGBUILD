@@ -3,9 +3,9 @@
 pkgname=arrpc
 pkgver=3.3.0
 _commit='c6e23e7eb733ad396d3eebc328404cc656fed581'
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Discord RPC server for atypical setups"
-arch=("x86_64")
+arch=('x86_64' 'x86_64_v3')
 url="https://arrpc.openasar.dev/"
 license=('MIT')
 depends=("glibc" "gcc-libs")
