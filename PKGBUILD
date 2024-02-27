@@ -1,21 +1,15 @@
 # Maintainer: rilian-la-te <ria.freelander@gmail.com>
 
-_opts=(
-	-DCMAKE_INSTALL_PREFIX=/usr
-	-DCMAKE_INSTALL_LIBDIR=lib
-	-DCMAKE_INSTALL_LIBEXECDIR=lib
-)
-
 makedepends=('meson' 'gtk3' 'gtk2' 'git')
 
 _pkgbase=vala-panel-appmenu
 pkgname=appmenu-gtk-module-git
 _path=subprojects/appmenu-gtk-module
-pkgver=0.7.3.2
+pkgver=24.02
 pkgrel=1
 pkgdesc="Gtk module for exporting menus"
 depends=('gtk3' 'gtk2')
-provides=(unity-gtk-module)
+provides=(appmenu-gtk-module)
 conflicts=(appmenu-gtk-module)
 url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
 arch=('i686' 'x86_64')

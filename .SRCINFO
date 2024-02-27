@@ -1,6 +1,6 @@
 pkgbase = appmenu-gtk-module-git
 	pkgdesc = Gtk module for exporting menus
-	pkgver = 0.7.3.2
+	pkgver = 24.02
 	pkgrel = 1
 	url = https://gitlab.com/vala-panel-project/vala-panel-appmenu
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = appmenu-gtk-module-git
 	makedepends = git
 	depends = gtk3
 	depends = gtk2
-	provides = unity-gtk-module
+	provides = appmenu-gtk-module
 	conflicts = appmenu-gtk-module
 	source = git+https://gitlab.com/vala-panel-project/vala-panel-appmenu.git
 	source = 80appmenu-gtk-module
@@ -20,4 +20,3 @@ pkgbase = appmenu-gtk-module-git
 	sha256sums = 4c006c4ea7b8556070ad6d35529d3a9e23da8033429e34d1824c25942d969fbc
 
 pkgname = appmenu-gtk-module-git
-
