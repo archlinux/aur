@@ -5,7 +5,7 @@
 _pkgname=scala
 pkgbase=scala_2.12
 pkgname=(scala_2.12 scala-docs_2.12 scala-sources_2.12)
-pkgver=2.12.18
+pkgver=2.12.19
 pkgrel=1
 _watch="https://github.com/scala/scala/releases"
 _distdate=20181127-085200
@@ -19,8 +19,8 @@ conflicts=('scala' 'scala-docs' 'scala-sources' 'java-environment<8')
 makedepends=('git' 'sbt')
 source=("scala-${pkgver}.tar.gz::https://github.com/scala/scala/archive/v${pkgver}.tar.gz"
         "scala-docs-${pkgver}.tar.xz::https://www.scala-lang.org/files/archive/scala-docs-${pkgver}.txz")
-sha512sums=('26e424ae2350502f40899bc812200a943492c5cfa7c6f7252912d853db1986ed1b48a0337f78ba4061b7ec69ba2899b690af65fbd66773b3e0a9d685203c35b5'
-            '3d434c9a1782df29163d8c8119bf7f0250723d034a01f2b2ea9c396683a4a0c69a5e93950248145d26a234e01fbf6a77f0ded7061e6068ce0f71c0069093165d')
+sha512sums=('c45ee53a1a9c53b387075b3bf4981387ca5690ade91f22662dce6596fef57da24506c9c907cc4d589f3acbf25f566cbbe5495831b1687ba04cfbce7b311f7fe2'
+            '4af76d8761dfb7084b419cafbc11be7b155d82f1660aa6ed431e6ef8e5bd721bb05ba04eb8c9f3a6825ea9a202894ac777de3eb0a5b73e8e2f6d9eeab5ebc1dc')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
