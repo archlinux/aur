@@ -1,21 +1,17 @@
 pkgbase = tess-bin
 	pkgdesc = A hackable, simple, rapid and beautiful terminal for the new era of technology.
 	pkgver = 0.7_alpha.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tessapp.dev/discord
 	arch = i686
 	arch = x86_64
-	license = MPL2
+	license = MPL-2.0
 	makedepends = gendesk
-	depends = cairo
 	depends = webkit2gtk
-	depends = gdk-pixbuf2
 	depends = gtk3
 	provides = tess=0.7_alpha.8
 	conflicts = tess
-	source = LICENSE-0.7_alpha.8::https://raw.githubusercontent.com/SquitchYT/tess/main/LICENSE
 	source = tess.png::https://raw.githubusercontent.com/SquitchYT/Tess/0.7-alpha.8/src-tauri/icons/icon.png
-	sha256sums = 1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5
 	sha256sums = 1f08c8a32224226bd1223669faac8f72619cee0375f0449130f8f382e9d64079
 	source_i686 = tess-0.7_alpha.8-i686::https://github.com/SquitchYT/Tess/releases/download/0.7-alpha.8/tess-i686-unknown-linux-gnu
 	sha256sums_i686 = 036ca159ba51cb32068f2c8d6222b7ac16d55a8f106e3237b96a202b296166a6
