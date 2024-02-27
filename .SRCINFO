@@ -1,0 +1,13 @@
+pkgbase = plymouth-theme-framework-git
+	pkgdesc = Plymouth theme with animated Framework logo
+	pkgver = r2.b801f5b
+	pkgrel = 1
+	url = https://git.sr.ht/~jameskupke/framework-plymouth-theme
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = plymouth
+	source = git+https://git.sr.ht/~jameskupke/framework-plymouth-theme
+	sha256sums = SKIP
+
+pkgname = plymouth-theme-framework-git
