@@ -6,8 +6,8 @@
 _pkgname=input-leap-inputcapture
 pkgbase=$_pkgname
 pkgname=($_pkgname-headless $_pkgname)
-pkgver=2.4.0+677+gc5bb9dca
-pkgrel=3
+pkgver=2.4.0+839+g6b9ff9cf
+pkgrel=1
 pkgdesc="Open-source KVM software"
 arch=(x86_64)
 url="https://github.com/input-leap/input-leap"
@@ -30,6 +30,7 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
+  git revert 650ce407d974baf856b9a1a1298c3c6252b33e93
   git submodule init
   git config submodule.ext/gulrak-filesystem.url "$srcdir"/gulrak-filesystem
   git -c protocol.file.allow=always submodule update ext/gulrak-filesystem
@@ -93,3 +94,4 @@ package_input-leap-inputcapture() {
     rm -rv "${pkgdir}/${file}"
   done
 }
+
