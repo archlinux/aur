@@ -1,6 +1,6 @@
 pkgbase = apifox-bin
 	pkgdesc = Apifox=Postman+Swagger+Mock+JMeter.API 文档、API 调试、API Mock、API 自动化测试
-	pkgver = 2.5.3
+	pkgver = 2.5.7
 	pkgrel = 1
 	url = https://apifox.com/
 	arch = aarch64
@@ -10,18 +10,16 @@ pkgbase = apifox-bin
 	depends = hicolor-icon-theme
 	depends = java-runtime
 	depends = nodejs
-	depends = lib32-glibc
-	depends = lib32-gcc-libs
-	provides = apifox=2.5.3
+	provides = apifox=2.5.7
 	conflicts = apifox
 	options = !strip
 	source = LICENSE.html
 	source = apifox.sh
 	sha256sums = 3884df6451dd5aaadc867c2b6882a7feabccb10c7e1df98e48e9fe2414c9fe19
 	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
-	source_aarch64 = apifox-2.5.3-aarch64.zip::https://cdn.apifox.cn/download/Apifox-linux-arm64-deb-latest.zip
-	sha256sums_aarch64 = bfedd899ae5776f044af046ea978f851aada1e4082d396e7664569726f6108ee
-	source_x86_64 = apifox-2.5.3-x86_64.zip::https://cdn.apifox.cn/download/Apifox-linux-deb-latest.zip
-	sha256sums_x86_64 = c26d9439b813fc1472c016ab580fdb839ff6b803883cac9fe1751623c975c52a
+	source_aarch64 = apifox-2.5.7-aarch64.zip::https://cdn.apifox.cn/download/Apifox-linux-arm64-deb-latest.zip
+	sha256sums_aarch64 = 4417b3c9876c7d1a7e703016f20c2185f9e83b1bd69379df909de17702318482
+	source_x86_64 = apifox-2.5.7-x86_64.zip::https://cdn.apifox.cn/download/Apifox-linux-deb-latest.zip
+	sha256sums_x86_64 = f838e4d7d2f3218f9f9cb5ba23b510c8c5105772031e046d20447fd32c6c4298
 
 pkgname = apifox-bin
