@@ -1,7 +1,7 @@
 # Maintainer: Tobias Borgert <tobias (dot) borgert (at) gmail (dot) com>
 
 pkgname=vsomeip
-pkgver=3.3.0
+pkgver=3.4.10
 pkgrel=1
 pkgdesc="An implementation of Scalable service-Oriented MiddlewarE over IP"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('boost')
 makedepends=('asciidoc' 'benchmark' 'cmake' 'doxygen' 'graphviz' 'source-highlight')
 optdepends=()
 source=("https://github.com/COVESA/vsomeip/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('233ef967d739840db99d8301e28fd4bea1d567077874dc03819c4b13fffb2eeb')
+sha256sums=('a7eacb5aab4ed9e4fc16cc37aab2fc1633ce8ca77e0d0665a76e34a4e6cd2639')
 
 prepare() {
     :
