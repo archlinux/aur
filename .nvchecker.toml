@@ -1,0 +1,5 @@
+[aur-out-of-date]
+source = "github"
+github = "simon04/aur-out-of-date"
+prefix = "v"
+use_max_tag = true
