@@ -1,13 +1,13 @@
 pkgbase = croodle-git
 	pkgdesc = a web application to schedule a date or to do a poll on a general topics
-	pkgver = r1302.93901c9
+	pkgver = r1526.01f1534
 	pkgrel = 1
 	url = https://github.com/jelhan/croodle
 	arch = any
 	license = MIT
 	makedepends = composer
 	makedepends = git
-	makedepends = nodejs-lts-hydrogen
+	makedepends = nodejs
 	makedepends = npm
 	depends = php
 	provides = croodle
