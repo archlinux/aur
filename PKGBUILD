@@ -1,9 +1,10 @@
 # Maintainer: Matt Taylor <64.delta@proton.me>
+# https://github.com/64/aur-packages for pull requests and issues.
 pkgname=mlibc
 pkgver=4.0.0_rc1
 pkgrel=2
 pkgdesc="A portable C standard library"
-arch=($CARCH)
+arch=('x86_64')
 url="https://github.com/managarm/mlibc"
 license=('MIT')
 groups=()
