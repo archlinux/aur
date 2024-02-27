@@ -25,10 +25,10 @@ check() {
 
 package_wayland-asan-git() {
     provides=(
-        "wayland=${pkgver}" 
-        "libwayland-client.so=0-64" 
-        "libwayland-cursor.so=0-64" 
-        "libwayland-egl.so=1-64" 
+        "wayland=${pkgver}"
+        "libwayland-client.so=0-64"
+        "libwayland-cursor.so=0-64"
+        "libwayland-egl.so=1-64"
         "libwayland-server.so=0-64"
     )
     conflicts=('wayland')
