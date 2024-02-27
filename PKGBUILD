@@ -1,129 +1,295 @@
 # Maintainer: Joan Figueras <ffigue at gmail>
+# Maintainer: xiota / aur.chaotic.cx
 # Contributor (Parabola): fauno <fauno@kiwwwi.com.ar>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
-# Contributor: xiota
+
+## useful links
+# https://www.gnu.org/software/gnuzilla/
+# https://git.savannah.gnu.org/cgit/gnuzilla.git
+#
+# https://icecatbrowser.org/
+# https://codeberg.org/chippy/gnuzilla
+# https://software.classictetris.net/icecat/last_version_check
 
 ## options
+: ${_build_prepatched:=false}
+: ${_build_save_source:=true}
+: ${_build_repatch:=false}
+
 : ${_build_pgo:=true}
 : ${_build_pgo_reuse:=true}
+: ${_build_pgo_xvfb:=true}
+
+if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ] || [ "${_build_prepatched::1}" != "t" ] ; then
+  : ${_autoupdate:=false}
+else
+  : ${_autoupdate:=true}
+fi
+
+unset _pkgtype
 
 ## basic info
-pkgname=icecat
-pkgver=115.7.0
-pkgrel=2
-_commit=dbe6da400cf4f28e5e893d0acb5022e23cf3afcf
-pkgdesc="GNU version of the Firefox browser."
-arch=(x86_64)
-license=(MPL-2.0)
-depends=(
-  dbus
-  ffmpeg
-  gtk3
-  libpulse
-  libxss
-  libxt
-  mime-types
-  nss
-  ttf-font
-)
-makedepends=(
-  cbindgen
-  clang
-  diffutils
-  imake
-  inetutils
-  jack
-  lld
-  llvm
-  mesa
-  nasm
-  nodejs
-  python
-  rust
-  unzip
-  wasi-compiler-rt
-  wasi-libc
-  wasi-libc++
-  wasi-libc++abi
-  xorg-server-xvfb
-  yasm
-  zip
-  mercurial
-  wget
-  python-jsonschema
-  dbus-glib
-)
-optdepends=(
-  'hunspell-en_US: Spell checking, American English'
-  'libnotify: Notification integration'
-  'networkmanager: Location detection via available WiFi networks'
-  'pulseaudio: Audio support'
-  'speech-dispatcher: Text-to-Speech'
-  'xdg-desktop-portal: Screensharing with Wayland'
-)
-options=(
-  !emptydirs
-  !lto
-  !makeflags
-)
+_pkgname="icecat"
+pkgname="$_pkgname${_pkgtype:-}"
+pkgver=115.8.0
+pkgrel=1
+pkgdesc="GNU version of the Firefox ESR browser"
+license=('MPL-2.0')
+arch=('x86_64')
 
-source=(https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-${_commit}.tar.gz
-        icecat.desktop icecat-safe.desktop)
+# main package
+_main_package() {
+  depends=(
+    dbus-glib
+    ffmpeg
+    gtk3
+    libevent
+    libjpeg
+    libpulse
+    libvpx.so
+    libwebp.so
+    libxss
+    libxt
+    mime-types
+    nspr
+    nss
+    pipewire
+    ttf-font
+    zlib
+  )
+  makedepends=(
+    cbindgen
+    clang
+    diffutils
+    dump_syms
+    imake
+    inetutils
+    jack
+    lld
+    llvm
+    mercurial
+    mesa
+    nasm
+    nodejs
+    python
+    rust
+    unzip
+    wasi-compiler-rt
+    wasi-libc
+    wasi-libc++
+    wasi-libc++abi
+    yasm
+    zip
+  )
+  optdepends=(
+    'hunspell-dictionary: Spell checking'
+    'libnotify: Notification integration'
+    'networkmanager: Location detection via available WiFi networks'
+    'speech-dispatcher: Text-to-Speech'
+    'xdg-desktop-portal: Screensharing with Wayland'
+  )
 
-sha256sums=('5aa10b4d7d886730e236a2289e32479322d336b96fe650842fad478f69596c9c'
-            'e00dbf01803cdd36fd9e1c0c018c19bb6f97e43016ea87062e6134bdc172bc7d'
-            '33dd309eeb99ec730c97ba844bf6ce6c7840f7d27da19c82389cdefee8c20208')
-
-prepare() {
-  cd gnuzilla-${_commit}
-
-  # Uncomment if you have issues with gpg download... WITH PROXY gpg doesn't work!!!!!!
-  #sed -e 's/^verify_sources$//g' -i makeicecat
-
-  mkdir output || rm -rf output/*  # Clean output just in case is already an old build there
-  if [ -f "${SRCDEST}/firefox-${pkgver}esr.source.tar.xz" ] && [ -f "${SRCDEST}/firefox-${pkgver}esr.source.tar.xz.asc" ]; then cp -f "${SRCDEST}"/firefox-${pkgver}esr.source.tar.xz{,.asc} output/ ; fi
-  
-  # Patches to avoid download sources if you have in your $startdir
-  sed -e '/rm -rf output/d' -i makeicecat
-  sed -e 's/wget -N/wget -nv -Nc/g' -i makeicecat
-  
-  # Other patches
-  sed '/^finalize_sourceball$/d' -i makeicecat
-  
-  # If we want to avoid all locales, we can use variable _SPEED=y to build it with only 1 locale. Use variable _LOCALE to define it
-  if [[ $_SPEED =~ [y|Y] ]]; then
-    msg2 "Building without all locales..."
-    sed -e 's/DEVEL=0/DEVEL=1/g' -i makeicecat
-    # Also you can choose your locale using external variable _LOCALE. By default in upstream script this locale is es-ES
-    [ -z "$_LOCALE" ] || sed -e "s/es-ES/$_LOCALE/g" -i makeicecat && echo "$_LOCALE" > custom-shipped-locales
-    rm -rf data/files-to-append/l10n/*
+  if [ "${_build_prepatched::1}" != "t" ] ; then
+    makedepends+=(
+      git
+      m4
+      python-jsonschema
+      python-psutil
+      python-setuptools
+      wget
+    )
   fi
 
-  # Thanks to cysp74 to report this bug
-  sed -e 's;find l10n -wholename '\''\*/brand.dtd'\'' | xargs;find l10n -wholename '\''\*/brand.dtd'\'' | xargs -r;g' -i makeicecat
+  if [[ "${_build_pgo::1}" == "t" ]] ; then
+    if [[ "${_build_pgo_xvfb::1}" == "t" ]] ; then
+      makedepends+=(
+        xorg-server-xvfb
+      )
+    else
+      makedepends+=(
+        weston
+        xorg-xwayland
+        xwayland-run # AUR
+      )
+    fi
+  fi
 
-  # Produce IceCat sources
+  if [ -n "$_pkgtype" ] ; then
+    provides=("$_pkgname=${pkgver%%.r*}")
+    conflicts=("$_pkgname")
+  fi
+
+  options=(
+    !debug
+    !emptydirs
+    !lto
+    !makeflags
+    !strip
+  )
+
+  if [[ "${_build_prepatched::1}" == "t" ]] ; then
+    url="https://icecatbrowser.org/"
+    _update_version
+
+    _pkgsrc="$_pkgname-$_pkgver"
+    _pkgext="tar.bz2"
+    source+=("https://software.classictetris.net/icecat/${_pkgver}esr/$_pkgsrc-gnu1.$_pkgext")
+    sha256sums+=('SKIP')
+  else
+    url="https://git.savannah.gnu.org/cgit/gnuzilla.git"
+
+    noextract=("firefox-${pkgver}esr.source.tar.xz")
+
+    _commit=7e2ff1ad7e03d2bfe0b2daf3f25961b06cab8848
+    _pkgsrc="$_pkgname-$pkgver"
+    _pkgsrc_gnuzilla="gnuzilla-$_commit"
+    _pkgext="tar.gz"
+    source+=(
+      "https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/$_pkgsrc_gnuzilla.$_pkgext"
+      "https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz"{,.asc}
+    )
+    sha256sums+=(
+      'SKIP'
+      'af8086f23efc8492d286671f6035b1a915de6f4ed5c7897e40be0e1cb6b895ea'
+      'SKIP'
+    )
+
+    validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
+
+    _languages=(
+      ach af an ar ast az be bg bn br bs ca ca-valencia cak cs cy da de dsb
+      el en-CA en-GB eo es-AR es-CL es-ES es-MX et eu fa ff fi fr fur fy-NL
+      ga-IE gd gl gn gu-IN he hi-IN hr hsb hu hy-AM ia id is it ja ja-JP-mac
+      ka kab kk km kn ko lij lt lv mk mr ms my nb-NO ne-NP nl nn-NO oc
+      pa-IN pl pt-BR pt-PT rm ro ru sc sco si sk sl son sq sr sv-SE szl
+      ta te tg th tl tr trs uk ur uz vi xh zh-CN zh-TW
+    )
+
+    for _locale in "${_languages[@]}"; do
+      source+=("l10n-central-$pkgver-$pkgrel-$_locale.zip"::"https://hg.mozilla.org/l10n-central/$_locale/archive/tip.zip")
+      sha256sums+=('SKIP')
+      noextract+=("l10n-central-$pkgver-$pkgrel-$_locale.zip")
+    done
+  fi
+}
+
+_make_icecat() {
+  if [[ "${_build_prepatched::1}" == "t" ]] ; then
+    return
+  fi
+
+  if [ "${_build_repatch::1}" != "t" ] && [ -e "$SRCDEST/$_pkgsrc.tar.zst" ] ; then
+    echo "Restoring previously patched sources..."
+    rm -rf "$srcdir/$_pkgsrc"
+    bsdtar -xf "$SRCDEST/$_pkgsrc.tar.zst"
+    return
+  fi
+
+  pushd "$_pkgsrc_gnuzilla"
+
+  # uncomment if there are problems with gpg
+  #sed -e 's/^verify_sources$//g' -i makeicecat
+
+  # clean output in case there is already an old build
+  mkdir output || rm -rf output/*
+  mkdir output/l10n
+
+  echo "Preparing Firefox ESR..."
+  cp --reflink=auto -f "$srcdir"/firefox-${pkgver}esr.source.tar.xz{,.asc} output/
+
+  echo "Preparing translations..."
+  local L10N_PREFS_DIR="browser/chrome/browser/preferences"
+  local L10N_DTD_FILE="advanced-scripts.dtd"
+
+  for _locale in "${_languages[@]}"; do
+    mkdir "output/l10n/$_locale"
+    bsdtar -C "output/l10n/$_locale" --strip-components 1 -xf "$srcdir/l10n-central-$pkgver-$pkgrel-$_locale.zip"
+    mkdir -p "output/l10n/$_locale/$L10N_PREFS_DIR"
+    touch "output/l10n/$_locale/$L10N_PREFS_DIR/$L10N_DTD_FILE"
+    rm -rf "output/l10n/$_locale"/.hg*
+  done
+
+  echo "Patching sources..."
+
+  # avoid redownloading firefox
+  sed -e '/rm -rf output/d' -i makeicecat
+  sed -e 's/wget -N/wget -nv -Nc/g' -i makeicecat
+
+  # don't make source tarball
+  sed '/^finalize_sourceball$/d' -i makeicecat
+
+  # produce icecat sources
   bash makeicecat
-  cd output/icecat-${pkgver}
+  popd
 
-  # Patch to move files directly to /usr/lib/icecat. No more symlinks.
-  sed -e 's;$(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME);g' -i config/baseconfig.mk
-  sed -e 's;$(libdir)/$(MOZ_APP_NAME)-devel-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME)-devel;g' -i config/baseconfig.mk
+  if [[ "${_build_save_source::1}" == "t" ]] ; then
+    echo "Saving patched sources..."
+    [ -e "$SRCDEST/$_pkgsrc.tar.zst" ] && rm -rf "$SRCDEST/$_pkgsrc.tar.zst"
+    mv "$_pkgsrc_gnuzilla/output/$_pkgsrc" "$srcdir/"
+    bsdtar -a -cf "$_pkgsrc.tar.zst" --options zstd:compression-level=9 "$_pkgsrc"
+    cp --reflink=auto -rf "$_pkgsrc.tar.zst" "$SRCDEST/"
+  fi
+}
+
+# common functions
+prepare() {
+  cat >icecat.desktop <<END
+[Desktop Entry]
+Version=1.0
+Name=IceCat
+GenericName=Web Browser
+Comment=Browse the World Wide Web
+Keywords=Internet;WWW;Browser;Web;Explorer
+Exec=icecat %u
+Icon=icecat
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;application/x-xpinstall;
+StartupNotify=true
+StartupWMClass=icecat
+Categories=Network;WebBrowser;
+Actions=new-window;new-private-window;safe-mode;
+
+[Desktop Action new-window]
+Name=New Window
+Exec=icecat --new-window %u
+
+[Desktop Action new-private-window]
+Name=New Private Window
+Exec=icecat --private-window %u
+
+[Desktop Action safe-mode]
+Name=Safe Mode
+Exec=icecat -safe-mode %u
+END
+
+  _make_icecat
+
+  mkdir -p mozbuild
+  cd "$_pkgsrc"
+
+  # clear forced startup pages
+  sed -E 's&^\s*pref\("startup\.homepage.*$&&' -i "browser/branding/official/pref/icecat-branding.js"
 
   # disable extensions, otherwise profiling freezes
   cp "browser/app/Makefile.in" "$srcdir/Makefile.in"
   sed -E -e '/^\t.*\/extensions\/gnu\/\*.*$/d' -i "browser/app/Makefile.in"
+
   cp "browser/installer/package-manifest.in" "$srcdir/package-manifest.in"
   sed -E -e '/^.*\/browser\/extensions\/.*$/d' -i "browser/installer/package-manifest.in"
+
   cp "browser/installer/allowed-dupes.mn" "$srcdir/allowed-dupes.mn"
   sed -E -e '/^browser\/extensions\/.*$/d' -i "browser/installer/allowed-dupes.mn"
 
-  printf '%b' "  \e[1;36m->\e[0m\033[1m Starting build...\n"
-
+  # configure
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
+ac_add_options --disable-artifact-builds
+
+mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
@@ -136,26 +302,39 @@ ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 
 # Branding
-ac_add_options --enable-official-branding
+ac_add_options --with-app-basename=$_pkgname
+ac_add_options --with-app-name=$_pkgname
+ac_add_options --with-branding=browser/branding/official
+ac_add_options --enable-update-channel=nightly
 ac_add_options --with-distribution-id=org.gnu
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
+export MOZILLA_OFFICIAL=1
+export MOZ_APP_REMOTINGNAME=$_pkgname
+MOZ_REQUIRE_SIGNING=
 
-ac_add_options --with-app-basename=icecat
-ac_add_options --with-app-name=icecat
-
-# System libraries
+# System Libraries
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-libevent
+ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
+ac_add_options --with-system-webp
+ac_add_options --with-system-zlib
 
 # Features
 ac_add_options --enable-alsa
+ac_add_options --enable-av1
+#ac_add_options --enable-eme=widevine
 ac_add_options --enable-jack
+ac_add_options --enable-jxl
+ac_add_options --enable-proxy-bypass-protection
+ac_add_options --enable-pulseaudio
+ac_add_options --enable-raw
+ac_add_options --enable-sandbox
+ac_add_options --enable-unverified-updates
+ac_add_options --enable-webrtc
 ac_add_options --disable-crashreporter
-ac_add_options --disable-updater
-ac_add_options --disable-tests
-ac_add_options --disable-eme
-
 ac_add_options --disable-default-browser-agent
 ac_add_options --disable-parental-controls
 ac_add_options --disable-tests
@@ -176,7 +355,7 @@ export STRIP_FLAGS="--strip-debug --strip-unneeded"
 
 # Optimization
 ac_add_options --enable-optimize=-O3
-ac_add_options --enable-lto=cross
+ac_add_options --enable-lto=cross,full
 ac_add_options OPT_LEVEL="3"
 ac_add_options RUSTC_OPT_LEVEL="3"
 
@@ -190,18 +369,19 @@ END
 }
 
 build() {
-  cd gnuzilla-${_commit}/output/icecat-${pkgver}
+  cd "$_pkgsrc"
 
-  export MOZ_NOSPAM=1
-  export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
+  export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$srcdir/xdg-runtime}"
+  [ ! -d "$XDG_RUNTIME_DIR" ] && install -dm700 "${XDG_RUNTIME_DIR:?}"
+
+  export LIBGL_ALWAYS_SOFTWARE=true
+
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
+  export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
+  export MOZ_NOSPAM=1
 
-  # malloc_usable_size is used in various parts of the codebase
-  CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
-  CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
-
-  # LTO needs more open files
+  # LTO/PGO needs more open files
   ulimit -n 4096
 
   # Do 3-tier PGO
@@ -211,7 +391,7 @@ build() {
     _pkgver_prof=$(
       cd "${SRCDEST:-$startdir}"
       for i in *.profdata ; do [ -f "$i" ] && echo "$i" ; done \
-        | sort -rV | head -1
+        | sort -rV | head -1 | sed -E 's&^[^0-9]+-([0-9\.]+)-merged.profdata&\1&'
     )
 
     # new profile for new major version
@@ -229,8 +409,8 @@ build() {
       _pkgver_prof="$pkgver"
     fi
 
-    local _old_profdata="${SRCDEST:-$startdir}/$pkgname-$_pkgver_prof-merged.profdata"
-    local _old_jarlog="${SRCDEST:-$startdir}/$pkgname-$_pkgver_prof-jarlog"
+    local _old_profdata="${SRCDEST:-$startdir}/$_pkgname-$_pkgver_prof-merged.profdata"
+    local _old_jarlog="${SRCDEST:-$startdir}/$_pkgname-$_pkgver_prof-jarlog"
 
     # Restore old profile
     if [[ "${_build_pgo_reuse::1}" == "t" ]] ; then
@@ -250,15 +430,27 @@ build() {
       echo "Building instrumented browser..."
       cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-profile-generate=cross
+export MOZ_ENABLE_FULL_SYMBOLS=1
 END
       ./mach build
 
       echo "Profiling instrumented browser..."
       ./mach package
-      LLVM_PROFDATA=llvm-profdata \
-        JARLOG_FILE="$PWD/jarlog" \
-        xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
-        ./mach python build/pgo/profileserver.py
+
+      if [[ "${_build_pgo_xvfb::1}" == "t" ]] ; then
+        local _headless_run=(
+          xvfb-run
+          -s "-screen 0 1920x1080x24 -nolisten local"
+        )
+      else
+        local _headless_run=(
+          wlheadless-run
+          -c weston --width=1920 --height=1080
+        )
+      fi
+
+      LLVM_PROFDATA=llvm-profdata JARLOG_FILE=${PWD@Q}/jarlog \
+        "${_headless_run[@]}" -- ./mach python build/pgo/profileserver.py
 
       echo "Removing instrumented browser..."
       ./mach clobber
@@ -269,8 +461,10 @@ END
 
     if [[ -s merged.profdata ]] ; then
       stat -c "Profile data found (%s bytes)" merged.profdata
-      echo >>.mozconfig "ac_add_options --enable-profile-use=cross"
-      echo >>.mozconfig "ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata"
+      cat >>.mozconfig - <<END
+ac_add_options --enable-profile-use=cross
+ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
+END
 
       # save profdata for reuse
       cp --reflink=auto -f merged.profdata "$_old_profdata"
@@ -280,7 +474,9 @@ END
 
     if [[ -s jarlog ]] ; then
       stat -c "Jar log found (%s bytes)" jarlog
-      echo >>.mozconfig "ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog"
+      cat >>.mozconfig - <<END
+ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+END
 
       # save jarlog for reuse
       cp --reflink=auto -f jarlog "$_old_jarlog"
@@ -302,16 +498,11 @@ END
   fi
 }
 
-package () {
-  cd gnuzilla-${_commit}/output/icecat-${pkgver}
-
-  # Remove cose.manifest and cose.sig cause march install fails
-  find obj-x86_64-pc-linux-gnu/dist/bin/browser/extensions -name cose.manifest -delete
-  find obj-x86_64-pc-linux-gnu/dist/bin/browser/extensions -name cose.sig -delete
-
+package() {
+  cd "$_pkgsrc"
   DESTDIR="$pkgdir" ./mach install
 
-  local vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
+  local vendorjs="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
   install -Dvm644 /dev/stdin "$vendorjs" <<END
 // Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
@@ -324,32 +515,80 @@ pref("browser.shell.checkDefaultBrowser", false);
 
 // Don't disable extensions in the application directory
 pref("extensions.autoDisableScopes", 11);
+
+// Enable GNOME Shell search provider
+pref("browser.gnome-search-provider.enabled", true);
+
+// Enable JPEG XL images
+pref("image.jxl.enabled", true);
+
+// Prevent about:config warning
+pref("browser.aboutConfig.showWarning", false);
+
+// Prevent telemetry notification
+pref("services.settings.main.search-telemetry-v2.last_check", $(date +%s));
 END
 
-  local distini="$pkgdir/usr/lib/$pkgname/distribution/distribution.ini"
+  local distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
   install -Dvm644 /dev/stdin "$distini" <<END
 [Global]
 id=archlinux
-version=1.0
+version=${pkgver}
 about=GNU IceCat for Arch Linux
 
 [Preferences]
 app.distributor=archlinux
-app.distributor.channel=$pkgname
+app.distributor.channel=$_pkgname
 app.partner.archlinux=archlinux
 END
 
-  printf '%b' "  \e[1;36m->\e[0m\033[1m Finishing...\n"
-  install -m755 -d "${pkgdir}/usr/share/applications"
-  install -m755 -d "${pkgdir}/usr/share/pixmaps"
+  # search provider
+  local sprovider="$pkgdir/usr/share/gnome-shell/search-providers/$_pkgname.search-provider.ini"
+  install -Dvm644 /dev/stdin "$sprovider" <<END
+[Shell Search Provider]
+DesktopId=$_pkgname.desktop
+BusName=org.mozilla.${_pkgname//-/}.SearchProvider
+ObjectPath=/org/mozilla/${_pkgname//-/}/SearchProvider
+Version=2
+END
 
+  # Replace duplicate binary
+  ln -sf "/usr/bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
+
+  # Use system certificates
+  local nssckbi="$pkgdir/usr/lib/$_pkgname/libnssckbi.so"
+  if [[ -e "$nssckbi" ]]; then
+    ln -sf "/usr/lib/libnssckbi.so" "$nssckbi"
+  fi
+
+  # desktop file
+  install -Dvm644 ../$_pkgname.desktop \
+    "$pkgdir/usr/share/applications/$_pkgname.desktop"
+
+  # icons
+  local i theme=official
   for i in 16 22 24 32 48 64 128 256; do
-      install -Dm644 browser/branding/official/default${i}.png \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/icecat.png"
+    install -Dvm644 browser/branding/$theme/default$i.png \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
-  install -Dm644 browser/branding/official/default48.png "${pkgdir}/usr/share/pixmaps/icecat.png"
-  install -Dm644 "${srcdir}/icecat.desktop" "${pkgdir}/usr/share/applications/"
-  install -Dm644 "${srcdir}/icecat-safe.desktop" "${pkgdir}/usr/share/applications/"
 }
 
-# vim:set sw=2 sts=-1 et:
+# update version
+_update_version() {
+  : ${_pkgver:=${pkgver%%.r*}}
+
+  if [[ "${_autoupdate::1}" != "t" ]] ; then
+    return
+  fi
+
+  local _ver_url="https://software.classictetris.net/icecat/last_version_check"
+  local _pkgver_new=$(curl -Ssf "$_ver_url")
+
+  # update _pkgver
+  if [ "$_pkgver" == "${_pkgver_new:?}" ] ; then
+    _pkgver="${_pkgver_new:?}"
+  fi
+}
+
+# execute
+_main_package
