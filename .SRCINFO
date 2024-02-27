@@ -9,9 +9,9 @@ pkgbase = microsoft-loop-pake
 	depends = webkit2gtk
 	depends = openssl-1.1
 	conflicts = loop
-	source = loop-2.0.0.deb::/releases/download/V2.0.0/Loop_x86_64.deb
+	source = loop-2.0.0.deb::https://github.com/tw93/Pake/releases/download/V2.0.0/Loop_x86_64.deb
 	source = LICENSE-2.0.0::https://raw.githubusercontent.com/tw93/Pake/V2.0.0/LICENSE
 	sha256sums = 29d8bf31552b7e1332ebc4e80aeea5cf0ad38c3dd2c86ea7e39fa98c70fa4216
-	sha256sums = 0a3fe62a333a48833073056c1883a4ca7511bfbfed09746b1824e37420ee67ab
+	sha256sums = a8cfae3105018e6018e5a046977a9919c0e975d8d5eab79fd19339182211f058
 
 pkgname = microsoft-loop-pake
