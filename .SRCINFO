@@ -1,21 +1,12 @@
 pkgbase = quaternion-bin
 	pkgdesc = A Qt5-based IM client for Matrix
 	pkgver = 0.0.95.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://matrix.org/docs/projects/client/quaternion.html
 	arch = x86_64
-	license = BSD
-	license = GPL3
-	license = LGPL2.1
-	makedepends = squashfuse
+	license = GPL-3.0-only
 	depends = hicolor-icon-theme
-	depends = pango
-	depends = at-spi2-core
-	depends = cairo
-	depends = libgpg-error
-	depends = libglvnd
 	depends = qt6-declarative
-	depends = util-linux-libs
 	depends = gtk3
 	depends = alsa-lib
 	provides = quaternion=0.0.95.1

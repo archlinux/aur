@@ -2,32 +2,19 @@
 pkgname=quaternion-bin
 _appname="com.github.${pkgname%-bin}"
 pkgver=0.0.95.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt5-based IM client for Matrix"
 arch=('x86_64')
 url="https://matrix.org/docs/projects/client/quaternion.html"
 _ghurl="https://github.com/quotient-im/Quaternion"
-license=(
-    'BSD'
-    'GPL3'
-    'LGPL2.1'
-)
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'hicolor-icon-theme'
-    'pango'
-    'at-spi2-core'
-    'cairo'
-    'libgpg-error'
-    'libglvnd'
     'qt6-declarative'
-    'util-linux-libs'
     'gtk3'
     'alsa-lib'
-)
-makedepends=(
-    'squashfuse'
 )
 options=('!strip')
 source=(
