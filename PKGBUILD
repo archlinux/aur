@@ -2,11 +2,11 @@
 # Co-Maintainer: FLOZz <aru at flogisoft dot com>
 pkgname=rst2gemtext
 pkgver=0.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Converts reStructuredText to Gemtext (Gemini markup format)'
 arch=('any')
 url="https://github.com/flozz/rst2gemtext"
-license=('GPL3')
+license=('GPL-3.0-only')
 conflicts=("${pkgname}")
 provides=("${pkgname}=${pkgver}")
 depends=(

@@ -1,10 +1,10 @@
 pkgbase = rst2gemtext
 	pkgdesc = Converts reStructuredText to Gemtext (Gemini markup format)
 	pkgver = 0.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/flozz/rst2gemtext
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	depends = python>=3.7
 	depends = python-setuptools
 	depends = python-importlib-metadata
