@@ -2,7 +2,7 @@
 
 _name='napari'
 pkgname="${_name}"
-pkgver=0.4.18
+pkgver=0.4.19
 pkgrel=1
 pkgdesc='Multi-dimensional image viewer for Python.'
 arch=('any')
@@ -37,13 +37,12 @@ depends=(
   'python-pint'
   'python-psutil'
   'python-psygnal'
-  'python-pyyaml'
-  'python-pydantic'  # community package has been out of date for months
+  'python-pydantic'
   'python-pygments'
+  'python-pyyaml'
   'python-qtpy'
   'python-scikit-image'
   'python-scipy'
-  'python-sphinx'
   'python-superqt'
   'python-tifffile'
   'python-toolz'
@@ -53,14 +52,16 @@ depends=(
   'python-wrapt'
   'qt5-python-bindings'
 )
+optdepends=(
+  'python-numba: Image and Label performance'
+  'python-triangle: Shapes performance'
+)
 source=(
   "https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz"
   "${_name}.desktop"
 )
-sha256sums=(
-  "8dcad79e0d0bc6378c7b6b1e85c8085834aad26d22d1339ae0aa1b7eed5238a2"
-  "909cfd907ee6d78ad7f80a6d0aaf23b83d246e31f7e2331860072f6bf7e5edd6"
-)
+sha256sums=('083468ebbdb3e91c6bba6ed60bc75747adcba622376caf8a1a6490378cea0f6d'
+            '909cfd907ee6d78ad7f80a6d0aaf23b83d246e31f7e2331860072f6bf7e5edd6')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
