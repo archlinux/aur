@@ -1,0 +1,13 @@
+post_install() {
+echo -n "
+Now you need to add OWASP CRS rules to your modsecurity:
+
+# echo \"
+Include crs-setup.conf
+Include /usr/lib/nginx/modsecurity/crs/plugins/*-config.conf
+Include /usr/lib/nginx/modsecurity/crs/plugins/*-before.conf
+Include /usr/lib/nginx/modsecurity/crs/rules/*.conf
+Include /usr/lib/nginx/modsecurity/crs/plugins/*-after.conf
+\" >> /etc/nginx/modsecurity.conf
+"
+}
