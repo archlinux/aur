@@ -1,0 +1,23 @@
+pkgbase = ovcs-git
+	pkgdesc = The client/server of the terminal pager ov (built from latest commit)
+	pkgver = 0.15.0.r20.gd206d65
+	pkgrel = 1
+	url = https://github.com/noborus/ovcs
+	arch = aarch64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	optdepends = bash: used by examples mysql.sh and psql.sh
+	provides = ovcs
+	conflicts = ovcs
+	options = lto
+	source = git+https://github.com/noborus/ovcs.git
+	sha256sums = SKIP
+
+pkgname = ovcs-git
