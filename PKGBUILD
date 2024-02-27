@@ -2,9 +2,9 @@
 
 pkgbase=xwm-git
 pkgname=xwm-git
-pkgver=1.0.0beta1.r18.g4d45ae1
+pkgver=1.0.0beta1.r30.g8c63746
 pkgrel=1
-pkgdesc="XWM (X light Window Manager) XWM is a light-weight window manager forked from jwm for the X11 Window System."
+pkgdesc="XWM (X light Window Manager) is a light-weight window manager for the X11 Window System"
 arch=(
     aarch64
     riscv64
@@ -36,7 +36,9 @@ makedepends=(
     coreutils
     gettext
     git
-    sed)
+    m4
+    sed
+    pkgconf)
 checkdepends=()
 optdepends=(
     'gnome-terminal: The GNOME Terminal Emulator'
@@ -61,21 +63,22 @@ prepare()
 }
 
 build() {
-    export AUTOMAKE=true
     cd "${srcdir}/${pkgname}"
 
     autoupdate
+    sed -i 's/0.19/0.20/g' configure.ac
     ./autogen.sh
     ./configure \
         --enable-nls \
         --prefix=/usr \
         --sysconfdir=/etc
+
+    make update-po
+    make update-gmo
     make
 }
 
 package() {
     cd "${srcdir}/${pkgname}"
     make DESTDIR="$pkgdir" install
-    install -Dm0644 data/${pkgname%-git}.desktop -t ${pkgdir}/usr/share/applications/
-    install -Dm0755 data/autostart -t ${pkgdir}/etc/xdg/xwm/
 }
