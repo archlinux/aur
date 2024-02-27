@@ -1,6 +1,6 @@
 pkgbase = vala-panel-appmenu-xfce-git
 	pkgdesc = AppMenu (Global Menu) plugin
-	pkgver = 0.7.6.r29.g7abc96e
+	pkgver = 24.02.r1.gced6ce3
 	pkgrel = 1
 	url = https://gitlab.com/vala-panel-project/vala-panel-appmenu
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = vala-panel-appmenu-xfce-git
 	makedepends = vala
 	makedepends = gtk3
 	makedepends = libwnck3
-	makedepends = bamf>=0.5.0
+	makedepends = appmenu-glib-translator
 	makedepends = git
 	makedepends = mate-panel
 	makedepends = xfce4-panel>=4.11.2
@@ -33,56 +33,56 @@ pkgname = vala-panel-appmenu-common-git
 pkgname = vala-panel-appmenu-mate-git
 	pkgdesc = AppMenu (Global Menu) plugin for mate-panel
 	depends = gtk3
-	depends = bamf>=0.5.0
 	depends = mate-panel
 	depends = libwnck3
 	depends = vala-panel-appmenu-common-git
+	depends = appmenu-glib-translator
 	optdepends = appmenu-gtk-module: for gtk2/gtk3 menus
 	optdepends = vala-panel-appmenu-registrar: for DBusMenu registrar
 	optdepends = jayatana: for Java applications support
 	optdepends = appmenu-qt4: for qt4 menus
-	provides = vala-panel-appmenu-mate=0.7.6.r29.g7abc96e
+	provides = vala-panel-appmenu-mate=24.02.r1.gced6ce3
 	conflicts = vala-panel-appmenu-mate
 
 pkgname = vala-panel-appmenu-xfce-git
 	pkgdesc = AppMenu (Global Menu) plugin for xfce4-panel
 	depends = gtk3
-	depends = bamf>=0.5.0
 	depends = xfce4-panel>=4.11.2
 	depends = xfconf
 	depends = libwnck3
 	depends = vala-panel-appmenu-common-git
+	depends = appmenu-glib-translator
 	optdepends = appmenu-gtk-module: for gtk2/gtk3 menus
 	optdepends = vala-panel-appmenu-registrar: for DBusMenu registrar
 	optdepends = jayatana: for Java applications support
 	optdepends = appmenu-qt4: for qt4 menus
-	provides = vala-panel-appmenu-xfce=0.7.6.r29.g7abc96e
+	provides = vala-panel-appmenu-xfce=24.02.r1.gced6ce3
 	conflicts = vala-panel-appmenu-xfce
 
 pkgname = vala-panel-appmenu-valapanel-git
 	pkgdesc = AppMenu (Global Menu) plugin for vala-panel
 	depends = gtk3
-	depends = bamf>=0.5.0
 	depends = vala-panel
 	depends = libwnck3
 	depends = vala-panel-appmenu-common-git
+	depends = appmenu-glib-translator
 	optdepends = appmenu-gtk-module: for gtk2/gtk3 menus
 	optdepends = vala-panel-appmenu-registrar: for DBusMenu registrar
 	optdepends = jayatana: for Java applications support
 	optdepends = appmenu-qt4: for qt4 menus
-	provides = vala-panel-appmenu-valapanel=0.7.6.r29.g7abc96e
+	provides = vala-panel-appmenu-valapanel=24.02.r1.gced6ce3
 	conflicts = vala-panel-appmenu-valapanel
 
 pkgname = vala-panel-appmenu-budgie-git
 	pkgdesc = AppMenu (Global Menu) plugin for budgie-panel
 	depends = gtk3
-	depends = bamf>=0.5.0
 	depends = budgie-desktop
 	depends = libwnck3
 	depends = vala-panel-appmenu-common-git
+	depends = appmenu-glib-translator
 	optdepends = appmenu-gtk-module: for gtk2/gtk3 menus
 	optdepends = vala-panel-appmenu-registrar: for DBusMenu registrar
 	optdepends = jayatana: for Java applications support
 	optdepends = appmenu-qt4: for qt4 menus
-	provides = vala-panel-appmenu-budgie=0.7.6.r29.g7abc96e
+	provides = vala-panel-appmenu-budgie=24.02.r1.gced6ce3
 	conflicts = vala-panel-appmenu-budgie

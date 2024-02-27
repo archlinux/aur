@@ -16,7 +16,7 @@ pkgname=(
 'vala-panel-appmenu-common-git'
 )
 
-makedepends=('meson' 'vala' 'gtk3' 'libwnck3' 'bamf>=0.5.0' 'git')
+makedepends=('meson' 'vala' 'gtk3' 'libwnck3' 'appmenu-glib-translator' 'git')
 
 if (("${_disable_mate}" == 0));then
 	_opts+=(-Dmate=enabled)
@@ -51,7 +51,7 @@ fi
 
 _pkgbase=vala-panel-appmenu
 pkgbase=${_pkgbase}-xfce-git
-pkgver=0.7.6.r29.g7abc96e
+pkgver=24.02.r1.gced6ce3
 pkgrel=1
 pkgdesc="AppMenu (Global Menu) plugin"
 url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
@@ -79,7 +79,7 @@ package_vala-panel-appmenu-xfce-git() {
   pkgdesc="AppMenu (Global Menu) plugin for xfce4-panel"
   conflicts=('vala-panel-appmenu-xfce')
   provides=("vala-panel-appmenu-xfce=${pkgver}")
-  depends=('gtk3' 'bamf>=0.5.0' 'xfce4-panel>=4.11.2' 'xfconf' 'libwnck3' 'vala-panel-appmenu-common-git')
+  depends=('gtk3' 'xfce4-panel>=4.11.2' 'xfconf' 'libwnck3' 'vala-panel-appmenu-common-git' 'appmenu-glib-translator')
   optdepends=('appmenu-gtk-module: for gtk2/gtk3 menus'
             'vala-panel-appmenu-registrar: for DBusMenu registrar' 
             'jayatana: for Java applications support'
@@ -93,7 +93,7 @@ package_vala-panel-appmenu-valapanel-git() {
   pkgdesc="AppMenu (Global Menu) plugin for vala-panel"
   conflicts=('vala-panel-appmenu-valapanel')
   provides=("vala-panel-appmenu-valapanel=${pkgver}")
-  depends=('gtk3' 'bamf>=0.5.0' 'vala-panel' 'libwnck3' 'vala-panel-appmenu-common-git')
+  depends=('gtk3' 'vala-panel' 'libwnck3' 'vala-panel-appmenu-common-git' 'appmenu-glib-translator')
   optdepends=('appmenu-gtk-module: for gtk2/gtk3 menus'
             'vala-panel-appmenu-registrar: for DBusMenu registrar' 
 			'jayatana: for Java applications support'
@@ -108,7 +108,7 @@ package_vala-panel-appmenu-mate-git() {
   pkgdesc="AppMenu (Global Menu) plugin for mate-panel"
   conflicts=('vala-panel-appmenu-mate')
   provides=("vala-panel-appmenu-mate=${pkgver}")
-  depends=('gtk3' 'bamf>=0.5.0' 'mate-panel' 'libwnck3' 'vala-panel-appmenu-common-git')
+  depends=('gtk3' 'mate-panel' 'libwnck3' 'vala-panel-appmenu-common-git' 'appmenu-glib-translator')
   optdepends=('appmenu-gtk-module: for gtk2/gtk3 menus'
             'vala-panel-appmenu-registrar: for DBusMenu registrar' 
 			'jayatana: for Java applications support'
@@ -122,7 +122,7 @@ package_vala-panel-appmenu-budgie-git() {
   pkgdesc="AppMenu (Global Menu) plugin for budgie-panel"
   conflicts=('vala-panel-appmenu-budgie')
   provides=("vala-panel-appmenu-budgie=${pkgver}")
-  depends=('gtk3' 'bamf>=0.5.0' 'budgie-desktop' 'libwnck3' 'vala-panel-appmenu-common-git')
+  depends=('gtk3' 'budgie-desktop' 'libwnck3' 'vala-panel-appmenu-common-git' 'appmenu-glib-translator')
   optdepends=('appmenu-gtk-module: for gtk2/gtk3 menus'
             'vala-panel-appmenu-registrar: for DBusMenu registrar' 
 			'jayatana: for Java applications support'
