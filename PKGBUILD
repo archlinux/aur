@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=giada-bin
 _pkgname=Giada
-pkgver=0.26.1
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="An open source, minimalistic and hardcore music production tool. Designed for DJs, live performers and electronic musicians."
 arch=('x86_64')
 url="https://www.giadamusic.com"
@@ -17,14 +17,11 @@ depends=(
     'freetype2'
     'fontconfig'
 )
-makedepends=(
-    'squashfuse'
-)
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/data/${_pkgname}-${pkgver}-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8a44f53bb8da0604f857bbb178043a4e6a62ce52bea7018dccbb4abe6a53ef76'
+sha256sums=('b013c85663e9582c1fb3652b45159d2f3474af8dac80899056074a7355e192df'
             '6023b57d0e81fa219ed96f4b8a6fccb401886ff00ab341a0976959ea4ca2fb8a')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
