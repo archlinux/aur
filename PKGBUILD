@@ -6,7 +6,7 @@ _pkgbase=vala-panel-appmenu
 pkgname=appmenu-gtk-module-git
 _path=subprojects/appmenu-gtk-module
 pkgver=24.02
-pkgrel=1
+pkgrel=2
 pkgdesc="Gtk module for exporting menus"
 depends=('gtk3' 'gtk2')
 provides=(appmenu-gtk-module)
@@ -16,7 +16,7 @@ arch=('i686' 'x86_64')
 license=('LGPL3')
 
 source=("git+https://gitlab.com/vala-panel-project/${_pkgbase}.git"
-		80appmenu-gtk-module)
+		80-appmenu-gtk-module.sh)
 sha256sums=('SKIP'
 			'4c006c4ea7b8556070ad6d35529d3a9e23da8033429e34d1824c25942d969fbc')
 
@@ -36,5 +36,5 @@ build() {
 package()
 {
   DESTDIR="$pkgdir" meson install -C build --no-rebuild
-  install -Dm755 80appmenu-gtk-module -t "$pkgdir"/etc/X11/xinit/xinitrc.d/
+  install -Dm755 80-appmenu-gtk-module.sh -t "$pkgdir"/etc/X11/xinit/xinitrc.d/
 }
