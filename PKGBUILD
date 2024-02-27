@@ -4,7 +4,7 @@
 # Contributor: Sebastian Stenzel <sebastian.stenzel@gmail.com>
 
 pkgname=cryptomator
-pkgver=1.12.2
+pkgver=1.12.3
 pkgrel=1
 pkgdesc="Multiplatform transparent client-side encryption of your files in the cloud."
 arch=('any')
@@ -20,7 +20,7 @@ source_x86_64=("jdk.tar.gz::https://github.com/adoptium/temurin21-binaries/relea
 source_aarch64=("jdk.tar.gz::https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.2%2B13/OpenJDK21U-jdk_aarch64_linux_hotspot_21.0.2_13.tar.gz"
                 "openjfx.zip::https://download2.gluonhq.com/openjfx/21.0.1/openjfx-21.0.1_linux-aarch64_bin-jmods.zip")
 noextract=('jdk.tar.gz' 'openjfx.zip')
-sha256sums=('c28e5f49ee9e44ab3bf7d3675bccb2447eb5681aeb9aa5fb582ef12ca5d30dc0'
+sha256sums=('bb38c45ac91c4bc521af0b08dd72cf965aba80cbf71b27afdc21fcef7dbbf567'
             'SKIP')
 sha256sums_x86_64=('454bebb2c9fe48d981341461ffb6bf1017c7b7c6e15c6b0c29b959194ba3aaa5'
                    '7baed11ca56d5fee85995fa6612d4299f1e8b7337287228f7f12fd50407c56f8')
@@ -44,7 +44,6 @@ build() {
   mvn -B clean package -DskipTests -Plinux
 
   cp LICENSE.txt target
-  cp dist/linux/launcher* target
   cp target/cryptomator-*.jar target/mods
 
   cd target
