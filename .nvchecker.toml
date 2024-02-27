@@ -1,0 +1,3 @@
+[gftools]
+source = "pypi"
+pypi = "gftools"
