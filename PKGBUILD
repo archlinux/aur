@@ -1,25 +1,22 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sigma-file-manager-git
-_pkgname="Sigma file manager"
-pkgver=1.7.0.r35.gd558e2a
+_pkgname="Sigma-File-Manager"
+pkgver=1.7.0.r69.g5fe0ce4
 _electronversion=20
 _nodeversion=15.14.0
+#_nodeversion=16
 pkgrel=1
 pkgdesc="A free, open-source, quickly evolving, modern file manager (explorer / browser) app for Windows and Linux."
 arch=('any')
 url="https://sigma-file-manager.vercel.app"
 _ghurl="https://github.com/aleksey-hoffman/sigma-file-manager"
-license=('GPL3-or-Later')
+license=('GPL-3.0-or-Later')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 depends=(
     #"electron${_electronversion}"
     'alsa-lib'
     'nss'
-    'libxrandr'
-    'mesa'
-    'libdrm'
-    'libxkbcommon'
     'gtk3'
 )
 makedepends=(
@@ -27,7 +24,7 @@ makedepends=(
     'git'
     'nvm'
     'npm'
-    'python'
+    'python>=3'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
@@ -45,15 +42,19 @@ _ensure_local_nvm() {
 }
 build() {
     _ensure_local_nvm
-    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-git} --no-sandbox %U"
+    gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} --no-sandbox %U"
     cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     #export ELECTRONVERSION="${_electronversion}"
-    npm install node-gyp@8.4.0
-    npm install --force
+    export npm_config_disturl=https://electronjs.org/headers
+    install -Dm755 -d "${srcdir}/.electron-gyp"
+    HOME="${srcdir}/.electron-gyp"
+    npm add node-gyp@8.4.0 electron-builder
+    npm install
     npm run build
 }
 package() {
