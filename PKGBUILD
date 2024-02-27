@@ -2,7 +2,7 @@
 
 pkgname=disc-kuraudo-home
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Disc Kuraudo - The Disc Cloud"
 arch=('x86_64' 'aarch64')
 license=('custom')
@@ -10,12 +10,13 @@ url='https://disc-kuraudo.eu'
 depends=(
 	'cdrtools'
 	#'cdrdao'
-	#'ddrescue'
+	'ddrescue'
 	'diffutils'
+	'dvd+rw-tools'
+	'libcdio'
 	'imagemagick'
 )
 optdepends=(
-	'dvd+rw-tools: Retrieve information about recordable discs when dumping'
 	'makemkv: Extracting movies/episodes/scenes/clips/screenshots from video discs'
 	'mkvtoolnix-cli: Extracting movies/episodes/scenes/clips from video discs'
 	'ffmpeg: Extracting screenshots from video discs'
