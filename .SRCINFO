@@ -1,5 +1,5 @@
 pkgbase = jura
-	pkgdesc = A smallweight terminal text editor
+	pkgdesc = A lightweight terminal text editor
 	pkgver = 1.0
 	pkgrel = 1
 	epoch = 1
