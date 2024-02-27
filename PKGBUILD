@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=siyuan-git
-pkgver=3.0.0.r0.g71e830b69
-_electronversion=28
+pkgver=3.0.1.r0.gbdacf3915
+_electronversion=29
 _nodeversion=18
 pkgrel=1
 pkgdesc="A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang."
