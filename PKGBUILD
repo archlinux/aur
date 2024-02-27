@@ -1,36 +1,31 @@
-# Maintainer: dreieck (https://aur.archlinux.org/account/dreieck)
-# Contributor: DetMittens
-# Contributer: uth 2.0.0 update
-#
-# Supported Platforms	Features
-# Haswell       (HSW)	vp8enc
-# Bay Trail M   (BYT)	vp8enc
-# Broadwell     (BRW)	vp9dec vp9enc
-# Braswell      (BSW)	vp8enc vp9dec
-#
-#
-# The libva-intel-driver package isn't compiled with support for loading this driver
-# so in order to use this driver's features with non hybrid codecs either
-# recompile libva-intel-driver with the --enable-hybrid-codec or install
-# the libva-intel-driver-hybrid package from the AUR
+# Maintainer:
+# Contributor: dreieck
+
+# Supported Platforms | Features
+# --------------------+--------------
+# Haswell       (HSW) | vp8enc
+# Bay Trail M   (BYT) | vp8enc
+# Broadwell     (BRW) | vp9dec vp9enc
+# Braswell      (BSW) | vp8enc vp9dec
+
+# The libva-intel-driver package isn't compiled with support for loading
+# this driver.  To use this driver's features with non hybrid codecs,
+# recompile libva-intel-driver with the --enable-hybrid-codec
+# or install the libva-intel-driver-hybrid package from the AUR
+
+## useful links
+# https://01.org/linuxmedia/vaapi
+# https://github.com/kcning/intel-hybrid-driver
 
 _pkgname=intel-hybrid-codec-driver
-pkgname="${_pkgname}-git"
-_gitname=intel-hybrid-driver
-_gitroot="git+https://github.com/kcning/${_gitname}.git"
-epoch=1
-_pkgver=2.0.0 # According to upstream, we are at version 2.0.0, but git tags say 1.0.2.
-pkgver=2.0.0.r170.20220515.cfb3b71
-pkgrel=3
-pkgdesc='Libva support for partially hardware accelerated encode and decode on Haswell and newer'
-arch=(
-  'x86_64'
-)
-# url='https://01.org/linuxmedia/vaapi'
-url='https://github.com/kcning/intel-hybrid-driver'
-license=(
-  'MIT'
-)
+pkgname="$_pkgname-git"
+pkgver=2.0.0.r1.gcfb3b718
+pkgrel=1
+pkgdesc="Libva support for partially hardware accelerated encode and decode on Haswell and newer"
+url="https://github.com/kcning/intel-hybrid-driver"
+license=('MIT')
+arch=('x86_64')
+
 depends=(
   'libva'
   'libcmrt'
@@ -43,74 +38,64 @@ makedepends=(
   'automake'
   'git'
 )
-provides=(
-  "${_pkgname}=${pkgver}"
-)
-conflicts=(
-  "${_pkgname}"
-)
-replaces=(
-  "${_pkgname}<=2.0.0.r170.7961945" # Because this package was wrongly named 'intel-hybrid-codec-driver' before. See https://aur.archlinux.org/packages/intel-hybrid-codec-driver-git#comment-934635 for more rartionale about this `replaces` directive.
-)
-install="${_pkgname}.install"
+provides=("${_pkgname}=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+install="$_pkgname.install"
+
+_pkgsrc="kcning.intel-hybrid-driver"
 source=(
-  "$_gitname::$_gitroot"
+  "$_pkgsrc"::"git+$url.git"
   'gcc10-fix.patch'
-  'vadriverinit-fix.patch'
-  "${install}"
+  'fix-vadriverinit-1.patch'
+  'fix-vadriverinit-2.patch'
 )
 sha256sums=(
   'SKIP'
   '90c01a1771f90007b001057edd4ada66751e54ccc380b3d87672694ab7ea92cb'
   '5359cfa322403bad1a20dc55de290c5f5c2f8d56afeba9c4a84dfc35cc89ec8b'
-  '0465f0f9a29b5168ecb51a07bcca6db85637f847e0ac5bffdea4152ba329f3f2'
+  'acb0acf2a83632358ccb3b02a4b74184149312863fa15bab4686df41abb1fd9b'
 )
 
 prepare() {
-  cd "${srcdir}/${_gitname}"
-  patch -N -p1 --follow-symlinks -i "${srcdir}/gcc10-fix.patch"
-  patch -N -p1 --follow-symlinks -i "${srcdir}/vadriverinit-fix.patch"
-  autoreconf -v --install
+  cd "$_pkgsrc"
+  patch -Np1 -F100 --follow-symlinks -i "$srcdir/gcc10-fix.patch"
+  patch -Np1 -F100 --follow-symlinks -i "$srcdir/fix-vadriverinit-1.patch"
+  patch -Np1 -F100 --follow-symlinks -i "$srcdir/fix-vadriverinit-2.patch"
 
-  git log > "${srcdir}/git.log"
+  autoreconf -v --install
 }
 
 pkgver() {
-  cd "${srcdir}/${_gitname}"
-  # _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|-g[0-9a-f]*$||' -e 's|-|+|g')"
-  _ver="${_pkgver}"
-  _rev="$(git rev-list --count HEAD)"
-  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
-  _hash="$(git rev-parse --short HEAD)"
+  cd "$_pkgsrc"
 
-  if [ -z "${_ver}" ]; then
-    error "Version could not be determined."
-    return 1
-  else
-    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
-  fi
+  local _ref_ver=2.0.0
+  local _ref_hash=edead0c17e2818bc0fee0ea644f85ab81bbe6f7a
+  local _revision=$(git rev-list --count --cherry-pick $_ref_hash...HEAD)
+  local _commit=$(git rev-parse --short=8 HEAD)
+
+  printf '%s.r%s.g%s' "${_ref_ver:?}" "${_revision:?}" "${_commit:?}"
 }
 
 build() {
-  cd "${srcdir}/${_gitname}"
-  ./configure --prefix=/usr \
-    --enable-drm \
-    --enable-x11 \
-    --enable-wayland \
-    --disable-static \
+  cd "$_pkgsrc"
+
+  local _configure_options=(
+    --prefix=/usr
+    --enable-drm
+    --enable-x11
+    --enable-wayland
+    --disable-static
     --enable-shared
+  )
+
+  ./configure "${_configure_options[@]}"
   make
 }
 
 package() {
-  cd "${srcdir}/${_gitname}"
-  make install DESTDIR="${pkgdir}"
+  cd "$_pkgsrc"
+  make install DESTDIR="$pkgdir"
 
-  install -D -v -m644    "${srcdir}/git.log"                               "${pkgdir}/usr/share/doc/${_pkgname}/git.log"
-  for _docfile in AUTHORS NEWS README; do
-    install -D -v -m644  "${_docfile}"                                     "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
-  done
-
-  install -D -v -m644    "COPYING"                                         "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-  ln -svr                "${pkgdir}/usr/share/licenses/${pkgname}/COPYING" "${pkgdir}/usr/share/doc/${_pkgname}/COPYING"
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

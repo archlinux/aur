@@ -17,10 +17,10 @@ Bay Trail M   (BYT) | vp8enc
 Broadwell     (BRW) | vp9dec vp9enc
 Braswell      (BSW) | vp8enc vp9dec
 
-The libva-intel-driver package isn't compiled with support for loading this driver
-so in order to use this driver's features with non hybrid codecs either
-recompile libva-intel-driver with the --enable-hybrid-codec or install
-the libva-intel-driver-hybrid package from the AUR
+The libva-intel-driver package isn't compiled with support for loading
+this driver.  To use this driver's features with non hybrid codecs,
+recompile libva-intel-driver with the --enable-hybrid-codec
+or install the libva-intel-driver-hybrid package from the AUR
 
 EOF
 }
