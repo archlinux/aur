@@ -1,6 +1,6 @@
 pkgbase = kew
 	pkgdesc = A command-line music player
-	pkgver = 2.4
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/ravachol/kew
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = kew
 	depends = libvorbis
 	conflicts = kew-git
 	replaces = cue-music-command
-	source = kew-2.4.tar.gz::https://github.com/ravachol/kew/archive/v2.4.tar.gz
-	sha512sums = 0d557bdc052df93a3028f53e895d599ab2cd0f2a59db5a71ed03d8ee820febd647f105b0d8bcd9e365f798c5cfbe22339e7a9a3ba4505515065d96bb59a04494
+	source = kew-2.4.1.tar.gz::https://github.com/ravachol/kew/archive/v2.4.1.tar.gz
+	sha512sums = d01d118486d5d6cdc2be7b5a5c1777c7c2695f4007ba74a938220d9dc36df4c0aaff89a481e999757af43596a6f91129c60b5f296b5acafa39f028d4024c3c7d
 
 pkgname = kew
