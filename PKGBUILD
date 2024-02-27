@@ -1,34 +1,26 @@
 # Maintainer: Felix Bühler <account at buehler dot de>
+# Maintainer: lvxnull <lvxnull at proton dot me>
 
 pkgname=nautilus-open-any-terminal
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="context-menu entry for opening other terminal in nautilus"
 arch=(any)
 url="https://github.com/Stunkymonkey/nautilus-open-any-terminal"
 license=(GPL3)
 depends=(python-nautilus)
-makedepends=(git python-setuptools)
-_commit=733cefb5269c9910606eef3df46f4e02c7726d43
-source=("git+https://github.com/Stunkymonkey/nautilus-open-any-terminal#commit=$_commit")
-sha512sums=("SKIP")
-
-pkgver() {
-  cd $pkgname
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
+makedepends=(make)
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('1f66f7588c22486100e72e1efff96d7b2977ae05a05b14674417a143666c6a62')
 
 build() {
-  cd $pkgname
-  python3 setup.py build
+  cd "${pkgname}-${pkgver}"
+
+  make build
 }
 
 package() {
-  cd "${pkgname}"
+  cd "${pkgname}-${pkgver}"
 
-  python3 setup.py install --root "${pkgdir}" --home /usr
-
-  # Don't install the module
-  rm -rf "${pkgdir}/usr/lib"
-  find "${pkgdir}" -name "__pycache__" -type d -exec rm -rf {} +
+  make PREFIX="${pkgdir}/usr" install
 }
