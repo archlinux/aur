@@ -1,14 +1,14 @@
 pkgbase = catboost-bin
 	pkgdesc = CatBoost is a high-performance open source library for gradient boosting on decision trees
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/catboost/catboost/
 	arch = x86_64
 	arch = aarch64
 	license = APACHE
-	source_x86_64 = https://github.com/catboost/catboost/releases/download/v1.2.2/catboost-linux-x86_64-1.2.2
-	b2sums_x86_64 = 51bc7c90de1f691f822a684286af9d6ebfa7f3e2e572dd4dd8994f189c6dfb4029fc95f314c910b5dca884ed60f44ecdf441293d32813c1d7c3e2d503f6a595c
-	source_aarch64 = https://github.com/catboost/catboost/releases/download/v1.2.2/catboost-linux-x86_64-1.2.2
-	b2sums_aarch64 = 8a4c61b5b4fe97db9a96d3f44fb46bed8d2f8164f1eb79d43253c6adb4043dfde1673b87d3a3b480db414ba461a00b0f2a2ceb9b36c40ba73f4ed871ff79afe8
+	source_x86_64 = https://github.com/catboost/catboost/releases/download/v1.2.3/catboost-linux-x86_64-1.2.3
+	b2sums_x86_64 = a91d203516fc1a695cbed564d5a8b5062a3d65406d0fe7783eeb2fb3c4908a644383c5ea5c797915cca31053a2ac4e77048cc64055f1988d133ecceb3e2ef5cf
+	source_aarch64 = https://github.com/catboost/catboost/releases/download/v1.2.3/catboost-linux-x86_64-1.2.3
+	b2sums_aarch64 = a91d203516fc1a695cbed564d5a8b5062a3d65406d0fe7783eeb2fb3c4908a644383c5ea5c797915cca31053a2ac4e77048cc64055f1988d133ecceb3e2ef5cf
 
 pkgname = catboost-bin
