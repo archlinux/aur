@@ -1,16 +1,16 @@
-diff --unified --recursive --text Zotero_linux-x86_64.orig/zotero Zotero_linux-x86_64.new/zotero
---- Zotero_linux-x86_64.orig/zotero	2023-05-20 18:19:06.000000000 -0500
-+++ Zotero_linux-x86_64.new/zotero	2023-05-21 19:00:18.712548086 -0500
-@@ -14,5 +14,4 @@
- # Don't create dedicated profile (default-esr)
- export MOZ_LEGACY_PROFILES=1
+diff -u --recursive --text Zotero_linux-x86_64.orig/zotero Zotero_linux-x86_64/zotero
+--- Zotero_linux-x86_64.orig/zotero	2024-02-26 04:17:15
++++ Zotero_linux-x86_64/zotero	2024-02-27 10:45:07
+@@ -16,5 +16,4 @@
+ # Use wayland backend when available
+ export MOZ_ENABLE_WAYLAND=1
  
 -CALLDIR="$(dirname "$(readlink -f "$0")")"
 -"$CALLDIR/zotero-bin" -app "$CALLDIR/app/application.ini" "$@"
 +exec "/usr/lib/zotero/zotero-bin" -app "/usr/lib/zotero/app/application.ini" "$@"
-diff --unified --recursive --text Zotero_linux-x86_64.orig/zotero.desktop Zotero_linux-x86_64.new/zotero.desktop
---- Zotero_linux-x86_64.orig/zotero.desktop	2023-05-20 18:19:06.000000000 -0500
-+++ Zotero_linux-x86_64.new/zotero.desktop	2023-05-21 18:57:25.014858539 -0500
+diff -u --recursive --text Zotero_linux-x86_64.orig/zotero.desktop Zotero_linux-x86_64/zotero.desktop
+--- Zotero_linux-x86_64.orig/zotero.desktop	2024-02-26 04:17:15
++++ Zotero_linux-x86_64/zotero.desktop	2024-02-27 10:45:05
 @@ -1,7 +1,7 @@
  [Desktop Entry]
  Name=Zotero
