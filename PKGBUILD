@@ -1,12 +1,12 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 pkgname=padloc-bin
 pkgver=4.3.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A modern, open source password manager for individuals and teams."
 url="https://padloc.app/"
 _ghurl="https://github.com/padloc/padloc"
 arch=("x86_64")
-license=("AGPL3")
+license=("AGPL-3.0-only")
 depends=(
     'webkit2gtk'
     'gtk3'
@@ -19,7 +19,7 @@ source=(
 )
 sha256sums=('d5bec5b1467cd98349e00d1c7a54a32703c31d9e69da553541ad13b3cdc45f60')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.gz"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
