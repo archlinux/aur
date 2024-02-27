@@ -1,10 +1,10 @@
 pkgbase = lotti-bin
 	pkgdesc = Achieve your goals and keep your data private with Lotti. This life tracking app is designed to help you stay motivated and on track, all while keeping your personal information safe and secure. Now with on-device speech recognition.
 	pkgver = 0.9.396_2294
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/matthiasn/lotti
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = gendesk
 	depends = pango
 	depends = gdk-pixbuf2
