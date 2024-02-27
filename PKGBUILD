@@ -5,7 +5,7 @@
 
 pkgname=ffmpeg-amd-full
 pkgver=6.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -134,6 +134,7 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         '060-ffmpeg-fix-segfault-with-avisynthplus.patch'
         '070-ffmpeg-fix-lensfun-detection.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/e1c1dc8347f13104bc21e4100fcf4d4dddf5e5d8'
+        '080-ffmpeg-glslang14-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/e43615fc2ab27d562ed7e087803f4a364a7d1175'
         'LICENSE')
 sha256sums=('8684f4b00f94b85461884c3719382f1261f0d9eb3d59640a1f4ac0873616f968'
             'SKIP'
@@ -142,6 +143,7 @@ sha256sums=('8684f4b00f94b85461884c3719382f1261f0d9eb3d59640a1f4ac0873616f968'
             '7d5ce8058b143bae1be10a06d79ac0f1a72daf00cf648309450d83bea249a6b1'
             'bf563193f450ece58a93db6840c0db33875df945fa81477b9b02fb209d3bf57a'
             '2b72fe52ea73fbc1ce7eb70b4c181893c761e30121879ddd5513976232d7adf8'
+            'cebcc04cac957f6a9c08169765da4c7ef231ebbda225876e210fd60e8582c3d9'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
@@ -153,6 +155,7 @@ prepare() {
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/060-ffmpeg-fix-segfault-with-avisynthplus.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/070-ffmpeg-fix-lensfun-detection.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/080-ffmpeg-glslang14-fix.patch"
 }
 
 build() {
@@ -231,6 +234,7 @@ build() {
         --enable-librsvg \
         --enable-librubberband \
         --enable-librtmp  \
+        --disable-libshaderc \
         --enable-libshine \
         --enable-libsmbclient \
         --enable-libsnappy \
