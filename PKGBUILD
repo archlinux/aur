@@ -10,7 +10,7 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=122.0.6261.69
+pkgver=122.0.6261.94
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -41,7 +41,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         drop-flags-unsupported-by-clang16.patch
         compiler-rt-16.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('f5bf4085ad3173883b45ea72b483d07f50ec3aa0f7546ac3837a9d26d0b4f9c0'
+sha256sums=('2d0294d9baf94c921e4e10af7841cc6c11e3880f120e83fd57409e87ce3cb1e7'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '1f6acf165578288dc84edc7d9dcfabf7d38f55153b63a37ee5afa929f0e2baad'
             '8c256b2a9498a63706a6e7a55eadbeb8cc814be66a75e49aec3716c6be450c6c'
@@ -76,14 +76,14 @@ _uc_ver="$pkgver-$_uc_rel"
 optdepends=("${optdepends[@]}"
             'chromium-extension-web-store: Web Store Functionality')
 source=(${source[@]}
-        # ${pkgname%-*}-$_uc_ver.zip::https://github.com/noahvogt/${pkgname%-*}/archive/refs/heads/update.zip
-        ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz
+        ${pkgname%-*}-$_uc_ver.zip::https://github.com/noahvogt/${pkgname%-*}/archive/refs/heads/update.zip
+        # ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz
         0001-adjust-buffer-format-order.patch
         0001-enable-linux-unstable-deb-target.patch
         0001-ozone-wayland-implement-text_input_manager_v3.patch
         0001-ozone-wayland-implement-text_input_manager-fixes.patch)
 sha256sums=(${sha256sums[@]}
-            '6c2405ca58cae05ea1c8116495d7885a0f42f44ca3d70b2bd8f11c27abb23c52'
+            '744bc95760c23d2f61d93916f10f4f2ff09d51ce5e4c51698118fb2341174eda'
             '8ba5c67b7eb6cacd2dbbc29e6766169f0fca3bbb07779b1a0a76c913f17d343f'
             '2a44756404e13c97d000cc0d859604d6848163998ea2f838b3b9bb2c840967e3'
             'd9974ddb50777be428fd0fa1e01ffe4b587065ba6adefea33678e1b3e25d1285'
@@ -215,8 +215,8 @@ prepare() {
 
 
   # Ungoogled Chromium changes
-  # _ungoogled_repo="$srcdir/ungoogled-chromium-update"
-  _ungoogled_repo="$srcdir/$pkgname-$_uc_ver"
+  _ungoogled_repo="$srcdir/ungoogled-chromium-update"
+  # _ungoogled_repo="$srcdir/${pkgname%-*}-$_uc_ver"
 
   _utils="${_ungoogled_repo}/utils"
   msg2 'Pruning binaries'
@@ -310,8 +310,8 @@ build() {
   fi
 
   # Append ungoogled chromium flags to _flags array
-  # _ungoogled_repo="$srcdir/ungoogled-chromium-update"
-  _ungoogled_repo="$srcdir/$pkgname-$_uc_ver"
+  _ungoogled_repo="$srcdir/ungoogled-chromium-update"
+  # _ungoogled_repo="$srcdir/${pkgname%-*}-$_uc_ver"
   readarray -t -O ${#_flags[@]} _flags < "${_ungoogled_repo}/flags.gn"
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
