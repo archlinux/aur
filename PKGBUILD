@@ -1,7 +1,8 @@
 # Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+
 pkgname=boom
 _buildpkgname=lifish
-pkgver=1.7
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="A game inspired by Factor Software's BOOM.Bomberman meets DOOM."
 arch=('any')
@@ -15,7 +16,7 @@ source=(
   "${pkgname}"
   "${pkgname}.desktop"
 )
-sha256sums=('0b47f57e51dfbdfa811fc07ff13fd54a63838ad3998cb4f4fbbd2b6655f80ef1'
+sha256sums=('b2ec4d6a3e16e294c87cc9d51c4d08ce18cab1ee2b3e40dc974728556cc6a726'
             'efc02b4b2da6f08fd392236b6e3b1b30d0a1e4b30a68b80eee6e5be40cfb2c11'
             '80349740c8b281d2110524e38f8cd774e31616ced4ea6fc894b516a7772c474f')
 build() {
@@ -30,7 +31,7 @@ package() {
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -DTm755 "${_buildpkgname}" "${pkgdir}/usr/share/${pkgname}/${pkgname}"
   cp -r "assets" "${pkgdir}/usr/share/${pkgname}/"
-  chmod 544 "${pkgdir}/usr/share/${pkgname}/assets/graphics/"*
+  chmod -R 644 "${pkgdir}/usr/share/${pkgname}/assets/graphics/"
   cp levels.json "${pkgdir}/usr/share/${pkgname}/"
   
   # create savegame outside of installdir
