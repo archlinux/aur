@@ -1,6 +1,6 @@
 pkgbase = fluent-bit
 	pkgdesc = Collect data/logs from different sources, unify and send them to multiple destinations.
-	pkgver = 2.2.0
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://fluentbit.io/
 	arch = x86_64
@@ -22,8 +22,8 @@ pkgbase = fluent-bit
 	depends = systemd-libs
 	backup = etc/fluent-bit/fluent-bit.conf
 	backup = etc/fluent-bit/parsers.conf
-	source = fluent-bit-2.2.0.tar.gz::https://releases.fluentbit.io/2.2/source-2.2.0.tar.gz
-	md5sums = 97bad0cdf97dc90d6346f725ccacd6dc
-	sha256sums = 2bdec69e98cc19f37a576ba96f30026ee5c5ff7b57e87395519f6d66727e81fe
+	source = fluent-bit-2.2.2.tar.gz::https://releases.fluentbit.io/2.2/source-2.2.2.tar.gz
+	md5sums = 0e4af3cbc4d94f931781091b013aff28
+	sha256sums = 3c51f6b4a6b2590cc5f072a0af3ccd33fe5e61eec751fda481a9e17aae9a51dc
 
 pkgname = fluent-bit
