@@ -1,4 +1,5 @@
-# Maintainer: Manuel Wiesinger <m at mmap dot at>
+# Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
+
 pkgname=virtme-ng-git
 _srcname=virtme-ng
 pkgver=v1.22.r0.gba33d94
