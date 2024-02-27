@@ -69,3 +69,107 @@ Fixing VMWare Player on Linux when using DHCP addresses: https://www.nikhef.nl/~
     if (port->jack.state == FALSE || hubJack == NULL) {
        return -EINVAL;
     }
+From 2c6d66f3f1947384038b765c897b102ecdb18298 Mon Sep 17 00:00:00 2001
+From: Michal Kubecek <mkubecek@suse.cz>
+Date: Fri, 12 Jan 2024 08:30:33 +0100
+Subject: [PATCH] modules: fix build with -Wmissing-prototypes
+
+Mainline commit 0fcb70851fbf ("Makefile.extrawarn: turn on
+missing-prototypes globally") in 6.8-rc1 enables -Wmissing-prototypes
+globally, revealing a lot of unclean code and also some actual problems.
+This is also the case in vmmon and vmnet modules.
+
+Most of them are addressed by making functions used only within one file
+static. The missing prototype of random_get_entropy_fallback() is handled
+by including <linux/timex.h> rather than <asm/timex.h>.
+
+Finally, there are four functions in vmnet module which are actually used
+in multiple files but instead of proper declarations, their prototype is
+duplicated in vmnet-only/driver.c, risking that the two copies won't match
+(which actually happened in one case). The cleanest solution would be
+creating separate header files for them (bridge.h, netif.h, userif.h and
+vnetUserListener.h) and including them in the respective source file and
+driver.c. As the developers already handle similar cases by simply putting
+the declarations into vnetInt.h, let us do the same to keep things simple.
+---
+ vmmon-only/common/task.c  |  2 +-
+ vmmon-only/common/vmx86.c |  6 +++---
+ vmmon-only/linux/driver.c |  4 ++--
+ vmmon-only/linux/hostif.c |  6 +++---
+ vmnet-only/bridge.c       |  2 +-
+ vmnet-only/driver.c       | 16 ++--------------
+ vmnet-only/vnetInt.h      |  7 +++++++
+ 7 files changed, 19 insertions(+), 24 deletions(-)
+
+diff --git a/vmnet-only/bridge.c b/vmnet-only/bridge.c
+index b604a25d..4c139570 100644
+--- a/vmnet-only/bridge.c
++++ b/vmnet-only/bridge.c
+@@ -1407,7 +1407,7 @@ VNetBridgeComputeHeaderPos(struct sk_buff *skb) // IN: buffer to examine
+  *----------------------------------------------------------------------
+  */
+ 
+-void
++static void
+ VNetBridgeSendLargePacket(struct sk_buff *skb,        // IN: packet to split
+                           VNetBridge *bridge)         // IN: bridge
+ {
+diff --git a/vmnet-only/driver.c b/vmnet-only/driver.c
+index f314ff2e..fe5923d8 100644
+--- a/vmnet-only/driver.c
++++ b/vmnet-only/driver.c
+@@ -50,18 +50,6 @@
+ 
+ #include "vmnetInt.h"
+ 
+-/*
+- * Initialization and creation routines from other files.
+- * Putting them here reduces the need for so many header files.
+- */
+-
+-extern int VNetUserIf_Create(VNetPort **ret);
+-extern int VNetNetIf_Create(char *devName, VNetPort **ret, int hubNum);
+-extern int VNetBridge_Create(char *devName, uint32 flags, VNetJack *hubJack,
+-                             VNetPort **ret);
+-extern int VNetUserListener_Create(uint32 classMask, VNetJack *hubJack, VNetPort **ret);
+-
+-
+ /*
+  *  Structure for cycle detection of host interfaces.  This
+  *  struct is only used by VNetCycleDetectIf().
+@@ -295,7 +283,7 @@ VNetRemovePortFromList(const VNetPort *port) // IN: port to remove from list
+  *----------------------------------------------------------------------
+  */
+ 
+-int
++static int
+ LinuxDriverInit(void)
+ {
+    int retval;
+@@ -374,7 +362,7 @@ vmnet_init_module(void)
+  *----------------------------------------------------------------------
+  */
+ 
+-void
++static void
+ LinuxDriverExit(void)
+ {
+    unregister_chrdev(VNET_MAJOR_NUMBER, "vmnet");
+diff --git a/vmnet-only/vnetInt.h b/vmnet-only/vnetInt.h
+index f6a90a13..e76dcf5c 100644
+--- a/vmnet-only/vnetInt.h
++++ b/vmnet-only/vnetInt.h
+@@ -218,6 +218,13 @@ extern int VNetProc_Init(void);
+ 
+ extern void VNetProc_Cleanup(void);
+ 
++int VNetNetIf_Create(char *devName, VNetPort **ret, int hubNum);
++int VNetUserIf_Create(VNetPort **ret);
++int VNetBridge_Create(const char *devName, uint32 flags, VNetJack *hubJack,
++		      VNetPort **ret);
++int VNetUserListener_Create(uint32 classMask, VNetJack *hubJack,
++			    VNetPort **port);
++
+ 
+ /*
+  *----------------------------------------------------------------------
