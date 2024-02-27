@@ -14,6 +14,7 @@ before_script:
   - chmod 700 ~/.ssh
   - git config --global user.email "zomundo@gmail.com"
   - git config --global user.name "Mundo"
+  - git remote add aur ssh://aur@aur.archlinux.org/taskade-appimage.git
 
 
 stages:
@@ -46,12 +47,12 @@ release_job:
   script:
     - git branch --list
     - git remote -v
-    - git checkout main
+    - git checkout -b main
     - pk_name=$(grep -Po "^pkgname=\K.*" PKGBUILD)
     - pk_ver=$(grep -Po "^pkgver=\K.*" PKGBUILD)
     - pk_rel=$(grep -Po "^pkgrel=\K.*" PKGBUILD)
     - commit_msg="update to $pk_name ver $pk_ver, rel version $pk_rel"
-    - git push origin main
+    - git push aur master
 
   dependencies:
     - find_release_job
