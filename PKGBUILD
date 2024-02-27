@@ -4,7 +4,7 @@
 pkgname=python-hyperspy
 pkgshort=hyperspy
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Hyperspectral data analysis"
 arch=('any')
 url="http://hyperspy.org"
