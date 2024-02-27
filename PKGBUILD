@@ -1,16 +1,16 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=libdmx
-pkgver=1.1.4
-pkgrel=2
+pkgver=1.1.5
+pkgrel=1
 pkgdesc='X11 Distributed Multihead extension library'
 arch=('x86_64' 'i686')
 license=('custom')
 url='https://xorg.freedesktop.org/'
 depends=('libxext')
 makedepends=('xorg-util-macros')
-source=("https://www.x.org/releases/individual/lib/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('253f90005d134fa7a209fbcbc5a3024335367c930adf0f3203e754cf32747243')
+source=("https://www.x.org/releases/individual/lib/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('070e82cc1daa1b21ee1339aef56a909eab04cbe7d430fabfbb01ecd21b2dd9f3')
 
 build() {
   cd ${pkgname}-${pkgver}
