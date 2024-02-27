@@ -1,20 +1,15 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electron-utils-bin
 pkgver=3.3.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Electron Utils for every day usage as a dev."
 arch=('x86_64')
 url='https://github.com/SamTV12345/DevRustPilot'
-license=('custom')
+license=('LicenseRef-custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'libsoup'
-    'gdk-pixbuf2'
     'webkit2gtk'
-    'pango'
-    'openssl-1.1'
-    'cairo'
     'gtk3'
     'hicolor-icon-theme'
 )
@@ -23,7 +18,7 @@ source=(
 )
 sha256sums=('293213097856719ed5265a6d29783748c0da844b063eed0ab7314767e063e349')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.gz"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
