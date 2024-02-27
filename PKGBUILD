@@ -7,7 +7,7 @@ pkgdesc="Discreet Cryptocurrency Wallet. discreet.net - SCAM WARNING!"
 pkgver=1.0.0
 #_guiver="${pkgver}-3"
 #_daemonver=0.0.28-2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 #depends=('dotnet-sdk')
 url="https://discreet.net"
@@ -23,7 +23,7 @@ url="https://discreet.net"
 build() {
   echo -e "
   \e[1;31mThe maintainer of this package was scammed out of thousands of dollars
-  by the founder of the discreet project FRED MARKTOR!
+  by the founder of the discreet project FREDERIK MARKOR!
 
   The maintainer of this package endured harassment
   at the hands of toxic community elements in the official discreetnetwork telegram channel.
@@ -32,7 +32,7 @@ build() {
   made against children by community member 'Discreet Priest'.
 
   The maintainer of this package
-  was banned from https://t.me/discreetnetwork by FRED MARKTOR for reporting this
+  was banned from https://t.me/discreetnetwork by FRED MARKOR for reporting this.
 
   The maintainer of this package was left with no ability to participate in the testnet
   nor any alternative for transferring presale tokens to mainnet coins.
