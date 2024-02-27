@@ -3,7 +3,7 @@
 
 _pkgname='chkservice'
 pkgname="${_pkgname}-git"
-pkgver=0.3.r1.ea40b14f
+pkgver=0.3.r2.ea40b14f
 pkgrel=1
 pkgdesc='Systemd units manager with ncurses terminal interface'
 arch=('x86_64')

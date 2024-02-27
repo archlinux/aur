@@ -1,6 +1,6 @@
 pkgbase = chkservice-git
 	pkgdesc = Systemd units manager with ncurses terminal interface
-	pkgver = 0.3.r1.ea40b14f
+	pkgver = 0.3.r2.ea40b14f
 	pkgrel = 1
 	url = https://github.com/srakitnican/chkservice
 	arch = x86_64
