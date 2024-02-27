@@ -1,15 +1,15 @@
 pkgbase = akash-bin
 	pkgdesc = A secure, transparent, and peer-to-peer cloud computing network
-	pkgver = 0.30.1
+	pkgver = 0.30.2
 	pkgrel = 1
 	url = https://github.com/akash-network/node
 	arch = x86_64
 	license = Apache
 	provides = akash
 	conflicts = akash
-	source = https://raw.githubusercontent.com/akash-network/node/v0.30.1/LICENSE
+	source = https://raw.githubusercontent.com/akash-network/node/v0.30.2/LICENSE
 	sha256sums = f88a0de961dddc3410a201b6174c54190fdd912310df24ea8292c675981a39cd
-	source_x86_64 = https://github.com/akash-network/node/releases/download/v0.30.1/akash_0.30.1_linux_amd64.zip
-	sha256sums_x86_64 = 3afbbf772bbaf321cc150a131c354b6eff244b6a13d73e9555529ca801af64f2
+	source_x86_64 = https://github.com/akash-network/node/releases/download/v0.30.2/akash_0.30.2_linux_amd64.zip
+	sha256sums_x86_64 = 65f6f497690058f419ab62000200d778aebdb828378f50c8dac926eb56684f0e
 
 pkgname = akash-bin
