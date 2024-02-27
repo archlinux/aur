@@ -1,17 +1,13 @@
 pkgbase = darkwrite-bin
 	pkgdesc = The eye-candy note taking and to-do application for all desktops
 	pkgver = 1.0.0_alpha.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/astudentinearth/darkwrite
 	arch = x86_64
-	license = GPL3
-	depends = cairo
+	license = GPL-3.0-only
 	depends = webkit2gtk
 	depends = gtk3
-	depends = fontconfig
-	depends = pango
 	depends = hicolor-icon-theme
-	depends = gdk-pixbuf2
 	provides = darkwrite=1.0.0_alpha.2
 	conflicts = darkwrite
 	source = darkwrite-1.0.0_alpha.2.deb::https://github.com/astudentinearth/darkwrite/releases/download/app-v1.0.0-alpha.2/darkwrite_1.0.0-alpha.2_amd64.deb
