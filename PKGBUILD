@@ -2,7 +2,7 @@
 pkgname=awsaml-bin
 pkgver=3.1.2
 _electronversion=26
-pkgrel=3
+pkgrel=4
 pkgdesc="An application for providing automatically rotated temporary AWS credentials."
 arch=('x86_64')
 url="https://github.com/rapid7/awsaml"
@@ -19,13 +19,13 @@ source=(
 )
 sha256sums=('4348a14b68d16005efda32994d36e53a9ddd1817255c3531c0ad15c0d6590658'
             'db684cabe2f8e2118d953f6ecee9054018a1b7a7632c1d4a63d83371709f1b1f'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
