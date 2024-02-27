@@ -1,0 +1,21 @@
+pkgbase = android-aarch64-liburing
+	pkgdesc = Linux-native io_uring I/O access library (android)
+	pkgver = 2.5
+	pkgrel = 1
+	url = https://git.kernel.dk/cgit/liburing
+	arch = any
+	license = (GPL-2.0-only WITH Linux-syscall-note) OR MIT
+	license = LGPL-2.0-or-later
+	license = MIT
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/axboe/liburing/archive/refs/tags/liburing-2.5.tar.gz
+	source = 0001-Fix-libs-install.patch
+	md5sums = c7d5ad39446713cd18bde999ad32ae74
+	md5sums = a0de03236c46346326adadb0139bc03d
+
+pkgname = android-aarch64-liburing
