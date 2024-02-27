@@ -3,14 +3,17 @@
 # Contributor: yaa110 <yaa110@gmail.com>
 pkgname=nomino-bin
 pkgver=1.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Batch rename utility for developers'
 arch=('x86_64')
 url="https://github.com/yaa110/nomino"
-license=('Apache' 'MIT')
-depends=()
+license=(
+	'Apache-2.0'
+	'MIT'
+)
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
+depends=()
 source=(
 	"${pkgname%-bin}-${pkgver}::${url}/releases/download/${pkgver}/${pkgname%-bin}-linux-64bit"
 	"LICENSE-MIT-${pkgver}::https://raw.githubusercontent.com/yaa110/nomino/${pkgver}/LICENSE-MIT"
