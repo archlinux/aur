@@ -3,7 +3,7 @@
 # Maintainer: Joshua Taillon <jat255 AT gmail DOT com>
 pkgname=python-hyperspy
 pkgshort=hyperspy
-pkgver=2.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Hyperspectral data analysis"
 arch=('any')
@@ -26,7 +26,7 @@ depends=('python'
          'python-pyaml'
          'python-requests'
          'python-rosettasciio'
-         'python-scipy>=1.4.0'
+         'python-scipy>=1.6.0'
          'python-sympy'
          'python-tqdm>=4.9.0'
          'python-traits>=4.5.0'
@@ -70,8 +70,6 @@ replaces=('hyperspy')
 conflicts=('hyperspy')
 provides=('hyperspy')
 
-source=(https://github.com/hyperspy/hyperspy/archive/v$pkgver.tar.gz)
-
 build() {
   cd "$srcdir/$pkgshort-$pkgver"
   export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
@@ -83,4 +81,3 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-md5sums=('d25ec44e2fec425a72debedc7158838e')
