@@ -8,4 +8,4 @@ export QT_PLUGIN_PATH="${_APPDIR}/plugins:${QT_PLUGIN_PATH}"
 export QML_IMPORT_PATH="${_APPDIR}/qml:${QML_IMPORT_PATH}"
 export QML2_IMPORT_PATH="${_APPDIR}/qml:${QML2_IMPORT_PATH}"
 cd "${_APPDIR}"
-exec "${_ASAR}" "$@" | exit
+exec "${_ASAR}" "$@" || exit $?
