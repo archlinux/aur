@@ -15,6 +15,7 @@ before_script:
   - git config --global user.email "zomundo@gmail.com"
   - git config --global user.name "Mundo"
   - git remote add aur ssh://aur@aur.archlinux.org/taskade-appimage.git
+  - git fetch aur
 
 
 stages:
@@ -30,6 +31,8 @@ find_release_job:
     paths:
       - PKGBUILD
       - .SRCINFO
+    reports:
+      dotenv: build.env
   only:
     - schedules
 
@@ -41,13 +44,16 @@ test_job:
     - find_release_job
   only:
     - schedules
+  rules:
+    - exists:
+        - build.env
 
 release_job:
   stage: release
   script:
     - git branch --list
     - git remote -v
-    - git checkout -b main
+    - git checkout -b master
     - pk_name=$(grep -Po "^pkgname=\K.*" PKGBUILD)
     - pk_ver=$(grep -Po "^pkgver=\K.*" PKGBUILD)
     - pk_rel=$(grep -Po "^pkgrel=\K.*" PKGBUILD)
@@ -56,5 +62,8 @@ release_job:
 
   dependencies:
     - find_release_job
+  rules:
+    - exists:
+        - build.env
   only:
     - schedules
