@@ -1,21 +1,31 @@
 diff --git a/thunar/thunar-toolbar-editor.c b/thunar/thunar-toolbar-editor.c
-index 0fb3f607..a552ee32 100644
+index 0fb3f607..8a70bb71 100644
 --- a/thunar/thunar-toolbar-editor.c
 +++ b/thunar/thunar-toolbar-editor.c
-@@ -268,8 +268,6 @@ thunar_toolbar_editor_visible_func (GtkTreeModel *model,
+@@ -267,10 +267,6 @@ thunar_toolbar_editor_visible_func (GtkTreeModel *model,
+ 
    gtk_tree_model_get (model, iter, 3, &order, -1);
  
-    /* The item with order 0 is always THUNAR_WINDOW_ACTION_VIEW_MENUBAR which we want to hide */
+-   /* The item with order 0 is always THUNAR_WINDOW_ACTION_VIEW_MENUBAR which we want to hide */
 -  if (order == 0)
 -    visible = FALSE;
- 
+-
    return visible;
  }
+ 
 diff --git a/thunar/thunar-window.c b/thunar/thunar-window.c
-index 26345602..c38da015 100644
+index 26345602..db4c7a49 100644
 --- a/thunar/thunar-window.c
 +++ b/thunar/thunar-window.c
-@@ -214,7 +214,6 @@ static gboolean  thunar_window_action_shortcuts_changed   (ThunarWindow
+@@ -83,7 +83,6 @@ enum
+   BACK,
+   RELOAD,
+   TOGGLE_SIDEPANE,
+-  TOGGLE_MENUBAR,
+   ZOOM_IN,
+   ZOOM_OUT,
+   ZOOM_RESET,
+@@ -214,7 +213,6 @@ static gboolean  thunar_window_action_shortcuts_changed   (ThunarWindow
  static gboolean  thunar_window_action_tree_changed        (ThunarWindow           *window);
  static gboolean  thunar_window_action_image_preview       (ThunarWindow           *window);
  static gboolean  thunar_window_action_statusbar_changed   (ThunarWindow           *window);
@@ -23,7 +33,7 @@ index 26345602..c38da015 100644
  static gboolean  thunar_window_action_menubar_changed     (ThunarWindow           *window);
  static gboolean  thunar_window_action_detailed_view       (ThunarWindow           *window);
  static gboolean  thunar_window_action_icon_view           (ThunarWindow           *window);
-@@ -395,9 +394,9 @@ struct _ThunarWindow
+@@ -395,9 +393,9 @@ struct _ThunarWindow
    /* to be able to change folder on "device-pre-unmount" if required */
    ThunarDeviceMonitor       *device_monitor;
  
@@ -34,15 +44,39 @@ index 26345602..c38da015 100644
    GtkWidget                *spinner;
    GtkWidget                 *paned;
    GtkWidget                 *paned_right;
-@@ -759,7 +758,6 @@ thunar_window_init (ThunarWindow *window)
+@@ -450,7 +448,8 @@ struct _ThunarWindow
+   GtkWidget                 *location_toolbar_item_zoom_out;
+   GtkWidget                 *location_toolbar_item_search;
+   GtkWidget                 *location_toolbar_item_view_menubar;
+-
++  GtkWidget                 *location_toolbar_item_spinner;
++  
+   ThunarActionManager       *action_mgr;
+ 
+   gulong                     signal_handler_id_history_changed;
+@@ -512,7 +511,10 @@ static XfceGtkActionEntry thunar_window_action_entries[] =
+     { THUNAR_WINDOW_ACTION_TOGGLE_SIDE_PANE,               "<Actions>/ThunarWindow/toggle-side-pane",                "F9",                   XFCE_GTK_MENU_ITEM,       NULL,                          NULL,                                                                                NULL,                      G_CALLBACK (thunar_window_toggle_sidepane),           },
+     { THUNAR_WINDOW_ACTION_TOGGLE_IMAGE_PREVIEW,           "<Actions>/ThunarWindow/toggle-image-preview",            "",                     XFCE_GTK_CHECK_MENU_ITEM, N_ ("Image Preview"),          N_ ("Change the visibility of this window's image preview"),                         NULL,                      G_CALLBACK (thunar_window_action_image_preview),  },
+     { THUNAR_WINDOW_ACTION_VIEW_STATUSBAR,                 "<Actions>/ThunarWindow/view-statusbar",                  "",                     XFCE_GTK_CHECK_MENU_ITEM, N_ ("St_atusbar"),             N_ ("Change the visibility of this window's statusbar"),                             NULL,                      G_CALLBACK (thunar_window_action_statusbar_changed),  },
+-    { THUNAR_WINDOW_ACTION_VIEW_MENUBAR,                   "<Actions>/ThunarWindow/view-menubar",                    "<Primary>m",           XFCE_GTK_CHECK_MENU_ITEM, N_ ("_Menubar"),               N_ ("Change the visibility of this window's menubar"),                               "open-menu-symbolic",      G_CALLBACK (thunar_window_action_menubar_changed),    },
++
++    { THUNAR_WINDOW_ACTION_VIEW_MENUBAR,                   "<Actions>/ThunarWindow/view-menubar",                    "",                     XFCE_GTK_CHECK_MENU_ITEM, N_ ("_Menubar"),               NULL,                                                                                "open-menu",               G_CALLBACK (thunar_window_action_menubar_changed),    },
++    { THUNAR_WINDOW_ACTION_SPINNER,                        "<Actions>/ThunarWindow/spinner",                         "",                     0,                        N_ ("_Spinner"),               NULL,                                                                                NULL,                      NULL,      },
++
+     { THUNAR_WINDOW_ACTION_CONFIGURE_TOOLBAR,              "<Actions>/ThunarWindow/view-configure-toolbar",          "",                     XFCE_GTK_MENU_ITEM ,      N_ ("Configure _Toolbar..."),  N_ ("Configure the toolbar"),                                                        NULL,                      G_CALLBACK (thunar_window_action_show_toolbar_editor),},
+     { THUNAR_WINDOW_ACTION_CLEAR_DIRECTORY_SPECIFIC_SETTINGS,"<Actions>/ThunarWindow/clear-directory-specific-settings","",                  XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Clear Saved _Folder View Settings"), N_ ("Delete saved view settings for this folder"),                        NULL,                      G_CALLBACK (thunar_window_action_clear_directory_specific_settings), },
+     { THUNAR_WINDOW_ACTION_SHOW_HIDDEN,                    "<Actions>/ThunarWindow/show-hidden",                     "<Primary>h",           XFCE_GTK_CHECK_MENU_ITEM, N_ ("Show _Hidden Files"),     N_ ("Toggles the display of hidden files in the current window"),                    NULL,                      G_CALLBACK (thunar_window_action_show_hidden),        },
+@@ -757,9 +759,7 @@ thunar_window_init (ThunarWindow *window)
+ {
+   GtkWidget             *label;
    GtkWidget             *infobar;
-   GtkWidget             *item;
+-  GtkWidget             *item;
    GtkWidget             *event_box;
 -  gboolean               last_menubar_visible;
    gchar                 *last_location_bar;
    gchar                 *last_side_pane;
    gchar                 *uca_path;
-@@ -803,7 +801,6 @@ thunar_window_init (ThunarWindow *window)
+@@ -803,7 +803,6 @@ thunar_window_init (ThunarWindow *window)
                  "last-window-width", &last_window_width,
                  "last-window-height", &last_window_height,
                  "last-window-maximized", &last_window_maximized,
@@ -50,7 +84,7 @@ index 26345602..c38da015 100644
                  "last-separator-position", &last_separator_position,
                  "last-location-bar", &last_location_bar,
                  "last-side-pane", &last_side_pane,
-@@ -842,7 +839,7 @@ thunar_window_init (ThunarWindow *window)
+@@ -842,7 +841,7 @@ thunar_window_init (ThunarWindow *window)
  
    /* determine the default window size from the preferences */
    gtk_window_set_default_size (GTK_WINDOW (window), last_window_width, last_window_height);
@@ -59,7 +93,7 @@ index 26345602..c38da015 100644
    /* restore the maxized state of the window */
    if (G_UNLIKELY (last_window_maximized))
      gtk_window_maximize (GTK_WINDOW (window));
-@@ -856,21 +853,16 @@ thunar_window_init (ThunarWindow *window)
+@@ -856,34 +855,19 @@ thunar_window_init (ThunarWindow *window)
    gtk_widget_show (window->grid);
  
    /* build the menubar */
@@ -78,23 +112,26 @@ index 26345602..c38da015 100644
 -    gtk_widget_hide (window->menubar);
 -  gtk_widget_set_hexpand (window->menubar, TRUE);
 -  gtk_grid_attach (GTK_GRID (window->grid), window->menubar, 0, 0, 1, 1);
- 
-+  gtk_widget_set_vexpand (window->menubar, TRUE);
-+  gtk_widget_show_all (window->menubar);
-   /* append the menu item for the spinner */
-   item = gtk_menu_item_new ();
-   gtk_widget_set_sensitive (GTK_WIDGET (item), FALSE);
-@@ -878,9 +870,6 @@ thunar_window_init (ThunarWindow *window)
-   gtk_menu_shell_append (GTK_MENU_SHELL (window->menubar), item);
-   gtk_widget_show (item);
+-
+-  /* append the menu item for the spinner */
+-  item = gtk_menu_item_new ();
+-  gtk_widget_set_sensitive (GTK_WIDGET (item), FALSE);
+-  g_object_set (G_OBJECT (item), "right-justified", TRUE, NULL);
+-  gtk_menu_shell_append (GTK_MENU_SHELL (window->menubar), item);
+-  gtk_widget_show (item);
  
 -  /* Required if F10 is pushed while the menu is hidden */
 -  g_signal_connect_swapped (G_OBJECT (window->menubar), "deactivate", G_CALLBACK (thunar_window_action_menubar_update), window);
--
++  gtk_widget_set_vexpand (window->menubar, TRUE);
++  gtk_widget_show_all (window->menubar);
+ 
    /* place the spinner into the menu item */
    window->spinner = gtk_spinner_new ();
-   gtk_container_add (GTK_CONTAINER (item), window->spinner);
-@@ -998,6 +987,11 @@ thunar_window_init (ThunarWindow *window)
+-  gtk_container_add (GTK_CONTAINER (item), window->spinner);
+   gtk_widget_set_visible (GTK_WIDGET (window->spinner), TRUE);
+ 
+   /* check if we need to add the root warning */
+@@ -998,6 +982,11 @@ thunar_window_init (ThunarWindow *window)
    /* get a reference of the global job operation history */
    window->job_operation_history = thunar_job_operation_history_get_default ();
  
@@ -106,7 +143,7 @@ index 26345602..c38da015 100644
    window->location_toolbar = NULL;
    thunar_window_location_toolbar_create (window);
  
-@@ -1403,8 +1397,7 @@ thunar_window_update_view_menu (ThunarWindow *window,
+@@ -1403,8 +1392,7 @@ thunar_window_update_view_menu (ThunarWindow *window,
    gtk_menu_item_set_submenu (GTK_MENU_ITEM (item), GTK_WIDGET (sub_items));
    xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (THUNAR_WINDOW_ACTION_VIEW_STATUSBAR), G_OBJECT (window),
                                                     gtk_widget_get_visible (window->statusbar), GTK_MENU_SHELL (menu));
@@ -116,7 +153,7 @@ index 26345602..c38da015 100644
    xfce_gtk_menu_item_new_from_action_entry (get_action_entry (THUNAR_WINDOW_ACTION_CONFIGURE_TOOLBAR), G_OBJECT (window), GTK_MENU_SHELL (menu));
    xfce_gtk_menu_append_separator (GTK_MENU_SHELL (menu));
    if (window->directory_specific_settings)
-@@ -3881,35 +3874,22 @@ thunar_window_action_statusbar_changed (ThunarWindow *window)
+@@ -3881,35 +3869,22 @@ thunar_window_action_statusbar_changed (ThunarWindow *window)
  
  
  
@@ -157,26 +194,32 @@ index 26345602..c38da015 100644
  static gboolean
  thunar_window_action_show_toolbar_editor (ThunarWindow *window)
  {
-@@ -6109,7 +6089,7 @@ thunar_window_location_toolbar_create (ThunarWindow *window)
+@@ -6109,7 +6084,8 @@ thunar_window_location_toolbar_create (ThunarWindow *window)
    gtk_widget_set_hexpand (window->location_toolbar, TRUE);
  
    /* The first toolbar item must always be THUNAR_WINDOW_ACTION_VIEW_MENUBAR which we hide by default */
 -  window->location_toolbar_item_view_menubar = thunar_window_create_toolbar_item_from_action (window, THUNAR_WINDOW_ACTION_VIEW_MENUBAR, item_order++);
 +  window->location_toolbar_item_view_menubar = thunar_window_create_toolbar_toggle_item_from_action (window, THUNAR_WINDOW_ACTION_VIEW_MENUBAR,FALSE, item_order++);
++  window->location_toolbar_item_spinner      = thunar_window_create_toolbar_item_from_action (window, THUNAR_WINDOW_ACTION_SPINNER, item_order++);
    window->location_toolbar_item_back         = thunar_window_create_toolbar_item_from_action (window, THUNAR_WINDOW_ACTION_BACK, item_order++);
    window->location_toolbar_item_forward      = thunar_window_create_toolbar_item_from_action (window, THUNAR_WINDOW_ACTION_FORWARD, item_order++);
    window->location_toolbar_item_parent       = thunar_window_create_toolbar_item_from_action (window, THUNAR_WINDOW_ACTION_OPEN_PARENT, item_order++);
-@@ -6124,6 +6104,9 @@ thunar_window_location_toolbar_create (ThunarWindow *window)
+@@ -6124,6 +6100,14 @@ thunar_window_location_toolbar_create (ThunarWindow *window)
                                                 thunar_window_create_toolbar_item_from_action (window, THUNAR_WINDOW_ACTION_VIEW_AS_COMPACT_LIST, item_order++);
                                                 thunar_window_create_toolbar_toggle_item_from_action (window, THUNAR_WINDOW_ACTION_VIEW_SPLIT, thunar_window_split_view_is_active (window), item_order++);
  
 +  gtk_menu_attach_to_widget (GTK_MENU (window->menubar),window->location_toolbar_item_view_menubar,NULL);
 +  g_object_bind_property (window->menubar,"visible", window->location_toolbar_item_view_menubar,"active", G_BINDING_SYNC_CREATE);
-+  
++
++  gtk_tool_button_set_icon_widget (window->location_toolbar_item_spinner,window->spinner);
++  g_object_bind_property (window->spinner,"active", window->location_toolbar_item_spinner,"visible", G_BINDING_SYNC_CREATE);
++
++  gtk_widget_set_sensitive (window->location_toolbar_item_spinner, FALSE);
++
    g_signal_connect (G_OBJECT (window->location_toolbar_item_back), "button-press-event", G_CALLBACK (thunar_window_history_clicked), G_OBJECT (window));
    g_signal_connect (G_OBJECT (window->location_toolbar_item_forward), "button-press-event", G_CALLBACK (thunar_window_history_clicked), G_OBJECT (window));
    g_signal_connect (G_OBJECT (window->location_toolbar_item_parent), "button-press-event", G_CALLBACK (thunar_window_open_parent_clicked), G_OBJECT (window));
-@@ -6155,9 +6138,6 @@ thunar_window_location_toolbar_create (ThunarWindow *window)
+@@ -6155,9 +6139,6 @@ thunar_window_location_toolbar_create (ThunarWindow *window)
    /* display the toolbar */
    gtk_widget_show_all (window->location_toolbar);
  
@@ -186,7 +229,7 @@ index 26345602..c38da015 100644
    /* add the location bar itself after gtk_widget_show_all to not mess with the visibility of the location buttons */
    gtk_container_add (GTK_CONTAINER (tool_item), window->location_bar);
  
-@@ -6168,7 +6148,8 @@ thunar_window_location_toolbar_create (ThunarWindow *window)
+@@ -6168,7 +6149,8 @@ thunar_window_location_toolbar_create (ThunarWindow *window)
    thunar_window_location_toolbar_load_visibility (window);
  
    /* attach the toolbar to the window */
@@ -196,7 +239,7 @@ index 26345602..c38da015 100644
  }
  
  
-@@ -6427,10 +6408,6 @@ thunar_window_toolbar_toggle_item_visibility (ThunarWindow *window,
+@@ -6427,10 +6409,6 @@ thunar_window_toolbar_toggle_item_visibility (ThunarWindow *window,
      {
        GtkWidget *item = lp->data;
  
@@ -207,3 +250,17 @@ index 26345602..c38da015 100644
        if (index == i)
          {
            gtk_widget_set_visible (item, !gtk_widget_is_visible (item));
+diff --git a/thunar/thunar-window.h b/thunar/thunar-window.h
+index efb98db2..e724bec8 100644
+--- a/thunar/thunar-window.h
++++ b/thunar/thunar-window.h
+@@ -65,7 +65,9 @@ typedef enum
+   THUNAR_WINDOW_ACTION_TOGGLE_SIDE_PANE,
+   THUNAR_WINDOW_ACTION_TOGGLE_IMAGE_PREVIEW,
+   THUNAR_WINDOW_ACTION_VIEW_STATUSBAR,
++
+   THUNAR_WINDOW_ACTION_VIEW_MENUBAR,
++  THUNAR_WINDOW_ACTION_SPINNER,
+   THUNAR_WINDOW_ACTION_CONFIGURE_TOOLBAR,
+   THUNAR_WINDOW_ACTION_SHOW_HIDDEN,
+   THUNAR_WINDOW_ACTION_ZOOM_IN,
