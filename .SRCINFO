@@ -1,5 +1,5 @@
 pkgbase = icecat-browser
-	pkgdesc = GNU version of the Firefox browser
+	pkgdesc = GNU version of the Firefox ESR browser
 	pkgver = 115.8.0
 	pkgrel = 1
 	url = https://git.savannah.gnu.org/cgit/gnuzilla.git

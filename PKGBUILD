@@ -1,14 +1,16 @@
 # Maintainer:
 
 ## useful links
-# https://icecatbrowser.org/
 # https://www.gnu.org/software/gnuzilla/
 # https://git.savannah.gnu.org/cgit/gnuzilla.git
-# https://software.classictetris.net/icecat/last_version_check
+#
+# https://icecatbrowser.org/
 # https://codeberg.org/chippy/gnuzilla
+# https://software.classictetris.net/icecat/last_version_check
 
 ## options
 : ${_build_prepatched:=false}
+: ${_build_save_source:=true}
 : ${_build_repatch:=false}
 
 : ${_build_pgo:=true}
@@ -23,6 +25,7 @@ fi
 
 : ${_build_browser:=true}
 
+unset _pkgtype
 [[ "${_build_browser::1}" == "t" ]] && _pkgtype+="-browser"
 
 ## basic info
@@ -30,7 +33,7 @@ _pkgname="icecat"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=115.8.0
 pkgrel=1
-pkgdesc="GNU version of the Firefox browser"
+pkgdesc="GNU version of the Firefox ESR browser"
 license=('MPL-2.0')
 arch=('x86_64')
 
@@ -136,13 +139,14 @@ _main_package() {
     url="https://git.savannah.gnu.org/cgit/gnuzilla.git"
 
     noextract=("firefox-${pkgver}esr.source.tar.xz")
+
     _commit=7e2ff1ad7e03d2bfe0b2daf3f25961b06cab8848
     _pkgsrc="$_pkgname-$pkgver"
     _pkgsrc_gnuzilla="gnuzilla-$_commit"
     _pkgext="tar.gz"
     source+=(
       "https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/$_pkgsrc_gnuzilla.$_pkgext"
-      https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz{,.asc}
+      "https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz"{,.asc}
     )
     sha256sums+=(
       'SKIP'
@@ -158,7 +162,7 @@ _main_package() {
       ga-IE gd gl gn gu-IN he hi-IN hr hsb hu hy-AM ia id is it ja ja-JP-mac
       ka kab kk km kn ko lij lt lv mk mr ms my nb-NO ne-NP nl nn-NO oc
       pa-IN pl pt-BR pt-PT rm ro ru sc sco si sk sl son sq sr sv-SE szl
-      ta te tg th tl tr trs uk ur uz vi xh zh-CN zh-TW 
+      ta te tg th tl tr trs uk ur uz vi xh zh-CN zh-TW
     )
 
     for _locale in "${_languages[@]}"; do
@@ -174,7 +178,7 @@ _make_icecat() {
     return
   fi
 
-  if [ ${_build_repatch::1} != "t" ] && [ -e "$SRCDEST/$_pkgsrc.tar.zst" ] ; then
+  if [ "${_build_repatch::1}" != "t" ] && [ -e "$SRCDEST/$_pkgsrc.tar.zst" ] ; then
     echo "Restoring previously patched sources..."
     rm -rf "$srcdir/$_pkgsrc"
     bsdtar -xf "$SRCDEST/$_pkgsrc.tar.zst"
@@ -218,11 +222,13 @@ _make_icecat() {
   bash makeicecat
   popd
 
-  echo "Saving patched sources..."
-  [ -e "$SRCDEST/$_pkgsrc.tar.zst" ] && rm -rf "$SRCDEST/$_pkgsrc.tar.zst"
-  mv "$_pkgsrc_gnuzilla/output/$_pkgsrc" "$srcdir/"
-  bsdtar -a -cf "$_pkgsrc.tar.zst" --options zstd:compression-level=9 "$_pkgsrc"
-  cp --reflink=auto -r "$_pkgsrc.tar.zst" "$SRCDEST/"
+  if [[ "${_build_save_source::1}" == "t" ]] ; then
+    echo "Saving patched sources..."
+    [ -e "$SRCDEST/$_pkgsrc.tar.zst" ] && rm -rf "$SRCDEST/$_pkgsrc.tar.zst"
+    mv "$_pkgsrc_gnuzilla/output/$_pkgsrc" "$srcdir/"
+    bsdtar -a -cf "$_pkgsrc.tar.zst" --options zstd:compression-level=9 "$_pkgsrc"
+    cp --reflink=auto -rf "$_pkgsrc.tar.zst" "$SRCDEST/"
+  fi
 }
 
 # common functions
