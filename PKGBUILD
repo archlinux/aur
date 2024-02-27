@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=heimer-bin
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple cross-platform mind map, diagram, and note-taking tool written in Qt."
 arch=("x86_64")
 url="https://github.com/juzzlin/Heimer"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -15,7 +15,7 @@ depends=(
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-ubuntu-22.04_amd64.deb")
 sha256sums=('87cf29b02778c844ee11e0b48026e4ec80454047279a1103adc606fd7980d4dc')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.gz"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
