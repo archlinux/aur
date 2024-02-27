@@ -4,12 +4,12 @@
 # NOTE: can currently not be built using devtools:
 # https://github.com/monocasual/giada/issues/553
 pkgname=giada
-pkgver=0.26.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians"
 arch=(x86_64)
 url="https://www.giadamusic.com/"
-license=(GPL3)
+license=(GPL-3.0-or-later)
 groups=(pro-audio)
 depends=(gcc-libs glibc hicolor-icon-theme libx11 libxcursor libxft libxinerama libxpm fmt libsm libxrender libxext libxfixes fontconfig libice python libxrandr)
 options=(!buildflags !makeflags)
@@ -27,11 +27,11 @@ source=(
 
 "git+https://github.com/monocasual/geompp.git#commit=dd75643"
 
-"git+https://github.com/monocasual/mcl-audio-buffer.git#commit=d641e3e"
+"git+https://github.com/monocasual/mcl-audio-buffer.git#commit=92a8386"
 
 "git+https://github.com/monocasual/mcl-atomic-swapper.git#commit=459d45d"
 
-"git+https://github.com/fltk/fltk.git#commit=06d1289"
+"git+https://github.com/fltk/fltk.git#commit=d963dde"
 
 "git+https://github.com/cameron314/concurrentqueue.git#commit=bf1fe24"
 )
@@ -77,7 +77,7 @@ package() {
   make DESTDIR="$pkgdir/" install -C build
   cd "$pkgname-$pkgver/"
   install -vDm 644 {ChangeLog,README.md} -t "${pkgdir}/usr/share/doc/${pkgname}"
-  rm -rv "${pkgdir}/usr/include/"
-  rm -rv "${pkgdir}/usr/lib/"
-  rm -rv "${pkgdir}/usr/bin/JUCE-7.0.5"
+ rm -rv "${pkgdir}/usr/include/"
+ rm -rv "${pkgdir}/usr/lib/"
+ rm -rv "${pkgdir}/usr/bin/JUCE-7.0.5"
 }

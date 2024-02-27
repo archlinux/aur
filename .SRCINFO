@@ -1,11 +1,11 @@
 pkgbase = giada
 	pkgdesc = A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians
-	pkgver = 0.26.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://www.giadamusic.com/
 	arch = x86_64
 	groups = pro-audio
-	license = GPL3
+	license = GPL-3.0-or-later
 	checkdepends = catch2-v2
 	makedepends = alsa-lib
 	makedepends = cmake
@@ -38,14 +38,14 @@ pkgbase = giada
 	provides = giada
 	options = !buildflags
 	options = !makeflags
-	source = giada-0.26.1::git+https://github.com/monocasual/giada/#tag=0.26.1
+	source = giada-1.0.0::git+https://github.com/monocasual/giada/#tag=1.0.0
 	source = git+https://github.com/juce-framework/JUCE.git#commit=69795dc
 	source = git+https://github.com/steinbergmedia/vst3sdk.git#commit=ef0a70d
 	source = git+https://github.com/monocasual/rtaudio.git#commit=8a362b1
 	source = git+https://github.com/monocasual/geompp.git#commit=dd75643
-	source = git+https://github.com/monocasual/mcl-audio-buffer.git#commit=d641e3e
+	source = git+https://github.com/monocasual/mcl-audio-buffer.git#commit=92a8386
 	source = git+https://github.com/monocasual/mcl-atomic-swapper.git#commit=459d45d
-	source = git+https://github.com/fltk/fltk.git#commit=06d1289
+	source = git+https://github.com/fltk/fltk.git#commit=d963dde
 	source = git+https://github.com/cameron314/concurrentqueue.git#commit=bf1fe24
 	sha512sums = SKIP
 	sha512sums = SKIP
