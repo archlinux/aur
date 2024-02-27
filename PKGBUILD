@@ -5,81 +5,79 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-ffplayout
-pkgver=6.1
+pkgver=6.1.1
 pkgrel=1
-epoch=2
+epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (for ffplayout)'
 arch=(x86_64)
-url=https://ffmpeg.org/
-license=(GPL3)
+url=https://ffmpeg.org
+license=(GPL-3.0-only)
 depends=(
   alsa-lib
   aom
   bzip2
   cairo
+  dav1d
   fontconfig
+  freetype2
   fribidi
   glib2
   glibc
   gmp
   gnutls
   gsm
+  harfbuzz
   jack
   lame
-  libass.so
+  libass
   libavc1394
-  libbluray.so
-  libbs2b.so
-  libdav1d.so
+  libbluray
+  libbs2b
   libdrm
-  libfreetype.so
   libgl
-  libharfbuzz.so
   libiec61883
-  libjxl.so
+  libjxl
   libmodplug
-  libopenmpt.so
-  libplacebo.so
+  libopenmpt
+  libplacebo
   libpulse
-  librav1e.so
   libraw1394
-  librsvg-2.so
-  librubberband.so
+  librsvg
   libsoxr
   libssh
   libtheora
-  libva.so
-  libva-drm.so
-  libva-x11.so
+  libva
   libvdpau
-  libvidstab.so
-  libvorbisenc.so
-  libvorbis.so
-  libvpx.so
+  libvorbis
+  libvpx
   libwebp
   libx11
-  libx264.so
-  libx265.so
   libxcb
   libxext
   libxml2
   libxv
-  libxvidcore.so
-  libzimg.so
   ocl-icd
   onevpl
   opencore-amr
   openjpeg2
   opus
+  rav1e
+  rubberband
   sdl2
   snappy
   speex
   srt
   svt-av1
   v4l-utils
+  vapoursynth
+  vid.stab
   vmaf
   vulkan-icd-loader
+  x264
+  x265
+  xvidcore
   xz
+  zimg
   zlib
   zeromq
 )
@@ -96,9 +94,6 @@ makedepends=(
   opencl-headers
   vulkan-headers
 )
-
-provides=('ffmpeg')
-
 optdepends=(
   'avisynthplus: AviSynthPlus support'
   'frei0r-plugins: Frei0r video effects support'
@@ -116,7 +111,13 @@ provides=(
   libpostproc.so
   libswresample.so
   libswscale.so
+  'ffmpeg' 
+  'ffmpeg-debug'
 )
+
+conflicts=('ffmpeg')
+replaces=('ffmpeg' 'ffmpeg-tree')
+
 options=(
   debug
 )
@@ -146,10 +147,10 @@ prepare() {
   git cherry-pick -n 250471ea1745fc703eb346a2a662304536a311b1
 }
 
-#pkgver() {
-  #cd ffmpeg
-  #git describe --tags | sed 's/^n//'
-#}
+pkgver() {
+  cd ffmpeg
+  git describe --tags | sed 's/^n//'
+}
 
 build() {
   cd ffmpeg
@@ -218,6 +219,7 @@ build() {
     --enable-opencl \
     --enable-opengl \
     --enable-shared \
+    --enable-vapoursynth \
     --enable-version3 \
     --enable-libzmq \
     --enable-parser=h264 \
@@ -229,6 +231,32 @@ build() {
 }
 
 package() {
+  depends+=(
+    libass.so
+    libbluray.so
+    libbs2b.so
+    libdav1d.so
+    libfreetype.so
+    libharfbuzz.so
+    libjxl.so
+    libopenmpt.so
+    libplacebo.so
+    librav1e.so
+    librsvg-2.so
+    librubberband.so
+    libva.so
+    libva-drm.so
+    libva-x11.so
+    libvidstab.so
+    libvorbisenc.so
+    libvorbis.so
+    libvpx.so
+    libx264.so
+    libx265.so
+    libxvidcore.so
+    libzimg.so
+  )
+
   make DESTDIR="${pkgdir}" -C ffmpeg install install-man
   install -Dm 755 ffmpeg/tools/qt-faststart "${pkgdir}"/usr/bin/
 }
