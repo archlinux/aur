@@ -2,11 +2,11 @@
 
 pkgname=bioformats2raw
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Bio-Formats image file format to raw format converter'
 arch=('any')
 url='https://github.com/glencoesoftware/bioformats2raw'
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=(
   bash
   blosc
