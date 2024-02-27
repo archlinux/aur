@@ -1,0 +1,18 @@
+pkgbase = linkwiz
+	pkgdesc = Link Wizard
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/icealtria/linkwiz
+	arch = x86_64
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-pyxdg
+	depends = python-tomlkit
+	source = https://files.pythonhosted.org/packages/py3/l/linkwiz/linkwiz-0.1.0-py3-none-any.whl
+	source = https://raw.githubusercontent.com/icealtria/linkwiz/main/Linkwiz.desktop
+	sha256sums = f1e995330ab2d9fac667a312201faabfc25ec0a5a059c1755c22b52ef6b7a930
+	sha256sums = b3f5e2b000f7d1e40eaa948ad3204b00a246155b9655190024eb35f784d3f98b
+
+pkgname = linkwiz
