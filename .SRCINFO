@@ -9,4 +9,4 @@ pkgbase = fcitx5-skin-fluentlight-git
 	source = git+https://github.com/Reverier-Xu/Fluent-fcitx5.git
 	md5sums = SKIP
 
-pkgname = fcitx5-skin-fluentdark-git
+pkgname = fcitx5-skin-fluentlight-git
