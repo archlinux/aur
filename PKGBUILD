@@ -2,7 +2,7 @@
 
 _pyname=vharfbuzz
 pkgname=python-$_pyname
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A user-friendlier way to use Harfbuzz in Python'
 arch=(any)
@@ -17,7 +17,7 @@ makedepends=(python-{build,installer,wheel}
 checkdepends=(python-pytest)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
-sha256sums=('b835f67d8ab1578c2600020c7c0ddd0688569aad4dd15bab4931053a3491a666')
+sha256sums=('6c12a656f2ee73f0ad405f934ab8bc9e08259e3e100a1efb155f891cfcec1402')
 
 build() {
 	cd "$_archive"
