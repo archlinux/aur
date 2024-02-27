@@ -1,0 +1,3 @@
+[hledger-utils]
+source = "pypi"
+pypi = "hledger-utils"
