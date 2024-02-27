@@ -9,8 +9,6 @@ pkgbase = webgrind-git
 	makedepends = git
 	depends = php
 	depends = xdebug
-	depends = php-apache
 	conflicts = webgrind
 
 pkgname = webgrind-git
-

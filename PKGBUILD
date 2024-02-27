@@ -7,12 +7,12 @@ pkgdesc='Xdebug Profiling Web Frontend in PHP.'
 arch=('any')
 url='https://github.com/jokkedk/webgrind'
 license=('BSD')
-depends=('php' 'xdebug' 'php-apache')
+depends=('php' 'xdebug')
 makedepends=('git')
 conflicts=('webgrind')
 install="${pkgname}.install"
 
-_gitroot=git://github.com/jokkedk/webgrind.git
+_gitroot=https://github.com/jokkedk/webgrind.git
 _gitname=webgrind
 
 package() {
