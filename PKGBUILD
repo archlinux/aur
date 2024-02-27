@@ -2,7 +2,7 @@
 #
 
 pkgname=cevomapgen
-pkgver=29
+pkgver=30
 pkgrel=1
 pkgdesc="External Random Map Generator for C-evo"
 arch=('x86_64' 'aarch64')
@@ -12,26 +12,13 @@ depends=('qt5pas' 'glibc' 'libx11' 'hicolor-icon-theme')
 makedepends=('fpc' 'lazarus-qt5')
 source=("$url/files/Source/${pkgname}_${pkgver}.orig.tar.xz"
        "$url/files/Source/${pkgname}_${pkgver}.orig.tar.xz.asc")
-sha256sums=('d9e43faf0ce5ac81bdee4b156f95004002700535a360059b25045871e1ffe04a'
+sha256sums=('46f15f18f210437f7a60cb06c67cb03c83ea0d07bda4a856e030a9d2a38399cb'
             'SKIP')
 validpgpkeys=(14638444C9858E2A09B0259C211BCF562939AB8F)
 
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-
-  # Set temporary folder for lazarus primary config
-  rm -fr "$srcdir/config"
-  mkdir  "$srcdir/config"
-
-  # Don't need Windows docs on Arch
-  rm -f "Docs/ReadmeWindows.html"
-
-  # Move desktop files
-  rm -fr Desktop
-  mkdir  Desktop
-  mv "Docs/cevomapgen.svg"   Desktop
-  mv "Docs/$pkgname.desktop" Desktop
 
   # currently cannot build with -pie as the RTL is not built with pie
   sed -i '/-k-pie/d' fpc.cfg
@@ -41,12 +28,8 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  # clean
-  rm -fr lib
-  rm -f *.res
-
-  lazbuild -v
-  lazbuild --ws=qt5 -B --lazarusdir=/usr/lib/lazarus --pcp="$srcdir/config" CevoMapGen.lpi
+  export LAZDIR="--lazarusdir=/usr/lib/lazarus"
+  make lazarusdir=/usr/lib/lazarus
 }
 
 
