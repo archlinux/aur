@@ -4,7 +4,7 @@
 pkgname=python-demjson
 _pkgname=${pkgname#python-}
 pkgver=2.2.4
-pkgrel=7
+pkgrel=8
 pkgdesc="Encoder, decoder, and lint/validator for JSON (JavaScript Object Notation) compliant with RFC 7159"
 arch=('any')
 url="https://github.com/dmeranda/demjson"
@@ -29,7 +29,7 @@ prepare() {
 build() {
     cd "$_pkgname-$pkgver"
     # Run 2to3 transformations
-    2to3 -wn . jsonlint
+    2to3 -wn --no-diffs . jsonlint
     python setup.py build
 }
 
