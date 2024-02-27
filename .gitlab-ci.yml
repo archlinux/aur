@@ -1,10 +1,19 @@
 image: manjarolinux/base:latest
 
+variables:
+  GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
+
 before_script:
-  - pacman -Syu --noconfirm sed jq binutils gtk3 libxss libindicator-gtk2 nss dbus-glib libdbusmenu-gtk2
+  - pacman -Syu --noconfirm sed jq binutils gtk3 libxss libindicator-gtk2 nss dbus-glib libdbusmenu-gtk2 git
   - useradd -m builduser
   - passwd -d builduser
   - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+  - eval $(ssh-agent -s)
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+
 
 stages:
   - find_release
