@@ -12,7 +12,7 @@ arch=(
 )
 url="https://www.tvtower.org/"
 _ghurl="https://github.com/TVTower/TVTower"
-license=('custom')
+license=('LicenseRef-custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -35,18 +35,21 @@ source=(
 	"${pkgname%-bin}.sh"
 )
 sha256sums=('503e6ff876e5afbcbb56638c6076b54d5392e67e48651b3b7bdf44faf750f286'
-            '0ff0878274ed1b847d53abda04a751ca6ee7ce3f8da476e6b39660c1224083e4')
+            'a9783526d93e6c72c7e1551cc5cc513fd6056dcc4593abe8fac815721d32dd5a')
 build() {
-	if [ "${CARCH}" == "i686" ];then
-		_RUNNAME="${_pkgname}_Linux32"
-	elif [ "${CARCH}" == "x86_64" ];then
-		_RUNNAME="${_pkgname}_Linux64"
-	fi
+	case "${CARCH}" in
+		i686)
+			_RUNNAME="${_pkgname}_Linux32"
+		;;
+		x86_64)
+			_RUNNAME="${_pkgname}_Linux64"
+		;;
+	esac
 	sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_RUNNAME}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-	gendesk -q -f -n --categories "Game" --name "${_pkgname}" --exec "${pkgname%-bin}"
-	mkdir -p "${srcdir}/opt/${pkgname%-bin}/logfiles"
+	gendesk -q -f -n --categories="Game" --name="${_pkgname}" --exec="${pkgname%-bin}"
+	install -Dm755 -d "${srcdir}/opt/${pkgname%-bin}/logfiles"
 	bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/opt/${pkgname%-bin}"
 	rm -rf "${srcdir}/opt/${pkgname%-bin}/"*.{bat,exe}
 	for _logtxt in app ai1 ai2 ai3 ai4;do

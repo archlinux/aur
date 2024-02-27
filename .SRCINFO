@@ -5,7 +5,7 @@ pkgbase = tvtower-bin
 	url = https://www.tvtower.org/
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = LicenseRef-custom
 	makedepends = gendesk
 	depends = libglvnd
 	depends = freetype2
@@ -22,6 +22,6 @@ pkgbase = tvtower-bin
 	source = tvtower-0.8.2.zip::https://github.com/TVTower/TVTower/releases/download/v0.8.2/TVTower_v0.8.2_20231220.zip
 	source = tvtower.sh
 	sha256sums = 503e6ff876e5afbcbb56638c6076b54d5392e67e48651b3b7bdf44faf750f286
-	sha256sums = 0ff0878274ed1b847d53abda04a751ca6ee7ce3f8da476e6b39660c1224083e4
+	sha256sums = a9783526d93e6c72c7e1551cc5cc513fd6056dcc4593abe8fac815721d32dd5a
 
 pkgname = tvtower-bin
