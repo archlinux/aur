@@ -1,13 +1,13 @@
 pkgbase = liteloader-qqnt-lite-tools-bin
 	pkgdesc = A lightweight, elegant and efficient LiteLoaderQQNT plugin for lite tools
-	pkgver = 2.6.2
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://github.com/xiyuesaves/LiteLoaderQQNT-lite_tools
 	arch = any
 	license = MIT
 	depends = liteloader-qqnt-bin
-	source = liteloader-qqnt-lite-tools-bin-2.6.2.zip::https://github.com/xiyuesaves/LiteLoaderQQNT-lite_tools/releases/download/v2.6.2/lite_tools_v4.zip
-	sha256sums = 187ddf1aedd4d3d4a6eb206683dfef5cfa5eb2b8c2d159e3a0ded804ba0982b6
-	b2sums = ff6c38c9a530b6d07be967eda1cdf04392c0ff8a3d122982930b08feaffda71137a1e4dd8f84107637c0a3ef36f108e2bd99eecdfe0ba3615d31ed28af0e641e
+	source = liteloader-qqnt-lite-tools-bin-2.7.0.zip::https://github.com/xiyuesaves/LiteLoaderQQNT-lite_tools/releases/download/v2.7.0/lite_tools_v4.zip
+	sha256sums = 819d22756ccfc90b46b648bb735c971ff154fdf2a3c97b9c733d6147fcb48497
+	b2sums = 04c49f473f2c3120edc4573e5f2461312f823f052c4f2f9db7b43504c9de3dfad48239d0218589d65e2e1fad3c9c5f9da53117b18e4ac60d5f4781aaab28625e
 
 pkgname = liteloader-qqnt-lite-tools-bin
