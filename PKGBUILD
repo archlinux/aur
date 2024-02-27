@@ -3,7 +3,7 @@
 _name='psygnal'
 _author='pyapp-kit'
 pkgname="python-${_name}"
-pkgver=0.9.1
+pkgver=0.9.5
 pkgrel=1
 pkgdesc='Fast python callback/event system modeled after Qt Signals'
 arch=('any')
@@ -21,7 +21,7 @@ depends=(
   'python-typing_extensions'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('a42cd3e55c474673cc8f61e7cdb40fb647ca94868a1d262bf4b6d6aa2fc8bf27')
+sha256sums=('4956ea6c36a75f7fc457558935b67dd8be2594661b4d08eeb3357d69c509c55f')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
