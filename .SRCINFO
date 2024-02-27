@@ -1,8 +1,8 @@
 pkgbase = chkservice-git
 	pkgdesc = Systemd units manager with ncurses terminal interface
-	pkgver = 0.3.r1.gea40b14
+	pkgver = 0.3.r1.ea40b14f
 	pkgrel = 1
-	url = https://github.com/linuxenko/chkservice
+	url = https://github.com/srakitnican/chkservice
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
@@ -10,8 +10,9 @@ pkgbase = chkservice-git
 	depends = libsystemd
 	provides = chkservice
 	conflicts = chkservice
-	source = git+https://github.com/linuxenko/chkservice.git
+	source = git+https://github.com/srakitnican/chkservice.git
+	source = get-state.patch
 	sha256sums = SKIP
+	sha256sums = 3db092cd91bf14ab35db55e692249ba0b08277fce99614812a5d5f0a5d0980c9
 
 pkgname = chkservice-git
-
