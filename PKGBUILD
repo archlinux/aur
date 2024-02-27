@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mogan-bin
-pkgver=1.2.4
+pkgver=1.2.5
 _libgit2ver=1.1.1
 pkgrel=1
 pkgdesc="A structured wysiwyg scientific text editor"
@@ -23,14 +23,15 @@ depends=(
 makedepends=(
     'git'
     'cmake'
-    'python'
+    'base-devel'
+    'python>=3'
 )
 options=('!strip')
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-research-v${pkgver}-ubuntu22.04.deb"
     "libgit2-${_libgit2ver}::git+https://github.com/libgit2/libgit2.git#tag=v${_libgit2ver}"
 )
-sha256sums=('9f95cc572a3b75f2f3d3757c2625477ec97c1361bba3dbcddf5dfe13371a00a3'
+sha256sums=('a147c7630b99592f77437172de3245e11f930bff23c61c622d0a03a4b0104daa'
             'SKIP')
 build() {
     cd "${srcdir}/libgit2-${_libgit2ver}"
@@ -40,6 +41,6 @@ build() {
     cmake --build .
 }
 package() {
-    bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
+    bsdtar -xf "${srcdir}/data."* -C "${pkgdir}"
     install -Dm644 "${srcdir}/libgit2-${_libgit2ver}/build/libgit2.so.1.1.1" "${pkgdir}/usr/lib/libgit2.so.1.1"
 }
