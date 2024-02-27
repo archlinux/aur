@@ -1,9 +1,8 @@
 pkgname=linkwiz
 _name=${pkgname#python-}
-pkgdesc="A tool that lets users select their preferred browser for opening links. "
+pkgdesc="A tool that lets users select their preferred browser for opening links."
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Link Wizard"
 arch=('x86_64')
 url="https://github.com/icealtria/linkwiz"
 license=('GPL3')

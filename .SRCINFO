@@ -1,5 +1,5 @@
 pkgbase = linkwiz
-	pkgdesc = Link Wizard
+	pkgdesc = A tool that lets users select their preferred browser for opening links.
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/icealtria/linkwiz
