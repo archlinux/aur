@@ -3,11 +3,11 @@ pkgname=winggifeditor-bin
 _pkgname=WingGifEditor
 _appname="com.wingsummer.${pkgname%-bin}"
 pkgver=1.1.2
-pkgrel=5
+pkgrel=6
 pkgdesc="基于 QT 编写的 GIF 编辑器，采用 C++ 进行开发"
 arch=('x86_64')
 url="https://github.com/Wing-summer/WingGifEditor"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -28,7 +28,7 @@ build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed -e "s|\"/opt/${_pkgname}/${_pkgname}\"|${pkgname%-bin}|g" \
         -e "s|/opt/${_pkgname}/images/icon.png|${pkgname%-bin}|g" \
         -e "s|WingHexExplorer|${_pkgname}|g" \
