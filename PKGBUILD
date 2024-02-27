@@ -52,15 +52,15 @@ source=(
 )
 sha256sums=(
   "46ad7fab3c5cb4bd0bdd77dd6d3e2283184819235bcbc01b2d117d81b35596a6"
-  "8e1485871e05ef4194d43a1c58fb973820e19288963ff3536f6e8032a746a0fe"
+  "312ed6a25f3fbfb3832b01ef3958df0b387b59d142fdf5db10ccf8bb112348e3"
   "3b5a899436e0f0a614a17604166a0946bf2e206ef66e1161522337a5be7a8d08"
 )
 install="geant4-full.install"
 
 prepare()
 {
-  cd ${srcdir}
-  patch -Np0 -i ${srcdir}/SoQt.patch
+  cd "${srcdir}"
+  patch -Np0 -i "${srcdir}"/SoQt.patch
 
 }
 
@@ -99,8 +99,8 @@ setenv G4LEVELGAMMADATA /opt/Geant4/Libraries/PhotonEvaporation5.7
 setenv G4RADIOACTIVEDATA /opt/Geant4/Libraries/RadioactiveDecay5.6
 setenv G4REALSURFACEDATA /opt/Geant4/Libraries/RealSurface2.2" > Geant4.csh
 
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}"/build ] || mkdir "${srcdir}"/build
+  cd "${srcdir}"/build
 
   cmake \
     -DCMAKE_INSTALL_PREFIX=/opt/Geant4/Geant4-v${pkgver} \
@@ -131,11 +131,11 @@ setenv G4REALSURFACEDATA /opt/Geant4/Libraries/RealSurface2.2" > Geant4.csh
 }
 
 package() {
-  cd $srcdir
-  install -D -m 755 Geant4.sh $pkgdir/etc/profile.d/Geant4.sh
-  install -D -m 755 Geant4.csh $pkgdir/etc/profile.d/Geant4.csh
+  cd "${srcdir}"
+  install -D -m 755 Geant4.sh "${pkgdir}"/etc/profile.d/Geant4.sh
+  install -D -m 755 Geant4.csh "${pkgdir}"/etc/profile.d/Geant4.csh
 
-  cd ${srcdir}/build
+  cd "${srcdir}"/build
   make DESTDIR="${pkgdir}" install
-  ln -s /opt/Geant4/Geant4-v${pkgver}/lib ${pkgdir}/opt/Geant4/Geant4-v${pkgver}/lib64
+  ln -s /opt/Geant4/Geant4-v${pkgver}/lib "${pkgdir}"/opt/Geant4/Geant4-v${pkgver}/lib64
 }

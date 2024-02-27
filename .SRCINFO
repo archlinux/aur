@@ -42,7 +42,7 @@ pkgbase = geant4-full
 	source = geant4-full.install
 	source = SoQt.patch
 	sha256sums = 46ad7fab3c5cb4bd0bdd77dd6d3e2283184819235bcbc01b2d117d81b35596a6
-	sha256sums = 8e1485871e05ef4194d43a1c58fb973820e19288963ff3536f6e8032a746a0fe
+	sha256sums = 312ed6a25f3fbfb3832b01ef3958df0b387b59d142fdf5db10ccf8bb112348e3
 	sha256sums = 3b5a899436e0f0a614a17604166a0946bf2e206ef66e1161522337a5be7a8d08
 
 pkgname = geant4-full
