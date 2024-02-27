@@ -3,7 +3,7 @@
 # Contributor: ThatOneCalculator <kainoa at t1c dot dev>
 
 pkgname=hyprland-git
-pkgver=0.34.0.r95.cf1886ca
+pkgver=0.35.0.r104.bc3f5b94
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(x86_64 aarch64)
@@ -123,6 +123,8 @@ package() {
   meson install -C build \
     --destdir "$pkgdir" \
     --skip-subprojects hyprland-protocols
+
+  mkdir "$pkgdir/usr/include/hyprland/wlroots"
   mv "$pkgdir/usr/include/wlr" "$pkgdir/usr/include/hyprland/wlroots"
 
   # resolve conflicts with system wlr
