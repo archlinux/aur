@@ -1,16 +1,16 @@
 # Maintainer: Reverier-Xu <reverier.xu@outlook.com>
 pkgname=fcitx5-skin-fluentdark-git
 _pkgname=fcitx5-skin-fluentdark-git
-pkgver=v0.4.0.r0.g83a6ccc
+pkgver=v0.4.r2.g4a65a9b
 pkgrel=1
 pkgdesc="A Fluent-Design dark theme with blur effect and shadow."
 arch=('x86_64')
-url="https://github.com/Reverier-Xu/FluentDark-fcitx5"
+url="https://github.com/Reverier-Xu/Fluent-fcitx5"
 license=('MPL')
 depends=('fcitx5')
 makedepends=()
 provides=()
-source=('git+https://github.com/Reverier-Xu/FluentDark-fcitx5.git')
+source=('git+https://github.com/Reverier-Xu/Fluent-fcitx5.git')
 md5sums=('SKIP')
 _name=FluentDark-fcitx5
 prepare() {
