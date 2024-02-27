@@ -5,12 +5,13 @@
 pkgname=dingtalk-bin
 _pkgname=dingtalk
 _pkgname2=com.alibabainc.dingtalk
-pkgver=7.1.0.31218
+pkgver=7.5.0.40221
 pkgrel=1
 pkgdesc="钉钉"
 arch=("x86_64" 'aarch64')
 url="https://www.dingtalk.com/"
 license=("custom")
+options=('!strip')
 depends=("glu" 'gtk2' 'libxcrypt-compat')
 #makedepends=("icoutils")
 optdepends=('zenity: fix crashes when downloading files, not required on kde.'
@@ -34,10 +35,10 @@ source=("service-terms-zh"
 
 sha512sums=('b83d493ed68be0f5a6b851fd93d819bb3a6e62feeb71a5bef10bad24b5ea8f3cf09deea4f31ed727449888a6eae1be99fa9cf263bc921cb8bb2958e2f37a7d64'
             'c8570ec4cd978e26ac622a83db053a0555324752f5000dc5b3cd680d782138e8ef856f09ec9b7850e04e1faa1e39de94dabeb16fbfbe0fd44af43247b30e8b2f'
-            '419a88ea7156ef2896d81d2c73d6da49e9af8fd7d95bdbeb082304ce0d3428dfca1dd7c7691d20bc3d61d7e78240fd7f7005841114d7460624e9a2047df8020d'
+            '8061f42e0190fcdd5d38183b25f97869041d58353ce8ca7351ba453d0eb55270f5625875d2dfc1cf9f85df3d41eb6e23536159c4480426141f0e8d47c124084f'
             '5f05f90704526fbd16371f6f9deaa171a3cac25a103b21daba72a3028ab7cdf9b566a3ac7842c6ce88d30cc29fe0c8b989c77aa36daab73793a827a1a0d6c775')
-sha512sums_x86_64=('436eab76274fe910fa59b6928404777eee708d80e7310ad20810fc9d9eb97c136d36c9e8792d7561d19e38a3b5453853431b2f2ac1a222762423ada2943385ab')
-sha512sums_aarch64=('b9337c7b6ac62b771f6b2ad1e3687006975c6bfc7847205021b8b9642ac6e18107f6efb617cdee2d0345ea1619072860ab31400282b58e9ce44ffba74b3295cd')
+sha512sums_x86_64=('fe8c9a06b92643561b7dc1d4a2cdb88fb0bd84db2afb696a885bfa5ba48062cfc8c15de5151d4537a27123f886e8442d3a63a579dd87260e7747a20aedef1bff')
+sha512sums_aarch64=('8a17ef294b2c16fbd24fd1a300cdaa482c01e74fd4b36b8379990e6991b09ced4c1082043b10020d8667e7b3afb1056bf555348614d6ea012e41919863d296b3')
 
 prepare(){
     cd ${srcdir}
