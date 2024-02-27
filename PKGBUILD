@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=monokle
 _pkgname=Monokle
-pkgver=2.4.4
+pkgver=2.4.5
 _electronversion=27
 _nodeversion=18
-pkgrel=2
+pkgrel=1
 pkgdesc="Lets you create, analyze, and deploy YAML manifests with a visual UI, and provides policy validation and cluster management."
 arch=('x86_64')
 url="https://monokle.io/"
@@ -24,7 +24,7 @@ makedepends=(
     'jq'
     'gendesk'
     'git'
-    'python'
+    'python>=3'
     'python-setuptools'
 )
 source=(
@@ -39,7 +39,7 @@ _ensure_local_nvm() {
 }
 build() {
     _ensure_local_nvm
-    gendesk -q -f -n --categories "Development" --name "${_pkgname}" --exec "${pkgname} %U"
+    gendesk -q -f -n --categories="Development" --name="${_pkgname}" --exec="${pkgname} --no-sandbox %U"
     cd "${srcdir}/${pkgname}"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
