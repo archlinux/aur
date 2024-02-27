@@ -1,7 +1,7 @@
 pkgbase = words-picker-bin
 	pkgdesc = Hope to become a good word retrieval application.希望成为一款好的取词应用
 	pkgver = 53.8.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/ziqiangxu/words-picker
 	arch = x86_64
 	license = MIT
