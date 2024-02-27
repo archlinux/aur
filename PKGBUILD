@@ -1,83 +1,117 @@
-# Maintainer: 
+# Maintainer:
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
-pkgname=('qtscrcpy' 'qtscrcpy-docs')
-pkgbase=qtscrcpy
+
+## options
+
+unset _pkgtype
+
+# basic info
+_pkgname=qtscrcpy
+pkgname="$_pkgname${_pkgtype:-}"
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Android real-time screencast control tool"
-arch=('x86_64' 'aarch64')
 url="https://github.com/barry-ran/QtScrcpy"
 license=('Apache-2.0')
-depends=('android-tools' 'qt5-multimedia' 'qt5-x11extras')
-makedepends=('chrpath' 'cmake' 'git' 'qt5-tools')
-conflicts=('qt-scrcpy')
-replaces=('qt-scrcpy')
-backup=("etc/$pkgbase/config.ini")
-_commit=6692ee15d4f635a802079b33834d44bb10b0064f  #tags/v2.1.2^0
-source=("git+https://github.com/barry-ran/QtScrcpy.git#commit=${_commit}"
-        'git+https://github.com/barry-ran/QtScrcpyCore.git'
-        'path-fix.patch'
-        "$pkgbase.desktop"
-        "$pkgbase.sh")
-sha256sums=('SKIP'
-            'SKIP'
-            'a80a69c96361e671db319be612dc08f26142886875a35c9cd5df57c100ddae3a'
-            '0dc5b08698162c8a0172a9c2e92b18fa7cd9df4b295bd350329b1e4dbd892a6e'
-            '26335d1e208c47ddfc4abaabce3f32734788a80a6663577b3ff462346d8dec6f')
+arch=('x86_64' 'aarch64')
 
-pkgver() {
-  cd "$srcdir/QtScrcpy"
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
+depends=(
+  'android-tools'
+  'qt5-multimedia'
+  'qt5-x11extras'
+)
+makedepends=(
+  'chrpath'
+  'cmake'
+  'gendesk'
+  'git'
+  'qt5-tools'
+)
 
+conflicts=('qtscrcpy-docs')
+
+backup=("etc/$_pkgname/config.ini")
+
+_pkgsrc="$_pkgname"
+source=(
+  "$_pkgname"::"git+$url.git#tag=v$pkgver"
+  "qtscrcpycore"::"git+https://github.com/barry-ran/QtScrcpyCore.git"
+  "path-fix.patch"
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+  'a80a69c96361e671db319be612dc08f26142886875a35c9cd5df57c100ddae3a'
+)
+
+# common functions
 prepare() {
-  cd "$srcdir/QtScrcpy"
+  cat <<'EOF' > "$_pkgname.sh"
+#!/usr/bin/env sh
+
+export QTSCRCPY_CONFIG_PATH="/etc/qtscrcpy"
+exec /opt/qtscrcpy/QtScrcpy "$@"
+EOF
+
+  local _gendesk_options=(
+    -q -f -n
+    --pkgname="$_pkgname"
+    --pkgdesc="$pkgdesc"
+    --name="QtScrcpy"
+    --exec="$_pkgname %u"
+    --icon="$_pkgname"
+    --terminal=false
+    --categories="Development;Utility"
+    --mimetypes="application/epub+zip"
+    --startupnotify=true
+  )
+
+  gendesk "${_gendesk_options[@]}"
+
+  cd "$_pkgsrc"
   git submodule init
-  git config submodule.QtScrcpy/QtScrcpyCore.url "$srcdir/QtScrcpyCore"
+  git config submodule.QtScrcpy/QtScrcpyCore.url "$srcdir/qtscrcpycore"
   git -c protocol.file.allow=always submodule update
 
   patch --strip=1 QtScrcpy/main.cpp < "$srcdir/path-fix.patch"
-
-  # Not ready for Qt6 yet
-  sed -i 's/Qt6 Qt5/Qt5/g' QtScrcpy/CMakeLists.txt
 }
 
 build() {
-  cmake -B build -S QtScrcpy \
-    -DCMAKE_BUILD_TYPE='None' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
     -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
   cmake --build build
 
-  cd "$srcdir/QtScrcpy"
+  cd "$_pkgsrc"
 
   # Remove insecure RPATH
   chrpath --delete output/x64/None/QtScrcpy
 }
 
-package_qtscrcpy() {
-  cd "$srcdir/QtScrcpy"
-  install -Dm755 output/x64/None/QtScrcpy -t "$pkgdir/opt/$pkgbase/"
-  install -Dm644 output/x64/None/scrcpy-server -t "$pkgdir/opt/$pkgbase/"
-  install -Dm644 output/x64/None/sndcpy.apk "$pkgdir/opt/$pkgbase/"
-  install -Dm755 output/x64/None/sndcpy.sh "$pkgdir/opt/$pkgbase/"
-  install -Dm644 backup/logo.png "$pkgdir/usr/share/pixmaps/$pkgbase.png"
-  install -Dm644 config/config.ini -t "$pkgdir/etc/$pkgbase/"
+package() {
+  cd "$_pkgsrc"
+  install -Dm755 output/x64/None/QtScrcpy -t "$pkgdir/opt/$_pkgname/"
+  install -Dm644 output/x64/None/scrcpy-server -t "$pkgdir/opt/$_pkgname/"
+  install -Dm644 output/x64/None/sndcpy.apk "$pkgdir/opt/$_pkgname/"
+  install -Dm755 output/x64/None/sndcpy.sh "$pkgdir/opt/$_pkgname/"
 
-  cp -r keymap "$pkgdir/opt/$pkgbase/"
-  chmod 666 "$pkgdir/opt/$pkgbase/keymap"
+  install -Dm644 backup/logo.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+  install -Dm644 config/config.ini -t "$pkgdir/etc/$_pkgname/"
 
-  install -Dm755 "$srcdir/$pkgbase.sh" "$pkgdir/usr/bin/$pkgbase"
-  install -Dm644 "$srcdir/$pkgbase.desktop" -t "$pkgdir/usr/share/applications/"
+  cp -r keymap "$pkgdir/opt/$_pkgname/"
+  chmod 666 "$pkgdir/opt/$_pkgname/keymap"
 
-  ln -s "/opt/$pkgbase/sndcpy.sh" "$pkgdir/usr/bin/"
-}
+  install -Dm755 "$srcdir/$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 "$srcdir/$_pkgname.desktop" -t "$pkgdir/usr/share/applications/"
 
-package_qtscrcpy-docs() {
-  pkgdesc+=" (documentation)"
-  depends=()
+  ln -s "/opt/$_pkgname/sndcpy.sh" "$pkgdir/usr/bin/"
 
-  cd "$srcdir/QtScrcpy"
-  install -d "$pkgdir/usr/share/doc/$pkgbase"
-  cp -r docs/* "$pkgdir/usr/share/doc/$pkgbase/"
+  install -d "$pkgdir/usr/share/doc/$_pkgname"
+  cp -r docs/* "$pkgdir/usr/share/doc/$_pkgname/"
 }
