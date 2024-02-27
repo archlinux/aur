@@ -1,0 +1,4 @@
+[yage]
+source = "github"
+github = "glehmann/yage"
+use_max_tag = true
