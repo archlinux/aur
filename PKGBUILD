@@ -2,140 +2,78 @@
 # Don't manually edit the PKGBUILD, edit the upstream template instead
 
 pkgname=kde-development-environment-meta
-pkgver=20231120
+pkgver=20240227
 pkgrel=1
 pkgdesc='Metapackage to install a full KDE development environment'
 arch=(any)
 url='https://phabricator.kde.org/T3722'
 license=(LGPL)
-depends=(akonadi-calendar
-         akonadi-contacts
-         akonadi-mime
-         akonadi-notes
-         attica5
-         baloo-widgets
-         baloo5
-         bash-completion
-         bear
-         bluez-qt5
-         breeze-icons
-         calendarsupport
-         cmake
-         extra-cmake-modules
-         frameworkintegration5
-         gcc
-         gettext
-         git
-         kactivities-stats5
-         kactivities5
-         karchive5
-         kauth5
-         kbookmarks5
-         kcalendarcore5
-         kcmutils5
-         kcodecs5
-         kcompletion5
-         kconfig5
-         kconfigwidgets5
-         kcontacts5
-         kcoreaddons5
-         kcrash5
-         kdav5
-         kdbusaddons5
-         kdeclarative5
-         kdelibs4support
-         kdesignerplugin
-         kdesu5
-         kdnssd5
-         kdoctools5
-         kemoticons
-         kfilemetadata5
-         kglobalaccel5
-         kguiaddons5
-         kholidays5
-         khtml
-         ki18n5
-         kiconthemes5
-         kidentitymanagement
-         kidletime5
-         kimap
-         kinit
-         kio5
-         kirigami-addons5
-         kirigami2
-         kitemmodels5
-         kitemviews5
-         kjobwidgets5
-         kjs
-         kmailtransport
-         kmime
-         knewstuff5
-         knotifications5
-         knotifyconfig5
-         konqueror
-         kpackage5
-         kparts5
-         kpeople5
-         kpeoplevcard
-         kpimtextedit
-         kplotting5
-         kpty5
-         kquickcharts5
-         kross
-         krunner5
-         kservice5
-         ktextaddons
-         ktexteditor5
-         ktextwidgets5
-         kunitconversion5
-         kwallet5
-         kwayland5
-         kweathercore
-         kwidgetsaddons5
-         kwindowsystem5
-         kxmlgui5
-         libakonadi
-         libkcddb5
-         libkcompactdisc
-         libkdcraw5
-         libkdegames
-         libkdepim
-         libkexiv2
-         libkleo
-         libkmahjongg
-         libksane
-         libkscreen
-         libksysguard
-         libktorrent
-         mailcommon
-         make
-         modemmanager-qt5
-         networkmanager-qt5
-         ninja
-         plasma-framework5
-         prison5
-         pulseaudio-qt
-         purpose5
-         qqc2-desktop-style5
-         qt5-base
-         qt5-declarative
-         qt5-webengine
-         solid5
-         sonnet5
-         syndication5
-         syntax-highlighting5
-         threadweaver5)
-optdepends=(kate
-            kdevelop
-            plasma-sdk
-            plasma-workspace)
 makedepends=()
 source=(org.kde.development.appdata.xml kdesdk-devenv-dependencies.svg)
-sha256sums=(c54fd17080088cc519b4af879cdb553a800374973d2ee70646c304afeb6c3044
-            92af2376f53429735903ff6706344566c7f0f1aa6cfd5d2cf7aaad7097c71238)
+sha256sums=('49a9f3a5d875162e50288c845b44592dc6eaa7471ff8512df2296525d218e301'
+            '92af2376f53429735903ff6706344566c7f0f1aa6cfd5d2cf7aaad7097c71238')
 noextract=()
 
 package() {
+    depends=(attica
+         bash-completion
+         bear
+         cmake
+         extra-cmake-modules
+         gcc
+         gettext
+         git
+         kactivities
+         karchive
+         kauth
+         kbookmarks
+         kcmutils
+         kcodecs
+         kcolorscheme
+         kcompletion
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         kdbusaddons
+         kdeclarative
+         kdoctools
+         kglobalaccel
+         kguiaddons
+         ki18n
+         kiconthemes
+         kio
+         kirigami
+         kitemviews
+         kjobwidgets
+         knotifications
+         kpackage
+         kparts
+         kplotting
+         kpty
+         kservice
+         ksvg
+         ktextwidgets
+         kunitconversion
+         kwallet
+         kwayland
+         kwidgetsaddons
+         kwindowsystem
+         kxmlgui
+         make
+         ninja
+         plasma-framework
+         qt6-base
+         qt6-declarative
+         qt6-webengine
+         solid
+         sonnet
+         threadweaver)
+    optdepends=(kate
+            kdevelop
+            plasma-sdk
+            plasma-workspace)
+
     install -Dm644 org.kde.development.appdata.xml "$pkgdir"/usr/share/metainfo/org.kde.development.appdata.xml
     install -Dm644 kdesdk-devenv-dependencies.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/kdesdk-devenv-dependencies.svg
 }
