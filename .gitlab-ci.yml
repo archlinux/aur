@@ -12,11 +12,6 @@ before_script:
   - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
   - mkdir -p ~/.ssh
   - chmod 700 ~/.ssh
-  - git config --global user.email "zomundo@gmail.com"
-  - git config --global user.name "Mundo"
-  - git remote add aur ssh://aur@aur.archlinux.org/taskade-appimage.git
-  - git fetch aur
-
 
 stages:
   - find_release
@@ -31,8 +26,7 @@ find_release_job:
     paths:
       - PKGBUILD
       - .SRCINFO
-    reports:
-      dotenv: build.env
+      - build.env
 
 test_job:
   stage: test
@@ -47,6 +41,10 @@ test_job:
 release_job:
   stage: release
   script:
+    - git config --global user.email "zomundo@gmail.com"
+    - git config --global user.name "Mundo"
+    - git remote add aur ssh://aur@aur.archlinux.org/taskade-appimage.git
+    - git fetch aur
     - git branch --list
     - git remote -v
     - git checkout -b master
