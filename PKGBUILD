@@ -1,7 +1,7 @@
 # Maintainer: Siddhant Madhur <siddhant.madhur@gmail.com>
 pkgname=straw
-pkgver=v0.2.alpha
-pkgrel=1
+pkgver=v0.2.stable
+pkgrel=2
 pkgdesc="CLI tool to easily go-to projects all over your desktop and open a new tmux session in it"
 arch=(x86_64)
 url="https://github.com/siddhantmadhur/straw"
