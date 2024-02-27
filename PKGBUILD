@@ -1,7 +1,7 @@
 # Maintainer: Leone <comdir@infonix.info>
 pkgname=yd-go
 pkgver=5af17d8
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="Panel indicator for Yandex-disk CLI daemon (linux)"
 arch=('x86_64')
@@ -13,10 +13,10 @@ makedepends=()
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
+#conflicts=()
+#replaces=()
+#backup=()
+options=('!strip' '!debug')
 install=
 changelog=
 source=("https://github.com/slytomcat/yd-go/releases/download/master-5af17d8/yd-go"
@@ -39,14 +39,13 @@ prepare() {
 	
 }
 
-
-
 package() {
  # mv "litemanager.png" "${srcdir}/litemanager.png"
-  install -d "${srcdir}/" "${pkgdir}/opt/${pkgname}"
+ # install -d "${srcdir}/" "${pkgdir}/opt/${pkgname}/"
+  #cp  "${srcdir}/yd-go" "${pkgdir}/yd-go.bin"
   install -Dm755 "${srcdir}/yd-go" "${pkgdir}/opt/yd-go/yd-go"
-  mkdir -p ${pkgdir}/usr/bin
-  ln -s "/opt/yd-go/yd-go" "${pkgdir}/usr/bin/yd-go"
-  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  mkdir -p "${pkgdir}/usr/bin"
+  ln -s "${pkgdir}/opt/yd-go/yd-go" "${pkgdir}/usr/bin/yd-go"
+  install -Dm644 "${srcdir}/yd-go.desktop" "${pkgdir}/usr/share/applications/yd-go.desktop"
+  install -Dm644 "${srcdir}/yd-go.png" "${pkgdir}/usr/share/pixmaps/yd-go.png"
 }
