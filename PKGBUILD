@@ -2,14 +2,14 @@
 # Contributor:  Tony Fettes <tonyfettes@tonyfettes.tk>
 pkgname=tunasync-bin
 pkgver=0.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Mirror job management tool developed by TUNA"
 arch=(
   'aarch64'
   'x86_64'
 )
 url="https://github.com/tuna/tunasync"
-license=('GPL3')
+license=('GPL-3.0-only')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=()
