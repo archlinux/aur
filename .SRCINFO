@@ -1,6 +1,6 @@
 pkgbase = dprint-plugin-toml
 	pkgdesc = TOML code formatting plugin for dprint.
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/dprint/dprint-plugin-toml
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = dprint-plugin-toml
 	makedepends = rust
 	makedepends = rust-wasm
 	depends = dprint
-	source = dprint-plugin-toml-v0.6.0.tar.gz::https://github.com/dprint/dprint-plugin-toml/archive/refs/tags/0.6.0.tar.gz
-	sha512sums = 7558ff2d691a6d08f56f1e148208ff24f4d1ee28dcb97927a521c56db399a209be6ffeb6e8cc393e63fcafaea9158a6409af231f4a19965e67c840edd03fd021
+	source = dprint-plugin-toml-v0.6.1.tar.gz::https://github.com/dprint/dprint-plugin-toml/archive/refs/tags/0.6.1.tar.gz
+	sha512sums = 33bf4d08ee59d415b5fec1cee78ad94eea14bbaf5d2a03365eaa7a43c652a7b45dbe7052e13844aba50975cb499aa6f09b278c5e8e37f5ee7ac8a5010394ed4e
 
 pkgname = dprint-plugin-toml
