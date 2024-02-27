@@ -1,4 +1,4 @@
-# Maintainer: Nima Askarian <nimaas1400@gmail.com>
+# Maintainer: Nima Askarian <nimaaskarian.work@outlook.com>
 pkgname=potato-c
 pkgver=0.5.1
 pkgrel=3
