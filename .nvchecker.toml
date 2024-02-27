@@ -1,0 +1,5 @@
+[lite-xl]
+source = "github"
+github = "lite-xl/lite-xl"
+prefix = "v"
+use_max_tag = true
