@@ -1,7 +1,7 @@
 pkgname=swag
 pkgver=1.16.3
-pkgrel=1
-pkgdesc='Go PKGBUILD Example'
+pkgrel=2
+pkgdesc='Automatically generate RESTful API documentation with Swagger 2.0 for Go.'
 arch=('x86_64')
 url="https://github.com/swaggo/swag"
 license=('MIT')
