@@ -1,7 +1,7 @@
 # Maintaner: jskier <jay@jskier.com>
 # Contributor: mutantmonkey <aur@mutantmonkey.in>
 pkgname=python-twilio
-pkgver=8.10.1
+pkgver=9.0.0
 pkgrel=1
 pkgdesc="A module for using the Twilio REST API and generating valid TwiML."
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python' 'python-requests>=2.0.0' 'python-mock' 'flake8'
 options=(!emptydirs)
 source=("https://github.com/twilio/twilio-python/archive/${pkgver}.tar.gz"
         'LICENSE')
-sha256sums=('69b64ad2275c840b2e2c7f249c768a77d91722de2f607d5b41bb507052a96e71'
+sha256sums=('55322c2c5dfe20bb76c4c963d02a9ffdf5c9265c32224ada2722724c25740f39'
             '17db7e6dddc3a621518f20dd4b35dac73f25160680d2a4858654eca1019bdea6')
 
 package() {
