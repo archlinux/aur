@@ -1,0 +1,22 @@
+pkgbase = wlchewing-git
+	pkgdesc = Wayland Chinese zhuyin input method with libchewing
+	pkgver = v0.2.1.r0.2a02c6b
+	pkgrel = 1
+	url = https://github.com/xdavidwu/wlchewing
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = git
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = cairo
+	depends = pango
+	depends = libchewing
+	depends = libxkbcommon
+	depends = systemd-libs
+	provides = wlchewing
+	conflicts = wlchewing
+	source = git+https://github.com/xdavidwu/wlchewing.git
+	sha256sums = SKIP
+
+pkgname = wlchewing-git
