@@ -1,0 +1,13 @@
+pkgbase = riverguile-git
+	pkgdesc = Scripting layer for the river Wayland server using Guile Scheme.
+	pkgver = r21.a5b129d
+	pkgrel = 1
+	url = https://git.sr.ht/~leon_plickat/riverguile
+	arch = x86_64
+	license = GPL3
+	provides = riverguile
+	conflicts = riverguile
+	source = riverguile-git::git+https://git.sr.ht/~leon_plickat/riverguile
+	sha256sums = SKIP
+
+pkgname = riverguile-git
