@@ -1,7 +1,7 @@
 pkgbase = duskplayer-bin
 	pkgdesc = A minimalistic music player, designed for simplicity.
 	pkgver = 7.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Aveek-Saha/DuskPlayer
 	arch = x86_64
 	license = MIT
@@ -14,6 +14,6 @@ pkgbase = duskplayer-bin
 	source = duskplayer.sh
 	sha256sums = 4ac36192c1dccb4b33ba9483c6bd60fbc3f588509826e846ab5baaa1b43111ad
 	sha256sums = 634de9f3cc2e60e2040fb2162e8722d13ee3d863d9b5a1c65c3e08a6149bee1c
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = duskplayer-bin
