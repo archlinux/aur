@@ -5,8 +5,8 @@ BUILDENV+=(!check)
 
 pkgname=python-compreffor
 _pyname=${pkgname#python-}
-pkgver=0.5.4
-pkgrel=2
+pkgver=0.5.5
+pkgrel=1
 pkgdesc='A CFF table suroutinizer for FontTools'
 arch=(x86_64)
 url="https://github.com/googlefonts/$_pyname"
@@ -20,7 +20,7 @@ makedepends=(cython
 checkdepends=(python-pytest)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
-sha256sums=('306ba54045063eb437d13dd5633c11465bf3bd6905a8dceab0dcc08ed8d7f715')
+sha256sums=('f4d3262090bc4388510bf1f64bb3ab82859243d49120f1f11ef6693eb3c2bc7a')
 
 build() {
 	cd "$_archive"
