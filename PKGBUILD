@@ -1,6 +1,6 @@
 # Maintainer: bipin kumar <kbipinkumar@pm.me>
 pkgname=cramino
-pkgver=0.14.4
+pkgver=0.14.5
 pkgrel=1
 pkgdesc='A fast tool for BAM/CRAM quality evaluation of long reads. https://doi.org/10.1093/bioinformatics/btad311'
 arch=(x86_64)
@@ -10,7 +10,7 @@ url='https://github.com/wdecoster/cramino'
 license=('MIT')
 options=(!lto)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/wdecoster/cramino/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('b07a40180dae4d413ba1cb3ea1307bcf5208634cab38ede352e70e8edd84e6ba')
+sha256sums=('d3b31ab76808ca76171e2539cfe30e66fe24cbd4af4ff9a941c282a0bc438032')
 
 prepare() {
     cd ${pkgname}-${pkgver}
