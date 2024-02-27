@@ -1,4 +1,5 @@
-# Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
+# Maintainer: Jendrik <rua at jendrik dot eu>
+# Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=con2fbmap
 pkgver=2.1.0
