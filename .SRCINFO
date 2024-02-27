@@ -1,14 +1,14 @@
 pkgbase = jello-bin
 	pkgdesc = CLI tool to filter JSON and JSON Lines data with Python syntax. (Similar to jq)
 	pkgver = 1.6.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/kellyjonbrazil/jello
 	arch = x86_64
 	license = MIT
 	provides = jello=1.6.0
 	conflicts = jello
 	source = jello-1.6.0.deb::https://github.com/kellyjonbrazil/jello/releases/download/v1.6.0/jello_1.6.0-1_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/kellyjonbrazil/jello/v1.6.0/LICENSE
+	source = LICENSE-1.6.0::https://raw.githubusercontent.com/kellyjonbrazil/jello/v1.6.0/LICENSE
 	sha256sums = 5c8b082bc14489d192a8a85390a7a7556e20fd4501ade3a905d949e0e038bd07
 	sha256sums = 1a404c97debd32c80005736bd368078ccc8f858c8ebafa2576b0c3919afb92c4
 
