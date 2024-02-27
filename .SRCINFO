@@ -1,0 +1,19 @@
+pkgbase = snx-rs-git
+	pkgdesc = Open source VPN client for Checkpoint security gateways (git version)
+	pkgver = 0.10.0.r210.ga55df1e
+	pkgrel = 1
+	url = https://github.com/ancwrd1/snx-rs
+	arch = x86_64
+	license = AGPL-3.0
+	makedepends = cargo
+	makedepends = sed
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	depends = systemd
+	depends = iproute2
+	conflicts = snx-rs
+	source = git+https://github.com/ancwrd1/snx-rs.git
+	sha256sums = SKIP
+
+pkgname = snx-rs-git
