@@ -4,7 +4,7 @@
 _pkgname='ovcs'
 pkgname="${_pkgname}-git"
 pkgver=0.15.0.r20.gd206d65
-pkgrel=1
+pkgrel=2
 pkgdesc='The client/server of the terminal pager ov (built from latest commit)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/noborus/ovcs'
@@ -77,6 +77,17 @@ package() {
   install -vDm0644  README.md        "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -vDm0644  {my,p}sql.sh -t  "$pkgdir/usr/share/doc/$pkgname/"
   install -vDm0644  LICENSE          "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  for _shell in bash fish zsh; do
+    "$pkgdir/usr/bin/$_pkgname" completion "$_shell" > "completion.$_shell"
+  done
+
+  install -vDm0644 completion.bash \
+    "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
+  install -vDm0644 completion.fish \
+    "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
+  install -vDm0644 completion.zsh \
+    "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
 }
 
 # eof
