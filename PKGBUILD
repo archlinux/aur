@@ -70,6 +70,8 @@ replaces=('hyperspy')
 conflicts=('hyperspy')
 provides=('hyperspy')
 
+source=(https://github.com/hyperspy/hyperspy/archive/v$pkgver.tar.gz)
+
 build() {
   cd "$srcdir/$pkgshort-$pkgver"
   export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
@@ -81,3 +83,4 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
+md5sums=('b80dfdb1061934ffb32fa17335fd9fc3')

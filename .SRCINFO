@@ -56,5 +56,7 @@ pkgbase = python-hyperspy
 	provides = hyperspy
 	conflicts = hyperspy
 	replaces = hyperspy
+	source = https://github.com/hyperspy/hyperspy/archive/v2.0.1.tar.gz
+	md5sums = b80dfdb1061934ffb32fa17335fd9fc3
 
 pkgname = python-hyperspy
