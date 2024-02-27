@@ -1,6 +1,6 @@
 pkgname=wiki-loves-earth-wallpapers
-pkgver=2022
-pkgrel=3
+pkgver=2023
+pkgrel=1
 pkgdesc="Use images from Wikipedia's 'Wiki Loves Earth' annual photographic competition on your desktop"
 url="https://wikilovesearth.org"
 arch=('any')
@@ -99,7 +99,7 @@ source=(
     'image-107645255.jpg::https://upload.wikimedia.org/wikipedia/commons/c/cd/BayaWeaver.jpg'
     'image-107645294.jpg::https://upload.wikimedia.org/wikipedia/commons/e/e4/PigeonFeral.jpg'
     'image-105188242.jpg::https://upload.wikimedia.org/wikipedia/commons/1/17/Junger_Grasfrosch_%28Rana_temporaria%29_in_Buchenlaub_im_Naturpark_Pf%C3%A4lzerwald.jpg'
-    'image-106003876.jpg::https://upload.wikimedia.org/wikipedia/commons/a/a6/Flying_colors.jpg'
+    'image-106003876.jpg::https://upload.wikimedia.org/wikipedia/commons/e/ea/Phoenicopterus_roseus_in_flight.jpg'
     'image-106418621.jpg::https://upload.wikimedia.org/wikipedia/commons/a/ad/Parque_Nacional_das_Emas_Mario_Barroso_1.jpg'
     'image-106889828.jpg::https://upload.wikimedia.org/wikipedia/commons/0/01/Parque_Nacional_da_Serra_do_Gandarela_-_Robson_de_Oliveira_-_23.jpg'
     'image-107097678.jpg::https://upload.wikimedia.org/wikipedia/commons/4/4f/%D0%90%D0%BA%D1%86%D1%96%D1%8F_%D0%B1%D0%BE%D0%B1%D1%80%D1%96%D0%B2_%C2%AB%D0%9D%D0%B5_%D0%BF%D0%B0%D0%BB%D1%96%D1%82%D1%8C_%D0%BD%D0%B0%D1%88%D1%96_%D1%85%D0%B0%D1%82%D0%B8%21%C2%BB_%D0%BD%D0%B0_%D0%B7%D0%B0%D1%85%D0%B8%D1%81%D1%82_%D0%BB%D1%96%D1%81%D1%96%D0%B2_%D0%9F%D0%BE%D0%BB%D1%96%D1%81%D1%81%D1%8F_%E2%80%94_22.11.2013_%2812%29.jpg'
@@ -125,9 +125,34 @@ source=(
     'image-118466321.jpg::https://upload.wikimedia.org/wikipedia/commons/b/b0/Windkraftanlagen_in_Ostfriesland.jpg'
     'image-118521943.jpg::https://upload.wikimedia.org/wikipedia/commons/d/de/DSC6600_Rheinaue_Bremengrund_Schwan_am_Rhein.jpg'
     'image-118224154.jpg::https://upload.wikimedia.org/wikipedia/commons/3/3a/Natur_und_Industrie.jpg'
+    'image-135269441.jpg::https://upload.wikimedia.org/wikipedia/commons/4/4f/%D0%96%D1%83%D0%BA_%D1%81%D1%82%D1%80%D0%B8%D0%B1%D1%83%D0%BD.jpg'
+    'image-134831580.jpg::https://upload.wikimedia.org/wikipedia/commons/8/8e/Baya_weaver_Nepal.jpg'
+    'image-132169586.jpg::https://upload.wikimedia.org/wikipedia/commons/b/bc/R%C3%A5bock_i_n%C3%A4rbild.jpg'
+    'image-132485366.jpg::https://upload.wikimedia.org/wikipedia/commons/7/71/Gro%C3%9Fer_Blaupfeil.jpg'
+    'image-134020551.jpg::https://upload.wikimedia.org/wikipedia/commons/c/c1/Facing_blue_banded_bees.jpg'
+    'image-132485371.jpg::https://upload.wikimedia.org/wikipedia/commons/b/bf/Geb%C3%A4nderte_Prachtlibelle_2023-6.jpg'
+    'image-131678148.jpg::https://upload.wikimedia.org/wikipedia/commons/a/ac/Anjo_ca%C3%A7ador.jpg'
+    'image-131788490.jpg::https://upload.wikimedia.org/wikipedia/commons/3/33/Abelharucos.jpg'
+    'image-135318948.jpg::https://upload.wikimedia.org/wikipedia/commons/4/43/Black_kite_impersonating_an_osprey.jpg'
+    'image-132506367.jpg::https://upload.wikimedia.org/wikipedia/commons/4/40/Ninho_ao_Luar.jpg'
+    'image-134381383.jpg::https://upload.wikimedia.org/wikipedia/commons/8/85/Lenzuola_di_seta.jpg'
+    'image-132042982.jpg::https://upload.wikimedia.org/wikipedia/commons/1/14/%D0%A0%D0%B5%D0%BA%D0%B0_%D0%9A%D0%BE%D0%BA%D1%81%D1%83_%D0%BE%D1%81%D0%B5%D0%BD%D1%8C%D1%8E_2.jpg'
+    'image-134951259.jpg::https://upload.wikimedia.org/wikipedia/commons/f/f9/Stack_Rock_Fort_From_Above.jpg'
+    'image-133774072.jpg::https://upload.wikimedia.org/wikipedia/commons/5/50/Dichotomy.jpg'
+    'image-134490100.jpg::https://upload.wikimedia.org/wikipedia/commons/a/ae/%D0%9D%D0%B0%D1%80%D1%86%D0%B8%D1%81%D0%B8_%D0%B2_%D0%9C%D0%B0%D1%80%D0%BC%D0%B0%D1%80%D0%BE%D1%81%D0%B0%D1%85.jpg'
+    'image-135352535.jpg::https://upload.wikimedia.org/wikipedia/commons/0/00/Lomangthang.jpg'
+    'image-133263436.jpg::https://upload.wikimedia.org/wikipedia/commons/9/94/Eagle_sight_on_waste_gathering.jpg'
+    'image-133263438.jpg::https://upload.wikimedia.org/wikipedia/commons/d/d2/Odaw_On_Site_01.jpg'
+    'image-134133002.jpg::https://upload.wikimedia.org/wikipedia/commons/c/ca/%D0%9D%D0%B0%D1%81%D0%BB%D1%96%D0%B4%D0%BA%D0%B8_%D1%81%D0%BF%D0%B0%D0%BB%D1%8E%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F_%D1%81%D1%83%D1%85%D0%BE%D1%97_%D1%82%D1%80%D0%B0%D0%B2%D0%B8.jpg'
+    'image-133561010.jpg::https://upload.wikimedia.org/wikipedia/commons/6/64/Enjoying_fishing_at_sunrise.jpg'
+    'image-135035717.jpg::https://upload.wikimedia.org/wikipedia/commons/5/5a/%D0%A1%D0%B8%D0%B2%D0%B0%D1%88_%D1%82%D0%B0_%D0%B2%D1%96%D1%82%D1%80%D1%8F%D0%BA.jpg'
+    'image-132506475.jpg::https://upload.wikimedia.org/wikipedia/commons/3/34/Fim_de_dia.jpg'
+    'image-133771725.jpg::https://upload.wikimedia.org/wikipedia/commons/c/cc/In_bici_tra_il_fiume_d%E2%80%99acqua.jpg'
+    'image-135018248.jpg::https://upload.wikimedia.org/wikipedia/commons/7/79/Atlantic_ocean_in_Jaja_of_Opobo_town.jpg'
+    'image-135290974.jpg::https://upload.wikimedia.org/wikipedia/commons/c/c4/Fog_Covered_Butwal.jpg'
 )
 sha1sums=(
-    'ce1a33b6ebf5be7541464591b5ea4ea87ec9972f'
+    '9d223fff8558bba56b6b20e564d8bbb5e0bd03b2'
     '618a970c1e3d30ef51290b74caeceb4d3f0acd0d'
     '4e6f8c49653e307439a48db9bc5a29dfd91a5419'
     '1321ed421c246a67c221093e3137565989801d9d'
@@ -244,19 +269,45 @@ sha1sums=(
     'a329304f2bd5b5ba9fccf6e88e0c7907ea4dc250'
     'de00f4063b4a9c2c519de56aca4f09f3d03bc8ae'
     'd4116ab7216fd85cdb9d3a7881cce0d741e6eafb'
+    '86015e415a28a4fbf84c196b6f1b982b695b28ee'
+    '474c6b1722dcd11c5d92e8affe6ab85251439174'
+    '1f193e74e4a10223e0449fabfd7cf75bd8c8bb6f'
+    '4f81d026eba9f9d171fee0617b69556d23cb488d'
+    '78604a10ce4c5ff78820733bcac7306619d0def8'
+    'f67be33be1d059bcf02386cdf2a03dfebf6c8e53'
+    '6528dc9f0b80d4a1e46f5c8d136c171d23d4163e'
+    'fb24d4a19e880947879f9abafb381ae9c41e6f25'
+    'cf966e57f6fb6dce754594ec6f0d9f10d62072a5'
+    '4820ea1e250f12543cf65cbd2bb92bc9ea5903e9'
+    'a8876ff293b9ae40ed4aaae93825642857f73420'
+    'f1783c22b5056db3a2505f870dc73e256ad829e0'
+    'c26c12dfb06725f6e2b5033a1e053c15372b33f3'
+    'e8b839d481089b9447ef69cf552c367e9bd35125'
+    'f0ad330ee367f26c837fef0d4f20584bded1310a'
+    'd627d25fb54972d30bd781713f447b5097f18623'
+    'a3622fb7b80e6b8a60a7b44bbd5ed7e9afc0d2ce'
+    '9ebc23c0453e5c173b3daa3aea313326cd151aa1'
+    'aaea3b11e778f0fd6d0ee83e59f2da4eb51e58d0'
+    '91f758594d74ba06b08388e0f1b4dcf712e111c6'
+    '602f87229d71b261183561e0b5c6fc00fdcbb029'
+    '904173e91e4c9b56df00b52e7d44a66abbaff81c'
+    '684b02095bdb4da439105fc5cdcaeec08f38bc57'
+    '3e79492a9c5e15d1e01093cb057d3a4707923666'
+    '93d1595e362fc6f75f6b8119136819dd7550bbe5'
 )
 _index=(
-    96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115
-    116 64 50 40 28 14 1 79 65 51 41 29 15 80 66 52 42 2 81 67 53 43 30 16 3 68
-    54 17 4 82 69 55 44 31 18 5 83 70 56 45 32 19 6 84 71 57 7 85 72 58 46 33 20
-    8 86 73 34 21 9 87 74 59 35 22 88 75 60 36 23 10 89 76 47 37 24 90 77 61 38
-    25 11 91 78 62 48 26 12 63 49 39 27 13 92 93 94 95
+    117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135
+    136 137 138 139 140 141 96 64 50 40 28 14 1 97 79 65 51 41 29 15 98 80 66 52
+    42 2 99 81 67 53 43 30 16 3 100 68 54 17 4 101 82 69 55 44 31 18 5 83 70 56
+    45 32 19 6 102 84 71 57 7 103 85 72 58 46 33 20 8 104 86 73 34 21 9 105 87
+    74 59 35 22 106 88 75 60 36 23 10 107 89 76 47 37 24 108 90 77 61 38 25 11
+    109 91 78 62 48 26 12 110 63 49 39 27 13 111 92 112 113 93 94 114 95 115 116
 )
 _ultrawide=(
-    1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0 0 0 0
-    0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 1 1 0 0 0 0 0 0 1 1 0 0 0 1 0 0 1 0 1 0 0 0
-    1 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-    0 1
+    0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 1 0
+    1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 1 0 0 0 0 0 0 1 0 1 0
+    0 0 1 1 0 0 1 0 1 0 0 0 0 1 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0
 )
 
 prepare() {
