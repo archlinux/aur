@@ -1,6 +1,6 @@
 pkgbase = peergos-git
 	pkgdesc = A p2p, secure file storage, social network and application protocol
-	pkgver = 0.9.1.c52023b
+	pkgver = 0.14.1.ac4bba1
 	pkgrel = 1
 	url = https://github.com/Peergos/web-ui
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = peergos-git
 	makedepends = git
 	depends = java-environment>=11
 	depends = java-environment-openjdk>=11
+	provides = peergos
 	conflicts = peergos
 	source = git+https://github.com/Peergos/web-ui
 	source = peergos.sh

@@ -2,7 +2,7 @@
 
 pkgname=peergos-git
 _pkgname=peergos
-pkgver=0.9.1.c52023b
+pkgver=0.14.1.ac4bba1
 pkgrel=1
 pkgdesc="A p2p, secure file storage, social network and application protocol"
 url="https://github.com/Peergos/web-ui"
@@ -11,6 +11,7 @@ license=('AGPL3')
 makedepends=('ant' 'git')
 depends=('java-environment>=11'
          'java-environment-openjdk>=11') # have to specify java 11 or greater
+provides=('peergos')
 conflicts=('peergos')
 source=("git+$url"
         "$_pkgname.sh"
