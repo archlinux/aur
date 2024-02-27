@@ -1,46 +1,66 @@
-# Maintainer: Adrian Sampson <adrian@radbox.org>
+# Maintainer: Alexander Epaneshnikov <alex19ep@archlinux.org>
+# Contributor: Adrian Sampson <adrian@radbox.org>
 # Contributor: Johannes Löthberg <demizide@gmail.com>
 
 pkgname=beets-git
-pkgver=1.4.9.r1031.ee0467e
+pkgver=1.6.0.r1302.gdae525741
 pkgrel=1
 pkgdesc="Flexible music library manager and tagger - git version"
 arch=('any')
 url="http://beets.io/"
 license=('MIT')
-depends=('python-six' 'python-unidecode' 'python-musicbrainzngs'
-         'python-yaml' 'python-mediafile' 'python-confuse'
-         'python-munkres' 'python-jellyfish')
-makedepends=('python-setuptools' 'git' 'python-sphinx')
-optdepends=('python-requests: absubmit, fetchart, embyupdate, kodiupdate, lyrics, plexupdate plugins'
-            'python-pillow: fetchart, embedart, thumbnails plugins'
-            'python-pyacoustid: chroma plugin'
-            'python-gobject: bpd, replaygain plugins'
-            'python-gmusicapi: gmusic plugin'
-            'python-discogs-client: discogs plugin'
-            'python-requests-oauthlib: beatport plugin'
-            'python-pylast: lastgenre, lastimport plugins'
-            'python-beautifulsoup4: lyrics plugin'
-            'python-mpd2: mpdstats plugin'
-            'python-flask: web plugin'
-            'python-flask-cors: web plugin'
-            'python-rarfile: import plugin'
-            'python-xdg: thumbnails plugin'
-            'python-dbus: metasync plugin'
-            'python-soco: sonosupdate plugin'
-            'python-mutagen: scrub plugin'
-            'chromaprint: chroma plugin'
-            'ffmpeg: convert plugin'
-            'mp3val: badfiles plugin'
-            'flac: badfiles plugin'
-            'gstreamer: bpd, replaygain plugins'
-            'imagemagick: embedart plugin'
-            'essentia-acousticbrainz: absubmit plugin'
-            'keyfinder: keyfinder plugin'
-            'mp3gain: replaygain plugin'
-            'aacgain: replaygain plugin'
-            'audiotools: replaygain plugin'
-            'go-ipfs: ipfs plugin')
+depends=(
+  python-confuse
+  python-jellyfish
+  python-mediafile
+  python-munkres
+  python-musicbrainzngs
+  python-reflink
+  python-setuptools
+  python-six
+  python-unidecode
+  python-yaml
+)
+makedepends=(
+  git
+  python-setuptools
+  python-sphinx
+)
+checkdepends=(
+  bash-completion
+  imagemagick
+  python-beautifulsoup4
+  python-discogs-client
+  python-flask
+  python-mpd2
+  python-nose
+  python-nose-exclude
+  python-pylast
+  python-requests-oauthlib
+  python-responses
+  python-xdg
+)
+optdepends=(
+  'bash-completion: Bash completion'
+  'chromaprint: Chromaprint/Acoustid plugin'
+  'ffmpeg: Convert, ReplayGain plugins'
+  'gst-plugins-bad: Chromaprint/Acoustid, BPD, ReplayGain plugins'
+  'gst-plugins-good: Chromaprint/Acoustid, BPD, ReplayGain plugins'
+  'gst-plugins-ugly: Chromaprint/Acoustid, BPD, ReplayGain plugins'
+  'gst-libav: Chromaprint/Acoustid, BPD, ReplayGain plugins'
+  'gst-python: Chromaprint/Acoustid, BPD, ReplayGain plugins'
+  'imagemagick: Thumbnails plugin'
+  'python-beautifulsoup4: Lyrics plugin'
+  'python-discogs-client: Discogs plugin'
+  'python-flask: Web plugin'
+  'python-gobject: ReplayGain plugin'
+  'python-mpd2: MPDStats plugin'
+  'python-pyacoustid: Chromaprint/Acoustid plugin'
+  'python-pylast: LastGenre plugin'
+  'python-requests: Chromaprint/Acoustid, BPD, FetchArt plugins'
+  'python-requests-oauthlib: Beatport plugin'
+  'python-xdg: Thumbnails plugin'
+)
 provides=("beets=$pkgver")
 conflicts=('beets')
 source=('git+https://github.com/beetbox/beets.git')
@@ -56,13 +76,20 @@ build() {
   python setup.py build sdist
 }
 
+check() {
+  cd beets
+  python -m nose \
+    --exclude-test=test.test_ui.CompletionTest \
+    --exclude-test=test.test_zero.ZeroPluginTest \
+    --exclude-test=test.test_embedart.EmbedartCliTest.test_accept_similar_art \
+    --exclude-test=test.test_ui.ConfigTest
+}
+
 package() {
   cd ${srcdir}/beets
   python setup.py install --root=${pkgdir} --optimize=1 --skip-build
-  install -dm 755 "${pkgdir}"/usr/share/zsh/site-functions
-  install -m 644 extra/_beet "${pkgdir}"/usr/share/zsh/site-functions/
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -dm 755 "${pkgdir}"/usr/share/man/man{1,5}
-  install -m 644 man/beet.1 "${pkgdir}"/usr/share/man/man1/
-  install -m 644 man/beetsconfig.5 "${pkgdir}"/usr/share/man/man5/
+  install -Dm 644 extra/_beet -t "${pkgdir}"/usr/share/zsh/site-functions/
+  install -Dm 644 man/beet.1 -t "${pkgdir}"/usr/share/man/man1/
+  install -Dm 644 man/beetsconfig.5 -t "${pkgdir}"/usr/share/man/man5/
+  install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/beets-git/
 }
