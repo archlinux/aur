@@ -1,6 +1,6 @@
 pkgbase = prettier-plugin-php
 	pkgdesc = Prettier PHP Plugin
-	pkgver = 0.22.1
+	pkgver = 0.22.2
 	pkgrel = 1
 	url = https://github.com/prettier/prettier-php#readme
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = prettier-plugin-php
 	makedepends = jq
 	depends = prettier
 	depends = nodejs
-	noextract = plugin-php-0.22.1.tgz
-	source = https://registry.npmjs.org/@prettier/plugin-php/-/plugin-php-0.22.1.tgz
-	sha256sums = f17c541e3239698fea8d9dae8691ae12313f9edd41eab5fa16d3ededb7f84368
+	noextract = plugin-php-0.22.2.tgz
+	source = https://registry.npmjs.org/@prettier/plugin-php/-/plugin-php-0.22.2.tgz
+	sha256sums = 2512739a9cafafb8e64a973ac5eeb46ee881c5455f9ea91f718bcde0fcce6e69
 
 pkgname = prettier-plugin-php
