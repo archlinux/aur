@@ -7,9 +7,9 @@ pkgdesc="System library for Cutefish applications"
 arch=('x86_64')
 url="https://github.com/cutefishos/libcutefish"
 license=('GPL')
-depends=('bluez-qt5' 'kscreen' 'modemmanager-qt5' 'networkmanager-qt5' 'qt5-quickcontrols2'
+depends=('bluez-qt5' 'libkscreen5' 'modemmanager-qt5' 'networkmanager-qt5' 'qt5-quickcontrols2'
          # via dbus:
-         'accountsservice')
+         'accountsservice' 'kio5' 'qt5-sensors')
 makedepends=('extra-cmake-modules' 'ninja' 'qt5-tools')
 source=("https://github.com/cutefishos/libcutefish/archive/$pkgver/$pkgname-$pkgver.tar.gz"
          libkscreen-5.27.patch)
