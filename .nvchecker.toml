@@ -1,0 +1,3 @@
+[python-scmrepo]
+source = "pypi"
+pypi = "scmrepo"
