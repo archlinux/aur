@@ -1,17 +1,13 @@
 pkgbase = page-builder-bin
 	pkgdesc = An open source drag and drop Page Builder Made with Tauri
 	pkgver = 0.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/abkarim/page-builder
 	arch = x86_64
 	license = MIT
 	depends = webkit2gtk
-	depends = cairo
-	depends = libsoup
 	depends = hicolor-icon-theme
-	depends = pango
 	depends = gtk3
-	depends = gdk-pixbuf2
 	provides = page-builder=0.1.1
 	conflicts = page-builder
 	source = page-builder-0.1.1.deb::https://github.com/abkarim/page-builder/releases/download/v0.1.1/page-builder_0.1.1_amd64.deb
