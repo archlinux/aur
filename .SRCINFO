@@ -1,13 +1,12 @@
 pkgbase = gnome-shell-extension-xrdesktop-git
 	pkgdesc = An extension for toggling xrdesktop mode in GNOME Shell.
-	pkgver = 0.16.0.37.6124c8c
+	pkgver = 0.16.0.41.d5a2001
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/xrdesktop/gnome-shell-extension-xrdesktop
 	arch = any
 	license = MIT
 	makedepends = meson
 	makedepends = git
-	makedepends = js78
 	conflicts = gnome-shell-extension-xrdesktop
 	replaces = gnome-shell-extension-xrdesktop
 	source = git+https://gitlab.freedesktop.org/xrdesktop/gnome-shell-extension-xrdesktop.git#branch=main
