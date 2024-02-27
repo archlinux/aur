@@ -2,11 +2,11 @@
 pkgname=whatsapp-for-linux-bin
 _origname=com.github.eneshecan.WhatsAppForLinux
 pkgver=1.6.4
-pkgrel=4
+pkgrel=5
 pkgdesc="An unofficial WhatsApp desktop application for Linux."
 arch=('x86_64')
 url="https://github.com/eneshecan/whatsapp-for-linux"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -25,7 +25,7 @@ source=(
 )
 sha256sums=('f8c0dc44cd2122962325211238489089c7024b6bc75391254701af6591295d89')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|${_origname}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${_origname}.desktop"
 }
 package() {
