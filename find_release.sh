@@ -13,7 +13,7 @@ echo "found version $version"
 rm taskade.html
 
 # check if version is different
-if [ "$current_version" != "$version" ]; then
+if [ "$current_version" == "$version" ]; then
     echo "Build the thing"
     echo "Build it" > build.env
     # replace with the actual new version

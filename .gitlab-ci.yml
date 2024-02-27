@@ -33,8 +33,6 @@ find_release_job:
       - .SRCINFO
     reports:
       dotenv: build.env
-  only:
-    - schedules
 
 test_job:
   stage: test
@@ -42,8 +40,6 @@ test_job:
     - su -c "cd ${CI_PROJECT_DIR} && ./test" - builduser
   dependencies:
     - find_release_job
-  only:
-    - schedules
   rules:
     - exists:
         - build.env
@@ -65,5 +61,3 @@ release_job:
   rules:
     - exists:
         - build.env
-  only:
-    - schedules
