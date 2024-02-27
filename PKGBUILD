@@ -1,36 +1,21 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=apple-music-bin
 _pkgname="Apple Music"
-pkgver=2.0.5
+pkgver=2.1.1
 _electronversion=22
 pkgrel=1
 pkgdesc="An Electron app that provides a native Apple Music experience for Linux & Windows."
 arch=('x86_64')
 url="https://github.com/Alex313031/apple-music-desktop"
-license=('BSD')
+license=('BSD-3-Clause')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    'libxrandr'
-    'libxfixes'
-    'libxkbcommon'
     'nspr'
-    'libx11'
     'nss'
-    'libcups'
-    'libxext'
     'alsa-lib'
-    'mesa'
-    'cairo'
-    'expat'
-    'pango'
-    'libxcomposite'
     'hicolor-icon-theme'
-    'libxdamage'
     'gtk3'
-    'at-spi2-core'
-    'libdrm'
-    'libxcb'
 )
 options=(
     '!strip'
@@ -38,9 +23,9 @@ options=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
 )
-sha256sums=('c58813a7bb33de5e8d9cd7ac35f4c6680a38da72a74794d880575e16f86d2e68')
+sha256sums=('223cd587d54ff764ac95e0c1d516aa6d0415aac98b309ff40bb84572d95b4174')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\"|${pkgname%-bin} --no-sandbox|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
