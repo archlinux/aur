@@ -1,7 +1,7 @@
 # Maintainer: Brуan Childs <godeater[at]𝚐mail[dot]com>
 pkgname=vault-ssh-plus-bin
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.7.3
+pkgrel=3
 pkgdesc='An enhanced implementation of vault ssh, wrapping the OpenSSH ssh client to eliminate the management overhead of using of short-lived SSH client keys CA-signed by Hashicorp Vault.'
 arch=(x86_64)
 url=https://github.com/isometry/vault-ssh-plus
@@ -10,8 +10,8 @@ depends=('vault')
 makedepends=('unzip')
 source=("${url}/releases/download/v${pkgver}/${pkgname/-bin/}_${pkgver}_linux_amd64.zip")
 noextract=('${pkgname/-bin/}_${pkgver}_linux_amd64.zip')
-b2sums=('1fa45c71e2fcc25dd9cf0a157d5160627455994055bbb4ade721141f1fc701f3c676a8c68d65c438d61d792fa51dcf42c806a9890ffc51e1efe499c0221a6c2e')
-sha512sums=('00a03bd3bcf6958f7a21df541f4e18ffc4acb2342b97778e9b93820a5e24abe354b96026caf3bd99c736c3328d373cf425d314b4bae79e88c949d0f76e118547')
+b2sums=('84c169810bef91ea7b9aadeca04bac590b062ace233e0dde79ef9425bd2041ca764dfeae49dd1287522395e3214e1e15ca7cf63c157d61565dcd406c82ae6ed9')
+sha512sums=('d6d0bf45ec0938b65a4874e29655a2359feb678fef0ef1871ce2ca7287276a34135de9e104c80a56008568ff2e9d72f383fcffd62f435fce471551d2950a19a0')
 
 prepare() {
   unzip -d ${srcdir}/${pkgname/-bin/}_${pkgver}_${pkgrel} ${pkgname/-bin/}_${pkgver}_linux_amd64.zip
