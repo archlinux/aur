@@ -7,6 +7,7 @@ arch=(x86_64)
 url="https://github.com/siddhantmadhur/straw"
 license=(MIT)
 makedepends=(git go)
+depends=(tmux)
 provides=(straw)
 source=("straw::git+https://github.com/siddhantmadhur/straw.git")
 sha256sums=(SKIP)

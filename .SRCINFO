@@ -7,6 +7,7 @@ pkgbase = straw
 	license = MIT
 	makedepends = git
 	makedepends = go
+	depends = tmux
 	provides = straw
 	source = straw::git+https://github.com/siddhantmadhur/straw.git
 	sha256sums = SKIP
