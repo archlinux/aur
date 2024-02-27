@@ -3,13 +3,13 @@
 pkgname=stack-bin
 _pkgname=stack
 pkgver=2.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Haskell Tool Stack. Packaged from upstream binary release."
 arch=('x86_64')
 url="https://github.com/commercialhaskell/${_pkgname}"
 license=('custom:BSD3')
 depends=(gmp zlib)
-provides=(stack)
+provides=(stack stack-static)
 conflicts=(stack stack-static)
 source=("https://github.com/commercialhaskell/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${arch}.tar.gz")
 sha256sums=('45281bb2385e928916ec8bcbc7ab790ce8721bbf805f3d0752544ada22ad5ea3')
