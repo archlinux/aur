@@ -1,0 +1,20 @@
+pkgbase = plasma6-applets-fokus
+	pkgdesc = A simple pomodoro KDE plasmoid
+	pkgver = 1.5.5.r8.gce21d7b
+	pkgrel = 1
+	url = https://gitlab.com/divinae/focus-plasmoid
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = kirigami
+	depends = plasma-workspace
+	depends = python-gobject
+	depends = qt6-5compat
+	depends = qt6-declarative
+	conflicts = kdeplasma-applets-fokus
+	conflicts = plasma5-applets-fokus
+	replaces = kdeplasma-applets-fokus
+	source = focus-plasmoid::git+https://gitlab.com/divinae/focus-plasmoid#commit=ce21d7b1581b252ec6057151041d902ad6c63077
+	b2sums = SKIP
+
+pkgname = plasma6-applets-fokus
