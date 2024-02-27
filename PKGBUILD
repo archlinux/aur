@@ -1,3 +1,5 @@
+# Maintainer: guangxifolk
+
 pkgname=hyprland-asan-git
 pkgver=0.35.0.r104.bc3f5b94
 pkgrel=1
