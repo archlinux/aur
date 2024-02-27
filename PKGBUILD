@@ -6,7 +6,7 @@
 _pkgname=meson
 pkgname=meson-rust
 pkgver=1.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="High productivity build system (version with improved Rust support)"
 url="https://mesonbuild.com/"
 arch=(any)
@@ -113,7 +113,7 @@ build() {
 }
 
 check() (
-  cd $pkgname-$pkgver
+  cd ${_pkgname}-${pkgver}
   export LC_CTYPE=en_US.UTF-8 CPPFLAGS= CFLAGS= CXXFLAGS= LDFLAGS=
   ./run_tests.py --failfast
 )
