@@ -1,11 +1,11 @@
 # Maintainer: Jesus Alonso: <doragasu at hotmail dot com>
 pkgname=python-flatten-json
 pkgver=0.1.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Flattens JSON objects in Python. flatten_json flattens the hierarchy in your object which can be useful if you want to force your objects into a table."
 arch=('any')
 url="https://github.com/amirziai/flatten"
-license=('ZLIB')
+license=('MIT')
 
 depends=('python')
 
