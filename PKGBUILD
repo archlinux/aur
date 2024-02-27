@@ -11,7 +11,7 @@ depends=(gcc-libs opengl-driver glu libxcb)
 optdepends=('vulkan-driver: Vulkan benchmark support')
 makedepends=('unzip')
 source=("https://gpumagick.com/downloads/files/2024/furmark2/FurMark_${pkgver}_linux64.zip")
-md5sums=('655dbab19f3b734aab4bdd91aa7b4090')
+md5sums=('b431d63f8246fcbdc1f9785f189e2024')
 
 package(){
     cd $srcdir/FurMark_linux64
