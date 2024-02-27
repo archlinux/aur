@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fishing-funds-bin
 _pkgname=Fishing-Funds
-pkgver=8.2.0
+pkgver=8.2.1
 _electronversion=29
 pkgrel=1
 pkgdesc="基金,大盘,股票,虚拟货币状态栏显示小应用,基于Electron开发."
@@ -23,7 +23,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('3008a5128448076593bb114aadab504a0c5650fa671b17f9bd8087557257304b'
+sha256sums=('0103a47cedc3f9e24626466fc7289045b23c4651d935d3c697d2635234ffbd1d'
             '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
