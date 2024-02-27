@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/siyia2/bulk-rename-plus"
 license=('GPL3')
 depends=('bash' 'coreutils')
-md5sums=('e4c67e2cf1055bb0beb86d2626cd0659')
+md5sums=('3401e002ffb38e94f2c0a82a67e4a093')
 
 source=("https://github.com/siyia2/bulk-rename-plus/archive/v${pkgver}.tar.gz")
 
