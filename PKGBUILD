@@ -2,12 +2,12 @@
 pkgname=reqnotes-bin
 _pkgname=ReqNotes
 pkgver=1.8
-pkgrel=5
+pkgrel=6
 pkgdesc="Personal Notes Application, Cross platform desktop application, developed with .NET 6 and Avalonia UI"
 arch=('x86_64')
 url="https://github.com/ReqBaa/ReqNotes"
 _downurl="https://raw.githubusercontent.com/ReqBaa/repo"
-license=('GPL3')
+license=('GPL-3.0-only')
 conflicts=("${pkgname%-bin}")
 depends=(
     'fontconfig'
@@ -23,7 +23,7 @@ build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.zst"
+    bsdtar -xf "${srcdir}/data."*
     sed -e "s|/usr/share/reqbaa/${pkgname%-bin}/${_pkgname}|${pkgname%-bin}|g" \
         -e "s|Categories=Note|Categories=Utility|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
