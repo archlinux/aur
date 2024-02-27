@@ -2,7 +2,7 @@
 
 pkgname=librewolf-extension-sponsorblock-bin
 url="https://github.com/ajayyy/SponsorBlock"
-pkgver=5.5.2
+pkgver=5.5.6
 pkgrel=1
 makedepends=("jq" "curl")
 pkgdesc="Skip YouTube video sponsors."
