@@ -5,7 +5,7 @@ pkgbase=gstreamer0.10-good
 _pkgname=gst-plugins-good
 pkgname=('gstreamer0.10-good' 'gstreamer0.10-good-plugins')
 pkgver=0.10.31
-pkgrel=29
+pkgrel=30
 arch=('i686' 'x86_64' 'armv7h')
 license=('LGPL')
 makedepends=('intltool' 'pkgconfig' 'gstreamer0.10-base>=0.10.36-3' 'libavc1394' 'libiec61883' 'aalib' 'libshout' 'libdv' 'flac' 'gconf' 'wavpack' 'taglib' 'libsoup' 'v4l-utils' 'libcaca' 'bzip2' 'gdk-pixbuf2' 'libpulse' 'jack' 'git' 'cairo' 'libgudev' 'python')
@@ -13,10 +13,12 @@ url="https://github.com/triceratops1/gstreamer0"
 options=(!emptydirs)
 source=("git+https://gitlab.com/gstreamer-sdk/$_pkgname.git#commit=e28fd8886f05bb51c147f871f3a1db2fc2b735a9"
         'test-rtp-payloading.patch'
-        'souptest.patch')
+        'souptest.patch'
+        'taglib.patch')
 sha256sums=('SKIP'
             'c2f7f07f9bf5ca3afddc81d0a44665d2d54b1e9aea0ef1b25d219cf34bf7bb29'
-            '3a74492c3d2939efabe7e22211c2350084e0a8cc3af23f553130f1e774c5f1e1')
+            '3a74492c3d2939efabe7e22211c2350084e0a8cc3af23f553130f1e774c5f1e1'
+            '3acce9359466537695ea15d9f4e61165c092e98202fc1eaf4bbab0e62ff315ca')
 
 prepare() {
   cd $_pkgname
@@ -26,6 +28,7 @@ prepare() {
 
   patch -Np1 -i ../test-rtp-payloading.patch
   patch -Np1 -i ../souptest.patch
+  patch -Np1 -i ../taglib.patch
 }
 
 build() {
