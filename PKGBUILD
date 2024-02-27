@@ -2,7 +2,7 @@
 # Based on pybind11, maintained by Daniel Bermond <dbermond@archlinux.org> and et.al.
 pkgname=nanobind
 pkgdesc="tiny and efficient C++/Python bindings"
-pkgver=1.9.0
+pkgver=1.9.2
 pkgrel=1
 arch=(any)
 url="https://${pkgname}.readthedocs.io"
