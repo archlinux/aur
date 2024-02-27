@@ -1,7 +1,7 @@
 pkgbase = cpotree-git
 	pkgdesc = Potree Utilities
 	pkgver = 1.0.r5.gdc13ad1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/potree/CPotree
 	arch = x86_64
 	license = BSD-2-Clause
@@ -11,6 +11,7 @@ pkgbase = cpotree-git
 	depends = brotli
 	depends = laszip
 	depends = onetbb
+	conflicts = cpotree
 	source = git+https://github.com/potree/CPotree.git
 	b2sums = SKIP
 

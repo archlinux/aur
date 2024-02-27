@@ -3,13 +3,14 @@
 pkgname=cpotree-git
 _srcname=CPotree
 pkgver=1.0.r5.gdc13ad1
-pkgrel=1
+pkgrel=2
 pkgdesc="Potree Utilities"
 arch=('x86_64')
 url="https://github.com/potree/CPotree"
 license=('BSD-2-Clause')
 makedepends=('git')
 depends=('gcc-libs' 'glibc' 'brotli' 'laszip' 'onetbb')
+conflicts=('cpotree')
 source=("git+${url}.git")
 b2sums=('SKIP')
 
