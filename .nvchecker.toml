@@ -1,0 +1,3 @@
+[python-universal_pathlib]
+source = "pypi"
+pypi = "universal_pathlib"
