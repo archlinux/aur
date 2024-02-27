@@ -1,14 +1,15 @@
-# Maintainer: lapinot <lapinot@sbi.re>
+# Maintainer: lapinot
 pkgname=lldap-git
-pkgver=0.5.0.r23.g609d0dd
+pkgver=0.5.0.r101.g3d8aafa
 pkgrel=1
 pkgdesc="Light LDAP Daemon"
 arch=('x86_64')
-url="https://github.com/nitnelave/lldap"
+url="https://github.com/lldap/lldap"
 license=('GPL3')
 conflicts=('lldap')
 provides=('lldap')
 depends=('sqlite')
+backup=('etc/lldap.toml')
 makedepends=('curl' 'findutils' 'git' 'gzip' 'rustup' 'sqlite' 'wasm-pack')
 source=("$pkgname::git+$url" 'lldap-git.toml' 'lldap-git.service' 'lldap-git-sysusers.conf' 'lldap-git-tmpfiles.conf')
 sha256sums=('SKIP'
