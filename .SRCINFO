@@ -1,0 +1,12 @@
+pkgbase = swag
+	pkgdesc = Go PKGBUILD Example
+	pkgver = 1.16.3
+	pkgrel = 1
+	url = https://github.com/swaggo/swag
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = https://github.com/swaggo/swag/archive/refs/tags/v1.16.3.tar.gz
+	sha256sums = c297b7e502fb7884282d4fa074af4fc015a8be26a4a47116ed53746596dd3078
+
+pkgname = swag
