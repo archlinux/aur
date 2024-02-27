@@ -12,6 +12,8 @@ before_script:
   - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
   - mkdir -p ~/.ssh
   - chmod 700 ~/.ssh
+  - git config --global user.email "zomundo@gmail.com"
+  - git config --global user.name "Mundo"
 
 
 stages:
@@ -41,7 +43,16 @@ test_job:
 
 release_job:
   stage: release
-  script: ./release
+  script:
+    - git branch --list
+    - git remote -v
+    - git checkout main
+    - pk_name=$(grep -Po "^pkgname=\K.*" PKGBUILD)
+    - pk_ver=$(grep -Po "^pkgver=\K.*" PKGBUILD)
+    - pk_rel=$(grep -Po "^pkgrel=\K.*" PKGBUILD)
+    - commit_msg="update to $pk_name ver $pk_ver, rel version $pk_rel"
+    - git push origin main
+
   dependencies:
     - find_release_job
   only:
