@@ -2,7 +2,7 @@
 
 pkgname="liteloader-qqnt-plugin-llapi-bin"
 _pkgname="LiteLoaderQQNT-Plugin-LLAPI"
-pkgver="1.3.1.2"
+pkgver="1.4.0"
 pkgrel=1
 pkgdesc="A LiteLoaderQQNT plugin that can provide some APIs for other plugins"
 arch=("any")
@@ -13,8 +13,8 @@ provides=("liteloader-qqnt-plugin-llapi")
 conflicts=("liteloader-qqnt-plugin-llapi")
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("da2ceb8bbcdb4618fadca30282a126a2491acc456da9c7a3ed796aa930e9dc91")
-b2sums=("e6bb9c9fe01540615a714ed46cda2389b70a9b802d8fcd37cc3a754ba6e40644e12205c69946fc9a4de9dab3d8f7ca5c808ea1ea57ebc49e74611183a5e6a1fe")
+sha256sums=("d59e0497b33fb9fd1e3f891d63622fea096113b0cc319b3eea3f5507c830f1dd")
+b2sums=("93ca762fd4d22464260945cd1a46e97e0b2a676d335c3659e88d2c6207a938a7544e93dcf18b9cf7e6a8b1b8cda69faceb5d08e88660acc14c41929e205eb8a4")
 
 package() {
     # prepare to copy files
