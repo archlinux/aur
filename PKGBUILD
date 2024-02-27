@@ -8,7 +8,7 @@ url="https://intentio.app/"
 _ghurl="https://github.com/JakubGluszek/intentio"
 license=(
     "Apache-2.0"
-    "CC-1.0"
+    "LicenseRef-custom"
 )
 provides=("${pkgname%-bin}-${pkgver}")
 conflicts=("${pkgname%-bin}")
