@@ -36,6 +36,11 @@ pkgver() {
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare () {
+        cd "$srcdir/${_pkgname}"
+        make clean
+}
+
 build() {
         cd "$srcdir/${_pkgname}"
 
