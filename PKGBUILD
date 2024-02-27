@@ -1,6 +1,6 @@
- pkgname=script-runner-gui
+pkgname=script-runner-gui
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI application for running and managing shell scripts"
 arch=('any')
 url="http://yourapplicationhomepage.com"
@@ -16,5 +16,6 @@ package() {
     install -Dm755 "$srcdir/script-runner-gui.py" "$pkgdir/usr/bin/script-runner-gui"
     install -Dm644 "$srcdir/script-runner-gui.desktop" "$pkgdir/usr/share/applications/script-runner-gui.desktop"
     install -Dm644 "$srcdir/scripts.json" "$pkgdir/usr/share/script-runner-gui/scripts.json"
+    install -Dm644 "$srcdir/script-runner-icon.png" "$pkgdir/usr/share/applications/script-runner-icon.png"
 }
 

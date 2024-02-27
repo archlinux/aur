@@ -1,7 +1,7 @@
 pkgbase = script-runner-gui
 	pkgdesc = A GUI application for running and managing shell scripts
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://yourapplicationhomepage.com
 	arch = any
 	license = GPL

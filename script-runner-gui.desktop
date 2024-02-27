@@ -1,9 +1,9 @@
  [Desktop Entry]
-Version=1.0
+Version=1.1.0
 Type=Application
 Name=Script Runner GUI
 Exec=script-runner-gui
-Icon=icon.png
+Icon=script-runner-icon.png
 Terminal=false
 Categories=Utility;
 
