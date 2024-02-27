@@ -1,0 +1,4 @@
+[ttfautohint]
+source = "git"
+git = "git://repo.or.cz/ttfautohint.git"
+prefix = "v"
