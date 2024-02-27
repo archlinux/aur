@@ -3,7 +3,7 @@
 _name='napari-console'
 _author='napari'
 pkgname="${_name}"
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc='A plugin that adds a console to napari.'
 arch=('any')
@@ -16,14 +16,13 @@ makedepends=(
 )
 depends=(
   'ipython'
-  'napari-plugin-engine'
   'python'
   'python-ipykernel'
   'python-qtconsole'
   'python-qtpy'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('9fa3f665ec0f5f351c364b212e73cdc4004615461dca6cbfaacf028525ec740a')
+sha256sums=('3bc86dd96cf94b1af96bba1043f90a39b1369bb978a8df9038a1ac422e66b532')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
