@@ -2,7 +2,7 @@
 _pkgname=kiwiirc
 pkgname="${_pkgname}-server-bin"
 pkgver=1.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="KiwiIRC server"
 arch=(
     'armv6h'
@@ -13,12 +13,10 @@ arch=(
 )
 url="https://kiwiirc.com/"
 _ghurl="https://github.com/kiwiirc/kiwiirc"
-license=('Apache')
+license=('Apache-2.0')
 provides=("${pkgname%-server-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=(
-    'glibc'
-)
+depends=()
 install="${pkgname%-bin}.install"
 source_armv6h=("${pkgname%-bin}-${pkgver}-armv6h.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_v${pkgver}-2_linux_armel.deb")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_v${pkgver}-2_linux_armhf.deb")
@@ -31,7 +29,7 @@ sha256sums_aarch64=('8ffc0dfe6a65d7f57743490aa744e3af52988fa16a31037ddec3505232a
 sha256sums_i686=('a09e68c00bc25c208eb298f384ffd57597e96dd9d10a3e41ae621f11b9e1231f')
 sha256sums_x86_64=('76a33fa476318c827f5dfcb2fbbf6b4c25aa48dc76840420c09e47231f614578')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.gz"
+    bsdtar -xf "${srcdir}/data."*
     find "${srcdir}" -type d -perm 775 -exec chmod 755 {} \;
 }
 package() {
