@@ -27,6 +27,7 @@ md5sums_aarch64=('26d48b5bc0759cf70f291839bf6ae2a6' 'SKIP')
 # Can be acquired with `gpg --receive-keys CB6DA407 34E353C6` (listed at the bottom of https://downloads.nethermind.io/)
 validpgpkeys=('6942FB745ECE67D86CDA45704770A0C134E353C6' 'EECCEA1473108E3222D76722D39BE1DDCB6DA407')
 
+backup('etc/nethermind/NLog.config')
 
 package() {
     configs_srcdir="$srcdir/configs"
