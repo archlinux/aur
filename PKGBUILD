@@ -3,13 +3,15 @@
 pkgname=redlib-git
 _pkgname=${pkgname%-git}
 pkgver=v0.29.4.r207.2291095
-pkgrel=1
+pkgrel=2
 pkgdesc="Private front-end for Reddit"
 url='https://github.com/redlib-org/redlib'
 license=(AGPL-3.0)
 arch=(x86_64)
 depends=()
 makedepends=(cargo git)
+provides=($_pkgname)
+conflicts=($_pkgname)
 backup=("etc/$_pkgname.conf")
 options=('!lto')
 source=("$pkgname::git+$url")
