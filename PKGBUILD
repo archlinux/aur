@@ -4,7 +4,7 @@ _name='in-n-out'
 _name_slug="${_name//-/_}"
 _author='pyapp-kit'
 pkgname="python-${_name}"
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=2
 pkgdesc='Python dependency injection you can taste.'
 arch=('any')
@@ -20,7 +20,7 @@ depends=(
   'python'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name_slug::1}/${_name_slug}/${_name_slug}-${pkgver}.tar.gz")
-sha256sums=('8162af8787e682eb4b36d047f914199d80f1124e3a41420cd53de680e7d0a254')
+sha256sums=('89feb944e420faf42d3c2542145681b4d57144355932c2b859695fcdc4f9a2da')
 
 build() {
   cd "${srcdir}/${_name_slug}-${pkgver}"
