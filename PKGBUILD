@@ -20,6 +20,6 @@ pkgver() {
 }
 
 package() {
-    cd "$srcdir/virtme-ng"
+    cd "$srcdir/$_srcname"
     python setup.py install --root="$pkgdir/" --optimize=1
 }
