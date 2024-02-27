@@ -1,16 +1,13 @@
 pkgbase = no-fwl-bin
 	pkgdesc = NoFWL Desktop Application
 	pkgver = 0.1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://nofwl.com/
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	depends = hicolor-icon-theme
 	depends = gtk3
-	depends = cairo
-	depends = openssl
 	depends = webkit2gtk
-	depends = gdk-pixbuf2
 	provides = no-fwl=0.1.0
 	conflicts = no-fwl
 	source = no-fwl-0.1.0.deb::https://github.com/lencx/nofwl/releases/download/v0.1.0/NoFWL_0.1.0_linux_x86_64.deb
