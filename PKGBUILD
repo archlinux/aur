@@ -1,6 +1,6 @@
 # Maintainer: Edouard Denommee <edouard dot denommee at savoirfairelinux dot com >
 pkgname=cqfd
-pkgver=5.4.0
+pkgver=5.5.0
 pkgrel=1
 pkgdesc="Run commands with the same user and directory inside a docker container"
 arch=('any')
@@ -20,7 +20,7 @@ source=(
     "$pkgname-$pkgver.tar.gz"::$url/archive/v$pkgver.tar.gz
 )
 sha256sums=(
-    '917a411169e23c3d027fb89f77a57654c7160682f1958ad2548199f2ec35de09'
+    '995b9ff3e39eb8ae2c4308b538e614081f6bf6853b616ba9eb05f496a24402b4'
 )
 
 # check() {
