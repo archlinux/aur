@@ -3,7 +3,7 @@
 
 _pkgname='ov'
 pkgname="${_pkgname}-git"
-pkgver=0.33.2.r0.g9735f61
+pkgver=0.33.3.r2.g8c70587
 pkgrel=1
 epoch=1
 pkgdesc='Feature-rich terminal-based text pager (built from latest commit)'
@@ -34,8 +34,8 @@ prepare() {
 build() {
   cd "$_pkgname"
 
-  _pkgver=$(git describe --tags --abbrev=0 --always)
-  _pkgrev=$(git rev-parse --verify --short HEAD)
+  _ver=$(git describe --tags --abbrev=0 --always | sed 's/^v//g')
+  _rev=$(git rev-parse --verify --short HEAD)
 
   # RFC-0023
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
@@ -56,7 +56,7 @@ build() {
   go build \
     -buildmode=pie \
     -trimpath \
-    -ldflags="-linkmode=external -X main.Version=$_pkgver -X main.Revision=$_pkgrev" \
+    -ldflags="-linkmode=external -X main.Version=$_ver -X main.Revision=$_rev" \
     -mod=readonly -modcacherw \
     -o build
 }
@@ -71,7 +71,7 @@ package() {
   cd "$_pkgname"
 
   install -vDm0755 "build/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-  install -vDt "$pkgdir/usr/share/doc/$pkgname" -m0644 *.yaml README.md
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" *.yaml README.md
   install -vDm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
