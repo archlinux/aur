@@ -1,3 +1,5 @@
+# Maintainer: guangxifolk
+
 pkgbase=wayland-asan-git
 pkgname=('wayland-asan-git')
 pkgver=1.22.0.r54.g47de872
