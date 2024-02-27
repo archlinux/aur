@@ -2,12 +2,12 @@
 pkgname=3fa-bin
 pkgver=1.0.1
 _electronversion=26
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure and scalable multi-factor authentication system including a client application, admin dashboard, and backend server"
 arch=('x86_64')
 url="https://3fa.netlify.app/"
 _ghurl="https://github.com/Computing-Collective/3FA"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
@@ -18,13 +18,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c28eb31e5fd5f8f16d212be35b98888f7424005d59f7743b1c074057f9e709b6'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.zst"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
