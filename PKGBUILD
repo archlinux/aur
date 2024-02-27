@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0
+#
 # Maintainer:  Pellegrino Prevete (dvorak) <pellegrinoprevete@gmail.com>
 # Maintainer:  Truocolo <truocolo@aol.com>
 # Contributor: Bruno Pagani <archange@archlinux.org>
@@ -47,10 +49,13 @@ build() {
   local \
     _configure_opts=()
   _configure_opts=(
-    --prefix=/usr
-    --sbindir=/usr/bin
-    --libexecdir=/usr/bin
-    --sysconfdir=/etc
+    --program-suffix="-${_majver}"
+    --prefix="/usr"
+    --sbindir="/usr/bin"
+    --libexecdir="/usr/bin"
+    --sysconfdir="/etc"
+    --libdir="/usr/lib/${pkgname}"
+    --includedir="/usr/include/${pkgname}"
     --sharedstatedir="/usr/share/${_pkgname}"
     --localstatedir="/var/lib/${_pkgname}"
     --disable-static
@@ -58,10 +63,10 @@ build() {
     --disable-coverage
     --enable-module-ecdh
     --enable-module-recovery
-    --disable-tests
-    --disable-exhaustive-tests
+    # See aurweb comments
     # --enable-tests
-    # --enable-exhaustive-tests
+    --disable-tests
+    --enable-exhaustive-tests
     --with-gnu-ld
   )
   _ldflags=(
@@ -84,6 +89,17 @@ check() {
 }
 
 package() {
+  local \
+    _usr
+  _usr="$( \
+    dirname \
+      "$( \
+        dirname \
+          "$( \
+	    command \
+	      -v \
+	      "gcc" \
+	      "cc")")")"
   cd \
     "${_pkg}-${pkgver}"
   make \
@@ -94,4 +110,14 @@ package() {
     COPYING \
     -t \
     "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln \
+    -s \
+    "${_usr}/lib/${pkgname}/${_pkgname}.so.1.0.0" \
+    "${pkgdir}/usr/lib/${_pkgname}.so.1.0.0"
+  ln \
+    -s \
+    "${_usr}/lib/${pkgname}/${_pkgname}.so.1" \
+    "${pkgdir}/usr/lib/${_pkgname}.so.1"
 }
+
+# vim:set sw=2 sts=-1 et:
