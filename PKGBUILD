@@ -8,8 +8,8 @@ pkgdesc="Potree Utilities"
 arch=('x86_64')
 url="https://github.com/potree/CPotree"
 license=('BSD-2-Clause')
-makedepends=('git')
 depends=('gcc-libs' 'glibc' 'brotli' 'laszip' 'onetbb')
+conflicts=('cpotree-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/potree/${_srcname}/archive/refs/tags/${pkgver}.tar.gz"
        "https://github.com/potree/${_srcname}/blob/master/LICENSE")
 b2sums=('2ed8be18c353bee5d52a371af9ca59961446087ee3b7883e6416f26b1f81bd6d0f445f8fb8bf6534cc6d295856fb326ed4ff60619ced8d3a063aa12c057f95d1'
