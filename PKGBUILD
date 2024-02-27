@@ -2,11 +2,11 @@
 # Contributor:schorschii https://georg-sieber.de
 pkgname=confluence-companion-app-for-linux
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Unoffical Atlassian Companion App for Linux."
 arch=("any")
 url="https://github.com/zxp19821005/Companion4Linux"
-license=('GPL')
+license=('GPL-3.0-only')
 provides=("confluence-companion-linux")
 conflicts=("confluence-companion-linux")
 depends=(
