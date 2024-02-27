@@ -5,13 +5,13 @@
 # Contributor: Dieter Plaetinck <dieter@plaetinck.be>
 
 pkgname=vcsh-git
-pkgver=2.0.1.r0.gfb4d506
+pkgver=2.0.8.r1.g86b95ed
 pkgrel=1
 epoch=1
 pkgdesc='Version Control System for $HOME that manages multiple Git repositories'
 arch=(any)
 url="https://github.com/RichiH/${pkgname%-git}"
-license=(GPL)
+license=(GPL-2.0-only)
 depends=(git)
 makedepends=(ruby-ronn)
 checkdepends=(perl
@@ -23,17 +23,16 @@ conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
-pkgver() {
-	cd "$pkgname"
-	git describe --long --tags --abbrev=7 HEAD |
-		sed 's/^v//;s/-\(alpha\|beta\|rc\)\./\1/;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 prepare() {
 	cd "$pkgname"
 	./bootstrap.sh
 }
 
+pkgver() {
+	cd "$pkgname"
+	git describe --long --tags --abbrev=7 HEAD |
+		sed 's/^v//;s/-\(alpha\|beta\|rc\)\./\1/;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
 	cd "$pkgname"
