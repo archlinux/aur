@@ -1,7 +1,7 @@
 pkgbase = postsack-bin
 	pkgdesc = Visually cluster your emails by sender, domain, and more to identify waste
 	pkgver = 1.0.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/terhechte/postsack
 	arch = x86_64
 	license = MIT
