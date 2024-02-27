@@ -1,7 +1,7 @@
 # Maintainer: bziemons <ben@rs485.network>
 pkgname=ulwgl-git
 pkgver=0.1.RC3.149.g551556a
-pkgrel=1
+pkgrel=2
 pkgdesc="Unified launcher for Windows games on Linux in progress using Steam Runtime Tools, independent of Steam."
 license=('custom')
 arch=('any')
