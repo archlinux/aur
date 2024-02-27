@@ -1,0 +1,22 @@
+pkgbase = markdump
+	pkgdesc = Serves a dump of markdown files via web.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/wansing/markdump
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	depends = glibc
+	backup = etc/markdump/markdump.conf
+	source = https://github.com/wansing/markdump/archive/v0.4.0.tar.gz
+	source = markdump.conf
+	source = markdump.service
+	source = markdump.sysusers
+	source = markdump.tmpfiles
+	sha256sums = 61ae5b46b652326515672e538a4404751c511fec3e0efb166b2b1747968d1ac9
+	sha256sums = f3d8d16bda8ae68cb22f0a1a0f5b313dee7046b8958cc37b1d7f3b01e2c5416f
+	sha256sums = 7c0dd5c962bdaeb3d1514bd0eaaaf6e4490e0df631d8acbf8c9cceae9a41f7a3
+	sha256sums = 527a83a17234a02eeb422c8dade89efe200e3036219604692d725a3fdae7ce1b
+	sha256sums = 6af79d20e90026ac2d82a36e5c9eeb0d738e8839aee51705d129810ccde3ed01
+
+pkgname = markdump
