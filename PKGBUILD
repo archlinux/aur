@@ -68,6 +68,7 @@ b2sums=(
   'SKIP'
   'SKIP'
 )
+install=note.install
 
 pick_mr() {
   git pull origin pull/$1/head --no-edit
@@ -132,9 +133,5 @@ package() {
 
   # license
   install -Dm0644 -t "$pkgdir/usr/share/licenses/${pkgname}" LICENSE
-}
-
-post_install() {
-  note "When starting Hyprland with this package, remember to use '-c ~/.config/hyprland.conf' if you need to load your main config."
 }
 # vi: et ts=2 sw=2

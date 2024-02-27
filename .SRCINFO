@@ -3,6 +3,7 @@ pkgbase = hyprland-asan-git
 	pkgver = 0.35.0.r104.bc3f5b94
 	pkgrel = 1
 	url = https://github.com/hyprwm/Hyprland
+	install = note.install
 	arch = x86_64
 	arch = aarch64
 	license = BSD

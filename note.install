@@ -1,0 +1,4 @@
+post_install() {
+  echo 'To enable ASan logs, start Hyprland like this: `ASAN_OPTIONS="detect_odr_violation=0,log_path=asan.log" Hyprland -c ~/.config/hypr/hyprland.conf`'
+  echo 'Then just reproduce your crashes as usual. The logs will be placed in the directory you started Hyprland in.'
+}
