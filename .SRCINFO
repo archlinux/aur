@@ -7,10 +7,10 @@ pkgbase = mpf-check-bin
 	license = GPL3
 	provides = mpf-check
 	options = !strip
-	source = https://github.com/SabreTools/MPF/releases/download/3.1.1/MPF.Check_3.1.1_net8.0_linux-x64_release.zip
+	source = https://github.com/SabreTools/MPF/releases/download/3.1.2/MPF.Check_3.1.2_net8.0_linux-x64_release.zip
 	source = https://raw.githubusercontent.com/SabreTools/MPF/master/README.md
 	source = https://raw.githubusercontent.com/SabreTools/MPF/master/LICENSE
-	sha256sums = 20706f886d529f362b00fa01f5ea46e88e7f7f9dd396052b74fcac5342a467f8
+	sha256sums = 9db8793d888641c1d95ced7b965132636cc0da00cdf7f17fb1bf7415ce8cb3bc
 	sha256sums = SKIP
 	sha256sums = SKIP
 

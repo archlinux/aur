@@ -10,10 +10,10 @@ pkgdesc="Media Preservation Frontend for Aaru and Redumper in C# (CLI Version)"
 provides=('mpf-check')
 pkgver=3.1.1
 pkgrel=1
-source=('https://github.com/SabreTools/MPF/releases/download/3.1.1/MPF.Check_3.1.1_net8.0_linux-x64_release.zip'
+source=('https://github.com/SabreTools/MPF/releases/download/3.1.2/MPF.Check_3.1.2_net8.0_linux-x64_release.zip'
 'https://raw.githubusercontent.com/SabreTools/MPF/master/README.md'
 'https://raw.githubusercontent.com/SabreTools/MPF/master/LICENSE')
-sha256sums=('20706f886d529f362b00fa01f5ea46e88e7f7f9dd396052b74fcac5342a467f8'
+sha256sums=('9db8793d888641c1d95ced7b965132636cc0da00cdf7f17fb1bf7415ce8cb3bc'
 'SKIP'
 'SKIP')
 
@@ -23,6 +23,12 @@ package() {
 	install -Dm 755 ${srcdir}/${_prgname} ${pkgdir}/usr/bin/${_prgname}
 	install -Dm 644 ${srcdir}/MPF.Check.dll.config \
 		${pkgdir}/usr/lib/${_prgname}/MPF.Check.dll.config
+	install -Dm 644 ${srcdir}/CascLib.dll \
+		${pkgdir}/usr/lib/${_prgname}/CascLib.dll
+	install -Dm 644 ${srcdir}/mspack.dll \
+		${pkgdir}/usr/lib/${_prgname}/mspack.dll
+	install -Dm 644 ${srcdir}/StormLib.dll \
+		${pkgdir}/usr/lib/${_prgname}/StormLib.dll
 
 	# install documentation
 	install -Dm 644 ${srcdir}/README.md \
