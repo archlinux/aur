@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034,SC2154 # to allow unused/uninitialized variables.
 
 pkgname=openimagedenoise-git
-pkgver=1.4.3.r0.gd959bac
+pkgver=2.2.0.r0.gdfa3b96
 #_fragment="#tag=v${pkgver}"
 pkgrel=1
 pkgdesc="Intel(R) Open Image Denoise library"
@@ -17,14 +17,20 @@ makedepends=(git makepkg-git-lfs-proto cmake 'ispc>=1.14' ninja)
 source=("${pkgname%-git}::git+https://github.com/OpenImageDenoise/oidn.git${_fragment}"
         "git+https://github.com/OpenImageDenoise/mkl-dnn.git"
         "git-lfs+https://github.com/OpenImageDenoise/oidn-weights.git"
+        "git+https://github.com/NVIDIA/cutlass"
+        "git+https://github.com/ROCmSoftwarePlatform/composable_kernel"
         )
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP')
 
 prepare() {
   git -C "${srcdir}"/${pkgname%-git} config submodule.mkl-dnn.url "${srcdir}"/mkl-dnn
   git -C "${srcdir}"/${pkgname%-git} config submodule.weights.url "${srcdir}"/oidn-weights
+  git -C "${srcdir}"/${pkgname%-git} config submodule.cutlass.url "${srcdir}"/cutlass
+  git -C "${srcdir}"/${pkgname%-git} config submodule.external/composable_kernel.url "${srcdir}"/composable_kernel
   git -C "${srcdir}"/${pkgname%-git} -c protocol.file.allow=always submodule update --init --recursive # --remote
 }
 
