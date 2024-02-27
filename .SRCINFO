@@ -1,0 +1,13 @@
+pkgbase = matlab-language-server-git
+	pkgdesc = Implementation of the Microsoft Language Server Protocol for the MATLAB language.
+	pkgver = 85.0e2ce5f
+	pkgrel = 1
+	url = https://github.com/mathworks/matlab-language-server
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	source = matlab-language-server::git+https://github.com/mathworks/matlab-language-server.git
+	b2sums = SKIP
+
+pkgname = matlab-language-server-git
