@@ -2,34 +2,34 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pplink-bin
 _chsname="pp直连"
-pkgver=12.1.3
-_electronversion=25
-pkgrel=2
+pkgver=13.2.1
+_electronversion=19
+pkgrel=1
 pkgdesc="帮助电脑、手机、平板等设备建立点到点的安全直连"
 arch=('x86_64')
 url="https://www.ppzhilian.com"
-license=('custom')
+license=('LicenseRef-custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
-    'python'
+    'python>=3'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/download/linux/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('61f324d789cae452d4a114e8016a07ef98485234b0bbd8a4795ef8a51e675fe5'
-            '66067af9f7a9a36d82255a37a6887b4f2cdf22cf878520c34a3b04514d95a83c'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+sha256sums=('67c842858759ade2a15baa5ba8f23ad93142d52fde52234d48e6b5a663166098'
+            '6acc470ced558f0572421e8d554fe5f99abc45be5f390f52d170a1e5d51440bb'
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_chsname}/${pkgname%-bin}\"|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
