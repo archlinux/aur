@@ -13,12 +13,12 @@ source=('git+https://git.sr.ht/~jameskupke/framework-plymouth-theme')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "plymouth-theme-framework-git"
+    cd "framework-plymouth-theme"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    cd "$srcdir/$pkgname/framework"
+    cd "$srcdir/framework-plymouth-theme/framework"
     mkdir -p "$pkgdir/usr/share/plymouth/themes/framework"
     install -Dm644 * "$pkgdir/usr/share/plymouth/themes/framework"
 }
