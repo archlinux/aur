@@ -1,0 +1,18 @@
+pkgbase = libsecp256k1-0.1
+	pkgdesc = Optimized C library for EC operations on curve secp256k1
+	pkgver = 0.1.0.20220630.r1625.g43756da
+	pkgrel = 1
+	url = https://github.com/bitcoin-core/secp256k1
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = pentium4
+	license = MIT
+	depends = glibc
+	provides = libsecp256k1=0.1.0.20220630.r1625.g43756da
+	source = https://github.com/bitcoin-core/secp256k1/archive/43756da819a235d813e7ecd53eae6df073b53247/libsecp256k1-0.1-20220630+1625+g43756da.tar.gz
+	sha256sums = e189c22c3e2acda8e4765ba505c3b2f683bbc9fa551672fe004c925f930ae892
+
+pkgname = libsecp256k1-0.1
