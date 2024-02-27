@@ -2,11 +2,11 @@
 # Contributor: Anthony Ruhier <anthony.ruhier@gmail.com>
 pkgname=headphones
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Music downloader for usenet and torrents."
 arch=('any')
 url="https://github.com/rembo10/headphones"
-license=('GPL3')
+license=('GPL-3.0-only')
 conflicts=("${pkgname}")
 depends=(
   'python>=3.11'
@@ -58,7 +58,7 @@ optdepends=(
 )
 install="${pkgname}.install"
 source=(
-  "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
+  "${pkgname}.git::git+${url}#tag=v${pkgver}"
   "${pkgname}.service"
   "${pkgname}.sysusers"
   "${pkgname}.tmpfiles"
@@ -69,7 +69,7 @@ sha256sums=('SKIP'
             'ff2a4be9594518b670dafe80023772affc5e8cca85bb4c95972c7c14c72453c2')
 package() {
   install -Dm755 -d "${pkgdir}/opt/${pkgname}"
-  cp -a "${srcdir}/${pkgname}-${pkgver}"/* "${pkgdir}/opt/${pkgname}"
+  cp -a "${srcdir}/${pkgname}.git"/* "${pkgdir}/opt/${pkgname}"
   install -Dm 644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dm 644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   install -Dm 644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"

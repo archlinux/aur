@@ -1,11 +1,11 @@
 pkgbase = headphones
 	pkgdesc = Music downloader for usenet and torrents.
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rembo10/headphones
 	install = headphones.install
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	depends = python>=3.11
 	depends = python-urllib3
 	depends = python-pytz
@@ -51,7 +51,7 @@ pkgbase = headphones
 	optdepends = rtorrent: torrent downloader
 	optdepends = jackett: torrent indexer proxy
 	conflicts = headphones
-	source = headphones-0.6.1::git+https://github.com/rembo10/headphones#tag=v0.6.1
+	source = headphones.git::git+https://github.com/rembo10/headphones#tag=v0.6.1
 	source = headphones.service
 	source = headphones.sysusers
 	source = headphones.tmpfiles
