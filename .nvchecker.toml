@@ -1,0 +1,3 @@
+[gphotos-sync]
+source = "pypi"
+pypi = "gphotos-sync"
