@@ -6,7 +6,7 @@ pkgrel=3
 pkgdesc="Desktop application for collect web-links"
 arch=('x86_64')
 url="https://github.com/TechnoMag82/UrlCollector"
-license=('GPL')
+license=('GPL-1.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -17,7 +17,7 @@ source=(
 )
 sha256sums=('5cdb7886c937558fd6c083c0b17cf9453b80b4d3e4e9f9523080092414464ce5')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed -e "s|Exec=urlcol|Exec=${pkgname%-bin}|g" \
         -e "s|${_pkgname}.png|${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"

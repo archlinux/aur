@@ -4,7 +4,7 @@ pkgbase = url-collector-bin
 	pkgrel = 3
 	url = https://github.com/TechnoMag82/UrlCollector
 	arch = x86_64
-	license = GPL
+	license = GPL-1.0-only
 	depends = qt5-base
 	provides = url-collector=2.1
 	conflicts = url-collector
