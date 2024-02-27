@@ -37,6 +37,8 @@ test_job:
   rules:
     - exists:
         - build.env
+      when: always
+    - when: never
 
 release_job:
   stage: release
@@ -59,3 +61,5 @@ release_job:
   rules:
     - exists:
         - build.env
+      when: always
+    - when: never
