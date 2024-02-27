@@ -4,7 +4,7 @@
 # Contributor: Wael Nasreddine <wael.nasreddine@gmail.com>
 
 pkgname=kubetail
-pkgver=1.6.19
+pkgver=1.6.20
 pkgrel=1
 pkgdesc="Tail Kubernetes logs from multiple pods"
 arch=(any)
@@ -15,7 +15,7 @@ depends=(
   kubectl
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('441e0ff5bb1e7884d6458366d72e848f1088825c5d615bbfe96d953990606d9a')
+sha256sums=('c2feff883f4719a2107718d5f07aaba3b2d04fbfcef11e56fe4c2c8c2fb0a19d')
 
 _archive="$pkgname-$pkgver"
 
@@ -24,7 +24,6 @@ package() {
 
   install -Dm755 -t "$pkgdir/usr/bin" kubetail
 
-  # Populate shell completions
   install -Dm644 completion/kubetail.bash "$pkgdir/usr/share/bash-completion/completions/kubetail"
   install -Dm644 completion/kubetail.zsh "$pkgdir/usr/share/zsh/site-functions/_kubetail"
   install -Dm644 completion/kubetail.fish "$pkgdir/usr/share/fish/vendor_completions.d/kubetail.fish"
