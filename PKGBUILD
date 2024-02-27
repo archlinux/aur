@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=termv-rs
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Termv. Now blazingly fast"
 arch=("x86_64")
 url="https://github.com/Roshan-R/termv-rs"
-license=('GPL')
+license=('GPL-3.0-only')
 depends=()
 conflicts=("${pkgname%-rs}")
 source=(
