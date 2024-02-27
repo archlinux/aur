@@ -1,7 +1,7 @@
 pkgbase = libcutefish
 	pkgdesc = System library for Cutefish applications
 	pkgver = 0.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/cutefishos/libcutefish
 	arch = x86_64
 	license = GPL
