@@ -4,8 +4,8 @@
 _ENABLE_CUDA=${_ENABLE_CUDA:-1}
 _ENABLE_ROCM=${_ENABLE_ROCM:-1}
 _SKIP_CPU=${_SKIP_CPU:-0}
-# list of amd gfx architectures to build if GPU_TARGETS and AMDGPU_TARGETS are empty
-_AMDGPU_TARGETS="gfx900;gfx906;gfx908;gfx90a;gfx1030;gfx1100;gfx1101;gfx1102"
+# if not set, populate build architecture list from arch:python-pytorch@2.2.0-1
+_AMDGPU_TARGETS="gfx906;gfx908;gfx90a;gfx940;gfx941;gfx942;gfx1010;gfx1012;gfx1030;gfx1100;gfx1101;gfx1102"
 if test -n "$GPU_TARGETS"; then _AMDGPU_TARGETS="$GPU_TARGETS"; fi
 if test -n "$AMDGPU_TARGETS"; then _AMDGPU_TARGETS="$AMDGPU_TARGETS"; fi
 _GO_TAGS=""
