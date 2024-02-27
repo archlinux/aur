@@ -1,24 +1,25 @@
 # Maintainer: Manuel Wiesinger <m at mmap dot at>
 pkgname=virtme-ng-git
-pkgver=r806.c25de2f
-pkgrel=1
+_srcname=virtme-ng
+pkgver=v1.22.r0.gba33d94
+pkgrel=2
 pkgdesc="A tool that allows to easily and quickly recompile and test a Linux kernel, starting from the source code."
 arch=('any')
 url="https://github.com/arighi/virtme-ng"
-license=('GPL2')
+license=('GPL-2.0-only')
 makedepends=('git')
-depends=('python>=3.8' 'qemu>=1.6' 'python-setuptools' 'python-argcomplete' 'python-importlib-metadata' 'bash')
+depends=('bash' 'python>=3.8' 'python-argcomplete' 'python-importlib-metadata' 'python-requests' 'python-setuptools' 'qemu>=1.6')
 optdepends=('busybox: for inclusion of busybox')
 conflicts=('virtme-git')
 source=("git+${url}.git")
-sha512sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
-	 cd "$srcdir/${_srcname}"
-	 printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/${_srcname}"
+    git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "$srcdir/virtme-ng"
-  python setup.py install --root="$pkgdir/" --optimize=1
+    cd "$srcdir/virtme-ng"
+    python setup.py install --root="$pkgdir/" --optimize=1
 }
