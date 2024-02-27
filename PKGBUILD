@@ -1,7 +1,7 @@
 # Maintainer: Albert Sebastian <albertsebe2 at gmail dot com>
 
 pkgname=furmark
-pkgver=2.0.16
+pkgver=2.1.0.2
 pkgrel=1
 pkgdesc='Lightweight but intensive GPU stress test and benchmarking tool for OpenGL and Vulkan'
 arch=('x86_64')
