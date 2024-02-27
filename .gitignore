@@ -1,0 +1,5 @@
+fudgeo-*.tar.gz
+src/
+pkg/
+python-fudgeo-*.pkg*
+*.log
