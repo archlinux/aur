@@ -1,0 +1,4 @@
+[python-datalad]
+source = "github"
+github = "datalad/datalad"
+use_max_tag = true
