@@ -22,4 +22,8 @@ pkgbase = wayland-asan-git
 
 pkgname = wayland-asan-git
 	provides = wayland=1.22.0.r54.g47de872
+	provides = libwayland-client.so=0-64
+	provides = libwayland-cursor.so=0-64
+	provides = libwayland-egl.so=1-64
+	provides = libwayland-server.so=0-64
 	conflicts = wayland
