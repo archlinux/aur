@@ -1,6 +1,6 @@
 pkgbase = mongodb-compass-isolated-beta-bin
 	pkgdesc = The official GUI for MongoDB - Isolated Edition - beta version - binary version
-	pkgver = 1.42.2.beta.4
+	pkgver = 1.42.2.beta.5
 	pkgrel = 1
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = mongodb-compass-isolated-beta-bin
 	provides = mongodb-compass-isolated-beta
 	conflicts = mongodb-compass-isolated-beta
 	backup = etc/mongodb-compass.conf
-	source = mongodb-compass-isolated-beta-bin-1.42.2.beta.4.rpm::https://downloads.mongodb.com/compass/beta/mongodb-compass-isolated-beta-1.42.2-beta.4.x86_64.rpm
+	source = mongodb-compass-isolated-beta-bin-1.42.2.beta.5.rpm::https://downloads.mongodb.com/compass/beta/mongodb-compass-isolated-beta-1.42.2-beta.5.x86_64.rpm
 	source = mongodb-compass.conf
-	sha512sums = 290cb78c2ad15f260448ccab24d27b36f62bb2dadd84ec606fb5cc8a5f92332e1c5de6691a2c07e2889168782f61daa7c9f01632ef6d4c966e2aeef346808fa9
+	sha512sums = f5c15c93e8badd9c9625f4d30c8c02d5dd2972c107247309709b59a31e7773104f5de94064450246e7f05ac671662691c18b4eb636317859bdb725d069560b20
 	sha512sums = f09a6026e8b963f4821454fa8c2da8c750c765f26010fbf54dfbecfd7451dda5466464bb15fada1252545366c94bf448dc0529c8bd8114f6f3834ae00176d3f1
 
 pkgname = mongodb-compass-isolated-beta-bin
