@@ -24,6 +24,6 @@ pkgbase = waterfox-bin
 	source = waterfox.desktop
 	source = https://cdn1.waterfox.net/waterfox/releases/G6.0.9/Linux_x86_64/waterfox-G6.0.9.tar.bz2
 	sha512sums = d0ff0445021b975d52eee7dac27dfdc0d170da07f8a8dc1676ba53387c2006f0598c163b36b07abdbb411cfb61bf52b8222fc5882bdfa8dfcd13d99cb44c92b6
-	sha512sums = 0d1830e479860aeac54193ed4cea0db3375ecf3708aeb2a2371cb724775dd1eb579517bd9135155c3efbdaf8ef9b2b6178a26153abe4337eb59d50a96522e9e1
+	sha512sums = 99540d6c5ef984095c55c9de9af1189e232b4cd40efc3c19eb8d3687e67f69667eb0c98a073e6da40f0ce88c8b432e9cccebd26d8a3833b5e1361cf14d2fdc12
 
 pkgname = waterfox-bin
