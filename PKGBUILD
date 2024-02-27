@@ -66,7 +66,7 @@ prepare()
 
 build() {
 
-  cd $srcdir
+  cd "${srcdir}"
   echo "
 export PATH=\$PATH:/opt/Geant4/Geant4-v${pkgver}/bin
 export G4ABLADATA=/opt/Geant4/Libraries/G4ABLA3.3
