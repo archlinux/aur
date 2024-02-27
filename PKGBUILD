@@ -3,7 +3,7 @@ pkgname=plasma6-applets-fokus
 _oldpkgname=kdeplasma-applets-fokus
 _gitpkgname=focus-plasmoid
 pkgver=1.5.5.r8.gce21d7b
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple pomodoro KDE plasmoid"
 arch=('any')
 url="https://gitlab.com/divinae/focus-plasmoid"
@@ -28,7 +28,6 @@ pkgver() {
 
 package() {
     cd "$_gitpkgname"
-    mkdir -p "$pkgdir/usr/share/plasma/plasmoids/fokus/"
-    cp -r package/* "$pkgdir/usr/share/plasma/plasmoids/fokus/"
-    install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    mkdir -p "$pkgdir/usr/share/plasma/plasmoids/com.dv.fokus/"
+    cp -r package/* "$pkgdir/usr/share/plasma/plasmoids/com.dv.fokus/"
 }
