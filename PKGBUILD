@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=image-ascii-art-tauri-bin
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Image ASCII convertissor made in React converted to desktop app using Tauri"
 arch=('x86_64')
 url="https://im-rises.github.io/image-ascii-art-website/"
@@ -11,11 +11,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'hicolor-icon-theme'
-    'pango'
-    'libsoup'
-    'gdk-pixbuf2'
     'webkit2gtk'
-    'cairo'
     'gtk3'
 )
 source=(
@@ -25,8 +21,8 @@ source=(
 sha256sums=('489279d8b9207a97a95ab03ce57ecb84e52333b74fce05dbfb5b89128aa4e6b4'
             '4676dff30e55d6b19e92e9bddb71c3cf479ca2c97db69f4080b2687a68e80835')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.gz"
-    sed "s|Categories=|Categories=Graphics;Utility;|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    bsdtar -xf "${srcdir}/data."*
+    sed "s|Categories=|Categories=Graphics;|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
