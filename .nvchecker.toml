@@ -1,0 +1,5 @@
+[mod_auth_openidc]
+source = "github"
+github = "OpenIDC/mod_auth_openidc"
+prefix = "v"
+use_max_tag = true
