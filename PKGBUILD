@@ -5,17 +5,16 @@
 
 pkgname=qt3
 pkgver=3.3.8b
-pkgrel=20
+pkgrel=21
 epoch=1
 pkgdesc="A cross-platform application and UI framework"
 arch=('i686' 'x86_64')
 url="http://qt.io"
 license=('GPL')
 depends=('libpng' 'libxmu' 'libxcursor' 'libxinerama' 'glu' 'libxft'
-         'libxrandr' 'libmng' 'libunistring' 'libnsl' 'libtirpc')
-makedepends=('mariadb' 'postgresql' 'unixodbc' 'sqlite2' 'mesa')
-optdepends=('qtchooser: set the default Qt toolkit'
-            'libmariadbclient: MariaDB driver'
+         'libxrandr' 'libmng' 'libunistring' 'libnsl' 'libtirpc' 'libxi')
+makedepends=('mariadb' 'postgresql' 'unixodbc' 'sqlite2' 'mesa' 'libcups')
+optdepends=('libmariadbclient: MariaDB driver'
             'postgresql-libs: PostgreSQL driver'
             'unixodbc: ODBC driver')
 options=('!docs')
