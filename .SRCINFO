@@ -1,0 +1,20 @@
+pkgbase = appmenu-glib-translator-git
+	pkgdesc = Gtk module for exporting menus
+	pkgver = 24.02.r0.g469739b
+	pkgrel = 1
+	url = https://gitlab.com/vala-panel-project/vala-panel-appmenu
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = meson
+	makedepends = gobject-introspection
+	makedepends = vala
+	makedepends = glib2
+	makedepends = git
+	depends = glib2
+	provides = appmenu-glib-translator
+	conflicts = appmenu-glib-translator
+	source = git+https://gitlab.com/vala-panel-project/vala-panel-appmenu.git
+	sha256sums = SKIP
+
+pkgname = appmenu-glib-translator-git
