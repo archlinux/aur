@@ -30,19 +30,16 @@ find_release_job:
 
 test_job:
   stage: test
-  script: 
+  script:
+    - if [ ! -f build.env ]; then echo "build.env does not exist, skipping job"; exit 0; fi
     - su -c "cd ${CI_PROJECT_DIR} && ./test" - builduser
   dependencies:
     - find_release_job
-  rules:
-    - exists:
-        - build.env
-      when: always
-    - when: never
 
 release_job:
   stage: release
   script:
+    - if [ ! -f build.env ]; then echo "build.env does not exist, skipping job"; exit 0; fi
     - git config --global user.email "zomundo@gmail.com"
     - git config --global user.name "Mundo"
     - git remote add aur ssh://aur@aur.archlinux.org/taskade-appimage.git
@@ -58,8 +55,3 @@ release_job:
 
   dependencies:
     - find_release_job
-  rules:
-    - exists:
-        - build.env
-      when: always
-    - when: never
