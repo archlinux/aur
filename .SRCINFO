@@ -1,0 +1,16 @@
+pkgbase = super-mario-bros-2
+	pkgdesc = Platform game developed and published in 1985 by Nintendo for the Famicom in Japan and for the Nintendo Entertainment System (NES) in North America
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://en.wikipedia.org/wiki/Super_Mario_Bros._2
+	arch = any
+	license = custom
+	depends = fceux
+	source = com.nintendo.SuperMarioBros2.nes::https://archive.org/download/nes-roms/Super%20Mario%20Bros.%202%20%28USA%29.nes
+	source = nes-template.desktop
+	source = com.nintendo.SuperMarioBros2.png::https://upload.wikimedia.org/wikipedia/en/0/00/Super_Mario_Bros_2.jpg
+	sha256sums = 47ba60fad332fdea5ae44b7979fe1ee78de1d316ee027fea2ad5fe3c0d86f25a
+	sha256sums = e021676ce1a72920536fad3733b4d5beb703f27da88f3418a517c675f0572a24
+	sha256sums = a9e5b5bda9a15eb96bc8a861a5876af498a53070f3b0e29858eeb424e34e2c1b
+
+pkgname = super-mario-bros-2
