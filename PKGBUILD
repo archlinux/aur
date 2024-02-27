@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=vdu_controls
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Visual Display Unit virtual control panel - a GUI front end to ddcutil"
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   'ddcutil-service: D-Bus Interface for up to 10x faster response times.'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d4567d6605ab900f54038c664373887dc58f5c94316d319baba5d93c261f29a7')
+sha256sums=('d20c3aba2eda09c2f39ffd6538fd142611178588ec9f31ccdacf248b796c9e73')
 
 build() {
   cd "$pkgname-$pkgver"
