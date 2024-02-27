@@ -4,7 +4,7 @@ pkgname=tvtower-bin
 _pkgname=TVTower
 pkgver=0.8.2
 _subver=20231220
-pkgrel=1
+pkgrel=2
 pkgdesc="A tribute to Mad TV. Written in BlitzMax, Lua and a bit of C."
 arch=(
 	'i686'
