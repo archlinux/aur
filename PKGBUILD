@@ -2,20 +2,19 @@
 
 _pkgname=homer
 pkgname="${_pkgname}-web"
-pkgver=23.10.1
+pkgver=24.02.1
 pkgrel=1
 pkgdesc='A very simple static homepage for your server'
 arch=('any')
 url="https://github.com/bastienwirtz/${_pkgname}"
-license=('Apache')
-_source_archive="${url}/releases/download/v${pkgver}/${_pkgname}.zip"
-source=("${_source_archive}")
-noextract=("${_source_archive}")
-b2sums=('17f0f2cb11b16c7f0a191309673e87d645e3884932b959e0452f56b00bb9c7d0a5be6dd7d620ba3d955c65e906723defee16ba8f4f65794a204dd5bfbe956353')
+license=('Apache-2.0')
+source=("${_pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_pkgname}.zip")
+noextract=("${_pkgname}-${pkgver}.zip")
+b2sums=('fdda4c7e7c206766e81047c35ef4955b24251a25dd8c83efd9a337a48121495518c4d3bcd4be478e54f6fd154b3b977905df31aa63b44f1166896c90063e7961')
 
 package() {
     local _dest_dir="/usr/share/webapps/${_pkgname}"
 
     install --directory "${pkgdir}${_dest_dir}"
-    bsdtar --extract --file "$(basename ${_source_archive})" --directory "${pkgdir}${_dest_dir}"
+    bsdtar --extract --file "${_pkgname}-${pkgver}.zip" --directory "${pkgdir}${_dest_dir}"
 }
