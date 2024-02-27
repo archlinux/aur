@@ -1,0 +1,17 @@
+pkgbase = python-pydantic-compat
+	pkgdesc = Compatibility layer for pydantic v1/v2.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/pyapp-kit/pydantic-compat
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-hatch-vcs
+	makedepends = python-hatchling
+	makedepends = python-installer
+	depends = python
+	depends = python-pydantic
+	source = https://files.pythonhosted.org/packages/source/p/pydantic_compat/pydantic_compat-0.1.1.tar.gz
+	sha256sums = 2ef149f624296f08395165d8ef0f05ed45124cb82dde442fd032900239decefb
+
+pkgname = python-pydantic-compat
