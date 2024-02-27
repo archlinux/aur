@@ -38,7 +38,7 @@ post_install(){
 }
 
 pre_remove(){
-  echo "Backing up Geant4 Libraries. To remove them, please run\n $ sudo rm -Rf /opt/Geant4/Libraries/G4ABLA3.3"
+  echo "Backing up Geant4 Libraries. To remove them, please run\n $ sudo rm -Rf /opt/Geant4/Libraries"
   mv /opt/Geant4/Libraries /opt/Geant4/Lib-backup
 }
 
