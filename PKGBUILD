@@ -6,8 +6,8 @@
 
 pkgname=ffmpeg-ffplayout
 pkgver=6.1.1
-pkgrel=1
-epoch=1
+pkgrel=0
+epoch=0
 pkgdesc='Complete solution to record, convert and stream audio and video (for ffplayout)'
 arch=(x86_64)
 url=https://ffmpeg.org
