@@ -1,19 +1,17 @@
 pkgbase = qwerty-learner-pake
 	pkgdesc = Use Pake to package Qwerty-Learner.为键盘工作者设计的单词记忆与英语肌肉记忆锻炼软件/Words learning and English muscle memory training software designed for keyboard workers
 	pkgver = 2.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://qwerty.kaiyi.cool
 	arch = x86_64
-	license = GPL3
-	depends = libsoup
+	license = MIT
 	depends = gtk3
-	depends = gdk-pixbuf2
-	depends = cairo
 	depends = webkit2gtk
-	depends = openssl
-	depends = pango
+	depends = openssl-1.1
 	conflicts = qwerty
 	source = qwerty-learner-pake-2.3.5.deb::https://github.com/tw93/Pake/releases/download/V2.3.5/Qwerty_x86_64.deb
+	source = LICENSE-2.3.5::https://raw.githubusercontent.com/tw93/Pake/V2.3.5/LICENSE
 	sha256sums = b0e80a6bc104360cf8d84c6a26527291d06ce94b63a5a812272eeb6f7324ec42
+	sha256sums = e7e0fe962c873b3998eacb9774629b672ff939d46ba5ec028b57cbdeb4900808
 
 pkgname = qwerty-learner-pake
