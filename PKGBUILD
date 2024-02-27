@@ -1,17 +1,19 @@
-# Maintainer: Alad Wenter <alad@archlinux.org>
+# Maintainer: Jah Way <jahway603 at protonmail dot com>
+# Previous Maintainer: Alad Wenter <alad@archlinux.org>
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=asoundconf
 epoch=1
 pkgver=1.2
 _commit=55cdf2e78b7f28ee1808346e5d4e32f7e95618dc # 1.2
-pkgrel=7
+pkgrel=8
 pkgdesc="utility to read and change the user's ALSA library configuration"
 arch=('any')
 url="https://bitbucket.org/stativ/asoundconf"
 license=('GPL')
 depends=('python')
-makedepends=('git')
-optdepends=('python-gobject: asoundconf-gtk GUI')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
+optdepends=('python-gobject: asoundconf-gtk GUI'
+            'gtk3: for GUI')
 source=("git+https://bitbucket.org/stativ/asoundconf.git#commit=$_commit"
         '0001-python3-syntax.patch'
         '0002-python3-spaces.patch'
@@ -27,15 +29,15 @@ prepare() {
     patch -p1 < "$srcdir"/0002-python3-spaces.patch
     patch -p1 < "$srcdir"/0003-python3-gobject.patch
 }
-
+# implementing https://wiki.archlinux.org/title/Python_package_guidelines#Standards_based_(PEP_517)
 build() {
     cd "$pkgname"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$pkgname"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 # vim:set ts=2 sw=2 et:
