@@ -1,25 +1,22 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sentio-bin
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A productivity type desktop app built around the pomodoro concept."
 arch=("x86_64")
 url="https://intentio.app/"
 _ghurl="https://github.com/JakubGluszek/intentio"
 license=(
-    "Apache"
-    "custom:CC-1.0"
+    "Apache-2.0"
+    "CC-1.0"
 )
 provides=("${pkgname%-bin}-${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'gdk-pixbuf2'
     'webkit2gtk'
     'alsa-lib'
     'hicolor-icon-theme'
-    'openssl'
     'gtk3'
-    'cairo'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
@@ -28,7 +25,7 @@ source=(
 sha256sums=('ee466721e1ced1d3d367d4bc4d41bfa21be02f8c8d1f90e200fd97e7e5a3e9b0'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.gz"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
