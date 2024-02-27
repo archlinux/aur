@@ -1,7 +1,7 @@
 pkgbase = wiki-loves-monuments-wallpapers
 	pkgdesc = Use images from Wikipedia's 'Wiki Loves Monuments' annual photographic competition on your desktop
 	pkgver = 2022
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.wikilovesmonuments.org
 	arch = any
 	license = CCPL
@@ -148,7 +148,7 @@ pkgbase = wiki-loves-monuments-wallpapers
 	sha1sums = ecef7fd579e3805ca9a298f52eadd307fa8dc698
 	sha1sums = dfb5e13850c8d371d0c9e9f56dbc9a6df5d847fe
 	sha1sums = 21e3c5bf2b424b8255f1c22b8f512fbf92caa69c
-	sha1sums = fec9506cd02d1a9ec50a3f7690f88de247704155
+	sha1sums = f4efbc47c26024bea4d75f94244a95ced5e274bb
 	sha1sums = 230e6b575597b46b97714f52dca04395ed2c6044
 	sha1sums = 9d18ad029b362d62a0e1234a7f1d117369d7a060
 	sha1sums = bd1c98d2860537ea82ded75150c70ec2b341f8df
