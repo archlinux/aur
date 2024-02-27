@@ -4,7 +4,7 @@
 _pkgname='ov'
 pkgname="${_pkgname}-git"
 pkgver=0.33.3.r2.g8c70587
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Feature-rich terminal-based text pager (built from latest commit)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -73,6 +73,17 @@ package() {
   install -vDm0755 "build/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" *.yaml README.md
   install -vDm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  for _shell in bash fish zsh; do
+    "$pkgdir/usr/bin/$_pkgname" --completion "$_shell" > "completion.$_shell"
+  done
+
+  install -vDm0644 completion.bash \
+    "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
+  install -vDm0644 completion.fish \
+    "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
+  install -vDm0644 completion.zsh \
+    "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
 }
 
 # eof
