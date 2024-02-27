@@ -3,7 +3,9 @@ pkgbase = motrix-git
 	pkgver = 1.8.19.r30.g7012040
 	pkgrel = 1
 	url = https://motrix.app/
-	arch = any
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
 	license = MIT
 	makedepends = gendesk
 	makedepends = git
@@ -14,9 +16,9 @@ pkgbase = motrix-git
 	depends = electron22
 	provides = motrix=1.8.19.r30.g7012040
 	conflicts = motrix
-	source = motrix.git::git+https://gitee.com/mirrors/motrix.git
+	source = motrix.git::git+https://github.com/agalwood/Motrix.git
 	source = motrix.sh
 	sha256sums = SKIP
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = motrix-git
