@@ -21,5 +21,5 @@ pkgbase = wayland-asan-git
 	sha256sums = SKIP
 
 pkgname = wayland-asan-git
-	provides = wayland-asan=1.22.0.r54.g47de872
+	provides = wayland=1.22.0.r54.g47de872
 	conflicts = wayland

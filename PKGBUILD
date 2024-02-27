@@ -24,7 +24,7 @@ check() {
 }
 
 package_wayland-asan-git() {
-    provides=("wayland-asan=${pkgver}")
+    provides=("wayland=${pkgver}")
     conflicts=('wayland')
     
     DESTDIR="$pkgdir" ninja -C build install
