@@ -3,7 +3,7 @@
 
 pkgname='liteloader-qqnt-lite-tools-bin'
 _pkgname='LiteLoaderQQNT-lite_tools'
-pkgver='2.7.5'
+pkgver='2.7.6'
 pkgrel=1
 pkgdesc='A lightweight, elegant and efficient LiteLoaderQQNT plugin for lite tools'
 arch=('any')
@@ -12,8 +12,8 @@ license=("MIT")
 depends=("liteloader-qqnt-bin")
 
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/lite_tools_v4.zip")
-sha256sums=("4baa18422b0e03dd98d01499653564d844e2dc8b3828bb029d01f7e31d84d98b")
-b2sums=("ae9e7210f0e9e563ff06c7e699e6d584cc6d7b50e7de9ccebc7320763f0a5f96b08aa88ba7667344f98c9bf6ecdbea3019f1c427dab799777c2e08dc62c7d30b")
+sha256sums=("58d1f03f0a068b2f81c07d075ba3b04fef083bdf997a339b5434a417dbf2e2ba")
+b2sums=("417c66e8059830074cd37298420863d2b1efbe6ca499289d2523499d36a15cac930fdef34a7fb6376fd38b6cb41061f5b155ce3a304b179175ada1f844b4408d")
 
 package() {
     # prepare to copy files
