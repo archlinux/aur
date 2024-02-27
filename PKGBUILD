@@ -2,12 +2,12 @@
 pkgname=opal-player-bin
 _pkgname=Opal
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Plays relaxing music in the background"
 arch=('x86_64')
 url="https://codedead.com/"
 _ghurl="https://github.com/CodeDead/opal"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -18,9 +18,6 @@ depends=(
     'libxtst'
     'alsa-lib'
     'libxi'
-)
-makedepends=(
-    'squashfuse'
 )
 options=('!strip')
 source=(
