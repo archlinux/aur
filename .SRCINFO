@@ -40,6 +40,6 @@ pkgbase = wlroots-nvidia
 	validpgpkeys = 4100929B33EEB0FD1DB852797BC79407090047CA
 	sha256sums = d58d68e3f90d92de4d49fa43b4d75dc78f8af1d920d090729331cefbdfcf361b
 	sha256sums = SKIP
-	sha256sums = 980f4e7c37b30412d2726e5628d41541b76511a36297be7bdd305ba50ed89588
+	sha256sums = bbbb2a7c825d241f119a73503e7a04482f8d5f03192feabc68601c75cf93ad0b
 
 pkgname = wlroots-nvidia

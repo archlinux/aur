@@ -1,11 +1,11 @@
---- render/gles2/renderer.c	2022-12-25 10:50:12.000000000 -0500
-+++ render/gles2/renderer.c	2023-01-04 18:34:37.961431132 -0500
-@@ -179,7 +179,7 @@
- 		assert(wlr_egl_is_current(renderer->egl));
+--- render/gles2/pass.c	2023-12-21 13:42:26.000000000 -0500
++++ render/gles2/pass.c	2024-02-26 22:47:46.731134932 -0500
+@@ -36,7 +36,7 @@
+ 		clock_gettime(CLOCK_MONOTONIC, &timer->cpu_end);
+ 	}
  
- 		push_gles2_debug(renderer);
--		glFlush();
-+		glFinish();
- 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
- 		pop_gles2_debug(renderer);
+-	glFlush();
++	glFinish();
+ 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
  
+ 	pop_gles2_debug(renderer);
