@@ -1,0 +1,6 @@
+post_install() {
+	cat <<- EOF
+		:: Make sure your user is part of the dialout group before launching G4A-GUI!
+	EOF
+}
+
