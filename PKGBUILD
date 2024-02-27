@@ -3,7 +3,7 @@
 _name='superqt'
 _author='pyapp-kit'
 pkgname="python-${_name}"
-pkgver=0.4.1
+pkgver=0.6.1
 pkgrel=2
 pkgdesc='Missing widgets and components for Qt-python.'
 arch=('any')
@@ -12,6 +12,7 @@ license=('BSD')
 makedepends=(
   'python-build'
   'python-hatch-vcs'
+  'python-hatchling'
   'python-installer'
 )
 depends=(
@@ -23,7 +24,7 @@ depends=(
   'qt5-python-bindings'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('a1037a2cef11afb597c2f3c47b532b5e8c9143e8ebed5b1b8eba823524378118')
+sha256sums=('f1a9e0499c4bbcef34b6f895eb57cd41301b3799242cd030029238124184dade')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
