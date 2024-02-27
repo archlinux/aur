@@ -3,10 +3,10 @@
 # Contributor: fkxxyz <fkxxyz@163.com>
 pkgname=youdao-dict
 pkgver=6.0.0
-pkgrel=7
+pkgrel=8
 pkgdesc="YouDao Dictionary"
 arch=('x86_64')
-license=('GPL3')
+license=('LicenseRef-custom')
 conflicts=("${pkgname}")
 url="http://cidian.youdao.com/"
 depends=(
@@ -52,7 +52,7 @@ build() {
 	sed -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|main.py|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.zst"
+    bsdtar -xf "${srcdir}/data."*
     sed -i '290s|self.setX(x)|self.setX(int(x))|g;291s|self.setY(y)|self.setY(int(y))|g' "${srcdir}/usr/share/${pkgname}/app/plugins/youdao/window.py"
     sed -i '644s|self.move(x, y)|self.move(int(x), int(y))|g' "${srcdir}/usr/share/${pkgname}/dae/window.py"
     sed 's|getargspec|getfullargspec|g' -i "${srcdir}/usr/share/${pkgname}/app/plugins/${pkgname%-dict}/pyquery/pyquery.py"

@@ -1,10 +1,10 @@
 pkgbase = youdao-dict
 	pkgdesc = YouDao Dictionary
 	pkgver = 6.0.0
-	pkgrel = 7
+	pkgrel = 8
 	url = http://cidian.youdao.com/
 	arch = x86_64
-	license = GPL3
+	license = LicenseRef-custom
 	depends = sqlite
 	depends = python-lxml
 	depends = python-webob
