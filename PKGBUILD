@@ -17,7 +17,7 @@ build() {
   cd "$srcdir/primesieve-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DWITH_MULTIARCH=OFF ..
+    ${_arch}-cmake -DWITH_MULTIARCH=OFF -DBUILD_PRIMESIEVE=OFF ..
     make
     popd
   done
@@ -27,8 +27,6 @@ package() {
   for _arch in ${_architectures}; do
     cd "$srcdir/primesieve-${pkgver}/build-${_arch}"
     make install DESTDIR="$pkgdir"
-    rm -r "$pkgdir"/usr/${_arch}/share
-    rm "$pkgdir"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
