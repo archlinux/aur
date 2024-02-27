@@ -4,46 +4,23 @@
 pkgname=processing-bin
 _pkgname=Processing
 pkgver=4.3
-pkgrel=4
+pkgrel=5
 arch=("x86_64")
 pkgdesc="Programming environment for creating images, animations and interactions."
 url="https://processing.org/"
 _ghurl="https://github.com/processing/processing4"
-license=("custom")
+license=("GPL-2.0-only")
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 options=('!strip')
 depends=(
-    'libxtst'
-    'lib32-libdrm'
-    'libx11'
-    'libxcursor'
-    'lib32-libx11'
-    'lib32-mesa'
-    'lib32-libxcursor'
     'alsa-lib'
-    'mesa'
-    'lib32-libxi'
     'hicolor-icon-theme'
-    'freetype2'
-    'libxrender'
-    'lib32-libxrandr'
-    'lib32-libxrender'
-    'libxxf86vm'
-    'libxi'
-    'lib32-glibc'
-    'libxrandr'
-    'lib32-libxxf86vm'
-    'libdrm'
-    'libxext'
-    'java-runtime'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.tgz::${_ghurl}/releases/download/${pkgname%-bin}-1293-${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.tgz"
-    "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/processing/processing4/${pkgname%-bin}-1293-${pkgver}/LICENSE.md"
 )
-sha256sums=('3f655b3076158148e7ca9ac94a380d35b925436a5829e9d653715a3146ef3e33'
-            '4b7b429609d77db38b2b2ab54065324622dfe85bc6f0db331c13951b44c1cb27')
+sha256sums=('3f655b3076158148e7ca9ac94a380d35b925436a5829e9d653715a3146ef3e33')
 build() {
     cp "${srcdir}/${pkgname%-bin}-${pkgver}/lib/desktop.template" "${srcdir}/${pkgname%-bin}.desktop"
     sed "s|<BINARY_LOCATION>|${pkgname%-bin}|g;s|<ICON_NAME>|${pkgname%-bin}|g" -i "${srcdir}/${pkgname%-bin}.desktop"
@@ -61,5 +38,5 @@ package() {
         install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/lib/icons/app-${_icons/x*}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+    install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}/lib/${pkgname%-bin}-pde.xml" "${pkgdir}/usr/share/mime/application/${pkgname%-bin}.xml"
 }
