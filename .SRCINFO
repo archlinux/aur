@@ -1,13 +1,13 @@
 pkgbase = mergerfs
 	pkgdesc = Featureful union filesystem
-	pkgver = 2.40.0
+	pkgver = 2.40.1
 	pkgrel = 1
 	url = https://github.com/trapexit/mergerfs
 	arch = x86_64
 	license = custom:ISC
 	optdepends = fuse2: mount via fstab
 	optdepends = mergerfs-tools-git: manage data in a pool
-	source = mergerfs-2.40.0.tar.gz::https://github.com/trapexit/mergerfs/archive/refs/tags/2.40.0.tar.gz
-	sha256sums = dea6a23fe25044a393368fd38d263eb7e731423c34a20ddd6ba4f46688edcbaa
+	source = mergerfs-2.40.1.tar.gz::https://github.com/trapexit/mergerfs/archive/refs/tags/2.40.1.tar.gz
+	sha256sums = afe50d67a38911a31e59c7d596f8679827bd56dbb820b748164b77fe1a405f41
 
 pkgname = mergerfs
