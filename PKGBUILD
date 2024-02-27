@@ -4,7 +4,7 @@ pkgname="${_pkgname//_/-}-bin"
 _appname="SWC Minecraft Launcher"
 pkgver=1.1.12
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="Quickly and easily launch Software City's Minecraft-Modpacks through this beautiful and custom Minecraft Launcher!"
 arch=('x86_64')
 url="https://projects.software-city.org/p/mc-launcher"
@@ -22,13 +22,13 @@ source=(
 )
 sha256sums=('de1ec724f3d00717d3354232399602b68eaec067deb9a842c12d7a35e50d6d23'
             '2fc239445e58117449b5049215f6540a4f37dd25e4ed79a7325b57e1406c1437'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_appname}/${_pkgname}\"|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
