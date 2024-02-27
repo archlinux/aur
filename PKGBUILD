@@ -1,7 +1,7 @@
 # Maintainer: dqpb <dqpb@mailbox.org>
 
 pkgname=gmetronome
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="A tempo measurement tool for composers and musicians"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=(
     "https://github.com/dqpb/gmetronome/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2"
 )
 sha256sums=(
-    '0429e878a1b514903b346fe647d3964e6842dd6d9ed93456ac848591e0d0dade'
+    'a53e51249e6029d252529f31ba8d0ba30f09de1faa236df01f22a135ff16f9af'
 )
 
 build() {
