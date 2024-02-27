@@ -3,13 +3,13 @@
 
 pkgdesc='Dynamic, bytecode-compiled programming language and a dialect of Python (development version)'
 pkgname='kuroko-git'
-pkgver=1.4.0.r60.g6e8aa9b
-pkgrel=3
+pkgver=1.4.0.r80.g9ad8501
+pkgrel=1
 url='https://github.com/kuroko-lang/kuroko'
 arch=('aarch64' 'x86_64')
 conflicts=('kuroko')
 depends=('glibc')
-license=('MIT')
+license=('MIT')  # SPDX-License-Identifier: MIT
 makedepends=('git')
 options=('lto')
 provides=('kuroko' 'libkuroko')
@@ -49,7 +49,9 @@ package () {
   # Be more verbose if standard output is a TTY
   test -t 1 && _v='v' || _v=''
 
-  install "-${_v}Dm0644" "$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install "-${_v}Dm0644" "$_pkgname/README.md"   "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install "-${_v}Dm0644" "$_pkgname/SECURITY.md" "$pkgdir/usr/share/doc/$pkgname/SECURITY.md"
+  install "-${_v}Dm0644" "$_pkgname/LICENSE"     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # eof
