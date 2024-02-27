@@ -1,8 +1,8 @@
 # Maintainer: Lubosz Sarnecki <lubosz at gmail com>
- 
+
 _realname='sphvr'
 pkgname="$_realname-git"
-pkgver=0.0.1.63.3a9ec15
+pkgver=0.0.1.103.830dc5a
 pkgrel=1
 pkgdesc='A spherical media player using Vulkan and GStreamer.'
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ pkgver() {
 
 build() {
   rm -rf build
-  arch-meson $_realname build --libdir=lib --buildtype release -Dapi_doc=true
+  arch-meson $_realname build --libdir=lib --buildtype release
   ninja -C build
 }
 
