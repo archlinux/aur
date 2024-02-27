@@ -1,0 +1,3 @@
+[python-vharfbuzz]
+source = "pypi"
+pypi = "vharfbuzz"
