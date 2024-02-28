@@ -10,6 +10,6 @@ source=("https://github.com/bbedward/pac-pacman-aliases/archive/refs/tags/v1.1.z
 sha256sums=('SKIP')
 
 package() {
-  install -Dm755 "$srcdir/pac" "$pkgdir/usr/local/bin/pac"
-  install -Dm755 "$srcdir/_pac_pacman_completions" "$pkgdir/usr/share/zsh/site-functions/_pac_pacman_completions"
+  install -Dm755 "$srcdir/pac-pacman-aliases-1.1/src/pac" "$pkgdir/usr/local/bin/pac"
+  install -Dm755 "$srcdir/pac-pacman-aliases-1.1/src/_pac_pacman_completions" "$pkgdir/usr/share/zsh/site-functions/_pac_pacman_completions"
 }
