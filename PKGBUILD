@@ -1,4 +1,5 @@
-# Maintainer: Jeff M Hubbard <jeffmhubbard@gmail.com>
+# Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
+# Contributor: Jeff M Hubbard <jeffmhubbard@gmail.com>
 # Contributor: Philippe Proulx <eeppeliteloop@gmail.com>
 pkgname=python-colormath
 pkgver=3.0.0
@@ -7,12 +8,10 @@ pkgdesc="Python module that abstracts common color math operations"
 arch=('any')
 url="https://github.com/gtaylor/python-colormath"
 license=('GPL3')
-depends=('python' 'python-networkx' 'python-numpy')
-makedepends=('python-setuptools')
-provides=('python-colormath')
-conflicts=('python-colormath')
-source=('https://github.com/gtaylor/python-colormath/archive/3.0.0.tar.gz')
-md5sums=('7a6fe120a4a688fb87b23f9930508471')
+depends=(python-networkx python-numpy)
+makedepends=(python-setuptools)
+source=(colormath-$pkgver.tar.gz::https://github.com/gtaylor/python-colormath/archive/3.0.0.tar.gz)
+sha256sums=('fffc8e0fc35055d45fb7e2e4bd87d42f9ef80b927bc66f8e812c1fc250996e7b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
