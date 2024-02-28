@@ -1,7 +1,7 @@
 pkgbase = gun4all-gui
 	pkgdesc = Configuration utility for the IR-GUN4ALL DIY light-gun system.
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/SeongGino/GUN4ALL-GUI
 	install = gun4all-gui.install
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = gun4all-gui
 	depends = icu
 	source = https://github.com/SeongGino/GUN4ALL-GUI/archive/refs/tags/v1.0-2.tar.gz
 	source = GUN4ALL-GUI.desktop
-	md5sums = b04ee547698bd518ad30d1273a104a06
+	md5sums = a692830cefe515763b6fa645ad307b27
 	md5sums = 5a34660fff6347e05463589e51b90bec
 
 pkgname = gun4all-gui
