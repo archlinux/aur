@@ -1,8 +1,10 @@
 pkgbase = nostril-git
 	pkgdesc = A cli util for generating nostr events
-	pkgver = r69.65c7077
+	pkgver = r75.6d82023
 	pkgrel = 1
+	url = https://github.com/jb55/nostril
 	arch = x86_64
+	license = MIT
 	source = git+https://github.com/jb55/nostril.git#branch=master
 	sha256sums = SKIP
 
