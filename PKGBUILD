@@ -5,11 +5,13 @@ pkgname=foundryup-git
 pkgver=r3227.551bcb5
 pkgrel=1
 pkgdesc="Update or revert to a specific Foundry branch with ease"
+license=('MIT OR Apache-2.0')
 arch=(any)
 url=https://github.com/Harry24k/adversarial-attacks-pytorch
 depends=(cargo bash)
 makedepends=(git)
-license=('MIT OR Apache-2.0')
+provides=(foundryup)
+conflicts=(foundryup)
 source=(git+https://github.com/foundry-rs/foundry.git)
 sha256sums=('SKIP')
 install='post.install'
@@ -22,5 +24,6 @@ pkgver() {
 package() {
   cd "$_name"
   install -Dm755 foundryup/foundryup -t "$pkgdir/usr/bin"
+  install -Dm644 foundryup/README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname"
 }

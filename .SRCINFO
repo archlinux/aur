@@ -9,6 +9,8 @@ pkgbase = foundryup-git
 	makedepends = git
 	depends = cargo
 	depends = bash
+	provides = foundryup
+	conflicts = foundryup
 	source = git+https://github.com/foundry-rs/foundry.git
 	sha256sums = SKIP
 
