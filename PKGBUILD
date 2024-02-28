@@ -1,12 +1,12 @@
 pkgname=script-runner-gui
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A GUI application for running and managing shell scripts"
 arch=('any')
 url="http://yourapplicationhomepage.com"
 license=('GPL')
 depends=('python' 'python-pyqt5' 'vim')
-source=("https://github.com/LORDINFINITY12/script-runner-gui/blob/main/script-runner-gui.py" "https://github.com/LORDINFINITY12/script-runner-gui/blob/main/script-runner-gui.desktop" "https://github.com/LORDINFINITY12/script-runner-gui/blob/main/scripts.json")
+source=("https://github.com/LORDINFINITY12/script-runner-gui/blob/main/script-runner-gui.py" "https://github.com/LORDINFINITY12/script-runner-gui/blob/main/script-runner-gui.desktop" "https://github.com/LORDINFINITY12/script-runner-gui/blob/main/scripts.json" "https://github.com/LORDINFINITY12/script-runner-gui/blob/main/script-runner-icon.png")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP') # Replace with actual sha256sums or use 'SKIP'
