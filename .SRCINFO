@@ -1,10 +1,10 @@
 pkgbase = openxcom-data-steam
 	pkgdesc = X-COM data files (from steam) for openxcom
-	pkgver = 3
+	pkgver = 4
 	pkgrel = 1
 	url = https://steamcommunity.com/app/7760
 	arch = any
-	license = custom
+	license = LicenseRef-custom
 	depends = openxcom
 	provides = openxcom-data
 	noextract = filelist
@@ -694,6 +694,7 @@ pkgbase = openxcom-data-steam
 	noextract = X_ROB.TAB
 	noextract = ZOMBIE.PCK
 	noextract = ZOMBIE.TAB
+	noextract = universal-patch-ufo.zip
 	source = filelist
 	source = copier.sh
 	source = localfile://ADLIB.CAT
@@ -1381,6 +1382,7 @@ pkgbase = openxcom-data-steam
 	source = localfile://X_ROB.TAB
 	source = localfile://ZOMBIE.PCK
 	source = localfile://ZOMBIE.TAB
+	source = https://openxcom.org/download/extras/universal-patch-ufo.zip
 	md5sums = c693a4ea46867f3a470c8e01c4c6f248
 	md5sums = acc9cbf3ac5f84e15c25652ac6433870
 	md5sums = e3f22daa6e73e2c38044aa76fee532a5
@@ -2068,6 +2070,6 @@ pkgbase = openxcom-data-steam
 	md5sums = 4bb74d9a02999c507684610a6d0ea8c0
 	md5sums = 5b79584785abef1a63d8f66cccecea46
 	md5sums = df99de4cb437e18ab49e0586b8739bd9
+	md5sums = 18dc9063cb707e6e4245ad9c48cf68a5
 
 pkgname = openxcom-data-steam
-

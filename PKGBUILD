@@ -30,12 +30,12 @@ _openxcom_ver=1.0
 #_openxcom_ver=git
 
 pkgname=openxcom-data-steam
-pkgver=3
+pkgver=4
 pkgrel=1
 pkgdesc="X-COM data files (from steam) for openxcom"
 arch=(any)
 url="https://steamcommunity.com/app/7760"
-license=('custom')
+license=('LicenseRef-custom')
 depends=('openxcom')
 provides=('openxcom-data')
 DLAGENTS+=('localfile::/usr/bin/echo "Could not find %u. Use the copier.sh script to copy them into this directory"')
@@ -727,6 +727,7 @@ source=(
   "localfile://X_ROB.TAB"
   "localfile://ZOMBIE.PCK"
   "localfile://ZOMBIE.TAB"
+  "https://openxcom.org/download/extras/universal-patch-ufo.zip"
 )
 noextract=(
   "filelist"
@@ -1416,6 +1417,7 @@ noextract=(
   "X_ROB.TAB"
   "ZOMBIE.PCK"
   "ZOMBIE.TAB"
+  "universal-patch-ufo.zip"
 )
 
 md5sums=('c693a4ea46867f3a470c8e01c4c6f248'
@@ -2104,7 +2106,8 @@ md5sums=('c693a4ea46867f3a470c8e01c4c6f248'
          '2356b92a61e3c6820378668b7fa45e92'
          '4bb74d9a02999c507684610a6d0ea8c0'
          '5b79584785abef1a63d8f66cccecea46'
-         'df99de4cb437e18ab49e0586b8739bd9')
+         'df99de4cb437e18ab49e0586b8739bd9'
+         '18dc9063cb707e6e4245ad9c48cf68a5')
 
 package() {
   case ${_openxcom_ver} in
@@ -2806,15 +2809,18 @@ package() {
   install -Dm644 "${srcdir}/ZOMBIE.PCK"          "${_destdir}/UNITS/ZOMBIE.PCK"
   install -Dm644 "${srcdir}/ZOMBIE.TAB"          "${_destdir}/UNITS/ZOMBIE.TAB"
   
+  bsdtar -C "${_destdir}" -xf "${srcdir}/universal-patch-ufo.zip"
+
   # Link dupes
   cd "${_destdir}/ROUTES"
-  for file in UBASE_00.RMP UBASE_01.RMP UBASE_02.RMP UBASE_03.RMP UBASE_04.RMP UBASE_05.RMP \
-              UBASE_06.RMP UBASE_07.RMP UBASE_08.RMP UBASE_09.RMP UBASE_10.RMP UBASE_11.RMP \
-              UBASE_12.RMP UBASE_13.RMP UBASE_14.RMP UBASE_15.RMP XBASE_00.RMP XBASE_01.RMP \
-              XBASE_02.RMP XBASE_03.RMP XBASE_04.RMP XBASE_05.RMP XBASE_06.RMP XBASE_07.RMP \
-              XBASE_08.RMP XBASE_09.RMP XBASE_10.RMP XBASE_11.RMP XBASE_12.RMP XBASE_13.RMP \
-              XBASE_14.RMP XBASE_15.RMP XBASE_16.RMP XBASE_17.RMP XBASE_18.RMP XBASE_19.RMP \
-              XBASE_20.RMP; do
-    ln -s "../MAPS/${file}" "${file}"
+  for file in UBASE_02.RMP UBASE_03.RMP UBASE_05.RMP UBASE_06.RMP UBASE_07.RMP \
+              UBASE_08.RMP UBASE_09.RMP UBASE_10.RMP UBASE_12.RMP UBASE_13.RMP \
+              UBASE_14.RMP UBASE_15.RMP XBASE_01.RMP XBASE_08.RMP XBASE_14.RMP \
+              XBASE_16.RMP XBASE_17.RMP XBASE_18.RMP XBASE_19.RMP XBASE_20.RMP; do
+    ln -fs "../MAPS/${file}" "${file}"
   done
+
+  # fix perms (borked by patch extraction)
+  find "${_destdir}" -type d -exec chmod 755 {} \;
+  find "${_destdir}" -type f -exec chmod 644 {} \;
 }
