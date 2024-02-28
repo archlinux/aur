@@ -9,16 +9,16 @@ _reponame_forkawesome=Fork-Awesome-$_pkgver_forkawesome
 pkgname=qtforkawesome-git
 _name=${pkgname%-git}
 pkgver=46.1c92ea5
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Library that bundles ForkAwesome for use within Qt applications'
 license=('GPL')
-depends=('qt5-base')
+depends=('qt6-base')
 optdepends=(
-  'qt5-declarative: Qt Quick integration'
+  'qt6-declarative: Qt Quick integration'
   "$_name-doc: API documentation"
 )
-makedepends=('cmake' 'git' 'ninja' 'perl-yaml-libyaml' 'qtutilities-git' 'qt5-declarative')
+makedepends=('cmake' 'git' 'ninja' 'perl-yaml-libyaml' 'qtutilities-git' 'qt6-declarative' 'clang')
 provides=(libqtforkawesome-git.so libqtquickforkawesome-git.so)
 url="https://github.com/Martchus/${_reponame}"
 source=("${_reponame}::${MARTCHUS_GIT_URL_PREFIX:-git+https://github.com/Martchus}/${_reponame}.git"
@@ -40,6 +40,8 @@ build() {
     -DCONFIGURATION_NAME:STRING='git' \
     -DCONFIGURATION_PACKAGE_SUFFIX:STRING='-git' \
     -DCONFIGURATION_TARGET_SUFFIX:STRING='git' \
+    -DQT_PACKAGE_PREFIX:STRING='Qt6' \
+    -DKF_PACKAGE_PREFIX:STRING='KF6' \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DBUILTIN_TRANSLATIONS:BOOL=ON \
     -DFORK_AWESOME_FONT_FILE="$srcdir/${_reponame_forkawesome}/fonts/forkawesome-webfont.woff2" \
