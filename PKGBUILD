@@ -4,7 +4,7 @@ pkgname=flaresolverr-bin
 _pkgname=flaresolverr
 __pkgname=FlareSolverr
 pkgver=3.3.15
-pkgrel=1
+pkgrel=2
 pkgdesc='A proxy server to bypass Cloudflare protection'
 arch=('x86_64')
 url='https://github.com/FlareSolverr/FlareSolverr'
@@ -15,7 +15,7 @@ depends=('alsa-lib' 'at-spi2-core' 'bash' 'bzip2' 'cairo' 'dbus' 'expat' 'gcc-li
 conflicts=('flaresolverr' 'flaresolverr-git')
 options=('!strip')
 install='flaresolverr.install'
-source=(${_pkgname}-${pkgver}.tar.gz::"https://github.com/${__pkgname}/${__pkgname}/releases/download/v${pkgver}/${_pkgname}_linux_x64.tar.gz"
+source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/${__pkgname}/${__pkgname}/releases/download/v${pkgver}/${_pkgname}_linux_x64.tar.gz"
         "https://raw.githubusercontent.com/${__pkgname}/${__pkgname}/v${pkgver}/LICENSE"
         "flaresolverr.service"
         "flaresolverr.sysusers"
