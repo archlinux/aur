@@ -1,10 +1,10 @@
 pkgbase = lib32-libplacebo
 	pkgdesc = Reusable library for GPU-accelerated video/image rendering primitives (32bit)
-	pkgver = 5.264.1
+	pkgver = 6.338.2
 	pkgrel = 1
 	url = https://github.com/haasn/libplacebo
 	arch = x86_64
-	license = LGPL2.1
+	license = LGPL2.1-or-later
 	makedepends = meson
 	makedepends = ninja
 	makedepends = vulkan-headers
@@ -15,7 +15,7 @@ pkgbase = lib32-libplacebo
 	makedepends = python-setuptools
 	makedepends = python-markupsafe
 	makedepends = python-jinja
-	depends = libplacebo>=5.264.1
+	depends = libplacebo>=6.338.2
 	depends = lib32-vulkan-icd-loader>=1.2.176
 	depends = lib32-glslang>=8.13.3559
 	depends = lib32-lcms2
@@ -23,9 +23,10 @@ pkgbase = lib32-libplacebo
 	depends = lib32-glibc
 	depends = lib32-gcc-libs
 	depends = lib32-libunwind
+	depends = lib32-libdovi
 	provides = libplacebo.so
-	source = https://code.videolan.org/videolan/libplacebo/-/archive/v5.264.1/libplacebo-v5.264.1.tar.gz
-	sha512sums = 305f43b71f078f4113def43c444df667dfbdd2a6a34d3b457b15da0b3499ca97ec9a8acbd151d58c8e1a593ace3d8aa61067b32556c6bae451efbb217d60a731
-	b2sums = 421de50ef5e2270e3ba32dd85d92d816a374257442b535face6cb8501d565652aae530b86a7d717c9352c6a82ca665ff7d91c2d9768365780cbbe4f48d1d3276
+	source = https://code.videolan.org/videolan/libplacebo/-/archive/v6.338.2/libplacebo-v6.338.2.tar.gz
+	sha512sums = 0f20ae47bc2a7cd128d667ec2dd750a2d6ad5f16be6ab97122c2dda1ebf239958ee4bf453a7f835bea2dafb60a2e27b795801532aad994e002854c190aa6bbd8
+	b2sums = 23485d677fbc59d47cbfd56ac3d5187c18206d7c03b0a7c4decd1d5b5772a88de4e22228cfdfc4fe1ce2c8031ea053cee968d010474047dc511d597d9d5ee3a8
 
 pkgname = lib32-libplacebo

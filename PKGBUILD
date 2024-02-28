@@ -2,12 +2,12 @@
 
 _pkgbasename=libplacebo
 pkgname=lib32-$_pkgbasename
-pkgver=5.264.1
+pkgver=6.338.2
 pkgrel=1
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives (32bit)'
 url='https://github.com/haasn/libplacebo'
 arch=('x86_64')
-license=('LGPL2.1')
+license=('LGPL2.1-or-later')
 depends=(
         "$_pkgbasename>=${pkgver}"
 #        "$_pkgbasename"
@@ -18,6 +18,8 @@ depends=(
         'lib32-glibc'
         'lib32-gcc-libs'
         'lib32-libunwind'
+        'lib32-libdovi'
+#        'lib32-xxhash'
         )
 makedepends=(
         'meson'
@@ -37,10 +39,10 @@ source=(
     "https://code.videolan.org/videolan/libplacebo/-/archive/v${pkgver}/${_pkgbasename}-v${pkgver}.tar.gz"
   )
 sha512sums=(
-    '305f43b71f078f4113def43c444df667dfbdd2a6a34d3b457b15da0b3499ca97ec9a8acbd151d58c8e1a593ace3d8aa61067b32556c6bae451efbb217d60a731'
+    '0f20ae47bc2a7cd128d667ec2dd750a2d6ad5f16be6ab97122c2dda1ebf239958ee4bf453a7f835bea2dafb60a2e27b795801532aad994e002854c190aa6bbd8'
   )
 b2sums=(
-    '421de50ef5e2270e3ba32dd85d92d816a374257442b535face6cb8501d565652aae530b86a7d717c9352c6a82ca665ff7d91c2d9768365780cbbe4f48d1d3276'
+    '23485d677fbc59d47cbfd56ac3d5187c18206d7c03b0a7c4decd1d5b5772a88de4e22228cfdfc4fe1ce2c8031ea053cee968d010474047dc511d597d9d5ee3a8'
   )
 
 prepare() {
@@ -70,19 +72,18 @@ build() {
 
 #    --cross-file x86-linux-gnu \
 
-  ninja -C build -v
+  meson compile -C build
 }
 
 check() {
   cd ${_pkgbasename}-v${pkgver}
-#  ninja -C build test
+#  meson test -C build --print-errorlogs
 }
 
 package() {
   cd ${_pkgbasename}-v${pkgver}
 
-  DESTDIR="${pkgdir}" ninja -C build install
-#  mv "${pkgdir}"/usr/lib "${pkgdir}"/usr/lib32
+  meson install -C build --destdir "${pkgdir}"
 
   rm -r "${pkgdir}"/usr/include
 }
