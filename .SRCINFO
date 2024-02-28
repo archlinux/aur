@@ -1,6 +1,6 @@
 pkgbase = hypridle-git
 	pkgdesc = Hyprland's idle daemon
-	pkgver = 0.1.0.r13.gb9c94ed8
+	pkgver = 0.1.1.r0.g6ea4e045
 	pkgrel = 1
 	url = https://github.com/hyprwm/hypridle
 	arch = any
@@ -11,12 +11,14 @@ pkgbase = hypridle-git
 	makedepends = gcc
 	makedepends = gdb
 	makedepends = meson
+	makedepends = systemd
 	makedepends = wayland-protocols
 	makedepends = xorgproto
 	depends = wayland
 	depends = hyprlang>=0.4.0
 	depends = sdbus-cpp
 	provides = hypridle
+	conflicts = hypridle
 	source = hypridle::git+https://github.com/hyprwm/hypridle.git
 	sha256sums = SKIP
 
