@@ -7,7 +7,7 @@
 
 pkgname=genymotion
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Complete set of tools that provides a virtual environment for Android."
 arch=('x86_64')
 url="http://www.genymotion.com/"
@@ -15,6 +15,7 @@ optdepends=(virtualbox)
 makedepends=(wget)
 install=$pkgname.install
 license=('custom')
+options=(!strip)
 _ARCH="x64"
 DLAGENTS=("https::/usr/bin/wget -U "Mozilla" %u")
 source=("genymotion.desktop"

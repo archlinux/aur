@@ -1,13 +1,14 @@
 pkgbase = genymotion
 	pkgdesc = Complete set of tools that provides a virtual environment for Android.
 	pkgver = 3.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.genymotion.com/
 	install = genymotion.install
 	arch = x86_64
 	license = custom
 	makedepends = wget
 	optdepends = virtualbox
+	options = !strip
 	source = genymotion.desktop
 	source = https://dl.genymotion.com/releases/genymotion-3.6.0/genymotion-3.6.0-linux_x64.bin
 	sha512sums = 42f629d6413e4e481ef68d019ec3071515b45d01fdb004a545c8b977a9bf2439581ca8a67ad7dead9a12a0d24e8e46ba02c5dc47abd76597451b09847cf5d78b
