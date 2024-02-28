@@ -2,8 +2,8 @@
 
 pkgbase=surfer-waveform
 pkgname=surfer-waveform-git-bin
-pkgver=0.2.0.bfae5cf6
-pkgrel=1
+pkgver=0.2.0.r432.bfae5cf6
+pkgrel=2
 pkgdesc='A waveform viewer with a focus on a snappy usable interface, and extensibility.'
 arch=('x86_64')
 url='https://gitlab.com/surfer-project/surfer'
