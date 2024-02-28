@@ -1,8 +1,12 @@
-# Maintainer: Pierre Neidhardt <ambrevar@gmail.com>
+# Maintainer:
+# Contributor: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Pierre Neidhardt <ambrevar@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Mike Sampson <mike at sambodata dot com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 # Contributor: froggie <sullivanva@gmail.com>
+
+# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1060239
 
 pkgname=pstotext
 pkgver=1.9
