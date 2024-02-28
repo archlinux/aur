@@ -11,7 +11,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=f7ff742417ae29b283ddd342193a314a73f44019
+_mozc_commit=560ca637acc552d57766f5ca7266f9b57a46cc92
 _branch=fcitx
 # Ut Dictionary
 _utdicdate=20230115
@@ -30,7 +30,7 @@ _sudachidict_date=20240109
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.29.5374.102
-pkgrel=6
+pkgrel=7
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND NAIST-2003 AND Unicode-3.0')
@@ -78,16 +78,6 @@ prepare() {
 
   cd src || exit
 
-  # disable fcitx4 target
-  #rm unix/fcitx/fcitx.gyp
-
-  # disable emace gyp target
-  #rm unix/emacs/emacs.gyp
-  #rm gyp/tests.gyp
-
-  # fix mozc icon for kimpanel
-  #sed -i 's|PREFIX|/usr|' unix/fcitx5/mozc.conf
-
   # use libstdc++ instead of libc++
   sed '/stdlib=libc++/d;/-lc++/d' -i gyp/common.gypi
 
@@ -102,24 +92,6 @@ prepare() {
   #_date=$(git log -1 --pretty=format:'%as' $_mozc_commit)
   #sed -i -e "/2.25.4150.102.1/d"  -e "s/2.26.4220.106.1/${pkgver}.${pkgrel}/" -e "s/2021-01-16/${_date}/" src/unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in
   rustup update stable
-}
-
-build() {
-  cd "$srcdir/mozc/src" || exit
-
-  # no need. zip code is included with bazel build.
-  #echo 'Generating zip code seed...'
-  #PYTHONPATH="$PWD:$PYTHONPATH" python dictionary/gen_zip_code_seed.py --zip_code="${srcdir}/KEN_ALL.CSV" --jigyosyo="${srcdir}/JIGYOSYO.CSV" >> data/dictionary_oss/dictionary09.txt
-  #echo 'Done.'
-  # UT Dictionary steps, rewrite of "sh make.sh"
-  # UT辞書を結合
-  #msg '1. Append dictionaries'
-  #for dict in "${_dict[@]}"; do
-  #  cat "$srcdir/mozcdic-ut-${dict}.txt" >> ${srcdir}/mozcdict-ext/mozcdic-ut.txt
-  #done
-
-  # gem parallel
-  #[[ "$GEM_HOME"=="" ]] && GEM_HOME="/usr/lib/ruby/gems/3.0.0/"
 
   cd "${srcdir}/mozcdict-ext/" || exit
   # すだちを優先
@@ -132,32 +104,18 @@ build() {
   cat ${srcdir}/small_lex.csv ${srcdir}/core_lex.csv ${srcdir}/notcore_lex.csv > all.csv
   cp ${srcdir}/mozc/src/data/dictionary_oss/id.def ./
   ./target/$TARGET/release/dict-to-mozc -s -i ./id.def -f all.csv > ../all-dict.txt
-  #ruby sudachi.rb -E -f ${srcdir}/small_lex.csv -f ${srcdir}/core_lex.csv -f ${srcdir}/notcore_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def > ../all-dict2.txt
   cd ..
-
-  # added dicts.txt
-  #cat ${srcdir}/dicts.txt >> all-dict.txt
-  #cd neologd || exit
-  #msg '3. Run the ruby scripts as in original neologd.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
-  #xz -k -d -c ${srcdir}/mecab-ipadit-neologd/upstream/seed/mecab-*.xz > user-dict-seed.csv
-  #ruby neologd.rb -E -f user-dict-seed.csv >> ../all-dict.txt
-  #cd ..
-
-  # ut-dictionarys
-  #msg '3. Run the rust program(mozcdict-ext): mecab-ipadic-neologd , it may take some time...'
-  #cd sudachi || exit
-  #./target/$TARGET/release/dict-to-mozc -n -i ./id.def -f ../../mecab-user-dict-seed.20200910.csv >> ../all-dict.txt
-  #cd ..
-  #ruby utdict/utdict.rb -E -f mozcdic-ut.txt -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> all-dict2.txt
 
   msg '3. Run the awk scripts in dup.awk, it may take some time...'
   awk -f sudachi/dup.awk all-dict.txt > finish-dict.txt
-  #ruby .dev.utils/uniqword.rb all-dict.txt > finish-dict.txt  2> duplicated.txt
-  #cat ut-dict.txt >> finish-dict.txt
 
   msg '4. Finally add SudachiDict dictionary to mozc source'
   cat finish-dict.txt >> "$srcdir/mozc/src/data/dictionary_oss/dictionary00.txt"
   sync
+}
+
+build() {
+  cd "$srcdir/mozc/src" || exit
 
   # Fix compatibility with google-glog 0.3.3 (symbol conflict)
   CFLAGS="${CFLAGS} -fvisibility=hidden"
@@ -165,25 +123,14 @@ build() {
 
   cd ${srcdir}/mozc/src || exit
 
-  #export JAVA_HOME='/usr/lib/jvm/java-11-openjdk/'
-  #export QT_BASE_PATH=/usr/include/qt
-
-  # fcitx5
-#  GYP_DEFINES="use_fcitx=0 use_libibus=0" ../scripts/configure
-#  TARGETS="gui/gui.gyp:mozc_tool unix/fcitx5/fcitx5.gyp:fcitx5-mozc"
-#  python build_mozc.py build ${TARGETS} -c ${_bldtype}
-
   # ibus emacs_helper mozc_server fcitx5
-
   BAZEL_COPTS=""
   BAZEL_CXXOPTS=""
   for f in $CFLAGS;do ([[ ! $f =~ _FORTIFY_SOURCE ]]) && BAZEL_COPTS+=" --copt $f";done
   for f in $CXXFLAGS;do ([[ ! $f =~ _FORTIFY_SOURCE ]]) && BAZEL_CXXOPTS+=" --cxxopt $f";done
-  #echo $BAZEL_COPTS
-  #echo $BAZEL_CXXOPTS
   #BAZEL_COPTS=$(echo $CFLAGS | xargs -n1 echo "--copt")
   #BAZEL_CXXOPTS=$(echo $CXXFLAGS | xargs -n1 echo "--cxxopt")
-  bazel clean
+  #bazel clean
   if [[ $CC =~ gcc ]];then
     bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so
   else
@@ -192,8 +139,8 @@ build() {
   bazel shutdown
 
   # mozc fcitx5 version
-  git fetch origin master:remotes/origin/master
-  source bazel-bin/base/mozc_version.txt && export pkgver="$(printf "%s.%s.%s.%s" "${MAJOR}" "${MINOR}" "${BUILD_OSS}" "${REVISION}")" && sed -e "/2.26.4220.106.1/d" -e "/2.25.4150.102.1/d"  -e "s/release version=\".*\"/release version=\"$pkgver.1\" date=\"$(git log -1 --pretty=format:'%as' -b origin/master)\"/" -i unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in
+  #git fetch origin master:remotes/origin/master
+  #source bazel-bin/base/mozc_version.txt && export pkgver="$(printf "%s.%s.%s.%s" "${MAJOR}" "${MINOR}" "${BUILD_OSS}" "${REVISION}")" && sed -e "/2.26.4220.106.1/d" -e "/2.25.4150.102.1/d"  -e "s/release version=\".*\"/release version=\"$pkgver.1\" date=\"$(git log -1 --pretty=format:'%as' -b origin/master)\"/" -i unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in
 
   # Extract license part of mozc
   head -n 29 server/mozc_server.cc > LICENSE
