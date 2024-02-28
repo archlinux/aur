@@ -9,32 +9,15 @@ pkgbase = manyi-transformer
 	makedepends = npm
 	makedepends = nvm
 	makedepends = git
-	depends = libxdamage
-	depends = at-spi2-core
-	depends = dbus
-	depends = libdrm
-	depends = pango
-	depends = libcups
-	depends = alsa-lib
-	depends = libxcomposite
-	depends = libxext
-	depends = libvips
+	depends = electron23
 	depends = hicolor-icon-theme
-	depends = cairo
-	depends = nspr
-	depends = python
-	depends = libxkbcommon
-	depends = expat
-	depends = libxcb
-	depends = nss
-	depends = libx11
-	depends = libxfixes
-	depends = libxrandr
-	depends = gtk3
-	depends = mesa
+	depends = python>=3
+	depends = libvips
 	provides = manyi-transformer
 	conflicts = manyi-transformer
 	source = manyi-transformer.git::git+https://github.com/MarshallChang/Manyi-transformer.git#tag=v1.2.0
+	source = manyi-transformer.sh
 	sha256sums = SKIP
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = manyi-transformer
