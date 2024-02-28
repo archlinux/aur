@@ -1,6 +1,6 @@
 # Maintainer: MelianMiko <melianmiko@gmail.com>
 pkgname=openfreebuds
-pkgver=0.13.1
+pkgver=0.13.2
 pkgrel=1
 pkgdesc="Manager for HUAWEI FreeBuds"
 arch=(any)
