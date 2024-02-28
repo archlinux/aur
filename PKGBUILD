@@ -5,21 +5,51 @@
 
 _pkgname=konsole
 pkgname=$_pkgname-osc52
-pkgver=23.08.5
+pkgver=24.02.0
 pkgrel=1
 arch=(x86_64)
 url='https://apps.kde.org/konsole/'
 pkgdesc='KDE terminal emulator patched with OSC52 copy support'
-license=(GPL LGPL FDL)
-groups=(kde-applications kde-utilities)
-depends=(knotifyconfig5 kpty5 kparts5 knewstuff5)
-makedepends=(extra-cmake-modules kdoctools5)
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+groups=(kde-applications
+        kde-utilities)
+depends=(glibc
+         gcc-libs
+         icu
+         kbookmarks
+         kcolorscheme
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         kdbusaddons
+         kglobalaccel
+         kguiaddons
+         ki18n
+         kiconthemes
+         kio
+         knewstuff
+         knotifications
+         knotifyconfig
+         kparts
+         kpty
+         kservice
+         ktextwidgets
+         kwidgetsaddons
+         kwindowsystem
+         kxmlgui
+         qt6-5compat
+         qt6-base
+         qt6-multimedia
+         sh)
+makedepends=(extra-cmake-modules
+             kdoctools)
 optdepends=('keditbookmarks: to manage bookmarks')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz{,.sig}
         osc52.patch)
-sha256sums=('c6fb20753ac27a46bce62e31f7b105b6b99497035830b34a7bba1bc60260c1ca'
+sha256sums=('2915edcd856552bd6199efb23dcaf194605ee4fb307c75e27606198253dfdfe0'
             'SKIP'
             'e7c2ca3b30e018139a139e99141202a2efc8e4e880e2965b09537f9a97865e53')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
