@@ -61,7 +61,7 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}/"{output,data/savers}
     cp -r "${srcdir}/${pkgname}.git/output/system-savers" "${pkgdir}/usr/lib/${pkgname}/output"
     cp -r "${srcdir}/${pkgname}.git/output/system-savers" "${pkgdir}/usr/lib/${pkgname}/data/savers"
