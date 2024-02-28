@@ -3,7 +3,7 @@
 
 pkgname="hyprlock"
 pkgver=0.1.0
-pkgrel=0
+pkgrel=1
 pkgdesc=" Hyprland's GPU-accelerated screen locking utility "
 arch=(any)
 url="https://github.com/hyprwm/hyprlock"
@@ -13,12 +13,13 @@ makedepends=('git' 'cmake' 'ninja' 'gcc' 'gdb' 'meson' 'wayland-protocols' 'xorg
 _archive="${pkgname}-$pkgver"
 source=("$_archive.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 provides=(hyprlock)
+conflicts=(hyprlock)
 sha256sums=('5d0e6547ac073c78e95d4f086a258e1e5713168827c38ccb2466f2c4d96bd1df')
 
 build() {
 	cd "$_archive"
 	cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -S . -B ./build
-	cmake --build ./build --config Release --target hyprlock -j`nproc 2>/dev/null || getconf NPROCESSORS_CONF`
+	cmake --build ./build --config Release --target hyprlock
 }
 
 package() {
@@ -26,3 +27,4 @@ package() {
 	install -Dm755 build/hyprlock -t "${pkgdir}/usr/bin"
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
+
