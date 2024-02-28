@@ -3,7 +3,7 @@
 
 _gemname=sqlint
 pkgname=ruby-sqlint
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Simple SQL linter supporting ANSI and PostgreSQL syntaxes"
 arch=(any)
@@ -14,7 +14,7 @@ depends=('ruby' 'ruby-pg-query')
 optdepends=()
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-sha256sums=("60aa114fc776a109914f4e346d24529efda12d16429ebfd5bb156ab523887af1")
+sha256sums=("369042b53e1e4b7f9acacacd244c841049e1cf0d59a6640ad27dbb05e597f419")
 
 package() {
 	local _gemdir="$(ruby -e'puts Gem.default_dir')"
