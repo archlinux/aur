@@ -1,16 +1,16 @@
 # Maintainer: Alexandre Pujol <alexandre@pujol.io>
 
 pkgname='pass-update'
-pkgver=2.2
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='A pass extension that provides an easy flow for updating passwords.'
 arch=('any')
 url='https://github.com/roddhjav/pass-update'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('pass')
 source=("https://github.com/roddhjav/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
         "https://github.com/roddhjav/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc")
-sha512sums=('cfe6e99087624242cab0c5af046b0de10c52c76203ab22d31e8dafd1ce45276810f28d5814ddfe956c8fb7dce37a37e3242d004926c1ad8e750bb0702b6c27f5'
+sha512sums=('ab3dff67eed5ffc2f51df7ea9787195db4f7443af0ce772952c92fe5c7c828ce63b8a65d0b985a39e1e10e0a8d6a3217fe50f33d4f13e60ec3fc259a84554ebb'
             'SKIP')
 
 # The public key is found at https://pujol.io/keys
