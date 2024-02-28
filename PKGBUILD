@@ -2,7 +2,7 @@
 pkgname=frigoligo-bin
 _pkgname=Frigoligo
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An universal wallabag client made with Flutter. "
 arch=('x86_64')
 url="https://github.com/casimir/frigoligo"
@@ -10,14 +10,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'at-spi2-core'
-    'cairo'
-    'pango'
-    'gdk-pixbuf2'
-    'harfbuzz'
     'gtk3'
-    'libepoxy'
-    'fontconfig'
 )
 makedepends=(
     'gendesk'
@@ -37,7 +30,7 @@ build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-git} %U"
+    gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     install -Dm755 -d "${srcdir}/opt"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.tar.gz" -C "${srcdir}/opt"
 }

@@ -1,19 +1,12 @@
 pkgbase = frigoligo-bin
 	pkgdesc = An universal wallabag client made with Flutter.
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/casimir/frigoligo
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
-	depends = at-spi2-core
-	depends = cairo
-	depends = pango
-	depends = gdk-pixbuf2
-	depends = harfbuzz
 	depends = gtk3
-	depends = libepoxy
-	depends = fontconfig
 	provides = frigoligo=0.7.2
 	conflicts = frigoligo
 	noextract = frigoligo-0.7.2.tar.gz
