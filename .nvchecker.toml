@@ -1,0 +1,3 @@
+[python-straight-plugin]
+source = "pypi"
+pypi = "straight.plugin"
