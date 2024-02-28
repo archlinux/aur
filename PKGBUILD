@@ -1,7 +1,7 @@
 # Maintainer: David Čuček <observ33r@gmail.com>
 
 pkgname="code-translucent"
-pkgver=1.86.2
+pkgver=1.87.0
 pkgrel=1
 pkgdesc="The Open Source build of Visual Studio Code (vscode) editor with translucent window, official marketplace, unblocked proprietary features and wayland support!"
 
@@ -57,7 +57,7 @@ sha512sums=(
 	"SKIP"
 	"9de3f195e711814e1e457e8ccb6383c6000bc83ee707f2bc138fe66c3cf6c35a6e9c755594afb5fbf8c4f05c3c87f7f3b8714e7947b62094ead6f5f1b81f5b24"
 	"d60f2f67a39600238a5660b756c0f9ccf5aa922a7ef5ff4368c12c3bd55d4ecdf018fa98f3769428093bd8909ae0bbe185d9d87067076c5ce12518ddd517fdb9"
-	"d787fbb4d1035163396513d721be27343b3d6df5b19d8113515ea53347277427e3e94332c328fa3eadfed96a100dd6ff4afc0cdf75c9d33011344623d142a271"
+	"c436f655123a3f3a652401830a61a88f75527dbe4768ff0757cbfc3ce9f0cc7b3c5e85111a01ea10de3895ebcdc510f8994d1fd8a6625c62f3e41dfb246e9d1d"
 	"6234842d41d9cb6cdd27766e35804644c59a39b43a92f2243b18525dc69d954d1e9dcd4297538de3dfd26051c7035d1ebb04f849a69208afa8214e42160c18dd"
 )
 

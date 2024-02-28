@@ -50,8 +50,8 @@
 		},
 		{
 			"name": "ms-vscode.js-debug",
-			"version": "1.86.1",
-			"sha256": "e382de75b63a57d3419bbb110e17551d40d88b4bb0a49452dab2c7278b815e72",
+			"version": "1.87.0",
+			"sha256": "155ba715cc1045835951e70a663010c8f91d773d90a3ec504a041fd53b5658b0",
 			"repo": "https://github.com/microsoft/vscode-js-debug",
 			"metadata": {
 				"id": "25629058-ddac-4e17-abba-74678e126c5d",
@@ -1911,8 +1911,10 @@
 			"speech"
 		],
 		"GitHub.vscode-pull-request-github": [
+			"activeComment",
 			"contribCommentThreadAdditionalMenu",
 			"tokenInformation",
+			"codeActionRanges",
 			"commentReactor",
 			"contribShareMenu",
 			"fileComments",
@@ -1938,16 +1940,19 @@
 			"terminalExecuteCommandEvent",
 			"terminalSelection",
 			"terminalQuickFixProvider",
-			"chatAgents2",
-			"chatAgents2Additions",
-			"defaultChatAgent",
+			"chatParticipant",
+			"chatParticipantAdditions",
+			"defaultChatParticipant",
+			"chatVariableResolver",
 			"chatProvider",
 			"mappedEditsProvider",
 			"aiRelatedInformation",
 			"codeActionAI",
 			"findTextInFiles",
 			"textSearchProvider",
-			"contribSourceControlInputBoxMenu"
+			"contribSourceControlInputBoxMenu",
+			"newSymbolNamesProvider",
+			"findFiles2"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",
@@ -2027,8 +2032,8 @@
 			"textSearchProvider"
 		],
 		"apidev.azure-api-center": [
-			"chatAgents2",
-			"chatRequestAccess"
+			"chatParticipant",
+			"languageModels"
 		]
 	},
 	"tasConfig": {
@@ -2226,21 +2231,46 @@
 		"https://gh.io",
 		"https://portal.azure.com"
 	],
-	"trustedExtensionAuthAccess": [
-		"vscode.git",
-		"vscode.github",
-		"ms-vscode.remote-repositories",
-		"github.remotehub",
-		"ms-vscode.azure-repos",
-		"ms-vscode.remote-server",
-		"github.vscode-pull-request-github",
-		"github.codespaces",
-		"ms-vsliveshare.vsliveshare",
-		"github.copilot",
-		"github.copilot-chat",
-		"ms-azuretools.vscode-azureresourcegroups",
-		"ms-edu.vscode-learning"
-	],
+	"trustedExtensionAuthAccess": {
+		"github": [
+			"vscode.git",
+			"vscode.github",
+			"github.remotehub",
+			"ms-vscode.remote-server",
+			"github.vscode-pull-request-github",
+			"github.codespaces",
+			"github.copilot",
+			"github.copilot-chat",
+			"ms-vsliveshare.vsliveshare"
+		],
+		"github-enterprise": [
+			"vscode.git",
+			"vscode.github",
+			"github.remotehub",
+			"ms-vscode.remote-server",
+			"github.vscode-pull-request-github",
+			"github.codespaces",
+			"github.copilot",
+			"github.copilot-chat",
+			"ms-vsliveshare.vsliveshare"
+		],
+		"microsoft": [
+			"vscode.git",
+			"ms-vscode.azure-repos",
+			"ms-vscode.remote-server",
+			"ms-vsliveshare.vsliveshare",
+			"ms-azuretools.vscode-azureresourcegroups",
+			"ms-edu.vscode-learning"
+		],
+		"microsoft-sovereign-cloud": [
+			"vscode.git",
+			"ms-vscode.azure-repos",
+			"ms-vscode.remote-server",
+			"ms-vsliveshare.vsliveshare",
+			"ms-azuretools.vscode-azureresourcegroups",
+			"ms-edu.vscode-learning"
+		]
+	},
 	"trustedExtensionProtocolHandlers": [
 		"vscode.git",
 		"vscode.github-authentication",
@@ -2349,7 +2379,7 @@
 	"gitHubEntitlement": {
 		"providerId": "github",
 		"command": {
-			"title": "Install GitHub Copilot (Paid for by {{org}})",
+			"title": "Install GitHub Copilot (Paid for by {{org}})...",
 			"titleWithoutPlaceHolder": "Install GitHub Copilot",
 			"action": "workbench.extensions.installExtension",
 			"when": "workbench.accounts.experimental.showEntitlements"
