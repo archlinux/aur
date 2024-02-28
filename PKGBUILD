@@ -1,6 +1,5 @@
 # Maintainer: Hasan Pasha <bashahsn22@gmail.com>
 
-pkgbase=balena-etcher
 pkgname=balena-etcher-bin
 pkgver=1.18.11
 pkgrel=1

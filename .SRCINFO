@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 pkgbase = balena-etcher
 	pkgdesc = Flash OS images to SD cards & USB drives, safely and easily. (DEB version)
+=======
+pkgbase = balena-etcher-bin
+	pkgdesc = Flash OS images to SD cards & USB drives, safely and easily.
+>>>>>>> parent of 062b687 (reflect changes on .SRCINFO)
 	pkgver = 1.18.11
 	pkgrel = 1
 	url = https://github.com/balena-io/etcher
