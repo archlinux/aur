@@ -1,0 +1,15 @@
+pkgbase = foundryup-git
+	pkgdesc = Update or revert to a specific Foundry branch with ease
+	pkgver = r3227.551bcb5
+	pkgrel = 1
+	url = https://github.com/Harry24k/adversarial-attacks-pytorch
+	install = post.install
+	arch = any
+	license = MIT OR Apache-2.0
+	makedepends = git
+	depends = cargo
+	depends = bash
+	source = git+https://github.com/foundry-rs/foundry.git
+	sha256sums = SKIP
+
+pkgname = foundryup-git
