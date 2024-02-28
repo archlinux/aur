@@ -1,0 +1,10 @@
+post_install() {
+	echo "To get /dev/dsp up, hit"
+	echo "# modprobe snd_pcm_oss"
+	echo "Or use some different replacement."
+	echo "Program will say it's version 1.2.5 ¯\\_(ツ)_/¯"
+}
+
+post_upgrade() {
+	post_install
+}
