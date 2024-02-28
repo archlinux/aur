@@ -1,7 +1,7 @@
 pkgbase = seven-desktop-bin
 	pkgdesc = The official cross-platform desktop application for the seven.io SMS Gateway.
 	pkgver = 1.3.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.seven.io/en/docs/apps/desktop/
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,6 @@ pkgbase = seven-desktop-bin
 	source = seven-desktop-1.3.0.deb::https://github.com/seven-io/desktop/releases/download/v1.3.0/seven-desktop_1.3.0_amd64.deb
 	source = seven-desktop.sh
 	sha256sums = a7a9efc3ab8ff386a5c9827dbc825daf482e18f2e8528bd936925e5d6c2aa8a6
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = seven-desktop-bin
