@@ -1,7 +1,7 @@
 pkgbase = liquidshell
 	pkgdesc = Basic desktop shell using QtWidgets
 	pkgver = 1.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://invent.kde.org/system/liquidshell
 	arch = x86_64
 	license = GPL3
@@ -27,7 +27,6 @@ pkgbase = liquidshell
 	depends = kwindowsystem5
 	depends = kxmlgui5
 	depends = networkmanager-qt5
-	depends = packagekit-qt5
 	depends = qt5-base
 	depends = qt5-x11extras
 	depends = solid5

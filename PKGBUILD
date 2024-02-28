@@ -2,7 +2,7 @@
 
 pkgname=liquidshell
 pkgver=1.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Basic desktop shell using QtWidgets'
 arch=(x86_64)
 url='https://invent.kde.org/system/liquidshell'
@@ -28,7 +28,6 @@ depends=(bluez-qt5
          kwindowsystem5
          kxmlgui5
          networkmanager-qt5
-         packagekit-qt5
          qt5-base
          qt5-x11extras
          solid5)
