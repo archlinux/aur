@@ -2,23 +2,19 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fmedia-bin
 pkgver=1.31
-pkgrel=5
+pkgrel=6
 pkgdesc='Fast media player/recorder/converter'
 arch=('x86_64')
 url='https://stsaz.github.io/fmedia'
 _ghurl="https://github.com/stsaz/fmedia"
-license=('LicenseRef-GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'gtk3'
     'jack'
     'libpulse'
-    'gdk-pixbuf2'
     'alsa-lib'
-    'pango'
-    'at-spi2-core'
-    'cairo'
 )
 makedepends=(
     'imagemagick'
