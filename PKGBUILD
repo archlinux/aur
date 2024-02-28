@@ -1,6 +1,6 @@
 pkgname=tribler
 _pkgname=tribler
-pkgver=7.13.1
+pkgver=7.13.2
 pkgrel=1
 pkgdesc="P2P/Bittorrent/YouTube client"
 arch=("x86_64")
@@ -45,7 +45,7 @@ python-pyqt5-webengine
 )
 source=(https://github.com/Tribler/tribler/releases/download/v$pkgver/tribler_$pkgver\_all.deb)
 
-sha256sums=('c6031a68133d0f02c2d2c074a44fac8c720ebb74fe7563e3dc7a224b8483cf51')
+sha256sums=('49ca1d6d798764d2f911ab4f2a045895b27c7fe3aa5a04f38bae86786afad884')
 
 package() {
     cd "${pkgdir}"
