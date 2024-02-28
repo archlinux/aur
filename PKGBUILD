@@ -1,11 +1,11 @@
 # Maintainer: Aman Gupta <aman.iv0012@gmail.com>
 pkgname=logstash
-pkgver=8.12.1
+pkgver=8.12.2
 pkgrel=1
-pkgdesc="Logstash - transport and process your logs, events, or other data"
+pkgdesc="Transport and process your logs, events, or other data"
 arch=('x86_64')
 url="https://www.elastic.co/logstash/"
-license=('Apache')
+license=('Apache-2.0 OR Elastic-2.0')
 # groups=()
 depends=('jre17-openjdk-headless' 'ruby' 'ruby-bundler' 'coreutils' 'awk')
 makedepends=('jdk17-openjdk' 'git')
@@ -18,9 +18,9 @@ backup=('etc/conf.d/logstash'
         'etc/logstash/log4j2.properties'
         'etc/logstash/logstash.yml'
         'etc/logstash/pipelines.yml')
-# options=()
+options=(!debug)
 # install=
-# changelog=
+changelog="ChangeLog"
 source=(https://github.com/elastic/logstash/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz
         logstash.service
         logstash@.service
@@ -28,19 +28,23 @@ source=(https://github.com/elastic/logstash/archive/v${pkgver}/${pkgname}-${pkgv
         logstash-tmpfile.conf
         bundle.config)
 # noextract=()
-md5sums=('023c15773421c8f08bf3dee17b82228a'
+md5sums=('8b3a565618a8a5703053c94fcbfe31f6'
          '4c3efce8ba4da2605c1f2e839e3af55c'
          '54523d10c53cf5461a40a33d775c12c1'
          '7ef5efbe99cf9f4c29a221999ec41248'
          '9b1d67aedd308f9eb978a1f049130d1f'
-         'e79a8d6e3b207a2dc52f3bfbac64cea5') #autofill using updpkgsums
+         'e79a8d6e3b207a2dc52f3bfbac64cea5')
 
 build() {
   cd "$pkgname-$pkgver"
+  
   # export OSS=true
-  ./gradlew installDevelopmentGems
-  rake bootstrap
-  rake plugin:install-default
+  # export JRUBY_OPTS="-Xms1g -Xmx1g"
+  
+  export JAVA_OPTS="--add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.base/java.io=ALL-UNNAMED"
+  export GRADLE_OPTS="-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs=-Xmx2g -Dfile.encoding=UTF-8"
+  
+  ./gradlew clean installDefaultGems --no-daemon --warning-mode all
 }
 
 package() {
@@ -52,8 +56,16 @@ package() {
   chmod 750 "${pkgdir}/etc/logstash"
 
   cp -a bin data lib logstash* modules vendor Gemfile* "${pkgdir}/usr/share/logstash"
+
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
   rm -rf "${pkgdir}/usr/share/logstash/logstash-core/"{.lock,benchmarks,*gradle*}
   rm -rf "${pkgdir}/usr/share/logstash/logstash-core/build/tmp/"
+  rm -rf "${pkgdir}/usr/share/logstash/vendor/jruby/tmp/"
+  rm -rf "${pkgdir}/usr/share/logstash/vendor/jruby/lib/ruby/stdlib/libfixposix/binary/arm64-linux/libfixposix.so"
+  rm -rf "${pkgdir}/usr/share/logstash/vendor/jruby/lib/ruby/stdlib/libfixposix/binary/armv6-linux/libfixposix.so"
+  rm -rf "${pkgdir}/usr/share/logstash/vendor/jruby/lib/ruby/stdlib/libfixposix/binary/armv7-linux/libfixposix.so"
+
   chmod -R go-w "${pkgdir}/usr/share/logstash/"
 
   install -Dm 644 "${srcdir}"/{logstash.service,logstash@.service} -t "${pkgdir}/usr/lib/systemd/system"
@@ -66,5 +78,6 @@ package() {
   install -dm 755 "${pkgdir}/etc/logstash/conf.d"
 
   install -d "${pkgdir}/usr/bin"
+
   ln -s /usr/share/logstash/bin/logstash "${pkgdir}/usr/bin/logstash"
 }

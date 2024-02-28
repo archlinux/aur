@@ -1,0 +1,15 @@
+=Logstash 8.12.2 Release Notes
+
+    Set Netty’s maxOrder options to previous default value of 11 #15928
+    Add "openssl" to UBI docker images #15929
+
+Plugins
+
+Jdbc Integration - 5.4.8
+
+    Update Derby to 10.15.2.1 (built from source) #155
+    Update sequel version to >= 5.74.0, that allows the generic jdbc adapter to better handle disconnect errors #153
+
+Kafka Integration - 11.3.4
+
+    Fix "retries" and "value_serializer" error handling in output plugin #160
