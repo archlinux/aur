@@ -11,7 +11,7 @@ arch=("any")
 depends=("piper-tts")
 optdepends=(
  "speech-dispatcher: tts support for third party apps"
- "$_pkgbase-minimal: single voice for english"
+ "$_pkgbase-minimal: single voice for en-us"
  "$_pkgbase: voices for all languages")
 source=(
  "https://huggingface.co/rhasspy/$_pkgbase/resolve/main/voices.json"
