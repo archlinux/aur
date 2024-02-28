@@ -2,19 +2,17 @@
 pkgname=utilso-bin
 _pkgname=Utilso
 pkgver=4.4.0
-_electronversion=13
-pkgrel=5
+_electronversion=15
+pkgrel=6
 pkgdesc="Regex Tester, JWT Verify, Image Converter, Format JSON, Decode base64, Code Beautify and more.Work completely offline"
 arch=("x86_64")
 url="https://utilso.com"
-license=("custom")
+license=("LicenseRef-custom")
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
+    'nodejs'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::https://cdn.utilso.com/${_pkgname}-${pkgver}.AppImage"
@@ -23,11 +21,11 @@ source=(
 )
 sha256sums=('3d26f15d7210f805f56d92f2d828844a0a16b789ec7e4f3a4983e50ae7d050cc'
             'f76129e6cdc1748270f37acfdd278015789a888d2226b81531bccd58486df1e5'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
