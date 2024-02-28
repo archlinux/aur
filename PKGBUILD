@@ -122,7 +122,7 @@ prepare() {
 pkgver() {
         cd "$srcdir/$_sourcedirectory/"
         git checkout --quiet "$(git rev-list -n 1 $(git describe --tags --abbrev=0))"
-	git describe --long --tags | sed -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g'
+        git describe --long --tags | sed -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g'
 }
 
 build() {
