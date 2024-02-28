@@ -1,7 +1,7 @@
 # Maintainer: Moritz Poldrack <moritz at poldrack dot dev>
 pkgname=nyuu-bin
 _pkgname=nyuu
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='Flexible usenet binary posting tool'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Public Domain')
 depends=()
 provides=('nyuu')
 source=("${_pkgname}-${pkgver}.tar.xz::https://github.com/animetosho/Nyuu/releases/download/v${pkgver}/nyuu-v${pkgver}-linux-amd64.tar.xz")
-sha256sums=('d82b1ec92d7485a36e8557209a6385a5b9c5590be219e1f6e11d742c6e4270fe')
+sha256sums=('bbea69ffaf1d8ed3465935157e3842fe7a38bade2703504879eb8bc7c0a83dff')
 
 build() {
     rm -rf "${srcdir}"
@@ -24,4 +24,3 @@ package() {
     cp ${srcdir}/nyuu               ${pkgdir}/usr/bin/
     cp ${srcdir}/config-sample.json ${pkgdir}/opt/nyuu/
 }
-

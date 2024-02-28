@@ -1,12 +1,12 @@
 pkgbase = nyuu-bin
 	pkgdesc = Flexible usenet binary posting tool
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/animetosho/Nyuu
 	arch = x86_64
 	license = Public Domain
 	provides = nyuu
-	source = nyuu-0.4.1.tar.xz::https://github.com/animetosho/Nyuu/releases/download/v0.4.1/nyuu-v0.4.1-linux-amd64.tar.xz
-	sha256sums = d82b1ec92d7485a36e8557209a6385a5b9c5590be219e1f6e11d742c6e4270fe
+	source = nyuu-0.4.2.tar.xz::https://github.com/animetosho/Nyuu/releases/download/v0.4.2/nyuu-v0.4.2-linux-amd64.tar.xz
+	sha256sums = bbea69ffaf1d8ed3465935157e3842fe7a38bade2703504879eb8bc7c0a83dff
 
 pkgname = nyuu-bin
