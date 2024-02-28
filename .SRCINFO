@@ -1,7 +1,7 @@
 pkgbase = nginx-mod-length-hiding-filter
 	pkgdesc = Nginx module to append random generated string to the end of HTML response
 	pkgver = 1.1.1
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/nulab/nginx-length-hiding-filter-module
 	arch = x86_64
 	arch = armv7h

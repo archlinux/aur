@@ -2,7 +2,7 @@
 
 pkgname=nginx-mod-length-hiding-filter
 pkgver=1.1.1
-pkgrel=8
+pkgrel=9
 
 _modname=nginx-length-hiding-filter-module
 
@@ -32,6 +32,9 @@ build() {
 }
 
 package() {
+	install -Dm644 "$srcdir"/$_modname-$pkgver/LICENSE \
+		"$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
 	cd build/objs
 	for mod in *.so; do
 		install -Dm755 $mod "$pkgdir"/usr/lib/nginx/modules/$mod
