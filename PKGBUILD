@@ -1,15 +1,17 @@
 pkgname=walbottle-git
 _name=walbottle
 pkgver=0.2.0.r71.ge643df3
-pkgrel=1
+pkgrel=2
 pkgdesc="Walbottle is a project for generating JSON unit test vectors from JSON Schemas. It provides a library, libwalbottle, which implements JSON Schema parsing and test vector generation."
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/walbottle/$pkgname"
+url="https://gitlab.com/walbottle/$_name"
 conflicts=('walbottle')
 provides=('walbottle')
 license=('LGPL2.1')
-depends=(glib2 json-glib gobject-introspection)
-source=("$_name::git+https://gitlab.com/walbottle/walbottle.git")
+depends=('json-glib')
+makedepends=('git' 'gobject-introspection' 'meson')
+provides=('libwalbottle-0.so')
+source=("$_name::git+$url.git")
 sha512sums=('SKIP')
 
 pkgver() {
