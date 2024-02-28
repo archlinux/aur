@@ -1,12 +1,12 @@
 pkgbase = shiba-bin
 	pkgdesc = Rich markdown live preview app with linter.This application is being re-written from scratch to V2,using Rust, TypeScript and React
 	pkgver = 1.2.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/rhysd/Shiba
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
-	depends = electron5
+	depends = electron5-bin
 	provides = shiba=1.2.1
 	conflicts = shiba
 	source = shiba-1.2.1.zip::https://github.com/rhysd/Shiba/releases/download/v1.2.1/Shiba-linux-x64.zip
@@ -14,6 +14,6 @@ pkgbase = shiba-bin
 	source = shiba.sh
 	sha256sums = bce114feb8b6fccb6db4c933ed48d5fd0040c04ed30e16441b188320963d6fb7
 	sha256sums = e94cd67aa4ba4e9ba4a90c939e3597caed218434e7d4c1e354495508bc1eae38
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = shiba-bin
