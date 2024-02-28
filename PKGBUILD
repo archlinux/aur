@@ -3,7 +3,7 @@ pkgname=google-docs-bin
 _appname="Google Docs"
 pkgver=2022.12.1
 _electronversion=25
-pkgrel=9
+pkgrel=10
 pkgdesc="Google Docs Desktop App made with electron. Includes Google Docs, Sheets, Slides, Forms, and Drive."
 arch=("x86_64")
 url="https://github.com/Comp-Labs/Google-Docs"
@@ -20,13 +20,13 @@ source=(
 )
 sha256sums=('ec35d80b9189ddfa095b108fc939490e0d2ef682036a82e7807679ae0b3a49d4'
             '22d8c1bb0c91f6cb8fa332a53a40d5223f7caa4b12af0029f4b0c2b65b6a1596'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_appname}/${_appname// /-}\"|${pkgname%-bin}|g;s|${_appname// /-}|${pkgname%-bin}|g;s|Category;|Utility;Office;|g" \
         -i "${srcdir}/usr/share/applications/${_appname// /-}.desktop"
 }
