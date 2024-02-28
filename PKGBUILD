@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=elephicon
-pkgver=2.9.1
+pkgver=2.9.2
 _electronversion=29
 _nodeversion=18
 pkgrel=1
@@ -37,7 +37,7 @@ build() {
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories "Graphics;Utility" --name "${pkgname}" --exec "${pkgname} %U"
+    gendesk -q -f -n --categories="Graphics;Utility" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
