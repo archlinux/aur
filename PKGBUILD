@@ -1,14 +1,15 @@
 # Maintainer: wansing <mail at wansing dot org>
 pkgname=croodle-git
 pkgver=r1526.01f1534
-pkgrel=1
+pkgrel=2
 pkgdesc="a web application to schedule a date or to do a poll on a general topics"
 arch=("any")
 url="https://github.com/jelhan/croodle"
 license=("MIT")
 depends=("php")
 makedepends=('composer' 'git' 'nodejs' 'npm')
-provides=("croodle")
+provides=('croodle')
+conflicts=('croodle')
 source=(
 	"git+https://github.com/jelhan/croodle.git"
 	"croodle.conf"

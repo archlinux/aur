@@ -1,7 +1,7 @@
 pkgbase = croodle-git
 	pkgdesc = a web application to schedule a date or to do a poll on a general topics
 	pkgver = r1526.01f1534
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jelhan/croodle
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = croodle-git
 	makedepends = npm
 	depends = php
 	provides = croodle
+	conflicts = croodle
 	backup = etc/php/php-fpm.d/croodle.conf
 	backup = etc/webapps/croodle/config.php
 	source = git+https://github.com/jelhan/croodle.git
