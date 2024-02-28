@@ -1,10 +1,10 @@
 pkgbase = udeler-pro-bin
 	pkgdesc = Desktop application to download Udemy courses with attachments.
 	pkgver = 1.0.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/rsathishtechit/udeler-pro
 	arch = x86_64
-	license = custom
+	license = MIT
 	depends = electron24
 	depends = nodejs
 	provides = udeler-pro=1.0.1
@@ -12,6 +12,6 @@ pkgbase = udeler-pro-bin
 	source = udeler-pro-1.0.1.deb::https://github.com/rsathishtechit/udeler-pro/releases/download/v1.0.1/udeler-pro_1.0.1_amd64.deb
 	source = udeler-pro.sh
 	sha256sums = 259b5344bf3015fb30d3831b23f2ca180663944eccaad3d2fe260ee46a8ebf41
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = udeler-pro-bin
