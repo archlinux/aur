@@ -1,0 +1,13 @@
+diff --git a/install-dreymar-xmod.sh b/install-dreymar-xmod.sh
+index c57766e..4606ae1 100755
+--- a/install-dreymar-xmod.sh
++++ b/install-dreymar-xmod.sh
+@@ -240,7 +240,7 @@ for That in ${SubDirs}; do
+ 		MyDir="${InstDir%/}/${DModFix}${That}"
+ 		#~ MyDir="$(dirname "${MyDir}")/${DModFix}$(basename "${MyDir}")"	# Insert prefix in path/name
+ 		MyPoint "Installing mod files in '${MyDir}'"
+-		MyWarning "It seems that setxkbmap w/ local dir isn't working now?!"
++		#MyWarning "It seems that setxkbmap w/ local dir isn't working now?!"
+ 		${DoSudo} mkdir -p "${MyDir}" || MyError "Can't make '${MyDir}'!"
+ 		${DoSudo} cp -a "${X11DIR}/${That}/"* "${MyDir}" 2>/dev/null || MyError "Local files copy error!"
+ 		${DoSudo} cp -a "${DModDir}/${That}/"* "${MyDir}" 2>/dev/null \

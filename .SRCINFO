@@ -1,17 +1,16 @@
 pkgbase = xkeyboard-config-dreymar-git
 	pkgdesc = DreymaR's Extensive Yet Modular ARSenal (for X KeyBoarding)
-	pkgver = r3.9d3de38
+	pkgver = r60.51e0778
 	pkgrel = 1
 	url = https://forum.colemak.com/topic/1438-dreymars-big-bag-of-keyboard-tricks-linuxxkb-files-included
 	arch = any
 	license = unknown
-	makedepends = git
-	provides = xkbdata
-	provides = xkeyboard-config
-	conflicts = xkbdata
-	conflicts = xkeyboard-config
+	makedepends = xorg-setxkbmap
+	provides = bigbagkbdtrixxkb-git
+	conflicts = bigbagkbdtrixxkb-git
 	source = bbkt::git+https://github.com/DreymaR/BigBagKbdTrix_XKB.git
-	md5sums = SKIP
+	source = ignore-benign-warning.patch
+	sha256sums = SKIP
+	sha256sums = 99abcadb49c5e3c194c5e7fbfb9d7c62e0c9dc2dec84ecffdfd98ad1232cd36f
 
 pkgname = xkeyboard-config-dreymar-git
-
