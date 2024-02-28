@@ -1,13 +1,13 @@
 pkgbase = mimic-bin
 	pkgdesc = A fast, local, neural text to speech system for Mycroft
 	pkgver = 0.2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mycroft.ai/mimic-3/
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	license = AGPL3
-	optdepends = onnxruntime-cuda: use gpu
+	optdepends = onnxruntime: use gpu
 	provides = mimic
 	conflicts = mimic
 	options = !strip

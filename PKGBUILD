@@ -2,14 +2,14 @@
 
 pkgname="mimic-bin"
 pkgver=0.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast, local, neural text to speech system for Mycroft"
 url="https://mycroft.ai/mimic-3/"
 license=("AGPL3")
 arch=("x86_64" "aarch64" "armv7h")
 provides=("mimic")
 conflicts=("mimic")
-optdepends=("onnxruntime-cuda: use gpu")
+optdepends=("onnxruntime: use gpu")
 source_x86_64=("https://github.com/MycroftAI/mimic3/releases/download/release%2Fv${pkgver}/mycroft-mimic3-tts_${pkgver}_amd64.deb")
 source_aarch64=("https://github.com/MycroftAI/mimic3/releases/download/release%2Fv${pkgver}/mycroft-mimic3-tts_${pkgver}_arm64.deb")
 source_armv7h=("https://github.com/MycroftAI/mimic3/releases/download/release%2Fv${pkgver}/mycroft-mimic3-tts_${pkgver}_armhf.deb")
