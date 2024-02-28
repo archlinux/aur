@@ -8,7 +8,7 @@ pkgdesc="DreymaR's Extensive Yet Modular ARSenal (for X KeyBoarding)"
 arch=(any)
 url="https://forum.colemak.com/topic/1438-dreymars-big-bag-of-keyboard-tricks-linuxxkb-files-included"
 license=('unknown')
-makedepends=('xorg-setxkbmap')
+optdepends=('xorg-setxkbmap')
 source=("bbkt::git+https://github.com/DreymaR/BigBagKbdTrix_XKB.git"
         "ignore-benign-warning.patch")
 sha256sums=("SKIP"
