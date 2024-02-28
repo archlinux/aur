@@ -2,7 +2,7 @@
 # Contributor: Misha <mishakmak@gmail.com>
 
 pkgname=algorand-devtools-bin
-pkgver=3.19.0
+pkgver=3.22.0
 pkgrel=1
 pkgdesc="Development tools for the Algorand blockchain"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=("algorand")
 provides=("algorand-devtools")
 conflicts=("algorand-devtools")
 source=("https://github.com/algorand/go-algorand/releases/download/v${pkgver}-stable/algorand-devtools-${pkgver}-1.x86_64.rpm")
-sha384sums=('913c3353acfb6411b4d16a17e5156eb94fb00492b34fccb5de08ce82a308fef24559813abd0d5d8fb92ec0abab812a50')
+sha384sums=('9b430d40650cdd569208cc01c2f1f18804dfda70ff19a8866cf026c7269c63c61ae7d9260d52ae3a75447bb508f96060')
 
 package(){
 	cd "${srcdir}"
