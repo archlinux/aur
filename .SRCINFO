@@ -1,0 +1,19 @@
+pkgbase = python-exdir
+	pkgdesc = Directory structure standard for experimental pipelines
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://exdir.readthedocs.io/
+	arch = any
+	license = MIT
+	checkdepends = python-h5py
+	checkdepends = python-pytest
+	checkdepends = python-quantities
+	checkdepends = python-six
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-ruamel-yaml
+	optdepends = python-quantities
+	source = https://github.com/CINPLA/exdir/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 894ef461e473ed29115d1e55eeab264a977892f12d882fc3193919d1e7786864
+
+pkgname = python-exdir
