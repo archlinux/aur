@@ -26,12 +26,12 @@
 
 
 pkgname=openxcom-tftd-data-steam
-pkgver=1
-pkgrel=2
+pkgver=2
+pkgrel=1
 pkgdesc="X-COM data files (from steam) for openxcom (Terror From The Deep)"
 arch=(any)
 url="https://steamcommunity.com/app/7650"
-license=('custom')
+license=('LicenseRef-custom')
 depends=('openxcom-git')
 provides=('openxcom-tftd-data')
 DLAGENTS+=('localfile::/usr/bin/echo "Could not find %u. Use the copier.sh script to copy them into this directory"')
@@ -1159,6 +1159,7 @@ source=(
   "localfile://XBITS.TAB"
   "localfile://ZOMBIE.PCK"
   "localfile://ZOMBIE.TAB"
+  "https://openxcom.org/download/extras/universal-patch-tftd.zip"
 )
 noextract=(
   "filelist"
@@ -2284,6 +2285,7 @@ noextract=(
   "XBITS.TAB"
   "ZOMBIE.PCK"
   "ZOMBIE.TAB"
+  "universal-patch-tftd.zip"
 )
 
 md5sums=('b46ab1beeadcac8c14dd61d69d57865a'
@@ -3408,7 +3410,8 @@ md5sums=('b46ab1beeadcac8c14dd61d69d57865a'
          '0882c01f3d76dfb9b431da1f2403c73b'
          'd95ad283b92cbbc955c7195c2e13721b'
          'e127b9197ffbd28a0562e4bfc5e6a68b'
-         'aec879064656ab80efcdbf82ad39411e')
+         'aec879064656ab80efcdbf82ad39411e'
+         'a6af59cb753655036f1cdac72aae2210')
          
 
 package() {
@@ -4535,4 +4538,11 @@ package() {
   install -Dm644 "${srcdir}/XBITS.TAB"                "${_destdir}/TERRAIN/XBITS.TAB"
   install -Dm644 "${srcdir}/ZOMBIE.PCK"               "${_destdir}/UNITS/ZOMBIE.PCK"
   install -Dm644 "${srcdir}/ZOMBIE.TAB"               "${_destdir}/UNITS/ZOMBIE.TAB"
+
+  # extract patch
+  bsdtar -C "${_destdir}" -xf "${srcdir}/universal-patch-tftd.zip"
+
+  # fix perms (borked by patch extraction)
+  find "${_destdir}" -type d -exec chmod 755 {} \;
+  find "${_destdir}" -type f -exec chmod 644 {} \;
 }

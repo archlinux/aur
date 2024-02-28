@@ -1,10 +1,10 @@
 pkgbase = openxcom-tftd-data-steam
 	pkgdesc = X-COM data files (from steam) for openxcom (Terror From The Deep)
-	pkgver = 1
-	pkgrel = 2
+	pkgver = 2
+	pkgrel = 1
 	url = https://steamcommunity.com/app/7650
 	arch = any
-	license = custom
+	license = LicenseRef-custom
 	depends = openxcom-git
 	provides = openxcom-tftd-data
 	noextract = filelist
@@ -1130,6 +1130,7 @@ pkgbase = openxcom-tftd-data-steam
 	noextract = XBITS.TAB
 	noextract = ZOMBIE.PCK
 	noextract = ZOMBIE.TAB
+	noextract = universal-patch-tftd.zip
 	source = filelist
 	source = copier.sh
 	source = localfile://ADLIB.CAT
@@ -2253,6 +2254,7 @@ pkgbase = openxcom-tftd-data-steam
 	source = localfile://XBITS.TAB
 	source = localfile://ZOMBIE.PCK
 	source = localfile://ZOMBIE.TAB
+	source = https://openxcom.org/download/extras/universal-patch-tftd.zip
 	md5sums = b46ab1beeadcac8c14dd61d69d57865a
 	md5sums = 9e860e05a11e42b34f8ba4d790ba8bfc
 	md5sums = f41e41471074a14d1572f822d0e7824e
@@ -3376,6 +3378,6 @@ pkgbase = openxcom-tftd-data-steam
 	md5sums = d95ad283b92cbbc955c7195c2e13721b
 	md5sums = e127b9197ffbd28a0562e4bfc5e6a68b
 	md5sums = aec879064656ab80efcdbf82ad39411e
+	md5sums = a6af59cb753655036f1cdac72aae2210
 
 pkgname = openxcom-tftd-data-steam
-
