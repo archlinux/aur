@@ -17,6 +17,8 @@ makedepends=(
 
 build() {
 	cd "${srcdir}"
+	# Clean up old builds (if any)
+	rm -f *.whl
 	/usr/bin/pip3 download --no-deps $pkgname==$pkgver
 }
 
