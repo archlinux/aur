@@ -13,7 +13,7 @@ license=('GPL3')
 optdepends=(
   'libnotify: sending notifications on event'
   # AUR
-  'herbe: sending notifications on event'
+  'herbe-git: sending notifications on event'
 )
 
 source=(
