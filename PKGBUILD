@@ -1,20 +1,34 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=turtle-git
 _app_id="de.philippun1.${pkgname%-git}"
-pkgver=0.6.1.r19.gbe9149b
+pkgver=0.7.r1.g48b9725
 pkgrel=1
 pkgdesc="Manage your git repositories with easy-to-use dialogs in Nautilus."
 arch=('any')
 url="https://gitlab.gnome.org/philippun1/turtle"
 license=('GPL-3.0-or-later')
-depends=('libadwaita' 'meld' 'python-dbus' 'python-gobject' 'python-pygit2')
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+depends=(
+  'libadwaita'
+  'meld'
+  'python-dbus'
+  'python-gobject'
+  'python-pygit2'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 checkdepends=('appstream-glib')
 #checkdepends+=('python-pytest')
-optdepends=('python-nautilus: Nautilus plugin'
-            'thunarx-python: Thunar plugin'
-            'nemo-python: Nemo plugin'
-            'python-caja: Caja plugin')
+optdepends=(
+  'python-nautilus: Nautilus plugin'
+  'thunarx-python: Thunar plugin'
+  'nemo-python: Nemo plugin'
+  'python-caja: Caja plugin'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'turtlegit')
 replaces=('turtlegit-git')
@@ -43,6 +57,7 @@ package() {
   cd "$srcdir/${pkgname%-git}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
+  install -Dm755 "${pkgname%-git}_cli" -t "$pkgdir/usr/bin/"
   install -Dm644 "data/icons/hicolor/scalable/apps/${_app_id}.svg" -t \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
   install -Dm644 "data/icons/hicolor/symbolic/apps/${_app_id}-symbolic.svg" -t \
