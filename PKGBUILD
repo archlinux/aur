@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yarle-evernote-to-md-bin
-pkgver=6.6.1
+pkgver=6.9.2
 _electronversion=22
 pkgrel=1
 pkgdesc="Yarle - The ultimate converter of Evernote notes to Markdown"
@@ -18,7 +18,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/akosbalasko/yarle/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('753693a420e38a209d9cf1044ae05806dea1dd32f8772ac4a12d04bc51a78d42'
+sha256sums=('c955dc03576f09d932cfa71141fec693ec3a4969ea4071ef64e1f0968e2de506'
             '16691c563f896a0d485a742fbd5a389fc7c798ff606c75cb3f753bb7297a9bdb'
             '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
@@ -26,7 +26,7 @@ build() {
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@appasar@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {    
