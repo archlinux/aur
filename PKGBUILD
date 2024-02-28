@@ -4,8 +4,8 @@
 
 pkgname=protonvpn-cli-community
 _oldpkgname=protonvpn-cli-ng
-pkgver=2.2.11
-pkgrel=2
+pkgver=2.2.12
+pkgrel=1
 pkgdesc="A Community Linux CLI for ProtonVPN"
 arch=("any")
 url="https://github.com/ProtonVPN/linux-cli-community"
@@ -16,7 +16,7 @@ provides=("${_oldpkgname}")
 conflicts=("protonvpn-cli" "protonvpn-gui" "${_oldpkgname}")
 replaces=("${_oldpkgname}")
 source=("linux-cli-community-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2fc643762e9156928b706c31a7826427a7ca12c7ae4cdfb656746cd2de3af66b')
+sha256sums=('586b34fb87ad0823fc24643c7b460acef517da4257b1330c9064009ec1215168')
 
 package() {
 	cd "linux-cli-community-${pkgver}"
