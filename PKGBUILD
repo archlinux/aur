@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tractor.base
-_pkgver=3.3.5.1
+_pkgver=3.4.2
 pkgname=r-${_pkgname,,}
-pkgver=3.3.5.1
+pkgver=3.4.2
 pkgrel=1
 pkgdesc='Read, Manipulate and Visualise Magnetic Resonance Images'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-yaml
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ec6d7891d1c68b3a3b713ef04ae487ecf53687479c574b422d859a78e1faab3b')
+sha256sums=('43596347d32b7a00a6323aae9727358ef3890e592c8d7b3e5102b1c34c2fb78a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
