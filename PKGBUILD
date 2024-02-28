@@ -1,7 +1,7 @@
 # Maintainer: Nick G. <wirlaburla@worlio.com>
 
 pkgname=trakker-git
-pkgver=0.4.2.r0.gc82038a
+pkgver=0.5.1.r2.gb57095e
 pkgrel=1
 pkgdesc='A terminal-based tracker interface for libxmp.'
 arch=('x86_64')
@@ -15,8 +15,8 @@ source=("$pkgname::git+$url.git#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$pkgname"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
