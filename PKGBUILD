@@ -2,7 +2,7 @@
 
 _name=pyswrd
 pkgname=python-${_name}
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Cython bindings and Python interface to SWORD, a method for query-database alignment."
 url="https://github.com/althonos/pyswrd"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'cython' 'python-build' 'python-installer' 'pyt
 depends=('python' 'python-pyopal')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=(35299b251ccb1313ae0b49fbb0fb25cb4c0b19e8c5083708e2e8a5e106d06b58)
+sha256sums=(188eed5da2390098e643e49c5fedaaf4a6646e79437761da6ad25a4b8bdc90ef)
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
