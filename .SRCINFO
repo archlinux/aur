@@ -1,10 +1,10 @@
 pkgbase = certmanager-bin
 	pkgdesc = A simple and efficient local certificate management tool that provides functions such as certificate installation, certificate management, and certificate verification.一款简单高效的本地证书管理工具,提供证书安装、证书管理、证书验证等功能，支持国密证书.
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.bitnum.com/
 	arch = x86_64
-	license = custom:unknown
+	license = LicenseRef-custom
 	depends = qt6-base
 	depends = libglvnd
 	source = certmanager-1.0.0.deb::https://com-store-packages.uniontech.com/pool/appstore/c/cn.bitnum.certmanager/cn.bitnum.certmanager_1.0.0_amd64.deb
