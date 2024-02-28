@@ -1,32 +1,39 @@
-# Maintainer: syui <syui@users.noreply.github.com>
+# Maintainer:
+# Contributor: syui <syui@users.noreply.github.com>
+
 pkgname=twg
-pkgver=0.3
-pkgrel=9
+pkgver=0.4.8
+pkgrel=1
 pkgdesc="twitter client for CLI"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url="https://github.com/syui/twg"
 options=('!strip' '!emptydirs')
 license=('MIT')
-source=("$url/releases/download/$pkgver/linux_386_$pkgname"
-  "$url/releases/download/$pkgver/linux_amd64_$pkgname")
-noextract=(${source[@]%%::*})
-sha1sums=('e7202e10d958e1a9ab893fe24765317b18e12609' 'd0de749db19bceb7fbc9212c42e8ecf9a355bc27')
-package() {
-  mkdir -p ${srcdir}/${pkgname}-${pkgver}
-  cd "${srcdir}/${pkgname}-${pkgver}"
- 
-  if [ "`uname -m`" = "x86_64" ];then
-    mv ../linux_amd64_$pkgname $pkgname 
-    chmod +x $pkgname
-  fi
+makedepends=('go')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('5f60a8685c671d1cd0bb1996d56e7ec5f63c8c56dcb91cf6541fe709711d04eb')
 
-  if [ "`uname -m`" = "i684" ];then
-    mv ../linux_386_$pkgname $pkgname 
-    chmod +x $pkgname
-  fi
-  mkdir -p $pkgdir/usr/bin
+build() {
+  cd $pkgname-$pkgver
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+
+  # Please put Twitter Keys here. See documentation
+  # https://github.com/syui/twg?tab=readme-ov-file#build
+  export CKEY="putconsumerkeyhere"
+  export CSKEY="putsecretkeyhere"
+
+  go mod tidy
+  go build -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -X github.com/syui/twg/oauth.ckey=$CKEY -X github.com/syui/twg/oauth.cskey=$CSKEY"
+}
+
+package() {
+  cd $pkgname-$pkgver
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-  sudo install -Dm755 "$pkgdir/usr/bin/$pkgname" /usr/bin
+  # license file is missing
 }
 
 # vim:set ts=2 sw=2 et:

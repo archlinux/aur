@@ -1,6 +1,4 @@
-linux_amd64_twg
-linux_386_twg
-twg
-build.zsh
-PKGBUILD.back
-aur.zsh
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
