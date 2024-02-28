@@ -1,12 +1,13 @@
-pkgbase = ollama-cuda-git
-	pkgdesc = Create, run and share large language models (LLMs) with CUDA
-	pkgver = 0.1.27.g275ea015
+pkgbase = ollama-rocm-git
+	pkgdesc = Create, run and share large language models (LLMs) with ROCm
+	pkgver = 0.1.27.g076237b8
 	pkgrel = 1
 	url = https://github.com/jmorganca/ollama
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	makedepends = cuda
+	makedepends = clblast
+	makedepends = rocblas
 	makedepends = git
 	makedepends = go
 	provides = ollama
@@ -21,4 +22,4 @@ pkgbase = ollama-cuda-git
 	b2sums = 3aabf135c4f18e1ad745ae8800db782b25b15305dfeaaa031b4501408ab7e7d01f66e8ebb5be59fc813cfbff6788d08d2e48dcf24ecc480a40ec9db8dbce9fec
 	b2sums = e8f2b19e2474f30a4f984b45787950012668bf0acb5ad1ebb25cd9776925ab4a6aa927f8131ed53e35b1c71b32c504c700fe5b5145ecd25c7a8284373bb951ed
 
-pkgname = ollama-cuda-git
+pkgname = ollama-rocm-git
