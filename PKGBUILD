@@ -1,7 +1,7 @@
 # Maintainer: ljoonal <aur at ljoonal.xyz>
 pkgname="resolute-bin"
-pkgver="0.7.1"
-pkgrel=2
+pkgver="0.8.1"
+pkgrel=1
 pkgdesc="Mod Manager GUI for Resonite"
 arch=('x86_64')
 url="https://github.com/Gawdl3y/Resolute"
@@ -11,7 +11,7 @@ source=(
   "https://github.com/Gawdl3y/Resolute/releases/download/v$pkgver/resolute_${pkgver}_amd64.deb"
 )
 sha256sums=(
-  "f3a600c649d85452af2af8b0feadd4bb860a8e06ad6ce84a70fcbbe83a0856fe"
+  "de41e7a2e2b1c5bd1e338372aafcdf7e46409358ab218bc56c0c32307be0153c"
 )
 
 package() {
