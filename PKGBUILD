@@ -5,12 +5,12 @@ _appname=Thorium
 _fullname="${_appname}Reader"
 pkgver=2.3.0
 _electronversion=25
-pkgrel=3
+pkgrel=4
 pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit"
 arch=('x86_64')
 url="https://www.edrlab.org/software/thorium-reader/"
 _ghurl="https://github.com/edrlab/thorium-reader"
-license=('LicenseRef-BSD')
+license=('BSD-3-Clause')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
@@ -24,13 +24,13 @@ source=(
 )
 sha256sums=('1007cd9083715d32427e4d39f8a4cac69cf428cfc4521950571dc2290a308f23'
             'e95e504f42685015445b4a0a80dfdaa86e5b2b2c0e317bca2bcbb51330ec61e5'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed -e "s|Name=${_appname}|Name=${_fullname}|g" \
         -e "s|/opt/${_appname}/${_pkgname}|${pkgname%-bin}|g" \
         -e "s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
