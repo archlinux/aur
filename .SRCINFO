@@ -1,6 +1,6 @@
 pkgbase = python-multimethod
 	pkgdesc = Multiple argument dispatching
-	pkgver = 1.11.1
+	pkgver = 1.11.2
 	pkgrel = 1
 	url = https://github.com/coady/multimethod
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-multimethod
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = multimethod-1.11.1.tar.gz::https://github.com/coady/multimethod/archive/v1.11.1.tar.gz
-	sha512sums = 42e9ad97b002e4ffb1bddc95c3c9620f91f45b63b179b4a31fe13d0a5634371947e9e130c04a12eb2dc7b779b0b396999e7a208af2e1a598183827f6ca807041
+	source = multimethod-1.11.2.tar.gz::https://github.com/coady/multimethod/archive/v1.11.2.tar.gz
+	sha512sums = 63d6c4dc5b1d85131683123ad21736e3ad41ceaab2b8f5075fc838cdaba11dd29c404362e9f0d4a7ac86c9e33f56223e953fe8355eab688af28c999b190ef4fa
 
 pkgname = python-multimethod
