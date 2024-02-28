@@ -1,4 +1,4 @@
-pkgbase = balena-etcher-bin
+pkgbase = balena-etcher
 	pkgdesc = Flash OS images to SD cards & USB drives, safely and easily. (DEB version)
 	pkgver = 1.18.11
 	pkgrel = 1
