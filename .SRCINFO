@@ -1,0 +1,15 @@
+pkgbase = lenovo-legion-electric-ray-git
+	pkgdesc = Lenovo Legion 'Rapid charge' & 'Conservation'.
+	pkgver = r30.323a7e6
+	pkgrel = 1
+	url = https://github.com/CuriousGecko/electric-ray
+	arch = x86_64
+	license = GPL
+	depends = python
+	depends = pyside6
+	depends = acpi
+	conflicts = electric-ray
+	source = git+https://github.com/CuriousGecko/electric-ray.git
+	sha256sums = SKIP
+
+pkgname = lenovo-legion-electric-ray-git
