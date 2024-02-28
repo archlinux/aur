@@ -1,14 +1,12 @@
 pkgbase = solar-wallet-bin
 	pkgdesc = Stellar wallet. Secure and user-friendly.
 	pkgver = 0.28.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://solarwallet.io/
 	arch = x86_64
 	license = MIT
 	depends = electron19
-	depends = lib32-glibc
-	depends = python
-	depends = lib32-gcc-libs
+	depends = python>=3
 	depends = nodejs
 	provides = solar-wallet=0.28.1
 	conflicts = solar-wallet
@@ -18,6 +16,6 @@ pkgbase = solar-wallet-bin
 	source = solar-wallet.sh
 	sha256sums = bbf429ba5faf083f602f087970bf6cfddc0178b743432f588d7d2c90764997b3
 	sha256sums = 122419a299dfabb6da3af79d00ffafba42ae185fa757be14cd5140f35c8ce094
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = solar-wallet-bin

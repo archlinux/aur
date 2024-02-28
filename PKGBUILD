@@ -5,7 +5,7 @@ _appname="Solar Wallet"
 _debname="io.${_pkgname}.app"
 pkgver=0.28.1
 _electronversion=19
-pkgrel=5
+pkgrel=6
 pkgdesc="Stellar wallet. Secure and user-friendly."
 arch=('x86_64')
 url="https://solarwallet.io/"
@@ -15,9 +15,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}" "${_pkgname}")
 depends=(
     "electron${_electronversion}"
-    'lib32-glibc'
-    'python'
-    'lib32-gcc-libs'
+    'python>=3'
     'nodejs'
 )
 source=(
@@ -27,13 +25,13 @@ source=(
 )
 sha256sums=('bbf429ba5faf083f602f087970bf6cfddc0178b743432f588d7d2c90764997b3'
             '122419a299dfabb6da3af79d00ffafba42ae185fa757be14cd5140f35c8ce094'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_appname}/${_debname}\"|${pkgname%-bin}|g;s|=${_debname}|=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_debname}.desktop"
 }
