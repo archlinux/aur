@@ -1,13 +1,13 @@
 pkgbase = pac-pacman-aliases-zsh-completions
 	pkgdesc = Zsh completions for pac-pacman-aliases
-	pkgver = 1.6
+	pkgver = 1.9
 	pkgrel = 1
 	url = https://github.com/bbedward/pac-pacman-aliases
 	arch = any
 	license = MIT
 	depends = zsh
 	depends = pac-pacman-aliases
-	source = https://github.com/bbedward/pac-pacman-aliases/archive/refs/tags/v1.6.zip
+	source = https://github.com/bbedward/pac-pacman-aliases/archive/refs/tags/v1.9.zip
 	sha256sums = SKIP
 
 pkgname = pac-pacman-aliases-zsh-completions
