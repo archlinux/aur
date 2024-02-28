@@ -9,6 +9,7 @@ depends=('python' 'python-pyqt5' 'vim')
 source=("https://github.com/LORDINFINITY12/script-runner-gui/blob/main/script-runner-gui.py" "https://github.com/LORDINFINITY12/script-runner-gui/blob/main/script-runner-gui.desktop" "https://github.com/LORDINFINITY12/script-runner-gui/blob/main/scripts.json" "https://github.com/LORDINFINITY12/script-runner-gui/blob/main/script-runner-icon.png")
 sha256sums=('SKIP'
             'SKIP'
+            'SKIP'
             'SKIP') # Replace with actual sha256sums or use 'SKIP'
 
 package() {

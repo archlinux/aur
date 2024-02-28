@@ -15,5 +15,6 @@ pkgbase = script-runner-gui
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = script-runner-gui
