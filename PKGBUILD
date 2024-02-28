@@ -3,9 +3,9 @@
 # Manitor: Bot-wxt1221 <3264117476@qq.com>
 
 pkgname=hmcl-bin
-_ver=3.5.5.236
+_ver=3.5.5.237
 pkgver=${_ver}
-pkgrel=3
+pkgrel=1
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
 arch=('any')
 url="https://github.com/huanghongxun/HMCL"
@@ -22,7 +22,7 @@ sha256sums=('9a561081f8f3ece3da114afd4f6d90565ca0e04716eef4ea88c6b4306566ae9b'
             'fbea374c820af533b59efa9bbb3918e7d915582e001ab43b00eb1c54e1bb434c'
             '2989a1b5301b8c7b9afdae5696c6a4e5246afa2d4f1f3d3dad5c192f036a9b4c'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            'f11a7f9f9eaf49349ca4a11ea268f63eb0ef319a1ccf5e582ba9981f2c2a59c1')
+            '48da40d1bffa00bfa1f1fc3b8466a90fbaa01b1a48cf31a4b40546da5601d0e2')
 
 noextract=("${pkgname}-${pkgver}-${pkgrel}.jar")
 
