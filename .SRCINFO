@@ -1,7 +1,7 @@
 pkgbase = python-androguard
 	pkgdesc = Python framework for Android application analysis.
-	pkgver = 3.3.5
-	pkgrel = 3
+	pkgver = 4.1.0
+	pkgrel = 1
 	url = https://github.com/androguard/androguard/
 	arch = any
 	license = Apache
@@ -18,8 +18,7 @@ pkgbase = python-androguard
 	depends = python-click
 	depends = python-pydot
 	options = !emptydirs
-	source = python-androguard-3.3.5.tar.gz::https://github.com/androguard/androguard/archive/v3.3.5.tar.gz
-	md5sums = 903bd3b46cdd677757227edbd652a455
+	source = python-androguard-4.1.0.tar.gz::https://github.com/androguard/androguard/archive/v4.1.0.tar.gz
+	md5sums = 3cfca87d9396ae48e96c995170628379
 
 pkgname = python-androguard
-
