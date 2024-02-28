@@ -1,0 +1,8 @@
+[Desktop Entry]
+Exec=G4A-GUI
+GenericName=Configuration utility for the GUN4ALL lightgun system
+Name=GUN4ALL-GUI
+NoDisplay=false
+StartupNotify=true
+Terminal=false
+Type=Application
