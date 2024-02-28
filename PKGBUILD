@@ -2,7 +2,7 @@
 pkgname=story-writer-bin
 _pkgname=Story-writer
 pkgver=8.12.6
-pkgrel=7
+pkgrel=8
 pkgdesc="A very excellent knowledge management software.小书匠是一款非常优秀的知识管理软件."
 arch=(
     'i686'
@@ -10,30 +10,15 @@ arch=(
 )
 url="http://soft.xiaoshujiang.com/"
 _ghurl="https://github.com/suziwen/markdownxiaoshujiang"
-license=('Apache')
+license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'glib2'
     'nspr'
-    'pango'
-    'libcups'
-    'libxdamage'
-    'libxkbcommon'
     'nss'
-    'libx11'
-    'libxcb'
-    'mesa'
-    'wayland'
-    'libxext'
-    'libxcomposite'
-    'at-spi2-core'
     'alsa-lib'
-    'libxrandr'
-    'expat'
-    'libdrm'
     'libxfixes'
-    'cairo'
+    'libxrandr'
 )
 makedenpends=(
     'gendesk'
@@ -49,7 +34,7 @@ build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
+    gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
     install -Dm755 -d "${srcdir}/opt/${pkgname%-bin}"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.zip" -C "${srcdir}/opt/${pkgname%-bin}"
     find "${srcdir}/opt/${pkgname%-bin}" -type f -exec chmod -R a+r {} \;
