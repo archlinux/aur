@@ -2,7 +2,7 @@ pkgbase = lindvd
 	pkgdesc = LinDVD - Actually an official DVD player for Linux from Mandriva Powerpack 2008 ISO
 	pkgver = 1.2.6
 	pkgrel = 1
-	url = https://disc-kuraudo.eu
+	url = https://web.archive.org/web/20080123102609/http://www.intervideo.com/jsp/Product_Profile.jsp?p=LinDVD
 	install = lindvd.install
 	arch = x86_64
 	arch = i686

@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="LinDVD - Actually an official DVD player for Linux from Mandriva Powerpack 2008 ISO"
 arch=('x86_64' 'i686')
 license=('custom')
-url='https://disc-kuraudo.eu'
+url='https://web.archive.org/web/20080123102609/http://www.intervideo.com/jsp/Product_Profile.jsp?p=LinDVD'
 depends=(
 	'lib32-libstdc++5'
 	'lib32-libxcrypt-compat'
