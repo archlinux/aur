@@ -36,7 +36,7 @@ _fragment=${FRAGMENT:-#branch=main}
   _CMAKE_FLAGS+=( -DWITH_PYTHON_INSTALL=ON )
 
 pkgname=blender-develop-git
-pkgver=4.2.r133387.g7f43699ebf5
+pkgver=4.2.r133556.gb8fdef965df
 pkgrel=1
 pkgdesc="Development version of Blender (non-conflicting version)"
 changelog=blender.changelog
@@ -162,10 +162,10 @@ package() {
     mv "${pkgdir}/usr/bin/blender-thumbnailer" "${pkgdir}/usr/bin/blender-${_suffix}-thumbnailer"
 
     msg "mv doc/blender to doc/blender-${_suffix}"
-    mv "${pkgdir}/usr/share/doc/blender" "${pkgdir}/usr/share/doc/blender-${_suffix}"
+    mv "${pkgdir}/usr/share/doc/blender" "${pkgdir}/usr/share/doc/blender-${_suffix}" || true
 
     msg "add -${_suffix} suffix to man page"
-    ((DISABLE_DRACO)) && mv "${pkgdir}/usr/share/man/man1/blender.1" "${pkgdir}/usr/share/man/man1/blender-${_suffix}.1"
+    ((DISABLE_DRACO)) && mv "${pkgdir}/usr/share/man/man1/blender.1" "${pkgdir}/usr/share/man/man1/blender-${_suffix}.1" || true
 
     msg "add -${_suffix} suffix to all icons"
     while read -r icon
@@ -177,7 +177,7 @@ package() {
     done < <(find "${pkgdir}/usr/share/icons" -type f)
 
     msg "add -${suffix} suffix to metainfo"
-    mv "${pkgdir}/usr/share/metainfo/org.blender.Blender.metainfo.xml" "${pkgdir}/usr/share/metainfo/org.blender-${_suffix}.Blender.metainfo.xml"
+    mv "${pkgdir}/usr/share/metainfo/org.blender.Blender.metainfo.xml" "${pkgdir}/usr/share/metainfo/org.blender-${_suffix}.Blender.metainfo.xml" || true
 
   if [[ -e "$pkgdir/usr/share/blender/${_suffix}/scripts/addons/cycles/lib/" ]] ; then
     # make sure the cuda kernels are not stripped
