@@ -4,7 +4,7 @@ pkgname="${_appname}-wallet-bin"
 _pkgname=Spark
 pkgver=0.3.1
 _electronversion=13
-pkgrel=3
+pkgrel=4
 pkgdesc="A minimalistic wallet GUI for c-lightning, accessible over the web or through mobile and desktop apps."
 arch=('x86_64')
 url="https://github.com/shesek/spark-wallet"
@@ -21,13 +21,13 @@ source=(
 )
 sha256sums=('074554cbccbf2af7d804272bdb1dee0e266ce8ef5157973996876ff49022fe32'
             'd8a82e79466ba5d679ba7edf5acd05bf6767edeb56f51a76ce8e121c7c887bf2'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${_appname}-desktop|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${_appname}-desktop.desktop"
 }
 package() {
