@@ -2,8 +2,8 @@
 pkgname=ohmymd-bin
 _pkgname="Oh Mymd"
 pkgver=0.6.1
-_electronversion=13
-pkgrel=4
+_electronversion=24
+pkgrel=6
 pkgdesc="A markdown editor,support cloud sync"
 arch=('x86_64')
 url="https://www.ohmymd.app/"
@@ -15,8 +15,6 @@ depends=(
     'hicolor-icon-theme'
     'alsa-lib'
     'gtk3'
-    'at-spi2-core'
-    'make'
     'nspr'
     'nss'
 )
@@ -25,7 +23,7 @@ source=(
 )
 sha256sums=('df6cd51ce12fdf9f262eb74d16b9441fb90141dc78a2e89757404fd544046abb')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\"|${pkgname%-bin} --no-sandbox|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {

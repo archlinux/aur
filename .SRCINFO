@@ -1,15 +1,13 @@
 pkgbase = ohmymd-bin
 	pkgdesc = A markdown editor,support cloud sync
 	pkgver = 0.6.1
-	pkgrel = 4
+	pkgrel = 6
 	url = https://www.ohmymd.app/
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = hicolor-icon-theme
 	depends = alsa-lib
 	depends = gtk3
-	depends = at-spi2-core
-	depends = make
 	depends = nspr
 	depends = nss
 	provides = ohmymd=0.6.1
