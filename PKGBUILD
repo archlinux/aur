@@ -14,7 +14,7 @@ makedepends=('git')
 provides=('asustor-platform-driver')
 conflicts=('it87-frankcrawford-dkms-git' 'it87-dkms-git')
 
-source=("$_pkgbase::git+https://github.com/vincentDcmps/asustor-platform-driver.git")
+source=("$_pkgbase::https://github.com/mafredri/asustor-platform-driver.git")
 sha256sums=('SKIP')
 
 pkgver() {
