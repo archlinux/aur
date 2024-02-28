@@ -1,0 +1,13 @@
+diff --git a/dolby_vision/Cargo.toml b/dolby_vision/Cargo.toml
+index b644d48..6b318de 100644
+--- a/dolby_vision/Cargo.toml
++++ b/dolby_vision/Cargo.toml
+@@ -31,7 +31,7 @@ capi = ["libc"]
+ all-features = true
+ 
+ [package.metadata.capi.header]
+-subdirectory = "libdovi"
++subdirectory = false
+ name = "rpu_parser"
+ 
+ [package.metadata.capi.pkg_config]

@@ -11,8 +11,9 @@ pkgbase = lib32-libdovi
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
 	provides = libdovi.so
-	conflicts = libdovi.so
 	source = https://github.com/quietvoid/dovi_tool/archive/refs/tags/libdovi-3.2.0.tar.gz
+	source = 0001-lib32-libdovi-remove-subdirectory.patch
 	sha256sums = 23c339b08bf32b66144b8fe17bf9a39f2dc810a37f081e5bc50207af9ae99922
+	sha256sums = 20f1168e3ad003502031578246a6f8f61a73f53cd2b00b583f944fda0dea2654
 
 pkgname = lib32-libdovi
