@@ -1,6 +1,6 @@
 pkgbase = python-limits
 	pkgdesc = utilities to implement rate limiting
-	pkgver = 3.4.0
+	pkgver = 3.9.0
 	pkgrel = 1
 	url = https://github.com/alisaifee/limits/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-limits
 	depends = python-packaging
 	depends = python-setuptools
 	depends = python-importlib-resources
-	source = https://files.pythonhosted.org/packages/source/l/limits/limits-3.4.0.tar.gz
-	sha256sums = fc5e01a6a96b6f78b7e8a8f4610a93f3ebe3351a1bcd8cd93763a90fa52bc7fe
+	source = https://files.pythonhosted.org/packages/source/l/limits/limits-3.9.0.tar.gz
+	sha256sums = 7b44aa4d05c539276928372681190136914958cccbb99c30ecc5df72a179661a
 
 pkgname = python-limits
