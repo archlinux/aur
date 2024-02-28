@@ -2,7 +2,7 @@
 
 pkgname=yocto-nanbield-meta
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Yocto Nanbield project build dependencies"
 arch=('any')
 url="https://docs.yoctoproject.org/ref-manual/system-requirements.html#required-packages-for-the-build-host"
@@ -28,6 +28,7 @@ depends=(
   python-pexpect
   python-pip
   python-subunit
+  rpcsvc-proto
   sdl12-compat
   socat
   texinfo
