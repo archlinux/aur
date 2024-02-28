@@ -1,7 +1,7 @@
 # Maintainer: drpebcak <tayworm@gmail.com>
 pkgname='gptscript-git'
 pkgver=git
-pkgrel=1
+pkgrel=2
 pkgdesc="Scripting AI for fun and profit (git build from latest commit to main)"
 arch=('x86_64')
 url="https://gptscript.ai/"
@@ -13,8 +13,7 @@ md5sums=('SKIP')
 
 build() {
 	cd "gptscript"
-	make build-ui
-	make build
+	make all
 }
 
 check() {

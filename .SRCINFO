@@ -1,12 +1,14 @@
 pkgbase = gptscript-git
 	pkgdesc = Scripting AI for fun and profit (git build from latest commit to main)
 	pkgver = git
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gptscript.ai/
 	arch = x86_64
 	license = Apache
 	makedepends = git
 	makedepends = go
+	makedepends = npm
+	makedepends = yarn
 	source = gptscript::git+https://github.com/gptscript-ai/gptscript.git#branch=main
 	md5sums = SKIP
 
