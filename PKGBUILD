@@ -3,7 +3,7 @@
 pkgname=balena-etcher-bin
 pkgver=1.18.11
 pkgrel=1
-pkgdesc="Flash OS images to SD cards & USB drives, safely and easily."
+pkgdesc="Flash OS images to SD cards & USB drives, safely and easily. (DEB version)"
 arch=('x86_64')
 url="https://github.com/balena-io/etcher"
 license=("Apache-2.0")
