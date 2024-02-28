@@ -2,7 +2,7 @@
 # Maintainer: Aikawa Yataro <aikawayataro at protonmail dot com>
 _name=gitvenv
 pkgname=python-$_name
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Simple tool to create virtual git environments (like a python's venv)."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-build' 'python-setuptools' 'python-wheel' 'python-installer')
 source=("https://gitlab.com/yataro/$_name/-/archive/v$pkgver/$_name-v$pkgver.tar.gz")
-sha256sums=('baf78940447796605fc853c3eccf514ed1ea089065698e031c89278d220ecc86')
+sha256sums=('ec774d2fc0e011a5060596f0baf85af40d2763ea9e1780d7d7bd7573a862f1cc')
 
 
 
