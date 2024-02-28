@@ -1,6 +1,6 @@
 pkgbase = huetui
 	pkgdesc = A TUI for Phillips Hue
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/channel-42/hue-tui
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = huetui
 	depends = python-py_cui
 	depends = python-click
 	depends = python-urllib3
-	source = https://github.com/channel-42/hue-tui/archive/v2.0.tar.gz
-	md5sums = 03d1ec432371fcc6f4d988a5cc5685d9
+	source = https://github.com/channel-42/hue-tui/archive/v2.1.tar.gz
+	md5sums = d90977e9ddd21c133bebc0e121cd1181
 
 pkgname = huetui

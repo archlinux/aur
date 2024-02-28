@@ -1,7 +1,7 @@
 # Maintainer: channel-42 <info@devls.de>
 pkgname=huetui
 _gitname=hue-tui
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="A TUI for Phillips Hue"
 arch=('any')
@@ -11,7 +11,7 @@ groups=('misc')
 depends=('python' 'python-colorthief' 'python-py_cui' 'python-click' 'python-urllib3')
 makedepends=('python-setuptools')
 source=("https://github.com/channel-42/$_gitname/archive/v$pkgver.tar.gz")
-md5sums=('03d1ec432371fcc6f4d988a5cc5685d9')
+md5sums=('d90977e9ddd21c133bebc0e121cd1181')
 
 package() {
     cd "$srcdir/$_gitname-$pkgver"
