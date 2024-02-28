@@ -1,0 +1,27 @@
+// Include standard font and media definitions
+#include <font.defs>
+#include <media.defs>
+
+// List the fonts that are supported, in this case all standard fonts...
+Font *
+
+// Manufacturer, model name, and version
+Manufacturer "Remarkable"
+ModelName "Remarkable Tablet"
+Version 1.0
+
+// Each filter provided by the driver...
+Filter application/pdf  0  -
+
+#media "Remarkable" 155mm 205mm
+
+// Supported page sizes
+*MediaSize Remarkable
+MediaSize A4
+MediaSize A5
+
+// Supported resolutions
+*Resolution k 8 0 0 0 "226dpi/226 DPI"
+
+// Specify the name of the PPD file we want to generate...
+PCFileName "remarkable.ppd"

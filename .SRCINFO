@@ -1,0 +1,14 @@
+pkgbase = remarkable-cups
+	pkgdesc = CUPS backend that uses rmapi to print files to the remarkable cloud
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/ofosos/scratch/tree/master/remarkable-cups
+	arch = any
+	license = GPL
+	depends = cups
+	source = remarkable.drv
+	source = remarkable.sh
+	sha256sums = 384e5041125b2b15aeb7aeab8bb46c4e09debd4401205640e61010cb792e5e19
+	sha256sums = 7ecc3dd9f952beecbdc66748b4176a68a109845798ed4a1e0894a5d58f0b26cb
+
+pkgname = remarkable-cups
