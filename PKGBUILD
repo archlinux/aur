@@ -51,11 +51,13 @@ build() {
   cmake -B build5 -S $pkgname-$pkgver \
         -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build5/src/greeter
+  cmake --build build5/components
 }
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
   DESTDIR="$pkgdir" cmake --install build5/src/greeter
+  DESTDIR="$pkgdir" cmake --install build5/components
 
   install -d "$pkgdir"/usr/lib/sddm/sddm.conf.d
   "$pkgdir"/usr/bin/sddm --example-config > "$pkgdir"/usr/lib/sddm/sddm.conf.d/default.conf
