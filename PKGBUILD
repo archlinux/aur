@@ -37,6 +37,11 @@ pkgver() {
     )
 }
 
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
+}
+
 build() {
     cd "${srcdir}/${pkgname}"
 
