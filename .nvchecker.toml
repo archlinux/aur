@@ -1,0 +1,3 @@
+[python-dvc-objects]
+source = "pypi"
+pypi = "dvc-objects"
