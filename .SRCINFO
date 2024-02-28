@@ -1,0 +1,18 @@
+pkgbase = librespot-raspotify-git
+	pkgdesc = Open source client library for Spotify
+	pkgver = r1628.8b7147a
+	pkgrel = 1
+	url = https://github.com/JasonLG1979/librespot
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = alsa-lib
+	depends = libpulse
+	provides = librespot
+	conflicts = librespot
+	source = librespot-raspotify-git::git+https://github.com/JasonLG1979/librespot#branch=raspotify
+	sha256sums = SKIP
+
+pkgname = librespot-raspotify-git
