@@ -8,7 +8,7 @@ pkgdesc='Small and simple gravatar usage in Flask'
 url='https://github.com/zzzsochi/Flask-Gravatar/'
 arch=('any')
 license=('BSD')
-makedepends=('python-flask' 'python-sphinx' 'python-setuptools')
+makedepends=('python-flask' 'python-sphinx' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/zzzsochi/Flask-Gravatar/archive/v${pkgver}.tar.gz)
 sha256sums=('9f9ea35b3537f635a25a09390821b768c9c3cf53274e16ffabbfc1f8c6e77d55')
@@ -21,7 +21,7 @@ prepare() {
 
 build() {
   cd ${_pkgname}-${pkgver}
-  python setup.py build
+  python -m build --wheel --no-isolation
   sphinx-build -b text docs docs/_build/text
   sphinx-build -b man docs docs/_build/man
 }
@@ -36,7 +36,7 @@ check() {
 package() {
   depends=('python' 'python-flask')
   cd ${_pkgname}-${pkgver}
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm 644 README.rst CHANGES.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm 644 docs/_build/text/*.txt -t "${pkgdir}/usr/share/doc/${pkgname}"
