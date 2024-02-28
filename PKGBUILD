@@ -2,28 +2,31 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gganimate
-_pkgver=1.0.8
+_pkgver=1.0.9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=5
+pkgrel=1
 pkgdesc="A Grammar of Animated Graphics"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
+  r-cli
   r-ggplot2
   r-glue
+  r-lifecycle
   r-progress
   r-rlang
   r-scales
   r-stringi
+  r-transformr
   r-tweenr
+  r-vctrs
 )
 checkdepends=(
   r-gifski
   r-magick
   r-testthat
-  r-transformr
   ttf-font
 )
 optdepends=(
@@ -36,26 +39,17 @@ optdepends=(
   r-magick
   r-ragg
   r-rmarkdown
+  r-sf
   r-svglite
   r-testthat
-  r-transformr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2ec08a5316dfd4d845238dfb296e2b91')
-sha256sums=('a12d865ddecea761e8f12bdc3bfdb78642f7ab2d53b78940e1290c9071d24bc9')
-
-prepare() {
-  # Skip test until upstream fixes the bug
-  # https://github.com/thomasp85/gganimate/commit/1193080105062a4259be0da085d0f26aca0f20c2
-  # https://github.com/thomasp85/gganimate/issues/287
-  # https://github.com/thomasp85/gganimate/issues/447
-  sed -i '/contour works/a\ \ skip("Upstream bug #287")' \
-      "$_pkgname/tests/testthat/test-transition-states.R"
-}
+md5sums=('9be9453ae809aa81f1722f2215681edb')
+b2sums=('d52f9ec98be6b095ae5f735c23525d76174b61ada1ef88ac7c9bc767396757903d6214849293bfc9318992fb46e356b6e59368a247b6ef20b27644fe15d4fb9b')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
