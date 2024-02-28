@@ -1,11 +1,14 @@
 pkgbase = bfdev-devel-git
 	pkgdesc = An open source development library
-	pkgver = r588.9fcfee7
+	pkgver = r1047.e669ad6
 	pkgrel = 1
 	url = https://github.com/openbfdev/bfdev.git
 	arch = any
 	license = GPL
 	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = fakeroot
 	source = bfdev::git+https://github.com/openbfdev/bfdev.git#branch=devel
 	md5sums = SKIP
 

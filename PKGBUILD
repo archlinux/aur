@@ -1,14 +1,14 @@
 # Maintainer: John Sanpe <sanpeqf@gmail.com>
 pkgname=bfdev-devel-git
 _gitname=bfdev
-pkgver=r588.9fcfee7
+pkgver=r1047.e669ad6
 pkgrel=1
 pkgdesc="An open source development library"
 arch=(any)
 url="https://github.com/openbfdev/bfdev.git"
 branch="devel"
 license=('GPL')
-makedepends=('git')
+makedepends=('git' 'cmake' 'gcc' 'fakeroot')
 source=("${_gitname}::git+${url}#branch=${branch}")
 md5sums=('SKIP')
 
@@ -26,7 +26,7 @@ build() {
 		-D CMAKE_INSTALL_PREFIX=/usr \
 		-D CMAKE_BUILD_TYPE=Release \
 		-D BFDEV_EXAMPLES=ON
-	cmake --build build
+	cmake --build build -j$(nproc)
 }
 
 package() {
