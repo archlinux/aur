@@ -1,33 +1,33 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggraph
-_pkgver=2.1.0
+_pkgver=2.2.0
 pkgname=r-${_pkgname,,}
-pkgver=2.1.0
-pkgrel=3
-pkgdesc='An Implementation of Grammar of Graphics for Graphs and Networks'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
+pkgver=${_pkgver//-/.}
+pkgrel=1
+pkgdesc="An Implementation of Grammar of Graphics for Graphs and Networks"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
 license=('MIT')
 depends=(
-  r
   r-cli
-  r-digest
   r-dplyr
   r-ggforce
   r-ggplot2
   r-ggrepel
   r-graphlayouts
-  r-gtable
   r-igraph
   r-lifecycle
-  r-rcpp
+  r-memoise
   r-rlang
   r-scales
   r-tidygraph
   r-vctrs
   r-viridis
   r-withr
+)
+makedepends=(
+  r-cpp11
 )
 optdepends=(
   r-covr
@@ -38,18 +38,23 @@ optdepends=(
   r-purrr
   r-rmarkdown
   r-seriation
+  r-sf
+  r-sfnetworks
   r-tibble
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('686fdb22dc4f613273fb755ec42399a208b4d10348eecd1a217afd4612245c1f')
+md5sums=('fa46dccd79fad0bb9c6cc4ed3c365e35')
+b2sums=('085c3bd1756451bd0e03fa70d6841163c4f74092fdfe973e664c667dab8a829d7fc2d95ca3502747513c75a17e827ef90b7d36fac72f4b6be6edcdfcb4f985cb')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
