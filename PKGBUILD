@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://grinplusplus.github.io"
 _ghurl="https://github.com/GrinPlusPlus/GrinPlusPlus"
 license=('MIT')
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"

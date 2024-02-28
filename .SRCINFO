@@ -9,7 +9,7 @@ pkgbase = grinplusplus-bin
 	depends = electron11
 	depends = nodejs
 	depends = openssl-1.1
-	provides = grinplusplus-1.2.8
+	provides = grinplusplus=1.2.8
 	conflicts = grinplusplus
 	options = !strip
 	source = grinplusplus-1.2.8.deb::https://github.com/GrinPlusPlus/GrinPlusPlus/releases/download/v1.2.8/GrinPlusPlus.1.2.8.deb
