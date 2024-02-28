@@ -1,8 +1,10 @@
+# Maintainer: HamletDuFromage <https://github.com/HamletDuFromage/slippi-mainline-git-PKGBUILD/issues>
+
 _projectname='slippi'
 _mainpkgname="$_projectname-mainline"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase")
-pkgver=v4.0.0.mainline.beta.3.r2162.gdf9305c187
+pkgver='v4.0.0.mainline.beta.4.r0.g4a06679391'
 pkgrel=1
 pkgdesc='https://slippi.gg/about'
 arch=('x86_64')
@@ -63,8 +65,12 @@ source=(
         "$pkgname-enet::git+https://github.com/lsalzman/enet.git"
         "$pkgname-cubeb::git+https://github.com/mozilla/cubeb.git"
         "$pkgname-sanitizers-cmake::git+https://github.com/arsenm/sanitizers-cmake.git"
+        "$_mainpkgname.svg"
+        "$_mainpkgname.desktop"
 )
 sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -115,7 +121,8 @@ prepare() {
 
 pkgver() {
         cd "$srcdir/$_sourcedirectory/"
-        git describe --long --tags | sed -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g'
+        git checkout --quiet "$(git rev-list -n 1 $(git describe --tags --abbrev=0))"
+	git describe --long --tags | sed -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g'
 }
 
 build() {
@@ -149,5 +156,7 @@ package() {
         rm -rf "$pkgdir/usr/include"
         rm -rf "$pkgdir/usr/lib/libdiscord-rpc.a"
 
-
+        mkdir "$pkgdir/usr/local/share/pixmaps/"
+        cp "$srcdir/$_mainpkgname.svg" "$pkgdir/usr/local/share/pixmaps/$_mainpkgname.svg"
+        cp "$srcdir/$_mainpkgname.desktop" "$pkgdir/usr/local/share/applications/$_mainpkgname.desktop"
 }
