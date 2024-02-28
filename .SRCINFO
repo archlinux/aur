@@ -1,0 +1,20 @@
+pkgbase = python-pymystem3
+	pkgdesc = A Python wrapper of the Yandex Mystem 3.1 morphological analyzer.
+	pkgver = 0.2.0
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/nlpub/pymystem3
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = mystem
+	optdepends = python-requests: Loading of mystem binary.
+	source = python-pymystem3.tar.gz::https://github.com/nlpub/pymystem3/archive/refs/tags/0.2.0.tar.gz
+	source = python-pymystem3.diff
+	sha256sums = 98e05da95073a822fbf7c04be7c0aa95d3a040b6ea8e13a0a9c8e4ad3e4cde0a
+	sha256sums = SKIP
+
+pkgname = python-pymystem3

@@ -1,0 +1,99 @@
+--- a/pymystem3/constants.py	2024-02-29 01:27:29.933441678 +0300
++++ b/pymystem3/constants.py	2024-02-29 01:27:44.623490053 +0300
+@@ -6,7 +6,7 @@
+ 
+ 
+ def _find_mystem(exe):
+-    fpath = os.getenv("MYSTEM3_PATH", None)
++    fpath = os.getenv("MYSTEM3_PATH", "/usr/bin/mystem")
+     if fpath and os.path.isfile(fpath) and os.access(fpath, os.X_OK):
+         return os.path.dirname(fpath), fpath
+ 
+--- a/setup.py	2024-02-29 01:34:23.769790590 +0300
++++ b/setup.py	2024-02-29 01:39:30.301688928 +0300
+@@ -3,7 +3,7 @@
+ 
+ import os
+ import sys
+-import imp
++import importlib.util
+ import subprocess
+ import codecs
+ 
+@@ -51,8 +51,9 @@
+ # instead, effectively side-stepping the dependency problem. Please make sure
+ # metadata has no dependencies, otherwise they will need to be added to
+ # the setup_requires keyword.
+-metadata = imp.load_source(
+-    'metadata', os.path.join(CODE_DIRECTORY, 'metadata.py'))
++spec = importlib.util.spec_from_file_location('metadata', os.path.join(CODE_DIRECTORY, 'metadata.py'))
++metadata = importlib.util.module_from_spec(spec)
++spec.loader.exec_module(metadata)
+ 
+ 
+ ## Miscellaneous helper functions
+@@ -245,9 +246,7 @@
+         'Topic :: Scientific/Engineering :: Information Analysis',
+     ],
+     packages=find_packages(exclude=(TESTS_DIRECTORY,)),
+-    install_requires=[
+-        'requests',
+-    ] + python_version_specific_requires,
++    install_requires=python_version_specific_requires,
+     # Allow tests to be run with `python setup.py test'.
+     tests_require=[
+         'pytest>=2.5.1',
+@@ -256,7 +255,6 @@
+     ],
+     cmdclass={'test': TestAllCommand},
+     zip_safe=False,  # don't use eggs
+-    use_2to3=True,
+ )
+ 
+ 
+--- a/pymystem3/mystem.py	2024-02-29 01:48:13.597515191 +0300
++++ b/pymystem3/mystem.py	2024-02-29 01:50:40.774136425 +0300
+@@ -5,7 +5,6 @@
+ 
+ from __future__ import print_function
+ 
+-from itertools import ifilter, imap
+ import os
+ import platform
+ import select
+@@ -35,7 +34,7 @@
+     },
+ }
+ 
+-_NL = unicode('\n').encode('utf-8')
++_NL = b'\n'
+ _POSIX = os.name == 'posix'
+ 
+ 
+@@ -263,7 +262,7 @@
+         need_encode = (sys.version_info[0] < 3 and isinstance(text, str))
+ 
+         infos = self.analyze(text)
+-        lemmas = list(ifilter(None, imap(self._get_lemma, infos)))
++        lemmas = filter(None, map(self._get_lemma, infos))
+ 
+         if need_encode is True:
+             lemmas = [l.encode('utf-8') for l in lemmas]
+@@ -272,7 +271,7 @@
+ 
+     if _PIPELINE_MODE:
+         def _analyze_impl(self, text):
+-            if isinstance(text, unicode):
++            if isinstance(text, str):
+                 text = text.encode('utf-8')
+ 
+             if self._proc is None:
+@@ -301,7 +300,7 @@
+             return obj
+     else:
+         def _analyze_impl(self, text):
+-            if isinstance(text, unicode):
++            if isinstance(text, str):
+                 text = text.encode('utf-8')
+ 
+             if self._proc is None:
