@@ -4,10 +4,10 @@ pkgbase = autocut-git
 	pkgrel = 1
 	url = https://github.com/mli/autocut
 	arch = any
-	license = LicenseRef-Apache
+	license = Apache-2.0
 	makedepends = git
 	makedepends = python-pipx
-	depends = python
+	depends = python>=3
 	depends = ffmpeg
 	depends = python-importlib-metadata
 	depends = python-setuptools

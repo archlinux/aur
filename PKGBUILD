@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Cut videos using a text editor.用文本编辑器剪视频."
 arch=('any')
 url="https://github.com/mli/autocut"
-license=('LicenseRef-Apache')
+license=('Apache-2.0')
 conflicts=(
     "${pkgname%-git}"
 )
@@ -13,7 +13,7 @@ provides=(
     "${pkgname%-git}"
 )
 depends=(
-    'python'
+    'python>=3'
     'ffmpeg'
     'python-importlib-metadata'
     'python-setuptools'
