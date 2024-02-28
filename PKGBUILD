@@ -1,8 +1,8 @@
 ## Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=hqplayer-network-audio-daemon
-_debpkgver=4.6.0-58
-pkgver=4.6.0
+_debpkgver=5.0.0-59
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="Signalyst Network Audio Daemon"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -14,12 +14,17 @@ source_armv7h=("https://www.signalyst.eu/bins/naa/linux/bookworm/networkaudiod_"
 source_aarch64=("https://www.signalyst.eu/bins/naa/linux/bookworm/networkaudiod_"$_debpkgver"_arm64.deb")
 source_x86_64=("https://www.signalyst.eu/bins/naa/linux/bookworm/networkaudiod_"$_debpkgver"_amd64.deb")
 sha256sums=('75d45b226dcbb78dfb61e941ee5ef2a8f0d88efbf414d2618b42520fe3cb129e')
-sha256sums_x86_64=('b25936138f4a020178011d43afba295d811619c751afbf1ef895128ac6e3db7c')
-sha256sums_armv7h=('959a7e17a68a9133db3e700a20d6054b42290b9742d0d062aeb224fa5ef20c2f')
-sha256sums_aarch64=('a1679e4e3e7b4bbcca2e68986cc7e6ce575d1b9393c74a651654a69a9eba4f39')
+sha256sums_x86_64=('08d9883ae23654037d01a8c8281f3b127ca66997ca022064360bdfa0991a0ddd')
+sha256sums_armv7h=('5efc4ddc6f31234a93ba4554562aa31b690bd4c7c87ed5d2cec82db47a6e29c8')
+sha256sums_aarch64=('9f60247ef2f8060992ed5bd19bf745239874530b71071124aa38ed3e91ac8e9e')
 
 package() {
-bsdtar xf data.tar.xz -C "$srcdir"
+ if [[ "$CARCH" = "x86_64" ]] || [[ "$CARCH" = "x86_64_v3" ]]; then
+ bsdtar xf data.tar.zst -C "$pkgdir"
+ else
+ bsdtar xf data.tar.xz -C "$pkgdir"
+ fi
+ 
   install -Dm644 "$srcdir/etc/default/networkaudiod" "$pkgdir/etc/default/networkaudiod"
   install -Dm644 "$srcdir/etc/networkaudiod/networkaudiod.xml" "$pkgdir/etc/networkaudiod/networkaudiod.xml"
   install -Dm644 "$srcdir/lib/systemd/system/networkaudiod.service" "$pkgdir/usr/lib/systemd/system/networkaudio.service"
