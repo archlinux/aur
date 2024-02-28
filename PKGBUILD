@@ -26,23 +26,23 @@ _reponame=syncthingtray
 pkgname=syncthingtray-git
 _name=${pkgname%-git}
 pkgver=1714.7846301
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing'
 license=('GPL')
 depends=('libqtutilities-git.so' 'libqtforkawesome-git.so' 'libc++utilities-git.so' 'libboost_filesystem.so'
-         'qt5-svg' 'openssl' 'desktop-file-utils' 'xdg-utils')
-[[ $_webview_provider == none ]] && [[ $_js_provider == none ]] && depends+=('qt5-base')
-[[ $_webview_provider == webkit ]] && depends+=('qt5-webkit')
-[[ $_webview_provider == webengine ]] && depends+=('qt5-webengine')
-[[ $_js_provider == script ]] && depends+=('qt5-script')
-[[ $_js_provider == qml ]] && depends+=('qt5-declarative')
-[[ $_enable_kio_plugin ]] && optdepends+=('kio5: KIO plugin for Syncthing actions in Dolphin')
-[[ $_enable_plasmoid ]] && optdepends+=('plasma-workspace: Plasmoid for Plasma 5 desktop')
-makedepends=('cmake' 'ninja' 'qt5-tools' 'git' 'boost')
+         'qt6-svg' 'openssl' 'desktop-file-utils' 'xdg-utils')
+[[ $_webview_provider == none ]] && [[ $_js_provider == none ]] && depends+=('qt6-base')
+[[ $_webview_provider == webkit ]] && depends+=('qt6-webkit')
+[[ $_webview_provider == webengine ]] && depends+=('qt6-webengine')
+[[ $_js_provider == script ]] && depends+=('qt6-script')
+[[ $_js_provider == qml ]] && depends+=('qt6-declarative')
+[[ $_enable_kio_plugin ]] && optdepends+=('kio: KIO plugin for Syncthing actions in Dolphin')
+[[ $_enable_plasmoid ]] && optdepends+=('plasma-workspace: Plasmoid for Plasma 6 desktop')
+makedepends=('cmake' 'ninja' 'qt6-tools' 'qt6-declarative' 'git' 'boost' 'clang')
 checkdepends=('cppunit' 'syncthing' 'iproute2')
-[[ $_enable_kio_plugin ]] && makedepends+=('kio5')
-[[ $_enable_plasmoid ]] && makedepends+=('plasma-framework5' 'extra-cmake-modules')
+[[ $_enable_kio_plugin ]] && makedepends+=('kio')
+[[ $_enable_plasmoid ]] && makedepends+=('libplasma' 'extra-cmake-modules')
 #provides=("${_name}")
 conflicts=("${_name}")
 url="https://github.com/Martchus/${_reponame}"
@@ -77,6 +77,8 @@ build() {
     -DLIB_SYNCTHING_MODEL_CONFIGURATION_TARGET_SUFFIX:STRING='git' \
     -DSYNCTHINGPLASMOID_CONFIGURATION_TARGET_SUFFIX:STRING='git' \
     -DSYNCTHINGWIDGETS_CONFIGURATION_TARGET_SUFFIX:STRING='git' \
+    -DQT_PACKAGE_PREFIX:STRING='Qt6' \
+    -DKF_PACKAGE_PREFIX:STRING='KF6' \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DWEBVIEW_PROVIDER="${_webview_provider}" \
     -DJS_PROVIDER="${_js_provider}" \
