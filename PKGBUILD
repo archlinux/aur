@@ -5,7 +5,7 @@
 
 pkgname=gotosocial-rc
 _pkgname=${pkgname%-rc}
-pkgver=0.13.3
+pkgver=0.14.0rc1
 pkgrel=1
 pkgdesc='ActivityPub social network server written in Golang (release candidate)'
 arch=('x86_64')
@@ -30,18 +30,28 @@ backup=(
   'etc/gotosocial/template/email_test.tmpl'
   'etc/gotosocial/template/error.tmpl'
   'etc/gotosocial/template/finalize.tmpl'
-  'etc/gotosocial/template/footer.tmpl'
-  'etc/gotosocial/template/frontend.tmpl'
-  'etc/gotosocial/template/header.tmpl'
+  'etc/gotosocial/template/settings.tmpl'
   'etc/gotosocial/template/index.tmpl'
+  'etc/gotosocial/template/index_apps.tmpl'
   'etc/gotosocial/template/oob.tmpl'
+  'etc/gotosocial/template/page.tmpl'
+  'etc/gotosocial/template/page_footer.tmpl'
+  'etc/gotosocial/template/page_header.tmpl'
+  'etc/gotosocial/template/page_ogmeta.tmpl'
+  'etc/gotosocial/template/page_stylesheets.tmpl'
   'etc/gotosocial/template/profile.tmpl'
+  'etc/gotosocial/template/profile_fields.tmpl'
   'etc/gotosocial/template/sign-in.tmpl'
   'etc/gotosocial/template/status.tmpl'
+  'etc/gotosocial/template/status_attachments.tmpl'
+  'etc/gotosocial/template/status_attributes.tmpl'
+  'etc/gotosocial/template/status_header.tmpl'
+  'etc/gotosocial/template/status_info.tmpl'
+  'etc/gotosocial/template/status_poll.tmpl'
   'etc/gotosocial/template/tag.tmpl'
   'etc/gotosocial/template/thread.tmpl'
 )
-_commit='fb3e3ca10dc44cba841019bee1a8812e746133e9'
+_commit='f29d4296993a1156845b18ecc403e9a4394b72b3'
 source=(
   "$_pkgname::git+https://github.com/superseriousbusiness/gotosocial#commit=$_commit"
   'sysusers.conf'
