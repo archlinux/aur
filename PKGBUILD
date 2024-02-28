@@ -3,7 +3,7 @@
 pkgname=('clang-prefixed-release')
 #pkgver=15.0.7
 _pkgver=18.1.0
-_pkg_suffix=rc3
+_pkg_suffix=rc4
 _pkgver_suffix=${_pkgver}
 _pkgver_dash_suffix=${_pkgver}
 if [[ -n ${_pkg_suffix} ]]; then
@@ -23,7 +23,7 @@ checkdepends=("python-psutil")
 # stable
 #source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz")
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${_pkgver_dash_suffix}/llvm-project-${_pkgver_suffix}.src.tar.xz")
-sha512sums=('6c0adcf6e4057de8fb1dcd062845d14d725833d23d8e1362cbccab176931f55600a3971f01690179b795ff3feca0af9141b16dee4d4159755596cc9c904bf099')
+sha512sums=('3018a843f8e615ee0a4c742d5fafcc67eb6d6a40f81212ce045bdff7012b5acec006ee89c321baf59209daabe66b838709cdaed4e11a34c34b821cfdb77e8a61')
 install=clang.install
 static_build=false
 build_with_gcc=false
@@ -38,7 +38,8 @@ shared_library_build_options=" \
             -DCLANG_LINK_CLANG_DYLIB=ON \
 	"
 
-enable_all_projects="-DLLVM_ENABLE_PROJECTS=bolt;clang;clang-tools-extra;libc;libclc;lld;lldb;openmp;polly;pstl;compiler-rt"
+enable_all_projects_minus_libc="-DLLVM_ENABLE_PROJECTS=bolt;clang;clang-tools-extra;libclc;lld;lldb;openmp;polly;pstl;compiler-rt"
+#enable_all_projects="-DLLVM_ENABLE_PROJECTS=bolt;clang;clang-tools-extra;libc;libclc;lld;lldb;openmp;polly;pstl;compiler-rt"
 # both modules and thinlto barf with gcc
 build_with_clang_options=" \
 			-DLLVM_BINUTILS_INCDIR=/usr/include \
@@ -47,7 +48,7 @@ build_with_clang_options=" \
             -DLLVM_ENABLE_LTO=Thin \
             -DCMAKE_C_COMPILER=clang \
             -DCMAKE_CXX_COMPILER=clang++ \
-			${enable_all_projects} \
+			${enable_all_projects_minus_libc} \
 	"
 
 additional_build_options=""
@@ -59,7 +60,7 @@ fi
 if $build_with_gcc; then
 	# libc extricated since it did not build with gcc 13 on last attempt; if it builds for you, let me know
 	additional_build_options="${additional_build_options} \
-		-DLLVM_ENABLE_PROJECTS=bolt;clang;clang-tools-extra;libclc;lld;lldb;openmp;polly;pstl;compiler-rt \
+		${enable_all_projects_minus_libc} \
 	"
 else
 	additional_build_options="${additional_build_options} ${build_with_clang_options}"
