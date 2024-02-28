@@ -1,7 +1,7 @@
 # Maintainer: Jat <chat@jat.email>
 
 pkgname=obs-ndi-bin
-pkgver=4.13.0
+pkgver=4.13.1
 pkgrel=1
 pkgdesc='NewTek NDI integration for OBS Studio.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('obs-ndi')
 conflicts=('obs-ndi-git')
 depends=('obs-studio' 'avahi' 'ndi-sdk')
 source=("${url}/releases/download/${pkgver}/obs-ndi-${pkgver}-x86_64-linux-gnu.deb")
-sha256sums=('d7d039d5361bf7b072f9b9649066b356664fd7712cc9d6bffce5dfd7bf062efb')
+sha256sums=('5436f823f8886f4c57ea5fe538905ea322add5185a812896afd9a3369628e4dd')
 
 package() {
     cd "${srcdir}" || exit
