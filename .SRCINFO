@@ -1,7 +1,7 @@
 pkgbase = inochi-creator
 	pkgdesc = Inochi2D Rigging Application
-	pkgver = 0.8.3
-	pkgrel = 3
+	pkgver = 0.8.4
+	pkgrel = 1
 	url = https://inochi2d.com/
 	arch = x86_64
 	license = custom
@@ -15,9 +15,9 @@ pkgbase = inochi-creator
 	depends = sdl2
 	depends = glibc
 	depends = liblphobos
-	source = https://github.com/Inochi2D/inochi-creator/archive/refs/tags/v0.8.3.zip
+	source = https://github.com/Inochi2D/inochi-creator/archive/refs/tags/v0.8.4.zip
 	source = git+https://github.com/Inochi2D/i2d-imgui.git
-	sha512sums = 99a127933b14b1a9ac9e90dfb212b726904235019cd9fe411433beba98595d08823d2b8c1eef22916a94676ac459fb9f49bb9f6e7a8d9f4aad6a23171e012c28
+	sha512sums = 9a0b66f3ec89fb8629e85305529d75cc12f395f88c94ec5af7658df02a3066286fb581cedf39a4d3623c5442b71abacc7bbedf3537c8c1d50a73f750f5be8b09
 	sha512sums = SKIP
 
 pkgname = inochi-creator
