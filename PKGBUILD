@@ -2,8 +2,9 @@
 pkgname=xbyyunpan-bin
 _zhsname="小白羊云盘"
 _pkgname="XBYDriver"
-pkgver=3.12.3
-pkgrel=2
+pkgver=3.12.5
+_electronversion=21
+pkgrel=1
 pkgdesc="小白羊网盘 - Powered by 阿里云盘Open"
 arch=(
     'aarch64'
@@ -20,29 +21,38 @@ conflicts=(
     "xbydriver"
 )
 depends=(
-    'alsa-lib'
-    'nss'
-    'gtk3'
-    'nspr'
+    "electron${_electronversion}"
+)
+makedepends=(
+    'asar'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-armv7l.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb")
 source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/gaozhangmin/aliyunpan/v${pkgver}/LICENSE"
+    "${pkgname%-bin}.sh"
 )
-sha256sums=('37b92e7918a9a8599a558d5e978900966b243cc9f6c964c36f4afa35bf50e009')
-sha256sums_aarch64=('14188cdbc55495f317ffbfd0f0d6442a6182ecabe797581e961cf1c32432e7ea')
-sha256sums_armv7h=('440e49197550b27756d3773b4416cbc32741b8cd6fd2ee27ff6caec127d29275')
-sha256sums_x86_64=('44b9d1462ff62b500243d86dceb01767c2d239b907baafda8bbe1abef13ebb63')
+sha256sums=('37b92e7918a9a8599a558d5e978900966b243cc9f6c964c36f4afa35bf50e009'
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+sha256sums_aarch64=('a5047842f75abe78837517f4de70a2ca6b262046be278b8002fc446800d7808d')
+sha256sums_armv7h=('54e8c04571110e47042c0a3068fd7672dfcd4247058558f1e3829600191cbf9d')
+sha256sums_x86_64=('00bfc210c1ed52ee8d732625c71109384d52448536ea2affde0efe6e57e12c3d')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|\"/opt/${_zhsname}/${pkgname%-bin}\" %U|${pkgname%-bin} --no-sandbox %U|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|app.asar|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
+    bsdtar -xf "${srcdir}/data."*
+    sed "s|\"/opt/${_zhsname}/${pkgname%-bin}\"|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    asar e "${srcdir}/opt/${_zhsname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    sed "s|!f.app.isPackaged|f.app.isPackaged|g" -i "${srcdir}/app.asar.unpacked/dist/electron/main/index.js"
+    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-bin}",usr/bin}
-    cp -r "${srcdir}/opt/${_zhsname}/"* "${pkgdir}/opt/${pkgname%-bin}"
-    ln -sf "/opt/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/opt/${_zhsname}/resources/"{crx,engine,images,localVersion} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
