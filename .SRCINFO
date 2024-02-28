@@ -1,0 +1,21 @@
+pkgbase = python-flask-gravatar
+	pkgdesc = Small and simple gravatar usage in Flask
+	pkgver = 0.5.0
+	pkgrel = 8
+	url = https://github.com/zzzsochi/Flask-Gravatar/
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-flask
+	makedepends = python-sphinx
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	source = python-flask-gravatar-0.5.0.tar.gz::https://github.com/zzzsochi/Flask-Gravatar/archive/v0.5.0.tar.gz
+	sha256sums = 9f9ea35b3537f635a25a09390821b768c9c3cf53274e16ffabbfc1f8c6e77d55
+	sha512sums = 8acc5374e559687cc1b5fbaa90c1d17e96fd91e8b01d3df8083bc10c92afefb3725c03c4640e92e73d727320fc26235f80f6dfe36a06aeff49268af44110a23c
+
+pkgname = python-flask-gravatar
+	depends = python
+	depends = python-flask
