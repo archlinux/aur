@@ -1,0 +1,15 @@
+pkgbase = python-sphinx-multiversion
+	pkgdesc = Sphinx extension for building self-hosted versioned docs.
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://holzhaus.github.io/sphinx-multiversion/
+	arch = any
+	license = BSD
+	checkdepends = python-nose
+	makedepends = python-installer
+	depends = python-sphinx
+	source = https://files.pythonhosted.org/packages/py3/s/sphinx-multiversion/sphinx_multiversion-0.2.4-py3-none-any.whl
+	md5sums = 875491323d0b6130a242e0cc12b9d4c4
+
+pkgname = python-sphinx-multiversion
+	depends = python-sphinx
