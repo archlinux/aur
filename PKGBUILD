@@ -1,23 +1,19 @@
-# Maintainer:  jyantis <yantis@yantis.net>
+# Contributor:  jyantis <yantis@yantis.net>
 # Contributor: Sandro Munda <munda.sandro@gmail.com>
 
 pkgname=python-watchdog-git
-pkgver=0.8.3.r1073.abb1072
-pkgrel=2
+pkgver=4.0.1.r1464.b92b6fa
+pkgrel=1
 pkgdesc='Python 3 library to monitor filesystem events.'
 arch=('any')
 url='https://github.com/gorakhargosh/watchdog'
 license=('custom')
 depends=('python'
-         'python-setuptools'
-         'python-pathtools'
-         'python-yaml'
-         'python-argh'
          )
 source=('git+https://github.com/gorakhargosh/watchdog.git')
 sha256sums=('SKIP')
-makedepends=('git')
-provides=('python-watchdog')
+makedepends=('git' 'python-setuptools')
+provides=("python-watchdog=$pkgver")
 
 conflicts=('python-watchdog')
 

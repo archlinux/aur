@@ -1,20 +1,16 @@
 pkgbase = python-watchdog-git
 	pkgdesc = Python 3 library to monitor filesystem events.
-	pkgver = 0.8.3.r1073.abb1072
-	pkgrel = 2
+	pkgver = 4.0.1.r1464.b92b6fa
+	pkgrel = 1
 	url = https://github.com/gorakhargosh/watchdog
 	arch = any
 	license = custom
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
-	depends = python-setuptools
-	depends = python-pathtools
-	depends = python-yaml
-	depends = python-argh
-	provides = python-watchdog
+	provides = python-watchdog=4.0.1.r1464.b92b6fa
 	conflicts = python-watchdog
 	source = git+https://github.com/gorakhargosh/watchdog.git
 	sha256sums = SKIP
 
 pkgname = python-watchdog-git
-
