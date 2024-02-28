@@ -27,7 +27,7 @@ pkgbase = scrt
 	depends = icu70
 	options = !strip
 	options = !emptydirs
-	source = local://scrt-9.5.1-323272.ubuntu22-64.x86_64.deb
+	source = local://scrt-9.5.1-3272.ubuntu22-64.x86_64.deb
 	md5sums = d35b280774849200f77092e2aa88695b
 
 pkgname = scrt

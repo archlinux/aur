@@ -9,7 +9,7 @@
 
 pkgname=scrt
 pkgver=9.5.1
-incrver=323272
+incrver=3272
 pkgrel=0
 pkgdesc="Vandyke SecureCRT SSH Client"
 arch=('x86_64')
