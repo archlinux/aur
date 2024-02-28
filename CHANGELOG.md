@@ -1,3 +1,3 @@
-When pressing ESC after searching with Ctrl-F the cursor position is restored to where it was before pressing Ctrl-F
+Ability to go to next or previous match with the arrow keys when searching with the Ctrl-F keybind
 
-**Full Changelog**: https://github.com/Nooberieno/jura/compare/1.2...1.3
+**Full Changelog**: https://github.com/Nooberieno/jura/compare/1.3...1.4
