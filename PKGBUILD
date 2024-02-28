@@ -3,12 +3,12 @@ pkgname=postybirb-bin
 _pkgname=PostyBirb
 pkgver=2.3.44
 _electronversion=13
-pkgrel=4
+pkgrel=5
 pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly."
 arch=('x86_64')
 url="https://www.postybirb.com/"
 _ghurl="https://github.com/mvdicarlo/postybirb"
-license=('custom')
+license=('BSD-3-Clause')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=(
     "${pkgname%-bin}"
@@ -16,12 +16,6 @@ conflicts=(
 )
 depends=(
     "electron${_electronversion}"
-    'libxext'
-    'libdbusmenu-glib'
-    'gtk2'
-)
-makedepends=(
-    'squashfuse'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
@@ -30,11 +24,11 @@ source=(
 )
 sha256sums=('45dc119851f148344b3601f5a00de67e00d2575f9dd616bcbd82d4eeda97b49d'
             '12e65eb62d705f4cf38eb2f7b382206fb3155fbdbff559f87c702a5e1c1c2207'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
@@ -44,7 +38,6 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/swiftshader"
-    install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
