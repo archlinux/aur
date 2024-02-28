@@ -12,7 +12,7 @@ pkgbase = huetui
 	depends = python-py_cui
 	depends = python-click
 	depends = python-urllib3
-	source = https://github.com/channel-42/hue-tui/archive/v2.1.tar.gz
+	source = https://github.com/channel-42/hue-tui/archive/refs/tags/v2.1.tar.gz
 	md5sums = d90977e9ddd21c133bebc0e121cd1181
 
 pkgname = huetui
