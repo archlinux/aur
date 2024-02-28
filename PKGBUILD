@@ -3,11 +3,11 @@ pkgname=winghexexplorer-bin
 _pkgname=WingHexExplorer
 _appname="com.wingsummer.${pkgname%-bin}"
 pkgver=1.5.5
-pkgrel=5
+pkgrel=6
 pkgdesc="基于 QT 编写的十六进制编辑器，采用 C++ 进行开发，目的是让 Deepin 上具有强大而免费的十六进制编辑器。"
 arch=('x86_64')
 url="https://github.com/Wing-summer/WingHexExplorer"
-license=('LicenseRef-AGPL3')
+license=('AGPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -30,7 +30,7 @@ build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     mv "${srcdir}/opt/${_pkgname}/更新日志.log" "${srcdir}/opt/${_pkgname}/ChangeLog.log"
     mv "${srcdir}/opt/${_pkgname}/使用说明.txt" "${srcdir}/opt/${_pkgname}/ReadMe.txt"
     cp "${srcdir}/opt/${_pkgname}/images/icon.png" "${srcdir}/opt/${_pkgname}/images/winghexpro256.png"
