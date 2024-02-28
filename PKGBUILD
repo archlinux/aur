@@ -10,7 +10,7 @@ license=('MIT')
 groups=('misc')
 depends=('python' 'python-colorthief' 'python-py_cui' 'python-click' 'python-urllib3')
 makedepends=('python-setuptools')
-source=("https://github.com/channel-42/$_gitname/archive/v$pkgver.tar.gz")
+source=("https://github.com/channel-42/$_gitname/archive/refs/tags/v$pkgver.tar.gz")
 md5sums=('d90977e9ddd21c133bebc0e121cd1181')
 
 package() {
