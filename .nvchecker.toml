@@ -1,0 +1,7 @@
+[libkscreen5]
+source = "git"
+git = "https://invent.kde.org/plasma/libkscreen.git"
+# Limit to 5.27.1x, as 5.27.80 or newer are preview releases for Plasma 6
+# See: https://community.kde.org/Schedules/Plasma_5
+include_regex = "v5\\.27\\.1[0-9]+"
+prefix = "v"
