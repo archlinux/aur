@@ -2,8 +2,8 @@
 
 pkgname='opensearch-dashboards-gantt-chart-plugin'
 _pluginname='gantt-chart-dashboards-plugin'
-pkgver=2.11.1.0
-_dashboardsver=2.11.1
+pkgver=2.12.0.0
+_dashboardsver=2.12.0
 pkgrel=1
 pkgdesc='OpenSearch Dashboards Gantt Chart Plugin'
 url='https://opensearch.org/docs/latest/dashboards/gantt/'
@@ -23,13 +23,10 @@ prepare() {
   nodeVersion="$(node -v)"
   # Yes, you support this version. You just don't know it yet.
   sed -i "s/    \"node\": \"[0-9\.]*\",/    \"node\": \"${nodeVersion:1}\",/" "OpenSearch-Dashboards/package.json"
-
-  # https://github.com/opensearch-project/dashboards-visualizations/issues/146
-  sed -i "s/  \"opensearchDashboardsVersion\": \"2.4.0\",/  \"opensearchDashboardsVersion\": \"2.11.1\",/" "dashboards-visualizations/gantt-chart/opensearch_dashboards.json"
 }
 
 build() {
-  mv "dashboards-visualizations/gantt-chart" "OpenSearch-Dashboards/plugins/${_pluginname}"
+  mv "dashboards-visualizations" "OpenSearch-Dashboards/plugins/${_pluginname}"
   cd "OpenSearch-Dashboards/plugins/${_pluginname}"
   yarn osd bootstrap
   yarn plugin-helpers build --skip-archive # `yarn build` will always create the ZIP
@@ -41,7 +38,7 @@ check() {
 }
 
 package() {
-  install -Dm644 "${srcdir}/dashboards-visualizations/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/OpenSearch-Dashboards/plugins/${_pluginname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -dm755 "${pkgdir}/usr/share/opensearch-dashboards/plugins/"
 
   cp -r "${srcdir}/OpenSearch-Dashboards/plugins/${_pluginname}/build/opensearch-dashboards/"* "${pkgdir}/usr/share/opensearch-dashboards/plugins/"
