@@ -17,28 +17,21 @@ sha256sums=('9d985ebe0332caf09fdee3fbe1e97b4f29533fe84911df46556623dff457a4ee'
             '0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f')
 sha256sums_x86_64=('8159dea6a5cb83b92c10c920313e2ecea8971e9f05342e7ad61a834f9d3a90ac')
 
-noextract=("dbeaver-le-${pkgver}-linux.gtk.x86_64.tar.gz")
-
-prepare() {
-    mkdir -p $srcdir/$pkgname
-    cd $srcdir/$pkgname
-    if [ "$CARCH" = "x86_64" ]; then
-        tar -xf "$srcdir/dbeaver-le-${pkgver}-linux.gtk.x86_64-nojdk.tar.gz"
-    else
-        tar -xf "$srcdir/dbeaver-le-${pkgver}-linux.gtk.x86.tar.gz"
-    fi
-}
 
 package() {
     cd $pkgdir
-    mkdir -p opt/
-    mkdir -p usr/bin
-    mkdir -p usr/share/applications
-    mkdir -p usr/share/icons/hicolor/48x48/apps
+    mkdir -p "opt"
+    mkdir -p "usr/bin"
+    mkdir -p "usr/share/doc/${pkgname}"
+    mkdir -p "usr/share/licenses"
+    mkdir -p "usr/share/applications"
+    mkdir -p "usr/share/icons/hicolor/48x48/apps"
 
-    cp -r $srcdir/$pkgname/dbeaver opt/$pkgname
-    chmod +x opt/$pkgname/dbeaver
-    cp opt/$pkgname/icon.xpm usr/share/icons/hicolor/48x48/apps/${pkgname}.xpm
-    ln -s /opt/${pkgname}/dbeaver usr/bin/dbeaver-le
-    install -m 644 $srcdir/dbeaver-le.desktop $pkgdir/usr/share/applications/
+    cp -r "${srcdir}/dbeaver" "opt/${pkgname}"
+    cp "opt/${pkgname}/icon.xpm" "usr/share/icons/hicolor/48x48/apps/${pkgname}.xpm"
+    cp "${srcdir}/dbeaver/readme.txt" "usr/share/doc/${pkgname}/"
+    cp -r "${srcdir}/dbeaver/licenses" "usr/share/licenses/${pkgname}"
+
+    ln -s "/opt/${pkgname}/dbeaver" "usr/bin/dbeaver-le"
+    install -m 644 "${srcdir}/dbeaver-le.desktop" "usr/share/applications/"
 }
