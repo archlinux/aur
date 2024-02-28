@@ -2,12 +2,12 @@
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mingw-w64-libjxl
-pkgver=0.9.2
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (mingw-w64)'
 arch=('any')
 url='https://jpeg.org/jpegxl/'
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('mingw-w64-crt')
 options=(!strip !buildflags staticlibs)
 # TODO: Add dependency for gimp plugin
