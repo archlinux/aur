@@ -3,35 +3,27 @@ pkgname=xilinota-bin
 _pkgname=Xilinota
 pkgver=2.13.5_beta4
 _electronversion=25
-pkgrel=2
+pkgrel=3
 pkgdesc="A free and open source (FOSS) note-taking and to-do project delivering applications,capable of handling large number of notes organised in notebooks, and syncing notes across the platforms in various ways."
 arch=("x86_64")
 url="https://github.com/XilinJia/Xilinota"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
-    'lib32-gcc-libs'
-    'lib32-glibc'
-)
-makedepends=(
-    'squashfuse'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver//_/.}/${_pkgname}-2.13.6.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1cccb8f2698cfef138e673e16993ff88acc93b352672c3e7ba9beb6422f8f6b6'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
