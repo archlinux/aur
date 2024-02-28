@@ -8,11 +8,19 @@ pkgname=('systemd-chromiumos'
          'systemd-chromiumos-resolvconf'
          'systemd-chromiumos-sysvcompat'
          'systemd-chromiumos-ukify')
-_tag='8cf1da1e9172ba04d90a483a63118873343ea656' # git rev-parse v${_tag_name}
-_tag_name=255.3
-pkgver="${_tag_name/-/}"
+_tag='4003dd6754e3446691402d3cc389fbfd4faccc90' # git rev-parse v${_tag_name}
+_tag_name=255.4
+# Upstream versioning is incompatible with pacman's version comparisons so we
+# replace tildes with the empty string to make sure pacman's version comparing
+# does the right thing for rc versions:
+# ➜ vercmp 255~rc1 255
+# 1
+# ➜ vercmp 255rc1 255
+# -1
+pkgver="${_tag_name/~/}"
 pkgrel=1
 arch=('x86_64')
+license=('LGPL-2.1-or-later')
 url='https://www.github.com/systemd/systemd'
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'intltool' 'iptables' 'kmod' 'libcap' 'libidn2' 'libgcrypt'
@@ -21,9 +29,7 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
              'bash-completion' 'p11-kit' 'systemd' 'libfido2' 'tpm2-tss' 'rsync'
              'bpf' 'libbpf' 'clang' 'llvm' 'curl' 'gnutls' 'python-pyelftools'
-             'libpwquality' 'qrencode' 'lib32-gcc-libs')
-checkdepends=('python-pefile')
-options=('strip')
+             'libpwquality' 'qrencode' 'lib32-gcc-libs' 'python-pefile')
 validpgpkeys=('63CDA1E5D3FC22B998D20DD6327F26951A015CC4'  # Lennart Poettering <lennart@poettering.net>
               'A9EA9081724FFAE0484C35A1A81CEA22BC8C7E2E'  # Luca Boccassi <luca.boccassi@gmail.com>
               '9A774DB5DB996C154EBBFBFDA0099A18E29326E1'  # Yu Watanabe <watanabe.yu+github@gmail.com>
@@ -122,9 +128,9 @@ build() {
   )
 
   local _meson_options=(
-    # internal version comparison is incompatible with pacman:
-    #   249~rc1 < 249 < 249.1 < 249rc
-    -Dversion-tag="${_tag_name/-/\~}-${pkgrel}-arch"
+    -Dversion-tag="${_tag_name}-${pkgrel}-arch"
+    # We use the version without tildes as the shared library tag because
+    # pacman looks at the shared library version.
     -Dshared-lib-tag="${pkgver}-${pkgrel}"
     -Dmode=release
 
@@ -164,10 +170,6 @@ build() {
     -Dsbat-distro-url="https://aur.archlinux.org/packages/${pkgname}/"
   )
 
-  # this uses malloc_usable_size, which is incompatible with fortification level 3
-  export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
-  export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
-
   arch-meson "$_pkgbase-stable" build "${_meson_options[@]}"
 
   meson compile -C build
@@ -179,7 +181,11 @@ check() {
 
 package_systemd-chromiumos() {
   pkgdesc='system and service manager - chromiumos patches'
-  license=('GPL2' 'LGPL2.1')
+  license+=(
+    'CC0-1.0' # siphash
+    'GPL-2.0-or-later' # udev
+    'MIT-0' # documentation and config files
+  )
   depends=('acl' 'libacl.so' 'bash' 'cryptsetup' 'libcryptsetup.so' 'dbus'
            'dbus-units' 'kbd' 'kmod' 'libkmod.so' 'hwdata' 'libcap' 'libcap.so'
            'libgcrypt' 'libxcrypt' 'libcrypt.so' 'systemd-libs' 'libidn2' 'lz4' 'pam'
@@ -287,7 +293,10 @@ package_systemd-chromiumos() {
 package_systemd-chromiumos-libs() {
   pkgdesc='systemd client libraries - chromiumos patches'
   depends=('glibc' 'gcc-libs' 'libcap' 'libgcrypt' 'lz4' 'xz' 'zstd')
-  license=('LGPL2.1')
+  license+=(
+    'CC0-1.0' # siphash
+    'GPL-2.0-or-later WITH Linux-syscall-note' # src/basic/linux/*
+  )
   provides=('libsystemd' 'libsystemd.so' 'libudev.so' "systemd-libs=$pkgver")
   conflicts=('libsystemd' 'systemd-libs')
   replaces=('libsystemd')
@@ -300,7 +309,6 @@ package_systemd-chromiumos-libs() {
 
 package_systemd-chromiumos-resolvconf() {
   pkgdesc='systemd resolvconf replacement (for use with systemd-resolved) - chromiumos patches'
-  license=('LGPL2.1')
   depends=('systemd-chromiumos')
   provides=('openresolv' 'resolvconf' "systemd-resolvconf=$pkgver")
   conflicts=('resolvconf' 'systemd-resolvconf')
@@ -314,7 +322,6 @@ package_systemd-chromiumos-resolvconf() {
 
 package_systemd-chromiumos-sysvcompat() {
   pkgdesc='sysvinit compat for systemd - chromiumos patches'
-  license=('GPL2')
   provides=("systemd-sysvcompat=$pkgver")
   conflicts=('sysvinit' 'systemd-sysvcompat')
   depends=('systemd-chromiumos')
@@ -331,7 +338,6 @@ package_systemd-chromiumos-sysvcompat() {
 
 package_systemd-chromiumos-ukify() {
   pkgdesc='Combine kernel and initrd into a signed Unified Kernel Image - chromiumos patches'
-  license=('GPL2')
   provides=('ukify' "systemd-ukify=$pkgver")
   conflicts=('systemd-ukify')
   depends=('binutils' 'python-cryptography' 'python-pefile' 'systemd-chromiumos')

@@ -1,9 +1,9 @@
 pkgbase = systemd-chromiumos
-	pkgver = 255.3
+	pkgver = 255.4
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
-	checkdepends = python-pefile
+	license = LGPL-2.1-or-later
 	makedepends = acl
 	makedepends = cryptsetup
 	makedepends = docbook-xsl
@@ -50,8 +50,8 @@ pkgbase = systemd-chromiumos
 	makedepends = libpwquality
 	makedepends = qrencode
 	makedepends = lib32-gcc-libs
-	options = strip
-	source = git+https://github.com/systemd/systemd-stable#tag=8cf1da1e9172ba04d90a483a63118873343ea656?signed
+	makedepends = python-pefile
+	source = git+https://github.com/systemd/systemd-stable#tag=4003dd6754e3446691402d3cc389fbfd4faccc90?signed
 	source = git+https://github.com/systemd/systemd#tag=v255?signed
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
 	source = 0002-Disable-mount_nofollow-for-ChromiumOS-kernels.patch
@@ -103,8 +103,10 @@ pkgbase = systemd-chromiumos
 pkgname = systemd-chromiumos
 	pkgdesc = system and service manager - chromiumos patches
 	install = systemd.install
-	license = GPL2
-	license = LGPL2.1
+	license = LGPL-2.1-or-later
+	license = CC0-1.0
+	license = GPL-2.0-or-later
+	license = MIT-0
 	depends = acl
 	depends = libacl.so
 	depends = bash
@@ -153,9 +155,9 @@ pkgname = systemd-chromiumos
 	optdepends = libp11-kit: support PKCS#11
 	optdepends = tpm2-tss: unlocking LUKS2 volumes with TPM2
 	provides = nss-myhostname
-	provides = systemd-tools=255.3
-	provides = udev=255.3
-	provides = systemd=255.3
+	provides = systemd-tools=255.4
+	provides = udev=255.4
+	provides = systemd=255.4
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -183,7 +185,9 @@ pkgname = systemd-chromiumos
 
 pkgname = systemd-chromiumos-libs
 	pkgdesc = systemd client libraries - chromiumos patches
-	license = LGPL2.1
+	license = LGPL-2.1-or-later
+	license = CC0-1.0
+	license = GPL-2.0-or-later WITH Linux-syscall-note
 	depends = glibc
 	depends = gcc-libs
 	depends = libcap
@@ -194,32 +198,29 @@ pkgname = systemd-chromiumos-libs
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
-	provides = systemd-libs=255.3
+	provides = systemd-libs=255.4
 	conflicts = libsystemd
 	conflicts = systemd-libs
 	replaces = libsystemd
 
 pkgname = systemd-chromiumos-resolvconf
 	pkgdesc = systemd resolvconf replacement (for use with systemd-resolved) - chromiumos patches
-	license = LGPL2.1
 	depends = systemd-chromiumos
 	provides = openresolv
 	provides = resolvconf
-	provides = systemd-resolvconf=255.3
+	provides = systemd-resolvconf=255.4
 	conflicts = resolvconf
 	conflicts = systemd-resolvconf
 
 pkgname = systemd-chromiumos-sysvcompat
 	pkgdesc = sysvinit compat for systemd - chromiumos patches
-	license = GPL2
 	depends = systemd-chromiumos
-	provides = systemd-sysvcompat=255.3
+	provides = systemd-sysvcompat=255.4
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 
 pkgname = systemd-chromiumos-ukify
 	pkgdesc = Combine kernel and initrd into a signed Unified Kernel Image - chromiumos patches
-	license = GPL2
 	depends = binutils
 	depends = python-cryptography
 	depends = python-pefile
@@ -227,5 +228,5 @@ pkgname = systemd-chromiumos-ukify
 	optdepends = python-pillow: Show the size of splash image
 	optdepends = sbsigntools: Sign the embedded kernel
 	provides = ukify
-	provides = systemd-ukify=255.3
+	provides = systemd-ukify=255.4
 	conflicts = systemd-ukify
