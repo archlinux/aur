@@ -1,22 +1,20 @@
 pkgbase = calmly-writer-bin
 	pkgdesc = An editor designed to focus on what you want to tell, with a simple, unobtrusive and ease-to-use user interface.
 	pkgver = 2.0.54
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.calmlywriter.com
 	arch = aarch64
 	arch = x86_64
 	license = LicenseRef-custom
-	depends = electron24
+	depends = electron17
 	depends = hicolor-icon-theme
-	depends = lib32-glibc
-	depends = lib32-gcc-libs
 	provides = calmly-writer=2.0.54
 	conflicts = calmly-writer
 	options = !strip
 	source = LICENSE.html::https://www.calmlywriter.com/eula.htm
 	source = calmly-writer.sh
 	sha256sums = 79f277c107ca3402d156db2ced6ea619a966216097c8d4d17692bada193b3edb
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 	source_aarch64 = calmly-writer_2.0.54-aarch64.deb::https://www.calmlywriter.com/releases/linux/deb/arm64/calmly-writer_2.0.54_arm64.deb
 	sha256sums_aarch64 = dd7606298580fbf26c3882cdf83286db563680c9ef757cdceba6a605d8bbf11e
 	source_x86_64 = calmly-writer_2.0.54-x86_64.deb::https://www.calmlywriter.com/releases/linux/deb/x64/calmly-writer_2.0.54_amd64.deb
