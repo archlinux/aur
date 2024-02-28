@@ -1,11 +1,11 @@
 pkgbase = yana-bin
 	pkgdesc = Powerful note-taking app with nested documents, full-text search, rich-text editor, code snippet editor and more
 	pkgver = 1.0.16
-	pkgrel = 6
+	pkgrel = 7
 	url = https://yana.js.org/
 	arch = x86_64
 	license = MIT
-	depends = electron10
+	depends = electron10-bin
 	depends = hicolor-icon-theme
 	provides = yana=1.0.16
 	conflicts = yana
@@ -14,6 +14,6 @@ pkgbase = yana-bin
 	source = yana.sh
 	sha256sums = 00d2f30dad0342fa59fa228f087bf647cf2fa6fe061aa46ede22a5439d5c23b8
 	sha256sums = ebb422a6231ddde433e1d601377c455aefcc96cdc27662bd3ce07d08f1110152
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = yana-bin
