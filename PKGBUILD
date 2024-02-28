@@ -1,6 +1,6 @@
 pkgbase=gcc9-bin
 pkgname=(g{cc,++,fortran}9-bin)
-pkgver=9.5.0_3ubuntu1
+pkgver=9.5.0_5ubuntu1
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - C frontend (series 9.x)'
 arch=(x86_64 aarch64)

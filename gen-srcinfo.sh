@@ -1,4 +1,4 @@
 export CARCH=x86_64
-makepkg --printsrcinfo>.SRCINFO
 . PKGBUILD
-sed -i "/\tpkgver =/s/=.*/= `pkgver`/" .SRCINFO
+sed -i /^pkgver=/s/=.*/=`pkgver`/ PKGBUILD
+makepkg --printsrcinfo>.SRCINFO
