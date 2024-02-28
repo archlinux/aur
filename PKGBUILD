@@ -3,7 +3,7 @@ pkgname=goofcord-bin
 _pkgname=GoofCord
 pkgver=1.2.0
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="Take control of your Discord experience with GoofCord – the highly configurable and privacy first discord client."
 arch=(
     'aarch64'
@@ -11,7 +11,7 @@ arch=(
     'x86_64'
 )
 url="https://github.com/Milkshiift/GoofCord"
-license=("LicenseRef-OSL3")
+license=("OSL-3.0")
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
@@ -27,16 +27,16 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('4e7f66aa93929feee2db20f14f871e7ddcc69236b0ecfb79a19ade9b859daf51'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 sha256sums_aarch64=('19141b086f4d22260e16868ddb66e95ed7d2536222d8fa37c6d28b7d735bbf11')
 sha256sums_armv7h=('7c47e180217f3586c7c9fb65e2b25bda40b5feae98d8865df2ec0439488ddff1')
 sha256sums_x86_64=('b0ffc157bfd6a8100d74b5dbdbaf407e04b6c07d9338f927af0c28db5b97b4e8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
