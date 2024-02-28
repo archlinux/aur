@@ -1,0 +1,18 @@
+pkgbase = python-ble-serial
+	pkgdesc = A tool to connect Bluetooth 4.0+ Low Energy to UART modules and normal PCs/laptops/RaspberryPi.
+	pkgver = 2.7.1
+	pkgrel = 1
+	url = https://github.com/Jakeler/ble-serial
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-bleak
+	depends = python-coloredlogs
+	source = ble-serial-2.7.1.tar.gz::https://github.com/Jakeler/ble-serial/archive/refs/tags/v2.7.1.tar.gz
+	sha256sums = 27cead2d377afa352effe73bc4ebece3d9e91053e1dee6225ded631a017efa1a
+
+pkgname = python-ble-serial
