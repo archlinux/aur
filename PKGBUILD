@@ -2,7 +2,7 @@
 
 pkgname="tts"
 pkgver=0.22.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Coqui-TSS for inference"
 url="https://github.com/coqui-ai/TTS"
 license=("MPL2")
@@ -28,6 +28,9 @@ depends=("cython0"
          "python-packaging"
          "python-flask"
          "python-pysbd"
+         "python-soxr"
+         "python-coqpit"
+         "python-coqui-trainer"
          )
 makedepends=("python-build" "python-installer" "python-wheel")
 optdepends=("python-umap-learn: for notebooks"
