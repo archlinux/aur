@@ -14,10 +14,10 @@ _js_provider=${SYNCTHING_TRAY_JS_PROVIDER:-qml}
 
 # set to non-empty string to enable KIO plugin to show Syncthing actions in
 # Dolphin file browser
-_enable_kio_plugin=${SYNCTHING_TRAY_ENABLE_KIO_PLUGIN:-1}
+_enable_kio_plugin=${SYNCTHING_TRAY_ENABLE_KIO_PLUGIN:-0}
 
 # set to non-empty string to enable Plasmoid for Plasma 5 desktop
-_enable_plasmoid=${SYNCTHING_TRAY_ENABLE_PLASMOID:-1}
+_enable_plasmoid=${SYNCTHING_TRAY_ENABLE_PLASMOID:-0}
 
 [[ $_enable_kio_plugin == 0 ]] && _enable_kio_plugin=
 [[ $_enable_plasmoid == 0 ]] && _enable_plasmoid=
@@ -25,7 +25,7 @@ _enable_plasmoid=${SYNCTHING_TRAY_ENABLE_PLASMOID:-1}
 _reponame=syncthingtray
 pkgname=syncthingtray
 pkgver=1.4.13
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing'
 license=('GPL')
