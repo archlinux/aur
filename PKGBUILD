@@ -3,9 +3,12 @@ pkgname=translationcore-bin
 _pkgname=translationCore
 pkgver=3.6.2
 _electronversion=25
-pkgrel=3
+pkgrel=4
 pkgdesc="An open source platform for checking and managing Bible translation projects"
-arch=('aarch64' 'x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://www.translationcore.com/"
 _ghurl="https://github.com/unfoldingWord/translationCore"
 license=('ISC')
@@ -22,15 +25,15 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('a756bd73c46e3e9b85ff0222658f4c63851ebc5af63811adc4333ff618688417'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 sha256sums_aarch64=('4bd8a2ed2a6e669be107f64137bf085292659672d3e688f65801e747979a9fc3')
 sha256sums_x86_64=('aa7ddffd5769f02270dc55f332bfd606823395176a3de63bb4d6c83dc952f39b')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${pkgname%-bin}/${_pkgname}|${pkgname%-bin}|g;s|unfoldingword-${pkgname%-bin}|${pkgname%-bin}|g" \
         -i "${srcdir}/opt/${pkgname%-bin}/unfoldingword-${pkgname%-bin}.desktop"
 }
