@@ -3,11 +3,11 @@ pkgname=m3u8-downloader-bin
 _pkgname=M3U8-Downloader
 pkgver=2.2.8
 _electronversion=24
-pkgrel=3
+pkgrel=4
 pkgdesc="M3U8-Downloader, electron, multi-threading, resumable upload, encrypted video download cache."
 arch=("x86_64")
 url="https://github.com/12343954/M3U8-Downloader"
-license=("custom")
+license=("MIT")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -22,11 +22,11 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('834231de86efb0d346ab90ea6195ea783b63b7dc719139c19ba7e30764049bd3'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data.tar.xz"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
