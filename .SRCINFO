@@ -1,0 +1,16 @@
+pkgbase = python-gitvenv
+	pkgdesc = Simple tool to create virtual git environments (like a python's venv).
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://gitlab.com/yataro/gitvenv/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-installer
+	depends = python
+	source = https://gitlab.com/yataro/gitvenv/-/archive/v1.0.2/gitvenv-v1.0.2.tar.gz
+	sha256sums = baf78940447796605fc853c3eccf514ed1ea089065698e031c89278d220ecc86
+
+pkgname = python-gitvenv
