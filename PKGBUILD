@@ -3,26 +3,22 @@ pkgname=requestly-bin
 _pkgname=Requestly
 pkgver=1.6.0
 _electronversion=23
-pkgrel=1
+pkgrel=2
 pkgdesc="Debug your network request across all platforms and browsers using a single app"
 arch=('x86_64')
 url="https://requestly.io/"
 _ghurl="https://github.com/requestly/requestly-desktop-app"
-license=('LicenseRef-AGPL3')
+license=('AGPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'hicolor-icon-theme'
     "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
-    'python'
+    'python>3'
     'java-runtime'
     'nodejs'
 )
 makedepends=(
-    'squashfuse'
     'asar'
 )
 source=(
@@ -32,11 +28,11 @@ source=(
 )
 sha256sums=('6948609fa41e08772cdf28b528acf0fb2394b9c6d339e36a39b4d865390aaabb'
             '458836a4541233742fec5da1bf75b151cc0b1f879b0574f362ae793d055a233d'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
