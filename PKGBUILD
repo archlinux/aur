@@ -1,7 +1,7 @@
 # Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=lib32-zimg-git
-pkgver=3.0.5.154.g108bfb7
+pkgver=3.0.5.155.ga0fac0f
 pkgrel=1
 pkgdesc="Scaling, colorspace conversion, and dithering library. (GIT version)"
 arch=('x86_64')
@@ -10,7 +10,6 @@ license=('custom:WTFPL')
 depends=(
   'lib32-gcc-libs'
   'lib32-glibc'
-  "zimg=${pkgver}"
 )
 makedepends=(
   'git'
@@ -78,6 +77,7 @@ check() {
 }
 
 package(){
+  depends+=("zimg=${pkgver}")
   make -C build DESTDIR="${pkgdir}" install
 
   rm -fr "${pkgdir}/usr/include"

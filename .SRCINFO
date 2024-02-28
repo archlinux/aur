@@ -1,6 +1,6 @@
 pkgbase = lib32-zimg-git
 	pkgdesc = Scaling, colorspace conversion, and dithering library. (GIT version)
-	pkgver = 3.0.5.154.g108bfb7
+	pkgver = 3.0.5.155.ga0fac0f
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=171334
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = lib32-zimg-git
 	makedepends = cmake
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
-	depends = zimg=3.0.5.154.g108bfb7
-	provides = lib32-zimg=3.0.5.154.g108bfb7
+	provides = lib32-zimg=3.0.5.155.ga0fac0f
 	provides = libzimg.so
 	conflicts = lib32-zimg
 	options = debug
@@ -22,3 +21,6 @@ pkgbase = lib32-zimg-git
 	sha256sums = SKIP
 
 pkgname = lib32-zimg-git
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = zimg=3.0.5.155.ga0fac0f
