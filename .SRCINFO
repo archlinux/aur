@@ -9,7 +9,6 @@ pkgbase = goofcord-bin
 	license = OSL-3.0
 	depends = electron28
 	depends = hicolor-icon-theme
-	depends = libx11
 	provides = goofcord=1.2.0
 	conflicts = goofcord
 	source = LICENSE-1.2.0::https://raw.githubusercontent.com/Milkshiift/GoofCord/v1.2.0/LICENSE
