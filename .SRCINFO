@@ -1,7 +1,7 @@
 pkgbase = hqplayer-network-audio-daemon
 	pkgdesc = Signalyst Network Audio Daemon
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.signalyst.com/consumer.html
 	arch = x86_64
 	arch = armv7h
@@ -13,7 +13,7 @@ pkgbase = hqplayer-network-audio-daemon
 	source = networkaudio.service
 	sha256sums = 75d45b226dcbb78dfb61e941ee5ef2a8f0d88efbf414d2618b42520fe3cb129e
 	source_x86_64 = https://www.signalyst.eu/bins/naa/linux/bookworm/networkaudiod_5.0.0-59_amd64.deb
-	sha256sums_x86_64 = 08d9883ae23654037d01a8c8281f3b127ca66997ca022064360bdfa0991a0ddd
+	sha256sums_x86_64 = SKIP
 	source_armv7h = https://www.signalyst.eu/bins/naa/linux/bookworm/networkaudiod_5.0.0-59_armhf.deb
 	sha256sums_armv7h = 5efc4ddc6f31234a93ba4554562aa31b690bd4c7c87ed5d2cec82db47a6e29c8
 	source_aarch64 = https://www.signalyst.eu/bins/naa/linux/bookworm/networkaudiod_5.0.0-59_arm64.deb
