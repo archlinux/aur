@@ -4,19 +4,16 @@ pkgname="${_appname// /-}-bin"
 _pkgname=YouTube-Music-for-Desktop
 pkgver=0.10.11
 _electronversion=20
-pkgrel=3
+pkgrel=4
 pkgdesc="Unofficial Youtube Music Desktop App, with LastFM support."
 arch=('x86_64')
 url="https://youtube-music.app/"
 _ghurl="https://github.com/Venipa/ytmdesktop2"
-license=('custom:CC0-1.0')
+license=('CC0-1.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-)
-makedepends=(
-    'squashfuse'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
@@ -25,11 +22,11 @@ source=(
 )
 sha256sums=('f4fc00d90653779e763534d3a5007ba119f246f9c96a21636db2f31cf08c96dd'
             '33c4de6d76721945c9346b3b1024fe56f2fbb6bebbb0e761656232520a6defa6'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
