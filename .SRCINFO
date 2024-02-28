@@ -1,0 +1,16 @@
+pkgbase = piper-voices-minimal
+	pkgdesc = Voices for Piper text to speech system (single voice for english)
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://huggingface.co/rhasspy/piper-voices
+	install = piper-voices-minimal.install
+	arch = any
+	groups = piper-voices
+	license = MIT
+	makedepends = git-lfs
+	depends = piper-voices-common
+	provides = piper-voices
+	conflicts = piper-voices-en-us
+	options = !strip
+
+pkgname = piper-voices-minimal
