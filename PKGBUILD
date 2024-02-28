@@ -3,7 +3,7 @@
 # Contributor: Myles English <myles at rockhead dot biz>
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgver=3.20.5
-pkgrel=1
+pkgrel=2
 pkgname=petsc
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
@@ -15,7 +15,7 @@ url="https://petsc.org"
 license=('BSD')
 options=(staticlibs)
 # note: zlib is not really needed by PETSc, but netcdf requires an HDF5 version with zlib
-depends=('openmpi' 'lapack' 'hdf5-openmpi' 'fftw'-openmpi 'superlu' 'suitesparse' 'libyaml' 'gsl' 'libjpeg-turbo' 'netcdf-openmpi' 'zfp' 'zlib'
+depends=('openmpi' 'lapack' 'hdf5-openmpi' 'fftw-openmpi' 'superlu' 'suitesparse' 'libyaml' 'gsl' 'libjpeg-turbo' 'netcdf-openmpi' 'zfp' 'zlib'
          'python-numpy' 'python-mpi4py')
 makedepends=('gcc' 'gcc-fortran' 'cmake' 'cython')
 provides=('petsc4py')
@@ -89,14 +89,7 @@ build() {
 
 check() {
   cd ${srcdir}/${pkgname}-${pkgver}
-
-  export OMPI_MCA_plm_rsh_agent=sh
-  export OMPI_MCA_opal_warn_on_missing_libcuda=0
-  if [ -z "$(ldconfig -p | grep libamdhip64.so)" ] || [ -z "$(ldconfig -p | grep libucc.so)" ]; then
-    echo "skipping tests"
-  else
-    PYTHONPATH=${srcdir}/tmp/${_install_dir}/lib:${PYTHONPATH} make check
-  fi
+  PYTHONPATH=${srcdir}/tmp/${_install_dir}/lib:${PYTHONPATH} make check
 }
 
 package() {
