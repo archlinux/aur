@@ -2,14 +2,14 @@
 pkgname=localplot-git
 _pkgname=localplot
 pkgver=191.a385ea9
-pkgrel=2
+pkgrel=3
 pkgdesc="HPGL Plotting software to drive a serial vinyl cutter."
 arch=('i686' 'x86_64')
 url="https://github.com/makerslocal/localplot"
 license=('GPL3')
 #group=('')
 depends=('qt5-serialport')
-makedepends=('git' 'qt5-base')
+makedepends=('git' 'qt5-base' 'qt5-tools' 'qt5-svg')
 optdepends=('inkscape: support importing svg and dxf files')
 #noextract=('')
 source=(${_pkgname}::"git+https://github.com/makerslocal/${_pkgname}.git")
