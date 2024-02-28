@@ -1,0 +1,5 @@
+{
+  "packageManager": "pacman",
+  "packageName": "python-dask-labextension",
+  "uninstallInstructions": "Use pacman to uninstall the package python-dask-labextension"
+}

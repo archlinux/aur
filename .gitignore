@@ -1,0 +1,5 @@
+dask_labextension-*.tar.gz
+src/
+pkg/
+python-dask-labextension-*.pkg*
+*.log

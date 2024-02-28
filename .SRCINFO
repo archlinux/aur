@@ -1,0 +1,25 @@
+pkgbase = python-dask-labextension
+	pkgdesc = JupyterLab extension for Dask
+	pkgver = 7.0.0
+	pkgrel = 1
+	url = https://github.com/dask/dask-labextension
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-html
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-hatch-jupyter-builder
+	makedepends = python-hatch-nodejs-version
+	makedepends = python-installer
+	depends = jupyterlab
+	depends = python-bokeh
+	depends = python-distributed
+	depends = python-jupyter-server-proxy
+	source = https://files.pythonhosted.org/packages/source/d/dask_labextension/dask_labextension-7.0.0.tar.gz
+	source = install.json
+	sha256sums = 45a60bd0ad31c5e425986b7e40a5aa242aa582ea868025ac2b82d0aa16ffcb8a
+	sha256sums = 737a81408211f2e5a6602a04202f31d8210cd5152afcd754302e7ceea4e6a985
+
+pkgname = python-dask-labextension
