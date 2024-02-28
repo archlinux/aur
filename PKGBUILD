@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-bin
-pkgver=0.24.1
+pkgver=0.24.2
 _electronversion=28
 pkgrel=1
 pkgdesc="VS Code inspired text editor that mostly runs in a webworker"
@@ -28,9 +28,9 @@ source=(
 )
 sha256sums=('ada1a0303abece27be80372538645da5c5b4e9d60fcacc87b97da1c26b8931bc'
             '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
-sha256sums_aarch64=('7086e15d61d158c73a44548487379afa53f252e94a43d8c190ce310077fc86c8')
-sha256sums_armv7h=('8fa6da5b1ba8e199b0bf2501b540cd25c1029bca3451c1e09ba08adf9ec36e6c')
-sha256sums_x86_64=('08ec11a82d72e72137fc608437a11cc4d2086fdd97f1429c75890b6daedf9522')
+sha256sums_aarch64=('26cf3cae9822a0fbfa53935c8836adf2f9707418dd9e7f13d8d0e3edd5b76f04')
+sha256sums_armv7h=('21baf5d778f0e2d9436e7b425552dd41f4413d089ec4c73decabc978e1780def')
+sha256sums_x86_64=('a3ead0e797179456338b66881ed6cd1b93e5a0acf1108bb7f87513ebf5a278cc')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
