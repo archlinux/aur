@@ -8,6 +8,7 @@ pkgbase = hyprdots-ctl
 	makedepends = git
 	makedepends = make
 	makedepends = curl
+	makedepends = base-devel
 	depends = fzf
 	depends = tree
 	depends = ttf-jetbrains-mono-nerd

@@ -6,7 +6,7 @@ arch=('x86_64')
 url="https://github.com/kRHYME7/Hyprdots-ctl"
 license=('GPL3')
 depends=( 'fzf' 'tree' 'ttf-jetbrains-mono-nerd' )
-makedepends=('git' 'make' 'curl')
+makedepends=('git' 'make' 'curl' 'base-devel')
 source=("git+https://github.com/kRHYME7/Hyprdots-ctl.git")
 md5sums=('SKIP')
 
