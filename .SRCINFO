@@ -1,7 +1,7 @@
 pkgbase = before-dawn
 	pkgdesc = A desktop screensaver app using web technologies
 	pkgver = 0.28.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/muffinista/before-dawn
 	arch = any
 	license = MIT
@@ -16,6 +16,6 @@ pkgbase = before-dawn
 	source = before-dawn.git::git+https://github.com/muffinista/before-dawn.git#tag=v0.28.0
 	source = before-dawn.sh
 	sha256sums = SKIP
-	sha256sums = a0cc6826161c9d7f95d984bc8a6af91611cd42fc11d8af339a4362f2911848c6
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = before-dawn
