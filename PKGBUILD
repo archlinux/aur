@@ -1,7 +1,7 @@
 # Maintainer: Sainan <sainan@calamity.gg>
 pkgname=plutolang
 pkgdesc="A superset of Lua 5.4 — with unique features, optimizations, and improvements."
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 url='https://github.com/PlutoLang/Pluto'
 arch=('x86_64')

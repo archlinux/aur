@@ -1,6 +1,6 @@
 pkgbase = plutolang
 	pkgdesc = A superset of Lua 5.4 — with unique features, optimizations, and improvements.
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/PlutoLang/Pluto
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = plutolang
 	depends = gcc-libs
 	depends = readline
 	conflicts = pluto
-	source = pluto-git::git+https://github.com/PlutoLang/Pluto#tag=0.8.1
+	source = pluto-git::git+https://github.com/PlutoLang/Pluto#tag=0.8.2
 	sha256sums = SKIP
 
 pkgname = plutolang
