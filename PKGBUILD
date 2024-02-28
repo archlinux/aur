@@ -2,7 +2,7 @@
 pkgname=stampnyaa-bin
 pkgver=1.6.0
 _electronversion=25
-pkgrel=4
+pkgrel=5
 pkgdesc="A simple desktop app for downloading and using LINE stickers in chat apps like Discord."
 arch=("x86_64")
 url="https://github.com/MarvNC/StampNyaa"
@@ -20,13 +20,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('ea6341d72dc717c8fa0fd9a41e0ea871e23852eae93cc3318144ba3417920d64'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.zst"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
