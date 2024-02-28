@@ -1,11 +1,11 @@
 pkgbase = pac-pacman-aliases
 	pkgdesc = Add pac with apt-like pacman aliases and bash globbing pattern search instead of regex.
-	pkgver = 1.6
+	pkgver = 1.7
 	pkgrel = 1
 	url = https://github.com/bbedward/pac-pacman-aliases
 	arch = any
 	license = MIT
-	source = https://github.com/bbedward/pac-pacman-aliases/archive/refs/tags/v1.6.zip
+	source = https://github.com/bbedward/pac-pacman-aliases/archive/refs/tags/v1.7.zip
 	sha256sums = SKIP
 
 pkgname = pac-pacman-aliases
