@@ -2,33 +2,27 @@
 pkgname=feidao-bin
 pkgver=1.0.0
 _electronversion=13
-pkgrel=5
+pkgrel=6
 pkgdesc="飞稻在线课程设计平台"
 arch=("x86_64")
 url="https://www.fei-dao.com"
-license=('custom')
+license=('LicenseRef-custom')
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=(
     'hicolor-icon-theme'
     "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
 )
-makedepends=(
-    'squashfuse'
-)
-provides=("${pkgname%-bin}=${pkgver}")
-conflicts=("${pkgname%-bin}")
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::https://oss.fei-dao.com/resources/application/linux/${pkgname%-bin}_latest.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('2a5f5919ebc8c7ef8ebd232758852c87dd0b165208dc46a501ce3cefdd23ded7'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
