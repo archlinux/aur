@@ -5,4 +5,5 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!fix-makefile.patch
 !no-manual-debuginfo.patch

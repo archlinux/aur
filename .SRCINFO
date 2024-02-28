@@ -1,25 +1,27 @@
 pkgbase = libnvidia-container
 	pkgdesc = NVIDIA container runtime library
-	pkgver = 1.14.5
-	pkgrel = 2
+	pkgver = 1.14.6
+	pkgrel = 1
 	url = https://github.com/NVIDIA/libnvidia-container
 	arch = x86_64
-	license = BSD-3-Clause AND Apache-2.0 AND GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT AND GPL-2.0-only
+	license = BSD-3-Clause AND Apache-2.0 AND GPL-3.0-or-later AND LGPL-3.0-or-later AND GPL-2.0-only
 	makedepends = bmake
 	makedepends = git
 	makedepends = go
-	makedepends = libtirpc
 	makedepends = lsb-release
 	makedepends = rpcsvc-proto
 	depends = libcap
 	depends = libelf
 	depends = libseccomp
-	noextract = nvidia-modprobe-495.44.tar.gz
-	source = git+https://github.com/NVIDIA/libnvidia-container.git#commit=870d7c5d957f5780b8afa57c4d5cc924d4d9ed26
-	source = nvidia-modprobe-495.44.tar.gz::https://github.com/NVIDIA/nvidia-modprobe/archive/495.44.tar.gz
+	depends = libtirpc
+	noextract = nvidia-modprobe-550.54.14.tar.gz
+	source = git+https://github.com/NVIDIA/libnvidia-container.git#commit=d2eb0afe86f0b643e33624ee64f065dd60e952d4
+	source = nvidia-modprobe-550.54.14.tar.gz::https://github.com/NVIDIA/nvidia-modprobe/archive/550.54.14.tar.gz
+	source = fix-makefile.patch
 	source = no-manual-debuginfo.patch
 	sha256sums = SKIP
-	sha256sums = ae6e9c7e6b43368945c28f6b8b6d0d7cc36ee7e1be8955a009a1cb189e46de92
+	sha256sums = 5687b0dfa6087dd480ae91e91ff1dca975794e35a2edcf9ec08d8f9cb98ef905
+	sha256sums = ca38bc4d67dc1c585a21d903dfe6dc1ca79db04320e76fff93b82b4d102896fe
 	sha256sums = 4c0ffca77dee2d0c98ea92716b5c3cff0d41f974000fea29ca905435d3acbe8e
 
 pkgname = libnvidia-container
