@@ -1,0 +1,22 @@
+pkgbase = piper-voices-common
+	pkgdesc = Voices for Piper text to speech system (common files)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://huggingface.co/rhasspy/piper-voices
+	install = piper-voices-common.install
+	arch = any
+	license = MIT
+	depends = piper-voices
+	optdepends = speech-dispatcher: tts support for third party apps
+	optdepends = piper-voices-minimal: single voice for english
+	optdepends = piper-voices: voices for all languages
+	conflicts = piper-voices
+	options = !strip
+	source = https://huggingface.co/rhasspy/piper-voices/resolve/main/voices.json
+	source = piper-generic.conf
+	source = piper-dispatcher
+	b2sums = SKIP
+	b2sums = 8f0578959ec6c859f807b255e89baec595016553b4ca7e9ec91faf012a9c8d99ada5613eb6e4f3e01a97f7eb938bcaae23f0636bab7bd854087e865258a94029
+	b2sums = 2b5129e2e2fd4cb48602bf5d18052b124b31886cf02268de83d7b687f7e681ab83dc8baeb683c905664d26f4ddab6f86d95fbe3849113c26e5be5c557642810f
+
+pkgname = piper-voices-common
