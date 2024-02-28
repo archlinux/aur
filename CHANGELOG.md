@@ -1,4 +1,3 @@
-Expanded search feature to incremental search
-This means the cursor updates when a new match is found
+When pressing ESC after searching with Ctrl-F the cursor position is restored to where it was before pressing Ctrl-F
 
-**Full Changelog**: https://github.com/Nooberieno/jura/compare/1.1...1.2
+**Full Changelog**: https://github.com/Nooberieno/jura/compare/1.2...1.3
