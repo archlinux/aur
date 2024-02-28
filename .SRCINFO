@@ -1,7 +1,7 @@
 pkgbase = lib32-libmd
 	pkgdesc = Message Digest functions from BSD systems
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.hadrons.org/software/libmd/
 	arch = x86_64
 	license = BSD
