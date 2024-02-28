@@ -1,8 +1,8 @@
 pkgbase = gcc9-bin
 	pkgdesc = The GNU Compiler Collection - C frontend (series 9.x)
-	pkgver = 9.5.0_3ubuntu1
+	pkgver = 9.5.0_5ubuntu1
 	pkgrel = 1
-	url = https://packages.ubuntu.com/lunar/source/gcc-9
+	url = https://packages.ubuntu.com/noble/source/gcc-9
 	arch = x86_64
 	arch = aarch64
 	license = GPL
