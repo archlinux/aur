@@ -16,17 +16,17 @@ _reponame=tageditor
 pkgname=tageditor-git
 _name=${pkgname%-git}
 pkgver=719.9599560
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska'
 license=('GPL')
 depends=('libqtutilities-git.so' 'libtagparser-git.so' 'libc++utilities-git.so' 'desktop-file-utils' 'xdg-utils')
-[[ $_webview_provider == none ]] && [[ $_js_provider == none ]] && depends+=('qt5-base')
-[[ $_webview_provider == webkit ]] && depends+=('qt5-webkit')
-[[ $_webview_provider == webengine ]] && depends+=('qt5-webengine')
-[[ $_js_provider == script ]] && depends+=('qt5-script')
-[[ $_js_provider == qml ]] && depends+=('qt5-declarative')
-makedepends=('cmake' 'qt5-tools' 'git' 'ninja')
+[[ $_webview_provider == none ]] && [[ $_js_provider == none ]] && depends+=('qt6-base')
+[[ $_webview_provider == webkit ]] && depends+=('qt6-webkit')
+[[ $_webview_provider == webengine ]] && depends+=('qt6-webengine')
+[[ $_js_provider == script ]] && depends+=('qt6-script')
+[[ $_js_provider == qml ]] && depends+=('qt6-declarative')
+makedepends=('cmake' 'qt6-tools' 'git' 'ninja' 'clang' 'qt6-declarative')
 [[ $_json_export == ON ]] && makedepends+=('reflective-rapidjson-git')
 checkdepends=('cppunit' 'jq')
 provides=("${_name}")
@@ -48,6 +48,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
     -DCONFIGURATION_NAME:STRING='git' \
     -DCONFIGURATION_PACKAGE_SUFFIX:STRING='-git' \
+    -DQT_PACKAGE_PREFIX:STRING='Qt6' \
+    -DKF_PACKAGE_PREFIX:STRING='KF6' \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DWEBVIEW_PROVIDER="${_webview_provider}" \
     -DJS_PROVIDER="${_js_provider}" \
