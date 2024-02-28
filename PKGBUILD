@@ -1,7 +1,7 @@
 # Maintainer: lanthora <lanthora@outlook.com>
 
 pkgname=candy-git
-pkgver=3.10.r0.gc04fe5d
+pkgver=3.10.r14.gc61a2d1
 pkgrel=1
 pkgdesc="Another virtual private network that supports peer-to-peer connections"
 url="https://github.com/lanthora/candy"
@@ -9,7 +9,7 @@ license=('MIT')
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
 source=("$pkgname::git+https://github.com/lanthora/candy.git" )
 sha256sums=('SKIP')
-makedepends=('cmake' 'make' 'pkgconf' 'gcc' 'git')
+makedepends=('cmake' 'ninja' 'pkgconf' 'gcc' 'git')
 depends=('zlib' 'fmt' 'glibc' 'gcc-libs' 'openssl' 'libconfig' 'uriparser' 'spdlog')
 conflicts=('candy')
 backup=('etc/candy.conf')
@@ -20,9 +20,9 @@ pkgver() {
 }
 
 build() {
-        cd "$pkgname/build"
-        cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
-        make
+        cd "$pkgname"
+        cmake -B build -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+        cmake --build build
 }
 
 package() {
@@ -31,6 +31,5 @@ package() {
         install -Dm644 candy.service "$pkgdir/usr/lib/systemd/system/candy.service"
         install -Dm644 candy@.service "$pkgdir/usr/lib/systemd/system/candy@.service"
         install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-        cd build
-        make DESTDIR="$pkgdir/" install
+        DESTDIR="$pkgdir" cmake --install build
 }
