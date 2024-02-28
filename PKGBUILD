@@ -3,7 +3,7 @@ pkgname=projscope-music-player-bin
 _pkgname="Projscope MP3 Player"
 pkgver=0.0.3
 _electronversion=17
-pkgrel=6
+pkgrel=7
 pkgdesc="Projscope MP3 player is free desktop, cross platform tool (Winamp you are remembered)!"
 arch=("x86_64")
 url="https://projscope.com/"
@@ -23,11 +23,11 @@ source=(
 )
 sha256sums=('79493043f2ab40b625fe2f8e936cdc5779a5a86e15d458cde4709e92e12881e5'
             '1aa2a3326e734bc2595f638283ed58576d5358bf403f228b48d275b98abe1f3c'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\"|${pkgname%-bin}|g;s|Audio|AudioVideo|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
