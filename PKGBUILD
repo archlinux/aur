@@ -1,27 +1,66 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
-pkgname="piper-voices"
+# https://gitlab.archlinux.org/archlinux/packaging/packages/tesseract-data/-/blob/main/PKGBUILD?ref_type=heads
+
+#cd "piper-voices"
+#mapfile -t _locales < <(find . -mindepth 2 -maxdepth 2 -type d -name "*_*" -printf '"%P"\n' | sort)
+#for locale in "${_locales[@]}"; do locale="\"${locale/*\/}"; locale="${locale,,}"; locale="${locale/_/-}"; echo "$locale"; done
+
+_locales=(
+ "ar-jo"
+ "ca-es"
+ "cs-cz"
+ "da-dk"
+ "de-de"
+ "el-gr"
+ "en-gb"
+ "en-us"
+ "es-es"
+ "es-mx"
+ "fa-ir"
+ "fi-fi"
+ "fr-fr"
+ "hu-hu"
+ "is-is"
+ "it-it"
+ "ka-ge"
+ "kk-kz"
+ "lb-lu"
+ "ne-np"
+ "nl-be"
+ "nl-nl"
+ "no-no"
+ "pl-pl"
+ "pt-br"
+ "pt-pt"
+ "ro-ro"
+ "ru-ru"
+ "sk-sk"
+ "sl-si"
+ "sr-rs"
+ "sv-se"
+ "sw-cd"
+ "tr-tr"
+ "uk-ua"
+ "vi-vn"
+ "zh-cn"
+)
+
+pkgbase="piper-voices"
+pkgname=("${_locales[@]/#/$pkgbase-}")
+epoch=1
 pkgver=1.0.0
-pkgrel=4
+pkgrel=2
 pkgdesc="Voices for Piper text to speech system"
 url="https://huggingface.co/rhasspy/piper-voices"
 license=("MIT")
 arch=("any")
-optdepends=(
- "piper-tts: tts program"
- "speech-dispatcher: tts support for third party apps"
-)
+groups=("$pkgbase")
+provides=("$pkgbase")
+depends=("$pkgbase-common")
+conflicts=("$pkgbase-minimal")
 makedepends=("git-lfs")
-source=(
- # error is thrown if the repo is being cloned here (and it tries to convert all models), so it is downloaded in prepare()
- #"git+https://huggingface.co/rhasspy/piper-voices.git"
- "piper-generic.conf"
- "piped-piper"
-)
-b2sums=('09c589578fcb883b6e7c44f96df84c241c3a2e04b09eeeef973baa6955e702342165a82476c219a6cd8f297a96634035cdeee8e51eecc13636cf9349bd9e40d4'
-        '2b5129e2e2fd4cb48602bf5d18052b124b31886cf02268de83d7b687f7e681ab83dc8baeb683c905664d26f4ddab6f86d95fbe3849113c26e5be5c557642810f')
 options=("!strip")
-install="$pkgname.install"
 
 prepare(){
  # replace .onnx git lfs pointers (few bytes) with actual trained models (dozens of MB)
@@ -32,38 +71,45 @@ prepare(){
  # https://manpages.debian.org/testing/git-lfs/git-lfs-pull.1.en.html
 
  # needed to avoid smudge error
- rm -rf "piper-voices"
+ rm -rf "$pkgbase"
  
  # download the repo by keeping the lfs pointers
- GIT_LFS_SKIP_SMUDGE=1 git clone "https://huggingface.co/rhasspy/piper-voices"
- cd "piper-voices"
+ GIT_LFS_SKIP_SMUDGE=1 git clone "https://huggingface.co/rhasspy/$pkgbase"
 
  # uncomment to download all lfs objects (~6GB total, 107 models)
  #git lfs pull 
  
- # else uncomment to download only specific lfs objects (~60MB medium/low, ~120MB high)
- _models=(
-  "/en/en_US/ryan/high/en_US-ryan-high.onnx"
-  "/en/en_US/ryan/low/en_US-ryan-low.onnx"
- )
- echo "Downloading the following models: ${_models[*]}"
- git lfs pull --include "$(IFS=,; echo "${_models[*]}")"
-
- # if not all models have been downloaded, delete folders that do not contain valid onnx files
- find . -type d -name "samples" -exec rm -r {} +
- find . -type d | while read _dir; do
-  if [[ -d "$_dir" && "$(du -bs "$_dir" | awk '{print $1}')" -lt 1000000 ]]; then
-   echo "Removing unused dir $_dir"
-   rm -r "$_dir"
-  fi
- done
-
+ #:
+ 
+ # remove mp3 samples
+ cd "$pkgbase"
+ find . -type d -name 'samples' -exec rm -rf {} +
 }
 
-package(){
- cd "piper-voices"
- install -d "$pkgdir/usr/share/$pkgname"
- cp -r * "$pkgdir/usr/share/$pkgname"
- install -D -m 664 "$srcdir/piper-generic.conf" -t "$pkgdir/etc/speech-dispatcher/modules"
- install -D -m 775 "$srcdir/piped-piper" -t "$pkgdir/usr/bin"
-}
+# declare the package() functions for all voices
+# variables not yet defined when eval is run must be escaped (e.g. lang, unlike locale)
+# god forgive this use of eval
+for locale in "${_locales[@]}"; do
+ eval "
+  package_$pkgbase-$locale(){
+   # set specific variables
+   pkgdesc+=' ($locale)'
+   lang=${locale:0:2}
+   region=${locale: -2}
+   region=\${region^^}
+   #echo \$lang
+   #echo \$region
+   
+   # download only the specific locale
+   cd $pkgbase
+   mapfile -t _models < <(find . -type f -name \"*\${lang}_\${region}*.onnx\" -printf \"/%P\n\")
+   echo 'Downloading the following models:'
+   printf '%s\n' \${_models[*]}
+   git lfs pull --include \$(IFS=,; echo \"\${_models[*]}\")
+
+   # copy only the specific locale
+   install -d \$pkgdir/usr/share/$pkgbase/\$lang
+   cp -r \$lang/\${lang}_\${region} \$pkgdir/usr/share/$pkgbase/\$lang
+  }
+ "
+done
