@@ -2,6 +2,6 @@
 set -e
 _APPDIR=/opt/@appname@
 _RUNNAME="${_APPDIR}/@runname@"
-export PATH="${_APPDIR}:${PATH}"
+export PATH="${_APPDIR}:${_APPDIR}/jre/bin:${PATH}"
 cd "${_APPDIR}"
-exec "${_RUNNAME}" "$@" | exit $?
+exec "${_RUNNAME}" "$@" || exit $?
