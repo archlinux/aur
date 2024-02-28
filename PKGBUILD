@@ -14,6 +14,11 @@ optdepends=('gir1.2-gnomekeyring-1.0: Description of optional feature'
 source=("cia-1.0.0-1-x86_64.pkg.tar.zst::https://www.dropbox.com/scl/fi/50vciyf5p1odyp0whr4rg/cia-1.0.0-1-x86_64.pkg.tar.zst?rlkey=l5abk785r94fm4p0xsklc2bni&dl=0")
 md5sums=('SKIP')
 
+package(){
+    mkdir -p $pkgdir/usr/share/applications
+    cp -r usr $pkgdir
+}
+
 post_install() {
     gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
     update-desktop-database -q
