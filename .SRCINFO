@@ -1,0 +1,21 @@
+pkgbase = android-x86-judy
+	pkgdesc = C library creating and accessing dynamic arrays (android)
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = http://judy.sourceforge.net/
+	arch = any
+	license = LGPL
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://downloads.sourceforge.net/judy/Judy-1.0.5.tar.gz
+	source = 0001-Compile-JudyTablesGen-for-the-build-system.patch
+	source = 0002-Disable-lib-symlinks.patch
+	sha256sums = d2704089f85fdb6f2cd7e77be21170ced4b4375c03ef1ad4cf1075bd414a63eb
+	sha256sums = acf8e44910c665fa818fa45e88b3b9f64f2ad987c8fc6798996a22eaf35d16a3
+	sha256sums = b6eaf8ec489ffe0c71061084cfcb3d3640ad5bdae5e34c90de537459613484b3
+
+pkgname = android-x86-judy
