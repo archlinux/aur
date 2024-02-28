@@ -9,24 +9,21 @@ arch=(x86_64)
 url="https://github.com/a-parhom/${pkgname}"
 license=(GPL-2.0-or-later)
 depends=(kio5 knotifications5 kinit kwin kcrash5 kglobalaccel5 qt5-x11extras)
-makedepends=(base-devel extra-cmake-modules qt5-tools ninja)
-provides=("${pkgname}-qt5=${pkgver}")
-conflicts=("${provides[@]}")
+makedepends=(git extra-cmake-modules qt5-tools)
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
-function prepare {
-    # links to libkwin.so.5, fix build
-    . <(sed -n '/^LIBKWIN_.*=.*/p' "${pkgname}/install.sh")
-    sed -i "/^target_link_libraries(/,/)$/ s| kwin$| $LIBKWIN_PATH|" "${pkgname}/src/blur/CMakeLists.txt"
+prepare() {
+    mkdir -p lib
+    ln -sf /usr/lib/libkwin.so.5 lib/libkwin.so
+    echo "target_link_directories(lightlyshaders_blur PUBLIC ../lib)" >> "$pkgname/CMakeLists.txt"
 }
 
-function build {
-    cmake -S "${pkgname}" -B build -G Ninja \
-        -DCMAKE_INSTALL_PREFIX="/usr"
-    ninja -C build
+build() {
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -B build -S "$pkgname"
+    make -j"$(nproc)" -C build
 }
 
 package() {
-    DESTDIR="${pkgdir}" PREFIX=/usr ninja -C build install
+    make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
 }
