@@ -1,4 +1,5 @@
-#!/bin/bash 
+#!/bin/sh
+set -e
 _APPDIR=/opt/@appname@
 _RUNNAME="${_APPDIR}/@runname@"
 if [ ! -f "${_APPDIR}/appdata.tar.gz" ];then
@@ -7,11 +8,11 @@ else
 if [ ! -d "${_APPDIR}/appdata/@runname@" ];then
     mkdir -p "${_APPDIR}/appdata"
     touch "${_APPDIR}/appdata/20220823.txt"
-    tar -xvf  "${_APPDIR}/appdata.tar.gz" -C "${_APPDIR}"
+    bsdtar -xf  "${_APPDIR}/appdata.tar.gz" -C "${_APPDIR}"
 elif [ ! -f "${_APPDIR}/appdata/20220823.txt" ];then
     mkdir -p "${_APPDIR}/appdata"
     touch "${_APPDIR}/appdata/20220823.txt"
-    tar -xf  "${_APPDIR}/appdata.tar.gz" -C "${_APPDIR}"
+    bsdtar -xf  "${_APPDIR}/appdata.tar.gz" -C "${_APPDIR}"
 fi
 export PATH="${_APPDIR}:${_APPDIR}/files:${PATH}"
 export LD_LIBRARY_PATH="${_APPDIR}/lib/qt:${_APPDIR}/lib/yixin:${LD_LIBRARY_PATH}"
