@@ -1,6 +1,6 @@
 pkgbase = python-setuptools-protobuf
 	pkgdesc = Plugin for setuptools that adds support for compiling protobuf files.
-	pkgver = 0.1.10
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://github.com/jelmer/setuptools-protobuf
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-setuptools-protobuf
 	depends = python
 	depends = python-setuptools
 	optdepends = python-mypy-protobuf
-	source = https://github.com/jelmer/setuptools-protobuf/archive/v0.1.10.tar.gz
-	sha512sums = 88e2b7e64f5865814077ce108e2208b068288359f031fa47a6039f2ad21a3677e58498fd3024952f183de403c022aabc8519c774a10c4f68aa857f782e4f90a7
+	source = https://github.com/jelmer/setuptools-protobuf/archive/refs/tags/v0.1.12.tar.gz
+	sha512sums = 8d68bfde3986deca93e2859f6095c66142704307429f75a3e5a829c2ffe042ec03d02bc3b48489b0fc303ef97fbfea9cb31343d8bfdbbf6c47527d01e4c6e10d
 
 pkgname = python-setuptools-protobuf
