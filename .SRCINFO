@@ -1,0 +1,16 @@
+pkgbase = ckermit-git
+	pkgdesc = Portable OPEN SOURCE Scriptable Network and Serial Communication Software for Unix and VMS. git version
+	pkgver = r50.e298984
+	pkgrel = 1
+	url = https://github.com/KermitProject/ckermit
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	depends = krb5
+	depends = openssl
+	provides = ckermit
+	conflicts = ckermit
+	source = git+https://github.com/KermitProject/ckermit.git
+	sha256sums = SKIP
+
+pkgname = ckermit-git
