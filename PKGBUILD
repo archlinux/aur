@@ -3,11 +3,11 @@
 pkgname=python-multimethod
 _pkgname=multimethod
 pkgver=1.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Multiple argument dispatching'
 arch=('any')
 url='https://github.com/coady/multimethod'
-license=('Apache')
+license=('Apache-2.0')
 depends=(
   python
 )

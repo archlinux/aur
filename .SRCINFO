@@ -1,10 +1,10 @@
 pkgbase = python-multimethod
 	pkgdesc = Multiple argument dispatching
 	pkgver = 1.11.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coady/multimethod
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	checkdepends = python-pytest
 	checkdepends = python-pytest-cov
 	makedepends = python-build
