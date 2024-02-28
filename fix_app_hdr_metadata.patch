@@ -1,0 +1,22 @@
+From 6f0f4e34eab52a4a2ed9b6a3645474301a227efd Mon Sep 17 00:00:00 2001
+From: Andrew O'Neil <andy@andyofniall.net>
+Date: Wed, 28 Feb 2024 21:06:28 +1100
+Subject: [PATCH] Fix incorrect casting of HDR metadata blob
+
+---
+ src/steamcompmgr.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/steamcompmgr.cpp b/src/steamcompmgr.cpp
+index 628eb951e..a19582c68 100644
+--- a/src/steamcompmgr.cpp
++++ b/src/steamcompmgr.cpp
+@@ -7833,7 +7833,7 @@ steamcompmgr_main(int argc, char **argv)
+ 					std::vector<uint32_t> app_hdr_metadata_blob;
+ 					app_hdr_metadata_blob.resize((sizeof(hdr_metadata_infoframe) + (sizeof(uint32_t) - 1)) / sizeof(uint32_t));
+ 					memset(app_hdr_metadata_blob.data(), 0, sizeof(uint32_t) * app_hdr_metadata_blob.size());
+-					memcpy(app_hdr_metadata_blob.data(), &app_hdr_metadata->View<hdr_metadata_infoframe>(), sizeof(hdr_metadata_infoframe));
++					memcpy(app_hdr_metadata_blob.data(), &app_hdr_metadata->View<hdr_output_metadata>().hdmi_metadata_type1, sizeof(hdr_metadata_infoframe));
+ 
+ 					XChangeProperty(root_ctx->dpy, root_ctx->root, root_ctx->atoms.gamescopeColorAppHDRMetadataFeedback, XA_CARDINAL, 32, PropModeReplace,
+ 							(unsigned char *)app_hdr_metadata_blob.data(), (int)app_hdr_metadata_blob.size() );
