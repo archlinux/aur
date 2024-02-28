@@ -8,16 +8,16 @@ pkgrel=7
 pkgdesc='Python library for interacting with the Firefox Accounts ecosystem'
 arch=('any')
 url='https://github.com/mozilla/PyFxA'
-license=('MPL2')
+license=('MPL-2.0')
 depends=('python-browserid' 'python-cryptography' 'python-hawkauthlib' 'python-pyjwt' 'python-requests' 'python-six')
-makedepends=('python-setuptools')
-checkdepends=('python-grequests' 'python-pyotp' 'python-pytest-cov' 'python-pytest-flake8' 'python-pytest-runner' 'python-responses')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+checkdepends=('python-grequests' 'python-pyotp' 'python-pytest-cov' 'python-pytest-flake8' 'python-pytest' 'python-responses')
 source=("https://github.com/mozilla/$_pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('d5b5afdafb6b42344d49e4e4df0582758df54e00b8d0fa3cbc29433410aa9a6f')
 
 build() {
   cd $_pkgname-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -27,5 +27,9 @@ check() {
 
 package() {
   cd $_pkgname-$pkgver 
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  # Do not install tests directory
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  rm -rf "$pkgdir/$site_packages"/fxa/tests/
 }
