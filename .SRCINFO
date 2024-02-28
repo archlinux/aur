@@ -1,15 +1,12 @@
 pkgbase = redis-gui-bin
 	pkgdesc = Modern graphical user interface to peek into redis database (unofficial)
 	pkgver = 2.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ekvedaras/redis-gui
 	arch = x86_64
 	license = MIT
 	makedepends = squashfuse
 	depends = electron19
-	depends = dbus-glib
-	depends = libdbusmenu-glib
-	depends = gtk2
 	provides = redis-gui=2.3.0
 	conflicts = redis-gui
 	source = redis-gui-2.3.0.AppImage::https://github.com/ekvedaras/redis-gui/releases/download/v2.3.0/redis-gui-2.3.0.AppImage
@@ -17,6 +14,6 @@ pkgbase = redis-gui-bin
 	source = redis-gui.sh
 	sha256sums = a6867340661adc15b95b569c5bd0a82fb3dd61c9e76677d368f06367ce7d97ef
 	sha256sums = ac76bfd52440815cb3e8ec5ea00f1f9b82c9b404219814f2f05c3fe44a9446c5
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = redis-gui-bin
