@@ -1,0 +1,20 @@
+pkgbase = ok-gloox-git
+	pkgdesc = OkStar - OkGloox 对Gloox的拓展，上游主页：https://camaya.net/gloox
+	pkgver = r18.bb3b982
+	pkgrel = 1
+	url = https://gitee.com/okstar-org/ok-gloox
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	makedepends = ninja
+	makedepends = zlib
+	provides = ok-gloox
+	conflicts = ok-gloox
+	source = ok-gloox-git::git+https://gitee.com/okstar-org/ok-gloox.git
+	sha256sums = SKIP
+
+pkgname = ok-gloox-git
