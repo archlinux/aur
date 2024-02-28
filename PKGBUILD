@@ -4,7 +4,7 @@
 # Contributor: Sinofine Lotus <i@sinofine.me>
 
 pkgname=mogan
-pkgver=1.2.4
+pkgver=1.2.5
 _tagver=v${pkgver//_/-}
 pkgrel=1
 pkgdesc="A structured wysiwyg scientific text editor"
