@@ -3,7 +3,7 @@
 # Contributor: TrialnError <autumn-wind@web.de>
 pkgname=coolterm-bin
 _pkgname=CoolTerm
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Simple GUI serial port terminal application (no terminal emulation)"
 arch=(
@@ -17,14 +17,8 @@ license=("LicenseRef-Freeware")
 conflicts=("${pkgname%-bin}")
 depends=(
 	'gtk3'
-	'python'
+	'python>=3'
 	'python-psutil'
-	'libunwind'
-	'at-spi2-core'
-	'gdk-pixbuf2'
-	'cairo'
-	'pango'
-	'libx11'
 )
 source=(
 	"${pkgname%-bin}.sh"
@@ -34,10 +28,10 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.zip::${url}/${_pkgname}Raspberr
 source_i686=("${pkgname%-bin}-${pkgver}-i686.zip::${url}/${_pkgname}Linux32Bit.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/${_pkgname}Linux64Bit.zip")
 sha256sums=('d913a1332a260a98b11207a5be85055497357cdb69f6669f208b0591bd95fc6b')
-sha256sums_aarch64=('2c10c148cdbbe8fa839439510ebf949505734c431efe07efe25698bb5a31ea5e')
-sha256sums_armv7h=('941a2f7bad2dc646512e2bbcfa1ea689e0691411d0b9e0480eda6c9c73ec2d5f')
-sha256sums_i686=('f0473ee72315d720de5629a71896af5c75c60bf74f1264473aa83fd9aa34835c')
-sha256sums_x86_64=('b850b71e48686008b1c5706d23edf9957bc3db6960e6f55142fb64b74aeacae2')
+sha256sums_aarch64=('b1d37dcdc4f06a406c96cb18aefde8ad0d63842e8435758a81a27fcdbd902971')
+sha256sums_armv7h=('751ee658404b1c547439ecfd09d0649373029462244b21aa9f0504ab1a91d90e')
+sha256sums_i686=('d41a8cc14d53a0a30b1f4616ec69f5d10de5764347dc0fc30db70b0533d0b153')
+sha256sums_x86_64=('f63a3bba586cd9ec8b152b97182a1f12254327a29797bfeefe16d5b1a3d242f1')
 build() {
 	sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
