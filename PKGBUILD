@@ -4,8 +4,8 @@
 # Contributor : Mélanie Chauvel (ariasuni) <perso@hack-libre.org>
 pkgname=whalebird-bin
 _pkgname=Whalebird
-pkgver=6.0.1
-_electronversion=26
+pkgver=6.0.2
+_electronversion=27
 pkgrel=1
 pkgdesc="An Electron based Mastodon, Pleroma, and Misskey client"
 arch=('x86_64')
@@ -21,14 +21,14 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ec504833017fa60387e698f2f1e3ef83c190e358521dfd0b72e0a42f0dca2df5'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+sha256sums=('f7072eef1d678b3184b1ea38856b8bcfc23cd67865d4f3ac0b0b3a584e0dc00c'
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
