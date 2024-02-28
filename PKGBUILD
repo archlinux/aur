@@ -1,6 +1,6 @@
 pkgname=pac-pacman-aliases
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Add pac with apt-like pacman aliases and bash globbing pattern search instead of regex."
 arch=('any')
 url="https://github.com/bbedward/pac-pacman-aliases"
