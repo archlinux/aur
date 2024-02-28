@@ -5,12 +5,16 @@
 # Contributor: Corrado Primier <bardo@aur.archlinux.org>
 
 pkgname=ttf-sil-fonts
-pkgver=9
+pkgver=10
 pkgrel=1
 pkgdesc='Metapackage depending on all OFL-licensed font packages from SIL'
 arch=(any)
 url=https://software.sil.org/fonts
-license=(OFL)
+license=(OFL-1.1-RFN)
+_ttffonts=(andika
+           charis-sil
+           gentium-plus
+           scheherazade-new)
 _silfonts=(abyssinica
            alkalami
            annapurna
@@ -30,11 +34,8 @@ _silfonts=(abyssinica
            sophia-nubian
            tagmukay
            tai-heritage-pro)
-depends=(gentium-plus-font
-        ttf-charis-sil
-        ttf-andika
-        ttf-scheherazade-new
-        "${_silfonts[@]/#/ttf-sil-}")
+depends=("${_fonts[@]/#/ttf-}"
+         "${_silfonts[@]/#/ttf-sil-}")
 
 package() {
     :
