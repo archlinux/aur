@@ -2,14 +2,14 @@
 
 pkgname=jupyterhub-idle-culler
 pkgdesc="JupyterHub service to cull and shut down idle users and notebook servers"
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 url="https://github.com/jupyterhub/jupyterhub-idle-culler"
-license=('BSD')
+license=('BSD-3-Clause')
 arch=('any')
 
-depends=('python-dateutil' 'python-tornado')
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+depends=('python-dateutil' 'python-packaging' 'python-tornado')
+makedepends=('git' 'python-build' 'python-hatchling' 'python-installer' 'python-wheel')
 
 _pyname=jupyterhub_idle_culler
 source=(
