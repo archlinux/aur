@@ -3,24 +3,17 @@
 pkgname=kaiteki-bin
 _pkgname=Kaiteki
 pkgver=2024_02
-pkgrel=2
+pkgrel=3
 pkgdesc="A comfy Fediverse client for microblogging instances, made with Flutter and Dart. Currently with simple Mastodon, Pleroma, Misskey and Calckey support"
 arch=('x86_64')
 url='https://kaiteki.app'
 _ghurl=https://github.com/Kaiteki-Fedi/Kaiteki
-license=('AGPL3')
+license=('AGPL-3.0-only')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     'gtk3'
     'libhandy'
-    'at-spi2-core'
-    'cairo'
-    'libepoxy'
-    'pango'
-    'gdk-pixbuf2'
-    'fontconfig'
-    'harfbuzz'
 )
 makedepends=(
     'gendesk'
@@ -35,7 +28,7 @@ build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories "Network" --name "${_pkgname}" --exec "${pkgname%-bin} --no-sandbox %U" "${startdir}/PKGBUILD"
+    gendesk -q -f -n --categories="Network" --name="${_pkgname}" --exec="${pkgname%-bin} --no-sandbox %U" "${startdir}/PKGBUILD"
     chmod 755 "${srcdir}/linux/${pkgname%-bin}"
 }
 package() {
