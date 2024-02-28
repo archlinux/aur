@@ -2,7 +2,7 @@
 pkgname=ziipoo-bin
 _pkgname=Ziipoo
 pkgver=2603
-pkgrel=3
+pkgrel=4
 pkgdesc="Makes music more reliable!壹谱,让音乐更靠谱!"
 arch=('x86_64')
 url="https://www.ziipoo.cn"
@@ -18,20 +18,11 @@ depends=(
     'libx11'
     'alsa-lib'
     'gtk2'
-    'lib32-gcc-libs'
     'ffmpeg4.4'
     'libxi'
     'gtk3'
     'libxxf86vm'
-    'libxtst'
-    'gdk-pixbuf2'
-    'cairo'
-    'at-spi2-core'
-    'libxext'
     'java-runtime'
-    'freetype2'
-    'libxrender'
-    'lib32-glibc'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/zpocore/download.php?os=linux_deb"
@@ -45,7 +36,7 @@ build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|usr/share|opt/${pkgname%-bin}|g" -i "${srcdir}/usr/share/${pkgname%-bin}/${pkgname%-bin}.sh"
     sed "s|/usr/share/${pkgname%-bin}/${pkgname%-bin}.sh|${pkgname%-bin}|g;s|/usr/share/${pkgname%-bin}/ic_launcher.png|${pkgname%-bin}|g;s|Audio|AudioVideo|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
