@@ -2,20 +2,18 @@
 # Contributor: Guillaume Duboc <guilduboc@gmail.com>
 
 pkgname=hyx
-pkgver=2021.06.09
+pkgver=2024.02.29
 pkgrel=1
 pkgdesc='A minimalistic, but powerful console hex editor'
 url='https://yx7.cc/code/'
 license=('MIT')
 depends=('glibc')
 source=("https://yx7.cc/code/hyx/hyx-${pkgver}.tar.xz")
-sha512sums=("43f990e29ce097f8e2378a4511a3097e2576fd72e16f3b5c81688702487c8715e7189cb4a368e344c5440a90a1c759d2f76e7831ab401fa814f7e5ff7e145bd8")
+sha512sums=("b5c17b045d1c97106212745b1bb4c4052cfe7ac5a28ec0a2240764785410d7e68292d0ff976fbdc58172cd9433ce49b1cad89b767e09d5d6207088a6a60b4e85")
 arch=('i686' 'x86_64')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	# Pass $LDFLAGS via $CFLAGS since hyx's Makefile only considers $CFLAGS
-	export CFLAGS="$CFLAGS $LDFLAGS"
 	make
 }
 
