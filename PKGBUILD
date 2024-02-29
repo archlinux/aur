@@ -5,7 +5,7 @@ _officalname=mCloud
 pkgver=7.7.1
 _deepinver=7.2.0deepin2
 _deepinurl=https://com-store-packages.uniontech.com
-pkgrel=1
+pkgrel=2
 pkgdesc="CMCC 139 client on Deepin Wine 6.中国移动云盘 on Deepin Wine 6"
 arch=("x86_64")
 url="https://yun.139.com/"
@@ -26,22 +26,19 @@ source=(
     "${_officalname}-${pkgver}.exe::https://img.zone139.com/m2012/controlupdate/v6/${_officalname}_Setup-001.exe"
     "fake_simsun.ttc::https://images.xuthus.cc/images/fake_simsun.ttc"
     "LICENSE.html::https://caiyun.feixin.10086.cn:7071/portal/templateView/initve.html?id=145&marketName=hcy_yhxy"
-    "${pkgname}.install"
     "${pkgname}.sh"
 )
 sha256sums=('ecc41143f5c0a96f17236e2f7a4c1e79eb601d1129674d89ea360999a93c6dcb'
             'cbe7b194f8b8ca9241aa5fadf168771a855523e177b5c85230d2e239097cbacf'
             '3e2ed9203a5ce3b2f00b6c942d8fac6b24e7a6e7b1ebc863cee2e27d3ff487db'
             '5997490663bddd20190aed804aadbc064c05cd6ac9c30ff2fdfaf217226141c6'
-            '6d0f2ff2ebe71e2890966c58decea4b9f4f8a7b957949c70e9d2e0e8c264a7f4'
-            'e60c39abfbe1430b6967eedf6b9de074bceba11163265648461dcd27b6484e1f')
+            '4c549967da523dc6bbb551df00ca06f0000438c8f7f967318dda40b8390f2f20')
 build() {
-    sed "s|@bottomname@|${_officalname}|g" -i "${srcdir}/${pkgname}.install"
     sed -e "s|@bottomname@|${_officalname}|g" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@appver@|${pkgver}|g" \
         -i "${srcdir}/${pkgname}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     mv "${srcdir}/opt/apps/${_pkgname}" "${srcdir}/opt/apps/${pkgname}"
     mkdir -p "${srcdir}/tmp" "${srcdir}/extracted_exe"
     msg "Extracting Deepin Wine ${_officalname} archive ..."
@@ -63,13 +60,13 @@ build() {
     sed "s|${_pkgname}|${pkgname}|g;s|internet|Network|g" -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop"
 }
 package() {
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     cp -r "${srcdir}/opt" "${pkgdir}"
     md5sum "${srcdir}/opt/apps/${pkgname}/files/files.7z" | awk '{ print $1 }' > "${pkgdir}/opt/apps/${pkgname}/files/files.md5sum"
-    install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     for _icons in 16x16 32x32 64x64;do
         install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
-    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
