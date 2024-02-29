@@ -1,0 +1,15 @@
+pkgbase = plasma6-applets-places-widget
+	pkgdesc = Plasma 6 widget providing quick access to user places
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/HessiJames/plasma-applet-places-widget
+	arch = any
+	license = GPL-2.0-only
+	makedepends = extra-cmake-modules
+	depends = plasma-workspace
+	source = plasma6-applets-places-widget-1.4.tar.gz::https://github.com/HessiJames/plasma-applet-places-widget/archive/v1.4.tar.gz
+	source = https://github.com/HessiJames/plasma-applet-places-widget/commit/bc3f45eca28b7f7333edc2918cbefe03705cd793.diff
+	sha256sums = dde5ac73516794cce1e7af9dcb9ee43fcad13125c647451662ab5dc136463602
+	sha256sums = f6e6523d29339561853251371058c6b00341de593212d864f18f118fa5050090
+
+pkgname = plasma6-applets-places-widget
