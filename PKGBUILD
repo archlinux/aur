@@ -129,8 +129,7 @@ build() {
     -DX11_API=ON \
     -DWAYLAND_API=ON \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
-    -DDISABLE_ADVANCE_SIMD=ON \
-    -DDISABLE_BUILD_DATE=ON
+    -DDISABLE_ADVANCE_SIMD=ON
     ninja -C build
     
     cd pcsx2_patches
