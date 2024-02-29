@@ -3,12 +3,13 @@
 
 pkgname=godot3-export-templates
 pkgver=3.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Godot export templates for version 3'
 url='https://godotengine.org/'
 license=('MIT')
 arch=('i686' 'x86_64')
 optdepends=(
+  'godot3-bin: use the templates'
   'godot3: use the templates'
   'godot3-mono: use the templates'
 )
@@ -25,6 +26,9 @@ sha256sums=(
 package() {
   cd "${srcdir}"
   mkdir -p "${pkgdir}/usr/share/godot/templates/${pkgver}.stable"
+  # make templates working with both godot and godot3
+  mkdir -p "${pkgdir}/usr/share/godot3/templates/"
+  ln -sf --no-dereference "../../godot/templates/${pkgver}.stable" "${pkgdir}/usr/share/godot3/templates/${pkgver}.stable"
 
   install -Dm755 templates/linux_x11_64_debug "${pkgdir}/usr/share/godot/templates/${pkgver}.stable"
   install -Dm755 templates/linux_x11_64_release "${pkgdir}/usr/share/godot/templates/${pkgver}.stable"

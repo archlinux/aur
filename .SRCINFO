@@ -1,11 +1,12 @@
 pkgbase = godot3-export-templates
 	pkgdesc = Godot export templates for version 3
 	pkgver = 3.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://godotengine.org/
 	arch = i686
 	arch = x86_64
 	license = MIT
+	optdepends = godot3-bin: use the templates
 	optdepends = godot3: use the templates
 	optdepends = godot3-mono: use the templates
 	source = https://github.com/godotengine/godot/releases/download/3.5.3-stable/Godot_v3.5.3-stable_export_templates.tpz
