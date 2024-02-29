@@ -22,5 +22,6 @@ check() {
 
 package() {
   cd "$srcdir/Cuba-$pkgver"
-  make install -j1 DESTDIR="$pkgdir"/usr
+  make install -j1 DESTDIR="$pkgdir"
+  rm -r "$pkgdir"/usr/bin
 }
