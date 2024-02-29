@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aihub
 _pkgname=AIHub
-pkgver=1.3.4
-_electronversion=28
+pkgver=1.3.5
+_electronversion=29
 pkgrel=1
 pkgdesc="A collection of large model capabilities, AI capabilities Electron client, with a minimalist interface, will support more AI capabilities in the future.一款集合众多大模型能力、AI能力的Electron客户端，具有极简的界面，将在未来支持更多AI能力."
 arch=('any')
@@ -24,13 +24,13 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            'f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
-    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname} %U"
+    gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
