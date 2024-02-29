@@ -3,7 +3,7 @@ _pkgname=welink
 pkgname="deepin-wine-${_pkgname}"
 _sparkname="com.huaweicloud.${_pkgname}.spark"
 _appname=WeLink
-pkgver=7.36.7
+pkgver=7.37.3
 _sparkver=7.21.3.403spark1
 pkgrel=1
 pkgdesc="华为数字化办公实践,服务政企、高校等主要客户,是全场景安全、智能、的数字化办公平台,帮助AnyBody、AnyWhere、AnyDevice、doAnyBusiness4A办公。"
@@ -28,21 +28,18 @@ conflicts=(
 )
 install="${pkgname}.install"
 source=(
-    "${pkgname}_${_sparkver}.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/${_sparkname}/${_sparkname}_${_sparkver}_i386.deb"
+    "${pkgname}_${_sparkver}.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store//chat/${_sparkname}/${_sparkname}_${_sparkver}_i386.deb"
     "${_appname}-${pkgver}.exe::https://welink.huaweicloud.com/download/${_appname}_setup.exe"
     "fake_simsun.ttc::https://images.xuthus.cc/images/fake_simsun.ttc"
-    "${pkgname}.install"
     "LICENSE.html::https://www.huaweicloud.com/declaration/sa_cua_computing.html"
     "${pkgname}.sh"
 )
 sha256sums=('2a5046177ad2f57ebeff4176ffe4ae2717eed19c8fd2e84fad5b9f44305d16d1'
-            'c703e2b726c89af1aa0c8ba31365b78d257382a91689a768c56563de00287649'
+            '045c334577032f51d963188d30254a0e1d8fea7876fbd7b00e78bd5b7bb59685'
             '3e2ed9203a5ce3b2f00b6c942d8fac6b24e7a6e7b1ebc863cee2e27d3ff487db'
-            '2a9e70d0bc04f291d2d7d774ace08edb83c5f5d299ebd66920457c9d8fb336b7'
-            'ccc8fcb75c75fe61bdb206f2a450fcaf0dfb7890ae181d9dcbde0d73c2432ccf'
-            'c54ef202c74cc198a03eb3de72e9e929d60f0ed52a02c1811078d99f4376adcc')
+            'f041befca8e199141af71a382b3de00ac64303cc74f3c53fae00ac8f18119254'
+            '457847c22fc306279a20070ee7578403653e5c2ed8c602065f5996cf353c4722')
 build() {
-    sed "s|@appname@|${_appname}|g" -i "${srcdir}/${pkgname}.install"
     sed -e "s|@appname@|${_appname}|g" \
         -e "s|@pkgname@|${pkgname}|g" \
         -e "s|@sparkver@|${_sparkver%spark1}|g" \
