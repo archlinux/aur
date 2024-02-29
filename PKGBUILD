@@ -2,8 +2,8 @@
 # Some of the code is nicely borrowed from godot-export-templates-git
 
 pkgname=godot3-export-templates
-pkgver=3.5.2
-pkgrel=2
+pkgver=3.5.3
+pkgrel=1
 pkgdesc='Godot export templates for version 3'
 url='https://godotengine.org/'
 license=('MIT')
@@ -18,7 +18,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/godotengine/godot/3.5/LICENSE.txt"
 )
 sha256sums=(
-  0271440ccfe141ddbc941d131d13e95dbfcb065defae3e107ff67a83d6285e7b
+  ae3c1f6fbd431b9e3b67c1f9e42539a6d270a0ccc35558f13072f04b968312d1
   b0435e3b3e4e55238f05f4b306f30524a1b2e20147810d436eaa554fa6855c80
 )
 
