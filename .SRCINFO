@@ -12,4 +12,4 @@ pkgbase = nvidia-patch
 	sha1sums = SKIP
 
 pkgname = nvidia-patch
-	depends = nvidia-utils=550.54.14
+	depends = nvidia-utils
