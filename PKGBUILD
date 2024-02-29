@@ -1,7 +1,7 @@
 # Maintainer: everyx <lunt.luo#gmail.com>
 pkgname=simple-live-app-bin
-_build_id=10408
-_version=1.4.8
+_build_id=10409
+_version=1.4.9
 pkgver=${_version}.${_build_id}
 pkgrel=2
 
@@ -13,7 +13,7 @@ license=('GPL3')
 # conflicts=("$pkgname-git" "$pkgname-beta")
 
 source_x86_64=("$pkgname-$pkgver.deb::https://github.com/xiaoyaocz/dart_simple_live/releases/download/v${_version}/simple_live_app-${_version}+${_build_id}-linux.deb")
-sha256sums_x86_64=('4e405de320d26f25cf50c998362ff86b7a61d22957fd553d974779c0460585c9')
+sha256sums_x86_64=('1493bdf472512deb221e64e769a90030532528aa927270817d54fd1afb31edef')
 depends=('libmpv.so')
 options=(!debug)
 
