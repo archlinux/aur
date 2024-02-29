@@ -1,14 +1,14 @@
 # Maintainer: Boris-Chengbiao Zhou <bobo1239@web.de>
 
 pkgname=ynetd
-pkgver=0.1.2
+pkgver=2024.02.17
 pkgrel=1
 pkgdesc='A small (< 400 lines of C) server for binding programs to TCP ports'
 url='https://yx7.cc/code/'
 license=('MIT')
 depends=('glibc')
 source=("https://yx7.cc/code/ynetd/ynetd-${pkgver}.tar.xz")
-sha512sums=("b60dc79685dff2fe4e606f07f011a4a91ee05e1335bb56bb81bc5ad46c0d249755aa525f7d44df21565c95557e56bada2caaf09cd89d713960a3e9216ea88eab")
+sha512sums=("d71684793a1be45a681a029ee84e415e4cebda4c5c05f79fdbedca77bf14eca55f47e987b732a54617d1191b981eb88f94645fe5dabfd2c08faf9d3421baf7cd")
 arch=('i686' 'x86_64')
 
 build() {
