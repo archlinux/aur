@@ -10,7 +10,7 @@ license=('MIT')
 depends=(python-snakemake-interface-common)
 makedepends=(python-build python-installer python-wheel python-poetry-core)
 source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('3b2bbdeb58ed99ead7830862d25aa3fb28c6745132ed55b33053b9eb78ad0717')
+sha256sums=('83729b6f32e2f2c3215a5d350842ecff5270dcd9601eba7a9bf6d737b76df427')
 
 build() {
     cd "$_name-$pkgver"
