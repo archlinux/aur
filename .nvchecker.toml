@@ -1,0 +1,4 @@
+[grass-sass]
+source = "github"
+github = "connorskees/grass"
+use_max_tag = true
