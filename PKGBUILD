@@ -2,7 +2,7 @@
 pkgname=sqlitestudio-bin
 _pkgname=SQLiteStudio
 pkgver=3.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, open source, multi-platform SQLite database manager."
 arch=('x86_64')
 url="https://sqlitestudio.pl/"
@@ -29,7 +29,7 @@ build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -f -n -q --categories "Development" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
+    gendesk -f -n -q --categories="Development" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
