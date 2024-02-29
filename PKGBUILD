@@ -3,7 +3,7 @@ _pkgname=transmart
 pkgname="tencent-${_pkgname}-bin"
 _appname=TranSmart
 pkgver=Alpha0.10.1
-pkgrel=6
+pkgrel=7
 pkgdesc="腾讯交互翻译融合了腾讯人工智能实验室自研的交互式机器翻译、神经网络机器翻译、 统计机器翻译、语义理解、信息检索等技术，帮助用户更快、更好地完成翻译任务。"
 arch=("x86_64")
 url="https://transmart.qq.com/"
@@ -35,14 +35,13 @@ build() {
     sed -e "s|@appname@|${pkgname%-bin}|" \
         -e "s|@runname@|${_appname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --pkgname "tencent-${_pkgname}-bin" --name "腾讯交互翻译TranSmart" --categories "Utility" --exec "${pkgname%-bin} --no-sandbox %U"
+    gendesk -q -f -n --pkgname="tencent-${_pkgname}-bin" --name="腾讯交互翻译TranSmart" --categories="Utility" --exec="${pkgname%-bin} %U"
     mv "${srcdir}/${_pkgname}_${pkgver}_linux/使用说明" "${srcdir}/${_pkgname}_${pkgver}_linux/README"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
     cp -r "${srcdir}/${_pkgname}_${pkgver}_linux/"* "${pkgdir}/opt/${pkgname%-bin}"
-    ln -sf "/opt/${pkgname%-bin}/${_appname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${_pkgname}_${pkgver}_linux/README" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/${_pkgname}_${pkgver}_linux/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"

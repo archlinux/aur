@@ -1,7 +1,7 @@
 pkgbase = tencent-transmart-bin
 	pkgdesc = 腾讯交互翻译融合了腾讯人工智能实验室自研的交互式机器翻译、神经网络机器翻译、 统计机器翻译、语义理解、信息检索等技术，帮助用户更快、更好地完成翻译任务。
 	pkgver = Alpha0.10.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://transmart.qq.com/
 	arch = x86_64
 	license = LicenseRef-custom
