@@ -2,7 +2,7 @@
 
 pkgname=python-orsopy
 _name=${pkgname#python-}
-pkgver=1.0.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Python Support library of the Open Reflectometry Standards Organization (ORSO)"
 arch=("x86_64")
@@ -11,7 +11,7 @@ license=("MIT")
 depends=("python" "python-pyyaml")
 makedepends=(python-setuptools)
 source=(https://github.com/reflectivity/orsopy/releases/download/v$pkgver/orsopy-$pkgver.tar.gz)
-sha256sums=("f161b4192661e9e7d1051dda32806158889e3ce4c05b7a01e27d782d0b2cadee")
+sha256sums=("6b17dcd62c792940a79bcf4442d479af74bce78292bfe78d7d341af71ce6583a")
 
 build() {
     cd "$_name-$pkgver"
