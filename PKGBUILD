@@ -11,7 +11,7 @@ export XDG_DATA_HOME="$HoME/.local/share"
 # basic info
 _pkgname="logseq-desktop"
 pkgname="$_pkgname"
-pkgver=0.10.6
+pkgver=0.10.7
 pkgrel=1
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
@@ -34,7 +34,7 @@ source=(
     "$_pkgname-${pkgver}.zip"::"$url/archive/refs/tags/${pkgver}.zip"
 )
 sha256sums=(
-    '15b5938a974796487d5b0ce13a6ff81911f9fb79441675505f7815ad11e95fbf'
+    '99048f718282214af1b1263b6e63fc492611513af5b4de7aab6881c0e2754090'
 )
 
 prepare() {

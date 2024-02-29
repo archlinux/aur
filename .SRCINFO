@@ -1,6 +1,6 @@
 pkgbase = logseq-desktop
 	pkgdesc = Privacy-first, open-source platform for knowledge sharing and management
-	pkgver = 0.10.6
+	pkgver = 0.10.7
 	pkgrel = 1
 	url = https://github.com/logseq/logseq
 	install = logseq-desktop.install
@@ -12,7 +12,7 @@ pkgbase = logseq-desktop
 	makedepends = nodejs
 	makedepends = npm
 	makedepends = yarn
-	source = logseq-desktop-0.10.6.zip::https://github.com/logseq/logseq/archive/refs/tags/0.10.6.zip
-	sha256sums = 15b5938a974796487d5b0ce13a6ff81911f9fb79441675505f7815ad11e95fbf
+	source = logseq-desktop-0.10.7.zip::https://github.com/logseq/logseq/archive/refs/tags/0.10.7.zip
+	sha256sums = 99048f718282214af1b1263b6e63fc492611513af5b4de7aab6881c0e2754090
 
 pkgname = logseq-desktop
