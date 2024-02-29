@@ -1,7 +1,7 @@
 # Maintainer: Anthony Wang <ta180m@pm.me>
 # Maintainer: Mikhail f. Shiryaev <mr dot felixoid at gmail dot com>
 pkgname=oh-my-git-git
-pkgver=0.6.4.r21.gce9fcda
+pkgver=0.6.4.r22.g9da0bd1
 pkgrel=1
 pkgdesc='An interactive Git learning game!'
 arch=(x86_64)
@@ -30,8 +30,17 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
+  # workaround to build a local godot application via godot3 binary
+  # and any godot templates with the same minor version
   sed -i 's/\bgodot\b/godot3/g' Makefile
-  ln -sf --no-dereference /usr ../.local
+  local godot_version templates_dir godot_minor
+  templates_dir="${srcdir}/.local/share/godot3/templates"
+  mkdir -p "$templates_dir"
+  godot_version=$(godot3 --version)
+  godot_version=${godot_version%.*}
+  godot_minor=${godot_version%.*.*}
+  ln -sf --no-dereference /usr/share/godot/templates/"$godot_minor"* "$templates_dir/$godot_version"
+  # build game
   HOME="${srcdir}" make linux
 }
 
