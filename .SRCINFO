@@ -1,15 +1,13 @@
 pkgbase = adbmanager-bin
 	pkgdesc = ADB manager for Android devices
 	pkgver = 3.1
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/AKotov-dev/adbmanager
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = android-tools
 	depends = iproute2
 	depends = nmap
-	depends = cairo
-	depends = at-spi2-core
 	depends = gtk2
 	provides = adbmanager=3.1
 	conflicts = adbmanager

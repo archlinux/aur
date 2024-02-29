@@ -2,7 +2,7 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=adbmanager-bin
 pkgver=3.1
-pkgrel=10
+pkgrel=11
 pkgdesc="ADB manager for Android devices"
 arch=('x86_64')
 url="https://github.com/AKotov-dev/adbmanager"
@@ -13,8 +13,6 @@ depends=(
     'android-tools'
     'iproute2'
     'nmap'
-    'cairo'
-    'at-spi2-core'
     'gtk2'
 )
 source=(
@@ -27,7 +25,7 @@ build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
