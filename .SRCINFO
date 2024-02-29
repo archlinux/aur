@@ -1,6 +1,6 @@
 pkgbase = guilded_arch_electron
 	pkgdesc = Chat for Gaming Communities using the system provided electron for increased security and performance
-	pkgver = 1.0.9224397
+	pkgver = 1.0.9236953
 	pkgrel = 1
 	url = https://www.guilded.gg/
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = guilded_arch_electron
 	depends = libxkbfile
 	provides = guilded
 	conflicts = guilded
-	source = guilded_arch_electron-1.0.9224397.deb::https://www.guilded.gg/downloads/Guilded-Linux.deb
+	source = guilded_arch_electron-1.0.9236953.deb::https://www.guilded.gg/downloads/Guilded-Linux.deb
 	source = guilded-launcher.sh
-	sha512sums = d2767551b32e8cf4162d1fe8133bba302bdfc1c1ee3170c290ab6ac54a171c842bac59ee84a97ff0c0cc8afc2616ef200f8c7d429825b11b6b34535b795aaa8f
+	sha512sums = 383b68e884215fc3bbece7cae26856b472b1a63c8dc4f778ccc5e0338210da33c8d077e5b4ea81d0c6cfb302fb65d19c221b06340571e1d27013ed347aa5ca15
 	sha512sums = 255f28575321801ba7ac35c72fc87bfb81551dd0c1c8f892fe7baca3d8ebf67adc3ebe57f48d4729f4b34f1879211a71beb68e66663ed8af9f6e5f6c173a897f
 
 pkgname = guilded_arch_electron
