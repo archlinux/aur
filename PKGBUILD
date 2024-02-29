@@ -3,7 +3,7 @@
 
 _pkgname='mdviewer'
 pkgname="${_pkgname}-git"
-pkgver=0.0.1.r32.g64ab5b6
+pkgver=0.1.1.r0.g74d3df7
 pkgrel=1
 pkgdesc='Rendered display of markdown on terminal (built from latest commit)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
