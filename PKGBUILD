@@ -3,9 +3,9 @@ _appname=douyin
 pkgname="deepin-wine-${_appname}"
 _pkgname="com.${_appname}.spark"
 _providername=ByteDance
-pkgver=3.3.1
+pkgver=3.4.0
 _sparkver=2.9.2spark7
-pkgrel=3
+pkgrel=1
 pkgdesc="douyin,record beautify life;抖音，记录美好生活"
 arch=('x86_64')
 url="https://www.douyin.com"
@@ -29,23 +29,20 @@ source=(
     "${_pkgname}_${_sparkver}_i386.deb::https://mirrors.sdu.edu.cn/spark-store//store/video/${_pkgname}/${_pkgname}_${_sparkver}_all.deb"
 	"${_appname}-${pkgver}.exe::${_downurl}/releases/download/${_appname}-v${pkgver}/${_appname}-v${pkgver}.exe"
     "LICENSE.html::${url}/draft/douyin_agreement/douyin_agreement_user.html"
-    "${pkgname}.install"
     "${pkgname}.sh"
 )
 sha256sums=('f5bb3df57822718590e0bc432ed33f1548350add863a11e6a39058ea784c7c17'
-            '7e210b64495ba8a6d1734636079de19e757bc2a292775caecc2c4349e3bff688'
+            '5f50da1063c6cb68ee5ed2610a381cba79893689054644a70864a798be315bc1'
             '80d1bfb7a530d4497e8be2305e2ee662a25c4d6bc2e8f1b3a24642eec7efd054'
-            'e0f6a619e8bf2e30ce115bb4cef48a0e6635e93a324ed280bd9d5f39d7f42cd9'
-            '4423884192827cf7060557ca5ad0556414a8ca542a984e619f9da27ebf72607b')
+            '2449301dc19b0fb82afaa7692f2e74cc8bad01296c7d3c5ac6e4f09bcc7f68ae')
 build() {
-    sed "s|@bottlename@|Deepin-${_appname}|g" -i "${srcdir}/${pkgname}.install"
     sed -e "s|@bottlename@|Deepin-${_appname}|g" \
         -e "s|@appver@|${pkgver}|g" \
         -e "s|@appname@|${_appname}|g" \
         -e "s|@packagename@|${pkgname}|g" \
         -e "s|@pathname@|${_providername}|g" \
         -i "${srcdir}/${pkgname}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     mv "${srcdir}/opt/apps/${_pkgname}" "${srcdir}/opt/apps/${pkgname}"
     mkdir -p "${srcdir}/tmp" "${srcdir}/extracted_exe"
     msg "Extracting Deepin Wine ${_appname} archive ..."
