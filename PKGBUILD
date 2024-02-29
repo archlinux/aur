@@ -1,4 +1,5 @@
 # Maintainer: Nemo <archlinux at captnemo dot in>
+# Co-maintainer: Eduard T <edu4rdshl>
 pkgname=signal-desktop-beta-bin
 pkgrel=1
 pkgdesc="Private messaging from your desktop"
@@ -9,12 +10,12 @@ depends=('libnotify' 'libxtst' 'nss' 'xdg-utils' 'libxss')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 provides=('signal-desktop-beta')
-_pkgver=7.0.0-beta.2
+_pkgver=7.1.0-beta.1
 pkgver=${_pkgver/-/}
 source=("https://updates.signal.org/desktop/apt/pool/s/signal-desktop-beta/signal-desktop-beta_${_pkgver}_amd64.deb")
-sha256sums=('c9f6bcd8923f08ac90353fa8ab495aba92f2308aeaf57b3df4cff1c6033d790b')
+sha256sums=('d33d6b29e0ddeecd72fdc108759c9905260edb5e422761505000dd69eccb7387')
 
 package(){
-	# Extract package data
-	tar xf data.tar.xz -C "${pkgdir}"
+  # Extract package data
+  tar xf data.tar.xz -C "${pkgdir}"
 }
