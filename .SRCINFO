@@ -8,6 +8,6 @@ pkgbase = isisdl
 	depends = zlib
 	provides = isisdl
 	source = https://github.com/Emily3403/isisdl/releases/download/V1.3/isisdl-linux.bin
-	sha256sums = adf076dae644812e418eadbb81a4d1bbef2dd387cb947a74d107e115d1d47e3d
+	sha256sums = b97ba1f08dff6348c96795576fa2711b7d1fc6b3c5e89f401b62ad6bfc47424b
 
 pkgname = isisdl
