@@ -4,17 +4,17 @@
 _base=basix
 pkgname=python-"${_base}"-git
 pkgdesc="Python interface of FEniCS for ordinary and partial differential equations."
-pkgver=0.8.0.dev0_r952.eebbc52
+pkgver=0.8.0.dev0_r975.15b915b
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/FEniCS/${_base}"
 license=('MIT')
 groups=('fenics-git')
-depends=("blas-openblas" "fenics-basix" "petsc" "xtensor" "xtensor-blas")
+depends=("blas-openblas" "fenics-basix" "petsc")
 makedepends=("boost" "gcc" "git" "pybind11" "python-setuptools")
 checkdepends=("python-pytest")
 options=(!emptydirs)
-source=("git+${url}#branch=main")
+source=("git+${url}#commit=15b915ba")
 sha512sums=('SKIP')
 
 provides=("python-${_base}"
