@@ -1,0 +1,11 @@
+pkgbase = cso-thumbnailer
+	pkgdesc = A thumbnailer for "application/x-compressed-iso" MIME type PSP software files
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://sateallia.org/software/
+	arch = x86_64
+	license = MIT
+	source = https://sateallia.org/code/cso-thumbnailer/cso-thumbnailer_1_0_0.tar.gz
+	md5sums = aa6e5a9060c8b0a1bb168ec98be6948a
+
+pkgname = cso-thumbnailer
