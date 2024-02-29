@@ -2,14 +2,14 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Seurat
-_pkgver=5.0.1
+_pkgver=5.0.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Tools for Single Cell Genomics"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   r-cowplot
   r-fastdummies
@@ -99,8 +99,8 @@ optdepends=(
   r-vgam
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3965b1ee0bdc7f005d250a3dd429bcc3')
-sha256sums=('0713b434be5bf14fcea068fbfc632ba15bebdec1007f1f48effd0dbb95c5150d')
+md5sums=('cb58cbc4b85dae89262c43f1d86c49ff')
+b2sums=('bab400c3a6465734622d4439212e4cbd9d1324d949a75d4501b2f73bc20f6409a38fd509aa65049135253ffbf4940d332a2327fe5c5f8c43b5cca36fc2aae86a')
 
 prepare() {
   # skip test that requires BPCells
@@ -109,8 +109,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
