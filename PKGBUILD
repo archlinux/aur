@@ -1,8 +1,8 @@
 # Maintainer: Florian Loitsch <florian@toit.io>
 pkgname=toit
-_tag="v2.0.0-alpha.140"
+_tag="v2.0.0-alpha.141"
 _repo="https://github.com/toitlang/toit.git"
-_commit=5f40ff0aa82072fa052deb12bbacbf4a0483f7ce
+_commit=c5099aab006907623d386d59557990d54c8d5f58
 _tag_no_dash="${_tag//-/}"
 pkgver="${_tag_no_dash#v}"
 pkgrel=1
