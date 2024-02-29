@@ -1,13 +1,14 @@
 pkgbase = r-timedate
 	pkgdesc = Rmetrics - Chronological and Calendar Objects
 	pkgver = 4032.109
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=timeDate
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	optdepends = r-runit
 	source = https://cran.r-project.org/src/contrib/timeDate_4032.109.tar.gz
-	sha256sums = 402841bda47e8c31f49773de2ff5447e9780bc7c8af5fb18be9287b546fcb958
+	md5sums = 96ed5f3e9a0bd034dfb65dc2a4aff33f
+	b2sums = edd0d2c9f0ef8c30ee149e01b2650ad4d01a34f91a33bf26af02ae1c13626348c5f42f907eb4ac4a7ff5228a45786f66a2da6cc77de2f7cf6951546507bfe798
 
 pkgname = r-timedate
