@@ -1,0 +1,5 @@
+[ssh-openpgp-auth]
+source = "git"
+git = "https://codeberg.org/wiktor/ssh-openpgp-auth"
+prefix = "ssh-openpgp-auth/"
+include_regex = "ssh-openpgp-auth/.*"
