@@ -1,5 +1,7 @@
-Changed digit highlighting to support decimals which use a '.' 
+File detection for files that end with the .c .h or .cpp file extension
 
-Changed digit highlighting to not highlight digits that are followed by a letter, for example int32 is not highlighted but 32int is
+Digit highlighting is now only enabled for these files
 
-**Full Changelog**: https://github.com/Nooberieno/jura/compare/2.1...2.2
+These files also have highlighting for both double and single quoted strings
+
+**Full Changelog**: https://github.com/Nooberieno/jura/compare/2.2...2.3
