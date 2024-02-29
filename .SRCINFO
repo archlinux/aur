@@ -1,7 +1,7 @@
 pkgbase = thunar-sendto-clamtk
 	pkgdesc = A simple plugin to allow a right-click, context menu scan of files or folders in Thunar.
-	pkgver = 0.0.6
-	pkgrel = 2
+	pkgver = 0.08
+	pkgrel = 1
 	url = https://github.com/dave-theunsub/thunar-sendto-clamtk
 	arch = any
 	license = GPL
@@ -11,8 +11,7 @@ pkgbase = thunar-sendto-clamtk
 	provides = thunar-sendto-clamtk
 	source = https://raw.githubusercontent.com/dave-theunsub/thunar-sendto-clamtk/master/thunar-sendto-clamtk.desktop
 	source = https://raw.githubusercontent.com/dave-theunsub/thunar-sendto-clamtk/master/LICENSE
-	sha256sums = 28222ac0dd60cbeb0ea0f3b0ac4501cfaefa3a9823babfce0beac5016ce2b9ac
-	sha256sums = 7617f2fe90d16082e149903265c74de3e2a0c7f810347e8085a2f3d2cd9c7708
+	sha256sums = 658d90c53bd10f7ddc12074e66b90e98627ef3d59b88ce940b5ea2a311746556
+	sha256sums = 38935a05d2183952532e67d8ec6d5799f80dee100b6a7afadf5b77f511acb096
 
 pkgname = thunar-sendto-clamtk
-
