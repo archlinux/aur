@@ -12,7 +12,7 @@ depends=(ruby)
 makedepends=(rubygems)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('9c2e6121d768f812f50b78cb6f26056f2af6bab92af793d376b772126e26500b')
+sha256sums=('39bd97cbc7631905e76cdf8f1bf3dda1c3d05200d7e23f575aced78930fbddd6')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
