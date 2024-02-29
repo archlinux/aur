@@ -2,7 +2,7 @@
 pkgname=timecop-bin
 _appname=ca.hamaluik.Timecop
 pkgver=1.8.0
-pkgrel=6
+pkgrel=7
 pkgdesc='A time tracking app that respects your privacy and the gets the job done without being fancy.'
 arch=(
     'aarch64'
@@ -14,9 +14,7 @@ license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'gdk-pixbuf2'
     'hicolor-icon-theme'
-    'at-spi2-core'
     'gtk3'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-aarch64.tar.xz")
