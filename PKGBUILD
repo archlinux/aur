@@ -1,7 +1,7 @@
 # Maintainer: Daniel Hillenbrand <codeworkx at bbqlinux dot org>
 
 _pkgbase=asustor-platform-driver
-pkgname=asustor-platform-driver
+pkgname=asustor-platform-driver-dkms-git
 pkgver=49.20f84ae
 pkgrel=1
 pkgdesc="asustor nas driver"
@@ -11,7 +11,7 @@ url="https://github.com/mafredri/asustor-platform-driver/"
 license=('GPL')
 depends=('dkms')
 makedepends=('git')
-provides=('asustor-platform-driver')
+provides=($_pkgbase)
 conflicts=('it87-frankcrawford-dkms-git' 'it87-dkms-git')
 
 source=("$_pkgbase::https://github.com/mafredri/asustor-platform-driver.git")

@@ -1,4 +1,4 @@
-pkgbase = asustor-platform-driver
+pkgbase = asustor-platform-driver-dkms-git
 	pkgdesc = asustor nas driver
 	pkgver = 49.20f84ae
 	pkgrel = 1
@@ -10,7 +10,7 @@ pkgbase = asustor-platform-driver
 	provides = asustor-platform-driver
 	conflicts = it87-frankcrawford-dkms-git
 	conflicts = it87-dkms-git
-	source = asustor-platform-driver::git+https://github.com/vincentDcmps/asustor-platform-driver.git
+	source = asustor-platform-driver::https://github.com/mafredri/asustor-platform-driver.git
 	sha256sums = SKIP
 
-pkgname = asustor-platform-driver
+pkgname = asustor-platform-driver-dkms-git
