@@ -1,13 +1,13 @@
 pkgbase = android-x86-installer-tauri-bin
 	pkgdesc = Android x86 Installer
-	pkgver = 0.1.4
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/Xtr126/Android-x86-installer
 	arch = x86_64
 	license = APACHE
 	depends = webkit2gtk
 	depends = libarchive
-	source = https://github.com/Xtr126/Android-x86-installer/releases/download/app-v0.1.4/android-x86-installer_0.1.4_amd64.deb
-	sha256sums = 5379aae71bb2bd6a9d81eb6ac19188965ff5e3a8fa8d271807aa7c6e54cfd295
+	source = https://github.com/Xtr126/Android-x86-installer/releases/download/app-v0.1.6/android-x86-installer_0.1.6_amd64.deb
+	sha256sums = 05bfe753610676ef64009c56fd19d06eee43fe19d5bd4ada07a564148556c720
 
 pkgname = android-x86-installer-tauri-bin
