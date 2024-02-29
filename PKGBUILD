@@ -2,33 +2,33 @@
 # Maintainer: abelian424
 
 pkgname=wrapland-kwinft
-pkgver=0.527.0
+pkgver=0.600.0
 pkgrel=1
 pkgdesc='Qt/C++ library wrapping libwayland'
 arch=(x86_64 aarch64)
-url="https://gitlab.com/kwinft/wrapland"
+url="https://github.com/winft/wrapland"
 license=(LGPL)
-depends=(libglvnd wayland qt5-base glibc gcc-libs)
+depends=(libglvnd wayland glibc gcc-libs microsoft-gsl qt6-base)
 provides=('wrapland')
 conflicts=('wrapland')
-makedepends=(doxygen appstream extra-cmake-modules git kdoctools5 qt5-doc qt5-tools wayland-protocols)
+makedepends=(doxygen appstream extra-cmake-modules git wayland-protocols)
 optdepends=('weston: allows extra autotests to be run during compile'
-            'graphviz: provides dot for doxygen')
-source=("https://gitlab.com/kwinft/wrapland/-/archive/wrapland@$pkgver/wrapland-wrapland@$pkgver.tar.gz")
-sha1sums=('6508ec118b65b1306b5e034b102642e8ef82bc9d')
+            'graphviz: provides dot for doxygen'
+            'qt6-tools' 'kdoctools' 'qt6-doc')
+source=("https://github.com/winft/wrapland/archive/refs/tags/v$pkgver.tar.gz")
+sha1sums=('e30668661640d98a28bd5b330ae3bda5d55b8a03')
 
 prepare() {
   mkdir -p $pkgname
   cd $pkgname
-  tar -xvf ../wrapland-wrapland@$pkgver.tar.gz --strip-components=1
+  tar -xvf ../v$pkgver.tar.gz --strip-components=1
 }
 
 build() {
   mkdir -p build
   cd build
   cmake ../$pkgname \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DBUILD_QCH=True
+    -DCMAKE_BUILD_TYPE=Release
 }
 
 package() {
