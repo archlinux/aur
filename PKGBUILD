@@ -8,15 +8,15 @@ pkgname=x264_152
 #pkgver=0.159.r2991.1771b55
 #pkgver="${soname}"
 pkgver=152
-pkgrel=2
+pkgrel=3
 #epoch=3
 pkgdesc='Open Source H264/AVC video encoder'
 arch=(x86_64)
 url=https://www.videolan.org/developers/x264.html
 license=(GPL)
 depends=(
-  ffmpeg21
-  bzip2
+  ffmpeg2.1
+  'bzip2' 'libbz2.so'
   #liblsmash.so
 )
 makedepends=(
@@ -61,6 +61,8 @@ md5sums=('6ec3a24ac4fc311cfda302f534dc2c92')
 #  ./version.sh | grep X264_POINTVER | sed -r 's/^#define X264_POINTVER "([0-9]+\.[0-9]+)\.([0-9]+) (.*)"$/\1.r\2.\3/'
 #}
 
+options=('debug' '!lto')
+
 build() {
   #cd x264
   cd x264-snapshot-20180305-2245-stable
@@ -68,8 +70,8 @@ build() {
   ./configure \
     --prefix=/opt \
     --enable-shared \
-    --extra-ldflags=-L/opt/ffmpeg21/lib \
-    --extra-cflags=-I/opt/ffmpeg21/include
+    --extra-ldflags=-L/opt/lib/ffmpeg2.1 \
+    --extra-cflags=-I/opt/include/ffmpeg2.1
     #--libdir="${_libdir}" \
     #--includedir="${_includedir}"
   #make "-j$(nproc)" || return 1

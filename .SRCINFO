@@ -3,12 +3,12 @@
 pkgbase = x264_152
 	pkgdesc = complete solution to record, convert and stream audio and Open Source H264/AVC video encoder
 	pkgver = 152
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.videolan.org/developers/x264.html
 	arch = i686
 	arch = x86_64
 	license = GPL2
-        depends = ffmpeg21
+        depends = ffmpeg2.1
 	depends = bzip2
 	makedepends = git
 	makedepends = l-smash
