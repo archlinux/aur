@@ -31,12 +31,12 @@ _fragment=${FRAGMENT:-#branch=main}
   makedepends+=('hip-runtime-amd')
   _CMAKE_FLAGS+=( -DHIP_ROOT_DIR=/opt/rocm )
 }
-((DISABLE_PYTHON_INSTALL)) && \
-  _CMAKE_FLAGS+=( -DWITH_PYTHON_INSTALL=OFF ) || \
-  _CMAKE_FLAGS+=( -DWITH_PYTHON_INSTALL=ON )
+((ENABLE_PYTHON_INSTALL)) && \
+  _CMAKE_FLAGS+=( -DWITH_PYTHON_INSTALL=ON ) || \
+  _CMAKE_FLAGS+=( -DWITH_PYTHON_INSTALL=OFF )
 
 pkgname=blender-develop-git
-pkgver=4.2.r133556.gb8fdef965df
+pkgver=4.2.r133577.g56f8c1c0f6e
 pkgrel=1
 pkgdesc="Development version of Blender (non-conflicting version)"
 changelog=blender.changelog
