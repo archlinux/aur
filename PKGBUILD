@@ -9,7 +9,7 @@ arch=(any)
 url=https://github.com/ris58h/exkeymo-web
 license=(Unlicense)
 depends=(java-runtime-common)
-makedepends=(git)
+makedepends=(git java-runtime-common)
 source=("git+$url#tag=361cea2381366a11527e4ca0a4fa30ce15e45bee")
 sha256sums=(SKIP)
 

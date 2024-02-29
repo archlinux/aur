@@ -6,6 +6,7 @@ pkgbase = exkeymo-web-git
 	arch = any
 	license = Unlicense
 	makedepends = git
+	makedepends = java-runtime-common
 	depends = java-runtime-common
 	source = git+https://github.com/ris58h/exkeymo-web#tag=361cea2381366a11527e4ca0a4fa30ce15e45bee
 	sha256sums = SKIP
