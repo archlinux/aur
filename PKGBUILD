@@ -1,20 +1,20 @@
-# Maintainer: ToKiNoBug <tokinobug@163.com>
+#  Maintainer: ToKiNoBug <tokinobug@163.com>
 _pkgname=slopecraft
 pkgname=${_pkgname}
 pkgver=5.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Map Pixel Art Generator for Minecraft"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/SlopeCraft/SlopeCraft"
 license=('GPL3')
-makedepends=('clang' 'cmake' 'ninja' 'eigen' 'git' 'xsimd' 'qt6-tools' 'opencl-headers' 'opencl-clhpp' 'cereal')
-depends=('gcc-libs' 'glibc' 'fmt' 'libpng' 'libzip' 'zlib' 'qt6-base' 'openmp' 'ocl-icd')
+makedepends=('clang' 'cmake' 'ninja' 'eigen' 'git' 'xsimd' 'qt6-tools' 'opencl-headers' 'opencl-clhpp' 'cereal' 'boost' 'tl-expected' 'cli11')
+depends=('gcc-libs' 'glibc' 'fmt' 'libpng' 'libzip' 'zlib' 'zstd' 'qt6-base' 'openmp' 'ocl-icd' 'boost-libs')
 optdepends=('opencl-nvidia: nvidia GPU boosting',
             'intel-compute-runtime: Intel GPU boosting',
             'rocm-opencl-runtime: AMD GPU boosting',
             'opencl-clover-mesa: GPU boosting with mesa')
 source=(https://github.com/SlopeCraft/SlopeCraft/archive/refs/tags/v5.2.2.tar.gz)
-b2sums=('17db0109a34c2b973bc16b60d4ddbaf098231fabcbe1a3d47f17cb047e11696c98c5307434bd64e22bcbc910db0c78c4be8878511f2f89815d224dab8d0f46b4')
+b2sums=('0a56d0f7210ceca98bfea0547f50d68684f68bf58c3fe83f9ed6c0b5418f8709439b6c845878bb35517393a95e9b204792ce14c4289feb66877dd39da6724107')
 
 build() {
 	cmake -S SlopeCraft-$pkgver -B build \
