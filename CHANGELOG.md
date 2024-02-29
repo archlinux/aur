@@ -1,3 +1,3 @@
-Ability to go to next or previous match with the arrow keys when searching with the Ctrl-F keybind
+Highlights digits in any file
 
-**Full Changelog**: https://github.com/Nooberieno/jura/compare/1.3...1.4
+**Full Changelog**: https://github.com/Nooberieno/jura/compare/1.4...2.0
