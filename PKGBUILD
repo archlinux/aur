@@ -8,12 +8,13 @@ else
   : ${_autoupdate:=true}
 fi
 
+unset _pkgtype
 : ${_pkgtype:=-non-opt}
 
 # basic info
 _pkgname="logseq-desktop"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=0.10.5
+pkgver=0.10.7
 pkgrel=1
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
