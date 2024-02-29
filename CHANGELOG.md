@@ -1,3 +1,3 @@
-Highlights digits in any file
+Highlights search results/matches when searching with the Ctrl-F keybind
 
-**Full Changelog**: https://github.com/Nooberieno/jura/compare/1.4...2.0
+**Full Changelog**: https://github.com/Nooberieno/jura/compare/2.0...2.1
