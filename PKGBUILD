@@ -44,7 +44,7 @@ sha256sums=(
   'SKIP'
   'SKIP'
 )
-options=('debug')
+options=('debug' '!lto')
 
 prepare() {
   patch -d ffmpeg-0.6.7 -p1 -i "${srcdir}/mathops_fix.patch"
