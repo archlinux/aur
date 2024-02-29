@@ -13,7 +13,7 @@ license=(GPL-3.0-or-later)
 conflicts=(${pkgname}-git)
 depends=(boost-libs glibmm gmp gtkmm3 jsoncpp python-gmpy2 jupyterlab python-matplotlib
   python-sympy sqlite texlive-latexextra texlive-mathscience)
-makedepends=(cmake) # system-wide pybind11 is not used, instead bundled yes.
+makedepends=(boost cmake) # system-wide pybind11 is not used, instead bundled yes.
 optdepends=('mathjax: Doxygen documentation'
   'doxygen: Doxygen documentation')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/kpeeters/${pkgname}/archive/${pkgver}.tar.gz)

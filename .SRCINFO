@@ -5,6 +5,7 @@ pkgbase = cadabra2
 	url = https://cadabra.science
 	arch = x86_64
 	license = GPL-3.0-or-later
+	makedepends = boost
 	makedepends = cmake
 	depends = boost-libs
 	depends = glibmm
