@@ -1,7 +1,7 @@
 pkgbase = chinesechesscontrol-bin
 	pkgdesc = 中国象棋控件,包括中国象棋 MFC 扩展库，中国象棋 activex 控件,中国象棋Qt插件,人工智能引擎等
 	pkgver = 2.0.11
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/KangLin/ChineseChessControl
 	arch = x86_64
 	license = GPL-3.0-only

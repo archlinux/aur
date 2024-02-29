@@ -3,7 +3,7 @@ pkgname=chinesechesscontrol-bin
 _pkgname=ChineseChessControl
 _appname="org.Rabbit.${_pkgname%Control}"
 pkgver=2.0.11
-pkgrel=5
+pkgrel=6
 pkgdesc="中国象棋控件,包括中国象棋 MFC 扩展库，中国象棋 activex 控件,中国象棋Qt插件,人工智能引擎等"
 arch=("x86_64")
 url="https://github.com/KangLin/ChineseChessControl"
@@ -26,7 +26,7 @@ build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|ChineseChessApp-v${pkgver}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.gz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/bin/ChineseChess.sh|${pkgname%-bin}|g;s|${_appname}|${pkgname%-bin}|g" \
         -i "${srcdir}/opt/${_pkgname}/share/applications/${_appname}.desktop"
 }
