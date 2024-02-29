@@ -1,0 +1,27 @@
+pkgbase = python-fxa
+	pkgdesc = Python library for interacting with the Firefox Accounts ecosystem
+	pkgver = 0.7.7
+	pkgrel = 7
+	url = https://github.com/mozilla/PyFxA
+	arch = any
+	license = MPL-2.0
+	checkdepends = python-grequests
+	checkdepends = python-pyotp
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-flake8
+	checkdepends = python-pytest
+	checkdepends = python-responses
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-browserid
+	depends = python-cryptography
+	depends = python-hawkauthlib
+	depends = python-pyjwt
+	depends = python-requests
+	depends = python-six
+	source = https://github.com/mozilla/PyFxA/archive/v0.7.7/python-fxa-0.7.7.tar.gz
+	sha256sums = d5b5afdafb6b42344d49e4e4df0582758df54e00b8d0fa3cbc29433410aa9a6f
+
+pkgname = python-fxa
