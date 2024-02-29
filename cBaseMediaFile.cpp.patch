@@ -1,0 +1,12 @@
+diff --git a/src/ffDiaporama/engine/cBaseMediaFile.cpp c/src/ffDiaporama/engine/cBaseMediaFile.cpp
+--- a/src/ffDiaporama/engine/cBaseMediaFile.cpp	2014-02-09 09:48:04.000000000 +0000
++++ c/src/ffDiaporama/engine/cBaseMediaFile.cpp	2024-02-29 15:46:28.819678562 +0000
+@@ -1019,7 +1019,7 @@
+         // ******************************************************************************************************
+         // Try to load EXIF information using library exiv2
+         // ******************************************************************************************************
+-        Exiv2::Image::AutoPtr ImageFile;
++        Exiv2::Image::UniquePtr ImageFile;
+         try {
+             #ifdef Q_OS_WIN
+                 ImageFile=Exiv2::ImageFactory::open(FileName().toLocal8Bit().data());

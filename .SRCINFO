@@ -1,12 +1,12 @@
 pkgbase = ffdiaporama
 	pkgdesc = Movie creator from photos and video clips
 	pkgver = 2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ffdiaporama.tuxfamily.org
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	depends = ffmpeg21
+	depends = ffmpeg2.1
 	depends = sdl
 	depends = sdl_mixer
 	depends = qt5-base
@@ -17,6 +17,7 @@ pkgbase = ffdiaporama
 	depends = exiv2
 	depends = taglib
         source = patchfile.patch
+        source = cBaseMediaFile.cpp.patch
 	source = http://download.tuxfamily.org/ffdiaporama/Packages/Stable/ffdiaporama_bin_2.1.2014.0209.tar.gz
 	md5sums = f9f46277153cf49f6947973778516adb
 
