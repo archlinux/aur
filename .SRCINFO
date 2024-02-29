@@ -1,16 +1,17 @@
 pkgbase = electrocrud-bin
 	pkgdesc = Database CRUD Application Built on Electron | MySQL, Postgres, SQLite
 	pkgver = 3.1.0_develop.1
-	pkgrel = 7
+	pkgrel = 8
 	url = http://garrylachman.github.io/ElectroCRUD/
 	arch = x86_64
 	license = MIT
 	depends = electron22
+	depends = nodejs
 	provides = electrocrud=3.1.0_develop.1
 	conflicts = electrocrud
 	source = electrocrud-bin-3.1.0_develop.1.deb::https://github.com/garrylachman/ElectroCRUD/releases/download/v3.1.0-develop.1/ElectroCRUD-v3.1.0-develop.1-linux-x64.deb
 	source = electrocrud.sh
 	sha256sums = 6bd3e133f38beb97f8856254f09f28dd8f506ec127e3a3ae2020e65f046a441b
-	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
+	sha256sums = f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1
 
 pkgname = electrocrud-bin

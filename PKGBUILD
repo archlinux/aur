@@ -3,7 +3,7 @@ pkgname=electrocrud-bin
 _appname=ElectroCRUD
 pkgver=3.1.0_develop.1
 _electronversion=22
-pkgrel=7
+pkgrel=8
 pkgdesc="Database CRUD Application Built on Electron | MySQL, Postgres, SQLite"
 arch=('x86_64')
 url="http://garrylachman.github.io/ElectroCRUD/"
@@ -13,19 +13,20 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
+    'nodejs'
 )
 source=(
     "${pkgname%-appimage}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${_appname}-v${pkgver//_/-}-linux-x64.deb"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('6bd3e133f38beb97f8856254f09f28dd8f506ec127e3a3ae2020e65f046a441b'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            'f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.zst"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
