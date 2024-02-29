@@ -1,0 +1,13 @@
+pkgbase = javagui
+	pkgdesc = A simple graphical application script for archlinux-java to manage your java versions.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/javaguimgr/javagui
+	arch = any
+	license = GPL
+	depends = git
+	depends = npm
+	source = https://gitlab.com/javaguimgr/javagui/-/archive/1.0.0-1/application-1.0.0-1.tar.bz2
+	sha256sums = SKIP
+
+pkgname = javagui
