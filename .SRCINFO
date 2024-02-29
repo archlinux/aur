@@ -21,6 +21,7 @@ pkgbase = kwinft
 	depends = xorg-xwayland
 	depends = wlroots
 	depends = kdecoration
+	depends = como
 	optdepends = qt6-virtualkeyboard: virtual keyboard support for kwin-wayland
 	optdepends = qt6-tools
 	provides = kwin
