@@ -1,6 +1,6 @@
 # Maintainer: yhtez <yhtez@protonmail.com>
 pkgname=olympus-git
-pkgver=r794.bd2eab0
+pkgver=r828.9c1a5ea
 pkgrel=1
 pkgdesc='Everest installer / mod manager for Celeste (git)'
 arch=('x86_64')
@@ -64,8 +64,7 @@ package() {
     install -Dm755 olympus.sh "$pkgdir/usr/lib/olympus/olympus"
     install -Dm755 find-love.sh "$pkgdir/usr/lib/olympus/find-love"
 
-    cd src; zip -r ../olympus.love *; cd ..
-    install -Dm644 olympus.love "$pkgdir/usr/lib/olympus/olympus.love"
+    bsdtar --format zip --strip-components 1 -cf "$pkgdir/usr/lib/olympus/olympus.love" src
 
     install -Dm755 luarocks/lib/lua/5.1/* -t "$pkgdir/usr/lib/olympus"
     install -Dm755 sharp/bin/Release/net452/* -t "$pkgdir/usr/lib/olympus/sharp"
