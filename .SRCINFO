@@ -1,0 +1,23 @@
+pkgbase = xiguavideo-bin
+	pkgdesc = XiGua Video use system-wide electron.西瓜视频Windows移植版,使用系统electron.
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = https://www.ixigua.com
+	arch = x86_64
+	license = LicenseRef-freeware
+	makedepends = gendesk
+	makedepends = asar
+	makedepends = npm
+	depends = electron20
+	provides = xiguavideo
+	conflicts = xiguavideo
+	conflicts = deepin-wine-xiguavideo
+	noextract = xiguavideo-1.0.9.exe
+	source = xiguavideo-1.0.9.exe::https://lf-xigua-pc.ixigua.com/obj/xigua-video-electron/6922326164589517070/releases/11463809/1.0.9/win32/xigua-video-1.0.9-default.exe
+	source = LICENSE.html
+	source = xiguavideo.sh
+	sha256sums = 555761bb662ca4268c737e198937de1a3ba722b44707a6f5ce605445cfaa09c2
+	sha256sums = bd956769c0d43acd95075a4a95c2ffe5b31f404b4c8675c481e95d0307e82bf1
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
+
+pkgname = xiguavideo-bin
