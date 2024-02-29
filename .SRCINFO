@@ -1,21 +1,18 @@
 pkgbase = chatpad-ai-bin
 	pkgdesc = Not just another ChatGPT user-interface!
 	pkgver = 1.4.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://chatpad.ai/
 	arch = x86_64
-	license = AGPL3
-	makedepends = squashfuse
+	license = AGPL-3.0-only
+	makedepends = fuse2
 	depends = electron25
 	depends = hicolor-icon-theme
-	depends = dbus-glib
-	depends = libdbusmenu-glib
-	depends = gtk2
 	provides = chatpad-ai=1.4.0
 	conflicts = chatpad-ai
 	source = chatpad-ai-1.4.0.AppImage::https://dl.todesktop.com/230313oyppkw40a
 	source = chatpad-ai.sh
 	sha256sums = 05593b7575fe119cb08aa6049cb93d76dc2cfe0cc86fc0db2d22601f453d9c93
-	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
+	sha256sums = f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1
 
 pkgname = chatpad-ai-bin
