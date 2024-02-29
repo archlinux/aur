@@ -3,7 +3,7 @@
 _name=isosurfaces
 
 pkgname=python-isosurfaces
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Construct isolines/isosurfaces of a 2D/3D scalar field defined by a function."
 
@@ -12,7 +12,7 @@ license=("MIT")
 url="https://github.com/jared-hughes/isosurfaces"
 
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('0331d626dae0f1fd71ce9d9a559aa27d223ebf58c04564dd98b747cb81e6ee259696495c6deb7c6b47cd812647b505c3101486ee704bd9b69656396a6aac23a5')
+sha512sums=('fe9634b7ce748ef5542826a7efd0e4f9c3059f344bf82a54933d8456b546e839f2e888db9cc63c53d166d07dc7eb0a8c314fa84e17724c01a8de1edfa5d23377')
 
 depends=(
     "python"
@@ -33,6 +33,5 @@ build () {
 package () {
     cd "$srcdir/$_name-$pkgver" || exit
     python -m installer --destdir="$pkgdir" dist/*.whl
-    # LICENSE file missing in v0.1.0 package
-    # install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_name/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_name/LICENSE"
 }
