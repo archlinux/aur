@@ -1,16 +1,16 @@
 pkgbase = tracexec
 	pkgdesc = A small utility for tracing execve{,at}
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/kxxt/tracexec
 	arch = x86_64
 	arch = aarch64
 	arch = riscv64
-	license = MIT
+	license = GPL-2.0-or-later
 	makedepends = cargo
 	depends = gcc-libs
 	conflicts = tracexec-bin
-	source = tracexec-0.0.4.tar.gz::https://static.crates.io/crates/tracexec/tracexec-0.0.4.crate
-	b2sums = ef2b940063c0aa234bf5c4046136a2cfc063dc926f8d55b595ddc640c4e5e3aad45f206cc9acfadae272ae0a7405c697467025bce1a97ba0a7bad39224dcf801
+	source = tracexec-0.0.5.tar.gz::https://static.crates.io/crates/tracexec/tracexec-0.0.5.crate
+	b2sums = a934637efb5be5a8fa573073ce89f18ec4a83b1ba1c4de52a821045a802d0b30fcd04488035fd02aef13b7527fa050157d5f3f71c384854838ac7db34317c979
 
 pkgname = tracexec

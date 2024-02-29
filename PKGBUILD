@@ -1,11 +1,11 @@
 # Maintainer:  kxxt <rsworktech at outlook dot com>
 pkgname=tracexec
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="A small utility for tracing execve{,at}"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/kxxt/tracexec"
-license=('MIT')
+license=('GPL-2.0-or-later')
 depends=('gcc-libs')
 makedepends=('cargo')
 conflicts=('tracexec-bin')
@@ -13,10 +13,13 @@ backup=()
 options=()
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 noextract=()
-b2sums=('ef2b940063c0aa234bf5c4046136a2cfc063dc926f8d55b595ddc640c4e5e3aad45f206cc9acfadae272ae0a7405c697467025bce1a97ba0a7bad39224dcf801')
+b2sums=('a934637efb5be5a8fa573073ce89f18ec4a83b1ba1c4de52a821045a802d0b30fcd04488035fd02aef13b7527fa050157d5f3f71c384854838ac7db34317c979')
 
 case "$CARCH" in
-    riscv64) RUST_ARCH=riscv64gc ;;
+    riscv64)
+        RUST_ARCH=riscv64gc
+        _feature_flags="--no-default-features"
+        ;;
     *) RUST_ARCH="$CARCH" ;;
 esac
 
@@ -29,13 +32,13 @@ build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release
+    cargo build --frozen --release $_feature_flags
 }
 
 check() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen
+    cargo test --frozen $_feature_flags
 }
 
 package() {
