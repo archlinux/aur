@@ -1,7 +1,7 @@
 pkgbase = resistormaid
 	pkgdesc = CLI resistor calculator
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sateallia.org/software/
 	arch = x86_64
 	license = MIT
