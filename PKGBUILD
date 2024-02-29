@@ -47,7 +47,7 @@ build() {
     else
       echo "You need to provide metadata files usually found under C:/Windows/System32/WinMetadata on a
 Windows system and point this build script to it via the WIN_METADATA environment variable.
-Otherwise this package will not container all headers that are required by e.g. Qt 6."
+Otherwise this package will not contain all headers that are required by e.g. Qt 6."
     fi
 
     # add rust metadata provided by https://github.com/microsoft/windows-rs

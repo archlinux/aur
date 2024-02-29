@@ -21,3 +21,4 @@ pkgbase = mingw-w64-cppwinrt
 	sha256sums = fa6f1ad3677ee46ded34ad8811fc365a783d9aa414206a60b52dff261db85ef3
 
 pkgname = mingw-w64-cppwinrt
+
