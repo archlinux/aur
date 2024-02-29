@@ -3,7 +3,7 @@ pkgname=droppoint-bin
 _pkgname=DropPoint
 pkgver=1.2.1
 _electronversion=13
-pkgrel=8
+pkgrel=9
 pkgdesc="Make drag-and-drop easier using DropPoint. Drag content without having to open side-by-side windows"
 arch=('x86_64')
 url="https://droppoint.netlify.app/"
@@ -20,13 +20,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('b272d4415363eb33c54a6bec11aff870c51a1af4cf736ee76190bd4bd71ca5f4'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            'f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
