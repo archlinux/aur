@@ -1,7 +1,7 @@
 pkgbase = xm-video-player-bin
 	pkgdesc = A high-quality client that supports playing multiple streaming formats such as MP4, M3U8, FLV, mpeg flash, etc.一款高颜值的支持播放mp4, m3u8,flv,mpeg-dash等多种流媒体格式的客户端
 	pkgver = 0.5.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://tauri-update-server-chi.vercel.app/
 	arch = x86_64
 	license = BSD-3-Clause
