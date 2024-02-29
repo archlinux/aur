@@ -1,6 +1,5 @@
-src
-pkg
 firstuseauthenticator
-*.pkg.tar.xz
-*.pkg.tar.zst
+src/
+pkg/
+jupyterhub-firstuseauthenticator-*.pkg*
 *.log
