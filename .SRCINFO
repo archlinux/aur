@@ -1,15 +1,14 @@
 pkgbase = libcuba
 	pkgdesc = A library for mutidimensional numerical integration
-	pkgver = 4.2.1
+	pkgver = 4.2.2
 	pkgrel = 1
-	url = http://www.feynarts.de/cuba/
-	arch = any
+	url = https://feynarts.de/cuba/
+	arch = x86_64
 	license = LGPL
 	makedepends = make
 	makedepends = automake
 	makedepends = gcc
-	source = http://www.feynarts.de/cuba/Cuba-4.2.1.tar.gz
-	md5sums = 0f4227b0fb310135f210a88c0d620231
+	source = https://feynarts.de/cuba/Cuba-4.2.2.tar.gz
+	sha256sums = 8d9f532fd2b9561da2272c156ef7be5f3960953e4519c638759f1b52fe03ed52
 
 pkgname = libcuba
-

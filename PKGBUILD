@@ -1,30 +1,26 @@
-# Maintainer: revelation60 (benruyl@gmail.com)
-
 pkgname=libcuba
-pkgver=4.2.1
+pkgver=4.2.2
 pkgrel=1
 pkgdesc='A library for mutidimensional numerical integration'
-arch=('any')
-url="http://www.feynarts.de/cuba/"
+arch=('x86_64')
+url="https://feynarts.de/cuba/"
 license=('LGPL')
 makedepends=('make' 'automake' 'gcc')
-source=("http://www.feynarts.de/cuba/Cuba-$pkgver.tar.gz")
-md5sums=('0f4227b0fb310135f210a88c0d620231')
+source=("https://feynarts.de/cuba/Cuba-$pkgver.tar.gz")
+sha256sums=('8d9f532fd2b9561da2272c156ef7be5f3960953e4519c638759f1b52fe03ed52')
 
 build() {
   cd "$srcdir/Cuba-$pkgver"
-  ./configure --prefix=/usr
-  make
+  CFLAGS="-fPIC ${CFLAGS}" ./configure --prefix=/usr
+  make -j1
 }
 
 check() {
   cd "$srcdir/Cuba-$pkgver"
-  make -k check
+  make -k check -j1
 }
 
 package() {
-  cd "$pkgdir"
-  install -Dm 644 "$srcdir/Cuba-$pkgver/cuba.pdf" usr/share/doc/cuba/cuba.pdf
-  install -Dm 644 "$srcdir/Cuba-$pkgver/libcuba.a" usr/lib/libcuba.a
-  install -Dm 644 "$srcdir/Cuba-$pkgver/cuba.h" usr/include/cuba.h
+  cd "$srcdir/Cuba-$pkgver"
+  make install -j1 DESTDIR="$pkgdir"/usr
 }
