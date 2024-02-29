@@ -6,11 +6,10 @@ pkgbase = requirements-language-server
 	arch = any
 	license = GPL3
 	makedepends = python-installer
-	depends = python-pygls
-	depends = python-platformdirs
-	depends = python-jinja
-	depends = pip-cache
-	depends = pip-tools
+	depends = python-aiohttp
+	depends = python-python-platformdirs
+	depends = python-lsp-tree-sitter
+	depends = python-python-tree-sitter-requirements
 	source = https://files.pythonhosted.org/packages/py3/r/requirements_language_server/requirements_language_server-0.0.4-py3-none-any.whl
 	sha256sums = b29b4861c432ad5f1d8c9a19d5e285e6077c37de3972f8384c8b782cd4f7f2ac
 
