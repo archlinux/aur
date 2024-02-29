@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Yass Reloaded
+Comment=Editor for Ultrastar karaoke songs
+Exec=yass-reloaded %U
+Icon=yass-reloaded
+Categories=Editor
