@@ -34,9 +34,15 @@ prepare(){
     git -C "$srcdir/$pkgname" clean -dfx
 }
 
- pkgver() {
+pkgver() {
     cd "$srcdir/$pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build(){
+    # Compile UI...
+    cd "$srcdir/$pkgname/python"
+    pyuic6 -x "cwsimgui.ui" -o "cwsimgui.py" --indent=3
 }
 
 package() {
@@ -44,8 +50,9 @@ package() {
   install -dm755 "$pkgdir/opt/$pkgname"
   install -dm755 "$pkgdir/usr/bin"
   install -Dm755 ./*.py "$pkgdir/opt/$pkgname"
+  install -Dm755 ./*.ui "$pkgdir/opt/$pkgname"
+  cp -r ./translate "$pkgdir/opt/$pkgname/"
   install -Dm755 "MASTER.SCP" "$pkgdir/opt/$pkgname"
   echo "python /opt/$pkgname/cwsim.py" > "$pkgdir/usr/bin/cwsim"
   chmod 755 "$pkgdir/usr/bin/cwsim"
 }
-  
