@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=net-player
 _pkgname="${pkgname//-p/P}"
-pkgver=1.5.0
+pkgver=2.0.1
 _electronversion=13
 _nodeversion=16
 pkgrel=1
@@ -28,7 +28,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -38,10 +38,10 @@ _ensure_local_nvm() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -f -n -q --categories "AudioVideo" --name "${_pkgname}" --exec "${pkgname}"
+    gendesk -f -n -q --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     sed -e "s|mac|linux|g" -e "s|zip|AppImage|g" -i vue.config.js
     export npm_config_build_from_source=true
@@ -50,8 +50,8 @@ build() {
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export npm_config_disturl=https://electronjs.org/headers
     export HOME="${srcdir}/.electron-gyp"
-    yarn install #--cache-folder "${srcdir}/.yarn_cache" --production
-    yarn electron:build
+    yarn install --no-lockfile #--cache-folder "${srcdir}/.yarn_cache" --production
+    yarn run electron:build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
@@ -61,7 +61,7 @@ package() {
         _osarchdir=linux-unpacked
     fi
     install -Dm644 "${srcdir}/${pkgname}.git/dist_electron/${_osarchdir}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/${pkgname}/dist_electron/${_osarchdir}/resources/build" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/${pkgname}.git/dist_electron/${_osarchdir}/resources/build" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${pkgname}.git/dist_electron/${_osarchdir}/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/swiftshader"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}.git/src/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
