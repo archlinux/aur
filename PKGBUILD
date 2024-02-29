@@ -1,6 +1,5 @@
-# Maintainer: revelation60 <benruyl@gmail.com>
-# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: revelation60 <benruyl@gmail.com>
 pkgname=gnome-shell-extension-gtile-git
 _uuid=gTile@vibou
 pkgver=53.r0.g138a98c
