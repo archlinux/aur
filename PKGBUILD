@@ -2,14 +2,14 @@
 # Contributor: Faerbit <faerbit at gmail dot com>
 
 pkgname=usbguard-notifier-git
-pkgver=0.0.6.6.gaf64a92
+pkgver=0.1.0.1.gf4586b7
 pkgrel=1
 pkgdesc="A tool for detecting usbguard policy and device presence changes"
 arch=('x86_64')
 url="https://github.com/Cropi/usbguard-notifier"
 license=('GPL2')
-depends=('usbguard' 'libnotify' 'librsvg')
-makedepends=('catch2' 'asciidoc' 'git')
+depends=('gcc-libs' 'glib2' 'glibc' 'usbguard' 'libnotify' 'librsvg')
+makedepends=('catch2-v2' 'asciidoc' 'git')
 source=("git+https://github.com/Cropi/usbguard-notifier")
 sha256sums=('SKIP')
 conflicts=('usbguard-notifier')
@@ -19,13 +19,18 @@ pkgver(){
 	git describe --tags | sed "s/usbguard-notifier-//;s/-/./g"
 }
 build() {
-        cd "$srcdir/usbguard-notifier"
-	./autogen.sh
-        ./configure CPPFLAGS=-I/usr/include/catch2 --prefix=/usr
-        make
+    cd "$srcdir/usbguard-notifier"
+    sed -i 's|-I/usr/include/catch|-I/usr/include/catch2|' \
+      ./configure.ac
+    ./autogen.sh
+    ./configure --prefix=/usr
+    make
 }
-
+check() {
+    cd "$srcdir/usbguard-notifier"
+    make check
+}
 package() {
-        cd "$srcdir/usbguard-notifier"
-        make DESTDIR="$pkgdir/" SYSTEMD_UNIT_DIR=/usr/lib/systemd/user/ install
+    cd "$srcdir/usbguard-notifier"
+    make DESTDIR="$pkgdir" install
 }
