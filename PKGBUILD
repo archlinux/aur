@@ -12,9 +12,8 @@ _minorver=0
 _securityver=1
 _updatever=0
 pkgver=21.0.1.0.r184.ge338a16
-pkgrel=1
+pkgrel=2
 _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
-pkgdesc="OpenJDK Java 21 Wakefield"
 arch=('x86_64')
 url='https://openjdk.java.net/'
 license=('custom')
@@ -140,7 +139,7 @@ check() {
 }
 
 package_jre-openjdk-wakefield-headless() {
-  pkgdesc="OpenJDK Java ${_majorver} headless runtime environment"
+  pkgdesc="OpenJDK Java ${_majorver} headless wayland runtime environment"
   depends=("${_commondeps[@]}" 'giflib')
   optdepends=('java-rhino: for some JavaScript support')
   provides=("java-runtime-headless=${_majorver}" "java-runtime-headless-openjdk=${_majorver}" "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}")
@@ -197,7 +196,7 @@ package_jre-openjdk-wakefield-headless() {
 }
 
 package_jre-openjdk-wakefield() {
-  pkgdesc="OpenJDK Java ${_majorver} full runtime environment"
+  pkgdesc="OpenJDK Java ${_majorver} full wayland runtime environment"
   depends=("${_commondeps[@]}" 'giflib' 'libgif.so' 'libpng')
   optdepends=('alsa-lib: for basic sound support'
               'gtk2: for the Gtk+ 2 look and feel - desktop usage'
@@ -264,7 +263,7 @@ package_jre-openjdk-wakefield() {
 }
 
 package_jdk-openjdk-wakefield() {
-  pkgdesc="OpenJDK Java ${_majorver} development kit"
+  pkgdesc="OpenJDK Java ${_majorver} wayland development kit"
   depends=("${_commondeps[@]}" 'java-environment-common=3'
            'hicolor-icon-theme' 'libelf' 'libgif.so' 'libpng'
            'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'libjpeg.so'
@@ -342,7 +341,7 @@ package_jdk-openjdk-wakefield() {
 }
 
 package_openjdk-wakefield-src() {
-  pkgdesc="OpenJDK Java ${_majorver} sources"
+  pkgdesc="OpenJDK Java ${_majorver} wayland sources"
   arch=('any')
   # Depends on JDK to get license files
   depends=("jdk${_majorver}-openjdk=${pkgver}-${pkgrel}")
@@ -355,7 +354,7 @@ package_openjdk-wakefield-src() {
 }
 
 package_openjdk-wakefield-doc() {
-  pkgdesc="OpenJDK Java ${_majorver} documentation"
+  pkgdesc="OpenJDK Java ${_majorver} wayland documentation"
   arch=('any')
   # Depends on JDK to get license files
   depends=("jdk${_majorver}-openjdk=${pkgver}-${pkgrel}")
