@@ -10,7 +10,7 @@ pkgbase = plasma-desktop-run-command
 	makedepends = extra-cmake-modules
 	depends = plasma-framework
 	provides = plasma-desktop-run-command
-	source = run-command-0.1.tar.gz::https://github.com/rZn/run-command/archive/refs/tags/0.1.tar.gz
+	source = run-command-0.1.tar.gz::https://github.com/rZn/plasma-desktop-run-command/archive/refs/tags/0.1.tar.gz
 	sha256sums = 1c94138280f338478415a8afa76bc977cce40e0f2f48eb4e87704d91a7746aaf
 
 pkgname = plasma-desktop-run-command
