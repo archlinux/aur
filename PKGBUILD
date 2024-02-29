@@ -3,27 +3,30 @@
 _pkgname=gss
 _pkgver=2.2-7
 pkgname=r-${_pkgname,,}
-pkgver=2.2.7
-pkgrel=1
-pkgdesc='General Smoothing Splines'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="General Smoothing Splines"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
+  blas
+  lapack
   r
 )
 makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3b13144702c570c83462b4ea2ad17f4bd630cff5bf2ab0347a33c7e86a4f3f6a')
+md5sums=('e86db9bf39e0d151e7242e42c9b6f7ca')
+b2sums=('5ae14240d9e8e6b4a7eb2efd4a6423b59efd7dacf587bcf57bfa41c44938e693ffa0aa1b93974baea70dee41a811dd25727a5ece7d250e0787f06341ce462c74')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
