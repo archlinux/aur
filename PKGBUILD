@@ -1,16 +1,15 @@
 # Maintainer: ROllerozxa <rollerozxa@voxelmanip.se>
 pkgname=principia-git
-pkgver=r180.e03d1e0
+pkgver=r276.40bb72e7
 pkgrel=1
 pkgdesc="Physics-based sandbox building game."
 url='https://github.com/Bithack/principia/'
 arch=('x86_64' 'i686')
 license=('bsd-3')
-depends=('gtk3' 'glew' 'curl' 'libpng' 'libjpeg' 'freetype2' 'sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf')
-makedepends=('cmake' 'ninja')
+depends=('gtk3' 'glew' 'curl' 'libpng' 'libjpeg' 'freetype2' 'sdl2')
+makedepends=('git' 'cmake' 'ninja')
 source=('git+https://github.com/Bithack/principia')
 sha256sums=(SKIP)
-options=()
 
 pkgver() {
 	cd principia
