@@ -1,5 +1,3 @@
-# Maintainer: Sarat Chandra <me at saratchandra dot in>
-
 pkgname=lefthook-bin
 pkgver=1.6.4
 pkgrel=1
