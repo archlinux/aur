@@ -3,7 +3,7 @@ pkgname=tockler-bin
 _pkgname=Tockler
 pkgver=3.21.18
 _electronversion=16
-pkgrel=2
+pkgrel=3
 pkgdesc="An application that tracks your time by monitoring your active window title and idle time."
 arch=('x86_64')
 url="https://tockler.io/"
@@ -14,17 +14,14 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
     'nodejs'
-    'python'
+    'python>3'
     'python-setuptools'
     'java-runtime'
     'perl'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 options=('!strip')
 source=(
@@ -32,11 +29,11 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('0f9702f1ca0e390825171d3bdbbdf495e1dcc787c50531f39969ece1f3e656df'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            'f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
