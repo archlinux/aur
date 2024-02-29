@@ -2,7 +2,8 @@
 
 pkgname=telegram-a
 realname=telegram-tt
-pkgver=10.4.6
+pkgver=10.4.7
+gitpkgver=a11db94e34e1b07af4c0261b02ded185d56e252c
 pkgrel=1
 pkgdesc="Official Telegram Web client version A system Electron version"
 arch=('any')
@@ -11,7 +12,7 @@ license=('GPL3')
 depends=('electron' 'libappindicator-gtk3' 'zlib' 'hicolor-icon-theme')
 makedepends=('asar' 'yarn' 'npm' 'git')
 conflicts=("${pkgname}"-appimage "${pkgname}"-bin)
-source=("https://github.com/Ajaxy/${realname}/archive/v${pkgver}.tar.gz"
+source=("https://github.com/Ajaxy/${realname}/archive/${gitpkgver}.tar.gz"
                 "${pkgname}"
                 "${pkgname}.desktop"
                 "electron-builder.yml"
@@ -20,7 +21,7 @@ source=("https://github.com/Ajaxy/${realname}/archive/v${pkgver}.tar.gz"
                 "disable_statoscope.patch"
                 "run_husky_install_only_in_git.patch"
                 "force-disable-auto-update.patch")
-sha256sums=('36ae19142a5883810da211c8a3efee7001d2b3c82ff75f1a2261723534f751e0'
+sha256sums=('746d89ae45e0e931d95b4950a2419cfd9c1373b9ca1f1a7299d728b33bd8b397'
                 'f90da929a33048561899c8774969e6a1012dcbf679e0082c835783278b41b780'
                 'efeb0cd71fd3d39d75744885a585e9961481a68ccf885a0b4f929eaf062c2b35'
                 '7b40d89c682a491507f81e43adfc2793bedd65862017975c182380301455007d'
@@ -31,7 +32,7 @@ sha256sums=('36ae19142a5883810da211c8a3efee7001d2b3c82ff75f1a2261723534f751e0'
                 '4e9f3c68fa01604d71002bb03fcdb248e8468cff2d279ecffff2619402ea29df')
 
 prepare() {
-    cd "${srcdir}/${realname}-${pkgver}"
+    cd "${srcdir}/${realname}-${gitpkgver}"
 
     # Apply patches
     patch -Np1 -i "${srcdir}/set_custom_app_name.patch"
@@ -41,11 +42,11 @@ prepare() {
     patch -Np1 -i "${srcdir}/force-disable-auto-update.patch"
 
     # Workaround 
-    echo "ignore-engines true" >> "${srcdir}/${realname}-${pkgver}/.yarnrc"
+    echo "ignore-engines true" >> "${srcdir}/${realname}-${gitpkgver}/.yarnrc"
 }
 
 build() {
-    cd "${srcdir}/${realname}-${pkgver}"
+    cd "${srcdir}/${realname}-${gitpkgver}"
 
     # See https://gitlab.archlinux.org/archlinux/packaging/packages/telegram-desktop/-/blob/ab56b44af59db2c3459ddb17840f3ff4afe86cb2/PKGBUILD#L32
     export ENV=production
@@ -60,6 +61,6 @@ build() {
 package() {
     install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm644 "${srcdir}/${realname}-${pkgver}/src/assets/telegram-logo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/telegram-a.svg"
-    asar extract "${srcdir}/${realname}-${pkgver}/dist-electron/linux-unpacked/resources/app.asar" "$pkgdir/usr/lib/$pkgname/"
+    install -Dm644 "${srcdir}/${realname}-${gitpkgver}/src/assets/telegram-logo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/telegram-a.svg"
+    asar extract "${srcdir}/${realname}-${gitpkgver}/dist-electron/linux-unpacked/resources/app.asar" "$pkgdir/usr/lib/$pkgname/"
 }
