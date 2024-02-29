@@ -1,36 +1,32 @@
 pkgname=kwinft
-pkgver=5.27
-pkgrel=3
-pkgdesc='Wayland compositor and X11 window manager'
+_pkgname=thesius-ship
+pkgver=6.0.0
+pkgrel=1
+pkgdesc='thesius-ship: Wayland and X11 Compositor for the KDE Plasma desktop formerly named kwinft'
 arch=(x86_64 aarch64)
-url="https://gitlab.com/kwinft/kwinft"
+url="https://github.com/winft/thesius-ship"
 license=(LGPL)
-depends=(breeze kdisplay-kwinft kinit kscreenlocker plasma-framework5 python qt5-script wrapland xcb-util-cursor wayland xorg-xwayland wlroots kdecoration)
-makedepends=(extra-cmake-modules git kdoctools5)
+depends=(breeze kinit kscreenlocker libplasma python qt6-tools xcb-util-cursor wayland xorg-xwayland wlroots kdecoration)
+makedepends=(extra-cmake-modules git kdoctools)
 optdepends=('qt6-virtualkeyboard: virtual keyboard support for kwin-wayland' 'qt6-tools')
 provides=("kwin")
 conflicts=("kwin")
-source=("git+https://gitlab.com/kwinft/kwinft.git")
-sha256sums=('SKIP')
+source=("https://github.com/winft/theseus-ship/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('ffd8cf6c0b48cda918a74df372c55f42e00c9151420b4148b5e9f67ae05a05d5')
 install=kwinft.install
 
 prepare() {
-  cd kwinft
-  git checkout Plasma/$pkgver
+  mkdir -p $pkgname
+  cd $pkgname
+  tar -xvf ../v$pkgver.tar.gz --strip-components=1
 }
 
 build() {
   mkdir -p build
   cd build
-  cmake ../kwinft \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_LIBEXECDIR=lib \
-    -DBUILD_TESTING=OFF
-  make
+  cmake ../$pkgname \
+    -DCMAKE_BUILD_TYPE=Release
 }
-
 
 package() {
   cd build
