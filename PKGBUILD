@@ -3,7 +3,7 @@ _appname=adrive
 pkgname="deepin-wine-${_appname}"
 _pkgname="com.${_appname}.deepin"
 _officalname=aDrive
-pkgver=4.11.0
+pkgver=4.12.0
 _deepinver=2.2.6deepin8
 pkgrel=1
 pkgdesc="Aliyun aDrive on Deepin Wine 6"
@@ -16,10 +16,7 @@ depends=(
     'deepin-wine6-stable'
     'deepin-wine-helper'
     'xdg-utils'
-    'lib32-glibc'
     'hicolor-icon-theme'
-    'lib32-libxext'
-    'lib32-libx11'
 )
 makedepends=(
     'p7zip'
@@ -28,24 +25,21 @@ install="${pkgname}.install"
 source=(
     "${_pkgname}_${_deepinver}_i386.deb::https://com-store-packages.uniontech.com/appstore/pool/appstore/c/${_pkgname}/${_pkgname}_${_deepinver}_i386.deb"
     "${_officalname}-${pkgver}.exe::https://cdn.aliyundrive.net/downloads/apps/desktop/${_officalname}-${pkgver}.exe"
-    "${pkgname}.install"
     "LICENSE.html::https://terms.alicdn.com/legal-agreement/terms/suit_bu1_alibaba_group/suit_bu1_alibaba_group202102022125_53871.html"
     "${pkgname}.sh"
 )
 sha256sums=('9db53833b86b3ad941f23bdefa354170ec432c3b15980621e8011261d5617843'
-            '507bf86e5dffe75fc9cdd8caea0e1b284dd10dfeba435e331040c305958df7a6'
-            '9fc08b3f39ab99a3335449f6ea69aff4bb67d8b4dd2b243009738369af544201'
-            '5267ed2dad4ff68930aa39f03484678644ff59952cdb10ad338bcbd32857d8d7'
-            'f6a28a3d04d9793ecc8944d460bf051af80528fb0a56a4d2f0f1295d809ddbec')
+            '9a829cc1e6a93ab55f89d79339113e4ab142e3cc30e7bfc9d1edd08d2090bc7c'
+            'e6092d61af50523fde28e50d680b00fb7efe565314baf6e97389a86fd1b59074'
+            '43de3d52a2d41a4f95d685c4fa89c00d9e67d4df82c2b5fd12f2ba42a10d547d')
 build() {
-    sed "s|@bottlename@|Deepin-${_officalname}|g" -i "${srcdir}/${pkgname}.install"
     sed -e "s|@bottlename@|Deepin-${_officalname}|g" \
         -e "s|@appver@|${pkgver}|g" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|/@pathname@|${_officalname}|g" \
         -i "${srcdir}/${pkgname}.sh"
 
-    bsdtar -xf data.tar.xz -C "${srcdir}"
+    bsdtar -xf "${srcdir}/data."* -C "${srcdir}"
     mv "${srcdir}/opt/apps/${_pkgname}" "${srcdir}/opt/apps/${pkgname}"
     mkdir -p "${srcdir}/tmp"
     msg "Extracting Deepin Wine ${_officalname} archive ..."
