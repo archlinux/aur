@@ -2,7 +2,7 @@
 
 pkgname=lindvd
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="LinDVD - Actually an official DVD player for Linux from Mandriva Powerpack 2008 ISO"
 arch=('x86_64' 'i686')
 license=('custom')
