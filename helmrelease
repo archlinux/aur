@@ -176,7 +176,7 @@ function helmrelease() {
   helmReleaseYaml=$(_hr_getYaml "$yaml" "$index" HelmRelease)
   namespace=$(_hr_getNamespace "$helmReleaseYaml")
   remoteKubeconfig="$(<<< "$helmReleaseYaml" | yq -r '.spec.kubeConfig.secretRef.name // empty')"
-  if [[ -z "$remoteKubeconfig" ]] && ( [[ "$subCommand" != template ]] || [[ "$clusterConnected" == true ]] ); then
+  if ! [[ -z "$remoteKubeconfig" ]] && ( [[ "$subCommand" != template ]] || [[ "$clusterConnected" == true ]] ); then
     REMOTE_KUBECONFIG="$(mktemp)"
     trap "rm -f \"$REMOTE_KUBECONFIG\"" EXIT
     kubectl --namespace=$(<<<"$helmReleaseYaml" | yq -r '.metadata.namespace') get secret $remoteKubeconfig -o jsonpath='{.data.value}' | base64 -d > "$REMOTE_KUBECONFIG"
