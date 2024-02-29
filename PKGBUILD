@@ -1,7 +1,7 @@
 # Maintainer: earthian <418@duck.com>
 
 pkgname=rofi-pass-wayland-git
-pkgver=2.1.2.r6.g1124ac1
+pkgver=2.1.3.r0.gcab4a78
 pkgrel=1
 epoch=1
 pkgdesc="Rofi-wayland frontend for ZX2C4 pass project."
@@ -15,7 +15,7 @@ depends=(
   'rofi-lbonn-wayland-git'
 )
 optdepends=('qrencode: qrcode functionality'
-						'pass-otp: one time passwords generation')
+  'pass-otp: one time passwords generation')
 makedepends=('git')
 provides=("${pkgname%-git}=${pkgver%%.r*}")
 conflicts=("${pkgname%-git}" 'rofi-pass-git' 'rofi-pass-ydotool-git')
@@ -23,13 +23,13 @@ source=('git+https://github.com/Seme4eg/rofi-pass-wayland')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname%-git}"
   git describe --long --abbrev=7 | sed 's/-/.r/;s/-/./'
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	install -Dm755 rofi-pass "${pkgdir}/bin/rofi-pass"
-	install -Dm644 config.example "${pkgdir}/share/rofi-pass/config.example"
-	install -Dm644 README.org "${pkgdir}/share/doc/rofi-pass/README.org"
+  cd "$srcdir/${pkgname%-git}"
+  install -Dm755 rofi-pass "${pkgdir}/bin/rofi-pass"
+  install -Dm644 config.example "${pkgdir}/share/rofi-pass/config.example"
+  install -Dm644 README.org "${pkgdir}/share/doc/rofi-pass/README.org"
 }
