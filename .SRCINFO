@@ -1,13 +1,13 @@
 pkgbase = gossip-bin
 	pkgdesc = gossip nostr client built with rust
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mikedilger/gossip
 	arch = x86_64
 	license = MIT
 	depends = glibc
 	depends = gcc-libs
-	provides = gossip-bin
+	provides = gossip=${pkgver}
 	conflicts = gossip
 	conflicts = gossip-git
 	source = gossip_0.9.0_amd64.deb::https://github.com/mikedilger/gossip/releases/download/v0.9.0/gossip_0.9.0_amd64.deb
