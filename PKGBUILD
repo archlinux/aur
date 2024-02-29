@@ -1,11 +1,11 @@
 # Maintainer: chrhasse <hasse dot christopher at gmail dot com>
 pkgname='alacritty-sixel-git'
 _pkgname="alacritty"
-pkgver=0.12.0.2089.g724bcb2
+pkgver=0.14.0.2340.g6bd9c714
 pkgrel=1
 epoch=1
 arch=('x86_64' 'i686')
-url="https://github.com/chrhasse/alacritty-sixel"
+url="https://github.com/ayosec/alacritty"
 pkgdesc="A cross-platform, GPU-accelerated terminal emulator"
 license=('Apache')
 depends=('freetype2' 'fontconfig' 'libxi' 'libxcursor' 'libxrandr')
@@ -13,7 +13,7 @@ makedepends=('rust' 'cargo' 'cmake' 'fontconfig' 'ncurses' 'desktop-file-utils' 
 checkdepends=('ttf-dejavu') # for monospace fontconfig test
 provides=('alacritty')
 conflicts=('alacritty')
-source=("$_pkgname::git+https://github.com/chrhasse/alacritty-sixel.git")
+source=("$_pkgname::git+https://github.com/ayosec/alacritty.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -34,15 +34,21 @@ check(){
 package_alacritty-sixel-git() {
 	cd $_pkgname
 
-	desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "$srcdir/$_pkgname/extra/linux/Alacritty.desktop"
-
+	desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "extra/linux/Alacritty.desktop"
 	install -D -m755 "target/release/alacritty" "$pkgdir/usr/bin/alacritty"
-	install -D -m644 "extra/alacritty.man" "$pkgdir/usr/share/man/man1/alacritty.1"
+
+	scdoc < "extra/man/alacritty.1.scd" | install -D -m644 /dev/stdin \
+		"$pkgdir/usr/share/man/man1/alacritty.1"
+	scdoc < "extra/man/alacritty.5.scd" | install -D -m644 /dev/stdin \
+		"$pkgdir/usr/share/man/man5/alacritty.5"
+	scdoc < "extra/man/alacritty-msg.1.scd" | install -D -m644 /dev/stdin \
+		"$pkgdir/usr/share/man/man1/alacritty-msg.1"
+	scdoc < "extra/man/alacritty-bindings.5.scd" | install -D -m644 /dev/stdin \
+		"$pkgdir/usr/share/man/man5/alacritty-bindings.5"
+
 	install -D -m644 "extra/linux/org.alacritty.Alacritty.appdata.xml" "$pkgdir/usr/share/appdata/org.alacritty.Alacritty.appdata.xml"
-	install -D -m644 "alacritty.yml" "$pkgdir/usr/share/doc/alacritty/example/alacritty.yml"
 	install -D -m644 "extra/completions/alacritty.bash" "$pkgdir/usr/share/bash-completion/completions/alacritty"
 	install -D -m644 "extra/completions/_alacritty" "$pkgdir/usr/share/zsh/site-functions/_alacritty"
 	install -D -m644 "extra/completions/alacritty.fish" "$pkgdir/usr/share/fish/vendor_completions.d/alacritty.fish"
 	install -D -m644 "extra/logo/alacritty-term.svg" "$pkgdir/usr/share/pixmaps/Alacritty.svg"
-	install -D -m644 "extra/logo/compat/alacritty-term.png" "$pkgdir/usr/share/pixmaps/Alacritty.png"
 }
