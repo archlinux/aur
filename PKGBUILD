@@ -1,7 +1,7 @@
 # Maintainer: Evine Deng <evinedeng@hotmail.com>
 
 pkgname="backrest"
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="A web UI and orchestrator for restic backup."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
