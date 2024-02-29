@@ -1,12 +1,12 @@
 # Maintainer: SandaruKasa <sandarukasa plus aur at ya dot ru>
 
 pkgname=cargo-bisect-rustc-git
-pkgver=0.6.7.r563.57a9535
+pkgver=0.6.8.r594.9411af3
 pkgrel=1
 pkgdesc='Bisects rustc, either nightlies or CI artifacts'
 arch=('x86_64' 'aarch64')
 url="https://github.com/rust-lang/cargo-bisect-rustc"
-license=('MIT' 'Apache')
+license=("Apache-2.0 OR MIT")
 makedepends=(git rust cargo coreutils sed gcc)
 options=(!lto)
 depends=(rustup gcc-libs glibc openssl "libgit2.so" "liblzma.so")
@@ -19,7 +19,7 @@ sha256sums=(SKIP)
 prepare() {
   cd "${_git_folder}"
   # Automatically fix Cargo.lock if it is broken
-  cargo tree > /dev/null || true
+  # cargo tree > /dev/null || true
   cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 

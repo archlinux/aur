@@ -1,12 +1,11 @@
 pkgbase = cargo-bisect-rustc-git
 	pkgdesc = Bisects rustc, either nightlies or CI artifacts
-	pkgver = 0.6.7.r563.57a9535
+	pkgver = 0.6.8.r594.9411af3
 	pkgrel = 1
 	url = https://github.com/rust-lang/cargo-bisect-rustc
 	arch = x86_64
 	arch = aarch64
-	license = MIT
-	license = Apache
+	license = Apache-2.0 OR MIT
 	makedepends = git
 	makedepends = rust
 	makedepends = cargo
