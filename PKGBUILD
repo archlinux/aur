@@ -5,7 +5,7 @@ _officalname=AliMail
 _providername=Alibaba
 pkgver=2.7.1.13834
 _deepinver=1.6.7.0deepin2
-pkgrel=6
+pkgrel=7
 pkgdesc="Aliyun Mail client on Deepin Wine 6"
 arch=("x86_64")
 url="https://mail.aliyun.com/"
@@ -15,17 +15,7 @@ depends=(
     'deepin-wine-helper'
     'xdg-utils'
     'gtk2'
-    'fontconfig'
-    'lib32-libxext'
-    'at-spi2-core'
-    'pango'
-    'lib32-libx11'
-    'libx11'
-    'cairo'
-    'gdk-pixbuf2'
-    'freetype2'
     'hicolor-icon-theme'
-    'lib32-glibc'
 )
 makedepends=(
     'p7zip'
@@ -37,18 +27,15 @@ source=(
     "${_officalname}-${pkgver}.exe::https://aliyun-alimail-desktop.oss-cn-hangzhou.aliyuncs.com/alimail/alimail-standard/latest/${_officalname}.exe"
     "fake_simsun.ttc::https://images.xuthus.cc/images/fake_simsun.ttc"
     "LICENSE.html::https://help.aliyun.com/document_detail/464805.html"
-    "${pkgname}.install"
     "${pkgname}.sh"
 )
 noextract=("${_officalname}-${pkgver}.exe")
 sha256sums=('7e020363732d448a29a394afa3f6a5f2c54e600987af599e3a4b6c0edec3a61e'
             'f85e4a06c6da0781c4148dbe3ca4cf591996e445449aafb4198a747e22f9c1ce'
             '3e2ed9203a5ce3b2f00b6c942d8fac6b24e7a6e7b1ebc863cee2e27d3ff487db'
-            '156d9aed4a06c0ea6b50f6602a18009a5f61275d824ab87fd968c3b0e35de6e0'
-            '9fc08b3f39ab99a3335449f6ea69aff4bb67d8b4dd2b243009738369af544201'
-            '3b757e5efd86d1022b0732019bf50c8a47e8d4cc1a2934dd0b7db4bcb747310e')
+            '4e1c8cac900b9eb08b5830106c32913d3a5680230e073648f788dad479fdb0f2'
+            '4a548292efa8c2bed411a5ac61189eec1876cedbadbcf1d54f5ca8954b4cb785')
 build() {
-    sed "s|@bottlename@|Deepin-${_officalname}|g" -i "${srcdir}/${pkgname}.install"
     sed -e "s|@bottlename@|Deepin-${_officalname}|g" \
         -e "s|@sparkver@|${_deepinver}|g" \
         -e "s|@appver@|${pkgver}|g" \
@@ -56,7 +43,7 @@ build() {
         -e "s|@pathname@|${_officalname}|g" \
         -e "s|@providername@|${_providername}|g" \
         -i "${srcdir}/${pkgname}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     mv "${srcdir}/opt/apps/${_pkgname}" "${srcdir}/opt/apps/${pkgname}"
     mkdir -p "${srcdir}/tmp"
     msg "Extracting Deepin Wine ${_officalname} archive ..."
