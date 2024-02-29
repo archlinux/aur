@@ -2,7 +2,7 @@
 
 pkgname=sshd-openpgp-auth
 _name=ssh-openpgp-auth
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Create and manage OpenPGP certificates that serve as trust anchors for SSH host keys"
 arch=(x86_64)
@@ -18,7 +18,6 @@ makedepends=(
   gmp
   just
   nettle
-  openssl
   rust
   rust-script
 )
@@ -27,8 +26,8 @@ checkdepends=(
 )
 optdepends=('openssh: for working with a local sshd')
 source=($pkgname-$pkgver.tar.gz::https://codeberg.org/wiktor/ssh-openpgp-auth/archive/$pkgname/$pkgver.tar.gz)
-sha512sums=('038d76c1834f3e2f9b3b3c3d1a0da2c33ad52d23650a628627b90b8ce9bce66e07a2b8a44cf55b484e3de6fa3349f527f519d357fe5d0286352452f2151daca1')
-b2sums=('600093d839964d3cc2d0d18acf0a2c46ad7fae24a1ee02f128ea88f155489c17824a94054628ac52dce5ea9c52efdd61c5adb21e87c340f069d4106022af6dd0')
+sha512sums=('84510f31f1ee6342c7f393c915a44f9647526cf3fe924497e92ef65cc2f676e9d2fff788843d1e2f44cdfce16c1ca42af983a3870c4f1a06207707a35e8e8ced')
+b2sums=('ecf5ab9819551dd65cacf123802b40c551b53b665c1288e3792642839b08ac800f19c69e2cf868e4ae7257bf8b50b5905a36106f662057b0e5e0c9f9de96552a')
 validpgpkeys=()
 
 prepare() {
@@ -57,7 +56,6 @@ package() {
     bzip2 libbz2.so
     gmp
     nettle libnettle.so
-    openssl libcrypto.so libssl.so
   )
 
   install -vDm 755 $_name/target/release/$pkgname -t "$pkgdir/usr/bin/"
