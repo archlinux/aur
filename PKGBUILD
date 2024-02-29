@@ -22,7 +22,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/${_pkgname}"
     # Needed to ensure that we can find the latest man page and completions
-    rm -rf target
+    rm -rf target/release/build/${_pkgname}-*
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
@@ -44,13 +44,10 @@ package() {
     cd "$srcdir/${_pkgname}"
     local _cmd_name="target/release/${_pkgname}"
     # The directory has a random hash in it, so we need to find it
-    local _build_dir=$(ls -d target/debug/build/${_pkgname}-*/out)
+    local _build_dir=$(ls -d target/release/build/${_pkgname}-*/out)
     install -Dm0755 -t "$pkgdir/usr/bin/" "$_cmd_name"
-    mkdir -p "$pkgdir/usr/share/bash-completion/completions/"
-    mkdir -p "$pkgdir/usr/share/zsh/site-functions/"
-    mkdir -p "$pkgdir/usr/share/fish/vendor_completions.d/"
     install -Dm644 -t "$pkgdir/usr/share/man/man1/" "${_build_dir}/${_pkgname}.1"
-    install -m644 "${_build_dir}/_${_pkgname}" "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
-    install -m644 "${_build_dir}/${_pkgname}.bash" "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
-    install -m644 "${_build_dir}/${_pkgname}.fish" "$pkgdir/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
+    install -Dm644 "${_build_dir}/_${_pkgname}" "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
+    install -Dm644 "${_build_dir}/${_pkgname}.bash" "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
+    install -Dm644 "${_build_dir}/${_pkgname}.fish" "$pkgdir/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
 }
