@@ -1,7 +1,7 @@
 pkgbase = python-calcpy-git
 	pkgdesc = Terminal calculator and advanced math solver using Python, IPython and SymPy (built from latest commit)
 	pkgver = 0.r216.g9d78f3f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/idanpa/calcpy
 	arch = any
 	license = MIT
@@ -24,8 +24,10 @@ pkgbase = python-calcpy-git
 	depends = python-tzlocal
 	provides = calcpy
 	provides = python-calcpy
+	provides = python-previewer
 	conflicts = calcpy
 	conflicts = python-calcpy
+	conflicts = python-previewer
 	source = git+https://github.com/idanpa/calcpy.git
 	sha256sums = SKIP
 

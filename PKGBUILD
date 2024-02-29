@@ -5,7 +5,7 @@ pkgname='python-calcpy-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 pkgver=0.r216.g9d78f3f
-pkgrel=1
+pkgrel=2
 pkgdesc='Terminal calculator and advanced math solver using Python, IPython and SymPy (built from latest commit)'
 arch=('any')
 url="https://github.com/idanpa/$_srcname"
@@ -32,8 +32,8 @@ depends=(
   'python-tzlocal'
 )
 source=("git+$url.git")
-provides=("$_srcname" "$_pkgname")
-conflicts=("$_srcname" "$_pkgname")
+provides=("$_srcname" "$_pkgname" 'python-previewer')
+conflicts=("$_srcname" "$_pkgname" 'python-previewer')
 sha256sums=('SKIP')
 
 prepare() {
