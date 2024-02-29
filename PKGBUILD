@@ -12,7 +12,7 @@ _minorver=0
 _securityver=1
 _updatever=0
 pkgver=21.0.1.0.r184.ge338a16
-pkgrel=2
+pkgrel=3
 _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
 arch=('x86_64')
 url='https://openjdk.java.net/'
@@ -20,7 +20,8 @@ license=('custom')
 makedepends=('java-environment>=17' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
              'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib' 'pandoc'
              'graphviz' 'libfreetype.so' 'libjpeg.so' 'libgif.so' 'libpng' 'liblcms2.so'
-             'libnet' 'bash' 'libharfbuzz.so' 'gcc-libs' 'glibc' 'git' 'jdk21-openjdk')
+             'libnet' 'bash' 'libharfbuzz.so' 'gcc-libs' 'glibc' 'git' 'jdk21-openjdk'
+             'wayland')
 source=("git+https://github.com/openjdk/wakefield.git#branch=jdk21.0.1-wayland"
         "freedesktop-java.desktop"
         "freedesktop-jconsole.desktop"
