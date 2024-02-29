@@ -1,0 +1,26 @@
+pkgbase = python-pyrogram-kurimuzon-git
+	pkgdesc = A for of Pyrogram, an elegant, modern and asynchronous Telegram MTProto API framework in Python for users and bots
+	pkgver = 2.1.14.r4350.3e4c3b9
+	pkgrel = 1
+	url = https://github.com/KurimuzonAkuma/pyrogram
+	arch = any
+	license = LGPL-3.0-or-later
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-cov
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyaes
+	depends = python-pysocks
+	optdepends = python-tgcrypto: faster cryptography
+	provides = python-pyrogram
+	provides = python-pyrogram-kurimuzon
+	replaces = python-pyrogram
+	source = python-pyrogram-kurimuzon-git::git+https://github.com/KurimuzonAkuma/pyrogram.git
+	sha256sums = SKIP
+
+pkgname = python-pyrogram-kurimuzon-git
