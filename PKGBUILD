@@ -2,23 +2,22 @@
 # Maintainer: abelian424
 
 pkgname=kdisplay-kwinft
-pkgver=5.27.0
+pkgver=6.0.0
 pkgrel=1
 pkgdesc='App and daemon for display managing'
 arch=(x86_64 aarch64)
-url="https://gitlab.com/kwinft/kdisplay"
+url="https://github.com/winft/kdisplay"
 license=(LGPL)
-depends=('disman' kcmutils5 plasma-framework5 qt5-sensors)
+depends=('disman' kcmutils5 plasma-framework5 qt6-sensors)
 provides=(kscreen)
-conflicts=(kscreen)
 makedepends=(extra-cmake-modules git appstream)
-source=("https://gitlab.com/kwinft/kdisplay/-/archive/kdisplay@5.27.0/kdisplay-kdisplay@5.27.0.tar.gz")
-sha256sums=('e821aae5c3f428b0e759c7187d4e517d42b2a62aafc8f6271d7e93e770de9602')
+source=("https://github.com/winft/kdisplay/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('b1da715f9eb0cffb116ea9d0f756668da96848db562b4a2de5a524f321759537')
 
 prepare() {
   mkdir -p $pkgname
   cd $pkgname
-  tar -xvf ../kdisplay-kdisplay@$pkgver.tar.gz --strip-components=1
+  tar -xvf ../v$pkgver.tar.gz --strip-components=1
 }
 
 build() {
