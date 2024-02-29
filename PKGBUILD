@@ -3,18 +3,15 @@
 pkgname=jupyterlab-translate
 pkgdesc="JupyterLab language pack translations helper"
 url='https://github.com/jupyterlab/jupyterlab-translate'
-pkgver=1.3.3
-pkgrel=2
+pkgver=1.3.5
+pkgrel=1
 arch=('any')
-license=('BSD')
+license=('BSD-3-Clause')
 
-# python-copier tries to import the git command from python-plumbum, which fails
-# if git is not installed. This should be in the dependencies of python-copier,
-# but put it here for now until that is fixed.
 depends=(
-  'git' 'nodejs' 'python-babel' 'python-click' 'python-copier'
+  'nodejs' 'python-babel' 'python-click' 'python-copier'
   'python-copier-templates-extensions' 'python-crowdin-api-client'
-  'python-hatchling' 'python-jinja-time' 'python-polib' 'python-requests'
+  'python-hatchling' 'python-polib' 'python-requests'
 )
 makedepends=('python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
@@ -23,8 +20,14 @@ source=(
   "https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/${pkgname//-/_}-$pkgver.tar.gz"
 )
 sha256sums=(
-  '90bb0a0586e5e317432a05d9fe05918bd869c59ae9356cf3557b8f0f2eddfa45'
+  '4954fb5fb928ae272d33facd81e30e3aab48a569b00596e82775b5850a7c4c89'
 )
+
+prepare() {
+  cd "${pkgname//-/_}-$pkgver"
+  sed -i '/pydantic<2.0.0/d' pyproject.toml
+  sed -i '/jinja2-time/d' pyproject.toml
+}
 
 build() {
   cd "${pkgname//-/_}-$pkgver"
