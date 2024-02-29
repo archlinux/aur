@@ -6,7 +6,7 @@ _commit=
 pkgver=9.0.20240221 #${_srctag//-/.}
 _geckover=2.47.4
 _monover=9.0.0
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, experimental branch"
 url="https://github.com/ValveSoftware/Proton"
@@ -172,8 +172,10 @@ prepare() {
     patch -p1 -i "$srcdir"/0006-AUR-Fix-hwnd-redefinition.patch
 
     patch -p1 -i "$srcdir"/0001-AUR-Enable-winewayland.patch
-    patch -p1 -i "$srcdir"/0001-fshack-AMD-FSR-complete.patch
-    patch -p1 -i "$srcdir"/4947.patch
+    pushd wine
+        patch -p1 -i "$srcdir"/0001-fshack-AMD-FSR-complete.patch
+        patch -p1 -i "$srcdir"/4947.patch
+    popd
 }
 
 build() {
