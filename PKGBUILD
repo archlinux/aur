@@ -1,7 +1,7 @@
 # Maintainer: Theodore Huang <teddyhuangnan@gmail.com>
 pkgname=typstfmt-bin
-pkgver=0.2.7
-pkgrel=2
+pkgver=0.2.9
+pkgrel=1
 pkgdesc="Basic formatter for the Typst language with a future!"
 arch=("x86_64" "aarch64" "armv7h")
 url="https://github.com/astrale-sharp/typstfmt"
@@ -25,9 +25,9 @@ source_armv7h=(
 # checksum generate with 'makepkg -g'
 sha256sums=('3905892d35c90001cd11101d367d4073b773f30fa7ce868748969f4cc1fb24c2'
             '7e302d0694378f3f9584985cf56db84d89b0bcb9f78d04381397349ff50162af')
-sha256sums_x86_64=('ac0ec3a4a9099b9737d2a79b02173c4444835e4bc873eb7ed446fe5f5b87d2f4')
-sha256sums_aarch64=('80e990e47c5291c166cb1d5c6f22d17f7779b2644abf2543cef834c8dc3dfc10')
-sha256sums_armv7h=('3125f28e14d090f64d0b649060863c34b517ea9b1cc4e3da0e122797d3fe9a0c')
+sha256sums_x86_64=('e9d191d5ddad6e6876eadc38e334fc5e1f8ea64a8aebc289a80216d0b8e5529d')
+sha256sums_aarch64=('1396aaf5ec61bb35ff3ab71bc474fb3b164cdfb689ac74cda1f065636beb4363')
+sha256sums_armv7h=('99fe1b5509052e3650396c8df9471319d48754c2a1f9c6dcff2e9549e78adad8')
 
 build() {
 	if [ $CARCH == "x86_64" ]; then
