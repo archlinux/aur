@@ -2,7 +2,7 @@
 pkgname=owa-desktop-bin
 pkgver=1.0.1
 _electronversion=25
-pkgrel=5
+pkgrel=6
 pkgdesc="A simple Outlook Web (Office 365) Desktop application, built using Electron.js"
 arch=('x86_64')
 url="https://github.com/mikepruett3/owa-desktop"
@@ -19,13 +19,13 @@ source=(
 )
 sha256sums=('caa33aa8dab46de479837d3218598c30789a676dd5857ddd20ea22966a1adf32'
             '82f04c17c97a90cb676f7eec2bdeca09cfff8a6779b310226d8e750a70abad79'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            'f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.zst"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
