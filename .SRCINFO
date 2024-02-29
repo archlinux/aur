@@ -1,11 +1,11 @@
 pkgbase = zcfan
 	pkgdesc = Zero-configuration fan control for ThinkPad
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/cdown/zcfan
 	arch = any
 	license = MIT
-	source = https://github.com/cdown/zcfan/archive/1.2.1.zip
-	md5sums = a31abbb6d342429752fb200b62aa7cbd
+	source = https://github.com/cdown/zcfan/archive/1.3.0.zip
+	md5sums = f014f3f3623cfe4b0ab3c66378c14168
 
 pkgname = zcfan
