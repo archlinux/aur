@@ -1,10 +1,11 @@
 # Maintainer: SandaruKasa <sandarukasa plus aur at ya dot ru>
 
 pkgname=python-pyrofork-git
-provides=(python-pyrogram python-pyrofork)
+provides=("${pkgname%-git}" python-pyrogram)
+conflicts=("${pkgname%-git}" python-pyrogram)
 replaces=(python-pyrogram) # pyrogram is dead
 pkgver=2.3.19.r4369.dee698f
-pkgrel=1
+pkgrel=2
 pkgdesc="Pyrogram fork with Adjustable web page preview, Quote Reply, Story & Topics Support, Mongodb session storage, and much more."
 arch=("any")
 url="https://github.com/Mayuri-Chan/pyrofork"
