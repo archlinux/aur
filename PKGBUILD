@@ -7,12 +7,15 @@ else
   : ${_autoupdate:=true}
 fi
 
+: ${_install_path:=opt}
+
+unset _pkgtype
 : ${_pkgtype:=-bin}
 
 # basic info
 _pkgname="logseq-desktop"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=0.10.6
+pkgver=0.10.7
 pkgrel=1
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
@@ -33,7 +36,6 @@ _main_package() {
 
   _pkgsrc="Logseq-linux-x64"
   _pkgext="zip"
-  _install_path="opt"
   source+=("$url/releases/download/$_pkgver/$_pkgsrc-$_pkgver.$_pkgext")
   sha256sums+=('SKIP')
 
