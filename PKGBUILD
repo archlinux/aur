@@ -9,9 +9,9 @@ pkgname=python-${_base}
 pkgdesc="The Python interface of FEniCS"
 pkgver=2019.1.0.post0
 pkgrel=2
-arch=('x86_64')
+arch=(x86_64)
 url="https://bitbucket.org/fenics-project/${_base}"
-license=('LGPL3')
+license=(LGPL-3.0-or-later)
 depends=('dolfin=2019.1.0.post0'
   'python-pkgconfig'
   'python-ply'
@@ -34,10 +34,6 @@ build() {
 }
 
 check() {
-  if [ -z "$(ldconfig -p | grep libcuda.so.1)" ]; then
-    export OMPI_MCA_opal_warn_on_missing_libcuda=0
-  fi
-
   export OMPI_MCA_rmaps_base_oversubscribe=1
   export OMPI_MCA_mpi_yield_when_idle=1
   export OMPI_MCA_btl_base_warn_component_unused=0
