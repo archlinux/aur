@@ -1,0 +1,18 @@
+pkgbase = android-aarch64-hwdata
+	pkgdesc = hardware identification databases (android)
+	pkgver = 0.379
+	pkgrel = 1
+	url = https://github.com/vcrhonek/hwdata
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = android-environment
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/vcrhonek/hwdata/archive/refs/tags/v0.379.tar.gz
+	validpgpkeys = 3C40194FB79138CE0F78FD4919C2F062574F5403
+	md5sums = 2d8d413696545fd889ca3d32b78f64b5
+
+pkgname = android-aarch64-hwdata
