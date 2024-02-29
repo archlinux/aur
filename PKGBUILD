@@ -1,4 +1,4 @@
-# Maintainer: ButteredCats <ButteredCats@protonmail.com>
+# Maintainer: Butter Cat <ButteredCats@protonmail.com>
 
 _pkgname="xdg-unused-data"
 pkgname="${_pkgname}-git"
@@ -10,18 +10,18 @@ url="https://github.com/pawel-0/xdg-unused-data"
 license=('MIT')
 depends=('jq')
 makedepends=('git')
-provides=('xdg-unused-data')
-conflicts=('xdg-unused-data')
-source=("${_pkgname}"::'git+https://github.com/pawel-0/xdg-unused-data')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${_pkgname}::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
+  cd "${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "${srcdir}/${_pkgname}"
   install -Dm755 -t "${pkgdir}/opt/xdg-unused-data" xdg-unused-data.sh application_schema.json
   install -Dm755 -t "${pkgdir}/opt/xdg-unused-data/applications" applications/*
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
