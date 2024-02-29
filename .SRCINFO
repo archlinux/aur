@@ -1,14 +1,11 @@
 pkgbase = cwsim-git
 	pkgdesc = Cross-platform amateur radio WPX CW contest simulator written in python, based on Morse Runner.
 	pkgver = r105.be867e1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/w9cf/cwsim
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = python-build
-	makedepends = python-installer
-	makedepends = python-wheel
 	depends = python
 	depends = python-cffi
 	depends = python-cycler
