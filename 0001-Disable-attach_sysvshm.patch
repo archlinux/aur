@@ -1,0 +1,40 @@
+--- a/shm.c
++++ b/shm.c
+@@ -100,36 +100,7 @@
+ /* Attach a sysv style shared memory segment. */
+ void attach_sysvshm(char *name, char *opt)
+ {
+-	struct shmid_ds s;
+-	key_t key = sysvkey(name);
+-
+-	shmfd = shmget(key, shmlen, shmflags);
+-	if (shmfd < 0 && errno == ENOENT) {
+-		if (shmlen == 0)
+-			complain(
+-                     "need a --length to create a sysv shared memory segment");
+-		fprintf(stderr,
+-         "numactl: Creating shared memory segment %s id %ld mode %04o length %.fMB\n",
+-			name, shmid, shmmode, ((double)(shmlen + shmoffset)) / (1024*1024) );
+-		shmfd = shmget(key, shmlen + shmoffset, IPC_CREAT|shmmode|shmflags);
+-		if (shmfd < 0)
+-			nerror("cannot create shared memory segment");
+-	}
+-
+-	if (shmlen == 0) {
+-		if (shmctl(shmfd, IPC_STAT, &s) < 0)
+-			err("shmctl IPC_STAT");
+-		shmlen = s.shm_segsz;
+-	}
+-
+-	shmptr = shmat(shmfd, NULL, 0);
+-	if (shmptr == (void*)-1)
+-		err("shmat");
+-	shmptr += shmoffset;
+-
+-	shm_pagesize = (shmflags & SHM_HUGETLB) ? huge_page_size() : getpagesize();
+-
+-	check_region(opt);
++	nerror("cannot create shared memory segment");
+ }
+ 
+ /* Attach a shared memory file. */
