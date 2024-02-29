@@ -1,20 +1,19 @@
-# Maintainer: Collin Diekvoss <cdiekvoss@gmail.com>
+# Maintainer: Collin Diekvoss <collin@diekvoss.com>
 pkgname=plasma-desktop-run-command
-_pkgname=run-command
-pkgver=1.1
-pkgrel=1
+pkgver=0.1
+pkgrel=2
 pkgdesc="See the project's homepage for more information"
 arch=('x86_64')
-url="https://github.com/wsdfhjxc/run-command"
-license=('GPL3')
+url="https://github.com/rZn/run-command"
+license=('GPL2')
 depends=('plasma-framework')
 makedepends=('gcc' 'cmake' 'extra-cmake-modules')
 provides=("plasma-desktop-run-command")
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/wsdfhjxc/run-command/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('8e5a143df53864487f67b391e85012cd75f43e1a13d832cc118ba2948a14fb53')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/rZn/plasma-desktop-run-command/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('1c94138280f338478415a8afa76bc977cce40e0f2f48eb4e87704d91a7746aaf')
 
 build() {
-	cd "$srcdir/$_pkgname-$pkgver"
+	cd "$srcdir/$pkgname-$pkgver"
     mkdir -p build
     cd build
     cmake ..
@@ -22,7 +21,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$_pkgname-$pkgver/build"
+	cd "$srcdir/$pkgname-$pkgver/build"
 
     install -Dm644 plasma_containmentactions_runcommand.so "${pkgdir}/usr/lib/qt/plugins/plasma/containmentactions/plasma_containmentactions_runcommand.so"
 }
