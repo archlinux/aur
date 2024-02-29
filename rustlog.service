@@ -1,0 +1,12 @@
+[Unit]
+Description=Twitch logging service inspired by justlog
+
+[Service]
+User=rustlog
+Group=rustlog
+Restart=on-failure
+ExecStart=rustlog
+WorkingDirectory=/etc/rustlog
+
+[Install]
+WantedBy=default.target

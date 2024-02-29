@@ -1,0 +1,17 @@
+rustlog-git/
+rustlog-git-web/
+
+# ---> ArchLinuxPackages
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+pkg/
+src/

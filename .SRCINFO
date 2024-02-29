@@ -1,0 +1,23 @@
+pkgbase = rustlog-git
+	pkgdesc = Twitch logging service inspired by justlog
+	pkgver = r176.0f402ea
+	pkgrel = 1
+	url = https://github.com/boring-nick/rustlog
+	arch = x86_64
+	license = unknown
+	makedepends = cargo
+	makedepends = git
+	makedepends = yarn
+	optdepends = clickhouse: as database backend
+	provides = rustlog
+	conflicts = rustlog
+	options = !lto
+	backup = etc/rustlog/config.json
+	source = rustlog-git::git+https://github.com/boring-nick/rustlog.git
+	source = rustlog-git-web::git+https://github.com/boring-nick/justlog.git?branch=frontend-only-new
+	source = rustlog.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 96a554b27a5dcf2c11f5e01004b654af87bda0a01f1006f45f17e3a8e17a7e27
+
+pkgname = rustlog-git
