@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=woof-doom
 _pkgname=woof
-pkgver=14.0.0
+pkgver=14.1.0
 pkgrel=1
 pkgdesc="Woof! is a continuation of Lee Killough's Doom source port MBF targeted at modern systems"
 arch=(x86_64)
@@ -18,7 +18,7 @@ install=install.sh
 makedepends=(cmake python3)
 conflicts=(woof-git)
 source=("https://github.com/fabiangreffrath/${_pkgname}/archive/refs/tags/${_pkgname}_${pkgver}.tar.gz")
-sha256sums=(b0571ccda5d9428091aa5e238980cc4c08a3c22db2d7d1a16faae636e245f93b)
+sha256sums=(ad619f8b15b9fa0e690fe8094f394d4d1b3e7b7c3935317aac2f631835a09626)
 
 build() {
     # Use `-ffile-prefix-map` to avoid 'WARNING: Package contains reference to $srcdir' due to assert(...)
