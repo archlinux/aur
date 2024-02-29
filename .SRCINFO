@@ -1,0 +1,20 @@
+pkgbase = grass-sass
+	pkgdesc = a SASS compiler written purely in Rust to replace dart-css
+	pkgver = 0.13.2
+	pkgrel = 1
+	url = https://github.com/connorskees/grass
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	conflicts = grass
+	source = https://github.com/connorskees/grass/archive/0.13.2/grass-0.13.2.tar.gz
+	sha256sums = 5436fb9b0e633db65be6ad42240c85a150f68858d82c5909bef0cca6ca403fcb
+
+pkgname = grass-sass
