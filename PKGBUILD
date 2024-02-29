@@ -3,12 +3,12 @@
 _pkgname=HGNChelper
 _pkgver=0.8.1
 pkgname=r-${_pkgname,,}
-pkgver=0.8.1
-pkgrel=4
-pkgdesc='Identify and Correct Invalid HGNC Human Gene Symbols and MGI Mouse Gene Symbols'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=7
+pkgdesc="Identify and Correct Invalid HGNC Human Gene Symbols and MGI Mouse Gene Symbols"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
@@ -18,14 +18,15 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('aa3f0b3a8691ed93d63bec8f36d2954c6fcfd0b8b3efc705379248544c999363')
+md5sums=('45d4542ac3250350b96c3c9506acffcc')
+b2sums=('d32cefe15711f65345af36f085455d590a696f676f786f02b5c10caae101be3803f8d4852a7bca5a67cc6fdc81d6be0f4bf18b7d69ab7dcb68efdd9095d25dde')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
