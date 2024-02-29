@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=cwsim
+Comment=Cross-platform amateur radio WPX CW contest simulator
+Exec=python /opt/cwsim-git/cwsim.py 
+Icon=/usr/share/pixmaps/MRunnerIcon.gif
+Terminal=false
+Categories=Games;Simulation;
+StartupNotify=true
+

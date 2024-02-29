@@ -2,7 +2,7 @@
 
 pkgname=cwsim-git
 pkgver=r105.be867e1
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform amateur radio WPX CW contest simulator written in python, based on Morse Runner."
 arch=('any')
 license=('GPL3')
@@ -27,8 +27,12 @@ python-six
 python-sounddevice
 python-numpy
 )
-source=($pkgname::"git+$url.git")
-sha256sums=('SKIP')
+source=(
+	$pkgname::"git+$url.git"
+	cwsim.desktop
+	MRunnerIcon.gif
+)
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 prepare(){
     git -C "$srcdir/$pkgname" clean -dfx
@@ -55,4 +59,7 @@ package() {
   install -Dm755 "MASTER.SCP" "$pkgdir/opt/$pkgname"
   echo "python /opt/$pkgname/cwsim.py" > "$pkgdir/usr/bin/cwsim"
   chmod 755 "$pkgdir/usr/bin/cwsim"
+  # Desktop icon
+  install -Dm644 "../../cwsim.desktop" "$pkgdir/usr/share/applications/cwsim.desktop"
+  install -Dm644 "../../MRunnerIcon.gif" "$pkgdir/usr/share/pixmaps/MRunnerIcon.gif"
 }
