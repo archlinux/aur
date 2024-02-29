@@ -5,9 +5,9 @@ pkgver=0.7.3
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/FEniCS/${pkgname}"
-license=(LGPL3)
+license=(LGPL-3.0-or-later GPL-3.0-or-later)
 makedepends=(cmake)
-depends=(boost hdf5-openmpi petsc pugixml python-fenics-ffcx scotch)
+depends=(boost petsc pugixml python-fenics-ffcx scotch)
 checkdepends=(catch2)
 optdepends=('adios2: for use ADIOS2 writer'
   'kahip: for compute graph partition in parallel'
@@ -37,10 +37,6 @@ build() {
 }
 
 check() {
-  if [ -z "$(ldconfig -p | grep libcuda.so.1)" ]; then
-    export OMPI_MCA_opal_warn_on_missing_libcuda=0
-  fi
-
   ffcx ${pkgname}-${pkgver}/cpp/test/poisson.py -o ${pkgname}-${pkgver}/cpp/test
   DESTDIR="${PWD}/tmp_install" cmake --build build --target install
 
