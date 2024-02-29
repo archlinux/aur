@@ -1,0 +1,16 @@
+pkgbase = gpustat-git
+	pkgdesc = GPU monitoring tool
+	pkgver = r13.4e19078
+	pkgrel = 1
+	url = https://github.com/arduano/gpustat
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = apache
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	source = gpustat-git::git+https://github.com/arduano/gpustat#branch=master
+	sha256sums = SKIP
+
+pkgname = gpustat-git
