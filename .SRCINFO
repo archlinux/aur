@@ -1,6 +1,6 @@
 pkgbase = context-lmtx-bin
 	pkgdesc = ConTeXt LuaMetaTeX distribution
-	pkgver = 2023.06.22
+	pkgver = 2024.02.27
 	pkgrel = 1
 	url = http://www.contextgarden.net
 	install = context-lmtx-bin.install
