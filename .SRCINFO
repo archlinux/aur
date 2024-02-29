@@ -1,6 +1,6 @@
 pkgbase = pcsx2-git
 	pkgdesc = A Sony PlayStation 2 emulator
-	pkgver = 1.7.5296.r0.g96831b097
+	pkgver = 1.7.5585.r0.gef9cbf6be8
 	pkgrel = 1
 	url = https://github.com/PCSX2/pcsx2
 	install = pcsx2-git.install
@@ -57,9 +57,7 @@ pkgbase = pcsx2-git
 	source = git+https://github.com/lz4/lz4.git
 	source = vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	source = git+https://github.com/facebook/zstd.git
-	source = git+https://github.com/RetroAchievements/rcheevos.git
 	source = pcsx2-qt.sh
-	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP

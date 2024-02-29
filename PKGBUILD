@@ -4,7 +4,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.5296.r0.g96831b097
+pkgver=1.7.5585.r0.gef9cbf6be8
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -71,7 +71,6 @@ source=(
     git+https://github.com/lz4/lz4.git
     vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
     git+https://github.com/facebook/zstd.git
-    git+https://github.com/RetroAchievements/rcheevos.git
     pcsx2-qt.sh
 )
 install=pcsx2-git.install
@@ -89,7 +88,6 @@ prepare() {
         glslang::3rdparty/glslang/glslang
         vulkan-headers::3rdparty/vulkan-headers
         zstd::3rdparty/zstd/zstd
-        rcheevos::3rdparty/rcheevos/rcheevos
     )
     for submodule in ${_pcsx2_submodules[@]}; do
         git submodule init "${submodule#*::}"
@@ -129,7 +127,7 @@ build() {
     -DUSE_VULKAN=ON \
     -DENABLE_SETCAP=OFF \
     -DX11_API=ON \
-    -DWAYLAND_API=OFF \
+    -DWAYLAND_API=ON \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
     -DDISABLE_ADVANCE_SIMD=ON \
     -DDISABLE_BUILD_DATE=ON
@@ -152,7 +150,6 @@ package() {
 }
 
 b2sums=('SKIP'
-    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
