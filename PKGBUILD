@@ -3,7 +3,7 @@ _pkgname=weiyunsync
 pkgname="deepin-wine-${_pkgname}"
 _officalname=WeiyunSync
 _sparkpkgname="com.${_pkgname}.spark"
-pkgver=3.0.0.664
+pkgver=3.0.0.671
 _sparkver=3.0.0spark1
 pkgrel=1
 _provides=Tencent
@@ -11,6 +11,8 @@ pkgdesc="WeiyunSync on Deepin Wine6.基于深度Wine6的微云同步助手"
 arch=("x86_64")
 url="https://www.weiyun.com"
 license=('LicenseRef-freeware')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 depends=(
     'deepin-wine6-stable'
     'spark-dwine-helper'
@@ -24,22 +26,18 @@ optdepends=(
     'wqy-microhei'
     'wqy-zenhei'
 )
-provides=("${_pkgname}")
 install="${pkgname}.install"
 source=(
     "${_pkgname}-${_sparkver}.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/network/${_sparkpkgname}/${_sparkpkgname}_${_sparkver}_i386.deb"
-    "${_officalname}-${pkgver}.exe::https://dldir1.qq.com/weiyun/${_officalname}Install_Beta_1_${pkgver}_20240112_152535_r0.exe"
+    "${_officalname}-${pkgver}.exe::https://dldir1.qq.com/weiyun/${_officalname}Install_Beta_1_${pkgver}_20240204_154929_r0.exe"
     "LICENSE::${url}/xy.html"
-    "${pkgname}.install"
     "${pkgname}.sh"
 )
 sha256sums=('1c9361a9070ad2bfc85236397c75201c8e63374cc311514b68eae25877cadf84'
-            'aa668fe8a429d52a442338306fe6092df65b6e277a13174be0195a7d1386f5b6'
-            'be21299b1e56143e685929a13e1c23a538cb741885246e2363ec5ec1c50d9bc5'
-            '48e7a80b45d16321f794020aaa9be9c46ba76d2da8c52d86f6e2bbfe6abdf13b'
-            'ce112d1d35f7c915b86d4b4b4fa07a8ddc3c7bebbd5faf218d8ca8ad06262db2')
+            '736cf7d2dca3449f71a93e9e5857a9efd4fd7c9b319cfbea116ca6418155cc58'
+            '51cc8268ffb29a4155520a7d5d44cce5d0eebd6d128b7c0fefe0ab16cb897240'
+            '13483d92ba4a28446ac85790a65a4b5e61e420a1d7c19c0fce71e575030d228c')
 build() {
-    sed "s|@bottlename@|${_officalname}|g" -i "${srcdir}/${pkgname}.install"
     sed -e "s|@bottlename@|Deepin-${_officalname}|g" \
         -e "s|@appver@|${pkgver}|g" \
         -e "s|@provider@|${_provides}|g" \
@@ -47,7 +45,7 @@ build() {
         -e "s|@pathname@|${_officalname}|g" \
         -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     mv "${srcdir}/opt/apps/${_sparkpkgname}" "${srcdir}/opt/apps/${pkgname}"
     sed -e "s|Icon=${_sparkpkgname}|Icon=${pkgname}|g" \
         -e "s|/opt/apps/${_sparkpkgname}/files/run.sh|${pkgname}|g" \
