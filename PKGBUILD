@@ -2,13 +2,13 @@
 
 pkgname=wmbusmeters
 pkgver=1.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Read the wired or wireless mbus protocol to acquire utility meter readings'
 arch=(x86_64)
 url=https://github.com/wmbusmeters/wmbusmeters
 license=(GPL-3.0-or-later)
 depends=(rtl-sdr)
-makedepends=()
+optdepends=('rtl-wmbus: read wmbusmeters from rtl-sdr recievers')
 source=("https://github.com/$pkgname/$pkgname/archive/refs/tags/$pkgver.tar.gz"
         $pkgname.{service,sysusers,tmpfiles})
 b2sums=('8874d9f876add029b41781f2b42ae109218f5d3cf248c72d8572082ae7658f4014b8cdffe333501b7dbe19b8aa3cfe9f89687ee0913e691e8fc7ad8723aaff47'

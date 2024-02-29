@@ -1,11 +1,12 @@
 pkgbase = wmbusmeters
 	pkgdesc = Read the wired or wireless mbus protocol to acquire utility meter readings
 	pkgver = 1.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wmbusmeters/wmbusmeters
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = rtl-sdr
+	optdepends = rtl-wmbus: read wmbusmeters from rtl-sdr recievers
 	source = https://github.com/wmbusmeters/wmbusmeters/archive/refs/tags/1.15.0.tar.gz
 	source = wmbusmeters.service
 	source = wmbusmeters.sysusers
