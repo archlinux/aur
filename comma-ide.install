@@ -4,18 +4,18 @@ post_install() {
   cat <<EOF
   *Notes*
   To adjust the value of the JVM heap size, create
-  ~/.config/Edument Central Europe/Comma$comma_ver/comma.vmoptions
+  ~/.config/Edument Central Europe/CommaCT$comma_ver/comma.vmoptions
   (or comma64.vmoptions if using a 64-bit JDK) and set the -Xms and -Xmx parameters.
   To see how to do this, you can reference the vmoptions file in the bin folder.
 
   [OPTIONAL] Changing the location of "config" and "system" directories
   ------------------------------------------------------------------------------
   By default, Comma stores all your settings in the
-  ~/.config/Edument Central Europe/Comma$comma_ver directory
-  and uses ~/.local/share/Edument Central Europe/Comma$comma_ver as a data cache.
+  ~/.config/Edument Central Europe/CommaCT$comma_ver directory
+  and uses ~/.local/share/Edument Central Europe/CommaCT$comma_ver as a data cache.
   To change the location of these directories:
 
-  1. Open a console and cd into ~/.config/Edument Central Europe/Comma$comma_ver
+  1. Open a console and cd into ~/.config/Edument Central Europe/CommaCT$comma_ver
 
   2. Create a file idea.properties and set the idea.system.path and idea.config.path variables, for example:
 
