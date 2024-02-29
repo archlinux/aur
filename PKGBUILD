@@ -2,7 +2,7 @@
 pkgname=stackzy-bin
 _pkgname=Stackzy
 pkgver=1.2.6
-pkgrel=5
+pkgrel=6
 pkgdesc="A cross-platform desktop application to identify libraries used inside an android application. Made possible by Compose Desktop"
 arch=('x86_64')
 url="https://github.com/theapache64/stackzy"
@@ -15,8 +15,6 @@ depends=(
     'alsa-lib'
     'libxi'
     'libxtst'
-    'libglvnd'
-    'fontconfig'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}-1_amd64.deb"
@@ -28,10 +26,10 @@ build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.zst"
+    bsdtar -xf "${srcdir}/data."*
     sed -e "s|/opt/${pkgname%-bin}/bin/${_pkgname}|${pkgname%-bin}|g" \
         -e "s|/opt/${pkgname%-bin}/lib/${_pkgname}.png|${pkgname%-bin}|g" \
-        -e "s|Unknown|Utility;Development;|g" \
+        -e "s|Unknown|Development;|g" \
         -i "${srcdir}/opt/${pkgname%-bin}/lib/${pkgname%-bin}-${_pkgname}.desktop"
 }
 package() {
