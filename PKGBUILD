@@ -2,7 +2,7 @@
 # Inspired from the PKGBUILD for vscodium-bin and code-stable-git.
 
 pkgname=vscodium-git
-pkgver=1.86.2.24057.r0.geb7d54b
+pkgver=1.87.0.24060.r0.g27e012b
 pkgrel=1
 pkgdesc="Free/Libre Open Source Software Binaries of VSCode (git build from latest commit)."
 arch=('x86_64' 'aarch64' 'armv7h')
