@@ -1,15 +1,15 @@
 # Maintainer: chrhasse <hasse dot christopher at gmail dot com>
 pkgname='alacritty-sixel-git'
 _pkgname="alacritty"
+pkgdesc="A cross-platform, GPU-accelerated terminal emulator"
 pkgver=0.14.0.2340.g6bd9c714
 pkgrel=1
 epoch=1
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url="https://github.com/ayosec/alacritty"
-pkgdesc="A cross-platform, GPU-accelerated terminal emulator"
-license=('Apache')
-depends=('freetype2' 'fontconfig' 'libxi' 'libxcursor' 'libxrandr')
-makedepends=('rust' 'cargo' 'cmake' 'fontconfig' 'ncurses' 'desktop-file-utils' 'gdb' 'libxcb' 'libxkbcommon' 'git')
+license=('Apache-2.0' 'MIT')
+depends=('freetype2' 'fontconfig' 'libxi' 'libxcursor' 'libxkbcommon' 'libxkbcommon-x11' 'libxrandr')
+makedepends=('rust' 'cargo' 'cmake' 'fontconfig' 'ncurses' 'desktop-file-utils' 'gdb' 'libxcb' 'git')
 checkdepends=('ttf-dejavu') # for monospace fontconfig test
 provides=('alacritty')
 conflicts=('alacritty')
