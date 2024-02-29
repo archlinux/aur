@@ -2,7 +2,7 @@
 # Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=bigcty
-pkgver=20240220
+pkgver=20240229
 _pkgyear=2024
 pkgrel=1
 pkgdesc="The package represents databases of entities (countries), prefixes and callsigns
@@ -11,7 +11,7 @@ arch=('any')
 conflicts=('cty')
 provides=('cty')
 url="http://www.country-files.com/bigcty"
-license=('GPL')
+license=('GPL-3.0-only')
 source=(${url}/download/$_pkgyear/$pkgname-$pkgver.zip)
 
 package() {
@@ -21,5 +21,5 @@ package() {
 
 	cp -R *.{csv,dat} $pkgdir/usr/share/cty
 }
-md5sums=('bf27e7090ff77098234526c00247cb66')
-sha256sums=('4265c27be828232c0a7d228c656c6dc9fce805ce980ac8b864ad590f0887ccef')
+md5sums=('ffdf0e841e10e86053ad638638398c49')
+sha256sums=('1fad0c3db42fbb15cec6094095d44c7eeba4ae8ec80f97865194e863ce4620d5')
