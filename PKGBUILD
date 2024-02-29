@@ -36,6 +36,9 @@ depends=(
   python
   steam-native-runtime
 )
+depends+=(
+  wayland          lib32-wayland
+)
 
 makedepends=(autoconf bison perl flex mingw-w64-gcc
   git wget rsync mingw-w64-tools lld nasm
@@ -91,6 +94,11 @@ source=(
     0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
     0005-AUR-Strip-binaries-early.patch
     0006-AUR-Fix-hwnd-redefinition.patch
+)
+source+=(
+    0001-AUR-Enable-winewayland.patch
+    0001-fshack-AMD-FSR-complete.patch
+    4947.patch
 )
 noextract=(
     wine-gecko-${_geckover}-{x86,x86_64}.tar.xz
@@ -266,4 +274,7 @@ sha256sums=('SKIP'
             'd94e11af39dce07e09c3448b38cd3511931c6981fa18f136a2b3f3f448206438'
             '8c1518d07b7516fd09b189d9182174ea2fb7b5a4d83f6dda8b857cdf429b43fa'
             '115925bfa8e727013955fb9b27feb63462c6c40f45758d2204f8c7322af8e44a'
-            '13921bc7b252d439b4c3355f4010d4c0dfe91eee0ec5cdd0363f19c01dbc8309')
+            '13921bc7b252d439b4c3355f4010d4c0dfe91eee0ec5cdd0363f19c01dbc8309'
+            '4beba70f2209a497d6b4f8ad934a242a3314d1541b3d89ae702ad896cae3a869'
+            '3d308f8e87361669267fa52b986c24f1dea1913156a045f43ea04e02f7444b18'
+            '429c96d13e9cc39ebbedb1185c3a9a5c76958de809d7c184692246d1a9eb167d')
