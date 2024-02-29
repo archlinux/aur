@@ -2,13 +2,13 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-glib-networking
-pkgver=2.78.0
+pkgver=2.78.1
 pkgrel=1
 epoch=1
 pkgdesc="Network extensions for GLib (32-bit)"
 url="https://gitlab.gnome.org/GNOME/glib-networking"
 arch=(x86_64)
-license=(GPL2)
+license=(LGPL-2.1-or-later)
 depends=(
   glib-networking
   lib32-glib2
@@ -20,13 +20,13 @@ makedepends=(
   meson
 )
 checkdepends=(ca-certificates)
-_commit=40c448faf7cf32647d457a8bcda171c3d21bef22  # tags/2.78.0^0
+_commit=ff3ed94057edfd2e4d4c45c5e53e5b41d19fad6a  # tags/2.78.1^0
 source=("git+https://gitlab.gnome.org/GNOME/glib-networking.git#commit=$_commit")
 b2sums=('SKIP')
 
 pkgver() {
   cd glib-networking
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+  git describe --tags | sed -r 's/\.([a-z])/\1/;s/([a-z])\./\1/;s/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
