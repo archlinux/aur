@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=
+Type=Application
+Exec=
+Icon=
+Terminal=false
+Type=Application
+Name=Comma Complete Edition
+Comment=The Drive to Develop
+Categories=Development;IDE;
+StartupWMClass=jetbrains-comma-ce

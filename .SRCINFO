@@ -1,0 +1,22 @@
+pkgbase = comma-ide-complete
+	pkgdesc = The Integrated Development Environment for Raku (formerly Perl 6) (Complete edition).
+	pkgver = 2023.08.0
+	pkgrel = 1
+	url = https://commaide.com/
+	arch = any
+	license = APACHE
+	source = comma-ide-complete-2023.08.0.tar.gz::https://commaide.com/download/complete/linux
+	source = comma-ide-complete.desktop
+	sha256sums = 93523a0450c7c2dd228088b44e33ff5d620edb1b6fb0fb051b58245091a926aa
+	sha256sums = 6166a99c86982fc5fabde97dfdda14cb4b2addffa774551b9b50c4aae9e63283
+
+pkgname = comma-ide-complete
+	install = comma-ide-complete.install
+	optdepends = rakudo-star
+	optdepends = rakudo
+	optdepends = comma-ide-complete-jre: JetBrains custom JRE (Recommended)
+	optdepends = java-runtime=11: Required if comma-ide-complete-jre is not installed
+
+pkgname = comma-ide-complete-jre
+	pkgdesc = JBR (Jetbrains Runtime) for Comma IDE Complete - a patched JRE
+	url = https://github.com/JetBrains/JetBrainsRuntime
