@@ -2,7 +2,7 @@
 
 pkgname="lenovo-legion-electric-ray-git"
 _pkgname="electric-ray"
-pkgver=r30.323a7e6
+pkgver=r31.88898be
 pkgrel=1
 pkgdesc="Lenovo Legion 'Rapid charge' & 'Conservation'."
 arch=("x86_64")
@@ -14,8 +14,8 @@ source=("git+https://github.com/CuriousGecko/electric-ray.git")
 sha256sums=("SKIP")
 
 pkgver() {
-  cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    cd "$_pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
@@ -25,8 +25,9 @@ package() {
     install -Dm644 constants.py "$pkgdir/usr/share/$_pkgname/constants.py"
     install -Dm644 images.py "$pkgdir/usr/share/$_pkgname/images.py"
     install -Dm644 ui_main.py "$pkgdir/usr/share/$_pkgname/ui_main.py"
-    install -Dm755 electric-ray "$pkgdir/usr/bin/electric-ray"
+    install -Dm755 "$_pkgname" "$pkgdir/usr/bin/electric-ray"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
+    install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
     install -Dm644 "images/icons/electric_ray_warning.png" \
                    "$pkgdir/usr/share/$_pkgname/images/icons/electric_ray_warning.png"
     install -Dm644 "images/icons/electric_ray.png" \
