@@ -3,10 +3,10 @@
 # Contributor: Lorenzo Gaifas <brisvag at gmail dot com>
 # Contributor: Antony Lee <anntzer dot lee at gmail dot com>
 pkgname=snapgene-viewer
-pkgver=7.1.1
+pkgver=7.1.2
 _pkgver_major=$(cut -d '.' -f 1 <<<"$pkgver")
 _pkgver_major_middle=$(cut -d '.' -f 1-2 <<<"$pkgver")
-pkgrel=2
+pkgrel=1
 pkgdesc='View plasmid maps, annotate features and share sequences (snapgene freeware edition)'
 arch=('x86_64')
 url='https://www.snapgene.com/snapgene-viewer'
@@ -47,7 +47,7 @@ depends=('qt6-base'
 )
 # A valid licence is required to use the full version of snapgene
 source=("https://cdn.snapgene.com/downloads/SnapGeneViewer/"$_pkgver_major".x/"$_pkgver_major_middle"/"$pkgver"/snapgene_viewer_"$pkgver"_linux.rpm" "snapgene-viewer")
-sha512sums=('c39ed1e5d5f1960b2d052faa086c898a56a6541982649870a0afdd122c49264e1c957a94fa6bbea9704f3c2f42536250a5d27f9485ae59addd4468c30b9951a8' '082c0fe6d8d5a6b8822d73589718d1baf9d4f651092c4beea8247e8a7af7ee9597858502124300111d020a07b3da612609caca21eb78fc889e6948d579ee7ea9')
+sha512sums=('ffaec09de19ee6de3e07b294922dac691e316b8b4fc3edbbd17c3914bd2317333a99a712e2cde94207e956d1e757faeacc7633b234c9d302a41bd9285e937f24' '082c0fe6d8d5a6b8822d73589718d1baf9d4f651092c4beea8247e8a7af7ee9597858502124300111d020a07b3da612609caca21eb78fc889e6948d579ee7ea9')
 
 package() {
   cd "$pkgdir"
