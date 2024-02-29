@@ -1,0 +1,20 @@
+pkgbase = android-armv7a-eabi-libnl
+	pkgdesc = Library for applications dealing with netlink sockets (android)
+	pkgver = 3.9.0
+	pkgrel = 1
+	url = https://github.com/thom311/libnl/
+	arch = any
+	license = GPL
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/thom311/libnl/releases/download/libnl3_9_0/libnl-3.9.0.tar.gz
+	source = https://github.com/thom311/libnl/releases/download/libnl3_9_0/libnl-3.9.0.tar.gz.sig
+	validpgpkeys = 49EA7C670E0850E7419514F629C2366E4DFC5728
+	sha256sums = aed507004d728a5cf11eab48ca4bf9e6e1874444e33939b9d3dfed25018ee9bb
+	sha256sums = SKIP
+
+pkgname = android-armv7a-eabi-libnl
