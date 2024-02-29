@@ -1,10 +1,10 @@
 # Maintainer: Collin Diekvoss <collin@diekvoss.com>
 pkgname=plasma-desktop-run-command
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="See the project's homepage for more information"
 arch=('x86_64')
-url="https://github.com/rZn/run-command"
+url="https://github.com/rZn/plasma-desktop-run-command"
 license=('GPL2')
 depends=('plasma-framework')
 makedepends=('gcc' 'cmake' 'extra-cmake-modules')

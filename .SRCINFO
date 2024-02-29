@@ -1,7 +1,7 @@
 pkgbase = plasma-desktop-run-command
 	pkgdesc = See the project's homepage for more information
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rZn/plasma-desktop-run-command
 	arch = x86_64
 	license = GPL2
