@@ -1,5 +1,5 @@
-src
-pkg
-*.pkg.tar.xz
-*.tar.gz
+sudospawner-*.tar.gz
+src/
+pkg/
+jupyterhub-sudospawner-*.pkg*
 *.log
