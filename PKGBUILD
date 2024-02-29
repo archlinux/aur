@@ -3,33 +3,30 @@ _pkgname=polyglot
 pkgname="${_pkgname}-ai-bin"
 pkgver=0.3.6
 _electronversion=23
-pkgrel=2
+pkgrel=3
 pkgdesc="Based on ChatGPT and Azure artificial intelligence language models as underlying services, aiming to provide an easy-to-use language practice platform for multilingual speaking practice"
 arch=("x86_64")
 url="https://polyglotai.xyz/"
 _ghurl="https://github.com/liou666/polyglot"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname//p/P}_${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('caa949bfcd271169813269e0a9540586170ea295640989a0d1668fa821b01c46'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            'f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
