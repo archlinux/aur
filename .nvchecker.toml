@@ -1,0 +1,5 @@
+[ftcli]
+source = "github"
+github = "ftCLI/FoundryTools-CLI"
+prefix = "v"
+use_max_tag = true
