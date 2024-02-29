@@ -2,7 +2,7 @@
 
 pkgname=qdvdauthor
 pkgver=2.3.1
-pkgrel=1
+pkgrel=13
 pkgdesc='A GUI frontend for dvdauthor, video DVD creator'
 url='https://sourceforge.net/projects/qdvd'
 license=('GPL2')
@@ -44,7 +44,7 @@ sha256sums=(
   'SKIP'
   'SKIP'
 )
-options=('debug')
+options=('debug' '!lto')
 
 prepare() {
   patch -d ffmpeg-0.6.7 -p1 -i "${srcdir}/mathops_fix.patch"
