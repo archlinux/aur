@@ -1,10 +1,11 @@
 # Maintainer: SandaruKasa <sandarukasa plus aur at ya dot ru>
 
 pkgname=python-pyrogram-kurimuzon-git
-provides=(python-pyrogram python-pyrogram-kurimuzon)
+provides=("${pkgname%-git}" python-pyrogram)
+conflicts=("${pkgname%-git}" python-pyrogram)
 replaces=(python-pyrogram) # pyrogram is dead
 pkgver=2.1.14.r4350.3e4c3b9
-pkgrel=1
+pkgrel=2
 pkgdesc="A for of Pyrogram, an elegant, modern and asynchronous Telegram MTProto API framework in Python for users and bots"
 arch=("any")
 url="https://github.com/KurimuzonAkuma/pyrogram"
