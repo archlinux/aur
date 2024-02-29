@@ -4,13 +4,13 @@ _bottlename=Deepin-XiguaVideo
 pkgname="deepin-wine-${_appname}"
 _pkgname=com.ixigua.xigua-video.spark
 _zhsname="西瓜视频"
-pkgver=1.0.7
+pkgver=1.0.9
 _deepinver=1.0.6spark1
-pkgrel=3
+pkgrel=1
 pkgdesc="XiGua Video on Deepin Wine 6"
 arch=('x86_64')
 url="https://www.ixigua.com"
-license=('custom:freeware')
+license=('LicenseRef-freeware')
 conflicts=(
     "${_appname}"
     "${pkgname}"
@@ -32,22 +32,21 @@ noextract=("${_appname}-${pkgver}.exe")
 install="${pkgname}.install"
 source=(
     "${pkgname}-${_deepinver}.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/video/${_pkgname}/${_pkgname}_${_deepinver}_amd64.deb"
-    "${_appname}-${pkgver}.exe::https://lf-xigua-pc.ixigua.com/obj/xigua-video-electron/6922326164589517070/releases/11210180/${pkgver}/win32/xigua-video-${pkgver}-default.exe"
+    "${_appname}-${pkgver}.exe::https://lf-xigua-pc.ixigua.com/obj/xigua-video-electron/6922326164589517070/releases/11463809/${pkgver}/win32/xigua-video-${pkgver}-default.exe"
     "LICENSE.html"
     "${pkgname}.sh"
 )
 sha256sums=('18b2277ea23d6a61d45197b422b99a53e7f5f5e2764f1f5616443984598af321'
-            'f3b4277641de91d3838ede96a56e25257ea869b382cda40ae1c7b53dba4e98a7'
+            '555761bb662ca4268c737e198937de1a3ba722b44707a6f5ce605445cfaa09c2'
             '37bfde6970ae8f7575aa29b1146a5662e0780f6ceb5b99128bca6ae6ebdc0b09'
-            '40722a2e7ecc0970eee168a17dae328c4da20b492fa759b15a5f11e76b10736b')
+            '5dc00208bef4da3d30f261f64696eebe44648bc013de3442482896fb02ffbe2e')
 build() {
-    sed "s|@bottlename@|${_bottlename}|g" -i "${srcdir}/${pkgname}.install"
     sed -e "s|@bottlename@|${_bottlename}|g" \
         -e "s|@appver@|${pkgver}|g" \
         -e "s|@packagename@|${pkgname}|g" \
         -e "s|@zhsname@|${_zhsname}|g" \
         -i "${srcdir}/${pkgname}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     mv "${srcdir}/opt/apps/${_pkgname}" "${srcdir}/opt/apps/${pkgname}"
     mkdir -p "${srcdir}/tmp" "${srcdir}/temp"
     msg "Extracting Deepin Wine ${_appname} archive ..."

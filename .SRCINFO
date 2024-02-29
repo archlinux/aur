@@ -1,28 +1,28 @@
 pkgbase = deepin-wine-xiguavideo
 	pkgdesc = XiGua Video on Deepin Wine 6
-	pkgver = 1.0.7
-	pkgrel = 3
+	pkgver = 1.0.9
+	pkgrel = 1
 	url = https://www.ixigua.com
 	install = deepin-wine-xiguavideo.install
 	arch = x86_64
-	license = custom:freeware
+	license = LicenseRef-freeware
 	makedepends = p7zip
 	depends = deepin-wine6-stable
 	depends = spark-dwine-helper
 	depends = xdg-utils
 	optdepends = wqy-zenhei
 	optdepends = wqy-microhei
-	provides = xiguavideo=1.0.7
+	provides = xiguavideo=1.0.9
 	conflicts = xiguavideo
 	conflicts = deepin-wine-xiguavideo
-	noextract = xiguavideo-1.0.7.exe
+	noextract = xiguavideo-1.0.9.exe
 	source = deepin-wine-xiguavideo-1.0.6spark1.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/video/com.ixigua.xigua-video.spark/com.ixigua.xigua-video.spark_1.0.6spark1_amd64.deb
-	source = xiguavideo-1.0.7.exe::https://lf-xigua-pc.ixigua.com/obj/xigua-video-electron/6922326164589517070/releases/11210180/1.0.7/win32/xigua-video-1.0.7-default.exe
+	source = xiguavideo-1.0.9.exe::https://lf-xigua-pc.ixigua.com/obj/xigua-video-electron/6922326164589517070/releases/11463809/1.0.9/win32/xigua-video-1.0.9-default.exe
 	source = LICENSE.html
 	source = deepin-wine-xiguavideo.sh
 	sha256sums = 18b2277ea23d6a61d45197b422b99a53e7f5f5e2764f1f5616443984598af321
-	sha256sums = f3b4277641de91d3838ede96a56e25257ea869b382cda40ae1c7b53dba4e98a7
+	sha256sums = 555761bb662ca4268c737e198937de1a3ba722b44707a6f5ce605445cfaa09c2
 	sha256sums = 37bfde6970ae8f7575aa29b1146a5662e0780f6ceb5b99128bca6ae6ebdc0b09
-	sha256sums = 40722a2e7ecc0970eee168a17dae328c4da20b492fa759b15a5f11e76b10736b
+	sha256sums = 5dc00208bef4da3d30f261f64696eebe44648bc013de3442482896fb02ffbe2e
 
 pkgname = deepin-wine-xiguavideo
