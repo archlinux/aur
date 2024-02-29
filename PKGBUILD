@@ -12,7 +12,8 @@ url="https://gitlab.com/dpeukert/$pkgname"
 license=('GPL-3.0-only')
 install="$pkgname.install"
 source=(
-	"$pkgname-$pkgver.tar.gz::$url/-/archive/$_commit/$pkgname-$_commit.tar.gz"
+	# $pkgrel added to make sure our cached source file doesn't get used, as the previous pkgrel used a different upstream
+	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/-/archive/$_commit/$pkgname-$_commit.tar.gz"
 	'fix-global-var.diff'
 	'namespace-udev-rule.diff'
 	'update-manpage.diff'
