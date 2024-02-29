@@ -1,7 +1,8 @@
 # Maintainer: Christof Zlabinger <stoffi05@pm.me>
 pkgname='notion-calendar-electron'
-pkgver=1.119.0.1
+pkgver=1.0.2
 pkgrel=1
+epoch=1
 pkgdesc='A Electron-based Notion Calendar client'
 arch=('x86_64')
 url=https://www.notion.so/product/calendar
