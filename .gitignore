@@ -1,0 +1,7 @@
+/*
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
+!/*.install
+!/nvchecker.toml
+!/exkeymo-web.sh

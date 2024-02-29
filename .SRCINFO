@@ -1,0 +1,13 @@
+pkgbase = exkeymo-web-git
+	pkgdesc = Android external keyboard remapping without root
+	pkgver = r131.361cea2
+	pkgrel = 1
+	url = https://github.com/ris58h/exkeymo-web
+	arch = any
+	license = Unlicense
+	makedepends = git
+	depends = java-runtime-common
+	source = git+https://github.com/ris58h/exkeymo-web#tag=361cea2381366a11527e4ca0a4fa30ce15e45bee
+	sha256sums = SKIP
+
+pkgname = exkeymo-web-git
