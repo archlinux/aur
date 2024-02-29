@@ -4,7 +4,7 @@ _pkgname=com.cctv.deepin
 _officalname=CBox
 pkgver=6.0.0.2
 _deepinver=1.0.0deepin9
-pkgrel=1
+pkgrel=2
 pkgdesc="CGTN CBox on Deepin Wine 6"
 arch=("x86_64")
 url="https://app.cctv.com/"
@@ -22,20 +22,17 @@ install="${pkgname}.install"
 source=(
     "${pkgname}-${_deepinver}.deb::https://com-store-packages.uniontech.com/appstore/pool/appstore/c/${_pkgname}/${_pkgname}_${_deepinver}_i386.deb"
     "${pkgname}-${pkgver}.exe::https://download.cntv.cn/cbox/v6/ysyy_v${pkgver}_1001_setup_x86.exe"
-    "${pkgname}.install"
     "${pkgname}.sh"
 )
 sha256sums=('6e6ca3250a3a82dd46b29df450f508eff74f22cebcead9890677210b0610a4bd'
             '519b04ac61a4b3e9422de238ce5e76d2fafefe58f93776f99494f3eb59005264'
-            '2a9e70d0bc04f291d2d7d774ace08edb83c5f5d299ebd66920457c9d8fb336b7'
-            'd12dfd865b8143a9c610fbaa966aed4b6c56557a2b1039469e9f637364cc16b5')
+            'f82563924b98fb305fab9bdb4aa1d9e69cc6024b3c32fc0f6425b1508404a991')
 build() {
-    sed "s|@appname@|${_officalname}|g" -i "${srcdir}/${pkgname}.install"
     sed -e "s|@appname@|${_officalname}|g" \
         -e "s|@pkgname@|${pkgname}|g" \
         -e "s|@appver@|${pkgver}|g" \
         -i "${srcdir}/${pkgname}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz" -C "${srcdir}"
+    bsdtar -xf "${srcdir}/data."* -C "${srcdir}"
     mv "${srcdir}/opt/apps/${_pkgname}" "${srcdir}/opt/apps/${pkgname}"
     sed -e "s|Icon=${_pkgname}|Icon=${pkgname}|g" \
         -e "s|Audio Video;|AudioVideo;|g" \
@@ -61,4 +58,5 @@ package() {
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/tmp/drive_c/Program Files/CNTV/${_officalname}/Licenses/"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
