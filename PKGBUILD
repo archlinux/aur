@@ -4,12 +4,12 @@
 
 _pkgname='unicode'
 pkgname="${_pkgname}-git"
-pkgver=2.9.r15.g13d2469
+pkgver=2.9.r27.gaabfea0
 pkgrel=1
 pkgdesc='Display unicode character properties on the command line'
 url='https://github.com/garabik/unicode'
 arch=('any')
-license=('GPL3')
+license=('GPL-3.0-only')
 makedepends=("git" "python-setuptools")
 depends=('python' 'unicode-character-database')
 provides=("${_pkgname}")
