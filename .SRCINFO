@@ -4,8 +4,7 @@ pkgbase = python-mshr
 	pkgrel = 2
 	url = https://bitbucket.org/fenics-project/mshr
 	arch = x86_64
-	license = GPL3
-	checkdepends = openssh
+	license = GPL-3.0-or-later
 	makedepends = cmake
 	makedepends = python-mpi4py
 	depends = mshr=2019.1.0
