@@ -3,21 +3,17 @@
 _base=basix
 pkgname=fenics-"${_base}"-git
 pkgdesc="C++ interface of FEniCS for ordinary and partial differential equations (from git release)."
-pkgver=0.8.0.dev0_r1016.3c08815
+pkgver=0.8.0.dev0_r975.15b915b
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/FEniCS/${_base}"
 license=('MIT')
 groups=('fenics-git')
-depends=("blas-openblas" "python-numpy")
-makedepends=(
-  "boost" "gcc" "git" "nanobind" "python-build"
-  "python-installer" "python-scikit-build"
-  "python-scikit-build-core" "python-setuptools")
-optdepends=("openmpi")
-checkdepends=("python-sympy" "petsc")
+depends=("blas-openblas" "petsc")
+makedepends=("boost" "gcc" "git" "pybind11" "python-build" "python-installer" "python-numpy" "python-scikit-build" "python-setuptools" "nanobind")
+checkdepends=("python-sympy")
 options=(!emptydirs)
-source=("git+${url}#branch=main")
+source=("git+${url}#commit=15b915ba")
 sha512sums=('SKIP')
 
 provides=("${_base}"
