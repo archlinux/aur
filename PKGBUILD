@@ -2,10 +2,10 @@
 
 pkgname=plasma6-applets-places-widget
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Plasma 6 widget providing quick access to user places"
 arch=(any)
-url="https://github.com/HessiJames/plasma-applet-places-widget"
+url="https://github.com/dfaust/plasma-applet-places-widget"
 license=(GPL-2.0-only)
 depends=(plasma-workspace)
 makedepends=(extra-cmake-modules)
