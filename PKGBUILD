@@ -1,6 +1,6 @@
 pkgname=lefthook-bin
 pkgver=1.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="git hooks manager"
 arch=('x86_64' 'aarch64')
 url="https://github.com/evilmartians/lefthook"
@@ -17,7 +17,20 @@ sha256sums_aarch64=('7a5afe6e61ec4c7e1a48606381cc5ce0bb1a8e9ae716a58d4bc340021ab
 package() {
 	cd "${srcdir}"
 
+	mv "lefthook_${pkgver}_Linux_${CARCH}" lefthook
+	chmod +x lefthook
+
 	# Install lefthook
-	install -D -m0755 lefthook_${pkgver}_Linux_${CARCH} \
+	install -D -m0755 lefthook \
 		"${pkgdir}/usr/bin/lefthook"
+
+	# Install completions
+	mkdir -p "${pkgdir}/usr/share/zsh/site-functions"
+	./lefthook completion zsh >"${pkgdir}/usr/share/zsh/site-functions/_lefthook"
+
+	mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d"
+	./lefthook completion fish >"${pkgdir}/usr/share/fish/vendor_completions.d/lefthook.fish"
+
+	mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
+	./lefthook completion bash >"${pkgdir}/usr/share/bash-completion/completions/lefthook"
 }
