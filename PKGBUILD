@@ -68,9 +68,6 @@ build() {
 }
 
 check() {
-  if [ -z "$(ldconfig -p | grep libcuda.so.1)" ]; then
-    export OMPI_MCA_opal_warn_on_missing_libcuda=0
-  fi
   cmake --build build --target unittests
   LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${srcdir}/build/dolfin/" ./build/test/unit/cpp/unittests
 }
