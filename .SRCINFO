@@ -1,21 +1,21 @@
 pkgbase = wrapland-git
-	pkgdesc = Qt/C++ library that wraps and mediates the libwayland client and server API for kwinft
-	pkgver = 0.527.0.beta.0.r53
+	pkgdesc = Qt/C++ library wrapping libwayland
+	pkgver = v0.600.0.r0
 	pkgrel = 1
-	url = https://gitlab.com/kwinft/wrapland
+	url = https://github.com/winft/wrapland
 	arch = x86_64
 	license = LGPL
 	makedepends = doxygen
 	makedepends = extra-cmake-modules>=5.240.0
 	makedepends = git
-	makedepends = kdoctools-git
+	makedepends = kdoctools
 	makedepends = wayland-protocols
 	makedepends = qt6-tools
 	makedepends = microsoft-gsl
-	depends = kwayland-git
+	depends = kwayland
 	provides = wrapland
 	conflicts = wrapland
-	source = git+https://gitlab.com/kwinft/wrapland.git#branch=master
+	source = git+https://github.com/winft/wrapland.git#branch=master
 	sha256sums = SKIP
 
 pkgname = wrapland-git
