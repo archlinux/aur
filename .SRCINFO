@@ -1,6 +1,6 @@
 pkgbase = task-maker-rust-git
-	pkgdesc = The new cmsMake
-	pkgver = r520.a1dd6a2b
+	pkgdesc = Tool for building tasks for informatics competitions, with support for cache, distributed computations and more
+	pkgver = r698.e162f1be
 	pkgrel = 1
 	url = https://github.com/edomora97/task-maker-rust
 	arch = i686
