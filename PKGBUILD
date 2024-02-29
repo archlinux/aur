@@ -2,19 +2,22 @@
 
 ## options
 : ${_autoupdate:=true}
-: ${_system_electron:=true}
 
+: ${_system_electron:=true}
+: ${_install_path:=opt}
+
+unset _pkgtype
 : ${_pkgtype:=-latest-bin}
 
 # basic info
 _pkgname='beeper'
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=3.93.36
+pkgver=3.98.16
 pkgrel=1
 pkgdesc="all your chats in one app"
-arch=('x86_64')
 url="https://beeper.com/"
-license=('custom')
+license=('LicenseRef-beeper')
+arch=('x86_64')
 
 # main package
 _main_package() {
@@ -59,61 +62,59 @@ EOF
 }
 
 build() {
-  cd "${srcdir:?}"
-
   # extract appimage
   chmod +x "$_filename"
-  "${srcdir:?}/$_filename" --appimage-extract
+  "$srcdir/$_filename" --appimage-extract
 
   # fix apprun script
   sed -Ei \
-    's@^(if \[ -z \"\$APPDIR\" ] ; then)$@APPDIR="/opt/beeper"\n\1@' \
-    "${srcdir:?}/squashfs-root/AppRun"
+    's@^(if \[ -z \"\$APPDIR\" ] ; then)$@APPDIR="/'"$_install_path"'/beeper"\n\1@' \
+    "$srcdir/squashfs-root/AppRun"
 
   # fix desktop file
   sed -Ei \
     's@^Exec=AppRun (.*)$@Exec=beeper \1@' \
-    "${srcdir:?}/squashfs-root/beeper.desktop"
+    "$srcdir/squashfs-root/beeper.desktop"
 }
 
 _package_beeper() {
   # apprun script
-  install -Dm755 "${srcdir:?}/squashfs-root/AppRun" "${pkgdir:?}/usr/bin/beeper"
+  install -Dm755 "$srcdir/squashfs-root/AppRun" "$pkgdir/usr/bin/beeper"
 
   # everything else
-  install -dm755 "${pkgdir:?}/opt"
-  mv "${srcdir:?}/squashfs-root" "${pkgdir:?}/opt/beeper"
+  install -dm755 "$pkgdir/$_install_path"
+  mv "$srcdir/squashfs-root" "$pkgdir/$_install_path/beeper"
 }
 
 _package_asar() {
   # script
-  install -Dm755 "${srcdir:?}/beeper.sh" -t "${pkgdir:?}/opt/beeper/"
+  install -Dm755 "$srcdir/beeper.sh" -t "$pkgdir/$_install_path/beeper/"
 
   # symlink
-  install -dm755 "${pkgdir:?}/usr/bin"
-  ln -sf "/opt/beeper/beeper.sh" "${pkgdir:?}/usr/bin/beeper"
+  install -dm755 "$pkgdir/usr/bin"
+  ln -sf "/$_install_path/beeper/beeper.sh" "$pkgdir/usr/bin/beeper"
 
   # app.asar
-  install -dm755 "${pkgdir:?}/opt/beeper/resources"
-  mv "${srcdir:?}/squashfs-root/resources"/* "${pkgdir:?}/opt/beeper/resources/"
+  install -dm755 "$pkgdir/$_install_path/beeper/resources"
+  mv "$srcdir/squashfs-root/resources"/* "$pkgdir/$_install_path/beeper/resources/"
 }
 
 package() {
   depends+=('hicolor-icon-theme')
 
   # desktop file
-  install -Dm644 "${srcdir:?}/squashfs-root/beeper.desktop"                                  "${pkgdir:?}/usr/share/applications/beeper.desktop"
+  install -Dm644 "$srcdir/squashfs-root/beeper.desktop"                                  "$pkgdir/usr/share/applications/beeper.desktop"
 
   # icons
   for s in 16 32 48 64 128 256 512 1024 ; do
     install -Dm644 \
-    "${srcdir:?}/squashfs-root/usr/share/icons/hicolor/${s}x${s}/apps/beeper.png" \
-    -t "${pkgdir:?}/usr/share/icons/hicolor/${s}x${s}/apps"
+    "$srcdir/squashfs-root/usr/share/icons/hicolor/${s}x${s}/apps/beeper.png" \
+    -t "$pkgdir/usr/share/icons/hicolor/${s}x${s}/apps"
   done
 
   # license files
-  install -Dm644 "${srcdir:?}/squashfs-root/LICENSE.electron.txt" -t "${pkgdir:?}/usr/share/licenses/$pkgname"
-  install -Dm644 "${srcdir:?}/squashfs-root/LICENSES.chromium.html" -t "${pkgdir:?}/usr/share/licenses/$pkgname"
+  install -Dm644 "$srcdir/squashfs-root/LICENSE.electron.txt" -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 "$srcdir/squashfs-root/LICENSES.chromium.html" -t "$pkgdir/usr/share/licenses/$pkgname"
 
   if [[ "${_system_electron::1}" == "t" ]] ; then
     depends+=('electron')
@@ -123,7 +124,7 @@ package() {
   fi
 
   # fix permissions
-  chmod -R u+rwX,go+rX,go-w "${pkgdir:?}"
+  chmod -R u+rwX,go+rX,go-w "$pkgdir"
 }
 
 # update version
