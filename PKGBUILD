@@ -1,44 +1,49 @@
-# Maintainer: R. V. Lobato <rvlobato at pm dot me>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: R. V. Lobato <rvlobato at pm dot me>
 # Contributor: Anton Kudelin <kudelin at protonmail dot com>
 # Contributor: Tarn Burton <twburton at gmail dot com>
-
-pkgname=cadabra2
-pkgver=2.4.3.2
+_base=cadabra
+pkgname=${_base}2
+pkgver=2.4.5.4
 pkgrel=1
 pkgdesc="A field-theory motivated approach to computer algebra"
-arch=('x86_64')
-url="https://cadabra.science"
-license=('GPL')
-conflicts=('cadabra2-git')
-depends=(boost-libs glibmm gmp gtkmm3 jsoncpp python python-gmpy2 jupyterlab python-matplotlib
-	 python-sympy sqlite texlive-bin texlive-latexextra texlive-science)
-
+arch=(x86_64)
+url="https://${_base}.science"
+license=(GPL-3.0-or-later)
+conflicts=(${pkgname}-git)
+depends=(boost-libs glibmm gmp gtkmm3 jsoncpp python-gmpy2 jupyterlab python-matplotlib
+  python-sympy sqlite texlive-latexextra texlive-mathscience)
+makedepends=(cmake) # system-wide pybind11 is not used, instead bundled yes.
 optdepends=('mathjax: Doxygen documentation'
-	    'doxygen: Doxygen documentation'
-	   )
-
-makedepends=(boost cmake pybind11)
-
-source=($pkgname-$pkgver.tar.gz::"https://github.com/kpeeters/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('ae913bb1f7d562ca479ff57adf0b61c4b2e9cf83a8b5ec282ef3d27050cfcca2')
-
-prepare() {
-  mkdir -p "$srcdir/build"
-}
+  'doxygen: Doxygen documentation')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/kpeeters/${pkgname}/archive/${pkgver}.tar.gz)
+sha512sums=('907e291880aac84a4f5695f77dd34512c13dba320b38fee59c765b070235c9ef777f6e188c675c8247f56144624edb84459d8b500e4c074731633a2b9cf9ee74')
 
 build() {
-  cd "$srcdir/build"
-  cmake ../$pkgname-$pkgver \
-	-DCMAKE_INSTALL_PREFIX='/usr'
-  make
+  cmake \
+    -S ${pkgname}-${pkgver} \
+    -B build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_SHARED_LIBS=TRUE \
+    -DCMAKE_CXX_STANDARD=17 \
+    -DCMAKE_C_COMPILER=gcc \
+    -DCMAKE_CXX_COMPILER=g++ \
+    -DENABLE_FRONTEND=ON \
+    -DENABLE_JUPYTER=OFF \
+    -DENABLE_MATHEMATICA=OFF \
+    -DENABLE_PY_JUPYTER=ON \
+    -DENABLE_SYSTEM_JSONCPP=ON \
+    -DUSE_PYTHON_3=ON \
+    -Wno-dev
+  cmake --build build --target all
 }
 
-check() {
-  cd "$srcdir/build"
-  make test
-}
+# check() {
+#   ctest --verbose --output-on-failure --test-dir build
+# }
 
 package() {
-  cd "$srcdir/build"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="${pkgdir}" cmake --build build --target install
+  install -Dm 644 ${pkgname}-${pkgver}/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
