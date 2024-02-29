@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=extraChIPs
-_pkgver=1.6.0
+_pkgver=1.6.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Additional functions for working with ChIP-Seq data"
 arch=(x86_64)
-url="https://bioconductor.org/packages/${_pkgname}"
-license=(GPL3)
+url="https://bioconductor.org/packages/$_pkgname"
+license=('GPL-3.0-only')
 depends=(
   r-biocio
   r-biocparallel
@@ -66,12 +66,12 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('462672c12f16f912b7e3d4b30a07162f')
-sha256sums=('92031cff96880e0e7c1cfa46084ec580991c01a7e23c0734f1802778a1e0c47e')
+md5sums=('1dd6dd8771e0dfa2ba6d612e53456eda')
+b2sums=('3acaec2c02ecb50d10d394dc7e129ea8830a5a66b5ab5d8244830e13c4b31ce43ecce13c97210a45c692d83decb10027a08024dc9cfd5c68cac47492313f2310')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {

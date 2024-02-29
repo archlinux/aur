@@ -1,10 +1,10 @@
 pkgbase = r-extrachips
 	pkgdesc = Additional functions for working with ChIP-Seq data
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/extraChIPs
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	checkdepends = r-harmonicmeanp
 	checkdepends = r-testthat
 	depends = r-biocio
@@ -55,8 +55,8 @@ pkgbase = r-extrachips
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tidyverse
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/extraChIPs_1.6.0.tar.gz
-	md5sums = 462672c12f16f912b7e3d4b30a07162f
-	sha256sums = 92031cff96880e0e7c1cfa46084ec580991c01a7e23c0734f1802778a1e0c47e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/extraChIPs_1.6.1.tar.gz
+	md5sums = 1dd6dd8771e0dfa2ba6d612e53456eda
+	b2sums = 3acaec2c02ecb50d10d394dc7e129ea8830a5a66b5ab5d8244830e13c4b31ce43ecce13c97210a45c692d83decb10027a08024dc9cfd5c68cac47492313f2310
 
 pkgname = r-extrachips
