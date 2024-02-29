@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 BOTTLENAME=Deepin-@bottlename@
 APPVER=@appver@
 EXEC_PATH="c:/Program Files (x86)/Netease/@dirname@-bin/@runname@.exe"
@@ -9,7 +10,7 @@ export DEB_PACKAGE_NAME=@appname@
 export WINEPREDLL="$ARCHIVE_FILE_DIR/dlls"
 export APPRUN_CMD="deepin-wine6-stable"
 if [ -n "${EXEC_PATH}" ];then
-    exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "${EXEC_PATH}" "$@"
+    exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "${EXEC_PATH}" "$@" || exit $?
 else
-    exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "uninstaller.exe" "$@"
+    exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "uninstaller.exe" "$@" || exit $?
 fi
