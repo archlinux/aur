@@ -15,9 +15,11 @@ sha256sums=('cb7f6ba7cd4db6e78be58332bf13cc0a6fc4153314efa09cbae12414f45a7252')
 build() {
   cd "$pkgname-$pkgver"
   env CGO_LDFLAGS_ALLOW="-s|-w" go build \
-    -gcflags "all=-trimpath=${PWD}" \
-    -asmflags "all=-trimpath=${PWD}" \
-    -ldflags "-extldflags ${LDFLAGS}" \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
     .
 }
 
