@@ -1,11 +1,12 @@
 # Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=tkhtml3-git
-pkgver=16.r173.g5749c02
+pkgver=16.r175.g399bae7
 pkgrel=1
 pkgdesc="Tk widget to render html documents."
 arch=('i686' 'x86_64')
 url="http://tkhtml.tcl.tk/"
 license=('LGPL2.1')
+conflicts=("tkhtml")
 provides=('tkhtml3')
 makedepends=('git')
 depends=('tk' 'tcl')
