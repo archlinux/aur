@@ -2,7 +2,7 @@
 # Maintainer: Mikhail f. Shiryaev <mr dot felixoid at gmail dot com>
 pkgname=oh-my-git-git
 pkgver=0.6.4.r22.g9da0bd1
-pkgrel=1
+pkgrel=2
 pkgdesc='An interactive Git learning game!'
 arch=(x86_64)
 url='https://ohmygit.org/'
@@ -34,12 +34,14 @@ build() {
   # and any godot templates with the same minor version
   sed -i 's/\bgodot\b/godot3/g' Makefile
   local godot_version templates_dir godot_minor
-  templates_dir="${srcdir}/.local/share/godot3/templates"
-  mkdir -p "$templates_dir"
   godot_version=$(godot3 --version)
-  godot_version=${godot_version%.*}
+  godot_version=${godot_version/.stable*/.stable}
   godot_minor=${godot_version%.*.*}
-  ln -sf --no-dereference /usr/share/godot/templates/"$godot_minor"* "$templates_dir/$godot_version"
+  for bin in godot godot3; do
+    templates_dir="${srcdir}/.local/share/$bin/templates"
+    mkdir -p "$templates_dir"
+    ln -sf --no-dereference /usr/share/godot/templates/"$godot_minor"* "$templates_dir/$godot_version"
+  done
   # build game
   HOME="${srcdir}" make linux
 }
