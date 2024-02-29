@@ -3,7 +3,7 @@ pkgname=transmissionic-bin
 _pkgname=Transmissionic
 pkgver=1.8.0
 _electronversion=23
-pkgrel=3
+pkgrel=4
 pkgdesc="Remote for Transmission Daemon"
 arch=('x86_64')
 url="https://github.com/6c65726f79/Transmissionic"
@@ -13,12 +13,9 @@ provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-linux-${CARCH}-v${pkgver}.AppImage"
@@ -27,11 +24,11 @@ source=(
 )
 sha256sums=('cbda3a7a49bfdc54a84763bdda7c159b83607b660fa1e66d06d2cda1a9578532'
             '61a59d5ee8c459b5171700485c769d9efb67bf00cb2be4b6fe5561dcdef10191'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            'f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
