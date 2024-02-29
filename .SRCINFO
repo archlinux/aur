@@ -1,7 +1,7 @@
 pkgbase = rtcqs
 	pkgdesc = Scanner for potential real-time bottlenecks
-	pkgver = 0.5.3
-	pkgrel = 3
+	pkgver = 0.5.5
+	pkgrel = 1
 	url = https://codeberg.org/rtcqs/rtcqs
 	arch = any
 	groups = pro-audio
@@ -10,11 +10,14 @@ pkgbase = rtcqs
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = hicolor-icon-theme
 	depends = python
 	optdepends = python-pysimplegui: for rtcqs_gui
-	source = https://files.pythonhosted.org/packages/source/r/rtcqs/rtcqs-0.5.3.tar.gz
-	source = https://codeberg.org/rtcqs/rtcqs/raw/commit/cc129306/rtcqs.desktop
-	sha256sums = 34baf6eeb87660c8cd975221001e10c8aca73e2bf0474ca8de1afd63555f3fdd
+	source = https://files.pythonhosted.org/packages/source/r/rtcqs/rtcqs-0.5.5.tar.gz
+	source = https://codeberg.org/rtcqs/rtcqs/raw/commit/773460b7d8/rtcqs.desktop
+	source = https://codeberg.org/rtcqs/rtcqs/raw/commit/773460b7d8/rtcqs_logo.svg
+	sha256sums = 77ac4a2e6593e9df4a146157a2c3de4a9e8740ced3dfef87f565b8091014497c
 	sha256sums = 6540a30fffff5db0f005830c9c090e95b0312e7efec8dd5ea25d995781703da3
+	sha256sums = e2cc1e4cbedc4d24f1804812017190742f6df2f9eba1fa5f31d93595a91f2cfc
 
 pkgname = rtcqs
