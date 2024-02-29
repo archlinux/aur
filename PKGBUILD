@@ -2,13 +2,13 @@
 
 pkgname=spamass-milter
 pkgver=0.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Sendmail Milter that pipes incoming mail through SpamAssassin"
 arch=(i686 x86_64)
 url="https://savannah.nongnu.org/projects/spamass-milt/"
 license=('GPL')
 depends=(gcc-libs spamassassin)
-makedepends=(libmilter sendmail)
+makedepends=(libmilter)
 optdepends=(sendmail postfix)
 backup=(etc/spamass-milter etc/spamass-milter-postfix)
 install="spamass-milter.install"
@@ -69,7 +69,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr --sbindir=/usr/bin
+  SENDMAIL=/usr/bin/sendmail ./configure --prefix=/usr --sbindir=/usr/bin
   make
 }
 

@@ -1,14 +1,13 @@
 pkgbase = spamass-milter
 	pkgdesc = Sendmail Milter that pipes incoming mail through SpamAssassin
 	pkgver = 0.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://savannah.nongnu.org/projects/spamass-milt/
 	install = spamass-milter.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = libmilter
-	makedepends = sendmail
 	depends = gcc-libs
 	depends = spamassassin
 	optdepends = sendmail
