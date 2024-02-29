@@ -1,7 +1,7 @@
 pkgbase = mailmaster-bin
 	pkgdesc = 专业的全平台邮箱客户端。一封邮件，多端同步。所有平台都能给你出色的体验。
 	pkgver = 5.0.2.1011
-	pkgrel = 2
+	pkgrel = 3
 	url = https://dashi.163.com
 	arch = x86_64
 	license = LicenseRef-custom
