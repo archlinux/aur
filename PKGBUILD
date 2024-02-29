@@ -2,7 +2,7 @@
 # Contributor: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 pkgname=mdsilo-bin
 pkgver=0.5.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Lightweight Knowledge Base and Feed Reader."
 arch=('x86_64')
 url="https://mdsilo.com/"
@@ -21,7 +21,7 @@ source=(
 )
 sha256sums=('a70d0fa49072da91a2ddbee28f824620cd9d80d4a267502e7724f4c02175b194')
 build() {
-  bsdtar -xf "${srcdir}/data.tar.gz"
+  bsdtar -xf "${srcdir}/data."*
   sed "s|Exec=${pkgname%-bin}|Exec=${pkgname%-bin} %U|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {

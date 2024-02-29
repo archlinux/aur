@@ -1,7 +1,7 @@
 pkgbase = mdsilo-bin
 	pkgdesc = Lightweight Knowledge Base and Feed Reader.
 	pkgver = 0.5.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://mdsilo.com/
 	arch = x86_64
 	license = AGPL-3.0-or-later
