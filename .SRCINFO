@@ -1,7 +1,7 @@
 pkgbase = xmachoviewer-bin
 	pkgdesc = Mach-O viewer for Windows, Linux and MacOS
 	pkgver = 0.04
-	pkgrel = 7
+	pkgrel = 8
 	url = https://horsicq.github.io/#xmachoviewer
 	arch = x86_64
 	license = MIT

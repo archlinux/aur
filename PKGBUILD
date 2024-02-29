@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xmachoviewer-bin
 pkgver=0.04
-pkgrel=7
+pkgrel=8
 pkgdesc="Mach-O viewer for Windows, Linux and MacOS"
 arch=(x86_64)
 url="https://horsicq.github.io/#xmachoviewer"
@@ -25,7 +25,7 @@ build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.zst"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
