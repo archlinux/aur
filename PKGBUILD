@@ -1,10 +1,10 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 
-_commit=a901500618405760a564e64a6816705e29f50f9f
+_commit=1817b8b4fec10c66e4d97de73302ebe496bb82ce
 _pkgname=SOEM
 
 pkgname=soem
-pkgver=1.4.0.r70.ga901500
+pkgver=1.4.0.r74.g1817b8b
 pkgrel=1
 pkgdesc="Simple Open EtherCAT Master Library"
 arch=('x86_64')
