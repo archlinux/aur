@@ -13,9 +13,9 @@ post_upgrade() {
 	new=`expr $1 : '\([0-9]*\.[0-9]*\.\)'`"0"
 	if [ $old == $new ]
 	then
-		if [ $old == '17.0.0' ]
+		if [ $old == '18.0.0' ]
 		then
-			old='16.0.0'
+			old='17.0.0'
 		fi	
 	fi
 	rm /var/lib/dolibarr/install.lock
