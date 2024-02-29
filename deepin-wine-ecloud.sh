@@ -1,10 +1,5 @@
 #!/bin/sh
-
-#   Copyright (C) 2016 Deepin, Inc.
-#
-#   Author:     Li LongYu <lilongyu@linuxdeepin.com>
-#               Peng Hao <penghao@linuxdeepin.com>
-version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; }
+set -e
 BOTTLENAME=Deepin-@bottlename@
 APPVER=@appver@
 EXEC_PATH="c:/Program Files/@pathname@/@runname@.exe"
@@ -20,9 +15,8 @@ export WINEPREDLL="${ARCHIVE_FILE_DIR}/dlls"
 if [ -z "${DISABLE_ATTACH_FILE_DIALOG}" ];then
     export ATTACH_FILE_DIALOG=1
 fi
-
 if [ -n "${EXEC_PATH}" ];then
-    "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "${EXEC_PATH}" "$@"
+    exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "${EXEC_PATH}" "$@" || exit $?
 else
-    "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "uninstaller.exe" "$@"
+    exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "uninstaller.exe" "$@" || exit $?
 fi
