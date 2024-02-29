@@ -1,7 +1,7 @@
 pkgbase = qdmr-git
 	pkgdesc = A GUI application for configuring and programming cheap DMR radios
-	pkgver = r515.dab309d
-	pkgrel = 3
+	pkgver = r1327.c557f84
+	pkgrel = 2
 	url = https://github.com/hmatuschek/qdmr
 	arch = x86_64
 	arch = i686
@@ -16,6 +16,8 @@ pkgbase = qdmr-git
 	provides = qdmr
 	conflicts = qdmr
 	source = qdmr::git+https://github.com/hmatuschek/qdmr.git
-	md5sums = SKIP
+	source = udev-rules.patch
+	sha256sums = SKIP
+	sha256sums = 3d1b388dd534a6ecb7039f3248f2c570b31ab198add4ce6dfd4da828884f0a99
 
 pkgname = qdmr-git
