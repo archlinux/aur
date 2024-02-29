@@ -3,35 +3,31 @@ pkgname=anubias-bin
 _pkgname=Anubias
 pkgver=1.0.0_beta1
 _electronversion=13
-pkgrel=6
+pkgrel=7
 pkgdesc="Develope mobile apps so easy and native with GUI"
 arch=('x86_64')
 url="https://anubias.app"
 _ghurl=https://github.com/4xmen/anubias
-license=('GPL3')
+license=('GPL-3.0-only')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
-    'java-runtime'
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/dl/${_pkgname}-${pkgver//_/-}.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('ce38818ef998e4b8b04f2b55afbc8d4aa7510b1a720f795579a7a856a3894307'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            'f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
