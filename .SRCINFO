@@ -1,11 +1,11 @@
 pkgbase = air-controller-desktop-bin
 	pkgdesc = A new handy and powerful Android phone assistant,powered by Flutter.
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ac.yhdm360.cn/
 	arch = x86_64
 	license = MIT
-	makedepends = squashfuse
+	makedepends = fuse2
 	depends = gtk3
 	depends = gst-plugins-base-libs
 	depends = gstreamer

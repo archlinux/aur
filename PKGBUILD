@@ -3,7 +3,7 @@ _pkgname=air_controller
 pkgname="${_pkgname//_/-}-desktop-bin"
 _appname=AirController
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A new handy and powerful Android phone assistant,powered by Flutter."
 arch=('x86_64')
 url="http://ac.yhdm360.cn/"
@@ -20,7 +20,7 @@ depends=(
     'gstreamer'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/${pkgver}/${_appname}_${pkgver}.AppImage"
