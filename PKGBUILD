@@ -2,7 +2,7 @@
 # Maintainer: Carlos A Becker <carlos@charm.sh>
 
 pkgname='confettysh-bin'
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Confetty over SSH'
 url='https://charm.sh/'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('confettysh')
 conflicts=('confettysh')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/confettysh/releases/download/v1.1.0/confettysh_1.1.0_Linux_arm64.tar.gz")
-sha256sums_aarch64=('0c7030249f9d54fb6a4e00e8daf6b08bcfd6f2873ef3fe5841f565ad344b6b41')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/confettysh/releases/download/v1.1.1/confettysh_1.1.1_Linux_arm64.tar.gz")
+sha256sums_aarch64=('e20cab36f1a6dccbc3cf1a5ba898469d809c9a4fda8038c123f0ca07d43e39fb')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/confettysh/releases/download/v1.1.0/confettysh_1.1.0_Linux_armv7.tar.gz")
-sha256sums_armv7h=('b9eec44c905ace1f8e109a69508239c766cc04f53d3a623663d2bf4053d41de6')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/confettysh/releases/download/v1.1.1/confettysh_1.1.1_Linux_arm.tar.gz")
+sha256sums_armv7h=('ec0d115e20fa7ace4f44d7f518f1ccf735eacf66c4fe431b5973866820e6c4af')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/confettysh/releases/download/v1.1.0/confettysh_1.1.0_Linux_i386.tar.gz")
-sha256sums_i686=('e04e006774075513d5fa6787cf5719cc1e5460896d3f7d9e73a31d0da4a911d4')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/confettysh/releases/download/v1.1.1/confettysh_1.1.1_Linux_i386.tar.gz")
+sha256sums_i686=('57fa5b979d2e01695b98019ed6c1886bbb12c9e06fe04f30f0c5d90e1ec87de0')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/confettysh/releases/download/v1.1.0/confettysh_1.1.0_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('66d4fc19db9e896534a7abd61f85e183e0d3f1dc42da0e3d0adc2ab72f37cdfc')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/confettysh/releases/download/v1.1.1/confettysh_1.1.1_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('99305c8f14974f077dca07656a328e2ddae5b2e55cbd8f6e4d46155756c5fdd8')
 
 package() {
   install -Dm755 "./confettysh" "${pkgdir}/usr/bin/confettysh"
