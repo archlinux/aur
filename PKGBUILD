@@ -92,7 +92,7 @@ package() {
 
   cd "$_pkgsrc"
   make DESTDIR="$pkgdir" install
-  install -Dm755 "$srcdir/$_dh_strip_nondeterminism_script" -t "$pkgdir/usr/bin/dh_strip_nondeterminism"
+  install -Dm755 "$srcdir/$_dh_strip_nondeterminism_script" "$pkgdir/usr/bin/dh_strip_nondeterminism"
 }
 
 # vim:set ts=2 sw=2 et:
