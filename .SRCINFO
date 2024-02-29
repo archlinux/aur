@@ -1,12 +1,11 @@
 pkgbase = mdview-appimage
 	pkgdesc = Standalone Markdown viewer
 	pkgver = 3.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/c3er/mdview
 	arch = x86_64
 	license = MIT
-	depends = zlib
-	depends = glibc
+	makedepends = fuse2
 	depends = hicolor-icon-theme
 	provides = mdview=3.0.2
 	conflicts = mdview

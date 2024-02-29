@@ -1,14 +1,19 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mdview-appimage
 pkgver=3.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Standalone Markdown viewer "
 arch=('x86_64')
 url="https://github.com/c3er/mdview"
 license=('MIT')
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
-depends=('zlib' 'glibc' 'hicolor-icon-theme')
+depends=(
+    'hicolor-icon-theme'
+)
+makedepends=(
+    'fuse2'
+)
 options=('!strip')
 _install_path="/opt/appimages"
 source=(
