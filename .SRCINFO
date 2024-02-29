@@ -1,8 +1,8 @@
 pkgbase = sim-sip-git
 	pkgdesc = A tool for preparing and managing Sim problem packages
-	pkgver = r173.858d221
-	pkgrel = 3
-	url = https://github.com/varqox/sip
+	pkgver = r2270.ed528064
+	pkgrel = 1
+	url = https://github.com/varqox/sim-project
 	arch = x86_64
 	arch = i686
 	license = MIT
@@ -22,7 +22,7 @@ pkgbase = sim-sip-git
 	provides = libsimlib.so
 	conflicts = sim-sip
 	conflicts = libsimlib.so
-	source = git+https://github.com/varqox/sip.git
+	source = git+https://github.com/varqox/sim-project.git
 	b2sums = SKIP
 
 pkgname = sim-sip-git
