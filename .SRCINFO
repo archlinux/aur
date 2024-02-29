@@ -28,6 +28,7 @@ pkgbase = blender-develop-git
 	depends = libgl
 	depends = python
 	depends = python-numpy
+	depends = python-requests
 	depends = openjpeg2
 	depends = libharu
 	depends = potrace

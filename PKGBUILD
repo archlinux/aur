@@ -42,7 +42,7 @@ pkgdesc="Development version of Blender (non-conflicting version)"
 changelog=blender.changelog
 arch=('i686' 'x86_64')
 url="https://blender.org/"
-depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2' 'libharu' 'potrace' 'openxr'
+depends+=('alembic' 'embree' 'libgl' 'python' python-{numpy,requests} 'openjpeg2' 'libharu' 'potrace' 'openxr'
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 depends+=('openimagedenoise')
