@@ -1,0 +1,13 @@
+pkgbase = resistormaid
+	pkgdesc = CLI resistor calculator
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://sateallia.org/software/
+	arch = x86_64
+	license = MIT
+	source = https://sateallia.org/code/resistormaid/resistormaid_2_0_0.tar.gz
+	source = https://sateallia.org/code/resistormaid/resistormaid_2_0_1.patch
+	md5sums = 4296e292d9c723da5b316386e301be3e
+	md5sums = 9482b16ce012e24f2b24a4e1d10775c5
+
+pkgname = resistormaid
