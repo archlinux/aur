@@ -42,7 +42,7 @@ prepare() {
 
 build() {
     cd $_pkgname
-    cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release
+    cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DPACKAGER=AUR
     make
 }
 
