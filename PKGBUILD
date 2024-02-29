@@ -3,7 +3,6 @@
 pkgname=rofi-pass-wayland-git
 pkgver=2.1.3.r0.gcab4a78
 pkgrel=1
-epoch=1
 pkgdesc="Rofi-wayland frontend for ZX2C4 pass project."
 arch=('any')
 url="https://github.com/Seme4eg/rofi-pass-wayland"
