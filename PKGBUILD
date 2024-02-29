@@ -6,7 +6,7 @@ pkgver=0.7.3
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/FEniCS/${_base}"
-license=(LGPL3)
+license=(LGPL-3.0-or-later GPL-3.0-or-later)
 depends=(dolfinx python-mpi4py)
 makedepends=(python-build python-installer python-setuptools python-wheel pybind11 cmake)
 checkdepends=(python-pytest python-cppimport python-scipy eigen python-matplotlib python-numba)
@@ -24,10 +24,6 @@ build() {
 }
 
 check() {
-  if [ -z "$(ldconfig -p | grep libcuda.so.1)" ]; then
-    export OMPI_MCA_opal_warn_on_missing_libcuda=0
-  fi
-
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer ${_base}-${pkgver}/python/dist/*.whl
   MPLBACKEND=Agg test-env/bin/python -m pytest ${_base}-${pkgver}/python/test/unit \
