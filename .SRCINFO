@@ -6,8 +6,10 @@ pkgbase = rapl-read-ryzen-git
 	arch = any
 	license = GPL
 	makedepends = git
-	source = rapl-read-ryzen-git::git+https://github.com/djselbeck/rapl-read-ryzen
-	md5sums = SKIP
+	makedepends = gcc
+	provides = rapl-read-ryzen
+	conflicts = rapl-read-ryzen
+	source = rapl-read-ryzen::git+https://github.com/djselbeck/rapl-read-ryzen
+	sha256sums = SKIP
 
 pkgname = rapl-read-ryzen-git
-
