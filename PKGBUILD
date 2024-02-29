@@ -3,7 +3,7 @@ pkgname=nora-bin
 _pkgname=Nora
 pkgver=2.5.0_stable
 _electronversion=27
-pkgrel=2
+pkgrel=3
 pkgdesc="An elegant music player built using Electron and React. Inspired by Oto Music for Android by Piyush Mamidwar."
 arch=('x86_64')
 url="https://github.com/Sandakan/Nora"
@@ -24,18 +24,17 @@ source=(
 )
 sha256sums=('dbbe88f6d1e5f219c546c026bdbbf7d5d8ff7c360f2ec6a6610ec837ea57a25a'
             '7c27f3771d31e4ba1a227b2aec04ff8892512ba80dd0fb9435115a6523e2980e'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            'f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    mkdir -p "${srcdir}/app.asar.unpacked/.erb/dll"
-    cp "${srcdir}/app.asar.unpacked/dist/main/preload.js" "${srcdir}/app.asar.unpacked/.erb/dll"
-    cp "${srcdir}/usr/share/icons/hicolor/512x512/apps/${pkgname%-bin}.png" "${srcdir}/opt/${_pkgname}/resources/assets/icon.png"
+    sed "s|icon.ico|icon.png|g" -i "${srcdir}/app.asar.unpacked/dist/main/main.js"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
+    cp "${srcdir}/usr/share/icons/hicolor/512x512/apps/${pkgname%-bin}.png" "${srcdir}/opt/${_pkgname}/resources/assets/icon.png"
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
