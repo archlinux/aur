@@ -3,11 +3,11 @@ pkgname=animestream-bin
 pkgver=1.0.0
 _subver=alpha_3
 _electronversion=27
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple project designed for streaming and downloading your favorite anime!"
 arch=('x86_64')
 url="https://github.com/frostnova721/AnimeStream"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 depends=(
@@ -18,13 +18,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('01c928a44d8574b448800ddecb460cfcc63e1409e0e5528070677dfa8382705d'
-            'd4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231')
+            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.zst"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
