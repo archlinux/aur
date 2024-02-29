@@ -15,8 +15,8 @@ aur:
 update: SHELL:=/bin/bash
 update:
 	@([[ $$(git ls-files) ]] && git clean -xdf ) || ( echo Please make your first stage or commit to ensure which files will not be deleted as cache files first && exit 1 )
-	env all_proxy=http://127.0.0.1:7890 updpkgsums # update package integrity checksum
+	updpkgsums # update package integrity checksum
 	makepkg --printsrcinfo > .SRCINFO
 
 run:
-	env all_proxy=http://127.0.0.1:7890 makepkg -si --clean
+	makepkg -si --clean
