@@ -4,29 +4,29 @@
 _pkgname=multcompView
 _pkgver=0.1-9
 pkgname=r-${_pkgname,,}
-pkgver=0.1.9
-pkgrel=1
-pkgdesc='Visualizations of Paired Comparisons'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=3
+pkgdesc="Visualizations of Paired Comparisons"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
 optdepends=(
-  r-mass
   r-multcomp
   r-pgirmess
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1f3993e9d51f3c7a711a881b6a20081a85ffab60c27828ceb3640a6b4c887397')
+md5sums=('78c19f8277cd060fc31628b3ac8188be')
+b2sums=('7e780ba698a987d9be08916f7a806037cf1a61836144d0fcbdc1aae56e3a9df2cab437e23cde3165449d410299e9829891a209c3aa5360c902c85bfabbb10c82')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
