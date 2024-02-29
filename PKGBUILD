@@ -1,12 +1,12 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 
-_commit=dfdbb8b55effc0feb72a1981944acaf20ee71354  # tags/1.51.1
+_commit=fed7be510f58ed848f23f653f3fba45f44eb3b9c  # tags/1.52.0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-pango
-pkgver=1.51.1
-pkgrel=2
+pkgver=1.52.0
+pkgrel=1
 pkgdesc="A library for layout and rendering of text (mingw-w64)"
 arch=('any')
 url="https://pango.gnome.org/"
