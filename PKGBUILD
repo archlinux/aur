@@ -3,22 +3,19 @@
 # Contributer: rilian-la-te <ria.freelander@gmail.com>
 
 # options
-if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ] ; then
-  : ${_autoupdate:=false}
-else
-  : ${_autoupdate:=true}
-fi
+: ${_autoupdate:=false}
 
 : ${_build_git:=false}
 
+unset _pkgtype
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
 # basic info
 _name="vala-panel-appmenu"
 _pkgname="$_name-registrar"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=0.7.6
-pkgrel=2
+pkgver=24.02
+pkgrel=1
 pkgdesc="Small utility to hold DBusMenu menus"
 url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
 license=('LGPL-3.0-or-later')

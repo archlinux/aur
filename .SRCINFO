@@ -1,7 +1,7 @@
 pkgbase = vala-panel-appmenu-registrar
 	pkgdesc = Small utility to hold DBusMenu menus
-	pkgver = 0.7.6
-	pkgrel = 2
+	pkgver = 24.02
+	pkgrel = 1
 	url = https://gitlab.com/vala-panel-project/vala-panel-appmenu
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = vala-panel-appmenu-registrar
 	makedepends = meson
 	depends = glib2
 	conflicts = vala-panel-appmenu-registrar-git
-	source = vala-panel-appmenu::git+https://gitlab.com/vala-panel-project/vala-panel-appmenu.git#tag=0.7.6
+	source = vala-panel-appmenu::git+https://gitlab.com/vala-panel-project/vala-panel-appmenu.git#tag=24.02
 	sha256sums = SKIP
 
 pkgname = vala-panel-appmenu-registrar
