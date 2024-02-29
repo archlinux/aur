@@ -3,33 +3,30 @@ pkgname=colorpicker-app-bin
 _pkgname=Colorpicker
 pkgver=2.2.0
 _electronversion=19
-pkgrel=6
+pkgrel=7
 pkgdesc="A mininal but complete colorpicker desktop app"
 arch=('x86_64')
 url="https://colorpicker.fr/"
 _ghurl="https://github.com/Toinane/colorpicker"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}" "${pkgname%-app-bin}" "${pkgname%-app-bin}-fr")
 depends=(
     "electron${_electronversion}"
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('791495d718a2245294bda7ed431353a8b3f24d8f6b586fed104783aa85fe58a2'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            'f80acf84a87f3f50d7c4e2ed22f4d0e8b09dd98a6c26253f2524e5413771eab1')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
