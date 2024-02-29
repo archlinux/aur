@@ -1,8 +1,5 @@
 #!/bin/sh
 set -e
-version_gt() { 
-    test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; 
-}
 ACTIVEX_NAME=""
 BOTTLENAME="@bottlename@"
 APPVER="@appver@"
@@ -24,11 +21,9 @@ export WINESERVICESDISABLE=""
 export WINE_WMCLASS="@pkgname@"
 export LC_ALL=zh_CN.UTF-8
 ARCHIVE_FILE_DIR="/opt/apps/${DEB_PACKAGE_NAME}/files"
-
 if [ -z "${APPRUN_CMD}" ];then
     export APPRUN_CMD="/opt/deepin-wine8-stable/bin/wine"
 fi
-
 if [ -f "${APPRUN_CMD}" ];then
     wine_path=$(dirname ${APPRUN_CMD})
     wine_path=$(realpath "${wine_path}/../")
@@ -36,25 +31,19 @@ if [ -f "${APPRUN_CMD}" ];then
 else
     export WINEDLLPATH="/opt/${APPRUN_CMD}/lib:/opt/${APPRUN_CMD}/lib64"
 fi
-
 export WINEPREDLL="${ARCHIVE_FILE_DIR}/dlls"
-
 _SetRegistryValue()
 {
     env WINEPREFIX="${BOTTLEPATH}" "${APPRUN_CMD}" reg ADD "$1" /v "$2" /t "$3" /d "$4" /f
 }
-
 if [ -z "${DISABLE_ATTACH_FILE_DIALOG}" ];then
     export ATTACH_FILE_DIALOG=1
 fi
-
 if [ -n "${EXPORT_ENVS}" ];then
     export "${EXPORT_ENVS}"
 fi
-
-# 打包安装程序的情况
 if [[ -z "${EXEC_PATH}" ]] && [[ -n "${INSTALL_SETUP}" ]];then
-    "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "${EXEC_PATH}" -c
+    exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "${EXEC_PATH}" -c
     BOTTLEPATH="${HOME}/.deepinwine/${BOTTLENAME}"
     EXEC_PATH=$(find "${BOTTLEPATH}" -name ${EXEC_NAME} | head -1)
     if [ -z "${EXEC_PATH}" ];then
@@ -63,13 +52,11 @@ if [[ -z "${EXEC_PATH}" ]] && [[ -n "${INSTALL_SETUP}" ]];then
         EXEC_PATH=$(find "${BOTTLEPATH}" -name "${EXEC_NAME}" | head -1)
         cp "${ARCHIVE_FILE_DIR}/setup.md5sum" "${BOTTLEPATH}"
     fi
-
     if [ -z "${EXEC_PATH}" ];then
         echo "安装失败退出"
         exit
     fi
 fi
-
 if [ -n "${EXEC_PATH}" ];then
     if [ -z "${EXEC_PATH##*.lnk*}" ];then
         exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "C:/windows/command/start.exe" "/Unix" "${EXEC_PATH}" "$@" || exit $?
