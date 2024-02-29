@@ -1,4 +1,4 @@
-post_install() {
+info() {
     echo ""
     echo "Browser 360 has been installed."
     echo "You should do this to make it run normally:"
@@ -7,4 +7,10 @@ post_install() {
     echo "Next time you can run it normally."
     echo "It's the program's bug,it need root to run dmidecode."
     echo ""
+}
+post_install() {
+    info
+}
+post_upgrade() {
+    info
 }

@@ -3,7 +3,7 @@
 pkgname=browser360-bin
 _pkgname=com.360.browser-stable
 pkgver=13.3.1010.231
-pkgrel=1
+pkgrel=2
 pkgdesc="360 Browser stable version"
 arch=(
     "aarch64"
@@ -30,9 +30,9 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::https://gedown.360safe.com
 sha256sums_aarch64=('ea74171ca6b5aaa67cebc9a93f05699df32413679b7bed93512508dccc083f06')
 sha256sums_x86_64=('8beec53dfc2fd02d24f906cee8d16fc452149f8bed516926db2a9ab4cd244482')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     rm -rf "${srcdir}/opt/apps/${_pkgname}/info" \
-        "${srcdir}/opt/apps/${_pkgname}/entries/autostart"
+           "${srcdir}/opt/apps/${_pkgname}/entries/autostart"
 }
 package() {
     cp -r "${srcdir}/opt" "${pkgdir}"

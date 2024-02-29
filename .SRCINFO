@@ -1,7 +1,7 @@
 pkgbase = browser360-bin
 	pkgdesc = 360 Browser stable version
 	pkgver = 13.3.1010.231
-	pkgrel = 1
+	pkgrel = 2
 	url = https://browser.360.net/gc/index.html
 	install = browser360.install
 	arch = aarch64
