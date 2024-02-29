@@ -11,7 +11,7 @@ pkgver=2019.1.0.post0
 pkgrel=8
 arch=('x86_64')
 url="https://bitbucket.org/fenics-project/${pkgname}"
-license=('LGPL3')
+license=(LGPL-3.0-or-later)
 depends=('boost' 'cppunit' 'eigen' 'gl2ps' 'petsc' 'python-ffc' 'scotch' 'suitesparse')
 optdepends=('slepc: eigenvalue problem solvers'
   'hdf5-openmpi: for reading/writing hdf5 files')
