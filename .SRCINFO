@@ -1,6 +1,6 @@
 pkgbase = hmcl-java-run
 	pkgdesc = An unofficial build of HMCL that use aur/archlinux-java-run to select java version with javaFX (with aur/hmcl-new changes)
-	pkgver = 3.5.5.236
+	pkgver = 3.5.5.237
 	pkgrel = 1
 	url = https://github.com/HMCL-dev/HMCL
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = hmcl-java-run
 	depends = archlinux-java-run
 	provides = hmcl
 	conflicts = hmcl
-	source = HMCL-v3.5.5.236.tar.gz::https://github.com/HMCL-dev/HMCL/archive/v3.5.5.236.tar.gz
+	source = HMCL-v3.5.5.237.tar.gz::https://github.com/HMCL-dev/HMCL/archive/v3.5.5.237.tar.gz
 	source = 0001-Target-Java-17.patch
 	source = 0002-Cleanup.patch
-	sha256sums = c5bbb74809e1d66684f8370816b5e15dae149337eaadac0ae30f246ccfc80dd1
+	sha256sums = 910e4128f846636552f34640e05fe5b4e2e1e00213a93aecf6ac253ba9c1aaee
 	sha256sums = c395ad622cf81a07d5738f6c20b845b51c900fd1aa0e9b87fd8ea415b8fac646
 	sha256sums = f723aebb63bd414bdd86e41c9795686fa0b409ddb339b5bc953b3c9097a76b02
 

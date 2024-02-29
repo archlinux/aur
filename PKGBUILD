@@ -6,7 +6,7 @@
 pkgname=hmcl-java-run
 _pkgname=HMCL
 _ver=3.5.5
-_build=236
+_build=237
 _pkgver=$_ver.$_build
 _java_version=17
 _jar_path="/usr/share/java/$pkgname.jar"
@@ -23,7 +23,7 @@ conflicts=('hmcl')
 source=("${_pkgname}-v${_pkgver}.tar.gz::${url}/archive/v${_pkgver}.tar.gz"
 		"0001-Target-Java-$_java_version.patch"
 		"0002-Cleanup.patch")
-sha256sums=('c5bbb74809e1d66684f8370816b5e15dae149337eaadac0ae30f246ccfc80dd1'
+sha256sums=('910e4128f846636552f34640e05fe5b4e2e1e00213a93aecf6ac253ba9c1aaee'
             'c395ad622cf81a07d5738f6c20b845b51c900fd1aa0e9b87fd8ea415b8fac646'
             'f723aebb63bd414bdd86e41c9795686fa0b409ddb339b5bc953b3c9097a76b02')
 
@@ -58,7 +58,7 @@ package() {
 	install -Dm644 "$_pkgname-$_pkgver/HMCL/image/hmcl.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/$pkgname.png"
 	install -Dm644 "$_pkgname-$_pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-	install -Dm755 <(sed -e "s|%JAVA_VERSION%|$_java_version|g" -e "s|%JAR_PATH%|$_jar_path|g" <<- SCRIPT
+	install -Dm755 <(cat <<- SCRIPT
 		#!/usr/bin/env sh
 		set -eu
 
@@ -93,28 +93,24 @@ package() {
 		  esac
 		done
 
-		env GDK_CORE_DEVICE_EVENTS=1 archlinux-java-run -f 'javafx' -a '%JAVA_VERSION%' -- -jar '%JAR_PATH%' "\$args"
+		env GDK_CORE_DEVICE_EVENTS=1 archlinux-java-run -f 'javafx' -a '$_java_version' -- -jar '$_jar_path' "\$args"
 
 		SCRIPT
 	) "$pkgdir/usr/bin/$pkgname"
 
-	install -Dm755 <(sed \
-		-e "s|%PROJECT_NAME_SHORT%|$_pkgname|g" \
-		-e "s|%PROJECT_NAME%|$pkgname|g" \
-		-e "s|%PROJECT_DESC%|$pkgdesc|g" \
-		-e "s|%WM_CLASS%|org.jackhuang.hmcl.Launcher|g" <<- DESKTOP
-			[Desktop Entry]
-			Version=1.0
-			Type=Application
-			Name=%PROJECT_NAME_SHORT%
-			Comment=%PROJECT_DESC%
-			Exec=%PROJECT_NAME% --hmcl-global %U
-			Icon=%PROJECT_NAME%
-			Terminal=false
-			StartupNotify=true
-			Categories=Game;
-			StartupWMClass=%WM_CLASS%
+	install -Dm755 <(cat <<- DESKTOP
+		[Desktop Entry]
+		Version=1.0
+		Type=Application
+		Name=$_pkgname
+		Comment=$pkgdesc
+		Exec=$pkgname --hmcl-global %U
+		Icon=$pkgname
+		Terminal=false
+		StartupNotify=true
+		Categories=Game;
+		StartupWMClass=org.jackhuang.hmcl.Launcher
 
-			DESKTOP
+		DESKTOP
 	) "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
