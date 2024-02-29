@@ -17,7 +17,7 @@ unset _pkgtype
 _pkgname="debhelper"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=13.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of programs that can be used in a debian/rules file to automate common tasks"
 url="https://salsa.debian.org/debian/debhelper"
 license=('GPL-2.0-or-later')
@@ -95,7 +95,7 @@ package() {
 
   cd "$_pkgsrc"
   make DESTDIR="$pkgdir" install
-  install -Dm755 "$srcdir/$_dh_strip_nondeterminism_script" -t "$pkgdir/usr/bin/dh_strip_nondeterminism"
+  install -Dm755 "$srcdir/$_dh_strip_nondeterminism_script" "$pkgdir/usr/bin/dh_strip_nondeterminism"
 }
 
 # vim:set ts=2 sw=2 et:
