@@ -2,7 +2,7 @@
 
 _name=QMamehook
 pkgname=qmamehook
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc='A stripped-down reimplementation of MAMEHOOKER for light guns.'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('LGPL-2.0-only')
 depends=('qt5-base' 'qt5-serialport' 'icu')
 makedepends=('cmake')
 source=("https://github.com/SeongGino/QMamehook/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('504a48aa8909d5e1ee185ac19322c86e')
+md5sums=('7ac815394708a4ea624847c1eb5df938')
 
 build() {
   mkdir "$srcdir/$_name-$pkgver/build"
