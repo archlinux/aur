@@ -2,7 +2,7 @@
 
 _gemname=google-protobuf
 pkgname=ruby-$_gemname
-pkgver=3.25.2
+pkgver=3.25.3
 pkgrel=1
 pkgdesc="Protocol Buffers are Google's data interchange format."
 arch=(any)
