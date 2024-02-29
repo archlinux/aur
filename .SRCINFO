@@ -1,13 +1,14 @@
 pkgbase = r-rootsolve
 	pkgdesc = Nonlinear Root Finding, Equilibrium and Steady-State Analysis of Ordinary Differential Equations
 	pkgver = 1.8.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=rootSolve
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = gcc-fortran
 	depends = r
 	source = https://cran.r-project.org/src/contrib/rootSolve_1.8.2.4.tar.gz
-	sha256sums = e16a317ea494192e0a5668a18f7eb99675f8edf3b3095861d213bc2590ad385d
+	md5sums = 55edadf34bf9065e60c7570e82bc4b16
+	b2sums = bc47ed8a8d26c26ed7394a5d02d5209e79924e870d854c796aa9baa66b178c6ed0bf19d9636ebbd1aa5563ba3b1ec53c5ab5eede1d225461829a838d62299ac1
 
 pkgname = r-rootsolve

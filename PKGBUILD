@@ -4,12 +4,12 @@
 _pkgname=rootSolve
 _pkgver=1.8.2.4
 pkgname=r-${_pkgname,,}
-pkgver=1.8.2.4
-pkgrel=1
-pkgdesc='Nonlinear Root Finding, Equilibrium and Steady-State Analysis of Ordinary Differential Equations'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Nonlinear Root Finding, Equilibrium and Steady-State Analysis of Ordinary Differential Equations"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
@@ -17,14 +17,15 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e16a317ea494192e0a5668a18f7eb99675f8edf3b3095861d213bc2590ad385d')
+md5sums=('55edadf34bf9065e60c7570e82bc4b16')
+b2sums=('bc47ed8a8d26c26ed7394a5d02d5209e79924e870d854c796aa9baa66b178c6ed0bf19d9636ebbd1aa5563ba3b1ec53c5ab5eede1d225461829a838d62299ac1')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
