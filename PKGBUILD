@@ -1,14 +1,14 @@
 # Maintainer: yhtez <yhtez@protonmail.com>
 pkgname=olympus
-pkgver=23.12.31.01
-_commit=1df385a8274f89662e7641eb04076c6fbfd47d20
+pkgver=24.02.25.05
+_commit=9c1a5eaa5969f1c3d3b1abf81428bc55e10f7d0e
 pkgrel=1
 pkgdesc='Everest installer / mod manager for Celeste'
 arch=('x86_64')
 url='https://github.com/EverestAPI/Olympus'
 license=('MIT')
 depends=('gtk3' 'love' 'lua51-lsqlite3' 'mono')
-makedepends=('git' 'lua51' 'luarocks' 'msbuild' 'nuget' 'zip')
+makedepends=('git' 'lua51' 'luarocks' 'msbuild' 'nuget')
 conflicts=('olympus-bin')
 source=("git+https://github.com/EverestAPI/Olympus.git#commit=$_commit"
         "git+https://github.com/EverestAPI/OlympUI.git"
@@ -59,8 +59,7 @@ package() {
     install -Dm755 olympus.sh "$pkgdir/usr/lib/olympus/olympus"
     install -Dm755 find-love.sh "$pkgdir/usr/lib/olympus/find-love"
 
-    cd src; zip -r ../olympus.love *; cd ..
-    install -Dm644 olympus.love "$pkgdir/usr/lib/olympus/olympus.love"
+    bsdtar --format zip --strip-components 1 -cf "$pkgdir/usr/lib/olympus/olympus.love" src
 
     install -Dm755 luarocks/lib/lua/5.1/* -t "$pkgdir/usr/lib/olympus"
     install -Dm755 sharp/bin/Release/net452/* -t "$pkgdir/usr/lib/olympus/sharp"
