@@ -1,18 +1,19 @@
 pkgbase = rofi-pass-wayland-git
 	pkgdesc = Rofi-wayland frontend for ZX2C4 pass project.
-	pkgver = v2.1.0.r14.g946b1ff
+	pkgver = 2.1.3.r0.gcab4a78
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/Seme4eg/rofi-pass-wayland
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
-	depends = rofi-lbonn-wayland-git
 	depends = pass
 	depends = wtype
 	depends = wl-clipboard
+	depends = rofi-lbonn-wayland-git
 	optdepends = qrencode: qrcode functionality
 	optdepends = pass-otp: one time passwords generation
-	provides = rofi-pass-wayland=v2.1.0
+	provides = rofi-pass-wayland=2.1.3
 	conflicts = rofi-pass-wayland
 	conflicts = rofi-pass-git
 	conflicts = rofi-pass-ydotool-git
