@@ -4,8 +4,8 @@
 pkgname='python-calcpy-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=0.r216.g9d78f3f
-pkgrel=2
+pkgver=0.1.r216.g9d78f3f
+pkgrel=1
 pkgdesc='Terminal calculator and advanced math solver using Python, IPython and SymPy (built from latest commit)'
 arch=('any')
 url="https://github.com/idanpa/$_srcname"
@@ -47,7 +47,7 @@ pkgver() {
 
   # There are no tags yet,
   # so let's use number of revisions since beginning of history
-  printf '0.r%s.g%s' \
+  printf '0.1.r%s.g%s' \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short=7 HEAD)"
 }
