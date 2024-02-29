@@ -12,6 +12,7 @@ pkgbase = lib32-gst-bad-ugly
 	makedepends = lib32-gst-plugins-base
 	makedepends = lib32-gst-plugins-good
 	makedepends = wayland-protocols
+	makedepends = lib32-gtk3
 	makedepends = lib32-gst-plugins-base-libs>=1.22.10
 	makedepends = lib32-a52dec
 	makedepends = lib32-libcdio

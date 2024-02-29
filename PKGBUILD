@@ -64,6 +64,7 @@ _bad_depends=(
 makedepends=(
 	# superproject
 	git meson lib32-gstreamer lib32-gst-plugins-{base,good} wayland-protocols
+	lib32-gtk3
 
 	# _common
 	"${_common_depends[@]}"
