@@ -15,7 +15,7 @@ replaces=(python-tree-sitter-lsp)
 license=(GPL3)
 _py=py3
 source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/${_pkgname//-/_}/${_pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('9a5d67a965bc0f5b323c487d2e0f57db262120da34e096282d0fb05bf060a021')
+sha256sums=('6f24c95f8a6758f770c001f44688cacb8ccb356081a845315ab1e0ed87a76c52')
 
 package() {
 	python -minstaller -d"$pkgdir" ./*.whl
