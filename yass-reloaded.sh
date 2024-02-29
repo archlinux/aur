@@ -3,7 +3,7 @@
 XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
 
 # Allow users to override command-line options
-if [[ -f $XDG_CONFIG_HOME/typora-flags.conf ]]; then
+if [[ -f $XDG_CONFIG_HOME/yass-reloaded.conf ]]; then
 	YASS_RELOADED_USER_FLAGS="$(sed 's/#.*//' $XDG_CONFIG_HOME/yass-reloaded-flags.conf | tr '\n' ' ')"
 fi
 
