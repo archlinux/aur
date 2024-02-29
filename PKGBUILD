@@ -4,11 +4,11 @@
 pkgname=python-tgcrypto
 _pkgname=tgcrypto
 pkgver=1.2.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast and Portable Cryptography Extension Library for Pyrogram"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pyrogram/$_pkgname"
-license=("GPL3" 'LGPL3')
+license=("LGPL-3.0-or-later")
 depends=("python" "glibc")
 makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools")
 checkdepends=("python-pytest")
