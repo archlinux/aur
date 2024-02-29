@@ -1,12 +1,12 @@
 # Maintainer: SandaruKasa <sandarukasa plus aur at ya dot ru>
 
 pkgname=n2-git
-pkgver=0.1.0.r454.90041c1
+pkgver=0.1.0.r488.668d9ab
 pkgrel=1
 pkgdesc='n2 ("into"), a ninja compatible build system'
 arch=('x86_64' 'aarch64')
 url="https://github.com/evmar/n2"
-license=(Apache)
+license=("Apache-2.0")
 makedepends=(git rust coreutils sed gcc)
 options=(!lto)
 depends=(gcc-libs glibc)
