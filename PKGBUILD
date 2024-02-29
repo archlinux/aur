@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
 pkgname=ssh-openpgp-auth
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Verify identity of remote SSH hosts based on OpenPGP trust anchors"
 arch=(x86_64)
@@ -20,15 +20,14 @@ makedepends=(
   openssl
   rust
   rust-script
-  sqlite
 )
 checkdepends=(
   openssh
 )
 optdepends=('openssh: for working with a local sshd')
 source=($pkgname-$pkgver.tar.gz::https://codeberg.org/wiktor/ssh-openpgp-auth/archive/$pkgname/$pkgver.tar.gz)
-sha512sums=('8a557154f70942ef8d1b1f12161a1f2c9e92463a7711816c175ff2ae97d290c10b05908c9cf4756fccfe4cd99c5237a23cd06057d61c1adb9194845d22b34336')
-b2sums=('b8296d19dd45fb46a5b6cf9aaa0caeba44c8f39f1993176c9bd4ecc6662f6a35b94a92d5a87ffc789341670a29247a8ba8b7ec75d194db9506278c0b4473393d')
+sha512sums=('d28a110b3d35bb8841d3b2ac451d923ac2d6fd00d30746d0f171648e065e2e8a7b799cd50d6e34654885df6b6409a74fa396332cbd70d4917661dabb1504699b')
+b2sums=('05fcd0c86e780df2fe136d5ce1b71002ab9875d4ca19362c66f40ce81ca31042900a3f2c00a484383358b0f01743d1ce207cbc2423adce233c2982696b40ae1c')
 validpgpkeys=()
 
 prepare() {
@@ -58,7 +57,6 @@ package() {
     gmp
     nettle libhogweed.so libnettle.so
     openssl libcrypto.so libssl.so
-    sqlite libsqlite3.so
   )
 
   install -vDm 755 $pkgname/target/release/$pkgname -t "$pkgdir/usr/bin/"
