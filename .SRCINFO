@@ -1,11 +1,11 @@
 pkgbase = huaweicloudmeeting-bin
 	pkgdesc = HuaWei Cloud Meeting."云端"协同的会议解决方案，全平台接入，全球覆盖，提供高清、稳定、安全、高效的极简会议体验
 	pkgver = 9.12.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.huaweicloud.com/product/meeting
 	arch = x86_64
 	license = LicenseRef-custom
-	depends = electron25
+	depends = electron22
 	depends = hicolor-icon-theme
 	provides = huaweicloudmeeting=9.12.5
 	conflicts = huaweicloudmeeting
@@ -15,7 +15,7 @@ pkgbase = huaweicloudmeeting-bin
 	source = LICENSE.pdf::https://support.huaweicloud.com/bulletin-meeting/bulletin-meeting.pdf
 	source = huaweicloudmeeting.sh
 	sha256sums = 60e15e2a93c0529c4573a6c616e76b3e74f61f4f160e7d3279fde28993982f1f
-	sha256sums = d4f805a9acfb65bd53da924e179f9cd432d38fb5e78e0ef293c5e1abc93e2ca0
-	sha256sums = d4272fed78cdcacd9edfb019134ac485d65b43f4d8c7a4179edbaed56af9b231
+	sha256sums = df7f623a3d1b0d3fd2d54aefb4f59db8d859d3095b7bf71b77cd138085193241
+	sha256sums = 0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014
 
 pkgname = huaweicloudmeeting-bin
