@@ -21,7 +21,7 @@ package(){
 
     install -d "$pkgdir/usr/bin/"
     ln -s "/opt/$pkgname/furmark" "$pkgdir/usr/bin/furmark"
-    ln -s "/opt/$pkgname/Furmark_GUI" "$pkgdir/usr/bin/furmark-gui"
+    ln -s "/opt/$pkgname/FurMark_GUI" "$pkgdir/usr/bin/furmark-gui"
 
-    install -Dm644 "./EULA.txt" "$pkgdir/usr/shar/licenses/$pkgname/EULA.txt"
+    install -Dm644 "./EULA.txt" "$pkgdir/usr/share/licenses/$pkgname/EULA.txt"
 }
