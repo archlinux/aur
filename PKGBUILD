@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="mutt/neomutt's language server"
 arch=(any)
 url=https://github.com/neomutt/mutt-language-server
-depends=(python-tree-sitter-lsp python-tree-sitter-muttrc)
+depends=(python-lsp-tree-sitter python-tree-sitter-muttrc)
 optdepends=(
 	'python-pypandoc: generate json schema'
 	'python-markdown-it-py: generate json schema: generate json schema'''
