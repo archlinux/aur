@@ -1,19 +1,18 @@
-# Maintainer: Andy Alt <andy400-dev at yahoo dot com>
+# Maintainer: Andy Alt <arch_stanton5995 at proton dot me>
 
 pkgname=canfigger
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
-pkgdesc="simple configuration file parser library"
+pkgdesc="Lightweight configuration file parser library"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'ppc64le')
-url="https://github.com/andy5995/canfigger"
-license=('GPL3')
+url="https://andy5995.github.io/canfigger/"
+license=('GPL-3.0-or-later')
 depends=('glibc')
 makedepends=('meson' 'ninja')
-provides=('canfigger' 'libcanfigger.so')
 options=('staticlibs')
 
 source=("https://github.com/andy5995/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('c43449d5f99f4a5255800c8c521e3eaec7490b08fc4363f2858ba45c565a1d23')
+sha256sums=('3d813e69e0cc3a43c09cf565138ac1278f7bcea74053204f54e3872c094cb534')
 
 build() {
   arch-meson $pkgname-$pkgver build
