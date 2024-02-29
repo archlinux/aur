@@ -1,0 +1,18 @@
+#!/bin/sh
+
+pre_install() {
+	_unmaintained_warning
+}
+
+pre_upgrade() {
+	_unmaintained_warning
+}
+
+_unmaintained_warning() {
+	echo "Warning: pyrogram is no longer maintained!"
+	echo "Consider switching to an active fork."
+	echo "There are available AUR packages such as:"
+	echo " - python-pyrofork-git"
+	echo " - python-pyrogram-kurimuzon-git"
+	echo " - python-pyrogram-telegramplayground-git"
+}

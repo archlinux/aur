@@ -1,10 +1,11 @@
 pkgbase = python-pyrogram
 	pkgdesc = Elegant, modern and asynchronous Telegram MTProto API framework in Python for users and bots
 	pkgver = 2.0.106
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyrogram/pyrogram
+	install = python-pyrogram.install
 	arch = any
-	license = GPL3
+	license = LGPL-3.0-or-later
 	checkdepends = python-pytest
 	checkdepends = python-pytest-asyncio
 	checkdepends = python-pytest-cov
@@ -16,7 +17,7 @@ pkgbase = python-pyrogram
 	depends = python-pyaes
 	depends = python-pysocks
 	optdepends = python-tgcrypto: faster cryptography
-	options = !emptydirs
+	options = !strip
 	source = pyrogram-2.0.106.tar.gz::https://github.com/pyrogram/pyrogram/archive/refs/tags/v2.0.106.tar.gz
 	sha256sums = a7f10140d53707411e464f34dcfa9b646577aa7feb9a842c373b22baf0c184c1
 
