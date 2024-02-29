@@ -5,14 +5,14 @@
 
 pkgname=diff-so-fancy-git
 pkgver=1.4.3.r11.gd7dcc17
-pkgrel=1
+pkgrel=2
 pkgdesc="Make your diff's human readable instead of machine readable"
 arch=('any')
 url="https://github.com/so-fancy/diff-so-fancy"
 license=('MIT')
 depends=('perl')
 makedepends=('git')
-checkdepends=('bash-bats-assert' 'bash-bats-support')
+checkdepends=('bats-assert' 'bats-support')
 provides=("diff-so-fancy=$pkgver")
 conflicts=('diff-so-fancy')
 source=("git+https://github.com/so-fancy/diff-so-fancy.git")
