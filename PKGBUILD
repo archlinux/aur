@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=libkgapi-git
-pkgver=5.19.40_r1319.g7c286d7
+pkgver=6.0.40_r1695.g3109ce1b
 pkgrel=1
 pkgdesc='A KDE-based library for accessing various Google services via their public API'
 url='https://www.kde.org/'
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(gcc-libs glibc kcalendarcore-git kcontacts-git kwallet-git qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 arch=($CARCH)
-license=(GPL LGPL FDL)
-depends=(kcalendarcore-git kcontacts-git kwallet-git)
-makedepends=(git extra-cmake-modules-git qt5-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kdepim-git)
