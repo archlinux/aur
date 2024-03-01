@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=akonadi-contacts-git
-pkgver=5.18.40_r3027.g7dd573ce
+pkgver=6.0.40_r3696.ge6cd7f4e
 pkgrel=1
 pkgdesc="Libraries and daemons to implement Contact Management in Akonadi"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(LGPL)
-depends=(libakonadi-git kcontacts-git kmime-git prison-git grantleetheme-git libkleo-git)
-makedepends=(git extra-cmake-modules-git boost)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc grantleetheme-git ki18n-git kcodecs-git kcolorscheme-git kcompletion-git kconfig-git kconfigwidgets-git kcontacts-git kcoreaddons-git kiconthemes-git kio-git kmime-git ktextaddons-git ktexttemplate-git ktextwidgets-git kwidgetsaddons-git kxmlgui-git libakonadi-git prison-git qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kdepim-git)
