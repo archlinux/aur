@@ -1,5 +1,6 @@
+# Maintainer: Šarūnas Gliebus <ssharunas at vivaldi.net>
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
-#a
+
 pkgname=dragonflydb
 pkgver=1.14.6
 pkgrel=1
