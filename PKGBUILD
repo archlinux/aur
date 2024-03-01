@@ -3,34 +3,34 @@ _appname=ting_de
 pkgname="eusoft-${_appname//_/-}-bin"
 _zhname="每日德语听力"
 pkgver=9.7.0
-_electronversion=13
-pkgrel=3
+_electronversion=11
+pkgrel=4
 pkgdesc="听力统计、笔记同步、语音高亮跟随，让您轻松愉快学德语"
 arch=('x86_64')
 url="https://www.godic.net/ting"
-license=('custom')
+license=('LicenseRef-custom')
 conflicts=(
     "${pkgname%-bin}"
     "eudic-${_appname//_/-}"
     "${_appname//_/-}")
 depends=(
     "electron${_electronversion}"
-    'electron13'
+    'hicolor-icon-theme'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::https://static.frdic.com/pkg/${_appname}/${_appname}.deb"
-    "LICENSE.html"
+    "LICENSE.html::https://www.eudic.net/v4/en/home/privacy"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('3bf27e84f6b6f65aad0bbb45b8602afb9124cd2539c62406d9b9c8f2bfa7249d'
-            'ca6b558863398cad1363bf850881d318dac47866dc2ba75353364c0de5615525'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '12ec1b3e4be99eee9c2d5fb55c196d2294c1b112e137927c61f81efb0e308f75'
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_zhname}/${_appname}\"|${pkgname%-bin}|g;s|Icon=${_appname}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
