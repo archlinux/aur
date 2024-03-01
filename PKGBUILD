@@ -2,7 +2,7 @@
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
 # Updated by https://github.com/Freed-Wu/bitbake-language-server/blob/main/.github/workflows/main.yml
 pkgname="bitbake-language-server"
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="bitbake language server"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=(python-installer)
 license=(GPL3)
 _py=py3
 source=("https://files.pythonhosted.org/packages/$_py/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('c10936130ba30b26699343145649094723e98f3ffea1d045e5e6d7df83ace816')
+sha256sums=('03de2302276ee21ea4e06f25e80dbd1ae33ed1467774d8abe1e9cd74ee4bcaa7')
 
 package() {
 	python -m installer -d "$pkgdir" ./*.whl
