@@ -3,14 +3,14 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kgamma5-git
-pkgver=5.27.80_r554.gc6e0490
+pkgver=5.27.80_r578.g5f30ea4
 pkgrel=1
 pkgdesc="Adjust your monitor's gamma settings"
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(kconfigwidgets-git)
-makedepends=(git extra-cmake-modules-git kdoctools-git)
+depends=(gcc-libs glibc kcmutils-git kconfig-git kcoreaddons-git ki18n-git libx11 libxxf86vm qt6-base)
+makedepends=(git extra-cmake-modules-git kdoctools-git git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(plasma-git)
