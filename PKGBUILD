@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=grantlee-editor-git
-pkgver=21.11.40_r757.gd920171
+pkgver=24.04.40_r1072.ge41c20c
 pkgrel=1
 pkgdesc='Editor for Grantlee themes'
 arch=($CARCH)
 url='https://kontact.kde.org/'
-license=(GPL2)
-depends=(messagelib-git ktexteditor-git)
-makedepends=(git extra-cmake-modules-git kdoctools-git boost)
+license=(GPL-2.0-or-later)
+depends=(akonadi-contacts-git gcc-libs glibc grantleetheme-git karchive-git kcompletion-git kconfig-git kconfigwidgets-git kcontacts-git kcoreaddons-git kcrash-git kdbusaddons-git ki18n-git kio-git kmime-git ktextaddons-git kwidgetsaddons-git kxmlgui-git messagelib-git pimcommon-git qt6-base qt6-webengine syntax-highlighting-git)
+makedepends=(git extra-cmake-modules-git kdoctools-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kde-applications-git kdepim-git)
