@@ -5,8 +5,8 @@ _suffix=""
 pkgname=(
 		"${pkgbase}${_suffix}" "${pkgbase}-headers${_suffix}"
 )
-_rev=c5b4fdc91cbcadbe9f73153469f785776afcf3d3
-pkgver=6.7.6
+_rev=54aad1d402ac1338bcd30a900c0c842571898e41
+pkgver=6.7.7
 pkgrel=1
 pkgdesc="pf-kernel"
 arch=(x86_64)
@@ -17,7 +17,7 @@ options=('!strip')
 source=(https://codeberg.org/pf-kernel/linux/archive/${_rev}.tar.gz
 		config)
 b2sums=(SKIP
-		'da1f3e8c5deb1af6ca2ccb6cf9665cbe7a706ca1f8cc4e4f355ac9bdf7de7174455344c6c22a8986ec8efa43235c7b5ab207332dbf3e07765f5fb66f4261339f')
+		'82f3d8d47619c475109669d7ad1f4e56703bd1d8872f35371e343b8dc7f3d3da1bb0051a341e3e9d36da61c074736baa2ceaacd286e004e31f97fa7948d2e7ee')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=${pkgbase}
@@ -48,6 +48,7 @@ build() {
 
 	__nthreads=$(($(nproc) + 1))
 	make KCFLAGS=-O3 -j${__nthreads} all
+	make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
 }
 
 _package() {
@@ -90,7 +91,7 @@ _package-headers() {
 
 	echo "Installing build files..."
 	install -Dt "${builddir}" -m644 .config Makefile Module.symvers System.map \
-		version vmlinux
+		version vmlinux tools/bpf/bpftool/vmlinux.h
 	install -Dt "${builddir}"/kernel -m644 kernel/Makefile
 	install -Dt "${builddir}"/arch/x86 -m644 arch/x86/Makefile
 	cp -t "${builddir}" -a scripts
