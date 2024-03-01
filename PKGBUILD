@@ -1,4 +1,5 @@
 # Maintainer: Lukasz Pozarlik <lpozarlik@gmail.com>
+# Co-Maintainer: Martin Rys <rys.pw/contact>
 # Contributor: Carl George < arch at cgtx dot us >
 # Contributor: Duy Truong <jimreynold2nd@yahoo.com>
 # Contributor: Vyacheslav Konovalov <vyachkonovalov@protonmail.com>
@@ -17,10 +18,10 @@ depends=('python-defusedxml'
          'python-requests-oauthlib'
          'python-requests-toolbelt')
 optdepends=("ipython")
-makedepends=('python-setuptools' 
-             'python-build' 
+makedepends=('python-setuptools'
+             'python-build'
              'python-wheel'
-             'python-setuptools-scm' 
+             'python-setuptools-scm'
              'python-installer')
 source=("https://github.com/pycontribs/jira/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('ddc35267a33f42ebfbbd344f5b7078d96cb54186c0ec906de9dc750eb441b6a1')
@@ -45,4 +46,3 @@ package() {
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   rm -rf "$pkgdir/${site_packages}/tests"
 }
-
