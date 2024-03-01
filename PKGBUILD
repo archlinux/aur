@@ -3,7 +3,7 @@
 # Contributor: JP-Ellis <josh at jpellis dot me>
 pkgname=lhapdf
 pkgver=6.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A particle physics tool for evaluating PDFs from discretised data files"
 arch=('x86_64')
 url="https://lhapdf.hepforge.org/"

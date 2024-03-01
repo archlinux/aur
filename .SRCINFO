@@ -1,0 +1,16 @@
+pkgbase = lhapdf
+	pkgdesc = A particle physics tool for evaluating PDFs from discretised data files
+	pkgver = 6.5.4
+	pkgrel = 2
+	url = https://lhapdf.hepforge.org/
+	install = lhapdf.install
+	arch = x86_64
+	license = GPL3
+	makedepends = cython
+	depends = python-numpy
+	source = https://www.hepforge.org/archive/lhapdf/LHAPDF-6.5.4.tar.gz
+	source = fix_installed_pdf_permissions.patch
+	b2sums = 9bd214f29ef0fb662095a045acf449bac60c2f12fb0e182c9c590ec51651f1c08d213a3f9280eda0711ec9a0d5cae620918f048c362838a9de8e69cc84f34798
+	b2sums = c875018d666331588051adc394b24c40321d78573ec33ef9312ea8779eeb6cf15ea845a5267d4dc6530cc82050e782affc908b9a6727aa3125b9f0086f1917a2
+
+pkgname = lhapdf
