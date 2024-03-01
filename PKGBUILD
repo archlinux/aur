@@ -4,15 +4,15 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kidentitymanagement-git
-pkgver=5.18.40_r3795.g5a86412f
+pkgver=6.0.40_r4290.ga7d34838
 pkgrel=1
 pkgdesc="KDE PIM libraries"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(LGPL)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc kcodecs-git kcompletion-git kconfig-git kcoreaddons-git ki18n-git kio-git kpimtextedit-git ktextaddons-git kwidgetsaddons-git kxmlgui-git qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git kirigami-addons-git qt6-doc qt6-tools)
 groups=(kdepim-git)
-depends=(kpimtextedit-git)
-makedepends=(git extra-cmake-modules-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
