@@ -3,14 +3,14 @@
 _pkgname=idris2-lsp
 pkgname="$_pkgname-git"
 pkgver=latest
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='Language Server for Idris2'
 arch=('x86_64')
 url="https://github.com/idris-community/$_pkgname"
 license=('custom:BSD')
 depends=('idris2' 'sh')
-makedepends=('git')
+makedepends=('git' 'idris2-lsp-lib-git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git"
