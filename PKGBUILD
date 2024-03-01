@@ -5,7 +5,7 @@
 _pkgname=bobcat
 pkgname="lib${_pkgname}"
 pkgver=6.02.02
-pkgrel=1
+pkgrel=2
 pkgdesc="Bobcat (Brokken's Own Base Classes And Templates) library"
 arch=('x86_64')
 url="https://fbb-git.gitlab.io/bobcat/"
