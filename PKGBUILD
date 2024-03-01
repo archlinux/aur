@@ -4,24 +4,25 @@
 _pkgname=splus2R
 _pkgver=1.3-5
 pkgname=r-${_pkgname,,}
-pkgver=1.3.5
-pkgrel=1
-pkgdesc='Supplemental S-PLUS Functionality in R'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Supplemental S-PLUS Functionality in R"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e7b0ea5672c5480424b056f3c30edc7858f868d3e2d7f5a3593e17fed5bfeb24')
+md5sums=('f291251c5a9ae7acce8722448b26c652')
+b2sums=('882867b60c0418b09b769925c565134553b7212456e083321b45ee9362c693b14aa1335abb71fe62bc04216a71514cd83884529a07242386dfce239fe85f1f0c')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
