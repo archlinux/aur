@@ -1,11 +1,11 @@
 pkgbase = rcli
 	pkgdesc = Simple C++ library that simplifies the creation of CLI applications
-	pkgver = 1.5.1
-	pkgrel = 6
+	pkgver = 1.5.2
+	pkgrel = 7
 	url = https://github.com/RickaPrincy/rcli
 	arch = any
 	license = MIT
-	source = https://github.com/RickaPrincy/rcli/releases/download/v1.5.1/rcli-v1.5.1.tar.gz
-	sha256sums = 6606d1eb4b9cb752cee6e0c5fa3bf993f2eee9b28d225e3ec1d0dabaac2f7aa2
+	source = https://github.com/RickaPrincy/rcli/releases/download/v1.5.2/rcli-v1.5.2.tar.gz
+	sha256sums = ca9caf0e0cf9f9b6ad88209f940a93ea99d32ad6e2ece3223f337930f8607c66
 
 pkgname = rcli
