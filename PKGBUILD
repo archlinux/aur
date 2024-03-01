@@ -1,5 +1,5 @@
 pkgname=mingw-w64-proj
-pkgver=9.3.0
+pkgver=9.4.0
 pkgrel=1
 arch=('any')
 pkgdesc="Cartographic Projections library (mingw-w64)"
@@ -9,7 +9,7 @@ options=('!strip' '!buildflags' 'staticlibs')
 license=('MIT')
 url="https://proj.org/"
 source=("https://github.com/OSGeo/PROJ/releases/download/${pkgver}/proj-${pkgver}.tar.gz")
-sha256sums=('91a3695a004ea28db0448a34460bed4cc3b130e5c7d74339ec999efdab0e547d')
+sha256sums=('3643b19b1622fe6b2e3113bdb623969f5117984b39f173b4e3fb19a8833bd216')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
