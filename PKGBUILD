@@ -5,16 +5,16 @@ pkgver=0.0.6
 pkgrel=1
 pkgdesc="Another music player created with Tauri!"
 arch=('any')
-url="https://github.com/XandrCopyrighted/Cazic/"
+url="https://codeberg.org/XDR/Cazic"
 license=('MIT')
 
 source=(
-	"https://github.com/XandrCopyrighted/Cazic/releases/download/0.0.6/Cazic_Linux.tar.gz"
-	"https://raw.githubusercontent.com/XandrCopyrighted/Cazic/main/LICENSE"
+	"https://codeberg.org/XDR/Cazic/releases/download/0.0.6/Cazic_Linux.tar.gz"
+	"https://codeberg.org/XDR/Cazic/raw/branch/main/LICENSE"
 	"cazic.desktop"
-	"https://raw.githubusercontent.com/XandrCopyrighted/Cazic/main/assets/app-icon/32x32.png"
-	"https://raw.githubusercontent.com/XandrCopyrighted/Cazic/main/assets/app-icon/128x128.png"
-	"https://raw.githubusercontent.com/XandrCopyrighted/Cazic/main/assets/app-icon/128x128%402x.png"
+	"https://codeberg.org/XDR/Cazic/raw/branch/main/assets/app-icon/32x32.png"
+	"https://codeberg.org/XDR/Cazic/raw/branch/main/assets/app-icon/128x128.png"
+	"https://codeberg.org/XDR/Cazic/raw/branch/main/assets/app-icon/128x128%402x.png"
 )
 
 sha256sums=(
