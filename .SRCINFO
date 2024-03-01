@@ -1,6 +1,6 @@
 pkgbase = owlink-git
 	pkgdesc = An open Apple Wireless Direct Link (AWDL) implementation written in C
-	pkgver = 0.0.0
+	pkgver = r44.8e4e840
 	pkgrel = 1
 	url = https://owlink.org/
 	arch = i686
@@ -8,13 +8,17 @@ pkgbase = owlink-git
 	arch = armv7h
 	arch = armv6h
 	arch = aarch64
-	license = GPL3
+	arch = riscv64
+	license = GPL-3.0-only
 	makedepends = cmake
 	makedepends = git
+	makedepends = ninja
+	depends = glibc
 	depends = libpcap
 	depends = libev
 	depends = libnl
 	provides = owlink
+	provides = owl
 	provides = owl-git
 	conflicts = owlink
 	conflicts = owl
@@ -27,4 +31,3 @@ pkgbase = owlink-git
 	sha512sums = SKIP
 
 pkgname = owlink-git
-
