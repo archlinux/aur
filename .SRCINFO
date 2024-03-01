@@ -1,6 +1,6 @@
 pkgbase = prismlauncher-offline-git
 	pkgdesc = Minecraft launcher with ability to manage multiple instances.
-	pkgver = 8.0.r222.g4cda04271
+	pkgver = 8.0.r275.g850e48ec6
 	pkgrel = 1
 	url = https://prismlauncher.org
 	arch = i686
@@ -32,7 +32,6 @@ pkgbase = prismlauncher-offline-git
 	optdepends = java-runtime=8: for older minecraft versions
 	provides = prismlauncher
 	conflicts = prismlauncher
-	options = debug
 	source = git+https://github.com/PrismLauncher/PrismLauncher.git
 	source = git+https://github.com/PrismLauncher/libnbtplusplus.git
 	source = PrismLauncher-offline.diff
