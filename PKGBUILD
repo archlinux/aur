@@ -1,9 +1,9 @@
-# Merged with official ABS karchive PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Merged with official ABS karchive-git PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=karchive-git
-pkgver=6.0.0_r740.g3c66604
+pkgver=6.0.0_r743.g7706b34
 pkgrel=1
 pkgdesc='Qt 5 addon providing access to numerous types of archives'
 arch=($CARCH)
