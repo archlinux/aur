@@ -2,15 +2,15 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=ktextaddons-git
-pkgver=1.1.40_r155.gdd6767d
+pkgver=1.5.45_r1255.gf194a7c
 pkgrel=1
 pkgdesc="KDE text addons"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(LGPL)
+license=(GPL)
+depends=(gcc-libs glibc)
+makedepends=(git doxygen extra-cmake-modules-git karchive-git kconfig-git kconfigwidgets-git ki18n-git kio-git ktextaddons-git kwidgetsaddons-git kxmlgui-git qt6-base qt6-doc qt6-speech qt6-tools qtkeychain-qt6 sonnet-git syntax-highlighting-git karchive5-git kconfig5-git kconfigwidgets5-git ki18n5-git kio5-git kwidgetsaddons5-git qt5-base qt5-doc qt5-speech qt5-tools qtkeychain-qt5 sonnet5-git syntax-highlighting5-git)
 groups=(kdepim-git)
-depends=(ki18n-git kconfig-git kconfigwidgets-git karchive-git kxmlgui-git kcoreaddons-git qtkeychain-qt5-git)
-makedepends=(git extra-cmake-modules-git qt5-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
