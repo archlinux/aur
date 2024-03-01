@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=mbox-importer-git
-pkgver=21.11.40_r502.gfe6e5f9
+pkgver=24.04.40_r759.g307b538
 pkgrel=1
 pkgdesc="Import mbox files to KMail"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(GPL2)
-depends=(mailcommon-git)
-makedepends=(git extra-cmake-modules-git boost)
+license=(GPL-2.0-or-later)
+depends=(gcc-libs glibc kconfig-git kcoreaddons-git kcrash-git ki18n-git kidentitymanagement-git kwidgetsaddons-git libakonadi-git mailcommon-git mailimporter-git qt6-base)
+makedepends=(git extra-cmake-modules-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kde-applications-git kdepim-git)
