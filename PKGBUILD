@@ -3,14 +3,14 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=ktextwidgets-git
-pkgver=5.240.0_r508.g00796e7
+pkgver=6.0.0_r592.g95b9970
 pkgrel=1
 pkgdesc='Advanced text editing widgets'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(kcompletion-git kconfigwidgets-git sonnet-git qt6-speech)
-makedepends=(git extra-cmake-modules-git doxygen qt6-tools)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(gcc-libs glibc kcolorscheme-git kcompletion-git kconfig-git kconfigwidgets-git ki18n-git kwidgetsaddons-git qt6-base qt6-speech sonnet-git)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf6-git)
