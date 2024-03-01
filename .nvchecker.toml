@@ -1,2 +1,3 @@
+[python-unidiff]
 source = "pypi"
 pypi = "unidiff"
