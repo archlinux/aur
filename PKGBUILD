@@ -1,7 +1,7 @@
 # Maintainer: w0rty <mawo97 at gmail.com>
 
 pkgname=bpftop-bin
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='bpftop provides a dynamic real-time view of running eBPF programs.'
 url='https://github.com/Netflix/bpftop'
@@ -11,7 +11,7 @@ depends=('glibc' 'libelf' 'gcc-libs' 'zlib')
 provides=('bpftop')
 conflicts=('bpftop')
 license=('Apache-2.0')
-b2sums=('be54cd1e5fd9aa4d0363c3752a1d3f2cc13b968897f97ef85930298a2b8130ae1b728a2fbb4238445b9a4ef79a41507eb7bb0c0bdbabb677e042dbce817ff7b2')
+b2sums=('3a81e6b1fa2e48a9f44daca7cb03baa91f91bb60436671125da8196464a2490366a33bc54eb6a6810643b932f0d46ed23e810da535325c6838022885f57c5667')
 
 package() {
   cd "$srcdir"
