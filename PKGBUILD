@@ -2,7 +2,7 @@
 # Don't manually edit the PKGBUILD, edit the upstream template instead
 
 pkgname=kde-development-environment-meta
-pkgver=20240227
+pkgver=20240301
 pkgrel=1
 pkgdesc='Metapackage to install a full KDE development environment'
 arch=(any)
@@ -10,64 +10,97 @@ url='https://phabricator.kde.org/T3722'
 license=(LGPL)
 makedepends=()
 source=(org.kde.development.appdata.xml kdesdk-devenv-dependencies.svg)
-sha256sums=('49a9f3a5d875162e50288c845b44592dc6eaa7471ff8512df2296525d218e301'
-            '92af2376f53429735903ff6706344566c7f0f1aa6cfd5d2cf7aaad7097c71238')
+sha256sums=(49a9f3a5d875162e50288c845b44592dc6eaa7471ff8512df2296525d218e301
+            92af2376f53429735903ff6706344566c7f0f1aa6cfd5d2cf7aaad7097c71238)
 noextract=()
 
 package() {
     depends=(attica
+         baloo
+         baloo-widgets
          bash-completion
          bear
+         bluez-qt
+         breeze-icons
          cmake
          extra-cmake-modules
+         frameworkintegration
          gcc
          gettext
          git
-         kactivities
          karchive
          kauth
          kbookmarks
+         kcalendarcore
          kcmutils
          kcodecs
          kcolorscheme
          kcompletion
          kconfig
          kconfigwidgets
+         kcontacts
          kcoreaddons
          kcrash
+         kdav
          kdbusaddons
          kdeclarative
+         kded
+         kdesu
+         kdnssd
          kdoctools
+         kfilemetadata
          kglobalaccel
          kguiaddons
+         kholidays
          ki18n
          kiconthemes
+         kidletime
          kio
          kirigami
+         kirigami-addons
+         kitemmodels
          kitemviews
          kjobwidgets
+         knewstuff
          knotifications
+         knotifyconfig
+         konqueror
          kpackage
          kparts
+         kpeople
          kplotting
          kpty
+         kquickcharts
+         krunner
          kservice
+         kstatusnotifieritem
          ksvg
+         ktextaddons
+         ktexteditor
+         ktexttemplate
          ktextwidgets
          kunitconversion
+         kuserfeedback
          kwallet
-         kwayland
          kwidgetsaddons
          kwindowsystem
          kxmlgui
+         libkscreen
          make
+         modemmanager-qt
+         networkmanager-qt
          ninja
-         plasma-framework
+         prison
+         pulseaudio-qt
+         purpose
+         qqc2-desktop-style
          qt6-base
          qt6-declarative
          qt6-webengine
          solid
          sonnet
+         syndication
+         syntax-highlighting
          threadweaver)
     optdepends=(kate
             kdevelop
