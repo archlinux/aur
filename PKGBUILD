@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=pim-sieve-editor-git
-pkgver=21.11.40_r1493.ge0cae80
+pkgver=24.04.40_r1971.g6f6b2b9
 pkgrel=1
 pkgdesc="Mail sieve editor"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(GPL2)
-depends=(libksieve-git kuserfeedback-git)
-makedepends=(git extra-cmake-modules-git kdoctools-git boost)
+license=(GPL-2.0-or-later)
+depends=(gcc-libs glibc kbookmarks-git kcolorscheme-git kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git kdbusaddons-git ki18n-git kmailtransport-git kuserfeedback-git kwidgetsaddons-git kxmlgui-git libksieve-git pimcommon-git qt6-base qtkeychain-qt6)
+makedepends=(git extra-cmake-modules-git kdoctools-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kde-applications-git kdepim-git)
