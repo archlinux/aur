@@ -3,7 +3,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=forgit
-pkgver=24.02.0
+pkgver=24.03.0
 pkgrel=1
 pkgdesc="Utility tool powered by fzf for using git interactively"
 arch=('any')
@@ -22,7 +22,7 @@ provides=("$pkgname")
 conflicts=("forgit-git")
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('1a24bd9be5b269055bb8bc7aba840062f0642e710a77f64cb3caacba48638f38')
+sha256sums=('072c78b15ac1fd4a7aa4fdb87ca01c32b6a25e57aaddb4e68985f25c57da10c1')
 
 package() {
 	cd "$pkgname-$pkgver"
@@ -40,7 +40,6 @@ package() {
 
 	# zsh completions
 	install -Dvm644 completions/_git-forgit -t "$pkgdir/usr/share/zsh/site-functions/"
-	install -Dvm644 completions/git-forgit.zsh -t "$pkgdir/usr/share/zsh/plugins/$pkgname/completions/"
 
 	# fish install
 	install -Dvm644 conf.d/forgit.plugin.fish -t "$pkgdir/usr/share/fish/vendor_conf.d/"
