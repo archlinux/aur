@@ -1,6 +1,6 @@
 pkgbase = python-oelint-parser
 	pkgdesc = Alternative parser for bitbake recipes
-	pkgver = 3.0.2
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://github.com/priv-kweihmann/oelint-parser
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-oelint-parser
 	makedepends = python-setuptools
 	depends = python-deprecated
 	depends = python-regex
-	source = https://files.pythonhosted.org/packages/source/o/oelint-parser/oelint_parser-3.0.2.tar.gz
-	sha256sums = a60713887bf6eadb54ff08741adf9284
+	source = https://files.pythonhosted.org/packages/source/o/oelint-parser/oelint_parser-3.3.1.tar.gz
+	sha256sums = faed308449f30395d996a813a50b461f6e7f92b2cbbcd3f27165f305479d3117
 
 pkgname = python-oelint-parser
 	depends = python-deprecated
