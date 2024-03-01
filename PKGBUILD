@@ -8,13 +8,15 @@ pkgname='python-jira'
 _pkgname='jira'
 pkgdesc='Python library to work with Jira APIs'
 pkgver=3.6.0
-pkgrel=3
+pkgrel=4
 url='https://github.com/pycontribs/jira'
 license=('BSD-2-Clause')
 arch=('any')
+# TODO not sure what to do about 'python-filemagic'
+#   https://github.com/pycontribs/jira/blob/main/setup.cfg
+#   https://archlinux.org/todo/replace-filepython-magic-aka-file-magic-with-ahupppython-magic/
 depends=(
 	'python-defusedxml'
-	'python-magic'
 	'python-requests-oauthlib'
 	'python-packaging'
 	'python-pillow'
@@ -23,8 +25,7 @@ depends=(
 	'python-requests-toolbelt')
 optdepends=(
 	'ipython: jirashell'
-	'python-keyring: jirashell'
-	)
+	'python-keyring: jirashell')
 makedepends=(
 	'python-setuptools'
 	'python-build'
