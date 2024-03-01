@@ -1,0 +1,27 @@
+pkgbase = powertabeditor-git
+	pkgdesc = Guitar tablature viewer and editor
+	pkgver = 2.0.0.alpha19.r61.g96550b3
+	pkgrel = 1
+	url = https://powertab.github.io/
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	depends = boost-libs
+	depends = boost
+	depends = doctest
+	depends = minizip
+	depends = pugixml
+	depends = rtmidi
+	depends = alsa-lib
+	depends = nlohmann-json
+	depends = qt5-base
+	depends = qt5-tools
+	optdepends = timidity++: MIDI playback support
+	optdepends = fluidsynth: MIDI playback support
+	provides = powertabeditor
+	conflicts = powertabeditor
+	source = git+https://github.com/powertab/powertabeditor.git
+	sha256sums = SKIP
+
+pkgname = powertabeditor-git
