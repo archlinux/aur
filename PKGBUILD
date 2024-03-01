@@ -3,13 +3,13 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=polkit-kde-agent-git
-pkgver=5.27.80_r601.g44265af
+pkgver=6.0.80_r693.g010d42d
 pkgrel=1
 pkgdesc='Daemon providing a polkit authentication UI for KDE'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
-license=(LGPL)
-depends=(kiconthemes-git kdbusaddons-git kcrash-git)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc kcoreaddons-git kcrash-git kdbusaddons-git ki18n-git kirigami-git kwindowsystem-git polkit-qt6-git qt6-5compat qt6-base qt6-declarative)
 makedepends=(git extra-cmake-modules-git kdoctools-git)
 conflicts=(${pkgname%-git} polkit-kde-git)
 provides=(${pkgname%-git})
