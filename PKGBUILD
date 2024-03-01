@@ -5,7 +5,7 @@ pkgbase=mkdocs-autorefs
 pkgname=("${pkgbase}")
 _pyname=("${pkgbase/-/_}")
 #"${pkgbase}-doc")
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Automatically link across pages in MkDocs"
 url="https://mkdocstrings.github.io/autorefs"
@@ -19,7 +19,7 @@ checkdepends=('python-pytest'
               'pymdown-extensions'
               'mkdocs')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('1b20db41cade632b07b7a73dee818977b52e869c9deb438f6f20e2896ff01859')
+sha256sums=('f684edf847eced40b570b57846b15f0bf57fb93ac2c510450775dcf16accb971')
 
 build() {
     cd "${_pyname}-${pkgver}"
