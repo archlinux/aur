@@ -46,6 +46,7 @@ package() {
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 
   cd "${pkgname}"
+  install -dm700 ${pkgdir}/etc/${pkgname}
   install -Dm600 example-config.yaml ${pkgdir}/etc/${pkgname}/config.yaml
   install -Dm600 example-config.yaml ${pkgdir}/usr/share/${pkgname}/example-config.yaml
 
