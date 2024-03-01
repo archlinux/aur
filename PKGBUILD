@@ -2,18 +2,16 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kmail-git
-pkgver=21.11.40_r25846.gbb906806c
+pkgver=24.04.40_r27768.g30c2305ac
 pkgrel=1
 pkgdesc="KDE mail client"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(GPL2)
-depends=(kdepim-runtime-git kmail-account-wizard-git akonadi-import-wizard-git mbox-importer-git
-         pim-data-exporter-git pim-sieve-editor-git kontactinterface-git ktnef-git)
-makedepends=(git extra-cmake-modules-git kdoctools-git boost)
+license=(GPL-2.0-or-later)
+depends=(akonadi-contacts-git akonadi-import-wizard-git akonadi-mime-git akonadi-search-git gcc-libs glibc gpgme kbookmarks-git kcalendarcore-git kcalutils-git kcmutils-git kcodecs-git kcolorscheme-git kcompletion-git kconfig-git kconfigwidgets-git kcontacts-git kcoreaddons-git kcrash-git kdbusaddons-git kdepim-runtime-git kguiaddons-git ki18n-git kiconthemes-git kidentitymanagement-git kio-git kitemmodels-git kitemviews-git kjobwidgets-git kldap-git kmail-account-wizard-git kmailtransport-git kmime-git knotifications-git knotifyconfig-git kontactinterface-git kparts-git kpimtextedit-git kservice-git kstatusnotifieritem-git ktextaddons-git ktextwidgets-git ktnef-git kuserfeedback-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git libakonadi-git libgravatar-git libkdepim-git libkleo-git libksieve-git mailcommon-git mbox-importer-git messagelib-git pim-data-exporter-git pim-sieve-editor-git pimcommon-git qgpgme-qt6 qt6-base qt6-webengine qtkeychain-qt6 sonnet-git)
+makedepends=(git extra-cmake-modules-git kdoctools-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('kleopatra-git: mail encryption support' 'kdepim-addons-git: additional plugins')
 groups=(kde-applications-git kdepim-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
