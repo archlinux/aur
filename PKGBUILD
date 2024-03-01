@@ -3,12 +3,12 @@
 _pkgname=ash
 _pkgver=1.0-15
 pkgname=r-${_pkgname,,}
-pkgver=1.0.15
-pkgrel=4
+pkgver=${_pkgver//-/.}
+pkgrel=9
 pkgdesc="David Scott's ASH Routines"
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
@@ -16,14 +16,15 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8b0a7bc39dd0ce2172f09edc5b5e029347d041a4d508bbff3f3fd6f69450c2ab')
+md5sums=('59c282e7b2deb23bb6e8a97c9a371244')
+b2sums=('6b7b9d5169122328d41923057a7f91f97bef7a08bd254fc76b59a1ddf9dce5c9bf3f38ffcea709c42a6390a50ebfeebaad63b980d7fe1d1e204b5e9aae7b3ddc')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
