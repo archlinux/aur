@@ -4,7 +4,7 @@
 
 pkgname=lsyncd
 pkgver=2.3.1
-pkgrel=8
+pkgrel=9
 pkgdesc="Live Syncing (Mirror) Daemon"
 arch=(x86_64)
 url="https://github.com/lsyncd/lsyncd"
@@ -22,7 +22,6 @@ checkdepends=(
   lua53-posix
   openssh
 )
-
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   "lsyncd.service"
@@ -77,9 +76,9 @@ package() {
   rm -rf "$pkgdir/man1"
 
   install -Dm644 -t "$pkgdir/usr/lib/systemd/system" "$srcdir/lsyncd.service"
-  install -Dm644 -t "$pkgdir/usr/lib/sysusers.d" "$srcdir/lsyncd.sysusers"
+  install -Dm644 "$srcdir/lsyncd.sysusers" "$pkgdir/usr/lib/sysusers.d/lsyncd.conf"
 
   install -dm755 "$pkgdir/usr/share/doc/$pkgname"
-  cp --archive --no-preserve=ownership "$pkgdir/usr/doc/examples" "$pkgdir/usr/share/doc/$pkgname/examples"
+  cp -a -t "$pkgdir/usr/share/doc/$pkgname" "$pkgdir/usr/doc/examples"
   rm -rf "$pkgdir/usr/doc"
 }
