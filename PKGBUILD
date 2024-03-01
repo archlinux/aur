@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=libgravatar-git
-pkgver=5.18.40_r358.g027f657
+pkgver=6.0.40_r626.gc606865
 pkgrel=1
 pkgdesc="KDE PIM library providing Gravatar support"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(LGPL)
-depends=(pimcommon-git)
-makedepends=(git extra-cmake-modules-git boost)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc kconfig-git kconfigwidgets-git ki18n-git ktextwidgets-git kwidgetsaddons-git pimcommon-git qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kdepim-git)
