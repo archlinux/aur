@@ -5,7 +5,7 @@ pkgver=3.5
 pkgrel=1
 pkgdesc="A simple fetch written in Rust."
 arch=('any')
-url="https://github.com/XandrCopyrighted/xFetch/"
+url="https://codeberg.org/XDR/xFetch"
 license=('MIT')
 
 source=(
