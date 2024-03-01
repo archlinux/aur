@@ -2,14 +2,14 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SeuratObject
-_pkgver=5.0.0
+_pkgver=5.0.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Data Structures for Single Cell Data"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(MIT)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
   r-future
   r-future.apply
@@ -34,14 +34,13 @@ optdepends=(
   r-sf
   r-testthat
 )
-# temporarily use old version until r-matrix is updated to >=1.6.3
-source=("https://cran.r-project.org/src/contrib/Archive/$_pkgname/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2fb91d97b91d012a7a234954a8b9b995')
-sha256sums=('2dd95f3b2698ca598c582381ef94683977e2a3402eceffff3fea60aed9289972')
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('a1b6b337accbe962c59bd0f9cdf957e4')
+b2sums=('0f839cc1a584a5b14c82cda89becf7d2ddaa9280ce994236660f4a8250ecef24e70f1aab9ac2ca15c3b3efa05e5904db65c5dd27d5767053e0e84289272936ea')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
