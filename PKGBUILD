@@ -1,38 +1,46 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
-_pkgname=proj2cmake
 pkgname=proj2cmake-git
-pkgver=22a7e6b
+pkgver=r19.22a7e6b
 pkgrel=1
 pkgdesc="Convert an entire Visual Studio solution and all contained projects to CMake."
-arch=('any')
+arch=('x86_64'
+    'aarch64'
+    'riscv64')
 url="https://github.com/mrpi/proj2cmake"
-license=('Boost Software License 1.0')
-provides=(${pkgname})
-conflicts=(${pkgname})
+license=('BSL-1.0')
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
-depends=('cmake')
-makedepends=('git' 'cmake')
+depends=('boost-libs'
+    'glibc'
+    'gcc-libs')
+makedepends=('cmake' 'boost' 'git')
 backup=()
-options=('!strip')
+options=()
 #install=${pkgname}.install
-source=("${_pkgname}::git+https://github.com/mrpi/${_pkgname}.git")
+source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
-pkgver() 
-{
-    cd "${srcdir}/${_pkgname}/"
-    git describe --always | sed 's|-|.|g'
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    ( set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
 }
 
 build() 
 {
-    cd ${srcdir}/${_pkgname}/
-    cmake . && make
+    cd ${srcdir}/${pkgname}/
+
+    cmake -DCMAKE_BUILD_TYPE=None \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -B build
+    make -C build
 }
 
 package() 
 {
-    install -Dm644 "${srcdir}/${_pkgname}/LICENSE_1_0.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE_1_0.txt"
-    install -Dm755 "${srcdir}/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}/build/${pkgname%-git}" -t "${pkgdir}/usr/bin/"
 }

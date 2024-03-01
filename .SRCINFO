@@ -1,18 +1,21 @@
 pkgbase = proj2cmake-git
 	pkgdesc = Convert an entire Visual Studio solution and all contained projects to CMake.
-	pkgver = 22a7e6b
+	pkgver = r19.22a7e6b
 	pkgrel = 1
 	url = https://github.com/mrpi/proj2cmake
-	arch = any
-	license = Boost Software License 1.0
-	makedepends = git
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = BSL-1.0
 	makedepends = cmake
-	depends = cmake
-	provides = proj2cmake-git
-	conflicts = proj2cmake-git
-	options = !strip
-	source = proj2cmake::git+https://github.com/mrpi/proj2cmake.git
+	makedepends = boost
+	makedepends = git
+	depends = boost-libs
+	depends = glibc
+	depends = gcc-libs
+	provides = proj2cmake
+	conflicts = proj2cmake
+	source = proj2cmake-git::git+https://github.com/mrpi/proj2cmake.git
 	sha256sums = SKIP
 
 pkgname = proj2cmake-git
-
