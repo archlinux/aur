@@ -17,18 +17,19 @@ import re
 import sys
 
 
-def get_download_data() -> tuple[str, str]:
+def get_download_data() -> tuple[str, str, str]:
     download_page_url = "https://api.multiviewer.dev/api/v1/releases/latest"
     r = requests.get(download_page_url)
     r.raise_for_status()
 
     data = r.json()
-    url = next(
+    release = next(
         release for release in data["downloads"] if release["platform"] == "linux"
-    )["url"]
+    )
+    url = release["url"]
     assert "linux-x64" in url
     assert url.endswith(".zip")
-    return url, data["version"]
+    return url, data["version"], str(release["id"])
 
 
 def check_version(version: str) -> None:
@@ -46,19 +47,24 @@ def check_version(version: str) -> None:
         sys.exit(f"Version {old_version[1]} is already up to date.")
 
 
-def update_pkgbuild(url: str, version: str) -> None:
+def check_domain(url: str) -> None:
+    with open("PKGBUILD") as f:
+        pkgbuild = f.read()
+
+    old_domain = re.search(r"source=(\"(.*)\"", pkgbuild, re.MULTILINE)[1].split("/")[2]
+    new_domain = url.split("/")[2]
+    if old_domain != new_domain:
+        print("Domains do not match, please change f{old_domain} to f{new_domain}")
+
+
+def update_pkgbuild(url: str, version: str, build: str) -> None:
     with open("PKGBUILD", "r") as f:
         pkgbuild = f.read()
-        # This part is brittle.
-        pkgbuild, subs = re.subn(
-            r"https://releases\.multiviewer\.\w+/download/\d+/MultiViewer.for.F1-linux-x64-.*?.zip",
-            url,
-            pkgbuild,
-            flags=re.MULTILINE,
-        )
-        assert subs == 1
         pkgbuild = re.sub(
             r"pkgver=.*$", f"pkgver={version}", pkgbuild, flags=re.MULTILINE, count=1
+        )
+        pkgbuild = re.sub(
+            r"_build=.*$", f"_build={build}", pkgbuild, flags=re.MULTILINE, count=1
         )
         pkgbuild = re.sub(
             r"pkgrel=.*$", "pkgrel=1", pkgbuild, flags=re.MULTILINE, count=1
@@ -82,12 +88,12 @@ def main(argv):
     )
     args = parser.parse_args(argv)
 
-    url, version = get_download_data()
+    url, version, build = get_download_data()
     print(f"Found v{version} at {url}")
     check_version(version)
     if input("Update PKGBUILD? [Y/n] ").lower() == "n":
         sys.exit(1)
-    update_pkgbuild(url, version)
+    update_pkgbuild(url, version, build)
     subprocess.run("updpkgsums", check=True)
     subprocess.run("makepkg --printsrcinfo > .SRCINFO", shell=True, check=True)
     if args.install or input("Install new version? [Y/n]").lower() != "n":

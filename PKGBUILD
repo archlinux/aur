@@ -2,8 +2,10 @@
 # Maintainer: ExtremTechniker <aur@extremtechniker.io>
 pkgname=f1multiviewer-bin
 pkgver=1.31.3
+# This ID changes for every release, you must grab it from https://multiviewer.app/download each time.
+_build=154421935
 pkgrel=1
-pkgdesc="Unofficial desktop client for F1TV"
+pkgdesc="Unofficial motorsports desktop client"
 arch=('x86_64')
 url="https://multiviewer.app"
 license=('unknown')  # Licenses in the dist apply to Electron, not f1multiviewer
@@ -11,8 +13,8 @@ depends=('nss' 'alsa-lib' 'gtk3' 'at-spi2-core' 'xdg-utils')
 provides=('f1multiviewer')
 conflicts=('f1multiviewer')
 install=f1multiviewer-bin.install
-source=("https://releases.multiviewer.app/download/154421935/MultiViewer.for.F1-linux-x64-1.31.3.zip"
-    "f1multiviewer.desktop")  # This URL changes for every release, you must grab it from https://multiviewer.app/download each time.
+source=("https://releases.multiviewer.app/download/$_build/MultiViewer.for.F1-linux-x64-$pkgver.zip"
+    "f1multiviewer.desktop")
 noextract=()
 sha256sums=('89597e184066722bb57b392d09be07bfda4cfc9c98524ae23e93fcb0afc9d41a'
             '00dd9ca8d94a729b80125f6f9ee2287ccd3f86975338c5ce1d12575130d73a6a')
