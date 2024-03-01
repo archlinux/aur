@@ -3,14 +3,14 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kcalc-git
-pkgver=21.11.70_r1518.gf0b3fee
+pkgver=24.04.70_r1876.g5bb8bab
 pkgrel=1
 pkgdesc='Scientific Calculator'
 url='https://apps.kde.org/kcalc/'
-arch=($CARCH)
-license=(GPL LGPL FDL)
-depends=(mpfr kxmlgui-git knotifications-git)
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(gcc-libs glibc gmp kcolorscheme-git kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git kguiaddons-git ki18n-git knotifications-git kwidgetsaddons-git kxmlgui-git mpfr qt6-5compat qt6-base)
 makedepends=(git extra-cmake-modules-git kdoctools-git)
+arch=($CARCH)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kde-applications-git kde-utilities-git)
