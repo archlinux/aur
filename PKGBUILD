@@ -3,13 +3,13 @@
 _pkgname=appflowy
 pkgname=$_pkgname-git
 pkgver=latest
-pkgrel=16
+pkgrel=17
 pkgdesc='An open-source alternative to Notion.'
 arch=(x86_64)
 url='https://www.appflowy.io/'
 license=('AGPL3')
 depends=('glibc>=2.32' gtk3 libkeybinder3 xdg-user-dirs libnotify)
-makedepends=(git clang cmake ninja unzip rustup cargo sqlite rsync)
+makedepends=(git clang cmake ninja unzip rustup cargo sqlite rsync cargo-make duckscript)
 provides=($_pkgname)
 conflicts=($_pkgname $_pkgname-bin)
 replaces=()
@@ -17,7 +17,7 @@ backup=()
 options=(!lto)
 install=
 source=("$_pkgname::git+https://github.com/AppFlowy-IO/AppFlowy.git"
-        'flutter::git+https://github.com/flutter/flutter.git#tag=3.18.0-0.2.pre')
+        'flutter::git+https://github.com/flutter/flutter.git#tag=3.19.2')
 sha256sums=('SKIP'
             'SKIP')
 
@@ -50,8 +50,6 @@ build() {
 	_setenv
 	cd "$srcdir/$_pkgname/frontend"
 
-	cargo install cargo-make
-	cargo install duckscript_cli
 	cargo make appflowy-flutter-deps-tools
 
 	cargo make --profile "production-linux-$CARCH" appflowy
