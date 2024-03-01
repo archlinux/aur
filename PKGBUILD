@@ -1,7 +1,7 @@
 # Maintainer: Peltoche <contact@duckcloud.fr>
 pkgname=duckcloud
-pkgver=24.02.01
-pkgrel=6
+pkgver=24.03.01
+pkgrel=1
 epoch=1
 pkgdesc="A full featured DAVx server"
 arch=(x86_64 i686 armv6h armv7h aarch64)
@@ -19,7 +19,7 @@ source=(https://github.com/theduckcompany/duckcloud/archive/refs/tags/${pkgver}.
 	${pkgname}.tmpfiles
 	LICENSE)
 
-sha256sums=('6b810307d5fb5bfdca0692fa46b30ec7f13b5fd0871e6dfb7e3d0d7717a4a887'
+sha256sums=('ef13cda22ea138848296be6d69cb13c2763f948fd44aa5ba5a3313b9d2281552'
 	'33a7e3d8a674265eda550cde98d0a7fb63ad77fbdc3c4377e0e17edc2eff689e'
 	'ca526231ca260be83df4dfb5cc3d7400e82a35e3f164b9799c63be9d4b1bcead'
 	'8ee8d3bf748a986fdd040e56c208742045df91837de3e250d5148e0b3fd65692'
