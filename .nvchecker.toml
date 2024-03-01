@@ -1,2 +1,3 @@
+[python-croniter]
 source = "pypi"
 pypi = "croniter"
