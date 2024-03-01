@@ -41,10 +41,10 @@ pkgbase = eusoft-eshelper-bin
 	conflicts = eshelper
 	options = !strip
 	source = eusoft-eshelper-2024.02.27.deb::https://www.eudic.net/download/eshelper.deb?v=2024-02-27
-	source = LICENSE.html
+	source = LICENSE.html::https://dict.eudic.net/home/privacy
 	source = eusoft-eshelper.sh
 	sha256sums = 59af3b48c1cda58220e303c479d8244257fb2d7c7be7d229b83f3e8dc23ee358
-	sha256sums = 3c3eeee7a760894a121b754b5763e81263bd77fcde39e89b39fe80e9d94a1f53
+	sha256sums = 21e001fde21fdd190dd3fd47ca496be4bd945955d96f0987bccf059e5643b344
 	sha256sums = 0ed2b777bd6eaf7986a79e6cbf63f067ff135298f9a8c6f8d9eb671b50c5ec86
 
 pkgname = eusoft-eshelper-bin

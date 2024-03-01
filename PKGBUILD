@@ -48,11 +48,11 @@ depends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::https://www.eudic.net/download/${_pkgname}.deb?v=${pkgver//./-}"
-    "LICENSE.html"
+    "LICENSE.html::https://dict.eudic.net/home/privacy"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('59af3b48c1cda58220e303c479d8244257fb2d7c7be7d229b83f3e8dc23ee358'
-            '3c3eeee7a760894a121b754b5763e81263bd77fcde39e89b39fe80e9d94a1f53'
+            '21e001fde21fdd190dd3fd47ca496be4bd945955d96f0987bccf059e5643b344'
             '0ed2b777bd6eaf7986a79e6cbf63f067ff135298f9a8c6f8d9eb671b50c5ec86')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
