@@ -1,3 +1,4 @@
+[python-sphinx-jinja]
 source = "git"
 git = "https://github.com/tardyp/sphinx-jinja"
 prefix = "v"
