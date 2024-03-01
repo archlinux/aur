@@ -10,19 +10,8 @@ postgres:
     ssl_mode:
     ssl_root_cert_path:
 
-redis:
-    addr: localhost:6379
-    db: 0
-    username:
-    password:
-#    network: tcp
-#    pool_size: 10
-#    dial_timeout: 5s
-#    read_timeout: 3s
-#    write_timeout: 3s
-
 tmdb:
-    api_key:
+#    api_key:
 #    rate_limit: 50ms
 #    rate_limit_burst: 5
 
@@ -31,15 +20,11 @@ dht_server:
 #     query_timeout: 4s
 
 #dht_crawler:
-#    save_files_threshold: 50
+#    save_files_threshold: 100
 #    save_pieces: false
 #    scaling_factor: 10
 #    rescrape_threshold: 720h
 #    reseed_bootstrap_nodes_interval: 1m
-
-search_warmer:
-    enabled: true
-#    interval: 50m
 
 http_server:
     local_address: 127.0.0.1:3333

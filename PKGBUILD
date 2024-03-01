@@ -1,5 +1,5 @@
 pkgname=bitmagnet-git
-pkgver=v0.5.1
+pkgver=v0.7.7.r1.gaa135e0
 pkgrel=1
 pkgdesc='A self-hosted BitTorrent indexer, DHT crawler, content classifier and torrent search engine with web UI, GraphQL API and Servarr stack integration.'
 arch=('any')
@@ -21,7 +21,7 @@ source=('git+https://github.com/bitmagnet-io/bitmagnet'
         'dirs.conf'
         'user.conf')
 sha256sums=('SKIP'
-            'c728c019697d54077d77d30e8e32848a752b72a68beb782a37708945ae2afe5d'
+            '20f4a744e7b5f8549a66713bee5fcb65fcee58647370b2107adbc0f0bfc000c9'
             'b8fe373d25c857f312cc4a88c4056065a9df39c5a2b3e560fd879723864c5b8f'
             '5f80125347060d22175732fa0304df425178ae54282ccf2a3ce9e22a970b60ae'
             '6289a984a94570fd25a0330646caabc20e6cb871d1b141d27cc98d6781d6b35a')
