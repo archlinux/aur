@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=eventviews-git
-pkgver=5.18.40_r670.g381f3ec
+pkgver=6.0.40_r1266.g9ffa16e
 pkgrel=1
 pkgdesc="Library for creating events"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(LGPL)
-depends=(calendarsupport-git kdiagram-git)
-makedepends=(git extra-cmake-modules-git boost)
+license=(LGPL-2.0-or-later)
+depends=(akonadi-calendar-git calendarsupport-git gcc-libs glibc kcalendarcore-git kcalutils-git kcodecs-git kcolorscheme-git kcompletion-git kconfig-git kconfigwidgets-git kcontacts-git kcoreaddons-git kdiagram-git kguiaddons-git kholidays-git ki18n-git kiconthemes-git kitemmodels-git kwidgetsaddons-git libakonadi-git libkdepim-git qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kdepim-git)
