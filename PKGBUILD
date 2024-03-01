@@ -3,14 +3,14 @@
 
 pkgbase=kid3-git
 pkgname=(kid3-common-git kid3-qt-git kid3-git)
-pkgver=3.8.7_r2449.g3e43e417
+pkgver=3.9.5_r2874.ge336e486
 pkgrel=1
 pkgdesc="An MP3, Ogg/Vorbis and FLAC tag editor"
 arch=($CARCH)
 url="https://kid3.kde.org/"
-license=('GPL')
-depends=(chromaprint flac id3lib kxmlgui-git libmp4v2 qt5-declarative qt5-multimedia taglib kio-git)
-makedepends=(git cmake docbook-xsl extra-cmake-modules-git kdoctools-git python qt5-tools)
+license=(GPL)
+depends=(chromaprint flac id3lib kxmlgui5-git libmp4v2 qt5-declarative qt5-multimedia taglib kio5-git)
+makedepends=(git cmake-git docbook-xsl extra-cmake-modules-git kdoctools5-git python qt5-tools)
 source=("git+https://github.com/KDE/${pkgbase%-git}.git")
 sha256sums=('SKIP')
 
@@ -24,13 +24,13 @@ pkgver() {
 
 build() {
   export CXXFLAGS+=' -DNDEBUG' # FS#69904
-  cmake -B build -S ${pkgbase%-git} \
+  cmake-git -B build -S ${pkgbase%-git} \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DWITH_APPS="CLI;Qt;KDE" \
     -DWITH_MP4V2=ON \
     -DWITH_FFMPEG=ON \
     -DWITH_GSTREAMER=ON
-  cmake --build build
+  cmake-git --build build
 }
 
 package_kid3-common-git() {
@@ -39,7 +39,7 @@ package_kid3-common-git() {
   optdepends=('qt5-declarative: GUI support library'
               'qt5-multimedia: GUI support library')
 
-  DESTDIR="$pkgdir" cmake --install build
+  DESTDIR="$pkgdir" cmake-git --install build
 
   rm -r "$pkgdir"/usr/bin/kid3{,-qt} \
         "$pkgdir"/usr/share/{applications,icons,kxmlgui5,metainfo}
@@ -49,14 +49,14 @@ package_kid3-qt-git() {
   pkgdesc="An MP3, Ogg/Vorbis and FLAC tag editor, Qt version"
   depends=("kid3-common=$pkgver" qt5-declarative qt5-multimedia)
 
-  DESTDIR="$pkgdir" cmake --install build/src/app/qt
+  DESTDIR="$pkgdir" cmake-git --install build/src/app/qt
 }
 
 package_kid3-git() {
   pkgdesc="An MP3, Ogg/Vorbis and FLAC tag editor, KDE version"
   depends=("kid3-common=$pkgver" kxmlgui-git qt5-declarative qt5-multimedia kio-git)
 
-   DESTDIR="$pkgdir" cmake --install build/src/app
+   DESTDIR="$pkgdir" cmake-git --install build/src/app
 
   rm -r "$pkgdir"/usr/bin/kid3-{cli,qt} \
         "$pkgdir"/usr/share/applications/org.kde.kid3-qt.desktop \
