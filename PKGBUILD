@@ -4,6 +4,7 @@
 : ${_autoupdate:=false}
 : ${_build_git:=true}
 
+unset _pkgtype
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 [[ "${_autoupdate::1}" == "t" ]] && : ${_pkgver:=$(LANG=C LC_ALL=C pacman -Si extra/dolphin | sed -nE 's@^Version\s+: (.*)-.*$@\1@p' | head -1)}
 
@@ -11,7 +12,7 @@
 _gitname="dolphin"
 _pkgname="$_gitname-tabopts"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=24.01.90.r70.g54eabafc
+pkgver=24.01.90.r95.gdc149ec5
 pkgrel=1
 pkgdesc='KDE File Manager - with extended tab options'
 url="https://invent.kde.org/xiota/dolphin/-/merge_requests/1"
@@ -67,7 +68,7 @@ _main_stable() {
   if [[ "${_autoupdate::1}" == "t" ]] ; then
     sha256sums+=('SKIP')
   else
-    sha256sums+=('6a630b78018f3344b70131ff2c9deaae5e626295e512ce2741958d5197888585')
+    sha256sums+=('6309abda566dfe890f6a3790f101198ed0f274728896054f21e24bdfc3e1f1f3')
   fi
 
   source+=(
@@ -87,12 +88,12 @@ _main_stable() {
 _main_git() {
   depends+=(
     'baloo-widgets>=24'
-    'kactivities'
     'kcmutils'
     'kio-extras>=24'
     'knewstuff'
     'kparts'
     'kuserfeedback'
+    'plasma-activities'
   )
   makedepends+=(
     'extra-cmake-modules>=5.200'
