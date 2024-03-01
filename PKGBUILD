@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=messagelib-git
-pkgver=5.18.40_r6075.g1de22472
+pkgver=6.0.42_r7783.g6c19cce20
 pkgrel=1
 pkgdesc="KDE PIM messaging library"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(LGPL)
-depends=(kmailtransport-git libgravatar-git kidentitymanagement-git kmbox-git qca-git)
-makedepends=(git extra-cmake-modules-git boost)
+license=(LGPL-2.0-or-later)
+depends=(akonadi-contacts-git akonadi-mime-git akonadi-search-git gcc-libs glibc gpgme grantleetheme-git karchive-git kcalendarcore-git kcodecs-git kcolorscheme-git kcompletion-git kconfig-git kconfigwidgets-git kcontacts-git kcoreaddons-git kguiaddons-git ki18n-git kiconthemes-git kitemviews-git kmailtransport-git kmime-git kidentitymanagement-git kio-git kitemmodels-git kjobwidgets-git kmbox-git kpimtextedit-git kservice-git ktextaddons-git ktexttemplate-git ktextwidgets-git kwidgetsaddons-git kxmlgui-git libakonadi-git libgravatar-git libkdepim-git libkleo-git pimcommon-git qca-qt6-git qgpgme-qt6 qt6-base qt6-webengine sonnet-git syntax-highlighting-git)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kdepim-git)
