@@ -14,4 +14,4 @@ create_socket_dir() {
 }
 
 create_socket_dir
-sg "$NORDVPN_GROUP" -c $DAEMON 2>&1
+exec sg "$NORDVPN_GROUP" -c $DAEMON 2>&1
