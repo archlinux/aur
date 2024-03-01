@@ -1,7 +1,7 @@
 pkgbase = kidletime-git
 	pkgdesc = Monitoring user activity
 	pkgver = 6.0.0_r424.gec86623
-	pkgrel = 1
+	pkgrel = 2
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
 	groups = kf6-git
@@ -15,7 +15,7 @@ pkgbase = kidletime-git
 	makedepends = qt6-doc
 	makedepends = qt6-tools
 	makedepends = qt6-wayland
-	makedepends = wayland-protocols-git
+	makedepends = wayland-protocols
 	depends = gcc-libs
 	depends = glibc
 	depends = qt6-base

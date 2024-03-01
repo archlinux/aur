@@ -4,13 +4,13 @@
 
 pkgname=kidletime-git
 pkgver=6.0.0_r424.gec86623
-pkgrel=1
+pkgrel=2
 pkgdesc='Monitoring user activity'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL-2.0-only LGPL-3.0-only)
 depends=(gcc-libs glibc qt6-base)
-makedepends=(git doxygen extra-cmake-modules-git libxss plasma-wayland-protocols-git qt6-doc qt6-tools qt6-wayland wayland-protocols-git)
+makedepends=(git doxygen extra-cmake-modules-git libxss plasma-wayland-protocols-git qt6-doc qt6-tools qt6-wayland wayland-protocols)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf6-git)
