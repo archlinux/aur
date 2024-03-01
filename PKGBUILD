@@ -3,14 +3,14 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kxmlgui-git
-pkgver=5.240.0_r1004.gd27a8a92
+pkgver=6.0.0_r1217.ga7367d47
 pkgrel=1
 pkgdesc='User configurable main windows'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(kglobalaccel-git kiconthemes-git attica-git)
-makedepends=(git extra-cmake-modules-git doxygen qt6-tools)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(gcc-libs glibc kcolorscheme-git kconfig-git kconfigwidgets-git kcoreaddons-git kglobalaccel-git kguiaddons-git ki18n-git kiconthemes-git kitemviews-git kwidgetsaddons-git qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf6-git)
