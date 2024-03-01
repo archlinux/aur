@@ -1,2 +1,3 @@
+[buildbot]
 source = "pypi"
 pypi = "buildbot"
