@@ -2,7 +2,7 @@
 
 _pkgname="hyprlock"
 pkgname="${_pkgname}-git"
-pkgver=0.1.0.r10.ga279ee76
+pkgver=0.1.0.r14.ga7ec1958
 pkgrel=1
 pkgdesc=" Hyprland's GPU-accelerated screen locking utility "
 arch=(any)
@@ -23,13 +23,14 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -S . -B ./build
+	cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX=/usr -S . -B ./build
     cmake --build ./build --config Release --target hyprlock
 }
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	install -Dm755 build/hyprlock -t "${pkgdir}/usr/bin"
+	DESTDIR="${pkgdir}" cmake --install build
+
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
