@@ -1,13 +1,14 @@
 pkgbase = r-proj4
 	pkgdesc = A simple interface to the PROJ.4 cartographic projections library
 	pkgver = 1.0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=proj4
 	arch = x86_64
-	license = GPL
-	depends = r
+	license = GPL-2.0-only
 	depends = proj
+	depends = r
 	source = https://cran.r-project.org/src/contrib/proj4_1.0-14.tar.gz
-	sha256sums = d3d571da92136666dd3658b6006a7d4d4254cdeada5cda21b05b0c0e692a00b6
+	md5sums = aa4414ed36bacf9c15e3e990b658cd90
+	b2sums = 07223d6a298bde40e1eae1f682f2978a180be2f5b2f8d233f7d2614fc60260581fddd95cdbf6e74ff431e81917639544dd55ae0838d5cd612f1b8fdf8e8c1cf4
 
 pkgname = r-proj4
