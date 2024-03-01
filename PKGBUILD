@@ -26,7 +26,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -34,9 +34,9 @@ pkgver() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
-        -e "s|@appasar@|app|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
-    gendesk -q -f -n --categories "Network" --name "${_pkgname}" --exec "${pkgname%-git} %U"
+    gendesk -q -f -n --categories="Network" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -45,11 +45,13 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    convert assets/icons/icon.ico "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.png"
+    convert assets/icons/icon.ico assets/icons/icon.png
+    cp assets/icons/icon.png src/public/assets/icon
+    sed "s|icon/icon.ico|icon/icon.png|g" -i src/public/loader.html
     yarn install --cache-folder "${srcdir}/.yarn_cache"
     yarn build
     cp -r src/public build
-    npx electron-packager . random-browser --overwrite --asar=false --platform=linux --icon=random-browser.png --prune=true --out=dist
+    npx electron-packager . "${pkgname%-git}" --overwrite --asar=false --platform=linux --icon="${pkgname%-git}".png --prune=true --out=dist
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
