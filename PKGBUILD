@@ -2,7 +2,7 @@
 pkgname=flawless-cut-bin
 pkgver=1.0.1
 _electronversion=23
-pkgrel=7
+pkgrel=8
 pkgdesc="Fast and lossless video cutter and merger based on Electron."
 arch=('x86_64')
 url="https://github.com/metadream/app-flawless-cut"
@@ -21,13 +21,13 @@ source=(
     )
 sha256sums=('28debe0ea79488000337f8da5d12cad51ce9e965dfff9dc63da031d28c38d328'
             'f3eac6adfa3dd9332b033a4aa8f565d05947b371fa729ceb6712a0123c5dcc46'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
