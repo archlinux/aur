@@ -9,8 +9,8 @@ url="https://github.com/XandrCopyrighted/xFetch/"
 license=('MIT')
 
 source=(
-	"https://github.com/XandrCopyrighted/xFetch/releases/download/3.5/xfetch.tar.gz"
-	"https://raw.githubusercontent.com/XandrCopyrighted/xFetch/main/LICENSE"
+	"https://codeberg.org/XDR/xFetch/releases/download/3.5/xfetch.tar.gz"
+	"https://codeberg.org/XDR/xFetch/raw/branch/main/LICENSE"
 )
 sha256sums=(
 	'SKIP'
