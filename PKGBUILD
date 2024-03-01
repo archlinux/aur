@@ -3,13 +3,13 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=plasma-browser-integration-git
-pkgver=5.27.80_r1474.g61385d35
+pkgver=6.0.80_r1569.g57b9b6a3
 pkgrel=1
 pkgdesc='Components necessary to integrate browsers into the Plasma Desktop'
 arch=($CARCH)
 url='https://www.kde.org/plasma-desktop'
-license=(GPL)
-depends=(purpose-git kfilemetadata-git plasma-workspace-git)
+license=(GPL-2.0-or-later)
+depends=(gcc-libs glibc plasma-activities-git kconfig-git kcoreaddons-git kcrash-git kdbusaddons-git kfilemetadata-git ki18n-git kio-git kjobwidgets-git kservice-git kstatusnotifieritem-git plasma-workspace-git purpose-git qt6-base)
 makedepends=(git extra-cmake-modules-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
