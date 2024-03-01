@@ -15,6 +15,7 @@
 : ${_build_lts:=false}
 : ${_build_v3:=false}
 
+unset _pkgtype
 [[ "${_build_vfio::1}" == "t" ]] && _pkgtype+="-vfio"
 [[ "${_build_lts::1}" == "t" ]] && _pkgtype+="-lts"
 [[ "${_build_v3::1}" == "t" ]] && _pkgtype+="-v3"
@@ -23,7 +24,7 @@
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.7.6
+pkgver=6.7.7
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -53,7 +54,7 @@ source+=(
   "config-$pkgver"::https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/main/config
 )
 sha256sums+=(
-  'e489ec0e1370d089b446d565aded7a698093d2b7c4122a18f21edb6ef93d37d3'
+  '256b8b44570ddbe266eb3ad0c2cba2616f1609b4a3de5014a3da5512907b14d9'
   'SKIP'
   'SKIP'
 )
