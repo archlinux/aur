@@ -4,14 +4,14 @@
 # Contributor: Dmytro Kostiuchenko <edio@archlinux.us>
 
 pkgname=rsibreak-git
-pkgver=0.12.14_r936.g8b4b9e4
+pkgver=0.12.15_r1159.g915755d
 pkgrel=1
 pkgdesc='Takes care of your health and regularly breaks your work to avoid repetitive strain injury (RSI)'
 url='https://apps.kde.org/rsibreak/'
-arch=($CARCH)
 license=(GPL)
-depends=(knotifyconfig-git kidletime-git hicolor-icon-theme)
-makedepends=(git extra-cmake-modules-git kdoctools-git)
+depends=(gcc-libs glibc kconfig5-git kconfigwidgets5-git kcoreaddons5-git kcrash5-git kdbusaddons5-git ki18n5-git kidletime5-git knotifications5-git knotifyconfig5-git ktextwidgets5-git kwidgetsaddons5-git kwindowsystem5-git kxmlgui5-git qt5-base)
+makedepends=(git extra-cmake-modules-git kdoctools5-git)
+arch=($CARCH)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
