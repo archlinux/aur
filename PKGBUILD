@@ -2,18 +2,18 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kalgebra-git
-pkgver=21.11.70_r2040.g3738f5b
+pkgver=24.04.70_r2299.g56741e86
 pkgrel=1
 pkgdesc='Graph Calculator'
 url='https://apps.kde.org/kalgebramobile/'
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(analitza-git gcc-libs glibc kcolorscheme-git kconfig-git kconfigwidgets-git kcoreaddons-git ki18n-git kio-git kwidgetsaddons-git kxmlgui-git qt6-base qt6-declarative qt6-webengine readline)
+makedepends=(git extra-cmake-modules-git kdoctools-git libplasma-git)
+optdepends=('kirigami: for KAlgebra Mobile')
 arch=($CARCH)
-license=(GPL LGPL FDL)
 groups=(kde-applications-git kde-education-git)
-depends=(analitza-git kio-git qt5-webengine)
-makedepends=(git extra-cmake-modules-git kdoctools-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('kirigami2-git: for KAlgebra Mobile')
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
