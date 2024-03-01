@@ -9,8 +9,8 @@ url="https://github.com/XandrCopyrighted/discordrpc"
 license=('GPL3')
 
 source=(
-	"https://github.com/XandrCopyrighted/discordrpc/releases/download/v1/discordrpc.tar.xz"
-	"https://raw.githubusercontent.com/XandrCopyrighted/discordrpc/main/LICENSE"
+	"https://codeberg.org/XDR/DiscordRPC/releases/download/v1/discordrpc.tar.xz"
+	"https://codeberg.org/XDR/DiscordRPC/raw/branch/main/LICENSE"
 )
 sha256sums=(
 	'SKIP'

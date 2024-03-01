@@ -7,8 +7,8 @@ pkgbase = discordrpc-v2
 	license = GPL3
 	provides = discordrpc
 	conflicts = discordrpc
-	source = https://github.com/XandrCopyrighted/discordrpc/releases/download/v1/discordrpc.tar.xz
-	source = https://raw.githubusercontent.com/XandrCopyrighted/discordrpc/main/LICENSE
+	source = https://codeberg.org/XDR/DiscordRPC/releases/download/v1/discordrpc.tar.xz
+	source = https://codeberg.org/XDR/DiscordRPC/raw/branch/main/LICENSE
 	sha256sums = SKIP
 	sha256sums = SKIP
 
