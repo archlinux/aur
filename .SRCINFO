@@ -1,6 +1,7 @@
 pkgbase = ogdf
 	pkgdesc = OGDF is a self-contained C++ class library for the automatic layout of diagrams. OGDF offers sophisticated algorithms and data structures to use within your own applications or scientific projects.
-	pkgver = 2022_02
+	pkgtreename=elderberry
+	pkgver = 202309
 	pkgrel = 1
 	url = https://ogdf.uos.de/
 	arch = i686
@@ -11,8 +12,8 @@ pkgbase = ogdf
 	makedepends = graphviz
 	makedepends = bash
 	options = staticlibs
-	source = ogdf-2022-02.zip::https://ogdf.uos.de/wp-content/uploads/2022/02/ogdf.v2022.02.zip
-	sha256sums = 5234b41dd8f52f5dda537794ecb26ccfeb928d8520e0c48e0f84bbc75f4b6c1e
+	source = https://github.com/ogdf/ogdf/archive/refs/tags/elderberry-202309.tar.gz
+	sha256sums = 3438205d3a6ff69d24c3a6db748d2a5a78688605baf3092456073901a2b623f3
 
 pkgname = ogdf
 	provides = ogdf
