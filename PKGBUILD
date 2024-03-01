@@ -3,7 +3,7 @@ pkgname=epherome-bin
 _pkgname=Epherome
 pkgver=0.7.1
 _electronversion=22
-pkgrel=8
+pkgrel=9
 pkgdesc="Powerful Minecraft Launcher"
 url="https://epherome.com/"
 _ghurl="https://github.com/ResetPower/Epherome"
@@ -19,13 +19,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('7dc740a18e73eb11aaa1ef7dad8342857ab043fb81112dac36129a1f895e49a5'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
