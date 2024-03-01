@@ -3,18 +3,16 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kfilemetadata-git
-pkgver=5.240.0_r925.g5086970
+pkgver=6.0.0_r1093.gb0b1666
 pkgrel=1
 pkgdesc="A library for extracting file metadata"
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(ki18n-git karchive-git kconfig-git kcoreaddons-git exiv2 poppler-qt6 taglib ffmpeg ebook-tools)
-optdepends=('catdoc: Extract text from Office 98 files')
-makedepends=(git extra-cmake-modules-git catdoc doxygen qt6-tools libappimage)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(gcc-libs glibc ebook-tools exiv2-git ffmpeg karchive-git kconfig-git kcoreaddons-git ki18n-git poppler-qt6 qt6-base taglib)
+makedepends=(git catdoc doxygen extra-cmake-modules-git kdegraphics-mobipocket-git libappimage qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('libappimage: AppImage extractor')
 groups=(kf6-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
