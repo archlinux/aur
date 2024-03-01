@@ -4,18 +4,18 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kholidays-git
-pkgver=5.240.0_r1105.g9d961eb
+pkgver=6.0.0_r1254.g20df165
 pkgrel=1
 epoch=1
 pkgdesc="KDE library for regional holiday information"
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(qt6-base)
-makedepends=(git extra-cmake-modules-git qt6-declarative qt6-tools doxygen)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(gcc-libs glibc qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-declarative qt6-doc qt6-tools)
+optdepends=('qt6-declarative: QML bindings')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('qt6-declarative: QML bindings')
 groups=(kf6-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
