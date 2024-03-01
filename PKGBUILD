@@ -3,7 +3,7 @@
 _pkgbase='black-magic-debug'
 pkgbase="${_pkgbase}-git"
 pkgname=(black-magic-debug-app-git black-magic-debug-udev-git)
-pkgver=1.10.0.r393.gcccceeac
+pkgver=1.10.0.r612.g8a7d6982
 pkgrel=1
 pkgdesc='Plug&Play in application debugger for microcontrollers'
 arch=('any')
@@ -20,12 +20,12 @@ pkgver() {
 
 prepare() {
     cd blackmagic
-    meson subprojects download
+    # meson subprojects download
 }
 
 build() {
     cd blackmagic
-    arch-meson . build -Dprobe='' -Drtt_support=true -Dadvertise_noackmode=true
+    arch-meson . build -Dprobe='' -Drtt_support=true -Dadvertise_noackmode=true -Denable_gpiod=disabled
     meson compile -C build
 }
 
