@@ -1,0 +1,34 @@
+commit 6d53fb4cd3939f0b1ede46cff7ab74e13c87aacf
+Author: Claus <claus@protovision.games>
+Date:   Wed Feb 28 21:48:51 2024 +0100
+
+    Fix build buster for man page and update copyright year
+
+diff --git a/cc1541.1.txt.in b/cc1541.1.txt.in
+index 1f7c68c..271d326 100644
+--- a/cc1541.1.txt.in
++++ b/cc1541.1.txt.in
+@@ -12,13 +12,7 @@ Björn Esser
+ == Name
+ 
+ cc1541 - A tool for creating Commodore floppy disk images in 
+-D64 (35 and 40 track), D71 or D81 format, providing a lot of 
+-control over the layout of the data on the disk. It also 
+-supports writing the file format for the Transwarp loader by 
+-Krill.
+-
+-Find a more extensive online documentation here:
+-https://acoustic-velocity.com/cc1541
++D64, D71 or D81 format
+ 
+ == Synopsis
+ 
+@@ -216,7 +210,7 @@ https://bitbucket.org/PTV_Claus/cc1541/issues/new
+ 
+ == License
+ 
+-Copyright (C) 2008-2021 {author}. +
++Copyright (C) 2008-2024 {author}. +
+ 
+ Permission is hereby granted, free of charge, to any person obtaining
+ a copy of this software and associated documentation files (the
