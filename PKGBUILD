@@ -3,13 +3,15 @@
 _pkgname=bnlearn
 _pkgver=4.9.1
 pkgname=r-${_pkgname,,}
-pkgver=4.9.1
-pkgrel=1
-pkgdesc='Bayesian Network Structure Learning, Parameter Learning and Inference'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Bayesian Network Structure Learning, Parameter Learning and Inference"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
+  blas
+  lapack
   r
 )
 optdepends=(
@@ -18,21 +20,20 @@ optdepends=(
   r-graph
   r-grbase
   r-igraph
-  r-lattice
-  r-parallel
   r-rgraphviz
   r-rmpfr
   r-rocr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('51e1f40ac947fb1b43bc178bc5d82e23facaaefe6c66acbddf715165e1f5ee08')
+md5sums=('635e44be0c40c2e924118674ef1e9ec6')
+b2sums=('2c4eded116fe386d1fa0d66209be0a2d3c298e4c33b3364ccaacc8dd74940e6ba908e62777927ab04337a99223b765b326450f37523db101ca8bafa1ad98017a')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
