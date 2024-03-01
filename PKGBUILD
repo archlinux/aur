@@ -4,15 +4,15 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=ksystemlog-git
-pkgver=23.07.70_r856.g17b7432
+pkgver=24.04.70_r975.g68a32a5
 pkgrel=1
 pkgdesc='System log viewer tool'
 url='https://kde.org/applications/system/ksystemlog/'
-arch=($CARCH)
-license=(GPL LGPL FDL)
-groups=(kde-applications-git kde-system-git)
-depends=(kio-git)
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(audit gcc-libs glibc karchive-git kcolorscheme-git kcompletion-git kconfig-git kconfigwidgets-git kcoreaddons-git ki18n-git kio-git kitemviews-git ktextwidgets-git kwidgetsaddons-git kxmlgui-git qt6-5compat qt6-base systemd-libs)
 makedepends=(git extra-cmake-modules-git kdoctools-git)
+arch=($CARCH)
+groups=(kde-applications-git kde-system-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
