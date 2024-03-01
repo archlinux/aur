@@ -3,8 +3,8 @@ _pkgname=ting_fr
 pkgname="eusoft-${_pkgname//_/-}-bin"
 _zhsname="每日法语听力"
 pkgver=9.7.0
-_electronversion=13
-pkgrel=3
+_electronversion=11
+pkgrel=4
 pkgdesc="听力统计、笔记同步、语音高亮跟随，让您轻松愉快学法语"
 arch=('x86_64')
 url="https://www.frdic.com/ting"
@@ -16,18 +16,18 @@ depends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::https://static.frdic.com/pkg/${_pkgname}/${_pkgname}.deb"
-    "LICENSE.html"
+    "LICENSE.html::https://www.eudic.net/v4/en/home/privacy"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('efbf72d55838f72fe4992330092473416476bb32ab6a0d03135aff64f99e74c9'
-            '69031e95591a339c4cd9c01547494e23196cea6438608f1f951b493ea8fca54f'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '12ec1b3e4be99eee9c2d5fb55c196d2294c1b112e137927c61f81efb0e308f75'
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_zhsname}/${_pkgname}\"|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
