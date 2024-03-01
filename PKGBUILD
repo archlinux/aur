@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=mailcommon-git
-pkgver=5.18.40_r1057.gc8d5a1d
+pkgver=6.0.40_r1709.g56ffc5d1
 pkgrel=1
 pkgdesc="KDE PIM library providing support for mail applications"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(LGPL)
-depends=(mailimporter-git messagelib-git phonon-qt5-git)
-makedepends=(git extra-cmake-modules-git boost qt5-tools)
+license=(LGPL-2.0-or-later)
+depends=(akonadi-contacts-git akonadi-mime-git gcc-libs glibc gpgme karchive-git kcodecs-git kcolorscheme-git kcompletion-git kconfig-git kconfigwidgets-git kcontacts-git kcoreaddons-git ki18n-git kiconthemes-git kidentitymanagement-git kio-git kitemviews-git kmailtransport-git kmime-git ktextaddons-git ktextwidgets-git kwidgetsaddons-git kxmlgui-git libakonadi-git libkdepim-git libkleo-git mailimporter-git messagelib-git phonon-qt6-git pimcommon-git qgpgme-qt6 qt6-base syntax-highlighting-git)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kdepim-git)
