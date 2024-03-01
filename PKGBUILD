@@ -2,13 +2,13 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kio-fuse-git
-pkgver=5.0.1_r219.g1508f60
+pkgver=5.1.0_r240.g7266283
 pkgrel=1
 arch=($CARCH)
 pkgdesc="FUSE interface for KIO"
 url="https://kde.org/"
 license=(GPL)
-depends=(kio-git fuse3)
+depends=(fuse3 gcc-libs glibc kcoreaddons-git kio-git qt6-base)
 makedepends=(git extra-cmake-modules-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
