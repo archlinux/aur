@@ -1,6 +1,8 @@
 # Maintainer: Cass Midkiff <cass.midkiff.kde@gmail.com>
 pkgname=devtunnel-cli-bin
 
+_bin_name=devtunnel
+
 # there's no url versioning, so this will install the latest published version
 # regardless what the `pkgver` is set to
 pkgver='1.0.1217+9b9f4aa22d'
@@ -22,8 +24,8 @@ depends=(
     'glibc' 'zlib' 'gcc-libs'
 
 )
-provides=('devtunnel')
-conflicts=('devtunnel')
+provides=($_bin_name)
+conflicts=($_bin_name)
 
 source=()
 source_x86_64=(devtunnel_x86::https://tunnelsassets$_env.blob.core.windows.net/cli/linux-x64-devtunnel)
@@ -49,5 +51,5 @@ package() {
 
     install -d "${pkgdir}/usr/bin"
 
-    install -m755 "${srcdir}/${_pkg}" "${pkgdir}/usr/bin/${pkgname}"
+    install -m755 "${srcdir}/${_pkg}" "${pkgdir}/usr/bin/${_bin_name}"
 }
