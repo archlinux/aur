@@ -18,13 +18,14 @@ sha256sums=('55dffb5b4cd25f034c6fdd98a9fa1d6763ff6e07b1d51b9e0b4cdd4fe65bc798')
 
 build() {
 	cd "$_archive"
-	cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -S . -B ./build
+	cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX=/usr -S . -B ./build
 	cmake --build ./build --config Release --target hypridle
 }
 
 package() {
 	cd "$_archive"
-	install -Dm755 build/hypridle -t "${pkgdir}/usr/bin"
+	DESTDIR="${pkgdir}" cmake --install build
+
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
