@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kitinerary-git
-pkgver=5.18.40_r1832.g964e622
+pkgver=6.0.40_r3559.g36962d75
 pkgrel=1
 pkgdesc="Data model and extraction system for travel reservation information"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(LGPL)
-depends=(kmime-git kpkpass-git kcalendarcore-git kcontacts-git poppler libphonenumber zxing-cpp)
-makedepends=(git extra-cmake-modules-git)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc karchive-git kcalendarcore-git kcodecs-git kcontacts-git ki18n-git kmime-git kpkpass-git libphonenumber libxml2 openssl poppler qt6-base qt6-declarative zlib zxing-cpp)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kdepim-git)
