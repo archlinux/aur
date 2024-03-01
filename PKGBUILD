@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='OpenSearch Dashboards Gantt Chart Plugin'
 url='https://opensearch.org/docs/latest/dashboards/gantt/'
 arch=('x86_64')
-license=('Apache')
+license=('Apache-2.0')
 depends=("opensearch-dashboards=${_dashboardsver}")
 makedepends=('yarn' 'npm' 'python' 'git')
 options=('!strip' 'emptydirs')
