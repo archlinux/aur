@@ -12,7 +12,7 @@ license=('LicenseRef-custom')
 conflicts=("${pkgname%-bin}" "eudic-${_pkgname}" "${_pkgname}")
 depends=(
     'hicolor-icon-theme'
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::https://static.frdic.com/pkg/${_pkgname}/${_pkgname}.deb"
