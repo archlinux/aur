@@ -3,14 +3,14 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=ktimer-git
-pkgver=21.11.70_r468.g08ad6e6
+pkgver=24.04.70_r687.ge0f2064
 pkgrel=1
 pkgdesc='Countdown Launcher'
 url='https://apps.kde.org/ktimer/'
-arch=($CARCH)
-license=(GPL LGPL FDL)
-depends=(kio-git hicolor-icon-theme)
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(gcc-libs glibc kconfig-git kconfigwidgets-git kcoreaddons-git kdbusaddons-git ki18n-git kio-git kstatusnotifieritem-git kwidgetsaddons-git qt6-base)
 makedepends=(git extra-cmake-modules-git kdoctools-git)
+arch=($CARCH)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kde-applications-git kde-utilities-git)
