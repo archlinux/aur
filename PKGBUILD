@@ -9,15 +9,15 @@
 
 
 pkgname=kimap2-git
-pkgver=0.4.0_r825.gf36ea7f
+pkgver=0.4.0_r830.gb8ae50f
 pkgrel=1
 pkgdesc="Job-based API for interacting with IMAP servers"
 arch=($CARCH)
 url="https://community.kde.org/KDE_PIM"
 license=(LGPL)
-groups=(kdepim-git)
 depends=(kcoreaddons-git kmime-git)
 makedepends=(git extra-cmake-modules-git)
+groups=(kdepim-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")

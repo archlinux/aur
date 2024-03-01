@@ -1,6 +1,6 @@
 pkgbase = kimap2-git
 	pkgdesc = Job-based API for interacting with IMAP servers
-	pkgver = 0.4.0_r825.gf36ea7f
+	pkgver = 0.4.0_r830.gb8ae50f
 	pkgrel = 1
 	url = https://community.kde.org/KDE_PIM
 	arch = x86_64
@@ -16,4 +16,3 @@ pkgbase = kimap2-git
 	sha256sums = SKIP
 
 pkgname = kimap2-git
-
