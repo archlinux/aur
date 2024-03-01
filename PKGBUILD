@@ -5,19 +5,16 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=sonnet-git
-pkgver=5.240.0_r773.ge64d774
+pkgver=6.0.0_r899.g184e686
 pkgrel=1
 pkgdesc='Spelling framework for Qt6'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(qt6-base)
-makedepends=(git extra-cmake-modules-git qt6-declarative qt6-tools hunspell aspell hspell libvoikko doxygen)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(gcc-libs glibc qt6-base)
+makedepends=(git aspell doxygen extra-cmake-modules-git hspell hunspell libvoikko qt6-declarative qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('hunspell: spell checking via hunspell' 'aspell: spell checking via aspell' 
-            'hspell: spell checking for Hebrew' 'libvoikko: Finnish support via Voikko'
-            'qt6-declarative: QML bindings')
 groups=(kf6-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
