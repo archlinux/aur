@@ -4,15 +4,15 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kimap-git
-pkgver=5.18.40_r1101.ge0538b4
+pkgver=6.0.41_r1414.g8dc812b
 pkgrel=1
 pkgdesc="Job-based API for interacting with IMAP servers"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(LGPL)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc kcoreaddons-git ki18n-git kio-git kmime-git libsasl qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 groups=(kdepim-git)
-depends=(kmime-git kio-git)
-makedepends=(git extra-cmake-modules-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
