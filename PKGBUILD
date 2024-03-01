@@ -3,17 +3,16 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=knewstuff-git
-pkgver=5.240.0_r1495.ga6401e50
+pkgver=6.0.0_r1806.g436fdfd0
 pkgrel=1
 pkgdesc='Support for downloading application assets from the network'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(kio-git kpackage-git syndication-git)
-makedepends=(git extra-cmake-modules-git doxygen qt6-tools qt6-declarative)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(attica-git gcc-libs glibc karchive-git kconfig-git kcoreaddons-git ki18n-git kpackage-git kwidgetsaddons-git qt6-base syndication-git)
+makedepends=(git doxygen extra-cmake-modules-git qt6-declarative qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('kirigami2-git: QML components')
 groups=(kf6-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
