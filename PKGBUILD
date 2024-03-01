@@ -1,40 +1,40 @@
-# Maintainer: Benjamin Denhartog <ben@sudoforge.com>
-
-# For ISSUES, REQUESTS, and QUESTIONS:
-# https://github.com/sudoforge/pkgbuilds
-
 pkgname=wee-slack-git
-pkgver=2.9.0
+pkgver=2.10.2.r368.gedaad8b
 pkgrel=1
-pkgdesc="A WeeChat plugin for slack"
+pkgdesc='A WeeChat plugin for Slack'
+url='https://github.com/wee-slack/wee-slack/'
 arch=('any')
-url="https://github.com/wee-slack/${pkgname%-git}"
 license=('MIT')
-depends=(
-  'python-websocket-client'
-  'weechat'
+
+makedepends=(
+  'git'
 )
-makedepends=('git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-install=$pkgname.install
-source=("git+${url}.git")
-sha256sums=('SKIP')
+
+conflicts=(
+  'wee-slack'
+)
+
+source=(
+  'git+https://github.com/wee-slack/wee-slack'
+)
+
+sha512sums=(
+  'SKIP'
+)
 
 pkgver() {
-  cd "${srcdir}/${pkgname%-git}"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd wee-slack
+  git describe --long | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
 package() {
-  cd "${srcdir}/${pkgname%-git}"
+  depends+=(
+    'python-websocket-client'
+    'weechat'
+  )
 
-  # Install the plugin script
+  cd wee-slack
   install -Dm644 wee_slack.py "${pkgdir}/usr/share/weechat/python/wee_slack.py"
-
-  # Install the emoji tab completion dictionary
   install -Dm644 weemoji.json "${pkgdir}/usr/share/weechat/weemoji.json"
-
-  # Install the plugin license
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/wee-slack/LICENSE"
 }
