@@ -1,7 +1,7 @@
 # Maintainer: João Figueiredo <islandc0der@chaotic.cx>
 
 pkgname=kongress-git
-pkgver=24.04.70_r452.g322779d
+pkgver=24.04.70_r454.g1c1d73b
 pkgrel=1
 pkgdesc="Companion application for conferences"
 arch=($CARCH)

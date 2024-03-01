@@ -1,6 +1,6 @@
 pkgbase = kongress-git
 	pkgdesc = Companion application for conferences
-	pkgver = 24.04.70_r452.g322779d
+	pkgver = 24.04.70_r454.g1c1d73b
 	pkgrel = 1
 	url = https://github.com/KDE/kongress
 	arch = x86_64
