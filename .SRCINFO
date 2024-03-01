@@ -1,6 +1,6 @@
 pkgbase = qtcreator-prerelease
 	pkgdesc = Qt Creator prerelease/latest
-	pkgver = 13.0.0beta1
+	pkgver = 13.0.0beta2
 	pkgrel = 1
 	url = http://qt.io/ide
 	install = qtcreator-prerelease.install
@@ -28,7 +28,7 @@ pkgbase = qtcreator-prerelease
 	provides = qtcreator
 	conflicts = qtcreator
 	conflicts = litehtml
-	source = https://download.qt.io/development_releases/qtcreator/13.0/13.0.0-beta1/qt-creator-opensource-src-13.0.0-beta1.tar.xz
-	sha512sums = 55d907cd9112733600edb5fe1a2ef0d8df975899465ee771a88313c5941c64641774a091696ff22a613997954835e277618db44802f63bd937b75b88a62c0cfc
+	source = https://download.qt.io/development_releases/qtcreator/13.0/13.0.0-beta2/qt-creator-opensource-src-13.0.0-beta2.tar.xz
+	sha512sums = df81ff47dad5a79c0326119dd3d71526b4ed62d2c3ed5e0dfe6c14e80f0bf628163c715d84d4ecc29e7e34e4e59848abd6f9b1ef01893e5209e6280debe15c1a
 
 pkgname = qtcreator-prerelease
