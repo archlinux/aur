@@ -2,7 +2,7 @@
 pkgname=thoughts-bin
 pkgver=0.9.6
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="一个还算强大的Web思维导图。A relatively powerful web mind map."
 arch=("x86_64")
 url="https://wanglin2.github.io/mind-map/#/index"
@@ -13,12 +13,9 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/electron-${pkgver}/-${pkgver}.AppImage"
@@ -27,11 +24,11 @@ source=(
 )
 sha256sums=('699755da1894dccb8b65c97a05e573f031cbc441b3dee0b609c3e0c62e7e1755'
             '8a19b651678a6a644640524d984ed89d0b9a78c662545715218a05130c7329c7'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
