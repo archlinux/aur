@@ -3,13 +3,13 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kded-git
-pkgver=5.240.0_r500.g7f36c3d
+pkgver=6.0.0_r558.g26b414e
 pkgrel=1
 pkgdesc='Extensible deamon for providing system level services'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(kservice-git)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(gcc-libs glibc kconfig-git kcoreaddons-git kcrash-git kdbusaddons-git kservice-git qt6-base)
 makedepends=(git extra-cmake-modules-git kdoctools-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
