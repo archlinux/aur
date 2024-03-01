@@ -2,7 +2,7 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=pulseaudio-qt-git
-pkgver=1.4.0_r768.g2f82909
+pkgver=1.5.0_r776.gc4fc3d9
 pkgrel=1
 pkgdesc='Qt bindings for libpulse'
 arch=($CARCH)
