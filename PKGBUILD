@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=analitza-git
-pkgver=21.08.0_r2330.g7072e346
+pkgver=24.01.95_r2445.g780436df
 pkgrel=1
 pkgdesc='A library to add mathematical features to your program'
 url='https://www.kde.org/'
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(gcc-libs glibc qt6-5compat qt6-base qt6-declarative qt6-svg)
+makedepends=(git eigen extra-cmake-modules-git kdoctools-git qt6-tools)
 arch=($CARCH)
-license=(GPL LGPL FDL)
-depends=(qt5-svg qt5-declarative)
-makedepends=(git extra-cmake-modules-git kdoctools-git eigen qt5-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
