@@ -1,10 +1,10 @@
 pkgbase = electron-gpt-git
 	pkgdesc = Simplified chat using OpenAI's GPT
-	pkgver = r861.2d34a2c
+	pkgver = r911.35448df
 	pkgrel = 1
 	url = https://github.com/Bubuclem/electron-gpt
 	arch = any
-	license = custom:CC0-1.0
+	license = CC0-1.0
 	makedepends = npm
 	makedepends = git
 	makedepends = nodejs
@@ -13,10 +13,10 @@ pkgbase = electron-gpt-git
 	depends = electron28
 	depends = python>=3.9
 	depends = python-setuptools
-	depends = make
+	depends = base-devel
 	source = electron-gpt.git::git+https://github.com/Bubuclem/electron-gpt.git
 	source = electron-gpt.sh
 	sha256sums = SKIP
-	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = electron-gpt-git
