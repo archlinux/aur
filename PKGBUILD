@@ -4,13 +4,13 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdialog-git
-pkgver=23.07.70_r1366.g0832b04ba
+pkgver=24.04.70_r1478.g33d49400b
 pkgrel=1
 pkgdesc="A utility for displaying dialog boxes from shell scripts"
 arch=($CARCH)
 url="https://www.kde.org/"
-license=(LGPL)
-depends=(kio-git)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc kconfig-git kcoreaddons-git kdbusaddons-git kguiaddons-git ki18n-git kiconthemes-git kio-git ktextwidgets-git kwidgetsaddons-git kwindowsystem-git libx11 qt6-base)
 makedepends=(git extra-cmake-modules-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
