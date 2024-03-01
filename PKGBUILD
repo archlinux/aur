@@ -1,6 +1,6 @@
 # Maintainer: Adrian Groh <adrian[dot]groh[at]t[dash]online[dot]de>
 pkgname=feroxbuster-bin
-pkgver=2.10.0
+pkgver=2.10.2
 pkgrel=1
 pkgdesc="A fast, simple, recursive content discovery tool written in Rust"
 url="https://github.com/epi052/feroxbuster"
@@ -10,7 +10,7 @@ depends=()
 provides=("feroxbuster")
 conflicts=("feroxbuster" "feroxbuster-git")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/epi052/feroxbuster/releases/download/v$pkgver/x86_64-linux-feroxbuster.tar.gz")
-b2sums=('3374284d7cbc3792c77835679bb8ccc9390dbc724998e79bbfed8fe3f0f95aa3b8ce399a1dbfb64c8d76be3db553d3668fd82c6acd7c9ddd30672a6923eb7504')
+b2sums=('230105cbb797e1e7a791e937bb2807ff04bc780ab1892325cbb30872c9ef9892176b4df202bb7349b846f0399a57489693274a477f3681ba363ce8a35d556c5a')
 
 package() {
     install -Dm0755 -t "$pkgdir/usr/bin/" "$srcdir/feroxbuster"
