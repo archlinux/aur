@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=akonadi-notes-git
-pkgver=5.18.40_r1014.g4dc5575
+pkgver=6.0.40_r1277.gdf62f5b
 pkgrel=1
 pkgdesc="Libraries and daemons to implement management of notes in Akonadi"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(LGPL)
-depends=(kmime-git)
-makedepends=(git extra-cmake-modules-git)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc ki18n-git kmime-git qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kdepim-git)
