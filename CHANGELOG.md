@@ -1,23 +1,7 @@
-jura now fully supports syntax highlighting in following programming languages:
+jura now also fully supports base TeX and base LaTeX
 
-C,
-C++,
-Python,
-Lua,
-Rust,
-Javascript,
-Typescript,
-C#,
-Java,
-GO,
-Swift,
+for jura to detect TeX files they need to have the .tex extension
 
-jura now also detects and partially highlights certain other filetypes, these include:
+for jura to detect LaTeX files they need to have the .ltx extension
 
-JSON,
-HTML,
-CSS,
-
-Any files that do not have syntax highlighting are not detected and will display "no filetype detected"
-
-**Full Changelog**: https://github.com/Nooberieno/jura/compare/2.3...2.4
+**Full Changelog**: https://github.com/Nooberieno/jura/compare/2.4...2.5
