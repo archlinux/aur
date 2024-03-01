@@ -1,7 +1,7 @@
 pkgbase = stm32cubeprog
 	pkgdesc = An all-in-one multi-OS software tool for programming STM32 products.
 	pkgver = 2.15.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://www.st.com/en/development-tools/stm32cubeprog.html
 	arch = x86_64
 	license = custom:SLA0048
@@ -17,6 +17,6 @@ pkgbase = stm32cubeprog
 	source = en.stm32cubeprg-lin-v2-15-0.zip::https://www.st.com/content/ccc/resource/technical/software/utility/group0/40/31/48/3d/b1/26/4a/7f/stm32cubeprg-lin-v2-15-0/files/stm32cubeprg-lin-v2-15-0.zip/jcr:content/translations/en.stm32cubeprg-lin-v2-15-0.zip
 	source = stm32cubeprog.xdotool
 	sha256sums = 3fe61e6920943e6faa9089f7326a3bab71665e0dae0475f831a8b5a0f58b7d22
-	sha256sums = 1c54ec39148735f16c8b06f75321a40805f27935b115384d211566d8e3f391a8
+	sha256sums = d3063a13de066cdd4e1a26f73f258584f264a924e8a8e47c40d284e4c47c0b8c
 
 pkgname = stm32cubeprog

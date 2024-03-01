@@ -19,7 +19,7 @@ mousemove 1456 992 click  1
 
 # Click ST Privacy and Terms of Use
 search --name "STM32CubeProgrammer Installation Wizard" windowmove --sync 960 540   windowfocus -sync
-mousemove 1122 665 click  1
+mousemove 1122 655 click  1
 
 # Click Next
 search --name "STM32CubeProgrammer Installation Wizard" windowmove --sync 960 540   windowfocus --sync
@@ -33,7 +33,7 @@ mousemove 1540 670 click  1
 type $1
 
 # Click Save
-mousemove 1472 842 click  1
+mousemove 1472 835 click  1
 
 # Click Next
 search --name "STM32CubeProgrammer Installation Wizard" windowmove --sync 960 540   windowfocus --sync 
@@ -48,7 +48,7 @@ mousemove 1322 806 click  1
 search --name "STM32CubeProgrammer Installation Wizard" windowmove --sync 960 540   windowfocus --sync 
 mousemove 1456 992 click  1 
 
-sleep 25
+sleep 45
 
 # Click Next
 search --name "STM32CubeProgrammer Installation Wizard" windowmove --sync 960 540   windowfocus --sync 

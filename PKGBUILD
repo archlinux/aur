@@ -9,7 +9,7 @@ pkgname=stm32cubeprog
 _pkgname="STM32CubeProgrammer"
 pkgver=2.15.0
 _pkg_file_name=en.stm32cubeprg-lin-v${pkgver//./-}.zip
-pkgrel=0
+pkgrel=1
 pkgdesc="An all-in-one multi-OS software tool for programming STM32 products."
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubeprog.html"
@@ -58,7 +58,7 @@ _pkg_main_name="${pkgname//prog/prg}-lin-v${pkgver//./-}"
 source=("en.${_pkg_main_name}.zip::$_download_path"
         "${pkgname}.xdotool")
 sha256sums=('3fe61e6920943e6faa9089f7326a3bab71665e0dae0475f831a8b5a0f58b7d22'
-            '1c54ec39148735f16c8b06f75321a40805f27935b115384d211566d8e3f391a8')
+            'd3063a13de066cdd4e1a26f73f258584f264a924e8a8e47c40d284e4c47c0b8c')
 
 prepare() {
   cat > ${pkgname}.xvfb <<END
@@ -104,11 +104,11 @@ package() {
   # doc
   for _doc in CLI_TREE.txt Readme.txt
   do
-    install -Dm644 ${pkgdir}/opt/${pkgname}/${_doc} -t ${pkgdir}/usr/share/doc/${pkgname}
+    install -Dm644 ${pkgdir}/opt/${pkgname}/doc/${_doc} -t ${pkgdir}/usr/share/doc/${pkgname}
   done
 
   # license
-  install -Dm644 ${pkgdir}/opt/${pkgname}/license.txt -t ${pkgdir}/usr/share/licenses/${pkgname}
+  install -Dm644 ${pkgdir}/opt/${pkgname}/doc/license.txt -t ${pkgdir}/usr/share/licenses/${pkgname}
 
   # desktop enrty
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/${pkgname}.desktop" <<END
