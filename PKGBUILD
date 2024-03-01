@@ -3,14 +3,14 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdesu-git
-pkgver=5.240.0_r554.g110143d
+pkgver=6.0.0_r628.g64c345d
 pkgrel=1
 pkgdesc='Integration with su for elevated privileges'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(kservice-git kpty-git)
-makedepends=(git extra-cmake-modules-git doxygen qt6-tools)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(gcc-libs glibc kconfig-git kcoreaddons-git ki18n-git kpty-git libx11 qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf6-git)
