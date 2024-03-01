@@ -3,14 +3,15 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=knotifications-git
-pkgver=5.240.0_r811.gd0655e7
+pkgver=6.0.0_r961.g18d70b9
 pkgrel=1
 pkgdesc='Abstraction for system notifications'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(libcanberra libdbusmenu-qt6 kwindowsystem-git kconfig-git kcoreaddons-git qt6-speech libxtst)
-makedepends=(git extra-cmake-modules-git qt6-tools doxygen)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(gcc-libs glibc kconfig-git libcanberra qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-declarative qt6-doc qt6-tools)
+optdepends=('qt6-declarative: QML bindings')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf6-git)
