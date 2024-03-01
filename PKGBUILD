@@ -3,7 +3,7 @@ pkgname=any-sync-gui
 _appname="Lan同步"
 pkgver=1.6.0
 _electronversion=25
-pkgrel=2
+pkgrel=3
 pkgdesc="一款支持在pc与pc或移动设备之间同步文本信息或文件的应用"
 arch=('any')
 url="https://github.com/easyhutu/any-sync-gui"
@@ -24,26 +24,28 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
-    gendesk -f -n -q --categories "Utility" --name "${_appname}" --exec "${pkgname} %U"
+    gendesk -f -n -q --categories="Utility" --name="${_appname}" --exec="${pkgname} %U"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
+    export npm_config_disturl=https://electronjs.org/headers
+    HOME="${srcdir}/.electron-gyp"
     cd "${srcdir}/${pkgname}.git/fe"
-    HOME="${srcdir}/.electron-gyp" npm install --force
+    npm install --force
     npm run build
     cd "${srcdir}/${pkgname}.git/electron_gui"
     sed "s|${_appname}|${pkgname%-bin}|g" -i package.json
     sed '24,27d' -i forge.config.js
-    HOME="${srcdir}/.electron-gyp" npm install --force
+    npm install --force
     npm run package
 }
 package() {
