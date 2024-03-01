@@ -1,6 +1,6 @@
 pkgbase = python-qualia-core
 	pkgdesc = End-to-end training, quantization and deployment framework for deep neural networks on microcontrollers.
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/LEAT-EDGE/qualia-core
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = python-qualia-core
 	optdepends = python-clearml: support for ClearML experiment tracking
 	optdepends = python-tensorboard: support for TensorBoard and ClearML experiment tracking
 	optdepends = python-pyserial: support for on-target evaluation over (virtual) serial port
-	source = git+https://github.com/leat-edge/qualia-core.git#tag=2.1.0
+	source = git+https://github.com/leat-edge/qualia-core.git#tag=2.2.0
 	md5sums = SKIP
 
 pkgname = python-qualia-core
