@@ -1,0 +1,25 @@
+pkgbase = android-x86-64-libpciaccess
+	pkgdesc = X11 PCI access library (android)
+	pkgver = 0.18
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/xorg/lib/libpciaccess
+	arch = any
+	license = LicenseRef-libpciaccess
+	makedepends = android-x86-64-xorg-util-macros
+	makedepends = android-meson
+	depends = android-x86-64-zlib
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org/releases/individual/lib/libpciaccess-0.18.tar.xz
+	source = https://xorg.freedesktop.org/releases/individual/lib/libpciaccess-0.18.tar.xz.sig
+	source = 0001-Set-linux-host.patch
+	source = 0002-Do-not-use-sys-io.patch
+	validpgpkeys = 4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E
+	md5sums = 54f48367e37666f9e0f12571d1ee3620
+	md5sums = SKIP
+	md5sums = c605afd4f4edd9b2e261ed66c24b5b69
+	md5sums = 5f8c7b710ac2dfeaa37c945ffd8bb88b
+
+pkgname = android-x86-64-libpciaccess
