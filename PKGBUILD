@@ -2,7 +2,7 @@
 pkgname=ih8rtcgui
 pkgver=0.0.7
 _electronversion=28
-pkgrel=2
+pkgrel=3
 pkgdesc="RTC Jazz (EWM) simple desktop application to manage/view workitems"
 arch=('any')
 url="https://github.com/kenny59/ih8rtcgui"
@@ -22,13 +22,13 @@ source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh")
 sha256sums=('SKIP'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
-        -e "s|@asar@|app|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname}.sh"
-    gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname} %U"
+    gendesk -q -f -n --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -38,7 +38,7 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    sed "s|--win|--linux AppImage|g" -i package.json
+    sed "s|--win|-l AppImage|g" -i package.json
     npm install
     npm run build
 }
