@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=boxbuddy
 _app_id=io.github.dvlv.boxbuddyrs
-pkgver=2.1.1
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="A Graphical Interface for Distrobox"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 checkdepends=('appstream-glib')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('f22cea8be341a9f1f24f2d57a9406d341e4dfbeeb52075845445630f46c8542c')
+sha256sums=('abfdf700d4372a6fc8f0d52941be8a4823a2bc78c5a9b2c35d09e6912ee4c5bb')
 
 prepare() {
   cd "BoxBuddyRS-$pkgver"
@@ -44,7 +44,7 @@ package() {
   install -Dm644 "icons/${_app_id}.svg" -t \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
 
-  for lang in de_DE it_IT pt_BR ru_RU uk_UA; do
+  for lang in de_DE es_ES it_IT pt_BR ru_RU uk_UA; do
     install -Dm644 "po/${lang}/LC_MESSAGES/${pkgname}rs.mo" -t \
       "$pkgdir/usr/share/locale/${lang}/LC_MESSAGES/"
   done
