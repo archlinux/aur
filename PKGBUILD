@@ -7,8 +7,9 @@
 # Contributer: auk
 pkgname=hyper-git
 _pkgname=Hyper
-pkgver=4.0.0.canary.5.r298.g2207fa95
+pkgver=4.0.0.canary.5.r359.g56617230
 _electronversion=22
+_nodeversion=18
 pkgrel=1
 pkgdesc="A terminal built on web technologies"
 arch=('any')
@@ -24,13 +25,13 @@ depends=(
     'alsa-lib'
     'nspr'
     'nss'
+    'python>=3.8'
 )
 makedepends=(
     'git'
     'npm'
     'yarn'
     'nvm'
-    'python>=3.8'
     'libarchive'
     'libicns'
 )
@@ -40,29 +41,29 @@ source=(
 sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    printf "%s" "$(git describe --tags | sed 's/\w\+\///g;s/\([^-]*-g\)/r\1/;s/-/./g;s/v//g')"
+    git describe --tags | sed 's/\w\+\///g;s/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install 18
-    nvm use 18
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
 }
 build() {
     _ensure_local_nvm
-    gendesk -q -f -n --categories "System" --name "${_pkgname}" --exec "${pkgname%-git} --no-sandbox %U"
+    gendesk -q -f -n --categories="System" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    sed 's/\ \&\& husky install//g' -i package.json
-    sed -e '/"deb",/d' -e '/"rpm",/d' -e '/"snap",/d' -e '/"pacman"/d' -e 's|"AppImage",|"AppImage"|g' -i electron-builder.json
     install -Dm755 -d "${srcdir}/${pkgname//-/.}/node_modules/electron/dist"
     yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn run dist
+    yarn run build
+    npx electron-builder -l AppImage
     cd "${srcdir}/${pkgname//-/.}/dist/.icon-set"
     cp icon_16x16.png icon_16.png
     cp icon_48x48.png icon_48.png
