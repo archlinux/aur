@@ -3,15 +3,15 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kruler-git
-pkgver=21.11.70_r698.g91ab1d1
+pkgver=24.04.70_r961.gcf5eb6b
 pkgrel=1
 pkgdesc='Screen Ruler'
 url='https://apps.kde.org/kruler/'
-arch=($CARCH)
-license=(GPL LGPL FDL)
-groups=(kde-applications-git kde-graphics-git)
-depends=(knotifications-git kxmlgui-git hicolor-icon-theme)
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(gcc-libs glibc kconfig-git kconfigwidgets-git kcoreaddons-git ki18n-git knotifications-git kstatusnotifieritem-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git qt6-base)
 makedepends=(git extra-cmake-modules-git kdoctools-git)
+arch=($CARCH)
+groups=(kde-applications-git kde-graphics-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
