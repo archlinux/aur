@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
-
+#a
 pkgname=dragonflydb
-pkgver=1.11.0
+pkgver=1.14.6
 pkgrel=1
 pkgdesc='A fast in-memory store that is fully compatible with Redis and Memcached'
 arch=('x86_64')
@@ -13,21 +13,16 @@ depends=(
   'openssl'
   'boost-libs'
   'libunwind'
-  'libxml2'
-  'zstd'
 )
 makedepends=(
   'git'
   'cmake'
   'ninja'
-  'python'
   'boost'
 )
 optdepends=('logrotate')
-options=('!buildflags')
-_commit='c6f8f3882a276f6016042016c94401242d9c5365'
 source=(
-  "$pkgname::git+https://github.com/dragonflydb/dragonfly#commit=$_commit"
+  "$pkgname::git+https://github.com/dragonflydb/dragonfly#tag=v$pkgver"
   'github.com-romage-helio::git+https://github.com/romange/helio'
   'sysusers.conf'
   'tmpfiles.conf'
@@ -39,13 +34,6 @@ b2sums=('SKIP'
         'ed965facc221fa66c8803b6b7ddc91151ebbb857eb77f934a700f02940f8294d6c8d075b76eba8fccc550ba7054ec26dd7599fef7d7b608e5e76be7a138ae279'
         'ccb72430294479155b716e0aef2a6a85c0100ecd8560735af32211632363a3ef65c35f13be8ab57b5c363577a92e893213b81aed213091c280d9d4cda13c3554')
 
-pkgver() {
-  cd "$pkgname"
-
-  git describe --tags | sed 's/^v//'
-}
-
-# TODO unbundle gperf, mimalloc, xxhash, uring.
 prepare() {
   cd "$pkgname"
 
