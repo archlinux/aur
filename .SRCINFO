@@ -1,0 +1,24 @@
+pkgbase = android-armv7a-eabi-pciutils
+	pkgdesc = PCI bus configuration space access library and tools (android)
+	pkgver = 3.11.1
+	pkgrel = 1
+	url = https://mj.ucw.cz/sw/pciutils/
+	arch = any
+	license = GPL2
+	depends = android-armv7a-eabi-hwdata
+	depends = android-armv7a-eabi-kmod
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://mj.ucw.cz/download/linux/pci/pciutils-3.11.1.tar.gz
+	source = https://mj.ucw.cz/download/linux/pci/pciutils-3.11.1.tar.gz.sign
+	source = 0001-Do-not-use-lresolv.patch
+	source = 0002-Disable-ecam.patch
+	validpgpkeys = C466A56CADA981F4297D20C31F3D0761D9B65F0B
+	sha256sums = 1904864ce5b0272d0a2e42e72ceac9e8810d1898480567f36b70642f8205fbfd
+	sha256sums = SKIP
+	sha256sums = 14a963d11acb299db114187768bdf53ee1cb39f1044a0a2aa5c5a90ae58e42a3
+	sha256sums = bff4d9e509ceba0cdde7a20e83afa5303f27cd93705c54867c6c073fc153aa87
+
+pkgname = android-armv7a-eabi-pciutils
