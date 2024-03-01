@@ -3,14 +3,14 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=ktnef-git
-pkgver=5.18.40_r655.ga27e7de
+pkgver=6.0.40_r928.gfc270a7
 pkgrel=1
 pkgdesc="API for handling TNEF data"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(LGPL)
-depends=(kcalutils-git kcontacts-git)
-makedepends=(git extra-cmake-modules-git)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc kcalendarcore-git kcalutils-git kcontacts-git ki18n-git qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kdepim-git)
