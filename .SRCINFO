@@ -1,7 +1,7 @@
 pkgbase = kwindowsystem-git
 	pkgdesc = Access to the windowing system
 	pkgver = 6.0.0_r1009.g827ff06
-	pkgrel = 2
+	pkgrel = 3
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
 	groups = kf6-git
@@ -14,7 +14,7 @@ pkgbase = kwindowsystem-git
 	makedepends = qt6-declarative
 	makedepends = qt6-doc
 	makedepends = qt6-tools
-	makedepends = wayland-protocols-git
+	makedepends = wayland-protocols
 	depends = gcc-libs
 	depends = glibc
 	depends = libx11
