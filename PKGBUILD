@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggside
-_pkgver=0.3.0
+_pkgver=0.3.1
 pkgname=r-${_pkgname,,}
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Side Grammar Graphics'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-viridis
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d71430d88bfc2d8db912d069e20d330bf40515a89835ef2b9d3692127992a657')
+sha256sums=('94156927e9b91f61223491d86999fafc80f17e08f2c23c96fb782505ad8666e4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
