@@ -3,17 +3,17 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kitemmodels-git
-pkgver=5.240.0_r658.g1bda64a
+pkgver=6.0.0_r703.g9020498
 pkgrel=1
 pkgdesc='Models for Qt Model/View system'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(qt6-base)
-makedepends=(git extra-cmake-modules-git python-pyqt6 clang doxygen qt6-tools sip qt6-declarative)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(gcc-libs glibc qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-declarative qt6-doc qt6-tools)
+optdepends=('qt6-declarative: QML bindings')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('python-pyqt6: for the Python bindings' 'qt6-declarative: QML bindings')
 groups=(kf6-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
