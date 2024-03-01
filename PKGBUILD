@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=libkleo-git
-pkgver=5.18.40_r914.g9f79f52
+pkgver=6.0.46_r1992.gfaca30cc
 pkgrel=1
 pkgdesc="KDE PIM cryptographic library"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(LGPL)
-depends=(qgpgme kitemmodels-git kpimtextedit-git)
-makedepends=(git extra-cmake-modules-git boost)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc gpgme kcolorscheme-git kcodecs-git kcompletion-git kconfig-git kcoreaddons-git ki18n-git kitemmodels-git ktextaddons-git kwidgetsaddons-git qgpgme-qt6 qt6-base)
+makedepends=(git boost doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kdepim-git)
