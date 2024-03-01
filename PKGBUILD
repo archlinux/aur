@@ -3,7 +3,7 @@ pkgname=yt-music-player
 _pkgname="YouTube Music"
 pkgver=2.0.0
 _electronversion=15
-pkgrel=2
+pkgrel=3
 pkgdesc="YouTube Music player that runs in your system tray/menu"
 arch=('any')
 url="https://github.com/TBR-Development/YT-Music-Player"
@@ -24,13 +24,13 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
-        -e "s|@appasar@|app|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname}.sh"
-    gendesk -q -f -n --categories "AudioVideo" --name "${_pkgname}" --exec "${pkgname} %U"
+    gendesk -q -f -n --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
