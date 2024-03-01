@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=grantleetheme-git
-pkgver=5.18.40_r332.gc2d1dd4
+pkgver=6.0.40_r615.g8660e74
 pkgrel=1
 pkgdesc="Library for Grantlee theming support"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(LGPL)
-depends=(grantlee knewstuff-git)
-makedepends=(git extra-cmake-modules-git)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc kcolorscheme-git kconfig-git kcoreaddons-git kguiaddons-git ki18n-git kiconthemes-git knewstuff-git ktexttemplate-git kwidgetsaddons-git kxmlgui-git qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kdepim-git)
