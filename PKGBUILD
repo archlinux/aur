@@ -1,7 +1,7 @@
 # Contributor: anon at sansorgan.es
 # Contributor: Yingchang Liu
 pkgname=madagascar-git
-pkgver=r15660.e9eaa7b64
+pkgver=r15675.c0a0b1a5d
 pkgrel=1
 pkgdesc="Multidimensional data analysis and reproducible computational experiments."
 url="https://www.reproducibility.org/wiki/Main_Page"
@@ -32,6 +32,7 @@ build() {
   
   ./configure API=c++,f90 --prefix=${RSFROOT}
   make
+  mv ./user/.hwang ./user/hwang
 }
 
 package() {

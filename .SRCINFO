@@ -1,6 +1,6 @@
 pkgbase = madagascar-git
 	pkgdesc = Multidimensional data analysis and reproducible computational experiments.
-	pkgver = r15660.e9eaa7b64
+	pkgver = r15675.c0a0b1a5d
 	pkgrel = 1
 	url = https://www.reproducibility.org/wiki/Main_Page
 	arch = i686
