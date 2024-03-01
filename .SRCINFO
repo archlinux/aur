@@ -1,6 +1,6 @@
 pkgbase = python-qualia-codegen-core
 	pkgdesc = Convert a pre-trained Keras .h5 or PyTorch model to C code for inference.
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/LEAT-EDGE/qualia-codegen-core
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-qualia-codegen-core
 	optdepends = python-keras: support for code generation from Keras models
 	optdepends = python-pytorch: support for code generation from PyTorch models
 	optdepends = python-graphviz: plot model graph
-	source = git+https://github.com/leat-edge/qualia-codegen-core.git#tag=2.1.0
+	source = git+https://github.com/leat-edge/qualia-codegen-core.git#tag=2.2.0
 	md5sums = SKIP
 
 pkgname = python-qualia-codegen-core

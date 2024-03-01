@@ -1,7 +1,7 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=python-qualia-codegen-core
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Convert a pre-trained Keras .h5 or PyTorch model to C code for inference."
 arch=('any')
