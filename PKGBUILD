@@ -2,8 +2,8 @@
 # Contributor: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 
 pkgname=firefox-extension-localcdn
-pkgver=2.6.63
-_commit=e311d0c10cda337584de83fa65638b722acb0fd5
+pkgver=2.6.64
+_commit=bf1a6757e65758778e6ea93ff44ced32e91800ae
 pkgrel=1
 pkgdesc='LocalCDN addon for Firefox'
 arch=('any')
@@ -17,6 +17,9 @@ validpgpkeys=('3F59043BE267E1B1177688AC8F6DE3D614FCFD7A') # nobody <nfo@localcdn
 
 package() {
   cd LocalCDN
+  # Prevent release notes from being opened during update/installation
+  # sed -i '/main\._showReleaseNotes/d' core/main.js
+
   install -d "$pkgdir"/usr/lib/firefox/browser/extensions
   zip -r \
     "$pkgdir/usr/lib/firefox/browser/extensions/{b86e4813-687a-43e6-ab65-0bde4ab75758}.xpi" \
