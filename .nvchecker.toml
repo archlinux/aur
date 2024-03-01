@@ -1,2 +1,3 @@
+[python-pynamodb]
 source = "pypi"
 pypi = "pynamodb"
