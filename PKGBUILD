@@ -3,17 +3,17 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=bluez-qt-git
-pkgver=5.240.0_r742.g6bffe17
+pkgver=6.0.0_r779.gea5e7ce
 pkgrel=1
 pkgdesc='Qt wrapper for Bluez 5 DBus API'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(GPL2)
-depends=(qt6-base bluez)
-makedepends=(git extra-cmake-modules-git doxygen qt6-tools qt6-declarative)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(bluez gcc-libs glibc qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-declarative qt6-doc qt6-tools)
+optdepends=('qt6-declarative: QML bindings')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('qt6-declarative: QML bindings')
 groups=(kf6-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
