@@ -2,17 +2,17 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=akonadi-import-wizard-git
-pkgver=23.07.40_r1935.gd61f2ee
+pkgver=24.04.40_r2088.g00bde84
 pkgrel=1
 pkgdesc="Import data from other mail clients to KMail"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(GPL2)
-depends=(mailcommon-git qt6-5compat)
-makedepends=(git extra-cmake-modules-git boost kdoctools-git)
+license=(GPL-2.0-or-later)
+depends=(gcc-libs glibc kconfig-git kcontacts-git kcoreaddons-git kcrash-git kdbusaddons-git ki18n-git kidentitymanagement-git kmailtransport-git kwidgetsaddons-git kxmlgui-git libakonadi-git mailcommon-git mailimporter-git messagelib-git pimcommon-git qt6-base qtkeychain-qt6)
+makedepends=(git extra-cmake-modules-git kdoctools-git)
+optdepends=('kdepim-addons-git: additional import plugins')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('kdepim-addons-git: additional import plugins')
 groups=(kdepim-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
