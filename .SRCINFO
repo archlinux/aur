@@ -17,7 +17,7 @@ pkgbase = ffdiaporama
 	depends = exiv2
 	depends = taglib
         source = patchfile.patch
-        source = cBaseMediaFile.cpp.patch
+        source = exiv2_0-28_fix.patch
 	source = http://download.tuxfamily.org/ffdiaporama/Packages/Stable/ffdiaporama_bin_2.1.2014.0209.tar.gz
 	md5sums = f9f46277153cf49f6947973778516adb
 

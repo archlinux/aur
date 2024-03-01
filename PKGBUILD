@@ -18,7 +18,7 @@ makedepends=(
 )
 source=('http://download.tuxfamily.org/ffdiaporama/Packages/Stable/ffdiaporama_bin_2.1.2014.0209.tar.gz'
         'patchfile.patch'
-        'cBaseMediaFile.cpp.patch'
+        'exiv2_0-28_fix.patch'
         )
 md5sums=('f9f46277153cf49f6947973778516adb'
          '6269400e6c9805f57ddb0202035cc7c7'
@@ -31,7 +31,7 @@ prepare() {
   #cd "$pkgname-pkgver"
   cd "$_pkgdir"
   patch --forward --strip=1 --input="${srcdir}/patchfile.patch"
-  patch --forward --strip=1 --input="${srcdir}/cBaseMediaFile.cpp.patch"
+  patch --forward --strip=1 --input="${srcdir}/exiv2_0-28_fix.patch"
   #patch ${srcdir}/ffDiaporama/src/ffDiaporama/wgt_QMultimediaBrowser/QCustomFolderTable.cpp ${startdir}/patchfile.patch
 }
 
