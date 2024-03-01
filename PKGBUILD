@@ -3,14 +3,14 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kbookmarks-git
-pkgver=5.240.0_r511.g563e17a
+pkgver=6.0.0_r648.g47a3552
 pkgrel=1
 pkgdesc='Support for bookmarks and the XBEL format'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(kxmlgui-git)
-makedepends=(git extra-cmake-modules-git qt6-tools doxygen)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(gcc-libs glibc kconfig-git kconfigwidgets-git kcoreaddons-git kwidgetsaddons-git qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf6-git)
