@@ -2,7 +2,7 @@
 pkgname=beam-wallet-bin
 _pkgname="Beam-Wallet"
 pkgver=7.5.13840.5763
-pkgrel=1
+pkgrel=2
 pkgdesc="Beam Desktop Wallet"
 arch=('x86_64')
 url="https://beam.mw/"
@@ -18,7 +18,7 @@ depends=(
 	'nss'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 options=('!strip')
 source=(
