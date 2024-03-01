@@ -12,7 +12,7 @@ Java,
 GO,
 Swift,
 
-jura now also support detects and partially highlights certain other filetypes, these include:
+jura now also detects and partially highlights certain other filetypes, these include:
 
 JSON,
 HTML,
