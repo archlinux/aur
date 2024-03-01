@@ -1,4 +1,4 @@
-From dcec83d36c685389b9822a5977999d6946810a07 Mon Sep 17 00:00:00 2001
+From 6a10db3d678b8e4aa93e2556c24be0db124bc5fd Mon Sep 17 00:00:00 2001
 From: Aviana Cruz <gwencroft@proton.me>
 Date: Sun, 6 Nov 2022 13:33:14 +0800
 Subject: [PATCH 2/2] Cleanup
@@ -188,10 +188,10 @@ index f18b19685..000000000
 -    private static final String APP_KEY = "";
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
-index 5a4fe371d..399625b11 100644
+index 9975f47d2..b9a5753ad 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
-@@ -386,15 +386,6 @@ public final class Controllers {
+@@ -385,15 +385,6 @@ public final class Controllers {
  
      public static void onHyperlinkAction(String href) {
          if (href.startsWith("hmcl://")) {
@@ -208,7 +208,7 @@ index 5a4fe371d..399625b11 100644
              FXUtils.openLink(href);
          }
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/CrashWindow.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/CrashWindow.java
-index cb8936947..8f4b2b880 100644
+index a3f85c619..098536408 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/CrashWindow.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/CrashWindow.java
 @@ -28,7 +28,6 @@ import javafx.scene.layout.StackPane;
@@ -217,9 +217,9 @@ index cb8936947..8f4b2b880 100644
  import org.jackhuang.hmcl.countly.CrashReport;
 -import org.jackhuang.hmcl.upgrade.UpdateChecker;
  
- import static org.jackhuang.hmcl.ui.FXUtils.newBuiltinImage;
  import static org.jackhuang.hmcl.util.i18n.I18n.i18n;
-@@ -42,8 +41,6 @@ public class CrashWindow extends Stage {
+ 
+@@ -41,8 +40,6 @@ public class CrashWindow extends Stage {
          Label lblCrash = new Label();
          if (report.getThrowable() instanceof InternalError)
              lblCrash.setText(i18n("launcher.crash.java_internal_error"));
