@@ -1,23 +1,25 @@
 pkgbase = cockroachdb-bin
 	pkgdesc = Cloud-native, distributed SQL database
-	pkgver = 23.2.1
+	pkgver = 23.2.2
 	pkgrel = 1
 	url = https://www.cockroachlabs.com
 	arch = x86_64
-	license = Apache
-	license = BSL
-	license = CCL
+	license = Apache-2.0
+	license = BUSL-1.1
+	license = RefLicense-CCL
 	provides = cockroachdb
-	conflicts = cockroachdb=23.2.1
+	conflicts = cockroachdb=23.2.2
 	backup = etc/default/cockroach
-	source = cockroachdb-23.2.1.tar.gz::https://binaries.cockroachdb.com/cockroach-v23.2.1.linux-amd64.tgz
-	source = LICENSE::https://raw.githubusercontent.com/cockroachdb/cockroach/v23.2.1/LICENSE
+	source = cockroachdb-23.2.2.tar.gz::https://binaries.cockroachdb.com/cockroach-v23.2.2.linux-amd64.tgz
+	source = LICENSE-23.2.2::https://github.com/cockroachdb/cockroach/raw/v23.2.2/LICENSE
+	source = LICENSE.CCL-23.2.2::https://github.com/cockroachdb/cockroach/raw/v23.2.2/licenses/CCL.txt
 	source = cockroach.service
 	source = cockroach.default
 	source = cockroach.sysusers
 	source = cockroach.tmpfiles
-	sha256sums = 258fb9ba5d7f8e6fac6c972f3bf3010f8a5c39e93aea89ae195e4ed82ffd600a
-	sha256sums = 8a2fba9d26592ff3538f44c96d1b894ef44649058b4d04f3fda49518a9c4ae11
+	sha256sums = bf58a5bccca741d455209a01c530f26148de303ce3e388c59285bca9665a95b5
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = 6c336d30983d6295995823a134e3cc85a06ef9418339b53cf6f375df816bea51
 	sha256sums = 55f380f5cb201c6afeafbf1a6fb5a6400dbffa0edc134d30960d1d04e3d19ef2
 	sha256sums = 8be2f52529135d8d173bba130e000a187bbadc869ac2c603a4714af435840821

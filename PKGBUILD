@@ -6,16 +6,17 @@
 # Contributor: Marcel O'Neil <marcel@marceloneil.com>
 
 ## Useful URLs:
+# https://github.com/cockroachdb/cockroach
 # https://www.cockroachlabs.com/docs/releases/
 # https://www.cockroachlabs.com/docs/stable/install-cockroachdb-linux.html
 
 _pkgname=cockroachdb
 pkgname="$_pkgname-bin"
-pkgver=23.2.1
+pkgver=23.2.2
 pkgrel=1
 pkgdesc="Cloud-native, distributed SQL database"
 url='https://www.cockroachlabs.com'
-license=('Apache' 'BSL' 'CCL')
+license=('Apache-2.0' 'BUSL-1.1' 'RefLicense-CCL')
 arch=('x86_64')
 
 conflicts=("$_pkgname=${pkgver}")
@@ -24,17 +25,20 @@ provides=("$_pkgname")
 backup=("etc/default/cockroach")
 
 _pkgsrc="cockroach-v$pkgver.linux-amd64"
+_pkgsrc_source="cockroach-$pkgver"
 source=(
   "$_pkgname-$pkgver.tar.gz"::"https://binaries.cockroachdb.com/$_pkgsrc.tgz"
-  'LICENSE'::"https://raw.githubusercontent.com/cockroachdb/cockroach/v${pkgver}/LICENSE"
+  "LICENSE-$pkgver"::"https://github.com/cockroachdb/cockroach/raw/v$pkgver/LICENSE"
+  "LICENSE.CCL-$pkgver"::"https://github.com/cockroachdb/cockroach/raw/v$pkgver/licenses/CCL.txt"  
   'cockroach.service'
   'cockroach.default'
   'cockroach.sysusers'
   'cockroach.tmpfiles'
 )
 sha256sums=(
-  '258fb9ba5d7f8e6fac6c972f3bf3010f8a5c39e93aea89ae195e4ed82ffd600a'
-  '8a2fba9d26592ff3538f44c96d1b894ef44649058b4d04f3fda49518a9c4ae11'
+  'bf58a5bccca741d455209a01c530f26148de303ce3e388c59285bca9665a95b5'
+  'SKIP'
+  'SKIP'
   '6c336d30983d6295995823a134e3cc85a06ef9418339b53cf6f375df816bea51'
   '55f380f5cb201c6afeafbf1a6fb5a6400dbffa0edc134d30960d1d04e3d19ef2'
   '8be2f52529135d8d173bba130e000a187bbadc869ac2c603a4714af435840821'
@@ -84,5 +88,6 @@ package() {
   install -Dm644 cockroach.zsh  "$pkgdir/usr/share/zsh/site-functions/_cockroach"
 
   # licenses
-  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "LICENSE.CCL-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.CCL"
 }
