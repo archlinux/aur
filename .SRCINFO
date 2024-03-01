@@ -7,7 +7,7 @@ pkgbase = bitbake-language-server
 	license = GPL3
 	makedepends = python-installer
 	depends = python-pygls
-	depends = python-oelint-parser
+	depends = oelint-adv>=4.4.1
 	source = https://files.pythonhosted.org/packages/py3/b/bitbake_language_server/bitbake_language_server-0.0.8-py3-none-any.whl
 	sha256sums = 954d2f8894bde825ace9490be96722d42f49df2a5aacc370ba1fcdf786ea1cc8
 
