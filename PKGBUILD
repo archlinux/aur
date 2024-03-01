@@ -3,33 +3,30 @@ pkgname=desktop-notifier-bin
 _appname=Desktop.Notifier
 pkgver=0.0.8
 _electronversion=23
-pkgrel=8
+pkgrel=9
 pkgdesc="Application which sent a notifier when data change about a link"
 arch=('x86_64')
 url="https://github.com/maxgfr/desktop-notifier"
-license=('custom')
+license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
-    'dbus-glib'
-    'libdbusmenu-glib'
-    'gtk2'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_appname}-0.0.7.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('bcde59d6d7501d990adfe88f08c9794153df98177da073b80442fab2c8d13abe'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
