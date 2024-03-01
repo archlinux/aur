@@ -3,14 +3,14 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcmutils-git
-pkgver=5.240.0_r731.g029d52a
+pkgver=6.0.0_r1096.g453e4f4b
 pkgrel=1
 pkgdesc='Utilities for interacting with KCModules'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(kdeclarative-git)
-makedepends=(git extra-cmake-modules-git doxygen qt6-tools)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(gcc-libs glibc kconfig-git kconfigwidgets-git kcoreaddons-git kguiaddons-git ki18n-git kio-git kirigami-git kitemviews-git kservice-git kwidgetsaddons-git kxmlgui-git qt6-base qt6-declarative)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf6-git)
