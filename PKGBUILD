@@ -3,20 +3,16 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kio-extras-git
-pkgver=23.07.70_r7575.g0680a0462
+pkgver=24.04.70_r7997.g328deb968
 pkgrel=1
 pkgdesc="Additional components to increase the functionality of KIO"
 arch=($CARCH)
 url='https://www.kde.org/applications/internet/'
-license=(LGPL)
-depends=(kio-git kdnssd-git libssh smbclient libmtp phonon-qt6-git syntax-highlighting-git kdsoap-ws-discovery-client-git libxcursor)
-makedepends=(git extra-cmake-modules-git kdoctools-git gperf taglib libappimage openexr kactivities-stats-git)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc karchive-git kcmutils-git kconfig-git kcoreaddons-git kdbusaddons-git kdnssd-git kdsoap-qt6-git kdsoap-ws-discovery-client ki18n-git kio-git kservice-git ktextwidgets-git kwidgetsaddons-git libimobiledevice libkexiv2-git libmtp libplist libssh libxcursor phonon-qt6-git plasma-activities-git qt6-5compat qt6-base qt6-svg smbclient solid-git syntax-highlighting-git)
+makedepends=(git extra-cmake-modules-git gperf kdoctools-git libappimage openexr plasma-activities-stats-git qcoro-qt6 taglib)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('qt6-imageformats: thumbnails for additional image formats' 'perl: info kioslave'
-            'kimageformats-git: thumbnails for additional image formats' 'taglib: audio file thumbnails'
-            'libappimage: AppImage thumbnails' 'icoutils: Windows executable thumbnails'
-            'openexr: EXR format thumbnails' 'kactivities-stats-git: recently used kioslave')
 groups=(kde-applications-git kde-network-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
