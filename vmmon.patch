@@ -1,6 +1,6 @@
 --- a/vmmon/Makefile
 +++ b/vmmon/Makefile
-@@ -43,7 +43,11 @@ INCLUDE      += -I$(SRCROOT)/shared
+@@ -43,7 +43,11 @@
  endif
  
  
@@ -963,7 +963,25 @@
  {
     Vmx86_GetkHzEstimate(&linuxState.startTime);
  }
-@@ -287,9 +243,13 @@ init_module(void)
+@@ -253,7 +209,7 @@
+ /*
+  *----------------------------------------------------------------------
+  *
+- * init_module --
++ * LinuxDriverInit --
+  *
+  *      linux module entry point. Called by /sbin/insmod command
+  *
+@@ -266,7 +222,7 @@
+  */
+ 
+ int
+-init_module(void)
++LinuxDriverInit(void)
+ {
+    int retval;
+ 
+@@ -287,9 +243,13 @@
      */
  
     init_waitqueue_head(&linuxState.pollQueue);
@@ -978,7 +996,7 @@
  
     linuxState.fastClockThread = NULL;
     linuxState.fastClockFile = NULL;
-@@ -310,14 +270,8 @@ init_module(void)
+@@ -310,14 +270,8 @@
     memset(&vmuser_fops, 0, sizeof vmuser_fops);
     vmuser_fops.owner = THIS_MODULE;
     vmuser_fops.poll = LinuxDriverPoll;
@@ -993,7 +1011,7 @@
     vmuser_fops.open = LinuxDriver_Open;
     vmuser_fops.release = LinuxDriver_Close;
     vmuser_fops.mmap = LinuxDriverMmap;
-@@ -365,9 +319,13 @@ init_module(void)
+@@ -365,9 +319,13 @@
      */
  
     Vmx86_ReadTSCAndUptime(&linuxState.startTime);
@@ -1007,6 +1025,24 @@
 +#endif
     tscTimer.expires = jiffies + 4 * HZ;
     add_timer(&tscTimer);
+ 
+@@ -381,7 +339,7 @@
+ /*
+  *----------------------------------------------------------------------
+  *
+- * cleanup_module --
++ * LinuxDriverExit --
+  *
+  *      Called by /sbin/rmmod
+  *
+@@ -390,7 +348,7 @@
+  */
+ 
+ void
+-cleanup_module(void)
++LinuxDriverExit(void)
+ {
+    unregister_ioctl32_handlers();
  
 @@ -764,7 +722,6 @@ void
  LinuxDriverWakeUp(Bool selective)  // IN:
@@ -1149,6 +1185,12 @@
  
  
  /*
+@@ -2198,3 +2162,5 @@
+  * by default (i.e., neither mkinitrd nor modprobe will accept it).
+  */
+ MODULE_INFO(supported, "external");
++module_init(LinuxDriverInit);
++module_exit(LinuxDriverExit);
 --- a/vmmon/linux/hostif.c
 +++ b/vmmon/linux/hostif.c
 @@ -44,10 +44,6 @@
@@ -1592,7 +1634,7 @@
     int res;
     int signalFD = args[1];
     uint64 value = 1;  // make an eventfd happy should it be there
-@@ -2607,22 +2709,32 @@ HostIF_SemaphoreSignal(uint64 *args)  //
+@@ -2607,22 +2709,36 @@ HostIF_SemaphoreSignal(uint64 *args)  //
        return MX_WAITERROR;
     }
  
@@ -1604,7 +1646,11 @@
 +    */
 +   eventfd = eventfd_ctx_fileget(file);
 +   if (!IS_ERR(eventfd)) {
++#if COMPAT_LINUX_VERSION_CHECK_LT(6, 8, 0)
 +      eventfd_signal(eventfd, 1);
++#else
++      eventfd_signal(eventfd);
++#endif
 +      fput(file);
 +      return MX_WAITNORMAL;
 +   }
@@ -1973,3 +2019,91 @@ index 3f43c62..7eaa49a 100644
 +#endif /* COMPAT_LINUX_VERSION_CHECK_LT(6, 5, 0) */
 +
  #endif /* __PGTBL_H__ */
+From 218fec600d0af1c5e9f4af819b216fb9c69bb838 Mon Sep 17 00:00:00 2001
+From: Michal Kubecek <mkubecek@suse.cz>
+Date: Fri, 12 Jan 2024 08:30:33 +0100
+Subject: [PATCH] modules: fix build with -Wmissing-prototypes
+
+Mainline commit 0fcb70851fbf ("Makefile.extrawarn: turn on
+missing-prototypes globally") in 6.8-rc1 enables -Wmissing-prototypes
+globally, revealing a lot of unclean code and also some actual problems.
+This is also the case in vmmon and vmnet modules.
+
+Most of them are addressed by making functions used only within one file
+static. The missing prototype of random_get_entropy_fallback() is handled
+by including <linux/timex.h> rather than <asm/timex.h>.
+
+Finally, there are four functions in vmnet module which are actually used
+in multiple files but instead of proper declarations, their prototype is
+duplicated in vmnet-only/driver.c, risking that the two copies won't match
+(which actually happened in one case). The cleanest solution would be
+creating separate header files for them (bridge.h, netif.h, userif.h and
+vnetUserListener.h) and including them in the respective source file and
+driver.c. As the developers already handle similar cases by simply putting
+the declarations into vnetInt.h, let us do the same to keep things simple.
+---
+ vmmon-only/common/vmx86.c |  2 +-
+ vmmon-only/linux/driver.c |  4 ++--
+ vmmon-only/linux/hostif.c |  6 +++---
+ vmnet-only/bridge.c       |  2 +-
+ vmnet-only/driver.c       | 16 ++--------------
+ vmnet-only/vnetInt.h      |  7 +++++++
+ 6 files changed, 16 insertions(+), 21 deletions(-)
+
+diff --git a/vmmon-only/common/vmx86.c b/vmmon-only/common/vmx86.c
+index 156e94a9..c5ed3e25 100644
+--- a/vmmon-only/common/vmx86.c
++++ b/vmmon-only/common/vmx86.c
+@@ -58,7 +58,7 @@
+ #include "x86svm.h"
+ #include "x86cpuid_asm.h"
+ #if defined(linux)
+-#include <asm/timex.h>
++#include <linux/timex.h>
+ #endif
+ #include "x86perfctr.h"
+ 
+diff --git a/vmmon-only/linux/driver.c b/vmmon-only/linux/driver.c
+index 9c855869..32e9c5ea 100644
+--- a/vmmon-only/linux/driver.c
++++ b/vmmon-only/linux/driver.c
+@@ -221,7 +221,7 @@ LinuxDriverInitTSCkHz(void)
+  *----------------------------------------------------------------------
+  */
+ 
+-int
++static int
+ LinuxDriverInit(void)
+ {
+    int retval;
+@@ -347,7 +347,7 @@ LinuxDriverInit(void)
+  *----------------------------------------------------------------------
+  */
+ 
+-void
++static void
+ LinuxDriverExit(void)
+ {
+    unregister_ioctl32_handlers();
+diff --git a/vmmon-only/linux/hostif.c b/vmmon-only/linux/hostif.c
+index 3bce32c3..b83e21d3 100644
+--- a/vmmon-only/linux/hostif.c
++++ b/vmmon-only/linux/hostif.c
+@@ -3110,7 +3110,7 @@ HostIF_ReadPage(VMDriver *vm,        // IN: The VM instance
+  *----------------------------------------------------------------------
+  */
+ 
+-int
++static int
+ HostIFWritePageWork(MPN64 mpn,            // MPN of the page
+                     VA64 addr,            // data to write to the page
+                     Bool kernelBuffer)    // is the buffer in kernel space?
+@@ -3416,7 +3416,7 @@ HostIFDoIoctl(struct file *filp,
+  *----------------------------------------------------------------------
+  */
+ 
+-int
++static int
+ HostIFStartTimer(Bool rateChanged,  //IN: Did rate change? 
+ 		 unsigned int rate, //IN: current clock rate
+                  struct file *filp) //IN: /dev/rtc descriptor
