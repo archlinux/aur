@@ -15,7 +15,7 @@ options=('strip' '!libtool' '!debug' '!lto' 'buildflags')
 
 prepare()
 {
-    gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc"
+    gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name "PotatoAlert" --exec "PotatoAlert"
 }
 
 build()
