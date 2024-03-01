@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kaddressbook-git
-pkgver=21.11.40_r6003.gdec73264
-pkgrel=2
+pkgver=24.04.40_r6662.g8a848679
+pkgrel=1
 pkgdesc="KDE contact manager"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(GPL2)
-depends=(kontactinterface-git kdepim-runtime-git kuserfeedback-git)
-makedepends=(git extra-cmake-modules-git kdoctools-git boost)
+license=(GPL-2.0-or-later)
+depends=(akonadi-contacts-git akonadi-search-git gcc-libs glibc grantleetheme-git kcmutils-git kcolorscheme-git kconfig-git kconfigwidgets-git kcontacts-git kcoreaddons-git kcrash-git kdepim-runtime-git ki18n-git kitemmodels-git kontactinterface-git kparts-git kuserfeedback-git kwidgetsaddons-git kxmlgui-git libakonadi-git libkdepim-git pimcommon-git qt6-base)
+makedepends=(git extra-cmake-modules-git kdoctools-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kde-applications-git kdepim-git)
