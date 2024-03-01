@@ -3,14 +3,14 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kcharselect-git
-pkgver=21.11.70_r475.g714122d
+pkgver=24.04.70_r725.g5ccb9f0
 pkgrel=1
 pkgdesc='Character Selector'
 url='https://apps.kde.org/kcharselect/'
-arch=($CARCH)
-license=(GPL LGPL FDL)
-depends=(kbookmarks-git)
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(gcc-libs glibc kbookmarks-git kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git ki18n-git kwidgetsaddons-git kxmlgui-git qt6-base)
 makedepends=(git extra-cmake-modules-git kdoctools-git)
+arch=($CARCH)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kde-applications-git kde-utilities-git)
