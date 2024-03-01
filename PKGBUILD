@@ -3,14 +3,14 @@
 # Contributor: Antonio Rojas 
 
 pkgname=kmix-git
-pkgver=21.11.70_r2383.g0ef1805b
+pkgver=24.04.70_r2706.gd5097c57
 pkgrel=1
 pkgdesc='KDE volume control program'
 url='https://apps.kde.org/kmix/'
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(alsa-lib gcc-libs glibc kconfig5-git kconfigwidgets5-git kcoreaddons5-git kdbusaddons5-git kglobalaccel5-git ki18n5-git knotifications5-git kwidgetsaddons5-git kwindowsystem5-git libcanberra libpulse qt5-base kxmlgui5-git sh-git solid5-git)
+makedepends=(git extra-cmake-modules-git kdoctools5-git)
 arch=($CARCH)
-license=(GPL LGPL FDL)
-depends=(knotifications-git kxmlgui-git solid-git kcompletion-git hicolor-icon-theme)
-makedepends=(git extra-cmake-modules-git kdoctools-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kde-applications-git kde-multimedia-git)
