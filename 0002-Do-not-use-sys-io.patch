@@ -1,0 +1,20 @@
+--- a/src/linux_sysfs.c
++++ b/src/linux_sysfs.c
+@@ -50,9 +50,6 @@
+ #include <dirent.h>
+ #include <errno.h>
+ 
+-#if defined(__i386__) || defined(__x86_64__)
+-#include <sys/io.h>
+-#else
+ #define inb(x) -1
+ #define inw(x) -1
+ #define inl(x) -1
+@@ -60,7 +57,6 @@
+ #define outw(x,y) do {} while (0)
+ #define outl(x,y) do {} while (0)
+ #define iopl(x) -1
+-#endif
+ 
+ #ifdef HAVE_MTRR
+ #include <asm/mtrr.h>
