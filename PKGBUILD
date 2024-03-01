@@ -4,7 +4,7 @@ pkgname="webcam-${_pkgname}-bin"
 _appname=Glass
 pkgver=0.7.2
 _electronversion=20
-pkgrel=7
+pkgrel=8
 pkgdesc="Cross-platform tool for making video tutorials and video conferencing, blending the webcam over the screen."
 arch=('x86_64')
 url="https://github.com/jersonlatorre/webcam-glass-app"
@@ -19,13 +19,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('25a5447746c8ce651c6154acdc4ff9b42f1a0f9a504772c2634c426d89b62bfb'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_appname}/${_pkgname}|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
