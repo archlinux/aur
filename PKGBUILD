@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kpkpass-git
-pkgver=5.18.40_r229.g16211f8
+pkgver=6.0.40_r417.g4002e8e
 pkgrel=1
 pkgdesc="Apple Wallet Pass reader"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(LGPL)
-depends=(karchive-git)
-makedepends=(git extra-cmake-modules-git)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc karchive-git qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kdepim-git)
