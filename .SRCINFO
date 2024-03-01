@@ -1,0 +1,20 @@
+pkgbase = justlog-git
+	pkgdesc = twitch logging platform
+	pkgver = r573.dd7fc40
+	pkgrel = 1
+	url = https://github.com/gempir/justlog
+	arch = x86_64
+	license = MIT
+	makedepends = yarn
+	makedepends = go
+	makedepends = go-swagger
+	provides = justlog
+	conflicts = justlog
+	options = !lto
+	backup = etc/justlog/config.json
+	source = justlog-git::git+https://github.com/gempir/justlog.git
+	source = justlog.service
+	sha256sums = SKIP
+	sha256sums = 4bdcc19068406fcdb855ae617fd8070474ba87a32fc5a069dbe8c57d498105fe
+
+pkgname = justlog-git

@@ -1,0 +1,12 @@
+[Unit]
+Description=twitch logging platform
+
+[Service]
+User=justlog
+Group=justlog
+Restart=on-failure
+ExecStart=justlog
+WorkingDirectory=/etc/justlog
+
+[Install]
+WantedBy=default.target
