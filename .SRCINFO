@@ -1,0 +1,19 @@
+pkgbase = python-chembl-webresource-client
+	pkgdesc = Python client fot accessing ChEMBL webservices.
+	pkgver = 0.10.9
+	pkgrel = 1
+	url = https://www.ebi.ac.uk/chembl/api/data/docs
+	arch = any
+	license = Apache
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.8
+	depends = python-easydict
+	depends = python-urllib3
+	depends = python-requests>=2.18.4
+	depends = python-requests-cache>=1.2
+	noextract = chembl_webresource_client-0.10.9-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/c/chembl-webresource-client/chembl_webresource_client-0.10.9-py3-none-any.whl
+	sha256sums = 99101cad1ad178c5a0d7d74d70923c7997e9e63ec0361c247c6252dc29e524b5
+
+pkgname = python-chembl-webresource-client
