@@ -2,15 +2,15 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=signon-kwallet-extension-git
-pkgver=21.07.70_r64.g47e187d
+pkgver=24.04.70_r93.g01ab7d2
 pkgrel=1
 pkgdesc="KWallet integration for signon framework"
 arch=($CARCH)
 url="https://kde.org"
-license=(LGPL)
-groups=(kde-applications-git kde-network-git)
-depends=(signond kwallet-git)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc kwallet-git qt6-base signond)
 makedepends=(git extra-cmake-modules-git)
+groups=(kde-applications-git kde-network-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
