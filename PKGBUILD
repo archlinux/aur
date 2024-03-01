@@ -1,6 +1,5 @@
 # Maintainer: Alexandre Bury <alexandre.bury@gmail.com>
 
-_name=polars
 pkgname=boxes-py-git
 pkgver=r1691.223b96f
 pkgrel=1
