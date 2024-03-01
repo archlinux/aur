@@ -2,7 +2,7 @@
 
 pkgname='python-xlrd-1'
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for developers to extract data from Excel spreadsheet files'
 arch=('any')
 url='http://www.python-excel.org/'
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-setuptools')
 conflicts=('python-xlrd')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/python-excel/xlrd/archive/${pkgver}.tar.gz")
-b2sums=('eaf6dbefde00954452a96214c6a48e5d35526168445d15d721851da690bd99e53bd765a73495b00c8ee7ce243c487da0afbc6d6217abd7a5956820357dc97104')
+b2sums=('ea9b351faa60bbeac1f60b700abe392bec2df7ff5880abc13524579a621ef601af62fd6120a0e33043df74c48d3b4f8a170e33aae09ab816ba632a0c2c018344')
 
 build() {
   cd xlrd-${pkgver}
