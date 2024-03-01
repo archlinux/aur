@@ -5,6 +5,8 @@ After=network.target
 [Service]
 User=bitmagnet
 Group=bitmagnet
+Environment=XDG_CONFIG_HOME=/etc
+Environment=XDG_STATE_HOME=/var/lib
 ExecStart=/usr/bin/bitmagnet worker run --all
 Restart=on-failure
 RestartSec=15s
@@ -27,6 +29,7 @@ ProtectKernelModules=true
 ProtectKernelTunables=true
 ProtectProc=invisible
 ProtectSystem=strict
+ReadWritePaths=/var/lib/bitmagnet
 RemoveIPC=true
 # AF_UNIX for postgres unix socket if you use it
 RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6

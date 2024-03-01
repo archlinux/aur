@@ -22,18 +22,13 @@ source=('git+https://github.com/bitmagnet-io/bitmagnet'
         'user.conf')
 sha256sums=('SKIP'
             '20f4a744e7b5f8549a66713bee5fcb65fcee58647370b2107adbc0f0bfc000c9'
-            'b8fe373d25c857f312cc4a88c4056065a9df39c5a2b3e560fd879723864c5b8f'
-            '5f80125347060d22175732fa0304df425178ae54282ccf2a3ce9e22a970b60ae'
+            '3582219a0e0f932d97549f44cbe4c1f330d7edd58cc8fd88bb6912a655a7379f'
+            '4ca44b64e567d5220843eaf7dcae90095806f644c561ed74ce01cd0143b00f51'
             '6289a984a94570fd25a0330646caabc20e6cb871d1b141d27cc98d6781d6b35a')
 
 pkgver() {
     cd "$srcdir/bitmagnet"
     git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-    cd "$srcdir/bitmagnet"
-    sed -i 's|\./config\.yml|/etc/bitmagnet/config.yml|' internal/boilerplate/config/configfx/module.go
 }
 
 build() {
