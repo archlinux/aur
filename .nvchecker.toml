@@ -1,2 +1,3 @@
+[python-django-fake-model]
 source = "pypi"
 pypi = "django-fake-model"
