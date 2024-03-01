@@ -1,11 +1,7 @@
 # Maintainer: VVL <me@ivvl.ru>
-# Contributor: Felix Golatofski <contact@xdfr.de>
-# Contributor: Zachary Riedlshah <git@zacharyrs.me>
-# Contributor: Zachary Riedlshah <git@zacharyrs.me>
-# Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=onlyoffice-documentserver-bin
-pkgver=8.0.0
+pkgver=8.0.1
 pkgrel=1
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('x86_64')
@@ -24,7 +20,7 @@ source=("https://github.com/ONLYOFFICE/DocumentServer/releases/download/v${pkgve
         "onlyoffice-documentserver.sysusers"
         "onlyoffice-documentserver.tmpfiles"
         "local.json")
-sha512sums=('6b49d4bda80f7f64c5b37517808c45fe8765c8268f686043c7f36530599a3b31a53c5cd217173886e1918f62b8c349b3639619fc3bd98804b7efccefed6f792c'
+sha512sums=('8f8e509f379e39709548d4b24ecdaa1d0d731bc7232524e88dee661843b3afe7b63852aee91569c150fc8589a6fe52f2bc03d8c079f5965a813bcbc04e92c8da'
             '329adb3a5191e8982b4131dab7ddba7ef700f8bdfd4a39f7021ad9a983105dcb97e46ab798b015e0586a15a1f3454d89000a251e1b0bac4dd2d8a682cce82b4f'
             '3df1f5339b394eef1b27317f5d0e7786d2cb8dbbd13cddb22047567c3703f384d95f092fc34ce3031aeb895f013d7c0686ce968e1fae7f1f24473c1a6615f7ad'
             'c7c23c5a7014e3251dfd86312d1d1e5c2d88f26ddc5aa967285202fd3ebf62c0a10c009b1cc5ad1b78e13fa0bc2eda515616d8af02325db434c0b2113c5b1ecb'
@@ -37,6 +33,7 @@ options=('!strip')
 prepare() {
   cd ${srcdir}
   chmod -R 770 var
+  cp ${srcdir}/usr/lib64/*.so* ${srcdir}/var/www/onlyoffice/documentserver/server/FileConverter/bin/
   sed -i -e 's|/var/www/onlyoffice|/usr/share/webapps/onlyoffice|g' -e 's|/etc/onlyoffice/documentserver|/etc/webapps/onlyoffice/documentserver|g' etc/onlyoffice/documentserver/production-linux.json
   #enable mobile editor
   sed -i 's/isSupportEditFeature=function(){return!1}/isSupportEditFeature=function(){return 1}/g' ${srcdir}/var/www/onlyoffice/documentserver/web-apps/apps/{documenteditor,presentationeditor,spreadsheeteditor}/mobile/dist/js/app.js
@@ -44,7 +41,7 @@ prepare() {
 
 build() {
   cd ${srcdir}
-  export LD_LIBRARY_PATH="usr/lib64/"
+  export LD_LIBRARY_PATH="var/www/onlyoffice/documentserver/server/FileConverter/bin/"
   var/www/onlyoffice/documentserver/server/tools/allfontsgen --input="var/www/onlyoffice/documentserver/core-fonts" --allfonts-web="var/www/onlyoffice/documentserver/sdkjs/common/AllFonts.js" --allfonts="var/www/onlyoffice/documentserver/server/FileConverter/bin/AllFonts.js" --images="var/www/onlyoffice/documentserver/sdkjs/common/Images" --selection="var/www/onlyoffice/documentserver/server/FileConverter/bin/font_selection.bin" --output-web="var/www/onlyoffice/documentserver/fonts" --use-system="true" --use-system-user-fonts="false"
   var/www/onlyoffice/documentserver/server/tools/allthemesgen --converter-dir="var/www/onlyoffice/documentserver/server/FileConverter/bin" --src="var/www/onlyoffice/documentserver/sdkjs/slide/themes" --output="var/www/onlyoffice/documentserver/sdkjs/common/Images"
   var/www/onlyoffice/documentserver/server/tools/allthemesgen --converter-dir="var/www/onlyoffice/documentserver/server/FileConverter/bin" --src="var/www/onlyoffice/documentserver/sdkjs/slide/themes" --output="var/www/onlyoffice/documentserver/sdkjs/common/Images" --postfix="ios" --params="280,224"
@@ -58,7 +55,8 @@ package() {
   install -Dm 644 ${srcdir}/etc/onlyoffice/documentserver/log4js/production.json "${pkgdir}/etc/webapps/onlyoffice/documentserver/log4js/production.json"
   install -Dm 644 ${srcdir}/{local.json,etc/onlyoffice/documentserver/{default.json,production-linux.json}} "${pkgdir}/etc/webapps/onlyoffice/documentserver/"
   install -d "${pkgdir}/usr/lib/"
-  install -Dm 644 ${srcdir}/usr/lib64/* "${pkgdir}/usr/lib/"
+#  install -Dm 644 ${srcdir}/usr/lib64/* "${pkgdir}/usr/lib/"
+  ln -sf /var/www/onlyoffice/documentserver/server/FileConverter/bin/{libDjVuFile.so,libDocxRenderer.so,libFb2File.so,libHtmlFile2.so,libicudata.so.58,libkernel_network.so,libPdfFile.so,libXpsFile.so,libdoctrenderer.so,libEpubFile.so,libgraphics.so,libHtmlRenderer.so,libicuuc.so.58,libkernel.so,libUnicodeConverter.so} ${pkgdir}/usr/lib/
   install -Dm 644 "${srcdir}/onlyoffice-docservice.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-docservice.service"
   install -Dm 644 "${srcdir}/onlyoffice-fileconverter.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-fileconverter.service"
   install -Dm 644 "${srcdir}/onlyoffice-documentserver.sysusers" "${pkgdir}/usr/lib/sysusers.d/onlyoffice-documentserver.conf"
