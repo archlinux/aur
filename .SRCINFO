@@ -1,6 +1,6 @@
 pkgbase = boxes-py-git
 	pkgdesc = Boxes.py - laser cutting boxes and more
-	pkgver = 0.1
+	pkgver = r1691.223b96f
 	pkgrel = 1
 	url = https://github.com/florianfesti/boxes
 	arch = x86_64

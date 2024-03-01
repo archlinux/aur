@@ -2,7 +2,7 @@
 
 _name=polars
 pkgname=boxes-py-git
-pkgver=0.1
+pkgver=r1691.223b96f
 pkgrel=1
 pkgdesc="Boxes.py - laser cutting boxes and more"
 arch=("x86_64")
@@ -15,6 +15,15 @@ optdepends=(
 makedepends=('python-build' 'python-installer')
 source=("git+https://github.com/florianfesti/boxes")
 b2sums=("SKIP")
+
+pkgver() {
+    cd boxes
+    # There are no tags currently
+    ( set -o pipefail
+      git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
+}
 
 build() {
     cd boxes
