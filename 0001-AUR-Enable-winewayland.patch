@@ -1,4 +1,4 @@
-From f790115f061ba10387aaa5032558c9a158807ec9 Mon Sep 17 00:00:00 2001
+From aa1b2ccd48dcee5f51fe662f2a7b2ab8a151a7cc Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Thu, 29 Feb 2024 15:28:48 +0200
 Subject: [PATCH] AUR Enable winewayland
@@ -21,7 +21,7 @@ index 99ee6e17..581b981c 100644
    --with-mingw \
    --without-oss \
 diff --git a/proton b/proton
-index 027e5650..9b5ab149 100755
+index 027e5650..09e4fea7 100755
 --- a/proton
 +++ b/proton
 @@ -1525,6 +1525,10 @@ if __name__ == "__main__":
@@ -29,7 +29,7 @@ index 027e5650..9b5ab149 100755
          #wait for wineserver to shut down
          g_session.run_proc([g_proton.wineserver_bin, "-w"])
 +        g_session.run_proc(
-+            [g_proton.wine_bin, "reg.exe", "add", "HKCU\\\\Software\\\\Wine\\\\Drivers", "/v", "Graphics", "/d", "x11,wayland"]
++            [g_proton.wine_bin, "reg.exe", "add", "HKCU\\Software\\Wine\\Drivers", "/v", "Graphics", "/d", "x11,wayland", "/f"]
 +        )
 +        g_session.run_proc([g_proton.wineserver_bin, "-w"])
          #then run
