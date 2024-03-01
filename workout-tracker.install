@@ -1,0 +1,17 @@
+post_install(){
+ cat <<INFO
+
+Workout Tracker has been installed, you should now generate a new secret, e.g. by running
+
+    openssl rand -base64 48
+    
+and replace the existing WT_JWT_ENCRYPTION_KEYs in
+
+    /etc/workout-tracker/env
+    
+You can start the Workout Tracker server by running
+
+    sudo systemctl start workout-tracker
+
+INFO
+}

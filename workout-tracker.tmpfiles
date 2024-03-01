@@ -1,0 +1,4 @@
+# https://www.man7.org/linux/man-pages/man5/tmpfiles.d.5.html
+
+z /etc/workout-tracker         0750 workout-tracker workout-tracker
+z /var/lib/workout-tracker     0750 workout-tracker workout-tracker

@@ -1,0 +1,13 @@
+[Unit]
+Description=Workout Tracker Server
+After=network-online.target
+
+[Service]
+User=workout-tracker
+Group=workout-tracker
+EnvironmentFile=/etc/workout-tracker/env
+ExecStart=/usr/bin/workout-tracker
+WorkingDirectory=/var/lib/workout-tracker
+
+[Install]
+WantedBy=multi-user.target
