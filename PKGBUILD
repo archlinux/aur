@@ -3,14 +3,14 @@
 # Contributor: frames <markkuehn at outlook dot com> 
 
 pkgname=kgpg-git
-pkgver=23.07.70_r3288.g85f55e33
+pkgver=24.04.70_r3451.gc6de51a8
 pkgrel=1
 pkgdesc='A GnuPG frontend'
 url='https://apps.kde.org/kgpg/'
-arch=($CARCH)
-license=(GPL LGPL FDL)
-depends=(akonadi-contacts-git)
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(akonadi-contacts-git gcc-libs glibc karchive-git kcodecs-git kconfig-git kconfigwidgets-git kcontacts-git kcoreaddons-git kcrash-git kdbusaddons-git ki18n-git kio-git kservice-git kstatusnotifieritem-git ktextwidgets-git kwidgetsaddons-git kxmlgui-git libakonadi-git qt6-5compat qt6-base)
 makedepends=(git extra-cmake-modules-git kdoctools-git)
+arch=($CARCH)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kde-applications-git kde-utilities-git)
