@@ -2,7 +2,7 @@
 pkgname=freac-bin
 _appname="org.${pkgname%-bin}.${pkgname%-bin}"
 pkgver=1.1.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Audio converter and CD ripper with support for various popular formats and encoders."
 arch=(
     'aarch64'
@@ -18,18 +18,12 @@ provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     'libpulse'
     'gtk3'
-    'libcdio'
-    'libogg'
-    'openssl-1.1'
-    'cairo'
-    'libvorbis'
     'libcdio-paranoia'
-    'curl'
-    'pango'
-    'lib32-glibc'
+    'libcdio'
+    'openssl-1.1'
 )
 makedepends=(
-    'squashfuse'
+    'fuse2'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-aarch64.AppImage")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-armhf.AppImage")
