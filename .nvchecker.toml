@@ -1,3 +1,4 @@
+[python-nose-random]
 source = "git"
 git = "https://github.com/ZoomerAnalytics/nose-random.git"
 prefix = "v"
