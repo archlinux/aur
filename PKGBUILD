@@ -4,15 +4,15 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kmime-git
-pkgver=5.18.40_r1441.gebb0fc1
+pkgver=6.0.40_r1773.gff9107f
 pkgrel=1
 pkgdesc="Library for handling mail messages and newsgroup articles"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(LGPL)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc kcodecs-git ki18n-git qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 groups=(kdepim-git)
-depends=(ki18n-git kcodecs-git)
-makedepends=(git extra-cmake-modules-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
