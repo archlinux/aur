@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.7.6.arch1
+pkgver=6.7.7.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -69,11 +69,11 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('e489ec0e1370d089b446d565aded7a698093d2b7c4122a18f21edb6ef93d37d3'
+sha256sums=('256b8b44570ddbe266eb3ad0c2cba2616f1609b4a3de5014a3da5512907b14d9'
             'SKIP'
-            'c7a8e85778cb0f1df815531a7f86094f70a8035f5756dcb881f2156d7e328d72'
+            '47208683675e5ad065c9a3821aa975fdb3c37d7d7d77222da4d6f8c3f09827d1'
             'SKIP'
-            '0f191864fd0d72c91b3f3b9e6ed6f38042bf3631ae394fedcf103c7d7755c793'
+            '153e7d5193cc7ce0dbf005304175c116c3abf4bb9b885cfc675bb735400a933e'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             '1a3825b790413d09806c9a2115f679be28e434cfcc69c01dc069b634d1e8007a'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
@@ -223,6 +223,7 @@ prepare() {
 build() {
   cd $_srcname
   make all
+  make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
 }
 
 _package() {
@@ -276,7 +277,7 @@ _package-headers() {
 
   echo "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
-    localversion.* version vmlinux
+    localversion.* version vmlinux tools/bpf/bpftool/vmlinux.h
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
