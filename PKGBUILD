@@ -3,17 +3,17 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcrash-git
-pkgver=5.240.0_r474.g33df047
+pkgver=6.0.0_r517.g90f800f
 pkgrel=1
 pkgdesc='Support for application crash analysis and bug report from apps'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(kcoreaddons-git kwindowsystem-git)
-makedepends=(git extra-cmake-modules-git doxygen qt6-tools)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(gcc-libs glibc kcoreaddons-git libx11 qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
+optdepends=('drkonqi: KDE crash handler application')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('drkonqi-git: KDE crash handler application')
 groups=(kf6-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
