@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=libkdepim-git
-pkgver=5.18.40_r840.ge2cbe34
+pkgver=6.0.40_r1159.g4d4f812
 pkgrel=1
 pkgdesc="Libraries for KDE PIM applications"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(LGPL)
-depends=(kcmutils-git)
-makedepends=(git extra-cmake-modules-git boost qt5-tools)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc ki18n-git kwidgetsaddons-git qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git kcompletion-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kdepim-git)
