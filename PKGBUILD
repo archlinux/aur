@@ -9,12 +9,11 @@ pkgrel=1
 pkgdesc='Resource and network access abstraction'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(solid-git kjobwidgets-git kbookmarks-git libxslt kwallet-git ktextwidgets-git kded-git)
-makedepends=(git extra-cmake-modules-git kdoctools-git doxygen qt6-tools)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(acl gcc-libs glibc karchive-git kauth-git kbookmarks-git kcolorscheme-git kcompletion-git kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git kdbusaddons-git kguiaddons-git ki18n-git kiconthemes-git kitemviews-git kjobwidgets-git kservice-git kwallet-git kwidgetsaddons-git kwindowsystem-git libxml2 libxslt qt6-5compat qt6-base solid-git util-linux-libs)
+makedepends=(git doxygen extra-cmake-modules-git kdoctools-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('kio-extras-git: extra protocols support (sftp, fish and more)' 'kdoctools-git: for the help kioslave'
             'kio-fuse-git: to mount remote filesystems via FUSE')
 groups=(kf6-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
