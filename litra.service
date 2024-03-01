@@ -1,0 +1,10 @@
+[Unit]
+Description=Auto-Toggles your Litra lamp when the camera is active.
+
+[Service]
+Restart=always
+RestartSec=5
+ExecStart=/usr/bin/litra auto-toggle
+
+[Install]
+WantedBy=multi-user.target
