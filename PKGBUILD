@@ -3,24 +3,25 @@
 _pkgname=htm2txt
 _pkgver=2.2.2
 pkgname=r-${_pkgname,,}
-pkgver=2.2.2
-pkgrel=1
-pkgdesc='Convert Html into Text'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=3
+pkgdesc="Convert Html into Text"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a077c4c5c055033441a8f1425a0ec2cd497b85930f3bf99715ed738227db0338')
+md5sums=('f24053cecfeaa1a1b32519c08f42888b')
+b2sums=('b120540c2877c85e761c7b34f57467c3535915e330a0150caf6f15bb04b66c9b69d9e68b92f217de18f9a397abe7d83d0e0b62eef41e7eaeb3be108f85370d1d')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
