@@ -41,14 +41,12 @@ build() {
     mvn -Dmaven.test.skip -pl core -am clean package
 }
 
-# Disabled until 5.3.8+
-# https://github.com/theotherp/nzbhydra2/commit/f9b705faf7ae6b0fe2fcd835b985dcb6ef2ea9d4
-#check() {
-#    cd "${srcdir}/${pkgname}-${pkgver}"
-#
-#    export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
-#    mvn -pl core -am test
-#}
+check() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+
+    export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+    mvn -pl core -am test
+}
 
 package() {
     install -D -m 755 "${srcdir}/nzbhydra2.sh" "${pkgdir}/usr/bin/nzbhydra2"
