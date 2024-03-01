@@ -1,3 +1,4 @@
+[python-jwcrypto]
 source = "git"
 git = "https://github.com/latchset/jwcrypto"
 prefix = "v"
