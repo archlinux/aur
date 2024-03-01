@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dicionario.js-bin
-pkgver=2.7.2
-_electronversion=26
-pkgrel=3
+pkgver=2.7.5
+_electronversion=28
+pkgrel=1
 pkgdesc="Simple dictionary in which you record your own words."
 arch=('x86_64')
 url="https://github.com/ArthurLobopro/dicionario.js"
@@ -17,14 +17,14 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7908055fc91c0e6953563694f0167ae8e1962ae19cf6ccaeaabcc32147241acc'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+sha256sums=('354d3d518cb64f07dbadb9989dfc43702f234c0fb2e330822b97fb36215b033a'
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.zst"
+    bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
