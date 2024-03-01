@@ -1,0 +1,15 @@
+pkgbase = firefly-synth-git
+	pkgdesc = Semi-modular synthesizer and FX plugin, VST3 and CLAP
+	pkgver = r3664.3a0b327e
+	pkgrel = 1
+	url = https://github.com/sjoerdvankreel/firefly-synth
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	provides = firefly-synth
+	conflicts = firefly-synth
+	source = git+https://github.com/sjoerdvankreel/firefly-synth
+	md5sums = SKIP
+
+pkgname = firefly-synth-git
