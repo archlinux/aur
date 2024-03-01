@@ -3,7 +3,7 @@
 
 pkgname=vulkan-nouveau-git
 pkgdesc="Nouveau Vulkan (NVK) EXPERIMENTAL Mesa driver with some additions (Git version)"
-pkgver=24.0.branchpoint.r2238.ga2292f5
+pkgver=24.0.branchpoint.r2525.g0a3a80a
 pkgrel=1
 arch=('x86_64')
 depends=('libdrm' 'libxshmfence' 'libx11' 'systemd-libs' 'vulkan-icd-loader' 'wayland')
@@ -16,10 +16,8 @@ provides=('vulkan-driver')
 url="https://gitlab.freedesktop.org/mesa/mesa"
 license=('MIT AND BSD-3-Clause AND SGI-B-2.0')
 source=("git+${url}.git"
-        nak-iadd3-imad.patch
         LICENSE)
 sha512sums=('SKIP'
-            '6c4ed4c9c7dce79debb77cd9b828f628088101936c4e2b2994e56723f86e61799b278a9333f08813082d0a4153ac41870669da8ac47106aa20c7fc7dee8812e8'
             'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7')
 install="${pkgname}.install"
 
@@ -45,10 +43,6 @@ prepare() {
   sed -i 's/VK_MAKE_VERSION(1, 0/VK_MAKE_VERSION(1, 3/' src/nouveau/vulkan/nvk_physical_device.c
 
   ### Misc stuff ###
-
-  # Add imad/iadd3 support (https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/27159)
-  # (improves performance greatly in certain cases)
-  patch ${_patch_opts} ../nak-iadd3-imad.patch
 
   # Mark this NVK package with a signature (so I could track who's using it for bug report purposes)
   sed -i 's/"Mesa " PACKAGE_VERSION/"Mesa DodoNVK " PACKAGE_VERSION/' src/nouveau/vulkan/nvk_physical_device.c
@@ -76,7 +70,7 @@ build() {
     -D b_ndebug=false \
     -D platforms=x11,wayland \
     -D gallium-drivers= \
-    -D vulkan-drivers=nouveau-experimental \
+    -D vulkan-drivers=nouveau \
     -D vulkan-layers= \
     -D dri3=enabled \
     -D egl=disabled \
