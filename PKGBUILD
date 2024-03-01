@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kquickcharts-git
-pkgver=5.240.0_r560.geecc063
+pkgver=6.0.0_r617.g3e2b4d1
 pkgrel=1
 pkgdesc='A QtQuick plugin providing high-performance charts'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(qt6-quickcontrols2)
-makedepends=(git extra-cmake-modules-git)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(gcc-libs glibc kirigami-git qt6-base qt6-declarative)
+makedepends=(git extra-cmake-modules-git qt6-shadertools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf6-git)
