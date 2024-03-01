@@ -3,14 +3,14 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=plasma-desktop-git
-pkgver=6.0.80_r11521.gc599dd852
+pkgver=6.0.80_r11522.g78ce400ee
 pkgrel=1
 pkgdesc='KDE Plasma Desktop'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL-2.0-or-later)
-depends=(baloo-git gcc-libs glibc icu kauth-git kbookmarks-git kcmutils-git kcodecs-git kcompletion-git kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git kdbusaddons-git kdeclarative-git kglobalaccel-git kguiaddons-git ki18n-git kiconthemes-git kio-git kirigami-git kirigami-addons-git kitemmodels-git kitemviews-git kjobwidgets-git kmenuedit-git knewstuff-git knotifications-git knotifyconfig-git kpackage-git kpipewire-git krunner-git kservice-git ksvg-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git libcanberra libksysguard-git libx11 libxcb libxcursor libxi libxkbcommon libxkbfile libplasma-git plasma-activities-git plasma-activities-stats-git plasma-workspace-git plasma5support-git polkit-kde-agent-git powerdevil-git qt6-5compat qt6-base qt6-declarative qt6-wayland-git sdl2 solid-git sonnet-git systemsettings-git wayland-git xcb-util-keysyms xdg-user-dirs)
-makedepends=(git extra-cmake-modules-git intltool kaccounts-integration-git kdoctools-git libibus packagekit-qt6 scim wayland-protocols-git xf86-input-evdev xf86-input-libinput xorg-server-devel)
+depends=(baloo-git gcc-libs glibc icu kauth-git kbookmarks-git kcmutils-git kcodecs-git kcompletion-git kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git kdbusaddons-git kdeclarative-git kglobalaccel-git kguiaddons-git ki18n-git kiconthemes-git kio-git kirigami-git kirigami-addons-git kitemmodels-git kitemviews-git kjobwidgets-git kmenuedit-git knewstuff-git knotifications-git knotifyconfig-git kpackage-git kpipewire-git krunner-git kservice-git ksvg-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git libcanberra libksysguard-git libx11 libxcb libxcursor libxi libxkbcommon libxkbfile libplasma-git plasma-activities-git plasma-activities-stats-git plasma-workspace-git plasma5support-git polkit-kde-agent-git powerdevil-git qt6-5compat qt6-base qt6-declarative qt6-wayland sdl2 solid-git sonnet-git systemsettings-git wayland xcb-util-keysyms xdg-user-dirs)
+makedepends=(git extra-cmake-modules-git intltool kaccounts-integration-git kdoctools-git libibus packagekit-qt6 scim wayland-protocols xf86-input-evdev xf86-input-libinput xorg-server-devel)
 groups=(plasma-git)
 conflicts=(${pkgname%-git} user-manager knetattach user-manager-git knetattach-git)
 provides=(${pkgname%-git} user-manager knetattach user-manager-git knetattach-git)
