@@ -3,17 +3,16 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=ki18n-git
-pkgver=5.240.0_r666.ge91d3e7
+pkgver=6.0.0_r723.ga0839c4
 pkgrel=1
 pkgdesc='Advanced internationalization framework'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(qt6-declarative)
-makedepends=(git extra-cmake-modules-git qt6-declarative python-pyqt6 clang doxygen qt6-tools sip)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(gcc-libs glibc iso-codes qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git python qt6-declarative qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('python-pyqt6: for the Python bindings' 'python: to compile .ts files')
 groups=(kf6-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
