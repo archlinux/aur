@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=dehelper
 pkgname="eusoft-${_pkgname}-bin"
-pkgver=2024.01.16
+pkgver=2024.02.27
 pkgrel=1
 pkgdesc="德语助手,权威的德语词典软件,德语学习者必备的工具.支持学习笔记、生词本多平台同步，让你随时随地学德语."
 arch=('x86_64')
@@ -55,7 +55,6 @@ depends=(
     'aalib'
     'libshout'
     'twolame'
-    'taglib'
     'libsoup'
     'wavpack'
     'libcaca'
@@ -63,17 +62,17 @@ depends=(
 options=("!strip")
 source=(
     "${pkgname%-bin}-${pkgver}.deb::https://www.eudic.net/download/${_pkgname}.deb?v=${pkgver//./-}"
-    "LICENSE.html"
+    "LICENSE.html::https://dict.eudic.net/home/privacy"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('fc47e56b3907522a8d3dbd906a4e4117991e0aed772c08547b0214c8b08fcccc'
-            '69031e95591a339c4cd9c01547494e23196cea6438608f1f951b493ea8fca54f'
+            '21e001fde21fdd190dd3fd47ca496be4bd945955d96f0987bccf059e5643b344'
             'c68de8f6be6059bc0019b5d2ef43edfabe15bd2c213d671ca39ed69ae0619c66')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@appasar@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/usr/share/${pkgname%-bin}/AppRun|${pkgname%-bin}|g;s|com.eusoft.${_pkgname}|${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }

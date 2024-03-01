@@ -1,6 +1,6 @@
 pkgbase = eusoft-dehelper-bin
 	pkgdesc = 德语助手,权威的德语词典软件,德语学习者必备的工具.支持学习笔记、生词本多平台同步，让你随时随地学德语.
-	pkgver = 2024.01.16
+	pkgver = 2024.02.27
 	pkgrel = 1
 	url = https://www.godic.net/
 	arch = x86_64
@@ -48,18 +48,17 @@ pkgbase = eusoft-dehelper-bin
 	depends = aalib
 	depends = libshout
 	depends = twolame
-	depends = taglib
 	depends = libsoup
 	depends = wavpack
 	depends = libcaca
 	conflicts = eusoft-dehelper
 	conflicts = dehelper
 	options = !strip
-	source = eusoft-dehelper-2024.01.16.deb::https://www.eudic.net/download/dehelper.deb?v=2024-01-16
-	source = LICENSE.html
+	source = eusoft-dehelper-2024.02.27.deb::https://www.eudic.net/download/dehelper.deb?v=2024-02-27
+	source = LICENSE.html::https://dict.eudic.net/home/privacy
 	source = eusoft-dehelper.sh
 	sha256sums = fc47e56b3907522a8d3dbd906a4e4117991e0aed772c08547b0214c8b08fcccc
-	sha256sums = 69031e95591a339c4cd9c01547494e23196cea6438608f1f951b493ea8fca54f
+	sha256sums = 21e001fde21fdd190dd3fd47ca496be4bd945955d96f0987bccf059e5643b344
 	sha256sums = c68de8f6be6059bc0019b5d2ef43edfabe15bd2c213d671ca39ed69ae0619c66
 
 pkgname = eusoft-dehelper-bin
