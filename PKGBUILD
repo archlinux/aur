@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=calendarsupport-git
-pkgver=5.18.40_r567.ga773765
+pkgver=6.0.40_r1022.g5064a67
 pkgrel=1
 pkgdesc="Calendar support library"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(LGPL)
-depends=(kholidays-git akonadi-calendar-git akonadi-notes-git pimcommon-git)
-makedepends=(git extra-cmake-modules-git boost)
+license=(LGPL-2.0-or-later)
+depends=(akonadi-calendar-git akonadi-notes-git gcc-libs glibc kcalendarcore-git kcalutils-git kcodecs-git kconfig-git kcoreaddons-git kguiaddons-git kholidays-git ki18n-git kidentitymanagement-git kio-git kmime-git kservice-git ktextaddons-git kwidgetsaddons-git libakonadi-git qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kdepim-git)
