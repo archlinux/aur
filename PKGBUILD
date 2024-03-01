@@ -5,7 +5,7 @@ pkgname="${_appname}-browser-bin"
 _pkgname=Min
 pkgver=1.31.2
 _electronversion=29
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, minimal browser that protects your privacy"
 arch=(
     'aarch64'
@@ -27,7 +27,7 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/downloa
 source=(
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+sha256sums=('50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 sha256sums_aarch64=('9e419f1ee4c8a93e41785b72d3e37b06758950eacbeed69478690d7e9bd306ba')
 sha256sums_armv7h=('50baf8e029fe02200c22ef7f5c1f46c80de901ae311516a3ef79b29f7cad9612')
 sha256sums_x86_64=('9c3f42552656cef9a3a54ac7b50535abb2aed562fc4089f00dd6ee60582bb4c6')
