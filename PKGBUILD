@@ -1,29 +1,32 @@
-# Maintainer: zanny <lordzanny@gmail.com>
-# Maintainer: Aleix Pol Gonzalez <aleixpol@kde.org>
+# Merged with official ABS kirigami PKGBUILD by João, 2024/03/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kirigami-git
-_name=${pkgname%-git}
-pkgver=v2.2.0.r1515.g07876274
+pkgver=6.0.0_r4407.g7f9b5b4a
 pkgrel=1
-pkgdesc='A set of QML components for mobile/desktop convergent applications made by KDE'
-arch=('i686' 'x86_64')
-url='https://quickgit.kde.org/?p=kirigami.git'
-license=(LGPL)
-depends=(qt5-quickcontrols2 qt5-graphicaleffects)
-makedepends=(extra-cmake-modules git qt5-svg)
-conflicts=(kirigami2)
-provides=(kirigami2)
-groups=(plasma)
-source=("git+https://invent.kde.org/frameworks/$_name.git")
-md5sums=('SKIP')
+pkgdesc='A QtQuick based components set'
+arch=($CARCH)
+url='https://community.kde.org/Frameworks'
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(gcc-libs glibc qt6-base qt6-declarative qt6-svg)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-shadertools qt6-tools)
+groups=(kf6-git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $_name
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'set(KF_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cmake -B build -S $_name
+  cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
   cmake --build build
 }
 
