@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pixelflasher
-pkgver=6.8.0.4
+pkgver=6.8.1.0
 pkgrel=1
 pkgdesc="Pixel phone flashing GUI utility with features."
 arch=('x86_64')
@@ -10,6 +10,7 @@ depends=(
   'glibc'
   'hicolor-icon-theme'
   'python-beautifulsoup4'
+  'python-chardet'
   'python-bsdiff4'
   'python-json5'
   'python-lz4'
@@ -34,7 +35,7 @@ optdepends=(
 options=('!strip')
 source=("PixelFlasher-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'PixelFlasher.desktop')
-sha256sums=('45f0756f03b067dd5ceec501f9b33efb0bb74a146967dc2a59639edd0ef8c199'
+sha256sums=('b0d45fcd4562fd25ff3105e19eafed0ef2a3de14b3dee2258e5c7b4bd8ae8f0e'
             '3f503e3e3b819562669e1d0a8a25043c478c8c1709b376642fd678caf3d8ee34')
 
 build() {
