@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ytmdesktop
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 _nodeversion=20
 pkgdesc="A desktop app for YouTube Music"
@@ -14,7 +14,7 @@ optdepends=('libgnome-keyring'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ytmdesktop/ytmdesktop/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('1bb8cf2da06c55ebeae7b2fe7919cb2f9e24abd5ec5288d235870e25117f2822'
+sha256sums=('5c0f4f7883da16aaf192ccbf10a4bfae704c5b4a352f6917a3baa0d0de87d92f'
             '05a97a350ffe07c1dfdf064dfc223ab4b38efc89942ba196d90c64a88a5afb3e'
             'cef9bd688fa6a77fe800192d38ec647c9ca3b146abb54cf08947c67f47b467d1')
 
