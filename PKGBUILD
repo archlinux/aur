@@ -7,7 +7,7 @@
 
 pkgname=stm32cubeprog
 _pkgname="STM32CubeProgrammer"
-pkgver=2.14.0
+pkgver=2.15.0
 _pkg_file_name=en.stm32cubeprg-lin-v${pkgver//./-}.zip
 pkgrel=0
 pkgdesc="An all-in-one multi-OS software tool for programming STM32 products."
@@ -39,7 +39,7 @@ options=('!strip')
 # cURL inspiration from davinci-resolve package maintained by "Alex S".
 _curl_useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
                         AppleWebKit/537.36 (KHTML, like Gecko) \
-                        Chrome/77.0.3865.75 \
+                        Chrome/120.0.0.0 \
                         Safari/537.36"
 _curl_useragent="$(printf '%s' "$_curl_useragent" | sed 's/[[:space:]]\+/ /g')"
 _useragent_escaped="${_curl_useragent// /\\ }"
@@ -57,7 +57,7 @@ DLAGENTS=("https::/usr/bin/curl \
 _pkg_main_name="${pkgname//prog/prg}-lin-v${pkgver//./-}"
 source=("en.${_pkg_main_name}.zip::$_download_path"
         "${pkgname}.xdotool")
-sha256sums=('06199f5de604e7e8a7a56c749cb8df93de4fd8c93bd2ae892fb94ed9d50267c4'
+sha256sums=('3fe61e6920943e6faa9089f7326a3bab71665e0dae0475f831a8b5a0f58b7d22'
             '1c54ec39148735f16c8b06f75321a40805f27935b115384d211566d8e3f391a8')
 
 prepare() {
@@ -79,7 +79,6 @@ END
 
 build() {
   mkdir -p build
-
   # use xvfb-run and xdotool to cheat the Installer
 #   xvfb-run --auto-servernum --server-args="-screen 0, 1920x1080x24" -w 5 ./${pkgname}.xvfb
   ./${pkgname}.xvfb
@@ -105,11 +104,11 @@ package() {
   # doc
   for _doc in CLI_TREE.txt Readme.txt
   do
-    install -Dm644 ${pkgdir}/opt/${pkgname}/doc/${_doc} -t ${pkgdir}/usr/share/doc/${pkgname}
+    install -Dm644 ${pkgdir}/opt/${pkgname}/${_doc} -t ${pkgdir}/usr/share/doc/${pkgname}
   done
 
   # license
-  install -Dm644 ${pkgdir}/opt/${pkgname}/doc/license.txt -t ${pkgdir}/usr/share/licenses/${pkgname}
+  install -Dm644 ${pkgdir}/opt/${pkgname}/license.txt -t ${pkgdir}/usr/share/licenses/${pkgname}
 
   # desktop enrty
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/${pkgname}.desktop" <<END
