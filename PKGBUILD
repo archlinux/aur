@@ -3,16 +3,15 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kldap-git
-pkgver=5.18.40_r869.g4ae869e
+pkgver=6.0.40_r1245.g6d27c15
 pkgrel=1
 pkgdesc="LDAP access API for KDE"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(LGPL)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc kconfig-git kcoreaddons-git ki18n-git kio-git kwidgetsaddons-git libldap libsasl qt6-base qtkeychain-qt6)
+makedepends=(git doxygen extra-cmake-modules-git kdoctools-git qt6-doc qt6-tools)
 groups=(kdepim-git)
-depends=(kcompletion-git kwallet-git)
-optdepends=('kio-git: LDAP kioslave')
-makedepends=(git extra-cmake-modules-git kio-git kdoctools-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
