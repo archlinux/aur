@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdbusaddons-git
-pkgver=6.0.0_r535.g701d8ba
+pkgver=6.0.0_r537.g66b69f5
 pkgrel=1
 pkgdesc='Addons to QtDBus'
 arch=($CARCH)
