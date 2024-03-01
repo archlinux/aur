@@ -1,10 +1,10 @@
 pkgbase = libjxl-git
 	pkgdesc = JPEG XL image format reference implementation (git version)
-	pkgver = 0.8.2.r509.ge6202f71
+	pkgver = 0.10.1.r23.gcae805d8
 	pkgrel = 1
 	url = https://jpeg.org/jpegxl/
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = git
 	makedepends = cmake
 	makedepends = brotli

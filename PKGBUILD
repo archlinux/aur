@@ -2,12 +2,12 @@
 
 pkgbase=libjxl-git
 pkgname=('libjxl-git' 'libjxl-doc-git')
-pkgver=0.8.2.r509.ge6202f71
+pkgver=0.10.1.r23.gcae805d8
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('git' 'cmake' 'brotli' 'gdk-pixbuf2' 'giflib' 'gimp'
              'gperftools' 'highway' 'libjpeg-turbo' 'libpng' 'openexr'
              'gtest' 'java-environment' 'python' 'asciidoc' 'doxygen'
@@ -56,7 +56,7 @@ pkgver() {
 
 build() {
     export CFLAGS+=' -DNDEBUG -ffat-lto-objects'
-    export CXXFLAGS+=' -DNDEBUG -ffat-lto-objects -Wp,-U_GLIBCXX_ASSERTIONS'
+    export CXXFLAGS+=' -DNDEBUG -ffat-lto-objects'
     cmake -B build -S libjxl \
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
