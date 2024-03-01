@@ -28,8 +28,4 @@ check() {
 package() {
   cd $_pkgname-$pkgver 
   python -m installer --destdir="$pkgdir" dist/*.whl
-
-  # Do not install tests directory
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  rm -rf "$pkgdir/$site_packages"/fxa/tests/
 }
