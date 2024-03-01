@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=akonadi-calendar-tools-git
-pkgver=5.18.40_r876.g6b18da3
+pkgver=6.0.40_r1177.gbe4e54f
 pkgrel=1
 pkgdesc='CLI tools to manage akonadi calendars'
 arch=($CARCH)
 url='https://kontact.kde.org'
-license=(GPL2)
-depends=(calendarsupport-git)
-makedepends=(git extra-cmake-modules-git kdoctools-git boost)
+license=(GPL-2.0-or-later)
+depends=(akonadi-calendar-git calendarsupport-git gcc-libs glibc kcalendarcore-git kcoreaddons-git ki18n-git libakonadi-git qt6-base)
+makedepends=(git extra-cmake-modules-git kdoctools-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kde-applications-git kdepim-git)
