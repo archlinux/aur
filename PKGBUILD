@@ -3,14 +3,14 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kross-git
-pkgver=5.83.0_r324.g6664a5a
+pkgver=_r393.gdc442b4
 pkgrel=1
 pkgdesc='Multi-language application scripting'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(kparts-git qt5-script)
-makedepends=(git extra-cmake-modules-git kdoctools-git qt5-tools)
+depends=(kparts5-git qt5-script)
+makedepends=(git extra-cmake-modules-git kdoctools5-git qt5-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf5-aids-git)

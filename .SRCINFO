@@ -1,6 +1,6 @@
 pkgbase = kross-git
 	pkgdesc = Multi-language application scripting
-	pkgver = 5.83.0_r324.g6664a5a
+	pkgver = _r393.gdc442b4
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = kross-git
 	license = LGPL
 	makedepends = git
 	makedepends = extra-cmake-modules-git
-	makedepends = kdoctools-git
+	makedepends = kdoctools5-git
 	makedepends = qt5-tools
-	depends = kparts-git
+	depends = kparts5-git
 	depends = qt5-script
 	provides = kross
 	conflicts = kross
@@ -18,4 +18,3 @@ pkgbase = kross-git
 	sha256sums = SKIP
 
 pkgname = kross-git
-
