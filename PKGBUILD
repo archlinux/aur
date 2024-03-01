@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kio-git
-pkgver=5.240.0_r6124.g46a1d6df2
+pkgver=6.0.0_r6895.gcfc712cc0
 pkgrel=1
 pkgdesc='Resource and network access abstraction'
 arch=($CARCH)
@@ -12,9 +12,13 @@ url='https://community.kde.org/Frameworks'
 license=(LGPL-2.0-only LGPL-3.0-only)
 depends=(acl gcc-libs glibc karchive-git kauth-git kbookmarks-git kcolorscheme-git kcompletion-git kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git kdbusaddons-git kguiaddons-git ki18n-git kiconthemes-git kitemviews-git kjobwidgets-git kservice-git kwallet-git kwidgetsaddons-git kwindowsystem-git libxml2 libxslt qt6-5compat qt6-base solid-git util-linux-libs)
 makedepends=(git doxygen extra-cmake-modules-git kdoctools-git qt6-doc qt6-tools)
+optdepends=('kded-git: proxy management and cookie storage'
+            'kdoctools-git: for the help kioslave'
+            'kio-extras-git: extra protocols support (sftp, fish and more)'
+            'kio-fuse-git: to mount remote filesystems via FUSE'
+            'switcheroo-control: hybrid GPU support')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-            'kio-fuse-git: to mount remote filesystems via FUSE')
 groups=(kf6-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
