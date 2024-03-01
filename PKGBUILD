@@ -18,13 +18,14 @@ sha256sums=('5d0e6547ac073c78e95d4f086a258e1e5713168827c38ccb2466f2c4d96bd1df')
 
 build() {
 	cd "$_archive"
-	cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -S . -B ./build
+	cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX=/usr -S . -B ./build
 	cmake --build ./build --config Release --target hyprlock
 }
 
 package() {
 	cd "$_archive"
-	install -Dm755 build/hyprlock -t "${pkgdir}/usr/bin"
+	DESTDIR="${pkgdir}" cmake --install build
+
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
