@@ -1,12 +1,12 @@
 pkgbase = eusoft-ting-es-bin
 	pkgdesc = 听力统计、笔记同步、语音高亮跟随，让您轻松愉快学西班牙语
 	pkgver = 9.7.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.esdict.cn/ting
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = hicolor-icon-theme
-	depends = electron13
+	depends = electron11-bin
 	conflicts = eusoft-ting-es
 	conflicts = eudic-ting-es
 	conflicts = ting-es
@@ -14,7 +14,7 @@ pkgbase = eusoft-ting-es-bin
 	source = LICENSE.html
 	source = eusoft-ting-es.sh
 	sha256sums = 73e57df6718460a282ec4bd3d6aea59f78d6097b829b8516f8ab7075e81e981f
-	sha256sums = bb199c3faf0e1155a5bc43512e1898e6604034a67d9e2f4d16840b3b359cc432
-	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
+	sha256sums = 12ec1b3e4be99eee9c2d5fb55c196d2294c1b112e137927c61f81efb0e308f75
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = eusoft-ting-es-bin
