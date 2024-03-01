@@ -2,18 +2,17 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kget-git
-pkgver=21.11.70_r3120.g6ad6fe8c
+pkgver=24.04.70_r3534.g5d84a612
 pkgrel=1
 pkgdesc='Download Manager'
 url='https://apps.kde.org/kget/'
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(gcc-libs glibc gpgme qgpgme-qt6 kcmutils-git kcolorscheme-git kcompletion-git kconfig-git kconfigwidgets-git kcoreaddons-git kdbusaddons-git kiconthemes-git ki18n-git kio-git kitemviews-git knotifications-git knotifyconfig-git kstatusnotifieritem-git kwallet-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git qt6-base)
+makedepends=(git boost extra-cmake-modules-git kdoctools-git libktorrent-git libmms)
 arch=($CARCH)
-license=(GPL LGPL FDL)
 groups=(kde-applications-git kde-network-git)
-depends=(qca-qt5-git qgpgme plasma-workspace-git kdelibs4support-git)
-makedepends=(git extra-cmake-modules-git boost libktorrent-git libmms kdoctools-git kdesignerplugin-git kinit-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('libktorrent-git: torrent support' 'libmms: MMS support')
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
