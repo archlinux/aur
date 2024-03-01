@@ -1,21 +1,22 @@
 pkgbase = kdegraphics-mobipocket-git
 	pkgdesc = A collection of plugins to handle mobipocket files
-	pkgver = 21.04.1_r258.g036fd81
+	pkgver = 24.02.0_r291.g3176868
 	pkgrel = 1
 	url = https://www.kde.org/applications/graphics/
 	arch = x86_64
 	groups = kde-applications-git
 	groups = kde-graphics-git
-	license = GPL
-	license = LGPL
-	license = FDL
+	license = GPL-2.0-or-later
+	license = LGPL-2.0-or-later
 	makedepends = git
 	makedepends = extra-cmake-modules-git
-	depends = kio-git
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-5compat
+	depends = qt6-base
 	provides = kdegraphics-mobipocket
 	conflicts = kdegraphics-mobipocket
 	source = git+https://github.com/KDE/kdegraphics-mobipocket.git
 	sha256sums = SKIP
 
 pkgname = kdegraphics-mobipocket-git
-

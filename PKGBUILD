@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kdegraphics-mobipocket-git
-pkgver=21.04.1_r258.g036fd81
+pkgver=24.02.0_r291.g3176868
 pkgrel=1
 pkgdesc="A collection of plugins to handle mobipocket files"
 url="https://www.kde.org/applications/graphics/"
-arch=($CARCH)
-license=(GPL LGPL FDL)
-depends=(kio-git)
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(gcc-libs glibc qt6-5compat qt6-base)
 makedepends=(git extra-cmake-modules-git)
+arch=($CARCH)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kde-applications-git kde-graphics-git)
