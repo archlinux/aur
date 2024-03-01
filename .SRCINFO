@@ -1,0 +1,20 @@
+pkgbase = kdsoap-qt5-git
+	pkgdesc = Qt-based client-side and server-side SOAP component
+	pkgver = 2.2.1_r1966.gd56e5ce3
+	pkgrel = 1
+	url = https://github.com/KDAB/KDSoap
+	arch = x86_64
+	license = GPL3
+	license = LGPL
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	depends = glibc
+	depends = qt5-base
+	provides = kdsoap-qt5
+	conflicts = kdsoap-qt5
+	source = git+https://github.com/KDAB/KDSoap.git
+	sha256sums = SKIP
+
+pkgname = kdsoap-qt5-git
