@@ -3,35 +3,31 @@ pkgname=simplemediaupscalerlite-bin
 _pkgname=SimpleMediaUpscalerLite
 pkgver=2.0.0
 _electronversion=24
-pkgrel=5
+pkgrel=6
 pkgdesc="A Electron & CLI frontend to upscale images/videos using multiple different algorithms"
 arch=('x86_64')
 url="https://janishutz.com/projects/smuL"
 _ghurl="https://github.com/simplePCBuilding/SimpleMediaUpscalerLite"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'hicolor-icon-theme'
-    'libffi'
-    'openssl'
-    'expat'
-    'xz'
-    'bzip2'
-    'python'
+    'python>3'
+    'mpdecimal'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/V${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('f70793f387a7028e55890b594c255312eb8a1e8e0284e4e30698be4835209d45'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data.tar.xz"
+    bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g;s|Utility|Utility;Graphics|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
