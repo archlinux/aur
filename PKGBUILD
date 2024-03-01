@@ -3,17 +3,16 @@
 # Contributor: Antonio Rojas <nqn1976 @ gmail.com>
 
 pkgname=powerdevil-git
-pkgver=5.27.80_r2797.gddd396d5
+pkgver=6.0.80_r3169.g77cec0d3
 pkgrel=1
 pkgdesc='Manages the power consumption settings of a Plasma Shell'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
-license=(LGPL)
-depends=(plasma-workspace-git bluez-qt-git networkmanager-qt-git)
+license=(LGPL-2.0-or-later)
+depends=(ddcutil gcc-libs glibc plasma-activities-git kauth-git kcmutils-git kconfig-git kcoreaddons-git kcrash-git kdbusaddons-git kglobalaccel-git ki18n-git kidletime-git kirigami-git kitemmodels-git knotifications-git ksvg-git kwindowsystem-git kxmlgui-git layer-shell-qt-git libkscreen-git libplasma-git libxcb plasma-workspace-git qt6-base qt6-declarative solid-git systemd-libs)
 makedepends=(git extra-cmake-modules-git kdoctools-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('kinfocenter-git: for the Energy Information KCM')
 groups=(plasma-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
