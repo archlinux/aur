@@ -4,14 +4,14 @@
 
 pkgname=picom-git
 _gitname=picom
-pkgver=2017_11_2024.01.20
+pkgver=2189_11.172.gcc8e0a98_2024.02.29
 pkgrel=1
 pkgdesc="X compositor (fork of compton) (git-version)"
 arch=(i686 x86_64)
 url="https://github.com/yshui/${_gitname}"
 license=('MIT' 'MPL-2.0')
-depends=('libev' 'libgl' 'libx11' 'libxcb' 'libxext' 'pcre2' 'xcb-util' 'xcb-util-image'
-         'xcb-util-renderutil' 'pixman' 'libconfig' 'libdbus' 'hicolor-icon-theme')
+depends=('hicolor-icon-theme' 'libconfig' 'libdbus' 'libepoxy' 'libev' 'libgl' 'libx11'
+         'libxcb' 'libxext' 'pcre2' 'pixman' 'xcb-util' 'xcb-util-image' 'xcb-util-renderutil')
 makedepends=('asciidoc' 'cmake' 'git' 'libglvnd' 'mesa' 'meson' 'uthash' 'xorgproto')
 optdepends=('dbus:          To control picom via D-Bus'
             'python:        For picom-convgen.py'
