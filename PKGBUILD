@@ -1,6 +1,6 @@
 pkgname=portx-bin
 _pkgname=portx
-pkgver=2.1.10
+pkgver=2.2.5
 pkgrel=1
 pkgdesc="lightweight cross-platform SSH Client"
 arch=("x86_64")
@@ -8,7 +8,7 @@ license=("Proprietary")
 url="https://portx.online/"
 depends=('gtk3' 
     'libnotify' 
-    'nss' 
+    'nss'
     'libxss' 
     'libxtst' 
     'xdg-utils' 
@@ -18,10 +18,9 @@ depends=('gtk3'
     'libsecret')
     provides=("$_pkgname")
     source=(
-        "PortX_latest_amd64.deb"::https://cdn.netsarang.net/0ac7ea20/PortX-latest-amd64.deb
+        "PortX_latest_amd64.deb"::https://cdn.netsarang.com/0ac7ea20/PortX-latest-amd64.deb
     )
-sha256sums=('755ee2d65c476c55a751376b2e25d991b1074e4e5c8c72ba43bee7dab80b35a9')
-
+sha256sums=('51eba45d1826f5fbe283aaea3f3d621e8dc7c9767425c18091f4cbb0a6e4fbac')
 package(){
     cd "${srcdir}"
     tar -xvf data.tar.xz -C "${pkgdir}"

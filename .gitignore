@@ -1,2 +1,5 @@
 /src
 /PortX_latest_amd64.deb
+/pkg
+/portx-bin*
+
