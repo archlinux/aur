@@ -1,6 +1,6 @@
 pkgbase = kemoticons-git
 	pkgdesc = Support for emoticons and emoticons themes
-	pkgver = 5.83.0_r372.g489b3d9
+	pkgver = _r438.g71a6fea
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = kemoticons-git
 	makedepends = extra-cmake-modules-git
 	makedepends = doxygen
 	makedepends = qt5-tools
-	depends = karchive-git
-	depends = kservice-git
+	makedepends = qt5-doc
+	depends = karchive5-git
+	depends = kservice5-git
 	provides = kemoticons
 	conflicts = kemoticons
 	source = git+https://github.com/KDE/kemoticons.git
 	sha256sums = SKIP
 
 pkgname = kemoticons-git
-
