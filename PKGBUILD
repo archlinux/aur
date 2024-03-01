@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kactivities-stats-git
-pkgver=5.240.0_r436.gac74660
+pkgver=_r475.g1681763
 pkgrel=1
 arch=($CARCH)
 pkgdesc="A library for accessing the usage data collected by the activities system"
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(kactivities-git)
-makedepends=(git extra-cmake-modules-git boost doxygen qt6-tools)
+depends=(gcc-libs glibc kactivities-git kconfig-git qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf6-git)
