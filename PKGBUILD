@@ -3,17 +3,16 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kguiaddons-git
-pkgver=5.240.0_r569.g9857742
+pkgver=6.0.0_r592.gb92d00d
 pkgrel=1
 pkgdesc='Addons to QtGui'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(qt6-base)
-makedepends=(git extra-cmake-modules-git clang python-pyqt6 doxygen qt6-tools sip plasma-wayland-protocols-git qt6-wayland)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(gcc-libs glibc libx11 qt6-base qt6-wayland wayland)
+makedepends=(git doxygen extra-cmake-modules-git plasma-wayland-protocols-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('python-pyqt6: for the Python bindings')
 groups=(kf6-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
