@@ -1,6 +1,6 @@
 pkgbase = kdesignerplugin-git
 	pkgdesc = Integration of Frameworks widgets in Qt Designer/Creator
-	pkgver = 5.113.0_r441.g9fed54a
+	pkgver = 5.116.0_r466.g9f25b26
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = kdesignerplugin-git
 	makedepends = git
 	makedepends = extra-cmake-modules-git
 	makedepends = qt5-tools
-	makedepends = kdoctools-git
-	depends = kconfig-git
-	depends = kcoreaddons-git
+	makedepends = kdoctools5-git
+	depends = kconfig5-git
+	depends = kcoreaddons5-git
 	provides = kdesignerplugin
 	conflicts = kdesignerplugin
 	source = git+https://github.com/KDE/kdesignerplugin.git#branch=kf5
