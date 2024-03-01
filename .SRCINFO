@@ -1,12 +1,12 @@
 pkgbase = pac-pacman-aliases
 	pkgdesc = Add pac with apt-like pacman aliases, completions, and globbing search pattern support
-	pkgver = 1.9.5
+	pkgver = 1.9.6
 	pkgrel = 1
 	url = https://github.com/bbedward/pac-pacman-aliases
 	arch = any
 	license = MIT
 	conflicts = pac-wrapper
-	source = https://github.com/bbedward/pac-pacman-aliases/releases/download/v1.9.5/source_code_v1.9.5.zip
+	source = https://github.com/bbedward/pac-pacman-aliases/releases/download/v1.9.6/source_code_v1.9.6.zip
 	sha256sums = SKIP
 
 pkgname = pac-pacman-aliases
