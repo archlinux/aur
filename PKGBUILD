@@ -3,9 +3,9 @@
 pkgname="discordrpc-v2"
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Fast Discord RPC Client written in Rust. - xxandr's fork"
+pkgdesc="Fast Discord RPC Client written in Rust. - XDR's fork"
 arch=('any')
-url="https://github.com/XandrCopyrighted/discordrpc"
+url="https://codeberg.org/XDR/DiscordRPC"
 license=('GPL3')
 
 source=(

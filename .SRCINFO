@@ -1,8 +1,8 @@
 pkgbase = discordrpc-v2
-	pkgdesc = Fast Discord RPC Client written in Rust. - xxandr's fork
+	pkgdesc = Fast Discord RPC Client written in Rust. - XDR's fork
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/XandrCopyrighted/discordrpc
+	url = https://codeberg.org/XDR/DiscordRPC
 	arch = any
 	license = GPL3
 	provides = discordrpc
