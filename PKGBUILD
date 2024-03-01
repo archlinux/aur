@@ -8,8 +8,8 @@
 pkgname='python-jira'
 _pkgname='jira'
 pkgdesc='Python library to work with Jira APIs'
-pkgver='3.6.0'
-pkgrel=1
+pkgver=3.6.0
+pkgrel=2
 url='https://github.com/pycontribs/jira'
 license=('BSD-2-Clause')
 arch=('any')
@@ -42,15 +42,11 @@ prepare() {
 	ls -lah "${srcdir}"
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	patch -p1 < "${srcdir}/pyproject.toml.patch"
-	sed -i \
-		-e '/tool.setuptools_scm/d' \
-		-e '/dynamic = \["version"\]/d' \
-		-e "/^\[project\]$/a version = \"${pkgver}\"" \
-		pyproject.toml
 }
 
 build() {
 	cd "${srcdir}/jira-${pkgver}"
+	export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
 	python -m build --wheel --no-isolation
 }
 
