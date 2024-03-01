@@ -3,14 +3,14 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=akonadi-calendar-git
-pkgver=5.18.40_r1958.gbaae021
+pkgver=6.0.40_r2655.g78fbfea3
 pkgrel=1
 pkgdesc="Akonadi calendar integration"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(LGPL)
-depends=(kmailtransport-git kcalutils-git akonadi-contacts-git)
-makedepends=(git extra-cmake-modules-git boost)
+license=(LGPL-2.0-or-later)
+depends=(akonadi-contacts-git akonadi-mime-git gcc-libs glibc gpgme kcalendarcore-git kcalutils-git kcodecs-git kconfig-git kcontacts-git kcoreaddons-git kdbusaddons-git ki18n-git kidentitymanagement-git kio-git kitemmodels-git kmailtransport-git kmime-git knotifications-git kservice-git kwidgetsaddons-git kxmlgui-git libakonadi-git libkleo-git messagelib-git qgpgme-qt6 qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kdepim-git)
