@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=libksieve-git
-pkgver=5.18.40_r1551.gfc1ed601
+pkgver=6.0.40_r2255.g78e52c24
 pkgrel=1
 pkgdesc="KDE PIM library for managing sieves"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(LGPL)
-depends=(kidentitymanagement-git pimcommon-git kmailtransport-git)
-makedepends=(git extra-cmake-modules-git boost kdoctools-git)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc kcolorscheme-git kcompletion-git kconfig-git kconfigwidgets-git kcoreaddons-git ki18n-git kiconthemes-git kidentitymanagement-git kio-git kmime-git ktextaddons-git kwidgetsaddons-git libkdepim-git libsasl pimcommon-git qt6-base qt6-webengine sonnet-git syntax-highlighting-git)
+makedepends=(git doxygen extra-cmake-modules-git kdoctools-git kmailtransport-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kdepim-git)
