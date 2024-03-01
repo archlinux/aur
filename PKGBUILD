@@ -10,7 +10,7 @@ arch=('any')
 url="http://musicfree.upup.fun/"
 _ghurl="https://github.com/maotoumao/MusicFreeDesktop"
 _pluginurl="https://gitee.com/maotoumao/MusicFreePlugins/raw/master/plugins.json"
-license=('GPL-1.0-only')
+license=('GPL-3.0-only')
 conflicts=("${pkgname%-git}")
 depends=(
     "electron${_electronversion}"
@@ -28,7 +28,7 @@ source=(
 )
 options=('!strip')
 sha256sums=('SKIP'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -42,10 +42,10 @@ _ensure_local_nvm() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
-        -e "s|@appasar@|app|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -f -q -n --categories "AudioVideo" --name "${_appname}" --exec "${pkgname%-git} %U"
+    gendesk -f -q -n --categories="AudioVideo" --name="${_appname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -57,9 +57,6 @@ build() {
     HOME="${srcdir}/.electron-gyp"
     npm install
     npm run package
-    cd "${srcdir}/${pkgname%-git}.git/out/${_appname%Desktop}-linux-"*/resources
-    echo -e "\nprocess.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'" >> app/.webpack/main/index.js
-    cp -r res app
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
