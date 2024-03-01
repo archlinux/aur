@@ -6,7 +6,7 @@
 pkgname=neo4j-community
 _pkgname=neo4j
 pkgver=5.17.0
-pkgrel=1
+pkgrel=2
 _java_version=17
 pkgdesc="A fully transactional graph database implemented in Java"
 arch=(any)
@@ -140,6 +140,6 @@ package() {
 
   # Systemd files
   install -Dm644 -t "$pkgdir/usr/lib/systemd/system" "$srcdir/neo4j.service"
-  install -Dm644 -t "$pkgdir/usr/lib/sysusers.d" "$srcdir/neo4j.sysusers"
-  install -Dm644 -t "$pkgdir/usr/lib/tmpfiles.d" "$srcdir/neo4j.tmpfiles"
+  install -Dm644 "$srcdir/neo4j.sysusers" "$pkgdir/usr/lib/sysusers.d/neo4j.conf"
+  install -Dm644 "$srcdir/neo4j.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/neo4j.conf"
 }

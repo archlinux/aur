@@ -1,7 +1,7 @@
 pkgbase = neo4j-community
 	pkgdesc = A fully transactional graph database implemented in Java
 	pkgver = 5.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/neo4j/neo4j
 	arch = any
 	license = GPL-3.0-only
