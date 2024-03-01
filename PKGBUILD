@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcoreaddons-git
-pkgver=6.0.0_r2005.gc7888a94
+pkgver=6.0.0_r2010.g9460614c
 pkgrel=1
 pkgdesc='Addons to QtCore'
 arch=($CARCH)
