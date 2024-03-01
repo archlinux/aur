@@ -3,17 +3,16 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwidgetsaddons-git
-pkgver=5.240.0_r1166.g649c8b2f
+pkgver=6.0.0_r1303.g557e18ec
 pkgrel=1
 pkgdesc='Addons to QtWidgets'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(qt6-base)
-makedepends=(git extra-cmake-modules-git qt6-tools clang python-pyqt6 doxygen sip)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(gcc-libs glibc qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('python-pyqt6: for the Python bindings')
 groups=(kf6-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
