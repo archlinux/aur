@@ -1,3 +1,4 @@
+[python-sshpubkeys]
 source = "pypi"
 pypi = "sshpubkeys"
 prefix = "v"
