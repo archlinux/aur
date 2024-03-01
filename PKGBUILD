@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdoctools-git
-pkgver=6.0.0_r832.g699dd24
+pkgver=6.0.0_r834.g83c776b
 pkgrel=1
 pkgdesc='Documentation generation from docbook'
 arch=($CARCH)
