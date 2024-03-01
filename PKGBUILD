@@ -2,7 +2,7 @@
 pkgname=jlivertool-bin
 pkgver=2.1.1
 _electronversion=26
-pkgrel=1
+pkgrel=2
 pkgdesc="Bilibili 弹幕机"
 arch=('x86_64')
 url="https://github.com/Xinrea/JLiverTool"
@@ -20,11 +20,11 @@ source=(
 )
 sha256sums=('e0db716a2ca6258d144bf5f03b3dd98862a8760286c2190f704dce4761b89479'
             '5d86e387ac33cf32eee9c968d38483a30567690b843c3768b35fe4bc55b455a8'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     sed "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
