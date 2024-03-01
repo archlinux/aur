@@ -1,6 +1,6 @@
 pkgbase = wlogout
 	pkgdesc = Logout menu for wayland
-	pkgver = 1.2
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/ArtsyMacaw/wlogout
 	arch = x86_64
@@ -11,11 +11,10 @@ pkgbase = wlogout
 	depends = gtk3
 	depends = gobject-introspection
 	depends = gtk-layer-shell
-	optdepends = swaylock: default buttons
-	source = wlogout-1.2.tar.gz::https://github.com/ArtsyMacaw/wlogout/releases/download/1.2/wlogout.tar.gz
-	source = wlogout-1.2.tar.gz.sig::https://github.com/ArtsyMacaw/wlogout/releases/download/1.2/wlogout.tar.gz.sig
+	source = wlogout-1.2.1.tar.gz::https://github.com/ArtsyMacaw/wlogout/releases/download/1.2.1/wlogout.tar.gz
+	source = wlogout-1.2.1.tar.gz.sig::https://github.com/ArtsyMacaw/wlogout/releases/download/1.2.1/wlogout.tar.gz.sig
 	validpgpkeys = F4FDB18A9937358364B276E9E25D679AF73C6D2F
-	md5sums = 8a4695ad3f6451fe5f43960bcf8f14d4
+	md5sums = 705a12400cc99284a087a7975c09da50
 	md5sums = SKIP
 
 pkgname = wlogout
