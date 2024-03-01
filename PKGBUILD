@@ -3,7 +3,7 @@ pkgname=lumen-bin
 _pkgname=Project.L.U.M.E.N.
 pkgver=1.2.2
 _electronversion=25
-pkgrel=6
+pkgrel=7
 pkgdesc="A simple and modulable personal assistant built on Electron."
 arch=('x86_64')
 url="https://github.com/L-U-M-E-N/lumen-desktop"
@@ -22,13 +22,13 @@ source=(
 )
 noextract=("${pkgname%-bin}-${pkgver}.zip")
 sha256sums=('37e1d2848757207cf3bb29fe43fe63e1791e31211eb9f5f1a209828653818843'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-bin} %U"
+    gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
     install -Dm755 -d "${srcdir}/${pkgname%-bin}"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/${pkgname%-bin}"
 }
