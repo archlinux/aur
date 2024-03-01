@@ -5,14 +5,14 @@
 # Contributor: Henri Chain <henri@henricha.in>
 
 pkgname=kdecoration-git
-pkgver=5.27.80_r355.ge46c579
+pkgver=6.0.80_r416.g8acedda
 pkgrel=1
 pkgdesc='Plugin based library to create window decorations'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
-license=(LGPL)
-depends=(ki18n-git)
-makedepends=(git extra-cmake-modules-git kcoreaddons-git)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc ki18n-git qt6-base)
+makedepends=(git extra-cmake-modules-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(plasma-git)
