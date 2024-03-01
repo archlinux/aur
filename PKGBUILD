@@ -3,14 +3,15 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kinfocenter-git
-pkgver=5.27.80_r2448.g03574bef
+pkgver=6.0.80_r2678.g5420533f
 pkgrel=1
 pkgdesc='A utility that provides information about a computer system'
 arch=($CARCH)
 url='https://www.kde.org/applications/system/kinfocenter/'
-license=(LGPL)
-depends=(systemsettings-git glu)
-makedepends=(git extra-cmake-modules-git plasma-framework-git kdoctools-git)
+license=(LGPL-2.0-or-later)
+depends=(aha clinfo dmidecode gcc-libs glibc glu kauth-git kcmutils-git kconfig-git kcoreaddons-git kdeclarative-git ki18n-git kio-git kirigami-git kservice-git kwidgetsaddons-git libusb mesa-utils qt6-base qt6-declarative sh-git solid-git systemsettings-git vulkan-tools wayland-utils xorg-xdpyinfo)
+makedepends=(git extra-cmake-modules-git fwupd kdoctools-git)
+optdepends=('fwupd: firmware security module')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(plasma-git)
