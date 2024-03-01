@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=akuse
 _pkgname=Akuse
-pkgver=0.6.0
+pkgver=0.7.0
 _electronversion=25
 pkgrel=1
 pkgdesc="Simple and easy to use anime streaming desktop app without ads."
@@ -25,7 +25,7 @@ source=(
 )
 sha256sums=('SKIP'
             '091d0d9b3a06579647ed4c1989d7edff13754cec34fcdbb7fbc24529bd01ed48'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
