@@ -1,7 +1,7 @@
 pkgbase = kando-bin
 	pkgdesc = A pie menu for the desktop. It will be highly customizable and will allow you to create your own menus and actions.
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ko-fi.com/post/Introducing-Ken-Do-L3L7L0FQ2
 	arch = x86_64
 	license = MIT
@@ -13,6 +13,6 @@ pkgbase = kando-bin
 	source = kando.sh
 	sha256sums = 780c73cbd2dd350e76df5a045314901b0305feff4a20c80060c2e4424e52591a
 	sha256sums = fd6cb731b549de5452efacb0833cda7a328eb5263537d29ca18de9d7938f7bab
-	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = kando-bin
