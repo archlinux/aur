@@ -4,13 +4,13 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kwrited-git
-pkgver=5.27.80_r546.gafa7c21
+pkgver=6.0.80_r566.gfa6f9d5
 pkgrel=1
 pkgdesc='KDE daemon listening for wall and write messages'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
-license=(LGPL)
-depends=(kpty-git knotifications-git kdbusaddons-git)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc kcoreaddons-git kdbusaddons-git knotifications-git kpty-git qt6-base)
 makedepends=(git extra-cmake-modules-git kdoctools-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
