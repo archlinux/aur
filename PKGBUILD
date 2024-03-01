@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=upscayl-git
 _pkgname=Upscayl
-pkgver=2.9.9.r3.g39c6d2a
+pkgver=2.10.0.r0.gc759638
 pkgrel=1
 _electronversion=27
 _nodeversion=18
@@ -28,7 +28,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -54,21 +54,18 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
-    # Just build Linux AppImage
-    sed -e '/"zip",/d;/"deb",/d;/"rpm"/d;s|"AppImage",|"AppImage"|g' \
-        -e '27i\  "repository": "https://github.com/TGS963/upscayl",' \
-        -e '109,170d' \
-        -i package.json
+    sed "s|-l zip|-l zip --publish never|g" -i package.json
     npm install
-    npm run dist:linux
-    sed "s|${pkgname%-git}-run|${pkgname%-git}|g;s|org.${pkgname%-git}.${_pkgname}|${pkgname%-git}|g" \
-        -i "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/org.${pkgname%-git}.${_pkgname}.desktop
+    npm run dist:zip
+    sed -e "s|${pkgname%-git}-run|${pkgname%-git}|g;s|org.${pkgname%-git}.${_pkgname}|${pkgname%-git}|g" \
+        -e "5i\Icon=${pkgname%-git}" \
+        -i "${srcdir}/${pkgname//-/.}/org.${pkgname%-git}.${_pkgname}.desktop"
 }
 package(){
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/{app.asar,*.png} -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -r "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/{app.asar.unpacked,bin,models} "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -r "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/* "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/"org.${pkgname%-git}.${_pkgname}.desktop" \
+    install -Dm644 "${srcdir}/${pkgname//-/.}/org.${pkgname%-git}.${_pkgname}.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
 }
