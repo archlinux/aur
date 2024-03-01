@@ -20,7 +20,7 @@ build() {
     else
 	cmake -S. -Bbuild -DBUILD_PYTHON:BOOL=ON
     fi
-    cmake --build build
+    cmake --build build -j
 }
 
 package() {
