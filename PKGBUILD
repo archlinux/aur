@@ -3,18 +3,17 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=breeze-git
-pkgver=5.27.80_r2749.ga6e24edc
+pkgver=6.0.80_r2864.gbca12f7a
 pkgrel=1
 arch=($CARCH)
 pkgdesc='Artwork, styles and assets for the Breeze visual style for the Plasma Desktop'
 url='https://kde.org/plasma-desktop/'
-license=(LGPL)
-depends=(frameworkintegration5 kdecoration-git breeze-icons-git kwayland-git hicolor-icon-theme kirigami2-git kirigami-addons-git)
-makedepends=(git extra-cmake-modules-git kcmutils5)
+license=(LGPL-2.0-or-later)
+depends=(breeze-icons-git frameworkintegration-git gcc-libs glibc kcmutils-git kcolorscheme-git kconfig-git kcoreaddons-git kdecoration-git kguiaddons-git ki18n-git kiconthemes-git kirigami-git kwidgetsaddons-git kwindowsystem-git qt6-base qt6-declarative)
+makedepends=(git extra-cmake-modules-git frameworkintegration5-git kconfigwidgets5-git kiconthemes5-git kirigami2-git kwindowsystem5-git)
+optdepends=('breeze-gtk-git: Breeze widget style for GTK applications')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('breeze-gtk-git: Breeze widget style for GTK applications'
-            'kcmutils-git: for breeze-settings')
 groups=(plasma-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
