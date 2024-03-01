@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kalarm-git
-pkgver=21.11.40_r6410.g503c8fd5
+pkgver=24_r8847.g8f317e04
 pkgrel=1
 pkgdesc='Personal alarm scheduler'
 arch=($CARCH)
 url='https://apps.kde.org/kalarm/'
-license=(GPL2)
-depends=(phonon-qt5-git kidletime-git knotifyconfig-git pimcommon-git kmailtransport-git)
-makedepends=(git extra-cmake-modules-git kdoctools-git boost mailcommon-git)
+license=(GPL-2.0-or-later)
+depends=(akonadi-contacts-git akonadi-mime-git gcc-libs glibc kauth-git kcalendarcore-git kcalutils-git kcodecs-git kcolorscheme-git kcompletion-git kconfig-git kconfigwidgets-git kcontacts-git kcoreaddons-git kcrash-git kdbusaddons-git kglobalaccel-git kguiaddons-git kholidays-git ki18n-git kidentitymanagement-git kio-git kitemmodels-git kmailtransport-git kmime-git knotifications-git knotifyconfig-git kstatusnotifieritem-git ktextaddons-git ktextwidgets-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git libakonadi-git phonon-qt6-git qt6-5compat qt6-base)
+makedepends=(git extra-cmake-modules-git kdoctools-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kde-applications-git kdepim-git)
