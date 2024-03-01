@@ -1,0 +1,15 @@
+pkgbase = idris2-lsp-lib-git
+	pkgdesc = LSP Library for Idris2
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/idris-community/LSP-lib
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	depends = idris2
+	provides = idris2-lsp-lib
+	conflicts = idris2-lsp-lib
+	source = idris2-lsp-lib::git+https://github.com/idris-community/LSP-lib.git
+	sha256sums = SKIP
+
+pkgname = idris2-lsp-lib-git
