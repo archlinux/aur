@@ -4,14 +4,14 @@
 # Contributor: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=kpackage-git
-pkgver=5.240.0_r822.g77e31fa
+pkgver=6.0.0_r1037.g5adb7f8
 pkgrel=1
 pkgdesc='Framework that lets applications manage user installable packages of non-binary assets'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(karchive-git ki18n-git kcoreaddons-git)
-makedepends=(git extra-cmake-modules-git qt6-tools kdoctools-git doxygen)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(gcc-libs glibc karchive-git kcoreaddons-git ki18n-git qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git kdoctools-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf6-git)
