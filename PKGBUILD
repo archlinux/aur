@@ -3,14 +3,14 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=libksysguard-git
-pkgver=5.27.80_r2664.gea2fb0db
+pkgver=6.0.80_r2850.gdd31c3a5
 pkgrel=1
 pkgdesc='Library to retrieve information on the current status of computer hardware'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
-license=(LGPL)
-depends=(libxres qt6-webengine kdeclarative-git knewstuff-git)
-makedepends=(git extra-cmake-modules-git kdoctools-git qt6-tools)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc kauth-git kcolorscheme-git kconfig-git kconfigwidgets-git kcoreaddons-git kdeclarative-git kglobalaccel-git ki18n-git kio-git kitemmodels-git kjobwidgets-git knewstuff-git kpackage-git kquickcharts-git kservice-git kwidgetsaddons-git kwindowsystem-git libnl libpcap libx11 libxres lm_sensors qt6-base qt6-declarative qt6-webchannel qt6-webengine solid-git zlib)
+makedepends=(git extra-cmake-modules-git qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(plasma-git)
