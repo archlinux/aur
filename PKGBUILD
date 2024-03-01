@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=akonadiconsole-git
-pkgver=21.11.40_r1501.g7eef7f3
+pkgver=24.04.40_r1904.gc705e9a
 pkgrel=1
 pkgdesc='Akonadi management and debugging console'
 arch=($CARCH)
 url='https://kontact.kde.org'
-license=(GPL2)
-depends=(calendarsupport-git messagelib-git)
-makedepends=(git extra-cmake-modules-git kdoctools-git boost)
+license=(GPL-2.0-or-later)
+depends=(akonadi-contacts-git akonadi-search-git calendarsupport-git gcc-libs glibc kcalendarcore-git kcolorscheme-git kcompletion-git kconfig-git kconfigwidgets-git kcontacts-git kcoreaddons-git kcrash-git kdbusaddons-git ki18n-git kitemmodels-git kmime-git ktextwidgets-git kwidgetsaddons-git kxmlgui-git libakonadi-git libkdepim-git messagelib-git qt6-base xapian-core)
+makedepends=(git extra-cmake-modules-git kdoctools-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kde-applications-git kdepim-git)
