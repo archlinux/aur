@@ -1,7 +1,7 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=python-qualia-plugin-snn
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Support for Spiking Neural Networks in Qualia"
 arch=('any')
