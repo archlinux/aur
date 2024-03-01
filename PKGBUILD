@@ -1,7 +1,7 @@
 # Maintainer: Jaron Kent-Dobias <jaron@kent-dobias.com>
 
 pkgname=clad
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc='Enables automatic differentiation for C++'
 arch=(x86_64)
