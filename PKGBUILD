@@ -2,15 +2,15 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=ksquares-git
-pkgver=21.11.70_r515.gb36c79b
+pkgver=24.04.70_r750.g16e101d
 pkgrel=1
 pkgdesc='A game modeled after the well known pen and paper based game of Dots and Boxes'
 url='https://apps.kde.org/ksquares/'
-arch=($CARCH)
-license=(GPL LGPL FDL)
-groups=(kde-applications-git kde-games-git)
-depends=(libkdegames-git hicolor-icon-theme) 
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(gcc-libs glibc kcompletion-git kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git kdbusaddons-git ki18n-git kwidgetsaddons-git kxmlgui-git libkdegames-git qt6-base)
 makedepends=(git extra-cmake-modules-git kdoctools-git)
+arch=($CARCH)
+groups=(kde-applications-git kde-games-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
