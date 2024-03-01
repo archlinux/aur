@@ -4,14 +4,14 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kwalletmanager-git
-pkgver=23.07.70_r1464.g6a4a01b
+pkgver=24.04.70_r1633.g2dd665d
 pkgrel=1
 pkgdesc='Wallet management tool'
 arch=($CARCH)
 url='https://www.kde.org/applications/system/kwalletmanager/'
-license=(LGPL)
-depends=(kio-git hicolor-icon-theme)
-makedepends=(git extra-cmake-modules-git kcmutils-git kdoctools-git)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc karchive-git kauth-git kcmutils-git kcodecs-git kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git kdbusaddons-git ki18n-git kio-git kitemviews-git kservice-git kstatusnotifieritem-git kwallet-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git qt6-base)
+makedepends=(git extra-cmake-modules-git kdoctools-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kde-applications-git kde-utilities-git)
