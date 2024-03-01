@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pear-rec-git
-pkgver=1.3.11.r1.g706bdab
+pkgver=1.3.12.r1.gf0aff8d
 _electronversion=26
 pkgrel=1
 pkgdesc="An open-source, cross-platform terminal for seamless workflows"
@@ -28,7 +28,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -38,7 +38,7 @@ build() {
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
-    gendesk -f -n -q --categories "Utility" --exec "${pkgname%-git} %U"
+    gendesk -f -n -q --categories="Utility" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
