@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=libkdegames-git
-pkgver=21.04.3_r2188.g14d1d4d0
+pkgver=24.01.90_r2477.gfa095b60
 pkgrel=1
 pkgdesc='Common code and data for many KDE games'
 url='https://www.kde.org/'
-arch=($CARCH)
-license=(GPL LGPL FDL)
-depends=(kdeclarative-git kdnssd-git knewstuff-git)
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(gcc-libs glibc karchive-git kcolorscheme-git kcompletion-git kconfig-git kconfigwidgets-git kcoreaddons-git kdnssd-git kguiaddons-git ki18n-git knewstuff-git kwidgetsaddons-git kxmlgui-git libsndfile openal qt6-base qt6-declarative qt6-svg)
 makedepends=(git extra-cmake-modules-git)
+arch=($CARCH)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
