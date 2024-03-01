@@ -3,14 +3,14 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdeclarative-git
-pkgver=5.240.0_r1112.g834d8a0
+pkgver=6.0.0_r1259.gaee973e1
 pkgrel=1
 pkgdesc='Provides integration of QML and KDE Frameworks'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(kio-git kpackage-git libepoxy)
-makedepends=(git extra-cmake-modules-git doxygen qt6-tools)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(gcc-libs glibc kconfig-git kguiaddons-git kglobalaccel-git kguiaddons-git ki18n-git kwidgetsaddons-git qt6-base qt6-declarative)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-shadertools qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf6-git)
