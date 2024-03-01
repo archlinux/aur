@@ -1,14 +1,15 @@
 pkgbase = r-gridgraphics
 	pkgdesc = Redraw Base Graphics Using 'grid' Graphics
 	pkgver = 0.5.1
-	pkgrel = 4
+	pkgrel = 11
 	url = https://cran.r-project.org/package=gridGraphics
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = r
 	optdepends = r-magick
 	optdepends = r-pdftools
 	source = https://cran.r-project.org/src/contrib/gridGraphics_0.5-1.tar.gz
-	sha256sums = 29086e94e63891884c933b186b35511aac2a2f9c56967a72e4050e2980e7da8b
+	md5sums = ec6a5183d4597929f18ae491b9adecf9
+	b2sums = 6ee9cac3e7cfcb8e1b598b14a49fd9521c86995d0d9634c9efd4c1afaf746a50510c74d5d4f9798002333f37cafdf93700022fb9fa15c97376bd70de55f05b0f
 
 pkgname = r-gridgraphics
