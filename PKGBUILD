@@ -1,13 +1,13 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kio-admin-git
-pkgver=1.0_r95.ge884510
-pkgrel=2
+pkgver=${RELEASE_SERVICE_VERSION}_r235.g1931921
+pkgrel=1
 pkgdesc='Manage files as administrator using the admin:// KIO protocol.'
 arch=($CARCH)
 url="https://github.com/KDE/${pkgname%-git}"
-license=(BSD GPL)
-depends=(kio-git)
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(gcc-libs glibc kcoreaddons-git ki18n-git kio-git polkit-qt6-git qt6-base)
 makedepends=(git extra-cmake-modules-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
