@@ -1,2 +1,3 @@
+[python-pg8000]
 source = "pypi"
 pypi = "pg8000"
