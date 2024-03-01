@@ -1,20 +1,19 @@
 pkgbase = libime-jyutping
 	pkgdesc = A library make use of libime to implement jyutping (粵拼) input method, also includes engine for fcitx 5.
-	pkgver = 1.0.9
+	pkgver = 1.0.10
 	pkgrel = 1
 	url = https://github.com/fcitx/libime-jyutping
 	arch = x86_64
-	license = LGPL
-	license = GPL3
+	license = LGPL-2.1-or-later
 	makedepends = boost
 	makedepends = extra-cmake-modules
 	makedepends = fmt
 	makedepends = ninja
 	depends = fcitx5-chinese-addons
-	source = https://download.fcitx-im.org/fcitx5/libime-jyutping/libime-jyutping-1.0.9_dict.tar.xz
-	source = https://download.fcitx-im.org/fcitx5/libime-jyutping/libime-jyutping-1.0.9_dict.tar.xz.sig
+	source = https://download.fcitx-im.org/fcitx5/libime-jyutping/libime-jyutping-1.0.10_dict.tar.xz
+	source = https://download.fcitx-im.org/fcitx5/libime-jyutping/libime-jyutping-1.0.10_dict.tar.xz.sig
 	validpgpkeys = 2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9
-	sha512sums = 54f2e4a42b2fbfd8e8314911b405eeb6df4805bc34fe143faa77d9a9bb679256d756175f6240e52174735fc75f5beb3ed0a905600f0fdc089e68a75c949c1334
+	sha512sums = e104ceda5908f478435e4c15308ba440f661cff064f723154da09ed549e5f6614e4d4082a543f86d1ae21817b750950dc957f24a1d753247903b9d5dada613a1
 	sha512sums = SKIP
 
 pkgname = libime-jyutping
