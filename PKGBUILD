@@ -3,12 +3,12 @@
 
 pkgname=plasma-integration-git
 pkgver=6.0.80_r799.g9338c3c
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt Platform Theme integration plugins for the Plasma workspaces"
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL-2.0-or-later)
-depends=(gcc-libs glibc kcolorscheme-git kcompletion-git kconfig-git kcoreaddons-git kguiaddons-git kiconthemes-git ki18n-git kio-git kjobwidgets-git kservice-git kstatusnotifieritem-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git libxcb libxcursor qqc2-breeze-style-git qqc2-desktop-style-git qt6-base qt6-declarative qt6-wayland-git wayland-git)
+depends=(gcc-libs glibc kcolorscheme-git kcompletion-git kconfig-git kcoreaddons-git kguiaddons-git kiconthemes-git ki18n-git kio-git kjobwidgets-git kservice-git kstatusnotifieritem-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git libxcb libxcursor qqc2-breeze-style-git qqc2-desktop-style-git qt6-base qt6-declarative qt6-wayland wayland)
 makedepends=(git extra-cmake-modules-git plasma-wayland-protocols-git kconfig5-git ki18n5-git kiconthemes5-git kio5-git knotifications5-git kwayland5-git kwindowsystem5-git kxmlgui5-git qt5-base qt5-declarative qt5-quickcontrols2 qt5-wayland-git qt5-x11extras)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
