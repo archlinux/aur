@@ -1,0 +1,18 @@
+pkgbase = wlx-overlay-s-git
+        pkgdesc = Wayland/X11 desktop overlay for SteamVR and OpenXR
+        pkgver = r147.a8582b6
+        pkgrel = 1
+        url = https://github.com/galister/wlx-overlay-s
+        arch = x86_64
+        license = GPL3
+        makedepends = git
+        makedepends = rust
+        makedepends = binutils
+        makedepends = fakeroot
+        depends = fontconfig
+        provides = wlx-overlay-s
+        conflicts = wlx-overlay-s
+        source = git+https://github.com/galister/wlx-overlay-s.git
+        sha256sums = SKIP
+ 
+pkgname = wlx-overlay-s-git
