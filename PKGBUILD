@@ -4,14 +4,14 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdelibs4support-git
-pkgver=5.113.0_r1261.gec297bf3
+pkgver=5.116.0_r1299.ge847064c
 pkgrel=1
 pkgdesc='Porting aid from KDELibs4'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(kunitconversion5 kitemmodels5 kemoticons kparts5 perl)
-makedepends=(git extra-cmake-modules kdoctools5 qt5-tools networkmanager perl-uri kdesignerplugin)
+depends=(kunitconversion5-git kitemmodels5-git kemoticons-git kparts5-git perl)
+makedepends=(git extra-cmake-modules-git kdoctools5-git qt5-tools networkmanager perl-uri kdesignerplugin-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf5-aids-git)
