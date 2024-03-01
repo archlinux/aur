@@ -19,19 +19,20 @@ source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-        cd "$srcdir/$_pkgname"
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/$_pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-        cd "$srcdir/$_pkgname"
-        cargo build --release
+	cd "$srcdir/$_pkgname"
+	cargo build --release
 }
 
 package() {
-        cd "$srcdir/$_pkgname"
-        install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-        install -Dm755 target/release/wlx-overlay-s -t "$pkgdir/usr/bin/"
+	cd "$srcdir/$_pkgname"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm755 target/release/wlx-overlay-s -t "$pkgdir/usr/bin/"
 
-        install -Dm644 "$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
-        install -Dm644 "$_pkgname.png" -t "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
+	install -Dm644 "$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
+	install -Dm644 "$_pkgname.png" -t "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
+}
