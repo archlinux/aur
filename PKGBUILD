@@ -2,15 +2,15 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kspaceduel-git
-pkgver=21.11.70_r632.gda4dd85
+pkgver=24.04.70_r823.gd584d92
 pkgrel=1
 pkgdesc='Each of two possible players controls a satellite spaceship orbiting the sun'
 url='https://apps.kde.org/kspaceduel/'
-arch=($CARCH)
-license=(GPL LGPL FDL)
-groups=(kde-applications-git kde-games-git)
-depends=(libkdegames-git hicolor-icon-theme)
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(gcc-libs glibc kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git kdbusaddons-git ki18n-git kxmlgui-git libkdegames-git qt6-base qt6-svg)
 makedepends=(git extra-cmake-modules-git kdoctools-git)
+arch=($CARCH)
+groups=(kde-applications-git kde-games-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
