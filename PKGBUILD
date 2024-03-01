@@ -16,7 +16,7 @@ pkgname=vmware-workstation14
 pkgver=14.1.7
 _buildver=12989993
 _pkgver=${pkgver}_${_buildver}
-pkgrel=24
+pkgrel=25
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -125,8 +125,8 @@ sha256sums=(
 
   '10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e'
   '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
-  'e9f1d8bdf45513701a0c9d01a703dba677545442f678a98ebecf07f0c0891f03'
-  'f34cfe89820bb3cad727e9b410caa1120f1c8706a32b6a46b19a4cbbe9f7c2c5'
+  '1789d14b184792db3fe0191aba0e4f733097dc058e73bf8c20a0a40cba74bfd8'
+  '42cd9eeca74db7ab9493ca8824b41d7aec837992ac273f1b32601a222d654388'
 )
 options=(!strip emptydirs)
 

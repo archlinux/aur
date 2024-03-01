@@ -1,6 +1,6 @@
 --- a/vmmon/Makefile
 +++ b/vmmon/Makefile
-@@ -43,7 +43,11 @@ INCLUDE      += -I$(SRCROOT)/shared
+@@ -43,7 +43,11 @@
  endif
  
  
@@ -62,6 +62,42 @@
  static int LinuxDriverFault(struct vm_fault *fault);
  #else
  static int LinuxDriverFault(struct vm_area_struct *vma, struct vm_fault *fault);
+@@ -259,7 +261,7 @@
+ /*
+  *----------------------------------------------------------------------
+  *
+- * init_module --
++ * LinuxDriverInit --
+  *
+  *      linux module entry point. Called by /sbin/insmod command
+  *
+@@ -272,7 +274,7 @@
+  */
+ 
+ int
+-init_module(void)
++LinuxDriverInit(void)
+ {
+    int retval;
+ 
+@@ -351,7 +353,7 @@
+ /*
+  *----------------------------------------------------------------------
+  *
+- * cleanup_module --
++ * LinuxDriverExit --
+  *
+  *      Called by /sbin/rmmod
+  *
+@@ -360,7 +362,7 @@
+  */
+ 
+ void
+-cleanup_module(void)
++LinuxDriverExit(void)
+ {
+    /*
+     * XXX smp race?
 @@ -594,7 +596,12 @@ LinuxDriver_Close(struct inode *inode, /
   *-----------------------------------------------------------------------------
   */
@@ -88,6 +124,12 @@
  
     return 0;
  }
+@@ -1751,3 +1762,5 @@
+  * by default (i.e., neither mkinitrd nor modprobe will accept it).
+  */
+ MODULE_INFO(supported, "external");
++module_init(LinuxDriverInit);
++module_exit(LinuxDriverExit);
 --- a/vmmon/linux/hostif.c
 +++ a/vmmon/linux/hostif.c
 @@ -47,6 +47,8 @@
@@ -406,7 +448,7 @@
     int res;
     int signalFD = args[1];
     uint64 value = 1;  // make an eventfd happy should it be there
-@@ -2493,22 +2576,32 @@ HostIF_SemaphoreSignal(uint64 *args)  //
+@@ -2493,22 +2576,36 @@ HostIF_SemaphoreSignal(uint64 *args)  //
        return MX_WAITERROR;
     }
  
@@ -418,7 +460,11 @@
 +    */
 +   eventfd = eventfd_ctx_fileget(file);
 +   if (!IS_ERR(eventfd)) {
++#if COMPAT_LINUX_VERSION_CHECK_LT(6, 8, 0)
 +      eventfd_signal(eventfd, 1);
++#else
++      eventfd_signal(eventfd);
++#endif
 +      fput(file);
 +      return MX_WAITNORMAL;
 +   }
@@ -582,3 +628,169 @@ index 3f43c62..7eaa49a 100644
 +#endif /* COMPAT_LINUX_VERSION_CHECK_LT(6, 5, 0) */
 +
  #endif /* __PGTBL_H__ */
+From add7a6d8b99565fdfa79098315b0a69fd244eda3 Mon Sep 17 00:00:00 2001
+From: Michal Kubecek <mkubecek@suse.cz>
+Date: Fri, 12 Jan 2024 08:30:33 +0100
+Subject: [PATCH] modules: fix build with -Wmissing-prototypes
+
+Mainline commit 0fcb70851fbf ("Makefile.extrawarn: turn on
+missing-prototypes globally") in 6.8-rc1 enables -Wmissing-prototypes
+globally, revealing a lot of unclean code and also some actual problems.
+This is also the case in vmmon and vmnet modules.
+
+Most of them are addressed by making functions used only within one file
+static. A special case are Vmx86_MapPage() and Vmx86_UnmapPage() which were
+defined since Workstation 14.0.0 but they are not actually used anywhere
+until 15.0.0 so that dropping them seems to be the best option.
+
+The missing prototype of random_get_entropy_fallback() is handled by
+including <linux/timex.h> rather than <asm/timex.h>.
+
+Finally, there are four functions in vmnet module which are actually used
+in multiple files but instead of proper declarations, their prototype is
+duplicated in vmnet-only/driver.c, risking that the two copies won't match
+(which actually happened in one case). The cleanest solution would be
+creating separate header files for them (bridge.h, netif.h, userif.h and
+vnetUserListener.h) and including them in the respective source file and
+driver.c. As the developers already handle similar cases by simply putting
+the declarations into vnetInt.h, let us do the same to keep things simple.
+---
+ vmmon-only/bootstrap/monLoaderVmmon.c |  1 +
+ vmmon-only/common/vmx86.c             | 50 +--------------------------
+ vmmon-only/linux/driver.c             |  4 +--
+ vmmon-only/linux/hostif.c             |  6 ++--
+ vmnet-only/bridge.c                   |  2 +-
+ vmnet-only/driver.c                   | 16 ++-------
+ vmnet-only/vnetInt.h                  |  7 ++++
+ 7 files changed, 17 insertions(+), 69 deletions(-)
+
+diff --git a/vmmon-only/bootstrap/monLoaderVmmon.c b/vmmon-only/bootstrap/monLoaderVmmon.c
+index 6879e617..55bcd2c3 100644
+--- a/vmmon-only/bootstrap/monLoaderVmmon.c
++++ b/vmmon-only/bootstrap/monLoaderVmmon.c
+@@ -37,6 +37,7 @@
+ #include "x86paging_common.h"
+ #include "x86paging_64.h"
+ #include "vmx86.h"
++#include "monLoader.h"
+ #include "monLoaderLog.h"
+ 
+ typedef struct MonLoaderEnvContext {
+diff --git a/vmmon-only/common/vmx86.c b/vmmon-only/common/vmx86.c
+index f6b0d6fc..69455206 100644
+--- a/vmmon-only/common/vmx86.c
++++ b/vmmon-only/common/vmx86.c
+@@ -58,7 +58,7 @@
+ #include "x86svm.h"
+ #include "x86cpuid_asm.h"
+ #if defined(linux)
+-#include <asm/timex.h>
++#include <linux/timex.h>
+ #endif
+ #include "x86perfctr.h"
+ #include "x86vtinstr.h"
+@@ -3066,51 +3066,3 @@ Vmx86_GetPageRoot(VMDriver *vm,  // IN:
+    *mpn = vm->ptRootMpns[vcpuid];
+    return TRUE;
+ }
+-
+-
+-/*
+- *----------------------------------------------------------------------
+- *
+- * Vmx86_MapPage --
+- *
+- *      Maps the specified MPN into the host kernel address space.
+- *      returns the VPN of the mapping.
+- *
+- * Results:
+- *      The VPN in the kernel address space of the new mapping, or 0 if
+- *      the mapping failed.
+- *
+- * Side effects:
+- *      None.
+- *
+- *----------------------------------------------------------------------
+- */
+-
+-VPN
+-Vmx86_MapPage(MPN mpn) // IN:
+-{
+-   return HostIF_MapPage(mpn);
+-}
+-
+-
+-/*
+- *----------------------------------------------------------------------
+- *
+- * Vmx86_UnmapPage --
+- *
+- *      Unmaps the specified VPN from the host kernel address space.
+- *
+- * Results:
+- *      None.
+- *
+- * Side effects:
+- *      None.
+- *
+- *----------------------------------------------------------------------
+- */
+-
+-void
+-Vmx86_UnmapPage(VPN vpn) // IN:
+-{
+-   HostIF_UnmapPage(vpn);
+-}
+diff --git a/vmmon-only/linux/driver.c b/vmmon-only/linux/driver.c
+index f015eb0b..337b1cf8 100644
+--- a/vmmon-only/linux/driver.c
++++ b/vmmon-only/linux/driver.c
+@@ -273,7 +273,7 @@ LinuxDriverInitTSCkHz(void)
+  *----------------------------------------------------------------------
+  */
+ 
+-int
++static int
+ LinuxDriverInit(void)
+ {
+    int retval;
+@@ -361,7 +361,7 @@ LinuxDriverInit(void)
+  *----------------------------------------------------------------------
+  */
+ 
+-void
++static void
+ LinuxDriverExit(void)
+ {
+    /*
+diff --git a/vmmon-only/linux/hostif.c b/vmmon-only/linux/hostif.c
+index cac16735..f33c442a 100644
+--- a/vmmon-only/linux/hostif.c
++++ b/vmmon-only/linux/hostif.c
+@@ -2818,7 +2818,7 @@ HostIF_CallOnEachCPU(void (*func)(void*), // IN: function to call
+  *-----------------------------------------------------------------------------
+  */
+ 
+-Bool
++static Bool
+ HostIFCheckTrackedMPN(VMDriver *vm, // IN: The VM instance
+                       MPN mpn)      // IN: The MPN
+ {
+@@ -2946,7 +2946,7 @@ HostIF_ReadPhysical(VMDriver *vm,      // IN: The VM instance
+  *----------------------------------------------------------------------
+  */
+ 
+-int
++static int
+ HostIFWritePhysicalWork(MA ma,             // MA to be written to
+                         VA64 addr,         // src data to write
+                         Bool kernelBuffer, // is the buffer in kernel space?
+@@ -3085,7 +3085,7 @@ HostIF_GetCurrentPCPU(void)
+  *----------------------------------------------------------------------
+  */
+ 
+-int
++static int
+ HostIFStartTimer(Bool rateChanged,  //IN: Did rate change?
+                  unsigned int rate) //IN: current clock rate
+ {
