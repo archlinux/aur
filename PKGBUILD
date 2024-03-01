@@ -3,14 +3,14 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kidletime-git
-pkgver=5.240.0_r398.g53779a8
+pkgver=6.0.0_r424.gec86623
 pkgrel=1
 pkgdesc='Monitoring user activity'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(qt6-base libxss)
-makedepends=(git extra-cmake-modules-git doxygen qt6-tools plasma-wayland-protocols)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(gcc-libs glibc qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git libxss plasma-wayland-protocols-git qt6-doc qt6-tools qt6-wayland wayland-protocols-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf6-git)
