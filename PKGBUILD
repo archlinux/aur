@@ -3,16 +3,15 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kwin-git
-pkgver=5.27.80_r24913.gacd281f04d
+pkgver=6.0.80_r26280.gf6813258ce
 pkgrel=1
 pkgdesc='An easy to use, but flexible, composited Window Manager'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
-license=(LGPL)
-depends=(kscreenlocker-git xcb-util-cursor plasma-framework-git kcmutils-git breeze-git qt6-sensors pipewire libqaccessibilityclient-git libdrm lcms2 wayland-protocols-git libdisplay-info kglobalacceld-git)
-makedepends=(git extra-cmake-modules-git qt6-tools kdoctools-git krunner-git xorg-xwayland python)
-optdepends=('qt6-virtualkeyboard: virtual keyboard support for kwin-wayland'
-            'maliit-keyboard: virtual keyboard support for kwin-wayland')
+license=(LGPL-2.0-or-later)
+depends=(breeze-git gcc-libs glibc plasma-activities-git kauth-git kcmutils-git kcolorscheme-git kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git kdbusaddons-git kdeclarative-git kdecoration-git kglobalaccel-git kglobalacceld-git kguiaddons-git ki18n-git kidletime-git kirigami-git kitemmodels-git knewstuff-git knotifications-git kpackage-git kquickcharts-git kscreenlocker-git kservice-git ksvg-git kwayland-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git lcms2 libdisplay-info libdrm libepoxy libinput libpipewire libqaccessibilityclient-qt6-git libx11 libxcb libxcvt libxi libxkbcommon libxkbcommon-x11 mesa pipewire-session-manager python libplasma-git qt6-5compat qt6-base qt6-declarative qt6-multimedia qt6-sensors qt6-tools qt6-wayland-git systemd-libs wayland-git xcb-util-cursor xcb-util-keysyms xcb-util-wm)
+makedepends=(git extra-cmake-modules-git kdoctools-git krunner-git plasma-wayland-protocols-git python wayland-protocols-git)
+optdepends=('maliit-keyboard: virtual keyboard for kwin-wayland')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(plasma-git)
