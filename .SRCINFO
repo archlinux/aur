@@ -1,7 +1,7 @@
 pkgbase = nordvpn-dinit
 	pkgdesc = dinit service script for nordvpn-bin
 	pkgver = 20240301
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nordvpn.com/download/linux/
 	arch = any
 	license = GPL3

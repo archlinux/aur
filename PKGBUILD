@@ -2,7 +2,7 @@
 
 pkgname=nordvpn-dinit
 pkgver=20240301
-pkgrel=1
+pkgrel=2
 pkgdesc="dinit service script for nordvpn-bin"
 arch=('any')
 url="https://nordvpn.com/download/linux/"
