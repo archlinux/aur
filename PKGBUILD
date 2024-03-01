@@ -2,14 +2,15 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=ktexteditor-git
-pkgver=5.240.0_r3753.g46b6c3c6
+pkgver=6.0.0_r4414.ge6c8d21ed
 pkgrel=1
 pkgdesc='Advanced embeddable text editor'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(kparts-git syntax-highlighting-git libgit2 editorconfig-core-c)
-makedepends=(git extra-cmake-modules-git doxygen qt6-tools)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(editorconfig-core-c gcc-libs glibc karchive-git kauth-git kcodecs-git kcolorscheme-git kcompletion-git kconfig-git kconfigwidgets-git kcoreaddons-git kguiaddons-git ki18n-git kio-git kitemviews-git kparts-git ktextwidgets-git kwidgetsaddons-git kxmlgui-git qt6-declarative qt6-base qt6-speech sonnet-git syntax-highlighting-git)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
+optdepends=('git: git integration')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf6-git)
