@@ -1,7 +1,7 @@
 pkgbase = python-jira
 	pkgdesc = Python library to work with Jira APIs
 	pkgver = 3.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pycontribs/jira
 	arch = any
 	license = BSD-2-Clause
@@ -21,8 +21,6 @@ pkgbase = python-jira
 	optdepends = ipython: jirashell
 	optdepends = python-keyring: jirashell
 	source = python-jira-3.6.0.tar.gz::https://github.com/pycontribs/jira/archive/refs/tags/3.6.0.tar.gz
-	source = pyproject.toml.patch
 	sha256sums = 879cb1eb6a84b0c7c94cd3c80c7740fc1d3b88d45b2a5f6c8e599b349a77ca3b
-	sha256sums = 8780ba09e1ab32f15f9cb59cbb51d029ba157da18169013f1c1e2d8d27053577
 
 pkgname = python-jira
