@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=knotes-git
-pkgver=21.11.40_r3473.g1891433d
+pkgver=24.04.40_r4153.g83aa5171
 pkgrel=1
 pkgdesc="Popup notes"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(GPL2)
-depends=(kdepim-runtime-git kdnssd-git kontactinterface-git grantleetheme-git)
-makedepends=(git extra-cmake-modules-git kdoctools-git boost)
+license=(GPL-2.0-or-later)
+depends=(akonadi-notes-git akonadi-search-git gcc-libs glibc grantleetheme-git kcalendarcore-git kcalutils-git kcmutils-git kcolorscheme-git kcompletion-git kconfig-git kconfigwidgets-git kcontacts-git kcoreaddons-git kcrash-git kdepim-runtime-git kdnssd-git kglobalaccel-git ki18n-git kiconthemes-git kio-git kitemmodels-git kitemviews-git kmime-git knewstuff-git knotifications-git knotifyconfig-git kontactinterface-git kparts-git kstatusnotifieritem-git ktextaddons-git ktextwidgets-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git libakonadi-git pimcommon-git qt6-base)
+makedepends=(git extra-cmake-modules-git kdoctools-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kde-applications-git kdepim-git)
