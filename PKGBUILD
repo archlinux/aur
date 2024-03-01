@@ -3,13 +3,13 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kmenuedit-git
-pkgver=5.27.80_r1201.gacb7ce4
+pkgver=6.0.80_r1299.ge86ce03
 pkgrel=1
 pkgdesc='KDE menu editor'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
-license=(LGPL)
-depends=(kio-git hicolor-icon-theme)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc kcompletion-git kconfig-git kconfigwidgets-git kcoreaddons-git kdbusaddons-git kglobalaccel-git ki18n-git kiconthemes-git kio-git kitemviews-git kservice-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git qt6-base sonnet-git)
 makedepends=(git extra-cmake-modules-git kdoctools-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
