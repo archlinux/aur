@@ -1,5 +1,7 @@
 # Merged with official ABS kirigami PKGBUILD by João, 2024/03/01 (all respective contributors apply herein)
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
+# Contributor: zanny <lordzanny@gmail.com>
+# Contributor: Aleix Pol Gonzalez <aleixpol@kde.org>
 
 pkgname=kirigami-git
 pkgver=6.0.0_r4407.g7f9b5b4a
