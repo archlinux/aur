@@ -3,15 +3,15 @@
 # Contributor: Marco Scarpetta <marcoscarpetta02@gmail.com>
 
 pkgname=kdav-git
-pkgver=5.240.0_r1388.g9c20e3d
+pkgver=6.0.0_r1464.ge2345a9
 pkgrel=1
 epoch=1
 pkgdesc="A DAV protocol implemention with KJobs"
 arch=($CARCH)
 url="https://community.kde.org/Frameworks"
-license=(LGPL)
-depends=(kio-git qt6-xmlpatterns)
-makedepends=(git extra-cmake-modules-git doxygen qt6-tools)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(gcc-libs glibc kcoreaddons-git ki18n-git kio-git qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf6-git)
