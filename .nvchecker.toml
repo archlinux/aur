@@ -1,2 +1,3 @@
+[python-klein]
 source = "pypi"
 pypi = "klein"
