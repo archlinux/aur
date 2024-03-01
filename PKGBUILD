@@ -4,13 +4,13 @@ _appname=MusicFreeDesktop
 pkgver=0.0.3
 _electronversion=25
 _nodeversion=16
-pkgrel=2
+pkgrel=3
 pkgdesc="插件化、定制化、无广告的免费音乐播放器"
 arch=('any')
 url="http://musicfree.upup.fun/"
 _ghurl="https://github.com/maotoumao/MusicFreeDesktop"
 _pluginurl="https://gitee.com/maotoumao/MusicFreePlugins/raw/master/plugins.json"
-license=('GPL-1.0-only')
+license=('GPL-3.0-only')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
@@ -27,7 +27,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -37,10 +37,10 @@ _ensure_local_nvm() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
-        -e "s|@appasar@|app|g" \
+        -e "s|@runname@|app|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -f -q -n --categories "AudioVideo" --name "${_appname}" --exec "${pkgname} --no-sandbox %U"
+    gendesk -f -q -n --categories="AudioVideo" --name="${_appname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -52,9 +52,6 @@ build() {
     HOME="${srcdir}/.electron-gyp"
     npm install
     npm run package
-    cd "${srcdir}/${pkgname}.git/out/${_appname%Desktop}-linux-"*/resources
-    echo -e "\nprocess.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'" >> app/.webpack/main/index.js
-    cp -r res app
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
