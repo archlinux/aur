@@ -1,0 +1,18 @@
+pkgbase = super-bombinhas-bin
+	pkgdesc = A 2D platformer written in Ruby.
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://github.com/victords/super-bombinhas
+	arch = any
+	license = GPL3
+	makedepends = tar
+	makedepends = pkg-config
+	makedepends = binutils
+	depends = ruby>=2.0
+	depends = pango
+	depends = sdl2
+	depends = sdl2_ttf
+	source = https://github.com/victords/super-bombinhas/releases/download/v1.5.2/super-bombinhas-1.5.2.deb
+	b2sums = f2db0a8bc99c0173646cc8f68399a1817777e519f452911cb9c821e0b9f0e2d4290fc12a47eab39c83815445424ff62dfb038d8ccf2d38e77286087f3291221b
+
+pkgname = super-bombinhas-bin
