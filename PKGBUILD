@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kdiagram-git
-pkgver=2.7.90_r297.gd5089ef
+pkgver=3.0.1_r452.gc45626b
 pkgrel=1
 pkgdesc="Powerful libraries for creating business diagrams"
 arch=($CARCH)
 url="https://www.kde.org/"
 license=(GPL2)
-depends=(qt5-svg)
-makedepends=(git extra-cmake-modules-git qt5-tools doxygen)
+depends=(gcc-libs glibc qt6-base qt6-svg)
+makedepends=(git doxygen extra-cmake-modules-git git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")

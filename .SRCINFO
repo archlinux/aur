@@ -1,19 +1,23 @@
 pkgbase = kdiagram-git
 	pkgdesc = Powerful libraries for creating business diagrams
-	pkgver = 2.7.90_r297.gd5089ef
+	pkgver = 3.0.1_r452.gc45626b
 	pkgrel = 1
 	url = https://www.kde.org/
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = extra-cmake-modules-git
-	makedepends = qt5-tools
 	makedepends = doxygen
-	depends = qt5-svg
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = qt6-doc
+	makedepends = qt6-tools
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-base
+	depends = qt6-svg
 	provides = kdiagram
 	conflicts = kdiagram
 	source = git+https://github.com/KDE/kdiagram.git
 	sha256sums = SKIP
 
 pkgname = kdiagram-git
-
