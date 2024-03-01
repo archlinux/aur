@@ -1,0 +1,3 @@
+source = "git"
+git = "https://github.com/chewing/scim-chewing.git"
+prefix = "v"
