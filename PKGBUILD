@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cortile
-pkgver=2.3.3
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Auto tiling manager with hot corner support for EWMH compliant window managers using the X11 window system."
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f1e4a69440e076622dc05ac30f2faaead606e2585740ac49f7949c0b1225437e')
+sha256sums=('018509f022231d23c8f8d1a71aa5090e7e16ad1d1a69cef00f4dc792615f68da')
 
 prepare() {
   cd "$pkgname-$pkgver"
