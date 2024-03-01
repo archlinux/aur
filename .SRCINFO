@@ -1,11 +1,11 @@
 pkgbase = labelme
 	pkgdesc = Image Polygonal Annotation with Python (polygon, rectangle, circle, line, point and image-level flag annotation).
 	pkgver = 5.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wkentaro/labelme
 	install = labelme.install
 	arch = any
-	license = GPL
+	license = GPL-3.0-or-later
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
