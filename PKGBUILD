@@ -3,17 +3,16 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=dolphin-plugins-git
-pkgver=23.07.70_r761.g1abd322
+pkgver=24.04.70_r907.g9f5badb
 pkgrel=1
 pkgdesc='Extra Dolphin plugins'
 arch=($CARCH)
 url='https://apps.kde.org/dolphin_plugins/'
-license=(LGPL)
-depends=(dolphin-git)
-makedepends=(git extra-cmake-modules-git ktexteditor-git)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc dolphin-git kcompletion-git kconfig-git kcoreaddons-git ki18n-git kio-git kjobwidgets-git kservice-git ktexteditor-git ktextwidgets-git kwidgetsaddons-git kxmlgui-git qt6-5compat qt6-base solid-git)
+makedepends=(git extra-cmake-modules-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('ktexteditor-git: Mercurial plugin')
 groups=(kde-applications-git kdesdk-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
