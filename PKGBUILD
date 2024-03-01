@@ -3,14 +3,14 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kmailtransport-git
-pkgver=5.18.40_r1619.gae8911b
+pkgver=6.0.41_r2125.g0f8d337
 pkgrel=1
 pkgdesc="Mail Transport Service"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(LGPL)
-depends=(akonadi-mime-git ksmtp-git libkgapi-git)
-makedepends=(git extra-cmake-modules-git boost)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc kcompletion-git kconfig-git kconfigwidgets-git kcoreaddons-git ki18n-git kio-git ksmtp-git kwidgetsaddons-git libkgapi-git qt6-base qtkeychain-qt6)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kdepim-git)
