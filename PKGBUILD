@@ -9,7 +9,7 @@
 
 _pkgname=prismlauncher
 pkgname=${_pkgname}-offline-git
-pkgver=8.0.r222.g4cda04271
+pkgver=8.0.r275.g850e48ec6
 pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64' 'aarch64')
@@ -25,7 +25,6 @@ optdepends=('glfw: to use system GLFW libraries'
             'xorg-xrandr: for older minecraft versions'
             'java-runtime=8: for older minecraft versions'
 )
-options=(debug)
 source=("git+https://github.com/PrismLauncher/PrismLauncher.git"
         "git+https://github.com/PrismLauncher/libnbtplusplus.git"
         "PrismLauncher-offline.diff")
