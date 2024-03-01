@@ -1,0 +1,15 @@
+--- a/lib/configure
++++ b/lib/configure
+@@ -68,11 +68,10 @@
+ 
+ case $sys in
+ 	linux*)
+-		echo_n " sysfs proc mem-ports ecam"
++		echo_n " sysfs proc mem-ports"
+ 		echo >>$c '#define PCI_HAVE_PM_LINUX_SYSFS'
+ 		echo >>$c '#define PCI_HAVE_PM_LINUX_PROC'
+ 		echo >>$c '#define PCI_HAVE_PM_MMIO_CONF'
+-		echo >>$c '#define PCI_HAVE_PM_ECAM'
+ 		echo >>$c '#define PCI_HAVE_LINUX_BYTEORDER_H'
+ 		echo >>$c '#define PCI_PATH_PROC_BUS_PCI "/proc/bus/pci"'
+ 		echo >>$c '#define PCI_PATH_SYS_BUS_PCI "/sys/bus/pci"'
