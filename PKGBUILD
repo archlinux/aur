@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=repath.studio
 pkgname="${_pkgname//./-}-bin"
-pkgver=0.2.1
+pkgver=0.2.2
 _electronversion=29
 pkgrel=1
 pkgdesc="Scalable Vector Graphics Manipulation"
@@ -13,12 +13,15 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
 )
+makedepends=(
+    'fuse2'
+)
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-linux.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('84815f5454f307f8101208ae4632b7edc3c745ef83abef5146c60afc0e759e8f'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+sha256sums=('4230fccfabdf6d715cb5f8dd3ebdb40a2c07b41c8eaebe784ca367ce84bdff6f'
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
