@@ -1,2 +1,3 @@
+[python-txrequests]
 source = "pypi"
 pypi = "txrequests"
