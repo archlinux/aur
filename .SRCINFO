@@ -1,6 +1,6 @@
 pkgbase = phosh-tour
 	pkgdesc = Simple tour through phosh
-	pkgver = 0.28.0
+	pkgver = 0.36.0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/guidog/phosh-tour
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = phosh-tour
 	makedepends = git
 	makedepends = meson
 	depends = libadwaita
-	source = https://gitlab.gnome.org/guidog/phosh-tour/-/archive/v0.28.0/phosh-tour-v0.28.0.tar.gz
-	sha256sums = 0464a730a0d24172861101f84b7233f4bfc2ce7ab7514a1cd9a7e489a1b3a135
+	source = https://gitlab.gnome.org/guidog/phosh-tour/-/archive/v0.36.0/phosh-tour-v0.36.0.tar.gz
+	sha256sums = 9b2097b9e84f13ac277c9132ff7bd8cb843d8b586541e3065f3d95bba1d2c7f4
 
 pkgname = phosh-tour
