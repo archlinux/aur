@@ -1,0 +1,2 @@
+source = "git"
+git = "https://github.com/fcitx/fcitx-chewing.git"
