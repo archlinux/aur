@@ -2,7 +2,7 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kdepim-runtime-git
-pkgver=24.04.40_r16517.gacbdea279
+pkgver=24.04.40_r16549.g8512a98d6
 pkgrel=1
 pkgdesc='Extends the functionality of kdepim'
 arch=($CARCH)
