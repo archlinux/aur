@@ -1,5 +1,5 @@
 pkgname=pac-pacman-aliases
-pkgver=1.9.6
+pkgver=1.9.7
 pkgrel=1
 pkgdesc="Add pac with apt-like pacman aliases, completions, and globbing search pattern support"
 arch=('any')
