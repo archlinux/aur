@@ -5,7 +5,7 @@ pkgdesc="A simple graphical application script for archlinux-java to manage your
 arch=('any')
 url="https://gitlab.com/javaguimgr/javagui"
 license=('GPL')
-depends=("git" "npm")
+depends=('java-runtime-common' 'polkit' 'zenity')
 source=("https://gitlab.com/javaguimgr/javagui/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
 sha256sums=('SKIP')
 

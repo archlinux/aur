@@ -5,8 +5,9 @@ pkgbase = javagui
 	url = https://gitlab.com/javaguimgr/javagui
 	arch = any
 	license = GPL
-	depends = git
-	depends = npm
+	depends = java-runtime-common
+	depends = polkit
+	depends = zenity
 	source = https://gitlab.com/javaguimgr/javagui/-/archive/1.0.0-1/application-1.0.0-1.tar.bz2
 	sha256sums = SKIP
 
