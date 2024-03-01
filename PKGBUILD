@@ -2,14 +2,15 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=syntax-highlighting-git
-pkgver=5.240.0_r2154.g370387c5
+pkgver=6.0.0_r2540.gdb7282d9
 pkgrel=1
 pkgdesc='Syntax highlighting engine for structured text and code'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(GPL2)
-depends=(qt6-base)
-makedepends=(git extra-cmake-modules-git qt6-tools doxygen)
+license=(MIT)
+depends=(gcc-libs glibc qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-declarative qt6-doc qt6-tools)
+optdepends=('qt6-declarative: QML bindings')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf6-git)
