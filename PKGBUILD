@@ -5,7 +5,7 @@ pkgdesc="'A library of C and Fortran subroutines for reading and writing data fi
 arch=('any')
 url="https://heasarc.gsfc.nasa.gov/fitsio/"
 license=(custom)
-makedepends=('mingw-w64-configure')
+makedepends=('mingw-w64-cmake')
 depends=('mingw-w64-zlib')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/cfitsio-$pkgver.tar.gz)
@@ -15,7 +15,6 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd cfitsio-${pkgver}
-  sed -i "s|install(TARGETS \${LIB_NAME} DESTINATION \${LIB_DESTINATION})||g" CMakeLists.txt
 }
 
 build() {
