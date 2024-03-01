@@ -5,21 +5,21 @@ _target=rockchip
 _pkgbase="linux-$_target"
 pkgbase="$_pkgbase-joshua-bin"
 pkgname=("$pkgbase" "$pkgbase-headers")
-_pkgver=5.10.160
-_buildver=31
-pkgver="${_pkgver}.${_buildver}"
+_pkgver=6.1.43
+_date="$(date -u +%Y%m%d)"
+pkgver="${_pkgver}.${_date}"
 pkgrel=1
 _kernver="${_pkgver}-${_target}"
 arch=('aarch64')
-_desc="version ${pkgver} for $_target on aarch64 multi-platform built by joshua."
-url="https://launchpad.net/~jjriek/+archive/ubuntu/rockchip/+files"
+_desc="version ${pkgver} for $_target on aarch64 multi-platform built by joshua with nightly build."
+url="https://github.com/wyf9661/ubuntu-rockchip/releases/download/Nightly"
 license=('GPL2')
 options=('!strip')
 provides=("$_pkgbase")
 
 source=(
-  "${url}/linux-image-${_pkgver}-rockchip_${_pkgver}-${_buildver}_arm64.deb"
-  "${url}/linux-headers-${_pkgver}-rockchip_${_pkgver}-${_buildver}_arm64.deb"
+  "${url}/linux-image-${_pkgver}-rockchip_${_pkgver}-rockchip-1_arm64.deb"
+  "${url}/linux-headers-${_pkgver}-rockchip_${_pkgver}-rockchip-1_arm64.deb"
   "linux.preset"
 )
 sha512sums=(
@@ -42,7 +42,7 @@ _package() {
 
   cd "$srcdir"
 
-  ar x "linux-image-${_pkgver}-rockchip_${_pkgver}-${_buildver}_arm64.deb"
+  ar x "linux-image-${_pkgver}-rockchip_${_pkgver}-rockchip-1_arm64.deb"
 
   tar -xI unzstd -f data.tar.zst
 
@@ -78,9 +78,9 @@ _package-headers() {
 
   cd "$srcdir"
 
-  ar x "linux-image-${_pkgver}-rockchip_${_pkgver}-${_buildver}_arm64.deb"
+  ar x "linux-image-${_pkgver}-rockchip_${_pkgver}-rockchip-1_arm64.deb"
   tar -xI unzstd -f data.tar.zst
-  ar x "linux-headers-${_pkgver}-rockchip_${_pkgver}-${_buildver}_arm64.deb"
+  ar x "linux-headers-${_pkgver}-rockchip_${_pkgver}-rockchip-1_arm64.deb"
   tar -xI unzstd -f data.tar.zst
 
   install -dm755 "$pkgdir/usr/lib/modules/$_kernver"

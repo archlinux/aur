@@ -1,23 +1,23 @@
 pkgbase = linux-rockchip-joshua-bin
-	pkgver = 5.10.160.31
+	pkgver = 6.1.43.20240301
 	pkgrel = 1
-	url = https://launchpad.net/~jjriek/+archive/ubuntu/rockchip/+files
+	url = https://github.com/wyf9661/ubuntu-rockchip/releases/download/Nightly
 	arch = aarch64
 	license = GPL2
 	provides = linux-rockchip
-	noextract = linux-image-5.10.160-rockchip_5.10.160-31_arm64.deb
-	noextract = linux-headers-5.10.160-rockchip_5.10.160-31_arm64.deb
+	noextract = linux-image-6.1.43-rockchip_6.1.43-rockchip-1_arm64.deb
+	noextract = linux-headers-6.1.43-rockchip_6.1.43-rockchip-1_arm64.deb
 	noextract = linux.preset
 	options = !strip
-	source = https://launchpad.net/~jjriek/+archive/ubuntu/rockchip/+files/linux-image-5.10.160-rockchip_5.10.160-31_arm64.deb
-	source = https://launchpad.net/~jjriek/+archive/ubuntu/rockchip/+files/linux-headers-5.10.160-rockchip_5.10.160-31_arm64.deb
+	source = https://github.com/wyf9661/ubuntu-rockchip/releases/download/Nightly/linux-image-6.1.43-rockchip_6.1.43-rockchip-1_arm64.deb
+	source = https://github.com/wyf9661/ubuntu-rockchip/releases/download/Nightly/linux-headers-6.1.43-rockchip_6.1.43-rockchip-1_arm64.deb
 	source = linux.preset
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = a492aae17ee4a316ce03faf9f1b284b2529c485f4b092cc4a1f865a6c68d482fd356fd30efa296c116975a3bdf3922f5bf03912a8d0e76f4ab24aa6ab9f8c276
 
 pkgname = linux-rockchip-joshua-bin
-	pkgdesc = The Linux Kernel and modules - version 5.10.160.31 for rockchip on aarch64 multi-platform built by joshua.
+	pkgdesc = The Linux Kernel and modules - version 6.1.43.20240301 for rockchip on aarch64 multi-platform built by joshua with nightly build.
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
@@ -25,4 +25,4 @@ pkgname = linux-rockchip-joshua-bin
 	backup = etc/mkinitcpio.d/linux-rockchip.preset
 
 pkgname = linux-rockchip-joshua-bin-headers
-	pkgdesc = Header files and scripts for building modules for linux kernel - version 5.10.160.31 for rockchip on aarch64 multi-platform built by joshua.
+	pkgdesc = Header files and scripts for building modules for linux kernel - version 6.1.43.20240301 for rockchip on aarch64 multi-platform built by joshua with nightly build.
