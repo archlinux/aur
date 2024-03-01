@@ -5,14 +5,14 @@
 _pkgbase='systemd'
 pkgname='efistub'
 pkgdesc='UEFI files to use with UKI'
-pkgver=254.7
+pkgver=255.4
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 makedepends=('docbook-xsl' 'gperf' 'intltool' 'python-jinja' 'python-lxml' 'python-pyelftools' 'git' 'meson')
 options=('strip')
 source=("https://github.com/systemd/systemd-stable/archive/refs/tags/v$pkgver.zip")
-b2sums=('fac139d7738f6b87f7ac23fef028fb82a4b3ff94d0ec39fbf1223ac1c4b55be5b7bf88f686f64ff419465559aef8c5739b8ba2458fd2cd32864e6c056f1f393a')
+b2sums=('2f6585c951a0ac6554b34faaa3724547bb6932d17f26940b6c657bc789b91e4931014ccdb29913b5d092c7b1ef5fa71daea9b8045300b478746bb07f51829665')
 
 build() {
   local _meson_options=(
