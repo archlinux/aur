@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn.clark@gmail.com>
 pkgname=opengamepadui-git
 _pkgbase=OpenGamepadUI
-pkgver=0.30.1.r0.g70e5de07
+pkgver=0.30.2.r0.gbf35e110
 pkgrel=1
 pkgdesc="Open source game launcher"
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=('godot' 'scons' 'pkgconf' 'gcc' 'libxcursor' 'libxinerama'
 )
 provides=('opengamepadui')
 conflicts=('opengamepadui-bin')
-source=("${_pkgbase}::git+https://github.com/ShadowBlip/${_pkgbase}.git")
+source=("${_pkgbase}::git+https://github.com/ShadowBlip/${_pkgbase}")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -56,11 +56,16 @@ package() {
 	install -Dm644 build/libxlib.linux.template_debug.x86_64.so "${pkgdir}"/usr/share/opengamepadui/libxlib.linux.template_debug.x86_64.so
 	install -Dm644 build/libunixsock.linux.template_debug.x86_64.so "${pkgdir}"/usr/share/opengamepadui/libunixsock.linux.template_debug.x86_64.so
 	install -Dm644 build/libdbus.linux.template_debug.x86_64.so "${pkgdir}"/usr/share/opengamepadui/libdbus.linux.template_debug.x86_64.so
+	install -Dm644 build/liblinuxthread.linux.template_debug.x86_64.so "${pkgdir}"/usr/share/opengamepadui/liblinuxthread.linux.template_debug.x86_64.so
 	install -Dm755 build/opengamepad-ui.x86_64 "${pkgdir}"/usr/share/opengamepadui/opengamepad-ui.x86_64
 	install -Dm755 rootfs/usr/share/opengamepadui/scripts/powertools "${pkgdir}"/usr/share/opengamepadui/scripts/powertools
 	install -Dm755 rootfs/usr/share/opengamepadui/scripts/manage_input "${pkgdir}"/usr/share/opengamepadui/scripts/manage_input
+	install -Dm755 rootfs/usr/share/opengamepadui/scripts/make_nice "${pkgdir}"/usr/share/opengamepadui/scripts/make_nice
+	install -Dm755 rootfs/usr/share/opengamepadui/scripts/system_profiler.py "${pkgdir}"/usr/share/opengamepadui/scripts/system_profiler.py
+	setcap 'cap_sys_nice=eip' "${pkgdir}/usr/share/opengamepadui/opengamepad-ui.x86_64"
 
 	mkdir -p "${pkgdir}"/usr/share/polkit-1/actions
 	install -Dm644 rootfs/usr/share/polkit-1/actions/org.shadowblip.powertools.policy "${pkgdir}"/usr/share/polkit-1/actions/org.shadowblip.powertools.policy
 	install -Dm644 rootfs/usr/share/polkit-1/actions/org.shadowblip.manage_input.policy "${pkgdir}"/usr/share/polkit-1/actions/org.shadowblip.manage_input.policy
+	install -Dm644 rootfs/usr/share/polkit-1/actions/org.shadowblip.setcap.policy "${pkgdir}"/usr/share/polkit-1/actions/org.shadowblip.setcap.policy
 }
