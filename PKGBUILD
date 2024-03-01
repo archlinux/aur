@@ -34,7 +34,4 @@ package() {
         install -Dm755 target/release/wlx-overlay-s -t "$pkgdir/usr/bin/"
 
         install -Dm644 "$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
-                                       Paste                
-        install -Dm644 "$_pkgname.png" Select All           /icons/hicolor/256x256/apps/$_pkgname.png"
-}                                                           
-                                       How-to disable mouse 
+        install -Dm644 "$_pkgname.png" -t "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
