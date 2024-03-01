@@ -2,7 +2,7 @@
 
 _pkgname='fudo'
 pkgname="${_pkgname}-git"
-pkgver=r2.c483344
+pkgver=r10.3396b1b
 pkgrel=1
 pkgdesc='A sudo to doas wrapper'
 arch=('x86_64')
@@ -31,5 +31,6 @@ build() {
 package() {
     cd "${_pkgname}"
     install -D fudo ${pkgdir}/usr/bin/fudo
+    install -D fudo.1 ${pkgdir}/usr/share/man/man1/fudo.1
     ln -s /usr/bin/fudo ${pkgdir}/usr/bin/sudo
 }
