@@ -3,14 +3,14 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=akonadi-search-git
-pkgver=5.18.40_r1107.g26c21d0
+pkgver=6.0.40_r1595.ga275f05
 pkgrel=1
 pkgdesc="Libraries and daemons to implement searching in Akonadi"
 url='https://kontact.kde.org'
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(akonadi-mime-git gcc-libs glibc kcalendarcore-git kcmutils-git kcodecs-git kcompletion-git kconfig-git kcontacts-git kcoreaddons-git ki18n-git kmime-git krunner-git ktextaddons-git kwidgetsaddons-git libakonadi-git qt6-base xapian-core)
+makedepends=(git corrosion doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 arch=($CARCH)
-license=(GPL LGPL FDL)
-depends=(xapian-core akonadi-mime-git kcontacts-git kcalendarcore-git krunner-git)
-makedepends=(git extra-cmake-modules-git boost)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kdepim-git)
