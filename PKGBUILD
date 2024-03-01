@@ -74,9 +74,11 @@ package() {
   install -Dm755 upscayl.desktop "$pkgdir/usr/share/applications/upscayl.desktop"
 
   msg2 'Installing the icon...'
-  icon_dir='usr/share/icons/hicolor/0x0/apps'
-  mkdir -p "$pkgdir/usr/share/pixmaps"
-  ln -s "/opt/upscayl/$icon_dir/upscayl.png" "$pkgdir/usr/share/pixmaps/upscayl.png"
+  for size in '0x0' '128x128' '512x512'; do
+    local suffix=usr/share/icons/hicolor/$size/apps
+    mkdir -p "$pkgdir/$suffix"
+    ln -s "/opt/upscayl/$suffix/upscayl.png" "$pkgdir/$suffix/upscayl.png"
+  done
 
   msg2 'Installing the licenses...'
   mkdir -p "$pkgdir/usr/share/licenses"
