@@ -1,0 +1,25 @@
+pkgbase = android-armv7a-eabi-hwloc
+	pkgdesc = Portable Hardware Locality is a portable abstraction of hierarchical architectures (android)
+	pkgver = 2.10.0
+	pkgrel = 1
+	url = https://www.open-mpi.org/projects/hwloc/
+	arch = any
+	license = BSD
+	makedepends = android-armv7a-eabi-cairo
+	makedepends = android-armv7a-eabi-libxml2
+	makedepends = android-armv7a-eabi-pciutils
+	makedepends = android-armv7a-eabi-libx11
+	depends = android-armv7a-eabi-libtool
+	depends = android-armv7a-eabi-libpciaccess
+	optdepends = android-armv7a-eabi-cairo
+	optdepends = android-armv7a-eabi-libxml2
+	optdepends = android-armv7a-eabi-pciutils
+	optdepends = android-armv7a-eabi-libx11
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://www.open-mpi.org/software/hwloc/v2.10/downloads/hwloc-2.10.0.tar.bz2
+	sha256sums = 0305dd60c9de2fbe6519fe2a4e8fdc6d3db8de574a0ca7812b92e80c05ae1392
+
+pkgname = android-armv7a-eabi-hwloc
