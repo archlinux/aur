@@ -5,6 +5,7 @@ pkgbase = neovim-gruvbox-material-git
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = neovim
 	source = gruvbox-material::git+https://github.com/sainnhe/gruvbox-material.git
 	sha256sums = SKIP
 
@@ -27,4 +28,3 @@ pkgname = neovim-lightline-gruvbox-material-git
 	depends = neovim-lightline
 	provides = neovim-lightline-gruvbox-material
 	conflicts = neovim-lightline-gruvbox-material
-
