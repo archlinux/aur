@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=ksmtp-git
-pkgver=5.18.40_r358.g5969962
+pkgver=6.0.40_r636.g8b59540
 pkgrel=1
 pkgdesc="Job-based library to send email through an SMTP server"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(LGPL)
-depends=(kio-git)
-makedepends=(git extra-cmake-modules-git)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc kcoreaddons-git ki18n-git kio-git libsasl qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kdepim-git)
