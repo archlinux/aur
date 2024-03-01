@@ -2,7 +2,7 @@
 pkgname=webgal-terre-bin
 _appname=WebGAL_Terre
 pkgver=4.4.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Galgame Editing. Redefined | 视觉小说编辑，再进化"
 arch=(
     "aarch64"
@@ -10,7 +10,7 @@ arch=(
 )
 url="https://docs.openwebgal.com/guide/"
 _ghurl="https://github.com/MakinoharaShoko/WebGAL_Terre"
-license=('LicenseRef-MPL2')
+license=('MPL-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -41,7 +41,7 @@ build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_appname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories "Game" --name "${_appname//_/ }" --exec "${pkgname%-bin} --no-sandbox %U"
+    gendesk -q -f -n --categories="Game" --name="${_appname//_/ }" --exec="${pkgname%-bin} --no-sandbox %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

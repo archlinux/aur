@@ -1,11 +1,11 @@
 pkgbase = webgal-terre-bin
 	pkgdesc = Galgame Editing. Redefined | 视觉小说编辑，再进化
 	pkgver = 4.4.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.openwebgal.com/guide/
 	arch = aarch64
 	arch = x86_64
-	license = LicenseRef-MPL2
+	license = MPL-2.0
 	makedepends = gendesk
 	depends = nspr
 	depends = nss
