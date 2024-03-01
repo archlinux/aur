@@ -1,13 +1,13 @@
 pkgbase = r-kit
 	pkgdesc = Data Manipulation Functions Implemented in C
-	pkgver = 0.0.15
+	pkgver = 0.0.16
 	pkgrel = 1
 	url = https://cran.r-project.org/package=kit
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	depends = r
-	source = https://cran.r-project.org/src/contrib/kit_0.0.15.tar.gz
-	md5sums = 29b1c1c591f4e3649153c81045e173a3
-	sha256sums = 557eee17077157120a129294c10eeaa18ae97d897d460cc3c69a2b3390ebfabf
+	source = https://cran.r-project.org/src/contrib/kit_0.0.16.tar.gz
+	md5sums = af551d3c95b2d509d6ee4bbc2545b199
+	b2sums = e1180750b51eaa8a2b5377b70013de32d2aa72d15f448034217b1c97d225af1645d230002f43a21c97bd7e7f70c03902dfe90f01beb7e6b8c698ece508ef3756
 
 pkgname = r-kit
