@@ -15,7 +15,10 @@ pkgbase = wbg
 	depends = libjpeg-turbo
 	depends = libpng
 	depends = libwebp
-	source = wbg-1.1.0.tar.gz::https://codeberg.org/dnkl/wbg/archive/1.1.0.tar.gz
-	sha256sums = 3f7844914c8a53fababa5df3575a9adb06026932bdd359664077ffdf19aae917
+	source = https://codeberg.org/dnkl/wbg/releases/download/1.1.0/wbg-1.1.0.tar.gz
+	source = https://codeberg.org/dnkl/wbg/releases/download/1.1.0/wbg-1.1.0.tar.gz.sig
+	validpgpkeys = B19964FBBA09664CC81027ED5BBD4992C116573F
+	sha256sums = 0cb9e055166515fa9477f9c13d649deb78046dc48bd69ab97471ace9bd9b9851
+	sha256sums = SKIP
 
 pkgname = wbg
