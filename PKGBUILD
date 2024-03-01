@@ -1,7 +1,7 @@
 # Maintainer: Sameer Puri <aur@purisa.me>
 pkgname=python-or-tools
 pkgver=9.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Google's Operations Research tools"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/google/or-tools"
@@ -24,7 +24,7 @@ build() {
     else
 	cmake -S. -Bbuild -DBUILD_PYTHON:BOOL=ON -DBUILD_CXX_SAMPLES=OFF -DBUILD_CXX_EXAMPLES=OFF
     fi
-    cmake --build build -j --config Release --target all
+    cmake --build build --config Release --target all
 }
 
 package() {
