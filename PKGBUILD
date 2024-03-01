@@ -1,6 +1,6 @@
 pkgname=wee-slack
-pkgver=2.9.0
-pkgrel=2
+pkgver=2.10.2
+pkgrel=1
 pkgdesc='A WeeChat plugin for Slack'
 url='https://github.com/wee-slack/wee-slack/'
 arch=('any')
@@ -15,7 +15,7 @@ source=(
 )
 
 sha512sums=(
-  '263cf464a5188488494ce8a7fe56755c5a0379953600953719f60f0a16c0c05e2651f72b2a27ab0c85ad4dbdecfa033371af39dbe6113b75e5ee9d06687ef9b4'
+  '62968e95608623adfa77c1d1cb38dd29f609492c05bb65e9cdfe49461c33979cdba9345f6b190825073a4cbd391e834556870b6c35fd4c3b7ac299d61bc35071'
 )
 
 package() {
