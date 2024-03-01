@@ -1,10 +1,11 @@
 pkgbase = owncloud-app-music-git
 	pkgdesc = An music application for owncloud
-	pkgver = 0.3.4.12.g835b8dd
-	pkgrel = 2
+	pkgver = 0.3.7.2470.g22c20a53
+	pkgrel = 1
 	url = https://github.com/owncloud/music
 	arch = any
 	license = AGPL
+	makedepends = git
 	depends = owncloud
 	conflicts = owncloud-app-music
 	options = !strip
@@ -12,4 +13,3 @@ pkgbase = owncloud-app-music-git
 	sha512sums = SKIP
 
 pkgname = owncloud-app-music-git
-

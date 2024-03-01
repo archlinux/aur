@@ -1,15 +1,14 @@
-# Maintainer: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=owncloud-app-music-git
-pkgver=0.3.4.12.g835b8dd
-pkgrel=2
+pkgver=0.3.7.2470.g22c20a53
+pkgrel=1
 pkgdesc="An music application for owncloud"
 arch=('any')
 url="https://github.com/owncloud/music"
 license=('AGPL')
 depends=('owncloud')
-makedepends=()
+makedepends=('git')
 options=('!strip')
 conflicts=('owncloud-app-music')
 source=("$pkgname::git+https://github.com/owncloud/music.git")
