@@ -1,0 +1,4 @@
+[opensearch-dashboards-gantt-chart-plugin]
+source = "github"
+github = "opensearch-project/dashboards-visualizations"
+use_max_tag = true
