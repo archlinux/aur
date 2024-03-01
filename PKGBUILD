@@ -1,7 +1,7 @@
 # Maintainer: bziemons <ben@rs485.network>
 pkgname=ulwgl-git
-pkgver=0.1.RC3.197.ge5a7090
-pkgrel=5
+pkgver=0.1.RC3.201.g4c18061
+pkgrel=2
 pkgdesc="Unified launcher for Windows games on Linux in progress using Steam Runtime Tools, independent of Steam."
 license=('GPL-3.0-only')
 arch=('any')
@@ -11,14 +11,12 @@ makedepends=(git jq meson ninja gcc)
 provides=(ulwgl)
 conflicts=(ulwgl)
 install=ulwgl-git.install
-source=('git+https://github.com/Open-Wine-Components/ULWGL-launcher.git' 'copyfile.patch')
-sha512sums=('SKIP'
-            '82fddc51d9b600dcdb739072b1f2f6ada07fbf8f0b2743f06519408dd5c5cd6964955ecc57be05635588f06fc0cd587e6803638d25c557a993629d6c99096243')
+source=('git+https://github.com/Open-Wine-Components/ULWGL-launcher.git')
+sha512sums=('SKIP')
 
 prepare() {
     cd "ULWGL-launcher"
     git submodule update --init
-    git apply --verbose ../copyfile.patch
 }
 
 pkgver() {
