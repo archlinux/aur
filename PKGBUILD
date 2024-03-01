@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo <jf.mundox@gmail.com>
 
 pkgname=syndication-git
-pkgver=5.240.0_r901.gd69d294
+pkgver=6.0.0_r932.ge98a7b8
 pkgrel=1
 pkgdesc="RSS/Atom parser library"
 arch=($CARCH)
 url="https://community.kde.org/Frameworks"
-license=(LGPL)
-depends=(kcodecs-git)
-makedepends=(git extra-cmake-modules-git doxygen qt6-tools qt6-doc)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(gcc-libs glibc kcodecs-git qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git} kde-syndication kde-syndication-git)
 provides=(${pkgname%-git} kde-syndication kde-syndication-git)
 groups=(kf6-git)
