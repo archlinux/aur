@@ -2,15 +2,15 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kblackbox-git
-pkgver=21.11.70_r725.g4682f86
+pkgver=24.04.70_r949.gaf5608e
 pkgrel=1
 pkgdesc='A game of hide and seek played on a grid of boxes'
 url='https://apps.kde.org/kblackbox/'
-arch=($CARCH)
-license=(GPL LGPL FDL)
-groups=(kde-applications-git kde-games-git)
-depends=(libkdegames-git hicolor-icon-theme)
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(gcc-libs glibc karchive-git kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git kdbusaddons-git ki18n-git ktextwidgets-git kwidgetsaddons-git kxmlgui-git libkdegames-git qt6-base qt6-svg)
 makedepends=(git extra-cmake-modules-git kdoctools-git)
+arch=($CARCH)
+groups=(kde-applications-git kde-games-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
