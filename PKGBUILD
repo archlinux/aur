@@ -4,17 +4,16 @@
 # Contributor: Antonio Rojas <nqn1976 @ gmail.com>
 
 pkgname=kde-cli-tools-git
-pkgver=5.27.80_r2176.g3eefd40
+pkgver=6.0.80_r2321.g69ab7c2f
 pkgrel=1
 pkgdesc="Tools based on KDE Frameworks 5 to better interact with the system"
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
-license=(LGPL)
-depends=(kdesu-git kcmutils-git kactivities-git)
-makedepends=(git extra-cmake-modules-git kdoctools-git plasma-workspace-git)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc kcmutils-git kcompletion-git kconfig-git kcoreaddons-git kdesu-git ki18n-git kiconthemes-git kio-git kparts-git kservice-git kwidgetsaddons-git kwindowsystem-git qt6-base qt6-svg sh-git)
+makedepends=(git extra-cmake-modules-git kdoctools-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('plasma-workspace-git: for kcmshell5')
 groups=(plasma-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
@@ -36,5 +35,5 @@ build() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
 
-  ln -s /usr/lib/kf6/kdesu "$pkgdir"/usr/bin/
+  ln -s /usr/lib/kf6/kdesu-git "$pkgdir"/usr/bin/
 }
