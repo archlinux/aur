@@ -2,9 +2,9 @@
 pkgname=armcord
 _pkgname=ArmCord
 pkgver=3.2.6
-_electronversion=27
+_electronversion=28
 _nodeversion=18
-pkgrel=1
+pkgrel=2
 pkgdesc="A custom client designed to enhance your Discord experience while keeping everything lightweight."
 arch=('any')
 url="https://armcord.app/"
@@ -26,7 +26,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('SKIP'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -36,10 +36,10 @@ _ensure_local_nvm() {
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories "Network;Utility" --name "${_pkgname}" --exec "${pkgname} %U"
+    gendesk -q -f -n --categories="Network" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -51,9 +51,10 @@ build() {
     pnpm config set store-dir "${srcdir}/.pnpm_store"
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
     pnpm config set link-workspace-packages true
-    sed '/deb/d;/tar.gz/d;/rpm/d' -i package.json
+    sed "s|icon.icns|icon.png|g" -i package.json
     pnpm install
-    pnpm run package
+    pnpm run build
+    npx electron-builder -l AppImage
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
