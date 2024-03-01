@@ -5,15 +5,15 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=krunner-git
-pkgver=5.240.0_r862.g15bcf5b
+pkgver=6.0.0_r1077.ge7a2ff1
 pkgrel=1
 pkgdesc='Framework for providing different actions given a string query'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=(gcc-libs glibc kconfig-git kcoreaddons-git ki18n-git kitemmodels-git qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git kdoctools-git qt6-doc qt6-tools)
 groups=(kf6-git)
-depends=(plasma-framework-git threadweaver-git)
-makedepends=(git extra-cmake-modules-git kdoctools-git doxygen qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
