@@ -4,10 +4,8 @@ pkgname=todesk-bin
 _pkgname=${pkgname%-bin}
 _binaryname=ToDesk
 pkgver=4.7.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote control and team work"
-# arch=('x86_64' 'aarch64' 'armv7h')
-# arch=('x86_64')
 arch=('x86_64' 'aarch64')
 url="https://www.todesk.com/"
 license=('custom')
@@ -50,8 +48,10 @@ package() {
 
   # binary & scripts
   install -Dm755 opt/${_pkgname}/bin/${_binaryname}{,_Service,_Session} -t ${pkgdir}/opt/${_pkgname}/bin
+  install -Dm755 opt/${_pkgname}/bin/CrashReport -t ${pkgdir}/opt/${_pkgname}/bin
 
   # lib
+  # bundled libaray for hardware video encode
   cp -a opt/${_pkgname}/bin/*.so* ${pkgdir}/opt/${_pkgname}/bin/
   # _install 644 opt/${_pkgname}/bin -name libzrtc.so
 
