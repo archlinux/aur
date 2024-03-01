@@ -3,13 +3,13 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=khtml-git
-pkgver=5.83.0_r545.gec1348b
+pkgver=_r648.g01d7c39
 pkgrel=1
 pkgdesc='KHTML APIs'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(giflib kparts-git kjs-git phonon-qt5-git)
+depends=(giflib kparts5-git kjs-git phonon-qt5-git)
 makedepends=(git extra-cmake-modules-git gperf)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
