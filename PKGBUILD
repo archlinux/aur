@@ -2,7 +2,7 @@
 _pkgname=game_box
 pkgname="${_pkgname//_/-}-bin"
 pkgver=0.1.0
-pkgrel=7
+pkgrel=8
 pkgdesc="An Old-gen console games emulator. This project only relies on the Qt framework.一款游戏家用机模拟器,仅依赖Qt框架"
 arch=('x86_64')
 url="https://github.com/QQxiaoming/game_box"
@@ -14,10 +14,9 @@ depends=(
     'e2fsprogs'
     'libxcb'
     'libgpg-error'
-    'mesa'
     'libglvnd'
-    'freetype2'
-    'fontconfig'
+    'libx11'
+    'mesa'
 )
 makedepends=(
     'gendesk'
@@ -34,7 +33,7 @@ build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --pkgname "${_pkgname//_/-}-bin" --categories "Game" --name "${pkgname%-bin}" --exec "${pkgname%-bin} %F"
+    gendesk -q -f -n --pkgname="${_pkgname//_/-}-bin" --categories="Game" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %F"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
