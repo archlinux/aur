@@ -2,15 +2,15 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kollision-git
-pkgver=21.11.70_r490.ge5fde57
+pkgver=24.04.70_r686.g4fbb32a
 pkgrel=1
 pkgdesc='A simple ball dodging game'
 url='https://apps.kde.org/kollision/'
-arch=($CARCH)
-license=(GPL LGPL FDL)
-groups=(kde-applications-git kde-games-git)
-depends=(libkdegames-git hicolor-icon-theme)
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(gcc-libs glibc kconfig-git kcoreaddons-git kcrash-git kdbusaddons-git ki18n-git kwidgetsaddons-git kxmlgui-git libkdegames-git qt6-base)
 makedepends=(git extra-cmake-modules-git kdoctools-git)
+arch=($CARCH)
+groups=(kde-applications-git kde-games-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
