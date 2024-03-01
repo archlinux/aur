@@ -3,21 +3,15 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=plasma-desktop-git
-pkgver=5.27.80_r10604.g99bcb0c6d
+pkgver=6.0.80_r11521.gc599dd852
 pkgrel=1
 pkgdesc='KDE Plasma Desktop'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
-license=(LGPL)
+license=(LGPL-2.0-or-later)
+depends=(baloo-git gcc-libs glibc icu kauth-git kbookmarks-git kcmutils-git kcodecs-git kcompletion-git kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git kdbusaddons-git kdeclarative-git kglobalaccel-git kguiaddons-git ki18n-git kiconthemes-git kio-git kirigami-git kirigami-addons-git kitemmodels-git kitemviews-git kjobwidgets-git kmenuedit-git knewstuff-git knotifications-git knotifyconfig-git kpackage-git kpipewire-git krunner-git kservice-git ksvg-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git libcanberra libksysguard-git libx11 libxcb libxcursor libxi libxkbcommon libxkbfile libplasma-git plasma-activities-git plasma-activities-stats-git plasma-workspace-git plasma5support-git polkit-kde-agent-git powerdevil-git qt6-5compat qt6-base qt6-declarative qt6-wayland-git sdl2 solid-git sonnet-git systemsettings-git wayland-git xcb-util-keysyms xdg-user-dirs)
+makedepends=(git extra-cmake-modules-git intltool kaccounts-integration-git kdoctools-git libibus packagekit-qt6 scim wayland-protocols-git xf86-input-evdev xf86-input-libinput xorg-server-devel)
 groups=(plasma-git)
-depends=(gawk polkit-kde-agent-git libxkbfile kmenuedit-git systemsettings-git libksysguard-git baloo-git libibus accountsservice xdg-user-dirs plasma-workspace-git)
-makedepends=(git extra-cmake-modules-git kdoctools-git xf86-input-evdev xf86-input-synaptics xf86-input-libinput xorg-server-devel scim kaccounts-integration-git intltool packagekit-qt6)
-optdepends=('plasma-nm-git: Network manager applet'
-            'powerdevil-git: power management, suspend and hibernate support'
-            'kscreen-git: screen management'
-            'ibus: kimpanel IBUS support'
-            'scim: kimpanel SCIM support'
-            'kaccounts-integration-git: OpenDesktop integration plugin')
 conflicts=(${pkgname%-git} user-manager knetattach user-manager-git knetattach-git)
 provides=(${pkgname%-git} user-manager knetattach user-manager-git knetattach-git)
 replaces=(user-manager-git knetattach-git)
