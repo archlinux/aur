@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kalzium-git
-pkgver=23.11.70_r4557.g942f2f5a
+pkgver=24.04.70_r4618.gb58a7959
 pkgrel=1
 pkgdesc='Periodic Table of Elements'
 url='https://apps.kde.org/kalzium/'
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(avogadrolibs avogadrolibs-qt5 gcc-libs glibc kcompletion5-git kconfig5-git kconfigwidgets5-git kcoreaddons5 ki18n5-git kio5 kitemviews5 knewstuff5 kplotting5 ktextwidgets5 kwidgetsaddons5-git kxmlgui5-git kunitconversion5-git openbabel qt5-base qt5-script qt5-svg zstd)
+makedepends=(git eigen extra-cmake-modules-git facile kdoctools5-git ocaml python)
 arch=($CARCH)
-license=(GPL LGPL FDL)
-depends=(kparts5 knewstuff5 kplotting5 kunitconversion5 qt5-script avogadrolibs-qt5 openbabel hicolor-icon-theme)
-makedepends=(git extra-cmake-modules-git kdoctools5 eigen ocaml facile python)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kde-applications-git kde-education-git)
