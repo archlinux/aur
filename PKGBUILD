@@ -4,13 +4,13 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=yakuake-git
-pkgver=21.07.70_r722.g0eb3a30
+pkgver=24.04.70_r1093.gb055afc
 pkgrel=1
 pkgdesc='A drop-down terminal emulator based on KDE konsole-git technology'
 arch=($CARCH)
 url='https://apps.kde.org/yakuake/'
-license=(GPL)
-depends=(konsole-git kwayland-git hicolor-icon-theme)
+license=(GPL-2.0-or-later)
+depends=(gcc-libs glibc karchive-git kcolorscheme-git kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git kdbusaddons-git kglobalaccel-git ki18n-git kiconthemes-git kio-git knewstuff-git knotifications-git knotifyconfig-git konsole-git kparts-git kstatusnotifieritem-git kwayland-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git libx11 qt6-base)
 makedepends=(git extra-cmake-modules-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
