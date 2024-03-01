@@ -1,0 +1,15 @@
+pkgbase = zoom-l8-dkms
+	pkgdesc = ALSA driver for Zoom LiveTrak L-8
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/sreimers/zoom-l8
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	depends = dkms
+	provides = zoom-l8
+	conflicts = zoom-l8
+	source = git+https://github.com/sreimers/zoom-l8.git#commit=ae6ad73
+	sha256sums = SKIP
+
+pkgname = zoom-l8-dkms
