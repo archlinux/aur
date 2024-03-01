@@ -5,16 +5,15 @@
 _pkgname=lateef
 pkgname=ttf-sil-$_pkgname
 _fname=${_pkgname^}
-pkgver=4.000
+pkgver=4.200
 pkgrel=1
 pkgdesc='An Arabic script font for Sindhi and other languages of southern Asia'
 arch=(any)
 url="https://software.sil.org/$_pkgname"
-license=(OFL)
-conflicts=('ttf-sil-fonts<=6')
+license=(OFL-1.1-RFN)
 _archive="$_fname-$pkgver"
 source=("https://software.sil.org/downloads/r/$_pkgname/$_archive.zip")
-sha256sums=('547580801884acb1c6cc77fa2e27a638bf1282dce6e26d54bebccaa7587ca5c8')
+sha256sums=('aab697ad2bcc82baa72a7083b2ab1d0a503bc74806d49c54ffb5bcdaab58e36f')
 
 package() {
 	cd "$_archive"
