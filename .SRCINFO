@@ -1,0 +1,15 @@
+pkgbase = python-easydict
+	pkgdesc = Access dict values as attributes (works recursively).
+	pkgver = 1.12
+	pkgrel = 1
+	url = https://github.com/makinacorpus/easydict
+	arch = any
+	license = LGPL3
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	noextract = easydict-1.12-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/e/easydict/easydict-1.12-py3-none-any.whl
+	sha256sums = 039efc4e476c130cdc4dac3807223abbdf233506420ed00b4beddc1569cfe360
+
+pkgname = python-easydict
