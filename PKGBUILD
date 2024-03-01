@@ -2,17 +2,17 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=korganizer-git
-pkgver=21.11.40_r11412.gd9f06fc83
+pkgver=24.04.40_r12529.g288280c20
 pkgrel=1
 pkgdesc="Calendar and scheduling Program"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(GPL2)
-depends=(kdepim-runtime-git kontactinterface-git incidenceeditor-git kuserfeedback-git phonon-qt5-git)
-makedepends=(git extra-cmake-modules-git kdoctools-git qt5-tools boost)
+license=(GPL-2.0-or-later)
+depends=(akonadi-calendar-git akonadi-contacts-git akonadi-notes-git calendarsupport-git eventviews-git gcc-libs glibc incidenceeditor-git kcalendarcore-git kcalutils-git kcmutils-git kcolorscheme-git kcompletion-git kconfig-git kconfigwidgets-git kcontacts-git kcoreaddons-git kcrash-git kdepim-runtime-git kholidays-git ki18n-git kiconthemes-git kidentitymanagement-git kio-git kitemmodels-git kitemviews-git kjobwidgets-git kmailtransport-git kmime-git knewstuff-git kontactinterface-git kparts-git kuserfeedback-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git libakonadi-git libkdepim-git pimcommon-git qt6-base qt6-tools)
+makedepends=(git extra-cmake-modules-git kdoctools-git)
+optdepends=('kdepim-addons: additional plugins')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('kdepim-addons-git: additional plugins')
 groups=(kde-applications-git kdepim-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
