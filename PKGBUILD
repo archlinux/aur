@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kdegraphics-thumbnailers-git
-pkgver=21.07.90_r236.g918502e
+pkgver=24.01.90_r318.g54c064e
 pkgrel=1
 pkgdesc='Thumbnailers for various graphics file formats'
 url='https://apps.kde.org/kdegraphics_thumbnailers/'
-arch=($CARCH)
-license=(GPL LGPL FDL)
-depends=(libkexiv2-git libkdcraw-git kio-git ghostscript)
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(gcc-libs ghostscript glibc karchive-git kcoreaddons-git kdegraphics-mobipocket-git kio-git libkdcraw-git libkexiv2-git qt6-base)
 makedepends=(git extra-cmake-modules-git)
+arch=($CARCH)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kde-applications-git kde-graphics-git)
