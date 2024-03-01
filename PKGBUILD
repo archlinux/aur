@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=incidenceeditor-git
-pkgver=5.18.40_r743.gf49fe33
+pkgver=6.0.40_r1281.g0a6c542
 pkgrel=1
 pkgdesc="KDE PIM incidence editor"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(LGPL)
-depends=(eventviews-git)
-makedepends=(git extra-cmake-modules-git boost)
+license=(LGPL-2.0-or-later)
+depends=(akonadi-calendar-git akonadi-contacts-git akonadi-mime-git calendarsupport-git eventviews-git gcc-libs glibc kcalendarcore-git kcalutils-git kcodecs-git kcompletion-git kconfig-git kconfigwidgets-git kcontacts-git kcoreaddons-git kdiagram-git ki18n-git kiconthemes-git kidentitymanagement-git kio-git kitemmodels-git kldap-git kmime-git kpimtextedit-git ktextwidgets-git kwidgetsaddons-git kxmlgui-git libakonadi-git libkdepim-git pimcommon-git qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kdepim-git)
