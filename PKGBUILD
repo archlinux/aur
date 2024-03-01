@@ -4,13 +4,13 @@
 
 pkgname=kwayland-git
 pkgver=_r1256.ge87c6d8
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt-style Client and Server library wrapper for the Wayland libraries'
 arch=($CARCH)
 url='https://www.kde.org'
 license=(LGPL-2.0-or-later)
-depends=(gcc-libs glibc qt6-base qt6-wayland-git wayland-git)
-makedepends=(git doxygen extra-cmake-modules-git plasma-wayland-protocols-git qt6-doc qt6-tools wayland-protocols-git)
+depends=(gcc-libs glibc qt6-base qt6-wayland wayland)
+makedepends=(git doxygen extra-cmake-modules-git plasma-wayland-protocols-git qt6-doc qt6-tools wayland-protocols)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf6-git)
