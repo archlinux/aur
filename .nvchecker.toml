@@ -1,2 +1,3 @@
+[lib32-pcsclite]
 source = "git"
 git = "https://github.com/LudovicRousseau/PCSC.git"
