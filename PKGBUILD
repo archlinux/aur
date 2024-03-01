@@ -3,14 +3,14 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kscreen-git
-pkgver=5.27.80_r1786.g07e7887
-pkgrel=3
+pkgver=6.0.80_r2021.g4e45c56b
+pkgrel=1
 pkgdesc="KDE's screen management software"
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
-license=(LGPL)
-depends=(libkscreen-git kdeclarative-git qt6-sensors layer-shell-qt-git)
-makedepends=(git extra-cmake-modules-git plasma-framework-git kcmutils-git)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc kcmutils-git kconfig-git kcoreaddons-git kdbusaddons-git kdeclarative-git kglobalaccel-git ki18n-git kirigami-git ksvg-git kwindowsystem-git kxmlgui-git layer-shell-qt-git libkscreen-git libx11 libxcb libxi libplasma-git plasma5support-git qt6-base qt6-declarative qt6-sensors)
+makedepends=(git extra-cmake-modules-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(plasma-git)
