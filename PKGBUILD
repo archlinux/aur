@@ -3,13 +3,13 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwallet-pam-git
-pkgver=5.27.80_r295.gc41b2c4
+pkgver=6.0.80_r311.g704a9f3
 pkgrel=1
 pkgdesc='KWallet PAM integration'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
-license=(LGPL)
-depends=(socat kwallet-git)
+license=(LGPL-2.0-or-later)
+depends=(glibc kwallet-git libgcrypt pam sh-git socat)
 makedepends=(git extra-cmake-modules-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
