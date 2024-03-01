@@ -4,20 +4,16 @@
 # Contributor: Stefano Avallone <stavallo@gmail.com>
 
 pkgname=kdeplasma-addons-git
-pkgver=5.27.80_r9560.g2f8bb12e3
+pkgver=6.0.80_r10014.g28db01d63
 pkgrel=1
 pkgdesc='All kind of addons to improve your Plasma experience'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
-license=(LGPL)
-depends=(plasma-workspace-git)
-makedepends=(git extra-cmake-modules-git kross-git qt6-webengine)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc icu kcmutils-git kconfig-git kcoreaddons-git kdeclarative-git kglobalaccel-git kholidays-git ki18n-git kiconthemes-git kio-git kirigami-git kirigami-addons-git kitemmodels-git kjobwidgets-git knewstuff-git knotifications-git kpackage-git krunner-git kservice-git ksvg-git kunitconversion-git kwidgetsaddons-git kwin-git kwindowsystem-git kxmlgui-git libplasma-git plasma-workspace-git plasma5support-git qt6-5compat qt6-base qt6-declarative sonnet-git)
+makedepends=(git extra-cmake-modules-git networkmanager-qt-git qt6-webengine)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('kross-git: comic applet'
-            'purpose-git: Quickshare applet'
-            'quota-tools: disk quota applet'
-            'qt6-webengine: dictionary and webbrowser applets')
 groups=(plasma-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
