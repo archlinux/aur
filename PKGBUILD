@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kauth-git
-pkgver=6.0.0_r636.gd1db48f
+pkgver=6.0.0_r639.g9e7cd93
 pkgrel=1
 pkgdesc='Abstraction to system policy and authentication features'
 arch=($CARCH)
