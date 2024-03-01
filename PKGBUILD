@@ -2,15 +2,15 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=step-git
-pkgver=21.11.70_r1155.g2b2c1cc
+pkgver=24.04.70_r1422.gbe025ee
 pkgrel=1
 pkgdesc='Interactive Physical Simulator'
 url='https://apps.kde.org/step/'
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(gcc-libs glibc gsl kcompletion5-git kconfig5-git kconfigwidgets5-git kcoreaddons5-git kcrash5-git ki18n5-git kiconthemes5-git kio5-git kjobwidgets5-git knewstuff5-git kplotting5-git ktextwidgets5-git kwidgetsaddons5-git kxmlgui5-git libqalculate qt5-base)
+makedepends=(git eigen extra-cmake-modules-git kdoctools5-git python qt5-tools)
 arch=($CARCH)
-license=(GPL LGPL FDL)
 groups=(kde-applications-git kde-education-git)
-depends=(libqalculate gsl knewstuff-git kplotting-git hicolor-icon-theme)
-makedepends=(git extra-cmake-modules-git kdoctools-git eigen qt5-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
