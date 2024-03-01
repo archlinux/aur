@@ -2,7 +2,7 @@
 
 pkgname=openui5
 pkgver=1.108.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Lets you build enterprise-ready web applications, responsive to all devices, running on almost any browser of your choice.'
 arch=('any')
 url='https://openui5.org/'

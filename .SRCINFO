@@ -1,0 +1,15 @@
+pkgbase = openui5
+	pkgdesc = Lets you build enterprise-ready web applications, responsive to all devices, running on almost any browser of your choice.
+	pkgver = 1.108.2
+	pkgrel = 2
+	url = https://openui5.org/
+	arch = any
+	license = Apache
+	makedepends = jq
+	makedepends = npm
+	depends = nodejs
+	noextract = openui5-1.108.2.tar.gz
+	source = openui5-1.108.2.tar.gz::https://github.com/SAP/openui5/archive/1.108.2.tar.gz
+	b2sums = 408b6fb59ab0c974aed3b63b589e0316c34be40b4841b3e3512e22fa8388c835611fdaa6546e2b4a51bf155717141a06c7851ddb60c3c1fff0032137a150c3da
+
+pkgname = openui5
