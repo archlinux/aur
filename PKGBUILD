@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kactivitymanagerd-git
-pkgver=5.26.90_r1478.g2e822ea
+pkgver=5.93.0_r1562.g5854ecc2
 pkgrel=1
 pkgdesc="System service to manage user's activities and track the usage patterns"
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
-license=(LGPL)
-depends=(kio-git)
-makedepends=(git extra-cmake-modules-git boost)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc kconfig-git kcoreaddons-git kcrash-git kglobalaccel ki18n kio kservice kwindowsystem kxmlgui qt6-base)
+makedepends=(git boost extra-cmake-modules)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(plasma-git)
