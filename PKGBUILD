@@ -1,14 +1,14 @@
 # Maintainer: Šarūnas Gliebus <ssharunas at yahoo.co.uk>
 
 pkgname=libsoc-git
-pkgver=0.8.2.r17.g5b788d4
+pkgver=0.8.2.r59.g545b354
 pkgrel=1
 pkgdesc="libsoc is a C library to interface with common peripherals found in System on Chips (SoC) through generic Linux Kernel interfaces."
 arch=('any')
 url="https://github.com/jackmitch/libsoc"
 license=('GPL')
 makedepends=('git' 'autoconf')
-source=(git://github.com/jackmitch/libsoc.git)
+source=(git+https://github.com/jackmitch/libsoc.git)
 sha256sums=('SKIP')
 
 pkgver() {
