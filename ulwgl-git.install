@@ -13,6 +13,9 @@ post_install() {
 
 post_upgrade() {
     msg=("Latest changes in upstream caused /usr/bin/ulwgl-run-cli to be replaced by /usr/bin/ulwgl-run"
-         "Subsequently, ULWGL_NO_PYTHON has been removed.")
+         "Subsequently, ULWGL_NO_PYTHON has been removed."
+         ""
+         "If you're having issues, check for existing upstream issues at https://github.com/Open-Wine-Components/ULWGL-launcher/issues"
+         "Also check ~/.local/share/ULWGL for inconsistencies and try deleting the folder and re-run ulwgl-run.")
     printf "%s\n" "${msg[@]}"
 }
