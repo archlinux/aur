@@ -1,7 +1,7 @@
 pkgbase = konbucase
 	pkgdesc = Convert case of your text
 	pkgver = 4.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ryonakano/konbucase
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = konbucase
 	makedepends = git
 	makedepends = meson
 	makedepends = vala
-	depends = granite7-git
+	depends = granite7
 	depends = gtksourceview5
 	depends = libhandy
 	depends = sassc

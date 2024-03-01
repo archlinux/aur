@@ -6,12 +6,12 @@ _subproject_commit='b430df2a3a4d369fa444dd8e38c262e365b74e35' # <-- NB: update o
 
 pkgname=konbucase
 pkgver=4.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert case of your text'
 arch=('x86_64' 'aarch64')
 url='https://github.com/ryonakano/konbucase'
 license=('GPL3')
-depends=('granite7-git' 'gtksourceview5' 'libhandy' 'sassc')
+depends=('granite7' 'gtksourceview5' 'libhandy' 'sassc')
 makedepends=('git' 'meson' 'vala' )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "git+${url%/*}/${_subproject_name}#commit=${_subproject_commit}")
