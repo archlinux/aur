@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kontact-git
-pkgver=21.11.40_r5346.ged3f1b15
+pkgver=24.04.40_r5943.g53475bce
 pkgrel=1
 pkgdesc="KDE Personal Information Manager"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(GPL2)
-depends=(kontactinterface-git kmail-account-wizard-git grantleetheme-git)
-makedepends=(git extra-cmake-modules-git kdoctools-git boost)
+license=(GPL-2.0-or-later)
+depends=(gcc-libs glibc grantleetheme-git kcmutils-git kcolorscheme-git kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git ki18n-git kio-git kjobwidgets-git kontactinterface-git kmail-account-wizard-git kparts-git kservice-git kwidgetsaddons-git kxmlgui-git libkdepim-git pimcommon-git qt6-base qt6-webengine)
+makedepends=(git extra-cmake-modules-git kdoctools-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kde-applications-git kdepim-git)
