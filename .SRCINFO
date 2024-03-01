@@ -1,6 +1,6 @@
 pkgbase = jura
 	pkgdesc = A lightweight terminal text editor
-	pkgver = 2.3
+	pkgver = 2.4
 	pkgrel = 2
 	epoch = 2
 	url = https://github.com/Nooberieno/jura
@@ -11,7 +11,7 @@ pkgbase = jura
 	makedepends = make
 	makedepends = gcc
 	depends = glibc
-	source = https://github.com/Nooberieno/jura/archive/refs/tags/2.3.tar.gz
+	source = https://github.com/Nooberieno/jura/archive/refs/tags/2.4.tar.gz
 	sha256sums = SKIP
 
 pkgname = jura

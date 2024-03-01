@@ -1,7 +1,23 @@
-File detection for files that end with the .c .h or .cpp file extension
+jura now fully supports syntax highlighting in following programming languages:
 
-Digit highlighting is now only enabled for these files
+C,
+C++,
+Python,
+Lua,
+Rust,
+Javascript,
+Typescript,
+C#,
+Java,
+GO,
+Swift,
 
-These files also have highlighting for both double and single quoted strings
+jura now also support detects and partially highlights certain other filetypes, these include:
 
-**Full Changelog**: https://github.com/Nooberieno/jura/compare/2.2...2.3
+JSON,
+HTML,
+CSS,
+
+Any files that do not have syntax highlighting are not detected and will display "no filetype detected"
+
+**Full Changelog**: https://github.com/Nooberieno/jura/compare/2.3...2.4
