@@ -3,14 +3,14 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=ksshaskpass-git
-pkgver=5.27.80_r279.ge186e89
+pkgver=6.0.80_r331.g63ecb6d
 pkgrel=1
 pkgdesc='ssh-add helper that uses kwallet-git and kpassworddialog'
 url='https://kde.org/plasma-desktop/'
-license=(GPL)
-arch=($CARCH)
-depends=(kwallet-git)
+license=(GPL-2.0-or-later)
+depends=(gcc-libs glibc kcoreaddons-git ki18n-git kwallet-git kwidgetsaddons-git qt6-base)
 makedepends=(git extra-cmake-modules-git kdoctools-git)
+arch=($CARCH)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git} x11-ssh-askpass)
 groups=(plasma-git)
