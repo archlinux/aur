@@ -3,14 +3,14 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=okteta-git
-pkgver=0.26.60_r4314.g5bf4a5aac
+pkgver=0.26.60_r5029.g621f761ba
 pkgrel=1
 pkgdesc='KDE hex editor for viewing and editing the raw data of files'
 url='https://kde.org/applications/utilities/okteta/'
-arch=($CARCH)
 license=(GPL LGPL FDL)
-depends=(kcmutils-git kparts-git knewstuff-git qca qt5-script hicolor-icon-theme)
-makedepends=(git extra-cmake-modules-git kdoctools-git qt5-tools)
+depends=(gcc-libs glibc kcmutils5-git kcodecs5-git kcompletion5-git kconfig5-git kconfigwidgets5-git kcoreaddons5-git kcrash5-git kdbusaddons5-git ki18n5-git kiconthemes5-git kio5-git kjobwidgets5-git knewstuff5-git kparts5-git kservice5-git kwidgetsaddons5-git kxmlgui5-git qca-qt5-git qt5-base qt5-declarative qt5-script)
+makedepends=(git extra-cmake-modules-git kdoctools5-git qt5-tools)
+arch=($CARCH)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
