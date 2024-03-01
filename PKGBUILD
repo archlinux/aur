@@ -2,15 +2,15 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kamera-git
-pkgver=23.07.70_r811.g6e1612d
+pkgver=24.04.70_r948.g4109328
 pkgrel=1
 pkgdesc='KDE integration for gphoto2 cameras'
 url='https://apps.kde.org/kamera/'
-arch=($CARCH)
-license=(GPL LGPL FDL)
-groups=(kde-applications-git kde-graphics-git)
-depends=(kio-git libgphoto2)
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(gcc-libs glibc kcmutils-git kconfig kcoreaddons-git ki18n-git kio-git kwidgetsaddons-git kxmlgui-git libgphoto2 qt6-base)
 makedepends=(git extra-cmake-modules-git kdoctools-git)
+arch=($CARCH)
+groups=(kde-applications-git kde-graphics-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
