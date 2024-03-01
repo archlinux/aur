@@ -48,6 +48,50 @@
  #  include <stddef.h>
  #else
     /*
+--- a/vmmon/linux/driver.c
++++ b/vmmon/linux/driver.c
+@@ -246,7 +246,7 @@
+ /*
+  *----------------------------------------------------------------------
+  *
+- * init_module --
++ * LinuxDriverInit --
+  *
+  *      linux module entry point. Called by /sbin/insmod command
+  *
+@@ -259,7 +259,7 @@
+  */
+ 
+ int
+-init_module(void)
++LinuxDriverInit(void)
+ {
+    int retval;
+ 
+@@ -340,7 +340,7 @@
+ /*
+  *----------------------------------------------------------------------
+  *
+- * cleanup_module --
++ * LinuxDriverExit --
+  *
+  *      Called by /sbin/rmmod
+  *
+@@ -349,7 +349,7 @@
+  */
+ 
+ void
+-cleanup_module(void)
++LinuxDriverExit(void)
+ {
+    /*
+     * XXX smp race?
+@@ -1448,3 +1448,5 @@
+  * by default (i.e., neither mkinitrd nor modprobe will accept it).
+  */
+ MODULE_INFO(supported, "external");
++module_init(LinuxDriverInit);
++module_exit(LinuxDriverExit);
 --- a/vmmon/linux/hostif.c
 +++ b/vmmon/linux/hostif.c
 @@ -47,6 +47,8 @@
@@ -252,7 +296,7 @@
     int res;
     int signalFD = args[1];
     uint64 value = 1;  // make an eventfd happy should it be there
-@@ -2699,22 +2741,32 @@
+@@ -2699,22 +2741,36 @@
        return MX_WAITERROR;
     }
  
@@ -264,7 +308,11 @@
 +    */
 +   eventfd = eventfd_ctx_fileget(file);
 +   if (!IS_ERR(eventfd)) {
++#if COMPAT_LINUX_VERSION_CHECK_LT(6, 8, 0)
 +      eventfd_signal(eventfd, 1);
++#else
++      eventfd_signal(eventfd);
++#endif
 +      fput(file);
 +      return MX_WAITNORMAL;
 +   }
@@ -406,3 +454,132 @@ index 3f43c62..7eaa49a 100644
 +#endif /* COMPAT_LINUX_VERSION_CHECK_LT(6, 5, 0) */
 +
  #endif /* __PGTBL_H__ */
+From 2c6d66f3f1947384038b765c897b102ecdb18298 Mon Sep 17 00:00:00 2001
+From: Michal Kubecek <mkubecek@suse.cz>
+Date: Fri, 12 Jan 2024 08:30:33 +0100
+Subject: [PATCH] modules: fix build with -Wmissing-prototypes
+
+Mainline commit 0fcb70851fbf ("Makefile.extrawarn: turn on
+missing-prototypes globally") in 6.8-rc1 enables -Wmissing-prototypes
+globally, revealing a lot of unclean code and also some actual problems.
+This is also the case in vmmon and vmnet modules.
+
+Most of them are addressed by making functions used only within one file
+static. The missing prototype of random_get_entropy_fallback() is handled
+by including <linux/timex.h> rather than <asm/timex.h>.
+
+Finally, there are four functions in vmnet module which are actually used
+in multiple files but instead of proper declarations, their prototype is
+duplicated in vmnet-only/driver.c, risking that the two copies won't match
+(which actually happened in one case). The cleanest solution would be
+creating separate header files for them (bridge.h, netif.h, userif.h and
+vnetUserListener.h) and including them in the respective source file and
+driver.c. As the developers already handle similar cases by simply putting
+the declarations into vnetInt.h, let us do the same to keep things simple.
+---
+ vmmon-only/common/task.c  |  2 +-
+ vmmon-only/common/vmx86.c |  6 +++---
+ vmmon-only/linux/driver.c |  4 ++--
+ vmmon-only/linux/hostif.c |  6 +++---
+ vmnet-only/bridge.c       |  2 +-
+ vmnet-only/driver.c       | 16 ++--------------
+ vmnet-only/vnetInt.h      |  7 +++++++
+ 7 files changed, 19 insertions(+), 24 deletions(-)
+
+diff --git a/vmmon-only/common/task.c b/vmmon-only/common/task.c
+index 5d34cf4d..f3752069 100644
+--- a/vmmon-only/common/task.c
++++ b/vmmon-only/common/task.c
+@@ -542,7 +542,7 @@ Task_Terminate(void)
+  *-----------------------------------------------------------------------------
+  */
+ 
+-Selector
++static Selector
+ TaskGetFlatWriteableDataSegment(void)
+ {
+    DTR hostGDTR;
+diff --git a/vmmon-only/common/vmx86.c b/vmmon-only/common/vmx86.c
+index 86e52fb4..cf64b123 100644
+--- a/vmmon-only/common/vmx86.c
++++ b/vmmon-only/common/vmx86.c
+@@ -56,7 +56,7 @@
+ #include "x86svm.h"
+ #include "x86cpuid_asm.h"
+ #if defined(__linux__)
+-#include <asm/timex.h>
++#include <linux/timex.h>
+ #endif
+ #include "perfctr.h"
+ #include "x86vtinstr.h"
+@@ -583,7 +583,7 @@ Vmx86FreeCrossPages(VMDriver *vm)
+  *-----------------------------------------------------------------------------
+  */
+ 
+-void
++static void
+ Vmx86FreeVMDriver(VMDriver *vm)
+ {
+    Vmx86_Free(vm->ptRootMpns);
+@@ -616,7 +616,7 @@ Vmx86FreeVMDriver(VMDriver *vm)
+  *-----------------------------------------------------------------------------
+  */
+ 
+-VMDriver *
++static VMDriver *
+ Vmx86AllocVMDriver(uint32 numVCPUs)
+ {
+    VMDriver *vm = Vmx86_Calloc(1, sizeof *vm, TRUE);
+diff --git a/vmmon-only/linux/driver.c b/vmmon-only/linux/driver.c
+index 3d8b7228..ab8e2dc4 100644
+--- a/vmmon-only/linux/driver.c
++++ b/vmmon-only/linux/driver.c
+@@ -258,7 +258,7 @@ LinuxDriverInitTSCkHz(void)
+  *----------------------------------------------------------------------
+  */
+ 
+-int
++static int
+ LinuxDriverInit(void)
+ {
+    int retval;
+@@ -348,7 +348,7 @@ LinuxDriverInit(void)
+  *----------------------------------------------------------------------
+  */
+ 
+-void
++static void
+ LinuxDriverExit(void)
+ {
+    /*
+diff --git a/vmmon-only/linux/hostif.c b/vmmon-only/linux/hostif.c
+index 5d08f33a..c1e6c671 100644
+--- a/vmmon-only/linux/hostif.c
++++ b/vmmon-only/linux/hostif.c
+@@ -2997,7 +2997,7 @@ HostIF_CallOnEachCPU(void (*func)(void*), // IN: function to call
+  *-----------------------------------------------------------------------------
+  */
+ 
+-Bool
++static Bool
+ HostIFCheckTrackedMPN(VMDriver *vm, // IN: The VM instance
+                       MPN mpn)      // IN: The MPN
+ {
+@@ -3117,7 +3117,7 @@ HostIF_ReadPhysical(VMDriver *vm,      // IN: The VM instance
+  *----------------------------------------------------------------------
+  */
+ 
+-int
++static int
+ HostIFWritePhysicalWork(MA ma,             // MA to be written to
+                         VA64 addr,         // src data to write
+                         Bool kernelBuffer, // is the buffer in kernel space?
+@@ -3276,7 +3276,7 @@ HostIF_GetCurrentPCPU(void)
+  *----------------------------------------------------------------------
+  */
+ 
+-int
++static int
+ HostIFStartTimer(Bool rateChanged,  //IN: Did rate change?
+                  unsigned int rate) //IN: current clock rate
+ {
