@@ -2,7 +2,7 @@
 
 _pkgname="hypridle"
 pkgname="${_pkgname}-git"
-pkgver=0.1.1.r0.g6ea4e045
+pkgver=0.1.1.r2.g029f0880
 pkgrel=1
 pkgdesc="Hyprland's idle daemon"
 arch=(any)
@@ -23,12 +23,13 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -S . -B ./build
+	cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX=/usr -S . -B ./build
     cmake --build ./build --config Release --target hypridle
 }
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	install -Dm755 build/hypridle -t "${pkgdir}/usr/bin"
+	DESTDIR="${pkgdir}" cmake --install build
+
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

@@ -1,6 +1,6 @@
 pkgbase = hypridle-git
 	pkgdesc = Hyprland's idle daemon
-	pkgver = 0.1.1.r0.g6ea4e045
+	pkgver = 0.1.1.r2.g029f0880
 	pkgrel = 1
 	url = https://github.com/hyprwm/hypridle
 	arch = any
