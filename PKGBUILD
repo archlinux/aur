@@ -2,15 +2,15 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kjumpingcube-git
-pkgver=21.11.70_r784.g7772574
+pkgver=24.04.70_r1016.geb346e2
 pkgrel=1
 pkgdesc='A simple tactical game'
 url='https://apps.kde.org/kjumpingcube/'
-arch=($CARCH)
-license=(GPL LGPL FDL)
-groups=(kde-applications-git kde-games-git)
-depends=(libkdegames-git hicolor-icon-theme)
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(gcc-libs glibc kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git kdbusaddons-git ki18n-git kio-git kwidgetsaddons-git kxmlgui-git libkdegames-git qt6-base qt6-svg)
 makedepends=(git extra-cmake-modules-git kdoctools-git)
+arch=($CARCH)
+groups=(kde-applications-git kde-games-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
