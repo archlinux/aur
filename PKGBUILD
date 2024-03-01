@@ -4,17 +4,17 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kfind-git
-pkgver=21.11.70_r2644.gd3be9a828
+pkgver=24.04.70_r2939.g1ed31f376
 pkgrel=1
 pkgdesc='Find Files/Folders'
 arch=($CARCH)
 url='https://apps.kde.org/kfind/'
-license=(LGPL)
-depends=(kio-git kfilemetadata-git)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc karchive-git kcompletion-git kconfig-git kconfigwidgets-git kcoreaddons-git kfilemetadata-git ki18n-git kio-git kwidgetsaddons-git kxmlgui-git qt6-5compat qt6-base)
 makedepends=(git extra-cmake-modules-git kdoctools-git)
+optdepends=('mlocate: search using mlocate index')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('mlocate: search using mlocate index')
 groups=(kde-applications-git kde-utilities-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
