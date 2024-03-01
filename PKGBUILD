@@ -119,9 +119,6 @@ _processor_opt=${_processor_opt-}
 
 _use_auto_optimization=${_use_auto_optimization-y}
 
-# disable debug to lower the size of the kernel
-_disable_debug=${_disable_debug-}
-
 # Clang LTO mode, only available with the "llvm" compiler - options are "none", "full" or "thin".
 # ATTENTION - one of three predefined values should be selected!
 # "full: uses 1 thread for Linking, slow and uses more memory, theoretically with the highest performance gains."
@@ -162,7 +159,7 @@ elif [ -n "$_use_llvm_lto" ]  ||  [[ "$_use_lto_suffix" = "n" ]]; then
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.7
-_minor=6
+_minor=7
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -471,28 +468,6 @@ prepare() {
             -e DAMON_LRU_SORT
     fi
 
-
-
-    ### Disable DEBUG
-    # Doesn't work with sched-ext
-    # More infos here: https://github.com/CachyOS/linux-cachyos/issues/187
-    if [[ "$_cpusched" != "sched-ext" || "$_cpusched" != "cachyos" ]] && [ -n "$_disable_debug" ]; then
-        scripts/config -d DEBUG_INFO \
-            -d DEBUG_INFO_BTF \
-            -d DEBUG_INFO_DWARF4 \
-            -d DEBUG_INFO_DWARF5 \
-            -d PAHOLE_HAS_SPLIT_BTF \
-            -d DEBUG_INFO_BTF_MODULES \
-            -d SLUB_DEBUG \
-            -d PM_DEBUG \
-            -d PM_ADVANCED_DEBUG \
-            -d PM_SLEEP_DEBUG \
-            -d ACPI_DEBUG \
-            -d SCHED_DEBUG \
-            -d LATENCYTOP \
-            -d DEBUG_PREEMPT
-    fi
-
     echo "Enable USER_NS_UNPRIVILEGED"
     scripts/config -e USER_NS
 
@@ -738,8 +713,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('51d6e2304e7a9188a0fec5714276589cb46948157c76a2f4ed3f5e0bf634d94a89ea75251229a86e018767a3367328c16b610d631c78d82663dcd1d904b73385'
-        'e11ddfab85b76948aa9d1c2873c6149208d1f901b2a46bf78845ac27c2cd771010991e2697cd9d30fa087f97be2fd00354ae27e8a912253561430e2061c198d7'
+b2sums=('ef97a036ab6cd421200b2e8f0a49c6b570d2269a5e182ea948d48d456e6414bfa61f5f6efa2bad65efbe811d2078a54a4edff9c27de609401160f3905fe27a22'
+        '13ae3342ec770c4fc4a3196379503dcf48e756073b785e20431b039536b85eddf51c33e7be907be3083f78874ebb480fe66d64de31412939a0fc0b1e301131d5'
         '43ef7a347878592740d9eb23b40a56083fa747f7700fa1e2c6d039d660c0b876d99bf1a3160e15d041fb13d45906cdb5defef034d4d0ae429911864239c94d8d'
-        '92dc15e75ad82bb75a338651b52c5d9693d6e577140f9a6184f0593e09dd306991ab17b5515ef90cfa343121eeb56f6d989f9247d889b9c016e840c2784cc460'
-        '6c2400c0f49d413599c359860cc51b5a1fe61be52ae309f11cc7a7de229b46195229a70f87a01381e93b8421675c09a0268714f1cabf5ef16900af7102f637ab')
+        '99c37ab91632fd6dd1bab52f4bcb1e243c0ccc0ede860c6cf6523ef62f07b47350f55d613d995bbde51b04f445b975e92d54796050b5c4b52f31e426871a902e'
+        'caeaaa795588c1c465674ec55dbea5e72cf0afbc1d3ea2546f7899a1d71867587ea7e886699e3df792415fbfea236e23f081261ab0dda1fefa8d3a7b70b1befc')
