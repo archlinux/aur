@@ -6,7 +6,9 @@ arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/LyonSyonII/hunt-rs'
 license=('MIT')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
+source=(
+	"$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate"
+	'build.rs')
 sha512sums=(
 	'371380befefcc699fd72af51f77dbb0a78c0fe7654fcedbde5fc4194e525b60b3dbc94b455d03bb09f8348389c1fbb11dd55459b3f6f029afc4b0738a55fce14'
 	'6fb1580ce22aa2bd29c008437d38b86f029fbd39ec99d9c355e6941591fd65f8a21be048d6af802e7a4c73ade1ae95a28a8a99e73372fef4e62ef2bb3eb76b5c')

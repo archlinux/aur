@@ -9,6 +9,7 @@ pkgbase = hunt
 	license = MIT
 	makedepends = cargo
 	source = hunt-2.1.0.tar.gz::https://static.crates.io/crates/hunt/hunt-2.1.0.crate
+	source = build.rs
 	sha512sums = 371380befefcc699fd72af51f77dbb0a78c0fe7654fcedbde5fc4194e525b60b3dbc94b455d03bb09f8348389c1fbb11dd55459b3f6f029afc4b0738a55fce14
 	sha512sums = 6fb1580ce22aa2bd29c008437d38b86f029fbd39ec99d9c355e6941591fd65f8a21be048d6af802e7a4c73ade1ae95a28a8a99e73372fef4e62ef2bb3eb76b5c
 	b2sums = 26d2c105d2c776abe07b145f9b4d29b5f55d971610da68f02f1c1a15157e89945a909d26335266606348de87af3c86b8b73bae3c529ccc895534c841c9f93033
