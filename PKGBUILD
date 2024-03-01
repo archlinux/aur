@@ -1,16 +1,16 @@
-# Merged with official ABS kwayland PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Merged with official ABS kwayland-git PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Antonio Rojas
 
 pkgname=kwayland-git
-pkgver=5.240.0_r1215.gb1d2718
+pkgver=_r1256.ge87c6d8
 pkgrel=1
 pkgdesc='Qt-style Client and Server library wrapper for the Wayland libraries'
 arch=($CARCH)
 url='https://www.kde.org'
-license=(LGPL)
-depends=(qt6-wayland)
-makedepends=(git extra-cmake-modules-git doxygen qt6-tools wayland-protocols plasma-wayland-protocols-git)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc qt6-base qt6-wayland-git wayland-git)
+makedepends=(git doxygen extra-cmake-modules-git plasma-wayland-protocols-git qt6-doc qt6-tools wayland-protocols-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf6-git)
