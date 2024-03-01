@@ -1,7 +1,7 @@
 pkgbase = vookiimageviewer-bin
 	pkgdesc = A cross-platform lightweight image viewer for a fast image preview.
 	pkgver = 2023.12.24
-	pkgrel = 2
+	pkgrel = 3
 	url = https://vookiimageviewer.cz/
 	arch = x86_64
 	license = GPL-3.0-only

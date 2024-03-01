@@ -3,11 +3,12 @@ pkgname=vookiimageviewer-bin
 _pkgname=VookiImageViewer
 pkgver=2023.12.24
 _exiv2version=0.27.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform lightweight image viewer for a fast image preview."
 arch=('x86_64')
 url="https://vookiimageviewer.cz/"
 _ghurl="https://github.com/vookimedlo/vooki-image-viewer"
+_exiv2url="https://github.com/Exiv2/exiv2"
 license=('GPL-3.0-only')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
@@ -17,7 +18,7 @@ depends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/debian_stable_gcc_${pkgname%-bin}_${pkgver}_amd64.deb.zip"
-    "exiv2-${_exiv2version}.zip::https://github.com/Exiv2/exiv2/releases/download/0.27.1/exiv2-0.27.1-Linux64.tar.gz"
+    "exiv2-${_exiv2version}.zip::${_exiv2url}/releases/download/${_exiv2version}/exiv2-${_exiv2version}-Linux64.tar.gz"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('53fc2d650013982912d2fda3204a6b2189231b0f573e4da23640d6affeb33943'
@@ -27,8 +28,8 @@ build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/${pkgname%-bin}_${pkgver}_amd64.deb"
-    bsdtar -xf "${srcdir}/data.tar.zst"
+    bsdtar -xf "${srcdir}/${pkgname%-bin}_"*.deb
+    bsdtar -xf "${srcdir}/data."*
     sed "s|Exec=${_pkgname}|Exec=${pkgname%-bin}|g;s|${pkgname%-bin}icon|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
