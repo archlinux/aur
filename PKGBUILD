@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=mailimporter-git
-pkgver=5.18.40_r462.gaaac664
+pkgver=6.0.40_r765.g4ff0e8e
 pkgrel=1
 pkgdesc="Mail importer library"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(LGPL)
-depends=(pimcommon-git)
-makedepends=(git extra-cmake-modules-git boost)
+license=(LGPL-2.0-or-later)
+depends=(akonadi-mime-git gcc-libs glibc karchive-git kconfig-git kcoreaddons-git ki18n-git kmime-git libakonadi-git pimcommon-git qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kdepim-git)
