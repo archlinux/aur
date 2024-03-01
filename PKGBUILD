@@ -3,15 +3,15 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kpimtextedit-git
-pkgver=5.18.40_r1393.g3874363
+pkgver=6.0.40_r2070.gdfe88e94
 pkgrel=1
 pkgdesc="A textedit with PIM-specific features"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(LGPL)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glibc kcodecs-git kcolorscheme-git kconfig-git kcoreaddons-git ki18n-git kio-git ktextaddons-git kwidgetsaddons-git kxmlgui-git qt6-base sonnet-git syntax-highlighting-git)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 groups=(kdepim-git)
-depends=(kio-git syntax-highlighting-git)
-makedepends=(git extra-cmake-modules-git qt5-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
