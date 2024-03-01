@@ -1,0 +1,14 @@
+pkgbase = cmag
+	pkgdesc = Interactive analyzer and browser for CMake build systems
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/DziubanMaciej/cmag
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	source = git+https://github.com/DziubanMaciej/cmag.git#tag=560a1f7496966b4477e83423e5bdc7c57782d790
+	sha256sums = SKIP
+
+pkgname = cmag
