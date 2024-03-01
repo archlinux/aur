@@ -4,17 +4,17 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kactivities-git
-pkgver=5.240.0_r1428.geb621d60
+pkgver=_r1466.gc68ff3db
 pkgrel=1
 arch=($CARCH)
 pkgdesc="Core components for the KDE's Activities"
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(kcoreaddons-git kconfig-git kwindowsystem-git)
-makedepends=(git extra-cmake-modules-git boost doxygen qt6-tools qt6-declarative)
+depends=(gcc-libs glibc kconfig-git kcoreaddons-git qt6-base)
+makedepends=(git boost doxygen extra-cmake-modules-git qt6-declarative qt6-doc qt6-tools)
+optdepends=('qt6-declarative: QML bindings')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('qt6-declarative: QML bindings')
 groups=(kf6-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
