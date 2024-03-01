@@ -8,10 +8,10 @@ pkgrel=6
 pkgdesc='Flo based programming interface in python'
 arch=('any')
 url='https://ioflo.com'
-license=('Apache')
+license=('Apache-2.0')
 depends=('python')
-makedepends=('python-setuptools-git')
-checkdepends=('python-pytest-runner')
+makedepends=('python-setuptools-git' 'python-build' 'python-installer' 'python-wheel')
+checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ioflo/ioflo/archive/v$pkgver.tar.gz"
         python310.patch)
 sha512sums=('7485924ce329889afb1c3e0555b54fdbfb11eafce48fb0ac15bacd229fea512c44fcc118bbc4368ebc7c770d62129ee6b895b982f73a269de7131ea37daac02b'
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
   cd ioflo-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -36,5 +36,5 @@ check() {
 
 package() {
   cd ioflo-$pkgver
-  python setup.py install --root="$pkgdir" -O1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
