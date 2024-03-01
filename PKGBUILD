@@ -2,7 +2,7 @@
 # Maintainer: jonah <me@jon4hz.io>
 
 pkgname='gmotd-bin'
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='a configurable, dynamic motd generator'
 url='https://jon4hz.io'
@@ -11,8 +11,8 @@ license=('MIT')
 provides=('gmotd')
 conflicts=('gmotd')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jon4hz/gmotd/releases/download/v0.1.0/gmotd-v0.1.0-linux-amd64.tar.gz")
-sha256sums_x86_64=('b7df3b57e628ac93b736b52e09ca39228f7b1fca160d5d3e3b992e7ab894fb51')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jon4hz/gmotd/releases/download/v0.2.0/gmotd-v0.2.0-linux-amd64.tar.gz")
+sha256sums_x86_64=('27543949fe14ac28491cdf5a496df87f69db57403aff3bb33ad56b60c732b903')
 
 package() {
   # bin
