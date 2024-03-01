@@ -1,0 +1,20 @@
+pkgbase = python-iocapture
+	pkgdesc = Capture stdout, stderr easily
+	pkgver = 0.1.2
+	pkgrel = 11
+	url = https://github.com/oinume/iocapture
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-flexmock
+	checkdepends = python-pytest-cov
+	checkdepends = python-six
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://github.com/oinume/iocapture/archive/0.1.2/python-iocapture-0.1.2.tar.gz
+	sha512sums = 1205d13b107d83dcb45d5546038d8b0b5417a20a51149c405123111488c351ff81a447f10653cd3dd9ecc236e01a0fcceb6647091e38ff2fa34c69e0baff1567
+
+pkgname = python-iocapture
