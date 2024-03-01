@@ -1,16 +1,16 @@
 pkgbase = r-shades
 	pkgdesc = Simple Colour Manipulation
 	pkgver = 1.4.0
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=shades
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	depends = r
-	optdepends = r-colorspace
 	optdepends = r-covr
 	optdepends = r-ggplot2
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/shades_1.4.0.tar.gz
-	sha256sums = 122fa09aa893cf81f95835ccf69459162dbbc14defa0c11c6d6bbb0ca52ee9fd
+	md5sums = 84eb1e60ab7bc6d1fbbd662840230951
+	b2sums = e82d7ad61b72098ce35916eb9d1b7c969b071d2c3f4da8349fb6a90c5e13fd30bd4dcbd4e71d6bfeb3611f332c3ea0f0e8500c42b25a530513b744f66d13d399
 
 pkgname = r-shades

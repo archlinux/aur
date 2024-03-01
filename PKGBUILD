@@ -3,31 +3,33 @@
 _pkgname=shades
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
-pkgrel=4
-pkgdesc='Simple Colour Manipulation'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('BSD')
+pkgver=${_pkgver//-/.}
+pkgrel=9
+pkgdesc="Simple Colour Manipulation"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('BSD-3-Clause')
 depends=(
   r
 )
 optdepends=(
-  r-colorspace
   r-covr
   r-ggplot2
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('122fa09aa893cf81f95835ccf69459162dbbc14defa0c11c6d6bbb0ca52ee9fd')
+md5sums=('84eb1e60ab7bc6d1fbbd662840230951')
+b2sums=('e82d7ad61b72098ce35916eb9d1b7c969b071d2c3f4da8349fb6a90c5e13fd30bd4dcbd4e71d6bfeb3611f332c3ea0f0e8500c42b25a530513b744f66d13d399')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENCE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENCE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
