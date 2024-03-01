@@ -4,17 +4,16 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kde-gtk-config-git
-pkgver=5.27.80_r993.gb79bd5a
+pkgver=6.0.80_r1027.g8f477ae
 pkgrel=1
 pkgdesc='GTK2 and GTK3 Configurator for KDE'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
-license=(LGPL)
-depends=(qt6-svg kdecoration-git kconfigwidgets-git kdbusaddons-git kwindowsystem-git)
+license=(LGPL-2.0-or-later)
+depends=(gcc-libs glib2 glibc kcolorscheme-git kconfig-git kcoreaddons-git kdbusaddons-git kdecoration-git kguiaddons-git kwindowsystem-git qt6-base qt6-svg sh)
 makedepends=(git extra-cmake-modules-git gtk3 sassc)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('gtk3: GTK3 apps support' 'xsettingsd: apply settings to GTK applications on the fly')
 groups=(plasma-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
