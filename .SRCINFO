@@ -1,0 +1,19 @@
+pkgbase = python-ioflo
+	pkgdesc = Flo based programming interface in python
+	pkgver = 2.0.2
+	pkgrel = 6
+	url = https://ioflo.com
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = python-setuptools-git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = python-ioflo-2.0.2.tar.gz::https://github.com/ioflo/ioflo/archive/v2.0.2.tar.gz
+	source = python310.patch
+	sha512sums = 7485924ce329889afb1c3e0555b54fdbfb11eafce48fb0ac15bacd229fea512c44fcc118bbc4368ebc7c770d62129ee6b895b982f73a269de7131ea37daac02b
+	sha512sums = b588703d653848401fb8e13be949f6de4ff41143eae669ccdcae8edaaac1883be0a684112dacfdf11fa3f2842dbde0dce2b47a7680cb87761d30ffa4018569e8
+
+pkgname = python-ioflo
