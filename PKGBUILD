@@ -2,17 +2,18 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kup-git
-pkgver=0.9.1_r439.g96c0bc8
+pkgver=0.8.0_r688.gd49e09c
 pkgrel=1
 pkgdesc='A backup software for helping people to keep up-to-date backups'
 arch=($CARCH)
 url='https://apps.kde.org/kup/'
-license=(GPL2)
-depends=(kidletime-git kinit-git libgit2 hicolor-icon-theme)
-makedepends=(git extra-cmake-modules-git plasma-framework-git)
+license=(GPL-2.0-only GPL-2.0-or-later GPL-3.0-only)
+depends=(gcc-libs glibc kcmutils-git kcompletion-git kconfig-git kconfigwidgets-git kcoreaddons-git kdbusaddons-git kdeclarative-git ki18n-git kidletime-git kio-git kirigami-git kjobwidgets-git knotifications-git kwidgetsaddons-git kxmlgui-git libgit2 libplasma-git plasma5support-git qt6-base qt6-declarative solid-git)
+makedepends=(git extra-cmake-modules-git git)
+optdepends=('bup: bup backend'
+            'rsync: support for synced backups')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('rsync: support for synced backups' 'bup: bup backend')
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
