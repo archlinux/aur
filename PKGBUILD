@@ -2,7 +2,7 @@
 pkgname=xplist-bin
 _pkgname=Xplist
 pkgver=1.2.47
-pkgrel=4
+pkgrel=5
 pkgdesc="Cross-platform Plist Editor"
 arch=("x86_64")
 url="https://github.com/ic005k/Xplist"
@@ -18,6 +18,9 @@ depends=(
     'fontconfig'
     'e2fsprogs'
     'libxcb'
+)
+makedepends=(
+    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-Linux-${CARCH}.AppImage"

@@ -1,10 +1,11 @@
 pkgbase = xplist-bin
 	pkgdesc = Cross-platform Plist Editor
 	pkgver = 1.2.47
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/ic005k/Xplist
 	arch = x86_64
 	license = MIT
+	makedepends = fuse2
 	depends = libglvnd
 	depends = libgpg-error
 	depends = freetype2
