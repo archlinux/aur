@@ -1,15 +1,12 @@
 pkgbase = fairshare-bin
 	pkgdesc = Simplifying the curation and sharing of biomedical research data and software according to applicable FAIR guidelines
 	pkgver = 2.1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://fairdataihub.org/fairshare
 	arch = x86_64
 	license = MIT
-	makedepends = squashfuse
+	makedepends = fuse2
 	depends = electron25
-	depends = dbus-glib
-	depends = libdbusmenu-glib
-	depends = gtk2
 	provides = fairshare=2.1.0
 	conflicts = fairshare
 	source = fairshare-2.1.0.AppImage::https://github.com/fairdataihub/FAIRshare/releases/download/v2.1.0/FAIRshare-2.1.0.AppImage
@@ -17,6 +14,6 @@ pkgbase = fairshare-bin
 	source = fairshare.sh
 	sha256sums = 9c6bf87ec638dcb3dc44de81e268a57453f26c4e345023a3664ed0f744c2a7c3
 	sha256sums = f53ab2779598ebdd8bef9425c402eed3cac0e2a6dc3ec5cbda5a07de0bdcf7dc
-	sha256sums = 1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8
+	sha256sums = 50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe
 
 pkgname = fairshare-bin
