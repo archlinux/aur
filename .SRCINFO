@@ -1,0 +1,16 @@
+pkgbase = python-paver
+	pkgdesc = Python-based project scripting
+	pkgver = 1.3.4
+	pkgrel = 7
+	url = https://github.com/paver/paver
+	arch = any
+	license = BSD
+	checkdepends = python-cogapp
+	checkdepends = python-nose
+	checkdepends = python-virtualenv
+	makedepends = python-setuptools
+	depends = python-six
+	source = python-paver-1.3.4.tar.gz::https://github.com/paver/paver/archive/Paver-1.3.4.tar.gz
+	sha512sums = 5747235b81df1dc8726bfa949f13c544e03c596f58c8bfc7ab55cc285f793fbb44cbcaa98acbc6e4a0554418755d3d70246b0e37249473b062d54a23b6bea35f
+
+pkgname = python-paver
