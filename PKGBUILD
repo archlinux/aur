@@ -1,7 +1,7 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgname=wbg
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Wallpaper application for wlroots based Wayland compositors"
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/${pkgname}
@@ -9,7 +9,7 @@ license=(mit)
 makedepends=('meson' 'ninja' 'wayland-protocols' 'tllist')
 depends=('wayland' 'pixman' 'libjpeg-turbo' 'libpng' 'libwebp')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha256sums=('99ba57c7f51509384b29fa7d5d5a29b008209746aa7cde0ed6a9a2965236b6c7')
+sha256sums=('3f7844914c8a53fababa5df3575a9adb06026932bdd359664077ffdf19aae917')
 
 build() {
   cd ${pkgname}
