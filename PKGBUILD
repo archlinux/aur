@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=pimcommon-git
-pkgver=5.18.40_r1064.g6dfebc4
+pkgver=6.0.40_r2344.g8d374333
 pkgrel=1
 pkgdesc="Common libraries for KDE PIM"
 arch=($CARCH)
 url="https://kontact.kde.org"
-license=(LGPL)
-depends=(libkdepim-git kpimtextedit-git knewstuff-git kimap-git kldap-git akonadi-contacts-git akonadi-search-git purpose-git)
-makedepends=(git extra-cmake-modules-git boost qt5-tools)
+license=(LGPL-2.0-or-later)
+depends=(akonadi-contacts-git akonadi-search-git gcc-libs glibc kcmutils-git kcodecs-git kcolorscheme-git kcompletion-git kconfig-git kcontacts-git kcoreaddons-git ki18n-git kimap-git kio-git kitemmodels-git kitemviews-git kldap-git knewstuff-git ktextaddons-git kwidgetsaddons-git kxmlgui-git libakonadi-git libkdepim-git purpose-git qt6-base)
+makedepends=(git doxygen extra-cmake-modules-git qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kdepim-git)
