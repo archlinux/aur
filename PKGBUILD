@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mubu-bin
 _pkgname=Mubu
-pkgver=3.7.3
+pkgver=4.0.0
 _electronversion=11
 pkgrel=1
 pkgdesc="一款结合了大纲笔记和思维导图的头脑管理工具(packed from origin exe, use system electron)"
@@ -11,28 +11,27 @@ license=('LicenseRef-custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'p7zip'
     'gendesk'
     'imagemagick'
-    'asar'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.exe::https://assets.mubu.com/client/${_pkgname}-${pkgver}.exe"
     "LICENSE-${pkgver}.html::${url}/agreement"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('dac7470975ed11fa529cbeed979da3741a180a1c7379ef0c0320263035085e7c'
-            '82b6eb156214fd5c549a15dde79b720302662a08c4d01775f8670090655f7abd'
-            '1d3f21d54a2d9d1a53661bd91c2afd00df79b0ce4057a66b4c953febfc464cd8')
+sha256sums=('35047e27a09ff7047ed470127830f07b80005fc682794674af03c3f0b193133e'
+            '023b3c0cc74ff7e75ab58817a51c3f20f309ad2c295b20c1d9f736fb33f1392b'
+            '50b10386d13e5bec806aeb78f819c4edd0208a4d184332e53866c802731217fe')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|app.asar|g" \
+        -e "s|@runname@|app.asar|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -f -n -q --categories "Office" --name "${_pkgname}" --exec "${pkgname} %U"
+    gendesk -f -n -q --categories="Office" --name="${_pkgname}" --exec="${pkgname} %U"
     7z x -aoa "${srcdir}/${pkgname%-bin}-${pkgver}.exe"
     install -Dm755 -d "${srcdir}/tmp"
     7z x -aoa "${srcdir}/\$PLUGINSDIR/app-32.7z" -o"${srcdir}/tmp"
