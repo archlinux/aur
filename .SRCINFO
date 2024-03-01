@@ -1,7 +1,7 @@
 pkgbase = plasma-essential-meta
 	pkgdesc = Meta-PKG to install essential (and optional) KDE Plasma packages
 	pkgver = 5.27
-	pkgrel = 4
+	pkgrel = 4.1
 	url = https://community.kde.org/Distributions/Packaging_Recommendations
 	arch = any
 	license = None
@@ -44,7 +44,6 @@ pkgname = plasma-essential-meta
 	optdepends = kdegraphics-thumbnailers: Thumbnails for PDF, Mobipocket and camera RAW image files
 	optdepends = kdenetwork-filesharing: Samba LAN file sharing setup
 	optdepends = kgamma: Adjust your screen gamma curve from systemsettings
-	optdepends = khotkeys: Deprecated hotkeys management (only needed if user has legacy bindings defined in this)
 	optdepends = kinfocenter: System information application
 	optdepends = kio-admin: Manage files as administrator using the admin:// KIO protocol
 	optdepends = kio-fuse: Mount remote filesystems and access them in KDE and non-KDE apps
