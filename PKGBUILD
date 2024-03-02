@@ -3,7 +3,7 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=060.r6794.4980bad
-pkgrel=1
+pkgrel=2
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracutdevs/dracut'
@@ -98,8 +98,8 @@ prepare() {
     patch -Np1 < ../$p
   done
 
-  # remove dracut modules not meant for x86_64
-  for f in 80cms 81cio_ignore 91zipl 95dasd 95dasd_mod \
+  # remove dracut modules not meant for arch x86_64
+  for f in 45ifcfg 80cms 81cio_ignore 91zipl 95dasd 95dasd_mod \
     95dasd_rules 95dcssblk 95qeth_rules 95zfcp \
     95zfcp_rules 95znet; do
     rm -rf modules.d/$f
