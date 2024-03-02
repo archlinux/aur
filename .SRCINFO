@@ -1,18 +1,17 @@
 pkgbase = thunar-megasync-bin
 	pkgdesc = Managing your MEGA cloud drive using Thunar file manager.
-	pkgver = 4.3.0
+	pkgver = 5.2.0
 	pkgrel = 1
 	url = https://mega.nz
 	arch = x86_64
 	license = custom
 	depends = megasync-bin
 	depends = thunar
-	provides = thunar-megasync=4.3.0
+	provides = thunar-megasync=5.2.0
 	conflicts = thunar-megasync
 	conflicts = thunar-gtk3-megasync
 	replaces = thunar-megasync
-	source = https://mega.nz/linux/MEGAsync/Arch_Extra/x86_64/thunar-megasync-4.3.0-1-x86_64.pkg.tar.xz
+	source = https://mega.nz/linux/repo/Arch_Extra/x86_64/thunar-megasync-5.2.0-1-x86_64.pkg.tar.zst
 	sha256sums = 3c3e8bc9a793881c92aee9e937263218b13c2bbc4ed0d2714272466325284cb9
 
 pkgname = thunar-megasync-bin
-
