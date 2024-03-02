@@ -4,13 +4,13 @@
 
 pkgname=ksysguard-git
 pkgver=5.22.80_r3593.g2c18f3bd
-pkgrel=1
+pkgrel=2
 pkgdesc='Track and control the processes running in your system'
 arch=($CARCH)
 url='https://userbase.kde.org/KSysGuard'
 license=(LGPL)
-depends=(gcc-libs glibc kcompletion5-git kconfig5-git kconfigwidgets5-git kcoreaddons5-git kdbusaddons5-git ki18n5-git kiconthemes5-git kio5-git knewstuff5-git knotifications5-git ksystemstats-git kwidgetsaddons5-git kwindowsystem5-git kxmlgui5-git libksysguard-git lm_sensors qt5-base)
-makedepends=(git extra-cmake-modules-git kdoctools5-git)
+depends=(gcc-libs glibc kcompletion5 kconfig5 kconfigwidgets5 kcoreaddons5 kdbusaddons5 ki18n5 kiconthemes5 kio5 knewstuff5 knotifications5 ksystemstats-git kwidgetsaddons5 kwindowsystem5 kxmlgui5 libksysguard-git lm_sensors qt5-base)
+makedepends=(git extra-cmake-modules-git kdoctools5)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(plasma-git)
