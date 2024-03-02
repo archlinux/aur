@@ -7,6 +7,7 @@ pkgdesc="String manipulationg tool written in haskell"
 arch=("x86_64")
 license=("MIT")
 depends=("gmp")
+url="https://github.com/DanRyba253/smh"
 
 _url="https://github.com/DanRyba253/smh"
 
