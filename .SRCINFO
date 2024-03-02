@@ -24,6 +24,7 @@ pkgbase = wlx-overlay-s-git
 	depends = alsa-lib
 	provides = wlx-overlay-s
 	conflicts = wlx-overlay-s
+	options = !lto
 	source = wlx-overlay-s::git+https://github.com/galister/wlx-overlay-s.git
 	sha256sums = SKIP
 

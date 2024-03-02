@@ -14,9 +14,7 @@ conflicts=("$_pkgname")
 provides=("$_pkgname")
 source=("$_pkgname::git+https://github.com/galister/wlx-overlay-s.git")
 sha256sums=('SKIP')
-
-# Use LTO
-export CARGO_PROFILE_RELEASE_LTO=true CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+options=(!lto)
 
 # Use debug
 export CARGO_PROFILE_RELEASE_DEBUG=2
