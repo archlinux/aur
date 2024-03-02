@@ -1,7 +1,7 @@
 pkgbase = cycles-standalone
 	pkgdesc = Blender Cycles rendering engine, standalone version
 	pkgver = 4.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/blender/cycles.git
 	arch = x86_64
 	license = Apache
@@ -24,14 +24,16 @@ pkgbase = cycles-standalone
 	depends = openshadinglanguage
 	depends = alembic
 	depends = sdl2
-	depends = google-glog
 	depends = libepoxy
 	depends = usd
+	optdepends = google-glog
 	optdepends = cuda
 	optdepends = optix
 	provides = cycles
 	source = git+https://github.com/blender/cycles.git#commit=7d482abd0078765f52a49024c895a2f12a681cbd
+	source = https://projects.blender.org/blender/blender/commit/798a0b301e640e73ae12e6f8a36a66746893bff1
 	source = cycles_wrap.sh
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 00afc4aab5541d147b013c31ab91d78e272654a75cae60b39cf70c23a2612c96
 

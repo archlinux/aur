@@ -11,19 +11,21 @@
 
 pkgname=cycles-standalone
 pkgver=4.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Blender Cycles rendering engine, standalone version"
 arch=(x86_64)
 url="https://github.com/blender/cycles.git"
 license=(Apache)
-depends=(pugixml opencolorio boost-libs python gflags openimageio intel-oneapi-tbb openvdb embree openimagedenoise opensubdiv openshadinglanguage alembic sdl2 google-glog libepoxy usd)
+depends=(pugixml opencolorio boost-libs python gflags openimageio intel-oneapi-tbb openvdb embree openimagedenoise opensubdiv openshadinglanguage alembic sdl2 libepoxy usd)
 makedepends=(cmake git boost llvm python)
-optdepends=(cuda optix)
+optdepends=(google-glog cuda optix)
 provides=(cycles)
 _commit=7d482abd0078765f52a49024c895a2f12a681cbd
 source=("git+https://github.com/blender/cycles.git#commit=${_commit}"
+        "https://projects.blender.org/blender/blender/commit/798a0b301e640e73ae12e6f8a36a66746893bff1"
         cycles_wrap.sh)
 sha256sums=('SKIP'
+            'SKIP'
             '00afc4aab5541d147b013c31ab91d78e272654a75cae60b39cf70c23a2612c96')
 
 prepare() {
@@ -31,6 +33,12 @@ prepare() {
 
     # Remove FindClang.cmake, to use local equivalent
     rm $_src_root_dir/src/cmake/Modules/FindClang.cmake
+
+    # Apply patches, if any
+    for patch in "${srcdir}"/*.patch; do
+      msg2  "apply $patch..."
+      patch -Np1 -d "${srcdir}"/cycles -i "$patch"
+    done
 }
 
 build() {
@@ -67,7 +75,6 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DWITH_CYCLES_STANDALONE_GUI=TRUE \
         -DWITH_CYCLES_OSL=TRUE \
-        -DWITH_CYCLES_LOGGING=TRUE \
         -DCMAKE_SKIP_INSTALL_RPATH=YES \
         -DWITH_CYCLES_NANOVDB=FALSE \
         "${_CMAKE_FLAGS[@]}" \
