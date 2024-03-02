@@ -1,0 +1,11 @@
+pkgbase = smh-bin
+	pkgdesc = String manipulationg tool written in haskell
+	pkgver = 0.1.1
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	depends = gmp
+	source = https://github.com/DanRyba253/smh/releases/download/v0.1.1/smh-manpage
+	sha256sums = 8aa7fe53e59075321b981a010837aaf6455a3d69deebf5fb830670a55f79d519
+
+pkgname = smh-bin
