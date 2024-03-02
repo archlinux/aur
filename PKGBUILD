@@ -3,19 +3,24 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kjs-git
-pkgver=_r390.gabe9f2d
+pkgver=5.116.0_r421.gdb9aedd
 pkgrel=1
 pkgdesc='Support for JS scripting in applications'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(qt5-base pcre)
-makedepends=(git extra-cmake-modules-git kdoctools5-git)
+makedepends=(git extra-cmake-modules-git kdoctools5)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf5-aids-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
+
+prepare() {
+  cd ${pkgname%-git}
+  git checkout kf5
+}
 
 pkgver() {
   cd ${pkgname%-git}
