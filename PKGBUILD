@@ -6,7 +6,7 @@ pkgver=055.r106.813577e2
 pkgrel=1
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
-url='https://dracut.wiki.kernel.org'
+url='https://github.com/dracutdevs/dracut'
 license=('GPL')
 depends=('bash' 'coreutils' 'cpio' 'filesystem' 'findutils' 'grep' 'gzip'
          'kmod' 'pkgconf' 'procps-ng' 'sed' 'systemd' 'util-linux' 'xz')
