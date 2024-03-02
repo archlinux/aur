@@ -2,7 +2,7 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kget-git
-pkgver=24.04.70_r3534.g5d84a612
+pkgver=24.04.70_r3535.g543a65dc
 pkgrel=1
 pkgdesc='Download Manager'
 url='https://apps.kde.org/kget/'
@@ -11,6 +11,8 @@ depends=(gcc-libs glibc gpgme qgpgme-qt6 kcmutils-git kcolorscheme-git kcompleti
 makedepends=(git boost extra-cmake-modules-git kdoctools-git libktorrent-git libmms)
 arch=($CARCH)
 groups=(kde-applications-git kde-network-git)
+optdepends=('libktorrent-git: torrent support'
+            'libmms: MMS support')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")

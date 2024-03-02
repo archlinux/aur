@@ -1,6 +1,6 @@
 pkgbase = kget-git
 	pkgdesc = Download Manager
-	pkgver = 24.04.70_r3534.g5d84a612
+	pkgver = 24.04.70_r3535.g543a65dc
 	pkgrel = 1
 	url = https://apps.kde.org/kget/
 	arch = x86_64
@@ -37,6 +37,8 @@ pkgbase = kget-git
 	depends = kwindowsystem-git
 	depends = kxmlgui-git
 	depends = qt6-base
+	optdepends = libktorrent-git: torrent support
+	optdepends = libmms: MMS support
 	provides = kget
 	conflicts = kget
 	source = git+https://github.com/KDE/kget.git
