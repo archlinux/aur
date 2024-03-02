@@ -1,21 +1,24 @@
 pkgbase = intel-metee-git
 	pkgdesc = Access library for Intel CSME HECI interface (git version)
-	pkgver = 3.1.0.r0.g73636d2
-	pkgrel = 2
+	pkgver = 4.0.0.r0.g32f1c55
+	pkgrel = 1
 	url = https://github.com/intel/metee/
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = git
 	makedepends = cmake
 	makedepends = doxygen
-	provides = intel-metee
-	conflicts = intel-metee
+	makedepends = graphviz
 	source = git+https://github.com/intel/metee.git
 	sha256sums = SKIP
 
 pkgname = intel-metee-git
 	depends = glibc
+	provides = intel-metee
+	conflicts = intel-metee
 
 pkgname = intel-metee-doc-git
-	pkgdesc = Access library for Intel CSME HECI interface (git version) (documentation) (git version)
+	pkgdesc = Access library for Intel CSME HECI interface (documentation; git version)
 	arch = any
+	provides = intel-metee-doc
+	conflicts = intel-metee-doc
