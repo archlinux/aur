@@ -2,7 +2,7 @@
 pkgname=woof-doom
 _pkgname=woof
 pkgver=14.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Woof! is a continuation of Lee Killough's Doom source port MBF targeted at modern systems"
 arch=(x86_64)
 url="https://github.com/fabiangreffrath/woof"
