@@ -1,0 +1,22 @@
+pkgbase = en-croissant-bin
+	pkgdesc = A Modern Chess Database
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/franciscoBSalgueiro/en-croissant
+	arch = x86_64
+	license = GPL-3.0
+	depends = hicolor-icon-theme
+	depends = openssl-1.1
+	depends = pango
+	depends = webkit2gtk
+	depends = gtk3
+	depends = libsoup
+	depends = glib2
+	depends = cairo
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glibc
+	source_x86_64 = https://github.com/franciscoBSalgueiro/en-croissant/releases/download/v0.9.2/en-croissant_0.9.2_amd64.deb
+	sha256sums_x86_64 = 1199cafb2e76c275755352bd6deea807a8a0d0ca9028803ab96ba1b0981e5aac
+
+pkgname = en-croissant-bin
