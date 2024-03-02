@@ -1,0 +1,15 @@
+pkgbase = bmv-bin
+	pkgdesc = bulk-rename files from stdin
+    pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/abenz1267/bmv
+	arch = x86_64
+	arch = aarch64
+	provides = bmv
+	conflicts = bmv
+	source_x86_64 = https://github.com/abenz1267/bmv/releases/download/v0.0.1/bmv_0.0.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = c32f020a65f249ca8fb69846dd4c7a29903c1aa273bfd56fa851395feaa9b26e
+	source_aarch64 = https://github.com/abenz1267/bmv/releases/download/v0.0.1/bmv_0.0.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4d5d3256aecfcc5e77b9225c188f9aa03faf69d0a73c44b926aeb96ebe017be4
+
+pkgname = bmv-bin
