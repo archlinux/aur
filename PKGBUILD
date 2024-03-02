@@ -1,18 +1,12 @@
 # Maintainer: rilian-la-te <ria.freelander@gmail.com>
 
-_opts=(
-	-DCMAKE_INSTALL_PREFIX=/usr
-	-DCMAKE_INSTALL_LIBDIR=lib
-	-DCMAKE_INSTALL_LIBEXECDIR=lib
-)
-
-makedepends=('cmake' 'glib2' 'libdbusmenu-glib' 'libxkbcommon' 'java-environment>=7' 'git' 'libx11')
+makedepends=('meson' 'glib2' 'libdbusmenu-glib' 'libxkbcommon' 'java-environment>=7' 'git' 'libx11')
 
 _pkgbase=vala-panel-appmenu
 pkgname=vala-panel-appmenu-jayatana-git
 _path=subprojects/jayatana
-pkgver=0.7.3
-pkgrel=2
+pkgver=24.02
+pkgrel=1
 pkgdesc="AppMenu module for Java Applications. Contains Bugs!"
 provides=(jayatana)
 depends=('glib2' 'libdbusmenu-glib' 'libxkbcommon' 'java-environment>=11')
@@ -32,13 +26,11 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgbase}/${_path}"
-  cmake ./ "${_opts[@]}"
-  make
+  meson build "${srcdir}/${_pkgbase}/${_path}" --prefix=/usr
+  meson compile -C build
 }
 
 package()
 {
-  cd "${srcdir}/${_pkgbase}/${_path}"
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" meson install -C build --no-rebuild
 }

@@ -1,12 +1,12 @@
 pkgbase = vala-panel-appmenu-jayatana-git
 	pkgdesc = AppMenu module for Java Applications. Contains Bugs!
-	pkgver = 0.7.3
-	pkgrel = 2
+	pkgver = 24.02
+	pkgrel = 1
 	url = https://gitlab.com/vala-panel-project/vala-panel-appmenu
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = cmake
+	makedepends = meson
 	makedepends = glib2
 	makedepends = libdbusmenu-glib
 	makedepends = libxkbcommon
