@@ -3,19 +3,24 @@
 # Contributor: Antonio Rojas <nqn1976 @ gmail.com>
 
 pkgname=khotkeys-git
-pkgver=_r2246.g0e5779d
+pkgver=5.27.10_r2286.g4f949ac
 pkgrel=1
 pkgdesc='KHotKeys'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
 depends=(plasma-workspace-git kdelibs4support-git)
-makedepends=(git extra-cmake-modules-git kdoctools5-git kdesignerplugin-git kinit-git)
+makedepends=(git extra-cmake-modules-git kdoctools5 kdesignerplugin-git kinit-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(plasma-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
+
+prepare() {
+  cd ${pkgname%-git}
+  git checkout Plasma/5.27
+}
 
 pkgver() {
   cd ${pkgname%-git}
