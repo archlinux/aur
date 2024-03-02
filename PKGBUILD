@@ -22,11 +22,10 @@ optdepends=(google-glog cuda optix)
 provides=(cycles)
 _commit=7d482abd0078765f52a49024c895a2f12a681cbd
 source=("git+https://github.com/blender/cycles.git#commit=${_commit}"
-        "https://projects.blender.org/blender/blender/commit/798a0b301e640e73ae12e6f8a36a66746893bff1"
         "https://projects.blender.org/howetuft/cycles/commit/2635328c4770c370564b919a4127de6c8bab7362.patch"
         cycles_wrap.sh)
 sha256sums=('SKIP'
-            'SKIP'
+            'c5591d28f60b41c42f0aadcc4b617291df6ce57adbd39bb72adf85d684ad96ee'
             '00afc4aab5541d147b013c31ab91d78e272654a75cae60b39cf70c23a2612c96')
 
 prepare() {
