@@ -1,7 +1,7 @@
 # Maintainer: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=libclc
-pkgver=16.0.6
+pkgver=17.0.6
 pkgrel=1
 pkgdesc="Library requirements of the OpenCL C programming language"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('clang' 'llvm' 'cmake' 'ninja' 'python' 'spirv-llvm-translator')
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
 source=($_source_base/libclc-$pkgver.src.tar.xz{,.sig})
-sha256sums=('61952af79c555d50bc88cb6f134d9abe9278f65dd34c2bc945cc3d324c2af224'
+sha256sums=('122f641d94d5dfbb3c37534f2b76612fa59d15c36c2a4917369a85eaaca32148'
             'SKIP')
 validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A'  # Tom Stellard <tstellar@redhat.com>
               'D574BD5D1D0E98895E3BF90044F2485E45D59042') # Tobias Hieta <tobias@hieta.se>
