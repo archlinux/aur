@@ -1,0 +1,11 @@
+--- a/prov/util/src/util_mem_monitor.c
++++ b/prov/util/src/util_mem_monitor.c
+@@ -688,7 +688,7 @@
+ 
+ static void ofi_uffd_stop(struct ofi_mem_monitor *monitor)
+ {
+-	pthread_cancel(uffd.thread);
++	pthread_kill(uffd.thread, 0);
+ 	pthread_join(uffd.thread, NULL);
+ 	close(uffd.fd);
+ }
