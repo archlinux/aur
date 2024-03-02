@@ -1,6 +1,6 @@
 pkgbase = kdepim-addons-git
 	pkgdesc = Addons for KDE PIM applications
-	pkgver = 6.0.40_r5868.gab9706edb
+	pkgver = 6.0.40_r5870.gc3548540a
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
@@ -71,7 +71,7 @@ pkgbase = kdepim-addons-git
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = qt6-webengine
-	depends = sh-git
+	depends = sh
 	depends = syntax-highlighting-git
 	provides = kdepim-addons
 	conflicts = kdepim-addons
