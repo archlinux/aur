@@ -1,7 +1,7 @@
-From ce239cce081703f8eb0dd6355e51dafd56a86d86 Mon Sep 17 00:00:00 2001
+From ff726d0d64086fe52e84ec4b8f4adcd314b7b45e Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Thu, 28 Sep 2023 14:16:04 +0300
-Subject: [PATCH 6/6] AUR: Fix hwnd redefinition
+Subject: [PATCH 6/7] AUR: Fix hwnd redefinition
 
 ---
  steam_helper/steam.cpp          | 4 ++++

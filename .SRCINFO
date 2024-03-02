@@ -1,7 +1,7 @@
 pkgbase = proton-experimental
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components, experimental branch
-	pkgver = 9.0.20240221
-	pkgrel = 6
+	pkgver = 9.0.20240301
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/ValveSoftware/Proton
 	install = proton-experimental.install
@@ -131,7 +131,7 @@ pkgbase = proton-experimental
 	options = !lto
 	options = !debug
 	options = emptydirs
-	source = proton::git+https://github.com/ValveSoftware/Proton.git#tag=experimental-9.0-20240221
+	source = proton::git+https://github.com/ValveSoftware/Proton.git#tag=experimental-9.0-20240301
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.4/wine-gecko-2.47.4-x86.tar.xz
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.4/wine-gecko-2.47.4-x86_64.tar.xz
 	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-9.0.0/wine-mono-9.0.0-x86.tar.xz
@@ -141,20 +141,20 @@ pkgbase = proton-experimental
 	source = 0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
 	source = 0005-AUR-Strip-binaries-early.patch
 	source = 0006-AUR-Fix-hwnd-redefinition.patch
-	source = 0001-AUR-Enable-winewayland.patch
+	source = 0007-AUR-Enable-winewayland.patch
 	source = 0001-fshack-AMD-FSR-complete.patch
 	source = 4947.patch
 	sha256sums = SKIP
 	sha256sums = 2cfc8d5c948602e21eff8a78613e1826f2d033df9672cace87fed56e8310afb6
 	sha256sums = fd88fc7e537d058d7a8abf0c1ebc90c574892a466de86706a26d254710a82814
 	sha256sums = d73d440c08ebd67c93fbd6534f4f1b4e98aa07342f9c7d98c8aaeb74755eb9cf
-	sha256sums = 1a7594e71ad34046226e6145570b2bd3f19b0145ec1e0f66dc4cbad3e83cc224
-	sha256sums = 25693e0d04c6e959cfe75eee69c0812f4ec8c4ef1183a0e4e40705bd501ddb85
-	sha256sums = d94e11af39dce07e09c3448b38cd3511931c6981fa18f136a2b3f3f448206438
-	sha256sums = 8c1518d07b7516fd09b189d9182174ea2fb7b5a4d83f6dda8b857cdf429b43fa
-	sha256sums = 115925bfa8e727013955fb9b27feb63462c6c40f45758d2204f8c7322af8e44a
-	sha256sums = 13921bc7b252d439b4c3355f4010d4c0dfe91eee0ec5cdd0363f19c01dbc8309
-	sha256sums = 4beba70f2209a497d6b4f8ad934a242a3314d1541b3d89ae702ad896cae3a869
+	sha256sums = be2292d5b2c586daf96b96ee010d07e04802d38f196c5bd4a50fe81c0a69e4f5
+	sha256sums = 894fe9815caa7a818c092dc0d0a2192b680c159c7950af6829ced6bcbc04423f
+	sha256sums = b3161b22d4d0a3c242a21aeeb7dea012082a5868d5a4f47adccaf4446e75c47a
+	sha256sums = dbdab9134e381c288dfbc6b3d279ecf623f37db3d133a3baea952909094bf6d8
+	sha256sums = 0709768d95454c7ee9cbe96d7023a5021ae38138708abefc257a3dfce68a3f74
+	sha256sums = bd50d8ed714d1457f3eac9a42a3731295de3c9a2f7257179b5f7c03b392b7e34
+	sha256sums = 60e9ef11176a6d1cd243269d5c930a28c2ac33375097144d2d023e283af8b1a5
 	sha256sums = 3d308f8e87361669267fa52b986c24f1dea1913156a045f43ea04e02f7444b18
 	sha256sums = 0f9ddda17319e3ef23ee847c0a740bf74847796d4b3cf61b05feb9aa3141b7c7
 

@@ -1,12 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-experimental
-_srctag=9.0-20240221
+_srctag=9.0-20240301
 _commit=
-pkgver=9.0.20240221 #${_srctag//-/.}
+pkgver=${_srctag//-/.}
 _geckover=2.47.4
 _monover=9.0.0
-pkgrel=6
+pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, experimental branch"
 url="https://github.com/ValveSoftware/Proton"
@@ -96,7 +96,7 @@ source=(
     0006-AUR-Fix-hwnd-redefinition.patch
 )
 source+=(
-    0001-AUR-Enable-winewayland.patch
+    0007-AUR-Enable-winewayland.patch
     0001-fshack-AMD-FSR-complete.patch
     4947.patch
 )
@@ -171,7 +171,8 @@ prepare() {
     patch -p1 -i "$srcdir"/0005-AUR-Strip-binaries-early.patch
     patch -p1 -i "$srcdir"/0006-AUR-Fix-hwnd-redefinition.patch
 
-    patch -p1 -i "$srcdir"/0001-AUR-Enable-winewayland.patch
+    # Wine wayland is disabled, use at your own risk
+    patch -p1 -i "$srcdir"/0007-AUR-Enable-winewayland.patch
     pushd wine
         patch -p1 -i "$srcdir"/0001-fshack-AMD-FSR-complete.patch
         patch -p1 -i "$srcdir"/4947.patch
@@ -275,12 +276,12 @@ sha256sums=('SKIP'
             '2cfc8d5c948602e21eff8a78613e1826f2d033df9672cace87fed56e8310afb6'
             'fd88fc7e537d058d7a8abf0c1ebc90c574892a466de86706a26d254710a82814'
             'd73d440c08ebd67c93fbd6534f4f1b4e98aa07342f9c7d98c8aaeb74755eb9cf'
-            '1a7594e71ad34046226e6145570b2bd3f19b0145ec1e0f66dc4cbad3e83cc224'
-            '25693e0d04c6e959cfe75eee69c0812f4ec8c4ef1183a0e4e40705bd501ddb85'
-            'd94e11af39dce07e09c3448b38cd3511931c6981fa18f136a2b3f3f448206438'
-            '8c1518d07b7516fd09b189d9182174ea2fb7b5a4d83f6dda8b857cdf429b43fa'
-            '115925bfa8e727013955fb9b27feb63462c6c40f45758d2204f8c7322af8e44a'
-            '13921bc7b252d439b4c3355f4010d4c0dfe91eee0ec5cdd0363f19c01dbc8309'
-            '4beba70f2209a497d6b4f8ad934a242a3314d1541b3d89ae702ad896cae3a869'
+            'be2292d5b2c586daf96b96ee010d07e04802d38f196c5bd4a50fe81c0a69e4f5'
+            '894fe9815caa7a818c092dc0d0a2192b680c159c7950af6829ced6bcbc04423f'
+            'b3161b22d4d0a3c242a21aeeb7dea012082a5868d5a4f47adccaf4446e75c47a'
+            'dbdab9134e381c288dfbc6b3d279ecf623f37db3d133a3baea952909094bf6d8'
+            '0709768d95454c7ee9cbe96d7023a5021ae38138708abefc257a3dfce68a3f74'
+            'bd50d8ed714d1457f3eac9a42a3731295de3c9a2f7257179b5f7c03b392b7e34'
+            '60e9ef11176a6d1cd243269d5c930a28c2ac33375097144d2d023e283af8b1a5'
             '3d308f8e87361669267fa52b986c24f1dea1913156a045f43ea04e02f7444b18'
             '0f9ddda17319e3ef23ee847c0a740bf74847796d4b3cf61b05feb9aa3141b7c7')

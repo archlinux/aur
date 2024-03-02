@@ -1,7 +1,7 @@
-From 9981c540159727f5a3999c2318c5f02864ffa8d1 Mon Sep 17 00:00:00 2001
+From 67f16584f60601d35abcd10635f4a0403e569e4c Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Wed, 12 Jul 2023 03:16:34 +0300
-Subject: [PATCH 4/6] AUR Copy DLL dependencies of 32bit libvkd3d dlls into the
+Subject: [PATCH 4/7] AUR Copy DLL dependencies of 32bit libvkd3d dlls into the
  correct location in the prefix
 
 For some unknown to me reason, 32bit vkd3d (not vkd3d-proton) always links
@@ -20,7 +20,7 @@ a runtime dependency.
  1 file changed, 9 insertions(+)
 
 diff --git a/proton b/proton
-index fd131e02..027e5650 100755
+index 6b2eddbd..89baeb8e 100755
 --- a/proton
 +++ b/proton
 @@ -922,6 +922,15 @@ class CompatData:
