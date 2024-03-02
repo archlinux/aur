@@ -3,7 +3,7 @@
 
 pkgname=rtcqs
 pkgdesc='Scanner for potential real-time bottlenecks'
-pkgver=0.5.5
+pkgver=0.6.0
 pkgrel=1
 arch=(any)
 url='https://codeberg.org/rtcqs/rtcqs'
@@ -15,7 +15,7 @@ groups=(pro-audio)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
         "https://codeberg.org/$pkgname/$pkgname/raw/commit/773460b7d8/$pkgname.desktop"
         "https://codeberg.org/$pkgname/$pkgname/raw/commit/773460b7d8/${pkgname}_logo.svg")
-sha256sums=('77ac4a2e6593e9df4a146157a2c3de4a9e8740ced3dfef87f565b8091014497c'
+sha256sums=('8b42b7d7b1221fa7c58b4b620a69f57008af8f81c97da70a7e46e52ff17951a8'
             '6540a30fffff5db0f005830c9c090e95b0312e7efec8dd5ea25d995781703da3'
             'e2cc1e4cbedc4d24f1804812017190742f6df2f9eba1fa5f31d93595a91f2cfc')
 
