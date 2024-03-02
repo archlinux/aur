@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=steamback-git
-pkgver=r194.b0685cf
+pkgver=r240.f5f5e77
 pkgrel=1
 pkgdesc="Add versioned save-game snapshots to Steam-cloud enabled games."
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=(
   'git'
   'python-build'
   'python-installer'
-  'python-setuptools-scm'
+  'python-poetry-core'
   'python-wheel'
 )
 provides=("${pkgname%-git}")
@@ -35,14 +35,14 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  python -m build --wheel --no-isolation
+  GIT_DIR='.' python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${pkgname%-git}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 "py_modules/${pkgname%-git}/data/icons8-refresh-96.png" \
+  install -Dm644 "defaults/py_modules/${pkgname%-git}/data/icons8-refresh-96.png" \
     "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
 
   install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications/"
