@@ -1,10 +1,10 @@
 pkgbase = python-glue-qt
 	pkgdesc = Multidimensional data visualization across files -- main Qt library of GUI
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = http://glueviz.org
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = python-setuptools-scm
 	makedepends = desktop-file-utils
 	depends = python>=3.8
@@ -24,7 +24,7 @@ pkgbase = python-glue-qt
 	depends = hicolor-icon-theme
 	optdepends = pyside2: alternative qt support
 	optdepends = glueviz-doc: Documentation for Glueviz
-	source = https://files.pythonhosted.org/packages/source/g/glue-qt/glue-qt-0.3.0.tar.gz
-	sha256sums = ce1a9a6aba19e11409711dddf48127b5d3766f7a17cf211a52ff5e831d42e3f3
+	source = https://files.pythonhosted.org/packages/source/g/glue-qt/glue-qt-0.3.1.tar.gz
+	sha256sums = a1dbec1fa8cf636bd13dbf62854b193857ad27eb18a4ed69d6b50bf0e0f4cc97
 
 pkgname = python-glue-qt
