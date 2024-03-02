@@ -1,8 +1,7 @@
-diff --git a/libavcodec/x86/mathops.h b/libavcodec/x86/mathops.h
-index 6298f5e..ca7e2df 100644
---- a/libavcodec/x86/mathops.h
-+++ b/libavcodec/x86/mathops.h
-@@ -35,12 +35,20 @@
+diff --git a/libavcodec/x86/mathops.h d/libavcodec/x86/mathops.h
+--- a/libavcodec/x86/mathops.h	2013-10-28 00:58:06.000000000 +0000
++++ d/libavcodec/x86/mathops.h	2024-02-27 21:23:40.090967590 +0000
+@@ -33,12 +33,20 @@
  static av_always_inline av_const int MULL(int a, int b, unsigned shift)
  {
      int rt, dummy;
@@ -20,11 +19,11 @@ index 6298f5e..ca7e2df 100644
 +            "shrdl %4, %%edx, %%eax \n\t"
 +            :"=a"(rt), "=d"(dummy)
 +            :"a"(a), "rm"(b), "c"((uint8_t)shift)
-+        );
++        );   
      return rt;
  }
  
-@@ -113,19 +121,31 @@ __asm__ volatile(\
+@@ -108,19 +116,31 @@
  // avoid +32 for shift optimization (gcc should do that ...)
  #define NEG_SSR32 NEG_SSR32
  static inline  int32_t NEG_SSR32( int32_t a, int8_t s){
@@ -38,7 +37,7 @@ index 6298f5e..ca7e2df 100644
 +        __asm__ ("sarl %1, %0\n\t"
 +               : "+r" (a)
 +               : "c" ((uint8_t)(-s))
-+        );
++        );    
      return a;
  }
  
@@ -54,6 +53,7 @@ index 6298f5e..ca7e2df 100644
 +        __asm__ ("shrl %1, %0\n\t"
 +               : "+r" (a)
 +               : "c" ((uint8_t)(-s))
-+        );
++        );    
      return a;
  }
+ 

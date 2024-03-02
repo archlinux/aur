@@ -21,7 +21,7 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.gz"
         '0024-fix-gcc13-binutils.patch'
        )
 md5sums=('6dc14b2521eb956b2d3799717d6b0ed1'
-         '356415b3f340cb812c7453bfcd745528'
+         'aaace471c8fde060fa8bd3ef29bd88d4'
         )
         
 options=('debug' '!lto')
