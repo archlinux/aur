@@ -1,27 +1,518 @@
-diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 9f86dd3..ede0bd1 100644
---- a/src/CMakeLists.txt
-+++ b/src/CMakeLists.txt
-@@ -1,4 +1,4 @@
--cmake_minimum_required (VERSION 3.2)
-+cmake_minimum_required (VERSION 3.5)
- 
- project (FMPy)
- 
-@@ -9,6 +9,8 @@ if (WIN32)
- else()
-     file(GLOB SUNDIALS_LIBS ${CVODE_INSTALL_DIR}/lib/*.a)
- endif()
-+set (SUNDIALS_LIBS sundials_cvode)
+diff --git a/fmpy/sundials/__init__.py b/fmpy/sundials/__init__.py
+index c1bf1c7..cde034f 100644
+--- a/fmpy/sundials/__init__.py
++++ b/fmpy/sundials/__init__.py
+@@ -1,194 +1,198 @@
+-""" Interface to the SUNDIALS libraries """
+-
+-import numpy as np
+-from .cvode import *
+-from .cvode_ls import *
+-from .nvector_serial import *
+-from .sundials_linearsolver import *
+-from .sundials_matrix import *
+-from .sundials_nvector import *
+-from .sundials_types import *
+-from .sundials_version import *
+-from .sunlinsol_dense import *
+-from .sunmatrix_dense import *
+-
+-
+-def _assert_cv_success(status):
+-    if status != CV_SUCCESS:
+-        raise Exception("Call to CVode failed.")
+-
+-
+-def _assert_version():
+-    major = c_int()
+-    minor = c_int()
+-    patch = c_int()
+-    len = 8
+-    label = create_string_buffer(len)
+-    _assert_cv_success(SUNDIALSGetVersionNumber(byref(major), byref(minor), byref(patch), label, len))
+-    if major.value != 5:
+-        raise Exception("Wrong SUNDIALS major version number. Expected 5 but was %d." % major.value)
+-
+-
+-_assert_version()
+-
+-
+-class CVodeSolver(object):
+-    """ Interface to the CVode solver """
+-
+-    def __init__(self,
+-                 nx, nz, get_x, set_x, get_dx, get_z,
+-                 get_nominals,
+-                 set_time,
+-                 input,
+-                 startTime,
+-                 maxStep=float('inf'),
+-                 relativeTolerance=1e-5,
+-                 maxNumSteps=500):
+-        """
+-        Parameters:
+-            nx                  number of continuous states
+-            nz                  number of event indicators
+-            get_x               callback function to get the continuous states
+-            set_x               callback function to set the continuous states
+-            get_dx              callback function to get the derivatives
+-            get_z               callback function to get the event indicators
+-            set_time            callback function to set the time
+-            startTime           start time for the integration
+-            maxStep             maximum absolute value of step size allowed
+-            relativeTolerance   relative tolerance
+-            maxNumSteps         maximum number of internal steps to be taken by the solver in its attempt to reach tout
+-        """
+-
+-        self.get_x = get_x
+-        self.set_x = set_x
+-        self.get_dx = get_dx
+-        self.get_z = get_z
+-        self.get_nominals = get_nominals
+-        self.set_time = set_time
+-        self.input = input
+-        self.error_info = None
+-        self.reltol = relativeTolerance
+-
+-        self.discrete = nx == 0
+-
+-        if self.discrete:
+-            # insert a dummy state
+-            self.nx = 1
+-        else:
+-            self.nx = nx
+-
+-        self.nz = nz
+-
+-        self.x      = N_VNew_Serial(self.nx)
+-        self.abstol = N_VNew_Serial(self.nx)
+-
+-        self.px       = NV_DATA_S(self.x)
+-        self.pabstol  = NV_DATA_S(self.abstol)
+-        self.npabstol = np.ctypeslib.as_array(self.pabstol, (self.nx,))
+-
+-        # initialize
+-        if self.discrete:
+-            x = np.ctypeslib.as_array(self.px, (self.nx,))
+-            x[:] = 1.0
+-            self.npabstol[:] = 1.0
+-        else:
+-            self.get_x(self.px, self.nx)
+-            self.get_nominals(self.pabstol, self.nx)
+-
+-        self.npabstol *= self.reltol
+-
+-        self.cvode_mem = CVodeCreate(CV_BDF)
+-
+-        # add function pointers as members to save them from GC
+-        self.f_ = CVRhsFn(self.f)
+-        self.g_ = CVRootFn(self.g)
+-        self.ehfun_ = CVErrHandlerFn(self.ehfun)
+-
+-        _assert_cv_success(CVodeInit(self.cvode_mem, self.f_, startTime, self.x))
+-
+-        _assert_cv_success(CVodeSVtolerances(self.cvode_mem, relativeTolerance, self.abstol))
+-
+-        _assert_cv_success(CVodeRootInit(self.cvode_mem, self.nz, self.g_))
+-
+-        self.A = SUNDenseMatrix(self.nx, self.nx)
+-
+-        self.LS = SUNLinSol_Dense(self.x, self.A)
+-
+-        _assert_cv_success(CVodeSetLinearSolver(self.cvode_mem, self.LS, self.A))
+-
+-        _assert_cv_success(CVodeSetMaxStep(self.cvode_mem, maxStep))
+-
+-        _assert_cv_success(CVodeSetMaxNumSteps(self.cvode_mem, maxNumSteps))
+-
+-        _assert_cv_success(CVodeSetNoInactiveRootWarn(self.cvode_mem))
+-
+-        _assert_cv_success(CVodeSetErrHandlerFn(self.cvode_mem, self.ehfun_, None))
+-
+-    def ehfun(self, error_code, module, function, msg,  user_data):
+-        """ Error handler function """
+-        self.error_info = (error_code, module.decode("utf-8"), function.decode("utf-8"), msg.decode("utf-8"))
+-
+-    def f(self, t, y, ydot, user_data):
+-        """ Right-hand-side function """
+-
+-        self.set_time(t)
+-
+-        if self.discrete:
+-            dx = np.ctypeslib.as_array(NV_DATA_S(ydot), (self.nx,))
+-            dx[:] = 0.0
+-        else:
+-            self.set_x(NV_DATA_S(y), self.nx)
+-            self.get_dx(NV_DATA_S(ydot), self.nx)
+-        return 0
+-
+-    def g(self, t, y, gout, user_data):
+-        """ Root function """
+-
+-        self.set_time(t)
+-        self.input.apply(t)
+-
+-        if not self.discrete:
+-            self.set_x(NV_DATA_S(y), self.nx)
+-
+-        self.get_z(gout, self.nz)
+-
+-        return 0
+-
+-    def step(self, t, tNext):
+-
+-        if not self.discrete:
+-            # get the states
+-            self.get_x(self.px, self.nx)
+-
+-        tret = realtype(0.0)
+-
+-        # perform one step
+-        flag = CVode(self.cvode_mem, tNext, self.x, byref(tret), CV_NORMAL)
+-
+-        if not self.discrete:
+-            # set the states
+-            self.set_x(self.px, self.nx)
+-
+-        roots_found = np.zeros(shape=(self.nz,), dtype=np.int32)
+-
+-        if flag == CV_ROOT_RETURN:
+-            p_roots_found = np.ctypeslib.as_ctypes(roots_found)
+-            _assert_cv_success(CVodeGetRootInfo(self.cvode_mem, p_roots_found))
+-        elif flag < 0:
+-            raise RuntimeError("CVode error (code %s) in module %s, function %s: %s" % self.error_info)
+-
+-        return flag > 0, roots_found, tret.value
+-
+-    def reset(self, time):
+-
+-        if not self.discrete:
+-            self.get_x(self.px, self.nx)
+-            self.get_nominals(self.pabstol, self.nx)
+-            self.npabstol *= self.reltol
+-
+-        # reset the solver
+-        flag = CVodeReInit(self.cvode_mem, time, self.x)
+-
+-    def __del__(self):
+-        # clean up
+-        CVodeFree(byref(c_void_p(self.cvode_mem)))
++""" Interface to the SUNDIALS libraries """
 +
++import numpy as np
++from .cvode import *
++from .cvode_ls import *
++from .nvector_serial import *
++from .sundials_linearsolver import *
++from .sundials_matrix import *
++from .sundials_nvector import *
++from .sundials_types import *
++from .sundials_version import *
++from .sunlinsol_dense import *
++from .sunmatrix_dense import *
++
++
++def _assert_cv_success(status):
++    if status != CV_SUCCESS:
++        raise Exception("Call to CVode failed.")
++
++
++def _assert_version():
++    major = c_int()
++    minor = c_int()
++    patch = c_int()
++    len = 8
++    label = create_string_buffer(len)
++    _assert_cv_success(SUNDIALSGetVersionNumber(byref(major), byref(minor), byref(patch), label, len))
++    if major.value != 7:
++        raise Exception("Wrong SUNDIALS major version number. Expected 7 but was %d." % major.value)
++
++
++_assert_version()
++
++
++class CVodeSolver(object):
++    """ Interface to the CVode solver """
++
++    def __init__(self,
++                 nx, nz, get_x, set_x, get_dx, get_z,
++                 get_nominals,
++                 set_time,
++                 input,
++                 startTime,
++                 maxStep=float('inf'),
++                 relativeTolerance=1e-5,
++                 maxNumSteps=500):
++        """
++        Parameters:
++            nx                  number of continuous states
++            nz                  number of event indicators
++            get_x               callback function to get the continuous states
++            set_x               callback function to set the continuous states
++            get_dx              callback function to get the derivatives
++            get_z               callback function to get the event indicators
++            set_time            callback function to set the time
++            startTime           start time for the integration
++            maxStep             maximum absolute value of step size allowed
++            relativeTolerance   relative tolerance
++            maxNumSteps         maximum number of internal steps to be taken by the solver in its attempt to reach tout
++        """
++
++        self.get_x = get_x
++        self.set_x = set_x
++        self.get_dx = get_dx
++        self.get_z = get_z
++        self.get_nominals = get_nominals
++        self.set_time = set_time
++        self.input = input
++        self.error_info = None
++        self.reltol = relativeTolerance
++
++        self.discrete = nx == 0
++
++        if self.discrete:
++            # insert a dummy state
++            self.nx = 1
++        else:
++            self.nx = nx
++
++        self.nz = nz
++
++        self.x      = N_VNew_Serial(self.nx)
++        self.abstol = N_VNew_Serial(self.nx)
++
++        self.px       = NV_DATA_S(self.x)
++        self.pabstol  = NV_DATA_S(self.abstol)
++        self.npabstol = np.ctypeslib.as_array(self.pabstol, (self.nx,))
++
++        # initialize
++        if self.discrete:
++            x = np.ctypeslib.as_array(self.px, (self.nx,))
++            x[:] = 1.0
++            self.npabstol[:] = 1.0
++        else:
++            self.get_x(self.px, self.nx)
++            self.get_nominals(self.pabstol, self.nx)
++
++        self.npabstol *= self.reltol
++
++        self.ctx = SUNContext_()
++        comm = c_int(0)
++        err = SUNContext_Create(comm, pointer(self.ctx))
++        self.cvode_mem = CVodeCreate(CV_BDF, pointer(self.ctx))
++        print("eeeeeeeeeeeeeeeeeeeeeeeeeeeee", err, self.cvode_mem)
++
++        # add function pointers as members to save them from GC
++        self.f_ = CVRhsFn(self.f)
++        self.g_ = CVRootFn(self.g)
++        self.ehfun_ = CVErrHandlerFn(self.ehfun)
++
++        _assert_cv_success(CVodeInit(self.cvode_mem, self.f_, startTime, self.x))
++
++        _assert_cv_success(CVodeSVtolerances(self.cvode_mem, relativeTolerance, self.abstol))
++
++        _assert_cv_success(CVodeRootInit(self.cvode_mem, self.nz, self.g_))
++
++        self.A = SUNDenseMatrix(self.nx, self.nx)
++
++        self.LS = SUNLinSol_Dense(self.x, self.A)
++
++        _assert_cv_success(CVodeSetLinearSolver(self.cvode_mem, self.LS, self.A))
++
++        _assert_cv_success(CVodeSetMaxStep(self.cvode_mem, maxStep))
++
++        _assert_cv_success(CVodeSetMaxNumSteps(self.cvode_mem, maxNumSteps))
++
++        _assert_cv_success(CVodeSetNoInactiveRootWarn(self.cvode_mem))
++
++        _assert_cv_success(SUNContext_PushErrHandler(self.cvode_mem, self.ehfun_, None))
++
++    def ehfun(self, error_code, module, function, msg,  user_data):
++        """ Error handler function """
++        self.error_info = (error_code, module.decode("utf-8"), function.decode("utf-8"), msg.decode("utf-8"))
++
++    def f(self, t, y, ydot, user_data):
++        """ Right-hand-side function """
++
++        self.set_time(t)
++
++        if self.discrete:
++            dx = np.ctypeslib.as_array(NV_DATA_S(ydot), (self.nx,))
++            dx[:] = 0.0
++        else:
++            self.set_x(NV_DATA_S(y), self.nx)
++            self.get_dx(NV_DATA_S(ydot), self.nx)
++        return 0
++
++    def g(self, t, y, gout, user_data):
++        """ Root function """
++
++        self.set_time(t)
++        self.input.apply(t)
++
++        if not self.discrete:
++            self.set_x(NV_DATA_S(y), self.nx)
++
++        self.get_z(gout, self.nz)
++
++        return 0
++
++    def step(self, t, tNext):
++
++        if not self.discrete:
++            # get the states
++            self.get_x(self.px, self.nx)
++
++        tret = realtype(0.0)
++
++        # perform one step
++        flag = CVode(self.cvode_mem, tNext, self.x, byref(tret), CV_NORMAL)
++
++        if not self.discrete:
++            # set the states
++            self.set_x(self.px, self.nx)
++
++        roots_found = np.zeros(shape=(self.nz,), dtype=np.int32)
++
++        if flag == CV_ROOT_RETURN:
++            p_roots_found = np.ctypeslib.as_ctypes(roots_found)
++            _assert_cv_success(CVodeGetRootInfo(self.cvode_mem, p_roots_found))
++        elif flag < 0:
++            raise RuntimeError("CVode error (code %s) in module %s, function %s: %s" % self.error_info)
++
++        return flag > 0, roots_found, tret.value
++
++    def reset(self, time):
++
++        if not self.discrete:
++            self.get_x(self.px, self.nx)
++            self.get_nominals(self.pabstol, self.nx)
++            self.npabstol *= self.reltol
++
++        # reset the solver
++        flag = CVodeReInit(self.cvode_mem, time, self.x)
++
++    def __del__(self):
++        # clean up
++        CVodeFree(byref(c_void_p(self.cvode_mem)))
+diff --git a/fmpy/sundials/cvode.py b/fmpy/sundials/cvode.py
+index b52e32f..aa19a4d 100644
+--- a/fmpy/sundials/cvode.py
++++ b/fmpy/sundials/cvode.py
+@@ -1,4 +1,5 @@
+ from .libraries import sundials_cvode
++from .libraries import sundials_core
+ from .sundials_types import *
+ from .sundials_nvector import *
  
- if (MSVC)
-   # link statically against the the Visual C runtime
+@@ -102,10 +103,12 @@ CVRootFn = CFUNCTYPE(c_int, realtype, N_Vector, POINTER(realtype), c_void_p)
+ #
+ # typedef int (*CVEwtFn)(N_Vector y, N_Vector ewt, void *user_data);
+ #
+-# typedef void (*CVErrHandlerFn)(int error_code,
+-#                                const char *module, const char *function,
+-#                                char *msg, void *user_data);
+-CVErrHandlerFn = CFUNCTYPE(None, c_int, c_char_p, c_char_p, c_char_p, c_void_p)
++# typedef void (*SUNErrHandlerFn)(int line, const char* func, const char* file,
++#                                 const char* msg, SUNErrCode err_code,
++#                                 void* err_user_data, SUNContext sunctx);
++
++
++SUNErrHandlerFn = CFUNCTYPE(None, c_int, c_char_p, c_char_p, c_char_p, c_int, c_void_p, c_void_p)
+ #
+ # /* -------------------
+ #  * Exported Functions
+@@ -138,11 +141,22 @@ CVodeSVtolerances.restype = c_int
+ # SUNDIALS_EXPORT int CVodeWFtolerances(void *cvode_mem, CVEwtFn efun);
+ #
+ # /* Optional input functions */
+-# SUNDIALS_EXPORT int CVodeSetErrHandlerFn(void *cvode_mem, CVErrHandlerFn ehfun,
++# SUNDIALS_EXPORT int SUNContext_PushErrHandler(SUNContext sunctx, SUNErrHandlerFn ehfun,
+ #                                          void *eh_data);
+-CVodeSetErrHandlerFn = getattr(sundials_cvode, 'CVodeSetErrHandlerFn')
+-CVodeSetErrHandlerFn.argtypes = [c_void_p, CVErrHandlerFn, c_void_p]
+-CVodeSetErrHandlerFn.restype = c_int
++
++
++class SUNContext_(Structure):
++    pass
++SUNContext = POINTER(SUNContext_)
++#
++# typedef struct _N_VectorContent_Serial *N_VectorContent_Serial;
++SUNContext_Create = getattr(sundials_core, 'SUNContext_Create')
++SUNContext_Create.argtypes = [c_int, SUNContext]
++SUNContext_Create.restype = c_int
++
++SUNContext_PushErrHandler = getattr(sundials_core, 'SUNContext_PushErrHandler')
++SUNContext_PushErrHandler.argtypes = [c_void_p, SUNErrHandlerFn, c_void_p]
++SUNContext_PushErrHandler.restype = c_int
+ # SUNDIALS_EXPORT int CVodeSetErrFile(void *cvode_mem, FILE *errfp);
+ # SUNDIALS_EXPORT int CVodeSetUserData(void *cvode_mem, void *user_data);
+ # SUNDIALS_EXPORT int CVodeSetMaxOrd(void *cvode_mem, int maxord);
+diff --git a/fmpy/sundials/libraries.py b/fmpy/sundials/libraries.py
+index 2f3c077..e10f913 100644
+--- a/fmpy/sundials/libraries.py
++++ b/fmpy/sundials/libraries.py
+@@ -9,3 +9,4 @@ sundials_nvecserial     = cdll.LoadLibrary(os.path.join(library_dir, platform_tu
+ sundials_sunmatrixdense = cdll.LoadLibrary(os.path.join(library_dir, platform_tuple, 'sundials_sunmatrixdense' + sharedLibraryExtension))
+ sundials_sunlinsoldense = cdll.LoadLibrary(os.path.join(library_dir, platform_tuple, 'sundials_sunlinsoldense' + sharedLibraryExtension))
+ sundials_cvode          = cdll.LoadLibrary(os.path.join(library_dir, platform_tuple, 'sundials_cvode'          + sharedLibraryExtension))
++sundials_core           = cdll.LoadLibrary(os.path.join(library_dir, platform_tuple, 'sundials_core'          + sharedLibraryExtension))
+\ No newline at end of file
 diff --git a/src/cswrapper/cswrapper.c b/src/cswrapper/cswrapper.c
-index d9888a8..5167ebb 100644
+index d9888a8..4b77b0c 100644
 --- a/src/cswrapper/cswrapper.c
 +++ b/src/cswrapper/cswrapper.c
-@@ -296,22 +296,47 @@ fmi2Component fmi2Instantiate(fmi2String instanceName,
+@@ -18,7 +18,7 @@
+ #include <nvector/nvector_serial.h>    /* access to serial N_Vector            */
+ #include <sunmatrix/sunmatrix_dense.h> /* access to dense SUNMatrix            */
+ #include <sunlinsol/sunlinsol_dense.h> /* access to dense SUNLinearSolver      */
+-#include <sundials/sundials_types.h>   /* defs. of realtype, sunindextype      */
++#include <sundials/sundials_types.h>   /* defs. of sunrealtype, sunindextype      */
+ 
+ #include "fmi2Functions.h"
+ 
+@@ -102,7 +102,7 @@ typedef struct {
+ 
+ } Model;
+ 
+-static int f(realtype t, N_Vector y, N_Vector ydot, void *user_data) {
++static int f(sunrealtype t, N_Vector y, N_Vector ydot, void *user_data) {
+     
+     Model *m = (Model *)user_data;
+         
+@@ -117,7 +117,7 @@ static int f(realtype t, N_Vector y, N_Vector ydot, void *user_data) {
+     
+ }
+ 
+-static int g(realtype t, N_Vector y, realtype *gout, void *user_data) {
++static int g(sunrealtype t, N_Vector y, sunrealtype *gout, void *user_data) {
+ 
+     Model *m = (Model *)user_data;
+     
+@@ -132,12 +132,21 @@ static int g(realtype t, N_Vector y, realtype *gout, void *user_data) {
+     return 0;
+ }
+ 
++#if SUNDIALS_VERSION_MAJOR >= 7
++static void ehfun(int line, const char* function, const char* module, const char* msg, SUNErrCode error_code, void* user_data, SUNContext sunctx) {
++
++	Model *m = (Model *)user_data;
++
++	m->logger(m, m->instanceName, fmi2Error, "logError", "CVode error(code %d) in module %s, function %s line %d: %s.", error_code, module, function, line, msg);
++}
++#else
+ static void ehfun(int error_code, const char *module, const char *function, char *msg, void *user_data) {
+ 	
+ 	Model *m = (Model *)user_data;
+ 
+ 	m->logger(m, m->instanceName, fmi2Error, "logError", "CVode error(code %d) in module %s, function %s: %s.", error_code, module, function, msg);
+ }
++#endif
+ 
+ 
+ /***************************************************
+@@ -296,22 +305,47 @@ fmi2Component fmi2Instantiate(fmi2String instanceName,
      m->c = m->fmi2Instantiate(instanceName, fmi2ModelExchange, fmuGUID, fmuResourceLocation, functions, visible, loggingOn); 
  	ASSERT_NOT_NULL(m->c)
      
@@ -72,7 +563,7 @@ index d9888a8..5167ebb 100644
  	int flag;
  		
  	flag = CVodeInit(m->cvode_mem, f, 0, m->x);
-@@ -324,8 +349,12 @@ fmi2Component fmi2Instantiate(fmi2String instanceName,
+@@ -324,8 +358,12 @@ fmi2Component fmi2Instantiate(fmi2String instanceName,
          flag = CVodeRootInit(m->cvode_mem, (int)m->nz, g);
  		ASSERT_CV_SUCCESS(flag)
      }
@@ -86,7 +577,18 @@ index d9888a8..5167ebb 100644
  
      flag = CVodeSetLinearSolver(m->cvode_mem, m->LS, m->A);
  	ASSERT_CV_SUCCESS(flag)
-@@ -339,6 +368,9 @@ fmi2Component fmi2Instantiate(fmi2String instanceName,
+@@ -333,12 +371,19 @@ fmi2Component fmi2Instantiate(fmi2String instanceName,
+ 	flag = CVodeSetNoInactiveRootWarn(m->cvode_mem);
+ 	ASSERT_CV_SUCCESS(flag)
+ 
+-	flag = CVodeSetErrHandlerFn(m->cvode_mem, ehfun, NULL);
++#if SUNDIALS_VERSION_MAJOR >= 7
++  flag = SUNContext_PushErrHandler(ctx, ehfun, NULL);
++#else
++  flag = CVodeSetErrHandlerFn(m->cvode_mem, ehfun, NULL);
++#endif
+ 	ASSERT_CV_SUCCESS(flag)
+ 
      flag = CVodeSetUserData(m->cvode_mem, m);
  	ASSERT_CV_SUCCESS(flag)
  
@@ -96,8 +598,30 @@ index d9888a8..5167ebb 100644
      return m;
  }
  
+@@ -534,9 +579,9 @@ fmi2Status fmi2DoStep(fmi2Component c,
+     
+     fmi2Status status;
+     
+-    realtype tret = currentCommunicationPoint;
+-    realtype tNext = currentCommunicationPoint + communicationStepSize;
+-	realtype epsilon = (1.0 + fabs(tNext)) * EPSILON;
++    sunrealtype tret = currentCommunicationPoint;
++    sunrealtype tNext = currentCommunicationPoint + communicationStepSize;
++	sunrealtype epsilon = (1.0 + fabs(tNext)) * EPSILON;
+         
+     if (m->nx > 0) {
+         status = m->fmi2GetContinuousStates(m->c, NV_DATA_S(m->x), NV_LENGTH_S(m->x));
+@@ -545,7 +590,7 @@ fmi2Status fmi2DoStep(fmi2Component c,
+     
+     while (tret + epsilon < tNext) {
+         
+-        realtype tout = tNext;
++        sunrealtype tout = tNext;
+         
+         if (m->eventInfo.nextEventTimeDefined && m->eventInfo.nextEventTime < tNext) {
+             tout = m->eventInfo.nextEventTime;
 diff --git a/src/modelica/ModelicaFMI.c b/src/modelica/ModelicaFMI.c
-index a74cd73..88db7c1 100644
+index a74cd73..a1fca6d 100644
 --- a/src/modelica/ModelicaFMI.c
 +++ b/src/modelica/ModelicaFMI.c
 @@ -48,7 +48,7 @@ static void logFunctionCall(FMIInstance* instance, FMIStatus status, const char*
@@ -105,7 +629,7 @@ index a74cd73..88db7c1 100644
          fprintf(logFile, "[%s] ", instance->name);
          vfprintf(logFile, message, args);
 -        fprintf(logFile, suffix);
-+        fprintf(logFile, "%s", suffix);
++        fprintf(logFile, "[%s] ", suffix);
      } else {
          ModelicaFormatMessage("[%s] ", instance->name);
          ModelicaVFormatMessage(message, args);
