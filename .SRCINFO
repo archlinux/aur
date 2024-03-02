@@ -1,11 +1,10 @@
 pkgbase = r-rastervis
 	pkgdesc = Visualization Methods for Raster Data
-	pkgver = 0.51.5
+	pkgver = 0.51.6
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rasterVis
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL-3.0-only
 	depends = r-hexbin
 	depends = r-latticeextra
 	depends = r-raster
@@ -19,7 +18,8 @@ pkgbase = r-rastervis
 	optdepends = r-ggplot2
 	optdepends = r-rgl
 	optdepends = r-sf
-	source = https://cran.r-project.org/src/contrib/rasterVis_0.51.5.tar.gz
-	sha256sums = 3a9ffe38f7835bf9008cb3f2fbe01208f17130f4b1ca9ba19f97dc240ccf7aa1
+	source = https://cran.r-project.org/src/contrib/rasterVis_0.51.6.tar.gz
+	md5sums = 9e0a042f2e7058b73b32e8207fdbfd74
+	b2sums = fa3e9629e42727102cbff7b1c76fb3ace380be049a766e534055f63c182dad0726279e3a3f5b6c24a9f171a58e49b0a37bbdf2f166ada1d75a9a342397d168f3
 
 pkgname = r-rastervis

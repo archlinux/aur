@@ -1,16 +1,15 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rasterVis
-_pkgver=0.51.5
+_pkgver=0.51.6
 pkgname=r-${_pkgname,,}
-pkgver=0.51.5
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Visualization Methods for Raster Data'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgdesc="Visualization Methods for Raster Data"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-hexbin
   r-latticeextra
   r-raster
@@ -28,14 +27,15 @@ optdepends=(
   r-sf
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3a9ffe38f7835bf9008cb3f2fbe01208f17130f4b1ca9ba19f97dc240ccf7aa1')
+md5sums=('9e0a042f2e7058b73b32e8207fdbfd74')
+b2sums=('fa3e9629e42727102cbff7b1c76fb3ace380be049a766e534055f63c182dad0726279e3a3f5b6c24a9f171a58e49b0a37bbdf2f166ada1d75a9a342397d168f3')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
