@@ -1,20 +1,19 @@
 pkgbase = zenmap-git
 	pkgdesc = Graphical Nmap frontend and results viewer
-	pkgver = 7.94.r4.g6a567c7c0
+	pkgver = 7.94.r89.g8d0a4d9b
 	pkgrel = 1
 	url = https://github.com/nmap/nmap
 	arch = any
-	license = custom
+	license = LicenseRef-Nmap-Public-Source-License-Version-0.95
 	makedepends = git
+	makedepends = python-setuptools
 	depends = gtk3
 	depends = nmap
 	depends = python-cairo
 	depends = python-gobject
 	optdepends = gksu: start zenmap as root
-	provides = zenmap
-	provides = zenmap-python3-git
+	provides = zenmap=7.94
 	conflicts = zenmap
-	conflicts = zenmap-python3-git
 	source = nmap::git+https://github.com/nmap/nmap
 	sha256sums = SKIP
 
