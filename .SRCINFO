@@ -4,12 +4,14 @@ pkgbase = latexdraw
 	pkgrel = 7
 	url = http://latexdraw.sourceforge.net
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = dpkg
 	makedepends = java-environment=14
 	makedepends = maven
 	optdepends = ttf-droid: font for CJK characters
 	source = latexdraw-4.0.3.tar.gz::https://github.com/latexdraw/latexdraw/archive/4.0.3.tar.gz
+	source = 0001-use-rxjavafx-from-jitpack.io.patch
 	sha512sums = a2b5a7438c43fab1cb840e4eb521dab78369fb5ee78ebb138d6b6e8f8bf07d51d62ca54d3689ee82dd57e1dfb34e2773cc439fdb1221aaf0614d2ba6d161566c
+	sha512sums = 64f5bd990dc5c773048161a9a5ea4da5db4680024d054dbc50b6105fc4516ea779c726c649a73313db18b407f9efa3c27c0eb0b5c7711c15b0772cb4081a4f8f
 
 pkgname = latexdraw

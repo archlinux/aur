@@ -1,0 +1,52 @@
+From e1c36ac37d412aae2445f7f5a0bb1d7fb410fe31 Mon Sep 17 00:00:00 2001
+From: Hu Butui <hot123tea123@gmail.com>
+Date: Sat, 2 Mar 2024 13:05:18 +0800
+Subject: [PATCH] use rxjavafx from jitpack.io
+
+1. maven requires https, but http://maven.inria.fr is not ready.
+2. even if we re-enable http for maven building, rxjavafx is not found
+   in http://maven.inria.fr anymore. maybe it's no plublic available.
+3. we use rxjavafx from https://jitpack.io instead, and upgrade to
+   2.11.0-RC34.
+---
+ pom.xml | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/pom.xml b/pom.xml
+index c024bfe1..d12edede 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -19,7 +19,7 @@
+         <mockito.version>3.5.13</mockito.version>
+         <javafx.platform>linux</javafx.platform>
+         <annotations.version>16.0.1</annotations.version>
+-        <rxjavafx.version>2.11.0-RC33</rxjavafx.version>
++        <rxjavafx.version>2.11.0-RC34</rxjavafx.version>
+         <jmods.path>${java.home}</jmods.path>
+         <jpkg.args>--linux-rpm-license-type "GPLv3+" --linux-menu-group "Office;" --linux-shortcut --linux-deb-maintainer "Arnaud Blouin"</jpkg.args>
+         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+@@ -58,6 +58,10 @@
+     </scm>
+ 
+     <repositories>
++	<repository>
++	  <id>jitpack.io</id>
++	    <url>https://jitpack.io</url>
++	</repository>
+         <repository>
+             <id>mavenTriskellRelease</id>
+             <name>http://maven.inria.fr-triskell-releases</name>
+@@ -638,8 +642,8 @@
+             <classifier>${javafx.platform}</classifier>
+         </dependency>
+         <dependency>
+-            <groupId>io.reactivex</groupId>
+-            <artifactId>rxjavafx</artifactId>
++            <groupId>com.github.ReactiveX</groupId>
++            <artifactId>RxJavaFX</artifactId>
+             <version>${rxjavafx.version}</version>
+         </dependency>
+     </dependencies>
+-- 
+2.43.2
+
