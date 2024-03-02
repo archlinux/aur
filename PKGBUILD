@@ -11,7 +11,7 @@
 
 pkgname=cycles-standalone
 pkgver=4.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Blender Cycles rendering engine, standalone version"
 arch=(x86_64)
 url="https://github.com/blender/cycles.git"
