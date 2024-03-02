@@ -1,7 +1,8 @@
-# Maintainer: Matthew Sexton <wsdmatty@gmail.com>
+# Maintainer: SimPilotAdamT <adam_tazul@outlook.com>
+
 pkgname=spotify-tray-git
 pkgver=1.3.2.r0.g99d1fc5
-pkgrel=1
+pkgrel=2
 pkgdesc="Tray icon for the Spotify Linux client application"
 arch=('x86_64')
 url="https://github.com/tsmetana/spotify-tray"
@@ -21,7 +22,7 @@ pkgver() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	sed -i -e '/^AM_INIT_AUTOMAKE$/d' configure.ac || die
-	./autogen.sh
+i	autoreconf -ivf
 	./configure --prefix=/usr
 	make
 }
