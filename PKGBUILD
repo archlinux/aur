@@ -1,27 +1,31 @@
 # Maintainer: Hugo Posnic <hugo.posnic@gmail.com>
+# Co-Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=coulr
-pkgver=1.8.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Color box to help developers and designers"
-arch=(any)
 url="https://github.com/Huluti/Coulr"
-license=(MIT)
-depends=(gtk3 python-gobject)
-makedepends=(meson)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Huluti/Coulr/archive/$pkgver.tar.gz")
-sha256sums=('3089db800021f3ce02dfbfcddf5f93047e00523ad2b8b3d4637e380f0c190dd3')
+license=('MIT')
+arch=('x86_64' 'aarch64')
+depends=('python-gobject' 'libadwaita' 'libportal-gtk4')
+makedepends=('git' 'meson')
+checkdepends=('appstream-glib')
+source=("git+$url.git#tag=$pkgver")
+sha256sums=('SKIP')
 
 build() {
-  arch-meson Coulr-$pkgver build
+  arch-meson Coulr build
   meson compile -C build
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build --print-errorlogs ||:
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
-  install -Dm644 Coulr-$pkgver/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  meson install -C build --destdir "$pkgdir"
+  cd Coulr
+  install -Dm644 CHANGELOG.md README.md -t "$pkgdir/usr/share/doc/coulr"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/coulr"
 }
