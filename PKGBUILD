@@ -5,12 +5,12 @@
 
 pkgname=rsibreak-git
 pkgver=0.12.15_r1159.g915755d
-pkgrel=1
+pkgrel=2
 pkgdesc='Takes care of your health and regularly breaks your work to avoid repetitive strain injury (RSI)'
 url='https://apps.kde.org/rsibreak/'
 license=(GPL)
-depends=(gcc-libs glibc kconfig5-git kconfigwidgets5-git kcoreaddons5-git kcrash5-git kdbusaddons5-git ki18n5-git kidletime5-git knotifications5-git knotifyconfig5-git ktextwidgets5-git kwidgetsaddons5-git kwindowsystem5-git kxmlgui5-git qt5-base)
-makedepends=(git extra-cmake-modules-git kdoctools5-git)
+depends=(gcc-libs glibc kconfig5 kconfigwidgets5 kcoreaddons5 kcrash5 kdbusaddons5 ki18n5 kidletime5 knotifications5 knotifyconfig5 ktextwidgets5 kwidgetsaddons5 kwindowsystem5 kxmlgui5 qt5-base)
+makedepends=(git extra-cmake-modules-git kdoctools5)
 arch=($CARCH)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
