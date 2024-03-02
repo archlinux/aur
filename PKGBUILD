@@ -4,7 +4,7 @@
 
 pkgname="odoo"
 pkgver=17.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Web-based Open Source Business Apps"
 url="https://www.odoo.com/"
 arch=("any")
@@ -54,7 +54,7 @@ depends=("postgresql"
         "python-urllib3"
         "python-vobject"
         "python-werkzeug"
-        "python-xlrd"
+        "python-xlrd-1" # thanks HLFH
         "python-xlsxwriter"
         "python-xlwt"
         "python-zeep"
