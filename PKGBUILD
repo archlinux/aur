@@ -1,19 +1,19 @@
 # Maintainer: Emily Maré (emileet) <emileet@plsnobully.me>
 
 pkgname=obs-ndi
-pkgver=4.13.0
+pkgver=4.13.1
 pkgrel=1
 pkgdesc="Network A/V in OBS Studio with NewTek's NDI technology"
 arch=('x86_64')
 license=('GPL2')
-url="https://github.com/Palakis/obs-ndi"
+url="https://github.com/obs-ndi/obs-ndi"
 provides=('obs-ndi')
 conflicts=('obs-ndi-bin' 'obs-ndi-git')
 depends=('avahi' 'libndi' 'obs-studio' 'sndio')
 makedepends=('cmake')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('45331b1517a428e920e0d35d7a673ba4210ba9d045ae9e38318a6b3be2eff7f9')
+sha256sums=('a1dabbbae0a82559faef92b940b105684c46981e4252b54ed0c4317f4cefa2a1')
 
 build() {
     cd ${pkgname}-${pkgver}
