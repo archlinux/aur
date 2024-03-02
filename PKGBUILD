@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=fda
-_pkgver=6.1.4
+_pkgver=6.1.7
 pkgname=r-${_pkgname,,}
-pkgver=6.1.4
+pkgver=6.1.7
 pkgrel=1
 pkgdesc='Functional Data Analysis'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e2818ecc0b78cb56b9b80fe21fc41502e49d58b57818ac52a70ba00d0f422515')
+sha256sums=('3876ec8826e2440df067f19cadf5966b34775da87136bc002dfa87b14bf81102')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
