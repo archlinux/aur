@@ -1,0 +1,18 @@
+pkgbase = libqaccessibilityclient-qt6-git
+	pkgdesc = Helper library to make writing accessibility tools easier
+	pkgver = 0.6.0_r386.g78a0fb5
+	pkgrel = 1
+	url = https://www.kde.org
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-base
+	provides = libqaccessibilityclient-qt6
+	conflicts = libqaccessibilityclient-qt6
+	source = git+https://github.com/KDE/libqaccessibilityclient.git
+	sha256sums = SKIP
+
+pkgname = libqaccessibilityclient-qt6-git
