@@ -2,13 +2,13 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kleopatra-git
-pkgver=24.04.70_r8130.g46d245917
+pkgver=24.04.70_r8148.g876d94c0c
 pkgrel=1
 pkgdesc='Certificate Manager and Unified Crypto GUI'
 arch=($CARCH)
 url='https://www.kde.org/applications/utilities/kleopatra/'
 license=(GPL-2.0-or-later LGPL-2.0-or-later)
-depends=(akonadi-mime-git gcc-libs glibc gpgme kcmutils-git kcodecs-git kcolorscheme-git kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git kdbusaddons-git ki18n-git kiconthemes-git kidentitymanagement-git kio-git kitemmodels-git kmailtransport-git kmime-git kstatusnotifieritem-git ktextwidgets-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git libassuan libgpg-error libkleo-git mimetreeparser-git qgpgme-qt6 qt6-base sh-git)
+depends=(akonadi-mime-git gcc-libs glibc gpgme kcmutils-git kcodecs-git kcolorscheme-git kconfig-git kconfigwidgets-git kcoreaddons-git kcrash-git kdbusaddons-git ki18n-git kiconthemes-git kidentitymanagement-git kio-git kitemmodels-git kmailtransport-git kmime-git kstatusnotifieritem-git ktextwidgets-git kwidgetsaddons-git kwindowsystem-git kxmlgui-git libassuan libgpg-error libkleo-git mimetreeparser-git qgpgme-qt6 qt6-base sh)
 makedepends=(git extra-cmake-modules-git kdoctools-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})

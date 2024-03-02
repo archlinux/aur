@@ -1,6 +1,6 @@
 pkgbase = kleopatra-git
 	pkgdesc = Certificate Manager and Unified Crypto GUI
-	pkgver = 24.04.70_r8130.g46d245917
+	pkgver = 24.04.70_r8148.g876d94c0c
 	pkgrel = 1
 	url = https://www.kde.org/applications/utilities/kleopatra/
 	arch = x86_64
@@ -41,7 +41,7 @@ pkgbase = kleopatra-git
 	depends = mimetreeparser-git
 	depends = qgpgme-qt6
 	depends = qt6-base
-	depends = sh-git
+	depends = sh
 	provides = kleopatra
 	conflicts = kleopatra
 	source = git+https://github.com/KDE/kleopatra.git
