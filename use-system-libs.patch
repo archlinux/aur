@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 20ff4b628..b8d3c62d6 100644
+index 49f312f2e..4ff7a560f 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -371,11 +371,13 @@ endif()
+@@ -375,11 +375,13 @@ endif()
  
  option(BUILD_SHARED_LIBS "Build shared library" OFF)
  set(XXHASH_BUILD_XXHSUM OFF CACHE BOOL "Build the xxhsum binary")
@@ -19,7 +19,7 @@ index 20ff4b628..b8d3c62d6 100644
  target_link_libraries(${PROJECT_NAME} PRIVATE glm::glm)
  
  if(USE_VULKAN)
-@@ -385,8 +387,8 @@ if(USE_VULKAN)
+@@ -389,8 +391,8 @@ if(USE_VULKAN)
  	option(ENABLE_GLSLANG_BINARIES "Builds glslang and spirv-remap" OFF)
  	option(ENABLE_HLSL "Enables HLSL input support" OFF)
  	option(ENABLE_PCH "Enables Precompiled header" OFF)
@@ -30,7 +30,7 @@ index 20ff4b628..b8d3c62d6 100644
  endif()
  
  if(NOT LIBRETRO)
-@@ -433,13 +435,13 @@ if(NOT LIBRETRO)
+@@ -437,13 +439,13 @@ if(NOT LIBRETRO)
  			target_link_libraries(${PROJECT_NAME} PRIVATE CURL::libcurl)
  		endif()
  	endif()
@@ -46,7 +46,7 @@ index 20ff4b628..b8d3c62d6 100644
  	find_package(Lua 5.2)
  	if(NOT APPLE AND LUA_FOUND)
  		target_compile_definitions(${PROJECT_NAME} PRIVATE USE_LUA)
-@@ -449,9 +451,9 @@ if(NOT LIBRETRO)
+@@ -453,9 +455,9 @@ if(NOT LIBRETRO)
  	endif()
  endif()
  
@@ -58,8 +58,8 @@ index 20ff4b628..b8d3c62d6 100644
 +target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::chdr)
  
  if(NOT WITH_SYSTEM_ZLIB)
- 	target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/core/deps/libchdr/deps/zlib-1.2.11")
-@@ -490,25 +492,24 @@ if(PKG_CONFIG_FOUND AND NOT ANDROID AND NOT APPLE AND NOT LIBRETRO)
+ 	set(ZLIB_RELATIVE_PATH "core/deps/libchdr/deps/zlib-1.3.1")
+@@ -496,25 +498,24 @@ if(PKG_CONFIG_FOUND AND NOT ANDROID AND NOT APPLE AND NOT LIBRETRO)
  		target_compile_definitions(${PROJECT_NAME} PRIVATE USE_PULSEAUDIO)
  		target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::LIBPULSE)
  	endif()
@@ -86,9 +86,9 @@ index 20ff4b628..b8d3c62d6 100644
  	endif()
 -endif()
  
- if(NINTENDO_SWITCH AND USE_GLES)
- 	pkg_check_modules(GLESV2 IMPORTED_TARGET glesv2)
-@@ -1273,9 +1274,9 @@ if(USE_VULKAN)
+ if(UNIX AND NOT APPLE AND NOT ANDROID)
+ 	add_definitions(
+@@ -1267,9 +1268,9 @@ if(USE_VULKAN)
  	add_subdirectory(core/deps/Vulkan-Headers)
  	target_link_libraries(${PROJECT_NAME} PRIVATE Vulkan::Headers)
  
@@ -101,7 +101,7 @@ index 20ff4b628..b8d3c62d6 100644
  	target_link_libraries(${PROJECT_NAME} PRIVATE GPUOpen::VulkanMemoryAllocator)
  
  	target_compile_definitions(${PROJECT_NAME} PRIVATE USE_VULKAN HAVE_VULKAN)
-@@ -1480,7 +1481,7 @@ if("arm64" IN_LIST ARCHITECTURE)
+@@ -1467,7 +1468,7 @@ if("arm64" IN_LIST ARCHITECTURE)
  	target_sources(${PROJECT_NAME} PRIVATE core/rec-ARM64/rec_arm64.cpp core/rec-ARM64/arm64_regalloc.h)
  endif()
  if("x86" IN_LIST ARCHITECTURE OR "x86_64" IN_LIST ARCHITECTURE)
@@ -111,20 +111,21 @@ index 20ff4b628..b8d3c62d6 100644
  	if(CMAKE_SIZEOF_VOID_P EQUAL 4)
  		target_sources(${PROJECT_NAME} PRIVATE
 diff --git a/core/rend/vulkan/compiler.cpp b/core/rend/vulkan/compiler.cpp
-index a1619f310..de4ee10de 100644
+index a1619f310..a58394e53 100644
 --- a/core/rend/vulkan/compiler.cpp
 +++ b/core/rend/vulkan/compiler.cpp
-@@ -22,7 +22,7 @@
+@@ -22,7 +22,8 @@
  #include "vulkan_context.h"
  
  #include <glslang/Public/ResourceLimits.h>
 -#include <SPIRV/GlslangToSpv.h>
++#include <glslang/Public/ShaderLang.h>
 +#include <glslang/SPIRV/GlslangToSpv.h>
  
  int ShaderCompiler::initCount;
  
 diff --git a/core/rend/vulkan/shaders.h b/core/rend/vulkan/shaders.h
-index e53311b18..8c5439a22 100644
+index 10f5c91e2..426081381 100644
 --- a/core/rend/vulkan/shaders.h
 +++ b/core/rend/vulkan/shaders.h
 @@ -20,7 +20,7 @@
