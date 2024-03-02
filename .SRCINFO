@@ -1,6 +1,6 @@
 pkgbase = powerdevil-git
 	pkgdesc = Manages the power consumption settings of a Plasma Shell
-	pkgver = 6.0.80_r3169.g77cec0d3
+	pkgver = 6.0.80_r3170.g99efca98
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
@@ -37,6 +37,8 @@ pkgbase = powerdevil-git
 	depends = qt6-declarative
 	depends = solid-git
 	depends = systemd-libs
+	optdepends = kinfocenter-git: for the Energy Information KCM
+	optdepends = power-profiles-daemon: power profiles support
 	provides = powerdevil
 	conflicts = powerdevil
 	source = git+https://github.com/KDE/powerdevil.git
