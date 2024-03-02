@@ -1,6 +1,6 @@
 pkgbase = gss-ntlmssp
 	pkgdesc = A GSSAPI Mechanism that implements NTLMSSP
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/gssapi/gss-ntlmssp
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = gss-ntlmssp
 	depends = libunistring
 	depends = libwbclient
 	depends = openssl
-	source = git+https://github.com/gssapi/gss-ntlmssp.git#commit=e027bbde17249a2894e650e3b3fd8f4070e90fd7
+	source = git+https://github.com/gssapi/gss-ntlmssp.git#commit=3a24e4579c4187f6aadff1243610890c9e6d690e
 	sha256sums = SKIP
 
 pkgname = gss-ntlmssp
