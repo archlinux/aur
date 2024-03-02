@@ -1,6 +1,6 @@
 pkgbase = lsp-plugins-git
 	pkgdesc = Collection of open-source plugins
-	pkgver = 1.2.14.r13.ga2f8342d
+	pkgver = 1.2.14.r16.gd0d3b2f8
 	pkgrel = 1
 	url = https://lsp-plug.in
 	arch = x86_64
@@ -24,12 +24,14 @@ pkgbase = lsp-plugins-git
 	b2sums = SKIP
 
 pkgname = lsp-plugins-git
-	depends = lsp-plugins-clap
-	depends = lsp-plugins-ladspa
-	depends = lsp-plugins-lv2
-	depends = lsp-plugins-standalone
-	depends = lsp-plugins-vst
-	optdepends = lsp-plugins-docs: for documentation
+	depends = lsp-plugins-clap-git
+	depends = lsp-plugins-ladspa-git
+	depends = lsp-plugins-lv2-git
+	depends = lsp-plugins-standalone-git
+	depends = lsp-plugins-vst-git
+	optdepends = lsp-plugins-docs-git: for documentation
+	provides = lsp-plugins
+	conflicts = lsp-plugins
 
 pkgname = lsp-plugins-clap-git
 	pkgdesc = Collection of open-source plugins - CLAP
@@ -39,14 +41,18 @@ pkgname = lsp-plugins-clap-git
 	depends = freetype2
 	depends = gcc-libs
 	depends = glibc
-	depends = liblsp-r3d-glx-lib=1.2.14.r13.ga2f8342d
+	depends = liblsp-r3d-glx-lib-git=1.2.14.r16.gd0d3b2f8
 	depends = libsndfile
 	depends = libsndfile.so
 	depends = libx11
 	depends = libxrandr
+	provides = lsp-plugins-clap
+	conflicts = lsp-plugins-clap
 
 pkgname = lsp-plugins-docs-git
 	pkgdesc = Collection of open-source plugins (documentation)
+	provides = lsp-plugins-docs
+	conflicts = lsp-plugins-docs
 
 pkgname = lsp-plugins-ladspa-git
 	pkgdesc = Collection of open-source plugins - LADSPA
@@ -54,9 +60,11 @@ pkgname = lsp-plugins-ladspa-git
 	depends = gcc-libs
 	depends = glibc
 	depends = ladspa-host
-	depends = liblsp-r3d-glx-lib=1.2.14.r13.ga2f8342d
+	depends = liblsp-r3d-glx-lib-git=1.2.14.r16.gd0d3b2f8
 	depends = libsndfile
 	depends = libsndfile.so
+	provides = lsp-plugins-ladspa
+	conflicts = lsp-plugins-ladspa
 
 pkgname = lsp-plugins-lv2-git
 	pkgdesc = Collection of open-source plugins - LV2
@@ -66,11 +74,13 @@ pkgname = lsp-plugins-lv2-git
 	depends = gcc-libs
 	depends = glibc
 	depends = lv2-host
-	depends = liblsp-r3d-glx-lib=1.2.14.r13.ga2f8342d
+	depends = liblsp-r3d-glx-lib-git=1.2.14.r16.gd0d3b2f8
 	depends = libsndfile
 	depends = libsndfile.so
 	depends = libx11
 	depends = libxrandr
+	provides = lsp-plugins-lv2
+	conflicts = lsp-plugins-lv2
 
 pkgname = lsp-plugins-standalone-git
 	pkgdesc = Collection of open-source plugins - JACK standalone
@@ -82,11 +92,13 @@ pkgname = lsp-plugins-standalone-git
 	depends = hicolor-icon-theme
 	depends = jack
 	depends = libjack.so
-	depends = liblsp-r3d-glx-lib=1.2.14.r13.ga2f8342d
+	depends = liblsp-r3d-glx-lib-git=1.2.14.r16.gd0d3b2f8
 	depends = libsndfile
 	depends = libsndfile.so
 	depends = libx11
 	depends = libxrandr
+	provides = lsp-plugins-standalone
+	conflicts = lsp-plugins-standalone
 
 pkgname = lsp-plugins-vst-git
 	pkgdesc = Collection of open-source plugins - VST2
@@ -95,12 +107,14 @@ pkgname = lsp-plugins-vst-git
 	depends = freetype2
 	depends = gcc-libs
 	depends = glibc
-	depends = liblsp-r3d-glx-lib=1.2.14.r13.ga2f8342d
+	depends = liblsp-r3d-glx-lib-git=1.2.14.r16.gd0d3b2f8
 	depends = libsndfile
 	depends = libsndfile.so
 	depends = libx11
 	depends = libxrandr
 	depends = vst-host
+	provides = lsp-plugins-vst
+	conflicts = lsp-plugins-vst
 
 pkgname = liblsp-r3d-glx-lib-git
 	pkgdesc = GLX-based 3D backend library for rendering scenes
@@ -109,3 +123,5 @@ pkgname = liblsp-r3d-glx-lib-git
 	depends = libglvnd
 	depends = libGL.so
 	depends = libx11
+	provides = liblsp-r3d-glx-lib
+	conflicts = liblsp-r3d-glx-lib

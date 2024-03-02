@@ -4,7 +4,7 @@
 pkgbase=lsp-plugins-git
 _gitname=lsp-plugins
 pkgname=(lsp-plugins-git lsp-plugins-{clap,docs,ladspa,lv2,standalone,vst}-git liblsp-r3d-glx-lib-git)
-pkgver=1.2.14.r13.ga2f8342d
+pkgver=1.2.14.r16.gd0d3b2f8
 pkgrel=1
 pkgdesc="Collection of open-source plugins"
 arch=(x86_64)
@@ -77,10 +77,12 @@ check() {
 }
 
 package_lsp-plugins-git() {
-  depends=($_gitname-{clap,ladspa,lv2,standalone,vst})
+  depends=($_gitname-{clap,ladspa,lv2,standalone,vst}-git)
   optdepends=(
-    'lsp-plugins-docs: for documentation'
+    'lsp-plugins-docs-git: for documentation'
   )
+  conflicts=(lsp-plugins)
+  provides=(lsp-plugins)
 
   make PREFIX=/usr DESTDIR="$pkgdir" install -C $_gitname
   printf "successfully installed to pkgdir\n"
@@ -112,6 +114,8 @@ package_liblsp-r3d-glx-lib-git() {
     libglvnd libGL.so
     libx11
   )
+  conflicts=(liblsp-r3d-glx-lib)
+  provides=(liblsp-r3d-glx-lib)
 
   mv -v $pkgname/* "$pkgdir"
 }
@@ -125,17 +129,21 @@ package_lsp-plugins-clap-git() {
     freetype2
     gcc-libs
     glibc
-    liblsp-r3d-glx-lib=$pkgver
+    liblsp-r3d-glx-lib-git=$pkgver
     libsndfile libsndfile.so
     libx11
     libxrandr
   )
+  conflicts=(lsp-plugins-clap)
+  provides=(lsp-plugins-clap)
 
   mv -v $pkgname/* "$pkgdir"
 }
 
 package_lsp-plugins-docs-git() {
   pkgdesc+=" (documentation)"
+  conflicts=(lsp-plugins-docs)
+  provides=(lsp-plugins-docs)
 
   mv -v $pkgname/* "$pkgdir"
 }
@@ -147,9 +155,11 @@ package_lsp-plugins-ladspa-git() {
     gcc-libs
     glibc
     ladspa-host
-    liblsp-r3d-glx-lib=$pkgver
+    liblsp-r3d-glx-lib-git=$pkgver
     libsndfile libsndfile.so
   )
+  conflicts=(lsp-plugins-ladspa)
+  provides=(lsp-plugins-ladspa)
 
   mv -v $pkgname/* "$pkgdir"
 }
@@ -163,11 +173,13 @@ package_lsp-plugins-lv2-git() {
     gcc-libs
     glibc
     lv2-host
-    liblsp-r3d-glx-lib=$pkgver
+    liblsp-r3d-glx-lib-git=$pkgver
     libsndfile libsndfile.so
     libx11
     libxrandr
   )
+  conflicts=(lsp-plugins-lv2)
+  provides=(lsp-plugins-lv2)
 
   mv -v $pkgname/* "$pkgdir"
 }
@@ -182,11 +194,13 @@ package_lsp-plugins-standalone-git() {
     glibc
     hicolor-icon-theme
     jack libjack.so
-    liblsp-r3d-glx-lib=$pkgver
+    liblsp-r3d-glx-lib-git=$pkgver
     libsndfile libsndfile.so
     libx11
     libxrandr
   )
+  conflicts=(lsp-plugins-standalone)
+  provides=(lsp-plugins-standalone)
 
   mv -v $pkgname/* "$pkgdir"
 }
@@ -199,12 +213,14 @@ package_lsp-plugins-vst-git() {
     freetype2
     gcc-libs
     glibc
-    liblsp-r3d-glx-lib=$pkgver
+    liblsp-r3d-glx-lib-git=$pkgver
     libsndfile libsndfile.so
     libx11
     libxrandr
     vst-host
   )
+  conflicts=(lsp-plugins-vst)
+  provides=(lsp-plugins-vst)
 
   mv -v $pkgname/* "$pkgdir"
 }
