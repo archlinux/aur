@@ -293,7 +293,7 @@ package() {
   ln -srfv "$pkgdir/usr/lib/$_pkgname/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
 
   # Desktop
-  install -Dvm644 /dev/stdin "$pkgdir/usr/share/applications/$desktopid.desktop" < <(\
+  install -Dvm755 /dev/stdin "$pkgdir/usr/share/applications/$desktopid.desktop" < <(\
     sed "s|Exec=firefox |Exec=/usr/lib/$_pkgname/$_pkgname --name $desktopid |g" \
 			taskcluster/docker/firefox-flatpak/$desktopid.desktop\
 	)
