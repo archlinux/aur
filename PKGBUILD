@@ -1,5 +1,6 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: loqs <bugs-archlinux@entropy-collector.net>
+# Contributor: kxxt <rsworktech@outlook.com>
 
 # https://releases.electronjs.org/
 # https://github.com/stha09/chromium-patches/releases
@@ -7,27 +8,24 @@
 # Note: PKGBUILD source array can be updated to sources matching an exact Electron release with:
 # python makepkg-source-roller.py update v$pkgver $pkgname
 
-_use_suffix=1
 pkgver=26.6.10
 _gcc_patches=116-patchset-2
-# shellcheck disable=SC2034
 pkgrel=1
 _major_ver=${pkgver%%.*}
 pkgname="electron${_major_ver}"
 pkgdesc='Build cross platform desktop apps with web technologies'
 arch=(x86_64)
-url='https://electronjs.org'
-license=(MIT custom)
+url='https://electronjs.org/'
+license=(MIT BSD-3-Clause)
 depends=(c-ares
-         glibc # libc.so libm.so
          gcc-libs # libgcc_s.so
+         glibc # libc.so libm.so
          gtk3 libgtk-3.so
          libevent
          libffi libffi.so
          libpulse libpulse.so
          nss # libnss3.so
-         zlib libz.so
-         )
+         zlib libz.so)
 makedepends=(clang
              git
              gn
@@ -40,6 +38,7 @@ makedepends=(clang
              llvm
              ninja
              npm
+             patchutils
              pciutils
              pipewire
              python
@@ -67,7 +66,7 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         libxml2-2.12.patch
         std-vector-non-const.patch
         use-system-libraries-in-node.patch
-        "makepkg-source-roller.py"
+        makepkg-source-roller.py
         # BEGIN managed sources
         chromium-mirror::git+https://github.com/chromium/chromium.git#tag=116.0.5845.228
         chromium-mirror_third_party_nan::git+https://github.com/nodejs/nan.git#commit=16fa32231e2ccd89d2804b3f765319128b20c4ac
