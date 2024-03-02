@@ -1,7 +1,7 @@
 pkgbase = rtl8812au-openhd-dkms-git
 	pkgdesc = Realtek RTL88xxAU WiFi USB driver (with OpenHD patches)
-	pkgver = 5.2.20.2.r804.g4515487
-	pkgrel = 2
+	pkgver = 5.2.20.2.r849.gf21bbe9
+	pkgrel = 3
 	url = https://github.com/OpenHD/rtl8812au
 	arch = any
 	license = GPL2
@@ -9,6 +9,8 @@ pkgbase = rtl8812au-openhd-dkms-git
 	depends = dkms
 	depends = bc
 	source = git+https://github.com/OpenHD/rtl8812au.git
+	source = 0001-Update-beacon-change-signature-to-fix-build-on-recen.patch
 	sha256sums = SKIP
+	sha256sums = b26147fda4d78d8cc8f7d5f5d331e43a1ffeecb5596e703e3da6a7461a0fd7b2
 
 pkgname = rtl8812au-openhd-dkms-git
