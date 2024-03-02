@@ -2,14 +2,14 @@
 
 _pkgname=wlx-overlay-s
 pkgname=$_pkgname-git
-pkgver=r147.a8582b6
-pkgrel=1
+pkgver=v0.2.3.3.r9.g39ce2a7
+pkgrel=2
 pkgdesc="Access your Wayland/X11 desktop from SteamVR/Monado (OpenVR+OpenXR support)"
 url="https://github.com/galister/wlx-overlay-s"
 arch=('x86_64')
 license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'fontconfig' 'freetype2' 'libxkbcommon' 'dbus' 'libpipewire' 'alsa-lib')
-makedepends=('git' 'cargo' 'rust' 'cmake' 'python3' 'clang' 'libx11' 'libxext' 'libxrandr' 'openxr' 'openvr')
+makedepends=('git' 'cargo' 'rust' 'python3' 'cmake' 'clang' 'libx11' 'libxext' 'libxrandr' 'openxr' 'openvr')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
 source=("$_pkgname::git+https://github.com/galister/wlx-overlay-s.git")
