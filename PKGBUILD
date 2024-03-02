@@ -16,14 +16,12 @@ depends=(
   'findutils'
   'gawk'
   'grep'
-  'gzip'
   'kmod'
   'pkgconf'
   'procps-ng'
   'sed'
   'systemd'
   'util-linux'
-  'xz'
 )
 makedepends=(
   'git'
