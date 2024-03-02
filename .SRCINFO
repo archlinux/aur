@@ -1,0 +1,21 @@
+pkgbase = libdcmtk17-bin
+	pkgdesc = OFFIS DICOM toolkit runtime libraries.
+	pkgver = 3.6.7
+	pkgrel = 1
+	url = https://dicom.offis.de/dcmtk
+	arch = i686
+	arch = x86_64
+	depends = libpng>=1.6.2
+	depends = libtiff>=4.0.3
+	depends = libwrap>=7.6
+	depends = libxml2>=2.7.4
+	depends = openssl>=3.0
+	depends = zlib>=1.1.4
+	provides = libdcmtk17
+	replaces = libdcmtk17
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://mirrors.kernel.org/ubuntu/pool/universe/d/dcmtk/libdcmtk17_3.6.7-9_amd64.deb
+	sha256sums_x86_64 = 92ecfa3cd190b1305d3cca8f8316c9942f1a1dec00c84315e8cac87fe26afccd
+
+pkgname = libdcmtk17-bin
