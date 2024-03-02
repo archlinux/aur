@@ -2,7 +2,7 @@
 
 pkgname=v2raya-bin
 _pkgname=v2raya
-pkgver=2.2.5
+pkgver=2.2.5.1
 pkgrel=1
 install=.INSTALL
 pkgdesc="A web GUI client of Project V which supports VMess, VLESS, SS, SSR, Trojan, Tuic and Juicity protocols"
@@ -52,19 +52,19 @@ sha1sums=(
 )
 
 sha1sums_i686=(
-    '0f2473c6d0fee056a3cbd3e708be19a397071291'
+    'c9baca18b6991492526efca8814179fb60cf9f51'
 )
 sha1sums_x86_64=(
-    '6afafa69168fd7247846f475819ac1e2a5b08fa3'
+    'e9d2bc196071a5614b6d8eb1b89212fda15c7980'
 )
 sha1sums_aarch64=(
-    'fbce3535f200600cf79b610bb1b0edefcc7e2125'
+    '93ee68ad6ce331faab934abd075b94a77630cbbc'
 )
 sha1sums_armv6h=(
-    '34037c0f066765c475b471764a74fd144d7e9cac'
+    'db5e0db0bf870c235618ea1a0febc79e64305982'
 )
 sha1sums_armv7h=(
-    'c0866acb0e34c2654634792a5f6d82b1e141e459'
+    '03dc2b77d0d4bd75ea9673e8d6632faa0b1634ad'
 )
 sha1sums_loong64=(
     '{{sha1sums_loong64}}'
