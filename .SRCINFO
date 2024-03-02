@@ -1,7 +1,7 @@
 pkgbase = kde-gtk-config-git
 	pkgdesc = GTK2 and GTK3 Configurator for KDE
 	pkgver = 6.0.80_r1027.g8f477ae
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	groups = plasma-git
@@ -23,6 +23,8 @@ pkgbase = kde-gtk-config-git
 	depends = qt6-base
 	depends = qt6-svg
 	depends = sh
+	optdepends = gtk3: GTK3 apps support
+	optdepends = xsettingsd: apply settings to GTK applications on the fly
 	provides = kde-gtk-config
 	conflicts = kde-gtk-config
 	source = git+https://github.com/KDE/kde-gtk-config.git
