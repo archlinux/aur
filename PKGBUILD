@@ -16,7 +16,7 @@ url=https://www.videolan.org/developers/x264.html
 license=(GPL)
 depends=(
   ffmpeg2.1
-  'bzip2' 'libbz2.so'
+  'bzip2'
   #liblsmash.so
 )
 makedepends=(
