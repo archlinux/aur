@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracutdevs/dracut'
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=(
   'bash'
   'coreutils'
