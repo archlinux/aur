@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=0.37.0.176.g92d1e9cd8a
+pkgver=0.37.0.469.g1a649afbad
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -12,6 +12,8 @@ depends=(
   'fribidi' 'libfribidi.so'
   'fontconfig' 'libfontconfig.so'
   'freetype2' 'libfreetype.so'
+  'harfbuzz' 'libharfbuzz.so'
+  'libunibreak' # libunibreak.so
   'gnutls'
   'jack' 'libjack.so'
   'lcms2' 'liblcms2.so'
@@ -60,7 +62,6 @@ depends=(
   'glslang' #'libSPIRV.so'
   'libdrm'
   'bzip2' 'libbz2.so'
-  'harfbuzz' 'libharfbuzz.so'
   'libunwind'
   'xz' 'liblzma.so'
   'libmysofa' 'libmysofa.so'
@@ -103,7 +104,7 @@ provides=(
   'libmpv.so'
 )
 conflicts=('mpv')
-options=('!emptydirs' 'debug')
+options=('!emptydirs' '!lto' 'debug')
 source=(
   'git+https://github.com/mpv-player/mpv-build.git'
   'git+https://github.com/mpv-player/mpv.git'
