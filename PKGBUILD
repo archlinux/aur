@@ -4,11 +4,11 @@
 
 pkgname=kmix-git
 pkgver=24.04.70_r2706.gd5097c57
-pkgrel=1
+pkgrel=2
 pkgdesc='KDE volume control program'
 url='https://apps.kde.org/kmix/'
 license=(GPL-2.0-or-later LGPL-2.0-or-later)
-depends=(alsa-lib gcc-libs glibc kconfig5-git kconfigwidgets5-git kcoreaddons5-git kdbusaddons5-git kglobalaccel5-git ki18n5-git knotifications5-git kwidgetsaddons5-git kwindowsystem5-git libcanberra libpulse qt5-base kxmlgui5-git sh-git solid5-git)
+depends=(alsa-lib gcc-libs glibc kconfig5-git kconfigwidgets5-git kcoreaddons5-git kdbusaddons5-git kglobalaccel5-git ki18n5-git knotifications5-git kwidgetsaddons5-git kwindowsystem5-git libcanberra libpulse qt5-base kxmlgui5-git sh solid5-git)
 makedepends=(git extra-cmake-modules-git kdoctools5-git)
 arch=($CARCH)
 conflicts=(${pkgname%-git})

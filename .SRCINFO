@@ -1,7 +1,7 @@
 pkgbase = kmix-git
 	pkgdesc = KDE volume control program
 	pkgver = 24.04.70_r2706.gd5097c57
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.kde.org/kmix/
 	arch = x86_64
 	groups = kde-applications-git
@@ -27,7 +27,7 @@ pkgbase = kmix-git
 	depends = libpulse
 	depends = qt5-base
 	depends = kxmlgui5-git
-	depends = sh-git
+	depends = sh
 	depends = solid5-git
 	provides = kmix
 	conflicts = kmix
