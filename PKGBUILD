@@ -1,8 +1,8 @@
 # Maintainer: zaps166 <spaz16@wp.pl>
 
 pkgname=nfs2se-git
-pkgver=v1.3.0.r0.g0e74445
-pkgrel=2
+pkgver=v1.3.0.r14.gb32b7f4
+pkgrel=1
 pkgdesc='Cross-platform wrapper for the Need For Speed™ II SE game with 3D acceleration and TCP protocol!'
 arch=('x86_64')
 url='https://github.com/zaps166/NFSIISE'
@@ -25,7 +25,7 @@ if [ $machine == "x86_64" ]; then
 	SUBMODULE=src/Asm
 else
 	depends=('sdl2' 'libgl')
-	makedepends=('gcc')
+	makedepends=('clang')
 	COMPILE_ARG=cpp
 	SUBMODULE=src/Cpp
 fi

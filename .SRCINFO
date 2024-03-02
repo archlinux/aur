@@ -1,7 +1,7 @@
 pkgbase = nfs2se-git
 	pkgdesc = Cross-platform wrapper for the Need For Speed™ II SE game with 3D acceleration and TCP protocol!
-	pkgver = v1.3.0.r0.g0e74445
-	pkgrel = 2
+	pkgver = v1.3.0.r14.gb32b7f4
+	pkgrel = 1
 	url = https://github.com/zaps166/NFSIISE
 	install = nfs2se-git.install
 	arch = x86_64
