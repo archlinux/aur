@@ -2,7 +2,7 @@
 # Previous Maintainers: Hilton Medeiros & Quentin Aniere
 
 _pkgname=TrenchBroom
-pkgname=trenchbroom
+pkgname=trenchbroom-bin
 pkgver=2023.1
 _pkgver=Linux-ubuntu-22.04-v$pkgver-Release.$CARCH
 pkgrel=2
