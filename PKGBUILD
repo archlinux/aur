@@ -2,13 +2,13 @@
 # Contributor: akaessens
 
 pkgname=google-keep-nativefier
-pkgver=2023.12.01
+pkgver=2024.03.02
 pkgrel=1
 pkgdesc='Google Keep in shared Electron runtime'
 arch=('x86_64')
 url='https://keep.google.com'
 license=('MIT')
-depends=('electron22')
+depends=('electron25')
 makedepends=(
   'gendesk'
   'nodejs-nativefier'
@@ -28,7 +28,7 @@ _name='Google Keep'
 prepare() {
   cat > "${pkgname}" <<EOF
 #!/usr/bin/env bash
-exec electron22 /usr/share/${pkgname}
+exec electron25 /usr/share/${pkgname}
 EOF
   gendesk \
     --pkgname "${pkgname}" \
