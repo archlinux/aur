@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='Library that extends GTK with common widgets and utilities'
 arch=(x86_64)
 url=https://github.com/elementary/granite
-license=(LGPL3)
+license=(LGPL-3.0-only)
 groups=(pantheon-unstable)
 depends=(
   gtk4
@@ -25,14 +25,12 @@ provides=(
   granite7
   libgranite-7.so
 )
-source=(
-  "${_pkgname}::git+https://github.com/elementary/granite.git#branch=main"
-  )
+conflicts=(granite7)
+source=("${_pkgname}::git+https://github.com/elementary/granite.git#branch=main")
 sha256sums=(SKIP)
 
 pkgver() {
   cd ${_pkgname}
-
   git describe --tags --long | sed 's/-/.r/; s/-g/./'
 }
 
@@ -46,3 +44,4 @@ package() {
 }
 
 # vim: ts=2 sw=2 et:
+
