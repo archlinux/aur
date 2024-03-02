@@ -1,6 +1,6 @@
 pkgbase = kmail-git
 	pkgdesc = KDE mail client
-	pkgver = 24.04.40_r27768.g30c2305ac
+	pkgver = 24.04.40_r27769.g24fe30875
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
@@ -73,6 +73,8 @@ pkgbase = kmail-git
 	depends = qt6-webengine
 	depends = qtkeychain-qt6
 	depends = sonnet-git
+	optdepends = kdepim-addons-git: additional plugins
+	optdepends = kleopatra-git: mail encryption support
 	provides = kmail
 	conflicts = kmail
 	source = git+https://github.com/KDE/kmail.git
