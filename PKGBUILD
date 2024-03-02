@@ -3,8 +3,8 @@
 # Contributor: Antonio Rojas
 
 pkgname=kwayland-git
-pkgver=_r1256.ge87c6d8
-pkgrel=2
+pkgver=6.0.80_r1256.ge87c6d8
+pkgrel=1
 pkgdesc='Qt-style Client and Server library wrapper for the Wayland libraries'
 arch=($CARCH)
 url='https://www.kde.org'
@@ -19,9 +19,10 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  _ver="$(grep -m1 'set(KF_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  _ver="$(grep -m1 'set(PROJECT_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
+
 
 build() {
   cmake -B build -S ${pkgname%-git} \
