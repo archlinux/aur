@@ -1,4 +1,4 @@
-From 58045d3c4da226d6df5be7f0ba80bebeef7a0134 Mon Sep 17 00:00:00 2001
+From bc6c21fe707cccbdc9bd14a517e8aa7bdf0b85c2 Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Thu, 29 Feb 2024 15:28:48 +0200
 Subject: [PATCH 7/7] AUR Enable winewayland
@@ -21,7 +21,7 @@ index 99ee6e17..581b981c 100644
    --with-mingw \
    --without-oss \
 diff --git a/proton b/proton
-index 89baeb8e..ca22cda3 100755
+index 89baeb8e..5ef22e8c 100755
 --- a/proton
 +++ b/proton
 @@ -1524,6 +1524,14 @@ if __name__ == "__main__":
@@ -29,7 +29,7 @@ index 89baeb8e..ca22cda3 100755
          #wait for wineserver to shut down
          g_session.run_proc([g_proton.wineserver_bin, "-w"])
 +        winedrv = "x11"
-+        if os.environ.get("PROTON_ENABLE_WAYLAND", False):
++        if os.environ.get("PROTON_ENABLE_WAYLAND", False) and os.environ["PROTON_ENABLE_WAYLAND"] == "1":
 +            del os.environ["DISPLAY"]
 +            winedrv = "wayland"
 +        g_session.run_proc(
