@@ -3,14 +3,14 @@
 
 pkgbase=kid3-git
 pkgname=(kid3-common-git kid3-qt-git kid3-git)
-pkgver=3.9.5_r2874.ge336e486
+pkgver=3.9.5_r2875.gbe77d6ab
 pkgrel=1
 pkgdesc="An MP3, Ogg/Vorbis and FLAC tag editor"
 arch=($CARCH)
 url="https://kid3.kde.org/"
 license=(GPL)
-depends=(chromaprint flac id3lib kxmlgui5-git libmp4v2 qt5-declarative qt5-multimedia taglib kio5-git)
-makedepends=(git cmake-git docbook-xsl extra-cmake-modules-git kdoctools5-git python qt5-tools)
+depends=(chromaprint flac id3lib kxmlgui5 libmp4v2 qt5-declarative qt5-multimedia taglib kio5)
+makedepends=(git cmake-git docbook-xsl extra-cmake-modules-git kdoctools5 python qt5-tools)
 source=("git+https://github.com/KDE/${pkgbase%-git}.git")
 sha256sums=('SKIP')
 
