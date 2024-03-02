@@ -87,7 +87,10 @@ sha512sums=(
 
 pkgver() {
   cd "${pkgname%-git}"
+
+  # populate DRACUT_VERSION from upstream source
   source dracut-version.sh
+
   # use number of revisions since beginning of the history
   printf "%s.r%s.%s" "$DRACUT_VERSION" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
@@ -110,6 +113,7 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
+
   local prefix=/usr sysconfdir=/etc
   ./configure \
     --sysconfdir=${sysconfdir} \
@@ -122,5 +126,6 @@ build() {
 
 package() {
   cd "${pkgname%-git}"
-  make DESTDIR="$pkgdir" install
+
+  DESTDIR="$pkgdir" make install
 }
