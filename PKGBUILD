@@ -1,7 +1,11 @@
+# Maintainer: Ivan Batrakov <blackfan321 at disroot dot org>
+# Contributor: Junker
+
+
 pkgname=python-jdatetime
 _name=jdatetime
-pkgver=4.1.0
-pkgrel=2
+pkgver=4.1.1
+pkgrel=1
 pkgdesc='Jalali calendar binding for Python based on Python`s datetime module'
 arch=('any')
 url=https://github.com/slashmili/python-jalali
@@ -9,7 +13,7 @@ license=('Python')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('4a67a82ee57e35b5f6f9f7fbe6a0eda63f56ce1dd8af409b4c2a26a3340457db')
+sha256sums=('1dd0ee210160c7bd30002803c443e6260ac602ea65b065652a1d567d3bfdca7a')
 
 build() {
 	cd $_name-$pkgver
