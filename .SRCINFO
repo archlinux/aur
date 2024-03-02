@@ -1,0 +1,18 @@
+pkgbase = svt-av1-psy-git
+	pkgdesc = Bleeding edge psycho-visually focused fork of SVT-AV1
+	pkgver = 2.0.0.rc2.r2.gc233913e
+	pkgrel = 1
+	url = https://github.com/gianni-rosato/svt-av1-psy
+	arch = x86_64
+	license = BSD
+	license = custom: Alliance for Open Media Patent License 1.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = yasm
+	depends = glibc
+	provides = svt-av1
+	conflicts = svt-av1
+	source = git+https://github.com/gianni-rosato/svt-av1-psy
+	sha256sums = SKIP
+
+pkgname = svt-av1-psy-git
