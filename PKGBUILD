@@ -1,6 +1,13 @@
 # Maintainer:
 
-# options
+## useful commands
+# LLVM_PROFILE_FILE="default_%9m.profraw" pcsx2-qt
+# llvm-profdata merge -output=pcsx2-avx-git.profdata *.profraw
+
+## options
+: ${_build_debug:=false}
+: ${_build_pgo:=try}
+
 : ${_build_clang:=true}
 : ${_build_mold:=false}
 
@@ -17,7 +24,7 @@ unset _pkgtype
 # basic info
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.7.5556.r0.ge1fc4146
+pkgver=1.7.5586.r0.gb9a7143d
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
@@ -74,6 +81,18 @@ _main_package() {
 
   install="$_pkgname.install"
 
+  if [[ "${_build_debug::1}" == "t" ]] ; then
+    options=(
+      'debug'
+      '!lto'
+    )
+  else
+    options=(
+      '!debug'
+      'lto'
+    )
+  fi
+
   _pkgsrc="$_pkgname"
   source+=(
     "$_pkgsrc"::"git+$url.git"
@@ -101,12 +120,10 @@ _source_pcsx2() {
     'khronosgroup.vulkan-headers'::'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
     'lz4'::'git+https://github.com/lz4/lz4.git'
     'microsoft.wil'::'git+https://github.com/microsoft/wil.git'
-    'retroachievements.rcheevos'::'git+https://github.com/RetroAchievements/rcheevos.git'
     'tukaani-project.xz'::'git+https://github.com/tukaani-project/xz.git'
     'webmproject.libwebp'::'git+https://github.com/webmproject/libwebp.git'
   )
   sha256sums+=(
-    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -130,7 +147,6 @@ _source_pcsx2() {
       ['khronosgroup.vulkan-headers']='3rdparty/vulkan-headers'
       ['lz4']='3rdparty/lz4/lz4'
       ['microsoft.wil']='3rdparty/wil'
-      ['retroachievements.rcheevos']='3rdparty/rcheevos/rcheevos'
       ['tukaani-project.xz']='3rdparty/xz/xz'
       ['webmproject.libwebp']='3rdparty/libwebp/libwebp'
     )
@@ -234,21 +250,26 @@ build() {
     -B build
     -G Ninja
     -DCMAKE_BUILD_TYPE="Release"
-    -DUSE_ASAN=OFF
-
-    -DENABLE_TESTS=OFF # default:ON
-    -Wno-dev
   )
+
+  if [[ "${_build_debug::1}" == "t" ]] ; then
+    _cmake_options+=(
+      -DENABLE_TESTS=ON
+      -DUSE_ASAN=ON
+    )
+  else
+    _cmake_options+=(
+      -DENABLE_TESTS=OFF
+      -DUSE_ASAN=OFF
+      -Wno-dev
+    )
+  fi
 
   if [[ "${_build_clang::1}" == "t" ]] ; then
     export AR=llvm-ar
     export NM=llvm-nm
     export CC=clang
     export CXX=clang++
-
-    _cmake_options+=(
-      -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
-    )
   fi
 
   if [[ "${_build_mold::1}" == "t" ]] ; then
@@ -269,16 +290,10 @@ build() {
   local _pgo_profile_old="${SRCDEST:-$startdir}/$pkgname.profdata"
   local _pgo_profile="$srcdir/$pkgname.profdata"
   if [[ "${_build_instrumented::1}" == "t" ]] ; then
-    # To create profiles:
-    #    LLVM_PROFILE_FILE="default_%9m.profraw" pcsx2-qt
-    #
-    # To process profiles:
-    #    llvm-profdata merge -output=pcsx2-avx-git.profdata *.profraw
-    #
     echo "Compiling with instrumentation."
     export CFLAGS+=" -fprofile-generate"
     export CXXFLAGS+=" -fprofile-generate"
-  elif [ -e "$_pgo_profile_old" ] ; then
+  elif [[ "${_build_pgo::1}" == "t" ]] && [ -e "$_pgo_profile_old" ] ; then
     echo "Compiling with profile-guided optimization."
     cp --reflink=auto "$_pgo_profile_old" "$_pgo_profile"
 
