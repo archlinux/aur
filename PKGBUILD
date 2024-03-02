@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='Library that extends GTK with common widgets and utilities'
 arch=(x86_64)
 url=https://github.com/elementary/granite
-license=(LGPL3)
+license=(GPL-3.0-only)
 groups=(pantheon-unstable)
 depends=(
   gtk3
@@ -30,13 +30,11 @@ sha256sums=(SKIP)
 
 pkgver() {
   cd ${srcdir}/${_pkgname}
-
   git describe --tags | sed 's/-/.r/; s/-g/./'
 }
 
 build() {
-  arch-meson ${_pkgname} build \
-    -D b_pie='false'
+  arch-meson ${_pkgname} build -D b_pie='false'
   ninja -C build
 }
 
