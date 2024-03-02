@@ -2,7 +2,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=ktextaddons-git
-pkgver=1.5.45_r1255.gf194a7c
+pkgver=1.5.45_r1256.g3936a38
 pkgrel=1
 pkgdesc="KDE text addons"
 arch=($CARCH)
@@ -11,6 +11,9 @@ license=(GPL)
 depends=(gcc-libs glibc)
 makedepends=(git doxygen extra-cmake-modules-git karchive-git kconfig-git kconfigwidgets-git ki18n-git kio-git ktextaddons-git kwidgetsaddons-git kxmlgui-git qt6-base qt6-doc qt6-speech qt6-tools qtkeychain-qt6 sonnet-git syntax-highlighting-git karchive5-git kconfig5-git kconfigwidgets5-git ki18n5-git kio5-git kwidgetsaddons5-git qt5-base qt5-doc qt5-speech qt5-tools qtkeychain-qt5 sonnet5-git syntax-highlighting5-git)
 groups=(kdepim-git)
+optdepends=('languagetool: Grammar checking'
+            'grammalecte: French grammar checking'
+            'libreoffice: Use autocorrection data from LibreOffice')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")

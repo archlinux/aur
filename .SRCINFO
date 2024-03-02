@@ -1,6 +1,6 @@
 pkgbase = ktextaddons-git
 	pkgdesc = KDE text addons
-	pkgver = 1.5.45_r1255.gf194a7c
+	pkgver = 1.5.45_r1256.g3936a38
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
@@ -39,6 +39,9 @@ pkgbase = ktextaddons-git
 	makedepends = syntax-highlighting5-git
 	depends = gcc-libs
 	depends = glibc
+	optdepends = languagetool: Grammar checking
+	optdepends = grammalecte: French grammar checking
+	optdepends = libreoffice: Use autocorrection data from LibreOffice
 	provides = ktextaddons
 	conflicts = ktextaddons
 	source = git+https://github.com/KDE/ktextaddons.git
