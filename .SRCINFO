@@ -7,7 +7,6 @@ pkgbase = wlx-overlay-s-git
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = cargo
-	makedepends = rust
 	makedepends = python3
 	makedepends = cmake
 	makedepends = clang
