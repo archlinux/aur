@@ -1,8 +1,8 @@
 # Maintainer: Dani Rybe <danilrybakov249 at gmail dot com>
 
 pkgname="smh-bin"
-pkgver="0.1.2"
-pkgrel=3
+pkgver="0.1.3"
+pkgrel=1
 pkgdesc="String manipulationg tool written in haskell"
 arch=("x86_64")
 license=("MIT")
@@ -12,7 +12,7 @@ url="https://github.com/DanRyba253/smh"
 _url="https://github.com/DanRyba253/smh"
 
 source=("${_url}/releases/download/v${pkgver}/smh-${pkgver}" "${_url}/releases/download/v${pkgver}/smh-manpage-${pkgver}")
-sha256sums=("fcb94c683cd9e1bdc205a57e801843434173d410f14be0eb3612f07d127427fe" "cf63ee4dcdcbccd9183a6788a797323a8c153407600500e4ded96e0df9b2d8fc")
+sha256sums=("39f890586c1f313ad141a9bb36857c39f4c614420ac1432082944219fc88188f" "31fd36354917c7186ffaa6b1e7b0e460fe7739e005ca91fd592d720b3ed8cb5f")
 
 package() {
     chmod +x "${srcdir}/smh-${pkgver}"
