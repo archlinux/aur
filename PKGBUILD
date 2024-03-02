@@ -16,7 +16,7 @@ depends+=(libxmp)
 optdepends=("soundfont-fluid: soundfont for MIDI playback")
 install=install.sh
 makedepends=(cmake python3)
-conflicts=(woof-git)
+conflicts=(woof-doom-git)
 source=("https://github.com/fabiangreffrath/${_pkgname}/archive/refs/tags/${_pkgname}_${pkgver}.tar.gz")
 sha256sums=(ad619f8b15b9fa0e690fe8094f394d4d1b3e7b7c3935317aac2f631835a09626)
 
