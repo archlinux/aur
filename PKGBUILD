@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
 pkgname=obs-studio-rc
-_pkgver=30.1.0-beta3
+_pkgver=30.1.0-rc1
 pkgver=${_pkgver//-/_}
 pkgrel=1
 epoch=7
@@ -150,9 +150,9 @@ build() {
     -DCEF_ROOT_DIR=/opt/cef-obs \
     -Wno-dev \
     -DCALM_DEPRECATION=ON \
-    -DBETA="$_pkgver"
+    -DRELEASE_CANDIDATE="$_pkgver"
+#    -DBETA="$_pkgver"
 #    -DOBS_VERSION_OVERRIDE="$_pkgver"
-#    -DRELEASE_CANDIDATE="$_pkgver"
 
   sed -i "s|OBS_VERSION =|OBS_VERSION = \"$_pkgver-rc-$pkgrel\"; //|" build/libobs/obsversion.c
 
