@@ -2,9 +2,10 @@
 # Contributor: zhullyb < zhullyb [at] outook dot com >
 # Contributor: sukanka < su975853527 [at] gmail dot com >
 pkgname=aliyunpan-gaozhangmin-bin
+_pkgname=XBYDriver
 url="https://github.com/gaozhangmin/aliyunpan"
 pkgrel=1
-pkgver=3.12.3
+pkgver=3.12.5
 pkgdesc="阿里云盘小白羊版，gaozhangmin's fork"
 arch=("any")
 license=("MIT")
@@ -14,10 +15,10 @@ optdepends=('mpv: media preview support')
 provides=("aliyunpan-odomu")
 conflicts=("aliyunpan-odomu")
 source=(
-  "${url}/releases/download/v${pkgver}/XBYDriver-${pkgver}-linux-amd64.deb"
+  "${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
   "aliyunpan-gaozhangmin.desktop"
 )
-sha256sums=('44b9d1462ff62b500243d86dceb01767c2d239b907baafda8bbe1abef13ebb63'
+sha256sums=('00bfc210c1ed52ee8d732625c71109384d52448536ea2affde0efe6e57e12c3d'
             '8dc19ab03306c3498b30659ebd8c1922e9145dd6b7851207f645bc33806ad63b')
 
 
