@@ -1,12 +1,12 @@
 pkgname=owncloud-app-notes-git
-pkgver=0.5.276.g405ccf0
+pkgver=0.5.855.gf8bbe283
 pkgrel=1
 pkgdesc="Owncloud notes app"
 arch=('any')
 url="https://github.com/owncloud/notes"
 license=('AGPL')
 depends=('owncloud')
-makedepends=()
+makedepends=('git')
 options=('!strip')
 conflicts=('owncloud-app-notes')
 source=("$pkgname::git+https://github.com/owncloud/notes.git")
