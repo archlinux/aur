@@ -2,8 +2,8 @@
 # Contributor: Jonas Witschel <diabonas@archlinux.org>
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
-pkgver=059.r214.4980bad3
-pkgrel=5
+pkgver=060.r6794.4980bad
+pkgrel=1
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracutdevs/dracut'
@@ -85,7 +85,9 @@ sha512sums=(
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
+  source dracut-version.sh
+  # use number of revisions since beginning of the history
+  printf "%s.r%s.%s" "$DRACUT_VERSION" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
