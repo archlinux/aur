@@ -1,7 +1,7 @@
 pkgbase = neocities-deploy
 	pkgdesc = A command-line tool for deploying your Neocities site. It can upload files to your site, list remote files, and more.
 	pkgver = 0.1.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kugland/neocities-deploy
 	arch = any
 	license = GPL3

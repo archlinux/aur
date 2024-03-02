@@ -4,7 +4,7 @@ pkgname=neocities-deploy
 pkgdesc='A command-line tool for deploying your Neocities site. It can upload files to your site, list remote files, and more.'
 url='https://github.com/kugland/neocities-deploy'
 pkgver=0.1.19
-pkgrel=1
+pkgrel=2
 arch=('any')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kugland/neocities-deploy/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('29c832a19c8b26a7898d24ddd2c2f8eaee1baadb5a975ea03600a944c5b87ded')
@@ -34,4 +34,5 @@ check() {
 package() {
     cd "$srcdir/neocities-deploy-$pkgver"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+    install -Dm0644 -t "$pkgdir/usr/doc/$pkgname/" README.md
 }
