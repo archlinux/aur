@@ -1,6 +1,6 @@
 pkgbase = twitchleecher-dx
 	pkgdesc = A simple download tool for Twitch streams
-	pkgver = 3.4.0
+	pkgver = 3.4.1
 	pkgrel = 1
 	url = https://github.com/schneidermanuel/TwitchLeecher-Dx
 	arch = x86_64
