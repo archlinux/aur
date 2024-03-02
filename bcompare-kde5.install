@@ -13,7 +13,7 @@ blue="${bold}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
 
 post_install() {
-    note "It is necessary to enable 'File Manager Integration' under 'Tools' -> 'Options' from Beyond Compare interface."
+    note "It is required to enable the option 'Tools' -> 'Options' -> 'Startup' -> 'Include Beyond Compare in file manager context menus' and restart Dolphin."
 }
 
 post_upgrade() {
