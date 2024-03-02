@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='Library that extends GTK with common widgets and utilities'
 arch=(x86_64)
 url=https://github.com/elementary/granite
-license=(GPL-3.0-only)
+license=(LGPL-3.0-only)
 groups=(pantheon-unstable)
 depends=(
   gtk3
@@ -25,6 +25,7 @@ provides=(
   granite
   libgranite.so
 )
+conflicts=(granite)
 source=(git+https://github.com/elementary/granite.git)
 sha256sums=(SKIP)
 

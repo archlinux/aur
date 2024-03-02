@@ -5,7 +5,7 @@ pkgbase = granite-git
 	url = https://github.com/elementary/granite
 	arch = x86_64
 	groups = pantheon-unstable
-	license = GPL-3.0-only
+	license = LGPL-3.0-only
 	makedepends = git
 	makedepends = gobject-introspection
 	makedepends = meson
@@ -15,6 +15,7 @@ pkgbase = granite-git
 	depends = libgee
 	provides = granite
 	provides = libgranite.so
+	conflicts = granite
 	source = git+https://github.com/elementary/granite.git
 	sha256sums = SKIP
 
