@@ -1,7 +1,7 @@
 # Maintainer: Cyano Hao <c@cyano.cn>
 
 pkgname=wow.export-git
-pkgver=0.1.48.r0.g03ffdfb
+pkgver=0.1.59.r10.g60b8e2f1
 pkgrel=1
 pkgdesc='Extracting and converting World of Warcraft files'
 arch=('x86_64')
@@ -14,19 +14,21 @@ optdepends=(
 )
 makedepends=(
     'git'
-    'nodejs-lts-gallium'
+    'nodejs-lts-hydrogen'
     'npm'
     'imagemagick'
     # 'blender'
 )
 source=(
-    'git+https://github.com/Kruithne/wow.export.git#branch=temp-release'
+    'git+https://github.com/Kruithne/wow.export.git#branch=main'
     disable-updater.js
+    fix-pkg-nodejs18.js
     wow.export.desktop
     run_wow.export.sh
 )
 sha256sums=('SKIP'
             'df1c85ec9910f2fa5e423c786ee274a91bb5d5d751af0cc1d9657e39226896b7'
+            'ad7297734ea2b9d08afdd011c504f653f886ea8ba15e12c15248e7bec741ec31'
             '0999c519bdeeb9038f9dae1164b8d953c8abf3e446b0d1af698f975553e558f9'
             '8659e690ae3cc215035132b56795bded32fc81175829c421d8238086a703611c')
 
@@ -37,7 +39,7 @@ pkgver() {
 
 prepare() {
     node disable-updater.js
-    mkdir -p wow.export/bin/linux-x64/
+    node fix-pkg-nodejs18.js
 }
 
 build() {
