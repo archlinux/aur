@@ -2,7 +2,7 @@
 
 _pkgname="hyprlock"
 pkgname="${_pkgname}-git"
-pkgver=0.1.0.r14.ga7ec1958
+pkgver=0.1.0.r17.g4286cfb2
 pkgrel=1
 pkgdesc=" Hyprland's GPU-accelerated screen locking utility "
 arch=(any)
@@ -14,6 +14,8 @@ source=("${_pkgname}::git+https://github.com/hyprwm/hyprlock.git")
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 sha256sums=('SKIP')
+
+backup=('etc/pam.d/hyprlock')
 
 pkgver() {
     cd ${_pkgname}
