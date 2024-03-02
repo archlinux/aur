@@ -7,7 +7,7 @@ arch=("x86_64")
 url="https://github.com/ransome1/sleek/"
 license=("MIT")
 options=(!strip)
-makedepends=("yarn" "nodejs" "unzip")
+makedepends=("yarn" "nodejs" "npm" "unzip")
 depends=("electron" "nodejs")
 
 source=("${url}archive/refs/tags/v${pkgver}.zip" "sleek.desktop" "sleek")
