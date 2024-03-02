@@ -107,47 +107,58 @@ prepare() {
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
 
-  cat >../mozconfig <<END
-ac_add_options --enable-application=browser
-mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
+	cat >../mozconfig <<-END
+		ac_add_options --enable-application=browser
+		mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
-ac_add_options --prefix=/usr
-ac_add_options --enable-release
-ac_add_options --enable-hardening
-ac_add_options --enable-optimize
-ac_add_options --enable-rust-simd
-ac_add_options --enable-linker=lld
-ac_add_options --disable-install-strip
-ac_add_options --disable-elf-hack
-ac_add_options --disable-bootstrap
-ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
+		ac_add_options --prefix=/usr
+		ac_add_options --enable-release
+		ac_add_options --enable-hardening
+		ac_add_options --enable-optimize
+		ac_add_options --enable-rust-simd
+		ac_add_options --enable-linker=lld
+		ac_add_options --disable-install-strip
+		ac_add_options --disable-elf-hack
+		ac_add_options --disable-bootstrap
+		ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 
-# Branding
-ac_add_options --enable-official-branding
-ac_add_options --enable-update-channel=release
-ac_add_options --with-distribution-id=org.archlinux
-ac_add_options --with-unsigned-addon-scopes=app,system
-ac_add_options --allow-addon-sideload
-export MOZILLA_OFFICIAL=1
-export MOZ_APP_REMOTINGNAME=${pkgname//-/}
+		# Branding
+		ac_add_options --enable-official-branding
+		ac_add_options --enable-update-channel=release
+		ac_add_options --with-distribution-id=org.archlinux
+		ac_add_options --with-unsigned-addon-scopes=app,system
+		ac_add_options --allow-addon-sideload
+		export MOZILLA_OFFICIAL=1
+		export MOZ_APP_REMOTINGNAME=${_pkgname}
 
-# Keys
-ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key
-ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/google-api-key
-ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
+		# Keys
+		ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key
+		ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/google-api-key
+		ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 
-# System libraries
-ac_add_options --with-system-nspr
-ac_add_options --with-system-nss
-ac_add_options --with-system-icu
+		# System libraries
+		ac_add_options --with-system-libvpx
+		ac_add_options --with-system-webp
+		ac_add_options --with-system-libevent
+		ac_add_options --with-system-ffi
+		ac_add_options --with-system-pixman
+		ac_add_options --with-system-zlib
+		ac_add_options --with-system-icu
+		ac_add_options --with-system-jpeg
+		# does not have APNG support
+		# ac_add_options --with-system-png
+		ac_add_options --with-system-nspr
+		ac_add_options --with-system-nss
+		ac_add_options --with-system-icu
 
-# Features
-ac_add_options --enable-alsa
-ac_add_options --enable-jack
-ac_add_options --enable-crashreporter
-ac_add_options --disable-updater
-ac_add_options --disable-tests
-END
+		# Features
+		ac_add_options --enable-alsa
+		ac_add_options --enable-jack
+		ac_add_options --enable-crashreporter
+		ac_add_options --disable-updater
+		ac_add_options --disable-tests
+
+	END
 
 if [[ -n $_SCCACHE ]]; then
   echo 'ac_add_options --with-ccache=sccache' >> ../mozconfig
@@ -179,9 +190,6 @@ END
 
   echo "Profiling instrumented browser..."
 
-  # https://aur.archlinux.org/packages/firefox-nightly#comment-953965
-  export LIBGL_ALWAYS_SOFTWARE=true
-
   ./mach package
   LLVM_PROFDATA=llvm-profdata \
     JARLOG_FILE="$PWD/jarlog" \
@@ -210,7 +218,6 @@ END
 package() {
   local desktopid=org.mozilla.$_pkgname
   local distdir="$pkgdir/usr/lib/$_pkgname/distribution/"
-  local vendordir="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/"
   local nssckbi="$pkgdir/usr/lib/$_pkgname/libnssckbi.so"
   local i theme=official
 
@@ -218,33 +225,33 @@ package() {
   DESTDIR="$pkgdir" ./mach install
 
   # Distribution
-  install -Dvm644 -t "$vendordir" taskcluster/docker/firefox-flatpak/default-preferences.js
-  install -Dvm644 /dev/stdin "$distdir/distribution.ini" <<END
-[Global]
-id=archlinux
-version=1.0
-about=Mozilla Firefox for Arch Linux [Global Menu]
+	install -Dvm644 /dev/stdin "$distdir/distribution.ini" <<-END
+		[Global]
+		id=archlinux
+		version=1.0
+		about=Mozilla Firefox for Arch Linux [Global Menu]
 
-[Preferences]
-# Distribution
-app.distributor=archlinux
-app.distributor.channel=$pkgname
-app.partner.archlinux=archlinux
-mozilla.partner.id="archlinux"
+		[Preferences]
+		# Distribution
+		app.distributor=archlinux
+		app.distributor.channel=$pkgname
+		app.partner.archlinux=archlinux
+		mozilla.partner.id="archlinux"
 
-# Don't disable extensions in the application directory
-extensions.autoDisableScopes=11
+		# Don't disable extensions in the application directory
+		extensions.autoDisableScopes=11
 
-# Enable GNOME Shell search provider
-browser.gnome-search-provider.enabled=true
+		# Enable GNOME Shell search provider
+		browser.gnome-search-provider.enabled=true
 
-# Enable backspace button backward
-browser.backspace_action=0
+		# Enable backspace button backward
+		browser.backspace_action=0
 
-# Default use system title bar
-browser.tabs.inTitlebar=0
-browser.theme.dark-private-windows=false
-END
+		# Default use system title bar
+		browser.tabs.inTitlebar=0
+		browser.theme.dark-private-windows=false
+
+	END
 
   # Icons
   for i in 22 24 256; do
