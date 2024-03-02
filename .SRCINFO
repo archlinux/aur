@@ -1,7 +1,7 @@
 pkgbase = ki18n-git
 	pkgdesc = Advanced internationalization framework
 	pkgver = 6.0.0_r723.ga0839c4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
 	groups = kf6-git
@@ -18,6 +18,8 @@ pkgbase = ki18n-git
 	depends = glibc
 	depends = iso-codes
 	depends = qt6-base
+	optdepends = python: to compile .ts files
+	optdepends = qt6-declarative: ktranscript plugin and QML bindings
 	provides = ki18n
 	conflicts = ki18n
 	source = git+https://github.com/KDE/ki18n.git

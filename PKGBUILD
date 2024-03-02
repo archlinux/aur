@@ -4,13 +4,15 @@
 
 pkgname=ki18n-git
 pkgver=6.0.0_r723.ga0839c4
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced internationalization framework'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL-2.0-only LGPL-3.0-only)
 depends=(gcc-libs glibc iso-codes qt6-base)
 makedepends=(git doxygen extra-cmake-modules-git python qt6-declarative qt6-doc qt6-tools)
+optdepends=('python: to compile .ts files'
+            'qt6-declarative: ktranscript plugin and QML bindings')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf6-git)
