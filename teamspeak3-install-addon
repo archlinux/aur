@@ -21,11 +21,11 @@ unzip -d addon addon.zip
 ADDONDIR="$(dirname "$(cd addon; find . -name package.ini)")"
 SETTINGSINI="$(cd addon; find . -name settings.ini)"
 
-TYPE="$(< "addon/$ADDONDIR/package.ini" grep '^Type *='|cut -d= -f2|sed 's/ //g'|tr "[:upper:]" "[:lower:]"|tr ' ' -|tr -d '\r\n')"
+TYPE="$(< "addon/$ADDONDIR/package.ini" grep '^Type *='|cut -d= -f2|sed 's/ //g'|tr "[:upper:]" "[:lower:]"|tr ' ' -|tr -d '"'|tr -d '\r\n')"
 if [[ -z "$TYPE" ]] ; then if < "addon/$SETTINGSINI" grep '\[soundfiles\]' >/dev/null ; then TYPE="soundpack" ; fi ; fi
-VERSION="$(< "addon/$ADDONDIR/package.ini" grep -i '^Version *='|cut -d= -f2|tr -d ' \r\n')"
+VERSION="$(< "addon/$ADDONDIR/package.ini" grep -i '^Version *='|cut -d= -f2|tr -d '"'|tr -d ' \r\n')"
 if [[ -z "$VERSION" ]] ; then VERSION="$(< "addon/$SETTINGSINI" grep -i '^version *='|cut -d= -f2|tr -d ' \r\n')" ; fi
-NAME="$(< "addon/$ADDONDIR/package.ini" grep -i '^Name *='|cut -d= -f2|sed 's/^ //g'|tr -d '\r\n')"
+NAME="$(< "addon/$ADDONDIR/package.ini" grep -i '^Name *='|cut -d= -f2|sed 's/^ //g'|tr -d '"'|tr -d '\r\n')"
 if [[ -z "$NAME" ]] ; then NAME="$(< "addon/$SETTINGSINI" grep -i '^name *='|cut -d= -f2|tr -d ' \r\n')" ; fi
 PKGNAME="teamspeak3-addon-$TYPE-$(echo "$NAME"|tr "[:upper:]" "[:lower:]"|tr ' ' -|tr -d '\r\n')"
 
@@ -73,4 +73,4 @@ echo
 makepkg
 echo
 echo "Installing package"
-sudo pacman -U "$PKGNAME-$VERSION-$REL-any.pkg.tar.xz"
+sudo pacman -U "$PKGNAME-$VERSION-$REL-any.pkg.tar.zst"
