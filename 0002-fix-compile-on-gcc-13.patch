@@ -1,0 +1,24 @@
+From 79b881d9007d44023ab1c6c4d91c0933a1bc934f Mon Sep 17 00:00:00 2001
+From: Rihards Skuja <rihards@skuja.eu>
+Date: Thu, 29 Feb 2024 11:52:22 +0200
+Subject: [PATCH] fix compile on gcc 13
+
+---
+ OpenHD/ohd_common/inc/openhd_util.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/OpenHD/ohd_common/inc/openhd_util.h b/OpenHD/ohd_common/inc/openhd_util.h
+index 9890eaa3..6c4b1ba5 100644
+--- a/OpenHD/ohd_common/inc/openhd_util.h
++++ b/OpenHD/ohd_common/inc/openhd_util.h
+@@ -1,6 +1,7 @@
+ #ifndef OPENHD_UTIL_H
+ #define OPENHD_UTIL_H
+ 
++#include <cstdint>
+ #include <optional>
+ #include <string>
+ #include <vector>
+-- 
+2.44.0
+

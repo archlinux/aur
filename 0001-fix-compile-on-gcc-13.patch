@@ -1,26 +1,26 @@
-From f15c889cf40d7c96a01af1e12f443b14c27872ba Mon Sep 17 00:00:00 2001
+From f1111ce46894d3b51434e33a6f3461318dade5fd Mon Sep 17 00:00:00 2001
 From: Rihards Skuja <rihards@skuja.eu>
-Date: Fri, 3 Nov 2023 15:41:01 +0200
+Date: Thu, 29 Feb 2024 11:40:31 +0200
 Subject: [PATCH] fix compile on gcc 13
 
 Without the header compilation fails with a bunch of
 "'uint8_t' does not name a type" errors.
 ---
- src/HelperSources/StringHelper.hpp | 1 +
+ wifibroadcast/src/HelperSources/StringHelper.hpp | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/src/HelperSources/StringHelper.hpp b/src/HelperSources/StringHelper.hpp
-index f00bf9c..1e8e774 100644
---- a/src/HelperSources/StringHelper.hpp
-+++ b/src/HelperSources/StringHelper.hpp
-@@ -9,6 +9,7 @@
- #include <sstream>
- #include <array>
- #include <vector>
-+#include <cstdint>
+diff --git a/wifibroadcast/src/HelperSources/StringHelper.hpp b/wifibroadcast/src/HelperSources/StringHelper.hpp
+index 056b12d..9d16c94 100644
+--- a/wifibroadcast/src/HelperSources/StringHelper.hpp
++++ b/wifibroadcast/src/HelperSources/StringHelper.hpp
+@@ -6,6 +6,7 @@
+ #define OSDTESTER_STRINGHELPER_H
  
- class StringHelper {
-  public:
+ #include <array>
++#include <cstdint>
+ #include <sstream>
+ #include <string>
+ #include <vector>
 -- 
-2.42.1
+2.44.0
 

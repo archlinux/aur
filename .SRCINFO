@@ -1,7 +1,7 @@
 pkgbase = openhd-git
 	pkgdesc = Open-source digital FPV system
-	pkgver = 2.5.0.beta3.r381.gf559237
-	pkgrel = 2
+	pkgver = 2.5.3.r23.gb9ed014
+	pkgrel = 1
 	url = https://openhdfpv.org
 	arch = any
 	license = GPL3
@@ -22,7 +22,9 @@ pkgbase = openhd-git
 	conflicts = openhd
 	source = git+https://github.com/OpenHD/OpenHD.git
 	source = 0001-fix-compile-on-gcc-13.patch
+	source = 0002-fix-compile-on-gcc-13.patch
 	sha256sums = SKIP
-	sha256sums = f5353f5411a41833a050cee54d9b461261c8a68eb9051547830960d06c0c0733
+	sha256sums = 7637ec59e85b4616d05d1f0c81a10fca921473b4b124c04e6506213718bb205a
+	sha256sums = 118befc82ae46153b407ea66fdf7ee4bc0043cb0d36308e124703da1d01f8a79
 
 pkgname = openhd-git

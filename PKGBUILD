@@ -2,8 +2,8 @@
 
 pkgname=openhd-git
 _reponame=OpenHD
-pkgver=2.5.0.beta3.r381.gf559237
-pkgrel=2
+pkgver=2.5.3.r23.gb9ed014
+pkgrel=1
 pkgdesc='Open-source digital FPV system'
 arch=(any)
 url='https://openhdfpv.org'
@@ -16,9 +16,10 @@ optdepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+https://github.com/OpenHD/$_reponame.git" "0001-fix-compile-on-gcc-13.patch")
+source=("git+https://github.com/OpenHD/$_reponame.git" "0001-fix-compile-on-gcc-13.patch" "0002-fix-compile-on-gcc-13.patch")
 sha256sums=('SKIP'
-            'f5353f5411a41833a050cee54d9b461261c8a68eb9051547830960d06c0c0733')
+            '7637ec59e85b4616d05d1f0c81a10fca921473b4b124c04e6506213718bb205a'
+            '118befc82ae46153b407ea66fdf7ee4bc0043cb0d36308e124703da1d01f8a79')
 
 pkgver() {
 	cd "$_reponame"
@@ -28,7 +29,8 @@ pkgver() {
 prepare() {
 	cd "$_reponame"
 	git submodule update --init --recursive
-	patch -d 'OpenHD/lib/wifibroadcast' -p1 -i "$srcdir/0001-fix-compile-on-gcc-13.patch"
+	patch -d 'OpenHD/ohd_interface/lib/wifibroadcast' -p1 -i "$srcdir/0001-fix-compile-on-gcc-13.patch"
+	patch -p1 -i "$srcdir/0002-fix-compile-on-gcc-13.patch"
 }
 
 build() {
