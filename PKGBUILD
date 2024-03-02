@@ -3,13 +3,13 @@
 
 pkgname=ktextaddons-git
 pkgver=1.5.45_r1256.g3936a38
-pkgrel=2
+pkgrel=3
 pkgdesc="KDE text addons"
 arch=($CARCH)
 url="https://kontact.kde.org"
 license=(GPL)
-depends=(gcc-libs glibc)
-makedepends=(git doxygen extra-cmake-modules-git karchive-git kconfig-git kconfigwidgets-git ki18n-git kio-git ktextaddons-git kwidgetsaddons-git kxmlgui-git qt6-base qt6-doc qt6-speech qt6-tools qtkeychain-qt6 sonnet-git syntax-highlighting-git karchive5 kconfig5 kconfigwidgets5 ki18n5 kio5 kwidgetsaddons5 qt5-base qt5-doc qt5-speech qt5-tools qtkeychain-qt5 sonnet5 syntax-highlighting5)
+depends=(gcc-libs glibc karchive-git kcolorscheme-git kconfig-git kconfigwidgets-git ki18n-git kio-git kwidgetsaddons-git qt6-base qt6-speech qtkeychain-qt6 sonnet-git syntax-highlighting-git)
+makedepends=(git doxygen extra-cmake-modules-git ktextaddons-git kxmlgui-git qt6-tools)
 groups=(kdepim-git)
 optdepends=('languagetool: Grammar checking'
             'grammalecte: French grammar checking'
@@ -27,7 +27,10 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
+    -DBUILD_DESIGNERPLUGIN=ON \
+    -DBUILD_QCH=ON \
+    -DQT_MAJOR_VERSION=6
   cmake --build build
 }
 
