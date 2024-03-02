@@ -1,11 +1,11 @@
 pkgbase = minorg
 	pkgdesc = Neorg related tool to convert Pandoc json to norg written in the Nim language
-	pkgver = 2.4.5
+	pkgver = 2.4.6
 	pkgrel = 1
 	url = https://github.com/pysan3/minorg
 	arch = x86_64
 	license = GPL
-	source = https://github.com/pysan3/minorg/releases/download/v2.4.5/minorg-linux_x64.tar.gz
+	source = https://github.com/pysan3/minorg/releases/download/v2.4.6/minorg-linux_x64.tar.gz
 	sha256sums = 8242b74a5f91a40aa028aa41906531f87e004fb48f1437a0122c842e3067cb6e
 
 pkgname = minorg
