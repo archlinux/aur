@@ -1,6 +1,6 @@
 pkgbase = wine-ge-custom-bin
 	pkgdesc = GloriousEggroll's custom build of wine (this package installs to /opt)
-	pkgver = GE_Proton8_25
+	pkgver = GE_Proton8_26
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/GloriousEggroll/wine-ge-custom
@@ -64,11 +64,11 @@ pkgbase = wine-ge-custom-bin
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine-ge-custom=GE.Proton8_25
+	provides = wine-ge-custom=GE.Proton8_26
 	conflicts = wine-ge-custom
 	options = !strip
 	options = emptydirs
-	source = GE-Proton8-25_1.tar.xz::https://github.com/GloriousEggroll/wine-ge-custom/releases/download/GE-Proton8-25/wine-lutris-GE-Proton8-25-x86_64.tar.xz
-	sha512sums = 03bc8e5f77a82226cc89d6141be4dd77afad003d23ce4fb98987b4446318c7c68953b5a10c379cbaf042a9185dd4629895e14cd9878b272cf74139ac0c07ee63
+	source = GE-Proton8-26_1.tar.xz::https://github.com/GloriousEggroll/wine-ge-custom/releases/download/GE-Proton8-26/wine-lutris-GE-Proton8-26-x86_64.tar.xz
+	sha512sums = 3abd578ed45a16096843936e0258799450e6a5751bc67afaf8c58cd245c40e62794a89af25ae482d74d5ca2b7527d17ff77232781c6d9cf97bc02976c2f960bd
 
 pkgname = wine-ge-custom-bin
