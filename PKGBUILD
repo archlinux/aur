@@ -30,13 +30,13 @@ makedepends=(
 )
 optdepends=(
   'binutils: --uefi option support'
-  'tpm2-tools: tpm2-tss module support'
   'elfutils: strip binaries to reduce initramfs size'
   'hardlink: --hardlink option support'
   'memstrack: memstrack module support'
   'multipath-tools: dmraid dracut module support'
   'pigz: faster gzip compression'
   'sbsigntools: uefi_secureboot_cert/key configuration option support'
+  'tpm2-tools: tpm2-tss module support'
 )
 provides=("${pkgname%-git}" 'initramfs')
 conflicts=("${pkgname%-git}")
