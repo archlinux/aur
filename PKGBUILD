@@ -3,11 +3,11 @@
 pkgname=neocities-deploy
 pkgdesc='A command-line tool for deploying your Neocities site. It can upload files to your site, list remote files, and more.'
 url='https://github.com/kugland/neocities-deploy'
-pkgver=0.1.8
+pkgver=0.1.19
 pkgrel=1
 arch=('any')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kugland/neocities-deploy/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8b7c5a03dd39feb1a5062deda09fce127bdde4a242236b0be4f6d935446b4ce4')
+sha256sums=('29c832a19c8b26a7898d24ddd2c2f8eaee1baadb5a975ea03600a944c5b87ded')
 makedepends=(cargo)
 license=('GPL3')
 options=(!lto)
