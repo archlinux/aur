@@ -1,27 +1,28 @@
 # Maintainer: Ilya Zlobintsev <ilya.zl@protonmail.com>
 pkgname=('lact' 'lact-libadwaita')
 pkgbase=lact
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="AMDGPU Controller application"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ilya-zlobintsev/LACT"
 license=('MIT')
 depends=('hwdata' 'gtk4')
-makedepends=('blueprint-compiler' 'cargo' 'clang' 'libadwaita')
+makedepends=('blueprint-compiler' 'cargo' 'clang' 'libadwaita' 'git')
 install="$pkgbase.install"
-source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('12daa4d3e8181f16839a1f58bde6efec857d5760a6546de1b6592d1d5bd1bf63')
+source=("git+https://github.com/ilya-zlobintsev/LACT.git#tag=v$pkgver")
+# Since the source is a git repository tag and not an archive, there's no single file with a checksum to check
+sha256sums=('SKIP')
 
 prepare() {
-  cd "LACT-$pkgver"
+  cd "LACT"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "LACT-$pkgver"
+  cd "LACT"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
@@ -35,14 +36,14 @@ build() {
 }
 
 check() {
-  cd "LACT-$pkgver"
+  cd "LACT"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --no-default-features
 }
 
 package_lact() {
-  cd "LACT-$pkgver"
+  cd "LACT"
   make PREFIX=/usr DESTDIR="$pkgdir/" install
 
   install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgbase/"
@@ -54,7 +55,7 @@ package_lact-libadwaita() {
   conflicts=("$pkgbase")
   depends+=('libadwaita')
 
-  cd "LACT-$pkgver"
+  cd "LACT"
   make PREFIX=/usr DESTDIR="$pkgdir/" install
 
   install -Dvm755 "target/release/$pkgbase-adw" "$pkgdir/usr/bin/$pkgbase"
