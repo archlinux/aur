@@ -5,8 +5,8 @@ pkgbase = smh-bin
 	arch = x86_64
 	license = MIT
 	depends = gmp
-	source = https://github.com/DanRyba253/smh/releases/download/v0.1.2/smh
-	source = https://github.com/DanRyba253/smh/releases/download/v0.1.2/smh-manpage
+	source = https://github.com/DanRyba253/smh/releases/download/v0.1.2/smh-0.1.2
+	source = https://github.com/DanRyba253/smh/releases/download/v0.1.2/smh-manpage-0.1.2
 	sha256sums = fcb94c683cd9e1bdc205a57e801843434173d410f14be0eb3612f07d127427fe
 	sha256sums = cf63ee4dcdcbccd9183a6788a797323a8c153407600500e4ded96e0df9b2d8fc
 
