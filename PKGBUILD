@@ -3,19 +3,24 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kinit-git
-pkgver=_r480.gda96087
+pkgver=5.116.0_r561.g4572e82
 pkgrel=1
 pkgdesc='Process launcher to speed up launching KDE applications'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(kio5-git)
-makedepends=(git extra-cmake-modules-git kdoctools5-git)
+depends=(kio5)
+makedepends=(git extra-cmake-modules-git kdoctools5)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf5-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
+
+prepare() {
+  cd ${pkgname%-git}
+  git checkout kf5
+}
 
 pkgver() {
   cd ${pkgname%-git}
