@@ -1,0 +1,11 @@
+pkgbase = breeze-light-cursor-theme
+	pkgdesc = KDE Plasma's 'Breeze Light' cursor theme.
+	pkgver = 6.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	conflicts = breeze-snow-cursor-theme
+	source = https://download.kde.org/stable/plasma/6.0.0/breeze-6.0.0.tar.xz
+	sha256sums = bc72a16b116b7beabf1b4e9a451019f9048e7be6b05ac73a4627f25b2c2059ea
+
+pkgname = breeze-light-cursor-theme
