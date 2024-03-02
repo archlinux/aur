@@ -4,13 +4,13 @@
 
 pkgname=kdesignerplugin-git
 pkgver=5.116.0_r466.g9f25b26
-pkgrel=1
+pkgrel=2
 pkgdesc='Integration of Frameworks widgets in Qt Designer/Creator'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(kconfig5-git kcoreaddons5-git)
-makedepends=(git extra-cmake-modules-git qt5-tools kdoctools5-git)
+depends=(kconfig5 kcoreaddons5)
+makedepends=(git extra-cmake-modules-git qt5-tools kdoctools5)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf5-aids-git)
