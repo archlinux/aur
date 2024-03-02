@@ -4,7 +4,7 @@
 _pkgname=yazi
 pkgname=yazi-git
 pkgver=0.2.3.r30.g0cb572a
-pkgrel=1
+pkgrel=2
 pkgdesc="Blazing fast terminal file manager written in Rust, based on async I/O."
 url="https://github.com/sxyazi/yazi"
 arch=("x86_64")
@@ -59,7 +59,7 @@ package() {
     convert assets/logo.png -resize "${r}x${r}" "$pkgdir/usr/share/icons/hicolor/${r}x${r}/apps/yazi.png"
   done
 
-  cd "$_pkgname-config/completions"
+  cd "$srcdir/$_pkgname/$_pkgname-boot/completions"
   install -Dm644 "$_pkgname.bash" "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
   install -Dm644 "$_pkgname.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
   install -Dm644 "_$_pkgname" -t "$pkgdir/usr/share/zsh/site-functions/"
