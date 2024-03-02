@@ -1,6 +1,6 @@
 pkgbase = khtml-git
 	pkgdesc = KHTML APIs
-	pkgver = _r648.g01d7c39
+	pkgver = 5.116.0_r749.g93ae296
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = khtml-git
 	makedepends = extra-cmake-modules-git
 	makedepends = gperf
 	depends = giflib
-	depends = kparts5-git
+	depends = kparts5
 	depends = kjs-git
 	depends = phonon-qt5-git
 	provides = khtml
