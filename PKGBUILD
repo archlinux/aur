@@ -3,13 +3,13 @@
 
 pkgname=kronometer-git
 pkgver=2.3.70_r907.gd1fd577
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple chronometer application"
 arch=($CARCH)
 url="https://userbase.kde.org/Kronometer"
 license=(GPL2)
-depends=(gcc-libs glibc kconfig5-git kconfigwidgets5-git kcoreaddons5-git kcrash5-git ki18n5-git kwidgetsaddons5-git kxmlgui5-git qt5-base)
-makedepends=(git extra-cmake-modules-git kdoctools5-git)
+depends=(gcc-libs glibc kconfig5 kconfigwidgets5 kcoreaddons5 kcrash5 ki18n5 kwidgetsaddons5 kxmlgui5 qt5-base)
+makedepends=(git extra-cmake-modules-git kdoctools5)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
