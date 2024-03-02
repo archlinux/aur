@@ -1,15 +1,16 @@
 # Maintainer: Hans Gaiser <hansg91@email.com>
 
 pkgname=moonshine-git
-pkgver=r130.342b2b8
+pkgver=r157.4b6aa6b
 pkgrel=1
 pkgdesc="Streaming server for Moonlight clients, written in Rust."
 arch=('x86_64')
 url="https://github.com/hgaiser/moonshine"
-license=('custom')
+license=('BSD-2')
 depends=(
-	alsa-lib
 	avahi
+	cuda
+	libpulse
 	ffmpeg
 	gcc-libs
 	glibc
