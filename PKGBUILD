@@ -2,7 +2,7 @@
 
 pkgname=angryoxide
 _pkgname=AngryOxide
-pkgver=0.8.7b
+pkgver=0.8.8
 pkgrel=1
 _patch=""
 pkgdesc='802.11 Attack Tool'
@@ -12,13 +12,11 @@ license=('GPL-3.0-only')
 makedepends=('cargo' 'git')
 options=(!lto)
 source=("${pkgname}-${pkgver}${_patch}::${url}/archive/refs/tags/v${pkgver}${_patch}.tar.gz")
-b2sums=('64b510435953a22c323cae2d309fc48af1c10b65610d5ef6005cf738934c4e91b47adb04a0e77b0d411085220c77b77c6fc5706fd320034d8f7c9fc304015ab8')
+b2sums=('ff649b3e656814caf99904091ee7d06d880b041fa2f7f1893732d153c2b21fec13d6df388ed2d1fb25658d47b4cc11791ff57a5d77bd8c8458696c21211fd423')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}${_patch}"
-  # cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
-  # temporary to fix build
-  cargo fetch --target "${CARCH}-unknown-linux-gnu"
+  cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
 build() {
