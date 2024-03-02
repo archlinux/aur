@@ -1,18 +1,25 @@
 pkgbase = universal-android-debloater-git
-	pkgdesc = An android debloater application written in rust credit to w1nst0n (0x192) @github
-	pkgver = 0.5.0.r19.1803739
+	pkgdesc = A cross-platform GUI debloater for android devices
+	pkgver = 1.0.2.r42.g4c6621d
 	pkgrel = 1
-	url = https://github.com/0x192/universal-android-debloater.git
-	install = universal-android-debloater-git.install
+	url = https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation.git
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
-	depends = rustup
-	depends = cargo
+	makedepends = cargo
+	makedepends = clang
+	makedepends = cmake
+	makedepends = mold
 	depends = android-tools
-	depends = android-udev
+	depends = gcc-libs
 	provides = universal-android-debloater-git
-	source = git+https://github.com/0x192/universal-android-debloater.git
+	conflicts = universal-android-debloater-opengl
+	conflicts = universal-android-debloater-opengl-bin
+	conflicts = universal-android-debloater
+	conflicts = universal-android-debloater-bin
+	options = !lto
+	source = git+https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation.git#branch=main
 	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = universal-android-debloater-git

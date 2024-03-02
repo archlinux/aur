@@ -1,44 +1,55 @@
-# Maintainer: pkg_maintainer <archlinuxpackagemaintainer@gmail.com>
+# Maintainer: Frigyes Erdosi-Szucs <eszfrigyes06 at gmail dot com>
 pkgname=universal-android-debloater-git
-pkgver=0.5.0.r19.1803739
+pkgver=1.0.2.r42.g4c6621d
 pkgrel=1
 epoch=
-pkgdesc="An android debloater application written in rust credit to w1nst0n (0x192) @github"
+pkgdesc="A cross-platform GUI debloater for android devices"
 arch=('x86_64')
-url="https://github.com/0x192/universal-android-debloater.git"
-license=('GPL3')
+url="https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation.git"
+license=('GPL-3.0-or-later')
 groups=()
-depends=(rustup cargo android-tools android-udev)
-makedepends=(git)
+depends=('android-tools' 'gcc-libs')
+makedepends=('git' 'cargo' 'clang' 'cmake' 'mold')
 checkdepends=()
 optdepends=()
 provides=(universal-android-debloater-git)
-conflicts=()
+conflicts=('universal-android-debloater-opengl'
+        'universal-android-debloater-opengl-bin'
+        'universal-android-debloater'
+        'universal-android-debloater-bin')
 replaces=()
 backup=()
-options=()
-install=${pkgname}.install
+options=('!lto')
 changelog=
-source=("git+$url")
+source=("git+$url#branch=main")
 noextract=()
 md5sums=('SKIP')
+sha256sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-	cd "${_pkgname}"
-    printf "0.5.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd $srcdir/universal-android-debloater-next-generation
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd $srcdir/universal-android-debloater-next-generation
+    export CARGO_HOME="$srcdir/cargo-home"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd universal-android-debloater
-	rustup toolchain install nightly
-	rustup override set nightly
-	cargo build --release
+    cd $srcdir/universal-android-debloater-next-generation
+    export CARGO_HOME="$srcdir/cargo-home"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --no-default-features --features wgpu,no-self-update
 }
 
 package() {
-    cd universal-android-debloater
-    install -Dm755 target/release/uad_gui "${pkgdir}/usr/bin/universal-android-debloater-gui" 
+    cd $srcdir/universal-android-debloater-next-generation
+    install -Dm755 target/release/uad-ng -t "$pkgdir/usr/bin/"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
