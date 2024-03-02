@@ -3,7 +3,7 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=059.r214.4980bad3
-pkgrel=2
+pkgrel=3
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracutdevs/dracut'
@@ -25,6 +25,7 @@ depends=(
 )
 makedepends=(
   'git'
+  'bash-completion'
   'asciidoc'
 )
 optdepends=(
@@ -92,7 +93,13 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  ./configure --prefix=/usr --sysconfdir=/etc --systemdsystemunitdir=/usr/lib/systemd/system
+  local prefix=/usr sysconfdir=/etc
+  ./configure \
+    --sysconfdir=${sysconfdir} \
+    --prefix=${prefix} \
+    --libdir=${prefix}/lib \
+    --systemdsystemunitdir=${prefix}/lib/systemd/system \
+    --bashcompletiondir=$(pkg-config --variable=completionsdir bash-completion)
   make
 }
 
