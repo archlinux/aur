@@ -1,0 +1,22 @@
+pkgbase = ktexttemplate-git
+	pkgdesc = Library to allow application developers to separate the structure of documents from the data they contain
+	pkgver = 6.0.0_r1627.g151a10a
+	pkgrel = 1
+	url = https://community.kde.org/Frameworks
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = doxygen
+	makedepends = extra-cmake-modules-git
+	makedepends = qt6-doc
+	makedepends = qt6-tools
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-base
+	depends = qt6-declarative
+	provides = ktexttemplate
+	conflicts = ktexttemplate
+	source = git+https://github.com/KDE/ktexttemplate.git
+	sha256sums = SKIP
+
+pkgname = ktexttemplate-git
