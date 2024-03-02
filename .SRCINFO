@@ -1,0 +1,18 @@
+pkgbase = samurai-render
+	pkgdesc = Easy to use library to render into the Layer Shell of wlroots based wayland compositors
+	pkgver = 24.03.0
+	pkgrel = 1
+	url = https://github.com/Samudevv/samurai-render
+	arch = x86_64
+	arch = aarch64
+	license = ZLIB
+	makedepends = xmake
+	makedepends = gcc
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = cairo
+	depends = libglvnd
+	source = samurai-render-24.03.0::https://github.com/Samudevv/samurai-render/archive/refs/tags/24.03.0.tar.gz
+	sha256sums = d3c25eb3cfe002f8092071a7a420b8174dd0be79b6e3e4f6269252099dbc75ec
+
+pkgname = samurai-render
