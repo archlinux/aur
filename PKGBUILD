@@ -4,13 +4,13 @@
 
 pkgname=breeze-git
 pkgver=6.0.80_r2864.gbca12f7a
-pkgrel=2
+pkgrel=3
 arch=($CARCH)
 pkgdesc='Artwork, styles and assets for the Breeze visual style for the Plasma Desktop'
 url='https://kde.org/plasma-desktop/'
 license=(LGPL-2.0-or-later)
 depends=(breeze-icons-git frameworkintegration-git gcc-libs glibc kcmutils-git kcolorscheme-git kconfig-git kcoreaddons-git kdecoration-git kguiaddons-git ki18n-git kiconthemes-git kirigami-git kwidgetsaddons-git kwindowsystem-git qt6-base qt6-declarative)
-makedepends=(git extra-cmake-modules-git frameworkintegration kconfigwidgets kiconthemes kirigami2-git kwindowsystem)
+makedepends=(git extra-cmake-modules-git frameworkintegration5 kconfigwidgets5 kiconthemes5 kirigami2-git kwindowsystem5)
 optdepends=('breeze-gtk-git: Breeze widget style for GTK applications')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
