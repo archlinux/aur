@@ -1,11 +1,12 @@
-From be234084019fef70a7cb45e4f6208e340fc2d5f0 Mon Sep 17 00:00:00 2001
+From 78cb353dc49523f968d7f002ec0357aae8bde787 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Sun, 31 Dec 2023 13:29:36 +0100
 Subject: [PATCH] fix(main): Handle different LLVM version
 
 ---
- main/gui/source/crash_handlers.cpp | 6 ++++++
- 1 file changed, 6 insertions(+)
+ main/gui/source/crash_handlers.cpp                          | 6 ++++++
+ .../include/content/popups/popup_crash_recovered.hpp        | 5 +++++
+ 2 files changed, 11 insertions(+)
 
 diff --git a/main/gui/source/crash_handlers.cpp b/main/gui/source/crash_handlers.cpp
 index 4b013d9e..9dfdebdc 100644
@@ -32,6 +33,30 @@ index 4b013d9e..9dfdebdc 100644
  
              handleCrash(exceptionStr);
              log::fatal("Program terminated with uncaught exception: {}", exceptionStr);
+diff --git a/plugins/builtin/include/content/popups/popup_crash_recovered.hpp b/plugins/builtin/include/content/popups/popup_crash_recovered.hpp
+index 962f57a0..7e05935c 100644
+--- a/plugins/builtin/include/content/popups/popup_crash_recovered.hpp
++++ b/plugins/builtin/include/content/popups/popup_crash_recovered.hpp
+@@ -4,6 +4,7 @@
+ 
+ #include <hex/api/localization_manager.hpp>
+ 
++#include <llvm/Config/llvm-config.h>
+ #include <llvm/Demangle/Demangle.h>
+ 
+ #include <string>
+@@ -20,7 +21,11 @@ namespace hex::plugin::builtin {
+         void drawContent() override {
+             ImGuiExt::TextFormattedWrapped("hex.builtin.popup.crash_recover.message"_lang);
+ 
++#if LLVM_VERSION_MAJOR >= 17
+             ImGuiExt::TextFormattedWrapped(hex::format("Error: {}: {}", llvm::itaniumDemangle(this->m_errorType), this->m_errorMessage));
++#else
++            ImGuiExt::TextFormattedWrapped(hex::format("Error: {}: {}", llvm::itaniumDemangle(this->m_errorType.c_str(), nullptr, nullptr, nullptr), this->m_errorMessage));
++#endif
+ 
+             if (ImGui::Button("hex.ui.common.okay"_lang)) {
+                 this->close();
 -- 
 2.44.0
 
