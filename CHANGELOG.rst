@@ -1,6 +1,64 @@
 Changelog
 ---------
 
+`0.50.0`_ (2023-12-11)
++++++++++++++++++++++++++
+
+* **[Improved]** 使用 `phrase-pinyin-data`_ v0.16.0 的词语拼音数据。
+* **[Improved]** 使用 `pinyin-data`_ v0.14.0 的拼音数据。
+
+
+`0.49.0`_ (2023-05-14)
++++++++++++++++++++++++++
+
+* **[Improved]** 使用 `phrase-pinyin-data`_ v0.15.0 的词语拼音数据。
+
+
+`0.48.0`_ (2023-01-15)
++++++++++++++++++++++++++
+
+* **[Bugfixed]** 修复 ``pypinyin.contrib.tone_convert`` 中 ``to_`` 开头的转换函数
+  没有正确处理输入的拼音包含 ``5`` 的场景（当包含 ``5`` 时会导致返回的格式不符合函数预期的返回格式）
+  以及修复没有正确处理部分拼音中的 ``ü`` 或 ``v`` 的问题
+  （当 ``v_to_u=False`` 时返回结果需要将 ``ü`` 替换为 ``v``） Fixed `#290`_ :
+
+  .. code-block:: python
+
+      # 修复前
+      >>> to_tone('lve')
+      'lve'
+      >>> to_tone2('lün5')
+      'lv5n'
+      >>> to_tone3('lün5')
+      'lv5n'
+      >>> to_tone2('lvn5')
+      'lv5n'
+      >>> to_tone3('lvn5')
+      'lv5n'
+
+      # 修复后
+      >>> to_tone('lve')
+      'lüe'
+      >>> to_tone2('lün5')
+      'lvn'
+      >>> to_tone3('lün5')
+      'lvn'
+      >>> to_tone2('lvn5')
+      'lvn'
+      >>> to_tone3('lvn5')
+      'lvn'
+      >>> to_tone2('lvn5', v_to_u=True)
+      'lün'
+      >>> to_tone3('lvn5', v_to_u=True)
+      'lün'
+      >>> to_tone2('lvn', neutral_tone_with_five=True)
+      'lv5n'
+      >>> to_tone3('lvn', neutral_tone_with_five=True)
+      'lvn5'
+
+* **[Bugfixed]** 修复 ``Style.BOPOMOFO`` 风格下未处理 ``ê`` 的问题。Fixed `#291`_
+* **[Improved]** 使用 `phrase-pinyin-data`_ v0.14.0 的词语拼音数据。
+
 
 `0.47.1`_ (2022-08-21)
 +++++++++++++++++++++++++
