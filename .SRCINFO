@@ -1,6 +1,6 @@
 pkgbase = akonadi-mime-git
 	pkgdesc = Libraries and daemons to implement basic email handling
-	pkgver = 6.0.40_r1994.gb466d85
+	pkgver = 6.0.40_r2001.gfed6cfe
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = akonadi-mime-git
 	makedepends = git
 	makedepends = doxygen
 	makedepends = extra-cmake-modules-git
-	makedepends = kdoctools5-git
+	makedepends = kdoctools5
 	makedepends = qt6-doc
 	makedepends = qt6-tools
 	depends = gcc-libs

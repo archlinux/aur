@@ -2,14 +2,14 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=akonadi-mime-git
-pkgver=6.0.40_r1994.gb466d85
+pkgver=6.0.40_r2001.gfed6cfe
 pkgrel=1
 pkgdesc="Libraries and daemons to implement basic email handling"
 arch=($CARCH)
 url="https://kontact.kde.org"
 license=(LGPL-2.0-or-later)
 depends=(gcc-libs glibc kconfig-git kcoreaddons-git ki18n-git kio-git kmime-git kwidgetsaddons-git kxmlgui-git libakonadi-git qt6-base)
-makedepends=(git doxygen extra-cmake-modules-git kdoctools5-git qt6-doc qt6-tools)
+makedepends=(git doxygen extra-cmake-modules-git kdoctools5 qt6-doc qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kdepim-git)
