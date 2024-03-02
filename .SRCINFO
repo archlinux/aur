@@ -1,6 +1,6 @@
 pkgbase = python-sigmf
 	pkgdesc = Python package for Signal Metadata Format (SigMF)
-	pkgver = 1.1.5
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/sigmf/sigmf-python
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-sigmf
 	depends = python-jsonschema
 	depends = python-numpy
 	depends = python-pysimplegui
-	source = python-sigmf::git+https://github.com/sigmf/sigmf-python.git#commit=175109c26b5e539b0f2392345fa694068f499742
+	source = python-sigmf::git+https://github.com/sigmf/sigmf-python.git#commit=c5d194d5e659def926d25737baa7b6cbbb4887bd
 	sha512sums = SKIP
 
 pkgname = python-sigmf

@@ -2,8 +2,8 @@
 
 pkgname=python-sigmf
 _name=${pkgname#python-}
-pkgver=1.1.5
-_commit=175109c26b5e539b0f2392345fa694068f499742
+pkgver=1.2.0
+_commit=c5d194d5e659def926d25737baa7b6cbbb4887bd
 pkgrel=1
 pkgdesc='Python package for Signal Metadata Format (SigMF)'
 url='https://github.com/sigmf/sigmf-python'
