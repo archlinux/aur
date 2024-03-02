@@ -1,7 +1,7 @@
 # Maintaner: Sergey A. <murlakatamenka@disroot.org>
 
 pkgname=xiu
-pkgver=0.10.0
+pkgver=0.12.4
 pkgrel=1
 pkgdesc='Simple, fast and secure live media server in pure Rust'
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 conflicts=("${pkgname}-bin" "${pkgname}-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c4275c01ceb8b31be1be7cbd9ab848101669a425929f083a91101497621c5134')
-
+sha256sums=('a07904068e95f3ceff6719b5de809383fdd4b388e89841a341425a780dac183d')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -44,8 +43,12 @@ package() {
 
     install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
 
-    install -Dm 644 "README.md" -t "$pkgdir/usr/share/doc/$pkgname"
-    install -Dm 644 "README_CN.md" -t "$pkgdir/usr/share/doc/$pkgname"
+    install -Dm 644 README.md README_CN.md \
+        -t "$pkgdir/usr/share/doc/$pkgname"
 
-    install -Dm 644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+
+    install -Dm 644 protocol/webrtc/src/clients/index.html \
+        protocol/webrtc/src/clients/whep.js \
+        -t "$pkgdir/usr/share/$pkgname"
 }

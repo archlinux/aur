@@ -1,6 +1,6 @@
 pkgbase = xiu
 	pkgdesc = Simple, fast and secure live media server in pure Rust
-	pkgver = 0.10.0
+	pkgver = 0.12.4
 	pkgrel = 1
 	url = https://github.com/harlanc/xiu
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = xiu
 	depends = gcc-libs
 	conflicts = xiu-bin
 	conflicts = xiu-git
-	source = xiu-0.10.0.tar.gz::https://github.com/harlanc/xiu/archive/v0.10.0.tar.gz
-	sha256sums = c4275c01ceb8b31be1be7cbd9ab848101669a425929f083a91101497621c5134
+	source = xiu-0.12.4.tar.gz::https://github.com/harlanc/xiu/archive/v0.12.4.tar.gz
+	sha256sums = a07904068e95f3ceff6719b5de809383fdd4b388e89841a341425a780dac183d
 
 pkgname = xiu
