@@ -12,6 +12,7 @@ pkgbase = dracut-git
 	depends = cpio
 	depends = filesystem
 	depends = findutils
+	depends = gawk
 	depends = grep
 	depends = gzip
 	depends = kmod

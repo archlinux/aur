@@ -14,6 +14,7 @@ depends=(
   'cpio'
   'filesystem'
   'findutils'
+  'gawk'
   'grep'
   'gzip'
   'kmod'
