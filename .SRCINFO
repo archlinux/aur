@@ -1,15 +1,15 @@
 pkgbase = bmv-bin
-	pkgdesc = bulk-rename files from stdin
-    pkgver = 0.0.2
-	pkgrel = 1
-	url = https://github.com/abenz1267/bmv
-	arch = x86_64
-	arch = aarch64
-	provides = bmv
-	conflicts = bmv
-	source_x86_64 = https://github.com/abenz1267/bmv/releases/download/v0.0.2/bmv_0.0.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 5c04cce3d8f08e0c71c85c072a1cbe7dd8c11d0621a64292c112631745734c2f
-	source_aarch64 = https://github.com/abenz1267/bmv/releases/download/v0.0.2/bmv_0.0.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = a147eb8ebaea50440ababf0b8c1738f658ded721f7a8bd73d19260c8a8318849
+pkgdesc = bulk-rename files from stdin
+pkgver = 0.0.2
+pkgrel = 1
+url = https://github.com/abenz1267/bmv
+arch = x86_64
+arch = aarch64
+provides = bmv
+conflicts = bmv
+source_x86_64 = https://github.com/abenz1267/bmv/releases/download/v0.0.2/bmv_0.0.2_linux_amd64.tar.gz
+sha256sums_x86_64 = 5c04cce3d8f08e0c71c85c072a1cbe7dd8c11d0621a64292c112631745734c2f
+source_aarch64 = https://github.com/abenz1267/bmv/releases/download/v0.0.2/bmv_0.0.2_linux_arm64.tar.gz
+sha256sums_aarch64 = a147eb8ebaea50440ababf0b8c1738f658ded721f7a8bd73d19260c8a8318849
 
 pkgname = bmv-bin
