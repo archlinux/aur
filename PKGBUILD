@@ -2,13 +2,13 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=ktimetracker-git
-pkgver=6.0.0_r3894.g20d407d
+pkgver=6.0.0_r3902.gd0da637
 pkgrel=1
 pkgdesc='Todo management and time tracker'
 url='https://userbase.kde.org/KTimeTracker'
 license=(GPL2)
-depends=(gcc-libs glibc kcalendarcore5-git kconfig5-git kconfigwidgets5-git kcoreaddons5-git kdbusaddons5-git ki18n5-git kidletime5-git kio5-git kjobwidgets5-git knotifications5-git ktextwidgets5-git kwidgetsaddons5-git kwindowsystem5-git kxmlgui5-git qt5-base)
-makedepends=(git extra-cmake-modules-git kdoctools5-git)
+depends=(gcc-libs glibc kcalendarcore5 kconfig5 kconfigwidgets5 kcoreaddons5 kdbusaddons5 ki18n5 kidletime5 kio5 kjobwidgets5 knotifications5 ktextwidgets5 kwidgetsaddons5 kwindowsystem5 kxmlgui5 qt5-base)
+makedepends=(git extra-cmake-modules-git kdoctools5)
 arch=($CARCH)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
