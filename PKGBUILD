@@ -3,7 +3,7 @@
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
 pkgrel=1
-pkgver=1.96.0
+pkgver=1.97.0
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('MIT')
@@ -41,7 +41,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
         'https://download.geonames.org/export/dump/cities500.zip'
         'https://download.geonames.org/export/dump/admin1CodesASCII.txt'
         'https://download.geonames.org/export/dump/admin2Codes.txt')
-sha256sums=('dea1a043e07d2bcb58cf0af6400e53af8c9b6c24017e1ef9adfa4af1adb66635'
+sha256sums=('fb135d7505fe820afce951354cbb87252d701957e716dc828a96ab0d0d7c969f'
             '0a9d7fffe3c301190cc8581ee7e11417eb0661937a2c03d76c8b8bc39710205b'
             'dc1a3d7baf2ec4f00a4a80f88a1f28dc1092eb7a08195544cc37b6532777f5d7'
             'd20455349cdb9409adb42cdbde48c30a176d2a5337ad148c6d2227ecc523c88a'
