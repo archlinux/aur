@@ -36,7 +36,7 @@ _fragment=${FRAGMENT:-#branch=main}
   _CMAKE_FLAGS+=( -DWITH_PYTHON_INSTALL=OFF )
 
 pkgname=blender-develop-git
-pkgver=4.2.r133577.g56f8c1c0f6e
+pkgver=4.2.r133688.g015ae2b3a60
 pkgrel=1
 pkgdesc="Development version of Blender (non-conflicting version)"
 changelog=blender.changelog
@@ -135,7 +135,8 @@ build() {
 package() {
   _suffix=${pkgver%%.r*}
   _pyver=$(python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))')
-  BLENDER_SYSTEM_PYTHON=/usr/lib/python${_pyver} BLENDER_SYSTEM_RESOURCES="${pkgdir}/usr/share/blender/${_suffix}" DESTDIR="${pkgdir}" cmake --install build || ((DISABLE_DRACO)) && true
+  sed -i "/BLENDER_BIN/s|\(/usr/bin/blender\)|${pkgdir}\1|" "${srcdir}"/build/source/creator/cmake_install.cmake
+  cmake --install build --prefix "${pkgdir}/usr" -v
   python -m compileall "${pkgdir}/usr/share/blender"
   python -O -m compileall "${pkgdir}/usr/share/blender"
 
