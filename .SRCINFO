@@ -1,0 +1,16 @@
+pkgbase = uq-git
+	pkgdesc = uniq in Rust without needing to sort the input
+	pkgver = 0.0.0.r0.g118bc2f
+	pkgrel = 1
+	url = https://github.com/lostutils/uq
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = uq
+	conflicts = uq
+	source = uq-git::git+https://github.com/lostutils/uq
+	sha256sums = SKIP
+
+pkgname = uq-git
