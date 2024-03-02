@@ -1,7 +1,7 @@
 pkgbase = kiconthemes-git
 	pkgdesc = Support for icon themes
 	pkgver = 6.0.0_r782.g3aeeeac
-	pkgrel = 1
+	pkgrel = 2
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
 	groups = kf6-git
@@ -22,6 +22,8 @@ pkgbase = kiconthemes-git
 	depends = kwidgetsaddons-git
 	depends = qt6-base
 	depends = qt6-svg
+	optdepends = breeze-icons-git: fallback icon theme
+	optdepends = qt6-declarative: QML bindings
 	provides = kiconthemes
 	conflicts = kiconthemes
 	source = git+https://github.com/KDE/kiconthemes.git
