@@ -1,0 +1,81 @@
+--- a/prov/shm/src/smr_progress.c
++++ b/prov/shm/src/smr_progress.c
+@@ -157,7 +157,6 @@
+ 			}
+ 			munmap(pending->map_ptr, pending->cmd.msg.hdr.size);
+ 		}
+-		shm_unlink(pending->map_name->name);
+ 		dlist_remove(&pending->map_name->entry);
+ 		free(pending->map_name);
+ 		pending->map_name = NULL;
+@@ -342,61 +341,15 @@
+ 			      struct ofi_mr **mr, struct iovec *iov,
+ 			      size_t iov_count, size_t *total_len)
+ {
+-	char shm_name[SMR_NAME_MAX];
+-	void *mapped_ptr;
+-	int fd, num;
+-	int ret = 0;
+-	ssize_t hmem_copy_ret;
+-
+-	num = smr_mmap_name(shm_name,
+-			ep->region->map->peers[cmd->msg.hdr.id].peer.name,
+-			cmd->msg.hdr.msg_id);
+-	if (num < 0) {
+-		FI_WARN(&smr_prov, FI_LOG_AV, "generating shm file name failed\n");
+-		return -errno;
+-	}
+-
+-	fd = shm_open(shm_name, O_RDWR, S_IRUSR | S_IWUSR);
+-	if (fd < 0) {
+-		FI_WARN(&smr_prov, FI_LOG_AV, "shm_open error\n");
+-		return -errno;
+-	}
+-
+-	mapped_ptr = mmap(NULL, cmd->msg.hdr.size, PROT_READ | PROT_WRITE,
+-			  MAP_SHARED, fd, 0);
+-	if (mapped_ptr == MAP_FAILED) {
+-		FI_WARN(&smr_prov, FI_LOG_AV, "mmap error %s\n", strerror(errno));
+-		ret = -errno;
+-		goto unlink_close;
+-	}
+-
+-	if (cmd->msg.hdr.op == ofi_op_read_req) {
+-		hmem_copy_ret = ofi_copy_from_mr_iov(mapped_ptr,
+-					cmd->msg.hdr.size, mr, iov,
+-					iov_count, 0);
+-	} else {
+-		hmem_copy_ret = ofi_copy_to_mr_iov(mr, iov, iov_count, 0,
+-					mapped_ptr, cmd->msg.hdr.size);
+-	}
+-
+-	if (hmem_copy_ret < 0) {
+-		FI_WARN(&smr_prov, FI_LOG_EP_CTRL,
+-			"mmap copy iov failed with code %d\n",
+-			(int)(-hmem_copy_ret));
+-		ret = hmem_copy_ret;
+-	} else if (hmem_copy_ret != cmd->msg.hdr.size) {
+-		FI_WARN(&smr_prov, FI_LOG_EP_CTRL,
+-			"mmap copy iov truncated\n");
+-		ret = -FI_ETRUNC;
+-	}
+-
+-	*total_len = hmem_copy_ret;
+-
+-	munmap(mapped_ptr, cmd->msg.hdr.size);
+-unlink_close:
+-	shm_unlink(shm_name);
+-	close(fd);
+-	return ret;
++ 	OFI_UNUSED(ep);
++ 	OFI_UNUSED(cmd);
++ 	OFI_UNUSED(mr);
++ 	OFI_UNUSED(iov);
++ 	OFI_UNUSED(iov_count);
++	if(total_len)
++		*total_len = 0;
++	FI_WARN(&smr_prov, FI_LOG_AV, "shm_open error\n");
++	return -FI_ENOSYS;
+ }
+ 
+ static int smr_progress_mmap(struct smr_cmd *cmd, struct ofi_mr **mr,
