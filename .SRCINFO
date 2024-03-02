@@ -1,7 +1,7 @@
 pkgbase = kinfocenter-git
 	pkgdesc = A utility that provides information about a computer system
 	pkgver = 6.0.80_r2678.g5420533f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kde.org/applications/system/kinfocenter/
 	arch = x86_64
 	groups = plasma-git
@@ -30,7 +30,7 @@ pkgbase = kinfocenter-git
 	depends = mesa-utils
 	depends = qt6-base
 	depends = qt6-declarative
-	depends = sh-git
+	depends = sh
 	depends = solid-git
 	depends = systemsettings-git
 	depends = vulkan-tools
