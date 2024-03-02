@@ -1,7 +1,7 @@
 pkgbase = tiny-media-manager
 	pkgdesc = A multi-OS media managment tool
 	pkgver = 5.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tinymediamanager.org/
 	install = tinyMediaManager.install
 	arch = any
