@@ -5,13 +5,13 @@
 
 pkgname=clementine
 pkgver=1.4.0rc2
-pkgrel=4
+pkgrel=5
 pkgdesc='A modern music player and library organizer'
 url=https://www.clementine-player.org/
 license=(GPL)
 arch=(x86_64)
 depends=(chromaprint gst-plugins-base-libs libcdio libgpod liblastfm-qt5 libmtp libmygpo-qt5
-         taglib protobuf qt5-x11extras projectm alsa-lib libpulse crypto++ hicolor-icon-theme)
+         taglib1 protobuf qt5-x11extras projectm alsa-lib libpulse crypto++ hicolor-icon-theme)
 makedepends=(boost cmake qt5-tools sparsehash)
 optdepends=(
   'gst-plugins-base: "Base" plugin libraries'
@@ -30,13 +30,14 @@ prepare() {
 
 build() {
   export LDFLAGS="-Wl,--copy-dt-needed-entries"
-  cmake -B build -S Clementine-${pkgver//+/-} \
+  export PKG_CONFIG_PATH=/usr/lib/taglib1/lib/pkgconfig
+  cmake -B build -S Clementine-${pkgver//+/-} -Wno-dev \
     -DCMAKE_CXX_FLAGS="-fpermissive" \
     -DCMAKE_CXX_STANDARD=17 \
-    -Wno-dev \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_SYSTEM_PROJECTM=ON \
     -DUSE_SYSTEM_TAGLIB=ON
+
   cmake --build build
 }
 
