@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='A tool to manage the building of packages'
 url=https://releng.io/
 arch=(any)
-license=(BSD)
+license=(BSD-2-Clause)
 makedepends=(
   python
   python-build
