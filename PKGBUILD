@@ -2,7 +2,7 @@
 
 pkgname="smh-bin"
 pkgver="0.1.2"
-pkgrel=2
+pkgrel=3
 pkgdesc="String manipulationg tool written in haskell"
 arch=("x86_64")
 license=("MIT")
