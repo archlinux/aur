@@ -1,6 +1,6 @@
 --- a/src/plugins/intel_gpu/CMakeLists.txt
 +++ b/src/plugins/intel_gpu/CMakeLists.txt
-@@ -37,10 +37,6 @@ set(INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
+@@ -41,10 +41,6 @@ set(INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
  add_subdirectory(thirdparty)
  include(thirdparty/cmake/rapidjson.cmake)
  

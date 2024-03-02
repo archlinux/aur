@@ -4,12 +4,12 @@
 # https://github.com/openvinotoolkit/openvino/issues/452#issuecomment-722941119
 
 pkgname=openvino-git
-pkgver=2023.1.0.r339.g10dc2d8b9ba
+pkgver=2023.3.0.r875.g17bf1f6d841
 pkgrel=1
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications (git version)'
 arch=('x86_64')
 url='https://docs.openvinotoolkit.org/'
-license=('Apache')
+license=('Apache-2.0')
 depends=('pugixml' 'onetbb')
 optdepends=('intel-compute-runtime: for Intel GPU plugin'
             'ocl-icd: for Intel GPU plugin'
@@ -30,7 +30,6 @@ source=('git+https://github.com/openvinotoolkit/openvino.git'
         'git+https://github.com/herumi/xbyak.git'
         'git+https://github.com/madler/zlib.git'
         'git+https://github.com/zeux/pugixml.git'
-        'git+https://github.com/opencv/ade.git'
         'git+https://github.com/gflags/gflags.git'
         'googletest-openvinotoolkit'::'git+https://github.com/openvinotoolkit/googletest.git'
         'git+https://github.com/KhronosGroup/OpenCL-ICD-Loader.git'
@@ -50,8 +49,7 @@ source=('git+https://github.com/openvinotoolkit/openvino.git'
         'git+https://github.com/openvinotoolkit/mlas.git'
         'openvino.conf'
         'setupvars.sh'
-        '010-ade-disable-werror.patch'
-        '015-openvino-disable-werror.patch'
+        '010-openvino-disable-werror.patch'
         '020-openvino-use-protobuf-shared-libs.patch')
 sha256sums=('SKIP'
             'SKIP'
@@ -75,12 +73,10 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
             '335a55533ab26bd1f63683921baf33b8e8e3f2732a94554916d202ee500f90af'
             'e5024ad3382f285fe63dc58faca379f11a669bbe9f5d90682c59ad588aab434c'
-            '502fcbb3fcbb66aa5149ad2cc5f1fa297b51ed12c5c9396a16b5795a03860ed0'
-            '1b420e3cc2afca11154c672123f001cf03cd2b96be3baafd229f6ee7d752419e'
-            'fd22227bfbec18ee4f4fc4010deba387f6b8ae1c602938d36c8b86b128342647')
+            'edb5f6a15e3bf8e46f8ee0dc8aa81e78e3d75d1776478664c7179bb8a79f735f'
+            '17417f7193e94c7df32242c71d650d8beda2dadea8b05db131a7731a56e9c84a')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
@@ -93,7 +89,6 @@ prepare() {
     git -C openvino config --local submodule.thirdparty/xbyak.url "${srcdir}/xbyak"
     git -C openvino config --local submodule.thirdparty/zlib/zlib.url "${srcdir}/zlib"
     git -C openvino config --local submodule.thirdparty/pugixml.url "${srcdir}/pugixml"
-    git -C openvino config --local submodule.thirdparty/ade.url "${srcdir}/ade"
     git -C openvino config --local submodule.thirdparty/gflags/gflags.url "${srcdir}/gflags"
     git -C openvino config --local submodule.thirdparty/gtest/gtest.url "${srcdir}/googletest-openvinotoolkit"
     git -C openvino config --local submodule.thirdparty/ocl/icd_loader.url "${srcdir}/OpenCL-ICD-Loader"
@@ -113,11 +108,7 @@ prepare() {
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/mlas.url "${srcdir}/mlas"
     git -C openvino -c protocol.file.allow='always' submodule update
     
-    # ade gcc 13 fix
-    git -C openvino/thirdparty/ade cherry-pick --no-commit 7cecc9138b89e1946e3e515727bb69b2ab119806
-    
-    patch -d openvino/thirdparty/ade -Np1 -i "${srcdir}/010-ade-disable-werror.patch"
-    patch -d openvino -Np1 -i "${srcdir}/015-openvino-disable-werror.patch"
+    patch -d openvino -Np1 -i "${srcdir}/010-openvino-disable-werror.patch"
     patch -d openvino -Np1 -i "${srcdir}/020-openvino-use-protobuf-shared-libs.patch"
 }
 
@@ -130,6 +121,9 @@ pkgver() {
 }
 
 build() {
+    export CFLAGS+=' -march=x86-64-v3'
+    export CXXFLAGS+=' -march=x86-64-v3'
+    
     # note: does not accept 'None' build type
     cmake -B build -S openvino \
         -G 'Unix Makefiles' \
