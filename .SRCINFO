@@ -8,6 +8,7 @@ pkgbase = releng-tool
 	makedepends = python
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	optdepends = autoconf: support for autotools package management
 	optdepends = bash-completion: shell completion for bash
