@@ -3,7 +3,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kio-extras-git
-pkgver=24.04.70_r7997.g328deb968
+pkgver=24.04.70_r7998.g3921f08a5
 pkgrel=1
 pkgdesc="Additional components to increase the functionality of KIO"
 arch=($CARCH)
@@ -11,6 +11,14 @@ url='https://www.kde.org/applications/internet/'
 license=(LGPL-2.0-or-later)
 depends=(gcc-libs glibc karchive-git kcmutils-git kconfig-git kcoreaddons-git kdbusaddons-git kdnssd-git kdsoap-qt6-git kdsoap-ws-discovery-client ki18n-git kio-git kservice-git ktextwidgets-git kwidgetsaddons-git libimobiledevice libkexiv2-git libmtp libplist libssh libxcursor phonon-qt6-git plasma-activities-git qt6-5compat qt6-base qt6-svg smbclient solid-git syntax-highlighting-git)
 makedepends=(git extra-cmake-modules-git gperf kdoctools-git libappimage openexr plasma-activities-stats-git qcoro-qt6 taglib)
+optdepends=('icoutils: Windows executable thumbnails'
+            'kimageformats-git: thumbnails for additional image formats'
+            'libappimage: AppImage thumbnails'
+            'openexr: EXR format thumbnails'
+            'perl: info kioslave'
+            'plasma-activities-stats-git: recently used kioslave'
+            'qt6-imageformats: thumbnails for additional image formats'
+            'taglib: audio file thumbnails')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kde-applications-git kde-network-git)
