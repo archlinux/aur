@@ -1,7 +1,7 @@
 pkgbase = code-features-insiders
 	pkgdesc = Unblock some features in Code OSS, including features in VSCode Insiders
 	pkgver = 1.87.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/vscode
 	install = code-features-insiders.install
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = code-features-insiders
 	source = patch.py
 	source = patch.json
 	md5sums = a270718448070ecda3050b7569510105
-	md5sums = f11f7ccd925de0398ef2e28b127bb063
+	md5sums = 9ed6f3972479ab6d3d053e7c47ead55a
 	md5sums = a17f01e570df18126948925f694ce4cd
 
 pkgname = code-features-insiders
