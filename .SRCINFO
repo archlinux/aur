@@ -1,5 +1,5 @@
 pkgbase = linux-slim
-	pkgver = 6.7.v.7
+	pkgver = 6.7.v.8
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = linux-slim
 	makedepends = libelf
 	makedepends = lzop
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v6.7.7
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v6.7.8
 	source = config.x86_64
 	source = linux-slim.preset
 	source = https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/20240221.2/more-uarches-for-kernel-6.1.79-6.8-rc3.patch
 	sha256sums = SKIP
-	sha256sums = 4c17fefdab8b1427b96216b4eff707fac40edea418d6714454f08836bb9f586d
+	sha256sums = c34a4ba1416a239837450f8199a0d1aee35e345f63029e36852297353c27632f
 	sha256sums = e60d58e60c809d5bd6bc2c258bce0e811a818b6a4b9ccb928902e519e90ab6d5
 	sha256sums = 1a3825b790413d09806c9a2115f679be28e434cfcc69c01dc069b634d1e8007a
 
