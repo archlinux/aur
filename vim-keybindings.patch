@@ -1,160 +1,279 @@
+diff --git a/Action.c b/Action.c
+index 4049a952..9ef91740 100644
 --- a/Action.c
 +++ b/Action.c
-@@ -404,7 +404,7 @@ static Htop_Reaction actionTogglePauseProcessUpdate(State *st) {
- }
- 
- static const struct { const char* key; const char* info; } helpLeft[] = {
--   { .key = " Arrows: ", .info = "scroll process list" },
-+   { .key = " hjkl: ", .info = "scroll process list" },
-    { .key = " Digits: ", .info = "incremental PID search" },
-    { .key = "   F3 /: ", .info = "incremental name search" },
-    { .key = "   F4 \\: ",.info = "incremental name filtering" },
-@@ -426,7 +426,7 @@ static const struct { const char* key; const char* info; } helpRight[] = {
-    { .key = "  Space: ", .info = "tag process" },
-    { .key = "      c: ", .info = "tag process and its children" },
-    { .key = "      U: ", .info = "untag all processes" },
--   { .key = "   F9 k: ", .info = "kill process/tagged processes" },
-+   { .key = " F9 x d: ", .info = "kill process/tagged processes" },
-    { .key = "   F7 ]: ", .info = "higher priority (root only)" },
-    { .key = "   F8 [: ", .info = "lower priority (+ nice)" },
- #if (defined(HAVE_LIBHWLOC) || defined(HAVE_LINUX_AFFINITY))
-@@ -434,11 +434,11 @@ static const struct { const char* key; const char* info; } helpRight[] = {
- #endif
-    { .key = "      e: ", .info = "show process environment" },
-    { .key = "      i: ", .info = "set IO priority" },
--   { .key = "      l: ", .info = "list open files with lsof" },
-+   { .key = "      L: ", .info = "list open files with lsof" },
-    { .key = "      s: ", .info = "trace syscalls with strace" },
-    { .key = "      w: ", .info = "wrap process command in multiple lines" },
-    { .key = " F2 C S: ", .info = "setup" },
--   { .key = "   F1 h: ", .info = "show this help screen" },
-+   { .key = "   F1 ?: ", .info = "show this help screen" },
-    { .key = "  F10 q: ", .info = "quit" },
-    { .key = NULL, .info = NULL }
- };
-@@ -601,6 +601,7 @@ void Action_setBindings(Htop_Action* keys) {
-    keys['I'] = actionInvertSortOrder;
-    keys[KEY_F(6)] = actionExpandCollapseOrSortColumn;
-    keys[KEY_F(18)] = actionExpandCollapseOrSortColumn;
-+   keys['o'] = actionExpandCollapseOrSortColumn;
+@@ -894,6 +894,7 @@ void Action_setBindings(Htop_Action* keys) {
+    keys['/'] = actionIncSearch;
     keys['<'] = actionSetSortColumn;
-    keys[','] = actionSetSortColumn;
-    keys['>'] = actionSetSortColumn;
-@@ -609,7 +610,8 @@ void Action_setBindings(Htop_Action* keys) {
-    keys['q'] = actionQuit;
-    keys['a'] = actionSetAffinity;
-    keys[KEY_F(9)] = actionKill;
--   keys['k'] = actionKill;
-+   keys['x'] = actionKill;
-+   keys['d'] = actionKill;
-    keys[KEY_RECLICK] = actionExpandOrCollapse;
-    keys['+'] = actionExpandOrCollapse;
     keys['='] = actionExpandOrCollapse;
-@@ -620,12 +622,11 @@ void Action_setBindings(Htop_Action* keys) {
-    keys['S'] = actionSetup;
-    keys['C'] = actionSetup;
-    keys[KEY_F(2)] = actionSetup;
--   keys['l'] = actionLsof;
-+   keys['L'] = actionLsof;
-    keys['s'] = actionStrace;
-    keys[' '] = actionTag;
-    keys['\014'] = actionRedraw; // Ctrl+L
-    keys[KEY_F(1)] = actionHelp;
--   keys['h'] = actionHelp;
++   keys['o'] = actionExpandOrCollapse;
+    keys['>'] = actionSetSortColumn;
     keys['?'] = actionHelp;
-    keys['U'] = actionUntagAll;
+    keys['C'] = actionSetup;
+@@ -920,9 +921,9 @@ void Action_setBindings(Htop_Action* keys) {
+    keys['a'] = actionSetAffinity;
     keys['c'] = actionTagAllChildren;
+    keys['e'] = actionShowEnvScreen;
+-   keys['h'] = actionHelp;
+-   keys['k'] = actionKill;
+-   keys['l'] = actionLsof;
++   //keys['h'] = actionHelp;
++   keys['x'] = actionKill;
++   keys['L'] = actionLsof;
+    keys['m'] = actionToggleMergedCommand;
+    keys['p'] = actionToggleProgramPath;
+    keys['q'] = actionQuit;
+@@ -930,7 +931,7 @@ void Action_setBindings(Htop_Action* keys) {
+    keys['t'] = actionToggleTreeView;
+    keys['u'] = actionFilterByUser;
+    keys['w'] = actionShowCommandScreen;
+-   keys['x'] = actionShowLocks;
++   keys['X'] = actionShowLocks;
+    keys[KEY_F(1)] = actionHelp;
+    keys[KEY_F(2)] = actionSetup;
+    keys[KEY_F(3)] = actionIncSearch;
+diff --git a/AvailableMetersPanel.c b/AvailableMetersPanel.c
+index 9a1d367c..f1c07175 100644
+--- a/AvailableMetersPanel.c
++++ b/AvailableMetersPanel.c
+@@ -59,7 +59,7 @@ static HandlerResult AvailableMetersPanel_eventHandler(Panel* super, int ch) {
+ 
+    switch (ch) {
+       case KEY_F(5):
+-      case 'l':
++      //case 'l':
+       case 'L':
+          AvailableMetersPanel_addMeter(header, this->meterPanels[0], Platform_meterTypes[type], param, 0);
+          result = HANDLED;
+@@ -69,7 +69,7 @@ static HandlerResult AvailableMetersPanel_eventHandler(Panel* super, int ch) {
+       case 0x0d:
+       case KEY_ENTER:
+       case KEY_F(6):
+-      case 'r':
++      //case 'r':
+       case 'R':
+          AvailableMetersPanel_addMeter(header, this->meterPanels[this->columns - 1], Platform_meterTypes[type], param, this->columns - 1);
+          result = (KEY_LEFT << 16) | SYNTH_KEY;
+diff --git a/CategoriesPanel.c b/CategoriesPanel.c
+index 64a3f062..b67711cc 100644
 --- a/CategoriesPanel.c
 +++ b/CategoriesPanel.c
-@@ -77,6 +77,8 @@ static HandlerResult CategoriesPanel_eventHandler(Panel* super, int ch) {
+@@ -129,11 +129,19 @@ static HandlerResult CategoriesPanel_eventHandler(Panel* super, int ch) {
+          result = HANDLED;
+          break;
+       case KEY_UP:
++      case 'k':
+       case KEY_CTRL('P'):
+       case KEY_DOWN:
++      case 'j':
        case KEY_CTRL('N'):
        case KEY_NPAGE:
++      case KEY_CTRL('D'):
++      case KEY_CTRL('F'):
        case KEY_PPAGE:
++      case KEY_CTRL('B'):
++      case KEY_CTRL('U'):
 +      case 'g':
 +      case 'G':
        case KEY_HOME:
        case KEY_END: {
           int previous = selected;
+diff --git a/ColumnsPanel.c b/ColumnsPanel.c
+index 66625666..5a8c5951 100644
+--- a/ColumnsPanel.c
++++ b/ColumnsPanel.c
+@@ -57,6 +57,7 @@ static HandlerResult ColumnsPanel_eventHandler(Panel* super, int ch) {
+          }
+          break;
+       case KEY_UP:
++      case 'k':
+          if (!this->moving)
+             break;
+          /* else fallthrough */
+@@ -68,6 +69,7 @@ static HandlerResult ColumnsPanel_eventHandler(Panel* super, int ch) {
+          result = HANDLED;
+          break;
+       case KEY_DOWN:
++      case 'j':
+          if (!this->moving)
+             break;
+          /* else fallthrough */
+diff --git a/MetersPanel.c b/MetersPanel.c
+index 2678fb2f..8d174f9f 100644
+--- a/MetersPanel.c
++++ b/MetersPanel.c
+@@ -117,6 +117,7 @@ static HandlerResult MetersPanel_eventHandler(Panel* super, int ch) {
+          break;
+       }
+       case KEY_UP:
++      case 'k':
+          if (!this->moving)
+             break;
+          /* else fallthrough */
+@@ -128,6 +129,7 @@ static HandlerResult MetersPanel_eventHandler(Panel* super, int ch) {
+          result = HANDLED;
+          break;
+       case KEY_DOWN:
++      case 'j':
+          if (!this->moving)
+             break;
+          /* else fallthrough */
+@@ -139,6 +141,7 @@ static HandlerResult MetersPanel_eventHandler(Panel* super, int ch) {
+          result = HANDLED;
+          break;
+       case KEY_RIGHT:
++      case 'l':
+          sideMove = moveToNeighbor(this, this->rightNeighbor, selected);
+          if (this->moving && !sideMove) {
+             // lock user here until it exits positioning-mode
+@@ -148,6 +151,7 @@ static HandlerResult MetersPanel_eventHandler(Panel* super, int ch) {
+          // let ScreenManager handle focus.
+          break;
+       case KEY_LEFT:
++      case 'h':
+          sideMove = moveToNeighbor(this, this->leftNeighbor, selected);
+          if (this->moving && !sideMove) {
+             result = HANDLED;
+diff --git a/Panel.c b/Panel.c
+index 4784a658..7a0d5f39 100644
 --- a/Panel.c
 +++ b/Panel.c
-@@ -319,10 +319,12 @@ bool Panel_onKey(Panel* this, int key) {
-    int size = Vector_size(this->items);
+@@ -360,6 +360,7 @@ bool Panel_onKey(Panel* this, int key) {
+ 
     switch (key) {
-    case KEY_DOWN:
-+   case 'j':
-    case KEY_CTRL('N'):
-       this->selected++;
-       break;
-    case KEY_UP:
-+   case 'k':
-    case KEY_CTRL('P'):
-       this->selected--;
-       break;
-@@ -337,23 +339,33 @@ bool Panel_onKey(Panel* this, int key) {
-       break;
-    #endif
-    case KEY_LEFT:
--   case KEY_CTRL('B'):
-+   case 'h':
-       if (this->scrollH > 0) {
-          this->scrollH -= MAXIMUM(CRT_scrollHAmount, 0);
-          this->needsRedraw = true;
-       }
-       break;
-    case KEY_RIGHT:
--   case KEY_CTRL('F'):
-+   case 'l':
-       this->scrollH += CRT_scrollHAmount;
-       this->needsRedraw = true;
-       break;
-+   case KEY_CTRL('U'):
-+      this->selected -= (this->h - 1) / 2;
-+      this->needsRedraw = true;
-+      break;
-+   case KEY_CTRL('D'):
-+      this->selected += (this->h - 1) / 2;
-+      this->needsRedraw = true;
-+      break;
-    case KEY_PPAGE:
-+   case KEY_CTRL('B'):
-       this->selected -= (this->h - 1);
-       this->scrollV = MAXIMUM(0, this->scrollV - this->h + 1);
-       this->needsRedraw = true;
-       break;
-    case KEY_NPAGE:
-+   case KEY_CTRL('F'):
-       this->selected += (this->h - 1);
-       this->scrollV = MAXIMUM(0, MINIMUM(Vector_size(this->items) - this->h,
-                                  this->scrollV + this->h - 1));
-@@ -375,9 +387,11 @@ bool Panel_onKey(Panel* this, int key) {
-       break;
-    }
-    case KEY_HOME:
-+   case 'g':
-       this->selected = 0;
-       break;
-    case KEY_END:
-+   case 'G':
-       this->selected = size - 1;
-       break;
-    case KEY_CTRL('A'):
---- a/ScreenManager.c
-+++ b/ScreenManager.c
-@@ -257,7 +257,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
-          continue;
-       }
+       case KEY_DOWN:
++      case 'j':
+       case KEY_CTRL('N'):
+       #ifdef KEY_C_DOWN
+       case KEY_C_DOWN:
+@@ -368,6 +369,7 @@ bool Panel_onKey(Panel* this, int key) {
+          break;
+ 
+       case KEY_UP:
++      case 'k':
+       case KEY_CTRL('P'):
+       #ifdef KEY_C_UP
+       case KEY_C_UP:
+@@ -376,7 +378,8 @@ bool Panel_onKey(Panel* this, int key) {
+          break;
+ 
        case KEY_LEFT:
 -      case KEY_CTRL('B'):
 +      case 'h':
-          if (this->panelCount < 2) {
-             goto defaultHandler;
-          }
-@@ -271,7 +271,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
-             goto tryLeft;
++      //case KEY_CTRL('B'):
+          if (this->scrollH > 0) {
+             this->scrollH -= MAXIMUM(CRT_scrollHAmount, 0);
+             this->needsRedraw = true;
+@@ -384,19 +387,30 @@ bool Panel_onKey(Panel* this, int key) {
           break;
+ 
        case KEY_RIGHT:
 -      case KEY_CTRL('F'):
 +      case 'l':
-       case 9:
-          if (this->panelCount < 2) {
-             goto defaultHandler;
++      //case KEY_CTRL('F'):
+          this->scrollH += CRT_scrollHAmount;
+          this->needsRedraw = true;
+          break;
+ 
+       case KEY_PPAGE:
++      case KEY_CTRL('B'):
+          PANEL_SCROLL(-(this->h - Panel_headerHeight(this)));
+          break;
+ 
++      case KEY_CTRL('U'):
++         PANEL_SCROLL(-(this->h - Panel_headerHeight(this))/2);
++         break;
++
+       case KEY_NPAGE:
++      case KEY_CTRL('F'):
+          PANEL_SCROLL(+(this->h - Panel_headerHeight(this)));
+          break;
+ 
++      case KEY_CTRL('D'):
++         PANEL_SCROLL(+(this->h - Panel_headerHeight(this))/2);
++         break;
++
+       case KEY_WHEELUP:
+          PANEL_SCROLL(-CRT_scrollWheelVAmount);
+          break;
+@@ -406,10 +420,12 @@ bool Panel_onKey(Panel* this, int key) {
+          break;
+ 
+       case KEY_HOME:
++      case 'g':
+          this->selected = 0;
+          break;
+ 
+       case KEY_END:
++      case 'G':
+          this->selected = size - 1;
+          break;
+ 
+diff --git a/ScreenManager.c b/ScreenManager.c
+index e7e82e1d..9318b7c5 100644
+--- a/ScreenManager.c
++++ b/ScreenManager.c
+@@ -324,9 +324,11 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey, con
+ 
+       switch (ch) {
+          case KEY_ALT('H'): ch = KEY_LEFT; break;
++         case 'h': ch = KEY_LEFT; break;
+          case KEY_ALT('J'): ch = KEY_DOWN; break;
+          case KEY_ALT('K'): ch = KEY_UP; break;
+          case KEY_ALT('L'): ch = KEY_RIGHT; break;
++         case 'l': ch = KEY_RIGHT; break;
+       }
+ 
+       redraw = true;
+diff --git a/ScreenTabsPanel.c b/ScreenTabsPanel.c
+index e48e5fb8..6f152ce6 100644
+--- a/ScreenTabsPanel.c
++++ b/ScreenTabsPanel.c
+@@ -81,9 +81,15 @@ static HandlerResult ScreenTabsPanel_eventHandler(Panel* super, int ch) {
+          /* pass onto the Names panel for creating new screen */
+          return ScreenNamesPanel_eventHandlerNormal(&this->names->super, ch);
+       case KEY_UP:
++      case 'k':
+       case KEY_DOWN:
++      case 'j':
+       case KEY_NPAGE:
++      case KEY_CTRL('D'):
++      case KEY_CTRL('F'):
+       case KEY_PPAGE:
++      case KEY_CTRL('B'):
++      case KEY_CTRL('U'):
+       case KEY_HOME:
+       case KEY_END: {
+          int previous = selected;
+diff --git a/ScreensPanel.c b/ScreensPanel.c
+index 4138066b..6c7c4801 100644
+--- a/ScreensPanel.c
++++ b/ScreensPanel.c
+@@ -194,7 +194,11 @@ static HandlerResult ScreensPanel_eventHandlerNormal(Panel* super, int ch) {
+          result = HANDLED;
+          break;
+       case KEY_NPAGE:
++      case KEY_CTRL('D'):
++      case KEY_CTRL('F'):
+       case KEY_PPAGE:
++      case KEY_CTRL('B'):
++      case KEY_CTRL('U'):
+       case KEY_HOME:
+       case KEY_END:
+          Panel_onKey(super, ch);
+@@ -214,6 +218,7 @@ static HandlerResult ScreensPanel_eventHandlerNormal(Panel* super, int ch) {
+          result = HANDLED;
+          break;
+       case KEY_UP:
++      case 'k':
+          if (!this->moving) {
+             Panel_onKey(super, ch);
+             break;
+@@ -227,6 +232,7 @@ static HandlerResult ScreensPanel_eventHandlerNormal(Panel* super, int ch) {
+          result = HANDLED;
+          break;
+       case KEY_DOWN:
++      case 'j':
+          if (!this->moving) {
+             Panel_onKey(super, ch);
+             break;
