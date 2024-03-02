@@ -6,9 +6,15 @@
 # https://releases.electronjs.org/
 # https://github.com/stha09/chromium-patches/releases
 
+# Note: PKGBUILD source array can be updated to sources matching an exact Electron release with:
+# python makepkg-source-roller.py update v$pkgver $pkgname
+
+_use_suffix=1
 pkgver=25.9.8
-_chromiumver=114.0.5735.289
-pkgrel=1
+_chromium_major_ver=114
+_gcc_patchset=4
+# shellcheck disable=SC2034
+pkgrel=3
 
 _major_ver=${pkgver%%.*}
 pkgname="electron${_major_ver}"
@@ -50,8 +56,6 @@ optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)')
 options=('!lto') # Electron adds its own flags for ThinLTO
 source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
-        'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#branch=main'
-        "chromium-mirror::git+https://github.com/chromium/chromium.git#tag=$_chromiumver"
         REVERT-disable-autoupgrading-debug-info.patch
         add-some-typename-s-that-are-required-in-C-17.patch
         default_app-icon.patch
@@ -62,10 +66,12 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         std-vector-non-const.patch
         use-system-libraries-in-node.patch
         libxml2-2.12.patch
-        icu-74.patch)
+        icu-74.patch
+        "makepkg-source-roller.py"
+        # BEGIN managed sources
+        # END managed sources
+       )
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
             '621ed210d75d0e846192c1571bb30db988721224a41572c27769c0288d361c11'
             'dd2d248831dd4944d385ebf008426e66efe61d6fdf66f8932c963a12167947b4'
@@ -76,7 +82,8 @@ sha256sums=('SKIP'
             '893bc04c7fceba2f0a7195ed48551d55f066bbc530ec934c89c55768e6f3949c'
             'ff588a8a4fd2f79eb8a4f11cf1aa151298ffb895be566c57cc355d47f161f53f'
             'bfae9e773edfd0ddbc617777fdd4c0609cba2b048be7afe40f97768e4eb6117e'
-            '547e092f6a20ebd15e486b31111145bc94b8709ec230da89c591963001378845')
+            '547e092f6a20ebd15e486b31111145bc94b8709ec230da89c591963001378845'
+            '1eebf52f298ffb0a5525fa64b28039a6a0b5d83c07c3457262c88e9cc4bb0451')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -115,33 +122,15 @@ prepare() {
   sed -i "s|@ELECTRON@|${pkgname}|" electron.desktop
   sed -i "s|@ELECTRON_NAME@|Electron ${_major_ver}|" electron.desktop
 
-  sed --in-place "/'chromium_version':/{n;s/'[0-9.]\+',/'${_chromiumver}',/}" "${srcdir}/electron/DEPS"
-
-cat >.gclient <<EOF
-solutions = [
-  {
-    "name": "src/electron",
-    "url": "file://${srcdir}/electron@v$pkgver",
-    "deps_file": "DEPS",
-    "managed": False,
-    "custom_deps": {
-      "src": None,
-    },
-    "custom_vars": {},
-  },
-]
-EOF
-
+  cp -r chromium-mirror_third_party_depot_tools depot_tools
   export PATH+=":$PWD/depot_tools" DEPOT_TOOLS_UPDATE=0
   export VPYTHON_BYPASS='manually managed python not supported by chrome operations'
 
-  echo "Linking chromium from sources..."
-  ln -s chromium-mirror src
-
-  depot_tools/gclient.py sync -D \
-      --nohooks \
-      --with_branch_heads \
-      --with_tags
+  echo "Putting together electron sources"
+  # Generate gclient gn args file and prepare-electron-source-tree.sh
+  python makepkg-source-roller.py generate electron/DEPS $pkgname
+  bash prepare-electron-source-tree.sh "$CARCH"
+  mv electron src/electron
 
   pushd src/electron
   patch -Np1 -i ../../std-vector-non-const.patch
@@ -166,6 +155,9 @@ EOF
   # Create sysmlink to system Node.js
   mkdir -p src/third_party/node/linux/node-linux-x64/bin
   ln -sf /usr/bin/node src/third_party/node/linux/node-linux-x64/bin
+  # Use system java
+  mkdir -p src/third_party/jdk/current/bin
+  ln -sfn /usr/bin/java src/third_party/jdk/current/bin/
   src/electron/script/apply_all_patches.py \
       src/electron/patches/config.json
   pushd src/electron
