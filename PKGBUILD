@@ -75,7 +75,7 @@ backup=('etc/dracut.conf')
 source=(
   'git+https://github.com/dracutdevs/dracut.git'
   2527.patch::https://github.com/dracutdevs/dracut/commit/a2fe89116db4b286fbf515f26bd1773b5e6ee8ad.patch
-  2583.patch::https://github.com/dracutdevs/dracut/commit/f68d056bd9d32f4fc0c15163b256d1811a552302.patch
+  2610.patch::https://github.com/dracutdevs/dracut/commit/f68d056bd9d32f4fc0c15163b256d1811a552302.patch
 )
 sha512sums=(
   'SKIP'
