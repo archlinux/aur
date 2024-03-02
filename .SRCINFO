@@ -1,15 +1,15 @@
 pkgbase = remindme-bin
-	pkgdesc = scheduled notifications
-    pkgver = 0.0.8
-	pkgrel = 1
-	url = https://github.com/abenz1267/remindme
-	arch = x86_64
-	arch = aarch64
-	provides = remindme
-	conflicts = remindme
-	source_x86_64 = https://github.com/abenz1267/remindme/releases/download/v0.0.8/remindme_0.0.8_linux_amd64.tar.gz
-	sha256sums_x86_64 = b531503b262f29708ad75b8c9c0a993c42265429b3d0f5d299ea4c95c0753986
-	source_aarch64 = https://github.com/abenz1267/remindme/releases/download/v0.0.8/remindme_0.0.8_linux_arm64.tar.gz
-	sha256sums_aarch64 = 1dc7856d857176986cab66cd308ca090657b589eedcce1115a901dc0109c78f8
+pkgdesc = scheduled notifications
+pkgver = 0.0.8
+pkgrel = 1
+url = https://github.com/abenz1267/remindme
+arch = x86_64
+arch = aarch64
+provides = remindme
+conflicts = remindme
+source_x86_64 = https://github.com/abenz1267/remindme/releases/download/v0.0.8/remindme_0.0.8_linux_amd64.tar.gz
+sha256sums_x86_64 = b531503b262f29708ad75b8c9c0a993c42265429b3d0f5d299ea4c95c0753986
+source_aarch64 = https://github.com/abenz1267/remindme/releases/download/v0.0.8/remindme_0.0.8_linux_arm64.tar.gz
+sha256sums_aarch64 = 1dc7856d857176986cab66cd308ca090657b589eedcce1115a901dc0109c78f8
 
 pkgname = remindme-bin
