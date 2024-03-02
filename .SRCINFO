@@ -1,7 +1,7 @@
 pkgbase = kwallet-pam-git
 	pkgdesc = KWallet PAM integration
 	pkgver = 6.0.80_r311.g704a9f3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	groups = plasma-git
@@ -12,7 +12,7 @@ pkgbase = kwallet-pam-git
 	depends = kwallet-git
 	depends = libgcrypt
 	depends = pam
-	depends = sh-git
+	depends = sh
 	depends = socat
 	provides = kwallet-pam
 	conflicts = kwallet-pam
