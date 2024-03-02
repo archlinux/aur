@@ -1,4 +1,5 @@
 # Contributor: senft <senftt@gmail.com>
+# Contributor: Asuka Minato <i at asukaminato dot eu dot org>
 
 _pkgname=en-croissant
 
@@ -27,5 +28,6 @@ sha256sums_x86_64=('1199cafb2e76c275755352bd6deea807a8a0d0ca9028803ab96ba1b0981e
 package() {
 	bsdtar -xf data.tar.* -C $pkgdir
 	chown -R root:root $pkgdir
+	# https://github.com/tauri-apps/tauri/issues/8541
 	find $pkgdir -name "*.desktop" -exec sed -i "s/Exec=.*/Exec=GDK_BACKEND=x11 en-croissant/g" {} \;
 }
