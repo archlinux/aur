@@ -1,7 +1,7 @@
 pkgbase = librewolf
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
 	pkgver = 123.0
-	pkgrel = 1.1
+	pkgrel = 1.2
 	url = https://librewolf.net/
 	install = librewolf.install
 	arch = x86_64

@@ -3,7 +3,7 @@
 pkgname=librewolf
 _pkgname=LibreWolf
 pkgver=123.0
-pkgrel=1.1
+pkgrel=1.2
 _pkgdlrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 url="https://librewolf.net/"
@@ -201,10 +201,10 @@ END
 
     ./mach package
 
+    # Uncomment the next line if you have an error while profiling ( thanks to mkli )
+    # LIBGL_ALWAYS_SOFTWARE=true \
     LLVM_PROFDATA=llvm-profdata \
       JARLOG_FILE="$PWD/jarlog" \
-      # Uncomment the next line if you have an error while profiling ( thanks to mkli )
-      # LIBGL_ALWAYS_SOFTWARE=true \
       xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
       ./mach python build/pgo/profileserver.py
 
