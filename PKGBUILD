@@ -10,7 +10,7 @@ license=('WTFPL')
 depends=('bash' 'teamspeak3')
 source=('teamspeak3-install-addon' 'WTFPL')
 sha256sums=('41662e057318496023a0f59f02b420d65a7e988bc0e2bba017eadfc007823b93'
-            'c843583b8a523b4172e54b53721e09d0d852d82e9a548e46fa15b8adb0edce27')
+            '7637386b5f81e8a719ca336233149005e5fa28b5e6054ea7b67de49355b0ad40')
 
 package() {
   mkdir -p -- "$pkgdir/usr/bin"
