@@ -2,14 +2,14 @@
 
 pkgname=harmonyvpktool
 pkgdesc="An all new Titanfall VPK unpacker. Over 2x faster than the most popular alternative! (ALPHA pre-release)"
-pkgver=2.0.0.alpha.1
+pkgver=2.0.0.alpha.2
 pkgrel=1
 url="https://github.com/harmonytf/HarmonyVPKTool"
 license=('GPL3')
 arch=('x86_64')
 depends=('webkit2gtk')
 makedepends=('cargo' 'git' 'yarn')
-source=("git+$url.git#tag=2.0.0-alpha.1")
+source=("git+$url.git#tag=2.0.0-alpha.2")
 sha256sums=('SKIP')
 
 prepare() {
