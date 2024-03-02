@@ -1,7 +1,7 @@
 pkgbase = kde-cli-tools-git
 	pkgdesc = Tools based on KDE Frameworks 5 to better interact with the system
 	pkgver = 6.0.80_r2321.g69ab7c2f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	groups = plasma-git
@@ -25,7 +25,7 @@ pkgbase = kde-cli-tools-git
 	depends = kwindowsystem-git
 	depends = qt6-base
 	depends = qt6-svg
-	depends = sh-git
+	depends = sh
 	provides = kde-cli-tools
 	conflicts = kde-cli-tools
 	source = git+https://github.com/KDE/kde-cli-tools.git

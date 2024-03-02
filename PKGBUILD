@@ -5,12 +5,12 @@
 
 pkgname=kde-cli-tools-git
 pkgver=6.0.80_r2321.g69ab7c2f
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools based on KDE Frameworks 5 to better interact with the system"
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL-2.0-or-later)
-depends=(gcc-libs glibc kcmutils-git kcompletion-git kconfig-git kcoreaddons-git kdesu-git ki18n-git kiconthemes-git kio-git kparts-git kservice-git kwidgetsaddons-git kwindowsystem-git qt6-base qt6-svg sh-git)
+depends=(gcc-libs glibc kcmutils-git kcompletion-git kconfig-git kcoreaddons-git kdesu-git ki18n-git kiconthemes-git kio-git kparts-git kservice-git kwidgetsaddons-git kwindowsystem-git qt6-base qt6-svg sh)
 makedepends=(git extra-cmake-modules-git kdoctools-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
