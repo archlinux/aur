@@ -22,7 +22,7 @@ source=('surfer-waveform-git::git+https://gitlab.com/surfer-project/surfer#branc
 noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
-pkgver=0.1.0.r42.g9defb5b
+pkgver=0.1.0.r53.g8889484
 
 pkgver() {
     cd "$pkgname"
@@ -31,27 +31,27 @@ pkgver() {
 
 prepare() {
     cd "$pkgname"
+    export RUSTUP_TOOLCHAIN=stable
     git submodule update --init --recursive
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "$pkgname"
-    env CARGO_INCREMENTAL=0 cargo build --release --locked
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --all-features
 }
 
 check() {
     cd "$pkgname"
-    test -f target/release/surfer
-    # Tests are currently broken.
-    # env CARGO_INCREMENTAL=0 cargo test --release
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen --release --all-features
 }
 
 package() {
     cd "$pkgname"
-
-    mkdir -p "$pkgdir/usr"
-    env CARGO_INCREMENTAL=0 cargo install --path . --root "$pkgdir/usr" --locked
-
-    # desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "assets/Surfer.desktop"
+    desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "assets/Surfer.desktop"
     install -Dm644 "./LICENSE-EUPL-1.2.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm755 "target/release/surfer" "$pkgdir/usr/bin/surfer"
 }
