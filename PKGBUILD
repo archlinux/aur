@@ -1,7 +1,7 @@
 # Maintainer: Julian Raufelder <arch@raufelder.com>
 
 pkgname=libjffi
-pkgver=1.3.12
+pkgver=1.3.13
 pkgrel=1
 pkgdesc='Java bindings for libffi'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('ant' 'maven' 'make' 'gcc')
 provides=('libjffi.so')
 source=("https://github.com/jnr/jffi/archive/refs/tags/jffi-$pkgver.tar.gz")
 
-sha256sums=('456f7884932a63dd596771311cc21f23dd23ef252221ba1689536f147e534119')
+sha256sums=('299a1656b7ca35593623160f5bca988ea773c49480eb33d495256f46ccfc655d')
 
 build() {
   cd "jffi-jffi-${pkgver}"
