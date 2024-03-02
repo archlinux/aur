@@ -1,6 +1,6 @@
 pkgbase = plasma-workspace-git
 	pkgdesc = KDE Plasma Workspace
-	pkgver = 6.0.80_r15534.g3fbc6c796c
+	pkgver = 6.0.80_r15538.g2f809bd794
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
@@ -103,7 +103,7 @@ pkgbase = plasma-workspace-git
 	depends = qt6-tools
 	depends = qt6-virtualkeyboard
 	depends = qt6-wayland
-	depends = sh-git
+	depends = sh
 	depends = solid-git
 	depends = systemd-libs
 	depends = wayland
