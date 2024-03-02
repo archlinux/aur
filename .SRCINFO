@@ -1,15 +1,15 @@
 pkgbase = pww-bin
-	pkgdesc = utility wrapper around playerctl
-    pkgver = 0.0.8
-	pkgrel = 1
-	url = https://github.com/abenz1267/pww
-	arch = x86_64
-	arch = aarch64
-	provides = pww
-	conflicts = pww
-	source_x86_64 = https://github.com/abenz1267/pww/releases/download/v0.0.8/pww_0.0.8_linux_amd64.tar.gz
-	sha256sums_x86_64 = 877f15c1c33e8148ee648cf89e434a18f6adcdb875c0b6f499f7044e15e720ab
-	source_aarch64 = https://github.com/abenz1267/pww/releases/download/v0.0.8/pww_0.0.8_linux_arm64.tar.gz
-	sha256sums_aarch64 = fdc98b6de47069a2cbd20e0bd16b2889e6a3e789f352e348f44e67649f7fd96e
+pkgdesc = utility wrapper around playerctl
+pkgver = 0.0.8
+pkgrel = 1
+url = https://github.com/abenz1267/pww
+arch = x86_64
+arch = aarch64
+provides = pww
+conflicts = pww
+source_x86_64 = https://github.com/abenz1267/pww/releases/download/v0.0.8/pww_0.0.8_linux_amd64.tar.gz
+sha256sums_x86_64 = 877f15c1c33e8148ee648cf89e434a18f6adcdb875c0b6f499f7044e15e720ab
+source_aarch64 = https://github.com/abenz1267/pww/releases/download/v0.0.8/pww_0.0.8_linux_arm64.tar.gz
+sha256sums_aarch64 = fdc98b6de47069a2cbd20e0bd16b2889e6a3e789f352e348f44e67649f7fd96e
 
 pkgname = pww-bin
