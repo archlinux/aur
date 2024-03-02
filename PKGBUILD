@@ -4,8 +4,8 @@
 pkgname=dicomscope-bin
 _pkgname=dicomscope
 pkgver=3.6.0
-pkgrel=20
-_pkgrel="${pkgrel}build1"
+pkgrel=27
+_debrel=${pkgrel}
 pkgdesc="OFFIS DICOM viewer."
 arch=('any')
 url="http://dicom.offis.de/dscope.php.en"
@@ -15,23 +15,22 @@ groups=('')
 depends=(
   'java-runtime'
   'libdicomscope-jni-bin'
-  )
+)
 backup=('etc/dcmtk/DICOMscope.cfg')
 options=('!strip' '!emptydirs')
 source=(
-  "https://mirrors.kernel.org/ubuntu/pool/universe/d/dicomscope/${_pkgname}_${pkgver}-${_pkgrel}_all.deb"
+  "https://mirrors.kernel.org/ubuntu/pool/universe/d/dicomscope/${_pkgname}_${pkgver}-${_debrel}_all.deb"
   "${_pkgname}.sh"
-  )
+)
 
 package() {
-	# Extract package data
-	tar xf data.tar.xz -C "${pkgdir}"
+  # Extract package data
+  tar xf data.tar.zst -C "${pkgdir}"
 
   # Start script
   install -D -m755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
 
-	install -D -m644 "${pkgdir}/usr/share/doc/dicomscope/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 "${pkgdir}/usr/share/doc/dicomscope/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-sha256sums=('5d4f5e388db8429fdb06e7bff2ed1c440cb7f2c14db02006d8a2ce7b44eac429'
+sha256sums=('c4560b700dfcf6e4ff831af98087d38143942afe4d420a47cb19d066c27d046d'
             '2c1ae390fa396bc8dd89fab7a881771345bf0cce71d38c58de64755c6017b638')

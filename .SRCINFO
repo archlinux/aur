@@ -1,7 +1,7 @@
 pkgbase = dicomscope-bin
 	pkgdesc = OFFIS DICOM viewer.
 	pkgver = 3.6.0
-	pkgrel = 20
+	pkgrel = 27
 	url = http://dicom.offis.de/dscope.php.en
 	arch = any
 	groups = 
@@ -11,9 +11,9 @@ pkgbase = dicomscope-bin
 	options = !strip
 	options = !emptydirs
 	backup = etc/dcmtk/DICOMscope.cfg
-	source = https://mirrors.kernel.org/ubuntu/pool/universe/d/dicomscope/dicomscope_3.6.0-20build1_all.deb
+	source = https://mirrors.kernel.org/ubuntu/pool/universe/d/dicomscope/dicomscope_3.6.0-27_all.deb
 	source = dicomscope.sh
-	sha256sums = 5d4f5e388db8429fdb06e7bff2ed1c440cb7f2c14db02006d8a2ce7b44eac429
+	sha256sums = c4560b700dfcf6e4ff831af98087d38143942afe4d420a47cb19d066c27d046d
 	sha256sums = 2c1ae390fa396bc8dd89fab7a881771345bf0cce71d38c58de64755c6017b638
 
 pkgname = dicomscope-bin
