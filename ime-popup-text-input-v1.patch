@@ -90,13 +90,13 @@ index 0000000..0e13f38
 +
 +#endif
 diff --git a/include/labwc.h b/include/labwc.h
-index da92242..27f0fe9 100644
+index 70cef94..abe32a6 100644
 --- a/include/labwc.h
 +++ b/include/labwc.h
-@@ -39,10 +39,13 @@
- #include <wlr/types/wlr_drm_lease_v1.h>
+@@ -40,10 +40,13 @@
  #include <wlr/types/wlr_virtual_pointer_v1.h>
  #include <wlr/types/wlr_virtual_keyboard_v1.h>
+ #include <wlr/types/wlr_tearing_control_v1.h>
 +#include <wlr/types/wlr_text_input_v3.h>
 +#include <wlr/types/wlr_input_method_v2.h>
  #include <wlr/util/log.h>
@@ -107,7 +107,7 @@ index da92242..27f0fe9 100644
  #include "regions.h"
  #include "session-lock.h"
  #if HAVE_NLS
-@@ -119,6 +122,8 @@ struct seat {
+@@ -120,6 +123,8 @@ struct seat {
  	/* if set, views cannot receive focus */
  	struct wlr_layer_surface_v1 *focused_layer;
  
@@ -116,9 +116,9 @@ index da92242..27f0fe9 100644
  	/**
  	 * pressed view/surface/node will usually be NULL and is only set on
  	 * button press while the mouse is over a view or surface, and reset
-@@ -318,6 +323,9 @@ struct server {
- 	struct wlr_pointer_constraints_v1 *constraints;
- 	struct wl_listener new_constraint;
+@@ -324,6 +329,9 @@ struct server {
+ 	struct wlr_tearing_control_manager_v1 *tearing_control;
+ 	struct wl_listener tearing_new_object;
  
 +	struct wlr_input_method_manager_v2 *input_method_manager;
 +	struct wlr_text_input_manager_v3 *text_input_manager;
@@ -139,22 +139,22 @@ index 419aa99..6d44664 100644
  	LAB_NODE_DESC_TREE,
  	LAB_NODE_DESC_SSD_BUTTON,
 diff --git a/protocols/meson.build b/protocols/meson.build
-index 527f9d4..3750256 100644
+index 0ec9154..60df3d4 100644
 --- a/protocols/meson.build
 +++ b/protocols/meson.build
-@@ -18,6 +18,7 @@ server_protocols = [
- 	wl_protocol_dir / 'unstable/pointer-constraints/pointer-constraints-unstable-v1.xml',
+@@ -19,6 +19,7 @@ server_protocols = [
  	wl_protocol_dir / 'staging/cursor-shape/cursor-shape-v1.xml',
  	wl_protocol_dir / 'staging/drm-lease/drm-lease-v1.xml',
+ 	wl_protocol_dir / 'staging/tearing-control/tearing-control-v1.xml',
 +	wl_protocol_dir / 'unstable/text-input/text-input-unstable-v1.xml',
  	'wlr-layer-shell-unstable-v1.xml',
  	'wlr-input-inhibitor-unstable-v1.xml',
  	'wlr-output-power-management-unstable-v1.xml',
 diff --git a/src/desktop.c b/src/desktop.c
-index 08f8ff5..863a058 100644
+index 35d56b8..aac7f73 100644
 --- a/src/desktop.c
 +++ b/src/desktop.c
-@@ -417,6 +417,11 @@ get_cursor_context(struct server *server)
+@@ -416,6 +416,11 @@ get_cursor_context(struct server *server)
  				ret.type = LAB_SSD_CLIENT;
  				ret.surface = get_surface_from_layer_node(node);
  				return ret;
@@ -168,10 +168,10 @@ index 08f8ff5..863a058 100644
  				ret.node = node;
 diff --git a/src/input/ime.c b/src/input/ime.c
 new file mode 100644
-index 0000000..03e2693
+index 0000000..4e35400
 --- /dev/null
 +++ b/src/input/ime.c
-@@ -0,0 +1,915 @@
+@@ -0,0 +1,917 @@
 +// SPDX-License-Identifier: GPL-2.0-only
 +/* Based on Sway (https://github.com/swaywm/sway) */
 +
@@ -348,7 +348,7 @@ index 0000000..03e2693
 +}
 +
 +static void
-+handle_text_input_v1seat_destroy(struct wl_listener *listener, void *data)
++handle_text_input_v1_seat_destroy(struct wl_listener *listener, void *data)
 +{
 +	struct wlr_text_input_v3 *text_input =
 +		wl_container_of(listener, text_input, seat_destroy);
@@ -382,7 +382,7 @@ index 0000000..03e2693
 +		text_input, handle_text_input_v1_resource_destroy);
 +
 +	text_input->seat_destroy.notify =
-+		handle_text_input_v1seat_destroy;
++		handle_text_input_v1_seat_destroy;
 +	text_input->surface_destroy.notify =
 +		handle_text_input_v1_focused_surface_destroy;
 +
@@ -407,7 +407,8 @@ index 0000000..03e2693
 +		manager_v1, NULL);
 +}
 +
-+static void handle_display_destroy(struct wl_listener *listener, void *data) {
++static void handle_display_destroy(struct wl_listener *listener, void *data)
++{
 +	struct text_input_manager_v1 *manager_v1 =
 +		wl_container_of(listener, manager_v1, display_destroy);
 +	wl_list_remove(&manager_v1->display_destroy.link);
@@ -419,7 +420,7 @@ index 0000000..03e2693
 +text_input_manager_v1_init(struct wl_display *display,
 +		struct wlr_text_input_manager_v3 *wlr_manager_v3)
 +{
-+	struct text_input_manager_v1 * manager_v1 = znew(*manager_v1);
++	struct text_input_manager_v1 *manager_v1 = znew(*manager_v1);
 +	manager_v1->wlr_manager_v3 = wlr_manager_v3;
 +	manager_v1->global = wl_global_create(display,
 +		&zwp_text_input_manager_v1_interface, 1, manager_v1,
@@ -735,7 +736,8 @@ index 0000000..03e2693
 +			zwp_text_input_v1_send_preedit_string(
 +				text_input->input->resource,
 +				text_input->input->current_serial,
-+				input_method->current.preedit.text, input_method->current.preedit.text);
++				input_method->current.preedit.text,
++				input_method->current.preedit.text);
 +		} else {
 +			zwp_text_input_v1_send_preedit_cursor(
 +				text_input->input->resource, 0);
@@ -1088,10 +1090,10 @@ index 0000000..03e2693
 +	update_active_text_input(relay);
 +}
 diff --git a/src/input/keyboard.c b/src/input/keyboard.c
-index b9d01ac..31012b4 100644
+index 7379a54..3b0b6d9 100644
 --- a/src/input/keyboard.c
 +++ b/src/input/keyboard.c
-@@ -91,7 +91,11 @@ keyboard_modifiers_notify(struct wl_listener *listener, void *data)
+@@ -97,7 +97,11 @@ keyboard_modifiers_notify(struct wl_listener *listener, void *data)
  			}
  		}
  	}
@@ -1104,7 +1106,7 @@ index b9d01ac..31012b4 100644
  }
  
  static struct keybind *
-@@ -505,7 +509,7 @@ keyboard_key_notify(struct wl_listener *listener, void *data)
+@@ -523,7 +527,7 @@ keyboard_key_notify(struct wl_listener *listener, void *data)
  		if (event->state == WL_KEYBOARD_KEY_STATE_PRESSED) {
  			start_keybind_repeat(seat->server, keyboard, event);
  		}
@@ -1114,20 +1116,20 @@ index b9d01ac..31012b4 100644
  		wlr_seat_keyboard_notify_key(wlr_seat, event->time_msec,
  			event->keycode, event->state);
 diff --git a/src/input/meson.build b/src/input/meson.build
-index cfdd3cd..793c409 100644
+index c8b7717..c333184 100644
 --- a/src/input/meson.build
 +++ b/src/input/meson.build
-@@ -5,4 +5,5 @@ labwc_sources += files(
+@@ -7,4 +7,5 @@ labwc_sources += files(
    'keyboard.c',
    'key-state.c',
    'touch.c',
 +  'ime.c',
  )
 diff --git a/src/layers.c b/src/layers.c
-index abf9c71..706a26c 100644
+index 20e9e68..f84c2fb 100644
 --- a/src/layers.c
 +++ b/src/layers.c
-@@ -278,6 +278,8 @@ create_popup(struct wlr_xdg_popup *wlr_popup, struct wlr_scene_tree *parent,
+@@ -298,6 +298,8 @@ create_popup(struct wlr_xdg_popup *wlr_popup, struct wlr_scene_tree *parent)
  		free(popup);
  		return NULL;
  	}
@@ -1136,7 +1138,7 @@ index abf9c71..706a26c 100644
  	node_descriptor_create(&popup->scene_tree->node,
  		LAB_NODE_DESC_LAYER_POPUP, popup);
  
-@@ -403,6 +405,9 @@ handle_new_layer_surface(struct wl_listener *listener, void *data)
+@@ -424,6 +426,9 @@ handle_new_layer_surface(struct wl_listener *listener, void *data)
  		return;
  	}
  
@@ -1147,10 +1149,10 @@ index abf9c71..706a26c 100644
  		LAB_NODE_DESC_LAYER_SURFACE, surface);
  
 diff --git a/src/output.c b/src/output.c
-index eaec44b..892b1a7 100644
+index e1c615e..5eca379 100644
 --- a/src/output.c
 +++ b/src/output.c
-@@ -304,6 +304,7 @@ new_output_notify(struct wl_listener *listener, void *data)
+@@ -320,6 +320,7 @@ new_output_notify(struct wl_listener *listener, void *data)
  	/*
  	 * Set the z-positions to achieve the following order (from top to
  	 * bottom):
@@ -1158,7 +1160,7 @@ index eaec44b..892b1a7 100644
  	 *	- session lock layer
  	 *	- layer-shell popups
  	 *	- overlay layer
-@@ -318,6 +319,7 @@ new_output_notify(struct wl_listener *listener, void *data)
+@@ -334,6 +335,7 @@ new_output_notify(struct wl_listener *listener, void *data)
  	wlr_scene_node_raise_to_top(&output->layer_tree[3]->node);
  	wlr_scene_node_raise_to_top(&output->layer_popup_tree->node);
  	wlr_scene_node_raise_to_top(&output->session_lock_tree->node);
@@ -1167,10 +1169,10 @@ index eaec44b..892b1a7 100644
  	/*
  	 * Wait until wlr_output_layout_add_auto() returns before
 diff --git a/src/seat.c b/src/seat.c
-index 64447df..acc8d9a 100644
+index e4e69ef..27d5d57 100644
 --- a/src/seat.c
 +++ b/src/seat.c
-@@ -414,6 +414,8 @@ seat_init(struct server *server)
+@@ -536,6 +536,8 @@ seat_init(struct server *server)
  		&seat->virtual_keyboard_new);
  	seat->virtual_keyboard_new.notify = new_virtual_keyboard;
  
@@ -1179,7 +1181,7 @@ index 64447df..acc8d9a 100644
  	seat->cursor = wlr_cursor_create();
  	if (!seat->cursor) {
  		wlr_log(WLR_ERROR, "unable to create cursor");
-@@ -437,6 +439,7 @@ seat_finish(struct server *server)
+@@ -559,6 +561,7 @@ seat_finish(struct server *server)
  	}
  
  	input_handlers_finish(seat);
@@ -1187,7 +1189,7 @@ index 64447df..acc8d9a 100644
  }
  
  static void
-@@ -481,6 +484,7 @@ seat_focus(struct seat *seat, struct wlr_surface *surface, bool is_lock_surface)
+@@ -614,6 +617,7 @@ seat_focus(struct seat *seat, struct wlr_surface *surface, bool is_lock_surface)
  
  	if (!surface) {
  		wlr_seat_keyboard_notify_clear_focus(seat->seat);
@@ -1195,7 +1197,7 @@ index 64447df..acc8d9a 100644
  		return;
  	}
  
-@@ -503,6 +507,8 @@ seat_focus(struct seat *seat, struct wlr_surface *surface, bool is_lock_surface)
+@@ -636,6 +640,8 @@ seat_focus(struct seat *seat, struct wlr_surface *surface, bool is_lock_surface)
  	wlr_seat_keyboard_notify_enter(seat->seat, surface,
  		pressed_sent_keycodes, nr_pressed_sent_keycodes, &kb->modifiers);
  
@@ -1205,10 +1207,10 @@ index 64447df..acc8d9a 100644
  		wlr_pointer_constraints_v1_constraint_for_surface(server->constraints,
  			surface, seat->seat);
 diff --git a/src/server.c b/src/server.c
-index e7a58be..8797aaa 100644
+index c0ee768..e88b25e 100644
 --- a/src/server.c
 +++ b/src/server.c
-@@ -379,6 +379,10 @@ server_init(struct server *server)
+@@ -378,6 +378,10 @@ server_init(struct server *server)
  	 */
  	wlr_primary_selection_v1_device_manager_create(server->wl_display);
  
@@ -1220,10 +1222,10 @@ index e7a58be..8797aaa 100644
  	xdg_shell_init(server);
  	kde_server_decoration_init(server);
 diff --git a/src/xdg.c b/src/xdg.c
-index 713eccd..770a92f 100644
+index dc9acc9..8a96807 100644
 --- a/src/xdg.c
 +++ b/src/xdg.c
-@@ -671,7 +671,7 @@ xdg_surface_new(struct wl_listener *listener, void *data)
+@@ -771,7 +771,7 @@ xdg_surface_new(struct wl_listener *listener, void *data)
  	 */
  	kde_server_decoration_set_view(view, xdg_surface->surface);
  
