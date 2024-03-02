@@ -1,4 +1,5 @@
-# Maintainer: Jonas Witschel <diabonas@archlinux.org>
+# Maintainer: Laszlo Gombos <laszlo.gombos@gmail.com>
+# Contributor: Jonas Witschel <diabonas@archlinux.org>
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=055.r106.813577e2
