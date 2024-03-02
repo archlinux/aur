@@ -1,11 +1,12 @@
-# Maintainer: j.r <j.r@jugendhacker.de>
+# Maintainer: Andrei K. <mail@andreik.sh>
+# Contributor: j.r <j.r@jugendhacker.de>
 # Contributor: Daniil Kovalev <daniil@kovalev.website>
 # Contributor: Felix Serrano Blanco <felixseblanc@gmail.com>
 
 pkgname=libtd
-pkgver=1.8.24
+pkgver=1.8.25
 pkgrel=1
-pkgdesc="Cross-platform library for building Telegram clients "
+pkgdesc="TDLib (Telegram Database library), a cross-platform library for building Telegram clients"
 arch=('x86_64')
 url='https://core.telegram.org/tdlib'
 license=('BSL-1.0')
@@ -23,7 +24,7 @@ makedepends=(
 )
 provides=('telegram-tdlib' 'libtdjson.so')
 conflicts=('telegram-tdlib')
-_commit=c5c55092dd61b9eb15d6bbfd0f02c04c593450e7
+_commit=d93a99e3351db82573d765ce4f5e84714c277518
 source=("$pkgname::git+https://github.com/tdlib/td.git#commit=$_commit")
 md5sums=('SKIP')
 
