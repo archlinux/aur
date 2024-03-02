@@ -2,7 +2,7 @@
 
 pkgname=neocities-deploy
 pkgver='0.1.3'
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line tool for deploying your Neocities site. It can upload files to your site, list remote files, and more.'
 arch=('any')
 source=("https://github.com/kugland/neocities-deploy/archive/refs/tags/v${pkgver}.tar.gz")
@@ -12,7 +12,7 @@ makedepends=(cargo)
 prepare() {
     cd "$srcdir/neocities-deploy-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --frozen --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
