@@ -11,7 +11,7 @@ conflicts=('thunar-megasync' 'thunar-gtk3-megasync')
 replaces=("thunar-megasync")
 depends=('megasync-bin' 'thunar')
 source=("${url}/linux/repo/Arch_Extra/x86_64/thunar-megasync-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('3c3e8bc9a793881c92aee9e937263218b13c2bbc4ed0d2714272466325284cb9')
+sha256sums=('5cbaf43feb1055e39875b9201ed6dea1af73ccccb373f120029498ccd0d0c7af')
 
 package() {
 	cp -R "${srcdir}/usr" "${pkgdir}/"
