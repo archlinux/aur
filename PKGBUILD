@@ -24,13 +24,6 @@ if [ -z ${_use_numa+x} ]; then
   _use_numa=n
 fi
 
-## Disable kernel debugging
-## Enabling debugging increases kernel overhead by a tiny amount
-## No debugging messages will be present when trying to fix kernel stuff
-if [ -z ${_disable_debug+x} ]; then
-  _disable_debug=y
-fi
-
 ## Since upstream disabled CONFIG_STACK_TRACER (limits debugging and analyzing of the kernel)
 ## you can enable them setting this option. Caution, because they have an impact in performance.
 ## Stock Archlinux has this enabled. 
@@ -100,7 +93,7 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-xanmod-bore
 _major=6.7
-pkgver=${_major}.6
+pkgver=${_major}.7
 _branch=6.x
 xanmod=1
 _revision=
@@ -147,12 +140,12 @@ for _patch in ${_patches[@]}; do
 done
 sha256sums=('ef31144a2576d080d8c31698e83ec9f66bf97c677fa2aaf0d5bbb9f3345b1069' # kernel
             'SKIP'                                                             # kernel signature
-            'd1b5a00c1babc53d40ea85dbba281fa9f05669b36117e1d937fc849f64336743' # xanmod patch
+            '1bf862e6ba0feeffdf4a90068462abf35df524385f921d6adbaa9a147360fabc' # xanmod patch
             '5c84bfe7c1971354cff3f6b3f52bf33e7bbeec22f85d5e7bfde383b54c679d30' # choose-gcc-optimization.sh
-            'f8e21f14bdf2f90f37ab03e9b67cee83b999547bbfc9e0c67d1942c4dc3e40fb' # 0001-bore.patch
+            'c02d2efc539f460299d97c6bd2cd66e4ea2cef8094a25faa56732598b76b36a3' # 0001-bore.patch
             '02be008f054a44322a74f0615e8a0d3ad7d6c5bc80182472a9cefbded959ce61' # 0002-glitched-cfs.patch
-            '73d4dfd63744a7a510354a66255067ae9aebc4a5c538df32eab852cf7691c835' # 0003-glitched-eevdf-additions.patch
-            'f4384ffedc2f3585229a669b127f1759db92125e3d0068be9040df5952f56466' # 0004-o3-optimization.patch
+            'ba3243f7dcbc7a2f9fce8aeba28cb32ed809038166f1deb932b304cfc8065e98' # 0003-glitched-eevdf-additions.patch
+            '47d7ecce973899e2f218ac7b25b3257198a492fd9a38635f10abd67b491c7631' # 0004-o3-optimization.patch
 )
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
@@ -182,24 +175,28 @@ prepare() {
   # Applying configuration
   cp -vf CONFIGS/xanmod/gcc/${_config} .config
 
-  # enable LTO_CLANG_FULL
-  echo "Enabling LTO_CLANG_FULL..."
+  # enable LTO_CLANG_THIN
+  echo "Enabling LTO_CLANG_THIN..."
   if [ "${_compiler}" = "clang" ]; then
-    scripts/config --disable LTO_CLANG_THIN \
+    scripts/config --disable LTO_CLANG_FULL \
                    --disable LTO_NONE \
                    --enable LTO \
                    --enable LTO_CLANG \
                    --enable ARCH_SUPPORTS_LTO_CLANG \
                    --enable ARCH_SUPPORTS_LTO_CLANG_THIN \
                    --enable HAS_LTO_CLANG \
-                   --enable LTO_CLANG_FULL
-
+                   --enable LTO_CLANG_THIN
   fi
 
   # Disable features not needed for desktop use
+  echo "Disabling features not needed for desktop use..."
   scripts/config --disable X86_EXTENDED_PLATFORM \
                  --disable BLK_DEBUG_FS \
                  --disable MEMORY_HOTPLUG
+
+  # Setting features for desktop use
+  echo "Setting features for desktop use..."
+  scripts/config --set-val CONFIG_BLK_DEV_LOOP_MIN_COUNT 0
 
   # Setting HZ tick rate
   echo "Setting Tickrate HZ..."
@@ -311,24 +308,6 @@ prepare() {
                    --disable NEED_MULTIPLE_NODES \
                    --disable NUMA_BALANCING \
                    --disable NUMA_BALANCING_DEFAULT_ENABLED
-  fi
-
-  # Disabling Debug
-  if [ "$_disable_debug" = "y" ]; then
-    echo "Disabling debugging..."
-    scripts/config --disable DEBUG_INFO_BTF \
-                   --disable DEBUG_INFO_DWARF4 \
-                   --disable DEBUG_INFO_DWARF5 \
-                   --disable PAHOLE_HAS_SPLIT_BTF \
-                   --disable DEBUG_INFO_BTF_MODULES \
-                   --disable SLUB_DEBUG \
-                   --disable PM_DEBUG \
-                   --disable PM_ADVANCED_DEBUG \
-                   --disable PM_SLEEP_DEBUG \
-                   --disable ACPI_DEBUG \
-                   --disable SCHED_DEBUG \
-                   --disable LATENCYTOP \
-                   --disable DEBUG_PREEMPT
   fi
 
   # Compress modules by default (following Arch's kernel)
