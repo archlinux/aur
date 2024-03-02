@@ -1,7 +1,7 @@
 pkgbase = python-yte
 	pkgdesc = YAML template engine with Python expressions
-	pkgver = 1.5.1
-	pkgrel = 2
+	pkgver = 1.5.4
+	pkgrel = 1
 	url = https://github.com/koesterlab/yte
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = python-yte
 	depends = python-dpath
 	depends = python-plac
 	depends = python-pyyaml
-	source = https://files.pythonhosted.org/packages/source/y/yte/yte-1.5.1.tar.gz
-	sha256sums = 6d0b315b78af83276d78f5f67c107c84238f772a76d74f4fc77905b46f3731f5
+	source = https://files.pythonhosted.org/packages/source/y/yte/yte-1.5.4.tar.gz
+	sha256sums = d2d77e53eafca74f58234fcd3fea28cc0a719e4f3784911511e35e86594bc880
 
 pkgname = python-yte
