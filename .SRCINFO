@@ -1,0 +1,15 @@
+pkgbase = flowinity
+	pkgdesc = Flowinity/PrivateUploader Desktop (Binary version)
+	pkgver = 1.0.1
+	pkgrel = 2
+	url = https://flowinity.com
+	arch = x86_64
+	license = GPL
+	source = https://updates.flowinity.com/download/flavor/default/1.0.1/linux_64/flowinity-desktop-1.0.1.tar.gz
+	source = flowinity-desktop.desktop
+	source = flowinity.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = flowinity
