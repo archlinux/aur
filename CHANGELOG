@@ -1,3 +1,9 @@
+* 9.0.2 - Apr 17 2023
+
+- Fixed a compatibility issue with python 3.9 in xpath
+- Fixed all warnings with python > 3.6
+- Fixed some tests which displayed failure when there was no problem
+
 * 9.0.1 - Feb 12 2020
 
 - Fix installation issue under some conditions

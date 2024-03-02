@@ -1,9 +1,10 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Ivan Batrakov <blackfan321 at disroot dot org>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Tim Savannah <kata198@gmail.com>
 
 pkgname=python-advancedhtmlparser
-pkgver=9.0.1
-pkgrel=2
+pkgver=9.0.2
+pkgrel=1
 pkgdesc="Indexed HTML parser"
 arch=('any')
 license=('LGPL3')
@@ -12,7 +13,7 @@ depends=('python-queryablelist')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 changelog=CHANGELOG
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('9ecdfdc7ba060c2e7fa231c06d144fe4b73cd116d8030404a83386ca3de384ac')
+sha256sums=('ba2ba4a70a6b7cf769b34b0e981bc5646632a1cd76ad4ca31c3b7b79eb8df9cd')
 
 build() {
 	cd "AdvancedHTMLParser-$pkgver"
