@@ -2,18 +2,20 @@
 
 _pkgname="annotator"
 pkgname="$_pkgname-git"
-pkgver=1.2.1.r3.g5fc31ff
+pkgver=1.2.1.r55.g8c3d3cce
 pkgrel=1
 pkgdesc="Image annotation for Elementary OS"
 url='https://github.com/phase1geo/Annotator'
-license=("GPL3")
+license=("GPL-3.0-or-later")
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 
 depends=(
-  'granite'
+  'granite7'
   'libhandy'
+  'libportal-gtk4'
 )
 makedepends=(
+  'cmake'
   'git'
   'meson'
   'vala'
@@ -28,7 +30,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' 2>/dev/null \
+  git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
     | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
@@ -45,4 +47,3 @@ package() {
   # symlink
   ln -sf "com.github.phase1geo.annotator" "$pkgdir/usr/bin/annotator"
 }
-
