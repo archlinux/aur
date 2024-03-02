@@ -1,7 +1,7 @@
-# Maintainer: Bruno Pagani <archange@archlinux.org>
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Pascal Ernster <archlinux@hardfalcon.net>
 # Contributor: loqs <bugs-archlinux@entropy-collector.net>
+# Contributor: kxxt <rsworktech@outlook.com>
 
 # https://releases.electronjs.org/
 # https://github.com/stha09/chromium-patches/releases
@@ -9,11 +9,8 @@
 # Note: PKGBUILD source array can be updated to sources matching an exact Electron release with:
 # python makepkg-source-roller.py update v$pkgver $pkgname
 
-_use_suffix=1
 pkgver=25.9.8
-_chromium_major_ver=114
-_gcc_patchset=4
-# shellcheck disable=SC2034
+# _gcc_patches=114-patchset-1
 pkgrel=3
 
 _major_ver=${pkgver%%.*}
@@ -21,12 +18,15 @@ pkgname="electron${_major_ver}"
 pkgdesc='Build cross platform desktop apps with web technologies'
 arch=(x86_64)
 url='https://electronjs.org/'
-license=(MIT custom)
+license=(MIT BSD-3-Clause)
 depends=(c-ares
-         gtk3
+         gcc-libs # libgcc_s.so
+         glibc # libc.so libm.so
+         gtk3 libgtk-3.so
          libevent
-         nss
-         libffi)
+         libffi
+         nss # libnss3.so
+         zlib libz.so)
 makedepends=(clang
              git
              gn
@@ -39,6 +39,7 @@ makedepends=(clang
              llvm
              ninja
              npm
+             patchutils
              pciutils
              pipewire
              python
@@ -67,7 +68,7 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         use-system-libraries-in-node.patch
         libxml2-2.12.patch
         icu-74.patch
-        "makepkg-source-roller.py"
+        makepkg-source-roller.py
         # BEGIN managed sources
         chromium-mirror::git+https://github.com/chromium/chromium.git#tag=114.0.5735.289
         chromium-mirror_third_party_nan::git+https://github.com/nodejs/nan.git#commit=16fa32231e2ccd89d2804b3f765319128b20c4ac
@@ -365,28 +366,28 @@ sha256sums=('SKIP'
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
   [brotli]=brotli
-  [dav1d]=dav1d
+  [dav1d]="dav1d libdav1d.so"
   [ffmpeg]=ffmpeg
-  [flac]=flac
-  [fontconfig]=fontconfig
-  [freetype]=freetype2
-  [harfbuzz-ng]=harfbuzz
-  [icu]=icu
-  [jsoncpp]=jsoncpp
+  [flac]="flac libFLAC.so"
+  [fontconfig]="fontconfig libfontconfig.so"
+  [freetype]="freetype2 libfreetype.so"
+  [harfbuzz-ng]="harfbuzz libharfbuzz.so libharfbuzz-subset.so"
+  [icu]="icu libicui18n.so libicuuc.so"
+  [jsoncpp]="jsoncpp libjsoncpp.so"  # needs libstdc++
   # [libaom]=aom
-  #[libavif]=libavif # https://github.com/AOMediaCodec/libavif/commit/4d2776a3
-  [libdrm]=
-  [libjpeg]=libjpeg
-  [libpng]=libpng
+  # [libavif]=libavif # libavif.so libavutil.so # needs https://github.com/AOMediaCodec/libavif/commit/5410b23f76
+  [libdrm]= #libdrm # libdrm.so
+  [libjpeg]="libjpeg libjpeg.so"
+  [libpng]="libpng libpng16.so"
   #[libvpx]=libvpx
-  [libwebp]=libwebp
-  [libxml]=libxml2
-  [libxslt]=libxslt
-  [opus]=opus
-  #[re2]=re2
-  [snappy]=snappy
-  [woff2]=woff2
-  [zlib]=minizip
+  [libwebp]="libwebp libwebpdemux.so libwebpmux.so libwebp.so"
+  [libxml]="libxml2 libxml2.so"
+  [libxslt]="libxslt libxslt.so"
+  [opus]="opus libopus.so"
+  # [re2]="re2 libre2.so" # needs libstdc++
+  [snappy]=snappy # libsnappy.so # needs libstdc++
+  [woff2]="woff2 libwoff2dec.so" # needs libstdc++
+  [zlib]=minizip # libminizip.so
 )
 _unwanted_bundled_libs=(
   $(printf "%s\n" ${!_system_libs[@]} | sed 's/^libjpeg$/&_turbo/')
@@ -488,6 +489,8 @@ prepare() {
 }
 
 build() {
+  cd src
+
   export CC=clang
   export CXX=clang++
   export AR=ar
@@ -520,7 +523,6 @@ build() {
   CFLAGS+='   -Wno-unknown-warning-option'
   CXXFLAGS+=' -Wno-unknown-warning-option'
 
-  pushd src
   export CHROMIUM_BUILDTOOLS_PATH="${PWD}/buildtools"
   GN_EXTRA_ARGS='
     custom_toolchain = "//build/toolchain/linux/unbundle:default"
