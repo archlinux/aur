@@ -1,7 +1,7 @@
-# Maintainer: Bruno Pagani <archange@archlinux.org>
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Pascal Ernster <archlinux@hardfalcon.net>
 # Contributor: loqs <bugs-archlinux@entropy-collector.net>
+# Contributor: kxxt <rsworktech@outlook.com>
 
 # https://releases.electronjs.org/
 # https://github.com/stha09/chromium-patches/releases
@@ -9,78 +9,80 @@
 # Note: PKGBUILD source array can be updated to sources matching an exact Electron release with:
 # python makepkg-source-roller.py update v$pkgver $pkgname
 
-_use_suffix=1
 pkgver=24.8.8
-# _chromium_major_ver=112
-# _gcc_patchset=1
-# shellcheck disable=SC2034
+#_gcc_patches=112-patchset-1
 pkgrel=2
 
 _major_ver=${pkgver%%.*}
-if [[ ${_use_suffix} != 0 ]]; then
-  pkgname="electron${_major_ver}"
-else
-  pkgbase="electron${_major_ver}"
-  pkgname=electron
-fi
-# shellcheck disable=SC2034
+pkgname="electron${_major_ver}"
 pkgdesc='Build cross platform desktop apps with web technologies'
-# shellcheck disable=SC2034
-arch=('x86_64')
-# shellcheck disable=SC2034
+arch=(x86_64)
 url='https://electronjs.org/'
-# shellcheck disable=SC2034
-license=('MIT' 'custom')
-# shellcheck disable=SC2034
-depends=('c-ares' 'gtk3' 'libevent' 'nss' 'libffi')
-# shellcheck disable=SC2034
-makedepends=('clang' 'git' 'gn' 'gperf' 'harfbuzz-icu' 'http-parser'
-             'qt5-base' 'java-runtime-headless' 'libnotify' 'lld' 'llvm'
-             'ninja' 'npm' 'pciutils' 'pipewire' 'python' 'python-httplib2'
-             'python-requests' 'python-pyparsing' 'python-six' 'wget' 'yarn')
-# shellcheck disable=SC2034
+license=(MIT BSD-3-Clause)
+depends=(c-ares
+         gcc-libs # libgcc_s.so
+         glibc # libc.so libm.so
+         gtk3 libgtk-3.so
+         libevent
+         libffi
+         nss # libnss3.so
+         zlib libz.so)
+makedepends=(clang
+             git
+             gn
+             gperf
+             harfbuzz-icu
+             http-parser
+             java-runtime-headless
+             libnotify
+             lld
+             llvm
+             ninja
+             npm
+             pciutils
+             pipewire
+             python
+             python-httplib2
+             python-pyparsing
+             python-requests
+             python-six
+             qt5-base
+             wget
+             yarn)
 optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'pipewire: WebRTC desktop sharing under Wayland'
             'qt5-base: enable Qt5 with --enable-features=AllowQt'
             'trash-cli: file deletion support (trash-put)'
             'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)')
-if [[ ${_use_suffix} == 0 ]]; then
-  # shellcheck disable=SC2034
-  conflicts=("electron${_major_ver}")
-  # shellcheck disable=SC2034
-  provides=("electron${_major_ver}")
-fi
-# shellcheck disable=SC2034
 options=('!lto') # Electron adds its own flags for ThinLTO
-# shellcheck disable=SC2034
 source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
-        "electron-launcher.sh"
-        "electron.desktop"
-        'default_app-icon.patch'
-        'jinja-python-3.10.patch'
-        'use-system-libraries-in-node.patch'
-        'std-vector-non-const.patch'
-        'sql-relax-constraints-on-VirtualCursor-layout.patch'
-        'swiftshader-add-cstdint-for-uint64_t.patch'
-        'dawn-iwyu-add-cstdint-for-uint8_t.patch'
-        'iwyu-add-stdint.h-for-various-int-types-in-base.patch'
-        'iwyu-add-cstdint-for-uintptr_t-in-device.patch'
-        'iwyu-add-stdint.h-for-uint32_t-in-chrome_pdf.patch'
-        'iwyu-add-stdint.h-for-uint64_t-in-EncounteredSurface.patch'
-        'iwyu-add-stdint.h-for-integer-types-in-ui.patch'
-        'openscreen-iwyu-add-stdint.h.patch'
-        'pdfium-iwyu-add-stdint.h-for-uint32_t.patch'
-        'iwyu-add-stdint.h-for-uint32_t-in-cc.patch'
-        'add-missing-includes-causing-build-errors.patch'
-        'iwyu-add-stdint.h-for-int-types-in-gpu_feature_info.patch'
-        'iwyu-add-stdint.h-for-various-int-types-in-comp.patch'
-        'iwyu-add-stdint.h-for-various-integer-types-in-net.patch'
-        'iwyu-add-cstdint-for-int-types-in-s2cellid.patch'
-        'random-fixes-for-gcc13.patch'
-        'more-fixes-for-gcc13.patch'
-        'libxml2-2.12.patch'
-        'icu-74.patch'
-        "makepkg-source-roller.py"
+        electron-launcher.sh
+        electron.desktop
+        default_app-icon.patch
+        jinja-python-3.10.patch
+        use-system-libraries-in-node.patch
+        std-vector-non-const.patch
+        sql-relax-constraints-on-VirtualCursor-layout.patch
+        swiftshader-add-cstdint-for-uint64_t.patch
+        dawn-iwyu-add-cstdint-for-uint8_t.patch
+        iwyu-add-stdint.h-for-various-int-types-in-base.patch
+        iwyu-add-cstdint-for-uintptr_t-in-device.patch
+        iwyu-add-stdint.h-for-uint32_t-in-chrome_pdf.patch
+        iwyu-add-stdint.h-for-uint64_t-in-EncounteredSurface.patch
+        iwyu-add-stdint.h-for-integer-types-in-ui.patch
+        openscreen-iwyu-add-stdint.h.patch
+        pdfium-iwyu-add-stdint.h-for-uint32_t.patch
+        iwyu-add-stdint.h-for-uint32_t-in-cc.patch
+        add-missing-includes-causing-build-errors.patch
+        iwyu-add-stdint.h-for-int-types-in-gpu_feature_info.patch
+        iwyu-add-stdint.h-for-various-int-types-in-comp.patch
+        iwyu-add-stdint.h-for-various-integer-types-in-net.patch
+        iwyu-add-cstdint-for-int-types-in-s2cellid.patch
+        random-fixes-for-gcc13.patch
+        more-fixes-for-gcc13.patch
+        libxml2-2.12.patch
+        icu-74.patch
+        makepkg-source-roller.py
         # BEGIN managed sources
         chromium-mirror::git+https://github.com/chromium/chromium.git#tag=112.0.5615.204
         chromium-mirror_third_party_nan::git+https://github.com/nodejs/nan.git#commit=16fa32231e2ccd89d2804b3f765319128b20c4ac
@@ -224,7 +226,6 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         chromium-mirror_third_party_vulkan-deps_vulkan-validation-layers_src::git+https://chromium.googlesource.com/external/github.com/KhronosGroup/Vulkan-ValidationLayers.git#commit=5d2b7d957efd02582f94c44a1ea849ac4759a901
         # END managed sources
        )
-# shellcheck disable=SC2034
 sha256sums=('SKIP'
             'b0ac3422a6ab04859b40d4d7c0fd5f703c893c9ec145c9894c468fbc0a4d457c'
             '4484200d90b76830b69eea3a471c103999a3ce86bb2c29e6c14c945bf4102bae'
@@ -398,28 +399,28 @@ sha256sums=('SKIP'
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
   [brotli]=brotli
-  [dav1d]=dav1d
+  [dav1d]="dav1d libdav1d.so"
   [ffmpeg]=ffmpeg
-  [flac]=flac
-  [fontconfig]=fontconfig
-  [freetype]=freetype2
-  [harfbuzz-ng]=harfbuzz
-  [icu]=icu
-  [jsoncpp]=jsoncpp
+  [flac]="flac libFLAC.so"
+  [fontconfig]="fontconfig libfontconfig.so"
+  [freetype]="freetype2 libfreetype.so"
+  [harfbuzz-ng]="harfbuzz libharfbuzz.so libharfbuzz-subset.so"
+  [icu]="icu libicui18n.so libicuuc.so"
+  [jsoncpp]="jsoncpp libjsoncpp.so"  # needs libstdc++
   [libaom]=aom
-  #[libavif]=libavif # https://github.com/AOMediaCodec/libavif/commit/4d2776a3
-  [libdrm]=
-  [libjpeg]=libjpeg
-  [libpng]=libpng
+  # [libavif]=libavif # libavif.so libavutil.so # needs https://github.com/AOMediaCodec/libavif/commit/5410b23f76
+  [libdrm]=libdrm # libdrm.so
+  [libjpeg]="libjpeg libjpeg.so"
+  [libpng]="libpng libpng16.so"
   #[libvpx]=libvpx
-  [libwebp]=libwebp
-  [libxml]=libxml2
-  [libxslt]=libxslt
-  [opus]=opus
-  #[re2]=re2
-  [snappy]=snappy
-  [woff2]=woff2
-  [zlib]=minizip
+  [libwebp]="libwebp libwebpdemux.so libwebpmux.so libwebp.so"
+  [libxml]="libxml2 libxml2.so"
+  [libxslt]="libxslt libxslt.so"
+  [opus]="opus libopus.so"
+  # [re2]="re2 libre2.so" # needs libstdc++
+  [snappy]=snappy # libsnappy.so # needs libstdc++
+  [woff2]="woff2 libwoff2dec.so" # needs libstdc++
+  [zlib]=minizip # libminizip.so
 )
 _unwanted_bundled_libs=(
   $(printf "%s\n" ${!_system_libs[@]} | sed 's/^libjpeg$/&_turbo/')
@@ -429,11 +430,7 @@ depends+=(${_system_libs[@]})
 prepare() {
   sed -i "s|@ELECTRON@|${pkgname}|" electron-launcher.sh
   sed -i "s|@ELECTRON@|${pkgname}|" electron.desktop
-  if [[ ${_use_suffix} != 0 ]]; then
-    sed -i "s|@ELECTRON_NAME@|Electron ${_major_ver}|" electron.desktop
-  else
-    sed -i "s|@ELECTRON_NAME@|Electron|" electron.desktop
-  fi
+  sed -i "s|@ELECTRON_NAME@|Electron ${_major_ver}|" electron.desktop
 
   cp -r chromium-mirror_third_party_depot_tools depot_tools
   export PATH+=":$PWD/depot_tools" DEPOT_TOOLS_UPDATE=0
@@ -539,6 +536,8 @@ prepare() {
 }
 
 build() {
+  cd src
+
   export CC=clang
   export CXX=clang++
   export AR=ar
@@ -571,7 +570,6 @@ build() {
   CFLAGS+='   -Wno-unknown-warning-option'
   CXXFLAGS+=' -Wno-unknown-warning-option'
 
-  cd src || exit
   export CHROMIUM_BUILDTOOLS_PATH="${PWD}/buildtools"
   GN_EXTRA_ARGS='
     custom_toolchain = "//build/toolchain/linux/unbundle:default"
@@ -615,10 +613,6 @@ package() {
 
   install -Dm755 "${srcdir}/electron-launcher.sh" \
     "${pkgdir}/usr/bin/${pkgname}"
-  if [[ "${_use_suffix}" == 0 ]]; then
-    ln -s "/usr/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}${_major_ver}"
-    ln -s "/usr/lib/${pkgname}" "${pkgdir}/usr/lib/${pkgname}${_major_ver}"
-  fi
 
   # Install .desktop and icon file (see default_app-icon.patch)
   install -Dm644 electron.desktop \
