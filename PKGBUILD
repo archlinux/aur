@@ -3,7 +3,7 @@
 pkgname=harmonyvpktool
 pkgdesc="An all new Titanfall VPK unpacker. Over 2x faster than the most popular alternative! (ALPHA pre-release)"
 pkgver=2.0.0.alpha.2
-pkgrel=1
+pkgrel=2
 url="https://github.com/harmonytf/HarmonyVPKTool"
 license=('GPL3')
 arch=('x86_64')
@@ -31,7 +31,7 @@ Type=Application" > $pkgname.desktop
 
 build() {
   export CARGO_HOME="$srcdir/CARGO_HOME"
-  export RUSTUP_TOOLCHAIN=stable
+  export RUSTUP_TOOLCHAIN=nightly
   cd HarmonyVPKTool
   yarn tauri build -b none
 }
