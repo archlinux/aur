@@ -3,19 +3,24 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kemoticons-git
-pkgver=_r438.g71a6fea
+pkgver=5.116.0_r472.gf609f63
 pkgrel=1
 pkgdesc='Support for emoticons and emoticons themes'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(karchive5-git kservice5-git)
+depends=(karchive5 kservice5)
 makedepends=(git extra-cmake-modules-git doxygen qt5-tools qt5-doc)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf5-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
+
+prepare() {
+  cd ${pkgname%-git}
+  git checkout kf5
+}
 
 pkgver() {
   cd ${pkgname%-git}
