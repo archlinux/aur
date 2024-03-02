@@ -1,0 +1,29 @@
+pkgbase = gossip-unstable-git
+	pkgdesc = Nostr client, written in rust, egui based. Latest git checkout from 'unstable' branch.
+	pkgver = 0.10.0.unstable.r2828.20240302.3347e880
+	pkgrel = 1
+	url = https://github.com/mikedilger/gossip
+	arch = x86_64
+	arch = i686
+	arch = i586
+	arch = i486
+	arch = i386
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = mold
+	makedepends = optipng
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	optdepends = xdg-utils: For a standardised way of making use of the bundled .desktop file.
+	provides = gossip=0.10.0.unstable.r2828.20240302.3347e880
+	provides = gossip-git=0.10.0.unstable.r2828.20240302.3347e880
+	provides = gossip-unstable=0.10.0.unstable.r2828.20240302.3347e880
+	conflicts = gossip
+	source = gossip::git+https://github.com/mikedilger/gossip.git#branch=unstable
+	source = gossip.desktop
+	sha256sums = SKIP
+	sha256sums = be3cc93e8702bc635a85ee5b6e3c3142b0f1cb5f3e99a37d703ae85b94175f59
+
+pkgname = gossip-unstable-git
