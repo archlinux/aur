@@ -1,6 +1,6 @@
 # Maintainer: A. Benz <hello@benz.dev>
 pkgname=bmv-bin
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc='bulk-rename files from stdin'
 url='https://github.com/abenz1267/bmv'
@@ -9,8 +9,8 @@ source_aarch64=("https://github.com/abenz1267/bmv/releases/download/v$pkgver/bmv
 arch=('x86_64' 'aarch64')
 conflicts=('bmv')
 provides=('bmv')
-sha256sums_x86_64=('5c04cce3d8f08e0c71c85c072a1cbe7dd8c11d0621a64292c112631745734c2f')
-sha256sums_aarch64=('a147eb8ebaea50440ababf0b8c1738f658ded721f7a8bd73d19260c8a8318849')
+sha256sums_x86_64=('efbf61bc15dff4c2c2e244a9a63b81582656d7add6daa3116a5062acbb1cc482')
+sha256sums_aarch64=('f4f2ab793d923ce3d8dc8fa8768019e7bd67e025c6af102ce219ffefb7bfd05a')
 
 package() {
   cd "$srcdir/"
