@@ -9,7 +9,7 @@ pkgname=firefox-globalmenu
 pkgver=123.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, with appmenu patch."
-url="https://www.mozilla.org/firefox/"
+url="https://www.mozilla.org/$_pkgname/"
 arch=(x86_64)
 license=(MPL-2.0)
 provides=("$_pkgname=$pkgver")
@@ -95,12 +95,12 @@ _mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
 
 prepare() {
   mkdir mozbuild
-  cd firefox-$pkgver
+  cd $_pkgname-$pkgver
 
   for patch in "${source[@]}"; do
     if [[ $patch == *.patch ]]; then
       msg2 "applying $patch"
-      patch -Np1 < "$srcdir/$patch"
+      patch --no-backup-if-mismatch -Np1 < "$srcdir/$patch"
     fi
   done
 
@@ -166,7 +166,7 @@ fi
 }
 
 build() {
-  cd firefox-$pkgver
+  cd $_pkgname-$pkgver
 
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
@@ -206,25 +206,36 @@ END
   ./mach clobber
 
   echo "Building optimized browser..."
-  cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-lto=cross
-ac_add_options --enable-profile-use=cross
-ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
-ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
-END
+	cat >.mozconfig ../mozconfig - <<-END
+		ac_add_options --enable-lto=cross
+		ac_add_options --enable-profile-use=cross
+		ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
+		ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+	END
   ./mach build # && echo "Building symbol archive..." & ./mach buildsymbols
 }
 
 package() {
   local desktopid=org.mozilla.$_pkgname
+  local vendordir="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/"
   local distdir="$pkgdir/usr/lib/$_pkgname/distribution/"
   local nssckbi="$pkgdir/usr/lib/$_pkgname/libnssckbi.so"
   local i theme=official
 
-  cd firefox-$pkgver
+  cd $_pkgname-$pkgver
   DESTDIR="$pkgdir" ./mach install
 
   # Distribution
+	install -Dvm644 /dev/stdin "$vendordir/default-preferences.js" <<-END
+		// Use LANG environment variable to choose locale
+		pref("intl.locale.requested", "");
+
+		// Don't disable extensions in the application directory
+		pref("extensions.autoDisableScopes", 0);
+		pref("extensions.enabledScopes", 15);
+
+	END
+
 	install -Dvm644 /dev/stdin "$distdir/distribution.ini" <<-END
 		[Global]
 		id=archlinux
@@ -233,13 +244,10 @@ package() {
 
 		[Preferences]
 		# Distribution
+		mozilla.partner.id="archlinux"
 		app.distributor=archlinux
 		app.distributor.channel=$pkgname
 		app.partner.archlinux=archlinux
-		mozilla.partner.id="archlinux"
-
-		# Don't disable extensions in the application directory
-		extensions.autoDisableScopes=11
 
 		# Enable GNOME Shell search provider
 		browser.gnome-search-provider.enabled=true
@@ -250,6 +258,12 @@ package() {
 		# Default use system title bar
 		browser.tabs.inTitlebar=0
 		browser.theme.dark-private-windows=false
+
+		# Use system-provided dictionaries
+		spellchecker.dictionary_path="/usr/share/hunspell"
+
+		# Restore Compact Mode
+		browser.compactmode.show=true
 
 	END
 
@@ -274,24 +288,21 @@ package() {
   install -Dvm644 taskcluster/docker/firefox-flatpak/$_pkgname-symbolic.svg \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$desktopid-symbolic.svg"
 
-  # Desktop
-  install -Dvm644 -t "$pkgdir/usr/share/applications" \
-    taskcluster/docker/firefox-flatpak/$desktopid.desktop
+  # Replace duplicate binary with link
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
+  ln -srfv "$pkgdir/usr/lib/$_pkgname/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
 
+  # Desktop
+  install -Dvm644 /dev/stdin "$pkgdir/usr/share/applications/$desktopid.desktop" < <(\
+    sed "s|Exec=firefox |Exec=/usr/lib/$_pkgname/$_pkgname --name $desktopid |g" \
+			taskcluster/docker/firefox-flatpak/$desktopid.desktop\
+	)
+
+	# Metainfo
   install -Dvm644 /dev/stdin "$pkgdir/usr/share/metainfo/$desktopid.appdata.xml" < <(\
     VERSION=$pkgver DATE=$(date +%Y-%m-%d) envsubst < \
       taskcluster/docker/firefox-flatpak/$desktopid.appdata.xml.in\
   )
-  
-  # Install a wrapper to avoid confusion about binary path
-  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" < <(\
-    sed "s|/app/lib/firefox/firefox|/usr/lib/$_pkgname/$_pkgname-bin|" \
-      taskcluster/docker/firefox-flatpak/launch-script.sh\
-  )
-
-  # Replace duplicate binary with wrapper
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srfv "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin" "$pkgdir/usr/lib/$_pkgname/$_pkgname"
 
   # Use system certificates
   if [[ -e $nssckbi ]]; then
