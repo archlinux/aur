@@ -1,15 +1,15 @@
 pkgbase = hl-log-viewer-bin
 	pkgdesc = Log viewer which translates JSON logs into pretty human-readable representation
-	pkgver = v0.25.2
+	pkgver = v0.26.0
 	pkgrel = 1
 	url = https://github.com/pamburus/hl
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	conflicts = hl-log-viewer
-	source_x86_64 = hl-log-viewer-bin-v0.25.2.tar.gz::https://github.com/pamburus/hl/releases/download/v0.25.2/hl-linux-x86_64-gnu.tar.gz
-	sha512sums_x86_64 = 8000aaac0b209074fc79d1726ff0256bf369201510e3ca41eb3ed2916df535274afadc8311ad42cfc0a34cb7944a045ab6fbe00207dd8c37b31c71d9387c1c3c
-	source_aarch64 = hl-log-viewer-bin-v0.25.2.tar.gz::https://github.com/pamburus/hl/releases/download/v0.25.2/hl-linux-arm64-gnu.tar.gz
-	sha512sums_aarch64 = d176061edda4c14f3b48a72f0c26f8f8a8f8bc5c16df7e96e019e56ceacec078aac1e22b5c5efed173654af250eaa8536a64033c08f94dbb00cb382204d2df00
+	source_x86_64 = hl-log-viewer-bin-v0.26.0.tar.gz::https://github.com/pamburus/hl/releases/download/v0.26.0/hl-linux-x86_64-gnu.tar.gz
+	sha512sums_x86_64 = 485784b64220998f6d256521157c2aba71f9d6c5671dd67f19798ae7769ae8c4980b516797a6354c3407d9b80e29cdcd742577682c03274ca6c2c0c492e3b403
+	source_aarch64 = hl-log-viewer-bin-v0.26.0.tar.gz::https://github.com/pamburus/hl/releases/download/v0.26.0/hl-linux-arm64-gnu.tar.gz
+	sha512sums_aarch64 = 26d17c547cfa80f77151afd877f29a654bc30c1b88329a0d8cf527fd484892cc5a969ea857700b803bbf7a1e64629bcadd226897bab3a52f7339dec6d18f47b7
 
 pkgname = hl-log-viewer-bin
