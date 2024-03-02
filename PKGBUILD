@@ -4,9 +4,13 @@
 # https://releases.electronjs.org/
 # https://github.com/stha09/chromium-patches/releases
 
+# Note: PKGBUILD source array can be updated to sources matching an exact Electron release with:
+# python makepkg-source-roller.py update v$pkgver $pkgname
+
+_use_suffix=1
 pkgver=26.6.10
-_chromiumver=116.0.5845.228
-_gcc_patchset=116-patchset-2
+_gcc_patches=116-patchset-2
+# shellcheck disable=SC2034
 pkgrel=1
 _major_ver=${pkgver%%.*}
 pkgname="electron${_major_ver}"
@@ -53,9 +57,7 @@ optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)')
 options=('!lto') # Electron adds its own flags for ThinLTO
 source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
-        'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#branch=main'
-        "chromium-mirror::git+https://github.com/chromium/chromium.git#tag=$_chromiumver"
-        "https://github.com/stha09/chromium-patches/releases/download/chromium-$_gcc_patchset/chromium-$_gcc_patchset.tar.xz"
+        "https://github.com/stha09/chromium-patches/releases/download/chromium-$_gcc_patches/chromium-$_gcc_patches.tar.xz"
         REVERT-disable-autoupgrading-debug-info.patch
         default_app-icon.patch
         electron-launcher.sh
@@ -64,10 +66,12 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         jinja-python-3.10.patch
         libxml2-2.12.patch
         std-vector-non-const.patch
-        use-system-libraries-in-node.patch)
+        use-system-libraries-in-node.patch
+        "makepkg-source-roller.py"
+        # BEGIN managed sources
+        # END managed sources
+       )
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
             '25ad7c1a5e0b7332f80ed15ccf07d7e871d8ffb4af64df7c8fef325a527859b0'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
             'dd2d248831dd4944d385ebf008426e66efe61d6fdf66f8932c963a12167947b4'
@@ -77,8 +81,8 @@ sha256sums=('SKIP'
             '55dbe71dbc1f3ab60bf1fa79f7aea7ef1fe76436b1d7df48728a1f8227d2134e'
             '1808df5ba4d1e2f9efa07ac6b510bec866fa6d60e44505d82aea3f6072105a71'
             '893bc04c7fceba2f0a7195ed48551d55f066bbc530ec934c89c55768e6f3949c'
-            'ff588a8a4fd2f79eb8a4f11cf1aa151298ffb895be566c57cc355d47f161f53f')
-
+            'ff588a8a4fd2f79eb8a4f11cf1aa151298ffb895be566c57cc355d47f161f53f'
+            '1eebf52f298ffb0a5525fa64b28039a6a0b5d83c07c3457262c88e9cc4bb0451')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -118,33 +122,15 @@ prepare() {
   sed -i "s|@ELECTRON@|${pkgname}|" electron.desktop
   sed -i "s|@ELECTRON_NAME@|Electron ${_major_ver}|" electron.desktop
 
-  sed --in-place "/'chromium_version':/{n;s/'[0-9.]\+',/'${_chromiumver}',/}" "${srcdir}/electron/DEPS"
-
-cat >.gclient <<EOF
-solutions = [
-  {
-    "name": "src/electron",
-    "url": "file://${srcdir}/electron@v$pkgver",
-    "deps_file": "DEPS",
-    "managed": False,
-    "custom_deps": {
-      "src": None,
-    },
-    "custom_vars": {},
-  },
-]
-EOF
-
+  cp -r chromium-mirror_third_party_depot_tools depot_tools
   export PATH+=":$PWD/depot_tools" DEPOT_TOOLS_UPDATE=0
   export VPYTHON_BYPASS='manually managed python not supported by chrome operations'
 
-  echo "Linking chromium from sources..."
-  ln -sfn chromium-mirror src
-
-  depot_tools/gclient.py sync -D \
-      --nohooks \
-      --with_branch_heads \
-      --with_tags
+  echo "Putting together electron sources"
+  # Generate gclient gn args file and prepare-electron-source-tree.sh
+  python makepkg-source-roller.py generate electron/DEPS $pkgname
+  bash prepare-electron-source-tree.sh "$CARCH"
+  mv electron src/electron
 
   echo "Running hooks..."
   # depot_tools/gclient.py runhooks
@@ -163,6 +149,14 @@ EOF
 
   patch -Np1 -i "${srcdir}/std-vector-non-const.patch" -d src/electron
 
+  # Create sysmlink to system clang-format
+  ln -s /usr/bin/clang-format src/buildtools/linux64
+  # Create sysmlink to system Node.js
+  mkdir -p src/third_party/node/linux/node-linux-x64/bin
+  ln -sf /usr/bin/node src/third_party/node/linux/node-linux-x64/bin
+  # Use system java
+  mkdir -p src/third_party/jdk/current/bin
+  ln -sfn /usr/bin/java src/third_party/jdk/current/bin/
   src/electron/script/apply_all_patches.py \
       src/electron/patches/config.json
 
