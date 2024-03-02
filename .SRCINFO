@@ -1,20 +1,20 @@
 pkgbase = libdicomscope-jni-bin
 	pkgdesc = OFFIS DICOM viewer (JNI files).
 	pkgver = 3.6.0
-	pkgrel = 20.1
+	pkgrel = 27
 	url = https://dicom.offis.de/dscope.php.en
 	arch = i686
 	arch = x86_64
 	groups = 
 	license = OFFIS
-	depends = libdcmtk14
+	depends = libdcmtk17
 	provides = libdicomscope-jni
 	conflicts = libdicomscope-jni
 	replaces = libdicomscope-jni
 	replaces = dicomscope<3.6.0
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://mirrors.kernel.org/ubuntu/pool/universe/d/dicomscope/libdicomscope-jni_3.6.0-20build1_amd64.deb
-	sha256sums_x86_64 = 80824e47379de237f5a5c4a118ef960cc2280f870544ccab0c2543e1b10dbc36
+	source_x86_64 = https://mirrors.kernel.org/ubuntu/pool/universe/d/dicomscope/libdicomscope-jni_3.6.0-27_amd64.deb
+	sha256sums_x86_64 = 662ab5f2d421c726902f9d2c1c52fa20f8601f672841d62d88a8162d1457b41d
 
 pkgname = libdicomscope-jni-bin
