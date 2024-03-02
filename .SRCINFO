@@ -1,0 +1,21 @@
+pkgbase = python-jsonschema-objects
+	pkgdesc = Return the jsonschema-objects true value of an iterable
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/cwacek/python-jsonschema-objects
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-mock
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-inflection
+	depends = python-markdown
+	depends = python-jsonschema
+	depends = python-six
+	source = python-jsonschema-objects-0.5.3.tar.gz::https://github.com/cwacek/python-jsonschema-objects/archive/0.5.3.tar.gz
+	sha512sums = 2b8028f15586d40867078dcf60e23893a72f8de00026b3b81048d9ccad86347f08c419e89af4de9aa1035a1ee277864535a7459a5ac01de9c688e0f8fbeb61f4
+
+pkgname = python-jsonschema-objects
