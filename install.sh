@@ -5,8 +5,3 @@ post_install() {
     echo "Soundfonts can be selected from the Options -> General menu inside Woof!."
     echo "See also https://wiki.archlinux.org/title/FluidSynth for more information."
 }
-
-
-post_upgrade() {
-    post_install
-}
