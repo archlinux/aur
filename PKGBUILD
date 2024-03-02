@@ -1,4 +1,4 @@
-# Maintainer: Troplo <troplo@troplo.com
+# Maintainer: Troplo <troplo@troplo.com>
 pkgname=flowinity
 pkgname_internal=flowinity-desktop
 pkgver=1.0.1
