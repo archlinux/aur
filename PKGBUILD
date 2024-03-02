@@ -4,7 +4,7 @@
 # Contributor: Masato TOYOSHIMA <phoepsilonix@phoepsilonix.love>
 
 pkgname=pulldown-cmark
-pkgver=0.9.6
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Pull parser for CommonMark, written in Rust'
 arch=(x86_64)
@@ -14,13 +14,15 @@ depends=(gcc-libs
          glibc)
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
-source=("$_archive.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('074d70722bb42cff59f85c209c3f0c00a739d76a22bcca123a33a0a899df49105887565d71525ec5926261efb74b912bcd024714617d83ca72bcef86bc428764')
-b2sums=('39376ce32138115e2def495b6d2761500da8045677dff9f919526b7c297e00e72484cca51f9b3d6e0cbacf12f681b1651209296845561324750f5544eff516bb')
+source=("$_archive.tar.gz::https://static.crates.io/crates/$pkgname/$_archive.crate"
+        "$_archive-LICENSE::$url/raw/v$pkgver/LICENSE")
+sha256sums=('dce76ce678ffc8e5675b22aa1405de0b7037e2fdf8913fea40d1926c6fe1e6e7'
+            'c4f10f55904bdb9f27d3fbf94c354926d6cfe8b982276e556238c258941b243b')
 
 prepare() {
 	cd "$_archive"
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cp ../$_archive-LICENSE LICENSE
 }
 
 _srcenv() {
