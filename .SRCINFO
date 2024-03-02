@@ -1,13 +1,13 @@
 pkgbase = smh-bin
 	pkgdesc = String manipulationg tool written in haskell
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	arch = x86_64
 	license = MIT
 	depends = gmp
-	source = https://github.com/DanRyba253/smh/releases/download/v0.1.1/smh
-	source = https://github.com/DanRyba253/smh/releases/download/v0.1.1/smh-manpage
-	sha256sums = 95d553cbcfc2ad258945729b46782e2ec0ba38943b1520da27372a72556d28e3
-	sha256sums = 8aa7fe53e59075321b981a010837aaf6455a3d69deebf5fb830670a55f79d519
+	source = https://github.com/DanRyba253/smh/releases/download/v0.1.2/smh
+	source = https://github.com/DanRyba253/smh/releases/download/v0.1.2/smh-manpage
+	sha256sums = fcb94c683cd9e1bdc205a57e801843434173d410f14be0eb3612f07d127427fe
+	sha256sums = cf63ee4dcdcbccd9183a6788a797323a8c153407600500e4ded96e0df9b2d8fc
 
 pkgname = smh-bin
