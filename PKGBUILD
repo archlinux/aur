@@ -1,7 +1,8 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Atte Lautanala <atte@lautana.la>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-auto-session-git
-pkgver=r109.6f9506c
+pkgver=r343.29a8c77
 pkgrel=1
 pkgdesc="Small automated session manager"
 arch=('any')
@@ -23,7 +24,7 @@ pkgver() {
 
 package() {
 	cd "$pkgname"
-	find lua plugin -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+	find doc lua -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
 	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
