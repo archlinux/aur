@@ -10,10 +10,10 @@ license=('BSD-2')
 depends=(
 	avahi
 	cuda
-	libpulse
 	ffmpeg
 	gcc-libs
 	glibc
+	libpulse
 	nvidia-utils
 	openssl
 	opus
