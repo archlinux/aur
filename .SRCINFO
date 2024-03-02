@@ -1,7 +1,7 @@
 pkgbase = dracut-git
 	pkgdesc = An event driven initramfs infrastructure
 	pkgver = 059.r214.4980bad3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dracutdevs/dracut
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -64,6 +64,8 @@ pkgbase = dracut-git
 	conflicts = dracut
 	backup = etc/dracut.conf
 	source = git+https://github.com/dracutdevs/dracut.git
+	source = 2527.patch::https://github.com/dracutdevs/dracut/commit/a2fe89116db4b286fbf515f26bd1773b5e6ee8ad.patch
 	sha512sums = SKIP
+	sha512sums = bba154e13463fb759e1cfd5f461b2b4e786ad8c6f4cacacbd918e911efc7d5a5368300676d6e6d8e9b7b2f4333314886bb1e34daac9f0c73c1c441baf7918063
 
 pkgname = dracut-git

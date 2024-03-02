@@ -3,7 +3,7 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=059.r214.4980bad3
-pkgrel=1
+pkgrel=2
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracutdevs/dracut'
@@ -73,12 +73,21 @@ conflicts=("${pkgname%-git}")
 backup=('etc/dracut.conf')
 source=(
   'git+https://github.com/dracutdevs/dracut.git'
+  2527.patch::https://github.com/dracutdevs/dracut/commit/a2fe89116db4b286fbf515f26bd1773b5e6ee8ad.patch
 )
-sha512sums=('SKIP')
+sha512sums=(
+  'SKIP'
+  bba154e13463fb759e1cfd5f461b2b4e786ad8c6f4cacacbd918e911efc7d5a5368300676d6e6d8e9b7b2f4333314886bb1e34daac9f0c73c1c441baf7918063
+)
 
 pkgver() {
   cd "${pkgname%-git}"
   git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${pkgname%-git}"
+  patch -Np1 < ../*.patch
 }
 
 build() {
