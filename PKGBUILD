@@ -1,6 +1,6 @@
 # Maintainer: Felipe Alfonso Gonzalez <f.alfonso@res-ear.ch>
 pkgname=feather-pdf
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="FeatherPDF is an ultra-lightweight PDF viewer."
 arch=('x86_64')
@@ -10,15 +10,15 @@ depends=('python' 'python-pip' 'python-pyqt5')
 
 source=("https://github.com/felipealfonsog/FeatherPDF/archive/refs/tags/v.${pkgver}.tar.gz")
 
-sha256sums=('3e6da0582ebc599e5b624c899faec3ad78e69cce4e4cd0ce0d3529f279a5fd51')
+sha256sums=('3e48de8a0168c4a69b58e8a8020b3e495939da2202ef625dcaece15613df3f1a')
 
 prepare() {
-  tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
+  tar xf "v${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
 }
 
 package() {
   # Install the Python script
-  install -Dm755 "$srcdir"/FeatherPDF-v."${pkgver}"/src/featherpdf.py "${pkgdir}/usr/local/bin/feather-pdf.py"
+  install -Dm755 "$srcdir"/FeatherPDF-v"${pkgver}"/src/featherpdf.py "${pkgdir}/usr/local/bin/feather-pdf.py"
   
   # Create a shell script to execute feather-pdf.py and copy it to /usr/local/bin
   echo '#!/bin/bash' > feather-pdf
@@ -27,19 +27,9 @@ package() {
   install -Dm755 feather-pdf "${pkgdir}/usr/local/bin/feather-pdf"
 
   # Install the icon
-  install -Dm644 "$srcdir"/FeatherPDF-v."${pkgver}"/src/fpdf-iconlogo.png "${pkgdir}/usr/share/pixmaps/feather-pdf.png"
+  install -Dm644 "$srcdir"/FeatherPDF-v"${pkgver}"/src/fpdf-iconlogo.png "${pkgdir}/usr/share/pixmaps/feather-pdf.png"
 
-  # Create the .desktop file dynamically
-  cat << EOF > feather-pdf.desktop
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=FeatherPDF
-Comment=Ultra-lightweight PDF viewer
-Exec=feather-pdf
-Icon=feather-pdf
-Terminal=false
-Categories=Office;Utility;
-EOF
-  install -Dm644 feather-pdf.desktop "${pkgdir}/usr/share/applications/feather-pdf.desktop"
+  # Install the .desktop file
+  install -Dm644 "$srcdir"/feather-pdf.desktop "${pkgdir}/usr/share/applications/feather-pdf.desktop"
 }
+

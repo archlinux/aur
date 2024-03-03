@@ -1,6 +1,6 @@
 pkgbase = feather-pdf
 	pkgdesc = FeatherPDF is an ultra-lightweight PDF viewer.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/felipealfonsog/FeatherPDF
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = feather-pdf
 	depends = python
 	depends = python-pip
 	depends = python-pyqt5
-	source = https://github.com/felipealfonsog/FeatherPDF/archive/refs/tags/v.1.0.0.tar.gz
-	sha256sums = 3e6da0582ebc599e5b624c899faec3ad78e69cce4e4cd0ce0d3529f279a5fd51
+	source = https://github.com/felipealfonsog/FeatherPDF/archive/refs/tags/v.1.0.1.tar.gz
+	sha256sums = 3e48de8a0168c4a69b58e8a8020b3e495939da2202ef625dcaece15613df3f1a
 
 pkgname = feather-pdf
