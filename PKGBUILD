@@ -2,7 +2,7 @@
 
 _pkgname=maui-shell
 pkgname=$_pkgname-git
-pkgver=0.6.6.r0.gccc2224
+pkgver=0.6.6.r10.gabe5e68
 pkgrel=1
 pkgdesc='Maui Shell is a convergent shell for desktops, tablets, and phones.'
 url='https://github.com/Nitrux/maui-shell'
@@ -11,8 +11,6 @@ license=(LGPL3)
 depends=(bluedevil
          cask-server-git
          fontconfig
-         kactivities
-         kactivities-stats
          karchive
          kconfig
          kcoreaddons
@@ -21,7 +19,7 @@ depends=(bluedevil
          kdeclarative
          kded
          kdesu
-         kdoctools
+         # kdoctools
          kglobalaccel
          ki18n
          kiconthemes
@@ -44,16 +42,16 @@ depends=(bluedevil
          mauikit-filebrowsing
          mauikit-git
          mauiman-git
-         phonon-qt5
+         phonon-qt6
          plasma-nm
          plasma-pa
-         polkit-qt5
+         polkit-qt6
          prison
-         qt5-base
-         qt5-declarative
-         qt5-quickcontrols2
-         qt5-svg
-         qt5-wayland
+         qt6-base
+         qt6-declarative
+         qt6-quickcontrols2
+         qt6-svg
+         qt6-wayland
          solid)
 makedepends=(git extra-cmake-modules)
 optdepends=('maui-settings-git: Settings Manager Apps for the Maui DE')
@@ -73,6 +71,7 @@ pkgver() {
 
 build() {
   cmake -B build -S $_pkgname \
+    -DBUILD_WITH_QT6=ON \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
