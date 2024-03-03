@@ -1,6 +1,6 @@
 pkgbase = dopamine-appimage-preview
 	pkgdesc = The audio player that keeps it simple
-	pkgver = 3.0.0.preview.24
+	pkgver = 3.0.0.preview.25
 	pkgrel = 1
 	url = https://digimezzo.github.io/site/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = dopamine-appimage-preview
 	options = !strip
 	source = dopamine.desktop
 	sha512sums = c27e980de4fb9e9a4a7b714c65c35aef9fe37e13f4589e5c1160e927df4dd9e0370999995d092b7009829bc1e410cd7fbfbd4f3fb11ffa05d5c5cfb1657ba793
-	source_x86_64 = https://github.com/digimezzo/dopamine/releases/download/v3.0.0-preview20/Dopamine-3.0.0-preview.20.AppImage
-	sha512sums_x86_64 = 738ab7232a7d3f34fa29ff20b073467191a7358b1c5d5756e59b6351b2db698657b240532eaff910d6f2fcc70faff93f88d954bcea0f51d0a3ac4190028ac345
+	source_x86_64 = https://github.com/digimezzo/dopamine/releases/download/v3.0.0-preview20/Dopamine-3.0.0-preview.25.AppImage
+	sha512sums_x86_64 = 8820f95e3ab32951b6eeda7a768d878ec6aa3ba8315345b94ce87dacdee01ebf287adb5845618b377d4839302f74445ed1341b9bdf57cff45bb4aab3dbb7408b
 
 pkgname = dopamine-appimage-preview
