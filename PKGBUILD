@@ -1,6 +1,6 @@
 # Maintainer: Noa <coolreader18@gmail.com>
 pkgname=celeste64-git
-pkgver=v1.1.1.r9.e24fcff
+pkgver=1.1.1.r9.e24fcff
 pkgrel=1
 pkgdesc="A game made in under 2 weeks for Celeste's 6th Anniversary (git)"
 arch=(x86_64)
@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g' | sed 's/^v//')"
 }
 
 prepare() {
