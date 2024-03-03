@@ -2,7 +2,7 @@
 # Contributor: xXR01I1Xx <xxr01i1xx@tuta.io>
 
 pkgname=session-desktop-git
-pkgver=v1.11.0.r135.g83079a8b4
+pkgver=v1.12.0.r5.gf402a14ab
 _semver_pat='s/v([0-9]+\.[0-9]+\.[0-9]+)\..+\.(.+)/\1-\2/g'
 pkgrel=1
 pkgdesc="Private messaging from your desktop"
@@ -10,7 +10,7 @@ arch=(x86_64)
 url="https://getsession.org"
 license=('GPL-3.0')
 depends=(libxtst nss alsa-lib libxss libnotify xdg-utils)
-makedepends=('git' 'nvm' 'yarn')
+makedepends=('git' 'nvm' 'yarn' 'cmake' 'python')
 optdepends=('libappindicator-gtk3: for tray support')
 provides=(session-messenger-desktop)
 conflicts=(session-desktop session-desktop-bin session-desktop-appimage)

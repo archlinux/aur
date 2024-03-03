@@ -1,6 +1,6 @@
 pkgbase = session-desktop-git
 	pkgdesc = Private messaging from your desktop
-	pkgver = v1.11.0.r135.g83079a8b4
+	pkgver = v1.12.0.r5.gf402a14ab
 	pkgrel = 1
 	url = https://getsession.org
 	install = session-desktop-git.install
@@ -9,6 +9,8 @@ pkgbase = session-desktop-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = yarn
+	makedepends = cmake
+	makedepends = python
 	depends = libxtst
 	depends = nss
 	depends = alsa-lib
