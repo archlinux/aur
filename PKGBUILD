@@ -42,4 +42,17 @@ Terminal=false
 Categories=Utility;Office;
 EOF
   install -Dm644 feather-pdf.desktop "${pkgdir}/usr/share/applications/feather-pdf.desktop"
+
+  # Install FeatherPDF in GNOME and KDE menus
+  install -Dm644 feather-pdf.desktop "${pkgdir}/usr/share/applications/gnome-feather-pdf.desktop"
+  install -Dm644 feather-pdf.desktop "${pkgdir}/usr/share/applications/kde-feather-pdf.desktop"
+
+  # Install FeatherPDF in Enlightenment menu
+  install -Dm644 feather-pdf.desktop "${pkgdir}/usr/share/enlightenment/apps/applications/feather-pdf.desktop"
+
+  # Install FeatherPDF in Fluxbox menu
+  install -Dm644 feather-pdf.desktop "${pkgdir}/usr/share/fluxbox/feather-pdf.desktop"
+
+  # Install FeatherPDF in Blackbox menu
+  install -Dm644 feather-pdf.desktop "${pkgdir}/usr/share/blackbox/feather-pdf.desktop"
 }
