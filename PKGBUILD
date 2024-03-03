@@ -8,7 +8,7 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-hwloc
 pkgver=2.10.0
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc='Portable Hardware Locality is a portable abstraction of hierarchical architectures (android)'
 url='https://www.open-mpi.org/projects/hwloc/'
@@ -52,6 +52,7 @@ build() {
     android-${_android_arch}-configure \
         --enable-plugins
     make -C "${PWD}/hwloc" $MAKEFLAGS
+    make -C "${PWD}/include" $MAKEFLAGS
     make hwloc.pc $MAKEFLAGS
 }
 
@@ -60,6 +61,7 @@ package() {
     source android-env ${_android_arch}
 
     make -C "${PWD}/hwloc" DESTDIR="${pkgdir}" install
+    make -C "${PWD}/include" DESTDIR="${pkgdir}" install
     make DESTDIR="${pkgdir}" install-hwlocpkgconfigDATA
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
     ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
