@@ -30,7 +30,7 @@ package() {
   install -Dm644 "$srcdir"/FeatherPDF-v."${pkgver}"/src/fpdf-iconlogo.png "${pkgdir}/usr/share/pixmaps/feather-pdf.png"
 
   # Create the .desktop file dynamically
-  cat << EOF > feather-pdf.desktop
+  cat << EOF > "$pkgdir/usr/share/applications/feather-pdf.desktop"
 [Desktop Entry]
 Version=1.0
 Type=Application
@@ -41,5 +41,4 @@ Icon=feather-pdf
 Terminal=false
 Categories=Office;
 EOF
-  install -Dm644 feather-pdf.desktop "${pkgdir}/usr/share/applications/feather-pdf.desktop"
 }
