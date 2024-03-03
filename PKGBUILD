@@ -5,11 +5,11 @@ _pkgname=glmmTMB
 _pkgver=1.1.8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=7
 pkgdesc="Generalized Linear Mixed Models using Template Model Builder"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_pkgname}"
-license=(AGPL3)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('AGPL-3.0-only')
 depends=(
   r-lme4
   r-numderiv
@@ -55,11 +55,11 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('b38f12164a971f380576ad2743f3ef12')
-sha256sums=('4248f6c37a2f82543bc0160c71d6d409ff742a4b1b29b417a42f34460489bd14')
+b2sums=('b9b4ed1f8ab5a4a02a235ed337ce14d4d8e137ec6ca06ebb56f71ed6aed899adf21dee7ebce27e717f177d6075516faed14c4370b91e27cd5bf91448b2f39f2e')
 
 build() {
-  mkdir -p build
-  R CMD INSTALL "$_pkgname" -l build
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
