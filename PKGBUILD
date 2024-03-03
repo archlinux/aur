@@ -98,6 +98,7 @@ source=(
   'git+https://github.com/dracutdevs/dracut.git'
   2429.patch::https://github.com/dracutdevs/dracut/commit/71055058c0bdb6fec0dbebf2ec8bbfc968820b88.patch
   2527.patch::https://github.com/dracutdevs/dracut/commit/a2fe89116db4b286fbf515f26bd1773b5e6ee8ad.patch
+  2565.patch::https://github.com/dracutdevs/dracut/commit/8b3d8c73eba275c01d9714807c10899a5703f656.patch
   2610.patch::https://github.com/dracutdevs/dracut/commit/f68d056bd9d32f4fc0c15163b256d1811a552302.patch
   2613.patch::https://github.com/dracutdevs/dracut/commit/619de721cff44ed7c0b809bee80aee6986577e59.patch
 )
@@ -105,6 +106,7 @@ sha512sums=(
   'SKIP'
   83c1f6ff6cdee619dfe8bc7dd6401797e427678701424c85c0dd91268575ce2dd8d164ff8bf029afcf884835bd220929d22a15ab5da2ddf3cfffdc80dbdcf3c3
   bba154e13463fb759e1cfd5f461b2b4e786ad8c6f4cacacbd918e911efc7d5a5368300676d6e6d8e9b7b2f4333314886bb1e34daac9f0c73c1c441baf7918063
+  81bcdfc63864fa6b820c78d9b70854998f86d35cb34913b564ce94dcc094e7fc31038ea14a5a5e3870748824b63a24cca8c7db572d6cf7b4e31f30399f3ab064
   fdffc9362d72c98cd595f458b7a20157868e4f445ad692afde8337df77496bc905597d18d646b01ee58f9cdd3eefc848bfe04e9aa565fde6e4a2e65aa3fe75e0
   d55de661daadd47d2b08ae5d0bc7d651f5bc93a189b58d1f0fac2496b31069212e2e120f7ba56e3afa5cfe7360070a1afd3ed609760d812264829fb8ec9c246f
 )
@@ -151,7 +153,7 @@ build() {
 check() {
   cd "${pkgname%-git}/test"
 
-  SKIP="18 20 30 35 40 50 60 62 63" KVERSION="$(cd /lib/modules && ls -1 | tail -1)" make check
+  SKIP="20 30 35 40 50 60 62 63" KVERSION="$(cd /lib/modules && ls -1 | tail -1)" make check
 }
 
 package() {
