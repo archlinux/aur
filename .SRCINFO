@@ -1,15 +1,16 @@
 pkgbase = teamspeak3-addon-installer
 	pkgdesc = Simple script to install packages from Teamspeak 3's addon site. Automatically creates packages for the teamspeak directory
 	pkgver = 0.2
-	pkgrel = 1
-	url = https://github.com/Nekoavel/teamspeak3-addon-installer
+	pkgrel = 2
+	url = https://github.com/NekoPavel/teamspeak3-addon-installer
 	arch = any
 	license = WTFPL
 	depends = bash
 	depends = teamspeak3
+	depends = pacman-contrib
 	source = teamspeak3-install-addon
 	source = WTFPL
 	sha256sums = 41662e057318496023a0f59f02b420d65a7e988bc0e2bba017eadfc007823b93
-	sha256sums = c843583b8a523b4172e54b53721e09d0d852d82e9a548e46fa15b8adb0edce27
+	sha256sums = 7637386b5f81e8a719ca336233149005e5fa28b5e6054ea7b67de49355b0ad40
 
 pkgname = teamspeak3-addon-installer

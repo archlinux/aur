@@ -2,7 +2,7 @@
 # Contributor: Emily Marigold Klassen <forivall@gmail.com>
 pkgname='teamspeak3-addon-installer'
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple script to install packages from Teamspeak 3'\''s addon site. Automatically creates packages for the teamspeak directory'
 arch=('any')
 url='https://github.com/NekoPavel/teamspeak3-addon-installer'
