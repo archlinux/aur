@@ -32,6 +32,7 @@ import                   contextlib
 import                   datetime
 import                   fnmatch
 import                   getpass
+import                   glob
 import                   hashlib
 import                   json
 import                   logging
@@ -48,8 +49,12 @@ import                   threading
 import                   time
 import                   traceback
 
-try:                import urllib.request as urlrequest
-except ImportError: import urllib         as urlrequest
+try:
+    import urllib.request as urlrequest
+except ImportError:
+    import urllib
+    import urllib2 as urlrequest
+    urlrequest.pathname2url = urllib.pathname2url
 
 
 try:                import urllib.parse as urlparse
@@ -69,7 +74,7 @@ log = logging.getLogger(__name__)
 __absfile__ = op.abspath(__file__).rstrip('c')
 
 
-__version__ = '3.5.7'
+__version__ = '3.9.0'
 """Installer script version number. This must be updated
 whenever a new version of the installer script is released.
 """
@@ -129,6 +134,29 @@ ANSICODES = {
     RESET     : '\033[0m',          # Used internally
 }
 
+def get_terminal_width(fallback=None):
+    """Return the number of columns in the current terminal, or fallback
+    if it cannot be determined.
+    """
+    # os.get_terminal_size added in python
+    # 3.3, so we try it but fall back to
+    # COLUMNS, or tput as a last resort.
+    try:
+        return shutil.get_terminal_size()[0]
+    except Exception:
+        pass
+
+    try:
+        return int(os.environ['COLUMNS'])
+    except Exception:
+        pass
+
+    try:
+        result = Process.check_output('tput cols', log_output=False)
+        return int(result.strip())
+    except Exception:
+        return fallback
+
 
 def printmsg(*args, **kwargs):
     """Prints a sequence of strings formatted with ANSI codes. Expects
@@ -136,15 +164,21 @@ def printmsg(*args, **kwargs):
 
         printable, ANSICODE, printable, ANSICODE, ...
 
-    :arg log: Must be specified as a keyword argument. If True (default),
-              the message is logged.
+    :arg log:  Must be specified as a keyword argument. If True (default),
+               the message is logged.
+
+    :arg fill: Must be specified as a keyword argument. If True (default),
+               the message is wrapped to the terminal width.
 
     All other keyword arguments are passed through to the print function.
     """
 
     args     = list(args)
     blockids = [i for i in range(len(args)) if (args[i] not in ANSICODES)]
-    logmsg   = kwargs.pop('log', True)
+    logmsg   = kwargs.pop('log',  True)
+    fill     = kwargs.pop('fill', True)
+
+    coded    = ''
     uncoded  = ''
 
     for i, idx in enumerate(blockids):
@@ -158,11 +192,16 @@ def printmsg(*args, **kwargs):
         msgcodes = [ANSICODES[c] for c in msgcodes]
         msgcodes = ''.join(msgcodes)
         uncoded += msg
-
-        print('{}{}{}'.format(msgcodes, msg, ANSICODES[RESET]), end='')
+        coded   += '{}{}{}'.format(msgcodes, msg, ANSICODES[RESET])
 
     if len(blockids) > 0:
-        print(**kwargs)
+
+        if fill:
+            width = get_terminal_width(70)
+            coded = tw.fill(coded, width, replace_whitespace=False)
+
+        print(coded, **kwargs)
+
         if logmsg:
             log.debug(uncoded)
 
@@ -181,6 +220,24 @@ def prompt(promptmsg, *msgtypes, **kwargs):
     log.debug('%s: %s', promptmsg, response)
 
     return response
+
+
+def post_request(url, data):
+    """Send JSON data to a URL via a HTTP POST request. """
+
+    data                    = json.dumps(data).encode('utf-8')
+    headers                 = {}
+    headers['Content-Type'] = 'application/json'
+    resp                    = None
+
+    try:
+        req  = urlrequest.Request(url,
+                                  headers=headers,
+                                  data=data)
+        resp = urlrequest.urlopen(req)
+    finally:
+        if resp:
+            resp.close()
 
 
 def identify_platform():
@@ -212,6 +269,18 @@ def identify_platform():
                             system, cpu, supported))
 
     return platforms[key]
+
+
+def timestamp():
+    """Return a string containing the local time, with time zone offset.
+    """
+    now     = datetime.datetime.now()
+    offset  = (now - datetime.datetime.utcnow())
+    offset  = round(offset.total_seconds())
+    hours   = int(offset / 3600)
+    minutes = int((offset % 3600) / 60)
+    now     = now.strftime('%Y-%m-%dT%H:%M:%S')
+    return '{}{:+03d}:{:02d}'.format(now, hours, minutes)
 
 
 def check_need_admin(dirname):
@@ -302,6 +371,35 @@ def tempdir(override_dir=None, change_into=True, delete=True):
             shutil.rmtree(tmpdir)
 
 
+def warn_on_error(*msgargs, **msgkwargs):
+    """Decorator which tries to run a function, and prints a message if it
+    fails. The arguments after the function are passed to the printmsg
+    function, e.g.:
+
+    @warn_on_error('Function failed!', WARNING)
+    def function(a, b):
+        ...
+
+    function('a', 'b')
+
+    :arg toscreen: Defaults to True. Print the warning to the screen.
+    :arg tolog:    Defaults to True. Print the warning to the log file.
+    """
+
+    toscreen = msgkwargs.pop('toscreen', True)
+    tolog    = msgkwargs.pop('tolog',    True)
+
+    def decorator(function):
+        def wrapper(*args, **kwargs):
+            try:
+                function(*args, **kwargs)
+            except Exception as e:
+                if toscreen: printmsg(*msgargs, **msgkwargs)
+                if tolog:    log.debug('%s', e, exc_info=True)
+        return wrapper
+    return decorator
+
+
 @contextlib.contextmanager
 def tempfilename(permissions=None, delete=True):
     """Returns a context manager which creates a temporary file, yields its
@@ -358,7 +456,7 @@ def clean_environ():
     """
     env = os.environ.copy()
     for v in list(env.keys()):
-        if any(('FSL' in v, 'CONDA' in v, 'PYTHON' in v)):
+        if any(('FSL' in v, 'CONDA' in v, 'MAMBA' in v, 'PYTHON' in v)):
             env.pop(v)
     return env
 
@@ -420,13 +518,33 @@ def download_file(url,
     # We create and use an unconfigured SSL
     # context to disable SSL verification.
     # Otherwise pass None causes urlopen to
-    # use default behaviour. The context
-    # argument is not available in py3.3
+    # use default behaviour.
     kwargs = {}
-    if (not ssl_verify) and (PYVER != (3, 3)):
-        printmsg('Skipping SSL verification - this '
-                 'is not recommended!', WARNING)
-        kwargs['context'] = ssl.SSLContext(ssl.PROTOCOL_TLS)
+    if not ssl_verify:
+
+        # - The urlopen(context) argument is not available in py3.3
+        # - py3.4 does not have PROTOCOL_TLS
+        # - PROTOCOL_TLS deprecated in py3.10
+        if   PYVER == (3, 3):                     pro = None
+        elif hasattr(ssl, 'PROTOCOL_TLS_CLIENT'): pro = ssl.PROTOCOL_TLS_CLIENT
+        elif hasattr(ssl, 'PROTOCOL_TLS'):        pro = ssl.PROTOCOL_TLS
+        elif hasattr(ssl, 'PROTOCOL_TLSv1_2'):    pro = ssl.PROTOCOL_TLSv1_2
+        elif hasattr(ssl, 'PROTOCOL_TLSv1_1'):    pro = ssl.PROTOCOL_TLSv1_1
+        elif hasattr(ssl, 'PROTOCOL_TLSv1'):      pro = ssl.PROTOCOL_TLSv1
+        else:                                     pro = None
+
+        if pro is None:
+            printmsg('SSL verification cannot be skipped - if this is '
+                     'a problem, try running the installer with a newer '
+                     'version of Python.', INFO)
+        else:
+            printmsg('Skipping SSL verification - this '
+                     'is not recommended!', WARNING)
+
+            sslctx                = ssl.SSLContext(pro)
+            sslctx.check_hostname = False
+            sslctx.verify_mode    = ssl.CERT_NONE
+            kwargs['context']     = sslctx
 
     req = None
 
@@ -455,14 +573,15 @@ def download_file(url,
             req.close()
 
 
-def download_manifest(url, workdir=None):
+def download_manifest(url, workdir=None, **kwargs):
     """Downloads the installer manifest file, which contains information
     about available FSL versions, and the most recent version number of the
     installer (this script).
 
-    The manifest file is a JSON file. Lines beginning
-    with a double-forward-slash are ignored. See test/data/manifest.json
-    for an example.
+    Keyword arguments are passed through to the download_file function.
+
+    The manifest file is a JSON file. Lines beginning with a double-forward
+    slash are ignored.
 
     This function modifies the manifest structure by adding a 'version'
     attribute to all FSL build entries.
@@ -473,7 +592,7 @@ def download_manifest(url, workdir=None):
     with tempdir(workdir):
 
         try:
-            download_file(url, 'manifest.json')
+            download_file(url, 'manifest.json', **kwargs)
         except Exception as e:
             log.debug('Error downloading FSL release manifest from %s',
                       url, exc_info=True)
@@ -498,18 +617,19 @@ def download_manifest(url, workdir=None):
     return manifest
 
 
-def download_dev_releases(url, workdir=None):
+def download_dev_releases(url, workdir=None, **kwargs):
     """Downloads the FSL_DEV_RELEASES file. This file contains a list of
     available development manifest URLS. Returns a list of tuples, one
     for each development release, with each tuple containing:
 
       - URL to the manifest file
-      - Most recent release tag
-      - Date of the release
+      - Version identifier
       - Commit hash (on the fsl/conda/manifest repository)
       - Branch name (on the fsl/conda/manifest repository)
 
     The list is sorted by date, newest first.
+
+    Keyword arguments are passed through to the download_file function.
     """
 
     # parse a dev manifest file name, returning
@@ -526,17 +646,27 @@ def download_dev_releases(url, workdir=None):
         name = urlparse.urlparse(url).path
         name = op.basename(name)
         name = name.lstrip('manifest-').rstrip('.json')
-        # Awkward - the tag may have periods in it
-        name = name.rsplit('.', 3)
-        return name
 
-    # list of (url, tag, date, commit, branch)
+        # The devrelease list may contain public
+        # releases too - sniff the commit, and if
+        # it doesn't look like a commit hash,
+        # assume that this file corresponds to a
+        # public release.
+        commit = name.rsplit('.', 2)[-2]
+
+        # public release or dev release
+        if len(commit) < 7: bits = [name, None, None]
+        else:               bits = name.rsplit('.', 2)
+
+        return bits
+
+    # list of (url, version, commit, branch)
     devreleases = []
 
     with tempdir(workdir):
 
         try:
-            download_file(url, 'devreleases.txt')
+            download_file(url, 'devreleases.txt', **kwargs)
         except Exception as e:
             log.debug('Error downloading devreleases.txt from %s',
                       url, exc_info=True)
@@ -550,8 +680,8 @@ def download_dev_releases(url, workdir=None):
         for url in urls:
             devreleases.append([url] + parse_devrelease_name(url))
 
-    # sort by date, newest first
-    return sorted(devreleases, key=lambda r: r[2], reverse=True)
+    # sort by version, newest first
+    return sorted(devreleases, key=lambda r: Version(r[1]), reverse=True)
 
 
 class Progress(object):
@@ -574,7 +704,9 @@ class Progress(object):
                  transform=None,
                  fmt='{:.1f}',
                  total=None,
-                 width=None):
+                 width=None,
+                 proglabel='progress',
+                 progfile=None):
         """Create a Progress reporter.
 
         :arg label:     Units (e.g. "MB", "%",)
@@ -589,7 +721,14 @@ class Progress(object):
 
         :arg width:     Maximum width, if a progress bar is displayed. Default
                         is to automatically infer the terminal width (see
-                        Progress.get_terminal_width).
+                        get_terminal_width).
+
+        :arg proglabel: Label to use when writing progress updates to progfile.
+
+        :arg progfile:  File to write progress updates to. Each update is
+                        written on a new line, and has the form:
+
+                        <proglabel> <value>[ <total>]
         """
 
         if transform is None:
@@ -600,6 +739,8 @@ class Progress(object):
         self.total     = total
         self.label     = label
         self.transform = transform
+        self.proglabel = proglabel
+        self.progfile  = progfile
 
         # used by the spin function
         self.__last_spin = None
@@ -624,7 +765,18 @@ class Progress(object):
         return self
 
     def __exit__(self, *args, **kwargs):
-        printmsg('', log=False)
+        printmsg('', log=False, fill=False)
+
+    def write_progress(self, value, total):
+
+        if self.progfile is None:
+            return
+
+        if value is None: value = ''
+        if total is None: total = ''
+
+        with open(self.progfile, 'at') as f:
+            f.write('{} {} {}\n'.format(self.proglabel, value, total))
 
     def update(self, value=None, total=None):
 
@@ -640,6 +792,8 @@ class Progress(object):
         elif value is not None and total is not None:
             self.progress(value, total)
 
+        self.write_progress(value, total)
+
     def spin(self):
 
         symbols = ['|', '/', '-',  '\\']
@@ -651,7 +805,7 @@ class Progress(object):
         idx  = (idx + 1) % len(symbols)
         this = symbols[idx]
 
-        printmsg(this, end='\r', log=False)
+        printmsg(this, end='\r', log=False, fill=False)
         self.__last_spin = this
 
     def count(self, value):
@@ -661,7 +815,7 @@ class Progress(object):
         if self.label is None: line = '{} ...'.format(value)
         else:                  line = '{}{} ...'.format(value, self.label)
 
-        printmsg(line, end='\r', log=False)
+        printmsg(line, end='\r', log=False, fill=False)
 
     def progress(self, value, total):
 
@@ -669,7 +823,7 @@ class Progress(object):
 
         # arbitrary fallback of 50 columns if
         # terminal width cannot be determined
-        if self.width is None: width = Progress.get_terminal_width(50)
+        if self.width is None: width = get_terminal_width(50)
         else:                  width = self.width
 
         fvalue = self.fmt(value)
@@ -686,35 +840,10 @@ class Progress(object):
                                        ' ' * remaining,
                                        suffix)
 
-        printmsg(progress, end='', log=False)
-        printmsg(' ', end='', log=False)
+        printmsg(progress, end='', log=False, fill=False)
+        printmsg(' ', end='', log=False, fill=False)
         self.spin()
-        printmsg(end='\r', log=False)
-
-
-    @staticmethod
-    def get_terminal_width(fallback=None):
-        """Return the number of columns in the current terminal, or fallback
-        if it cannot be determined.
-        """
-        # os.get_terminal_size added in python
-        # 3.3, so we try it but fall back to
-        # COLUMNS, or tput as a last resort.
-        try:
-            return shutil.get_terminal_size()[0]
-        except Exception:
-            pass
-
-        try:
-            return int(os.environ['COLUMNS'])
-        except Exception:
-            pass
-
-        try:
-            result = Process.check_output('tput cols', log_output=False)
-            return int(result.strip())
-        except Exception:
-            return fallback
+        printmsg(end='\r', log=False, fill=False)
 
 
 class Process(object):
@@ -810,15 +939,18 @@ class Process(object):
     def check_output(cmd, *args, **kwargs):
         """Behaves like subprocess.check_output. Runs the given command, then
         waits until it finishes, and return its standard output. An error
-        is raised if the process returns a non-zero exit code.
+        is raised if the process returns a non-zero exit code, unless a keyword
+        argument `check=False` is specified.
 
         :arg cmd: The command to run, as a string
         """
 
-        proc = Process(cmd, *args, **kwargs)
+        check = kwargs.pop('check', True)
+        proc  = Process(cmd, *args, **kwargs)
+
         proc.wait()
 
-        if proc.returncode != 0:
+        if check and (proc.returncode != 0):
             raise RuntimeError('This command returned an error: ' + cmd)
 
         stdout = ''
@@ -835,14 +967,21 @@ class Process(object):
     def check_call(cmd, *args, **kwargs):
         """Behaves like subprocess.check_call. Runs the given command, then
         waits until it finishes. An error is raised if the process returns a
-        non-zero exit code.
+        non-zero exit code, unless a keyword argument `check=False` is
+        specified.
 
         :arg cmd: The command to run, as a string
         """
-        proc = Process(cmd, *args, **kwargs)
+
+        check = kwargs.pop('check', True)
+        proc  = Process(cmd, *args, **kwargs)
+
         proc.wait()
-        if proc.returncode != 0:
+
+        if check and proc.returncode != 0:
             raise RuntimeError('This command returned an error: ' + cmd)
+
+        return proc.returncode
 
 
     @staticmethod
@@ -850,24 +989,30 @@ class Process(object):
         """Runs the given command(s), and shows a progress bar under the
         assumption that cmd will produce "total" number of lines of output.
 
-        :arg cmd:      The commmand to run as a string, or a sequence of
-                       multiple commands.
+        :arg cmd:       The commmand to run as a string, or a sequence of
+                        multiple commands.
 
-        :arg total:    Total number of lines of standard output to expect.
+        :arg total:     Total number of lines of standard output to expect.
 
-        :arg timeout:  Refresh rate in seconds. Must be passed as a keyword
-                       argument.
+        :arg timeout:   Refresh rate in seconds. Must be passed as a keyword
+                        argument.
 
-        :arg progfunc: Function which returns a number indicating how far
-                       the process has progressed.  If provided, this
-                       function is called, instead of standard output
-                       lines being monitored. The function is passed a
-                       reference to the Process object. Must be passed as a
-                       keyword argument.
+        :arg progfunc:  Function which returns a number indicating how far
+                        the process has progressed.  If provided, this
+                        function is called, instead of standard output
+                        lines being monitored. The function is passed a
+                        reference to the Process object. Must be passed as a
+                        keyword argument.
+
+        :arg progfile:  File to write progress updates to.
+
+        :arg proglabel: Label to use when writing progress updates to progfile.
         """
 
-        timeout  = kwargs.pop('timeout',  0.5)
-        progfunc = kwargs.pop('progfunc', None)
+        timeout   = kwargs.pop('timeout',   0.5)
+        progfunc  = kwargs.pop('progfunc',  None)
+        proglabel = kwargs.pop('proglabel', None)
+        progfile  = kwargs.pop('progfile',  None)
 
         if total is None: label = None
         else:             label = '%'
@@ -887,7 +1032,9 @@ class Process(object):
 
         with Progress(label=label,
                       fmt='{:.0f}',
-                      transform=Progress.percent) as prog:
+                      transform=Progress.percent,
+                      proglabel=proglabel,
+                      progfile=progfile) as prog:
 
             progcount = 0 if total else None
 
@@ -1127,6 +1274,22 @@ class Context(object):
 
 
     @property
+    def license_url(self):
+        """Return the FSL license URL from the manifest, or None if it is not
+        present.
+        """
+        return self.manifest['installer'].get('license_url')
+
+
+    @property
+    def registration_url(self):
+        """Return the FSL registration URL from the manifest, or None if it is
+        not present.
+        """
+        return self.manifest['installer'].get('registration_url')
+
+
+    @property
     def platform(self):
         """The platform we are running on, e.g. "linux-64", "macos-64",
         "macos-M1". This identifier is used to determine which FSL build to
@@ -1230,8 +1393,11 @@ class Context(object):
         if self.__destdir is not None:
             return self.__destdir
 
-        if os.getuid() != 0: defdestdir = DEFAULT_INSTALLATION_DIRECTORY
-        else:                defdestdir = DEFAULT_ROOT_INSTALLATION_DIRECTORY
+        fsldir = os.environ.get('FSLDIR', None)
+
+        if fsldir is not None: defdestdir = fsldir
+        elif os.getuid() != 0: defdestdir = DEFAULT_INSTALLATION_DIRECTORY
+        else:                  defdestdir = DEFAULT_ROOT_INSTALLATION_DIRECTORY
 
         # The loop below validates the destination directory
         # both when specified at commmand line or
@@ -1272,17 +1438,47 @@ class Context(object):
     @property
     def conda(self):
         """Return a path to the ``conda`` or ``mamba`` executable. """
+        bindir   = op.join(self.basedir, 'bin')
+        condabin = op.join(bindir, 'conda')
+        mambabin = op.join(bindir, 'mamba')
 
-        condabin = op.join(self.destdir, 'bin', 'conda')
-        mambabin = op.join(self.destdir, 'bin', 'mamba')
-
-        # If mamba is present, prefer it over conda
+        # If mamba is present, prefer it over conda, unless
+        # the user requestd otherwise via the --conda flag
         if not self.args.conda: candidates = [mambabin, condabin]
         else:                   candidates = [condabin, mambabin]
 
         for c in candidates:
             if op.exists(c):
                 return c
+
+        raise RuntimeError('Cannot find conda/mamba '
+                           'executable in {}'.format(bindir))
+
+
+    @property
+    def basedir(self):
+        """Return the path to the base conda installation. For normal
+        installations this is equivalent to destdir / $FSLDIR, but may be
+        different if the fslinstaller was instructed to use an existing
+        [mini]conda installation.
+        """
+
+        # Either the user gave a path to an existing
+        # miniconda installation, or $FSLDIR is the
+        # base miniconda installation
+        if (self.args.miniconda is not None) and op.isdir(self.args.miniconda):
+            return self.args.miniconda
+        else:
+            return self.destdir
+
+
+    @property
+    def use_existing_base(self):
+        """Return True if we have been instructed to use an existing
+        [mini]conda installation, as opposed to downloading/installing one.
+        """
+        return ((self.args.miniconda is not None) and
+                op.isdir(self.args.miniconda))
 
 
     @property
@@ -1318,8 +1514,10 @@ class Context(object):
             if self.devmanifest is not None:
                 self.args.manifest = self.devmanifest
 
-            self.__manifest = download_manifest(self.args.manifest,
-                                                self.args.workdir)
+            self.__manifest = download_manifest(
+                self.args.manifest,
+                self.args.workdir,
+                ssl_verify=(not self.args.skip_ssl_verify))
         return self.__manifest
 
 
@@ -1342,8 +1540,10 @@ class Context(object):
         elif self.__devmanifest is not None:
             return self.__devmanifest
 
-        devreleases = download_dev_releases(FSL_DEV_RELEASES,
-                                            self.args.workdir)
+        devreleases = download_dev_releases(
+            FSL_DEV_RELEASES,
+            self.args.workdir,
+            ssl_verify=(not self.args.skip_ssl_verify))
 
         if len(devreleases) == 0:
             self.__devmanifest = 'na'
@@ -1368,6 +1568,8 @@ class Context(object):
             ctx.run(Process.monitor_progress, 'my_command', total=100)
         """
 
+        env          = kwargs.pop('env',        {})
+        append_env   = kwargs.pop('append_env', {})
         process_func = ft.partial(process_func, *args, **kwargs)
 
         # Clear any environment variables that refer to
@@ -1377,14 +1579,28 @@ class Context(object):
         # clean_environ and install_environ for more
         # details, and see Process.sudo_popen regarding
         # append_env.
-        env        = clean_environ()
-        append_env = install_environ(self.destdir,
-                                     self.args.username,
-                                     self.args.password)
+        env.update(clean_environ())
+        append_env.update(install_environ(self.destdir,
+                                          self.args.username,
+                                          self.args.password))
         return process_func(admin=self.need_admin,
                             password=self.admin_password,
                             env=env,
                             append_env=append_env)
+
+
+def agree_to_license(ctx):
+    """Prompts the user to agree to the terms of the FSL license."""
+
+    msg = ['Installing FSL implies agreement with the terms of the FSL '
+           'license - if you do not agree with these terms, you can '
+           'cancel the installation by pressing CTRL+C.', IMPORTANT]
+
+    if ctx.license_url is not None:
+        msg = msg + [' You can view the license at ', IMPORTANT,
+                     ctx.license_url, IMPORTANT, UNDERLINE]
+    printmsg(*msg)
+    printmsg('')
 
 
 def check_rosetta_status(ctx):
@@ -1453,9 +1669,15 @@ def prompt_dev_release(devreleases, latest):
 
     # show the user a list, ask them which one they want
     printmsg('Available development releases:', EMPHASIS)
-    for i, (url, tag, date, commit, branch) in enumerate(devreleases):
-        printmsg('  [{}]: {} [{} commit {}]'.format(
-            i + 1, date, branch, commit), IMPORTANT)
+    for i, (url, tag, commit, branch) in enumerate(devreleases):
+        # dev release
+        if commit is not None:
+            printmsg('  [{}]: {} [{} commit {}]'.format(
+                i + 1, tag, branch, commit), IMPORTANT)
+        # public release
+        else:
+            printmsg('  [{}]: {}'.format(i + 1, tag), IMPORTANT)
+
     while True:
         selection = prompt('Which release would you like to '
                            'install? [1]:', PROMPT)
@@ -1494,7 +1716,7 @@ def download_fsl_environment(ctx):
     printmsg('Downloading FSL environment specification '
              'from {}...'.format(url))
     fname = url.split('/')[-1]
-    download_file(url, fname)
+    download_file(url, fname, ssl_verify=(not ctx.args.skip_ssl_verify))
     ctx.environment_file = op.abspath(fname)
     if (checksum is not None) and (not ctx.args.no_checksum):
         sha256(fname, checksum)
@@ -1572,18 +1794,33 @@ def download_miniconda(ctx):
     This function assumes that it is run within a temporary/scratch directory.
     """
 
-    if ctx.args.miniconda is None:
-        metadata = ctx.manifest['miniconda'][ctx.platform]
-        url      = metadata['url']
-        checksum = metadata['sha256']
-    else:
+    # The user has specified a path to an
+    # existing miniconda installation - we
+    # use that rather than downloading/
+    # installing a separate one.
+    if ctx.use_existing_base:
+        return
+
+    # user specified a URL/path to a
+    # miniconda installer
+    elif ctx.args.miniconda is not None:
         url      = ctx.args.miniconda
         checksum = None
 
+    # Use miniconda installer specified in
+    # FSL release manifest
+    else:
+        metadata = ctx.manifest['miniconda'][ctx.platform]
+        url      = metadata['url']
+        checksum = metadata['sha256']
+
     # Download
     printmsg('Downloading miniconda from {}...'.format(url))
-    with Progress('MB', transform=Progress.bytes_to_mb) as prog:
-        download_file(url, 'miniconda.sh', prog.update)
+    with Progress('MB', transform=Progress.bytes_to_mb,
+                  proglabel='download_miniconda',
+                  progfile=ctx.args.progress_file) as prog:
+        download_file(url, 'miniconda.sh', prog.update,
+                      ssl_verify=(not ctx.args.skip_ssl_verify))
     if (not ctx.args.no_checksum) and (checksum is not None):
         sha256('miniconda.sh', checksum)
 
@@ -1595,34 +1832,35 @@ def install_miniconda(ctx):
     This function assumes that it is run within a temporary/scratch directory.
     """
 
+    # We have been instructed to use an
+    # existing miniconda installation
+    if ctx.use_existing_base:
+        return
+
     metadata = ctx.manifest['miniconda'][ctx.platform]
     output   = metadata.get('output', '').strip()
 
     if output == '': output = None
     else:            output = int(output)
 
-    # Install
-    printmsg('Installing miniconda at {}...'.format(ctx.destdir))
-    cmd = 'bash miniconda.sh -b -p {}'.format(ctx.destdir)
-    ctx.run(Process.monitor_progress, cmd, total=output)
+    # The download_miniconda function saved
+    # the installer to <pwd>/miniconda.sh
+    printmsg('Installing miniconda at {}...'.format(ctx.basedir))
+    cmd = 'bash miniconda.sh -b -p {}'.format(ctx.basedir)
+    ctx.run(Process.monitor_progress, cmd, total=output,
+            proglabel='install_miniconda',
+            progfile=ctx.args.progress_file)
 
     # Avoid WSL filesystem issue
     # https://github.com/conda/conda/issues/9948
-    cmd = 'find {} -type f -exec touch {{}} +'.format(ctx.destdir)
+    cmd = 'find {} -type f -exec touch {{}} +'.format(ctx.basedir)
     ctx.run(Process.check_call, cmd)
 
-    # Generate $FSLDIR/.condarc which contains
-    # some default/fixed conda settings
-    condarc = generate_condarc(ctx.destdir,
-                               ctx.environment_channels,
-                               ctx.args.skip_ssl_verify)
-    with open('.condarc', 'wt') as f:
-        f.write(condarc)
 
-    ctx.run(Process.check_call, 'cp -f .condarc {}'.format(ctx.destdir))
-
-
-def generate_condarc(fsldir, channels, skip_ssl_verify=False):
+def generate_condarc(fsldir,
+                     channels,
+                     skip_ssl_verify=False,
+                     pkgsdir=None):
     """Called by install_miniconda. Generates content for a .condarc file to
     be saved in $FSLDIR/.condarc. This file contains some default values, and
     also enforces some settings so that they cannot be overridden by the
@@ -1636,7 +1874,6 @@ def generate_condarc(fsldir, channels, skip_ssl_verify=False):
     """
 
     # Create .condarc config file
-    pkgsdir = op.join(fsldir, 'pkgs')
     condarc = tw.dedent("""
     # FSL conda configuration file, auto-generated by the fslinstaller script.
     #
@@ -1680,11 +1917,16 @@ def generate_condarc(fsldir, channels, skip_ssl_verify=False):
     # priority order being modified by user ~/.condarc
     # configuration files.
     channel_priority: strict #!final
+    """)
 
-    # Fix the package cache at $FSLDIR/pkgs/
-    pkgs_dirs: #!final
-     - {} #!top #!bottom
-    """.format(pkgsdir))
+    # Fix the conda package cache
+    # if a pkgsdir was provided
+    if pkgsdir is not None:
+        condarc += tw.dedent("""
+        # Fix the package cache at $FSLDIR/pkgs/
+        pkgs_dirs: #!final
+        - {} #!top #!bottom
+        """.format(pkgsdir))
 
     if skip_ssl_verify:
         printmsg('Configuring conda to skip SSL verification '
@@ -1726,29 +1968,83 @@ def get_install_fsl_progress_reporting_method(ctx):
     # 'output/install' field in the manifest
     # gives us information about how to
     # report installation progress.
-    fslver     = ctx.build['version']
     progparams = ctx.build.get('output', {}).get('install', None)
-    pkgdir     = op.join(ctx.destdir, 'pkgs')
 
     # The first method (version 1) involves
     # progress reporting by monitoring number of
     # lines of standard output produced by
-    # "conda env install". This is set to None,
+    # "conda env update". This is set to None,
     # as it is the default behaviour of the
     # Progress.monitor_progress function.
     progress_v1 = None
 
+    # The remaining methods involve counting
+    # files and sizes in $FSLDIR/pkgs/
+
     # The second method involves progress
     # reporting by monitoring the number of
     # package files created in $FSLDIR/pkgs/
-    def progress_v2(_):
-        pkgs = os.listdir(pkgdir)
-        pkgs = [p for p in pkgs if p.endswith('.conda') or p.endswith('.bz2')]
-        return len(pkgs)
+    # This coarsely reflects download
+    # progress - when conda downloads a
+    # package, it is saved into this directory.
+    #
+    # The third method involves progress
+    # reporting by monitoring the number of
+    # files created in $FSLDIR/pkgs/,
+    # $FSLDIR/bin/ and $FSLDIR/lib/. Tracking
+    # these three directories will cause the
+    # progress to reflect both download and
+    # installation
+    #
+    # The fourth method monitors download
+    # progress in a more fine-grained manner,
+    # by calculating the size of all .conda
+    # and .tar.bz2 files in $FSLDIR/pkgs/.
+    # This is combined with the number of
+    # files saved to $FSLDIR/bin/ and
+    # $FSLDIR/lib/
+    pkgdir = op.join(ctx.basedir, 'pkgs')
+    pkgdir = op.join(ctx.basedir, 'pkgs')
+    bindir = op.join(ctx.destdir, 'bin')
+    libdir = op.join(ctx.destdir, 'lib')
 
-    progresses      = {}
-    progresses['1'] = None
-    progresses['2'] = progress_v2
+    def matchany(name, *filters):
+        return any([fnmatch.fnmatch(name, f) for f in filters])
+
+    def contents(dirname, *filters):
+        if not op.exists(dirname):
+            return []
+        contents = os.listdir(dirname)
+        contents = [f for f in contents if matchany(f, *filters)]
+        return [op.join(dirname, f) for f in contents]
+
+    start_pkgs  = contents(pkgdir, '*.conda', '*.bz2')
+    start_sizes = sum([op.getsize(p) for p in start_pkgs])
+    start_pkgs  = len(start_pkgs)
+    start_bins  = len(contents(bindir))
+    start_libs  = len(contents(libdir))
+
+    def progress_v234(v, _):
+
+        pkgs  = contents(pkgdir, '*.conda', '*.bz2')
+        bins  = contents(bindir)
+        libs  = contents(libdir)
+        sizes = [op.getsize(p) for p in pkgs]
+        pkgs  = len(pkgs)  - start_pkgs
+        bins  = len(bins)  - start_bins
+        libs  = len(libs)  - start_libs
+        sizes = sum(sizes) - start_sizes
+
+        if   v == 2: return pkgs
+        elif v == 3: return pkgs  + bins + libs
+        elif v == 4: return sizes + bins + libs
+        else:        return None
+
+    progresses    = {}
+    progresses[1] =            progress_v1
+    progresses[2] = ft.partial(progress_v234, 2)
+    progresses[3] = ft.partial(progress_v234, 3)
+    progresses[4] = ft.partial(progress_v234, 4)
 
     progval  = None
     progfunc = None
@@ -1760,13 +2056,28 @@ def get_install_fsl_progress_reporting_method(ctx):
     # an integer value.
     if isstr(progparams):
         progval  = int(progparams)
-        progfunc = progresses['2']
+        progfunc = progresses[2]
 
     # output field is a dict - versioned
     # progress reporting
     elif isinstance(progparams, dict):
-        progval  = int(progparams['value'])
-        progfunc = progresses[progparams['version']]
+        progver  = int(progparams['version'])
+        progfunc = progresses[progver]
+        progval  = progparams['value']
+
+        # unsupported progress reporting version
+        if progver > 4:
+            progval  = None
+            progfunc = None
+
+        # version 4: progval is a dict
+        # containing various quantities
+        if progver == 4:
+            progval = sum(progval.values())
+
+        # older versions: progval is an integer
+        elif progver:
+            progval = int(progval)
 
     return progval, progfunc
 
@@ -1780,9 +2091,43 @@ def install_fsl(ctx):
 
     progval, progfunc = get_install_fsl_progress_reporting_method(ctx)
 
-    # We install FSL simply by running conda env
-    # update -f env.yml.
-    cmd = ctx.conda + ' env update -n base -f ' + ctx.environment_file
+    # Generate .condarc which contains some default/
+    # fixed conda settings.  We create $FSLDIR in
+    # advance, and copy .condarc into it. Conda seems
+    # to be ok with the directory already existing,
+    # although I am concerned that this behaviour may
+    # not be guaranteed.
+    #
+    # If this is a typical FSL installation (a self-
+    # contained base miniconda environment) we fix
+    # the package cache directory to isolate it from
+    # other conda installations that may be on the
+    # system.
+    if ctx.destdir == ctx.basedir: pkgsdir = op.join(ctx.destdir, 'pkgs')
+    else:                          pkgsdir = None
+
+    condarc_contents = generate_condarc(ctx.destdir,
+                                        ctx.environment_channels,
+                                        ctx.args.skip_ssl_verify,
+                                        pkgsdir)
+    with open('.condarc', 'wt') as f:
+        f.write(condarc_contents)
+
+    cmds = ['mkdir -p {}'.format(ctx.destdir),
+            'cp -f .condarc {}'.format(ctx.destdir)]
+    for cmd in cmds:
+        ctx.run(Process.check_call, cmd)
+
+    # Are we updating an existing
+    # env or creating a new env?
+    if ctx.destdir == ctx.basedir: cmd = 'update'
+    else:                          cmd = 'create'
+
+    # We install FSL simply by running conda
+    # env [update|create] -f env.yml.
+    cmd = (ctx.conda + ' env ' + cmd +
+           ' -p ' + ctx.destdir      +
+           ' -f ' + ctx.environment_file)
 
     # Make conda/mamba super verbose if the
     # hidden --debug option was specified.
@@ -1791,27 +2136,35 @@ def install_fsl(ctx):
 
     printmsg('Installing FSL into {}...'.format(ctx.destdir))
     ctx.run(Process.monitor_progress, cmd,
-            timeout=1, total=progval, progfunc=progfunc)
+            timeout=2, total=progval, progfunc=progfunc,
+            proglabel='install_fsl', progfile=ctx.args.progress_file)
 
 
+@warn_on_error('WARNING: The installation succeeded, but an error occurred '
+               'while creating $FSLDIR/etc/fslversion! There may be more '
+               'information in the log file.', WARNING, EMPHASIS)
 def finalise_installation(ctx):
     """Performs some finalisation tasks. Includes:
       - Saving the installed version to $FSLDIR/etc/fslversion
       - Saving this installer script and the environment file to
         $FSLDIR/etc/
     """
+
     with open('fslversion', 'wt') as f:
         f.write(ctx.build['version'])
 
     etcdir = op.join(ctx.destdir, 'etc')
     cmds   = [
-        'cp fslversion {}'.format(etcdir),
-        'cp {} {}'        .format(ctx.environment_file, etcdir)]
+        'cp fslversion {}' .format(etcdir),
+        'cp {} {}'         .format(ctx.environment_file, etcdir)]
 
     for cmd in cmds:
         ctx.run(Process.check_call, cmd)
 
 
+@warn_on_error('WARNING: The installation succeeded, but an error occurred '
+               'while removing intermediate package files! There may be more '
+               'information in the log file.', WARNING, EMPHASIS)
 def post_install_cleanup(ctx, tmpdir):
     """Cleans up the FSL directory after installation. """
 
@@ -1822,6 +2175,55 @@ def post_install_cleanup(ctx, tmpdir):
 
     for cmd in cmds:
         ctx.run(Process.check_call, cmd)
+
+
+@warn_on_error('WARNING: ', WARNING, EMPHASIS, toscreen=False)
+def register_installation(ctx):
+    """Gathers and sends some basic system details to the FSL registration
+    website.
+    """
+
+    if ctx.args.skip_registration:
+        return
+
+    regurl = ctx.registration_url
+    if regurl is None:
+        return
+
+    system = platform.system().lower()
+    uname  = Process.check_output('uname -a', check=False)
+    osinfo = ''
+
+    # macOS
+    if system == 'darwin':
+        osinfo = Process.check_output('sw_vers', check=False)
+
+    # Linux
+    else:
+        for releasefile in glob.glob(op.join('/etc/*-release')):
+            with open(releasefile, 'rt') as f:
+                osinfo = f.read().strip()
+            break
+
+        # WSL
+        if 'microsoft' in uname.lower():
+            osinfo += '\n\n' + Process.check_output('wsl.exe -v', check=False)
+
+    info = {
+        'timestamp'      : timestamp(),
+        'architecture'   : platform.machine(),
+        'os'             : system,
+        'os_info'        : osinfo,
+        'uname'          : uname,
+        'python_version' : platform.python_version(),
+        'python_info'    : sys.version,
+        'fsl_version'    : ctx.build['version'],
+        'fsl_platform'   : ctx.build['platform'],
+    }
+
+    printmsg('Registering installation with {}'.format(regurl))
+
+    post_request(regurl, data=info)
 
 
 def patch_file(filename, searchline, numlines, content):
@@ -1849,7 +2251,7 @@ def patch_file(filename, searchline, numlines, content):
 
     # append to end
     except ValueError:
-        lines = lines + [''] + content
+        lines = lines + [''] + content + ['']
 
     with open(filename, 'wt') as f:
         f.write('\n'.join(lines))
@@ -1955,7 +2357,7 @@ def configure_matlab(homedir, fsldir):
     patch_file(startup_m, '% FSL Setup', len(cfg.split('\n')), cfg)
 
 
-def self_update(manifest, workdir, checksum):
+def self_update(manifest, workdir, checksum, **kwargs):
     """Checks to see if a newer version of the installer (this script) is
     available and if so, downloads it to a temporary file, and runs it in
     place of this script.
@@ -1977,7 +2379,7 @@ def self_update(manifest, workdir, checksum):
     tmpf.close()
     tmpf = tmpf.name
 
-    download_file(manifest['installer']['url'], tmpf)
+    download_file(manifest['installer']['url'], tmpf, **kwargs)
 
     if checksum:
         try:
@@ -1997,17 +2399,26 @@ def self_update(manifest, workdir, checksum):
 
 
 def overwrite_destdir(ctx):
-    """Called by main if the destination directory already exists. Asks the
-    user if they want to overwrite it. If they do, or if the --overwrite
-    option was specified, the directory is moved, and then deleted after
-    the installation succeeds.
+    """Called by main to handle when the destination directory already exists.
+    Asks the user if they want to overwrite it. If they do, or if the
+    --overwrite option was specified, the directory is moved, and then deleted
+    after the installation succeeds.
 
     This function assumes that it is run within a temporary/scratch directory.
     """
 
+    # there is no existing installation,
+    # so there is nothing to worry about
+    if not op.exists(ctx.destdir):
+        return
+
+    # We have been instructed to install
+    # into an existing [mini]conda environment
+    if ctx.use_existing_base and (ctx.basedir == ctx.destdir):
+        return
+
     if not ctx.args.overwrite:
-        printmsg()
-        printmsg('Destination directory [{}] already exists!'
+        printmsg('\nDestination directory [{}] already exists!\n'
                  .format(ctx.destdir), WARNING, EMPHASIS)
         response = prompt('Do you want to overwrite it [y/N]?',
                           QUESTION, EMPHASIS)
@@ -2072,18 +2483,20 @@ def parse_args(argv=None, include=None, parser=None):
 
     options = {
         # regular options
-        'version'      : ('-v', {'action'  : 'version',
-                                 'version' : __version__}),
-        'dest'         : ('-d', {'metavar' : 'DESTDIR'}),
-        'overwrite'    : ('-o', {'action'  : 'store_true'}),
-        'listversions' : ('-l', {'action'  : 'store_true'}),
-        'no_env'       : ('-n', {'action'  : 'store_true'}),
-        'no_shell'     : ('-s', {'action'  : 'store_true'}),
-        'no_matlab'    : ('-m', {'action'  : 'store_true'}),
-        'fslversion'   : ('-V', {'default' : 'latest'}),
+        'version'           : ('-v', {'action'  : 'version',
+                                      'version' : __version__}),
+        'dest'              : ('-d', {'metavar' : 'DESTDIR'}),
+        'overwrite'         : ('-o', {'action'  : 'store_true'}),
+        'listversions'      : ('-l', {'action'  : 'store_true'}),
+        'no_env'            : ('-n', {'action'  : 'store_true'}),
+        'no_shell'          : ('-s', {'action'  : 'store_true'}),
+        'no_matlab'         : ('-m', {'action'  : 'store_true'}),
+        'skip_registration' : ('-r', {'action'  : 'store_true'}),
+        'fslversion'        : ('-V', {'default' : 'latest'}),
 
         # hidden options
         'debug'           : (None, {'action'  : 'store_true'}),
+        'logfile'         : (None, {}),
         'username'        : (None, {'default' : username}),
         'password'        : (None, {'default' : password}),
         'no_checksum'     : (None, {'action'  : 'store_true'}),
@@ -2098,29 +2511,36 @@ def parse_args(argv=None, include=None, parser=None):
         'no_self_update'  : (None, {'action'  : 'store_true'}),
         'exclude_package' : (None, {'action'  : 'append'}),
         'root_env'        : (None, {'action'  : 'store_true'}),
+        'progress_file'   : (None, {}),
     }
 
     if include is None:
         include = list(options.keys())
 
     helps = {
-        'version'      : 'Print installer version number and exit',
-        'listversions' : 'List available FSL versions and exit',
-        'dest'         : 'Install FSL into this folder (default: '
-                         '{})'.format(destdir),
-        'overwrite'    : 'Delete existing destination directory if it exists, '
-                         'without asking',
-        'no_env'       : 'Do not modify your shell or MATLAB configuration '
-                         '(implies --no_shell and --no_matlab). When running '
-                         'the installer script as the root user, the root '
-                         'shell profile is never modified.',
-        'no_shell'     : 'Do not modify your shell configuration',
-        'no_matlab'    : 'Do not modify your MATLAB configuration',
-        'fslversion'   : 'Install this specific version of FSL',
+        'version'           : 'Print installer version number and exit.',
+        'listversions'      : 'List available FSL versions and exit.',
+        'dest'              : 'Install FSL into this folder (default: '
+                              '{}).'.format(destdir),
+        'overwrite'         : 'Delete existing destination directory if it '
+                              'exists, without asking.',
+        'no_env'            : 'Do not modify your shell or MATLAB configuration '
+                              '(implies --no_shell and --no_matlab). When '
+                              'running the installer script as the root user, '
+                              'the root shell profile is never modified.',
+        'no_shell'          : 'Do not modify your shell configuration.',
+        'no_matlab'         : 'Do not modify your MATLAB configuration.',
+        'skip_registration' : 'Do not register this installation with the '
+                              'FSL development team.',
+        'fslversion'        : 'Install this specific version of FSL.',
 
         # Enable verbose output when calling
         # mamba/conda.
         'debug'           : argparse.SUPPRESS,
+
+        # Direct the installer log to this file
+        # (default: file in $TMPDIR)
+        'logfile'         : argparse.SUPPRESS,
 
         # Username / password for accessing
         # internal FSL conda channel, if an
@@ -2153,16 +2573,40 @@ def parse_args(argv=None, include=None, parser=None):
 
         # Install miniconda from this path/URL,
         # instead of the one specified in the
-        # FSL release manifest
+        # FSL release manifest.
+        #
+        # For example - to download/install a
+        # conda base environment and install FSL
+        # packages into the base environment,
+        # pass a URL or path to a miniconda
+        # installer:
+        #
+        #   fslinstaller.py --miniconda https://path/to/miniconda.sh
+        #   fslinstaller.py --miniconda ~/Downloads/miniconda.sh
+        #
+        # Alternatively, pass the directory of
+        # an existing [mini]conda installation
+        # to use that - for example, if a conda
+        # base environment has already been
+        # created at ~/fsl/, to install FSL into
+        # that base environment:
+        #
+        #   fslinstaller.py --miniconda ~/fsl/
+        #
+        # Or to use an existing [mini]conda
+        # installation, and create FSL as a
+        # child environment, just set the
+        # destination directory to a
+        # different path, e.g.:
+        #
+        #   fslinstaller.py --miniconda ~/miniconda3/ -d ~/fsl/
         'miniconda'       : argparse.SUPPRESS,
 
         # Use conda and not mamba
         'conda'           : argparse.SUPPRESS,
 
-        # Print debugging messages
-        'debug'           : argparse.SUPPRESS,
-
-        # Disable SHA256 checksum validation of downloaded files
+        # Disable SHA256 checksum validation
+        # of downloaded files
         'no_checksum'     : argparse.SUPPRESS,
 
         # Store temp files in this directory
@@ -2187,6 +2631,9 @@ def parse_args(argv=None, include=None, parser=None):
         # --no_env flag is automatically enabled
         # UNLESS this flag is also provided.
         'root_env'        : argparse.SUPPRESS,
+
+        # File to send progress information to.
+        'progress_file'   : argparse.SUPPRESS,
     }
 
     # parse args
@@ -2254,31 +2701,43 @@ def parse_args(argv=None, include=None, parser=None):
     if args.exclude_package is None:
         args.exclude_package = []
 
-    # accept local path for manifest and environment
-    if args.manifest is not None and op.exists(args.manifest):
-        args.manifest = op.abspath(args.manifest)
+    if args.logfile is not None:
+        args.logfile = op.abspath(args.logfile)
+    if args.progress_file is not None:
+        args.progress_file = op.abspath(args.progress_file)
 
-    # accept local path for miniconda installer
-    if args.miniconda is not None and op.exists(args.miniconda):
-        args.miniconda = op.abspath(args.miniconda)
+    # accept local path for manifest and environment
+    if args.manifest is not None:
+        args.manifest = op.expanduser(args.manifest)
+        if op.exists(args.manifest):
+            args.manifest = op.abspath(args.manifest)
+
+    # accept local path for miniconda installer, or
+    # path to existing miniconda installation
+    if args.miniconda is not None:
+        args.miniconda = op.expanduser(args.miniconda)
+        if op.exists(args.miniconda):
+            args.miniconda = op.abspath(args.miniconda)
 
     return args
 
 
-def config_logging(prefix='fslinstaller_', logdir=None):
-    """Configures logging. Log messages are directed to
-    $TMPDIR/fslinstaller_<unique_token>.log, or
+def config_logging(prefix='fslinstaller_', logdir=None, logfile=None):
+    """Configures logging. If a logfile is not specified, log messages are
+    directed to $TMPDIR/fslinstaller_<unique_token>.log, or
     logdir/fslinstaller_<unique_token>.log
     """
-    if logdir is None:
-        logdir = tempfile.gettempdir()
 
-    # Use a unique name for the log file
-    # (important for multi-user systems)
-    logfilef, logfile = tempfile.mkstemp(prefix=prefix,
-                                         suffix='.log',
-                                         dir=logdir)
-    os.close(logfilef)
+    if logfile is None:
+        if logdir is None:
+            logdir = tempfile.gettempdir()
+
+        # Use a unique name for the log file
+        # (important for multi-user systems)
+        logfilef, logfile = tempfile.mkstemp(prefix=prefix,
+                                             suffix='.log',
+                                             dir=logdir)
+        os.close(logfilef)
 
     handler   = logging.FileHandler(logfile)
     formatter = logging.Formatter(
@@ -2307,6 +2766,11 @@ def handle_error(ctx):
         # send traceback to log file
         tb = traceback.format_tb(sys.exc_info()[2])
         log.debug(''.join(tb))
+
+        # send env to logfile
+        log.debug('Environment variables:')
+        for k, v in os.environ.items():
+            log.debug('{}={}'.format(k, v))
 
         if op.exists(ctx.destdir):
             printmsg('Removing failed installation directory '
@@ -2352,20 +2816,33 @@ def main(argv=None):
                  WARNING, EMPHASIS)
 
     args    = parse_args(argv)
-    logfile = config_logging(logdir=args.workdir)
+    logfile = config_logging(logdir=args.workdir, logfile=args.logfile)
 
     log.debug(' '.join(sys.argv))
+    log.debug('Python: %s', sys.executable)
     printmsg('Installation log file: {}\n'.format(logfile), INFO)
 
     ctx         = Context(args)
     ctx.logfile = logfile
 
     if not args.no_self_update:
-        self_update(ctx.manifest, args.workdir, not args.no_checksum)
+        self_update(ctx.manifest, args.workdir, not args.no_checksum,
+                    ssl_verify=(not args.skip_ssl_verify))
 
     if args.listversions:
         list_available_versions(ctx.manifest)
         sys.exit(0)
+
+    agree_to_license(ctx)
+
+    if (not args.skip_registration) and (ctx.registration_url is not None):
+        printmsg('During the installation process, please note that some '
+                 'system details will be automatically sent to the FSL '
+                 'development team. These details are extremely basic and '
+                 'cannot be used in any way to identify individual users. If '
+                 'you do not want any information to be sent, please cancel '
+                 'this installation by pressing CTRL+C, and re-run the '
+                 'installer with the --skip_registration option.\n', INFO)
 
     try:
         ctx.finalise_settings()
@@ -2387,8 +2864,7 @@ def main(argv=None):
 
         # Ask the user if they want to overwrite
         # an existing installation
-        if op.exists(ctx.destdir):
-            overwrite_destdir(ctx)
+        overwrite_destdir(ctx)
 
         download_fsl_environment(ctx)
 
@@ -2399,6 +2875,7 @@ def main(argv=None):
             install_fsl(ctx)
             finalise_installation(ctx)
             post_install_cleanup(ctx, tmpdir)
+            register_installation(ctx)
 
     if not args.no_shell:
         configure_shell(ctx.shell, args.homedir, ctx.destdir)
