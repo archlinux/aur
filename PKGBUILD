@@ -1,8 +1,8 @@
 # Maintainer: Troplo <troplo@troplo.com>
 pkgname=flowinity
 pkgname_internal=flowinity-desktop
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="Flowinity/PrivateUploader Desktop (Binary version)"
 arch=('x86_64')
 url="https://flowinity.com"
