@@ -32,7 +32,6 @@ build() {
   
   ./configure API=c++,f90 --prefix=${RSFROOT}
   make
-  mv ./user/.hwang ./user/hwang
 }
 
 package() {
@@ -41,6 +40,7 @@ package() {
     export PATH=${RSFROOT}/bin:$PATH
     cd ${srcdir}/${_pkgname}
     make install
+    mv ./user/.hwang ./user/hwang
     
     cp -r ${srcdir}/${_pkgname} ${RSFROOT}/src
     rm -r ${RSFROOT}/src/.git 
