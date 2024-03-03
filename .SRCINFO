@@ -1,0 +1,14 @@
+pkgbase = openconnect-tweak-git
+	pkgdesc = LD_PRELOAD library for tweaking OpenConnect VPN client.
+	pkgver = r2.5c3c77b
+	pkgrel = 1
+	url = https://github.com/s3rj1k/openconnect-tweak
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	depends = openconnect
+	source = git+https://github.com/s3rj1k/openconnect-tweak.git#branch=main
+	md5sums = SKIP
+
+pkgname = openconnect-tweak-git
