@@ -1,37 +1,47 @@
 pkgbase = libadwaita-testing
 	pkgdesc = Building blocks for modern adaptive GNOME applications
-	pkgver = 1.4.3
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://gnome.pages.gitlab.gnome.org/libadwaita/
 	arch = x86_64
 	license = LGPL-2.1-or-later
 	checkdepends = weston
-	makedepends = git
-	makedepends = meson
 	makedepends = gi-docgen
-	makedepends = sassc
+	makedepends = git
 	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = sassc
 	makedepends = vala
-	makedepends = libgtk-4.so
-	depends = gtk4
 	depends = appstream
-	source = git+https://gitlab.gnome.org/GNOME/libadwaita.git#commit=a0a84cb1b35d1f235f58579a415f9bf9cad20327
+	depends = fribidi
+	depends = glib2
+	depends = graphene
+	depends = gtk4
+	depends = pango
+	source = git+https://gitlab.gnome.org/GNOME/libadwaita.git#commit=f5a021d0ab0eb98455529dd8c055c45897c891df
 	b2sums = SKIP
 
 pkgname = libadwaita-testing
-	depends = gtk4
 	depends = appstream
+	depends = fribidi
+	depends = glib2
+	depends = graphene
+	depends = gtk4
+	depends = pango
 	depends = libgtk-4.so
-	provides = libadwaita=1:1.4.3
+	provides = libadwaita=1:1.4.4
 	provides = libadwaita-1.so
 	conflicts = libadwaita
+
+pkgname = libadwaita-testing-demos
+	pkgdesc = Building blocks for modern adaptive GNOME applications (demo applications)
+	depends = glib2
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = libadwaita-testing
+	conflicts = libadwaita-demos
 
 pkgname = libadwaita-testing-docs
 	pkgdesc = Building blocks for modern adaptive GNOME applications (documentation)
 	depends = 
 	conflicts = libadwaita-docs
-
-pkgname = libadwaita-testing-demos
-	pkgdesc = Building blocks for modern adaptive GNOME applications (demo applications)
-	depends = libadwaita-testing
-	conflicts = libadwaita-demos
