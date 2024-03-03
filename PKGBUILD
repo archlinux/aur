@@ -27,7 +27,7 @@ package() {
   install -Dm755 feather-pdf "${pkgdir}/usr/local/bin/feather-pdf"
 
   # Install the icon
-  install -Dm755 "$srcdir"/FeatherPDF-v."${pkgver}"/src/fpdf-iconlogo.png "${pkgdir}/usr/share/pixmaps/feather-pdf.png"
+  install -Dm644 "$srcdir"/FeatherPDF-v."${pkgver}"/src/fpdf-iconlogo.png "${pkgdir}/usr/share/pixmaps/feather-pdf.png"
 
   # Create the .desktop file dynamically
   cat << EOF > feather-pdf.desktop
@@ -41,5 +41,5 @@ Icon=feather-pdf
 Terminal=false
 Categories=Office;
 EOF
-  install -Dm755 feather-pdf.desktop "${pkgdir}/usr/share/applications/feather-pdf.desktop"
+  install -Dm644 feather-pdf.desktop "${pkgdir}/usr/share/applications/feather-pdf.desktop"
 }
