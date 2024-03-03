@@ -147,7 +147,13 @@ prepare() {
   # apply all patches
   for p in ../*.patch ; do
     patch -Np1 < ../$p
+    P=$(echo $p | sed 's/^\.\.\///g' | sed 's/\.patch$//g')
+    S=$(cat ../$p | grep 'Subject:' | sed 's/^Subject:\ \[PATCH\]\ //g')
+    printf "%s:\t%s\n" "$P" "$S" >> manifest
   done
+
+  printf "\nPatch manifest:\n===============\n"
+  cat manifest
 
   # remove dracut modules not meant for arch x86_64
   for f in 45ifcfg 80cms 81cio_ignore 91zipl 95dasd 95dasd_mod \
