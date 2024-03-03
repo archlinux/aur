@@ -1,18 +1,13 @@
 pkgbase = rustic-rs-scheduler-bin
 	pkgdesc = Schedule rustic backups for many clients to a common repository
 	pkgver = nightly
-	pkgrel = 1
-	url = https://rustic.cli.rs/ecosystem/rustic-server/
+	pkgrel = 2
+	url = https://rustic.cli.rs/ecosystem/rustic-scheduler/
 	arch = x86_64
 	arch = aarch64
 	arch = i686
 	arch = armv7h
 	license = Apache-2.0
-	provides = rustic-server
-	provides = rustic-rs-server
-	provides = rustic-rs-rest-server
-	provides = rustic-rest-server
-	provides = restic-rest-server
 	validpgpkeys = 12B7166D9FD59124416952E34018C5DE3BF8C081
 	source_x86_64 = https://github.com/rustic-rs/nightly/raw/main/rustic_scheduler/rustic-scheduler-nightly-x86_64-unknown-linux-gnu.tar.gz
 	b2sums_x86_64 = SKIP
@@ -24,7 +19,9 @@ pkgbase = rustic-rs-scheduler-bin
 	b2sums_armv7h = SKIP
 
 pkgname = rustic-rs-scheduler-server-bin
+	pkgdesc = Schedule rustic backups for many clients to a common repository (server)
 	provides = rustic-rs-scheduler-server
 
 pkgname = rustic-rs-scheduler-client-bin
+	pkgdesc = Schedule rustic backups for many clients to a common repository (client)
 	provides = rustic-rs-scheduler-client
