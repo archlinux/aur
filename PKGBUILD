@@ -6,8 +6,8 @@ _communicator=GKCommunicator
 _genetix=GKGenetix
 _pkgname=gedkeeper
 pkgname=${_pkgname}-git
-pkgver=v3.4.1.r56.gabd903ba
-pkgrel=3
+pkgver=v3.5.1.r4.g03c755c6
+pkgrel=1
 pkgdesc="Personal genealogical database editor"
 arch=('x86_64' 'i686')
 url="https://github.com/serg-norseman/gedkeeper"
@@ -39,6 +39,8 @@ prepare() {
 
 build() {
 	cd "${srcdir}"
+	dotnet build "${_gitname}/projects/GKCore/GKCore.nstd.csproj" --configuration Release -p:Platform="Linux" --no-self-contained
+	dotnet build "${_gitname}/projects/GKv3/GKComponents/GKComponents.csproj" --configuration Release -p:Platform="Linux" --no-self-contained
 	dotnet build "${_gitname}/projects/GKv3/GEDKeeper3.sln" --configuration Release -p:Platform="Linux" --no-self-contained
 }
 
