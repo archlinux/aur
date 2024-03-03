@@ -1,21 +1,17 @@
 pkgbase = amrfinderplus
 	pkgdesc = Identify Antimicrobial resistance genes in assembled bacterial nucleotide and protein sequence. https://doi.org/10.1038/s41598-021-91456-0
-	pkgver = 3.11.26
-	pkgrel = 1
+	pkgver = 3.12.8
+	pkgrel = 2
 	url = https://www.ncbi.nlm.nih.gov/pathogens/antimicrobial-resistance/AMRFinder/
 	arch = x86_64
 	arch = i686
-	license = custom: Public Domain
+	license = LicenseRef-Public Domain
 	depends = glibc
 	depends = gcc-libs
 	depends = curl
 	depends = blast+
 	depends = hmmer
-	source = amrfinderplus-3.11.26.tar.gz::https://github.com/ncbi/amr/archive/refs/tags/amrfinder_v3.11.26.tar.gz
-	source = LDFLAG.patch::https://patch-diff.githubusercontent.com/raw/ncbi/amr/pull/132.patch
-	source = destdir.patch::https://patch-diff.githubusercontent.com/raw/ncbi/amr/pull/131.patch
-	sha256sums = 49d98d0f66e121d3ed5a3d9a817089ee69399b0bd06af52f79d796bfe8b2d8b2
-	sha256sums = efa5f955d235e739b5e282f87d4a25ec0b6acc26d99487c816e6753924ecfa09
-	sha256sums = 94a47bc95906ce5da028a7fa869c1120a7b0165d4ed90078978fe041c5d424dd
+	source = amrfinderplus-3.12.8.tar.gz::https://github.com/ncbi/amr/archive/refs/tags/amrfinder_v3.12.8.tar.gz
+	sha256sums = a199bc332877bad9033a7620bc5e8e849db1f19a9ba8b7357ec5451a6a283aa0
 
 pkgname = amrfinderplus
