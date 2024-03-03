@@ -1,16 +1,18 @@
 pkgbase = keyd-git
-	pkgdesc = A key remapping daemon for linux.
-	pkgver = 2.4.3.r33.07a993d
+	pkgdesc = A key remapping daemon for linux
+	pkgver = 2.4.3.r46.5832c75
 	pkgrel = 1
 	url = https://github.com/rvaiya/keyd
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = git
-	optdepends = python3: for keyd-application-mapper
+	optdepends = python: Required for use with keyd-application-mapper utility
 	provides = keyd
 	conflicts = keyd
 	source = git+https://github.com/rvaiya/keyd.git
+	source = keyd.sysusers
 	sha256sums = SKIP
+	sha256sums = b3fa546c31f61be824a84a33af5c723692e2cedd4e5f87ff655e90f33227395d
 
 pkgname = keyd-git
