@@ -1,0 +1,35 @@
+pkgbase = rustic-scheduler-bin
+	pkgdesc = Schedule rustic backups for many clients to a common repository
+	pkgver = nightly
+	pkgrel = 1
+	url = https://rustic.cli.rs/ecosystem/rustic-scheduler/
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	arch = armv7h
+	license = Apache-2.0
+	validpgpkeys = 12B7166D9FD59124416952E34018C5DE3BF8C081
+	source_x86_64 = https://github.com/rustic-rs/nightly/raw/main/rustic_scheduler/rustic-scheduler-nightly-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = https://github.com/rustic-rs/nightly/raw/main/rustic_scheduler/rustic-scheduler-nightly-x86_64-unknown-linux-gnu.tar.gz.asc
+	b2sums_x86_64 = SKIP
+	b2sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/rustic-rs/nightly/raw/main/rustic_scheduler/rustic-scheduler-nightly-aarch64-unknown-linux-gnu.tar.gz
+	source_aarch64 = https://github.com/rustic-rs/nightly/raw/main/rustic_scheduler/rustic-scheduler-nightly-aarch64-unknown-linux-gnu.tar.gz.asc
+	b2sums_aarch64 = SKIP
+	b2sums_aarch64 = SKIP
+	source_i686 = https://github.com/rustic-rs/nightly/raw/main/rustic_scheduler/rustic-scheduler-nightly-i686-unknown-linux-gnu.tar.gz
+	source_i686 = https://github.com/rustic-rs/nightly/raw/main/rustic_scheduler/rustic-scheduler-nightly-i686-unknown-linux-gnu.tar.gz.asc
+	b2sums_i686 = SKIP
+	b2sums_i686 = SKIP
+	source_armv7h = https://github.com/rustic-rs/nightly/raw/main/rustic_scheduler/rustic-scheduler-nightly-armv7-unknown-linux-gnueabihf.tar.gz
+	source_armv7h = https://github.com/rustic-rs/nightly/raw/main/rustic_scheduler/rustic-scheduler-nightly-armv7-unknown-linux-gnueabihf.tar.gz.asc
+	b2sums_armv7h = SKIP
+	b2sums_armv7h = SKIP
+
+pkgname = rustic-scheduler-server-bin
+	pkgdesc = Schedule rustic backups for many clients to a common repository (server)
+	provides = rustic-scheduler-server
+
+pkgname = rustic-scheduler-client-bin
+	pkgdesc = Schedule rustic backups for many clients to a common repository (client)
+	provides = rustic-scheduler-client
