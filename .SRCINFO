@@ -1,10 +1,11 @@
 pkgbase = arronax
 	pkgdesc = A GTK based GUI program to create and modify starters (*.desktop files) for applications, files, and URIs.
 	pkgver = 0.8.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.florian-diesch.de/software/arronax
 	arch = any
 	license = GPL-3.0-or-later
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -14,12 +15,10 @@ pkgbase = arronax
 	depends = python-pyxdg
 	optdepends = nemo-python: for Nemo extension
 	optdepends = python-caja: for Caja extension
-	source = https://www.florian-diesch.de/software/arronax/dist/arronax-0.8.1.tar.gz
-	source = https://www.florian-diesch.de/software/arronax/dist/arronax-0.8.1.tar.gz.gpg
+	optdepends = thunarx-python: for Thunar plugin
+	source = git+https://codeberg.org/diesch/arronax.git#commit=acb6aaf4826cd8f3d92bdbec8116e317fe954a98
 	source = python311.patch
-	validpgpkeys = C2FF86E4B400D21D087A35B665F2466BB57F5641
-	sha256sums = 8259f59ecd69d1b13768ce4638f1c7861617243ad749a95e6185919ccb0da054
-	sha256sums = ef87c55f996495f87dbd2e926e0e5b8dffc63de9afe9a7d14ea9a8dd73832d34
+	sha256sums = SKIP
 	sha256sums = b62f06af537253f0fcaedcbcc8fbdf5c866a0bda4c5cd517ea4b263d93d52d0c
 
 pkgname = arronax
