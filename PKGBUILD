@@ -10,7 +10,7 @@
 
 pkgver=26.6.10
 _gcc_patches=116-patchset-2
-pkgrel=1
+pkgrel=2
 _major_ver=${pkgver%%.*}
 pkgname="electron${_major_ver}"
 pkgdesc='Build cross platform desktop apps with web technologies'
