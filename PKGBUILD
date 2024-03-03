@@ -2,8 +2,8 @@
 
 pkgname=lpm
 _gitname=lite-xl-plugin-manager
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.2.2
+pkgrel=1
 pkgdesc='A lite-xl plugin manager.'
 arch=('x86_64' 'aarch64')
 url="https://github.com/lite-xl/lite-xl-plugin-manager"
@@ -11,11 +11,11 @@ license=('MIT')
 depends=('lua' 'zlib' 'libzip' 'libgit2' 'mbedtls2')
 makedepends=('meson')
 source=("${_gitname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f3e63bc6df7f9b09959423ee1e0622206f19b002d075592491629410f138e071')
+sha256sums=('62aa8c5276a006dc8f796bbb9c651dc743aa28b00673f3c1925de89cb99f9cf4')
 
 build() {
   cd "${_gitname}-${pkgver}"
-  CFLAGS="$CFLAGS -DLPM_VERSION='\"${pkgver}\"'"
+  CFLAGS="$CFLAGS -DLPM_VERSION='\"${pkgver}\"' -DLPM_DEFAULT_RELEASE=''"
   arch-meson -Dstatic=true . build
   meson compile -C build
 }
